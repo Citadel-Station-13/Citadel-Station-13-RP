@@ -14,7 +14,7 @@
 	. = ..()
 	AddComponent(riding_filter_type, riding_handler_type)
 
-/obj/vehicle/ridden/examine(mob/user)
+/obj/vehicle/ridden/examine(mob/user, dist)
 	. = ..()
 	if(key_type)
 		if(!inserted_key)

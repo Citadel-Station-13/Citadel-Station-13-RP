@@ -5,7 +5,8 @@
 	icon_state = "lantern"
 	desc = "A mining lantern."
 	brightness_on = 6			// luminosity when on
-	light_color = "FF9933" // A slight yellow/orange color.
+	light_color = "#ff9933" // A slight yellow/orange color.
+	light_wedge = LIGHT_OMNI
 
 /*****************************Pickaxe********************************/
 
@@ -14,12 +15,12 @@
 	desc = "The most basic of mining drills, for short excavations and small mineral extractions."
 	icon = 'icons/obj/items.dmi'
 	slot_flags = SLOT_BELT
-	force = 15.0
+	damage_force = 15.0
 	throw_force = 4.0
 	icon_state = "pickaxe"
 	item_state = "jackhammer"
 	w_class = ITEMSIZE_LARGE
-	matter = list(MAT_STEEL = 3750)
+	materials = list(MAT_STEEL = 3750)
 	var/digspeed = 40 //moving the delay to an item var so R&D can make improved picks. --NEO
 	var/sand_dig = FALSE
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
@@ -122,12 +123,12 @@
 	name = "icepick"
 	desc = "A simple icepick, for all your digging, climbing, and lobotomizing needs."
 	slot_flags = SLOT_BELT
-	force = 12
+	damage_force = 12
 	throw_force = 15 //Discount shuriken.
 	icon_state = "icepick"
 	item_state = "spickaxe" //im lazy fuck u
 	w_class = ITEMSIZE_SMALL
-	matter = list(MAT_STEEL = 2750, MAT_TITANIUM = 2000)
+	materials = list(MAT_STEEL = 2750, MAT_TITANIUM = 2000)
 	digspeed = 25 //More expensive than a diamond pick, a lot smaller but decently slower.
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
 	attack_verb = list("mined", "pierced", "stabbed", "attacked")
@@ -175,7 +176,7 @@
 			//visible_message("[usr] starts \the [src] up with a loud grinding!")
 			attack_verb = list("shredded", "ripped", "torn")
 			playsound(src, 'sound/weapons/chainsaw_startup.ogg',40,1)
-			force = 15
+			damage_force = 15
 			sharp = 1
 			active = 1
 			update_icon()
@@ -187,43 +188,46 @@
 	to_chat(user, "You switch the gas nozzle on the drill, turning it off.")
 	attack_verb = list("bluntly hit", "beat", "knocked")
 	playsound(user, 'sound/weapons/chainsaw_turnoff.ogg',40,1)
-	force = 3
+	damage_force = 3
 	edge = 0
 	sharp = 0
 	active = 0
 	update_icon()
 
-/obj/item/pickaxe/tyrmalin/attack_self(mob/user as mob)
+/obj/item/pickaxe/tyrmalin/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!active)
 		turnOn(user)
 	else
 		turnOff(user)
 
-/obj/item/pickaxe/tyrmalin/afterattack(atom/A as mob|obj|turf|area, mob/user as mob, proximity)
-	if(!proximity) return
+/obj/item/pickaxe/tyrmalin/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
 	..()
 	if(active)
 		playsound(src, 'sound/weapons/chainsaw_attack.ogg',40,1)
-	if(A && active)
+	if(target && active)
 		if(get_fuel() > 0)
 			reagents.remove_reagent("fuel", 1)
-		if(istype(A,/obj/structure/window))
-			var/obj/structure/window/W = A
+		if(istype(target,/obj/structure/window))
+			var/obj/structure/window/W = target
 			W.shatter()
-		else if(istype(A,/obj/structure/grille))
-			new /obj/structure/grille/broken(A.loc)
-			new /obj/item/stack/rods(A.loc)
-			qdel(A)
+		else if(istype(target,/obj/structure/grille))
+			new /obj/structure/grille/broken(target.loc)
+			new /obj/item/stack/rods(target.loc)
+			qdel(target)
 	if(jam_chance && active)
 		switch(rand(1,100))
 			if(1 to 30)
 				turnOff()
 			if(31 to 100)
 				return
-	if (istype(A, /obj/structure/reagent_dispensers/fueltank) || istype(A, /obj/item/reagent_containers/portable_fuelcan) && get_dist(src,A) <= 1)
+	if (istype(target, /obj/structure/reagent_dispensers/fueltank) || istype(target, /obj/item/reagent_containers/portable_fuelcan) && get_dist(src,target) <= 1)
 		to_chat(usr, "<span class='notice'>You begin filling the tank on the [src].</span>")
 		if(do_after(usr, 15))
-			A.reagents.trans_to_obj(src, max_fuel)
+			target.reagents.trans_to_obj(src, max_fuel)
 			playsound(src.loc, 'sound/effects/refill.ogg', 50, 1, -6)
 			to_chat(usr, "<span class='notice'>[src] succesfully refueled.</span>")
 		else
@@ -243,7 +247,7 @@
 /obj/item/pickaxe/tyrmalin/proc/get_fuel()
 	return reagents.get_reagent_amount("fuel")
 
-/obj/item/pickaxe/tyrmalin/examine(mob/user)
+/obj/item/pickaxe/tyrmalin/examine(mob/user, dist)
 	. = ..()
 	if(max_fuel)
 		. += "<span class = 'notice'>The [src] feels like it contains roughtly [get_fuel()] units of fuel left.</span>"
@@ -265,12 +269,12 @@
 	icon = 'icons/obj/items.dmi'
 	icon_state = "shovel"
 	slot_flags = SLOT_BELT
-	force = 8.0
+	damage_force = 8.0
 	throw_force = 4.0
 	item_state = "shovel"
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
-	matter = list(MAT_STEEL = 50)
+	materials = list(MAT_STEEL = 50)
 	attack_verb = list("bashed", "bludgeoned", "thrashed", "whacked")
 	sharp = 0
 	edge = 1
@@ -281,7 +285,7 @@
 	desc = "A wicked tool that cleaves through dirt just as easily as it does flesh. The design was styled after ancient tribal designs."
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "shovel_bone"
-	force = 15
+	damage_force = 15
 	throw_force = 12
 	tool_speed = 0.7
 	attack_verb = list("slashed", "impaled", "stabbed", "sliced")
@@ -292,7 +296,7 @@
 	desc = "A small tool for digging and moving dirt."
 	icon_state = "spade"
 	item_state = "spade"
-	force = 5.0
+	damage_force = 5.0
 	throw_force = 7.0
 	w_class = ITEMSIZE_SMALL
 
@@ -307,11 +311,14 @@
 /obj/structure/closet/crate/miningcar
 	desc = "A mining car. This one doesn't work on rails, but has to be dragged."
 	name = "Mining car (not for rails)"
+	closet_appearance = null
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "miningcar"
 	density = 1
 	icon_opened = "miningcaropen"
 	icon_closed = "miningcar"
+
+/obj/structure/closet/crate/miningcar/update_icon()
 
 // Flags.
 
@@ -357,7 +364,7 @@
 	else
 		..()
 
-/obj/item/stack/flag/attack_hand(user as mob)
+/obj/item/stack/flag/attack_hand(mob/user, list/params)
 	if(upright)
 		upright = 0
 		icon_state = base_state
@@ -366,7 +373,10 @@
 	else
 		..()
 
-/obj/item/stack/flag/attack_self(mob/user as mob)
+/obj/item/stack/flag/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 
 	var/obj/item/stack/flag/F = locate() in get_turf(src)
 

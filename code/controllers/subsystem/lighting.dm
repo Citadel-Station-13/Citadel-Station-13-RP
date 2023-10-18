@@ -27,9 +27,9 @@ SUBSYSTEM_DEF(lighting)
 	var/total_ss_updates = 0
 	var/total_instant_updates = 0
 
-	var/instant_ctr = 0
 
 #ifdef USE_INTELLIGENT_LIGHTING_UPDATES
+	var/instant_ctr = 0
 	var/force_queued = TRUE
 	/// For admins.
 	var/force_override = FALSE
@@ -57,8 +57,6 @@ SUBSYSTEM_DEF(lighting)
 	total_ss_updates = 0
 	total_instant_updates = 0
 
-#endif
-
 /// Disable instant updates, relying entirely on the (slower, but less laggy) queued pathway. Use if changing a *lot* of lights.
 /datum/controller/subsystem/lighting/proc/pause_instant()
 	if (force_override)
@@ -77,6 +75,14 @@ SUBSYSTEM_DEF(lighting)
 
 	if (!instant_ctr)
 		force_queued = FALSE
+
+#else
+
+/datum/controller/subsystem/lighting/proc/pause_instant()
+
+/datum/controller/subsystem/lighting/proc/resume_instant()
+
+#endif
 
 /datum/controller/subsystem/lighting/Initialize(timeofday)
 	var/overlaycount = 0

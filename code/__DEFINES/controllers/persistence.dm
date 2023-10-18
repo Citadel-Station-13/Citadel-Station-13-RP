@@ -7,7 +7,7 @@
 
 //? Object Storage System - Character Types
 
-/// /datum/character/human
+/// /datum/character_data/human
 #define OBJECT_PERSISTENCE_CHARACTER_TYPE_HUMAN "human"
 
 //? legacy below

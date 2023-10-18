@@ -1,6 +1,6 @@
 
 
-/obj/item/projectile/bullet/srmrocket
+/obj/projectile/bullet/srmrocket
 	name ="SRM-8 Rocket"
 	desc = "Boom"
 	icon = 'icons/obj/grenade.dmi'
@@ -8,7 +8,7 @@
 	damage = 30	//Meaty whack. *Chuckles*
 	movable_flags = MOVABLE_NO_THROW_SPIN | MOVABLE_NO_THROW_DAMAGE_SCALING | MOVABLE_NO_THROW_SPEED_SCALING
 
-/obj/item/projectile/bullet/srmrocket/on_hit(atom/target, blocked=0)
+/obj/projectile/bullet/srmrocket/on_hit(atom/target, blocked=0)
 	..()
 	if(!isliving(target)) //if the target isn't alive, so is a wall or something
 		explosion(target, 0, 1, 2, 4)
@@ -17,10 +17,10 @@
 	return 1
 
 
-/obj/item/projectile/bullet/srmrocket/weak	//Used in the jury rigged one.
+/obj/projectile/bullet/srmrocket/weak	//Used in the jury rigged one.
 	damage = 10
 
-/obj/item/projectile/bullet/srmrocket/weak/on_hit(atom/target, blocked=0)
+/obj/projectile/bullet/srmrocket/weak/on_hit(atom/target, blocked=0)
 	..()
 	explosion(target, 0, 0, 2, 4)//No need to have a question.
 	return 1

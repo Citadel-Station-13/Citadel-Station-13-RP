@@ -13,17 +13,21 @@
 	var/injectable = 0
 	color = "#664330"
 
-/datum/reagent/nutriment/mix_data(list/newdata, newamount)
+// todo: review data procs
 
-	if(!islist(newdata) || !newdata.len)
+/datum/reagent/nutriment/mix_data(datum/reagents/holder, list/current_data, current_amount, list/new_data, new_amount)
+
+	if(!islist(new_data) || !length(new_data))
 		return
 
+	LAZYINITLIST(data)
+
 	//add the new taste data
-	for(var/taste in newdata)
+	for(var/taste in new_data)
 		if(taste in data)
-			data[taste] += newdata[taste]
+			data[taste] += new_data[taste]
 		else
-			data[taste] = newdata[taste]
+			data[taste] = new_data[taste]
 
 	//cull all tastes below 10% of total
 	var/totalFlavor = 0
@@ -125,10 +129,10 @@
 			M.eye_blurry = max(M.eye_blurry, 10)
 		else if(effective_dose < 20)
 			if(prob(50))
-				M.Weaken(2)
+				M.afflict_paralyze(20 * 2)
 			M.drowsyness = max(M.drowsyness, 20)
 		else
-			M.Sleeping(20)
+			M.afflict_sleeping(20 * 20)
 			M.drowsyness = max(M.drowsyness, 60)
 
 /datum/reagent/nutriment/mayo
@@ -188,9 +192,6 @@
 	color = "#302000"
 
 /datum/reagent/nutriment/coco/affect_ingest(mob/living/carbon/M, alien, removed)
-	if(alien == IS_ALRAUNE) //cit change: choccy is full of natural easily digestible plant fats
-		if(prob(5))
-			to_chat(M, "<span class='vox'>You feel a rush of nutrients fill your body.</span>")
 		M.nutrition += removed * 5
 /datum/reagent/nutriment/instantjuice
 	name = "Juice Powder"
@@ -266,33 +267,6 @@
 	nutriment_factor = 1
 	color = "#801E28"
 
-/* Begin Citadel Change - Removed due to Aurora cooking port
-/datum/reagent/nutriment/cornoil
-	name = "Corn Oil"
-	id = "cornoil"
-	description = "An oil derived from various types of corn."
-	taste_description = "slime"
-	taste_mult = 0.1
-	reagent_state = REAGENT_LIQUID
-	nutriment_factor = 20
-	color = "#302000"
-
-/datum/reagent/nutriment/cornoil/touch_turf(turf/simulated/T)
-	if(!istype(T))
-		return
-
-	var/hotspot = (locate(/atom/movable/fire) in T)
-	if(hotspot && !istype(T, /turf/space))
-		var/datum/gas_mixture/lowertemp = T.remove_air(T:air:total_moles)
-		lowertemp.temperature = max(min(lowertemp.temperature-2000, lowertemp.temperature / 2), 0)
-		lowertemp.react()
-		T.assume_air(lowertemp)
-		qdel(hotspot)
-
-	if(volume >= 3)
-		T.wet_floor()
-
-End Citadel Change */
 /datum/reagent/nutriment/peanutoil
 	name = "Peanut Oil"
 	id = "peanutoil"
@@ -507,9 +481,11 @@ End Citadel Change */
 /datum/reagent/capsaicin/affect_ingest(mob/living/carbon/M, alien, removed)
 	if(alien == IS_DIONA)
 		return
+	if(alien == IS_NARAMADI)
+		return
+	if(alien == IS_UNATHI)
+		return
 	if(alien == IS_ALRAUNE) //cit change: it wouldn't affect plants that much.
-		if(prob(5))
-			to_chat(M, SPAN_ROSE("You feel a pleasant sensation in your mouth."))
 		M.bodytemperature += rand(10, 25)
 		return
 	if(ishuman(M))
@@ -521,6 +497,33 @@ End Citadel Change */
 		to_chat(M, "<span class='danger'>Your insides feel uncomfortably hot!</span>")
 	if(dose >= 5)
 		M.apply_effect(2, AGONY, 0)
+		if(prob(5))
+			M.visible_message("<span class='warning'>[M] [pick("dry heaves!","coughs!","splutters!")]</span>", "<span class='danger'>You feel like your insides are burning!</span>")
+	holder.remove_reagent("frostoil", 5)
+
+/datum/reagent/hexaisin
+	name = "Hexaisin"
+	id = "hexaisin"
+	description = "A common chemical found in various plant life in the Moghes regions."
+	taste_description = "pleasant fire"
+	taste_mult = 1.5
+	reagent_state = REAGENT_LIQUID
+	ingest_met = REM
+	color = "#B31008"
+
+/datum/reagent/hexaisin/affect_ingest(mob/living/carbon/M, alien, removed)
+	if(alien == IS_UNATHI)
+		return
+	if(alien == IS_NARAMADI)
+		return
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(!H.can_feel_pain())
+			return
+	if(dose == metabolism)
+		to_chat(M, "<span class='danger'>You feel like your insides are burning!</span>")
+	else
+		M.apply_effect(3, AGONY, 0)
 		if(prob(5))
 			M.visible_message("<span class='warning'>[M] [pick("dry heaves!","coughs!","splutters!")]</span>", "<span class='danger'>You feel like your insides are burning!</span>")
 	holder.remove_reagent("frostoil", 5)
@@ -571,39 +574,39 @@ End Citadel Change */
 			eyes_covered = TRUE
 			safe_thing = "Lack of eyes"
 		if(H.head)
-			if(H.head.body_parts_covered & EYES)
+			if(H.head.body_cover_flags & EYES)
 				eyes_covered = 1
 				safe_thing = H.head
-			if((H.head.body_parts_covered & FACE) && !(H.head.clothing_flags & FLEXIBLEMATERIAL))
+			if((H.head.body_cover_flags & FACE) && !(H.head.clothing_flags & FLEXIBLEMATERIAL))
 				mouth_covered = 1
 				safe_thing = H.head
 		if(H.wear_mask)
-			if(!eyes_covered && H.wear_mask.body_parts_covered & EYES)
+			if(!eyes_covered && H.wear_mask.body_cover_flags & EYES)
 				eyes_covered = 1
 				safe_thing = H.wear_mask
-			if(!mouth_covered && (H.wear_mask.body_parts_covered & FACE) && !(H.wear_mask.clothing_flags & FLEXIBLEMATERIAL))
+			if(!mouth_covered && (H.wear_mask.body_cover_flags & FACE) && !(H.wear_mask.clothing_flags & FLEXIBLEMATERIAL))
 				mouth_covered = 1
 				safe_thing = H.wear_mask
-		if(H.glasses && H.glasses.body_parts_covered & EYES)
+		if(H.glasses && H.glasses.body_cover_flags & EYES)
 			if(!eyes_covered)
 				eyes_covered = 1
 				if(!safe_thing)
 					safe_thing = H.glasses
 		if(alien == IS_SLIME)
 			for(var/obj/item/clothing/C in H.get_equipped_items())
-				if(C.body_parts_covered & HEAD)
+				if(C.body_cover_flags & HEAD)
 					head_covered = 1
-				if(C.body_parts_covered & UPPER_TORSO)
+				if(C.body_cover_flags & UPPER_TORSO)
 					chest_covered = 1
-				if(C.body_parts_covered & LOWER_TORSO)
+				if(C.body_cover_flags & LOWER_TORSO)
 					groin_covered = 1
-				if(C.body_parts_covered & LEGS)
+				if(C.body_cover_flags & LEGS)
 					legs_covered = 1
-				if(C.body_parts_covered & ARMS)
+				if(C.body_cover_flags & ARMS)
 					arms_covered = 1
-				if(C.body_parts_covered & HANDS)
+				if(C.body_cover_flags & HANDS)
 					hands_covered = 1
-				if(C.body_parts_covered & FEET)
+				if(C.body_cover_flags & FEET)
 					feet_covered = 1
 				if(head_covered && chest_covered && groin_covered && legs_covered && arms_covered && hands_covered && feet_covered)
 					break
@@ -615,8 +618,8 @@ End Citadel Change */
 		to_chat(M, "<span class='warning'>Your [safe_thing] protects you from most of the pepperspray!</span>")
 		M.eye_blurry = max(M.eye_blurry, effective_strength * 3)
 		M.Blind(effective_strength)
-		M.Stun(5)
-		M.Weaken(5)
+		M.afflict_stun(20 * 5)
+		M.afflict_paralyze(20 * 5)
 		if(alien != IS_SLIME)
 			return
 	else if(mouth_covered) // Mouth cover is better than eye cover
@@ -628,8 +631,8 @@ End Citadel Change */
 		to_chat(M, "<span class='warning'>You're sprayed directly in the eyes with pepperspray!</span>")
 		M.eye_blurry = max(M.eye_blurry, effective_strength * 5)
 		M.Blind(effective_strength * 2)
-		M.Stun(5)
-		M.Weaken(5)
+		M.afflict_stun(20 * 5)
+		M.afflict_paralyze(20 * 5)
 		if(alien != IS_SLIME)
 			return
 	if(alien == IS_SLIME)
@@ -663,6 +666,10 @@ End Citadel Change */
 			M.apply_effect(effective_strength / 2, AGONY, 0)
 
 /datum/reagent/condensedcapsaicin/affect_ingest(mob/living/carbon/M, alien, removed)
+	if(alien == IS_NARAMADI) //Moghes species with exception of Zaddat (for obvious reasons) are immune to taste and ingested effects of Capsaisin and Condensed variants.
+		return
+	if(alien == IS_UNATHI) //If you want to know why, look at Hexaisin. They are still affected by pepperspray, but not drinking it.
+		return
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(!H.can_feel_pain())
@@ -704,7 +711,7 @@ End Citadel Change */
 	M.adjust_hydration(hydration * removed)
 	M.dizziness = max(0, M.dizziness + adj_dizzy)
 	M.drowsyness = max(0, M.drowsyness + adj_drowsy)
-	M.AdjustSleeping(adj_sleepy)
+	M.adjust_sleeping(20 * adj_sleepy)
 
 	if(adj_temp > 0 && M.bodytemperature < 310) // 310 is the normal bodytemp. 310.055
 		M.bodytemperature = min(310, M.bodytemperature + (adj_temp * TEMPERATURE_DAMAGE_COEFFICIENT))
@@ -788,10 +795,10 @@ End Citadel Change */
 			M.eye_blurry = max(M.eye_blurry, 10)
 		else if(effective_dose < 20)
 			if(prob(50))
-				M.Weaken(2)
+				M.afflict_paralyze(20 * 2)
 			M.drowsyness = max(M.drowsyness, 20)
 		else
-			M.Sleeping(20)
+			M.afflict_sleeping(20 * 20)
 			M.drowsyness = max(M.drowsyness, 60)
 
 /datum/reagent/drink/juice/lemon
@@ -916,6 +923,7 @@ End Citadel Change */
 	description = "An opaque white liquid produced by the mammary glands of mammals."
 	taste_description = "milk"
 	color = "#DFDFDF"
+	var/contains_lactose = TRUE
 
 	glass_name = "Milk"
 	glass_desc = "White and nutritious goodness!"
@@ -939,9 +947,8 @@ End Citadel Change */
 	glass_desc = "Deliciously fattening!"
 
 /datum/reagent/drink/milk/chocolate/affect_ingest(mob/living/carbon/M, alien, removed)
+	..()
 	if(alien == IS_ALRAUNE) //cit change: choccy is full of natural easily digestible plant fats
-		if(prob(5))
-			to_chat(M, "<span class='vox'>You feel a rush of nutrients fill your body.</span>")
 		M.nutrition += removed * 5
 
 /datum/reagent/drink/milk/affect_ingest(mob/living/carbon/M, alien, removed)
@@ -949,10 +956,17 @@ End Citadel Change */
 	if(alien == IS_DIONA)
 		return
 	if(alien == IS_ALRAUNE) //cit change: milk good for plant.
-		to_chat(M, "<span class='vox'>You feel nourished by the milk.</span>")
 		M.nutrition += removed * 3
 	M.heal_organ_damage(0.5 * removed, 0)
 	holder.remove_reagent("capsaicin", 10 * removed)
+	if(contains_lactose == TRUE && alien == IS_NARAMADI) //Species-wide lactose intolerance, also funny that cheeses can't drink milk.
+		if(prob(5))
+			to_chat(M, SPAN_WARNING("You feel nauseous!"))
+			return
+		if(prob(20))
+			var/mob/living/L = M
+			L.vomit()
+	return
 
 /datum/reagent/drink/milk/cream
 	name = "Cream"
@@ -974,6 +988,7 @@ End Citadel Change */
 	description = "An opaque white liquid made from soybeans."
 	taste_description = "soy milk"
 	color = "#DFDFC7"
+	contains_lactose = FALSE
 
 	glass_name = "Soy Milk"
 	glass_desc = "White and nutritious soy goodness!"
@@ -988,6 +1003,7 @@ End Citadel Change */
 	description = "An opaque white liquid made from the white inner flesh of a coconut."
 	taste_description = "creamy coconut"
 	color = "#cecece"
+	contains_lactose = FALSE
 
 	glass_name = "Coconut Milk"
 	glass_desc = "An opaque white liquid made from the white inner flesh of a coconut."
@@ -1136,7 +1152,6 @@ End Citadel Change */
 	if(alien == IS_DIONA)
 		return
 	if(alien == IS_ALRAUNE) //cit change: milk good for plant.
-		to_chat(M, "<span class='vox'>You feel nourished by the milk tea.</span>")
 		M.nutrition += removed * 3
 	M.heal_organ_damage(0.5 * removed, 0)
 	holder.remove_reagent("capsaicin", 10 * removed)
@@ -1341,9 +1356,8 @@ End Citadel Change */
 	cup_desc = "Made with love! And cocoa beans."
 
 /datum/reagent/drink/hot_coco/affect_ingest(mob/living/carbon/M, alien, removed)
+	..()
 	if(alien == IS_ALRAUNE) //cit change: choccy is full of natural easily digestible plant fats
-		if(prob(5))
-			to_chat(M, "<span class='vox'>You feel a rush of nutrients fill your body.</span>")
 		M.nutrition += removed * 5
 
 /datum/reagent/drink/soda/sodawater
@@ -1488,6 +1502,7 @@ End Citadel Change */
 	taste_description = "vanilla milkshake"
 	color = "#AEE5E4"
 	adj_temp = -9
+	var/contains_lactose = TRUE //in place in case someone makes adds milkshakes with soymilk or coconut milk
 
 	glass_name = "Milkshake"
 	glass_desc = "Glorious brainfreezing mixture."
@@ -1507,11 +1522,20 @@ End Citadel Change */
 			M.eye_blurry = max(M.eye_blurry, 10)
 		else if(effective_dose < 20)
 			if(prob(50))
-				M.Weaken(2)
+				M.afflict_paralyze(20 * 2)
 			M.drowsyness = max(M.drowsyness, 20)
 		else
-			M.Sleeping(20)
+			M.afflict_sleeping(20 * 20)
 			M.drowsyness = max(M.drowsyness, 60)
+	if(contains_lactose == TRUE && alien == IS_NARAMADI)
+		if(prob(5))
+			to_chat(M, SPAN_WARNING("You feel nauseous!"))
+			return
+		if(prob(20))
+			var/mob/living/L = M
+			L.vomit()
+	return
+
 
 /datum/reagent/drink/milkshake/chocoshake
 	name = "Chocolate Milkshake"
@@ -1525,9 +1549,7 @@ End Citadel Change */
 	glass_desc = "A refreshing chocolate milkshake, just like mom used to make."
 
 /datum/reagent/drink/milkshake/chocoshake/affect_ingest(mob/living/carbon/M, alien, removed)
-	if(alien == IS_ALRAUNE) //cit change: choccy is full of natural easily digestible plant fats
-		if(prob(5))
-			to_chat(M, "<span class='vox'>You feel a rush of nutrients fill your body.</span>")
+	if(alien == IS_ALRAUNE) //cit change: it wouldn't affect plants that much.
 		M.nutrition += removed * 5
 
 /datum/reagent/drink/milkshake/berryshake
@@ -2208,7 +2230,7 @@ End Citadel Change */
 	glass_icon = DRINK_ICON_NOISY
 	glass_special = list(DRINK_FIZZ)
 
-/datum/reagent/ethanol/rootbeerfloat
+/datum/reagent/drink/soda/rootbeerfloat
 	name = "Root Beer Float"
 	id = "rootbeerfloat"
 	description = "A classic from Humanity's early days. Soothing, cool, and nostalgic."
@@ -2217,6 +2239,19 @@ End Citadel Change */
 
 	glass_name = "Root Beer Float"
 	glass_desc = "A classic from Humanity's early days. Soothing, cool, and nostalgic."
+
+/datum/reagent/drink/milk/pilk
+	name = "Pilk"
+	id = "pilk"
+	description = "Milk and Space Cola mixed together. What?"
+	taste_description = "creamed up cola"
+	color = "#c9ab84" //usually most pilk mixtures have the milk presence dominate.
+	adj_drowsy = -3 //space cola effects
+	adj_temp = -3
+
+	glass_name = "Pilk"
+	glass_desc = "Milk and Space Cola mixed together. <i>Burenyuu~</i>. While the soda ingredient isn't exactly the one based on the original \
+	old Terra brand, the \"Pilk\" name has stuck all of these centuries later. It's a drink mixture that many still get upset about to this day."
 
 /* Alcohol */
 
@@ -2258,10 +2293,9 @@ End Citadel Change */
 	glass_desc = "A freezing pint of beer"
 
 /datum/reagent/ethanol/beer/affect_ingest(mob/living/carbon/M, alien, removed)
-	..()
-	if(alien == IS_DIONA)
-		return
-	M.jitteriness = max(M.jitteriness - 3, 0)
+	. = ..()
+	if(.)
+		M.jitteriness = max(M.jitteriness - 3, 0)
 
 /datum/reagent/ethanol/bluecuracao
 	name = "Blue Curacao"
@@ -2300,10 +2334,9 @@ End Citadel Change */
 	glass_desc = "Now you want to Pray for a pirate suit, don't you?"
 
 /datum/reagent/ethanol/deadrum/affect_ingest(mob/living/carbon/M, alien, removed)
-	..()
-	if(alien == IS_DIONA)
-		return
-	M.dizziness +=5
+	. = ..()
+	if(.)
+		M.dizziness += 5
 
 /datum/reagent/ethanol/firepunch
 	name = "Fire Punch"
@@ -2347,10 +2380,10 @@ End Citadel Change */
 /datum/reagent/ethanol/coffee/affect_ingest(mob/living/carbon/M, alien, removed)
 	if(alien == IS_DIONA)
 		return
-	..()
+	. = ..() // the rest is coffee stuff, ugh, go make reagent traits etc
 	M.dizziness = max(0, M.dizziness - 5)
 	M.drowsyness = max(0, M.drowsyness - 3)
-	M.AdjustSleeping(-2)
+	M.adjust_sleeping(20 * -2)
 	if(M.bodytemperature > 310)
 		M.bodytemperature = max(310, M.bodytemperature - (5 * TEMPERATURE_DAMAGE_COEFFICIENT))
 
@@ -2454,7 +2487,7 @@ End Citadel Change */
 	glass_desc = "This is a glass of Thirteen Loko, it appears to be of the highest quality. The drink, not the glass."
 
 /datum/reagent/ethanol/thirteenloko/affect_ingest(mob/living/carbon/M, alien, removed)
-	..()
+	. = ..()
 	if(alien == IS_DIONA)
 		return
 	M.drowsyness = max(0, M.drowsyness - 7)
@@ -2486,7 +2519,7 @@ End Citadel Change */
 	glass_desc = "The glass contain wodka. Xynta."
 
 /datum/reagent/ethanol/vodka/affect_ingest(mob/living/carbon/M, alien, removed)
-	..()
+	. = ..()
 	M.cure_radiation(RAD_MOB_CURE_STRENGTH_VODKA(removed))
 
 /datum/reagent/ethanol/whiskey
@@ -2683,14 +2716,13 @@ End Citadel Change */
 	glass_name = "Bahama Mama"
 	glass_desc = "Tropical cocktail."
 
-/datum/reagent/ethanol/bananahonk
+/datum/reagent/drink/bananahonk
 	name = "Banana Mama"
 	id = "bananahonk"
 	description = "A drink from Clown Heaven."
 	taste_description = "bananas and sugar"
-	nutriment_factor = 1
+	nutrition = 1
 	color = "#FFFF91"
-	strength = 12
 
 	glass_name = "Banana Honk"
 	glass_desc = "A drink from Banana Heaven."
@@ -2720,8 +2752,8 @@ End Citadel Change */
 	glass_desc = "Heavy, hot and strong. Just like the Iron fist of the LAW."
 
 /datum/reagent/ethanol/beepsky_smash/affect_ingest(mob/living/carbon/M, alien, removed)
-	..()
-	M.Stun(2)
+	. = ..()
+	M.afflict_stun(20 * 2)
 
 /datum/reagent/ethanol/bilk
 	name = "Bilk"
@@ -2836,13 +2868,12 @@ End Citadel Change */
 	glass_name = "Gin Fizz"
 	glass_desc = "Refreshingly lemony, deliciously dry."
 
-/datum/reagent/ethanol/nebula_riptide
+/datum/reagent/drink/soda/nebula_riptide
 	name = "Nebula Riptide"
 	id = "nebula_riptide"
 	description = "The drink is compounded into form from a larger volume, leaving little to drink."
 	taste_description = "Burning hot, Freezing cold, and bitter irony"
 	color = "#09dbf7"
-	strength = 10
 
 	glass_name = "Nebula Riptide"
 	glass_desc = "Nebula Riptide. It's thick enough to stand on it's own, almost even parts spice and liquid."
@@ -3089,8 +3120,8 @@ End Citadel Change */
 	glass_special = list("neuroright")
 
 /datum/reagent/ethanol/neurotoxin/affect_ingest(mob/living/carbon/M, alien, removed)
-	..()
-	M.Weaken(3)
+	. = ..()
+	M.afflict_paralyze(20 * 3)
 
 /datum/reagent/ethanol/patron
 	name = "Patron"
@@ -3117,13 +3148,13 @@ End Citadel Change */
 
 /datum/reagent/ethanol/pwine/affect_ingest(mob/living/carbon/M, alien, removed)
 	..()
-	if(dose > 30)
+	if(. > 30)
 		M.adjustToxLoss(2 * removed)
-	if(dose > 60 && ishuman(M) && prob(5))
+	if(. > 60 && ishuman(M) && prob(5))
 		var/mob/living/carbon/human/H = M
 		var/obj/item/organ/internal/heart/L = H.internal_organs_by_name[O_HEART]
 		if (L && istype(L))
-			if(dose < 120)
+			if(. < 120)
 				L.take_damage(10 * removed, 0)
 			else
 				L.take_damage(100, 0)
@@ -3164,15 +3195,14 @@ End Citadel Change */
 	glass_name = "Screwdriver"
 	glass_desc = "A simple, yet superb mixture of Vodka and orange juice. Just the thing for the tired engineer."
 
-/datum/reagent/ethanol/silencer
+/datum/reagent/drink/silencer
 	name = "Silencer"
 	id = "silencer"
 	description = "A drink from Mime Heaven."
 	taste_description = "a pencil eraser"
 	taste_mult = 1.2
-	nutriment_factor = 1
+	nutrition = 1
 	color = "#FFFFFF"
-	strength = 12
 
 	glass_name = "Silencer"
 	glass_desc = "A drink from mime Heaven."
@@ -3354,14 +3384,29 @@ End Citadel Change */
 	..()
 	if(alien == IS_DIONA)
 		return
-
+	if(alien == IS_UNATHI)
+		return
+	if(alien == IS_NARAMADI)
+		return
 	var/drug_strength = 10
 	if(alien == IS_SKRELL)
 		drug_strength = drug_strength * 0.8
 
 	M.druggy = max(M.druggy, drug_strength)
-	if(prob(10) && isturf(M.loc) && !istype(M.loc, /turf/space) && M.canmove && !M.restrained())
+	if(prob(10) && isturf(M.loc) && !istype(M.loc, /turf/space) && CHECK_MOBILITY(M, MOBILITY_CAN_MOVE))
 		step(M, pick(GLOB.cardinal))
+
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(!H.can_feel_pain())
+			return
+	if(dose == metabolism)
+		to_chat(M, "<span class='danger'>You feel like your insides are burning!</span>")
+	else
+		M.apply_effect(4, AGONY, 0)
+		if(prob(5))
+			M.visible_message("<span class='warning'>[M] [pick("dry heaves!","coughs!","splutters!")]</span>", "<span class='danger'>You feel like your insides are burning!</span>")
+	holder.remove_reagent("frostoil", 5)
 
 /datum/reagent/ethanol/sakebomb
 	name = "Sake Bomb"
@@ -3824,9 +3869,9 @@ End Citadel Change */
 	glass_special = list(DRINK_FIZZ)
 
 /datum/reagent/ethanol/godka/affect_ingest(mob/living/carbon/M, alien, removed)
-	..()
-	M.cure_radiation(RAD_MOB_CURE_STRENGTH_GODKA(removed))
-	if(ishuman(M))
+	. = ..()
+	M.cure_radiation(RAD_MOB_CURE_STRENGTH_GODKA(removed * .))
+	if(. && ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(H.species.has_organ[O_LIVER])
 			var/obj/item/organ/L = H.internal_organs_by_name[O_LIVER]
@@ -3898,12 +3943,11 @@ End Citadel Change */
 	glass_name = "Ichor Mead"
 	glass_desc = "A trip to Valhalla."
 
-/datum/reagent/ethanol/gibbfloat
+/datum/reagent/drink/soda/gibbfloat
 	name = "Gibbfloat"
 	id = "gibbfloat"
 	description = "A tasty, frothy drink."
 	taste_description = "soda float"
-	strength = 100
 
 	glass_name = "Gibbfloat"
 	glass_desc = "A tasty, frothy drink"
@@ -4245,7 +4289,7 @@ End Citadel Change */
 
 //This functions the same as Doctor's Delight, except it gets you drunk too.
 /datum/reagent/ethanol/royaljelly/affect_ingest(mob/living/carbon/M, alien, removed)
-	..()
+	. = ..()
 	if(alien == IS_DIONA)
 		return
 	M.adjustOxyLoss(-4 * removed)
@@ -4416,11 +4460,10 @@ End Citadel Change */
 
 
 //Handles setting the temperature when oils are mixed
-/datum/reagent/nutriment/coating/mix_data(newdata, newamount)
-	if (!data)
-		data = list()
-
-	data["cooked"] = newdata["cooked"]
+// todo: review data procs
+/datum/reagent/nutriment/coating/mix_data(datum/reagents/holder, list/current_data, current_amount, list/new_data, new_amount)
+	LAZYINITLIST(data)
+	data["cooked"] = new_data["cooked"]
 
 /datum/reagent/nutriment/coating/batter
 	name = "batter mix"
@@ -4476,29 +4519,23 @@ End Citadel Change */
 	if(volume >= 3)
 		T.wet_floor(2)
 
+// todo: review data procs
 /datum/reagent/nutriment/triglyceride/oil/initialize_data(newdata) // Called when the reagent is created.
 	..()
 	if (!data)
 		data = list("temperature" = T20C)
 
 //Handles setting the temperature when oils are mixed
-/datum/reagent/nutriment/triglyceride/oil/mix_data(newdata, newamount)
-
-	if (!data)
-		data = list()
-
-	var/ouramount = volume - newamount
-	if (ouramount <= 0 || !data["temperature"] || !volume)
+/datum/reagent/nutriment/triglyceride/oil/mix_data(datum/reagents/holder, list/current_data, current_amount, list/new_data, new_amount)
+	LAZYINITLIST(data)
+	if (current_amount <= 0 || !data["temperature"] || !volume)
 		//If we get here, then this reagent has just been created, just copy the temperature exactly
-		data["temperature"] = newdata["temperature"]
-
+		data["temperature"] = new_data["temperature"]
 	else
 		//Our temperature is set to the mean of the two mixtures, taking volume into account
-		var/total = (data["temperature"] * ouramount) + (newdata["temperature"] * newamount)
+		var/total = (data["temperature"] * current_amount) + (new_data["temperature"] * new_amount)
 		data["temperature"] = total / volume
-
 	return ..()
-
 
 //Calculates a scaling factor for scalding damage, based on the temperature of the oil and creature's heat resistance
 /datum/reagent/nutriment/triglyceride/oil/proc/heatdamage(mob/living/carbon/M)
@@ -4578,6 +4615,16 @@ End Citadel Change */
 	color = "#EDB91F"
 	taste_description = "cheese"
 
+/datum/reagent/nutriment/protein/cheese/affect_ingest(mob/living/carbon/M, alien, removed) //Cheese is a kind of milk.
+	if(alien == IS_NARAMADI)
+		if(prob(5))
+			to_chat(M, SPAN_WARNING("You feel nauseous!"))
+			return
+		if(prob(20))
+			var/mob/living/L = M
+			L.vomit()
+	return
+
 //SYNNONO MEME FOODS EXPANSION - Credit to Synnono
 
 /datum/reagent/spacespice
@@ -4621,11 +4668,11 @@ End Citadel Change */
 	glass_desc = "The perfect blend of the most alcoholic things a bartender can get their hands on."
 
 /datum/reagent/ethanol/deathbell/affect_ingest(mob/living/carbon/M, alien, removed)
-	..()
+	. = ..()
 
-	if(dose * strength >= strength) // Early warning
+	if(. >= strength) // Early warning
 		M.make_dizzy(24) // Intentionally higher than normal to compensate for it's previous effects.
-	if(dose * strength >= strength * 2.5) // Slurring takes longer. Again, intentional.
+	if(. >= strength * 2.5) // Slurring takes longer. Again, intentional.
 		M.slurring = max(M.slurring, 30)
 
 /datum/reagent/ethanol/monstertamer
@@ -4690,15 +4737,12 @@ End Citadel Change */
 	glass_desc = "Looking into this is like staring at the stars."
 
 /datum/reagent/ethanol/galacticpanic/affect_ingest(mob/living/carbon/M, alien, removed)
-	..()
-	M.Stun(2)
+	. = ..()
 
-/datum/reagent/ethanol/galacticpanic/affect_ingest(mob/living/carbon/M, alien, removed)
-	..()
-
-	if(dose * strength >= strength) // Early warning
+	M.afflict_stun(20 * 2)
+	if(. >= strength) // Early warning
 		M.make_dizzy(24) // Intentionally higher than normal to compensate for it's previous effects.
-	if(dose * strength >= strength * 2.5) // Slurring takes longer. Again, intentional.
+	if(. >= strength * 2.5) // Slurring takes longer. Again, intentional.
 		M.slurring = max(M.slurring, 30)
 
 /datum/reagent/ethanol/lotus
@@ -4767,19 +4811,53 @@ End Citadel Change */
 	glass_name = "Italian Crisis"
 	glass_desc = "This drink looks like it was a mistake."
 
-/datum/reagent/ethanol/shroomjuice
+/datum/reagent/drink/shroomjuice
 	name = "Dumb Shroom Juice"
 	id = "shroomjuice"
 	description = "The mushroom farmer didn't sort through their stock very well."
 	taste_description = "sweet and sour citrus with a savory kick."
-	strength = 100
-	druggy = 30
-	halluci = 30
-	var/adj_dizzy = 30
 	color = "#d3785d"
 
 	glass_name = "Dumb Shroom Juice"
 	glass_desc = "Touch fuzzy, get dizzy."
+
+/datum/reagent/drink/shroomjuice/affect_blood(mob/living/carbon/M, alien, removed)
+	. = ..()
+
+	if(alien == IS_DIONA)
+		return
+
+	var/threshold = 1
+	if(alien == IS_SKRELL)
+		threshold = 1.2
+
+	if(alien == IS_SLIME)
+		threshold = 0.8
+
+	M.druggy = max(M.druggy, 30)
+
+	var/effective_dose = dose
+	if(issmall(M)) effective_dose *= 2
+	if(effective_dose < 1 * threshold)
+		M.apply_effect(3, STUTTER)
+		M.make_dizzy(5)
+		if(prob(5))
+			M.emote(pick("twitch", "giggle"))
+	else if(effective_dose < 2 * threshold)
+		M.apply_effect(3, STUTTER)
+		M.make_jittery(5)
+		M.make_dizzy(5)
+		M.druggy = max(M.druggy, 35)
+		if(prob(10))
+			M.emote(pick("twitch", "giggle"))
+	else
+		M.apply_effect(3, STUTTER)
+		M.make_jittery(10)
+		M.make_dizzy(10)
+		M.druggy = max(M.druggy, 40)
+		if(prob(15))
+			M.emote(pick("twitch", "giggle"))
+
 
 /datum/reagent/ethanol/honeyshot
 	name = "Honey Shot"
@@ -4914,13 +4992,13 @@ End Citadel Change */
 	glass_desc = "Deathbell and nuclear waste. The bane of your liver."
 
 /datum/reagent/ethanol/desiretodie/affect_blood(mob/living/carbon/M, alien, removed)
-	..()
+	. = ..()
 	if(alien == IS_DIONA)
 		return
 	M.bloodstr.add_reagent("radium", 0.3)
 
 /datum/reagent/ethanol/desiretodie/affect_ingest(mob/living/carbon/M, alien, removed)
-	..()
+	. = ..()
 	if(alien == IS_DIONA)
 		return
 	M.ingested.add_reagent("radium", 0.25)
@@ -5111,6 +5189,17 @@ End Citadel Change */
 
 	glass_name = "Crystal Dr. Gibb"
 	glass_desc = "Tastes just like Dr. Gibb, but it's translucent. How?!?"
+
+/datum/reagent/drink/glue
+	name = "\improper AP-NT:G 'Glue'"
+	id = "safeglue"
+	description = "A bottle codenamed AP-NT:G by nanotrasen's brightest minds, standing for 'All Purpose Non-Toxic Glue', this type being best used on paper. ..Or microwaved bread, if you're daring."
+	taste_description = "dull sticky glue"
+	nutrition = 1
+	color = "#faf2e3"
+
+	glass_name = "Glue"
+	glass_desc = "A glass of glue. Wait, why did you put this into a glass?"
 
 // Unathi drinks
 

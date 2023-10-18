@@ -50,7 +50,7 @@
 	meat = 5
 	return 1
 
-/obj/structure/kitchenspike/attack_hand(mob/user as mob)
+/obj/structure/kitchenspike/attack_hand(mob/user, list/params)
 	if(..() || !occupied)
 		return
 	meat--

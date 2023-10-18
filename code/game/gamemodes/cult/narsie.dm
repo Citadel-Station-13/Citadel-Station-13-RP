@@ -46,7 +46,7 @@ var/global/list/narsie_list = list()
 		to_chat(world, "<font size='15' color='red'><b>[uppertext(name)] HAS RISEN</b></font>")
 		SEND_SOUND(world, sound('sound/effects/weather/wind/wind_5_1.ogg'))
 
-	INVOKE_ASYNC(src, .proc/narsie_spawn_animation)
+	INVOKE_ASYNC(src, PROC_REF(narsie_spawn_animation))
 
 	if(!narsie_cometh)//so we don't initiate Hell more than one time.
 		if(cause_hell)
@@ -76,7 +76,7 @@ var/global/list/narsie_list = list()
 /obj/singularity/narsie/mezzer()
 	for(var/mob/living/carbon/M in oviewers(8, src))
 		if(M.stat == CONSCIOUS)
-			if(M.status_flags & GODMODE)
+			if(M.status_flags & STATUS_GODMODE)
 				continue
 			if(!iscultist(M))
 				to_chat(M, "<span class='danger'> You feel your sanity crumble away in an instant as you gaze upon [src.name]...</span>")
@@ -170,7 +170,7 @@ var/global/list/narsie_list = list()
 	if (istype(A, /mob/) && (get_dist(A, src) <= 7))
 		var/mob/M = A
 
-		if(M.status_flags & GODMODE)
+		if(M.status_flags & STATUS_GODMODE)
 			return 0
 
 		M.cultify()
@@ -202,7 +202,7 @@ var/global/list/narsie_list = list()
 	if (istype(A, /mob/living/))
 		var/mob/living/C2 = A
 
-		if(C2.status_flags & GODMODE)
+		if(C2.status_flags & STATUS_GODMODE)
 			return 0
 
 		C2.dust() // Changed from gib(), just for less lag.
@@ -234,7 +234,7 @@ var/global/list/narsie_list = list()
 	if (istype(A, /mob/living/))
 		var/mob/living/C2 = A
 
-		if(C2.status_flags & GODMODE)
+		if(C2.status_flags & STATUS_GODMODE)
 			return 0
 
 		C2.dust() // Changed from gib(), just for less lag.

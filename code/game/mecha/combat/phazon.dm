@@ -1,6 +1,6 @@
 /obj/mecha/combat/phazon
-	desc = "An exosuit which can only be described as 'WTF?'."
 	name = "Phazon"
+	desc = "A sleek exosuit with unnaturally pronounced curves."
 	icon_state = "phazon"
 	initial_icon = "phazon"
 	step_in = 1
@@ -80,10 +80,7 @@
 
 /obj/mecha/combat/phazon/janus
 	name = "Phazon Prototype Janus Class"
-	desc = "An exosuit which a more crude civilization such as yours might describe as WTF?."
-	description_fluff = "An incredibly high-tech exosuit constructed out of salvaged alien and cutting-edge modern technology.\
-	This machine, theoretically, is capable of travelling through time, however due to the strange nature of its miniaturized \
-	supermatter-fueled bluespace drive, it is uncertain how this ability manifests."
+	desc = "A sleek exosuit that radiates a strange, alien energy."
 	icon_state = "janus"
 	initial_icon = "janus"
 	step_in = 1
@@ -119,13 +116,13 @@
 		visible_message("<span class='alien'>The [src.name] appears to flicker, before its silhouette stabilizes!</span>")
 	return
 
-/obj/mecha/combat/phazon/janus/dynbulletdamage(var/obj/item/projectile/Proj)
-	if((Proj.damage && !Proj.nodamage) && !istype(Proj, /obj/item/projectile/beam) && prob(max(1, 33 - round(Proj.damage / 4))))
+/obj/mecha/combat/phazon/janus/dynbulletdamage(var/obj/projectile/Proj)
+	if((Proj.damage && !Proj.nodamage) && !istype(Proj, /obj/projectile/beam) && prob(max(1, 33 - round(Proj.damage / 4))))
 		src.occupant_message("<span class='alien'>The armor absorbs the incoming projectile's force, negating it!</span>")
 		src.visible_message("<span class='alien'>The [src.name] absorbs the incoming projectile's force, negating it!</span>")
 		src.log_append_to_last("Armor negated.")
 		return
-	else if((Proj.damage && !Proj.nodamage) && istype(Proj, /obj/item/projectile/beam) && prob(max(1, (50 - round((Proj.damage / 2) * damage_absorption["laser"])) * (1 - (Proj.armor_penetration / 100)))))	// Base 50% chance to deflect a beam,lowered by half the beam's damage scaled to laser absorption, then multiplied by the remaining percent of non-penetrated armor, with a minimum chance of 1%.
+	else if((Proj.damage && !Proj.nodamage) && istype(Proj, /obj/projectile/beam) && prob(max(1, (50 - round((Proj.damage / 2) * damage_absorption["laser"])) * (1 - (Proj.armor_penetration / 100)))))	// Base 50% chance to deflect a beam,lowered by half the beam's damage scaled to laser absorption, then multiplied by the remaining percent of non-penetrated armor, with a minimum chance of 1%.
 		src.occupant_message("<span class='alien'>The armor reflects the incoming beam, negating it!</span>")
 		src.visible_message("<span class='alien'>The [src.name] reflects the incoming beam, negating it!</span>")
 		src.log_append_to_last("Armor reflected.")
@@ -134,7 +131,7 @@
 	..()
 
 /obj/mecha/combat/phazon/janus/dynattackby(obj/item/W as obj, mob/user as mob)
-	if(prob(max(1, (50 - round((W.force / 2) * damage_absorption["brute"])) * (1 - (W.armor_penetration / 100)))))
+	if(prob(max(1, (50 - round((W.damage_force / 2) * damage_absorption["brute"])) * (1 - (W.armor_penetration / 100)))))
 		src.occupant_message("<span class='alien'>The armor absorbs the incoming attack's force, negating it!</span>")
 		src.visible_message("<span class='alien'>The [src.name] absorbs the incoming attack's force, negating it!</span>")
 		src.log_append_to_last("Armor absorbed.")

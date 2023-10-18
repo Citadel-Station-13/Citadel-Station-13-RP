@@ -109,7 +109,7 @@ var/datum/antagonist/ninja/ninjas
 	player.equip_to_slot_or_del(new /obj/item/flashlight(player), SLOT_ID_BELT)
 	create_id("Infiltrator", player)
 
-	var/obj/item/rig/light/ninja/ninjasuit = new(get_turf(player))
+	var/obj/item/hardsuit/light/ninja/ninjasuit = new(get_turf(player))
 	ninjasuit.seal_delay = 0
 	player.put_in_hands(ninjasuit)
 	player.equip_to_slot_or_del(ninjasuit,SLOT_ID_BACK)
@@ -117,10 +117,10 @@ var/datum/antagonist/ninja/ninjas
 		ninjasuit.toggle_seals(src,1)
 		ninjasuit.seal_delay = initial(ninjasuit.seal_delay)
 
-	if(istype(player.back,/obj/item/rig))
-		var/obj/item/rig/rig = player.back
-		if(rig.air_supply)
-			player.internal = rig.air_supply
+	if(istype(player.back,/obj/item/hardsuit))
+		var/obj/item/hardsuit/hardsuit = player.back
+		if(hardsuit.air_supply)
+			player.internal = hardsuit.air_supply
 
 	spawn(10)
 		if(player.internal)
@@ -129,7 +129,7 @@ var/datum/antagonist/ninja/ninjas
 			to_chat(player, "<span class='danger'>You forgot to turn on your internals! Quickly, toggle the valve!</span>")
 
 /datum/antagonist/ninja/proc/generate_ninja_directive(side)
-	var/directive = "[side=="face"?"[GLOB.using_map.company_name]":"A criminal syndicate"] is your employer. "//Let them know which side they're on.
+	var/directive = "[side=="face"?"[(LEGACY_MAP_DATUM).company_name]":"A criminal syndicate"] is your employer. "//Let them know which side they're on.
 	switch(rand(1,19))
 		if(1)
 			directive += "The Spider Clan must not be linked to this operation. Remain hidden and covert when possible."
@@ -140,7 +140,7 @@ var/datum/antagonist/ninja/ninjas
 		if(4)
 			directive += "The Spider Clan absolutely cannot be linked to this operation. Eliminate witnesses at your discretion."
 		if(5)
-			directive += "We are currently negotiating with [GLOB.using_map.company_name] [GLOB.using_map.boss_name]. Prioritize saving human lives over ending them."
+			directive += "We are currently negotiating with [(LEGACY_MAP_DATUM).company_name] [(LEGACY_MAP_DATUM).boss_name]. Prioritize saving human lives over ending them."
 		if(6)
 			directive += "We are engaged in a legal dispute over [station_name()]. If a laywer is present on board, force their cooperation in the matter."
 		if(7)
@@ -148,7 +148,7 @@ var/datum/antagonist/ninja/ninjas
 		if(8)
 			directive += "Let no one question the mercy of the Spider Clan. Ensure the safety of all non-essential personnel you encounter."
 		if(9)
-			directive += "A free agent has proposed a lucrative business deal. Implicate [GLOB.using_map.company_name] involvement in the operation."
+			directive += "A free agent has proposed a lucrative business deal. Implicate [(LEGACY_MAP_DATUM).company_name] involvement in the operation."
 		if(10)
 			directive += "Our reputation is on the line. Harm as few civilians and innocents as possible."
 		if(11)
@@ -156,14 +156,14 @@ var/datum/antagonist/ninja/ninjas
 		if(12)
 			directive += "We are currently negotiating with a mercenary leader. Disguise assassinations as suicide or other natural causes."
 		if(13)
-			directive += "Some disgruntled [GLOB.using_map.company_name] employees have been supportive of our operations. Be wary of any mistreatment by command staff."
+			directive += "Some disgruntled [(LEGACY_MAP_DATUM).company_name] employees have been supportive of our operations. Be wary of any mistreatment by command staff."
 		if(14)
 			var/xenorace = pick(SPECIES_UNATHI, SPECIES_TAJ, SPECIES_SKRELL)
 			directive += "A group of [xenorace] radicals have been loyal supporters of the Spider Clan. Favor [xenorace] crew whenever possible."
 		if(15)
 			directive += "The Spider Clan has recently been accused of religious insensitivity. Attempt to speak with the Chaplain and prove these accusations false."
 		if(16)
-			directive += "The Spider Clan has been bargaining with a competing prosthetics manufacturer. Try to shine [GLOB.using_map.company_name] prosthetics in a bad light."
+			directive += "The Spider Clan has been bargaining with a competing prosthetics manufacturer. Try to shine [(LEGACY_MAP_DATUM).company_name] prosthetics in a bad light."
 		if(17)
 			directive += "The Spider Clan has recently begun recruiting outsiders. Consider suitable candidates and assess their behavior amongst the crew."
 		if(18)

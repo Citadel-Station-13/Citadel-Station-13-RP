@@ -67,7 +67,7 @@
 /datum/reagent/toxin/neurotoxic_protein/affect_blood(mob/living/carbon/M, alien, removed)
 	..()
 	if(alien != IS_DIONA)
-		if(M.canmove && !M.restrained() && istype(M.loc, /turf/space))
+		if(CHECK_MOBILITY(M, MOBILITY_CAN_MOVE) && istype(M.loc, /turf/space))
 			step(M, pick(GLOB.cardinal))
 		if(prob(5))
 			M.emote(pick("twitch", "drool", "moan"))
@@ -95,9 +95,9 @@
 /datum/reagent/toxin/hydrophoron/touch_turf(turf/simulated/T)
 	if(!istype(T))
 		return
-	T.assume_gas(/datum/gas/phoron, CEILING(volume/2, 1), T20C)
+	T.assume_gas(GAS_ID_PHORON, CEILING(volume/2, 1), T20C)
 	for(var/turf/simulated/floor/target_tile in range(0,T))
-		target_tile.assume_gas(/datum/gas/phoron, volume/2, 400+T0C)
+		target_tile.assume_gas(GAS_ID_PHORON, volume/2, 400+T0C)
 		spawn (0) target_tile.hotspot_expose(700, 400)
 	remove_self(volume)
 
@@ -154,7 +154,7 @@
 /datum/reagent/toxin/phoron/touch_turf(turf/simulated/T, amount)
 	if(!istype(T))
 		return
-	T.assume_gas(/datum/gas/volatile_fuel, amount, T20C)
+	T.assume_gas(GAS_ID_VOLATILE_FUEL, amount, T20C)
 	remove_self(amount)
 
 /datum/reagent/toxin/cyanide //Fast and Lethal
@@ -171,7 +171,7 @@
 /datum/reagent/toxin/cyanide/affect_blood(mob/living/carbon/M, alien, removed)
 	..()
 	M.adjustOxyLoss(20 * removed)
-	M.Sleeping(1)
+	M.afflict_sleeping(20 * 1)
 
 /datum/reagent/toxin/mold
 	name = "Mold"
@@ -260,7 +260,7 @@
 			if(H.losebreath >= 10)
 				H.losebreath = max(10, H.losebreath - 10)
 			H.adjustOxyLoss(2)
-			H.Weaken(10)
+			H.afflict_paralyze(20 * 10)
 
 /datum/reagent/toxin/potassium_chlorophoride
 	name = "Potassium Chlorophoride"
@@ -281,7 +281,7 @@
 			if(H.losebreath >= 10)
 				H.losebreath = max(10, M.losebreath-10)
 			H.adjustOxyLoss(2)
-			H.Weaken(10)
+			H.afflict_paralyze(20 * 10)
 	if(alien == IS_SLIME)
 		M.adjustFireLoss(removed * 3)
 
@@ -300,16 +300,16 @@
 	..()
 	if(alien == IS_DIONA)
 		return
-	M.status_flags |= FAKEDEATH
+	M.status_flags |= STATUS_FAKEDEATH
 	M.adjustOxyLoss(3 * removed)
-	M.Weaken(10)
+	M.afflict_paralyze(20 * 10)
 	M.silent = max(M.silent, 10)
 	M.tod = stationtime2text()
 
 /datum/reagent/toxin/zombiepowder/Destroy()
 	if(holder && holder.my_atom && ismob(holder.my_atom))
 		var/mob/M = holder.my_atom
-		M.status_flags &= ~FAKEDEATH
+		M.status_flags &= ~STATUS_FAKEDEATH
 	return ..()
 
 /datum/reagent/toxin/lichpowder
@@ -326,7 +326,7 @@
 	..()
 	if(alien == IS_DIONA)
 		return
-	M.status_flags |= FAKEDEATH
+	M.status_flags |= STATUS_FAKEDEATH
 	M.adjustOxyLoss(1 * removed)
 	M.silent = max(M.silent, 10)
 	M.tod = stationtime2text()
@@ -338,7 +338,7 @@
 /datum/reagent/toxin/lichpowder/Destroy()
 	if(holder && holder.my_atom && ismob(holder.my_atom))
 		var/mob/M = holder.my_atom
-		M.status_flags &= ~FAKEDEATH
+		M.status_flags &= ~STATUS_FAKEDEATH
 	return ..()
 
 /datum/reagent/toxin/fertilizer //Reagents used for plant fertilizers.
@@ -353,8 +353,6 @@
 
 /datum/reagent/toxin/fertilizer/affect_blood(mob/living/carbon/M, alien, removed)
 	if(alien == IS_ALRAUNE) //cit change: fertilizer is full of natural easily digestible plant fats
-		if(prob(5))
-			to_chat(M, "<span class='vox'>You feel a rush of nutrients fill your body.</span>")
 		M.nutrition += removed * 5
 		return
 
@@ -476,6 +474,17 @@
 	power = 2
 	meltdose = 30
 
+//Solid Chlorine is alkaline, but gaseous Chlorine is acidic.
+/datum/reagent/acid/chlorine_gas
+	name = "Chlorine gas"
+	id = "chlorinegas"
+	description = "A pungent yellow-green acidic gas."
+	taste_description = "bleach"
+	reagent_state = REAGENT_GAS
+	color = "#c5f72d"
+	power = 5
+	meltdose = 10
+
 /datum/reagent/thermite/venom
 	name = "Pyrotoxin"
 	id = "thermite_v"
@@ -537,7 +546,7 @@
 		M.adjustToxLoss(3 * removed)
 		if(prob(10))
 			to_chat(M, "<span class='warning'>Your cellular mass hardens for a moment.</span>")
-			M.Stun(6)
+			M.afflict_stun(20 * 6)
 		return
 	if(alien == IS_SKRELL)
 		M.take_organ_damage(2.4 * removed, 0)
@@ -659,7 +668,7 @@
 			M.heal_overall_damage(25 * removed, 25 * removed)
 			M.adjustToxLoss(rand(-30, -10) * removed)
 			M.druggy = max(M.druggy, 10)
-			M.add_chemical_effect(CE_PAINKILLER, 60)
+			M.ceiling_chemical_effect(CE_PAINKILLER, 60)
 	else
 		if(prob(10))
 			to_chat(M, "<span class='danger'>Your insides are burning!</span>")
@@ -731,7 +740,7 @@
 		M.eye_blurry = max(M.eye_blurry, 10)
 	else if(effective_dose < 5 * threshold)
 		if(prob(50))
-			M.Weaken(2)
+			M.afflict_paralyze(20 * 2)
 		M.drowsyness = max(M.drowsyness, 20)
 	else
 		if(alien == IS_SLIME) //They don't have eyes, and they don't really 'sleep'. Fumble their general senses.
@@ -741,9 +750,9 @@
 				M.ear_deaf = max(M.ear_deaf, 4)
 				M.Confuse(2)
 			else
-				M.Weaken(2)
+				M.afflict_paralyze(20 * 2)
 		else
-			M.Sleeping(20)
+			M.afflict_sleeping(20 * 20)
 		M.drowsyness = max(M.drowsyness, 60)
 
 /datum/reagent/chloralhydrate
@@ -777,17 +786,17 @@
 		M.Confuse(2)
 		M.drowsyness += 2
 	else if(effective_dose < 2 * threshold)
-		M.Weaken(30)
+		M.afflict_paralyze(20 * 30)
 		M.eye_blurry = max(M.eye_blurry, 10)
 	else
 		if(alien == IS_SLIME)
 			if(prob(30))
 				M.ear_deaf = max(M.ear_deaf, 4)
 			M.eye_blurry = max(M.eye_blurry, 60)
-			M.Weaken(30)
+			M.afflict_paralyze(20 * 30)
 			M.Confuse(40)
 		else
-			M.Sleeping(30)
+			M.afflict_sleeping(20 * 30)
 
 	if(effective_dose > 1 * threshold)
 		M.adjustToxLoss(removed)
@@ -833,7 +842,7 @@
 		drug_strength = drug_strength * 1.2
 
 	M.druggy = max(M.druggy, drug_strength)
-	if(prob(10) && isturf(M.loc) && !istype(M.loc, /turf/space) && M.canmove && !M.restrained())
+	if(prob(10) && isturf(M.loc) && !istype(M.loc, /turf/space) && CHECK_MOBILITY(M, MOBILITY_CAN_MOVE))
 		step(M, pick(GLOB.cardinal))
 	if(prob(7))
 		M.emote(pick("twitch", "drool", "moan", "giggle"))
@@ -1014,7 +1023,7 @@
 		M.adjustToxLoss(10 * removed) //Given incorporations of other toxins with similiar damage, this seems right.
 
 	M.druggy = max(M.druggy, drug_strength)
-	if(prob(10) && isturf(M.loc) && !istype(M.loc, /turf/space) && M.canmove && !M.restrained())
+	if(prob(10) && isturf(M.loc) && !istype(M.loc, /turf/space) && CHECK_MOBILITY(M, MOBILITY_CAN_MOVE))
 		step(M, pick(GLOB.cardinal))
 	if(prob(7))
 		M.emote(pick("twitch", "drool", "moan", "giggle"))

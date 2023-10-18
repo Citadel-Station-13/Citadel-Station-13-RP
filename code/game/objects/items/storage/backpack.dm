@@ -10,6 +10,8 @@
 	w_class = ITEMSIZE_LARGE
 	slot_flags = SLOT_BACK
 	max_w_class = ITEMSIZE_LARGE
+	weight = ITEM_WEIGHT_STORAGE_BACKPACK
+	encumbrance = ITEM_ENCUMBRANCE_STORAGE_BACKPACK
 	max_storage_space = INVENTORY_STANDARD_SPACE
 	var/flippable = 0
 	var/side = 0 //0 = right, 1 = left
@@ -49,6 +51,8 @@
 /obj/item/storage/backpack/holding/duffle
 	name = "dufflebag of holding"
 	icon_state = "holdingduffle"
+	encumbrance = ITEM_ENCUMBRANCE_STORAGE_DUFFLEBAG
+	weight = ITEM_WEIGHT_STORAGE_DUFFLEBAG
 
 /obj/item/storage/backpack/holding/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/storage/backpack/holding))
@@ -106,6 +110,11 @@
 	desc = "It's a very robust backpack."
 	icon_state = "securitypack"
 
+/obj/item/storage/backpack/blueshield
+	name = "blueshield backpack"
+	desc = "It's a very robust backpack."
+	icon_state = "blueshieldpack"
+
 /obj/item/storage/backpack/captain
 	name = "Facility Director's backpack"
 	desc = "It's a special backpack made exclusively for officers."
@@ -157,19 +166,26 @@
 	name = "dufflebag"
 	desc = "A large dufflebag for holding extra things."
 	icon_state = "duffle"
-	slowdown = 1
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "duffle", SLOT_ID_LEFT_HAND = "duffle")
+	weight = ITEM_WEIGHT_STORAGE_DUFFLEBAG
+	encumbrance = ITEM_ENCUMBRANCE_STORAGE_DUFFLEBAG
+	flat_encumbrance = ITEM_FLAT_ENCUMBRANCE_DUFFLEBAG
+	// todo: remove when weight system is used
+	slowdown = 0.25
 	max_storage_space = INVENTORY_DUFFLEBAG_SPACE
 
 /obj/item/storage/backpack/dufflebag/syndie
 	name = "black dufflebag"
 	desc = "A large dufflebag for holding extra tactical supplies. This one appears to be made out of lighter material than usual."
 	icon_state = "duffle-syndie"
-	slowdown = 0
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "duffle_syndie", SLOT_ID_LEFT_HAND = "duffle_syndie")
+	weight = ITEM_WEIGHT_BASELINE
 
 /obj/item/storage/backpack/dufflebag/syndie/med
 	name = "medical dufflebag"
 	desc = "A large dufflebag for holding extra tactical medical supplies. This one appears to be made out of lighter material than usual."
 	icon_state = "duffle-syndiemed"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "duffle_syndiemed", SLOT_ID_LEFT_HAND = "duffle_syndiemed")
 
 /obj/item/storage/backpack/dufflebag/syndie/ammo
 	name = "ammunition dufflebag"
@@ -180,6 +196,7 @@
 	name = "Facility Director's dufflebag"
 	desc = "A large dufflebag for holding extra captainly goods."
 	icon_state = "duffle-captain"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "duffle_captain", SLOT_ID_LEFT_HAND = "duffle_captain")
 
 /obj/item/storage/backpack/dufflebag/captain/talon
 	name = "talon captain's dufflebag"
@@ -189,35 +206,48 @@
 	name = "medical dufflebag"
 	desc = "A large dufflebag for holding extra medical supplies."
 	icon_state = "duffle-med"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "duffle_med", SLOT_ID_LEFT_HAND = "duffle_med")
 
 /obj/item/storage/backpack/dufflebag/chemistry
 	name = "chemistry duffle bag"
 	desc = "A large duffle bag for holding extra chemical substances."
 	icon_state = "duffle-chemistry"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "duffle_med", SLOT_ID_LEFT_HAND = "duffle_med")
 
 /obj/item/storage/backpack/dufflebag/genetics
 	name = "geneticist's duffel bag"
 	desc = "A large duffel bag for holding extra genetic mutations."
 	icon_state = "duffle-genetics"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "duffle_med", SLOT_ID_LEFT_HAND = "duffle_med")
 /obj/item/storage/backpack/dufflebag/emt
 	name = "EMT dufflebag"
 	desc = "A large dufflebag for holding extra medical supplies. This one has reflective stripes!"
 	icon_state = "duffle-emt"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "duffle_emt", SLOT_ID_LEFT_HAND = "duffle_emt")
 
 /obj/item/storage/backpack/dufflebag/virology
 	name = "virologist's duffle bag"
 	desc = "A large duffle bag for holding extra viral bottles."
 	icon_state = "duffle-virology"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "duffle_med", SLOT_ID_LEFT_HAND = "duffle_med")
 
 /obj/item/storage/backpack/dufflebag/sec
 	name = "security dufflebag"
 	desc = "A large dufflebag for holding extra security supplies and ammunition."
 	icon_state = "duffle-sec"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "duffle_sec", SLOT_ID_LEFT_HAND = "duffle_sec")
+
+/obj/item/storage/backpack/dufflebag/blueshield
+	name = "blueshield dufflebag"
+	desc = "A large dufflebag for holding extra supplies and ammunition."
+	icon_state = "duffle-blueshield"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "duffle_blueshield", SLOT_ID_LEFT_HAND = "duffle_blueshield")
 
 /obj/item/storage/backpack/dufflebag/eng
 	name = "industrial dufflebag"
 	desc = "A large dufflebag for holding extra tools and supplies."
 	icon_state = "duffle-eng"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "duffle_eng", SLOT_ID_LEFT_HAND = "duffle_eng")
 
 /obj/item/storage/backpack/dufflebag/sci
 	name = "science dufflebag"
@@ -297,6 +327,12 @@
 	icon_state = "satchel-sec"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "securitypack", SLOT_ID_LEFT_HAND = "securitypack")
 
+/obj/item/storage/backpack/satchel/blueshield
+	name = "blueshield satchel"
+	desc = "A robust satchel for a blueshield's needs."
+	icon_state = "satchel-blueshield"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "blueshieldpack", SLOT_ID_LEFT_HAND = "blueshieldpack")
+
 /obj/item/storage/backpack/satchel/hyd
 	name = "hydroponics satchel"
 	desc = "A green satchel for plant related work."
@@ -322,6 +358,10 @@
 	desc = "A grotesque satchel made of sinew and bone."
 	icon_state = "satchel-bone"
 
+/obj/item/storage/backpack/satchel/invisible
+	name = "integrated satchel"
+	desc = "A minimalist satchel designed to fit inside of clothing, directly against the skin."
+	item_state = "none"
 
 //ERT backpacks.
 /obj/item/storage/backpack/ert
@@ -413,6 +453,12 @@
 	icon_state = "courierbagsec"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "securitypack", SLOT_ID_LEFT_HAND = "securitypack")
 
+/obj/item/storage/backpack/messenger/blueshield
+	name = "blueshield messenger bag"
+	desc = "A tactical backpack worn over one shoulder. This one is in Blueshield colors."
+	icon_state = "courierbagblueshield"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "blueshieldpack", SLOT_ID_LEFT_HAND = "blueshieldpack")
+
 /obj/item/storage/backpack/messenger/black
 	icon_state = "courierbagblk"
 
@@ -424,15 +470,15 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "backpack", SLOT_ID_LEFT_HAND = "backpack")
 
 /*
-/obj/item/storage/backpack/rig/Initialize(mapload)
+/obj/item/storage/backpack/hardsuit/Initialize(mapload)
 	. = ..()
 	START_PROCESSING(SSobj, src)
 
-/obj/item/storage/backpack/rig/process(mob/living/M)
+/obj/item/storage/backpack/hardsuit/process(mob/living/M)
 	if(M.health <= M.maxHealth)
 		update_icon()
 
-/obj/item/storage/backpack/rig/update_icon(mob/living/M)
+/obj/item/storage/backpack/hardsuit/update_icon(mob/living/M)
 	if(M.stat > 1) // Dead
 		icon_state = "[initial(icon_state)]_0"
 		item_state = "[initial(icon_state)]_0"
@@ -473,7 +519,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "backpack", SLOT_ID_LEFT_HAND = "backpack")
 	max_storage_space = ITEMSIZE_COST_NORMAL * 5
 
-/obj/item/storage/backpack/parachute/examine(mob/user)
+/obj/item/storage/backpack/parachute/examine(mob/user, dist)
 	. = ..()
 	if(get_dist(src, user) <= 1)
 		if(parachute)
@@ -542,42 +588,7 @@
 	desc = "A special trophy rack bearing the device of an all-seeing eye; the symbol of the PMD."
 	icon_state = "para_ert_pack"
 
-/obj/item/storage/backpack/saddlebag
-	name = "Horse Saddlebags"
-	desc = "A saddle that holds items. Seems slightly bulky."
-	icon = 'icons/obj/clothing/backpack.dmi'
-	icon_override = 'icons/mob/clothing/back.dmi'
-	item_state = "saddlebag"
-	icon_state = "saddlebag"
-	max_storage_space = INVENTORY_DUFFLEBAG_SPACE //Saddlebags can hold more, like dufflebags
-	slowdown = 1 //And are slower, too...Unless you're a macro, that is.
-	var/taurtype = /datum/sprite_accessory/tail/taur/horse //Acceptable taur type to be wearing this
-	var/no_message = "You aren't the appropriate taur type to wear this!"
-
-/obj/item/storage/backpack/saddlebag/can_equip(mob/M, slot, mob/user, flags)
-	. = ..()
-	if(!.)
-		return FALSE
-	var/mob/living/carbon/human/H
-	if(istype(H) && istype(H.tail_style, taurtype))
-		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
-			slowdown = 0
-		else
-			slowdown = initial(slowdown)
-		return 1
-	else
-		to_chat(H, "<span class='warning'>[no_message]</span>")
-		return 0
-
-/* If anyone wants to make some... this is how you would.
-/obj/item/storage/backpack/saddlebag/spider
-	name = "Drider Saddlebags"
-	item_state = "saddlebag_drider"
-	icon_state = "saddlebag_drider"
-	var/taurtype = /datum/sprite_accessory/tail/taur/spider
-*/
-
-/obj/item/storage/backpack/saddlebag_common //Shared bag for other taurs with sturdy backs
+/obj/item/storage/backpack/saddlebag_common //Shared bag for taurs
 	name = "Taur Saddlebags"
 	desc = "A saddle that holds items. Seems slightly bulky."
 	icon = 'icons/obj/clothing/backpack.dmi'
@@ -585,71 +596,39 @@
 	item_state = "saddlebag"
 	icon_state = "saddlebag"
 	var/icon_base = "saddlebag"
+	encumbrance = ITEM_ENCUMBRANCE_STORAGE_DUFFLEBAG
 	max_storage_space = INVENTORY_DUFFLEBAG_SPACE //Saddlebags can hold more, like dufflebags
-	slowdown = 1 //And are slower, too...Unless you're a macro, that is.
 	var/no_message = "You aren't the appropriate taur type to wear this!"
 
 /obj/item/storage/backpack/saddlebag_common/can_equip(mob/M, slot, mob/user, flags)
 	. = ..()
 	if(!.)
 		return FALSE
-	var/mob/living/carbon/human/H
+	var/mob/living/carbon/human/H = M
 	var/datum/sprite_accessory/tail/taur/TT = H.tail_style
 	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/horse))
-		item_state = "[icon_base]_Horse"
-		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
-			slowdown = 0
-		else
-			slowdown = initial(slowdown)
+		item_state = "[icon_base]_horse"
 		return 1
 	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/wolf))
-		item_state = "[icon_base]_Wolf"
-		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
-			slowdown = 0
-		else
-			slowdown = initial(slowdown)
+		item_state = "[icon_base]_wolf"
 		return 1
 	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/cow))
-		item_state = "[icon_base]_Cow"
-		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
-			slowdown = 0
-		else
-			slowdown = initial(slowdown)
+		item_state = "[icon_base]_cow"
 		return 1
 	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/lizard))
-		item_state = "[icon_base]_Lizard"
-		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
-			slowdown = 0
-		else
-			slowdown = initial(slowdown)
+		item_state = "[icon_base]_lizard"
 		return 1
 	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/feline))
-		item_state = "[icon_base]_Feline"
-		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
-			slowdown = 0
-		else
-			slowdown = initial(slowdown)
+		item_state = "[icon_base]_feline"
 		return 1
 	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/drake))
-		item_state = "[icon_base]_Drake"
-		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
-			slowdown = 0
-		else
-			slowdown = initial(slowdown)
+		item_state = "[icon_base]_drake"
 		return 1
 	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/otie))
-		item_state = "[icon_base]_Otie"
-		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
-			slowdown = 0
-		else
-			slowdown = initial(slowdown)
+		item_state = "[icon_base]_otie"
 		return 1
 	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/deer))
-		item_state = "[icon_base]_Deer"
-		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
-			slowdown = 0
-		else
-			slowdown = initial(slowdown)
+		item_state = "[icon_base]_deer"
 		return 1
 	else
 		to_chat(H, "<span class='warning'>[no_message]</span>")
@@ -673,7 +652,7 @@
 	icon_state = "taurvest"
 	icon_base = "taurvest"
 	max_storage_space = INVENTORY_STANDARD_SPACE
-	slowdown = 0
+	encumbrance = ITEM_ENCUMBRANCE_STORAGE_BACKPACK
 
 /obj/item/storage/backpack/dufflebag/fluff //Black dufflebag without syndie buffs.
 	name = "plain black dufflebag"

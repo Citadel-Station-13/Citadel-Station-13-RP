@@ -2,7 +2,7 @@ GLOBAL_DATUM_INIT(ghostrole_menu, /datum/ghostrole_menu, new)
 
 /datum/ghostrole_menu
 
-/datum/ghostrole_menu/ui_state(mob/user)
+/datum/ghostrole_menu/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.observer_state
 
 /datum/ghostrole_menu/ui_interact(mob/user, datum/tgui/ui)
@@ -63,4 +63,4 @@ GLOBAL_DATUM_INIT(ghostrole_menu, /datum/ghostrole_menu, new)
  * Call this whenever ghostrole data changes, we don't keep resending to save performance.
  */
 /datum/ghostrole_menu/proc/queue_update()
-	addtimer(CALLBACK(src, /datum/proc/update_static_data), 0, TIMER_UNIQUE | TIMER_OVERRIDE)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/datum, update_static_data)), 0, TIMER_UNIQUE | TIMER_OVERRIDE)

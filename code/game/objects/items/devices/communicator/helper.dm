@@ -6,10 +6,10 @@
 		var/pressure = environment.return_pressure()
 		var/total_moles = environment.total_moles
 		if (total_moles)
-			var/o2_level = environment.gas[/datum/gas/oxygen]/total_moles
-			var/n2_level = environment.gas[/datum/gas/nitrogen]/total_moles
-			var/co2_level = environment.gas[/datum/gas/carbon_dioxide]/total_moles
-			var/phoron_level = environment.gas[/datum/gas/phoron]/total_moles
+			var/o2_level = environment.gas[GAS_ID_OXYGEN]/total_moles
+			var/n2_level = environment.gas[GAS_ID_NITROGEN]/total_moles
+			var/co2_level = environment.gas[GAS_ID_CARBON_DIOXIDE]/total_moles
+			var/phoron_level = environment.gas[GAS_ID_PHORON]/total_moles
 			var/unknown_level =  1-(o2_level+n2_level+co2_level+phoron_level)
 
 			// Label is what the entry is describing

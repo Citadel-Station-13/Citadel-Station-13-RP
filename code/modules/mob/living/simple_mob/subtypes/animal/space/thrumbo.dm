@@ -86,8 +86,8 @@
 		if(istype(AM, /mob/living))
 			var/mob/living/M = AM
 			visible_message("<span class='warning'>[src] rams [AM]!</span>")
-			M.Stun(5)
-			M.Weaken(3)
+			M.afflict_stun(20 * 5)
+			M.afflict_paralyze(20 * 3)
 			var/throwdir = pick(turn(dir, 45), turn(dir, -45))
 			M.throw_at_old(get_step(src.loc, throwdir), 1, 1, src)
 			runOver(M) // Actually should not use this, placeholder
@@ -142,11 +142,11 @@
 	var/beforehealth = icon_living
 	var/healthpercent = health/maxHealth
 	switch(healthpercent)
-		if(0.25 to 0)
+		if(0 to 0.25)
 			icon_living = "thrumbo-25"
-		if(0.50 to 0.26)
+		if(0.26 to 0.50)
 			icon_living = "thrumbo-50"
-		if(0.75 to 0.51)
+		if(0.51 to 0.75)
 			icon_living = "thrumbo-75"
 		if(0.76 to INFINITY)
 			icon_living = "thrumbo-100"

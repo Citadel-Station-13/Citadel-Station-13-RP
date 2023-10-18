@@ -1,3 +1,7 @@
+/datum/physiology_modifier/intrinsic/species/teshari
+	carry_strength_add = CARRY_STRENGTH_ADD_TESHARI
+	carry_strength_factor = CARRY_FACTOR_MOD_TESHARI
+
 /datum/species/teshari
 	uid = SPECIES_ID_TESHARI
 	id = SPECIES_ID_TESHARI
@@ -6,6 +10,7 @@
 	category = "Teshari"
 	name_plural = "Tesharii"
 	uid = SPECIES_ID_TESHARI
+	mob_physiology_modifier = /datum/physiology_modifier/intrinsic/species/teshari
 
 	blurb = {"
 	A race of feathered raptors who developed alongside the Skrell, inhabiting
@@ -54,15 +59,15 @@
 	move_trail = /obj/effect/debris/cleanable/blood/tracks/paw
 
 	slowdown          = -0.5
-	snow_movement     = -1 // Ignores light snow
-	item_slowdown_mod = 1.25 // Tiny birds don't like heavy things
+	snow_movement     = -1
+	item_slowdown_mod = 0.5
 
 	total_health = 75
 	brute_mod    = 1.1
 	burn_mod     = 1.1
 
 	mob_size     = MOB_SMALL
-	pass_flags   = ATOM_PASS_TABLE
+//	pass_flags   = ATOM_PASS_TABLE
 	holder_type  = /obj/item/holder/human
 //	short_sighted = 1
 	gluttonous    = 1
@@ -144,13 +149,18 @@
 	)
 
 	inherent_verbs = list(
-		/mob/living/carbon/human/proc/sonar_ping,
 		/mob/living/carbon/human/proc/tie_hair,
+		/mob/living/carbon/human/proc/hide_horns,
+		/mob/living/carbon/human/proc/hide_wings,
+		/mob/living/carbon/human/proc/hide_tail,
 		/mob/living/proc/hide,
 		/mob/living/proc/shred_limb,
-		/mob/living/proc/toggle_pass_table,
 	)
 
+	abilities = list(
+		/datum/ability/species/toggle_agility,
+		/datum/ability/species/sonar,
+	)
 	descriptors = list(
 		/datum/mob_descriptor/height = -3,
 		/datum/mob_descriptor/build = -3,
@@ -166,6 +176,7 @@
 		/obj/item/clothing/suit/space,
 		/obj/item/clothing/suit/straight_jacket,
 	)
+
 
 /datum/species/teshari/equip_survival_gear(mob/living/carbon/human/H)
 	..()
@@ -217,6 +228,6 @@
 	if(!silent)
 		to_chat(H, SPAN_NOTICE("You catch the air in your wings and greatly slow your fall."))
 		H.visible_message(SPAN_NOTICE("\The [H] glides down from above, landing safely."))
-		H.Stun(2)
+		H.afflict_stun(20 * 2)
 		playsound(H, "rustle", 25, 1)
 	return TRUE

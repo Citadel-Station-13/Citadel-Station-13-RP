@@ -24,11 +24,11 @@
 	if(!..())
 		return 0
 	var/mob/M = target
-	if(HAS_TRAIT_FROM(M,TRAIT_SIXTHSENSE,GHOSTROLE_TRAIT))
-		REMOVE_TRAIT(M,TRAIT_SIXTHSENSE,GHOSTROLE_TRAIT)
+	if(HAS_TRAIT_FROM(M,TRAIT_SIXTHSENSE,ROLE_TRAIT))
+		REMOVE_TRAIT(M,TRAIT_SIXTHSENSE,ROLE_TRAIT)
 		to_chat(M,"<span class='notice'>You're no longer hearing deadchat.</span>")
 	else
-		ADD_TRAIT(M,TRAIT_SIXTHSENSE,GHOSTROLE_TRAIT)
+		ADD_TRAIT(M,TRAIT_SIXTHSENSE,ROLE_TRAIT)
 		to_chat(M,"<span class='notice'>You're once again longer hearing deadchat.</span>")
 
 /datum/action/disguise

@@ -105,7 +105,31 @@
 	// todo: don't block rad contents and just have component parts be unable to be contaminated while inside
 	// todo: wow rad contents is a weird system
 	rad_flags = RAD_BLOCK_CONTENTS
+	// todo: anchored / unanchored should be replaced by movement force someday, how to handle that?
 
+	//* Construction / Deconstruction
+	/// allow default part replacement. null for disallowed, number for time.
+	var/default_part_replacement = 0
+	/// Can be constructed / deconstructed by players by default. null for off, number for time needed. Panel must be open.
+	//  todo: proc for allow / disallow, refactor
+	var/default_deconstruct
+	/// Can have panel open / closed by players by default. null for off, number for time needed. You usually want 0 for instant.
+	var/default_panel
+	/// Can be anchored / unanchored by players without deconstructing by default with a wrench. null for off, number for time needed.
+	//  todo: proc for allow / disallow, refactor, unify with can_be_unanchored
+	var/default_unanchor
+	/// tool used for deconstruction
+	var/tool_deconstruct = TOOL_CROWBAR
+	/// tool used for panel open
+	var/tool_panel = TOOL_SCREWDRIVER
+	/// tool used for unanchor
+	var/tool_unanchor = TOOL_WRENCH
+	/// default icon state overlay for panel open
+	var/panel_icon_state
+	/// is the maintenance panel open?
+	var/panel_open = FALSE
+
+	//* unsorted
 	var/machine_stat = 0
 	var/emagged = FALSE
 	/**
@@ -124,14 +148,11 @@
 	///List of all the parts used to build it, if made from certain kinds of frames.
 	var/list/component_parts = null
 	var/uid
-	var/panel_open = FALSE
 	var/global/gl_uid = 1
 	///Sound played on succesful interface. Just put it in the list of vars at the start.
 	var/clicksound
 	///Volume of interface sounds.
 	var/clickvol = 40
-	///Can the machine be interacted with while de-powered.
-	var/interact_offline = FALSE
 	var/obj/item/circuitboard/circuit = null
 	///If false, SSmachines. If true, SSfastprocess.
 	var/speed_process = FALSE
@@ -147,6 +168,7 @@
 
 	if(ispath(circuit))
 		circuit = new circuit(src)
+		default_apply_parts()
 
 	if(!speed_process)
 		START_MACHINE_PROCESSING(src)
@@ -179,8 +201,13 @@
 				qdel(A)
 	return ..()
 
-/obj/machinery/process()//If you dont use process or power why are you here
+/obj/machinery/process(delta_time)//If you dont use process or power why are you here
 	return PROCESS_KILL
+
+/obj/machinery/update_overlays()
+	. = ..()
+	if(panel_open && panel_icon_state)
+		. += panel_icon_state
 
 /obj/machinery/emp_act(severity)
 	if(use_power && machine_stat == NONE)
@@ -196,6 +223,15 @@
 		spawn(10)
 			qdel(pulse2)
 	..()
+
+/obj/machinery/update_overlays()
+	. = ..()
+	if(panel_open && panel_icon_state)
+		. += panel_icon_state
+
+/obj/machinery/proc/set_panel_open(panel_opened)
+	panel_open = panel_opened
+	update_appearance()
 
 /obj/machinery/legacy_ex_act(severity)
 	switch(severity)
@@ -228,6 +264,10 @@
 		return TRUE
 	return ..()
 
+// todo: refactor tihs
+// todo: rendered_inoperable()
+// todo: rendered_operable()
+
 /obj/machinery/proc/operable(additional_flags = NONE)
 	return !inoperable(additional_flags)
 
@@ -235,7 +275,7 @@
 	return (machine_stat & (NOPOWER | BROKEN | additional_flags))
 
 /obj/machinery/CanUseTopic(mob/user)
-	if(!interact_offline && (machine_stat & (NOPOWER | BROKEN)))
+	if(!(interaction_flags_machine & INTERACT_MACHINE_OFFLINE) && (machine_stat & (NOPOWER | BROKEN)))
 		return UI_CLOSE
 	return ..()
 
@@ -249,6 +289,9 @@
 ////////////////////////////////////////////////////////////////////////////////////////////
 
 /obj/machinery/attack_ai(mob/user)
+	if(IsAdminGhost(user))
+		interact(user)
+		return
 	if(isrobot(user))
 		// For some reason attack_robot doesn't work
 		// This is to stop robots from using cameras to remotely control machines.
@@ -257,13 +300,10 @@
 	else
 		return attack_hand(user)
 
-/obj/machinery/attack_hand(mob/user)
+// todo: refactor
+/obj/machinery/attack_hand(mob/user, list/params)
 	if(IsAdminGhost(user))
 		return FALSE
-	if(inoperable(MAINT))
-		return TRUE
-	if(user.lying || user.stat)
-		return TRUE
 	if(!(istype(user, /mob/living/carbon/human) || istype(user, /mob/living/silicon)))
 		to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
 		return TRUE
@@ -281,14 +321,25 @@
 
 	return ..()
 
+/obj/machinery/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+	if(istype(I, /obj/item/storage/part_replacer))
+		if(isnull(default_part_replacement))
+			user.action_feedback(SPAN_WARNING("[src] doesn't support part replacement."), src)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		default_part_replacement(user, I)
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+	return ..()
+
 /obj/machinery/can_interact(mob/user)
-	if((machine_stat & (NOPOWER|BROKEN)) && !(interaction_flags_machine & INTERACT_MACHINE_OFFLINE)) // Check if the machine is broken, and if we can still interact with it if so
+	if((machine_stat & (NOPOWER|BROKEN|MAINT)) && !(interaction_flags_machine & INTERACT_MACHINE_OFFLINE)) // Check if the machine is broken, and if we can still interact with it if so
 		return FALSE
 	var/silicon = issilicon(user)
 	if(panel_open && !(interaction_flags_machine & INTERACT_MACHINE_OPEN)) // Check if we can interact with an open panel machine, if the panel is open
 		if(!silicon || !(interaction_flags_machine & INTERACT_MACHINE_OPEN_SILICON))
 			return FALSE
-	if(silicon /*|| isAdminGhostAI(user)*/) // If we are an AI or adminghsot, make sure the machine allows silicons to interact
+	// check silicon, but cyborgs can interact if within reach.
+	// todo: refactor interaction flags, fuck.
+	if(silicon && (!isrobot(user) || !user.Reachability(src))) // If we are an AI or adminghsot, make sure the machine allows silicons to interact
 		if(!(interaction_flags_machine & INTERACT_MACHINE_ALLOW_SILICON))
 			return FALSE
 	else if(isliving(user)) // If we are a living human
@@ -345,7 +396,7 @@
 
 			if(temp_apc && temp_apc.terminal && temp_apc.terminal.powernet)
 				temp_apc.terminal.powernet.trigger_warning()
-		if(user.stunned)
+		if(!CHECK_MOBILITY(user, MOBILITY_CAN_USE))
 			return 1
 	return 0
 
@@ -356,6 +407,7 @@
 	CB.apply_default_parts(src)
 	RefreshParts()
 
+// todo: this is fucked, refactor
 /obj/machinery/proc/default_part_replacement(var/mob/user, var/obj/item/storage/part_replacer/R)
 	if(!istype(R))
 		return 0
@@ -367,14 +419,20 @@
 	if(panel_open || !R.panel_req)
 		var/obj/item/circuitboard/CB = circuit
 		var/P
-		for(var/obj/item/stock_parts/A in component_parts)
+		for(var/obj/item/A in component_parts)
+			var/our_rating = A.rped_rating()
+			if(isnull(our_rating))
+				continue
 			for(var/T in CB.req_components)
 				if(ispath(A.type, T))
 					P = T
 					break
-			for(var/obj/item/stock_parts/B in R.contents)
+			for(var/obj/item/B in R.contents)
+				var/their_rating = B.rped_rating()
+				if(isnull(their_rating))
+					continue
 				if(istype(B, P) && istype(A, P))
-					if(B.rating > A.rating)
+					if(their_rating > our_rating)
 						R.remove_from_storage(B, src)
 						R.handle_item_insertion(A, null, TRUE)
 						component_parts -= A
@@ -382,9 +440,15 @@
 						B.loc = null
 						to_chat(user, "<span class='notice'>[A.name] replaced with [B.name].</span>")
 						break
-			update_appearance()
-			RefreshParts()
+		update_appearance()
+		RefreshParts()
 	return 1
+
+// todo: refactor
+/obj/machinery/set_anchored(anchorvalue)
+	. = ..()
+	power_change()
+	update_appearance()
 
 // Default behavior for wrenching down machines.  Supports both delay and instant modes.
 /obj/machinery/proc/default_unfasten_wrench(var/mob/user, var/obj/item/W, var/time = 0)
@@ -408,8 +472,6 @@
 	return TRUE
 
 /obj/machinery/proc/default_deconstruction_crowbar(var/mob/user, var/obj/item/C)
-
-
 	if(!C.is_crowbar())
 		return 0
 	if(!panel_open)
@@ -461,9 +523,11 @@
 
 /obj/machinery/proc/dismantle()
 	playsound(src.loc, 'sound/items/Crowbar.ogg', 50, 1)
+	drop_products(ATOM_DECONSTRUCT_DISASSEMBLED)
 	on_deconstruction()
-	// If it doesn't have a circuit board, don't create a frame. Return a smack instead. BONK!
+	// If it doesn't have a circuit board, don't create a frame, instead just break.
 	if(!circuit)
+		qdel(src)
 		return 0
 	var/obj/structure/frame/A = new /obj/structure/frame(src.loc)
 	var/obj/item/circuitboard/M = circuit

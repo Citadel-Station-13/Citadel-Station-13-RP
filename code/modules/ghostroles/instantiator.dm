@@ -24,6 +24,23 @@
 /datum/ghostrole_instantiator/proc/AfterSpawn(mob/created, mob/living/carbon/human/H, list/params)
 	SHOULD_CALL_PARENT(TRUE)
 
+/**
+ * For mobs already present in the world that players can take control of.
+ */
+/datum/ghostrole_instantiator/existing
+	var/existing_mob
+
+/datum/ghostrole_instantiator/existing/Create(client/C, atom/location, list/params)
+	var/mob/M = GetMob(C, location, params)
+	if(!istype(M, /mob/living))
+		CRASH("Invalid atom or does not exist: [M]")
+	for(var/trait in mob_traits)
+		ADD_TRAIT(M, trait, GHOSTROLE_TRAIT)
+	return M
+
+/datum/ghostrole_instantiator/existing/proc/GetMob(client/C, atom/location, list/params)
+	return params["mob"] || existing_mob
+
 /datum/ghostrole_instantiator/simple
 	var/mob_type
 
@@ -95,7 +112,7 @@
 /datum/ghostrole_instantiator/human/random/AfterSpawn(mob/created, list/params)
 	. = ..()
 	if(can_change_appearance) //I think it's either this or the line above.
-		INVOKE_ASYNC(src, /datum/ghostrole_instantiator/human/random/proc/PickAppearance, created, params)
+		INVOKE_ASYNC(src, TYPE_PROC_REF(/datum/ghostrole_instantiator/human/random, PickAppearance), created, params)
 
 /datum/ghostrole_instantiator/human/random/proc/PickAppearance(mob/living/carbon/human/H)
 	var/new_name = input(H, "Your mind feels foggy, and you recall your name might be [H.real_name]. Would you like to change your name?")
@@ -155,13 +172,21 @@
 	var/equip_loadout = TRUE
 	/// equip traits
 	var/equip_traits = TRUE
+	/// Allows the selection of specific species for ghost roles.
+	var/species_required = null
+	/// Allows the blacklisting of specific species from ghost roles.
+	//var/species_restricted = null
 
 /datum/ghostrole_instantiator/human/player_static/Create(client/C, atom/location, list/params)
 	var/mob/living/carbon/human/H = ..()
 	var/list/errors = list()
 	// todo: respect warnings; we ignore them right now so we don't block joins.
-	if(!C.prefs.spawn_checks(PREF_COPY_TO_FOR_GHOSTROLE, errors))
-		to_chat(C, SPAN_WARNING("An error has occured while attempting to spawn you in:<br>[errors.Join("<br>")]"))
+	if(!C.prefs.spawn_checks(PREF_COPY_TO_FOR_GHOSTROLE | PREF_COPY_TO_NO_CHECK_SPECIES, errors))
+		to_chat(C, SPAN_WARNING("<h3><center>--- Character Setup Errors - Please resolve these to continue ---</center></h3><br><b>-&nbsp;&nbsp;&nbsp;&nbsp;[jointext(errors, "<br>-&nbsp;&nbsp;&nbsp;&nbsp;")]</b>"))
+		return
+
+	if(!isnull(species_required) && species_required != C.prefs.real_species_datum().type)
+		to_chat(C, SPAN_WARNING("<h3><center>--- Character Species Is Not Allowed In This Role - Please resolve these to continue ---</center></h3><br><b>-&nbsp;&nbsp;&nbsp;&nbsp;[jointext(errors, "<br>-&nbsp;&nbsp;&nbsp;&nbsp;")]</b>"))
 		return
 
 	LoadSavefile(C, H)
@@ -169,8 +194,3 @@
 
 /datum/ghostrole_instantiator/human/player_static/proc/LoadSavefile(client/C, mob/living/carbon/human/H)
 	C.prefs.copy_to(H)
-	SSjob.EquipRank(H, USELESS_JOB)
-	// if(equip_loadout)
-	// 	SSjob.EquipLoadout(H, FALSE, null, C.prefs, C.ckey)
-	// if(equip_traits && CONFIG_GET(flag/roundstart_traits))
-	// 	SSquirks.AssignQuirks(H, C, TRUE, FALSE, null, FALSE, C)

@@ -4,7 +4,7 @@
 	desc = "You are a pirate! A legendary, if oft maligned, profession."
 	spawntext = "There are countless roving gangs of pirates across the Frontier. A constant menace to honest traders and Corporate convoys alike, pirates are part of a never ending conflict with local SDF and private security forces from system to system."
 	important_info = "You are a member of a pirate crew. You pillage, kidnap, and steal for profit and pleasure. Although you recently moved into this system, it is owned by NanoTrasen. A Corporate presence provides plenty of opportunities for plunder, but beware! Certain areas are considered off limits, even to pirates. Only a fool would anger Nebula Gas by raiding their station, although NebGas vessels in transit are fair game. Attempting to visit NanoTrasen's primary facility is equally dangerous and ill-advised. Focusing on isolated vessels in flight or expeditions on planets may be the most reliable way to score precious booty. Proteans and Xenochimerae are currently excluded from being Pirates, if you own either Whitelist."
-	instantiator = /datum/ghostrole_instantiator/human/random/species/pirate
+	instantiator = /datum/ghostrole_instantiator/human/player_static/pirate
 
 /datum/role/ghostrole/pirate/Instantiate(client/C, atom/loc, list/params)
 	var/rp = rand(1, 3)
@@ -42,12 +42,12 @@
 			because you were born to be here, whether this is the band you started out with or not doesn't matter. All that matters to you is the job.</i>"
 	to_chat(created, flavour_text)
 
-/datum/ghostrole_instantiator/human/random/species/pirate
-	possible_species = list(
-		/datum/species/human
-	)
+/datum/ghostrole_instantiator/human/player_static/pirate
+	//species_restricted = /datum/species/protean
+	equip_loadout = FALSE
+	equip_traits = FALSE
 
-/datum/ghostrole_instantiator/human/random/species/pirate/GetOutfit(client/C, mob/M, list/params)
+/datum/ghostrole_instantiator/human/player_static/pirate/GetOutfit(client/C, mob/M, list/params)
 	var/datum/outfit/outfit = ..()
 	//var/mob/M = /mob/living/carbon/human/H
 	M.faction = "pirate"

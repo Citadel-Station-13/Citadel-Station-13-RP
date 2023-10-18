@@ -49,10 +49,10 @@
 		add_overlay(overlay)
 		set_light(2, 0.1, on ? "#82FF4C" : "#F86060")
 
-/obj/machinery/light_switch/examine(mob/user)
+/obj/machinery/light_switch/examine(mob/user, dist)
 	. += SPAN_NOTICE("A light switch. It is [on? "on" : "off"].")
 
-/obj/machinery/light_switch/attack_hand(mob/user)
+/obj/machinery/light_switch/attack_hand(mob/user, list/params)
 
 	on = !on
 

@@ -8,6 +8,7 @@
 	opacity = FALSE
 	density = TRUE
 	unacidable = TRUE
+	zmm_flags = ZMM_IGNORE
 
 /obj/effect/blocker/Initialize(mapload) // For non-gateway maps.
 	. = ..()

@@ -9,22 +9,27 @@
 	supervisors = "the Head of Personnel"
 	selection_color = "#515151"
 	idtype = /obj/item/card/id/civilian/chaplain
-	access = list(access_morgue, access_chapel_office, access_crematorium, access_maint_tunnels)
-	minimal_access = list(access_chapel_office, access_crematorium)
+	additional_access = list(
+		ACCESS_MEDICAL_MORGUE,
+	)
+	minimal_access = list(
+		ACCESS_GENERAL_CHAPEL,
+		ACCESS_GENERAL_CREMATOR,
+	)
 
 	outfit_type = /datum/outfit/job/station/chaplain
 	desc = "The Chaplain ministers to the spiritual needs of the crew."
 	alt_titles = list(
-		"Counselor" = /datum/prototype/alt_title/counselor,
-		"Religious Affairs Advisor" = /datum/prototype/alt_title/chaplain/advisor
+		"Counselor" = /datum/prototype/struct/alt_title/counselor,
+		"Religious Affairs Advisor" = /datum/prototype/struct/alt_title/chaplain/advisor
 		)
 
 // Chaplain Alt Titles
-/datum/prototype/alt_title/counselor
+/datum/prototype/struct/alt_title/counselor
 	title = "Counselor"
 	title_blurb = "The Counselor attends to the emotional needs of the crew, without a specific medicinal or spiritual focus."
 
-/datum/prototype/alt_title/chaplain/advisor
+/datum/prototype/struct/alt_title/chaplain/advisor
 	title = "Religious Affairs Advisor"
 
 /datum/role/job/station/chaplain/equip(mob/living/carbon/human/H, src)

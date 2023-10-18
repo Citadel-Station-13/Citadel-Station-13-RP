@@ -38,7 +38,7 @@
 /// From obj/machinery/bsa/full/proc/fire(): ()
 ////#define COMSIG_ATOM_BSA_BEAM "atom_bsa_beam_pass"
 	////#define COMSIG_ATOM_BLOCKS_BSA_BEAM (1<<0)
-/// From base on atom/rad_act(): (strength, /datum/radiation_wave)
+/// From base on atom/rad_act(): (strength, /datum/radiation_wave_legacy)
 #define COMSIG_ATOM_RAD_ACT "atom_rad_act"
 
 /// Called when teleporting into a protected turf: (channel, turf/origin)

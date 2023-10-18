@@ -21,7 +21,7 @@
 	icon = 'icons/obj/status_display.dmi'
 	icon_state = "frame"
 	desc = "A remote control for a door."
-	req_access = list(access_brig)
+	req_access = list(ACCESS_SECURITY_BRIG)
 	anchored = TRUE //Can't pick it up
 	density = FALSE //Can walk through it.
 	var/id = null   //Id of door it controls.
@@ -92,7 +92,7 @@
 			continue
 		if(door.density)
 			continue
-		INVOKE_ASYNC(door, /obj/machinery/door/window/brigdoor.proc/close)
+		INVOKE_ASYNC(door, TYPE_PROC_REF(/obj/machinery/door/window/brigdoor, close))
 
 	for(var/datum/weakref/closet_ref as anything in closets)
 		var/obj/structure/closet/secure_closet/brig/closet = closet_ref.resolve()
@@ -127,7 +127,7 @@
 			continue
 		if(!door.density)
 			continue
-		INVOKE_ASYNC(door, /obj/machinery/door/window/brigdoor.proc/open)
+		INVOKE_ASYNC(door, TYPE_PROC_REF(/obj/machinery/door/window/brigdoor, open))
 
 	for(var/datum/weakref/closet_ref as anything in closets)
 		var/obj/structure/closet/secure_closet/brig/closet = closet_ref.resolve()
@@ -158,7 +158,7 @@
 /obj/machinery/door_timer/attack_ai(mob/user)
 	return src.attack_hand(user)
 
-/obj/machinery/door_timer/attack_hand(mob/user)
+/obj/machinery/door_timer/attack_hand(mob/user, list/params)
 	if(..())
 		return TRUE
 	ui_interact(user)

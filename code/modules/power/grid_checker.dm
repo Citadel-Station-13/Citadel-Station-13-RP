@@ -51,7 +51,7 @@
 	else if(istype(W, /obj/item/multitool) || W.is_wirecutter())
 		attack_hand(user)
 
-/obj/machinery/power/grid_checker/attack_hand(mob/user)
+/obj/machinery/power/grid_checker/attack_hand(mob/user, list/params)
 	if(!user)
 		return
 	add_fingerprint(user)

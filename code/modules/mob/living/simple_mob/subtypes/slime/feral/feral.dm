@@ -53,7 +53,7 @@
 	minbodytemp = 0
 	cold_damage_per_tick = 0
 
-	projectiletype = /obj/item/projectile/icicle
+	projectiletype = /obj/projectile/icicle
 	base_attack_cooldown = 2 SECONDS
 	ranged_attack_delay = 1 SECOND
 
@@ -61,23 +61,23 @@
 	You are also immune to the cold, and you cause enemies around you to suffer periodic harm from the cold, if unprotected.<br>\
 	Unprotected enemies are also Chilled, making them slower and less evasive, and disabling effects last longer."
 
-/obj/item/projectile/icicle
+/obj/projectile/icicle
 	name = "icicle"
 	icon_state = "ice_2"
 	damage = 40
 	damage_type = BRUTE
-	check_armour = "melee"
+	damage_flag = ARMOR_MELEE
 	armor_penetration = 30
 	speed = 2
 	icon_scale_x = 2 // It hits like a truck.
 	icon_scale_y = 2
 	sharp = TRUE
 
-/obj/item/projectile/icicle/on_impact(atom/A)
+/obj/projectile/icicle/on_impact(atom/A)
 	playsound(get_turf(A), "shatter", 70, 1)
 	return ..()
 
-/obj/item/projectile/icicle/get_structure_damage()
+/obj/projectile/icicle/get_structure_damage()
 	return damage / 2 // They're really deadly against mobs, but less effective against solid things.
 
 /mob/living/simple_mob/slime/feral/dark_blue/handle_special()

@@ -24,13 +24,16 @@
 	w_class = ITEMSIZE_TINY
 	throw_speed = 7
 	throw_range = 15
-	matter = list(MAT_STEEL = 10)
+	materials = list(MAT_STEEL = 10)
 	var/colour = "black"	//what colour the ink is!
 	pressure_resistance = 2
 	drop_sound = 'sound/items/drop/accessory.ogg'
 	pickup_sound = 'sound/items/pickup/accessory.ogg'
 
-/obj/item/pen/attack_self(var/mob/user)
+/obj/item/pen/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(user.next_move > world.time)
 		return
 	user.setClickCooldown(1 SECOND)
@@ -62,6 +65,9 @@
 	return
 
 /obj/item/pen/multi/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(++selectedColor > 3)
 		selectedColor = 1
 
@@ -77,7 +83,10 @@
 /obj/item/pen/click
 	name = "clicker pen"
 
-/obj/item/pen/click/attack_self(mob/user as mob)
+/obj/item/pen/click/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(user.a_intent == INTENT_HELP)
 		user.visible_message("<span class='notice'><b>\The [user]</b> clicks [src] idly.</span>","<span class='notice'>You click [src] idly.</span>")
 		playsound(user, 'sound/weapons/flipblade.ogg', 20, 1)
@@ -116,7 +125,7 @@
 		if(reagents.total_volume)
 			if(target.reagents)
 				var/contained = reagents.get_reagents()
-				var/trans = reagents.trans_to_mob(target, 30, CHEM_BLOOD)
+				var/trans = reagents.trans_to_mob(target, 30, CHEM_INJECT)
 				add_attack_logs(user,target,"Injected with [src.name] containing [contained], trasferred [trans] units")
 
 /*
@@ -166,7 +175,7 @@
 	active = 1
 	icon_state = active_icon_state
 	embed_chance = active_embed_chance
-	force = active_force
+	damage_force = active_force
 	throw_force = active_throwforce
 
 
@@ -192,7 +201,7 @@
 	active = 0
 	icon_state = default_icon_state
 	embed_chance = initial(embed_chance)
-	force = initial(force)
+	damage_force = initial(damage_force)
 	throw_force = initial(throw_force)
 	sharp = initial(sharp)
 	edge = initial(edge)
@@ -244,7 +253,10 @@
 /obj/item/pen/chameleon
 	var/signature = ""
 
-/obj/item/pen/chameleon/attack_self(mob/user as mob)
+/obj/item/pen/chameleon/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	/*
 	// Limit signatures to official crew members
 	var/personnel_list[] = list()
@@ -340,11 +352,14 @@
 	. = ..()
 	name = "[colourName] chalk"
 
-/obj/item/pen/crayon/chalk/attack_self()
+/obj/item/pen/crayon/chalk/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	return
 
 /obj/item/pen/charcoal
 	name = "charcoal stick"
 	desc = "Carefully burnt carbon, compacted and held together with a binding agent. One of the oldest common implements for writing across the galaxy."
 	icon_state = "charcoal"
-	matter = list(MAT_CARBON = 10)
+	materials = list(MAT_CARBON = 10)

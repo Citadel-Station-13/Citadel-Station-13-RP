@@ -67,7 +67,7 @@
 	return
 
 
-/obj/item/fuel/examine(mob/user)
+/obj/item/fuel/examine(mob/user, dist)
 	if(get_dist(src, user) <= 1)
 		. += "A magnetic storage ring, it contains [fuel]kg of [content ? content : "nothing"]."
 
@@ -95,5 +95,5 @@
 			return
 	else
 		for(var/mob/O in viewers(M, null))
-			O.show_message(text("<font color='red'>[M] ate the [content ? content : "empty canister"]!</font>"), 1)
+			O.show_message(SPAN_RED("[M] ate the [content ? content : "empty canister"]!"), SAYCODE_TYPE_VISIBLE)
 		src.injest(M)

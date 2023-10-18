@@ -65,7 +65,7 @@
 		)
 		use(1)
 		. = FALSE // already did so
-	C.updatehealth()
+	C.update_health()
 	return TRUE
 
 /obj/item/stack/medical/proc/upgrade_stack(var/upgrade_amount)
@@ -111,7 +111,7 @@
 			user.visible_message("<span class='notice'>\The [user] starts bandaging [M]'s [affecting.name].</span>", \
 					             "<span class='notice'>You start bandaging [M]'s [affecting.name].</span>" )
 			var/used = 0
-			for (var/datum/wound/W in affecting.wounds)
+			for (var/datum/wound/W as anything in affecting.wounds)
 				if (W.internal)
 					continue
 				if(W.bandaged)
@@ -173,7 +173,7 @@
 			user.visible_message("<span class='notice'>\The [user] starts treating [H]'s [affecting.name].</span>", \
 					             "<span class='notice'>You start treating [H]'s [affecting.name].</span>" )
 			var/used = 0
-			for (var/datum/wound/W in affecting.wounds)
+			for (var/datum/wound/W as anything in affecting.wounds)
 				if (W.internal)
 					continue
 				if(W.bandaged)
@@ -281,7 +281,7 @@
 			user.visible_message("<span class='notice'>\The [user] starts treating [M]'s [affecting.name].</span>", \
 					             "<span class='notice'>You start treating [M]'s [affecting.name].</span>" )
 			var/used = 0
-			for (var/datum/wound/W in affecting.wounds)
+			for (var/datum/wound/W as anything in affecting.wounds)
 				if (W.internal)
 					continue
 				if (W.bandaged && W.disinfected)
@@ -425,6 +425,13 @@
 	amount = 1
 	splintable_organs = list(BP_L_ARM, BP_R_ARM, BP_L_LEG, BP_R_LEG)
 
+/obj/item/stack/medical/splint/primitive
+	name = "primitive splints"
+	singular_name = "makeshift splint"
+	desc = "For holding your limbs in place with hide and sinew."
+	icon_state = "primitive-splint"
+	amount = 5
+
 // Begin Citadel Changes - New advanced kit sprites
 /obj/item/stack/medical/advanced/Initialize(mapload)
 	. = ..()
@@ -476,7 +483,7 @@
 			user.visible_message("<span class='notice'>\The [user] starts treating [H]'s [affecting.name].</span>", \
 					             "<span class='notice'>You start treating [H]'s [affecting.name].</span>" )
 			var/used = 0
-			for (var/datum/wound/W in affecting.wounds)
+			for (var/datum/wound/W as anything in affecting.wounds)
 				if (W.internal)
 					continue
 				if(W.bandaged)

@@ -1,53 +1,62 @@
 /datum/role/job/station/command_secretary
 	id = JOB_ID_COMMAND_SECRETARY
-	title = "Command Secretary"
+	title = "Bridge Officer"
 	economy_payscale = ECONOMY_PAYSCALE_JOB_HELM
 	flag = BRIDGE
 	departments = list(DEPARTMENT_COMMAND)
 	department_accounts = list(DEPARTMENT_COMMAND)
 	department_flag = CIVILIAN
 	disallow_jobhop = TRUE
-	pto_type = PTO_CIVILIAN
+	pto_type = PTO_COMMAND
 	total_positions = 2
 	spawn_positions = 2
 	supervisors = "command staff"
 	selection_color = "#1D1D4F"
 	minimal_player_age = 5
 
-	access = list(access_heads, access_keycard_auth)
-	minimal_access = list(access_heads, access_keycard_auth)
-
-	outfit_type = /datum/outfit/job/station/command_secretary
-	desc = "A Command Secretary handles paperwork duty for the Heads of Staff, so they can better focus on managing their departments. \
-						They are not Heads of Staff, and have no real authority."
-
-	alt_titles = list(
-		"Command Liaison" = /datum/prototype/alt_title/command_liaison,
-		"Bridge Secretary" = /datum/prototype/alt_title/bridge_secretary,
-		"Command Assistant" = /datum/prototype/alt_title/command_assistant,
-		"Command Intern" = /datum/prototype/alt_title/command_intern,
-		"Helmsman" = /datum/prototype/alt_title/commsec/helmsman,
-		"Bridge Officer" = /datum/prototype/alt_title/commsec/officer
+	minimal_access = list(
+		ACCESS_COMMAND_BRIDGE,
+		ACCESS_COMMAND_KEYAUTH,
+		ACCESS_ENGINEERING_MAINT,
 	)
 
-/datum/prototype/alt_title/command_liaison
+	outfit_type = /datum/outfit/job/station/command_secretary/bridge_officer
+	desc = "A bridge officer is often considered command staff in-training. Their duties are to assist the command staff with things like paperwork, \
+			as well as to assist in piloting the ship when deemed necessary and applicable."
+
+	alt_titles = list(
+		"Command Liaison" = /datum/prototype/struct/alt_title/command_liaison,
+		"Bridge Secretary" = /datum/prototype/struct/alt_title/bridge_secretary,
+		"Command Assistant" = /datum/prototype/struct/alt_title/command_assistant,
+		"Command Intern" = /datum/prototype/struct/alt_title/command_intern,
+		"Helmsman" = /datum/prototype/struct/alt_title/commsec/helmsman,
+		"Command Secretary" = /datum/prototype/struct/alt_title/commsec/actually_commsec
+	)
+
+//! todo: WHY DO WE HAVE SO MANY GET RID OF THEM
+
+/datum/prototype/struct/alt_title/command_liaison
 	title = "Command Liaison"
+	title_outfit = /datum/outfit/job/station/command_secretary
 
-/datum/prototype/alt_title/bridge_secretary
+/datum/prototype/struct/alt_title/bridge_secretary
 	title = "Bridge Secretary"
+	title_outfit = /datum/outfit/job/station/command_secretary
 
-/datum/prototype/alt_title/command_assistant
+/datum/prototype/struct/alt_title/command_assistant
 	title = "Command Assistant"
+	title_outfit = /datum/outfit/job/station/command_secretary
 
-/datum/prototype/alt_title/command_intern
+/datum/prototype/struct/alt_title/command_intern
 	title = "Command Intern"
+	title_outfit = /datum/outfit/job/station/command_secretary
 
-/datum/prototype/alt_title/commsec/helmsman
+/datum/prototype/struct/alt_title/commsec/helmsman
 	title = "Helmsman"
 
-/datum/prototype/alt_title/commsec/officer
-	title = "Bridge Officer"
-	title_outfit = /datum/outfit/job/station/command_secretary/bridge_officer
+/datum/prototype/struct/alt_title/commsec/actually_commsec
+	title = "Command Secretary"
+	title_outfit = /datum/outfit/job/station/command_secretary
 
 /datum/outfit/job/station/command_secretary
 	name = OUTFIT_JOB_NAME("Command Secretary")

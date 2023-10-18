@@ -74,6 +74,7 @@
 
 /obj/item/clothing/suit/space/void/explorer/Initialize(mapload)
 	. = ..()
+	LAZYINITLIST(sprite_sheets)
 	sprite_sheets += sprite_sheets_refit
 
 /obj/item/clothing/head/helmet/space/void/explorer
@@ -104,8 +105,8 @@
 
 /obj/item/clothing/head/helmet/space/void/explorer/Initialize(mapload)
 	. = ..()
+	LAZYINITLIST(sprite_sheets)
 	sprite_sheets += sprite_sheets_refit
-
 
 /obj/item/clothing/suit/space/void/autolok
 	name = "AutoLok pressure suit"
@@ -113,8 +114,9 @@
 	but is equipped with sensors that will automatically deploy the integral helmet to protect the wearer."
 	icon_state = "autoloksuit"
 	item_state = "autoloksuit"
-	armor = list(melee = 15, bullet = 5, laser = 5,energy = 5, bomb = 5, bio = 100, rad = 80)
-	slowdown = 0.5
+	armor_type = /datum/armor/autolok/space
+	encumbrance = ITEM_ENCUMBRANCE_VOIDSUIT_LIGHT
+	weight = ITEM_WEIGHT_VOIDSUIT_LIGHT
 	siemens_coefficient = 1
 	species_restricted = list("exclude",SPECIES_DIONA,SPECIES_VOX) //this thing can autoadapt
 	breach_threshold = 6 //this thing is basically tissue paper
@@ -170,7 +172,7 @@
 	icon_state = "autolokhelmet"
 	item_state = "autolokhelmet"
 	species_restricted = list("exclude",SPECIES_DIONA,SPECIES_VOX)	//this thing can autoadapt too
-	flags_inv = HIDEEARS|BLOCKHAIR //removed HIDEFACE/MASK/EYES flags so sunglasses or facemasks don't disappear. still gotta have BLOCKHAIR or it'll clip out tho.
+	inv_hide_flags = HIDEEARS|BLOCKHAIR //removed HIDEFACE/MASK/EYES flags so sunglasses or facemasks don't disappear. still gotta have BLOCKHAIR or it'll clip out tho.
 
 /obj/item/clothing/head/helmet/space/void/autolok
 	sprite_sheets_obj = list(

@@ -61,7 +61,6 @@
 	R.my_atom = src
 
 	beaker = new /obj/item/reagent_containers/glass/bottle(src)
-	default_apply_parts()
 
 	item_list = list()
 	item_list["Food Items"] = list(
@@ -97,6 +96,7 @@
 		BIOGEN_ITEM("Leather Satchel", /obj/item/storage/backpack/satchel, 1, 400),
 		BIOGEN_ITEM("Cash Bag", /obj/item/storage/bag/cash, 1, 400),
 		BIOGEN_ITEM("Chemistry Bag", /obj/item/storage/bag/chemistry, 1, 400),
+		BIOGEN_ITEM("Xenobiology Bag", /obj/item/storage/bag/xenobio, 1, 400),
 		BIOGEN_ITEM("Workboots", /obj/item/clothing/shoes/boots/workboots, 1, 400),
 		BIOGEN_ITEM("Leather Chaps", /obj/item/clothing/under/pants/chaps, 1, 400),
 		BIOGEN_ITEM("Leather Coat", /obj/item/clothing/suit/leathercoat, 1, 500),
@@ -193,7 +193,7 @@
 
 	switch(action)
 		if("activate")
-			INVOKE_ASYNC(src, .proc/activate)
+			INVOKE_ASYNC(src, PROC_REF(activate))
 			return TRUE
 		if("detach")
 			eject_beaker(usr)
@@ -216,7 +216,7 @@
 				if(cost > points)
 					to_chat(usr, SPAN_DANGER("Insufficient biomass."))
 					return
-				var/amt_to_actually_dispense = round(min(beaker.reagents.get_free_space(), br.reagent_amt))
+				var/amt_to_actually_dispense = round(min(beaker.reagents.available_volume(), br.reagent_amt))
 				if(amt_to_actually_dispense <= 0)
 					to_chat(usr, SPAN_DANGER("The loaded beaker is full!"))
 					return
@@ -232,8 +232,7 @@
 
 			points -= cost
 			if(ispath(bi.equipment_path, /obj/item/stack))
-				var/obj/item/stack/S = new bi.equipment_path(loc)
-				S.amount = bi.equipment_amt
+				new bi.equipment_path(loc, bi.equipment_amt)
 				playsound(src, 'sound/machines/vending/vending_drop.ogg', 100, 1)
 				return TRUE
 

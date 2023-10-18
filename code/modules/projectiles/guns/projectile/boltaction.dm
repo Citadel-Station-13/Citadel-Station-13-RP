@@ -45,7 +45,7 @@
 	item_state = "vox_hunting"
 	ammo_type = /obj/item/ammo_casing/a762
 	throw_force = 10
-	force = 20
+	damage_force = 20
 
 // Stole hacky terrible code from doublebarrel shotgun. -Spades
 /obj/item/gun/ballistic/shotgun/pump/rifle/ceremonial/attackby(var/obj/item/A as obj, mob/user as mob)

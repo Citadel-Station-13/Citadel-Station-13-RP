@@ -39,7 +39,7 @@
 
 	for(var/T in reagent_ids)
 		reagent_volumes[T] = volume
-		var/datum/reagent/R = SSchemistry.chemical_reagents[T]
+		var/datum/reagent/R = SSchemistry.reagent_lookup[T]
 		reagent_names += R.name
 
 	START_PROCESSING(SSobj, src)
@@ -94,7 +94,10 @@
 			add_attack_logs(user, L, "Borg injected with [reagent_ids[mode]]")
 			to_chat(user, "<span class='notice'>[t] units injected. [reagent_volumes[reagent_ids[mode]]] units remaining.</span>")
 
-/obj/item/reagent_containers/borghypo/attack_self(mob/user as mob) //Change the mode
+/obj/item/reagent_containers/borghypo/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return //Change the mode
 	var/t = ""
 	for(var/i = 1 to reagent_ids.len)
 		if(t)
@@ -114,11 +117,11 @@
 		if(t)
 			playsound(src, 'sound/effects/pop.ogg', 50, 0)
 			mode = t
-			var/datum/reagent/R = SSchemistry.chemical_reagents[reagent_ids[mode]]
+			var/datum/reagent/R = SSchemistry.reagent_lookup[reagent_ids[mode]]
 			to_chat(usr, "<span class='notice'>Synthesizer is now producing '[R.name]'.</span>")
 
-/obj/item/reagent_containers/borghypo/examine(mob/user)
-	var/datum/reagent/R = SSchemistry.chemical_reagents[reagent_ids[mode]]
+/obj/item/reagent_containers/borghypo/examine(mob/user, dist)
+	var/datum/reagent/R = SSchemistry.reagent_lookup[reagent_ids[mode]]
 	. = ..()
 	. += "<span class='notice'>It is currently producing [R.name] and has [reagent_volumes[reagent_ids[mode]]] out of [volume] units left.</span>"
 
@@ -178,8 +181,8 @@
 /obj/item/reagent_containers/borghypo/service/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	return
 
-/obj/item/reagent_containers/borghypo/service/afterattack(var/obj/target, var/mob/user, var/proximity)
-	if(!proximity)
+/obj/item/reagent_containers/borghypo/service/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 
 	if(!target.is_open_container() || !target.reagents)
@@ -189,7 +192,7 @@
 		to_chat(user, "<span class='notice'>[src] is out of this reagent, give it some time to refill.</span>")
 		return
 
-	if(!target.reagents.get_free_space())
+	if(!target.reagents.available_volume())
 		to_chat(user, "<span class='notice'>[target] is full.</span>")
 		return
 

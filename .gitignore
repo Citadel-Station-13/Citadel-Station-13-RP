@@ -185,9 +185,8 @@ Temporary Items
 *.kate-swp
 
 # Extra map stuff
-/_maps/**/backup/
-/_maps/templates.dm
 /maps/**/backup/
+/maps/templates.dm
 
 # Extra DMI stuff
 /icons/*.dme

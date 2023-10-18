@@ -61,8 +61,8 @@
 	return
 
 /obj/machinery/atmospherics/component/quaternary/process(delta_time)
-	last_power_draw = 0
-	last_flow_rate = 0
+	last_power_draw_legacy = 0
+	last_flow_rate_legacy = 0
 
 	if(error_check())
 		update_use_power(USE_POWER_OFF)
@@ -102,7 +102,7 @@
 		return TRUE
 	return FALSE
 
-/obj/machinery/atmospherics/component/quaternary/attack_hand(user as mob)
+/obj/machinery/atmospherics/component/quaternary/attack_hand(mob/user, list/params)
 	if(..())
 		return
 

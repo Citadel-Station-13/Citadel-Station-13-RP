@@ -5,19 +5,22 @@
 #define SKIN_ID_ABSTRACT_MACRO "macro"
 
 //? SKIN ELEMENT IDS; MAKE SURE TO UPDATE THESE WHEN CHANGING SKIN.DMF.
-//! Window IDs
+//* Window IDs
 /// main game window
 #define SKIN_WINDOW_ID_MAIN "mainwindow"
 
-//! Map IDs
+//* Map IDs
 /// main game viewport
 #define SKIN_MAP_ID_VIEWPORT "mapwindow.map"
 
-//! Splitter IDs
+//* Splitter IDs
 /// main window split
 #define SKIN_SPLITTER_ID_MAIN "mainwindow.split"
 
-//! Stat System
+//* Cutscene System
+#define SKIN_BROWSER_ID_CUTSCENE "cutscenebrowser"
+
+//* Stat System
 #define SKIN_TAB_ID_STAT "stat_tab"
 #define SKIN_PANE_ID_BYONDSTAT "stat_pane_byond"
 #define SKIN_PANE_ID_BROWSERSTAT "stat_pane_browser"

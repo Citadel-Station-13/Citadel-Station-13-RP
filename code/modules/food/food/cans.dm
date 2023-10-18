@@ -139,7 +139,7 @@
 
 /obj/item/reagent_containers/food/drinks/cans/ramune/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("ramune", 20)
+	reagents.add_reagent("ramune", 30)
 
 /obj/item/reagent_containers/food/drinks/cans/starkist
 	name = "\improper Star-kist"
@@ -324,5 +324,5 @@
 
 /obj/item/reagent_containers/food/drinks/cans/alraune/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("ammonia", 20)
+	reagents.add_reagent("diethylamine", 20)
 	reagents.add_reagent("water", 10)

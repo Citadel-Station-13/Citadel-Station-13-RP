@@ -39,7 +39,10 @@
 	if(opened)
 		icon_state = icon_state + "-open"
 
-/obj/item/assembly/electronic_assembly/attack_self(mob/user as mob)
+/obj/item/assembly/electronic_assembly/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(EA)
 		EA.attack_self(user)
 
@@ -49,7 +52,7 @@
 			I.do_work()
 		return
 
-/obj/item/assembly/electronic_assembly/examine(mob/user)
+/obj/item/assembly/electronic_assembly/examine(mob/user, dist)
 	. = ..()
 	if(EA)
 		for(var/obj/item/integrated_circuit/IC in EA.assembly_components)

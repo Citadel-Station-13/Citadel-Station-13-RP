@@ -4,7 +4,7 @@
 	icon_state = "c05r"	//Used because it's not used anywhere else
 	load_method = SPEEDLOADER
 	ammo_type = /obj/item/ammo_casing/a9mm
-	projectile_type = /obj/item/projectile/bullet/pistol
+	projectile_type = /obj/projectile/bullet/pistol
 	mag_insert_sound = 'sound/weapons/guns/interaction/smg_magin.ogg'
 	mag_remove_sound = 'sound/weapons/guns/interaction/smg_magout.ogg'
 //Burst is the number of bullets fired; Fire delay is the time you have to wait to shoot the gun again, Move delay is the same but for moving after shooting. .
@@ -16,7 +16,7 @@
 
 /obj/item/gun/ballistic/automatic/advanced_smg
 	name = "advanced SMG"
-	desc = "An advanced submachine gun with a reflective laser optic that makes burst fire less inaccurate than other SMGs. Uses 9mm rounds."
+	desc = "The NT-S3W is an advanced submachine gun design, using a reflective laser optic for increased accuracy over competing models. Chambered for 9mm rounds."
 	icon_state = "advanced_smg-empty"
 	w_class = ITEMSIZE_NORMAL
 	load_method = MAGAZINE
@@ -44,14 +44,14 @@
 	icon_state = "c20r"
 	item_state = "c20r"
 	w_class = ITEMSIZE_NORMAL
-	force = 10
+	damage_force = 10
 	caliber = "10mm"
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2, TECH_ILLEGAL = 8)
 	slot_flags = SLOT_BELT|SLOT_BACK
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/m10mm
 	allowed_magazines = list(/obj/item/ammo_magazine/m10mm)
-	projectile_type = /obj/item/projectile/bullet/pistol/medium
+	projectile_type = /obj/projectile/bullet/pistol/medium
 	auto_eject = 1
 	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
 
@@ -66,20 +66,20 @@
 
 /obj/item/gun/ballistic/automatic/sts35
 	name = "assault rifle"
-	desc = "The rugged STS-35 is a durable automatic weapon of a make popular on the frontier worlds. Uses 5.45mm rounds."
+	desc = "The rugged STS-35 is a durable automatic weapon of a make popular on the frontier worlds. Uses 5.56mm rounds."
 	icon_state = "arifle"
 	item_state = "arifle"
 	wielded_item_state = "arifle-wielded"
 	item_state = null
 	w_class = ITEMSIZE_LARGE
-	force = 10
-	caliber = "5.45mm"
+	damage_force = 10
+	caliber = "5.56mm"
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)
 	slot_flags = SLOT_BACK
 	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/m545
-	allowed_magazines = list(/obj/item/ammo_magazine/m545)
-	projectile_type = /obj/item/projectile/bullet/rifle/a545
+	magazine_type = /obj/item/ammo_magazine/m556
+	allowed_magazines = list(/obj/item/ammo_magazine/m556)
+	projectile_type = /obj/projectile/bullet/rifle/a556
 	mag_insert_sound = 'sound/weapons/guns/interaction/ltrifle_magin.ogg'
 	mag_remove_sound = 'sound/weapons/guns/interaction/ltrifle_magout.ogg'
 	heavy = TRUE
@@ -93,7 +93,7 @@
 
 /obj/item/gun/ballistic/automatic/sts35/update_icon_state()
 	. = ..()
-	if(istype(ammo_magazine,/obj/item/ammo_magazine/m545/small))
+	if(istype(ammo_magazine,/obj/item/ammo_magazine/m556/small))
 		icon_state = "arifle-small" // If using the small magazines, use the small magazine sprite.
 	else
 		icon_state = (ammo_magazine)? "arifle" : "arifle-empty"
@@ -116,7 +116,7 @@
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/m9mmt/rubber
 	allowed_magazines = list(/obj/item/ammo_magazine/m9mmt)
-	projectile_type = /obj/item/projectile/bullet/pistol/medium
+	projectile_type = /obj/projectile/bullet/pistol/medium
 
 /obj/item/gun/ballistic/automatic/wt550/update_icon_state()
 	. = ..()
@@ -135,14 +135,14 @@
 	item_state = "z8carbine"
 	wielded_item_state = "z8carbine-wielded"
 	w_class = ITEMSIZE_LARGE
-	force = 10
+	damage_force = 10
 	caliber = "7.62mm"
 	origin_tech = list(TECH_COMBAT = 8, TECH_MATERIAL = 3)
 	slot_flags = SLOT_BACK
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/m762
 	allowed_magazines = list(/obj/item/ammo_magazine/m762)
-	projectile_type = /obj/item/projectile/bullet/rifle/a762
+	projectile_type = /obj/projectile/bullet/rifle/a762
 	auto_eject = 1
 	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
 	mag_insert_sound = 'sound/weapons/guns/interaction/batrifle_magin.ogg'
@@ -170,7 +170,7 @@
 	else
 		..()
 
-/obj/item/gun/ballistic/automatic/z8/attack_hand(mob/user)
+/obj/item/gun/ballistic/automatic/z8/attack_hand(mob/user, list/params)
 	if(user.get_inactive_held_item() == src && use_launcher)
 		launcher.unload(user)
 	else
@@ -195,7 +195,7 @@
 	. = ..()
 	update_held_icon()
 
-/obj/item/gun/ballistic/automatic/z8/examine(mob/user)
+/obj/item/gun/ballistic/automatic/z8/examine(mob/user, dist)
 	. = ..()
 	if(launcher.chambered)
 		. += "\The [launcher] has \a [launcher.chambered] loaded."
@@ -204,20 +204,20 @@
 
 /obj/item/gun/ballistic/automatic/lmg
 	name = "light machine gun"
-	desc = "A rather traditionally made L6 SAW with a pleasantly lacquered wooden pistol grip. 'Aussec Armoury-2531' is engraved on the reciever. Uses 5.45mm rounds. It's also compatible with magazines from STS-35 assault rifles."
+	desc = "A rather traditionally made L6 SAW with a pleasantly lacquered wooden pistol grip. 'Aussec Armoury-2531' is engraved on the reciever. Uses 5.56mm rounds. It's also compatible with magazines from STS-35 assault rifles."
 	icon_state = "l6closed50"
 	item_state = "l6closed"
 	w_class = ITEMSIZE_LARGE
-	force = 10
+	damage_force = 10
 	slot_flags = 0
 	max_shells = 50
-	caliber = "5.45mm"
+	caliber = "5.56mm"
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 2)
 	slot_flags = SLOT_BACK
 	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/m545saw
-	allowed_magazines = list(/obj/item/ammo_magazine/m545saw, /obj/item/ammo_magazine/m545)
-	projectile_type = /obj/item/projectile/bullet/rifle/a545
+	magazine_type = /obj/item/ammo_magazine/m556saw
+	allowed_magazines = list(/obj/item/ammo_magazine/m556saw, /obj/item/ammo_magazine/m556)
+	projectile_type = /obj/projectile/bullet/rifle/a556
 	mag_insert_sound = 'sound/weapons/guns/interaction/lmg_magin.ogg'
 	mag_remove_sound = 'sound/weapons/guns/interaction/lmg_magout.ogg'
 	can_special_reload = FALSE
@@ -253,13 +253,13 @@
 	update_icon()
 	update_held_icon()
 
-/obj/item/gun/ballistic/automatic/lmg/attack_self(mob/user as mob)
+/obj/item/gun/ballistic/automatic/lmg/attack_self(mob/user)
 	if(cover_open)
 		toggle_cover(user) //close the cover
 	else
 		return ..() //once closed, behave like normal
 
-/obj/item/gun/ballistic/automatic/lmg/attack_hand(mob/user as mob)
+/obj/item/gun/ballistic/automatic/lmg/attack_hand(mob/user, list/params)
 	if(!cover_open && user.get_inactive_held_item() == src)
 		toggle_cover(user) //open the cover
 	else
@@ -296,9 +296,12 @@
 	desc = "The MG 42 is an antique Terran machine gun, and very few original platforms have survived to the modern day. The Schwarzlindt Arms LTD manufacturer's stamp on the body marks this as a Frontier reproduction. It is no less deadly."
 	icon_state = "mg42closed50"
 	item_state = "mg42closed"
+	max_shells = 50
+	caliber = "7.62mm"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 1, TECH_ILLEGAL = 2)
 	magazine_type = /obj/item/ammo_magazine/m762_mg42
 	allowed_magazines = list(/obj/item/ammo_magazine/m762_mg42)
+	one_handed_penalty = 100
 
 /obj/item/gun/ballistic/automatic/lmg/mg42/update_icon_state()
 	. = ..()
@@ -314,7 +317,7 @@
 	caliber = "7.62mm"
 	magazine_type = /obj/item/ammo_magazine/m762_m60
 	allowed_magazines = list(/obj/item/ammo_magazine/m762_m60)
-	projectile_type = /obj/item/projectile/bullet/rifle/a762
+	projectile_type = /obj/projectile/bullet/rifle/a762
 	one_handed_penalty = 100
 
 	firemodes = list(
@@ -334,14 +337,14 @@
 	icon_state = "ashot"
 	item_state = null
 	w_class = ITEMSIZE_LARGE
-	force = 10
+	damage_force = 10
 	caliber = "12g"
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)
 	slot_flags = SLOT_BACK
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/m12gdrum
 	allowed_magazines = list(/obj/item/ammo_magazine/m12gdrum)
-	projectile_type = /obj/item/projectile/bullet/shotgun
+	projectile_type = /obj/projectile/bullet/shotgun
 	heavy = TRUE
 	one_handed_penalty = 30 //The AA12 can be fired one-handed fairly easily.
 	mag_insert_sound = 'sound/weapons/guns/interaction/lmg_magin.ogg'
@@ -475,14 +478,14 @@
 	icon_state = "bullpup-small"
 	item_state = "bullpup"
 	w_class = ITEMSIZE_LARGE
-	force = 10
+	damage_force = 10
 	caliber = "7.62mm"
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)
 	slot_flags = SLOT_BACK
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/m762
 	allowed_magazines = list(/obj/item/ammo_magazine/m762, /obj/item/ammo_magazine/m762m)
-	projectile_type = /obj/item/projectile/bullet/rifle/a762
+	projectile_type = /obj/projectile/bullet/rifle/a762
 	heavy = TRUE
 	one_handed_penalty = 45
 
@@ -510,7 +513,7 @@
 	icon_state = "fal"
 	item_state = "fal"
 	w_class = ITEMSIZE_LARGE
-	force = 10
+	damage_force = 10
 	caliber = "7.62mm"
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)
 	slot_flags = SLOT_BACK
@@ -518,7 +521,7 @@
 	magazine_type = /obj/item/ammo_magazine/m762m
 	allowed_magazines = list(/obj/item/ammo_magazine/m762, /obj/item/ammo_magazine/m762m)
 	heavy = TRUE
-	projectile_type = /obj/item/projectile/bullet/rifle/a762
+	projectile_type = /obj/projectile/bullet/rifle/a762
 
 	firemodes = list(
 		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, burst_accuracy=null, dispersion=null),
@@ -539,14 +542,13 @@
 	item_state = "automat"
 	fire_anim = "automat_fire"
 	w_class = ITEMSIZE_LARGE
-	force = 10
+	damage_force = 10
 	caliber = "7.62mm"
 	heavy = TRUE
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3) //A real work around to a automatic rifle.
 	slot_flags = SLOT_BACK
 	load_method = SPEEDLOADER
 	ammo_type = /obj/item/ammo_casing/a762
-	slowdown = 0.5
 	max_shells =  15
 	burst = 3
 	fire_delay = 7.2
@@ -573,14 +575,14 @@
 	item_state = null
 	w_class = ITEMSIZE_LARGE
 	heavy = TRUE
-	force = 10
+	damage_force = 10
 	caliber = "12g"
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)
 	slot_flags = SLOT_BACK
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/holyshot_mag
 	allowed_magazines = list(/obj/item/ammo_magazine/holyshot_mag, /obj/item/ammo_magazine/holyshot_mag/stake)
-	projectile_type = /obj/item/projectile/bullet/shotgun
+	projectile_type = /obj/projectile/bullet/shotgun
 
 	one_handed_penalty = 40
 
@@ -605,14 +607,14 @@
 	wielded_item_state = "clownrifle_wielded"
 	w_class = ITEMSIZE_LARGE
 	heavy = TRUE
-	force = 10
+	damage_force = 10
 	caliber = "organic"
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)
 	slot_flags = SLOT_BACK
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/mcompressedbio/large/banana
 	allowed_magazines = list(/obj/item/ammo_magazine/mcompressedbio/large/banana)
-	projectile_type = /obj/item/projectile/bullet/organic
+	projectile_type = /obj/projectile/bullet/organic
 
 	one_handed_penalty = 30
 
@@ -656,8 +658,8 @@
 
 //NT SpecOps SMG
 /obj/item/gun/ballistic/automatic/combat
-	name = "NT-SMG-8 submachine gun"
-	desc = "A compact submachine gun designed for close-quarters combat for NanoTrasen special operations. Chambered in 5.7x28mm with three fire modes, this gun is lethal to soft and armored targets alike."
+	name = "\improper Harpy combat submachine gun"
+	desc = "The compact NT-SMG-8 'Harpy' submachine gun was designed for NanoTrasen special operations where close-quarters combat is likely. Chambered in 5.7x28mm with three fire modes, this gun is lethal to soft and armored targets alike."
 	icon_state = "combatsmg"
 	item_state = "combatsmg"
 	w_class = ITEMSIZE_NORMAL
@@ -711,11 +713,11 @@
 	desc = "A DONKsoft rendition of an infamous submachine gun."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "toy_c20"
-	force = 5
+	damage_force = 5
 	caliber = "foamdart"
 	magazine_type = /obj/item/ammo_magazine/mfoam/c20
 	allowed_magazines = list(/obj/item/ammo_magazine/mfoam/c20)
-	projectile_type = /obj/item/projectile/bullet/reusable/foam
+	projectile_type = /obj/projectile/bullet/reusable/foam
 	one_handed_penalty = 5
 	fire_sound = 'sound/items/syringeproj.ogg'
 
@@ -736,11 +738,11 @@
 	desc = "This plastic replica of a common light machine gun weighs about half as much. It's still pretty bulky, but nothing lays down suppressive fire like this bad boy. The bane of schoolyards across the galaxy."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "toy_lmgclosed100"
-	force = 5
+	damage_force = 5
 	caliber = "foamdart"
 	magazine_type = /obj/item/ammo_magazine/mfoam/lmg
 	allowed_magazines = list(/obj/item/ammo_magazine/mfoam/lmg)
-	projectile_type = /obj/item/projectile/bullet/reusable/foam
+	projectile_type = /obj/projectile/bullet/reusable/foam
 	one_handed_penalty = 45 //It's plastic.
 	fire_sound = 'sound/items/syringeproj.ogg'
 	heavy = FALSE

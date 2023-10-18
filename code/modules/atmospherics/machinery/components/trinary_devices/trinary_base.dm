@@ -18,15 +18,11 @@
 	var/datum/pipe_network/network3
 
 /obj/machinery/atmospherics/component/trinary/Initialize(mapload)
-	. = ..()
+	air1 = new(200)
+	air2 = new(200)
+	air3 = new(200)
 
-	air1 = new
-	air2 = new
-	air3 = new
-
-	air1.volume = 200
-	air2.volume = 200
-	air3.volume = 200
+	return ..()
 
 /obj/machinery/atmospherics/component/trinary/init_dir()
 	initialize_directions = get_initialize_directions_trinary(dir, mirrored, tee)

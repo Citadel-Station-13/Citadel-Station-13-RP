@@ -176,6 +176,10 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 	if (config_legacy.log_emote)
 		WRITE_LOG(GLOB.world_game_log, "SUBTLER: [speaker.simple_info_line()]: [html_decode(text)]")
 
+/proc/log_subtle_vore(text, mob/speaker)
+	if (config_legacy.log_emote)
+		WRITE_LOG(GLOB.world_game_log, "SUBTLE_VORE: [speaker.simple_info_line()]: [html_decode(text)]")
+
 /proc/log_aooc(text, client/user)
 	if (config_legacy.log_ooc)
 		WRITE_LOG(GLOB.world_game_log, "AOOC: [user.simple_info_line()]: [html_decode(text)]")
@@ -187,6 +191,9 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 		WRITE_LOG(GLOB.world_game_log, "LOOC: [user.simple_info_line()]: [html_decode(text)]")
 
 	GLOB.round_text_log += "<b>([time_stamp()])</b> (<b>[user]</b>) <u>LOOC:</u> - <span style='color:orange'><b>[text]</b></span>"
+
+/proc/log_ipintel(text)
+	WRITE_LOG(GLOB.world_runtime_log, "IPINTEL: [text]")
 
 /proc/log_vote(text)
 	if (config_legacy.log_vote)
@@ -207,6 +214,15 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 /proc/log_qdel(text)
 	WRITE_LOG(GLOB.world_qdel_log, "QDEL: [text]")
 
+/proc/log_reagent(text)
+	WRITE_LOG(GLOB.world_reagent_log, text)
+
+/proc/log_reagent_transfer(text)
+	log_reagent("TRANSFER: [text]")
+
+/proc/log_security(text)
+	WRITE_LOG(GLOB.world_game_log, "SECURITY: [text]")
+
 /proc/log_subsystem(subsystem, text)
 	WRITE_LOG(GLOB.subsystem_log, "[subsystem]: [text]")
 
@@ -224,6 +240,9 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
  */
 /proc/log_runtime(text)
 	WRITE_LOG(GLOB.world_runtime_log, text)
+
+/proc/log_shadowban(text)
+	WRITE_LOG(GLOB.world_game_log, "SHADOWBAN: [text]")
 
 /**
  * Rarely gets called; just here in case the config breaks.
@@ -390,6 +409,12 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 		return "([AREACOORD(T)])"
 	else if(A.loc)
 		return "(UNKNOWN (?, ?, ?))"
+
+/proc/ref_name(atom/A)
+	return "[A] ([REF(A)])"
+
+/proc/ref_name_path(atom/A)
+	return "[A] ([REF(A)]) \[[A.type]\]"
 
 /// VSTATION SPECIFIC LOGGING. ///
 /proc/log_debug(text)

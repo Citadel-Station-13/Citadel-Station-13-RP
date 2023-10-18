@@ -3,7 +3,7 @@
 	name = LANGUAGE_DAEMON
 	//! set to common due to overwhelming playerbase saturation.
 	translation_class = TRANSLATION_CLASS_DEFAULT_STANDARD_RACE
-	desc = "The language spoken by the demons of Infernum, it's composed of deep chanting. It's rarely spoken off of Infernum due to the volume one has to exert."
+	desc = "The language spoken by the dremachir of Drema, it's composed of deep chanting. It's rarely spoken off of Drema due to the volume one has to exert."
 	speech_verb = "chants"
 	ask_verb = "croons"
 	exclaim_verb = "incants"

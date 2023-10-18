@@ -1,7 +1,7 @@
 var/global/list/wing_icon_cache = list()
 
 /mob/living/carbon/human/proc/get_ears_overlay()
-	if(ear_style && !(head && (head.flags_inv & BLOCKHEADHAIR)))
+	if(ear_style && !(head && (head.inv_hide_flags & BLOCKHEADHAIR)))
 		var/icon/ears_s = new/icon("icon" = ear_style.icon, "icon_state" = ear_style.icon_state)
 		if(ear_style.do_colouration)
 			ears_s.Blend(rgb(src.r_ears, src.g_ears, src.b_ears), ear_style.color_blend_mode)
@@ -22,7 +22,7 @@ var/global/list/wing_icon_cache = list()
 	return null
 
 /mob/living/carbon/human/proc/get_horns_overlay()
-	if(horn_style && !(head && (head.flags_inv & BLOCKHEADHAIR)))
+	if(horn_style && !(head && (head.inv_hide_flags & BLOCKHEADHAIR)))
 		var/icon/horn_s = new/icon("icon" = horn_style.icon, "icon_state" = horn_style.icon_state)
 		if(horn_style.do_colouration)
 			horn_s.Blend(rgb(src.r_horn, src.g_horn, src.b_horn), horn_style.color_blend_mode)
@@ -53,7 +53,7 @@ var/global/list/wing_icon_cache = list()
 		return image(tail_s)
 
 	//If you have a custom tail selected
-	if(tail_style && !(wear_suit && wear_suit.flags_inv & HIDETAIL && !isTaurTail(tail_style)))
+	if(tail_style && !(wear_suit && wear_suit.inv_hide_flags & HIDETAIL && !isTaurTail(tail_style)))
 		var/base_state = wagging && tail_style.ani_state ? tail_style.ani_state : tail_style.icon_state
 		if(tail_style.front_behind_system)
 			base_state += front? "_FRONT" : "_BEHIND"
@@ -61,7 +61,8 @@ var/global/list/wing_icon_cache = list()
 		if(tail_style.do_colouration)
 			tail_s.Blend(rgb(src.r_tail, src.g_tail, src.b_tail), tail_style.color_blend_mode)
 		if(tail_style.extra_overlay)
-			var/icon/overlay = new/icon("icon" = tail_style.icon, "icon_state" = tail_style.extra_overlay)
+			var/extra_overlay_state = tail_style.front_behind_system ? "[tail_style.extra_overlay][front ? "_FRONT" : "_BEHIND"]" : tail_style.extra_overlay
+			var/icon/overlay = new/icon("icon" = tail_style.icon, "icon_state" = extra_overlay_state)
 			if(wagging && tail_style.ani_state)
 				overlay = new/icon("icon" = tail_style.icon, "icon_state" = tail_style.extra_overlay_w)
 				overlay.Blend(rgb(src.r_tail2, src.g_tail2, src.b_tail2), tail_style.color_blend_mode)

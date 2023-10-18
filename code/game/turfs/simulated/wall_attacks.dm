@@ -47,12 +47,12 @@
 	// "turf in loc" on a turf
 	// you for real?
 /*
-	if(!air_master)
+	if(!SSair)
 		return
 
 	for(var/turf/simulated/turf in loc)
 		update_thermal(turf)
-		air_master.mark_for_update(turf)
+		SSair.mark_for_update(turf)
 */
 
 /turf/simulated/wall/proc/update_thermal(var/turf/simulated/source)
@@ -106,7 +106,7 @@
 
 	return 0
 
-/turf/simulated/wall/attack_hand(var/mob/user)
+/turf/simulated/wall/attack_hand(mob/user, list/params)
 
 	radiate()
 	add_fingerprint(user)
@@ -222,7 +222,7 @@
 				for(var/obj/effect/overlay/wallrot/WR in src)
 					qdel(WR)
 				return
-		else if(!is_sharp(W) && W.force >= 10 || W.force >= 20)
+		else if(!is_sharp(W) && W.damage_force >= 10 || W.damage_force >= 20)
 			to_chat(user, "<span class='notice'>\The [src] crumbles away under the force of your [W.name].</span>")
 			src.dismantle_wall(1)
 			return

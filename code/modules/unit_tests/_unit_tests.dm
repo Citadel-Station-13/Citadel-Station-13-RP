@@ -74,13 +74,17 @@
 /// A trait source when adding traits through unit tests
 #define TRAIT_SOURCE_UNIT_TESTS "unit_tests"
 
+#include "atmospherics/_atmospherics.dm"
 #include "core/_core.dm"
+#include "datum/_datum.dm"
+#include "elements/_elements.dm"
 #include "human/_human.dm"
 #include "language/_language.dm"
 #include "mob/_mob.dm"
 #include "reagents/_reagents.dm"
 
 // #include "anchored_mobs.dm"
+#include "bad_alcohol_reagents.dm"
 #include "bespoke_id.dm"
 // #include "card_mismatch.dm"
 // #include "chain_pull_through_space.dm"
@@ -108,7 +112,6 @@
 // #include "reagent_mod_expose.dm"
 // #include "reagent_mod_procs.dm"
 // #include "reagent_recipe_collisions.dm"
-#include "research_tests.dm"
 #include "resist.dm"
 // #include "say.dm"
 // #include "serving_tray.dm"

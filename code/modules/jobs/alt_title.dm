@@ -2,9 +2,9 @@
 //			Alt Title Code
 /////////////////////////////////////////
 
-/datum/prototype/alt_title
-	abstract_type = /datum/prototype/alt_title
-	namespace = "role_title"
+/datum/prototype/struct/alt_title
+	abstract_type = /datum/prototype/struct/alt_title
+	anonymous_namespace = "RoleTitle"
 	anonymous = TRUE
 
 	var/title = "GENERIC ALT TITLE"				// What the Alt-Title is called
@@ -20,7 +20,7 @@
 	/// strictness: if a title has this on and someone is able to choose it, they can only choose jobs they're allowed to in background_allow
 	var/background_enforce = FALSE
 
-/datum/prototype/alt_title/New()
+/datum/prototype/struct/alt_title/New()
 	for(var/i in 1 to length(background_allow))
 		var/thing = background_allow[i]
 		if(ispath(thing))
@@ -43,7 +43,7 @@
  * * background_ids - background ids as list
  * * strict - if enabled, only returns true if an id has an exact match with allow.
  */
-/datum/prototype/alt_title/proc/check_background_ids(list/background_ids, strict)
+/datum/prototype/struct/alt_title/proc/check_background_ids(list/background_ids, strict)
 	if(strict)
 		return length(background_allow & background_ids)
 	if(isnull(background_allow))

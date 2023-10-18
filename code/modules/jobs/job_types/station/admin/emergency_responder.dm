@@ -8,7 +8,7 @@
 	spawn_positions = 1
 	supervisors = "company officials and Corporate Regulations"
 	selection_color = "#1D1D4F"
-	access = list()
+	additional_access = list()
 	minimal_access = list()
 	minimal_player_age = 14
 	whitelist_only = 1
@@ -26,15 +26,17 @@
 
 /datum/outfit/job/station/emergency_responder
 	name = OUTFIT_JOB_NAME("Emergency Responder")
+	id_type = /obj/item/card/id/centcom/ERT
+	pda_type = /obj/item/pda/centcom
+
 	uniform = /obj/item/clothing/under/ert
 	shoes = /obj/item/clothing/shoes/boots/swat
 	gloves = /obj/item/clothing/gloves/swat
 	l_ear = /obj/item/radio/headset/ert
 	glasses = /obj/item/clothing/glasses/sunglasses
+
 	back = /obj/item/storage/backpack/satchel
-	id_type = /obj/item/card/id/centcom/ERT
 	belt = /obj/item/gun/energy/pulse_pistol
-	r_pocket = /obj/item/pda/centcom
 	flags = OUTFIT_EXTENDED_SURVIVAL|OUTFIT_COMPREHENSIVE_SURVIVAL
 
 /datum/outfit/job/station/emergency_responder/post_equip(var/mob/living/carbon/human/H)

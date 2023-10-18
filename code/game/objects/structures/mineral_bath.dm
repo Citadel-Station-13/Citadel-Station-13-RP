@@ -14,7 +14,7 @@
 
 /obj/structure/adherent_bath/return_air()
 	var/datum/gas_mixture/venus = new(CELL_VOLUME)
-	venus.adjust_multi(/datum/gas/nitrogen, MOLES_N2STANDARD, /datum/gas/oxygen, MOLES_O2STANDARD)
+	venus.adjust_multi(GAS_ID_NITROGEN, MOLES_N2STANDARD, GAS_ID_OXYGEN, MOLES_O2STANDARD)
 	venus.temperature = 490
 	return venus
 
@@ -66,7 +66,7 @@
 	START_PROCESSING(SSobj, src)
 	return TRUE
 
-/obj/structure/adherent_bath/attack_hand(var/mob/user)
+/obj/structure/adherent_bath/attack_hand(mob/user, list/params)
 	eject_occupant()
 
 /obj/structure/adherent_bath/proc/eject_occupant()

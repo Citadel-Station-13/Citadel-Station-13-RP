@@ -315,7 +315,7 @@ SUBSYSTEM_DEF(zmimic)
 			TO.plane = t_target
 			TO.mouse_opacity = initial(TO.mouse_opacity)
 
-		T.queue_ao(T.ao_neighbors_mimic == null)	// If ao_neighbors hasn't been set yet, we need to do a rebuild
+		T.queue_ao(T.ao_junction_mimic == null) // If ao_junction hasn't been set yet, we need to do a rebuild.
 
 		// Explicitly copy turf delegates so they show up properly on below levels.
 		//   I think it's possible to get this to work without discrete delegate copy objects, but I'd rather this just work.
@@ -537,6 +537,31 @@ SUBSYSTEM_DEF(zmimic)
 
 	// Don't fixup the root object's plane.
 	if (depth > 0)
+		// * silicons edit *
+		// on citrp, everything above BYOND_PLANE (0) are vfx of some kind, like
+		// lighting and whatever.
+		// technically, ghosts are too, but, while it would be funny to see orbiting ghosts  on the floor
+		// above, it's not feasible to do this right now.
+		// everything that's meant to be abstract / non zm *below* plane 0 is not in the world map,
+		// so it won't be picked up by zm anyways.
+		// furthermore, there are things on atoms that go above 0, but they're really just not needed
+		// to be mirrored. things like HUD elements / whatever.
+		// if we need this later, we can always edit this.
+		if(appearance:plane >= BYOND_PLANE)
+			obliterate = TRUE
+		else
+			switch(appearance:plane)
+				// these planes are fine, we don't care
+				if(TURF_PLANE, FLOAT_PLANE)
+				// these plnaes need to be obliterated due to the usage of
+				// special rendering that will be lost if the plane is changed.
+				if(LIGHTLESS_PLANE)
+					obliterate = TRUE
+				else
+					plane_needs_fix = TRUE
+
+		//** original code **//
+		/*
 		switch (appearance:plane)
 			if (TURF_PLANE, FLOAT_PLANE)
 				// fine
@@ -544,6 +569,7 @@ SUBSYSTEM_DEF(zmimic)
 				obliterate = TRUE
 			else
 				plane_needs_fix = TRUE
+		*/
 
 	// Scan & fix overlays
 	var/list/fixed_overlays
@@ -688,7 +714,7 @@ var/list/zmimic_fixed_planes = list(
 			found_oo += D
 			temp_objects += D
 
-	tim_sort(found_oo, /proc/cmp_planelayer)
+	tim_sort(found_oo, GLOBAL_PROC_REF(cmp_planelayer))
 
 	var/list/atoms_list_list = list()
 	for (var/thing in found_oo)

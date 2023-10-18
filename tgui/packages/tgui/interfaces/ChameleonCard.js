@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { AccessList } from './common/AccessList';
+import { AccessList } from './common/Access';
 import { Window } from '../layouts';
 
 export const ChameleonCard = (props, context) => {

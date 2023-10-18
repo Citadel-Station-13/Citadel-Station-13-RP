@@ -95,7 +95,7 @@
 	s.set_up(3, 1, src)
 	s.start()
 	if(M)
-		M.Stun(30)
+		M.afflict_stun(20 * 30)
 	visible_message("\The [src.name] flashes violently before disintegrating!")
 	spawn(0)
 		qdel(s)
@@ -108,7 +108,7 @@
 	triggered = 1
 	for (var/turf/simulated/floor/target in range(1,src))
 		if(!target.blocks_air)
-			target.assume_gas(/datum/gas/chlorine, 30)
+			target.assume_gas(GAS_ID_CHLORINE, 30)
 	visible_message("\The [src.name] detonates!")
 	spawn(0)
 		qdel(src)
@@ -120,7 +120,7 @@
 	triggered = 1
 	for (var/turf/simulated/floor/target in range(1,src))
 		if(!target.blocks_air)
-			target.assume_gas(/datum/gas/nitrous_oxide, 30)
+			target.assume_gas(GAS_ID_NITROUS_OXIDE, 30)
 	visible_message("\The [src.name] detonates!")
 	spawn(0)
 		qdel(src)
@@ -132,7 +132,7 @@
 	triggered = 1
 	for (var/turf/simulated/floor/target in range(1,src))
 		if(!target.blocks_air)
-			target.assume_gas(/datum/gas/phoron, 30)
+			target.assume_gas(GAS_ID_PHORON, 30)
 			target.hotspot_expose(1000, CELL_VOLUME)
 	visible_message("\The [src.name] detonates!")
 	spawn(0)
@@ -154,7 +154,7 @@
 
 /obj/effect/mine/frag
 	mineitemtype = /obj/item/mine/frag
-	var/fragment_types = list(/obj/item/projectile/bullet/pellet/fragment)
+	var/fragment_types = list(/obj/projectile/bullet/pellet/fragment)
 	var/num_fragments = 20  //total number of fragments produced by the grenade
 	//The radius of the circle used to launch projectiles. Lower values mean less projectiles are used but if set too low gaps may appear in the spread pattern
 	var/spread_range = 7
@@ -167,7 +167,7 @@
 	var/turf/O = get_turf(src)
 	if(!O)
 		return
-	src.fragmentate(O, 20, 7, list(/obj/item/projectile/bullet/pellet/fragment)) //only 20 weak fragments because you're stepping directly on it
+	src.fragmentate(O, 20, 7, list(/obj/projectile/bullet/pellet/fragment)) //only 20 weak fragments because you're stepping directly on it
 	visible_message("\The [src.name] detonates!")
 	spawn(0)
 		qdel(s)
@@ -223,7 +223,10 @@
 	var/countdown = 10
 	var/minetype = /obj/effect/mine		//This MUST be an /obj/effect/mine type, or it'll runtime.
 
-/obj/item/mine/attack_self(mob/user as mob)	// You do not want to move or throw a land mine while priming it... Explosives + Sudden Movement = Bad Times
+/obj/item/mine/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return	// You do not want to move or throw a land mine while priming it... Explosives + Sudden Movement = Bad Times
 	add_fingerprint(user)
 	msg_admin_attack("[key_name_admin(user)] primed \a [src]")
 	user.visible_message("[user] starts priming \the [src.name].", "You start priming \the [src.name]. Hold still!")
@@ -233,7 +236,6 @@
 	else
 		visible_message("[user] triggers \the [src.name]!", "You accidentally trigger \the [src.name]!")
 		prime(user, TRUE)
-	return
 
 /obj/item/mine/proc/prime(mob/user as mob, var/explode_now = FALSE)
 	visible_message("\The [src.name] beeps as the priming sequence completes.")

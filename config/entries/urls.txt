@@ -1,2 +1,5 @@
 ## Github address
 GITHUBURL https://github.com/Citadel-Station-13/Citadel-Station-13-RP
+
+## Wiki Page Root
+WIKI_PAGE_ROOT https://citadel-station.net/wikiRP/index.php?title=

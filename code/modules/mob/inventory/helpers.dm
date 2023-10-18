@@ -1,3 +1,5 @@
+//* these call other procs in external.dm *//
+
 /**
  * dels something or says "x is stuck to your hand"
  *

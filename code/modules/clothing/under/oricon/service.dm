@@ -3,7 +3,6 @@
 	icon = 'icons/clothing/uniform/rank/service.dmi'
 	desc = "A service uniform of some kind."
 	icon_state = "white"
-	armor = list(melee = 5, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 5, rad = 0)
 	siemens_coefficient = 0.9
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL | WORN_RENDER_INHAND_NO_RENDER
 	worn_has_rollsleeve = UNIFORM_HAS_ROLL

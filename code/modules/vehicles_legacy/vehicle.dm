@@ -108,19 +108,19 @@
 			else
 				to_chat(user, "<span class='notice'>Unable to repair while [src] is off.</span>")
 
-	else if(hasvar(W,"force") && hasvar(W,"damtype"))
+	else if(hasvar(W,"damage_force") && hasvar(W,"damtype"))
 		user.setClickCooldown(user.get_attack_speed(W))
 		switch(W.damtype)
 			if("fire")
-				health -= W.force * fire_dam_coeff
+				health -= W.damage_force * fire_dam_coeff
 			if("brute")
-				health -= W.force * brute_dam_coeff
+				health -= W.damage_force * brute_dam_coeff
 		..()
 		healthcheck()
 	else
 		..()
 
-/obj/vehicle_old/bullet_act(var/obj/item/projectile/Proj)
+/obj/vehicle_old/bullet_act(var/obj/projectile/Proj)
 	health -= Proj.get_structure_damage()
 	..()
 	healthcheck()
@@ -378,7 +378,7 @@
 	if(!damage)
 		return
 	visible_message("<span class='danger'>[user] [attack_message] the [src]!</span>")
-	user.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [src.name]</font>")
+	user.attack_log += "\[[time_stamp()]\] <font color='red'>attacked [name]</font>"
 	user.do_attack_animation(src)
 	src.health -= damage
 	if(mechanical && prob(10))

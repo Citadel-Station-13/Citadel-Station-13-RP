@@ -3,7 +3,7 @@
 		return FALSE
 	if(!reagents)
 		return FALSE
-	if(!reagents.get_free_space())
+	if(!reagents.available_volume())
 		return FALSE
 	return TRUE
 

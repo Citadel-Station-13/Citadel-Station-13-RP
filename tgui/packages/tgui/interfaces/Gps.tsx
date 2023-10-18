@@ -140,7 +140,7 @@ export const Gps = (props, context) => {
                 </Table.Row>
                 {
                   data.signals.map(signal => (
-                    <Table.Row key={signal.ref} className="candystripe">
+                    <Table.Row key={`${signal.ref} ${signal.level}`} className="candystripe">
                       <Table.Cell bold color="label">
                         {signal.name}
                       </Table.Cell>
@@ -190,7 +190,7 @@ export const Gps = (props, context) => {
                 </Table.Row>
                 {
                   data.waypoints.map(signal => (
-                    <Table.Row key={signal.ref} className="candystripe">
+                    <Table.Row key={`${signal.ref} ${signal.level}`} className="candystripe">
                       <Table.Cell bold color="label">
                         {signal.name}
                       </Table.Cell>

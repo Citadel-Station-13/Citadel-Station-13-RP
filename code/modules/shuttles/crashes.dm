@@ -34,7 +34,7 @@
 	ASSERT(istype(target))
 
 	// Blow up the target area?
-	//command_announcement.Announce(departure_message,(announcer ? announcer : "[GLOB.using_map.boss_name]"))
+	//command_announcement.Announce(departure_message,(announcer ? announcer : "[(LEGACY_MAP_DATUM).boss_name]"))
 
 	// What people are we dealing with here
 	var/list/victims = list()
@@ -55,7 +55,7 @@
 	for(var/living in victims)
 		var/mob/living/L = living
 		victims[L] = get_turf(L)
-		L.Sleeping(rand(10,20))
+		L.afflict_sleeping(20 * rand(10,20))
 		L.Life(1, SSmobs.times_fired)
 		L.loc = null
 

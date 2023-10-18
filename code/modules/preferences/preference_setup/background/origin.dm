@@ -1,15 +1,18 @@
 /datum/category_item/player_setup_item/background/origin
 	name = "Origin"
 	save_key = CHARACTER_DATA_ORIGIN
-	sort_order = 2
+	sort_order = 3
 
 /datum/category_item/player_setup_item/background/origin/content(datum/preferences/prefs, mob/user, data)
 	. = list()
 	var/list/datum/lore/character_background/origin/available = SScharacters.available_origins(prefs.character_species_id())
 	var/list/categories = list()
+	var/datum/lore/character_background/origin/current = SScharacters.resolve_origin(data)
+	var/current_category
 	for(var/datum/lore/character_background/origin/O as anything in available)
 		LAZYADD(categories[O.category], O)
-	var/datum/lore/character_background/origin/current = SScharacters.resolve_origin(data)
+		if(O == current)
+			current_category = O.category
 	. += "<center>"
 	. += "<b>Origin</b><br>"
 	if(length(categories) > 1)
@@ -20,6 +23,8 @@
 	for(var/datum/lore/character_background/origin/O in categories[current.category])
 		if(O == current)
 			. += "<span class='linkOn'>[O.name]</span>"
+		else if(current_category && O.category != current_category)
+			continue
 		else
 			. += href_simple(prefs, "pick", "[O.name]", O.id)
 		. += " "

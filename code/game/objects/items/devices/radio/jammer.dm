@@ -39,7 +39,7 @@ var/global/list/active_radio_jammers = list()
 	QDEL_NULL(power_source)
 	return ..()
 
-/obj/item/radio_jammer/get_cell()
+/obj/item/radio_jammer/get_cell(inducer)
 	return power_source
 
 /obj/item/radio_jammer/proc/turn_off(mob/user)
@@ -69,7 +69,7 @@ var/global/list/active_radio_jammers = list()
 		update_icon()
 
 
-/obj/item/radio_jammer/attack_hand(mob/user)
+/obj/item/radio_jammer/attack_hand(mob/user, list/params)
 	if(user.get_inactive_held_item() == src && power_source)
 		to_chat(user,"<span class='notice'>You eject \the [power_source] from \the [src].</span>")
 		user.put_in_hands(power_source)
@@ -79,6 +79,9 @@ var/global/list/active_radio_jammers = list()
 		return ..()
 
 /obj/item/radio_jammer/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(on)
 		turn_off(user)
 	else

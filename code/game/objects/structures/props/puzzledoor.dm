@@ -26,8 +26,8 @@
 			return 0
 	return 1
 
-/obj/machinery/door/blast/puzzle/bullet_act(var/obj/item/projectile/Proj)
-	if(!istype(Proj, /obj/item/projectile/test))
+/obj/machinery/door/blast/puzzle/bullet_act(var/obj/projectile/Proj)
+	if(!istype(Proj, /obj/projectile/test))
 		visible_message("<span class='cult'>\The [src] is completely unaffected by \the [Proj].</span>")
 	qdel(Proj) //No piercing. No.
 
@@ -53,7 +53,7 @@
 			locks -= L
 	..()
 
-/obj/machinery/door/blast/puzzle/attack_hand(mob/user as mob)
+/obj/machinery/door/blast/puzzle/attack_hand(mob/user, list/params)
 	if(check_locks())
 		force_toggle(1, user)
 	else

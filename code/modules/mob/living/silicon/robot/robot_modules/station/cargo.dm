@@ -34,6 +34,7 @@
 		/obj/item/tool/screwdriver/cyborg,
 		/obj/item/storage/bag/ore,
 		/obj/item/pickaxe/borgdrill,
+		/obj/item/gun/energy/kinetic_accelerator/cyborg,
 		/obj/item/storage/bag/sheetsnatcher/borg,
 		/obj/item/gripper/miner,
 		/obj/item/mining_scanner
@@ -53,7 +54,9 @@
 		"F3-LINE" = "FELI-Mining",
 		"K-MINE" = "kmine",
 		"Cargo Hound" = "cargohound",
-		"Cargo Hound Dark" = "cargohounddark"
+		"Cargo Hound Dark" = "cargohounddark",
+		"Drake" = "drakemine",
+		"Otie" = "otiec"
 	)
 	channels = list("Supply" = 1)
 	can_be_pushed = 0
@@ -66,6 +69,7 @@
 		/obj/item/tool/screwdriver/cyborg,
 		/obj/item/storage/bag/ore,
 		/obj/item/pickaxe/borgdrill,
+		/obj/item/gun/energy/kinetic_accelerator/cyborg,
 		/obj/item/storage/bag/sheetsnatcher/borg,
 		/obj/item/gripper/miner,
 		/obj/item/mining_scanner,

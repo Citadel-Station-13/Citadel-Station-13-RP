@@ -13,40 +13,40 @@
 	name = "warden's jumpsuit"
 	icon_state = "warden"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "red", SLOT_ID_LEFT_HAND = "red")
-	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	armor_type = /datum/armor/station/padded
 	siemens_coefficient = 0.9
 
 /obj/item/clothing/under/rank/warden_fem
 	name = "warden's jumpsuit"
 	desc = "It's made of a slightly sturdier material than standard jumpsuits, to allow for more robust protection. It has the word \"Warden\" written on the shoulders."
 	icon_state = "warden_fem"
-	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	armor_type = /datum/armor/station/padded
 
 /obj/item/clothing/under/rank/warden/skirt_pleated
 	name = "warden's pleated skirt"
 	desc = "A pleated skirt made up of a slightly sturdier material than your average jumpsuit. It has the word 'Warden' writton on the shoulders."
 	icon_state = "rwarden_skirt"
-	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	armor_type = /datum/armor/station/padded
 
 /obj/item/clothing/under/rank/security
 	name = "security officer's jumpsuit"
 	desc = "It's made of a slightly sturdier material than standard jumpsuits, to allow for robust protection."
 	icon_state = "security"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "red", SLOT_ID_LEFT_HAND = "red")
-	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	armor_type = /datum/armor/station/padded
 	siemens_coefficient = 0.9
 
 /obj/item/clothing/under/rank/security_fem
 	name = "security officer's jumpsuit"
 	desc = "It's made of a slightly sturdier material than standard jumpsuits, to allow for robust protection."
 	icon_state = "security_fem"
-	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	armor_type = /datum/armor/station/padded
 
 /obj/item/clothing/under/rank/security/skirt_pleated
 	name = "security officer's pleated skirt"
 	desc = "A pleated skirt made up of a slightly sturdier material than most jumpsuits, allowing more robust protection."
 	icon_state = "sec_skirt"
-	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	armor_type = /datum/armor/station/padded
 
 /obj/item/clothing/under/rank/security/turtleneck
 	name = "security turtleneck"
@@ -65,8 +65,8 @@
 	desc = "A dress shirt and khakis with a security patch sewn on."
 	icon_state = "dispatch"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "detective", SLOT_ID_LEFT_HAND = "detective")
-	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS
+	armor_type = /datum/armor/station/padded
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS
 	siemens_coefficient = 0.9
 
 /obj/item/clothing/under/rank/security2
@@ -74,7 +74,7 @@
 	desc = "It's made of a slightly sturdier material, to allow for robust protection."
 	icon_state = "redshirt2"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "red", SLOT_ID_LEFT_HAND = "red")
-	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	armor_type = /datum/armor/station/padded
 	siemens_coefficient = 0.9
 
 /obj/item/clothing/under/rank/security2_fem
@@ -92,27 +92,27 @@
 	name = "security officer's corporate uniform"
 	desc = "A corporate standard uniform made of a slightly sturdier material, to allow for robust protection."
 	icon_state = "sec_corporate_fem"
-	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	armor_type = /datum/armor/station/padded
 
 /obj/item/clothing/under/rank/warden/corp
 	icon_state = "warden_corporate"
 	name = "warden's corporate uniform"
 	desc = "A corporate standard uniform made of a slightly sturdier material, to allow for robust protection. It has the word \"Warden\" on the shoulders."
-	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	armor_type = /datum/armor/station/padded
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "black", SLOT_ID_LEFT_HAND = "black")
 
 /obj/item/clothing/under/rank/warden/corp_fem
 	name = "warden's corporate uniform"
 	desc = "A corporate standard uniform made of a slightly sturdier material, to allow for robust protection. It has the word \"Warden\" on the shoulders."
 	icon_state = "warden_corporate_fem"
-	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	armor_type = /datum/armor/station/padded
 
 /obj/item/clothing/under/tactical
 	name = "tactical jumpsuit"
 	desc = "It's made of a slightly sturdier material than standard jumpsuits, to allow for robust protection."
 	icon_state = "swatunder"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "green", SLOT_ID_LEFT_HAND = "green")
-	armor = list(melee = 10, bullet = 5, laser = 5,energy = 0, bomb = 0, bio = 0, rad = 0)
+	armor_type = /datum/armor/station/padded
 	siemens_coefficient = 0.9
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
@@ -123,7 +123,7 @@
 	name = "detective's suit"
 	desc = "A rumpled white dress shirt paired with well-worn grey slacks."
 	icon_state = "detective"
-	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	armor_type = /datum/armor/station/padded
 	siemens_coefficient = 0.9
 	starting_accessories = list(/obj/item/clothing/accessory/tie/blue_clip)
 
@@ -131,7 +131,7 @@
 	name = "detective's suit"
 	desc = "A rumpled white dress shirt paired with well-worn grey slacks."
 	icon_state = "detective_fem"
-	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	armor_type = /datum/armor/station/padded
 
 /*
 /obj/item/clothing/under/det/verb/rollup()
@@ -223,26 +223,26 @@
 	name = "head of security's jumpsuit"
 	icon_state = "hos"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "red", SLOT_ID_LEFT_HAND = "red")
-	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	armor_type = /datum/armor/station/padded
 	siemens_coefficient = 0.9
 
 /obj/item/clothing/under/rank/head_of_security_fem
 	name = "head of security's jumpsuit"
 	desc = "It's a jumpsuit worn by those few with the dedication to achieve the position of \"Head of Security\". It has additional armour to protect the wearer."
 	icon_state = "hos_fem"
-	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	armor_type = /datum/armor/station/padded
 
 /obj/item/clothing/under/rank/head_of_security/skirt_pleated
 	name = "head of security's pleated skirt"
 	desc = "A pleated skirt worn by those few with the dedication to achieve the position of 'Head of Security'. It bears additional armour to protect the wearer."
 	icon_state = "rhos_skirt"
-	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	armor_type = /datum/armor/station/padded
 
 /obj/item/clothing/under/rank/head_of_security/skirt_pleated/alt
 	name = "dark head of security's pleated skirt"
 	desc = "A pleated skirt worn by those few with the dedication to achieve the position of 'Head of Security'. It bears additional armour to protect the wearer."
 	icon_state = "hosalt_skirt"
-	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	armor_type = /datum/armor/station/padded
 
 /obj/item/clothing/under/rank/head_of_security/corp
 	name = "head of security's corporate jumpsuit"

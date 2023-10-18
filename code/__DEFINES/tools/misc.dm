@@ -1,4 +1,4 @@
-//! switchtool tool types; separate from tool functionality
+//? switchtool tool types; separate from tool functionality
 
 #define SWITCHTOOL_SCREWDRIVER "screwdriver"
 #define SWITCHTOOL_WRENCH "wrench"

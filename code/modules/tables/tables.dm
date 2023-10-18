@@ -1,5 +1,7 @@
 var/list/table_icon_cache = list()
 
+// todo: refactor literally everything, this is atrocious, especially the icongen
+
 /obj/structure/table
 	name = "table frame"
 	icon = 'icons/obj/tables.dmi'
@@ -8,14 +10,17 @@ var/list/table_icon_cache = list()
 	density = TRUE
 	pass_flags_self = ATOM_PASS_THROWN | ATOM_PASS_CLICK | ATOM_PASS_TABLE | ATOM_PASS_OVERHEAD_THROW | ATOM_PASS_BUCKLED
 	anchored = TRUE
-	climbable = TRUE
 	layer = TABLE_LAYER
 	surgery_odds = 66
 	connections = list("nw0", "ne0", "sw0", "se0")
 
 	// smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_TABLES)
-	canSmoothWith = (SMOOTH_GROUP_TABLES)
+	canSmoothWith = (SMOOTH_GROUP_TABLES + SMOOTH_GROUP_LOW_WALL)
+
+	climb_allowed = TRUE
+	depth_level = 8
+	depth_projected = TRUE
 
 	var/flipped = 0
 	var/maxhealth = 10
@@ -103,7 +108,7 @@ var/list/table_icon_cache = list()
 	update_connections(TRUE) // Update tables around us to ignore us (material=null forces no connections)
 	. = ..()
 
-/obj/structure/table/examine(mob/user)
+/obj/structure/table/examine(mob/user, dist)
 	. = ..()
 	if(health < maxhealth)
 		switch(health / maxhealth)
@@ -182,7 +187,7 @@ var/list/table_icon_cache = list()
 
 	return ..()
 
-/obj/structure/table/attack_hand(mob/user as mob)
+/obj/structure/table/attack_hand(mob/user, list/params)
 	if(istype(user, /mob/living/carbon/human))
 		var/mob/living/carbon/human/X = user
 		if(istype(X.species, /datum/species/xenos))
@@ -434,7 +439,7 @@ var/list/table_icon_cache = list()
 
 	var/list/blocked_dirs = list()
 	for(var/obj/structure/window/W in get_turf(src))
-		if(W.is_fulltile())
+		if(W.fulltile)
 			connections = list("0", "0", "0", "0")
 			return
 		blocked_dirs |= W.dir
@@ -442,7 +447,7 @@ var/list/table_icon_cache = list()
 	for(var/D in list(NORTH, SOUTH, EAST, WEST) - blocked_dirs)
 		var/turf/T = get_step(src, D)
 		for(var/obj/structure/window/W in T)
-			if(W.is_fulltile() || W.dir == GLOB.reverse_dir[D])
+			if(W.fulltile || W.dir == global.reverse_dir[D])
 				blocked_dirs |= D
 				break
 			else
@@ -453,7 +458,7 @@ var/list/table_icon_cache = list()
 		var/turf/T = get_step(src, D)
 
 		for(var/obj/structure/window/W in T)
-			if(W.is_fulltile() || W.dir & GLOB.reverse_dir[D])
+			if(W.fulltile || W.dir & global.reverse_dir[D])
 				blocked_dirs |= D
 				break
 

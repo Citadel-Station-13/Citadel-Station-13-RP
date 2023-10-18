@@ -11,20 +11,26 @@
 	var/cooldown = 10
 	var/weightloss_power = 1
 
-/obj/machinery/fitness/attack_hand(var/mob/living/user)
-	if(user.nutrition < 70)
-		to_chat(user, "<span class='notice'>You need more energy to workout with the [src]!</span>")
+/obj/machinery/fitness/attack_hand(mob/user, list/params)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/L = user
+	if(!istype(L))
+		return
+	if(L.nutrition < 70)
+		to_chat(L, "<span class='notice'>You need more energy to workout with the [src]!</span>")
 
-	else if(user.weight < 70)
-		to_chat(user, "<span class='notice'>You're too skinny to risk losing any more weight!</span>")
+	else if(L.weight < 70)
+		to_chat(L, "<span class='notice'>You're too skinny to risk losing any more weight!</span>")
 
 	else //If they have enough nutrition and body weight, they can exercise.
-		user.setClickCooldown(cooldown)
-		user.nutrition -= 10 * weightloss_power
-		user.weight -= 0.025 * weightloss_power * (0.01*user.weight_loss)
+		L.setClickCooldown(cooldown)
+		L.nutrition -= 10 * weightloss_power
+		L.weight -= 0.025 * weightloss_power * (0.01*L.weight_loss)
 		flick("[icon_state]2",src)
 		var/message = pick(messages)
-		to_chat(user, "<span class='notice'>[message].</span>")
+		to_chat(L, "<span class='notice'>[message].</span>")
 		for(var/s in workout_sounds)
 			playsound(src.loc, s, 50, 1)
 
@@ -62,7 +68,7 @@
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 50, 1)
 		return
 
-/obj/machinery/fitness/heavy/attack_hand(var/mob/living/user)
+/obj/machinery/fitness/heavy/attack_hand(mob/user, list/params)
 	if(!anchored)
 		to_chat(user, "<span class='notice'>For safety reasons, you are required to have this equipment wrenched down before using it!</span>")
 		return
@@ -92,10 +98,16 @@
 	idle_power_usage = 0
 	active_power_usage = 0
 
-/obj/machinery/scale/attack_hand(var/mob/living/user)
-	if(user.loc != loc)
-		to_chat(user, "<span class='notice'>You need to be standing on top of the scale for it to work!</span>")
+/obj/machinery/scale/attack_hand(mob/user, list/params)
+	. = ..()
+	if(.)
 		return
-	if(user.weight) //Just in case.
-		var/kilograms = round(text2num(user.weight),4) / 2.20463
-		visible_message("<span class='notice'>[src] displays a reading of [user.weight]lb / [kilograms]kg when [user] stands on it.</span>")
+	var/mob/living/L = user
+	if(!istype(L))
+		return
+	if(L.loc != loc)
+		to_chat(L, "<span class='notice'>You need to be standing on top of the scale for it to work!</span>")
+		return
+	if(L.weight) //Just in case.
+		var/kilograms = round(text2num(L.weight),4) / 2.20463
+		visible_message("<span class='notice'>[src] displays a reading of [L.weight]lb / [kilograms]kg when [L] stands on it.</span>")

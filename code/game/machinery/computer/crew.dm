@@ -9,7 +9,7 @@
 	idle_power_usage = 250
 	active_power_usage = 500
 	circuit = /obj/item/circuitboard/crew
-	var/datum/tgui_module/crew_monitor/crew_monitor
+	var/datum/tgui_module_old/crew_monitor/crew_monitor
 
 /obj/machinery/computer/crew/Initialize(mapload)
 	. = ..()
@@ -23,7 +23,7 @@
 /obj/machinery/computer/crew/attack_ai(mob/user)
 	attack_hand(user)
 
-/obj/machinery/computer/crew/attack_hand(mob/user)
+/obj/machinery/computer/crew/attack_hand(mob/user, list/params)
 	..()
 	if(machine_stat & (BROKEN|NOPOWER))
 		return

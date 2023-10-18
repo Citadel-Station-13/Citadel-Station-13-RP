@@ -15,7 +15,7 @@
 	item_state = "gun"
 
 	fire_sound = 'sound/weapons/Taser.ogg'
-	projectile_type = /obj/item/projectile/beam/stun
+	projectile_type = /obj/projectile/beam/stun
 
 	modifystate = "stun"
 
@@ -30,8 +30,8 @@
 	flight_y_offset = 0
 
 	firemodes = list(
-	list(mode_name="stun", projectile_type=/obj/item/projectile/beam/stun/protector, modifystate="stun", fire_sound='sound/weapons/Taser.ogg'),
-	list(mode_name="lethal", projectile_type=/obj/item/projectile/beam, modifystate="kill", fire_sound='sound/weapons/gauss_shoot.ogg'),
+	list(mode_name="stun", projectile_type=/obj/projectile/beam/stun/protector, modifystate="stun", fire_sound='sound/weapons/Taser.ogg'),
+	list(mode_name="lethal", projectile_type=/obj/projectile/beam, modifystate="kill", fire_sound='sound/weapons/gauss_shoot.ogg'),
 	)
 
 	var/emagged = FALSE
@@ -107,7 +107,7 @@
 
 
 // Protector beams
-/obj/item/projectile/beam/stun/protector
+/obj/projectile/beam/stun/protector
 	name = "protector stun beam"
 	icon_state = "omnilaser" //A little more cyan
 	light_color = "#00C6FF"

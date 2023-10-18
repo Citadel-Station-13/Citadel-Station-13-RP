@@ -7,11 +7,12 @@
 import { BooleanLike, classes, pureComponentHooks } from 'common/react';
 import { InfernoNode } from 'inferno';
 import { Box, unit } from './Box';
+import { ComponentProps } from './Component';
 import { Divider } from './Divider';
 
-type LabeledListProps = {
-  children?: any;
-};
+interface LabeledListProps extends ComponentProps {
+
+}
 
 export const LabeledList = (props: LabeledListProps) => {
   const { children } = props;

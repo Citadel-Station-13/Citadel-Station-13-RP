@@ -18,9 +18,9 @@
 
 		//*** Get the fuel and oxidizer amounts
 		for(var/g in gas)
-			if(GLOB.meta_gas_flags[g] & GAS_FLAG_FUEL)
+			if(global.gas_data.flags[g] & GAS_FLAG_FUEL)
 				gas_fuel += gas[g]
-			if(GLOB.meta_gas_flags[g] & GAS_FLAG_OXIDIZER)
+			if(global.gas_data.flags[g] & GAS_FLAG_OXIDIZER)
 				total_oxidizers += gas[g]
 		gas_fuel *= group_multiplier
 		total_oxidizers *= group_multiplier
@@ -85,7 +85,7 @@
 		//remove_by_flag() and adjust_gas() handle the group_multiplier for us.
 		remove_by_flag(GAS_FLAG_OXIDIZER, used_oxidizers)
 		remove_by_flag(GAS_FLAG_FUEL, used_gas_fuel)
-		adjust_gas(/datum/gas/carbon_dioxide, used_oxidizers)
+		adjust_gas(GAS_ID_CARBON_DIOXIDE, used_oxidizers)
 
 		if(zone)
 			zone.remove_liquidfuel(used_liquid_fuel, !check_combustability())
@@ -104,7 +104,7 @@
 /datum/gas_mixture/proc/check_recombustability(list/fuel_objs)
 	. = 0
 	for(var/g in gas)
-		if(GLOB.meta_gas_flags[g] & GAS_FLAG_OXIDIZER && gas[g] >= 0.1)
+		if(global.gas_data.flags[g] & GAS_FLAG_OXIDIZER && gas[g] >= 0.1)
 			. = 1
 			break
 
@@ -116,7 +116,7 @@
 
 	. = 0
 	for(var/g in gas)
-		if(GLOB.meta_gas_flags[g] & GAS_FLAG_FUEL && gas[g] >= 0.1)
+		if(global.gas_data.flags[g] & GAS_FLAG_FUEL && gas[g] >= 0.1)
 			. = 1
 			break
 
@@ -124,7 +124,7 @@
 	. = 0
 	CACHE_VSC_PROP(atmos_vsc, /atmos/fire/consumption_rate, fire_consumption_rate)
 	for(var/g in gas)
-		if(GLOB.meta_gas_flags[g] & GAS_FLAG_OXIDIZER && QUANTIZE(gas[g] * fire_consumption_rate) >= 0.1)
+		if(global.gas_data.flags[g] & GAS_FLAG_OXIDIZER && QUANTIZE(gas[g] * fire_consumption_rate) >= 0.1)
 			. = 1
 			break
 
@@ -136,7 +136,7 @@
 
 	. = 0
 	for(var/g in gas)
-		if(GLOB.meta_gas_flags[g] & GAS_FLAG_FUEL && (QUANTIZE(gas[g] * fire_consumption_rate) >= max(0.005, MINIMUM_MOLES_TO_SPARK)))
+		if(global.gas_data.flags[g] & GAS_FLAG_FUEL && (QUANTIZE(gas[g] * fire_consumption_rate) >= max(0.005, MINIMUM_MOLES_TO_SPARK)))
 			. = 1
 			break
 

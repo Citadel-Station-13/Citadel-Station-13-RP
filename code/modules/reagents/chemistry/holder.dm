@@ -1,8 +1,15 @@
 /datum/reagents
+	//? core
+	/// reagent holder flags - see [code/__DEFINES/reagents/flags.dm]
+	var/reagent_holder_flags = NONE
+
+	///? legacy / unsorted
 	var/list/datum/reagent/reagent_list = list()
 	var/total_volume = 0
 	var/maximum_volume = 100
+
 	var/atom/my_atom = null
+	// todo: remove / refactor this var into reagent_holder_flags with proper defines, this was never ported properly.
 	var/reagents_holder_flags
 
 /datum/reagents/New(max = 100, atom/A = null, new_flags = NONE)
@@ -11,15 +18,15 @@
 	my_atom = A
 
 	//I dislike having these here but map-objects are initialised before world/New() is called. >_>
-	if(!SSchemistry.chemical_reagents)
+	if(!SSchemistry.reagent_lookup)
 		//Chemical Reagents - Initialises all /datum/reagent into a list indexed by reagent id
 		var/paths = typesof(/datum/reagent) - /datum/reagent
-		SSchemistry.chemical_reagents = list()
+		SSchemistry.reagent_lookup = list()
 		for(var/path in paths)
 			var/datum/reagent/D = new path()
 			if(!D.name)
 				continue
-			SSchemistry.chemical_reagents[D.id] = D
+			SSchemistry.reagent_lookup[D.id] = D
 
 	reagents_holder_flags = new_flags
 
@@ -45,9 +52,6 @@
 	return english_list(data)
 
 /* Internal procs */
-
-/datum/reagents/proc/get_free_space() // Returns free space.
-	return maximum_volume - total_volume
 
 /datum/reagents/proc/get_master_reagent() // Returns reference to the reagent with the biggest volume.
 	var/the_reagent = null
@@ -125,11 +129,15 @@
 /* Holder-to-chemical */
 
 /datum/reagents/proc/add_reagent(id, amount, data = null, safety = 0)
+	if(ispath(id))
+		var/datum/reagent/accessing = id
+		id = initial(accessing.id)
+
 	if(!isnum(amount) || amount <= 0)
 		return 0
 
 	update_total()
-	amount = min(amount, get_free_space())
+	amount = min(amount, available_volume())
 
 	for(var/datum/reagent/current in reagent_list)
 		if(current.id == id)
@@ -139,14 +147,14 @@
 
 			current.volume += amount
 			if(!isnull(data)) // For all we know, it could be zero or empty string and meaningful
-				current.mix_data(data, amount)
+				current.mix_data(src, current.data, current.volume, data, amount)
 			update_total()
 			if(!safety)
 				handle_reactions()
 			if(my_atom)
 				my_atom.on_reagent_change()
 			return 1
-	var/datum/reagent/D = SSchemistry.chemical_reagents[id]
+	var/datum/reagent/D = SSchemistry.reagent_lookup[id]
 	if(D)
 		var/datum/reagent/R = new D.type()
 		reagent_list += R
@@ -212,14 +220,30 @@
 				return 0
 	return 0
 
-/datum/reagents/proc/has_all_reagents(list/check_reagents)
+/datum/reagents/proc/has_all_reagents(list/check_reagents, multiplier = 1)
 	//this only works if check_reagents has no duplicate entries... hopefully okay since it expects an associative list
 	var/missing = check_reagents.len
 	for(var/datum/reagent/current in reagent_list)
 		if(current.id in check_reagents)
-			if(current.volume >= check_reagents[current.id])
+			if(current.volume >= check_reagents[current.id] * multiplier)
 				missing--
 	return !missing
+
+/**
+ * returns lowest multiple of what we have compared to reagents list.
+ *
+ * both typepaths and ids are acceptable.
+ */
+/datum/reagents/proc/has_multiple(list/reagents, multiplier = 1)
+	. = INFINITY
+	// *sigh*
+	var/list/legacy_translating = list()
+	for(var/datum/reagent/R in reagent_list)
+		legacy_translating[R.id] = R.volume
+	for(var/datum/reagent/reagent as anything in reagents)
+		. = min(., legacy_translating[ispath(reagent)? initial(reagent.id) : reagent] / reagents[reagent])
+		if(!.)
+			return
 
 /datum/reagents/proc/clear_reagents()
 	for(var/datum/reagent/current in reagent_list)
@@ -227,9 +251,9 @@
 	return
 
 /datum/reagents/proc/get_reagent(id)
-	for(var/datum/reagent/R in reagent_list)
-		if(R.id == id)
-			return R
+	for(var/datum/reagent/current in reagent_list)
+		if(current.id == id)
+			return current
 
 /datum/reagents/proc/get_reagent_amount(id)
 	for(var/datum/reagent/current in reagent_list)
@@ -271,7 +295,7 @@
 	if(!target || !istype(target))
 		return
 
-	amount = max(0, min(amount, total_volume, target.get_free_space() / multiplier))
+	amount = max(0, min(amount, total_volume, target.available_volume() / multiplier))
 
 	if(!amount)
 		return
@@ -389,12 +413,12 @@
 		perm = L.reagent_permeability()
 	return trans_to_mob(target, amount, CHEM_TOUCH, perm, copy)
 
-/datum/reagents/proc/trans_to_mob(mob/target, amount = 1, type = CHEM_BLOOD, multiplier = 1, copy = 0) // Transfer after checking into which holder...
+/datum/reagents/proc/trans_to_mob(mob/target, amount = 1, type = CHEM_INJECT, multiplier = 1, copy = 0) // Transfer after checking into which holder...
 	if(!target || !istype(target))
 		return
 	if(iscarbon(target))
 		var/mob/living/carbon/C = target
-		if(type == CHEM_BLOOD)
+		if(type == CHEM_INJECT)
 			var/datum/reagents/R = C.reagents
 			return trans_to_holder(R, amount, multiplier, copy)
 		if(type == CHEM_INGEST)
@@ -511,3 +535,26 @@
 		if(C.can_happen(src))
 			do_happen = TRUE
 	return do_happen
+
+//? Queries - Whole
+
+/**
+ * returns volume remaining
+ */
+/datum/reagents/proc/available_volume()
+	return maximum_volume - total_volume
+
+//? UI
+
+/**
+ * data list for ReagentContents in /tgui/interfaces/common/Reagents.tsx
+ */
+/datum/reagents/proc/tgui_reagent_contents()
+	var/list/built = list()
+	for(var/datum/reagent/R as anything in reagent_list)
+		built[++built.len] = list(
+			"name" = R.name,
+			"amount" = R.volume,
+			"id" = R.id,
+		)
+	return built

@@ -9,7 +9,7 @@
 	icon_state = "capacitor"
 	var/active = 0
 	density = 1
-	req_one_access = list(access_engine,access_captain,access_security)
+	req_one_access = list(ACCESS_ENGINEERING_MAIN,ACCESS_COMMAND_CAPTAIN,ACCESS_SECURITY_EQUIPMENT)
 	var/stored_charge = 0	//not to be confused with power cell charge, this is in Joules
 	var/last_stored_charge = 0
 	var/time_since_fail = 100
@@ -67,7 +67,7 @@
 	else
 		..()
 
-/obj/machinery/shield_capacitor/attack_hand(mob/user)
+/obj/machinery/shield_capacitor/attack_hand(mob/user, list/params)
 	if(machine_stat & (BROKEN))
 		return
 	interact(user)

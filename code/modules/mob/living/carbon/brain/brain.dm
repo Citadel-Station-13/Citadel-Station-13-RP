@@ -32,6 +32,8 @@
 
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:32
 
+// todo: this should be like, /mob/brain or something, this doesn't simulate /living stuff at all.
+
 /mob/living/carbon/brain
 	var/obj/item/container = null
 	var/timeofhostdeath = 0
@@ -56,13 +58,12 @@
 		ghostize()		//Ghostize checks for key so nothing else is necessary.
 	return ..()
 
-/mob/living/carbon/brain/update_canmove()
+/mob/living/carbon/brain/update_mobility(blocked, forced)
 	if(in_contents_of(/obj/mecha) || istype(loc, /obj/item/mmi))
-		canmove = 1
-		use_me = 1
+		. = ..(blocked, forced)
 	else
-		canmove = 0
-	return canmove
+		. = ..(MOBILITY_FLAGS_REAL, forced)
+	use_me = !!(. & MOBILITY_IS_CONSCIOUS)
 
 /mob/living/carbon/brain/isSynthetic()
 	return istype(loc, /obj/item/mmi)

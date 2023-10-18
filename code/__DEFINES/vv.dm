@@ -94,6 +94,11 @@
 #define VV_HK_TRIGGER_EXPLOSION "explode"
 #define VV_HK_EDIT_FILTERS "edit_filters"
 #define VV_HK_EDIT_COLOR_MATRIX "edit_color_matrix"
+#define VV_HK_EDIT_ARMOR "edit_armor"
+
+// /mob
+#define VV_HK_ADD_PHYSIOLOGY_MODIFIER "add_physiology_mod"
+#define VV_HK_REMOVE_PHYSIOLOGY_MODIFIER "remove_physiology_mod"
 
 /*
 // /obj
@@ -137,3 +142,6 @@
 // misc
 #define VV_HK_SPACEVINE_PURGE "spacevine_purge"
 */
+
+// /obj/item/card/id
+#define VV_HK_ID_MOD "id_mod"

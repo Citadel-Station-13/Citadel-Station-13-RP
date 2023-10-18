@@ -4,6 +4,7 @@
 	icon = 'icons/mob/sprite_accessories/taurs.dmi'
 	do_colouration = 1 // Yes color, using tail color
 	color_blend_mode = ICON_MULTIPLY  // The sprites for taurs are designed for ICON_MULTIPLY
+	can_be_hidden = FALSE
 
 	var/icon/suit_sprites = null //File for suit sprites, if any.
 
@@ -144,12 +145,33 @@
 	id = "tail_taur_naga_colorable"
 	icon_state = "naga_s"
 	extra_overlay = "naga_markings"
-	
+
 /datum/sprite_accessory/tail/taur/naga/naga_2c_alt
 	name = "Naga dual-color alt (Taur)"
 	id = "tail_taur_naga_colorable_alt"
 	icon_state = "altnaga_s"
 	extra_overlay = "altnaga_markings"
+
+/datum/sprite_accessory/tail/taur/naga/naga_tailmaw
+	name = "Naga Tailmaw (Taur)"
+	id = "tail_taur_naga_tailmaw"
+	icon_state = "altnagatailmaw_s"
+	extra_overlay = "altnagatailmaw_markings"
+	extra_overlay2 = "altnagatailmaw_eyes"
+
+// yes, a mermaid is not a naga, i'm just lazy so it's using the same messages because it's still a tail okay
+/datum/sprite_accessory/tail/taur/naga/mermaid
+	name = "Mermaid (Taur)"
+	id = "tail_taur_mermaid"
+	icon_state = "mermaid_s"
+	suit_sprites = null
+
+/datum/sprite_accessory/tail/taur/naga/mermaid/alt
+	name = "Mermaid Alt (Taur)"
+	id = "tail_taur_mermaid_alt"
+	icon_state = "altmermaid_s"
+	extra_overlay = "altmermaid_markings"
+	extra_overlay2 = "altmermaid_markings2"
 
 /datum/sprite_accessory/tail/taur/horse
 	name = "Horse (Taur)"

@@ -10,13 +10,13 @@
 	item_state = "crowbar"
 	slot_flags = SLOT_BELT
 	tool_behaviour = TOOL_CROWBAR
-	force = 6
+	damage_force = 6
 	throw_force = 7
 	pry = 1
 	item_state = "crowbar"
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_ENGINEERING = 1)
-	matter = list(MAT_STEEL = 50)
+	materials = list(MAT_STEEL = 50)
 	attack_verb = list("attacked", "bashed", "battered", "bludgeoned", "whacked")
 	tool_sound = 'sound/items/crowbar.ogg'
 	drop_sound = 'sound/items/drop/crowbar.ogg'
@@ -79,7 +79,7 @@
 	name = "hydraulic crowbar"
 	desc = "A hydraulic prying tool, compact but powerful. Designed to replace crowbars in industrial synthetics."
 	tool_sound = 'sound/items/jaws_pry.ogg'
-	force = 10
+	damage_force = 10
 	tool_speed = 0.5
 
 /obj/item/tool/crowbar/RIGset
@@ -93,10 +93,10 @@
 	desc = "A set of jaws of life, compressed through the magic of science. It's fitted with a prying head."
 	icon_state = "jaws_pry"
 	item_state = "jawsoflife"
-	matter = list(MAT_METAL=150, MAT_SILVER=50)
+	materials = list(MAT_METAL=150, MAT_SILVER=50)
 	origin_tech = list(TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
 	tool_sound = 'sound/items/jaws_pry.ogg'
-	force = 15
+	damage_force = 15
 	tool_speed = 0.25
 	var/obj/item/tool/wirecutters/power/counterpart = null
 
@@ -113,6 +113,9 @@
 	return ..()
 
 /obj/item/tool/crowbar/power/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	playsound(get_turf(user), 'sound/items/change_jaws.ogg', 50, 1)
 	user.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 	if(!user.put_in_active_hand(counterpart))
@@ -130,13 +133,13 @@
 	icon = 'icons/obj/tools_vr.dmi'
 	icon_state = "prybar"
 	slot_flags = SLOT_BELT
-	force = 4
+	damage_force = 4
 	throw_force = 5
 	pry = 1
 	item_state = "crowbar"
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_ENGINEERING = 1)
-	matter = list(MAT_STEEL = 30)
+	materials = list(MAT_STEEL = 30)
 	attack_verb = list("whapped", "smacked", "swatted", "thwacked", "hit")
 	tool_sound = 'sound/items/crowbar.ogg'
 	tool_speed = 1
@@ -151,3 +154,17 @@
 	. = ..()
 	if(random_color)
 		icon_state = "prybar[pick("","_green","_aubergine","_blue")]"
+
+/obj/item/tool/crowbar/crystal
+	name = "crystalline prytool"
+	desc = "A crystalline prying tool of an alien make."
+	icon_state = "crystal_crowbar"
+	item_state = "crystal_tool"
+	icon = 'icons/obj/crystal_tools.dmi'
+	materials = list(MATERIAL_CRYSTAL = 1250)
+	tool_speed = 0.2
+
+/obj/item/tool/crowbar/crystal/Initialize()
+	. = ..()
+	icon_state = initial(icon_state)
+	item_state = initial(item_state)

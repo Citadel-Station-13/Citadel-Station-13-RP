@@ -95,28 +95,28 @@
 	var/chargecost_lethal
 
 	if(laser_rating >= 15)
-		beammode_lethal = /obj/item/projectile/beam/sniper
-		beammode = /obj/item/projectile/beam/stun
+		beammode_lethal = /obj/projectile/beam/sniper
+		beammode = /obj/projectile/beam/stun
 		chargecost = 300
 		chargecost_lethal = 600
 	else if(laser_rating >= 10)
-		beammode_lethal = /obj/item/projectile/beam/xray
-		beammode = /obj/item/projectile/beam/stun
+		beammode_lethal = /obj/projectile/beam/xray
+		beammode = /obj/projectile/beam/stun
 		chargecost = 300
 		chargecost_lethal = 200
 	else if(laser_rating == 8 && manipulator_rating == 5) //very specific set of combinations. No, you can't make a pulse rifle. Sorry research.
-		beammode_lethal = /obj/item/projectile/beam/heavylaser
-		beammode = /obj/item/projectile/beam/stun
+		beammode_lethal = /obj/projectile/beam/heavylaser
+		beammode = /obj/projectile/beam/stun
 		chargecost = 300
 		chargecost_lethal = 600
 	else if(laser_rating >= 5)
-		beammode_lethal = /obj/item/projectile/beam/midlaser
-		beammode = /obj/item/projectile/beam/stun/med
+		beammode_lethal = /obj/projectile/beam/midlaser
+		beammode = /obj/projectile/beam/stun/med
 		chargecost = 180
 		chargecost_lethal = 240
 	else if(laser_rating < 5)
-		beammode_lethal = /obj/item/projectile/beam/weaklaser
-		beammode = /obj/item/projectile/beam/stun/weak
+		beammode_lethal = /obj/projectile/beam/weaklaser
+		beammode = /obj/projectile/beam/stun/weak
 		chargecost = 100
 		chargecost_lethal = 200
 

@@ -37,19 +37,19 @@
 	. = ..()
 	START_PROCESSING(SSobj, src)
 
-/obj/structure/cult/pylon/attack_hand(mob/M as mob)
-	attackpylon(M, 5)
+/obj/structure/cult/pylon/attack_hand(mob/user, list/params)
+	attackpylon(user, 5)
 
 /obj/structure/cult/pylon/attack_generic(var/mob/user, var/damage)
 	attackpylon(user, damage)
 
 /obj/structure/cult/pylon/attackby(obj/item/W as obj, mob/user as mob)
-	attackpylon(user, W.force)
+	attackpylon(user, W.damage_force)
 
 /obj/structure/cult/pylon/take_damage(var/damage)
 	pylonhit(damage)
 
-/obj/structure/cult/pylon/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/cult/pylon/bullet_act(var/obj/projectile/Proj)
 	pylonhit(Proj.get_structure_damage())
 
 /obj/structure/cult/pylon/proc/pylonhit(var/damage)
@@ -155,7 +155,7 @@
 
 /obj/effect/gateway/active/Initialize(mapload)
 	. = ..()
-	addtimer(CALLBACK(src, .proc/spawn_things), rand(30, 60) SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(spawn_things)), rand(30, 60) SECONDS)
 
 /obj/effect/gateway/active/proc/spawn_things()
 	var/t = pick(spawnable)

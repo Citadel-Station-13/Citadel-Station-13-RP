@@ -21,12 +21,4 @@
 
 #define random_id(key,min_id,max_id) uniqueness_repository.Generate(/datum/uniqueness_generator/id_random, key, min_id, max_id)
 
-#define ARGS_DEBUG log_debug("[__FILE__] - [__LINE__]") ; for(var/arg in args) { log_debug("\t[log_info_line(arg)]") }
-
 #define JOINTEXT(X) jointext(X, null)
-
-#define BITSHIFT_LEFT(X, N) (X << (N))
-
-#define BITSHIFT_RIGHT(X, N) (X >> (N))
-
-#define BITFLAG(X) BITSHIFT_LEFT(1, X)

@@ -22,6 +22,9 @@
 	for(var/mob/new_player/player in GLOB.player_list)
 		if(!player.client)	// git out
 			continue
+		if(player.client.persistent.ligma)
+			log_shadowban("[player] ([player.client]) roundstart blocked")
+			continue // bye :)
 		if(player.ready && player.mind && !player.mind.assigned_role)
 			divide_unassigned += player
 		var/list/priorities = player.client.effective_job_priorities()

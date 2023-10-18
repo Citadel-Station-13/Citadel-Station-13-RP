@@ -3,9 +3,8 @@
 		return
 	drop_inventory(TRUE, TRUE, TRUE)
 	regenerate_icons()
-	transforming = 1
-	canmove = 0
-	stunned = 1
+	transforming = TRUE
+	update_mobility()
 	icon = null
 	invisibility = 101
 	for(var/t in organs)
@@ -18,9 +17,8 @@
 	sleep(48)
 	//animation = null
 
-	transforming = 0
-	stunned = 0
-	update_canmove()
+	transforming = FALSE
+	update_mobility()
 	invisibility = initial(invisibility)
 
 	if(!species.primitive_form) //If the creature in question has no primitive set, this is going to be messy.
@@ -52,8 +50,8 @@
 	if (transforming)
 		return
 	drop_inventory(TRUE, TRUE, TRUE)
-	transforming = 1
-	canmove = 0
+	transforming = TRUE
+	update_mobility()
 	icon = null
 	invisibility = 101
 	return ..()
@@ -61,12 +59,12 @@
 /mob/proc/AIize(move=1)
 	if(client)
 		SEND_SOUND(src, sound(null, repeat = 0, wait = 0, volume = 85, channel = 1)) // stop the jams for AIs
-	var/mob/living/silicon/ai/O = new (loc, GLOB.using_map.default_law_type,,1)//No MMI but safety is in effect.
+	var/mob/living/silicon/ai/O = new (loc, (LEGACY_MAP_DATUM).default_law_type,,1)//No MMI but safety is in effect.
 	O.invisibility = 0
 	O.aiRestorePowerRoutine = 0
 
 	if(mind)
-		mind.transfer_to(O)
+		mind.transfer(O)
 		O.mind.original = O
 	else
 		O.key = key
@@ -103,8 +101,8 @@
 		return
 	drop_inventory(TRUE, TRUE, TRUE)
 	regenerate_icons()
-	transforming = 1
-	canmove = 0
+	transforming = TRUE
+	update_mobility()
 	icon = null
 	invisibility = 101
 	for(var/t in organs)
@@ -122,7 +120,7 @@
 	O.invisibility = 0
 
 	if(mind)		//TODO
-		mind.transfer_to(O)
+		mind.transfer(O)
 		if(O.mind && O.mind.assigned_role == "Cyborg")
 			O.mind.original = O
 			if(O.mind.role_alt_title == "Drone")
@@ -160,8 +158,8 @@
 		return
 	drop_inventory(TRUE, TRUE, TRUE)
 	regenerate_icons()
-	transforming = 1
-	canmove = 0
+	transforming = TRUE
+	update_mobility()
 	icon = null
 	invisibility = 101
 	for(var/t in organs)
@@ -183,8 +181,8 @@
 		return
 	drop_inventory(TRUE, TRUE, TRUE)
 	regenerate_icons()
-	transforming = 1
-	canmove = 0
+	transforming = TRUE
+	update_mobility()
 	icon = null
 	invisibility = 101
 	for(var/t in organs)	//this really should not be necessary
@@ -213,8 +211,8 @@
 	drop_inventory(TRUE, TRUE, TRUE)
 
 	regenerate_icons()
-	transforming = 1
-	canmove = 0
+	transforming = TRUE
+	update_mobility()
 	icon = null
 	invisibility = 101
 

@@ -4,7 +4,6 @@
 	name = SPECIES_UNATHI_DIGI
 	name_plural = SPECIES_UNATHI_DIGI
 	default_bodytype = BODYTYPE_UNATHI_DIGI
-
 	icobase       = 'icons/mob/species/unathidigi/body.dmi'
 	deform        = 'icons/mob/species/unathidigi/deformed_body.dmi'
 	husk_icon     = 'icons/mob/species/unathidigi/husk.dmi'
@@ -17,7 +16,6 @@
 	While some unathi are plantigrade and almost resemble humans in their silhouette, others are more hulking; a digitigrade, beastial and alien creature.
 	"}
 
-	organs_icon = 'icons/mob/species/unathidigi/organs.dmi'
 	has_limbs = list(
 		BP_TORSO  = list("path" = /obj/item/organ/external/chest/unathi),
 		BP_GROIN  = list("path" = /obj/item/organ/external/groin/unathi),

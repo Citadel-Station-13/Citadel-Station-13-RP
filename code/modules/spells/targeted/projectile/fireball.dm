@@ -2,7 +2,7 @@
 	name = "Fireball"
 	desc = "This spell fires a fireball at a target and does not require wizard garb."
 
-	proj_type = /obj/item/projectile/spell_projectile/fireball
+	proj_type = /obj/projectile/spell_projectile/fireball
 
 	school = "evocation"
 	charge_max = 100
@@ -34,6 +34,6 @@
 
 //PROJECTILE
 
-/obj/item/projectile/spell_projectile/fireball
+/obj/projectile/spell_projectile/fireball
 	name = "fireball"
 	icon_state = "fireball"

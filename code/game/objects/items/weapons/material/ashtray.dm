@@ -6,6 +6,7 @@ var/global/list/ashtray_cache = list()
 	icon_state = "blank"
 	force_divisor = 0.1
 	thrown_force_divisor = 0.1
+	materials = list(MAT_STEEL = 4000)
 	var/image/base_image
 	var/max_butts = 10
 
@@ -77,7 +78,7 @@ var/global/list/ashtray_cache = list()
 		add_fingerprint(user)
 		update_icon()
 	else
-		health = max(0,health - W.force)
+		health = max(0,health - W.damage_force)
 		to_chat(user, "You hit [src] with [W].")
 		if (health < 1)
 			shatter()

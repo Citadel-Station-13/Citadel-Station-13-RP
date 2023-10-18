@@ -5,7 +5,7 @@
 	icon = 'icons/obj/assemblies.dmi'
 	icon_state = "plastic-explosive0"
 	item_state = "plasticx"
-	item_flags = ITEM_NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_ILLEGAL = 2)
 	var/datum/wires/explosive/c4/wires = null
@@ -38,22 +38,25 @@
 	else
 		..()
 
-/obj/item/plastique/attack_self(mob/user as mob)
+/obj/item/plastique/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/newtime = input(usr, "Please set the timer.", "Timer", 10) as num
 	if(user.get_active_held_item() == src)
 		newtime = clamp(newtime, 10, 60000)
 		timer = newtime
 		to_chat(user, "Timer set for [timer] seconds.")
 
-/obj/item/plastique/afterattack(atom/movable/target, mob/user, flag)
-	if (!flag)
+/obj/item/plastique/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if (!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
-	if (ismob(target) || istype(target, /turf/unsimulated) || istype(target, /turf/simulated/shuttle) || istype(target, /obj/item/storage/) || istype(target, /obj/item/clothing/accessory/storage/) || istype(target, /obj/item/clothing/under))
+	if (ismob(target) || istype(target, /turf/unsimulated) || istype(target, /turf/simulated/shuttle) || istype(target, /obj/item/storage/) || istype(target, /obj/item/clothing/accessory/storage/) || istype(target, /obj/item/clothing/under) || istype(target, /obj/item/clothing/suit/storage))
 		return
 	to_chat(user, "Planting explosives...")
 	user.do_attack_animation(target)
 
-	if(do_after(user, 50) && in_range(user, target))
+	if(do_after(user, 50, target, max_distance = 1))
 		if(!user.attempt_void_item_for_installation(src))
 			return
 		src.target = target

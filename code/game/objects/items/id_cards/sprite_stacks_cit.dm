@@ -14,6 +14,14 @@
 
 //! Silver
 
+/obj/item/card/id/silver/blueshield
+	initial_sprite_stack = list(
+		"base-stamp-silver",
+		"top-command-security",
+		"letter-n-security",
+		"pips-gold",
+	)
+
 /obj/item/card/id/silver/secretary
 	initial_sprite_stack = list(
 		"base-stamp",

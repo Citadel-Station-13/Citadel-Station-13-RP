@@ -9,39 +9,37 @@
 	spawn_positions = -1
 	supervisors = "nobody! You don't work here"
 	selection_color = "#515151"
-	access = list()			//See /datum/role/job/station/assistant/get_access()
-	minimal_access = list()	//See /datum/role/job/station/assistant/get_access()
 	timeoff_factor = 0
 
 	outfit_type = /datum/outfit/job/station/assistant
 	alt_titles = list(
-		"Visitor" = /datum/prototype/alt_title/visitor,
-		"Server" = /datum/prototype/alt_title/server,
-		"Morale Officer" = /datum/prototype/alt_title/morale_officer,
-		"Assistant" = /datum/prototype/alt_title/assistant
+		"Visitor" = /datum/prototype/struct/alt_title/visitor,
+		"Server" = /datum/prototype/struct/alt_title/server,
+		"Morale Officer" = /datum/prototype/struct/alt_title/morale_officer,
+		"Assistant" = /datum/prototype/struct/alt_title/assistant
 	)
 
 /datum/role/job/station/assistant/get_access()
 	if(config_legacy.assistant_maint)
-		return list(access_maint_tunnels)
+		return list(ACCESS_ENGINEERING_MAINT)
 	else
 		return list()
 
 /datum/role/job/station/assistant/get_access()
 	return list()
 
-/datum/prototype/alt_title/visitor
+/datum/prototype/struct/alt_title/visitor
 	title = "Visitor"
 	title_outfit = /datum/outfit/job/station/assistant/visitor
 
-/datum/prototype/alt_title/server
+/datum/prototype/struct/alt_title/server
 	title = "Server"
 	title_outfit = /datum/outfit/job/station/assistant/server
 
-/datum/prototype/alt_title/morale_officer
+/datum/prototype/struct/alt_title/morale_officer
 	title = "Morale Officer"
 
-/datum/prototype/alt_title/assistant
+/datum/prototype/struct/alt_title/assistant
 	title = "Assistant"
 	title_outfit = /datum/outfit/job/station/assistant
 

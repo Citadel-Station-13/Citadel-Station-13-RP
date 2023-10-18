@@ -150,7 +150,23 @@
 /datum/category_item/underwear/top/bra_neko
 	name = "Neko Bra"
 	icon_state = "bra_neko"
+	has_color = TRUE
 
 /datum/category_item/underwear/top/bra_thin
 	name = "Thin Bra"
 	icon_state = "bra_thin"
+
+/datum/category_item/underwear/top/bra_halter
+	name = "Halterneck bra, alt"
+	icon_state = "halter_bra"
+	has_color = TRUE
+
+/datum/category_item/underwear/top/bra_halter_refitted
+	name = "Halterneck bra, skinsuit fit"
+	icon_state = "halter_refitted"
+	has_color = TRUE
+
+/datum/category_item/underwear/top/tubetop_trimmed
+	name = "Tubetop, Trimmed"
+	icon_state = "tubetop_trimmed"
+	has_color = TRUE

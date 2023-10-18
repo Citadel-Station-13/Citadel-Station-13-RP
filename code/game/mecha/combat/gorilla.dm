@@ -116,30 +116,30 @@
 	desc = "<i>Precision German engineering!</i>" // Why would you ever take this off the mech, anyway?
 	icon_state = "mecha_uac2"
 	equip_cooldown = 60 // 6 seconds
-	projectile = /obj/item/projectile/bullet/cannon
+	projectile = /obj/projectile/bullet/cannon
 	fire_sound = 'sound/weapons/Gunshot_cannon.ogg'
 	projectiles = 1
 	projectile_energy_cost = 1000
 	salvageable = 0 // We don't want players ripping this off a dead mech. Could potentially be a prize for beating it if Devs bless me and someone offers a nerf idea.
 
-/obj/item/projectile/bullet/cannon
+/obj/projectile/bullet/cannon
 	name ="armor-piercing shell"
 	icon = 'icons/obj/projectiles.dmi'
 	icon_state = "shell"
 	damage = 1000 // In order to 1-hit any other mech and royally fuck anyone unfortunate enough to get in the way.
 
-/obj/item/projectile/bullet/cannon/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/bullet/cannon/on_hit(var/atom/target, var/blocked = 0)
 	explosion(target, 0, 0, 2, 4)
 	return 1
 
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/cannon/weak
 	name = "8.8 cm KwK 36"
 	equip_cooldown = 120 // 12 seconds.
-	projectile = /obj/item/projectile/bullet/cannon/weak
+	projectile = /obj/projectile/bullet/cannon/weak
 	projectile_energy_cost = 400
 	salvageable = 1
 
-/obj/item/projectile/bullet/cannon/weak
+/obj/projectile/bullet/cannon/weak
 	name ="canister shell"
 	icon_state = "canister"
 	damage = 120 //Do not get fucking shot.
@@ -149,7 +149,7 @@
 	name = "Maschinengewehr 60"
 	icon_state = "mecha_uac2"
 	equip_cooldown = 10
-	projectile = /obj/item/projectile/bullet/midbullet2
+	projectile = /obj/projectile/bullet/midbullet2
 	fire_sound = 'sound/weapons/mg42.ogg'
 	projectiles = 1000
 	projectiles_per_shot = 5

@@ -84,7 +84,10 @@
 	update_icon()
 	..()
 
-/obj/item/gun/launcher/crossbow/attack_self(mob/living/user as mob)
+/obj/item/gun/launcher/crossbow/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(tension)
 		if(bolt)
 			user.visible_message("[user] relaxes the tension on [src]'s string and removes [bolt].","You relax the tension on [src]'s string and remove [bolt].")
@@ -215,7 +218,7 @@
 /obj/item/crossbowframe/update_icon()
 	icon_state = "crossbowframe[buildstate]"
 
-/obj/item/crossbowframe/examine(mob/user)
+/obj/item/crossbowframe/examine(mob/user, dist)
 	. = ..()
 	switch(buildstate)
 		if(1)

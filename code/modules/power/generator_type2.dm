@@ -94,7 +94,7 @@
 	interact(user)
 
 
-/obj/machinery/power/generator_type2/attack_hand(mob/user)
+/obj/machinery/power/generator_type2/attack_hand(mob/user, list/params)
 	add_fingerprint(user)
 	if(machine_stat & (BROKEN|NOPOWER))
 		return

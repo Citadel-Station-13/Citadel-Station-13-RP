@@ -150,6 +150,7 @@ var/global/list/acceptable_fruit_types = list(
 	"durian",
 	"eggplant",
 	"grapes",
+	"grass",
 	"greengrapes",
 	"harebells",
 	"jahtak",

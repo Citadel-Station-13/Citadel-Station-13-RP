@@ -113,7 +113,7 @@ GLOBAL_LIST_EMPTY(species_picker_active)
 		ui.autoupdate = FALSE			// why the fuck are you updating species data??
 		ui.open()
 
-/datum/tgui_species_picker/ui_status(mob/user, datum/ui_state/state)
+/datum/tgui_species_picker/ui_status(mob/user, datum/ui_state/state, datum/tgui_module/module)
 	return UI_INTERACTIVE
 
 /datum/tgui_species_picker/ui_static_data(mob/user)
@@ -124,12 +124,12 @@ GLOBAL_LIST_EMPTY(species_picker_active)
 	data["admin"] = !!admin_datums[user.ckey]
 	return data
 
-/datum/tgui_species_picker/ui_close(mob/user)
+/datum/tgui_species_picker/ui_close(mob/user, datum/tgui_module/module)
 	. = ..()
 	if(!QDELING(src))
 		qdel(src)
 
-/datum/tgui_species_picker/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/datum/tgui_species_picker/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	switch(action)
 		if("pick")

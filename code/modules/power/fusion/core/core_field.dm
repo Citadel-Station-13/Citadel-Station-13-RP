@@ -42,7 +42,7 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 	. = ..()
 	ignore_types = typecacheof(list(
 		/obj/effect,
-		/obj/item/projectile,
+		/obj/projectile,
 		/atom/movable/fire,
 		/obj/structure/cable,
 		/obj/machinery/atmospherics,
@@ -306,8 +306,8 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 	var/turf/T = get_turf(src)
 	if(istype(T))
 		var/datum/gas_mixture/plasma = new
-		plasma.adjust_gas(/datum/gas/oxygen, (size*100), 0)
-		plasma.adjust_gas(/datum/gas/phoron, (size*100), 0)
+		plasma.adjust_gas(GAS_ID_OXYGEN, (size*100), 0)
+		plasma.adjust_gas(GAS_ID_PHORON, (size*100), 0)
 		plasma.temperature = (plasma_temperature/2)
 		plasma.update_values()
 		T.assume_air(plasma)
@@ -488,7 +488,7 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
-/obj/effect/fusion_em_field/bullet_act(var/obj/item/projectile/Proj)
+/obj/effect/fusion_em_field/bullet_act(var/obj/projectile/Proj)
 	AddEnergy(Proj.damage)
 	update_icon()
 	return 0
@@ -616,8 +616,8 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 		var/turf/TT = get_turf(pick(turfs_in_range))
 		if(istype(TT))
 			var/datum/gas_mixture/plasma = new
-			plasma.adjust_gas(/datum/gas/oxygen, (size*100), 0)
-			plasma.adjust_gas(/datum/gas/phoron, (size*100), 0)
+			plasma.adjust_gas(GAS_ID_OXYGEN, (size*100), 0)
+			plasma.adjust_gas(GAS_ID_PHORON, (size*100), 0)
 			plasma.temperature = (plasma_temperature/2)
 			plasma.update_values()
 			TT.assume_air(plasma)
@@ -632,8 +632,8 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 	var/turf/TT = get_turf(owned_core)
 	if(istype(TT))
 		var/datum/gas_mixture/plasma = new
-		plasma.adjust_gas(/datum/gas/oxygen, (size*100), 0)
-		plasma.adjust_gas(/datum/gas/phoron, (size*100), 0)
+		plasma.adjust_gas(GAS_ID_OXYGEN, (size*100), 0)
+		plasma.adjust_gas(GAS_ID_PHORON, (size*100), 0)
 		plasma.temperature = (plasma_temperature/2)
 		plasma.update_values()
 		TT.assume_air(plasma)

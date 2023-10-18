@@ -57,7 +57,7 @@ INITIALIZE_IMMEDIATE(/obj/landmark)
 // no no no, ftfy: everything below here needs to be nuked from orbit ~silicons
 /obj/landmark/Initialize(mapload)
 	. = ..()
-	tag = text("landmark*[]", name)
+	tag = "landmark*[name]"
 	invisibility = 101
 
 	switch(name)			//some of these are probably obsolete

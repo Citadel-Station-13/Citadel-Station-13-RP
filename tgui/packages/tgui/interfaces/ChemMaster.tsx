@@ -1,4 +1,4 @@
-import { Color } from '../../common/color';
+import { Color } from '../../common/colorLegacy';
 import { useBackend, useSharedState } from '../backend';
 import { AnimatedNumber, Box, Button, ColorBox, LabeledList, NumberInput, Section, Table } from '../components';
 import { Window } from '../layouts';
@@ -310,6 +310,7 @@ const PackagingControls = (props, context) => {
     'bottleAmount',
     1
   );
+  const [vialAmount, setVialAmount] = useSharedState(context, "vialAmount", 1);
   const [packAmount, setPackAmount] = useSharedState(context, 'packAmount', 1);
   const {
     condi,
@@ -413,6 +414,21 @@ const PackagingControls = (props, context) => {
             act('create', {
               type: 'bottle',
               amount: bottleAmount,
+              volume: 'auto',
+            })}
+        />
+      )}
+      {!condi && (
+        <PackagingControlsItem
+          label="Hypovials"
+          amount={vialAmount}
+          amountUnit="vials"
+          sideNote="max 60u"
+          onChangeAmount={(e, value) => setVialAmount(value)}
+          onCreate={() =>
+            act('create', {
+              type: 'hypovial',
+              amount: vialAmount,
               volume: 'auto',
             })}
         />

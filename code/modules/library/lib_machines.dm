@@ -31,7 +31,7 @@
 	var/category = "Any"
 	var/author
 
-/obj/machinery/librarypubliccomp/attack_hand(var/mob/user as mob)
+/obj/machinery/librarypubliccomp/attack_hand(mob/user, list/params)
 	usr.set_machine(src)
 	var/dat = "<HEAD><TITLE>Library Visitor</TITLE></HEAD><BODY>\n" // <META HTTP-EQUIV='Refresh' CONTENT='10'>
 	switch(screenstate)
@@ -160,7 +160,7 @@
 			var/obj/item/book/M = new path(null)
 			all_books[M.title] = M
 
-/obj/machinery/librarycomp/attack_hand(var/mob/user as mob)
+/obj/machinery/librarycomp/attack_hand(mob/user, list/params)
 	usr.set_machine(src)
 	var/dat = "<HEAD><TITLE>Book Inventory Management</TITLE></HEAD><BODY>\n" // <META HTTP-EQUIV='Refresh' CONTENT='10'>
 	switch(screenstate)
@@ -476,7 +476,7 @@
 		if(!user.attempt_insert_item_for_installation(I, src))
 			return
 
-/obj/machinery/libraryscanner/attack_hand(var/mob/user as mob)
+/obj/machinery/libraryscanner/attack_hand(mob/user, list/params)
 	usr.set_machine(src)
 	var/dat = "<HEAD><TITLE>Scanner Control Interface</TITLE></HEAD><BODY>\n" // <META HTTP-EQUIV='Refresh' CONTENT='10'>
 	if(cache)
@@ -540,8 +540,8 @@
 		if(!user.attempt_insert_item_for_installation(I, src))
 			return
 		user.visible_message("[user] loads some paper into [src].", "You load some paper into [src].")
-		flick_overlay_view("[base_icon_state]-load-paper", src, 10)
-		flick_overlay_view("[base_icon_state]-active", src, 12)
+		flick_overlay_view("[base_icon_state]-load-paper", 10)
+		flick_overlay_view("[base_icon_state]-active", 12)
 		visible_message("[src] begins to hum as it warms up its printing drums.")
 		sleep(rand(200,400))
 		visible_message("[src] whirs as it prints and binds a new book.")

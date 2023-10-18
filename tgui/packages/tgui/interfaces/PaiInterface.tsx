@@ -483,7 +483,7 @@ const SoftwareButtons = (props, context) => {
       return (
         <>
           <Button
-            disabled={door_jack}
+            disabled={!door_jack}
             icon="plug"
             onClick={() => act('door_jack', { jack: 'cable' })}>
             Extend Cable

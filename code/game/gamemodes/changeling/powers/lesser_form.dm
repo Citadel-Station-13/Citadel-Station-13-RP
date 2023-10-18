@@ -64,8 +64,8 @@
 	for (var/obj/item/implant/I in C) //Still preserving implants
 		implants += I
 
-	C.transforming = 1
-	C.canmove = 0
+	C.transforming = TRUE
+	C.update_mobility()
 	C.icon = null
 	C.cut_overlays()
 	C.invisibility = 101
@@ -105,7 +105,7 @@
 		I.loc = O
 		I.implanted = O
 
-	C.mind.transfer_to(O)
+	C.mind.transfer(O)
 	O.make_changeling()
 	O.changeling_update_languages(changeling.absorbed_languages)
 

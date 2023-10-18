@@ -5,14 +5,14 @@
 	icon_state = "forensic0-old" //GET A BETTER SPRITE.
 	item_state = "electronic"
 	origin_tech = list(TECH_MAGNET = 1, TECH_ENGINEERING = 1)
-	matter = list(MAT_STEEL = 150)
+	materials = list(MAT_STEEL = 150)
 	var/scanrange = 2
 	var/maxscanrange = 2
 	var/scan_time = 3 SECONDS
 	var/scan_exact_ores = FALSE
 	var/scan_exact_amounts = FALSE
 
-/obj/item/mining_scanner/examine(mob/user)
+/obj/item/mining_scanner/examine(mob/user, dist)
 	. = ..()
 	. += "Current scan range is [scanrange] step(s) from user's current location, including current location. Alt-Click to change scan range."
 
@@ -28,6 +28,9 @@
 	. = ..()
 
 /obj/item/mining_scanner/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	to_chat(user, "<span class='notice'>You begin sweeping \the [src] about, scanning for metal deposits.</span>")
 	playsound(loc, 'sound/items/goggles_charge.ogg', 50, 1, -6)
 
@@ -71,7 +74,7 @@
 	if(length(metals))
 		for(var/ore_type in metals)
 			var/result = "no sign"
-	
+
 			if(exact_amount)
 				result = "- [metals[ore_type]] of [ore_type]"
 			else
@@ -94,7 +97,7 @@
 	icon_state = "mining-scanner" //thank you eris spriters
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_MAGNET = 4, TECH_ENGINEERING = 4)
-	matter = list(MAT_STEEL = 2000, MAT_GLASS = 1000)
+	materials = list(MAT_STEEL = 2000, MAT_GLASS = 1000)
 	scanrange = 5
 	maxscanrange = 5
 	scan_time = 1 SECONDS

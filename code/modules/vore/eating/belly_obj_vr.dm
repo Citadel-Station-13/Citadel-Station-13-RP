@@ -170,7 +170,7 @@
 
 /obj/belly/Destroy()
 	SSbellies.belly_list -= src
-	if(owner)
+	if(owner?.vore_organs)
 		owner.vore_organs -= src
 		owner = null
 	. = ..()
@@ -346,7 +346,7 @@
 		if("em")
 			raw_messages = examine_messages
 
-	var/messages = list2text(raw_messages,delim)
+	var/messages = jointext(raw_messages, delim)
 	return messages
 
 // The next function sets the messages on the belly, from human-readable var
@@ -529,7 +529,7 @@
 		to_chat(R,"<span class='warning'>You attempt to climb out of \the [lowertext(name)]. (This will take around [escapetime/10] seconds.)</span>")
 		to_chat(owner,"<span class='warning'>Someone is attempting to climb out of your [lowertext(name)]!</span>")
 
-		if(do_after(R, escapetime, owner, incapacitation_flags = INCAPACITATION_DEFAULT & ~INCAPACITATION_RESTRAINED))
+		if(do_after(R, escapetime, owner, mobility_flags = MOBILITY_CAN_RESIST))
 			if((owner.stat || escapable) && (R.loc == src)) //Can still escape?
 				release_specific_contents(R)
 				return

@@ -16,6 +16,8 @@
 	var/start_at
 	/// last tick at
 	var/last_tick
+	/// del when done?
+	var/del_on_finish = TRUE
 	/// turfs we're acting on
 	var/list/turfs_acting = list()
 	/// callback to call when done
@@ -60,6 +62,8 @@
 	if(done)
 		if(on_finish)
 			on_finish.InvokeAsync()
+		if(del_on_finish)
+			qdel(src)
 
 /**
  * cleans up vars

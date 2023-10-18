@@ -28,7 +28,7 @@
 	if(occupant_actions[m][actiontype])
 		return TRUE
 	var/datum/action/action = generate_action_type(actiontype)
-	action.Grant(m)
+	action.grant(m)
 	occupant_actions[m][action.type] = action
 	return TRUE
 
@@ -38,7 +38,7 @@
 	LAZYINITLIST(occupant_actions[m])
 	if(occupant_actions[m][actiontype])
 		var/datum/action/action = occupant_actions[m][actiontype]
-		action.Remove(m)
+		action.remove(m)
 		occupant_actions[m] -= actiontype
 	return TRUE
 
@@ -85,7 +85,7 @@
 	for(var/path in occupant_actions[M])
 		stack_trace("Leftover action type [path] in vehicle type [type] for mob type [M.type] - THIS SHOULD NOT BE HAPPENING!")
 		var/datum/action/action = occupant_actions[M][path]
-		action.Remove(M)
+		action.remove(M)
 		occupant_actions[M] -= path
 	occupant_actions -= M
 	return TRUE
@@ -93,7 +93,7 @@
 //ACTION DATUMS
 
 /datum/action/vehicle
-	check_flags = AB_CHECK_RESTRAINED | AB_CHECK_STUNNED | AB_CHECK_CONSCIOUS
+	check_flags = ACTION_CHECK_RESTRAINED | ACTION_CHECK_STUNNED | ACTION_CHECK_CONSCIOUS
 	button_icon = 'icons/screen/actions/vehicles.dmi'
 	button_icon_state = "vehicle_eject"
 
@@ -105,8 +105,9 @@
 	desc = "Climb out of your vehicle!"
 	button_icon_state = "car_eject"
 
-/datum/action/vehicle/sealed/climb_out/Trigger()
-	if(..() && istype(vehicle_entered_target))
+/datum/action/vehicle/sealed/climb_out/on_trigger(mob/user)
+	. = ..()
+	if(istype(vehicle_entered_target))
 		vehicle_entered_target.mob_try_exit(owner, owner)
 
 /datum/action/vehicle/ridden
@@ -117,5 +118,6 @@
 	desc = "Take your key out of the vehicle's ignition"
 	button_icon_state = "car_removekey"
 
-/datum/action/vehicle/sealed/remove_key/Trigger()
+/datum/action/vehicle/sealed/remove_key/on_trigger(mob/user, datum/receiver)
+	. = ..()
 	vehicle_entered_target.remove_key(owner)

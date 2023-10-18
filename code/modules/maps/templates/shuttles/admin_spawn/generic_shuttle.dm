@@ -22,7 +22,7 @@
 /obj/machinery/computer/shuttle_control/explore/generic_shuttle
 	name = "short jump console"
 	shuttle_tag = "Private Vessel"
-	req_one_access = list(access_pilot)
+	req_one_access = list(ACCESS_GENERAL_PILOT)
 
 // A shuttle lateloader landmark
 /obj/effect/shuttle_landmark/shuttle_initializer/generic_shuttle
@@ -41,7 +41,7 @@
 	defer_initialisation = TRUE //We're not loaded until an admin does it
 
 // The 'ship'
-/obj/effect/overmap/visitable/ship/landable/generic_shuttle
+/obj/overmap/entity/visitable/ship/landable/generic_shuttle
 	scanner_name = "Private Vessel"
 	scanner_desc = @{"[i]Registration[/i]: PRIVATE
 [i]Class[/i]: Small Shuttle

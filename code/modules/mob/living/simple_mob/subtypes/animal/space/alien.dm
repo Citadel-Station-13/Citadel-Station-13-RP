@@ -114,7 +114,7 @@
 	health = 220
 	melee_damage_lower = 15
 	melee_damage_upper = 15
-	projectiletype = /obj/item/projectile/energy/neurotoxin
+	projectiletype = /obj/projectile/energy/neurotoxin
 	projectilesound = 'sound/weapons/pierce.ogg'
 	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/sentinel)
 
@@ -141,11 +141,11 @@
 	health = 400
 	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/sentinel/praetorian)
 
-	projectiletype = /obj/item/projectile/energy/neurotoxin/toxic
+	projectiletype = /obj/projectile/energy/neurotoxin/toxic
 
 	base_pixel_x = -16
-	icon_dimension_y = 64
-	icon_dimension_x = 64
+	icon_y_dimension = 64
+	icon_x_dimension = 64
 
 	meat_amount = 5
 
@@ -175,7 +175,7 @@
 	maxHealth = 750
 	melee_damage_lower = 15
 	melee_damage_upper = 15
-	projectiletype = /obj/item/projectile/energy/neurotoxin/toxic
+	projectiletype = /obj/projectile/energy/neurotoxin/toxic
 	projectilesound = 'sound/weapons/pierce.ogg'
 	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/queen)
 
@@ -209,8 +209,8 @@
 	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/queen/empress)
 
 	base_pixel_x = -16
-	icon_dimension_x = 64
-	icon_dimension_y = 64
+	icon_x_dimension = 64
+	icon_y_dimension = 64
 
 /datum/category_item/catalogue/fauna/feral_alien/queen/empress/mother
 	name = "Feral Xenomorph - Mother"
@@ -240,8 +240,8 @@
 
 	base_pixel_x = -32
 	base_pixel_y = -32
-	icon_dimension_x = 96
-	icon_dimension_y = 96
+	icon_x_dimension = 96
+	icon_y_dimension = 96
 
 	mod_min = 100
 	mod_max = 150

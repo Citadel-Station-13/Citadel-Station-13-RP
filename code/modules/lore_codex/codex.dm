@@ -13,6 +13,9 @@
 	. = ..()
 
 /obj/item/book/codex/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!tree)
 		tree = new(src, root_type)
 	icon_state = "[initial(icon_state)]-open"

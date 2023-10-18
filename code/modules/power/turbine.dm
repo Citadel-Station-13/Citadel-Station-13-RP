@@ -88,7 +88,6 @@
 
 /obj/machinery/compressor/Initialize(mapload)
 	. = ..()
-	default_apply_parts()
 	gas_contained = new()
 	inturf = get_step(src, dir)
 	locate_machinery()
@@ -195,7 +194,6 @@
 
 /obj/machinery/power/turbine/Initialize(mapload)
 	. = ..()
-	default_apply_parts()
 	// The outlet is pointed at the direction of the turbine component
 	outturf = get_step(src, dir)
 	locate_machinery()
@@ -275,7 +273,7 @@
 
 	updateDialog()
 
-/obj/machinery/power/turbine/attack_hand(var/mob/user as mob)
+/obj/machinery/power/turbine/attack_hand(mob/user, list/params)
 	if((. = ..()))
 		return
 	src.interact(user)
@@ -342,7 +340,7 @@
 			id = new_ident
 		return
 
-/obj/machinery/computer/turbine_computer/attack_hand(var/mob/user as mob)
+/obj/machinery/computer/turbine_computer/attack_hand(mob/user, list/params)
 	if((. = ..()))
 		return
 	src.interact(user)

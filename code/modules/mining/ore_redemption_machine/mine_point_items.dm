@@ -44,7 +44,7 @@
 			to_chat(user, "<span class='info'>There's no engineering points left on [src].</span>")
 	..()
 
-/obj/item/card/mining_point_card/examine(mob/user)
+/obj/item/card/mining_point_card/examine(mob/user, dist)
 	. = ..()
 	. += "There's [mine_points] excavation points on the card."
 	. += "There's [survey_points] survey points on the card."

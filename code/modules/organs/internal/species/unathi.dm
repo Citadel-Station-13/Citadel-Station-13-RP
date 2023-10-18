@@ -1,13 +1,16 @@
 /obj/item/organ/internal/heart/unathi
-	icon_state = "unathi_heart-on"
-	dead_icon = "unath_heart-off"
+	icon = 'icons/mob/species/unathi/organs.dmi'
+	icon_state = "heart-on"
+	dead_icon = "heart-off"
 
 /obj/item/organ/internal/lungs/unathi
+	icon = 'icons/mob/species/unathi/organs.dmi'
 	color = "#b3cbc3"
 
 /obj/item/organ/internal/liver/unathi
+	icon = 'icons/mob/species/unathi/organs.dmi'
 	name = "filtration organ"
-	icon_state = "unathi_liver"
+	icon_state = "liver"
 
 //Unathi liver acts as kidneys, too.
 /obj/item/organ/internal/liver/unathi/process(delta_time)
@@ -29,6 +32,7 @@
 			owner.adjustToxLoss(0.3 * (delta_time * 5))
 
 /obj/item/organ/internal/brain/unathi
+	icon = 'icons/mob/species/unathi/organs.dmi'
 	color = "#b3cbc3"
 
 /obj/item/organ/internal/stomach/unathi

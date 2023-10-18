@@ -9,9 +9,9 @@
 	var/field_cooldown = 1 MINUTE
 	var/last_field = 0
 
-/obj/item/matter_decompiler/swarm/afterattack(atom/target as mob|obj|turf|area, mob/living/user as mob|obj, proximity, params)
+/obj/item/matter_decompiler/swarm/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 
-	if(!proximity) return //Not adjacent.
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return //Not adjacent.
 
 	//We only want to deal with using this on turfs. Specific items aren't important.
 	var/turf/T = get_turf(target)
@@ -146,15 +146,15 @@
 	icon_state = "xray"
 	item_state = "xray"
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3, TECH_MAGNET = 2)
-	projectile_type = /obj/item/projectile/beam/shock
+	projectile_type = /obj/projectile/beam/shock
 	charge_cost = 175
 
 	self_recharge = TRUE
 	use_external_power = TRUE
 
 	firemodes = list(
-		list(mode_name="kill", projectile_type=/obj/item/projectile/beam/gamma, charge_cost = 300),
-		list(mode_name="deter", projectile_type=/obj/item/projectile/beam/shock, charge_cost = 175),
+		list(mode_name="kill", projectile_type=/obj/projectile/beam/gamma, charge_cost = 300),
+		list(mode_name="deter", projectile_type=/obj/projectile/beam/shock, charge_cost = 175),
 		)
 
 /obj/item/gun/energy/xray/swarm/Initialize(mapload)

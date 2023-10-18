@@ -7,7 +7,7 @@
 	icon_state = "emitter"
 	anchored = 0
 	density = 1
-	req_access = list(access_engine_equip)
+	req_access = list(ACCESS_ENGINEERING_ENGINE)
 	var/id = null
 
 	use_power = USE_POWER_OFF	//uses powernet power, not APC power
@@ -58,7 +58,7 @@
 	else
 		icon_state = "emitter"
 
-/obj/machinery/power/emitter/attack_hand(mob/user as mob)
+/obj/machinery/power/emitter/attack_hand(mob/user, list/params)
 	src.add_fingerprint(user)
 	activate(user)
 
@@ -140,7 +140,7 @@
 			s.set_up(5, 1, src)
 			s.start()
 
-		var/obj/item/projectile/beam/emitter/A = get_emitter_beam()
+		var/obj/projectile/beam/emitter/A = get_emitter_beam()
 		A.damage = round(power_per_shot/EMITTER_DAMAGE_POWER_TRANSFER)
 		A.firer = src
 		A.fire(dir2angle(dir))
@@ -246,7 +246,7 @@
 		user.visible_message("[user.name] emags [src].","<span class='warning'>You short out the lock.</span>")
 		return 1
 
-/obj/machinery/power/emitter/bullet_act(var/obj/item/projectile/P)
+/obj/machinery/power/emitter/bullet_act(var/obj/projectile/P)
 	if(!P || !P.damage || P.get_structure_damage() <= 0 )
 		return
 
@@ -266,7 +266,7 @@
 		if(src)
 			qdel(src)
 
-/obj/machinery/power/emitter/examine(mob/user)
+/obj/machinery/power/emitter/examine(mob/user, dist)
 	. = ..()
 	var/integrity_percentage = round((integrity / initial(integrity)) * 100)
 	switch(integrity_percentage)
@@ -288,4 +288,4 @@
 	return burst_delay
 
 /obj/machinery/power/emitter/proc/get_emitter_beam()
-	return new /obj/item/projectile/beam/emitter(get_turf(src))
+	return new /obj/projectile/beam/emitter(get_turf(src))

@@ -7,7 +7,7 @@
 			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_gloves.dmi',
 			)
 	item_state = "lgloves"
-	force = 0
+	damage_force = 0
 	throw_force = 0
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 1

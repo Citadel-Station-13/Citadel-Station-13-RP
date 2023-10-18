@@ -2,7 +2,10 @@
 
 // Clicked on by empty hand.
 // Handles trying to wrestle a slime off of someone being eatten.
-/mob/living/simple_mob/slime/xenobio/attack_hand(mob/living/L)
+/mob/living/simple_mob/slime/xenobio/attack_hand(mob/user, list/params)
+	var/mob/living/L = user
+	if(!istype(L))
+		return
 	if(victim) // Are we eating someone?
 		var/fail_odds = 30
 		if(victim == L) // Harder to get the slime off if it's you that is being eatten.
@@ -51,4 +54,4 @@
 // Getting slimebatoned/xenotased.
 /mob/living/simple_mob/slime/xenobio/slimebatoned(mob/living/user, amount)
 	adjust_discipline(round(amount/2))
-	Weaken(amount) // This needs to come afterwards or else it will always be considered abuse to the slime.
+	afflict_paralyze(20 * amount) // This needs to come afterwards or else it will always be considered abuse to the slime.

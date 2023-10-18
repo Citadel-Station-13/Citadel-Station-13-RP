@@ -35,9 +35,9 @@
 			var/estimated_time = round(SSemergencyshuttle.estimate_arrival_time()/60,1)
 
 			if (SSemergencyshuttle.evac)
-				priority_announcement.Announce(replacetext(replacetext(GLOB.using_map.emergency_shuttle_leaving_dock, "%dock_name%", "[GLOB.using_map.dock_name]"),  "%ETA%", "[estimated_time] minute\s"))
+				priority_announcement.Announce(replacetext(replacetext((LEGACY_MAP_DATUM).emergency_shuttle_leaving_dock, "%dock_name%", "[(LEGACY_MAP_DATUM).dock_name]"),  "%ETA%", "[estimated_time] minute\s"))
 			else
-				priority_announcement.Announce(replacetext(replacetext(GLOB.using_map.shuttle_leaving_dock, "%dock_name%", "[GLOB.using_map.dock_name]"),  "%ETA%", "[estimated_time] minute\s"))
+				priority_announcement.Announce(replacetext(replacetext((LEGACY_MAP_DATUM).shuttle_leaving_dock, "%dock_name%", "[(LEGACY_MAP_DATUM).dock_name]"),  "%ETA%", "[estimated_time] minute\s"))
 	..()
 
 /datum/shuttle/autodock/ferry/emergency/can_launch(var/user)
@@ -149,7 +149,7 @@
 		playsound(src.loc, 'sound/machines/buzz-sigh.ogg', 50, 0)
 		return 0
 
-	if (!(access_heads in access))
+	if (!(ACCESS_COMMAND_BRIDGE in access))
 		src.visible_message("\The [src] buzzes, rejecting [ident].")
 		playsound(src.loc, 'sound/machines/deniedbeep.ogg', 50, 0)
 		return 0

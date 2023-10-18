@@ -3,9 +3,7 @@
 	name = "portable shaft excavation device"
 	desc = "A heavily modified shaft bore utilizing phorogenic blasts to tunnel vertically through rock. Much faster than a large industrial drill unit, but is very resource- and power-intensive."
 	description_fluff = "A phoron bore used for rapidly digging through rock that has been modified to allow it to fire straight down at a much higher power. However, this has resulted in a loss of power and resource efficiency, compactness, and modularity as the proprietary capacitor and manipulator cannot be swapped."
-	w_class = ITEMSIZE_NO_CONTAINER //haha harold can't powergame itemsize with BoHs if it doesn't even fit in a BoH
-	//he's just going to locker it isn't he
-	slowdown = 1 //chonker bore is heavy boy
+	w_class = ITEMSIZE_NO_CONTAINER
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "vertibore"
 	item_state = "vertibore"
@@ -20,7 +18,7 @@
 	var/ammo_material = MAT_PHORON
 	var/loading = FALSE
 
-/obj/item/vertibore/examine(mob/user)
+/obj/item/vertibore/examine(mob/user, dist)
 	. = ..()
 	. += "<span class='notice'>The shaft excavator has [mat_storage]cm^3 of phoron inside, and can hold a maximum of [max_mat_storage].</span>"
 	if(cell)
@@ -74,6 +72,9 @@
 	. = ..()
 
 /obj/item/vertibore/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(mat_cost > mat_storage)
 		to_chat(user, "<span class='notice'>The [src] shudders, the phoron feeding mechanism attempting to move things that aren't there.</span>")
 		return

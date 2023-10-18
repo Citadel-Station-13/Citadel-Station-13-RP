@@ -109,7 +109,7 @@
 	src.modules += new /obj/item/reagent_containers/glass/bucket(src)
 	src.modules += new /obj/item/material/minihoe(src)
 	src.modules += new /obj/item/material/knife/machete/hatchet(src)
-	src.modules += new /obj/item/analyzer/plant_analyzer(src)
+	src.modules += new /obj/item/plant_analyzer(src)
 	src.modules += new /obj/item/storage/bag/plants(src)
 	src.modules += new /obj/item/robot_harvester(src)
 	src.modules += new /obj/item/material/knife(src)
@@ -196,7 +196,8 @@
 		"Borgi" = "borgi-jani",
 		"Otieborg" = "otiej",
 		"Janihound, J9" = "J9",
-		"F3-LINE" = "FELI-Janitor"
+		"F3-LINE" = "FELI-Janitor",
+		"Drake" = "drakejanit"
 	)
 	channels = list("Service" = 1)
 	can_be_pushed = 0
@@ -246,8 +247,8 @@
 	M.name = "steel recycler"
 	M.desc = "A device that refines recycled steel into sheets."
 	M.synths = list(synths_by_kind[MATSYN_METAL])
-	M.recipes = list(
-		new/datum/stack_recipe("steel sheet", /obj/item/stack/material/steel, 1, 1, 20)
+	M.explicit_recipes = list(
+		create_stack_recipe_datum(name = "steel sheet", product = /obj/item/stack/material/steel, cost = 1)
 	)
 	. += M
 
@@ -256,8 +257,8 @@
 	G.desc = "A device that refines recycled glass into sheets."
 	G.allow_window_autobuild = FALSE
 	G.synths = list(synths_by_kind[MATSYN_GLASS])
-	G.recipes = list(
-		new/datum/stack_recipe("glass sheet", /obj/item/stack/material/glass, 1, 1, 20)
+	M.explicit_recipes = list(
+		create_stack_recipe_datum(name = "glass sheet", product = /obj/item/stack/material/glass, cost = 1)
 	)
 	. += G
 
@@ -304,7 +305,7 @@
 		/obj/item/reagent_containers/glass/bucket,
 		/obj/item/material/minihoe,
 		/obj/item/material/knife/machete/hatchet,
-		/obj/item/analyzer/plant_analyzer,
+		/obj/item/plant_analyzer,
 		/obj/item/storage/bag/dogborg,
 		/obj/item/robot_harvester,
 		/obj/item/material/knife,

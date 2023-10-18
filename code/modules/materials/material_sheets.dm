@@ -1,7 +1,7 @@
 // Stacked resources. They use a material datum for a lot of inherited values.
 // If you're adding something here, make sure to add it to fifty_spawner_mats.dm as well
 /obj/item/stack/material
-	force = 5
+	damage_force = 5
 	throw_force = 5
 	w_class = ITEMSIZE_NORMAL
 	throw_speed = 3
@@ -32,8 +32,6 @@
 	pixel_x = rand(0,4)-4
 	pixel_y = rand(0,4)-4
 
-
-	recipes = material.get_recipes()
 	stacktype = material.stack_type
 	if(islist(material.stack_origin_tech))
 		origin_tech = material.stack_origin_tech.Copy()
@@ -44,11 +42,25 @@
 	if(!material.conductive)
 		atom_flags |= NOCONDUCT
 
-	matter = material.get_matter()
+	materials = material.get_matter()
 	update_strings()
 
 /obj/item/stack/material/get_material()
 	return material
+
+/obj/item/stack/material/tgui_recipes()
+	var/list/assembled = ..()
+	for(var/datum/stack_recipe/recipe as anything in material.get_recipes())
+		assembled[++assembled.len] = recipe.tgui_recipe_data()
+	for(var/datum/stack_recipe/material/recipe as anything in SSmaterials.material_stack_recipes)
+		assembled[++assembled.len] = recipe.tgui_recipe_data()
+	return assembled
+
+/obj/item/stack/material/can_craft_recipe(datum/stack_recipe/recipe)
+	. = ..()
+	if(.)
+		return
+	return (recipe in material.recipes) || (istype(recipe, /datum/stack_recipe/material) && (recipe in SSmaterials.material_stack_recipes))
 
 /obj/item/stack/material/proc/update_strings()
 	// Update from material datum.
@@ -77,9 +89,9 @@
 	if(M) M.update_strings()
 	return transfer
 
-/obj/item/stack/material/attack_self(var/mob/user)
+/obj/item/stack/material/attack_self(mob/user)
 	if(!allow_window_autobuild || !material.build_windows(user, src))
-		..()
+		return ..()
 
 /obj/item/stack/material/attackby(var/obj/item/W, var/mob/user)
 	if(istype(W,/obj/item/stack/cable_coil))
@@ -275,7 +287,6 @@
 	apply_colour = TRUE
 
 /obj/item/stack/material/supermatter/proc/update_mass()	// Due to how dangerous they can be, the item will get heavier and larger the more are in the stack.
-	slowdown = amount / 10
 	w_class = min(5, round(amount / 10) + 1)
 	throw_range = round(amount / 7) + 1
 
@@ -284,7 +295,7 @@
 	update_mass()
 	return
 
-/obj/item/stack/material/supermatter/attack_hand(mob/user)
+/obj/item/stack/material/supermatter/attack_hand(mob/user, list/params)
 	. = ..()
 
 	update_mass()
@@ -297,7 +308,7 @@
 	if(istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = user
 		var/obj/item/clothing/gloves/G = H.gloves
-		if(istype(G) && ((G.clothing_flags & THICKMATERIAL && prob(70)) || istype(G, /obj/item/clothing/gloves/gauntlets)))
+		if(istype(G) && ((G.clothing_flags & CLOTHING_THICK_MATERIAL && prob(70)) || istype(G, /obj/item/clothing/gloves/gauntlets)))
 			burn_user = FALSE
 
 		if(burn_user)
@@ -368,10 +379,10 @@
 	plank_type = /obj/item/stack/material/wood/hard
 
 /obj/item/stack/material/log/attackby(var/obj/item/W, var/mob/user)
-	if(!istype(W) || W.force <= 0)
+	if(!istype(W) || W.damage_force <= 0)
 		return ..()
 	if(W.sharp && W.edge)
-		var/time = (3 SECONDS / max(W.force / 10, 1)) * W.tool_speed
+		var/time = (3 SECONDS / max(W.damage_force / 10, 1)) * W.tool_speed
 		user.setClickCooldown(time)
 		if(do_after(user, time, src) && use(1))
 			to_chat(user, "<span class='notice'>You cut up a log into planks.</span>")
@@ -443,8 +454,9 @@
 	pickup_sound = 'sound/items/pickup/leather.ogg'
 
 /obj/item/stack/material/chitin
-	name = "chitin"
-	desc = "The by-product of mob grinding."
+	name = "chitin plates"
+	desc = "Sheets of hardened chitin, usually harvested from insectile beasts."
+	singular_name = "chitin plate"
 	icon_state = "chitin"
 	default_type = MAT_CHITIN
 	no_variants = FALSE
@@ -484,19 +496,19 @@
 	no_variants = FALSE
 
 /obj/item/stack/material/bananium
-	name = "bananium"
+	name = MAT_BANANIUM
 	desc = "When smelted, Vaudium takes on a bright yellow hue and remains pliable, growing rigid when met with a forceful impact."
 	icon_state = "sheet-clown"
-	default_type = "bananium"
+	default_type = MAT_BANANIUM
 	no_variants = FALSE
 	drop_sound = 'sound/items/drop/boots.ogg'
 	pickup_sound = 'sound/items/pickup/boots.ogg'
 
 /obj/item/stack/material/silencium
-	name = "silencium"
+	name = MAT_SILENCIUM
 	desc = "When compressed, Vaudium loses its color, gaining distinctive black bands and becoming intensely rigid."
 	icon_state = "sheet-mime"
-	default_type = "silencium"
+	default_type = MAT_SILENCIUM
 	no_variants = FALSE
 	drop_sound = 'sound/items/drop/boots.ogg'
 	pickup_sound = 'sound/items/drop/boots.ogg'

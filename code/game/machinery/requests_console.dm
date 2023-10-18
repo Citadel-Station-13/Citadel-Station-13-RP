@@ -119,7 +119,7 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 			req_console_information -= department
 	return ..()
 
-/obj/machinery/requests_console/attack_hand(user as mob)
+/obj/machinery/requests_console/attack_hand(mob/user, list/params)
 	if(..(user))
 		return
 	nano_ui_interact(user)
@@ -194,7 +194,10 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 			screen = RCS_SENTPASS
 			message_log += "<B>Message sent to [recipient]</B><BR>[message]"
 		else
-			audible_message(text("[icon2html(thing = src, target = world)] *The Requests Console beeps: 'NOTICE: No server detected!'"),,4)
+			audible_message(
+				message = "[icon2html(thing = src, target = world)] *The Requests Console beeps: 'NOTICE: No server detected!'",
+				hearing_distance = 4
+			)
 
 	//Handle printing
 	if (href_list["print"])
@@ -255,11 +258,11 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 		if(inoperable(MAINT)) return
 		if(screen == RCS_MESSAUTH)
 			var/obj/item/card/id/T = O
-			msgVerified = text("<font color='green'><b>Verified by [T.registered_name] ([T.assignment])</b></font>")
+			msgVerified = SPAN_BOLDNICEGREEN("Verified by [T.registered_name] ([T.assignment])")
 			updateUsrDialog()
 		if(screen == RCS_ANNOUNCE)
 			var/obj/item/card/id/ID = O
-			if(access_RC_announce in ID.GetAccess())
+			if(ACCESS_COMMAND_ANNOUNCE in ID.GetAccess())
 				announceAuth = 1
 				announcement.announcer = ID.assignment ? "[ID.assignment] [ID.registered_name]" : ID.registered_name
 			else
@@ -270,7 +273,7 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 		if(inoperable(MAINT)) return
 		if(screen == RCS_MESSAUTH)
 			var/obj/item/stamp/T = O
-			msgStamped = text("<font color=#4F49AF><b>Stamped with the [T.name]</b></font>")
+			msgStamped = "<font color=#4F49AF><b>Stamped with the [T.name]</b></font>"
 			updateUsrDialog()
 	return
 

@@ -47,6 +47,11 @@
 	set name = "OOC" //Gave this shit a shorter name so you only have to time out "ooc" rather than "ooc message" to use it --NeoFite
 	set category = "OOC"
 
+	if(!reject_on_initialization_block())
+		return
+	if(!reject_age_unverified())
+		return
+
 	if(IsGuestKey(key))
 		to_chat(src, "Guests may not use OOC.")
 		return
@@ -55,7 +60,9 @@
 		to_chat(src, "<span class='warning'>You have OOC muted.</span>")
 		return
 
-
+	if(is_role_banned_ckey(ckey, role = BAN_ROLE_OOC))
+		to_chat(src, SPAN_WARNING("You are banned from OOC and deadchat."))
+		return
 
 	if(!mob)
 		return
@@ -70,9 +77,7 @@
 		if(prefs.muted & MUTE_OOC)
 			to_chat(src, "<span class='danger'>You cannot use OOC (muted).</span>")
 			return
-	// if(is_banned_from(ckey, "OOC"))
-	// 	to_chat(src, "<span class='danger'>You have been banned from OOC.</span>")
-	// 	return
+
 	if(QDELETED(src))
 		return
 
@@ -103,6 +108,11 @@
 		return
 
 	log_ooc(raw_msg, src)
+
+	if(persistent.ligma)
+		to_chat(src, "<span class='ooc'><span class='everyone'><span class='message'>OOC: <EM>[src.key]: </EM><span class='linkify'>[msg]</span></span></span></span>")
+		log_shadowban("[key_name(src)] OOC: [msg]")
+		return
 
 	var/ooc_style = "everyone"
 	if(holder && !holder.fakekey)
@@ -142,11 +152,20 @@
 	set desc = "Local OOC, seen only by those in view."
 	set category = "OOC"
 
+	if(!reject_on_initialization_block())
+		return
+	if(!reject_age_unverified())
+		return
+
 	if(!mob)
 		return
 
 	if(IsGuestKey(key))
 		to_chat(src, "Guests may not use OOC.")
+		return
+
+	if(is_role_banned_ckey(ckey, role = BAN_ROLE_OOC) && IS_DEAD(mob))
+		to_chat(src, SPAN_WARNING("You are banned from typing in LOOC while dead, and deadchat."))
 		return
 
 	msg = sanitize(msg)
@@ -173,14 +192,13 @@
 			message_admins("[key_name_admin(src)] has attempted to advertise in OOC: [msg]")
 			return
 
-	log_looc(msg,src)
-
 	if(msg)
 		handle_spam_prevention(MUTE_OOC)
 
 	var/mob/source = mob.get_looc_source()
 	var/turf/T = get_turf(source)
-	if(!T) return
+	if(!T)
+		return
 	var/list/in_range = get_mobs_and_objs_in_view_fast(T,world.view,0)
 	var/list/m_viewers = in_range["mobs"]
 
@@ -213,6 +231,13 @@
 			r_receivers |= admin
 
 	msg = emoji_parse(msg)
+
+	if(persistent.ligma)
+		to_chat(src, "<span class='looc'>" +  "LOOC: " + "<EM>[display_name]: </EM><span class='message'><span class='linkify'>[msg]</span></span></span>")
+		log_shadowban("[key_name(src)] LOOC: [msg]")
+		return
+
+	log_looc(msg,src)
 
 	// Send a message
 	for(var/client/target in receivers)

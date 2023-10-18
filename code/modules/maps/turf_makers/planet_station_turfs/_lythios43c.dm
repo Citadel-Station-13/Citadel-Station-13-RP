@@ -30,6 +30,7 @@ LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/gravsnow)
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/snow/noblend)
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/snow/noblend/indoors)
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/safeice)
+LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/beach/sand/desert)
 
 //These commands generate turfs that are default indoors
 LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/floor/tiled)
@@ -58,6 +59,25 @@ LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/icerock/ignore_cavegen)
 LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 
 
+/turf/simulated/mineral/icerock/lythios43c/make_floor()
+	if(!density && !opacity)
+		return
+	density = FALSE
+	opacity = FALSE
+	recalc_atom_opacity()
+	reconsider_lights()
+	regenerate_ao()
+	blocks_air = FALSE
+	can_build_into_floor = TRUE
+	smoothing_groups = (SMOOTH_GROUP_FLOOR_SNOW)
+	icon = 'icons/turf/flooring/asteroid.dmi'
+	icon_state = "asteroid"
+	color = LIGHT_COLOR_BLUE
+	queue_zone_update()
+	QUEUE_SMOOTH(src)
+	QUEUE_SMOOTH_NEIGHBORS(src)
+
+
 /turf/simulated/open/lythios43c
 	edge_blending_priority = 0.5 //Turfs which also have e_b_p and higher than this will plop decorative edges onto this turf
 
@@ -84,11 +104,19 @@ LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors
 	outdoors = FALSE
 
+/turf/simulated/floor/outdoors/icesand/lythios43c/indoor
+	outdoors = FALSE
+	smoothing_groups = (SMOOTH_GROUP_FLOOR_SNOW)
+	icon = 'icons/turf/flooring/asteroid.dmi'
+	icon_state = "asteroid"
+	color = LIGHT_COLOR_BLUE
+
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors
 	outdoors = FALSE
 
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen	// I hate having to make such a long typepath for this, very annyoing -Bloop
 	ignore_cavegen = TRUE
+	smoothing_groups = (SMOOTH_GROUP_FLOOR_SNOW)
 
 /turf/simulated/floor/lythios43c/indoors
 	outdoors = FALSE
@@ -121,72 +149,14 @@ LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 /turf/simulated/floor/tiled/techfloor/lythios43c/indoors
 	outdoors = FALSE
 
-	//This proc is responsible for ore generation on surface turfs
-/turf/simulated/mineral/icerock/lythios43c/make_ore(var/rare_ore)
-	if(mineral || ignore_mapgen)
-		return
-	var/mineral_name
-	if(rare_ore)
-		mineral_name = pickweight(list(
-			"marble" = 3,
-			"uranium" = 10,
-			"platinum" = 10,
-			"hematite" = 20,
-			"carbon" = 20,
-			"diamond" = 1,
-			"gold" = 8,
-			"silver" = 8,
-			"phoron" = 18,
-			"lead" = 2,
-			"verdantium" = 1))
-	else
-		mineral_name = pickweight(list(
-			"marble" = 2,
-			"uranium" = 5,
-			"platinum" = 5,
-			"hematite" = 35,
-			"carbon" = 35,
-			"gold" = 3,
-			"silver" = 3,
-			"phoron" = 25,
-			"lead" = 1))
-	if(mineral_name && (mineral_name in GLOB.ore_data))
-		mineral = GLOB.ore_data[mineral_name]
-		if(atom_flags & ATOM_INITIALIZED)
-			UpdateMineral()
+/turf/simulated/floor/concrete/lythios43c/outdoors
+	outdoors = TRUE
 
-/turf/simulated/mineral/icerock/lythios43c/rich/make_ore(var/rare_ore)
-	if(mineral || ignore_mapgen)
-		return
-	var/mineral_name
-	if(rare_ore)
-		mineral_name = pickweight(list(
-			"marble" = 7,
-			"uranium" = 10,
-			"platinum" = 10,
-			"hematite" = 10,
-			"carbon" = 10,
-			"diamond" = 4,
-			"gold" = 15,
-			"silver" = 15,
-			"lead" = 5,
-			"verdantium" = 2))
-	else
-		mineral_name = pickweight(list(
-			"marble" = 5,
-			"uranium" = 7,
-			"platinum" = 7,
-			"hematite" = 28,
-			"carbon" = 28,
-			"diamond" = 2,
-			"gold" = 7,
-			"silver" = 7,
-			"lead" = 4,
-			"verdantium" = 1))
-	if(mineral_name && (mineral_name in GLOB.ore_data))
-		mineral = GLOB.ore_data[mineral_name]
-		if(atom_flags & ATOM_INITIALIZED)
-			UpdateMineral()
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors
+	outdoors = TRUE
+
+/turf/simulated/floor/concrete/tile/lythios43c/outdoors
+	outdoors = TRUE
 
 
 /// Needs to be remmapped to use /turf/unsimulated/mineral/icerock/lythios43c .

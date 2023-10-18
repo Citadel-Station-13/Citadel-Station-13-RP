@@ -88,7 +88,7 @@
 		/obj/item/tool/wirecutters/cyborg,
 		/obj/item/multitool,
 		/obj/item/t_scanner,
-		/obj/item/analyzer,
+		/obj/item/atmos_analyzer,
 		/obj/item/barrier_tape_roll/engineering,
 		/obj/item/gripper,
 		/obj/item/gripper/circuit,
@@ -141,7 +141,9 @@
 		"Borgi" = "borgi-eng",
 		"Engineering Hound" = "engihound",
 		"Engineering Hound Dark" = "engihounddark",
-		"F3-LINE" = "FELI-Engineer"
+		"F3-LINE" = "FELI-Engineer",
+		"Drake" = "drakeeng",
+		"Otie" = "otiee"
 	)
 	channels = list("Engineering" = 1)
 	networks = list(NETWORK_ENGINEERING)
@@ -160,7 +162,7 @@
 		/obj/item/multitool,
 		/obj/item/t_scanner,
 		/obj/item/rcd/electric/mounted/borg,
-		/obj/item/analyzer,
+		/obj/item/atmos_analyzer,
 		/obj/item/barrier_tape_roll/engineering,
 		/obj/item/inflatable_dispenser/robot,
 		/obj/item/pickaxe/plasmacutter,

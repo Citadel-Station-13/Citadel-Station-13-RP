@@ -29,7 +29,7 @@ var/datum/antagonist/deathsquad/mercenary/commandos
 	player.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/syndicate(player), SLOT_ID_MASK)
 	player.equip_to_slot_or_del(new /obj/item/storage/box(player), /datum/inventory_slot_meta/abstract/put_in_backpack)
 	player.equip_to_slot_or_del(new /obj/item/ammo_magazine/clip/c45(player), /datum/inventory_slot_meta/abstract/put_in_backpack)
-	player.equip_to_slot_or_del(new /obj/item/rig/merc(player), SLOT_ID_BACK)
+	player.equip_to_slot_or_del(new /obj/item/hardsuit/merc(player), SLOT_ID_BACK)
 	player.equip_to_slot_or_del(new /obj/item/gun/ballistic/automatic/c20r(player), /datum/inventory_slot_meta/abstract/hand/right)
 
 	create_id("Commando", player)

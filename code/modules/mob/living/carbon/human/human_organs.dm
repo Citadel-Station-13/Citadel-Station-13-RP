@@ -41,7 +41,7 @@
 	if(!force_process && !bad_external_organs.len)
 		return
 
-	number_wounds = 0 // You have to reduce this at some point...
+	wound_tally = 0 // You have to reduce this at some point...
 	for(var/obj/item/organ/external/E in bad_external_organs)
 		if(!E)
 			continue
@@ -53,18 +53,18 @@
 				E.tick_death(dt)
 			else
 				E.tick_life(dt)
-			number_wounds += E.number_wounds
+			wound_tally += E.wound_tally
 
 			if (!lying && !buckled && world.time - l_move_time < 15)
 			//Moving around with fractured ribs won't do you any good
 				if (prob(10) && !stat && can_feel_pain() && chem_effects[CE_PAINKILLER] < 50 && E.is_broken() && E.internal_organs.len)
 					custom_pain("Pain jolts through your broken [E.encased ? E.encased : E.name], staggering you!", 50)
 					drop_active_held_item()
-					Stun(2)
+					afflict_stun(20 * 2)
 
 				//Moving makes open wounds get infected much faster
-				if (E.wounds.len)
-					for(var/datum/wound/W in E.wounds)
+				if (length(E.wounds))
+					for(var/datum/wound/W as anything in E.wounds)
 						if (W.infection_check())
 							W.germ_level += 1
 
@@ -117,7 +117,7 @@
 			if(limb_pain)
 				emote("scream")
 			custom_emote(1, "collapses!")
-		Weaken(5) //can't emote while weakened, apparently.
+		afflict_paralyze(20 * 5) //can't emote while weakened, apparently.
 
 /mob/living/carbon/human/proc/handle_grasp()
 	if(!l_hand && !r_hand)
@@ -149,7 +149,7 @@
 			continue
 
 		if((E.is_broken() || E.is_dislocated()) && !E.splinted)
-			switch(E.body_part)
+			switch(E.body_part_flags)
 				if(HAND_LEFT, ARM_LEFT)
 					if(!l_hand)
 						continue
@@ -163,7 +163,7 @@
 			emote("me", 1, "[(can_feel_pain()) ? "" : emote_scream ]drops what they were holding in their [E.name]!")
 
 		else if(E.is_malfunctioning())
-			switch(E.body_part)
+			switch(E.body_part_flags)
 				if(HAND_LEFT, ARM_LEFT)
 					if(!l_hand)
 						continue

@@ -55,7 +55,10 @@
 	sides = 10
 	result = 10
 
-/obj/item/dice/attack_self(mob/user as mob)
+/obj/item/dice/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	rollDice(user, 0)
 
 /obj/item/dice/AltClick(mob/user)
@@ -145,7 +148,10 @@
 		/obj/item/dice,
 		)
 
-/obj/item/storage/dicecup/attack_self(mob/user as mob)
+/obj/item/storage/dicecup/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	user.visible_message("<span class='notice'>[user] shakes [src].</span>", \
 							 "<span class='notice'>You shake [src].</span>", \
 							 "<span class='notice'>You hear dice rolling.</span>")

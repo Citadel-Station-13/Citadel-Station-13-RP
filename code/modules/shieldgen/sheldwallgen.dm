@@ -6,7 +6,7 @@
 	icon_state = "Shield_Gen"
 	anchored = 0
 	density = 1
-	req_access = list(access_engine_equip)
+	req_access = list(ACCESS_ENGINEERING_ENGINE)
 	var/active = 0
 	var/power = 0
 	var/state = 0
@@ -25,7 +25,7 @@
 	var/max_stored_power = 50000 //50 kW
 	use_power = USE_POWER_OFF	//Draws directly from power net. Does not use APC power.
 
-/obj/machinery/shieldwallgen/attack_hand(mob/user as mob)
+/obj/machinery/shieldwallgen/attack_hand(mob/user, list/params)
 	if(state != 1)
 		to_chat(user, "<font color='red'>The shield generator needs to be firmly secured to the floor first.</font>")
 		return 1
@@ -212,7 +212,7 @@
 	src.cleanup(8)
 	..()
 
-/obj/machinery/shieldwallgen/bullet_act(var/obj/item/projectile/Proj)
+/obj/machinery/shieldwallgen/bullet_act(var/obj/projectile/Proj)
 	storedpower -= 400 * Proj.get_structure_damage()
 	..()
 	return
@@ -257,7 +257,7 @@
 	update_nearby_tiles()
 	..()
 
-/obj/machinery/shieldwall/attack_hand(mob/user as mob)
+/obj/machinery/shieldwall/attack_hand(mob/user, list/params)
 	return
 
 
@@ -277,7 +277,7 @@
 			gen_secondary.storedpower -= power_usage
 
 
-/obj/machinery/shieldwall/bullet_act(var/obj/item/projectile/Proj)
+/obj/machinery/shieldwall/bullet_act(var/obj/projectile/Proj)
 	if(needs_power)
 		var/obj/machinery/shieldwallgen/G
 		if(prob(50))
@@ -321,5 +321,5 @@
 		return
 	if(istype(mover) && mover.check_pass_flags(ATOM_PASS_GLASS))
 		return prob(20)
-	if(istype(mover, /obj/item/projectile))
+	if(istype(mover, /obj/projectile))
 		return prob(10)

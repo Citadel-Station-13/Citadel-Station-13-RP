@@ -25,7 +25,7 @@
 	maxHealth = 90
 	health = 90
 	projectilesound = 'sound/weapons/thudswoosh.ogg'
-	projectiletype = /obj/item/projectile/webball
+	projectiletype = /obj/projectile/webball
 	base_attack_cooldown = 15
 	melee_damage_lower = 8
 	melee_damage_upper = 15
@@ -47,7 +47,7 @@
 /mob/living/simple_mob/animal/giant_spider/webslinger/do_special_attack(atom/A)
 	set waitfor = FALSE
 	set_AI_busy(TRUE)
-	var/obj/item/projectile/bola/B = new /obj/item/projectile/bola(src.loc)
+	var/obj/projectile/bola/B = new /obj/projectile/bola(src.loc)
 	playsound(src, 'sound/weapons/thudswoosh.ogg', 100, 1)
 	if(!B)
 		return

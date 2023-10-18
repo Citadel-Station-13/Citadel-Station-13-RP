@@ -36,8 +36,7 @@
 	var/faketank_integrity
 
 /obj/machinery/bomb_tester/Initialize(mapload)
-	.=..()
-	default_apply_parts()
+	. = ..()
 	faketank = new
 
 /obj/machinery/bomb_tester/Destroy()
@@ -110,7 +109,7 @@
 			return
 	..()
 
-/obj/machinery/bomb_tester/attack_hand(mob/user)
+/obj/machinery/bomb_tester/attack_hand(mob/user, list/params)
 	add_fingerprint(user)
 	ui_interact(user)
 
@@ -135,7 +134,7 @@
 
 	return data
 
-/obj/machinery/bomb_tester/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/bomb_tester/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -371,7 +370,7 @@
 	if(G.total_moles)
 		results += "<br>Temperature: [round(G.temperature-T0C)]&deg;C"
 		for(var/mix in G.gas)
-			results += "<br>[GLOB.meta_gas_names[mix]]: [round((G.gas[mix] / G.total_moles) * 100)]%"
+			results += "<br>[global.gas_data.names[mix]]: [round((G.gas[mix] / G.total_moles) * 100)]%"
 
 	return results
 

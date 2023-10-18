@@ -46,7 +46,7 @@
 	var/obj/item/cell/cell = null
 	var/obj/machinery/camera/camera = null
 	var/obj/item/mmi/mmi = null
-	var/list/req_access = list(access_robotics) //Access needed to pop out the brain.
+	var/list/req_access = list(ACCESS_SCIENCE_ROBOTICS) //Access needed to pop out the brain.
 	var/positronic
 
 	can_enter_vent_with = list(
@@ -138,7 +138,7 @@
 			var/obj/item/pda/pda = O
 			id_card = pda.id
 
-		if(access_robotics in id_card.access)
+		if(ACCESS_SCIENCE_ROBOTICS in id_card.access)
 			to_chat(user, "<span class='notice'>You swipe your access card and pop the brain out of \the [src].</span>")
 			eject_brain()
 			if(held_item)
@@ -195,7 +195,7 @@
 		var/turf/T = get_turf(loc)
 		if(T)
 			mmi.forceMove(T)
-		if(mind)	mind.transfer_to(mmi.brainmob)
+		if(mind)	mind.transfer(mmi.brainmob)
 		mmi = null
 		real_name = initial(real_name)
 		name = real_name
@@ -296,7 +296,7 @@
 	to_chat(src, "<span class='warning'>There is nothing of interest to take.</span>")
 	return 0
 
-/mob/living/simple_mob/spiderbot/examine(mob/user)
+/mob/living/simple_mob/spiderbot/examine(mob/user, dist)
 	. = ..()
 	if(src.held_item)
 		. += "It is carrying [icon2html(thing = src, target = world)] \a [src.held_item]."

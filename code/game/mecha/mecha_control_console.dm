@@ -4,7 +4,7 @@
 	icon_keyboard = "rd_key"
 	icon_screen = "mecha"
 	light_color = "#a97faa"
-	req_access = list(access_robotics)
+	req_access = list(ACCESS_SCIENCE_ROBOTICS)
 	circuit = /obj/item/circuitboard/mecha_control
 	var/list/located = list()
 	var/screen = 0
@@ -13,7 +13,7 @@
 /obj/machinery/computer/mecha/attack_ai(mob/user)
 	return attack_hand(user)
 
-/obj/machinery/computer/mecha/attack_hand(mob/user)
+/obj/machinery/computer/mecha/attack_hand(mob/user, list/params)
 	if(..())
 		return
 	ui_interact(user)
@@ -38,7 +38,7 @@
 
 	return data
 
-/obj/machinery/computer/mecha/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/computer/mecha/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

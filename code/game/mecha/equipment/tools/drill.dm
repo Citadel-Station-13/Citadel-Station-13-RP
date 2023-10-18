@@ -4,7 +4,7 @@
 	icon_state = "mecha_drill"
 	equip_cooldown = 30
 	energy_drain = 10
-	force = 15
+	damage_force = 15
 	var/advanced = 0	//Determines if you can pierce the heavens or not. Used in diamond drill.
 	required_type = list(/obj/mecha/working/ripley)
 
@@ -59,7 +59,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/tool/drill/proc/drill_mob(mob/living/target, mob/user)
 	add_attack_logs(user, target, "attacked", "[name]", "(INTENT: [uppertext(user.a_intent)]) (DAMTYPE: [uppertext(damtype)])")
-	var/drill_force = force	//Couldn't manage it otherwise.
+	var/drill_force = damage_force	//Couldn't manage it otherwise.
 	if(ishuman(target))
 		target.apply_damage(drill_force, BRUTE)
 		return
@@ -83,7 +83,7 @@
 	icon_state = "mecha_diamond_drill"
 	origin_tech = list(TECH_MATERIAL = 4, TECH_ENGINEERING = 3)
 	equip_cooldown = 10
-	force = 15
+	damage_force = 15
 	advanced = 1
 
 /obj/item/mecha_parts/mecha_equipment/tool/drill/bore
@@ -92,7 +92,7 @@
 	icon_state = "mecha_bore"
 	equip_cooldown = 5 SECONDS
 	energy_drain = 30
-	force = 20
+	damage_force = 20
 	required_type = list(/obj/mecha/working/ripley)
 
 /obj/item/mecha_parts/mecha_equipment/tool/drill/bore/action(atom/target)

@@ -219,8 +219,11 @@
 
 //Pet 4 friendly
 
-/mob/living/simple_mob/otie/attack_hand(mob/living/carbon/human/M as mob)
+/mob/living/simple_mob/otie/attack_hand(mob/user, list/params)
 
+	var/mob/living/M = user
+	if(!istype(M))
+		return
 	switch(M.a_intent)
 		if(INTENT_HELP)
 			if(health > 0)
@@ -263,7 +266,7 @@
 
 /mob/living/simple_mob/otie/Logout()
 	. = ..()
-	DelComponent(/datum/component/riding_filter/mob/animal)
+	DelComponent(/datum/component/riding_filter, /datum/component/riding_filter/mob/animal)
 
 /mob/living/simple_mob/otie/MouseDroppedOnLegacy(mob/living/M, mob/living/user)
 	return

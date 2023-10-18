@@ -242,7 +242,7 @@
 					if(1)
 						visible_message("<span class='warning'>\The [src] suddenly collapses!</span>",
 						"<span class='danger'>You suddenly feel very light-headed, and faint!</span>")
-						Unconscious(instability * 0.1)
+						afflict_unconscious(20 * instability * 0.1)
 					if(2)
 						if(can_feel_pain())
 							apply_effect(instability, AGONY)
@@ -278,7 +278,7 @@
 // This should only be used for EXTERNAL sources of instability, such as from someone or something glowing.
 /mob/living/proc/receive_radiated_instability(amount)
 	// Energy armor like from the AMI RIG can protect from this.
-	var/armor = run_mob_armor(null, "energy")
+	var/armor = legacy_mob_armor(null, "energy")
 	var/armor_factor = abs( (armor - 100) / 100)
 	amount = amount * armor_factor
 	if(amount && prob(10))

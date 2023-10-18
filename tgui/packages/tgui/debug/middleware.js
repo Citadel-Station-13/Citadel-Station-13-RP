@@ -13,6 +13,7 @@ const relayedTypes = [
   'backend/update',
   'chat/message',
   'backend/data',
+  'backend/modules',
 ];
 
 export const debugMiddleware = store => {

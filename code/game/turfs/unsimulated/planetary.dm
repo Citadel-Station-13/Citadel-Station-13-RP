@@ -62,7 +62,7 @@
 	initial_gas_mix = GAS_STRING_STP_HOT
 
 /turf/unsimulated/wall/planetary/desert/standard_temp
-	icon = 'icons/turf/desert.dmi'
+	icon = 'icons/turf/outdoors.dmi'
 	icon_state = "lowdesert"
 	initial_gas_mix = GAS_STRING_STP
 
@@ -79,7 +79,13 @@
 	TRIUMPH_SET_ATMOS
 
 /turf/unsimulated/wall/planetary/lythios43c
-	name = "facility wall"
+	name = "glacial permafrost"
 	desc = "An eight-meter tall carbyne wall. For when the wildlife on your planet is mostly militant megacorps."
 	alpha = 0xFF
 	initial_gas_mix = ATMOSPHERE_ID_LYTHIOS43C
+	icon = 'icons/turf/walls/natural.dmi'
+	base_icon_state = "wall"
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = (SMOOTH_GROUP_WALLS+SMOOTH_GROUP_CLOSED_TURFS + SMOOTH_GROUP_MINERAL_WALLS)
+	canSmoothWith = (SMOOTH_GROUP_WALLS + SMOOTH_GROUP_CLOSED_TURFS+SMOOTH_GROUP_MINERAL_WALLS)
+	color = COLOR_OFF_WHITE

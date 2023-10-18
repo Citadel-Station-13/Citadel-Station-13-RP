@@ -40,7 +40,7 @@
 	occupant_actions = list()
 	generate_actions()
 
-/obj/vehicle/examine(mob/user)
+/obj/vehicle/examine(mob/user, dist)
 	. = ..()
 	/*
 	if(resistance_flags & ON_FIRE)

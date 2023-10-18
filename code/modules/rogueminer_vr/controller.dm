@@ -14,19 +14,19 @@ var/datum/controller/rogue/rm_controller
 	// Adjusting the numbers to where, yes, the first scan is going to suck for mining, but hopefully with the base difficulty still at 100 with this then *spawning*
 	// onto the level 5 difficulty will make up for this. - Enzo 9/8/2020
 	var/list/diffstep_nums = list(
-		1,
-		2,
-		3,
 		50,
+		75,
 		100,
+		125,
+		150,
 		200)
 
 	var/list/diffstep_chances = list(
-		10,
 		20,
 		30,
-		45,
-		60,
+		40,
+		50,
+		75,
 		80)
 
 	var/list/diffstep_strs = list(
@@ -142,7 +142,7 @@ var/datum/controller/rogue/rm_controller
 			oldest_zone = ZM
 			oldest_time = ZM.prepared_at
 
-	return oldest_zone
+	return oldest_zone || SAFEINDEXACCESS(all_zones, 1)
 
 /datum/controller/rogue/proc/mark_clean(var/datum/rogue/zonemaster/ZM)
 	if(!(ZM in all_zones)) //What? Who?
@@ -183,22 +183,24 @@ var/datum/controller/rogue/rm_controller
 /datum/controller/rogue/proc/prepare_new_zone()
 	var/datum/rogue/zonemaster/ZM_target
 
+	if(clean_zones.len <= 1) //Need to clean the oldest one, too.
+		rm_controller.dbg("RMC(pnz): Cleaning up oldest zone.")
+		var/datum/rogue/zonemaster/ZM_oldest = get_oldest_zone()
+		if(!ZM_oldest.scored)
+			ZM_oldest.score_zone()
+		ZM_oldest.clean_zone()
+
 	if(clean_zones.len)
 		ZM_target = pick(clean_zones)
 
 	if(ZM_target)
 		to_chat(world.log, "RM(stats): SCORING [ready_zones.len] zones (if unscored).") //DEBUG code for playtest stats gathering.
 		for(var/datum/rogue/zonemaster/ZM_toscore in ready_zones) //Score all the zones first.
-			if(ZM_toscore.scored) continue
+			if(ZM_toscore.scored)
+				continue
 			ZM_toscore.score_zone()
 		ZM_target.prepare_zone()
 	else
 		rm_controller.dbg("RMC(pnz): I was asked for a new zone but there's no space.")
-
-	if(clean_zones.len <= 1) //Need to clean the oldest one, too.
-		rm_controller.dbg("RMC(pnz): Cleaning up oldest zone.")
-		spawn(0) //Detatch it so we can return the new zone for now.
-			var/datum/rogue/zonemaster/ZM_oldest = get_oldest_zone()
-			ZM_oldest.clean_zone()
 
 	return ZM_target

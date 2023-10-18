@@ -15,10 +15,12 @@
 		/obj/item/clothing/suit/space/void
 		)
 
-/obj/item/modkit/afterattack(obj/item/O, mob/user as mob, proximity)
-	if(!proximity)
+/obj/item/modkit/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
-
+	var/obj/item/O = target
+	if(!istype(O))
+		return
 	if (!target_species)
 		return	//it shouldn't be null, okay?
 
@@ -61,7 +63,7 @@
 	if(!parts)
 		qdel(src)
 
-/obj/item/modkit/examine(mob/user)
+/obj/item/modkit/examine(mob/user, dist)
 	. = ..()
 	. += "<span class = 'notice'>It looks as though it modifies hardsuits to fit [target_species] users.</span>"
 

@@ -8,7 +8,7 @@
 /datum/map_template/submap/level_specific/plains
 	name = "Surface Content - Plains"
 	desc = "Used to make the surface outside the outpost be 16% less boring."
-	prefix = "_maps/submaps/plains/"
+	prefix = "maps/submaps/plains/"
 
 // To be added: Templates for surface exploration when they are made.
 
@@ -58,7 +58,7 @@
 /datum/map_template/submap/level_specific/plains/normal/Rocky2
 	name =  "Rocky2"
 	desc = "More rocks."
-	mappath = "maps/submaps/surface_submaps/wilderness/Rocky2.dmm"
+	map_path = "maps/submaps/wilderness/Rocky2.dmm"
 	allow_duplicates = TRUE
 	cost = 5
 

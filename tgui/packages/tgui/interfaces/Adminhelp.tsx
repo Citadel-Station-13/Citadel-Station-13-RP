@@ -83,7 +83,7 @@ export const Adminhelp = (props, context) => {
                     color={requestForAdmin ? "orange" : "blue"}
                     icon={requestForAdmin ? "check-square-o" : "square-o"}
                     disabled={bannedFromUrgentAhelp}
-                    tooltip={bannedFromUrgentAhelp ? "You are banned from using urgent ahelps." : null}
+                    tooltip={bannedFromUrgentAhelp ? "You are banned from using urgent ahelps." : undefined}
                     fluid
                     textAlign="center"
                   />

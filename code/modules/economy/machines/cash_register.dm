@@ -3,7 +3,7 @@
 	desc = "Swipe your ID card to make purchases electronically."
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "register_idle"
-	req_access = list(access_heads)
+	req_access = list(ACCESS_COMMAND_BRIDGE)
 	anchored = 1
 
 	var/locked = 1
@@ -30,7 +30,7 @@
 	cash_stored = rand(10, 70)*10
 	GLOB.transaction_devices += src // Global reference list to be properly set up by /proc/setup_economy()
 
-/obj/machinery/cash_register/examine(mob/user)
+/obj/machinery/cash_register/examine(mob/user, dist)
 	. = ..()
 	if(cash_open)
 		if(cash_stored)
@@ -39,9 +39,9 @@
 			. += "It's completely empty."
 
 
-/obj/machinery/cash_register/attack_hand(mob/user as mob)
+/obj/machinery/cash_register/attack_hand(mob/user, list/params)
 	// Don't be accessible from the wrong side of the machine
-	if(get_dir(src, user) & GLOB.reverse_dir[src.dir]) return
+	if(get_dir(src, user) & global.reverse_dir[src.dir]) return
 
 	if(cash_open)
 		if(cash_stored)

@@ -4,7 +4,7 @@
 	icon_keyboard = "security_key"
 	icon_screen = "explosive"
 	light_color = "#a91515"
-	req_access = list(access_armory)
+	req_access = list(ACCESS_SECURITY_ARMORY)
 	circuit = /obj/item/circuitboard/prisoner
 	var/id = 0
 	var/temp = null
@@ -16,7 +16,7 @@
 /obj/machinery/computer/prisoner/attack_ai(var/mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/computer/prisoner/attack_hand(mob/user)
+/obj/machinery/computer/prisoner/attack_hand(mob/user, list/params)
 	if(..())
 		return
 	ui_interact(user)
@@ -50,7 +50,7 @@
 				continue
 			var/loc_display = "Unknown"
 			var/mob/living/L = track.imp_in
-			if((get_z(L) in GLOB.using_map.station_levels) && !istype(L.loc, /turf/space))
+			if((get_z(L) in (LEGACY_MAP_DATUM).station_levels) && !istype(L.loc, /turf/space))
 				loc_display = T.loc
 			if(track.malfunction)
 				loc_display = pick(teleportlocs)

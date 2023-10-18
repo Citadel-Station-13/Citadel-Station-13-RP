@@ -69,3 +69,27 @@
 	id = "marking_eye_closed"
 	icon_state = "closedeyes"
 	body_parts = list(BP_HEAD)
+
+/datum/sprite_accessory/marking/eye_stuff/eyesshut
+	name = "Shut Eyes"
+	id = "marking_eye_shut"
+	icon_state = "eyesshut"
+	body_parts = list(BP_HEAD)
+
+/datum/sprite_accessory/marking/eye_stuff/eyeeffectlower
+	name = "Eye Effect - Lower"
+	id = "marking_eye_effect_lower"
+	icon_state = "eyeeffectlower"
+	body_parts = list(BP_HEAD)
+
+/datum/sprite_accessory/marking/eye_stuff/eyeeffectupper
+	name = "Eye Effect - Upper"
+	id = "marking_eye_effect_upper"
+	icon_state = "eyeeffectupper"
+	body_parts = list(BP_HEAD)
+
+/datum/sprite_accessory/marking/eye_stuff/eyeshadowlower
+	name = "Eye Effect - Bags (or Shadow)"
+	id = "marking_eye_shadow_lower"
+	icon_state = "eyeshadowlower"
+	body_parts = list(BP_HEAD)

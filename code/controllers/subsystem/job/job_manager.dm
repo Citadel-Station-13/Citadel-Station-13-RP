@@ -1,5 +1,10 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 // todo: refactor _job.dm
 /datum/controller/subsystem/job
+
+//? Jobs
 
 /datum/controller/subsystem/job/proc/job_by_id(id)
 	RETURN_TYPE(/datum/role/job)
@@ -62,3 +67,7 @@
 	else
 		for(var/datum/role/job/J as anything in occupations)
 			. += J
+
+//? Departments
+
+// todo: dept stuff

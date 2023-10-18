@@ -69,7 +69,10 @@
 /*
  * Bike Horns
  */
-/obj/item/bikehorn/attack_self(mob/user as mob)
+/obj/item/bikehorn/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if (spam_flag == 0)
 		spam_flag = 1
 		playsound(src.loc, 'sound/items/bikehorn.ogg', 50, 1)

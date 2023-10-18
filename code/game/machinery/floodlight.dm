@@ -66,7 +66,7 @@
 		if(!turn_on(TRUE))
 			to_chat(user, "You try to turn on \the [src] but it does not work.")
 
-/obj/machinery/floodlight/attack_hand(mob/user)
+/obj/machinery/floodlight/attack_hand(mob/user, list/params)
 	if(open && cell)
 		user.grab_item_from_interacted_with(cell, src)
 

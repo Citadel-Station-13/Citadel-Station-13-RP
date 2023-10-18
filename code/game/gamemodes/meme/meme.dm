@@ -78,7 +78,7 @@
 	for(var/datum/mind/meme in memes)
 		var/mob/living/parasite/meme/M = new
 		var/mob/original = meme.current
-		meme.transfer_to(M)
+		meme.transfer(M)
 		M.clearHUD()
 
 		// get the host for this meme

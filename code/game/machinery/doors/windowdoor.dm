@@ -40,13 +40,8 @@
 
 		if(!src.req_access)    //This apparently has side effects that might
 			src.check_access() //update null r_a's? Leaving it just in case.
-
-		if(src.req_access)
-			ae.conf_access = src.req_access
-
-		else if(src.req_one_access)
-			ae.conf_access = src.req_one_access
-			ae.one_access = 1
+		ae.conf_req_access = req_access?.Copy()
+		ae.conf_req_one_access = req_one_access?.Copy()
 	else
 		ae = electronics
 		electronics = null
@@ -71,13 +66,13 @@
 		if(istype(bot))
 			if(density && src.check_access(bot.botcard))
 				open()
-				addtimer(CALLBACK(src, .proc/close), 50)
+				addtimer(CALLBACK(src, PROC_REF(close)), 50)
 		else if(istype(AM, /obj/mecha))
 			var/obj/mecha/mecha = AM
 			if(density)
 				if(mecha.occupant && src.allowed(mecha.occupant))
 					open()
-					addtimer(CALLBACK(src, .proc/close), 50)
+					addtimer(CALLBACK(src, PROC_REF(close)), 50)
 		return
 	if (!( SSticker ))
 		return
@@ -85,7 +80,7 @@
 		return
 	if (density && allowed(AM))
 		open()
-		addtimer(CALLBACK(src, .proc/close), check_access(null)? 50 : 20)
+		addtimer(CALLBACK(src, PROC_REF(close)), check_access(null)? 50 : 20)
 
 /obj/machinery/door/window/CanAllowThrough(atom/movable/mover, turf/target)
 	if(!(get_dir(mover, loc) & turn(dir, 180)))
@@ -97,10 +92,14 @@
 		return ATMOS_PASS_NOT_BLOCKED
 	return density? ATMOS_PASS_AIR_BLOCKED : ATMOS_PASS_ZONE_BLOCKED
 
-//used in the AStar algorithm to determinate if the turf the door is on is passable
-// todo: astar sucks
-/obj/machinery/door/window/CanAStarPass(obj/item/card/id/ID, to_dir)
-	return ..() || (check_access(ID) && inoperable()) || (dir != to_dir)
+/obj/machinery/door/window/can_pathfinding_enter(atom/movable/actor, dir, datum/pathfinding/search)
+	return (src.dir != dir) || ..() || (has_access(req_access, req_one_access, search.ss13_with_access) && !inoperable())
+
+/obj/machinery/door/window/can_pathfinding_exit(atom/movable/actor, dir, datum/pathfinding/search)
+	return (src.dir != dir)  || ..() || (has_access(req_access, req_one_access, search.ss13_with_access) && !inoperable())
+
+/obj/machinery/door/window/can_pathfinding_pass(atom/movable/actor, datum/pathfinding/search)
+	return ..() || (has_access(req_access, req_one_access, search.ss13_with_access) && !inoperable())
 
 /obj/machinery/door/window/CheckExit(atom/movable/AM, atom/newLoc)
 	if(!(get_dir(src, newLoc) & dir))
@@ -114,8 +113,8 @@
 		return 0
 	if (!operating) //in case of emag
 		operating = 1
-	flick(text("[src.base_state]opening"), src)
-	playsound(src.loc, 'sound/machines/windowdoor.ogg', 100, 1)
+	flick("[base_state]opening", src)
+	playsound(loc, 'sound/machines/windowdoor.ogg', 100, 1)
 	sleep(10)
 
 	explosion_resistance = 0
@@ -131,8 +130,8 @@
 	if(operating || density)
 		return FALSE
 	operating = TRUE
-	flick(text("[]closing", src.base_state), src)
-	playsound(src.loc, 'sound/machines/windowdoor.ogg', 100, 1)
+	flick("[base_state]closing", src)
+	playsound(loc, 'sound/machines/windowdoor.ogg', 100, 1)
 
 	density = TRUE
 	update_icon()
@@ -152,7 +151,7 @@
 /obj/machinery/door/window/attack_ai(mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/door/window/attack_hand(mob/user as mob)
+/obj/machinery/door/window/attack_hand(mob/user, list/params)
 	src.add_fingerprint(user)
 
 	if(istype(user,/mob/living/carbon/human))
@@ -172,7 +171,7 @@
 			close()
 
 	else if (src.density)
-		flick(text("[]deny", src.base_state), src)
+		flick("[base_state]deny", src)
 
 	return
 
@@ -243,11 +242,8 @@
 						wa.electronics = new/obj/item/airlock_electronics()
 						if(!src.req_access)
 							src.check_access()
-						if(src.req_access.len)
-							wa.electronics.conf_access = src.req_access
-						else if (src.req_one_access.len)
-							wa.electronics.conf_access = src.req_one_access
-							wa.electronics.one_access = 1
+						wa.electronics.conf_req_access = req_access?.Copy()
+						wa.electronics.conf_req_one_access = req_one_access?.Copy()
 					else
 						wa.electronics = electronics
 						electronics = null
@@ -258,7 +254,7 @@
 		//If it's a weapon, smash windoor. Unless it's an id card, agent card, ect.. then ignore it (Cards really shouldnt damage a door anyway)
 		if(src.density && istype(I, /obj/item) && !istype(I, /obj/item/card))
 			user.setClickCooldown(user.get_attack_speed(I))
-			var/aforce = I.force
+			var/aforce = I.damage_force
 			playsound(src.loc, 'sound/effects/Glasshit.ogg', 75, 1)
 			visible_message("<span class='danger'>[src] was hit by [I].</span>")
 			if(I.damtype == BRUTE || I.damtype == BURN)
@@ -275,7 +271,7 @@
 			close()
 
 	else if (src.density)
-		flick(text("[]deny", src.base_state), src)
+		flick("[base_state]deny", src)
 
 	return
 
@@ -284,7 +280,7 @@
 	icon = 'icons/obj/doors/windoor.dmi'
 	icon_state = "leftsecure"
 	base_state = "leftsecure"
-	req_access = list(access_security)
+	req_access = list(ACCESS_SECURITY_EQUIPMENT)
 	var/id = null
 	maxhealth = 300
 	health = 300.0 //Stronger doors for prison (regular window door health is 150)

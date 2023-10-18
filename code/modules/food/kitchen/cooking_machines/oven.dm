@@ -22,9 +22,10 @@
 
 	machine_stat = POWEROFF	//Starts turned off
 
-	var/open = 1
+	var/open = TRUE
 
 	output_options = list(
+		"Default" = null,
 		"Pizza" = /obj/item/reagent_containers/food/snacks/variable/pizza,
 		"Bread" = /obj/item/reagent_containers/food/snacks/variable/bread,
 		"Pie" = /obj/item/reagent_containers/food/snacks/variable/pie,
@@ -34,6 +35,19 @@
 		"Waffles" = /obj/item/reagent_containers/food/snacks/variable/waffles,
 		"Cookie" = /obj/item/reagent_containers/food/snacks/variable/cookie,
 		"Donut" = /obj/item/reagent_containers/food/snacks/variable/donut
+	)
+
+	var/static/list/radial_menu = list(
+		"Default" = image(icon = 'icons/mob/radial.dmi', icon_state = "red_x"),
+		"Pizza"= image(icon = 'icons/obj/food.dmi', icon_state = "pizzamargherita"),
+		"Bread" = image(icon = 'icons/obj/food.dmi', icon_state = "bread"),
+		"Pie" = image(icon = 'icons/obj/food.dmi', icon_state = "pie"),
+		"Cake" = image(icon = 'icons/obj/food.dmi', icon_state = "plaincake"),
+		"Hot Pocket" = image(icon = 'icons/obj/food.dmi', icon_state = "donkpocket"),
+		"Kebab" = image(icon = 'icons/obj/food.dmi', icon_state = "kabob"),
+		"Waffles" = image(icon = 'icons/obj/food.dmi', icon_state = "waffles"),
+		"Cookie" = 	image(icon = 'icons/obj/food.dmi', icon_state = "COOKIE!!!"),
+		"Donut" = image(icon = 'icons/obj/food.dmi', icon_state = "donut1")
 	)
 
 /obj/machinery/appliance/cooker/oven/Initialize(mapload)
@@ -61,8 +75,31 @@
 			oven_loop.stop(src)
 	..()
 
+/obj/machinery/appliance/cooker/oven/choose_output()
+	set src in view()
+	set name = "Choose output"
+	set category = "Object"
+
+	if(!can_use_check(usr))
+		return
+
+	if(output_options.len)
+		var/choice = show_radial_menu(usr, src, radial_menu, require_near = !issilicon(usr))
+		if(!choice)
+			return
+		if(choice == "Default")
+			selected_option = null
+			to_chat(usr, "<span class='notice'>You decide not to make anything specific with \the [src].</span>")
+		else
+			selected_option = choice
+			to_chat(usr, "<span class='notice'>You prepare \the [src] to make \a [selected_option] with the next thing you put in. Try putting several ingredients in a container!</span>")
+
 /obj/machinery/appliance/cooker/oven/AltClick(var/mob/user)
 	try_toggle_door(user)
+	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+
+/obj/machinery/appliance/cooker/oven/CtrlClick(var/mob/user)
+	choose_output()
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 
 /obj/machinery/appliance/cooker/oven/verb/toggle_door()
@@ -73,22 +110,14 @@
 	try_toggle_door(usr)
 
 /obj/machinery/appliance/cooker/oven/proc/try_toggle_door(mob/user)
-	if (!isliving(usr) || isAI(user))
-		return
-
-	if (!usr.IsAdvancedToolUser())
-		to_chat(usr, "You lack the dexterity to do that.")
-		return
-
-	if (!Adjacent(usr))
-		to_chat(usr, "You can't reach the [src] from there, get closer!")
+	if(!can_use_check(user, TRUE))
 		return
 
 	if (open)
-		open = 0
+		open = FALSE
 		loss = (active_power_usage / resistance)*0.5
 	else
-		open = 1
+		open = TRUE
 		loss = (active_power_usage / resistance)*4
 		//When the oven door is opened, heat is lost MUCH faster
 
@@ -98,11 +127,10 @@
 /obj/machinery/appliance/cooker/oven/can_insert(var/obj/item/I, var/mob/user)
 	if (!open)
 		to_chat(user, "<span class='warning'>You can't put anything in while the door is closed!</span>")
-		return 0
+		return FALSE
 
 	else
 		return ..()
-
 
 //If an oven's door is open it will lose heat every proc, even if it also gained it
 //But dont call equalize twice in one stack. A return value of -1 from the parent indicates equalize was already called
@@ -116,7 +144,7 @@
 /obj/machinery/appliance/cooker/oven/can_remove_items(var/mob/user)
 	if (!open)
 		to_chat(user, "<span class='warning'>You can't take anything out while the door is closed!</span>")
-		return 0
+		return FALSE
 
 	else
 		return ..()

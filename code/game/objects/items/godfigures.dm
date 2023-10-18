@@ -4,13 +4,16 @@
 	description_info = "Right click to select a new sprite to fit your needs."
 	icon = 'icons/obj/chaplain.dmi'
 	icon_state = "mrobe"
-	force = 10
+	damage_force = 10
 	throw_speed = 1
 	throw_range = 4
 	throw_force = 10
 	w_class = ITEMSIZE_SMALL
 
 /obj/item/godfig/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	resprite_figure(user)
 
 /obj/item/godfig/proc/resprite_figure(mob/living/L)
@@ -26,7 +29,7 @@
 
 	holy_icons = sortList(holy_icons)
 
-	var/choice = show_radial_menu(L, src , holy_icons, custom_check = CALLBACK(src, .proc/check_menu, L), radius = 42, require_near = TRUE)
+	var/choice = show_radial_menu(L, src , holy_icons, custom_check = CALLBACK(src, PROC_REF(check_menu), L), radius = 42, require_near = TRUE)
 	if(!choice || !check_menu(L))
 		return
 

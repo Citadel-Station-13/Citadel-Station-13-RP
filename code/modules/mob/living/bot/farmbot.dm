@@ -17,7 +17,7 @@
 	icon_state = "farmbot0"
 	health = 50
 	maxHealth = 50
-	req_one_access = list(access_robotics, access_hydroponics, access_xenobiology)
+	req_one_access = list(ACCESS_SCIENCE_ROBOTICS, ACCESS_GENERAL_BOTANY, ACCESS_SCIENCE_XENOBIO)
 	catalogue_data = list(/datum/category_item/catalogue/technology/bot/farmbot)
 
 	var/action = "" // Used to update icon
@@ -69,7 +69,7 @@
 
 	return data
 
-/mob/living/bot/farmbot/attack_hand(mob/user)
+/mob/living/bot/farmbot/attack_hand(mob/user, list/params)
 	. = ..()
 	if(.)
 		return
@@ -85,7 +85,7 @@
 			emagged = TRUE
 		return TRUE
 
-/mob/living/bot/farmbot/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/mob/living/bot/farmbot/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -152,22 +152,21 @@
 				return
 
 /mob/living/bot/farmbot/calcTargetPath() // We need to land NEXT to the tray, because the tray itself is impassable
-	for(var/trayDir in list(NORTH, SOUTH, EAST, WEST))
-		target_path = AStar(get_turf(loc), get_step(get_turf(target), trayDir), /turf/proc/CardinalTurfsWithAccess, /turf/proc/Distance, 0, max_target_dist, id = botcard)
-		if(target_path)
-			break
+	if(isnull(target))
+		return
+	target_path = SSpathfinder.default_bot_pathfinding(src, get_turf(target), 1, 32)
 	if(!target_path)
 		ignore_list |= target
 		target = null
 		target_path = list()
-	return
 
 /mob/living/bot/farmbot/stepToTarget() // Same reason
+	if(isnull(target))
+		return
 	var/turf/T = get_turf(target)
 	if(!target_path.len || !T.Adjacent(target_path[target_path.len]))
 		calcTargetPath()
 	makeStep(target_path)
-	return
 
 /mob/living/bot/farmbot/UnarmedAttack(var/atom/A, var/proximity)
 	if(!..())
@@ -272,7 +271,7 @@
 	new /obj/item/material/minihoe(Tsec)
 	new /obj/item/reagent_containers/glass/bucket(Tsec)
 	new /obj/item/assembly/prox_sensor(Tsec)
-	new /obj/item/analyzer/plant_analyzer(Tsec)
+	new /obj/item/plant_analyzer(Tsec)
 
 	if(tank)
 		tank.loc = Tsec
@@ -363,7 +362,7 @@
 
 /obj/item/farmbot_arm_assembly/attackby(obj/item/W as obj, mob/user as mob)
 	..()
-	if((istype(W, /obj/item/analyzer/plant_analyzer)) && (build_step == 0))
+	if((istype(W, /obj/item/plant_analyzer)) && (build_step == 0))
 		if(!user.attempt_consume_item_for_construction(W))
 			return
 		build_step++
@@ -404,5 +403,5 @@
 
 		created_name = t
 
-/obj/item/farmbot_arm_assembly/attack_hand(mob/user as mob)
+/obj/item/farmbot_arm_assembly/attack_hand(mob/user, list/params)
 	return //it's a converted watertank, no you cannot pick it up and put it in your backpack

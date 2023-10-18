@@ -4,7 +4,7 @@
 	if(!istype(target) || !istype(firer))
 		return 0
 
-	var/obj/item/projectile/test/trace = new /obj/item/projectile/test(get_turf(firer)) //Making the test....
+	var/obj/projectile/test/trace = new /obj/projectile/test(get_turf(firer)) //Making the test....
 
 	//Set the flags and pass flags to that of the real projectile...
 	if(!isnull(atom_flags))
@@ -13,11 +13,11 @@
 
 	return trace.launch_projectile(target) //Test it!
 
-/obj/item/projectile/proc/_check_fire(atom/target as mob, var/mob/living/user as mob)  //Checks if you can hit them or not.
+/obj/projectile/proc/_check_fire(atom/target as mob, var/mob/living/user as mob)  //Checks if you can hit them or not.
 	check_trajectory(target, user, pass_flags, atom_flags)
 
 //"Tracing" projectile
-/obj/item/projectile/test //Used to see if you can hit them.
+/obj/projectile/test //Used to see if you can hit them.
 	invisibility = 101 //Nope!  Can't see me!
 	hitscan = TRUE
 	nodamage = TRUE
@@ -25,16 +25,16 @@
 	has_tracer = FALSE
 	var/list/hit = list()
 
-/obj/item/projectile/test/process_hitscan()
+/obj/projectile/test/process_hitscan()
 	. = ..()
 	if(!QDELING(src))
 		qdel(src)
 	return hit
 
-/obj/item/projectile/test/Bump(atom/A)
+/obj/projectile/test/Bump(atom/A)
 	if(A != src)
 		hit |= A
 	return ..()
 
-/obj/item/projectile/test/projectile_attack_mob()
+/obj/projectile/test/projectile_attack_mob()
 	return

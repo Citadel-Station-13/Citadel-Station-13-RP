@@ -14,15 +14,15 @@
 #define MATRIX_FIELD(field, default) "<b><label for='[##field]'>[##field]</label></b> <input type='number' step='0.001' name='[field]' value='[default]'>"
 	output += "<br><br>"
 	output += MATRIX_FIELD("rr", values[1])
-	output += MATRIX_FIELD("gr", values[4])
-	output += MATRIX_FIELD("br", values[7])
-	output += "<br><br>"
 	output += MATRIX_FIELD("rg", values[2])
-	output += MATRIX_FIELD("gg", values[5])
-	output += MATRIX_FIELD("bg", values[8])
-	output += "<br><br>"
 	output += MATRIX_FIELD("rb", values[3])
+	output += "<br><br>"
+	output += MATRIX_FIELD("gr", values[4])
+	output += MATRIX_FIELD("gg", values[5])
 	output += MATRIX_FIELD("gb", values[6])
+	output += "<br><br>"
+	output += MATRIX_FIELD("br", values[7])
+	output += MATRIX_FIELD("bg", values[8])
 	output += MATRIX_FIELD("bb", values[9])
 	output += "<br><br>"
 	output += MATRIX_FIELD("cr", values[10])
@@ -52,7 +52,7 @@
 		var/button = text2num(href_list["button"])
 		if(ISINRANGE(button, 1, 3))
 			selectedbutton = button
-	var/list/cm = rgb_construct_color_matrix(
+	var/list/cm = construct_rgb_color_matrix(
 		text2num(href_list["rr"]),
 		text2num(href_list["rg"]),
 		text2num(href_list["rb"]),

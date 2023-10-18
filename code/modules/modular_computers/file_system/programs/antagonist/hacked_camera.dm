@@ -1,7 +1,7 @@
 /datum/computer_file/program/camera_monitor/hacked
 	filename = "camcrypt"
 	filedesc = "Camera Decryption Tool"
-	tguimodule_path = /datum/tgui_module/camera/ntos/hacked
+	tguimodule_path = /datum/tgui_module_old/camera/ntos/hacked
 	program_icon_state = "hostile"
 	program_key_state = "security_key"
 	program_menu_icon = "zoomin"
@@ -14,7 +14,6 @@
 	..()
 	if(program_state != PROGRAM_STATE_ACTIVE) // Background programs won't trigger alarms.
 		return
-
 
 	// The program is active and connected to one of the station's networks. Has a very small chance to trigger IDS alarm every tick.
 	if(prob(0.1))

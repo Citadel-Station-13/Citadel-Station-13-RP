@@ -57,5 +57,5 @@
 	icon_state = "caster_artificer"
 	icon_living = "caster_artificer"
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting
-	projectiletype = /obj/item/projectile/beam/inversion
+	projectiletype = /obj/projectile/beam/inversion
 	projectilesound = 'sound/weapons/spiderlunge.ogg'

@@ -58,7 +58,7 @@
 		qdel(src)
 	return
 
-/obj/effect/alien/resin/bullet_act(var/obj/item/projectile/Proj)
+/obj/effect/alien/resin/bullet_act(var/obj/projectile/Proj)
 	health -= Proj.damage
 	..()
 	healthcheck()
@@ -104,7 +104,7 @@
 	health = max(0, health - tforce)
 	healthcheck()
 
-/obj/effect/alien/resin/attack_hand()
+/obj/effect/alien/resin/attack_hand(mob/user, list/params)
 	usr.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 	if (MUTATION_HULK in usr.mutations)
 		to_chat(usr, "<span class='notice'>You easily destroy the [name].</span>")
@@ -133,7 +133,7 @@
 /obj/effect/alien/resin/attackby(obj/item/W as obj, mob/user as mob)
 
 	user.setClickCooldown(user.get_attack_speed(W))
-	var/aforce = W.force
+	var/aforce = W.damage_force
 	health = max(0, health - aforce)
 	playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)
 	healthcheck()
@@ -326,7 +326,7 @@ Alien plants should do something if theres a lot of poison
 	user.setClickCooldown(user.get_attack_speed(W))
 	visible_message("<span class='danger'>\The [src] have been [W.get_attack_verb(src, user)] with \the [W][(user ? " by [user]." : ".")]</span>")
 
-	var/damage = W.force / 4.0
+	var/damage = W.damage_force / 4.0
 
 	if(istype(W, /obj/item/weldingtool))
 		var/obj/item/weldingtool/WT = W
@@ -454,11 +454,11 @@ Alien plants should do something if theres a lot of poison
 		if((status == GROWING) && (BURST == 0))
 			Grow()
 
-/obj/effect/alien/egg/attack_hand(user as mob)
+/obj/effect/alien/egg/attack_hand(mob/user, list/params)
 
 	var/mob/living/carbon/M = user
 	if(!istype(M) || !(locate(/obj/item/organ/internal/xenos/hivenode) in M.internal_organs))
-		return attack_hand(user)
+		return ..()
 
 	switch(status)
 		if(BURST)
@@ -502,7 +502,7 @@ Alien plants should do something if theres a lot of poison
 						break
 		return 1
 
-/obj/effect/alien/egg/bullet_act(var/obj/item/projectile/Proj)
+/obj/effect/alien/egg/bullet_act(var/obj/projectile/Proj)
 	health -= Proj.damage
 	..()
 	healthcheck()
@@ -527,7 +527,7 @@ Alien plants should do something if theres a lot of poison
 		Burst()
 		return
 	visible_message("<span class='danger'>\The [src] has been [W.get_attack_verb(src, user)] with \the [W][(user ? " by [user]." : ".")]</span>")
-	var/damage = W.force / 4.0
+	var/damage = W.damage_force / 4.0
 
 	if(istype(W, /obj/item/weldingtool))
 		var/obj/item/weldingtool/WT = W

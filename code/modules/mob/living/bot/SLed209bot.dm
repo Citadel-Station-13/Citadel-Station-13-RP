@@ -28,8 +28,8 @@
 
 	stun_strength = 10
 	xeno_harm_strength = 9
-	req_one_access = list(access_research, access_robotics)
-	botcard_access = list(access_research, access_robotics, access_xenobiology, access_xenoarch, access_tox, access_tox_storage, access_maint_tunnels)
+	req_one_access = list(ACCESS_SCIENCE_MAIN, ACCESS_SCIENCE_ROBOTICS)
+	botcard_access = list(ACCESS_SCIENCE_MAIN, ACCESS_SCIENCE_ROBOTICS, ACCESS_SCIENCE_XENOBIO, ACCESS_SCIENCE_XENOARCH, ACCESS_SCIENCE_FABRICATION, ACCESS_SCIENCE_TOXINS, ACCESS_ENGINEERING_MAINT)
 	var/xeno_stun_strength = 6
 
 /mob/living/bot/secbot/ed209/slime/update_icons()
@@ -45,12 +45,12 @@
 
 	last_shot = world.time
 
-	var/projectile = /obj/item/projectile/beam/stun/xeno
+	var/projectile = /obj/projectile/beam/stun/xeno
 	if(emagged)
-		projectile = /obj/item/projectile/beam/shock
+		projectile = /obj/projectile/beam/shock
 
 	playsound(loc, emagged ? 'sound/weapons/laser3.ogg' : 'sound/weapons/Taser.ogg', 50, 1)
-	var/obj/item/projectile/P = new projectile(loc)
+	var/obj/projectile/P = new projectile(loc)
 
 	P.firer = src
 	P.old_style_target(A)

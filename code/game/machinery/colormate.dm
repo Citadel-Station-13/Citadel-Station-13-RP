@@ -82,7 +82,7 @@
 		insert_mob(victim, user)
 		SStgui.update_uis(src)
 
-	if(is_type_in_list(I, allowed_types) && !inoperable())
+	else if(is_type_in_list(I, allowed_types) && !inoperable())
 		if(!user.attempt_insert_item_for_installation(I, src))
 			return
 		if(QDELETED(I))
@@ -124,7 +124,7 @@
 	to_chat(usr, SPAN_NOTICE("You remove [inserted] from [src]"))
 	inserted.forceMove(drop_location())
 	var/mob/living/user = usr
-	if(istype(user))
+	if(istype(user) && isitem(inserted))
 		user.put_in_hands(inserted)
 	inserted = null
 	update_icon()
@@ -214,7 +214,7 @@
 		if(COLORMATE_TINT)
 			color_to_use = activecolor
 		if(COLORMATE_MATRIX)
-			color_to_use = rgb_construct_color_matrix(
+			color_to_use = construct_rgb_color_matrix(
 				text2num(color_matrix_last[1]),
 				text2num(color_matrix_last[2]),
 				text2num(color_matrix_last[3]),
@@ -245,7 +245,7 @@
 		var/list/cm
 		switch(active_mode)
 			if(COLORMATE_MATRIX)
-				cm = rgb_construct_color_matrix(
+				cm = construct_rgb_color_matrix(
 					text2num(color_matrix_last[1]),
 					text2num(color_matrix_last[2]),
 					text2num(color_matrix_last[3]),

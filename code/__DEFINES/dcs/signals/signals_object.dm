@@ -161,7 +161,7 @@
 /// From [/obj/structure/closet/supplypod/proc/preOpen]:
 ////#define COMSIG_SUPPLYPOD_LANDED "supplypodgoboom"
 
-/// From /obj/item/storage/book/bible/afterattack(): (mob/user, proximity)
+/// From /obj/item/storage/book/bible/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 ////#define COMSIG_BIBLE_SMACKED "bible_smacked"
 	///? Stops the bible chain from continuing. When all of the effects of the bible smacking have been moved to a signal we can kill this
 	////#define COMSIG_END_BIBLE_CHAIN (1<<0)
@@ -343,7 +343,7 @@
 	////#define COMPONENT_SECONDARY_CALL_NORMAL_ATTACK_CHAIN (1<<2)
 /// From base of [/obj/item/proc/attack_secondary()]: (atom/target, mob/user, params)
 ////#define COMSIG_ITEM_ATTACK_SECONDARY "item_pre_attack_secondary"
-/// From base of obj/item/afterattack(): (atom/target, mob/user, proximity_flag, click_parameters)
+/// From base of obj/item/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 ////#define COMSIG_ITEM_AFTERATTACK "item_afterattack"
 /// From base of obj/item/afterattack_secondary(): (atom/target, mob/user, proximity_flag, click_parameters)
 ////#define COMSIG_ITEM_AFTERATTACK_SECONDARY "item_afterattack_secondary"
@@ -356,6 +356,6 @@
 /// From base of /obj/item/mmi/set_brainmob(): (mob/living/brain/new_brainmob)
 ////#define COMSIG_MMI_SET_BRAINMOB "mmi_set_brainmob"
 
-/// From base of /obj/item/slimepotion/speed/afterattack(): (obj/target, /obj/src, mob/user)
+/// From base of /obj/item/slimepotion/speed/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 ////#define COMSIG_SPEED_POTION_APPLIED "speed_potion"
 	////#define SPEED_POTION_STOP (1<<0)

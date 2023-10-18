@@ -6,7 +6,7 @@
 	//animal = TRUE
 	//stop_when_pulled = FALSE
 	//destroy_surroundings = TRUE
-	armor = list(
+	armor_legacy_mob = list(
 			"melee" = 30,
 			"bullet" = 20,
 			"laser" = 20,
@@ -62,7 +62,7 @@
 	swallowTime = 4 SECONDS //A little longer to compensate for the above
 	vore_ignores_undigestable = FALSE
 	attacktext = list("shoved")
-	armor = list(
+	armor_legacy_mob = list(
 			"melee" = 5,
 			"bullet" = 5,
 			"laser" = 5,
@@ -114,7 +114,7 @@
 	vore_default_mode = DM_HOLD
 	vore_digest_chance = 25
 	vore_absorb_chance = 25
-	armor = list(
+	armor_legacy_mob = list(
 		"melee" = 15,
 		"bullet" = 15,
 		"laser" = 15,
@@ -166,7 +166,7 @@
 	vore_default_mode = DM_DRAIN
 	vore_digest_chance = 5
 	vore_ignores_undigestable = FALSE
-	armor = list(
+	armor_legacy_mob = list(
 		"melee" = 5,
 		"bullet" = 5,
 		"laser" = 5,
@@ -226,7 +226,7 @@
 	vore_default_mode = DM_DRAIN
 	vore_digest_chance = 0
 	vore_ignores_undigestable = FALSE
-	armor = list(
+	armor_legacy_mob = list(
 		"melee" = 5,
 		"bullet" = 5,
 		"laser" = 5,
@@ -273,7 +273,7 @@
 	//animal = TRUE
 	//stop_when_pulled = FALSE
 	//destroy_surroundings = TRUE
-	armor = list(
+	armor_legacy_mob = list(
 			"melee" = 20,
 			"bullet" = 15,
 			"laser" = 15,

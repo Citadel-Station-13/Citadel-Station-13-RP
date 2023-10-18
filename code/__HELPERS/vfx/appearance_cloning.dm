@@ -9,7 +9,7 @@
 	)
 	MA.vis_contents.len = 0	// y ea let's not copy those
 	MA.alpha = alpha
-	MA.color = rgba_construct_color_matrix(
+	MA.color = construct_rgba_color_matrix(
 		1, 0, 0, -1,
 		0, 1, 0, -1,
 		0, 0, 1, -1,

@@ -70,7 +70,7 @@
 
 
 
-	req_access = list(access_tcomsat)
+	req_access = list(ACCESS_ENGINEERING_TELECOMMS)
 
 	attack_hand(mob/user as mob)
 		if(machine_stat & (BROKEN|NOPOWER))

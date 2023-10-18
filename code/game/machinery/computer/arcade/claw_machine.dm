@@ -160,7 +160,7 @@
 /obj/machinery/computer/arcade/clawmachine/Initialize(mapload)
 	. = ..()
 
-/obj/machinery/computer/arcade/clawmachine/attack_hand(mob/living/user)
+/obj/machinery/computer/arcade/clawmachine/attack_hand(mob/user, list/params)
 	if(..())
 		return
 	ui_interact(user)
@@ -170,7 +170,7 @@
 /obj/machinery/computer/arcade/clawmachine/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "ClawMachine", name, ui_x = 300, ui_y = 400)
+		ui = new(user, src, "ClawMachine", name)
 		ui.autoupdate = TRUE
 		ui.open()
 

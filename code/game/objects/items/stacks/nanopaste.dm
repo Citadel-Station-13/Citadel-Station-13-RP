@@ -26,7 +26,7 @@
 			if(do_after(user,7 * tool_speed))
 				R.adjustBruteLoss(-15)
 				R.adjustFireLoss(-15)
-				R.updatehealth()
+				R.update_health()
 				use(1)
 				user.visible_message("<span class='notice'>\The [user] applied some [src] on [R]'s damaged areas.</span>",\
 				"<span class='notice'>You apply some [src] at [R]'s damaged areas.</span>")
@@ -46,7 +46,7 @@
 						S.heal_damage(restoration_internal, restoration_internal, robo_repair = 1)
 				else if(do_after(user,5 * tool_speed))
 					S.heal_damage(restoration_external,restoration_external, robo_repair =1)
-				H.updatehealth()
+				H.update_health()
 				use(1)
 				user.visible_message("<span class='notice'>\The [user] applies some nanite paste on [user != L ? "[L]'s [S.name]" : "[S]"] with [src].</span>",\
 				"<span class='notice'>You apply some nanite paste on [user == L ? "your" : "[L]'s"] [S.name].</span>")

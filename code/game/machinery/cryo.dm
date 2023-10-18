@@ -7,9 +7,8 @@
 	density = TRUE
 	anchored = TRUE
 	layer = UNDER_JUNK_LAYER
-	interact_offline = TRUE
+	interaction_flags_machine = INTERACT_MACHINE_OFFLINE | INTERACT_MACHINE_ALLOW_SILICON
 
-	var/on = FALSE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 20
 	active_power_usage = 200
@@ -25,8 +24,6 @@
 	var/image/fluid
 
 /obj/machinery/atmospherics/component/unary/cryo_cell/Initialize(mapload)
-	. = ..()
-
 	icon = 'icons/obj/medical/cryogenics_split.dmi'
 	icon_state = "base"
 	initialize_directions = dir
@@ -43,6 +40,10 @@
 	fluid.layer = MOB_LAYER+0.1 //Below glass, above mob
 
 	add_overlay(tank)
+
+	. = ..()
+
+	// todo: duped, components update icon on init right?
 	update_icon()
 
 /obj/machinery/atmospherics/component/unary/cryo_cell/Destroy()
@@ -79,7 +80,7 @@
 	if(occupant == user && !user.stat)
 		go_out()
 
-/obj/machinery/atmospherics/component/unary/cryo_cell/attack_hand(mob/user)
+/obj/machinery/atmospherics/component/unary/cryo_cell/attack_hand(mob/user, list/params)
 	nano_ui_interact(user)
 
  /**
@@ -205,8 +206,6 @@
 		qdel(grab)
 		put_mob(M)
 
-	return
-
 /obj/machinery/atmospherics/component/unary/cryo_cell/MouseDroppedOnLegacy(mob/target, mob/user) //Allows borgs to put people into cryo without external assistance
 	if(user.stat || user.lying || !Adjacent(user) || !target.Adjacent(user)|| !ishuman(target))
 		return
@@ -231,9 +230,9 @@
 		occupant.set_stat(UNCONSCIOUS)
 		occupant.dir = SOUTH
 		if(occupant.bodytemperature < T0C)
-			occupant.Sleeping(max(5, (1/occupant.bodytemperature)*2000))
-			occupant.Unconscious(max(5, (1/occupant.bodytemperature)*3000))
-			if(air_contents.gas[/datum/gas/oxygen] > 2)
+			occupant.afflict_sleeping(20 * max(5, (1/occupant.bodytemperature)*2000))
+			occupant.afflict_unconscious(20 * max(5, (1/occupant.bodytemperature)*3000))
+			if(air_contents.gas[GAS_ID_OXYGEN] > 2)
 				if(occupant.getOxyLoss()) occupant.adjustOxyLoss(-1)
 			else
 				occupant.adjustOxyLoss(-1)
@@ -248,7 +247,7 @@
 		var/has_clonexa = occupant.reagents.get_reagent_amount("clonexadone") >= 1
 		var/has_cryo_medicine = has_cryo || has_clonexa
 		if(beaker && !has_cryo_medicine)
-			beaker.reagents.trans_to_mob(occupant, 1, CHEM_BLOOD, 10)
+			beaker.reagents.trans_to_mob(occupant, 1, CHEM_INJECT, 10)
 
 /obj/machinery/atmospherics/component/unary/cryo_cell/proc/heat_gas_contents()
 	if(air_contents.total_moles < 1)
@@ -307,7 +306,7 @@
 		return
 	M.forceMove(src)
 	M.ExtinguishMob()
-	if(M.health > -100 && (M.health < 0 || M.sleeping))
+	if(!IS_DEAD(M))
 		to_chat(M, SPAN_USERDANGER("You feel a cold liquid surround you. Your skin starts to freeze up."))
 	occupant = M
 	occupant.update_perspective()

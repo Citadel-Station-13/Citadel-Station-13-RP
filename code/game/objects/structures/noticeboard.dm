@@ -43,12 +43,12 @@
 			new /obj/item/frame/noticeboard( src.loc )
 			qdel(src)
 
-/obj/structure/noticeboard/attack_hand(var/mob/user)
+/obj/structure/noticeboard/attack_hand(mob/user, list/params)
 	user.do_examinate(src)
 
 // Since Topic() never seems to interact with usr on more than a superficial
 // level, it should be fine to let anyone mess with the board other than ghosts.
-/obj/structure/noticeboard/examine(mob/user) //why the fuck is this shit on examine
+/obj/structure/noticeboard/examine(mob/user, dist) //why the fuck is this shit on examine
 	if(!user)
 		user = usr
 	if(user.Adjacent(src))

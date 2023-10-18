@@ -64,7 +64,7 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/uav/attack_hand(var/mob/user)
+/obj/item/uav/attack_hand(mob/user, list/params)
 	//Has to be on the ground to work with it properly
 	if(!isturf(loc))
 		return ..()
@@ -250,7 +250,7 @@
 	visible_message(SPAN_NOTICE("[nickname] gracefully settles onto the ground."))
 
 //////////////// Helpers
-/obj/item/uav/get_cell()
+/obj/item/uav/get_cell(inducer)
 	return cell
 
 /obj/item/uav/relaymove(var/mob/user, direction, signal = 1)

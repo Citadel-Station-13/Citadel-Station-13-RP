@@ -13,7 +13,7 @@
 	var/label_x
 	var/tag_x
 
-/obj/structure/bigDelivery/attack_hand(mob/user as mob)
+/obj/structure/bigDelivery/attack_hand(mob/user, list/params)
 	unwrap()
 
 /obj/structure/bigDelivery/proc/unwrap()
@@ -97,7 +97,7 @@
 			I.pixel_y = -3
 		add_overlay(I)
 
-/obj/structure/bigDelivery/examine(mob/user)
+/obj/structure/bigDelivery/examine(mob/user, dist)
 	. = ..()
 	if(sortTag)
 		. +=  "<span class='notice'>It is labeled \"[sortTag]\"</span>"
@@ -129,7 +129,10 @@
 	var/nameset = 0
 	var/tag_x
 
-/obj/item/smallDelivery/attack_self(mob/user as mob)
+/obj/item/smallDelivery/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if (src.wrapped) //sometimes items can disappear. For example, bombs. --rastaf0
 		wrapped.loc = user.loc
 		if(ishuman(user))
@@ -214,7 +217,7 @@
 				I.pixel_y = -3
 		add_overlay(I)
 
-/obj/item/smallDelivery/examine(mob/user)
+/obj/item/smallDelivery/examine(mob/user, dist)
 	. = ..()
 	if(sortTag)
 		. += "<span class='notice'>It is labeled \"[sortTag]\"</span>"
@@ -229,8 +232,8 @@
 	var/amount = 25.0
 
 
-/obj/item/packageWrap/afterattack(var/obj/target as obj, mob/user as mob, proximity)
-	if(!proximity) return
+/obj/item/packageWrap/afterattack(atom/movable/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
 	if(!istype(target))	//this really shouldn't be necessary (but it is).	-Pete
 		return
 	if(istype(target, /obj/item/smallDelivery) || istype(target,/obj/structure/bigDelivery) \
@@ -243,7 +246,7 @@
 	if(user in target) //no wrapping closets that you are inside - it's not physically possible
 		return
 
-	user.attack_log += text("\[[time_stamp()]\] <font color=#4F49AF>Has used [src.name] on \ref[target]</font>")
+	user.attack_log += "\[[time_stamp()]\] <font color=#4F49AF>Has used [name] on \ref[target]</font>"
 
 
 	if (istype(target, /obj/item) && !(istype(target, /obj/item/storage) && !istype(target,/obj/item/storage/box)))
@@ -311,7 +314,7 @@
 		return
 	return
 
-/obj/item/packageWrap/examine(mob/user)
+/obj/item/packageWrap/examine(mob/user, dist)
 	. = ..()
 	. += "<font color=#4F49AF>There are [amount] units of package wrap left!</font>"
 
@@ -326,7 +329,7 @@
 	item_state = "electronic"
 	slot_flags = SLOT_BELT
 
-/obj/item/destTagger/ui_state(mob/user)
+/obj/item/destTagger/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.inventory_state
 
 /obj/item/destTagger/ui_interact(mob/user, datum/tgui/ui)
@@ -343,7 +346,10 @@
 
 	return data
 
-/obj/item/destTagger/attack_self(mob/user as mob)
+/obj/item/destTagger/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	ui_interact(user)
 
 /obj/item/destTagger/ui_act(action, params)
@@ -380,7 +386,7 @@
 	return
 
 /obj/machinery/disposal/deliveryChute/Bumped(var/atom/movable/AM) //Go straight into the chute
-	if(istype(AM, /obj/item/projectile) || istype(AM, /obj/effect) || istype(AM, /obj/mecha))	return
+	if(istype(AM, /obj/projectile) || istype(AM, /obj/effect) || istype(AM, /obj/mecha))	return
 	switch(dir)
 		if(NORTH)
 			if(AM.loc.y != src.loc.y+1) return

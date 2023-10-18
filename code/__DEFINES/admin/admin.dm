@@ -52,13 +52,16 @@
 #define SMITE_DARKSPACE_ABDUCT      "Darkspace Abduction"
 #define SMITE_DISLOCATEALL          "Dislocate All Limbs"
 #define SMITE_LIGHTNINGBOLT         "Lightning Bolt"
-#define SMITE_SHADEKIN_ATTACK       "Shadekin (Attack)"
-#define SMITE_SHADEKIN_NOMF         "Shadekin (Devour)"
 #define SMITE_SPONTANEOUSCOMBUSTION "Spontaneous Combustion"
+#define SMITE_DROP_LIMB_RANDOM		"Remove one(1) arm and one(1) leg"
+#define SMITE_DROP_LIMB_ALL			"Remove all(4) limbs"
+#define SMITE_DROP_LIMB_PICK		"Remove one specific limb"
 
 #define ADMIN_LOOKUP(user)           ("[key_name_admin(user)][ADMIN_QUE(user)]")
 #define ADMIN_LOOKUPFLW(user)        ("[key_name_admin(user)][ADMIN_QUE(user)] [ADMIN_FLW(user)]")
 #define COORD(src)                   ("[src ? src.Admin_Coordinates_Readable() : "nonexistent location"]")
+// todo: this should be made faster/better, and support stuff like inventory / storage awareness
+#define AUDIT_COORD(src)             ("[src ? src.Admin_Coordinates_Readable() : "nonexistent location"]")
 #define AREACOORD(src)               ("[src ? src.Admin_Coordinates_Readable(TRUE) : "nonexistent location"]")
 #define ADMIN_COORDJMP(src)          ("[src ? src.Admin_Coordinates_Readable(FALSE, TRUE) : "nonexistent location"]")
 #define ADMIN_VERBOSEJMP(src)        ("[src ? src.Admin_Coordinates_Readable(TRUE, TRUE) : "nonexistent location"]")

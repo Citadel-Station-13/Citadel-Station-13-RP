@@ -9,7 +9,7 @@
 	desc = "This doesn't look very comfortable."
 	icon_state = "vox-casual-1"
 	item_state = "vox-casual-1"
-	body_parts_covered = LEGS
+	body_cover_flags = LEGS
 
 /obj/item/clothing/under/vox/vox_robes
 	name = "alien robes"
@@ -45,8 +45,8 @@
 	desc = "A lightly-plated jumpsuit, fitted to an alien frame. Now in classic grey!"
 	icon = 'icons/obj/clothing/uniforms.dmi'
 	icon_override = 'icons/mob/clothing/species/vox/uniform.dmi'
-	flags_inv = HIDEGLOVES|HIDESHOES
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	inv_hide_flags = HIDEGLOVES|HIDESHOES
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	atom_flags = PHORONGUARD
 
 /obj/item/clothing/under/pressuresuit/voxcivassistant

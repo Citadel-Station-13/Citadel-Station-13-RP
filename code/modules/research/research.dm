@@ -70,6 +70,11 @@ research holder datum.
 	known_tech = null
 	return ..()
 
+/datum/research/proc/debug_max_out()
+	for(var/datum/tech/tech in known_tech)
+		tech.level = 40
+	RefreshResearch()
+
 /datum/research/techonly
 
 /datum/research/techonly/New()
@@ -234,7 +239,7 @@ research holder datum.
 	icon_state = "datadisk2"
 	item_state = "card-id"
 	w_class = ITEMSIZE_SMALL
-	matter = list(MAT_STEEL = 30, MAT_GLASS = 10)
+	materials = list(MAT_STEEL = 30, MAT_GLASS = 10)
 	var/datum/tech/stored
 
 /obj/item/disk/tech_disk/Initialize(mapload)
@@ -249,7 +254,7 @@ research holder datum.
 	icon_state = "datadisk2"
 	item_state = "card-id"
 	w_class = ITEMSIZE_SMALL
-	matter = list(MAT_STEEL = 30, MAT_GLASS = 10)
+	materials = list(MAT_STEEL = 30, MAT_GLASS = 10)
 	var/datum/design/blueprint
 
 /obj/item/disk/design_disk/Initialize(mapload)

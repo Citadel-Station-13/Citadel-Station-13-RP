@@ -30,13 +30,22 @@
 	var/ckey
 	/// Replaces mob/var/original_name
 	var/name
+	//  todo: /mob, not /living
+	/// the mob we're currently inhabiting. the mind can be referenced by many mobs, however, only one may be 'owned' by it.
+	/// this functionality is used for things like aghosting and astral projection, as even though the player is in another mob,
+	/// their actual mob is what owns their mind.
 	var/mob/living/current
+
 	var/mob/living/original	//TODO: remove.not used in any meaningful way ~Carn. First I'll need to tweak the way silicon-mobs handle minds.
 	var/active = FALSE
 
 	//? Characteristics
 	/// characteristics holder
 	var/datum/characteristics_holder/characteristics
+
+	//? Abilities
+	/// mind-level abilities
+	var/list/datum/ability/abilities
 
 	//? Preferences
 	/**
@@ -97,7 +106,10 @@
 
 /datum/mind/Destroy()
 	QDEL_NULL(characteristics)
+	QDEL_LIST_NULL(abilities)
 	return ..()
+
+//? Characteristics
 
 /**
  * make sure we have a characteristics holder
@@ -108,31 +120,64 @@
 		characteristics.associate_with_mind(src)
 	return characteristics
 
-/datum/mind/proc/transfer_to(mob/living/new_character)
-	if(!istype(new_character))
-		log_world("## DEBUG: transfer_to(): Some idiot has tried to transfer_to() a non mob/living mob. Please inform Carn")
-	if(current)					//remove ourself from our old body's mind variable
-		if(changeling)
-			current.remove_changeling_powers()
-			remove_verb(current, /datum/changeling/proc/EvolutionMenu)
-		current.mind = null
-		characteristics?.disassociate_from_mob(current)
+//? Transfer
 
-		SSnanoui.user_transferred(current, new_character) // transfer active NanoUI instances to new user
-	if(new_character.mind)		//remove any mind currently in our new body's mind variable
-		new_character.mind.current = null
+/datum/mind/proc/disassociate()
+	ASSERT(!isnull(current))
 
-	current = new_character		//link ourself to our new body
-	new_character.mind = src	//and link our new body to ourself
-	characteristics?.associate_with_mob(current)
+	// LEGACY: remove changeling
+	if(changeling)
+		current.remove_changeling_powers()
+		remove_verb(current, /datum/changeling/proc/EvolutionMenu)
+	// remove characteristics
+	characteristics?.disassociate_from_mob(current)
+	// remove abilities
+	for(var/datum/ability/ability as anything in abilities)
+		ability.disassociate(current)
+	// null mind
+	current.mind = null
 
+	// done
+	current = null
+
+/datum/mind/proc/associate(mob/new_character)
+	ASSERT(isnull(current))
+	ASSERT(isnull(new_character.mind))
+
+	// start
+	current = new_character
+
+	// set mind
+	new_character.mind = src
+	// add characteristics
+	characteristics?.associate_with_mob(new_character)
+	// add abilities
+	for(var/datum/ability/ability as anything in abilities)
+		ability.associate(new_character)
+	// LEGACY: add changeling
 	if(changeling)
 		new_character.make_changeling()
 
+	//* transfer player if necessary
 	if(active)
 		new_character.ckey = ckey //now transfer the ckey to link the client to our new body
-	// if(new_character.client) //TODO: Eye Contact
-	// 	LAZYCLEARLIST(new_character.client.recent_examines)
+
+/datum/mind/proc/transfer(mob/new_character)
+	if(isnull(current))
+		associate(new_character)
+		return
+
+	var/mob/old_character = current
+
+	disassociate()
+
+	if(!isnull(new_character.mind))
+		new_character.mind.disassociate()
+
+	SStgui.on_transfer(old_character, new_character)
+	SSnanoui.user_transferred(old_character, new_character)
+
+	associate(new_character)
 
 /datum/mind/proc/store_memory(new_text)
 	if((length(memory) + length(new_text)) <= MAX_MESSAGE_LEN)
@@ -621,16 +666,72 @@
 		return
 	return SScharacters.resolve_faction(id)
 
+/datum/mind/proc/original_background_culture()
+	RETURN_TYPE(/datum/lore/character_background/culture)
+	var/id = original_save_data?[CHARACTER_DATA_CULTURE]
+	if(isnull(id))
+		return
+	return SScharacters.resolve_culture(id)
+
 /datum/mind/proc/original_background_datums()
+	if(isnull(original_save_data))
+		return list()
 	. = list(
 		original_background_citizenship(),
 		original_background_faction(),
 		original_background_origin(),
 		original_background_religion(),
+		original_background_culture(),
 	)
 	listclearnulls(.)
 
 /datum/mind/proc/original_background_ids()
-	. = list()
-	for(var/datum/lore/character_background/bg as anything in original_background_datums())
-		. += bg.id
+	if(isnull(original_save_data))
+		return list()
+	. = list(
+		original_save_data[CHARACTER_DATA_CITIZENSHIP],
+		original_save_data[CHARACTER_DATA_ORIGIN],
+		original_save_data[CHARACTER_DATA_FACTION],
+		original_save_data[CHARACTER_DATA_CULTURE],
+		original_save_data[CHARACTER_DATA_RELIGION],
+	)
+	listclearnulls(.)
+
+//? Abilities
+
+/**
+ * adds an ability to us
+ *
+ * @params
+ * * ability - a datum or path. once passed in, this datum is owned by the mind, and the mind can delete it at any time! if a path is passed in, this will runtime on duplicates - paths must always be unique if used in this way.
+ *
+ * @return TRUE / FALSE success or failure
+ */
+/datum/mind/proc/add_ability(datum/ability/ability)
+	if(ispath(ability))
+		. = FALSE
+		ASSERT(!(locate(ability) in abilities))
+		ability = new ability
+	abilities += ability
+	if(current)
+		ability.associate(current)
+	return TRUE
+
+/**
+ * removes, and deletes, an ability on us
+ *
+ * @params
+ * * ability - a datum or path. paths should only be used if it's an unique ability nothing else should grant!
+ *
+ * @return TRUE / FALSE success or failure
+ */
+/datum/mind/proc/remove_ability(datum/ability/ability)
+	if(ispath(ability))
+		ability = locate(ability) in abilities
+	if(isnull(ability))
+		return FALSE
+	abilities -= ability
+	if(current)
+		ability.disassociate(current)
+	qdel(ability)
+	return TRUE

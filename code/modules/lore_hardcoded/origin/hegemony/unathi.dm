@@ -13,10 +13,6 @@
 	name = "Moghes"
 	id = "moghes"
 	desc = "The cradle of Unathi civilization, their homeworld. It's regional denominations set the standard for Clan culture to today, and all Clans trace their lineage back to this point in one form or another. Ecologically preserved, it serves as testament to Unathi tradition."
-	allow_species = list(
-		SPECIES_ID_UNATHI,
-		SPECIES_ID_ZADDAT
-		)
 	innate_languages = list(
 		LANGUAGE_ID_UNATHI
 		)

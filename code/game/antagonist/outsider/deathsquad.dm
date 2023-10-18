@@ -9,7 +9,7 @@ var/datum/antagonist/deathsquad/deathsquad
 	antag_sound = 'sound/effects/antag_notice/deathsquid_alert.ogg'
 	landmark_id = "Commando"
 	flags = ANTAG_OVERRIDE_JOB | ANTAG_OVERRIDE_MOB | ANTAG_HAS_NUKE | ANTAG_HAS_LEADER
-	default_access = list(access_cent_general, access_cent_specops, access_cent_living, access_cent_storage)
+	default_access = list(ACCESS_CENTCOM_GENERAL, ACCESS_CENTCOM_ERT, ACCESS_CENTCOM_DORMS, ACCESS_CENTCOM_STORAGE)
 	antaghud_indicator = "deathsquad"
 
 	hard_cap = 4
@@ -48,7 +48,7 @@ var/datum/antagonist/deathsquad/deathsquad
 		player.equip_to_slot_or_del(new /obj/item/plastique(player), SLOT_ID_LEFT_POCKET)
 	player.equip_to_slot_or_del(new /obj/item/gun/ballistic/revolver/combat(player), SLOT_ID_BELT)
 	player.equip_to_slot_or_del(new /obj/item/gun/energy/pulse_rifle(player), /datum/inventory_slot_meta/abstract/hand/right)
-	player.equip_to_slot_or_del(new /obj/item/rig/ert/assetprotection(player), SLOT_ID_BACK)
+	player.equip_to_slot_or_del(new /obj/item/hardsuit/ert/assetprotection(player), SLOT_ID_BACK)
 	player.equip_to_slot_or_del(new /obj/item/melee/energy/sword(player), SLOT_ID_SUIT_STORAGE)
 //	player.implant_loyalty()
 

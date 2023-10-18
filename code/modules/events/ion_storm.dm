@@ -35,7 +35,7 @@
 			continue
 		to_chat(S, "<span class='warning'>Your integrated sensors detect an ionospheric anomaly. Your systems will be impacted as you begin a partial restart.</span>")
 		var/ionbug = rand(3, 9)
-		S.confused += ionbug
+		S.Confuse(ionbug)
 		S.eye_blurry += (ionbug - 1)
 
 	// Ionize silicon mobs
@@ -53,7 +53,7 @@
 			MS.spamfilter.Cut()
 			var/i
 			for (i = 1, i <= MS.spamfilter_limit, i++)
-				MS.spamfilter += pick("kitty","HONK","rev","malf","liberty","freedom","drugs", "[GLOB.using_map.station_short]", \
+				MS.spamfilter += pick("kitty","HONK","rev","malf","liberty","freedom","drugs", "[(LEGACY_MAP_DATUM).station_short]", \
 					"admin","ponies","heresy","meow","Pun Pun","monkey","Ian","moron","pizza","message","spam",\
 					"director", "Hello", "Hi!"," ","nuke","crate","dwarf","xeno")
 */

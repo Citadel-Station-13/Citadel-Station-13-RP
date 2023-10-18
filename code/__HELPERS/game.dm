@@ -11,17 +11,17 @@
 /proc/is_on_same_plane_or_station(z1, z2)
 	if (z1 == z2)
 		return TRUE
-	if ((z1 in GLOB.using_map.station_levels) &&	(z2 in GLOB.using_map.station_levels))
+	if ((z1 in (LEGACY_MAP_DATUM).station_levels) &&	(z2 in (LEGACY_MAP_DATUM).station_levels))
 		return TRUE
 	return FALSE
 
 /proc/max_default_z_level()
 	var/max_z = 0
-	for(var/z in GLOB.using_map.station_levels)
+	for(var/z in (LEGACY_MAP_DATUM).station_levels)
 		max_z = max(z, max_z)
-	for(var/z in GLOB.using_map.admin_levels)
+	for(var/z in (LEGACY_MAP_DATUM).admin_levels)
 		max_z = max(z, max_z)
-	for(var/z in GLOB.using_map.player_levels)
+	for(var/z in (LEGACY_MAP_DATUM).player_levels)
 		max_z = max(z, max_z)
 	return max_z
 
@@ -94,16 +94,16 @@
 		processing += A.contents
 
 /proc/isStationLevel(level)
-	return level in GLOB.using_map.station_levels
+	return level in (LEGACY_MAP_DATUM).station_levels
 
 /proc/isNotStationLevel(level)
 	return !isStationLevel(level)
 
 /proc/isPlayerLevel(level)
-	return level in GLOB.using_map.player_levels
+	return level in (LEGACY_MAP_DATUM).player_levels
 
 /proc/isAdminLevel(level)
-	return level in GLOB.using_map.admin_levels
+	return level in (LEGACY_MAP_DATUM).admin_levels
 
 /proc/isNotAdminLevel(level)
 	return !isAdminLevel(level)
@@ -148,14 +148,6 @@
 	var/turf/x1y1 = locate(((centre.x-rad)<1 ? 1 : centre.x-rad),((centre.y-rad)<1 ? 1 : centre.y-rad),centre.z)
 	var/turf/x2y2 = locate(((centre.x+rad)>world.maxx ? world.maxx : centre.x+rad),((centre.y+rad)>world.maxy ? world.maxy : centre.y+rad),centre.z)
 	return block(x1y1,x2y2)
-
-/proc/get_dist_euclidian(atom/Loc1, atom/Loc2)
-	var/dx = Loc1.x - Loc2.x
-	var/dy = Loc1.y - Loc2.y
-
-	var/dist = sqrt(dx**2 + dy**2)
-
-	return dist
 
 /proc/circlerangeturfs(center = usr, radius = 3)
 

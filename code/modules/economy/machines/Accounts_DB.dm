@@ -6,7 +6,7 @@
 	icon_state = "account_computer"
 	density = TRUE
 	anchored = TRUE
-	req_one_access = list(access_hop, access_captain, access_cent_captain)
+	req_one_access = list(ACCESS_COMMAND_BANKING, ACCESS_CENTCOM_ADMIRAL)
 	var/receipt_num
 	var/machine_id = ""
 	var/obj/item/card/id/held_card
@@ -17,9 +17,9 @@
 /obj/machinery/account_database/proc/get_access_level()
 	if (!held_card)
 		return 0
-	if (access_cent_captain in held_card.access)
+	if (ACCESS_CENTCOM_ADMIRAL in held_card.access)
 		return 2
-	else if((access_hop in held_card.access) || (access_captain in held_card.access))
+	else if((ACCESS_COMMAND_BANKING in held_card.access) || (ACCESS_COMMAND_BANKING in held_card.access))
 		return 1
 
 /obj/machinery/account_database/proc/create_transation(target, reason, amount)
@@ -57,7 +57,7 @@
 
 	attack_hand(user)
 
-/obj/machinery/account_database/attack_hand(mob/user as mob)
+/obj/machinery/account_database/attack_hand(mob/user, list/params)
 	if(machine_stat & (NOPOWER|BROKEN))
 		return
 	nano_ui_interact(user)
@@ -68,7 +68,7 @@
 	var/data[0]
 	data["src"] = "\ref[src]"
 	data["id_inserted"] = !!held_card
-	data["id_card"] = held_card ? text("[held_card.registered_name], [held_card.assignment]") : "-----"
+	data["id_card"] = held_card ? "[held_card.registered_name], [held_card.assignment]" : "-----"
 	data["access_level"] = get_access_level()
 	data["machine_id"] = machine_id
 	data["creating_new_account"] = creating_new_account

@@ -49,13 +49,7 @@
 
 /obj/structure/closet/secure_closet/xenoarchaeologist
 	name = "Xenoarchaeologist Locker"
-	icon_state = "secureres1"
-	icon_closed = "secureres"
-	icon_locked = "secureres1"
-	icon_opened = "secureresopen"
-	icon_broken = "secureresbroken"
-	icon_off = "secureresoff"
-	req_access = list(access_tox_storage)
+	req_access = list(ACCESS_SCIENCE_TOXINS)
 
 	starts_with = list(
 		/obj/item/clothing/under/rank/scientist,
@@ -81,8 +75,6 @@
 		/obj/item/depth_scanner,
 		/obj/item/core_sampler,
 		/obj/item/gps,
-		/obj/item/beacon_locator,
-		/obj/item/radio/beacon,
 		/obj/item/clothing/glasses/meson,
 		/obj/item/pickaxe,
 		/obj/item/measuring_tape,
@@ -98,8 +90,8 @@
 		/obj/item/paper_bin,
 		/obj/item/hand_labeler)
 
-/obj/machinery/alarm/isolation
-	req_one_access = list(access_research, access_atmospherics, access_engine_equip)
+/obj/machinery/air_alarm/isolation
+	req_one_access = list(ACCESS_SCIENCE_MAIN, ACCESS_ENGINEERING_ATMOS, ACCESS_ENGINEERING_ENGINE)
 
-/obj/machinery/alarm/monitor/isolation
-	req_one_access = list(access_research, access_atmospherics, access_engine_equip)
+/obj/machinery/air_alarm/monitor/isolation
+	req_one_access = list(ACCESS_SCIENCE_MAIN, ACCESS_ENGINEERING_ATMOS, ACCESS_ENGINEERING_ENGINE)

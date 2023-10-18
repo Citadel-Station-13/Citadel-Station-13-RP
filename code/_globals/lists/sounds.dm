@@ -7,4 +7,4 @@
  *   if I'm doing something as crucial as sound I might as well cut as much overhead
  *   as I can.
  */
-GLOBAL_REAL_LIST_MANAGED(__sfx_lookup)
+GLOBAL_REAL_LIST(__sfx_lookup)

@@ -41,7 +41,7 @@ GLOBAL_LIST_EMPTY(all_turbines)
 	GLOB.all_turbines -= src
 	return ..()
 
-//generators connect in dir and GLOB.reverse_dir(dir) directions
+//generators connect in dir and global.reverse_dir(dir) directions
 //mnemonic to determine circulator/generator directions: the cirulators orbit clockwise around the generator
 //so a circulator to the NORTH of the generator connects first to the EAST, then to the WEST
 //and a circulator to the WEST of the generator connects first to the NORTH, then to the SOUTH
@@ -152,6 +152,7 @@ GLOBAL_LIST_EMPTY(all_turbines)
 	// Sounds.
 	if(effective_gen > (max_power * 0.05)) // More than 5% and sounds start.
 		soundloop.start()
+		soundloop.opacity_check = 1
 		soundloop.volume = LERP(1, 40, effective_gen / max_power)
 	else
 		soundloop.stop()
@@ -187,7 +188,7 @@ GLOBAL_LIST_EMPTY(all_turbines)
 	else
 		..()
 
-/obj/machinery/power/generator/attack_hand(mob/user)
+/obj/machinery/power/generator/attack_hand(mob/user, list/params)
 	add_fingerprint(user)
 	if(machine_stat & (BROKEN|NOPOWER) || !anchored)
 		return

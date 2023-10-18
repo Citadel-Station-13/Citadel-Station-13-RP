@@ -13,6 +13,7 @@
 	var/vision_range = 7					// How far the targeting system will look for things to kill. Note that values higher than 7 are 'offscreen' and might be unsporting.
 	var/respect_alpha = TRUE				// If true, mobs with a sufficently low alpha will be treated as invisible.
 	var/alpha_vision_threshold = 127		// Targets with an alpha less or equal to this will be considered invisible. Requires above var to be true.
+	var/max_range = 7 						// Max range a ranged mob will shoot from 
 
 	var/lose_target_time = 0				// world.time when a target was lost.
 	var/lose_target_timeout = 5 SECONDS		// How long until a mob 'times out' and stops trying to find the mob that disappeared.
@@ -120,6 +121,8 @@
 		if(ishuman(L) || issilicon(L))
 			if(L.key && !L.client)	// SSD players get a pass
 				return FALSE
+		if(holder.IIsAlly(L))
+			return FALSE
 		if(L.stat)
 			if(L.stat == DEAD && !handle_corpse) // Leave dead things alone
 				return FALSE
@@ -128,8 +131,6 @@
 					return TRUE
 				else
 					return FALSE
-		if(holder.IIsAlly(L))
-			return FALSE
 		return TRUE
 
 	if(istype(the_target, /obj/mecha))
@@ -181,6 +182,11 @@
 
 	if(holder.see_invisible < the_target.invisibility) // Real invis.
 		ai_log("can_see_target() : Target ([the_target]) was invisible to holder. Exiting.", AI_LOG_TRACE)
+		return FALSE
+
+	var/turf/T = get_turf(the_target)
+	if(T.get_lumcount() <= LIGHT_THRESHOLD_MOB_AI_UNSEEN && get_dist(holder, the_target) > 2)
+		ai_log("can_see_target() : Target ([the_target]) is in an unlit turf. Exiting.", AI_LOG_TRACE)
 		return FALSE
 
 	if(respect_alpha && the_target.alpha <= alpha_vision_threshold) // Fake invis.

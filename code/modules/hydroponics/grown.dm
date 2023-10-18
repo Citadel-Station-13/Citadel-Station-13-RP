@@ -58,7 +58,7 @@
 	if(reagents.total_volume > 0)
 		bitesize = 1+round(reagents.total_volume / 2, 1)
 	if(seed.get_trait(TRAIT_STINGS))
-		force = 1
+		damage_force = 1
 	catalogue_data = seed.catalog_data_grown
 
 /obj/item/reagent_containers/food/snacks/grown/update_desc()
@@ -88,9 +88,9 @@
 			descriptors |= "radioactive"
 		if(reagents.has_reagent("amatoxin") || reagents.has_reagent("toxin"))
 			descriptors |= "poisonous"
-		if(reagents.has_reagent("psilocybin") || reagents.has_reagent("space_drugs"))
+		if(reagents.has_reagent("psilocybin") || reagents.has_reagent("space_drugs")|| reagents.has_reagent("earthsblood"))
 			descriptors |= "hallucinogenic"
-		if(reagents.has_reagent("bicaridine"))
+		if(reagents.has_reagent("bicaridine")  || reagents.has_reagent("earthsblood"))
 			descriptors |= "medicinal"
 		if(reagents.has_reagent("gold"))
 			descriptors |= "shiny"
@@ -159,8 +159,8 @@
 			M.stop_pulling()
 			to_chat(M, "<span class='notice'>You slipped on the [name]!</span>")
 			playsound(src.loc, 'sound/misc/slip.ogg', 50, 1, -3)
-			M.Stun(8)
-			M.Weaken(5)
+			M.afflict_stun(20 * 8)
+			M.afflict_paralyze(20 * 5)
 			seed.thrown_at(src,M)
 			qdel(src)
 			return
@@ -180,7 +180,7 @@
 				var/obj/item/cell/potato/pocell = new /obj/item/cell/potato(get_turf(user))
 				if(src.loc == user && istype(user,/mob/living/carbon/human))
 					user.put_in_hands(pocell)
-				pocell.maxcharge = src.potency * 10
+				pocell.maxcharge = src.potency * 200 //fellas, have you ever actually tried to reach 200 potency? Let them have this if they can manage it.
 				pocell.charge = pocell.maxcharge
 				qdel(src)
 				return
@@ -258,7 +258,10 @@
 				to_chat(user, "<span class='danger'>\The [src] has fallen to bits.</span>")
 				qdel(src)
 
-/obj/item/reagent_containers/food/snacks/grown/attack_self(mob/user as mob)
+/obj/item/reagent_containers/food/snacks/grown/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 
 	if(!seed)
 		return

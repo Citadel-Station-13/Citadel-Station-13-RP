@@ -38,13 +38,13 @@
 	var/to_suit = /obj/item/clothing/suit/cardborg
 
 	//Conversion proc
-/obj/item/modkit_conversion/afterattack(obj/O, mob/user as mob)
+/obj/item/modkit_conversion/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	var/flag
 	var/to_type
-	if(istype(O,from_helmet))
+	if(istype(target,from_helmet))
 		flag = 1
 		to_type = to_helmet
-	else if(istype(O,from_suit))
+	else if(istype(target,from_suit))
 		flag = 2
 		to_type = to_suit
 	else
@@ -52,16 +52,16 @@
 	if(!(parts & flag))
 		to_chat(user, "<span class='warning'>This kit has no parts for this modification left.</span>")
 		return
-	if(istype(O,to_type))
-		to_chat(user, "<span class='notice'>[O] is already modified.</span>")
+	if(istype(target,to_type))
+		to_chat(user, "<span class='notice'>[target] is already modified.</span>")
 		return
-	if(!isturf(O.loc))
-		to_chat(user, "<span class='warning'>[O] must be safely placed on the ground for modification.</span>")
+	if(!isturf(target.loc))
+		to_chat(user, "<span class='warning'>[target] must be safely placed on the ground for modification.</span>")
 		return
 	playsound(user.loc, 'sound/items/Screwdriver.ogg', 100, 1)
-	var/N = new to_type(O.loc)
-	user.visible_message("<span class='warning'>[user] opens \the [src] and modifies \the [O] into \the [N].</span>","<span class='warning'>You open \the [src] and modify \the [O] into \the [N].</span>")
-	qdel(O)
+	var/N = new to_type(target.loc)
+	user.visible_message("<span class='warning'>[user] opens \the [src] and modifies \the [target] into \the [N].</span>","<span class='warning'>You open \the [src] and modify \the [target] into \the [N].</span>")
+	qdel(target)
 	parts &= ~flag
 	if(!parts)
 		qdel(src)
@@ -83,7 +83,7 @@
 	icon_override = 'icons/vore/custom_items_vr.dmi'
 	item_state = "joanariamob"
 	origin_tech = "materials=7"
-	force = 15
+	damage_force = 15
 	sharp = 1
 	edge = 1
 	hitsound = 'sound/weapons/bladeslice.ogg'
@@ -139,7 +139,10 @@
 	assignment = "Centcom Officer"
 
 
-/obj/item/card/id/centcom/station/fluff/joanbadge/attack_self(mob/user as mob)
+/obj/item/card/id/centcom/station/fluff/joanbadge/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(isliving(user))
 		user.visible_message("<span class='warning'>[user] flashes their golden security badge.\nIt reads:NT Security.</span>","<span class='warning'>You display the faded badge.\nIt reads: NT Security.</span>")
 
@@ -208,7 +211,10 @@
 	icon_override = 'icons/vore/custom_items_vr.dmi'
 	item_state = "Flag_Nanotrasen_mob"
 
-/obj/item/flag/attack_self(mob/user as mob)
+/obj/item/flag/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(isliving(user))
 		user.visible_message("<span class='warning'>[user] waves their Banner around!</span>","<span class='warning'>You wave your Banner around.</span>")
 
@@ -285,7 +291,7 @@
 
 	atom_flags = NOBLOODY
 	slot_flags = SLOT_BELT
-	force = 10
+	damage_force = 10
 	throw_force = 3
 	w_class = ITEMSIZE_NORMAL
 	damtype = HALLOSS
@@ -294,7 +300,7 @@
 //General use
 /obj/item/melee/fluff/holochain/mass
 	desc = "A mass produced version of the original. It has faux leather and an aluminium base, but still stings like the original."
-	force = 8
+	damage_force = 8
 	attack_verb = list("flogged", "whipped", "lashed", "flayed")
 
 
@@ -305,16 +311,16 @@
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "labeler1"
 
-/obj/item/fluff/id_kit_mime/afterattack(obj/O, mob/user as mob)
+/obj/item/fluff/id_kit_mime/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	var/new_icon = "mime"
-	if(istype(O,/obj/item/card/id) && O.icon_state != new_icon)
-		//O.icon = icon // just in case we're using custom sprite paths with fluff items.
-		O.icon_state = new_icon // Changes the icon without changing the access.
+	if(istype(target,/obj/item/card/id) && target.icon_state != new_icon)
+		//target.icon = icon // just in case we're using custom sprite paths with fluff items.
+		target.icon_state = new_icon // Changes the icon without changing the access.
 		playsound(user.loc, 'sound/items/polaroid2.ogg', 100, 1)
 		user.visible_message("<span class='warning'> [user] reprints their ID.</span>")
 		qdel(src)
-	else if(O.icon_state == new_icon)
-		to_chat(user, "<span class='notice'>[O] already has been reprinted.</span>")
+	else if(target.icon_state == new_icon)
+		to_chat(user, "<span class='notice'>[target] already has been reprinted.</span>")
 		return
 	else
 		to_chat(user, "<span class='warning'>This isn't even an ID card you idiot.</span>")
@@ -326,7 +332,10 @@
 	assignment = "CC Medical"
 	var/configured = 0
 
-/obj/item/card/id/centcom/station/fluff/aronai/attack_self(mob/user as mob)
+/obj/item/card/id/centcom/station/fluff/aronai/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(configured)
 		return ..()
 
@@ -363,7 +372,7 @@
 	icon = 'icons/mob/clothing/taursuits_wolf.dmi'
 	icon_state = "serdy_armor"
 	item_state = "serdy_armor"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS //It's a full body suit, minus hands and feet. Arms and legs should be protected, not just the torso. Retains normal security armor values still.
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS //It's a full body suit, minus hands and feet. Arms and legs should be protected, not just the torso. Retains normal security armor values still.
 
 /obj/item/clothing/head/helmet/serdy //SilencedMP5A5's specialty helmet. Uncomment if/when they make their custom item app and are accepted.
 	name = "KSS-8 security helmet"
@@ -394,131 +403,13 @@
 	name = "purple robes"
 	desc = "Heavy, royal purple robes threaded with silver lining."
 	icon_state = "psyamp"
-	flags_inv = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
+	inv_hide_flags = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
 
 /obj/item/clothing/head/fluff/pink_tiara
 	name = "Pink Tourmaline Tiara"
 	desc = "A small, steel tiara with a large, pink tourmaline gem in the center."
 	icon_state = "amp"
-	body_parts_covered = 0
-
-//Lots of people are using this now.
-/obj/item/clothing/accessory/collar/vmcrystal
-	name = "life crystal"
-	desc = "A small crystal with four little dots in it. It feels slightly warm to the touch. \
-	Read manual before use! Can be worn, held, or attached to uniform. NOTE: Device contains antimatter."
-	w_class = ITEMSIZE_SMALL
-
-	icon = 'icons/vore/custom_items_vr.dmi'
-	icon_override = 'icons/vore/custom_items_vr.dmi'
-
-	icon_state = "khlife"
-	item_state = "khlife_overlay"
-	overlay_state = "khlife_overlay"
-
-	slot_flags = SLOT_TIE
-
-	var/mob/owner = null
-	var/client/owner_c = null //They'll be dead when we message them probably.
-	var/state = 0 //0 - New, 1 - Paired, 2 - Breaking, 3 - Broken (same as iconstates)
-
-/obj/item/clothing/accessory/collar/vmcrystal/Initialize(mapload)
-	. = ..()
-	update_state(0)
-
-/obj/item/clothing/accessory/collar/vmcrystal/Destroy() //Waitwaitwait
-	if(state == 1)
-		process() //Nownownow
-	return ..() //Okfine
-
-/obj/item/clothing/accessory/collar/vmcrystal/process(delta_time)
-	check_owner()
-	if((state > 1) || !owner)
-		STOP_PROCESSING(SSobj, src)
-
-/obj/item/clothing/accessory/collar/vmcrystal/attack_self(mob/user as mob)
-	if(state > 0) //Can't re-pair, one time only, for security reasons.
-		to_chat(user, "<span class='notice'>The [name] doesn't do anything.</span>")
-		return 0
-
-	owner = user	//We're paired to this guy
-	owner_c = user.client	//This is his client
-	update_state(1)
-	to_chat(user, "<span class='notice'>The [name] glows pleasantly blue.</span>")
-	START_PROCESSING(SSobj, src)
-
-/obj/item/clothing/accessory/collar/vmcrystal/proc/check_owner()
-	//He's dead, jim
-	if((state == 1) && owner && (owner.stat == DEAD))
-		update_state(2)
-		audible_message("<span class='warning'>The [name] begins flashing red.</span>")
-		sleep(30)
-		visible_message("<span class='warning'>The [name] shatters into dust!</span>")
-		if(owner_c)
-			to_chat(owner_c, "<span class='notice'>The HAVENS system is notified of your demise via \the [name].</span>")
-		update_state(3)
-		name = "broken [initial(name)]"
-		desc = "This seems like a necklace, but the actual pendant is missing."
-
-/obj/item/clothing/accessory/collar/vmcrystal/proc/update_state(var/tostate)
-	state = tostate
-	icon_state = "[initial(icon_state)][tostate]"
-	update_icon()
-/*
-/obj/item/paper/vmcrystal_manual
-	name = "VM-LC91-1 manual"
-	info = {"<h4>VM-LC91-1 Life Crystal</h4>
-	<h5>Usage</h5>
-	<ol>
-		<li>Hold new crystal in hand.</li>
-		<li>Make fist with that hand.</li>
-		<li>Wait 1 second.</li>
-	</ol>
-	<br />
-	<h5>Purpose</h5>
-	<p>The VeyMed Life Crystal is a small device typically worn around the neck for the purpose of reporting your status to the HAVENS (VeyMed's High-AVailability ENgram Storage) system, so that appropriate measures can be taken in the case of your body's demise. The whole device is housed inside a pleasing-to-the-eye elongated diamond.</p>
-	<p>Upon your body's desmise, the crystal will send a transmission to HAVENS. Depending on your membership level, the appropriate actions can be taken to ensure that you are back up and enjoying existence as soon as possible.</p>
-
-	<p>Nanotrasen has negotiated a <i>FREE</i> Star membership for you in the HAVENS system, though an upgrade can be obtained depending on your citizenship and reputation level.</p>
-
-	As a reminder, the membership levels in HAVENS are:
-	<ul>
-		<li><b>HAVENS Star:</b> Upon reciving a signal from a transmitter indicating body demise, HAVENS will attempt to contact the owner for 48 hours, before starting the process of resleeving the owner into a new body they selected when registering their HAVENS membership.</li>
-		<li><b>HAVENS Nebula:</b> After the contact period from the Star service has expired, an agent will be alotted a HAVENS spacecraft, and will attempt to locate your remains, and any belongings you had, for up to one week. If possible, any more recent memory recordings or mindstates will be recovered before your resleeving. (Great for explorers! Don't miss out on anything you discovered!)</li>
-		<li><b>HAVENS Galaxy:</b> Upon reciving the signal from the Star service, a HAVENS High-Threat Response Team will be alotted a HAVENS FTL-capable Interdictor-class spacecraft and dispatched to your last known position to locate and recover your remains, plus any belongings. You will be resleeved on-site to continue where you left off.</li>
-	</ul>
-	<br />
-	<h5>Technical</h5>
-	<p>The Life Crystal is a small 5cm long diamond containing four main components which are visible inside the translucent gem.</p>
-
-	From tip to top, they are:
-	<ol>
-		<li><b>Qubit Bucket:</b> This small cube contains 200 bits worth of quantum-entangled bits for transmitting to HAVENS. QE transmission technologies cannot be jammed or interfered with, and are effectively instant over any distance.
-		<li><b>Antimatter Bottle:</b> This tiny antimatter vessel is required to power the transmitter for the time it takes to transmit the signal to HAVENS. The inside of the crystal is thick enough to block any alpha or beta particles emitted when this antimatter contacts matter, however the crystal will be destroyed when activated.
-		<li><b>Decay Reactor:</b> This long-term microreactor will last for around one month and provide sufficient power to power all but the transmitter. This power is required for containing the antimatter bottle.
-		<li><b>Sensor Suite:</b> The sensor that tracks the owner's life-state, such that it can be transmitted back to HAVENS when necessary.
-	</ol>
-	<p>The diamond itself is coated in a layer of graphene, to give it a pleasant rainbow finish. This also serves as a conductor that, if broken, will discharge the antimatter bottle immediately as it is unsafe to do so any point after the crystal is broken via physical means.</p>
-	<br />
-	<h5>Special Notes</h5>
-	<i>\[AM WARNING\]</i>
-	<p>This device contains antimatter. Please consult all local regulations when travelling to ensure compliance with local laws.</p>"}
-*/
-/obj/item/storage/box/vmcrystal
-	name = "life crystal case"
-	icon = 'icons/vore/custom_items_vr.dmi'
-	icon_state = "khlifebox"
-	desc = "This case can only hold the VM-LC91-1 and a manual."
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syringe_kit", SLOT_ID_LEFT_HAND = "syringe_kit")
-	storage_slots = 2
-	can_hold = list(/obj/item/clothing/accessory/collar/vmcrystal)
-	max_storage_space = ITEMSIZE_COST_SMALL * 2
-	w_class = ITEMSIZE_SMALL
-
-/obj/item/storage/box/vmcrystal/Initialize(mapload)
-	. = ..()
-//	new /obj/item/paper/vmcrystal_manual(src)
-	new /obj/item/clothing/accessory/collar/vmcrystal(src)
+	body_cover_flags = 0
 
 /obj/item/cane/fluff
 	name = "cane"
@@ -527,10 +418,10 @@
 	icon_state = "browncane"
 	item_icons = list (SLOT_ID_RIGHT_HAND = 'icons/vore/custom_items_vr.dmi', SLOT_ID_LEFT_HAND = 'icons/vore/custom_items_vr.dmi')
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "browncanemob_r", SLOT_ID_LEFT_HAND = "browncanemob_l")
-	force = 5.0
+	damage_force = 5.0
 	throw_force = 7.0
 	w_class = ITEMSIZE_SMALL
-	matter = list(MAT_STEEL = 50)
+	materials = list(MAT_STEEL = 50)
 	attack_verb = list("bludgeoned", "whacked", "disciplined", "thrashed")
 
 /obj/item/cane/fluff/tasald
@@ -546,16 +437,19 @@
     icon_state = "alexiswand"
     item_icons = list (SLOT_ID_RIGHT_HAND = 'icons/vore/custom_items_vr.dmi', SLOT_ID_LEFT_HAND = 'icons/vore/custom_items_vr.dmi')
     item_state_slots = list(SLOT_ID_RIGHT_HAND = "alexiswandmob_r", SLOT_ID_LEFT_HAND = "alexiswandmob_l")
-    force = 1.0
+    damage_force = 1.0
     throw_force = 2.0
     w_class = ITEMSIZE_SMALL
-    matter = list(MAT_STEEL = 50)
+    materials = list(MAT_STEEL = 50)
     attack_verb = list("sparkled", "whacked", "twinkled", "radiated", "dazzled", "zapped")
     hitsound = 'sound/weapons/sparkle.ogg'
     var/last_use = 0
     var/cooldown = 30
 
 /obj/item/cane/wand/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(last_use + cooldown >= world.time)
 		return
 	playsound(src, 'sound/weapons/sparkle.ogg', 50, 1)
@@ -571,19 +465,19 @@
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "labeler1"
 
-/obj/item/fluff/id_kit_ivy/afterattack(obj/O, mob/user as mob)
+/obj/item/fluff/id_kit_ivy/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	var/new_icon_state = "ivyholoid"
 	var/new_icon = 'icons/vore/custom_items_vr.dmi'
 	var/new_desc = "Its a thin screen showing ID information, but it seems to be flickering."
-	if(istype(O,/obj/item/card/id) && O.icon_state != new_icon)
-		O.icon = new_icon
-		O.icon_state = new_icon_state // Changes the icon without changing the access.
-		O.desc = new_desc
+	if(istype(target,/obj/item/card/id) && target.icon_state != new_icon)
+		target.icon = new_icon
+		target.icon_state = new_icon_state // Changes the icon without changing the access.
+		target.desc = new_desc
 		playsound(user.loc, 'sound/items/polaroid2.ogg', 100, 1)
 		user.visible_message("<span class='warning'> [user] reprints their ID.</span>")
 		qdel(src)
-	else if(O.icon_state == new_icon)
-		to_chat(user, "<span class='notice'>[O] already has been reprinted.</span>")
+	else if(target.icon_state == new_icon)
+		to_chat(user, "<span class='notice'>[target] already has been reprinted.</span>")
 		return
 	else
 		to_chat(user, "<span class='warning'>This isn't even an ID card you idiot.</span>")
@@ -677,6 +571,9 @@
 	w_class = ITEMSIZE_SMALL
 
 /obj/item/fluff/dragor_dot/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(user.ckey == "pontifexminimus")
 		add_verb(user, /mob/living/carbon/human/proc/shapeshifter_select_gender)
 	else
@@ -704,7 +601,10 @@
 	desc = "A primarily blue ID with a holographic 'WAH' etched onto its back. The letters do not obscure anything important on the card. It is shiny and it feels very bumpy."
 	var/title_strings = list("Amaya Rahl's Wah-identification card", "Amaya Rahl's Wah-ID card")
 
-/obj/item/card/id/fluff/amaya/attack_self(mob/user as mob)
+/obj/item/card/id/fluff/amaya/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(configured == 1)
 		return ..()
 
@@ -745,7 +645,7 @@
 	slot_flags = SLOT_EYES | SLOT_EARS
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "glasses", SLOT_ID_LEFT_HAND = "glasses")
 	toggleable = 1
-	off_state = "spiffygogsup"
+	inactive_icon_state = "spiffygogsup"
 
 //General use
 /obj/item/clothing/accessory/tronket
@@ -776,7 +676,7 @@
 	desc = "Seems absurd, doesn't it? Yet, here we are. Generally considered dangerous contraband unless the user has permission from Central Command."
 	icon = 'icons/obj/device_alt.dmi'
 	icon_state = "hand_tele"
-	item_flags = ITEM_NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_MAGNET = 5, TECH_BLUESPACE = 5, TECH_ILLEGAL = 7)
 
@@ -822,7 +722,7 @@
 
 	..()
 
-/obj/item/perfect_tele/attack_hand(mob/user)
+/obj/item/perfect_tele/attack_hand(mob/user, list/params)
 	if(user.get_inactive_held_item() == src && power_source)
 		to_chat(user,"<span class='notice'>You eject \the [power_source] from \the [src].</span>")
 		user.put_in_hands(power_source)
@@ -832,6 +732,9 @@
 		return ..()
 
 /obj/item/perfect_tele/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!(user.ckey in warned_users))
 		warned_users |= user.ckey
 		alert(user,"This device can be easily used to break ERP preferences due to the nature of teleporting \
@@ -938,7 +841,7 @@
 	var/turf/uT = get_turf(user)
 	var/turf/dT = get_turf(destination)
 	var/list/dat = list()
-	dat["z_level_detection"] = GLOB.using_map.get_map_levels(uT.z, TRUE)
+	dat["z_level_detection"] = (LEGACY_MAP_DATUM).get_map_levels(uT.z, TRUE)
 
 	if(!uT || !dT)
 		return FALSE
@@ -954,13 +857,16 @@
 	//Seems okay to me!
 	return TRUE
 
-/obj/item/perfect_tele/afterattack(mob/living/target, mob/living/user, proximity)
+/obj/item/perfect_tele/afterattack(mob/living/target, mob/user, clickchain_flags, list/params)
 	//No, you can't teleport people from over there.
-	if(!proximity)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 
 	if(!teleport_checks(target,user))
 		return //The checks proc can send them a message if it wants.
+
+	if(user != target && !do_after(user, 5 SECONDS, target))
+		return
 
 	ready = FALSE
 	update_icon()
@@ -973,7 +879,7 @@
 		if(!teleport_checks(target, user))	// no using this to bypass range checks
 			to_chat(user, "<span class='warning'>[src] malfunctions and fizzles out uselessly!</span>")
 			// penalty: 10 second recharge, but no using charge.
-			addtimer(CALLBACK(src, .proc/recharge), 10 SECONDS)
+			addtimer(CALLBACK(src, PROC_REF(recharge)), 10 SECONDS)
 			return
 		else
 			to_chat(user,"<span class='warning'>\The [src] malfunctions and sends you to the wrong beacon!</span>")
@@ -1030,7 +936,7 @@
 			//Phase-in effect for grabbed person
 			phase_in(G.affecting,get_turf(G.affecting))
 
-	addtimer(CALLBACK(src, .proc/recharge), 30 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(recharge)), 30 SECONDS)
 
 	logged_events["[world.time]"] = "[user] teleported [target] to [real_dest] [televored ? "(Belly: [lowertext(real_dest.name)])" : null]"
 
@@ -1066,7 +972,7 @@
 	icon = 'icons/obj/device_alt.dmi'
 	icon_state = "motion2"
 	w_class = ITEMSIZE_TINY
-	item_flags = ITEM_NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 
 	var/tele_name
 	var/obj/item/perfect_tele/tele_hand
@@ -1078,7 +984,7 @@
 	tele_hand = null
 	return ..()
 
-/obj/item/perfect_tele_beacon/attack_hand(mob/user)
+/obj/item/perfect_tele_beacon/attack_hand(mob/user, list/params)
 	if((user.ckey != creator) && !(user.ckey in warned_users))
 		warned_users |= user.ckey
 		var/choice = alert(user,"This device is a translocator beacon. Having it on your person may mean that anyone \
@@ -1091,6 +997,9 @@
 	..()
 
 /obj/item/perfect_tele_beacon/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!isliving(user))
 		return
 	var/mob/living/L = user
@@ -1181,7 +1090,10 @@
 		user.do_attack_animation(target)
 		user.setClickCooldown(DEFAULT_QUICK_COOLDOWN) //to prevent spam
 
-/obj/item/clothing/accessory/badge/holo/detective/ruda/attack_self(mob/user as mob)
+/obj/item/clothing/accessory/badge/holo/detective/ruda/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 
 	if(!stored_name)
 		to_chat(user, "You huff along the front of your badge, then rub your sleeve on it to polish it up.")
@@ -1200,7 +1112,7 @@
 	icon_state = "centcom"
 	registered_name = "Amy Lessen"
 	assignment = "Xenobiology Director"
-	access = list(access_cent_general,access_cent_thunder,access_cent_medical,access_cent_living,access_cent_storage,access_cent_teleporter,access_research,access_xenobiology,access_maint_tunnels,access_xenoarch,access_robotics,access_tox_storage,access_tox) //Yes, this looks awful. I tried calling both central and resarch access but it didn't work.
+	access = list(ACCESS_CENTCOM_GENERAL,ACCESS_CENTCOM_THUNDERDOME,ACCESS_CENTCOM_MEDICAL,ACCESS_CENTCOM_DORMS,ACCESS_CENTCOM_STORAGE,ACCESS_CENTCOM_TELEPORTER,ACCESS_SCIENCE_MAIN,ACCESS_SCIENCE_XENOBIO,ACCESS_ENGINEERING_MAINT,ACCESS_SCIENCE_XENOARCH,ACCESS_SCIENCE_ROBOTICS,ACCESS_SCIENCE_TOXINS,ACCESS_SCIENCE_FABRICATION) //Yes, this looks awful. I tried calling both central and resarch access but it didn't work.
 	age = 39
 	blood_type = "O-"
 	sex = "Female"
@@ -1355,7 +1267,7 @@
 	item_icons = list(SLOT_ID_LEFT_HAND = 'icons/vore/custom_items_left_hand_vr.dmi', SLOT_ID_RIGHT_HAND = 'icons/vore/custom_items_right_hand_vr.dmi')
 	icon_state = "stunstaff00"
 	var/base_icon = "stunstaff"
-	force = 5
+	damage_force = 5
 	sharp = 0
 	edge = 0
 	throw_force = 7
@@ -1378,12 +1290,12 @@
 	var/mob/living/M = loc
 	if(istype(M) && !issmall(M) && M.is_holding(src) && !M.hands_full())
 		wielded = 1
-		force = 15
+		damage_force = 15
 		name = "[base_name] (wielded)"
 		update_icon()
 	else
 		wielded = 0
-		force = 8
+		damage_force = 8
 		name = "[base_name]"
 	update_icon()
 	..()
@@ -1411,6 +1323,9 @@
 			update_held_icon()
 
 /obj/item/melee/baton/fluff/stunstaff/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(bcell && bcell.charge > hitcost)
 		status = !status
 		to_chat(user, "<span class='notice'>[src] is now [status ? "on" : "off"].</span>")
@@ -1460,7 +1375,7 @@
 		return
 	active = 1
 	embed_chance = active_embed_chance
-	force = active_force
+	damage_force = active_force
 	throw_force = active_throwforce
 	sharp = 1
 	edge = 1
@@ -1473,18 +1388,22 @@
 	playsound(user, 'sound/weapons/sparkle.ogg', 50, 1)
 	active = 0
 	embed_chance = initial(embed_chance)
-	force = initial(force)
+	damage_force = initial(damage_force)
 	throw_force = initial(throw_force)
 	sharp = initial(sharp)
 	edge = initial(edge)
 	w_class = initial(w_class)
 
-/obj/item/melee/fluffstuff/attack_self(mob/living/user as mob)
+/obj/item/melee/fluffstuff/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if (active)
 		if ((MUTATION_CLUMSY in user.mutations) && prob(50))
 			user.visible_message("<span class='danger'>\The [user] accidentally cuts \himself with \the [src].</span>",\
 			"<span class='danger'>You accidentally cut yourself with \the [src].</span>")
-			user.take_organ_damage(5,5)
+			var/mob/living/carbon/human/H = ishuman(user)? user : null
+			H?.take_organ_damage(5,5)
 		deactivate(user)
 	else
 		activate(user)
@@ -1513,7 +1432,7 @@
 	active_force = 15
 	active_throwforce = 7
 	active_w_class = ITEMSIZE_LARGE
-	force = 1
+	damage_force = 1
 	throw_force = 1
 	throw_speed = 1
 	throw_range = 5

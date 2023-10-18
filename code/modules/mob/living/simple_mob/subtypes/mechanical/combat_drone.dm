@@ -47,7 +47,7 @@
 	hovering = TRUE
 
 	base_attack_cooldown = 5
-	projectiletype = /obj/item/projectile/beam/drone
+	projectiletype = /obj/projectile/beam/drone
 	projectilesound = 'sound/weapons/laser3.ogg'
 
 	response_help = "pokes"
@@ -80,7 +80,7 @@
 /mob/living/simple_mob/mechanical/combat_drone/Process_Spacemove(var/check_drift = 0)
 	return TRUE
 
-/obj/item/projectile/beam/drone
+/obj/projectile/beam/drone
 	damage = 10
 
 /obj/item/shield_projector/rectangle/automatic/drone

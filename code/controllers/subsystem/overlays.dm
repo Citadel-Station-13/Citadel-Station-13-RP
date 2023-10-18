@@ -261,7 +261,7 @@ SUBSYSTEM_DEF(overlays)
 /atom/movable/cut_overlay(list/overlays, priority)
 	..()
 	// If we removed an automangle-eligible overlay and have automangle enabled, reevaluate automangling.
-	if (!SSoverlays.context_needs_automangle || !(zmm_flags && ZMM_AUTOMANGLE))
+	if (!SSoverlays.context_needs_automangle || !(zmm_flags & ZMM_AUTOMANGLE))
 		return
 
 	var/list/cached_overlays = our_overlays

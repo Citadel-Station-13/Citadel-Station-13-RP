@@ -15,7 +15,7 @@
 /datum/map_template/shuttle/overmap/generic/gecko_cargohauler_wreck
 	name = "OM Ship - Wrecked Gecko Cargo Hauler (new Z)"
 	desc = "A wrecked medium supply transport shuttle."
-	mappath = "_maps/submaps/level_specific/debrisfield_vr/gecko_cr_wreck.dmm"
+	map_path = "maps/submaps/level_specific/debrisfield_vr/gecko_cr_wreck.dmm"
 	annihilate = TRUE
 
 // The shuttle's area(s)
@@ -140,7 +140,7 @@
 	shuttle_type = /datum/shuttle/autodock/overmap/gecko_cr_wreck
 
 // The 'ship'
-/obj/effect/overmap/visitable/ship/landable/gecko_sh
+/obj/overmap/entity/visitable/ship/landable/gecko_sh
 	scanner_name = "Gecko-class Transport"
 	scanner_desc = @{"[i]Registration[/i]: ITV Sticky Fingers
 [i]Class[/i]: Medium Shuttle
@@ -151,7 +151,7 @@
 	vessel_size = SHIP_SIZE_LARGE
 	shuttle = "Gecko Stationhopper"
 
-/obj/effect/overmap/visitable/ship/landable/gecko_cr
+/obj/overmap/entity/visitable/ship/landable/gecko_cr
 	scanner_name = "Gecko-class Transport"
 	scanner_desc = @{"[i]Registration[/i]: ITV Sticky Business
 [i]Class[/i]: Medium Shuttle
@@ -162,7 +162,7 @@
 	vessel_size = SHIP_SIZE_LARGE
 	shuttle = "Gecko Cargo Hauler"
 
-/obj/effect/overmap/visitable/ship/landable/gecko_cr_wreck
+/obj/overmap/entity/visitable/ship/landable/gecko_cr_wreck
 	scanner_name = "Wrecked Gecko-class Transport"
 	scanner_desc = @{"[i]Registration[/i]: ITV Sticky Situation
 [i]Class[/i]: Medium Shuttle

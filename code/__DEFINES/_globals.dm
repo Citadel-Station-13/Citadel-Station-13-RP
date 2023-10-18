@@ -1,5 +1,7 @@
 //See also controllers/globals.dm
 
+//? Basic
+
 //Creates a global initializer with a given InitValue expression, do not use
 #define GLOBAL_MANAGED(X, InitValue)\
 /datum/controller/global_vars/proc/InitGlobal##X(){\
@@ -20,26 +22,21 @@
 #define GLOBAL_PROTECT(X)
 #endif
 
-// Standard BYOND global, do not use
+//? Real Globals - Only use where speed is crucial & VV is unnecessary.
+
+// Standard BYOND global
 #define GLOBAL_REAL_VAR(X) var/global/##X
 
-// Standard typed BYOND global, do not use
+// Standard typed BYOND global
 #define GLOBAL_REAL(X, Typepath) var/global##Typepath/##X
 
-// Standard BYOND global list, do not use
+// Standard BYOND global list
 #define GLOBAL_REAL_LIST(X) var/global/list/##X
 
-// Standard BYOND global
-// todo: add vv capability to this
-#define GLOBAL_REAL_VAR_MANAGED(X) var/global/##X
+// Mark stuff you don't want VV'd with this.
+#define GLOBAL_REAL_PROTECT(X)
 
-// Standard BYOND global
-// todo: add vv capability to this
-#define GLOBAL_REAL_MANAGED(X, Typepath) var/global##Typepath/##X
-
-// Standard BYOND global list
-// todo: add vv capability to this
-#define GLOBAL_REAL_LIST_MANAGED(X) var/global/list/##X
+//? Managed Globals
 
 //Defines a global var on the controller, do not use
 #define GLOBAL_RAW(X) /datum/controller/global_vars/var/global##X

@@ -5,7 +5,7 @@
 	name = "contraband item"
 	desc = "You probably shouldn't be holding this."
 	icon = 'icons/obj/contraband.dmi'
-	force = 0
+	damage_force = 0
 
 
 /obj/item/contraband/poster
@@ -28,12 +28,12 @@
 	name += " - No. [serial_number]"
 
 //Places the poster on a wall
-/obj/item/contraband/poster/afterattack(var/atom/A, var/mob/user, var/adjacent, var/clickparams)
-	if (!adjacent)
+/obj/item/contraband/poster/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if (!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 
 	//must place on a wall and user must not be inside a closet/mecha/whatever
-	var/turf/W = A
+	var/turf/W = target
 	if (!iswall(W) || !isturf(user.loc))
 		to_chat(user, "<span class='warning'>You can't place this here!</span>")
 		return
@@ -158,7 +158,7 @@
 			roll_and_drop(user.loc)
 		return
 
-/obj/structure/sign/poster/attack_hand(mob/user as mob)
+/obj/structure/sign/poster/attack_hand(mob/user, list/params)
 
 	if(ruined)
 		return

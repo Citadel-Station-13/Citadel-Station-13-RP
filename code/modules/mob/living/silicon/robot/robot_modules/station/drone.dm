@@ -24,7 +24,7 @@
 		/obj/item/pipe_painter,
 		/obj/item/floor_painter,
 		/obj/item/t_scanner,
-		/obj/item/analyzer,
+		/obj/item/atmos_analyzer,
 		/obj/item/inflatable_dispenser/robot,
 		/obj/item/barrier_tape_roll/engineering,
 		/obj/item/pipe_dispenser

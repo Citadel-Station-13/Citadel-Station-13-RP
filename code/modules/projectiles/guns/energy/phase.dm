@@ -8,7 +8,7 @@
 	wielded_item_state = "phasecarbine-wielded"
 	slot_flags = SLOT_BACK|SLOT_BELT
 	charge_cost = 240
-	projectile_type = /obj/item/projectile/energy/phase
+	projectile_type = /obj/projectile/energy/phase
 	one_handed_penalty = 15
 	no_pin_required = 1
 
@@ -20,7 +20,7 @@
 	w_class = ITEMSIZE_NORMAL
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
 	charge_cost = 300
-	projectile_type = /obj/item/projectile/energy/phase/light
+	projectile_type = /obj/projectile/energy/phase/light
 	one_handed_penalty = 0
 
 /obj/item/gun/energy/phasegun/pistol/mounted
@@ -41,7 +41,7 @@
 	w_class = ITEMSIZE_LARGE
 	slot_flags = SLOT_BACK
 	charge_cost = 150
-	projectile_type = /obj/item/projectile/energy/phase/heavy
+	projectile_type = /obj/projectile/energy/phase/heavy
 	one_handed_penalty = 30
 
 /obj/item/gun/energy/phasegun/cannon
@@ -54,6 +54,6 @@
 	slot_flags = SLOT_BACK
 	heavy = TRUE
 	charge_cost = 100
-	projectile_type = /obj/item/projectile/energy/phase/heavy/cannon
+	projectile_type = /obj/projectile/energy/phase/heavy/cannon
 	accuracy = 70
 	one_handed_penalty = 65

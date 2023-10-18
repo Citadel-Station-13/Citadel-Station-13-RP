@@ -8,12 +8,15 @@
 	handle_casings = HOLD_CASINGS
 	max_shells = 1
 	ammo_type = /obj/item/ammo_casing/a357
-	projectile_type = /obj/item/projectile/bullet/pistol/strong
+	projectile_type = /obj/projectile/bullet/pistol/strong
 	var/retracted_bolt = 0
 	load_method = SINGLE_CASING
 	heavy = TRUE
 
-/obj/item/gun/ballistic/contender/attack_self(mob/user as mob)
+/obj/item/gun/ballistic/contender/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(chambered)
 		chambered.loc = get_turf(src)
 		chambered = null
@@ -98,27 +101,37 @@
 	item_state = "revolver"
 	caliber = "12g"
 	ammo_type = /obj/item/ammo_casing/a12g/improvised
-	projectile_type = /obj/item/projectile/bullet/shotgun
-	var/unstable = 1
-	var/jammed
+	projectile_type = /obj/projectile/bullet/shotgun
+	unstable = 1
 
 /obj/item/gun/ballistic/contender/pipegun/consume_next_projectile(mob/user as mob)
 	. = ..()
+	//var/instability = rand(1,100)
 	if(.)
 		if(unstable)
-			switch(rand(1,100))
-				if(1 to 10)
-					to_chat(user, "<span class='danger'>The pipe bursts open as the gun backfires!</span>")
+			if(prob(10))
+				to_chat(user, "<span class='danger'>The pipe bursts open as the gun backfires!</span>")
+				name = "ruptured pipe rifle"
+				desc = "The barrel has blown wide open."
+				icon_state = "pipegun-destroyed"
+				destroyed = 1
+				spawn(1 SECOND)
 					explosion(get_turf(src), -1, 0, 2, 3)
-					qdel(src)
-				if(11 to 39)
-					to_chat(user, "<span class='notice'>The [src] misfires!</span>")
-					playsound(src, 'sound/machines/button.ogg', 25)
-					handle_click_empty()
-					return
-				if(40 to 100)
-					return 1
-		if(jammed)
-			to_chat(user, "<span class='notice'>The [src] is jammed!</span>")
+
+		if(destroyed)
+			to_chat(user, "<span class='notice'>The [src] is broken!</span>")
 			handle_click_empty()
 			return
+
+/obj/item/gun/ballistic/contender/pipegun/Fire(atom/target, mob/living/user, clickparams, pointblank, reflex)
+	. = ..()
+	if(destroyed)
+		to_chat(user, "<span class='notice'>\The [src] is completely inoperable!</span>")
+		handle_click_empty()
+
+/obj/item/gun/ballistic/contender/pipegun/attack_hand(mob/user, list/params)
+	if(user.get_inactive_held_item() == src && destroyed)
+		to_chat(user, "<span class='danger'>\The [src]'s chamber is too warped to extract the casing!</span>")
+		return
+	else
+		return ..()

@@ -1,11 +1,11 @@
-#define MATERIAL_ARMOR_COEFFICENT 0.05
+#define MATERIAL_ARMOR_COEFFICIENT 0.05
 /*
 SEE code/modules/materials/materials.dm FOR DETAILS ON INHERITED DATUM.
 This class of armor takes armor and appearance data from a material "datum".
 They are also fragile based on material data and many can break/smash apart when hit.
 
 Materials has a var called protectiveness which plays a major factor in how good it is for armor.
-With the coefficent being 0.05, this is how strong different levels of protectiveness are (for melee)
+With the coefficient being 0.05, this is how strong different levels of protectiveness are (for melee)
 For bullets and lasers, material hardness and reflectivity also play a major role, respectively.
 
 
@@ -73,8 +73,8 @@ Protectiveness | Armor %
 	if(!material || unbreakable)
 		return
 
-	if(istype(source, /obj/item/projectile))
-		var/obj/item/projectile/P = source
+	if(istype(source, /obj/projectile))
+		var/obj/projectile/P = source
 		if(P.check_pass_flags(ATOM_PASS_GLASS))
 			if(material.opacity - 0.3 <= 0)
 				return // Lasers ignore 'fully' transparent material.
@@ -132,8 +132,8 @@ Protectiveness | Armor %
 		return PROJECTILE_FORCE_MISS
 
 	if(material.reflectivity)
-		if(istype(damage_source, /obj/item/projectile/energy) || istype(damage_source, /obj/item/projectile/beam))
-			var/obj/item/projectile/P = damage_source
+		if(istype(damage_source, /obj/projectile/energy) || istype(damage_source, /obj/projectile/beam))
+			var/obj/projectile/P = damage_source
 
 			if(P.reflected) // Can't reflect twice
 				return ..()
@@ -157,11 +157,10 @@ Protectiveness | Armor %
 				return PROJECTILE_CONTINUE // complete projectile permutation
 
 /proc/calculate_material_armor(amount)
-	var/result = 1 - MATERIAL_ARMOR_COEFFICENT * amount / (1 + MATERIAL_ARMOR_COEFFICENT * abs(amount))
+	var/result = 1 - MATERIAL_ARMOR_COEFFICIENT * amount / (1 + MATERIAL_ARMOR_COEFFICIENT * abs(amount))
 	result = result * 100
 	result = abs(result - 100)
-	return round(result)
-
+	return round(result) * 0.01
 
 /obj/item/clothing/proc/update_armor()
 	if(material)
@@ -183,15 +182,19 @@ Protectiveness | Armor %
 		for(var/number in list(melee_armor, bullet_armor, laser_armor, energy_armor, bomb_armor))
 			number = clamp( number, 0,  100)
 
-		armor["melee"] = melee_armor
-		armor["bullet"] = bullet_armor
-		armor["laser"] = laser_armor
-		armor["energy"] = energy_armor
-		armor["bomb"] = bomb_armor
+		set_armor(list(
+			ARMOR_MELEE = melee_armor,
+			ARMOR_BULLET = bullet_armor,
+			ARMOR_LASER = laser_armor,
+			ARMOR_ENERGY = energy_armor,
+			ARMOR_BOMB = bomb_armor,
+		))
 
 		if(!isnull(material.conductivity))
 			siemens_coefficient = clamp( material.conductivity / 10, 0,  10)
-		slowdown = clamp(0, round(material.weight / 10, 0.1) * material_weight_factor, 6)
+		var/legacy_whatever = clamp(0, round(material.weight / 10, 0.1) * material_weight_factor, 6) * 10
+		set_weight(legacy_whatever * 2)
+		set_encumbrance(legacy_whatever * 4)
 
 /obj/item/clothing/suit/armor/material
 	name = "armor"
@@ -258,10 +261,10 @@ Protectiveness | Armor %
 // Used to craft the makeshift helmet
 /obj/item/clothing/head/helmet/bucket
 	name = "improvised armor (bucket)"
-	desc = "It's a bucket with a large hole cut into it.  You could wear it on your head and look really stupid."
-	flags_inv = HIDEEARS|HIDEEYES|BLOCKHAIR
+	desc = "It's a bucket with a large hole cut into it. Desperate times require desperate measures, and you can't get more desperate than trusting a CleanMate bucket as a helmet."
+	inv_hide_flags = HIDEEARS|HIDEEYES|BLOCKHAIR
 	icon_state = "bucket"
-	armor = list(melee = 5, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
+	armor_type = /datum/armor/misc/bucket
 
 /obj/item/clothing/head/helmet/bucket/wood
 	name = "wooden bucket"
@@ -284,7 +287,7 @@ Protectiveness | Armor %
 
 /obj/item/clothing/head/helmet/material
 	name = "helmet"
-	flags_inv = HIDEEARS|HIDEEYES|BLOCKHAIR
+	inv_hide_flags = HIDEEARS|HIDEEYES|BLOCKHAIR
 	default_material = MAT_STEEL
 
 /obj/item/clothing/head/helmet/material/makeshift

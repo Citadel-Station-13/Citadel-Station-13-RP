@@ -12,7 +12,7 @@ var/global/mob/living/carbon/human/dummy/mannequin/sleevemate_mob
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 5
 	throw_range = 10
-	matter = list(MAT_STEEL = 200)
+	materials = list(MAT_STEEL = 200)
 	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 2)
 
 	var/datum/mind/stored_mind
@@ -23,7 +23,10 @@ var/global/mob/living/carbon/human/dummy/mannequin/sleevemate_mob
 		scan_mob(target, user)
 	to_chat(user,"<span class='warning'>Not a compatible subject to work with!</span>")
 
-/obj/item/sleevemate/attack_self(mob/living/user)
+/obj/item/sleevemate/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!stored_mind)
 		to_chat(user,"<span class='warning'>No stored mind in \the [src].</span>")
 		return
@@ -212,8 +215,8 @@ var/global/mob/living/carbon/human/dummy/mannequin/sleevemate_mob
 		if(!sleevemate_mob)
 			sleevemate_mob = new()
 
-		stored_mind.active = TRUE //Setting this causes transfer_to, to key them into the mob
-		stored_mind.transfer_to(sleevemate_mob)
+		stored_mind.active = TRUE //Setting this causes transfer, to key them into the mob
+		stored_mind.transfer(sleevemate_mob)
 		SC.catch_mob(sleevemate_mob)
 		stored_mind = null
 		to_chat(usr,"<span class='notice'>Mind transferred into Soulcatcher!</span>")
@@ -239,7 +242,7 @@ var/global/mob/living/carbon/human/dummy/mannequin/sleevemate_mob
 				to_chat(usr,"<span class='warning'>\The [src] no longer has a stored mind.</span>")
 				return
 			stored_mind.active = TRUE
-			stored_mind.transfer_to(target)
+			stored_mind.transfer(target)
 			stored_mind = null
 			to_chat(usr,"<span class='notice'>Mind transferred into [target]!</span>")
 			update_icon()

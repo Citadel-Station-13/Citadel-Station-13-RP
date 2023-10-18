@@ -5,27 +5,28 @@
 /turf/simulated/open
 	name = "open space"
 	icon = 'icons/turf/space.dmi'
-	icon_state = ""
+	icon_state = "opendebug"
 	density = FALSE
-	pathweight = INFINITY //Seriously, don't try and path over this one numbnuts
+	turf_path_danger = TURF_PATH_DANGER_FALL
 	can_build_into_floor = TRUE
 	allow_gas_overlays = FALSE
 	mz_flags = MZ_MIMIC_DEFAULTS | MZ_MIMIC_OVERWRITE | MZ_MIMIC_NO_AO | MZ_ATMOS_BOTH | MZ_OPEN_BOTH
 
 /turf/simulated/open/Initialize(mapload)
 	. = ..()
+	icon_state = ""
 	ASSERT(HasBelow(z))
 	queue()
 
 /turf/simulated/open/Entered(atom/movable/mover)
 	..()
-	if(mover.movement_type & GROUND)
+	if(mover.movement_type & MOVEMENT_GROUND)
 		mover.fall()
 
 // Called when thrown object lands on this turf.
 /turf/simulated/open/throw_landed(atom/movable/AM, datum/thrownthing/TT)
 	. = ..()
-	if(AM.movement_type & GROUND)
+	if(AM.movement_type & MOVEMENT_GROUND)
 		AM.fall()
 
 /turf/simulated/open/proc/queue()
@@ -70,7 +71,6 @@
 			return FALSE
 	return ..()
 
-
 // Straight copy from space.
 /turf/simulated/open/attackby(obj/item/C as obj, mob/user as mob)
 	if (istype(C, /obj/item/stack/rods))
@@ -102,10 +102,3 @@
 	if(istype(C, /obj/item/stack/cable_coil))
 		var/obj/item/stack/cable_coil/coil = C
 		coil.turf_place(src, user)
-
-
-/obj/effect/abstract/over_openspace_darkness
-	icon = 'icons/turf/open_space.dmi'
-	icon_state = "black_open"
-	plane = OVER_OPENSPACE_PLANE
-	layer = TURF_LAYER

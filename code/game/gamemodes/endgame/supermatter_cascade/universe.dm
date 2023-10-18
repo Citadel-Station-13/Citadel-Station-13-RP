@@ -86,7 +86,7 @@ The access requirements on the Asteroid Shuttles' consoles have now been revoked
 /datum/universal_state/supermatter_cascade/OverlayAndAmbientSet()
 	spawn(0)
 		for(var/datum/lighting_corner/L in world)
-			if(L.z in GLOB.using_map.admin_levels)
+			if(L.z in (LEGACY_MAP_DATUM).admin_levels)
 				L.update_lumcount(1,1,1)
 			else
 				L.update_lumcount(0.0, 0.4, 1)
@@ -112,7 +112,7 @@ The access requirements on the Asteroid Shuttles' consoles have now been revoked
 		if(!istype(M.current,/mob/living))
 			continue
 		if(M.current.stat!=2)
-			M.current.Weaken(10)
+			M.current.afflict_paralyze(20 * 10)
 			M.current.flash_eyes()
 
 		clear_antag_roles(M)

@@ -34,6 +34,6 @@
 	new_item.unacidable = 1
 	if(istype(new_item, /obj/item/clothing/mask/horsehead))
 		var/obj/item/clothing/mask/horsehead/magichead = new_item
-		magichead.flags_inv = null	//so you can still see their face
+		magichead.inv_hide_flags = null	//so you can still see their face
 		magichead.voicechange = 1	//NEEEEIIGHH
 	return new_item

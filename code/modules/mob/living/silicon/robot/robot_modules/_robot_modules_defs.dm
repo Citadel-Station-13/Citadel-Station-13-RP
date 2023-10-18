@@ -1,7 +1,6 @@
 #define MATSYN_WATER "water"
 #define MATSYN_NANITES "nanites"
 #define MATSYN_WIRE "wire"
-#define MATSYN_NANOPASTE "nanopaste"
 #define MATSYN_METAL "metal"
 #define MATSYN_GLASS "glass"
 #define MATSYN_DRUGS "medicine"

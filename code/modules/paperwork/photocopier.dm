@@ -19,11 +19,7 @@
 	var/maxcopies = 10	//how many copies can be copied at once- idea shamelessly stolen from bs12's copier!
 	var/copying = FALSE // Is the printer busy with something? Sanity check variable.
 
-/obj/machinery/photocopier/Initialize(mapload)
-	. = ..()
-	default_apply_parts()
-
-/obj/machinery/photocopier/examine(mob/user)
+/obj/machinery/photocopier/examine(mob/user, dist)
 	. = ..()
 	if(Adjacent(user))
 		. += "The screen shows there's [toner ? "[toner]" : "no"] toner left in the printer."
@@ -31,7 +27,7 @@
 /obj/machinery/photocopier/attack_ai(mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/photocopier/attack_hand(mob/user as mob)
+/obj/machinery/photocopier/attack_hand(mob/user, list/params)
 	user.set_machine(src)
 
 	nano_ui_interact(user)
@@ -109,7 +105,7 @@
 	if(href_list["copy"])
 		if(machine_stat & (BROKEN|NOPOWER))
 			return
-		addtimer(CALLBACK(src, .proc/copy_operation, usr), 0)
+		addtimer(CALLBACK(src, PROC_REF(copy_operation), usr), 0)
 
 	else if(href_list["remove"])
 		if(copyitem)
@@ -242,19 +238,15 @@
 
 
 /obj/machinery/photocopier/proc/photocopy(var/obj/item/photo/photocopy, var/need_toner=1)
-	var/obj/item/photo/p = photocopy.copy()
-	p.loc = src.loc
+	var/icon/raw = photocopy.full_image()
 
-	var/icon/I = icon(photocopy.icon, photocopy.icon_state)
 	if(toner > 10)	//plenty of toner, go straight greyscale
-		I.MapColors(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(0,0,0))		//I'm not sure how expensive this is, but given the many limitations of photocopying, it shouldn't be an issue.
-		p.img.MapColors(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(0,0,0))
-		p.tiny.MapColors(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(0,0,0))
+		raw.MapColors(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(0,0,0))		//I'm not sure how expensive this is, but given the many limitations of photocopying, it shouldn't be an issue.
 	else			//not much toner left, lighten the photo
-		I.MapColors(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(100,100,100))
-		p.img.MapColors(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(100,100,100))
-		p.tiny.MapColors(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(100,100,100))
-	p.icon = I
+		raw.MapColors(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(100,100,100))
+
+	var/obj/item/photo/copy = create_photo(drop_location(), raw)
+
 	if(need_toner)
 		toner -= 5	//photos use a lot of ink!
 	if(toner < 0)
@@ -262,7 +254,7 @@
 		playsound(loc, "sound/machines/buzz-sigh.ogg", 100)
 		visible_message("<span class='notice'>A red light on \the [src] flashes, indicating that it is out of toner.</span>")
 
-	return p
+	return copy
 
 /obj/machinery/photocopier/proc/copyass(mob/user)
 	var/icon/temp_img
@@ -331,17 +323,12 @@
 		temp_img = icon('icons/obj/butts.dmi', "nymph")
 	else
 		return
-	var/obj/item/photo/p = new /obj/item/photo (loc)
+	var/obj/item/photo/p = create_photo(drop_location(), temp_img)
 	p.desc = "You see [sitter]'s ass on the photo."
 	p.pixel_x = rand(-10, 10)
 	p.pixel_y = rand(-10, 10)
-	p.img = temp_img
-	var/icon/small_img = icon(temp_img) // Icon() is needed or else temp_img will be rescaled too >.>
-	var/icon/ic = icon('icons/obj/items.dmi',"photo")
-	small_img.Scale(8, 8)
-	ic.Blend(small_img,ICON_OVERLAY, 10, 13)
-	p.icon = ic
-	toner -= 10 // PHOTOCOPYING YOUR ASS IS EXPENSIVE (And so you can't just spam it a bunch).
+	toner -= 5 // PHOTOCOPYING YOUR ASS IS EXPENSIVE (And so you can't just spam it a bunch).
+	// fuck you let us photocopy more asses; 10 --> 5 toner cost ~silicons
 	if(toner < 0)
 		toner = 0
 		playsound(loc, "sound/machines/buzz-sigh.ogg", 100)
@@ -377,7 +364,7 @@
 	for(var/obj/item/clothing/C in M)
 		if(M.is_holding(C))
 			continue
-		if((C.body_parts_covered & LOWER_TORSO) && !istype(C,/obj/item/clothing/under/permit))
+		if((C.body_cover_flags & LOWER_TORSO) && !istype(C,/obj/item/clothing/under/permit))
 			to_chat(user, "<span class='warning'>One needs to not be wearing pants to photocopy one's ass...</span>")
 			return FALSE
 	return ..()

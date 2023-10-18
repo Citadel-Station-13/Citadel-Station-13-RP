@@ -34,6 +34,7 @@
 /obj/item/proc/equipped(mob/user, slot, flags)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ITEM_EQUIPPED, user, slot, flags)
+	SEND_SIGNAL(user, COMSIG_MOB_ITEM_EQUIPPED, user, slot, flags)
 	worn_slot = slot
 	if(!(flags & INV_OP_IS_ACCESSORY))
 		// todo: shouldn't be in here
@@ -46,6 +47,16 @@
 		playsound(src, equip_sound, 30, ignore_walls = FALSE)
 	user.update_inv_hands()
 
+	// register carry
+	if(isliving(user))
+		var/mob/living/L = user
+		if((slot == SLOT_ID_HANDS)? (item_flags & ITEM_ENCUMBERS_WHILE_HELD) : !(item_flags & ITEM_ENCUMBERS_ONLY_HELD))
+			if(flat_encumbrance)
+				L.recalculate_carry()
+			else
+				encumbrance_registered = get_encumbrance()
+				L.adjust_current_carry_encumbrance(encumbrance_registered)
+
 /**
  * called when an item is unequipped from inventory or moved around in inventory
  *
@@ -57,6 +68,7 @@
 /obj/item/proc/unequipped(mob/user, slot, flags)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ITEM_UNEQUIPPED, user, slot, flags)
+	SEND_SIGNAL(user, COMSIG_MOB_ITEM_UNEQUIPPED, user, slot, flags)
 	worn_slot = null
 	if(!(flags & INV_OP_IS_ACCESSORY))
 		// todo: shouldn't be in here
@@ -66,6 +78,15 @@
 		user?.client?.screen -= src
 	if(!(flags & INV_OP_DIRECTLY_DROPPING) && (slot != SLOT_ID_HANDS) && unequip_sound)
 		playsound(src, unequip_sound, 30, ignore_walls = FALSE)
+
+	// clear carry
+	if(isliving(user))
+		var/mob/living/L = user
+		if(flat_encumbrance)
+			L.recalculate_carry()
+		else if(!isnull(encumbrance_registered))
+			L.adjust_current_carry_encumbrance(-encumbrance_registered)
+			encumbrance_registered = null
 
 /**
  * called when a mob drops an item
@@ -87,14 +108,26 @@
 
 	hud_unlayerise()
 	item_flags &= ~ITEM_IN_INVENTORY
+	// TODO: THIS IS SHITCODE, MOVE TO EVENT DRIVEN.
+	user.handle_actions()
 
 	. = SEND_SIGNAL(src, COMSIG_ITEM_DROPPED, user, flags, newLoc)
+	SEND_SIGNAL(user, COMSIG_MOB_ITEM_DROPPED, src, flags, newLoc)
 
 	if(!(flags & INV_OP_SUPPRESS_SOUND) && isturf(newLoc) && !(. & COMPONENT_ITEM_DROPPED_SUPPRESS_SOUND))
 		playsound(src, drop_sound, 30, ignore_walls = FALSE)
 	// user?.update_equipment_speed_mods()
 	if(zoom)
 		zoom() //binoculars, scope, etc
+
+	// clear carry
+	if(isliving(user))
+		var/mob/living/L = user
+		L.adjust_current_carry_weight(-weight_registered)
+	weight_registered = null
+
+	// close context menus
+	context_close()
 
 	return ((. & COMPONENT_ITEM_DROPPED_RELOCATE)? ITEM_RELOCATED_BY_DROPPED : NONE)
 
@@ -106,18 +139,20 @@
 /obj/item/proc/pickup(mob/user, flags, atom/oldLoc)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user, flags, oldLoc)
-	pixel_x = initial(pixel_x)
-	pixel_y = initial(pixel_y)
+	SEND_SIGNAL(user, COMSIG_MOB_ITEM_PICKUP, src, flags, oldLoc)
+	reset_pixel_offsets()
 	hud_layerise()
 	item_flags |= ITEM_IN_INVENTORY
+	// TODO: THIS IS SHITCODE, MOVE TO EVENT DRIVEN.
+	user.handle_actions()
 	if(isturf(oldLoc) && !(flags & (INV_OP_SILENT | INV_OP_DIRECTLY_EQUIPPING)))
 		playsound(src, pickup_sound, 20, ignore_walls = FALSE)
 
-/**
- * get the slowdown we incur when we're worn
- */
-/obj/item/proc/get_equipment_speed_mod()
-	return slowdown
+	// register carry
+	weight_registered = get_weight()
+	if(isliving(user))
+		var/mob/living/L = user
+		L.adjust_current_carry_weight(weight_registered)
 
 /**
  * update our worn icon if we can
@@ -204,7 +239,7 @@
  * todo: non-singular-letter proc args
  */
 /obj/item/proc/equip_check_beltlink(mob/M, slot, mob/user, flags)
-	if(clothing_flags & EQUIP_IGNORE_BELTLINK)
+	if(clothing_flags & CLOTHING_IGNORE_BELTLINK)
 		return TRUE
 
 	if(!ishuman(M))
@@ -310,10 +345,19 @@
 
 /**
  * checks if we're in inventory. if so, returns mob we're in
+ *
  * **hands count**
  */
 /obj/item/proc/is_in_inventory(include_hands)
 	return (worn_slot && ((worn_slot != SLOT_ID_HANDS) || include_hands)) && worn_mob()
+
+/**
+ * checks if we're held in hand
+ *
+ * if so, returns mob we're in
+ */
+/obj/item/proc/is_held()
+	return (worn_slot == SLOT_ID_HANDS)? worn_mob() : null
 
 /**
  * checks if we're worn. if so, return mob we're in
@@ -355,7 +399,7 @@
 		CRASH("no worn mob")
 	if(!M.strip_interaction_prechecks(user))
 		return
-	if(!do_after(user, delay, M, FALSE))
+	if(!do_after(user, delay, M, DO_AFTER_IGNORE_ACTIVE_ITEM))
 		return
 	if(slot != worn_slot || M != worn_mob())
 		return

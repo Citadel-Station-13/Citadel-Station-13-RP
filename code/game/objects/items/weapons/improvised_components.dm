@@ -52,7 +52,7 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "wiredrod"
 	item_state = "rods"
-	force = 8
+	damage_force = 8
 	throw_force = 10
 	w_class = ITEMSIZE_NORMAL
 	attack_verb = list("hit", "bludgeoned", "whacked", "bonked")

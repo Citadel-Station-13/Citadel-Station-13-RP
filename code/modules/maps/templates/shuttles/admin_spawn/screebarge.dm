@@ -22,7 +22,7 @@
 /obj/machinery/computer/shuttle_control/explore/screebarge
 	name = "short jump console"
 	shuttle_tag = "XN-29 Prototype Shuttle"
-	req_one_access = list(access_pilot)
+	req_one_access = list(ACCESS_GENERAL_PILOT)
 
 // A shuttle lateloader landmark
 /obj/effect/shuttle_landmark/shuttle_initializer/screebarge
@@ -42,7 +42,7 @@
 	defer_initialisation = TRUE //We're not loaded until an admin does it
 
 // The 'ship'
-/obj/effect/overmap/visitable/ship/landable/screebarge
+/obj/overmap/entity/visitable/ship/landable/screebarge
 	name = "Battle Barge"
 	desc = "Some sort of makeshift battle barge. Appears to be armed."
 	color = "#95c633" //Greenish

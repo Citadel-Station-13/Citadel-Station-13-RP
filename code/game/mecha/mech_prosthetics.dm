@@ -8,7 +8,7 @@
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 20
 	active_power_usage = 5000
-	req_access = list(access_robotics)
+	req_access = list(ACCESS_SCIENCE_ROBOTICS)
 	circuit = /obj/item/circuitboard/prosthetics
 
 	//Prosfab specific stuff
@@ -35,8 +35,8 @@
 		MAT_MORPHIUM = 0)
 	res_max_amount = 200000
 
-	valid_buildtype = PROSFAB
-	///A list of categories that valid PROSFAB design datums will broadly categorise themselves under.
+	valid_buildtype = LATHE_TYPE_PROSTHETICS
+	///A list of categories that valid LATHE_TYPE_PROSTHETICS design datums will broadly categorise themselves under.
 	part_sets = list(
 					"Cyborg",
 					"Ripley",
@@ -47,6 +47,9 @@
 					"Vehicle",
 					"Rigsuit",
 					"Phazon",
+					"Pinnace",
+					"Baron",
+					"Duke",
 					"Gopher",
 					"Polecat",
 					"Weasel",
@@ -72,9 +75,9 @@
 
 /obj/machinery/mecha_part_fabricator/pros/dispense_built_part(datum/design/D)
 	var/obj/item/I = ..()
-	if(isobj(I) && I.matter && I.matter.len > 0)
-		for(var/i in I.matter)
-			I.matter[i] = I.matter[i] * component_coeff
+	if(isobj(I) && I.materials && I.materials.len > 0)
+		for(var/i in I.materials)
+			I.materials[i] = I.materials[i] * component_coeff
 
 /obj/machinery/mecha_part_fabricator/pros/ui_data(mob/user)
 	var/list/data = ..()
@@ -97,7 +100,7 @@
 
 	return data
 
-/obj/machinery/mecha_part_fabricator/pros/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/mecha_part_fabricator/pros/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -108,7 +111,7 @@
 	switch(action)
 		if("species")
 			var/new_species = input(usr, "Select a new species", "Prosfab Species Selection", SPECIES_HUMAN) as null|anything in species_types
-			if(new_species && ui_status(usr, state) == UI_INTERACTIVE)
+			if(new_species && ui_status(usr, ui.state) == UI_INTERACTIVE)
 				species = new_species
 			return
 		if("manufacturer")
@@ -122,7 +125,7 @@
 				new_manufacturers += A
 
 			var/new_manufacturer = input(usr, "Select a new manufacturer", "Prosfab Species Selection", "Unbranded") as null|anything in new_manufacturers
-			if(new_manufacturer && ui_status(usr, state) == UI_INTERACTIVE)
+			if(new_manufacturer && ui_status(usr, ui.state) == UI_INTERACTIVE)
 				manufacturer = new_manufacturer
 			return
 	return FALSE

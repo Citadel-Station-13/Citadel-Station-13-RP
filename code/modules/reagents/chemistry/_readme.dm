@@ -39,7 +39,7 @@ About the Holder:
 
 	Procs:
 
-		get_free_space()
+		available_volume()
 			Returns the remaining free volume in the holder.
 
 		get_master_reagent()
@@ -118,7 +118,7 @@ About the Holder:
 			Checks mob's clothing if [clothes] is 1 and transfers [amount] reagents to mob's skin.
 			Don't call this directly. Call apply_to() instead.
 
-		trans_to_mob(mob/target, amount = 1, type = CHEM_BLOOD, multiplier = 1, copy = 0)
+		trans_to_mob(mob/target, amount = 1, type = CHEM_INJECT, multiplier = 1, copy = 0)
 			Transfers [amount] reagents to the mob's appropriate holder, depending on [type]. Ignores protection.
 
 		trans_to_turf(turf/target, amount = 1, multiplier = 1, copy = 0)

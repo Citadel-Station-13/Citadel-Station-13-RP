@@ -32,7 +32,7 @@
 	circuit = /obj/item/circuitboard/clonepod
 	icon = 'icons/obj/cloning.dmi'
 	icon_state = "pod_0"
-	req_access = list(access_genetics) // For premature unlocking.
+	req_access = list(ACCESS_SCIENCE_GENETICS) // For premature unlocking.
 	var/mob/living/occupant
 	/// The clone is released once its health reaches this level.
 	var/heal_level = 20
@@ -51,9 +51,8 @@
 	/// How many beakers can the machine hold?
 	var/container_limit = 3
 
-/obj/machinery/clonepod/Initialize(mapload, newdir)
+/obj/machinery/clonepod/Initialize(mapload)
 	. = ..()
-	default_apply_parts()
 	update_icon()
 
 /obj/machinery/clonepod/attack_ai(mob/user)
@@ -61,7 +60,7 @@
 	add_hiddenprint(user)
 	return attack_hand(user)
 
-/obj/machinery/clonepod/attack_hand(mob/user)
+/obj/machinery/clonepod/attack_hand(mob/user, list/params)
 	if((isnull(occupant)) || (machine_stat & NOPOWER))
 		return
 	if((!isnull(occupant)) && (occupant.stat != 2))
@@ -115,12 +114,12 @@
 
 	// Get the clone body ready
 	H.adjustCloneLoss(150) // New damage var so you can't eject a clone early then stab them to abuse the current damage system --NeoFite
-	H.Unconscious(4)
+	H.afflict_unconscious(20 * 4)
 
 	// Here let's calculate their health so the pod doesn't immediately eject them!!!
-	H.updatehealth()
+	H.update_health()
 
-	clonemind.transfer_to(H)
+	clonemind.transfer(H)
 	H.ckey = R.ckey
 	to_chat(H, SPAN_BOLDDANGER("Consciousness slowly creeps over you as your body regenerates.<br>") + SPAN_USERDANGER("Your recent memories are fuzzy, and it's hard to remember anything from today...<br>") + SPAN_NOTICE(SPAN_ROSE("So this is what cloning feels like?")))
 
@@ -187,7 +186,7 @@
 			return
 
 		else if(occupant.health < heal_level && occupant.getCloneLoss() > 0)
-			occupant.Unconscious(4)
+			occupant.afflict_unconscious(20 * 4)
 
 			 //Slowly get that clone healed and finished.
 			occupant.adjustCloneLoss(-2 * heal_rate)
@@ -198,7 +197,7 @@
 			//So clones don't die of oxyloss in a running pod.
 			if(occupant.reagents.get_reagent_amount("inaprovaline") < 30)
 				occupant.reagents.add_reagent("inaprovaline", 60)
-			occupant.Sleeping(30)
+			occupant.afflict_sleeping(20 * 30)
 			//Also heal some oxyloss ourselves because inaprovaline is so bad at preventing it!!
 			occupant.adjustOxyLoss(-4)
 
@@ -526,11 +525,14 @@
 	var/diskcolor = pick(0,1,2)
 	icon_state = "datadisk[diskcolor]"
 
-/obj/item/disk/data/attack_self(mob/user as mob)
+/obj/item/disk/data/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	read_only = !read_only
 	to_chat(user, "You flip the write-protect tab to [read_only ? "protected" : "unprotected"].")
 
-/obj/item/disk/data/examine(mob/user)
+/obj/item/disk/data/examine(mob/user, dist)
 	. = ..()
 	. += "<span class = 'notice'>The write-protect tab is set to [read_only ? "protected" : "unprotected"].</span>"
 

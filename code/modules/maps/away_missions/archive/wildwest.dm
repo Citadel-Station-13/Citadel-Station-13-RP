@@ -20,7 +20,7 @@
 	var/chargesa = 1
 	var/insistinga = 0
 
-/obj/machinery/wish_granter_dark/attack_hand(var/mob/living/carbon/human/user as mob)
+/obj/machinery/wish_granter_dark/attack_hand(mob/user, list/params)
 	usr.set_machine(src)
 
 	if(chargesa <= 0)
@@ -161,9 +161,9 @@
 		C.setToxLoss(0)
 		C.setOxyLoss(0)
 		C.setCloneLoss(0)
-		C.SetUnconscious(0)
-		C.SetStunned(0)
-		C.SetWeakened(0)
+		C.set_unconscious(0)
+		C.set_stunned(0)
+		C.set_paralyzed(0)
 		C.radiation = 0
 		C.heal_overall_damage(C.getBruteLoss(), C.getFireLoss())
 		C.reagents.clear_reagents()

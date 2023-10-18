@@ -12,11 +12,6 @@
 	sort_order = 4
 	category_item_type = /datum/category_item/player_setup_item/antagonism
 
-/datum/category_group/player_setup_category/loadout_preferences
-	name = "Loadout"
-	sort_order = 5
-	category_item_type = /datum/category_item/player_setup_item/loadout
-
 /datum/category_group/player_setup_category/global_preferences
 	name = "Global"
 	sort_order = 6
@@ -34,7 +29,7 @@
 	src.preferences = preferences
 	..()
 	selected_category = categories[1]
-	tim_sort(preferences.preference_by_key, /proc/cmp_preference_load_order, TRUE)
+	tim_sort(preferences.preference_by_key, GLOBAL_PROC_REF(cmp_preference_load_order), TRUE)
 
 /datum/category_collection/player_setup_collection/Destroy()
 	preferences = null
@@ -82,9 +77,11 @@
 		return 1
 
 	if(href_list["category"])
-		var/category = locate(href_list["category"])
+		var/datum/category_group/player_setup_category/category = locate(href_list["category"])
 		if(category && (category in categories))
-			selected_category = category
+			if(category.override_tab_to(user))
+			else
+				selected_category = category
 		. = 1
 
 	if(.)
@@ -242,7 +239,7 @@
 	. |= act(pref, usr, resolved, href_list)
 
 	if(. & PREFERENCES_UPDATE_PREVIEW)
-		pref_mob.client.prefs.update_preview_icon()
+		pref_mob.client.prefs.update_character_previews()
 	if(. & PREFERENCES_REFRESH)
 		pref_mob.client.prefs.ShowChoices(usr)
 

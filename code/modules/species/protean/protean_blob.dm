@@ -34,6 +34,9 @@
 	max_co2 = 0
 	min_n2 = 0
 	max_n2 = 0
+	// THIS IS INTENDED.
+	// "But why?"
+	// So proteans don't **die** from temperature, rather than being forced into blobform.
 	minbodytemp = 0
 	maxbodytemp = INFINITY
 	heat_resist = 1
@@ -48,8 +51,8 @@
 	var/obj/item/organ/internal/nano/refactory/refactory
 	var/datum/modifier/healing
 
-	var/obj/prev_left_hand
-	var/obj/prev_right_hand
+	var/datum/weakref/prev_left_hand
+	var/datum/weakref/prev_right_hand
 
 	player_msg = "In this form, you can move a little faster and your health will regenerate as long as you have metal in you!"
 	holder_type = /obj/item/holder/protoblob
@@ -62,17 +65,16 @@
 //Constructor allows passing the human to sync damages
 /mob/living/simple_mob/protean_blob/Initialize(mapload, mob/living/carbon/human/H)
 	. = ..()
-	mob_radio = new(src)
 	access_card = new(src)
 	if(H)
 		humanform = H
 		refactory = locate() in humanform.internal_organs
 		add_verb(src, /mob/living/proc/hide)
-		add_verb(src, /mob/living/simple_mob/protean_blob/proc/useradio)
 		add_verb(src, /mob/living/simple_mob/protean_blob/proc/appearanceswitch)
 		add_verb(src, /mob/living/simple_mob/protean_blob/proc/rig_transform)
+		add_verb(src, /mob/living/simple_mob/protean_blob/proc/leap_attack)
 		add_verb(src, /mob/living/proc/usehardsuit)
-		INVOKE_ASYNC(src, /mob/living/proc/updatehealth)
+		INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, update_health))
 	else
 		update_icon()
 
@@ -93,7 +95,7 @@
 	if(humanform && C.statpanel_tab("Species", TRUE))
 		. += humanform.species.statpanel_status(C, humanform)
 
-/mob/living/simple_mob/protean_blob/updatehealth()
+/mob/living/simple_mob/protean_blob/update_health()
 	if(humanform)
 		//Set the max
 		maxHealth = humanform.getMaxHealth() + 100 // +100 for crit threshold so you don't die from trying to blob to heal, ironically
@@ -152,41 +154,35 @@
 
 // citadel hack - FUCK YOU DIE CORRECTLY THIS ENTIRE FETISH RACE IS A SORRY MISTAKE
 /mob/living/simple_mob/protean_blob/death(gibbed, deathmessage = "dissolves away, leaving only a few spare parts!")
-	if(humanform)
-		// ckey transfer you dumb fuck
+	if(!QDELETED(humanform))
+		humanform.forceMove(loc)
 		humanform.ckey = ckey
-		humanform.forceMove(drop_location())
-		humanform.death(gibbed = gibbed)
-		for(var/organ in humanform.internal_organs)
-			var/obj/item/organ/internal/O = organ
-			O.removed()
-			if(!QDELETED(O))		// MMI_HOLDERS ARE ABSTRACT and qdel themselves :)
-				O.forceMove(drop_location())
-		var/list/items = humanform.get_equipped_items()
-		if(prev_left_hand)
-			items += prev_left_hand
-		if(prev_right_hand)
-			items += prev_right_hand
-		for(var/obj/object in items)
-			object.forceMove(drop_location())
-		QDEL_NULL(humanform) //Don't leave it just sitting in nullspace
-
-	animate(src, alpha = 0, time = 2 SECONDS)
-	QDEL_IN(src, 2 SECONDS)
-
-	return ..()
+		humanform.gib()
+	humanform = null
+	. = ..()
+	ASYNC
+		if(!QDELETED(src))
+			qdel(src)
 
 /mob/living/simple_mob/protean_blob/BiologicalLife()
 	if((. = ..()))
+		return
+	if(isnull(humanform))
 		return
 	if(istype(refactory) && humanform)
 		if(!humanform.has_modifier_of_type(/datum/modifier/protean/steelBlob) && health < maxHealth && refactory.get_stored_material(MAT_STEEL) >= 100 && refactory.processingbuffs)
 			healing = humanform.add_modifier(/datum/modifier/protean/steelBlob, origin = refactory)
 		else if(humanform.has_modifier_of_type(/datum/modifier/protean/steelBlob) && health >= maxHealth)
 			humanform.remove_a_modifier_of_type(/datum/modifier/protean/steelBlob)
+	humanform.normalize_bodytemperature(40, 0.5)
+
+/mob/living/simple_mob/protean_blob/update_mobility(blocked, forced)
+	if(resting)
+		blocked |= MOBILITY_FLAGS_REAL
+	return ..()
 
 /mob/living/simple_mob/protean_blob/lay_down()
-	..()
+	toggle_resting()
 	if(resting)
 		to_chat(src, "<span class='warning'>You blend into the floor beneath you. <b>You will not be able to heal while doing so.</b></span>")
 		animate(src,alpha = 40,time = 1 SECOND)
@@ -234,13 +230,14 @@
 			to_chat(src, "<span class='warning'>You can't eat this.</span>")
 			return
 
-		if(is_type_in_list(I,edible_trash) | adminbus_trash)
+		if(is_type_in_list(I, edible_trash) || adminbus_trash)
 			if(I.hidden_uplink)
 				to_chat(src, "<span class='warning'>You really should not be eating this.</span>")
 				message_admins("[key_name(src)] has attempted to ingest an uplink item. ([src ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>" : "null"])")
 				return
-		visible_message("<b>[name]</b> stretches itself over the [I], engulfing it whole!")
-		I.forceMove(vore_selected)
+			visible_message("<b>[name]</b> stretches itself over the [I], engulfing it whole!")
+			I.forceMove(vore_selected)
+			return
 	else
 		return ..()
 
@@ -260,7 +257,10 @@
 	else
 		return ..()
 
-/mob/living/simple_mob/protean_blob/attack_hand(mob/living/L)
+/mob/living/simple_mob/protean_blob/attack_hand(mob/user, list/params)
+	var/mob/living/L = user
+	if(!istype(L))
+		return
 	if(L.get_effective_size() >= (src.get_effective_size() + 0.5) )
 		src.get_scooped(L)
 	else
@@ -286,8 +286,11 @@
 
 // Helpers - Unsafe, WILL perform change.
 /mob/living/carbon/human/proc/nano_intoblob()
-	if(loc == /obj/item/rig/protean)
+	if(loc == /obj/item/hardsuit/protean)
 		return
+	if(transforming)
+		return
+	transforming = TRUE
 	handle_grasp() //It's possible to blob out before some key parts of the life loop. This results in things getting dropped at null. TODO: Fix the code so this can be done better.
 	remove_micros(src, src) //Living things don't fare well in roblobs.
 
@@ -304,58 +307,24 @@
 	//Create our new blob
 	var/mob/living/simple_mob/protean_blob/blob = new(creation_spot,src)
 
-	//Drop all our things
-	var/list/things_to_drop = contents.Copy()
-	var/list/things_to_not_drop = list(w_uniform,nif,l_store,r_store,wear_id,l_ear,r_ear,gloves,glasses,shoes) //And whatever else we decide for balancing.
-	//you can instaflash or pepperspray on unblob with pockets anyways
-	if(l_hand && l_hand.w_class <= ITEMSIZE_SMALL) //Hands but only if small or smaller
-		things_to_not_drop += l_hand
-	if(r_hand && r_hand.w_class <= ITEMSIZE_SMALL)
-		things_to_not_drop += r_hand
-	things_to_drop -= things_to_not_drop //Crunch the lists
-	things_to_drop -= organs //Mah armbs
-	things_to_drop -= internal_organs //Mah sqeedily spooch
-
-	for(var/obj/item/rig/protean/O in things_to_drop)
-		things_to_drop -= O
-
-	for(var/obj/item/I in things_to_drop) //rip hoarders
-		drop_item_to_ground(I)
-
-	if(wearing_rig)
-		for(var/obj/item/I in list(wearing_rig.helmet, wearing_rig.chest, wearing_rig.gloves, wearing_rig.boots))
-			transfer_item_to_loc(I, wearing_rig, INV_OP_FORCE)
-
-	for(var/obj/item/radio/headset/HS in things_to_not_drop)
-		if(HS.keyslot1)
-			blob.mob_radio.keyslot1 = new HS.keyslot1.type(blob.mob_radio)
-		if(HS.keyslot2)
-			blob.mob_radio.keyslot2 = new HS.keyslot2.type(blob.mob_radio)
-		if(HS.adhoc_fallback)
-			blob.mob_radio.adhoc_fallback = TRUE
-		blob.mob_radio.recalculateChannels()
-
-	for(var/obj/item/pda/P in things_to_not_drop)
-		if(P.id)
-			var/obj/item/card/id/PID = P.id
-			blob.access_card.access += PID.access
-
-	for(var/obj/item/card/id/I in things_to_not_drop)
-		blob.access_card.access += I.access
-
-	if(w_uniform && istype(w_uniform,/obj/item/clothing)) //No webbings tho. We do this after in case a suit was in the way
-		var/obj/item/clothing/uniform = w_uniform
-		if(LAZYLEN(uniform.accessories))
-			for(var/obj/item/clothing/accessory/A in uniform.accessories)
-				if(istype(A, /obj/item/clothing/accessory/holster) || istype(A, /obj/item/clothing/accessory/storage)) //only drop webbings/holsters so you don't drop your PAN or vanity/fluff accessories(the life notifier necklace, etc).
-					uniform.remove_accessory(null,A) //First param is user, but adds fingerprints and messages
+	if(isnull(blob.mob_radio) && istype(l_ear, /obj/item/radio))
+		blob.mob_radio = l_ear
+		if(!transfer_item_to_loc(l_ear, blob, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT))
+			blob.mob_radio = null
+	if(isnull(blob.mob_radio) && istype(r_ear, /obj/item/radio))
+		blob.mob_radio = r_ear
+		if(!transfer_item_to_loc(r_ear, blob, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT))
+			blob.mob_radio = null
 
 	//Size update
 	blob.transform = matrix()*size_multiplier
 	blob.size_multiplier = size_multiplier
 
-	if(l_hand) blob.prev_left_hand = l_hand //Won't save them if dropped above, but necessary if handdrop is disabled.
-	if(r_hand) blob.prev_right_hand = r_hand
+	if(l_hand)
+		blob.prev_left_hand = WEAKREF(l_hand) //Won't save them if dropped above, but necessary if handdrop is disabled.
+	if(r_hand)
+		blob.prev_right_hand = WEAKREF(r_hand)
+
 	//languages!!
 	for(var/datum/language/L in languages)
 		blob.add_language(L.name)
@@ -364,7 +333,7 @@
 	temporary_form = blob
 
 	//Mail them to nullspace
-	moveToNullspace()
+	forceMove(blob)
 
 	if(blob.client && panel_selected)
 		blob.client.statpanel = SPECIES_PROTEAN
@@ -391,11 +360,12 @@
 		blob.devourable = P.devourable
 		blob.feeding = P.feeding
 		blob.digest_leave_remains = P.digest_leave_remains
-		blob.allowmobvore = P.allowmobvore
 		blob.vore_taste = P.vore_taste
 		blob.permit_healbelly = P.permit_healbelly
 		blob.can_be_drop_prey = P.can_be_drop_prey
 		blob.can_be_drop_pred = P.can_be_drop_pred
+
+	transforming = FALSE
 
 	//Return our blob in case someone wants it
 	return blob
@@ -407,28 +377,42 @@
 		if(istype(I, /obj/item/holder))
 			I.forceMove(root.drop_location())
 
-/mob/living/simple_mob/protean_blob/proc/useradio()
-	set name = "Utilize Radio"
-	set desc = "Allows a protean blob to interact with its internal radio."
-	set category = "Abilities"
+/mob/living/simple_mob/protean_blob/strip_menu_act(mob/user, action)
+	return humanform.strip_menu_act(arglist(args))
 
-	if(mob_radio)
-		mob_radio.nano_ui_interact(src, state = interactive_state)
+/mob/living/simple_mob/protean_blob/strip_menu_options(mob/user)
+	return humanform.strip_menu_options(arglist(args))
+
+/mob/living/simple_mob/protean_blob/strip_interaction_prechecks(mob/user, autoclose, allow_loc)
+	allow_loc = TRUE
+	return humanform.strip_interaction_prechecks(arglist(args))
+
+/mob/living/simple_mob/protean_blob/open_strip_menu(mob/user)
+	return humanform.open_strip_menu(arglist(args))
+
+/mob/living/simple_mob/protean_blob/close_strip_menu(mob/user)
+	return humanform.close_strip_menu(arglist(args))
+
+/mob/living/simple_mob/protean_blob/request_strip_menu(mob/user)
+	return humanform.request_strip_menu(arglist(args))
+
+/mob/living/simple_mob/protean_blob/render_strip_menu(mob/user)
+	return humanform.render_strip_menu(arglist(args))
 
 /mob/living/simple_mob/protean_blob/proc/rig_transform()
 	set name = "Modify Form - Hardsuit"
 	set desc = "Allows a protean blob to solidify its form into one extremely similar to a hardsuit."
 	set category = "Abilities"
 
-	if(istype(loc, /obj/item/rig/protean))
-		var/obj/item/rig/protean/prig = loc
+	if(istype(loc, /obj/item/hardsuit/protean))
+		var/obj/item/hardsuit/protean/prig = loc
 		src.forceMove(get_turf(prig))
 		prig.forceMove(humanform)
 		return
 
 	if(isturf(loc))
-		var/obj/item/rig/protean/prig
-		for(var/obj/item/rig/protean/O in humanform.contents)
+		var/obj/item/hardsuit/protean/prig
+		for(var/obj/item/hardsuit/protean/O in humanform.contents)
 			prig = O
 			break
 		if(prig)
@@ -441,18 +425,21 @@
 	set desc = "Allows a protean blob to open hardsuit interface."
 	set category = "Abilities"
 
-	if(istype(loc, /obj/item/rig/protean))
-		var/obj/item/rig/protean/prig = loc
+	if(istype(loc, /obj/item/hardsuit/protean))
+		var/obj/item/hardsuit/protean/prig = loc
 		to_chat(src, "You attempt to interface with the [prig].")
 		prig.nano_ui_interact(src, nano_state = interactive_state)
 	else
-		to_chat(src, "You are not in RIG form.")
+		to_chat(src, "You are not in hardsuit form.")
 
 /mob/living/carbon/human/proc/nano_outofblob(var/mob/living/simple_mob/protean_blob/blob)
 	if(!istype(blob))
 		return
-	if(blob.loc == /obj/item/rig/protean)
+	if(istype(blob.loc, /obj/item/hardsuit/protean))
 		return
+	if(transforming)
+		return
+	transforming = TRUE
 
 	buckled?.unbuckle_mob(src, BUCKLE_OP_FORCE)
 	unbuckle_all_mobs(BUCKLE_OP_FORCE)
@@ -497,8 +484,18 @@
 		B.forceMove(src)
 		B.owner = src
 
-	if(blob.prev_left_hand) put_in_left_hand(blob.prev_left_hand) //The restore for when reforming.
-	if(blob.prev_right_hand) put_in_right_hand(blob.prev_right_hand)
+	if(blob.prev_left_hand)
+		put_in_left_hand(blob.prev_left_hand.resolve()) //The restore for when reforming.
+	if(blob.prev_right_hand)
+		put_in_right_hand(blob.prev_right_hand.resolve())
+
+	if(!isnull(blob.mob_radio))
+		if(!equip_to_slots_if_possible(blob.mob_radio, list(
+			/datum/inventory_slot_meta/inventory/ears/left,
+			/datum/inventory_slot_meta/inventory/ears/right,
+		)))
+			blob.mob_radio.forceMove(reform_spot)
+		blob.mob_radio = null
 
 	Life(1, SSmobs.times_fired)
 
@@ -506,6 +503,7 @@
 	qdel(blob)
 
 	//Return ourselves in case someone wants it
+	transforming = FALSE
 	return src
 
 /mob/living/simple_mob/protean_blob/say_understands()
@@ -528,9 +526,68 @@
 			icon_living = "puddle0"
 			update_icon()
 
-/mob/living/simple_mob/protean_blob/Login()
-	..()
-	plane_holder.set_vis(VIS_AUGMENTED, TRUE)
+/mob/living/simple_mob/protean_blob/proc/leap_attack()
+	set name = "Pounce"
+	set desc = "Allows a protean blob to launch itself at people."
+	set category = "Abilities"
+
+	var/mob/living/carbon/human/target
+	var/targeted_area
+	var/target_displayname
+
+	if(src.incapacitated())
+		to_chat(src,"<span class='warning'>You can't do this in your current state.</span>")
+		return
+
+	var/list/choices = list()
+	for(var/mob/living/carbon/human/M in oviewers(1))
+		choices += M
+
+	if(!choices.len)
+		to_chat(src,"<span class='warning'>There's nobody nearby to use this on.</span>")
+		return
+
+	target = input(src,"Who do you wish to target?","Pounce Target") as null|anything in choices
+	if(!istype(target))
+		return FALSE
+
+	if(get_dist(src,target) > 1)
+		to_chat(src,"<span class='warning'>There's nobody nearby to use this on.</span>")
+		return
+
+	visible_message("<span class='warning'>[src] coils itself up like a spring, preparing to leap at [target]!</span>")
+	if(do_after(src, 7.5 SECONDS, target)) //7.5 seconds.
+		if(buckled || pinned.len)
+			return
+
+		var/obj/item/holder/H = new holder_type(get_turf(src))
+		H.held_mob = src
+		src.forceMove(H)
+
+		switch(src.zone_sel.selecting)
+			if(BP_GROIN)
+				targeted_area = SLOT_ID_UNIFORM //fetish_code.rtf
+				target_displayname = "body"
+			if(BP_TORSO)
+				targeted_area = SLOT_ID_SUIT
+				target_displayname = "body"
+			if(BP_HEAD)
+				targeted_area = SLOT_ID_HEAD
+				target_displayname = "head"
+			if(O_MOUTH)
+				targeted_area = SLOT_ID_MASK
+				target_displayname = "face"
+
+		if(target.equip_to_slot_if_possible(H, targeted_area, INV_OP_IGNORE_DELAY | INV_OP_SILENT))
+			visible_message("<span class='danger'>[src] leaps at [target]'s [target_displayname]!</span>")
+		else
+			visible_message("<span class='notice'>[src] leaps at [target]'s [target_displayname] and bounces off harmlessly!</span>")
+		H.sync(src)
+		return
+
+/mob/living/simple_mob/protean_blob/make_perspective()
+	. = ..()
+	self_perspective.set_plane_visible(/atom/movable/screen/plane_master/augmented, INNATE_TRAIT)
 
 /datum/modifier/protean/steelBlob // Blob regen is stronger than non-blob to have some incentive other than erp
 	name = "Protean Blob Effect - Steel"
@@ -543,7 +600,8 @@
 
 /datum/modifier/protean/steelBlob/tick()
 	..()
-	if(holder.temporary_form?.resting)
+	var/mob/living/living_form = holder.temporary_form
+	if(istype(living_form) && living_form.resting)
 		return
 	var/dt = 2	// put it on param sometime but for now assume 2
 	var/mob/living/carbon/human/H = holder

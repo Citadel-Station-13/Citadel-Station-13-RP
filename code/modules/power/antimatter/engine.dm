@@ -108,7 +108,7 @@
 			antiH_fuel = residual_matter
 
 	for(var/mob/M in hearers(src, null))
-		M.show_message(text("<font color='red'>You hear a loud bang!</font>"))
+		M.show_message(SPAN_RED("You hear a loud bang!"))
 
 	//Q = k x (delta T)
 
@@ -160,7 +160,7 @@
 
 		if(energy > convert2energy(8e-12))	//TOO MUCH ENERGY
 			for(var/mob/M in hearers(src, null))
-				M.show_message(text("<font color='red'>You hear a loud whirring!</font>"))
+				M.show_message(SPAN_DANGER("You hear a loud whirring!"))
 			sleep(20)
 
 			//Q = k x (delta T)
@@ -179,7 +179,7 @@
 
 			if(energy > convert2energy(8e-12))	//FAR TOO MUCH ENERGY STILL
 				for(var/mob/M in hearers(src, null))
-					M.show_message(text("<font color='red'><big>BANG!</big></font>"))
+					M.show_message(SPAN_BOLDDANGER("BANG!"))
 				new /obj/effect/bhole(src.loc)
 
 		else	//this amount of energy is okay so it does the proper output thing

@@ -1,12 +1,7 @@
 /obj/structure/closet/secure_closet/scientist
 	name = "scientist's locker"
-	icon_state = "secureres1"
-	icon_closed = "secureres"
-	icon_locked = "secureres1"
-	icon_opened = "secureresopen"
-	icon_broken = "secureresbroken"
-	icon_off = "secureresoff"
-	req_access = list(access_tox_storage)
+	closet_appearance = /singleton/closet_appearance/secure_closet/scientst
+	req_access = list(ACCESS_SCIENCE_TOXINS)
 
 	starts_with = list(
 		/obj/item/clothing/under/rank/scientist,
@@ -29,13 +24,8 @@
 
 /obj/structure/closet/secure_closet/RD
 	name = "research director's locker"
-	icon_state = "rdsecure1"
-	icon_closed = "rdsecure"
-	icon_locked = "rdsecure1"
-	icon_opened = "rdsecureopen"
-	icon_broken = "rdsecurebroken"
-	icon_off = "rdsecureoff"
-	req_access = list(access_rd)
+	closet_appearance = /singleton/closet_appearance/secure_closet/rd
+	req_access = list(ACCESS_SCIENCE_RD)
 
 	starts_with = list(
 		/obj/item/clothing/suit/bio_suit/scientist,

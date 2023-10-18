@@ -179,3 +179,8 @@ var/global/datum/ntnet/ntnet_global = new()
 		if(A.login == login)
 			return 1
 	return 0
+
+/datum/ntnet/proc/get_chat_channel_by_id(id)
+	for(var/datum/ntnet_conversation/chan in chat_channels)
+		if(chan.id == id)
+			return chan

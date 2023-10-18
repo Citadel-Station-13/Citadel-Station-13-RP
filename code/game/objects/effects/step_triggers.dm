@@ -54,7 +54,8 @@
 	if(ismob(AM))
 		var/mob/M = AM
 		if(immobilize)
-			M.canmove = 0
+			ADD_TRAIT(M, TRAIT_MOBILITY_MOVE_BLOCKED, "__THROWER__")
+			M.update_mobility_blocked()
 
 	affecting.Add(AM)
 	while(AM && !stopthrow)
@@ -90,8 +91,9 @@
 
 	if(ismob(AM))
 		var/mob/M = AM
+		REMOVE_TRAIT(M, TRAIT_MOBILITY_MOVE_BLOCKED, "__THROWER__")
 		if(immobilize)
-			M.canmove = 1
+			M.update_mobility_blocked()
 
 /* Stops things thrown by a thrower, doesn't do anything */
 
@@ -103,6 +105,19 @@
 	var/teleport_x = 0	// teleportation coordinates (if one is null, then no teleport!)
 	var/teleport_y = 0
 	var/teleport_z = 0
+	/// map path / id to resolve on init for z
+	var/map_level_target
+
+/obj/effect/step_trigger/teleporter/Initialize(mapload)
+	. = ..()
+	if(!isnull(map_level_target))
+		if(ispath(map_level_target))
+			var/datum/map_level/level_path = map_level_target
+			map_level_target = initial(level_path.id)
+		if(isnull(SSmapping.keyed_levels[map_level_target]))
+			CRASH("failed to resolve [map_level_target] ([initial(map_level_target)])")
+		var/datum/map_level/level = SSmapping.keyed_levels[map_level_target]
+		teleport_z = level.z_index
 
 /obj/effect/step_trigger/teleporter/Trigger(atom/movable/AM)
 	if(teleport_x && teleport_y && teleport_z)
@@ -202,11 +217,12 @@ var/global/list/tele_landmarks = list() // Terrible, but the alternative is loop
 /* Teleporter which simulates falling out of the sky. */
 
 /obj/effect/step_trigger/teleporter/planetary_fall
+	var/planet_path
 	var/datum/planet/planet = null
 
 // First time setup, which planet are we aiming for?
 /obj/effect/step_trigger/teleporter/planetary_fall/proc/find_planet()
-	return
+	planet = locate(planet_path) in SSplanets.planets
 
 /obj/effect/step_trigger/teleporter/planetary_fall/Trigger(var/atom/movable/A)
 	if(!planet)
