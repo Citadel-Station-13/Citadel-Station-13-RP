@@ -77,6 +77,7 @@ Key procs
   */
 /datum/movespeed_modifier/proc/apply_multiplicative(existing, mob/target)
 	// todo: we should max/min to ticklag rather than 0, but, we can't until everything is moved to modifiers.
+	// todo: this is all shitty god we need to get rid of movement_delay() proper aaaa
 	switch(calculation_type)
 	/*
 		if(MOVESPEED_CALCULATION_HYPERBOLIC)
@@ -91,7 +92,9 @@ Key procs
 	*/
 		if(MOVESPEED_CALCULATION_HYPERBOLIC)
 			// going below 0 would fuck multipliers up pretty badly
-			return max(0, existing + multiplicative_slowdown)
+			// return max(0, existing + multiplicative_slowdown)
+			//! WE DO IT ANYWAYS - LEGACY
+			return existing + multiplicative_slowdown
 		if(MOVESPEED_CALCULATION_HYPERBOLIC_BOOST)
 			var/current_tiles = 10 / max(existing, world.tick_lag)
 			var/max_buff_to = max(existing + multiplicative_slowdown, 10 / absolute_max_tiles_per_second, 10 / (current_tiles + max_tiles_per_second_boost))
