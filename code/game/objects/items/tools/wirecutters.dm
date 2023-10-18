@@ -68,7 +68,7 @@
 
 /obj/item/tool/wirecutters/clockwork
 	name = "clockwork wirecutters"
-	desc = "An antiquated pair of wirecutters, fashioned out of extremely dense brass. <span class = 'nezbere'> As sharp as the day they left the forge.</span>"
+	desc = "An antiquated pair of wirecutters, fashioned out of extremely dense brass. <span class = 'nezbere'>As sharp as the day they left the forge.</span>"
 	icon = 'icons/obj/clockwork.dmi'
 	icon_state = "cutters_clock"
 	tool_speed = 0.1

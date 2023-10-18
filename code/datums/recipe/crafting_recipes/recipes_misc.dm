@@ -310,9 +310,10 @@
 				/obj/item/reagent_containers/glass/beaker)
 	result = /obj/item/weldingtool/experimental/brass
 	reqs = list(/obj/item/weldingtool/experimental = 1,
-				/obj/item/stack/cable_coil = 20,
-				/obj/item/stack/material/brass = 5,
-				/datum/reagent/water = 25)
+			/obj/item/stack/cable_coil = 20,
+			/obj/item/stack/material/brass = 5,
+			/datum/reagent/water = 25
+			)
 	time = 40
 	//always_available = FALSE
 	subcategory = CAT_TOOL
