@@ -81,3 +81,6 @@
 
 /mob/living/carbon/human/adherent
 	species = /datum/species/adherent
+
+/mob/living/carbon/human/krisitik
+	species = /datum/species/krisitik

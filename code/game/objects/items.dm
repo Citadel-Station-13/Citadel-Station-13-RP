@@ -275,7 +275,8 @@
 			. += "It's so unwieldly that it's a surprise you can hold it at all. You really won't be doing much running with it."
 	switch(get_weight())
 		if(-INFINITY to 0.1)
-			. += "It looks like it weighs practically nothing."
+			// todo: put this in when we actually get weight
+			// . += "It looks like it weighs practically nothing."
 		if(0.1 to 0.75)
 			. += "It looks like it weighs very little."
 		if(0.75 to 2)
