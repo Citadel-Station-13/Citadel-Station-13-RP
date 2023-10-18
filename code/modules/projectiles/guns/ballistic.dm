@@ -46,16 +46,10 @@
 
 /obj/item/gun/ballistic/update_icon_state()
 	. = ..()
-	if(magazine_type && ammo_magazine)
-		if(silenced)
-			icon_state = "[silenced_icon]"
-		else
-			icon_state = "[initial(icon_state)]"
-	else if(magazine_type && !ammo_magazine)
-		if(silenced)
-			icon_state = "[silenced_icon]-empty"
-		else
-			icon_state = "[initial(icon_state)]-empty"
+	var/silenced_state = silenced ? silenced_icon : initial(icon_state)
+	var/magazine_state = ammo_magazine ? "" : "-empty"
+	if(magazine_type)
+		icon_state = "[silenced_state][magazine_state]"
 
 /obj/item/gun/ballistic/consume_next_projectile()
 	//get the next casing
@@ -262,16 +256,13 @@
 			update_icon()
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		else if(istype(A, /obj/item/tool/wrench))
-			var/obj/item/silencer/S = new (get_turf(user))
 			if(silenced)
+				var/obj/item/silencer/S = new (get_turf(user))
 				to_chat(user, "<span class='notice'>You unscrew [S]] from [src].</span>")
 				user.put_in_hands(S)
 				silenced = FALSE
 				w_class = ITEMSIZE_SMALL
 				update_icon()
-				return
-			else
-				return
 
 /obj/item/gun/ballistic/attack_self(mob/user)
 	if(firemodes.len > 1)
