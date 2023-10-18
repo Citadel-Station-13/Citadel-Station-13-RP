@@ -449,7 +449,8 @@
 
 /obj/item/weldingtool/experimental/brass
 	name = "replica clockwork welding tool"
-	desc = "A re-engineered experimental welder. It sports anti-corrosive brass fittings, and a further refined fuel system.<span class = 'heavy_brass'> It feels vaugely familiar.</span>"
+	desc = "A re-engineered experimental welder. It sports anti-corrosive brass fittings, and a further refined fuel system.<span class = 'heavy_brass'> It feels vaguely familiar.</span>"
+	icon = 'icons/obj/clockwork.dmi'
 	icon_state = "clockwelder"
 	max_fuel = 50
 	tool_speed = 0.4

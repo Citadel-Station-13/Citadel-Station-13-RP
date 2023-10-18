@@ -117,7 +117,7 @@
 	name = "clockwork multitool"
 	desc = "A slender brass device, adorned with three prongs pulsing with energy, a faintly glowing red gem, and a screen in the shape of an eye. <span class = 'nzcrentr_small'>It almost looks bored.</span>"
 	icon = 'icons/obj/clockwork.dmi'
-	icon_state = "clockitool"
+	icon_state = "multitool"
 	tool_speed = 0.1
 	colorable = 0
 
