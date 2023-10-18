@@ -459,6 +459,7 @@
 /obj/item/weldingtool/experimental/clockwork
 	name = "clockwork welding tool"
 	desc = "An antique welding tool, adorned with brass, and a brilliant red gem as the fuel tank. It neither runs out of fuel, nor hurts the unprotected eye. <span class = 'nezbere_small'>A masterpiece.</span>"
+	icon = 'icons/obj/clockwork.dmi'
 	icon_state = "clockwelder"
 	max_fuel = 100
 	eye_safety_modifier = 2

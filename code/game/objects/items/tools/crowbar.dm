@@ -45,6 +45,7 @@
 /obj/item/tool/crowbar/clockwork
 	name = "clockwork crowbar"
 	desc = "An engraved piece of compressed brass, capable of prying things up and open with un-natural ease. <span class = 'brass'> It feels frigid to the touch. </span>"
+	icon = 'icons/obj/clockwork.dmi'
 	icon_state = "crowbar_clock"
 	tool_sound = 'sound/magic/clockwork/fellowship_armory.ogg'
 	tool_speed = 0.1
