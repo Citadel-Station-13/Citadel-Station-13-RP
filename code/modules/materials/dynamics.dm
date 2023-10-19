@@ -18,6 +18,8 @@
 		return armor_cache[cache_key]
 
 	//! Not even Desmos will save you now. !//
+	// significance difference from baseline as a number
+	var/significance_as_multiplier = ((MATERIAL_SIGNIFICANCE_BASELINE + (significance - MATERIAL_SIGNIFICANCE_BASELINE)) * 0.1)
 	// absorbing kinetic energy
 	var/kinetic_damping = toughness * ((density ** 0.5) * (1 / 3))
 	// stopping kinetic penetrators
@@ -29,7 +31,7 @@
 	// exotic 'energy' armor
 	var/exotic_absorption =
 	// bomb values : from kinetic damping and hardness
-	var/direct_bomb =
+	var/direct_bomb = (1 / (-((kinetic_damping + kinetic_hardness) * significance_as_multiplier + 400) * 0.000025)) + 100
 	// direct values
 	// todo: integrate significance
 	var/direct_bio = relative_permeability > 1? -relative_permeability : relative_permeability
@@ -37,16 +39,16 @@
 	var/direct_acid = relative_reactivity > 1? -relative_reactivity : relative_reactivity
 	// todo: integrate significance
 	var/direct_fire = relative_reactivity > 1? -relative_reactivity : relative_reactivity
-	var/direct_rad = (density * (1 / 16))**2 * ((MATERIAL_SIGNIFICANCE_BASELINE + (significance - MATERIAL_SIGNIFICANCE_BASELINE)) * 0.1)
+	var/direct_rad = (density * (1 / 16))**2 * significance_as_multiplier
 	#warn FUCK
 	// we don't allow deflection for now
 	return (armor_cache = fetch_armor_struct(list(
 		ARMOR_MELEE = ,
 		ARMOR_MELEE_TIER = ,
-		ARMOR_MELEE_SOAK = ,
+		ARMOR_MELEE_SOAK = kinetic_dampning * 0.005 + kinetic_hardness * 0.0025,
 		ARMOR_BULLET = ,
 		ARMOR_BULLET_TIER = ,
-		ARMOR_BULLET_SOAK = ,
+		ARMOR_BULLET_SOAK = kinetic_damping * 0.0025 + kinetic_hardness * 0.005,
 		ARMOR_LASER = ,
 		ARMOR_LASER_TIER = ,
 		ARMOR_LASER_SOAK = ,
