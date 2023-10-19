@@ -38,7 +38,7 @@
 	max_n2 = 0
 	minbodytemp = 0
 
-	movement_cooldown = -5
+	movement_cooldown = -1
 
 	ai_holder_type = /datum/ai_holder/simple_mob/statue
 
@@ -57,6 +57,13 @@
 	icon = 'icons/obj/statue.dmi'
 	icon_state = "human_female"
 	gender = NEUTER
+
+//Statue Shadow Organ
+/obj/item/statue_darkness
+	name = "void organ"
+	desc = "You shouldn't be seeing this. Contact a Maintainer."
+	icon = 'icons/obj/items.dmi'
+	icon_state = "gift1"
 
 //# Mob AI Code.
 
@@ -92,8 +99,6 @@
 /mob/living/simple_mob/living_statue/gib()
 	dust()
 
-
-
 //# Statue powers
 
 /// Flicker lights AOE Spell
@@ -104,8 +109,8 @@
 	override_base = "grey"
 	hud_state = "blackout"
 
-	cooldown_min = 1 MINUTE // Overkill but by request.
 	charge_max = 300
+	cooldown_min = 300
 	range = 14
 
 
@@ -135,7 +140,8 @@
 
 	message = "<span class='notice'>You glare your eyes.</span>"
 
-	cooldown_min = 2 MINUTE // Overkill but by request.
+	charge_max = 600
+	cooldown_min = 600
 	range = 10
 
 /spell/aoe_turf/blindness/choose_targets(mob/user = usr)
@@ -148,7 +154,6 @@
 		things += nearby_mob
 
 	return things
-
 
 /spell/aoe_turf/blindness/cast(list/targets, mob/user = usr)
 	for(var/mob/living/victim as anything in targets)
@@ -164,24 +169,12 @@
 
 	message = "<span class='notice'>You call upon the void.</span>"
 
-	cooldown_min = 5 MINUTE
-
+	charge_max = 1200
+	cooldown_min = 1200
 
 /spell/aoe_turf/veil_of_darkness/cast(list/targets, mob/user = usr)
-	var/mob/living/simple_mob/living_statue/S = holder
 	playsound(usr.loc, 'sound/effects/bamf.ogg', 50, 1, 5)
-	S.add_modifier(/datum/modifier/veil_of_darkness, 3 SECONDS)
-
-/datum/modifier/veil_of_darkness
-	name = "Veil of Darkness"
-	desc = "You pull upon the unreality of The Dark to mask your movements. The attempt is heavily taxing."
-	mob_overlay_state = "purple_electricity_constant"
-
-	on_created_text = "<span class='warning'>Your edges warp and dim!</span>"
-	on_expired_text = "<span class='notice'>You are no longer shrouded in darkness.</span>"
-
-/datum/modifier/veil_of_darkness/on_applied()
-	holder.set_light(8, -10, "#FFFFFF")
-
-/datum/modifier/veil_of_darkness/on_expire()
-	holder.set_light(0)
+	var/obj/item/statue_darkness/S = new
+	usr.contents.Add(S)
+	S.set_light(5, -10, "#FFFFFF")
+	QDEL_IN(S, 2 SECONDS)
