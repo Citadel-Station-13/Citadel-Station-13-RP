@@ -41,13 +41,20 @@
 	var/direct_fire = relative_reactivity > 1? -relative_reactivity : relative_reactivity
 	var/direct_rad = (density * (1 / 16))**2 * significance_as_multiplier
 	#warn FUCK
+	// tier; hardness is important
+	// we grab this first because we need to module the actual armor by this
+	// it's a bit dumb but until we have proper material science like dwarf fortress
+	// and bludgeon/slash/pierce a la bg3, we're stuck with this
+	var/kinetic_tier = ((kinetic_hardness + kinetic_damping * 0.2) ** 0.5) * 0.1
+	// sike i can't math for shit we'll use kinetic absorption as just the inverse lol
+	var/kinetic_absorb = ((kinetic_hardness * 0.2 + kinetic_damping) ** 0.5) * 0.1
 	// we don't allow deflection for now
 	return (armor_cache = fetch_armor_struct(list(
-		ARMOR_MELEE = ,
-		ARMOR_MELEE_TIER = ,
+		ARMOR_MELEE = kinetic_absorb,
+		ARMOR_MELEE_TIER = kinetic_tier,
 		ARMOR_MELEE_SOAK = kinetic_dampning * 0.005 + kinetic_hardness * 0.0025,
-		ARMOR_BULLET = ,
-		ARMOR_BULLET_TIER = ,
+		ARMOR_BULLET = kinetic_absorb,
+		ARMOR_BULLET_TIER = kinetic_tier,
 		ARMOR_BULLET_SOAK = kinetic_damping * 0.0025 + kinetic_hardness * 0.005,
 		ARMOR_LASER = ,
 		ARMOR_LASER_TIER = ,
