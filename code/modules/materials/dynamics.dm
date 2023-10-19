@@ -13,8 +13,49 @@
  * @return /datum/armor instance
  */
 /datum/material/proc/create_armor(significance = MATERIAL_SIGNIFICANCE_BASELINE, mob_armor)
-	#warn params
-	#warn impl - this requires caching
+	var/cache_key = "[significance]_[!!mob_armor]"
+	if(!isnull(armor_cache[cache_key]))
+		return armor_cache[cache_key]
+
+	//! Not even Desmos will save you now. !//
+	// absorbing kinetic energy
+	var/kinetic_damping = toughness * ((density ** 0.5) * (1 / 3))
+	// stopping kinetic penetrators
+	var/kinetic_hardness = hardness * ((density ** 0.5) * (1 / 8) + 0.7)
+	// absorbing energy blasts
+	var/ablation_damping =
+	// spreading energy blasts from going through
+	var/ablation_diffusion =
+	// exotic 'energy' armor
+	var/exotic_absorption =
+	// bomb values : from kinetic damping and hardness
+	var/direct_bomb =
+	// direct values
+	// todo: integrate significance
+	var/direct_bio = relative_permeability > 1? -relative_permeability : relative_permeability
+	// todo: integrate significance
+	var/direct_acid = relative_reactivity > 1? -relative_reactivity : relative_reactivity
+	// todo: integrate significance
+	var/direct_fire = relative_reactivity > 1? -relative_reactivity : relative_reactivity
+	var/direct_rad = (density * (1 / 16))**2 * ((MATERIAL_SIGNIFICANCE_BASELINE + (significance - MATERIAL_SIGNIFICANCE_BASELINE)) * 0.1)
+	#warn FUCK
+	// we don't allow deflection for now
+	return (armor_cache = fetch_armor_struct(list(
+		ARMOR_MELEE = ,
+		ARMOR_MELEE_TIER = ,
+		ARMOR_MELEE_SOAK = ,
+		ARMOR_BULLET = ,
+		ARMOR_BULLET_TIER = ,
+		ARMOR_BULLET_SOAK = ,
+		ARMOR_LASER = ,
+		ARMOR_LASER_TIER = ,
+		ARMOR_LASER_SOAK = ,
+		ARMOR_BOMB = direct_bomb,
+		ARMOR_BIO = direct_bio,
+		ARMOR_ACID = direct_acid,
+		ARMOR_FIRE = direct_fire,
+		ARMOR_RAD = direct_rad,
+	)))
 
 /**
  * combines multiple material armors into one

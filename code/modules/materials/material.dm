@@ -56,7 +56,7 @@
 	var/pass_stack_colors = FALSE
 
 	//* Armor
-	/// caching of armor. text2num(significance) = armor datum instance
+	/// caching of armor. text2num(significance)_[mob_armor? 1 : 0] = armor datum instance
 	var/tmp/list/armor_cache = list()
 
 	//* Attacks
@@ -107,6 +107,8 @@
 	/// * impacts radiation armor (major)
 	/// * impacts bomb armor
 	/// * impacts blunt / crush damage
+	/// * impacts sharp / blade damage (minor)
+	/// * impacts kinetic damage resistance (minor)
 	var/density = 8 * 1
 	/// weight multiplier - allowing for materials that behave like a high-density material but are light
 	/// * basically, low values = high density stats without the penalties from weight

@@ -436,7 +436,13 @@
  */
 /atom/proc/fetch_armor()
 	RETURN_TYPE(/datum/armor)
-	return armor || (armor = fetch_armor_struct(armor_type))
+	return armor || (armor = generate_armor())
+
+/**
+ * get default armor datum
+ */
+/atom/proc/generate_armor()
+	return fetch_armor_struct(armor_type)
 
 /**
  * calculates the resulting damage from an attack, taking into account our armor and soak
