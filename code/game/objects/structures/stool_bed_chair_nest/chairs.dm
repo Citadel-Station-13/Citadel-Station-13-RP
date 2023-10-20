@@ -547,7 +547,7 @@
 
 //Apidean Chairs!
 /obj/structure/bed/chair/apidean
-	name = "\improper Apidean throne"
+	name = "\improper Apidean chair"
 	desc = "This waxy chair is designed to allow creatures with insectoid abdomens to lounge comfortably."
 	icon_state = "bee-throne"
 	base_icon = "bee-throne"
