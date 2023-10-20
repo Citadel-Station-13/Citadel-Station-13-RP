@@ -3572,7 +3572,8 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tcommsat/entrance)
 "lU" = (
-/turf/simulated/floor/tiled/techmaint,
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
 /area/engineering/engine_smes)
 "lV" = (
 /obj/structure/closet/radiation,
@@ -3906,7 +3907,11 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-8"
 	},
-/turf/simulated/floor/tiled/techmaint,
+/obj/structure/catwalk,
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
 /area/engineering/engine_smes)
 "nk" = (
 /obj/structure/atmos_tank_segment/phoron{
@@ -5123,7 +5128,8 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled/techmaint,
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
 /area/engineering/engine_smes)
 "rs" = (
 /obj/structure/bed/chair,
@@ -5725,7 +5731,14 @@
 "to" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/holopad,
-/turf/simulated/floor/tiled/techmaint,
+/obj/structure/catwalk,
+/obj/structure/cable/yellow{
+	icon_state = "1-8"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
 /area/engineering/engine_smes)
 "tq" = (
 /obj/structure/disposalpipe/segment{
@@ -6416,7 +6429,11 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/camera/network/engine,
-/turf/simulated/floor/tiled/techfloor/grid,
+/obj/structure/catwalk,
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/turf/simulated/floor/plating,
 /area/engineering/engine_smes)
 "vI" = (
 /obj/structure/railing{
@@ -6813,7 +6830,8 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
 /area/engineering/engine_smes)
 "wV" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/green{
@@ -6891,7 +6909,11 @@
 /area/engineering/hallway/lower)
 "xh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/tiled/techmaint,
+/obj/structure/catwalk,
+/obj/structure/cable/yellow{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/plating,
 /area/engineering/engine_smes)
 "xi" = (
 /obj/machinery/door/blast/regular{
@@ -7732,7 +7754,8 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/techmaint,
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
 /area/engineering/engine_smes)
 "Al" = (
 /obj/machinery/power/terminal,
@@ -8990,7 +9013,8 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/techmaint,
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
 /area/engineering/engine_smes)
 "Ev" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -9165,7 +9189,8 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/techmaint,
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
 /area/engineering/engine_smes)
 "EY" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
@@ -10325,7 +10350,8 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/techmaint,
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
 /area/engineering/engine_smes)
 "IY" = (
 /turf/simulated/wall/prepainted,
@@ -11069,7 +11095,11 @@
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/obj/structure/catwalk,
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/turf/simulated/floor/plating,
 /area/engineering/engine_smes)
 "Lx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -13461,7 +13491,8 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled/techmaint,
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
 /area/engineering/engine_smes)
 "TA" = (
 /obj/effect/floor_decal/techfloor/orange{
@@ -14435,7 +14466,11 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/turf/simulated/floor/tiled/techmaint,
+/obj/structure/cable/yellow{
+	icon_state = "0-2"
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
 /area/engineering/engine_smes)
 "WD" = (
 /obj/machinery/door/firedoor,
@@ -14513,7 +14548,11 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
-/turf/simulated/floor/tiled/techmaint,
+/obj/structure/cable/yellow{
+	icon_state = "0-2"
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
 /area/engineering/engine_smes)
 "WT" = (
 /obj/structure/cable{
