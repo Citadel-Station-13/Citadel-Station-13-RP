@@ -31,8 +31,9 @@ right now its not a big priority - Bloop 2022
 	base_area = /area/space
 
 /obj/effect/shuttle_landmark/triumph/deck4/specops
-	name = "NSV Triumph - Special Operations Pad"
+	name = "NSV Triumph - Special Operations Dock"
 	landmark_tag = "triumph_specops_dock"
+	docking_controller = "triumph_specops_dock"
 	base_turf = /turf/space
 	base_area = /area/space
 
@@ -52,6 +53,7 @@ right now its not a big priority - Bloop 2022
 /obj/effect/shuttle_landmark/triumph/deck2/trade
 	name = "NSV Triumph Annex Dock"
 	landmark_tag = "triumph_annex_dock"
+	docking_controller = "triumph_annex_dock"
 	base_turf = /turf/space
 	base_area = /area/space
 

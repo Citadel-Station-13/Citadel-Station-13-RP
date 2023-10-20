@@ -1272,9 +1272,6 @@
 	icon_state = "dark"
 	},
 /area/centcom/security)
-"dU" = (
-/turf/simulated/floor/reinforced,
-/area/centcom/specops/dock)
 "dV" = (
 /obj/structure/table/steel,
 /obj/item/clothing/shoes/boots/jackboots{
@@ -7182,15 +7179,16 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/specops/general)
 "wQ" = (
-/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
-	frequency = 1380;
-	id_tag = "specops_docker_pump"
-	},
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/turretid/lethal{
 	control_area = /area/shuttle/specops/general;
 	pixel_y = 32;
 	req_access = list(103)
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
+	frequency = 1380;
+	id_tag = "specops_docker_pump";
+	power_rating = 20000
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/specops/general)
@@ -10781,7 +10779,7 @@
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/centcom/specops/dock)
 "IW" = (
 /obj/structure/bed/chair/comfy/black,
@@ -12101,17 +12099,18 @@
 	},
 /area/centcom/bathroom)
 "MS" = (
-/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
-	dir = 1;
-	frequency = 1380;
-	id_tag = "specops_docker_pump"
-	},
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	frequency = 1380;
 	id_tag = "specops_docker";
 	pixel_x = -25
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
+	dir = 1;
+	frequency = 1380;
+	id_tag = "specops_docker_pump";
+	power_rating = 20000
+	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/specops/general)
 "MT" = (
@@ -12653,7 +12652,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/centcom/specops/dock)
 "OL" = (
 /obj/machinery/computer/cryopod/ert{
@@ -12692,7 +12691,7 @@
 	},
 /area/centcom/security)
 "OR" = (
-/turf/simulated/floor/reinforced/airmix,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/centcom/specops/dock)
 "OU" = (
 /obj/machinery/door/firedoor,
@@ -15068,7 +15067,7 @@
 	pixel_y = -28;
 	req_one_access = list(103)
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/centcom/specops/dock)
 "WX" = (
 /obj/effect/floor_decal/borderfloorwhite,
@@ -39454,18 +39453,18 @@ Ic
 Ic
 Ic
 cf
-dU
-dU
-dU
-dU
-dU
-dU
-dU
 OR
 OR
-dU
-dU
-dU
+OR
+OR
+OR
+OR
+OR
+OR
+OR
+OR
+OR
+OR
 aG
 Ic
 Ic
@@ -39648,8 +39647,8 @@ Ic
 Ic
 Ic
 cf
-dU
-dU
+OR
+OR
 fF
 hS
 hS
@@ -39657,9 +39656,9 @@ hS
 hS
 hS
 fF
-dU
-dU
-dU
+OR
+OR
+OR
 aG
 Ic
 Ic
@@ -39842,8 +39841,8 @@ Ic
 Ic
 Ic
 cf
-dU
-dU
+OR
+OR
 fF
 jt
 qq
@@ -39851,9 +39850,9 @@ qq
 Ja
 Pd
 fF
-dU
-dU
-dU
+OR
+OR
+OR
 aG
 Ic
 Ic
@@ -40036,8 +40035,8 @@ Ic
 Ic
 Ic
 cf
-dU
-dU
+OR
+OR
 fF
 jH
 rO
@@ -40045,9 +40044,9 @@ zO
 Jl
 Pm
 fF
-dU
-dU
-dU
+OR
+OR
+OR
 aG
 Ic
 Ic
@@ -40230,7 +40229,7 @@ Ic
 Ic
 Ic
 cf
-dU
+OR
 dY
 fF
 jO
@@ -40240,8 +40239,8 @@ KC
 QA
 fF
 dY
-dU
-dU
+OR
+OR
 aG
 Ic
 Ic
@@ -40424,7 +40423,7 @@ Ic
 Ic
 Ic
 cf
-dU
+OR
 ez
 gt
 kW
@@ -40434,8 +40433,8 @@ fF
 fF
 gt
 ez
-dU
-dU
+OR
+OR
 aG
 Ic
 Ic
@@ -40618,7 +40617,7 @@ Ic
 Ic
 Ic
 cf
-dU
+OR
 eZ
 gK
 lF
@@ -40628,8 +40627,8 @@ KN
 QD
 RL
 eZ
-dU
-dU
+OR
+OR
 aG
 Ic
 Ic
@@ -40812,7 +40811,7 @@ Ic
 Ic
 Ic
 cf
-dU
+OR
 eZ
 hF
 lF
@@ -40822,7 +40821,7 @@ KO
 QZ
 TI
 eZ
-dU
+OR
 WW
 aG
 Ic
@@ -41006,7 +41005,7 @@ Ic
 Ic
 Ic
 cf
-dU
+OR
 eZ
 ez
 nm
@@ -41016,8 +41015,8 @@ Lw
 Lw
 DV
 ez
-dU
-dU
+OR
+OR
 aG
 Ic
 Ic
@@ -41200,7 +41199,7 @@ Ic
 Ic
 Ic
 cf
-dU
+OR
 eZ
 eZ
 lF
@@ -41210,8 +41209,8 @@ Mb
 Rf
 eZ
 VY
-dU
-dU
+OR
+OR
 aG
 Ic
 Ic
@@ -41394,7 +41393,7 @@ Ic
 Ic
 Ic
 cf
-dU
+OR
 ez
 eZ
 oa
@@ -41404,8 +41403,8 @@ Mg
 Rg
 eZ
 ez
-dU
-dU
+OR
+OR
 aG
 Ic
 Ic
@@ -41588,7 +41587,7 @@ Ic
 Ic
 Ic
 cf
-dU
+OR
 fC
 eZ
 oB
@@ -41598,8 +41597,8 @@ Mg
 Rg
 eZ
 fC
-dU
-dU
+OR
+OR
 aG
 Ic
 Ic
@@ -41782,8 +41781,8 @@ Ic
 Ic
 Ic
 cf
-dU
-dU
+OR
+OR
 eZ
 pt
 wP
@@ -41791,9 +41790,9 @@ FN
 Mg
 Rk
 eZ
-dU
-dU
-dU
+OR
+OR
+OR
 aG
 Ic
 Ic
@@ -41976,8 +41975,8 @@ Ic
 Ic
 Ic
 cf
-dU
-dU
+OR
+OR
 ez
 eZ
 ez
@@ -41985,9 +41984,9 @@ GB
 ez
 eZ
 ez
-dU
-dU
-dU
+OR
+OR
+OR
 aG
 Ic
 Ic
@@ -42170,8 +42169,8 @@ Ic
 Ic
 Ic
 cf
-dU
-dU
+OR
+OR
 fC
 eZ
 wQ
@@ -42179,9 +42178,9 @@ HI
 MS
 eZ
 fC
-dU
-dU
-dU
+OR
+OR
+OR
 aG
 Ic
 Ic
@@ -42364,18 +42363,18 @@ Ic
 Ic
 Ic
 cf
-dU
-dU
-dU
+OR
+OR
+OR
 eZ
 zi
 lF
 Nd
 eZ
-dU
-dU
-dU
-dU
+OR
+OR
+OR
+OR
 aG
 Ic
 Ic
@@ -42558,18 +42557,18 @@ Ic
 Ic
 Ic
 cf
-dU
-dU
-dU
+OR
+OR
+OR
 pW
 ez
 Ig
 ez
 pW
-dU
-dU
-dU
-dU
+OR
+OR
+OR
+OR
 aG
 aG
 aG
@@ -42752,11 +42751,11 @@ Ic
 Ic
 Ic
 cf
-dU
-dU
-dU
-dU
-dU
+OR
+OR
+OR
+OR
+OR
 IT
 OJ
 OJ
@@ -42946,18 +42945,18 @@ Ic
 Ic
 Ic
 cf
-dU
-dU
-dU
-dU
-dU
-dU
-dU
-dU
-dU
-dU
-dU
-dU
+OR
+OR
+OR
+OR
+OR
+OR
+OR
+OR
+OR
+OR
+OR
+OR
 aG
 YJ
 YJ
