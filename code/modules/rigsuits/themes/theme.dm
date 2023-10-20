@@ -53,6 +53,24 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 	/// default coloration amount
 	var/coloration_amount = 0
 
+	//* base stats
+	/// startup / shutdown time
+	var/boot_delay = 5 SECONDS
+	/// piece seal/unseal time
+	var/seal_delay = 3 SECONDS
+	/// base weight
+	#warn weight
+	var/offline_weight = 0
+	/// base encumbrance
+	#warn encumbrance
+	var/offline_encumbrance = 0
+	/// base online weight
+	#warn weight
+	var/online_weight = 0
+	/// base online encumbrance
+	#warn encumbrance
+	var/online_encumbrance = 0
+
 	//* vars to be replaced by components/modules at some point
 	var/datum/armor/armor = /datum/armor/rigsuit
 	var/min_pressure_protect = 0 * ONE_ATMOSPHERE
@@ -134,6 +152,8 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 	var/coloration_mode
 	/// default coloration amount - defaults to rig theme
 	var/coloration_amount
+	/// seal delay add to base seal delay
+	var/piece_seal_delay_adjust = 0
 
 /datum/rig_piece/New()
 	CONSTRUCT_BODYTYPES(worn_bodytypes)

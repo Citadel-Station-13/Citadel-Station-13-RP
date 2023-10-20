@@ -37,6 +37,20 @@
 	/// direct access cache to the items held by those pieces
 	var/list/obj/item/piece_items
 
+	//* Stats - Base
+	/// startup/shutdown time
+	var/boot_delay
+	/// seal/unseal time
+	var/seal_delay
+	/// offline weight
+	var/offline_weight
+	/// offline encumbrance
+	var/offline_encumbrance
+	/// online weight
+	var/online_weight
+	/// online encumbrance
+	var/online_encumbrance
+
 	//* Theme
 	/// default theme
 	var/theme_preset = /datum/rig_theme/station/civilian/standard
