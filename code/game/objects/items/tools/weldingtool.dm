@@ -449,7 +449,7 @@
 
 /obj/item/weldingtool/experimental/brass
 	name = "replica clockwork welding tool"
-	desc = "A re-engineered experimental welder. It sports anti-corrosive brass fittings, and a further refined fuel system. <span class = 'heavy_brass'>It feels vaguely familiar.</span>"
+	desc = "A re-engineered experimental welder. It sports anti-corrosive brass fittings, and a further refined fuel system."
 	icon = 'icons/obj/clockwork.dmi'
 	icon_state = "clockwelder"
 	max_fuel = 50
@@ -459,7 +459,7 @@
 
 /obj/item/weldingtool/experimental/clockwork
 	name = "clockwork welding tool"
-	desc = "An antique welding tool, adorned with brass, and a brilliant red gem as the fuel tank. It neither runs out of fuel, nor harms the unprotected eye. <span class = 'nezbere_small'>A masterpiece.</span>"
+	desc = "An antique welding tool, adorned with brass, and a brilliant red gem as the fuel tank. It neither runs out of fuel, nor harms the unprotected eye."
 	icon = 'icons/obj/clockwork.dmi'
 	icon_state = "clockwelder"
 	max_fuel = 100
@@ -468,6 +468,10 @@
 	tool_speed = 0.1
 	flame_color = "#990000" // deep red, as above, so below
 	change_icons = 0
+
+/obj/item/weldingtool/experimental/clockwork/examine(mob/user, dist)
+	. = ..()
+	. += SPAN_NEZBERE("Sometimes, the best masterworks are lessons in rediscovering simplicity. Thousands upon thousands of these passed through the Great Forgeworks, and out into the void. Treasure this find, friend.")
 
 /obj/item/weldingtool/experimental/hybrid
 	name = "strange welding tool"

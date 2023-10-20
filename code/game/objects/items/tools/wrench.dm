@@ -61,12 +61,16 @@
 
 /obj/item/tool/wrench/clockwork
 	name = "clockwork wrench"
-	desc = "A wrench cast completely out of brass, with a head that perfectly affixes to anything it's braced around. <span class = 'brass'>The handle thrums faintly in your hand.</span>"
+	desc = "A wrench cast completely out of brass, with a head that perfectly affixes to anything it's braced around."
 	icon = 'icons/obj/clockwork.dmi'
 	icon_state = "wrench_clock"
 	tool_sound = 'sound/machines/clockcult/integration_cog_install.ogg'
 	tool_speed = 0.1
 	random_color = FALSE
+
+/obj/item/tool/wrench/clockwork/examine(mob/user, dist)
+	. = ..()
+	. += SPAN_BRASS("Holding onto the tool makes it thrum in your hand, as if anticipating the work that needs to be done.")
 
 /obj/item/tool/wrench/cyborg
 	name = "automatic wrench"

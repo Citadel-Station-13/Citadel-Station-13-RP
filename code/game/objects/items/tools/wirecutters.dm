@@ -68,11 +68,15 @@
 
 /obj/item/tool/wirecutters/clockwork
 	name = "clockwork wirecutters"
-	desc = "An antiquated pair of wirecutters, fashioned out of extremely dense brass. <span class = 'nezbere'>As sharp as the day they left the forge.</span>"
+	desc = "An antiquated pair of wirecutters, fashioned out of extremely dense brass."
 	icon = 'icons/obj/clockwork.dmi'
 	icon_state = "cutters_clock"
 	tool_speed = 0.1
 	random_color = FALSE
+
+/obj/item/tool/wirecutters/clockwork/examine(mob/user, dist)
+	. = ..()
+	. += SPAN_NEZBERE("The blades are utterly dull and impotent when placed against flesh, yet cuts with an unreasonable, almost murderously sharp edge when set upon wires and metal sheets.")
 
 /datum/category_item/catalogue/anomalous/precursor_a/alien_wirecutters
 	name = "Precursor Alpha Object - Wire Seperator"
