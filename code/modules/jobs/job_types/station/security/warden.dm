@@ -34,15 +34,16 @@
 						Armoury gear in a crisis, and retrieving it when the crisis has passed. In an emergency, the Warden may be called upon to direct the \
 						Security Department as a whole."
 	alt_titles = list(
-		"Jailor" = /datum/prototype/struct/alt_title/warden/jailor,
+		"Brig Overseer" = /datum/prototype/struct/alt_title/warden/overseer,
 		"Dispatch Officer" = /datum/prototype/struct/alt_title/warden/dispatch_officer
 		)
 
-/datum/prototype/struct/alt_title/warden/jailor
-	title = "Jailor"
+/datum/prototype/struct/alt_title/warden/overseer
+	title = "Brig Overseer"
 
 /datum/prototype/struct/alt_title/warden/dispatch_officer
 	title = "Dispatch Officer"
+	title_blurb = "The Dispatch Officer fulfills the standard duties of the Warden, but also assists with dispatching officers to needed locations to lessen the load on the Head of Security."
 
 /datum/outfit/job/station/warden
 	name = OUTFIT_JOB_NAME("Warden")

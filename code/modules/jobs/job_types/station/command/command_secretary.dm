@@ -25,27 +25,10 @@
 			as well as to assist in piloting the ship when deemed necessary and applicable."
 
 	alt_titles = list(
-		"Command Liaison" = /datum/prototype/struct/alt_title/command_liaison,
-		"Bridge Secretary" = /datum/prototype/struct/alt_title/bridge_secretary,
-		"Command Assistant" = /datum/prototype/struct/alt_title/command_assistant,
 		"Command Intern" = /datum/prototype/struct/alt_title/command_intern,
 		"Helmsman" = /datum/prototype/struct/alt_title/commsec/helmsman,
 		"Command Secretary" = /datum/prototype/struct/alt_title/commsec/actually_commsec
 	)
-
-//! todo: WHY DO WE HAVE SO MANY GET RID OF THEM
-
-/datum/prototype/struct/alt_title/command_liaison
-	title = "Command Liaison"
-	title_outfit = /datum/outfit/job/station/command_secretary
-
-/datum/prototype/struct/alt_title/bridge_secretary
-	title = "Bridge Secretary"
-	title_outfit = /datum/outfit/job/station/command_secretary
-
-/datum/prototype/struct/alt_title/command_assistant
-	title = "Command Assistant"
-	title_outfit = /datum/outfit/job/station/command_secretary
 
 /datum/prototype/struct/alt_title/command_intern
 	title = "Command Intern"
