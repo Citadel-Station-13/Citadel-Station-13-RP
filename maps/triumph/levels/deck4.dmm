@@ -4539,9 +4539,7 @@
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/maintenance/security/starboard)
 "dfU" = (
-/obj/effect/shuttle_landmark/triumph/deck4/specops{
-	docking_controller = "triumph_specops_dock"
-	},
+/obj/effect/shuttle_landmark/triumph/deck4/specops,
 /turf/space,
 /area/space)
 "dgm" = (
@@ -24125,7 +24123,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 4;
 	frequency = 1380;
-	id_tag = ""triumph_specops_dock_pump"
+	id_tag = "triumph_specops_dock_pump"
 	},
 /obj/machinery/airlock_sensor{
 	dir = 1;
