@@ -19,8 +19,8 @@
 	var/datum/armor/suit_armor
 	var/min_pressure_protect
 	var/max_pressure_protect
-	var/min_pressure_protect
-	var/max_pressure_protect
+	var/min_temperature_protect
+	var/max_temperature_protect
 
 	//* Pieces
 	/// list of /datum/component/rig_piece's

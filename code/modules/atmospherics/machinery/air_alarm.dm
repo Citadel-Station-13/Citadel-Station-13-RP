@@ -762,6 +762,9 @@ GLOBAL_LIST_EMPTY(air_alarms)
 	spawn(rand(0,15))
 		update_icon()
 
+#undef MAX_TEMPERATURE
+#undef MIN_TEMPERATURE
+
 #undef LOAD_TLV_VALUES
 #undef TEST_TLV_VALUES
 #undef DECLARE_TLV_VALUES

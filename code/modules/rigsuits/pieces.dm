@@ -18,5 +18,19 @@
 /obj/item/rig/proc/add_piece(datum/component/rig_piece/piece)
 	#warn impl
 
-/obj/item/rig/proc/sync_piece(datum/component/rig_piece/piece)
-	#warn impl - sync stuff like armor
+/obj/item/rig/proc/legacy_sync_piece(datum/component/rig_piece/piece)
+	var/obj/item/physical = piece.parent
+	if(piece.rig_piece_flags & RIG_PIECE_APPLY_ARMOR)
+		physical.set_armor(suit_armor)
+	else
+		physical.reset_armor()
+	if(piece.rig_piece_flags & RIG_PIECE_APPLY_ENVIRONMENTALS)
+		physical.max_pressure_protection = max_pressure_protect
+		physical.min_pressure_protection = min_pressure_protect
+		physical.max_heat_protection_temperature = max_temperature_protect
+		physical.min_cold_protection_temperature = min_temperature_protect
+	else
+		physical.max_pressure_protection = initial(physical.max_pressure_protection)
+		physical.min_pressure_protection = initial(physical.min_pressure_protection)
+		physical.max_heat_protection_temperature = initial(physical.max_heat_protection_temperature)
+		physical.min_cold_protection_temperature = initial(physical.min_cold_protection_temperature)

@@ -3,9 +3,9 @@
 
 /obj/item/rig/proc/init_theme(datum/rig_theme/override)
 	if(isnull(override))
-		override = theme_initial
+		override = theme_preset
 	if(isnull(override))
-		override = initial(theme_initial)
+		override = initial(theme_preset)
 	if(ispath(override))
 		override = fetch_rig_theme(override)
 	ASSERT(istype(override))
@@ -15,9 +15,9 @@
 	initializing.imprint_control_behavior(src)
 	initializing.imprint_control_legacy(src)
 	for(var/datum/rig_piece/piece_data as anything in initializing.pieces)
-		var/datum/component/rig_piece/piece = piece_data.instantiate
+		var/datum/component/rig_piece/piece = piece_data.instantiate()
 		add_piece(piece)
-		sync_piece(piece)
+		legacy_sync_piece(piece)
 	// todo: modules
 	ui_queue_everything()
 
