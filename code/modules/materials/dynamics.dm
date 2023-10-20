@@ -42,7 +42,7 @@
 	var/direct_acid = relative_reactivity > 1? -relative_reactivity : relative_reactivity
 	// todo: integrate significance
 	var/direct_fire = relative_reactivity > 1? -relative_reactivity : relative_reactivity
-	var/direct_rad = clamp(1 - (density * significance_multiplier * (1 / 55))**2, 0, 1)
+	var/direct_rad = clamp(1 - ((density + nullification * 0.01) * significance_multiplier * (1 / 55))**2, 0, 1)
 	// tier; hardness is important
 	// we grab this first because we need to module the actual armor by this
 	// it's a bit dumb but until we have proper material science like dwarf fortress
