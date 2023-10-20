@@ -138,7 +138,7 @@
 	if(my_kin.ability_flags & AB_PHASE_SHIFTED)
 		expire()
 
-/datum/modifier/shadekin//on_applied()
+/datum/modifier/shadekin/create_shade/on_applied()
 	my_kin = holder
 	holder.glow_toggle = TRUE
 	holder.glow_range = 8
