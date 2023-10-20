@@ -1,6 +1,6 @@
 /datum/material/lead
 	name = MAT_LEAD
-	id = "lead"
+	id = MAT_LEAD
 	stack_type = /obj/item/stack/material/lead
 	icon_colour = "#273956"
 	weight = 23 // Lead is a bit more dense than silver IRL, and silver has 22 ingame.

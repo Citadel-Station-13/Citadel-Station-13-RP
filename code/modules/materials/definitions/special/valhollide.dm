@@ -1,6 +1,6 @@
 /datum/material/valhollide
 	name = MAT_VALHOLLIDE
-	id = "valhollide"
+	id = MAT_VALHOLLIDE
 	stack_type = /obj/item/stack/material/valhollide
 	icon_base = 'icons/turf/walls/stone_wall.dmi'
 	door_icon_base = "stone"

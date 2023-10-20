@@ -14,20 +14,10 @@
 	max_amount = 60
 	attack_verb = list("hit", "bludgeoned", "whacked")
 
-/obj/item/stack/rods/cyborg
-	name = "metal rod synthesizer"
-	desc = "A device that makes metal rods."
-	gender = NEUTER
-	materials = null
-	uses_charge = 1
-	charge_costs = list(500)
-	stacktype = /obj/item/stack/rods
-	no_variants = TRUE
-
-/obj/item/stack/rods/Initialize(mapload, new_amount, merge)
-	. = ..()
-	recipes = rods_recipes
-	update_icon()
+/obj/item/stack/rods/generate_explicit_recipes()
+	. = list()
+	. += create_stack_recipe_datum(name = "grille", product = /obj/structure/grille, cost = 2, time = 1 SECONDS)
+	. += create_stack_recipe_datum(name = "catwalk", product = /obj/structure/catwalk, cost = 2, time = 1 SECONDS)
 
 /obj/item/stack/rods/update_icon()
 	var/amount = get_amount()
@@ -35,10 +25,6 @@
 		icon_state = "rods-[amount]"
 	else
 		icon_state = "rods"
-
-var/global/list/datum/stack_recipe/rods_recipes = list( \
-	new/datum/stack_recipe("grille", /obj/structure/grille, 2, time = 10, one_per_turf = 1, on_floor = 0),
-	new/datum/stack_recipe("catwalk", /obj/structure/catwalk, 2, time = 80, one_per_turf = 1, on_floor = 1))
 
 /obj/item/stack/rods/attackby(obj/item/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/weldingtool))
@@ -72,39 +58,12 @@ var/global/list/datum/stack_recipe/rods_recipes = list( \
 
 	..()
 
-/*
-/obj/item/stack/rods/attack_self(mob/user)
-	. = ..()
-	if(.)
-		return
-	src.add_fingerprint(user)
-
-	if(!istype(user.loc,/turf)) return 0
-
-	if (locate(/obj/structure/grille, usr.loc))
-		for(var/obj/structure/grille/G in usr.loc)
-			if (G.destroyed)
-				G.health = 10
-				G.density = 1
-				G.destroyed = 0
-				G.icon_state = "grille"
-				use(1)
-			else
-				return 1
-
-	else if(!in_use)
-		if(get_amount() < 2)
-			to_chat(user, "<span class='warning'>You need at least two rods to do this.</span>")
-			return
-		to_chat(usr, "<span class='notice'>Assembling grille...</span>")
-		in_use = 1
-		if (!do_after(usr, 10))
-			in_use = 0
-			return
-		var/obj/structure/grille/F = new /obj/structure/grille/ ( usr.loc )
-		to_chat(usr, "<span class='notice'>You assemble a grille</span>")
-		in_use = 0
-		F.add_fingerprint(usr)
-		use(2)
-	return
-*/
+/obj/item/stack/rods/cyborg
+	name = "metal rod synthesizer"
+	desc = "A device that makes metal rods."
+	gender = NEUTER
+	materials = null
+	uses_charge = 1
+	charge_costs = list(500)
+	stacktype = /obj/item/stack/rods
+	no_variants = TRUE

@@ -214,7 +214,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/DJOutpost1)
 "aH" = (
-/obj/item/reagent_containers/food/snacks/unajerky,
+/obj/item/reagent_containers/food/snacks/boxed/unajerky,
 /obj/machinery/light{
 	dir = 8
 	},

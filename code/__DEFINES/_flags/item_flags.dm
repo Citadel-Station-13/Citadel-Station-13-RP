@@ -23,6 +23,11 @@
 #define ITEM_NO_LATHE_DECONSTRUCT (1<<10)
 /// stack-like handling for ingredients
 #define ITEM_MASS_INGREDIENT (1<<11)
+/// encumbers while in hand
+#define ITEM_ENCUMBERS_WHILE_HELD (1<<12)
+/// doesn't encumber while not in hand
+#define ITEM_ENCUMBERS_ONLY_HELD (1<<13)
+// todo: ITEM_SLOWS_WHILE_HELD for slowdown
 
 DEFINE_BITFIELD(item_flags, list(
 	BITFIELD(ITEM_IN_INVENTORY),
@@ -37,6 +42,8 @@ DEFINE_BITFIELD(item_flags, list(
 	BITFIELD(ITEM_EASY_LATHE_DECONSTRUCT),
 	BITFIELD(ITEM_NO_LATHE_DECONSTRUCT),
 	BITFIELD(ITEM_MASS_INGREDIENT),
+	BITFIELD(ITEM_ENCUMBERS_WHILE_HELD),
+	BITFIELD(ITEM_ENCUMBERS_ONLY_HELD),
 ))
 
 //! Flags for the clothing_flags var on /obj/item
@@ -47,7 +54,7 @@ DEFINE_BITFIELD(item_flags, list(
 #define CLOTHING_IGNORE_BELTLINK	(1<<2)
 /// for plural limbs, wearable with just one
 #define CLOTHING_ALLOW_SINGLE_LIMB	(1<<3)
-/// Prevents syringes, parapens and hyposprays if equipped to slot_suit or SLOT_ID_HEAD.
+/// Prevents syringes, parapens and hyposprays.
 #define CLOTHING_THICK_MATERIAL		(1<<4)
 /// Syringes / hyposprays / etc can get through, but need to pass through an injection port.
 #define CLOTHING_INJECTION_PORT		(1<<5)

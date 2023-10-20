@@ -247,8 +247,8 @@
 	M.name = "steel recycler"
 	M.desc = "A device that refines recycled steel into sheets."
 	M.synths = list(synths_by_kind[MATSYN_METAL])
-	M.recipes = list(
-		new/datum/stack_recipe("steel sheet", /obj/item/stack/material/steel, 1, 1, 20)
+	M.explicit_recipes = list(
+		create_stack_recipe_datum(name = "steel sheet", product = /obj/item/stack/material/steel, cost = 1)
 	)
 	. += M
 
@@ -257,8 +257,8 @@
 	G.desc = "A device that refines recycled glass into sheets."
 	G.allow_window_autobuild = FALSE
 	G.synths = list(synths_by_kind[MATSYN_GLASS])
-	G.recipes = list(
-		new/datum/stack_recipe("glass sheet", /obj/item/stack/material/glass, 1, 1, 20)
+	M.explicit_recipes = list(
+		create_stack_recipe_datum(name = "glass sheet", product = /obj/item/stack/material/glass, cost = 1)
 	)
 	. += G
 

@@ -39,7 +39,7 @@
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/crashedcontainmentshuttle)
 "ak" = (
-/obj/structure/door_assembly/door_assembly_ext{
+/obj/structure/door_assembly/external{
 	anchored = 1
 	},
 /turf/simulated/floor/plating,
@@ -119,7 +119,7 @@
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/crashedcontainmentshuttle)
 "aD" = (
-/obj/structure/door_assembly/door_assembly_ext,
+/obj/structure/door_assembly/external,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/crashedcontainmentshuttle)
 "aE" = (
@@ -202,7 +202,7 @@
 /turf/template_noop,
 /area/submap/crashedcontainmentshuttle)
 "aS" = (
-/obj/structure/door_assembly/door_assembly_highsecurity{
+/obj/structure/door_assembly/high_security{
 	anchored = 1
 	},
 /turf/simulated/shuttle/floor/black,
@@ -337,7 +337,7 @@
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/crashedcontainmentshuttle)
 "bu" = (
-/obj/structure/door_assembly/door_assembly_ext{
+/obj/structure/door_assembly/external{
 	anchored = 1
 	},
 /turf/simulated/mineral/floor/ignore_mapgen,

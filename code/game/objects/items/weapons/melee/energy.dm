@@ -145,7 +145,7 @@
 			return
 	return ..()
 
-/obj/item/melee/energy/get_cell()
+/obj/item/melee/energy/get_cell(inducer)
 	return bcell
 
 /obj/item/melee/energy/update_icon()
@@ -642,9 +642,6 @@
 	icon_state = "[base_state][active]"
 
 /obj/item/melee/energy/hfmachete/attack_self(mob/user)
-	. = ..()
-	if(.)
-		return
 	toggleActive(user)
 	add_fingerprint(user)
 

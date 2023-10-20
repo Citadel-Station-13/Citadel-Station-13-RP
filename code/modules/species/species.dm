@@ -43,7 +43,8 @@
 	//? Traits / Physiology
 	/// Intrinsic datum traits to apply to the mob
 	var/list/mob_traits
-	//  todo: list of physiologies to add. list, incase we want to have separate ones for separate biology flags.
+	/// physiology modifier to add - path or instance
+	var/datum/physiology_modifier/mob_physiology_modifier
 
 	//? Additional info
 	/// what you see on tooltip/examine
@@ -197,7 +198,7 @@
 	var/max_additional_languages = 3
 	/// The languages the species can't speak without an assisted organ.
 	/// This list is a guess at things that no one other than the parent species should be able to speak
-	var/list/assisted_langs = list(LANGUAGE_EAL, LANGUAGE_SKRELLIAN, LANGUAGE_SKRELLIANFAR, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
+	var/list/assisted_langs = list(LANGUAGE_EAL, LANGUAGE_SKRELLIAN, LANGUAGE_SKRELLIANFAR, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX, LANGUAGE_PROMETHEAN)
 
 	//? Cultures
 	/// default origin
@@ -527,6 +528,9 @@
 
 	H.maxHealth = total_health
 
+	if(!isnull(mob_physiology_modifier))
+		H.add_physiology_modifier(mob_physiology_modifier)
+
 	add_inherent_verbs(H)
 
 	for(var/name in traits)
@@ -552,6 +556,9 @@
 	remove_inherent_spells(H)
 	remove_inherent_verbs(H)
 	H.holder_type = null
+
+	if(!isnull(mob_physiology_modifier))
+		H.remove_physiology_modifier(mob_physiology_modifier)
 
 	for(var/name in traits)
 		var/datum/trait/T = all_traits[name]

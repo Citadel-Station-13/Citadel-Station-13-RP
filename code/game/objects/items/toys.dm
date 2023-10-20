@@ -254,40 +254,102 @@
  */
 /obj/item/toy/sword
 	name = "toy sword"
-	desc = "A cheap, plastic replica of an energy sword. Realistic sounds! Ages 8 and up."
+	desc = "A cheap, plastic replica of an energy sword. Realistic sounds! Ages 8 and up. It can be recolored via Alt-Click."
 	icon = 'icons/obj/weapons.dmi'
-	icon_state = "sword0"
+	icon_state = "esword"
 	item_icons = list(
 		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
 		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
 		)
-	var/active = 0.0
+	var/active = 0
 	w_class = ITEMSIZE_SMALL
 	attack_verb = list("attacked", "struck", "hit")
+	color = "#0099FF"
+	var/colorable = TRUE
+	var/rainbow = FALSE
 
 /obj/item/toy/sword/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return
-	src.active = !( src.active )
-	if (src.active)
-		to_chat(user, SPAN_NOTICE("You extend the plastic blade with a quick flick of your wrist."))
-		playsound(user, 'sound/weapons/saberon.ogg', 50, TRUE)
-		src.icon_state = "swordblue"
-		src.w_class = ITEMSIZE_LARGE
+	if (active)
+		deactivate(user)
 	else
-		to_chat(user, SPAN_NOTICE("You push the plastic blade back down into the handle."))
-		playsound(user, 'sound/weapons/saberoff.ogg', 50, TRUE)
-		src.icon_state = "sword0"
-		src.w_class = ITEMSIZE_SMALL
+		activate(user)
 
 	if(istype(user,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = user
 		H.update_inv_l_hand()
 		H.update_inv_r_hand()
 
-	src.add_fingerprint(user)
+	add_fingerprint(user)
 	return
+
+/obj/item/toy/sword/proc/activate(mob/living/user)
+	if(active)
+		return
+	active = 1
+	if(rainbow)
+		item_state = "[icon_state]_blade_rainbow"
+	else
+		item_state = "[icon_state]_blade"
+	w_class = ITEMSIZE_LARGE
+	playsound(user, 'sound/weapons/saberon.ogg', 50, 1)
+	update_icon()
+	to_chat(user, SPAN_NOTICE("You extend the plastic blade with a quick flick of your wrist."))
+
+/obj/item/toy/sword/proc/deactivate(mob/living/user)
+	if(!active)
+		return
+	playsound(user, 'sound/weapons/saberoff.ogg', 50, 1)
+	to_chat(user, SPAN_NOTICE("You push the plastic blade back down into the handle."))
+	item_state = "[icon_state]"
+	active = 0
+	w_class = initial(w_class)
+	update_icon()
+
+/obj/item/toy/sword/attackby(obj/item/W, mob/user)
+	if(istype(W, /obj/item/multitool) && colorable && !active)
+		if(!rainbow)
+			rainbow = TRUE
+		else
+			rainbow = FALSE
+		to_chat(user, "<span class='notice'>You manipulate the color controller in [src].</span>")
+		update_icon()
+	return ..()
+
+/obj/item/toy/sword/update_icon()
+	. = ..()
+	var/mutable_appearance/blade_overlay = mutable_appearance(icon, "[icon_state]_blade")
+	blade_overlay.color = color
+	if(rainbow)
+		blade_overlay = mutable_appearance(icon, "[icon_state]_blade_rainbow")
+		blade_overlay.color = "FFFFFF"
+		color = "FFFFFF"
+	cut_overlays()		//So that it doesn't keep stacking overlays non-stop on top of each other
+	if(active)
+		add_overlay(blade_overlay)
+	if(istype(usr,/mob/living/carbon/human))
+		var/mob/living/carbon/human/H = usr
+		H.update_inv_l_hand()
+		H.update_inv_r_hand()
+
+/obj/item/toy/sword/AltClick(mob/living/user)
+	if(!colorable) //checks if is not colorable
+		return
+	if(!in_range(src, user))	//Basic checks to prevent abuse
+		return
+	if(user.incapacitated() || !istype(user))
+		to_chat(user, "<span class='warning'>You can't do that right now!</span>")
+		return
+
+	if(alert("Are you sure you want to recolor your blade?", "Confirm Recolor", "Yes", "No") == "Yes")
+		var/energy_color_input = input(usr,"","Choose Energy Color",color) as color|null
+		if(energy_color_input)
+			color = "#[sanitize_hexcolor(energy_color_input)]"
+			deactivate()
+		update_icon()
+	. = ..()
 
 /obj/item/toy/katana
 	name = "replica katana"

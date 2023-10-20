@@ -658,8 +658,8 @@
 	drop_get_turf = FALSE
 
 /obj/random/mre/dessert/item_to_spawn()
-	return pick(/obj/item/reagent_containers/food/snacks/candy,
-				/obj/item/reagent_containers/food/snacks/candy/proteinbar,
+	return pick(/obj/item/reagent_containers/food/snacks/wrapped/candy,
+				/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,
 				/obj/item/reagent_containers/food/snacks/donut/normal,
 				/obj/item/reagent_containers/food/snacks/donut/cherryjelly,
 				/obj/item/reagent_containers/food/snacks/chocolatebar,
@@ -670,7 +670,7 @@
 	desc = "This is a random vegan dessert for MREs."
 
 /obj/random/mre/dessert/vegan/item_to_spawn()
-	return pick(/obj/item/reagent_containers/food/snacks/candy,
+	return pick(/obj/item/reagent_containers/food/snacks/wrapped/candy,
 				/obj/item/reagent_containers/food/snacks/chocolatebar,
 				/obj/item/reagent_containers/food/snacks/donut/cherryjelly,
 				/obj/item/reagent_containers/food/snacks/plumphelmetbiscuit)
@@ -876,12 +876,12 @@
 		prob(4);/obj/item/ammo_magazine/m9mmt,
 		prob(4);/obj/item/ammo_magazine/m57x28mmp90,
 		prob(4);/obj/item/ammo_magazine/m10mm,
-		prob(4);/obj/item/ammo_magazine/m545/small,
+		prob(4);/obj/item/ammo_magazine/m556/small,
 		prob(3);/obj/item/ammo_magazine/clip/c10mm,
 		prob(3);/obj/item/ammo_magazine/clip/c44,
 		prob(3);/obj/item/ammo_magazine/s44,
 		prob(3);/obj/item/ammo_magazine/m762,
-		prob(3);/obj/item/ammo_magazine/m545,
+		prob(3);/obj/item/ammo_magazine/m556,
 		prob(3);/obj/item/cell/device/weapon,
 		prob(2);/obj/item/ammo_magazine/m44,
 		prob(2);/obj/item/ammo_magazine/s357,

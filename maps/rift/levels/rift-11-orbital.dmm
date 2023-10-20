@@ -2726,7 +2726,7 @@
 	},
 /area/centcom/simulated/evac)
 "iS" = (
-/obj/structure/memorial/small/left,
+/obj/structure/memorial,
 /turf/unsimulated/floor/steel{
 	icon_state = "asteroidfloor"
 	},
@@ -7052,7 +7052,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "zs" = (
@@ -8740,14 +8740,14 @@
 /obj/structure/table/rack,
 /obj/item/gun/ballistic/automatic/lmg,
 /obj/item/gun/ballistic/automatic/lmg,
-/obj/item/ammo_magazine/m545saw,
-/obj/item/ammo_magazine/m545saw,
-/obj/item/ammo_magazine/m545saw,
-/obj/item/ammo_magazine/m545saw,
-/obj/item/ammo_magazine/m545saw,
-/obj/item/ammo_magazine/m545saw,
-/obj/item/ammo_magazine/m545saw/ap,
-/obj/item/ammo_magazine/m545saw/ap,
+/obj/item/ammo_magazine/m556saw,
+/obj/item/ammo_magazine/m556saw,
+/obj/item/ammo_magazine/m556saw,
+/obj/item/ammo_magazine/m556saw,
+/obj/item/ammo_magazine/m556saw,
+/obj/item/ammo_magazine/m556saw,
+/obj/item/ammo_magazine/m556saw/ap,
+/obj/item/ammo_magazine/m556saw/ap,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
 "NU" = (
@@ -8763,12 +8763,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/centcom/command)
-"NZ" = (
-/obj/structure/memorial/small/right,
-/turf/unsimulated/floor/steel{
-	icon_state = "asteroidfloor"
-	},
-/area/centcom/simulated/evac)
 "Oc" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -9915,10 +9909,10 @@
 	dir = 8
 	},
 /obj/structure/table/rack,
-/obj/item/ammo_magazine/m545,
-/obj/item/ammo_magazine/m545,
-/obj/item/ammo_magazine/m545,
-/obj/item/ammo_magazine/m545,
+/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/m556,
 /obj/item/gun/ballistic/automatic/sts35,
 /obj/item/gun/ballistic/automatic/sts35,
 /turf/unsimulated/floor/dark,
@@ -20666,7 +20660,7 @@ hP
 cN
 hy
 ij
-NZ
+iT
 iT
 iP
 ij

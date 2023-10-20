@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 // someday, we'll combine /carbon and /human to /complex
 // let me believe.......
 

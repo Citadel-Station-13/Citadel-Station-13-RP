@@ -262,7 +262,7 @@
 	energy = 20000
 	max_energy = 20000
 	regen_rate = 25 //800 seconds to full
-	slowdown = 1
+	weight = ITEM_WEIGHT_TECHNOMANCER_BULKY_CORE
 	instability_modifier = 1.0
 	spell_power_modifier = 1.4
 

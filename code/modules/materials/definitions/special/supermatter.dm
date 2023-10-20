@@ -1,5 +1,5 @@
 /datum/material/supermatter
-	id = "supermatter"
+	id = MAT_SUPERMATTER
 	name = "supermatter"
 	icon_colour = "#FFFF00"
 	stack_type = /obj/item/stack/material/supermatter
@@ -15,3 +15,12 @@
 	sheet_plural_name = "crystals"
 	is_fusion_fuel = 1
 	stack_origin_tech = list(TECH_MATERIAL = 8, TECH_PHORON = 5, TECH_BLUESPACE = 4)
+
+/datum/material/supermatter/generate_recipes()
+	. = ..()
+	. += create_stack_recipe_datum(
+		name = "supermatter shard",
+		product = /obj/machinery/power/supermatter/shard,
+		cost = 30,
+		time = 30 SECONDS,
+	)

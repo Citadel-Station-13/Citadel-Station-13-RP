@@ -54,7 +54,7 @@
 	)
 	RefreshParts()
 
-/obj/machinery/mining/drill/get_cell()
+/obj/machinery/mining/drill/get_cell(inducer)
 	return cell
 
 /obj/machinery/mining/drill/process(delta_time)
