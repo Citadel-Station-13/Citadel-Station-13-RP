@@ -10,8 +10,18 @@
 		override = fetch_rig_theme(override)
 	ASSERT(istype(override))
 	wipe_everything()
+	var/datum/rig_theme/initializing = override
+	initializing.imprint_control_appearance(src)
+	initializing.imprint_control_behavior(src)
+	initializing.imprint_control_legacy(src)
+	for(var/datum/rig_piece/piece_data as anything in initializing.pieces)
+		var/datum/component/rig_piece/piece = piece_data.instantiate
+		add_piece(piece)
+		sync_piece(piece)
+	// todo: modules
 	ui_queue_everything()
-	#warn impl
 
 /obj/item/rig/proc/ensure_theme()
-	#warn impl
+	if(theme_initialized)
+		return
+	init_theme()

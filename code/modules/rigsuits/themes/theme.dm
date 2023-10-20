@@ -76,6 +76,9 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 /datum/rig_theme/proc/imprint_control_behavior(obj/item/rig/control_module)
 	#warn impl
 
+/datum/rig_theme/proc/imprint_control_legacy(obj/item/rig/control_module)
+	#warn impl - vars like armor/insulated/etc
+
 /datum/rig_theme/proc/add_piece(datum/rig_piece/piece_path)
 	if(ispath(piece_path))
 		piece_path = new piece_path
@@ -144,8 +147,8 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 	var/obj/item/created_item = new path
 	var/datum/component/rig_piece/created_piece = created_item.AddComponent(/datum/component/rig_piece, src)
 	imprint_appearance(created_piece)
-	imprint_behavior(piece_component)
-	#warn impl
+	imprint_behavior(created_piece)
+	return created_piece
 
 /datum/rig_piece/proc/imprint_appearance(datum/component/rig_piece/piece_component)
 	#warn impl

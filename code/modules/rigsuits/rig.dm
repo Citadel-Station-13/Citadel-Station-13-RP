@@ -30,7 +30,7 @@
 
 	//* Theme
 	/// default theme
-	var/theme_initial = /datum/rig_theme/station/civilian/standard
+	var/theme_preset = /datum/rig_theme/station/civilian/standard
 	/// Is our theme initialized?
 	var/theme_initialized = FALSE
 
@@ -60,9 +60,9 @@
 /obj/item/rig/Initialize(mapload, datum/rig_theme/theme_like)
 	. = ..()
 	if(isnull(theme_like))
-		theme_like = theme_initial
+		theme_like = theme_preset
 	if(ispath(theme_like))
-		theme_initial = theme_like
+		theme_preset = theme_like
 	else
 		init_theme(theme_like)
 
