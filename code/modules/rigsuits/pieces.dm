@@ -1,22 +1,27 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
-/obj/item/rig/proc/deploy_piece(datum/component/rig_piece/piece, immediate, seal)
+/obj/item/rig/proc/deploy_piece(datum/event_args/actor/actor, datum/component/rig_piece/piece, instant, force)
 	#warn impl
 
-/obj/item/rig/proc/undeploy_piece(datum/component/rig_piece/piece, immediate)
+/obj/item/rig/proc/undeploy_piece(datum/event_args/actor/actor, datum/component/rig_piece/piece, instant)
 	#warn impl
 
-/obj/item/rig/proc/seal_piece(datum/component/rig_piece/piece, immediate)
+/obj/item/rig/proc/seal_piece(datum/event_args/actor/actor, datum/component/rig_piece/piece, instant)
 	#warn impl
 
-/obj/item/rig/proc/unseal_piece(datum/component/rig_piece/piece, immediate)
+/obj/item/rig/proc/unseal_piece(datum/event_args/actor/actor, datum/component/rig_piece/piece, instant)
 	#warn impl
 
 #warn impl
 
+/obj/item/rig/proc/deploy(datum/event_args/actor/actor, instant, force)
+
+/obj/item/rig/proc/undeploy(datum/event_args/actor/actor, instant)
+
 /obj/item/rig/proc/add_piece(datum/component/rig_piece/piece)
-	#warn impl
+	piece_components += piece
+	piece_items += piece.parent
 
 /obj/item/rig/proc/legacy_sync_piece(datum/component/rig_piece/piece)
 	var/obj/item/physical = piece.parent

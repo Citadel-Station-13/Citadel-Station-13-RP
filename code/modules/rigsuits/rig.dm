@@ -1,6 +1,15 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
+/**
+ * # Rigsuits
+ *
+ * Modular suit system.
+ *
+ * ## Pieces
+ *
+ * * Pieces automatically un/seal based on activation state when un/deploying.
+ */
 /obj/item/rig
 	name = "rig control module"
 	desc = "A control module for some kind of suit."
