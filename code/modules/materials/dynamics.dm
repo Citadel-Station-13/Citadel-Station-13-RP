@@ -29,9 +29,12 @@
 	// spreading energy blasts from going through
 	var/ablation_diffusion =
 	// exotic 'energy' armor
-	var/exotic_absorption =
+	// todo: this is a weird formula
+	var/exotic_absorption = (nullification + 0.2 * refraction + 0.1 * absorption)
+	exotic_absorption = exotic_absorption > 0? clamp(((exotic_absorption * significance_as_multiplier) ** 0.73) * 0.007, 0, 1) : \
+		clamp(-(((-exotic_absorption * significance_as_multiplier) ** 0.73) * 0.007), -1, 0)
 	// bomb values : from kinetic damping and hardness
-	var/direct_bomb = (1 / (-((kinetic_damping + kinetic_hardness) * significance_as_multiplier + 400) * 0.000025)) + 100
+	var/direct_bomb = 1 - (0.01 * ((1 / (-((kinetic_damping + kinetic_hardness) * significance_as_multiplier + 400) * 0.000025)) + 100))
 	// direct values
 	// todo: integrate significance
 	var/direct_bio = relative_permeability > 1? -relative_permeability : relative_permeability
@@ -39,15 +42,16 @@
 	var/direct_acid = relative_reactivity > 1? -relative_reactivity : relative_reactivity
 	// todo: integrate significance
 	var/direct_fire = relative_reactivity > 1? -relative_reactivity : relative_reactivity
-	var/direct_rad = (density * (1 / 16))**2 * significance_as_multiplier
-	#warn FUCK
+	var/direct_rad = clamp(1 - (density * significance_multiplier * (1 / 55))**2, 0, 1)
 	// tier; hardness is important
 	// we grab this first because we need to module the actual armor by this
 	// it's a bit dumb but until we have proper material science like dwarf fortress
 	// and bludgeon/slash/pierce a la bg3, we're stuck with this
-	var/kinetic_tier = ((kinetic_hardness + kinetic_damping * 0.2) ** 0.5) * 0.1
+	#warn redo this - this is busted
+	var/kinetic_tier = (((kinetic_hardness + kinetic_damping * 0.2) * significance_as_multiplier) ** 0.5) * 0.1
 	// sike i can't math for shit we'll use kinetic absorption as just the inverse lol
-	var/kinetic_absorb = ((kinetic_hardness * 0.2 + kinetic_damping) ** 0.5) * 0.1
+	#warn redo this - this is busted
+	var/kinetic_absorb = (((kinetic_hardness * 0.2 + kinetic_damping) * significance_as_multiplier) ** 0.5) * 0.1
 	// we don't allow deflection for now
 	return (armor_cache = fetch_armor_struct(list(
 		ARMOR_MELEE = kinetic_absorb,
@@ -58,7 +62,7 @@
 		ARMOR_BULLET_SOAK = kinetic_damping * 0.0025 + kinetic_hardness * 0.005,
 		ARMOR_LASER = ,
 		ARMOR_LASER_TIER = ,
-		ARMOR_LASER_SOAK = ,
+		ARMOR_LASER_SOAK = 1 - exotic_absorption,
 		ARMOR_BOMB = direct_bomb,
 		ARMOR_BIO = direct_bio,
 		ARMOR_ACID = direct_acid,
