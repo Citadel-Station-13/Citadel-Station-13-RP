@@ -26,7 +26,7 @@
 	var/kinetic_hardness = hardness * ((density ** 0.5) * (1 / 8) + 0.7)
 	// absorbing energy blasts
 	var/ablation_damping =
-	// spreading energy blasts from going through
+	// stopping energy blasts from penetrating
 	var/ablation_diffusion =
 	// exotic 'energy' armor
 	// todo: this is a weird formula
@@ -42,7 +42,7 @@
 	var/direct_acid = relative_reactivity > 1? -relative_reactivity : relative_reactivity
 	// todo: integrate significance
 	var/direct_fire = relative_reactivity > 1? -relative_reactivity : relative_reactivity
-	var/direct_rad = clamp(1 - ((density + nullification * 0.01) * significance_multiplier * (1 / 55))**2, 0, 1)
+	var/direct_rad = clamp(1 - ((density + nullification * 0.025 + refraction * 0.01 + absorption * 0.0075) * significance_multiplier * (1 / 55))**2, 0, 1)
 	// tier; hardness is important
 	// we grab this first because we need to module the actual armor by this
 	// it's a bit dumb but until we have proper material science like dwarf fortress
@@ -144,3 +144,8 @@
 
 	melee_cache[cache_key] = .
 
+/obj/item/proc/apply_melee_stats(list/melee_stats, base_damage = 0, base_tier = 0, mod_damage = 1)
+	damage_force = base_damage + mod_damage * melee_stats[MATERIAL_MELEE_STATS_DAMAGE]
+	damage_flag = melee_stats[MATERIAL_MELEE_STATS_FLAG]
+	damage_mode = melee_stats[MATERIAL_MELEE_STATS_MODE]
+	damage_tier = base_tier + melee_stats[MATERIAL_MELEE_STATS_TIERMOD]

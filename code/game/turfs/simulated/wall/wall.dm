@@ -154,11 +154,11 @@
 		if(material_reinf)
 			material_reinf.place_dismantled_girder(src, material_reinf, material_girder)
 		else
-			material.place_dismantled_girder(src, null, material_girder)
+			material_girder.place_dismantled_girder(src, null, material_girder)
 		if(!devastated)
-			material.place_dismantled_product(src)
-			if (!material_reinf)
-				material.place_dismantled_product(src)
+			material_outer.place_dismantled_product(src)
+			if(isnull(material_reinf))
+				material_outer.place_dismantled_product(src)
 
 	for(var/obj/O in src.contents) //Eject contents!
 		if(istype(O,/obj/structure/sign/poster))

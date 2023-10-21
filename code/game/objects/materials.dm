@@ -186,6 +186,7 @@
  */
 /obj/proc/get_primary_material()
 	SHOULD_NOT_OVERRIDE(TRUE)
+	RETURN_TYPE(/datum/material)
 	return isnull(material_primary)? null : material_get_part(material_primary)
 
 /**
