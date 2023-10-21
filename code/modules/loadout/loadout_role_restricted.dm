@@ -874,22 +874,22 @@
 /datum/loadout_entry/restricted/engineering/uniform/jeans/atmos
 	name = "Atmospheric Technicians Jumpjeans"
 	path = /obj/item/clothing/under/rank/atmospheric_technician/jeans
-	allowed_roles = list("Chief Engineer", "Atmospheric Technician")
+	allowed_roles = list("Chief Engineer", "Atmospheric Technician", "Senior Engineer")
 
 /datum/loadout_entry/restricted/engineering/uniform/fem_jeans/atmos
 	name = "Atmospheric Technicians Jumpjeans - Female"
 	path = /obj/item/clothing/under/rank/atmospheric_technician/fem_jeans
-	allowed_roles = list("Chief Engineer", "Atmospheric Technician")
+	allowed_roles = list("Chief Engineer", "Atmospheric Technician", "Senior Engineer")
 
 /datum/loadout_entry/restricted/engineering/uniform/atmos_skirt
 	name = "Atmospherics Skirt"
 	path = /obj/item/clothing/under/rank/atmospheric_technician/skirt
-	allowed_roles = list("Chief Engineer", "Atmospheric Technician")
+	allowed_roles = list("Chief Engineer", "Atmospheric Technician", "Senior Engineer")
 
 /datum/loadout_entry/restricted/engineering/uniform/atmos_pleated_skirt
 	name = "Atmospherics Pleated Skirt"
 	path = /obj/item/clothing/under/rank/atmospheric_technician/skirt_pleated
-	allowed_roles = list("Chief Engineer", "Atmospheric Technician")
+	allowed_roles = list("Chief Engineer", "Atmospheric Technician", "Senior Engineer")
 
 /datum/loadout_entry/restricted/engineering/uniform/jeans
 	name = "Engineering Jumpjeans"
@@ -943,7 +943,7 @@
 /datum/loadout_entry/restricted/engineering/suit/wintercoat/atmos
 	name = "Atmospherics Winter Coat"
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat/engineering/atmos
-	allowed_roles = list("Chief Engineer", "Atmospheric Technician")
+	allowed_roles = list("Chief Engineer", "Atmospheric Technician", "Senior Engineer")
 
 /datum/loadout_entry/restricted/engineering/suit/wintercoat/ce
 	name = "Chief Engineers Winter Coat"
@@ -987,7 +987,7 @@
 /datum/loadout_entry/restricted/engineering/shoes/winterboots/atmos
 	name = "Atmospherics Winter Boots"
 	path = /obj/item/clothing/shoes/boots/winter/atmos
-	allowed_roles = list("Chief Engineer", "Atmospheric Technician")
+	allowed_roles = list("Chief Engineer", "Atmospheric Technician", "Senior Engineer")
 
 
 
