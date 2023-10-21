@@ -47,11 +47,9 @@
 	// we grab this first because we need to module the actual armor by this
 	// it's a bit dumb but until we have proper material science like dwarf fortress
 	// and bludgeon/slash/pierce a la bg3, we're stuck with this
-	#warn redo this - this is busted
 	var/kinetic_tier = (((kinetic_hardness + kinetic_damping * 0.2) * significance_as_multiplier) ** 0.5) * 0.1
 	// sike i can't math for shit we'll use kinetic absorption as just the inverse lol
-	#warn redo this - this is busted
-	var/kinetic_absorb = (((kinetic_hardness * 0.2 + kinetic_damping) * significance_as_multiplier) ** 0.5) * 0.1
+	var/kinetic_absorb = 1.6 * (1 / (1 + NUM_E ** -(0.004 * (kinetic_hardness * 0.2 + kinetic_damping)))) - 0.5 * 1.6
 	// we don't allow deflection for now
 	return (armor_cache = fetch_armor_struct(list(
 		ARMOR_MELEE = kinetic_absorb,
