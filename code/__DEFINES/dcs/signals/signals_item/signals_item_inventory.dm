@@ -11,8 +11,8 @@
 //  todo: implement on pickup
 //  todo: implement on unequipped
 //  todo: implement on equipped
-	#define COMOPNENT_ITEM_INV_OP_RELOCATE				(1<<0)
-	#define COMOPNENT_ITEM_INV_OP_SUPPRESS_SOUND		(1<<1)
+	#define COMPONENT_ITEM_INV_OP_RELOCATE				(1<<0)
+	#define COMPONENT_ITEM_INV_OP_SUPPRESS_SOUND		(1<<1)
 
 
 /// Called on [/obj/item] before unequip from base of [mob/proc/doUnEquip]: (force, atom/newloc, no_move, invdrop, silent)

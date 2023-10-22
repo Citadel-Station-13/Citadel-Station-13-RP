@@ -195,10 +195,10 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 
 /datum/rig_piece/proc/imprint_behavior(datum/rig_theme/theme, datum/component/rig_piece/piece_component)
 	var/obj/item/physical = piece_component.parent
-	piece.inv_hide_flags_sealed = inv_hide_flags_active
-	piece.inv_hide_flags_unsealed = inv_hide_flags_inactive
-	piece.rig_piece_flags = rig_piece_flags
-	piece.inventory_slot = equip_slot
+	piece_component.inv_hide_flags_sealed = inv_hide_flags_active
+	piece_component.inv_hide_flags_unsealed = inv_hide_flags_inactive
+	piece_component.rig_piece_flags = rig_piece_flags
+	piece_component.inventory_slot = equip_slot
 
 /datum/rig_piece/helmet
 	display_name = "helmet"
