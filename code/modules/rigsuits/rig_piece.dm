@@ -13,6 +13,10 @@
 	//* Flags
 	/// piece intrinsic flags
 	var/rig_piece_flags = NONE
+	/// inventory hide flags when sealed
+	var/inv_hide_flags_sealed
+	/// inventory hide flags when unsealed
+	var/inv_hide_flags_unsealed
 
 	//* RIG / Piece
 	/// Our controller
@@ -24,7 +28,14 @@
 	/// are we sealed?
 	var/sealed = RIG_PIECE_UNSEALED
 	/// in the process of a seal operation - used internally as a mutex. don't fuck with this var.
-	var/seal_mutex
+	var/seal_mutex = FALSE
+	/// the cycle of the sealing operation we're in, so we can override existing ones by changing this number
+	var/seal_operation = 0
+
+	//* Stats
+	//! todo: legacy
+	/// insulated gloves support
+	var/always_fully_insulated = FALSE
 
 /datum/component/rig_piece/Initialize(obj/item/rig/controller)
 	. = ..()
@@ -37,11 +48,18 @@
 
 /datum/component/rig_piece/RegisterWithParent()
 	. = ..()
-	#warn impl
+	RegisterSignal(parent, COMSIG_ITEM_UNEQUIPPED, PROC_REF(signal_unequipped))
 
 /datum/component/rig_piece/UnregisterFromParent()
 	. = ..()
-	#warn impl
+	UnregisterSignal(parent, COMSIG_ITEM_UNEQUIPPED)
+
+/datum/component/rig_piece/proc/signal_unequipped(datum/source, mob/unequipper, slot, flags)
+	SIGNAL_HANDLER
+	if(flags & INV_OP_SHOULD_NOT_INTERCEPT)
+		return
+	retract(INV_OP_FORCE)
+	return COMPONENT_ITEM_INV_OP_RELOCATE | COMPONENT_ITEM_INV_OP_SUPPRESS_SOUND
 
 /datum/component/rig_piece/proc/tgui_piece_data()
 	return list(
@@ -51,11 +69,33 @@
 	)
 	#warn impl
 
-/datum/component/rig_piece/proc/seal(time)
+/**
+ * @params
+ * * actor - (optional) actor data for this action
+ * * silent - suppress sound
+ * * subtle - suppress message
+ */
+/datum/component/rig_piece/proc/seal(datum/event_args/actor/actor, silent, subtle)
+	// todo: sound
+	// todo: feedback visual?
+	var/obj/item/physical = parent
+	physical.worn_state = state_worn_sealed
+	physical.icon_state = state_sealed
+	controller.legacy_sync_piece(src, TRUE)
 
-/datum/component/rig_piece/proc/unseal(time)
-
-#warn impl all
+/**
+ * @params
+ * * actor - (optional) actor data for this action
+ * * silent - suppress sound
+ * * subtle - suppress message
+ */
+/datum/component/rig_piece/proc/unseal(datum/event_args/actor/actor, silent, subtle)
+	// todo: sound
+	// todo: feedback visual?
+	var/obj/item/physical = parent
+	physical.worn_state = state_worn_unsealed
+	physical.icon_state = state_unsealed
+	controller.legacy_sync_piece(src, FALSE)
 
 /datum/component/rig_piece/proc/deploy(mob/onto, inv_op_flags)
 	var/obj/item/I = parent
@@ -65,10 +105,23 @@
 		retract(inv_op_flags)
 	if(isnull(inventory_slot))
 		return FALSE
-	return onto.equip_to_slot_if_possible(I, inventory_slot, inv_op_flags)
+	. = onto.equip_to_slot_if_possible(I, inventory_slot, inv_op_flags, onto)
+	if(!.)
+		return
+	// todo: some kind of visual feedback to people around them?
 
 /datum/component/rig_piece/proc/retract(inv_op_flags)
-	#warn impl
+	var/obj/item/I = parent
+	if(I.loc == controller)
+		return TRUE
+	var/mob/wearing = I.worn_mob()
+	if(!isnull(wearing))
+		I.forceMove(controller)
+	else
+		. = wearing.transfer_item_to_loc(I, controller, inv_op_flags, wearing)
+		if(!.)
+			return	#warn impl
+	// todo: some kind of visual feedback to people around them?
 
 /datum/component/rig_piece/proc/is_deployed()
 	var/obj/item/I = parent

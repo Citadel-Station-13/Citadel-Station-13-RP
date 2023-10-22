@@ -52,6 +52,10 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 	var/coloration_mode = COLORATION_MODE_NONE
 	/// default coloration amount
 	var/coloration_amount = 0
+	/// bodytypes implemented
+	var/datum/bodytypes/worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	/// fallback bodytypes
+	var/datum/bodytypes/worn_bodytypes_fallback = BODYTYPES_ALL
 
 	//* base stats
 	/// startup / shutdown time
@@ -83,6 +87,8 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 	#warn values lmao
 
 /datum/rig_theme/New()
+	CONSTRUCT_BODYTYPES(worn_bodytypes)
+	CONSTRUCT_BODYTYPES(worn_bodytypes_fallback)
 	var/list/old_pieces = pieces
 	pieces = list()
 	for(var/path in old_pieces)
@@ -92,6 +98,7 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 	#warn impl
 
 /datum/rig_theme/proc/imprint_control_behavior(obj/item/rig/control_module)
+	control_module.siemens_coefficient = siemens_coefficient
 	#warn impl
 
 /datum/rig_theme/proc/imprint_control_legacy(obj/item/rig/control_module)
@@ -135,9 +142,9 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 	/// worn rendering flags
 	var/worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	/// bodytypes implemented
-	var/worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
-	/// bodytypes squashed
-	var/worn_bodytypes_fallback = BODYTYPES_ALL
+	var/datum/bodytypes/worn_bodytypes
+	/// fallback bodytypes
+	var/datum/bodytypes/worn_bodytypes_fallback
 	/// slot this goes in - SLOT_ID_HANDS for an inhand item. specific-hand binding not supported yet.
 	var/equip_slot
 	/// inv hide flags while unsealed
@@ -162,19 +169,36 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 /**
  * returns rig_piece component
  */
-/datum/rig_piece/proc/instantiate()
+/datum/rig_piece/proc/instantiate(datum/rig_theme/theme, obj/item/rig/controller)
 	ASSERT(ispath(path, /obj/item))
 	var/obj/item/created_item = new path
-	var/datum/component/rig_piece/created_piece = created_item.AddComponent(/datum/component/rig_piece, src)
-	imprint_appearance(created_piece)
-	imprint_behavior(created_piece)
+	var/datum/component/rig_piece/created_piece = created_item.AddComponent(/datum/component/rig_piece, controller)
+	imprint_appearance(theme, created_piece)
+	imprint_behavior(theme, created_piece)
+	// trigger an update by unsealing
+	created_piece.unseal()
 	return created_piece
 
-/datum/rig_piece/proc/imprint_appearance(datum/component/rig_piece/piece_component)
+/datum/rig_piece/proc/imprint_appearance(datum/rig_theme/theme, datum/component/rig_piece/piece_component)
+	var/obj/item/physical = piece_component.parent
+	piece_component.inv_hide_flags_sealed = inv_hide_flags_active
+	piece_component.inv_hide_flags_unsealed = inv_hide_flags_inactive
+	physical.coloration_amount = isnull(coloration_amount)? theme.coloration_amount : coloration_amount
+	physical.coloration_mode = isnull(coloration_mode)? theme.coloration_mode : coloration_mode
+	if(physical.coloration_mode == COLORATION_MODE_MATRIX)
+		physical.set_coloration_matrix(isnull(coloration_matrix)? theme.coloration_matrix : coloration_matrix)
+	else
+		physical.set_coloration_parts(isnull(coloration_colors)? theme.coloration_colors : coloration_colors)
+	// todo: bodytypes
+	// todo: state
 	#warn impl
 
-/datum/rig_piece/proc/imprint_behavior(datum/component/rig_piece/piece_component)
-	#warn impl
+/datum/rig_piece/proc/imprint_behavior(datum/rig_theme/theme, datum/component/rig_piece/piece_component)
+	var/obj/item/physical = piece_component.parent
+	piece.inv_hide_flags_sealed = inv_hide_flags_active
+	piece.inv_hide_flags_unsealed = inv_hide_flags_inactive
+	piece.rig_piece_flags = rig_piece_flags
+	piece.inventory_slot = equip_slot
 
 /datum/rig_piece/helmet
 	display_name = "helmet"
@@ -198,6 +222,12 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 	path = /obj/item/clothing/gloves/rig
 	rig_piece_flags = RIG_PIECE_APPLY_ARMOR | RIG_PIECE_APPLY_ENVIRONMENTALS
 	piece_state_append = "-gloves"
+
+/datum/rig_piece/gloves/imprint_behavior(datum/rig_theme/theme, datum/component/rig_piece/piece_component)
+	. = ..()
+	// todo: legacy
+	if(theme.insulated_gloves)
+		piece_component.always_fully_insulated = TRUE
 
 /datum/rig_piece/boots
 	display_name = "boots"

@@ -446,12 +446,16 @@
 			return 1
 	return coloration_amount
 
-/obj/proc/set_coloration_matrix(list/matrix)
+/obj/proc/set_coloration_matrix(list/color_matrix)
 	if(coloration_mode != COLORATION_MODE_MATRIX)
 		return
-	color = matrix
+	color = color_matrix
 
 /obj/proc/set_coloration_parts(list/colors)
+	if(isnull(colors))
+		if(coloration_mode == COLORATION_MODE_MULTIPLY)
+			color = null
+		return
 	#warn impl
 
 /obj/proc/update_coloration(list/colors)

@@ -102,6 +102,14 @@
 		return
 	return TRUE
 
+/**
+ * Is this an admin attempting to use admin interaction?
+ *
+ * todo: move this to a new 'interaction' framework for admin datums.
+ */
+/proc/is_admin_interactive(mob/user, datum/target)
+	return IsAdminGhost(user) // same checks for now
+
 /// Is the passed in mob a ghost with admin powers, doesn't check for AI interact like isAdminGhost() used to
 /proc/isAdminObserver(mob/user)
 	if(!user) //Are they a mob? Auto interface updates call this with a null src

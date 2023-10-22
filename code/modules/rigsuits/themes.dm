@@ -15,7 +15,7 @@
 	initializing.imprint_control_behavior(src)
 	initializing.imprint_control_legacy(src)
 	for(var/datum/rig_piece/piece_data as anything in initializing.pieces)
-		var/datum/component/rig_piece/piece = piece_data.instantiate()
+		var/datum/component/rig_piece/piece = piece_data.instantiate(initializing, src)
 		add_piece(piece)
 		legacy_sync_piece(piece)
 	// todo: modules

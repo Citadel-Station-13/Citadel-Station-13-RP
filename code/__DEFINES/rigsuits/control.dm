@@ -24,3 +24,5 @@
 /// use internal console
 #define RIG_CONTROL_CONSOLE (1<<11)
 
+#define RIG_CONTROL_FLAGS_ALL ALL
+#define RIG_CONTROL_FLAGS_WEARER ALL

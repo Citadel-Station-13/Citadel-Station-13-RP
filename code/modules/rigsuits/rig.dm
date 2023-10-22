@@ -17,12 +17,16 @@
 	//* Activation
 	/// activation state
 	var/activation_state = RIG_ACTIVATION_OFFLINE
+	/// currently in an activation operation.
+	var/activation_cycling = FALSE
+	/// activation operation identifier - this lets us abort by just changing this while the loop is running
+	var/activation_operation = 0
 
 	//* Appearance (Self)
 	var/state_worn_sealed
 	var/state_worn_unsealed
 	var/state_sealed
-	var/statE_unsealed
+	var/state_unsealed
 
 	//* Legacy - to be made into dynamic data once components/modules are done.
 	var/datum/armor/suit_armor
@@ -45,10 +49,12 @@
 	/// offline weight
 	var/offline_weight
 	/// offline encumbrance
+	//  todo: maybe by-piece ones too..?
 	var/offline_encumbrance
 	/// online weight
 	var/online_weight
 	/// online encumbrance
+	//  todo: maybe by-piece ones too..?
 	var/online_encumbrance
 
 	//* Theme
