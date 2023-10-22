@@ -34,8 +34,13 @@
 		cost = 1,
 	)
 	. += create_stack_recipe_datum(
-		name = "royal throne",
+		name = "apidean chair",
 		product = /obj/structure/bed/chair/apidean,
+		cost = 5,
+	)
+	. += create_stack_recipe_datum(
+		name = "apidean throne",
+		product = /obj/structure/bed/chair/apidean_throne,
 		cost = 10,
 		time = 2 SECONDS,
 	)

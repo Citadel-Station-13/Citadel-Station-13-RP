@@ -219,7 +219,7 @@
 	// if(user.can_admin_interact())
 		// return TRUE
 	var/obj/item/I = user.get_active_held_item()
-	if(istype(I, /obj/item/multitool/alien))
+	if(istype(I, /obj/item/multitool/alien) || istype(I, /obj/item/multitool/clockwork))
 		return TRUE
 	return FALSE
 
