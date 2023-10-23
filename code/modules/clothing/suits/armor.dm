@@ -928,3 +928,11 @@
 	icon_state = "tau"
 	armor_type = /datum/armor/general/utilitarian_military
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/suit/armor/baroque
+	name = "baroque military armor"
+	desc = "This ornately decorated armor has been lovingly adorned with holy symbols. It smells faintly of incense."
+	icon = 'icons/clothing/suit/armor/baroque.dmi'
+	icon_state = "sister"
+	armor_type = /datum/armor/general/baroque_military
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL

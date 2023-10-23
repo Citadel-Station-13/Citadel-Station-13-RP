@@ -244,6 +244,16 @@
 	pickup_sound = 'sound/items/pickup/boots.ogg'
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
+/obj/item/clothing/shoes/boots/baroque
+	name = "baroque military boots"
+	desc = "Small icons of religious significance have been carved into the soles, spreading holiness wherever the wearer treads."
+	icon = 'icons/clothing/suit/armor/baroque.dmi'
+	icon_state = "sisterboots"
+	siemens_coefficient = 0.7
+	drop_sound = 'sound/items/drop/boots.ogg'
+	pickup_sound = 'sound/items/pickup/boots.ogg'
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
 /obj/item/clothing/shoes/boots/paladin
 	name = "elite paladin boots"
 	desc = "These sturdy leather boots have been augmented with tarnished steel plate armor. The soles have been refurbished many times."
