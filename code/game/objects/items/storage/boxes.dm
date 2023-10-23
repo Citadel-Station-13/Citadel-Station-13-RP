@@ -72,7 +72,8 @@
 	name = "emergency supply box"
 	desc = "A survival box issued to crew members for use in emergency situations."
 	starts_with = list(
-		/obj/item/clothing/mask/breath
+		/obj/item/clothing/mask/breath,
+		/obj/item/gun/ballistic/sec
 	)
 
 /obj/item/storage/box/survival/synth
