@@ -25,9 +25,9 @@
 	// stopping kinetic penetrators
 	var/kinetic_hardness = hardness * ((density ** 0.5) * (1 / 8) + 0.7)
 	// absorbing energy blasts
-	var/ablation_damping =
+	var/ablation_damping = (absorption + refraction * 0.2)
 	// stopping energy blasts from penetrating
-	var/ablation_diffusion =
+	var/ablation_diffusion = (absorption * 0.2 + refraction)
 	// exotic 'energy' armor
 	// todo: this is a weird formula
 	var/exotic_absorption = (nullification + 0.2 * refraction + 0.1 * absorption)
@@ -50,6 +50,9 @@
 	var/kinetic_tier = (((kinetic_hardness + kinetic_damping * 0.2) * significance_as_multiplier) ** 0.5) * 0.1
 	// sike i can't math for shit we'll use kinetic absorption as just the inverse lol
 	var/kinetic_absorb = 1.6 * (1 / (1 + NUM_E ** -(0.004 * (kinetic_hardness * 0.2 + kinetic_damping)))) - 0.5 * 1.6
+	// ditto
+	var/laser_tier = 1.6 * (1 / (1 + NUM_E ** -(0.0042 * (ablation_diffusion * significance_as_multiplier)))) - 0.5 * 1.6
+	var/laser_absorb = ((1 / (-(ablation_damping * significance_as_multiplier + 400) * 0.000025)) + 100) * 0.01
 	// we don't allow deflection for now
 	return (armor_cache = fetch_armor_struct(list(
 		ARMOR_MELEE = kinetic_absorb,
@@ -58,9 +61,9 @@
 		ARMOR_BULLET = kinetic_absorb,
 		ARMOR_BULLET_TIER = kinetic_tier,
 		ARMOR_BULLET_SOAK = kinetic_damping * 0.0025 + kinetic_hardness * 0.005,
-		ARMOR_LASER = ,
-		ARMOR_LASER_TIER = ,
-		ARMOR_LASER_SOAK = ,
+		ARMOR_LASER = laser_absorb,
+		ARMOR_LASER_TIER = laser_absorb,
+		ARMOR_LASER_SOAK = ablation_damping * 0.0025 + ablation_difussion * 0.005,
 		ARMOR_ENERGY = 1 - exotic_absorption,
 		ARMOR_BOMB = direct_bomb,
 		ARMOR_BIO = direct_bio,

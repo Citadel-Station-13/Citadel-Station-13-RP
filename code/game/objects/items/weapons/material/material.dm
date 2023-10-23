@@ -24,17 +24,15 @@
 	/// material quantity significance
 	/// this is multiplier to material amount to determine stuff like weight.
 	var/material_factoring = 0.05
+	/// % of force that goes int oforce
+	var/throw_force_multiplier = 1
 
 	var/unbreakable = 0		//Doesn't lose health
 	var/fragile = 0			//Shatters when it dies
 	var/dulled = 0			//Has gone dull
 	var/can_dull = 1		//Can it go dull?
-	var/force_divisor = 0.3
-	var/thrown_force_divisor = 0.3
 	var/dulled_divisor = 0.1	//Just drops the damage to a tenth
 	var/drops_debris = 1
-	// todo: proper material opt-out system on /atom level or something, this is trash
-	var/no_force_calculations = FALSE
 
 /obj/item/material/Initialize(mapload, material)
 	if(!isnull(material))
@@ -62,70 +60,64 @@
 	damage_flag = returned[MATERIAL_MELEE_STATS_FLAG]
 	damage_tier = returned[MATERIAL_MELEE_STATS_TIERMOD]
 
-/obj/item/material/proc/update_force()
-	if(no_force_calculations)
-		return
-	if(edge || sharp)
-		damage_force = material.get_edge_damage()
-	else
-		damage_force = material.get_blunt_damage()
-	damage_force = round(damage_force*force_divisor)
-	if(dulled)
-		damage_force = round(damage_force*dulled_divisor)
-	throw_force = round(material.get_blunt_damage()*thrown_force_divisor)
+	// todo: this is a multiplier, not a divisor
+	throw_force = damage_force * thrown_force_multiplier
 
 /obj/item/material/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
 	MATERIAL_INVOKE(src, MATERIAL_TRAIT_ATTACK, on_mob_attack, target, target_zone, src, ATTACK_TYPE_MELEE)
 
-/obj/item/material/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/whetstone))
-		var/obj/item/whetstone/whet = W
-		repair(whet.repair_amount, whet.repair_time, user)
+// todo: dulling system, maybe /obj/item level..?
+
+
+/obj/item/material/attackby(obj/item/I, mob/user, list/params, clickchain_flags, damage_multiplier)
+	// if(istype(W, /obj/item/whetstone))
+	// 	var/obj/item/whetstone/whet = W
+	// 	repair(whet.repair_amount, whet.repair_time, user)
 	if(istype(W, /obj/item/material/sharpeningkit))
 		var/obj/item/material/sharpeningkit/SK = W
 		repair(SK.repair_amount, SK.repair_time, user)
 	..()
 
-/obj/item/material/proc/check_health(var/consumed)
-	if(health<=0)
-		if(fragile)
-			shatter(consumed)
-		else if(!dulled && can_dull)
-			dull()
+// /obj/item/material/proc/check_health(var/consumed)
+// 	if(health<=0)
+// 		if(fragile)
+// 			shatter(consumed)
+// 		else if(!dulled && can_dull)
+// 			dull()
 
-#warn shatter on impact?
-/obj/item/material/proc/dull()
-	var/turf/T = get_turf(src)
-	T.visible_message("<span class='danger'>\The [src] goes dull!</span>")
-	playsound(src, "shatter", 70, 1)
-	dulled = 1
-	if(is_sharp() || has_edge())
-		sharp = 0
-		edge = 0
+// #warn shatter on impact?
+// /obj/item/material/proc/dull()
+// 	var/turf/T = get_turf(src)
+// 	T.visible_message("<span class='danger'>\The [src] goes dull!</span>")
+// 	playsound(src, "shatter", 70, 1)
+// 	dulled = 1
+// 	if(is_sharp() || has_edge())
+// 		sharp = 0
+// 		edge = 0
 
-/obj/item/material/proc/repair(var/repair_amount, var/repair_time, mob/living/user)
-	if(!fragile)
-		if(health < initial(health))
-			user.visible_message("[user] begins repairing \the [src].", "You begin repairing \the [src].")
-			if(do_after(user, repair_time))
-				user.visible_message("[user] has finished repairing \the [src]", "You finish repairing \the [src].")
-				health = min(health + repair_amount, initial(health))
-				dulled = 0
-				sharp = initial(sharp)
-				edge = initial(edge)
-		else
-			to_chat(user, "<span class='notice'>[src] doesn't need repairs.</span>")
-	else
-		to_chat(user, "<span class='warning'>You can't repair \the [src].</span>")
-		return
+// /obj/item/material/proc/repair(var/repair_amount, var/repair_time, mob/living/user)
+// 	if(!fragile)
+// 		if(health < initial(health))
+// 			user.visible_message("[user] begins repairing \the [src].", "You begin repairing \the [src].")
+// 			if(do_after(user, repair_time))
+// 				user.visible_message("[user] has finished repairing \the [src]", "You finish repairing \the [src].")
+// 				health = min(health + repair_amount, initial(health))
+// 				dulled = 0
+// 				sharp = initial(sharp)
+// 				edge = initial(edge)
+// 		else
+// 			to_chat(user, "<span class='notice'>[src] doesn't need repairs.</span>")
+// 	else
+// 		to_chat(user, "<span class='warning'>You can't repair \the [src].</span>")
+// 		return
 
 /obj/item/material/proc/sharpen(datum/material/material_like, var/sharpen_time, var/kit, mob/living/M)
 	material_like = SSmaterials.resolve_material(material_like)
 	if(!fragile && material_primary)
-		if(integrity < integrity_max)
-			to_chat(M, "You should repair [src] first. Try using [kit] on it.")
-			return FALSE
+		// if(integrity < integrity_max)
+		// 	to_chat(M, "You should repair [src] first. Try using [kit] on it.")
+		// 	return FALSE
 		M.visible_message("[M] begins to replace parts of [src] with [kit].", "You begin to replace parts of [src] with [kit].")
 		if(do_after(usr, sharpen_time))
 			M.visible_message("[M] has finished replacing parts of [src].", "You finish replacing parts of [src].")
