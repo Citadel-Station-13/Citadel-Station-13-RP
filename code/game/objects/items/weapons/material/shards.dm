@@ -3,16 +3,12 @@
 	icon = 'icons/obj/shards.dmi'
 	desc = "Made of nothing. How does this even exist?" // set based on material, if this desc is visible it's a bug (shards default to being made of glass)
 	icon_state = "large"
-	sharp = 1
-	edge = 1
 	w_class = ITEMSIZE_SMALL
-	force_divisor = 0.25 // 7.5 with hardness 30 (glass)
-	thrown_force_divisor = 0.5
+	material_significance = MATERIAL_SIGNIFICANCE_SHARD
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	item_state = "shard-glass"
 	attack_verb = list("stabbed", "slashed", "sliced", "cut")
 	material_parts = /datum/material/glass
-	unbreakable = 1 //It's already broken.
-	drops_debris = 0
 
 /obj/item/material/shard/Initialize(mapload, material)
 	. = ..()

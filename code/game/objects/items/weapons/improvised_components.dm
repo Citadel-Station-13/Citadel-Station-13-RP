@@ -3,8 +3,7 @@
 	desc = "An unfinished concealed knife, it looks like the screws need to be tightened."
 	icon = 'icons/obj/buildingobject.dmi'
 	icon_state = "butterflystep1"
-	force_divisor = 0.1
-	thrown_force_divisor = 0.1
+	material_significance = MATERIAL_SIGNIFICANCE_SHARD
 
 /obj/item/material/butterflyconstruction/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_screwdriver())
@@ -19,8 +18,7 @@
 	desc = "A knife blade. Unusable as a weapon without a grip."
 	icon = 'icons/obj/buildingobject.dmi'
 	icon_state = "butterfly2"
-	force_divisor = 0.1
-	thrown_force_divisor = 0.1
+	material_significance = MATERIAL_SIGNIFICANCE_SHARD
 
 /obj/item/material/butterflyblade/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/duct_tape_roll))
@@ -34,8 +32,7 @@
 	desc = "A plasteel grip with screw fittings for a blade."
 	icon = 'icons/obj/buildingobject.dmi'
 	icon_state = "butterfly1"
-	force_divisor = 0.1
-	thrown_force_divisor = 0.1
+	material_significance = MATERIAL_SIGNIFICANCE_SHARD
 
 /obj/item/material/butterflyhandle/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/material/butterflyblade))
@@ -56,8 +53,7 @@
 	throw_force = 10
 	w_class = ITEMSIZE_NORMAL
 	attack_verb = list("hit", "bludgeoned", "whacked", "bonked")
-	force_divisor = 0.1
-	thrown_force_divisor = 0.1
+	material_significance = MATERIAL_SIGNIFICANCE_SHARD
 
 /obj/item/material/wirerod/attackby(var/obj/item/I, mob/user as mob)
 	..()

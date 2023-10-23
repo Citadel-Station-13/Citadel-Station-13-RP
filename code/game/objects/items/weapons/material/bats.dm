@@ -7,9 +7,7 @@
 	attack_verb = list("smashed", "beaten", "slammed", "smacked", "struck", "battered", "bonked")
 	attack_sound = 'sound/weapons/genhit3.ogg'
 	material_parts = /datum/material/wood
-	force_divisor = 1				// 20 when wielded with weight 20 (steel)
-	unwielded_force_divisor = 0.7	// 15 when unwielded based on above.
-	dulled_divisor = 0.8			// A "dull" bat is still gonna hurt
+	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_MEDIUM
 	slot_flags = SLOT_BACK
 
 // Predefined materials go here.
@@ -39,8 +37,5 @@
 	desc = "I won't dignify this one with a description."
 	icon_state = "penbat0"
 	base_icon = "penbat"
-	damage_force = 10
-	throw_force = 0
 	attack_verb = list("smacked", "slapped", "thwapped", "struck", "bapped", "bonked")
 	material_parts = /datum/material/plastic
-	no_force_calculations = TRUE

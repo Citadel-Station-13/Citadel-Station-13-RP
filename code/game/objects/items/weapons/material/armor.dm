@@ -65,9 +65,7 @@
 	desc = "A sheet designed to protect something."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "armor_plate"
-	unbreakable = TRUE
-	force_divisor = 0.05 // Really bad as a weapon.
-	thrown_force_divisor = 0.2
+	material_significance = MATERIAL_SIGNIFICANCE_SHARD
 	var/wired = FALSE
 
 /obj/item/material/armor_plating/attackby(var/obj/O, mob/user)

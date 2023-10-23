@@ -3,9 +3,7 @@
 	desc = "An object used in marking graves."
 	icon_state = "gravemarker"
 	w_class = ITEMSIZE_LARGE
-	fragile = 1
-	force_divisor = 0.65
-	thrown_force_divisor = 0.25
+	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_MEDIUM
 
 	var/icon_changes = 1	//Does the sprite change when you put words on it?
 	var/grave_name = ""		//Name of the intended occupant

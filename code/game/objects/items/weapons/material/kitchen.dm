@@ -93,6 +93,7 @@
 	desc = "It's a spoon. You can see your own upside-down face in it."
 	icon_state = "spoon"
 	attack_verb = list("attacked", "poked")
+	material_significance = MATERIAL_SIGNIFICANCE_SHARD
 	edge = 0
 	sharp = 0
 	force_divisor = 0.1 //2 when wielded with weight 20 (steel)
