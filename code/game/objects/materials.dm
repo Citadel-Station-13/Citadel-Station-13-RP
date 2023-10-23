@@ -21,7 +21,7 @@
 //?
 //?   example: list(2000, 1000) = 1 sheet of steel and 0.5 sheets of wood as per above
 //?
-//? - update_material_parts will be called with list of keys to instances as values
+//? - update_material_multi will be called with list of keys to instances as values
 //?   so you can implement your behaviors there
 //?
 //? 3. You need multiple materials, and your object is spammed on the map and you need it to be more efficient
@@ -29,7 +29,7 @@
 //?   in material_parts list.
 //? - Override the procs in the abstraction API to point to and use those variables.
 //? - See [code/game/objects/structures/girder.dm] for an example.
-//? - The system will still call update_material_parts for you as long as you call the
+//? - The system will still call update_material_multi for you as long as you call the
 //?   parts API instead of the abstraction API directly. It will, however, not call it with list/parts.
 //? - **Do not ever call the abstraction API directly.**
 
@@ -92,12 +92,24 @@
 		var/list/parts = list()
 		for(var/key in material_parts)
 			parts[key] = SSmaterials.resolve_material(key)
-		update_material_parts(parts)
+		update_material_multi(parts)
 	else if(material_parts == MATERIAL_DEFAULT_DISABLED)
 	else if(material_parts == MATERIAL_DEFAULT_ABSTRACTED)
 		material_init_parts()
 		// skip specifying parts because abstracted
-		update_material_parts()
+		update_material_multi()
+	else
+		update_material_single(SSmaterials.resolve_material(material_parts))
+
+/**
+ * forces a material update
+ */
+/obj/proc/update_material_parts()
+	if(islist(material_parts))
+		update_material_multi(parts)
+	else if(material_parts == MATERIAL_DEFAULT_DISABLED)
+	else if(material_parts == MATERIAL_DEFAULT_ABSTRACTED)
+		update_material_multi()
 	else
 		update_material_single(SSmaterials.resolve_material(material_parts))
 
@@ -148,9 +160,9 @@
 	material_set_part(part, material)
 	if(obj_flags & OBJ_MATERIAL_INITIALIZED)
 		if(islist(material_parts))
-			update_material_parts(material_parts)
+			update_material_multi(material_parts)
 		else if(material_parts == MATERIAL_DEFAULT_ABSTRACTED)
-			update_material_parts()
+			update_material_multi()
 		else
 			update_material_single(material_parts)
 
@@ -165,9 +177,9 @@
 		material_set_part(key, part_instances[key])
 	if(obj_flags & OBJ_MATERIAL_INITIALIZED)
 		if(islist(material_parts))
-			update_material_parts(material_parts)
+			update_material_multi(material_parts)
 		else if(material_parts == MATERIAL_DEFAULT_ABSTRACTED)
-			update_material_parts()
+			update_material_multi()
 		else
 			update_material_single(material_parts)
 
@@ -309,7 +321,7 @@
  * @params
  * * parts - list of key-value key to material id. if material_parts is abstracted, parts is null
  */
-/obj/proc/update_material_parts(list/parts)
+/obj/proc/update_material_multi(list/parts)
 	return
 
 /**

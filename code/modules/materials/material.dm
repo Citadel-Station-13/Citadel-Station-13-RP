@@ -209,7 +209,6 @@
 	S.add_fingerprint(user)
 	S.add_to_stacks(user)
 
-
 /datum/material/proc/build_wired_product(mob/living/user, obj/item/stack/used_stack, obj/item/stack/target_stack)
 	if(!wire_product)
 		to_chat(user, SPAN_WARNING("You cannot make anything out of \the [target_stack]."))
@@ -223,7 +222,6 @@
 	to_chat(user, SPAN_NOTICE("You attach wire to the [name]."))
 	var/obj/item/product = new wire_product(get_turf(user))
 	user.put_in_hands(product)
-
 
 /**
  * Handles initializing the material.

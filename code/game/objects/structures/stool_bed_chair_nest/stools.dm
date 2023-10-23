@@ -22,7 +22,7 @@ var/global/list/stool_cache = list() //haha stool
 		material_padding = new_material_padding
 	return ..()
 
-/obj/item/stool/update_material_parts(list/parts)
+/obj/item/stool/update_material_multi(list/parts)
 	. = ..()
 	update_appearance()
 

@@ -26,13 +26,15 @@
 	var/material_factoring = 0.05
 	/// % of force that goes int oforce
 	var/throw_force_multiplier = 1
+	/// direct force multiplier
+	var/force_multiplier = 1
 
-	var/unbreakable = 0		//Doesn't lose health
-	var/fragile = 0			//Shatters when it dies
-	var/dulled = 0			//Has gone dull
-	var/can_dull = 1		//Can it go dull?
-	var/dulled_divisor = 0.1	//Just drops the damage to a tenth
-	var/drops_debris = 1
+	// var/unbreakable = 0		//Doesn't lose health
+	// var/fragile = 0			//Shatters when it dies
+	// var/dulled = 0			//Has gone dull
+	// var/can_dull = 1		//Can it go dull?
+	// var/dulled_divisor = 0.1	//Just drops the damage to a tenth
+	// var/drops_debris = 1
 
 /obj/item/material/Initialize(mapload, material)
 	if(!isnull(material))
@@ -55,13 +57,13 @@
 	name = "[material.display_name] [initial(name)]"
 
 	var/list/returned = material.melee_stats(initial(damage_mode))
-	damage_force = returned[MATERIAL_MELEE_STATS_DAMAGE]
+	damage_force = returned[MATERIAL_MELEE_STATS_DAMAGE] * force_multiplier
 	damage_mode = returned[MATERIAL_MELEE_STATS_MODE]
 	damage_flag = returned[MATERIAL_MELEE_STATS_FLAG]
 	damage_tier = returned[MATERIAL_MELEE_STATS_TIERMOD]
 
 	// todo: this is a multiplier, not a divisor
-	throw_force = damage_force * thrown_force_multiplier
+	throw_force = damage_force * throw_force_multiplier
 
 /obj/item/material/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
@@ -74,10 +76,10 @@
 	// if(istype(W, /obj/item/whetstone))
 	// 	var/obj/item/whetstone/whet = W
 	// 	repair(whet.repair_amount, whet.repair_time, user)
-	if(istype(W, /obj/item/material/sharpeningkit))
-		var/obj/item/material/sharpeningkit/SK = W
-		repair(SK.repair_amount, SK.repair_time, user)
-	..()
+	// if(istype(I, /obj/item/material/sharpeningkit))
+	// 	var/obj/item/material/sharpeningkit/SK = I
+	// 	repair(SK.repair_amount, SK.repair_time, user)
+	return ..()
 
 // /obj/item/material/proc/check_health(var/consumed)
 // 	if(health<=0)

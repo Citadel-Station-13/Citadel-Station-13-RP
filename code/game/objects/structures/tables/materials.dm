@@ -1,4 +1,4 @@
-/obj/structure/table/update_material_parts(list/parts)
+/obj/structure/table/update_material_multi(list/parts)
 	. = ..()
 	var/datum/material/structure = parts[parts[1]]
 	var/datum/material/reinforcing = parts[parts[2]]

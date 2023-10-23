@@ -32,7 +32,7 @@
 	. = ..()
 	update_appearance()
 
-/obj/structure/girder/update_material_parts(list/parts)
+/obj/structure/girder/update_material_multi(list/parts)
 	if(isnull(material_reinforcing))
 		if(isnull(material_structure))
 			name = "girder"

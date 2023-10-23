@@ -4,8 +4,7 @@ var/global/list/ashtray_cache = list()
 	name = "ashtray"
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "blank"
-	force_divisor = 0.1
-	thrown_force_divisor = 0.1
+	material_significance = MATERIAL_SIGNIFICANCE_SHARD
 	materials_base = list(MAT_STEEL = 4000)
 	material_parts = /datum/material/steel
 	var/image/base_image

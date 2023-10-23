@@ -5,7 +5,8 @@
 	desc = "A common design throughout the galaxy, this is a metal spear used for hunting fish (or people in voidsuits, to devestating effect)."
 	icon_state = "harpoon"
 	item_state = "harpoon"
-	force_divisor = 0.3 // 18 with hardness 60 (steel)
+	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_HEAVY
+	damage_mode = DAMAGE_MODE_SHARP
 	attack_verb = list("jabbed","stabbed","ripped")
 
 /obj/item/material/harpoon/plasteel
@@ -19,11 +20,9 @@
 	desc = "A one-handed axe, with a short fibremetal handle. There's an infinite amount of variations in the galaxy, but this one's used for chopping wood."
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "hatchet"
-	force_divisor = 0.2 // 12 with hardness 60 (steel)
-	thrown_force_divisor = 0.75 // 15 with weight 20 (steel)
+	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_HEAVY
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	w_class = ITEMSIZE_SMALL
-	sharp = 1
-	edge = 1
 	origin_tech = list(TECH_MATERIAL = 2, TECH_COMBAT = 1)
 	attack_verb = list("chopped", "torn", "cut")
 	material_color = 0
@@ -69,9 +68,7 @@
 	desc = "It's used for removing weeds and tilling soil."
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "hoe"
-	force_divisor = 0.25 // 5 with weight 20 (steel)
-	thrown_force_divisor = 0.25 // as above
-	dulled_divisor = 0.75	//Still metal on a long pole
+	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_LIGHT
 	w_class = ITEMSIZE_SMALL
 	attack_verb = list("slashed", "sliced", "cut", "clawed")
 
@@ -93,10 +90,8 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "snowball"
 	material_parts = /datum/material/snow
-	integrity = 1
-	fragile = 1
-	force_divisor = 0.01
-	thrown_force_divisor = 0.10
+	material_significance = MATERIAL_SIGNIFICANCE_SHARD
+	force_multiplier = 0
 	w_class = ITEMSIZE_SMALL
 	attack_verb = list("mushed", "splatted", "splooshed", "splushed") // Words that totally exist.
 
@@ -120,8 +115,9 @@
 	name = "snowball"
 	desc = "A well-formed and fun snowball. It looks kind of dangerous."
 	//icon_state = "considered_reinforced-snowball"
-	force_divisor = 0.20
-	thrown_force_divisor = 0.25
+	force_multiplier = 0.25
+	throw_force_multiplier = 4 // this compounds with force_multiplier
+	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_ULTRALIGHT
 
 /obj/item/material/butterfly/saw //This Saw Cleaver is in here since I do not know where else to put it
 	name = "Saw Cleaver"
@@ -137,23 +133,22 @@
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	w_class = ITEMSIZE_LARGE
-	edge = 1
-	sharp = 1
-	force_divisor = 0.7 //42 When Wielded in line with a sword
-	thrown_force_divisor = 0.1 // 2 when thrown with weight 20 (steel) since frankly its too bulk to throw
-	//holy = TRUE		// Holy trait commented out until Dark Corners of the Galaxy: Awakening Merge
+	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_HEAVY
+	damage_mode = DAMAGE_MODE_EDGE | DAMAGE_MODE_SHARP
 
 /obj/item/material/butterfly/saw/update_force()
 	if(active)
 		..() //Updates force.
 		w_class = ITEMSIZE_HUGE
 		can_cleave = TRUE
-		force_divisor = 0.4 //24 when wielded, Gains cleave and is better than a machete
+		force_multiplier = initial(force_multiplier)
+		update_material_parts()
 		icon_state = "sawcleaver_open"
 		item_state = "cleaving_saw_open"
 	else
 		w_class = initial(w_class)
 		can_cleave = initial(can_cleave)
-		force_divisor = initial(force_divisor)
+		force_multiplier = 0.1
+		update_material_parts()
 		icon_state = initial(icon_state)
 		item_state = initial(item_state)

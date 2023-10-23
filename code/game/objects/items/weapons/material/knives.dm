@@ -97,9 +97,10 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "tacknife"
 	item_state = "knife"
-	force_divisor = 0.20 //12 when hardness 60 (steel)
+	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_LIGHT
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	attack_verb = list("stabbed", "chopped", "cut")
-	material_color = 1
+	material_color = TRUE
 
 /obj/item/material/knife/tacknife/combatknife
 	name = "combat knife"
@@ -107,10 +108,10 @@
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "buckknife"
 	item_state = "knife"
-	force_divisor = 0.25 // 15 with hardness 60 (steel)
-	thrown_force_divisor = 1.75 // 20 with weight 20 (steel)
+	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_LIGHT
+	force_multiplier = 1.2
 	attack_verb = list("sliced", "stabbed", "chopped", "cut")
-	material_color = 1
+	material_color = TRUE
 
 /obj/item/material/knife/stiletto
 	name = "stiletto knife"
@@ -118,10 +119,10 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "stiletto"
 	item_state = "knife"
-	edge = 0 //Shouldn't be able to remove limbs
-	force_divisor = 0.1 //6 when hardness 60 (steel)
+	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_ULTRALIGHT
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_PIERCE
 	attack_verb = list("stabbed", "shanked", "punctured", "impaled", "skewered")
-	material_color = 1
+	material_color = TRUE
 
 /obj/item/material/knife/tacknife/combatknife/bone
 	icon_state = "boneknife"
@@ -135,7 +136,6 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "tacknife"
 	item_state = "knife"
-	force_divisor = 0.15
 	material_color = 0
 
 /obj/item/material/knife/hook

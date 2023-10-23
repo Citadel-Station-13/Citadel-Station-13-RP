@@ -88,11 +88,8 @@
 	name = "fire axe"
 	desc = "Truly, the weapon of a madman. Who would think to fight fire with an axe?"
 	description_info = "A hefty two-handed cutting implement. Used for chopping through wood, glass, metal grating, wild animals, and even trees, shockingly enough. Good thing NanoTrasen stocks these for free."
-	unwielded_force_divisor = 0.25
-	force_divisor = 0.5 // 12/30 with hardness 60 (steel) and 0.25 unwielded divisor
-	dulled_divisor = 0.6	//Still metal on a stick
-	sharp = 1
-	edge = 1
+	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_HEAVY
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	w_class = ITEMSIZE_LARGE
 	slot_flags = SLOT_BACK
 	force_wielded = 30
@@ -127,35 +124,19 @@
 	return ..()
 
 /obj/item/material/twohanded/fireaxe/foam
+	material_parts = /datum/material/toy_foam
 	attack_verb = list("bonked","whacked")
-	force_wielded = 0
-	force_divisor = 0
-	damage_force = 0
-	material_color = 1
 	icon_state = "fireaxe_mask0"
 	base_icon = "fireaxe_mask"
-	unbreakable = 1
-	sharp = 0
-	edge = 0
-	can_cleave = FALSE
 	desc = "This is a toy version of the mighty fire axe! Charge at your friends for maximum enjoyment while screaming at them."
 	description_info = "This is a toy version of the mighty fire axe! Charge at your friends for maximum enjoyment while screaming at them."
-
-/obj/item/material/twohanded/fireaxe/foam/Initialize(mapload, material_key)
-	return ..(mapload,"foam")
-
-/obj/item/material/twohanded/fireaxe/foam/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	return
 
 /obj/item/material/twohanded/fireaxe/bone
 	desc = "A primitive version of a hefty fire axe, made from bone. Whoever made this didn't make it to save lives."
 	material_parts = /datum/material/bone
 	icon_state = "bone_axe0"
 	base_icon = "bone_axe"
-	material_color = 0
-
-/obj/item/material/twohanded/fireaxe/bone/Initialize(mapload, material_key)
-	return ..(mapload,"bone")
+	material_color = FALSe
 
 /obj/item/material/twohanded/fireaxe/plasteel
 	material_parts = /datum/material/plasteel
