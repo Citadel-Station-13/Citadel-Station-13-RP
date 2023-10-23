@@ -48,7 +48,7 @@
 	else
 		getting_from = SSjob.get_job(rank)
 	if(!isnull(getting_from))
-		access = J.get_access()
+		access = getting_from.get_access()
 		job_access_type = getting_from
 
 /obj/item/card/id/examine(mob/user, dist)
