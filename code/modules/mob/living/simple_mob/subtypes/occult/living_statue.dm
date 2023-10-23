@@ -172,9 +172,9 @@
 	charge_max = 1200
 	cooldown_min = 1200
 
-/spell/aoe_turf/veil_of_darkness/cast(list/targets, mob/user = usr)
-	playsound(usr.loc, 'sound/effects/bamf.ogg', 50, 1, 5)
+/spell/aoe_turf/veil_of_darkness/cast(list/targets, mob/user = user)
+	playsound(user, 'sound/effects/bamf.ogg', 50, 1, 5)
 	var/obj/item/statue_darkness/S = new
-	usr.contents.Add(S)
+	user.contents.Add(S)
 	S.set_light(5, -10, "#FFFFFF")
 	QDEL_IN(S, 2 SECONDS)
