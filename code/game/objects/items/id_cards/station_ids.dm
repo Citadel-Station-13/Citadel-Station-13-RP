@@ -214,11 +214,15 @@
 	job_access_type = /datum/role/job/station/captain
 
 /obj/item/card/id/gold/captain/spare
-	name = "\improper Facility Director's spare ID"
+	name = "\improper Captain's spare ID"
 	desc = "The spare ID of the High Lord himself."
-	registered_name = "Facility Director"
+	registered_name = "Captain"
 	icon_state = "gold-id-alternate"
 	job_access_type = /datum/role/job/station/captain
+
+/obj/item/card/id/gold/captain/spare/Initialize(mapload)
+	. = ..()
+	access = SSjob.access_ids_of_type(ACCESS_TYPE_STATION)
 
 /obj/item/card/id/synthetic
 	name = "\improper Synthetic ID"
