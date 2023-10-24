@@ -53,7 +53,7 @@
 	)
 	. += create_stack_recipe_datum(
 		name = "resin membrane",
-		product = /obj/structure/hybrid_resin/membrane,
+		product = /obj/structure/alien/hybrid_resin/membrane,
 		cost = 1,
 		time = 2 SECONDS,
 	)

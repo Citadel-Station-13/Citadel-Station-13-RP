@@ -6,7 +6,7 @@
  */
 /datum/material_trait/brittle
 
-#warn impl
+// #warn impl
 
 /**
  * called by /datum/material_trait/brittle to shatter.

@@ -17,7 +17,6 @@
 	attack_verb = list("bonked","whacked")
 	base_icon = "spear_mask"
 	icon_state = "spear_mask0"
-	unbreakable = 1
 	drop_sound = 'sound/items/drop/device.ogg'
 	pickup_sound = 'sound/items/pickup/device.ogg'
 	attack_sound = 'sound/effects/bodyfall3.ogg'

@@ -23,7 +23,7 @@
 	// absorbing kinetic energy
 	var/kinetic_damping = toughness * ((density ** 0.5) * (1 / 3))
 	// stopping kinetic penetrators
-	var/kinetic_hardness = hardness * ((density ** 0.5) * (1 / 8) + 0.7)
+	var/kinetic_hardness = regex_this_hardness * ((density ** 0.5) * (1 / 8) + 0.7)
 	// absorbing energy blasts
 	var/ablation_damping = (absorption + refraction * 0.2)
 	// stopping energy blasts from penetrating
@@ -42,7 +42,7 @@
 	var/direct_acid = relative_reactivity > 1? -relative_reactivity : relative_reactivity
 	// todo: integrate significance
 	var/direct_fire = relative_reactivity > 1? -relative_reactivity : relative_reactivity
-	var/direct_rad = clamp(1 - ((density + nullification * 0.025 + refraction * 0.01 + absorption * 0.0075) * significance_multiplier * (1 / 55))**2, 0, 1)
+	var/direct_rad = clamp(1 - ((density + nullification * 0.025 + refraction * 0.01 + absorption * 0.0075) * significance_as_multiplier * (1 / 55))**2, 0, 1)
 	// tier; hardness is important
 	// we grab this first because we need to module the actual armor by this
 	// it's a bit dumb but until we have proper material science like dwarf fortress
@@ -57,13 +57,13 @@
 	return (armor_cache = fetch_armor_struct(list(
 		ARMOR_MELEE = kinetic_absorb,
 		ARMOR_MELEE_TIER = kinetic_tier,
-		ARMOR_MELEE_SOAK = kinetic_dampning * 0.005 + kinetic_hardness * 0.0025,
+		ARMOR_MELEE_SOAK = kinetic_damping * 0.005 + kinetic_hardness * 0.0025,
 		ARMOR_BULLET = kinetic_absorb,
 		ARMOR_BULLET_TIER = kinetic_tier,
 		ARMOR_BULLET_SOAK = kinetic_damping * 0.0025 + kinetic_hardness * 0.005,
 		ARMOR_LASER = laser_absorb,
 		ARMOR_LASER_TIER = laser_absorb,
-		ARMOR_LASER_SOAK = ablation_damping * 0.0025 + ablation_difussion * 0.005,
+		ARMOR_LASER_SOAK = ablation_damping * 0.0025 + ablation_diffusion * 0.005,
 		ARMOR_ENERGY = 1 - exotic_absorption,
 		ARMOR_BOMB = direct_bomb,
 		ARMOR_BIO = direct_bio,
