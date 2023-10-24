@@ -180,7 +180,7 @@
 	name = "Moghes Foodstuffs"
 	contains = list(
 			/obj/item/reagent_containers/food/drinks/bottle/redeemersbrew = 2,
-			/obj/item/reagent_containers/food/snacks/unajerky = 4
+			/obj/item/reagent_containers/food/snacks/boxed/unajerky = 4
 			)
 	cost = 50 //same cost as the others
 	container_type = /obj/structure/closet/crate/unathi

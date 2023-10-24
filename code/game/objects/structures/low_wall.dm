@@ -145,7 +145,7 @@ GLOBAL_LIST_INIT(wallframe_typecache, typecacheof(list(
 			return TRUE
 
 		//window placing
-		if(istype(I,/obj/item/stack/material/glass))
+		if(istype(I,/obj/item/stack/material/glass) && isnull(locate(/obj/structure/window) in loc))
 			var/obj/item/stack/material/ST = I
 			if(ST.material.opacity <= 0.7)
 				place_window(user, loc, ST, TRUE, TRUE)

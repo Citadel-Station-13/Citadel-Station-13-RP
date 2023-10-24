@@ -7,6 +7,7 @@
  *
  * @params
  * * target - target atom
+ * * initiator - additional thing to show a message to as self
  * * hard_range - how far to display hard message; defaults to MESSAGE_RANGE_COMBAT_LOUD. if doesn't exist we use soft.
  * * soft_range - how far to display soft message; defaults to MESSAGE_RANGE_COMBAT_LOUD. overrides hard range if smaller.
  * * visible_hard - hard message. if doesn't exist we use soft message.
@@ -14,11 +15,11 @@
  * * visible_soft - soft message.
  * * audible_soft - what blind people hear when inside soft range (overridden by self and them if specified)
  * * visible_self - what we see
- * * audible_self - override if self is blind. if null, defaults to 'self.
+ * * otherwise_self - override if self is blind. if null, defaults to 'self.
  * * visible_them - what the target see
- * * audible_them - what the target sees if they are blind. if null, defaults to 'them'.
+ * * otherwise_them - what the target sees if they are blind. if null, defaults to 'them'.
  */
-/atom/proc/visible_action_feedback(atom/target, hard_range = MESSAGE_RANGE_COMBAT_LOUD, soft_range, visible_hard, audible_hard, audible_soft, visible_soft, visible_self, audible_self, visible_them, audible_them)
+/atom/proc/visible_action_feedback(atom/target, atom/initiator, hard_range = MESSAGE_RANGE_COMBAT_LOUD, soft_range, visible_hard, audible_hard, audible_soft, visible_soft, visible_self, otherwise_self, visible_them, otherwise_them)
 	var/list/viewing
 	var/viewing_range = max(soft_range, hard_range)
 	//! LEGACY
@@ -30,6 +31,9 @@
 	//! end
 	var/hard_visible = visible_hard || visible_soft
 	var/hard_audible = audible_hard || audible_soft
+	visible_self = visible_self || otherwise_self
+	visible_them = visible_them || otherwise_them
+	// todo: all of this needs rewritten oh my god
 	for(var/atom/movable/AM as anything in viewing)
 		if(get_dist(AM, src) <= hard_range)
 			if(ismob(AM))

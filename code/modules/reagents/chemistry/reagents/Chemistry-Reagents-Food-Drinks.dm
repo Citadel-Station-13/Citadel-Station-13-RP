@@ -947,6 +947,7 @@
 	glass_desc = "Deliciously fattening!"
 
 /datum/reagent/drink/milk/chocolate/affect_ingest(mob/living/carbon/M, alien, removed)
+	..()
 	if(alien == IS_ALRAUNE) //cit change: choccy is full of natural easily digestible plant fats
 		M.nutrition += removed * 5
 
@@ -960,7 +961,7 @@
 	holder.remove_reagent("capsaicin", 10 * removed)
 	if(contains_lactose == TRUE && alien == IS_NARAMADI) //Species-wide lactose intolerance, also funny that cheeses can't drink milk.
 		if(prob(5))
-			to_chat("You feel nauseous!")
+			to_chat(M, SPAN_WARNING("You feel nauseous!"))
 			return
 		if(prob(20))
 			var/mob/living/L = M
@@ -1528,7 +1529,7 @@
 			M.drowsyness = max(M.drowsyness, 60)
 	if(contains_lactose == TRUE && alien == IS_NARAMADI)
 		if(prob(5))
-			to_chat("You feel nauseous!")
+			to_chat(M, SPAN_WARNING("You feel nauseous!"))
 			return
 		if(prob(20))
 			var/mob/living/L = M
@@ -1795,15 +1796,35 @@
 	glass_name = "NiCola"
 	glass_desc = "A glass of imported Japanese NiCola."
 
+/datum/reagent/drink/soda/nicola/fire
+	name = "NiCola Fire"
+	id = "nicolafire"
+	description = "Cool imported cola mixed with firey hot spices."
+	taste_description = "cough syrup, capsaicin, and cola"
+	color = "#271402"
+
+	glass_name = "NiCola Fire"
+	glass_desc = "A glass of spicy Japanese NiCola Fire."
+
 /datum/reagent/drink/soda/nicola/cherry
 	name = "NiCola Sakura"
 	id = "nicolacherry"
 	description = "Originally a limited flavor, brought back by popular demand."
-	taste_description = "cherry cough syrup and cola"
+	taste_description = "cough syrup, cherry blossoms, and cola"
 	color = "#271402"
 
 	glass_name = "NiCola Sakura"
 	glass_desc = "A glass of limited edition NiCola Sakura."
+
+/datum/reagent/drink/soda/nicola/blue
+	name = "NiCola Blue"
+	id = "nicolablue"
+	description = "A limited edition NiCola flavor praised for its refreshing taste."
+	taste_description = "cough syrup, violets, and cola"
+	color = "#271402"
+
+	glass_name = "NiCola Blue"
+	glass_desc = "A glass of limited edition NiCola Blue."
 
 /datum/reagent/drink/shirley_temple
 	name = "Shirley Temple"
@@ -2238,6 +2259,19 @@
 
 	glass_name = "Root Beer Float"
 	glass_desc = "A classic from Humanity's early days. Soothing, cool, and nostalgic."
+
+/datum/reagent/drink/milk/pilk
+	name = "Pilk"
+	id = "pilk"
+	description = "Milk and Space Cola mixed together. What?"
+	taste_description = "creamed up cola"
+	color = "#c9ab84" //usually most pilk mixtures have the milk presence dominate.
+	adj_drowsy = -3 //space cola effects
+	adj_temp = -3
+
+	glass_name = "Pilk"
+	glass_desc = "Milk and Space Cola mixed together. <i>Burenyuu~</i>. While the soda ingredient isn't exactly the one based on the original \
+	old Terra brand, the \"Pilk\" name has stuck all of these centuries later. It's a drink mixture that many still get upset about to this day."
 
 /* Alcohol */
 
@@ -2702,14 +2736,13 @@
 	glass_name = "Bahama Mama"
 	glass_desc = "Tropical cocktail."
 
-/datum/reagent/ethanol/bananahonk
+/datum/reagent/drink/bananahonk
 	name = "Banana Mama"
 	id = "bananahonk"
 	description = "A drink from Clown Heaven."
 	taste_description = "bananas and sugar"
-	nutriment_factor = 1
+	nutrition = 1
 	color = "#FFFF91"
-	strength = 12
 
 	glass_name = "Banana Honk"
 	glass_desc = "A drink from Banana Heaven."
@@ -3182,15 +3215,14 @@
 	glass_name = "Screwdriver"
 	glass_desc = "A simple, yet superb mixture of Vodka and orange juice. Just the thing for the tired engineer."
 
-/datum/reagent/ethanol/silencer
+/datum/reagent/drink/silencer
 	name = "Silencer"
 	id = "silencer"
 	description = "A drink from Mime Heaven."
 	taste_description = "a pencil eraser"
 	taste_mult = 1.2
-	nutriment_factor = 1
+	nutrition = 1
 	color = "#FFFFFF"
-	strength = 12
 
 	glass_name = "Silencer"
 	glass_desc = "A drink from mime Heaven."
@@ -4606,7 +4638,7 @@
 /datum/reagent/nutriment/protein/cheese/affect_ingest(mob/living/carbon/M, alien, removed) //Cheese is a kind of milk.
 	if(alien == IS_NARAMADI)
 		if(prob(5))
-			to_chat("You feel nauseous!")
+			to_chat(M, SPAN_WARNING("You feel nauseous!"))
 			return
 		if(prob(20))
 			var/mob/living/L = M

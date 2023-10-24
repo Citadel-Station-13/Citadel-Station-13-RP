@@ -52,8 +52,9 @@
 	if(istype(user, /mob/living/simple_mob/construct))
 		to_chat(user, "<span class='warning'>\The [src] hisses, as it is discontent with your acquisition of it. It would be wise to return it to a worthy mortal quickly.</span>")
 
-/obj/item/clothing/head/culthood
+/obj/item/clothing/head/cult
 	name = "cult hood"
+	icon = 'icons/clothing/suit/antag/cult.dmi'
 	icon_state = "culthood"
 	desc = "A hood worn by the followers of Nar-Sie."
 	origin_tech = list(TECH_MATERIAL = 3, TECH_ARCANE = 1)
@@ -63,23 +64,26 @@
 	cold_protection = HEAD
 	min_cold_protection_temperature = SPACE_HELMET_MIN_COLD_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
-/obj/item/clothing/head/culthood/cultify()
+/obj/item/clothing/head/cult/cultify()
 	return
 
-/obj/item/clothing/head/culthood/magus
+/obj/item/clothing/head/cult/magus
 	name = "magus helm"
 	icon_state = "magus"
 	desc = "A helm worn by the followers of Nar-Sie."
 	inv_hide_flags = HIDEFACE | BLOCKHAIR
 	body_cover_flags = HEAD|FACE|EYES
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
-/obj/item/clothing/head/culthood/alt
-	icon_state = "cult_hoodalt"
+/obj/item/clothing/head/cult/alt
+	icon_state = "culthoodalt"
 
 /obj/item/clothing/suit/cultrobes
 	name = "cult robes"
 	desc = "A set of armored robes worn by the followers of Nar-Sie."
+	icon = 'icons/clothing/suit/antag/cult.dmi'
 	icon_state = "cultrobes"
 	origin_tech = list(TECH_MATERIAL = 3, TECH_ARCANE = 1)
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
@@ -87,6 +91,7 @@
 	armor_type = /datum/armor/cult/robes
 	inv_hide_flags = HIDEJUMPSUIT
 	siemens_coefficient = 0
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/suit/cultrobes/cultify()
 	return
@@ -94,36 +99,48 @@
 /obj/item/clothing/suit/cultrobes/alt
 	icon_state = "cultrobesalt"
 
-/obj/item/clothing/suit/cultrobes/magusred
+/obj/item/clothing/suit/cultrobes/magus
 	name = "magus robes"
 	desc = "A set of armored robes worn by the followers of Nar-Sie."
+	icon = 'icons/clothing/suit/antag/cult.dmi'
 	icon_state = "magusred"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/suit/cultrobes/magus/blue
+	icon_state = "magusblue"
 
 /obj/item/clothing/head/helmet/space/cult
 	name = "cult helmet"
 	desc = "A space worthy helmet used by the followers of Nar-Sie."
-	icon_state = "cult_helmet"
+	icon = 'icons/clothing/suit/armor/cult.dmi'
+	icon_state = "culthelm"
 	origin_tech = list(TECH_MATERIAL = 3, TECH_ARCANE = 1)
 	armor_type = /datum/armor/cult/space
+	encumbrance = ITEM_ENCUMBRANCE_CULT_VOIDSUIT_HELMET
+	weight = ITEM_WEIGHT_CULT_VOIDSUIT_HELMET
 	siemens_coefficient = 0
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/head/helmet/space/cult/cultify()
 	return
 
 /obj/item/clothing/suit/space/cult
 	name = "cult armour"
-	icon_state = "cult_armour"
+	icon = 'icons/clothing/suit/armor/cult.dmi'
+	icon_state = "cult"
 	origin_tech = list(TECH_MATERIAL = 3, TECH_ARCANE = 1)
 	desc = "A bulky suit of armour, bristling with spikes. It looks space-worthy."
 	w_class = ITEMSIZE_NORMAL
 	allowed = list(/obj/item/book/tome,/obj/item/melee/cultblade,/obj/item/tank/emergency/oxygen,/obj/item/suit_cooling_unit)
-	slowdown = 1
+	weight = ITEM_WEIGHT_CULT_VOIDSUIT
+	encumbrance = ITEM_ENCUMBRANCE_CULT_VOIDSUIT
 	armor_type = /datum/armor/cult/space
 	siemens_coefficient = 0
 	inv_hide_flags = HIDEGLOVES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/suit/space/cult/cultify()
 	return

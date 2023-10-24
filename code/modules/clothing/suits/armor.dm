@@ -69,7 +69,8 @@
 	icon_state = "bulletproof"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "armor", SLOT_ID_LEFT_HAND = "armor")
 	blood_overlay_type = "armor"
-	slowdown = 0.5
+	encumbrance = ITEM_ENCUMBRANCE_ARMOR_SPECIALIZED
+	weight = ITEM_WEIGHT_ARMOR_SPECIALIZED
 	armor_type = /datum/armor/station/ballistic
 	siemens_coefficient = 0.7
 
@@ -83,7 +84,6 @@
 	desc = "A vest that excels in protecting the wearer against energy projectiles."
 	icon_state = "armor_reflec"
 	blood_overlay_type = "armor"
-	slowdown = 0.5
 	armor_type = /datum/armor/station/ablative
 	siemens_coefficient = 0.1
 
@@ -116,7 +116,8 @@
 	desc = "A vest that protects the wearer from several common types of ranged weaponry."
 	icon_state = "combat"
 	blood_overlay_type = "armor"
-	slowdown = 0.5
+	encumbrance = ITEM_ENCUMBRANCE_ARMOR_MEDIUM
+	weight = ITEM_WEIGHT_ARMOR_MEDIUM
 	armor_type = /datum/armor/station/combat
 	siemens_coefficient = 0.6
 
@@ -127,7 +128,8 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	inv_hide_flags = HIDETIE|HIDEHOLSTER
-	slowdown = 1
+	encumbrance = ITEM_ENCUMBRANCE_ARMOR_LIGHT
+	weight = ITEM_WEIGHT_ARMOR_LIGHT
 	armor_type = /datum/armor/station/tactical
 	siemens_coefficient = 0.7
 
@@ -141,7 +143,8 @@
 	clothing_flags = CLOTHING_THICK_MATERIAL
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS
 	allowed = list(/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/tank/emergency/oxygen,/obj/item/clothing/head/helmet)
-	slowdown = 1
+	encumbrance = ITEM_ENCUMBRANCE_ARMOR_HEAVY + ITEM_ENCUMBRANCE_ARMOR_HEAVY_BOOTS + ITEM_ENCUMBRANCE_ARMOR_HEAVY_GLOVES
+	weight = ITEM_WEIGHT_ARMOR_HEAVY + ITEM_WEIGHT_ARMOR_HEAVY_BOOTS + ITEM_WEIGHT_ARMOR_HEAVY_GLOVES
 	w_class = ITEMSIZE_HUGE
 	armor_type = /datum/armor/centcom/deathsquad
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
@@ -160,6 +163,8 @@
 	blood_overlay_type = "coat"
 	inv_hide_flags = 0
 	body_cover_flags = UPPER_TORSO|ARMS
+	encumbrance = ITEM_ENCUMBRANCE_ARMOR_HEAVY
+	weight = ITEM_WEIGHT_ARMOR_HEAVY
 
 /obj/item/clothing/suit/armor/det_suit
 	name = "armor"
@@ -430,7 +435,8 @@
 	item_state = "flexitac"
 	cold_protection = UPPER_TORSO|LOWER_TORSO
 	min_cold_protection_temperature = T0C - 20
-	slowdown = 0.3
+	encumbrance = ITEM_ENCUMBRANCE_ARMOR_MEDIUM
+	weight = ITEM_WEIGHT_ARMOR_MEDIUM
 
 /obj/item/clothing/suit/storage/vest/detective
 	name = "detective armor vest"
@@ -453,7 +459,8 @@
 	icon_state = "webvest"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
 	armor_type = /datum/armor/station/heavy
-	slowdown = 0.5
+	encumbrance = ITEM_ENCUMBRANCE_ARMOR_HEAVY
+	weight = ITEM_WEIGHT_ARMOR_HEAVY
 
 /obj/item/clothing/suit/storage/vest/heavy/officer
 	name = "officer heavy armor vest"
@@ -494,7 +501,8 @@
 	icon_state = "mercwebvest"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
 	armor_type = /datum/armor/station/combat
-	slowdown = 0
+	encumbrance = ITEM_ENCUMBRANCE_ARMOR_MEDIUM
+	weight = ITEM_WEIGHT_ARMOR_MEDIUM
 
 /obj/item/clothing/suit/storage/vest/capcarapace
 	name = "captain's carapace"
@@ -566,9 +574,10 @@
 	w_class = ITEMSIZE_HUGE // Very bulky, very heavy.
 	gas_transfer_coefficient = 0.90
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
-	slowdown = 5 // If you're a tank you're gonna move like a tank.
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
 	siemens_coefficient = 0
+	encumbrance = ITEM_ENCUMBRANCE_ARMOR_SUPERHEAVY + ITEM_ENCUMBRANCE_ARMOR_SUPERHEAVY_GLOVES + ITEM_ENCUMBRANCE_ARMOR_SUPERHEAVY_BOOTS
+	weight = ITEM_WEIGHT_ARMOR_SUPERHEAVY + ITEM_ENCUMBRANCE_ARMOR_SUPERHEAVY_GLOVES + ITEM_ENCUMBRANCE_ARMOR_SUPERHEAVY_BOOTS
 
 /obj/item/clothing/suit/armor/tdome
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS

@@ -16,6 +16,8 @@
 	ear_protection = 1
 	drop_sound = 'sound/items/drop/helm.ogg'
 	pickup_sound = 'sound/items/pickup/helm.ogg'
+	encumbrance = ITEM_ENCUMBRANCE_ARMOR_MEDIUM_HELMET
+	weight = ITEM_WEIGHT_ARMOR_MEDIUM_HELMET
 
 /obj/item/clothing/head/helmet/ntsec
 	name = "corpsec helmet"
@@ -130,6 +132,8 @@
 	cold_protection = HEAD
 	min_cold_protection_temperature = SPACE_HELMET_MIN_COLD_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0.5
+	encumbrance = ITEM_ENCUMBRANCE_ARMOR_HEAVY_HELMET
+	weight = ITEM_WEIGHT_ARMOR_HEAVY_HELMET
 
 /obj/item/clothing/head/helmet/alien
 	name = "alien helmet"
@@ -385,6 +389,14 @@
 
 /obj/item/clothing/head/helmet/kettle/eyes
 	icon_state = "kettle_eyes"
+
+//Dredd
+/obj/item/clothing/head/helmet/aquiline
+	name = "aquiline enforcer helmet"
+	desc = "Prior to the Final War, issues with law enforcement on Old Earth became so bad that in many countries the police became little more than roving executioners. This striking helmet was designed to help law enforcement officers easily identify themselves in crowds."
+	icon = 'icons/clothing/uniform/costume/aquiline.dmi'
+	icon_state = "dreddhelm"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 //More Warhammer Fun
 /obj/item/clothing/head/helmet/utilitarian

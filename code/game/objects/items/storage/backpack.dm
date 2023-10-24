@@ -10,6 +10,8 @@
 	w_class = ITEMSIZE_LARGE
 	slot_flags = SLOT_BACK
 	max_w_class = ITEMSIZE_LARGE
+	weight = ITEM_WEIGHT_STORAGE_BACKPACK
+	encumbrance = ITEM_ENCUMBRANCE_STORAGE_BACKPACK
 	max_storage_space = INVENTORY_STANDARD_SPACE
 	var/flippable = 0
 	var/side = 0 //0 = right, 1 = left
@@ -49,6 +51,8 @@
 /obj/item/storage/backpack/holding/duffle
 	name = "dufflebag of holding"
 	icon_state = "holdingduffle"
+	encumbrance = ITEM_ENCUMBRANCE_STORAGE_DUFFLEBAG
+	weight = ITEM_WEIGHT_STORAGE_DUFFLEBAG
 
 /obj/item/storage/backpack/holding/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/storage/backpack/holding))
@@ -163,7 +167,11 @@
 	desc = "A large dufflebag for holding extra things."
 	icon_state = "duffle"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "duffle", SLOT_ID_LEFT_HAND = "duffle")
-	slowdown = 1
+	weight = ITEM_WEIGHT_STORAGE_DUFFLEBAG
+	encumbrance = ITEM_ENCUMBRANCE_STORAGE_DUFFLEBAG
+	flat_encumbrance = ITEM_FLAT_ENCUMBRANCE_DUFFLEBAG
+	// todo: remove when weight system is used
+	slowdown = 0.25
 	max_storage_space = INVENTORY_DUFFLEBAG_SPACE
 
 /obj/item/storage/backpack/dufflebag/syndie
@@ -171,7 +179,7 @@
 	desc = "A large dufflebag for holding extra tactical supplies. This one appears to be made out of lighter material than usual."
 	icon_state = "duffle-syndie"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "duffle_syndie", SLOT_ID_LEFT_HAND = "duffle_syndie")
-	slowdown = 0
+	weight = ITEM_WEIGHT_BASELINE
 
 /obj/item/storage/backpack/dufflebag/syndie/med
 	name = "medical dufflebag"
@@ -350,6 +358,10 @@
 	desc = "A grotesque satchel made of sinew and bone."
 	icon_state = "satchel-bone"
 
+/obj/item/storage/backpack/satchel/invisible
+	name = "integrated satchel"
+	desc = "A minimalist satchel designed to fit inside of clothing, directly against the skin."
+	item_state = "none"
 
 //ERT backpacks.
 /obj/item/storage/backpack/ert
@@ -584,8 +596,8 @@
 	item_state = "saddlebag"
 	icon_state = "saddlebag"
 	var/icon_base = "saddlebag"
+	encumbrance = ITEM_ENCUMBRANCE_STORAGE_DUFFLEBAG
 	max_storage_space = INVENTORY_DUFFLEBAG_SPACE //Saddlebags can hold more, like dufflebags
-	slowdown = 1 //And are slower, too...Unless you're a macro, that is.
 	var/no_message = "You aren't the appropriate taur type to wear this!"
 
 /obj/item/storage/backpack/saddlebag_common/can_equip(mob/M, slot, mob/user, flags)
@@ -596,59 +608,27 @@
 	var/datum/sprite_accessory/tail/taur/TT = H.tail_style
 	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/horse))
 		item_state = "[icon_base]_horse"
-		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
-			slowdown = 0
-		else
-			slowdown = initial(slowdown)
 		return 1
 	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/wolf))
 		item_state = "[icon_base]_wolf"
-		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
-			slowdown = 0
-		else
-			slowdown = initial(slowdown)
 		return 1
 	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/cow))
 		item_state = "[icon_base]_cow"
-		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
-			slowdown = 0
-		else
-			slowdown = initial(slowdown)
 		return 1
 	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/lizard))
 		item_state = "[icon_base]_lizard"
-		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
-			slowdown = 0
-		else
-			slowdown = initial(slowdown)
 		return 1
 	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/feline))
 		item_state = "[icon_base]_feline"
-		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
-			slowdown = 0
-		else
-			slowdown = initial(slowdown)
 		return 1
 	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/drake))
 		item_state = "[icon_base]_drake"
-		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
-			slowdown = 0
-		else
-			slowdown = initial(slowdown)
 		return 1
 	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/otie))
 		item_state = "[icon_base]_otie"
-		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
-			slowdown = 0
-		else
-			slowdown = initial(slowdown)
 		return 1
 	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/deer))
 		item_state = "[icon_base]_deer"
-		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
-			slowdown = 0
-		else
-			slowdown = initial(slowdown)
 		return 1
 	else
 		to_chat(H, "<span class='warning'>[no_message]</span>")
@@ -672,7 +652,7 @@
 	icon_state = "taurvest"
 	icon_base = "taurvest"
 	max_storage_space = INVENTORY_STANDARD_SPACE
-	slowdown = 0
+	encumbrance = ITEM_ENCUMBRANCE_STORAGE_BACKPACK
 
 /obj/item/storage/backpack/dufflebag/fluff //Black dufflebag without syndie buffs.
 	name = "plain black dufflebag"

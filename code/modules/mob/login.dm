@@ -27,6 +27,9 @@
 	update_Login_details()
 	world.update_status()
 
+	// get rid of old context menus
+	QDEL_NULL(client.context_menu)
+
 	client.images = list() //remove the images such as AIs being unable to see runes
 	client.screen = list() //remove hud items just in case
 	if(hud_used)

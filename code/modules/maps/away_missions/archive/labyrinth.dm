@@ -197,7 +197,7 @@
 /obj/spawner/corpse/tunnelclown/sentinel
 	name = "dead clown sentinel"
 	corpsesuit = /obj/item/clothing/suit/cultrobes
-	corpsehelmet = /obj/item/clothing/head/culthood
+	corpsehelmet = /obj/item/clothing/head/cult
 
 /*
 /mob/living/simple_mob/hostile/tunnelclown

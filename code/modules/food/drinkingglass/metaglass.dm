@@ -114,6 +114,9 @@ Drinks Data
 /datum/reagent/drink/milk
 	glass_icon_state = "glass_white"
 
+/datum/reagent/drink/milk/pilk
+	glass_icon_state = "glass_lightbrown"
+
 /datum/reagent/drink/milk/chocolate
 	glass_icon_state = "glass_brown"
 
@@ -556,7 +559,7 @@ Drinks Data
 	glass_icon_state = "bahama_mama"
 	glass_center_of_mass = list("x"=16, "y"=5)
 
-/datum/reagent/ethanol/bananahonk
+/datum/reagent/drink/bananahonk
 	glass_icon_state = "bananahonkglass"
 	glass_center_of_mass = list("x"=16, "y"=8)
 
@@ -710,7 +713,7 @@ Drinks Data
 	glass_icon_state = "screwdriverglass"
 	glass_center_of_mass = list("x"=15, "y"=10)
 
-/datum/reagent/ethanol/silencer
+/datum/reagent/drink/silencer
 	glass_icon_state = "silencerglass"
 	glass_center_of_mass = list("x"=16, "y"=9)
 

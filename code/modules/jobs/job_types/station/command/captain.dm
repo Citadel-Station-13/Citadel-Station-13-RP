@@ -2,7 +2,7 @@ var/datum/legacy_announcement/minor/captain_announcement = new(do_newscast = 1)
 
 /datum/role/job/station/captain
 	id = JOB_ID_CAPTAIN
-	title = "Facility Director"
+	title = "Captain"
 	economy_payscale = ECONOMY_PAYSCALE_JOB_CAPTAIN
 	flag = CAPTAIN
 	disallow_jobhop = TRUE
@@ -25,14 +25,12 @@ var/datum/legacy_announcement/minor/captain_announcement = new(do_newscast = 1)
 	ideal_character_age = 70 // Old geezer captains ftw
 
 	outfit_type = /datum/outfit/job/station/captain
-	desc = "The Facility Director manages the other Command Staff, and through them the rest of the station. Though they have access to everything, \
-						they do not understand everything, and are expected to delegate tasks to the appropriate crew member. The Facility Director is expected to \
+	desc = "The Captain manages the other Command Staff, and through them the rest of the station. Though they have access to everything, \
+						they do not understand everything, and are expected to delegate tasks to the appropriate crew member. The Captain is expected to \
 						have an understanding of Standard Operating Procedure, and is subject to it, and legal action, in the same way as every other crew member."
 	alt_titles = list(
 		"Overseer"= /datum/prototype/struct/alt_title/overseer,
-		"Site Manager" = /datum/prototype/struct/alt_title/captain/site,
-		"Director of Operations" = /datum/prototype/struct/alt_title/captain/director,
-		"Captain" = /datum/prototype/struct/alt_title/captain/captain
+		"Facility Director" = /datum/prototype/struct/alt_title/captain/fd
 	)
 
 /datum/role/job/station/captain/get_access()
@@ -41,14 +39,8 @@ var/datum/legacy_announcement/minor/captain_announcement = new(do_newscast = 1)
 /datum/prototype/struct/alt_title/overseer
 	title = "Overseer"
 
-/datum/prototype/struct/alt_title/captain/site
-	title = "Site Manager"
-
-/datum/prototype/struct/alt_title/captain/director
-	title = "Director of Operations"
-
-/datum/prototype/struct/alt_title/captain/captain
-	title = "Captain"
+/datum/prototype/struct/alt_title/captain/fd
+	title = "Facility Director"
 
 /datum/outfit/job/station/captain
 	name = OUTFIT_JOB_NAME("Captain")

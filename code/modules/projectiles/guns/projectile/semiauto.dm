@@ -59,4 +59,4 @@
 
 /obj/item/gun/ballistic/apinae_stinger/update_icon_state()
 	. = ..()
-	icon_state = "apigun-[ammo_magazine ? round(ammo_magazine.stored_ammo.len, 2) : "empty"]"
+	icon_state = "apigun-[ammo_magazine ? round(ammo_magazine.stored_ammo.len, 2) : "e"]"

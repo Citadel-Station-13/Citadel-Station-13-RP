@@ -4,7 +4,7 @@
 	desc = "The practical paperwork replacement for the officer on the go."
 	icon_state = "holowarrant"
 	item_state = "flashtool"
-	item_flags = ITEM_NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	throw_force = 5
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 4

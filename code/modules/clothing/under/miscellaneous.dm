@@ -1251,6 +1251,26 @@
 	desc = "A colorable leotard with a piece of semi-transparent cloth near the bust. Perfect for showing off cleavage. Bunny ears not included."
 	icon_state = "leotard_color"
 
+/obj/item/clothing/under/bunnysuit_f
+	name = "bunny leotard (f)"
+	desc = "A black leotard, commonly used by casino workers to drive up tips. Bunny ears and tail sold separately."
+	icon_state = "bunny_f"
+
+/obj/item/clothing/under/bunnysuit_m
+	name = "bunny leotard (m)"
+	desc = "A black leotard, commonly used by casino workers to drive up tips. Bunny ears and tail sold separately."
+	icon_state = "bunny_m"
+
+/obj/item/clothing/under/tabard_w
+	name = "white tabard-dress"
+	desc = "A gold-trimmed white tabard-dress with a large V-shaped boob window. For when you want to show off your hips and look classy at the same time."
+	icon_state = "white_tabard"
+
+/obj/item/clothing/under/tabard_b
+	name = "black tabard-dress"
+	desc = "A gold-trimmed black tabard-dress with a large circular boob window. Useful for showing off your hips while your buddy puts something in the target's drink."
+	icon_state = "black_tabard"
+
 /obj/item/clothing/under/verglasdress
     name = "verglas dress"
     desc = "The modern twist on a forgotten pattern, the Verglas style utilizes comfortable velvet and silver white satin to create an otherworldly effect evocative of winter, or the void."
@@ -1988,12 +2008,19 @@
 
 /obj/item/clothing/under/antediluvian/dress
 	name = "Antediluvian dress"
-	desc = "A metalic dress with inner padding, following a similar, scantily-clad fashion trend.  It is unknown whether it serveed ceremonial or official purpose."
+	desc = "A metalic dress with inner padding, following a similar, scantily-clad fashion trend.  It is unknown whether it served ceremonial or official purpose."
 	icon_state = "ante"
 	icon = 'icons/clothing/suit/misc/ante.dmi'
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/under/antediluvian/dress/aziru
+	name = "Antediluvian Wrap"
+	desc = "A dress made out of an elegantly wrapped single piece of cloth, with golden embellishments of unknown origin. It seems to have purposefully exposed arms."
+	icon_state = "aziru_dress"
+	icon = 'icons/clothing/uniform/misc/ante_aziru.dmi'
+
 /obj/item/clothing/under/hasie
 	name = "Hasie skirt"
 	desc = "A daring combination of dark charcoals and vibrant reds and whites, the Hasie skirt/vest combo knows what it's doing. Sporting a low cut charcoal miniskirt and matching midriff button-up, this ensemble wows with the incredible color contrast of its two-tone vest."
@@ -2335,4 +2362,11 @@
 	desc = "A chainmail tunic layered with a leather cuirass and religious iconography. Worn in veneration of a forgotten god."
 	icon = 'icons/clothing/uniform/costume/darkcleric.dmi'
 	icon_state = "darkcleric"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/under/tourist
+	name = "tourist liesurewear"
+	desc = "This loud shirt is made of mid-grade cashmere. This premier liesurewear pairs well with a nice pair of khaki shorts that stop uncomfortably above the knee."
+	icon = 'icons/clothing/uniform/misc/tourist.dmi'
+	icon_state = "tourist"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL

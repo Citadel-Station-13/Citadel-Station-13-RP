@@ -89,7 +89,7 @@
 		/obj/item/reagent_containers/hypospray/autoinjector,
 		/obj/item/stack/medical/bruise_pack,
 		/obj/item/flashlight/glowstick,
-		/obj/item/reagent_containers/food/snacks/candy/proteinbar,
+		/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,
 		/obj/item/clothing/mask/breath
 	)
 
@@ -649,7 +649,7 @@
 		/obj/item/reagent_containers/hypospray/autoinjector,
 		/obj/item/stack/medical/bruise_pack,
 		/obj/item/flashlight/glowstick,
-		/obj/item/reagent_containers/food/snacks/candy/proteinbar,
+		/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,
 		/obj/item/clothing/mask/breath
 	)
 
