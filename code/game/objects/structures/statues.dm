@@ -9,8 +9,6 @@
 	density = TRUE
 	anchored = FALSE
 	armor_type = /datum/armor/object/medium
-	material_primary = MATERIAL_PART_DEFAULT
-	material_parts = /datum/material/steel
 
 /obj/structure/statue/attackby(obj/item/tool/W, mob/living/user, params)
 	add_fingerprint(user)
@@ -64,11 +62,7 @@
 		drop_product(method, primary.place_sheet(null, 10), where)
 
 /obj/structure/statue/silver
-	hardness = 3
-	materialType = "silver"
-	material = "silver"
 	desc = "This is a valuable statue made from silver."
-	material_parts = /datum/material/silver
 
 /obj/structure/statue/silver/hos
 	name = "Statue of a Head of Security"
@@ -97,11 +91,7 @@
 //////////////////////gold///////////////////////////////////////
 
 /obj/structure/statue/gold
-	hardness = 3
-	materialType = "gold"
-	material = "gold"
 	desc = "This is a highly valuable statue made from gold."
-	material_parts = /datum/material/gold
 
 /obj/structure/statue/gold/hos
 	name = "Statue of the Head of Security"
@@ -126,11 +116,7 @@
 ////////////////////////////phoron///////////////////////////////////////////////////////////////////////
 
 /obj/structure/statue/phoron
-	hardness = 2
-	materialType = "phoron"
-	material = "phoron"
 	desc = "This statue is suitably made from phoron."
-	material_parts = /datum/material/phoron
 
 /obj/structure/statue/phoron/scientist
 	name = "Statue of a Scientist"
@@ -143,12 +129,8 @@
 ////////////////////////uranium///////////////////////////////////
 
 /obj/structure/statue/uranium
-	hardness = 3
 	luminosity = 2
-	materialType = "uranium"
-	material = "uranium"
 	desc = "If you can read this, go to Medical."
-	material_parts = /datum/material/uranium
 
 /obj/structure/statue/uranium/nuke
 	name = "Statue of a Nuclear Fission Explosive"
@@ -163,11 +145,7 @@
 /////////////////////////diamond/////////////////////////////////////////
 
 /obj/structure/statue/diamond
-	hardness = 10
-	materialType = "diamond"
-	material = "diamond"
 	desc = "This is a very expensive diamond statue"
-	material_parts = /datum/material/diamond
 
 /obj/structure/statue/diamond/captain
 	name = "Statue of THE Captain."
@@ -184,11 +162,7 @@
 ////////////////////////bananium///////////////////////////////////////
 
 /obj/structure/statue/bananium
-	hardness = 3
-	materialType = "bananium"
-	material = "bananium"
 	desc = "A bananium statue with a small engraving:'HOOOOOOONK'."
-	material_parts = /datum/material/bananium
 
 /obj/structure/statue/bananium/clown
 	name = "Statue of a clown"
@@ -197,10 +171,6 @@
 /////////////////////sandstone/////////////////////////////////////////
 
 /obj/structure/statue/sandstone
-	hardness = 0.5
-	materialType = "sandstone"
-	material = "sandstone"
-	material_parts = /datum/material/sandstone
 
 /obj/structure/statue/sandstone/assistant
 	name = "Statue of an assistant"
@@ -210,11 +180,7 @@
 /////////////////////marble/////////////////////////////////////////
 
 /obj/structure/statue/marble
-	hardness = 3
-	materialType = "marble"
-	material = "marble"
 	desc = "This is a shiny statue made from marble."
-	material_parts = /datum/material/marble
 
 /obj/structure/statue/marble/male
 	name = "male statue"
@@ -248,14 +214,12 @@
 	name = "wood statue"
 	desc = "A simple wooden mannequin, generally used to display clothes or equipment. Water frequently."
 	icon_state = "fashion_m"
-	material_parts = /datum/material/wood_plank
 
 /obj/structure/statue/bone
 	name = "bone statue"
 	desc = "A towering menhir of bone, perhaps the colossal rib of some fallen beast."
 	icon = 'icons/obj/statuelarge.dmi'
 	icon_state = "rib"
-	material_parts = /datum/material/bone
 
 /obj/structure/statue/bone/skull
 	name = "skull statue"

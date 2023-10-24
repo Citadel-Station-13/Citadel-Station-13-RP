@@ -54,8 +54,7 @@
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "sharpener"
 	attack_sound = 'sound/weapons/genhit3.ogg'
-	force_divisor = 0.7
-	thrown_force_divisor = 1
+	material_significance = MATERIAL_SIGNIFICANCE_SHARD
 	var/repair_amount = 5
 	var/repair_time = 40
 	var/sharpen_time = 100

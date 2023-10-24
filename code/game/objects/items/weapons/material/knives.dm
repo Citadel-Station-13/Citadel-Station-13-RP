@@ -4,32 +4,30 @@
 	icon_state = "butterflyknife"
 	item_state = null
 	attack_sound = null
-	var/active = 0
 	w_class = ITEMSIZE_SMALL
 	attack_verb = list("patted", "tapped")
-	force_divisor = 0.25 // 15 when wielded with hardness 60 (steel)
-	thrown_force_divisor = 0.25 // 5 when thrown with weight 20 (steel)
+	force_multiplier = 0.1
+	throw_force_multiplier = 1.5
 	drop_sound = 'sound/items/drop/knife.ogg'
 	pickup_sound = 'sound/items/pickup/knife.ogg'
+	var/active = FALSE
 
-/obj/item/material/butterfly/update_force()
+/obj/item/material/butterfly/set_active(active)
+	src.active = active
 	if(active)
-		edge = 1
-		sharp = 1
-		..() //Updates damage_force.
-		throw_force = max(3,damage_force-3)
+		damage_mod = DAMAGE_MODE_EDGE | DAMAGE_MODE_SHARP
 		attack_sound = 'sound/weapons/bladeslice.ogg'
+		force_multiplier = 1
 		icon_state += "_open"
 		w_class = ITEMSIZE_NORMAL
-		attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	else
-		damage_force = 3
-		edge = 0
-		sharp = 0
+		damage_mode = initial(damage_mode)
 		attack_sound = initial(attack_sound)
 		icon_state = initial(icon_state)
 		w_class = initial(w_class)
 		attack_verb = initial(attack_verb)
+		force_multiplier = initial(force_multiplier)
+	update_material_parts()
 
 /obj/item/material/butterfly/switchblade
 	name = "switchblade"
@@ -59,7 +57,7 @@
 	. = ..()
 	if(.)
 		return
-	active = !active
+	set_active(!active)
 	if(active)
 		to_chat(user, "<span class='notice'>You flip out \the [src].</span>")
 		playsound(user, 'sound/weapons/flipblade.ogg', 15, 1)
@@ -154,17 +152,17 @@
 	name = "butcher's cleaver"
 	icon_state = "butch"
 	desc = "Another fine product from NanoTrasen's Cookware line. The heavy head and grooved grip makes chopping meat a breeze."
-	force_divisor = 0.25 // 15 when wielded with hardness 60 (steel)
+	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_HEAVY
 	attack_verb = list("cleaved", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
 /obj/item/material/knife/machete
 	name = "machete"
 	desc = "A sharp machete often found in survival kits."
 	icon_state = "machete"
-	force_divisor = 0.3 // 18 when hardness 60 (steel)
 	attack_verb = list("slashed", "chopped", "gouged", "ripped", "cut")
 	can_cleave = TRUE //Now hatchets inherit from the machete, and thus knives. Tables turned.
 	slot_flags = SLOT_BELT | SLOT_HOLSTER
+	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_HEAVY
 	material_parts = /datum/material/plasteel
 
 /obj/item/material/knife/machete/armblade
@@ -172,10 +170,7 @@
 	desc = "A long, machete-like blade, mounted to your arm. Courtesy of Hephaestus, this machete is ideal for parrying blows."
 	icon_state = "armblade"
 	item_state = "armblade"
-	force_divisor = 0.5 // long and arm-mounted but you gotta use a suit for it
-	slot_flags = null
-	unbreakable = TRUE
-	can_dull = FALSE
+	slot_flags = NONE
 
 /obj/item/material/knife/machete/armblade/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 	if(default_parry_check(user, attacker, damage_source) && prob(33))

@@ -106,7 +106,7 @@
  */
 /obj/proc/update_material_parts()
 	if(islist(material_parts))
-		update_material_multi(parts)
+		update_material_multi(material_parts)
 	else if(material_parts == MATERIAL_DEFAULT_DISABLED)
 	else if(material_parts == MATERIAL_DEFAULT_ABSTRACTED)
 		update_material_multi()

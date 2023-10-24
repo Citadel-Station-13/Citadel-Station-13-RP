@@ -1156,7 +1156,7 @@
 		to_chat(user,"<span class='warning'>You are unable to inject other people.</span>")
 
 //For 2 handed fluff weapons.
-/obj/item/material/twohanded/fluff //Twohanded fluff items.
+/obj/item/fluff //Twohanded fluff items.
 	name = "fluff."
 	desc = "This object is so fluffy. Just from the sight of it, you know that either something went wrong or someone spawned the incorrect item."
 	icon = 'icons/vore/custom_items_vr.dmi'
@@ -1164,9 +1164,6 @@
 				SLOT_ID_LEFT_HAND = 'icons/vore/custom_items_left_hand_vr.dmi',
 				SLOT_ID_RIGHT_HAND = 'icons/vore/custom_items_right_hand_vr.dmi',
 				)
-
-/obj/item/material/twohanded/fluff/Initialize(mapload, material_key)
-	..(mapload," ") //See materials_vr_dmi for more information as to why this is a blank space.
 
 //General use.
 /obj/item/fluff/riding_crop
