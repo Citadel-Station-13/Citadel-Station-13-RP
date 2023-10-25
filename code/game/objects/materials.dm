@@ -99,7 +99,7 @@
 		// skip specifying parts because abstracted
 		update_material_multi()
 	else
-		update_material_single(SSmaterials.resolve_material(material_parts))
+		update_material_single((material_parts = SSmaterials.resolve_material(material_parts)))
 
 /**
  * forces a material update

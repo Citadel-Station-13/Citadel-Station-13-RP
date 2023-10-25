@@ -18,14 +18,12 @@
  */
 /obj/item/material/twohanded
 	w_class = ITEMSIZE_LARGE
+	var/unwielded_force_multiplier = 0.25
 	var/wielded = 0
-	var/force_wielded = 0
-	var/force_unwielded
 	var/wieldsound = null
 	var/unwieldsound = null
 	var/base_icon
 	var/base_name
-	var/unwielded_force_divisor = 0.25
 	attack_sound = "swing_hit"
 	drop_sound = 'sound/items/drop/sword.ogg'
 	pickup_sound = 'sound/items/pickup/sword.ogg'
@@ -34,28 +32,19 @@
 	var/mob/living/M = loc
 	if(istype(M) && M.can_wield_item(src) && is_held_twohanded(M))
 		wielded = 1
-		damage_force = force_wielded
 		name = "[base_name] (wielded)"
-		update_icon()
 	else
 		wielded = 0
-		damage_force = force_unwielded
 		name = "[base_name]"
 	update_icon()
+	update_material_parts()
 	..()
 
-/obj/item/material/twohanded/update_force()
-	base_name = name
-	#warn impl
-	if(sharp || edge)
-		force_wielded = material.get_edge_damage()
-	else
-		force_wielded = material.get_blunt_damage()
-	force_wielded = round(force_wielded*force_divisor)
-	force_unwielded = round(force_wielded*unwielded_force_divisor)
-	damage_force = force_unwielded
-	throw_force = round(damage_force*thrown_force_divisor)
-	//to_chat(world, "[src] has unwielded damage_force [force_unwielded], wielded damage_force [force_wielded] and throw_force [throw_force] when made from default material [material.name]")
+/obj/item/material/twohanded/update_material_parts()
+	. = ..()
+	if(!wielded)
+		damage_force *= unwielded_force_multiplier
+		// don't affect throwforce
 
 /obj/item/material/twohanded/Initialize(mapload, material_key)
 	. = ..()
@@ -92,9 +81,8 @@
 	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	w_class = ITEMSIZE_LARGE
 	slot_flags = SLOT_BACK
-	force_wielded = 30
 	attack_verb = list("attacked", "chopped", "cleaved", "torn", "cut")
-	material_color = 0
+	material_color = FALSE
 	can_cleave = TRUE
 	drop_sound = 'sound/items/drop/axe.ogg'
 	pickup_sound = 'sound/items/pickup/axe.ogg'
@@ -105,15 +93,11 @@
 	if(istype(M) && M.can_wield_item(src) && M.is_holding(src) && !M.hands_full())
 		wielded = 1
 		pry = 1
-		damage_force = force_wielded
 		name = "[base_name] (wielded)"
-		update_icon()
 	else
 		wielded = 0
 		pry = 0
-		damage_force = force_unwielded
 		name = "[base_name]"
-	update_icon()
 	..()
 
 /obj/item/material/twohanded/fireaxe/attack_object(atom/target, mob/user, clickchain_flags, list/params, mult = 1)
@@ -172,18 +156,14 @@
 	damage_force = 10
 	w_class = ITEMSIZE_LARGE
 	slot_flags = SLOT_BACK
-	force_divisor = 0.35 			// 10 when wielded with hardness 30 (glass)
-	unwielded_force_divisor = 0.1
-	thrown_force_divisor = 1.5		// 22.5 when thrown with weight 15 (glass)
+	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_HEAVY
+	throw_force_multiplier = 1.5
 	throw_speed = 5
-	edge = 0
-	sharp = 1
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	mob_throw_hit_sound =  'sound/weapons/pierce.ogg'
 	attack_verb = list("attacked", "poked", "jabbed", "torn", "gored")
 	material_parts = /datum/material/glass
 	material_color = 0
-	fragile = 1	//It's a haphazard thing of glass, wire, and steel
 	reach = 2 // Spears are long.
 	attackspeed = 20
 	weight = ITEM_WEIGHT_MELEE_SPEAR

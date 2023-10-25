@@ -43,6 +43,8 @@
 
 /obj/item/material/update_material_single(datum/material/material)
 	. = ..()
+	if(isnull(material))
+		return
 	if(material_color)
 		color = material.icon_colour
 	else

@@ -7,7 +7,6 @@
 
 /obj/item/material/twohanded/baseballbat/foam
 	attack_verb = list("bonked","whacked")
-	force_wielded = 0
 	drop_sound = 'sound/items/drop/device.ogg'
 	pickup_sound = 'sound/items/pickup/device.ogg'
 	attack_sound = 'sound/effects/bodyfall3.ogg'

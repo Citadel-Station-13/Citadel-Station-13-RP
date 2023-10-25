@@ -593,10 +593,8 @@
 	attack_verb = list("bashed", "battered", "chaired")
 	damage_force = 1
 	throw_force = 3
-	sharp = null
-	edge = 0
 	w_class = ITEMSIZE_LARGE
-	force_wielded = 10
+	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_LIGHT
 	attack_sound = 'sound/effects/metal_chair_slam.ogg'
 	pickup_sound = 'sound/items/pickup/axe.ogg'
 	drop_sound = 'sound/effects/metal_chair_clang.ogg'
