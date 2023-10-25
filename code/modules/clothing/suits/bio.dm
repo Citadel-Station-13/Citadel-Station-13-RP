@@ -10,6 +10,7 @@
 	siemens_coefficient = 0.9
 	atom_flags = PHORONGUARD
 	clothing_flags = CLOTHING_THICK_MATERIAL | ALLOW_SURVIVALFOOD
+	encumbrance
 
 /obj/item/clothing/suit/bio_suit
 	name = "bio suit"
@@ -19,7 +20,7 @@
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.01
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS|FEET
-	slowdown = 1.0
+	weight = ITEM_WEIGHT_ARMOR_BIORAD_SUIT
 	allowed = list(/obj/item/tank/emergency/oxygen,/obj/item/pen,/obj/item/flashlight/pen)
 	armor_type = /datum/armor/general/biosuit
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
@@ -113,7 +114,7 @@
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.01
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS|FEET
-	slowdown = 1.0
+	weight = ITEM_WEIGHT_ARMOR_BIORAD_SUIT
 	allowed = list(/obj/item/tank/emergency/oxygen,/obj/item/pen,/obj/item/flashlight/pen)
 	armor_type = /datum/armor/general/beekeeper
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER

@@ -1,5 +1,5 @@
 /datum/material/durasteel
-	id = "durasteel"
+	id = MAT_DURASTEEL
 	name = "durasteel"
 	stack_type = /obj/item/stack/material/durasteel
 	integrity = 600
@@ -16,6 +16,10 @@
 	composite_material = list(MAT_PLASTEEL = SHEET_MATERIAL_AMOUNT, MAT_DIAMOND = SHEET_MATERIAL_AMOUNT) //shrug
 	table_icon_base = "metal"
 	tgui_icon_key = "durasteel"
+
+/datum/material/durasteel/generate_recipes()
+	. = ..()
+	. += create_stack_recipe_datum(name = "durasteel floor tiles", product = /obj/item/stack/tile/durasteel, amount = 4)
 
 /datum/material/durasteel/hull //The 'Hardball' of starship hulls.
 	id = "durasteel_hull"

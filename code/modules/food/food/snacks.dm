@@ -16,6 +16,10 @@
 	var/nutriment_amt = 0
 	var/list/nutriment_desc = list("food" = 1)
 	var/datum/reagent/nutriment/coating/coating = null
+	var/sealed = FALSE
+	var/custom_open_sound
+	var/open_message = "You peel open the can! It looks ready to eat!"
+	var/opened_icon = 0
 	var/icon/flat_icon = null //Used to cache a flat icon generated from dipping in batter. This is used again to make the cooked-batter-overlay
 	var/do_coating_prefix = 1 //If 0, we wont do "battered thing" or similar prefixes. Mainly for recipes that include batter but have a special name
 	var/cooked_icon = null //Used for foods that are "cooked" without being made into a specific recipe or combination.
@@ -48,7 +52,21 @@
 	. = ..()
 	if(.)
 		return
-	return
+	if(sealed)
+		open(user)
+
+/obj/item/reagent_containers/food/snacks/proc/open(mob/user)
+	if(custom_open_sound)
+		playsound(loc,custom_open_sound, rand(10,50), 1)
+	else
+		playsound(loc,'sound/items/foodcanopen.ogg', rand(10,50), 1)
+
+	if(opened_icon)
+		icon_state = "[initial(icon_state)]-open"
+		update_icon()
+
+	to_chat(user, "<span class='notice'>[open_message]</span>")
+	sealed = FALSE
 
 /obj/item/reagent_containers/food/snacks/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
@@ -62,6 +80,10 @@
 	if(reagents && !reagents.total_volume)
 		to_chat(user, "<span class='danger'>None of [src] left!</span>")
 		qdel(src)
+		return 0
+
+	if(sealed)
+		to_chat(user, "<span class='notice'>You need to open [src]!</span>")
 		return 0
 
 	if(istype(M, /mob/living/carbon))
@@ -385,14 +407,14 @@
 	foldable = null
 
 
-/obj/item/reagent_containers/food/snacks/wpeas
+/obj/item/reagent_containers/food/snacks/bagged/wpeas
 	name = "Wasabi Peas"
 	desc = "Freeze Dried peas covered in a very spicy substance!"
 	icon_state = "wasabi_peas"
 	nutriment_amt = 4
 	nutriment_desc = list("capsaicin" = 2, "protein" = 2)
 
-/obj/item/reagent_containers/food/snacks/wpeas/Initialize(mapload)
+/obj/item/reagent_containers/food/snacks/bagged/wpeas/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("capsaicin",2)
 	reagents.add_reagent("protein",2)
@@ -446,93 +468,6 @@
 	reagents.add_reagent("tricordrazine", 8)
 	bitesize = 3
 
-/obj/item/reagent_containers/food/snacks/candy // Buff 4 >> 8
-	name = "candy"
-	desc = "Nougat, love it or hate it."
-	icon_state = "candy"
-	trash = /obj/item/trash/candy
-	filling_color = "#7D5F46"
-	nutriment_amt = 3
-	nutriment_desc = list("candy" = 1)
-
-/obj/item/reagent_containers/food/snacks/candy/Initialize(mapload)
-	. = ..()
-	reagents.add_reagent("sugar", 4)
-	reagents.add_reagent("protein", 1)
-	bitesize = 2
-
-/obj/item/reagent_containers/food/snacks/spunow
-	name = "spunoW bar"
-	desc = "Sticky, sweet coconut covered in dark chocolate."
-	icon_state = "spunow"
-	trash = /obj/item/trash/candy
-	filling_color = "#d6d6d6"
-	nutriment_amt = 3
-	nutriment_desc = list("chocolate" = 2, "coconut" = 2)
-
-/obj/item/reagent_containers/food/snacks/spunow/Initialize(mapload)
-	. = ..()
-	reagents.add_reagent("coconutmilk", 4)
-	reagents.add_reagent("protein", 1)
-	bitesize = 2
-
-/obj/item/reagent_containers/food/snacks/glad2nut
-	name = "Glad2Nut bar"
-	desc = "Sticky, sweet coconut and almonds covered in milk chocolate."
-	icon_state = "glad2nut"
-	trash = /obj/item/trash/candy
-	filling_color = "#d6d6d6"
-	nutriment_amt = 3
-	nutriment_desc = list("chocolate" = 2, "coconut" = 2, "almond" = 1)
-
-/obj/item/reagent_containers/food/snacks/glad2nut/Initialize(mapload)
-	. = ..()
-	reagents.add_reagent("coconutmilk", 4)
-	reagents.add_reagent("protein", 1)
-	bitesize = 2
-
-/obj/item/reagent_containers/food/snacks/natkat
-	name = "NatKat bar"
-	desc = "A chocolate coated honey wafer infused with hints of blueberry and copper."
-	icon_state = "natkat"
-	trash = /obj/item/trash/candy
-	filling_color = "#b9855b"
-	nutriment_amt = 3
-	nutriment_desc = list("chocolate" = 1, "honey" = 2, "blueberry" = 1, "pennies" = 1)
-
-/obj/item/reagent_containers/food/snacks/natkat/Initialize(mapload)
-	. = ..()
-	reagents.add_reagent("sugar", 4)
-	reagents.add_reagent("honey", 3)
-	reagents.add_reagent("iron", 1)
-	bitesize = 4
-
-/obj/item/reagent_containers/food/snacks/candy/proteinbar // Buff 17 >> 21
-	name = "protein bar"
-	desc = "SwoleMAX brand protein bars, guaranteed to get you feeling perfectly overconfident."
-	icon_state = "proteinbar"
-	trash = /obj/item/trash/candy/proteinbar
-	nutriment_amt = 7
-	nutriment_desc = list("candy" = 1, "protein" = 8)
-
-/obj/item/reagent_containers/food/snacks/candy/proteinbar/Initialize(mapload)
-	. = ..()
-	reagents.add_reagent("protein", 10)
-	reagents.add_reagent("sugar", 4)
-	bitesize = 6
-
-/obj/item/reagent_containers/food/snacks/candy/donor
-	name = "Donor Candy"
-	desc = "A little treat for blood donors."
-	trash = /obj/item/trash/candy
-	nutriment_amt = 9
-	nutriment_desc = list("candy" = 10)
-
-/obj/item/reagent_containers/food/snacks/candy/donor/Initialize(mapload)
-	. = ..()
-	reagents.add_reagent("sugar", 3)
-	bitesize = 5
-
 /obj/item/reagent_containers/food/snacks/candy_corn
 	name = "candy corn"
 	desc = "It's a handful of candy corn. Cannot be stored in a detective's hat, alas."
@@ -544,19 +479,6 @@
 /obj/item/reagent_containers/food/snacks/candy_corn/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("sugar", 2)
-	bitesize = 2
-
-/obj/item/reagent_containers/food/snacks/chips // Buff 3 >> 5
-	name = "chips"
-	desc = "Commander Riker's What-The-Crisps"
-	icon_state = "chips"
-	trash = /obj/item/trash/chips
-	filling_color = "#E8C31E"
-	nutriment_amt = 5
-	nutriment_desc = list("salt" = 1, "chips" = 2)
-
-/obj/item/reagent_containers/food/snacks/chips/Initialize(mapload)
-	. = ..()
 	bitesize = 2
 
 /obj/item/reagent_containers/food/snacks/cookie
@@ -1520,69 +1442,6 @@
 		to_chat(usr, "<font color='red'>You bite down on an un-popped kernel!</font>")
 		unpopped = max(0, unpopped-1)
 	. = ..()
-
-/obj/item/reagent_containers/food/snacks/sosjerky // Buff 4 >> 8
-	name = "Scaredy's Private Reserve Beef Jerky"
-	icon_state = "sosjerky"
-	desc = "Beef jerky made from the finest space cows."
-	trash = /obj/item/trash/sosjerky
-	filling_color = "#631212"
-
-/obj/item/reagent_containers/food/snacks/sosjerky/Initialize(mapload)
-		. = ..()
-		reagents.add_reagent("protein", 8)
-		bitesize = 4
-
-/obj/item/reagent_containers/food/snacks/no_raisin // Buff 6 >> 12
-	name = "4no Raisins"
-	icon_state = "4no_raisins"
-	desc = "Best raisins in the universe. Not sure why."
-	trash = /obj/item/trash/raisins
-	filling_color = "#343834"
-	nutriment_amt = 12
-	nutriment_desc = list("dried raisins" = 6)
-
-/obj/item/reagent_containers/food/snacks/no_raisin/Initialize(mapload)
-	. = ..()
-	bitesize = 3
-
-/obj/item/reagent_containers/food/snacks/spacetwinkie // Buff 4 >> 6
-	name = "Space Twinkie"
-	icon_state = "space_twinkie"
-	desc = "Guaranteed to survive longer then you will."
-	filling_color = "#FFE591"
-
-/obj/item/reagent_containers/food/snacks/spacetwinkie/Initialize(mapload)
-	. = ..()
-	reagents.add_reagent("sugar", 6)
-	bitesize = 2
-
-/obj/item/reagent_containers/food/snacks/cheesiehonkers // Buff 4 >> 6
-	name = "Cheesie Honkers"
-	icon_state = "cheesie_honkers"
-	desc = "Bite sized cheesie snacks that will honk all over your mouth"
-	trash = /obj/item/trash/cheesie
-	filling_color = "#FFA305"
-	nutriment_amt = 6
-	nutriment_desc = list("cheese" = 5, "chips" = 2)
-
-/obj/item/reagent_containers/food/snacks/cheesiehonkers/Initialize(mapload)
-	. = ..()
-	bitesize = 2
-
-/obj/item/reagent_containers/food/snacks/hotcheesiehonkers
-	name = "Hot Cheesie Honkers"
-	icon_state = "hot_cheesie_honkers"
-	desc = "Explosively spicy cheesie honkers! Warning, don't eat more than two bags in one go, we are not responsible for tongue-melting incidents."
-	trash = /obj/item/trash/hot_cheesie
-	filling_color = "#ff6905"
-	nutriment_amt = 6
-	nutriment_desc = list("cheese" = 5, "chips" = 2, "chilli peppers" = 2)
-
-/obj/item/reagent_containers/food/snacks/hotcheesiehonkers/Initialize(mapload)
-	. = ..()
-	reagents.add_reagent("capsaicin", 2)
-	bitesize = 2
 
 /obj/item/reagent_containers/food/snacks/syndicake // Buff 4 >> 5 (Contains Dr.'s Delight already
 	name = "Syndi-Cakes"
@@ -3781,33 +3640,44 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/rawsticks/Initialize(mapload)
 	. = ..()
 
-/obj/item/reagent_containers/food/snacks/liquidfood // Buff back to 30 from 20
+/obj/item/reagent_containers/food/snacks/liquid // Buff back to 30 from 20
 	name = "\improper LiquidFood Ration"
-	desc = "A prepackaged grey slurry of all the essential nutrients for a spacefarer on the go. Should this be crunchy?"
+	desc = "A prepackaged grey slurry of all the essential nutrients for a spacefarer on the go. Should this be crunchy? A fat straw integrated into the tip of the pouch seems designed to pierce it when pulled up."
 	icon_state = "liquidfood"
 	trash = /obj/item/trash/liquidfood
 	filling_color = "#A8A8A8"
 	survivalfood = TRUE
+	sealed = TRUE
 	center_of_mass = list("x"=16, "y"=15)
 	nutriment_amt = 30
 	bitesize = 4
 	nutriment_desc = list("chalk" = 6)
+	custom_open_sound = 'sound/effects/bonebreak4.ogg'
+	open_message = "You snap the straw into place, piercing the pouch."
 
-/obj/item/reagent_containers/food/snacks/liquidfood/Initialize(mapload)
+/obj/item/reagent_containers/food/snacks/liquid/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("iron", 3)
 
-/obj/item/reagent_containers/food/snacks/liquidvitamin
+/obj/item/reagent_containers/food/snacks/liquid/protein // Added Protein only version of LiquidFood + added custom sprite for it
+    name = "\improper LiquidProtein Ration"
+    desc = "A variant of the liquidfood ration, designed for obligate carnivore species. Only barely more appealing than regular liquidfood. Should this be crunchy? A fat straw integrated into the tip of the pouch seems designed to pierce it when pulled up."
+    icon_state = "liquidprotein"
+    trash = /obj/item/trash/liquidprotein
+
+/obj/item/reagent_containers/food/snacks/liquid/protein/Initialize(mapload)
+    . = ..()
+    reagents.add_reagent("protein", 30)
+    reagents.add_reagent("iron", 3)
+
+/obj/item/reagent_containers/food/snacks/liquid/vitamin
 	name = "\improper VitaPaste Ration"
-	desc = "A variant of the liquidfood ration, designed for any carbon-based life. Somehow worse than regular liquidfood. Should this be crunchy?"
+	desc = "A variant of the liquidfood ration, designed for any carbon-based life. Somehow worse than regular liquidfood. Should this be crunchy? A fat straw integrated into the tip of the pouch seems designed to pierce it when pulled up."
 	icon_state = "liquidvitamin"
 	trash = /obj/item/trash/liquidvitamin
-	filling_color = "#A8A8A8"
 	bitesize = 6
-	survivalfood = TRUE
-	center_of_mass = list("x"=16, "y"=15)
 
-/obj/item/reagent_containers/food/snacks/liquidvitamin/Initialize(mapload)
+/obj/item/reagent_containers/food/snacks/liquid/vitamin/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("nutriflour", 20)
 	reagents.add_reagent("tricordrazine", 5)
@@ -3826,59 +3696,6 @@ END CITADEL CHANGE */
 	. = ..()
 	reagents.add_reagent("protein", 15)
 	bitesize = 3
-
-/obj/item/reagent_containers/food/snacks/liquidprotein // Added Protein only version of LiquidFood + added custom sprite for it
-    name = "\improper LiquidProtein Ration"
-    desc = "A variant of the liquidfood ration, designed for obligate carnivore species. Only barely more appealing than regular liquidfood. Should this be crunchy?"
-    icon_state = "liquidprotein"
-    trash = /obj/item/trash/liquidprotein
-    filling_color = "#A8A8A8"
-    bitesize = 4
-    center_of_mass = list("x"=16, "y"=15)
-
-/obj/item/reagent_containers/food/snacks/liquidprotein/Initialize(mapload)
-    . = ..()
-    reagents.add_reagent("protein", 30)
-    reagents.add_reagent("iron", 3)
-
-/obj/item/reagent_containers/food/snacks/tastybread
-	name = "bread tube"
-	desc = "Bread in a tube. Chewy...and surprisingly tasty."
-	icon_state = "tastybread"
-	trash = /obj/item/trash/tastybread
-	filling_color = "#A66829"
-	center_of_mass = list("x"=17, "y"=16)
-	nutriment_amt = 6
-	nutriment_desc = list("bread" = 2, "sweetness" = 3)
-
-/obj/item/reagent_containers/food/snacks/tastybread/Initialize(mapload)
-	. = ..()
-	bitesize = 2
-
-/obj/item/reagent_containers/food/snacks/skrellsnacks // Buff 10 >> 12
-	name = "\improper SkrellSnax"
-	desc = "Cured fungus shipped all the way from Qerr'balak, almost like jerky! Almost."
-	icon_state = "skrellsnacks"
-	filling_color = "#A66829"
-	nutriment_amt = 12
-	nutriment_desc = list("mushroom" = 5, "salt" = 5)
-
-/obj/item/reagent_containers/food/snacks/skrellsnacks/Initialize(mapload)
-	. = ..()
-	bitesize = 3
-
-/obj/item/reagent_containers/food/snacks/unajerky // Buff 8 >> 10
-	name = "Moghes Imported Sissalik Jerky"
-	icon_state = "unathitinred"
-	desc = "An incredibly well made jerky, shipped in all the way from Moghes."
-	trash = /obj/item/trash/unajerky
-	filling_color = "#631212"
-
-/obj/item/reagent_containers/food/snacks/unajerky/Initialize(mapload)
-		. = ..()
-		reagents.add_reagent("protein", 10)
-		reagents.add_reagent("hexaisin", 3)
-		bitesize = 3
 
 /obj/item/reagent_containers/food/snacks/croissant
 	name = "croissant"
@@ -3936,6 +3753,8 @@ END CITADEL CHANGE */
 	icon_state = "beans"
 	nutriment_amt = 4
 	nutriment_desc = list("beans" = 4)
+	sealed = TRUE
+	opened_icon = 1
 
 /obj/item/reagent_containers/food/snacks/beans/Initialize(mapload)
 	. = ..()
@@ -5760,32 +5579,6 @@ END CITADEL CHANGE */
 	reagents.trans_to(target, reagents.total_volume)
 	qdel(src)
 
-/obj/item/reagent_containers/food/snacks/baschbeans
-	name = "Basch's Baked Beans"
-	icon_state = "baschbeans"
-	desc = "In partnership with the Cyan Consumables Corporation, Basch is proud to produce its classic beans in a brand new package. A frontier favorite!"
-	trash = /obj/item/trash/baschbeans
-	filling_color = "#FC6F28"
-	nutriment_amt = 4
-	nutriment_desc = list("beans" = 4)
-
-/obj/item/reagent_containers/food/snacks/baschbeans/Initialize(mapload)
-	. = ..()
-	bitesize = 2
-
-/obj/item/reagent_containers/food/snacks/creamcorn
-	name = "Garm n' Bozia's Cream Corn"
-	icon_state = "creamcorn"
-	desc = "This is a formica label. Green is its color. The Cyan Consumables Corporation refuses to reveal where these cans come from."
-	trash = /obj/item/trash/creamcorn
-	filling_color = "#FFFAD4"
-	nutriment_amt = 5
-	nutriment_desc = list("corn" = 5)
-
-/obj/item/reagent_containers/food/snacks/creamcorn/Initialize(mapload)
-	. = ..()
-	bitesize = 2
-
 /obj/item/reagent_containers/food/snacks/crayonburger_red // Buff 6 >> 15
 	name = "red crayonburger"
 	desc = "Someone has melted a whole crayon over the top of this patty!"
@@ -6804,6 +6597,8 @@ END CITADEL CHANGE */
 	filling_color = "#015f01"
 	nutriment_amt = 5
 	nutriment_desc = list("mossy fungus" = 5)
+	sealed = TRUE
+	opened_icon = 1
 
 /obj/item/reagent_containers/food/snacks/cavemoss_can/Initialize(mapload)
 	. = ..()
@@ -6817,6 +6612,8 @@ END CITADEL CHANGE */
 	filling_color = "#64482d"
 	nutriment_amt = 5
 	nutriment_desc = list("mushroom" = 1, "carrot" = 1, "bugflesh" = 3)
+	sealed = TRUE
+	opened_icon = 1
 
 /obj/item/reagent_containers/food/snacks/diggerstew_can/Initialize(mapload)
 	. = ..()
@@ -6830,6 +6627,8 @@ END CITADEL CHANGE */
 	filling_color = "#759c75"
 	nutriment_amt = 5
 	nutriment_desc = list("mushroom" = 2, "bugflesh" = 3)
+	sealed = TRUE
+	opened_icon = 1
 
 /obj/item/reagent_containers/food/snacks/canned_beetles/Initialize(mapload)
 	. = ..()
@@ -6843,13 +6642,15 @@ END CITADEL CHANGE */
 	filling_color = "#7a3f07"
 	nutriment_amt = 5
 	nutriment_desc = list(MAT_IRON = 3, "water" = 2)
+	sealed = TRUE
+	opened_icon = 1
 
 /obj/item/reagent_containers/food/snacks/rust_can/Initialize(mapload)
 	. = ..()
 	bitesize = 2
 
 //Alraune Imported Foods
-/obj/item/reagent_containers/food/snacks/alraune_bar
+/obj/item/reagent_containers/food/snacks/wrapped/alraune_bar
 	name = "Alraune snack bar"
 	desc = "A bar of compressed insect meat and fertilizer. As Alraune do not need to eat in the tradiational sense, this is viewed as more of a luxury item."
 	icon_state = "alraunesnack"
@@ -6857,12 +6658,13 @@ END CITADEL CHANGE */
 	filling_color = "#331f0c"
 	nutriment_amt = 5
 	nutriment_desc = list("bugflesh" = 3, "soil" = 1, "dirt" = 1)
+	sealed = TRUE
 
-/obj/item/reagent_containers/food/snacks/alraune_bar/Initialize(mapload)
+/obj/item/reagent_containers/food/snacks/wrapped/alraune_bar/Initialize(mapload)
 	. = ..()
 	bitesize = 2
 
-/obj/item/reagent_containers/food/snacks/bugsnacks
+/obj/item/reagent_containers/food/snacks/boxed/bugsnacks
 	name = "Bugsnacks"
 	desc = "A colorful box full of dried beetles. They come in various colors. There are some arguments about which color tastes best."
 	icon_state = "bugsnacks"
@@ -6871,7 +6673,7 @@ END CITADEL CHANGE */
 	nutriment_amt = 5
 	nutriment_desc = list("bugflesh" = 3, "sugar" = 2)
 
-/obj/item/reagent_containers/food/snacks/bugsnacks/Initialize(mapload)
+/obj/item/reagent_containers/food/snacks/boxed/bugsnacks/Initialize(mapload)
 	. = ..()
 	bitesize = 2
 
@@ -6929,14 +6731,282 @@ END CITADEL CHANGE */
 	reagents.add_reagent("protein", 7)
 	bitesize = 2
 
+// Canned Foods
+// These don't need subtyping because their variables are the default.
+
+/obj/item/reagent_containers/food/snacks/baschbeans
+	name = "Basch's Baked Beans"
+	icon_state = "baschbeans"
+	desc = "In partnership with the Cyan Consumables Corporation, Basch is proud to produce its classic beans in a brand new package. A frontier favorite!"
+	trash = /obj/item/trash/baschbeans
+	filling_color = "#FC6F28"
+	nutriment_amt = 4
+	nutriment_desc = list("beans" = 4)
+	sealed = TRUE
+	opened_icon = 1
+
+/obj/item/reagent_containers/food/snacks/baschbeans/Initialize(mapload)
+	. = ..()
+	bitesize = 2
+
+/obj/item/reagent_containers/food/snacks/creamcorn
+	name = "Garm n' Bozia's Cream Corn"
+	icon_state = "creamcorn"
+	desc = "This is a formica label. Green is its color. The Cyan Consumables Corporation refuses to reveal where these cans come from."
+	trash = /obj/item/trash/creamcorn
+	filling_color = "#FFFAD4"
+	nutriment_amt = 5
+	nutriment_desc = list("corn" = 5)
+	sealed = TRUE
+	opened_icon = 1
+
+/obj/item/reagent_containers/food/snacks/creamcorn/Initialize(mapload)
+	. = ..()
+	bitesize = 2
+
 /obj/item/reagent_containers/food/snacks/brainsnax
 	name = "Brainsnax"
 	desc = "A green can, filled to the brim with vatgrown brain matter, in all its juicy glory. Rich in lymbic system!"
-	icon_state = "brainsnaxopen"
+	icon_state = "brainsnax"
 	trash = /obj/item/trash/brainsnaxtrash
 	nutriment_amt = 5
 	nutriment_desc = list("protein" = 3, "iron" = 2)
+	sealed = TRUE
+	opened_icon = 1
 
-/obj/item/reagent_containers/food/snacks/bugsnacks/Initialize(mapload)
+/obj/item/reagent_containers/food/snacks/brainsnax/Initialize(mapload)
+	. = ..()
+	bitesize = 2
+
+// Packaged Snack Foods Below
+// Wrapped
+
+/obj/item/reagent_containers/food/snacks/wrapped/candy // Buff 4 >> 8
+	name = "ABSTRACT"
+	desc = "You shouldn't be seeing this. Contact an admin!"
+	sealed = TRUE
+	custom_open_sound = 'sound/effects/pageturn2.ogg'
+	open_message = "You peel back the wrapping!"
+
+/obj/item/reagent_containers/food/snacks/wrapped/candy // Buff 4 >> 8
+	name = "candy"
+	desc = "Nougat, love it or hate it."
+	icon_state = "candy"
+	trash = /obj/item/trash/candy
+	filling_color = "#7D5F46"
+	nutriment_amt = 3
+	nutriment_desc = list("candy" = 1)
+
+/obj/item/reagent_containers/food/snacks/wrapped/candy/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("sugar", 4)
+	reagents.add_reagent("protein", 1)
+	bitesize = 2
+
+/obj/item/reagent_containers/food/snacks/wrapped/skrellsnacks // Buff 10 >> 12
+	name = "\improper SkrellSnax"
+	desc = "Cured fungus shipped all the way from Qerr'balak, almost like jerky! Almost."
+	icon_state = "skrellsnacks"
+	filling_color = "#A66829"
+	nutriment_amt = 12
+	nutriment_desc = list("mushroom" = 5, "salt" = 5)
+
+/obj/item/reagent_containers/food/snacks/wrapped/skrellsnacks/Initialize(mapload)
+	. = ..()
+	bitesize = 3
+
+/obj/item/reagent_containers/food/snacks/wrapped/spunow
+	name = "spunoW bar"
+	desc = "Sticky, sweet coconut covered in dark chocolate."
+	icon_state = "spunow"
+	trash = /obj/item/trash/candy
+	filling_color = "#d6d6d6"
+	nutriment_amt = 3
+	nutriment_desc = list("chocolate" = 2, "coconut" = 2)
+
+/obj/item/reagent_containers/food/snacks/wrapped/spunow/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("coconutmilk", 4)
+	reagents.add_reagent("protein", 1)
+	bitesize = 2
+
+/obj/item/reagent_containers/food/snacks/wrapped/glad2nut
+	name = "Glad2Nut bar"
+	desc = "Sticky, sweet coconut and almonds covered in milk chocolate."
+	icon_state = "glad2nut"
+	trash = /obj/item/trash/candy
+	filling_color = "#d6d6d6"
+	nutriment_amt = 3
+	nutriment_desc = list("chocolate" = 2, "coconut" = 2, "almond" = 1)
+
+/obj/item/reagent_containers/food/snacks/wrapped/glad2nut/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("coconutmilk", 4)
+	reagents.add_reagent("protein", 1)
+	bitesize = 2
+
+/obj/item/reagent_containers/food/snacks/wrapped/natkat
+	name = "NatKat bar"
+	desc = "A chocolate coated honey wafer infused with hints of blueberry and copper."
+	icon_state = "natkat"
+	trash = /obj/item/trash/candy
+	filling_color = "#b9855b"
+	nutriment_amt = 3
+	nutriment_desc = list("chocolate" = 1, "honey" = 2, "blueberry" = 1, "pennies" = 1)
+
+/obj/item/reagent_containers/food/snacks/wrapped/natkat/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("sugar", 4)
+	reagents.add_reagent("honey", 3)
+	reagents.add_reagent("iron", 1)
+	bitesize = 4
+
+/obj/item/reagent_containers/food/snacks/wrapped/donor
+	name = "Donor Candy"
+	desc = "A little treat for blood donors."
+	trash = /obj/item/trash/candy
+	nutriment_amt = 9
+	nutriment_desc = list("candy" = 10)
+
+/obj/item/reagent_containers/food/snacks/wrapped/donor/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("sugar", 3)
+	bitesize = 5
+
+/obj/item/reagent_containers/food/snacks/wrapped/proteinbar // Buff 17 >> 21
+	name = "protein bar"
+	desc = "SwoleMAX brand protein bars, guaranteed to get you feeling perfectly overconfident."
+	icon_state = "proteinbar"
+	trash = /obj/item/trash/candy/proteinbar
+	nutriment_amt = 7
+	nutriment_desc = list("candy" = 1, "protein" = 8)
+
+/obj/item/reagent_containers/food/snacks/wrapped/proteinbar/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 10)
+	reagents.add_reagent("sugar", 4)
+	bitesize = 6
+
+/obj/item/reagent_containers/food/snacks/wrapped/spacetwinkie // Buff 4 >> 6
+	name = "Space Twinkie"
+	icon_state = "space_twinkie"
+	desc = "Guaranteed to survive longer then you will."
+	filling_color = "#FFE591"
+
+/obj/item/reagent_containers/food/snacks/wrapped/spacetwinkie/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("sugar", 6)
+	bitesize = 2
+
+// Bagged
+/obj/item/reagent_containers/food/snacks/bagged // Buff 3 >> 5
+	name = "ABSTRACT"
+	desc = "You shouldn't be seeing this. Contact an admin!"
+	sealed = TRUE
+	custom_open_sound = 'sound/bureaucracy/papercrumple.ogg'
+	open_message = "You pull the package open!"
+
+/obj/item/reagent_containers/food/snacks/bagged/chips // Buff 3 >> 5
+	name = "chips"
+	desc = "Commander Riker's What-The-Crisps"
+	icon_state = "chips"
+	trash = /obj/item/trash/chips
+	filling_color = "#E8C31E"
+	nutriment_amt = 5
+	nutriment_desc = list("salt" = 1, "chips" = 2)
+
+/obj/item/reagent_containers/food/snacks/bagged/chips/Initialize(mapload)
+	. = ..()
+	bitesize = 2
+
+/obj/item/reagent_containers/food/snacks/bagged/sosjerky // Buff 4 >> 8
+	name = "Scaredy's Private Reserve Beef Jerky"
+	icon_state = "sosjerky"
+	desc = "Beef jerky made from the finest space cows."
+	trash = /obj/item/trash/sosjerky
+	filling_color = "#631212"
+
+/obj/item/reagent_containers/food/snacks/bagged/sosjerky/Initialize(mapload)
+		. = ..()
+		reagents.add_reagent("protein", 8)
+		bitesize = 4
+
+/obj/item/reagent_containers/food/snacks/bagged/cheesiehonkers // Buff 4 >> 6
+	name = "Cheesie Honkers"
+	icon_state = "cheesie_honkers"
+	desc = "Bite sized cheesie snacks that will honk all over your mouth"
+	trash = /obj/item/trash/cheesie
+	filling_color = "#FFA305"
+	nutriment_amt = 6
+	nutriment_desc = list("cheese" = 5, "chips" = 2)
+
+/obj/item/reagent_containers/food/snacks/bagged/cheesiehonkers/Initialize(mapload)
+	. = ..()
+	bitesize = 2
+
+/obj/item/reagent_containers/food/snacks/bagged/hotcheesiehonkers
+	name = "Hot Cheesie Honkers"
+	icon_state = "hot_cheesie_honkers"
+	desc = "Explosively spicy cheesie honkers! Warning, don't eat more than two bags in one go, we are not responsible for tongue-melting incidents."
+	trash = /obj/item/trash/hot_cheesie
+	filling_color = "#ff6905"
+	nutriment_amt = 6
+	nutriment_desc = list("cheese" = 5, "chips" = 2, "chilli peppers" = 2)
+
+/obj/item/reagent_containers/food/snacks/bagged/hotcheesiehonkers/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("capsaicin", 2)
+	bitesize = 2
+
+// Boxed
+/obj/item/reagent_containers/food/snacks/boxed // Buff 3 >> 5
+	name = "ABSTRACT"
+	desc = "You shouldn't be seeing this. Contact an admin!"
+	sealed = TRUE
+	custom_open_sound = 'sound/misc/boxopen.ogg'
+	open_message = "You pop open the box!"
+
+/obj/item/reagent_containers/food/snacks/boxed/no_raisin // Buff 6 >> 12
+	name = "4no Raisins"
+	icon_state = "4no_raisins"
+	desc = "Best raisins in the universe. Not sure why."
+	trash = /obj/item/trash/raisins
+	filling_color = "#343834"
+	nutriment_amt = 12
+	nutriment_desc = list("dried raisins" = 6)
+
+/obj/item/reagent_containers/food/snacks/boxed/no_raisin/Initialize(mapload)
+	. = ..()
+	bitesize = 3
+
+/obj/item/reagent_containers/food/snacks/boxed/unajerky // Buff 8 >> 10
+	name = "Moghes Imported Sissalik Jerky"
+	icon_state = "unathitinred"
+	desc = "An incredibly well made jerky, shipped in all the way from Moghes."
+	trash = /obj/item/trash/unajerky
+	filling_color = "#631212"
+
+/obj/item/reagent_containers/food/snacks/boxed/unajerky/Initialize(mapload)
+		. = ..()
+		reagents.add_reagent("protein", 10)
+		reagents.add_reagent("hexaisin", 3)
+		bitesize = 3
+
+// Unorthodox Packaging
+
+/obj/item/reagent_containers/food/snacks/tastybread
+	name = "bread tube"
+	desc = "Bread in a tube. Chewy...and surprisingly tasty."
+	icon_state = "tastybread"
+	trash = /obj/item/trash/tastybread
+	filling_color = "#A66829"
+	center_of_mass = list("x"=17, "y"=16)
+	nutriment_amt = 6
+	nutriment_desc = list("bread" = 2, "sweetness" = 3)
+	sealed = TRUE
+	custom_open_sound = 'sound/weapons/grenade_launcher.ogg'
+	open_message = "You pop open the tube!"
+
+/obj/item/reagent_containers/food/snacks/tastybread/Initialize(mapload)
 	. = ..()
 	bitesize = 2

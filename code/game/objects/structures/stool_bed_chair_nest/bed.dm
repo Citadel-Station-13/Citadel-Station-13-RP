@@ -178,23 +178,21 @@
 /obj/structure/bed/double/padded/Initialize(mapload)
 	. = ..(mapload, "wood", "cotton")
 
-/obj/structure/bed/double/padded/get_centering_pixel_y_offset(dir, atom/aligning)
-	if(!aligning)
+/obj/structure/bed/double/padded/get_buckled_y_offset(atom/buckled)
+	if(isnull(buckled))
 		return ..()
-	if(!has_buckled_mobs())
-		return ..()
-	var/index = buckled_mobs.Find(aligning)
+	var/index = buckled_mobs?.Find(buckled)
 	if(!index)
 		return ..()
 	switch(index)
 		if(1)
-			return -6
+			return 0
 		if(2)
-			return 6
+			return 12
 		if(3)
-			return 3
+			return 6
 		else
-			return rand(-6, 6)
+			return rand(0, 12)
 
 /*
  * Roller beds

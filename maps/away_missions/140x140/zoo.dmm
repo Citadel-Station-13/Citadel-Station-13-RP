@@ -2191,7 +2191,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/awaymission/zoo/tradeship)
 "gx" = (
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /turf/simulated/shuttle/floor/black,
 /area/awaymission/zoo/tradeship)
 "gy" = (
@@ -8518,14 +8518,14 @@
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/zoo)
 "wW" = (
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /obj/item/paper/zoo,
 /obj/item/paper/zoo,
 /obj/item/paper/zoo,
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/zoo)
 "wX" = (
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /obj/item/paper/zoo,
 /obj/item/paper/zoo,
 /obj/item/paper/zoo,

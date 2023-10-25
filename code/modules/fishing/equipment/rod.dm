@@ -80,8 +80,11 @@
 	SStgui.update_uis(src)
 	update_icon()
 
-/obj/item/fishing_rod/on_attack_self(mob/user)
-	reel(user)
+/obj/item/fishing_rod/on_attack_self(datum/event_args/actor/e_args)
+	. = ..()
+	if(.)
+		return
+	reel(e_args.performer)
 
 /obj/item/fishing_rod/proc/reel(mob/user, atom/target)
 	// signal first for fishing minigame

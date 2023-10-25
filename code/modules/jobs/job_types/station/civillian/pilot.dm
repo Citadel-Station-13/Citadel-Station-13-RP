@@ -17,15 +17,15 @@
 		ACCESS_ENGINEERING_AIRLOCK,
 	)
 	outfit_type = /datum/outfit/job/station/pilot
-	desc = "A Pilot flies the various shuttles in the Virgo-Erigone System."
+	desc = "A Pilot flies the various shuttles attached to the installation."
 	alt_titles = list(
-		"Co-Pilot" = /datum/prototype/struct/alt_title/co_pilot,
+		"Junior Pilot" = /datum/prototype/struct/alt_title/co_pilot,
 		"Navigator" = /datum/prototype/struct/alt_title/navigator
 		)
 
 /datum/prototype/struct/alt_title/co_pilot
-	title = "Co-Pilot"
-	title_blurb = "A Co-Pilot is there primarily to assist main pilot as well as learn from them"
+	title = "Junior Pilot"
+	title_blurb = "A Junior Pilot is still a trainee, here to learn from the Pilot and assist them. They are not qualified to pilot a shuttlecraft solo."
 
 /datum/prototype/struct/alt_title/navigator
 	title = "Navigator"

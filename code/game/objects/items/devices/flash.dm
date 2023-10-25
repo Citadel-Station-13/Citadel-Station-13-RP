@@ -72,7 +72,7 @@
 		icon_state = "[base_icon]"
 	return
 
-/obj/item/flash/get_cell()
+/obj/item/flash/get_cell(inducer)
 	return power_supply
 
 /obj/item/flash/proc/get_external_power_supply()

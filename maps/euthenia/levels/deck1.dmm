@@ -3295,7 +3295,7 @@
 /turf/simulated/floor/plating,
 /area/security/warden)
 "ecf" = (
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},

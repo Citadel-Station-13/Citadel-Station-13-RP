@@ -412,8 +412,9 @@
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
-/obj/item/nullrod/tribal_knife/process(delta_time)
-	slowdown = rand(-2, 2)
+// no this is hrp
+// /obj/item/nullrod/tribal_knife/process(delta_time)
+// 	slowdown = rand(-2, 2)
 
 /obj/item/nullrod/pitchfork
 	icon_state = "pitchfork0"

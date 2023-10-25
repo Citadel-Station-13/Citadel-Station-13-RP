@@ -5,6 +5,7 @@
 // todo: this is an awful way to do it but it works
 	unequip_sound = 'sound/items/drop/clothing.ogg'
 	pickup_sound = 'sound/items/pickup/cloth.ogg'
+	item_flags = NONE
 
 	//? equip
 	/// Inventory slot IDs where this is active for any effects. Used by subtypes, to be potentially refactored in the future.
@@ -60,6 +61,12 @@
 	//? accessory system - attached to by accessories
 	/// full list of accessories, everything inside must be an /obj/item. *not* /obj/item/clothing.
 	var/list/accessories
+
+	//* Carry Weight
+	/// encumbrance compensation for accessories - flat.
+	var/accessory_encumbrance_mitigation = 0
+	/// encumbrance multiplier for accessories.
+	var/accessory_encumbrance_multiply = 1
 
 /obj/item/clothing/Initialize(mapload)
 	. = ..()

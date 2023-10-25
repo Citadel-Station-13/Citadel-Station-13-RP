@@ -690,7 +690,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether_away/beach/desalinator)
 "el" = (
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /turf/simulated/floor/tiled/old_tile/white,
 /area/tether_away/beach/resort/lockermed)
 "er" = (
@@ -1841,7 +1841,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether_away/beach/bunker/mess)
 "nI" = (
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /turf/simulated/floor/wood,
 /area/tether_away/beach/desalinator)
 "nM" = (

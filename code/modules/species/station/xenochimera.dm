@@ -1,3 +1,7 @@
+/datum/physiology_modifier/intrinsic/species/xenochimera
+	carry_strength_add = CARRY_STRENGTH_ADD_XENOCHIMERA
+	carry_strength_factor = CARRY_FACTOR_MOD_XENOCHIMERA
+
 /datum/species/shapeshifter/xenochimera //Scree's race.
 	uid = SPECIES_ID_XENOCHIMERA
 	id = SPECIES_ID_XENOCHIMERA
@@ -5,6 +9,7 @@
 	name_plural = "Xenochimeras"
 	base_species = SPECIES_XENOCHIMERA
 	category = "Special"
+	mob_physiology_modifier = /datum/physiology_modifier/intrinsic/species/xenochimera
 
 	selects_bodytype = TRUE
 
@@ -789,6 +794,12 @@
 	nutrition_cost_minimum = 1
 	nutrition_cost_proportional = 1
 	nutrition_enforced = FALSE
+
+/datum/ability/species/xenochimera/hatch/check_trigger(mob/user, toggling, feedback)
+	if(!..())
+		return FALSE
+	else
+		return alert("Are you sure you want to use Hatch Stasis? This takes ten minutes and cannot be cancelled!", "Confirm Hatch", "Yes", "No") == "Yes"
 
 /datum/ability/species/xenochimera/hatch/on_trigger()
 	. = ..()

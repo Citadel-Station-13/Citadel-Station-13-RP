@@ -137,8 +137,12 @@
 	path = /obj/item/clothing/head/medievalfake/crusader/winged
 
 /datum/loadout_entry/seasonal/halloween/costumes/head/darkcleric
-	display_name = "Costume Head - Dark Cleric Circlet"
+	name = "Costume Head - Dark Cleric Circlet"
 	path = /obj/item/clothing/head/darkcleric
+
+/datum/loadout_entry/seasonal/halloween/costumes/head/aquiline
+	name = "Costume Head - Aquiline Enforcer"
+	path = /obj/item/clothing/head/helmet/aquiline
 
 // Mask
 /datum/loadout_entry/seasonal/halloween/costumes/mask
@@ -429,8 +433,12 @@
 	path = /obj/item/clothing/under/imperial
 
 /datum/loadout_entry/seasonal/halloween/costumes/under/dark_cleric
-	display_name = "Costume Uniform - Dark Cleric Armor"
+	name = "Costume Uniform - Dark Cleric Armor"
 	path = /obj/item/clothing/under/darkcleric
+
+/datum/loadout_entry/seasonal/halloween/costumes/under/aquiline
+	name = "Costume Uniform - Aquiline Enforcer"
+	path = /obj/item/clothing/under/aquiline_enforcer
 
 // Gloves
 

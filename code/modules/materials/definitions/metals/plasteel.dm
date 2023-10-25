@@ -1,5 +1,5 @@
 /datum/material/plasteel
-	id = "plasteel"
+	id = MAT_PLASTEEL
 	name = "plasteel"
 	stack_type = /obj/item/stack/material/plasteel
 	integrity = 400
@@ -17,6 +17,56 @@
 	radiation_resistance = 14
 	table_icon_base = "metal"
 	tgui_icon_key = "plasteel"
+
+/datum/material/plasteel/generate_recipes()
+	. = ..()
+	. += create_stack_recipe_datum(
+		name = "AI core",
+		product = /obj/structure/AIcore,
+		cost = 4,
+		time = 4 SECONDS,
+	)
+	. += create_stack_recipe_datum(
+		name = "crate",
+		product = /obj/structure/closet/crate,
+		cost = 5,
+		time = 3 SECONDS,
+	)
+	. += create_stack_recipe_datum(
+		name = "knife grip",
+		product = /obj/item/material/butterflyhandle,
+		cost = 3,
+		time = 2 SECONDS,
+	)
+	. += create_stack_recipe_datum(
+		name = "dark floor tile",
+		product = /obj/item/stack/tile/floor/dark,
+		amount = 4,
+	)
+	. += create_stack_recipe_datum(
+		name = "roller bed",
+		product = /obj/item/roller,
+		cost = 3,
+		time = 3 SECONDS,
+	)
+	. += create_stack_recipe_datum(
+		name = "whetstone",
+		product = /obj/item/whetstone,
+		cost = 2,
+		time = 5 SECONDS,
+	)
+	. += create_stack_recipe_datum(
+		name = "reinforced skateboard assembly",
+		product = /obj/item/heavy_skateboard_frame,
+		cost = 5,
+		time = 4 SECONDS,
+	)
+	. += create_stack_recipe_datum(
+		name = "plasteel floor tile",
+		product = /obj/item/stack/tile/plasteel,
+		cost = 1,
+		amount = 4,
+	)
 
 /datum/material/plasteel/hull
 	id = "plasteel_hull"

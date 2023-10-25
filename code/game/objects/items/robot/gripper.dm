@@ -7,7 +7,7 @@
 	Using an object on the gripper will interact with the item inside it, if it exists, instead."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "gripper"
-	item_flags = ITEM_NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 
 	//Has a list of items that it can hold.
 	var/list/can_hold = list(

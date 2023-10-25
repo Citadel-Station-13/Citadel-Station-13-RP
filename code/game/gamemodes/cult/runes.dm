@@ -1101,7 +1101,7 @@ var/list/sacrificed = list()
 	usr.visible_message("<span class='warning'>The rune disappears with a flash of red light, and a set of armor appears on [usr]...</span>", \
 	"<span class='warning'>You are blinded by the flash of red light! After you're able to see again, you see that you are now wearing a set of armor.</span>")
 
-	user.equip_to_slot_or_del(new /obj/item/clothing/head/culthood/alt(user), SLOT_ID_HEAD)
+	user.equip_to_slot_or_del(new /obj/item/clothing/head/cult/alt(user), SLOT_ID_HEAD)
 	user.equip_to_slot_or_del(new /obj/item/clothing/suit/cultrobes/alt(user), SLOT_ID_SUIT)
 	user.equip_to_slot_or_del(new /obj/item/clothing/shoes/cult(user), SLOT_ID_SHOES)
 	user.equip_to_slot_or_del(new /obj/item/storage/backpack/cultpack(user), SLOT_ID_BACK)

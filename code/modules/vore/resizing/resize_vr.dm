@@ -468,7 +468,3 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 
 #undef STEP_TEXT_OWNER
 #undef STEP_TEXT_PREY
-
-/mob/living/get_standard_pixel_y_offset(lying)
-	. = ..()
-	. += (size_multiplier - 1) * 16

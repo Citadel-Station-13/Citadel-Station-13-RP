@@ -4,8 +4,8 @@
 	desc = "A durable suit designed for medical rescue in high risk areas."
 	icon_state = "medical_rig"
 	armor_type = /datum/armor/hardsuit/medical
-	slowdown = 1
-	offline_vision_restriction = 1
+	encumbrance = ITEM_ENCUMBRANCE_LEGACY_RIG_LIGHT
+	offline_encumbrance = ITEM_ENCUMBRANCE_LEGACY_RIG_LIGHT * 2
 	siemens_coefficient= 0.75
 
 	helm_type = /obj/item/clothing/head/helmet/space/hardsuit/medical

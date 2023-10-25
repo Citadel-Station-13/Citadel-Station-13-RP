@@ -219,7 +219,7 @@
 	fragile = 1	//It's a haphazard thing of glass, wire, and steel
 	reach = 2 // Spears are long.
 	attackspeed = 20
-	slowdown = 1.05
+	weight = ITEM_WEIGHT_MELEE_SPEAR
 	var/obj/item/grenade/explosive = null
 	var/war_cry = "AAAAARGH!!!"
 
@@ -302,7 +302,7 @@
 	force_divisor = 0.6 // 9/36 with hardness 60 (steel) and 0.25 unwielded divisor
 	hitsound = 'sound/weapons/heavysmash.ogg'
 	w_class = ITEMSIZE_HUGE
-	slowdown = 1.5
+	encumbrance = ITEM_ENCUMBRANCE_MELEE_SLEDGEHAMMER
 	dulled_divisor = 0.95	//Still metal on a stick
 	sharp = 0
 	edge = 1

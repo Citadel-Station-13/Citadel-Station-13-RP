@@ -84,38 +84,15 @@
 	var/turf/T = get_turf(src)
 	tally += calculate_turf_slowdown(T, direct)
 
-	// Item related slowdown.
-	var/item_tally = calculate_item_encumbrance()
-	if(item_tally > 0) // is it greater than 0? run the wacky shit
-		item_tally *= species.item_slowdown_mod // your item slowdown kicks in, but
-		if(!(CE_SPEEDBOOST in chem_effects)) // hyperzine users ignore item slow
-			tally += item_tally // no hyperzine? slowed down by things
-	else
-		tally += item_tally // if it's less than 0 that means it speeds you up, theoretically, so, hit it
+	if(CE_SPEEDBOOST in chem_effects)
+		tally -= 0.5
 
 	if(CE_SLOWDOWN in chem_effects)
 		if (tally >= 0 )
 			tally = (tally + tally/4) //Add a quarter of penalties on top.
 		tally += chem_effects[CE_SLOWDOWN]
 
-	return max(HUMAN_LOWEST_SLOWDOWN, tally + . + config_legacy.human_delay)	// Minimum return should be the same as force_max_speed
-
-// This calculates the amount of slowdown to receive from items worn. This does NOT include species modifiers.
-// It is in a seperate place to avoid an infinite loop situation with dragging mobs dragging each other.
-// Also its nice to have these things seperated.
-/mob/living/carbon/human/proc/calculate_item_encumbrance()
-	if(!buckled && shoes) // Shoes can make you go faster.
-		. += shoes.slowdown
-
-	// Loop through some slots, and add up their slowdowns.
-	// Includes slots which can provide armor, the back slot, and suit storage.
-	for(var/obj/item/I in list(wear_suit, w_uniform, back, gloves, head, s_store))
-		. += I.slowdown
-
-	// Hands are also included, to make the 'take off your armor instantly and carry it with you to go faster' trick no longer viable.
-	// This is done seperately to disallow negative numbers (so you can't hold shoes in your hands to go faster).
-	for(var/obj/item/I in list(r_hand, l_hand))
-		. += max(I.slowdown, 0)
+	. = max(HUMAN_LOWEST_SLOWDOWN, tally + . + config_legacy.human_delay)	// Minimum return should be the same as force_max_speed
 
 // Similar to above, but for turf slowdown.
 /mob/living/carbon/human/proc/calculate_turf_slowdown(turf/T, direct)

@@ -30,7 +30,8 @@
 	inv_hide_flags = HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
 	species_restricted = list(SPECIES_TAJ)
 	armor_type = /datum/armor/general/medieval
-	slowdown = 0.5
+	weight = ITEM_WEIGHT_TAJARAN_SWORDSMAN_ARMOR
+	encumbrance = ITEM_ENCUMBRANCE_TAJARAN_SWORDSMAN_ARMOR
 	siemens_coefficient = 0.35
 
 //Coats no hoods

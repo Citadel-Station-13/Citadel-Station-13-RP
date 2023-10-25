@@ -207,8 +207,8 @@
 				"bio" = 100,
 				"rad" = 100)
 
-	projectiletype = /obj/projectile/bullet/incendiary/flamethrower
-	base_attack_cooldown = 10
+	projectiletype = /obj/projectile/bullet/incendiary/flamethrower/weak
+	base_attack_cooldown = 40
 
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged
 

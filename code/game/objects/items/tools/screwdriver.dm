@@ -82,6 +82,19 @@
 	tool_speed = 0.75
 	random_color = FALSE
 
+/obj/item/tool/screwdriver/clockwork
+	name = "clockwork screwdriver"
+	desc = "An all-brass screwdriver with what looks to be an uncut driver. Despite that, it seems to fit any channel it is put in."
+	icon = 'icons/obj/clockwork.dmi'
+	icon_state = "screwdriver_clock"
+	tool_sound = 'sound/machines/clockcult/integration_cog_install.ogg'
+	tool_speed = 0.1
+	random_color = FALSE
+
+/obj/item/tool/screwdriver/clockwork/examine(mob/user, dist)
+	. = ..()
+	. += SPAN_NEZBERE("When focused intensely upon, the screwdriver's head seems to shift between multiple states all at once, common and uncommon drivers for various screw channels. Additionally, when inserted into a screw channel, it exhibits intense magnetism.")
+
 /datum/category_item/catalogue/anomalous/precursor_a/alien_screwdriver
 	name = "Precursor Alpha Object - Hard Light Torgue Tool"
 	desc = "This appears to be a tool, with a solid handle, and a thin hard light \
@@ -113,14 +126,12 @@
 	icon_state = "hybscrewdriver"
 	item_state = "screwdriver_black"
 	origin_tech = list(TECH_MATERIAL = 3, TECH_ENGINEERING = 3)
-	slowdown = 0.1
+	weight = ITEM_WEIGHT_HYBRID_TOOLS
 	w_class = ITEMSIZE_NORMAL
 	tool_sound = 'sound/effects/uncloak.ogg'
 	tool_speed = 0.4
 	random_color = FALSE
 	reach = 2
-
-
 
 /obj/item/tool/screwdriver/cyborg
 	name = "powered screwdriver"

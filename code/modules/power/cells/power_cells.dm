@@ -28,6 +28,7 @@
 	origin_tech = list(TECH_POWER = 2)
 	icon_state = "hcell"
 	maxcharge = 10000
+	rating = 2
 	materials = list(MAT_STEEL = 700, MAT_GLASS = 60)
 
 /obj/item/cell/high/empty
@@ -38,6 +39,7 @@
 	origin_tech = list(TECH_POWER = 5)
 	icon_state = "scell"
 	maxcharge = 20000
+	rating = 3
 	materials = list(MAT_STEEL = 700, MAT_GLASS = 70)
 
 /obj/item/cell/super/empty
@@ -48,6 +50,7 @@
 	origin_tech = list(TECH_POWER = 6)
 	icon_state = "hpcell"
 	maxcharge = 30000
+	rating = 4
 	materials = list(MAT_STEEL = 700, MAT_GLASS = 80)
 
 /obj/item/cell/hyper/empty
@@ -58,6 +61,7 @@
 	icon_state = "icell"
 	origin_tech =  null
 	maxcharge = 30000 //determines how badly mobs get shocked
+	rating = 6
 	materials = list(MAT_STEEL = 700, MAT_GLASS = 80)
 
 /obj/item/cell/infinite/check_charge()
@@ -84,6 +88,7 @@
 	icon_state = "yellow slime extract" //"potato_battery"
 	description_info = "This 'cell' holds a max charge of 10k and self recharges over time."
 	maxcharge = 10000
+	rating = 5
 	materials = null
 	self_recharge = TRUE
 	charge_amount = 750

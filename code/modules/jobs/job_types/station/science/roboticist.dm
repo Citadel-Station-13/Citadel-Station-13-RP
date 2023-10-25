@@ -25,14 +25,13 @@
 	desc = "A Roboticist maintains and repairs the station's synthetics, including crew with prosthetic limbs. \
 						They can also assist the station by producing simple robots and even pilotable exosuits."
 	alt_titles = list(
-		"Biomechanical Engineer" = /datum/prototype/struct/alt_title/biomech,
-		"Mechatronic Engineer" = /datum/prototype/struct/alt_title/mech_tech,
-		"Prosthetists" = /datum/prototype/struct/alt_title/prosthetists,
-		"Artificer-Specialist" = /datum/prototype/struct/alt_title/artificer_specialist
+		"Biomechanical Technician" = /datum/prototype/struct/alt_title/biomech,
+		"Mechatronic Technician" = /datum/prototype/struct/alt_title/mech_tech,
+		"Artificer-Biotechnicist" = /datum/prototype/struct/alt_title/artificer_biotechnicist
 		)
 
-/datum/prototype/struct/alt_title/artificer_specialist
-	title = "Artificer-Specialist"
+/datum/prototype/struct/alt_title/artificer_biotechnicist
+	title = "Artificer-Biotechnicist"
 	background_allow = list(
 		/datum/lore/character_background/faction/naramadiguilds
 	)
@@ -47,11 +46,6 @@
 	title = "Mechatronic Engineer"
 	title_blurb = "A Mechatronic Engineer focuses on the construction and maintenance of Exosuits, and should be well versed in their use. \
 					They may also be called upon to work on synthetics and prosthetics, if needed."
-
-/datum/prototype/struct/alt_title/prosthetists
-	title = "Prosthetists"
-	title_blurb = "Prosthetists design and fabricate medical supportive devices and measure and fit patients for them. These devices \
-					include artificial limbs (arms, hands, legs, and feet), braces, and other medical or surgical devices."
 
 /datum/outfit/job/station/roboticist
 	name = OUTFIT_JOB_NAME("Roboticist")
