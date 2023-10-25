@@ -650,3 +650,11 @@
 	icon = 'icons/clothing/gloves/darkcleric.dmi'
 	icon_state = "darkcleric"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/gloves/armsocks
+	name = "Fingerless Sleeves"
+	desc = "A pair of fingerless, full arm sleeves. Perfect for fashion, not so much winter."
+	icon = 'icons/clothing/gloves/fingerless.dmi'
+	icon_state = "armsleeves_color"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+

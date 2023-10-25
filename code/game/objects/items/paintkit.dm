@@ -353,7 +353,7 @@
 	new_desc = "A Gygax with an ominous black gleam."
 	new_fluff = "An ominous Gygax exosuit modelled after the fictional corporate 'death squads' made popular in the pulp action-thrillers of 2554."
 	new_icon = "darkgygax"
-	allowed_types = list("gygax")
+	allowed_types = list("gygax_adv")
 
 /obj/item/kit/paint/gygax/blue
 	name = "\"Ocean Blue\" Gygax customisation kit"
