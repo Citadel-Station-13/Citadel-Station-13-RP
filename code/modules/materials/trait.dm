@@ -116,9 +116,16 @@
  * * host - the thing that has a material with us as a trait
  * * existing_data - the data of this trait already on the thing
  * * our_data - the data we're associated to on the material
+ * * destroying - called if this is during qdel; in that case, our_data is null.
+ *
+ * If it is mid-destroy, it is **not** necessary to clean up ticking, because the Destroy() proc will do it for us.appearance
  *
  * @return changed data, or null to fully remove.
  */
-/datum/material_trait/proc/on_remove(atom/host, existing_data, our_data)
+/datum/material_trait/proc/on_remove(atom/host, existing_data, our_data, destroying)
+	if(destroying)
+		return
 	// by default, just track how many copies we're on something
 	return (existing_data - 1) || null
+
+#warn add/remove ticking?

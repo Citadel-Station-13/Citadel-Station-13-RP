@@ -164,7 +164,8 @@
 				obj_flags |= string_to_objflag[flag]
 
 /obj/Destroy()
-	#warn ugh handle materials cleanup
+	for(var/datum/material_trait/trait as anything in material_traits)
+		trait.on_remove(src, material_traits[trait])
 	if(IS_TICKING_MATERIALS(src))
 		STOP_TICKING_MATERIALS(src)
 	if(register_as_dangerous_object)

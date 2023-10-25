@@ -51,15 +51,8 @@ var/list/table_icon_cache = list()
 		material_base = base_material
 	if(!isnull(reinforcing_material))
 		material_reinforcing = reinforcing_material
-	. = ..()
 
-	// One table per turf.
-	for(var/obj/structure/table/T in loc)
-		if(T != src)
-			// There's another table here that's not us, break to metal.
-			// break_to_parts calls qdel(src)
-			break_to_parts(full_return = 1)
-			return
+	. = ..()
 
 	// reset color/alpha, since they're set for nice map previews
 	color = "#ffffff"

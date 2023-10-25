@@ -253,7 +253,12 @@
 			translated[key] = armor_legacy_mob[key] * 0.01 // new armor is / 100
 		set_armor(translated)
 	if(legacy_melee_damage_upper && legacy_melee_damage_lower)
-		#warn build melee_style
+		melee_style = new
+		melee_style.damage = 0
+		melee_style.damage_add_low = legacy_melee_damage_lower
+		melee_style.damage_add_high = legacy_melee_damage_upper
+		melee_style.damage_mode = (attack_sharp? DAMAGE_MODE_SHARP : NONE) | (attack_edge? DAMAGE_MODE_EDGE : NONE)
+		melee_style.damage_flag = attack_armor_type
 
 	remove_verb(src, /mob/verb/observe)
 	health = maxHealth

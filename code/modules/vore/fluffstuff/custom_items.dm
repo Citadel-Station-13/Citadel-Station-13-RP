@@ -1170,7 +1170,8 @@
 	name = "riding crop"
 	desc = "A steel rod, a little over a foot long with a widened grip and a thick, leather patch at the end. Made to smack naughty submissives."
 	damage_force = 1
-	base_icon = "riding_crop"
+	// todo: proper dualwielding system for this
+	// base_icon = "riding_crop"
 	icon_state = "riding_crop0"
 	attack_verb = list("cropped","spanked","swatted","smacked","peppered")
 //1R1S: Malady Blanche

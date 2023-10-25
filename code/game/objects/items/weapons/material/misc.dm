@@ -136,19 +136,11 @@
 	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_HEAVY
 	damage_mode = DAMAGE_MODE_EDGE | DAMAGE_MODE_SHARP
 
-/obj/item/material/butterfly/saw/update_force()
+/obj/item/material/butterfly/saw/set_active(active)
+	. = ..()
 	if(active)
-		..() //Updates force.
-		w_class = ITEMSIZE_HUGE
-		can_cleave = TRUE
-		force_multiplier = initial(force_multiplier)
-		update_material_parts()
 		icon_state = "sawcleaver_open"
 		item_state = "cleaving_saw_open"
 	else
-		w_class = initial(w_class)
-		can_cleave = initial(can_cleave)
-		force_multiplier = 0.1
-		update_material_parts()
 		icon_state = initial(icon_state)
 		item_state = initial(item_state)

@@ -15,7 +15,7 @@
 /obj/item/material/butterfly/set_active(active)
 	src.active = active
 	if(active)
-		damage_mod = DAMAGE_MODE_EDGE | DAMAGE_MODE_SHARP
+		damage_mode = DAMAGE_MODE_EDGE | DAMAGE_MODE_SHARP
 		attack_sound = 'sound/weapons/bladeslice.ogg'
 		force_multiplier = 1
 		icon_state += "_open"
@@ -50,8 +50,7 @@
 	name = "box cutter"
 	desc = "A thin, inexpensive razor-blade knife designed to open cardboard boxes."
 	icon_state = "boxcutter"
-	force_divisor = 0.1 // 6 when wielded with hardness 60 (steel)
-	thrown_force_divisor = 0.2 // 4 when thrown with weight 20 (steel)
+	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_ULTRALIGHT
 
 /obj/item/material/butterfly/attack_self(mob/user)
 	. = ..()
@@ -63,7 +62,6 @@
 		playsound(user, 'sound/weapons/flipblade.ogg', 15, 1)
 	else
 		to_chat(user, "<span class='notice'>\The [src] can now be concealed.</span>")
-	update_force()
 	add_fingerprint(user)
 
 /*
@@ -74,9 +72,8 @@
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "knife"
 	desc = "A general purpose chef's knife. Glithari Exports filet knives, Centauri bread knives, all pale in comparison to NanoTrasen's very own Cookware line of cheap, affordable chef's knives."
-	sharp = 1
-	edge = 1
-	force_divisor = 0.15 // 9 when wielded with hardness 60 (steel)
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
+	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_LIGHT
 	materials_base = list(MAT_STEEL = 12000)
 	origin_tech = list(TECH_MATERIAL = 1)
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")

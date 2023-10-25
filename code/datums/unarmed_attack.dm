@@ -10,14 +10,20 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
  */
 /datum/unarmed_attack
 	//? Damage
-	/// damage amount
+	/// damage amount - flat
 	var/damage = 5
+	/// add damage - low
+	var/damage_add_low = 0
+	/// add damage - high
+	var/damage_add_high = 0
 	/// damage mode flags
 	var/damage_mode = NONE
 	/// damage tier
 	var/damage_tier = MELEE_TIER_DEFAULT
 	/// damage type
 	var/damage_type = BRUTE
+	/// damage flag
+	var/damage_flag = ARMOR_MELEE
 
 	//? Sounds
 	/// sound when attacking
@@ -56,7 +62,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	return FALSE
 
 /datum/unarmed_attack/proc/get_unarmed_damage()
-	return damage
+	return damage + rand(damage_add_low, damage_add_high)
 
 /datum/unarmed_attack/proc/apply_effects(var/mob/living/carbon/human/user,var/mob/living/carbon/human/target,var/armour,var/attack_damage,var/zone)
 

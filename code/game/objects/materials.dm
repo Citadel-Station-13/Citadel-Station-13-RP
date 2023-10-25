@@ -145,6 +145,7 @@
  */
 /obj/proc/get_material_part(part)
 	SHOULD_NOT_OVERRIDE(TRUE)
+	RETURN_TYPE(/datum/material)
 	return material_get_part(part)
 
 /**

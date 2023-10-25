@@ -41,11 +41,6 @@
 		set_material_part(MATERIAL_PART_DEFAULT, SSmaterials.resolve_material(material))
 	return ..()
 
-/obj/item/material/Destroy()
-	if(atom_flags & ATOM_MATERIALS_TICKING)
-		STOP_TICKING_MATERIALS(src)
-	return ..()
-
 /obj/item/material/update_material_single(datum/material/material)
 	. = ..()
 	if(material_color)
@@ -116,7 +111,8 @@
 
 /obj/item/material/proc/sharpen(datum/material/material_like, var/sharpen_time, var/kit, mob/living/M)
 	material_like = SSmaterials.resolve_material(material_like)
-	if(!fragile && material_primary)
+	// if(!fragile && material_primary)
+	if(material_primary)
 		// if(integrity < integrity_max)
 		// 	to_chat(M, "You should repair [src] first. Try using [kit] on it.")
 		// 	return FALSE

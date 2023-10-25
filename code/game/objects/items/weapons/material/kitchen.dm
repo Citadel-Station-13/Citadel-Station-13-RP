@@ -8,13 +8,10 @@
 	drop_sound = 'sound/items/drop/knife.ogg'
 	pickup_sound = 'sound/items/pickup/knife.ogg'
 	w_class = ITEMSIZE_TINY
-	thrown_force_divisor = 1
 	origin_tech = list(TECH_MATERIAL = 1)
 	attack_verb = list("attacked", "stabbed", "poked")
-	sharp = 1
-	edge = 1
-	force_divisor = 0.1 // 6 when wielded with hardness 60 (steel)
-	thrown_force_divisor = 0.25 // 5 when thrown with weight 20 (steel)
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
+	material_significance = MATERIAL_SIGNIFICANCE_SHARD
 	var/loaded      //Descriptive string for currently loaded food object.
 	var/scoop_food = 1
 
@@ -58,8 +55,7 @@
 	name = "fork"
 	desc = "It's a fork. Sure is pointy."
 	icon_state = "fork"
-	sharp = 1
-	edge = 0
+	damage_mode = DAMAGE_MODE_SHARP
 
 /obj/item/material/kitchen/utensil/fork/plastic
 	material_parts = /datum/material/plastic
@@ -94,9 +90,7 @@
 	icon_state = "spoon"
 	attack_verb = list("attacked", "poked")
 	material_significance = MATERIAL_SIGNIFICANCE_SHARD
-	edge = 0
-	sharp = 0
-	force_divisor = 0.1 //2 when wielded with weight 20 (steel)
+	damage_mode = NONE
 
 /obj/item/material/kitchen/utensil/spoon/plastic
 	material_parts = /datum/material/plastic
@@ -126,9 +120,7 @@
 	icon_state = "rolling_pin"
 	attack_verb = list("bashed", "battered", "bludgeoned", "thrashed", "whacked")
 	material_parts = /datum/material/wood
-	force_divisor = 0.7 // 10 when wielded with weight 15 (wood)
-	dulled_divisor = 0.75	// Still a club
-	thrown_force_divisor = 1 // as above
+	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_LIGHT
 	drop_sound = 'sound/items/drop/wooden.ogg'
 	pickup_sound = 'sound/items/pickup/wooden.ogg'
 

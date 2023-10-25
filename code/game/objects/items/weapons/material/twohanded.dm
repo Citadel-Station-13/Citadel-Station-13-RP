@@ -136,7 +136,7 @@
 	material_parts = /datum/material/bone
 	icon_state = "bone_axe0"
 	base_icon = "bone_axe"
-	material_color = FALSe
+	material_color = FALSE
 
 /obj/item/material/twohanded/fireaxe/plasteel
 	material_parts = /datum/material/plasteel
@@ -155,7 +155,6 @@
 	base_icon = "scythe"
 	name = "scythe"
 	desc = "A sharp and curved blade on a long fibremetal handle. An ancient design from Terra, it's useful for cutting large swaths of grain, but the shape alone implies much more grim work."
-	force_divisor = 0.65
 	origin_tech = list(TECH_MATERIAL = 2, TECH_COMBAT = 2)
 	attack_verb = list("chopped", "sliced", "cut", "reaped")
 
@@ -266,50 +265,11 @@
 	name = "sledgehammer"
 	desc = "A long, heavy hammer meant to be used with both hands. For breaking rocks or breaking bones, accept no substitutes."
 	description_info = "This weapon can cleave, striking nearby lesser, hostile enemies close to the primary target.  It must be held in both hands to do this."
-	unwielded_force_divisor = 0.25
-	force_divisor = 0.6 // 9/36 with hardness 60 (steel) and 0.25 unwielded divisor
+	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_SUPERHEAVY
 	attack_sound = 'sound/weapons/heavysmash.ogg'
 	w_class = ITEMSIZE_HUGE
 	encumbrance = ITEM_ENCUMBRANCE_MELEE_SLEDGEHAMMER
-	dulled_divisor = 0.95	//Still metal on a stick
-	sharp = 0
-	edge = 1
-	force_wielded = 23 //A fair bit less than the fireaxe.
 	attack_verb = list("attacked", "smashed", "crushed", "wacked", "pounded")
 	armor_penetration = 50
 	heavy = TRUE
-
-/obj/item/material/twohanded/sledgehammer/update_held_icon()
-	var/mob/living/M = loc
-	if(istype(M) && M.can_wield_item(src) && M.is_holding(src) && !M.hands_full())
-		wielded = 1
-		pry = 1
-		damage_force = force_wielded
-		name = "[base_name] (wielded)"
-		update_icon()
-	else
-		wielded = 0
-		pry = 0
-		damage_force = force_unwielded
-		name = "[base_name]"
-	update_icon()
-	..()
-
-/obj/item/material/twohanded/sledgehammer/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
-	..()
-	if(target && wielded)
-		if(istype(target,/obj/structure/window))
-			var/obj/structure/window/W = target
-			W.atom_destruction()
-		else if(istype(target,/obj/structure/grille))
-			qdel(target)
-		else if(istype(target,/obj/effect/plant))
-			var/obj/effect/plant/P = target
-			P.die_off()
-
-// This cannot go into afterattack since some mobs delete themselves upon dying.
-/obj/item/material/twohanded/sledgehammer/pre_attack(atom/target, mob/user, clickchain_flags, list/params)
-	if(isliving(target))
-		cleave(user, target)
-	return ..()
+	can_cleave = TRUE

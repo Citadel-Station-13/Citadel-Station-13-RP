@@ -115,6 +115,7 @@
 				attack_generic(H,rand(1,3),"punched")
 				return
 
+			#warn get rid of old rand damage and do unarmed attack stuff
 			var/rand_damage = rand(1, 5)
 			var/block = 0
 			var/accurate = 0

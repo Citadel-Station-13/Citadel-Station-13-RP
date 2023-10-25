@@ -12,11 +12,6 @@
 		set_material_part(MATERIAL_PART_DEFAULT, SSmaterials.resolve_material(material_armor))
 	. = ..()
 
-/obj/item/clothing/Destroy()
-	if(atom_flags & ATOM_MATERIALS_TICKING)
-		STOP_TICKING_MATERIALS(src)
-	return ..()
-
 /obj/item/clothing/update_material_single(datum/material/material)
 	. = ..()
 	name = "[material.display_name] [initial(name)]"

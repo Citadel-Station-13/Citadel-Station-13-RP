@@ -207,7 +207,7 @@
 	// Basic dismantling.
 	if(isnull(construction_stage) || !material_reinf)
 
-		var/cut_delay = 60 - material.cut_delay
+		var/cut_delay = 60 - material_outer.cut_delay
 		var/dismantle_verb
 		var/dismantle_sound
 

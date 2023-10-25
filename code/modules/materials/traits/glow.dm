@@ -24,7 +24,7 @@
 		renderer = locate() in host.contents
 	renderer.set_light(our_data["power"], our_data["range"], our_data["color"])
 
-/datum/material_trait/glow/on_remove(atom/host, existing_data, our_data)
+/datum/material_trait/glow/on_remove(atom/host, existing_data, our_data, destroying)
 	. = ..()
 	qdel(locate(/atom/movable/render/material_glow) in host.contents)
 
