@@ -32,3 +32,6 @@ export enum RigPieceFlags {
   ApplyArmor = (1<<0),
   ApplyEnvironmentals = (1<<1),
 }
+
+export type RigPieceReference = string;
+export type RigPieceReflist = RigPieceReference[];
