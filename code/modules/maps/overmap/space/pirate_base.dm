@@ -10,6 +10,14 @@ Warning, unable to scan through sensor shielding systems at location. Possible h
 	color = "#FF3333"
 	initial_generic_waypoints = list("pirate_docking_arm")
 
+//Tracked here due to ID access changes. It's going to be pretty barebones compared to other job datums.
+/datum/role/job/pirate
+	title = "Unknown"
+	id = JOB_ID_PIRATE
+	departments = list(DEPARTMENT_UNKNOWN)
+	minimal_access = list(ACCESS_FACTION_PIRATE)
+	additional_access = list(ACCESS_FACTION_PIRATE)
+
 // -- Objs -- //
 
 /obj/effect/step_trigger/teleporter/piratebase_loop/north/Initialize(mapload)

@@ -583,9 +583,9 @@
 	name = "identity chit"
 	desc = "A mass-market access chit used in many non-Corporate environments as a form of identification."
 	icon_state = "chit"
-	primary_color = rgb(142,94,0)
-	secondary_color = rgb(191,159,95)
-	access = list(160, 13)
+	//primary_color = rgb(142,94,0)
+	//secondary_color = rgb(191,159,95)
+	job_access_type = /datum/role/job/trader
 	var/random_color = TRUE
 
 /obj/item/card/id/external/merchant/Initialize(mapload)
@@ -613,7 +613,7 @@
 	icon_state = "pirate"
 	primary_color = rgb(17, 1, 1)
 	secondary_color = rgb(149, 152, 153)
-	access = list(168)
+	job_access_type = /datum/role/job/pirate
 
 /obj/item/card/id/medical/sar
 	assignment = "Field Medic"
