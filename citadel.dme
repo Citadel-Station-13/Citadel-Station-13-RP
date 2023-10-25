@@ -1788,6 +1788,7 @@
 #include "code\game\objects\structures\holosign.dm"
 #include "code\game\objects\structures\inflatable.dm"
 #include "code\game\objects\structures\janicart.dm"
+#include "code\game\objects\structures\katana_kake.dm"
 #include "code\game\objects\structures\kitchen_foodcart.dm"
 #include "code\game\objects\structures\kitchen_spike.dm"
 #include "code\game\objects\structures\lattice.dm"
