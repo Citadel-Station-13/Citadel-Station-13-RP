@@ -25,20 +25,6 @@
 	atom_flags = (atom_flags & ~(NOCONDUCT)) | (material.relative_conductivity == 0? NOCONDUCT : NONE)
 	#warn impl
 
-// Might be best to make ablative vests a material armor using a new material to cut down on this copypaste.
-/obj/item/clothing/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
-	if(!(material_trait_flags & MATERIAL_TRAIT_SHIELD))
-		return ..()
-	var/result
-	MATERIAL_INVOKE_OUT(result, src, MATERIAL_TRAIT_SHIELD, on_mob_defense, user, def_zone, damage_source, calculated_type)
-	if(result & MATERIAL_DEFEND_FORCE_MISS)
-		return PROJECTILE_FORCE_MISS
-	if(result & MATERIAL_DEFEND_FULL_BLOCK)
-		return TRUE
-	if(result & MATERIAL_DEFEND_REFLECT)
-		return PROJECTILE_CONTINUE
-	return ..()
-
 /obj/item/clothing/suit/armor/material
 	name = "armor"
 	material_parts = /datum/material/steel

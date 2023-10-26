@@ -139,9 +139,6 @@
 	var/list/material_traits
 	/// Material trait sensitivity hooks - total
 	var/material_trait_flags
-	#warn hook traits
-
-	#warn pain
 
 	//! Attributes - legacy
 	/// Delay in ticks when cutting through this wall.
