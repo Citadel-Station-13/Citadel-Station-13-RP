@@ -157,3 +157,4 @@
 		force_divisor = initial(force_divisor)
 		icon_state = initial(icon_state)
 		item_state = initial(item_state)
+	update_worn_icon()
