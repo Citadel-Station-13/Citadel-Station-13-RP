@@ -57,6 +57,19 @@
 				/obj/item/stack/cable_coil/alien,
 				/obj/item/multitool/alien)
 
+/obj/random/tool/clockwork
+	name = "random clockwork tool"
+	desc = "This is a random clockwork tool"
+	icon_state = "clockwelder"
+
+/obj/random/tool/clockwork/item_to_spawn()
+	return pick (/obj/item/tool/screwdriver/clockwork,
+				/obj/item/tool/wirecutters/clockwork,
+				/obj/item/weldingtool/experimental/clockwork,
+				/obj/item/tool/crowbar/clockwork,
+				/obj/item/tool/wrench/clockwork,
+				/obj/item/multitool/clockwork)
+
 /obj/random/technology_scanner
 	name = "random scanner"
 	desc = "This is a random technology scanner."
@@ -975,6 +988,7 @@
 				prob(2);/obj/random/multiple/minevault,
 				prob(1);/obj/random/coin,
 				prob(1);/obj/random/drinkbottle,
+				prob(1);/obj/random/tool/clockwork,
 				prob(1);/obj/random/tool/alien)
 
 /obj/random/slimecore

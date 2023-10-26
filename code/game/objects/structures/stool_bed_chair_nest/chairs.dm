@@ -547,13 +547,23 @@
 
 //Apidean Chairs!
 /obj/structure/bed/chair/apidean
+	name = "\improper Apidean chair"
+	desc = "This waxy chair is designed to allow creatures with insectoid abdomens to lounge comfortably."
+	icon_state = "bee-throne"
+	base_icon = "bee-throne"
+	picked_up_item = null
+
+/obj/structure/bed/chair/apidean/Initialize(mapload, new_material)
+	. = ..(mapload, "wax", null)
+
+/obj/structure/bed/chair/apidean_throne
 	name = "\improper Apidean throne"
 	desc = "This waxy chair is designed to allow creatures with insectoid abdomens to lounge comfortably. Typically reserved for the Apidean upper class."
 	icon_state = "queenthrone"
 	base_icon = "queenthrone"
 	picked_up_item = null
 
-/obj/structure/bed/chair/apidean/Initialize(mapload, new_material)
+/obj/structure/bed/chair/apidean_throne/Initialize(mapload, new_material)
 	. = ..(mapload, "wax", null)
 
 //Wax Stools for Bees! I've put it here because it shouldn't inherit stool properties.

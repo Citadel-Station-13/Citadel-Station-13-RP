@@ -385,6 +385,11 @@
 	name = "compact magazine (9mm practice)"
 	ammo_type = /obj/item/ammo_casing/a9mm/practice
 
+/obj/item/ammo_magazine/m9mm/compact/double
+	name = "compact magazine (9mm double stack)"
+	materials = list(MAT_STEEL = 900)
+	max_ammo = 16
+
 // SMG
 /obj/item/ammo_magazine/m9mmt
 	name = "top mounted magazine (9mm)"

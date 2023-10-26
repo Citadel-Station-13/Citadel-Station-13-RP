@@ -3001,8 +3001,8 @@
 /turf/simulated/open/virgo3b,
 /area/tether/surfacebase/outside/outside2)
 "cfW" = (
-/obj/machinery/power/breakerbox/activated{
-	RCon_tag = "Telecomms Substation Bypass"
+/obj/machinery/power/breakerbox{
+	RCon_tag = "Telecomms"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/tcomms)
@@ -8079,7 +8079,7 @@
 /obj/random/maintenance/engineering,
 /obj/effect/floor_decal/rust,
 /obj/item/clothing/suit/storage/vest/hoscoat/jensen{
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0);
+	armor = list("melee"=0,"bullet"=0,"laser"=0,"energy"=0,"bomb"=0,"bio"=0,"rad"=0);
 	desc = "Its an old, dusty trenchcoat... what a shame.";
 	name = "trenchcoat"
 	},
@@ -13843,17 +13843,13 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_two_hall)
 "jDb" = (
-/obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Telecomms";
-	charge = 100;
-	output_attempt = 0
-	},
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
+/obj/machinery/power/smes/buildable/tcomms,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/tcomms)
 "jDx" = (
@@ -20723,7 +20719,7 @@
 /obj/machinery/vending/cigarette{
 	name = "Cigarette machine";
 	prices = list();
-	products = list(/obj/item/storage/fancy/cigarettes = 10, /obj/item/storage/box/matches = 10, /obj/item/flame/lighter/zippo = 4, /obj/item/clothing/mask/smokable/cigarette/cigar/havana = 2)
+	products = list(/obj/item/storage/fancy/cigarettes=10,/obj/item/storage/box/matches=10,/obj/item/flame/lighter/zippo=4,/obj/item/clothing/mask/smokable/cigarette/cigar/havana=2)
 	},
 /obj/effect/floor_decal/techfloor/hole{
 	dir = 1
@@ -33393,7 +33389,7 @@
 	input_tag = "atmos_out";
 	name = "Atmos Intake Control";
 	output_tag = "atmos_in";
-	sensors = list("atmos_intake" = "Tank")
+	sensors = list("atmos_intake"="Tank")
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/monitoring)

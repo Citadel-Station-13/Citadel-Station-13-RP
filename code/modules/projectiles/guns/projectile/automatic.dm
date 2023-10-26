@@ -17,7 +17,7 @@
 /obj/item/gun/ballistic/automatic/advanced_smg
 	name = "advanced SMG"
 	desc = "The NT-S3W is an advanced submachine gun design, using a reflective laser optic for increased accuracy over competing models. Chambered for 9mm rounds."
-	icon_state = "advanced_smg-empty"
+	icon_state = "advanced_smg"
 	w_class = ITEMSIZE_NORMAL
 	load_method = MAGAZINE
 	caliber = "9mm"
@@ -30,10 +30,6 @@
 		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, burst_accuracy=null, dispersion=null),
 		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=4,    burst_accuracy=list(60,30,20), dispersion=list(0.0, 0.3, 0.6))
 	)
-
-/obj/item/gun/ballistic/automatic/advanced_smg/update_icon_state()
-	. = ..()
-	icon_state = (ammo_magazine)? "advanced_smg" : "advanced_smg-empty"
 
 /obj/item/gun/ballistic/automatic/advanced_smg/loaded
 	magazine_type = /obj/item/ammo_magazine/m9mmAdvanced
@@ -95,8 +91,6 @@
 	. = ..()
 	if(istype(ammo_magazine,/obj/item/ammo_magazine/m556/small))
 		icon_state = "arifle-small" // If using the small magazines, use the small magazine sprite.
-	else
-		icon_state = (ammo_magazine)? "arifle" : "arifle-empty"
 
 /obj/item/gun/ballistic/automatic/sts35/update_icon(ignore_inhands)
 	. = ..()
@@ -335,7 +329,7 @@
 	name = "automatic shotgun"
 	desc = "The AS-24 is a rugged looking automatic shotgun produced for the military by Gurov Projectile Weapons LLC. For very obvious reasons, it's illegal to own in many juristictions. Uses 12g rounds."
 	icon_state = "ashot"
-	item_state = null
+	item_state = "ashot"
 	w_class = ITEMSIZE_LARGE
 	damage_force = 10
 	caliber = "12g"
@@ -436,7 +430,7 @@
 
 /obj/item/gun/ballistic/automatic/p90/update_icon_state()
 	. = ..()
-	icon_state = "p90smg-[ammo_magazine ? round(ammo_magazine.stored_ammo.len, 6) : "empty"]"
+	icon_state = "p90smg-[ammo_magazine ? round(ammo_magazine.stored_ammo.len, 6) : "e"]"
 
 /obj/item/gun/ballistic/automatic/p90/custom
 	name = "custom personal defense weapon"
@@ -448,7 +442,7 @@
 
 /obj/item/gun/ballistic/automatic/p90/custom/update_icon_state()
 	. = ..()
-	icon_state = "p90smgC-[ammo_magazine ? round(ammo_magazine.stored_ammo.len, 6) : "empty"]"
+	icon_state = "p90smgC-[ammo_magazine ? round(ammo_magazine.stored_ammo.len, 6) : "e"]"
 
 /obj/item/gun/ballistic/automatic/tommygun
 	name = "\improper Tommy Gun"
@@ -498,10 +492,6 @@
 	. = ..()
 	if(istype(ammo_magazine,/obj/item/ammo_magazine/m762))
 		icon_state = "bullpup-small"
-	else if(istype(ammo_magazine,/obj/item/ammo_magazine/m762m))
-		icon_state = "bullpup"
-	else
-		item_state = "bullpup-empty"
 
 /obj/item/gun/ballistic/automatic/bullpup/update_icon()
 	. = ..()
@@ -572,7 +562,7 @@
 	name = "Holy automatic shotgun"
 	desc = "Based off of an ancient design, this hand crafted weapon has been gilded with the gold of melted icons and inscribed with sacred runes and hexagrammic wards. Works best with blessed 12g rounds."
 	icon_state = "holyshotgun"
-	item_state = null
+	item_state = "holy_shot"
 	w_class = ITEMSIZE_LARGE
 	heavy = TRUE
 	damage_force = 10
@@ -596,7 +586,7 @@
 	if(ammo_magazine)
 		icon_state = "holyshotgun"
 	else
-		icon_state = "holyshotgun_empty"
+		icon_state = "holyshotgun-empty"
 
 //Clown Rifle
 /obj/item/gun/ballistic/automatic/clown_rifle

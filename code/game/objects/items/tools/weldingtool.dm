@@ -447,6 +447,32 @@
 		nextrefueltick = world.time + 10
 		reagents.add_reagent("fuel", 1)
 
+/obj/item/weldingtool/experimental/brass
+	name = "replica clockwork welding tool"
+	desc = "A re-engineered experimental welder. It sports anti-corrosive brass fittings, and a further refined fuel system."
+	icon = 'icons/obj/clockwork.dmi'
+	icon_state = "clockwelder"
+	max_fuel = 50
+	tool_speed = 0.4
+	flame_color = "#990000" // deep red, as the sprite shows
+	change_icons = 0
+
+/obj/item/weldingtool/experimental/clockwork
+	name = "clockwork welding tool"
+	desc = "An antique welding tool, adorned with brass, and a brilliant red gem as the fuel tank. It neither runs out of fuel, nor harms the unprotected eye."
+	icon = 'icons/obj/clockwork.dmi'
+	icon_state = "clockwelder"
+	max_fuel = 100
+	eye_safety_modifier = 2
+	tool_sound = 'sound/machines/clockcult/steam_whoosh.ogg'
+	tool_speed = 0.1
+	flame_color = "#990000" // deep red, as above, so below
+	change_icons = 0
+
+/obj/item/weldingtool/experimental/clockwork/examine(mob/user, dist)
+	. = ..()
+	. += SPAN_NEZBERE("Sometimes, the best masterworks are lessons in rediscovering simplicity. Thousands upon thousands of these passed through the Great Forgeworks, and out into the void. Treasure this find, friend.")
+
 /obj/item/weldingtool/experimental/hybrid
 	name = "strange welding tool"
 	desc = "An experimental welder capable of synthesizing its own fuel from spatial waveforms. It's like welding with a star!"

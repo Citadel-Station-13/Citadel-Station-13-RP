@@ -44,6 +44,13 @@
 			allowed_magazines += /obj/item/ammo_magazine/smart
 	update_icon()
 
+/obj/item/gun/ballistic/update_icon_state()
+	. = ..()
+	var/silenced_state = silenced ? silenced_icon : initial(icon_state)
+	var/magazine_state = ammo_magazine ? "" : "-empty"
+	if(magazine_type)
+		icon_state = "[silenced_state][magazine_state]"
+
 /obj/item/gun/ballistic/consume_next_projectile()
 	//get the next casing
 	if(loaded.len)
@@ -235,6 +242,27 @@
 /obj/item/gun/ballistic/attackby(var/obj/item/A as obj, mob/user as mob)
 	..()
 	load_ammo(A, user)
+
+	if(suppressible)
+		if(istype(A, /obj/item/silencer))
+			if(!user.is_holding(src))	//if we're not in his hands
+				to_chat(user, "<span class='notice'>You'll need [src] in your hands to do that.</span>")
+				return CLICKCHAIN_DO_NOT_PROPAGATE
+			if(!user.attempt_insert_item_for_installation(A, src))
+				return CLICKCHAIN_DO_NOT_PROPAGATE
+			to_chat(user, "<span class='notice'>You screw [A] onto [src].</span>")
+			silenced = TRUE
+			w_class = ITEMSIZE_NORMAL
+			update_icon()
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		else if(istype(A, /obj/item/tool/wrench))
+			if(silenced)
+				var/obj/item/silencer/S = new (get_turf(user))
+				to_chat(user, "<span class='notice'>You unscrew [S]] from [src].</span>")
+				user.put_in_hands(S)
+				silenced = FALSE
+				w_class = ITEMSIZE_SMALL
+				update_icon()
 
 /obj/item/gun/ballistic/attack_self(mob/user)
 	if(firemodes.len > 1)
