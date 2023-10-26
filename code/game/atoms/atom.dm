@@ -148,6 +148,10 @@
 	var/list/datum/material_trait/material_traits
 	/// material trait metadata when [material_traits] is a single trait. null otherwise.
 	var/material_traits_data
+	/// 'stacks' of ticking
+	/// this synchronizes the system so removing one ticking material trait doesn't fully de-tick the entity
+	//! DO NOT FUCK WITH THIS UNLESS YOU KNOW WHAT YOU ARE DOING
+	var/material_ticking_counter = 0
 	/// material trait relative strength
 	/// applies to all traits globally as opposed to just one material parts,
 	/// because this is at /atom level.

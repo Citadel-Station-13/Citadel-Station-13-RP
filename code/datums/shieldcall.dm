@@ -14,8 +14,6 @@
  * @params
  * * defending - the atom in question
  * * shieldcall_args - indexed list of shieldcall args.
- *
- * @return modified shieldcall args as list. list is modified in-place.
  */
 /datum/shieldcall/proc/handle_shieldcall(atom/defending, list/shieldcall_args)
-	return shieldcall_args
+	return

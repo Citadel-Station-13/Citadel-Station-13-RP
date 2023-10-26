@@ -24,25 +24,6 @@
 	return
 
 /**
- * called when used as armor against melee or projectile
- *
- * todo: use atom shieldcall system instead
- * todo: or use run mob armor system and figure out a way to put shieldcall-like flags on it
- *
- * @params
- * * host - the item defending them that has us as a material
- * * data - metadata
- * * target - mob being hit
- * * zone - target zone
- * * weapon - what's damaging them. datatype semantics differs based on attack type
- * * attack_type - ATTACK_TYPE_* define
- *
- * @return MATERIAL_DEFEND_* flags
- */
-/datum/material_trait/proc/on_mob_defense(obj/item/host, data, mob/target, zone, datum/weapon, attack_type)
-	#warn shieldcalls?
-
-/**
  * called when something with this material attacks an atom that isn't a mob
  *
  * @params
@@ -56,21 +37,15 @@
 	return
 
 /**
- * called when something hits an atom with this material
- *
- * todo: use atom shieldcall system instead
- * todo: or use run atom armor system and figure out a way to put shieldcall-like flags on it
+ * called when an atom with this material has its shieldcalls invoked
  *
  * @params
- * * host - the atom being hit that has us as a material
+ * * host - the atom calling that has us as a material
  * * data - metadata
- * * weapon - what's damaging them. datatype semantics differs based on attack type
- * * attack_type - ATTACK_TYPE_* define
- *
- * @return MATERIAL_DEFEND_* flags
+ * * shieldcall_args - indexed list of shieldcall args.
  */
-/datum/material_trait/proc/on_obj_defense(atom/host, data, datum/weapon, attack_type)
-	#warn shieldcalls?
+/datum/material_trait/proc/on_shieldcall(atom/host, data, list/shieldcall_args)
+	return
 
 /**
  * called when examined
@@ -128,4 +103,12 @@
 	// by default, just track how many copies we're on something
 	return (existing_data - 1) || null
 
-#warn add/remove ticking?
+/datum/material_trait/proc/start_ticking_on(atom/target)
+	if(!target.material_ticking_counter)
+		START_TICKING_MATERIALS(target)
+	++target.material_ticking_counter
+
+/datum/material_trait/proc/stop_ticking_on(atom/target)
+	--target.material_ticking_counter
+	if(!target.material_ticking_counter)
+		STOP_TICKING_MATERIALS(target)

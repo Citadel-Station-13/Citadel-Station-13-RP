@@ -520,12 +520,13 @@
  * * mode - damage_mode
  * * attack_type - (optional) attack type flags from [code/__DEFINES/combat/attack_types.dm]
  * * weapon - (optional) attacking /obj/item for melee or thrown, /obj/projectile for ranged, /mob for unarmed
- * * additional - a way to retrieve data out of the shieldcall, passed in by attacks. [code/__DEFINES/dcs/signals/atoms/signals_atom_defense.dm]
- * * retval - shieldcall flags passed through components. [code/__DEFINES/dcs/signals/atoms/signals_atom_defense.dm]
+ * * additional - a way to retrieve data out of the shieldcall, passed in by attacks. [code/__DEFINES/combat/shieldcall.dm]
+ * * retval - shieldcall flags passed through components. [code/__DEFINES/combat/shieldcall.dm]
  *
  * @return modified args as list
  */
 /atom/proc/atom_shieldcall(damage, damtype, tier, flag, mode, attack_type, datum/weapon, list/additional = list(), retval = NONE)
+	MATERIAL_INVOKE(src, MATERIAL_TRAIT_SHIELD, on_shieldcall, args)
 	for(var/datum/shieldcall/calling as anything in shieldcalls)
 		calling.handle_shieldcall(src, args)
 	return args.Copy()

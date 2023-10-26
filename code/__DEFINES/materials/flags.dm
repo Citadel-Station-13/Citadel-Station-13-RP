@@ -26,8 +26,8 @@ DEFINE_BITFIELD(material_constraints, list(
 
 /// used to attack
 #define MATERIAL_TRAIT_ATTACK (1<<0)
-/// used to defend
-#define MATERIAL_TRAIT_DEFEND (1<<1)
+/// hook shieldcalls
+#define MATERIAL_TRAIT_SHIELD (1<<1)
 /// reqiures passive ticking
 #define MATERIAL_TRAIT_TICKING (1<<2)
 /// has examine text
@@ -37,7 +37,7 @@ DEFINE_BITFIELD(material_constraints, list(
 
 DEFINE_BITFIELD(material_trait_flags, list(
 	BITFIELD(MATERIAL_TRAIT_ATTACK),
-	BITFIELD(MATERIAL_TRAIT_DEFEND),
+	BITFIELD(MATERIAL_TRAIT_SHIELD),
 	BITFIELD(MATERIAL_TRAIT_TICKING),
 	BITFIELD(MATERIAL_TRAIT_EXAMINE),
 	BITFIELD(MATERIAL_TRAIT_REGISTRATION),
