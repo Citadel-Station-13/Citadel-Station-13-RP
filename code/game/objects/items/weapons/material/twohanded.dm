@@ -100,7 +100,7 @@
 		name = "[base_name]"
 	..()
 
-/obj/item/material/twohanded/fireaxe/attack_object(atom/target, mob/user, clickchain_flags, list/params, mult = 1)
+/obj/item/material/twohanded/fireaxe/attack_object(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags, mult = 1)
 	if(istype(target, /obj/structure/window))
 		mult *= 2
 	else if(istype(target, /obj/effect/plant))

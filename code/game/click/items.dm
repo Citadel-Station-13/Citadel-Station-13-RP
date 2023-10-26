@@ -125,6 +125,7 @@
 		return NONE
 	if(clickchain_flags & CLICKCHAIN_DO_NOT_ATTACK)
 		return NONE
+	var/datum/event_args/actor/clickchain/e_args = new(user, intent = intent params = params)
 	// todo: not hardcoding this
 	if(IS_PRONE(user))
 		mult *= 0.66
@@ -136,10 +137,10 @@
 			return
 		return . | finalize_mob_melee(target, user, . | clickchain_flags, params, mult, target_zone, intent)
 	// is obj, go to that
-	. = attack_object(target, user, clickchain_flags, params, mult)
+	. = attack_object(target, e_args, clickchain_flags, mult)
 	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
 		return
-	return . | finalize_object_melee(target, user, . | clickchain_flags, params, mult)
+	return . | finalize_object_melee(target, e_args, . | clickchain_flags, mult)
 
 /**
  * called when we're used to attack a mob
@@ -297,13 +298,13 @@
  *
  * @params
  * * target - atom being attacked
- * * user - person attacking
+ * * clickchain - the /datum/event_args/actor/clickchain arguments included
  * * clickchain_flags - __DEFINES/procs/clickcode.dm flags
- * * params - list of click params
+ * * mult - damage multiplier
  *
  * @return clickchain flags to append
  */
-/obj/item/proc/attack_object(atom/target, mob/user, clickchain_flags, list/params, mult = 1)
+/obj/item/proc/attack_object(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags, mult = 1)
 	PROTECTED_PROC(TRUE)	// route via standard_melee_attack please.
 	if((item_flags & ITEM_CAREFUL_BLUDGEON) && user.a_intent == INTENT_HELP)
 		user.action_feedback(SPAN_WARNING("You refrain from hitting [target] because your intent is set to help."), src)
@@ -311,7 +312,7 @@
 	// sorry, no atom damage
 	// ... yet >:)
 	visible_message(SPAN_WARNING("[user] bashes [target] with [src]."))
-	return melee_object_hit(target, user, clickchain_flags, params, 1)
+	return melee_object_hit(target, clickchain, clickchain_flags, mult)
 
 /**
  * called at base of attack_object after standard melee attack misses
@@ -320,12 +321,11 @@
  *
  * @params
  * * target - atom being attacked
- * * user - person attacking
+ * * clickchain - the /datum/event_args/actor/clickchain arguments included
  * * clickchain_flags - __DEFINES/procs/clickcode.dm flags
- * * params - list of click params
  * * mult - damage multiplier
  */
-/obj/item/proc/melee_object_miss(atom/target, mob/user, clickchain_flags, list/params, mult = 1)
+/obj/item/proc/melee_object_miss(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags, mult = 1)
 	SHOULD_CALL_PARENT(TRUE)
 	return CLICKCHAIN_ATTACK_MISSED
 
@@ -336,12 +336,11 @@
  *
  * @params
  * * target - atom being attacked
- * * user - person attacking
+ * * clickchain - the /datum/event_args/actor/clickchain arguments included
  * * clickchain_flags - __DEFINES/procs/clickcode.dm flags
- * * params - list of click params
  * * mult - damage multiplier
  */
-/obj/item/proc/melee_object_hit(atom/target, mob/user, clickchain_flags, list/params, mult = 1)
+/obj/item/proc/melee_object_hit(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags, mult = 1)
 	SHOULD_CALL_PARENT(TRUE)
 	return NONE
 
@@ -351,12 +350,11 @@
  *
  * @params
  * * target - atom being attacked
- * * user - person attacking
+ * * clickchain - the /datum/event_args/actor/clickchain arguments included
  * * clickchain_flags - __DEFINES/procs/clickcode.dm flags
- * * params - list of click params
  * * mult - damage multiplier
  *
  * @return clickchain flags to append
  */
-/obj/item/proc/finalize_object_melee(atom/target, mob/user, clickchain_flags, list/params, mult = 1)
+/obj/item/proc/finalize_object_melee(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags, mult = 1)
 	return NONE
