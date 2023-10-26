@@ -125,7 +125,7 @@
 		return NONE
 	if(clickchain_flags & CLICKCHAIN_DO_NOT_ATTACK)
 		return NONE
-	var/datum/event_args/actor/clickchain/e_args = new(user, intent = intent params = params)
+	var/datum/event_args/actor/clickchain/e_args = new(user, intent = intent, params = params)
 	// todo: not hardcoding this
 	if(IS_PRONE(user))
 		mult *= 0.66
@@ -306,12 +306,12 @@
  */
 /obj/item/proc/attack_object(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags, mult = 1)
 	PROTECTED_PROC(TRUE)	// route via standard_melee_attack please.
-	if((item_flags & ITEM_CAREFUL_BLUDGEON) && user.a_intent == INTENT_HELP)
-		user.action_feedback(SPAN_WARNING("You refrain from hitting [target] because your intent is set to help."), src)
+	if((item_flags & ITEM_CAREFUL_BLUDGEON) && clickchain.intent == INTENT_HELP)
+		clickchain.initiator.action_feedback(SPAN_WARNING("You refrain from hitting [target] because your intent is set to help."), src)
 		return
 	// sorry, no atom damage
 	// ... yet >:)
-	visible_message(SPAN_WARNING("[user] bashes [target] with [src]."))
+	visible_message(SPAN_WARNING("[clickchain.performer] bashes [target] with [src]."))
 	return melee_object_hit(target, clickchain, clickchain_flags, mult)
 
 /**

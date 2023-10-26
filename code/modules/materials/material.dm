@@ -244,8 +244,6 @@
 
 	init_traits()
 
-	#warn traits, handle hooks
-
 	return TRUE
 
 /datum/material/serialize()
