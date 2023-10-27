@@ -613,7 +613,8 @@
 	icon_state = "pirate"
 	primary_color = rgb(17, 1, 1)
 	secondary_color = rgb(149, 152, 153)
-	job_access_type = /datum/role/job/pirate
+	job_access_type = null
+	access = list(168)
 
 /obj/item/card/id/medical/sar
 	assignment = "Field Medic"

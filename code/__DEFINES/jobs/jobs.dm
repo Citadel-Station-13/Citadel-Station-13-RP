@@ -67,4 +67,3 @@
 #define JOB_ID_OFFDUTY_SCIENCE "offduty_science"
 
 #define JOB_ID_TRADER "trader"
-#define JOB_ID_PIRATE "pirate"
