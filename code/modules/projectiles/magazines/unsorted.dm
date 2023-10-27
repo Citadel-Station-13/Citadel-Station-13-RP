@@ -387,7 +387,7 @@
 
 /obj/item/ammo_magazine/m9mm/compact/double
 	name = "compact magazine (9mm double stack)"
-	materials = list(MAT_STEEL = 900)
+	materials_base = list(MAT_STEEL = 900)
 	max_ammo = 16
 
 // SMG

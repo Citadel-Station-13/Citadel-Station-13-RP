@@ -683,11 +683,11 @@
 	var/subtype = 0
 	// new pipe, set the icon_state as on map
 
-/obj/structure/disposalpipe/New()
-	..()
+/obj/structure/disposalpipe/Initialize(mapload, dir)
+	. = ..()
 	base_icon_state = icon_state
-	return
-
+	if(!isnull(dir))
+		setDir(dir)
 
 // pipe is deleted
 // ensure if holder is present, it is expelled
@@ -820,18 +820,8 @@
 			H.vent_gas(T)	// all gas vent to turf
 			qdel(H)
 
-#warn convert to destruction
-// call to break the pipe
-// will expel any holder inside at the time
-// then delete the pipe
-// remains : set to leave broken pipe pieces in place
-/obj/structure/disposalpipe/proc/broken(var/remains = 0)
-	if(remains)
-		for(var/D in GLOB.cardinal)
-			if(D & dpdir)
-				var/obj/structure/disposalpipe/broken/P = new(src.loc)
-				P.setDir(D)
-
+/obj/structure/disposalpipe/deconstructed(method)
+	. = ..()
 	src.invisibility = 101	// make invisible (since we won't delete the pipe immediately)
 	var/obj/structure/disposalholder/H = locate() in src
 	if(H)
@@ -851,9 +841,12 @@
 		// otherwise, do normal expel from turf
 		if(H)
 			expel(H, T, 0)
+	return ..()
 
-	spawn(2)	// delete pipe after 2 ticks to ensure expel proc finished
-		qdel(src)
+/obj/structure/disposalpipe/drop_products(method, atom/where)
+	. = ..()
+	if(method != ATOM_DECONSTRUCT_DISASSEMBLED)
+		new /obj/structure/disposalpipe/broken(where, dir)
 
 //attack by item
 //weldingtool: unfasten and convert to obj/disposalconstruct

@@ -4,26 +4,35 @@
 	material_parts = MATERIAL_DEFAULT_NONE
 	material_costs = 4000
 	material_primary = MATERIAL_PART_DEFAULT
-	var/material_significance = MATERIAL_SIGNIFICANCE_BASELINE
+
+	/// applies material color
 	var/material_color = TRUE
+	/// material attribute significance
+	var/material_significance = MATERIAL_SIGNIFICANCE_BASELINE
+	/// material quantity significance
+	/// this is multiplier to material amount to determine stuff like weight.
+	var/material_factoring = 0.0005
 
 /obj/item/clothing/Initialize(mapload, material_armor)
 	if(!isnull(material_armor))
 		set_material_part(MATERIAL_PART_DEFAULT, SSmaterials.resolve_material(material_armor))
-	. = ..()
+	return ..()
 
 /obj/item/clothing/update_material_single(datum/material/material)
 	. = ..()
+	if(isnull(material))
+		return
 	name = "[material.display_name] [initial(name)]"
 	set_armor(material.create_armor(material_significance))
 	if(material_color)
 		color = material.icon_colour
 	else
 		color = null
-	#warn carry weight and weight/density
+	// todo: this is just hardcoded because clothing material armor is.. janky.
+	var/effective_weight = material.density * material.weight_multiplier * material_factoring * 4000
+	set_weight(effective_weight)
 	siemens_coefficient = material.relative_conductivity
 	atom_flags = (atom_flags & ~(NOCONDUCT)) | (material.relative_conductivity == 0? NOCONDUCT : NONE)
-	#warn impl
 
 /obj/item/clothing/suit/armor/material
 	name = "armor"
