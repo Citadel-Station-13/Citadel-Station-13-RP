@@ -45,7 +45,8 @@
 		set_multiplied_integrity(1)
 	else
 		name = "[material_reinforcing.display_name]-reinforced [material_structure.display_name] girder"
-		#warn impl integrity
+
+	set_multiplied_integrity(material_structure.relative_integrity * multiply_effect_multiplier(material_reinforcing.relative_integrity, 0.5))
 
 	// todo: refactor
 	if(material_color)
