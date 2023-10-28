@@ -1,6 +1,12 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
+//* configuration
+
+/// this is used on all introspect client verb paths
+/// use this to hook it into your admin system
+#define VV_VERB_DECLARE(PATH, NAME)
+
 //* general
 
 /// when seen, we know to treat as global scope
