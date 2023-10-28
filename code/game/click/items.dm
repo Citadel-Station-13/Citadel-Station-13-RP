@@ -158,15 +158,17 @@
  */
 /obj/item/proc/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult = 1, target_zone, intent)
 	PROTECTED_PROC(TRUE)	// route via standard_melee_attack please.
+	//? legacy: decloak
+	user.break_cloak()
+	//? legacy: for now no attacking nonliving
+	if(!isliving(target))
+		return CLICKCHAIN_ATTACK_MISSED
 	// too complciated to be put in proc header
 	if(isnull(target_zone))
 		target_zone = user.zone_sel?.selecting
 	if(isnull(intent))
 		intent = user.a_intent
 	// end
-	//? legacy: for now no attacking nonliving
-	if(!isliving(target))
-		return
 	var/mob/living/L = target
 	// check intent
 	if(user == L)
@@ -212,11 +214,7 @@
  * * intent - action intent that was attempted
  */
 /obj/item/proc/melee_mob_miss(mob/target, mob/user, clickchain_flags, list/params, mult = 1, target_zone, intent)
-	//? legacy: decloak
-	user.break_cloak()
-	//? legacy: for now no attacking nonliving
-	if(!isliving(target))
-		return CLICKCHAIN_ATTACK_MISSED
+	SHOULD_CALL_PARENT(TRUE)
 	var/mob/living/L = target
 	// todo: proper weapon sound ranges/rework
 	playsound(src, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
@@ -240,11 +238,6 @@
  */
 /obj/item/proc/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult = 1, target_zone, intent)
 	SHOULD_CALL_PARENT(TRUE)
-	//? legacy: decloak
-	user.break_cloak()
-	//? legacy: for now no attacking nonliving
-	if(!isliving(target))
-		return
 	// harmless, just tap them and leave
 	if(!damage_force)
 		// todo: proper weapon sound ranges/rework

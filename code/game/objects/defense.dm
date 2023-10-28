@@ -33,4 +33,26 @@
 	. = ..()
 	inflict_atom_damage(100, flag = ARMOR_MELEE, attack_type = ATTACK_TYPE_MELEE)
 
-#warn attack sounds for materials
+/obj/hitsound_melee(obj/item/I)
+	if(!isnull(material_primary))
+		var/datum/material/primary = get_primary_material()
+		. = I.damtype == BURN? primary.sound_melee_burn : primary.sound_melee_brute
+		if(!isnull(.))
+			return
+	return ..()
+
+/obj/hitsound_throwhit(obj/item/I)
+	if(!isnull(material_primary))
+		var/datum/material/primary = get_primary_material()
+		. = I.damtype == BURN? primary.sound_melee_burn : primary.sound_melee_brute
+		if(!isnull(.))
+			return
+	return ..()
+
+/obj/hitsound_unarmed(mob/M, datum/unarmed_attack/style)
+	if(!isnull(material_primary))
+		var/datum/material/primary = get_primary_material()
+		. = style.damage_type == BURN? primary.sound_melee_burn : primary.sound_melee_brute
+		if(!isnull(.))
+			return
+	return ..()

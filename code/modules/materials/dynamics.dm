@@ -81,7 +81,19 @@
  * @return /datum/armor instance
  */
 /datum/controller/subsystem/materials/proc/combined_materials_armor(list/datum/material/materials)
+	var/list/cache_key = list()
+	for(var/datum/material/mat as anything in materials)
+		cache_key += "[mat.id]-[materials[mat]]"
+	cache_key = jointext(cache_key, ";")
+	var/datum/armor/resolved = combined_armor_cache[cache_key]
+	if(!isnull(resolved))
+		return resolved
+	var/list/datum/armor/collected = list()
+	for(var/datum/material/mat as anything in materials)
+		collected[mat.create_armor(materials[mat])] = materials[mat]
 	#warn impl - this requires caching
+
+	combined_armor_cache[cache_key] = resolved
 
 /**
  * combines multiple material armors into one
@@ -93,7 +105,16 @@
  * @return /datum/armor instance
  */
 /datum/controller/subsystem/materials/proc/reinforcing_materials_armor(list/datum/material/materials)
+	var/list/cache_key = list()
+	for(var/datum/material/mat as anything in materials)
+		cache_key += "[mat.id]-[materials[mat]]"
+	cache_key = jointext(cache_key, ";")
+	var/datum/armor/resolved = layered_armor_cache[cache_key]
+	if(!isnull(resolved))
+		return resolved
 	#warn impl - this requires caching
+
+	layered_armor_cache[cache_key] = resolved
 
 /**
  * get melee stats
