@@ -77,6 +77,7 @@ GLOBAL_LIST_EMPTY(solars_list)
 				S.give_glass()
 			playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
 			user.visible_message("<span class='notice'>[user] takes the glass off the solar panel.</span>")
+			new /obj/item/solar_assembly(get_turf(src))
 			qdel(src)
 			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 		return CLICKCHAIN_DO_NOT_PROPAGATE
