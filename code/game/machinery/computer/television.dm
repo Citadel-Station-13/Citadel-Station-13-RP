@@ -20,7 +20,7 @@
 	return ..()
 
 /obj/machinery/computer/television/proc/receiveLines(line)
-	//magic code that plays runetext and talks in chat I guess
-	TO_WORLD(line)
+	//TO_WORLD(line)
+	atom_say(line, LANGUAGE_ID_DOG)
 
 //lines = default_language + "--" + line_text
