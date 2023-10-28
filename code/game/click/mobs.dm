@@ -28,30 +28,30 @@
 /**
  * called to try to hit something in melee
  */
-/mob/proc/standard_melee_attack(atom/what, datum/event_args/actor/clickchain/clickchain, datum/unarmed_attack/style = /datum/unarmed_attack/default, clickchain_flags, target_zone, mult = 1)
+/mob/proc/standard_melee_attack(atom/target, datum/event_args/actor/clickchain/clickchain, datum/unarmed_attack/style = /datum/unarmed_attack/default, clickchain_flags, target_zone, mult = 1)
 	if(isnull(clickchain))
-		clickchain = new(src, target = what, intent = a_intent)
+		clickchain = new(src, target = target, intent = a_intent)
 	// too complciated to be put in proc header
 	if(isnull(target_zone))
-		target_zone = user.zone_sel?.selecting
+		target_zone = clickchain.performer.zone_sel?.selecting
 	// end
 	if(clickchain_flags & CLICKCHAIN_DO_NOT_ATTACK)
 		return NONE
 	// todo: not hardcoding this
-	if(IS_PRONE(user))
+	if(IS_PRONE(clickchain.performer))
 		mult *= 0.66
 	// is mob, go to that
 	// todo: signals for both
 	if(ismob(target))
-		. |= melee_mob(what, clickchain, style, clickchain_flags, target_zone, mult)
+		. |= melee_mob(target, clickchain, style, clickchain_flags, target_zone, mult)
 		if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
 			return
-		return . | melee_mob_finalize(what, clickchain, style, clickchain_flags, target_zone, mult)
+		return . | melee_mob_finalize(target, clickchain, style, clickchain_flags, target_zone, mult)
 	// is obj, go to that
-	. |= melee_object(what, clickchain, style, clickchain_flags, target_zone, mult)
+	. |= melee_object(target, clickchain, style, clickchain_flags, target_zone, mult)
 	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
 		return
-	return . | melee_object_finalize(what, clickchain, style, clickchain_flags, target_zone, mult)
+	return . | melee_object_finalize(target, clickchain, style, clickchain_flags, target_zone, mult)
 
 /mob/proc/melee_object(atom/target, datum/event_args/actor/clickchain/clickchain, datum/unarmed_attack/style, clickchain_flags, target_zone, mult)
 	SHOULD_CALL_PARENT(TRUE)
