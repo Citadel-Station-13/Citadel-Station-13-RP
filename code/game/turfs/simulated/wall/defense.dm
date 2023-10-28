@@ -33,12 +33,10 @@
 		if(thermite)
 			thermitemelt()
 
-
 	if(Proj.ricochet_sounds && prob(15))
 		playsound(src, pick(Proj.ricochet_sounds), 100, 1)
 
 	take_damage(damage)
-	return
 
 /turf/simulated/wall/break_apart(method)
 	dismantle_wall()

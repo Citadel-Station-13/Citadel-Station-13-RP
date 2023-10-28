@@ -28,19 +28,19 @@
 /**
  * called to try to hit something in melee
  */
-/mob/proc/standard_melee_attack(atom/what, datum/unarmed_attack/style = /datum/unarmed_attack/default, clickchain_flags, list/params, mult = 1)
+/mob/proc/standard_melee_attack(atom/what, datum/event_args/actor/clickchain/clickchain, datum/unarmed_attack/style = /datum/unarmed_attack/default, clickchain_flags, target_zone, mult = 1)
 
 
-/mob/proc/melee_object(atom/target, datum/unarmed_attack/style, clickchain_flags, list/params, mult)
+/mob/proc/melee_object(atom/target, datum/event_args/actor/clickchain/clickchain, datum/unarmed_attack/style, clickchain_flags, target_zone, mult)
 
-/mob/proc/melee_object_hit(atom/target, datum/unarmed_attack/style, clickchain_flags, list/params, mult)
+/mob/proc/melee_object_hit(atom/target, datum/event_args/actor/clickchain/clickchain, datum/unarmed_attack/style, clickchain_flags, target_zone, mult)
 
-/mob/proc/melee_object_miss(atom/target, datum/unarmed_attack/style, clickchain_flags, list/params, mult)
+/mob/proc/melee_object_miss(atom/target, datum/event_args/actor/clickchain/clickchain, datum/unarmed_attack/style, clickchain_flags, target_zone, mult)
 
-/mob/proc/melee_mob(mob/target, datum/unarmed_attack/style, clickchain_flags, list/params, mult = 1)
+/mob/proc/melee_mob(mob/target, datum/event_args/actor/clickchain/clickchain, datum/unarmed_attack/style, clickchain_flags, target_zone, mult)
 
-/mob/proc/melee_mob_hit(mob/target, datum/unarmed_attack/style, clickchain_flags, list/params, mult = 1)
+/mob/proc/melee_mob_hit(mob/target, datum/event_args/actor/clickchain/clickchain, datum/unarmed_attack/style, clickchain_flags, target_zone, mult)
 
-/mob/proc/melee_mob_miss(mob/target, datum/unarmed_attack/style, clickchain_flags, list/params, mult = 1)
+/mob/proc/melee_mob_miss(mob/target, datum/event_args/actor/clickchain/clickchain, datum/unarmed_attack/style, clickchain_flags, target_zone, mult)
 
 #warn impl all

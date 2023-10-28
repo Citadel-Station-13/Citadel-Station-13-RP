@@ -55,8 +55,6 @@
 /atom/proc/unarmed_act(mob/attacker, datum/unarmed_attack/style, target_zone, mult = 1)
 	return
 
-	#warn impl on subtypes for melee/unarmed maybe?
-
 //? Damage API
 
 /**
@@ -126,7 +124,7 @@
 	. = hitsound_override(P.damtype, P.damage_mode, ATTACK_TYPE_PROJECTILE, P)
 	if(.)
 		return
-	#warn impl
+	return islist(P.impact_sounds)? pick(P.impact_sounds) : P.impact_sounds
 
 /atom/proc/hitsound_throwhit(obj/item/I)
 	. = hitsound_override(I.damtype, I.damage_mode, ATTACK_TYPE_THROWN, I)
