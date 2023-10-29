@@ -16,7 +16,7 @@
 	emp_protection = 10
 	encumbrance = ITEM_ENCUMBRANCE_LEGACY_RIG_LIGHT
 	offline_encumbrance = ITEM_ENCUMBRANCE_LEGACY_RIG_LIGHT * 2
-	clothing_flags = CLOTHING_THICK_MATERIAL
+	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT
 	offline_vision_restriction = 0
 
 	chest_type = /obj/item/clothing/suit/space/hardsuit/light
