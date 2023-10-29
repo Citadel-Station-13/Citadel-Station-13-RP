@@ -47,6 +47,8 @@
 /datum/material_trait/proc/on_shieldcall(atom/host, data, list/shieldcall_args)
 	return
 
+#warn mob shieldcall?
+
 /**
  * called when examined
  *

@@ -7,5 +7,3 @@
 #define ATOM_DECONSTRUCT_ACID 2
 /// Atom was put out of commission by an unexpected thermal event
 #define ATOM_DECONSTRUCT_FIRE 3
-
-

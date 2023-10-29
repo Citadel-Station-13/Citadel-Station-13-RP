@@ -5,6 +5,8 @@
 
 //? Click-Chain system - using an item in hand to "attack", whether in melee or ranged.
 
+// todo: refactor attack object/mob to just melee attack or something
+
 /**
  * Called when trying to click something that the user can Reachability() to.
  *
@@ -14,7 +16,7 @@
  * - clickchain_flags - see [code/__DEFINES/procs/clickcode.dm]
  * - params - params as list.
  */
-/obj/item/proc/melee_attack_chain(atom/target, mob/user, clickchain_flags, list/params)
+/obj/item/proc/melee_interaction_chain(atom/target, mob/user, clickchain_flags, list/params)
 	// wow we have a lot of params
 	// if only this was ss14 so we could have the EntityEventArgs :pleading:
 
@@ -42,7 +44,7 @@
  * - clickchain_flags - see [code/__DEFINES/procs/clickcode.dm]
  * - params - params as list.
  */
-/obj/item/proc/ranged_attack_chain(atom/target, mob/user, clickchain_flags, list/params)
+/obj/item/proc/ranged_interaction_chain(atom/target, mob/user, clickchain_flags, list/params)
 	// todo: signal for afterattack here
 	return clickchain_flags | afterattack(target, user, clickchain_flags, params)
 

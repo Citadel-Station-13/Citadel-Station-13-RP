@@ -881,7 +881,9 @@
 	timeout = 10
 
 /obj/machinery/porta_turret/proc/aggro_for(seconds, mob/aggressor)
-	#warn impl
+	timeout = round(seconds / 2)
+	spawn(-1)
+		popUp()
 
 /datum/turret_checks
 	var/enabled

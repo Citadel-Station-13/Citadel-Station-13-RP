@@ -18,7 +18,7 @@
 
 /obj/bullet_act(obj/projectile/P, def_zone)
 	. = ..()
-	#warn impl
+	inflict_atom_damage(P.get_structure_damage(), P.damage_tier, P.damage_flag, P.damage_mode, ATTACK_TYPE_PROJECTILE, P)
 
 /obj/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
 	. = ..()

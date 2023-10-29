@@ -2,8 +2,8 @@
 /**
  * flags passed around click procs including:
  * ClickOn
- * melee_attack_chain
- * ranged_attack_chain
+ * melee_interaction_chain
+ * ranged_interaction_chain
  * attackby
  * pre_attack
  * standard_melee_attack and related

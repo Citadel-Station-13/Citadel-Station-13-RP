@@ -36,7 +36,7 @@
  * * target_zone - zone targeted
  * * mult - damage multiplier
  *
- * @return best estimate of damage taken, or null if no action was taken. for stun weapons and the like, this'll be weird or just 0.
+ * @return clickchain flags to append
  */
 /atom/proc/melee_act(mob/user, obj/item/weapon, target_zone, mult = 1)
 	return
@@ -50,7 +50,7 @@
  * * target_zone - zone targeted
  * * mult - damage multiplier
  *
- * @return best estimate of damage taken, or null if no action was taken. for stun weapons and the like, this'll be weird or just 0.
+ * @return clickchain flags to append
  */
 /atom/proc/unarmed_act(mob/attacker, datum/unarmed_attack/style, target_zone, mult = 1)
 	return
