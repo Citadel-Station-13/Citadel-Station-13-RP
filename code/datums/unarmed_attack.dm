@@ -61,7 +61,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 
 	return FALSE
 
-/datum/unarmed_attack/proc/get_unarmed_damage()
+/datum/unarmed_attack/proc/get_unarmed_damage(mob/attacker, atom/defender)
 	return damage + rand(damage_add_low, damage_add_high)
 
 /datum/unarmed_attack/proc/apply_effects(var/mob/living/carbon/human/user,var/mob/living/carbon/human/target,var/armour,var/attack_damage,var/zone)

@@ -11,23 +11,19 @@
 		inflict_atom_damage(AM.throw_force * TT.get_damage_multiplier(), MELEE_TIER_LIGHT, ARMOR_MELEE, null, ATTACK_TYPE_THROWN, AM)
 
 /turf/simulated/wall/unarmed_act(mob/attacker, datum/unarmed_attack/style, target_zone, mult)
-	. = ..()
-	#warn impl
+	// todo: this should just be style.attack(attacker, src)
+	inflict_atom_damage(style.get_unarmed_damage(attacker, src), style.damage_tier, style.damage_flag, style.damage_mode, ATTACK_TYPE_UNARMED, attacker)
+	return NONE
 
 /turf/simulated/wall/melee_act(mob/user, obj/item/weapon, target_zone, mult)
-	. = ..()
-	#warn impl
+	inflict_atom_damage(weapon.damage_force, weapon.damage_tier, weapon.damage_flag, weapon.damage_mode, ATTACK_TYPE_MELEE, weapon)
+	return NONE
 
 /turf/simulated/wall/bullet_act(var/obj/projectile/Proj)
 	if(istype(Proj,/obj/projectile/beam))
 		burn(2500)
 	else if(istype(Proj,/obj/projectile/ion))
 		burn(500)
-
-	var/proj_damage = Proj.get_structure_damage()
-
-	//cap the amount of damage, so that things like emitters can't destroy walls in one hit.
-	var/damage = min(proj_damage, 100)
 
 	if(Proj.damage_type == BURN && damage > 0)
 		if(thermite)
@@ -36,7 +32,7 @@
 	if(Proj.ricochet_sounds && prob(15))
 		playsound(src, pick(Proj.ricochet_sounds), 100, 1)
 
-	take_damage(damage)
+	inflict_atom_damage(Proj.get_structure_damage(), Proj.damage_tier, Proj.damage_flag, Proj.damage_mode, ATTACK_TYPE_PROJECTILE, Proj)
 
 /turf/simulated/wall/break_apart(method)
 	dismantle_wall()

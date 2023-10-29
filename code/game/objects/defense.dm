@@ -11,10 +11,13 @@
 	inflict_atom_damage(global._legacy_ex_atom_damage[severity], flag = ARMOR_BOMB)
 
 /obj/melee_act(mob/user, obj/item/weapon, target_zone, mult)
-	return inflict_atom_damage(weapon.damage_force, weapon.damage_tier, weapon.damage_flag, weapon.damage_mode, ATTACK_TYPE_MELEE, weapon)
+	inflict_atom_damage(weapon.damage_force, weapon.damage_tier, weapon.damage_flag, weapon.damage_mode, ATTACK_TYPE_MELEE, weapon)
+	return NONE
 
 /obj/unarmed_act(mob/attacker, datum/unarmed_attack/style, target_zone, mult)
-	return inflict_atom_damage(style.get_unarmed_damage(), style.damage_tier, style.damage_flag, style.damage_mode, ATTACK_TYPE_UNARMED, attacker)
+	// todo: this should just be style.attack(attacker, src)
+	inflict_atom_damage(style.get_unarmed_damage(attacker, src), style.damage_tier, style.damage_flag, style.damage_mode, ATTACK_TYPE_UNARMED, attacker)
+	return NONE
 
 /obj/bullet_act(obj/projectile/P, def_zone)
 	. = ..()

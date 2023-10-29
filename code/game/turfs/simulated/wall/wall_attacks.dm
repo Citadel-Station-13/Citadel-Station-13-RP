@@ -83,7 +83,6 @@
 	return 0
 
 /turf/simulated/wall/attack_hand(mob/user, list/params)
-	#warn route to unarmed act?
 	add_fingerprint(user)
 	user.setClickCooldown(user.get_attack_speed())
 	var/rotting = (locate(/obj/effect/overlay/wallrot) in src)
@@ -96,6 +95,7 @@
 				try_touch(M, rotting)
 			else
 				user.melee_attack_chain(src)
+				return
 	else
 		try_touch(user, rotting)
 
