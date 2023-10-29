@@ -32,6 +32,7 @@
 /atom/proc/attack_hand(mob/user, list/params)
 	var/datum/event_args/actor/clickchain/e_args = new(user, target = src, intent = user.a_intent, params = params)
 	if(user.a_intent == INTENT_HARM)
+		return user.standard_melee_attack(src, e_args)
 		#warn melee
 	if(on_attack_hand(e_args))
 		return TRUE

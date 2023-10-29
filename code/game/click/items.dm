@@ -351,3 +351,5 @@
  */
 /obj/item/proc/finalize_object_melee(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags, mult = 1)
 	return NONE
+
+#warn impl all

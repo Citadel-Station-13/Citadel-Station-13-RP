@@ -143,7 +143,7 @@
 
 /turf/simulated/wall/adjacent_fire_act(turf/simulated/floor/adj_turf, datum/gas_mixture/adj_air, adj_temp, adj_volume)
 	burn(adj_temp)
-	if(adj_temp > material.melting_point)
+	if(adj_temp > material_outer.melting_point)
 		inflict_atom_damage(log(RAND_F(0.9, 1.1) * (adj_temp - material_outer.melting_point)), flag = ARMOR_FIRE, gradual = TRUE)
 
 	return ..()
@@ -233,7 +233,7 @@
 		return FALSE
 
 	if(passed_mode == RCD_DECONSTRUCT)
-		var/delay_to_use = material.relative_integrity * 100 / 3 // Steel has 150 integrity, so it'll take five seconds to down a regular wall.
+		var/delay_to_use = material_outer.relative_integrity * 100 / 3 // Steel has 150 integrity, so it'll take five seconds to down a regular wall.
 		if(material_reinf)
 			delay_to_use += material_reinf.relative_integrity * 100 / 3
 		return list(

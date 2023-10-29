@@ -28,7 +28,7 @@
 /**
  * called to try to hit something in melee
  */
-/mob/proc/standard_melee_attack(atom/target, datum/event_args/actor/clickchain/clickchain, datum/unarmed_attack/style = /datum/unarmed_attack/default, clickchain_flags, target_zone, mult = 1)
+/mob/proc/standard_melee_attack(atom/target, datum/event_args/actor/clickchain/clickchain, datum/unarmed_attack/style = unarmed_attack_style( ), clickchain_flags, target_zone, mult = 1)
 	if(isnull(clickchain))
 		clickchain = new(src, target = target, intent = a_intent)
 	// too complciated to be put in proc header
