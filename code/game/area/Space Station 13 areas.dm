@@ -3581,6 +3581,29 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Dock Two"
 	icon_state = "dk_yellow"
 
+//Temporary Halloween Ball Areas
+
+/area/ball_map
+	name = "Main Ball Facility"
+	icon_state = "yellow"
+	requires_power = FALSE
+
+/area/ball_map/dorms
+	name = "Igloo Inn"
+	icon_state = "blue"
+
+/area/ball_map/club
+	name = "Twenty Below"
+	icon_state = "purple"
+
+/area/ball_map/exterior
+	name = "Lythios Exterior"
+	icon_state = "red"
+
+/area/ball_map/gateway
+	name = "Ball Gateway"
+	icon_state = "green"
+
 /////////////////////////////////////////////////////////////////////
 /*
  Lists of areas to be used with is_type_in_list.
