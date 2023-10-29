@@ -495,6 +495,7 @@
 			adding = clamp(amount, 0, queue_max_entry - last.amount)
 		last.amount += adding
 		amount -= adding
+		reconsider_queue(start_immediately)
 		ui_controller?.ui_queue_update()
 		if(!amount)
 			return TRUE
