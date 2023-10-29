@@ -25,7 +25,7 @@
 	else if(istype(Proj,/obj/projectile/ion))
 		burn(500)
 
-	if(Proj.damage_type == BURN && damage > 0)
+	if(Proj.damage_type == BURN && Proj.damage > 0)
 		if(thermite)
 			thermitemelt()
 

@@ -13,6 +13,7 @@
  * @return /datum/armor instance
  */
 /datum/material/proc/create_armor(significance = MATERIAL_SIGNIFICANCE_BASELINE, mob_armor)
+	RETURN_TYPE(/datum/armor)
 	var/cache_key = "[significance]_[!!mob_armor]"
 	if(!isnull(armor_cache[cache_key]))
 		return armor_cache[cache_key]
@@ -90,10 +91,19 @@
 		return resolved
 	var/list/datum/armor/collected = list()
 	for(var/datum/material/mat as anything in materials)
-		collected[mat.create_armor(materials[mat])] = materials[mat]
-	#warn impl - this requires caching
+		collected[mat.create_armor(materials[mat]).to_list()] = materials[mat]
 
+	// todo: this is shitty but we just do the best of all
+	//       as a result, combined materials armor tends to be pretty op
+	//       please rework when possible.
+	var/list/combined = list()
+	for(var/list/armor_list as anything in collected)
+		for(var/key in armor_list)
+			combined[key] = max(combined[key], armor_list[key])
+
+	resolved = fetch_armor_struct(combined)
 	combined_armor_cache[cache_key] = resolved
+	return resolved
 
 /**
  * combines multiple material armors into one
@@ -112,9 +122,18 @@
 	var/datum/armor/resolved = layered_armor_cache[cache_key]
 	if(!isnull(resolved))
 		return resolved
-	#warn impl - this requires caching
 
+	// todo: this is shitty but we just do the best of all
+	//       as a result, combined materials armor tends to be pretty op
+	//       please rework when possible.
+	var/list/combined = list()
+	for(var/list/armor_list as anything in collected)
+		for(var/key in armor_list)
+			combined[key] = max(combined[key], armor_list[key])
+
+	resolved = fetch_armor_struct(combined)
 	layered_armor_cache[cache_key] = resolved
+	return resolved
 
 /**
  * get melee stats
