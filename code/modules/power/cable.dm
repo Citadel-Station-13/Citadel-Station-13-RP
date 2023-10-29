@@ -975,7 +975,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	slot_flags = SLOT_BELT
 	attack_verb = list("whipped", "lashed", "disciplined", "flogged")
 	stacktype = null
-	split_type = /obj/item/cable_coil
+	split_type = /obj/item/stack/cable_coil
 	tool_speed = 0.25
 
 /obj/item/stack/cable_coil/alien/Initialize(mapload, new_amount, merge, param_color)
