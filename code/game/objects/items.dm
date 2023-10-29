@@ -878,6 +878,14 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 		return TRUE
 	return FALSE
 
+/**
+ * Hitsound override when successfully melee attacking someone for melee_hit()
+ *
+ * We get final say by returning a sound here.
+ */
+/obj/item/proc/attacksound_override(atom/target, attack_type)
+	return
+
 //? Carry Weight
 
 /obj/item/proc/get_weight()

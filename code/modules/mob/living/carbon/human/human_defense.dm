@@ -25,11 +25,6 @@ meteor_act
 	if(!P.nodamage)
 		organ.add_autopsy_data("[P.name]", P.damage)
 
-	// Tell clothing we're wearing that it got hit by a bullet/laser/etc
-	var/list/clothing = get_clothing_list_organ(organ)
-	for(var/obj/item/clothing/C in clothing)
-		C.clothing_impact(P, P.damage)
-
 	//Shrapnel
 	if(P.can_embed())
 		var/armor = getarmor_organ(organ, "bullet")

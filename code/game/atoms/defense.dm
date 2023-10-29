@@ -105,6 +105,9 @@
 	return // default is null
 
 /atom/proc/hitsound_melee(obj/item/I)
+	. = I.attacksound_override(src, ATTACK_TYPE_MELEE)
+	if(!isnull(.))
+		return
 	. = hitsound_override(I.damtype, I.damage_mode, ATTACK_TYPE_MELEE, I)
 	if(.)
 		return
@@ -120,12 +123,16 @@
 			return "swing_hit"
 
 /atom/proc/hitsound_projectile(obj/projectile/P)
+	//? todo: projectile gets final say
 	. = hitsound_override(P.damtype, P.damage_mode, ATTACK_TYPE_PROJECTILE, P)
 	if(.)
 		return
 	return islist(P.impact_sounds)? pick(P.impact_sounds) : P.impact_sounds
 
 /atom/proc/hitsound_throwhit(obj/item/I)
+	. = I.attacksound_override(src, ATTACK_TYPE_THROWN)
+	if(!isnull(.))
+		return
 	. = hitsound_override(I.damtype, I.damage_mode, ATTACK_TYPE_THROWN, I)
 	if(.)
 		return
@@ -141,6 +148,7 @@
 			return "swing_hit"
 
 /atom/proc/hitsound_unarmed(mob/M, datum/unarmed_attack/style)
+	//? todo: style gets final say
 	. = hitsound_override(M, style.damage_mode, ATTACK_TYPE_UNARMED, style)
 	if(.)
 		return

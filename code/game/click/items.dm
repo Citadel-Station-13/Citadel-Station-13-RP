@@ -144,6 +144,9 @@
 		return
 	return . | finalize_object_melee(target, e_args, . | clickchain_flags, mult)
 
+//? todo: melee_special
+//? todo: combine mob/obj procs
+
 /**
  * called when we're used to attack a mob
  *
