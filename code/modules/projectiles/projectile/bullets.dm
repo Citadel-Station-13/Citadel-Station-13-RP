@@ -483,11 +483,14 @@
 	icon_state = "fireball"
 	damage = 10
 	embed_chance = 0
-	incendiary = 2
+	//incendiary = 2 //The Trail of Fire doesn't work.
 	flammability = 4
 	agony = 30
 	range = 4
 	vacuum_traversal = 0
+
+/obj/projectile/bullet/incendiary/flamethrower/weak
+	flammability = 2
 
 /obj/projectile/bullet/incendiary/flamethrower/large
 	damage = 15
