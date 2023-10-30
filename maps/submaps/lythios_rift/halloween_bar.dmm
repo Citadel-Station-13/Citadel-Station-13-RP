@@ -2424,7 +2424,7 @@
 /turf/simulated/floor/tiled/freezer,
 /area/ball_map)
 "NW" = (
-/obj/machinery/gateway/centerstation,
+/obj/machinery/gateway/centeraway,
 /turf/simulated/floor/tiled/steel,
 /area/ball_map/gateway)
 "NY" = (
@@ -18561,12 +18561,12 @@ Uy
 Rh
 aU
 Kw
-Kw
-Kw
+lX
+lX
 hL
 Kw
-Kw
-Kw
+lX
+lX
 Kw
 aU
 tG
@@ -18755,12 +18755,12 @@ Ui
 tG
 aU
 Kw
-lX
-lX
+Ud
+SP
 hL
 Kw
-lX
-lX
+SP
+Ud
 Kw
 aU
 Rh
@@ -18949,12 +18949,12 @@ Ui
 tG
 aU
 Kw
-Ud
-SP
+OJ
+OJ
 hL
 Kw
-SP
-Ud
+OJ
+OJ
 Kw
 aU
 Rh
@@ -19143,12 +19143,12 @@ lP
 Rh
 aU
 Kw
-OJ
-OJ
+Kw
+Kw
 hL
 Kw
-OJ
-OJ
+Kw
+Kw
 Kw
 aU
 Rh
