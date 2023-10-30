@@ -221,7 +221,7 @@
 /obj/item/clothing/head/cage
 	name = "scholarly cage"
 	desc = "An aged iron cage meant to be worn upon one's head. It relies largely on the shoulders for support. Small, dried flecks of blood have visibly gathered in some of the recesses."
-	icon = 'icons/clothing/head/cage_64x64.dmi'
+	icon = 'icons/clothing/head/cage_32x48.dmi'
 	icon_state = "cage"
 	body_cover_flags = HEAD
 	w_class = ITEMSIZE_NORMAL
