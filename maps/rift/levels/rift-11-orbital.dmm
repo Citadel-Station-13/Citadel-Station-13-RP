@@ -2726,7 +2726,7 @@
 	},
 /area/centcom/simulated/evac)
 "iS" = (
-/obj/structure/memorial,
+/obj/structure/memorial/small/left,
 /turf/unsimulated/floor/steel{
 	icon_state = "asteroidfloor"
 	},
@@ -9541,6 +9541,12 @@
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
+"WI" = (
+/obj/structure/memorial/small/right,
+/turf/unsimulated/floor/steel{
+	icon_state = "asteroidfloor"
+	},
+/area/centcom/simulated/evac)
 "WL" = (
 /obj/structure/table/rack/steel,
 /obj/item/tank/phoron/pressurized,
@@ -20654,7 +20660,7 @@ hP
 cN
 hy
 ij
-iT
+WI
 iT
 iP
 ij
