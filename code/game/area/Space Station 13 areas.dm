@@ -3587,6 +3587,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Main Ball Facility"
 	icon_state = "yellow"
 	requires_power = FALSE
+	dynamic_lighting = DYNAMIC_LIGHTING_FORCED
 
 /area/ball_map/dorms
 	name = "Igloo Inn"
@@ -3599,9 +3600,14 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/ball_map/exterior
 	name = "Lythios Exterior"
 	icon_state = "red"
+	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 
 /area/ball_map/gateway
 	name = "Ball Gateway"
+	icon_state = "green"
+
+/area/ball_map/bar
+	name = "Ball Bar"
 	icon_state = "green"
 
 /////////////////////////////////////////////////////////////////////
