@@ -361,4 +361,4 @@
 
 /obj/structure/memorial/small/right
 	icon_state = "memorial_r"
-	description_fluff = "This slab is marked with a list of names, over which is engraved 'Honor to the Fallen'. The names that appear on this slab are the local NanoTrasen employees who have died in the line of duty. The list is too long to fit on the slab normally - so the stone utilizes a nanotech etch/fill cycle to 'scroll' names from one slot, down to the next. The soft rumbling of stone etching away and filling in is referred to as the 'March of Progress'. Scrolling past on the list are several familiar names: Dean Fitzgerald"
+	description_fluff = "This slab is marked with a list of names, over which is engraved 'Honor to the Fallen'. The names that appear on this slab are the local NanoTrasen employees who have died in the line of duty. The list is too long to fit on the slab normally - so the stone utilizes a nanotech etch/fill cycle to 'scroll' names from one slot, down to the next. The soft rumbling of stone etching away and filling in is referred to as the 'March of Progress'. Scrolling past on the list are several familiar names: '...Dean Fitzgerald'"
