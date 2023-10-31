@@ -132,6 +132,7 @@
 	icon_state = "bodybag_folded"
 	item_state = "bodybag_cryo_folded"
 	origin_tech = list(TECH_BIO = 4)
+	bag_type = /obj/structure/closet/body_bag/cryobag
 	
 	var/obj/item/reagent_containers/syringe/syringe
 
