@@ -240,6 +240,5 @@ SUBSYSTEM_DEF(television)
 		if("GUTTER")
 			return /datum/language/gutter
 	//You used a bad language key. mrrp mrrp mrow
-	TO_WORLD("TV: AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH")
 	return /datum/language/cat
 

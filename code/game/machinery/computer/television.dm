@@ -7,10 +7,12 @@
 	light_range_on = 2
 	//circuit = /obj/item/circuitboard/security/telescreen/entertainment //Need to make a new circuit outide camera monitors
 
+	var/list/channels = SStelevision.getChannels()
 
 //NEED LOCAL CHANNEL VAR PULLED FROM SS. RETURN CURRENT CHANNEL TO SUBSYSTEM
 /obj/machinery/computer/television/Initialize(mapload)
 	. = ..()
+
 	var/channel = "Nanotrasen_Public_Network/"
 	SStelevision.all_tvs += src
 	SStelevision.all_tvs[src] = channel
@@ -21,4 +23,3 @@
 
 /obj/machinery/computer/television/proc/receiveLines(line, language)
 	atom_say(line, SScharacters.resolve_language_path(language))
-	//atom_say(line, SScharacters.resolve_language_path(/datum/language/tajaran))
