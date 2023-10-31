@@ -114,7 +114,7 @@ Please wait until completion...</TT><BR>
 			if(!isnull(building))
 				if(metal_amount >= build_cost)
 					operating = 1
-					update_use_power(USE_POWER_ACTIVE)
+					set_use_power(USE_POWER_ACTIVE)
 
 					metal_amount = max(0, metal_amount - build_cost)
 
@@ -127,7 +127,7 @@ Please wait until completion...</TT><BR>
 						if(!isnull(being_built))
 							being_built.loc = get_turf(src)
 							being_built = null
-						update_use_power(USE_POWER_IDLE)
+						set_use_power(USE_POWER_IDLE)
 						operating = 0
 						cut_overlay("[base_icon_state]-active")
 		return

@@ -333,7 +333,7 @@
 	for (var/i=1 to seconds)
 		if (machine_stat & (NOPOWER|BROKEN))
 			return 0
-		use_power(active_power_usage)
+		use_burst_power(active_power_usage)
 		sleep(10)
 	return 1
 

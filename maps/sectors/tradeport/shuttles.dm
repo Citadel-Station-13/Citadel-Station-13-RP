@@ -21,7 +21,7 @@
 	shuttle_tag = "Beruang Trade Ship"
 
 /area/shuttle/trade_ship
-	requires_power = 1
+	area_power_override = null
 	icon_state = "shuttle2"
 	area_flags = AREA_RAD_SHIELDED
 

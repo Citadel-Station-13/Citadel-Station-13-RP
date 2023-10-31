@@ -35,7 +35,4 @@
 
 	//now tell the solar control computers to update their status and linked devices
 	for(var/obj/machinery/power/solar_control/SC in GLOB.solars_list)
-		if(!SC.powernet)
-			GLOB.solars_list.Remove(SC)
-			continue
 		SC.update()

@@ -106,15 +106,13 @@
 		active = 0
 
 	//see if we can connect to a power net.
-	var/datum/powernet/PN
 	var/turf/T = get_turf(src)
-	var/obj/structure/cable/C = T.get_cable_node()
-	if (C)
-		PN = C.powernet
+	var/obj/structure/wire/cable/C = T.get_cable_node()
+	var/datum/wirenet/power/network = C.network
 
-	if (PN)
+	if (network)
 		var/power_draw = clamp(max_charge - stored_charge, 0, charge_rate) //what we are trying to draw
-		power_draw = PN.draw_power(power_draw * 0.001) * 1000 //what we actually get
+		power_draw = network.flat_draw(power_draw * 0.001) * 1000 //what we actually get
 		stored_charge += power_draw
 
 	time_since_fail++

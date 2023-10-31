@@ -27,10 +27,9 @@ SUBSYSTEM_DEF(machines)
 	// TODO - PHASE 2 - Switch these from globals to instance vars
 	// var/list/pipenets      = list()
 	// var/list/machinery     = list()
-	// var/list/powernets     = list()
 	// var/list/power_objects = list()
 
-	var/list/current_run = list()
+	var/list/currentrun = list()
 
 /datum/controller/subsystem/machines/stat_entry()
 	var/msg = list(
@@ -41,7 +40,6 @@ SUBSYSTEM_DEF(machines)
 	return ..() + jointext(msg, "<br>")
 
 /datum/controller/subsystem/machines/Initialize(timeofday)
-	makepowernets()
 	report_progress("Initializing atmos machinery...")
 	setup_atmos_machinery(GLOB.machines)
 	fire()
@@ -54,22 +52,6 @@ SUBSYSTEM_DEF(machines)
 	INTERNAL_PROCESS_STEP(SSMACHINES_PIPENETS,TRUE,process_pipenets,cost_pipenets,SSMACHINES_MACHINERY)
 	INTERNAL_PROCESS_STEP(SSMACHINES_MACHINERY,FALSE,process_machinery,cost_machinery,SSMACHINES_POWERNETS)
 	INTERNAL_PROCESS_STEP(SSMACHINES_POWERNETS,FALSE,process_powernets,cost_powernets,SSMACHINES_POWER_OBJECTS)
-
-// rebuild all power networks from scratch - only called at world creation or by the admin verb
-// The above is a lie. Turbolifts also call this proc.
-/datum/controller/subsystem/machines/proc/makepowernets()
-	// TODO - check to not run while in the middle of a tick!
-	for(var/datum/powernet/PN in powernets)
-		qdel(PN)
-	powernets.Cut()
-	setup_powernets_for_cables(cable_list)
-
-/datum/controller/subsystem/machines/proc/setup_powernets_for_cables(list/cables)
-	for(var/obj/structure/cable/PC in cables)
-		if(!PC.powernet)
-			var/datum/powernet/NewPN = new()
-			NewPN.add_cable(PC)
-			propagate_network(PC,PC.powernet)
 
 /datum/controller/subsystem/machines/proc/setup_atmos_machinery(list/atmos_machines)
 	for(var/obj/machinery/atmospherics/machine in atmos_machines)
@@ -91,13 +73,13 @@ SUBSYSTEM_DEF(machines)
 
 /datum/controller/subsystem/machines/proc/process_pipenets(resumed = 0)
 	if (!resumed)
-		src.current_run = global.pipe_networks.Copy()
+		src.currentrun = global.pipe_networks.Copy()
 	//cache for sanic speed (lists are references anyways)
-	var/list/current_run = src.current_run
+	var/list/currentrun = src.currentrun
 	var/dt = (subsystem_flags & SS_TICKER)? (wait * world.tick_lag) : max(world.tick_lag, wait * 0.1)
-	while(current_run.len)
-		var/datum/pipe_network/PN = current_run[current_run.len]
-		current_run.len--
+	while(currentrun.len)
+		var/datum/pipe_network/PN = currentrun[currentrun.len]
+		currentrun.len--
 		if(istype(PN) && !QDELETED(PN))
 			PN.process(dt)
 		else
@@ -109,13 +91,13 @@ SUBSYSTEM_DEF(machines)
 
 /datum/controller/subsystem/machines/proc/process_machinery(resumed = 0)
 	if (!resumed)
-		src.current_run = global.processing_machines.Copy()
+		src.currentrun = global.processing_machines.Copy()
 
-	var/list/current_run = src.current_run
+	var/list/currentrun = src.currentrun
 	var/dt = (subsystem_flags & SS_TICKER)? (wait * world.tick_lag) : max(world.tick_lag, wait * 0.1)
-	while(current_run.len)
-		var/obj/machinery/M = current_run[current_run.len]
-		current_run.len--
+	while(currentrun.len)
+		var/obj/machinery/M = currentrun[currentrun.len]
+		currentrun.len--
 		if(!istype(M) || QDELETED(M) || (M.process(dt) == PROCESS_KILL))
 			global.processing_machines.Remove(M)
 			if(!QDELETED(M))
@@ -123,33 +105,34 @@ SUBSYSTEM_DEF(machines)
 		if(MC_TICK_CHECK)
 			return
 
-/datum/controller/subsystem/machines/proc/process_powernets(resumed = 0)
+/datum/controller/subsystem/machines/proc/process_powernets(resumed)
 	if (!resumed)
-		src.current_run = global.powernets.Copy()
-
-	var/list/current_run = src.current_run
-	while(current_run.len)
-		var/datum/powernet/PN = current_run[current_run.len]
-		current_run.len--
-		if(istype(PN) && !QDELETED(PN))
-			PN.reset(wait)
-		else
-			global.powernets.Remove(PN)
-			if(!QDELETED(PN))
-				PN.datum_flags &= ~DF_ISPROCESSING
+		src.currentrun = GLOB.powernets.Copy()
+	var/list/currentrun = src.currentrun
+	var/i
+	var/datum/wirenet/power/powernet
+	for(i in 1 to length(currentrun))
+		powernet = currentrun[i]
+		if(isnull(powernet))
+			listclearnulls(GLOB.powernets)
+			stack_trace("null was found in powernet currentrun; this is bad.")
+			continue
+		powernet.reset()
 		if(MC_TICK_CHECK)
-			return
+			break
+	currentrun.Cut(1, i)
 
 // Actually only processes power DRAIN objects.
+// todo: remove this and replace with something else? SSmachiens should have generic machinery ticking.
 // Currently only used by powersinks. These items get priority processed before machinery
 /datum/controller/subsystem/machines/proc/process_power_objects(resumed = 0)
 	if (!resumed)
-		src.current_run = global.processing_power_items.Copy()
+		src.currentrun = global.processing_power_items.Copy()
 
-	var/list/current_run = src.current_run
-	while(current_run.len)
-		var/obj/item/I = current_run[current_run.len]
-		current_run.len--
+	var/list/currentrun = src.currentrun
+	while(currentrun.len)
+		var/obj/item/I = currentrun[currentrun.len]
+		currentrun.len--
 		if(!I.pwr_drain(wait)) // 0 = Process Kill, remove from processing list.
 			global.processing_power_items.Remove(I)
 			I.datum_flags &= ~DF_ISPROCESSING

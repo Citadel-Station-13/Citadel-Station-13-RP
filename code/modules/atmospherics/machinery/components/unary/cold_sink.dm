@@ -95,7 +95,7 @@
 	. = TRUE
 	switch(action)
 		if("toggleStatus")
-			update_use_power(!use_power)
+			legacy_toggle_use_power()
 			update_icon()
 		if("setGasTemperature")
 			var/amount = text2num(params["temp"])
@@ -129,7 +129,7 @@
 		if(debug)
 			visible_message("[src]: Removing [removed] W.")
 
-		use_power(power_rating)
+		use_burst_power(power_rating)
 
 		network.update = 1
 	else

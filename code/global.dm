@@ -61,8 +61,6 @@ var/list/IClog     = list()
 var/list/OOClog    = list()
 var/list/adminlog  = list()
 
-var/list/powernets = list()	// TODO - Move into SSmachines
-
 var/gravity_is_on = 1
 
 var/join_motd = null

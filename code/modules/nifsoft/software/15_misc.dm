@@ -6,15 +6,15 @@
 	wear = 2
 	applies_to = NIF_SYNTHETIC
 	tick_flags = NIF_ACTIVETICK
-	var/obj/machinery/power/apc/apc
+	var/obj/machinery/apc/apc
 	other_flags = (NIF_O_APCCHARGE)
 
 /datum/nifsoft/apc_recharge/activate()
 	if((. = ..()))
 		var/mob/living/carbon/human/H = nif.human
-		apc = locate(/obj/machinery/power/apc) in get_step(H,H.dir)
+		apc = locate(/obj/machinery/apc) in get_step(H,H.dir)
 		if(!apc)
-			apc = locate(/obj/machinery/power/apc) in get_step(H,0)
+			apc = locate(/obj/machinery/apc) in get_step(H,0)
 		if(!apc)
 			nif.notify("You must be facing an APC to connect to.",TRUE)
 			spawn(0)

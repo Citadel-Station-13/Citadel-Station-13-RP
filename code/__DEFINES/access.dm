@@ -76,6 +76,12 @@ GLOBAL_LIST_INIT(access_type_names, list(
 //? THE CURRENT HIGHEST IS 307. UPDATE THIS VALUE AS NEEDED. ADD CONTINUOUSLY, DO NOT SKIP VALUES. ?//
 //--------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------------------//
+//? THE CURRENT HIGHEST ALLOCATION HOLE IS 46. UPDATE THIS VALUE AS NEEDED.                        ?//
+//--------------------------------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------------------//
+
 
 // When oh when will we escape the tyranny of number enums?
 // todo: eventually we'll want a script for "migrating" access in .dmms. if that's, y'know, even possible
@@ -259,6 +265,9 @@ STANDARD_ACCESS_DATUM(ACCESS_ENGINEERING_TELECOMMS, station/engineering/tcomsat,
 
 #define ACCESS_ENGINEERING_CE 56
 STANDARD_ACCESS_DATUM(ACCESS_ENGINEERING_CE, station/engineering/ce, "Chief Engineer")
+
+#define ACCESS_ENGINEERING_APC 36
+STANDARD_ACCESS_DATUM(ACCESS_ENGINEERING_APC, station/engineering/apc, "Power Controls")
 
 #define ACCESS_ENGINEERING_EDIT 303
 STANDARD_ACCESS_DATUM(ACCESS_ENGINEERING_EDIT, station/engineering/edit, "Engineering - Access Edit")

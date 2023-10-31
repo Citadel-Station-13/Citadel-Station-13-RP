@@ -70,7 +70,7 @@
 
 	if (power_draw >= 0)
 		last_power_draw_legacy = power_draw
-		use_power(power_draw)
+		use_burst_power(power_draw)
 
 		if(network)
 			network.update = 1
@@ -89,7 +89,7 @@
 
 	if(air_contents.temperature > 0)
 		var/power_used = pump_gas(src, air_contents, environment, air_contents.total_moles, power_rating)
-		use_power(power_used)
+		use_burst_power(power_used)
 
 		if(network)
 			network.update = 1
@@ -172,10 +172,10 @@
 		return 0
 
 	if(signal.data["power"])
-		update_use_power(text2num(signal.data["power"]))
+		set_use_power(text2num(signal.data["power"]))
 
 	if(signal.data["power_toggle"])
-		update_use_power(!use_power)
+		legacy_toggle_use_power()
 
 	if(signal.data["inject"])
 		spawn inject()
@@ -202,7 +202,7 @@
 
 /obj/machinery/atmospherics/component/unary/outlet_injector/proc/toggle_injecting()
 	injecting = !injecting
-	update_use_power(injecting ? USE_POWER_IDLE : USE_POWER_OFF)
+	set_use_power(text2num(signal.data["power"]))
 	update_icon()
 
 /obj/machinery/atmospherics/component/unary/outlet_injector/attackby(var/obj/item/W as obj, var/mob/user as mob)

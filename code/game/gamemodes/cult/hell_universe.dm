@@ -68,7 +68,7 @@ In short:
 			LEGACY_EX_ACT(alm, 2, null)
 
 /datum/universal_state/hell/proc/APCSet()
-	for (var/obj/machinery/power/apc/APC in GLOB.apcs)
+	for (var/obj/machinery/apc/APC in GLOB.apcs)
 		if (!(APC.machine_stat & BROKEN) && !APC.is_critical)
 			APC.emagged = 1
 			APC.update_icon()

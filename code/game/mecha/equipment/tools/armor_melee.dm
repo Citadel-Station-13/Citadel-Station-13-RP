@@ -30,7 +30,7 @@
 		user.visible_message("<span class='danger'>\The [user] hits [chassis] with [W].</span>", "<span class='danger'>You hit [src] with [W].</span>")
 		inc_damage *= damage_coeff
 	set_ready_state(0)
-	chassis.use_power(energy_drain)
+	chassis.use_burst_power(energy_drain)
 	spawn()
 		do_after_cooldown()
 	return max(0, inc_damage)
@@ -66,7 +66,7 @@
 		chassis.take_damage(round(W.damage_force*damage_coeff),W.damtype)
 		chassis.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
 	set_ready_state(0)
-	chassis.use_power(energy_drain)
+	chassis.use_burst_power(energy_drain)
 	do_after_cooldown()
 	return
 */

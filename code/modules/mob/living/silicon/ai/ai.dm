@@ -93,7 +93,7 @@ var/list/ai_verbs_default = list(
 	/// Malfunction research datum.
 	var/datum/malf_research/research = null
 	/// APC that is currently being hacked.
-	var/obj/machinery/power/apc/hack = null
+	var/obj/machinery/apc/hack = null
 	/// List of all hacked APCs
 	var/list/hacked_apcs = null
 	/// If set, the AI runs on APU power
@@ -329,7 +329,7 @@ var/list/ai_verbs_default = list(
 	name="Power Supply"
 	active_power_usage=50000 // Station AIs use significant amounts of power. This, when combined with charged SMES should mean AI lasts for 1hr without external power.
 	use_power = USE_POWER_ACTIVE
-	power_channel = EQUIP
+	power_channel = POWER_CHANNEL_EQUIP
 	var/mob/living/silicon/ai/powered_ai = null
 	invisibility = 100
 
@@ -343,7 +343,7 @@ var/list/ai_verbs_default = list(
 	else
 		forceMove(powered_ai.loc)
 
-	use_power(USE_POWER_IDLE) // Just incase we need to wake up the power system.
+	use_burst_power(USE_POWER_IDLE) // Just incase we need to wake up the power system.
 
 /obj/machinery/ai_powersupply/Destroy()
 	. = ..()
@@ -357,14 +357,14 @@ var/list/ai_verbs_default = list(
 		qdel(src)
 		return
 	if(powered_ai.APU_power)
-		update_use_power(USE_POWER_OFF)
+		set_use_power(USE_POWER_OFF)
 		return
 	if(!powered_ai.anchored)
 		loc = powered_ai.loc
-		update_use_power(USE_POWER_OFF)
-		use_power(50000) // Less optimalised but only called if AI is unwrenched. This prevents usage of wrenching as method to keep AI operational without power. Intellicard is for that.
+		set_use_power(USE_POWER_OFF)
+		use_burst_power(50000) // Less optimalised but only called if AI is unwrenched. This prevents usage of wrenching as method to keep AI operational without power. Intellicard is for that.
 	if(powered_ai.anchored)
-		update_use_power(USE_POWER_ACTIVE)
+		set_use_power(USE_POWER_ACTIVE)
 
 /mob/living/silicon/ai/proc/pick_icon()
 	set category = "AI Settings"

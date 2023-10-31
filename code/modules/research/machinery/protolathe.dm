@@ -186,7 +186,7 @@
 	for(var/M in D.materials)
 		power += round(D.materials[M] / 5)
 	power = max(active_power_usage, power)
-	use_power(power)
+	use_burst_power(power)
 	for(var/M in D.materials)
 		stored_materials[M] = max(0, stored_materials[M] - D.materials[M] * mat_efficiency)
 	for(var/C in D.reagents)

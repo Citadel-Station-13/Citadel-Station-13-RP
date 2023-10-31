@@ -19,98 +19,98 @@
 	name = "\improper Salamander Cabin"
 	icon = 'icons/turf/areas_vr_talon.dmi'
 	icon_state = "gray"
-	requires_power = 1
+	area_power_override = null
 	has_gravity = 0
 
 /area/shuttle/salamander_engineering
 	name = "\improper Salamander Engineering"
 	icon = 'icons/turf/areas_vr_talon.dmi'
 	icon_state = "yellow"
-	requires_power = 1
+	area_power_override = null
 	has_gravity = 0
 
 /area/shuttle/salamander_cockpit
 	name = "\improper Salamander Cockpit"
 	icon = 'icons/turf/areas_vr_talon.dmi'
 	icon_state = "blue"
-	requires_power = 1
+	area_power_override = null
 	has_gravity = 0
 
 /area/shuttle/salamander_q1
 	name = "\improper Salamander Quarters 1"
 	icon = 'icons/turf/areas_vr_talon.dmi'
 	icon_state = "gray-p"
-	requires_power = 1
+	area_power_override = null
 	has_gravity = 0
 
 /area/shuttle/salamander_q2
 	name = "\improper Salamander Quarters 2"
 	icon = 'icons/turf/areas_vr_talon.dmi'
 	icon_state = "gray-p"
-	requires_power = 1
+	area_power_override = null
 	has_gravity = 0
 
 /area/shuttle/salamander_galley
 	name = "\improper Salamander Galley"
 	icon = 'icons/turf/areas_vr_talon.dmi'
 	icon_state = "dark-s"
-	requires_power = 1
+	area_power_override = null
 	has_gravity = 0
 
 /area/shuttle/salamander_head
 	name = "\improper Salamander Head"
 	icon = 'icons/turf/areas_vr_talon.dmi'
 	icon_state = "dark-p"
-	requires_power = 1
+	area_power_override = null
 	has_gravity = 0
 
 /area/shuttle/salamander_wreck
 	name = "\improper Wrecked Salamander Cabin"
 	icon = 'icons/turf/areas_vr_talon.dmi'
 	icon_state = "gray"
-	requires_power = 1
+	area_power_override = null
 	has_gravity = 0
 
 /area/shuttle/salamander_wreck_engineering
 	name = "\improper Wrecked Salamander Engineering"
 	icon = 'icons/turf/areas_vr_talon.dmi'
 	icon_state = "yellow"
-	requires_power = 1
+	area_power_override = null
 	has_gravity = 0
 
 /area/shuttle/salamander_wreck_cockpit
 	name = "\improper Wrecked Salamander Cockpit"
 	icon = 'icons/turf/areas_vr_talon.dmi'
 	icon_state = "blue"
-	requires_power = 1
+	area_power_override = null
 	has_gravity = 0
 
 /area/shuttle/salamander_wreck_q1
 	name = "\improper Wrecked Salamander Quarters 1"
 	icon = 'icons/turf/areas_vr_talon.dmi'
 	icon_state = "gray-p"
-	requires_power = 1
+	area_power_override = null
 	has_gravity = 0
 
 /area/shuttle/salamander_wreck_q2
 	name = "\improper Wrecked Salamander Quarters 2"
 	icon = 'icons/turf/areas_vr_talon.dmi'
 	icon_state = "gray-p"
-	requires_power = 1
+	area_power_override = null
 	has_gravity = 0
 
 /area/shuttle/salamander_wreck_galley
 	name = "\improper Wrecked Salamander Galley"
 	icon = 'icons/turf/areas_vr_talon.dmi'
 	icon_state = "dark-s"
-	requires_power = 1
+	area_power_override = null
 	has_gravity = 0
 
 /area/shuttle/salamander_wreck_head
 	name = "\improper Wrecked Salamander Head"
 	icon = 'icons/turf/areas_vr_talon.dmi'
 	icon_state = "dark-p"
-	requires_power = 1
+	area_power_override = null
 	has_gravity = 0
 
 // The shuttle's 'shuttle' computer

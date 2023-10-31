@@ -83,7 +83,7 @@
 			var/area/A = get_area(chassis)
 			var/pow_chan = get_power_channel(A)
 			if(pow_chan)
-				A.master.use_power(amount*coeff, pow_chan)
+				A.master.use_burst_power(amount*coeff, pow_chan)
 				return 1
 		return chassis.dynusepower(amount)*/
 
@@ -111,5 +111,5 @@
 			if(pow_chan)
 				var/delta = min(12, ER.chassis.cell.maxcharge-cur_charge)
 				ER.chassis.give_power(delta)
-				A.use_power_oneoff(delta*ER.coeff, pow_chan)
+				A.use_burst_power(delta*ER.coeff, pow_chan)
 	return

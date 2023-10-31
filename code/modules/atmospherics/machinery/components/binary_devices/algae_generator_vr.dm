@@ -9,7 +9,7 @@
 	circuit = /obj/item/circuitboard/algae_farm
 	anchored = 1
 	density = 1
-	power_channel = EQUIP
+	power_channel = POWER_CHANNEL_EQUIP
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 100		// Minimal lights to keep algae alive
 	active_power_usage = 5000	// Powerful grow lights to stimulate oxygen production
@@ -88,7 +88,7 @@
 	if(network1)
 		network1.update = 1
 	if (power_draw > 0)
-		use_power(power_draw)
+		use_burst_power(power_draw)
 		last_power_draw_legacy += power_draw
 
 	// STEP 3 - Convert CO2 to O2  (Note: We know our internal group multipier is 1, so just be cool)
@@ -100,7 +100,7 @@
 
 	// STEP 4 - Consume the resources
 	var/converted_moles = min(co2_moles, moles_per_tick)
-	use_power(converted_moles * power_per_mole)
+	use_burst_power(converted_moles * power_per_mole)
 	last_power_draw_legacy += converted_moles * power_per_mole
 	stored_material[MATERIAL_ALGAE] -= converted_moles * algae_per_mole
 	stored_material[MATERIAL_CARBON] += converted_moles * carbon_per_mole
@@ -216,9 +216,9 @@
 	switch(action)
 		if("toggle")
 			if(use_power == USE_POWER_IDLE)
-				update_use_power(USE_POWER_ACTIVE)
+				set_use_power(USE_POWER_ACTIVE)
 			else
-				update_use_power(USE_POWER_IDLE)
+				set_use_power(USE_POWER_IDLE)
 			update_icon()
 			. = TRUE
 

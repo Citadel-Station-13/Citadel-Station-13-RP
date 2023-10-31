@@ -22,7 +22,6 @@
 
 /obj/machinery/power/quantumpad/Initialize(mapload)
 	. = ..()
-	connect_to_network()
 	if(map_pad_id)
 		mapped_quantum_pads[map_pad_id] = src
 
@@ -86,7 +85,7 @@
 		to_chat(user, "<span class='warning'>The panel must be closed before operating this machine!</span>")
 		return
 
-	if(!powernet)
+	if(!connection.is_connected())
 		to_chat(user, "<span class='warning'>[src] is not attached to a powernet!</span>")
 		return
 
@@ -146,7 +145,7 @@
 
 		// use a lot of power
 		var/power_to_use = 10 / power_efficiency
-		if((draw_power(power_to_use)) != power_to_use)
+		if((flat_draw(power_to_use)) != power_to_use)
 			to_chat(user, "<span class='warning'>Power is not sufficient to complete a teleport. Teleport aborted.</span>")
 			return
 

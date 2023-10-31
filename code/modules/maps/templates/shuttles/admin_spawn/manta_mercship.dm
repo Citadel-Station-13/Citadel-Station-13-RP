@@ -10,7 +10,7 @@
 /area/ship/manta
 	name = "\improper ERT Ship (Use a Subtype!)"
 	icon_state = "shuttle2"
-	requires_power = 1
+	area_power_override = null
 	dynamic_lighting = 1
 
 /area/ship/manta/engine
@@ -108,7 +108,7 @@
 /area/shuttle/manta_ship_boat
 	name = "\improper SAARE Lander"
 	icon_state = "syndie-ship"
-	requires_power = 0
+	area_power_override = TRUE
 
 // The 'shuttle' of the excursion shuttle
 // /datum/shuttle/autodock/overmap/manta_ship

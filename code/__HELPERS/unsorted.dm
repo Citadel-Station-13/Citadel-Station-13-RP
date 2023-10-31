@@ -728,6 +728,8 @@
 					if(T.z != X.z)
 						z_level_change = TRUE
 
+					#warn abstract move/moved/whatever has to be around to deal with rebuild of powernets.
+
 					//Move the objects. Not forceMove because the object isn't "moving" really, it's supposed to be on the "same" turf.
 					for(var/obj/O in T)
 						O.loc = X
@@ -1080,7 +1082,7 @@
  * TODO - Fix this ancient list of wall items. Preferably make it dynamically populated. ~Leshana
 */
 var/list/WALLITEMS = list(
-	/obj/machinery/power/apc, /obj/machinery/air_alarm, /obj/item/radio/intercom, /obj/structure/frame,
+	/obj/machinery/apc, /obj/machinery/air_alarm, /obj/item/radio/intercom, /obj/structure/frame,
 	/obj/structure/extinguisher_cabinet, /obj/structure/reagent_dispensers/peppertank,
 	/obj/machinery/status_display, /obj/machinery/requests_console, /obj/machinery/light_switch, /obj/structure/sign,
 	/obj/machinery/newscaster, /obj/machinery/firealarm, /obj/structure/noticeboard, /obj/machinery/button/remote,

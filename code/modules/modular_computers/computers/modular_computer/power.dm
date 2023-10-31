@@ -32,7 +32,7 @@
 		power_usage += tesla_link.passive_charging_rate
 		battery_module.battery.give(DYNAMIC_W_TO_CELL_UNITS(tesla_link.passive_charging_rate, 1))
 
-	A.use_power_oneoff(power_usage, EQUIP)
+	A.use_burst_power(power_usage, EQUIP)
 	return TRUE
 
 /// Handles power-related things, such as battery interaction, recharging, shutdown when it's discharged

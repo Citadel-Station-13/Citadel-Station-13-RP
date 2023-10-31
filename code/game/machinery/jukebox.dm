@@ -19,7 +19,7 @@
 	var/state_base = "jukebox2"
 	anchored = TRUE
 	density = TRUE
-	power_channel = EQUIP
+	power_channel = POWER_CHANNEL_EQUIP
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 100
@@ -326,7 +326,7 @@
 
 /obj/machinery/media/jukebox/proc/StopPlaying()
 	playing = FALSE
-	update_use_power(USE_POWER_IDLE)
+	set_use_power(USE_POWER_IDLE)
 	update_icon()
 	start_stop_song()
 
@@ -334,7 +334,7 @@
 	if(!current_track)
 		return
 	playing = TRUE
-	update_use_power(USE_POWER_ACTIVE)
+	set_use_power(USE_POWER_ACTIVE)
 	update_icon()
 	start_stop_song()
 	updateDialog()

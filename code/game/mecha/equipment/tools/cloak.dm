@@ -64,7 +64,7 @@
 		cloak.stop_cloak()
 		return
 	//Ran out of power
-	if(!cloak.chassis.use_power(cloak.energy_drain))
+	if(!cloak.chassis.use_burst_power(cloak.energy_drain))
 		stop()
 		cloak.stop_cloak()
 		return

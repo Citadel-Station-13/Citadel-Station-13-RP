@@ -322,7 +322,7 @@
 		processing = TRUE
 		update_appearance()
 		playsound(src.loc, 'sound/machines/blender.ogg', 40, TRUE)
-		use_power(S * 30)
+		use_burst_power(S * 30)
 		sleep((S + 15) / eat_eff)
 		processing = FALSE
 		SStgui.update_uis(src)

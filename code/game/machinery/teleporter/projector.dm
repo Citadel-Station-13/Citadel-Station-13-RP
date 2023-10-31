@@ -18,7 +18,7 @@
 	circuit = /obj/item/circuitboard/tele_projector
 
 	var/obj/machinery/tele_pad/pad
-	var/obj/machinery/power/terminal
+	var/obj/machinery/power/terminal/terminal
 	var/engaged = FALSE
 	var/building_terminal = FALSE 		//Suggestions about how to avoid clickspam building several terminals accepted!
 	var/power_capacity = 0
@@ -29,7 +29,6 @@
 /obj/machinery/tele_projector/Initialize(mapload)
 	. = ..()
 	update_appearance()
-
 
 	component_parts = list()
 	component_parts += new /obj/item/smes_coil(src)
@@ -50,9 +49,9 @@
 		return
 	if(current_joules == power_capacity)
 		return
-	if(terminal && terminal.powernet)
+	if(!isnull(terminal))
 		var/energy_buffer = 0
-		energy_buffer = terminal.draw_power(recharge_rate)
+		energy_buffer = terminal.dynamic_draw(recharge_rate, POWER_BALANCING_TIER_HIGH)
 		current_joules += KW_TO_KWM(energy_buffer, 1)
 		current_joules = clamp(current_joules, 0, power_capacity)
 
@@ -70,11 +69,8 @@
 		for(var/obj/machinery/power/terminal/term in T)
 			if(term && term.dir == turn(d, 180))
 				terminal = term
+				term.bind(src)
 				break
-	if(!terminal)
-		return
-	if(!terminal.powernet)
-		terminal.connect_to_network()
 
 /obj/machinery/tele_projector/update_icon()
 	cut_overlays()
@@ -173,9 +169,7 @@
 			return TRUE
 	to_chat(user, "<span class='notice'>You start adding cable to the [src].</span>")
 	if(do_after(user, 50))
-		terminal = new /obj/machinery/power/terminal(tempLoc)
-		terminal.setDir(tempDir)
-		terminal.connect_to_network()
+		terminal = new /obj/machinery/power/terminal(tempLoc, tempDir, src)
 		return FALSE
 	return TRUE
 
@@ -235,9 +229,9 @@
 	update_appearance()
 	if(pad)
 		pad.update_icon()
-		pad.update_use_power(USE_POWER_ACTIVE)
-		update_use_power(USE_POWER_ACTIVE)
-		use_power(5000)
+		pad.set_use_power(USE_POWER_ACTIVE)
+		set_use_power(USE_POWER_ACTIVE)
+		use_burst_power(5000)
 		for(var/mob/O in hearers(src, null))
 			O.show_message(SPAN_NOTICE("Teleporter engaged!"), 2)
 	add_fingerprint(usr)
@@ -251,8 +245,8 @@
 	update_appearance()
 	if(pad)
 		pad.update_icon()
-		pad.update_use_power(USE_POWER_IDLE)
-		update_use_power(USE_POWER_IDLE)
+		pad.set_use_power(USE_POWER_IDLE)
+		set_use_power(USE_POWER_IDLE)
 		for(var/mob/O in hearers(src, null))
 			O.show_message(SPAN_NOTICE("Teleporter disengaged!"), 2)
 	add_fingerprint(usr)
@@ -285,14 +279,14 @@
 			visible_message(SPAN_WARNING("The lights flicker and many devices freeze and reboot as the teleporter punches a hole through space-time."),range=10)
 		if(2)
 			visible_message(SPAN_WARNING("The local APC forcibly shuts down from overload, the lights breaking, as the teleporter punches a hole through space-time."),range=10)
-			var/obj/machinery/power/apc/P = get_area(src).get_apc()
+			var/obj/machinery/apc/P = get_area(src).get_apc()
 			P.energy_fail(rand(30,90))
 			P.overload_lighting(35)
-			for(var/obj/machinery/power/apc/A in P.terminal?.powernet?.nodes)
+			for(var/obj/machinery/apc/A in P.terminal.directly_connected_hosts())
 				P.overload(src)
 		if(3)
 			visible_message(SPAN_WARNING("The local APC overloads as massive current spike is sent into the powernet as the teleporter punches a hole through space-time; moments later, the station is eerily quiet."),range=10)
-			var/obj/machinery/power/apc/P = get_area(src).get_apc()
+			var/obj/machinery/apc/P = get_area(src).get_apc()
 			P.overload_lighting(100)
 			for(var/obj/machinery/power/grid_checker/G in GLOB.machines)
 				if(G.z in (LEGACY_MAP_DATUM))

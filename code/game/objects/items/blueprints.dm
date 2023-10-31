@@ -151,14 +151,10 @@
 		return
 	var/area/A = new
 	A.name = str
-	A.power_equip = 0
-	A.power_light = 0
-	A.power_environ = 0
-	A.always_unpowered = 0
+	A.power_channels = NONE
+	A.area_power_override = null
 	move_turfs_to_area(turfs, A)
 	A.addSorted()
-
-	A.always_unpowered = 0
 
 	spawn(5)
 		interact()
@@ -197,10 +193,7 @@
 	return
 
 /obj/item/blueprints/proc/move_turfs_to_area(var/list/turf/turfs, var/area/A)
-	A.contents.Add(turfs)
-		//oldarea.contents.Remove(usr.loc) // not needed
-		//T.loc = A //error: cannot change constant value
-
+	A.take_turfs(turfs)
 
 /obj/item/blueprints/proc/edit_area()
 	var/area/A = get_area()
@@ -225,7 +218,7 @@
 
 	for(var/obj/machinery/air_alarm/M in A)
 		M.name = replacetext(M.name,oldtitle,title)
-	for(var/obj/machinery/power/apc/M in A)
+	for(var/obj/machinery/apc/M in A)
 		M.name = replacetext(M.name,oldtitle,title)
 	for(var/obj/machinery/atmospherics/component/unary/vent_scrubber/M in A)
 		M.name = replacetext(M.name,oldtitle,title)

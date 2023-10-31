@@ -13,7 +13,7 @@ Pipelines + Other Objects -> Pipe network
 	anchored = TRUE
 	idle_power_usage = 0
 	active_power_usage = 0
-	power_channel = ENVIRON
+	power_channel = POWER_CHANNEL_ENVIR
 	plane = TURF_PLANE
 	layer = EXPOSED_PIPE_LAYER
 	obj_flags = CAN_BE_HIT | ON_BLUEPRINTS

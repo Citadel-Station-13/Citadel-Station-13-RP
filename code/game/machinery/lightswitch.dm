@@ -9,7 +9,7 @@
 	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
-	power_channel = LIGHT
+	power_channel = POWER_CHANNEL_LIGHT
 	zmm_flags = ZMM_MANGLE_PLANES
 
 	var/on = TRUE
@@ -68,7 +68,7 @@
 
 /obj/machinery/light_switch/power_change()
 	if(!otherarea)
-		if(powered(LIGHT))
+		if(powered(POWER_CHANNEL_LIGHT))
 			machine_stat &= ~NOPOWER
 		else
 			machine_stat |= NOPOWER

@@ -39,7 +39,7 @@
 	desc = "An advanced ion propulsion device, using energy and minutes amount of gas to generate thrust."
 	icon = 'icons/turf/shuttle_parts.dmi'
 	icon_state = "nozzle"
-	power_channel = ENVIRON
+	power_channel = POWER_CHANNEL_ENVIR
 	idle_power_usage = 100
 	anchored = TRUE
 
@@ -79,7 +79,7 @@
 /obj/machinery/ion_engine/proc/burn()
 	if(!on && !powered())
 		return 0
-	use_power_oneoff(burn_cost)
+	use_burst_power(burn_cost)
 	. = thrust_limit * generated_thrust
 
 /obj/machinery/ion_engine/proc/get_thrust()

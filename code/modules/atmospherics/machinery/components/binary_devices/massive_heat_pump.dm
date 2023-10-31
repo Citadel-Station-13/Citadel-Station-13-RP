@@ -26,14 +26,15 @@
 	var/power_level = MAX_POWER_FOR_MASSIVE//So we can limit the power we work with and
 	//dont just have a stupid pump that drains all power
 
-	var/obj/machinery/power/powersupply/power_machine //for funky massive power machines
+	var/datum/wirenet_connection/power/powernet_connection
+
 	//if its not null the machine attempts to draw from the grid the power machinery is connected to
 	//see examples in the file "code\modules\atmospherics\components\binary_devices\massive_heat_pump.dm"
 	var/efficiency = 0
 
 /obj/machinery/atmospherics/component/binary/massive_heat_pump/Initialize(mapload)
 	. = ..()
-	power_machine = new(src)
+	powernet_connection = new /datum/wirenet_connection/power/lazy(src)
 
 	on_construction("#000", PIPING_LAYER_DEFAULT)
 	air1.volume = ATMOS_DEFAULT_VOLUME_PUMP * 50//give it a much larger volume
@@ -51,10 +52,6 @@
 	overlays_to_add += I
 	add_overlay(overlays_to_add)
 
-/obj/machinery/atmospherics/component/binary/massive_heat_pump/Destroy()
-	. = ..()
-	qdel(power_machine)
-
 /obj/machinery/atmospherics/component/binary/massive_heat_pump/process(delta_time)
 	if(!network1 || !network2)
 		build_network()//built networks if we are missing them
@@ -64,11 +61,10 @@
 	if((machine_stat & (NOPOWER|BROKEN)) || !use_power)
 		return
 
-	if(!power_machine || !power_machine.powernet)
-		if(!power_machine || !power_machine.connect_to_network())//returns 0 if it fails to find a
-			return//make sure we are connected to a powernet
+	if(!powernet_connection.is_connected())
+		return//make sure we are connected to a powernet
 
-	power_rating = power_machine.surplus() * 1000 //update power rateing to what ever is avaiable
+	power_rating = powernet_connection.last_excess() * 1000 //update power rateing to what ever is avaiable
 	power_rating = clamp(power_rating, 0, power_level)
 
 	if(power_rating <= 0)
@@ -95,7 +91,7 @@
 	if (power_draw >= 0)
 		last_power_draw_legacy = power_draw
 
-		power_machine.draw_power(power_draw * 0.001)
+		powernet_connection.flat_draw(power_draw * 0.001)
 		if(network1)
 			network1.update = 1
 
@@ -142,7 +138,7 @@
 		return
 
 /obj/machinery/atmospherics/component/binary/massive_heat_pump/update_icon()
-	if(inoperable() || !anchored || !power_machine.powernet)
+	if(inoperable() || !anchored || !powernet_connection.network)
 		icon_state = "pump"
 	else if(use_power)
 		switch(last_power_draw_legacy)
@@ -198,7 +194,7 @@
 
 	switch(action)
 		if("power")
-			update_use_power(!use_power)
+			legacy_toggle_use_power()
 			. = TRUE
 		if("set_temp")
 			var/temp = params["temp"]

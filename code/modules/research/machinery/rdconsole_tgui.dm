@@ -450,7 +450,7 @@
 								qdel(I)
 								linked_destroy.icon_state = "d_analyzer"
 
-					use_power(linked_destroy.active_power_usage)
+					use_burst_power(linked_destroy.active_power_usage)
 					files.RefreshResearch()
 					update_static_data(usr, ui)
 			return TRUE

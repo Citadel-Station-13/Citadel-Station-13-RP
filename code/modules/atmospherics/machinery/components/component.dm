@@ -57,9 +57,9 @@
 /obj/machinery/atmospherics/component/proc/set_on(enabled)
 	on = enabled
 	if(enabled)
-		update_use_power(USE_POWER_IDLE)
+		set_use_power(USE_POWER_IDLE)
 	else
-		update_use_power(USE_POWER_OFF)
+		set_use_power(USE_POWER_OFF)
 	update_icon()
 
 /obj/machinery/atmospherics/component/process(delta_time)

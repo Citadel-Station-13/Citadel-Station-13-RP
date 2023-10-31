@@ -34,7 +34,7 @@
 
 // Pirate Skiff
 /area/shuttle/pirate
-	requires_power = TRUE
+	area_power_override = null
 	name = "\improper Pirate Skiff"
 	icon_state = "shuttle1"
 
