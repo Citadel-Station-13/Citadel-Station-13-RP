@@ -19,6 +19,8 @@ SUBSYSTEM_DEF(television)
 
 	//current show or ad played in channel
 	var/list/channel_current_shows = list()
+	//current language played in channel line
+	var/list/channel_current_language = list()
 	//last show played in channel
 	var/list/channel_previous_shows = list()
 	//last ad played in channel
@@ -43,7 +45,7 @@ SUBSYSTEM_DEF(television)
 /datum/controller/subsystem/television/Initialize(timeofday)
 	channels = flist("strings/television/shows/")
 	for (var/e in channels)
-		TO_WORLD("DEFCHANNELS + " + e)
+		//TO_WORLD("DEFCHANNELS + " + e)
 	possible_shows = channels
 	//2d list pairing a list of shows to a channel name.
 	for (var/c in channels)
@@ -73,7 +75,7 @@ SUBSYSTEM_DEF(television)
 				var/list/current_show = channel_current_shows[channel]
 				var/i = channel_current_line[channel]
 				//cannot read from list
-				broadcastLine(current_show[i], channel)
+				broadcastLine(current_show[i], channel, channel_current_language[channel][i])
 				if (channel_current_line[channel] == channel_show_length[channel])
 					var/state = channel_current_state[channel]
 					switch (state)
@@ -104,47 +106,140 @@ SUBSYSTEM_DEF(television)
 					if (CHANSTATE_AD2)
 						channel_current_state[channel] = CHANSTATE_AD2AIR
 
-///To deliver lines to TVs.
-/datum/controller/subsystem/television/proc/broadcastLine(line, channel)
-	//loop through global_TVs and send to tv procs.
+///Takes a string and a channel, calls receiveLines on all TVs in that channel with that line.
+/datum/controller/subsystem/television/proc/broadcastLine(line, channel, language)
 	for (var/obj/machinery/computer/television/tv in all_tvs)
 		if (all_tvs[tv] == channel)
-			tv.receiveLines(line)
+			tv.receiveLines(line, language)
 
+//Sets previous show/ads to current show/ad and resets linecount, language, and show lines.
 /datum/controller/subsystem/television/proc/reset_channel(channel)
 	switch (channel_current_state[channel])
 		if (CHANSTATE_SHOW1AIR)
 			channel_previous_shows[channel] = channel_current_shows[channel]
 			channel_current_shows[channel] = null
+			channel_current_language[channel] = null
 		else
 			channel_previous_ads[channel] = channel_current_shows[channel]
 			channel_current_shows[channel] = null
+			channel_current_language[channel] = null
 	channel_current_line[channel] = 1
 
+//Takes a channel and the filepath to a script. Processes the script to a list of strings.
 /datum/controller/subsystem/television/proc/prepare_show(channel, prepared_text)
+	//Decode prepared_text filepath to something byond can read
 	var/list/decoded_show = json_decode(prepared_text)
-	var/default_language = "Common"
+	//The language the interpreter will write this if no "language" json is found.
+	var/default_language = "COMMON"
+	//Temp holder for script language
 	var/current_language = ""
+	//Set the name of the show for the channel
 	channel_show_name[channel] = decoded_show["name"]
+	//If the script uses an alternate default_language set it now. This can only be set once at the start.
 	default_language = decoded_show["default_language"]
+	//Line counter
 	var/lines_total = 0
+	//This variable is where the finished lines will be put.
 	var/prepared_script_text = list()
+	//This variable is where the language for each line will go.
+	var/prepared_script_language = list()
+
+	//Go through the decoded json line by line and make two lists of strings. One of show lines and one of the language key for that line.
+	//Also counts the total lines for the show and sets that.
 	for (var/list/line in decoded_show["lines"])
 		current_language = line["language"]
 		for (var/line_text in line["text"])
 			if (current_language != null)
-				prepared_script_text += ("[current_language]--[line_text]")
+				prepared_script_text += "[line_text]"
+				prepared_script_language += decodeTVLanguageKey(current_language)
 			else
-				//index out of bounds
-				prepared_script_text += ("[default_language]--[line_text]")
+				prepared_script_text += "[line_text]"
+				prepared_script_language += decodeTVLanguageKey(default_language)
 			lines_total += 1
 		current_language = ""
+	//Total lines in the script
 	channel_show_length[channel] = lines_total
-	channel_current_shows[channel] = null
+	//List of script lines
 	channel_current_shows[channel] = prepared_script_text
-
-
+	//List of language keys
+	channel_current_language[channel] = prepared_script_language
 
 ///For TV's to call on initialization.
 /datum/controller/subsystem/television/proc/getChannels()
 	return channels
+
+//Call to decode language keys. Takes a string e.g COMMON and returns the relevant language datum path
+/datum/controller/subsystem/television/proc/decodeTVLanguageKey(key)
+	switch (key)
+		if("ADHERANT")
+			return /datum/language/adherent
+		if("AKULA")
+			return /datum/language/akula
+		if("VERNAL")
+			return /datum/language/vernal
+		if("BIRDSONG")
+			return /datum/language/birdsong
+		if("DEMON")
+			return /datum/language/demon
+		if("ANGEL")
+			return /datum/language/angel
+		if("DIONA")
+			return /datum/language/diona_local
+		if("SOL_COMMON")
+			return /datum/language/human
+		if("SLAVIC")
+			return /datum/language/slavic
+		if("KEISANI")
+			return /datum/language/species/keisani
+		if("KRISITIK")
+			return /datum/language/squeakish
+		if("LUINIMMA")
+			return /datum/language/species/moth
+		if("NARAMADI")
+			return /datum/language/sergal
+		if("PHORONOID")
+			return /datum/language/bones
+		if("PROMETHEAN")
+			return /datum/language/promethean
+		if("SCORI")
+			return /datum/language/scori
+		if("SHADEKIN")
+			return /datum/language/shadekin
+		if("SKRELL")
+			return /datum/language/skrell
+		if("SKRELLFAR")
+			return /datum/language/skrellfar
+		if("AKHANI")
+			return /datum/language/tajaran
+		if("TAJARAN")
+			return /datum/language/tajaranakhani
+		if("TAJSIGN")
+			return /datum/language/tajsign
+		if("SCHECHI")
+			return /datum/language/teshari
+		if("UNATHI")
+			return /datum/language/unathi
+		if("VASILISSAN")
+			return /datum/language/bug
+		if("VOX")
+			return /datum/language/vox
+		if("VULPKANIN")
+			return /datum/language/vulpkanin
+		if("ZADDAT")
+			return /datum/language/zaddat
+		if("TERMINUS")
+			return /datum/language/terminus
+		if("GIBBERISH")
+			return /datum/language/gibberish
+		if("COMMON")
+			return /datum/language/common
+		if("MACHINE")
+			return /datum/language/machine
+		if("SIGN")
+			return /datum/language/sign
+		if("GUTTER")
+			return /datum/language/gutter
+	//You used a bad language key. mrrp mrrp mrow
+	TO_WORLD("TV: AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH")
+	return /datum/language/cat
+

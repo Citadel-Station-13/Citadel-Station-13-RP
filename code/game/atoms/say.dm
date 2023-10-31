@@ -9,7 +9,7 @@
 	var/no_runechat = FALSE
 	for(var/mob/M in get_hearers_in_view(MESSAGE_RANGE_COMBAT_LOUD, src))
 		var/processed = message
-		if(L && !(L.name in M.languages))
+		if(L && !(L in M.languages))
 			processed = L.scramble(message)
 			no_runechat = TRUE
 		M.show_message("<span class='game say'><span class='name'>[src]</span> [L?.speech_verb || atom_say_verb], \"[processed]\"</span>", 2, null, 1)

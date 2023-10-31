@@ -19,8 +19,6 @@
 	SStelevision.all_tvs -= src
 	return ..()
 
-/obj/machinery/computer/television/proc/receiveLines(line)
-	//TO_WORLD(line)
-	atom_say(line, LANGUAGE_ID_DOG)
-
-//lines = default_language + "--" + line_text
+/obj/machinery/computer/television/proc/receiveLines(line, language)
+	atom_say(line, SScharacters.resolve_language_path(language))
+	//atom_say(line, SScharacters.resolve_language_path(/datum/language/tajaran))

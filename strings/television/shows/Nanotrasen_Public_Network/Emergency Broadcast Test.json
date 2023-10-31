@@ -1,6 +1,6 @@
 {
 	"name": "Emergency Broadcast Test",
-	"default_language":"common",
+	"default_language":"COMMON",
 	"lines": [
 	  {
 		"text": [
@@ -14,7 +14,7 @@
 	  	]
 	  },
 	  {
-		"language":"tajaran",
+		"language":"TAJARAN",
 		"text": [
 		  "*BEEEEEEEEEEEEEEEEEEEEEP*",
 		  "THIS IS A TEST",
