@@ -1,11 +1,30 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
+/**
+ * Like components, but for materials.
+ */
 /datum/material_trait
 	/// trait flags: what we care about
 	var/material_trait_flags = NONE
 	/// only register for a material that's primary
 	var/primary_only = FALSE
+	/// our shieldcall, if any
+	var/datum/shieldcall/material_trait/shieldcall
+	/// shieldcall should react to equipped
+	var/should_shield_inventory = TRUE
+
+/datum/material_trait/New()
+	if(material_trait_flags & MATERIAL_TRAIT_SHIELD)
+		init_shieldcall(should_shield_inventory)
+
+/**
+ * creates a shieldcall datum that redirects to us
+ */
+/datum/material_trait/proc/init_shieldcall(should_shield_inventory)
+	if(!isnull(shieldcall))
+		CRASH("attempted to double-init shieldcalls")
+	shieldcall = new(src, should_shield_inventory)
 
 /**
  * called when something with this material attacks a mob
@@ -39,6 +58,14 @@
 /**
  * called when an atom with this material has its shieldcalls invoked
  *
+ * The way this works is you need to register this trait's shieldcall,
+ * which is generated on New() if MATERIAL_TRAIT_SHIELD is set in flags,
+ * on atoms via [on_add()] and [on_remove()].
+ *
+ * The shieldcall will react to inventory if [should_should_inventroy] is set.
+ *
+ * todo: the way this works is a bit inefficient.
+ *
  * @params
  * * host - the atom calling that has us as a material
  * * data - metadata
@@ -46,8 +73,6 @@
  */
 /datum/material_trait/proc/on_shieldcall(atom/host, data, list/shieldcall_args)
 	return
-
-#warn mob shieldcall?
 
 /**
  * called when examined
@@ -114,3 +139,17 @@
 	--target.material_ticking_counter
 	if(!target.material_ticking_counter)
 		STOP_TICKING_MATERIALS(target)
+
+/**
+ * material trait shieldcalls
+ */
+/datum/shieldcall/material_trait
+	var/datum/material_trait/trait
+
+/datum/shieldcall/material_trait/New(datum/material_trait/trait, should_shield_inventory)
+	..()
+	src.trait = trait
+	src.shields_in_inventory = should_shield_inventory
+
+/datum/shieldcall/material_trait/handle_shieldcall(atom/defending, list/shieldcall_args)
+	return trait.on_shieldcall(defending, defending.material_traits[trait], shieldcall_args)

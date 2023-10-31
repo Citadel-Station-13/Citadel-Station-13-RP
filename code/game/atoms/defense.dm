@@ -531,7 +531,6 @@
  * @return modified args as list
  */
 /atom/proc/atom_shieldcall(damage, damtype, tier, flag, mode, attack_type, datum/weapon, list/additional = list(), retval = NONE)
-	MATERIAL_INVOKE(src, MATERIAL_TRAIT_SHIELD, on_shieldcall, args)
 	for(var/datum/shieldcall/calling as anything in shieldcalls)
 		calling.handle_shieldcall(src, args)
 	return args.Copy()
