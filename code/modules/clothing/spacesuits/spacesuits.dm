@@ -7,7 +7,7 @@
 	icon_state = "space"
 	desc = "A special helmet designed for work in a hazardous, low-pressure environment."
 	atom_flags = PHORONGUARD
-	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT | ALLOWINTERNALS | ALLOW_SURVIVALFOOD
+	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT | CLOTHING_INJECTION_PORT | ALLOWINTERNALS | ALLOW_SURVIVALFOOD
 	permeability_coefficient = 0.01
 	armor_type = /datum/armor/general/space
 	inv_hide_flags = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
@@ -23,7 +23,7 @@
 	valid_accessory_slots = null
 	weight = ITEM_WEIGHT_SOFTSUIT_HELMET
 	encumbrance = ITEM_ENCUMBRANCE_SOFTSUIT_HELMET
-	
+
 	var/obj/machinery/camera/camera
 	var/list/camera_networks
 
@@ -72,7 +72,7 @@
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.02
 	atom_flags = PHORONGUARD
-	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT
+	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT | CLOTHING_INJECTION_PORT
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	allowed = list(/obj/item/flashlight,/obj/item/tank/emergency/oxygen,/obj/item/suit_cooling_unit)
 	armor_type = /datum/armor/general/space

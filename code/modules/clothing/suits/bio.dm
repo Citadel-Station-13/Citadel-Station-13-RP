@@ -9,7 +9,7 @@
 	body_cover_flags = HEAD|FACE|EYES
 	siemens_coefficient = 0.9
 	atom_flags = PHORONGUARD
-	clothing_flags = CLOTHING_THICK_MATERIAL | ALLOW_SURVIVALFOOD
+	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT | ALLOW_SURVIVALFOOD
 	encumbrance
 
 /obj/item/clothing/suit/bio_suit
@@ -26,7 +26,7 @@
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
 	siemens_coefficient = 0.9
 	atom_flags = PHORONGUARD
-	clothing_flags = CLOTHING_THICK_MATERIAL
+	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT
 
 //Standard biosuit, orange stripe
 /obj/item/clothing/head/bio_hood/general
@@ -104,7 +104,7 @@
 	body_cover_flags = HEAD|FACE|EYES
 	siemens_coefficient = 0.9
 	atom_flags = PHORONGUARD
-	clothing_flags = CLOTHING_THICK_MATERIAL | ALLOW_SURVIVALFOOD
+	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT | ALLOW_SURVIVALFOOD
 
 /obj/item/clothing/suit/beekeeper
 	name = "beekeeping suit"
@@ -120,4 +120,4 @@
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
 	siemens_coefficient = 0.9
 	atom_flags = PHORONGUARD
-	clothing_flags = CLOTHING_THICK_MATERIAL
+	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT
