@@ -6781,7 +6781,7 @@ END CITADEL CHANGE */
 // Packaged Snack Foods Below
 // Wrapped
 
-/obj/item/reagent_containers/food/snacks/wrapped/candy // Buff 4 >> 8
+/obj/item/reagent_containers/food/snacks/wrapped // Buff 4 >> 8
 	name = "ABSTRACT"
 	desc = "You shouldn't be seeing this. Contact an admin!"
 	sealed = TRUE
