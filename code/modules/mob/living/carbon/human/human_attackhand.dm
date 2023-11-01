@@ -115,8 +115,8 @@
 				attack_generic(H,rand(1,3),"punched")
 				return
 
-			#warn get rid of old rand damage and do unarmed attack stuff
-			var/rand_damage = rand(1, 5)
+			// var/rand_damage = rand(1, 5)
+			var/rand_damage = 0
 			var/block = 0
 			var/accurate = 0
 			var/hit_zone = H.zone_sel.selecting
@@ -129,20 +129,19 @@
 			switch(src.a_intent)
 				if(INTENT_HELP)
 					// We didn't see this coming, so we get the full blow
-					rand_damage = 5
+					// rand_damage = 5
 					accurate = 1
 				if(INTENT_HARM, INTENT_GRAB)
 					// We're in a fighting stance, there's a chance we block
 					if(CHECK_MOBILITY(src, MOBILITY_CAN_MOVE) && src!=H && prob(20))
 						block = 1
 
-			if (L.grabbed_by.len)
+			// if (L.grabbed_by.len)
 				// Someone got a good grip on them, they won't be able to do much damage
-				rand_damage = max(1, rand_damage - 2)
+				// rand_damage = max(1, rand_damage - 2)
 
 			if(src.grabbed_by.len || src.buckled || !CHECK_MOBILITY(src, MOBILITY_CAN_MOVE) || src==H)
 				accurate = 1 // certain circumstances make it impossible for us to evade punches
-				rand_damage = 5
 
 			// Process evasion and blocking
 			var/miss_type = 0
