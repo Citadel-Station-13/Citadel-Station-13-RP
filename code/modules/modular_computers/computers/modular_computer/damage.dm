@@ -5,7 +5,7 @@
 	else if(damage)
 		. += "It is damaged."
 
-/obj/item/modular_computer/proc/break_apart()
+/obj/item/modular_computer/proc/legacy_break_apart()
 	visible_message("\The [src] breaks apart!")
 	var/turf/newloc = get_turf(src)
 	new /obj/item/stack/material/steel(newloc, round(steel_sheet_cost/2))
@@ -31,7 +31,7 @@
 				H.take_damage_legacy(round(amount / 2))
 
 	if(damage >= max_damage)
-		break_apart()
+		legacy_break_apart()
 
 /**
  * Stronger explosions cause serious damage to internal components

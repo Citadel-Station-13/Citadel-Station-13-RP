@@ -16,7 +16,7 @@
 /obj/structure/table/marble
 	icon_state = "stone_preview"
 	color = "#CCCCCC"
-	material_base = /datum/material/sandstone/marble
+	material_base = /datum/material/marble
 	material_reinforcing = null
 
 /obj/structure/table/reinforced
@@ -135,10 +135,6 @@
 	remove_obj_verb(src, /obj/structure/table/proc/do_put)
 	return ..()
 
-/obj/structure/table/alien/dismantle(obj/item/tool/wrench/W, mob/user)
-	to_chat(user, "<span class='warning'>You cannot dismantle \the [src].</span>")
-	return
-
 /obj/structure/table/bananium
 	icon_state = "plain_preview"
 	color = "#d6c100"
@@ -192,7 +188,7 @@
 	icon_state = "stone_preview"
 	color = "#CCCCCC"
 
-	material_base = /datum/material/sandstone/marble
+	material_base = /datum/material/marble
 	material_reinforcing = null
 
 /obj/structure/table/bench/wooden

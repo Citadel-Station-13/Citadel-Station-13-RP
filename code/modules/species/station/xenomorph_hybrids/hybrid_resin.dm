@@ -165,7 +165,7 @@
 	desc = "Purple slime just thin enough to let light pass through."
 	icon_state = "resinmembrane"
 	opacity = 0
-	intercom_range_display_status = 120
+	integrity = 120
 	integrity_max = 120
 
 /obj/structure/alien/hybrid_resin/Initialize(mapload)

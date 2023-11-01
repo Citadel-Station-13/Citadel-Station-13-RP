@@ -16,13 +16,12 @@
 		set_primary_material(SSmaterials.resolve_material(material_like))
 	return ..()
 
-/obj/structure/barricade/update_primary_material(datum/material/material)
+/obj/structure/barricade/update_material_single(datum/material/material)
+	. = ..()
 	name = "[material.display_name] barricade"
 	desc = "This space is blocked off by a barricade made of [material.display_name]."
 	color = material.icon_colour
-	var/initial_max_integrity = initial(integrity_max)
-	var/ratio = initial_max_integrity / integrity_max
-	set_full_integrity(integrity * ratio, initial_max_integrity * material.relative_integrity)
+	set_multiplied_integrity(material.relative_integrity)
 
 /obj/structure/barricade/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 	if(user.a_intent == INTENT_HARM)

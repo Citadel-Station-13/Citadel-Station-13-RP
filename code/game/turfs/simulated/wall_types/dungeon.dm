@@ -10,6 +10,7 @@
 	desc = "This rock seems dense, impossible to drill."
 	description_info = "Probably not going to be able to drill or bomb your way through this, best to try and find a way around."
 	icon = 'icons/turf/walls/rock.dmi'
+	material_outer = /datum/material/alienalloy/dungeonium
 	block_tele = TRUE
 
 	var/rock_side_icon_state = "rock_side"
@@ -37,10 +38,4 @@
 		. += appearance
 
 /turf/simulated/wall/solidrock/attackby()
-	return
-
-/turf/simulated/wall/solidrock/legacy_ex_act()
-	return
-
-/turf/simulated/wall/solidrock/take_damage_legacy()	//These things are suppose to be unbreakable
 	return

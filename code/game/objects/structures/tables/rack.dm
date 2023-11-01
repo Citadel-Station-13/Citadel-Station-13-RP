@@ -7,6 +7,7 @@
 	icon_state = "rack"
 	can_plate = 0
 	can_reinforce = 0
+	can_deconstruct = FALSE
 	flipped = -1
 	item_pixel_place = FALSE
 
@@ -24,7 +25,3 @@
 /obj/structure/table/rack/update_icon()
 	if(!isnull(material_base))
 		color = material_base.icon_colour
-
-/obj/structure/table/rack/holorack/dismantle(obj/item/tool/wrench/W, mob/user)
-	to_chat(user, "<span class='warning'>You cannot dismantle \the [src].</span>")
-	return

@@ -95,9 +95,6 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 		LAZYREMOVE(A.all_doors, src)
 	return ..()
 
-/obj/machinery/door/firedoor/get_material()
-	return get_material_by_name(MAT_STEEL)
-
 /obj/machinery/door/firedoor/examine(mob/user, dist)
 	. = ..()
 	if(!density)

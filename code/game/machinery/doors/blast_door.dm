@@ -44,9 +44,6 @@
 	. = ..()
 	implicit_material = get_material_by_name("plasteel")
 
-/obj/machinery/door/blast/get_material()
-	return implicit_material
-
 // Proc: Bumped()
 // Parameters: 1 (AM - Atom that tried to walk through this object)
 // Description: If we are open returns zero, otherwise returns result of parent function.

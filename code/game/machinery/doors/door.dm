@@ -6,7 +6,7 @@
 	desc = "It opens and closes."
 	icon = 'icons/obj/doors/Doorint.dmi'
 	icon_state = "door1"
-	armor_type = /datum/armor/object/airlock
+	armor_type = /datum/armor/door
 	anchored = TRUE
 	opacity = TRUE
 	density = TRUE
