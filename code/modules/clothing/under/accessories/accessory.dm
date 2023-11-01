@@ -456,7 +456,7 @@
 	color = material.icon_colour
 
 /obj/item/clothing/accessory/bracelet/material/wood
-	material_parts = /datum/material/wood
+	material_parts = /datum/material/wood_plank
 
 /obj/item/clothing/accessory/bracelet/material/plastic
 	material_parts = /datum/material/plastic

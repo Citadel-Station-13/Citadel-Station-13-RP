@@ -27,7 +27,7 @@
 
 /obj/item/stack/material/cyborg/wood
 	icon_state = "sheet-wood"
-	material = /datum/material/wood
+	material = /datum/material/wood_plank
 
 /obj/item/stack/material/cyborg/glass
 	icon_state = "sheet-glass"

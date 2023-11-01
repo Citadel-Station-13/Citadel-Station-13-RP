@@ -2,18 +2,8 @@
 
 /turf/simulated/wall/dungeon
 	block_tele = TRUE // Anti-cheese.
-
-/turf/simulated/wall/dungeon
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 	material_outer = /datum/material/alienalloy/dungeonium
-
-/turf/simulated/wall/dungeon/attackby()
-	return
-
-/turf/simulated/wall/dungeon/legacy_ex_act()
-	return
-
-/turf/simulated/wall/dungeon/take_damage_legacy()	//These things are suppose to be unbreakable
-	return
 
 /turf/simulated/wall/solidrock //for more stylish anti-cheese.
 	name = "solid rock"

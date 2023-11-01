@@ -6,7 +6,7 @@
 	throw_force = 7
 	attack_verb = list("smashed", "beaten", "slammed", "smacked", "struck", "battered", "bonked")
 	attack_sound = 'sound/weapons/genhit3.ogg'
-	material_parts = /datum/material/wood
+	material_parts = /datum/material/wood_plank
 	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_MEDIUM
 	slot_flags = SLOT_BACK
 

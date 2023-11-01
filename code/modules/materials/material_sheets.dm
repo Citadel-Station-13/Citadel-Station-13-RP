@@ -337,7 +337,7 @@
 /obj/item/stack/material/wood
 	name = "wooden plank"
 	icon_state = "sheet-wood"
-	material = /datum/material/wood
+	material = /datum/material/wood_plank
 	strict_color_stacking = TRUE
 	drop_sound = 'sound/items/drop/wooden.ogg'
 	pickup_sound = 'sound/items/pickup/wooden.ogg'
@@ -345,18 +345,18 @@
 /obj/item/stack/material/wood/sif
 	name = "alien wooden plank"
 	color = "#0099cc"
-	material = /datum/material/wood/sif
+	material = /datum/material/wood_plank/sif
 
 /obj/item/stack/material/wood/hard
 	name = "hardwood plank"
 	color = "#42291a"
-	material = /datum/material/wood/hardwood
+	material = /datum/material/wood_plank/hardwood
 	description_info = "Rich, lustrous hardwood, imported from offworld at moderate expense. Mostly used for luxurious furniture, and not very good for weapons or other structures."
 
 /obj/item/stack/material/log
 	name = "log"
 	icon_state = "sheet-log"
-	material = /datum/material/wood/log
+	material = /datum/material/wood_log
 	no_variants = FALSE
 	color = "#824B28"
 	max_amount = 25
@@ -368,13 +368,13 @@
 
 /obj/item/stack/material/log/sif
 	name = "alien log"
-	material = /datum/material/wood/log/sif
+	material = /datum/material/wood_log/sif
 	color = "#0099cc"
 	plank_type = /obj/item/stack/material/wood/sif
 
 /obj/item/stack/material/log/hard
 	name = "hardwood log"
-	material = /datum/material/wood/log/hard
+	material = /datum/material/wood_log/hard
 	color = "#6f432a"
 	plank_type = /obj/item/stack/material/wood/hard
 

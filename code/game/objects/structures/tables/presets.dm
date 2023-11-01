@@ -38,7 +38,7 @@
 	smoothing_groups = (SMOOTH_GROUP_WOOD_TABLES) //Don't smooth with SMOOTH_GROUP_TABLES
 	canSmoothWith = (SMOOTH_GROUP_WOOD_TABLES)
 
-	material_base = /datum/material/wood
+	material_base = /datum/material/wood_plank
 	material_reinforcing = /datum/material/steel
 
 /obj/structure/table/woodentable
@@ -48,7 +48,7 @@
 	smoothing_groups = (SMOOTH_GROUP_WOOD_TABLES) //Don't smooth with SMOOTH_GROUP_TABLES
 	canSmoothWith = (SMOOTH_GROUP_WOOD_TABLES)
 
-	material_base = /datum/material/wood
+	material_base = /datum/material/wood_plank
 	material_reinforcing = null
 
 /obj/structure/table/sifwoodentable
@@ -58,7 +58,7 @@
 	smoothing_groups = (SMOOTH_GROUP_WOOD_TABLES) //Don't smooth with SMOOTH_GROUP_TABLES
 	canSmoothWith = (SMOOTH_GROUP_WOOD_TABLES)
 
-	material_base = /datum/material/wood/sif
+	material_base = /datum/material/wood_plank/sif
 	material_reinforcing = null
 
 /obj/structure/table/sifwooden_reinforced
@@ -68,7 +68,7 @@
 	smoothing_groups = (SMOOTH_GROUP_WOOD_TABLES) //Don't smooth with SMOOTH_GROUP_TABLES
 	canSmoothWith = (SMOOTH_GROUP_WOOD_TABLES)
 
-	material_base = /datum/material/wood/sif
+	material_base = /datum/material/wood_plank/sif
 	material_reinforcing = /datum/material/steel
 
 /obj/structure/table/hardwoodtable
@@ -78,13 +78,13 @@
 	smoothing_groups = (SMOOTH_GROUP_WOOD_TABLES) //Don't smooth with SMOOTH_GROUP_TABLES
 	canSmoothWith = (SMOOTH_GROUP_WOOD_TABLES)
 
-	material_base = /datum/material/wood/hardwood
+	material_base = /datum/material/wood_plank/hardwood
 	material_reinforcing = null
 
 /obj/structure/table/gamblingtable
 	icon_state = "gamble_preview"
 
-	material_base = /datum/material/wood
+	material_base = /datum/material/wood_plank
 	material_reinforcing = null
 	carpeted = TRUE
 
@@ -117,7 +117,7 @@
 /obj/structure/table/woodentable/holotable
 	icon_state = "holo_preview"
 
-	material_base = /datum/material/wood/holographic
+	material_base = /datum/material/wood_plank/holographic
 	material_reinforcing = null
 
 /obj/structure/table/alien
@@ -199,14 +199,14 @@
 	icon_state = "plain_preview"
 	color = "#824B28"
 
-	material_base = /datum/material/wood
+	material_base = /datum/material/wood_plank
 	material_reinforcing = null
 
 /obj/structure/table/bench/sifwooden
 	icon_state = "plain_preview"
 	color = "#824B28"
 
-	material_base = /datum/material/wood/sif
+	material_base = /datum/material/wood_plank/sif
 	material_reinforcing = null
 
 /obj/structure/table/bench/sifwooden/padded

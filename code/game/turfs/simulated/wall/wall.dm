@@ -16,7 +16,7 @@
 	integrity_max = 200
 	integrity_failure = 0
 
-	armor_type = /datum/armor/wall
+	armor_type = /datum/armor/object/heavy
 
 	#ifdef IN_MAP_EDITOR // Display disposal pipes etc. above walls in map editors.
 	layer = PLATING_LAYER

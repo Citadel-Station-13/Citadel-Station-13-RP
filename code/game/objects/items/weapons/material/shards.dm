@@ -150,4 +150,4 @@
 	material_parts = /datum/material/glass/phoron
 
 /obj/item/material/shard/wood
-	material_parts = /datum/material/wood
+	material_parts = /datum/material/wood_plank

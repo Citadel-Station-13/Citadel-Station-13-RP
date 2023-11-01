@@ -12,7 +12,7 @@
 	pickup_sound = 'sound/items/pickup/knife.ogg'
 	var/active = FALSE
 
-/obj/item/material/butterfly/set_active(active)
+/obj/item/material/butterfly/proc/set_active(active)
 	src.active = active
 	if(active)
 		damage_mode = DAMAGE_MODE_EDGE | DAMAGE_MODE_SHARP

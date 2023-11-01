@@ -41,8 +41,6 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	var/eye_attack_text
 	var/eye_attack_text_victim
 
-#warn refactor variants maybe
-
 /datum/unarmed_attack/proc/get_sparring_variant()
 	return cached_unarmed_attack_datum(sparring_variant_type)
 

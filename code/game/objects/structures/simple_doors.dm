@@ -156,13 +156,13 @@
 	material_parts = /datum/material/diamond
 
 /obj/structure/simple_door/wood
-	material_parts = /datum/material/wood
+	material_parts = /datum/material/wood_plank
 
 /obj/structure/simple_door/sifwood
-	material_parts = /datum/material/wood/sif
+	material_parts = /datum/material/wood_plank/sif
 
 /obj/structure/simple_door/hardwood
-	material_parts = /datum/material/wood/hardwood
+	material_parts = /datum/material/wood_plank/hardwood
 
 /obj/structure/simple_door/resin
 	material_parts = /datum/material/resin

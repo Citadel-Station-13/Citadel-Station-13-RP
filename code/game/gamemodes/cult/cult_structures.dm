@@ -46,8 +46,9 @@
 /obj/structure/cult/pylon/attackby(obj/item/W as obj, mob/user as mob)
 	attackpylon(user, W.damage_force)
 
-/obj/structure/cult/pylon/take_damage_legacy(var/damage)
+/obj/structure/cult/pylon/inflict_atom_damage(damage, tier, flag, mode, attack_type, datum/weapon, gradual)
 	pylonhit(damage)
+	return damage
 
 /obj/structure/cult/pylon/bullet_act(var/obj/projectile/Proj)
 	pylonhit(Proj.get_structure_damage())

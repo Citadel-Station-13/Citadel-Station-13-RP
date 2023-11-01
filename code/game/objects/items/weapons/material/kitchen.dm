@@ -119,7 +119,7 @@
 	desc = "Used to knock out the Bartender."
 	icon_state = "rolling_pin"
 	attack_verb = list("bashed", "battered", "bludgeoned", "thrashed", "whacked")
-	material_parts = /datum/material/wood
+	material_parts = /datum/material/wood_plank
 	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_LIGHT
 	drop_sound = 'sound/items/drop/wooden.ogg'
 	pickup_sound = 'sound/items/pickup/wooden.ogg'

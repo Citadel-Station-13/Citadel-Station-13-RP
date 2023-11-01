@@ -19,7 +19,7 @@
 	color = material.icon_colour
 
 /obj/item/clothing/gloves/ring/material/wood
-	material_parts = /datum/material/wood
+	material_parts = /datum/material/wood_plank
 
 /obj/item/clothing/gloves/ring/material/plastic
 	material_parts = /datum/material/plastic
