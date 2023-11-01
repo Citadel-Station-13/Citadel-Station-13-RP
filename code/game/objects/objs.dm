@@ -531,7 +531,7 @@
 		var/datum/material/mat = parts[key]
 		. += "Its [key] is made out of [mat.display_name]"
 
-/obj/examine_integrity(mob/user)
+/obj/proc/examine_integrity(mob/user)
 	. = list()
 	if(integrity == integrity_max)
 		. += SPAN_NOTICE("It looks fully intact.")

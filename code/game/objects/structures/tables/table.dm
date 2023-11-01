@@ -33,6 +33,7 @@ var/list/table_icon_cache = list()
 	// For racks.
 	var/can_reinforce = 1
 	var/can_plate = 1
+	var/can_deconstruct = TRUE
 
 	var/manipulating = 0
 
@@ -91,7 +92,7 @@ var/list/table_icon_cache = list()
 	else
 		. += SPAN_NOTICE("Use a <b>screwdriver</b> to remove its reinforcement.")
 
-/obj/structure/table/crowbar_act(obj/item/I, mob/user, flags, hint)
+/obj/structure/table/crowbar_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
 	. = ..()
 	if(.)
 		return
@@ -108,41 +109,44 @@ var/list/table_icon_cache = list()
 		visible_self = SPAN_NOTICE("You remove the carpet from [src]."),
 		audible_hard = SPAN_WARNING("You hear something soft being pulled off a surface."),
 	)
-	user.actor_construction_log(src, "de-carpeted")
+	log_construction(e_args, src, "de-carpeted")
 	new carpeted_type(loc)
 	carpeted = FALSE
 	update_appearance()
 	return TRUE
 
-/obj/structure/table/wrench_act(obj/item/I, mob/user, flags, hint)
+/obj/structure/table/wrench_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
 	. = ..()
 	if(.)
 		return
 	if(!isnull(material_reinforcing))
-		user.action_feedback(SPAN_WARNING("[src] needs to have its reinforcement removed before being dismantled!"))
+		e_args.chat_feedback(SPAN_WARNING("[src] needs to have its reinforcement removed before being dismantled!"))
 		return TRUE
 	if(isnull(material_base))
-		user.visible_action_feedback(
+		if(!can_deconstruct)
+			e_args.chat_feedback(SPAN_WARNING("[src] cannot be deconstructed."), src)
+			return TRUE
+		e_args.visible_feedback(
 			target = src,
 			hard_range = MESSAGE_RANGE_CONSTRUCTION,
 			visible_hard = SPAN_NOTICE("[user] begins dismantling \the [src]."),
 			visible_self = SPAN_NOTICE("You begin dismantling [src]."),
 			audible_hard = SPAN_WARNING("You hear the sound of bolts and screws being undone."),
 		)
-		user.actor_construction_log(src, "started dismantling")
-		if(!use_wrench(I, user, flags, 1.5 SECONDS, usage = TOOL_USAGE_DECONSTRUCT))
+		log_construction(e_args, src, "started dismantling")
+		if(!use_wrench(I, e_args.performer, flags, 1.5 SECONDS, usage = TOOL_USAGE_DECONSTRUCT))
 			return TRUE
 		if(!isnull(material_reinforcing) || !isnull(material_base))
-			user.action_feedback(SPAN_WARNING("[src] needs to be entirely stripped before being dismantled!"))
+			e_args.chat_feedback(SPAN_WARNING("[src] needs to be entirely stripped before being dismantled!"))
 			return TRUE
-		user.visible_action_feedback(
+		e_args.visible_feedback(
 			target = src,
 			hard_range = MESSAGE_RANGE_CONSTRUCTION,
 			visible_hard = SPAN_NOTICE("[user] dismantles \the [src]."),
 			visible_self = SPAN_NOTICE("You dismantle [src]."),
 			audible_hard = SPAN_WARNING("You hear the sound of something being folded down and dismantled."),
 		)
-		user.actor_construction_log(src, "dismantled")
+		log_construction(e_args, src, "dismantled")
 		deconstruct(ATOM_DECONSTRUCT_DISASSEMBLED)
 	else
 		user.visible_action_feedback(
@@ -152,52 +156,52 @@ var/list/table_icon_cache = list()
 			visible_self = SPAN_NOTICE("You begin removing the plating from \the [src]."),
 			audible_hard = SPAN_WARNING("You hear the sound of bolts being undone."),
 		)
-		user.actor_construction_log(src, "started de-plating")
+		log_construction(e_args, src, "started de-plating")
 		if(!use_wrench(I, user, flags, 3 SECONDS, usage = TOOL_USAGE_DECONSTRUCT))
 			return TRUE
 		if(!isnull(material_reinforcing))
-			user.action_feedback(SPAN_WARNING("[src] needs to have its reinforcement removed before being dismantled!"))
+			e_args.chat_feedback(SPAN_WARNING("[src] needs to have its reinforcement removed before being dismantled!"))
 			return TRUE
-		user.visible_action_feedback(
+		e_args.visible_feedback(
 			target = src,
 			hard_range = MESSAGE_RANGE_CONSTRUCTION,
 			visible_hard = SPAN_NOTICE("[user] removes the plating from \the [src]."),
 			visible_self = SPAN_NOTICE("You remove the plating from \the [src]."),
 			audible_hard = SPAN_WARNING("You hear the sound of a heavy plate being lifted off of something."),
 		)
-		user.actor_construction_log(src, "de-plated")
+		log_construction(e_args, src, "de-plated")
 		material_base.place_sheet(loc, 1)
 		set_material_part("base", null)
 		if(flipped)
 			set_unflipped()
 	return TRUE
 
-/obj/structure/table/screwdriver_act(obj/item/I, mob/user, flags, hint)
+/obj/structure/table/screwdriver_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
 	. = ..()
 	if(.)
 		return
 	if(isnull(material_reinforcing))
 		return FALSE
-	user.visible_action_feedback(
+	e_args.visible_feedback(
 		target = src,
 		hard_range = MESSAGE_RANGE_CONSTRUCTION,
 		visible_hard = SPAN_NOTICE("[user] begins removing the reinforcement from \the [src]."),
 		visible_self = SPAN_NOTICE("You begin removing the reinforcement from \the [src]."),
 		audible_hard = SPAN_WARNING("You hear the sound of screws being undone."),
 	)
-	user.actor_construction_log(src, "started de-reinforcing")
+	log_construction(e_args, src, "started de-reinforcing")
 	if(!use_wrench(I, user, flags, 1.5 SECONDS, usage = TOOL_USAGE_DECONSTRUCT))
 		return TRUE
 	if(!isnull(material_reinforcing))
 		return TRUE
-	user.visible_action_feedback(
+	e_args.visible_feedback(
 		target = src,
 		hard_range = MESSAGE_RANGE_CONSTRUCTION,
 		visible_hard = SPAN_NOTICE("[user] removes the reinforcement from \the [src]."),
 		visible_self = SPAN_NOTICE("You remove the reinforcement from \the [src]."),
 		audible_hard = SPAN_WARNING("You hear the sound of screws falling out and something being slid out."),
 	)
-	user.actor_construction_log(src, "de-reinforced")
+	log_construction(e_args, src, "de-reinforced")
 	material_reinforcing.place_sheet(loc, 1)
 	set_material_part("reinf", null)
 	return TRUE

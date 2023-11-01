@@ -172,4 +172,4 @@ var/global/list/stool_cache = list() //haha stool
 /obj/item/stool/padded
 	icon_state = "stool_padded_preview" //set for the map
 	material_base = /datum/material/steel
-	material_padding = /datum/material/cloth/carpet
+	material_padding = /datum/material/carpet

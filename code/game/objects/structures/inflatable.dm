@@ -67,7 +67,7 @@
 	if(method != ATOM_DECONSTRUCT_DESTROYED)
 		new item_type(where)
 	else
-		new torn_tye(where)
+		new torn_type(where)
 
 /obj/structure/inflatable/door //Based on mineral door code
 	name = "inflatable door"

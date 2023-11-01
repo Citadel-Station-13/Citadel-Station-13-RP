@@ -119,70 +119,70 @@
 	icon_state = initial(icon_state)
 	reinforcing = 0
 
-/obj/structure/girder/attackby(obj/item/W as obj, mob/user as mob)
-	if(W.is_wrench() && state == 0)
+/obj/structure/girder/attackby(obj/item/I, mob/user, list/params, clickchain_flags, damage_multiplier)
+	if(I.is_wrench() && state == 0)
 		if(anchored && !material_reinforcing)
-			playsound(src, W.tool_sound, 100, 1)
+			playsound(src, I.tool_sound, 100, 1)
 			to_chat(user, "<span class='notice'>Now disassembling the girder...</span>")
-			if(do_after(user,(2 SECONDS * round(integrity/100)) * W.tool_speed))
+			if(do_after(user,(2 SECONDS * round(integrity/100)) * I.tool_speed))
 				if(!src) return
 				to_chat(user, "<span class='notice'>You dissasembled the girder!</span>")
 				deconstruct(ATOM_DECONSTRUCT_DISASSEMBLED)
 		else if(!anchored)
-			playsound(src, W.tool_sound, 100, 1)
+			playsound(src, I.tool_sound, 100, 1)
 			to_chat(user, "<span class='notice'>Now securing the girder...</span>")
-			if(do_after(user, 40 * W.tool_speed, src))
+			if(do_after(user, 40 * I.tool_speed, src))
 				to_chat(user, "<span class='notice'>You secured the girder!</span>")
 				reset_girder()
 
-	else if(istype(W, /obj/item/pickaxe/plasmacutter))
+	else if(istype(I, /obj/item/pickaxe/plasmacutter))
 		to_chat(user, "<span class='notice'>Now slicing apart the girder...</span>")
-		if(do_after(user,30 * W.tool_speed))
+		if(do_after(user,30 * I.tool_speed))
 			if(!src) return
 			to_chat(user, "<span class='notice'>You slice apart the girder!</span>")
 			deconstruct(ATOM_DECONSTRUCT_DISASSEMBLED)
 
-	else if(istype(W, /obj/item/pickaxe/diamonddrill))
+	else if(istype(I, /obj/item/pickaxe/diamonddrill))
 		to_chat(user, "<span class='notice'>You drill through the girder!</span>")
 		deconstruct(ATOM_DECONSTRUCT_DESTROYED)
 
-	else if(W.is_screwdriver())
+	else if(I.is_screwdriver())
 		if(state == 2)
-			playsound(src, W.tool_sound, 100, 1)
+			playsound(src, I.tool_sound, 100, 1)
 			to_chat(user, "<span class='notice'>Now unsecuring support struts...</span>")
-			if(do_after(user,40 * W.tool_speed))
+			if(do_after(user,40 * I.tool_speed))
 				if(!src) return
 				to_chat(user, "<span class='notice'>You unsecured the support struts!</span>")
 				state = 1
 		else if(anchored && !material_reinforcing)
-			playsound(src, W.tool_sound, 100, 1)
+			playsound(src, I.tool_sound, 100, 1)
 			reinforcing = !reinforcing
 			to_chat(user, "<span class='notice'>\The [src] can now be [reinforcing? "reinforced" : "constructed"]!</span>")
 
-	else if(W.is_wirecutter() && state == 1)
-		playsound(src, W.tool_sound, 100, 1)
+	else if(I.is_wirecutter() && state == 1)
+		playsound(src, I.tool_sound, 100, 1)
 		to_chat(user, "<span class='notice'>Now removing support struts...</span>")
-		if(do_after(user,40 * W.tool_speed))
+		if(do_after(user,40 * I.tool_speed))
 			if(!src) return
 			to_chat(user, "<span class='notice'>You removed the support struts!</span>")
 			material_reinforcing.place_dismantled_product(get_turf(src), 2)
 			set_material_part("reinf", null)
 			reset_girder()
 
-	else if(W.is_crowbar() && state == 0 && anchored)
-		playsound(src, W.tool_sound, 100, 1)
+	else if(I.is_crowbar() && state == 0 && anchored)
+		playsound(src, I.tool_sound, 100, 1)
 		to_chat(user, "<span class='notice'>Now dislodging the girder...</span>")
-		if(do_after(user, 40 * W.tool_speed))
+		if(do_after(user, 40 * I.tool_speed))
 			if(!src) return
 			to_chat(user, "<span class='notice'>You dislodged the girder!</span>")
 			displace()
 
-	else if(istype(W, /obj/item/stack/material))
+	else if(istype(I, /obj/item/stack/material))
 		if(reinforcing && !material_reinforcing)
-			if(!reinforce_with_material(W, user))
+			if(!reinforce_with_material(I, user))
 				return ..()
 		else
-			if(!construct_wall(W, user))
+			if(!construct_wall(I, user))
 				return ..()
 
 	else
@@ -310,9 +310,9 @@
 	else
 		icon_state = "displaced"
 
-/obj/structure/girder/cult/dismantle()
-	new /obj/effect/decal/remains/human(get_turf(src))
-	qdel(src)
+/obj/structure/girder/cult/drop_products(method, atom/where)
+	. = ..()
+	new /obj/effect/decal/remains/human(where)
 
 /obj/structure/girder/cult/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench())
@@ -320,18 +320,18 @@
 		to_chat(user, "<span class='notice'>Now disassembling the girder...</span>")
 		if(do_after(user,40 * W.tool_speed))
 			to_chat(user, "<span class='notice'>You dissasembled the girder!</span>")
-			dismantle()
+			deconstruct(ATOM_DECONSTRUCT_DISASSEMBLED)
 
 	else if(istype(W, /obj/item/pickaxe/plasmacutter))
 		to_chat(user, "<span class='notice'>Now slicing apart the girder...</span>")
 		if(do_after(user,30 * W.tool_speed))
 			to_chat(user, "<span class='notice'>You slice apart the girder!</span>")
-		dismantle()
+		deconstruct(ATOM_DECONSTRUCT_DISASSEMBLED)
 
 	else if(istype(W, /obj/item/pickaxe/diamonddrill))
 		to_chat(user, "<span class='notice'>You drill through the girder!</span>")
 		new /obj/effect/decal/remains/human(get_turf(src))
-		dismantle()
+		deconstruct(ATOM_DECONSTRUCT_DISASSEMBLED)
 
 /obj/structure/girder/resin
 	name = "soft girder"

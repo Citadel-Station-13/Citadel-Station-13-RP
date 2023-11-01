@@ -13,9 +13,6 @@
 	remove_obj_verb(src, /obj/structure/table/verb/do_flip)
 	remove_obj_verb(src, /obj/structure/table/proc/do_put)
 
-/obj/structure/table/darkglass/dismantle(obj/item/tool/wrench/W, mob/user)
-	to_chat(user, "<span class='warning'>You cannot dismantle \the [src].</span>")
-	return
 /obj/structure/table/alien/blue
 	icon = 'icons/turf/shuttle_alien_blue.dmi'
 
@@ -34,9 +31,6 @@
 	remove_obj_verb(src, /obj/structure/table/verb/do_flip)
 	remove_obj_verb(src, /obj/structure/table/proc/do_put)
 
-/obj/structure/table/fancyblack/dismantle(obj/item/tool/wrench/W, mob/user)
-	to_chat(user, "<span class='warning'>You cannot dismantle \the [src].</span>")
-	return
 /obj/structure/table/gold
 	icon_state = "plain_preview"
 	color = "#FFFF00"

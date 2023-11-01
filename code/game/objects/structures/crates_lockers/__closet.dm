@@ -304,8 +304,8 @@
 		if(istype(I, /obj/item/storage/laundry_basket) && I.contents.len)
 			var/obj/item/storage/laundry_basket/LB = I
 			var/turf/T = get_turf(src)
-			for(var/obj/item/I in LB.contents)
-				LB.remove_from_storage(I, T)
+			for(var/obj/item/I2 in LB.contents)
+				LB.remove_from_storage(I2, T)
 			user.visible_message("<span class='notice'>[user] empties \the [LB] into \the [src].</span>", \
 								 "<span class='notice'>You empty \the [LB] into \the [src].</span>", \
 								 "<span class='notice'>You hear rustling of clothes.</span>")

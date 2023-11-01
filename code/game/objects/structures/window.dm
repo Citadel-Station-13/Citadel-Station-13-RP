@@ -303,7 +303,7 @@
 		inflict_atom_damage(damage_per_fire_tick, flag = ARMOR_FIRE, gradual = TRUE)
 
 /obj/structure/window/drop_products(method, atom/where)
-	var/atom/where = drop_location()
+	. = ..()
 	if (method == ATOM_DECONSTRUCT_DISASSEMBLED)
 		if (glasstype)
 			new glasstype(where, fulltile? 2 : 1)
