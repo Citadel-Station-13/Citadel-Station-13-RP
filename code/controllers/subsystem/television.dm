@@ -44,8 +44,6 @@ SUBSYSTEM_DEF(television)
 
 /datum/controller/subsystem/television/Initialize(timeofday)
 	channels = flist("strings/television/shows/")
-	for (var/e in channels)
-		//TO_WORLD("DEFCHANNELS + " + e)
 	possible_shows = channels
 	//2d list pairing a list of shows to a channel name.
 	for (var/c in channels)
@@ -108,7 +106,7 @@ SUBSYSTEM_DEF(television)
 
 ///Takes a string and a channel, calls receiveLines on all TVs in that channel with that line.
 /datum/controller/subsystem/television/proc/broadcastLine(line, channel, language)
-	for (var/obj/machinery/computer/television/tv in all_tvs)
+	for (var/obj/machinery/television/tv in all_tvs)
 		if (all_tvs[tv] == channel)
 			tv.receiveLines(line, language)
 

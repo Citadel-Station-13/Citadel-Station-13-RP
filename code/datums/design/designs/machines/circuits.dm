@@ -26,6 +26,12 @@
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/circuitboard/status_display
 
+/datum/design/machine_circuit/television
+	id = "CircuitTelevision"
+	lathe_type = LATHE_TYPE_AUTOLATHE
+	design_unlock = DESIGN_UNLOCK_INTRINSIC
+	build_path = /obj/item/circuitboard/television
+
 /datum/design/machine_circuit/aistatusdisplay
 	id = "CircuitAIStatusDisplay"
 	lathe_type = LATHE_TYPE_AUTOLATHE
