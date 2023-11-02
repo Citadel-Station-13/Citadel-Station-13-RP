@@ -2351,7 +2351,6 @@
 "hb" = (
 /obj/structure/window/phoronreinforced{
 	dir = 1;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
@@ -2360,13 +2359,11 @@
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 8;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced{
 	dir = 4;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /turf/simulated/floor/plating,
@@ -2417,7 +2414,6 @@
 "hh" = (
 /obj/structure/window/phoronreinforced{
 	dir = 1;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
@@ -2426,7 +2422,6 @@
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 8;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/grille,
@@ -2435,7 +2430,6 @@
 "hi" = (
 /obj/structure/window/phoronreinforced{
 	dir = 1;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
@@ -2448,7 +2442,6 @@
 "hj" = (
 /obj/structure/window/phoronreinforced{
 	dir = 1;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
@@ -2457,7 +2450,6 @@
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 4;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/grille,
@@ -2480,17 +2472,14 @@
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced{
 	dir = 4;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 1;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 8;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /turf/simulated/floor/plating,
@@ -2584,12 +2573,10 @@
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced{
 	dir = 4;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 8;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /turf/simulated/floor/plating,
@@ -2633,12 +2620,10 @@
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 4;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 8;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /turf/simulated/floor/plating,
@@ -3272,12 +3257,10 @@
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced{
 	dir = 1;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 8;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /turf/simulated/floor/plating,
@@ -3286,12 +3269,10 @@
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced{
 	dir = 4;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 1;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
@@ -3310,12 +3291,10 @@
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced{
 	dir = 8;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 1;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
@@ -3328,12 +3307,10 @@
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced{
 	dir = 1;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 4;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /turf/simulated/floor/plating,
@@ -3348,7 +3325,6 @@
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced{
 	dir = 4;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
@@ -3361,7 +3337,6 @@
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced{
 	dir = 8;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
@@ -3374,12 +3349,10 @@
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced{
 	dir = 4;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 8;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
@@ -3392,12 +3365,10 @@
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced{
 	dir = 8;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 4;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
@@ -4420,17 +4391,14 @@
 "mr" = (
 /obj/structure/window/phoronreinforced{
 	dir = 8;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 4;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 1;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/grille,
@@ -4517,17 +4485,14 @@
 "my" = (
 /obj/structure/window/phoronreinforced{
 	dir = 8;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 1;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 4;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/grille,
@@ -4536,7 +4501,6 @@
 "mz" = (
 /obj/structure/window/phoronreinforced{
 	dir = 8;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
@@ -4549,12 +4513,10 @@
 "mA" = (
 /obj/structure/window/phoronreinforced{
 	dir = 4;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 1;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/grille,
@@ -4628,12 +4590,10 @@
 "mL" = (
 /obj/structure/window/phoronreinforced{
 	dir = 8;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 1;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/grille,
@@ -4642,7 +4602,6 @@
 "mM" = (
 /obj/structure/window/phoronreinforced{
 	dir = 4;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
@@ -4655,12 +4614,10 @@
 "mN" = (
 /obj/structure/window/phoronreinforced{
 	dir = 4;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 1;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
@@ -4729,12 +4686,10 @@
 "mW" = (
 /obj/structure/window/phoronreinforced{
 	dir = 8;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 1;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
