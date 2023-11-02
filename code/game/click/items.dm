@@ -309,12 +309,22 @@
  */
 /obj/item/proc/attack_object(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags, mult = 1)
 	PROTECTED_PROC(TRUE)	// route via standard_melee_attack please.
+	// todo: move this somewhere else
+	if(isobj(target))
+		var/obj/casted = target
+		if(!(casted.obj_flags & OBJ_MELEE_TARGETABLE))
+			return NONE
+	//? legacy: decloak
+	user.break_cloak()
+	// check intent
 	if((item_flags & ITEM_CAREFUL_BLUDGEON) && clickchain.intent == INTENT_HELP)
 		clickchain.initiator.action_feedback(SPAN_WARNING("You refrain from hitting [target] because your intent is set to help."), src)
-		return
-	// sorry, no atom damage
-	// ... yet >:)
-	visible_message(SPAN_WARNING("[clickchain.performer] bashes [target] with [src]."))
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	// click cooldown
+	// todo: clickcd rework
+	user.setClickCooldown(user.get_attack_speed(src))
+	// animation
+	user.do_attack_animation(L)
 	. = melee_object_hit(target, clickchain, clickchain_flags, mult)
 
 /**
@@ -330,6 +340,12 @@
  */
 /obj/item/proc/melee_object_miss(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags, mult = 1)
 	SHOULD_CALL_PARENT(TRUE)
+	playsound(clickchain.performer, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
+	clickchain.visible_feedback(
+		target = target,
+		range = MESSAGE_RANGE_COMBAT_LOUD,
+		visible = SPAN_WARNING("[clickchain.performer] swings for [target], but misses!"),
+	)
 	return CLICKCHAIN_ATTACK_MISSED
 
 /**
@@ -346,6 +362,32 @@
 /obj/item/proc/melee_object_hit(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags, mult = 1)
 	SHOULD_CALL_PARENT(TRUE)
 
+	// harmless, just tap them and leave
+	if(!damage_force)
+		// todo: proper weapon sound ranges/rework
+		playsound(clickchain.performer, 'sound/weapons/tap.ogg', 50, 1, -1)
+		// feedback
+		clickchain.visible_feedback(
+			target = target,
+			range = MESSAGE_RANGE_COMBAT_LOUD,
+			visible = SPAN_WARNING("[clickchian.performer] harmlessly taps [target] with [src]."),
+			visible_them = SPAN_WARNING("[clickchain.performer] harmlessly taps you with [src]."),
+			visible_self = SPAN_WARNING("You harmlessly tap [target] with [src].")
+		)
+		return NONE
+	// sound
+	var/resolved_sound = target.hitsound_melee(src)
+	if(!isnull(resolved_sound))
+		playsound(target, resolved_sound, 50, TRUE)
+	// feedback
+	// todo: grammar
+	clickchain.visible_feedback(
+		target = target,
+		range = MESSAGE_RANGE_COMBAT_LOUD,
+		visible = SPAN_DANGER("[target] has been [length(attack_verb? pick(attack_verb) : attack_verb)] with [src] by [clickchain.performer]!")
+	)
+	// damage
+	target.melee_act(clickchain.performer, src, mult = mult)
 
 	// todo: better logging
 	// todo: entity ids?
@@ -368,5 +410,3 @@
  */
 /obj/item/proc/finalize_object_melee(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags, mult = 1)
 	return NONE
-
-#warn impl all
