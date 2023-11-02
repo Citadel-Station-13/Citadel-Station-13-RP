@@ -344,8 +344,7 @@
 "bx" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	dir = 5;
-	health = 1e+007
+	dir = 5
 	},
 /turf/simulated/floor{
 	icon_state = "white"
@@ -1286,8 +1285,7 @@
 "eo" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	dir = 5;
-	health = 1e+007
+	dir = 5
 	},
 /turf/simulated/floor,
 /area/awaymission/labs/militarydivision)
@@ -1540,8 +1538,7 @@
 "eX" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	dir = 5;
-	health = 1e+007
+	dir = 5
 	},
 /turf/simulated/floor,
 /area/awaymission/labs/gateway)
@@ -2954,8 +2951,7 @@
 "iI" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	dir = 5;
-	health = 1e+007
+	dir = 5
 	},
 /turf/simulated/floor,
 /area/awaymission/labs/researchdivision)
@@ -3064,8 +3060,7 @@
 "ja" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	dir = 5;
-	health = 1e+007
+	dir = 5
 	},
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -3533,8 +3528,7 @@
 "ks" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	dir = 5;
-	health = 1e+007
+	dir = 5
 	},
 /turf/simulated/floor,
 /area/awaymission/labs/command)
@@ -4053,7 +4047,6 @@
 	},
 /obj/structure/window/reinforced{
 	dir = 5;
-	health = 1e+007;
 	layer = 3.4
 	},
 /turf/simulated/floor,
@@ -4390,7 +4383,6 @@
 	},
 /obj/structure/window/reinforced{
 	dir = 5;
-	health = 1e+007;
 	layer = 3.4
 	},
 /turf/simulated/floor,
@@ -4411,7 +4403,6 @@
 	},
 /obj/structure/window/reinforced{
 	dir = 5;
-	health = 1e+007;
 	layer = 3.4
 	},
 /turf/simulated/floor,
@@ -4649,8 +4640,7 @@
 "ni" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	dir = 5;
-	health = 1e+007
+	dir = 5
 	},
 /turf/simulated/floor,
 /area/awaymission/labs/cave)
@@ -5453,7 +5443,6 @@
 	},
 /obj/structure/window/reinforced{
 	dir = 5;
-	health = 1e+007;
 	layer = 3.4
 	},
 /turf/simulated/floor,
@@ -6094,8 +6083,7 @@
 "ro" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	dir = 5;
-	health = 1e+007
+	dir = 5
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -6430,7 +6418,6 @@
 	},
 /obj/structure/window/reinforced{
 	dir = 5;
-	health = 1e+007;
 	layer = 3.4
 	},
 /turf/simulated/floor,
@@ -6450,8 +6437,7 @@
 "sy" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	dir = 5;
-	health = 1e+007
+	dir = 5
 	},
 /turf/simulated/floor,
 /area/awaymission/labs/security)
@@ -6727,8 +6713,7 @@
 "tr" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	dir = 5;
-	health = 1e+007
+	dir = 5
 	},
 /turf/space,
 /area/awaymission/labs/medical)
