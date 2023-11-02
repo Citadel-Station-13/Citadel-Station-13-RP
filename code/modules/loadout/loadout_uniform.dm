@@ -562,6 +562,14 @@
 	name = "EVA Bodysuit - Female"
 	path = /obj/item/clothing/under/bodysuit/bodysuiteva_fem
 
+/datum/loadout_entry/uniform/replika/arar
+	name = "Replikant Bodysuit - Repair-Worker"
+	path = /obj/item/clothing/under/replika/arar
+
+/datum/loadout_entry/uniform/replika/lstr
+	name = "Replikant Bodysuit - Land-Survey"
+	path = /obj/item/clothing/under/replika/lstr
+
 /datum/loadout_entry/uniform/future_fashion_selection
 	name = "Futuristic Striped Jumpsuit Selection"
 	path = /obj/item/clothing/under/future_fashion
