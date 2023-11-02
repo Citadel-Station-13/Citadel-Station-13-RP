@@ -35,18 +35,17 @@
 /obj/structure/girder/update_material_multi(list/parts)
 	if(isnull(material_reinforcing))
 		if(isnull(material_structure))
-			name = "girder"
+			name = initial(name)
 			set_multiplied_integrity(1)
 		else
 			name = "[material_structure.display_name] girder"
 			set_multiplied_integrity(material_structure.relative_integrity)
 	else if(isnull(material_structure))
-		name = "girder"
+		name = initial(name)
 		set_multiplied_integrity(1)
 	else
 		name = "[material_reinforcing.display_name]-reinforced [material_structure.display_name] girder"
-
-	set_multiplied_integrity(material_structure.relative_integrity * multiply_effect_multiplier(material_reinforcing.relative_integrity, 0.5))
+		set_multiplied_integrity(material_structure.relative_integrity * multiply_effect_multiplier(material_reinforcing.relative_integrity, 0.5))
 
 	// todo: refactor
 	if(material_color)

@@ -60,6 +60,8 @@ var/global/list/stool_cache = list() //haha stool
 	register_material(material_padding, FALSE)
 
 /obj/item/stool/update_icon()
+	if(isnull(material_base))
+		return
 	// Prep icon.
 	icon_state = ""
 	cut_overlays()

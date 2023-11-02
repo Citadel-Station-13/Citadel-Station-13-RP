@@ -3,8 +3,17 @@
 	reinforcing = SSmaterials.resolve_material(reinforcing)
 	girder = SSmaterials.resolve_material(girder)
 
-	if(!isnull(outer) || !isnull(girder) || !isnull(reinforcing))
-		set_materials(outer, reinforcing, girder)
+	if(!isnull(outer))
+		material_outer = outer
+		register_material(material_outer, TRUE)
+	if(!isnull(reinforcing))
+		material_reinf = reinforcing
+		register_material(material_reinf, FALSE)
+	if(!isnull(girder))
+		material_girder = girder
+		register_material(material_girder, FALSE)
+
+	update_materials()
 
 /turf/simulated/wall/proc/set_materials(datum/material/outer, datum/material/reinforcing, datum/material/girder)
 	unregister_material(material_outer, TRUE)
@@ -60,7 +69,7 @@
 
 	set_multiplied_integrity(integrity_factor, FALSE)
 
-	set_armor(SSmaterials.reinforcing_materials_armor(list(material_girder = 0.25, material_reinf = 1.5, material_outer = 3)))
+	set_armor(SSmaterials.reinforcing_materials_armor(list((material_girder) = 0.25, (material_reinf) = 1.5, (material_outer) = 3)))
 
 	rad_insulation = 1 / ((material_girder?.density * 0.1 + material_outer?.density * 1.2 + material_reinf?.density * 0.5) / 8 * 1.7)
 

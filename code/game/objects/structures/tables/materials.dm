@@ -3,15 +3,17 @@
 	if(isnull(structure)) // we're not normal
 		return
 	var/datum/material/reinforcing = material_reinforcing
-	var/amount = structure.relative_integrity * 100 + reinforcing.relative_integrity * 50
+	var/amount = structure.relative_integrity * 100 + reinforcing?.relative_integrity * 50
 	set_full_integrity(amount, amount)
 	// the () is to block the list() from making it a string
 	set_armor(SSmaterials.reinforcing_materials_armor(list(
 		(structure) = 1,
 		(reinforcing) = 2,
 	)))
-	update_appearance()
-	update_connections()
+	// sigh
+	if(SSatoms.initialized == INITIALIZATION_INNEW_REGULAR)
+		update_appearance()
+		update_connections()
 
 /obj/structure/table/material_get_parts()
 	return list(

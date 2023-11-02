@@ -112,6 +112,9 @@
 
 /obj/structure/simple_door/update_icon()
 	var/datum/material/material = get_primary_material()
+	if(isnull(material))
+		icon_state = state? "open" : "closed"
+		return
 	if(state)
 		icon_state = "[material.door_icon_base]open"
 	else

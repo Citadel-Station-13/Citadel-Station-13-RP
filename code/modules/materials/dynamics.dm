@@ -55,7 +55,7 @@
 	var/laser_tier = 1.6 * (1 / (1 + NUM_E ** -(0.0042 * (ablation_diffusion * significance_as_multiplier)))) - 0.5 * 1.6
 	var/laser_absorb = ((1 / (-(ablation_damping * significance_as_multiplier + 400) * 0.000025)) + 100) * 0.01
 	// we don't allow deflection for now
-	return (armor_cache = fetch_armor_struct(list(
+	return (armor_cache[cache_key] = fetch_armor_struct(list(
 		ARMOR_MELEE = kinetic_absorb,
 		ARMOR_MELEE_TIER = kinetic_tier,
 		ARMOR_MELEE_SOAK = kinetic_damping * 0.005 + kinetic_hardness * 0.0025,
@@ -117,6 +117,8 @@
 /datum/controller/subsystem/materials/proc/reinforcing_materials_armor(list/datum/material/materials)
 	var/list/cache_key = list()
 	for(var/datum/material/mat as anything in materials)
+		if(isnull(mat))
+			continue
 		cache_key += "[mat.id]-[materials[mat]]"
 	cache_key = jointext(cache_key, ";")
 	var/datum/armor/resolved = layered_armor_cache[cache_key]
@@ -124,6 +126,8 @@
 		return resolved
 	var/list/datum/armor/collected = list()
 	for(var/datum/material/mat as anything in materials)
+		if(isnull(mat))
+			continue
 		collected[mat.create_armor(materials[mat]).to_list()] = materials[mat]
 
 	// todo: this is shitty but we just do the best of all

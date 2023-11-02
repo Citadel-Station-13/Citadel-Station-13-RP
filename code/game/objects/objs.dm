@@ -5,6 +5,7 @@
 	animate_movement = SLIDE_STEPS
 	rad_flags = NONE
 	atom_colouration_system = TRUE
+	integrity_enabled = TRUE
 
 	//? Flags
 	/// object flags, see __DEFINES/_flags/obj_flags.dm
