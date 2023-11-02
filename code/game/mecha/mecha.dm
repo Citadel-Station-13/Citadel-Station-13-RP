@@ -940,7 +940,7 @@
 
 		damage = components_handle_damage(damage,type)
 
-		integrity -= damage
+		damage_integrity(damage)
 
 		update_health()
 		log_append_to_last("Took [damage] points of damage. Damage type: \"[type]\".",1)

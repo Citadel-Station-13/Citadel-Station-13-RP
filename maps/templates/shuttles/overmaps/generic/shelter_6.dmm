@@ -1716,9 +1716,9 @@
 /obj/machinery/mech_recharger,
 /obj/mecha/combat/fighter/baron{
 	ground_capable = 1;
-	health = 800;
+	integrity = 800;
 	internal_damage_threshold = 100;
-	maxhealth = 800;
+	integrity_max = 800;
 	name = "Panther"
 	},
 /turf/simulated/floor/reinforced,
