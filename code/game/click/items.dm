@@ -270,6 +270,11 @@
 	L.hit_with_weapon(src, user, power, target_zone)
 	//? legacy code end
 
+	// todo: better logging
+	// todo: entity ids?
+	var/newhp = target.health
+	log_attack(key_name(src), key_name(target), "attacked with [src] [src.damtype]-[src.damage_force]=[src.damage_tier] newhp ~[newhp || "unknown"]")
+
 	return NONE
 
 /**
@@ -310,7 +315,7 @@
 	// sorry, no atom damage
 	// ... yet >:)
 	visible_message(SPAN_WARNING("[clickchain.performer] bashes [target] with [src]."))
-	return melee_object_hit(target, clickchain, clickchain_flags, mult)
+	. = melee_object_hit(target, clickchain, clickchain_flags, mult)
 
 /**
  * called at base of attack_object after standard melee attack misses
@@ -340,6 +345,13 @@
  */
 /obj/item/proc/melee_object_hit(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags, mult = 1)
 	SHOULD_CALL_PARENT(TRUE)
+
+
+	// todo: better logging
+	// todo: entity ids?
+	var/newhp = target.integrity
+	log_attack(key_name(src), "[target] ([ref(target)])", "attacked with [src] [src.damtype]-[src.damage_force]=[src.damage_tier] newhp ~[newhp || "unknown"]")
+
 	return NONE
 
 /**
@@ -358,4 +370,3 @@
 	return NONE
 
 #warn impl all
-#warn logging for obj attacks

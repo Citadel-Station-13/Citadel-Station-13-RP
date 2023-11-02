@@ -69,7 +69,17 @@
 	// todo: animation might need to depend on if it hits
 	clickchain.performer.do_attack_animation(target)
 
-	return melee_attack_hit(target, clickchain, style, clickchain_flags, target_zone, mult)
+	. = melee_attack_hit(target, clickchain, style, clickchain_flags, target_zone, mult)
+
+	// todo: better logging
+	// todo: entity ids?
+	var/newhp
+	if(ismob(target))
+		var/mob/casted = target
+		newhp = casted.health
+	else
+		newhp = target.integrity
+	log_attack(key_name(src), ismob(target)? key_name(target) : "[target] ([ref(target)])", "attacked with [style.attack_name] newhp ~[newhp || "unknown"]")
 
 /mob/proc/melee_attack_hit(atom/target, datum/event_args/actor/clickchain/clickchain, datum/unarmed_attack/style, clickchain_flags, target_zone, mult)
 	. = target.unarmed_act(src, style, target_zone, mult)
@@ -95,5 +105,3 @@
 
 /mob/proc/melee_attack_finalize(atom/target, datum/event_args/actor/clickchain/clickchain, datum/unarmed_attack/style, clickchain_flags, target_zone, mult)
 	return NONE
-
-#warn logging
