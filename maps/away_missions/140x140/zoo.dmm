@@ -2354,7 +2354,6 @@
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
@@ -2417,7 +2416,6 @@
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
@@ -2433,7 +2431,6 @@
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/grille,
@@ -2445,7 +2442,6 @@
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
@@ -2615,7 +2611,6 @@
 "hI" = (
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced{
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
@@ -3276,7 +3271,6 @@
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /turf/simulated/floor/plating,
@@ -3298,7 +3292,6 @@
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /turf/simulated/floor/plating,
@@ -3328,7 +3321,6 @@
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /turf/simulated/floor/plating,
@@ -3340,7 +3332,6 @@
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /turf/simulated/floor/plating,
@@ -3356,7 +3347,6 @@
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /turf/simulated/floor/plating,
@@ -3372,7 +3362,6 @@
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /turf/simulated/floor/plating,
@@ -4504,7 +4493,6 @@
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/grille,
@@ -4605,7 +4593,6 @@
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/grille,
@@ -4621,7 +4608,6 @@
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/grille,
@@ -4693,7 +4679,6 @@
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/grille,
