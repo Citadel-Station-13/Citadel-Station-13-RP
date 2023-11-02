@@ -158,6 +158,32 @@
 	auto_eject = 1
 	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
 
+/obj/item/gun/ballistic/gyropistol/bolter
+	name = "\improper Scorpion bolt pistol"
+	desc = "A boxy sidearm seemingly designed for a larger hand. Uses .75 gyrojet rounds."
+	description_fluff = "The HI-GP mk 3 'Scorpion' was an attempt to downsize the larger Ballistae model even further. Many of the weapon's issues persisted, compounded by the smaller size of the mechanical components within. Most prototypes sheared or broke, and were prone to malfunction due to the instense strain of extensive firing."
+	icon_state = "bolt_pistol"
+	item_state = "bolt_pistol"
+	max_shells = 10
+	fire_sound = 'sound/weapons/gunshot/gunshot_bolter.ogg'
+	origin_tech = list(TECH_COMBAT = 5, TECH_ILLEGAL = 3)
+	magazine_type = /obj/item/ammo_magazine/m75/pistol
+	allowed_magazines = list(/obj/item/ammo_magazine/m75/pistol)
+	auto_eject = 0
+
+/obj/item/gun/ballistic/gyropistol/bolter/update_icon_state()
+	. = ..()
+	icon_state = "bolt_pistol-[ammo_magazine ? round(ammo_magazine.stored_ammo.len, 2) : "empty"]"
+
+/obj/item/gun/ballistic/gyropistol/bolter/black
+	desc = "A boxy sidearm seemingly designed for a larger hand. This one is painted black."
+	icon_state = "bolt_pistolblack"
+	item_state = "bolt_pistolblack"
+
+/obj/item/gun/ballistic/gyropistol/bolter/black/update_icon_state()
+	. = ..()
+	icon_state = "bolt_pistolblack-[ammo_magazine ? round(ammo_magazine.stored_ammo.len, 2) : "empty"]"
+
 /obj/item/gun/ballistic/pistol
 	name = "compact pistol"
 	desc = "An ultra-compact pistol with a matte black finish. Uses 9mm."
