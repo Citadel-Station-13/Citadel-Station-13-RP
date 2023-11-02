@@ -2388,3 +2388,12 @@
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+
+/obj/item/clothing/under/replika/fklr
+	name = "command replikant bodysuit"
+	desc = "A skin-tight bodysuit designed for Replikant-type androids of the command variety. Comes with several interfacing ports and a conspicuous lack of leg coverage."
+	icon = 'icons/clothing/uniform/misc/replika_uniform.dmi'
+	icon_state = "fklr"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL

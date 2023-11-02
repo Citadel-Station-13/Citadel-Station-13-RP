@@ -570,6 +570,10 @@
 	name = "Replikant Bodysuit - Land-Survey"
 	path = /obj/item/clothing/under/replika/lstr
 
+/datum/loadout_entry/uniform/replika/fklr
+	name = "Replikant Bodysuit - Command"
+	path = /obj/item/clothing/under/replika/fklr
+
 /datum/loadout_entry/uniform/future_fashion_selection
 	name = "Futuristic Striped Jumpsuit Selection"
 	path = /obj/item/clothing/under/future_fashion
