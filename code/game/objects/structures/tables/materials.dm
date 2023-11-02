@@ -1,7 +1,8 @@
 /obj/structure/table/update_material_multi(list/parts)
-	. = ..()
-	var/datum/material/structure = parts[parts[1]]
-	var/datum/material/reinforcing = parts[parts[2]]
+	var/datum/material/structure = material_base
+	if(isnull(structure)) // we're not normal
+		return
+	var/datum/material/reinforcing = material_reinforcing
 	var/amount = structure.relative_integrity * 100 + reinforcing.relative_integrity * 50
 	set_full_integrity(amount, amount)
 	// the () is to block the list() from making it a string
