@@ -25,7 +25,7 @@
 /obj/item/stack/material/Initialize(mapload, new_amount, merge = TRUE, material)
 	if(!isnull(material))
 		src.material = material
-	src.material = SSmaterials.resolve_material(material)
+	src.material = SSmaterials.resolve_material(src.material)
 	. = ..()
 
 	pixel_x = rand(0,4)-4

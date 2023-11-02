@@ -358,3 +358,4 @@
 	return NONE
 
 #warn impl all
+#warn logging for obj attacks

@@ -37,7 +37,8 @@
 				if(other == trait)
 					material_traits_data = trait.on_add(src, old_data, mat.material_traits[trait])
 				else
-					material_traits = list(other = old_data, trait = trait.on_add(old_data, mat.material_traits[trait]))
+					// we wrap other, trait in ()'s so byond's list() syntax doesn't turn them into strings rather than the actual referneces.
+					material_traits = list((other) = old_data, (trait) = trait.on_add(old_data, mat.material_traits[trait]))
 					material_traits_data = null
 					material_trait_flags = other.material_trait_flags | trait.material_trait_flags
 

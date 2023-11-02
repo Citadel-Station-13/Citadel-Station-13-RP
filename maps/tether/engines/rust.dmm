@@ -259,7 +259,6 @@
 /area/engineering/engine_room)
 "aR" = (
 /obj/machinery/atmospherics/component/unary/outlet_injector{
-	unacidable = 1;
 	use_power = 1
 	},
 /turf/simulated/floor/reinforced,

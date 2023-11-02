@@ -16,6 +16,7 @@
 			)
 	material_parts = /datum/material/steel
 	material_costs = SHEET_MATERIAL_AMOUNT * 2
+	material_primary = MATERIAL_PART_DEFAULT
 
 	/// applies material color
 	var/material_color = TRUE
