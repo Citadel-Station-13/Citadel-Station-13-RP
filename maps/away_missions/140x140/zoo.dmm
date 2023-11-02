@@ -8491,9 +8491,7 @@
 /area/awaymission/zoo)
 "xf" = (
 /obj/machinery/door/window/brigdoor/northleft,
-/obj/structure/window/reinforced{
-	health = 1e+006
-	},
+/obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
@@ -8506,18 +8504,14 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/structure/window/reinforced{
-	health = 1e+006
-	},
+/obj/structure/window/reinforced,
 /obj/structure/table/rack,
 /obj/random/ammo_all,
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/zoo)
 "xh" = (
 /obj/machinery/door/window/brigdoor/northleft,
-/obj/structure/window/reinforced{
-	health = 1e+006
-	},
+/obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
@@ -8530,9 +8524,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/structure/window/reinforced{
-	health = 1e+006
-	},
+/obj/structure/window/reinforced,
 /obj/structure/table/rack,
 /obj/random/weapon,
 /turf/simulated/floor/tiled/dark,
