@@ -2453,9 +2453,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/main_map/maintenance/deck_four/forward/starboard)
 "pY" = (
-/obj/machinery/porta_turret/stationary{
-	health = 200
-	},
+/obj/machinery/porta_turret/stationary,
 /obj/machinery/light{
 	dir = 8
 	},
@@ -4076,9 +4074,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/trash_pit)
 "zu" = (
-/obj/machinery/porta_turret/stationary{
-	health = 200
-	},
+/obj/machinery/porta_turret/stationary,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -7024,9 +7020,7 @@
 /turf/simulated/floor/plating,
 /area/library/study)
 "RO" = (
-/obj/machinery/porta_turret/stationary{
-	health = 200
-	},
+/obj/machinery/porta_turret/stationary,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/gateway)
 "RP" = (
