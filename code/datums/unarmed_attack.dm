@@ -1,6 +1,6 @@
 GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 
-/proc/cached_unarmed_attack_datum(datum/unarmed_attack/path)
+/proc/fetch_unarmed_style(datum/unarmed_attack/path)
 	if(isnull(GLOB.unarmed_attack_cache[path]))
 		GLOB.unarmed_attack_cache[path] = new path
 	return GLOB.unarmed_attack_cache[path]
@@ -42,7 +42,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	var/eye_attack_text_victim
 
 /datum/unarmed_attack/proc/get_sparring_variant()
-	return cached_unarmed_attack_datum(sparring_variant_type)
+	return fetch_unarmed_style(sparring_variant_type)
 
 /datum/unarmed_attack/proc/is_usable(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone)
 	if(user.restrained())

@@ -63,7 +63,7 @@
 		ARMOR_BULLET_TIER = kinetic_tier,
 		ARMOR_BULLET_SOAK = kinetic_damping * 0.0025 + kinetic_hardness * 0.005,
 		ARMOR_LASER = laser_absorb,
-		ARMOR_LASER_TIER = laser_absorb,
+		ARMOR_LASER_TIER = laser_tier,
 		ARMOR_LASER_SOAK = ablation_damping * 0.0025 + ablation_diffusion * 0.005,
 		ARMOR_ENERGY = 1 - exotic_absorption,
 		ARMOR_BOMB = direct_bomb,

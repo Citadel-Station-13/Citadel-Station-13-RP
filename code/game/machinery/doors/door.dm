@@ -284,10 +284,11 @@
 
 /obj/machinery/door/atom_break()
 	. = ..()
-	machine_stat |= BROKEN
-	for (var/mob/O in viewers(src, null))
-		if ((O.client && !( O.blinded )))
-			O.show_message("[src.name] breaks!" )
+	// todo: this is shitcode
+	if(!istype(src, /obj/machinery/door/airlock))
+		for (var/mob/O in viewers(src, null))
+			if ((O.client && !( O.blinded )))
+				O.show_message("[src.name] breaks!" )
 	update_icon()
 
 /obj/machinery/door/atom_fix()

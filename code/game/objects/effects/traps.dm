@@ -700,7 +700,8 @@ if (istype(AM, /mob/living))
 		else
 			to_chat(user, "<span class='warning'>You can't disarm the trap this way!</span>")
 
-/obj/effect/trap/pop_up/thrower/Reset()
+/obj/effect/trap/pop_up/thrower/atom_fix()
+	. = ..()
 	update_icon()
 	set_integrity(integrity_max)
 	tripped = FALSE
@@ -798,7 +799,9 @@ if (istype(AM, /mob/living))
 		visible_message("<span class='danger'>The falling log slams into [M], sending them flying!</span>")
 		M.afflict_paralyze(20 * 12)
 
-/obj/effect/trap/falling/log/Reset()
+/obj/effect/trap/falling/log/atom_fix()
+	. = ..()
+
 	set_integrity(integrity_max)
 	tripped = FALSE
 	name = "wavering tile"

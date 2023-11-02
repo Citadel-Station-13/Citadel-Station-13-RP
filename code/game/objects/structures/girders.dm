@@ -85,9 +85,19 @@
 		"reinf" = material_reinforcing,
 	)
 
-/obj/structure/girder/material_set_parts(list/part_instances)
-	material_structure = part_instances["base"]
-	material_reinforcing = part_instances["reinf"]
+/obj/structure/girder/material_set_part(part, datum/material/material)
+	var/datum/material/old
+	switch(part)
+		if("base")
+			old = material_structure
+			material_structure = material
+		if("reinf")
+			old = material_reinforcing
+			material_reinforcing = material
+		else
+			CRASH("invalid part")
+	unregister_material(old, part == "base")
+	register_material(material, part == "base")
 
 /obj/structure/girder/update_icon_state()
 	if(anchored)

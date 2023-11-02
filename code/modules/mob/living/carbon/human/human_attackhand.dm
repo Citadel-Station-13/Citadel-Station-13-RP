@@ -457,6 +457,9 @@
 /mob/living/carbon/human/proc/set_default_attack(var/datum/unarmed_attack/u_attack)
 	default_attack = u_attack
 
+/mob/living/carbon/human/unarmed_attack_style()
+	return default_attack || ..()
+
 /datum/unarmed_attack
 	var/attack_name = "fist"
 

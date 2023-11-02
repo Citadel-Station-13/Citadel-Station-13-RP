@@ -18,10 +18,7 @@
 	move_resist = INFINITY
 	obj_flags = NONE
 	vis_flags = VIS_INHERIT_PLANE
-	// blocks_emissive = EMISSIVE_BLOCK_GENERIC
-
-/obj/effect/take_damage_legacy(damage)
-	return
+	// blocks_emissive = EMI
 
 /obj/effect/fire_act()
 	return
@@ -31,9 +28,6 @@
 
 /obj/effect/blob_act(obj/structure/blob/B)
 	return
-
-/obj/effect/legacy_ex_act(severity, target)
-	return FALSE
 
 /obj/effect/singularity_act()
 	qdel(src)

@@ -46,7 +46,15 @@
 		return
 	return . | melee_attack_finalize(target, clickchain, style, clickchain_flags, target_zone, mult)
 
-//? todo: melee_special
+/**
+ * default current unarmed attack style
+ *
+ * todo: kinda shitycodey but w/e
+ */
+/mob/proc/unarmed_attack_style()
+	return fetch_unarmed_style(/datum/unarmed_attack)
+
+// todo: melee_special for overrides (?)
 
 /mob/proc/melee_attack(atom/target, datum/event_args/actor/clickchain/clickchain, datum/unarmed_attack/style, clickchain_flags, target_zone, mult)
 	SHOULD_CALL_PARENT(TRUE)

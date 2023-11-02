@@ -892,11 +892,11 @@ About the new airlock wires panel:
 		ignite(is_hot(C))
 	..()
 
-/obj/machinery/door/airlock/set_broken()
+/obj/machinery/door/airlock/atom_break()
 	src.p_open = 1
-	machine_stat |= BROKEN
 	if (secured_wires)
 		lock()
+	. = ..()
 	for (var/mob/O in viewers(src, null))
 		if ((O.client && !( O.blinded )))
 			O.show_message("[src.name]'s control panel bursts open, sparks spewing out!")
@@ -904,9 +904,6 @@ About the new airlock wires panel:
 	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	s.set_up(5, 1, src)
 	s.start()
-
-	update_icon()
-	return
 
 /obj/machinery/door/airlock/open(var/forced=0)
 	if(!can_open(forced))
