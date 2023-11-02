@@ -782,13 +782,25 @@ Swimsuits
 	name = "Antediluvian Wraps"
 	path = /obj/item/clothing/under/antediluvian/dress/aziru
 
+/datum/loadout_entry/uniform/antediluvian_boobflap
+	name = "Antediluvian Chest Flaps"
+	path = /obj/item/clothing/under/antediluvian/dress/ante_boobflap
+
 /datum/loadout_entry/accessory/antediluvian_gloves_alt
 	name = "Antediluvian Bracers Alternate"
 	path = /obj/item/clothing/accessory/antediluvian_gloves/alt
 
 /datum/loadout_entry/accessory/antediluvian_socks
-	name = "Antediluvian Socks"
+	name = "Antediluvian Legguards"
 	path = /obj/item/clothing/accessory/antediluvian_socks
+
+/datum/loadout_entry/accessory/antediluvian_stirrups
+	name = "Antediluvian Stirrups"
+	path = /obj/item/clothing/accessory/antediluvian_stirrups
+
+/datum/loadout_entry/accessory/antediluvian_sideskirt
+	name = "Antediluvian Sideskirt"
+	path = /obj/item/clothing/accessory/antediluvian_sideskirt
 
 /datum/loadout_entry/accessory/antediluvian_necklace
 	name = "Antediluvian Necklace"
