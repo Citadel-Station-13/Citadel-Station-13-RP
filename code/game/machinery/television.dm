@@ -14,16 +14,22 @@
 /obj/machinery/television/Initialize(mapload)
 	. = ..()
 
-	//var/list/channels = SStelevision.getChannels()
+	var/list/channels = SStelevision.getChannels()
 	var/current_channel = "Nanotrasen_Public_Network/"
 	SStelevision.all_tvs += src
 	SStelevision.all_tvs[src] = current_channel
 
 /obj/machinery/television/Destroy()
 	SStelevision.all_tvs -= src
-	//QDELL_LIST_NULL(channels)
-	//QDELL_NULL(channel)
 	return ..()
 
 /obj/machinery/television/proc/receiveLines(line, language)
 	atom_say(line, SScharacters.resolve_language_path(language))
+
+/obj/machinery/television/attackby(obj/item/W as obj, mob/user as mob)
+	if(default_deconstruction_screwdriver(user, W))
+		return
+	if(default_deconstruction_crowbar(user, W))
+		return
+	if(default_unfasten_wrench(user, W, 40))
+		return
