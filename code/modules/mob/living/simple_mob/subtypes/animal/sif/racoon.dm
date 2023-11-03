@@ -349,4 +349,4 @@
 /mob/living/simple_mob/animal/sif/sakimm/dexter
 	name = "Dexter"
 	desc = "A tame, oversized rodent with hands. It seems really friendly."
-	faction = "station"
+	faction = "neutral"
