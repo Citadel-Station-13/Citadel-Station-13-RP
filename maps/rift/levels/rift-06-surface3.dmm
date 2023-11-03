@@ -12357,9 +12357,6 @@
 /turf/simulated/floor/plating,
 /area/shuttle/courser/cockpit)
 "aIC" = (
-/obj/machinery/vending/coffee{
-	dir = 4
-	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
 	},
@@ -12369,6 +12366,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals6{
 	dir = 10
 	},
+/obj/machinery/vending/coffee,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
 "aID" = (

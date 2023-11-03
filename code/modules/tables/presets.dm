@@ -306,6 +306,21 @@
 	material = SSmaterials.get_material(/datum/material/bone)
 	return ..()
 
+/obj/structure/table/carbon
+	icon_state = "plain_preview"
+
+/obj/structure/table/carbon/Initialize(mapload)
+	material = SSmaterials.get_material(/datum/material/carbon)
+	return ..()
+
+/obj/structure/table/carbon/reinforced
+	icon_state = "plain_preview"
+
+/obj/structure/table/carbon/reinforced/Initialize(mapload)
+	material = SSmaterials.get_material(/datum/material/carbon)
+	reinforced = SSmaterials.get_material(/datum/material/marble)
+	return ..()
+
 /*
 /obj/structure/table/bench/holotable
 	icon_state = "holo_preview"
