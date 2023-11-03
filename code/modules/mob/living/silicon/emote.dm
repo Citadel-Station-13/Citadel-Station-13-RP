@@ -293,6 +293,16 @@
 			else
 				to_chat(src, "You're not a cat!")
 
+		if("purr")
+			var/mob/living/silicon/robot/R = src
+			if (istype(R) && R.module.is_cat())
+				message = "purrs softly."
+
+				playsound(loc, 'sound/voice/purr.ogg', 50, 1, -1)
+				m_type = 2
+			else
+				to_chat(src, "You're not a cat!")
+
 		if ("help")
 			to_chat(src, "salute, bow-(none)/mob, clap, flap, aflap, twitch, twitch_s, nod, deathgasp, glare-(none)/mob, stare-(none)/mob, look, beep, ping, \nbuzz, law, halt, yes, no")
 		else
