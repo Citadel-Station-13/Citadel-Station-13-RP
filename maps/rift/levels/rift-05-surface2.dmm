@@ -289,9 +289,6 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/structure/bed/chair/sofa/black/right{
-	dir = 1
-	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "ang" = (
@@ -4818,18 +4815,6 @@
 "ddZ" = (
 /turf/simulated/floor/outdoors/gravsnow/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside2)
-"dek" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/lightgrey/border{
-	dir = 8
-	},
-/obj/structure/bed/chair/sofa/black/right{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/steel,
-/area/hallway/primary/surfacetwo)
 "dep" = (
 /turf/simulated/wall/prepainted/security,
 /area/security/range)
@@ -12069,7 +12054,6 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 8
 	},
-/obj/structure/bed/chair/sofa/black/corner,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "hMP" = (
@@ -14505,7 +14489,6 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
 	},
-/obj/structure/bed/chair/sofa/black/right,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "jmn" = (
@@ -14674,9 +14657,6 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
-	},
-/obj/structure/bed/chair/sofa/black/corner{
-	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
@@ -20456,9 +20436,6 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "1-4"
-	},
-/obj/structure/bed/chair/sofa/black/left{
-	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
@@ -27306,9 +27283,6 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/structure/bed/chair/sofa/black/left{
-	dir = 1
-	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "rib" = (
@@ -28261,9 +28235,6 @@
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
-/obj/structure/bed/chair/sofa/black/right{
-	dir = 1
-	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "rMB" = (
@@ -28843,7 +28814,6 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 8
 	},
-/obj/structure/bed/chair/sofa/black/left,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "sfC" = (
@@ -30169,7 +30139,6 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/structure/table/carbon/reinforced,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "teZ" = (
@@ -31885,7 +31854,6 @@
 /obj/effect/floor_decal/corner/purple/bordercorner2{
 	dir = 9
 	},
-/obj/machinery/media/jukebox,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "unz" = (
@@ -33094,7 +33062,6 @@
 	},
 /obj/effect/floor_decal/borderfloor/corner2,
 /obj/effect/floor_decal/corner/purple/bordercorner2,
-/obj/structure/table/carbon/reinforced,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "uZq" = (
@@ -34617,10 +34584,6 @@
 /obj/effect/overlay/snow/floor,
 /turf/simulated/floor/plating,
 /area/rift/surfacebase/outside/outside2)
-"weh" = (
-/obj/structure/table/carbon/reinforced,
-/turf/simulated/floor/glass/reinforced,
-/area/hallway/primary/surfacetwo)
 "wek" = (
 /obj/structure/closet/secure_closet/personal,
 /turf/simulated/floor/wood,
@@ -36260,7 +36223,6 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/structure/table/carbon/reinforced,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "xpI" = (
@@ -36364,18 +36326,6 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/crew_quarters/sleep)
-"xqT" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/lightgrey/border{
-	dir = 4
-	},
-/obj/structure/bed/chair/sofa/black/left{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/steel,
-/area/hallway/primary/surfacetwo)
 "xrI" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -53087,7 +53037,7 @@ xUe
 xUe
 emT
 jru
-dek
+xLE
 mDz
 bgP
 bgP
@@ -53281,7 +53231,7 @@ rCo
 rCo
 xUe
 sfB
-weh
+bgP
 bgP
 bgP
 bgP
@@ -53669,7 +53619,7 @@ rCo
 rCo
 xUe
 jmj
-weh
+bgP
 bgP
 bgP
 bgP
@@ -53863,7 +53813,7 @@ xUe
 xUe
 emT
 hLX
-xqT
+sJl
 iru
 bgP
 bgP
