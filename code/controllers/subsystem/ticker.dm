@@ -6,7 +6,7 @@
  */
 SUBSYSTEM_DEF(ticker)
 	name = "Ticker"
-	wait = 20
+	wait = 2 SECONDS
 	init_order = INIT_ORDER_TICKER
 	runlevels = RUNLEVEL_LOBBY | RUNLEVEL_SETUP | RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 
@@ -73,6 +73,12 @@ SUBSYSTEM_DEF(ticker)
 	var/static/round_start_time
 	var/static/list/round_start_events
 	var/static/list/round_end_events
+
+	//* Game State
+	/// game factions
+	var/list/datum/game_faction/game_factions
+	/// objectives that need ticking
+	var/list/datum/game_objective/game_objectives_ticking
 
 /datum/controller/subsystem/ticker/Initialize()
 	if(!syndicate_code_phrase)
