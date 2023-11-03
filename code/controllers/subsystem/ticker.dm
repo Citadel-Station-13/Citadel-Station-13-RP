@@ -1,3 +1,9 @@
+/**
+ * Ticker Subsystem
+ *
+ * While the Storyteller and World subsystems handle providing round content and storing IC definitions,
+ * we actually **tick** the round's flow, handling critical things like startup/shutdown of a given round.
+ */
 SUBSYSTEM_DEF(ticker)
 	name = "Ticker"
 	wait = 20

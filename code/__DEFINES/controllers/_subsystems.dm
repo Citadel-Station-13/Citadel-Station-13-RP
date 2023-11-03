@@ -127,7 +127,8 @@ DEFINE_BITFIELD(runlevels, list(
 #define INIT_ORDER_CIRCUIT        -60
 #define INIT_ORDER_AI             -70
 #define INIT_ORDER_PATH           -98
-#define INIT_ORDER_CHAT           -100  //! Should be last to ensure chat remains smooth during init.
+#define INIT_ORDER_STORYTELLER    -900
+#define INIT_ORDER_CHAT           -1000  //! Should be last to ensure chat remains smooth during init.
 
 
 /**
