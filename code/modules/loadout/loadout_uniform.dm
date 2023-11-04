@@ -582,6 +582,10 @@
 	name = "Replikant Bodysuit - Supervisor"
 	path = /obj/item/clothing/under/replika/klbr
 
+/datum/loadout_entry/uniform/replika/stcr
+	name = "Replikant Bodysuit - Security-Technician"
+	path = /obj/item/clothing/under/replika/stcr
+
 /datum/loadout_entry/uniform/replika/gestalt_fem
 	name = "Sleek Crew Uniform - Female"
 	path = /obj/item/clothing/under/replika/gestalt_fem
