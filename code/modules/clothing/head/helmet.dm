@@ -408,6 +408,14 @@
 	armor_type = /datum/armor/general/utilitarian_military
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
+/obj/item/clothing/head/helmet/baroque
+	name = "baroque military helmet"
+	desc = "This sturdy helmet's ornate design belies its technological sophistication."
+	icon = 'icons/clothing/suit/armor/baroque.dmi'
+	icon_state = "sisterhelm"
+	armor_type = /datum/armor/general/baroque_military
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
 /obj/item/clothing/head/helmet/duraskull
 	name = "durasteel skull mask"
 	desc = "The process of working durasteel into such a shape is no small feat. Whoever commissioned this wanted to send a serious message."

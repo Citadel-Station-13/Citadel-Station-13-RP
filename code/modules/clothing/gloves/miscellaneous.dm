@@ -203,6 +203,14 @@
 	desc = "These gloves were originally integrated into the bounty hunter skinsuit. Later iterations were made removable for practicality."
 	icon_state = "bountyskin"
 
+//More Warhammer Fun
+/obj/item/clothing/gloves/baroque
+	name = "baroque military gauntlets"
+	desc = "The silver banding around the wrists of these gloves is inscribed with the names of countless martyrs."
+	icon = 'icons/clothing/suit/armor/baroque.dmi'
+	icon_state = "sistergloves"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
 /* Full port pending. Some of these are nuts.
 
 /obj/item/clothing/gloves/fingerless/pugilist
