@@ -574,6 +574,14 @@
 	name = "Replikant Bodysuit - Command"
 	path = /obj/item/clothing/under/replika/fklr
 
+/datum/loadout_entry/uniform/replika/eulr
+	name = "Replikant Bodysuit - Multipurpose"
+	path = /obj/item/clothing/under/replika/eulr
+
+/datum/loadout_entry/uniform/replika/klbr
+	name = "Replikant Bodysuit - Supervisor"
+	path = /obj/item/clothing/under/replika/eulr
+
 /datum/loadout_entry/uniform/replika/gestalt_fem
 	name = "Sleek Crew Uniform - Female"
 	path = /obj/item/clothing/under/replika/gestalt_fem
@@ -582,7 +590,7 @@
 	name = "Sleek Crew Uniform"
 	path = /obj/item/clothing/under/replika/gestalt
 
-/datum/loadout_entry/uniform/replika/gestalt
+/datum/loadout_entry/uniform/replika/gestalt_sleeveless
 	name = "Sleek Crew Uniform - Female Sleeveless"
 	path = /obj/item/clothing/under/replika/gestaltsleeveless
 

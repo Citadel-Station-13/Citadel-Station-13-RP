@@ -2398,6 +2398,24 @@
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
+/obj/item/clothing/under/replika/eulr
+	name = "general-purpose replikant bodysuit"
+	desc = "A skin-tight bodysuit designed for Replikant-type androids of the multipurpose variety. Comes with several interfacing ports and a conspicuous lack of leg coverage."
+	icon = 'icons/clothing/uniform/misc/replika.dmi'
+	icon_state = "eulr"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+
+/obj/item/clothing/under/replika/klbr
+	name = "supervisor replikant bodysuit"
+	desc = "A skin-tight bodysuit designed for Replikant-type androids of the supervision variety. Comes with several interfacing ports and a conspicuous lack of leg coverage."
+	icon = 'icons/clothing/uniform/misc/replika.dmi'
+	icon_state = "klbr"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+
 /obj/item/clothing/under/replika/gestalt_fem
 	name = "sleek female crew uniform"
 	desc = "A tight-fitting black uniform with a narrow skirt and striking crimson trim."
@@ -2411,7 +2429,7 @@
 	name = "sleek crew uniform"
 	desc = "A tight-fitting black uniform with striking crimson trim."
 	icon = 'icons/clothing/uniform/misc/replika.dmi'
-	icon_state = "gestalt_fem"
+	icon_state = "gestalt"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
