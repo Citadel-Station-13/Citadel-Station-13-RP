@@ -14,6 +14,8 @@ SUBSYSTEM_DEF(television)
 	runlevels = RUNLEVEL_GAME
 
 	var/list/channels = list()
+	//channels but with the nasty punctuation trimmed out.
+	var/list/readable_channels = list()
 	//all_tvs will be updated by TVs and will be paired with the channel they are in.
 	var/list/all_tvs = list()
 
@@ -45,10 +47,13 @@ SUBSYSTEM_DEF(television)
 /datum/controller/subsystem/television/Initialize(timeofday)
 	channels = flist("strings/television/shows/")
 	possible_shows = channels
+	readable_channels = channels
 	//2d list pairing a list of shows to a channel name.
 	for (var/c in channels)
 		possible_shows[c] += flist("strings/television/shows/[c]")
 		channel_current_line[c] = 1
+		//process channels into readable_channels
+		readable_channels[c] = copytext(c, 1, lentext(c) - 1)
 	//all advertisments available
 	possible_ads = flist("strings/television/ads/")
 
@@ -66,13 +71,14 @@ SUBSYSTEM_DEF(television)
 				channel_current_state[channel] = CHANSTATE_SHOW1
 
 			if (CHANSTATE_SHOW1)
+				var/bin = (file2text("strings/television/shows/[channel][channel_current_shows[channel]]"))
+				TO_WORLD(bin)
 				prepare_show(channel, file2text("strings/television/shows/[channel][channel_current_shows[channel]]"))
 				channel_current_state[channel] = CHANSTATE_SHOW1AIR
 
 			if (CHANSTATE_SHOW1AIR, CHANSTATE_AD1AIR, CHANSTATE_AD2AIR)
 				var/list/current_show = channel_current_shows[channel]
 				var/i = channel_current_line[channel]
-				//cannot read from list
 				broadcastLine(current_show[i], channel, channel_current_language[channel][i])
 				if (channel_current_line[channel] == channel_show_length[channel])
 					var/state = channel_current_state[channel]
@@ -162,9 +168,9 @@ SUBSYSTEM_DEF(television)
 	//List of language keys
 	channel_current_language[channel] = prepared_script_language
 
-///For TV's to call on initialization.
+//Returns a list of all TV channels.
 /datum/controller/subsystem/television/proc/getChannels()
-	return channels
+	return readable_channels
 
 //Call to decode language keys. Takes a string e.g COMMON and returns the relevant language datum path
 /datum/controller/subsystem/television/proc/decodeTVLanguageKey(key)
