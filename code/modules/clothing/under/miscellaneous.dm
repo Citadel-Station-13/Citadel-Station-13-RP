@@ -2425,16 +2425,16 @@
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
-/obj/item/clothing/under/gestalt/gestalt_fem
-	name = "sleek female crew uniform"
+/obj/item/clothing/under/gestalt/sleek_skirt
+	name = "sleek crew skirt"
 	desc = "A tight-fitting black uniform with a narrow skirt and striking crimson trim."
 	icon = 'icons/clothing/uniform/misc/replika.dmi'
-	icon_state = "gestalt_fem"
+	icon_state = "gestalt_skirt"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
-/obj/item/clothing/under/gestalt/gestalt
+/obj/item/clothing/under/gestalt/sleek
 	name = "sleek crew uniform"
 	desc = "A tight-fitting black uniform with striking crimson trim."
 	icon = 'icons/clothing/uniform/misc/replika.dmi'
@@ -2443,7 +2443,17 @@
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
-/obj/item/clothing/under/gestalt/gestaltsleeveless
+/obj/item/clothing/under/gestalt/sleek_fem
+	name = "sleek female crew uniform"
+	desc = "A tight-fitting black uniform with striking crimson trim."
+	icon = 'icons/clothing/uniform/misc/replika.dmi'
+	icon_state = "gestalt_fem"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+
+
+/obj/item/clothing/under/gestalt/sleeveless
 	name = "sleeveless sleek crew uniform"
 	desc = "A tight-fitting, sleeveless single-piece black uniform with striking crimson trim."
 	icon = 'icons/clothing/uniform/misc/replika.dmi'
