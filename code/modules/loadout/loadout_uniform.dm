@@ -562,41 +562,29 @@
 	name = "EVA Bodysuit - Female"
 	path = /obj/item/clothing/under/bodysuit/bodysuiteva_fem
 
-/datum/loadout_entry/uniform/replika/arar
-	name = "Replikant Bodysuit - Repair-Worker"
-	path = /obj/item/clothing/under/replika/arar
+/datum/loadout_entry/uniform/replika_selection
+	name = "Replikant Bodysuit Selection"
+	path = /obj/item/clothing/under/replika
 
-/datum/loadout_entry/uniform/replika/lstr
-	name = "Replikant Bodysuit - Land-Survey"
-	path = /obj/item/clothing/under/replika/lstr
+/datum/loadout_entry/uniform/replika_selection/New()
+	..()
+	var/list/replika_selection = list()
+	for(var/replika in typesof(/obj/item/clothing/under/replika))
+		var/obj/item/clothing/under/replika/replika_type = replika
+		replika_selection[initial(replika_type.name)] = replika_type
+	tweaks += new/datum/loadout_tweak/path(tim_sort(replika_selection, GLOBAL_PROC_REF(cmp_text_asc)))
 
-/datum/loadout_entry/uniform/replika/fklr
-	name = "Replikant Bodysuit - Command"
-	path = /obj/item/clothing/under/replika/fklr
+/datum/loadout_entry/uniform/gestalt_selection
+	name = "Sleek Uniform Selection"
+	path = /obj/item/clothing/under/gestalt
 
-/datum/loadout_entry/uniform/replika/eulr
-	name = "Replikant Bodysuit - Multipurpose"
-	path = /obj/item/clothing/under/replika/eulr
-
-/datum/loadout_entry/uniform/replika/klbr
-	name = "Replikant Bodysuit - Supervisor"
-	path = /obj/item/clothing/under/replika/klbr
-
-/datum/loadout_entry/uniform/replika/stcr
-	name = "Replikant Bodysuit - Security-Technician"
-	path = /obj/item/clothing/under/replika/stcr
-
-/datum/loadout_entry/uniform/replika/gestalt_fem
-	name = "Sleek Crew Uniform - Female"
-	path = /obj/item/clothing/under/replika/gestalt_fem
-
-/datum/loadout_entry/uniform/replika/gestalt
-	name = "Sleek Crew Uniform"
-	path = /obj/item/clothing/under/replika/gestalt
-
-/datum/loadout_entry/uniform/replika/gestalt_sleeveless
-	name = "Sleek Crew Uniform - Female Sleeveless"
-	path = /obj/item/clothing/under/replika/gestaltsleeveless
+/datum/loadout_entry/uniform/gestalt_selection/New()
+	..()
+	var/list/gestalt_selection = list()
+	for(var/gestalt in typesof(/obj/item/clothing/under/gestalt))
+		var/obj/item/clothing/under/gestalt/gestalt_type = gestalt
+		gestalt_selection[initial(gestalt_type.name)] = gestalt_type
+	tweaks += new/datum/loadout_tweak/path(tim_sort(gestalt_selection, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/uniform/future_fashion_selection
 	name = "Futuristic Striped Jumpsuit Selection"
