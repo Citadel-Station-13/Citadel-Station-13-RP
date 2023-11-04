@@ -2374,7 +2374,7 @@
 /obj/item/clothing/under/replika/arar
 	name = "repair-worker replikant bodysuit"
 	desc = "A skin-tight bodysuit designed for Replikant-type androids of the engineering variety. Comes with several interfacing ports and a conspicuous lack of leg coverage."
-	icon = 'icons/clothing/uniform/misc/replika_uniform.dmi'
+	icon = 'icons/clothing/uniform/misc/replika.dmi'
 	icon_state = "arar"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
@@ -2383,7 +2383,7 @@
 /obj/item/clothing/under/replika/lstr
 	name = "land-survey replikant bodysuit"
 	desc = "A skin-tight bodysuit designed for Replikant-type androids of the exploration variety. Comes with several interfacing ports and a conspicuous lack of leg coverage."
-	icon = 'icons/clothing/uniform/misc/replika_uniform.dmi'
+	icon = 'icons/clothing/uniform/misc/replika.dmi'
 	icon_state = "lstr"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
@@ -2392,8 +2392,35 @@
 /obj/item/clothing/under/replika/fklr
 	name = "command replikant bodysuit"
 	desc = "A skin-tight bodysuit designed for Replikant-type androids of the command variety. Comes with several interfacing ports and a conspicuous lack of leg coverage."
-	icon = 'icons/clothing/uniform/misc/replika_uniform.dmi'
+	icon = 'icons/clothing/uniform/misc/replika.dmi'
 	icon_state = "fklr"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+
+/obj/item/clothing/under/replika/gestalt_fem
+	name = "sleek female crew uniform"
+	desc = "A tight-fitting black uniform with a narrow skirt and striking crimson trim."
+	icon = 'icons/clothing/uniform/misc/replika.dmi'
+	icon_state = "gestalt_fem"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+
+/obj/item/clothing/under/replika/gestalt
+	name = "sleek crew uniform"
+	desc = "A tight-fitting black uniform with striking crimson trim."
+	icon = 'icons/clothing/uniform/misc/replika.dmi'
+	icon_state = "gestalt_fem"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+
+/obj/item/clothing/under/replika/gestaltsleeveless
+	name = "sleeveless sleek crew uniform"
+	desc = "A tight-fitting, sleeveless single-piece black uniform with striking crimson trim."
+	icon = 'icons/clothing/uniform/misc/replika.dmi'
+	icon_state = "gestalt_sleeveless"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL

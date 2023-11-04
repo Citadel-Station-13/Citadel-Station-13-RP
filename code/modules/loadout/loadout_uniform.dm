@@ -574,6 +574,18 @@
 	name = "Replikant Bodysuit - Command"
 	path = /obj/item/clothing/under/replika/fklr
 
+/datum/loadout_entry/uniform/replika/gestalt_fem
+	name = "Sleek Crew Uniform - Female"
+	path = /obj/item/clothing/under/replika/gestalt_fem
+
+/datum/loadout_entry/uniform/replika/gestalt
+	name = "Sleek Crew Uniform"
+	path = /obj/item/clothing/under/replika/gestalt
+
+/datum/loadout_entry/uniform/replika/gestalt
+	name = "Sleek Crew Uniform - Female Sleeveless"
+	path = /obj/item/clothing/under/replika/gestaltsleeveless
+
 /datum/loadout_entry/uniform/future_fashion_selection
 	name = "Futuristic Striped Jumpsuit Selection"
 	path = /obj/item/clothing/under/future_fashion
