@@ -198,7 +198,7 @@
 
 //Engineering + Science + Supply
 /datum/loadout_entry/restricted/eng_sci_supply
-	allowed_roles = list("Senior Engineer", "Engineer", "Chief Engineer", "Atmospheric Technician", "Scientist", "Xenobiologist",  "Roboticist", "Senior Researcher", "Explorer", "Pathfinder", "Research Director", "Shaft Miner", "Cargo Technician", "Quartermaster")
+	allowed_roles = list("Senior Engineer", "Station Engineer", "Chief Engineer", "Atmospheric Technician", "Scientist", "Xenobiologist",  "Roboticist", "Senior Researcher", "Explorer", "Pathfinder", "Research Director", "Shaft Miner", "Cargo Technician", "Quartermaster")
 
 /datum/loadout_entry/restricted/eng_sci_supply/eyes
 	slot = SLOT_ID_GLASSES
@@ -847,7 +847,7 @@
 /datum/loadout_entry/restricted/engineering/back/dufflebag
 	name = "Engineering Dufflebag"
 	path = /obj/item/storage/backpack/dufflebag/eng
-	allowed_roles = list("Engineer", "Chief Engineer", "Atmospheric Technician", "Talon Engineer")
+	allowed_roles = list("Station Engineer", "Chief Engineer", "Atmospheric Technician", "Talon Engineer")
 	cost = 2
 
 //Uniform
