@@ -63,7 +63,7 @@
 //Engineering
 /datum/loadout_entry/restricted/engineering
 	subcategory = "Engineering"
-	allowed_roles = list("Engineer", "Chief Engineer", "Atmospheric Technician", "Senior Engineer")
+	allowed_roles = list("Station Engineer", "Chief Engineer", "Atmospheric Technician", "Senior Engineer")
 
 /datum/loadout_entry/restricted/engineering/eyes
 	slot = SLOT_ID_GLASSES
