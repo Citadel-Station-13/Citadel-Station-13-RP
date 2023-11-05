@@ -25,17 +25,36 @@
  * animate *incoming* weapon attacks
  *
  * @params
+ * * attacker - (optional) what hit us
  * * weapon - thing hitting us
  * * time - animation duration
  */
-/atom/movable/proc/animate_hit_by_weapon(obj/item/weapon, time = 8)
+/atom/proc/animate_hit_by_weapon(atom/attacker, obj/item/weapon, time = 8)
 	// todo: overlays/vis contents?
 	var/image/rendering = image(weapon, loc = src)
 	flick_overlay(rendering, GLOB.clients, time)
 
-	// 'slide' the weapon across us while it fades
+	// yeah we don't care about the mob's state, we're an animation
+	rendering.appearance_flags = KEEP_APART | RESET_ALPHA | RESET_TRANSFORM | RESET_COLOR
+	rendering.plane = MOB_PLANE
 
-	#warn impl
+	// size down
+	rendering.transform = matrix() * 0.4
+
+	// 'slide' the weapon across us while it fades
+	#define ATTACK_ITEM_OFFSET 12
+	if(isnull(attacker) || attacker == src)
+		rendering.pixel_z = ATTACK_ITEM_OFFSET
+	else
+		var/angle = get_visual_angle(attacker)
+		var/d_x = sin(angle) * ATTACK_ITEM_OFFSET
+		var/d_y = cos(angle) * ATTACK_ITEM_OFFSET
+		rendering.pixel_x = d_x
+		rendering.pixel_y = d_y
+	#undef ATTACK_ITEM_OFFSET
+
+	animate(rendering, alpha = 175, transform = matrix() * 0.7, pixel_x = 0, pixel_y = 0, pixel_z = 0, time = time * (1 / 2), easing = BACK_EASING | EASE_OUT)
+	animate(alpha = 0, time = time * (1 / 2), easing = SINE_EASING | EASE_OUT)
 
 /**
  * animate some kind of predetermined attack effect
@@ -44,10 +63,14 @@
  * * animation_type - ATTACK_ANIMATION_X enum
  * * time - how long; this is sometimes ignored due to animations having hardcoded length.
  */
-/atom/movable/proc/animate_hit_by_attack(animation_type, time = 6)
+/atom/proc/animate_hit_by_attack(animation_type, time = 6)
 	#define ATTACK_ANIMATION_FILE 'icons/effects/attack_animations.dmi'
 	var/image/rendering = image(ATTACK_ANIMATION_FILE, icon_state = animation_type, loc = src)
 	flick_overlay(rendering, GLOB.clients, time)
+
+	// yeah we don't care about the mob's state, we're an animation
+	rendering.appearance_flags = KEEP_APART | RESET_ALPHA | RESET_TRANSFORM | RESET_COLOR
+	rendering.plane = MOB_PLANE
 
 	// just make it fade out
 	animate(rendering, alpha = 175, time = time * (1 / 2))
