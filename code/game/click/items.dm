@@ -272,7 +272,10 @@
 
 	// todo: better logging
 	// todo: entity ids?
-	var/newhp = target.health
+	var/newhp
+	if(isliving(target))
+		var/mob/living/casted = target
+		newhp = casted.health
 	log_attack(key_name(src), key_name(target), "attacked with [src] [src.damtype]-[src.damage_force]=[src.damage_tier] newhp ~[newhp || "unknown"]")
 
 	return NONE
@@ -315,16 +318,17 @@
 		if(!(casted.obj_flags & OBJ_MELEE_TARGETABLE))
 			return NONE
 	//? legacy: decloak
-	user.break_cloak()
+	clickchain.performer.break_cloak()
 	// check intent
 	if((item_flags & ITEM_CAREFUL_BLUDGEON) && clickchain.intent == INTENT_HELP)
 		clickchain.initiator.action_feedback(SPAN_WARNING("You refrain from hitting [target] because your intent is set to help."), src)
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	// click cooldown
 	// todo: clickcd rework
-	user.setClickCooldown(user.get_attack_speed(src))
+	clickchain.performer.setClickCooldown(clickchain.performer.get_attack_speed(src))
 	// animation
-	user.do_attack_animation(L)
+	clickchain.performer.do_attack_animation(target)
+	// perform the hit
 	. = melee_object_hit(target, clickchain, clickchain_flags, mult)
 
 /**
@@ -370,7 +374,7 @@
 		clickchain.visible_feedback(
 			target = target,
 			range = MESSAGE_RANGE_COMBAT_LOUD,
-			visible = SPAN_WARNING("[clickchian.performer] harmlessly taps [target] with [src]."),
+			visible = SPAN_WARNING("[clickchain.performer] harmlessly taps [target] with [src]."),
 			visible_them = SPAN_WARNING("[clickchain.performer] harmlessly taps you with [src]."),
 			visible_self = SPAN_WARNING("You harmlessly tap [target] with [src].")
 		)

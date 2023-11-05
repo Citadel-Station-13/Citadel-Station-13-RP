@@ -74,8 +74,8 @@
 	// todo: better logging
 	// todo: entity ids?
 	var/newhp
-	if(ismob(target))
-		var/mob/casted = target
+	if(isliving(target))
+		var/mob/living/casted = target
 		newhp = casted.health
 	else
 		newhp = target.integrity

@@ -264,6 +264,11 @@
  */
 /obj/proc/material_get_parts()
 	PROTECTED_PROC(TRUE) // Do not ever call directly.
+	switch(material_parts)
+		if(MATERIAL_DEFAULT_ABSTRACTED)
+			CRASH("abstracted hit base")
+		if(MATERIAL_DEFAULT_DISABLED)
+			return list()
 	if(islist(material_parts))
 		return material_parts.Copy()
 	return list(MATERIAL_PART_DEFAULT = material_parts)

@@ -15,7 +15,7 @@
 
 /obj/item/clothing/Initialize(mapload, material_armor)
 	if(!isnull(material_armor))
-		set_material_part(MATERIAL_PART_DEFAULT, SSmaterials.resolve_material(material_armor))
+		material_parts = material_armor
 	return ..()
 
 /obj/item/clothing/update_material_single(datum/material/material)

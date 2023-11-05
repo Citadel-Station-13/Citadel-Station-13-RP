@@ -107,7 +107,8 @@
 /obj/item/fish/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/aquarium_content, PROC_REF(get_aquarium_animation), list(COMSIG_FISH_STATUS_CHANGED,COMSIG_FISH_STIRRED))
-	RegisterSignal(src, COMSIG_ATOM_TEMPORARY_ANIMATION_START, PROC_REF(on_temp_animation))
+	// todo: waiting on rework for that signal
+	// RegisterSignal(src, COMSIG_ATOM_TEMPORARY_ANIMATION_START, PROC_REF(on_temp_animation))
 
 	check_environment_after_movement()
 	if(status != FISH_DEAD)

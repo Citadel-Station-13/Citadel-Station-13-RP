@@ -151,8 +151,6 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	damage = 5
 	damage_mode = NONE
 
-/datum/unarmed_attack/bite/event1
-
 /datum/unarmed_attack/bite/is_usable(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone)
 
 	if (user.is_muzzled())
@@ -167,8 +165,6 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	eye_attack_text = "fingers"
 	eye_attack_text_victim = "digits"
 	damage = 0
-
-/datum/unarmed_attack/punch/event1
 
 /datum/unarmed_attack/punch/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
 	var/obj/item/organ/external/affecting = target.get_organ(zone)
@@ -221,8 +217,6 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	attack_sound = "swing_hit"
 	damage = 0
 
-/datum/unarmed_attack/kick/event1
-
 /datum/unarmed_attack/kick/is_usable(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone)
 	if (user.legcuffed)
 		return FALSE
@@ -263,8 +257,6 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	attack_noun = list("stomp")
 	attack_sound = "swing_hit"
 	damage = 0
-
-/datum/unarmed_attack/stomp/event1
 
 /datum/unarmed_attack/stomp/is_usable(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone)
 

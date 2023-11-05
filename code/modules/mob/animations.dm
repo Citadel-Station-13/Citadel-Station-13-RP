@@ -205,30 +205,31 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 
 /atom/movable/proc/do_attack_animation(atom/A)
-	var/pixel_x_diff = 0
-	var/pixel_y_diff = 0
-	var/direction = get_dir(src, A)
-	if(direction & NORTH)
-		pixel_y_diff = 8
-	else if(direction & SOUTH)
-		pixel_y_diff = -8
+	animate_swing_at_target(A)
+	// var/pixel_x_diff = 0
+	// var/pixel_y_diff = 0
+	// var/direction = get_dir(src, A)
+	// if(direction & NORTH)
+	// 	pixel_y_diff = 8
+	// else if(direction & SOUTH)
+	// 	pixel_y_diff = -8
 
-	if(direction & EAST)
-		pixel_x_diff = 8
-	else if(direction & WEST)
-		pixel_x_diff = -8
+	// if(direction & EAST)
+	// 	pixel_x_diff = 8
+	// else if(direction & WEST)
+	// 	pixel_x_diff = -8
 
-	var/base_pixel_x = initial(pixel_x)
-	var/base_pixel_y = initial(pixel_y)
-	var/mob/mob = src
-	if(istype(mob))
-		base_pixel_x = mob.base_pixel_x
-		base_pixel_y = mob.base_pixel_y
+	// var/base_pixel_x = initial(pixel_x)
+	// var/base_pixel_y = initial(pixel_y)
+	// var/mob/mob = src
+	// if(istype(mob))
+	// 	base_pixel_x = mob.base_pixel_x
+	// 	base_pixel_y = mob.base_pixel_y
 
-	SEND_SIGNAL(src, COMSIG_ATOM_TEMPORARY_ANIMATION_START, 4)
+	// SEND_SIGNAL(src, COMSIG_ATOM_TEMPORARY_ANIMATION_START, 4)
 
-	animate(src, pixel_x = pixel_x + pixel_x_diff, pixel_y = pixel_y + pixel_y_diff, time = 2)
-	animate(pixel_x = base_pixel_x, pixel_y = base_pixel_y, time = 2)
+	// animate(src, pixel_x = pixel_x + pixel_x_diff, pixel_y = pixel_y + pixel_y_diff, time = 2)
+	// animate(pixel_x = base_pixel_x, pixel_y = base_pixel_y, time = 2)
 
 /mob/living/do_attack_animation(atom/A, no_attack_icons = FALSE)
 	..()

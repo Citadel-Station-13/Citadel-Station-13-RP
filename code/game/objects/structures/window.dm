@@ -184,6 +184,11 @@
 
 	return TRUE
 
+/obj/structure/window/CanAtmosPass(turf/T, d)
+	if (fulltile || (d == dir))
+		return anchored? ATMOS_PASS_AIR_BLOCKED : ATMOS_PASS_NOT_BLOCKED
+	return ATMOS_PASS_NOT_BLOCKED
+
 /obj/structure/window/can_pathfinding_enter(atom/movable/actor, dir, datum/pathfinding/search)
 	return ..() || (!fulltile && (src.dir) != dir)
 

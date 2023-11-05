@@ -39,7 +39,7 @@
 
 /obj/item/material/Initialize(mapload, material)
 	if(!isnull(material))
-		set_material_part(MATERIAL_PART_DEFAULT, SSmaterials.resolve_material(material))
+		material_parts = material
 	return ..()
 
 /obj/item/material/update_material_single(datum/material/material)

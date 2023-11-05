@@ -458,7 +458,7 @@
 	default_attack = u_attack
 
 /mob/living/carbon/human/unarmed_attack_style()
-	return default_attack || ..()
+	return default_attack || species.unarmed_attacks[1] || ..()
 
 /datum/unarmed_attack
 	var/attack_name = "fist"
