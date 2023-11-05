@@ -313,7 +313,7 @@
 	/// Possible unarmed attacks that the mob will use in combat,
 	var/list/unarmed_types = list(
 		/datum/unarmed_attack,
-		/datum/unarmed_attack/bite
+		/datum/unarmed_attack/bite,
 	)
 	/// For empty hand harm-intent attack
 	var/list/unarmed_attacks = null

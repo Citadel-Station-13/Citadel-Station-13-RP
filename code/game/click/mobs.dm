@@ -94,7 +94,7 @@
 	clickchain.visible_feedback(
 		target = target,
 		range = MESSAGE_RANGE_COMBAT_LOUD,
-		visible = SPAN_DANGER("[clickchain.performer] [islist(style.attack_verb)? pick(style.attack_verb) : style.attack_verb]\s [target].")
+		visible = SPAN_DANGER("[target] has been [islist(style.verb_past_participle)? pick(style.verb_past_participle) : style.verb_past_participle] by [clickchain.performer]!")
 	)
 	target.animate_hit_by_attack(style.animation_type)
 

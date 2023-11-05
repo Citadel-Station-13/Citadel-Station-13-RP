@@ -35,6 +35,10 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	/// ATTACK_ANIMATION_X enum
 	var/animation_type = ATTACK_ANIMATION_PUNCH
 
+	//? Text
+	/// past tense, aka "[person] has [past] [target] in their [zone]"
+	var/list/verb_past_participle = list("attacked")
+
 	//? legacy
 	var/attack_verb = list("attack")	// Empty hand hurt intent verb.
 	var/attack_noun = list("fist")
@@ -44,6 +48,8 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 
 	var/eye_attack_text
 	var/eye_attack_text_victim
+
+//* Feedback
 
 /datum/unarmed_attack/proc/get_sparring_variant()
 	return fetch_unarmed_style(sparring_variant_type)
@@ -131,7 +137,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 
 /datum/unarmed_attack/proc/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
 	var/obj/item/organ/external/affecting = target.get_organ(zone)
-	user.visible_message("<span class='warning'>[user] [pick(attack_verb)] [target] in the [affecting.name]!</span>")
+	user.visible_message("<span class='warning'>[user] [pick(attack_verb_legacy)] [target] in the [affecting.name]!</span>")
 	playsound(user.loc, attack_sound, 25, 1, -1)
 
 /datum/unarmed_attack/proc/handle_eye_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target)
@@ -150,7 +156,8 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	return FALSE //return true if the unarmed override prevents further attacks
 
 /datum/unarmed_attack/bite
-	attack_verb = list("bit")
+	verb_past_participle = list("bitten")
+	attack_verb_legacy = list("bit")
 	attack_sound = 'sound/weapons/bite.ogg'
 	damage = 5
 	damage_mode = NONE
@@ -164,7 +171,8 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	return TRUE
 
 /datum/unarmed_attack/punch
-	attack_verb = list("punched")
+	verb_past_participle = list("punched")
+	attack_verb_legacy = list("punched")
 	attack_noun = list("fist")
 	eye_attack_text = "fingers"
 	eye_attack_text_victim = "digits"
@@ -180,7 +188,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	attack_damage = clamp(attack_damage, 1, 5) // We expect damage input of 1 to 5 for this proc. But we leave this check juuust in case.
 
 	if(target == user)
-		user.visible_message("<span class='danger'>[user] [pick(attack_verb)] [TU.himself] in the [organ]!</span>")
+		user.visible_message("<span class='danger'>[user] [pick(attack_verb_legacy)] [TU.himself] in the [organ]!</span>")
 		return 0
 
 	if(!target.lying)
@@ -192,7 +200,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 						user.visible_message("<span class='danger'>[user] slapped [target] across [TT.his] cheek!</span>")
 					if(3 to 4)
 						user.visible_message(pick(
-							40; "<span class='danger'>[user] [pick(attack_verb)] [target] in the head!</span>",
+							40; "<span class='danger'>[user] [pick(attack_verb_legacy)] [target] in the head!</span>",
 							30; "<span class='danger'>[user] struck [target] in the head[pick("", " with a closed fist")]!</span>",
 							30; "<span class='danger'>[user] threw a hook against [target]'s head!</span>"
 							))
@@ -206,7 +214,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 				// ----- BODY ----- //
 				switch(attack_damage)
 					if(1 to 2)	user.visible_message("<span class='danger'>[user] threw a glancing punch at [target]'s [organ]!</span>")
-					if(1 to 4)	user.visible_message("<span class='danger'>[user] [pick(attack_verb)] [target] in [TT.his] [organ]!</span>")
+					if(1 to 4)	user.visible_message("<span class='danger'>[user] [pick(attack_verb_legacy)] [target] in [TT.his] [organ]!</span>")
 					if(5)
 						user.visible_message(pick(
 							50; "<span class='danger'>[user] smashed [TU.his] [pick(attack_noun)] into [target]'s [organ]!</span>",
@@ -216,7 +224,8 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 		user.visible_message("<span class='danger'>[user] [pick("punched", "threw a punch against", "struck", "slammed [TU.his] [pick(attack_noun)] into")] [target]'s [organ]!</span>") //why do we have a separate set of verbs for lying targets?
 
 /datum/unarmed_attack/kick
-	attack_verb = list("kicked", "kicked", "kicked", "kneed")
+	verb_past_participle = list("kicked")
+	attack_verb_legacy = list("kicked", "kicked", "kicked", "kneed")
 	attack_noun = list("kick", "kick", "kick", "knee strike")
 	attack_sound = "swing_hit"
 	damage = 0
@@ -253,11 +262,12 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 
 	switch(attack_damage)
 		if(1 to 2)	user.visible_message("<span class='danger'>[user] threw [target] a glancing [pick(attack_noun)] to the [organ]!</span>") //it's not that they're kicking lightly, it's that the kick didn't quite connect
-		if(3 to 4)	user.visible_message("<span class='danger'>[user] [pick(attack_verb)] [target] in [TT.his] [organ]!</span>")
+		if(3 to 4)	user.visible_message("<span class='danger'>[user] [pick(attack_verb_legacy)] [target] in [TT.his] [organ]!</span>")
 		if(5)		user.visible_message("<span class='danger'>[user] landed a strong [pick(attack_noun)] against [target]'s [organ]!</span>")
 
 /datum/unarmed_attack/stomp
-	attack_verb = null
+	verb_past_participle = list("stomped")
+	attack_verb_legacy = list("stomped")
 	attack_noun = list("stomp")
 	attack_sound = "swing_hit"
 	damage = 0
@@ -300,8 +310,9 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 		if(5)		user.visible_message("<span class='danger'>[pick("[user] landed a powerful stomp on", "[user] stomped down hard on", "[user] slammed [TU.his] [shoes ? copytext(shoes.name, 1, -1) : "foot"] down hard onto")] [target]'s [organ]!</span>") //Devastated lol. No. We want to say that the stomp was powerful or forceful, not that it /wrought devastation/
 
 /datum/unarmed_attack/light_strike
+	verb_past_participle = list("lightly struck")
 	attack_noun = list("tap","light strike")
-	attack_verb = list("tapped", "lightly struck")
+	attack_verb_legacy = list("tapped", "lightly struck")
 	damage = 5
 	damage_mode = NONE
 	damage_type = AGONY

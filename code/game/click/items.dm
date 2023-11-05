@@ -391,7 +391,7 @@
 	clickchain.visible_feedback(
 		target = target,
 		range = MESSAGE_RANGE_COMBAT_LOUD,
-		visible = SPAN_DANGER("[target] has been [length(attack_verb? pick(attack_verb) : attack_verb)] with [src] by [clickchain.performer]!")
+		visible = SPAN_DANGER("[target] has been [islist(attack_verb? pick(attack_verb) : attack_verb)] with [src] by [clickchain.performer]!")
 	)
 	// damage
 	target.melee_act(clickchain.performer, src, mult = mult)

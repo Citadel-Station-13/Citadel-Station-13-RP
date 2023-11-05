@@ -124,8 +124,9 @@
 
 
 /datum/unarmed_attack/shadekinharmbap
+	verb_past_participle = list("slashed", "clawed", "scratched")
 	attack_name = "syphon strike"
-	attack_verb = list("hit", "clawed", "slashed", "scratched")
+	attack_verb_legacy = list("hit", "clawed", "slashed", "scratched")
 	attack_sound = 'sound/weapons/slice.ogg'
 	miss_sound = 'sound/weapons/slashmiss.ogg'
 
