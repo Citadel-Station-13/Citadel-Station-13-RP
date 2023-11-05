@@ -8,5 +8,9 @@
 /atom/movable/proc/animate_hit_by_weapon(obj/item/weapon, time = 3)
 
 /atom/movable/proc/animate_hit_by_attack(animation_type, time = 3)
+	#define ATTACK_ANIMATION_FILE 'icons/effects/attack_animations.dmi'
+
+	#undef ATTACK_ANIMATION_FILE
+
 
 #warn impl all
