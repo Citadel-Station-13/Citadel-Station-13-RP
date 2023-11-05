@@ -2225,27 +2225,27 @@
 	glass_special = list(DRINK_FIZZ)
 
 /datum/reagent/drink/soda/sarsaparilla
-	name = "CC's Homemade Sarsaparilla"
+	name = "Sarsaparilla"
 	id = "sarsaparilla"
 	description = "The Cyan Cowgirl rides again!"
 	taste_description = "earthy vanilla and harsh bubbles"
 	color = "#503301"
 	adj_temp = -2
 
-	glass_name = "CC's Homemade Sarsaparilla"
+	glass_name = "Sarsaparilla"
 	glass_desc = "Real girls drink from the bottle."
 	glass_icon = DRINK_ICON_NOISY
 	glass_special = list(DRINK_FIZZ)
 
 /datum/reagent/drink/soda/sassafras
-	name = "CC's Famous Root Beer"
+	name = "Root Beer"
 	id = "sassafras"
 	description = "Feel nostalgia for a range you never rode."
 	taste_description = "bitter licorice and sweet vanilla"
 	color = "#312003"
 	adj_temp = -2
 
-	glass_name = "CC's Famous Root Beer"
+	glass_name = "Root Beer"
 	glass_desc = "Wet your whistle!"
 	glass_icon = DRINK_ICON_NOISY
 	glass_special = list(DRINK_FIZZ)

@@ -121,6 +121,7 @@
 		/datum/reagent/drink/juice/lemon,
 		/datum/reagent/drink/soda/sassafras,
 		/datum/reagent/drink/soda/sarsaparilla,
+		/datum/reagent/drink/soda/gingerale,
 	)
 
 /obj/item/reagent_synth/medicine
