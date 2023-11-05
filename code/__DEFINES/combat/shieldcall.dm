@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 //? keys for list/additional in atom_shieldcall
 
 // None yet

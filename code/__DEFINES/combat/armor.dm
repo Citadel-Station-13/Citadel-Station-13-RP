@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 //? --- armor defines ---
 //* Want to add more?
 //* Update [code/__HELPERS/datastructs/armor.dm]
@@ -5,6 +8,8 @@
 //* and update the procs accordingly.
 //* The system will handle the rest.
 //* Make sure the var names match the names in here!
+
+// todo: change melee/bullet to blunt/slash/pierce
 
 //? Tiered - used to model attacks - stacked with tier system when layered.
 
