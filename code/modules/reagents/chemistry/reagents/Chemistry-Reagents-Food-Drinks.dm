@@ -2225,27 +2225,27 @@
 	glass_special = list(DRINK_FIZZ)
 
 /datum/reagent/drink/soda/sarsaparilla
-	name = "CC's Homemade Sarsaparilla"
+	name = "Sarsaparilla"
 	id = "sarsaparilla"
 	description = "The Cyan Cowgirl rides again!"
 	taste_description = "earthy vanilla and harsh bubbles"
 	color = "#503301"
 	adj_temp = -2
 
-	glass_name = "CC's Homemade Sarsaparilla"
+	glass_name = "Cyan Cowgirl Sarsaparilla"
 	glass_desc = "Real girls drink from the bottle."
 	glass_icon = DRINK_ICON_NOISY
 	glass_special = list(DRINK_FIZZ)
 
 /datum/reagent/drink/soda/sassafras
-	name = "CC's Famous Root Beer"
+	name = "Root Beer"
 	id = "sassafras"
 	description = "Feel nostalgia for a range you never rode."
 	taste_description = "bitter licorice and sweet vanilla"
 	color = "#312003"
 	adj_temp = -2
 
-	glass_name = "CC's Famous Root Beer"
+	glass_name = "Cyan Cowgirl Root Beer"
 	glass_desc = "Wet your whistle!"
 	glass_icon = DRINK_ICON_NOISY
 	glass_special = list(DRINK_FIZZ)
@@ -4043,19 +4043,6 @@
 
 	glass_name = "Fire Punch"
 	glass_desc = "A spicy take on a summer classic."
-
-/datum/reagent/ethanol/alcsassafras
-	name = "CC's Hard Rootbeer"
-	id = "alcsassafras"
-	description = "Doesn't matter if you're drunk when you have a horse to take you home!"
-	taste_description = "bitter vanilla with a sharp burn"
-	strength = 20
-
-	glass_name = "CC's Hard Rootbeer"
-	glass_desc = "You'd better carry two guns if you're gonna keep drinking these!"
-	glass_icon = DRINK_ICON_NOISY
-	glass_special = list(DRINK_FIZZ)
-
 /datum/reagent/ethanol/newsheriff
 	name = "New Sheriff"
 	id = "newsheriff"
