@@ -137,6 +137,7 @@
 	possible_transfer_amounts = list(5, 10, 20, 30)
 	reagent_ids = list("ale",
 		"cider",
+		"cream",
 		"beer",
 		"berryjuice",
 		"bitters",
@@ -146,6 +147,7 @@
 		"dr_gibb",
 		"egg",
 		"gin",
+		"grenadine",
 		"gingerale",
 		"hot_coco",
 		"ice",
