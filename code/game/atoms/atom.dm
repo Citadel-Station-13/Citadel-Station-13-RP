@@ -71,15 +71,14 @@
 	var/worth_dynamic = FALSE
 
 	//? Integrity
-	// todo: every usage of these vars need to be parsed because shitcode still exists that
-	// todo: was just monkey patched over by making it not compile error for redefining this..
 	/// max health
 	var/integrity_max
 	/// health
 	var/integrity
 	/// what integrity we call break at.
 	var/integrity_failure = 0
-	/// do we use the atom damage system?
+	/// do we use the atom damage system? having this off implicitly implies non-targetability for this entity,
+	/// completely overriding any object flags at /obj levels for targeting.
 	var/integrity_enabled = FALSE
 	/// flags for resistances
 	var/integrity_flags = NONE

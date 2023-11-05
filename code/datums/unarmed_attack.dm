@@ -40,7 +40,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	var/list/verb_past_participle = list("attacked")
 
 	//? legacy
-	var/attack_verb = list("attack")	// Empty hand hurt intent verb.
+	var/attack_verb_legacy = list("attack")	// Empty hand hurt intent verb.
 	var/attack_noun = list("fist")
 	var/infected_wound_probability = 10
 
@@ -104,7 +104,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 						target.visible_message("<span class='danger'>[target] slams into [T]!</span>")
 					if(prob(50))
 						target.setDir(global.reverse_dir[target.dir])
-					target.apply_effect(attack_damage * 0.4, WEAKEN, armour)
+					target.apply_effect(attack_damage * 0.3, WEAKEN, armour)
 			if(BP_GROIN)
 				if(!target.isSynthetic())
 					target.visible_message("<span class='warning'>[target] looks like [TT.he] [TT.is] in pain!</span>", "<span class='warning'>[(target.gender=="female") ? "Oh god that hurt!" : "Oh no, not your[pick("testicles", "crown jewels", "clockweights", "family jewels", "marbles", "bean bags", "teabags", "sweetmeats", "goolies")]!"]</span>") // """""""I see no easy way to fix this for non-organic or neuter characters.""""""" - original coder
@@ -112,7 +112,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 			if("l_leg", "l_foot", "r_leg", "r_foot")
 				if(!target.lying)
 					target.visible_message("<span class='warning'>[target] gives way slightly.</span>")
-					target.apply_effect(attack_damage*3, AGONY, armour)
+					target.apply_effect(attack_damage * 3, AGONY, armour)
 	else if(attack_damage >= 5 && !(target == user) && (stun_chance + attack_damage * 5 >= 100) && armour < 2) // Chance to get the usual throwdown as well (25% standard chance)
 		if(!target.lying)
 			target.visible_message("<span class='danger'>[target] [pick("slumps", "falls", "drops")] down to the ground!</span>")
@@ -176,7 +176,8 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	attack_noun = list("fist")
 	eye_attack_text = "fingers"
 	eye_attack_text_victim = "digits"
-	damage = 0
+	damage_add_low = 0
+	damage_add_high = 5
 
 /datum/unarmed_attack/punch/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
 	var/obj/item/organ/external/affecting = target.get_organ(zone)
@@ -185,7 +186,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 	var/datum/gender/TT = GLOB.gender_datums[target.get_visible_gender()]
 
-	attack_damage = clamp(attack_damage, 1, 5) // We expect damage input of 1 to 5 for this proc. But we leave this check juuust in case.
+	attack_damage = clamp(attack_damage - 5, 1, 5) // We expect damage input of 1 to 5 for this proc. But we leave this check juuust in case.
 
 	if(target == user)
 		user.visible_message("<span class='danger'>[user] [pick(attack_verb_legacy)] [TU.himself] in the [organ]!</span>")
@@ -228,7 +229,8 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	attack_verb_legacy = list("kicked", "kicked", "kicked", "kneed")
 	attack_noun = list("kick", "kick", "kick", "knee strike")
 	attack_sound = "swing_hit"
-	damage = 0
+	damage_add_low = 0
+	damage_add_high = 5
 
 /datum/unarmed_attack/kick/is_usable(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone)
 	if (user.legcuffed)
@@ -251,14 +253,14 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	var/obj/item/clothing/shoes = user.shoes
 	if(!istype(shoes))
 		return damage
-	return damage + (shoes ? shoes.damage_force : 0)
+	return damage + max(0, shoes ? shoes.damage_force - 5 : 0)
 
 /datum/unarmed_attack/kick/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
 	var/obj/item/organ/external/affecting = target.get_organ(zone)
 	var/datum/gender/TT = GLOB.gender_datums[target.get_visible_gender()]
 	var/organ = affecting.name
 
-	attack_damage = clamp(attack_damage, 1, 5)
+	attack_damage = clamp(attack_damage - 5, 1, 5)
 
 	switch(attack_damage)
 		if(1 to 2)	user.visible_message("<span class='danger'>[user] threw [target] a glancing [pick(attack_noun)] to the [organ]!</span>") //it's not that they're kicking lightly, it's that the kick didn't quite connect
@@ -270,7 +272,8 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	attack_verb_legacy = list("stomped")
 	attack_noun = list("stomp")
 	attack_sound = "swing_hit"
-	damage = 0
+	damage_add_low = 0
+	damage_add_high = 5
 
 /datum/unarmed_attack/stomp/is_usable(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone)
 
@@ -295,7 +298,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 
 /datum/unarmed_attack/stomp/get_unarmed_damage(var/mob/living/carbon/human/user)
 	var/obj/item/clothing/shoes = user.shoes
-	return damage + (shoes ? shoes.damage_force : 0)
+	return damage + max(0, shoes ? shoes.damage_force - 5 : 0)
 
 /datum/unarmed_attack/stomp/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
 	var/obj/item/organ/external/affecting = target.get_organ(zone)
@@ -303,7 +306,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	var/obj/item/clothing/shoes = user.shoes
 	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 
-	attack_damage = clamp(attack_damage, 1, 5)
+	attack_damage = clamp(attack_damage - 5, 1, 5)
 
 	switch(attack_damage)
 		if(1 to 4)	user.visible_message("<span class='danger'>[pick("[user] stomped on", "[user] slammed [TU.his] [shoes ? copytext(shoes.name, 1, -1) : "foot"] down onto")] [target]'s [organ]!</span>")

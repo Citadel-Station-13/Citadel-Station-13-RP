@@ -54,7 +54,7 @@
 var/global/datum/unarmed_attack/hardclaws/unarmed_hardclaws = new()
 /datum/unarmed_attack/hardclaws
 	verb_past_participle = list("sliced", "shredded")
-	attack_verb_legaxy = list("claws")
+	attack_verb_legacy = list("claws")
 	attack_noun = list("talons")
 	damage = 15
 	// OH BOY

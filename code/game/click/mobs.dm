@@ -58,16 +58,25 @@
 
 /mob/proc/melee_attack(atom/target, datum/event_args/actor/clickchain/clickchain, datum/unarmed_attack/style, clickchain_flags, target_zone, mult)
 	SHOULD_CALL_PARENT(TRUE)
-	//? legacy: decloak
-	clickchain.performer.break_cloak()
+	// todo: move this somewhere else
+	if(!target.integrity_enabled)
+		// no targeting
+		return NONE
+	if(isobj(target))
+		var/obj/casted = target
+		if(!(casted.obj_flags & OBJ_MELEE_TARGETABLE))
+			// no targeting
+			return NONE
 	//? legacy: for now no attacking nonliving
 	if(ismob(target) && !isliving(target))
 		return NONE
+	//? legacy: decloak
+	clickchain.performer.break_cloak()
 
 	// todo: clickcd rework
 	clickchain.performer.setClickCooldown(clickchain.performer.get_attack_speed())
 	// todo: animation might need to depend on if it hits
-	clickchain.performer.do_attack_animation(target)
+	animate_swing_at_target(target)
 
 	. = melee_attack_hit(target, clickchain, style, clickchain_flags, target_zone, mult)
 
@@ -108,5 +117,4 @@
 	return NONE
 
 /mob/proc/melee_attack_finalize(atom/target, datum/event_args/actor/clickchain/clickchain, datum/unarmed_attack/style, clickchain_flags, target_zone, mult)
-	animate_swing_at_target(target)
 	return NONE

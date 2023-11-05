@@ -163,8 +163,6 @@
  */
 /obj/item/proc/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult = 1, target_zone, intent)
 	PROTECTED_PROC(TRUE)	// route via standard_melee_attack please.
-	//? legacy: decloak
-	user.break_cloak()
 	//? legacy: for now no attacking nonliving
 	if(!isliving(target))
 		return CLICKCHAIN_ATTACK_MISSED
@@ -184,6 +182,8 @@
 		if((item_flags & ITEM_CAREFUL_BLUDGEON) && user.a_intent == INTENT_HELP)
 			user.action_feedback(SPAN_WARNING("You refrain from hitting [target] with [src], as your intent is set to help."), src)
 			return NONE
+	//? legacy: decloak
+	user.break_cloak()
 	// todo: better tracking
 	user.lastattacked = L
 	L.lastattacker = user
@@ -316,16 +316,20 @@
 /obj/item/proc/attack_object(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags, mult = 1)
 	PROTECTED_PROC(TRUE)	// route via standard_melee_attack please.
 	// todo: move this somewhere else
+	if(!target.integrity_enabled)
+		// no targeting
+		return NONE
 	if(isobj(target))
 		var/obj/casted = target
 		if(!(casted.obj_flags & OBJ_MELEE_TARGETABLE))
+			// no targeting
 			return NONE
-	//? legacy: decloak
-	clickchain.performer.break_cloak()
 	// check intent
 	if((item_flags & ITEM_CAREFUL_BLUDGEON) && clickchain.intent == INTENT_HELP)
 		clickchain.initiator.action_feedback(SPAN_WARNING("You refrain from hitting [target] because your intent is set to help."), src)
 		return CLICKCHAIN_DO_NOT_PROPAGATE
+	//? legacy: decloak
+	clickchain.performer.break_cloak()
 	// click cooldown
 	// todo: clickcd rework
 	clickchain.performer.setClickCooldown(clickchain.performer.get_attack_speed(src))
@@ -391,7 +395,7 @@
 	clickchain.visible_feedback(
 		target = target,
 		range = MESSAGE_RANGE_COMBAT_LOUD,
-		visible = SPAN_DANGER("[target] has been [islist(attack_verb? pick(attack_verb) : attack_verb)] with [src] by [clickchain.performer]!")
+		visible = SPAN_DANGER("1 [target] has been [islist(attack_verb)? pick(attack_verb) : attack_verb] with [src] by [clickchain.performer]!")
 	)
 	// damage
 	target.melee_act(clickchain.performer, src, mult = mult)

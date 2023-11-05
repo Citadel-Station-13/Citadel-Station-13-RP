@@ -33,6 +33,7 @@ GLOBAL_REAL_VAR(airlock_typecache) = typecacheof(list(
 	power_channel = ENVIRON
 	rad_flags = RAD_BLOCK_CONTENTS
 	rad_insulation = RAD_INSULATION_MEDIUM
+	armor_type = /datum/armor/door/airlock
 
 	integrity = 300
 	integrity_max = 300

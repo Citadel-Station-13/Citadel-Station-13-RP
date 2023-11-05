@@ -9,16 +9,22 @@
  * * time - animation duration
  * * dist - pixels to move
  */
-/atom/movable/proc/animate_swing_at_target(atom/target, time = 3, dist = 6)
+/atom/movable/proc/animate_swing_at_target(atom/target, time = 3, dist = 8)
+	var/mob_rotation = pick(10, -10)
+	var/matrix/original = matrix(transform)
+	var/matrix/rotated = matrix(transform)
+	rotated.Turn(mob_rotation)
+	if(get_turf(target) == get_turf(src))
+		// just jump up and down lmao
+		var/cpz = pixel_z
+		animate(src, pixel_z = dist * (1 / 2), time = time * (1 / 3), transform = rotated, flags = ANIMATION_PARALLEL, easing = EASE_IN | BACK_EASING)
+		animate(pixel_z = cpz, time = time * (2 / 3), transform = original, easing = SINE_EASING)
+		return
 	var/angle = get_visual_angle(src, target)
 	var/cpx = pixel_x
 	var/cpy = pixel_y
 	var/d_x = sin(angle) * dist + cpx
 	var/d_y = cos(angle) * dist + cpy
-	var/mob_rotation = pick(10, -10)
-	var/matrix/original = matrix(transform)
-	var/matrix/rotated = matrix(transform)
-	rotated.Turn(mob_rotation)
 	// fast bounce, with a bit of angular rotation
 	animate(src, pixel_x = d_x, pixel_y = d_y, time = time * (1 / 3), transform = rotated, flags = ANIMATION_PARALLEL, easing = EASE_IN | BACK_EASING)
 	animate(pixel_x = cpx, pixel_y = cpy, time = time * (2 / 3), transform = original, easing = SINE_EASING)

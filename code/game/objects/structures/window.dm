@@ -630,6 +630,10 @@
 	maximal_heat = T0C + 1000 // Bumping this as well, as most fires quickly get over 800 C
 	damage_per_fire_tick = 2.0
 
+/obj/structure/window/reinforced/drop_products(method, atom/where)
+	. = ..()
+	new /obj/item/stack/rods(where, fulltile? 2 : 1)
+
 /obj/structure/window/reinforced/full
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_WINDOW_FULLTILE)

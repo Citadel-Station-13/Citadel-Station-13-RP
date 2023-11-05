@@ -39,7 +39,7 @@
  * @return clickchain flags to append
  */
 /atom/proc/melee_act(mob/user, obj/item/weapon, target_zone, mult = 1)
-	return
+	return CLICKCHAIN_DO_NOT_ATTACK
 
 /**
  * called on unarmed melee hit
@@ -53,7 +53,7 @@
  * @return clickchain flags to append
  */
 /atom/proc/unarmed_act(mob/attacker, datum/unarmed_attack/style, target_zone, mult = 1)
-	return
+	return CLICKCHAIN_DO_NOT_ATTACK
 
 //? Damage API
 
