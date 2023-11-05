@@ -545,7 +545,7 @@
 			))
 		var/obj/item/material/MW = new_item
 		MW.material_color = TRUE
-		MW.set_material_part(MATERIAL_PART_DEFAULT, new_item_mat)
+		MW.set_material_part(MATERIAL_PART_DEFAULT, SSmaterials.resolve_material(new_item_mat))
 
 	var/decorations = ""
 	if(apply_material_decorations)
