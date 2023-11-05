@@ -79,6 +79,9 @@
 		newhp = casted.health
 	else
 		newhp = target.integrity
+
+	. |= melee_attack_finalize(target, clickchain, style, clickchain_flags, target_zone, mult)
+
 	log_attack(key_name(src), ismob(target)? key_name(target) : "[target] ([ref(target)])", "attacked with [style.attack_name] newhp ~[newhp || "unknown"]")
 
 /mob/proc/melee_attack_hit(atom/target, datum/event_args/actor/clickchain/clickchain, datum/unarmed_attack/style, clickchain_flags, target_zone, mult)
@@ -93,6 +96,7 @@
 		range = MESSAGE_RANGE_COMBAT_LOUD,
 		visible = SPAN_DANGER("[clickchain.performer] [islist(style.attack_verb)? pick(style.attack_verb) : style.attack_verb]\s [target].")
 	)
+	target.animate_hit_by_attack(style.animation_type)
 
 /mob/proc/melee_attack_miss(atom/target, datum/event_args/actor/clickchain/clickchain, datum/unarmed_attack/style, clickchain_flags, target_zone, mult)
 	playsound(src, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
@@ -104,4 +108,5 @@
 	return NONE
 
 /mob/proc/melee_attack_finalize(atom/target, datum/event_args/actor/clickchain/clickchain, datum/unarmed_attack/style, clickchain_flags, target_zone, mult)
+	animate_swing_at_target(target)
 	return NONE

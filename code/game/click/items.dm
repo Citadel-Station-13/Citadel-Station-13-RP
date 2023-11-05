@@ -191,7 +191,7 @@
 	// todo: clickcd rework
 	user.setClickCooldown(user.get_attack_speed(src))
 	// animation
-	user.do_attack_animation(L)
+	user.animate_swing_at_target(L)
 	// resolve accuracy
 	var/hit_zone = L.resolve_item_attack(src, user, target_zone)
 	if(!hit_zone)
@@ -270,6 +270,9 @@
 	L.hit_with_weapon(src, user, power, target_zone)
 	//? legacy code end
 
+	// animate
+	L.animate_hit_by_weapon(user, src)
+
 	// todo: better logging
 	// todo: entity ids?
 	var/newhp
@@ -327,7 +330,7 @@
 	// todo: clickcd rework
 	clickchain.performer.setClickCooldown(clickchain.performer.get_attack_speed(src))
 	// animation
-	clickchain.performer.do_attack_animation(target)
+	clickchain.performer.animate_swing_at_target(target)
 	// perform the hit
 	. = melee_object_hit(target, clickchain, clickchain_flags, mult)
 
@@ -392,6 +395,8 @@
 	)
 	// damage
 	target.melee_act(clickchain.performer, src, mult = mult)
+	// animate
+	target.animate_hit_by_weapon(clickchain.performer, src)
 
 	// todo: better logging
 	// todo: entity ids?
