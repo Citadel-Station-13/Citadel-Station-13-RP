@@ -30,6 +30,10 @@
  * * time - animation duration
  */
 /atom/proc/animate_hit_by_weapon(atom/attacker, obj/item/weapon, time = 8)
+	// make sure it exists
+	if(isnull(weapon))
+		return
+
 	// todo: overlays/vis contents?
 	var/image/rendering = image(weapon, loc = src)
 	flick_overlay(rendering, GLOB.clients, time)

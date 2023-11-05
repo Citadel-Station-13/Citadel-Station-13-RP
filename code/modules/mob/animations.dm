@@ -235,67 +235,70 @@ note dizziness decrements automatically in the mob's Life() proc.
 	..()
 	if(no_attack_icons)
 		return FALSE
+	A.animate_hit_by_attack(src, get_active_held_item())
+	// if(no_attack_icons)
+	// 	return FALSE
 
-	//Check for clients with pref enabled
-	var/list/viewing = list()
-	for(var/m in viewers(A))
-		var/mob/M = m
-		var/client/C = M.client
-		if(C && C.is_preference_enabled(/datum/client_preference/attack_icons))
-			viewing += M.client
+	// //Check for clients with pref enabled
+	// var/list/viewing = list()
+	// for(var/m in viewers(A))
+	// 	var/mob/M = m
+	// 	var/client/C = M.client
+	// 	if(C && C.is_preference_enabled(/datum/client_preference/attack_icons))
+	// 		viewing += M.client
 
-	//Animals attacking each other in the distance, probably. Forgeddaboutit.
-	if(!viewing.len)
-		return FALSE
+	// //Animals attacking each other in the distance, probably. Forgeddaboutit.
+	// if(!viewing.len)
+	// 	return FALSE
 
-	// What icon do we use for the attack?
-	var/obj/used_item
-	if(hand && l_hand) // Attacked with item in left hand.
-		used_item = l_hand
-	else if (!hand && r_hand) // Attacked with item in right hand.
-		used_item = r_hand
+	// // What icon do we use for the attack?
+	// var/obj/used_item
+	// if(hand && l_hand) // Attacked with item in left hand.
+	// 	used_item = l_hand
+	// else if (!hand && r_hand) // Attacked with item in right hand.
+	// 	used_item = r_hand
 
-	//Couldn't find an item, do they have a sprite specified (like animal claw stuff?)
-	if(!used_item && !(attack_icon && attack_icon_state))
-		return FALSE //Didn't find an item, not doing animation.
+	// //Couldn't find an item, do they have a sprite specified (like animal claw stuff?)
+	// if(!used_item && !(attack_icon && attack_icon_state))
+	// 	return FALSE //Didn't find an item, not doing animation.
 
-	// If we were without gravity, the bouncing animation got stopped, so we make sure we restart the bouncing after the next movement.
-	is_floating = 0
+	// // If we were without gravity, the bouncing animation got stopped, so we make sure we restart the bouncing after the next movement.
+	// is_floating = 0
 
-	var/image/I
+	// var/image/I
 
-	if(used_item) //Found an in-hand item to animate
-		I = image(used_item.icon, A, used_item.icon_state, A.layer + 1)
-		//Color the icon
-		I.color = used_item.color
-		// Scale the icon.
-		I.transform *= 0.75
-	else //They had a hardcoded one specified
-		I = image(attack_icon, A, attack_icon_state, A.layer + 1)
-		I.dir = dir
+	// if(used_item) //Found an in-hand item to animate
+	// 	I = image(used_item.icon, A, used_item.icon_state, A.layer + 1)
+	// 	//Color the icon
+	// 	I.color = used_item.color
+	// 	// Scale the icon.
+	// 	I.transform *= 0.75
+	// else //They had a hardcoded one specified
+	// 	I = image(attack_icon, A, attack_icon_state, A.layer + 1)
+	// 	I.dir = dir
 
-	// Show the overlay to the clients
-	flick_overlay(I, viewing, 5) // 5 ticks/half a second
+	// // Show the overlay to the clients
+	// flick_overlay(I, viewing, 5) // 5 ticks/half a second
 
-	// Set the direction of the icon animation.
-	var/direction = get_dir(src, A)
-	if(direction & NORTH)
-		I.pixel_y = -16
-	else if(direction & SOUTH)
-		I.pixel_y = 16
+	// // Set the direction of the icon animation.
+	// var/direction = get_dir(src, A)
+	// if(direction & NORTH)
+	// 	I.pixel_y = -16
+	// else if(direction & SOUTH)
+	// 	I.pixel_y = 16
 
-	if(direction & EAST)
-		I.pixel_x = -16
-	else if(direction & WEST)
-		I.pixel_x = 16
+	// if(direction & EAST)
+	// 	I.pixel_x = -16
+	// else if(direction & WEST)
+	// 	I.pixel_x = 16
 
-	if(!direction) // Attacked self?!
-		I.pixel_z = 16
+	// if(!direction) // Attacked self?!
+	// 	I.pixel_z = 16
 
-	// And animate the attack!
-	animate(I, alpha = 175, pixel_x = 0, pixel_y = 0, pixel_z = 0, time = 3)
-	update_icon()
-	return TRUE //Found an item, doing item attack animation.
+	// // And animate the attack!
+	// animate(I, alpha = 175, pixel_x = 0, pixel_y = 0, pixel_z = 0, time = 3)
+	// update_icon()
+	// return TRUE //Found an item, doing item attack animation.
 
 /mob/proc/spin(spintime, speed)
 	if(speed < world.tick_lag)
