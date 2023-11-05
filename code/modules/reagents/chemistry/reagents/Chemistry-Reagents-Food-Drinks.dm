@@ -4045,7 +4045,7 @@
 	glass_desc = "A spicy take on a summer classic."
 
 /datum/reagent/ethanol/alcsassafras
-	name = "CC's Hard Rootbeer"
+	name = "Hard Rootbeer"
 	id = "alcsassafras"
 	description = "Doesn't matter if you're drunk when you have a horse to take you home!"
 	taste_description = "bitter vanilla with a sharp burn"

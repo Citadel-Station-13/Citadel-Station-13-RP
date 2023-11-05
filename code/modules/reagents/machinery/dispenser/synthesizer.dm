@@ -79,7 +79,6 @@
 		/datum/reagent/ethanol/cider,
 		/datum/reagent/ethanol/ale,
 		/datum/reagent/ethanol/mead,
-		/datum/reagent/ethanol/alcsassafras
 	)
 
 /obj/item/reagent_synth/cafe
