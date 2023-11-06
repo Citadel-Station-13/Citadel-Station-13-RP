@@ -187,26 +187,29 @@
 /datum/armor/proc/resultant_damage(damage, tier, flag)
 	switch(flag)
 		if(ARMOR_MELEE)
-			if(damage <= melee_deflect)
-				return 0
 			if(!melee)
 				return damage
 			var/tdiff = melee_tier - tier
-			return max(0, (tdiff? (damage * (1 - ARMOR_TIER_CALC(melee, tdiff))) : (damage * (1 - melee))) - melee_soak)
-		if(ARMOR_BULLET)
-			if(damage <= bullet_deflect)
+			damage = max(0, (tdiff? (damage * (1 - ARMOR_TIER_CALC(melee, tdiff))) : (damage * (1 - melee))) - melee_soak)
+			if(damage <= melee_deflect)
 				return 0
+			return damage
+		if(ARMOR_BULLET)
 			if(!bullet)
 				return damage
 			var/tdiff = bullet_tier - tier
-			return max(0, (tdiff? (damage * (1 - ARMOR_TIER_CALC(bullet, tdiff))) : (damage * (1 - bullet))) - bullet_soak)
-		if(ARMOR_LASER)
-			if(damage <= laser_deflect)
+			damage = max(0, (tdiff? (damage * (1 - ARMOR_TIER_CALC(bullet, tdiff))) : (damage * (1 - bullet))) - bullet_soak)
+			if(damage <= bullet_deflect)
 				return 0
+			return damage
+		if(ARMOR_LASER)
 			if(!laser)
 				return damage
 			var/tdiff = laser_tier - tier
-			return max(0, (tdiff? (damage * (1 - ARMOR_TIER_CALC(laser, tdiff))) : (damage * (1 - laser))) - laser_soak)
+			damage = max(0, (tdiff? (damage * (1 - ARMOR_TIER_CALC(laser, tdiff))) : (damage * (1 - laser))) - laser_soak)
+			if(damage <= laser_deflect)
+				return 0
+			return damage
 		if(ARMOR_ENERGY)
 			return damage * (1 - energy)
 		if(ARMOR_BOMB)
