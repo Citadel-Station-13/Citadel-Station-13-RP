@@ -20,6 +20,8 @@
 		dead_mob_list += src
 	else
 		living_mob_list += src
+	// physiology
+	init_physiology()
 	// atom HUDs
 	set_key_focus(src)
 	prepare_huds()
@@ -40,8 +42,6 @@
 	update_transform()
 	// offset
 	reset_pixel_offsets()
-	// physiology
-	init_physiology()
 	// movespeed
 	update_movespeed(TRUE)
 	update_config_movespeed()

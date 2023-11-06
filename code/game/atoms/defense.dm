@@ -152,7 +152,8 @@
 	. = hitsound_override(M, style.damage_mode, ATTACK_TYPE_UNARMED, style)
 	if(.)
 		return
-	. = (style.damage_type == BURN? hit_sound_burn : hit_sound_brute)  || style.attack_sound
+	// todo: way to override this from style side? we don't just want hitsound brute/burn.
+	. = (style.damage_type == BURN? hit_sound_burn : hit_sound_brute) || style.attack_sound
 
 //? Direct Integrity
 

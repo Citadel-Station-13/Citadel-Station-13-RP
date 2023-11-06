@@ -45,7 +45,7 @@
 /mob/living/carbon/_get_inventory_slot_ids()
 	return ..() + list(
 		SLOT_ID_HANDCUFFED,
-		SLOT_ID_LEGCUFFED
+		SLOT_ID_LEGCUFFED,
 	)
 
 //* carry weight

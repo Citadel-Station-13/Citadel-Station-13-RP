@@ -71,25 +71,13 @@
 
 	add_overlay(overlays_to_add)
 
-/obj/structure/bed/legacy_ex_act(severity)
-	switch(severity)
-		if(1.0)
-			qdel(src)
-			return
-		if(2.0)
-			if (prob(50))
-				qdel(src)
-				return
-		if(3.0)
-			if (prob(5))
-				qdel(src)
-				return
-
 /obj/structure/bed/attackby(obj/item/W as obj, mob/user as mob)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
 	if(W.is_wrench())
 		playsound(src, W.tool_sound, 50, 1)
-		dismantle()
-		qdel(src)
+		deconstruct(ATOM_DECONSTRUCT_DISASSEMBLED)
+		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 	else if(istype(W,/obj/item/stack))
 		if(padding_material)
 			to_chat(user, "\The [src] is already padded.")
@@ -146,10 +134,10 @@
 	padding_material = get_material_by_name(padding_type)
 	update_icon()
 
-/obj/structure/bed/proc/dismantle()
-	material.place_sheet(get_turf(src))
-	if(padding_material)
-		padding_material.place_sheet(get_turf(src))
+/obj/structure/bed/drop_products(method, atom/where)
+	. = ..()
+	material?.place_sheet(where)
+	padding_material?.place_sheet(where)
 
 /obj/structure/bed/psych
 	name = "psychiatrist's couch"

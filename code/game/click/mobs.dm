@@ -98,7 +98,7 @@
 	if(. & CLICKCHAIN_ATTACK_MISSED)
 		return . | melee_attack_miss(target, clickchain, style, clickchain_flags, target_zone, mult)
 	// todo: the rest of this proc not qdel-safe
-	playsound(target.hitsound_unarmed(src, style))
+	playsound(src, target.hitsound_unarmed(src, style), 50, TRUE, -1)
 	// todo: better feedback
 	clickchain.visible_feedback(
 		target = target,

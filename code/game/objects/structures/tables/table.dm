@@ -74,8 +74,9 @@ var/list/table_icon_cache = list()
 /obj/structure/table/Destroy()
 	var/old_loc = loc
 	// i am so sorry ~silicons
+	// todo: this is fucking horrid, refactor it
 	spawn(0)
-		for(var/obj/structure/table/T in old_loc)
+		for(var/obj/structure/table/T in range(1, old_loc))
 			T.update_connections()
 	return ..()
 
