@@ -22,8 +22,10 @@
 #define MATERIAL_SIGNIFICANCE_DOOR 20
 /// significance used for normal wall layer
 #define MATERIAL_SIGNIFICANCE_WALL 20
+//? we are using a higher value because we max(), so reinf lets you basically combine another mat's armor.
+//? this should be dropped to 10 later when we get a new algorithm.
 /// significance used for reinforcing wall layer
-#define MATERIAL_SIGNIFICANCE_WALL_REINF 10
+#define MATERIAL_SIGNIFICANCE_WALL_REINF 17.5
 /// significance used for girder wall layer
 #define MATERIAL_SIGNIFICANCE_WALL_GIRDER 5
 

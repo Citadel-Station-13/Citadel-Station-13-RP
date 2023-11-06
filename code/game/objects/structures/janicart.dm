@@ -10,6 +10,8 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 	climb_allowed = TRUE
 	depth_level = 20
 	atom_flags = OPENCONTAINER
+	// todo: temporary, as this is unbuildable
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 	//copypaste sorry
 	var/amount_per_transfer_from_this = 5 //shit I dunno, adding this so syringes stop runtime erroring. --NeoFite
 	var/obj/item/storage/bag/trash/mybag	= null
@@ -26,7 +28,6 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 	. = ..()
 	. += "[src] [icon2html(thing = src, target = user)] contains [reagents.total_volume] unit\s of liquid!"
 	//everything else is visible, so doesn't need to be mentioned
-
 
 /obj/structure/janitorialcart/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/storage/bag/trash) && !mybag)

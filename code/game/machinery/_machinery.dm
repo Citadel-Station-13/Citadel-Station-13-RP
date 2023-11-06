@@ -499,7 +499,6 @@
 	if(do_after(user, 20 * S.tool_speed))
 		if(machine_stat & BROKEN)
 			to_chat(user, "<span class='notice'>The broken glass falls out.</span>")
-			new /obj/item/material/shard(src.loc)
 		else
 			to_chat(user, "<span class='notice'>You disconnect the monitor.</span>")
 		. = dismantle()
@@ -523,14 +522,15 @@
 	new/obj/item/stack/cable_coil(get_turf(src), 5)
 	. = dismantle()
 
-/obj/machinery/proc/dismantle()
-	playsound(src.loc, 'sound/items/Crowbar.ogg', 50, 1)
-	drop_products(ATOM_DECONSTRUCT_DISASSEMBLED)
+/obj/machinery/deconstructed(method)
+	. = ..()
+	// todo: get rid of this, legacy.
 	on_deconstruction()
-	// If it doesn't have a circuit board, don't create a frame, instead just break.
-	if(!circuit)
-		qdel(src)
-		return 0
+
+/obj/machinery/drop_products(method, atom/where)
+	. = ..()
+	if(isnull(circuit))
+		return
 	var/obj/structure/frame/A = new /obj/structure/frame(src.loc)
 	var/obj/item/circuitboard/M = circuit
 	A.circuit = M
@@ -571,8 +571,6 @@
 	A.update_appearance()
 	M.loc = null
 	M.after_deconstruct(src)
-	qdel(src)
-	return 1
 
 //called on machinery construction (i.e from frame to machinery) but not on initialization
 // /obj/machinery/proc/on_construction() //! Not used yet.

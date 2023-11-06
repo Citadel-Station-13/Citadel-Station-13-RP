@@ -24,6 +24,8 @@
 	req_access = list(ACCESS_SECURITY_BRIG)
 	anchored = TRUE //Can't pick it up
 	density = FALSE //Can walk through it.
+	// todo: temporary, as this is unbuildable
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 	var/id = null   //Id of door it controls.
 
 	var/activation_time = 0

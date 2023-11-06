@@ -18,6 +18,8 @@
 	climb_allowed = FALSE
 	depth_projected = FALSE
 	interaction_flags_machine = INTERACT_MACHINE_OFFLINE | INTERACT_MACHINE_ALLOW_SILICON
+	// todo: temporary, as this is unbuildable
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 	var/mode = null
 
 	//Used for logging people entering cryosleep and important items they are carrying.
@@ -224,6 +226,8 @@
 	density = TRUE
 	anchored = TRUE
 	dir = WEST
+	// todo: temporary, as this is unbuildable
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 
 	base_icon_state = "cryopod_0"
 	var/occupied_icon_state = "cryopod_1"

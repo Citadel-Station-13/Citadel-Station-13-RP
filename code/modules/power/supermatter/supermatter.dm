@@ -53,6 +53,8 @@
 	anchored = 0
 	rad_flags = RAD_NO_CONTAMINATE | RAD_BLOCK_CONTENTS
 	light_range = 4
+	// todo: this is shitcode but whatever
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 
 	var/gasefficiency = 0.25
 

@@ -451,6 +451,8 @@
 	. += get_name_chaser(user)
 	if(desc)
 		. += "<hr>[desc]"
+	if(integrity_flags & INTEGRITY_INDESTRUCTIBLE)
+		. += SPAN_NOTICE("It doesn't look like it can be damaged through common means.")
 /*
 	if(custom_materials)
 		var/list/materials_list = list()
