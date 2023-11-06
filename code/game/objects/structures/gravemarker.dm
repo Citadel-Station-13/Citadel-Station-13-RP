@@ -54,7 +54,7 @@
 /obj/structure/gravemarker/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 	if(I.is_screwdriver())
 		var/datum/material/material = get_primary_material()
-		var/time_mult = (material.regex_this_hardness > 0)? material.regex_this_hardness / 100 : 1 / (material.regex_this_hardness / 100)
+		var/time_mult = (material.hardness > 0)? material.hardness / 100 : 1 / (material.hardness / 100)
 		var/carving_1 = sanitizeSafe(input(user, "Who is \the [src.name] for?", "Gravestone Naming", null)  as text, MAX_NAME_LEN)
 		if(carving_1)
 			user.visible_message("[user] starts carving \the [src.name].", "You start carving \the [src.name].")
@@ -72,7 +72,7 @@
 		return
 	if(I.is_wrench())
 		var/datum/material/material = get_primary_material()
-		var/time_mult = (material.regex_this_hardness > 0)? material.regex_this_hardness / 100 : 1 / (material.regex_this_hardness / 100)
+		var/time_mult = (material.hardness > 0)? material.hardness / 100 : 1 / (material.hardness / 100)
 		user.visible_message("[user] starts taking down \the [src.name].", "You start taking down \the [src.name].")
 		if(do_after(user, time_mult * 2 SECONDS * I.tool_speed))
 			user.visible_message("[user] takes down \the [src.name].", "You take down \the [src.name].")

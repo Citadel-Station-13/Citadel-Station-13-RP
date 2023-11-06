@@ -66,7 +66,7 @@
 
 /obj/item/material/sharpeningkit/update_material_single(datum/material/material)
 	. = ..()
-	repair_amount = clamp(material.regex_this_hardness * 0.5 + 10, 10, 200)
+	repair_amount = clamp(material.hardness * 0.5 + 10, 10, 200)
 	repair_time = min(10 SECONDS, material.weight_multiplier * 15)
 	sharpen_time = min(10 SECONDS, material.weight_multiplier * 15)
 

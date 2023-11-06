@@ -72,7 +72,7 @@
 	/// * impacts sharp / blade damage
 	/// * impacts kinetic penetration resistance
 	/// * impacts bomb armor
-	var/regex_this_hardness = MATERIAL_RESISTANCE_NONE
+	var/hardness = MATERIAL_RESISTANCE_NONE
 	/// kinetic scattering/dampening for something made out of this
 	/// based on MATERIAL_RESISTANCE_ defines
 	/// * impacts blunt / crush damage

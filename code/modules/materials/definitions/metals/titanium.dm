@@ -12,7 +12,7 @@
 	relative_integrity = 1
 	density = 8 * 0.5
 	relative_conductivity = 1.27
-	regex_this_hardness = MATERIAL_RESISTANCE_HIGH
+	hardness = MATERIAL_RESISTANCE_HIGH
 	toughness = MATERIAL_RESISTANCE_HIGH
 	refraction = MATERIAL_RESISTANCE_NONE
 	absorption = MATERIAL_RESISTANCE_LOW

@@ -13,7 +13,7 @@
 	relative_integrity = 1.25
 	relative_reactivity = 0.05
 	relative_permeability = 0
-	regex_this_hardness = MATERIAL_RESISTANCE_HIGH
+	hardness = MATERIAL_RESISTANCE_HIGH
 	toughness = MATERIAL_RESISTANCE_LOW
 	refraction = MATERIAL_RESISTANCE_MODERATE
 	absorption = MATERIAL_RESISTANCE_LOW

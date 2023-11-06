@@ -6,7 +6,7 @@
 	tgui_icon_key = "brass"
 
 	relative_integrity = 1.3
-	regex_this_hardness = MATERIAL_RESISTANCE_MODERATE
+	hardness = MATERIAL_RESISTANCE_MODERATE
 	toughness = MATERIAL_RESISTANCE_MODERATE
 	refraction = MATERIAL_RESISTANCE_NONE
 	absorption = MATERIAL_RESISTANCE_MODERATE

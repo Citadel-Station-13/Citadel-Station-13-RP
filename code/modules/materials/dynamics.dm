@@ -24,7 +24,7 @@
 	// absorbing kinetic energy
 	var/kinetic_damping = toughness * ((density ** 0.5) * (1 / 3))
 	// stopping kinetic penetrators
-	var/kinetic_hardness = regex_this_hardness * ((density ** 0.5) * (1 / 8) + 0.7)
+	var/kinetic_hardness = hardness * ((density ** 0.5) * (1 / 8) + 0.7)
 	// absorbing energy blasts
 	var/ablation_damping = (absorption + refraction * 0.2)
 	// stopping energy blasts from penetrating
@@ -48,11 +48,11 @@
 	// we grab this first because we need to module the actual armor by this
 	// it's a bit dumb but until we have proper material science like dwarf fortress
 	// and bludgeon/slash/pierce a la bg3, we're stuck with this
-	var/kinetic_tier = (((kinetic_hardness + kinetic_damping * 0.2) * significance_as_multiplier) ** 0.5) * 0.1
+	var/kinetic_tier = (((kinetic_hardness + kinetic_damping * 0.2) * significance_as_multiplier) ** 0.5) * 0.125
 	// sike i can't math for shit we'll use kinetic absorption as just the inverse lol
 	var/kinetic_absorb = 1.6 * (1 / (1 + NUM_E ** -(0.004 * (kinetic_hardness * 0.2 + kinetic_damping)))) - 0.5 * 1.6
 	// ditto
-	var/laser_tier = 1.6 * (1 / (1 + NUM_E ** -(0.0042 * (ablation_diffusion * significance_as_multiplier)))) - 0.5 * 1.6
+	var/laser_tier = 1.6 * 6 * (1 / (1 + NUM_E ** -(0.0042 * (ablation_diffusion * significance_as_multiplier)))) - 0.5 * 1.6 * 6
 	var/laser_absorb = ((1 / (-(ablation_damping * significance_as_multiplier + 400) * 0.000025)) + 100) * 0.01
 	// we don't allow deflection for now
 	return (armor_cache[cache_key] = fetch_armor_struct(list(
@@ -167,12 +167,12 @@
 		// use hardness
 		.[MATERIAL_MELEE_STATS_FLAG] = ARMOR_MELEE
 		.[MATERIAL_MELEE_STATS_MODE] = initial_modes
-		var/damage = (MATERIAL_DYNAMICS_DAMAGE_CEILING / (1 + (NUM_E ** -(MATERIAL_DYNAMICS_DAMAGE_LOGISTIC * ((regex_this_hardness * MATERIAL_DYNAMICS_DAMAGE_INTENSIFIER * MATERIAL_SIGNIFICANCE_TO_DAMAGE_INTENSIFIER(significance) * MATERIAL_DENSITY_TO_DAMAGE_INTENSIFIER(density) - MATERIAL_DYNAMICS_DAMAGE_SHIFT) / MATERIAL_DYNAMICS_DAMAGE_DIVISOR)))))
+		var/damage = (MATERIAL_DYNAMICS_DAMAGE_CEILING / (1 + (NUM_E ** -(MATERIAL_DYNAMICS_DAMAGE_LOGISTIC * ((hardness * MATERIAL_DYNAMICS_DAMAGE_INTENSIFIER * MATERIAL_SIGNIFICANCE_TO_DAMAGE_INTENSIFIER(significance) * MATERIAL_DENSITY_TO_DAMAGE_INTENSIFIER(density) - MATERIAL_DYNAMICS_DAMAGE_SHIFT) / MATERIAL_DYNAMICS_DAMAGE_DIVISOR)))))
 		var/tier = (( \
 			  (MATERIAL_DYNAMICS_DAMTIER_CEILING * 2) \
 			/ (1 + NUM_E ** -( \
 				MATERIAL_DYNAMICS_DAMTIER_LOGISTIC * \
-				((regex_this_hardness * MATERIAL_DYNAMICS_DAMTIER_INTENSIFIER * MATERIAL_SIGNIFICANCE_TO_DAMAGE_INTENSIFIER(significance) * MATERIAL_DENSITY_TO_DAMAGE_INTENSIFIER(density) - MATERIAL_DYNAMICS_DAMTIER_SHIFT) / MATERIAL_DYNAMICS_DAMTIER_DIVISOR) \
+				((hardness * MATERIAL_DYNAMICS_DAMTIER_INTENSIFIER * MATERIAL_SIGNIFICANCE_TO_DAMAGE_INTENSIFIER(significance) * MATERIAL_DENSITY_TO_DAMAGE_INTENSIFIER(density) - MATERIAL_DYNAMICS_DAMTIER_SHIFT) / MATERIAL_DYNAMICS_DAMTIER_DIVISOR) \
 			)) \
 		) - MATERIAL_DYNAMICS_DAMTIER_CEILING + MATERIAL_DYNAMICS_DAMTIER_ADJUST ) * MATERIAL_DYNAMICS_DAMTIER_SCALER
 		.[MATERIAL_MELEE_STATS_DAMAGE] = damage

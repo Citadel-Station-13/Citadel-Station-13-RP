@@ -21,7 +21,7 @@
 	relative_conductivity = 0.1
 	relative_permeability = 0.2
 	relative_reactivity = 0.45
-	regex_this_hardness = MATERIAL_RESISTANCE_LOW
+	hardness = MATERIAL_RESISTANCE_LOW
 	toughness = MATERIAL_RESISTANCE_HIGH
 	refraction = MATERIAL_RESISTANCE_NONE
 	absorption = MATERIAL_RESISTANCE_VULNERABLE

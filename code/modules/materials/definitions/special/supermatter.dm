@@ -19,7 +19,7 @@
 	relative_conductivity = 0
 	relative_permeability = 0
 	relative_reactivity = 0
-	regex_this_hardness = MATERIAL_RESISTANCE_EXTREME
+	hardness = MATERIAL_RESISTANCE_EXTREME
 	toughness = MATERIAL_RESISTANCE_EXTREME
 	refraction = MATERIAL_RESISTANCE_HIGH
 	absorption = MATERIAL_RESISTANCE_EXTREME
