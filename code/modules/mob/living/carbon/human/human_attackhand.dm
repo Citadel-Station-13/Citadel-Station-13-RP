@@ -198,7 +198,8 @@
 			if(attack.unarmed_override(H, src, hit_zone))
 				return FALSE
 
-			H.do_attack_animation(src)
+			H.animate_swing_at_target(src)
+			animate_hit_by_attack(attack.animation_type)
 			if(!attack_message)
 				attack.show_attack(H, src, hit_zone, rand_damage)
 			else

@@ -3,6 +3,8 @@
 /*-=-=-=-=-=-=-=-=-=-=-=-=-=WHAT-EVER=-=-=-=-=-=-=-=-=-=-=-=-=-*/
 /* '~'-._.-'~'-._.-'~'-._.-'~'-._.-'~'-._.-'~'-._.-'~'-._.-'~' */
 
+//! PLEASE STOP USING THIS, GO USE /obj/spawner/window
+
 /obj/effect/wingrille_spawn
 	name = "window grille spawner"
 	icon = 'icons/obj/structures/window_spawners.dmi'
@@ -13,16 +15,6 @@
 	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED
 	var/win_path = /obj/structure/window/basic
 	var/activated
-
-/obj/effect/wingrille_spawn/attack_hand(mob/user, list/params)
-	attack_generic()
-
-/obj/effect/wingrille_spawn/attack_ghost()
-	. = ..()
-	attack_generic()
-
-/obj/effect/wingrille_spawn/attack_generic()
-	activate()
 
 /obj/effect/wingrille_spawn/Initialize(mapload)
 	. = ..()

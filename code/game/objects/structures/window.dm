@@ -212,27 +212,12 @@
 
 	user.setClickCooldown(user.get_attack_speed())
 
-	if (user.a_intent == INTENT_HARM)
-		if (ishuman(user))
-			var/mob/living/carbon/human/H = user
-			if (H.species.can_shred(H))
-				attack_generic(H, 25)
-				return
-
-		playsound(loc, 'sound/effects/glassknock.ogg', 80, TRUE)
-		user.do_attack_animation(src)
-		user.visible_message(
-			SPAN_DANGER("\The [user] bangs against \the [src]!"),
-			SPAN_DANGER("You bang against \the [src]!"),
-			SPAN_HEAR("You hear a banging sound."),
-		)
-	else
-		playsound(loc, 'sound/effects/glassknock.ogg', 80, TRUE)
-		user.visible_message(
-			SPAN_NOTICE("[user.name] knocks on the [name]."),
-			SPAN_NOTICE("You knock on the [name]."),
-			SPAN_HEAR("You hear a knocking sound."),
-		)
+	playsound(loc, 'sound/effects/glassknock.ogg', 80, TRUE)
+	user.visible_message(
+		SPAN_NOTICE("[user.name] knocks on the [name]."),
+		SPAN_NOTICE("You knock on the [name]."),
+		SPAN_HEAR("You hear a knocking sound."),
+	)
 
 /obj/structure/window/attackby(obj/item/object, mob/user)
 	if(user.a_intent == INTENT_HARM)
