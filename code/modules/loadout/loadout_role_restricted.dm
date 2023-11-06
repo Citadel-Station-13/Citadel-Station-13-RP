@@ -89,7 +89,7 @@
 //Command
 /datum/loadout_entry/restricted/command
 	subcategory = "Command"
-	allowed_roles = list("Facility Director", "Head of Personnel", "Chief Medical Officer", "Head of Security", "Research Director", "Chief Engineer", "Command Secretary", "Blueshield")
+	allowed_roles = list("Facility Director", "Head of Personnel", "Chief Medical Officer", "Head of Security", "Research Director", "Chief Engineer", "Bridge Officer", "Blueshield")
 
 /datum/loadout_entry/restricted/command/eyes
 	slot = SLOT_ID_GLASSES
