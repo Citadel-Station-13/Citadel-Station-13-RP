@@ -286,6 +286,8 @@
 	var/resist_time = 4 MINUTES
 
 /obj/item/clothing/suit/straight_jacket/can_unequip(mob/M, slot, mob/user, flags)
+	if(flags & INV_OP_FORCE)
+		return TRUE
 	if(flags & INV_OP_DISALLOW_DELAY)
 		return FALSE
 	. = ..()

@@ -130,7 +130,7 @@
 	name = "explorer hood"
 	desc = "An armoured hood for exploring harsh environments."
 	icon_state = "explorer"
-	clothing_flags = CLOTHING_THICK_MATERIAL
+	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0.9
 	armor_type = /datum/armor/exploration/soft
@@ -140,7 +140,7 @@
 	desc = "An armoured hood for mining in harsh environments."
 	icon = 'icons/clothing/suit/mining.dmi'
 	icon_state = "minehood"
-	clothing_flags = CLOTHING_THICK_MATERIAL
+	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0.9
@@ -152,7 +152,7 @@
 	desc = "A baggy hood smeared with some kind of waxy substance. Up close, what appeared to be burlap is revealed to actually be tanned skin."
 	icon = 'icons/clothing/suit/antag/heretic.dmi'
 	icon_state = "eldritchhood"
-	clothing_flags = CLOTHING_THICK_MATERIAL
+	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT
 	siemens_coefficient = 0.9
 	armor_type = /datum/armor/lavaland/eldritch
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
@@ -236,7 +236,7 @@
 	icon = 'icons/obj/clothing/spacesuits.dmi'
 	icon_state = "deathsquad"
 	armor_type = /datum/armor/station/heavy
-	clothing_flags = CLOTHING_THICK_MATERIAL
+	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT
 	inv_hide_flags = BLOCKHAIR
 	siemens_coefficient = 0.7
 
@@ -247,7 +247,7 @@
 	icon_state = "helmet"
 	valid_accessory_slots = (ACCESSORY_SLOT_HELM_C)
 	restricted_accessory_slots = (ACCESSORY_SLOT_HELM_C)
-	clothing_flags = CLOTHING_THICK_MATERIAL
+	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT
 	armor_type = /datum/armor/station/medium
 	siemens_coefficient = 0.7
 
@@ -258,7 +258,7 @@
 	icon_state = "helmet"
 	valid_accessory_slots = (ACCESSORY_SLOT_HELM_C)
 	restricted_accessory_slots = (ACCESSORY_SLOT_HELM_C)
-	clothing_flags = CLOTHING_THICK_MATERIAL
+	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT
 	armor_type = /datum/armor/station/medium
 	siemens_coefficient = 0.7
 	starting_accessories = list(/obj/item/clothing/accessory/armor/helmcover/navy)

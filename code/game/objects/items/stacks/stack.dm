@@ -11,6 +11,8 @@
 	var/max_amount = 50
 	/// Determines whether different stack types can merge.
 	var/stacktype
+	/// enforce a certain type when splitting; useful if you have an infinite stack you don't want to be split into another one
+	var/split_type
 	/// Used when directly applied to a turf.
 	var/build_type = null
 	var/uses_charge = 0
@@ -209,6 +211,7 @@
 	return 0
 
 /// Creates a new stack with the specified amount.
+// todo: refactor and combine /change_stack into here
 /obj/item/stack/proc/split(tamount)
 	if (!amount)
 		return null
@@ -219,7 +222,8 @@
 
 	var/orig_amount = src.amount
 	if (transfer && src.use(transfer))
-		var/obj/item/stack/newstack = new src.type(loc, transfer, FALSE)
+		var/make_type = isnull(split_type)? type : split_type
+		var/obj/item/stack/newstack = new make_type(loc, transfer, FALSE)
 		newstack.color = color
 		if (prob(transfer/orig_amount * 100))
 			transfer_fingerprints_to(newstack)
@@ -332,10 +336,12 @@
 			to_chat(user, SPAN_NOTICE("You take [stackmaterial] sheets out of the stack"))
 		return TRUE
 
+// todo: refactor and combine with /split
 /obj/item/stack/proc/change_stack(mob/user, amount)
 	if(!use(amount, TRUE, FALSE))
 		return FALSE
-	var/obj/item/stack/F = new type(user? user : drop_location(), amount, FALSE)
+	var/make_type = isnull(split_type)? type : split_type
+	var/obj/item/stack/F = new make_type(user? user : drop_location(), amount, FALSE)
 	. = F
 	F.copy_evidences(src)
 	if(user)

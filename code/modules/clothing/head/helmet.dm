@@ -2,7 +2,7 @@
 	name = "helmet"
 	desc = "Standard headgear. Protects well enough against a wide range of attacks."
 	icon_state = "helmet"
-	clothing_flags = CLOTHING_THICK_MATERIAL
+	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT
 	valid_accessory_slots = ACCESSORY_SLOT_HELM_C|ACCESSORY_SLOT_HELM_R
 	restricted_accessory_slots = ACCESSORY_SLOT_HELM_C|ACCESSORY_SLOT_HELM_R
 	armor_type = /datum/armor/station/medium
@@ -406,6 +406,14 @@
 	icon_state = "tauhelm"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndicate-helm-green", SLOT_ID_LEFT_HAND = "syndicate-helm-green")
 	armor_type = /datum/armor/general/utilitarian_military
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/head/helmet/baroque
+	name = "baroque military helmet"
+	desc = "This sturdy helmet's ornate design belies its technological sophistication."
+	icon = 'icons/clothing/suit/armor/baroque.dmi'
+	icon_state = "sisterhelm"
+	armor_type = /datum/armor/general/baroque_military
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/head/helmet/duraskull
