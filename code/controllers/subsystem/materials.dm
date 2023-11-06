@@ -26,6 +26,8 @@ SUBSYSTEM_DEF(materials)
 	var/list/layered_armor_cache = list()
 	/// combined armor cache
 	var/list/combined_armor_cache = list()
+	/// wall armor cache
+	var/list/wall_armor_cache = list()
 
 /datum/controller/subsystem/materials/Initialize()
 	initialize_material_traits()

@@ -147,6 +147,48 @@
 	return resolved
 
 /**
+ * combines multiple material armors into one
+ * used for reinforcing / whatevers
+ *
+ * todo: this is just a snowflake wall variant to give them deflect. please, find a less shitty solution to this. yikes.
+ *
+ * @params
+ * * materials - material instances associated to significance. first is lowest; put exterior armors on last!
+ *
+ * @return /datum/armor instance
+ */
+/datum/controller/subsystem/materials/proc/wall_materials_armor(list/datum/material/materials)
+	var/list/cache_key = list()
+	for(var/datum/material/mat as anything in materials)
+		if(isnull(mat))
+			continue
+		cache_key += "[mat.id]-[materials[mat]]"
+	cache_key = jointext(cache_key, ";")
+	var/datum/armor/resolved = wall_armor_cache[cache_key]
+	if(!isnull(resolved))
+		return resolved
+	var/list/datum/armor/collected = list()
+	for(var/datum/material/mat as anything in materials)
+		if(isnull(mat))
+			continue
+		collected[mat.create_armor(materials[mat]).to_list()] = materials[mat]
+
+	// todo: this is shitty but we just do the best of all
+	//       as a result, combined materials armor tends to be pretty op
+	//       please rework when possible.
+	var/list/combined = list()
+	for(var/list/armor_list as anything in collected)
+		for(var/key in armor_list)
+			combined[key] = max(combined[key], armor_list[key])
+
+	//* give walls some special shit so they don't get literally greytided to shit and back
+	combined[ARMOR_MELEE_DEFLECT] = 5 // good enough
+
+	resolved = fetch_armor_struct(combined)
+	wall_armor_cache[cache_key] = resolved
+	return resolved
+
+/**
  * get melee stats
  * autodetect with initial damage modes of item
  * alternatively forced modes can be specified via the param

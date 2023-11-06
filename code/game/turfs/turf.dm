@@ -431,6 +431,9 @@
 /turf/AllowDrop()
 	return TRUE
 
+/turf/drop_location()
+	return src
+
 // Returns false if stepping into a tile would cause harm (e.g. open space while unable to fly, water tile while a slime, lava, etc).
 /turf/proc/is_safe_to_enter(mob/living/L)
 	if(LAZYLEN(dangerous_objects))

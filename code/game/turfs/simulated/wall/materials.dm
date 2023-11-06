@@ -69,7 +69,7 @@
 
 	set_multiplied_integrity(integrity_factor, FALSE)
 
-	var/datum/armor/grabbed = SSmaterials.reinforcing_materials_armor(list((material_girder) = MATERIAL_SIGNIFICANCE_WALL_GIRDER, (material_reinf) = MATERIAL_SIGNIFICANCE_WALL_REINF, (material_outer) = MATERIAL_SIGNIFICANCE_WALL))
+	var/datum/armor/grabbed = SSmaterials.wall_materials_armor(list((material_girder) = MATERIAL_SIGNIFICANCE_WALL_GIRDER, (material_reinf) = MATERIAL_SIGNIFICANCE_WALL_REINF, (material_outer) = MATERIAL_SIGNIFICANCE_WALL))
 	set_armor(grabbed)
 
 	rad_insulation = 1 / ((material_girder?.density * 0.1 + material_outer?.density * 1.2 + material_reinf?.density * 0.5) / 8 * 1.7)
