@@ -36,17 +36,17 @@
 	exotic_absorption = exotic_absorption >= 0? clamp(((exotic_absorption * significance_as_multiplier) ** 0.73) * 0.007, 0, 1) : \
 		clamp(-(((-exotic_absorption * significance_as_multiplier) ** 0.73) * 0.007), -1, 0)
 	// bomb values : from kinetic damping and hardness
-	var/direct_bomb = (0.01 * (1 / -(((kinetic_damping + kinetic_hardness) * significance_as_multiplier + 400) * 0.000025)) + 1)
+	var/direct_bomb = (0.01 * (1 / -(((kinetic_damping + kinetic_hardness) / 1.27 * significance_as_multiplier + 400) * 0.000025)) + 1)
 	// direct values
 	// todo: integrate significance
 	// todo: integrate some kind of 'coverage' parameter?
 	var/direct_bio = relative_permeability > 1? -relative_permeability : relative_permeability
 	// todo: integrate significance
 	// todo: integrate some kind of 'coverage' parameter?
-	var/direct_acid = relative_reactivity > 1? -relative_reactivity : relative_reactivity
+	var/direct_acid = relative_reactivity > 1? -relative_reactivity : (1 - relative_reactivity)
 	// todo: integrate significance
 	// todo: integrate some kind of 'coverage' parameter?
-	var/direct_fire = relative_reactivity > 1? -relative_reactivity : relative_reactivity
+	var/direct_fire = relative_reactivity > 1? -relative_reactivity : (1 - relative_reactivity)
 	var/direct_rad = clamp((((density + nullification * 0.025 + refraction * 0.01 + absorption * 0.0075) * significance_as_multiplier * (1 / 55)) ** 2) * 4, 0, 1)
 	// tier; hardness is important
 	// we grab this first because we need to module the actual armor by this
