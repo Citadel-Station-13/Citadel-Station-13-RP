@@ -217,6 +217,16 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "santahatgreen", SLOT_ID_LEFT_HAND = "santahatgreen")
 	body_cover_flags = 0
 
+// Ye Olde Bloodborne Cage Helmet
+/obj/item/clothing/head/cage
+	name = "scholarly cage"
+	desc = "An aged iron cage meant to be worn upon one's head. It relies largely on the shoulders for support. Small, dried flecks of blood have visibly gathered in some of the recesses."
+	icon = 'icons/clothing/head/cage_32x48.dmi'
+	icon_state = "cage"
+	body_cover_flags = HEAD
+	w_class = ITEMSIZE_NORMAL
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
 /*
  * Xenoarch/Surface Loot Hats
  */
