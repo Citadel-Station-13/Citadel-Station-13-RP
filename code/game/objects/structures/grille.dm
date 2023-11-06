@@ -12,6 +12,7 @@
 	layer = GRILLE_LAYER
 	explosion_resistance = 1
 	color = COLOR_GRAY
+	armor_type = /datum/armor/none
 
 	plane = OBJ_PLANE
 	smoothing_flags = SMOOTH_BITMASK
