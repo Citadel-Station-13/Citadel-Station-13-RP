@@ -1119,8 +1119,8 @@ About the new airlock wires panel:
 	//update the electronics to match the door's access
 	if(!src.req_access)
 		src.check_access()
-	electronics.conf_req_access = req_access.Copy()
-	electronics.conf_req_one_access = req_one_access.Copy()
+	electronics.conf_req_access = req_access?.Copy()
+	electronics.conf_req_one_access = req_one_access?.Copy()
 
 /**
  * drop our circuitry
@@ -1128,6 +1128,7 @@ About the new airlock wires panel:
 /obj/machinery/door/airlock/proc/drop_airlock_electronics(atom/where = drop_location(), broken)
 	if(broken)
 		new /obj/item/circuitboard/broken(where)
+		return
 	if(isnull(electronics))
 		create_electronics()
 	electronics.forceMove(loc)
