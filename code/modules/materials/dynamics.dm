@@ -53,7 +53,7 @@
 	var/kinetic_absorb = 1.6 * (1 / (1 + NUM_E ** -(0.004 * (kinetic_hardness * 0.2 + kinetic_damping)))) - 0.5 * 1.6
 	// ditto
 	var/laser_tier = 1.6 * 6 * (1 / (1 + NUM_E ** -(0.0042 * (ablation_diffusion * significance_as_multiplier)))) - 0.5 * 1.6 * 6
-	var/laser_absorb = ((1 / (-(ablation_damping * significance_as_multiplier + 400) * 0.000025)) + 100) * 0.01
+	var/laser_absorb = ((1 / (-(ablation_damping * significance_as_multiplier + 400) * 0.000025)) + 100) * 0.013
 	// we don't allow deflection for now
 	return (armor_cache[cache_key] = fetch_armor_struct(list(
 		ARMOR_MELEE = kinetic_absorb,
