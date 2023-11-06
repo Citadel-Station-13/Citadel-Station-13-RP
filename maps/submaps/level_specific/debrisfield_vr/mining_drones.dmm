@@ -163,10 +163,7 @@
 /turf/simulated/floor/tiled/airless,
 /area/submap/debrisfield_vr/mining_outpost)
 "E" = (
-/obj/machinery/door/airlock/external/glass{
-	density = FALSE;
-	icon_state = "door_open"
-	},
+/obj/machinery/door/airlock/external/glass,
 /turf/simulated/floor/airless,
 /area/submap/debrisfield_vr/mining_outpost)
 "F" = (
