@@ -29,6 +29,9 @@
  * called to try to hit something in melee
  */
 /mob/proc/melee_attack_chain(atom/target, datum/event_args/actor/clickchain/clickchain, datum/unarmed_attack/style = unarmed_attack_style(), clickchain_flags, target_zone, mult = 1)
+	if(isnull(style))
+		// we can't autoattack
+		return NONE
 	if(isnull(clickchain))
 		clickchain = new(src, target = target, intent = a_intent)
 	// too complciated to be put in proc header
@@ -41,7 +44,7 @@
 	if(IS_PRONE(clickchain.performer))
 		mult *= 0.66
 	// todo: signals
-	. |= melee_attack(target, clickchain, style, clickchain_flags, target_zone, mult)
+	. = melee_attack(target, clickchain, style, clickchain_flags, target_zone, mult)
 	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
 		return
 	return . | melee_attack_finalize(target, clickchain, style, clickchain_flags, target_zone, mult)
@@ -52,7 +55,8 @@
  * todo: kinda shitycodey but w/e
  */
 /mob/proc/unarmed_attack_style()
-	return fetch_unarmed_style(/datum/unarmed_attack)
+	// none by default
+	return null
 
 // todo: melee_special for overrides (?)
 
