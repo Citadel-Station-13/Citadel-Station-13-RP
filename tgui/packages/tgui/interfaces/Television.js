@@ -4,10 +4,11 @@ import { Window } from '../layouts';
 
 export const Television = (props, context) => {
   const { act, data } = useBackend(context);
-  // Extract `health` and `color` variables from the `data` object.
+
   const {
-    channels
+    channel
   } = data;
+
   return (
     <Window resizable>
       <Window.Content scrollable>

@@ -52,8 +52,6 @@ SUBSYSTEM_DEF(television)
 	for (var/c in channels)
 		possible_shows[c] += flist("strings/television/shows/[c]")
 		channel_current_line[c] = 1
-		//process channels into readable_channels
-		readable_channels[c] = copytext(c, 1, lentext(c) - 1)
 	//all advertisments available
 	possible_ads = flist("strings/television/ads/")
 
@@ -71,8 +69,6 @@ SUBSYSTEM_DEF(television)
 				channel_current_state[channel] = CHANSTATE_SHOW1
 
 			if (CHANSTATE_SHOW1)
-				var/bin = (file2text("strings/television/shows/[channel][channel_current_shows[channel]]"))
-				TO_WORLD(bin)
 				prepare_show(channel, file2text("strings/television/shows/[channel][channel_current_shows[channel]]"))
 				channel_current_state[channel] = CHANSTATE_SHOW1AIR
 
@@ -170,7 +166,7 @@ SUBSYSTEM_DEF(television)
 
 //Returns a list of all TV channels.
 /datum/controller/subsystem/television/proc/getChannels()
-	return readable_channels
+	return channels
 
 //Call to decode language keys. Takes a string e.g COMMON and returns the relevant language datum path
 /datum/controller/subsystem/television/proc/decodeTVLanguageKey(key)

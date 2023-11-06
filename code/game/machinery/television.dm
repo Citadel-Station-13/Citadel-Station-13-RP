@@ -43,6 +43,8 @@
 	if(default_unfasten_wrench(user, W, 40))
 		return
 
+/obj/machinery/television/attack_hand(mob/user, list/params)
+	interact(user)
 
 /obj/machinery/television/interact(mob/user)
 	if(inoperable())
@@ -50,11 +52,10 @@
 		return
 	ui_interact(user)
 
-
 /obj/machinery/television/ui_interact(mob/user, datum/tgui/ui)
   ui = SStgui.try_update_ui(user, src, ui)
   if(!ui)
-    ui = new(user, src, "Television")
+    ui = new(user, src, "Television", "SpaceCo - Television")
     ui.open()
 
 /obj/machinery/television/ui_data(mob/user)
@@ -70,12 +71,10 @@
 	if(action == "next_channel")
 		current_channel += 1
 		if(current_channel > channels.len)
-			current_channel = 0
+			current_channel = 1
 	if(action == "previous_channel")
 		current_channel -= 1
-		if(current_channel < 0)
+		if(current_channel < 1)
 			current_channel = channels.len
 	updateChannel()
 	. = TRUE
-
-/obj/machinery/television/ui_state()
