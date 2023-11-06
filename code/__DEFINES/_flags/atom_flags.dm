@@ -40,9 +40,7 @@
 #define PREVENT_CONTENTS_EXPLOSION	(1<<22)
 */
 /// We are ticking in materials
-#define ATOM_MATERIALS_TICKING		(1<<23)
-/// Can be set on fire by dynamic atom fire
-#define ATOM_FLAMMABLE				(1<<24)
+#define ATOM_MATERIALS_TICKING		(1<<22)
 /// Use initial icon/icon state for HTML renders in things like VV
 #define ATOM_HTML_INITIAL_ICON		(1<<23)
 
@@ -59,7 +57,7 @@ DEFINE_BITFIELD(atom_flags, list(
 	BITFIELD(OPENCONTAINER),
 	BITFIELD(PHORONGUARD),
 	BITFIELD(NOPRINT),
-	BITFIELD(ATOM_FLAMMABLE),
+	BITFIELD(ATOM_MATERIALS_TICKING),
 	BITFIELD(ATOM_HTML_INITIAL_ICON),
 ))
 
@@ -155,6 +153,10 @@ DEFINE_BITFIELD(movement_type, list(
 #define INTEGRITY_LAVAPROOF (1<<3)
 /// don't delete on atom_destruction()
 #define INTEGRITY_NO_DECONSTRUCT (1<<4)
+/// flammable by dynamic atom fire
+/// this is opt in as a flag so people have to think about it before throwing it onto things.
+/// <--- clueless comment author
+#define INTEGRITY_FLAMMABLE (1<<5)
 
 DEFINE_BITFIELD(integrity_flags, list(
 	BITFIELD(INTEGRITY_INDESTRUCTIBLE),
@@ -162,6 +164,7 @@ DEFINE_BITFIELD(integrity_flags, list(
 	BITFIELD(INTEGRITY_ACIDPROOF),
 	BITFIELD(INTEGRITY_LAVAPROOF),
 	BITFIELD(INTEGRITY_NO_DECONSTRUCT),
+	BITFIELD(INTEGRITY_FLAMMABLE),
 ))
 
 //? /atom/movable buckle_flags
