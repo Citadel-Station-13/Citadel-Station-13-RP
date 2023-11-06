@@ -572,6 +572,10 @@
 	M.loc = null
 	M.after_deconstruct(src)
 
+// todo: kill this shit, this is legacy
+/obj/machinery/dismantle()
+	deconstruct(ATOM_DECONSTRUCT_DISASSEMBLED)
+
 //called on machinery construction (i.e from frame to machinery) but not on initialization
 // /obj/machinery/proc/on_construction() //! Not used yet.
 // 	return

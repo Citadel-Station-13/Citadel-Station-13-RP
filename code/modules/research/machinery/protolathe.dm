@@ -65,10 +65,11 @@
 	mat_efficiency = max(1 - (T - 2) / 8, 0.2)
 	speed = T / 2
 
-/obj/machinery/r_n_d/protolathe/dismantle()
+/obj/machinery/r_n_d/protolathe/drop_products(method, atom/where)
+	. = ..()
+	// todo: refactor
 	for(var/f in stored_materials)
 		eject_materials(f, -1)
-	..()
 
 /obj/machinery/r_n_d/protolathe/update_overlays()
 	. = ..()

@@ -110,7 +110,10 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 		t += stored_materials[f]
 	return t
 
-/obj/machinery/r_n_d/circuit_imprinter/dismantle()
+/obj/machinery/r_n_d/circuit_imprinter/drop_products(method, atom/where)
+	// todo: refactor
+	var/list/component_parts = src.component_parts.Copy()
+	. = ..()
 	for(var/obj/I in component_parts)
 		if(istype(I, /obj/item/reagent_containers/glass/beaker))
 			reagents.trans_to_obj(I, reagents.total_volume)
@@ -120,7 +123,6 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 			if(path)
 				var/obj/item/stack/S = new path(loc)
 				S.amount = round(stored_materials[f] / SHEET_MATERIAL_AMOUNT)
-	..()
 
 /obj/machinery/r_n_d/circuit_imprinter/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(user.a_intent == INTENT_HARM)

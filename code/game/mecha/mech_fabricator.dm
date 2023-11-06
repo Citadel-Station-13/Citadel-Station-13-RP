@@ -121,10 +121,11 @@
 	if(printing)
 		add_overlay("[base_icon_state]-active")
 
-/obj/machinery/mecha_part_fabricator/dismantle()
+/obj/machinery/mecha_part_fabricator/drop_products(method, atom/where)
+	. = ..()
+	// todo: refactor
 	for(var/f in stored_materials)
 		eject_materials(f, -1)
-	..()
 
 /obj/machinery/mecha_part_fabricator/RefreshParts()
 	res_max_amount = 0
