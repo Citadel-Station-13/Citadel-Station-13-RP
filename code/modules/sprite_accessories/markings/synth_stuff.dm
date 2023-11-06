@@ -156,3 +156,33 @@
 	icon_state = "synthliz_eyes"
 	color_blend_mode = ICON_MULTIPLY
 	body_parts = list(BP_HEAD)
+
+// Replika
+
+/datum/sprite_accessory/marking/synth/replika_r_thigh
+	name = "Replikant Stripe - Right Thigh"
+	id = "marking_replika_r_thigh"
+	icon_state = "replika"
+	color_blend_mode = ICON_MULTIPLY
+	body_parts = list(BP_R_LEG)
+
+/datum/sprite_accessory/marking/synth/replika_l_thigh
+	name = "Replikant Stripe - Left Thigh"
+	id = "marking_replika_l_thigh"
+	icon_state = "replika"
+	color_blend_mode = ICON_MULTIPLY
+	body_parts = list(BP_L_LEG)
+
+/datum/sprite_accessory/marking/synth/replika_r_knee
+	name = "Replikant Stripe - Right Knee"
+	id = "marking_replika_r_knee"
+	icon_state = "replika"
+	color_blend_mode = ICON_MULTIPLY
+	body_parts = list(BP_R_FOOT)
+
+/datum/sprite_accessory/marking/synth/replika_l_knee
+	name = "Replikant Stripe - Left Knee"
+	id = "marking_replika_l_knee"
+	icon_state = "replika"
+	color_blend_mode = ICON_MULTIPLY
+	body_parts = list(BP_L_FOOT)
