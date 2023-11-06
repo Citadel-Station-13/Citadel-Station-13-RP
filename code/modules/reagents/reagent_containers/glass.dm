@@ -336,7 +336,7 @@
 	possible_transfer_amounts = list(10,20,30,60,120)
 	volume = 120
 	atom_flags = OPENCONTAINER
-	atom_flags = ATOM_FLAMMABLE
+	integrity_flags = INTEGRITY_FLAMMABLE
 	drop_sound = 'sound/items/drop/wooden.ogg'
 	pickup_sound = 'sound/items/pickup/wooden.ogg'
 
