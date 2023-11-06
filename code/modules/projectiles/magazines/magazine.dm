@@ -20,7 +20,7 @@
 	var/max_ammo = 7
 
 	var/ammo_type = /obj/item/ammo_casing //ammo type that is initially loaded
-	var/initial_ammo = null
+	var/initial_ammo // initial ammo amount, null for full
 
 	var/can_remove_ammo = TRUE	// Can this thing have bullets removed one-by-one? As of first implementation, only affects smart magazines
 
@@ -44,6 +44,22 @@
 		for(var/i in 1 to initial_ammo)
 			stored_ammo += new ammo_type(src)
 	update_icon()
+
+/obj/item/ammo_magazine/detect_material_base_costs()
+	. = ..()
+	if(isnull(ammo_type))
+		return
+	var/shell_amount = isnull(initial_ammo)? max_ammo : initial_ammo
+	if(!shell_amount)
+		return
+	var/obj/item/ammo_casing/casing = new ammo_type
+	if(!istype(casing))
+		qdel(casing)
+		return
+	var/list/adding = casing.detect_material_base_costs()
+	qdel(casing)
+	for(var/key in adding)
+		.[key] += adding[key] * shell_amount
 
 /obj/item/ammo_magazine/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/ammo_casing))

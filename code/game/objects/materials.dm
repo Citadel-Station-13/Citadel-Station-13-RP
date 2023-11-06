@@ -363,4 +363,4 @@
  * @return key-value associative list of our *own* baseline materials, without material parts.
  */
 /obj/proc/detect_material_base_costs()
-	return isnull(materials_base)? materials_base.Copy() : list()
+	return isnull(materials_base)? list() : materials_base.Copy()
