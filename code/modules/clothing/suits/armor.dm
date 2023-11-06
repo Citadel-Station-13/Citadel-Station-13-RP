@@ -938,3 +938,12 @@
     worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
     body_cover_flags = UPPER_TORSO
     armor_type = /datum/armor/station/medium
+
+/obj/item/clothing/suit/armor/replika/lstr
+    name = "combat-engineer replikant's armored chestplate"
+    desc = "A sloped titanium-composite chest plate fitted for use by Replika-type androids. This plain-white version is a staple of combat-engineer replikants."
+    icon = 'icons/clothing/suit/armor/replika.dmi'
+    icon_state = "lstr"
+    worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+    body_cover_flags = UPPER_TORSO
+    armor_type = /datum/armor/station/medium
