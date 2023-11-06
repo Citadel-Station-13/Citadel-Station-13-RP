@@ -540,6 +540,8 @@
 	if(target.density)		//This thing blocks projectiles, hit it regardless of layer/mob stuns/etc.
 		return TRUE
 	if(!isliving(target))
+		if(direct_target)
+			return TRUE
 		if(target.layer < PROJECTILE_HIT_THRESHOLD_LAYER)
 			return FALSE
 	else

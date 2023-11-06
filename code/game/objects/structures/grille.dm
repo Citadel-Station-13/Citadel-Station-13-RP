@@ -28,9 +28,7 @@
 
 /obj/structure/grille/update_icon_state()
 	if(atom_flags & ATOM_BROKEN)
-		icon_state = "[initial(icon_state)]-b"
-	else
-		icon_state = initial(icon_state)
+		icon_state = "brokengrille"
 	return ..()
 
 /obj/structure/grille/Bumped(atom/user)
@@ -135,6 +133,12 @@
 	drop_product(method, new /obj/item/stack/rods(null, method == ATOM_DECONSTRUCT_DISASSEMBLED? 2 : 1) , drop_location())
 
 /obj/structure/grille/atom_break()
+	smoothing_flags = NONE
+	. = ..()
+	update_icon()
+
+/obj/structure/grille/atom_fix()
+	smoothing_flags = initial(smoothing_flags)
 	. = ..()
 	update_icon()
 

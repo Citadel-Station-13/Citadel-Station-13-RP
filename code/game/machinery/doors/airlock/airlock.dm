@@ -827,32 +827,8 @@ About the new airlock wires panel:
 			user.visible_message("[user] removes the electronics from the airlock assembly.", "You start to remove electronics from the airlock assembly.")
 			if(do_after(user,40 * C.tool_speed))
 				to_chat(user, "<span class='notice'>You removed the airlock electronics!</span>")
-
-				var/obj/structure/door_assembly/da = new assembly_type(src.loc)
-				if (istype(da, /obj/structure/door_assembly/multi_tile))
-					da.setDir(src.dir)
-
-				da.anchored = 1
-				if(mineral)
-					da.glass = mineral
-				//else if(glass)
-				else if(glass && !da.glass)
-					da.glass = 1
-				da.state = 1
-				da.created_name = src.name
-				da.update_state()
-
-				if(operating == -1 || (machine_stat & BROKEN))
-					new /obj/item/circuitboard/broken(src.loc)
-					operating = 0
-				else
-					if (!electronics) create_electronics()
-
-					electronics.loc = src.loc
-					electronics = null
-
-				qdel(src)
-				return
+				deconstruct(ATOM_DECONSTRUCT_DISASSEMBLED)
+				return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 		else if(arePowerSystemsOn())
 			to_chat(user, "<span class='notice'>The airlock's motors resist your efforts to force it.</span>")
 		else if(locked)
@@ -1145,6 +1121,40 @@ About the new airlock wires panel:
 		src.check_access()
 	electronics.conf_req_access = req_access.Copy()
 	electronics.conf_req_one_access = req_one_access.Copy()
+
+/**
+ * drop our circuitry
+ */
+/obj/machinery/door/airlock/proc/drop_airlock_electronics(atom/where = drop_location(), broken)
+	if(broken)
+		new /obj/item/circuitboard/broken(where)
+	if(isnull(electronics))
+		create_electronics()
+	electronics.forceMove(loc)
+	electronics = null
+
+/**
+ * drop our assembly
+ */
+/obj/machinery/door/airlock/proc/drop_airlock_assembly(atom/where = drop_location())
+	var/obj/structure/door_assembly/assembly = new assembly_type(where)
+	if(istype(assembly, /obj/structure/door_assembly/multi_tile))
+		assembly.setDir(dir)
+	//! LEGACY
+	assembly.set_anchored(TRUE)
+	assembly.state = 1
+	if(mineral)
+		assembly.glass = mineral
+	else if(glass && !assembly.glass)
+		assembly.glass = TRUE
+	assembly.created_name = name
+	assembly.update_state()
+	//! END
+
+/obj/machinery/door/airlock/drop_products(method, atom/where)
+	. = ..()
+	drop_airlock_assembly(where)
+	drop_airlock_electronics(where, (atom_flags & ATOM_BROKEN) || (method != ATOM_DECONSTRUCT_DISASSEMBLED))
 
 /obj/machinery/door/airlock/emp_act(var/severity)
 	if(prob(40/severity))
