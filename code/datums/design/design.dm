@@ -119,7 +119,7 @@
 		"id" = id,
 		"work" = work,
 		"category" = category,
-		"materials_base" = length(materials_base)? materials_base : null,
+		"materials" = length(materials_base)? materials_base : null,
 		"material_parts" = length(material_costs)? material_costs : null,
 		"reagents" = length(reagents)? reagents : null,
 		"ingredients" = length(ingredients)? ingredients : null,
