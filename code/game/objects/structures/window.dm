@@ -606,6 +606,7 @@
 	name = "reinforced window"
 	desc = "It looks rather strong. Might take a few good hits to shatter it."
 	icon_state = "rwindow"
+	armor_type = /datum/armor/window/reinforced
 
 	glasstype = /obj/item/stack/material/glass/reinforced
 
