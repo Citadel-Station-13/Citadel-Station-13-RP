@@ -785,7 +785,6 @@ About the new airlock wires panel:
 	if(istype(C, /obj/item/barrier_tape_roll))
 		return
 
-	if (attempt_vr(src,"attackby_vr",list(C, user))) return
 	if(istype(C, /mob/living))
 		..()
 		return
