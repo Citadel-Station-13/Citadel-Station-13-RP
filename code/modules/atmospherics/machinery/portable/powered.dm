@@ -77,8 +77,10 @@
 	..()
 
 /obj/machinery/portable_atmospherics/powered/use_power(amount, chan, dt)
-	if(!use_cell || !cell)
+	if(!use_cell)
 		return ..()
+	else if(!cell)
+		return 0
 	. = cell.use(DYNAMIC_W_TO_CELL_UNITS(amount, dt))
 	if(!cell.charge)
 		power_change()
