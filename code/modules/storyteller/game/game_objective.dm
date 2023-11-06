@@ -21,7 +21,7 @@
 /**
  * completion check
  *
- * return list(binary yes/no or null, percentage from 0 to 1 or null, description)
+ * return list("status" = GAME_OBJECTIVE_X status enum, "ratio" = -1 to 1 for how failed/succeeded, "explain" = qualitative blurb)
  */
 /datum/game_objective/proc/check_completion(datum/game_faction/faction)
 	return list(
