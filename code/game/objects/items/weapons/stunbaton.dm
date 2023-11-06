@@ -8,6 +8,7 @@
 	rad_flags = RAD_BLOCK_CONTENTS
 	slot_flags = SLOT_BELT
 	damage_force = 15
+	damage_tier = MELEE_TIER_MEDIUM
 	sharp = 0
 	edge = 0
 	throw_force = 7

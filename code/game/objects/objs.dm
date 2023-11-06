@@ -6,6 +6,7 @@
 	rad_flags = NONE
 	atom_colouration_system = TRUE
 	integrity_enabled = TRUE
+	armor_type = /datum/armor/object/default
 
 	//? Flags
 	/// object flags, see __DEFINES/_flags/obj_flags.dm

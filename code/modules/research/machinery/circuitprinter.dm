@@ -123,6 +123,8 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 	..()
 
 /obj/machinery/r_n_d/circuit_imprinter/attackby(var/obj/item/O as obj, var/mob/user as mob)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
 	if(busy)
 		to_chat(user, SPAN_NOTICE("\The [src] is busy. Please wait for completion of previous operation."))
 		return 1
