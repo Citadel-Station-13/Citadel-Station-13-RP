@@ -14,7 +14,7 @@
 	density = 8
 	relative_conductivity = 1
 	relative_permeability = 0
-	relative_reactivity = 1
+	relative_reactivity = 0.75
 	hardness = MATERIAL_RESISTANCE_MODERATE
 	toughness = MATERIAL_RESISTANCE_HIGH
 	refraction = MATERIAL_RESISTANCE_LOW

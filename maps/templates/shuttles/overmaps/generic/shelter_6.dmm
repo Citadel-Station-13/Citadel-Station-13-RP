@@ -1692,7 +1692,6 @@
 	req_one_access = list(108)
 	},
 /obj/machinery/door/blast/regular{
-	destroy_hits = 100;
 	dir = 4;
 	id = "tabi-vault";
 	name = "Vault"

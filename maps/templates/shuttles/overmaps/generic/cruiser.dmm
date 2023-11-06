@@ -5167,7 +5167,6 @@
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/blast/regular{
-	destroy_hits = 100;
 	id = "ship-armory";
 	name = "Armory"
 	},
@@ -5373,7 +5372,6 @@
 	dir = 4
 	},
 /obj/machinery/door/blast/regular{
-	destroy_hits = 100;
 	id = "ship-armory";
 	name = "Armory"
 	},
@@ -8091,7 +8089,6 @@
 /area/mothership/engineering)
 "sq" = (
 /obj/machinery/door/blast/regular{
-	destroy_hits = 1000;
 	dir = 4;
 	id = "ship-dronehangar1";
 	name = "Drone Hangar"
@@ -9364,7 +9361,6 @@
 /area/mothership/hallway)
 "WE" = (
 /obj/machinery/door/blast/regular{
-	destroy_hits = 1000;
 	dir = 4;
 	id = "ship-dronehangar2";
 	name = "Drone Hangar"

@@ -19,7 +19,7 @@
 		return armor_cache[cache_key]
 
 	//? Not even Desmos will save you now. ?//
-	//? WIP calculator: https://www.desmos.com/calculator/zdbyplvppm ?//
+	//? WIP calculator: https://www.desmos.com/calculator/qqef72mlhf ?//
 	// significance difference from baseline as a number
 	var/significance_as_multiplier = ((MATERIAL_SIGNIFICANCE_BASELINE + (significance - MATERIAL_SIGNIFICANCE_BASELINE)) * 0.1)
 	// absorbing kinetic energy
