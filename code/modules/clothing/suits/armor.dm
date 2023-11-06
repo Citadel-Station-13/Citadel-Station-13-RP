@@ -947,3 +947,21 @@
     worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
     body_cover_flags = UPPER_TORSO
     armor_type = /datum/armor/station/medium
+
+/obj/item/clothing/suit/armor/replika/stcr
+    name = "security-controller replikant's armored chestplate"
+    desc = "A sloped titanium-composite chest plate fitted for use by Replika-type androids. This version has many red adjustable straps and a lack of shoulder pads."
+    icon = 'icons/clothing/suit/armor/replika.dmi'
+    icon_state = "stcr"
+    worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+    body_cover_flags = UPPER_TORSO
+    armor_type = /datum/armor/station/medium
+
+/obj/item/clothing/suit/armor/replika/star
+    name = "security-technician replikant's armored chestplate"
+    desc = "A sloped titanium-composite chest plate with a matte black finish, fitted for use by Replika-type androids. Comes with red adjustable straps."
+    icon = 'icons/clothing/suit/armor/replika.dmi'
+    icon_state = "star"
+    worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+    body_cover_flags = UPPER_TORSO
+    armor_type = /datum/armor/station/medium
