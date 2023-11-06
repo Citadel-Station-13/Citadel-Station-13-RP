@@ -438,7 +438,7 @@
 /obj/structure/mob_spawner{
 	density = 1;
 	desc = "A bizarre mess of robotic limbs, glowing microrefineries, and nanoassemblers gradually converting the pile of raw materials into active hivebots.";
-	destructible = 1;
+	integrity_flags = 0;
 	icon_state = "grinder-b1";
 	name = "hivebot assembler";
 	simultaneous_spawns = 6;

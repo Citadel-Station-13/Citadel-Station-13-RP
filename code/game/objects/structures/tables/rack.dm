@@ -25,3 +25,6 @@
 /obj/structure/table/rack/update_icon()
 	if(!isnull(material_base))
 		color = material_base.icon_colour
+
+// todo: AAAAGGGGHGHHHH GET RID OF THIS
+/obj/structure/table/rack/holorack_legacy

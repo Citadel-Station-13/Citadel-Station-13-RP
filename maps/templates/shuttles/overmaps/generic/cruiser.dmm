@@ -7,7 +7,6 @@
 /obj/structure/window/reinforced/full,
 /obj/machinery/door/blast/regular{
 	density = 0;
-	destroy_hits = 1000;
 	dir = 4;
 	icon_state = "pdoor0";
 	id = "ship-lounge";
@@ -169,7 +168,6 @@
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
-	destroy_hits = 1000;
 	icon_state = "pdoor0";
 	id = "ship-lounge";
 	name = "Shuttle Blast Doors";
@@ -235,7 +233,6 @@
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
-	destroy_hits = 1000;
 	icon_state = "pdoor0";
 	id = "ship-lounge";
 	name = "Shuttle Blast Doors";
@@ -632,7 +629,6 @@
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
-	destroy_hits = 1000;
 	icon_state = "pdoor0";
 	id = "ship-hydroponics";
 	name = "Shuttle Blast Doors";
@@ -751,7 +747,6 @@
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
-	destroy_hits = 1000;
 	icon_state = "pdoor0";
 	id = "ship-kitchen";
 	name = "Shuttle Blast Doors";
@@ -1657,7 +1652,6 @@
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
-	destroy_hits = 1000;
 	dir = 4;
 	icon_state = "pdoor0";
 	id = "ship-med-surgery";
@@ -2824,7 +2818,6 @@
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
-	destroy_hits = 1000;
 	icon_state = "pdoor0";
 	id = "ship-sec-equip";
 	name = "Shuttle Blast Doors";
@@ -3043,7 +3036,6 @@
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
-	destroy_hits = 1000;
 	icon_state = "pdoor0";
 	id = "ship-med-treatment";
 	name = "Shuttle Blast Doors";
@@ -4552,7 +4544,6 @@
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
-	destroy_hits = 1000;
 	icon_state = "pdoor0";
 	id = "ship-sec-warden";
 	name = "Shuttle Blast Doors";
@@ -4814,7 +4805,6 @@
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
-	destroy_hits = 1000;
 	icon_state = "pdoor0";
 	id = "ship-med-equip";
 	name = "Shuttle Blast Doors";
@@ -6664,7 +6654,6 @@
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
-	destroy_hits = 1000;
 	icon_state = "pdoor0";
 	id = "ship-holodeck";
 	name = "Shuttle Blast Doors";
@@ -9392,7 +9381,6 @@
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
-	destroy_hits = 1000;
 	dir = 4;
 	icon_state = "pdoor0";
 	id = "ship-lounge";

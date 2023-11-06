@@ -91,7 +91,7 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/centralhall)
 "afn" = (
-/obj/structure/table/rack/holorack,
+/obj/structure/table/rack/holorack_legacy,
 /obj/random/maintenance/clean,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -20505,7 +20505,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/lower/bar)
 "oyS" = (
-/obj/structure/table/rack/holorack,
+/obj/structure/table/rack/holorack_legacy,
 /obj/effect/floor_decal/rust,
 /obj/random/maintenance/clean,
 /obj/random/tech_supply,
@@ -26673,7 +26673,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/atmos)
 "sZM" = (
-/obj/structure/table/rack/holorack,
+/obj/structure/table/rack/holorack_legacy,
 /obj/random/maintenance/clean,
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,

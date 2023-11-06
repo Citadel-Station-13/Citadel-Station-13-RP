@@ -334,7 +334,6 @@
 "ah" = (
 /obj/structure/fans/tiny,
 /obj/machinery/door/blast/regular{
-	destroy_hits = 1000;
 	id = "tabi-hangar1"
 	},
 /turf/simulated/floor/tiled/steel_ridged,
@@ -1731,7 +1730,6 @@
 "wz" = (
 /obj/structure/fans/tiny,
 /obj/machinery/door/blast/regular{
-	destroy_hits = 1000;
 	id = "tabi-hangar2"
 	},
 /turf/simulated/floor/tiled/steel_ridged,

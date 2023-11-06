@@ -1,5 +1,4 @@
-
-/datum/unit_test/design_uniqueness/Run()
+/datum/unit_test/design_checks/Run()
 	var/list/lookup = list()
 	for(var/datum/design/path as anything in subtypesof(/datum/design))
 		if(initial(path.abstract_type) == path)
