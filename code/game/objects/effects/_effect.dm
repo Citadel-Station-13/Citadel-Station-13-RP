@@ -10,7 +10,7 @@
  * however, at a certain point, do consider using /structure or /machinery instead.
  */
 /obj/effect
-	integrity_flags = INTEGRITY_INDESTRUCTIBLE | INTEGRITY_ACIDPROOF | INTEGRITY_FIREPROOF | INTEGRITY_LAVAPROOF
+	integrity_enabled = FALSE
 	density = FALSE
 	opacity = FALSE
 

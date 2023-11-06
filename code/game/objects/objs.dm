@@ -537,6 +537,8 @@
 
 /obj/proc/examine_integrity(mob/user)
 	. = list()
+	if(!integrity_enabled)
+		return
 	if(integrity == integrity_max)
 		. += SPAN_NOTICE("It looks fully intact.")
 	else
