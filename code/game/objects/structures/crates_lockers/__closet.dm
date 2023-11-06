@@ -6,6 +6,7 @@
 	density = 1
 	w_class = ITEMSIZE_HUGE
 	layer = UNDER_JUNK_LAYER
+	armor_type = /datum/armor/object/medium
 
 	integrity = 200
 	integrity_max = 200

@@ -10,6 +10,7 @@
 	depth_projected = TRUE
 	use_old_icon_update = TRUE
 	depth_level = 8
+	armor_type = /datum/armor/object/medium
 	var/points_per_crate = 5
 //	mouse_drag_pointer = MOUSE_ACTIVE_POINTER	//???
 	var/rigged = 0
