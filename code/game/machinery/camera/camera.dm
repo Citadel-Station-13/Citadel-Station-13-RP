@@ -6,6 +6,7 @@
 	use_power = USE_POWER_ACTIVE
 	idle_power_usage = 5
 	active_power_usage = 10
+	depth_projected = FALSE
 	plane = MOB_PLANE
 	layer = BELOW_MOB_LAYER
 
