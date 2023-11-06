@@ -19,7 +19,7 @@
 	relative_reactivity = 0.5
 	hardness = MATERIAL_RESISTANCE_EXTREME
 	toughness = MATERIAL_RESISTANCE_HIGH
-	refraction = MATERIAL_RESISTANCE_MODERATE
+	refraction = MATERIAL_RESISTANCE_HIGH
 	absorption = MATERIAL_RESISTANCE_HIGH
 	nullification = MATERIAL_RESISTANCE_LOW
 

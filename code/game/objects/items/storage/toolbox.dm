@@ -5,7 +5,6 @@
 	icon_state = "red"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "toolbox_red", SLOT_ID_LEFT_HAND = "toolbox_red")
 	damage_force = 10
-	damage_tier = MELEE_TIER_MEDIUM
 	throw_force = 10
 	throw_speed = 1
 	throw_range = 7

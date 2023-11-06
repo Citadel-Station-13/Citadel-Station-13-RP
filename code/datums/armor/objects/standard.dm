@@ -4,19 +4,19 @@
 /datum/armor/object/default
 	melee_deflect = 5
 	melee_tier = ARMOR_BARELY_BEATS(MELEE_TIER_LIGHT)
-	melee = 0.2
+	melee = 0.1
 
 /datum/armor/object/light
 	melee_deflect = 5
 	melee_tier = ARMOR_BARELY_BEATS(MELEE_TIER_LIGHT)
-	melee = 0.2
+	melee = 0.1
 
 /datum/armor/object/medium
-	melee_deflect = 17
+	melee_deflect = 12
 	melee_tier = ARMOR_BARELY_BEATS(MELEE_TIER_MEDIUM)
-	melee = 0.4
+	melee = 0.25
 
 /datum/armor/object/heavy
-	melee_deflect = 29
+	melee_deflect = 24
 	melee_tier = ARMOR_BARELY_BEATS(MELEE_TIER_HEAVY)
-	melee = 0.6
+	melee = 0.4
