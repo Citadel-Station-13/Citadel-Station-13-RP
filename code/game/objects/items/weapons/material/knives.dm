@@ -161,6 +161,7 @@
 	slot_flags = SLOT_BELT | SLOT_HOLSTER
 	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_HEAVY
 	material_parts = /datum/material/plasteel
+	force_multiplier = 1.35
 
 /obj/item/material/knife/machete/armblade
 	name = "arm-mounted blade"

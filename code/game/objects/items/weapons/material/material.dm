@@ -54,11 +54,11 @@
 	atom_flags = (atom_flags & ~(NOCONDUCT)) | (material.relative_conductivity == 0? NOCONDUCT : NONE)
 	name = "[material.display_name] [initial(name)]"
 
-	var/list/returned = material.melee_stats(initial(damage_mode))
+	var/list/returned = material.melee_stats(initial(damage_mode), material_significance)
 	damage_force = returned[MATERIAL_MELEE_STATS_DAMAGE] * force_multiplier
 	damage_mode = returned[MATERIAL_MELEE_STATS_MODE]
 	damage_flag = returned[MATERIAL_MELEE_STATS_FLAG]
-	damage_tier = returned[MATERIAL_MELEE_STATS_TIERMOD]
+	damage_tier = initial(damage_tier) + returned[MATERIAL_MELEE_STATS_TIERMOD]
 
 	// todo: this is a multiplier, not a divisor
 	throw_force = damage_force * throw_force_multiplier
