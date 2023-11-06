@@ -13,7 +13,7 @@
 	tgui_icon_key = "durasteel"
 
 	relative_integrity = 2
-	density = 8 * 3
+	density = 8 * 2.5
 	relative_conductivity = 0.3
 	relative_permeability = 0
 	relative_reactivity = 0.5

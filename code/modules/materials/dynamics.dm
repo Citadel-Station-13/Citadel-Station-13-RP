@@ -19,6 +19,7 @@
 		return armor_cache[cache_key]
 
 	//? Not even Desmos will save you now. ?//
+	//? WIP calculator: https://www.desmos.com/calculator/tlxnupebbv ?//
 	// significance difference from baseline as a number
 	var/significance_as_multiplier = ((MATERIAL_SIGNIFICANCE_BASELINE + (significance - MATERIAL_SIGNIFICANCE_BASELINE)) * 0.1)
 	// absorbing kinetic energy
@@ -32,18 +33,21 @@
 	// exotic 'energy' armor
 	// todo: this is a weird formula
 	var/exotic_absorption = (nullification + 0.2 * refraction + 0.1 * absorption)
-	exotic_absorption = exotic_absorption > 0? clamp(((exotic_absorption * significance_as_multiplier) ** 0.73) * 0.007, 0, 1) : \
+	exotic_absorption = exotic_absorption >= 0? clamp(((exotic_absorption * significance_as_multiplier) ** 0.73) * 0.007, 0, 1) : \
 		clamp(-(((-exotic_absorption * significance_as_multiplier) ** 0.73) * 0.007), -1, 0)
 	// bomb values : from kinetic damping and hardness
-	var/direct_bomb = 1 - (0.01 * ((1 / (-((kinetic_damping + kinetic_hardness) * significance_as_multiplier + 400) * 0.000025)) + 100))
+	var/direct_bomb = (0.01 * (1 / -(((kinetic_damping + kinetic_hardness) * significance_as_multiplier + 400) * 0.000025)) + 1)
 	// direct values
 	// todo: integrate significance
+	// todo: integrate some kind of 'coverage' parameter?
 	var/direct_bio = relative_permeability > 1? -relative_permeability : relative_permeability
 	// todo: integrate significance
+	// todo: integrate some kind of 'coverage' parameter?
 	var/direct_acid = relative_reactivity > 1? -relative_reactivity : relative_reactivity
 	// todo: integrate significance
+	// todo: integrate some kind of 'coverage' parameter?
 	var/direct_fire = relative_reactivity > 1? -relative_reactivity : relative_reactivity
-	var/direct_rad = clamp(1 - ((density + nullification * 0.025 + refraction * 0.01 + absorption * 0.0075) * significance_as_multiplier * (1 / 55))**2, 0, 1)
+	var/direct_rad = clamp((((density + nullification * 0.025 + refraction * 0.01 + absorption * 0.0075) * significance_as_multiplier * (1 / 55)) ** 2) * 4, 0, 1)
 	// tier; hardness is important
 	// we grab this first because we need to module the actual armor by this
 	// it's a bit dumb but until we have proper material science like dwarf fortress
@@ -65,7 +69,7 @@
 		ARMOR_LASER = laser_absorb,
 		ARMOR_LASER_TIER = laser_tier,
 		ARMOR_LASER_SOAK = ablation_damping * 0.0025 + ablation_diffusion * 0.005,
-		ARMOR_ENERGY = 1 - exotic_absorption,
+		ARMOR_ENERGY = exotic_absorption,
 		ARMOR_BOMB = direct_bomb,
 		ARMOR_BIO = direct_bio,
 		ARMOR_ACID = direct_acid,
