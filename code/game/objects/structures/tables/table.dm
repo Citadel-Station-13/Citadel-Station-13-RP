@@ -191,7 +191,7 @@ var/list/table_icon_cache = list()
 		audible = SPAN_WARNING("You hear the sound of screws being undone."),
 	)
 	log_construction(e_args, src, "started de-reinforcing")
-	if(!use_wrench(I, e_args.performer, flags, 1.5 SECONDS, usage = TOOL_USAGE_DECONSTRUCT))
+	if(!use_screwdriver(I, e_args.performer, flags, 1.5 SECONDS, usage = TOOL_USAGE_DECONSTRUCT))
 		return TRUE
 	if(!isnull(material_reinforcing))
 		return TRUE

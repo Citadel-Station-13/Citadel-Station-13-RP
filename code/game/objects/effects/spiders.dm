@@ -88,6 +88,8 @@
 	layer = HIDING_LAYER
 	integrity = 5
 	integrity_max = 5
+	integrity_enabled = TRUE
+	obj_flags = OBJ_MELEE_TARGETABLE | OBJ_RANGE_TARGETABLE
 	var/last_itch = 0
 	var/amount_grown = -1
 	var/obj/machinery/atmospherics/component/unary/vent_pump/entry_vent

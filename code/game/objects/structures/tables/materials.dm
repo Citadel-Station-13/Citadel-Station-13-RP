@@ -7,8 +7,8 @@
 	set_full_integrity(amount, amount)
 	// the () is to block the list() from making it a string
 	set_armor(SSmaterials.reinforcing_materials_armor(list(
-		(structure) = 1,
-		(reinforcing) = 2,
+		(structure) = MATERIAL_SIGNIFICANCE_TABLE_STRUCTURE,
+		(reinforcing) = MATERIAL_SIGNIFICANCE_TABLE_REINFORCEMENT,
 	)))
 	// sigh
 	if(SSatoms.initialized == INITIALIZATION_INNEW_REGULAR)
