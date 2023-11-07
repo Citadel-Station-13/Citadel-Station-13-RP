@@ -2021,6 +2021,12 @@
 	icon_state = "aziru_dress"
 	icon = 'icons/clothing/uniform/misc/ante_aziru.dmi'
 
+/obj/item/clothing/under/antediluvian/dress/ante_boobflap
+	name = "Antediluvian Chest Flaps"
+	desc = "A comfortable collar with two trailing flaps going down onto the chest area, meeting the bare minimum requirements for decency, should they stay in place in motion."
+	icon_state = "ante_boobflap"
+	icon = 'icons/clothing/uniform/misc/ante_boobflap.dmi'
+
 /obj/item/clothing/under/hasie
 	name = "Hasie skirt"
 	desc = "A daring combination of dark charcoals and vibrant reds and whites, the Hasie skirt/vest combo knows what it's doing. Sporting a low cut charcoal miniskirt and matching midriff button-up, this ensemble wows with the incredible color contrast of its two-tone vest."
