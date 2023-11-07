@@ -508,7 +508,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	parts = list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)
 
 /datum/robolimb/replika2
-	company = "Replikant"
+	company = "Replikant - 5th Gen"
 	desc = "Modern, fifth-generation biomechanical prosthetics with pegs for feet."
 	icon = 'icons/mob/cyberlimbs/replikant/replikant2.dmi'
 	lifelike = 1
