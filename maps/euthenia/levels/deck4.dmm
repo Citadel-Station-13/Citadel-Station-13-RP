@@ -7931,7 +7931,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/main_map/maintenance/deck_four/aft/port)
 "Xa" = (
-/obj/structure/closet/crate/nanotrasen,
+/obj/structure/closet/crate/corporate/nanotrasen,
 /turf/simulated/floor/reinforced,
 /area/main_map/maintenance/deck_four/aft/starboard)
 "Xd" = (

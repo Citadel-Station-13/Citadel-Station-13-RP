@@ -145,7 +145,7 @@
 			/obj/random/action_figure/supplypack
 			)
 	cost = 200
-	container_type = /obj/structure/closet/crate/allico
+	container_type = /obj/structure/closet/crate/corporate/allico
 	container_name = "Action figures crate"
 
 /datum/supply_pack/recreation/characters
@@ -164,7 +164,7 @@
 			/obj/random/plushie
 			)
 	cost = 60
-	container_type = /obj/structure/closet/crate/allico
+	container_type = /obj/structure/closet/crate/corporate/allico
 	container_name = "Plushies crate"
 
 /datum/supply_pack/recreation/collars

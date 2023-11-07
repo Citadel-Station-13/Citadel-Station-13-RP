@@ -1989,7 +1989,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "eF" = (
-/obj/structure/closet/crate/nanotrasen,
+/obj/structure/closet/crate/corporate/nanotrasen,
 /obj/effect/floor_decal/industrial/warning/full,
 /obj/machinery/light/small{
 	dir = 8

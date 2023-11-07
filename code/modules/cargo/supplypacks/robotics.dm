@@ -57,7 +57,7 @@
 	name = "Morpheus robolimb blueprints"
 	contains = list(/obj/item/disk/limb/morpheus)
 	cost = 20
-	container_type = /obj/structure/closet/crate/secure/morpheus
+	container_type = /obj/structure/closet/crate/secure/corporate/morpheus
 	container_name = "Robolimb blueprints (Morpheus)"
 	access = ACCESS_SCIENCE_ROBOTICS
 
@@ -81,7 +81,7 @@
 	name = "Xion robolimb blueprints"
 	contains = list(/obj/item/disk/limb/xion)
 	cost = 20
-	container_type = /obj/structure/closet/crate/secure/xion
+	container_type = /obj/structure/closet/crate/secure/corporate/xion
 	container_name = "Robolimb blueprints (Xion)"
 	access = ACCESS_SCIENCE_ROBOTICS
 
@@ -89,7 +89,7 @@
 	name = "Grayson robolimb blueprints"
 	contains = list(/obj/item/disk/limb/grayson)
 	cost = 30
-	container_type = /obj/structure/closet/crate/secure/grayson
+	container_type = /obj/structure/closet/crate/secure/corporate/grayson
 	container_name = "Robolimb blueprints (Grayson)"
 	access = ACCESS_SCIENCE_ROBOTICS
 
@@ -97,7 +97,7 @@
 	name = "Hephaestus robolimb blueprints"
 	contains = list(/obj/item/disk/limb/hephaestus)
 	cost = 35
-	container_type = /obj/structure/closet/crate/secure/heph
+	container_type = /obj/structure/closet/crate/secure/corporate/heph
 	container_name = "Robolimb blueprints (Hephaestus)"
 	access = ACCESS_SCIENCE_ROBOTICS
 
@@ -105,7 +105,7 @@
 	name = "Ward-Takahashi robolimb blueprints"
 	contains = list(/obj/item/disk/limb/wardtakahashi)
 	cost = 35
-	container_type = /obj/structure/closet/crate/secure/ward
+	container_type = /obj/structure/closet/crate/secure/corporate/ward
 	container_name = "Robolimb blueprints (Ward-Takahashi)"
 	access = ACCESS_SCIENCE_ROBOTICS
 
@@ -113,7 +113,7 @@
 	name = "Zeng Hu robolimb blueprints"
 	contains = list(/obj/item/disk/limb/zenghu)
 	cost = 35
-	container_type = /obj/structure/closet/crate/secure/zenghu
+	container_type = /obj/structure/closet/crate/secure/corporate/zenghu
 	container_name = "Robolimb blueprints (Zeng Hu)"
 	access = ACCESS_SCIENCE_ROBOTICS
 
@@ -121,7 +121,7 @@
 	name = "Bishop robolimb blueprints"
 	contains = list(/obj/item/disk/limb/bishop)
 	cost = 70
-	container_type = /obj/structure/closet/crate/secure/bishop
+	container_type = /obj/structure/closet/crate/secure/corporate/bishop
 	container_name = "Robolimb blueprints (Bishop)"
 	access = ACCESS_SCIENCE_ROBOTICS
 
@@ -204,7 +204,7 @@
 			/obj/item/implantcase/restrainingbolt = 2
 			)
 	cost = 40
-	container_type = /obj/structure/closet/crate/secure/cybersolutions
+	container_type = /obj/structure/closet/crate/secure/corporate/cybersolutions
 	container_name = "Restraining bolt crate"
 	access = ACCESS_SCIENCE_ROBOTICS
 
