@@ -1691,3 +1691,10 @@
 	icon = 'icons/mob/human_face_vr.dmi'
 	icon_add = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "stork"
+
+/datum/sprite_accessory/hair/princess
+	name = "Princess"
+	id = "hair_princess"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "princess"

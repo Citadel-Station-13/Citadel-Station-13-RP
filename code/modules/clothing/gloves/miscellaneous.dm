@@ -203,6 +203,14 @@
 	desc = "These gloves were originally integrated into the bounty hunter skinsuit. Later iterations were made removable for practicality."
 	icon_state = "bountyskin"
 
+//More Warhammer Fun
+/obj/item/clothing/gloves/baroque
+	name = "baroque military gauntlets"
+	desc = "The silver banding around the wrists of these gloves is inscribed with the names of countless martyrs."
+	icon = 'icons/clothing/suit/armor/baroque.dmi'
+	icon_state = "sistergloves"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
 /* Full port pending. Some of these are nuts.
 
 /obj/item/clothing/gloves/fingerless/pugilist
@@ -657,3 +665,9 @@
 	icon_state = "armsleeves_color"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
+/obj/item/clothing/gloves/ante_gloves
+	name = "Antediluvian Gloves"
+	desc = "Silky, soft black material emphasised by metalic outlines and claws, all with a gold-colored sheen. Fashionably niche."
+	icon = 'icons/clothing/gloves/ante_gloves.dmi'
+	icon_state = "ante_gloves"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL

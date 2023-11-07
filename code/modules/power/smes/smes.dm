@@ -560,6 +560,7 @@ GLOBAL_LIST_EMPTY(smeses)
 	name = "telecomms smes"
 	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit. This is the one dedicated to telecommunications."
 	charge = KWH_TO_KWM(SMES_COIL_STORAGE_BASIC * 1 * 0.25)
+	input_attempt = 1
 	input_level = 100
 	output_level = 200
 	RCon_tag = "Telecomms"

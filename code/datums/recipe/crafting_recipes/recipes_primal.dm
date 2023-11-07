@@ -245,6 +245,14 @@
 	category = CAT_PRIMAL
 	always_available = FALSE
 
+/datum/crafting_recipe/boneknife
+	name = "Bone Knife"
+	reqs = list(
+            /obj/item/stack/material/bone = 5)
+	result = /obj/item/material/knife/tacknife/combatknife/bone
+	category = CAT_PRIMAL
+	always_available = TRUE //Everyone can craft this one.
+
 //Surgical Tools - I've added these to this crafting menu after I found the sprites on Main and brought them over for the novelty.
 /datum/crafting_recipe/primalretractor
 	name = "Primitive Retractor"

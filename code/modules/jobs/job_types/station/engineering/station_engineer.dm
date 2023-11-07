@@ -1,6 +1,6 @@
 /datum/role/job/station/engineer
 	id = JOB_ID_STATION_ENGINEER
-	title = "Engineer"
+	title = "Station Engineer"
 	flag = ENGINEER
 	departments = list(DEPARTMENT_ENGINEERING)
 	department_flag = ENGSEC
@@ -38,7 +38,7 @@
 	minimal_player_age = 3
 
 	outfit_type = /datum/outfit/job/station/station_engineer
-	desc = "An Engineer keeps the facility running. They repair damages, keep the atmosphere stable, and ensure that power is being \
+	desc = "A Station Engineer keeps the facility running. They repair damages, keep the atmosphere stable, and ensure that power is being \
 						generated and distributed. On quiet shifts, they may be called upon to make cosmetic alterations to the facility."
 /datum/prototype/struct/alt_title/maint_tech
 	title = "Maintenance Technician"
