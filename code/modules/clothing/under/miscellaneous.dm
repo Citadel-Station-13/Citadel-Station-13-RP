@@ -2414,7 +2414,7 @@
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/replika/klbr
-	name = "supervisor replikant bodysuit"
+	name = "controller replikant bodysuit"
 	desc = "A skin-tight bodysuit designed for Replikant-type androids of the supervision variety. Comes with several interfacing ports and a conspicuous lack of leg coverage."
 	icon = 'icons/clothing/uniform/misc/replika.dmi'
 	icon_state = "klbr"
@@ -2433,7 +2433,7 @@
 
 /obj/item/clothing/under/replika/adlr
 	name = "administration replikant bodysuit"
-	desc = "A skin-tight bodysuit designed for Replikant-type androids of the administration variety. Comes with several interfacing ports and a conspicuous lack of leg coverage."
+	desc = "A skin-tight bodysuit designed for Replikant-type androids of the administrative variety. Comes with several interfacing ports and a conspicuous lack of leg coverage."
 	icon = 'icons/clothing/uniform/misc/replika.dmi'
 	icon_state = "adlr"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL

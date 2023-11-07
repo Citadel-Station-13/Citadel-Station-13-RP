@@ -939,7 +939,7 @@
 
 // Replika armor
 /obj/item/clothing/suit/armor/replika/klbr
-    name = "supervisor replikant's armored chestplate"
+    name = "controller replikant's armored chestplate"
     desc = "A sloped titanium-composite chest plate fitted for use by Replika-type androids. The right shoulder has been painted an imposing shade of red."
     icon = 'icons/clothing/suit/armor/replika.dmi'
     icon_state = "klbr"
