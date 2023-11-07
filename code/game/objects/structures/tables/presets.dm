@@ -237,3 +237,13 @@
 
 	material_base = /datum/material/bone
 	material_reinforcing = null
+
+/obj/structure/table/carbon
+	icon_state = "plain_preview"
+	material_base = /datum/material/carbon
+	material_reinforcing = null
+
+/obj/structure/table/carbon/reinforced
+	icon_state = "plain_preview"
+	material_base = /datum/material/carbon
+	material_reinforcing = /datum/material/marble
