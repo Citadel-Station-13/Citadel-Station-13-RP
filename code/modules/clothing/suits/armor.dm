@@ -929,7 +929,7 @@
 	armor_type = /datum/armor/general/utilitarian_military
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
-//Replika armor
+// Replika armor
 /obj/item/clothing/suit/armor/replika/klbr
     name = "supervisor replikant's armored chestplate"
     desc = "A sloped titanium-composite chest plate fitted for use by Replika-type androids. The right shoulder has been painted an imposing shade of red."

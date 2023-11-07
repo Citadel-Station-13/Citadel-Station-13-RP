@@ -28,7 +28,7 @@
 	icon_state = "cloak_crusader_hospitaller"
 	item_state = "cloak_crusader_hospitaller"
 
-//Gestalt uniform
+// Gestalt uniform
 
 /obj/item/clothing/accessory/poncho/roles/cloak/custom/gestaltjacket
 	name = "sleek uniform jacket"

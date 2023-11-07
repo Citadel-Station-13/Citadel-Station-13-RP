@@ -934,7 +934,7 @@
 	desc = "A comfy pair of legwarmers. For those better in the cold than others."
 	icon_state = "legwarmers_short"
 
-//Gestalt uniform
+// Gestalt uniform
 
 /obj/item/clothing/accessory/sleekpatch
 	name = "sleek uniform patch"
