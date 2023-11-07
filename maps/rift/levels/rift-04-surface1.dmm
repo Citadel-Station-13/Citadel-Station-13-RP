@@ -7186,10 +7186,10 @@
 /area/maintenance/engineering/pumpstation)
 "eDQ" = (
 /obj/machinery/power/apc{
+	alarms_hidden = 1;
 	dir = 4;
 	name = "east bump";
-	pixel_x = 24;
-	alarms_hidden = 1
+	pixel_x = 24
 	},
 /obj/structure/cable/green{
 	icon_state = "0-8"
@@ -18664,10 +18664,6 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 1
 	},
-/obj/machinery/firealarm{
-	dir = 1;
-	pixel_y = 24
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
@@ -18676,6 +18672,9 @@
 	},
 /obj/structure/cable{
 	icon_state = "4-8"
+	},
+/obj/machinery/firealarm{
+	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/hallway)
@@ -18893,10 +18892,6 @@
 /area/maintenance/evahallway)
 "mbr" = (
 /obj/machinery/computer/arcade,
-/turf/simulated/floor/tiled,
-/area/rnd/outpost/xenobiology/outpost_breakroom)
-"mbD" = (
-/obj/random/mob/mouse,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenobiology/outpost_breakroom)
 "mbJ" = (
@@ -26783,8 +26778,8 @@
 "qHS" = (
 /obj/machinery/power/smes/buildable{
 	RCon_tag = "Research Southwest Wing Subgrid";
-	output_attempt = 0;
-	cur_coils = 2
+	cur_coils = 2;
+	output_attempt = 0
 	},
 /obj/structure/cable/green,
 /obj/structure/cable/green{
@@ -27489,9 +27484,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/office)
 "rdW" = (
-/obj/machinery/vending/cola{
-	dir = 4
-	},
+/obj/machinery/vending/cola,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenobiology/outpost_breakroom)
 "rer" = (
@@ -28435,6 +28428,10 @@
 	},
 /obj/machinery/light,
 /obj/structure/cable/green,
+/obj/structure/dogbed{
+	name = "pet bed"
+	},
+/mob/living/simple_mob/animal/sif/sakimm/dexter,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenobiology/outpost_breakroom)
 "rJv" = (
@@ -47420,7 +47417,7 @@ wPH
 mLf
 jPz
 pdl
-mbD
+dee
 nYD
 srP
 eZh
