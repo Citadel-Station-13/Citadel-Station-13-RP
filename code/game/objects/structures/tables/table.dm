@@ -78,6 +78,7 @@ var/list/table_icon_cache = list()
 	spawn(0)
 		for(var/obj/structure/table/T in range(1, old_loc))
 			T.update_connections()
+			T.update_icon()
 	return ..()
 
 /obj/structure/table/examine_more(mob/user)
@@ -163,6 +164,8 @@ var/list/table_icon_cache = list()
 		if(!isnull(material_reinforcing))
 			e_args.chat_feedback(SPAN_WARNING("[src] needs to have its reinforcement removed before being dismantled!"))
 			return TRUE
+		if(isnull(material_base))
+			return
 		e_args.visible_feedback(
 			target = src,
 			range = MESSAGE_RANGE_CONSTRUCTION,
@@ -193,7 +196,7 @@ var/list/table_icon_cache = list()
 	log_construction(e_args, src, "started de-reinforcing")
 	if(!use_screwdriver(I, e_args, flags, 1.5 SECONDS, usage = TOOL_USAGE_DECONSTRUCT))
 		return TRUE
-	if(!isnull(material_reinforcing))
+	if(isnull(material_reinforcing))
 		return TRUE
 	e_args.visible_feedback(
 		target = src,

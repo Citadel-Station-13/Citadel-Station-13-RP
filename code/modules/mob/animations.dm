@@ -235,7 +235,11 @@ note dizziness decrements automatically in the mob's Life() proc.
 	..()
 	if(no_attack_icons)
 		return FALSE
-	A.animate_hit_by_attack(src, get_active_held_item())
+	var/obj/item/held = get_active_held_item()
+	if(!isnull(held))
+		A.animate_hit_by_weapon(src, held)
+	else
+		A.animate_hit_by_attack(src)
 	// if(no_attack_icons)
 	// 	return FALSE
 

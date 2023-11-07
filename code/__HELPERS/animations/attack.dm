@@ -75,7 +75,7 @@
  * * animation_type - ATTACK_ANIMATION_X enum
  * * time - how long; this is sometimes ignored due to animations having hardcoded length.
  */
-/atom/proc/animate_hit_by_attack(animation_type, time = 6)
+/atom/proc/animate_hit_by_attack(animation_type = ATTACK_ANIMATION_PUNCH, time = 6)
 	#define ATTACK_ANIMATION_FILE 'icons/effects/attack_animations.dmi'
 	var/image/rendering = image(ATTACK_ANIMATION_FILE, icon_state = animation_type, loc = src)
 	flick_overlay(rendering, GLOB.clients, time)

@@ -1,6 +1,8 @@
 /obj/structure/table/update_material_multi(list/parts)
 	var/datum/material/structure = material_base
 	if(isnull(structure)) // we're not normal
+		update_appearance()
+		update_connections()
 		return
 	var/datum/material/reinforcing = material_reinforcing
 	var/amount = structure.relative_integrity * 100 + reinforcing?.relative_integrity * 50
