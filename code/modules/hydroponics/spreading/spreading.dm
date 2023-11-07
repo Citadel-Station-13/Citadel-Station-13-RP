@@ -33,6 +33,8 @@
 	opacity = 0
 	density = 0
 	color = DEAD_PLANT_COLOUR
+	integrity_enabled = TRUE
+	obj_flags = OBJ_MELEE_TARGETABLE | OBJ_RANGE_TARGETABLE
 
 /obj/effect/dead_plant/attack_hand(mob/user, list/params)
 	qdel(src)
@@ -53,6 +55,8 @@
 	icon_state = "bush4-1"
 	pass_flags = ATOM_PASS_TABLE
 	mouse_opacity = 2
+	integrity_enabled = TRUE
+	obj_flags = OBJ_MELEE_TARGETABLE | OBJ_RANGE_TARGETABLE
 
 	integrity = 15
 	integrity_max = 110
