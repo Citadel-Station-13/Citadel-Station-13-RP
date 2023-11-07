@@ -29,6 +29,9 @@
 /// significance used for girder wall layer
 #define MATERIAL_SIGNIFICANCE_WALL_GIRDER 5
 
+#define MATERIAL_SIGNIFICANCE_TABLE_STRUCTURE 10
+#define MATERIAL_SIGNIFICANCE_TABLE_REINFORCEMENT 7.5
+
 //*                                             Uh Oh.                                             *//
 //! WARNING: HERE BE DRAGONS                                                                       !//
 //! Here's the core values for the current material dynamics system                                !//

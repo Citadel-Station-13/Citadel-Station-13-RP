@@ -99,7 +99,7 @@ var/list/table_icon_cache = list()
 		return
 	if(!carpeted)
 		return FALSE
-	if(!use_crowbar(I, e_args.performer, flags, 0, usage = TOOL_USAGE_DECONSTRUCT))
+	if(!use_crowbar(I, e_args, flags, 0, usage = TOOL_USAGE_DECONSTRUCT))
 		return TRUE
 	if(!carpeted)
 		return TRUE
@@ -135,7 +135,7 @@ var/list/table_icon_cache = list()
 			audible = SPAN_WARNING("You hear the sound of bolts and screws being undone."),
 		)
 		log_construction(e_args, src, "started dismantling")
-		if(!use_wrench(I, e_args.performer, flags, 1.5 SECONDS, usage = TOOL_USAGE_DECONSTRUCT))
+		if(!use_wrench(I, e_args, flags, 1.5 SECONDS, usage = TOOL_USAGE_DECONSTRUCT))
 			return TRUE
 		if(!isnull(material_reinforcing) || !isnull(material_base))
 			e_args.chat_feedback(SPAN_WARNING("[src] needs to be entirely stripped before being dismantled!"))
@@ -158,7 +158,7 @@ var/list/table_icon_cache = list()
 			audible = SPAN_WARNING("You hear the sound of bolts being undone."),
 		)
 		log_construction(e_args, src, "started de-plating")
-		if(!use_wrench(I, e_args.performer, flags, 3 SECONDS, usage = TOOL_USAGE_DECONSTRUCT))
+		if(!use_wrench(I, e_args, flags, 3 SECONDS, usage = TOOL_USAGE_DECONSTRUCT))
 			return TRUE
 		if(!isnull(material_reinforcing))
 			e_args.chat_feedback(SPAN_WARNING("[src] needs to have its reinforcement removed before being dismantled!"))
@@ -191,7 +191,7 @@ var/list/table_icon_cache = list()
 		audible = SPAN_WARNING("You hear the sound of screws being undone."),
 	)
 	log_construction(e_args, src, "started de-reinforcing")
-	if(!use_screwdriver(I, e_args.performer, flags, 1.5 SECONDS, usage = TOOL_USAGE_DECONSTRUCT))
+	if(!use_screwdriver(I, e_args, flags, 1.5 SECONDS, usage = TOOL_USAGE_DECONSTRUCT))
 		return TRUE
 	if(!isnull(material_reinforcing))
 		return TRUE
