@@ -177,8 +177,10 @@
 			attack_verb = list("shredded", "ripped", "torn")
 			playsound(src, 'sound/weapons/chainsaw_startup.ogg',40,1)
 			damage_force = 15
-			sharp = 1
-			active = 1
+			damage_mode |= DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
+			edge = TRUE
+			sharp = TRUE
+			active = TRUE
 			update_icon()
 		else
 			to_chat(user, "You fumble with the string.")
@@ -189,9 +191,10 @@
 	attack_verb = list("bluntly hit", "beat", "knocked")
 	playsound(user, 'sound/weapons/chainsaw_turnoff.ogg',40,1)
 	damage_force = 3
-	edge = 0
-	sharp = 0
-	active = 0
+	damage_mode = initial(damage_mode)
+	edge = FALSE
+	sharp = FALSE
+	active = FALSE
 	update_icon()
 
 /obj/item/pickaxe/tyrmalin/attack_self(mob/user)

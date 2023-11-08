@@ -96,7 +96,7 @@
 // Knifing
 /mob/living/carbon/proc/attack_throat(obj/item/W, obj/item/grab/G, mob/user)
 
-	if(!W.edge || !W.damage_force || W.damtype != BRUTE)
+	if(!((W.damage_mode & DAMAGE_MODE_EDGE) || W.edge) || !W.damage_force || W.damtype != BRUTE)
 		return 0 //unsuitable weapon
 
 	user.visible_message("<span class='danger'>\The [user] begins to slit [src]'s throat with \the [W]!</span>")
@@ -162,7 +162,7 @@
 /mob/living/carbon/proc/shank_armor_helper(obj/item/W, obj/item/grab/G, mob/user)
 	var/damage = W.damage_force
 	var/damage_mod = 1
-	if(W.edge)
+	if(W.edge || (W.damage_mode & DAMAGE_MODE_EDGE))
 		damage = damage * 1.25 //small damage bonus for having sharp and edge
 
 	var/obj/item/clothing/suit/worn_suit

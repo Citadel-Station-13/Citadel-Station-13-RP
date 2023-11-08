@@ -89,11 +89,11 @@
 
 	if(gloves && !protected_hands)
 		to_chat(user, "<span class='warning'>\The [src] partially cuts into your hand through your gloves as you hit \the [target]!</span>")
-		user.apply_damage(light_glove_d + will_break ? break_damage : 0, BRUTE, active_hand, 0, 0, src, src.sharp, src.edge) // Ternary to include break damage
+		user.apply_damage(light_glove_d + will_break ? break_damage : 0, BRUTE, active_hand, 0, 0, src, src.sharp || (damage_mode & DAMAGE_MODE_SHARP), src.edge || (damage_mode & DAMAGE_MODE_EDGE)) // Ternary to include break damage
 
 	else if(!gloves)
 		to_chat(user, "<span class='warning'>\The [src] cuts into your hand as you hit \the [target]!</span>")
-		user.apply_damage(no_glove_d + will_break ? break_damage : 0, BRUTE, active_hand, 0, 0, src, src.sharp, src.edge)
+		user.apply_damage(no_glove_d + will_break ? break_damage : 0, BRUTE, active_hand, 0, 0, src, src.sharp || (damage_mode & DAMAGE_MODE_SHARP), src.edge || (damage_mode & DAMAGE_MODE_EDGE))
 
 	if(will_break && src.loc == user) // If it's not in our hand anymore
 		user.visible_message("<span class='danger'>[user] hit \the [target] with \the [src], shattering it!</span>", "<span class='warning'>You shatter \the [src] in your hand!</span>")

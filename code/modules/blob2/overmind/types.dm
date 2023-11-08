@@ -631,7 +631,7 @@
 		if(!H.drop_item_to_ground(I))
 			B.visible_message(SPAN_DANGER("[name] heaves and pulls at [H]'s [I], struggling to pull it from their grip!"))
 			return ..()
-		if((I.sharp || I.edge) && !istype(I, /obj/item/gun))
+		if((I.sharp || I.edge || (I.damage_mode & (DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE))) && !istype(I, /obj/item/gun))
 			I.forceMove(get_turf(B)) // Disarmed entirely.
 			B.visible_message("<span class='danger'>The [name] heaves, \the [attacker]'s weapon becoming stuck in the churning mass!</span>")
 		else

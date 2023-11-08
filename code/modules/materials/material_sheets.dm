@@ -92,12 +92,12 @@
 	if(!allow_window_autobuild || !material.build_windows(user, src))
 		return ..()
 
-/obj/item/stack/material/attackby(var/obj/item/W, var/mob/user)
-	if(istype(W,/obj/item/stack/cable_coil))
-		material.build_wired_product(user, W, src)
+/obj/item/stack/material/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+	if(istype(I, /obj/item/stack/cable_coil))
+		material.build_wired_product(user, I, src)
 		return
-	else if(istype(W, /obj/item/stack/rods))
-		material.build_rod_product(user, W, src)
+	else if(istype(I, /obj/item/stack/rods))
+		material.build_rod_product(user, I, src)
 		return
 	return ..()
 
@@ -379,11 +379,11 @@
 	color = "#6f432a"
 	plank_type = /obj/item/stack/material/wood/hard
 
-/obj/item/stack/material/log/attackby(var/obj/item/W, var/mob/user)
-	if(!istype(W) || W.damage_force <= 0)
+/obj/item/stack/material/log/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+	if(!istype(I) || I.damage_force <= 0)
 		return ..()
-	if(W.sharp && W.edge)
-		var/time = (3 SECONDS / max(W.damage_force / 10, 1)) * W.tool_speed
+	if(CHECK_MULTIPLE_BITFIELDS(I.damage_mode, DAMAGE_MODE_EDGE | DAMAGE_MODE_SHARP) || (W.edge && W.sharp))
+		var/time = (3 SECONDS / max(I.damage_force / 10, 1)) * I.tool_speed
 		user.setClickCooldown(time)
 		if(do_after(user, time, src) && use(1))
 			to_chat(user, "<span class='notice'>You cut up a log into planks.</span>")

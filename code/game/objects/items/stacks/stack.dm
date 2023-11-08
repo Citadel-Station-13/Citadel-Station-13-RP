@@ -299,9 +299,9 @@
 	S.add(transfer)
 	return transfer
 
-/obj/item/stack/attackby(obj/item/W, mob/user)
+/obj/item/stack/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 	if (istype(W, /obj/item/stack))
-		var/obj/item/stack/S = W
+		var/obj/item/stack/S = I
 		src.transfer_to(S)
 
 		spawn(0) //give the stacks a chance to delete themselves if necessary

@@ -581,7 +581,7 @@ meteor_act
 	var/damage = shank_armor_helper(W, G, user)
 	var/obj/item/organ/external/chest = get_organ(hit_zone)
 
-	if(W.edge)
+	if(W.edge || (W.damage_mode & DAMAGE_MODE_EDGE))
 		organ_chance = 75
 	user.next_move = world.time + 20
 	user.visible_message("<span class='danger'>\The [user] begins to twist \the [W] around inside [src]'s [chest]!</span>")
