@@ -152,6 +152,8 @@ DEFINE_BITFIELD(movement_type, list(
 /// completely immune to lava
 #define INTEGRITY_LAVAPROOF (1<<3)
 /// don't delete on atom_destruction()
+/// be very careful with this flag, as atom_destruction()
+/// will keep being called every time it gets damaged while 0 integrity!
 #define INTEGRITY_NO_DECONSTRUCT (1<<4)
 /// flammable by dynamic atom fire
 /// this is opt in as a flag so people have to think about it before throwing it onto things.

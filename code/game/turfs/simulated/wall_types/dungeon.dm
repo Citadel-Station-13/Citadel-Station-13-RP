@@ -12,6 +12,7 @@
 	icon = 'icons/turf/walls/rock.dmi'
 	material_outer = /datum/material/alienalloy/dungeonium
 	block_tele = TRUE
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 
 	var/rock_side_icon_state = "rock_side"
 
