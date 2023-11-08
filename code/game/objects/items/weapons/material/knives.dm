@@ -151,7 +151,7 @@
 	desc = "Another fine product from NanoTrasen's Cookware line. The heavy head and grooved grip makes chopping meat a breeze."
 	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_HEAVY
 	attack_verb = list("cleaved", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
-	force_multiplier = 1.175
+	force_multiplier = 1.15
 
 /obj/item/material/knife/machete
 	name = "machete"
@@ -162,7 +162,7 @@
 	slot_flags = SLOT_BELT | SLOT_HOLSTER
 	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_HEAVY
 	material_parts = /datum/material/plasteel
-	force_multiplier = 1.35
+	force_multiplier = 1.3
 
 /obj/item/material/knife/machete/armblade
 	name = "arm-mounted blade"
