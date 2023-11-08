@@ -312,3 +312,8 @@
 	name = "medical exoframe"
 	description = "A cheap medical exoframe mass-produced by NanoTrasen and provided to employees who cannot function in gravity without assistance. (This is cosmetic, and does not actually do anything.)"
 	path = /obj/item/clothing/accessory/civ_exos_mob
+
+/datum/loadout_entry/accessory/ante_armband
+	name = "antediluvian armband"
+	description = "A small, fake blue gem placed neatly into an otherwise cloth armband with thin metal outlines."
+	path = /obj/item/clothing/accessory/ante_armband

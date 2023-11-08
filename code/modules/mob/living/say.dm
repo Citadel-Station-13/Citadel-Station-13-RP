@@ -460,7 +460,7 @@ var/list/channel_to_radio_key = new
 		var/list/objs = potentials["objs"]
 		for(var/hearer in objs)
 			var/obj/O = hearer
-			O.hear_signlang(message, verb, language, src)
+			O.hear_signlang(src, message, verb, language)
 	return 1
 
 /obj/effect/speech_bubble

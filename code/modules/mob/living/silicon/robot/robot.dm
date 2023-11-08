@@ -755,6 +755,18 @@
 			else
 				to_chat(usr, "Upgrade error!")
 
+	else if(istype(W, /obj/item/ka_modkit/))
+		var/obj/item/ka_modkit/M = W
+		if(!opened)
+			to_chat(usr, "You must access the borgs internals!")
+		else if(!src.module && M.require_module)
+			to_chat(usr, "The borg must choose a module before it can be upgraded!")
+		else
+			if(M.install(src))
+				user.transfer_item_to_loc(M, src, INV_OP_FORCE)
+				to_chat(usr, "You apply the modkit to [src]!")
+			else
+				to_chat(usr, "Upgrade error!")
 
 	else
 		if( !(istype(W, /obj/item/robotanalyzer) || istype(W, /obj/item/healthanalyzer)) )

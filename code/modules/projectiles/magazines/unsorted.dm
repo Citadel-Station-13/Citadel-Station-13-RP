@@ -385,6 +385,11 @@
 	name = "compact magazine (9mm practice)"
 	ammo_type = /obj/item/ammo_casing/a9mm/practice
 
+/obj/item/ammo_magazine/m9mm/compact/double
+	name = "compact magazine (9mm double stack)"
+	materials = list(MAT_STEEL = 900)
+	max_ammo = 16
+
 // SMG
 /obj/item/ammo_magazine/m9mmt
 	name = "top mounted magazine (9mm)"
@@ -1027,15 +1032,29 @@
 
 /obj/item/ammo_magazine/m75
 	name = "magazine (.75 Gyrojet)"
-	icon_state = "75"
+	icon_state = "m75"
 	mag_type = MAGAZINE
 	caliber = ".75"
 	ammo_type = /obj/item/ammo_casing/a75
 	multiple_sprites = 1
-	max_ammo = 4
+	max_ammo = 8
 
 /obj/item/ammo_magazine/m75/empty
 	initial_ammo = 0
+
+/obj/item/ammo_magazine/m75/sickle
+	name = "sickle magazine (.75 Gyrojet)"
+	icon_state = "m75sickle"
+	max_ammo = 30
+
+/obj/item/ammo_magazine/m75/pistol
+	icon_state = "m75pistol"
+	max_ammo = 10
+
+/obj/item/ammo_magazine/m75/box
+	name = "box magazine (.75 Gyrojet)"
+	icon_state = "a75box"
+	max_ammo = 50
 
 ///////// Misc. /////////
 

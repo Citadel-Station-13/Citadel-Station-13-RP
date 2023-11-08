@@ -11565,6 +11565,12 @@
 /obj/item/storage/single_use/med_pouch/radiation,
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/engine_room)
+"Nk" = (
+/obj/machinery/requests_console/preset/ce{
+	pixel_y = -30
+	},
+/turf/simulated/floor/tiled,
+/area/crew_quarters/heads/chief)
 "Nm" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -31043,7 +31049,7 @@ he
 ol
 mE
 me
-mE
+Nk
 aA
 aA
 aa

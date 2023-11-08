@@ -1635,3 +1635,66 @@
 	name = "Ornate Ponytail"
 	id = "hair_ornate_ponytail"
 	icon_state = "hair_ornate_ponytail"
+
+/datum/sprite_accessory/hair/eagle
+	name = "Eagle"
+	id = "hair_eagle"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "eagle"
+
+/datum/sprite_accessory/hair/macaw
+	name = "Macaw"
+	id = "hair_macaw"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "macaw"
+
+/datum/sprite_accessory/hair/owl
+	name = "Owl"
+	id = "hair_owl"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "owl"
+
+/datum/sprite_accessory/hair/falcon
+	name = "Falcon"
+	id = "hair_falcon"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "falcon"
+
+/datum/sprite_accessory/hair/hummingbird
+	name = "Hummingbird"
+	id = "hair_hummingbird"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "hummingbird"
+
+/datum/sprite_accessory/hair/magpie
+	name = "Magpie"
+	id = "hair_magpie"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "magpie"
+
+/datum/sprite_accessory/hair/starling
+	name = "Starling"
+	id = "hair_starling"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "starling"
+
+/datum/sprite_accessory/hair/stork
+	name = "Stork"
+	id = "hair_stork"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "stork"
+
+/datum/sprite_accessory/hair/princess
+	name = "Princess"
+	id = "hair_princess"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "princess"

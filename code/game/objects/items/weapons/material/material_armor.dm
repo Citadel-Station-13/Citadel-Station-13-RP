@@ -192,7 +192,9 @@ Protectiveness | Armor %
 
 		if(!isnull(material.conductivity))
 			siemens_coefficient = clamp( material.conductivity / 10, 0,  10)
-		slowdown = clamp(0, round(material.weight / 10, 0.1) * material_weight_factor, 6)
+		var/legacy_whatever = clamp(0, round(material.weight / 10, 0.1) * material_weight_factor, 6) * 10
+		set_weight(legacy_whatever * 2)
+		set_encumbrance(legacy_whatever * 4)
 
 /obj/item/clothing/suit/armor/material
 	name = "armor"

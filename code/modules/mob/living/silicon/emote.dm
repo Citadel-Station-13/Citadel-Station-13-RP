@@ -243,6 +243,66 @@
 			playsound(src.loc, 'sound/machines/gonk.ogg', 50, 0)
 			m_type = 1
 
+		if("nya")
+			var/mob/living/silicon/robot/R = src
+			if (istype(R) && R.module.is_cat())
+				message = "lets out a nya."
+
+				playsound(loc, 'sound/voice/nya.ogg', 50, 1, -1)
+				m_type = 2
+			else
+				to_chat(src, "You're not a cat!")
+
+		if("mrrp")
+			var/mob/living/silicon/robot/R = src
+			if (istype(R) && R.module.is_cat())
+				message = "mrrps."
+
+				playsound(loc, 'sound/voice/mrrp.ogg', 50, 1, -1)
+				m_type = 2
+			else
+				to_chat(src, "You're not a cat!")
+
+		if("prbt")
+			var/mob/living/silicon/robot/R = src
+			if (istype(R) && R.module.is_cat())
+				message = "prbts."
+
+				playsound(loc, 'sound/misc/prbt.ogg', 50, 1, -1)
+				m_type = 2
+			else
+				to_chat(src, "You're not a cat!")
+
+		if("meow", "meows")
+			var/mob/living/silicon/robot/R = src
+			if (istype(R) && R.module.is_cat())
+				message = "prbts."
+
+				playsound(loc, 'sound/voice/meow1.ogg', 50, 1, -1)
+				m_type = 2
+			else
+				to_chat(src, "You're not a cat!")
+
+		if("hiss")
+			var/mob/living/silicon/robot/R = src
+			if (istype(R) && R.module.is_cat())
+				message = "lets out a hiss."
+
+				playsound(loc, 'sound/voice/hiss.ogg', 50, 1, -1)
+				m_type = 2
+			else
+				to_chat(src, "You're not a cat!")
+
+		if("purr")
+			var/mob/living/silicon/robot/R = src
+			if (istype(R) && R.module.is_cat())
+				message = "purrs softly."
+
+				playsound(loc, 'sound/voice/purr.ogg', 50, 1, -1)
+				m_type = 2
+			else
+				to_chat(src, "You're not a cat!")
+
 		if ("help")
 			to_chat(src, "salute, bow-(none)/mob, clap, flap, aflap, twitch, twitch_s, nod, deathgasp, glare-(none)/mob, stare-(none)/mob, look, beep, ping, \nbuzz, law, halt, yes, no")
 		else
