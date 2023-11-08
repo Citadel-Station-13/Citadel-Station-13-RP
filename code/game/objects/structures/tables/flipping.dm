@@ -45,6 +45,7 @@
 			collected += found
 		if(!found_any)
 			break
+		parsing = get_step(parsing, dir_to_parse)
 	dir_to_parse = turn(dir_to_flip, -90)
 	parsing = get_step(loc, dir_to_parse)
 	while(isturf(parsing))
@@ -65,11 +66,14 @@
 			collected += found
 		if(!found_any)
 			break
+		parsing = get_step(parsing, dir_to_parse)
 	return collected
 
 /**
  * can we connect to another table visually? this is called tableflip_connects but technically can/should
  * be eventually used for visual handling as well.
+ *
+ * todo: no don't use this for visuals, we should use bitmask-like smoothing and overlays, hello??
  */
 /obj/structure/table/proc/tableflip_connects(obj/structure/table/other)
 	return other.flipped == flipped && other.material_base == material_base
