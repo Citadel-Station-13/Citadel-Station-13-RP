@@ -111,7 +111,7 @@
 	else if(material_parts == MATERIAL_DEFAULT_ABSTRACTED)
 		update_material_multi()
 	else
-		update_material_single(SSmaterials.resolve_material(material_parts))
+		update_material_single(material_parts)
 
 /**
  * @return key-value list of material part keys to ids
@@ -160,12 +160,7 @@
 	obj_flags |= OBJ_MATERIAL_PARTS_MODIFIED
 	material_set_part(part, material)
 	if(obj_flags & OBJ_MATERIAL_INITIALIZED)
-		if(islist(material_parts))
-			update_material_multi(material_parts)
-		else if(material_parts == MATERIAL_DEFAULT_ABSTRACTED)
-			update_material_multi()
-		else
-			update_material_single(material_parts)
+		update_material_parts()
 
 /**
  * sets our material parts to a list by key / value. values should be material datums.
@@ -177,12 +172,7 @@
 	for(var/key in part_instances)
 		material_set_part(key, part_instances[key])
 	if(obj_flags & OBJ_MATERIAL_INITIALIZED)
-		if(islist(material_parts))
-			update_material_multi(material_parts)
-		else if(material_parts == MATERIAL_DEFAULT_ABSTRACTED)
-			update_material_multi()
-		else
-			update_material_single(material_parts)
+		update_material_parts()
 
 /**
  * do we use material parts system?
@@ -223,8 +213,12 @@
  */
 /obj/proc/set_primary_material(datum/material/material)
 	SHOULD_NOT_OVERRIDE(TRUE)
+	if(isnull(material_primary))
+		return
 	obj_flags |= OBJ_MATERIAL_PARTS_MODIFIED
-	return isnull(material_primary)? null : material_set_part(material_primary, material)
+	material_set_part(material_primary, material)
+	if(obj_flags & OBJ_MATERIAL_INITIALIZED)
+		update_material_parts()
 
 /**
  * get material amounts of parts

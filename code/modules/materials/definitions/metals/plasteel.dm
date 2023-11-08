@@ -20,11 +20,11 @@
 	relative_conductivity = 0.1
 	relative_permeability = 0
 	relative_reactivity = 0.05
-	hardness = MATERIAL_RESISTANCE_HIGH
+	hardness = MATERIAL_RESISTANCE_ABOVE_MODERATE(0.75)
 	toughness = MATERIAL_RESISTANCE_HIGH
-	refraction = MATERIAL_RESISTANCE_LOW
-	absorption = MATERIAL_RESISTANCE_HIGH
-	nullification = MATERIAL_RESISTANCE_NONE
+	refraction = MATERIAL_RESISTANCE_ABOVE_LOW(0.5)
+	absorption = MATERIAL_RESISTANCE_ABOVE_MODERATE(0.75)
+	nullification = MATERIAL_RESISTANCE_ABOVE_NONE(0.5)
 
 /datum/material/plasteel/generate_recipes()
 	. = ..()
