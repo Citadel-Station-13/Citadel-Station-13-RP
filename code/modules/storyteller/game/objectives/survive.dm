@@ -10,3 +10,6 @@
 
 
 #warn impl
+
+/datum/game_objective/survive/check_completion(datum/game_faction/faction)
+	#warn impl

@@ -19,7 +19,14 @@
  */
 /datum/game_objective/overmap_unary/visit_once
 
+
+/datum/game_objective/overmap_unary/visit_once/check_completion(datum/game_faction/faction)
+	#warn impl
+
 /**
  * end the round at a specific location
  */
 /datum/game_objective/overmap_unary/end_at
+
+/datum/game_objective/overmap_unary/end_at/check_completion(datum/game_faction/faction)
+	#warn impl

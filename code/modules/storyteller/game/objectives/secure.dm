@@ -15,3 +15,6 @@
 #warn impl
 
 
+
+/datum/game_objective/secure/check_completion(datum/game_faction/faction)
+	#warn impl

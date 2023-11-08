@@ -11,8 +11,6 @@ SUBSYSTEM_DEF(storyteller)
 	wait = 30 SECONDS
 	init_order = INIT_ORDER_STORYTELLER
 
-	/// state
-	var/datum/storyteller_state/storyteller_state
 	/// driver template
 	var/datum/storyteller_driver/storyteller_driver
 
@@ -21,7 +19,7 @@ SUBSYSTEM_DEF(storyteller)
 	/// all factions
 	var/list/datum/world_faction/world_factions
 
-	#warn world factionso
+	#warn world factions
 
 #warn impl
 

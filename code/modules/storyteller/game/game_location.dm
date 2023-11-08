@@ -5,6 +5,9 @@
  * location descriptor
  *
  * instantiate with bind_to set to a given thing.
+ *
+ * unlike /datum/game_entity, this is not so abstract, as 'location'
+ * here refers to a byond-allowed location or a descriptor to such.
  */
 /datum/game_location
 	abstract_type = /datum/game_location

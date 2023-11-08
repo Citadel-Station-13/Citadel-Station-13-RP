@@ -12,5 +12,7 @@
 	/// does not persist and is round-local
 	///
 	/// values must be a number, string, or an assoc/index list consisting only of those.
-	var/list/local = list()
+	var/list/volatile = list()
 	#warn uhh
+
+#warn this is currently unused, pending parsing
