@@ -382,7 +382,7 @@
 /obj/item/stack/material/log/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 	if(!istype(I) || I.damage_force <= 0)
 		return ..()
-	if(CHECK_MULTIPLE_BITFIELDS(I.damage_mode, DAMAGE_MODE_EDGE | DAMAGE_MODE_SHARP) || (W.edge && W.sharp))
+	if(CHECK_MULTIPLE_BITFIELDS(I.damage_mode, DAMAGE_MODE_EDGE | DAMAGE_MODE_SHARP) || (I.edge && I.sharp))
 		var/time = (3 SECONDS / max(I.damage_force / 10, 1)) * I.tool_speed
 		user.setClickCooldown(time)
 		if(do_after(user, time, src) && use(1))

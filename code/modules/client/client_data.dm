@@ -1,12 +1,12 @@
 GLOBAL_LIST_EMPTY(client_data)
 
-/proc/resolve_client_data(ckey)
+/proc/resolve_client_data(ckey, key)
 	ckey = ckey(ckey)	// just in case
 	if(!islist(GLOB.client_data))
 		// we CANNOT RUNTIME
 		GLOB.client_data = list()
 	if(!istype(GLOB.client_data[ckey], /datum/client_data))
-		GLOB.client_data[ckey] = new /datum/client_data(ckey)
+		GLOB.client_data[ckey] = new /datum/client_data(ckey, key)
 	return GLOB.client_data[ckey]
 
 /**
@@ -20,12 +20,16 @@ GLOBAL_LIST_EMPTY(client_data)
 /datum/client_data
 	/// owner ckey
 	var/ckey
+	/// owner key
+	var/key
 	/// absolutely, positively annihilated
 	var/ligma = FALSE
 	/// byond account join date
 	var/account_join
 	/// byond account age
 	var/account_age
+	/// is guest
+	var/is_guest
 
 	//* externally managed data *//
 	/// playtime - role string to number of minutes.
@@ -39,9 +43,12 @@ GLOBAL_LIST_EMPTY(client_data)
 	/// last REALTIMEOFDAY we did queuing
 	var/playtime_last
 
-/datum/client_data/New(ckey)
+/datum/client_data/New(ckey, key)
 	src.ckey = ckey
+	src.key = key
 	src.playtime_last = REALTIMEOFDAY
+
+	is_guest = IsGuestKey(key)
 
 	load_account_age()
 
@@ -112,6 +119,9 @@ GLOBAL_LIST_EMPTY(client_data)
 	return account_age
 
 /datum/client_data/proc/load_account_age()
+	if(is_guest)
+		account_age = 0
+		return
 	var/list/http = world.Export("http://byond.com/members/[ckey]?format=text")
 	if(!http)
 		log_world("Failed to connect to byond age check for [ckey]")

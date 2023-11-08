@@ -300,17 +300,11 @@
 	return transfer
 
 /obj/item/stack/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
-	if (istype(W, /obj/item/stack))
+	if (istype(I, /obj/item/stack))
 		var/obj/item/stack/S = I
 		src.transfer_to(S)
-
-		spawn(0) //give the stacks a chance to delete themselves if necessary
-			if (S && usr.machine==S)
-				S.interact(usr)
-			if (src && usr.machine==src)
-				src.interact(usr)
-	else
-		return ..()
+		return
+	return ..()
 
 /obj/item/stack/AltClick(mob/living/user)
 	. = ..()
