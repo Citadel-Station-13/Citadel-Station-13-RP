@@ -147,6 +147,13 @@
 	/// force world to be bigger height
 	var/world_height
 
+	/// world_location's this is considered
+	/// set to id, or typepath to parse into id in New()
+	var/list/world_location_ids = list(/datum/world_location/frontier)
+	/// world faction this is primarily under the control of
+	/// set to id, or typepath to parse into id in New()
+	var/world_faction_id = /datum/world_faction/nanotrasen
+
 	//! legacy below
 
 	var/full_name = "Unnamed Map"
@@ -273,6 +280,15 @@
 
 /datum/map/station/New()
 	..()
+	if(ispath(world_faction_id))
+		var/datum/world_faction/casted = world_faction_id
+		world_faction_id = initial(casted.id)
+	for(var/i in 1 to length(world_location_ids))
+		var/datum/world_location/casted = world_location_ids[i]
+		if(!ispath(casted))
+			continue
+		world_location_ids[i] = initial(casted.id)
+
 	if(!map_levels)
 		map_levels = station_levels.Copy()
 	if(!allowed_jobs || !allowed_jobs.len)

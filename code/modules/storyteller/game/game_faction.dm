@@ -12,6 +12,8 @@
  *
  * while 'pirates' are one world faction, they may spawn multiple offmaps of different game factions, because
  * pirates aren't necessarily all working together.
+ *
+ * these factions, and their objectives, are handled by SSticker.
  */
 /datum/game_faction
 	abstract_type = /datum/game_faction
@@ -23,6 +25,11 @@
 	var/name
 	/// objectives
 	var/list/datum/game_objective/objectives
+	/// minds
+	var/list/datum/mind/minds
 
+/datum/game_faction/Destroy()
+	#warn clear minds
+	return ..()
 
 #warn impl

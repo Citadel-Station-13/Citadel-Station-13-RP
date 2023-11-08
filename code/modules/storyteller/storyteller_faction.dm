@@ -10,4 +10,10 @@
 	/// faction name
 	var/name = "Unknown"
 
+	/// available pawns, by typepath or id
+	var/list/pawns = list()
+
+/datum/storyteller_faction/proc/from_world_faction(datum/world_faction/faction)
+	src.name = faction.name
+
 #warn impl

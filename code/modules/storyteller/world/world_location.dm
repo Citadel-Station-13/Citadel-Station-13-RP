@@ -9,6 +9,7 @@
 
 	/// location name
 	var/name
+	/// short description
+	var/desc
 	/// id - must be unique for world locations
 	var/id
-

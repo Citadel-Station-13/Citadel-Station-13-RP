@@ -26,6 +26,36 @@
  */
 
 /datum/mind
+	//* Abilities
+	/// mind-level abilities
+	var/list/datum/ability/abilities
+
+	//* Characteristics
+	/// characteristics holder
+	var/datum/characteristics_holder/characteristics
+
+	//* Factions
+	/// list of game factions we belong to
+	var/list/datum/game_faction/factions
+
+	//* Roles
+	/// all /datum/role's associated with us
+	var/list/datum/role/roles
+
+	//? Preferences
+	/**
+	 * original save data
+	 * ! TODO: REMOVE THIS; we shouldn't keep this potentially big list all round. !
+	 * todo: don't actually remove it, just only save relevant data (?)
+	 */
+	var/list/original_save_data
+	/// original economic modifier from backgrounds
+	//  todo: remove this too
+	var/original_pref_economic_modifier = 1
+
+
+	//? Legacy below.
+
 	/// ckey of mind
 	var/ckey
 	/// Replaces mob/var/original_name
@@ -39,30 +69,12 @@
 	var/mob/living/original	//TODO: remove.not used in any meaningful way ~Carn. First I'll need to tweak the way silicon-mobs handle minds.
 	var/active = FALSE
 
-	//? Characteristics
-	/// characteristics holder
-	var/datum/characteristics_holder/characteristics
-
-	//? Abilities
-	/// mind-level abilities
-	var/list/datum/ability/abilities
-
-	//? Preferences
-	/**
-	 * original save data
-	 * ! TODO: REMOVE THIS; we shouldn't keep this potentially big list all round. !
-	 * todo: don't actually remove it, just only save relevant data (?)
-	 */
-	var/list/original_save_data
-	/// original economic modifier from backgrounds
-	var/original_pref_economic_modifier = 1
-
 	var/memory
 	var/list/learned_recipes
 
-	// todo: id, not title
+	// todo: remove
 	var/assigned_role
-	// todo: id, not title; also unify /datum/role/(job | antagonist | ghostrole)?
+	// todo: remove
 	var/special_role
 
 	var/role_alt_title
@@ -105,11 +117,51 @@
 	src.ckey = ckey
 
 /datum/mind/Destroy()
+	#warn clear factions/roles
 	QDEL_NULL(characteristics)
 	QDEL_LIST_NULL(abilities)
 	return ..()
 
-//? Characteristics
+//* Abilities
+
+/**
+ * adds an ability to us
+ *
+ * @params
+ * * ability - a datum or path. once passed in, this datum is owned by the mind, and the mind can delete it at any time! if a path is passed in, this will runtime on duplicates - paths must always be unique if used in this way.
+ *
+ * @return TRUE / FALSE success or failure
+ */
+/datum/mind/proc/add_ability(datum/ability/ability)
+	if(ispath(ability))
+		. = FALSE
+		ASSERT(!(locate(ability) in abilities))
+		ability = new ability
+	abilities += ability
+	if(current)
+		ability.associate(current)
+	return TRUE
+
+/**
+ * removes, and deletes, an ability on us
+ *
+ * @params
+ * * ability - a datum or path. paths should only be used if it's an unique ability nothing else should grant!
+ *
+ * @return TRUE / FALSE success or failure
+ */
+/datum/mind/proc/remove_ability(datum/ability/ability)
+	if(ispath(ability))
+		ability = locate(ability) in abilities
+	if(isnull(ability))
+		return FALSE
+	abilities -= ability
+	if(current)
+		ability.disassociate(current)
+	qdel(ability)
+	return TRUE
+
+//* Characteristics
 
 /**
  * make sure we have a characteristics holder
@@ -119,6 +171,14 @@
 		characteristics = new
 		characteristics.associate_with_mind(src)
 	return characteristics
+
+//* Factions
+
+#warn impl
+
+//* Roles
+
+#warn impl
 
 //? Transfer
 
@@ -539,7 +599,6 @@
 	assigned_role =   null
 	special_role =    null
 	role_alt_title =  null
-	assigned_job =    null
 	//faction =       null //Uncommenting this causes a compile error due to 'undefined type', fucked if I know.
 	changeling =      null
 	initial_account = null
@@ -548,6 +607,7 @@
 	has_been_rev =    0
 	rev_cooldown =    0
 	brigged_since =   -1
+	#warn get rid of roles
 
 //Antagonist role check
 /mob/living/proc/check_special_role(role)
@@ -566,10 +626,7 @@
 	else
 		mind = new /datum/mind(ckey)
 		mind.original = src
-		if(SSticker)
-			SSticker.minds += mind
-		else
-			log_world("## DEBUG: mind_initialize(): No ticker ready yet! Please inform Carn")
+		SSticker.minds += mind
 	if(!mind.name)
 		mind.name = real_name
 	mind.current = src
@@ -637,6 +694,7 @@
 	mind.special_role = "Cultist"
 
 //? Preferences Checks
+// todo: this is awful and should burn in a fire
 
 /datum/mind/proc/original_background_religion()
 	RETURN_TYPE(/datum/lore/character_background/religion)
@@ -696,42 +754,3 @@
 		original_save_data[CHARACTER_DATA_RELIGION],
 	)
 	listclearnulls(.)
-
-//? Abilities
-
-/**
- * adds an ability to us
- *
- * @params
- * * ability - a datum or path. once passed in, this datum is owned by the mind, and the mind can delete it at any time! if a path is passed in, this will runtime on duplicates - paths must always be unique if used in this way.
- *
- * @return TRUE / FALSE success or failure
- */
-/datum/mind/proc/add_ability(datum/ability/ability)
-	if(ispath(ability))
-		. = FALSE
-		ASSERT(!(locate(ability) in abilities))
-		ability = new ability
-	abilities += ability
-	if(current)
-		ability.associate(current)
-	return TRUE
-
-/**
- * removes, and deletes, an ability on us
- *
- * @params
- * * ability - a datum or path. paths should only be used if it's an unique ability nothing else should grant!
- *
- * @return TRUE / FALSE success or failure
- */
-/datum/mind/proc/remove_ability(datum/ability/ability)
-	if(ispath(ability))
-		ability = locate(ability) in abilities
-	if(isnull(ability))
-		return FALSE
-	abilities -= ability
-	if(current)
-		ability.disassociate(current)
-	qdel(ability)
-	return TRUE
