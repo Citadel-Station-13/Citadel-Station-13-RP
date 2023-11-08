@@ -60,21 +60,21 @@
 	var/laser_absorb = ((1 / (-(ablation_damping * significance_as_multiplier + 400) * 0.000025)) + 100) * 0.013
 	// we don't allow deflection for now
 	return (armor_cache[cache_key] = fetch_armor_struct(list(
-		ARMOR_MELEE = kinetic_absorb,
-		ARMOR_MELEE_TIER = kinetic_tier,
-		ARMOR_MELEE_SOAK = kinetic_damping * 0.005 + kinetic_hardness * 0.0025,
-		ARMOR_BULLET = kinetic_absorb,
-		ARMOR_BULLET_TIER = kinetic_tier,
-		ARMOR_BULLET_SOAK = kinetic_damping * 0.0025 + kinetic_hardness * 0.005,
-		ARMOR_LASER = laser_absorb,
-		ARMOR_LASER_TIER = laser_tier,
-		ARMOR_LASER_SOAK = ablation_damping * 0.0025 + ablation_diffusion * 0.005,
-		ARMOR_ENERGY = exotic_absorption,
-		ARMOR_BOMB = direct_bomb,
-		ARMOR_BIO = direct_bio,
-		ARMOR_ACID = direct_acid,
-		ARMOR_FIRE = direct_fire,
-		ARMOR_RAD = direct_rad,
+		ARMOR_MELEE = round(kinetic_absorb, ARMOR_PRECISION),
+		ARMOR_MELEE_TIER = round(kinetic_tier, ARMOR_TIER_PRECISION),
+		ARMOR_MELEE_SOAK = round(kinetic_damping * 0.005 + kinetic_hardness * 0.0025, DAMAGE_PRECISION),
+		ARMOR_BULLET = round(kinetic_absorb, ARMOR_PRECISION),
+		ARMOR_BULLET_TIER = round(kinetic_tier, ARMOR_TIER_PRECISION),
+		ARMOR_BULLET_SOAK = round(kinetic_damping * 0.0025 + kinetic_hardness * 0.005, DAMAGE_PRECISION),
+		ARMOR_LASER = round(laser_absorb, ARMOR_PRECISION),
+		ARMOR_LASER_TIER = round(laser_tier, ARMOR_TIER_PRECISION),
+		ARMOR_LASER_SOAK = round(ablation_damping * 0.0025 + ablation_diffusion * 0.005, DAMAGE_PRECISION),
+		ARMOR_ENERGY = round(exotic_absorption, ARMOR_PRECISION),
+		ARMOR_BOMB = round(direct_bomb, ARMOR_PRECISION),
+		ARMOR_BIO = round(direct_bio, ARMOR_PRECISION),
+		ARMOR_ACID = round(direct_acid, ARMOR_PRECISION),
+		ARMOR_FIRE = round(direct_fire, ARMOR_PRECISION),
+		ARMOR_RAD = round(direct_rad, ARMOR_PRECISION),
 	)))
 
 /**
@@ -221,14 +221,14 @@
 				((hardness * MATERIAL_DYNAMICS_DAMTIER_INTENSIFIER * MATERIAL_SIGNIFICANCE_TO_DAMAGE_INTENSIFIER(significance) * MATERIAL_DENSITY_TO_DAMAGE_INTENSIFIER(density) - MATERIAL_DYNAMICS_DAMTIER_SHIFT) / MATERIAL_DYNAMICS_DAMTIER_DIVISOR) \
 			)) \
 		) - MATERIAL_DYNAMICS_DAMTIER_CEILING + MATERIAL_DYNAMICS_DAMTIER_ADJUST ) * MATERIAL_DYNAMICS_DAMTIER_SCALER
-		.[MATERIAL_MELEE_STATS_DAMAGE] = damage
-		.[MATERIAL_MELEE_STATS_TIERMOD] = tier
+		.[MATERIAL_MELEE_STATS_DAMAGE] = round(damage, DAMAGE_PRECISION)
+		.[MATERIAL_MELEE_STATS_TIERMOD] = round(tier, DAMAGE_TIER_PRECISION)
 	else
 		// use toughness, density
 		.[MATERIAL_MELEE_STATS_FLAG] = ARMOR_MELEE
 		.[MATERIAL_MELEE_STATS_MODE] = initial_modes
 		var/damage = (MATERIAL_DYNAMICS_DAMAGE_CEILING / (1 + (NUM_E ** -(MATERIAL_DYNAMICS_DAMAGE_LOGISTIC * ((toughness * MATERIAL_DYNAMICS_DAMAGE_INTENSIFIER * MATERIAL_SIGNIFICANCE_TO_DAMAGE_INTENSIFIER(significance) * MATERIAL_DENSITY_TO_DAMAGE_INTENSIFIER(density) - MATERIAL_DYNAMICS_DAMAGE_SHIFT) / MATERIAL_DYNAMICS_DAMAGE_DIVISOR)))))
-		.[MATERIAL_MELEE_STATS_DAMAGE] = damage
+		.[MATERIAL_MELEE_STATS_DAMAGE] = round(damage, DAMAGE_PRECISION)
 		var/tier = (( \
 			  (MATERIAL_DYNAMICS_DAMTIER_CEILING * 2) \
 			/ (1 + NUM_E ** -( \
@@ -236,7 +236,7 @@
 				((toughness * MATERIAL_DYNAMICS_DAMTIER_INTENSIFIER * MATERIAL_SIGNIFICANCE_TO_DAMAGE_INTENSIFIER(significance) * MATERIAL_DENSITY_TO_DAMAGE_INTENSIFIER(density) - MATERIAL_DYNAMICS_DAMTIER_SHIFT) / MATERIAL_DYNAMICS_DAMTIER_DIVISOR) \
 			)) \
 		) - MATERIAL_DYNAMICS_DAMTIER_CEILING + MATERIAL_DYNAMICS_DAMTIER_ADJUST ) * MATERIAL_DYNAMICS_DAMTIER_SCALER
-		.[MATERIAL_MELEE_STATS_TIERMOD] = tier
+		.[MATERIAL_MELEE_STATS_TIERMOD] = round(tier, DAMAGE_TIER_PRECISION)
 
 	melee_cache[cache_key] = .
 

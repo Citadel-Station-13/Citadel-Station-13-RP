@@ -75,7 +75,7 @@
  */
 /atom/proc/inflict_atom_damage(damage, tier, flag, mode, attack_type, datum/weapon, gradual)
 	if(!integrity_enabled)
-		CRASH("attempted to take_atom_damage without [NAMEOF(src, integrity_enabled)] being on.")
+		return 0
 	if(integrity_flags & INTEGRITY_INDESTRUCTIBLE)
 		return 0
 	if(flag)

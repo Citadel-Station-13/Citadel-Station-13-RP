@@ -315,7 +315,7 @@ var/list/table_icon_cache = list()
 	user.actor_construction_log(src, "started reinforcing with [using.material]")
 	if(!do_after(user, 1 SECONDS, src, mobility_flags = MOBILITY_CAN_USE))
 		return FALSE
-	if(!isnull(material_base) || !isnull(material_reinforcing))
+	if(isnull(material_base) || !isnull(material_reinforcing))
 		return FALSE
 	user.visible_action_feedback(
 		target = src,
