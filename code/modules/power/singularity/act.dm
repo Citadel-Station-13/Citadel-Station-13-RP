@@ -84,7 +84,6 @@
 	if(src.fingerprintshidden)
 		prints = ", all touchers : " + src.fingerprintshidden
 
-	SetUniversalState(/datum/universal_state/supermatter_cascade)
 	log_admin("New super singularity made by eating a SM crystal [prints]. Last touched by [src.fingerprintslast].")
 	message_admins("New super singularity made by eating a SM crystal [prints]. Last touched by [src.fingerprintslast].")
 	qdel(src)

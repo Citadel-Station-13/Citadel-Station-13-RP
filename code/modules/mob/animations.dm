@@ -12,7 +12,8 @@ below 100 is not dizzy
 /mob/var/is_dizzy = 0
 
 /mob/proc/make_dizzy(var/amount)
-	if(!istype(src, /mob/living/carbon/human)) // for the moment, only humans get dizzy
+	// for the moment, only humans get dizzy
+	if(!istype(src, /mob/living/carbon/human))
 		return
 
 	dizziness = min(1000, dizziness + amount)	// store what will be new value
