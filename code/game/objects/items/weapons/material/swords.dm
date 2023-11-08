@@ -9,6 +9,7 @@
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	drop_sound = 'sound/items/drop/sword.ogg'
 	pickup_sound = 'sound/items/pickup/sword.ogg'
+	force_multiplier = 1.5
 
 /obj/item/material/sword/plasteel
 	material_parts = /datum/material/plasteel
