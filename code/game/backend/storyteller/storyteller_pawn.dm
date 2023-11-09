@@ -15,6 +15,12 @@
 	/// id - must be globally, cross-round unique! leave blank for hardcoded instances if you want; it'll autogen from path
 	/// this means you should not have any ids with /'s in them.
 	var/id
+	/// faction we belong to - hard reference
+	var/datum/storyteller_faction/faction
+	/// our storyteller location descriptor
+	/// this may be set during placement - because we don't have a distinction between 'instance' and 'describe'
+	/// for now.
+	var/datum/storyteller_location/location
 
 /datum/storyteller_pawn/New()
 	if(isnull(id))
@@ -27,14 +33,14 @@
  *
  * @return positive for 'hostile effect', negative for 'positive effect'
  */
-/datum/storyteller_pawn/proc/rate_hostilities(datum/storyteller_state/state, datum/storyteller_pawn/enemy, datum/storyteller_faction/their_faction, datum/storyteller_faction/our_faction, datum/game_location/their_location, datum/game_location/our_location)
+/datum/storyteller_pawn/proc/evaluate_hostility(datum/storyteller_state/state, datum/storyteller_pawn/enemy)
 
 /**
  * checks if the map is suitable for spawning this
  */
-/datum/storyteller_pawn/proc/check_prerequisites(datum/storyteller_state/state, datum/storyteller_faction/faction)
+/datum/storyteller_pawn/proc/check_prerequisites(datum/storyteller_state/state)
 
 /**
  * performs a spawn
  */
-/datum/storyteller_pawn/proc/instance(datum/storyteller_state/state, datum/storyteller_faction/faction, datum/game_location/location)
+/datum/storyteller_pawn/proc/instance(datum/storyteller_state/state)

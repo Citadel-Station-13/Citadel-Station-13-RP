@@ -17,7 +17,7 @@
 	var/greentext_syndrome = FALSE
 	/// when TRUE, not even the explanation blurb is reported for completion
 	var/baystation_syndrome = FALSE
-	/// owning faction - if any (so when we're made)
+	/// owning faction - if any (so when we're made); this is always going to be non-null when we check completion
 	var/datum/game_faction/faction
 
 /**
@@ -26,6 +26,9 @@
  * return list("status" = GAME_OBJECTIVE_X status enum, "ratio" = -1 to 1 for how failed/succeeded, "explain" = qualitative blurb)
  */
 /datum/game_objective/proc/check_completion()
+	SHOULD_CALL_PARENT(TRUE)
+	if(isnull(faction))
+		STACK_TRACE("tried to check completion with no faction")
 	/**
 	 * GameObjectiveCompletion{} -->
 	 * status: GameObjectiveStatus;
@@ -58,3 +61,15 @@
 		"showExplain" = !baystation_syndrome,
 		"showVictory" = greentext_syndrome,
 	)
+
+/**
+ * update explanation
+ */
+/datum/game_objective/proc/update_explanation()
+	explanation = build_explanation()
+
+/**
+ * builds explanation
+ */
+/datum/game_objective/proc/build_explanation()
+	return explanation || "This is some sort of custom objective - please refer to the short description or adminhelp."

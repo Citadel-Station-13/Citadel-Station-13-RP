@@ -47,6 +47,8 @@
 	var/atom/movable/potential = entity.resolve()
 	return istype(potential) && (potential in target)
 
+#warn explain
+
 /datum/game_location/entity
 	abstract_type = /datum/game_location/entity
 	/// target atom/movable
@@ -54,7 +56,7 @@
 
 /datum/game_location/entity/proc/bind_to(to_where)
 	if(!isnull(target))
-		UnreigsterSignal(target, COMSIG_PARENT_QDELETING)
+		UnregisterSignal(target, COMSIG_PARENT_QDELETING)
 	if(!ismovable(to_where))
 		. = FALSE
 		CRASH("um")
@@ -69,7 +71,19 @@
 
 /datum/game_location/entity/overmap_entity
 
-	#warn impl
+/datum/game_location/entity/overmap_entity/entity_is_inside(datum/game_entity/entity)
+	. = entity.special_in_location(src)
+	if(!isnull(.))
+		return
+	var/atom/movable/potential = entity.resolve()
+	if(!istype(potential))
+		return
+	var/obj/overmap/entity/our_entity = target
+	var/turf/where_they_are = get_turf(potential)
+	// todo: ugh
+	return get_overmap_sector(where_they_are) == our_entity
+
+#warn explain
 
 /datum/game_location/entity/movable_entity
 
@@ -79,3 +93,5 @@
 		return
 	var/atom/movable/potential = entity.resolve()
 	return istype(potential) && (potential in target)
+
+#warn explain

@@ -18,15 +18,27 @@
  * go to a specific location at some point in the round
  */
 /datum/game_objective/overmap_unary/visit_once
+	// todo: multiple overmaps
+	#warn impl
 
+/datum/game_objective/overmap_unary/visit_once/check_completion()
+	. = ..()
+	#warn impl
 
-/datum/game_objective/overmap_unary/visit_once/check_completion(datum/game_faction/faction)
+/datum/game_objective/overmap_unary/visit_once/build_explanation()
 	#warn impl
 
 /**
  * end the round at a specific location
  */
 /datum/game_objective/overmap_unary/end_at
+	// todo: multiple overmaps
+	#warn impl
 
-/datum/game_objective/overmap_unary/end_at/check_completion(datum/game_faction/faction)
+
+/datum/game_objective/overmap_unary/end_at/check_completion()
+	. = ..()
+	#warn impl
+
+/datum/game_objective/overmap_unary/end_at/build_explanation()
 	#warn impl

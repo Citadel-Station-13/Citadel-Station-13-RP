@@ -11,5 +11,9 @@
 
 #warn impl
 
-/datum/game_objective/survive/check_completion(datum/game_faction/faction)
+/datum/game_objective/survive/check_completion()
+	. = ..()
+	#warn impl
+
+/datum/game_objective/survive/build_explanation()
 	#warn impl
