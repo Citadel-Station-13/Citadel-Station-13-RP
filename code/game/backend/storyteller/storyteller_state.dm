@@ -24,6 +24,8 @@
 	var/list/datum/storyteller_faction/active_factions
 	/// active pawns
 	var/list/datum/storyteller_pawn/active_pawns
+	/// instanced, but not active pawns.
+	var/list/datum/storyteller_pawn/pending_pawns
 
 	#warn uhh
 

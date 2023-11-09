@@ -11,7 +11,13 @@
 	var/name = "Unknown"
 
 	/// available pawns, by typepath or id
-	var/list/pawns = list()
+	var/list/available_pawns = list()
+
+	//* active / instance
+	/// active instances of pawns
+	var/list/datum/storyteller_pawn/active_pawns
+	/// created but not yet spawned / instanced instances of pawns
+	var/list/datum/storyteller_pawn/pending_pawns
 
 /datum/storyteller_faction/proc/from_world_faction(datum/world_faction/faction)
 	src.name = faction.name

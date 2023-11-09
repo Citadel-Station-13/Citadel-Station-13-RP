@@ -546,6 +546,7 @@ SUBSYSTEM_DEF(ticker)
 		roundend_callbacks.InvokeAsync()
 	LAZYCLEARLIST(round_end_events)
 
+	#warn roundend stuff
 
 	for(var/mob/Player in GLOB.player_list)
 		if(Player.mind && !isnewplayer(Player))

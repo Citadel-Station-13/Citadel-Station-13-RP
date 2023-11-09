@@ -33,3 +33,25 @@
 	return ..()
 
 #warn impl
+
+/**
+ * tgui roundend data
+ */
+/datum/game_faction/proc/tgui_roundend_data()
+	var/list/built_objectives = list()
+	for(var/datum/game_objective/objective as anything in objectives)
+		built_objectives[++built_objectives.len] = objective.tgui_roundend_data()
+	/**
+	 * GameFaction{} -->
+	 *
+	 * name: string;
+	 * id: string;
+	 * objectives: GameObjective[];
+	 */
+	return list(
+		"name" = name,
+		"id" = id,
+		"objectives" = built_objectives,
+	)
+
+

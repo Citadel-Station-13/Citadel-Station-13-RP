@@ -10,6 +10,14 @@
 	CRASH("abstract proc not implemented")
 
 /**
+ * called to specially check if we're in a location, even if automatic handling fails
+ *
+ * @return non null TRUE/FALSE to override
+ */
+/datum/game_entity/proc/special_in_location(datum/game_location/location)
+	return
+
+/**
  * 'dumbly' wraps something in a hard reference, automatically unlinking from it if it's deleted
  */
 /datum/game_entity/basic
