@@ -7,6 +7,7 @@
  * This is not a 'pawn' as you'd expect
  *
  * This is basically something the storyteller can place into the world to influence it.
+ * This is also able to be instantiated multiple times, and therefore 'rate our hostility to another instance of ourselves' is a valid question.
  */
 /datum/storyteller_pawn
 	abstract_type = /datum/storyteller_pawn
@@ -21,6 +22,10 @@
 
 /**
  * perform a hostility rating against another pawn when placed in two relative locations
+ *
+ * this can return negative numbers too, for placing, say, allied things.
+ *
+ * @return positive for 'hostile effect', negative for 'positive effect'
  */
 /datum/storyteller_pawn/proc/rate_hostilities(datum/storyteller_state/state, datum/storyteller_pawn/enemy, datum/storyteller_faction/their_faction, datum/storyteller_faction/our_faction, datum/game_location/their_location, datum/game_location/our_location)
 

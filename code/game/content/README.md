@@ -1,4 +1,4 @@
-# Game Content
+# Game System - Content
 
 Content specific to Citadel RP's in-game universe go in here.
 
