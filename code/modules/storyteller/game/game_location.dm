@@ -30,14 +30,6 @@
 /datum/game_location/proc/entity_is_inside(datum/game_entity/entity)
 	CRASH("abstract proc unimplemented")
 
-/**
- * get best-estimate distance from entity in tiles.
- *
- * decimals are allowed as we also support overmaps!
- */
-/datum/game_location/proc/how_far_is_entity(datum/game_entity/entity)
-	CRASH("abstract proc unimplemented")
-
 #warn need range ops for placement and whatnot
 
 /datum/game_location/specific_turf
