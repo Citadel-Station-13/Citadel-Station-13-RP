@@ -345,3 +345,8 @@
 
 /datum/ai_holder/simple_mob/intentional/sakimm/special_flee_check()
 	return holder.get_active_held_item()
+
+/mob/living/simple_mob/animal/sif/sakimm/dexter
+	name = "Dexter"
+	desc = "A tame, oversized rodent with hands. It seems really friendly."
+	faction = "neutral"
