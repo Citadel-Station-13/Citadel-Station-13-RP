@@ -121,6 +121,9 @@
 	if(istype(A, /obj/structure/table))
 		var/still_here = loc
 		spawn(0)
+			// todo: remove this shit
+			if(QDELETED(src))
+				return
 			if(loc == still_here)
 				forceMove(A.loc)
 
@@ -140,9 +143,15 @@
 			if(!exit_vent)
 				return
 			spawn(rand(20,60))
+				// todo: remove this shit
+				if(QDELETED(src))
+					return
 				loc = exit_vent
 				var/travel_time = round(get_dist(loc, exit_vent.loc) / 2)
 				spawn(travel_time)
+					// todo: remove this shit
+					if(QDELETED(src))
+						return
 
 					if(!exit_vent || exit_vent.welded)
 						loc = entry_vent
@@ -152,6 +161,9 @@
 					if(prob(50))
 						src.visible_message("<span class='notice'>You hear something squeezing through the ventilation ducts.</span>",2)
 					sleep(travel_time)
+					// todo: remove this shit
+					if(QDELETED(src))
+						return
 
 					if(!exit_vent || exit_vent.welded)
 						loc = entry_vent
@@ -207,6 +219,9 @@
 			var/mob/living/simple_mob/animal/giant_spider/GS = new spawn_type(src.loc, src)
 			if(stunted)
 				spawn(2)
+					// todo: remove this shit
+					if(QDELETED(src))
+						return
 					GS.make_spiderling()
 			qdel(src)
 
@@ -234,6 +249,9 @@
 			var/mob/living/simple_mob/animal/giant_spider/GS = new spawn_type(src.loc, src)
 			if(stunted)
 				spawn(2)
+					// todo: remove this shit
+					if(QDELETED(src))
+						return
 					GS.make_spiderling()
 			qdel(src)
 
