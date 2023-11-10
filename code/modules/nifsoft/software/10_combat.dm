@@ -57,6 +57,8 @@ var/global/datum/unarmed_attack/hardclaws/unarmed_hardclaws = new()
 	attack_verb_legacy = list("claws")
 	attack_noun = list("talons")
 	damage = 15
+	damage_add_high = 5
+	damage_add_low = 1
 	// OH BOY
 	damage_tier = MELEE_TIER_HEAVY
 	attack_sound = "punch"
