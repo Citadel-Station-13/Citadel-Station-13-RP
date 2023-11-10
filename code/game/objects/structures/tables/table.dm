@@ -256,7 +256,7 @@ var/list/table_icon_cache = list()
 			adjust_integrity(integrity_max / 2)
 			return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 
-	if(istype(I, /obj/item/stack/material))
+	if(istype(I, /obj/item/stack/material) && isnull(material_base))
 		attempt_material_plate(I, user)
 		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 
