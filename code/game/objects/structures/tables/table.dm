@@ -62,14 +62,12 @@ var/list/table_icon_cache = list()
 		return INITIALIZE_HINT_LATELOAD
 	else
 		update_connections(TRUE)
-		update_icon()
-		update_desc()
+		update_appearance()
 
 /obj/structure/table/LateInitialize()		// CURSE YOU DUMB AS ROCKS MATERIAL SYSTEM
 	. = ..()
 	update_connections(FALSE)
-	update_icon()
-	update_desc()
+	update_appearance()
 
 /obj/structure/table/Destroy()
 	var/old_loc = loc

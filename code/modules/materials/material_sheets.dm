@@ -55,6 +55,9 @@
 		assembled[++assembled.len] = recipe.tgui_recipe_data()
 	return assembled
 
+/obj/item/stack/material/stackcrafting_makes_sense()
+	return TRUE
+
 /obj/item/stack/material/can_craft_recipe(datum/stack_recipe/recipe)
 	. = ..()
 	if(.)

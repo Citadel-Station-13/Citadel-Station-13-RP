@@ -72,6 +72,8 @@
 	return list()
 
 /obj/item/stack/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+	if(!stackcrafting_makes_sense())
+		return
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(isnull(ui))
 		ui = new(user, src, "StackCrafting")
@@ -82,6 +84,9 @@
 	.["recipes"] = tgui_recipes()
 	.["maxAmount"] = max_amount
 	.["name"] = name
+
+/obj/item/stack/proc/stackcrafting_makes_sense()
+	return length(explicit_recipes)
 
 /obj/item/stack/proc/tgui_recipes()
 	var/list/assembled = list()
