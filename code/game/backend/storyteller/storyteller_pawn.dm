@@ -44,3 +44,5 @@
  * performs a spawn
  */
 /datum/storyteller_pawn/proc/instance(datum/storyteller_state/state)
+
+#warn impl

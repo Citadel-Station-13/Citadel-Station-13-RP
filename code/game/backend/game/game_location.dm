@@ -20,8 +20,11 @@
 
 /**
  * emit details of where we actually point to
+ *
+ * @params
+ * * detailed - exact trace, as opposed to just a location; this will let them home in.
  */
-/datum/game_location/proc/explain()
+/datum/game_location/proc/explain(detailed)
 	CRASH("abstract proc unimplemented")
 
 /**
@@ -47,7 +50,11 @@
 	var/atom/movable/potential = entity.resolve()
 	return istype(potential) && (potential in target)
 
-#warn explain
+/datum/game_location/specific_turf/explain(detailed)
+	if(isnull(target))
+		return "at an unknown location (uh oh!)"
+	var/datum/map_level/their_level = SSmapping.ordered_levels[target.z]
+	return "at coordinates [target.x], [target.y], on [their_level.display_name]"
 
 /datum/game_location/entity
 	abstract_type = /datum/game_location/entity
@@ -83,6 +90,10 @@
 	// todo: ugh
 	return get_overmap_sector(where_they_are) == our_entity
 
+/datum/game_location/entity/overmap_entity/explain(detailed)
+	if(isnull(target))
+		return "at an unknown location (uh oh!)"
+
 #warn explain
 
 /datum/game_location/entity/movable_entity
@@ -93,5 +104,13 @@
 		return
 	var/atom/movable/potential = entity.resolve()
 	return istype(potential) && (potential in target)
+
+/datum/game_location/entity/movable_entity/explain(detailed)
+	if(isnull(target))
+		return "at an unknown location (uh oh!)"
+	var/turf/target_turf = get_turF(target)
+	if(isnull(target_turf))
+		return "inside [target]"
+	var/datum/map_level/their_level = SSmapping.ordered_levels[target_turf.z]
 
 #warn explain

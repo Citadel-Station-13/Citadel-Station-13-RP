@@ -4,6 +4,6 @@
 /**
  * standalone overmap spawns
  */
-/datum/storyteller_pawn/overmap_standalone
+/datum/storyteller_entity/overmap_standalone
 
 #warn impl

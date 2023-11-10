@@ -4,6 +4,6 @@
 /**
  * spawn in some sector
  */
-/datum/storyteller_pawn/sector_spawn
+/datum/storyteller_entity/sector_spawn
 
 #warn impl
