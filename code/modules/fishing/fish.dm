@@ -225,7 +225,7 @@
 		try_to_reproduce()
 
 /obj/item/fish/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
-	if(I.sharp)
+	if(I.sharp || (I.damage_mode & DAMAGE_MODE_SHARP))
 		user.action_feedback(SPAN_NOTICE("You start cutting [src] into fillets..."), src)
 		if(!do_after(user, 2 SECONDS, src))
 			return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
