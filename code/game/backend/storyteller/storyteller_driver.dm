@@ -17,6 +17,7 @@
 
 
 
+
 #warn impl
 
 /datum/storyteller_driver/proc/perform_intercept(datum/storyteller_state/state)

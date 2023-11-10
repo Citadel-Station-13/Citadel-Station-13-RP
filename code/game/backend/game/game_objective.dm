@@ -65,8 +65,15 @@
 /**
  * update explanation
  */
-/datum/game_objective/proc/update_explanation()
+/datum/game_objective/proc/update()
+	task = build_task()
 	explanation = build_explanation()
+
+/**
+ * builds task
+ */
+/datum/game_objective/proc/build_task()
+	return task | "Custom Objective (adminhelp, shit broke)"
 
 /**
  * builds explanation

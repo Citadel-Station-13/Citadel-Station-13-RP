@@ -5,6 +5,7 @@
  * have a certain amount of your team alive at round end
  */
 /datum/game_objective/survive
+	name = "Survive"
 	/// target percent from 0 to 100
 	var/required_percent = 100
 
@@ -12,8 +13,17 @@
 #warn impl
 
 /datum/game_objective/survive/check_completion()
-	. = ..()
+	return list(
+		"status",
+		"ratio",
+		"explain",
+	)
+	#warn impl
+
+/datum/game_objective/survive/build_task()
+	return "Survive."
 	#warn impl
 
 /datum/game_objective/survive/build_explanation()
-	#warn impl
+	#warn internally specific?
+	return "Ensure at least [required_percent]% of your team survives until the end of the round."

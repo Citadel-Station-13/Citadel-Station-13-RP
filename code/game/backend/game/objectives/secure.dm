@@ -5,6 +5,7 @@
  * ensure a given entity is in a given location at round end
  */
 /datum/game_objective/secure
+	name = "Secure"
 	abstract_type = /datum/game_objective/secure
 
 	/// target entity
@@ -18,6 +19,9 @@
 
 /datum/game_objective/secure/check_completion(datum/game_faction/faction)
 	. = ..()
+	#warn impl
+
+/datum/game_objective/secure/build_task()
 	#warn impl
 
 /datum/game_objective/secure/build_explanation()

@@ -18,11 +18,15 @@
  * go to a specific location at some point in the round
  */
 /datum/game_objective/overmap_unary/visit_once
+	name = "Visit Overmap Location"
 	// todo: multiple overmaps
 	#warn impl
 
 /datum/game_objective/overmap_unary/visit_once/check_completion()
 	. = ..()
+	#warn impl
+
+/datum/game_objective/overmap_unary/visit_once/build_task()
 	#warn impl
 
 /datum/game_objective/overmap_unary/visit_once/build_explanation()
@@ -32,12 +36,16 @@
  * end the round at a specific location
  */
 /datum/game_objective/overmap_unary/end_at
+	name = "End Round at Overmap Location"
 	// todo: multiple overmaps
 	#warn impl
 
 
 /datum/game_objective/overmap_unary/end_at/check_completion()
 	. = ..()
+	#warn impl
+
+/datum/game_objective/overmap_unary/end_at/build_task()
 	#warn impl
 
 /datum/game_objective/overmap_unary/end_at/build_explanation()
