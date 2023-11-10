@@ -445,6 +445,10 @@
 	items -= announce // or the autosay radio.
 
 	for(var/obj/item/W in items)
+		// todo: fucking rework cryo
+		if(istype(W, /obj/item/holder))
+			W.forceMove(drop_location())
+			return
 
 		var/preserve = FALSE
 
