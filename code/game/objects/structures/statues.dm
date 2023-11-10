@@ -9,6 +9,7 @@
 	density = TRUE
 	anchored = FALSE
 	armor_type = /datum/armor/object/medium
+	material_parts = MATERIAL_DEFAULT_NONE
 
 /obj/structure/statue/attackby(obj/item/tool/W, mob/living/user, params)
 	add_fingerprint(user)
@@ -63,6 +64,7 @@
 
 /obj/structure/statue/silver
 	desc = "This is a valuable statue made from silver."
+	material_parts = /datum/material/silver
 
 /obj/structure/statue/silver/hos
 	name = "Statue of a Head of Security"
@@ -92,6 +94,7 @@
 
 /obj/structure/statue/gold
 	desc = "This is a highly valuable statue made from gold."
+	material_parts = /datum/material/gold
 
 /obj/structure/statue/gold/hos
 	name = "Statue of the Head of Security"
@@ -117,6 +120,7 @@
 
 /obj/structure/statue/phoron
 	desc = "This statue is suitably made from phoron."
+	material_parts = /datum/material/phoron
 
 /obj/structure/statue/phoron/scientist
 	name = "Statue of a Scientist"
@@ -131,6 +135,7 @@
 /obj/structure/statue/uranium
 	luminosity = 2
 	desc = "If you can read this, go to Medical."
+	material_parts = /datum/material/uranium
 
 /obj/structure/statue/uranium/nuke
 	name = "Statue of a Nuclear Fission Explosive"
@@ -146,6 +151,7 @@
 
 /obj/structure/statue/diamond
 	desc = "This is a very expensive diamond statue"
+	material_parts = /datum/material/diamond
 
 /obj/structure/statue/diamond/captain
 	name = "Statue of THE Captain."
@@ -163,6 +169,7 @@
 
 /obj/structure/statue/bananium
 	desc = "A bananium statue with a small engraving:'HOOOOOOONK'."
+	material_parts = /datum/material/bananium
 
 /obj/structure/statue/bananium/clown
 	name = "Statue of a clown"
@@ -171,6 +178,7 @@
 /////////////////////sandstone/////////////////////////////////////////
 
 /obj/structure/statue/sandstone
+	material_parts = /datum/material/sandstone
 
 /obj/structure/statue/sandstone/assistant
 	name = "Statue of an assistant"
@@ -181,6 +189,7 @@
 
 /obj/structure/statue/marble
 	desc = "This is a shiny statue made from marble."
+	material_parts = /datum/material/marble
 
 /obj/structure/statue/marble/male
 	name = "male statue"
@@ -214,12 +223,14 @@
 	name = "wood statue"
 	desc = "A simple wooden mannequin, generally used to display clothes or equipment. Water frequently."
 	icon_state = "fashion_m"
+	material_parts = /datum/material/wood_log
 
 /obj/structure/statue/bone
 	name = "bone statue"
 	desc = "A towering menhir of bone, perhaps the colossal rib of some fallen beast."
 	icon = 'icons/obj/statuelarge.dmi'
 	icon_state = "rib"
+	material_parts = /datum/material/bone
 
 /obj/structure/statue/bone/skull
 	name = "skull statue"

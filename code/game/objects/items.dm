@@ -834,6 +834,42 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 /obj/item/proc/get_attack_verb(atom/target, mob/user)
 	return length(attack_verb)? pick(attack_verb) : attack_verb
 
+/**
+ * can be sharp; even if not being used as such
+ *
+ * @params
+ * * strict - require us to be toggled to sharp mode if there's multiple modes of attacking.
+ */
+/obj/item/proc/is_sharp(strict)
+	return sharp || (damage_mode & DAMAGE_MODE_SHARP)
+
+/**
+ * can be edged; even if not being used as such
+ *
+ * @params
+ * * strict - require us to be toggled to sharp mode if there's multiple modes of attacking.
+ */
+/obj/item/proc/is_edge(strict)
+	return sharp || (damage_mode & DAMAGE_MODE_EDGE)
+
+/**
+ * can be piercing; even if not being used as such
+ *
+ * @params
+ * * strict - require us to be toggled to sharp mode if there's multiple modes of attacking.
+ */
+/obj/item/proc/is_pierce(strict)
+	return (damage_mode & DAMAGE_MODE_PIERCE)
+
+/**
+ * can be shredding; even if not being used as such
+ *
+ * @params
+ * * strict - require us to be toggled to sharp mode if there's multiple modes of attacking.
+ */
+/obj/item/proc/is_shred(strict)
+	return (damage_mode & DAMAGE_MODE_SHRED)
+
 //* Interaction
 
 /**
@@ -886,7 +922,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 /obj/item/proc/attacksound_override(atom/target, attack_type)
 	return
 
-//? Carry Weight
+//* Carry Weight
 
 /obj/item/proc/get_weight()
 	return weight
