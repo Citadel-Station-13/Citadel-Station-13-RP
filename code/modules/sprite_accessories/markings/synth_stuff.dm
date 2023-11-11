@@ -16,6 +16,13 @@
 	color_blend_mode = ICON_MULTIPLY
 	body_parts = list(BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_L_HAND,BP_R_HAND,BP_TORSO)
 
+/datum/sprite_accessory/marking/synth/spirit_lights_torso
+    name = "Ward - Spirit FBP Lights (torso)"
+    id = "marking_synth_spirit_torso"
+    icon_state = "lights"
+    color_blend_mode = ICON_MULTIPLY
+    body_parts = list(BP_TORSO)
+
 /datum/sprite_accessory/marking/synth/spirit_lights_head
 	name = "Ward - Spirit FBP Lights (head)"
 	id = "marking_synth_spirit_head"
@@ -36,6 +43,13 @@
 	icon_state = "panels"
 	color_blend_mode = ICON_MULTIPLY
 	body_parts = list(BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_L_HAND,BP_R_HAND,BP_GROIN,BP_TORSO)
+
+/datum/sprite_accessory/marking/synth/spirit_panels_torso
+    name = "Ward - Spirit FBP Panels (torso)"
+    id = "marking_synth_spirit_panel_torso"
+    icon_state = "panels"
+    color_blend_mode = ICON_MULTIPLY
+    body_parts = list(BP_GROIN,BP_TORSO)
 
 /datum/sprite_accessory/marking/synth/spirit_panels_feet
 	name = "Ward - Spirit FBP Panels (feet)"
