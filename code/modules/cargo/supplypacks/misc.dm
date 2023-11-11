@@ -332,10 +332,19 @@
 /datum/supply_pack/misc/culture_alraune
 	name = "Alraune Culture Crate"
 	contains = list(
-			/obj/item/reagent_containers/food/snacks/alraune_bar = 3,
-			/obj/item/reagent_containers/food/snacks/bugsnacks = 3,
+			/obj/item/reagent_containers/food/snacks/wrapped/alraune_bar = 3,
+			/obj/item/reagent_containers/food/snacks/boxed/bugsnacks = 3,
 			/obj/item/reagent_containers/food/drinks/cans/alraune = 3
 			)
 	cost = 50
 	container_type = /obj/structure/closet/crate
 	container_name = "Alraune Culture crate"
+
+/datum/supply_pack/misc/music_players
+	name = "Music players"
+	contains = list(
+		/obj/item/device/walkpod = 3
+	)
+	cost = 150
+	container_type = /obj/structure/closet/crate
+	container_name = "Portable music players crate"

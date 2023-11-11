@@ -162,20 +162,20 @@
 /obj/item/weldingtool/proc/get_max_fuel()
 	return max_fuel
 
-/obj/item/weldingtool/using_as_tool(function, flags, mob/user, atom/target, time, cost, usage)
+/obj/item/weldingtool/using_as_tool(function, flags, datum/event_args/actor/clickchain/e_args, atom/target, time, cost, usage)
 	. = ..()
 	if(!. || function != TOOL_WELDER)
 		return
 	if(!isOn())
-		user.action_feedback(SPAN_WARNING("[src] must be on to be used to weld!"), target)
+		e_args.chat_feedback(SPAN_WARNING("[src] must be on to be used to weld!"), target)
 		return FALSE
 	// floor
 	var/computed = round(cost * time * TOOL_WELDING_FUEL_PER_DS)
 	if(get_fuel() < computed)
-		user.action_feedback(SPAN_WARNING("[src] doesn't have enough fuel left to do that!"), target)
+		e_args.chat_feedback(SPAN_WARNING("[src] doesn't have enough fuel left to do that!"), target)
 		return FALSE
 
-/obj/item/weldingtool/used_as_tool(function, flags, mob/user, atom/target, time, cost, usage, success)
+/obj/item/weldingtool/used_as_tool(function, flags, datum/event_args/actor/clickchain/e_args, atom/target, time, cost, usage, success)
 	. = ..()
 	if(!.)
 		return
@@ -447,13 +447,39 @@
 		nextrefueltick = world.time + 10
 		reagents.add_reagent("fuel", 1)
 
+/obj/item/weldingtool/experimental/brass
+	name = "replica clockwork welding tool"
+	desc = "A re-engineered experimental welder. It sports anti-corrosive brass fittings, and a further refined fuel system."
+	icon = 'icons/obj/clockwork.dmi'
+	icon_state = "clockwelder"
+	max_fuel = 50
+	tool_speed = 0.4
+	flame_color = "#990000" // deep red, as the sprite shows
+	change_icons = 0
+
+/obj/item/weldingtool/experimental/clockwork
+	name = "clockwork welding tool"
+	desc = "An antique welding tool, adorned with brass, and a brilliant red gem as the fuel tank. It neither runs out of fuel, nor harms the unprotected eye."
+	icon = 'icons/obj/clockwork.dmi'
+	icon_state = "clockwelder"
+	max_fuel = 100
+	eye_safety_modifier = 2
+	tool_sound = 'sound/machines/clockcult/steam_whoosh.ogg'
+	tool_speed = 0.1
+	flame_color = "#990000" // deep red, as above, so below
+	change_icons = 0
+
+/obj/item/weldingtool/experimental/clockwork/examine(mob/user, dist)
+	. = ..()
+	. += SPAN_NEZBERE("Sometimes, the best masterworks are lessons in rediscovering simplicity. Thousands upon thousands of these passed through the Great Forgeworks, and out into the void. Treasure this find, friend.")
+
 /obj/item/weldingtool/experimental/hybrid
 	name = "strange welding tool"
 	desc = "An experimental welder capable of synthesizing its own fuel from spatial waveforms. It's like welding with a star!"
 	icon_state = "hybwelder"
 	max_fuel = 80
 	eye_safety_modifier = -2	// Brighter than the sun. Literally, you can look at the sun with a welding mask of proper grade, this will burn through that.
-	slowdown = 0.1
+	weight = ITEM_WEIGHT_HYBRID_TOOLS
 	tool_speed = 0.25
 	w_class = ITEMSIZE_LARGE
 	flame_intensity = 5
@@ -570,7 +596,7 @@
 		power_supply = new /obj/item/cell/device(src)
 	update_icon()
 
-/obj/item/weldingtool/electric/get_cell()
+/obj/item/weldingtool/electric/get_cell(inducer)
 	return power_supply
 
 /obj/item/weldingtool/electric/examine(mob/user, dist)

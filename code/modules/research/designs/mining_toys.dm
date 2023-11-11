@@ -48,6 +48,28 @@
 	materials = list(MAT_STEEL = 10000, MAT_GLASS = 5000, MAT_GOLD = 5000, MAT_PHORON = 5000, MAT_DIAMOND = 100, MAT_URANIUM = 1000)
 	build_path = /obj/item/vertibore
 
+// KA Upgrades (That Are Too Powerful to Just Be Vending Items)
+/datum/design/science/mining/ka_modkit_aoe
+	design_name = "Experimental Kinetic Accelerator Mod (Anti-Material AoE)"
+	id = "kamodkit_aoe"
+	req_tech = list(TECH_MATERIAL = 6, TECH_ENGINEERING = 5)
+	materials = list(MAT_STEEL = 500, MAT_GLASS = 1000, MAT_SILVER = 1000, MAT_URANIUM = 500)
+	build_path = /obj/item/ka_modkit/aoe/turfs
+
+/datum/design/science/mining/ka_modkit_aoe_mob
+	design_name = "Experimental Kinetic Accelerator Mod (Anti-Organic AoE)"
+	id = "kamodkit_aoe_mob"
+	req_tech = list(TECH_BIO = 6, TECH_ENGINEERING = 5)
+	materials = list(MAT_STEEL = 1000, MAT_GLASS = 500, MAT_GOLD = 1000, MAT_PHORON = 500)
+	build_path = /obj/item/ka_modkit/aoe/mobs
+
+/datum/design/science/mining/ka_modkit_aoe_combo
+	design_name = "Experimental Kinetic Accelerator Mod (Combination AoE)"
+	id = "kamodkit_aoe_combo"
+	req_tech = list(TECH_MATERIAL = 7, TECH_BIO = 7, TECH_ENGINEERING = 5)
+	materials = list(MAT_STEEL = 1500, MAT_GLASS = 1500, MAT_SILVER = 500, MAT_GOLD = 500, MAT_DIAMOND = 500)
+	build_path = /obj/item/ka_modkit/aoe/turfs/andmobs
+
 // Mining other equipment
 /datum/design/science/mining/mining_scanner
 	id = "mining_scanner"

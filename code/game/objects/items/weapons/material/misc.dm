@@ -125,9 +125,9 @@
 
 /obj/item/material/butterfly/saw //This Saw Cleaver is in here since I do not know where else to put it
 	name = "Saw Cleaver"
-	desc = "A weapon consisting of a long handle and a heavy serrated blade. Using centrifrical force the blade extends outword allowing it to slice it long cleaves. The smell of blood hangs in the air around it."
+	desc = "A weapon consisting of a long handle attached to heavy serrated blade. Using centrifrugal force, the blade can extends outward. This transformation allows it to slice in long, cleaving arcs. The smell of blood hangs in the air around it."
 	icon = 'icons/obj/weapons.dmi'
-	icon_state = "sawcleaver"
+	icon_state = "cleaving_saw"
 	item_icons = list(
 			SLOT_ID_LEFT_HAND = 'icons/mob/items/64x64_lefthand.dmi',
 			SLOT_ID_RIGHT_HAND = 'icons/mob/items/64x64_righthand.dmi',
@@ -149,7 +149,7 @@
 		w_class = ITEMSIZE_HUGE
 		can_cleave = TRUE
 		force_divisor = 0.4 //24 when wielded, Gains cleave and is better than a machete
-		icon_state = "sawcleaver_open"
+		icon_state = "cleaving_saw_open"
 		item_state = "cleaving_saw_open"
 	else
 		w_class = initial(w_class)
@@ -157,3 +157,4 @@
 		force_divisor = initial(force_divisor)
 		icon_state = initial(icon_state)
 		item_state = initial(item_state)
+	update_worn_icon()

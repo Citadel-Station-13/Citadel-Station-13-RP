@@ -464,11 +464,11 @@
 "avB" = (
 /obj/machinery/door/blast/regular{
 	density = 0;
+	dir = 4;
 	icon_state = "pdoor0";
 	id = "xenobio2";
 	name = "Containment Blast Doors";
-	opacity = 0;
-	dir = 4
+	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full,
 /turf/simulated/floor/reinforced,
@@ -640,11 +640,11 @@
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
+	dir = 4;
 	icon_state = "pdoor0";
 	id = "xenobio2";
 	name = "Containment Blast Doors";
-	opacity = 0;
-	dir = 4
+	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full,
 /turf/simulated/floor/reinforced,
@@ -2147,12 +2147,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/ward)
-"bUU" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/old_cargo/gray,
-/area/assembly/robotics/surgery)
 "bUY" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -5456,6 +5450,16 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/assembly/chargebay)
+"eJc" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/obj/structure/sink/kitchen{
+	name = "industrial sink";
+	pixel_y = 22
+	},
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/assembly/robotics/surgery)
 "eKi" = (
 /obj/structure/table/rack,
 /obj/item/hardsuit/hazmat/equipped{
@@ -6524,11 +6528,11 @@
 "fzt" = (
 /obj/machinery/door/blast/regular{
 	density = 0;
+	dir = 8;
 	icon_state = "pdoor0";
 	id = "xenobio6";
 	name = "Containment Blast Doors";
-	opacity = 0;
-	dir = 8
+	opacity = 0
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
@@ -8343,11 +8347,11 @@
 "hdd" = (
 /obj/machinery/door/blast/regular{
 	density = 0;
+	dir = 4;
 	icon_state = "pdoor0";
 	id = "xenobio3";
 	name = "Containment Blast Doors";
-	opacity = 0;
-	dir = 4
+	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full,
 /turf/simulated/floor/reinforced,
@@ -8560,11 +8564,11 @@
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
+	dir = 4;
 	icon_state = "pdoor0";
 	id = "xenobio1";
 	name = "Containment Blast Doors";
-	opacity = 0;
-	dir = 4
+	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full,
 /turf/simulated/floor/reinforced,
@@ -9325,12 +9329,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/medical/virology)
-"hLc" = (
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
-/turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
 "hMz" = (
 /obj/machinery/power/smes/buildable{
 	RCon_tag = "Substation - Research"
@@ -9635,9 +9633,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /obj/machinery/camera/network/research,
 /obj/effect/floor_decal/industrial/danger/corner{
 	dir = 8
@@ -10509,10 +10505,10 @@
 	initialize_directions = 1;
 	internal_pressure_bound = 4000;
 	internal_pressure_bound_default = 4000;
+	on = 1;
 	pressure_checks = 2;
 	pressure_checks_default = 2;
-	pump_direction = 0;
-	on = 1
+	pump_direction = 0
 	},
 /obj/structure/window/reinforced,
 /turf/simulated/floor/bluegrid{
@@ -12893,9 +12889,9 @@
 	dir = 4
 	},
 /obj/machinery/door/blast/regular{
+	dir = 4;
 	id = "mechbay-inner";
-	name = "Mech Bay";
-	dir = 4
+	name = "Mech Bay"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/assembly/robotics)
@@ -13106,11 +13102,11 @@
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
+	dir = 4;
 	icon_state = "pdoor0";
 	id = "xenobio3";
 	name = "Containment Blast Doors";
-	opacity = 0;
-	dir = 4
+	opacity = 0
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
@@ -15724,6 +15720,13 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/research)
+"nbH" = (
+/obj/effect/floor_decal/industrial/warning/cee{
+	dir = 1
+	},
+/obj/machinery/computer/general_air_control,
+/turf/simulated/floor/tiled,
+/area/rnd/storage)
 "nbO" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/cable/green{
@@ -16924,6 +16927,14 @@
 /obj/item/clothing/glasses/welding,
 /obj/item/weldingtool,
 /obj/item/weldingtool,
+/obj/item/storage/bag/xenobio{
+	pixel_x = 7;
+	pixel_y = 5
+	},
+/obj/item/storage/bag/xenobio{
+	pixel_x = -7;
+	pixel_y = 5
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
 "oey" = (
@@ -18349,11 +18360,11 @@
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
+	dir = 8;
 	icon_state = "pdoor0";
 	id = "xenobio6";
 	name = "Containment Blast Doors";
-	opacity = 0;
-	dir = 8
+	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full,
 /turf/simulated/floor/reinforced,
@@ -20680,13 +20691,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay3)
 "qQX" = (
-/obj/structure/closet/crate/bin{
-	desc = "A large bin for medical and other personnel that deals with bio-grade waste.";
-	icon_closed = "biohazard";
-	icon_opened = "biohazardopen";
-	icon_state = "biohazard";
-	name = "biohazard bin"
-	},
+/obj/structure/closet/crate/biohazard,
 /turf/simulated/floor/tiled,
 /area/medical/surgery)
 "qRe" = (
@@ -21963,13 +21968,7 @@
 /turf/simulated/wall/prepainted/science,
 /area/rnd/research_foyer)
 "rQF" = (
-/obj/structure/closet/crate/bin{
-	desc = "A large bin for medical and other personnel that deals with bio-grade waste.";
-	icon_closed = "biohazard";
-	icon_opened = "biohazardopen";
-	icon_state = "biohazard";
-	name = "biohazard bin"
-	},
+/obj/structure/closet/crate/biohazard,
 /turf/simulated/floor/tiled,
 /area/medical/surgery2)
 "rRb" = (
@@ -22309,9 +22308,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "skW" = (
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 2
-	},
+/obj/machinery/door/firedoor/multi_tile,
 /obj/structure/curtain/open/shower/medical,
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/blue/border,
@@ -23140,12 +23137,6 @@
 /obj/structure/closet/secure_closet/psych,
 /turf/simulated/floor/wood,
 /area/medical/psych/psych_2)
-"sUS" = (
-/obj/effect/floor_decal/techfloor/orange{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/teleporter/departing)
 "sVt" = (
 /obj/machinery/smartfridge/drying_rack,
 /obj/machinery/camera/network/research{
@@ -23198,9 +23189,9 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/blast/regular{
+	dir = 4;
 	id = "mechbay-inner";
-	name = "Mech Bay";
-	dir = 4
+	name = "Mech Bay"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/assembly/robotics)
@@ -24023,11 +24014,11 @@
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
+	dir = 4;
 	icon_state = "pdoor0";
 	id = "xenobio3";
 	name = "Containment Blast Doors";
-	opacity = 0;
-	dir = 4
+	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full,
 /turf/simulated/floor/reinforced,
@@ -24452,18 +24443,6 @@
 "tUr" = (
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/assembly/robotics/surgery)
-"tUO" = (
-/obj/effect/floor_decal/industrial/warning/cee{
-	dir = 1
-	},
-/obj/machinery/computer/general_air_control/large_tank_control{
-	input_tag = "atmos_out";
-	name = "Atmos Intake Control";
-	output_tag = "atmos_in";
-	sensors = list("atmos_intake"="Tank")
-	},
-/turf/simulated/floor/tiled,
-/area/rnd/storage)
 "tVo" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -26072,6 +26051,15 @@
 /obj/structure/bed/chair/office/dark,
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
+"vsZ" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 1
+	},
+/obj/machinery/air_alarm{
+	pixel_y = 22
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/teleporter/departing)
 "vtg" = (
 /obj/machinery/door/firedoor{
 	dir = 8
@@ -26542,11 +26530,11 @@
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
+	dir = 4;
 	icon_state = "pdoor0";
 	id = "xenobio2";
 	name = "Containment Blast Doors";
-	opacity = 0;
-	dir = 4
+	opacity = 0
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
@@ -27101,11 +27089,11 @@
 "wfD" = (
 /obj/machinery/door/blast/regular{
 	density = 0;
+	dir = 4;
 	icon_state = "pdoor0";
 	id = "xenobio1";
 	name = "Containment Blast Doors";
-	opacity = 0;
-	dir = 4
+	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full,
 /turf/simulated/floor/reinforced,
@@ -27187,13 +27175,7 @@
 /area/rnd/misc_lab)
 "wiC" = (
 /obj/effect/floor_decal/industrial/warning/dust,
-/obj/structure/closet/crate/bin{
-	desc = "A large bin for medical and other personnel that deals with bio-grade waste.";
-	icon_closed = "biohazard";
-	icon_opened = "biohazardopen";
-	icon_state = "biohazard";
-	name = "biohazard bin"
-	},
+/obj/structure/closet/crate/biohazard,
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/assembly/robotics/surgery)
 "wiW" = (
@@ -28090,10 +28072,10 @@
 	initialize_directions = 1;
 	internal_pressure_bound = 4000;
 	internal_pressure_bound_default = 4000;
+	on = 1;
 	pressure_checks = 2;
 	pressure_checks_default = 2;
-	pump_direction = 0;
-	on = 1
+	pump_direction = 0
 	},
 /turf/simulated/floor/bluegrid,
 /area/rnd/xenobiology)
@@ -29147,11 +29129,11 @@
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
+	dir = 4;
 	icon_state = "pdoor0";
 	id = "xenobio1";
 	name = "Containment Blast Doors";
-	opacity = 0;
-	dir = 4
+	opacity = 0
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
@@ -38335,7 +38317,7 @@ vLK
 vLK
 vLK
 tAg
-sUS
+vsZ
 xSe
 qvd
 xSe
@@ -42981,7 +42963,7 @@ qpQ
 ctu
 sBB
 qpQ
-bUU
+eJc
 xkd
 vdw
 yhE
@@ -46072,7 +46054,7 @@ fWy
 gIy
 qks
 kQU
-tUO
+nbH
 eQr
 ouW
 xvK
@@ -57153,7 +57135,7 @@ xIl
 sIj
 fBJ
 hBs
-hLc
+njb
 hBs
 hBs
 jPR

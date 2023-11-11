@@ -559,9 +559,19 @@
 	icon_state = "ante_hands"
 
 /obj/item/clothing/accessory/antediluvian_socks
-	name = "Antediluvian Socks"
+	name = "Antediluvian Legguards"
 	desc = "Thigh-length leg-sleeves with a metalic sheen and a golden pattern. Despite the apparent stiffness, they're quite flexible, and have freed toes for maneuverability."
 	icon_state = "ante_socks"
+
+/obj/item/clothing/accessory/antediluvian_stirrups
+	name = "Antediluvian Stirrups"
+	desc = "Thigh-length socks with a metalic sheen and a golden pattern. Despite the apparent stiffness, they're quite flexible, and have freed toes for nefarious purposes. Or flexibility."
+	icon_state = "ante_stirrup"
+
+/obj/item/clothing/accessory/antediluvian_sideskirt
+	name = "Antediluvian Sideskirt"
+	desc = "A simple patch of cloth with golden clasps, meant to cover the thigh of one leg."
+	icon_state = "ante_sideskirt"
 
 /obj/item/clothing/accessory/antediluvian_necklace
 	name = "Antediluvian Necklace"
@@ -626,3 +636,8 @@
 	name = "short legwarmers"
 	desc = "A comfy pair of legwarmers. For those better in the cold than others."
 	icon_state = "legwarmers_short"
+
+/obj/item/clothing/accessory/ante_armband
+	name = "antediluvian armband"
+	desc = "A small, fake blue gem placed neatly into an otherwise cloth armband with thin metal outlines."
+	icon_state = "ante_armband"

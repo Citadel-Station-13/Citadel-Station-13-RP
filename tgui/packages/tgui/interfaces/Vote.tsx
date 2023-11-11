@@ -19,6 +19,7 @@ interface VoteContext {
   choices : VoteChoice[];
   question: string;
   time_remaining : number;
+  secret : BooleanLike;
 }
 
 interface VoteChoice {
@@ -61,7 +62,7 @@ export const Vote = (props, context) => {
 
 const StartVoteOptions = (props, context) => {
   const { act, data } = useBackend<VoteContext>(context);
-  const { vote_happening } = data;
+  const { vote_happening, secret } = data;
   return (
     <Stack.Item>
       <Collapsible title="Start a vote">
@@ -85,8 +86,20 @@ const StartVoteOptions = (props, context) => {
                 </Button>
               </Stack.Item>
               <Stack.Item>
-                <Button disabled={vote_happening} onClick={() => act("custom")}>
+                <Button
+                  disabled={vote_happening}
+                  onClick={() => act("custom")}
+                >
                   Custom Vote
+                </Button>
+              </Stack.Item>
+              <Stack.Item>
+                <Button
+                  color={secret ? "green" : "red"}
+                  onClick={() => act("hide")}
+                  icon={secret ? 'lock' : 'unlock'}
+                >
+                  Hide Votes
                 </Button>
               </Stack.Item>
             </Stack>
@@ -99,7 +112,7 @@ const StartVoteOptions = (props, context) => {
 // Display choices
 const ChoicesPanel = (props, context) => {
   const { act, data } = useBackend<VoteContext>(context);
-  const { choices, selected_choice, question } = data;
+  const { admin, choices, selected_choice, question, secret } = data;
 
   return (
     <Stack.Item grow>
@@ -133,7 +146,7 @@ const ChoicesPanel = (props, context) => {
                       name="vote-yea"
                     />
                   )}
-                  {choice.votes} Votes
+                  {(!admin && secret) ? "?" : choice.votes} Votes
                 </LabeledList.Item>
                 <LabeledList.Divider />
               </Box>

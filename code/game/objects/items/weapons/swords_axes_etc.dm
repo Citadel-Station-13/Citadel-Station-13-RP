@@ -46,6 +46,7 @@
 	desc = "A compact yet rebalanced personal defense weapon. Can be concealed when folded."
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "telebaton"
+	item_state = "telebaton"
 	slot_flags = SLOT_BELT
 	w_class = ITEMSIZE_SMALL
 	damage_force = 3

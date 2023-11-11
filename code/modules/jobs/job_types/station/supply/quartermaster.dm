@@ -31,9 +31,10 @@
 	ideal_character_age = 40
 
 	outfit_type = /datum/outfit/job/station/quartermaster
-	desc = "The Quartermaster manages the Supply department, checking cargo orders and ensuring supplies get to where they are needed."
+	desc = "The Quartermaster manages the Supply department under the Head of Personnel, checking cargo orders and ensuring supplies get to where they are needed."
 	alt_titles = list(
 		"Supply Chief" = /datum/prototype/struct/alt_title/supply_chief,
+		"Logistics Manager" = /datum/prototype/struct/alt_title/logi_man,
 		"Logisticai-Adept" = /datum/prototype/struct/alt_title/logisticai_adept
 		)
 
@@ -46,6 +47,9 @@
 
 /datum/prototype/struct/alt_title/supply_chief
 	title = "Supply Chief"
+
+/datum/prototype/struct/alt_title/logi_man
+	title= "Logistics Manager"
 
 /datum/outfit/job/station/quartermaster
 	name = OUTFIT_JOB_NAME("Quartermaster")

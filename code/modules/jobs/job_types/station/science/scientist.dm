@@ -33,8 +33,7 @@
 		"Lab Assistant" = /datum/prototype/struct/alt_title/scientist/assistant,
 		"Researcher" = /datum/prototype/struct/alt_title/scientist/researcher,
 		"Xenoarchaeologist" = /datum/prototype/struct/alt_title/scientist/xenoarch,
-		"Anomalist" = /datum/prototype/struct/alt_title/scientist/anomalist, \
-		"Phoron Researcher" = /datum/prototype/struct/alt_title/scientist/phoron_research,
+		"Anomalist" = /datum/prototype/struct/alt_title/scientist/anomalist,
 		"Circuit Designer" = /datum/prototype/struct/alt_title/scientist/circuit,
 		"Research Field Technician" = /datum/prototype/struct/alt_title/scientist/fieldtech,
 		"Xenobotanist" = /datum/prototype/struct/alt_title/scientist/xenobotanist,
@@ -63,12 +62,6 @@
 	title = "Anomalist"
 	title_blurb = "An Anomalist is a Scientist whose expertise is analyzing alien artifacts. They are familar with the most common methods of testing artifact \
 					function. They work closely with Xenoarchaeologists, or Miners, if either role is present."
-
-/datum/prototype/struct/alt_title/scientist/phoron_research
-	title = "Phoron Researcher"
-	title_blurb = "A Phoron Researcher is a specialist in the practical applications of phoron, and has knowledge of its practical uses and dangers. \
-					Many Phoron Researchers are interested in the combustability and explosive properties of gaseous phoron, as well as the specific hazards \
-					of working with the substance in that state."
 
 /datum/prototype/struct/alt_title/scientist/circuit
 	title = "Circuit Designer"

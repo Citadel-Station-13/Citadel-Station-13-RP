@@ -244,9 +244,9 @@
 		if(20)
 			//arcane clothing
 			apply_prefix = 0
-			var/list/possible_spawns = list(/obj/item/clothing/head/culthood,
-			/obj/item/clothing/head/culthood/magus,
-			/obj/item/clothing/head/culthood/alt,
+			var/list/possible_spawns = list(/obj/item/clothing/head/cult,
+			/obj/item/clothing/head/cult/magus,
+			/obj/item/clothing/head/cult/alt,
 			/obj/item/clothing/head/helmet/space/cult)
 
 			var/new_type = pick(possible_spawns)

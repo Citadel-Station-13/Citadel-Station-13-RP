@@ -150,7 +150,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/clothing/mask/gas/half,
 		/obj/item/clothing/mask/breath,
 		/obj/item/reagent_containers/glass/rag,
-		/obj/item/reagent_containers/food/snacks/liquidfood,
+		/obj/item/reagent_containers/food/snacks/liquid,
 		/obj/item/storage/secure/briefcase,
 		/obj/item/storage/briefcase,
 		/obj/item/storage/backpack,

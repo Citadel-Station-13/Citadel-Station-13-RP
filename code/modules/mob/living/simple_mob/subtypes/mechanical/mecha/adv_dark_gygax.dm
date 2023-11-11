@@ -8,7 +8,7 @@
 	name = "Exosuit - Advanced Dark Gygax"
 	desc = "This exosuit is an experimental prototype, descended from the Dark Gygax. It retains the \
 	speed that is characteristic of the other models, yet outclasses all of them in durability, \
-	to the point of having a comparable amount of protection to models that placed a higher emphesis \
+	to the point of having a comparable amount of protection to models that placed a higher emphasis \
 	on armor, like the Durand and even the Marauder. It is also much larger in scale, and significantly \
 	heavier than most other exosuits developed by humans, which often causes shockwaves to be felt \
 	whenever it moves. This has been observed to have a demoralizing effect on hostile forces.\

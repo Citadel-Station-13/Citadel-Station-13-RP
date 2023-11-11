@@ -108,11 +108,11 @@
 		view_size = world.view
 
 	// We aren't in darkness, loop for viewers.
-	for(var/mob/living/mob_target as anything in oviewers(my_turf, view_size)) // They probably cannot see us if we cannot see them... can they?
+	for(var/mob/living/mob_target in oviewers(my_turf, view_size)) // They probably cannot see us if we cannot see them... can they?
 		if(mob_target.client && !mob_target.is_blind() && !mob_target.silicon_privileges && !HAS_TRAIT(mob_target, TRAIT_UNOBSERVANT))
 			return TRUE
 	for(var/obj/vehicle/vehicle_target in oview(my_turf, view_size))
-		for(var/mob/vehicle_mob_target as anything in vehicle_target.occupants)
+		for(var/mob/vehicle_mob_target in vehicle_target.occupants)
 			if(vehicle_mob_target.client && !vehicle_mob_target.is_blind() && !HAS_TRAIT(vehicle_mob_target, TRAIT_UNOBSERVANT))
 				return TRUE
 

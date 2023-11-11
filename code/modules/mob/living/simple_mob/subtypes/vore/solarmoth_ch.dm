@@ -163,6 +163,9 @@
 /mob/living/simple_mob/vore/solarmoth/lunarmoth
 	name = "Lunarmoth"
 	desc = "A peculiar adult variation of a solargrub. Don't stare for too long and start running."
+	icon_state = "lunarmoth"
+	icon_living = "lunarmoth"
+	icon_dead = "lunarmoth-dead"
 	var/nospampls = 0
 	cold_damage_per_tick = 0
 	//ATMOS

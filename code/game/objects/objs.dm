@@ -59,6 +59,10 @@
 	/// volume when breaking out using resist process
 	var/breakout_volume = 100
 
+	//? Systems - naming convention is 'object_[system]'
+	/// cell slot system
+	var/datum/object_system/cell_slot/obj_cell_slot
+
 	//? misc / legacy
 	/// Set when a player renames a renamable object.
 	var/renamed_by_player = FALSE
@@ -105,6 +109,7 @@
 		unregister_dangerous_to_step()
 	SStgui.close_uis(src)
 	SSnanoui.close_uis(src)
+	QDEL_NULL(obj_cell_slot)
 	return ..()
 
 /obj/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
@@ -238,6 +243,59 @@
 		add_fingerprint(user)
 	..()
 
+//? Attacks
+
+/obj/attackby(obj/item/I, mob/user, list/params, clickchain_flags, damage_multiplier)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
+	if(istype(I, /obj/item/cell) && !isnull(obj_cell_slot) && isnull(obj_cell_slot.cell) && obj_cell_slot.interaction_active(user))
+		if(!user.transfer_item_to_loc(I, src))
+			user.action_feedback(SPAN_WARNING("[I] is stuck to your hand!"), src)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		user.visible_action_feedback(
+			target = src,
+			hard_range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
+			visible_hard = SPAN_NOTICE("[user] inserts [I] into [src]."),
+			audible_hard = SPAN_NOTICE("You hear something being slotted in."),
+			visible_self = SPAN_NOTICE("You insert [I] into [src]."),
+		)
+		obj_cell_slot.insert_cell(I)
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+	return ..()
+
+/obj/on_attack_hand(datum/event_args/actor/clickchain/e_args)
+	. = ..()
+	if(.)
+		return
+	if(!isnull(obj_cell_slot?.cell) && obj_cell_slot.remove_yank_offhand && e_args.performer.is_holding_inactive(src) && obj_cell_slot.interaction_active(e_args.performer))
+		e_args.performer.visible_action_feedback(
+			target = src,
+			hard_range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
+			visible_hard = SPAN_NOTICE("[e_args.performer] removes the cell from [src]."),
+			audible_hard = SPAN_NOTICE("You hear fasteners falling out and something being removed."),
+			visible_self = SPAN_NOTICE("You remove the cell from [src]."),
+		)
+		log_construction(e_args, src, "removed cell [obj_cell_slot.cell] ([obj_cell_slot.cell.type])")
+		e_args.performer.put_in_hands_or_drop(obj_cell_slot.remove_cell(e_args.performer))
+		return TRUE
+
+//? Cells / Inducers
+
+/**
+ * get cell slot
+ */
+/obj/get_cell(inducer)
+	. = ..()
+	if(.)
+		return
+	if(obj_cell_slot?.primary && !isnull(obj_cell_slot.cell) && (!inducer || obj_cell_slot.receive_inducer))
+		return obj_cell_slot.cell
+
+/obj/inducer_scan(obj/item/inducer/I, list/things_to_induce, inducer_flags)
+	. = ..()
+	if(!isnull(obj_cell_slot?.cell) && !obj_cell_slot.primary && obj_cell_slot.receive_inducer)
+		things_to_induce += obj_cell_slot.cell
+
 //? Climbing
 
 /obj/MouseDroppedOn(atom/dropping, mob/user, proximity, params)
@@ -368,7 +426,51 @@
 			H.update_health()
 	*/
 
-//* Hiding / Underfloor
+//? Context
+
+/obj/context_query(datum/event_args/actor/e_args)
+	. = ..()
+	if(!isnull(obj_cell_slot?.cell) && obj_cell_slot.remove_yank_context && obj_cell_slot.interaction_active(e_args.performer))
+		var/image/rendered = image(obj_cell_slot.cell)
+		.["obj_cell_slot"] = ATOM_CONTEXT_TUPLE("remove cell", rendered, null, MOBILITY_CAN_USE)
+
+/obj/context_act(datum/event_args/actor/e_args, key)
+	if(key == "obj_cell_slot")
+		var/reachability = e_args.performer.Reachability(src)
+		if(!reachability)
+			return TRUE
+		if(!CHECK_MOBILITY(e_args.performer, MOBILITY_CAN_USE))
+			e_args.initiator.action_feedback(SPAN_WARNING("You can't do that right now!"), src)
+			return TRUE
+		if(isnull(obj_cell_slot.cell))
+			e_args.initiator.action_feedback(SPAN_WARNING("[src] doesn't have a cell installed."))
+			return TRUE
+		if(!obj_cell_slot.interaction_active(e_args.performer))
+			return TRUE
+		e_args.visible_feedback(
+			target = src,
+			range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
+			visible = SPAN_NOTICE("[e_args.performer] removes the cell from [src]."),
+			audible = SPAN_NOTICE("You hear fasteners falling out and something being removed."),
+			otherwise_self = SPAN_NOTICE("You remove the cell from [src]."),
+		)
+		log_construction(e_args, src, "removed cell [obj_cell_slot.cell] ([obj_cell_slot.cell.type])")
+		var/obj/item/cell/removed = obj_cell_slot.remove_cell(src)
+		if(reachability == REACH_PHYSICAL)
+			e_args.performer.put_in_hands_or_drop(removed)
+		else
+			removed.forceMove(drop_location())
+		return TRUE
+	return ..()
+
+//? EMP
+
+/obj/emp_act(severity)
+	. = ..()
+	if(obj_cell_slot?.receive_emp)
+		obj_cell_slot?.cell?.emp_act(severity)
+
+//? Hiding / Underfloor
 
 /obj/proc/is_hidden_underfloor()
 	return FALSE
@@ -472,3 +574,38 @@
 	var/shake_dir = pick(-1, 1)
 	animate(src, transform=turn(matrix(), 8*shake_dir), pixel_x=init_px + 2*shake_dir, time=1)
 	animate(transform=null, pixel_x=init_px, time=6, easing=ELASTIC_EASING)
+
+//? Tool System
+
+/obj/dynamic_tool_query(obj/item/I, datum/event_args/actor/clickchain/e_args, list/hint_images = list())
+	if(isnull(obj_cell_slot) || !obj_cell_slot.remove_tool_behavior || !obj_cell_slot.interaction_active(e_args.performer))
+		return ..()
+	. = list()
+	LAZYSET(.[obj_cell_slot.remove_tool_behavior], "remove cell", dyntool_image_backward(obj_cell_slot.remove_tool_behavior))
+	return merge_double_lazy_assoc_list(..(), .)
+
+/obj/tool_act(obj/item/I, datum/event_args/actor/clickchain/e_args, function, flags, hint)
+	if(isnull(obj_cell_slot) || (obj_cell_slot.remove_tool_behavior != function) || !obj_cell_slot.interaction_active(e_args.performer))
+		return ..()
+	if(isnull(obj_cell_slot.cell))
+		e_args.chat_feedback(SPAN_WARNING("[src] has no cell in it."))
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	log_construction(e_args, src, "removing cell")
+	e_args.visible_feedback(
+		target = src,
+		range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
+		visible = SPAN_NOTICE("[e_args.performer] starts removing the cell from [src]."),
+		audible = SPAN_NOTICE("You hear fasteners being undone."),
+		otherwise_self = SPAN_NOTICE("You start removing the cell from [src]."),
+	)
+	if(!use_tool(function, I, e_args, flags, obj_cell_slot.remove_tool_time, 1))
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	log_construction(e_args, src, "removed cell")
+	e_args.visible_feedback(
+		target = src,
+		range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
+		visible = SPAN_NOTICE("[e_args.performer] removes the cell from [src]."),
+		audible = SPAN_NOTICE("You hear fasteners falling out and something being removed."),
+		otherwise_self = SPAN_NOTICE("You remove the cell from [src]."),
+	)
+	return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE

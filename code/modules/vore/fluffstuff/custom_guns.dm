@@ -234,8 +234,8 @@ END OF CITADEL CHANGES */
 
 /obj/item/gun/projectile/ballistic/automatic/stg/update_icon_state()
 	. = ..()
-	icon_state = (ammo_magazine)? "stg60" : "stg60-empty"
-	item_state = (ammo_magazine)? "arifle" : "arifle-empty"
+	icon_state = (ammo_magazine)? "stg60" : "stg60-e"
+	item_state = (ammo_magazine)? "arifle" : "arifle-e"
 
 //-----------------------Tranq Gun----------------------------------
 /obj/item/gun/projectile/ballistic/dartgun/tranq

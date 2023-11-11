@@ -11,7 +11,7 @@
 		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand.dmi',
 		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand.dmi',
 	)
-	item_flags = ITEM_NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	damage_force = 10
 	throw_force = 10
 	throw_speed = 1
@@ -291,7 +291,7 @@
 		QDEL_NULL(cell)
 	return ..()
 
-/obj/item/rcd/electric/get_cell()
+/obj/item/rcd/electric/get_cell(inducer)
 	return cell
 
 /obj/item/rcd/electric/can_afford(amount) // This makes it so borgs won't drain their last sliver of charge by mistake, as a bonus.
@@ -323,7 +323,7 @@
 	desc = "A device used to rapidly build and deconstruct. It runs directly off of electricity from an external power source."
 	make_cell = FALSE
 
-/obj/item/rcd/electric/mounted/get_cell()
+/obj/item/rcd/electric/mounted/get_cell(inducer)
 	return get_external_power_supply()
 
 /obj/item/rcd/electric/mounted/proc/get_external_power_supply()

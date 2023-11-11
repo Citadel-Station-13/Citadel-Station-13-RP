@@ -1,3 +1,6 @@
+/**
+ * base BYOND type for an actor, if the game world is a scene.
+ */
 /mob
 	datum_flags = DF_USE_TAG
 	density = 1
@@ -54,6 +57,9 @@
 	var/list/movespeed_mod_immunities			//Lazy list, see mob_movespeed.dm
 	/// The calculated mob speed slowdown based on the modifiers list
 	var/cached_multiplicative_slowdown
+	/// cached legacy movespeed multiplier -_-
+	//  todo: remove
+	var/cached_movespeed_multiply
 	/// Next world.time we will be able to move.
 	var/move_delay = 0
 	/// Last world.time we finished a normal, non relay/intercepted move
@@ -63,7 +69,7 @@
 
 	//? Physiology
 	/// overall physiology - see physiology.dm
-	var/datum/physiology/physiology
+	var/datum/global_physiology/physiology
 	/// physiology modifiers - see physiology.dm; set to list of paths at init to initialize into instances.
 	var/list/datum/physiology_modifier/physiology_modifiers
 
@@ -72,8 +78,6 @@
 	var/list/actionspeed_modification				//Lazy list, see mob_movespeed.dm
 	/// List of action speed modifiers ignored by this mob. List -> List (id) -> List (sources)
 	var/list/actionspeed_mod_immunities			//Lazy list, see mob_movespeed.dm
-	/// The calculated mob action speed slowdown based on the modifiers list
-	var/cached_multiplicative_actions_slowdown
 
 	//? Pixel Offsets
 	/// are we shifted by the user?

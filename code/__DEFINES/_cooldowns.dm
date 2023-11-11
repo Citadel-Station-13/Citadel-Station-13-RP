@@ -82,3 +82,7 @@
 //? Machinery
 //* /obj/machinery/computer/card
 #define CD_INDEX_IDCONSOLE_PRINT			"idconsole_print"
+
+//? Structures
+//* /obj/structure/sculpting_block
+#define CD_INDEX_SCULPTING_COOLDOWN			"sculpting_block"

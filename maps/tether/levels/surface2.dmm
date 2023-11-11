@@ -3001,8 +3001,8 @@
 /turf/simulated/open/virgo3b,
 /area/tether/surfacebase/outside/outside2)
 "cfW" = (
-/obj/machinery/power/breakerbox/activated{
-	RCon_tag = "Telecomms Substation Bypass"
+/obj/machinery/power/breakerbox{
+	RCon_tag = "Telecomms"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/tcomms)
@@ -11435,6 +11435,14 @@
 /area/tether/surfacebase/security/middlehall)
 "hXw" = (
 /obj/structure/table/steel,
+/obj/item/storage/bag/xenobio{
+	pixel_x = -7;
+	pixel_y = 5
+	},
+/obj/item/storage/bag/xenobio{
+	pixel_x = 7;
+	pixel_y = 5
+	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "hXE" = (
@@ -13835,17 +13843,13 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_two_hall)
 "jDb" = (
-/obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Telecomms";
-	charge = 100;
-	output_attempt = 0
-	},
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
+/obj/machinery/power/smes/buildable/tcomms,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/tcomms)
 "jDx" = (
@@ -32246,6 +32250,9 @@
 	pixel_y = -28
 	},
 /obj/structure/cable/green,
+/obj/structure/table/rack/shelf/steel,
+/obj/item/hardsuit/hazard/equipped,
+/obj/item/hardsuit/hazard/equipped,
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/armory)
 "xnd" = (
