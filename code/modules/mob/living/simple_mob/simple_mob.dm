@@ -259,6 +259,8 @@
 		melee_style.damage_add_high = legacy_melee_damage_upper
 		melee_style.damage_mode = (attack_sharp? DAMAGE_MODE_SHARP : NONE) | (attack_edge? DAMAGE_MODE_EDGE : NONE)
 		melee_style.damage_flag = attack_armor_type
+		//* IT'S GAMER TIME *//
+		melee_style.damage_tier = MELEE_TIER_EXTREME
 		melee_style.attack_verb_legacy = attacktext
 		melee_style.verb_past_participle = attacktext
 
