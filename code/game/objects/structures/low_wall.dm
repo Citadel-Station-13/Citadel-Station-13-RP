@@ -125,7 +125,7 @@ GLOBAL_LIST_INIT(wallframe_typecache, typecacheof(list(
 		if(do_after(user,40 * I.tool_speed))
 			playsound(src, I.tool_sound, 100, 1)
 			deconstruct(ATOM_DECONSTRUCT_DISASSEMBLED)
-			CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
 
