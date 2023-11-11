@@ -465,7 +465,7 @@
 	// todo: also rework shit to not keep references to deleted things; LOOKING AT YOU CYBORGS
 	// tl;dr cyborgs keep refs to shit that's deleted and keep letting you use them
 	// so we add a sanity check here
-	if(QDELETED(user))
+	if(QDELETED(W))
 		return
 
 	user.visible_message("<span class=\"warning\">\The [user] touches \a [W] to \the [src] as a silence fills the room...</span>",\
