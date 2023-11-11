@@ -9,10 +9,16 @@
 	obj_flags = OBJ_MELEE_TARGETABLE | OBJ_RANGE_TARGETABLE
 	integrity = 15
 	integrity_max = 15
+	armor_type = /datum/armor/none
 
 /obj/effect/spider/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 	if(exposed_temperature > 300 + T0C)
 		damage_integrity(5)
+
+/obj/effect/spider/melee_act(mob/user, obj/item/weapon, target_zone, mult)
+	if(weapon.damtype == BURN)
+		mult *= 2
+	return ..()
 
 /obj/effect/spider/stickyweb
 	icon_state = "stickyweb1"

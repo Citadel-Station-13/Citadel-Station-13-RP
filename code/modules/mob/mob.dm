@@ -59,13 +59,6 @@
 	status_effects = null
 	// mob lists
 	mob_list_unregister(stat)
-	// physiology
-	QDEL_NULL(physiology)
-	physiology_modifiers = null
-	// movespeed
-	movespeed_modification = null
-	// actionspeed
-	actionspeed_modification = null
 	// todo: remove machine
 	unset_machine()
 	// hud
@@ -90,6 +83,8 @@
 	dispose_abilities()
 	// this kicks out client
 	ghostize()
+	// get rid of our shit and nullspace everything first..
+	..()
 	// rendering
 	if(hud_used)
 		QDEL_NULL(hud_used)
@@ -98,7 +93,13 @@
 	using_perspective?.remove_mobs(src, TRUE)
 	if(self_perspective)
 		QDEL_NULL(self_perspective)
-	..()
+	// physiology
+	QDEL_NULL(physiology)
+	physiology_modifiers = null
+	// movespeed
+	movespeed_modification = null
+	// actionspeed
+	actionspeed_modification = null
 	return QDEL_HINT_HARDDEL
 
 /mob/proc/mob_list_register(for_stat)
