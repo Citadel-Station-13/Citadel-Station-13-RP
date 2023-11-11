@@ -564,7 +564,7 @@
 
 /datum/loadout_entry/uniform/replika_selection
 	name = "Replikant Bodysuit Selection"
-	description = "Several variants of bodysuit designed for Replikant-style androids."
+	description = "Several variants of bodysuit designed for Second Generation Biosynthetics."
 	path = /obj/item/clothing/under/replika
 
 /datum/loadout_entry/uniform/replika_selection/New()

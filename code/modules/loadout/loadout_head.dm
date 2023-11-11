@@ -298,7 +298,7 @@
 	path = /obj/item/clothing/head/fluff/headbando
 
 /datum/loadout_entry/head/eulrhat
-	name = "Replikant side cap"
+	name = "Sleek side cap"
 	path = /obj/item/clothing/head/eulrhat
 
 // happy valentine's day

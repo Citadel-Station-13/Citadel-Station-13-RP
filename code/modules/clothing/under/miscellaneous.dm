@@ -2379,7 +2379,8 @@
 
 /obj/item/clothing/under/replika/arar
 	name = "repair-worker replikant bodysuit"
-	desc = "A skin-tight bodysuit designed for Replikant-type androids of the engineering variety. Comes with multiple interfacing ports, arm protectors, and a conspicuous lack of leg coverage."
+	desc = "A skin-tight bodysuit designed for 2nd generation biosynthetics of the engineering variety. Comes with multiple interfacing ports, arm protectors, and a conspicuous lack of leg coverage."
+	description_fluff = "These purpose-made interfacing bodysuits are designed and produced by the Singheim Bureau of Biosynthetic Development for their long-running second generation of Biosynthetics, commonly known by the term Replikant. Although anyone could wear these, their overall cut and metallic ports along the spine make it rather uncomfortable to most.
 	icon = 'icons/clothing/uniform/misc/replika.dmi'
 	icon_state = "arar"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
@@ -2388,7 +2389,8 @@
 
 /obj/item/clothing/under/replika/lstr
 	name = "land-survey replikant bodysuit"
-	desc = "A skin-tight bodysuit designed for Replikant-type androids of the exploration variety. Comes with several interfacing ports and a conspicuous lack of leg coverage."
+	desc = "A skin-tight bodysuit designed for 2nd generation biosynthetics of the exploration variety. Comes with several interfacing ports and a conspicuous lack of leg coverage."
+	description_fluff = "These purpose-made interfacing bodysuits are designed and produced by the Singheim Bureau of Biosynthetic Development for their long-running second generation of Biosynthetics, commonly known by the term Replikant. Although anyone could wear these, their overall cut and metallic ports along the spine make it rather uncomfortable to most.
 	icon = 'icons/clothing/uniform/misc/replika.dmi'
 	icon_state = "lstr"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
@@ -2397,7 +2399,8 @@
 
 /obj/item/clothing/under/replika/fklr
 	name = "command replikant bodysuit"
-	desc = "A skin-tight bodysuit designed for Replikant-type androids of the command variety. Comes with interfacing ports, an air of formality, and a conspicuous lack of leg coverage."
+	desc = "A skin-tight bodysuit designed for 2nd generation biosynthetics of the command variety. Comes with interfacing ports, an air of formality, and a conspicuous lack of leg coverage."
+	description_fluff = "These purpose-made interfacing bodysuits are designed and produced by the Singheim Bureau of Biosynthetic Development for their long-running second generation of Biosynthetics, commonly known by the term Replikant. Although anyone could wear these, their overall cut and metallic ports along the spine make it rather uncomfortable to most.
 	icon = 'icons/clothing/uniform/misc/replika.dmi'
 	icon_state = "fklr"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
@@ -2406,7 +2409,8 @@
 
 /obj/item/clothing/under/replika/eulr
 	name = "general-purpose replikant bodysuit"
-	desc = "A skin-tight bodysuit designed for Replikant-type androids of the multipurpose variety. Comes with default interfacing ports and a conspicuous lack of leg coverage."
+	desc = "A skin-tight bodysuit designed for 2nd generation biosynthetics of multipurpose variety. Comes with default interfacing ports and a conspicuous lack of leg coverage."
+	description_fluff = "These purpose-made interfacing bodysuits are designed and produced by the Singheim Bureau of Biosynthetic Development for their long-running second generation of Biosynthetics, commonly known by the term Replikant. Although anyone could wear these, their overall cut and metallic ports along the spine make it rather uncomfortable to most.
 	icon = 'icons/clothing/uniform/misc/replika.dmi'
 	icon_state = "eulr"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
@@ -2415,7 +2419,8 @@
 
 /obj/item/clothing/under/replika/klbr
 	name = "controller replikant bodysuit"
-	desc = "A skin-tight bodysuit designed for Replikant-type androids of the supervision variety. Comes with several interfacing ports and a conspicuous lack of leg coverage."
+	desc = "A skin-tight bodysuit designed for 2nd generation biosynthetics of the controller variety. Comes with several interfacing ports and a conspicuous lack of leg coverage."
+	description_fluff = "These purpose-made interfacing bodysuits are designed and produced by the Singheim Bureau of Biosynthetic Development for their long-running second generation of Biosynthetics, commonly known by the term Replikant. Although anyone could wear these, their overall cut and metallic ports along the spine make it rather uncomfortable to most.
 	icon = 'icons/clothing/uniform/misc/replika.dmi'
 	icon_state = "klbr"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
@@ -2424,7 +2429,8 @@
 
 /obj/item/clothing/under/replika/stcr
 	name = "security-technician replikant bodysuit"
-	desc = "A skin-tight bodysuit designed for Replikant-type androids of the security variety. Comes with multiple interfacing ports and a conspicuous lack of leg coverage."
+	desc = "A skin-tight bodysuit designed for 2nd generation biosynthetics of the security variety. Comes with multiple interfacing ports and a conspicuous lack of leg coverage."
+	description_fluff = "These purpose-made interfacing bodysuits are designed and produced by the Singheim Bureau of Biosynthetic Development for their long-running second generation of Biosynthetics, commonly known by the term Replikant. Although anyone could wear these, their overall cut and metallic ports along the spine make it rather uncomfortable to most.
 	icon = 'icons/clothing/uniform/misc/replika.dmi'
 	icon_state = "stcr"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
@@ -2433,7 +2439,8 @@
 
 /obj/item/clothing/under/replika/adlr
 	name = "administration replikant bodysuit"
-	desc = "A skin-tight bodysuit designed for Replikant-type androids of the administrative variety. Comes with several interfacing ports and a conspicuous lack of leg coverage."
+	desc = "A skin-tight bodysuit designed for 2nd generation biosynthetics of the administrative variety. Comes with several interfacing ports and a conspicuous lack of leg coverage."
+	description_fluff = "These purpose-made interfacing bodysuits are designed and produced by the Singheim Bureau of Biosynthetic Development for their long-running second generation of Biosynthetics, commonly known by the term Replikant. Although anyone could wear these, their overall cut and metallic ports along the spine make it rather uncomfortable to most.
 	icon = 'icons/clothing/uniform/misc/replika.dmi'
 	icon_state = "adlr"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
@@ -2442,7 +2449,8 @@
 
 /obj/item/clothing/under/replika/lstr_alt
 	name = "combat-engineer replikant bodysuit"
-	desc = "A skin-tight bodysuit designed for Replikant-type androids of the exploration variety. Comes with extra interfacing ports, white armpads, and a familiar lack of leg coverage."
+	desc = "A skin-tight bodysuit designed for 2nd generation biosynthetics of the exploration variety. Comes with extra interfacing ports, white armpads, and a familiar lack of leg coverage."
+	description_fluff = "These purpose-made interfacing bodysuits are designed and produced by the Singheim Bureau of Biosynthetic Development for their long-running second generation of Biosynthetics, commonly known by the term Replikant. Although anyone could wear these, their overall cut and metallic ports along the spine make it rather uncomfortable to most.
 	icon = 'icons/clothing/uniform/misc/replika.dmi'
 	icon_state = "lstr_alt"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL

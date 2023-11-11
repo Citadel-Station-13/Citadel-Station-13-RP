@@ -730,7 +730,7 @@
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/head/eulrhat
-	name = "replikant side cap"
-	desc = "A simple wedge cap sometimes worn by Replikant-type androids."
+	name = "sleek side cap"
+	desc = "A simple wedge cap with red accents, highly popular within Tri-Star Compact space."
 	icon_state = "eulrhat"
 	body_cover_flags = 0
