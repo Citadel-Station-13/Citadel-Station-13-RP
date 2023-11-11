@@ -73,19 +73,11 @@
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)
 	slot_flags = SLOT_BACK
 	load_method = MAGAZINE
-<<<<<<< HEAD:code/modules/projectiles/guns/projectile/ballistic/automatic.dm
-	magazine_type = /obj/item/ammo_magazine/m545
-	allowed_magazines = list(/obj/item/ammo_magazine/m545)
-	projectile_type = /obj/projectile/bullet/rifle/a545
 	magazine_insert_sound = 'sound/weapons/guns/interaction/ltrifle_magin.ogg'
 	magazine_remove_sound = 'sound/weapons/guns/interaction/ltrifle_magout.ogg'
-=======
 	magazine_type = /obj/item/ammo_magazine/m556
 	allowed_magazines = list(/obj/item/ammo_magazine/m556)
 	projectile_type = /obj/projectile/bullet/rifle/a556
-	mag_insert_sound = 'sound/weapons/guns/interaction/ltrifle_magin.ogg'
-	mag_remove_sound = 'sound/weapons/guns/interaction/ltrifle_magout.ogg'
->>>>>>> citrp/master:code/modules/projectiles/guns/projectile/automatic.dm
 	heavy = TRUE
 	one_handed_penalty = 30
 
@@ -217,19 +209,11 @@
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 2)
 	slot_flags = SLOT_BACK
 	load_method = MAGAZINE
-<<<<<<< HEAD:code/modules/projectiles/guns/projectile/ballistic/automatic.dm
-	magazine_type = /obj/item/ammo_magazine/m545saw
-	allowed_magazines = list(/obj/item/ammo_magazine/m545saw, /obj/item/ammo_magazine/m545)
-	projectile_type = /obj/projectile/bullet/rifle/a545
 	magazine_insert_sound = 'sound/weapons/guns/interaction/lmg_magin.ogg'
 	magazine_remove_sound = 'sound/weapons/guns/interaction/lmg_magout.ogg'
-=======
 	magazine_type = /obj/item/ammo_magazine/m556saw
 	allowed_magazines = list(/obj/item/ammo_magazine/m556saw, /obj/item/ammo_magazine/m556)
 	projectile_type = /obj/projectile/bullet/rifle/a556
-	mag_insert_sound = 'sound/weapons/guns/interaction/lmg_magin.ogg'
-	mag_remove_sound = 'sound/weapons/guns/interaction/lmg_magout.ogg'
->>>>>>> citrp/master:code/modules/projectiles/guns/projectile/automatic.dm
 	can_special_reload = FALSE
 	heavy = TRUE
 	one_handed_penalty = 75

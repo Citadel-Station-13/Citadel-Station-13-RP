@@ -331,9 +331,6 @@
 	..()
 	load_ammo(A, user)
 
-<<<<<<< HEAD:code/modules/projectiles/guns/projectile/ballistic.dm
-/obj/item/gun/projectile/ballistic/attack_self(mob/user)
-=======
 	if(suppressible)
 		if(istype(A, /obj/item/silencer))
 			if(!user.is_holding(src))	//if we're not in his hands
@@ -355,8 +352,7 @@
 				w_class = ITEMSIZE_SMALL
 				update_icon()
 
-/obj/item/gun/ballistic/attack_self(mob/user)
->>>>>>> citrp/master:code/modules/projectiles/guns/ballistic.dm
+/obj/item/gun/projectile/ballistic/attack_self(mob/user)
 	if(firemodes.len > 1)
 		switch_firemodes(user)
 	else if(ammo_magazine)

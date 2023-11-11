@@ -136,7 +136,7 @@
 	var/dispersion = calculate_dispersion()
 	P.accuracy += calculate_accuracy()
 	P.target = A
-	P.fire(get_physics_angle(src, A) + rand(-dispersion, +dispersion))
+	P.fire(get_physics_angle(src, A) + rand(-dispersion, dispersion))
 
 	if(needs_reload)
 		reload_count++
