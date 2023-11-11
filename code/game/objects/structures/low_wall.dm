@@ -105,29 +105,29 @@ GLOBAL_LIST_INIT(wallframe_typecache, typecacheof(list(
 		return TRUE
 
 /obj/structure/wall_frame/attackby(var/obj/item/I, var/mob/user)
+	//grille placing
+	if(istype(I, /obj/item/stack/rods))
+		for(var/obj/structure/window/WINDOW in loc)
+			if(WINDOW.dir == get_dir(src, user))
+				to_chat(user, SPAN_WARNING("There is a window in the way."))
+				return CLICKCHAIN_DO_NOT_PROPAGATE
+		place_grille(user, loc, I)
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 
-	. = ..()
-	if(!.)
-		//grille placing
-		if(istype(I, /obj/item/stack/rods))
-			for(var/obj/structure/window/WINDOW in loc)
-				if(WINDOW.dir == get_dir(src, user))
-					to_chat(user, SPAN_WARNING("There is a window in the way."))
-					return TRUE
-			place_grille(user, loc, I)
-			return TRUE
+	//window placing
+	if(istype(I,/obj/item/stack/material/glass) && isnull(locate(/obj/structure/window) in loc))
+		var/obj/item/stack/material/ST = I
+		if(ST.material.opacity <= 0.7)
+			place_window(user, loc, ST, TRUE, TRUE)
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 
-		//window placing
-		if(istype(I,/obj/item/stack/material/glass) && isnull(locate(/obj/structure/window) in loc))
-			var/obj/item/stack/material/ST = I
-			if(ST.material.opacity <= 0.7)
-				place_window(user, loc, ST, TRUE, TRUE)
-			return TRUE
-
-		if(I.is_wrench())
-			if(do_after(user,40 * I.tool_speed))
-				playsound(src, I.tool_sound, 100, 1)
-				deconstruct(ATOM_DECONSTRUCT_DISASSEMBLED)
+	if(I.is_wrench())
+		if(do_after(user,40 * I.tool_speed))
+			playsound(src, I.tool_sound, 100, 1)
+			deconstruct(ATOM_DECONSTRUCT_DISASSEMBLED)
+			CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()
 
 /obj/structure/wall_frame/drop_products(method, atom/where)
 	. = ..()
