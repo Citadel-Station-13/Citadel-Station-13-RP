@@ -24,6 +24,9 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	var/damage_type = BRUTE
 	/// damage flag
 	var/damage_flag = ARMOR_MELEE
+	/// flat damage buff when attacking structures
+	//  todo: damage_structural_add is awful and shouldn't be kept in the future
+	var/damage_structural_add = 0
 
 	//? Sounds
 	/// sound when attacking
@@ -70,7 +73,8 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	return FALSE
 
 /datum/unarmed_attack/proc/get_unarmed_damage(mob/attacker, atom/defender)
-	return damage + rand(damage_add_low, damage_add_high)
+	// todo: damage_structural_add is awful and shouldn't be kept in the future
+	return damage + rand(damage_add_low, damage_add_high) + ismob(defender)? 0 : damage_structural_add
 
 /datum/unarmed_attack/proc/apply_effects(var/mob/living/carbon/human/user,var/mob/living/carbon/human/target,var/armour,var/attack_damage,var/zone)
 
