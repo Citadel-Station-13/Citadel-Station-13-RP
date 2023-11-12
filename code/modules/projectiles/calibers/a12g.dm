@@ -5,7 +5,7 @@
 	name = "magazine (12 gauge)"
 	icon_state = "ashot-mag"
 	mag_type = MAGAZINE
-	caliber = "12g"
+	caliber = CALIBER_12G
 	materials_base = list(MAT_STEEL = 13000)
 	ammo_preload = /obj/item/ammo_casing/a12g
 	max_ammo = 24
@@ -32,7 +32,7 @@
 	icon_state = "holyshotgun_mag"
 	desc = "Thrice-blessed, this drum magazine is loaded with silver shot designed to combat supernatural threats."
 	mag_type = MAGAZINE
-	caliber = "12g"
+	caliber = CALIBER_12G
 	materials_base = list(MAT_STEEL = 100, MAT_SILVER = 1100)
 	ammo_preload = /obj/item/ammo_casing/a12g/silver
 	max_ammo = 12
@@ -49,7 +49,7 @@
 	name = "ammo clip (12g slug)"
 	icon_state = "12gclipslug" // Still a placeholder sprite. Feel free to make a better one.
 	desc = "A color-coded metal clip for holding and quickly loading shotgun shells. This one is loaded with slugs."
-	caliber = "12g"
+	caliber = CALIBER_12G
 	ammo_preload = /obj/item/ammo_casing/a12g
 	materials_base = list(MAT_STEEL = 1070) // slugs shells x2 + 350 metal for the clip itself.
 	max_ammo = 2
@@ -83,7 +83,7 @@
 	name = "shotgun slug holder"
 	desc = "A convenient pouch that holds 12 gauge shells."
 	icon_state = "shotholder"
-	caliber = "12g"
+	caliber = CALIBER_12G
 	ammo_preload = null
 	materials_base = list(MAT_STEEL = 1440)
 	ammo_preload = /obj/item/ammo_casing/a12g
@@ -133,7 +133,7 @@
 	name = "shotgun slug"
 	desc = "A 12 gauge slug."
 	icon_state = "slshell"
-	caliber = "12g"
+	caliber = CALIBER_12G
 	projectile_type = /obj/projectile/bullet/shotgun
 	materials_base = list(MAT_STEEL = 360)
 	fall_sounds = list('sound/weapons/guns/shotgun_fall.ogg')
@@ -194,7 +194,7 @@
 	name = " Silver shotgun shell"
 	desc = "A 12 gauge slug. Bless and Sancitfied to banish otherworlds entities."
 	icon_state = "agshell"
-	caliber = "12g"
+	caliber = CALIBER_12G
 	projectile_type = /obj/projectile/bullet/pellet/shotgun/silver
 	materials_base = list(MAT_STEEL = 360, MAT_SILVER = 240)
 
@@ -203,7 +203,7 @@
 	name = "Wooden stake shell"
 	desc = "A specialized shell designed to launch a wooden stake. Bless and Sancitfied to banish otherworlds entities."
 	icon_state = "agshell"
-	caliber = "12g"
+	caliber = CALIBER_12G
 	projectile_type = /obj/projectile/bullet/shotgun/stake
 	materials_base = list(MAT_STEEL = 500)
 
@@ -212,7 +212,7 @@
 	name = "unloaded technological shell"
 	desc = "A high-tech shotgun shell which can be loaded with materials to produce unique effects."
 	icon_state = "cshell"
-	caliber = "12g"
+	caliber = CALIBER_12G
 	projectile_type = null
 	materials_base = list(MAT_STEEL = 500, MAT_PHORON = 200)
 
