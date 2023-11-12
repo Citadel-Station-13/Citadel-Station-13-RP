@@ -148,7 +148,7 @@
 
 #warn below
 
-/obj/item/ammo_magazine/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/ammo_magazine/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 	if(istype(W, /obj/item/ammo_casing))
 		var/obj/item/ammo_casing/C = W
 		if(C.caliber != caliber)
