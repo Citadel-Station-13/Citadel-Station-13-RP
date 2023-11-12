@@ -562,6 +562,32 @@
 	name = "EVA Bodysuit - Female"
 	path = /obj/item/clothing/under/bodysuit/bodysuiteva_fem
 
+/datum/loadout_entry/uniform/replika_selection
+	name = "Replikant Bodysuit Selection"
+	description = "Several variants of bodysuit designed for Second Generation Biosynthetics."
+	path = /obj/item/clothing/under/replika
+
+/datum/loadout_entry/uniform/replika_selection/New()
+	..()
+	var/list/replika_selection = list()
+	for(var/replika in typesof(/obj/item/clothing/under/replika))
+		var/obj/item/clothing/under/replika/replika_type = replika
+		replika_selection[initial(replika_type.name)] = replika_type
+	tweaks += new/datum/loadout_tweak/path(tim_sort(replika_selection, GLOBAL_PROC_REF(cmp_text_asc)))
+
+/datum/loadout_entry/uniform/gestalt_selection
+	name = "Sleek Uniform Selection"
+	description = "Multiple variants of single-stripe pattern uniforms. Best worn under their accompanying jacket."
+	path = /obj/item/clothing/under/gestalt
+
+/datum/loadout_entry/uniform/gestalt_selection/New()
+	..()
+	var/list/gestalt_selection = list()
+	for(var/gestalt in typesof(/obj/item/clothing/under/gestalt))
+		var/obj/item/clothing/under/gestalt/gestalt_type = gestalt
+		gestalt_selection[initial(gestalt_type.name)] = gestalt_type
+	tweaks += new/datum/loadout_tweak/path(tim_sort(gestalt_selection, GLOBAL_PROC_REF(cmp_text_asc)))
+
 /datum/loadout_entry/uniform/future_fashion_selection
 	name = "Futuristic Striped Jumpsuit Selection"
 	path = /obj/item/clothing/under/future_fashion

@@ -297,6 +297,10 @@
 	name = "Basic Headband (Colorable)"
 	path = /obj/item/clothing/head/fluff/headbando
 
+/datum/loadout_entry/head/eulrhat
+	name = "Sleek side cap"
+	path = /obj/item/clothing/head/eulrhat
+
 // happy valentine's day
 /datum/loadout_entry/head/woodcirclet
 	name = "Wooden Circlet"
