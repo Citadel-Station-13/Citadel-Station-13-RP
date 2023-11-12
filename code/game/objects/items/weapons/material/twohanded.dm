@@ -18,15 +18,13 @@
  */
 /obj/item/material/twohanded
 	w_class = ITEMSIZE_LARGE
+	var/unwielded_force_multiplier = 0.25
 	var/wielded = 0
-	var/force_wielded = 0
-	var/force_unwielded
 	var/wieldsound = null
 	var/unwieldsound = null
 	var/base_icon
 	var/base_name
-	var/unwielded_force_divisor = 0.25
-	hitsound = "swing_hit"
+	attack_sound = "swing_hit"
 	drop_sound = 'sound/items/drop/sword.ogg'
 	pickup_sound = 'sound/items/pickup/sword.ogg'
 
@@ -34,35 +32,19 @@
 	var/mob/living/M = loc
 	if(istype(M) && M.can_wield_item(src) && is_held_twohanded(M))
 		wielded = 1
-		damage_force = force_wielded
 		name = "[base_name] (wielded)"
-		update_icon()
 	else
 		wielded = 0
-		damage_force = force_unwielded
 		name = "[base_name]"
 	update_icon()
+	update_material_parts()
 	..()
 
-/obj/item/material/twohanded/update_force()
-	base_name = name
-	if(material.name == "supermatter")
-		damtype = BURN //its hot
-		force_wielded = 150 //double the force of a durasteel claymore.
-		force_unwielded = 150 //double the force of a durasteel claymore.
-		armor_penetration = 100 //regardless of armor
-		throw_force = 150
-		damage_force = force_unwielded
-		return
-	if(sharp || edge)
-		force_wielded = material.get_edge_damage()
-	else
-		force_wielded = material.get_blunt_damage()
-	force_wielded = round(force_wielded*force_divisor)
-	force_unwielded = round(force_wielded*unwielded_force_divisor)
-	damage_force = force_unwielded
-	throw_force = round(damage_force*thrown_force_divisor)
-	//to_chat(world, "[src] has unwielded damage_force [force_unwielded], wielded damage_force [force_wielded] and throw_force [throw_force] when made from default material [material.name]")
+/obj/item/material/twohanded/update_material_parts()
+	. = ..()
+	if(!wielded)
+		damage_force *= unwielded_force_multiplier
+		// don't affect throwforce
 
 /obj/item/material/twohanded/Initialize(mapload, material_key)
 	. = ..()
@@ -95,16 +77,12 @@
 	name = "fire axe"
 	desc = "Truly, the weapon of a madman. Who would think to fight fire with an axe?"
 	description_info = "A hefty two-handed cutting implement. Used for chopping through wood, glass, metal grating, wild animals, and even trees, shockingly enough. Good thing NanoTrasen stocks these for free."
-	unwielded_force_divisor = 0.25
-	force_divisor = 0.5 // 12/30 with hardness 60 (steel) and 0.25 unwielded divisor
-	dulled_divisor = 0.6	//Still metal on a stick
-	sharp = 1
-	edge = 1
+	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_HEAVY
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	w_class = ITEMSIZE_LARGE
 	slot_flags = SLOT_BACK
-	force_wielded = 30
 	attack_verb = list("attacked", "chopped", "cleaved", "torn", "cut")
-	applies_material_colour = 0
+	material_color = FALSE
 	can_cleave = TRUE
 	drop_sound = 'sound/items/drop/axe.ogg'
 	pickup_sound = 'sound/items/pickup/axe.ogg'
@@ -115,79 +93,52 @@
 	if(istype(M) && M.can_wield_item(src) && M.is_holding(src) && !M.hands_full())
 		wielded = 1
 		pry = 1
-		damage_force = force_wielded
 		name = "[base_name] (wielded)"
-		update_icon()
 	else
 		wielded = 0
 		pry = 0
-		damage_force = force_unwielded
 		name = "[base_name]"
-	update_icon()
 	..()
 
-/obj/item/material/twohanded/fireaxe/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
-	..()
-	if(target && wielded)
-		if(istype(target,/obj/structure/window))
-			var/obj/structure/window/W = target
-			W.shatter()
-		else if(istype(target,/obj/structure/grille))
-			qdel(target)
-		else if(istype(target,/obj/effect/plant))
-			var/obj/effect/plant/P = target
-			P.die_off()
+/obj/item/material/twohanded/fireaxe/attack_object(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags, mult = 1)
+	if(istype(target, /obj/structure/window))
+		mult *= 2
+	else if(istype(target, /obj/effect/plant))
+		mult *= 2
+	return ..()
 
 /obj/item/material/twohanded/fireaxe/foam
+	material_parts = /datum/material/toy_foam
 	attack_verb = list("bonked","whacked")
-	force_wielded = 0
-	force_divisor = 0
-	damage_force = 0
-	applies_material_colour = 1
 	icon_state = "fireaxe_mask0"
 	base_icon = "fireaxe_mask"
-	unbreakable = 1
-	sharp = 0
-	edge = 0
-	can_cleave = FALSE
 	desc = "This is a toy version of the mighty fire axe! Charge at your friends for maximum enjoyment while screaming at them."
 	description_info = "This is a toy version of the mighty fire axe! Charge at your friends for maximum enjoyment while screaming at them."
 
-/obj/item/material/twohanded/fireaxe/foam/Initialize(mapload, material_key)
-	return ..(mapload,"foam")
-
-/obj/item/material/twohanded/fireaxe/foam/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	return
-
 /obj/item/material/twohanded/fireaxe/bone
 	desc = "A primitive version of a hefty fire axe, made from bone. Whoever made this didn't make it to save lives."
-	default_material = "bone"
+	material_parts = /datum/material/bone
 	icon_state = "bone_axe0"
 	base_icon = "bone_axe"
-	applies_material_colour = 0
-
-/obj/item/material/twohanded/fireaxe/bone/Initialize(mapload, material_key)
-	return ..(mapload,"bone")
+	material_color = FALSE
 
 /obj/item/material/twohanded/fireaxe/plasteel
-	default_material = "plasteel"
+	material_parts = /datum/material/plasteel
 
 /obj/item/material/twohanded/fireaxe/durasteel
-	default_material = "durasteel"
+	material_parts = /datum/material/durasteel
 
 /obj/item/material/twohanded/fireaxe/scythe/plasteel
-	default_material = "plasteel"
+	material_parts = /datum/material/plasteel
 
 /obj/item/material/twohanded/fireaxe/scythe/durasteel
-	default_material = "durasteel"
+	material_parts = /datum/material/durasteel
 
 /obj/item/material/twohanded/fireaxe/scythe
 	icon_state = "scythe0"
 	base_icon = "scythe"
 	name = "scythe"
 	desc = "A sharp and curved blade on a long fibremetal handle. An ancient design from Terra, it's useful for cutting large swaths of grain, but the shape alone implies much more grim work."
-	force_divisor = 0.65
 	origin_tech = list(TECH_MATERIAL = 2, TECH_COMBAT = 2)
 	attack_verb = list("chopped", "sliced", "cut", "reaped")
 
@@ -205,18 +156,14 @@
 	damage_force = 10
 	w_class = ITEMSIZE_LARGE
 	slot_flags = SLOT_BACK
-	force_divisor = 0.35 			// 10 when wielded with hardness 30 (glass)
-	unwielded_force_divisor = 0.1
-	thrown_force_divisor = 1.5		// 22.5 when thrown with weight 15 (glass)
+	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_HEAVY
+	throw_force_multiplier = 1.5
 	throw_speed = 5
-	edge = 0
-	sharp = 1
-	hitsound = 'sound/weapons/bladeslice.ogg'
+	attack_sound = 'sound/weapons/bladeslice.ogg'
 	mob_throw_hit_sound =  'sound/weapons/pierce.ogg'
 	attack_verb = list("attacked", "poked", "jabbed", "torn", "gored")
-	default_material = "glass"
-	applies_material_colour = 0
-	fragile = 1	//It's a haphazard thing of glass, wire, and steel
+	material_parts = /datum/material/glass
+	material_color = 0
 	reach = 2 // Spears are long.
 	attackspeed = 20
 	weight = ITEM_WEIGHT_MELEE_SPEAR
@@ -276,19 +223,19 @@
 /obj/item/material/twohanded/spear/bone
 	name = "spear"
 	desc = "A simple, yet effective, weapon, built from bone."
-	default_material = "bone"
+	material_parts = /datum/material/bone
 	icon_state = "bone_spear0"
 	base_icon = "bone_spear"
-	applies_material_colour = 0
+	material_color = 0
 
 /obj/item/material/twohanded/spear/bone/Initialize(mapload, material_key)
 	..(mapload,"bone")
 
 /obj/item/material/twohanded/spear/plasteel
-	default_material = "plasteel"
+	material_parts = /datum/material/plasteel
 
 /obj/item/material/twohanded/spear/durasteel
-	default_material = "durasteel"
+	material_parts = /datum/material/durasteel
 
 //Sledgehammers. Slightly less force than fire axes, but breaks bones easier.
 
@@ -298,50 +245,11 @@
 	name = "sledgehammer"
 	desc = "A long, heavy hammer meant to be used with both hands. For breaking rocks or breaking bones, accept no substitutes."
 	description_info = "This weapon can cleave, striking nearby lesser, hostile enemies close to the primary target.  It must be held in both hands to do this."
-	unwielded_force_divisor = 0.25
-	force_divisor = 0.6 // 9/36 with hardness 60 (steel) and 0.25 unwielded divisor
-	hitsound = 'sound/weapons/heavysmash.ogg'
+	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_SUPERHEAVY
+	attack_sound = 'sound/weapons/heavysmash.ogg'
 	w_class = ITEMSIZE_HUGE
 	encumbrance = ITEM_ENCUMBRANCE_MELEE_SLEDGEHAMMER
-	dulled_divisor = 0.95	//Still metal on a stick
-	sharp = 0
-	edge = 1
-	force_wielded = 23 //A fair bit less than the fireaxe.
 	attack_verb = list("attacked", "smashed", "crushed", "wacked", "pounded")
 	armor_penetration = 50
 	heavy = TRUE
-
-/obj/item/material/twohanded/sledgehammer/update_held_icon()
-	var/mob/living/M = loc
-	if(istype(M) && M.can_wield_item(src) && M.is_holding(src) && !M.hands_full())
-		wielded = 1
-		pry = 1
-		damage_force = force_wielded
-		name = "[base_name] (wielded)"
-		update_icon()
-	else
-		wielded = 0
-		pry = 0
-		damage_force = force_unwielded
-		name = "[base_name]"
-	update_icon()
-	..()
-
-/obj/item/material/twohanded/sledgehammer/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
-	..()
-	if(target && wielded)
-		if(istype(target,/obj/structure/window))
-			var/obj/structure/window/W = target
-			W.shatter()
-		else if(istype(target,/obj/structure/grille))
-			qdel(target)
-		else if(istype(target,/obj/effect/plant))
-			var/obj/effect/plant/P = target
-			P.die_off()
-
-// This cannot go into afterattack since some mobs delete themselves upon dying.
-/obj/item/material/twohanded/sledgehammer/pre_attack(atom/target, mob/user, clickchain_flags, list/params)
-	if(isliving(target))
-		cleave(user, target)
-	return ..()
+	can_cleave = TRUE

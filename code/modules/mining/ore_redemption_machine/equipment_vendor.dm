@@ -213,10 +213,10 @@
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	..()
 
-/obj/machinery/mineral/equipment_vendor/dismantle()
-	if(inserted_id)
-		inserted_id.forceMove(loc) //Prevents deconstructing the ORM from deleting whatever ID was inside it.
+/obj/machinery/mineral/equipment_vendor/drop_products(method, atom/where)
 	. = ..()
+	inserted_id?.forceMove(where)
+	inserted_id = null
 
 /obj/machinery/mineral/equipment_vendor/proc/RedeemVoucher(obj/item/mining_voucher/voucher, mob/redeemer)
 	var/selection = input(redeemer, "Pick your equipment", "Mining Voucher Redemption") as null|anything in list("Kinetic Accelerator", "Resonator", "Mining Drone", "Advanced Scanner", "Crusher")

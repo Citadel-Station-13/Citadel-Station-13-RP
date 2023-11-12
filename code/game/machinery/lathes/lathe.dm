@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 /obj/item/circuitboard/machine/lathe
 	abstract_type = /obj/item/circuitboard/machine/lathe
 	name = T_BOARD("lathe")
@@ -220,7 +223,7 @@
 
 /obj/machinery/lathe/proc/recycle_item(obj/item/I, mob/user, efficiency_multiplier = 1)
 	efficiency_multiplier *= recycle_efficiency
-	var/list/materials = I.materials.Copy()
+	var/list/materials = I.materials_base.Copy()
 	if(!isnull(user) && !user.temporarily_remove_from_inventory(I))
 		user.action_feedback(SPAN_WARNING("[I] is stuck to your hand!"), src)
 		return FALSE
@@ -280,11 +283,11 @@
  */
 /obj/machinery/lathe/proc/has_resources_for(datum/design/instance, list/material_parts, list/ingredient_parts)
 	. = INFINITY
-	if(length(instance.materials))
-		var/list/materials = instance.materials.Copy()
-		for(var/key in instance.material_parts)
+	if(length(instance.materials_base))
+		var/list/materials = instance.materials_base.Copy()
+		for(var/key in instance.material_costs)
 			var/id = material_parts[key]
-			materials[id] += instance.material_parts[key]
+			materials[id] += instance.material_costs[key]
 		. = stored_materials.has_multiple(materials, efficiency_multiplier)
 	if(!.)
 		return
@@ -343,9 +346,9 @@
 /obj/machinery/lathe/proc/do_print(datum/design/instance, amount = 1, list/material_parts, list/ingredient_parts, efficiency = efficiency_multiplier)
 	if(!amount)
 		return
-	var/list/materials_used = instance.materials?.Copy() || list()
+	var/list/materials_used = instance.materials_base?.Copy() || list()
 	for(var/key in material_parts)
-		materials_used[material_parts[key]] += instance.material_parts[key]
+		materials_used[material_parts[key]] += instance.material_costs[key]
 	use_resources(materials_used, instance.reagents, instance.ingredients, ingredient_parts, amount * efficiency)
 	. = instance.lathe_print(drop_location(), amount, material_parts, ingredient_parts, null, src, efficiency_multiplier)
 	if(!isnull(print_icon_state))
@@ -482,8 +485,8 @@
  * amount variable is reserved but unused at this given time.
  */
 /obj/machinery/lathe/proc/enqueue(datum/design/instance, amount = 1, list/material_parts, list/ingredient_parts, start_immediately)
-	if(instance.material_parts)
-		for(var/key in instance.material_parts)
+	if(!isnull(instance.material_costs))
+		for(var/key in instance.material_costs)
 			if(!material_parts[key])
 				return FALSE
 	var/datum/lathe_queue_entry/last = length(queue)? queue[length(queue)] : null

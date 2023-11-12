@@ -4,7 +4,7 @@
 	icon = 'icons/obj/vehicles.dmi'
 	icon_state = "changeme"
 	integrity = 200
-	max_integrity = 200
+	integrity_max = 200
 	riding_handler_type = /datum/component/riding_handler/vehicle/ridden/cart
 
 

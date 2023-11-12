@@ -8,6 +8,8 @@
 	icon_state = "generic"
 	anchored = TRUE
 	density = TRUE
+	// todo: temporary, as this is unbuildable
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 
 //! ## Icons
 	/// Icon_state when vending.

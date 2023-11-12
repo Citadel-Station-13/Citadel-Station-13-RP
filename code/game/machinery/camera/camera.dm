@@ -6,6 +6,7 @@
 	use_power = USE_POWER_ACTIVE
 	idle_power_usage = 5
 	active_power_usage = 10
+	depth_projected = FALSE
 	plane = MOB_PLANE
 	layer = BELOW_MOB_LAYER
 
@@ -14,7 +15,6 @@
 	var/c_tag_order = 999
 	var/status = 1
 	anchored = 1.0
-	var/invuln = 0
 	var/bugged = 0
 	var/obj/item/camera_assembly/assembly = null
 
@@ -99,31 +99,11 @@
 			update_coverage()
 			START_PROCESSING(SSobj, src)
 
-/obj/machinery/camera/bullet_act(var/obj/projectile/P)
-	take_damage(P.get_structure_damage())
-
-/obj/machinery/camera/legacy_ex_act(severity)
-	if(src.invuln)
-		return
-
-	//camera dies if an explosion touches it!
-	if(severity <= 2 || prob(50))
-		destroy()
-
-	..() //and give it the regular chance of being deleted outright
 
 /obj/machinery/camera/blob_act()
-	if((machine_stat & BROKEN) || invuln)
+	if(machine_stat & BROKEN)
 		return
 	destroy()
-
-/obj/machinery/camera/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
-	. = ..()
-	if (istype(AM, /obj))
-		var/obj/O = AM
-		if (O.throw_force >= src.toughness)
-			visible_message("<span class='warning'><B>[src] was hit by [O].</B></span>")
-		take_damage(O.throw_force)
 
 /obj/machinery/camera/proc/setViewRange(var/num = 7)
 	src.view_range = num
@@ -211,19 +191,8 @@
 			else to_chat(O, "<b><a href='byond://?src=\ref[O];track2=\ref[O];track=\ref[U];trackname=[U.name]'>[U]</a></b> holds \a [itemname] up to one of your cameras ...")
 			O << browse("<HTML><HEAD><TITLE>[itemname]</TITLE></HEAD><BODY><TT>[info]</TT></BODY></HTML>", "window=[itemname]")
 
-	else if(W.damtype == BRUTE || W.damtype == BURN) //bashing cameras
-		user.setClickCooldown(user.get_attack_speed(W))
-		if (W.damage_force >= src.toughness)
-			user.do_attack_animation(src)
-			visible_message("<span class='warning'><b>[src] has been [W.get_attack_verb(src, user)] with [W] by [user]!</b></span>")
-			if (istype(W, /obj/item)) //is it even possible to get into attackby() with non-items?
-				var/obj/item/I = W
-				if (I.hitsound)
-					playsound(loc, I.hitsound, 50, 1, -1)
-		take_damage(W.damage_force)
-
 	else
-		..()
+		return ..()
 
 /obj/machinery/camera/proc/deactivate(user as mob, var/choice = 1)
 	// The only way for AI to reactivate cameras are malf abilities, this gives them different messages.
@@ -251,7 +220,7 @@
 		icon_state = initial(icon_state)
 		add_hiddenprint(user)
 
-/obj/machinery/camera/take_damage(force, message)
+/obj/machinery/camera/proc/take_damage_legacy(force, message)
 	//prob(25) gives an average of 3-4 hits
 	if (force >= toughness && (force > toughness*4 || prob(25)))
 		destroy()

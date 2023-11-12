@@ -12,8 +12,8 @@
 	//species_appearance_flags = RADIATION_GLOWS
 	shock_resist = 0 // Lets not be immune to zaps.
 	friendly = list("nuzzles", "glomps", "snuggles", "cuddles", "squishes") // lets be cute :3
-	melee_damage_upper = 0
-	melee_damage_lower = 0
+	legacy_melee_damage_upper = 0
+	legacy_melee_damage_lower = 0
 	player_msg = "You're a little squisher! Your cuteness level has increased tenfold."
 	heat_damage_per_tick = 20 // Hot and cold are bad, but cold is AS bad for prommies as it is for slimes.
 	cold_damage_per_tick = 20

@@ -195,10 +195,12 @@
 		)
 	icon_state = "detective"
 	item_state = "gun"
+
 	throw_force = 5
 	throw_speed = 4
 	throw_range = 5
 	damage_force = 5
+	damage_tier = MELEE_TIER_MEDIUM
 	preserve_item = 1
 	zoomdevicename = "scope"
 

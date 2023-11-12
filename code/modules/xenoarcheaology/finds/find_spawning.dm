@@ -544,21 +544,15 @@
 			MAT_SUPERMATTER = 1
 			))
 		var/obj/item/material/MW = new_item
-		MW.applies_material_colour = TRUE
-		MW.set_material(new_item_mat)
-		if(istype(MW, /obj/item/material/twohanded))
-			var/obj/item/material/twohanded/TH = MW
-			TH.force_unwielded *= 0.7
-			TH.force_wielded *= 0.5
-		else
-			MW.damage_force *= 0.3
+		MW.material_color = TRUE
+		MW.set_material_part(MATERIAL_PART_DEFAULT, get_material_by_name(new_item_mat))
 
 	var/decorations = ""
 	if(apply_material_decorations)
 		source_material = pick("cordite","quadrinium",MAT_STEEL,"titanium","aluminium","ferritic-alloy","plasteel","duranium")
 		if(istype(new_item, /obj/item/material))
 			var/obj/item/material/MW = new_item
-			source_material = MW.material.display_name
+			source_material = MW.get_primary_material()?.display_name || "some unknown material"
 		desc = "A [material_descriptor ? "[material_descriptor] " : ""][item_type] made of [source_material], all craftsmanship is of [pick("the lowest","low","average","high","the highest")] quality."
 
 		var/list/descriptors = list()

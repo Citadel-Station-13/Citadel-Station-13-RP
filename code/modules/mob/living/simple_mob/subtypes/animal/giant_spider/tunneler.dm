@@ -35,8 +35,8 @@
 	maxHealth = 120
 	health = 120
 
-	melee_damage_lower = 10
-	melee_damage_upper = 10
+	legacy_melee_damage_lower = 10
+	legacy_melee_damage_upper = 10
 
 	poison_chance = 15
 	poison_per_bite = 3

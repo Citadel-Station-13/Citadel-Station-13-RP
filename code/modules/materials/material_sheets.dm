@@ -1,6 +1,7 @@
 // Stacked resources. They use a material datum for a lot of inherited values.
 // If you're adding something here, make sure to add it to fifty_spawner_mats.dm as well
 /obj/item/stack/material
+	abstract_type = /obj/item/stack/material
 	damage_force = 5
 	throw_force = 5
 	w_class = ITEMSIZE_NORMAL
@@ -11,42 +12,40 @@
 		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_material.dmi',
 		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_material.dmi',
 		)
-
-	var/default_type = MAT_STEEL
-	var/datum/material/material
-	var/perunit = SHEET_MATERIAL_AMOUNT
-	var/apply_colour //temp pending icon rewrite
-	var/allow_window_autobuild = TRUE
 	drop_sound = 'sound/items/drop/axe.ogg'
 	pickup_sound = 'sound/items/pickup/axe.ogg'
 
-/obj/item/stack/material/Initialize(mapload, new_amount, merge = TRUE)
-	if(!default_type)
-		default_type = MAT_STEEL
-	material = get_material_by_name("[default_type]")
-	if(!material)
-		return INITIALIZE_HINT_QDEL
+	material_parts = MATERIAL_DEFAULT_DISABLED
+	/// material - direct ref because stack
+	var/datum/material/material
 
+	var/perunit = SHEET_MATERIAL_AMOUNT
+	var/apply_colour //temp pending icon rewrite
+	var/allow_window_autobuild = TRUE
+
+/obj/item/stack/material/Initialize(mapload, new_amount, merge = TRUE, material)
+	if(!isnull(material))
+		src.material = material
+	src.material = SSmaterials.resolve_material(src.material)
 	. = ..()
 
 	pixel_x = rand(0,4)-4
 	pixel_y = rand(0,4)-4
 
-	stacktype = material.stack_type
-	if(islist(material.stack_origin_tech))
-		origin_tech = material.stack_origin_tech.Copy()
+	stacktype = src.material.stack_type
+	if(islist(src.material.stack_origin_tech))
+		origin_tech = src.material.stack_origin_tech.Copy()
 
 	if(apply_colour)
-		color = material.icon_colour
+		color = src.material.icon_colour
 
-	if(!material.conductive)
+	if(src.material.relative_conductivity < MATERIAL_CONDUCTIVITY_NOCONDUCT)
 		atom_flags |= NOCONDUCT
 
-	materials = material.get_matter()
 	update_strings()
 
-/obj/item/stack/material/get_material()
-	return material
+/obj/item/stack/material/get_materials(respect_multiplier)
+	return list(material.id = (respect_multiplier? material_multiplier : 1) * SHEET_MATERIAL_AMOUNT)
 
 /obj/item/stack/material/tgui_recipes()
 	var/list/assembled = ..()
@@ -55,6 +54,9 @@
 	for(var/datum/stack_recipe/material/recipe as anything in SSmaterials.material_stack_recipes)
 		assembled[++assembled.len] = recipe.tgui_recipe_data()
 	return assembled
+
+/obj/item/stack/material/stackcrafting_makes_sense()
+	return TRUE
 
 /obj/item/stack/material/can_craft_recipe(datum/stack_recipe/recipe)
 	. = ..()
@@ -93,33 +95,35 @@
 	if(!allow_window_autobuild || !material.build_windows(user, src))
 		return ..()
 
-/obj/item/stack/material/attackby(var/obj/item/W, var/mob/user)
-	if(istype(W,/obj/item/stack/cable_coil))
-		material.build_wired_product(user, W, src)
+/obj/item/stack/material/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+	if(istype(I, /obj/item/stack/cable_coil))
+		material.build_wired_product(user, I, src)
 		return
-	else if(istype(W, /obj/item/stack/rods))
-		material.build_rod_product(user, W, src)
+	else if(istype(I, /obj/item/stack/rods))
+		material.build_rod_product(user, I, src)
 		return
 	return ..()
+
+// todo: we need a better way of doing this, holy shit
 
 /obj/item/stack/material/iron
 	name = "iron"
 	icon_state = "sheet-silver"
-	default_type = "iron"
+	material = /datum/material/iron
 	apply_colour = 1
 	no_variants = FALSE
 
 /obj/item/stack/material/lead
 	name = "lead"
 	icon_state = "sheet-adamantine"
-	default_type = "lead"
+	material = /datum/material/lead
 	apply_colour = 1
 	no_variants = FALSE
 
 /obj/item/stack/material/sandstone
 	name = "sandstone brick"
 	icon_state = "sheet-sandstone"
-	default_type = "sandstone"
+	material = /datum/material/sandstone
 	no_variants = FALSE
 	drop_sound = 'sound/items/drop/boots.ogg'
 	pickup_sound = 'sound/items/pickup/boots.ogg'
@@ -127,7 +131,7 @@
 /obj/item/stack/material/marble
 	name = "marble brick"
 	icon_state = "sheet-marble"
-	default_type = "marble"
+	material = /datum/material/marble
 	no_variants = FALSE
 	drop_sound = 'sound/items/drop/boots.ogg'
 	pickup_sound = 'sound/items/pickup/boots.ogg'
@@ -135,66 +139,66 @@
 /obj/item/stack/material/diamond
 	name = "diamond"
 	icon_state = "sheet-diamond"
-	default_type = "diamond"
+	material = /datum/material/diamond
 	drop_sound = 'sound/items/drop/glass.ogg'
 	pickup_sound = 'sound/items/pickup/glass.ogg'
 
 /obj/item/stack/material/uranium
 	name = "uranium"
 	icon_state = "sheet-uranium"
-	default_type = "uranium"
+	material = /datum/material/uranium
 	no_variants = FALSE
 
 /obj/item/stack/material/phoron
 	name = "solid phoron"
 	icon_state = "sheet-phoron"
-	default_type = "phoron"
+	material = /datum/material/phoron
 	no_variants = FALSE
 
 /obj/item/stack/material/plastic
 	name = "plastic"
 	icon_state = "sheet-plastic"
-	default_type = "plastic"
+	material = /datum/material/plastic
 	no_variants = FALSE
 
 /obj/item/stack/material/gold
 	name = "gold"
 	icon_state = "sheet-gold"
-	default_type = "gold"
+	material = /datum/material/gold
 	no_variants = FALSE
 
 /obj/item/stack/material/silver
 	name = "silver"
 	icon_state = "sheet-silver"
-	default_type = "silver"
+	material = /datum/material/silver
 	no_variants = FALSE
 
 //Valuable resource, cargo can sell it.
 /obj/item/stack/material/platinum
 	name = "platinum"
 	icon_state = "sheet-adamantine"
-	default_type = "platinum"
+	material = /datum/material/platinum
 	no_variants = FALSE
 
 //Extremely valuable to Research.
 /obj/item/stack/material/mhydrogen
 	name = "metallic hydrogen"
 	icon_state = "sheet-mythril"
-	default_type = "mhydrogen"
+	material = /datum/material/hydrogen/mhydrogen
 	no_variants = FALSE
 
 //Fuel for MRSPACMAN generator.
 /obj/item/stack/material/tritium
 	name = "tritium"
 	icon_state = "sheet-silver"
-	default_type = "tritium"
+	material = /datum/material/hydrogen/tritium
 	apply_colour = 1
 	no_variants = FALSE
 
 /obj/item/stack/material/osmium
 	name = "osmium"
 	icon_state = "sheet-silver"
-	default_type = "osmium"
+	material = /datum/material/osmium
 	apply_colour = 1
 	no_variants = FALSE
 
@@ -203,35 +207,35 @@
 /obj/item/stack/material/deuterium
 	name = "deuterium"
 	icon_state = "sheet-silver"
-	default_type = "deuterium"
+	material = /datum/material/hydrogen/deuterium
 	apply_colour = 1
 	no_variants = FALSE
 
 /obj/item/stack/material/steel
 	name = MAT_STEEL
 	icon_state = "sheet-metal"
-	default_type = MAT_STEEL
+	material = /datum/material/steel
 	no_variants = FALSE
 
 /obj/item/stack/material/steel/hull
 	name = MAT_STEELHULL
-	default_type = MAT_STEELHULL
+	material = /datum/material/steel/hull
 
 /obj/item/stack/material/plasteel
 	name = "plasteel"
 	icon_state = "sheet-plasteel"
-	default_type = "plasteel"
+	material = /datum/material/plasteel
 	no_variants = FALSE
 
 /obj/item/stack/material/plasteel/hull
 	name = MAT_PLASTEELHULL
-	default_type = MAT_PLASTEELHULL
+	material = /datum/material/plasteel/hull
 
 /obj/item/stack/material/durasteel
 	name = "durasteel"
 	icon_state = "sheet-durasteel"
 	item_state = "sheet-metal"
-	default_type = "durasteel"
+	material = /datum/material/durasteel
 	no_variants = FALSE
 
 /obj/item/stack/material/durasteel/hull
@@ -241,19 +245,19 @@
 	name = MAT_TITANIUM
 	icon_state = "sheet-silver"
 	item_state = "sheet-silver"
-	default_type = MAT_TITANIUM
+	material = /datum/material/plasteel/titanium
 	no_variants = FALSE
 
 /obj/item/stack/material/titanium/hull
 	name = MAT_TITANIUMHULL
-	default_type = MAT_TITANIUMHULL
+	material = /datum/material/plasteel/titanium/hull
 
 // Particle Smasher and Exotic material.
 /obj/item/stack/material/verdantium
 	name = MAT_VERDANTIUM
 	icon_state = "sheet-wavy"
 	item_state = "mhydrogen"
-	default_type = MAT_VERDANTIUM
+	material = /datum/material/verdantium
 	no_variants = FALSE
 	apply_colour = TRUE
 
@@ -261,19 +265,19 @@
 	name = MAT_MORPHIUM
 	icon_state = "sheet-wavy"
 	item_state = "mhydrogen"
-	default_type = MAT_MORPHIUM
+	material = /datum/material/morphium
 	no_variants = FALSE
 	apply_colour = TRUE
 
 /obj/item/stack/material/morphium/hull
 	name = MAT_MORPHIUMHULL
-	default_type = MAT_MORPHIUMHULL
+	material = /datum/material/morphium/hull
 
 /obj/item/stack/material/valhollide
 	name = MAT_VALHOLLIDE
 	icon_state = "sheet-gem"
 	item_state = "diamond"
-	default_type = MAT_VALHOLLIDE
+	material = /datum/material/valhollide
 	no_variants = FALSE
 	apply_colour = TRUE
 
@@ -282,7 +286,7 @@
 	name = MAT_SUPERMATTER
 	icon_state = "sheet-super"
 	item_state = "diamond"
-	default_type = MAT_SUPERMATTER
+	material = /datum/material/supermatter
 	no_variants = FALSE
 	apply_colour = TRUE
 
@@ -337,7 +341,7 @@
 /obj/item/stack/material/wood
 	name = "wooden plank"
 	icon_state = "sheet-wood"
-	default_type = MAT_WOOD
+	material = /datum/material/wood_plank
 	strict_color_stacking = TRUE
 	drop_sound = 'sound/items/drop/wooden.ogg'
 	pickup_sound = 'sound/items/pickup/wooden.ogg'
@@ -345,18 +349,18 @@
 /obj/item/stack/material/wood/sif
 	name = "alien wooden plank"
 	color = "#0099cc"
-	default_type = MAT_SIFWOOD
+	material = /datum/material/wood_plank/sif
 
 /obj/item/stack/material/wood/hard
 	name = "hardwood plank"
 	color = "#42291a"
-	default_type = MAT_HARDWOOD
+	material = /datum/material/wood_plank/hardwood
 	description_info = "Rich, lustrous hardwood, imported from offworld at moderate expense. Mostly used for luxurious furniture, and not very good for weapons or other structures."
 
 /obj/item/stack/material/log
 	name = "log"
 	icon_state = "sheet-log"
-	default_type = MAT_LOG
+	material = /datum/material/wood_log
 	no_variants = FALSE
 	color = "#824B28"
 	max_amount = 25
@@ -368,21 +372,21 @@
 
 /obj/item/stack/material/log/sif
 	name = "alien log"
-	default_type = MAT_SIFLOG
+	material = /datum/material/wood_log/sif
 	color = "#0099cc"
 	plank_type = /obj/item/stack/material/wood/sif
 
 /obj/item/stack/material/log/hard
 	name = "hardwood log"
-	default_type = MAT_HARDLOG
+	material = /datum/material/wood_log/hard
 	color = "#6f432a"
 	plank_type = /obj/item/stack/material/wood/hard
 
-/obj/item/stack/material/log/attackby(var/obj/item/W, var/mob/user)
-	if(!istype(W) || W.damage_force <= 0)
+/obj/item/stack/material/log/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+	if(!istype(I) || I.damage_force <= 0)
 		return ..()
-	if(W.sharp && W.edge)
-		var/time = (3 SECONDS / max(W.damage_force / 10, 1)) * W.tool_speed
+	if(CHECK_MULTIPLE_BITFIELDS(I.damage_mode, DAMAGE_MODE_EDGE | DAMAGE_MODE_SHARP) || (I.edge && I.sharp))
+		var/time = (3 SECONDS / max(I.damage_force / 10, 1)) * I.tool_speed
 		user.setClickCooldown(time)
 		if(do_after(user, time, src) && use(1))
 			to_chat(user, "<span class='notice'>You cut up a log into planks.</span>")
@@ -404,7 +408,7 @@
 /obj/item/stack/material/cloth
 	name = "cloth"
 	icon_state = "sheet-cloth"
-	default_type = "cloth"
+	material = /datum/material/cloth
 	no_variants = FALSE
 	pass_color = TRUE
 	strict_color_stacking = TRUE
@@ -414,7 +418,7 @@
 /obj/item/stack/material/resin
 	name = "resin"
 	icon_state = "sheet-resin"
-	default_type = "resin"
+	material = /datum/material/resin
 	no_variants = TRUE
 	apply_colour = TRUE
 	pass_color = TRUE
@@ -423,7 +427,7 @@
 /obj/item/stack/material/cardboard
 	name = "cardboard"
 	icon_state = "sheet-card"
-	default_type = "cardboard"
+	material = /datum/material/cardboard
 	no_variants = FALSE
 	pass_color = TRUE
 	strict_color_stacking = TRUE
@@ -434,19 +438,19 @@
 	name = "snow"
 	desc = "The temptation to build a snowman rises."
 	icon_state = "sheet-snow"
-	default_type = "snow"
+	material = /datum/material/snow
 
 /obj/item/stack/material/snowbrick
 	name = "snow brick"
 	desc = "For all of your igloo building needs."
 	icon_state = "sheet-snowbrick"
-	default_type = "packed snow"
+	material = /datum/material/snowbrick
 
 /obj/item/stack/material/leather
 	name = "leather"
 	desc = "The by-product of mob grinding."
 	icon_state = "sheet-leather"
-	default_type = MAT_LEATHER
+	material = /datum/material/leather
 	no_variants = FALSE
 	pass_color = TRUE
 	strict_color_stacking = TRUE
@@ -458,7 +462,7 @@
 	desc = "Sheets of hardened chitin, usually harvested from insectile beasts."
 	singular_name = "chitin plate"
 	icon_state = "chitin"
-	default_type = MAT_CHITIN
+	material = /datum/material/chitin
 	no_variants = FALSE
 	pass_color = TRUE
 	strict_color_stacking = TRUE
@@ -468,7 +472,7 @@
 /obj/item/stack/material/glass
 	name = "glass"
 	icon_state = "sheet-glass"
-	default_type = "glass"
+	material = /datum/material/glass
 	no_variants = FALSE
 	drop_sound = 'sound/items/drop/glass.ogg'
 	pickup_sound = 'sound/items/pickup/glass.ogg'
@@ -476,7 +480,7 @@
 /obj/item/stack/material/glass/reinforced
 	name = "reinforced glass"
 	icon_state = "sheet-rglass"
-	default_type = "rglass"
+	material = /datum/material/glass/reinforced
 	no_variants = FALSE
 
 /obj/item/stack/material/glass/phoronglass
@@ -484,7 +488,7 @@
 	desc = "This sheet is special platinum-glass alloy designed to withstand large temperatures"
 	singular_name = "borosilicate glass sheet"
 	icon_state = "sheet-phoronglass"
-	default_type = "borosilicate glass"
+	material = /datum/material/glass/phoron
 	no_variants = FALSE
 
 /obj/item/stack/material/glass/phoronrglass
@@ -492,14 +496,14 @@
 	desc = "This sheet is special platinum-glass alloy designed to withstand large temperatures. It is reinforced with few rods."
 	singular_name = "reinforced borosilicate glass sheet"
 	icon_state = "sheet-phoronrglass"
-	default_type = "reinforced borosilicate glass"
+	material = /datum/material/glass/phoron/reinforced
 	no_variants = FALSE
 
 /obj/item/stack/material/bananium
 	name = MAT_BANANIUM
 	desc = "When smelted, Vaudium takes on a bright yellow hue and remains pliable, growing rigid when met with a forceful impact."
 	icon_state = "sheet-clown"
-	default_type = MAT_BANANIUM
+	material = /datum/material/bananium
 	no_variants = FALSE
 	drop_sound = 'sound/items/drop/boots.ogg'
 	pickup_sound = 'sound/items/pickup/boots.ogg'
@@ -508,7 +512,7 @@
 	name = MAT_SILENCIUM
 	desc = "When compressed, Vaudium loses its color, gaining distinctive black bands and becoming intensely rigid."
 	icon_state = "sheet-mime"
-	default_type = MAT_SILENCIUM
+	material = /datum/material/silencium
 	no_variants = FALSE
 	drop_sound = 'sound/items/drop/boots.ogg'
 	pickup_sound = 'sound/items/drop/boots.ogg'
@@ -517,7 +521,7 @@
 	name = "brass"
 	desc = "This stable alloy is often used in complex mechanisms due to its versatility, softness, and solid head conduction."
 	icon_state = "sheet-brass"
-	default_type = "brass"
+	material = /datum/material/brass
 	no_variants = FALSE
 	drop_sound = 'sound/items/drop/boots.ogg'
 	pickup_sound = 'sound/items/drop/boots.ogg'
@@ -526,7 +530,7 @@
 	name = "bone"
 	desc = "These dense calcium structures are a common support system for organic life."
 	icon_state = "sheet-bone"
-	default_type = "bone"
+	material = /datum/material/bone
 	no_variants = FALSE
 	drop_sound = 'sound/items/drop/boots.ogg'
 	pickup_sound = 'sound/items/drop/boots.ogg'
@@ -535,7 +539,7 @@
 	name = "copper"
 	desc = "This common metal remains a popular choice as an electrical and thermal conductor due to how easily it can be worked."
 	icon_state = "sheet-copper"
-	default_type = "copper"
+	material = /datum/material/copper
 	no_variants = FALSE
 	drop_sound = 'sound/items/drop/boots.ogg'
 	pickup_sound = 'sound/items/drop/boots.ogg'
@@ -547,6 +551,21 @@
 	desc = "Soft substance produced by bees. Used to make candles."
 	icon_state = "sheet-rtransparent"
 	apply_colour = 1
-	default_type = "wax"
+	material = /datum/material/wax
 	no_variants = FALSE
 	pass_color = TRUE
+
+/obj/item/stack/material/algae
+	name = "algae sheet"
+	icon_state = "sheet-uranium"
+	color = "#557722"
+	material = /datum/material/algae
+
+/obj/item/stack/material/algae/ten
+	amount = 10
+
+/obj/item/stack/material/carbon
+	name = "carbon sheet"
+	icon_state = "sheet-metal"
+	color = "#303030"
+	material = /datum/material/carbon

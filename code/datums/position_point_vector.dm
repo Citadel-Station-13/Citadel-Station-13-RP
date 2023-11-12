@@ -1,6 +1,8 @@
 //Designed for things that need precision trajectories like projectiles.
 //Don't use this for anything that you don't absolutely have to use this with (like projectiles!) because it isn't worth using a datum unless you need accuracy down to decimal places in pixels.
 
+#warn oh my god i hate all of this
+
 // todo: rewrite positions they're bad
 
 /datum/position			//For positions with map x/y/z and pixel x/y so you don't have to return lists. Could use addition/subtraction in the future I guess.
@@ -113,8 +115,16 @@
 /datum/point/proc/turf()
 	return locate(round(x / WORLD_ICON_SIZE) + 1, round(y / WORLD_ICON_SIZE) + 1, z)
 
+/datum/point/proc/clamped_turf()
+	return locate(clamp(CEILING(x / world.icon_size, 1), 1, world.maxx), clamp(CEILING(y / world.icon_size, 1), 1, world.maxy), z)
+
 /datum/point/proc/coords()
 	return list(round(x / WORLD_ICON_SIZE) + 1, round(y / WORLD_ICON_SIZE) + 1, z)
+
+/datum/point/proc/move_atom_to_src(atom/movable/AM)
+	AM.forceMove(return_turf())
+	AM.pixel_x = return_px()
+	AM.pixel_y = return_py()
 
 /datum/point/proc/position()
 	return new /datum/position(src)

@@ -8,12 +8,22 @@
 	melting_point = T0C+300
 	sheet_singular_name = "fragment"
 	sheet_plural_name = "fragments"
-	conductive = 0
 	explosion_resistance = 60
-	radiation_resistance = 10
 	stack_origin_tech = list(TECH_MATERIAL = 8, TECH_PHORON = 4, TECH_BLUESPACE = 4, TECH_BIO = 7)
 	door_icon_base = "stone"
 	table_icon_base = "stone"
+
+	relative_integrity = 0.75
+	weight_multiplier = 0.75
+	density = 8 * 1
+	relative_conductivity = 0.1
+	relative_permeability = 0.07
+	relative_reactivity = 1
+	hardness = MATERIAL_RESISTANCE_MODERATE
+	toughness = MATERIAL_RESISTANCE_MODERATE
+	refraction = MATERIAL_RESISTANCE_NONE
+	absorption = MATERIAL_RESISTANCE_MODERATE
+	nullification = MATERIAL_RESISTANCE_NONE
 
 /datum/material/bone/generate_recipes()
 	. = ..()

@@ -11,11 +11,9 @@
 	icon = 'icons/modules/fishing/aquarium.dmi'
 	icon_state = "aquarium_base"
 
-	// todo: refactor on atom damage!!!
 	integrity = 100
-	var/integrity_max = 100
-	var/integrity_failure = 0.3
-	var/broken = FALSE
+	integrity_max = 100
+	integrity_failure = 0.3
 
 	var/fluid_type = AQUARIUM_FLUID_FRESHWATER
 	var/fluid_temp = DEFAULT_AQUARIUM_TEMP
@@ -101,7 +99,7 @@
 		. += "panel"
 
 	//Glass overlay goes on top of everything else.
-	var/mutable_appearance/glass_overlay = mutable_appearance(icon,broken ? broken_glass_icon_state : glass_icon_state,layer=AQUARIUM_MAX_OFFSET-1)
+	var/mutable_appearance/glass_overlay = mutable_appearance(icon, (atom_flags & ATOM_BROKEN) ? broken_glass_icon_state : glass_icon_state,layer=AQUARIUM_MAX_OFFSET-1)
 	. += glass_overlay
 
 /obj/structure/aquarium/examine(mob/user, dist)
@@ -141,7 +139,7 @@
 
 /obj/structure/aquarium/attackby(obj/item/I, mob/living/user, params)
 	SEND_SIGNAL(src, COMSIG_AQUARIUM_DISTURB_FISH)
-	if(broken)
+	if(atom_flags & ATOM_BROKEN)
 		var/obj/item/stack/material/glass/glass = I
 		if(istype(glass))
 			if(glass.get_amount() < 2)
@@ -150,8 +148,7 @@
 			user.action_feedback(SPAN_NOTICE("You start fixing [src]..."), src)
 			if(do_after(user, 2 SECONDS, target = src))
 				glass.use(2)
-				broken = FALSE
-				integrity = integrity_max
+				heal_integrity(integrity_max)
 				update_appearance()
 			return CLICKCHAIN_DID_SOMETHING
 	else
@@ -168,7 +165,7 @@
 	return ..()
 
 /obj/structure/aquarium/interact(mob/user)
-	if(!broken && user.pulling && isliving(user.pulling))
+	if(!(atom_flags & ATOM_BROKEN) && user.pulling && isliving(user.pulling))
 		var/mob/living/living_pulled = user.pulling
 		var/datum/component/aquarium_content/content_component = living_pulled.GetComponent(/datum/component/aquarium_content)
 		if(content_component && content_component.is_ready_to_insert(src))
@@ -275,13 +272,11 @@
 		ui.open()
 
 // todo: refactor on atom damage!!
-/obj/structure/aquarium/proc/atom_break(damage_flag)
-	// . = ..()
-	if(!broken)
-		aquarium_smash()
+/obj/structure/aquarium/atom_break(damage_flag)
+	. = ..()
+	aquarium_smash()
 
 /obj/structure/aquarium/proc/aquarium_smash()
-	broken = TRUE
 	var/possible_destinations_for_fish = list()
 	var/droploc = drop_location()
 	if(isturf(droploc))

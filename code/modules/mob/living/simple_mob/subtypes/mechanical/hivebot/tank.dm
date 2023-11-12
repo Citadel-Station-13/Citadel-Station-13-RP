@@ -8,8 +8,8 @@
 	desc = "A heavily armored hivebot capable of taking heavy punishment."
 	maxHealth = 5 LASERS_TO_KILL // 150 health.
 	health = 5 LASERS_TO_KILL
-	melee_damage_lower = 30
-	melee_damage_upper = 30
+	legacy_melee_damage_lower = 30
+	legacy_melee_damage_upper = 30
 	icon_scale_x = 1.5
 	icon_scale_y = 1.5
 	player_msg = "You are heavily armored."
@@ -61,4 +61,3 @@
 	icon_scale_x = 2
 	icon_scale_y = 2
 	player_msg = "You have a very large amount of health."
-

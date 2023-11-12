@@ -381,7 +381,7 @@
 	heavy = TRUE
 	damage_force = 10
 	origin_tech = list(TECH_COMBAT = 3, TECH_ENGINEERING = 3, TECH_MAGNET = 2)
-	materials = list(MAT_STEEL = 2000, MAT_GLASS = 1000)
+	materials_base = list(MAT_STEEL = 2000, MAT_GLASS = 1000)
 	one_handed_penalty = 50
 
 /obj/item/gun/energy/ionrifle/pistol/tyrmalin

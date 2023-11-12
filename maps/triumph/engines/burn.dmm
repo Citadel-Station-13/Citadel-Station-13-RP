@@ -392,7 +392,6 @@
 	dir = 4;
 	frequency = 1435;
 	id = "exhaust_out";
-	unacidable = 1;
 	volume_rate = 100
 	},
 /turf/simulated/floor/airless/ceiling,
@@ -657,7 +656,6 @@
 	dir = 1;
 	frequency = 1437;
 	id = "engine_in";
-	unacidable = 1;
 	volume_rate = 100
 	},
 /turf/simulated/floor/reinforced/airless,
@@ -731,7 +729,6 @@
 /obj/machinery/atmospherics/component/unary/outlet_injector{
 	frequency = 1438;
 	id = "hotloop_in";
-	unacidable = 1;
 	volume_rate = 100
 	},
 /turf/simulated/floor/reinforced/airless,
@@ -1086,7 +1083,6 @@
 	dir = 1;
 	frequency = 1438;
 	id = "hotloop_in";
-	unacidable = 1;
 	volume_rate = 100
 	},
 /turf/simulated/floor/reinforced/airless,
@@ -1172,7 +1168,6 @@
 	dir = 1;
 	frequency = 1438;
 	id = "hotloop_in";
-	unacidable = 1;
 	volume_rate = 100
 	},
 /turf/simulated/floor/reinforced/airless,
@@ -1246,7 +1241,6 @@
 /obj/machinery/atmospherics/component/unary/outlet_injector{
 	frequency = 1438;
 	id = "hotloop_in";
-	unacidable = 1;
 	volume_rate = 100
 	},
 /turf/simulated/floor/reinforced/airless,

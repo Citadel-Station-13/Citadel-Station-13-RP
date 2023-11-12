@@ -7,7 +7,7 @@
 	item_flags = ITEM_EASY_LATHE_DECONSTRUCT | ITEM_ENCUMBERS_WHILE_HELD
 	slot_flags = SLOT_BELT
 	item_state = "syringe_kit"
-	materials = list(MAT_STEEL = 500)
+	materials_base = list(MAT_STEEL = 500)
 	throw_force = 5
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 4
@@ -106,6 +106,21 @@
 
 #warn below
 
+/obj/item/ammo_magazine/detect_material_base_costs()
+	. = ..()
+	if(isnull(ammo_type))
+		return
+	var/shell_amount = isnull(initial_ammo)? max_ammo : initial_ammo
+	if(!shell_amount)
+		return
+	var/obj/item/ammo_casing/casing = new ammo_type
+	if(!istype(casing))
+		qdel(casing)
+		return
+	var/list/adding = casing.detect_material_base_costs()
+	qdel(casing)
+	for(var/key in adding)
+		.[key] += adding[key] * shell_amount
 
 /obj/item/ammo_magazine/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/ammo_casing))

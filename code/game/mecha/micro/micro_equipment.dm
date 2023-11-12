@@ -116,9 +116,6 @@
 /obj/item/mecha_parts/mecha_equipment/tool/drill/micro/action(atom/target)
 	if(!action_checks(target))
 		return
-	if(isobj(target))
-		var/obj/target_obj = target
-		if(!target_obj.vars.Find("unacidable") || target_obj.unacidable)	return
 	set_ready_state(0)
 	chassis.use_power(energy_drain)
 	chassis.visible_message("<span class='danger'>[chassis] starts to drill [target]</span>", "<span class='warning'>You hear the drill.</span>")
@@ -129,7 +126,7 @@
 		if(T == chassis.loc && src == chassis.selected)
 			if(istype(target, /turf/simulated/wall))
 				var/turf/simulated/wall/W = target
-				if(W.reinf_material)
+				if(W.material_reinf)
 					occupant_message("<span class='warning'>[target] is too durable to drill through.</span>")
 				else
 					log_message("Drilled through [target]")

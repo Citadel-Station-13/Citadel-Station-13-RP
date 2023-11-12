@@ -147,7 +147,6 @@ SUBSYSTEM_DEF(plants)
 /datum/controller/subsystem/plants/proc/remove_plant(var/obj/effect/plant/plant)
 	processing -= plant
 
-
 ///Debug Verb for testing seed genes.
 /client/proc/show_plant_genes()
 	set category = "Debug"

@@ -9,10 +9,8 @@
 	required_type = list(/obj/mecha/working/ripley)
 
 /obj/item/mecha_parts/mecha_equipment/tool/drill/action(atom/target)
-	if(!action_checks(target)) return
-	if(isobj(target))
-		var/obj/target_obj = target
-		if(!target_obj.vars.Find("unacidable") || target_obj.unacidable)	return
+	if(!action_checks(target))
+		return
 	set_ready_state(0)
 	chassis.use_power(energy_drain)
 	chassis.visible_message("<span class='danger'>[chassis] starts to drill [target]</span>", "<span class='warning'>You hear the drill.</span>")
@@ -23,11 +21,11 @@
 		if(T == chassis.loc && src == chassis.selected)
 			if(istype(target, /turf/simulated/wall))
 				var/turf/simulated/wall/W = target
-				if(W.reinf_material && !advanced)//R wall but no good drill
+				if(W.material_reinf && !advanced)//R wall but no good drill
 					occupant_message("<span class='warning'>[target] is too durable to drill through.</span>")
 					return
 
-				else if((W.reinf_material && advanced) || do_after_cooldown(target))//R wall with good drill
+				else if((W.material_reinf && advanced) || do_after_cooldown(target))//R wall with good drill
 					log_message("Drilled through [target]")
 					LEGACY_EX_ACT(target, 3, null)
 				else
@@ -96,10 +94,8 @@
 	required_type = list(/obj/mecha/working/ripley)
 
 /obj/item/mecha_parts/mecha_equipment/tool/drill/bore/action(atom/target)
-	if(!action_checks(target)) return
-	if(isobj(target))
-		var/obj/target_obj = target
-		if(target_obj.unacidable)	return
+	if(!action_checks(target))
+		return
 	set_ready_state(0)
 	chassis.use_power(energy_drain)
 	chassis.visible_message("<span class='danger'>[chassis] starts to bore into \the [target]</span>", "<span class='warning'>You hear the bore.</span>")
@@ -110,7 +106,7 @@
 		if(T == chassis.loc && src == chassis.selected)
 			if(istype(target, /turf/simulated/wall))
 				var/turf/simulated/wall/W = target
-				if(W.reinf_material)
+				if(W.material_reinf)
 					occupant_message("<span class='warning'>[target] is too durable to bore through.</span>")
 				else
 					log_message("Bored through [target]")

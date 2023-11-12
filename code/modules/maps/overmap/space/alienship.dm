@@ -59,8 +59,8 @@
 	lethal = TRUE
 	ailock = TRUE
 	check_all = TRUE
-	health = 250
-	maxhealth = 250
+	integrity = 250
+	integrity_max = 250
 
 /obj/away_mission_init/alienship/door_n2s
 	icon_state = "n2s"

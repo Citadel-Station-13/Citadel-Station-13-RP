@@ -53,13 +53,17 @@
 // The unarmed attack to go with the hardclaws
 var/global/datum/unarmed_attack/hardclaws/unarmed_hardclaws = new()
 /datum/unarmed_attack/hardclaws
-	attack_verb = list("claws")
+	verb_past_participle = list("sliced", "shredded")
+	attack_verb_legacy = list("claws")
 	attack_noun = list("talons")
 	damage = 15
+	damage_add_high = 5
+	damage_add_low = 1
+	// OH BOY
+	damage_tier = MELEE_TIER_HEAVY
 	attack_sound = "punch"
 	miss_sound = 'sound/weapons/punchmiss.ogg'
-	sharp = 1
-	edge = 1
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	sparring_variant_type = /datum/unarmed_attack/hardclaws
 
 /datum/nifsoft/hidelaser

@@ -2,22 +2,27 @@
 	id = "cardboard"
 	name = "cardboard"
 	stack_type = /obj/item/stack/material/cardboard
-	flags = MATERIAL_BRITTLE
-	integrity = 10
 	icon_base = 'icons/turf/walls/solid.dmi'
 	icon_reinf = 'icons/turf/walls/reinforced_solid.dmi'
 	icon_colour = "#AAAAAA"
-	hardness = 1
-	weight = 1
-	protectiveness = 0 // 0%
-	conductive = 0
 	ignition_point = T0C+232 //"the temperature at which book-paper catches fire, and burns." close enough
 	melting_point = T0C+232 //temperature at which cardboard walls would be destroyed
 	stack_origin_tech = list(TECH_MATERIAL = 1)
 	door_icon_base = "wood"
 	destruction_desc = "crumples"
-	radiation_resistance = 1
 	pass_stack_colors = TRUE
+
+	relative_integrity = 0.25
+	weight_multiplier = 1
+	density = 8 * 0.2
+	relative_conductivity = 0.3
+	relative_permeability = 0.45
+	relative_reactivity = 1.7
+	hardness = MATERIAL_RESISTANCE_NONE
+	toughness = MATERIAL_RESISTANCE_LOW
+	refraction = MATERIAL_RESISTANCE_NONE
+	absorption = MATERIAL_RESISTANCE_LOW
+	nullification = MATERIAL_RESISTANCE_NONE
 
 /datum/material/cardboard/generate_recipes()
 	. = ..()

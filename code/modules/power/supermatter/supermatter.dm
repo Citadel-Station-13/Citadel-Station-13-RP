@@ -53,6 +53,7 @@
 	anchored = 0
 	rad_flags = RAD_NO_CONTAMINATE | RAD_BLOCK_CONTENTS
 	light_range = 4
+	integrity_enabled = FALSE
 
 	var/gasefficiency = 0.25
 
@@ -460,6 +461,13 @@
 */
 
 /obj/machinery/power/supermatter/attackby(obj/item/W as obj, mob/living/user as mob)
+	// todo: rework the fucking supermatter so we don't need this
+	// todo: also rework shit to not keep references to deleted things; LOOKING AT YOU CYBORGS
+	// tl;dr cyborgs keep refs to shit that's deleted and keep letting you use them
+	// so we add a sanity check here
+	if(QDELETED(W))
+		return
+
 	user.visible_message("<span class=\"warning\">\The [user] touches \a [W] to \the [src] as a silence fills the room...</span>",\
 		"<span class=\"danger\">You touch \the [W] to \the [src] when everything suddenly goes silent.\"</span>\n<span class=\"notice\">\The [W] flashes into dust as you flinch away from \the [src].</span>",\
 		"<span class=\"warning\">Everything suddenly goes silent.</span>")
@@ -483,6 +491,12 @@
 	Consume(AM)
 
 /obj/machinery/power/supermatter/proc/Consume(var/mob/living/user)
+	// todo: rework the fucking supermatter so we don't need this
+	// todo: also rework shit to not keep references to deleted things; LOOKING AT YOU CYBORGS
+	// tl;dr cyborgs keep refs to shit that's deleted and keep letting you use them
+	// so we add a sanity check here
+	if(QDELETED(user))
+		return
 	investigate_log("Consumed [user] ([ref(user)]) potentially last touched by [user.fingerprintslast], adding [istype(user)? 400 : 200] energy.", INVESTIGATE_SUPERMATTER)
 	if(istype(user))
 		user.dust()

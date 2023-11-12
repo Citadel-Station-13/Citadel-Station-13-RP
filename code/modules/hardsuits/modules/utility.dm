@@ -121,7 +121,7 @@
 	if(istype(T) && !T.Adjacent(get_turf(src)))
 		return 0
 
-	device.melee_attack_chain(target, holder.wearer)
+	device.melee_interaction_chain(target, holder.wearer)
 	return 1
 
 /obj/item/hardsuit_module/chem_dispenser

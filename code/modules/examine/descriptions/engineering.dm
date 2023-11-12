@@ -37,7 +37,7 @@
 
 /obj/machinery/door/get_description_interaction(mob/user)
 	var/list/results = list()
-	if(!repairing && (health < maxhealth) && !(machine_stat & BROKEN))
+	if(!repairing && is_integrity_damaged() && !(machine_stat & BROKEN))
 		results += "[desc_panel_image("metal sheet")]to start repairing damage (May require different material type)."
 	if(repairing && density)
 		results += "[desc_panel_image("welder", user)]to finish repairs."

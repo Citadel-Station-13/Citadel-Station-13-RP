@@ -6411,8 +6411,7 @@
 	open_layer = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /turf/simulated/wall,
 /area/tether/surfacebase/medical/storage)
@@ -11721,8 +11720,7 @@
 	open_layer = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/medical/triage)
@@ -11837,8 +11835,7 @@
 	open_layer = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -14364,8 +14361,7 @@
 	open_layer = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/medical/uppernorthstairwell)
@@ -18295,8 +18291,7 @@
 	req_access = list(20)
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/item/clothing/head/helmet/space/void/captain,
 /obj/item/clothing/suit/space/void/captain,
@@ -18314,8 +18309,7 @@
 /area/rnd/outpost/xenobiology/outpost_first_aid)
 "kCR" = (
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -23454,8 +23448,7 @@
 /obj/structure/grille,
 /obj/machinery/door/firedoor/glass,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -27380,8 +27373,7 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora_storage)
@@ -28811,8 +28803,7 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
@@ -37606,8 +37597,7 @@
 	open_layer = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -40213,8 +40203,7 @@
 	},
 /obj/machinery/portable_atmospherics/canister/air,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/effect/floor_decal/industrial/outline,
 /obj/machinery/door/window/northleft,
@@ -41804,8 +41793,7 @@
 "xKJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/shuttle/engine/heater,
 /turf/simulated/floor/plating,

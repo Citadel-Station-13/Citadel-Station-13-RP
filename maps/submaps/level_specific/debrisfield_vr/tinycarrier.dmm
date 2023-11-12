@@ -1012,8 +1012,6 @@
 	dir = 4
 	},
 /obj/machinery/portable_atmospherics/canister/empty/phoron{
-	destroyed = 1;
-	health = 0;
 	icon_state = "orangeps-1"
 	},
 /obj/effect/debris/cleanable/liquid_fuel,

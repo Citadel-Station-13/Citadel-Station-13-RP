@@ -4655,9 +4655,7 @@
 /turf/simulated/floor/outdoors/rocks/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_deep)
 "QS" = (
-/obj/machinery/porta_turret/stationary{
-	health = 200
-	},
+/obj/machinery/porta_turret/stationary,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -4847,9 +4845,7 @@
 /turf/simulated/floor,
 /area/outpost/mining_main/outpost/recreation)
 "ST" = (
-/obj/machinery/porta_turret/stationary{
-	health = 200
-	},
+/obj/machinery/porta_turret/stationary,
 /obj/machinery/light{
 	dir = 8
 	},
@@ -5386,9 +5382,7 @@
 /turf/simulated/floor/tiled,
 /area/gateway)
 "Xy" = (
-/obj/machinery/porta_turret/stationary{
-	health = 200
-	},
+/obj/machinery/porta_turret/stationary,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/gateway)
 "Xz" = (
