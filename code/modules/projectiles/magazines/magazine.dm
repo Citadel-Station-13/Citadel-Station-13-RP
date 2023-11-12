@@ -43,6 +43,9 @@
 	/// spec:
 	/// ammo_preload is what 'current ammo' is, type-wise
 	/// ammo_internal is considered the list of 1 to n casings infront of ammo_current.
+	/// index 1 is the bottom, index ammo_internal.len is the top of the magazin.e
+	/// peek/draw will peek/draw the last index first all the way to the first, and after that,
+	/// ammo_current is considered the 'reserve' pool (as just a number).
 	var/list/ammo_internal
 	/// caliber
 	var/ammo_caliber
@@ -90,39 +93,86 @@
  * peek top ammo casing
  */
 /obj/item/ammo_magazine/proc/peek_top()
-	#warn impl
+	if(!length(ammo_internal))
+		// list empty, see if we have one to inject
+		if(!ammo_current)
+			// we're empty
+			return
+		var/obj/item/ammo_casing/created = instantiate_casing()
+		if(isnull(ammo_internal))
+			ammo_internal = list(created)
+		else
+			ammo_internal += created
+		--ammo_current
+		return created
+	return ammo_internal[length(ammo_internal)]
 
 /**
  * get and eject top casing
  */
 /obj/item/ammo_magazine/proc/draw_top()
-	#warn impl
+	if(length(ammo_internal))
+		// list filled
+		. = ammo_internal[length(ammo_internal)]
+		--ammo_internal.len
+		update_icon()
+		return
+	// list empty
+	if(!ammo_current)
+		return
+	. = instantiate_casing()
+	--ammo_current
+	update_icon()
 
 /**
  * put a casing into top
  */
 /obj/item/ammo_magazine/proc/insert_top(obj/item/ammo_casing/casing)
 	#warn impl
+	update_icon()
 
 /**
  * replace the first spent casing or insert top depending on if there's room
  */
 /obj/item/ammo_magazine/proc/resupply_top(obj/item/ammo_casing/casing, replace_spent)
 	#warn impl
+	update_icon()
+
+/**
+ * transfer as many rounds to another magazine as possible
+ *
+ * @return rounds transferred
+ */
+/obj/item/ammo_magazine/proc/transfer_rounds_to(obj/item/ammo_magazine/receiver, force)
+	#warn impl
+	update_icon()
+	receiver.update_icon()
 
 /**
  * create casing when we draw into non-instantiated part of the mag
  */
 /obj/item/ammo_magazine/proc/instantiate_casing()
-	#warn impl
+	return new ammo_preload
 
 /**
  * instantiate the entire internal ammo list
  *
  * DO NOT USE UNLESS YOU KNOW WHAT YOU ARE DOING.
+ *
+ * @return rounds created
  */
 /obj/item/ammo_magazine/proc/instantiate_internal_list()
-	#warn impl
+	var/existing = length(ammo_internal)
+	if(existing > ammo_max)
+		ammo_current = 0
+		return
+	LAZYINITLIST(ammo_internal)
+	var/list/adding = list()
+	for(var/i in 1 to min(ammo_current, ammo_max - existing))
+		adding += instantiate_casing()
+	. = length(adding)
+	ammo_current = 0
+	ammo_internal += adding
 
 /**
  * can load a round
@@ -149,74 +199,55 @@
 #warn below
 
 /obj/item/ammo_magazine/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
-	if(istype(W, /obj/item/ammo_casing))
-		var/obj/item/ammo_casing/C = W
-		if(C.caliber != caliber)
-			to_chat(user, "<span class='warning'>[C] does not fit into [src].</span>")
-			return
-		if(stored_ammo.len >= ammo_max)
-			to_chat(user, "<span class='warning'>[src] is full!</span>")
-			return
-		if(!user.attempt_insert_item_for_installation(C, src))
-			return
-		stored_ammo.Add(C)
-		update_icon()
-	if(istype(W, /obj/item/ammo_magazine/clip))
-		var/obj/item/ammo_magazine/clip/L = W
-		if(L.caliber != caliber)
-			to_chat(user, "<span class='warning'>The ammo in [L] does not fit into [src].</span>")
-			return
-		if(!L.stored_ammo.len)
-			to_chat(user, "<span class='warning'>There's no more ammo [L]!</span>")
-			return
-		if(stored_ammo.len >= ammo_max)
-			to_chat(user, "<span class='warning'>[src] is full!</span>")
-			return
-		var/obj/item/ammo_casing/AC = L.stored_ammo[1] //select the next casing.
-		L.stored_ammo -= AC //Remove this casing from loaded list of the clip.
-		AC.loc = src
-		stored_ammo.Insert(1, AC) //add it to the head of our magazine's list
-		L.update_icon()
-	playsound(user.loc, 'sound/weapons/flipblade.ogg', 50, 1)
-	update_icon()
+	if(istype(I, /obj/item/ammo_casing))
+		var/obj/item/ammo_casing/casing = I
+		if(!can_load_casing(casing))
+			to_chat(user, SPAN_WARNING("[I] doesn't fit into [src]!"))
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		if(!amount_missing())
+			to_chat(user, SPAN_WARNING("[src] is full."))
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		if(!user.temporarily_remove_from_inventory(casing, user = user))
+			to_chat(user, SPAN_WARNING("[I] is stuck to your hand!"))
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		insert_top(casing)
+		// todo: variable load sounds
+		playsound(src, 'sound/weapons/flipblade.ogg', 50, 1)
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+	else if(istype(I, /obj/item/ammo_magazine))
+		#warn impl
+	else
+		return ..()
 
-// This dumps all the bullets right on the floor
-/obj/item/ammo_magazine/attack_self(mob/user)
+/obj/item/ammo_magazine/on_attack_self(datum/event_args/actor/e_args)
 	. = ..()
 	if(.)
 		return
-	if(can_remove_ammo)
-		if(!stored_ammo.len)
-			to_chat(user, "<span class='notice'>[src] is already empty!</span>")
-			return
-		to_chat(user, "<span class='notice'>You empty [src].</span>")
-		playsound(user.loc, "casing_sound", 50, 1)
-		spawn(7)
-			playsound(user.loc, "casing_sound", 50, 1)
-		spawn(10)
-			playsound(user.loc, "casing_sound", 50, 1)
-		for(var/obj/item/ammo_casing/C in stored_ammo)
-			C.loc = user.loc
-			C.setDir(pick(GLOB.cardinal))
-		stored_ammo.Cut()
-		update_icon()
-	else
-		to_chat(user, "<span class='notice'>\The [src] is not designed to be unloaded.</span>")
+	if(!ammo_removable)
 		return
+	. = TRUE
+	if(!amount_remaining())
+		e_args.chat_feedback(SPAN_WARNING("[src] is empty."), src)
+		return
+	e_args.chat_feedback(SPAN_NOTICE("You remove a round from [src]."), src)
+	var/obj/item/ammo_casing/casing = draw_top()
+	e_args.performer.put_in_hands_or_drop(casing)
 
-// This puts one bullet from the magazine into your hand
-/obj/item/ammo_magazine/attack_hand(mob/user, list/params)
-	if(can_remove_ammo)	// For Smart Magazines
-		if(user.get_inactive_held_item() == src)
-			if(stored_ammo.len)
-				var/obj/item/ammo_casing/C = stored_ammo[stored_ammo.len]
-				stored_ammo-=C
-				user.put_in_hands(C)
-				user.visible_message("\The [user] removes \a [C] from [src].", "<span class='notice'>You remove \a [C] from [src].</span>")
-				update_icon()
-				return
-	..()
-
+/obj/item/ammo_magazine/on_attack_hand(datum/event_args/actor/clickchain/e_args)
+	. = ..()
+	if(.)
+		return
+	if(!e_args.performer.is_holding_inactive(src))
+		return
+	if(!ammo_removable)
+		return
+	. = TRUE
+	if(!amount_remaining())
+		e_args.chat_feedback(SPAN_WARNING("[src] is empty."), src)
+		return
+	e_args.chat_feedback(SPAN_NOTICE("You remove a round from [src]."), src)
+	var/obj/item/ammo_casing/casing = draw_top()
+	e_args.performer.put_in_hands_or_drop(casing)
 
 /**
  * puts a round into us, if possible
