@@ -242,6 +242,42 @@
 /obj/item/grab/throw_resolve_override(atom/movable/resolved, mob/user)
 	return TRUE
 
+/obj/item/grab/melee_object_hit(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags, mult)
+	switch(state)
+		if(GRAB_PASSIVE)
+			clickchain.visible_feedback(
+				target = target,
+				range = MESSAGE_RANGE_COMBAT_LOUD,
+				visible = SPAN_DANGER("[clickchain.performer] shoves [affecting] against \the [target]!")
+			)
+			affecting.take_organ_damage(10)
+			affecting.afflict_knockdown(0.5 SECONDS)
+			qdel(src)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		if(GRAB_AGGRESSIVE)
+			clickchain.visible_feedback(
+				target = target,
+				range = MESSAGE_RANGE_COMBAT_LOUD,
+				visible = SPAN_DANGER("[clickchain.performer] slams [affecting] against \the [target]!")
+			)
+			affecting.take_organ_damage(20)
+			affecting.afflict_paralyze(1 SECONDS)
+			affecting.afflict_knockdown(2 SECONDS)
+			qdel(src)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		if(GRAB_NECK, GRAB_KILL)
+			clickchain.visible_feedback(
+				target = target,
+				range = MESSAGE_RANGE_COMBAT_LOUD,
+				visible = SPAN_DANGER("[clickchain.performer] smashes [affecting] against \the [target]!")
+			)
+			affecting.take_organ_damage(30)
+			affecting.afflict_paralyze(3 SECONDS)
+			affecting.afflict_knockdown(4.5 SECONDS)
+			qdel(src)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()
+
 //Updating pixelshift, position and direction
 //Gets called on process, when the grab gets upgraded or the assailant moves
 /obj/item/grab/proc/adjust_position()

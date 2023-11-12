@@ -137,7 +137,6 @@
 /turf/simulated/floor,
 /area/awaymission/northblock)
 "aN" = (
-/obj/machinery/robotic_fabricator,
 /turf/simulated/floor,
 /area/awaymission/northblock)
 "aP" = (
@@ -408,7 +407,7 @@
 /turf/simulated/floor/airless,
 /area/awaymission/research)
 "cl" = (
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /turf/simulated/floor/airless,
 /area/awaymission/research)
 "cm" = (

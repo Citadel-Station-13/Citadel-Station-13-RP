@@ -538,8 +538,7 @@
 /area/ninja_dojo/dojo)
 "bp" = (
 /obj/structure/window/reinforced{
-	dir = 4;
-	health = 1e+006
+	dir = 4
 	},
 /turf/unsimulated/floor{
 	icon_state = "snow";
@@ -561,8 +560,7 @@
 /area/ninja_dojo/dojo)
 "bs" = (
 /obj/structure/window/reinforced{
-	dir = 4;
-	health = 1e+006
+	dir = 4
 	},
 /turf/unsimulated/floor{
 	icon_state = "asteroid"

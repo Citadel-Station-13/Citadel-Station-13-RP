@@ -9,6 +9,9 @@
 	name = "cooker"
 	desc = "You shouldn't be seeing this!"
 	icon = 'icons/obj/cooking_machines.dmi'
+	// todo: temporary, as this is unbuildable
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
+
 	var/appliancetype = 0
 	density = 1
 	anchored = 1

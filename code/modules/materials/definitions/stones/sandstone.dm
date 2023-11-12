@@ -7,16 +7,23 @@
 	icon_reinf_directionals = TRUE
 	icon_colour = "#D9C179"
 	shard_type = SHARD_STONE_PIECE
-	weight = 22
-	hardness = 55
-	protectiveness = 5 // 20%
-	conductive = 0
-	conductivity = 5
 	door_icon_base = "stone"
 	sheet_singular_name = "brick"
 	sheet_plural_name = "bricks"
 	table_icon_base = "stone"
 	tgui_icon_key = "sandstone"
+
+	relative_integrity = 0.7
+	weight_multiplier = 4
+	density = 8 * 0.7
+	relative_conductivity = 0
+	relative_permeability = 0.05
+	relative_reactivity = 0.4
+	hardness = MATERIAL_RESISTANCE_LOW
+	toughness = MATERIAL_RESISTANCE_HIGH
+	refraction = MATERIAL_RESISTANCE_VULNERABLE
+	absorption = MATERIAL_RESISTANCE_MODERATE
+	nullification = MATERIAL_RESISTANCE_VULNERABLE
 
 /datum/material/sandstone/generate_recipes()
 	. = ..()

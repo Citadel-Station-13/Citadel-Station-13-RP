@@ -11,7 +11,7 @@
 	throw_speed = 1
 	throw_range = 5
 	w_class = ITEMSIZE_NORMAL
-	materials = list(MAT_STEEL = 3000)
+	materials_base = list(MAT_STEEL = 3000)
 	var/list/carrying = list() // List of things on the tray. - Doohl
 	var/max_carry = 10
 
@@ -196,7 +196,7 @@
 			Img.layer = layer + I.layer*0.01
 			if(istype(I, /obj/item/material))
 				var/obj/item/material/O = I
-				if(O.applies_material_colour)
+				if(O.material_color)
 					Img.color = O.color
 			add_overlay(Img)
 

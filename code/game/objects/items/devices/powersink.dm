@@ -10,7 +10,7 @@
 	throw_speed = 1
 	throw_range = 2
 
-	materials = list(MAT_STEEL = 750)
+	materials_base = list(MAT_STEEL = 750)
 
 	origin_tech = list(TECH_POWER = 3, TECH_ILLEGAL = 5)
 	/// amount of power to drain per tick in kw

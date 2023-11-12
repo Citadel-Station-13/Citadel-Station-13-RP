@@ -42,6 +42,8 @@
 	power_channel = ENVIRON
 	idle_power_usage = 100
 	anchored = TRUE
+	// todo: temporary, as this is unbuildable
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 
 	// construct_state = /singleton/machine_construction/default/panel_closed
 	var/datum/ship_engine/ion/controller

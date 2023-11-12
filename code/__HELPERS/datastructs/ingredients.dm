@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 //* INGREDIENTS SYSTEM - Check [code/__DEFINES/ingredients.dm] *//
 
 /// Ingredients are specially formatted lists.

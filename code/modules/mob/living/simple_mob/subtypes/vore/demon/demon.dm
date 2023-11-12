@@ -33,8 +33,8 @@
 	response_disarm = "pushes"
 	response_harm = "hits"
 
-	melee_damage_lower = 3
-	melee_damage_upper = 1
+	legacy_melee_damage_lower = 3
+	legacy_melee_damage_upper = 1
 	attacktext = list("clawed")
 
 	vore_active = TRUE

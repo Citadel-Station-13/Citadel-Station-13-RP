@@ -2,6 +2,7 @@
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
 /obj/machinery/atmospherics/component
+	obj_flags = OBJ_ON_BLUEPRINTS | OBJ_MELEE_TARGETABLE | OBJ_RANGE_TARGETABLE
 	interaction_flags_machine = INTERACT_MACHINE_ALLOW_SILICON | INTERACT_MACHINE_OPEN | INTERACT_MACHINE_OPEN_SILICON | INTERACT_MACHINE_OFFLINE | INTERACT_MACHINE_OFFLINE_SILICON
 	default_deconstruct = 4 SECONDS
 	tool_deconstruct = TOOL_WRENCH

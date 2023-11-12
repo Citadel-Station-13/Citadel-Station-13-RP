@@ -493,7 +493,7 @@
 	update_static_data()
 	return TRUE
 
-/obj/machinery/chemical_dispenser/drop_products(method)
+/obj/machinery/chemical_dispenser/drop_products(method, atom/where)
 	. = ..()
 	if(synthesizers && !synthesizers_swappable)
 		QDEL_LIST(synthesizers) // nope

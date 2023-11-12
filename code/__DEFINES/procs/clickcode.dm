@@ -2,8 +2,8 @@
 /**
  * flags passed around click procs including:
  * ClickOn
- * melee_attack_chain
- * ranged_attack_chain
+ * melee_interaction_chain
+ * ranged_interaction_chain
  * attackby
  * pre_attack
  * standard_melee_attack and related
@@ -32,10 +32,12 @@
 #define CLICKCHAIN_FROM_HREF				(1<<4)
 /// did something in the proc, logically should stop using it (the user should anyways)
 #define CLICKCHAIN_DID_SOMETHING			(1<<5)
+/// attack missed
+#define CLICKCHAIN_ATTACK_MISSED			(1<<6)
 /// completely block attacking (notably, attack_mob, attack_obj) from happening by halting standard_melee_attack.
-#define CLICKCHAIN_DO_NOT_ATTACK			(1<<6)
+#define CLICKCHAIN_DO_NOT_ATTACK			(1<<7)
 /// intercepted by component
-#define CLICKCHAIN_COMPONENT_SIGNAL_HANDLED	(1<<7)
+#define CLICKCHAIN_COMPONENT_SIGNAL_HANDLED	(1<<8)
 
 //! Reachability Depths - checked from level of DirectAccess and turf adjacency.
 /// default reachability depth

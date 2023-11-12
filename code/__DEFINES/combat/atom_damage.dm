@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 //! Atom destruction types, used in /deconstruct() and its derived/child/called functions.
 /// Atom was neatly deconstructed
 #define ATOM_DECONSTRUCT_DISASSEMBLED 0
@@ -7,5 +10,3 @@
 #define ATOM_DECONSTRUCT_ACID 2
 /// Atom was put out of commission by an unexpected thermal event
 #define ATOM_DECONSTRUCT_FIRE 3
-
-

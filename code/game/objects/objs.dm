@@ -1,15 +1,17 @@
 /obj
-
 	layer = OBJ_LAYER
 	plane = OBJ_PLANE
 	pass_flags_self = ATOM_PASS_OVERHEAD_THROW
 	animate_movement = SLIDE_STEPS
 	rad_flags = NONE
 	atom_colouration_system = TRUE
+	integrity_enabled = TRUE
+	armor_type = /datum/armor/object/default
 
+	//? Flags
 	/// object flags, see __DEFINES/_flags/obj_flags.dm
-	var/obj_flags = CAN_BE_HIT
-	/// ONLY FOR MAPPING: Sets flags from a string list, handled in Initialize. Usage: set_obj_flags = "EMAGGED;!CAN_BE_HIT" to set EMAGGED and clear CAN_BE_HIT.
+	var/obj_flags = OBJ_MELEE_TARGETABLE | OBJ_RANGE_TARGETABLE
+	/// ONLY FOR MAPPING: Sets flags from a string list, handled in Initialize. Usage: set_obj_flags = "OBJ_EMAGGED;!CAN_BE_HIT" to set OBJ_EMAGGED and clear CAN_BE_HIT.
 	var/set_obj_flags
 
 	//? Access - see [modules/jobs/access.dm]
@@ -42,16 +44,50 @@
 	/// economic category for objects
 	var/economic_category_obj = ECONOMIC_CATEGORY_OBJ_DEFAULT
 
+	//? Integrity
+	integrity = 200
+	integrity_max = 200
+	integrity_failure = 50
+	/// Standard integrity examine
+	var/integrity_examine = TRUE
+
 	//? Materials
-	/// static materials in us
+	/// Material amounts in us
+	/// For sheets, this represents the per-sheet amount.
 	/// material id = amount
-	var/list/materials
-	/// material parts - lazy list; lets us track what we're made of.
-	/// key = cost in cm3
-	var/list/material_parts
-	/// material parts on spawn
-	/// key = material id
-	var/list/material_defaults
+	/// * This may be a typelist, use is_typelist to check.
+	/// * Always use get_base_materials to get this list unless you know what you're doing.
+	/// * This may use typepath keys at compile time, but is immediately converted to material IDs on boot.
+	/// * This does not include material parts.
+	var/list/materials_base
+	/// material parts - lets us track what we're made of
+	/// this is either a lazy key-value list of material keys to instances,
+	/// or a single material instance
+	/// or null for defaults.
+	/// ! This must be set for anything using the materials system.
+	/// ! This is what determines how many, and if something uses the material parts system.
+	/// * This may be a typelist, use is_typelist to check.
+	/// * Use [MATERIAL_DEFAULT_DISABLED] if something doesn't use material parts system.
+	/// * Use [MATERIAL_DEFAULT_ABSTRACTED] if something uses the abstraction API to implement material parts themselves.
+	/// * Use [MATERIAL_DEFAULT_NONE] if something uses material parts system, but has only one material with default of null.
+	/// * This may use typepath keys or material IDs at compile time / on map, but is immediately converted to material instances on boot.
+	/// * Always use [get_material_parts] to get this list unless you know what you're doing.
+	/// * This var should never be changed from a list to a normal value or vice versa at runtime,
+	///   as we use this to detect which material update proc to call!
+	var/list/material_parts = MATERIAL_DEFAULT_DISABLED
+	/// material costs - lets us track the costs of what we're made of.
+	/// this is either a lazy key-value list of material keys to cost in cm3,
+	/// or a single number.
+	/// * This may be a typelist, use is_typelist to check.
+	/// * Always use [get_material_part_costs] to get this list unless you know what you're doing.
+	/// * This may use typepath keys at compile time, but is immediately converted to material IDs on boot.
+	/// * This should still be set even if you are implementing material_parts yourself!
+	//  todo: abstraction API for this when we need it.
+	var/list/material_costs
+	/// material part considered primary.
+	var/material_primary
+	/// make the actual materials multiplied by this amount. used by lathes to prevent duping with efficiency upgrades.
+	var/material_multiplier = 1
 
 	//? Sounds
 	/// volume when breaking out using resist process
@@ -67,10 +103,13 @@
 	/// Set when a player renames a renamable object.
 	var/renamed_by_player = FALSE
 	var/w_class // Size of the object.
-	var/unacidable = 0 //universal "unacidabliness" var, here so you can use it in any obj.
+	//! LEGACY: DO NOT USE
 	var/sharp = 0		// whether this object cuts
+	//! LEGACY: DO NOT USE
 	var/edge = 0		// whether this object is more likely to dismember
+	//! LEGACY: DO NOT USE
 	var/pry = 0			//Used in attackby() to open doors
+	//! LEGACY: DO NOT USE
 	var/in_use = 0 // If we have a user using us, this will be set on. We will check if the user has stopped using us, and thus stop updating and LAGGING EVERYTHING!
 	var/damtype = "brute"
 	// todo: /obj/item level, /obj/projectile level, how to deal with armor?
@@ -86,13 +125,36 @@
 	if(register_as_dangerous_object)
 		register_dangerous_to_step()
 	. = ..()
-	if(!isnull(materials))
-		materials = typelist(NAMEOF(src, materials), materials)
-	if(!isnull(material_parts))
-		material_parts = typelist(NAMEOF(src, material_parts), material_parts)
-	if(!isnull(material_defaults))
-		material_defaults = typelist(NAMEOF(src, material_defaults), material_defaults)
-		init_materials()
+	// cache base materials if it's not modified
+	if(!isnull(materials_base) && !(obj_flags & OBJ_MATERIALS_MODIFIED))
+		if(has_typelist(materials_base))
+			materials_base = get_typelist(materials_base)
+		else
+			// preprocess
+			materials_base = SSmaterials.preprocess_kv_keys_to_ids(materials_base)
+			materials_base = typelist(NAMEOF(src, materials_base), materials_base)
+	// cache material costs if it's not modified
+	if(islist(material_costs))
+		if(has_typelist(material_costs))
+			material_costs = get_typelist(material_costs)
+		else
+			// preprocess
+			material_costs = SSmaterials.preprocess_kv_keys_to_ids(material_costs)
+			material_costs = typelist(NAMEOF(src, material_costs), material_costs)
+	// initialize material parts system
+	if(material_parts != MATERIAL_DEFAULT_DISABLED)
+		// process material parts only if it wasn't set already
+		// this allows children of /obj to modify their material parts prior to init.
+		if(islist(material_parts) && !(obj_flags & OBJ_MATERIAL_PARTS_MODIFIED))
+			if(has_typelist(material_parts))
+				material_parts = get_typelist(material_parts)
+			else
+				// preprocess
+				material_parts = SSmaterials.preprocess_kv_values_to_ids(material_parts)
+				material_parts = typelist(NAMEOF(src, material_parts), material_parts)
+		// init material parts only if it wasn't initialized already
+		if(!(obj_flags & OBJ_MATERIAL_INITIALIZED))
+			init_material_parts()
 	if (set_obj_flags)
 		var/flagslist = splittext(set_obj_flags,";")
 		var/list/string_to_objflag = GLOB.bitfields["obj_flags"]
@@ -104,7 +166,10 @@
 				obj_flags |= string_to_objflag[flag]
 
 /obj/Destroy()
-	STOP_PROCESSING(SSobj, src)
+	for(var/datum/material_trait/trait as anything in material_traits)
+		trait.on_remove(src, material_traits[trait])
+	if(IS_TICKING_MATERIALS(src))
+		STOP_TICKING_MATERIALS(src)
 	if(register_as_dangerous_object)
 		unregister_dangerous_to_step()
 	SStgui.close_uis(src)
@@ -219,29 +284,6 @@
 // Test for if stepping on a tile containing this obj is safe to do, used for things like landmines and cliffs.
 /obj/proc/is_safe_to_step(mob/living/L)
 	return TRUE
-
-/obj/examine(mob/user, dist)
-	. = ..()
-	if(materials)
-		if(!materials.len)
-			return
-		var/materials_list
-		var/i = 1
-		while(i<materials.len)
-			materials_list += lowertext(materials[i])
-			materials_list += ", "
-			i++
-		materials_list += materials[i]
-		. += "<u>It is made out of [materials_list]</u>."
-	return
-
-/obj/proc/plunger_act(obj/item/plunger/P, mob/living/user, reinforced)
-	return
-
-/obj/attack_hand(mob/user, list/params)
-	if(Adjacent(user))
-		add_fingerprint(user)
-	..()
 
 //? Attacks
 
@@ -364,10 +406,12 @@
 	return get_turf(src)
 
 /obj/attack_hand(mob/user, list/params)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
 	. = ..()
 	if(.)
 		return
-	if(length(climbing) && user.a_intent == INTENT_HARM)
+	if(length(climbing) && user.a_intent == INTENT_DISARM)
 		user.visible_message(SPAN_WARNING("[user] slams against \the [src]!"))
 		user.do_attack_animation(src)
 		shake_climbers()
@@ -478,31 +522,37 @@
 /obj/proc/should_hide_underfloor()
 	return FALSE
 
-//? Materials
+//* Examine
 
-/obj/get_materials()
-	. = materials.Copy()
+/obj/examine(mob/user, dist)
+	. = ..()
+	if(integrity_examine)
+		. += examine_integrity(user)
+	var/list/parts = get_material_parts()
+	for(var/key in parts)
+		var/datum/material/mat = parts[key]
+		if(isnull(mat)) // 'none' option
+			continue
+		. += "Its [key] is made out of [mat.display_name]"
 
-/**
- * initialize materials
- */
-/obj/proc/init_materials()
-	if(!isnull(material_defaults))
-		set_material_parts(material_defaults)
-		for(var/key in material_defaults)
-			var/mat = material_defaults[key]
-			var/amt = material_parts[key]
-			materials[mat] += amt
+/obj/proc/examine_integrity(mob/user)
+	. = list()
+	if(!integrity_enabled)
+		return
+	if(integrity == integrity_max)
+		. += SPAN_NOTICE("It looks fully intact.")
+	else
+		var/perc = percent_integrity()
+		if(perc > 0.75)
+			. += SPAN_NOTICE("It looks a bit dented.")
+		else if(perc > 0.5)
+			. += SPAN_WARNING("It looks damaged.")
+		else if(perc > 0.25)
+			. += SPAN_RED("It looks severely damaged.")
+		else
+			. += SPAN_BOLDWARNING("It's falling apart!")
 
-/**
- * sets our material parts to a list by key / value
- * this does not update [materials], you have to do that manually
- * this is usually done in init using init_materials
- */
-/obj/proc/set_material_parts(list/parts)
-	return
-
-//? Resists
+//* Resists
 
 /**
  * called when something tries to resist out from inside us.

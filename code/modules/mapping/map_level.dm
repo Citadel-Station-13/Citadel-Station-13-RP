@@ -71,6 +71,7 @@
 	UNPACK_LINK(link_west)
 	UNPACK_LINK(link_below)
 	UNPACK_LINK(link_above)
+	BLOCK_BYOND_BUG_2072419
 	#undef UNPACK_LINK
 	if(ispath(air_indoors, /datum/atmosphere))
 		var/datum/atmosphere/cast_air_indoors = air_indoors

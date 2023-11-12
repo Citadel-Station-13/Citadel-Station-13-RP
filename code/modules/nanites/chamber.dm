@@ -157,7 +157,7 @@
 	var/obj/item/organ/internal/nano/refactory/protean_refactory = locate() in occupant.internal_organs
 	if(isnull(protean_refactory))
 		return
-	protean_refactory.materials[MAT_STEEL] = protean_refactory.max_storage
+	protean_refactory.stored_materials[MAT_STEEL] = protean_refactory.max_storage
 	occupant.innate_feedback(SPAN_NOTICE("Your refactory chimes as your nanite reserves are refilled by the chamber."))
 
 /obj/machinery/nanite_chamber/proc/try_rebuild_protean(mob/user)

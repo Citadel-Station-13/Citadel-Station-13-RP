@@ -91,7 +91,7 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/centralhall)
 "afn" = (
-/obj/structure/table/rack/holorack,
+/obj/structure/table/rack/holorack_legacy,
 /obj/random/maintenance/clean,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -581,8 +581,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/grille,
 /turf/simulated/floor/reinforced,
@@ -1098,7 +1097,8 @@
 	},
 /obj/item/material/twohanded/baseballbat{
 	desc = "Decadence";
-	health = 1989
+	integrity = 1989;
+	integrity_max = 1989
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
@@ -5355,8 +5355,7 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -6066,8 +6065,7 @@
 	},
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/grille,
 /turf/simulated/floor/tiled/dark,
@@ -7091,8 +7089,7 @@
 /obj/structure/window/reinforced/full,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -7883,8 +7880,7 @@
 /obj/machinery/disposal,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/disposalpipe/trunk{
 	dir = 8
@@ -9954,8 +9950,7 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -10447,8 +10442,7 @@
 "hog" = (
 /obj/structure/window/reinforced/full,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -13646,8 +13640,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -15380,8 +15373,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -17514,8 +17506,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/grille,
 /obj/structure/grille,
@@ -17854,8 +17845,7 @@
 "mKH" = (
 /obj/structure/window/reinforced/full,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -20515,7 +20505,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/lower/bar)
 "oyS" = (
-/obj/structure/table/rack/holorack,
+/obj/structure/table/rack/holorack_legacy,
 /obj/effect/floor_decal/rust,
 /obj/random/maintenance/clean,
 /obj/random/tech_supply,
@@ -21007,7 +20997,8 @@
 "oUu" = (
 /obj/item/material/twohanded/baseballbat{
 	desc = "This bat looks very off.";
-	health = 500
+	integrity_max = 500;
+	integrity = 500
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
@@ -21936,8 +21927,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -25256,8 +25246,7 @@
 /obj/structure/window/reinforced/full,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -25487,8 +25476,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -26685,7 +26673,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/atmos)
 "sZM" = (
-/obj/structure/table/rack/holorack,
+/obj/structure/table/rack/holorack_legacy,
 /obj/random/maintenance/clean,
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
@@ -27308,8 +27296,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -27609,8 +27596,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -29249,8 +29235,7 @@
 "vek" = (
 /obj/machinery/disposal,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced,
 /obj/structure/disposalpipe/trunk{
@@ -31159,8 +31144,7 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/medical/centralhall)
@@ -32194,8 +32178,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/grille,
 /turf/simulated/floor/reinforced,
@@ -32462,8 +32445,7 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4

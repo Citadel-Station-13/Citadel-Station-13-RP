@@ -1,55 +1,24 @@
-//generic procs copied from obj/effect/alien
+//generic procs copied from obj/structure/alien
 /obj/effect/spider
 	name = "web"
 	desc = "it's stringy and sticky"
 	icon = 'icons/effects/effects.dmi'
-	anchored = 1
-	density = 0
-	var/health = 15
-
-//similar to weeds, but only barfed out by nurses manually
-/obj/effect/spider/legacy_ex_act(severity)
-	switch(severity)
-		if(1.0)
-			qdel(src)
-		if(2.0)
-			if (prob(50))
-				qdel(src)
-		if(3.0)
-			if (prob(5))
-				qdel(src)
-	return
-
-/obj/effect/spider/attackby(var/obj/item/W, var/mob/user)
-	user.setClickCooldown(user.get_attack_speed(W))
-
-	visible_message("<span class='warning'>\The [src] has been [W.get_attack_verb(src, user)] with \the [W][(user ? " by [user]." : ".")]</span>")
-
-	var/damage = W.damage_force / 4.0
-
-	if(istype(W, /obj/item/weldingtool))
-		var/obj/item/weldingtool/WT = W
-
-		if(WT.remove_fuel(0, user))
-			damage = 15
-			playsound(src, W.tool_sound, 100, 1)
-
-	health -= damage
-	healthcheck()
-
-/obj/effect/spider/bullet_act(var/obj/projectile/Proj)
-	..()
-	health -= Proj.get_structure_damage()
-	healthcheck()
-
-/obj/effect/spider/proc/healthcheck()
-	if(health <= 0)
-		qdel(src)
+	anchored = TRUE
+	density = FALSE
+	integrity_enabled = TRUE
+	obj_flags = OBJ_MELEE_TARGETABLE | OBJ_RANGE_TARGETABLE
+	integrity = 15
+	integrity_max = 15
+	armor_type = /datum/armor/none
 
 /obj/effect/spider/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 	if(exposed_temperature > 300 + T0C)
-		health -= 5
-		healthcheck()
+		damage_integrity(5)
+
+/obj/effect/spider/melee_act(mob/user, obj/item/weapon, target_zone, mult)
+	if(weapon.damtype == BURN)
+		mult *= 2
+	return ..()
 
 /obj/effect/spider/stickyweb
 	icon_state = "stickyweb1"
@@ -125,7 +94,8 @@
 	icon_state = "spiderling"
 	anchored = 0
 	layer = HIDING_LAYER
-	health = 3
+	integrity = 5
+	integrity_max = 5
 	var/last_itch = 0
 	var/amount_grown = -1
 	var/obj/machinery/atmospherics/component/unary/vent_pump/entry_vent
@@ -152,20 +122,21 @@
 	walk(src, 0) // Because we might have called walk_to, we must stop the walk loop or BYOND keeps an internal reference to us forever.
 	return ..()
 
-/obj/effect/spider/spiderling/Bump(atom/user)
-	if(istype(user, /obj/structure/table))
-		src.loc = user.loc
-	else
-		..()
+/obj/effect/spider/spiderling/Bump(atom/A)
+	. = ..()
+	if(istype(A, /obj/structure/table))
+		var/still_here = loc
+		spawn(0)
+			// todo: remove this shit
+			if(QDELETED(src))
+				return
+			if(loc == still_here)
+				forceMove(A.loc)
 
-/obj/effect/spider/spiderling/proc/die()
+/obj/effect/spider/spiderling/atom_destruction()
 	visible_message("<span class='alert'>[src] dies!</span>")
 	new /obj/effect/debris/cleanable/spiderling_remains(src.loc)
-	qdel(src)
-
-/obj/effect/spider/spiderling/healthcheck()
-	if(health <= 0)
-		die()
+	return ..()
 
 /obj/effect/spider/spiderling/process(delta_time)
 	if(travelling_in_vent)
@@ -178,9 +149,15 @@
 			if(!exit_vent)
 				return
 			spawn(rand(20,60))
+				// todo: remove this shit
+				if(QDELETED(src))
+					return
 				loc = exit_vent
 				var/travel_time = round(get_dist(loc, exit_vent.loc) / 2)
 				spawn(travel_time)
+					// todo: remove this shit
+					if(QDELETED(src))
+						return
 
 					if(!exit_vent || exit_vent.welded)
 						loc = entry_vent
@@ -190,6 +167,9 @@
 					if(prob(50))
 						src.visible_message("<span class='notice'>You hear something squeezing through the ventilation ducts.</span>",2)
 					sleep(travel_time)
+					// todo: remove this shit
+					if(QDELETED(src))
+						return
 
 					if(!exit_vent || exit_vent.welded)
 						loc = entry_vent
@@ -245,6 +225,9 @@
 			var/mob/living/simple_mob/animal/giant_spider/GS = new spawn_type(src.loc, src)
 			if(stunted)
 				spawn(2)
+					// todo: remove this shit
+					if(QDELETED(src))
+						return
 					GS.make_spiderling()
 			qdel(src)
 
@@ -272,6 +255,9 @@
 			var/mob/living/simple_mob/animal/giant_spider/GS = new spawn_type(src.loc, src)
 			if(stunted)
 				spawn(2)
+					// todo: remove this shit
+					if(QDELETED(src))
+						return
 					GS.make_spiderling()
 			qdel(src)
 
@@ -291,7 +277,8 @@
 	name = "cocoon"
 	desc = "Something wrapped in silky spider web"
 	icon_state = "cocoon1"
-	health = 10
+	integrity = 30
+	integrity_max = 30
 
 /obj/effect/spider/cocoon/Initialize(mapload)
 	. = ..()

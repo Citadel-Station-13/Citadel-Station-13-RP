@@ -9,7 +9,7 @@
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 5
 	throw_range = 10
-	materials = list(MAT_STEEL = 200)
+	materials_base = list(MAT_STEEL = 200)
 	origin_tech = list(TECH_MAGNET = 1, TECH_BIO = 1)
 	var/mode = 1
 	var/advscan = 0

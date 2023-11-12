@@ -5,7 +5,7 @@
 	icon_state = "hull"
 	w_class = ITEMSIZE_HUGE
 	origin_tech = list(TECH_DATA = 2, TECH_ENGINEERING = 2)
-	materials = list(MAT_STEEL = 3500, MAT_GLASS = 200)
+	materials_base = list(MAT_STEEL = 3500, MAT_GLASS = 200)
 
 	component_type = MECH_HULL
 
@@ -13,8 +13,8 @@
 
 	required_type = null	// List, if it exists. Exosuits meant to use the component.
 
-	integrity_danger_mod = 0.5	// Multiplier for comparison to max_integrity before problems start.
-	max_integrity = 50
+	integrity_danger_mod = 0.5	// Multiplier for comparison to integrity_max before problems start.
+	integrity_max = 50
 
 	internal_damage_flag = MECHA_INT_FIRE
 
@@ -25,7 +25,7 @@
 
 	step_delay = 4
 	integrity_danger_mod = 0.3
-	max_integrity = 100
+	integrity_max = 100
 
 /obj/item/mecha_parts/component/hull/lightweight
 	name = "lightweight mecha hull"

@@ -13,7 +13,7 @@
 	volume = 5
 	drop_sound = 'sound/items/drop/glass.ogg'
 	pickup_sound = 'sound/items/pickup/glass.ogg'
-
+	integrity_flags = INTEGRITY_ACIDPROOF
 
 /obj/item/reagent_containers/dropper/examine(mob/user, dist)
 	. = ..()
@@ -114,7 +114,6 @@
 	desc = "A hand-carved dropper. Roughly hewn out of softened volcanic stone, it still allows for precise measurement of fluids."
 	icon = 'icons/obj/lavaland.dmi'
 	icon_state = "ashdropper0"
-	unacidable = 1
 
 /obj/item/reagent_containers/dropper/ashlander/update_icon()
 	if(reagents.total_volume)

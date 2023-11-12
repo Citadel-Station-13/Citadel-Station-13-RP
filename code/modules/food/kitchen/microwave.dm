@@ -11,6 +11,8 @@
 	idle_power_usage = 5
 	active_power_usage = 2000
 	atom_flags = OPENCONTAINER | NOREACT
+	// todo: temporary, as this is unbuildable
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 	var/operating = 0 // Is it on?
 	var/dirty = 0 // = {0..100} Does it need cleaning?
 	var/broken = 0 // ={0,1,2} How broken is it???

@@ -13,8 +13,8 @@ var/global/list/grub_machine_overlays = list()
 	maxHealth = 5
 	movement_cooldown = 3
 
-	melee_damage_lower = 1	// This is a tiny worm. It will nibble and thats about it.
-	melee_damage_upper = 1
+	legacy_melee_damage_lower = 1	// This is a tiny worm. It will nibble and thats about it.
+	legacy_melee_damage_upper = 1
 
 	meat_amount = 2
 	meat_type = /obj/item/reagent_containers/food/snacks/meat/grubmeat

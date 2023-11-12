@@ -33,8 +33,8 @@
 
 	movement_cooldown = 0
 
-	melee_damage_lower = 2
-	melee_damage_upper = 10
+	legacy_melee_damage_lower = 2
+	legacy_melee_damage_upper = 10
 	base_attack_cooldown = 1 SECOND
 	attack_edge = 1		// Razor-edged wings, and 'claws' made for digging through ice.
 	attacktext = list("nipped", "bit", "cut", "clawed")

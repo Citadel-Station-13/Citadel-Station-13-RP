@@ -67,14 +67,12 @@
 	if(!T)
 		qdel(src)
 		return
-	if(istype(T))
-		health -= seed.handle_environment(T,T.return_air(),null,1)
-	if(health < max_health)
-		health += rand(3,5)
-		refresh_icon()
-		if(health > max_health)
-			health = max_health
-	else if(health == max_health && !plant)
+	var/health_change = -seed.handle_environment(T,T.return_air(),null,1)
+	var/thriving = health_change > 0
+	// heal
+	health_change += rand(3, 5)
+	adjust_integrity(health_change)
+	if(thriving && !plant)
 		plant = new(T,seed)
 		plant.dir = src.dir
 		plant.transform = src.transform
@@ -120,7 +118,6 @@
 				spread_to(pick(neighbors))
 
 	// We shouldn't have spawned if the controller doesn't exist.
-	check_health()
 	if(has_buckled_mobs() || neighbors.len)
 		SSplants.add_plant(src)
 
@@ -173,9 +170,10 @@
 		return FALSE
 	return ..()
 
-/obj/effect/plant/proc/die_off()
+/obj/effect/plant/proc/die_off(destroying)
 	// Kill off our plant.
-	if(plant) plant.die()
+	if(plant)
+		plant.die()
 	// This turf is clear now, let our buddies know.
 	for(var/turf/simulated/check_turf in get_cardinal_neighbors())
 		if(!istype(check_turf))
@@ -183,6 +181,7 @@
 		for(var/obj/effect/plant/neighbor in check_turf.contents)
 			neighbor.neighbors |= check_turf
 			SSplants.add_plant(neighbor)
-	spawn(1) if(src) qdel(src)
+	if(!destroying)
+		QDEL_IN(src, 0)
 
 #undef NEIGHBOR_REFRESH_TIME

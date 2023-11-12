@@ -2,7 +2,7 @@
  * switchtools!
  *
  * supports both the dynamic tool system by providing the necessary tool behaviours, as well as
- * the normal attackby system by passing melee_attack_chain down if necessary.
+ * the normal attackby system by passing melee_interaction_chain down if necessary.
  */
 /obj/item/switchtool
 	name = "switchtool"
@@ -282,19 +282,19 @@
 	update_icon()
 
 //? click redirection
-/obj/item/switchtool/melee_attack_chain(atom/target, mob/user, clickchain_flags, params)
+/obj/item/switchtool/melee_interaction_chain(atom/target, mob/user, clickchain_flags, params)
 	if(!deployed)
 		return ..()
-	. = deployed.melee_attack_chain(target, user, clickchain_flags | CLICKCHAIN_REDIRECTED, params)
+	. = deployed.melee_interaction_chain(target, user, clickchain_flags | CLICKCHAIN_REDIRECTED, params)
 	if(deployed && deployed.loc != src)
 		deployed.forceMove(src)
 		undeploy()
 
 //? click redirection
-/obj/item/switchtool/ranged_attack_chain(atom/target, mob/user, clickchain_flags, params)
+/obj/item/switchtool/ranged_interaction_chain(atom/target, mob/user, clickchain_flags, params)
 	if(!deployed)
 		return ..()
-	. = deployed.ranged_attack_chain(target, user, clickchain_flags | CLICKCHAIN_REDIRECTED, params)
+	. = deployed.ranged_interaction_chain(target, user, clickchain_flags | CLICKCHAIN_REDIRECTED, params)
 	if(deployed.loc != src)
 		deployed.forceMove(src)
 		undeploy()
