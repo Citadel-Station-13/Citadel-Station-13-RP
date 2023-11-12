@@ -104,9 +104,9 @@
 /obj/random/roguemineloot,
 /obj/random/roguemineloot,
 /obj/random/roguemineloot,
-/obj/item/stack/ore/gold{,
+/obj/item/stack/ore/gold{
 	amount = 4
-	}
+	},
 /turf/simulated/mineral/floor/cave,
 /area/class_h/POIs/goldmine)
 "H" = (
