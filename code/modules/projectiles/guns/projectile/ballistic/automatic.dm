@@ -124,7 +124,7 @@
 
 /obj/item/gun/projectile/ballistic/automatic/z8
 	name = "designated marksman rifle"
-	desc = "The Z8 Bulldog is an older model designated marksman rifle, made by the now defunct Zendai Foundries. Makes you feel like a space marine when you hold it, even though it can only hold 10 round magazines. Uses 7.62mm rounds and has an under barrel grenade launcher."
+	desc = "The Z8 Bulldog is an older model designated marksman rifle, made by the now defunct Zendai Foundries. Makes you feel like a space marine when you hold it, even though it can only hold 10 round magazines. Uses 7.62mm rounds."
 	icon_state = "carbine" // This isn't a carbine. :T
 	item_state = "z8carbine"
 	wielded_item_state = "z8carbine-wielded"
@@ -151,50 +151,12 @@
 		list(mode_name="fire grenades",  burst=null, fire_delay=null, move_delay=null, use_launcher=1,    burst_accuracy=null, dispersion=null)
 		)
 
-	var/use_launcher = 0
-	var/obj/item/gun/launcher/grenade/underslung/launcher
-
-/obj/item/gun/projectile/ballistic/automatic/z8/Initialize(mapload)
-	. = ..()
-	launcher = new(src)
-
-/obj/item/gun/projectile/ballistic/automatic/z8/attackby(obj/item/I, mob/user)
-	if((istype(I, /obj/item/grenade)))
-		launcher.load(I, user)
-	else
-		..()
-
-/obj/item/gun/projectile/ballistic/automatic/z8/attack_hand(mob/user, list/params)
-	if(user.get_inactive_held_item() == src && use_launcher)
-		launcher.unload(user)
-	else
-		..()
-
-/obj/item/gun/projectile/ballistic/automatic/z8/Fire(atom/target, mob/living/user, params, pointblank=0, reflex=0)
-	if(use_launcher)
-		launcher.Fire(target, user, params, pointblank, reflex)
-		if(!launcher.chambered)
-			switch_firemodes(user) //switch back automatically
-	else
-		..()
-
 /obj/item/gun/projectile/ballistic/automatic/z8/update_icon_state()
 	. = ..()
 	if(ammo_magazine)
 		icon_state = "carbine-[round(ammo_magazine.stored_ammo.len,2)]"
 	else
 		icon_state = "carbine"
-
-/obj/item/gun/projectile/ballistic/automatic/z8/update_icon()
-	. = ..()
-	update_held_icon()
-
-/obj/item/gun/projectile/ballistic/automatic/z8/examine(mob/user, dist)
-	. = ..()
-	if(launcher.chambered)
-		. += "\The [launcher] has \a [launcher.chambered] loaded."
-	else
-		. += "\The [launcher] is empty."
 
 /obj/item/gun/projectile/ballistic/automatic/lmg
 	name = "light machine gun"
