@@ -17007,10 +17007,8 @@
 "kLo" = (
 /obj/structure/table/rack/shelf,
 /obj/item/ore/stack/phoron{
-	pixel_x = 2;
-	pixel_y = 4
+	amount = 2
 	},
-/obj/item/ore/stack/phoron,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/warehouse)
 "kLC" = (

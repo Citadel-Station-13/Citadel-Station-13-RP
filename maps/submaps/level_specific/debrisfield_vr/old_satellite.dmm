@@ -124,8 +124,9 @@
 /turf/simulated/floor/airless,
 /area/submap/debrisfield_vr/old_sat)
 "r" = (
-/obj/item/ore/stack/iron,
-/obj/item/ore/stack/iron,
+/obj/item/ore/stack/iron{
+	amount = 2
+	},
 /turf/template_noop,
 /area/space)
 "s" = (

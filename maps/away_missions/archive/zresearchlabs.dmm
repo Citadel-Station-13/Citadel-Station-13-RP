@@ -4759,11 +4759,12 @@
 /obj/structure/closet/crate/secure/bin{
 	name = "Valuable Ores"
 	},
-/obj/item/ore/stack/diamond,
-/obj/item/ore/stack/diamond,
-/obj/item/ore/stack/uranium,
-/obj/item/ore/stack/uranium,
-/obj/item/ore/stack/uranium,
+/obj/item/ore/stack/diamond{
+	amount = 2
+	},
+/obj/item/ore/stack/uranium{
+	amount = 3
+	},
 /turf/simulated/floor,
 /area/awaymission/labs/cargo)
 "nA" = (

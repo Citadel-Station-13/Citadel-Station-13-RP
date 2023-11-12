@@ -1265,8 +1265,9 @@
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside)
 "By" = (
-/obj/item/ore/stack/coal,
-/obj/item/ore/stack/coal,
+/obj/item/ore/stack/coal{
+	amount = 2
+	},
 /turf/simulated/mineral/floor/classm,
 /area/class_m/outside)
 "BE" = (
@@ -1290,10 +1291,9 @@
 /turf/simulated/floor/outdoors/beach/sand/classm,
 /area/class_m/outside)
 "Ca" = (
-/obj/item/ore/stack/coal,
-/obj/item/ore/stack/coal,
-/obj/item/ore/stack/coal,
-/obj/item/ore/stack/coal,
+/obj/item/ore/stack/coal{
+	amount = 4
+	},
 /turf/simulated/mineral/floor/classm,
 /area/class_m/outside)
 "Ce" = (
@@ -1914,9 +1914,9 @@
 /turf/simulated/mineral/ignore_mapgen,
 /area/class_m/outside)
 "QI" = (
-/obj/item/ore/stack/coal,
-/obj/item/ore/stack/coal,
-/obj/item/ore/stack/coal,
+/obj/item/ore/stack/coal{
+	amount = 3
+	},
 /turf/simulated/mineral/floor/classm,
 /area/class_m/outside)
 "QL" = (
