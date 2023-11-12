@@ -1,5 +1,7 @@
 //* Magazines - Drums
 
+#warn icon file
+
 #warn a12g_drum
 /obj/item/ammo_magazine/m12gdrum
 	name = "magazine (12 gauge)"

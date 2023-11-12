@@ -124,6 +124,11 @@
 /obj/item/ammo_magazine/proc/instantiate_internal_list()
 	#warn impl
 
+/**
+ * can load a round
+ */
+/obj/item/ammo_magazine/proc/can_load_casing(obj/item/ammo_casing/casing)
+	return casing.caliber == ammo_caliber
 
 /obj/item/ammo_magazine/detect_material_base_costs()
 	. = ..()
