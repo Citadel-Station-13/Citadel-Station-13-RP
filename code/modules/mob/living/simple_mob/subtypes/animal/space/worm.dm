@@ -437,7 +437,7 @@
 		/obj/random/contraband = 3,
 		/obj/random/unidentified_medicine/old_medicine = 7,
 		/obj/item/strangerock = 3,
-		/obj/item/ore/phoron = 7,
+		/obj/item/stack/ore/phoron = 7,
 		/obj/random/handgun = 1,
 		/obj/random/toolbox = 4,
 		/obj/random/drinkbottle = 5
