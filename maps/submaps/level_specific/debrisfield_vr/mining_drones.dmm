@@ -115,7 +115,7 @@
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/submap/debrisfield_vr/mining_outpost)
 "u" = (
-/obj/item/ore/stack,
+/obj/item/stack/ore,
 /obj/effect/floor_decal/asteroid,
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/submap/debrisfield_vr/mining_outpost)

@@ -4759,10 +4759,10 @@
 /obj/structure/closet/crate/secure/bin{
 	name = "Valuable Ores"
 	},
-/obj/item/ore/stack/diamond{
+/obj/item/stack/ore/diamond{
 	amount = 2
 	},
-/obj/item/ore/stack/uranium{
+/obj/item/stack/ore/uranium{
 	amount = 3
 	},
 /turf/simulated/floor,

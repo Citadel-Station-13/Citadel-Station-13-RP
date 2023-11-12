@@ -17006,7 +17006,7 @@
 /area/maintenance/research/lower)
 "kLo" = (
 /obj/structure/table/rack/shelf,
-/obj/item/ore/stack/phoron{
+/obj/item/stack/ore/phoron{
 	amount = 2
 	},
 /turf/simulated/floor/tiled/steel,

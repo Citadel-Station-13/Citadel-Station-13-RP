@@ -880,7 +880,7 @@
 /area/gateway)
 "iQ" = (
 /obj/structure/closet/crate/miningcar,
-/obj/item/ore/stack/coal{
+/obj/item/stack/ore/coal{
 	amount = 10
 	},
 /turf/simulated/floor/tiled/dark,
