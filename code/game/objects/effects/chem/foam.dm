@@ -147,6 +147,7 @@
 	CanAtmosPass = ATMOS_PASS_DENSITY
 	integrity = 20
 	integrity_max = 20
+	armor_type = /datum/armor/none
 	var/metal = 1 // 1 = aluminum, 2 = iron
 
 /obj/structure/foamedmetal/Initialize(mapload)
