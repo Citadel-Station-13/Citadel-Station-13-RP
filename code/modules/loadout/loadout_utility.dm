@@ -243,6 +243,10 @@ modular computers
 	name = "Welding Helmet - Engie"
 	path = /obj/item/clothing/head/welding/engie
 
+/datum/loadout_entry/utility/welding_helmet/arar
+	name = "Welding Helmet - Replikant"
+	path = /obj/item/clothing/head/welding/arar
+
 /datum/loadout_entry/utility/webbing
 	name = "Webbing - Simple"
 	path = /obj/item/clothing/accessory/storage/webbing

@@ -236,7 +236,7 @@
 
 //! Clicking out of - for ranged attack chains
 /**
- * called to see if we're allowed to proc ranged_attack_chain from in here at a target
+ * called to see if we're allowed to proc ranged_interaction_chain from in here at a target
  *
  * this proc needs refactored at some point to allow for complexity if necessary
  * but for now it works so don't fuck with it

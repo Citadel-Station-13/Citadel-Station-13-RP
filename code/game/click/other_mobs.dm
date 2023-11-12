@@ -4,9 +4,6 @@
 
 /atom/proc/attack_alien(mob/user)
 
-/atom/proc/take_damage(var/damage)
-	return 0
-
 /*
 	Humans:
 	Adds an exception for gloves, to allow special glove types like the ninja ones.
@@ -33,7 +30,10 @@
 /// Return TRUE to cancel other attack hand effects that respect it.
 // todo: /datum/event_args/actor/clickchain
 /atom/proc/attack_hand(mob/user, list/params)
-	if(on_attack_hand(new /datum/event_args/actor/clickchain(user, intent = user.a_intent, params = params)))
+	var/datum/event_args/actor/clickchain/e_args = new(user, target = src, intent = user.a_intent, params = params)
+	if(user.a_intent == INTENT_HARM)
+		return user.melee_attack_chain(src, e_args)
+	if(on_attack_hand(e_args))
 		return TRUE
 	. = _try_interact(user)
 

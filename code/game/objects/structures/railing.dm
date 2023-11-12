@@ -11,9 +11,12 @@
 	anchored = TRUE
 	atom_flags = ATOM_BORDER
 	icon_state = "railing0"
+
+	integrity = 150
+	integrity_max = 150
+	hit_sound_brute = 'sound/effects/grillehit.ogg'
+
 	var/broken = FALSE
-	var/health = 70
-	var/maxhealth = 70
 	var/check = 0
 
 /obj/structure/railing/grey
@@ -50,25 +53,6 @@
 		if((L.depth_current >= depth_level) && !(obj_flags & OBJ_IGNORE_MOB_DEPTH))
 			return TRUE
 	return !density
-
-/obj/structure/railing/examine(mob/user, dist)
-	. = ..()
-	if(health < maxhealth)
-		switch(health / maxhealth)
-			if(0.0 to 0.5)
-				. += "<span class='warning'>It looks severely damaged!</span>"
-			if(0.25 to 0.5)
-				. += "<span class='warning'>It looks damaged!</span>"
-			if(0.5 to 1.0)
-				. += "<span class='notice'>It has a few scrapes and dents.</span>"
-
-/obj/structure/railing/take_damage(amount)
-	health -= amount
-	if(health <= 0)
-		visible_message("<span class='warning'>\The [src] breaks down!</span>")
-		playsound(loc, 'sound/effects/grillehit.ogg', 50, 1)
-		new /obj/item/stack/rods(get_turf(src))
-		qdel(src)
 
 /obj/structure/railing/proc/NeighborsCheck(var/UpdateNeighbors = 1)
 	check = 0
@@ -201,6 +185,16 @@
 	update_icon()
 	return
 
+/obj/structure/railing/welder_act(obj/item/I, mob/user, flags, hint)
+	if(integrity >= integrity_max)
+		user.action_feedback(SPAN_WARNING("[src] is at full health."), src)
+		return FALSE
+	if(!use_welder(I, user, flags, 2 SECONDS, 1, TOOL_USAGE_REPAIR | TOOL_USAGE_BUILDING_FRAMEWORK))
+		return FALSE
+	user.visible_action_feedback(SPAN_NOTICE("[user] repairs some damage to [src]."), src, MESSAGE_RANGE_CONSTRUCTION)
+	heal_integrity(integrity_max * 0.2)
+	return TRUE
+
 /obj/structure/railing/attackby(obj/item/W as obj, mob/user as mob)
 	// Dismantle
 	if(W.is_wrench() && !anchored)
@@ -210,16 +204,6 @@
 			new /obj/item/stack/material/steel(get_turf(usr), 2)
 			qdel(src)
 			return
-
-	// Repair
-	if(health < maxhealth && istype(W, /obj/item/weldingtool))
-		var/obj/item/weldingtool/F = W
-		if(F.welding)
-			playsound(src.loc, F.tool_sound, 50, 1)
-			if(do_after(user, 20, src))
-				user.visible_message("<span class='notice'>\The [user] repairs some damage to \the [src].</span>", "<span class='notice'>You repair some damage to \the [src].</span>")
-				health = min(health+(maxhealth/5), maxhealth) // 20% repair per application
-				return
 
 	// Install
 	if(W.is_screwdriver())
@@ -242,9 +226,10 @@
 				return
 			if (G.state < 2)
 				if(user.a_intent == INTENT_HARM)
-					if (prob(15))	M.afflict_paralyze(20 * 5)
+					if (prob(15))
+						M.afflict_paralyze(20 * 5)
 					M.apply_damage(8,def_zone = "head")
-					take_damage(8)
+					damage_integrity(8)
 					visible_message("<span class='danger'>[G.assailant] slams [G.affecting]'s face against \the [src]!</span>")
 					playsound(loc, 'sound/effects/grillehit.ogg', 50, 1)
 				else
@@ -259,12 +244,6 @@
 				visible_message("<span class='danger'>[G.assailant] throws [G.affecting] over \the [src]!</span>")
 			qdel(W)
 			return
-
-	else
-		playsound(loc, 'sound/effects/grillehit.ogg', 50, 1)
-		take_damage(W.damage_force)
-		user.setClickCooldown(user.get_attack_speed(W))
-
 	return ..()
 
 /obj/structure/railing/legacy_ex_act(severity)

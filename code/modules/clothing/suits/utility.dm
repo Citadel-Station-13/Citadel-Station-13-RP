@@ -78,7 +78,7 @@
 	icon_state = "rad"
 	desc = "A hood with radiation protective properties. Label: Made with lead, do not eat insulation"
 	inv_hide_flags = BLOCKHAIR
-	clothing_flags = CLOTHING_THICK_MATERIAL
+	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT
 	body_cover_flags = HEAD|FACE|EYES
 	armor_type = /datum/armor/general/radsuit
 	weight = ITEM_WEIGHT_ARMOR_BIORAD_SUIT_HELMET
@@ -96,5 +96,5 @@
 	weight = ITEM_WEIGHT_ARMOR_BIORAD_SUIT
 	armor_type = /datum/armor/general/radsuit
 	inv_hide_flags = HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
-	clothing_flags = CLOTHING_THICK_MATERIAL
+	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT
 	encumbrance = ITEM_ENCUMBRANCE_ARMOR_BIORAD_SUIT

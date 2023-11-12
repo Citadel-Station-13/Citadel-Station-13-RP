@@ -19,6 +19,4 @@
 			all_canisters += C
 	var/obj/machinery/portable_atmospherics/canister/C = pick(all_canisters)
 	log_debug(SPAN_DEBUGWARNING("canister_leak event: Canister [ADMIN_JMP(C)]) destroyed."))
-	C.health = 0
-	C.healthcheck()
-	return
+	C.atom_break()

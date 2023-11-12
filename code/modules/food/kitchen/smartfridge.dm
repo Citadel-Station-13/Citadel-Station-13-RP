@@ -12,6 +12,8 @@
 	atom_flags = NOREACT
 	pass_flags = NONE
 	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED
+	// todo: temporary, as this is unbuildable
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 	var/max_n_of_items = 999 // Sorry but the BYOND infinite loop detector doesn't look things over 1000.
 	var/list/item_records = list()
 	var/datum/stored_item/currently_vending = null	//What we're putting out of the machine.

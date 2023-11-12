@@ -42,7 +42,7 @@
 	icon_state = "deathsquad"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndicate-helm-black-red", SLOT_ID_LEFT_HAND = "syndicate-helm-black-red")
 	armor_type = /datum/armor/centcom/deathsquad
-	clothing_flags = CLOTHING_THICK_MATERIAL
+	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT
 	inv_hide_flags = BLOCKHAIR
 	siemens_coefficient = 0.6
 

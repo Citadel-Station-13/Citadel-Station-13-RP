@@ -6,11 +6,20 @@
 	icon_colour = "#5C4831"
 	stack_type = /obj/item/stack/material/leather
 	stack_origin_tech = list(TECH_MATERIAL = 2)
-	flags = MATERIAL_PADDING
 	ignition_point = T0C+300
 	melting_point = T0C+300
-	protectiveness = 3 // 13%
-	conductive = 0
+
+	relative_integrity = 1
+	density = 8 * 0.5
+	weight_multiplier = 1
+	relative_conductivity = 0.25
+	relative_permeability = 0.2
+	relative_reactivity = 0.3
+	hardness = MATERIAL_RESISTANCE_MODERATE
+	toughness = MATERIAL_RESISTANCE_HIGH
+	refraction = MATERIAL_RESISTANCE_NONE
+	absorption = MATERIAL_RESISTANCE_LOW
+	nullification = MATERIAL_RESISTANCE_NONE
 
 /datum/material/leather/generate_recipes()
 	. = ..()

@@ -34,6 +34,7 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 	open_layer = DOOR_OPEN_LAYER - 0.01// Just below doors when open
 	closed_layer = MID_LANDMARK_LAYER // Need this to be above windows/grilles/low walls.
 	smoothing_groups = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS)
+	heat_resistance = 6000
 
 	//These are frequenly used with windows, so make sure zones can pass.
 	//Generally if a firedoor is at a place where there should be a zone boundery then there will be a regular door underneath it.
@@ -93,9 +94,6 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 	for(var/area/A in areas_added)
 		LAZYREMOVE(A.all_doors, src)
 	return ..()
-
-/obj/machinery/door/firedoor/get_material()
-	return get_material_by_name(MAT_STEEL)
 
 /obj/machinery/door/firedoor/examine(mob/user, dist)
 	. = ..()
@@ -238,7 +236,7 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 
 /obj/machinery/door/firedoor/attack_generic(var/mob/living/user, var/damage)
 	if(machine_stat & (BROKEN|NOPOWER))
-		if(damage >= STRUCTURE_MIN_DAMAGE_THRESHOLD)
+		if(damage >= 5)
 			var/time_to_force = (2 + (2 * blocked)) * 5
 			if(src.density)
 				visible_message("<span class='danger'>\The [user] starts forcing \the [src] open!</span>")

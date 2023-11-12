@@ -118,7 +118,7 @@
 			/obj/item/clothing/suit/straight_jacket,
 			/obj/item/handcuffs/legcuffs/fuzzy,
 			/obj/item/melee/fluff/holochain/mass,
-			/obj/item/material/twohanded/fluff/riding_crop,
+			/obj/item/fluff/riding_crop,
 			/obj/item/clothing/under/fluff/latexmaid
 			)
 	container_type = /obj/structure/closet/crate

@@ -129,7 +129,7 @@
 
 	var/charge_percentage = mechcell ? mechcell.charge / mechcell.maxcharge : 0
 	var/air_percentage = mechtank ? clamp(mechtank.air_contents.total_moles / 1863.47, 0, 1) : 0
-	var/health_percentage = owner_mech.health / owner_mech.maxhealth
+	var/health_percentage = owner_mech.percent_integrity()
 	var/air_on = owner_mech.use_internal_tank
 
 	power.icon_state = "pwr[round(charge_percentage / 0.2, 1)]"

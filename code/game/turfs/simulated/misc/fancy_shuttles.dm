@@ -54,18 +54,13 @@ GLOBAL_LIST_EMPTY(fancy_shuttles)
 	var/mutable_appearance/under_EM
 	var/fancy_shuttle_tag
 
-// Reinforced hull steel
-/turf/simulated/wall/fancy_shuttle
-	material       = /datum/material/steel/hull
-	reinf_material = /datum/material/steel/hull
+	material_outer = /datum/material/steel/hull
+	material_reinf = /datum/material/steel/hull
+	baseturfs = /turf/simulated/floor/plating/eris/under
 
 /turf/simulated/wall/fancy_shuttle/window
 	opacity = FALSE
 	icon_state = "hull_transparent"
-
-/turf/simulated/wall/fancy_shuttle/window/attack_generic(mob/user, damage, attack_message)
-	take_damage(damage)
-	return damage
 
 /turf/simulated/wall/fancy_shuttle/nondense
 	density = FALSE
@@ -80,22 +75,6 @@ GLOBAL_LIST_EMPTY(fancy_shuttles)
 /turf/simulated/wall/fancy_shuttle/post_translate_B(turf/A)
 	apply_underlay()
 	return ..()
-
-// No girders, and Eris plating
-/turf/simulated/wall/fancy_shuttle/dismantle_wall(var/devastated, var/explode, var/no_product)
-
-	playsound(src, 'sound/items/Welder.ogg', 100, 1)
-	if(!no_product && !devastated)
-		material.place_dismantled_product(src)
-		if (!reinf_material)
-			material.place_dismantled_product(src)
-
-	clear_plants()
-	material = SSmaterials.get_material(/datum/material/placeholder)
-	reinf_material = null
-	girder_material = null
-
-	ChangeTurf(/turf/simulated/floor/plating/eris/under)
 
 /turf/simulated/wall/fancy_shuttle/proc/remove_underlay()
 	if(under_MA)
@@ -139,16 +118,9 @@ GLOBAL_LIST_EMPTY(fancy_shuttles)
 
 	apply_underlay()
 
-	if(damage != 0)
-		var/integrity = material.integrity
-		if(reinf_material)
-			integrity += reinf_material.integrity
-
-		var/overlay = round(damage / integrity * damage_overlays.len) + 1
-		if(overlay > damage_overlays.len)
-			overlay = damage_overlays.len
-
-		add_overlay(damage_overlays[overlay])
+	var/percent = percent_integrity()
+	if(percent < 1)
+		add_overlay(damage_overlays[round((1 - percent) * length(damage_overlays)) || 1])
 
 /obj/effect/floor_decal/fancy_shuttle
 	icon = 'icons/turf/fancy_shuttles/_fancy_helpers.dmi'

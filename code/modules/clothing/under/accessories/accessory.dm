@@ -437,48 +437,50 @@
 		return 1
 
 /obj/item/clothing/accessory/bracelet/material
+	abstract_type = /obj/item/clothing/accessory/bracelet/material
 	icon_state = "materialbracelet"
+	materials_base = null
+	material_parts = /datum/material/steel
+	material_costs = 2000
+	material_primary = MATERIAL_PART_DEFAULT
 
-/obj/item/clothing/accessory/bracelet/material/Initialize(mapload, new_material)
-	. = ..(mapload)
-	if(!new_material)
-		new_material = MAT_STEEL
-	material = get_material_by_name(new_material)
-	if(!istype(material))
-		return INITIALIZE_HINT_QDEL
+/obj/item/clothing/accessory/bracelet/material/Initialize(mapload, material)
+	if(!isnull(material))
+		material_parts = material
+	return ..()
+
+/obj/item/clothing/accessory/bracelet/material/update_material_single(datum/material/material)
+	. = ..()
 	name = "[material.display_name] bracelet"
 	desc = "A bracelet made from [material.display_name]."
 	color = material.icon_colour
 
-/obj/item/clothing/accessory/bracelet/material/get_material()
-	return material
+/obj/item/clothing/accessory/bracelet/material/wood
+	material_parts = /datum/material/wood_plank
 
-/obj/item/clothing/accessory/bracelet/material/wood/Initialize(mapload, material_key)
-	return ..(mapload, "wood")
+/obj/item/clothing/accessory/bracelet/material/plastic
+	material_parts = /datum/material/plastic
 
-/obj/item/clothing/accessory/bracelet/material/plastic/Initialize(mapload, material_key)
-	return ..(mapload, "plastic")
+/obj/item/clothing/accessory/bracelet/material/iron
+	material_parts = /datum/material/iron
 
-/obj/item/clothing/accessory/bracelet/material/iron/Initialize(mapload, material_key)
-	return ..(mapload, "iron")
+/obj/item/clothing/accessory/bracelet/material/steel
+	material_parts = /datum/material/steel
 
-/obj/item/clothing/accessory/bracelet/material/steel/Initialize(mapload, material_key)
-	return ..(mapload, "steel")
+/obj/item/clothing/accessory/bracelet/material/silver
+	material_parts = /datum/material/silver
 
-/obj/item/clothing/accessory/bracelet/material/silver/Initialize(mapload, material_key)
-	return ..(mapload, "silver")
+/obj/item/clothing/accessory/bracelet/material/gold
+	material_parts = /datum/material/gold
 
-/obj/item/clothing/accessory/bracelet/material/gold/Initialize(mapload, material_key)
-	return ..(mapload, "gold")
+/obj/item/clothing/accessory/bracelet/material/platinum
+	material_parts = /datum/material/platinum
 
-/obj/item/clothing/accessory/bracelet/material/platinum/Initialize(mapload, material_key)
-	return ..(mapload, "platinum")
+/obj/item/clothing/accessory/bracelet/material/phoron
+	material_parts = /datum/material/phoron
 
-/obj/item/clothing/accessory/bracelet/material/phoron/Initialize(mapload, material_key)
-	return ..(mapload, "phoron")
-
-/obj/item/clothing/accessory/bracelet/material/glass/Initialize(mapload, material_key)
-	return ..(mapload, "glass")
+/obj/item/clothing/accessory/bracelet/material/glass
+	material_parts = /datum/material/glass
 
 /obj/item/clothing/accessory/halfcape
 	name = "half cape"
@@ -790,7 +792,7 @@
 	icon_state = "collar_holo"
 	item_state = "collar_holo_overlay"
 	overlay_state = "collar_holo_overlay"
-	materials = list(MAT_STEEL = 50)
+	materials_base = list(MAT_STEEL = 50)
 
 /obj/item/clothing/accessory/collar/silvercolor
 	name = "Dyeable Silver tag collar"
@@ -934,6 +936,14 @@
 	desc = "A comfy pair of legwarmers. For those better in the cold than others."
 	icon_state = "legwarmers_short"
 
+// Gestalt uniform
+
+/obj/item/clothing/accessory/sleekpatch
+	name = "sleek uniform patch"
+	desc = "A somewhat old-fashioned embroidered patch of Nanotrasen's logo."
+	icon = 'icons/obj/clothing/ties.dmi'
+	icon_override = 'icons/mob/clothing/ties.dmi'
+	icon_state = "sleekpatch"
 
 //misc
 /obj/item/clothing/accessory/civ_exos_mob

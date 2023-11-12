@@ -116,7 +116,7 @@
 
 /turf/simulated/wall/singularity_pull(S, current_size)
 
-	if(!reinf_material)
+	if(!material_reinf)
 		if(current_size >= STAGE_FIVE)
 			if(prob(75))
 				dismantle_wall()

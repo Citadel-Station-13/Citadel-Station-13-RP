@@ -27,7 +27,7 @@
 		target_doors = shuffle(target_doors)
 
 		for(var/obj/machinery/door/airlock/target_door in target_doors)
-			if(!target_door.isElectrified() && target_door.arePowerSystemsOn() && target_door.maxhealth == target_door.health)
+			if(!target_door.isElectrified() && target_door.arePowerSystemsOn() && target_door.percent_integrity() == 1)
 				chosen_door = target_door
 				return
 
@@ -67,7 +67,7 @@
 			explosion(get_turf(chosen_door),-1,-1,2,3)
 
 	chosen_door.lock()
-	chosen_door.health = chosen_door.maxhealth / 6
+	chosen_door.set_integrity(chosen_door.integrity_max * (1/6))
 	chosen_door.aiControlDisabled = 1
 	chosen_door.update_icon()
 

@@ -439,7 +439,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/space)
 "ft" = (
-/obj/structure/table/rack/holorack,
+/obj/structure/table/rack/holorack_legacy,
 /obj/item/clothing/under/dress/dress_saloon,
 /obj/item/clothing/head/pin/flower,
 /turf/simulated/floor/holofloor/tiled/dark,
@@ -5345,7 +5345,7 @@
 /area/space)
 "Yy" = (
 /obj/landmark/costume/random,
-/obj/structure/table/rack/holorack,
+/obj/structure/table/rack/holorack_legacy,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/space)
 "YC" = (

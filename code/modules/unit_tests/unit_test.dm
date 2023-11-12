@@ -188,6 +188,9 @@ GLOBAL_VAR_INIT(focused_test, focused_test())
 	var/list/focused_tests = list()
 	for (var/_test_to_run in tests_to_run)
 		var/datum/unit_test/test_to_run = _test_to_run
+		if(initial(test_to_run.abstract_type) == test_to_run)
+			tests_to_run -= test_to_run
+			continue
 		if (initial(test_to_run.focus))
 			focused_tests += test_to_run
 	if(length(focused_tests))

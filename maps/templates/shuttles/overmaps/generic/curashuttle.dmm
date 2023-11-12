@@ -1343,12 +1343,12 @@
 "cL" = (
 /obj/mecha/combat/fighter/pinnace{
 	desc = "A modified Pinnace made to be able to fit a wide arsenal of equipment for rescue missions in space.";
-	health = 200;
+	integrity = 200;
 	max_equip = 1;
 	max_hull_equip = 2;
 	max_universal_equip = 2;
 	max_utility_equip = 3;
-	maxhealth = 200;
+	integrity_max = 200;
 	name = "Curabitur Pinnace"
 	},
 /obj/machinery/mech_recharger,

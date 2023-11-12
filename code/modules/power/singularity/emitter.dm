@@ -207,7 +207,7 @@
 					to_chat(user, "<span class='warning'>You need more welding fuel to complete this task.</span>")
 		return
 
-	if(istype(W, /obj/item/stack/material) && W.get_material_name() == MAT_STEEL)
+	if(W.is_material_stack_of(/datum/material/steel))
 		var/amt = CEILING(( initial(integrity) - integrity)/10, 1)
 		if(!amt)
 			to_chat(user, "<span class='notice'>\The [src] is already fully repaired.</span>")
@@ -250,12 +250,12 @@
 	if(!P || !P.damage || P.get_structure_damage() <= 0 )
 		return
 
-	adjust_integrity(-P.get_structure_damage())
+	adjust_integrity_emitter(-P.get_structure_damage())
 
 /obj/machinery/power/emitter/blob_act()
-	adjust_integrity(-1000) // This kills the emitter.
+	adjust_integrity_emitter(-1000) // This kills the emitter.
 
-/obj/machinery/power/emitter/proc/adjust_integrity(amount)
+/obj/machinery/power/emitter/proc/adjust_integrity_emitter(amount)
 	integrity = clamp( integrity + amount, 0,  initial(integrity))
 	if(integrity == 0)
 		if(powernet && avail(active_power_usage * 0.001)) // If it's powered, it goes boom if killed.

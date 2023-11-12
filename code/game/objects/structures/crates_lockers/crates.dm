@@ -10,6 +10,7 @@
 	depth_projected = TRUE
 	use_old_icon_update = TRUE
 	depth_level = 8
+	armor_type = /datum/armor/object/medium
 	var/points_per_crate = 5
 //	mouse_drag_pointer = MOUSE_ACTIVE_POINTER	//???
 	var/rigged = 0
@@ -262,7 +263,7 @@
 	if(!(Proj.damage_type == BRUTE || Proj.damage_type == BURN))
 		return
 
-	if(locked && tamper_proof && health <= Proj.damage)
+	if(locked && tamper_proof && integrity <= Proj.damage)
 		if(tamper_proof == 2) // Mainly used for events to prevent any chance of opening the box improperly.
 			visible_message("<font color='red'><b>The anti-tamper mechanism of [src] triggers an explosion!</b></font>")
 			var/turf/T = get_turf(src.loc)

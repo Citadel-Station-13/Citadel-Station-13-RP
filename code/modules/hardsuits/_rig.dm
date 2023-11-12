@@ -29,7 +29,7 @@
 	max_heat_protection_temperature = SPACE_SUIT_MAX_HEAT_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0.2
 	permeability_coefficient = 0.1
-	unacidable = 1
+	integrity_flags = INTEGRITY_ACIDPROOF
 	preserve_item = 1
 
 	weight = ITEM_WEIGHT_BASELINE
@@ -195,7 +195,7 @@
 		if(piece.siemens_coefficient > siemens_coefficient) //So that insulated gloves keep their insulation.
 			piece.siemens_coefficient = siemens_coefficient
 		piece.permeability_coefficient = permeability_coefficient
-		piece.unacidable = unacidable
+		piece.integrity_flags = integrity_flags
 		piece.set_armor(fetch_armor())
 
 	update_icon(1)
