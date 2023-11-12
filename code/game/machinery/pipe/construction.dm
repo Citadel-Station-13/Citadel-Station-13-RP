@@ -13,7 +13,7 @@ Buildable meters
 	icon = 'icons/obj/pipe-item.dmi'
 	icon_state = "simple"
 	item_state = "buildpipe"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_TINY
 	level = 2
 	var/piping_layer = PIPING_LAYER_DEFAULT
 	var/dispenser_class // Tells the dispenser what orientations we support, so RPD can show previews.
