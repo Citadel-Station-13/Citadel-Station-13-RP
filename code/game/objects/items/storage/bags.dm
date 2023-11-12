@@ -138,7 +138,7 @@
 		if(istype(user.pulling, /obj/structure/ore_box))
 			var/obj/structure/ore_box/O = user.pulling
 			I.forceMove(O)
-			if(world.time >= last_message == 0 && !silent)
+			if(world.time < last_message && !silent)
 				to_chat(user, "<span class='notice'>You put the contents you scooped up into [O].</span>")
 				last_message = world.time + 10
 		else if(total_ore >= max_ore || contents.len >= max_storage_space)
@@ -148,10 +148,10 @@
 			I.forceMove(src)
 			success = 1
 	if(success && !failure && !silent)
-		if(world.time >= last_message == 0)
+		if(world.time < last_message == 0)
 			to_chat(user, "<span class='notice'>You put everything in [src].</span>")
 			last_message = world.time + 10
-	else if(success && (!silent || (silent && total_ore >= max_ore)))
+	else if (success && (!silent || total_ore >= max_ore))
 		to_chat(user, "<span class='notice'>You fill the [src].</span>")
 		last_message = world.time + 10
 	else if(!silent)
@@ -203,8 +203,9 @@
 /obj/item/storage/bag/ore/drop_products(method, atom/where)
 	. = ..()
 	var/i = 0
-	while(!isOreEmpty() && i++ < 200) //may be laggy as hell if they're carrying 2,000+ sand, so capping it at 200 items dropped.
+	while(!isOreEmpty() && i < 200) //may be laggy as hell if they're carrying 2,000+ sand, so capping it at 200 items dropped.
 		deposit(where, 50)
+		i++
 
 /obj/item/storage/bag/ore/proc/take(obj/item/stack/ore/O)
 	if(!istype(O))

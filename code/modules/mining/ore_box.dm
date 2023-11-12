@@ -56,8 +56,9 @@
 /obj/structure/ore_box/drop_products(method, atom/where)
 	. = ..()
 	var/i = 0
-	while(!isEmpty() && i++ < 200) //may be laggy as hell if they're carrying 2,000+ sand, so capping it at 200 items dropped.
+	while(!isEmpty() && i < 200) //may be laggy as hell if they're carrying 2,000+ sand, so capping it at 200 items dropped.
 		deposit(where, 50)
+		i++
 
 	new /obj/item/stack/material/wood/hard(where, 5)
 

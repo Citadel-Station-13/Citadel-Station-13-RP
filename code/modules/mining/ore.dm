@@ -85,7 +85,7 @@
 		H.Blind(5)
 		H.eye_blurry += 10
 		spawn(1)
-			if(istype(loc, /turf/))
+			if(isturf(loc))
 				use(1) //oh no, they might toss the sand right back if you had more of it...
 
 /obj/item/stack/ore/phoron
@@ -145,7 +145,7 @@
 		H.Blind(10)
 		H.eye_blurry += 15
 		spawn(1)
-			if(istype(loc, /turf/))
+			if(isturf(loc))
 				use(1)
 
 /obj/item/stack/ore/lead
