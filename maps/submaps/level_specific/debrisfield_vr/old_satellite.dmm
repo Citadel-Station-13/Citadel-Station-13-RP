@@ -119,17 +119,17 @@
 /area/submap/debrisfield_vr/old_sat)
 "q" = (
 /obj/item/material/shard/phoron,
-/obj/item/ore/iron,
+/obj/item/ore/stack/iron,
 /obj/random/tech_supply/component,
 /turf/simulated/floor/airless,
 /area/submap/debrisfield_vr/old_sat)
 "r" = (
-/obj/item/ore/iron,
-/obj/item/ore/iron,
+/obj/item/ore/stack/iron,
+/obj/item/ore/stack/iron,
 /turf/template_noop,
 /area/space)
 "s" = (
-/obj/item/ore/glass,
+/obj/item/ore/stack/glass,
 /turf/template_noop,
 /area/space)
 "t" = (

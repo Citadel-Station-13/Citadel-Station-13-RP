@@ -629,7 +629,7 @@
 /turf/simulated/wall/sandstone,
 /area/awaymission/snow_outpost/dark)
 "cf" = (
-/obj/item/ore/diamond,
+/obj/item/ore/stack/diamond,
 /turf/simulated/floor/snow/snow2,
 /area/awaymission/snow_outpost/dark)
 "cg" = (
@@ -643,7 +643,7 @@
 /turf/simulated/floor/plating/external,
 /area/awaymission/snow_outpost/dark)
 "cj" = (
-/obj/item/ore,
+/obj/item/ore/stack,
 /turf/simulated/floor/plating/external,
 /area/awaymission/snow_outpost/dark)
 "ck" = (
@@ -679,7 +679,7 @@
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/awaymission/snow_outpost/outside)
 "cs" = (
-/obj/item/ore,
+/obj/item/ore/stack,
 /turf/simulated/floor/snow/snow2,
 /area/awaymission/snow_outpost/dark)
 "ct" = (
@@ -843,26 +843,26 @@
 /turf/simulated/floor/snow/snow2,
 /area/awaymission/snow_outpost/dark)
 "db" = (
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
+/obj/item/ore/stack/gold,
+/obj/item/ore/stack/gold,
+/obj/item/ore/stack/gold,
+/obj/item/ore/stack/gold,
+/obj/item/ore/stack/gold,
+/obj/item/ore/stack/gold,
+/obj/item/ore/stack/gold,
+/obj/item/ore/stack/gold,
+/obj/item/ore/stack/gold,
+/obj/item/ore/stack/gold,
+/obj/item/ore/stack/gold,
+/obj/item/ore/stack/gold,
 /turf/simulated/floor/snow/snow2,
 /area/awaymission/snow_outpost/dark)
 "dc" = (
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
+/obj/item/ore/stack/gold,
+/obj/item/ore/stack/gold,
+/obj/item/ore/stack/gold,
+/obj/item/ore/stack/gold,
+/obj/item/ore/stack/gold,
 /turf/simulated/floor/snow/snow2,
 /area/awaymission/snow_outpost/dark)
 "dd" = (
@@ -1788,7 +1788,7 @@
 /turf/simulated/floor/snow/snow2,
 /area/awaymission/snow_outpost/dark)
 "fW" = (
-/obj/item/ore/gold,
+/obj/item/ore/stack/gold,
 /obj/tether_away_spawner/aerostat_inside,
 /turf/simulated/floor/snow/snow2,
 /area/awaymission/snow_outpost/dark)

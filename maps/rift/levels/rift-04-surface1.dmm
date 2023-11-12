@@ -17006,11 +17006,11 @@
 /area/maintenance/research/lower)
 "kLo" = (
 /obj/structure/table/rack/shelf,
-/obj/item/ore/phoron{
+/obj/item/ore/stack/phoron{
 	pixel_x = 2;
 	pixel_y = 4
 	},
-/obj/item/ore/phoron,
+/obj/item/ore/stack/phoron,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/warehouse)
 "kLC" = (

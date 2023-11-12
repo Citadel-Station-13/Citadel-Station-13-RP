@@ -12931,12 +12931,12 @@
 "RP" = (
 /obj/structure/closet/crate/miningcar,
 /obj/effect/floor_decal/rust,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
+/obj/item/ore/stack/coal,
+/obj/item/ore/stack/coal,
+/obj/item/ore/stack/coal,
+/obj/item/ore/stack/coal,
+/obj/item/ore/stack/coal,
+/obj/item/ore/stack/coal,
 /turf/simulated/floor/tiled,
 /area/maintenance/elevator)
 "RQ" = (

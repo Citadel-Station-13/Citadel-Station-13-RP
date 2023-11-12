@@ -880,15 +880,15 @@
 /area/gateway)
 "iQ" = (
 /obj/structure/closet/crate/miningcar,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
+/obj/item/ore/stack/coal,
+/obj/item/ore/stack/coal,
+/obj/item/ore/stack/coal,
+/obj/item/ore/stack/coal,
+/obj/item/ore/stack/coal,
+/obj/item/ore/stack/coal,
+/obj/item/ore/stack/coal,
+/obj/item/ore/stack/coal,
+/obj/item/ore/stack/coal,
 /turf/simulated/floor/tiled/dark,
 /area/rift/facility/interior/temple)
 "iY" = (
