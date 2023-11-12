@@ -43,7 +43,7 @@
 		physical.min_pressure_protection = initial(physical.min_pressure_protection)
 		physical.max_heat_protection_temperature = initial(physical.max_heat_protection_temperature)
 		physical.min_cold_protection_temperature = initial(physical.min_cold_protection_temperature)
-	if(!physical.always_fully_insulated)
+	if(!piece.always_fully_insulated)
 		physical.siemens_coefficient = siemens_coefficient
 	else
 		physical.siemens_coefficient = 0

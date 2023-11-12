@@ -74,8 +74,6 @@
 	var/ui_queued_everything = FALSE
 	/// pieces awaiting update
 	var/list/datum/component/rig_piece/ui_queued_pieces
-	/// components awaiting update
-	var/list/obj/item/rig_component/ui_queued_components
 	/// modules awaiting update
 	var/list/obj/item/rig_module/ui_queued_modules
 
@@ -104,4 +102,5 @@
 	#warn get everything back inside and set activation to deactivated
 
 /obj/item/rig/proc/wipe_everything()
+	hard_reset()
 	#warn impl

@@ -37,6 +37,13 @@
 	/// insulated gloves support
 	var/always_fully_insulated = FALSE
 
+	//* UI
+	//! todo: this is fucking evil
+	/// cached b64 string of our UI icon
+	var/cached_tgui_icon_b64
+	/// is our UI update queued?
+	var/ui_update_queued = FALSE
+
 /datum/component/rig_piece/Initialize(obj/item/rig/controller)
 	. = ..()
 	if(. & COMPONENT_INCOMPATIBLE)
@@ -62,12 +69,13 @@
 	return COMPONENT_ITEM_INV_OP_RELOCATE | COMPONENT_ITEM_INV_OP_SUPPRESS_SOUND
 
 /datum/component/rig_piece/proc/tgui_piece_data()
+	var/obj/item/physical = parent
 	return list(
 		"name" = display_name,
 		"sealed" = sealed,
 		"flags" = rig_piece_flags,
+		"sprite64" = isnull(cached_tgui_icon_b64)? (cached_tgui_icon_b64 = icon2base64(icon(physical.icon, state_sealed))) : cached_tgui_icon_b64
 	)
-	#warn impl
 
 /**
  * @params

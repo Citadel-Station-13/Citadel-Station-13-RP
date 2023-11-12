@@ -35,3 +35,6 @@ export enum RigPieceFlags {
 
 export type RigPieceReference = string;
 export type RigPieceReflist = RigPieceReference[];
+
+export type RigModuleReference = string;
+export type RigModuleReflist = RigModuleReference[];

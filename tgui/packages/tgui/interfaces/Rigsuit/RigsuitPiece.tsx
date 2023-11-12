@@ -5,6 +5,7 @@ export interface RigsuitPieceData {
   name: string;
   sealed: RigPieceSealStatus;
   flags: RigPieceFlags;
+  sprite64: string;
 }
 
 export const RigsuitPiece = (props, context) => {
