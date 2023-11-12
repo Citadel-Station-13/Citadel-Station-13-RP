@@ -384,7 +384,7 @@ END OF CITADEL CHANGES */
 	cut_overlay()
 	if(!ammo_magazine)
 		return
-	var/ratio = ammo_magazine.stored_ammo.len * 100 / ammo_magazine.max_ammo
+	var/ratio = ammo_magazine.stored_ammo.len * 100 / ammo_magazine.ammo_max
 	ratio = round(ratio, 33)
 	add_overlay("deagle_[ratio]")*/ // Fugly.
 
@@ -467,7 +467,7 @@ END OF CITADEL CHANGES */
 /obj/item/gun/projectile/ballistic/automatic/sol/proc/update_charge()
 	if(!ammo_magazine)
 		return
-	var/ratio = ammo_magazine.stored_ammo.len / ammo_magazine.max_ammo
+	var/ratio = ammo_magazine.stored_ammo.len / ammo_magazine.ammo_max
 	if(ratio < 0.25 && ratio != 0)
 		ratio = 0.25
 	ratio = round(ratio, 0.25) * 100
@@ -542,7 +542,7 @@ END OF CITADEL CHANGES */
 	icon_state = "stg_30rnd"
 	caliber = "7.92x33mm"
 	ammo_type = /obj/item/ammo_casing/a792
-	max_ammo = 30
+	ammo_max = 30
 	mag_type = MAGAZINE
 
 /obj/item/ammo_casing/a792
@@ -561,7 +561,7 @@ END OF CITADEL CHANGES */
 	icon_state = "battlerifle"
 	caliber = "9.5x40mm"
 	ammo_type = /obj/item/ammo_casing/a95
-	max_ammo = 36
+	ammo_max = 36
 	mag_type = MAGAZINE
 	multiple_sprites = 1
 
@@ -587,7 +587,7 @@ END OF CITADEL CHANGES */
 	materials_base = list(MAT_STEEL = 1800)
 	caliber = "9mm"
 	ammo_type = /obj/item/ammo_casing/a9mm
-	max_ammo = 30
+	ammo_max = 30
 	multiple_sprites = 1
 
 /obj/item/ammo_magazine/m9mml/empty
@@ -673,7 +673,7 @@ END OF CITADEL CHANGES */
 	materials_base = list(MAT_STEEL = 480)
 	caliber = ".380"
 	ammo_type = /obj/item/ammo_casing/a380
-	max_ammo = 8
+	ammo_max = 8
 	multiple_sprites = 1
 
 //.44
@@ -695,7 +695,7 @@ END OF CITADEL CHANGES */
 	caliber = ".44"
 	materials_base = list(MAT_STEEL = 1260)
 	ammo_type = /obj/item/ammo_casing/a44
-	max_ammo = 6
+	ammo_max = 6
 	multiple_sprites = 1
 	mag_type = SPEEDLOADER
 

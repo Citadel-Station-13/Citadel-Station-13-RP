@@ -37,7 +37,7 @@
 	mag_type = MAGAZINE
 	caliber = "dart"
 	ammo_type = /obj/item/ammo_casing/chemdart
-	max_ammo = 5
+	ammo_max = 5
 	multiple_sprites = 1
 
 /obj/item/gun/projectile/ballistic/dartgun
@@ -237,7 +237,7 @@
 	mag_type = MAGAZINE
 	caliber = "dart"
 	ammo_type = /obj/item/ammo_casing/chemdart/small
-	max_ammo = 3
+	ammo_max = 3
 	multiple_sprites = 1
 
 /obj/projectile/bullet/chemdart/small

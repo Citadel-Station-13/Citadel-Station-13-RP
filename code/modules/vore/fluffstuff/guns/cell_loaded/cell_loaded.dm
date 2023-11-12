@@ -146,7 +146,7 @@
 	caliber = "nsfw"
 	ammo_type = /obj/item/ammo_casing/microbattery
 	initial_ammo = 0
-	max_ammo = 3
+	ammo_max = 3
 	var/x_offset = 5  //for update_icon() shenanigans- moved here so it can be adjusted for bigger mags
 	var/capname = "nsfw_mag" //as above
 	var/chargename = "nsfw_mag" //as above
@@ -160,7 +160,7 @@
 		if(!istype(B, ammo_type))
 			to_chat(user, "<span class='warning'>[B] does not fit into [src].</span>")
 			return
-		if(stored_ammo.len >= max_ammo)
+		if(stored_ammo.len >= ammo_max)
 			to_chat(user, "<span class='warning'>[src] is full!</span>")
 			return
 		if(!user.attempt_insert_item_for_installation(B, src))
@@ -195,7 +195,7 @@
 /obj/item/ammo_magazine/cell_mag/advanced
 	name = "advanced microbattery magazine"
 	desc = "A microbattery holder for a cell-based variable weapon. This one has much more cell capacity!"
-	max_ammo = 6
+	ammo_max = 6
 	x_offset = 3
 	icon_state = "cell_mag_extended"
 

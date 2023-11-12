@@ -27,7 +27,7 @@
 	name = "microbattery magazine"
 	desc = "A microbattery holder for the \'Hydra\'"
 	icon_state = "nsfw_mag"
-	max_ammo = 4
+	ammo_max = 4
 	x_offset = 4
 	catalogue_data = null//list(/datum/category_item/catalogue/information/organization/nanotrasen)
 	description_info = "This magazine holds Hydra microbatteries to power the Hydra handgun. Up to three can be loaded at once, and each provides four shots of their respective energy type. Loading multiple of the same type will provide additional shots of that type. The batteries can be recharged in a normal recharger."
@@ -36,7 +36,7 @@
 /obj/item/ammo_magazine/cell_mag/combat/prototype
 	name = "prototype microbattery magazine"
 	icon_state = "nsfw_mag_prototype"
-	max_ammo = 2
+	ammo_max = 2
 	x_offset = 6
 	catalogue_data = null
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 3, TECH_MAGNETS = 2)

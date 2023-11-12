@@ -15,9 +15,12 @@
 	preserve_item = 1
 
 	//* dynamic config; can be changed at runtime freely
-	/// is this a speedloader, or a real magazine?
+	/// is this a speedloader / supports being a speedloader?
 	/// speedloader can only be used with internal ammo guns, and only if they allow speedloaders
 	var/is_speedloader = FALSE
+	/// is this a magazine despite being a speedloader? if set to TRUE, this still works with
+	/// guns that accept magazines, even if it's a speedloader
+	var/is_magazine_regardless = FALSE
 
 	//* for speedloaders
 	/// inherent speedloader delay, added to gun's speedloaders_delay
@@ -25,9 +28,12 @@
 
 	//* ammo storage
 	/// max ammo in us
-	var/max_ammo = 7
-	/// currently stored ammo; defaults to max_ammo if unset
-	var/current_ammo
+	var/ammo_max = 7
+	/// currently stored ammo; defaults to ammo_max if unset
+	/// this is used to detect base material costs too, so
+	/// if this is not set properly or you're abusing ammo_internal, bad stuff happens
+	//  todo: way to use a different count for base material cost detection
+	var/ammo_current
 	/// can bullets be removed?
 	var/ammo_removable = TRUE
 	/// ammo list
@@ -36,13 +42,12 @@
 	///
 	/// spec:
 	/// ammo_preload is what 'current ammo' is, type-wise
-	/// ammo_internal is considered the list of 1 to n casings infront of current_ammo.
+	/// ammo_internal is considered the list of 1 to n casings infront of ammo_current.
 	var/list/ammo_internal
 	/// caliber
 	var/ammo_caliber
 	/// preloaded ammo type
 	var/ammo_preload
-	#warn deal with caliber defines
 
 	//* Rendering
 	/// use default rendering system
@@ -120,16 +125,14 @@
 	#warn impl
 
 
-#warn below
-
 /obj/item/ammo_magazine/detect_material_base_costs()
 	. = ..()
-	if(isnull(ammo_type))
+	if(isnull(ammo_preload))
 		return
-	var/shell_amount = isnull(initial_ammo)? max_ammo : initial_ammo
+	var/shell_amount = isnull(ammo_current)? ammo_max : ammo_current
 	if(!shell_amount)
 		return
-	var/obj/item/ammo_casing/casing = new ammo_type
+	var/obj/item/ammo_casing/casing = new ammo_preload
 	if(!istype(casing))
 		qdel(casing)
 		return
@@ -138,13 +141,15 @@
 	for(var/key in adding)
 		.[key] += adding[key] * shell_amount
 
+#warn below
+
 /obj/item/ammo_magazine/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/ammo_casing))
 		var/obj/item/ammo_casing/C = W
 		if(C.caliber != caliber)
 			to_chat(user, "<span class='warning'>[C] does not fit into [src].</span>")
 			return
-		if(stored_ammo.len >= max_ammo)
+		if(stored_ammo.len >= ammo_max)
 			to_chat(user, "<span class='warning'>[src] is full!</span>")
 			return
 		if(!user.attempt_insert_item_for_installation(C, src))
@@ -159,7 +164,7 @@
 		if(!L.stored_ammo.len)
 			to_chat(user, "<span class='warning'>There's no more ammo [L]!</span>")
 			return
-		if(stored_ammo.len >= max_ammo)
+		if(stored_ammo.len >= ammo_max)
 			to_chat(user, "<span class='warning'>[src] is full!</span>")
 			return
 		var/obj/item/ammo_casing/AC = L.stored_ammo[1] //select the next casing.
@@ -219,7 +224,7 @@
 	else
 		if(casing.type != ammo_type)
 			return FALSE
-	if(length(stored_ammo) < max_ammo)
+	if(length(stored_ammo) < ammo_max)
 		// add
 		casing.forceMove(src)
 		if(QDELETED(casing))
@@ -263,7 +268,7 @@
 		user?.action_feedback(SPAN_WARNING("[src] is full."), src)
 		return
 	for(var/obj/item/ammo_casing/casing in where)
-		if(length(stored_ammo) >= max_ammo)
+		if(length(stored_ammo) >= ammo_max)
 			break
 		if(!casing.loaded())
 			continue
@@ -279,24 +284,24 @@
 #warn above
 
 /obj/item/ammo_magazine/proc/is_full()
-	return amount_remaining() >= max_ammo
+	return amount_remaining() >= ammo_max
 
 /obj/item/ammo_magazine/proc/amount_remaining(live_only)
 	if(!live_only)
-		return current_ammo + length(ammo_internal)
-	. = current_ammo
+		return ammo_current + length(ammo_internal)
+	. = ammo_current
 	for(var/obj/item/ammo_casing/casing as anything in ammo_internal)
 		if(casing.loaded())
 			.++
 
 /obj/item/ammo_magazine/proc/amount_missing(live_only)
-	return max_ammo - amount_remaining(live_only)
+	return ammo_max - amount_remaining(live_only)
 
 /obj/item/ammo_magazine/update_icon(updates)
 	if(rendering_system == GUN_RENDERING_DISABLED)
 		return ..()
 	cut_overlays()
-	var/count = round(amount_remaining() / max_ammo * rendering_count)
+	var/count = round(amount_remaining() / ammo_max * rendering_count)
 	if(count != rendering_count_current)
 		return
 	rendering_count_current = count

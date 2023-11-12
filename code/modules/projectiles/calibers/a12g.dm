@@ -5,10 +5,10 @@
 	name = "magazine (12 gauge)"
 	icon_state = "ashot-mag"
 	mag_type = MAGAZINE
-	caliber = CALIBER_12G
+	ammo_caliber = CALIBER_12G
 	materials_base = list(MAT_STEEL = 13000)
 	ammo_preload = /obj/item/ammo_casing/a12g
-	max_ammo = 24
+	ammo_max = 24
 	multiple_sprites = 1
 
 /obj/item/ammo_magazine/m12gdrum/beanbag
@@ -24,7 +24,7 @@
 	ammo_preload = /obj/item/ammo_casing/a12g/flare
 
 /obj/item/ammo_magazine/m12gdrum/empty
-	current_ammo = 0
+	ammo_current = 0
 
 #warn a12g_drum
 /obj/item/ammo_magazine/holyshot_mag
@@ -32,10 +32,10 @@
 	icon_state = "holyshotgun_mag"
 	desc = "Thrice-blessed, this drum magazine is loaded with silver shot designed to combat supernatural threats."
 	mag_type = MAGAZINE
-	caliber = CALIBER_12G
+	ammo_caliber = CALIBER_12G
 	materials_base = list(MAT_STEEL = 100, MAT_SILVER = 1100)
 	ammo_preload = /obj/item/ammo_casing/a12g/silver
-	max_ammo = 12
+	ammo_max = 12
 
 /obj/item/ammo_magazine/holyshot_mag/stake
 	name = "blessed drum magazine (stakes)"
@@ -49,10 +49,10 @@
 	name = "ammo clip (12g slug)"
 	icon_state = "12gclipslug" // Still a placeholder sprite. Feel free to make a better one.
 	desc = "A color-coded metal clip for holding and quickly loading shotgun shells. This one is loaded with slugs."
-	caliber = CALIBER_12G
+	ammo_caliber = CALIBER_12G
 	ammo_preload = /obj/item/ammo_casing/a12g
 	materials_base = list(MAT_STEEL = 1070) // slugs shells x2 + 350 metal for the clip itself.
-	max_ammo = 2
+	ammo_max = 2
 	multiple_sprites = 1
 
 /obj/item/ammo_magazine/clip/c12g/pellet
@@ -83,12 +83,12 @@
 	name = "shotgun slug holder"
 	desc = "A convenient pouch that holds 12 gauge shells."
 	icon_state = "shotholder"
-	caliber = CALIBER_12G
+	ammo_caliber = CALIBER_12G
 	ammo_preload = null
 	materials_base = list(MAT_STEEL = 1440)
 	ammo_preload = /obj/item/ammo_casing/a12g
-	current_ammo = 0
-	max_ammo = 4
+	ammo_current = 0
+	ammo_max = 4
 	multiple_sprites = 1
 	var/marking_color
 
@@ -101,7 +101,7 @@
 		overlays += I
 
 /obj/item/ammo_magazine/shotholder/full
-	current_ammo = 4
+	ammo_current = 4
 
 /obj/item/ammo_magazine/shotholder/full/slug
 	name = "shotgun slug holder (slug)"
@@ -133,7 +133,7 @@
 	name = "shotgun slug"
 	desc = "A 12 gauge slug."
 	icon_state = "slshell"
-	caliber = CALIBER_12G
+	ammo_caliber = CALIBER_12G
 	projectile_type = /obj/projectile/bullet/shotgun
 	materials_base = list(MAT_STEEL = 360)
 	fall_sounds = list('sound/weapons/guns/shotgun_fall.ogg')
@@ -194,7 +194,7 @@
 	name = " Silver shotgun shell"
 	desc = "A 12 gauge slug. Bless and Sancitfied to banish otherworlds entities."
 	icon_state = "agshell"
-	caliber = CALIBER_12G
+	ammo_caliber = CALIBER_12G
 	projectile_type = /obj/projectile/bullet/pellet/shotgun/silver
 	materials_base = list(MAT_STEEL = 360, MAT_SILVER = 240)
 
@@ -203,7 +203,7 @@
 	name = "Wooden stake shell"
 	desc = "A specialized shell designed to launch a wooden stake. Bless and Sancitfied to banish otherworlds entities."
 	icon_state = "agshell"
-	caliber = CALIBER_12G
+	ammo_caliber = CALIBER_12G
 	projectile_type = /obj/projectile/bullet/shotgun/stake
 	materials_base = list(MAT_STEEL = 500)
 
@@ -212,7 +212,7 @@
 	name = "unloaded technological shell"
 	desc = "A high-tech shotgun shell which can be loaded with materials to produce unique effects."
 	icon_state = "cshell"
-	caliber = CALIBER_12G
+	ammo_caliber = CALIBER_12G
 	projectile_type = null
 	materials_base = list(MAT_STEEL = 500, MAT_PHORON = 200)
 

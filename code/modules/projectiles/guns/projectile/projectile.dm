@@ -37,7 +37,7 @@
 /**
  * Get max ammo - used in rendering
  */
-/obj/item/gun/projectile/proc/get_max_ammo()
+/obj/item/gun/projectile/proc/get_ammo_max()
 	return 0
 
 /**

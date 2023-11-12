@@ -33,7 +33,7 @@
 /obj/item/ammo_magazine/cell_mag/medical/advanced
 	name = "advanced nanite magazine"
 	desc = "A nanite discharge cell for the \'AML\'. This one is a more advanced version which can hold six individual nanite discharge cells."
-	max_ammo = 6
+	ammo_max = 6
 	x_offset = 3
 	icon_state = "ml3m_mag_extended"
 	origin_tech = list(TECH_MATERIAL = 5, TECH_BIO = 5)
