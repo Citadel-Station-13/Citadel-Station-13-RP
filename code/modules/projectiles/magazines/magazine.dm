@@ -47,19 +47,23 @@
 	//* Rendering
 	/// use default rendering system
 	/// in state moide, we will be "[base_icon_state]-[count]"
-	/// in offset mode, we will repeatedly add "[base_icon_state]-ammo" with given offsets.
+	/// in segements mode, we will repeatedly add "[base_icon_state]-ammo" with given offsets.
 	/// overlay mode is not supported
 	var/rendering_system = GUN_RENDERING_DISABLED
 	/// number of states
 	var/rendering_count = 0
+	/// used internally to avoid appearance churn
+	VAR_PRIVATE/rendering_count_current
 	/// for offset mode: initial x offset
 	var/rendering_segment_x_start
 	/// for offset mode: initial y offset
 	var/rendering_segment_y_start
 	/// for offset mode: x offset
-	var/rendering_segment_x_offset = 3
+	var/rendering_segment_x_offset
 	/// for offset mode: y offset
-	var/rendering_segment_y_offset = 0
+	var/rendering_segment_y_offset
+	/// display special "[base_icon_state]-empty" if count == 0
+	var/rendering_segment_use_empty = FALSE
 	/// add a specific overlay as "[base_icon_state]-[state]", useful for denoting different magazines
 	/// that look similar with a stripe
 	var/rendering_static_overlay
@@ -71,6 +75,11 @@
 	if(!isnull(rendering_static_overlay))
 		add_overlay(rendering_static_overlay, TRUE)
 	update_icon()
+
+/obj/item/ammo_magazine/examine(mob/user, dist)
+	. = ..()
+	var/amount_left = amount_remaining()
+	. += "There [(amount_left == 1)? "is" : "are"] [amount_left] round\s left!"
 
 /**
  * peek top ammo casing
@@ -85,23 +94,30 @@
 	#warn impl
 
 /**
+ * put a casing into top
+ */
+/obj/item/ammo_magazine/proc/insert_top(obj/item/ammo_casing/casing)
+	#warn impl
+
+/**
+ * replace the first spent casing or insert top depending on if there's room
+ */
+/obj/item/ammo_magazine/proc/resupply_top(obj/item/ammo_casing/casing, replace_spent)
+	#warn impl
+
+/**
+ * create casing when we draw into non-instantiated part of the mag
+ */
+/obj/item/ammo_magazine/proc/instantiate_casing()
+	#warn impl
+
+/**
  * instantiate the entire internal ammo list
  *
  * DO NOT USE UNLESS YOU KNOW WHAT YOU ARE DOING.
  */
 /obj/item/ammo_magazine/proc/instantiate_internal_list()
 	#warn impl
-
-/**
- * put a casing into top
- */
-/obj/item/ammo_magazine/proc/insert_top(obj/item/ammo_casing/casing, replace_spent)
-	#warn impl
-
-/obj/item/ammo_magazine/examine(mob/user, dist)
-	. = ..()
-	var/amount_left = amount_remaining()
-	. += "There [(amount_left == 1)? "is" : "are"] [amount_left] round\s left!"
 
 
 #warn below
@@ -275,3 +291,31 @@
 
 /obj/item/ammo_magazine/proc/amount_missing(live_only)
 	return max_ammo - amount_remaining(live_only)
+
+/obj/item/ammo_magazine/update_icon(updates)
+	if(rendering_system == GUN_RENDERING_DISABLED)
+		return ..()
+	cut_overlays()
+	var/count = round(amount_remaining() / max_ammo * rendering_count)
+	if(count != rendering_count_current)
+		return
+	rendering_count_current = count
+	switch(rendering_system)
+		if(GUN_RENDERING_STATES)
+			icon_state = "[base_icon_state]-[count]"
+		if(GUN_RENDERING_SEGMENTS)
+			if(count == 0)
+				if(rendering_segment_use_empty)
+					add_overlay("[base_icon_state]-empty")
+			else
+				var/px = rendering_segment_x_start
+				var/py = rendering_segment_y_start
+				for(var/i in 1 to count)
+					var/image/seg = image(icon, icon_state = "[base_icon_state]-ammo")
+					seg.pixel_x = px
+					seg.pixel_y = py
+					px += rendering_segment_x_offset
+					py += rendering_segment_y_offset
+	return ..()
+
+

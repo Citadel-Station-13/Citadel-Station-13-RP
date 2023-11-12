@@ -51,6 +51,7 @@
 		if(LAZYLEN(managed_vis_overlays))
 			SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)
 
+		// todo: this managed overlays is a waste of memory to keep around, but how do we not do so?
 		var/list/new_overlays = update_overlays(updates)
 		if(managed_overlays)
 			cut_overlay(managed_overlays)
