@@ -118,6 +118,7 @@
 	is_adult = FALSE
 	legacy_melee_damage_lower = initial(legacy_melee_damage_lower)
 	legacy_melee_damage_upper = initial(legacy_melee_damage_upper)
+	init_melee_style()
 	maxHealth = initial(maxHealth)
 	health = clamp(health, 0, maxHealth)
 	nutrition = 400
