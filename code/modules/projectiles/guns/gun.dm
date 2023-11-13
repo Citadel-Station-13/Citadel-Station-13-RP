@@ -195,6 +195,15 @@
 	. = ..()
 	update_appearance()
 
+/**
+ * gets % of total ammo as number from 0 to 1.
+ * used in icon update procs for modularity,
+ * so that we don't need to have multiple
+ * versions of the core icon generation system.
+ */
+/obj/item/gun/proc/percent_ammo()
+	return 1
+
 #warn below
 
 /obj/item/gun
