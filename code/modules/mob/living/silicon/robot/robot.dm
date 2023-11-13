@@ -435,7 +435,7 @@
 	to_chat(usr, "You [lights_on ? "enable" : "disable"] your integrated light.")
 
 	if (lights_on)
-		radio.set_light(integrated_light_power, 0.75, l_color = get_light_color_for_icontype(), angle = LIGHT_WIDE)
+		radio.set_light(integrated_light_power, 2, l_color = get_light_color_for_icontype(), angle = LIGHT_WIDE)
 	else
 		radio.set_light(0)
 
