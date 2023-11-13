@@ -191,7 +191,7 @@
 				qdel(src)
 				return
 			else if(seed.chems)
-				if(W.sharp && W.edge && !isnull(seed.chems["woodpulp"]))
+				if(((W.sharp && W.edge) || CHECK_MULTIPLE_BITFIELDS(W.damage_mode, DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE)) && !isnull(seed.chems["woodpulp"]))
 					user.show_message("<span class='notice'>You make planks out of \the [src]!</span>", 1)
 					playsound(loc, 'sound/effects/woodcutting.ogg', 50, 1)
 					var/flesh_colour = seed.get_trait(TRAIT_FLESH_COLOUR)

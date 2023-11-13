@@ -279,6 +279,14 @@
 	name = "Short Legwarmers"
 	path = /obj/item/clothing/accessory/legwarmersshort
 
+/datum/loadout_entry/accessory/sleekjacket
+	name = "Sleek Uniform Jacket"
+	path = /obj/item/clothing/accessory/poncho/roles/cloak/custom/gestaltjacket
+
+/datum/loadout_entry/accessory/sleekpatch
+	name = "Sleek Uniform Patch"
+	path = /obj/item/clothing/accessory/sleekpatch
+
 /datum/loadout_entry/accessory/halo_projector
 	name = "Holographic Halo Projector"
 	path = /obj/item/clothing/accessory/halo_projector

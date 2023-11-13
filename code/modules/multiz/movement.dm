@@ -83,13 +83,9 @@
 		else
 			to_chat(src, SPAN_WARNING("Gravity stops you from moving upward."))
 			return FALSE
-	var/old_z = get_z(src)
 	// todo: this should not use Move()
 	if(!Move(destination))
 		return FALSE
-	var/new_z = get_z(src)
-	if(old_z != new_z)
-		on_changed_z_level(old_z, new_z)
 	return TRUE
 
 /mob/proc/can_overcome_gravity()
@@ -568,7 +564,7 @@
 
 	// And now to hurt the mech.
 	if(!planetary)
-		take_damage(rand(damage_min, damage_max))
+		take_damage_legacy(rand(damage_min, damage_max))
 	else
 		for(var/atom/movable/A in src.contents)
 			A.fall_impact(hit_atom, damage_min, damage_max, silent = TRUE)

@@ -2571,8 +2571,7 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/closet/firecloset,
 /turf/simulated/floor/tiled/steel_dirty,
@@ -7204,8 +7203,7 @@
 	phorontanks = 0
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/monitoring)
@@ -7520,8 +7518,7 @@
 /area/engineering/break_room)
 "zj" = (
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/table/reinforced,
 /obj/item/stack/material/steel{
@@ -9345,8 +9342,7 @@
 /area/engineering/hallway)
 "Ft" = (
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/closet/firecloset,
 /obj/structure/window/reinforced{
@@ -9775,8 +9771,7 @@
 /area/engineering/starboardnacelle)
 "GZ" = (
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/storage)
@@ -11008,8 +11003,7 @@
 /area/tcommsat/chamber)
 "Lg" = (
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -11084,8 +11078,7 @@
 "Lo" = (
 /obj/machinery/suit_cycler/engineering,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced,
 /turf/simulated/floor/tiled,
@@ -14486,8 +14479,7 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced,
 /turf/simulated/floor/plating,
@@ -15185,8 +15177,7 @@
 /area/engineering/atmos/monitoring)
 "YL" = (
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/table/reinforced,
 /obj/item/storage/briefcase/inflatable,
@@ -15493,8 +15484,7 @@
 /area/engineering/hallway)
 "ZJ" = (
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"

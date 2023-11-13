@@ -23,7 +23,7 @@
 	// INGEST
 	TEST_ASSERT_EQUAL(human.fire_stacks, 0, "Human has fire stacks before taking phlogiston")
 	drink.reagents.add_reagent(/datum/reagent/phlogiston, 10)
-	drink.melee_attack_chain(human, human)
+	drink.melee_interaction_chain(human, human)
 	TEST_ASSERT_EQUAL(human.fire_stacks, 1, "Human does not have fire stacks after taking phlogiston")
 	human.Life()
 	TEST_ASSERT(human.fire_stacks > 1, "Human fire stacks did not increase after life tick")
@@ -45,7 +45,7 @@
 	TEST_ASSERT_EQUAL(human.health, 100, "Human health did not set properly")
 	patch.reagents.add_reagent(/datum/reagent/method_patch_test, 1)
 	patch.self_delay = 0
-	patch.melee_attack_chain(human, human)
+	patch.melee_interaction_chain(human, human)
 	TEST_ASSERT_EQUAL(human.health, 90, "Human health did not update after patch was applied")
 
 	// INJECT

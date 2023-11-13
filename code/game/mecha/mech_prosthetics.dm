@@ -16,7 +16,7 @@
 	var/species_types = list(SPECIES_HUMAN)
 	var/species = SPECIES_HUMAN
 
-	materials = list(
+	materials_base = list(
 		MAT_STEEL = 0,
 		MAT_GLASS = 0,
 		MAT_PLASTIC = 0,
@@ -75,9 +75,9 @@
 
 /obj/machinery/mecha_part_fabricator/pros/dispense_built_part(datum/design/D)
 	var/obj/item/I = ..()
-	if(isobj(I) && I.materials && I.materials.len > 0)
-		for(var/i in I.materials)
-			I.materials[i] = I.materials[i] * component_coeff
+	if(isobj(I) && I.materials_base && I.materials_base.len > 0)
+		for(var/i in I.materials_base)
+			I.materials_base[i] = I.materials_base[i] * component_coeff
 
 /obj/machinery/mecha_part_fabricator/pros/ui_data(mob/user)
 	var/list/data = ..()

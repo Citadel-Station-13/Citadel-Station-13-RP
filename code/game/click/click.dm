@@ -142,18 +142,18 @@
 	if(Reachability(A, null, I?.reach, I))
 		//? attempt melee attack chain
 		if(I)
-			I.melee_attack_chain(A, src, clickchain_flags | CLICKCHAIN_HAS_PROXIMITY, unpacked_params)
+			I.melee_interaction_chain(A, src, clickchain_flags | CLICKCHAIN_HAS_PROXIMITY, unpacked_params)
 		else
-			melee_attack_chain(A, clickchain_flags | CLICKCHAIN_HAS_PROXIMITY, unpacked_params)
+			melee_interaction_chain(A, clickchain_flags | CLICKCHAIN_HAS_PROXIMITY, unpacked_params)
 		// todo: refactor aiming
 		trigger_aiming(TARGET_CAN_CLICK)
 		return
 	else if(ranged_generics_allowed)
 		//? attempt ranged attack chain
 		if(I)
-			I.ranged_attack_chain(A, src, clickchain_flags, unpacked_params)
+			I.ranged_interaction_chain(A, src, clickchain_flags, unpacked_params)
 		else
-			ranged_attack_chain(A, clickchain_flags, unpacked_params)
+			ranged_interaction_chain(A, clickchain_flags, unpacked_params)
 		// todo: refactor aiming
 		trigger_aiming(TARGET_CAN_CLICK)
 		return

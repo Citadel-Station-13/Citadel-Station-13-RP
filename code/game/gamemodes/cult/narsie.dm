@@ -49,8 +49,6 @@ var/global/list/narsie_list = list()
 	INVOKE_ASYNC(src, PROC_REF(narsie_spawn_animation))
 
 	if(!narsie_cometh)//so we don't initiate Hell more than one time.
-		if(cause_hell)
-			SetUniversalState(/datum/universal_state/hell)
 		narsie_cometh = 1
 
 		spawn(10 SECONDS)

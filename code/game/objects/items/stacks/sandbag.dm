@@ -11,7 +11,7 @@
 	throw_range = 20
 	drop_sound = 'sound/items/drop/backpack.ogg'
 	pickup_sound = 'sound/items/pickup/backpack.ogg'
-	materials = list("cloth" = 2)
+	materials_base = list("cloth" = 2)
 	max_amount = 50
 	attack_verb = list("tapped", "smacked", "flapped")
 
@@ -58,7 +58,7 @@
 	throw_range = 10
 	drop_sound = 'sound/items/drop/backpack.ogg'
 	pickup_sound = 'sound/items/pickup/backpack.ogg'
-	materials = list("cloth" = 2)
+	materials_base = list("cloth" = 2)
 	max_amount = 50
 	attack_verb = list("hit", "bludgeoned", "whacked")
 
@@ -110,13 +110,13 @@
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_SANDBAGS)
 	canSmoothWith = (SMOOTH_GROUP_SANDBAGS)
-	var/health = 100
-	var/maxhealth = 100
+	integrity = 200
+	integrity_max = 200
+
 	var/vestigial = TRUE
 
-/obj/structure/sandbag/Initialize(mapload, material_name)
+/obj/structure/sandbag/Initialize(mapload)
 	. = ..()
-	health = maxhealth
 	for(var/obj/structure/sandbag/S in loc)
 		if(S != src)
 			break_to_parts(full_return = 1)
@@ -136,74 +136,22 @@
 	//update_connections(TRUE)
 	. = ..()
 
-/obj/structure/sandbag/examine(mob/user, dist)
-	. = ..()
-	if(health < maxhealth)
-		switch(health / maxhealth)
-			if(0.0 to 0.5)
-				. += "<span class='warning'>It looks severely damaged!</span>"
-			if(0.25 to 0.5)
-				. += "<span class='warning'>It looks damaged!</span>"
-			if(0.5 to 1.0)
-				. += "<span class='notice'>It has a few nicks and holes.</span>"
-
-
 /obj/structure/sandbag/attackby(obj/item/W as obj, mob/user as mob)
 	user.setClickCooldown(user.get_attack_speed(W))
 	if(istype(W, /obj/item/stack/sandbags))
 		var/obj/item/stack/sandbags/S = W
-		if(health < maxhealth)
+		if(integrity < integrity_max)
 			if(S.get_amount() < 1)
 				to_chat(user, "<span class='warning'>You need one sandbag to repair \the [src].</span>")
-				return
+				return CLICKCHAIN_DO_NOT_PROPAGATE
 			visible_message("<span class='notice'>[user] begins to repair \the [src].</span>")
-			if(do_after(user,20) && health < maxhealth)
+			if(do_after(user,20) && integrity < integrity_max)
 				if(S.use(1))
-					health = maxhealth
+					integrity = integrity_max
 					visible_message("<span class='notice'>[user] repairs \the [src].</span>")
-				return
-		return
-	else
-		switch(W.damtype)
-			if("fire")
-				health -= W.damage_force * 1
-			if("brute")
-				health -= W.damage_force * 0.75
-		playsound(src, 'sound/weapons/smash.ogg', 50, 1)
-		CheckHealth()
-		..()
-
-/obj/structure/sandbag/proc/CheckHealth()
-	if(health <= 0)
-		dismantle()
-	return
-
-/obj/structure/sandbag/take_damage(var/damage)
-	health -= damage
-	CheckHealth()
-	return
-
-/obj/structure/sandbag/attack_generic(var/mob/user, var/damage, var/attack_verb)
-	visible_message("<span class='danger'>[user] [attack_verb] the [src]!</span>")
-	playsound(src, 'sound/weapons/smash.ogg', 50, 1)
-	user.do_attack_animation(src)
-	health -= damage
-	CheckHealth()
-	return
-
-/obj/structure/sandbag/proc/dismantle()
-	visible_message("<span class='danger'>\The [src] falls apart!</span>")
-	qdel(src)
-	//Make it drop materials? I dunno. For now it just disappears.
-	return
-
-/obj/structure/sandbag/legacy_ex_act(severity)
-	switch(severity)
-		if(1.0)
-			dismantle()
-		if(2.0)
-			health -= 25
-			CheckHealth()
+				return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()
 
 /obj/structure/sandbag/proc/break_to_parts(full_return = 0)
 	if(full_return || prob(20))

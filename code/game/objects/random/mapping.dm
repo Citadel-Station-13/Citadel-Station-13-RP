@@ -598,10 +598,10 @@
 				/obj/structure/closet/crate/corporate/grayson //GRAYSON ORES
 			),
 			prob(10);list(
-				/obj/item/stack/material,
-				/obj/item/stack/material,
-				/obj/item/stack/material,
-				/obj/item/stack/material,
+				/obj/item/stack/material/steel,
+				/obj/item/stack/material/steel,
+				/obj/item/stack/material/steel,
+				/obj/item/stack/material/steel,
 				/obj/structure/closet/crate/corporate/grayson //GRAYSON MATS
 			),
 			prob(5);list(

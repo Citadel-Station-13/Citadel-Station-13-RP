@@ -18,11 +18,12 @@
 	buckle_flags = BUCKLING_PASS_PROJECTILES_UPWARDS
 	buckle_lying = 0
 
+	var/health
+	var/maxhealth
+
 	var/mechanical = TRUE // If false, doesn't care for things like cells, engines, EMP, keys, etc.
 	var/attack_log = null
 	var/on = 0
-	var/health = 0	//do not forget to set health for your vehicle!
-	var/maxhealth = 0
 	var/fire_dam_coeff = 1.0
 	var/brute_dam_coeff = 1.0
 	var/open = 0	//Maint panel
@@ -386,7 +387,7 @@
 	spawn(1) healthcheck()
 	return 1
 
-/obj/vehicle_old/take_damage(var/damage)
+/obj/vehicle_old/proc/take_damage_legacy(var/damage)
 	if(!damage)
 		return
 	src.health -= damage

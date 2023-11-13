@@ -16,7 +16,7 @@ Pipelines + Other Objects -> Pipe network
 	power_channel = ENVIRON
 	plane = TURF_PLANE
 	layer = EXPOSED_PIPE_LAYER
-	obj_flags = CAN_BE_HIT | ON_BLUEPRINTS
+	obj_flags = OBJ_ON_BLUEPRINTS | OBJ_MELEE_TARGETABLE
 	// why block contents? so you ventcrawling little fucks don't pull a 2020 Citadel Main.
 	rad_flags = RAD_BLOCK_CONTENTS | RAD_NO_CONTAMINATE
 	atom_colouration_system = FALSE
@@ -173,7 +173,7 @@ Pipelines + Other Objects -> Pipe network
 	return FALSE
 
 // Deconstruct into a pipe item.
-/obj/machinery/atmospherics/drop_products(method)
+/obj/machinery/atmospherics/drop_products(method, atom/where)
 	if(construction_type)
 		var/obj/item/pipe/I = new construction_type(loc, null, null, src)
 		I.setPipingLayer(piping_layer)

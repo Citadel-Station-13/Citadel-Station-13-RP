@@ -2,10 +2,11 @@
  * angle clockwise from north from point A to point B
  *
  * this is visual angle because pixel shifts don't determine loc.
+ * this ignores step x/y as we don't generally use those, so this works on all /atom's
  *
  * this is also visual angle because ss13 uses weird CW of N instead of CCW of E angles (which the rest of the math world does).
  */
-/proc/get_visual_angle(atom/movable/start, atom/movable/end)
+/proc/get_visual_angle(atom/start, atom/end)
 	if(!start || !end)
 		return 0
 	var/dy =(32 * end.y + end.pixel_y) - (32 * start.y + start.pixel_y)

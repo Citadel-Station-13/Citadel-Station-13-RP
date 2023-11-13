@@ -121,10 +121,11 @@
 	if(printing)
 		add_overlay("[base_icon_state]-active")
 
-/obj/machinery/mecha_part_fabricator/dismantle()
+/obj/machinery/mecha_part_fabricator/drop_products(method, atom/where)
+	. = ..()
+	// todo: refactor
 	for(var/f in stored_materials)
 		eject_materials(f, -1)
-	..()
 
 /obj/machinery/mecha_part_fabricator/RefreshParts()
 	res_max_amount = 0
@@ -149,8 +150,8 @@
   */
 /obj/machinery/mecha_part_fabricator/proc/output_part_info(datum/design/D, var/categories = FALSE)
 	var/cost = list()
-	for(var/c in D.materials)
-		cost[c] = get_resource_cost_w_coeff(D, D.materials[c])
+	for(var/c in D.materials_base)
+		cost[c] = get_resource_cost_w_coeff(D, D.materials_base[c])
 
 	var/obj/built_item = D.build_path
 
@@ -267,8 +268,8 @@
   */
 /obj/machinery/mecha_part_fabricator/proc/get_resources_w_coeff(datum/design/D)
 	var/list/resources = list()
-	for(var/mat_id in D.materials)
-		resources[mat_id] = get_resource_cost_w_coeff(D, D.materials[mat_id])
+	for(var/mat_id in D.materials_base)
+		resources[mat_id] = get_resource_cost_w_coeff(D, D.materials_base[mat_id])
 	return resources
 
 /**

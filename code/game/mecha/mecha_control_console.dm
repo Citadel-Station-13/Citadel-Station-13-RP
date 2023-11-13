@@ -84,8 +84,8 @@
 	data["ref"] = REF(src)
 	data["charge"] = M.get_charge()
 	data["name"] = M.name
-	data["health"] = M.health
-	data["maxHealth"] = initial(M.health)
+	data["integrity"] = M.integrity
+	data["maxHealth"] = initial(M.integrity)
 	data["cell"] = M.cell
 	if(M.cell)
 		data["cellCharge"] = M.cell.charge

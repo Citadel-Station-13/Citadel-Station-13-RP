@@ -22,7 +22,7 @@
 	if(isnull(light_color_override) && !isnull(PB.light_color))
 		light_color_override = PB.light_color
 	if(light_range > 0 && light_intensity > 0)
-		var/list/turf/line = getline(starting.return_turf(), ending.return_turf())
+		var/list/turf/line = getline(starting.clamped_return_turf(), ending.clamped_return_turf())
 		tracing_line:
 			for(var/i in line)
 				var/turf/T = i

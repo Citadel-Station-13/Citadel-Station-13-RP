@@ -1,14 +1,27 @@
-/datum/material/mhydrogen
+/datum/material/hydrogen
+	abstract_type = /datum/material/hydrogen
+
+	relative_integrity = 0.2
+	density = 8 * 0.2
+	relative_conductivity = 5
+	relative_permeability = 0.7
+	relative_reactivity = 3
+	hardness = MATERIAL_RESISTANCE_LOW
+	toughness = MATERIAL_RESISTANCE_LOW
+	refraction = MATERIAL_RESISTANCE_LOW
+	absorption = MATERIAL_RESISTANCE_LOW
+	nullification = MATERIAL_RESISTANCE_HIGH
+
+/datum/material/hydrogen/mhydrogen
 	name = "mhydrogen"
 	id = MAT_METALHYDROGEN
 	stack_type = /obj/item/stack/material/mhydrogen
 	icon_colour = "#E6C5DE"
 	stack_origin_tech = list(TECH_MATERIAL = 6, TECH_POWER = 6, TECH_MAGNET = 5)
-	conductivity = 100
 	is_fusion_fuel = 1
 	tgui_icon_key = "mhydrogen"
 
-/datum/material/tritium
+/datum/material/hydrogen/tritium
 	name = "tritium"
 	id = "tritium"
 	stack_type = /obj/item/stack/material/tritium
@@ -17,10 +30,9 @@
 	sheet_singular_name = "ingot"
 	sheet_plural_name = "ingots"
 	is_fusion_fuel = 1
-	conductive = 0
 	tgui_icon_key = "ingots"
 
-/datum/material/deuterium
+/datum/material/hydrogen/deuterium
 	name = "deuterium"
 	id = "deuterium"
 	stack_type = /obj/item/stack/material/deuterium
@@ -29,5 +41,4 @@
 	sheet_singular_name = "ingot"
 	sheet_plural_name = "ingots"
 	is_fusion_fuel = 1
-	conductive = 0
 	tgui_icon_key = "ingots"

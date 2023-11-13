@@ -50,5 +50,5 @@
 	name = "Artificial Bluespace Crystal"
 	id = "bluespace_crystal"
 	req_tech = list(TECH_BLUESPACE = 3, TECH_PHORON = 4)
-	materials = list(MAT_DIAMOND = 1500, MAT_PHORON = 1500)
+	materials_base = list(MAT_DIAMOND = 1500, MAT_PHORON = 1500)
 	build_path = /obj/item/ore/bluespace_crystal/artificial

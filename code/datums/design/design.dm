@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 /**
  * design datums for holding what lathes can print.
  *
@@ -43,12 +46,13 @@
 
 	//? Build Costs
 	/// list of materials needed - typepath or id to amount. null to auto-detect from the object in question. list() for no cost (DANGEROUS).
-	var/list/materials
+	var/list/materials_base
 	/// for variable-material designs: assoc list of key to amounts
 	/// the key will be fed into print() during creation with the material id the user picked
 	/// autodetected if null.
 	/// this should obviously match material_parts on the /obj in question.
-	var/list/material_parts
+	/// todo: add optional parts and constraints
+	var/list/material_costs
 	/// Items needed, as ingredients list - see [code/__HELPERS/datastructs/ingredients.dm]
 	var/list/ingredients
 	/// list of reagents needed - typepath or id to amount. null to auto-detect from the object in question. list() for no cost (DANGEROUS).
@@ -74,17 +78,14 @@
 	// lathe designs shouldn't be qdeleting, but incase someone puts in a random..
 	if(QDELETED(instance))
 		return
-	// todo: maybe /obj/proc/detect_materials, TYPE_PROC_REF(/obj, detect_material_parts) ? this works fine for now tho.
-	if(isnull(materials))
-		if(!isnull(instance.materials))
-			materials = instance.materials.Copy()
-		if(!isnull(materials) && !isnull(instance.material_parts) && !isnull(instance.material_defaults))
-			// subtract out the material defaults the instance itself added
-			for(var/key in instance.material_parts)
-				materials[instance.material_defaults[key]] -= instance.material_parts[key]
-	if(isnull(material_parts))
-		if(!isnull(instance.material_parts))
-			material_parts = instance.material_parts.Copy()
+	if(isnull(materials_base))
+		var/list/fetched = instance.detect_material_base_costs()
+		if(length(fetched))
+			materials_base = fetched
+	if(isnull(material_costs))
+		var/list/fetched = instance.detect_material_part_costs()
+		if(length(fetched))
+			material_costs = fetched
 	if(isnull(reagents))
 		// if(!isnull(instance.reagents))
 			// reagents = instance.reagents.Copy()
@@ -118,8 +119,8 @@
 		"id" = id,
 		"work" = work,
 		"category" = category,
-		"materials" = length(materials)? materials : null,
-		"material_parts" = length(material_parts)? material_parts : null,
+		"materials" = length(materials_base)? materials_base : null,
+		"material_parts" = length(material_costs)? material_costs : null,
 		"reagents" = length(reagents)? reagents : null,
 		"ingredients" = length(ingredients)? ingredients : null,
 		"resultItem" = list(
@@ -133,17 +134,22 @@
  * This is called even before the fabricator can touch the item.
  *
  * @params
- * * where - where to put the finished product
- * * fabricator - the lathe printing the product
+ * * where - where to print
+ * * amount - how many to print
+ * * material_parts - keys to ids
+ * * ingredient_parts - ingredients
+ * * reagent_parts - keys to ids
+ * * cost_multiplier - the cost multiplier used to print it
  *
  * @return created atom, or list of created atoms.
  */
 /datum/design/proc/print(atom/where, amount, list/material_parts, list/ingredient_parts, list/reagent_parts, cost_multiplier = 1)
+	var/list/resolved_material_parts = SSmaterials.preprocess_kv_values_to_instances(material_parts)
 	if(is_stack)
 		var/stack_size = max_stack
 		if(stack_size >= amount)
 			. = new build_path(where, amount)
-			on_print(., material_parts, ingredient_parts, reagent_parts, cost_multiplier)
+			on_print(., resolved_material_parts, ingredient_parts, reagent_parts, cost_multiplier)
 		else
 			. = list()
 			var/safety = 0
@@ -156,32 +162,30 @@
 				made = new build_path(where, making)
 				left -= making
 				. += made
-				on_print(made, material_parts, ingredient_parts, reagent_parts, cost_multiplier)
+				on_print(made, resolved_material_parts, ingredient_parts, reagent_parts, cost_multiplier)
 	else
 		if(amount > 50)
 			STACK_TRACE("way too high")
 		if(amount == 1)
 			. = new build_path(where)
-			on_print(., material_parts, ingredient_parts, reagent_parts, cost_multiplier)
+			on_print(., resolved_material_parts, ingredient_parts, reagent_parts, cost_multiplier)
 		else
 			. = list()
 			var/atom/made
 			for(var/i in 1 to min(amount, 50))
 				made = new build_path(where)
-				on_print(made, material_parts, ingredient_parts, reagent_parts, cost_multiplier)
+				on_print(made, resolved_material_parts, ingredient_parts, reagent_parts, cost_multiplier)
 				. += made
 
-/datum/design/proc/on_print(atom/created, list/material_parts, list/ingredient_parts, list/reagent_parts, cost_multiplier = 1)
+/**
+ * material parts gets resolved to instances
+ */
+/datum/design/proc/on_print(atom/created, list/resolved_material_parts, list/ingredient_parts, list/reagent_parts, cost_multiplier = 1)
 	if(isobj(created))
 		var/obj/O = created
-		var/list/effective_materials = materials.Copy()
-		for(var/key in material_parts)
-			effective_materials[material_parts[key]] += src.material_parts[key]
-		if(cost_multiplier != 1)
-			for(var/key in effective_materials)
-				effective_materials[key] *= cost_multiplier
-		O.materials = effective_materials
-		O.set_material_parts(material_parts)
+		O.set_materials_base(materials_base)
+		O.set_material_parts(resolved_material_parts)
+		O.material_multiplier = cost_multiplier
 
 /**
  * called when a lathe prints a design, instead of print()

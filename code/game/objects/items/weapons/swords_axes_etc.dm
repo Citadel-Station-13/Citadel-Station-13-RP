@@ -167,7 +167,7 @@
 	embed_chance = 100 // these should probably come in a bandolier or have some sort of fabricator, tbf
 	damage_force = 5 // HAVING A STICK JAMMED INTO YOU IS LIKELY BAD FOR YOUR HEALTH // well to be fair most of the damage comes from the embed not the stab
 	w_class = WEIGHT_CLASS_SMALL
-	materials = list(MAT_STEEL = 2500)
+	materials_base = list(MAT_STEEL = 2500)
 	sharp = TRUE
 	edge = TRUE
 	icon_state = "embed_spike"
@@ -191,7 +191,7 @@
 	var/on =  0
 	slot_flags = null
 	damage_force = 0
-	hitsound = "sound/items/bikehorn.ogg"
+	attack_sound = "sound/items/bikehorn.ogg"
 
 /obj/item/melee/stool/faiza/attack_self(mob/user)
 	. = ..()
@@ -220,7 +220,7 @@
 	damage_force = 5
 	throw_force = 5
 	attack_verb = list("whacked", "smacked", "struck")
-	hitsound = 'sound/weapons/genhit3.ogg'
+	attack_sound = 'sound/weapons/genhit3.ogg'
 	var/reinforced = FALSE
 	var/burnt = FALSE
 	var/burned_in
@@ -305,9 +305,10 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "wakibokken_blade_h"
 	damage_force = 15
+	damage_tier = MELEE_TIER_MEDIUM
 	slot_flags = SLOT_BACK
 	sharp = 1
-	hitsound = "swing_hit"
+	attack_sound = "swing_hit"
 	attack_verb = list("smashed", "slammed", "whacked", "thwacked")
 	icon_state = "bostaff0"
 	item_state = "bostaff0"
@@ -349,7 +350,7 @@
 	damage_force = 15
 	throw_force = 5
 	attack_verb = list("battered", "hammered", "struck")
-	hitsound = 'sound/weapons/genhit3.ogg'
+	attack_sound = 'sound/weapons/genhit3.ogg'
 
 /obj/item/melee/kanabo/attackby(obj/item/I, mob/living/user, params)
 	if(istype(I, /obj/item/pen))

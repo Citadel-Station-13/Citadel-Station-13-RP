@@ -18,7 +18,7 @@
 	throw_range = 5
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 2)
-	materials = list(MAT_STEEL = 24000)
+	materials_base = list(MAT_STEEL = 24000)
 	preserve_item = TRUE // RCDs are pretty important.
 	var/datum/effect_system/spark_spread/spark_system
 	var/stored_matter = 0
@@ -423,13 +423,13 @@
 
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_MATERIAL = 2)
-	materials = list(MAT_STEEL = 20000, MAT_GLASS = 4000)
+	materials_base = list(MAT_STEEL = 20000, MAT_GLASS = 4000)
 	var/remaining = RCD_MAX_CAPACITY / 3
 
 /obj/item/rcd_ammo/large
 	name = "high-capacity matter cartridge"
 	desc = "Do not ingest."
-	materials = list(MAT_STEEL = 60000, MAT_GLASS = 12000)
+	materials_base = list(MAT_STEEL = 60000, MAT_GLASS = 12000)
 	origin_tech = list(TECH_MATERIAL = 4)
 	remaining = RCD_MAX_CAPACITY
 

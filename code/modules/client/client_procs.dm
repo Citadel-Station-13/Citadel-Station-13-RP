@@ -186,7 +186,7 @@
 
 	//* Resolve storage datums
 	// resolve persistent data
-	persistent = resolve_client_data(ckey)
+	persistent = resolve_client_data(ckey, key)
 	//* Resolve database data
 	player = new(key)
 	player.log_connect()

@@ -7,11 +7,6 @@
 	name = "scatter projectile"
 	icon = 'icons/obj/projectiles.dmi'
 	icon_state = "bullet"
-	density = FALSE
-	anchored = TRUE
-	unacidable = TRUE
-	pass_flags = ATOM_PASS_TABLE
-	mouse_opacity = 0
 
 	use_submunitions = TRUE
 

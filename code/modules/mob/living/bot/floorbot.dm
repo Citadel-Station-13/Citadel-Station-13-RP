@@ -307,7 +307,7 @@
 		update_icons()
 	else if(istype(A, /obj/item/stack/material) && amount + 4 <= maxAmount)
 		var/obj/item/stack/material/M = A
-		if(M.get_material_name() == MAT_STEEL)
+		if(M.is_material_stack_of_fuzzy(MAT_STEEL))
 			visible_message("<span class='notice'>\The [src] begins to make tiles.</span>")
 			busy = 1
 			update_icons()

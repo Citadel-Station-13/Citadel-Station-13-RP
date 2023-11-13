@@ -54,7 +54,7 @@
 	/// Fish status define
 	var/status = FISH_ALIVE
 	/// Current fish health. Dies at 0.
-	health = 100
+	var/health = 100
 	/// flopping?
 	var/flopping = FALSE
 	/// stasis (won't die)?
@@ -107,7 +107,8 @@
 /obj/item/fish/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/aquarium_content, PROC_REF(get_aquarium_animation), list(COMSIG_FISH_STATUS_CHANGED,COMSIG_FISH_STIRRED))
-	RegisterSignal(src, COMSIG_ATOM_TEMPORARY_ANIMATION_START, PROC_REF(on_temp_animation))
+	// todo: waiting on rework for that signal
+	// RegisterSignal(src, COMSIG_ATOM_TEMPORARY_ANIMATION_START, PROC_REF(on_temp_animation))
 
 	check_environment_after_movement()
 	if(status != FISH_DEAD)
@@ -224,7 +225,7 @@
 		try_to_reproduce()
 
 /obj/item/fish/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
-	if(I.sharp)
+	if(I.is_sharp())
 		user.action_feedback(SPAN_NOTICE("You start cutting [src] into fillets..."), src)
 		if(!do_after(user, 2 SECONDS, src))
 			return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
@@ -330,6 +331,7 @@
 #define FLOP_SINGLE_MOVE_TIME 1.5
 #define JUMP_X_DISTANCE 5
 #define JUMP_Y_DISTANCE 6
+
 /// This animation should be applied to actual parent atom instead of vc_object.
 /proc/flop_animation(atom/movable/animation_target)
 	var/pause_between = PAUSE_BETWEEN_PHASES + rand(1, 5) //randomized a bit so fish are not in sync
@@ -354,6 +356,9 @@
 		animate(time = up_time, pixel_y = JUMP_Y_DISTANCE , pixel_x=x_step, loop = -1, flags= ANIMATION_RELATIVE, easing = BOUNCE_EASING | EASE_IN)
 		animate(time = up_time, pixel_y = -JUMP_Y_DISTANCE, pixel_x=x_step, loop = -1, flags= ANIMATION_RELATIVE, easing = BOUNCE_EASING | EASE_OUT)
 		animate(time = PAUSE_BETWEEN_FLOPS, loop = -1)
+
+BLOCK_BYOND_BUG_2072419
+
 #undef PAUSE_BETWEEN_PHASES
 #undef PAUSE_BETWEEN_FLOPS
 #undef FLOP_COUNT
