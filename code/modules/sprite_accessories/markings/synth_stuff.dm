@@ -200,3 +200,17 @@
 	icon_state = "replika"
 	color_blend_mode = ICON_MULTIPLY
 	body_parts = list(BP_L_FOOT)
+
+/datum/sprite_accessory/marking/synth/replika_panels_body
+	name = "Replikant Paneling - SynthFlesh (body)"
+	id = "marking_replika_panel_body"
+	icon_state = "replika"
+	color_blend_mode = ICON_MULTIPLY
+	body_parts = list(BP_TORSO)
+
+/datum/sprite_accessory/marking/synth/replika_panels_groin
+	name = "Replikant Paneling - SynthFlesh (groin)"
+	id = "marking_replika_panel_groin"
+	icon_state = "replika"
+	color_blend_mode = ICON_MULTIPLY
+	body_parts = list(BP_GROIN)
