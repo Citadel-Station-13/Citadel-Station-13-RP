@@ -54,7 +54,7 @@
 
 	//* Rendering
 	/// use default rendering system
-	/// in state moide, we will be "[base_icon_state]-[count]"
+	/// in state moide, we will be "[base_icon_state]-[count]", from 0 to count (0 for empty)
 	/// in segements mode, we will repeatedly add "[base_icon_state]-ammo" with given offsets.
 	/// overlay mode is not supported
 	var/rendering_system = GUN_RENDERING_DISABLED
@@ -337,7 +337,7 @@
 	if(rendering_system == GUN_RENDERING_DISABLED)
 		return ..()
 	cut_overlays()
-	var/count = round(amount_remaining() / ammo_max * rendering_count)
+	var/count = CEILING(amount_remaining() / ammo_max * rendering_count, 1)
 	if(count != rendering_count_current)
 		return
 	rendering_count_current = count
