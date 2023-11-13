@@ -11,7 +11,8 @@
  * * use in hand / attack_self() --> rack
  * * alt click --> safety
  * * ctrl click --> firemode
- * * drag onto user or a hand slot --> eject magazine
+ * * click with other hand --> eject magazine/bullet
+ * * drag onto user or a hand slot --> pickup
  *
  * This will obviously not apply universally, and is most relevant to ballistic weapons,
  * as energy weapons do not have racking (normally) or magazines (normally) and will
@@ -56,7 +57,7 @@
 	/// current firemode
 	var/datum/firemode/firemode
 	/// available firemodes
-	var/datum/firemode/regex_this_firemodes
+	var/list/datum/firemode/regex_this_firemodes
 
 	//* Firing
 	/// mid firing
@@ -185,6 +186,15 @@
 /obj/item/gun/proc/handle_fire_empty(atom/target, atom/movable/user, turf/where, angle, reflex, iteration)
 	return
 
+
+/obj/item/gun/dropped(mob/user, flags, atom/newLoc)
+	. = ..()
+	update_appearance()
+
+/obj/item/gun/equipped(mob/user, slot, flags)
+	. = ..()
+	update_appearance()
+
 #warn below
 
 /obj/item/gun
@@ -309,52 +319,8 @@
 	if(!handle_pins(user))
 		return 0
 
-	var/mob/living/M = user
-	if(dna_lock && attached_lock.stored_dna)
-		if(!authorized_user(user))
-			if(attached_lock.safety_level == 0)
-				to_chat(M, "<span class='danger'>\The [src] buzzes in dissapointment and displays an invalid DNA symbol.</span>")
-				return 0
-			if(!attached_lock.exploding)
-				if(attached_lock.safety_level == 1)
-					to_chat(M, "<span class='danger'>\The [src] hisses in dissapointment.</span>")
-					visible_message("<span class='game say'><span class='name'>\The [src]</span> announces, \"Self-destruct occurring in ten seconds.\"</span>", "<span class='game say'><span class='name'>\The [src]</span> announces, \"Self-destruct occurring in ten seconds.\"</span>")
-					attached_lock.exploding = 1
-					spawn(100)
-						explosion(src, 0, 0, 3, 4)
-						sleep(1)
-						qdel(src)
-					return 0
-	if(MUTATION_HULK in M.mutations)
-		to_chat(M, "<span class='danger'>Your fingers are much too large for the trigger guard!</span>")
-		return 0
-	if((MUTATION_CLUMSY in M.mutations) && prob(40)) //Clumsy handling
-		var/obj/P = consume_next_projectile()
-		if(P)
-			if(process_projectile(P, user, user, pick("l_foot", "r_foot")))
-				handle_post_fire(user, user)
-				var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
-				user.visible_message(
-					"<span class='danger'>\The [user] shoots [TU.himself] in the foot with \the [src]!</span>",
-					"<span class='danger'>You shoot yourself in the foot with \the [src]!</span>"
-					)
-				M.drop_item_to_ground(src)
-		else
-			handle_click_empty(user)
-		return 0
 	return 1
 
-/obj/item/gun/emp_act(severity)
-	for(var/obj/O in contents)
-		O.emp_act(severity)
-
-/obj/item/gun/projectile/dropped(mob/user, flags, atom/newLoc)
-	. = ..()
-	update_appearance()
-
-/obj/item/gun/projectile/equipped(mob/user, slot, flags)
-	. = ..()
-	update_appearance()
 
 /obj/item/gun/projectile/afterattack(atom/target, mob/living/user, clickchain_flags, list/params)
 	if(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)
@@ -455,12 +421,6 @@
 	..()
 
 /obj/item/gun/projectile/emag_act(var/remaining_charges, var/mob/user)
-	if(dna_lock && attached_lock.controller_lock)
-		to_chat(user, "<span class='notice'>You short circuit the internal locking mechanisms of \the [src]!</span>")
-		attached_lock.controller_dna = null
-		attached_lock.controller_lock = 0
-		attached_lock.stored_dna = list()
-		return 1
 	if(pin)
 		pin.emag_act(remaining_charges, user)
 
@@ -906,7 +866,7 @@
 	. = ..()
 	if(!(item_flags & ITEM_IN_INVENTORY))
 		return
-	. += image('icons/obj/gun/common.dmi', "safety_[check_safety()? "on" : "off"]")
+	. += image('icons/modules/projectiles/guns/common.dmi', "safety_[check_safety()? "on" : "off"]")
 
 /obj/item/gun/proc/toggle_safety(mob/user)
 	if(user)
