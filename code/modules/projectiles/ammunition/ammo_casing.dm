@@ -11,7 +11,7 @@
 	drop_sound = 'sound/items/drop/ring.ogg'
 	pickup_sound = 'sound/items/pickup/ring.ogg'
 
-	//! Casing
+	//* Casing
 	/// casing flags - see __DEFINES/projectiles/ammo_casing.dm
 	var/casing_flags = NONE
 	/// projectile type
@@ -19,7 +19,7 @@
 	/// stored projectile - either null for un-init'd, FALSE for empty, or an instance
 	VAR_PRIVATE/obj/projectile/stored
 
-	//! Icon
+	//* Icon
 	/// switch to "[initial(state)]-spent" after expenditure
 	var/icon_spent = TRUE
 

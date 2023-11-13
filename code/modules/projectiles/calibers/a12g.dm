@@ -132,88 +132,67 @@
 
 //* Casings
 /obj/item/ammo_casing/a12g
-	name = "shotgun slug"
+	name = "slug shell"
 	desc = "A 12 gauge slug."
-	icon_state = "slshell"
+	icon = 'icons/modules/projectiles/casings/shotgun.dmi'
+	icon_state = "grey"
 	ammo_caliber = CALIBER_12G
 	projectile_type = /obj/projectile/bullet/shotgun
 	materials_base = list(MAT_STEEL = 360)
 	fall_sounds = list('sound/weapons/guns/shotgun_fall.ogg')
 
 /obj/item/ammo_casing/a12g/pellet
-	name = "shotgun shell"
+	name = "buckshot shell"
 	desc = "A 12 gauge shell."
-	icon_state = "gshell"
+	icon_state = "red"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun
 
 /obj/item/ammo_casing/a12g/blank
-	name = "shotgun shell"
+	name = "blank shell"
 	desc = "A blank shell."
-	icon_state = "blshell"
+	icon_state = "white"
 	projectile_type = /obj/projectile/bullet/blank
 	materials_base = list(MAT_STEEL = 90)
 
 /obj/item/ammo_casing/a12g/practice
-	name = "shotgun shell"
+	name = "practice shell"
 	desc = "A practice shell."
-	icon_state = "pshell"
+	icon_state = "white"
 	projectile_type = /obj/projectile/bullet/practice
 	materials_base = list(MAT_STEEL = 90)
 
 /obj/item/ammo_casing/a12g/beanbag
 	name = "beanbag shell"
 	desc = "A beanbag shell."
-	icon_state = "bshell"
+	icon_state = "green"
 	projectile_type = /obj/projectile/bullet/shotgun/beanbag
 	materials_base = list(MAT_STEEL = 180)
 
 /obj/item/ammo_casing/a12g/improvised
 	name = "improvised shell"
 	desc = "An extremely weak shotgun shell with multiple small pellets made out of metal shards."
-	icon_state = "improvshell"
+	icon_state = "improv"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_improvised
 	materials_base = list(MAT_STEEL = 500, MAT_GLASS = 200)
 
-//Can stun in one hit if aimed at the head, but
-//is blocked by clothing that stops tasers and is vulnerable to EMP
 /obj/item/ammo_casing/a12g/stunshell
 	name = "stun shell"
 	desc = "A 12 gauge taser cartridge."
-	icon_state = "stunshell"
+	icon_state = "stun"
 	projectile_type = /obj/projectile/energy/electrode/stunshot
 	materials_base = list(MAT_STEEL = 360, MAT_GLASS = 720)
 
-//Does not stun, only blinds, but has area of effect.
 /obj/item/ammo_casing/a12g/flare
 	name = "flare shell"
 	desc = "A chemical shell used to signal distress or provide illumination."
-	icon_state = "fshell"
+	icon_state = "flare"
 	projectile_type = /obj/projectile/energy/flash/flare
 	materials_base = list(MAT_STEEL = 90, MAT_GLASS = 90)
 
-//Silver 12g
-/obj/item/ammo_casing/a12g/silver
-	name = " Silver shotgun shell"
-	desc = "A 12 gauge slug. Bless and Sancitfied to banish otherworlds entities."
-	icon_state = "agshell"
-	ammo_caliber = CALIBER_12G
-	projectile_type = /obj/projectile/bullet/pellet/shotgun/silver
-	materials_base = list(MAT_STEEL = 360, MAT_SILVER = 240)
-
-//Wooden Stake 12g
-/obj/item/ammo_casing/a12g/stake
-	name = "Wooden stake shell"
-	desc = "A specialized shell designed to launch a wooden stake. Bless and Sancitfied to banish otherworlds entities."
-	icon_state = "agshell"
-	ammo_caliber = CALIBER_12G
-	projectile_type = /obj/projectile/bullet/shotgun/stake
-	materials_base = list(MAT_STEEL = 500)
-
-//Techshell & Derivatives
 /obj/item/ammo_casing/a12g/techshell
 	name = "unloaded technological shell"
 	desc = "A high-tech shotgun shell which can be loaded with materials to produce unique effects."
-	icon_state = "cshell"
+	icon_state = "tech"
 	ammo_caliber = CALIBER_12G
 	projectile_type = null
 	materials_base = list(MAT_STEEL = 500, MAT_PHORON = 200)
@@ -221,14 +200,14 @@
 /obj/item/ammo_casing/a12g/techshell/meteorslug
 	name = "meteorslug shell"
 	desc = "A shotgun shell rigged with CMC technology, which launches a massive slug when fired."
-	icon_state = "mshell"
+	icon_state = "meteor"
 	projectile_type = /obj/projectile/meteor/slug
 	materials_base = list(MAT_STEEL = 500, MAT_GOLD = 200)
 
 /obj/item/ammo_casing/a12g/techshell/emp
 	name = "ion shell"
 	desc = "An advanced shotgun round that creates a small EMP when it strikes a target."
-	icon_state = "empshell"
+	icon_state = "emp"
 	projectile_type = /obj/projectile/scatter/ion
 //	projectile_type = /obj/projectile/bullet/shotgun/ion
 	materials_base = list(MAT_STEEL = 360, MAT_URANIUM = 240)
@@ -238,26 +217,42 @@
 	desc = "A delicate device which can be loaded into a shotgun. The primer acts as a button which triggers the gain medium and fires a powerful \
 	energy blast. While the heat and power drain limit it to one use, it can still allow an operator to engage targets that ballistic ammunition \
 	would have difficulty with."
-	icon_state = "plshell"
+	icon_state = "pulse"
 	projectile_type = /obj/projectile/beam/pulse/shotgun
 	materials_base = list(MAT_STEEL = 500, MAT_SILVER = 200)
 
 /obj/item/ammo_casing/a12g/techshell/dragonsbreath
 	name = "dragonsbreath shell"
 	desc = "A shotgun shell which fires a spread of incendiary pellets."
-	icon_state = "ishell"
+	icon_state = "dragon"
 	projectile_type = /obj/projectile/bullet/incendiary/shotgun
 
 /obj/item/ammo_casing/a12g/techshell/frag12
 	name = "FRAG-12 slug"
 	desc = "A high explosive breaching round for a 12 gauge shotgun."
-	icon_state = "heshell"
+	icon_state = "explosive"
 	projectile_type = /obj/projectile/bullet/shotgun/frag12
 	materials_base = list(MAT_STEEL = 500, MAT_PHORON = 200)
 
 /obj/item/ammo_casing/a12g/techshell/laserslug
 	name = "scatter laser shell"
 	desc = "An advanced shotgun shell that uses a micro laser to replicate the effects of a scatter laser weapon in a ballistic package."
-	icon_state = "lshell"
+	icon_state = "laser"
 	projectile_type = /obj/projectile/scatter/laser
 	materials_base = list(MAT_STEEL = 500, MAT_GLASS = 200)
+
+/obj/item/ammo_casing/a12g/silver
+	name = "Silver shotgun shell"
+	desc = "A 12 gauge slug. Bless and Sancitfied to banish otherworlds entities."
+	icon_state = "stake"
+	ammo_caliber = CALIBER_12G
+	projectile_type = /obj/projectile/bullet/pellet/shotgun/silver
+	materials_base = list(MAT_STEEL = 360, MAT_SILVER = 240)
+
+/obj/item/ammo_casing/a12g/stake
+	name = "Wooden stake shell"
+	desc = "A specialized shell designed to launch a wooden stake. Bless and Sancitfied to banish otherworlds entities."
+	icon_state = "stake"
+	ammo_caliber = CALIBER_12G
+	projectile_type = /obj/projectile/bullet/shotgun/stake
+	materials_base = list(MAT_STEEL = 500)
