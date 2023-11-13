@@ -103,8 +103,9 @@
 		return
 
 	is_adult = TRUE
-	legacy_melee_damage_lower = round(legacy_melee_damage_lower * 2) // 20
-	legacy_melee_damage_upper = round(legacy_melee_damage_upper * 2) // 30
+	legacy_melee_damage_lower = initial(legacy_melee_damage_lower) * 2
+	legacy_melee_damage_upper = initial(legacy_melee_damage_upper) * 2
+	init_melee_style()
 	maxHealth = maxHealth_adult
 	amount_grown = 0
 	update_icon()
@@ -115,8 +116,8 @@
 		return
 
 	is_adult = FALSE
-	legacy_melee_damage_lower = round(legacy_melee_damage_lower / 2) // 20
-	legacy_melee_damage_upper = round(legacy_melee_damage_upper / 2) // 30
+	legacy_melee_damage_lower = initial(legacy_melee_damage_lower)
+	legacy_melee_damage_upper = initial(legacy_melee_damage_upper)
 	maxHealth = initial(maxHealth)
 	health = clamp(health, 0, maxHealth)
 	nutrition = 400

@@ -74,7 +74,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 
 /datum/unarmed_attack/proc/get_unarmed_damage(mob/attacker, atom/defender)
 	// todo: damage_structural_add is awful and shouldn't be kept in the future
-	return damage + rand(damage_add_low, damage_add_high) + ismob(defender)? 0 : damage_structural_add
+	return damage + rand(damage_add_low, damage_add_high) + (ismob(defender)? 0 : damage_structural_add)
 
 /datum/unarmed_attack/proc/apply_effects(var/mob/living/carbon/human/user,var/mob/living/carbon/human/target,var/armour,var/attack_damage,var/zone)
 
