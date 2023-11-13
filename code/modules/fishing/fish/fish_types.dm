@@ -78,7 +78,7 @@
 
 /obj/item/fish/trout
 	name = "trout"
-	desc = "A common ray-finned fish originally native to Earth. Their oily meat made them a staple of both predatory wildlife and humans alike."
+	desc = "A common ray-finned fish originally native to Earth. Their oily meat made them a staple of predatory wildlife and humans alike."
 	//description_fluff = ""
 	icon_state = "trout"
 	stable_population = 3
@@ -96,7 +96,7 @@
 
 /obj/item/fish/perch
 	name = "perch"
-	desc = "These fish are small and powerful. Popularly fished for sport due to their tenacity, perch are also considered to be relatively good tasting."
+	desc = "These fish are small and powerful. Popularly fished for sport due to their tenacity, perch were also considered appetizing."
 	//description_fluff = ""
 	icon_state = "perch"
 	stable_population = 3
@@ -252,7 +252,7 @@
 
 /obj/item/fish/crab
 	name = "crab"
-	desc = "An Old Earth crustacean, crabs were frequently hunted due to the richness of their meat. They remain a heavily farmed source of food to this day."
+	desc = "Crabs - an Old Earth crustacean - were frequently hunted due to the richness of their meat. They remain a heavily farmed source of food to this day."
 	//description_fluff = ""
 	icon_state = "crab"
 	required_fluid_type = AQUARIUM_FLUID_SALTWATER
