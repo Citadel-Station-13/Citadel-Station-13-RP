@@ -474,10 +474,6 @@
 	if ((!( SSticker ) || !SSemergencyshuttle.location()))
 		return
 
-	if(!universe.OnShuttleCall(usr))
-		to_chat(user, "<span class='notice'>Cannot establish a bluespace connection.</span>")
-		return
-
 	if(deathsquad.deployed)
 		to_chat(user, "[(LEGACY_MAP_DATUM).boss_short] will not allow the shuttle to be called. Consider all contracts terminated.")
 		return

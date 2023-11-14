@@ -107,7 +107,7 @@
 /obj/item/clothing/suit/space/emergency,
 /obj/item/clothing/head/helmet/space/emergency,
 /obj/item/clothing/head/helmet/space/emergency,
-/obj/structure/closet/crate/aether,
+/obj/structure/closet/crate/corporate/aether,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/gecko_sh)
 "bP" = (
@@ -193,7 +193,7 @@
 /obj/item/clothing/head/helmet/space/void/refurb/engineering,
 /obj/item/clothing/head/helmet/space/void/refurb/engineering,
 /obj/effect/floor_decal/industrial/outline/grey,
-/obj/structure/closet/crate/einstein,
+/obj/structure/closet/crate/corporate/einstein,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/gecko_sh_engineering)
 "dS" = (
@@ -1020,7 +1020,7 @@
 /obj/item/clothing/suit/space/emergency,
 /obj/item/clothing/head/helmet/space/emergency,
 /obj/item/clothing/head/helmet/space/emergency,
-/obj/structure/closet/crate/aether,
+/obj/structure/closet/crate/corporate/aether,
 /obj/structure/sign/directions/bridge{
 	dir = 1;
 	pixel_y = 42
@@ -1478,7 +1478,7 @@
 /obj/item/clothing/suit/space/emergency,
 /obj/item/clothing/head/helmet/space/emergency,
 /obj/item/clothing/head/helmet/space/emergency,
-/obj/structure/closet/crate/aether{
+/obj/structure/closet/crate/corporate/aether{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1619,7 +1619,7 @@
 /obj/item/clothing/suit/space/emergency,
 /obj/item/clothing/head/helmet/space/emergency,
 /obj/item/clothing/head/helmet/space/emergency,
-/obj/structure/closet/crate/aether,
+/obj/structure/closet/crate/corporate/aether,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/gecko_sh)
 "FL" = (
@@ -1662,7 +1662,7 @@
 /obj/item/clothing/suit/space/emergency,
 /obj/item/clothing/head/helmet/space/emergency,
 /obj/item/clothing/head/helmet/space/emergency,
-/obj/structure/closet/crate/aether{
+/obj/structure/closet/crate/corporate/aether{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1711,7 +1711,7 @@
 /obj/item/clothing/suit/space/emergency,
 /obj/item/clothing/head/helmet/space/emergency,
 /obj/item/clothing/head/helmet/space/emergency,
-/obj/structure/closet/crate/aether,
+/obj/structure/closet/crate/corporate/aether,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/gecko_sh)
 "HJ" = (
@@ -2120,7 +2120,7 @@
 /obj/item/clothing/suit/space/emergency,
 /obj/item/clothing/head/helmet/space/emergency,
 /obj/item/clothing/head/helmet/space/emergency,
-/obj/structure/closet/crate/aether{
+/obj/structure/closet/crate/corporate/aether{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -2183,7 +2183,7 @@
 /obj/item/tank/air,
 /obj/item/clothing/suit/space/void/refurb/pilot,
 /obj/item/clothing/head/helmet/space/void/refurb/pilot,
-/obj/structure/closet/crate/aether{
+/obj/structure/closet/crate/corporate/aether{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -2596,7 +2596,7 @@
 /obj/item/clothing/suit/space/emergency,
 /obj/item/clothing/head/helmet/space/emergency,
 /obj/item/clothing/head/helmet/space/emergency,
-/obj/structure/closet/crate/aether{
+/obj/structure/closet/crate/corporate/aether{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,

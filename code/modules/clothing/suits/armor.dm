@@ -937,7 +937,7 @@
 	armor_type = /datum/armor/general/baroque_military
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
-// Replika armor
+/* Replika armor
 /obj/item/clothing/suit/armor/replika/klbr
     name = "controller replikant armored chestplate"
     desc = "A sloped titanium-composite chest plate fitted for use by 2nd generation biosynthetics. The right shoulder has been painted an imposing shade of red."
@@ -972,4 +972,4 @@
     icon_state = "star"
     worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
     body_cover_flags = UPPER_TORSO
-    armor_type = /datum/armor/station/medium
+    armor_type = /datum/armor/station/medium */
