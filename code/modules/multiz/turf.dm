@@ -57,10 +57,10 @@
 	// we assume dir is up/down because why wouldn't it be
 	var/turf/dest
 	if(dir == UP)
-		dest = Above()
+		dest = above()
 		return dest && (z_pass_out_obstruction(mover, UP, dest) || dest.z_pass_in_obstruction(mover, DOWN, src))
 	else if(dir == DOWN)
-		dest = Below()
+		dest = below()
 		return dest && (z_pass_out_obstruction(mover, DOWN, dest) || dest.z_pass_in_obstruction(mover, UP, src))
 	CRASH("What?")
 
@@ -75,10 +75,10 @@
 	// we assume dir is up/down because why wouldn't it be
 	var/turf/dest
 	if(dir == UP)
-		dest = Above()
+		dest = above()
 		return dest && !z_pass_out_obstruction(mover, UP, dest) && !dest.z_pass_in_obstruction(mover, DOWN, src)
 	else if(dir == DOWN)
-		dest = Below()
+		dest = below()
 		return dest && !z_pass_out_obstruction(mover, DOWN, dest) && !dest.z_pass_in_obstruction(mover, UP, src)
 	CRASH("What?")
 
