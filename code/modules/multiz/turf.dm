@@ -116,7 +116,7 @@
 /turf/smooth_icon()
 	. = ..()
 	if(SSzmimic.initialized)
-		var/turf/simulated/open/above = GetAbove(src)
+		var/turf/simulated/open/above = above()
 		if(istype(above))
 			above.queue()
 
