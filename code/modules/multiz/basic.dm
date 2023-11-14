@@ -1,5 +1,6 @@
-// If you add a more comprehensive system, just untick this file.
-var/global/list/z_levels = list() // Each bit re... haha just kidding this is a list of bools now
+/turf/proc/above()
+	. = ..()
+
 
 // Thankfully, no bitwise magic is needed here.
 /proc/GetAbove(atom/atom)
