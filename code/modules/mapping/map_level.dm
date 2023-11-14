@@ -33,16 +33,22 @@
 	/// base area typepath for this level
 	var/base_area = /area/space
 	/// id of north zlevel - overrides linkage if set. can be set to path, autoconverts to id on new.
+	/// can also be set to instance - used for structs.
 	var/link_north
 	/// id of south zlevel - overrides linkage if set. can be set to path, autoconverts to id on new.
+	/// can also be set to instance - used for structs.
 	var/link_south
 	/// id of west zlevel - overrides linkage if set. can be set to path, autoconverts to id on new.
+	/// can also be set to instance - used for structs.
 	var/link_west
 	/// id of east zlevel - overrides linkage if set. can be set to path, autoconverts to id on new.
+	/// can also be set to instance - used for structs.
 	var/link_east
 	/// id of below zlevel - overrides linkage if set. can be set to path, autoconverts to id on new.
+	/// can also be set to instance - used for structs.
 	var/link_below
 	/// id of above zlevel - overrides linkage if set. can be set to path, autoconverts to id on new.
+	/// can also be set to instance - used for structs.
 	var/link_above
 	/// gas string / atmosphere path / atmosphere id for indoors air
 	var/air_indoors = GAS_STRING_STP
@@ -173,23 +179,24 @@
 	return level_in_dir(dir)?.z_index
 
 /**
- * get level datum in dir
+ * get level datum in cardinal dir
  */
 /datum/map_level/proc/level_in_dir(dir)
 	RETURN_TYPE(/datum/map_level)
 	switch(dir)
+		#warn RESOLVE(X) istype(X, /datum/space_level)? X : SSmapping.keyed_levels[X]
 		if(NORTH)
-			return SSmapping.keyed_levels[link_north]
+			return RESOLVE(link_north)
 		if(SOUTH)
-			return SSmapping.keyed_levels[link_south]
+			return RESOLVE(link_south)
 		if(EAST)
-			return SSmapping.keyed_levels[link_east]
+			return RESOLVE(link_east)
 		if(WEST)
-			return SSmapping.keyed_levels[link_west]
+			return RESOLVE(link_west)
 		if(UP)
-			return SSmapping.keyed_levels[link_above]
+			return RESOLVE(link_above)
 		if(DOWN)
-			return SSmapping.keyed_levels[link_below]
+			return RESOLVE(link_below)
 
 /**
  * called right after we physically load in, before init
@@ -226,6 +233,8 @@
 /datum/map_level/proc/allow_deallocate()
 	return TRUE
 
+//* traits
+
 /datum/map_level/proc/has_trait(trait)
 	return trait in traits
 
@@ -243,6 +252,8 @@
 	if(loaded)
 		SSmapping.on_trait_del(src, trait)
 
+//* attributes
+
 /datum/map_level/proc/get_attribute(attribute)
 	return attributes?[attribute]
 
@@ -257,6 +268,151 @@
 	LAZYREMOVE(attributes, attribute)
 	if(loaded)
 		SSmapping.on_attribute_set(src, attribute, old, null)
+
+//* rebuilds
+
+/**
+ * Rebuild turfs up/down of us
+ * This will sleep
+ */
+/datum/map_level/proc/rebuild_vertical_levels()
+	for(var/datum/map_level/L in list(
+		level_in_dir(UP),
+		level_in_dir(DOWN)
+	))
+		L.rebuild_turfs()
+
+/**
+ * Rebuild turfs adjacent of us
+ * This will sleep
+ */
+/datum/map_level/proc/rebuild_adjacent_levels()
+	for(var/datum/map_level/L in list(
+		level_in_dir(NORTH),
+		level_in_dir(SOUTH),
+		level_in_dir(EAST),
+		level_in_dir(WEST)
+	))
+		L.rebuild_transitions()
+
+/**
+ * call to rebuild all turfs for vertical multiz
+ *
+ * this will sleep
+ */
+/datum/map_level/proc/rebuild_turfs()
+	for(var/turf/T as anything in block(locate(x_min || 1, y_min || 1, z_value), locate(x_max || world.maxx, y_max || world.maxx, z_value)))
+		T.update_multiz()
+		CHECK_TICK
+	turfs_rebuild_count++
+
+/**
+ * call to rebuild all turfs for horizontal transitions
+ *
+ * this will sleep
+ */
+/datum/map_level/proc/rebuild_transitions()
+	switch(transition_mode)
+		// do nothing
+		if(Z_TRANSITION_DISABLED)
+		// default not implemented
+		if(Z_TRANSITION_FORCED, Z_TRANSITION_DEFAULT)
+			// bottom
+			for(var/turf/T as anything in block(locate((x_min || 1) + 1, y_min || 1, z_value), locate((x_max || world.maxx) - 1, y_min || 1, z_value)))
+				T._make_transition_border(SOUTH, TRUE)
+				CHECK_TICK
+			// top
+			for(var/turf/T as anything in block(locate((x_min || 1) + 1, y_max || world.maxy, z_value), locate((x_max || world.maxx) - 1, y_max || world.maxy, z_value)))
+				T._make_transition_border(NORTH, TRUE)
+				CHECK_TICK
+			// left
+			for(var/turf/T as anything in block(locate(x_min || 1, (y_min || 1) + 1, z_value), locate(x_min || 1, (y_max || world.maxy) - 1, z_value)))
+				T._make_transition_border(WEST, TRUE)
+				CHECK_TICK
+			// right
+			for(var/turf/T as anything in block(locate(x_max || world.maxx, (y_min || 1) + 1, z_value), locate(x_max || world.maxx, (y_max || world.maxy) - 1, z_value)))
+				T._make_transition_border(EAST, TRUE)
+				CHECK_TICK
+
+			var/turf/T
+			// bottomleft
+			T = locate(x_min || 1, y_min || 1, z_value)
+			T._make_transition_border(SOUTHWEST, TRUE)
+			CHECK_TICK
+			// bottomright
+			T = locate(x_max || world.maxx, y_min || 1, z_value)
+			T._make_transition_border(SOUTHEAST, TRUE)
+			CHECK_TICK
+			// topleft
+			T = locate(x_min || 1, y_max || world.maxy, z_value)
+			T._make_transition_border(NORTHWEST, TRUE)
+			CHECK_TICK
+			// topright
+			T = locate(x_max || world.maxx, y_max || world.maxy, z_value)
+			T._make_transition_border(NORTHEAST, TRUE)
+			CHECK_TICK
+		if(Z_TRANSITION_INVISIBLE)
+			// bottom
+			for(var/turf/T as anything in block(locate((x_min || 1) + 1, y_min || 1, z_value), locate((x_max || world.maxx) - 1, y_min || 1, z_value)))
+				T._make_transition_border(SOUTH, FALSE)
+				CHECK_TICK
+			// top
+			for(var/turf/T as anything in block(locate((x_min || 1) + 1, y_max || world.maxy, z_value), locate((x_max || world.maxx) - 1, y_max || world.maxy, z_value)))
+				T._make_transition_border(NORTH, FALSE)
+				CHECK_TICK
+			// left
+			for(var/turf/T as anything in block(locate(x_min || 1, (y_min || 1) + 1, z_value), locate(x_min || 1, (y_max || world.maxy) - 1, z_value)))
+				T._make_transition_border(WEST, FALSE)
+				CHECK_TICK
+			// right
+			for(var/turf/T as anything in block(locate(x_max || world.maxx, (y_min || 1) + 1, z_value), locate(x_max || world.maxx, (y_max || world.maxy) - 1, z_value)))
+				T._make_transition_border(EAST, FALSE)
+				CHECK_TICK
+
+			var/turf/T
+			// bottomleft
+			T = locate(x_min || 1, y_min || 1, z_value)
+			T._make_transition_border(SOUTHWEST, FALSE)
+			CHECK_TICK
+			// bottomright
+			T = locate(x_max || world.maxx, y_min || 1, z_value)
+			T._make_transition_border(SOUTHEAST, FALSE)
+			CHECK_TICK
+			// topleft
+			T = locate(x_min || 1, y_max || world.maxy, z_value)
+			T._make_transition_border(NORTHWEST, FALSE)
+			CHECK_TICK
+			// topright
+			T = locate(x_max || world.maxx, y_max || world.maxy, z_value)
+			T._make_transition_border(NORTHEAST, FALSE)
+			CHECK_TICK
+	transitions_rebuild_count++
+
+/**
+ * destroys all transitions on border turfs
+ * call when changing level size
+ *
+ * this will sleep
+ */
+/datum/map_level/proc/destroy_transitions()
+	// bottom
+	for(var/turf/T as anything in block(locate(x_min || 1, y_min || 1, z_value), locate(x_max || world.maxx, y_min || 1, z_value)))
+		T._dispose_transition_border()
+		CHECK_TICK
+	// top
+	for(var/turf/T as anything in block(locate(x_min || 1, y_max || world.maxy, z_value), locate(x_max || world.maxx, y_max || world.maxy, z_value)))
+		T._dispose_transition_border()
+		CHECK_TICK
+	// left
+	for(var/turf/T as anything in block(locate(x_min || 1, (y_min || 1) + 1, z_value), locate(x_min || 1, (y_max || world.maxy) - 1, z_value)))
+		T._dispose_transition_border()
+		CHECK_TICK
+	// right
+	for(var/turf/T as anything in block(locate(x_max || world.maxx, (y_min || 1) + 1, z_value), locate(x_max || world.maxx, (y_max || world.maxy) - 1, z_value)))
+		T._dispose_transition_border()
+		CHECK_TICK
+
+//* subtypes
 
 /**
  * dynamically generated levels should use this

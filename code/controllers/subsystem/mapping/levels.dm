@@ -86,8 +86,8 @@
 		cached_level_down.len = world.maxz
 		for(var/i in 1 to world.maxz)
 			var/datum/map_level/level = ordered_levels[i]
-			cached_level_up[i] = level.resolve_level_in_dir(UP)?.z_value
-			cached_level_down[i] = level.resolve_level_in_dir(DOWN)?.z_value
+			cached_level_up[i] = level.level_in_dir(UP)?.z_index
+			cached_level_down[i] = level.level_in_dir(DOWN)?.z_index
 	else
 		// smart rebuild
 		ASSERT(dir)
@@ -97,9 +97,9 @@
 		var/datum/map_level/level = updated
 		switch(dir)
 			if(UP)
-				cached_level_up[level.z_value] = level.resolve_level_in_dir(UP)?.z_value
+				cached_level_up[level.z_index] = level.level_in_dir(UP)?.z_index
 			if(DOWN)
-				cached_level_down[level.z_value] = level.resolve_level_in_dir(DOWN)?.z_value
+				cached_level_down[level.z_index] = level.level_in_dir(DOWN)?.z_index
 			else
 				CRASH("Invalid dir: [dir]")
 
@@ -123,10 +123,10 @@
 		cached_level_east.len = cached_level_west.len = cached_level_north.len = cached_level_south.len = world.maxz
 		for(var/i in 1 to world.maxz)
 			var/datum/map_level/level = ordered_levels[i]
-			cached_level_north[i] = level.resolve_level_in_dir(NORTH)?.z_value
-			cached_level_south[i] = level.resolve_level_in_dir(SOUTH)?.z_value
-			cached_level_east[i] = level.resolve_level_in_dir(EAST)?.z_value
-			cached_level_west[i] = level.resolve_level_in_dir(WEST)?.z_value
+			cached_level_north[i] = level.level_in_dir(NORTH)?.z_index
+			cached_level_south[i] = level.level_in_dir(SOUTH)?.z_index
+			cached_level_east[i] = level.level_in_dir(EAST)?.z_index
+			cached_level_west[i] = level.level_in_dir(WEST)?.z_index
 	else
 		// smart rebuild
 		if(!updated.instantiated)
@@ -136,13 +136,13 @@
 		var/datum/map_level/other
 		switch(dir)
 			if(NORTH)
-				cached_level_north[level.z_value] = level.resolve_level_in_dir(NORTH)?.z_value
+				cached_level_north[level.z_index] = level.level_in_dir(NORTH)?.z_index
 			if(SOUTH)
-				cached_level_south[level.z_value] = level.resolve_level_in_dir(SOUTH)?.z_value
+				cached_level_south[level.z_index] = level.level_in_dir(SOUTH)?.z_index
 			if(EAST)
-				cached_level_east[level.z_value] = level.resolve_level_in_dir(EAST)?.z_value
+				cached_level_east[level.z_index] = level.level_in_dir(EAST)?.z_index
 			if(WEST)
-				cached_level_west[level.z_value] = level.resolve_level_in_dir(WEST)?.z_value
+				cached_level_west[level.z_index] = level.level_in_dir(WEST)?.z_index
 			else
 				CRASH("Invalid dir: [dir]")
 
@@ -429,14 +429,14 @@
 		bottoms += z
 	for(var/datum/map_level/bottom as anything in bottoms)
 		// register us
-		var/list/stack = list(bottom.z_value)
-		z_stack_lookup[bottom.z_value] = stack
+		var/list/stack = list(bottom.z_index)
+		z_stack_lookup[bottom.z_index] = stack
 		// let's sing the list manipulation song
-		var/datum/map_level/next = ordered_levels[cached_level_up[bottom.z_value]]
+		var/datum/map_level/next = ordered_levels[cached_level_up[bottom.z_index]]
 		while(next)
-			stack += next.z_value
-			z_stack_lookup[next.z_value] = stack
-			next = ordered_levels[cached_level_up[next.z_value]]
+			stack += next.z_index
+			z_stack_lookup[next.z_index] = stack
+			next = ordered_levels[cached_level_up[next.z_index]]
 
 /**
  * Ensures there's no up/down infinite loops
