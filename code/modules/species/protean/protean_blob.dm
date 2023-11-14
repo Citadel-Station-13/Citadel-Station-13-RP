@@ -88,6 +88,7 @@
 	return ..()
 
 /mob/living/simple_mob/protean_blob/init_melee_style()
+	. = ..()
 	melee_style.damage_structural_add = 30
 
 /mob/living/simple_mob/protean_blob/init_vore()
