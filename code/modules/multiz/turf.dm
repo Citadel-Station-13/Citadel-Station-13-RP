@@ -153,3 +153,17 @@
 /turf/proc/get_virtual_step(dir)
 	RETURN_TYPE(/turf)
 	return SSmapping.get_virtual_step(src, dir)
+
+/**
+ * Basic multiz get dir
+ * Will not look across lateral transitions, only directly up/down.
+ */
+/turf/proc/get_vertical_dir(turf/other)
+	if(other.z == z)
+		return get_dir(src, other)
+	var/turf/above = above()
+	if(other.z == above.z)
+		return get_dir(above, other) | UP
+	var/turf/below = below()
+	if(other.z == below.z)
+		return get_dir(below, other) | DOWN

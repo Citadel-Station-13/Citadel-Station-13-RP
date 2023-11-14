@@ -364,7 +364,8 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	if(!(d1 == direction || d2 == direction)) //if the cable is not pointed in this direction, do nothing
 		return
 
-	var/turf/TB  = get_zstep(src, direction)
+	var/turf/us = get_turf(src)
+	var/turf/TB  = us.get_vertical_step(direction)
 
 	for(var/obj/structure/cable/C in TB)
 

@@ -184,7 +184,7 @@
 /datum/map_level/proc/level_in_dir(dir)
 	RETURN_TYPE(/datum/map_level)
 	switch(dir)
-		#define RESOLVE(X) istype(X, /datum/space_level)? X : SSmapping.keyed_levels[X]
+		#define RESOLVE(X) istype(X, /datum/map_level)? X : SSmapping.keyed_levels[X]
 		if(NORTH)
 			return RESOLVE(link_north)
 		if(SOUTH)
