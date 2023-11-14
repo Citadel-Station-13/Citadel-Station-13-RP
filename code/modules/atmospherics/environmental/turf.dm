@@ -45,7 +45,7 @@
 /turf/proc/CheckAirBlock(turf/other)
 	if(other == src)
 		return CanAtmosPass(src, NONE)
-	var/d = other.z == z? get_dir(src, other) : get_dir_multiz(src, other)
+	var/d = other.z == z? get_dir(src, other) : get_vertical_dir(other)
 	var/o = global.reverse_dir[d]
 	return min(CanAtmosPass(other, d), other.CanAtmosPass(src, o))
 

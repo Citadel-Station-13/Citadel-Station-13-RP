@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 /**
  * Component used for turf transitions.
  */
@@ -27,7 +30,8 @@
 		. = COMPONENT_INCOMPATIBLE
 		CRASH("[type] improperly instanced with the following args: direction=\[[dir]\], range=\[[range]\]")
 	if(range > world.maxx || range > world.maxy || range > 20)
-		CRASH("[range] is too big a range. Max: 20.")
+		. = COMPONENT_INCOMPATIBLE
+		CRASH("[range] is too big a range. Max: 20, or the smallest dimension of hte world..")
 	src.range = range
 	src.dir = dir
 	if(!isnull(force_z_target))
@@ -36,8 +40,6 @@
 		src.render = render
 	if(!isnull(force_destination))
 		src.force_destination = force_destination
-	Build()
-	RegisterSignal(parent, COMSIG_ATOM_ENTERED, .proc/transit)
 
 /datum/component/transition_border/RegisterWithParent()
 	. = ..()
@@ -46,19 +48,16 @@
 
 /datum/component/transition_border/UnregisterFromParent()
 	UnregisterSignal(parent, COMSIG_ATOM_ENTERED)
-	if(holder1)
-		QDEL_NULL(holder1)
-	if(holder2)
-		QDEL_NULL(holder2)
-	if(holder3)
-		QDEL_NULL(holder3)
+	QDEL_NULL(holder1)
+	QDEL_NULL(holder2)
+	QDEL_NULL(holder3)
 	return ..()
 
 /datum/component/transition_border/proc/transit(datum/source, atom/movable/AM)
 	var/turf/destination = SSmapping.GetVirtualStep(parent, dir)
 	if(!destination)
 		CRASH("Invalid destination found??")
-	AM.TransitForceMove(destination, 2)
+	AM.locationTransitForceMove(destination, 2)
 
 /datum/component/transition_border/proc/Build()
 	// reset first
@@ -179,22 +178,19 @@
 /atom/movable/mirage_border
 	name = "Mirage holder"
 	anchored = TRUE
-	plane = PLANE_SPACE
+	plane = SPACE_PLANE
 	density = FALSE
+	atom_flags = ATOM_ABSTRACT
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	vis_flags = VIS_HIDE	// THIS IS VERY FUCKING IMPORTANT; WILL CRASH SERVER IF IT LOOPS.
 
-/atom/movable/mirage_border/forceMove()
-	return
-
-/atom/movable/mirage_border/Destroy()
-	reset()
-	return ..()
+/atom/movable/mirage_border/doMove(atom/destination)
+	return FALSE
 
 /atom/movable/mirage_border/proc/reset()
 	pixel_x = 0
 	pixel_y = 0
-	vis_contents = list()
+	vis_contents.len = 0
 
 /atom/movable/mirage_border/vv_edit_var(var_name, var_value, raw_edit)
 	if(var_value == NAMEOF(src, vis_flags))	// NO

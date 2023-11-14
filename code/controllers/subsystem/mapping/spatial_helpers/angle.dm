@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 /**
  * Gets virual angle between two turfs in horizontal terms
  * IGNORES STRUCT Z DEPTH!
@@ -11,7 +14,7 @@
  * OR if they both aren't and aren't in the same zlevel,
  * OR if hey both are and aren't in the same struct
  */
-/datum/controller/subsystem/mapping/proc/get_virtual_angle(turf/A, turf/B)
+/datum/controller/subsystem/mapping/proc/get_virtual_angle(atom/A, atom/B)
 	return get_visual_angle(A, B)
 	// A = get_turf(A)
 	// B = get_turf(B)

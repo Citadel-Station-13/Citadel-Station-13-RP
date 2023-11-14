@@ -127,7 +127,7 @@
 			to_chat(user, "<span class='warning'>The plating is going to need some support.</span>")
 
 	if(istype(C, /obj/item/stack/tile/roofing))
-		var/turf/T = GetAbove(src)
+		var/turf/T = above()
 		var/obj/item/stack/tile/roofing/R = C
 
 		// Patch holes in the ceiling

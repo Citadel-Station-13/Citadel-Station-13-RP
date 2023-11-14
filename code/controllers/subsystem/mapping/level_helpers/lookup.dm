@@ -26,7 +26,13 @@
 	return ordered_levels[z]?.display_name
 
 /**
- * returns the z index of an id
+ * returns level datum in dir of level
  */
-/datum/controller/subsystem/mapping/proc/level_by_id(id)
-	return keyed_levels[id]?.z_index
+/datum/controller/subsystem/mapping/proc/level_datum_in_dir(z, dir)
+	#warn impl
+
+/**
+ * returns level index in dir of level
+ */
+/datum/controller/subsystem/mapping/proc/level_index_in_dir(z, dir)
+	#warn impl

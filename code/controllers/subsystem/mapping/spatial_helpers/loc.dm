@@ -1,3 +1,5 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
 
 /**
  * Get a coordinate set of list(x, y, z) of virtual coordinates for an turf.
