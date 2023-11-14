@@ -32,6 +32,8 @@
 	var/list/cached_level_south
 	/// Z access lookup - z = list() of zlevels it can access. For performance, this is currently only including bidirectional links, AND does not support looping.
 	var/list/z_stack_lookup
+	/// does z stack lookup need a rebuild?
+	var/z_stack_dirty = TRUE
 
 	//* initializations
 	/// stuff that puts themselves in this get map_initializations() hook called on them
@@ -74,7 +76,7 @@
  * * targeted - the new level the level is pointing to, if doing a single update
  * * dir - the direction from updated to targeted
  */
-/datum/controller/subsystem/mapping/proc/rebuild_verticality(datum/space_level/updated, datum/space_level/targeted, dir)
+/datum/controller/subsystem/mapping/proc/rebuild_verticality(datum/map_level/updated, datum/map_level/targeted, dir)
 	if(!updated || !cached_level_up || !cached_level_down)
 		// full rebuild
 		z_stack_dirty = TRUE
@@ -83,7 +85,7 @@
 		cached_level_up.len = world.maxz
 		cached_level_down.len = world.maxz
 		for(var/i in 1 to world.maxz)
-			var/datum/space_level/level = ordered_levels[i]
+			var/datum/map_level/level = ordered_levels[i]
 			cached_level_up[i] = level.resolve_level_in_dir(UP)?.z_value
 			cached_level_down[i] = level.resolve_level_in_dir(DOWN)?.z_value
 	else
@@ -92,7 +94,7 @@
 		if(!updated.instantiated)
 			return
 		z_stack_dirty = TRUE
-		var/datum/space_level/level = updated
+		var/datum/map_level/level = updated
 		switch(dir)
 			if(UP)
 				cached_level_up[level.z_value] = level.resolve_level_in_dir(UP)?.z_value
@@ -111,7 +113,7 @@
  * * targeted - the new level the level is pointing to, if doing a single update
  * * dir - the direction from updated to targeted
  */
-/datum/controller/subsystem/mapping/proc/rebuild_transitions(datum/space_level/updated, datum/space_level/targeted, dir)
+/datum/controller/subsystem/mapping/proc/rebuild_transitions(datum/map_level/updated, datum/map_level/targeted, dir)
 	if(!updated || !cached_level_east || !cached_level_west || !cached_level_north || !cached_level_south)
 		// full rebuild
 		cached_level_east = list()
@@ -120,7 +122,7 @@
 		cached_level_south = list()
 		cached_level_east.len = cached_level_west.len = cached_level_north.len = cached_level_south.len = world.maxz
 		for(var/i in 1 to world.maxz)
-			var/datum/space_level/level = ordered_levels[i]
+			var/datum/map_level/level = ordered_levels[i]
 			cached_level_north[i] = level.resolve_level_in_dir(NORTH)?.z_value
 			cached_level_south[i] = level.resolve_level_in_dir(SOUTH)?.z_value
 			cached_level_east[i] = level.resolve_level_in_dir(EAST)?.z_value
@@ -130,8 +132,8 @@
 		if(!updated.instantiated)
 			return
 		ASSERT(dir)
-		var/datum/space_level/level = updated
-		var/datum/space_level/other
+		var/datum/map_level/level = updated
+		var/datum/map_level/other
 		switch(dir)
 			if(NORTH)
 				cached_level_north[level.z_value] = level.resolve_level_in_dir(NORTH)?.z_value
@@ -156,7 +158,7 @@
 		for(var/i in 1 to world.maxz)
 			indices += i
 	for(var/number in indices)
-		var/datum/space_level/L = ordered_levels[number]
+		var/datum/map_level/L = ordered_levels[number]
 		if(transitions)
 			L.rebuild_transitions()
 		if(turfs)
@@ -419,18 +421,18 @@
 			z_stack_lookup[z] = struct.stack_lookup[struct.real_indices.Find(z)]
 		else
 			left += z
-	var/list/datum/space_level/bottoms = list()
+	var/list/datum/map_level/bottoms = list()
 	// let's sing the bottom song
 	for(var/z in left)
 		if(cached_level_down[z])
 			continue
 		bottoms += z
-	for(var/datum/space_level/bottom as anything in bottoms)
+	for(var/datum/map_level/bottom as anything in bottoms)
 		// register us
 		var/list/stack = list(bottom.z_value)
 		z_stack_lookup[bottom.z_value] = stack
 		// let's sing the list manipulation song
-		var/datum/space_level/next = ordered_levels[cached_level_up[bottom.z_value]]
+		var/datum/map_level/next = ordered_levels[cached_level_up[bottom.z_value]]
 		while(next)
 			stack += next.z_value
 			z_stack_lookup[next.z_value] = stack
@@ -463,7 +465,7 @@
 	if(!loops.len)
 		return
 	for(var/z in loops)
-		var/datum/space_level/level = ordered_levels[z]
+		var/datum/map_level/level = ordered_levels[z]
 		level.set_up(null)
 		level.set_down(null)
 		if(struct_by_z[z])

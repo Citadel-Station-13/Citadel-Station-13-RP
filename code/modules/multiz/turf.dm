@@ -113,15 +113,43 @@
 /turf/check_impact(atom/movable/falling_atom)
 	return TRUE
 
-/turf/proc/multiz_turf_del(turf/T, dir)
-	SEND_SIGNAL(src, COMSIG_TURF_MULTIZ_DEL, T, dir)
-
-/turf/proc/multiz_turf_new(turf/T, dir)
-	SEND_SIGNAL(src, COMSIG_TURF_MULTIZ_NEW, T, dir)
-
 /turf/smooth_icon()
 	. = ..()
 	if(SSzmimic.initialized)
 		var/turf/simulated/open/above = GetAbove(src)
 		if(istype(above))
 			above.queue()
+
+//* lookups
+
+/turf/proc/above()
+	RETURN_TYPE(/turf)
+	var/index = SSmapping.cached_level_up[z]
+	return isnull(index)? null : locate(x, y, index)
+
+/turf/proc/below()
+	RETURN_TYPE(/turf)
+	var/index = SSmapping.cached_level_down[z]
+	return isnull(index)? null : locate(x, y, index)
+
+/**
+ * This is the basic get multiz step.
+ * It will not look across lateral transitions, only up/down.
+ */
+/turf/proc/get_vertical_step(dir)
+	RETURN_TYPE(/turf)
+	if((dir & (UP|DOWN)) == 0)
+		return get_step(src, dir)
+	if(dir & UP)
+		return get_step(above(), dir & ~(UP))
+	if(dir & DOWN)
+		return get_step(above(), dir & ~(DOWN))
+	CRASH("how did we get here?")
+
+/**
+ * This is the full get multiz step.
+ * It will look across lateral transitions and other struct magic.
+ */
+/turf/proc/get_virtual_step(dir)
+	RETURN_TYPE(/turf)
+	return SSmapping.get_virtual_step(src, dir)

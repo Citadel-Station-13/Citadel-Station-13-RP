@@ -1,27 +1,3 @@
-/turf/proc/above()
-	. = ..()
-
-
-// Thankfully, no bitwise magic is needed here.
-/proc/GetAbove(atom/atom)
-	var/turf/turf = get_turf(atom)
-	if(!turf)
-		return null
-	return HasAbove(turf.z) ? get_step(turf, UP) : null
-
-/proc/GetBelow(atom/atom)
-	var/turf/turf = get_turf(atom)
-	if(!turf)
-		return null
-	return HasBelow(turf.z) ? get_step(turf, DOWN) : null
-
-/turf/proc/Above()
-	return HasAbove(z)? get_step(src, UP) : null
-
-/turf/proc/Below()
-	return HasBelow(z)? get_step(src, DOWN) : null
-
-
 
 GLOBAL_LIST_EMPTY(connected_z_cache)
 
@@ -48,11 +24,3 @@ GLOBAL_LIST_EMPTY(connected_z_cache)
 		GLOB.connected_z_cache.len = zA
 	GLOB.connected_z_cache[zA] = new_entry
 	return new_entry[zB]
-
-/proc/get_zstep(ref, dir)
-	if(dir == UP)
-		. = GetAbove(ref)
-	else if (dir == DOWN)
-		. = GetBelow(ref)
-	else
-		. = get_step(ref, dir)
