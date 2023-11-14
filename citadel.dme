@@ -3880,7 +3880,6 @@
 #include "code\modules\multiz\atoms.dm"
 #include "code\modules\multiz\basic.dm"
 #include "code\modules\multiz\falling.dm"
-#include "code\modules\multiz\level_data.dm"
 #include "code\modules\multiz\map_data.dm"
 #include "code\modules\multiz\movement.dm"
 #include "code\modules\multiz\open_turf.dm"

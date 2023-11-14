@@ -32,13 +32,6 @@ GLOBAL_LIST_EMPTY(connected_z_cache)
 	for(var/level = z, HasAbove(level), level++)
 		. |= level+1
 
-	// Check stack for any laterally connected neighbors.
-	for(var/tz in .)
-		var/obj/level_data/level = GLOB.levels_by_z["[tz]"]
-		if(level)
-			level.find_connected_levels(.)
-
-
 /proc/AreConnectedZLevels(zA, zB)
 	if (zA <= 0 || zB <= 0 || zA > world.maxz || zB > world.maxz)
 		return FALSE
