@@ -100,14 +100,14 @@
 		return species && species.can_overcome_gravity(src)
 
 /mob/observer/zMove(direction)
-	var/turf/destination = (direction == UP) ? GetAbove(src) : GetBelow(src)
+	var/turf/destination = (direction == UP) ? get_vertical_step(src, UP) : get_vertical_step(src, DOWN)
 	if(destination)
 		forceMove(destination)
 	else
 		to_chat(src, "<span class='notice'>There is nothing of interest in this direction.</span>")
 
 /mob/observer/eye/zMove(direction)
-	var/turf/destination = (direction == UP) ? GetAbove(src) : GetBelow(src)
+	var/turf/destination = (direction == UP) ? get_vertical_step(src, UP) : get_vertical_step(src, DOWN)
 	if(destination)
 		setLoc(destination)
 	else
@@ -187,7 +187,7 @@
 	if(!isturf(loc))
 		return
 
-	var/turf/below = GetBelow(src)
+	var/turf/below = get_vertical_step(src, DOWN)
 	if(!below)
 		return
 
