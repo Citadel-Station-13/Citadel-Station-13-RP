@@ -11,14 +11,10 @@
 	wielded_item_state = "ionrifle-wielded"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MAGNET = 4)
 	w_class = ITEMSIZE_LARGE
-	damage_force = 10
 	slot_flags = SLOT_BACK
 	heavy = TRUE
 	regex_this_firemodes = list(/datum/firemode/energy/ion)
 	one_handed_penalty = 15
-
-/obj/item/gun/projectile/energy/ionrifle/emp_act(severity)
-	..(max(severity, 4)) //so it doesn't EMP itself, I guess
 
 /datum/firemode/energy/ion/pistol
 	charge_cost = 480

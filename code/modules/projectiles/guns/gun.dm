@@ -32,6 +32,9 @@
 	slot_flags = SLOT_BELT | SLOT_HOLSTER
 	w_class = WEIGHT_CLASS_NORMAL
 
+	damage_force = 10
+	damage_tier = MELEE_TIER_MEDIUM
+
 	//* Accuracy & Stability
 	/// recoil to inflict per shot
 	var/recoil = 0
@@ -103,7 +106,7 @@
 	var/render_ammo_inhand = TRUE
 	/// ammo states. this is 1 to x, rounded up
 	var/render_ammo_count = 0
-	/// ammo state includes 0; overlay / segment append is "-empty"
+	/// ammo state includes 0; overlay / state append is "-0", segment append is "-empty"
 	var/render_ammo_empty = FALSE
 	/// last ammo state, used so we don't rebuilt unless necessary.
 	var/render_ammo_last
