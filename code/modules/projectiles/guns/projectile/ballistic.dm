@@ -79,11 +79,14 @@
 	//* Rendering
 	/// rendering system for magazine
 	/// in overlay mode, we add "[base_icon_state]-mag" as a priority overlay.
+	/// in state mode, "-mag" is automatically inserted after base_icon_state.
 	var/render_magazine_system = GUN_RENDERING_DISABLED
-	/// magazine state
-	/// in overlay mode, this is added directly as an overlay
-	/// in state mode, this is added as "-[state]"
-	var/render_magazine_state
+	/// magazine rendering system is used for inhands
+	/// this will result in the effective item state for onmob being modified,
+	/// or additional overlays being added during onmob rendering,
+	/// depending on what system is set to.
+	var/render_magazine_inhand = TRUE
+	#warn hook above using render_append_state
 
 /obj/item/gun/projectile/ballistic/Initialize(mapload)
 	. = ..()

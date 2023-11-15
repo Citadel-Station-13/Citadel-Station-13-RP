@@ -82,12 +82,22 @@
 	//* Rendering
 	/// render system for firemode rendering
 	/// if overlays, overlay is added as "[base_icon_state]-[firemode.state_overlay]"
-	/// if state, firemode state is appended.
-	var/render_firemode_system
+	/// if state, firemode state is appended after [render_state_append] but before ammo append
+	var/render_firemode_system = GUN_RENDERING_DISABLED
+	/// firemode rendering system is used for inhands
+	/// this will result in the effective item state for onmob being modified,
+	/// or additional overlays being added during onmob rendering,
+	/// depending on what system is set to.
+	var/render_firemode_inhand = TRUE
 	/// rendering system for ammo
 	/// in overlay mode, "[base_icon_state]-[count]" is added as an overlay
-	/// in state mode, this is added as "-[count]" after magazine, if magazine state is there.
+	/// in state mode, this is appended as "-[count]" after state append and firemode append, if any.
 	var/render_ammo_system = GUN_RENDERING_DISABLED
+	/// ammo rendering system is used for inhands
+	/// this will result in the effective item state for onmob being modified,
+	/// or additional overlays being added during onmob rendering,
+	/// depending on what system is set to.
+	var/render_ammo_inhand = TRUE
 	/// ammo states. this is 1 to x, rounded up
 	var/render_ammo_count = 0
 	/// ammo state includes 0; overlay append is "-empty"
@@ -98,7 +108,14 @@
 	/// this is used internally to support magazines
 	/// this is added immediately after the base icon state, overriding everything else
 	/// please make sure you know what you're doing when you touch tihs.
-	var/render_state_append
+	var/render_append_state
+	/// is render state append applied to inhands?
+	/// this will result in the effective item state for onmob being modified,
+	/// or additional overlays being added during onmob rendering,
+	/// depending on what system is set to.
+	var/render_append_inhand = TRUE
+
+	#warn impl above
 
 	//* Safety
 	/// whether or not we have safeties and if safeties are on
