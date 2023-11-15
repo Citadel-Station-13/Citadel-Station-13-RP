@@ -9,8 +9,9 @@
 /proc/get_visual_angle(atom/start, atom/end)
 	if(!start || !end)
 		return 0
-	var/dy =(32 * end.y + end.pixel_y) - (32 * start.y + start.pixel_y)
-	var/dx =(32 * end.x + end.pixel_x) - (32 * start.x + start.pixel_x)
+	var/dy = (32 * end.y + end.pixel_y) - (32 * start.y + start.pixel_y)
+	var/dx = (32 * end.x + end.pixel_x) - (32 * start.x + start.pixel_x)
+	// todo: atan2 instead of atan
 	if(!dy)
 		return (dx >= 0) ? 90 : 270
 	. = arctan(dx/dy)
@@ -60,10 +61,10 @@
  */
 /proc/get_physics_angle(atom/movable/A, atom/movable/B)
 	// todo: atan2 instead of atan
-	if(!start || !end)
+	if(!A || !B)
 		return 0
-	var/dy =(32 * end.y + end.step_y) - (32 * start.y + start.step_y)
-	var/dx =(32 * end.x + end.step_x) - (32 * start.x + start.step_x)
+	var/dy =(32 * B.y + B.step_y) - (32 * A.y + A.step_y)
+	var/dx =(32 * B.x + B.step_x) - (32 * A.x + A.step_x)
 	if(!dy)
 		return (dx >= 0) ? 90 : 270
 	. = arctan(dx/dy)
@@ -77,10 +78,10 @@
  */
 /proc/get_atom_angle(atom/A, atom/B)
 	// todo: atan2 instead of atan
-	if(!start || !end)
+	if(!A || !B)
 		return 0
-	var/dy =(32 * end.y) - (32 * start.y)
-	var/dx =(32 * end.x) - (32 * start.x)
+	var/dy =(32 * B.y) - (32 * A.y)
+	var/dx =(32 * B.x) - (32 * A.x)
 	if(!dy)
 		return (dx >= 0) ? 90 : 270
 	. = arctan(dx/dy)

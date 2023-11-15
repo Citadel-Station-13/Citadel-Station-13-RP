@@ -119,7 +119,7 @@
 	/// y offset for segment mode
 	var/render_ammo_y_offset = 0
 	/// set an optional append to state
-	/// this is used internally to support magazines
+	/// this is used internally to support magazines, cell-less states, etc.
 	/// this is added immediately after the base icon state, overriding everything else
 	/// please make sure you know what you're doing when you touch tihs.
 	var/render_append_state
@@ -128,6 +128,9 @@
 	/// or additional overlays being added during onmob rendering,
 	/// depending on what system is set to.
 	var/render_append_inhand = TRUE
+	/// skip everything but append state; used internally for energy weapon handling
+	/// this also disables worn overlays.
+	var/render_append_exclusive = FALSE
 
 	#warn impl above
 
@@ -269,6 +272,9 @@
 		icon_state += render_append_state
 		if(render_append_inhand)
 			worn_state += render_append_state
+	// check append override mode
+	if(render_append_exclusive)
+		return ..()
 	// priority 2: firemode
 	switch(render_firemode_system)
 		if(GUN_RENDERING_OVERLAYS)
@@ -285,6 +291,8 @@
 
 /obj/item/gun/render_apply_overlays(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta, icon_used)
 	. = ..()
+	if(render_append_exclusive)
+		return ..()
 	switch(render_firemode_system)
 		if(GUN_RENDERING_OVERLAYS)
 			if(render_firemode_inhand)
