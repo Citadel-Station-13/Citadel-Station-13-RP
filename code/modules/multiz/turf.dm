@@ -155,7 +155,7 @@
  */
 /turf/proc/virtual_step(dir)
 	RETURN_TYPE(/turf)
-	return SSmapping.virtual_step(src, dir)
+	return SSmapping.get_virtual_step(src, dir)
 
 /**
  * Basic multiz get dir

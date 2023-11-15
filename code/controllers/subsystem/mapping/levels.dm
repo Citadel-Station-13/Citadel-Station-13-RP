@@ -416,11 +416,13 @@
 	z_stack_lookup.len = world.maxz
 	var/list/left = list()
 	for(var/z in 1 to world.maxz)
-		if(struct_by_z[z])
-			var/datum/world_struct/struct = struct_by_z[z]
-			z_stack_lookup[z] = struct.stack_lookup[struct.real_indices.Find(z)]
-		else
-			left += z
+		// todo: stacks
+		// if(struct_by_z[z])
+		// 	var/datum/world_struct/struct = struct_by_z[z]
+		// 	z_stack_lookup[z] = struct.stack_lookup[struct.real_indices.Find(z)]
+		// else
+		// 	left += z
+		left += z
 	var/list/datum/map_level/bottoms = list()
 	// let's sing the bottom song
 	for(var/z in left)
