@@ -91,7 +91,7 @@
 	else
 		// smart rebuild
 		ASSERT(dir)
-		if(!updated.instantiated)
+		if(!updated.loaded)
 			return
 		z_stack_dirty = TRUE
 		var/datum/map_level/level = updated
@@ -129,7 +129,7 @@
 			cached_level_west[i] = level.level_in_dir(WEST)?.z_index
 	else
 		// smart rebuild
-		if(!updated.instantiated)
+		if(!updated.loaded)
 			return
 		ASSERT(dir)
 		var/datum/map_level/level = updated

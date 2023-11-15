@@ -18,10 +18,6 @@
 	var/absolute_path
 	/// relative path. useless outside of manual maploads, as we can't parse relative path from DM yet.
 	var/relative_path
-	/// are we loaded in
-	var/tmp/loaded = FALSE
-	/// our zlevel once loaded
-	var/tmp/z_index
 	/// are we modified from our prototype/definition?
 	var/tmp/modified = FALSE
 	/// linkage enum
@@ -56,6 +52,16 @@
 	var/air_outdoors = GAS_STRING_VACUUM
 	/// load orientation - overridden if loaded as part of a /datum/map
 	var/orientation = SOUTH
+
+	//* Loading
+	/// are we loaded in
+	var/tmp/loaded = FALSE
+	/// our zlevel once loaded
+	var/tmp/z_index
+
+	//* Tracking
+	var/turfs_rebuild_count = 0
+	var/transitions_rebuild_count = 0
 
 	//* LEGACY BELOW *//
 
@@ -302,7 +308,7 @@
  * this will sleep
  */
 /datum/map_level/proc/rebuild_turfs()
-	for(var/turf/T as anything in block(locate(x_min || 1, y_min || 1, z_value), locate(x_max || world.maxx, y_max || world.maxx, z_value)))
+	for(var/turf/T as anything in block(locate(1, 1, z_index), locate(world.maxx, world.maxy, z_index)))
 		T.update_multiz()
 		CHECK_TICK
 	turfs_rebuild_count++
@@ -319,72 +325,72 @@
 		// default not implemented
 		if(Z_TRANSITION_FORCED, Z_TRANSITION_DEFAULT)
 			// bottom
-			for(var/turf/T as anything in block(locate((x_min || 1) + 1, y_min || 1, z_value), locate((x_max || world.maxx) - 1, y_min || 1, z_value)))
+			for(var/turf/T as anything in block(locate(2, 1, z_index), locate(world.maxx - 1, 1, z_index)))
 				T._make_transition_border(SOUTH, TRUE)
 				CHECK_TICK
 			// top
-			for(var/turf/T as anything in block(locate((x_min || 1) + 1, y_max || world.maxy, z_value), locate((x_max || world.maxx) - 1, y_max || world.maxy, z_value)))
+			for(var/turf/T as anything in block(locate(2, world.maxy, z_index), locate(world.maxx - 1, world.maxy, z_index)))
 				T._make_transition_border(NORTH, TRUE)
 				CHECK_TICK
 			// left
-			for(var/turf/T as anything in block(locate(x_min || 1, (y_min || 1) + 1, z_value), locate(x_min || 1, (y_max || world.maxy) - 1, z_value)))
+			for(var/turf/T as anything in block(locate(1, 2, z_index), locate(1, world.maxy - 1, z_index)))
 				T._make_transition_border(WEST, TRUE)
 				CHECK_TICK
 			// right
-			for(var/turf/T as anything in block(locate(x_max || world.maxx, (y_min || 1) + 1, z_value), locate(x_max || world.maxx, (y_max || world.maxy) - 1, z_value)))
+			for(var/turf/T as anything in block(locate(world.maxx, 2, z_index), locate(world.maxx, world.maxy - 1, z_index)))
 				T._make_transition_border(EAST, TRUE)
 				CHECK_TICK
 
 			var/turf/T
 			// bottomleft
-			T = locate(x_min || 1, y_min || 1, z_value)
+			T = locate(1, 1, z_index)
 			T._make_transition_border(SOUTHWEST, TRUE)
 			CHECK_TICK
 			// bottomright
-			T = locate(x_max || world.maxx, y_min || 1, z_value)
+			T = locate(world.maxx, 1, z_index)
 			T._make_transition_border(SOUTHEAST, TRUE)
 			CHECK_TICK
 			// topleft
-			T = locate(x_min || 1, y_max || world.maxy, z_value)
+			T = locate(1, world.maxy, z_index)
 			T._make_transition_border(NORTHWEST, TRUE)
 			CHECK_TICK
 			// topright
-			T = locate(x_max || world.maxx, y_max || world.maxy, z_value)
+			T = locate(world.maxx, world.maxy, z_index)
 			T._make_transition_border(NORTHEAST, TRUE)
 			CHECK_TICK
 		if(Z_TRANSITION_INVISIBLE)
 			// bottom
-			for(var/turf/T as anything in block(locate((x_min || 1) + 1, y_min || 1, z_value), locate((x_max || world.maxx) - 1, y_min || 1, z_value)))
+			for(var/turf/T as anything in block(locate(2, 1, z_index), locate(world.maxx - 1, 1, z_index)))
 				T._make_transition_border(SOUTH, FALSE)
 				CHECK_TICK
 			// top
-			for(var/turf/T as anything in block(locate((x_min || 1) + 1, y_max || world.maxy, z_value), locate((x_max || world.maxx) - 1, y_max || world.maxy, z_value)))
+			for(var/turf/T as anything in block(locate(2, world.maxy, z_index), locate(world.maxx - 1, world.maxy, z_index)))
 				T._make_transition_border(NORTH, FALSE)
 				CHECK_TICK
 			// left
-			for(var/turf/T as anything in block(locate(x_min || 1, (y_min || 1) + 1, z_value), locate(x_min || 1, (y_max || world.maxy) - 1, z_value)))
+			for(var/turf/T as anything in block(locate(1, 2, z_index), locate(1, world.maxy - 1, z_index)))
 				T._make_transition_border(WEST, FALSE)
 				CHECK_TICK
 			// right
-			for(var/turf/T as anything in block(locate(x_max || world.maxx, (y_min || 1) + 1, z_value), locate(x_max || world.maxx, (y_max || world.maxy) - 1, z_value)))
+			for(var/turf/T as anything in block(locate(world.maxx, 2, z_index), locate(world.maxx, world.maxy - 1, z_index)))
 				T._make_transition_border(EAST, FALSE)
 				CHECK_TICK
 
 			var/turf/T
 			// bottomleft
-			T = locate(x_min || 1, y_min || 1, z_value)
+			T = locate(1, 1, z_index)
 			T._make_transition_border(SOUTHWEST, FALSE)
 			CHECK_TICK
 			// bottomright
-			T = locate(x_max || world.maxx, y_min || 1, z_value)
+			T = locate(world.maxx, 1, z_index)
 			T._make_transition_border(SOUTHEAST, FALSE)
 			CHECK_TICK
 			// topleft
-			T = locate(x_min || 1, y_max || world.maxy, z_value)
+			T = locate(1, world.maxy, z_index)
 			T._make_transition_border(NORTHWEST, FALSE)
 			CHECK_TICK
 			// topright
-			T = locate(x_max || world.maxx, y_max || world.maxy, z_value)
+			T = locate(world.maxx, world.maxy, z_index)
 			T._make_transition_border(NORTHEAST, FALSE)
 			CHECK_TICK
 	transitions_rebuild_count++
@@ -396,22 +402,26 @@
  * this will sleep
  */
 /datum/map_level/proc/destroy_transitions()
-	// bottom
-	for(var/turf/T as anything in block(locate(x_min || 1, y_min || 1, z_value), locate(x_max || world.maxx, y_min || 1, z_value)))
+	for(var/turf/T as anything in transition_turfs())
 		T._dispose_transition_border()
 		CHECK_TICK
-	// top
-	for(var/turf/T as anything in block(locate(x_min || 1, y_max || world.maxy, z_value), locate(x_max || world.maxx, y_max || world.maxy, z_value)))
-		T._dispose_transition_border()
-		CHECK_TICK
-	// left
-	for(var/turf/T as anything in block(locate(x_min || 1, (y_min || 1) + 1, z_value), locate(x_min || 1, (y_max || world.maxy) - 1, z_value)))
-		T._dispose_transition_border()
-		CHECK_TICK
-	// right
-	for(var/turf/T as anything in block(locate(x_max || world.maxx, (y_min || 1) + 1, z_value), locate(x_max || world.maxx, (y_max || world.maxy) - 1, z_value)))
-		T._dispose_transition_border()
-		CHECK_TICK
+
+/**
+ * get transition turfs
+ */
+/datum/map_level/proc/transition_turfs()
+	return (
+		block(locate(1, 1, z_index), locate(world.maxx, 1, z_index)) + \
+		block(locate(1, world.maxy, z_index), locate(world.maxx, world.maxy, z_index)) + \
+		block(locate(1, 2, z_index), locate(1, world.maxy - 2, z_index)) + \
+		block(locate(world.maxx, 2, z_index), locate(world.maxx, world.maxy - 2, z_index))
+	)
+
+/**
+ * get all turfs
+ */
+/datum/map_level/proc/level_turfs()
+	return Z_TURFS(z_index)
 
 //* subtypes
 
