@@ -79,6 +79,27 @@
 	/// requires pin?
 	var/no_pin_required = FALSE
 
+	//* Rendering
+	/// render system for firemode rendering
+	/// if overlays, overlay is added as "[base_icon_state]-[firemode.state_overlay]"
+	/// if state, firemode state is appended.
+	var/render_firemode_system
+	/// rendering system for ammo
+	/// in overlay mode, "[base_icon_state]-[count]" is added as an overlay
+	/// in state mode, this is added as "-[count]" after magazine, if magazine state is there.
+	var/render_ammo_system = GUN_RENDERING_DISABLED
+	/// ammo states. this is 1 to x, rounded up
+	var/render_ammo_count = 0
+	/// ammo state includes 0; overlay append is "-empty"
+	var/render_ammo_empty = FALSE
+	/// last ammo state, used so we don't rebuilt unless necessary.
+	var/render_ammo_last
+	/// set an optional append to state
+	/// this is used internally to support magazines
+	/// this is added immediately after the base icon state, overriding everything else
+	/// please make sure you know what you're doing when you touch tihs.
+	var/render_state_append
+
 	//* Safety
 	/// whether or not we have safeties and if safeties are on
 	var/safety_state = GUN_SAFETY_ON

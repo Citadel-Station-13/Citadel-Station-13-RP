@@ -16,17 +16,6 @@
 
 	//* Rendering
 	rendered_projectile_type = /obj/projectile/beam
-	/// render system for firemode rendering
-	/// if overlays, overlay is added as "[base_icon_state]-[firemode.state_overlay]"
-	var/render_firemode_system = GUN_RENDERING_DISABLED
-	/// rendering system for ammo
-	/// in overlay mode, "[base_icon_state]-[count]" is added as an overlay
-	/// in state mode, this is added as "-[count]" after magazine, if magazine state is there.
-	var/render_ammo_system = GUN_RENDERING_DISABLED
-	/// ammo states. this is 1 to x, rounded up
-	var/render_ammo_count = 0
-	/// ammo state includes 0
-	var/render_ammo_empty = FALSE
 
 	var/obj/item/cell/power_supply //What type of power cell this uses
 	var/charge_cost = 240 //How much energy is needed to fire.
