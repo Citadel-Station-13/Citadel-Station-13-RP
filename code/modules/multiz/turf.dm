@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 /**
  * WARNING: This proc is unique. Read the doc here, especially the return value.
  * Check if an atom can move into us from either above or below
@@ -136,7 +139,7 @@
  * This is the basic get multiz step.
  * It will not look across lateral transitions, only up/down.
  */
-/turf/proc/get_vertical_step(dir)
+/turf/proc/vertical_step(dir)
 	RETURN_TYPE(/turf)
 	if((dir & (UP|DOWN)) == 0)
 		return get_step(src, dir)
@@ -150,15 +153,15 @@
  * This is the full get multiz step.
  * It will look across lateral transitions and other struct magic.
  */
-/turf/proc/get_virtual_step(dir)
+/turf/proc/virtual_step(dir)
 	RETURN_TYPE(/turf)
-	return SSmapping.get_virtual_step(src, dir)
+	return SSmapping.virtual_step(src, dir)
 
 /**
  * Basic multiz get dir
  * Will not look across lateral transitions, only directly up/down.
  */
-/turf/proc/get_vertical_dir(turf/other)
+/turf/proc/vertical_dir(turf/other)
 	if(other.z == z)
 		return get_dir(src, other)
 	var/turf/above = above()

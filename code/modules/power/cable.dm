@@ -365,7 +365,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 		return
 
 	var/turf/us = get_turf(src)
-	var/turf/TB  = us.get_vertical_step(direction)
+	var/turf/TB  = us.vertical_step(direction)
 
 	for(var/obj/structure/cable/C in TB)
 

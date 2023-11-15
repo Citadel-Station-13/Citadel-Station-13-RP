@@ -37,7 +37,7 @@
 
 	// Case 1: In working order
 	if(B.top == T && M.bottom == B && T.bottom == B && \
-			get_turf(M) == get_step(B, B.dir) && O == GetAbove(B) && get_turf(T) == GetAbove(M))
+			get_turf(M) == get_step(B, B.dir) && O == get_vertical_step(B, UP) && get_turf(T) == get_vertical_step(M, UP))
 		return TRUE
 
 	// Case 2: The top is linked to someone else
