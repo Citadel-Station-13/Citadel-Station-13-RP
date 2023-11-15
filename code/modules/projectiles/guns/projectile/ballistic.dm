@@ -86,7 +86,7 @@
 	/// or additional overlays being added during onmob rendering,
 	/// depending on what system is set to.
 	var/render_magazine_inhand = TRUE
-	#warn hook above using render_append_state
+	#warn hook above using render_append_state and priority overlays, and overriding build worn icon etc etc
 
 /obj/item/gun/projectile/ballistic/Initialize(mapload)
 	. = ..()

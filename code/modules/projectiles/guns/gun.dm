@@ -80,6 +80,8 @@
 	var/no_pin_required = FALSE
 
 	//* Rendering
+	/// completely opt out of rendering when FALSE; set this to FALSE if you override update_icon().
+	var/render_system_active = TRUE
 	/// render system for firemode rendering
 	/// if overlays, overlay is added as "[base_icon_state]-[firemode.state_overlay]"
 	/// if state, firemode state is appended after [render_state_append] but before ammo append
@@ -92,6 +94,7 @@
 	/// rendering system for ammo
 	/// in overlay mode, "[base_icon_state]-[count]" is added as an overlay
 	/// in state mode, this is appended as "-[count]" after state append and firemode append, if any.
+	/// in segments mode, "[base_icon_state]-ammo" is added for 1 to count.
 	var/render_ammo_system = GUN_RENDERING_DISABLED
 	/// ammo rendering system is used for inhands
 	/// this will result in the effective item state for onmob being modified,
@@ -100,10 +103,18 @@
 	var/render_ammo_inhand = TRUE
 	/// ammo states. this is 1 to x, rounded up
 	var/render_ammo_count = 0
-	/// ammo state includes 0; overlay append is "-empty"
+	/// ammo state includes 0; overlay / segment append is "-empty"
 	var/render_ammo_empty = FALSE
 	/// last ammo state, used so we don't rebuilt unless necessary.
 	var/render_ammo_last
+	/// starting x offset for segment mode
+	var/render_ammo_x_start = 0
+	/// starting y offset for segment mode
+	var/render_ammo_y_start = 0
+	/// x offset for segment mode
+	var/render_ammo_x_offset = 0
+	/// y offset for segment mode
+	var/render_ammo_y_offset = 0
 	/// set an optional append to state
 	/// this is used internally to support magazines
 	/// this is added immediately after the base icon state, overriding everything else
@@ -241,6 +252,43 @@
  */
 /obj/item/gun/proc/percent_ammo()
 	return 1
+
+/obj/item/gun/update_icon(updates)
+	if(!render_system_active)
+		return ..()
+	// clear overlays
+	cut_overlays()
+	// reset states
+	icon_state = base_icon_state
+	worn_state = base_icon_state
+	// priority 1: append
+	if(!isnull(render_append_state))
+		icon_state += render_append_state
+		if(render_append_inhand)
+			worn_state += render_append_state
+	// priority 2: firemode
+	switch(render_firemode_system)
+		if(GUN_RENDERING_OVERLAYS)
+		if(GUN_RENDERING_STATES)
+	// priority 3: ammo
+	switch(render_ammo_system)
+		if(GUN_RENDERING_OVERLAYS)
+		if(GUN_RENDERING_STATES)
+		if(GUN_RENDERING_SEGMENTS)
+	#warn impl
+
+	// do default behavior last
+	return ..()
+
+/obj/item/gun/render_apply_overlays(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta, icon_used)
+	. = ..()
+	switch(render_firemode_system)
+		if(GUN_RENDERING_OVERLAYS)
+			if(render_firemode_inhand)
+	switch(render_ammo_system)
+		if(GUN_RENDERING_OVERLAYS)
+			if(render_ammo_inhand)
+	#warn impl
 
 #warn below
 

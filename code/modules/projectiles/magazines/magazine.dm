@@ -63,13 +63,13 @@
 	/// used internally to avoid appearance churn
 	VAR_PRIVATE/rendering_count_current
 	/// for offset mode: initial x offset
-	var/rendering_segment_x_start
+	var/rendering_segment_x_start = 0
 	/// for offset mode: initial y offset
-	var/rendering_segment_y_start
+	var/rendering_segment_y_start = 0
 	/// for offset mode: x offset
-	var/rendering_segment_x_offset
+	var/rendering_segment_x_offset = 0
 	/// for offset mode: y offset
-	var/rendering_segment_y_offset
+	var/rendering_segment_y_offset = 0
 	/// display special "[base_icon_state]-empty" if count == 0
 	var/rendering_segment_use_empty = FALSE
 	/// add a specific overlay as "[base_icon_state]-[state]", useful for denoting different magazines
