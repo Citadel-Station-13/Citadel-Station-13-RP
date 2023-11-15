@@ -28,7 +28,7 @@
 	maxHealth = 150
 	movement_cooldown = 0
 	pass_flags = ATOM_PASS_TABLE
-	makes_dirt = FALSE	// Goop
+	makes_dirt = FALSE	// Goopw
 	mob_class = MOB_CLASS_SLIME
 
 	response_help = "pets"
