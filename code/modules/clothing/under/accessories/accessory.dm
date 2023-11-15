@@ -936,6 +936,14 @@
 	desc = "A comfy pair of legwarmers. For those better in the cold than others."
 	icon_state = "legwarmers_short"
 
+// Gestalt uniform
+
+/obj/item/clothing/accessory/sleekpatch
+	name = "sleek uniform patch"
+	desc = "A somewhat old-fashioned embroidered patch of Nanotrasen's logo."
+	icon = 'icons/obj/clothing/ties.dmi'
+	icon_override = 'icons/mob/clothing/ties.dmi'
+	icon_state = "sleekpatch"
 
 //misc
 /obj/item/clothing/accessory/civ_exos_mob

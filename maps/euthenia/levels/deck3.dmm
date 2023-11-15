@@ -20615,7 +20615,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/space)
 "xZj" = (
-/obj/structure/closet/crate/nanotrasen,
+/obj/structure/closet/crate/corporate/nanotrasen,
 /turf/simulated/floor/tiled/techmaint,
 /area/quartermaster/warehouse)
 "xZs" = (

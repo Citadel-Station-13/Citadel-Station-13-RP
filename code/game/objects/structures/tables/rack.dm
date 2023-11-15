@@ -7,9 +7,12 @@
 	icon_state = "rack"
 	can_plate = 0
 	can_reinforce = 0
-	can_deconstruct = FALSE
+	can_deconstruct = TRUE
+	is_not_a_table = TRUE
+	material_base = /datum/material/steel
 	flipped = -1
 	item_pixel_place = FALSE
+	base_name = "rack"
 
 /obj/structure/table/rack/Initialize(mapload)
 	. = ..()
@@ -28,3 +31,4 @@
 
 // todo: AAAAGGGGHGHHHH GET RID OF THIS
 /obj/structure/table/rack/holorack_legacy
+	can_deconstruct = FALSE

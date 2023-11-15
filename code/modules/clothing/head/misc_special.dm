@@ -105,6 +105,14 @@
 		SLOT_ID_RIGHT_HAND = "engiewelding",
 		)
 
+/obj/item/clothing/head/welding/arar
+	name = "replikant welding helmet"
+	desc = "A protective welding mask designed for repair-technician replikants, the visor slits are particularly difficult to see out of."
+	icon_state = "ararwelding"
+	item_state_slots = list(
+		SLOT_ID_LEFT_HAND = "ararwelding",
+		SLOT_ID_RIGHT_HAND = "ararwelding",
+		)
 
 /*
  * Cakehat

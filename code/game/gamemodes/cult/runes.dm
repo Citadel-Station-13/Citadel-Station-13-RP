@@ -204,7 +204,6 @@ var/list/sacrificed = list()
 			to_chat(world, "<font size='15' color='red'><b>THE VEIL HAS BEEN SHATTERED!</b></font>")
 			SEND_SOUND(world, sound('sound/effects/weather/wind/wind_5_1.ogg'))
 
-			SetUniversalState(/datum/universal_state/hell)
 			narsie_cometh = 1
 
 			spawn(10 SECONDS)

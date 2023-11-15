@@ -7,8 +7,6 @@ var/global/list/hud_icon_reference       = list()
 
 var/global/list/global_mutations  = list() // List of hidden mutation things.
 
-var/global/datum/universal_state/universe = new
-
 // Noises made when hit while typing.
 var/list/hit_appends	= list("-OOF", "-ACK", "-UGH", "-HRNK", "-HURGH", "-GLORF")
 // var/station_name		= "Northern Star"

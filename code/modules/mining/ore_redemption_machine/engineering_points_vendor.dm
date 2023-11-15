@@ -35,7 +35,7 @@
 		new /datum/data/mining_equipment("Nanopaste Tube",				    /obj/item/stack/nanopaste,										10),
 		//Mining vendor steals - Ends
         //Power tools like the CE gets, if kev comes crying: https://cdn.discordapp.com/attachments/296237931587305472/956517623519141908/unknown.png
-		new /datum/data/mining_equipment("Advanced Voidsuit",							/obj/item/hardsuit/ce,									150),
+		new /datum/data/mining_equipment("Advanced Hardsuit",							/obj/item/hardsuit/ce,									150),
         new /datum/data/mining_equipment("Power Tool - Hand Drill",                     /obj/item/tool/screwdriver/power,                   80),
         new /datum/data/mining_equipment("Power Tool - Jaws of life",                   /obj/item/tool/crowbar/power,                       80),
         new /datum/data/mining_equipment("Power Tool - Experimental Welder",            /obj/item/weldingtool/experimental,                 80),

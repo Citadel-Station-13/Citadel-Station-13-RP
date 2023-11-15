@@ -17,7 +17,7 @@
 			/obj/item/reagent_containers/food/snacks/meat = 4
 			)
 	cost = 10
-	container_type = /obj/structure/closet/crate/centauri
+	container_type = /obj/structure/closet/crate/corporate/centauri
 	container_name = "Food crate"
 
 /datum/supply_pack/supply/toner
@@ -88,7 +88,7 @@
 /datum/supply_pack/supply/spare_pda
 	name = "Spare PDAs"
 	cost = 10
-	container_type = /obj/structure/closet/crate/thinktronic
+	container_type = /obj/structure/closet/crate/corporate/thinktronic
 	container_name = "Spare PDA crate"
 	contains = list(/obj/item/pda = 3)
 
@@ -112,7 +112,7 @@
 			/obj/item/clothing/glasses/meson
 			)
 	cost = 10
-	container_type = /obj/structure/closet/crate/secure/grayson
+	container_type = /obj/structure/closet/crate/secure/corporate/grayson
 	container_name = "Shaft miner equipment"
 	access = ACCESS_SUPPLY_MINE
 
@@ -147,5 +147,5 @@
 			/obj/item/clothing/mask/gas/opaque = 3
 			)
 	cost = 15
-	container_type = /obj/structure/closet/crate/unathi
+	container_type = /obj/structure/closet/crate/corporate/unathi
 	container_name = "Emergency Nitrogen Supplies"
