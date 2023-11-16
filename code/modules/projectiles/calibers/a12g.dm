@@ -1,6 +1,6 @@
 //* Magazines - Drums
 
-/datum/caliber/c12gauge
+/datum/caliber/c12g
 	caliber = "12g"
 	diameter = 18.53
 	length = 69.85
@@ -12,7 +12,7 @@
 	icon_state = "autoshotgun"
 	base_icon_state = "autoshotgun"
 	materials_base = list(MAT_STEEL = 13000)
-	ammo_caliber = /datum/caliber/c12gauge
+	ammo_caliber = /datum/caliber/c12g
 	ammo_preload = /obj/item/ammo_casing/a12g
 	ammo_max = 24
 	rendering_system = GUN_RENDERING_STATES
@@ -54,6 +54,7 @@
 #warn a12g_clip
 /obj/item/ammo_magazine/clip/c12g
 	name = "ammo clip (12g slug)"
+	icon = 'icons/modules/projectiles/magazines/magazine_stripper.dmi'
 	icon_state = "a12-slug-2"
 	base_icon_state = "a12-slug"
 	desc = "A color-coded metal clip for holding and quickly loading shotgun shells. This one is loaded with slugs."
@@ -65,6 +66,7 @@
 	rendering_count = 2
 	ammo_type_picky = TRUE
 	ammo_type = /obj/item/ammo_casing/a12g
+	is_speedloader = TRUE
 
 /obj/item/ammo_magazine/clip/c12g/pellet
 	name = "ammo clip (12g buckshot)"
@@ -96,23 +98,25 @@
 /obj/item/ammo_magazine/shotholder
 	name = "shotgun slug holder"
 	desc = "A convenient pouch that holds 12 gauge shells."
-	icon_state = "shotholder"
-	ammo_caliber = CALIBER_12G
-	ammo_preload = null
+	icon = 'icons/modules/projectiles/magazines/magazine_pouch.dmi'
+	icon_state = "shotgun-clip-4"
+	base_icon_state = "shotgun-clip"
+	regex_this_caliber = /datum/caliber/c12g
 	materials_base = list(MAT_STEEL = 1440)
 	ammo_preload = /obj/item/ammo_casing/a12g
 	ammo_current = 0
 	ammo_max = 4
-	multiple_sprites = 1
+	rendering_system = GUN_RENDERING_STATES
+	rendering_count = 4
+
 	var/marking_color
 
 /obj/item/ammo_magazine/shotholder/update_icon()
 	. = ..()
-	overlays.Cut()
 	if(marking_color)
-		var/image/I = image(icon, "shotholder-marking")
+		var/image/I = image(icon, "[base_icon_state]-marking")
 		I.color = marking_color
-		overlays += I
+		add_overlay(I)
 
 /obj/item/ammo_magazine/shotholder/full
 	ammo_current = 4
@@ -121,26 +125,31 @@
 	name = "shotgun slug holder (slug)"
 	marking_color = PIPE_COLOR_BLACK
 	ammo_preload = /obj/item/ammo_casing/a12g
+	ammo_type = /obj/item/ammo_casing/a12g
 
 /obj/item/ammo_magazine/shotholder/full/flare
 	name = "shotgun slug holder (flare)"
 	marking_color = COLOR_RED_GRAY
 	ammo_preload = /obj/item/ammo_casing/a12g/flare
+	ammo_type = /obj/item/ammo_casing/a12g/flare
 
 /obj/item/ammo_magazine/shotholder/full/buckshot
 	name = "shotgun slug holder (buckshot)"
 	marking_color = COLOR_RED
 	ammo_preload = /obj/item/ammo_casing/a12g/pellet
+	ammo_type = /obj/item/ammo_casing/a12g/pellet
 
 /obj/item/ammo_magazine/shotholder/full/beanbag
 	name = "shotgun slug holder (beanbag)"
 	marking_color = COLOR_GREEN
 	ammo_preload = /obj/item/ammo_casing/a12g/beanbag
+	ammo_type = /obj/item/ammo_casing/a12g/beanbag
 
 /obj/item/ammo_magazine/shotholder/full/stun
 	name = "shotgun slug holder (stun)"
 	marking_color = PIPE_COLOR_YELLOW
 	ammo_preload = /obj/item/ammo_casing/a12g/stunshell
+	ammo_type = /obj/item/ammo_casing/a12g/stunshell
 
 //* Casings
 /obj/item/ammo_casing/a12g
@@ -148,7 +157,7 @@
 	desc = "A 12 gauge slug."
 	icon = 'icons/modules/projectiles/casings/shotgun.dmi'
 	icon_state = "grey"
-	regex_this_caliber = /datum/caliber/c12gauge
+	regex_this_caliber = /datum/caliber/c12g
 	projectile_type = /obj/projectile/bullet/shotgun
 	materials_base = list(MAT_STEEL = 360)
 	fall_sounds = list('sound/weapons/guns/shotgun_fall.ogg')
