@@ -13,10 +13,6 @@
 	/// do we render visuals?
 	var/render = TRUE
 
-#warn deal with
-#warn this is shitcode upon shitcode
-#warn rewrite this as well as levels to do this faster.
-
 /datum/component/transition_border/Initialize(range = 7, dir, render)
 	if(!isturf(parent))
 		return COMPONENT_INCOMPATIBLE
@@ -44,10 +40,32 @@
 	return ..()
 
 /datum/component/transition_border/proc/transit(datum/source, atom/movable/AM)
-	var/turf/destination = SSmapping.GetVirtualStep(parent, dir)
-	if(!destination)
-		CRASH("Invalid destination found??")
-	AM.locationTransitForceMove(destination, 2)
+	var/z_index = SSmapping.level_index_in_dir(dir)
+	if(isnull(z_index))
+		STACK_TRACE("no z index?! deleting self.")
+		qdel(src)
+		return
+	var/turf/target
+	switch(dir)
+		if(NORTH)
+			target = locate(x, 2, z_index)
+		if(SOUTH)
+			target = locate(x, world.maxy - 1, z_index)
+		if(EAST)
+			target = locate(2, y, z_index)
+		if(WEST)
+			target = locate(world.maxx - 1, y, z_index)
+		if(NORTHEAST)
+			target = locate(2, 2, z_index)
+		if(NORTHWEST)
+			target = locate(world.maxx - 1, 2, z_index)
+		if(SOUTHEAST)
+			target = locate(2, world.maxy - 1, z_index)
+		if(SOUTHWEST)
+			target = locate(world.maxx - 1, world.maxy - 1, z_index)
+	AM.locationTransitForceMove(target, recurse_levels = 2)
+
+#warn below
 
 /datum/component/transition_border/proc/Build()
 	// reset first
@@ -168,6 +186,8 @@
 			force_target || target_level.z_value
 		)
 	)
+
+#warn above
 
 /**
  * makes us into a level border, which changeturfs us if we aren't already a /turf/level_border

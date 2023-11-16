@@ -172,6 +172,15 @@
 
 	instance.on_loaded_immediate()
 
+	// rebuild multiz
+	var/list/indices_to_rebuild = list()
+	for(var/datum/map_level/level as anything in loaded_levels)
+		indices_to_rebuild += level.z_index
+
+	rebuild_verticality()
+	rebuild_transitions()
+	rebuild_level_multiz(indices_to_rebuild)
+
 	// todo: legacy
 	for(var/path in instance.legacy_assert_shuttle_datums)
 		SSshuttle.legacy_shuttle_assert(path)

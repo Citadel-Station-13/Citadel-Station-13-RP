@@ -29,10 +29,38 @@
  * returns level datum in dir of level
  */
 /datum/controller/subsystem/mapping/proc/level_datum_in_dir(z, dir)
-	#warn impl
+	var/index
+	switch(dir)
+		if(NORTH)
+			index = cached_level_north[z]
+		if(SOUTH)
+			index = cached_level_south[z]
+		if(EAST)
+			index = cached_level_east[z]
+		if(WEST)
+			index = cached_level_west[z]
+		if(UP)
+			index = cached_level_up[z]
+		if(DOWN)
+			index = cached_level_down[z]
+	return ordered_levels[index]
 
 /**
  * returns level index in dir of level
  */
 /datum/controller/subsystem/mapping/proc/level_index_in_dir(z, dir)
-	#warn impl
+	var/index
+	switch(dir)
+		if(NORTH)
+			index = cached_level_north[z]
+		if(SOUTH)
+			index = cached_level_south[z]
+		if(EAST)
+			index = cached_level_east[z]
+		if(WEST)
+			index = cached_level_west[z]
+		if(UP)
+			index = cached_level_up[z]
+		if(DOWN)
+			index = cached_level_down[z]
+	return index

@@ -609,8 +609,8 @@
 	above = above()
 	below = below()
 	// update icon if needed
-	if(istype(below_us, /turf/simulated))
-		below_us.update_icon()
+	if(istype(below, /turf/simulated))
+		below.update_icon()
 	// todo: this doesn't actually update zm that well, just does basic stitching.
 
 //? Radiation
