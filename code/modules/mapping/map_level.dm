@@ -185,10 +185,26 @@
 	return level_in_dir(dir)?.z_index
 
 /**
- * get level datum in cardinal dir
+ * get level datum in dir
+ *
+ * if diagonal, only returns a level if both steps are consistent with each other.
  */
 /datum/map_level/proc/level_in_dir(dir)
 	RETURN_TYPE(/datum/map_level)
+	if(dir & (dir - 1))
+		if(dir & (UP|DOWN))
+			CRASH("unsupported operation of attempting to grab a vertical + diagonal direction.")
+		var/d1 = NSCOMPONENT(dir)
+		var/d2 = EWCOMPONENT(dir)
+		var/datum/map_level/l1 = level_in_dir(d1)
+		if(isnull(l1))
+			return
+		l1 = level_in_dir(d2)
+		var/datum/map_level/l2 = level_in_dir(d2)
+		if(isnull(l2))
+			return
+		l2 = level_in_dir(d1)
+		return (l1 == l2)? l1 : null
 	switch(dir)
 		#define RESOLVE(X) istype(X, /datum/map_level)? X : SSmapping.keyed_levels[X]
 		if(NORTH)

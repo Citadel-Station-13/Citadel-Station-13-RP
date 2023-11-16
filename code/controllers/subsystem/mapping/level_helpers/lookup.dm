@@ -29,6 +29,9 @@
  * returns level datum in dir of level
  */
 /datum/controller/subsystem/mapping/proc/level_datum_in_dir(z, dir)
+	if(dir & (dir - 1))
+		// if diagonal, pass to level for advanced handling
+		return ordered_levels[z].level_in_dir(dir)
 	var/index
 	switch(dir)
 		if(NORTH)
@@ -49,6 +52,9 @@
  * returns level index in dir of level
  */
 /datum/controller/subsystem/mapping/proc/level_index_in_dir(z, dir)
+	if(dir & (dir - 1))
+		// if diagonal, pass to level for advanced handling
+		return ordered_levels[z].level_in_dir(dir)
 	var/index
 	switch(dir)
 		if(NORTH)
