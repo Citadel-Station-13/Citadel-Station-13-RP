@@ -602,6 +602,17 @@
 			continue
 		. = max(., O.depth_level)
 
+//? Multiz
+
+/turf/proc/update_multiz()
+	// update caches
+	above = above()
+	below = below()
+	// update icon if needed
+	if(istype(below_us, /turf/simulated))
+		below_us.update_icon()
+	// todo: this doesn't actually update zm that well, just does basic stitching.
+
 //? Radiation
 
 /turf/proc/update_rad_insulation()

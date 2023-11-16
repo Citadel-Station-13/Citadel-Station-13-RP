@@ -319,7 +319,7 @@
  * this will sleep
  */
 /datum/map_level/proc/rebuild_transitions()
-	switch(transition_mode)
+	switch(transition)
 		// do nothing
 		if(Z_TRANSITION_DISABLED)
 		// default not implemented
