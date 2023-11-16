@@ -1,14 +1,11 @@
 
 GLOBAL_LIST_EMPTY(connected_z_cache)
 
+// todo: legacy code
 /proc/GetConnectedZlevels(z)
-	. = list(z)
-	// Traverse up and down to get the multiz stack.
-	for(var/level = z, HasBelow(level), level--)
-		. |= level-1
-	for(var/level = z, HasAbove(level), level++)
-		. |= level+1
+	return SSmapping.get_z_stack(z)
 
+// todo: legacy code
 /proc/AreConnectedZLevels(zA, zB)
 	if (zA <= 0 || zB <= 0 || zA > world.maxz || zB > world.maxz)
 		return FALSE

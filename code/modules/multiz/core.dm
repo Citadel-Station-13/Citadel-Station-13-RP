@@ -13,7 +13,7 @@
  * Will not look across lateral transitions, only directly up/down.
  */
 /proc/get_vertical_dir(atom/A, atom/B)
-	return get_turf(A)?.virtual_dir(get_turf(B))
+	return get_turf(A)?.vertical_dir(get_turf(B))
 
 /**
  * This is the full get multiz step.

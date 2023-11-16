@@ -5,7 +5,6 @@
  * Component used for turf transitions.
  */
 /datum/component/transition_border
-	can_transfer = TRUE
 	var/atom/movable/mirage_border/holder1
 	var/atom/movable/mirage_border/holder2
 	var/atom/movable/mirage_border/holder3
@@ -13,17 +12,12 @@
 	var/dir
 	/// do we render visuals?
 	var/render = TRUE
-	/// if set, "grab other z turfs" always goes to this level
-	var/force_target
-	/// if set, transition handling always goes to this turf
-	var/turf/force_destination
 
 #warn deal with
 #warn this is shitcode upon shitcode
 #warn rewrite this as well as levels to do this faster.
-#warn verify transfer code
 
-/datum/component/transition_border/Initialize(range = TRANSITION_VISUAL_SIZE, dir, render, force_z_target, force_destination)
+/datum/component/transition_border/Initialize(range = 7, dir, render)
 	if(!isturf(parent))
 		return COMPONENT_INCOMPATIBLE
 	if(!dir || range < 1)
@@ -34,12 +28,8 @@
 		CRASH("[range] is too big a range. Max: 20, or the smallest dimension of hte world..")
 	src.range = range
 	src.dir = dir
-	if(!isnull(force_z_target))
-		src.force_target = force_z_target
 	if(!isnull(render))
 		src.render = render
-	if(!isnull(force_destination))
-		src.force_destination = force_destination
 
 /datum/component/transition_border/RegisterWithParent()
 	. = ..()
@@ -73,7 +63,7 @@
 	// because otherwise i can't offset them right, because we want the map to look like it's continuous, not overlapping
 	// i hate byond!
 
-	if(dir & (dir - 1))
+	if(ISDIAGONALDIR(dir))
 		// 1 is NS
 		// 2 is EW
 		// 3 is diag
@@ -133,6 +123,34 @@
 	)
 
 /datum/component/transition_border/proc/GetTurfsInCardinal(dir)
+	var/turf/our_turf = parent
+	var/datum/map_level/our_level = SSmapping.ordered_levels[our_turf.z]
+	if(isnull(our_level))
+		return list()
+	var/datum/map_level/target_level = our_level.level_in_dir(dir)
+	if(isnull(target_level))
+		return list()
+	switch(dir)
+		if(NORTH)
+			return block(
+				locate(),
+				locate(),
+			)
+		if(SOUTH)
+			return block(
+				locate(),
+				locate(),
+			)
+		if(EAST)
+			return block(
+				locate(),
+				locate(),
+			)
+		if(WEST)
+			return block(
+				locate(),
+				locate(),
+			)
 	#warn support less-than-world-size levels
 	// ASSERT(dir)
 	var/turf/T = parent
@@ -161,7 +179,7 @@
 	var/datum/component/transition_border/border = T.GetComponent(/datum/component/transition_border)
 	if(border)
 		qdel(border)
-	T.AddComponent(/datum/component/transition_border, TRANSITION_VISUAL_RANGE, dir, render)
+	T.AddComponent(/datum/component/transition_border, dir = dir, render = render)
 
 /**
  * clears us from being a level border, which scrapes us away if we're a /turf/level_border

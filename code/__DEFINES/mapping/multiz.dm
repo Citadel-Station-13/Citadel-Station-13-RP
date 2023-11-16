@@ -18,3 +18,8 @@
 
 /// these flags mean a fall should stop
 #define FALL_FLAGS_STOP				(FALL_BLOCKED | FALL_RECOVERED | FALL_TERMINATED)
+
+/// there's a level above
+#define Z_HAS_ABOVE(z) (!isnull(SSmapping.cached_level_up[z]))
+/// there's a level below
+#define Z_HAS_BELOW(z) (!isnull(SSmapping.cached_level_down[z]))

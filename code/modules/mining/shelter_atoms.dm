@@ -49,7 +49,7 @@
 
 		var/turf/deploy_location = get_turf(src)
 		var/status = template.check_deploy(deploy_location)
-		var/turf/above_location = GetAbove(deploy_location)
+		var/turf/above_location = deploy_location.above()
 		if(above_location && status == SHELTER_DEPLOY_ALLOWED)
 			status = template.check_deploy(above_location)
 

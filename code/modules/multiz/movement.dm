@@ -29,7 +29,7 @@
 		to_chat(src, SPAN_NOTICE("You are unable to move from here."))
 		return FALSE
 
-	var/turf/destination = (direction == UP) ? GetAbove(src) : GetBelow(src)
+	var/turf/destination = get_vertical_step(src, direction)
 	if(!destination)
 		to_chat(src, SPAN_NOTICE("There is nothing of interest in this direction."))
 		return FALSE
@@ -278,16 +278,6 @@
 // Mechas are anchored, so we need to override.
 /obj/mecha/can_fall()
 	return TRUE
-
-/obj/item/pipe/can_fall()
-	. = ..()
-
-	if(anchored)
-		return FALSE
-
-	var/turf/below = GetBelow(src)
-	if((locate(/obj/structure/disposalpipe/up) in below) || (locate(/obj/machinery/atmospherics/pipe/zpipe/up) in below))
-		return FALSE
 
 /mob/can_fall()
 	if(buckled)
