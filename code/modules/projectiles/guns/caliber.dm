@@ -19,8 +19,3 @@
 	var/diameter
 	/// length in millimeters, if known; if not known / unbounded, this is null
 	var/length
-
-/datum/caliber/c12gauge
-	caliber = "12g"
-	diameter = 18.53
-	length = 69.85

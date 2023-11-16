@@ -34,15 +34,21 @@
 	//* dynamic config; can be changed at runtime freely
 	/// allow speedloaders?
 	/// speedloaders can only be used with guns that don't use magazines
-	var/speedlaoders_allowed = TRUE
+	var/speedloader_allowed = TRUE
 	/// speedloaders load 1 at a time?
-	var/speedloaders_serial = TRUE
+	var/speedloader_serial = TRUE
 	/// speedloader delay
-	var/speedloaders_delay = 0.5 SECONDS
+	var/speedloader_delay = 0.5 SECONDS
+	/// speedloader types allowed; if null, we only care aobut caliber
+	var/speedloader_type
 
 	//* for guns that use magazines
+	/// magazine type allowed ; must match the magazine's. if null, we only use caliber.
+	/// this can be a list, or a single datapoint.
+	/// if list, we check for type to be inside the list.
+	var/list/magazine_type
 	/// magazine type to preload with
-	var/magazine_type
+	var/magazine_preload
 	/// stored magazine
 	var/obj/item/ammo_magazine/magazine
 	/// magazine auto ejects on empty
@@ -56,10 +62,6 @@
 	var/magazine_remove_sound = 'sound/weapons/guns/interaction/pistol_magout.ogg'
 	/// allow magazine removal.
 	var/magazine_removable = TRUE
-	/// specifically allow these magazine types, regardless of caliber
-	var/list/magazine_allowed_types
-	/// only allow types, not subtypes
-	var/magazine_allowed_picky = FALSE
 
 	//* for guns that don't use magazines
 	/// internal ammo holder size. 0 = single action, put in chamber, cock, and fire

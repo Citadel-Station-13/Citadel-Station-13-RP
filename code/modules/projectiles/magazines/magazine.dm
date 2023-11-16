@@ -23,13 +23,15 @@
 	var/is_magazine_regardless = FALSE
 
 	//* for magazines
-	/// magazine type - must match gun's to be fitted into it
+	/// magazine type - must match gun's to be fitted into it, if gun's is
 	/// setting this to a gun's typepath is allowed, this is an arbitrary field.
 	var/magazine_type
 
 	//* for speedloaders
 	/// inherent speedloader delay, added to gun's speedloaders_delay
 	var/speedloader_delay = 0
+	/// speedloader type - must match gun's to fit ammo in, if gun's is set
+	var/speedloader_type
 
 	//* ammo storage
 	/// max ammo in us
@@ -56,6 +58,10 @@
 	var/ammo_caliber
 	/// preloaded ammo type
 	var/ammo_preload
+	/// if set, only loads ammo of this type
+	var/ammo_type
+	/// if set, doesn't allow subtypes
+	var/ammo_picky = FALSE
 
 	//* Rendering
 	/// use default rendering system

@@ -16,6 +16,8 @@
 	var/casing_flags = NONE
 	/// projectile type
 	var/projectile_type
+	/// caliber - set to typepath of datum for compile checking
+	var/regex_this_caliber
 	/// stored projectile - either null for un-init'd, FALSE for empty, or an instance
 	VAR_PRIVATE/obj/projectile/stored
 
@@ -25,7 +27,6 @@
 
 	//! unsorted / legacy
 	var/leaves_residue = 1
-	var/caliber = ""					//Which kind of guns it can be loaded into
 	var/fall_sounds = list('sound/weapons/guns/casingfall1.ogg','sound/weapons/guns/casingfall2.ogg','sound/weapons/guns/casingfall3.ogg')
 
 /obj/item/ammo_casing/Initialize(mapload)
