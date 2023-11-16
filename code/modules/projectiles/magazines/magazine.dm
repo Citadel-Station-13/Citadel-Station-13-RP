@@ -22,6 +22,11 @@
 	/// guns that accept magazines, even if it's a speedloader
 	var/is_magazine_regardless = FALSE
 
+	//* for magazines
+	/// magazine type - must match gun's to be fitted into it
+	/// setting this to a gun's typepath is allowed, this is an arbitrary field.
+	var/magazine_type
+
 	//* for speedloaders
 	/// inherent speedloader delay, added to gun's speedloaders_delay
 	var/speedloader_delay = 0
@@ -47,7 +52,7 @@
 	/// peek/draw will peek/draw the last index first all the way to the first, and after that,
 	/// ammo_current is considered the 'reserve' pool (as just a number).
 	var/list/ammo_internal
-	/// caliber
+	/// caliber - set to typepath to init
 	var/ammo_caliber
 	/// preloaded ammo type
 	var/ammo_preload
