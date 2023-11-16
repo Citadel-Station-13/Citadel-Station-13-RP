@@ -58,13 +58,13 @@
 	icon_state = "a12-slug-2"
 	base_icon_state = "a12-slug"
 	desc = "A color-coded metal clip for holding and quickly loading shotgun shells. This one is loaded with slugs."
-	ammo_caliber = CALIBER_12G
+	ammo_caliber = /datum/caliber/c12g
 	ammo_preload = /obj/item/ammo_casing/a12g
 	materials_base = list(MAT_STEEL = 350) // slugs shells x2 + 350 metal for the clip itself.
 	ammo_max = 2
 	rendering_system = GUN_RENDERING_STATES
 	rendering_count = 2
-	ammo_type_picky = TRUE
+	ammo_picky = TRUE
 	ammo_type = /obj/item/ammo_casing/a12g
 	is_speedloader = TRUE
 
@@ -101,7 +101,7 @@
 	icon = 'icons/modules/projectiles/magazines/magazine_pouch.dmi'
 	icon_state = "shotgun-clip-4"
 	base_icon_state = "shotgun-clip"
-	regex_this_caliber = /datum/caliber/c12g
+	ammo_caliber = /datum/caliber/c12g
 	materials_base = list(MAT_STEEL = 1440)
 	ammo_preload = /obj/item/ammo_casing/a12g
 	ammo_current = 0
@@ -214,7 +214,6 @@
 	name = "unloaded technological shell"
 	desc = "A high-tech shotgun shell which can be loaded with materials to produce unique effects."
 	icon_state = "tech"
-	ammo_caliber = CALIBER_12G
 	projectile_type = null
 	materials_base = list(MAT_STEEL = 500, MAT_PHORON = 200)
 
@@ -266,7 +265,6 @@
 	name = "Silver shotgun shell"
 	desc = "A 12 gauge slug. Bless and Sancitfied to banish otherworlds entities."
 	icon_state = "stake"
-	ammo_caliber = CALIBER_12G
 	projectile_type = /obj/projectile/bullet/pellet/shotgun/silver
 	materials_base = list(MAT_STEEL = 360, MAT_SILVER = 240)
 
@@ -274,6 +272,5 @@
 	name = "Wooden stake shell"
 	desc = "A specialized shell designed to launch a wooden stake. Bless and Sancitfied to banish otherworlds entities."
 	icon_state = "stake"
-	ammo_caliber = CALIBER_12G
 	projectile_type = /obj/projectile/bullet/shotgun/stake
 	materials_base = list(MAT_STEEL = 500)
