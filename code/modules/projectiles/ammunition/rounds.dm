@@ -20,23 +20,6 @@
 /************************************************************************/
 
 /*
- * .357
- */
-
-/obj/item/ammo_casing/a357
-	desc = "A .357 bullet casing."
-	caliber = ".357"
-	projectile_type = /obj/projectile/bullet/pistol/strong
-	materials_base = list(MAT_STEEL = 210)
-
-/obj/item/ammo_casing/a357/silver
-	desc = "A .357 silver bullet casing. Bless and Sancitfied to banish otherworlds entities."
-	caliber = ".357"
-	icon_state = "ag-casing"
-	projectile_type = /obj/projectile/bullet/pistol/strong
-	materials_base = list(MAT_STEEL = 350, MAT_SILVER = 200)
-
-/*
  * .38
  */
 
