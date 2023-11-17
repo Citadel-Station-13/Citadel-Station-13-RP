@@ -23,3 +23,6 @@
 #define Z_HAS_ABOVE(z) (!isnull(SSmapping.cached_level_up[z]))
 /// there's a level below
 #define Z_HAS_BELOW(z) (!isnull(SSmapping.cached_level_down[z]))
+
+/// we should use get virtual step due to our x/y being border
+#define AT_MAP_BORDER(A) (A.x == 2 || A.y == 2 || A.x == world.maxx - 1 || A.y == world.maxy - 1)
