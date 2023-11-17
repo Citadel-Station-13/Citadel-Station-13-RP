@@ -605,13 +605,11 @@
 //? Multiz
 
 /turf/proc/update_multiz()
-	// update caches
-	above = above()
-	below = below()
+	var/turf/turf_below = TURF_BELOW_ISH(src)
 	// update icon if needed
-	if(istype(below, /turf/simulated))
-		below.update_icon()
-	// todo: this doesn't actually update zm that well, just does basic stitching.
+	if(istype(turf_below, /turf/simulated))
+		// todo: this doesn't actually update zm that well, just does basic stitching of ceiling overlays.
+		turf_below.update_icon()
 
 //? Radiation
 

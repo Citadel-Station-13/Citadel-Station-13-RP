@@ -152,7 +152,7 @@
 	var/list/indices_to_rebuild = list()
 	for(var/datum/map_level/level as anything in loaded_levels)
 		indices_to_rebuild += level.z_index
-	rebuild_level_multiz(indices_to_rebuild)
+	rebuild_level_multiz(indices_to_rebuild, TRUE, TRUE)
 
 /datum/controller/subsystem/mapping/proc/_load_map_impl(datum/map/instance, list/datum/map_level/loaded_levels, list/datum/callback/generation_callbacks, list/datum/map/this_batch, list/bounds_collect)
 	PRIVATE_PROC(TRUE)

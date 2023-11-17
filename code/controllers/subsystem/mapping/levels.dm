@@ -214,7 +214,7 @@
 	if(rebuild)
 		rebuild_verticality()
 		rebuild_transitions()
-		rebuild_level_multiz(list(z_index))
+		rebuild_level_multiz(list(z_index), TRUE, TRUE)
 
 	// todo: legacy
 	if(!isnull(level_or_path.planet_path))
@@ -331,7 +331,7 @@
 	if(rebuild)
 		rebuild_verticality()
 		rebuild_transitions()
-		rebuild_level_multiz(list(real_z))
+		rebuild_level_multiz(list(real_z), TRUE, TRUE)
 
 /**
  * destroys a loaded level and frees it for later usage
