@@ -1295,9 +1295,6 @@
 /area/rift/geothermal)
 "pA" = (
 /obj/structure/catwalk/plank,
-/obj/effect/map_effect/portal/line/side_b{
-	dir = 8
-	},
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
 "pB" = (
@@ -2411,9 +2408,6 @@
 	dir = 1
 	},
 /obj/structure/catwalk/plank,
-/obj/effect/map_effect/portal/line/side_b{
-	dir = 8
-	},
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
 "Cv" = (

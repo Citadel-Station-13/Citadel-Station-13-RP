@@ -304,7 +304,6 @@
 /turf/simulated/mineral/ignore_mapgen,
 /area/tether_away/beach/jungle)
 "br" = (
-/obj/effect/map_effect/portal/line/side_a,
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
@@ -314,7 +313,6 @@
 /turf/simulated/floor/outdoors/grass,
 /area/tether_away/beach/jungle)
 "bR" = (
-/obj/effect/map_effect/portal/line/side_a,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/tether_away/beach/jungle)
 "bT" = (
@@ -452,7 +450,6 @@
 /turf/simulated/floor/tiled/kafel_full/white,
 /area/tether_away/beach/resort/lockermed)
 "eX" = (
-/obj/effect/map_effect/portal/line/side_a,
 /turf/simulated/floor/outdoors/beach/sand/desert,
 /area/tether_away/beach/jungle)
 "fl" = (

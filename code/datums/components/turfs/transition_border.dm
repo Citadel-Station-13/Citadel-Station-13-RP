@@ -46,6 +46,8 @@
 	return ..()
 
 /datum/component/transition_border/proc/transit(datum/source, atom/movable/AM)
+	if(AM.atom_flags & ATOM_ABSTRACT)
+		return // nah.
 	var/turf/our_turf = parent
 	var/z_index = SSmapping.level_index_in_dir(our_turf.z, dir)
 	if(isnull(z_index))
@@ -100,15 +102,15 @@
 			if(!holder2)
 				holder2 = new(parent)
 			holder2.vis_contents = turfs
-			holder2.pixel_x = dir & WEST? world.icon_size * (range - 1) : 0
+			holder2.pixel_x = dir & WEST? -world.icon_size * (range - 1) : 0
 
 		turfs = turfs_in_diagonal(dir)
 		if(length(turfs))
 			if(!holder3)
 				holder3 = new(parent)
 			holder3.vis_contents = turfs
-			holder3.pixel_y = dir & SOUTH? world.icon_size * (range - 1) : 0
-			holder3.pixel_x = dir & WEST? world.icon_size * (range - 1) : 0
+			holder3.pixel_y = dir & SOUTH? -world.icon_size * (range - 1) : 0
+			holder3.pixel_x = dir & WEST? -world.icon_size * (range - 1) : 0
 	else
 		var/list/turfs = turfs_in_cardinal(dir)
 		if(!length(turfs))
@@ -116,8 +118,8 @@
 		if(!holder1)
 			holder1 = new(parent)
 		holder1.vis_contents = turfs
-		holder1.pixel_x = dir == WEST? world.icon_size * (range - 1) : 0
-		holder1.pixel_y = dir == SOUTH? world.icon_size * (range - 1) : 0
+		holder1.pixel_x = dir == WEST? -world.icon_size * (range - 1) : 0
+		holder1.pixel_y = dir == SOUTH? -world.icon_size * (range - 1) : 0
 
 /datum/component/transition_border/proc/turfs_in_diagonal(dir)
 	ASSERT(dir & (dir - 1))
@@ -191,6 +193,8 @@
 	var/turf/T = src
 	if(!istype(T, /turf/level_border))
 		T = PlaceOnTop(/turf/level_border)
+	if(isnull(SSmapping.level_index_in_dir(z, dir)))
+		return
 	var/datum/component/transition_border/border = T.GetComponent(/datum/component/transition_border)
 	if(border)
 		qdel(border)

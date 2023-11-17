@@ -40276,7 +40276,6 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/visitor_laundry)
 "vAn" = (
-/obj/effect/map_effect/portal/line/side_a,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/lowernortheva/external)
 "vAp" = (

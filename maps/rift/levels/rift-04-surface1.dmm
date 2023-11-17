@@ -5673,9 +5673,6 @@
 	icon_state = "4-8"
 	},
 /obj/structure/railing,
-/obj/effect/map_effect/portal/line/side_a{
-	dir = 4
-	},
 /turf/simulated/floor/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "dLp" = (
@@ -36638,9 +36635,6 @@
 /area/rnd/xenobiology/xenoflora)
 "wCM" = (
 /obj/structure/railing,
-/obj/effect/map_effect/portal/line/side_a{
-	dir = 4
-	},
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "wDd" = (

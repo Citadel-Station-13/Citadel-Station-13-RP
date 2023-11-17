@@ -2796,9 +2796,6 @@
 	icon_state = "4-8"
 	},
 /obj/structure/railing,
-/obj/effect/map_effect/portal/line/side_b{
-	dir = 8
-	},
 /turf/simulated/floor/lythios43c,
 /area/rift/surfacebase/outside/west)
 "mL" = (
@@ -3703,9 +3700,6 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 10
-	},
-/obj/effect/map_effect/portal/line/side_b{
-	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_grid/lythios43c,
 /area/rift/surfacebase/outside/west)
@@ -5752,9 +5746,6 @@
 /area/rnd/outpost/anomaly_lab)
 "zL" = (
 /obj/structure/railing,
-/obj/effect/map_effect/portal/line/side_b{
-	dir = 8
-	},
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west)
 "zM" = (
@@ -6647,9 +6638,6 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 6
-	},
-/obj/effect/map_effect/portal/line/side_b{
-	dir = 8
 	},
 /obj/structure/railing,
 /turf/simulated/floor/tiled/steel_grid/lythios43c,

@@ -82,10 +82,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/mining_airlock)
 "eW" = (
-/obj/effect/zone_divider,
-/obj/effect/map_effect/portal/line/side_a{
-	dir = 4
-	},
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "fs" = (
@@ -204,11 +200,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/mining_airlock)
 "ln" = (
-/obj/effect/zone_divider,
-/obj/effect/zone_divider,
-/obj/effect/map_effect/portal/line/side_a{
-	dir = 4
-	},
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "lH" = (
