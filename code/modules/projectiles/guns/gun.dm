@@ -95,10 +95,12 @@
 	/// depending on what system is set to.
 	var/render_firemode_inhand = TRUE
 	/// rendering system for ammo
-	/// in overlay mode, "[base_icon_state]-[count]" is added as an overlay
+	/// in overlay mode, "[base_icon_state]-[firemode]-[count]" is added as an overlay
 	/// in state mode, this is appended as "-[count]" after state append and firemode append, if any.
-	/// in segments mode, "[base_icon_state]-ammo" is added for 1 to count.
+	/// in segments mode, "[base_icon_state]-[firemode]-ammo" is added for 1 to count.
 	var/render_ammo_system = GUN_RENDERING_DISABLED
+	/// firemode is considered for ammo rendering, if firemode rendering is enabled.
+	var/render_ammo_per_firemode = TRUE
 	/// ammo rendering system is used for inhands
 	/// this will result in the effective item state for onmob being modified,
 	/// or additional overlays being added during onmob rendering,
@@ -108,6 +110,8 @@
 	var/render_ammo_count = 0
 	/// ammo state includes 0; overlay / state append is "-0", segment append is "-empty"
 	var/render_ammo_empty = FALSE
+	/// in segment mode, ammo empty is per firemode.
+	var/render_ammo_empty_per_firemode = FALSE
 	/// last ammo state, used so we don't rebuilt unless necessary.
 	var/render_ammo_last
 	/// starting x offset for segment mode
