@@ -22,7 +22,7 @@
 	/// this controls what magazines we can load, as well as what bullets we can hold
 	var/list/caliber
 	/// ammo load sound
-	var/casing_load_sound
+	var/casing_load_sound = 'sound/weapons/guns/interaction/bullet_insert.ogg'
 	#warn find a sound
 
 	//* static config; do not change at runtime without using helpers.
@@ -97,26 +97,49 @@
 /obj/item/gun/projectile/ballistic/proc/init_ammo()
 	#warn impl
 
+/obj/item/gun/projectile/ballistic/consume_next_projectile()
+	#warn impl
 
-/obj/item/gun/projectile/ballistic
-	name = "gun"
-	desc = "A gun that fires bullets."
-	icon = 'icons/obj/gun/ballistic.dmi'
-	icon_state = "revolver"
-	w_class = ITEMSIZE_NORMAL
-	materials_base = list(MAT_STEEL = 1000)
-	recoil = 0
-	projectile_type = /obj/projectile/bullet/pistol/strong	//Only used for chameleon guns
+/obj/item/gun/projectile/ballistic/percent_ammo()
+	#warn impl
 
-	var/caliber = ".357"		//determines which casings will fit
-	var/handle_casings = EJECT_CASINGS	//determines how spent casings should be handled
-	var/load_method = SINGLE_CASING|SPEEDLOADER //1 = Single shells, 2 = box or quick loader, 3 = magazine
+/obj/item/gun/projectile/ballistic/examine(mob/user, dist)
+	. = ..()
+	#warn impl
 
-	//For SINGLE_CASING or SPEEDLOADER guns
-	var/max_shells = 0			//the number of casings that will fit inside
-	var/ammo_type = null		//the type of ammo that the gun comes preloaded with
-	var/list/loaded = list()	//stored ammo
-	var/load_sound = 'sound/weapons/guns/interaction/bullet_insert.ogg'
+/obj/item/gun/projectile/ballistic/attackby(obj/item/A, mob/user)(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+	. = ..()
+	#warn impl
+
+/obj/item/gun/projectile/ballistic/post_fire(atom/target, atom/movable/user, turf/where, angle, reflex, iteration)
+	. = ..()
+	process_chamber()
+
+/**
+ * process chamber post fire
+ */
+/obj/item/gun/projectile/ballistic/proc/process_chamber()
+	#warn impl
+
+/**
+ * rack chamber
+ */
+/obj/item/gun/projectile/ballistic/proc/rack_chamber()
+	#warn impl
+
+/**
+ * has round in chambered
+ */
+/obj/item/gun/projectile/ballistic/proc/has_chambered()
+	return !isnull(chambered)
+
+/**
+ * get round chambered
+ */
+/obj/item/gun/projectile/ballistic/proc/peek_chambered()
+	return chambered
+
+#warn below
 
 /obj/item/gun/projectile/ballistic/Initialize(mapload, starts_loaded = TRUE)
 	. = ..()
@@ -397,37 +420,3 @@
 	if(chambered)
 		bullets += 1
 	return bullets
-
-#warn above
-
-/obj/item/gun/projectile/ballistic/post_fire(atom/target, atom/movable/user, turf/where, angle, reflex, iteration)
-	. = ..()
-	process_chamber()
-
-/**
- * process chamber post fire
- */
-/obj/item/gun/projectile/ballistic/proc/process_chamber()
-
-
-
-
-	#warn impl
-
-/**
- * rack chamber
- */
-/obj/item/gun/projectile/ballistic/proc/rack_chamber()
-	#warn impl
-
-/**
- * has round in chambered
- */
-/obj/item/gun/projectile/ballistic/proc/has_chambered()
-	return !isnull(chambered)
-
-/**
- * get round chambered
- */
-/obj/item/gun/projectile/ballistic/proc/peek_chambered()
-	return chambered

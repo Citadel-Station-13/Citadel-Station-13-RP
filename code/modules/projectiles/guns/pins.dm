@@ -196,7 +196,7 @@
 	return lock_override
 
 //Allows swiping an armoury access ID on an explorer locked gun to unlock it
-/obj/item/gun/projectile/attackby(obj/item/I, mob/user)
+/obj/item/gun/projectile/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 	if((istype(I, /obj/item/card/id)) && pin)
 		pin.attackby(I, user)
 	else
