@@ -43,9 +43,6 @@
 	},
 /area/tether_away/beach/desert/explored)
 "mV" = (
-/obj/effect/map_effect/portal/line/side_a{
-	dir = 8
-	},
 /turf/simulated/mineral/floor/cave{
 	name = "dirt";
 	outdoors = 1
@@ -165,11 +162,6 @@
 	},
 /area/tether_away/beach/desert/explored)
 "zQ" = (
-/obj/effect/map_effect/portal/master/side_a{
-	dir = 8;
-	name = "desert to caves";
-	portal_id = "V4_cave_desert_step"
-	},
 /turf/simulated/mineral/floor/cave{
 	name = "dirt";
 	outdoors = 1
@@ -303,23 +295,12 @@
 /turf/simulated/floor/plating/external,
 /area/tether_away/beach/desert/explored)
 "ST" = (
-/obj/effect/map_effect/portal/master/side_b{
-	dir = 1;
-	name = "V4_desert_to_beach";
-	portal_id = "V4_desert_step"
-	},
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/tether_away/beach/desert/explored)
 "UP" = (
-/obj/effect/map_effect/portal/line/side_b{
-	dir = 1
-	},
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/tether_away/beach/desert/explored)
 "WT" = (
-/obj/effect/map_effect/portal/line/side_b{
-	dir = 1
-	},
 /turf/simulated/floor/outdoors/beach/sand/desert,
 /area/tether_away/beach/desert/explored)
 "XZ" = (

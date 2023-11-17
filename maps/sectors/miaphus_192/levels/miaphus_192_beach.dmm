@@ -394,10 +394,6 @@
 /turf/simulated/floor/tiled/old_tile/white,
 /area/tether_away/beach/resort/lockermed)
 "bo" = (
-/obj/effect/map_effect/portal/master/side_a{
-	name = "V4_Cave_Entrance";
-	portal_id = "V4_cave_step"
-	},
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
@@ -2017,10 +2013,6 @@
 	},
 /area/tether_away/beach/mineyard)
 "px" = (
-/obj/effect/map_effect/portal/master/side_a{
-	name = "V4_Desert_Entrance";
-	portal_id = "V4_desert_step"
-	},
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/tether_away/beach/jungle)
 "py" = (

@@ -2927,9 +2927,6 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/rnd/outpost/mixing)
 "bAS" = (
-/obj/effect/map_effect/portal/master/side_a{
-	portal_id = "surfacemine"
-	},
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/lowernortheva/external)
 "bAT" = (
@@ -16975,11 +16972,6 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
 "iQX" = (
-/obj/effect/map_effect/portal/master/side_a{
-	dir = 1;
-	name = "to_wilderness";
-	portal_id = "wilderness_step"
-	},
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/outside/outside1)
 "iRw" = (
@@ -39177,9 +39169,6 @@
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/funny/clownoffice)
 "uXC" = (
-/obj/effect/map_effect/portal/line/side_a{
-	dir = 1
-	},
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/outside/outside1)
 "uXS" = (

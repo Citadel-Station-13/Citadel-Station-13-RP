@@ -41,11 +41,6 @@
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "bu" = (
-/obj/effect/map_effect/portal/master/side_a{
-	dir = 8;
-	name = "to_east";
-	portal_id = "eaststep"
-	},
 /turf/simulated/floor/tiled/dark/lavaland,
 /area/lavaland/central/transit)
 "bG" = (
@@ -129,9 +124,6 @@
 /turf/simulated/floor/tiled/old_tile,
 /area/lavaland/central/base/common)
 "eb" = (
-/obj/effect/map_effect/portal/line/side_a{
-	dir = 8
-	},
 /turf/simulated/floor/tiled/dark/lavaland,
 /area/lavaland/central/transit)
 "ew" = (

@@ -1655,9 +1655,6 @@
 /turf/simulated/wall/r_wall,
 /area/rnd/outpost/anomaly_lab/analysis)
 "hy" = (
-/obj/effect/map_effect/portal/line/side_b{
-	dir = 4
-	},
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/surfacebase/outside/west)
 "hz" = (
@@ -2059,9 +2056,6 @@
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
 "ji" = (
-/obj/effect/map_effect/portal/line/side_b{
-	dir = 8
-	},
 /turf/simulated/floor/tiled/steel_grid/lythios43c,
 /area/rift/surfacebase/outside/west)
 "jm" = (
@@ -4916,9 +4910,6 @@
 /turf/simulated/floor/tiled/monotile,
 /area/rift/exterior/nuketown/interior)
 "we" = (
-/obj/effect/map_effect/portal/line/side_b{
-	dir = 8
-	},
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west)
 "wg" = (
@@ -8518,11 +8509,6 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab/airlock)
 "Nw" = (
-/obj/effect/map_effect/portal/master/side_b{
-	dir = 8;
-	name = "westplain_to_center";
-	portal_id = "westplainstep"
-	},
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west)
 "Nx" = (
@@ -8574,11 +8560,6 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/exterior/shuttle)
 "NO" = (
-/obj/effect/map_effect/portal/master/side_b{
-	dir = 4;
-	name = "Surface to caves";
-	portal_id = "surface_to_cave1"
-	},
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/surfacebase/outside/west)
 "NQ" = (

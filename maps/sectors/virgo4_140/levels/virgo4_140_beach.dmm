@@ -293,10 +293,6 @@
 /turf/simulated/floor/water/deep,
 /area/tether_away/beach/water)
 "bo" = (
-/obj/effect/map_effect/portal/master/side_a{
-	name = "V4_Cave_Entrance";
-	portal_id = "V4_cave_step"
-	},
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
@@ -907,10 +903,6 @@
 /turf/simulated/floor/water,
 /area/tether_away/beach/cavebase)
 "px" = (
-/obj/effect/map_effect/portal/master/side_a{
-	name = "V4_Desert_Entrance";
-	portal_id = "V4_desert_step"
-	},
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/tether_away/beach/jungle)
 "py" = (
