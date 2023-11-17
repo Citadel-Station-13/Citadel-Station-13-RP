@@ -1,18 +1,3 @@
-/obj/projectile/beam/disable
-    name = "disabler beam"
-    icon_state = "omnilaser"
-    nodamage = 1
-    taser_effect = 1
-    agony = 100 //One shot stuns for the time being until adjustments are fully made.
-    damage_type = HALLOSS
-    light_color = "#00CECE"
-
-    hitscan_muzzle_type = /obj/effect/projectile/muzzle/laser_omni
-    hitscan_tracer_type = /obj/effect/projectile/tracer/laser_omni
-    hitscan_impact_type = /obj/effect/projectile/impact/laser_omni
-
-/obj/projectile/beam/stun
-	agony = 35
 
 /obj/projectile/beam/energy_net
 	name = "energy net projection"
@@ -33,14 +18,6 @@
 /obj/projectile/beam/energy_net/proc/do_net(var/mob/M)
 	var/obj/item/energy_net/net = new (get_turf(M))
 	net.throw_impact(M)
-
-/obj/projectile/beam/stun/blue
-	icon_state = "bluelaser"
-	light_color = "#0066FF"
-
-	hitscan_muzzle_type = /obj/effect/projectile/muzzle/laser_blue
-	hitscan_tracer_type = /obj/effect/projectile/tracer/laser_blue
-	hitscan_impact_type = /obj/effect/projectile/impact/laser_blue
 
 /obj/projectile/beam/medigun
 	name = "healing beam"

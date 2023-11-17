@@ -4254,6 +4254,7 @@
 #include "code\modules\projectiles\projectile\beam\beams.dm"
 #include "code\modules\projectiles\projectile\beam\beams_vr.dm"
 #include "code\modules\projectiles\projectile\beam\blaster.dm"
+#include "code\modules\projectiles\projectile\beam\stun.dm"
 #include "code\modules\projectiles\projectile\bullets\bullets.dm"
 #include "code\modules\projectiles\projectile\bullets\explosive.dm"
 #include "code\modules\projectiles\projectile\bullets\magnetic.dm"
