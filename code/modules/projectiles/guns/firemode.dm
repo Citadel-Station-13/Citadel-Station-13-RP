@@ -33,13 +33,10 @@
 	/// in general:
 	///
 	/// for append:
-	/// this is appended to base_icon_state before gun specific appends, with a - as the separator,
-	/// like in an example of "[base_icon_state]-[firemode.state-append]-[magazine_state]-[ammo_count]" for ballistics
+	/// this is appended to base_icon_state after gun specific appends, with a - as the separator,
+	/// like in an example of "[base_icon_state]-[magazine_state]-[firemode.state-append]-[ammo_count]" for ballistics
 	///
 	/// for overlay:
 	/// the spec is "[base_icon_state]-[state_overlay]" as an overlay
 	var/render_state
-
-	//! legacy modifystate
-	var/legacy_modifystate
 
