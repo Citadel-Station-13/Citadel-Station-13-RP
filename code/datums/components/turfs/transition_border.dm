@@ -47,7 +47,7 @@
 
 /datum/component/transition_border/proc/transit(datum/source, atom/movable/AM)
 	var/turf/our_turf = parent
-	var/z_index = SSmapping.level_index_in_dir(dir)
+	var/z_index = SSmapping.level_index_in_dir(our_turf.z, dir)
 	if(isnull(z_index))
 		STACK_TRACE("no z index?! deleting self.")
 		qdel(src)

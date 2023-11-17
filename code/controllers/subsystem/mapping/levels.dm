@@ -427,7 +427,7 @@
 	for(var/z in left)
 		if(cached_level_down[z])
 			continue
-		bottoms += z
+		bottoms += ordered_levels[z]
 	for(var/datum/map_level/bottom as anything in bottoms)
 		// register us
 		var/list/stack = list(bottom.z_index)
