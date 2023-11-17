@@ -286,7 +286,8 @@
 	cut_overlays()
 	// reset states
 	icon_state = base_icon_state
-	worn_state = base_worn_state || base_icon_state
+	inhand_state = base_worn_state || base_icon_state
+	if(use_mob_states)
 	// priority 1: append
 	if(!isnull(render_append_state))
 		icon_state += render_append_state
@@ -299,26 +300,19 @@
 	switch(render_firemode_world)
 		if(GUN_RENDERING_OVERLAYS)
 		if(GUN_RENDERING_STATES)
+	switch(render_firemode_inhand)
 	// priority 3: ammo
 	switch(render_ammo_world)
 		if(GUN_RENDERING_OVERLAYS)
 		if(GUN_RENDERING_STATES)
 		if(GUN_RENDERING_SEGMENTS)
+	switch(render_ammo_inhand)
 	#warn impl
 
 	// do default behavior last
-	return ..()
-
-/obj/item/gun/render_apply_overlays(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta, icon_used)
 	. = ..()
-	if(render_append_exclusive)
-		return ..()
-	switch(render_firemode_world)
-		if(GUN_RENDERING_OVERLAYS)
-	switch(render_ammo_world)
-		if(GUN_RENDERING_OVERLAYS)
-			if(render_ammo_inhand)
-	#warn impl
+	// update inhand
+	update_worn_icon()
 
 #warn below
 

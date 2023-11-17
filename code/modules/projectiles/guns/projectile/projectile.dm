@@ -33,15 +33,3 @@
  */
 /obj/item/gun/projectile/proc/consume_next_projectile(atom/movable/firer)
 	return null
-
-/**
- * Get max ammo - used in rendering
- */
-/obj/item/gun/projectile/proc/get_ammo_max()
-	return 0
-
-/**
- * Get ammo left - used in rendering
- */
-/obj/item/gun/projectile/proc/get_count_ammo()
-	return 0
