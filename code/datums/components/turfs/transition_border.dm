@@ -246,3 +246,4 @@
 	density = FALSE
 	initial_gas_mix = ATMOSPHERE_USE_OUTDOORS
 	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
+	lighting_disable_fullbright = TRUE

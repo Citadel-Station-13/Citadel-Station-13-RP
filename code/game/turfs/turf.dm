@@ -161,8 +161,6 @@
 		Entered(AM)
 
 	var/area/A = loc
-	if(!TURF_IS_DYNAMICALLY_LIT_UNSAFE(src))
-		add_overlay(/obj/effect/fullbright)
 
 	if (light_power && light_range)
 		update_light()
@@ -605,11 +603,7 @@
 //? Multiz
 
 /turf/proc/update_multiz()
-	var/turf/turf_below = TURF_BELOW_ISH(src)
-	// update icon if needed
-	if(istype(turf_below, /turf/simulated))
-		// todo: this doesn't actually update zm that well, just does basic stitching of ceiling overlays.
-		turf_below.update_icon()
+	return
 
 //? Radiation
 

@@ -73,14 +73,14 @@ GLOBAL_LIST_INIT(bitfields, generate_bitfields())
 		"BLIND" = BLIND,
 	),
 	"vis_flags" = list(
-		"Inherit Icon" = VIS_INHERIT_ICON,
-		"Inherit Icon State" = VIS_INHERIT_ICON_STATE,
-		"Inherit Dir" = VIS_INHERIT_DIR,
-		"Inherit Layer" = VIS_INHERIT_LAYER,
-		"Inherit Plane" = VIS_INHERIT_PLANE,
-		"Inherit ID" = VIS_INHERIT_ID,
-		"Underlay" = VIS_UNDERLAY,
-		"Hide" = VIS_HIDE,
+		"VIS_INHERIT_ICON" = VIS_INHERIT_ICON,
+		"VIS_INHERIT_ICON_STATE" = VIS_INHERIT_ICON_STATE,
+		"VIS_INHERIT_DIR" = VIS_INHERIT_DIR,
+		"VIS_INHERIT_LAYER" = VIS_INHERIT_LAYER,
+		"VIS_INHERIT_PLANE" = VIS_INHERIT_PLANE,
+		"VIS_INHERIT_ID" = VIS_INHERIT_ID,
+		"VIS_UNDERLAY" = VIS_UNDERLAY,
+		"VIS_HIDE" = VIS_HIDE,
 	),
 )
 
