@@ -866,7 +866,6 @@
 /obj/item/reagent_containers/food/snacks/fishfingers/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("protein", 9)
-	reagents.add_reagent("carpotoxin", 3)
 	bitesize = 3
 
 /obj/item/reagent_containers/food/snacks/hugemushroomslice // Buff 3 >> 5
@@ -1089,7 +1088,6 @@
 /obj/item/reagent_containers/food/snacks/fishburger/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("protein", 15)
-	reagents.add_reagent("carpotoxin", 3)
 	bitesize = 6
 
 /obj/item/reagent_containers/food/snacks/tofuburger // Buff 6 >> 10
@@ -1417,7 +1415,6 @@
 /obj/item/reagent_containers/food/snacks/cubancarp/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("protein", 9)
-	reagents.add_reagent("carpotoxin", 3)
 	reagents.add_reagent("capsaicin", 3)
 	bitesize = 4
 
@@ -2005,7 +2002,6 @@
 /obj/item/reagent_containers/food/snacks/fishandchips/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("protein", 5)
-	reagents.add_reagent("carpotoxin", 3)
 	bitesize = 3
 
 /obj/item/reagent_containers/food/snacks/sandwich // Buff 6 >> 11
@@ -3731,7 +3727,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/sashimi/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("protein", 4)
-	reagents.add_reagent("carpotoxin", 2)
 	bitesize = 3
 
 /obj/item/reagent_containers/food/snacks/benedict // Buff 6 >> 8
