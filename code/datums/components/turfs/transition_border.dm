@@ -19,7 +19,7 @@
 	/// do we render visuals?
 	var/render = TRUE
 
-/datum/component/transition_border/Initialize(range = 7, dir, render)
+/datum/component/transition_border/Initialize(range = 10, dir, render)
 	if(!isturf(parent))
 		return COMPONENT_INCOMPATIBLE
 	if(!dir || range < 1)
