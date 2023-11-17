@@ -164,6 +164,13 @@
 		/area/engineering/atmos_intake, // Outside,
 		/area/rnd/external) //  Outside,
 
+/datum/map_level/rift
+	abstract_type = /datum/map_level/rift
+	air_outdoors = /datum/atmosphere/planet/lythios43c
+
+/datum/map_level/rift/station
+	abstract_type = /datum/map_level/rift/station
+
 /datum/map_level/rift/station/underground_floor
 	id = "RiftUnderground3"
 	name = "Rift - East Canyon"

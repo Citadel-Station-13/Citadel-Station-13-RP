@@ -40,6 +40,15 @@
 			datum_flags |= DF_VAR_EDITED
 			return TRUE
 
+		if(NAMEOF(src, dynamic_lighting))
+			. = ..()
+			if(!.)
+				return
+			if(!dynamic_lighting && !isnull(lighting_overlay))
+				lighting_clear_overlay()
+			else if(dynamic_lighting && isnull(lighting_overlay))
+				lighting_build_overlay()
+			return
 	return ..()
 
 /turf/proc/set_ambient_light(color, multiplier)

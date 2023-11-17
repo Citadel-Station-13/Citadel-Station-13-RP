@@ -60,7 +60,7 @@ GLOBAL_LIST_INIT(bitfields, generate_bitfields())
 		"TRANSPARENT" = TRANSPARENT,
 		"AMOUNT_VISIBLE" = AMOUNT_VISIBLE,
 		"NO_REACT" = NO_REACT,
-		),
+	),
 	"sight" = list(
 		"SEE_INFRA" = SEE_INFRA,
 		"SEE_SELF" = SEE_SELF,
@@ -70,9 +70,18 @@ GLOBAL_LIST_INIT(bitfields, generate_bitfields())
 		"SEE_PIXELS" = SEE_PIXELS,
 		"SEE_THRU" = SEE_THRU,
 		"SEE_BLACKNESS" = SEE_BLACKNESS,
-		"BLIND" = BLIND
-		),
-
-	)
+		"BLIND" = BLIND,
+	),
+	"vis_flags" = list(
+		"Inherit Icon" = VIS_INHERIT_ICON,
+		"Inherit Icon State" = VIS_INHERIT_ICON_STATE,
+		"Inherit Dir" = VIS_INHERIT_DIR,
+		"Inherit Layer" = VIS_INHERIT_LAYER,
+		"Inherit Plane" = VIS_INHERIT_PLANE,
+		"Inherit ID" = VIS_INHERIT_ID,
+		"Underlay" = VIS_UNDERLAY,
+		"Hide" = VIS_HIDE,
+	),
+)
 
 #undef FLAG

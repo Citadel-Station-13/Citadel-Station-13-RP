@@ -15,6 +15,7 @@
 		ZTRAIT_GRAVITY,
 	)
 	planet_path = /datum/planet/lavaland
+	air_outdoors = /datum/atmosphere/planet/lavaland
 
 /datum/map_level/sector/lavaland_192/base
 	id = "LavalandBase192"
