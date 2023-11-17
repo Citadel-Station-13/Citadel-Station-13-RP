@@ -7,6 +7,8 @@
 	var/cycle_on_fire = TRUE
 	/// drop spent casings?
 	var/eject_on_fire = TRUE
+	/// rack / charge chamber on fire
+	var/rack_on_fire = TRUE
 	/// automatically rack on magazine insert, which transfers a round to chamber
 	var/rack_on_magazine = FALSE
 	/// default manual racking allowed
@@ -62,6 +64,10 @@
 	var/magazine_remove_sound = 'sound/weapons/guns/interaction/pistol_magout.ogg'
 	/// allow magazine removal.
 	var/magazine_removable = TRUE
+	/// speed reload time (drop magazine)
+	var/reload_time_drop = 1 SECONDS
+	/// tactical reload time (replace magazine)
+	var/reload_time_replace = 2 SECONDS
 
 	//* for guns that don't use magazines
 	/// internal ammo holder size. 0 = single action, put in chamber, cock, and fire
@@ -107,8 +113,16 @@
 	. = ..()
 	#warn impl
 
-/obj/item/gun/projectile/ballistic/attackby(obj/item/A, mob/user)(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+/obj/item/gun/projectile/ballistic/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 	. = ..()
+	#warn impl
+
+/obj/item/gun/projectile/ballistic/proc/handle_magazine_load(obj/item/ammo_magazine/magazine, datum/event_args/actor/actor)
+	WRAP_MOB_TO_ACTOR_EVENT_ARGS(actor)
+	#warn impl
+
+/obj/item/gun/projectile/ballistic/proc/handle_casing_load(obj/item/ammo_casing/casing, datum/event_args/actor/actor)
+	WRAP_MOB_TO_ACTOR_EVENT_ARGS(actor)
 	#warn impl
 
 /obj/item/gun/projectile/ballistic/post_fire(atom/target, atom/movable/user, turf/where, angle, reflex, iteration)
@@ -119,12 +133,29 @@
  * process chamber post fire
  */
 /obj/item/gun/projectile/ballistic/proc/process_chamber()
-	#warn impl
+	if(cycle_on_fire)
+		#warn impl
+
+	if(isnull(chambered))
+		return
+
+	chambered.expend()
+
+	if(chambered.casing_flags & CASING_DELETE)
+		QDEL_NULL(chambered)
+	else if(eject_on_fire)
+		// todo: this is bad code
+		chambered.forceMove(loc.drop_location())
+		// todo: variable sounds?
+		playsound(src, "casing", 50, TRUE)
+
+	if(rack_on_fire)
+		rack_chamber(TRUE)
 
 /**
  * rack chamber
  */
-/obj/item/gun/projectile/ballistic/proc/rack_chamber()
+/obj/item/gun/projectile/ballistic/proc/rack_chamber(silent)
 	#warn impl
 
 /**
@@ -173,50 +204,6 @@
 		return chambered.get_projectile()
 	return null
 
-/obj/item/gun/projectile/ballistic/handle_post_fire()
-	..()
-	if(chambered)
-		chambered.expend()
-		process_chambered()
-
-/obj/item/gun/projectile/ballistic/handle_click_empty()
-	..()
-	process_chambered()
-
-/obj/item/gun/projectile/ballistic/proc/process_chambered()
-	if (!chambered) return
-
-	// Aurora forensics port, gunpowder residue.
-	if(chambered.leaves_residue)
-		var/mob/living/carbon/human/H = loc
-		if(istype(H))
-			if(!H.gloves)
-				H.gunshot_residue = chambered.caliber
-			else
-				var/obj/item/clothing/G = H.gloves
-				G.gunshot_residue = chambered.caliber
-
-	switch(handle_casings)
-		if(EJECT_CASINGS) //eject casing onto ground.
-			if(chambered.casing_flags & CASING_DELETE)
-				qdel(chambered)
-				return
-			else
-				chambered.loc = get_turf(src)
-				playsound(src.loc, "casing", 50, 1)
-		if(CYCLE_CASINGS) //cycle the casing back to the end.
-			if(ammo_magazine)
-				ammo_magazine.stored_ammo += chambered
-			else
-				loaded += chambered
-
-	if(handle_casings != HOLD_CASINGS)
-		chambered = null
-
-///time it takes to tac reload a gun
-#define TACTICAL_RELOAD_SPEED 1 SECOND
-///time it takes to speed reload a gun
-#define SPEED_RELOAD_SPEED    0.5 SECONDS
 //Attempts to load A into src, depending on the type of thing being loaded and the load_method
 //Maybe this should be broken up into separate procs for each load method?
 /obj/item/gun/projectile/ballistic/proc/load_ammo(obj/item/A, mob/user)
@@ -312,9 +299,6 @@
 			sleep(1 SECOND)
 
 	update_icon()
-
-#undef TACTICAL_RELOAD_SPEED
-#undef SPEED_RELOAD_SPEED
 
 //attempts to unload src. If allow_dump is set to 0, the speedloader unloading method will be disabled
 /obj/item/gun/projectile/ballistic/proc/unload_ammo(mob/user, var/allow_dump=1)
