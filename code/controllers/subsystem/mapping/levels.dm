@@ -133,7 +133,6 @@
 			return
 		ASSERT(dir)
 		var/datum/map_level/level = updated
-		var/datum/map_level/other
 		switch(dir)
 			if(NORTH)
 				cached_level_north[level.z_index] = level.level_in_dir(NORTH)?.z_index

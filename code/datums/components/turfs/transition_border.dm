@@ -46,7 +46,7 @@
 	return ..()
 
 /datum/component/transition_border/proc/transit(datum/source, atom/movable/AM)
-	var/turf/source = parent
+	var/turf/our_turf = parent
 	var/z_index = SSmapping.level_index_in_dir(dir)
 	if(isnull(z_index))
 		STACK_TRACE("no z index?! deleting self.")
@@ -55,13 +55,13 @@
 	var/turf/target
 	switch(dir)
 		if(NORTH)
-			target = locate(source.x, 2, z_index)
+			target = locate(our_turf.x, 2, z_index)
 		if(SOUTH)
-			target = locate(source.x, world.maxy - 1, z_index)
+			target = locate(our_turf.x, world.maxy - 1, z_index)
 		if(EAST)
-			target = locate(2, source.y, z_index)
+			target = locate(2, our_turf.y, z_index)
 		if(WEST)
-			target = locate(world.maxx - 1, source.y, z_index)
+			target = locate(world.maxx - 1, our_turf.y, z_index)
 		if(NORTHEAST)
 			target = locate(2, 2, z_index)
 		if(NORTHWEST)
@@ -102,7 +102,7 @@
 			holder2.vis_contents = turfs
 			holder2.pixel_x = dir & WEST? world.icon_size * (range - 1) : 0
 
-		turfs = turfS_in_diagonal(dir)
+		turfs = turfs_in_diagonal(dir)
 		if(length(turfs))
 			if(!holder3)
 				holder3 = new(parent)
