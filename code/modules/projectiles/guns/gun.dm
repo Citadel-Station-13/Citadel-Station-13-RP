@@ -85,35 +85,41 @@
 	//* Rendering
 	/// completely opt out of rendering when FALSE; set this to FALSE if you override update_icon().
 	var/render_system_active = TRUE
+
 	/// render system for firemode rendering
 	/// if overlays, overlay is added as "[base_icon_state]-[firemode.state_overlay]"
 	/// if state, firemode state is appended after [render_state_append] but before ammo append
-	var/render_firemode_system = GUN_RENDERING_DISABLED
+	var/render_firemode_world = GUN_RENDERING_DISABLED
 	/// firemode rendering system is used for inhands
 	/// this will result in the effective item state for onmob being modified,
 	/// or additional overlays being added during onmob rendering,
 	/// depending on what system is set to.
-	var/render_firemode_inhand = TRUE
+	var/render_firemode_inhand = GUN_RENDERING_DISABLED
+
 	/// rendering system for ammo
 	/// in overlay mode, "[base_icon_state]-[firemode]-[count]" is added as an overlay
 	/// in state mode, this is appended as "-[count]" after state append and firemode append, if any.
 	/// in segments mode, "[base_icon_state]-[firemode]-ammo" is added for 1 to count.
-	var/render_ammo_system = GUN_RENDERING_DISABLED
-	/// firemode is considered for ammo rendering, if firemode rendering is enabled.
-	var/render_ammo_per_firemode = TRUE
+	var/render_ammo_world = GUN_RENDERING_DISABLED
 	/// ammo rendering system is used for inhands
 	/// this will result in the effective item state for onmob being modified,
 	/// or additional overlays being added during onmob rendering,
 	/// depending on what system is set to.
-	var/render_ammo_inhand = TRUE
+	var/render_ammo_inhand = GUN_RENDERING_DISABLED
+	/// last ammo state, used so we don't rebuilt unless necessary.
+	var/render_ammo_last
+
+	/// firemode is considered for ammo rendering, if firemode rendering is enabled.
+	var/render_ammo_per_firemode = TRUE
 	/// ammo states. this is 1 to x, rounded up
 	var/render_ammo_count = 0
 	/// ammo state includes 0; overlay / state append is "-0", segment append is "-empty"
 	var/render_ammo_empty = FALSE
-	/// in segment mode, ammo empty is per firemode.
+	/// ammo empty is per firemode. if off, we don't include firemode in the computationos.
 	var/render_ammo_empty_per_firemode = FALSE
-	/// last ammo state, used so we don't rebuilt unless necessary.
-	var/render_ammo_last
+	/// ammo overlays is just [number] instead of [1 to number]
+	var/render_ammo_only_one = FALSE
+
 	/// starting x offset for segment mode
 	var/render_ammo_x_start = 0
 	/// starting y offset for segment mode
@@ -122,6 +128,7 @@
 	var/render_ammo_x_offset = 0
 	/// y offset for segment mode
 	var/render_ammo_y_offset = 0
+
 	/// set an optional append to state
 	/// this is used internally to support magazines, cell-less states, etc.
 	/// this is added immediately after the base icon state, overriding everything else
@@ -280,11 +287,11 @@
 	if(render_append_exclusive)
 		return ..()
 	// priority 2: firemode
-	switch(render_firemode_system)
+	switch(render_firemode_world)
 		if(GUN_RENDERING_OVERLAYS)
 		if(GUN_RENDERING_STATES)
 	// priority 3: ammo
-	switch(render_ammo_system)
+	switch(render_ammo_world)
 		if(GUN_RENDERING_OVERLAYS)
 		if(GUN_RENDERING_STATES)
 		if(GUN_RENDERING_SEGMENTS)
@@ -297,10 +304,9 @@
 	. = ..()
 	if(render_append_exclusive)
 		return ..()
-	switch(render_firemode_system)
+	switch(render_firemode_world)
 		if(GUN_RENDERING_OVERLAYS)
-			if(render_firemode_inhand)
-	switch(render_ammo_system)
+	switch(render_ammo_world)
 		if(GUN_RENDERING_OVERLAYS)
 			if(render_ammo_inhand)
 	#warn impl

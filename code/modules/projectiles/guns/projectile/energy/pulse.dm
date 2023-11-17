@@ -2,8 +2,9 @@
 /obj/item/gun/projectile/energy/pulse_rifle
 	name = "\improper pulse rifle"
 	desc = "The absolute pinnacle of NanoTrasen's beam weaponry, the NT-PR2 pulse rifle uses advanced pulse-based beam generation technology to emit powerful laser blasts. Because of its complexity and cost, it is rarely seen in use except by specialists."
-	icon_state = "pulse"
-	item_state = null	//so the human update icon uses the icon_state instead.
+	icon = 'icons/modules/projectiles/guns/energy/pulse.dmi'
+	icon_state = "rifle"
+	base_icon_state = "rifle"
 	slot_flags = SLOT_BELT|SLOT_BACK
 	damage_force = 10
 	projectile_type = /obj/projectile/beam
@@ -37,7 +38,9 @@
 	to_chat(user, "<span class='warning'>[src.name] has three settings, and they are all DESTROY.</span>")
 
 #warn pulse/carbine
-/obj/item/gun/projectile/energy/pulse_carbine
+/obj/item/gun/projectile/energy/pulse_rifle/carbine
+	name = "pulse carbine"
+	desc = "A compact carbine of Nanotrasen design."
 	#warn impl
 
 #warn pulse/pistol
