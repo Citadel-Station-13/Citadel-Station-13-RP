@@ -4,12 +4,16 @@
 	desc = "The absolute pinnacle of NanoTrasen's beam weaponry, the NT-PR2 pulse rifle uses advanced pulse-based beam generation technology to emit powerful laser blasts. Because of its complexity and cost, it is rarely seen in use except by specialists."
 	icon = 'icons/modules/projectiles/guns/energy/pulse.dmi'
 	icon_state = "rifle"
+	worn_state = "rifle"
 	base_icon_state = "rifle"
-	slot_flags = SLOT_BELT|SLOT_BACK
-	damage_force = 10
-	projectile_type = /obj/projectile/beam
-	charge_cost = 120
-	sel_mode = 2
+	// override base worn state so that all subtypes of /pulse use it, as we
+	// don't have carbine/pistol sprites yet
+	base_mob_state = "rifle"
+	use_mob_states = TRUE
+	slot_flags = SLOT_BACK
+	render_ammo_count = 4
+	render_ammo_single_overlay = TRUE
+	render_ammo_per_firemode = TRUE
 	accuracy = 90
 	one_handed_penalty = 10
 	heavy = TRUE
@@ -41,19 +45,19 @@
 /obj/item/gun/projectile/energy/pulse_rifle/carbine
 	name = "pulse carbine"
 	desc = "A compact carbine of Nanotrasen design."
+	icon_state = "carbine"
+	base_icon_state = "carbine"
+	slot_flags = SLOT_BELT | SLOT_BACK
 	#warn impl
 
 #warn pulse/pistol
 /obj/item/gun/projectile/energy/pulse_pistol
 	name = "\improper pulse pistol"
 	desc = "Compact NT-PS-4 pulse pistols are only issued to trained Central Command Officers for personal defense. They are sometimes selected by ERT or DDO operatives as a fallback sidearm."
-	icon_state = "pulse_pistol"
-	item_state = null
-	slot_flags = SLOT_BELT|SLOT_HOLSTER
-	damage_force = 10
-	projectile_type = /obj/projectile/beam
+	icon_state = "pistol"
+	base_icon_state = "pistol"
+	slot_flags = SLOT_BELT | SLOT_HOLSTER
 	charge_cost = 240
-	sel_mode = 2
 	accuracy = 90
 	one_handed_penalty = 10
 

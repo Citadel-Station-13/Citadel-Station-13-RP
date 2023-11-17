@@ -85,6 +85,11 @@
 	//* Rendering
 	/// completely opt out of rendering when FALSE; set this to FALSE if you override update_icon().
 	var/render_system_active = TRUE
+	/// base onmob state override so we don't use base_icon_state if overridden
+	var/base_mob_state
+	/// we render to worn_state as well as inhand_state; this is an override because
+	/// most guns do not have different states for every slot, as opposed to inhands.
+	var/use_mob_states = FALSE
 
 	/// render system for firemode rendering
 	/// if overlays, overlay is added as "[base_icon_state]-[firemode.state_overlay]"
@@ -106,19 +111,23 @@
 	/// or additional overlays being added during onmob rendering,
 	/// depending on what system is set to.
 	var/render_ammo_inhand = GUN_RENDERING_DISABLED
+
+	/// ammo states. this is 1 to x, rounded up
+	var/render_ammo_count = 0
 	/// last ammo state, used so we don't rebuilt unless necessary.
 	var/render_ammo_last
 
 	/// firemode is considered for ammo rendering, if firemode rendering is enabled.
 	var/render_ammo_per_firemode = TRUE
-	/// ammo states. this is 1 to x, rounded up
-	var/render_ammo_count = 0
+
 	/// ammo state includes 0; overlay / state append is "-0", segment append is "-empty"
 	var/render_ammo_empty = FALSE
-	/// ammo empty is per firemode. if off, we don't include firemode in the computationos.
+	/// ammo empty is per firemode. if off, we don't include firemode in the computations.
+	/// this is separate from [render_ammo_per_firemode]
 	var/render_ammo_empty_per_firemode = FALSE
+
 	/// ammo overlays is just [number] instead of [1 to number]
-	var/render_ammo_only_one = FALSE
+	var/render_ammo_single_overlay = TRUE
 
 	/// starting x offset for segment mode
 	var/render_ammo_x_start = 0
@@ -277,7 +286,7 @@
 	cut_overlays()
 	// reset states
 	icon_state = base_icon_state
-	worn_state = base_icon_state
+	worn_state = base_worn_state || base_icon_state
 	// priority 1: append
 	if(!isnull(render_append_state))
 		icon_state += render_append_state
