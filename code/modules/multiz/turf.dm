@@ -146,7 +146,7 @@
 	if(dir & UP)
 		return get_step(above(), dir & ~(UP))
 	if(dir & DOWN)
-		return get_step(above(), dir & ~(DOWN))
+		return get_step(below(), dir & ~(DOWN))
 	CRASH("how did we get here?")
 
 /**
