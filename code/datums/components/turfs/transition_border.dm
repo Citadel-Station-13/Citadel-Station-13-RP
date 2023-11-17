@@ -3,6 +3,12 @@
 
 /**
  * Component used for turf transitions.
+ *
+ * How it works is, the outermost turf on z-levels is actually
+ * the second from the edge turf on the adjacent z-level.
+ *
+ * This way, we have *near* perfect native-like simulation with moves without
+ * having to do anything too special.
  */
 /datum/component/transition_border
 	var/atom/movable/mirage_border/holder1
@@ -30,7 +36,7 @@
 /datum/component/transition_border/RegisterWithParent()
 	. = ..()
 	RegisterSignal(parent, COMSIG_ATOM_ENTERED, .proc/transit)
-	Build()
+	rebuild()
 
 /datum/component/transition_border/UnregisterFromParent()
 	UnregisterSignal(parent, COMSIG_ATOM_ENTERED)
@@ -40,6 +46,7 @@
 	return ..()
 
 /datum/component/transition_border/proc/transit(datum/source, atom/movable/AM)
+	var/turf/source = parent
 	var/z_index = SSmapping.level_index_in_dir(dir)
 	if(isnull(z_index))
 		STACK_TRACE("no z index?! deleting self.")
@@ -48,13 +55,13 @@
 	var/turf/target
 	switch(dir)
 		if(NORTH)
-			target = locate(x, 2, z_index)
+			target = locate(source.x, 2, z_index)
 		if(SOUTH)
-			target = locate(x, world.maxy - 1, z_index)
+			target = locate(source.x, world.maxy - 1, z_index)
 		if(EAST)
-			target = locate(2, y, z_index)
+			target = locate(2, source.y, z_index)
 		if(WEST)
-			target = locate(world.maxx - 1, y, z_index)
+			target = locate(world.maxx - 1, source.y, z_index)
 		if(NORTHEAST)
 			target = locate(2, 2, z_index)
 		if(NORTHWEST)
@@ -65,17 +72,11 @@
 			target = locate(world.maxx - 1, world.maxy - 1, z_index)
 	AM.locationTransitForceMove(target, recurse_levels = 2)
 
-#warn below
-
-/datum/component/transition_border/proc/Build()
+/datum/component/transition_border/proc/rebuild()
 	// reset first
 	holder1?.reset()
 	holder2?.reset()
 	holder3?.reset()
-
-	#warn can avoid needing 2-2 spacing and have 1-1 spacing
-	#warn where first tile from edge teleports to second tile from edge
-	#warn using VIS_HIDE.
 
 	// "why the hell do you need 3 holders"
 	// because otherwise i can't offset them right, because we want the map to look like it's continuous, not overlapping
@@ -87,21 +88,21 @@
 		// 3 is diag
 		var/list/turfs
 
-		turfs = GetTurfsInCardinal(NSCOMPONENT(dir))
+		turfs = turfs_in_cardinal(NSCOMPONENT(dir))
 		if(length(turfs))
 			if(!holder1)
 				holder1 = new(parent)
 			holder1.vis_contents = turfs
 			holder1.pixel_y = dir & SOUTH? -world.icon_size * (range - 1) : 0
 
-		turfs = GetTurfsInCardinal(EWCOMPONENT(dir))
+		turfs = turfs_in_cardinal(EWCOMPONENT(dir))
 		if(length(turfs))
 			if(!holder2)
 				holder2 = new(parent)
 			holder2.vis_contents = turfs
 			holder2.pixel_x = dir & WEST? world.icon_size * (range - 1) : 0
 
-		turfs = GetTurfsInDiagonal(dir)
+		turfs = turfS_in_diagonal(dir)
 		if(length(turfs))
 			if(!holder3)
 				holder3 = new(parent)
@@ -109,7 +110,7 @@
 			holder3.pixel_y = dir & SOUTH? world.icon_size * (range - 1) : 0
 			holder3.pixel_x = dir & WEST? world.icon_size * (range - 1) : 0
 	else
-		var/list/turfs = GetTurfsInCardinal(dir)
+		var/list/turfs = turfs_in_cardinal(dir)
 		if(!length(turfs))
 			return
 		if(!holder1)
@@ -118,29 +119,40 @@
 		holder1.pixel_x = dir == WEST? world.icon_size * (range - 1) : 0
 		holder1.pixel_y = dir == SOUTH? world.icon_size * (range - 1) : 0
 
-/datum/component/transition_border/proc/GetTurfsInDiagonal(dir)
-	#warn support less-than-world-size levels
+/datum/component/transition_border/proc/turfs_in_diagonal(dir)
 	ASSERT(dir & (dir - 1))
-	var/turf/T = parent
-	var/datum/space_level/L = SSmapping.ordered_levels[T.z]
-	var/datum/space_level/target_level = isnull(force_target) && L.resolve_level_in_dir(dir)
-	if(!target_level && !force_target)
+	var/turf/our_turf = parent
+	var/datum/map_level/our_level = SSmapping.ordered_levels[our_turf.z]
+	if(isnull(our_level))
 		return list()
-	var/turf/target = locate(
-		dir & EAST? 2 : 254,
-		dir & NORTH? 2 : 254,
-		target_level.z_value
-	)
-	return block(
-		target,
-		locate(
-			dir & EAST? range + 1 : world.maxx - range,
-			dir & NORTH? range + 1 : world.maxy - range,
-			force_target || target_level.z_value
-		)
-	)
+	var/datum/map_level/target_level = our_level.level_in_dir(dir)
+	if(isnull(target_level))
+		return list()
+	switch(dir)
+		if(NORTHWEST)
+			return block(
+				locate(world.maxx - 1, 2, target_level.z_index),
+				locate(world.maxx - 1 - range + 1, 2 + range - 1, target_level.z_index),
+			)
+		if(NORTHEAST)
+			return block(
+				locate(2, 2, target_level.z_index),
+				locate(2, 2 + range - 1, target_level.z_index),
+			)
+		if(SOUTHWEST)
+			return block(
+				locate(world.maxx - 1, world.maxy - 1, target_level.z_index),
+				locate(world.maxx - 1 - range + 1, world.maxy - 1 - range + 1, target_level.z_index),
+			)
+		if(SOUTHEAST)
+			return block(
+				locate(2, world.maxy - 1, target_level.z_index),
+				locate(2 + range - 1, world.maxy - 1 - range + 1, target_level.z_index),
+			)
+		else
+			CRASH("what?")
 
-/datum/component/transition_border/proc/GetTurfsInCardinal(dir)
+/datum/component/transition_border/proc/turfs_in_cardinal(dir)
 	var/turf/our_turf = parent
 	var/datum/map_level/our_level = SSmapping.ordered_levels[our_turf.z]
 	if(isnull(our_level))
@@ -151,43 +163,26 @@
 	switch(dir)
 		if(NORTH)
 			return block(
-				locate(),
-				locate(),
+				locate(our_turf.x, 2, target_level.z_index),
+				locate(our_turf.x, 2 + range - 1, target_level.z_index),
 			)
 		if(SOUTH)
 			return block(
-				locate(),
-				locate(),
+				locate(our_turf.x, world.maxy - 1, target_level.z_index),
+				locate(our_turf.x, world.maxy - 1 - range + 1, target_level.z_index),
 			)
 		if(EAST)
 			return block(
-				locate(),
-				locate(),
+				locate(2, our_turf.y, target_level.z_index),
+				locate(2 + range - 1, our_turf.y, target_level.z_index),
 			)
 		if(WEST)
 			return block(
-				locate(),
-				locate(),
+				locate(world.maxx - 1, our_turf.y, target_level.z_index),
+				locate(world.maxx - 1 - range + 1, our_turf.y, target_level.z_index),
 			)
-	#warn support less-than-world-size levels
-	// ASSERT(dir)
-	var/turf/T = parent
-	var/datum/space_level/L = SSmapping.ordered_levels[T.z]
-	var/datum/space_level/target_level = isnull(force_target) && L.resolve_level_in_dir(dir)
-	if(!target_level && !force_target)
-		return list()
-
-	var/turf/target = locate((dir == EAST)? 2 : ((dir == WEST)? world.maxx - 1 : T.x), (dir == NORTH)? 2 : ((dir == SOUTH)? world.maxy - 1 : T.y), force_target || target_level.z_value)
-	return block(
-		target,
-		locate(
-			(dir == EAST)? range + 1 : ((dir == WEST)? world.maxx - range : T.x),
-			(dir == NORTH)? range + 1 : ((dir == SOUTH)? world.maxy - range : T.y),
-			force_target || target_level.z_value
-		)
-	)
-
-#warn above
+		else
+			CRASH("what?")
 
 /**
  * makes us into a level border, which changeturfs us if we aren't already a /turf/level_border

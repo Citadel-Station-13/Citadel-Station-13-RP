@@ -27,6 +27,8 @@
 
 /**
  * returns level datum in dir of level
+ *
+ * if diagonal, only returns a level if both steps are consistent with each other.
  */
 /datum/controller/subsystem/mapping/proc/level_datum_in_dir(z, dir)
 	if(dir & (dir - 1))
@@ -50,6 +52,8 @@
 
 /**
  * returns level index in dir of level
+ *
+ * if diagonal, only returns a level if both steps are consistent with each other.
  */
 /datum/controller/subsystem/mapping/proc/level_index_in_dir(z, dir)
 	if(dir & (dir - 1))
