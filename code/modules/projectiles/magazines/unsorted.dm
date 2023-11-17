@@ -1,27 +1,3 @@
-/************************************************************************/
-/*
-#    An explaination of the naming format for guns and ammo:
-#
-#    a = Ammo, as in individual rounds of ammunition.
-#    b = Box, intended to have ammo taken out one at a time by hand. Really obsolete. Don't use this.
-#    c = Clips, intended to reload magazines or guns quickly.
-#    m = Magazine, intended to hold rounds of ammo.
-#    s = Speedloaders, intended to reload guns quickly.
-#
-#    Use this format, followed by the caliber. For example, a shotgun's caliber
-#    variable is "12g" as a result. Ergo, a shotgun round's path would have "a12g",
-#    or a magazine with shotgun shells would be "m12g" instead. To avoid confusion
-#    for developers and in-game admins spawning these items, stick to this format.
-#    Likewise, when creating new rounds, the caliber variable should match whatever
-#    the name says.
-#
-#    This comment is copied in rounds.dm as well.
-#
-#    Also, if a magazine is only meant for a specific gun, include the name
-#    of the specific gun in the path. Example: m45uzi is only for the Uzi.
-*/
-/************************************************************************/
-
 //* .38
 /obj/item/ammo_magazine/s38
 	name = "speedloader (.38)"

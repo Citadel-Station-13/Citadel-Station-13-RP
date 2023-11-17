@@ -81,7 +81,6 @@
 	desc = "An advanced shotgun round that creates a small EMP when it strikes a target."
 	icon_state = "emp"
 	projectile_type = /obj/projectile/scatter/ion
-//	projectile_type = /obj/projectile/bullet/shotgun/ion
 	materials_base = list(MAT_STEEL = 360, MAT_URANIUM = 240)
 
 /obj/item/ammo_casing/a12g/techshell/pulseslug

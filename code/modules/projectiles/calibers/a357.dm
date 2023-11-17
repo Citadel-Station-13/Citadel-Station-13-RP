@@ -35,7 +35,6 @@
 
 /obj/item/ammo_casing/a357/flash
 	desc = "A .357 flash bullet casing."
-	caliber = ".357"
 	icon_state = "large-white"
 	base_icon_state = "large-white"
 	projectile_type = /obj/projectile/energy/flash/strong
@@ -48,7 +47,7 @@
 	icon = 'icons/modules/projectiles/magazines/old_speedloader_6.dmi'
 	icon_state = "normal-6"
 	base_icon_state = "normal"
-	regex_this_caliber = /datum/caliber/a357
+	ammo_caliber = /datum/caliber/a357
 	ammo_preload = /obj/item/ammo_casing/a357
 	ammo_type = /obj/item/ammo_casing/a357
 	ammo_max = 6
