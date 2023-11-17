@@ -1,6 +1,6 @@
 GLOBAL_LIST_INIT(generic_fishing_rare_list, list(
-		/obj/item/fish/solarfin = 0, // was 1, sif meat
-		///obj/item/fish/icebass = 0, // was 5, sif meat
+		/obj/item/fish/solarfin = 1,
+		/obj/item/fish/bass/glitter = 5,
 		/obj/item/fish/koi = 3,
 		/obj/item/reagent_containers/food/snacks/lobster = 2,
 		/obj/item/fish/crab/evil = 1
@@ -9,7 +9,7 @@ GLOBAL_LIST_INIT(generic_fishing_rare_list, list(
 GLOBAL_LIST_INIT(generic_fishing_uncommon_list, list(
 		/obj/item/fish/salmon = 6,
 		/obj/item/fish/pike = 10,
-		/obj/item/fish/javelin = 0 //was 3, sif meat
+		/obj/item/fish/javelin = 3
 		))
 
 GLOBAL_LIST_INIT(generic_fishing_common_list, list(
@@ -17,8 +17,8 @@ GLOBAL_LIST_INIT(generic_fishing_common_list, list(
 		/obj/item/fish/trout = 8,
 		/obj/item/fish/perch = 6,
 		/obj/item/reagent_containers/food/snacks/shrimp = 5,
-		/obj/item/fish/murkin = 0, // was 8, sif meat
-		/obj/item/fish/rockfish = 0, //was 5, contains sif meat which cannot be used to cook
+		/obj/item/fish/murkin = 8,
+		/obj/item/fish/rockfish = 5,
 		/obj/item/fish/crab = 1
 		))
 

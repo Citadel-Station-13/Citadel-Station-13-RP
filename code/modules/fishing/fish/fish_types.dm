@@ -76,6 +76,11 @@
 		/obj/item/reagent_containers/food/snacks/bait/worm,
 	)
 
+/obj/item/fish/bass/glitter
+	name = "glitter bass"
+	desc = "An uncommon genetic modification of the common bass. Its darkly colored scales belie the iridescent way its body glimmers when exposed to sunlight."
+	icon_state = "sifbass"
+
 /obj/item/fish/trout
 	name = "trout"
 	desc = "A common ray-finned fish originally native to Earth. Their oily meat made them a staple of predatory wildlife and humans alike."
@@ -206,12 +211,12 @@
 
 	fishing_traits = list(/datum/fishing_trait/nocturnal)
 
-
 /obj/item/fish/murkin
 	name = "murkfish"
 	desc = "This alien fish bears a passing resemblance to the Terran perch. Known for its poor taste and enlarged dorsal fin, the murkfish has little value to farmers or sport fishers."
 	//description_fluff = ""
 	icon_state = "murkin"
+	fillet_type = /obj/item/reagent_containers/food/snacks/carpmeat/fish/murkfish
 	required_fluid_type = AQUARIUM_FLUID_SALTWATER
 	stable_population = 3
 	average_size = 30
