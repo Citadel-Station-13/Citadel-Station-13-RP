@@ -2531,7 +2531,7 @@
 	name = "Vodka"
 	id = "vodka"
 	description = "Number one drink AND fueling choice for Russians worldwide."
-	taste_description = "grain alcohol"
+	taste_description = "potato alcohol"
 	color = "#0064C8" // rgb: 0, 100, 200
 	strength = 15
 
