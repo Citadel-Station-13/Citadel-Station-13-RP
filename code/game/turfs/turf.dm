@@ -605,6 +605,14 @@
 /turf/proc/update_multiz()
 	return
 
+//? Sector API
+
+/**
+ * called by planet / weather to update temperature during weather changes
+ */
+/turf/proc/sector_set_temperature(temperature)
+	return
+
 //? Radiation
 
 /turf/proc/update_rad_insulation()

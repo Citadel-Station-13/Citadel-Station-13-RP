@@ -248,3 +248,23 @@
 	initial_gas_mix = ATMOSPHERE_USE_OUTDOORS
 	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 	lighting_disable_fullbright = TRUE
+
+// todo: refactor
+/turf/level_border/Initialize(mapload)
+	. = ..()
+	SSplanets.addWall(src)
+
+/turf/level_border/Destroy()
+	SSplanets.removeWall(src)
+	return ..()
+
+//? Sector API
+
+/turf/level_border/sector_set_temperature(temperature)
+	if(temperature == src.temperature)
+		return
+	src.temperature = temperature
+	// Force ZAS to reconsider our connections because our temperature has changed
+	if(connections)
+		connections.erase_all()
+	queue_zone_update()
