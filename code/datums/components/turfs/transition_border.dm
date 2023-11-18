@@ -208,9 +208,10 @@
 	if(istype(T, /turf/level_border))
 		T = ScrapeAway(1)
 	var/datum/component/transition_border/border = T.GetComponent(/datum/component/transition_border)
-	if(border)
+	if(!isnull(border))
 		qdel(border)
-	return !!border
+		return TRUE
+	return FALSE
 
 /atom/movable/mirage_border
 	name = "Mirage holder"

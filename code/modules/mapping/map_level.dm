@@ -24,6 +24,8 @@
 	var/linkage = Z_LINKAGE_NORMAL
 	/// transition enum
 	var/transition = Z_TRANSITION_DEFAULT
+	/// set to FALSE if transition borders are defined via /turf/level_border, to disable trampling the turf into /turf/level_border
+	var/transition_trampling = TRUE
 	/// base turf typepath for this level
 	var/base_turf = /turf/space
 	/// base area typepath for this level
@@ -204,6 +206,12 @@
 		if(isnull(l2))
 			return
 		l2 = level_in_dir(d1)
+		// if one side is null, we listen to the other
+		if(isnull(l1))
+			return l2
+		if(isnull(l2))
+			return l1
+		// if both sides are not null, we require agreement between the two
 		return (l1 == l2)? l1 : null
 	switch(dir)
 		#define RESOLVE(X) istype(X, /datum/map_level)? X : SSmapping.keyed_levels[X]
@@ -339,76 +347,79 @@
 		// do nothing
 		if(Z_TRANSITION_DISABLED)
 		// default not implemented
-		if(Z_TRANSITION_FORCED, Z_TRANSITION_DEFAULT)
-			// bottom
-			for(var/turf/T as anything in block(locate(2, 1, z_index), locate(world.maxx - 1, 1, z_index)))
-				T._make_transition_border(SOUTH, TRUE)
-				CHECK_TICK
-			// top
-			for(var/turf/T as anything in block(locate(2, world.maxy, z_index), locate(world.maxx - 1, world.maxy, z_index)))
-				T._make_transition_border(NORTH, TRUE)
-				CHECK_TICK
-			// left
-			for(var/turf/T as anything in block(locate(1, 2, z_index), locate(1, world.maxy - 1, z_index)))
-				T._make_transition_border(WEST, TRUE)
-				CHECK_TICK
-			// right
-			for(var/turf/T as anything in block(locate(world.maxx, 2, z_index), locate(world.maxx, world.maxy - 1, z_index)))
-				T._make_transition_border(EAST, TRUE)
-				CHECK_TICK
-
-			var/turf/T
-			// bottomleft
-			T = locate(1, 1, z_index)
-			T._make_transition_border(SOUTHWEST, TRUE)
-			CHECK_TICK
-			// bottomright
-			T = locate(world.maxx, 1, z_index)
-			T._make_transition_border(SOUTHEAST, TRUE)
-			CHECK_TICK
-			// topleft
-			T = locate(1, world.maxy, z_index)
-			T._make_transition_border(NORTHWEST, TRUE)
-			CHECK_TICK
-			// topright
-			T = locate(world.maxx, world.maxy, z_index)
-			T._make_transition_border(NORTHEAST, TRUE)
-			CHECK_TICK
-		if(Z_TRANSITION_INVISIBLE)
-			// bottom
-			for(var/turf/T as anything in block(locate(2, 1, z_index), locate(world.maxx - 1, 1, z_index)))
-				T._make_transition_border(SOUTH, FALSE)
-				CHECK_TICK
-			// top
-			for(var/turf/T as anything in block(locate(2, world.maxy, z_index), locate(world.maxx - 1, world.maxy, z_index)))
-				T._make_transition_border(NORTH, FALSE)
-				CHECK_TICK
-			// left
-			for(var/turf/T as anything in block(locate(1, 2, z_index), locate(1, world.maxy - 1, z_index)))
-				T._make_transition_border(WEST, FALSE)
-				CHECK_TICK
-			// right
-			for(var/turf/T as anything in block(locate(world.maxx, 2, z_index), locate(world.maxx, world.maxy - 1, z_index)))
-				T._make_transition_border(EAST, FALSE)
-				CHECK_TICK
-
-			var/turf/T
-			// bottomleft
-			T = locate(1, 1, z_index)
-			T._make_transition_border(SOUTHWEST, FALSE)
-			CHECK_TICK
-			// bottomright
-			T = locate(world.maxx, 1, z_index)
-			T._make_transition_border(SOUTHEAST, FALSE)
-			CHECK_TICK
-			// topleft
-			T = locate(1, world.maxy, z_index)
-			T._make_transition_border(NORTHWEST, FALSE)
-			CHECK_TICK
-			// topright
-			T = locate(world.maxx, world.maxy, z_index)
-			T._make_transition_border(NORTHEAST, FALSE)
-			CHECK_TICK
+		if(Z_TRANSITION_FORCED, Z_TRANSITION_DEFAULT, Z_TRANSITION_INVISIBLE)
+			var/visible = transition != Z_TRANSITION_INVISIBLE
+			// cardinals
+			if(!isnull(link_south))
+				for(var/turf/T as anything in transition_turfs(SOUTH))
+					T._make_transition_border(SOUTH, visible)
+					CHECK_TICK
+			else
+				for(var/turf/T as anything in transition_turfs(SOUTH))
+					T._dispose_transition_border()
+					CHECK_TICK
+			if(!isnull(link_north))
+				for(var/turf/T as anything in transition_turfs(NORTH))
+					T._make_transition_border(NORTH, visible)
+					CHECK_TICK
+			else
+				for(var/turf/T as anything in transition_turfs(NORTH))
+					T._dispose_transition_border()
+					CHECK_TICK
+			if(!isnull(link_east))
+				for(var/turf/T as anything in transition_turfs(EAST))
+					T._make_transition_border(EAST, visible)
+					CHECK_TICK
+			else
+				for(var/turf/T as anything in transition_turfs(EAST))
+					T._dispose_transition_border()
+					CHECK_TICK
+			if(!isnull(link_west))
+				for(var/turf/T as anything in transition_turfs(WEST))
+					T._make_transition_border(WEST, visible)
+					CHECK_TICK
+			else
+				for(var/turf/T as anything in transition_turfs(WEST))
+					T._dispose_transition_border()
+					CHECK_TICK
+			// diagonals
+			var/datum/map_level/resolved
+			resolved = level_in_dir(NORTHWEST)
+			if(!isnull(resolved))
+				for(var/turf/T as anything in transition_turfs(NORTHWEST))
+					T._make_transition_border(NORTHWEST, visible)
+					CHECK_TICK
+			else
+				for(var/turf/T as anything in transition_turfs(NORTHWEST))
+					T._dispose_transition_border()
+					CHECK_TICK
+			resolved = level_in_dir(NORTHEAST)
+			if(!isnull(resolved))
+				for(var/turf/T as anything in transition_turfs(NORTHEAST))
+					T._make_transition_border(NORTHEAST, visible)
+					CHECK_TICK
+			else
+				for(var/turf/T as anything in transition_turfs(NORTHEAST))
+					T._dispose_transition_border()
+					CHECK_TICK
+			resolved = level_in_dir(SOUTHWEST)
+			if(!isnull(resolved))
+				for(var/turf/T as anything in transition_turfs(SOUTHWEST))
+					T._make_transition_border(SOUTHWEST, visible)
+					CHECK_TICK
+			else
+				for(var/turf/T as anything in transition_turfs(SOUTHWEST))
+					T._dispose_transition_border()
+					CHECK_TICK
+			resolved = level_in_dir(SOUTHEAST)
+			if(!isnull(resolved))
+				for(var/turf/T as anything in transition_turfs(SOUTHEAST))
+					T._make_transition_border(SOUTHEAST, visible)
+					CHECK_TICK
+			else
+				for(var/turf/T as anything in transition_turfs(SOUTHEAST))
+					T._dispose_transition_border()
+					CHECK_TICK
 	transitions_rebuild_count++
 
 /**
@@ -424,14 +435,43 @@
 
 /**
  * get transition turfs
+ *
+ * @params
+ * * dir - direction; if null, we grab all, including diagonals
  */
-/datum/map_level/proc/transition_turfs()
-	return (
-		block(locate(1, 1, z_index), locate(world.maxx, 1, z_index)) + \
-		block(locate(1, world.maxy, z_index), locate(world.maxx, world.maxy, z_index)) + \
-		block(locate(1, 2, z_index), locate(1, world.maxy - 2, z_index)) + \
-		block(locate(world.maxx, 2, z_index), locate(world.maxx, world.maxy - 2, z_index))
-	)
+/datum/map_level/proc/transition_turfs(dir)
+	switch(dir)
+		if(null)
+			. = (
+				block(locate(1, 1, z_index), locate(world.maxx, 1, z_index)) + \
+				block(locate(1, world.maxy, z_index), locate(world.maxx, world.maxy, z_index)) + \
+				block(locate(1, 2, z_index), locate(1, world.maxy - 2, z_index)) + \
+				block(locate(world.maxx, 2, z_index), locate(world.maxx, world.maxy - 2, z_index))
+			)
+		if(NORTH)
+			. = block(locate(2, world.maxy, z_index), locate(world.maxx - 1, world.maxy, z_index))
+		if(SOUTH)
+			. = block(locate(2, 1, z_index), locate(world.maxx - 1, 1, z_index))
+		if(EAST)
+			. = block(locate(world.maxx, 2, z_index), locate(world.maxx, world.maxy - 1, z_index))
+		if(WEST)
+			. = block(locate(1, 2, z_index), locate(1, world.maxy - 1, z_index))
+		if(NORTHEAST)
+			. = list(locate(world.maxx, world.maxy, z_index))
+		if(NORTHWEST)
+			. = list(locate(1, world.maxy, z_index))
+		if(SOUTHEAST)
+			. = list(locate(world.maxx, 1, z_index))
+		if(SOUTHWEST)
+			. = list(locate(1, 1, z_index))
+		else
+			CRASH("what?")
+	if(transition_trampling)
+		return
+	var/list/transformed = list()
+	for(var/turf/level_border/border in .)
+		transformed += border
+	return border
 
 /**
  * get all turfs
