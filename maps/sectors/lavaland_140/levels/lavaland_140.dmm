@@ -41,7 +41,7 @@
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "bu" = (
-/turf/simulated/floor/tiled/dark/lavaland,
+/turf/level_border,
 /area/lavaland/central/transit)
 "bG" = (
 /obj/machinery/atmospherics/portables_connector,
@@ -123,9 +123,6 @@
 	},
 /turf/simulated/floor/tiled/old_tile,
 /area/lavaland/central/base/common)
-"eb" = (
-/turf/simulated/floor/tiled/dark/lavaland,
-/area/lavaland/central/transit)
 "ew" = (
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
@@ -22408,10 +22405,10 @@ Ru
 Ru
 MV
 bu
-eb
-eb
-eb
-eb
+bu
+bu
+bu
+bu
 MV
 Ru
 Ru

@@ -10,7 +10,7 @@
 	alpha = 0
 	blocks_air = 0
 	// Set these to get your desired planetary atmosphere.
-	initial_gas_mix = GAS_STRING_STP
+	initial_gas_mix = ATMOSPHERE_USE_OUTDOORS
 
 /turf/unsimulated/wall/planetary/Initialize(mapload)
 	. = ..()

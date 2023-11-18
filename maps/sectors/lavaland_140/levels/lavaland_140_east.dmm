@@ -149,9 +149,6 @@
 	},
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/east/explored)
-"bL" = (
-/turf/simulated/floor/tiled/dark/lavaland,
-/area/lavaland/east/transit)
 "ch" = (
 /obj/structure/bed/double,
 /obj/item/bedsheet/orangedouble,
@@ -270,9 +267,6 @@
 /obj/machinery/vending/cola,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/ashlander_village)
-"fD" = (
-/turf/simulated/mineral/triumph/lavaland,
-/area/lavaland/east/explored)
 "fL" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 8
@@ -2258,7 +2252,7 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/ashlander_village)
 "TX" = (
-/turf/simulated/floor/tiled/dark/lavaland,
+/turf/level_border,
 /area/lavaland/east/transit)
 "TY" = (
 /obj/effect/floor_decal/industrial/warning/dust/corner{
@@ -2725,10 +2719,10 @@ wR
 wR
 ad
 TX
-Kv
-Kv
-Kv
-Kv
+TX
+TX
+TX
+TX
 ad
 wR
 wR
@@ -2867,9 +2861,9 @@ kx
 wR
 ad
 az
-bL
-bL
-bL
+Kv
+Kv
+Kv
 cU
 ad
 wR
@@ -2910,7 +2904,7 @@ kx
 kx
 kx
 kx
-fD
+kx
 wR
 "}
 (3,1,1) = {"
@@ -3009,10 +3003,10 @@ kx
 wR
 ad
 aL
-bL
-bL
-bL
-bL
+Kv
+Kv
+Kv
+Kv
 ad
 wR
 kx
