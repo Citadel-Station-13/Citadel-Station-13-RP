@@ -30,23 +30,8 @@
 	dir = 6
 	},
 /area/tether_away/beach/desert/explored)
-"kK" = (
-/turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/explored)
 "lf" = (
 /turf/simulated/mineral/ignore_mapgen,
-/area/tether_away/beach/desert/explored)
-"lX" = (
-/turf/simulated/mineral/floor/cave{
-	name = "dirt";
-	outdoors = 1
-	},
-/area/tether_away/beach/desert/explored)
-"mV" = (
-/turf/simulated/mineral/floor/cave{
-	name = "dirt";
-	outdoors = 1
-	},
 /area/tether_away/beach/desert/explored)
 "no" = (
 /turf/simulated/floor/water/shoreline{
@@ -294,14 +279,11 @@
 	},
 /turf/simulated/floor/plating/external,
 /area/tether_away/beach/desert/explored)
-"ST" = (
-/turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/explored)
 "UP" = (
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/tether_away/beach/desert/explored)
 "WT" = (
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/level_border,
 /area/tether_away/beach/desert/explored)
 "XZ" = (
 /turf/simulated/mineral/ignore_mapgen/classh,
@@ -503,182 +485,182 @@ gz
 "}
 (2,1,1) = {"
 wg
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
 XZ
 XZ
 XZ
@@ -697,7 +679,7 @@ gz
 "}
 (3,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -891,7 +873,7 @@ gz
 "}
 (4,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -1085,7 +1067,7 @@ gz
 "}
 (5,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -1279,7 +1261,7 @@ gz
 "}
 (6,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -1473,7 +1455,7 @@ gz
 "}
 (7,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -1667,7 +1649,7 @@ gz
 "}
 (8,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -1861,7 +1843,7 @@ gz
 "}
 (9,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -2055,7 +2037,7 @@ gz
 "}
 (10,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -2249,7 +2231,7 @@ gz
 "}
 (11,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -2443,7 +2425,7 @@ gz
 "}
 (12,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -2637,7 +2619,7 @@ gz
 "}
 (13,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -2831,7 +2813,7 @@ gz
 "}
 (14,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -3025,7 +3007,7 @@ gz
 "}
 (15,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -3219,7 +3201,7 @@ gz
 "}
 (16,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -3413,7 +3395,7 @@ gz
 "}
 (17,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -3607,7 +3589,7 @@ gz
 "}
 (18,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -3801,7 +3783,7 @@ gz
 "}
 (19,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -3995,7 +3977,7 @@ gz
 "}
 (20,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -4189,7 +4171,7 @@ gz
 "}
 (21,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -4383,7 +4365,7 @@ gz
 "}
 (22,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -4577,7 +4559,7 @@ gz
 "}
 (23,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -4771,7 +4753,7 @@ gz
 "}
 (24,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -4965,7 +4947,7 @@ gz
 "}
 (25,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -5159,7 +5141,7 @@ gz
 "}
 (26,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -5353,7 +5335,7 @@ gz
 "}
 (27,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -5547,7 +5529,7 @@ gz
 "}
 (28,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -5741,7 +5723,7 @@ gz
 "}
 (29,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -5935,7 +5917,7 @@ gz
 "}
 (30,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -6129,7 +6111,7 @@ gz
 "}
 (31,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -6323,7 +6305,7 @@ gz
 "}
 (32,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -6517,7 +6499,7 @@ gz
 "}
 (33,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -6711,7 +6693,7 @@ gz
 "}
 (34,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -6905,7 +6887,7 @@ gz
 "}
 (35,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -7099,7 +7081,7 @@ gz
 "}
 (36,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -7293,7 +7275,7 @@ gz
 "}
 (37,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -7487,7 +7469,7 @@ gz
 "}
 (38,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -7681,7 +7663,7 @@ gz
 "}
 (39,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -7875,7 +7857,7 @@ gz
 "}
 (40,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -8069,7 +8051,7 @@ gz
 "}
 (41,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -8263,7 +8245,7 @@ gz
 "}
 (42,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -8457,7 +8439,7 @@ gz
 "}
 (43,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -8651,7 +8633,7 @@ gz
 "}
 (44,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -8845,7 +8827,7 @@ gz
 "}
 (45,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -9039,7 +9021,7 @@ gz
 "}
 (46,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -9233,7 +9215,7 @@ gz
 "}
 (47,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -9427,7 +9409,7 @@ gz
 "}
 (48,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -9621,7 +9603,7 @@ gz
 "}
 (49,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -9815,7 +9797,7 @@ gz
 "}
 (50,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -10009,7 +9991,7 @@ gz
 "}
 (51,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -10203,7 +10185,7 @@ gz
 "}
 (52,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -10397,7 +10379,7 @@ gz
 "}
 (53,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -10591,7 +10573,7 @@ gz
 "}
 (54,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -10785,7 +10767,7 @@ gz
 "}
 (55,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -10979,7 +10961,7 @@ gz
 "}
 (56,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -11173,7 +11155,7 @@ gz
 "}
 (57,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -11367,7 +11349,7 @@ gz
 "}
 (58,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -11561,7 +11543,7 @@ gz
 "}
 (59,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -11755,7 +11737,7 @@ gz
 "}
 (60,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -11949,7 +11931,7 @@ gz
 "}
 (61,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -12143,7 +12125,7 @@ gz
 "}
 (62,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -12337,7 +12319,7 @@ gz
 "}
 (63,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -12531,7 +12513,7 @@ gz
 "}
 (64,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -12725,7 +12707,7 @@ gz
 "}
 (65,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -12919,7 +12901,7 @@ gz
 "}
 (66,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -13113,7 +13095,7 @@ gz
 "}
 (67,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -13307,7 +13289,7 @@ gz
 "}
 (68,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -13501,7 +13483,7 @@ gz
 "}
 (69,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -13695,7 +13677,7 @@ gz
 "}
 (70,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -13889,7 +13871,7 @@ gz
 "}
 (71,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -14083,7 +14065,7 @@ gz
 "}
 (72,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -14277,7 +14259,7 @@ gz
 "}
 (73,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -14471,7 +14453,7 @@ gz
 "}
 (74,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -14665,7 +14647,7 @@ gz
 "}
 (75,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -14859,7 +14841,7 @@ gz
 "}
 (76,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -15053,7 +15035,7 @@ gz
 "}
 (77,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -15247,7 +15229,7 @@ gz
 "}
 (78,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -15441,7 +15423,7 @@ gz
 "}
 (79,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -15635,7 +15617,7 @@ gz
 "}
 (80,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -15829,7 +15811,7 @@ gz
 "}
 (81,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -16023,7 +16005,7 @@ gz
 "}
 (82,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -16217,7 +16199,7 @@ gz
 "}
 (83,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -16411,7 +16393,7 @@ gz
 "}
 (84,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -16605,7 +16587,7 @@ gz
 "}
 (85,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -16799,7 +16781,7 @@ gz
 "}
 (86,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -16993,7 +16975,7 @@ gz
 "}
 (87,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -17187,7 +17169,7 @@ gz
 "}
 (88,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -17381,7 +17363,7 @@ gz
 "}
 (89,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -17575,7 +17557,7 @@ gz
 "}
 (90,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -17769,7 +17751,7 @@ gz
 "}
 (91,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -17963,7 +17945,7 @@ gz
 "}
 (92,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -18157,7 +18139,7 @@ gz
 "}
 (93,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -18351,7 +18333,7 @@ gz
 "}
 (94,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -18545,7 +18527,7 @@ gz
 "}
 (95,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -18739,7 +18721,7 @@ gz
 "}
 (96,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -18933,7 +18915,7 @@ gz
 "}
 (97,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -19127,7 +19109,7 @@ gz
 "}
 (98,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -19321,7 +19303,7 @@ gz
 "}
 (99,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -19515,7 +19497,7 @@ gz
 "}
 (100,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -19709,7 +19691,7 @@ gz
 "}
 (101,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -19903,7 +19885,7 @@ gz
 "}
 (102,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -20097,7 +20079,7 @@ gz
 "}
 (103,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -20291,7 +20273,7 @@ gz
 "}
 (104,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -20485,7 +20467,7 @@ gz
 "}
 (105,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -20679,7 +20661,7 @@ gz
 "}
 (106,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -20873,7 +20855,7 @@ gz
 "}
 (107,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -21067,7 +21049,7 @@ gz
 "}
 (108,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -21261,7 +21243,7 @@ gz
 "}
 (109,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -21455,7 +21437,7 @@ gz
 "}
 (110,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -21649,7 +21631,7 @@ gz
 "}
 (111,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -21843,7 +21825,7 @@ gz
 "}
 (112,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -22037,7 +22019,7 @@ gz
 "}
 (113,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -22231,7 +22213,7 @@ gz
 "}
 (114,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -22425,7 +22407,7 @@ gz
 "}
 (115,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -22619,7 +22601,7 @@ gz
 "}
 (116,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -22813,7 +22795,7 @@ gz
 "}
 (117,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -23007,7 +22989,7 @@ gz
 "}
 (118,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -23201,7 +23183,7 @@ gz
 "}
 (119,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -23395,7 +23377,7 @@ gz
 "}
 (120,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -23589,7 +23571,7 @@ gz
 "}
 (121,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -23783,7 +23765,7 @@ gz
 "}
 (122,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -23977,7 +23959,7 @@ gz
 "}
 (123,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -24171,7 +24153,7 @@ gz
 "}
 (124,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -24365,7 +24347,7 @@ gz
 "}
 (125,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -24559,7 +24541,7 @@ gz
 "}
 (126,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -24753,7 +24735,7 @@ gz
 "}
 (127,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -24947,7 +24929,7 @@ gz
 "}
 (128,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -25141,7 +25123,7 @@ gz
 "}
 (129,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -25335,7 +25317,7 @@ gz
 "}
 (130,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -25529,7 +25511,7 @@ gz
 "}
 (131,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -25723,7 +25705,7 @@ gz
 "}
 (132,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -25917,7 +25899,7 @@ gz
 "}
 (133,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -26111,7 +26093,7 @@ gz
 "}
 (134,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -26305,7 +26287,7 @@ gz
 "}
 (135,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -26499,7 +26481,7 @@ gz
 "}
 (136,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -26693,7 +26675,7 @@ gz
 "}
 (137,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -26887,7 +26869,7 @@ gz
 "}
 (138,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -27081,7 +27063,7 @@ gz
 "}
 (139,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -27275,7 +27257,7 @@ gz
 "}
 (140,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -27469,7 +27451,7 @@ gz
 "}
 (141,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -27663,7 +27645,7 @@ gz
 "}
 (142,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -27857,7 +27839,7 @@ gz
 "}
 (143,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -28051,7 +28033,7 @@ gz
 "}
 (144,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -28245,7 +28227,7 @@ gz
 "}
 (145,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -28439,7 +28421,7 @@ gz
 "}
 (146,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -28633,7 +28615,7 @@ gz
 "}
 (147,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -28827,7 +28809,7 @@ gz
 "}
 (148,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -29021,7 +29003,7 @@ gz
 "}
 (149,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -29215,7 +29197,7 @@ gz
 "}
 (150,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -29409,7 +29391,7 @@ gz
 "}
 (151,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -29603,7 +29585,7 @@ gz
 "}
 (152,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -29797,7 +29779,7 @@ gz
 "}
 (153,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -29991,7 +29973,7 @@ gz
 "}
 (154,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -30185,7 +30167,7 @@ gz
 "}
 (155,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -30379,7 +30361,7 @@ gz
 "}
 (156,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -30573,7 +30555,7 @@ gz
 "}
 (157,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -30767,7 +30749,7 @@ gz
 "}
 (158,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -30961,7 +30943,7 @@ gz
 "}
 (159,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -31131,12 +31113,12 @@ JW
 JW
 JW
 JW
-kK
+UP
 XZ
-kK
-kK
-kK
-kK
+UP
+UP
+UP
+UP
 XZ
 XZ
 XZ
@@ -31155,7 +31137,7 @@ gz
 "}
 (160,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -31325,13 +31307,13 @@ JW
 JW
 JW
 JW
-kK
+UP
 XZ
 XZ
-kK
-kK
-kK
-kK
+UP
+UP
+UP
+UP
 XZ
 XZ
 XZ
@@ -31349,7 +31331,7 @@ gz
 "}
 (161,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -31519,13 +31501,13 @@ JW
 JW
 JW
 JW
-kK
+UP
 XZ
 XZ
-kK
-kK
-kK
-kK
+UP
+UP
+UP
+UP
 XZ
 XZ
 XZ
@@ -31543,7 +31525,7 @@ gz
 "}
 (162,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -31713,14 +31695,14 @@ JW
 JW
 JW
 JW
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
 XZ
 XZ
 XZ
@@ -31737,7 +31719,7 @@ gz
 "}
 (163,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -31907,14 +31889,14 @@ JW
 JW
 JW
 JW
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
 XZ
 XZ
 XZ
@@ -31931,7 +31913,7 @@ gz
 "}
 (164,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -32101,13 +32083,13 @@ JW
 JW
 JW
 JW
-kK
-kK
-kK
-kK
-kK
-kK
-kK
+UP
+UP
+UP
+UP
+UP
+UP
+UP
 XZ
 XZ
 XZ
@@ -32125,7 +32107,7 @@ gz
 "}
 (165,1,1) = {"
 wg
-kK
+UP
 JW
 JW
 JW
@@ -32295,13 +32277,13 @@ JW
 JW
 JW
 JW
-kK
-kK
+UP
+UP
 XZ
-kK
-kK
-kK
-kK
+UP
+UP
+UP
+UP
 XZ
 XZ
 XZ
@@ -32319,7 +32301,7 @@ gz
 "}
 (166,1,1) = {"
 gz
-kK
+UP
 JW
 JW
 JW
@@ -32489,13 +32471,13 @@ JW
 JW
 JW
 JW
-kK
-kK
+UP
+UP
 XZ
 XZ
-kK
-kK
-kK
+UP
+UP
+UP
 XZ
 XZ
 XZ
@@ -32683,13 +32665,13 @@ JW
 JW
 JW
 JW
-kK
-kK
+UP
+UP
 XZ
 XZ
-kK
-kK
-kK
+UP
+UP
+UP
 XZ
 XZ
 XZ
@@ -32877,13 +32859,13 @@ JW
 JW
 JW
 JW
-kK
-kK
-kK
-kK
-kK
-kK
-kK
+UP
+UP
+UP
+UP
+UP
+UP
+UP
 XZ
 XZ
 XZ
@@ -33071,13 +33053,13 @@ JW
 JW
 JW
 JW
-kK
-kK
-kK
-kK
-kK
-kK
-kK
+UP
+UP
+UP
+UP
+UP
+UP
+UP
 XZ
 XZ
 XZ
@@ -33147,17 +33129,17 @@ JW
 JW
 JW
 JW
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
 JW
 JW
 JW
@@ -33265,13 +33247,13 @@ JW
 JW
 JW
 JW
-kK
+UP
 CM
 CM
-kK
-kK
-kK
-kK
+UP
+UP
+UP
+UP
 XZ
 XZ
 XZ
@@ -33341,17 +33323,17 @@ JW
 JW
 JW
 JW
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
 JW
 JW
 JW
@@ -33459,13 +33441,13 @@ JW
 JW
 JW
 JW
-kK
-kK
+UP
+UP
 CM
 CM
-kK
-kK
-kK
+UP
+UP
+UP
 XZ
 XZ
 XZ
@@ -33534,18 +33516,18 @@ JW
 JW
 JW
 JW
-kK
-kK
-kK
-kK
-kK
+UP
+UP
+UP
+UP
+UP
 bm
-kK
-kK
-kK
-kK
-kK
-kK
+UP
+UP
+UP
+UP
+UP
+UP
 JW
 JW
 JW
@@ -33653,14 +33635,14 @@ JW
 JW
 JW
 JW
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
 XZ
 XZ
 XZ
@@ -33728,18 +33710,18 @@ JW
 JW
 JW
 JW
-kK
-kK
-kK
-kK
+UP
+UP
+UP
+UP
 hw
 eI
 pc
-kK
-kK
-kK
-kK
-kK
+UP
+UP
+UP
+UP
+UP
 JW
 JW
 JW
@@ -33849,12 +33831,12 @@ JW
 JW
 XZ
 XZ
-kK
-kK
+UP
+UP
 CM
 CM
-kK
-kK
+UP
+UP
 XZ
 XZ
 XZ
@@ -33922,19 +33904,19 @@ JW
 JW
 JW
 JW
-kK
-kK
-kK
+UP
+UP
+UP
 bm
 iL
 eN
 qu
 pc
 bm
-kK
-kK
-kK
-kK
+UP
+UP
+UP
+UP
 JW
 JW
 JW
@@ -34043,13 +34025,13 @@ JW
 JW
 XZ
 XZ
-kK
-kK
-kK
+UP
+UP
+UP
 CM
-kK
-kK
-kK
+UP
+UP
+UP
 XZ
 XZ
 XZ
@@ -34103,7 +34085,7 @@ XZ
 XZ
 XZ
 XZ
-kK
+UP
 JW
 JW
 JW
@@ -34116,19 +34098,19 @@ JW
 JW
 JW
 JW
-kK
-kK
+UP
+UP
 bm
 hw
 jD
 eN
 eN
 uY
-kK
-kK
-kK
-kK
-kK
+UP
+UP
+UP
+UP
+UP
 JW
 JW
 JW
@@ -34236,15 +34218,15 @@ JW
 JW
 JW
 XZ
-kK
-kK
-kK
-kK
+UP
+UP
+UP
+UP
 CM
-kK
-kK
-kK
-kK
+UP
+UP
+UP
+UP
 XZ
 XZ
 XZ
@@ -34318,11 +34300,11 @@ eN
 eN
 se
 vd
-kK
-kK
-kK
-kK
-kK
+UP
+UP
+UP
+UP
+UP
 JW
 JW
 JW
@@ -34429,17 +34411,17 @@ JW
 JW
 JW
 JW
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
 Js
-kK
+UP
 XZ
 XZ
 XZ
@@ -34512,11 +34494,11 @@ eN
 eN
 uY
 bm
-kK
-kK
-kK
-kK
-kK
+UP
+UP
+UP
+UP
+UP
 JW
 JW
 JW
@@ -34622,19 +34604,19 @@ JW
 JW
 JW
 JW
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
 CM
 CM
-kK
-kK
+UP
+UP
 XZ
 XZ
 XZ
@@ -34705,12 +34687,12 @@ eN
 eN
 eN
 uY
-kK
-kK
-kK
-kK
-kK
-kK
+UP
+UP
+UP
+UP
+UP
+UP
 JW
 JW
 JW
@@ -34815,17 +34797,17 @@ JW
 JW
 JW
 JW
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
-kK
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+UP
 CM
 CM
 NW
@@ -34900,11 +34882,11 @@ eN
 no
 vd
 bm
-kK
-kK
-kK
-kK
-kK
+UP
+UP
+UP
+UP
+UP
 JW
 JW
 JW
@@ -35008,24 +34990,24 @@ JW
 JW
 JW
 JW
-kK
-kK
-kK
-kK
+UP
+UP
+UP
+UP
 XZ
 XZ
-kK
-kK
-kK
-kK
+UP
+UP
+UP
+UP
 XZ
-kK
-kK
+UP
+UP
 CM
 CM
-kK
-kK
-kK
+UP
+UP
+UP
 lf
 XZ
 XZ
@@ -35092,13 +35074,13 @@ XZ
 XZ
 XZ
 bm
-kK
-kK
-kK
-kK
-kK
-kK
-kK
+UP
+UP
+UP
+UP
+UP
+UP
+UP
 JW
 JW
 JW
@@ -35202,25 +35184,25 @@ JW
 JW
 JW
 JW
-kK
-kK
-kK
-kK
+UP
+UP
+UP
+UP
 XZ
 XZ
 XZ
-kK
-kK
-kK
+UP
+UP
+UP
 XZ
 XZ
 JR
 CM
 CM
 CM
-kK
-kK
-kK
+UP
+UP
+UP
 lf
 XZ
 XZ
@@ -35288,11 +35270,11 @@ XZ
 XZ
 bm
 wH
-kK
-kK
-kK
-kK
-kK
+UP
+UP
+UP
+UP
+UP
 JW
 JW
 JW
@@ -35395,11 +35377,11 @@ JW
 JW
 JW
 JW
-kK
-kK
-kK
-kK
-kK
+UP
+UP
+UP
+UP
+UP
 XZ
 XZ
 Dc
@@ -35409,16 +35391,16 @@ Dc
 XZ
 XZ
 Dc
-kK
-kK
+UP
+UP
 CM
 CM
-kK
+UP
 Js
-kK
+UP
 lf
 lf
-gz
+XZ
 gz
 "}
 (182,1,1) = {"
@@ -35482,11 +35464,11 @@ XZ
 XZ
 vn
 xw
-kK
-kK
-kK
-kK
-kK
+UP
+UP
+UP
+UP
+UP
 JW
 JW
 JW
@@ -35588,32 +35570,32 @@ JW
 XZ
 XZ
 XZ
-kK
-kK
-kK
-kK
-kK
-kK
+UP
+UP
+UP
+UP
+UP
+UP
 Dc
 Dc
 Dc
 EJ
 Eh
 Dc
-kK
-kK
-kK
+UP
+UP
+UP
 Ms
 Ov
 Rb
 Rm
 CM
 CM
-kK
-kK
-kK
-ST
-wg
+UP
+UP
+UP
+XZ
+gz
 "}
 (183,1,1) = {"
 gz
@@ -35676,12 +35658,12 @@ XZ
 XZ
 XZ
 yc
-kK
-kK
-kK
-kK
-kK
-kK
+UP
+UP
+UP
+UP
+UP
+UP
 JW
 JW
 JW
@@ -35783,31 +35765,31 @@ XZ
 XZ
 XZ
 XZ
-kK
-kK
-kK
-kK
-kK
+UP
+UP
+UP
+UP
+UP
 Dc
 Eh
 Ev
 FM
 Ev
 Df
-kK
-kK
-Kt
-kK
-LF
-kK
-kK
-kK
-kK
-kK
-kK
-kK
 UP
-wg
+UP
+Kt
+UP
+LF
+UP
+UP
+UP
+UP
+UP
+UP
+UP
+XZ
+gz
 "}
 (184,1,1) = {"
 gz
@@ -35872,10 +35854,10 @@ od
 of
 yo
 BS
-kK
-kK
+UP
+UP
 bm
-kK
+UP
 JW
 JW
 JW
@@ -35977,31 +35959,31 @@ XZ
 XZ
 XZ
 XZ
-kK
-kK
-kK
-kK
-kK
+UP
+UP
+UP
+UP
+UP
 Df
 Ev
 Ev
 Ev
 Ev
 Dc
-kK
-kK
+UP
+UP
 LF
 Mv
 OI
 LF
-kK
-kK
-kK
-kK
-CM
-kK
 UP
-wg
+UP
+UP
+UP
+CM
+UP
+XZ
+gz
 "}
 (185,1,1) = {"
 gz
@@ -36063,13 +36045,13 @@ XZ
 XZ
 XZ
 vr
-lX
-lX
+zQ
+zQ
 yc
 vn
 XZ
-kK
-kK
+UP
+UP
 JW
 JW
 JW
@@ -36172,30 +36154,30 @@ XZ
 XZ
 XZ
 XZ
-kK
-kK
-kK
-kK
+UP
+UP
+UP
+UP
 Dc
 EJ
 FM
 Iw
 II
 Dc
-kK
-kK
+UP
+UP
 Mc
 Nx
 OO
 Nx
 SE
 Mv
-kK
-kK
-CM
-CM
 UP
-wg
+UP
+CM
+CM
+XZ
+gz
 "}
 (186,1,1) = {"
 gz
@@ -36257,12 +36239,12 @@ XZ
 XZ
 XZ
 wb
-lX
+zQ
 zN
 od
 XZ
 XZ
-kK
+UP
 bm
 JW
 JW
@@ -36369,27 +36351,27 @@ XZ
 XZ
 XZ
 XZ
-kK
-Dc
-Dc
-Dc
-Dc
-Dc
-Dc
-XZ
-XZ
-Dc
-Dc
-Dc
-Dc
-Dc
-kK
-kK
-kK
-kK
-kK
 UP
-wg
+Dc
+Dc
+Dc
+Dc
+Dc
+Dc
+UP
+UP
+Dc
+Dc
+Dc
+Dc
+Dc
+UP
+UP
+UP
+UP
+UP
+XZ
+gz
 "}
 (187,1,1) = {"
 gz
@@ -36450,9 +36432,9 @@ XZ
 XZ
 XZ
 XZ
-lX
-lX
-lX
+zQ
+zQ
+zQ
 XZ
 XZ
 XZ
@@ -36569,21 +36551,21 @@ XZ
 XZ
 XZ
 XZ
+UP
+UP
+UP
+UP
 XZ
 XZ
 XZ
 XZ
 XZ
+UP
+UP
+UP
+UP
 XZ
-XZ
-XZ
-XZ
-kK
-kK
-kK
-kK
-WT
-wg
+gz
 "}
 (188,1,1) = {"
 XZ
@@ -36644,7 +36626,7 @@ XZ
 XZ
 XZ
 od
-lX
+zQ
 yj
 of
 XZ
@@ -36762,22 +36744,22 @@ XZ
 XZ
 XZ
 XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-kK
-kK
-kK
 UP
-wg
+UP
+UP
+UP
+UP
+XZ
+XZ
+XZ
+XZ
+XZ
+XZ
+UP
+UP
+UP
+XZ
+gz
 "}
 (189,1,1) = {"
 gz
@@ -36836,9 +36818,9 @@ gz
 XZ
 XZ
 XZ
-lX
-lX
-lX
+XZ
+zQ
+zQ
 vr
 od
 XZ
@@ -36956,6 +36938,11 @@ XZ
 XZ
 XZ
 XZ
+UP
+UP
+UP
+UP
+UP
 XZ
 XZ
 XZ
@@ -36966,11 +36953,6 @@ XZ
 XZ
 XZ
 XZ
-XZ
-XZ
-XZ
-XZ
-gz
 gz
 "}
 (190,1,1) = {"
@@ -37030,11 +37012,12 @@ gz
 XZ
 XZ
 XZ
-lX
+XZ
 of
-lX
-lX
+zQ
+zQ
 wb
+zQ
 XZ
 XZ
 XZ
@@ -37149,12 +37132,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
+UP
+UP
+UP
+UP
+UP
 XZ
 XZ
 XZ
@@ -37224,12 +37206,13 @@ gz
 XZ
 XZ
 gz
-mV
-mV
-mV
-mV
+XZ
+XZ
 zQ
-gz
+zQ
+zQ
+zQ
+zQ
 XZ
 XZ
 XZ
@@ -37343,12 +37326,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
+UP
+UP
+UP
+UP
+UP
 XZ
 XZ
 XZ
@@ -37420,6 +37402,11 @@ gz
 gz
 gz
 gz
+WT
+WT
+WT
+WT
+WT
 gz
 gz
 gz
@@ -37533,16 +37520,11 @@ gz
 gz
 gz
 gz
-gz
-gz
-gz
-gz
-gz
-gz
-gz
-gz
-gz
-gz
+WT
+WT
+WT
+WT
+WT
 gz
 gz
 gz
