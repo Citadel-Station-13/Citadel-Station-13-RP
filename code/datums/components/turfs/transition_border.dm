@@ -241,12 +241,16 @@
 /turf/level_border
 	name = "level border"
 	desc = "You shouldn't see this."
+	invisibility = 101
+	icon = null
+	icon_state = null
 	plane = SPACE_PLANE
 	vis_flags = VIS_HIDE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	density = FALSE
 	initial_gas_mix = ATMOSPHERE_USE_OUTDOORS
 	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
+	// so the fullbright overlay doesn't cause issues on the other side
 	lighting_disable_fullbright = TRUE
 
 // todo: refactor

@@ -127,13 +127,11 @@
 
 /turf/proc/above()
 	RETURN_TYPE(/turf)
-	var/index = SSmapping.cached_level_up[z]
-	return isnull(index)? null : locate(x, y, index)
+	return locate(x, y, SSmapping.cached_level_up[z])
 
 /turf/proc/below()
 	RETURN_TYPE(/turf)
-	var/index = SSmapping.cached_level_down[z]
-	return isnull(index)? null : locate(x, y, index)
+	return locate(x, y, SSmapping.cached_level_down[z])
 
 /**
  * This is the basic get multiz step.
@@ -143,19 +141,11 @@
 	RETURN_TYPE(/turf)
 	if((dir & (UP|DOWN)) == 0)
 		return get_step(src, dir)
-	if(dir & UP)
-		return get_step(above(), dir & ~(UP))
-	if(dir & DOWN)
-		return get_step(below(), dir & ~(DOWN))
+	else if(dir & UP)
+		return get_step(locate(x, y, SSmapping.cached_level_up[z]), dir & ~(UP))
+	else if(dir & DOWN)
+		return get_step(locate(x, y, SSmapping.cached_level_down[z]), dir & ~(DOWN))
 	CRASH("how did we get here?")
-
-/**
- * This is the full get multiz step.
- * It will look across lateral transitions and other struct magic.
- */
-/turf/proc/virtual_step(dir)
-	RETURN_TYPE(/turf)
-	return SSmapping.get_virtual_step(src, dir)
 
 /**
  * Basic multiz get dir
@@ -164,9 +154,15 @@
 /turf/proc/vertical_dir(turf/other)
 	if(other.z == z)
 		return get_dir(src, other)
-	var/turf/above = above()
-	if(other.z == above.z)
-		return get_dir(above, other) | UP
-	var/turf/below = below()
-	if(other.z == below.z)
-		return get_dir(below, other) | DOWN
+	else if(other.z == SSmapping.cached_level_up[z])
+		return get_dir(src, other) | UP
+	else if(other.z == SSmapping.cached_level_down[z])
+		return get_dir(src, other) | DOWN
+
+/**
+ * This is the full get multiz step.
+ * It will look across lateral transitions and other struct magic.
+ */
+/turf/proc/virtual_step(dir)
+	RETURN_TYPE(/turf)
+	return SSmapping.get_virtual_step(src, dir)
