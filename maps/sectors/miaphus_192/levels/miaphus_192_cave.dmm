@@ -16,7 +16,7 @@
 /turf/simulated/mineral/cave,
 /area/tether_away/cave/explored/normal)
 "j" = (
-/turf/unsimulated/mineral,
+/turf/unsimulated/mineral/outdoors,
 /area/tether_away/cave/explored/normal)
 "r" = (
 /obj/tether_away_spawner/beach_cave,
@@ -26,7 +26,7 @@
 /turf/simulated/mineral/floor/ignore_mapgen/cave,
 /area/tether_away/cave/explored/normal)
 "M" = (
-/turf/unsimulated/wall/planetary,
+/turf/unsimulated/mineral/outdoors,
 /area/tether_away/cave/explored/normal)
 
 (1,1,1) = {"

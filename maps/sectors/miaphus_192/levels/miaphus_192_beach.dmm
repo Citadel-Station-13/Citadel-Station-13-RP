@@ -358,7 +358,7 @@
 /turf/simulated/floor/outdoors/beach/sand/desert,
 /area/tether_away/beach/jungle)
 "bi" = (
-/turf/unsimulated/wall/planetary/normal,
+/turf/unsimulated/mineral/outdoors,
 /area/tether_away/beach/water)
 "bj" = (
 /turf/simulated/floor/water,
@@ -3179,7 +3179,7 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/tether_away/beach/powershed)
 "zV" = (
-/turf/unsimulated/mineral,
+/turf/unsimulated/mineral/outdoors,
 /area/tether_away/beach/mineshaft)
 "zZ" = (
 /obj/structure/cable/cyan{
@@ -3379,7 +3379,7 @@
 /turf/simulated/floor/tiled/old_tile/white,
 /area/tether_away/beach/resort/canteen)
 "Cg" = (
-/turf/unsimulated/mineral,
+/turf/unsimulated/mineral/outdoors,
 /area/tether_away/beach/water)
 "Ch" = (
 /obj/structure/table/reinforced,
@@ -4345,7 +4345,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether_away/beach/station)
 "Lj" = (
-/turf/unsimulated/mineral,
+/turf/unsimulated/mineral/outdoors,
 /area/tether_away/beach/coast)
 "Lo" = (
 /obj/structure/sign/warning/high_voltage,
@@ -4505,7 +4505,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether_away/beach/bunker/mess)
 "MA" = (
-/turf/unsimulated/mineral,
+/turf/unsimulated/mineral/outdoors,
 /area/tether_away/beach/jungle)
 "ME" = (
 /obj/structure/cable{
@@ -5284,7 +5284,7 @@
 /turf/simulated/floor/tiled/old_tile/white,
 /area/tether_away/beach/resort/lockermed)
 "TK" = (
-/turf/unsimulated/wall/planetary/desert/standard_temp,
+/turf/unsimulated/mineral/outdoors,
 /area/tether_away/beach/jungle)
 "TM" = (
 /obj/item/material/kitchen/rollingpin,

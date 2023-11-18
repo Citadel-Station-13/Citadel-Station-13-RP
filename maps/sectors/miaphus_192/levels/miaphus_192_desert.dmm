@@ -12,7 +12,7 @@
 /turf/simulated/floor/water,
 /area/tether_away/beach/desert/explored)
 "gz" = (
-/turf/unsimulated/mineral,
+/turf/unsimulated/mineral/outdoors,
 /area/tether_away/beach/desert/explored)
 "hw" = (
 /turf/simulated/floor/water/shoreline/corner,
@@ -102,7 +102,7 @@
 	},
 /area/tether_away/beach/desert/explored)
 "wg" = (
-/turf/unsimulated/wall/planetary/desert/standard_temp,
+/turf/unsimulated/mineral/outdoors,
 /area/tether_away/beach/desert/explored)
 "wH" = (
 /obj/item/pickaxe,
