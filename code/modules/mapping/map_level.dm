@@ -471,7 +471,7 @@
 	var/list/transformed = list()
 	for(var/turf/level_border/border in .)
 		transformed += border
-	return border
+	return transformed
 
 /**
  * get all turfs
