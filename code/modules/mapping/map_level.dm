@@ -21,6 +21,7 @@
 	/// are we modified from our prototype/definition?
 	var/tmp/modified = FALSE
 	/// linkage enum
+	//  todo: this is not implemented yet
 	var/linkage = Z_LINKAGE_NORMAL
 	/// transition enum
 	var/transition = Z_TRANSITION_DEFAULT
@@ -196,12 +197,19 @@
 	if(dir & (dir - 1))
 		if(dir & (UP|DOWN))
 			CRASH("unsupported operation of attempting to grab a vertical + diagonal direction.")
+		switch(dir)
+			if(NORTHWEST)
+			if(NORTHEAST)
+			if(SOUTHWEST)
+			if(SOUTHEAST)
+			else
+				CRASH("invalid dir: [dir]")
 		var/d1 = NSCOMPONENT(dir)
 		var/d2 = EWCOMPONENT(dir)
 		var/datum/map_level/l1 = level_in_dir(d1)
-		l1 = level_in_dir(d2)
+		l1 = l1?.level_in_dir(d2)
 		var/datum/map_level/l2 = level_in_dir(d2)
-		l2 = level_in_dir(d1)
+		l2 = l2?.level_in_dir(d1)
 		// if one side is null, we listen to the other
 		if(isnull(l1))
 			return l2

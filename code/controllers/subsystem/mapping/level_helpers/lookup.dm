@@ -33,7 +33,7 @@
 /datum/controller/subsystem/mapping/proc/level_datum_in_dir(z, dir)
 	if(dir & (dir - 1))
 		// if diagonal, pass to level for advanced handling
-		return ordered_levels[z].level_in_dir(dir)
+		return ordered_levels[z].level_in_dir(dir)?.z_index
 	var/index
 	switch(dir)
 		if(NORTH)
