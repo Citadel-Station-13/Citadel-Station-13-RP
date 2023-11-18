@@ -3,6 +3,9 @@
 /obj/structure/sign/graffiti/pisoff,
 /turf/simulated/wall/sandstone/classh,
 /area/tether_away/beach/desert/explored)
+"dN" = (
+/turf/unsimulated/mineral/outdoors,
+/area/tether_away/beach/desert/explored)
 "eI" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -17753,7 +17756,7 @@ XZ
 gz
 "}
 (124,1,1) = {"
-gz
+dN
 XZ
 EJ
 zN
@@ -17895,7 +17898,7 @@ XZ
 gz
 "}
 (125,1,1) = {"
-gz
+dN
 XZ
 of
 of
@@ -18037,7 +18040,7 @@ XZ
 gz
 "}
 (126,1,1) = {"
-gz
+dN
 XZ
 XZ
 of
@@ -18179,7 +18182,7 @@ XZ
 gz
 "}
 (127,1,1) = {"
-gz
+dN
 XZ
 XZ
 XZ
@@ -18321,7 +18324,7 @@ XZ
 gz
 "}
 (128,1,1) = {"
-gz
+dN
 XZ
 XZ
 XZ
@@ -18463,7 +18466,7 @@ XZ
 gz
 "}
 (129,1,1) = {"
-gz
+dN
 XZ
 XZ
 XZ
@@ -18605,7 +18608,7 @@ gz
 gz
 "}
 (130,1,1) = {"
-gz
+dN
 XZ
 XZ
 XZ
@@ -18747,7 +18750,7 @@ vn
 gz
 "}
 (131,1,1) = {"
-gz
+dN
 XZ
 XZ
 XZ
@@ -18889,7 +18892,7 @@ vn
 gz
 "}
 (132,1,1) = {"
-gz
+dN
 XZ
 XZ
 XZ
@@ -19031,7 +19034,7 @@ vn
 gz
 "}
 (133,1,1) = {"
-gz
+dN
 XZ
 XZ
 XZ
@@ -19173,7 +19176,7 @@ vn
 gz
 "}
 (134,1,1) = {"
-gz
+dN
 XZ
 XZ
 XZ
@@ -19315,7 +19318,7 @@ vn
 gz
 "}
 (135,1,1) = {"
-gz
+dN
 XZ
 XZ
 XZ
@@ -19457,7 +19460,7 @@ FM
 gz
 "}
 (136,1,1) = {"
-gz
+dN
 XZ
 XZ
 XZ
@@ -19599,7 +19602,7 @@ vn
 gz
 "}
 (137,1,1) = {"
-gz
+dN
 XZ
 XZ
 XZ
@@ -19741,7 +19744,7 @@ gz
 gz
 "}
 (138,1,1) = {"
-gz
+dN
 XZ
 XZ
 XZ
@@ -19883,10 +19886,10 @@ XZ
 gz
 "}
 (139,1,1) = {"
-gz
+dN
 XZ
 XZ
-gz
+dN
 yc
 yc
 yc
@@ -20025,12 +20028,12 @@ XZ
 gz
 "}
 (140,1,1) = {"
-gz
-gz
-gz
-gz
-gz
-gz
+dN
+dN
+dN
+dN
+dN
+dN
 xw
 xw
 xw

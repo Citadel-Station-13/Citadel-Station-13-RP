@@ -238,6 +238,7 @@
 /**
  * borders at the edge of zlevels
  */
+CREATE_STANDARD_TURFS(/turf/level_border)
 /turf/level_border
 	name = "level border"
 	desc = "You shouldn't see this."
