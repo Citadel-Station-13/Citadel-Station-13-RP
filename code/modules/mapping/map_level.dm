@@ -50,8 +50,10 @@
 	/// can also be set to instance - used for structs.
 	var/link_above
 	/// gas string / atmosphere path / atmosphere id for indoors air
+	/// if atmosphere path, it'll be automatically packed to ID on serialize, as we don't want to serialize paths to disk.
 	var/air_indoors = GAS_STRING_STP
 	/// gas string / atmosphere path / atmosphere id for outdoors air
+	/// if atmosphere path, it'll be automatically packed to ID on serialize, as we don't want to serialize paths to disk.
 	var/air_outdoors = GAS_STRING_VACUUM
 	/// load orientation - overridden if loaded as part of a /datum/map
 	var/orientation = SOUTH
@@ -88,12 +90,6 @@
 	UNPACK_LINK(link_above)
 	BLOCK_BYOND_BUG_2072419
 	#undef UNPACK_LINK
-	if(ispath(air_indoors, /datum/atmosphere))
-		var/datum/atmosphere/cast_air_indoors = air_indoors
-		air_indoors = initial(cast_air_indoors.id)
-	if(ispath(air_outdoors, /datum/atmosphere))
-		var/datum/atmosphere/cast_air_outdoors = air_outdoors
-		air_outdoors = initial(cast_air_outdoors.id)
 
 /datum/map_level/Destroy()
 	if(loaded)
@@ -123,8 +119,20 @@
 	.["link_east"] = link_east
 	.["link_above"] = link_above
 	.["link_below"] = link_below
-	.["air_indoors"] = air_indoors
-	.["air_outdoors"] = air_outdoors
+
+	var/unpacked_air_indoors
+	if(ispath(air_indoors, /datum/atmosphere))
+		var/datum/atmosphere/cast_air_indoors = air_indoors
+		// cast to id if possible, otherwise keep as type
+		unpacked_air_indoors = initial(cast_air_indoors.id) || air_indoors
+	var/unpacked_air_outdoors
+	if(ispath(air_outdoors, /datum/atmosphere))
+		var/datum/atmosphere/cast_air_outdoors = air_outdoors
+		// cast to id if possible, otherwise keep as type
+		unpacked_air_outdoors = initial(cast_air_outdoors.id) || air_outdoors
+	.["air_indoors"] = unpacked_air_indoors
+	.["air_outdoors"] = unpacked_air_outdoors
+
 	.["orientation"] = orientation
 
 /datum/map_level/deserialize(list/data)
