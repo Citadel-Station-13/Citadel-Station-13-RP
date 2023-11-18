@@ -27,7 +27,7 @@
 		CRASH("[type] improperly instanced with the following args: direction=\[[dir]\], range=\[[range]\]")
 	if(range > world.maxx || range > world.maxy || range > 20)
 		. = COMPONENT_INCOMPATIBLE
-		CRASH("[range] is too big a range. Max: 20, or the smallest dimension of hte world..")
+		CRASH("[range] is too big a range. Max: 20, or the smallest dimension of the world.")
 	src.range = range
 	src.dir = dir
 	if(!isnull(render))

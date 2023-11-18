@@ -199,12 +199,8 @@
 		var/d1 = NSCOMPONENT(dir)
 		var/d2 = EWCOMPONENT(dir)
 		var/datum/map_level/l1 = level_in_dir(d1)
-		if(isnull(l1))
-			return
 		l1 = level_in_dir(d2)
 		var/datum/map_level/l2 = level_in_dir(d2)
-		if(isnull(l2))
-			return
 		l2 = level_in_dir(d1)
 		// if one side is null, we listen to the other
 		if(isnull(l1))
