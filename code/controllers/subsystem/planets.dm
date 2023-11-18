@@ -33,6 +33,7 @@ SUBSYSTEM_DEF(planets)
 		existing = new planet_path
 		planets += existing
 	z_to_planet[z_index] = existing
+	LAZYDISTINCTADD(existing.expected_z_levels, z_index)
 
 /datum/controller/subsystem/planets/proc/addTurf(turf/T)
 	if(T.turf_flags & (TURF_PLANET_QUEUED | TURF_PLANET_REGISTERED))

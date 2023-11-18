@@ -78,7 +78,9 @@
 // Override for doing special stuff with the direct result of the attack.
 /mob/living/simple_mob/proc/apply_attack(atom/A, damage_to_do)
 	if(!ismob(A))
-		melee_attack_chain(A, null, style = melee_style, mult = damage_to_do / melee_style.get_unarmed_damage(src, A))
+		var/nominal_damage = melee_style.get_unarmed_damage(src, A)
+		var/mult = nominal_damage? damage_to_do / nominal_damage : 0
+		melee_attack_chain(A, null, style = melee_style, mult = mult)
 		return TRUE
 	return A.attack_generic(src, damage_to_do, pick(attacktext))
 
