@@ -17000,11 +17000,9 @@
 /area/maintenance/research/lower)
 "kLo" = (
 /obj/structure/table/rack/shelf,
-/obj/item/ore/phoron{
-	pixel_x = 2;
-	pixel_y = 4
+/obj/item/stack/ore/phoron{
+	amount = 2
 	},
-/obj/item/ore/phoron,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/warehouse)
 "kLC" = (

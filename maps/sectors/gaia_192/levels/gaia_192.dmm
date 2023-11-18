@@ -1868,7 +1868,7 @@
 /turf/simulated/floor/outdoors/grass,
 /area/class_m/outside)
 "kC" = (
-/obj/item/ore/coal,
+/obj/item/stack/ore/coal,
 /turf/simulated/floor/outdoors/dirt/classm/outdoors,
 /area/class_m/outside)
 "kD" = (
@@ -2234,7 +2234,7 @@
 /area/class_m/inside)
 "lX" = (
 /obj/structure/flora/ausbushes/fullgrass,
-/obj/item/ore/coal,
+/obj/item/stack/ore/coal,
 /turf/simulated/floor/outdoors/grass,
 /area/class_m/outside)
 "lY" = (
@@ -2465,7 +2465,7 @@
 	},
 /area/class_m/outside)
 "nm" = (
-/obj/item/ore,
+/obj/item/stack/ore,
 /turf/simulated/floor/outdoors/dirt/classm/outdoors,
 /area/class_m/outside)
 "nn" = (
@@ -2775,7 +2775,7 @@
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside/main)
 "pe" = (
-/obj/item/ore,
+/obj/item/stack/ore,
 /turf/simulated/floor/outdoors/grass/classm,
 /area/class_m/outside)
 "pg" = (
@@ -7194,7 +7194,7 @@
 /turf/simulated/floor/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "NY" = (
-/obj/item/ore/coal,
+/obj/item/stack/ore/coal,
 /obj/structure/flora/ausbushes/stalkybush,
 /turf/simulated/floor/outdoors/dirt/classm/outdoors,
 /area/class_m/outside)
@@ -9233,7 +9233,7 @@
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside)
 "Ze" = (
-/obj/item/ore,
+/obj/item/stack/ore,
 /turf/simulated/floor/outdoors/grass,
 /area/class_m/outside)
 "Zf" = (
