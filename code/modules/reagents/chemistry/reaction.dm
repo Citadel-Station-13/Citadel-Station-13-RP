@@ -203,6 +203,16 @@
  * Guidebook Data for TGUIGuidebookReaction
  */
 /datum/reagent/proc/tgui_guidebook_reaction()
+	return list(
+		"name" = display_name || name,
+		"desc" = display_desc || desc,
+		"id" = id,
+		"flags" = reagent_flags,
+		"guidebookFlags" = reagent_guidebook_flags,
+		// below are stubbed and overridden on subtypes
+		// todo: why is this the case?
+		"alcoholStrength" = 0,
+	)
 	#warn impl
 
 

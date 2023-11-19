@@ -16,11 +16,23 @@ export interface TGUIGuidebookReagentsData {
 
 }
 
+enum ReagentGuidebookFlags {
+  Unlisted = (1<<0),
+  Hidden = (1<<1),
+}
+
+enum ReactionGuidebookFlags {
+  Unlisted = (1<<0),
+  Hidden = (1<<1),
+}
+
 interface TGUIGuidebookReagent {
   /// id string
   id: string;
   /// reagent flags: currently untyped because there are none
   flags: number;
+  /// reagent guidebook flags
+  guidebookFlags: ReagentGuidebookFlags;
   /// name string
   name: string;
   /// description string
@@ -35,6 +47,8 @@ interface TGUIGuidebookReaction {
   id: string;
   /// reaction flags: currently untyped because there are none
   flags: number;
+  /// reaction guidebook flags
+  guidebookFlags: ReactionGuidebookFlags;
   /// name string
   name: string;
   /// description string
