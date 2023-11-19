@@ -11,15 +11,29 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 /datum/reagent
 	abstract_type = /datum/reagent
 
-	//? core
+	//* Core
 	/// id - must be unique and in CamelCase.
 	var/id
 	/// reagent flags - see [code/__DEFINES/reagents/flags.dm]
 	var/reagent_flags = NONE
 
-	//? legacy / unsorted
+	//* Identity
+	/// our name - visible from guidebooks and to admins
 	var/name = "Reagent"
-	var/description = "A non-descript chemical."
+	/// our desc - visible from guidebooks and to admins
+	var/desc = "A non-descript chemical of some kind."
+	/// player-facing name - visible via scan tools
+	/// defaults to [name]
+	var/display_name
+	/// player-facing desc - visible via scan tools
+	/// defaults to [desc]
+	var/display_desc
+
+	//* Guidebook
+	/// guidebook flags
+	var/reagent_guidebook_flags = NONE
+
+	//? legacy / unsorted
 	var/taste_description = "bitterness"
 	/// How this taste compares to others. Higher values means it is more noticable
 	var/taste_mult = 1
@@ -279,6 +293,16 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 /datum/reagent/proc/on_update(atom/A)
 	return
 
+//* Guidebook
+
+/**
+ * Guidebook Data for TGUIGuidebookReagent
+ */
+/datum/reagent/proc/tgui_guidebook_data()
+	#warn impl
+
+//* Holder - Application
+
 /**
  * called when we first get applied to a mob
  *
@@ -320,6 +344,8 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
  */
 // todo: implement this proc, replace touch_turf/reaction_turf and similar with it.
 // /datum/reagent/proc/apply_to_turf(turf/target, amount, list/data)
+
+//* Holder - Mixing
 
 /**
  * called when a new reagent is being mixed with this one to mix our data lists.

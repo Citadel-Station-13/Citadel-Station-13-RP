@@ -21,8 +21,23 @@
 	/// required container typepath of holder my_atom
 	var/required_container
 
+	//* identity
+	/// name; defaults to reagent produced's name.
+	/// if this is defaulted, it also defaults display name to that reagent if unset.
+	var/name
+	/// description, if any; defaults to reagent produced's desc
+	/// if this is defaulted, it also defaults display desc to that reagent if unset.
+	var/desc
+	/// display name; overrides name when player facing if set
+	var/display_name
+	/// display description; overrides desc when player facing if set
+	var/display_desc
+
+	//* guidebook
+	/// guidebook flags
+	var/reaction_guidebook_flags = NONE
+
 	//? legacy / unsorted
-	var/name = null
 	var/list/catalysts = list()
 	var/list/inhibitors = list()
 
@@ -43,6 +58,10 @@
 	var/log_is_important = 0 // If this reaction should be considered important for logging. Important recipes message admins when mixed, non-important ones just log to file.
 
 /datum/chemical_reaction/New()
+	resolve_paths()
+	generate()
+
+/datum/chemical_reaction/proc/resolve_paths()
 	for(var/i in 1 to length(required_reagents))
 		var/datum/reagent/path = required_reagents[i]
 		if(!ispath(path))
@@ -70,6 +89,18 @@
 	if(ispath(result, /datum/reagent))
 		var/datum/reagent/result_initial = result
 		result = initial(result_initial.id)
+
+/datum/chemical_reaction/proc/generate()
+	var/datum/reagent/resolved = SSchemistry.get_reagent(result)
+	if(isnull(name))
+		name = resolved.name
+		if(isnull(display_name))
+			display_name = resolved.display_name
+
+	if(isnull(desc))
+		desc = resolved.desc
+		if(isnull(display_desc))
+			display_desc = resolved.display_desc
 
 /datum/chemical_reaction/proc/can_happen(datum/reagents/holder)
 	// check container
@@ -165,6 +196,15 @@
 //this is called just before reactants are removed.
 /datum/chemical_reaction/proc/send_data(datum/reagents/holder, reaction_limit)
 	return null
+
+//* Guidebook
+
+/**
+ * Guidebook Data for TGUIGuidebookReaction
+ */
+/datum/reagent/proc/tgui_guidebook_reaction()
+	#warn impl
+
 
 /* Most medication reactions, and their precursors */
 
