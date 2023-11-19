@@ -3,7 +3,6 @@
 	name = "Skrell Very Short Tentacles"
 	id = "hair_skrell_tentacles_veryshort"
 	icon_state = "skrell_hair_veryshort"
-	gender = MALE
 
 /datum/sprite_accessory/hair/skr_tentacle_short
 	name = "Skrell Short Tentacles"
@@ -20,4 +19,3 @@
 	name = "Skrell Long Tentacles"
 	id = "hair_skrell_tentacles_long"
 	icon_state = "skrell_hair_verylong"
-	gender = FEMALE

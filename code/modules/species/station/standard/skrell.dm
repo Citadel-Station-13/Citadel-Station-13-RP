@@ -5,6 +5,7 @@
 	name = SPECIES_SKRELL
 	name_plural = SPECIES_SKRELL
 	primitive_form = SPECIES_MONKEY_SKRELL
+	category = "Skrell"
 	icobase = 'icons/mob/species/skrell/body_greyscale.dmi'
 	deform = 'icons/mob/species/skrell/deformed_body_greyscale.dmi'
 
@@ -31,6 +32,7 @@
 	)
 	assisted_langs   = list(LANGUAGE_EAL, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX, LANGUAGE_PROMETHEAN)
 
+	slowdown  = -0.2
 	color_mult = 1
 	health_hud_intensity = 2
 
