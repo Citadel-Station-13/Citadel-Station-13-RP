@@ -29,7 +29,7 @@ DEFINE_SHARED_BITFIELD(reagent_guidebook_flags, list(
 /// doesn't show in guidebook reaction list
 #define REACTION_GUIDEBOOK_UNLISTED (1<<0)
 /// can't be pulled up on guidebook at all, other than name
-#define REACTIOn_GUIDEBOOK_HIDDEN (1<<1)
+#define REACTION_GUIDEBOOK_HIDDEN (1<<1)
 
 DEFINE_SHARED_BITFIELD(reaction_guidebook_flags, list(
 	"reaction_guidebook_flags",

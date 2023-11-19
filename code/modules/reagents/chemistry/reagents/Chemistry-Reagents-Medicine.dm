@@ -3,7 +3,7 @@
 /datum/reagent/inaprovaline
 	name = "Inaprovaline"
 	id = "inaprovaline"
-	description = "Inaprovaline is a synaptic stimulant and cardiostimulant. Commonly used to stabilize patients."
+	desc = "Inaprovaline is a synaptic stimulant and cardiostimulant. Commonly used to stabilize patients."
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
 	color = "#00BFFF"
@@ -19,7 +19,7 @@
 /datum/reagent/bicaridine
 	name = "Bicaridine"
 	id = "bicaridine"
-	description = "Bicaridine is an analgesic medication and can be used to treat blunt trauma."
+	desc = "Bicaridine is an analgesic medication and can be used to treat blunt trauma."
 	taste_description = "bitterness"
 	taste_mult = 3
 	reagent_state = REAGENT_LIQUID
@@ -52,7 +52,7 @@
 /datum/reagent/bicaridine/topical//Main way to obtain is destiller
 	name = "Bicaridaze"
 	id = "bicaridaze"
-	description = "Bicaridaze is a topical variant of the chemical Bicaridine."
+	desc = "Bicaridaze is a topical variant of the chemical Bicaridine."
 	taste_description = "bitterness"
 	taste_mult = 3
 	reagent_state = REAGENT_LIQUID
@@ -80,7 +80,7 @@
 /datum/reagent/vermicetol//Moved from Chemistry-Reagents-Medicine_vr.dm
 	name = "Vermicetol"
 	id = "vermicetol"
-	description = "A potent chemical that treats physical damage at an exceptional rate."
+	desc = "A potent chemical that treats physical damage at an exceptional rate."
 	taste_description = "heavy metals"
 	taste_mult = 3
 	reagent_state = REAGENT_SOLID
@@ -98,7 +98,7 @@
 /datum/reagent/calciumcarbonate
 	name = "calcium carbonate"
 	id = "calciumcarbonate"
-	description = "Calcium carbonate is a calcium salt commonly used as an antacid."
+	desc = "Calcium carbonate is a calcium salt commonly used as an antacid."
 	taste_description = "chalk"
 	reagent_state = REAGENT_SOLID
 	color = "#eae6e3"
@@ -117,7 +117,7 @@
 /datum/reagent/kelotane
 	name = "Kelotane"
 	id = "kelotane"
-	description = "Kelotane is a drug used to treat burns."
+	desc = "Kelotane is a drug used to treat burns."
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
 	color = "#FFA800"
@@ -134,7 +134,7 @@
 /datum/reagent/dermaline
 	name = "Dermaline"
 	id = "dermaline"
-	description = "Dermaline is the next step in burn medication. Works twice as good as kelotane and enables the body to restore even the direst heat-damaged tissue."
+	desc = "Dermaline is the next step in burn medication. Works twice as good as kelotane and enables the body to restore even the direst heat-damaged tissue."
 	taste_description = "bitterness"
 	taste_mult = 1.5
 	reagent_state = REAGENT_LIQUID
@@ -151,7 +151,7 @@
 /datum/reagent/dermaline/topical//Main way to obtain is destiller
 	name = "Dermalaze"
 	id = "dermalaze"
-	description = "Dermalaze is a topical variant of the chemical Dermaline."
+	desc = "Dermalaze is a topical variant of the chemical Dermaline."
 	taste_description = "bitterness"
 	taste_mult = 1.5
 	reagent_state = REAGENT_LIQUID
@@ -179,7 +179,7 @@
 /datum/reagent/dylovene
 	name = "Dylovene"
 	id = "anti_toxin"
-	description = "Dylovene is a broad-spectrum antitoxin."
+	desc = "Dylovene is a broad-spectrum antitoxin."
 	taste_description = "a roll of gauze"
 	reagent_state = REAGENT_LIQUID
 	color = "#00A000"
@@ -201,7 +201,7 @@
 /datum/reagent/carthatoline
 	name = "Carthatoline"
 	id = "carthatoline"
-	description = "Carthatoline is strong evacuant used to treat severe poisoning."
+	desc = "Carthatoline is strong evacuant used to treat severe poisoning."
 	reagent_state = REAGENT_LIQUID
 	color = "#225722"
 	scannable = 1
@@ -228,7 +228,7 @@
 /datum/reagent/dexalin
 	name = "Dexalin"
 	id = "dexalin"
-	description = "Dexalin is used in the treatment of oxygen deprivation."
+	desc = "Dexalin is used in the treatment of oxygen deprivation."
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
 	color = "#0080FF"
@@ -254,7 +254,7 @@
 /datum/reagent/dexalinp
 	name = "Dexalin Plus"
 	id = "dexalinp"
-	description = "Dexalin Plus is used in the treatment of oxygen deprivation. It is highly effective."
+	desc = "Dexalin Plus is used in the treatment of oxygen deprivation. It is highly effective."
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
 	color = "#0040FF"
@@ -280,7 +280,7 @@
 /datum/reagent/tricordrazine
 	name = "Tricordrazine"
 	id = "tricordrazine"
-	description = "Tricordrazine is a highly potent stimulant, originally derived from cordrazine. Can be used to treat a wide range of injuries."
+	desc = "Tricordrazine is a highly potent stimulant, originally derived from cordrazine. Can be used to treat a wide range of injuries."
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
 	color = "#8040FF"
@@ -302,7 +302,7 @@
 /datum/reagent/earthsblood
 	name = "Earthsblood"
 	id = "earthsblood"
-	description = "A rare plant extract with immense, almost magical healing capabilities. Induces a potent psychoactive state, damaging neurons with prolonged use."
+	desc = "A rare plant extract with immense, almost magical healing capabilities. Induces a potent psychoactive state, damaging neurons with prolonged use."
 	taste_description = "the sweet highs of life"
 	reagent_state = REAGENT_LIQUID
 	color = "#ffb500"
@@ -328,7 +328,7 @@
 /datum/reagent/tricorlidaze//Main way to obtain is destiller
 	name = "Tricorlidaze"
 	id = "tricorlidaze"
-	description = "Tricorlidaze is a topical gel produced with tricordrazine and sterilizine."
+	desc = "Tricorlidaze is a topical gel produced with tricordrazine and sterilizine."
 	taste_description = "bitterness"
 	reagent_state = REAGENT_SOLID
 	color = "#B060FF"
@@ -364,7 +364,7 @@
 /datum/reagent/cryoxadone
 	name = "Cryoxadone"
 	id = "cryoxadone"
-	description = "A chemical mixture with almost magical healing powers. Its main limitation is that the targets body temperature must be under 170K for it to metabolise correctly."
+	desc = "A chemical mixture with almost magical healing powers. Its main limitation is that the targets body temperature must be under 170K for it to metabolise correctly."
 	taste_description = "overripe bananas"
 	reagent_state = REAGENT_LIQUID
 	color = "#8080FF"
@@ -389,7 +389,7 @@
 /datum/reagent/clonexadone
 	name = "Clonexadone"
 	id = "clonexadone"
-	description = "A liquid compound similar to that used in the cloning process. Can be used to 'finish' the cloning process when used in conjunction with a cryo tube."
+	desc = "A liquid compound similar to that used in the cloning process. Can be used to 'finish' the cloning process when used in conjunction with a cryo tube."
 	taste_description = "rotten bananas"
 	reagent_state = REAGENT_LIQUID
 	color = "#80BFFF"
@@ -415,7 +415,7 @@
 /datum/reagent/necroxadone
 	name = "Necroxadone"
 	id = "necroxadone"
-	description = "A liquid compound based upon that which is used in the cloning process. Utilized primarily in severe cases of toxic shock."
+	desc = "A liquid compound based upon that which is used in the cloning process. Utilized primarily in severe cases of toxic shock."
 	taste_description = "meat"
 	reagent_state = REAGENT_LIQUID
 	color = "#94B21C"
@@ -450,7 +450,7 @@
 /datum/reagent/paracetamol
 	name = "Paracetamol"
 	id = "paracetamol"
-	description = "Most probably know this as Tylenol, but this chemical is a mild, simple painkiller."
+	desc = "Most probably know this as Tylenol, but this chemical is a mild, simple painkiller."
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
 	color = "#C8A5DC"
@@ -474,7 +474,7 @@
 /datum/reagent/tramadol
 	name = "Tramadol"
 	id = "tramadol"
-	description = "A simple, yet effective painkiller."
+	desc = "A simple, yet effective painkiller."
 	taste_description = "sourness"
 	reagent_state = REAGENT_LIQUID
 	color = "#CB68FC"
@@ -497,7 +497,7 @@
 /datum/reagent/oxycodone
 	name = "Oxycodone"
 	id = "oxycodone"
-	description = "An effective and very addictive painkiller."
+	desc = "An effective and very addictive painkiller."
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
 	color = "#800080"
@@ -523,7 +523,7 @@
 /datum/reagent/numbing_enzyme//Moved from Chemistry-Reagents-Medicine_vr.dm
 	name = "Numbing Enzyme"//Obtained from vore bellies, and numbing bite trait custom species
 	id = "numbenzyme"
-	description = "Some sort of organic painkiller."
+	desc = "Some sort of organic painkiller."
 	taste_description = "sourness"
 	reagent_state = REAGENT_LIQUID
 	color = "#800080"
@@ -568,7 +568,7 @@
 /datum/reagent/synaptizine
 	name = "Synaptizine"//Used to treat hallucination and remove mindbreaker
 	id = "synaptizine"
-	description = "Synaptizine is used to treat various diseases."
+	desc = "Synaptizine is used to treat various diseases."
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
 	color = "#99CCFF"
@@ -598,7 +598,7 @@
 /datum/reagent/hyperzine
 	name = "Hyperzine"
 	id = "hyperzine"
-	description = "Hyperzine is a highly effective, long lasting, muscle stimulant."
+	desc = "Hyperzine is a highly effective, long lasting, muscle stimulant."
 	taste_description = "bitterness"
 	metabolism = REM * 0.25 // see "long lasting"
 	reagent_state = REAGENT_LIQUID
@@ -620,7 +620,7 @@
 /datum/reagent/alkysine
 	name = "Alkysine"
 	id = "alkysine"
-	description = "Alkysine is a drug used to lessen the damage to neurological tissue after a catastrophic injury. Can heal brain tissue."
+	desc = "Alkysine is a drug used to lessen the damage to neurological tissue after a catastrophic injury. Can heal brain tissue."
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
 	color = "#FFFF66"
@@ -644,7 +644,7 @@
 /datum/reagent/imidazoline
 	name = "Imidazoline"
 	id = "imidazoline"
-	description = "Heals eye damage"
+	desc = "Heals eye damage"
 	taste_description = "dull toxin"
 	reagent_state = REAGENT_LIQUID
 	color = "#C8A5DC"
@@ -668,7 +668,7 @@
 /datum/reagent/peridaxon
 	name = "Peridaxon"
 	id = "peridaxon"
-	description = "Used to encourage recovery of internal organs and nervous systems. Medicate cautiously."
+	desc = "Used to encourage recovery of internal organs and nervous systems. Medicate cautiously."
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
 	color = "#561EC3"
@@ -695,7 +695,7 @@
 /datum/reagent/nanoperidaxon
 	name = "Nano-Peridaxon"
 	id = "nanoperidaxon"
-	description = "Nanite cultures have been mixed into this peridaxon, increasing its efficacy range. Medicate cautiously."
+	desc = "Nanite cultures have been mixed into this peridaxon, increasing its efficacy range. Medicate cautiously."
 	taste_description = "bitterness and iron"
 	reagent_state = REAGENT_LIQUID
 	color = "#664B9B"
@@ -720,7 +720,7 @@
 /datum/reagent/osteodaxon
 	name = "Osteodaxon"
 	id = "osteodaxon"
-	description = "An experimental drug used to heal bone fractures."
+	desc = "An experimental drug used to heal bone fractures."
 	reagent_state = REAGENT_LIQUID
 	color = "#C9BCE3"
 	metabolism = REM * 0.5
@@ -742,7 +742,7 @@
 /datum/reagent/myelamine
 	name = "Myelamine"
 	id = "myelamine"
-	description = "Used to rapidly clot internal hemorrhages by increasing the effectiveness of platelets."
+	desc = "Used to rapidly clot internal hemorrhages by increasing the effectiveness of platelets."
 	reagent_state = REAGENT_LIQUID
 	color = "#4246C7"
 	metabolism = REM * 0.5
@@ -773,7 +773,7 @@
 /datum/reagent/respirodaxon
 	name = "Respirodaxon"
 	id = "respirodaxon"
-	description = "Used to repair the tissue of the lungs and similar organs."
+	desc = "Used to repair the tissue of the lungs and similar organs."
 	taste_description = "metallic"
 	reagent_state = REAGENT_LIQUID
 	color = "#4444FF"
@@ -804,7 +804,7 @@
 /datum/reagent/gastirodaxon
 	name = "Gastirodaxon"
 	id = "gastirodaxon"
-	description = "Used to repair the tissues of the digestive system."
+	desc = "Used to repair the tissues of the digestive system."
 	taste_description = "chalk"
 	reagent_state = REAGENT_LIQUID
 	color = "#8B4513"
@@ -835,7 +835,7 @@
 /datum/reagent/hepanephrodaxon
 	name = "Hepanephrodaxon"
 	id = "hepanephrodaxon"
-	description = "Used to repair the common tissues involved in filtration."
+	desc = "Used to repair the common tissues involved in filtration."
 	taste_description = "glue"
 	reagent_state = REAGENT_LIQUID
 	color = "#D2691E"
@@ -868,7 +868,7 @@
 /datum/reagent/cordradaxon
 	name = "Cordradaxon"
 	id = "cordradaxon"
-	description = "Used to repair the specialized tissues involved in the circulatory system."
+	desc = "Used to repair the specialized tissues involved in the circulatory system."
 	taste_description = "rust"
 	reagent_state = REAGENT_LIQUID
 	color = "#FF4444"
@@ -896,7 +896,7 @@
 /datum/reagent/immunosuprizine
 	name = "Immunosuprizine"
 	id = "immunosuprizine"
-	description = "An experimental powder believed to have the ability to prevent any organ rejection."
+	desc = "An experimental powder believed to have the ability to prevent any organ rejection."
 	taste_description = "flesh"
 	reagent_state = REAGENT_SOLID
 	color = "#7B4D4F"
@@ -952,7 +952,7 @@
 /datum/reagent/skrellimmuno
 	name = "Malish-Qualem"
 	id = "malish-qualem"
-	description = "A strange, oily powder used by Malish-Katish to prevent organ rejection."
+	desc = "A strange, oily powder used by Malish-Katish to prevent organ rejection."
 	taste_description = "mordant"
 	reagent_state = REAGENT_SOLID
 	color = "#84B2B0"
@@ -997,7 +997,7 @@
 /datum/reagent/ryetalyn
 	name = "Ryetalyn"
 	id = "ryetalyn"
-	description = "Ryetalyn can cure all genetic abnomalities via a catalytic process."
+	desc = "Ryetalyn can cure all genetic abnomalities via a catalytic process."
 	taste_description = "acid"
 	reagent_state = REAGENT_SOLID
 	color = "#004000"
@@ -1044,7 +1044,7 @@
 /datum/reagent/ethylredoxrazine
 	name = "Ethylredoxrazine"
 	id = "ethylredoxrazine"
-	description = "A powerful oxidizer that reacts with ethanol."
+	desc = "A powerful oxidizer that reacts with ethanol."
 	taste_description = "bitterness"
 	reagent_state = REAGENT_SOLID
 	color = "#605048"
@@ -1067,7 +1067,7 @@
 /datum/reagent/hyronalin
 	name = "Hyronalin"
 	id = "hyronalin"
-	description = "Hyronalin is a medicinal drug used to counter the effect of radiation poisoning."
+	desc = "Hyronalin is a medicinal drug used to counter the effect of radiation poisoning."
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
 	color = "#408000"
@@ -1083,7 +1083,7 @@
 /datum/reagent/arithrazine
 	name = "Arithrazine"
 	id = "arithrazine"
-	description = "Arithrazine is an unstable medication used for the most extreme cases of radiation poisoning."
+	desc = "Arithrazine is an unstable medication used for the most extreme cases of radiation poisoning."
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
 	color = "#008000"
@@ -1102,7 +1102,7 @@
 /datum/reagent/spaceacillin
 	name = "Spaceacillin"
 	id = "spaceacillin"
-	description = "An all-purpose antiviral agent."
+	desc = "An all-purpose antiviral agent."
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
 	color = "#C1C1C1"
@@ -1131,7 +1131,7 @@
 /datum/reagent/corophizine
 	name = "Corophizine"
 	id = "corophizine"
-	description = "A wide-spectrum antibiotic drug. Powerful and uncomfortable in equal doses."
+	desc = "A wide-spectrum antibiotic drug. Powerful and uncomfortable in equal doses."
 	taste_description = "burnt toast"
 	reagent_state = REAGENT_LIQUID
 	color = "#FFB0B0"
@@ -1198,7 +1198,7 @@
 /datum/reagent/spacomycaze
 	name = "Spacomycaze"
 	id = "spacomycaze"
-	description = "An all-purpose painkilling antibiotic gel."
+	desc = "An all-purpose painkilling antibiotic gel."
 	taste_description = "oil"
 	reagent_state = REAGENT_SOLID
 	color = "#C1C1C8"
@@ -1246,7 +1246,7 @@
 /datum/reagent/sterilizine
 	name = "Sterilizine"
 	id = "sterilizine"
-	description = "Sterilizes wounds in preparation for surgery and thoroughly removes blood."
+	desc = "Sterilizes wounds in preparation for surgery and thoroughly removes blood."
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
 	color = "#C8A5DC"
@@ -1291,7 +1291,7 @@
 /datum/reagent/leporazine
 	name = "Leporazine"
 	id = "leporazine"
-	description = "Leporazine can be use to stabilize an individuals body temperature."
+	desc = "Leporazine can be use to stabilize an individuals body temperature."
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
 	color = "#C8A5DC"
@@ -1309,7 +1309,7 @@
 /datum/reagent/rezadone
 	name = "Rezadone"
 	id = "rezadone"
-	description = "A powder with almost magical properties, this substance can effectively treat genetic damage in humanoids, though excessive consumption has side effects."
+	desc = "A powder with almost magical properties, this substance can effectively treat genetic damage in humanoids, though excessive consumption has side effects."
 	taste_description = "bitterness"
 	reagent_state = REAGENT_SOLID
 	color = "#669900"
@@ -1357,7 +1357,7 @@
 /datum/reagent/methylphenidate
 	name = "Methylphenidate"
 	id = "methylphenidate"
-	description = "Improves the ability to concentrate."
+	desc = "Improves the ability to concentrate."
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
 	color = "#BF80BF"
@@ -1380,7 +1380,7 @@
 /datum/reagent/citalopram
 	name = "Citalopram"
 	id = "citalopram"
-	description = "Stabilizes the mind a little."
+	desc = "Stabilizes the mind a little."
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
 	color = "#FF80FF"
@@ -1403,7 +1403,7 @@
 /datum/reagent/paroxetine
 	name = "Paroxetine"
 	id = "paroxetine"
-	description = "Stabilizes the mind greatly, but has a chance of adverse effects."
+	desc = "Stabilizes the mind greatly, but has a chance of adverse effects."
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
 	color = "#FF80BF"
@@ -1430,7 +1430,7 @@
 /datum/reagent/adranol//Moved from Chemistry-Reagents-Medicine_vr.dm
 	name = "Adranol"
 	id = "adranol"
-	description = "A mild sedative that calms the nerves and relaxes the patient."
+	desc = "A mild sedative that calms the nerves and relaxes the patient."
 	taste_description = "milk"
 	reagent_state = REAGENT_SOLID
 	color = "#d5e2e5"
@@ -1448,7 +1448,7 @@
 /datum/reagent/qerr_quem
 	name = "Qerr-quem"
 	id = "querr_quem"
-	description = "A potent stimulant and anti-anxiety medication, made for the Qerr-Katish."
+	desc = "A potent stimulant and anti-anxiety medication, made for the Qerr-Katish."
 	taste_description = "mint"
 	reagent_state = REAGENT_LIQUID
 	color = "#e6efe3"
@@ -1472,7 +1472,7 @@
 /datum/reagent/healing_nanites
 	name = "Restorative Nanites"
 	id = "healing_nanites"
-	description = "Miniature medical robots that swiftly restore bodily damage."
+	desc = "Miniature medical robots that swiftly restore bodily damage."
 	taste_description = "metal"
 	reagent_state = REAGENT_SOLID
 	color = "#555555"
@@ -1490,7 +1490,7 @@
 /datum/reagent/ickypak
 	name = "Ickypak"
 	id = "ickypak"
-	description = "A foul-smelling green liquid, for inducing muscle contractions to expel accidentally ingested things."
+	desc = "A foul-smelling green liquid, for inducing muscle contractions to expel accidentally ingested things."
 	reagent_state = REAGENT_LIQUID
 	color = "#0E900E"
 	overdose = REAGENTS_OVERDOSE
@@ -1513,7 +1513,7 @@
 /datum/reagent/unsorbitol
 	name = "Unsorbitol"
 	id = "unsorbitol"
-	description = "A frothy pink liquid, for causing cellular-level hetrogenous structure separation."
+	desc = "A frothy pink liquid, for causing cellular-level hetrogenous structure separation."
 	reagent_state = REAGENT_LIQUID
 	color = "#EF77E5"
 	overdose = REAGENTS_OVERDOSE
@@ -1544,7 +1544,7 @@
 /datum/reagent/nif_repair_nanites
 	name = "Programmed Nanomachines"
 	id = "nifrepairnanites"
-	description = "A thick grey slurry of NIF repair nanomachines."
+	desc = "A thick grey slurry of NIF repair nanomachines."
 	taste_description = "metallic"
 	reagent_state = REAGENT_LIQUID
 	color = "#333333"
@@ -1562,7 +1562,7 @@
 /datum/reagent/firefighting_foam
 	name = "Firefighting Foam"
 	id = "firefoam"
-	description = "A historical fire suppressant. Originally believed to simply displace oxygen to starve fires, it actually interferes with the combustion reaction itself. Vastly superior to the cheap water-based extinguishers found on most NT vessels."
+	desc = "A historical fire suppressant. Originally believed to simply displace oxygen to starve fires, it actually interferes with the combustion reaction itself. Vastly superior to the cheap water-based extinguishers found on most NT vessels."
 	reagent_state = REAGENT_LIQUID
 	color = "#A6FAFF"
 	taste_description = "the inside of a fire extinguisher"
@@ -1610,7 +1610,7 @@
 /datum/reagent/neuratrextate
 	name = "Neuratrextate"
 	id = "neuratrextate"
-	description = "This military grade chemical compound functions as both a powerful immunosuppressant and a potent antipsychotic. Its trademark lime green coloration makes it easy to identify."
+	desc = "This military grade chemical compound functions as both a powerful immunosuppressant and a potent antipsychotic. Its trademark lime green coloration makes it easy to identify."
 	taste_description = "sour metal"
 	taste_mult = 2
 	reagent_state = REAGENT_LIQUID

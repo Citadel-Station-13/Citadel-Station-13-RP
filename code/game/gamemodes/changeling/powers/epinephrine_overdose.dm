@@ -47,7 +47,7 @@
 /datum/reagent/epinephrine
 	name = "Epinephrine"
 	id = "epinephrine"
-	description = "Reduces stun times, but causing toxicity due to high concentration."
+	desc = "Reduces stun times, but causing toxicity due to high concentration."
 	reagent_state = REAGENT_LIQUID
 	color = "#C8A5DC"
 	metabolism = REM * 2

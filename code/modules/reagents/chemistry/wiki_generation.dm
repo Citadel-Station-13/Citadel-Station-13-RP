@@ -30,7 +30,7 @@
 			var/recipes_text = "WIP"
 			sub_built += {"
 				|-
-				| [R.wiki_name || R.name] || [R.wiki_desc || R.description] || [overdose_text] || [recipes_text]
+				| [R.wiki_name || R.name] || [R.wiki_desc || R.desc] || [overdose_text] || [recipes_text]
 			"}
 			// todo: handle recipes
 		built += "## [category] <br><br>[jointext(sub_built, "")]"

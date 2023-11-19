@@ -1,7 +1,7 @@
 /datum/reagent/aluminum
 	name = "Aluminum"
 	id = "aluminum"
-	description = "A silvery white and ductile member of the boron group of chemical elements."
+	desc = "A silvery white and ductile member of the boron group of chemical elements."
 	taste_description = "metal"
 	taste_mult = 1.1
 	reagent_state = REAGENT_SOLID
@@ -10,7 +10,7 @@
 /datum/reagent/calcium
 	name = "Calcium"
 	id = "calcium"
-	description = "A chemical element, the building block of bones."
+	desc = "A chemical element, the building block of bones."
 	taste_description = "metallic chalk" // Apparently, calcium tastes like calcium.
 	taste_mult = 1.3
 	reagent_state = REAGENT_SOLID
@@ -19,7 +19,7 @@
 /datum/reagent/carbon
 	name = "Carbon"
 	id = "carbon"
-	description = "A chemical element, the building block of life."
+	desc = "A chemical element, the building block of life."
 	taste_description = "sour chalk"
 	taste_mult = 1.5
 	reagent_state = REAGENT_SOLID
@@ -48,7 +48,7 @@
 /datum/reagent/chlorine
 	name = "Chlorine"
 	id = "chlorine"
-	description = "A chemical element with a characteristic odour."
+	desc = "A chemical element with a characteristic odour."
 	taste_description = "pool water"
 	reagent_state = REAGENT_GAS
 	color = "#d1db77"
@@ -62,14 +62,14 @@
 /datum/reagent/copper
 	name = "Copper"
 	id = "copper"
-	description = "A highly ductile metal."
+	desc = "A highly ductile metal."
 	taste_description = "pennies"
 	color = "#6E3B08"
 
 /datum/reagent/fluorine
 	name = "Fluorine"
 	id = "fluorine"
-	description = "A highly-reactive chemical element."
+	desc = "A highly-reactive chemical element."
 	taste_description = "acid"
 	reagent_state = REAGENT_GAS
 	color = "#808080"
@@ -83,7 +83,7 @@
 /datum/reagent/hydrogen
 	name = "Hydrogen"
 	id = "hydrogen"
-	description = "A colorless, odorless, nonmetallic, tasteless, highly combustible diatomic gas."
+	desc = "A colorless, odorless, nonmetallic, tasteless, highly combustible diatomic gas."
 	taste_mult = 0 //no taste
 	reagent_state = REAGENT_GAS
 	color = "#808080"
@@ -91,7 +91,7 @@
 /datum/reagent/iron
 	name = "Iron"
 	id = "iron"
-	description = "Pure iron is a metal."
+	desc = "Pure iron is a metal."
 	taste_description = "metal"
 	reagent_state = REAGENT_SOLID
 	color = "#353535"
@@ -103,7 +103,7 @@
 /datum/reagent/lithium
 	name = "Lithium"
 	id = "lithium"
-	description = "A chemical element, used as antidepressant."
+	desc = "A chemical element, used as antidepressant."
 	taste_description = "metal"
 	reagent_state = REAGENT_SOLID
 	color = "#808080"
@@ -118,7 +118,7 @@
 /datum/reagent/mercury
 	name = "Mercury"
 	id = "mercury"
-	description = "A chemical element."
+	desc = "A chemical element."
 	taste_mult = 0 //mercury apparently is tasteless. IDK
 	reagent_state = REAGENT_LIQUID
 	color = "#484848"
@@ -134,7 +134,7 @@
 /datum/reagent/nitrogen
 	name = "Nitrogen"
 	id = "nitrogen"
-	description = "A colorless, odorless, tasteless gas."
+	desc = "A colorless, odorless, tasteless gas."
 	taste_mult = 0 //no taste
 	reagent_state = REAGENT_GAS
 	color = "#808080"
@@ -142,7 +142,7 @@
 /datum/reagent/oxygen
 	name = "Oxygen"
 	id = "oxygen"
-	description = "A colorless, odorless gas."
+	desc = "A colorless, odorless gas."
 	taste_mult = 0
 	reagent_state = REAGENT_GAS
 	color = "#808080"
@@ -154,7 +154,7 @@
 /datum/reagent/phosphorus
 	name = "Phosphorus"
 	id = "phosphorus"
-	description = "A chemical element, the backbone of biological energy carriers."
+	desc = "A chemical element, the backbone of biological energy carriers."
 	taste_description = "vinegar"
 	reagent_state = REAGENT_SOLID
 	color = "#832828"
@@ -166,7 +166,7 @@
 /datum/reagent/potassium
 	name = "Potassium"
 	id = "potassium"
-	description = "A soft, low-melting solid that can easily be cut with a knife. Reacts violently with water."
+	desc = "A soft, low-melting solid that can easily be cut with a knife. Reacts violently with water."
 	taste_description = "sweetness" //potassium is bitter in higher doses but sweet in lower ones.
 	reagent_state = REAGENT_SOLID
 	color = "#A0A0A0"
@@ -174,7 +174,7 @@
 /datum/reagent/radium
 	name = "Radium"
 	id = "radium"
-	description = "Radium is an alkaline earth metal. It is extremely radioactive."
+	desc = "Radium is an alkaline earth metal. It is extremely radioactive."
 	taste_mult = 0	//Apparently radium is tasteless
 	reagent_state = REAGENT_SOLID
 	color = "#C7C7C7"
@@ -200,7 +200,7 @@
 /datum/reagent/silicon
 	name = "Silicon"
 	id = "silicon"
-	description = "A tetravalent metalloid, silicon is less reactive than its chemical analog carbon."
+	desc = "A tetravalent metalloid, silicon is less reactive than its chemical analog carbon."
 	taste_mult = 0
 	reagent_state = REAGENT_SOLID
 	color = "#A8A8A8"
@@ -208,7 +208,7 @@
 /datum/reagent/sodium
 	name = "Sodium"
 	id = "sodium"
-	description = "A chemical element, readily reacts with water."
+	desc = "A chemical element, readily reacts with water."
 	taste_description = "salty metal"
 	reagent_state = REAGENT_SOLID
 	color = "#808080"
@@ -216,7 +216,7 @@
 /datum/reagent/tungsten
 	name = "Tungsten"
 	id = "tungsten"
-	description = "A chemical element, and a strong oxidising agent."
+	desc = "A chemical element, and a strong oxidising agent."
 	taste_description = "metal"
 	taste_mult = 0 //no taste
 	reagent_state = REAGENT_SOLID
