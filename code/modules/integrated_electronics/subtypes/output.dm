@@ -506,7 +506,8 @@
 	if(hologram)
 		update_hologram()
 
-/obj/item/integrated_circuit/output/holographic_projector/on_loc_moved(atom/oldloc)
+/obj/item/integrated_circuit/output/holographic_projector/ext_moved(oldLoc, dir)
+	. = ..()
 	if(hologram)
 		update_hologram_position()
 
