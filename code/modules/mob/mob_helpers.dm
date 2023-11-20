@@ -536,7 +536,7 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 /// The base miss chance for the different defence zones
 var/list/global/base_miss_chance = list(
 	BP_HEAD   = 40,
-	BP_CHEST  = 10,
+	BP_TORSO  = 10,
 	BP_GROIN  = 20,
 	BP_L_LEG  = 30,
 	BP_R_LEG  = 30,
@@ -554,7 +554,7 @@ var/list/global/base_miss_chance = list(
  */
 var/list/global/organ_rel_size = list(
 	BP_HEAD   = 25,
-	BP_CHEST  = 70,
+	BP_TORSO  = 70,
 	BP_GROIN  = 30,
 	BP_L_LEG  = 25,
 	BP_R_LEG  = 25,
