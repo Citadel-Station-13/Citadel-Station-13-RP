@@ -158,6 +158,7 @@
 	var/obj/machinery/mineral/output = null
 	var/obj/machinery/mineral/console = null
 	var/sheets_per_tick = 20
+	var/ores_per_tick = 30
 	var/list/ores_processing = list()
 	var/list/ores_stored = list()
 	var/static/list/alloy_data
@@ -226,13 +227,17 @@
 	tick++
 
 	//Grab some more ore to process this tick.
-	for(var/i = 0,i<sheets_per_tick,i++)
-		var/obj/item/ore/O = locate() in input.loc
-		if(!O) break
+	//Takes ores_per_tick per tick from the various stacks of ores nearby. It'll likely loop at least 0-2 times per tick.
+	for(var/i = 0, i < ores_per_tick, i++)
+		var/obj/item/stack/ore/O = locate() in input.loc
+		if(!O)
+			break
+		var/taking = min(ores_per_tick - i, O.amount)
 		if(!isnull(ores_stored[O.material]))
-			ores_stored[O.material]++
-			points += ore_values[O.material] // Give Points!
-		qdel(O)
+			ores_stored[O.material] += taking
+			points += ore_values[O.material] * taking // Give Points!
+		i += taking
+		O.use(taking)
 
 	if(!active)
 		return
@@ -312,7 +317,7 @@
 			else
 				ores_stored[metal]--
 				sheets++
-				new /obj/item/ore/slag(output.loc)
+				new /obj/item/stack/ore/slag(output.loc)
 		else
 			continue
 

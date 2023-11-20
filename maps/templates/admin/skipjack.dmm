@@ -43,7 +43,7 @@
 	},
 /area/skipjack_station)
 "ai" = (
-/obj/item/ore,
+/obj/item/stack/ore,
 /turf/unsimulated/floor{
 	icon_state = "steel"
 	},
@@ -116,7 +116,7 @@
 	},
 /area/skipjack_station)
 "as" = (
-/obj/item/ore,
+/obj/item/stack/ore,
 /obj/structure/reagent_dispensers/beerkeg,
 /turf/unsimulated/floor{
 	icon_state = "white"
@@ -133,7 +133,7 @@
 	},
 /area/skipjack_station)
 "au" = (
-/obj/item/ore,
+/obj/item/stack/ore,
 /turf/unsimulated/floor{
 	icon_state = "plating";
 	name = "plating"
@@ -497,7 +497,7 @@
 	},
 /area/skipjack_station)
 "bn" = (
-/obj/item/ore,
+/obj/item/stack/ore,
 /turf/unsimulated/floor{
 	icon_state = "asteroid_dug";
 	name = "plating"
@@ -571,7 +571,7 @@
 	},
 /area/skipjack_station)
 "bx" = (
-/obj/item/ore,
+/obj/item/stack/ore,
 /turf/unsimulated/floor{
 	icon_state = "asteroid"
 	},
