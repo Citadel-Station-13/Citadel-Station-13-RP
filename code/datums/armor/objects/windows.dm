@@ -5,6 +5,6 @@
 
 /datum/armor/window/reinforced
 	melee_deflect = 6
-	melee_soak = 2
+	melee_soak = 0
 	melee_tier = ARMOR_BARELY_BEATS(MELEE_TIER_MEDIUM)
 	melee = 0.2
