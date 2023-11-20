@@ -1139,6 +1139,7 @@
 /turf/simulated/floor,
 /area/rnd/outpost/mixing)
 "fo" = (
+/obj/landmark/map_data/west_plains,
 /turf/unsimulated/wall/planetary/lythios43c{
 	desc = "Glacial permafrost, compacted harder than stone.";
 	icon_state = "icerock-dark";
@@ -1655,6 +1656,9 @@
 /turf/simulated/wall/r_wall,
 /area/rnd/outpost/anomaly_lab/analysis)
 "hy" = (
+/obj/effect/map_effect/portal/line/side_b{
+	dir = 4
+	},
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/surfacebase/outside/west)
 "hz" = (
@@ -2056,6 +2060,9 @@
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
 "ji" = (
+/obj/effect/map_effect/portal/line/side_b{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel_grid/lythios43c,
 /area/rift/surfacebase/outside/west)
 "jm" = (
@@ -2796,6 +2803,9 @@
 	icon_state = "4-8"
 	},
 /obj/structure/railing,
+/obj/effect/map_effect/portal/line/side_b{
+	dir = 8
+	},
 /turf/simulated/floor/lythios43c,
 /area/rift/surfacebase/outside/west)
 "mL" = (
@@ -3700,6 +3710,9 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 10
+	},
+/obj/effect/map_effect/portal/line/side_b{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_grid/lythios43c,
 /area/rift/surfacebase/outside/west)
@@ -4904,6 +4917,9 @@
 /turf/simulated/floor/tiled/monotile,
 /area/rift/exterior/nuketown/interior)
 "we" = (
+/obj/effect/map_effect/portal/line/side_b{
+	dir = 8
+	},
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west)
 "wg" = (
@@ -5746,6 +5762,9 @@
 /area/rnd/outpost/anomaly_lab)
 "zL" = (
 /obj/structure/railing,
+/obj/effect/map_effect/portal/line/side_b{
+	dir = 8
+	},
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west)
 "zM" = (
@@ -6638,6 +6657,9 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 6
+	},
+/obj/effect/map_effect/portal/line/side_b{
+	dir = 8
 	},
 /obj/structure/railing,
 /turf/simulated/floor/tiled/steel_grid/lythios43c,
@@ -8497,6 +8519,11 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab/airlock)
 "Nw" = (
+/obj/effect/map_effect/portal/master/side_b{
+	dir = 8;
+	name = "westplain_to_center";
+	portal_id = "westplainstep"
+	},
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west)
 "Nx" = (
@@ -8548,6 +8575,11 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/exterior/shuttle)
 "NO" = (
+/obj/effect/map_effect/portal/master/side_b{
+	dir = 4;
+	name = "Surface to caves";
+	portal_id = "surface_to_cave1"
+	},
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/surfacebase/outside/west)
 "NQ" = (

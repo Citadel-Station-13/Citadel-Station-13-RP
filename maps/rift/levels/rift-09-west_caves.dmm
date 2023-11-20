@@ -1295,6 +1295,9 @@
 /area/rift/geothermal)
 "pA" = (
 /obj/structure/catwalk/plank,
+/obj/effect/map_effect/portal/line/side_b{
+	dir = 8
+	},
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
 "pB" = (
@@ -1646,6 +1649,9 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost)
 "tg" = (
+/obj/effect/map_effect/portal/line/side_b{
+	dir = 4
+	},
 /turf/simulated/floor/outdoors/rocks/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
 "tr" = (
@@ -1741,6 +1747,11 @@
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/surfacebase/outside/west_caves)
 "uD" = (
+/obj/effect/map_effect/portal/master/side_b{
+	dir = 8;
+	name = "westcave_to_center";
+	portal_id = "westcavestep"
+	},
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
 "uJ" = (
@@ -2129,6 +2140,11 @@
 /turf/simulated/floor/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
 "yZ" = (
+/obj/effect/map_effect/portal/master/side_a{
+	dir = 8;
+	name = "Cave to surface portal";
+	portal_id = "surface_to_cave1"
+	},
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/surfacebase/outside/west_caves)
 "zk" = (
@@ -2408,6 +2424,9 @@
 	dir = 1
 	},
 /obj/structure/catwalk/plank,
+/obj/effect/map_effect/portal/line/side_b{
+	dir = 8
+	},
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
 "Cv" = (
@@ -2882,6 +2901,9 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/outpost/mining_main/outpost)
 "GI" = (
+/obj/effect/map_effect/portal/line/side_b{
+	dir = 8
+	},
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
 "GN" = (
@@ -3052,6 +3074,9 @@
 /turf/simulated/mineral/icerock/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
 "JI" = (
+/obj/effect/map_effect/portal/line/side_a{
+	dir = 8
+	},
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/surfacebase/outside/west_caves)
 "JK" = (
@@ -3437,6 +3462,9 @@
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/surfacebase/outside/west_caves/submap_seedzone)
 "Ot" = (
+/obj/effect/map_effect/portal/line/side_b{
+	dir = 8
+	},
 /obj/structure/catwalk,
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
@@ -3549,6 +3577,9 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/outpost/mining_main/outpost)
 "PE" = (
+/obj/effect/map_effect/portal/line/side_b{
+	dir = 8
+	},
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
 "PM" = (
@@ -3867,6 +3898,11 @@
 /turf/simulated/floor/tiled/white,
 /area/outpost/mining_main/outpost/washrooms)
 "SS" = (
+/obj/effect/map_effect/portal/master/side_b{
+	dir = 4;
+	name = "Caves to Cavern";
+	portal_id = "caves_to_Cavern1"
+	},
 /turf/simulated/floor/outdoors/rocks/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
 "ST" = (
@@ -3973,6 +4009,9 @@
 /turf/simulated/floor/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
 "Uz" = (
+/obj/effect/map_effect/portal/line/side_b{
+	dir = 8
+	},
 /obj/structure/railing,
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
@@ -4148,6 +4187,9 @@
 /turf/simulated/floor,
 /area/rnd/outpost/maintenance)
 "VS" = (
+/obj/effect/map_effect/portal/line/side_b{
+	dir = 8
+	},
 /turf/simulated/wall/r_wall,
 /area/rift/surfacebase/outside/west_caves)
 "VU" = (

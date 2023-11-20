@@ -3903,6 +3903,9 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/outpost/near_gateway)
 "Jl" = (
+/obj/effect/map_effect/portal/line/side_a{
+	dir = 8
+	},
 /turf/simulated/floor/outdoors/rocks/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_deep)
 "Jo" = (
@@ -5009,6 +5012,11 @@
 /turf/simulated/floor/wood,
 /area/outpost/mining_main/outpost/recreation)
 "Uu" = (
+/obj/effect/map_effect/portal/master/side_a{
+	dir = 8;
+	name = "Cavern to caves";
+	portal_id = "caves_to_Cavern1"
+	},
 /turf/simulated/floor/outdoors/rocks/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_deep)
 "Uy" = (
