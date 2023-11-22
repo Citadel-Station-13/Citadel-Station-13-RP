@@ -8412,7 +8412,6 @@
 	},
 /obj/structure/window/reinforced{
 	dir = 8;
-	health = 1e+006
 	},
 /obj/machinery/atmospherics/pipe/manifold4w/visible/fuel,
 /turf/simulated/floor/lythios43c/indoors,
@@ -8973,7 +8972,6 @@
 	},
 /obj/structure/window/reinforced{
 	dir = 8;
-	health = 1e+006
 	},
 /obj/structure/window/reinforced,
 /obj/machinery/atmospherics/pipe/simple/visible/fuel{
@@ -10996,7 +10994,6 @@
 	},
 /obj/structure/window/reinforced{
 	dir = 8;
-	health = 1e+006
 	},
 /obj/structure/window/reinforced{
 	dir = 1
@@ -17777,7 +17774,6 @@
 	},
 /obj/structure/window/reinforced{
 	dir = 8;
-	health = 1e+006
 	},
 /obj/machinery/atmospherics/pipe/manifold/visible/fuel{
 	dir = 8

@@ -5059,7 +5059,6 @@
 /obj/structure/filingcabinet/chestdrawer,
 /obj/structure/window/reinforced{
 	dir = 8;
-	health = 1e+006
 	},
 /obj/structure/extinguisher_cabinet{
 	dir = 1;
@@ -7994,7 +7993,6 @@
 	},
 /obj/structure/window/reinforced{
 	dir = 8;
-	health = 1e+006
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
