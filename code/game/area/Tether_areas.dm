@@ -100,6 +100,10 @@
 	name = "\improper CentCom Medical"
 	icon_state = "centcom_medical"
 
+/area/centcom/simulated/exterior
+	name = "\improper CentCom Exterior"
+	icon_state = "centcom_medical"
+
 /area/centcom/simulated/restaurant
 	name = "\improper CentCom Restaurant"
 	icon_state = "centcom_crew"
