@@ -341,8 +341,8 @@
 
 	taser_kill = 0
 
-	melee_damage_lower = 2
-	melee_damage_upper = 3
+	legacy_melee_damage_lower = 2
+	legacy_melee_damage_upper = 3
 
 	armor_type = /datum/armor/physiology/roach/atomar
 
