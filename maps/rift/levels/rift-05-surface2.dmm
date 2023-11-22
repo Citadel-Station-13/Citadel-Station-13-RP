@@ -2093,7 +2093,8 @@
 /obj/machinery/disposal,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 8
+	dir = 8;
+	health = 1e+006
 	},
 /obj/structure/disposalpipe/trunk{
 	dir = 8
@@ -9588,7 +9589,8 @@
 "gkl" = (
 /obj/machinery/disposal,
 /obj/structure/window/reinforced{
-	dir = 8
+	dir = 8;
+	health = 1e+006
 	},
 /obj/structure/window/reinforced,
 /obj/structure/disposalpipe/trunk{
@@ -10080,7 +10082,8 @@
 	},
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 8
+	dir = 8;
+	health = 1e+006
 	},
 /obj/effect/floor_decal/borderfloorblack/cee{
 	dir = 1
@@ -10895,11 +10898,11 @@
 /turf/simulated/wall/prepainted,
 /area/crew_quarters/recreation_area)
 "gZt" = (
-/obj/machinery/cryopod/robot,
 /obj/machinery/firealarm{
-	dir = 4;
+	dir = 8;
 	pixel_x = 24
 	},
+/obj/machinery/cryopod/robot,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/assembly/chargebay)
 "gZC" = (
@@ -13870,7 +13873,8 @@
 /area/security/briefing_room)
 "iRD" = (
 /obj/structure/window/reinforced{
-	dir = 8
+	dir = 8;
+	health = 1e+006
 	},
 /obj/structure/window/reinforced{
 	dir = 1
@@ -20718,7 +20722,8 @@
 	},
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 8
+	dir = 8;
+	health = 1e+006
 	},
 /obj/effect/floor_decal/borderfloorblack/cee,
 /obj/item/ammo_magazine/m44,
@@ -26587,7 +26592,8 @@
 /area/medical/medbay_primary_storage)
 "qNg" = (
 /obj/structure/window/reinforced{
-	dir = 8
+	dir = 8;
+	health = 1e+006
 	},
 /obj/structure/window/reinforced,
 /obj/machinery/atmospherics/pipe/manifold/visible/fuel,

@@ -7186,10 +7186,10 @@
 /area/maintenance/engineering/pumpstation)
 "eDQ" = (
 /obj/machinery/power/apc{
-	alarms_hidden = 1;
 	dir = 4;
 	name = "east bump";
-	pixel_x = 24
+	pixel_x = 24;
+	alarms_hidden = 1
 	},
 /obj/structure/cable/green{
 	icon_state = "0-8"
@@ -15637,12 +15637,18 @@
 /obj/effect/floor_decal/corner/green/border{
 	dir = 4
 	},
+/obj/structure/closet/crate/bin{
+	desc = "A large bin for medical and other personnel that deals with bio-grade waste.";
+	icon_closed = "biohazard";
+	icon_opened = "biohazardopen";
+	icon_state = "biohazard";
+	name = "biohazard bin"
+	},
 /obj/machinery/firealarm{
 	dir = 4;
 	layer = 3.3;
 	pixel_x = 26
 	},
-/obj/structure/closet/crate/biohazard,
 /turf/simulated/floor/tiled/white,
 /area/medical/virologyisolation)
 "jWT" = (
@@ -17000,9 +17006,11 @@
 /area/maintenance/research/lower)
 "kLo" = (
 /obj/structure/table/rack/shelf,
-/obj/item/stack/ore/phoron{
-	amount = 2
+/obj/item/ore/phoron{
+	pixel_x = 2;
+	pixel_y = 4
 	},
+/obj/item/ore/phoron,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/warehouse)
 "kLC" = (
@@ -18656,6 +18664,10 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 1
 	},
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = 24
+	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
@@ -18664,9 +18676,6 @@
 	},
 /obj/structure/cable{
 	icon_state = "4-8"
-	},
-/obj/machinery/firealarm{
-	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/hallway)
@@ -18884,6 +18893,10 @@
 /area/maintenance/evahallway)
 "mbr" = (
 /obj/machinery/computer/arcade,
+/turf/simulated/floor/tiled,
+/area/rnd/outpost/xenobiology/outpost_breakroom)
+"mbD" = (
+/obj/random/mob/mouse,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenobiology/outpost_breakroom)
 "mbJ" = (
@@ -26770,8 +26783,8 @@
 "qHS" = (
 /obj/machinery/power/smes/buildable{
 	RCon_tag = "Research Southwest Wing Subgrid";
-	cur_coils = 2;
-	output_attempt = 0
+	output_attempt = 0;
+	cur_coils = 2
 	},
 /obj/structure/cable/green,
 /obj/structure/cable/green{
@@ -27476,7 +27489,9 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/office)
 "rdW" = (
-/obj/machinery/vending/cola,
+/obj/machinery/vending/cola{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenobiology/outpost_breakroom)
 "rer" = (
@@ -28420,10 +28435,6 @@
 	},
 /obj/machinery/light,
 /obj/structure/cable/green,
-/obj/structure/dogbed{
-	name = "pet bed"
-	},
-/mob/living/simple_mob/animal/sif/sakimm/dexter,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenobiology/outpost_breakroom)
 "rJv" = (
@@ -47409,7 +47420,7 @@ wPH
 mLf
 jPz
 pdl
-dee
+mbD
 nYD
 srP
 eZh

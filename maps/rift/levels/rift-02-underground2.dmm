@@ -847,7 +847,8 @@
 /area/maintenance/lower/atmos)
 "cO" = (
 /obj/structure/window/reinforced{
-	dir = 8
+	dir = 8;
+	health = 1e+006
 	},
 /obj/structure/closet/radiation,
 /obj/item/clothing/glasses/meson,
@@ -3950,7 +3951,8 @@
 /obj/item/clothing/glasses/meson,
 /obj/item/clothing/glasses/meson,
 /obj/structure/window/reinforced{
-	dir = 8
+	dir = 8;
+	health = 1e+006
 	},
 /turf/simulated/floor,
 /area/engineering/engine_gas)
@@ -6903,7 +6905,8 @@
 "vP" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/window/reinforced{
-	dir = 8
+	dir = 8;
+	health = 1e+006
 	},
 /obj/machinery/shield_gen/external,
 /turf/simulated/floor/plating,
@@ -7852,7 +7855,8 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 8
+	dir = 8;
+	health = 1e+006
 	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/chief)
@@ -10654,7 +10658,8 @@
 /area/quartermaster/belterdock/refinery)
 "Ke" = (
 /obj/structure/window/reinforced{
-	dir = 8
+	dir = 8;
+	health = 1e+006
 	},
 /obj/structure/window/reinforced{
 	dir = 1
@@ -11980,7 +11985,8 @@
 /area/engineering/locker_room)
 "Oz" = (
 /obj/structure/window/reinforced{
-	dir = 8
+	dir = 8;
+	health = 1e+006
 	},
 /obj/machinery/computer/security/engineering{
 	dir = 4
@@ -12709,7 +12715,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/engineering_monitoring)
 "Rv" = (
-/obj/structure/closet/crate/corporate/nanotrasen,
+/obj/structure/closet/crate/nanotrasen,
 /turf/simulated/floor/reinforced,
 /area/rnd/secure_storage/lower)
 "Ry" = (
@@ -12803,7 +12809,8 @@
 /area/engineering/engine_eva)
 "RR" = (
 /obj/structure/window/reinforced{
-	dir = 8
+	dir = 8;
+	health = 1e+006
 	},
 /obj/structure/window/reinforced,
 /obj/machinery/computer/station_alert{

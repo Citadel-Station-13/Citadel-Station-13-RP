@@ -13,10 +13,10 @@
 	initialize_directions = 1;
 	internal_pressure_bound = 4000;
 	internal_pressure_bound_default = 4000;
-	on = 1;
 	pressure_checks = 2;
 	pressure_checks_default = 2;
-	pump_direction = 0
+	pump_direction = 0;
+	on = 1
 	},
 /turf/simulated/floor/reinforced/phoron,
 /area/engineering/atmos)
@@ -1989,7 +1989,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "eF" = (
-/obj/structure/closet/crate/corporate/nanotrasen,
+/obj/structure/closet/crate/nanotrasen,
 /obj/effect/floor_decal/industrial/warning/full,
 /obj/machinery/light/small{
 	dir = 8
@@ -2933,7 +2933,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "hX" = (
-/obj/structure/alien/weeds,
+/obj/effect/alien/weeds,
 /obj/structure/barricade/cutout/lusty,
 /turf/simulated/floor/plating,
 /area/engineering/atmos/hallway)
@@ -3243,6 +3243,7 @@
 /area/rift/surfacebase/underground/under1)
 "jl" = (
 /obj/machinery/door/window{
+	dir = 2;
 	req_one_access = list(10)
 	},
 /turf/simulated/floor/tiled/steel_ridged,
@@ -3897,15 +3898,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/engineering)
-"lD" = (
-/obj/machinery/atmospherics/pipe/simple/visible{
-	dir = 4
-	},
-/obj/machinery/firealarm{
-	pixel_y = 24
-	},
-/turf/simulated/floor/tiled,
-/area/engineering/atmos)
 "lF" = (
 /obj/structure/cable/green{
 	icon_state = "1-8"
@@ -4285,7 +4277,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "mO" = (
-/obj/structure/alien/weeds,
+/obj/effect/alien/weeds,
 /turf/simulated/floor/plating,
 /area/engineering/atmos/hallway)
 "mP" = (
@@ -4345,7 +4337,7 @@
 /turf/simulated/floor/tiled/kafel_full/blue,
 /area/crew_quarters/pool)
 "nj" = (
-/obj/structure/alien/weeds,
+/obj/effect/alien/weeds,
 /obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 22
@@ -4563,10 +4555,10 @@
 	initialize_directions = 1;
 	internal_pressure_bound = 4000;
 	internal_pressure_bound_default = 4000;
-	on = 1;
 	pressure_checks = 2;
 	pressure_checks_default = 2;
-	pump_direction = 0
+	pump_direction = 0;
+	on = 1
 	},
 /turf/simulated/floor/reinforced/oxygen,
 /area/engineering/atmos)
@@ -4812,6 +4804,7 @@
 	dir = 4
 	},
 /obj/machinery/firealarm{
+	dir = 2;
 	pixel_y = 24
 	},
 /obj/effect/floor_decal/borderfloorblack{
@@ -5403,10 +5396,10 @@
 	initialize_directions = 1;
 	internal_pressure_bound = 4000;
 	internal_pressure_bound_default = 4000;
-	on = 1;
 	pressure_checks = 2;
 	pressure_checks_default = 2;
-	pump_direction = 0
+	pump_direction = 0;
+	on = 1
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/engineering/atmos)
@@ -5884,10 +5877,10 @@
 "tm" = (
 /obj/structure/grille,
 /obj/machinery/power/apc{
-	alarms_hidden = 1;
 	dir = 4;
 	name = "east bump";
-	pixel_x = 24
+	pixel_x = 24;
+	alarms_hidden = 1
 	},
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/underground/under1)
@@ -6838,9 +6831,9 @@
 	initialize_directions = 1;
 	internal_pressure_bound = 4000;
 	internal_pressure_bound_default = 4000;
-	on = 1;
 	pressure_checks_default = 2;
-	pump_direction = 0
+	pump_direction = 0;
+	on = 1
 	},
 /turf/simulated/floor/bluegrid{
 	initial_gas_mix = "n2=100;TEMP=80";
@@ -6901,10 +6894,10 @@
 	initialize_directions = 1;
 	internal_pressure_bound = 4000;
 	internal_pressure_bound_default = 4000;
-	on = 1;
 	pressure_checks = 2;
 	pressure_checks_default = 2;
-	pump_direction = 0
+	pump_direction = 0;
+	on = 1
 	},
 /turf/simulated/floor/reinforced/n20,
 /area/engineering/atmos)
@@ -8758,7 +8751,9 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
 "Dq" = (
-/obj/machinery/door/firedoor/multi_tile,
+/obj/machinery/door/firedoor/multi_tile{
+	dir = 2
+	},
 /obj/machinery/door/airlock/multi_tile/metal{
 	dir = 4;
 	name = "Fighter Hangar";
@@ -8976,10 +8971,10 @@
 	initialize_directions = 1;
 	internal_pressure_bound = 4000;
 	internal_pressure_bound_default = 4000;
-	on = 1;
 	pressure_checks = 2;
 	pressure_checks_default = 2;
-	pump_direction = 0
+	pump_direction = 0;
+	on = 1
 	},
 /turf/simulated/floor/reinforced/carbon_dioxide,
 /area/engineering/atmos)
@@ -9280,9 +9275,9 @@
 	external_pressure_bound = 140;
 	external_pressure_bound_default = 140;
 	icon_state = "map_vent_out";
-	on = 1;
 	pressure_checks = 0;
-	pressure_checks_default = 0
+	pressure_checks_default = 0;
+	on = 1
 	},
 /turf/simulated/floor/bluegrid{
 	initial_gas_mix = "n2=100;TEMP=80";
@@ -10313,8 +10308,8 @@
 /turf/simulated/floor/tiled/kafel_full/beige,
 /area/crew_quarters/pool)
 "IM" = (
-/obj/structure/alien/weeds,
-/obj/structure/alien/resin/wall{
+/obj/effect/alien/weeds,
+/obj/effect/alien/resin/wall{
 	color = "#332342"
 	},
 /turf/simulated/floor/plating,
@@ -11139,7 +11134,7 @@
 /turf/simulated/floor/reinforced,
 /area/rnd/secure_storage/upper)
 "Ly" = (
-/obj/structure/alien/weeds/node,
+/obj/effect/alien/weeds/node,
 /turf/simulated/floor/plating,
 /area/engineering/atmos/hallway)
 "LC" = (
@@ -12111,6 +12106,10 @@
 /obj/machinery/light/spot{
 	dir = 4
 	},
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = 24
+	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "OM" = (
@@ -12932,9 +12931,12 @@
 "RP" = (
 /obj/structure/closet/crate/miningcar,
 /obj/effect/floor_decal/rust,
-/obj/item/stack/ore/coal{
-	amount = 6
-	},
+/obj/item/ore/coal,
+/obj/item/ore/coal,
+/obj/item/ore/coal,
+/obj/item/ore/coal,
+/obj/item/ore/coal,
+/obj/item/ore/coal,
 /turf/simulated/floor/tiled,
 /area/maintenance/elevator)
 "RQ" = (
@@ -13120,8 +13122,8 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/hallway/primary/underone)
 "SG" = (
-/obj/structure/alien/weeds,
-/obj/structure/alien/resin/membrane{
+/obj/effect/alien/weeds,
+/obj/effect/alien/resin/membrane{
 	color = "#332342"
 	},
 /turf/simulated/floor/plating,
@@ -13300,7 +13302,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
 "TB" = (
-/obj/structure/alien/weeds,
+/obj/effect/alien/weeds,
 /obj/structure/barricade/cutout/fukken_xeno,
 /turf/simulated/floor/plating,
 /area/engineering/atmos/hallway)
@@ -13509,6 +13511,7 @@
 	dir = 1
 	},
 /obj/machinery/firealarm{
+	dir = 2;
 	pixel_y = 24
 	},
 /obj/machinery/door/firedoor/glass{
@@ -13906,6 +13909,7 @@
 /obj/effect/floor_decal/industrial/warning,
 /obj/structure/railing,
 /obj/machinery/firealarm{
+	dir = 2;
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -14596,10 +14600,10 @@
 	initialize_directions = 1;
 	internal_pressure_bound = 4000;
 	internal_pressure_bound_default = 4000;
-	on = 1;
 	pressure_checks = 2;
 	pressure_checks_default = 2;
-	pump_direction = 0
+	pump_direction = 0;
+	on = 1
 	},
 /turf/simulated/floor/reinforced/nitrogen,
 /area/engineering/atmos)
@@ -14888,10 +14892,10 @@
 	initialize_directions = 1;
 	internal_pressure_bound = 4000;
 	internal_pressure_bound_default = 4000;
-	on = 1;
 	pressure_checks = 2;
 	pressure_checks_default = 2;
-	pump_direction = 0
+	pump_direction = 0;
+	on = 1
 	},
 /turf/simulated/floor/reinforced/airmix,
 /area/engineering/atmos)
@@ -32665,7 +32669,7 @@ Xp
 mQ
 if
 eT
-lD
+VH
 jN
 OL
 VH

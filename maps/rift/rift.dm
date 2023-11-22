@@ -90,7 +90,7 @@
 
 	station_name  = "NSB Atlas"
 	station_short = "Atlas"
-	dock_name     = "NTS Demeter"
+	dock_name     = "Lyth'aal Colony"
 	dock_type     = "surface"
 	boss_name     = "Central Command"
 	boss_short    = "CentCom"
@@ -98,15 +98,15 @@
 	company_short = "NT"
 	starsys_name  = "Lythios-43"
 
-	shuttle_docked_message = "The scheduled NSV Herrera shuttle flight to the %dock_name% orbital relay has arrived. It will depart in approximately %ETD%."
-	shuttle_leaving_dock = "The NSV Herrera has left the station. Estimate %ETA% until the shuttle arrives at the %dock_name% orbital relay."
-	shuttle_called_message = "A scheduled crew transfer to the %dock_name% orbital relay is occuring. The NSV Herrera will be arriving shortly. Those departing should proceed to departures within %ETA%."
-	shuttle_name = "NSV Herrera"
+	shuttle_docked_message = "The scheduled White Line tram to the %dock_name% has arrived. It will depart in approximately %ETD%."
+	shuttle_leaving_dock = "The NSV Herrera has left the station. Estimate %ETA% until the shuttle arrives at the %dock_name%."
+	shuttle_called_message = "A scheduled crew transfer to the %dock_name% is occuring. The White Line tram will be arriving shortly. Those departing should proceed to departures within %ETA%."
+	shuttle_name = "White Line Tram"
 	shuttle_recall_message = "The scheduled crew transfer flight has been cancelled."
-	emergency_shuttle_docked_message = "The evacuation flight has landed at the landing pad. You have approximately %ETD% to board the vessel."
-	emergency_shuttle_leaving_dock = "The emergency flight has left the station. Estimate %ETA% until the vessel arrives at %dock_name% orbital relay."
-	emergency_shuttle_called_message = "An emergency evacuation has begun, and an emergency response flight has been called. It will arrive at the landing pad in approximately %ETA%."
-	emergency_shuttle_recall_message = "The evacuation flight has been cancelled."
+	emergency_shuttle_docked_message = "The evacuation tram has landed at the landing pad. You have approximately %ETD% to board the tram."
+	emergency_shuttle_leaving_dock = "The emergency tram has left the station. Estimate %ETA% until the vessel arrives at %dock_name% tram station."
+	emergency_shuttle_called_message = "An emergency evacuation has begun, and an emergency response tram has been called. It will arrive at the tram station in approximately %ETA%."
+	emergency_shuttle_recall_message = "The evacuation tram has been cancelled."
 
 	station_networks = list(
 							NETWORK_CARGO,
