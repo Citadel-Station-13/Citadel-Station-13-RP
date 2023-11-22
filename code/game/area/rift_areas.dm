@@ -148,6 +148,10 @@
 	name = "\improper Shuttle Pad"
 	icon_state = "dk_yellow"
 
+/area/rift/surfacebase/tram
+	name = "\improper Atlas Tram station"
+	icon_state = "dk_yellow"
+
 /area/maintenance/substation/atmos
 	name = "\improper Atmospherics Substation"
 
@@ -1207,3 +1211,40 @@ Do this eventually. */
 
 /area/rift/exterior/mineshaft
 	name = "\improper Abandoned Mineshaft"
+
+
+/area/rift/tunnels
+	name = "\improper White Line Transit Tunnel"
+
+/area/rift/tunnels/maint
+	name = "\improper White Line Maintnence"
+
+/area/rift/tunnels/sewer
+	name = "\improper Abandoned Sewage Processing"
+
+/area/rift/tunnels/resevoir
+	name = "\improper Abandoned Sewer Resevoir"
+
+/area/rift/tunnels/barracks
+	name = "\improper Abandoned Barracks"
+
+/area/rift/tunnels/officer
+	name = "\improper Commissar's Quarters"
+
+/area/rift/tunnels/mess
+	name = "\improper Canteen"
+
+/area/rift/tunnels/gym
+	name = "\improper Abandoned Gym"
+
+/area/rift/tunnels/kitchen
+	name = "\improper Canteen Kitchen"
+
+/area/rift/tunnels/hospital
+	name = "\improper Improvised Hospital"
+
+/area/rift/tunnels/halls
+	name = "\improper Lost Barracks Halls"
+
+/area/shuttle/escape/tram
+	name = "\improper White Line Tram"
