@@ -42,7 +42,7 @@ interface TGUIGuidebookReagent {
   desc: string;
 
   // alcohol strength
-  alcoholStrength: number;
+  alcoholStrength: number | null;
 }
 
 interface TGUIGuidebookReaction {

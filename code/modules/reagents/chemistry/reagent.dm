@@ -299,7 +299,15 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
  * Guidebook Data for TGUIGuidebookReagent
  */
 /datum/reagent/proc/tgui_guidebook_data()
-	#warn impl
+	return list(
+		"id" = id,
+		"name" = display_name || name,
+		"desc" = display_desc || desc,
+		"flags" = reagent_flags,
+		"guidebookFlags" = reagent_guidebook_flags,
+		// todo: should this be here?
+		"alcoholStrength" = null,
+	)
 
 //* Holder - Application
 

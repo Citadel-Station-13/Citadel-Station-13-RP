@@ -202,13 +202,13 @@
 /**
  * Guidebook Data for TGUIGuidebookReaction
  */
-/datum/chemical_reaction/proc/tgui_guidebook_reaction()
+/datum/chemical_reaction/proc/tgui_guidebook_data()
 	return list(
 		"name" = display_name || name,
 		"desc" = display_desc || desc,
 		"id" = id,
-		"flags" = reagent_flags,
-		"guidebookFlags" = reagent_guidebook_flags,
+		"flags" = NONE,
+		"guidebookFlags" = reaction_guidebook_flags,
 		// below are stubbed and overridden on subtypes
 		// todo: why is this the case?
 		"alcoholStrength" = null,
