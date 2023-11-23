@@ -12,11 +12,15 @@
  * @license MIT
  */
 
-export interface TGUIGuidebookReagentsData {
+import { useModule } from "../../backend";
+import { Modular } from "../../layouts/Modular";
+import { TGUIGuidebookSectionData } from "./TGUIGuidebook";
+
+export interface TGUIGuidebookReagentsData extends TGUIGuidebookSectionData {
   // id to entry
-  reagents: Record<string, TGUIGuidebookReagent>;
+  readonly reagents: Record<string, TGUIGuidebookReagent>;
   // id to entry
-  reactions: Record<string, TGUIGuidebookReaction>;
+  readonly reactions: Record<string, TGUIGuidebookReaction>;
 }
 
 enum ReagentGuidebookFlags {
@@ -65,5 +69,11 @@ interface TGUIGuidebookReaction {
 }
 
 export const TGUIGuidebookReagents = (props: TGUIGuidebookReagentsData, context) => {
+  let { act, data } = useModule<TGUIGuidebookReagentsData>(context);
 
+  return (
+    <Modular>
+      Test
+    </Modular>
+  );
 };

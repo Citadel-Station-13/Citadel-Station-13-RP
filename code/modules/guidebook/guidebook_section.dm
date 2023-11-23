@@ -23,6 +23,5 @@
 	return list(
 		"$tgui" = tgui_module,
 		"$src" = REF(src),
-		"name" = title,
-		"data" = section.section_data(),
-	)
+		"title" = title,
+	) | section_data()

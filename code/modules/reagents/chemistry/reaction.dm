@@ -213,7 +213,6 @@
 		// todo: why is this the case?
 		"alcoholStrength" = null,
 	)
-	#warn impl
 
 
 /* Most medication reactions, and their precursors */
