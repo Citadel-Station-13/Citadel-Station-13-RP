@@ -200,9 +200,9 @@
 //* Guidebook
 
 /**
- * Guidebook Data for TGUIGuidebookReaction
+ * Guidebook Data for TGUIGuidebookReagent
  */
-/datum/reagent/proc/tgui_guidebook_reaction()
+/datum/reagent/proc/tgui_guidebook_reagent()
 	return list(
 		"name" = display_name || name,
 		"desc" = display_desc || desc,
@@ -211,7 +211,7 @@
 		"guidebookFlags" = reagent_guidebook_flags,
 		// below are stubbed and overridden on subtypes
 		// todo: why is this the case?
-		"alcoholStrength" = 0,
+		"alcoholStrength" = null,
 	)
 	#warn impl
 
