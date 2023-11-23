@@ -21,7 +21,8 @@
 
 /datum/prototype/guidebook_section/proc/interface_data()
 	return list(
-		"name" = section.title,
-		"tgui" = section.tgui_module,
+		"$tgui" = tgui_module,
+		"$src" = REF(src),
+		"name" = title,
 		"data" = section.section_data(),
 	)

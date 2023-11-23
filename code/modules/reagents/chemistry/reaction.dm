@@ -200,9 +200,9 @@
 //* Guidebook
 
 /**
- * Guidebook Data for TGUIGuidebookReagent
+ * Guidebook Data for TGUIGuidebookReaction
  */
-/datum/reagent/proc/tgui_guidebook_reagent()
+/datum/chemical_reaction/proc/tgui_guidebook_reaction()
 	return list(
 		"name" = display_name || name,
 		"desc" = display_desc || desc,

@@ -8,7 +8,8 @@ import { Window } from "../../layouts";
 import { TGUIGuidebookSectionData } from "./TGUIGuidebookSection";
 
 interface TGUIGuidebookContext {
-  section: TGUIGuidebookSectionData[];
+  // module id to name
+  sections: Record<string, string>;
 }
 
 export const TGUIGuidebook = (props, context) => {

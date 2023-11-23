@@ -13,7 +13,10 @@
  */
 
 export interface TGUIGuidebookReagentsData {
-
+  // id to entry
+  reagents: Record<string, TGUIGuidebookReagent>;
+  // id to entry
+  reactions: Record<string, TGUIGuidebookReaction>;
 }
 
 enum ReagentGuidebookFlags {

@@ -2732,6 +2732,7 @@
 #include "code\modules\ghostroles\roles\sapient_mob.dm"
 #include "code\modules\ghosttrap\trap.dm"
 #include "code\modules\guidebook\guidebook.dm"
+#include "code\modules\guidebook\guidebook_section.dm"
 #include "code\modules\guidebook\sections\reagents.dm"
 #include "code\modules\hardsuits\_rig.dm"
 #include "code\modules\hardsuits\activation.dm"

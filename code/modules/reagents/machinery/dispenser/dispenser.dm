@@ -207,6 +207,9 @@
 		if("toggle_charge")
 			charging = !charging
 			return TRUE
+		if("guide")
+			#warn impl
+			return TRUE
 		if("reagent")
 			if(isnull(inserted?.reagents))
 				return TRUE
