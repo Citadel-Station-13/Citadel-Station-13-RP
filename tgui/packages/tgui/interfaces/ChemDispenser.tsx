@@ -162,7 +162,10 @@ export const ChemDispenser = (props, context) => {
             ))
           }
         </Section>
-        <Section title="Synthesis">
+        <Section title="Synthesis" buttons={
+          <Button icon="question"onClick={() =>
+            act('guide')} />
+        }>
           {sortedReagents.map((reagent) => (
             <Button
               icon="tint"

@@ -208,7 +208,7 @@
 			charging = !charging
 			return TRUE
 		if("guide")
-			#warn impl
+			GLOB.guidebook.open(usr, list(/datum/prototype/guidebook_section/reagents))
 			return TRUE
 		if("reagent")
 			if(isnull(inserted?.reagents))
