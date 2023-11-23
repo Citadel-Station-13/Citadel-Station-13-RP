@@ -14,9 +14,9 @@ import { SectionProps } from "../../components/Section";
 export const REAGENT_STORAGE_UNIT_NAME = "u";
 
 interface ReagentContentsProps extends SectionProps {
-  buttons?: InfernoNode;
-  reagentButtons?: Function; // called to generate buttons with (id)
-  reagents: ReagentContentsData;
+  readonly buttons?: InfernoNode;
+  readonly reagentButtons?: Function; // called to generate buttons with (id)
+  readonly reagents: ReagentContentsData;
 }
 
 export type ReagentContentsData = Array<ReagentContentsEntry>;

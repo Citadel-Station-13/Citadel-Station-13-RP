@@ -43,10 +43,10 @@ export interface IngredientNeed {
 }
 
 interface IngredientsDisplayProps {
-  ingredients: IngredientsAvailable;
-  lazy: BooleanLike;
-  title?: string;
-  vertical: boolean;
+  readonly ingredients: IngredientsAvailable;
+  readonly lazy: BooleanLike;
+  readonly title?: string;
+  readonly vertical: boolean;
 }
 
 export const IngredientsDisplay = (props: IngredientsDisplayProps, context) => {
@@ -61,12 +61,12 @@ export const IngredientsDisplay = (props: IngredientsDisplayProps, context) => {
 };
 
 interface IngredientsProps {
-  need: IngredientsNeeded;
-  available: IngredientsAvailable;
-  selection: BooleanLike;
-  selected?: IngredientsSelected;
-  vertical: boolean;
-  select: (number, string) => void; // called with (index, data).
+  readonly need: IngredientsNeeded;
+  readonly available: IngredientsAvailable;
+  readonly selection: BooleanLike;
+  readonly selected?: IngredientsSelected;
+  readonly vertical: boolean;
+  readonly select: (number, string) => void; // called with (index, data).
 }
 
 export const Ingredients = (props: IngredientsProps, context) => {

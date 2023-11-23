@@ -43,7 +43,7 @@ export interface DetailedMaterial extends Material {
 }
 
 interface MaterialStorageProps extends MaterialRenderProps {
-  eject: (string, number) => void; // called with (id, sheets).
+  readonly eject: (string, number) => void; // called with (id, sheets).
 }
 
 export const MaterialStorage = (props: MaterialStorageProps, context) => {
@@ -67,14 +67,14 @@ export const MaterialStorage = (props: MaterialStorageProps, context) => {
 };
 
 interface MaterialRenderProps extends SectionProps {
-  horizontal?: BooleanLike;
-  materialContext: MaterialsContext;
+  readonly horizontal?: BooleanLike;
+  readonly materialContext: MaterialsContext;
   // id to number
-  materialList: Record<string, number>;
+  readonly materialList: Record<string, number>;
   // id map to an element to render below/to the side respectively for vertical/horizontal
-  materialButtons?: (id) => InfernoNode;
+  readonly materialButtons?: (id) => InfernoNode;
   // icon scale factor
-  materialScale?: number;
+  readonly materialScale?: number;
 }
 
 export const MaterialRender = (props: MaterialRenderProps, context) => {

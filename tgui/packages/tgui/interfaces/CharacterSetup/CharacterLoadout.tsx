@@ -60,18 +60,18 @@ export enum LoadoutCustomizations {
 }
 
 interface LoadoutProps extends SectionProps {
-  gearContext: LoadoutContext;
+  readonly gearContext: LoadoutContext;
   // ids
-  gearAllowed: string[];
-  gearData: LoadoutData;
-  slotChangeAct?: (index: number) => void;
-  slotRenameAct?: (index: number, name?: string) => void;
-  toggleAct?: (id: string) => void;
-  customizeNameAct?: (id: string, name?: string) => void;
-  customizeDescAct?: (id: string, desc?: string) => void;
-  customizeColorAct?: (id: string, color?: ByondAtomColor) => void;
-  tweakAct?: (id: string, tweakId: string) => void;
-  clearSlotAct?: (index: number) => void;
+  readonly gearAllowed: string[];
+  readonly gearData: LoadoutData;
+  readonly slotChangeAct?: (index: number) => void;
+  readonly slotRenameAct?: (index: number, name?: string) => void;
+  readonly toggleAct?: (id: string) => void;
+  readonly customizeNameAct?: (id: string, name?: string) => void;
+  readonly customizeDescAct?: (id: string, desc?: string) => void;
+  readonly customizeColorAct?: (id: string, color?: ByondAtomColor) => void;
+  readonly tweakAct?: (id: string, tweakId: string) => void;
+  readonly clearSlotAct?: (index: number) => void;
 }
 
 export const CharacterLoadout = (props: LoadoutProps, context) => {
@@ -213,13 +213,13 @@ export const CharacterLoadout = (props: LoadoutProps, context) => {
 };
 
 interface CharacterLoadoutEntryProps {
-  entry: LoadoutEntry;
-  selected: LoadoutSelected | null;
-  toggleAct?: (id: string) => void;
-  customizeNameAct?: (id: string, name?: string) => void;
-  customizeDescAct?: (id: string, desc?: string) => void;
-  customizeColorAct?: (id: string, color?: ByondAtomColor) => void;
-  tweakAct?: (id: string, tweakId: string) => void;
+  readonly entry: LoadoutEntry;
+  readonly selected: LoadoutSelected | null;
+  readonly toggleAct?: (id: string) => void;
+  readonly customizeNameAct?: (id: string, name?: string) => void;
+  readonly customizeDescAct?: (id: string, desc?: string) => void;
+  readonly customizeColorAct?: (id: string, color?: ByondAtomColor) => void;
+  readonly tweakAct?: (id: string, tweakId: string) => void;
 }
 
 interface CharacterLoadoutEntryState {

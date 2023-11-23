@@ -2,13 +2,13 @@ import { InfernoNode } from "inferno";
 import { Button } from "../../components";
 
 export const PageButton = <P extends unknown>(props: {
-  currentPage: P,
-  page: P,
-  otherActivePages?: P[],
+  readonly currentPage: P,
+  readonly page: P,
+  readonly otherActivePages?: P[],
 
-  setPage: (page: P) => void,
+  readonly setPage: (page: P) => void,
 
-  children?: InfernoNode,
+  readonly children?: InfernoNode,
 }) => {
   const pageIsActive = props.currentPage === props.page
     || (

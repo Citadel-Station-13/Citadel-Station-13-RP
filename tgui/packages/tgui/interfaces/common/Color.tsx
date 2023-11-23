@@ -90,10 +90,10 @@ export type ByondAtomColor =
   ByondColorMatrixRGBC;
 
 interface ColorPickerProps extends BoxProps {
-  allowMatrix?: boolean;
-  allowAlpha?: boolean;
-  currentColor: ByondAtomColor;
-  setColor: (ByondAtomColor) => void;
+  readonly allowMatrix?: boolean;
+  readonly allowAlpha?: boolean;
+  readonly currentColor: ByondAtomColor;
+  readonly setColor: (ByondAtomColor) => void;
 }
 
 interface ColorPickerState {

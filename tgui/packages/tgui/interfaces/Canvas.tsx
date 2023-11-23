@@ -32,7 +32,7 @@ const toMassPaintFormat = (data: PointData[]) => {
 
 class PaintCanvas extends Component<PaintCanvasProps> {
   canvasRef: RefObject<HTMLCanvasElement>;
-  baseImageData: Color[][]
+  baseImageData: Color[][];
   modifiedElements: PointData[];
   onCanvasModified: (data: PointData[]) => void;
   drawing: boolean;

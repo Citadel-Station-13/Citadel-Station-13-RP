@@ -5,9 +5,9 @@ import { FullGasContext } from "./common/Atmos";
 
 interface AtmosGuideProps {
   // gas context to pull from - must be full
-  gasContext: FullGasContext
+  readonly gasContext: FullGasContext
   // should we render as a section or modal? true for section.
-  embedded?: boolean;
+  readonly embedded?: boolean;
 }
 
 export const AtmosGuide = (props: AtmosGuideProps) => {

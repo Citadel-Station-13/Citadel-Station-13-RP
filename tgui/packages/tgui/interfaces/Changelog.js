@@ -92,7 +92,7 @@ export class Changelog extends Component {
           self.setData(yaml.load(result, { schema: yaml.CORE_SCHEMA }));
         }
       });
-  }
+  };
 
   componentDidMount() {
     const { data: { dates = [] } } = useBackend(this.context);

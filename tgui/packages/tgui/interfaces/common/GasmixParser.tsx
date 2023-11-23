@@ -12,14 +12,14 @@ export type Gasmix = {
 };
 
 type GasmixParserProps = {
-  gasmix: Gasmix;
-  gasesOnClick?: (gas_id: string) => void;
-  temperatureOnClick?: () => void;
-  volumeOnClick?: () => void;
-  pressureOnClick?: () => void;
-  reactionOnClick?: (reaction_id: string) => void;
+  readonly gasmix: Gasmix;
+  readonly gasesOnClick?: (gas_id: string) => void;
+  readonly temperatureOnClick?: () => void;
+  readonly volumeOnClick?: () => void;
+  readonly pressureOnClick?: () => void;
+  readonly reactionOnClick?: (reaction_id: string) => void;
   // Whether we need to show the number of the reaction or not
-  detailedReactions?: boolean; 
+  readonly detailedReactions?: boolean; 
 };
 
 export const GasmixParser = (props: GasmixParserProps, context) => {

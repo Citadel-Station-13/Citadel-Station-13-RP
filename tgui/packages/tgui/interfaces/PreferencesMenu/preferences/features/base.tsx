@@ -46,12 +46,12 @@ export type FeatureValueProps<
   TSending = TReceiving,
   TServerData = undefined,
 > = {
-  act: typeof sendAct,
-  featureId: string,
-  handleSetValue: (newValue: TSending) => void,
-  serverData: TServerData | undefined,
-  shrink?: boolean,
-  value: TReceiving,
+  readonly act: typeof sendAct,
+  readonly featureId: string,
+  readonly handleSetValue: (newValue: TSending) => void,
+  readonly serverData: TServerData | undefined,
+  readonly shrink?: boolean,
+  readonly value: TReceiving,
 };
 
 export const FeatureColorInput = (props: FeatureValueProps<string>) => {
@@ -147,11 +147,11 @@ const capitalizeFirstLetter = (text: string) => (
 );
 
 export const StandardizedDropdown = (props: {
-  choices: string[],
-  disabled?: boolean,
-  displayNames: Record<string, InfernoNode>,
-  onSetValue: (newValue: string) => void,
-  value: string,
+  readonly choices: string[],
+  readonly disabled?: boolean,
+  readonly displayNames: Record<string, InfernoNode>,
+  readonly onSetValue: (newValue: string) => void,
+  readonly value: string,
 }) => {
   const {
     choices,
@@ -181,7 +181,7 @@ export const StandardizedDropdown = (props: {
 
 export const FeatureDropdownInput = (
   props: FeatureValueProps<string, string, FeatureChoicedServerData> & {
-    disabled?: boolean,
+    readonly disabled?: boolean,
   },
 ) => {
   const serverData = props.serverData;
@@ -290,12 +290,12 @@ export const FeatureNumberInput = (
 };
 
 export const FeatureValueInput = (props: {
-  feature: Feature<unknown>,
-  featureId: string,
-  shrink?: boolean,
-  value: unknown,
+  readonly feature: Feature<unknown>,
+  readonly featureId: string,
+  readonly shrink?: boolean,
+  readonly value: unknown,
 
-  act: typeof sendAct,
+  readonly act: typeof sendAct,
 }, context) => {
   const { data } = useBackend<PreferencesMenuData>(context);
 

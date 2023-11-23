@@ -22,7 +22,7 @@ type HotkeysHelpData = {
 };
 
 type KeyBindingBoxProps = {
-  keycode: string,
+  readonly keycode: string,
 }
 
 type ModkeyProps = {

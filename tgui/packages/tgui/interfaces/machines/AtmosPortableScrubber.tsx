@@ -8,11 +8,11 @@ import { AtmosFilterList, AtmosGasGroupFlags, AtmosGasIDs, GasContext } from "..
 import { AtmosPortable } from "../common/AtmosPortable";
 
 interface AtmosPortableScrubberControlProps extends SectionProps{
-  atmosContext: GasContext;
-  scrubbingIds: AtmosGasIDs;
-  scrubbingGroups: AtmosGasGroupFlags;
-  toggleId?: (id) => void;
-  toggleGroup?: (group) => void;
+  readonly atmosContext: GasContext;
+  readonly scrubbingIds: AtmosGasIDs;
+  readonly scrubbingGroups: AtmosGasGroupFlags;
+  readonly toggleId?: (id) => void;
+  readonly toggleGroup?: (group) => void;
 }
 
 export const AtmosPortableScrubberControl = (props: AtmosPortableScrubberControlProps, context) => {
