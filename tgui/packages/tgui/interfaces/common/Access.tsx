@@ -24,7 +24,9 @@ export interface AccessListProps {
   readonly access: Array<Access>, // all available accesses
   // override: what accesses to show. must be subset of access.
   readonly accessShown?: AccessId[],
-  readonly uid: string, // must be unique in a window, to avoid localstate collisions.
+  // must be unique in a window, to avoid localstate collisions.
+  // eslint-disable-next-line react/no-unused-prop-types
+  readonly uid: string,
   readonly fill?: boolean,
 }
 

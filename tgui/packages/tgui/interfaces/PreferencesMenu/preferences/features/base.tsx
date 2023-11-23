@@ -46,10 +46,15 @@ export type FeatureValueProps<
   TSending = TReceiving,
   TServerData = undefined,
 > = {
+  // eslint-disable-next-line react/no-unused-prop-types
   readonly act: typeof sendAct,
+  // eslint-disable-next-line react/no-unused-prop-types
   readonly featureId: string,
+  // eslint-disable-next-line react/no-unused-prop-types
   readonly handleSetValue: (newValue: TSending) => void,
+  // eslint-disable-next-line react/no-unused-prop-types
   readonly serverData: TServerData | undefined,
+  // eslint-disable-next-line react/no-unused-prop-types
   readonly shrink?: boolean,
   readonly value: TReceiving,
 };

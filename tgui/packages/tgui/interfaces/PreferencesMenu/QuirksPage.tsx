@@ -97,6 +97,7 @@ const QuirkList = (props: {
 
         if (quirk.failTooltip) {
           return (
+          // eslint-disable-next-line react/jsx-key
             <Tooltip content={quirk.failTooltip}>
               {child}
             </Tooltip>

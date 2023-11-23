@@ -19,7 +19,7 @@ type GasmixParserProps = {
   readonly pressureOnClick?: () => void;
   readonly reactionOnClick?: (reaction_id: string) => void;
   // Whether we need to show the number of the reaction or not
-  readonly detailedReactions?: boolean; 
+  readonly detailedReactions?: boolean;
 };
 
 export const GasmixParser = (props: GasmixParserProps, context) => {
@@ -104,12 +104,14 @@ export const GasmixParser = (props: GasmixParserProps, context) => {
           {reactions.length
             ? reactions.map((reaction) =>
               reactionOnClick ? (
+              // eslint-disable-next-line react/jsx-key
                 <Box mb="0.5em">
                   <Button
                     content={reaction[1]}
                     onClick={() => reactionOnClick(reaction[0])}
                   />
                 </Box>
+              // eslint-disable-next-line react/jsx-key
               ) : (<div>{reaction[1]}</div>)
             )
             : 'No reactions detected'}
