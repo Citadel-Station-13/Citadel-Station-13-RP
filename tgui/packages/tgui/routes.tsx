@@ -2,6 +2,8 @@
  * @file
  * @copyright 2020 Aleksej Komarov
  * @license MIT
+ *
+ * todo: rewrite directlyRouteComponent and other stuff? ~silicons
  */
 
 import { selectBackend, useBackend } from './backend';
