@@ -30,40 +30,40 @@ enum ReactionGuidebookFlags {
 }
 
 interface TGUIGuidebookReagent {
-  /// id string
+  // id string
   id: string;
-  /// reagent flags: currently untyped because there are none
+  // reagent flags: currently untyped because there are none
   flags: number;
-  /// reagent guidebook flags
+  // reagent guidebook flags
   guidebookFlags: ReagentGuidebookFlags;
-  /// name string
+  // name string
   name: string;
-  /// description string
+  // description string
   desc: string;
 
-  /// alcohol strength
+  // alcohol strength
   alcoholStrength: number;
 }
 
 interface TGUIGuidebookReaction {
-  /// id string
+  // id string
   id: string;
-  /// reaction flags: currently untyped because there are none
+  // reaction flags: currently untyped because there are none
   flags: number;
-  /// reaction guidebook flags
+  // reaction guidebook flags
   guidebookFlags: ReactionGuidebookFlags;
-  /// name string
+  // name string
   name: string;
-  /// description string
+  // description string
   desc: string;
-  /// required reagent ids
+  // required reagent ids
   requiredReagents: string[];
-  /// result reagent id
+  // result reagent id
   resultReagent: string;
-  /// result reagent amount
+  // result reagent amount
   resultAmount: number;
 }
 
 export const TGUIGuidebookReagents = (props: TGUIGuidebookReagentsData, context) => {
 
-}
+};
