@@ -5051,24 +5051,10 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_wing)
 "ejb" = (
-/obj/structure/closet{
-	name = "materials"
-	},
-/obj/fiftyspawner/steel,
-/obj/fiftyspawner/steel,
-/obj/fiftyspawner/steel,
-/obj/fiftyspawner/steel,
-/obj/fiftyspawner/steel,
-/obj/fiftyspawner/glass,
-/obj/fiftyspawner/glass,
-/obj/fiftyspawner/glass,
-/obj/fiftyspawner/glass,
-/obj/item/stack/material/plasteel{
-	amount = 10
-	},
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/structure/closet/crate/robotics,
 /turf/simulated/floor/tiled/old_cargo/purple,
 /area/assembly/robotics)
 "ejt" = (
@@ -16434,38 +16420,13 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medical_restroom)
 "nMh" = (
-/obj/structure/closet{
-	name = "mechanical equipment"
-	},
-/obj/item/clothing/head/welding{
-	pixel_x = -3;
-	pixel_y = 5
-	},
-/obj/item/clothing/head/welding{
-	pixel_x = -3;
-	pixel_y = 5
-	},
-/obj/item/clothing/glasses/welding,
-/obj/item/clothing/glasses/welding,
-/obj/item/storage/toolbox/mechanical,
-/obj/item/storage/toolbox/mechanical,
-/obj/item/multitool{
-	pixel_x = 3
-	},
-/obj/item/tool/crowbar,
-/obj/item/tool/crowbar,
-/obj/item/storage/belt/utility,
-/obj/item/storage/toolbox/electrical{
-	pixel_x = 1;
-	pixel_y = 6
-	},
 /obj/machinery/requests_console{
 	department = "Robotics";
 	departmentType = 2;
 	name = "Robotics RC";
 	pixel_y = 30
 	},
-/obj/item/duct_tape_roll,
+/obj/structure/closet/secure_closet/robotics,
 /turf/simulated/floor/tiled/old_cargo/purple,
 /area/assembly/robotics)
 "nMp" = (
@@ -21031,60 +20992,6 @@
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab/containment_two)
 "rdw" = (
-/obj/structure/closet{
-	name = "robotics parts"
-	},
-/obj/item/cell/high{
-	maxcharge = 15000;
-	pixel_x = 5;
-	pixel_y = -5
-	},
-/obj/item/cell/high{
-	maxcharge = 15000;
-	pixel_x = 5;
-	pixel_y = -5
-	},
-/obj/item/cell/high{
-	maxcharge = 15000;
-	pixel_x = 5;
-	pixel_y = -5
-	},
-/obj/item/cell/high{
-	maxcharge = 15000;
-	pixel_x = 5;
-	pixel_y = -5
-	},
-/obj/item/storage/firstaid/regular{
-	empty = 1;
-	name = "First-Aid (empty)"
-	},
-/obj/item/storage/firstaid/regular{
-	empty = 1;
-	name = "First-Aid (empty)"
-	},
-/obj/item/storage/firstaid/regular{
-	empty = 1;
-	name = "First-Aid (empty)"
-	},
-/obj/item/healthanalyzer,
-/obj/item/healthanalyzer,
-/obj/item/healthanalyzer,
-/obj/item/flash/synthetic,
-/obj/item/flash/synthetic,
-/obj/item/flash/synthetic,
-/obj/item/flash/synthetic,
-/obj/item/flash/synthetic,
-/obj/item/flash/synthetic,
-/obj/item/stack/cable_coil,
-/obj/item/stack/cable_coil,
-/obj/item/assembly/prox_sensor{
-	pixel_x = -8;
-	pixel_y = 4
-	},
-/obj/item/assembly/prox_sensor{
-	pixel_x = -8;
-	pixel_y = 4
-	},
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
