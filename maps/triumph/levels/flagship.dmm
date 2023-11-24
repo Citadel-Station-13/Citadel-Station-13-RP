@@ -69,13 +69,12 @@
 	dir = 1
 	},
 /obj/structure/table/rack,
-/obj/item/gun/energy/laser,
-/obj/item/gun/energy/laser,
-/obj/item/gun/energy/laser,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/window/reinforced{
 	dir = 4
 	},
+/obj/item/gun/energy/sniperrifle,
+/obj/item/gun/energy/sniperrifle,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -95,10 +94,10 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/item/gun/energy/gun,
-/obj/item/gun/energy/gun,
-/obj/item/gun/energy/gun,
-/obj/item/gun/energy/gun,
+/obj/item/gun/energy/gun/combat,
+/obj/item/gun/energy/gun/combat,
+/obj/item/gun/energy/gun/combat,
+/obj/item/gun/energy/gun/combat,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -172,6 +171,9 @@
 	icon_state = "white"
 	},
 /area/centcom/medical)
+"aG" = (
+/turf/unsimulated/wall,
+/area/centcom/specops/dock)
 "aH" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /obj/effect/floor_decal/borderfloorblack{
@@ -285,14 +287,6 @@
 	icon_state = "dark"
 	},
 /area/centcom/specops)
-"aW" = (
-/obj/structure/shuttle/engine/propulsion{
-	dir = 8;
-	icon_state = "burst_l"
-	},
-/turf/unsimulated/floor/techfloor_grid,
-/turf/simulated/shuttle/plating/airless/carry,
-/area/shuttle/specops/centcom)
 "aX" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/orange,
@@ -510,8 +504,7 @@
 	dir = 8
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
@@ -662,6 +655,12 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
+"cf" = (
+/obj/machinery/door/blast/regular{
+	dir = 4
+	},
+/turf/unsimulated/wall,
+/area/centcom/specops/dock)
 "cg" = (
 /obj/effect/floor_decal/industrial/warning/dust/corner{
 	dir = 1
@@ -669,18 +668,6 @@
 /obj/structure/railing,
 /turf/unsimulated/floor/steel,
 /area/centcom/evac)
-"ch" = (
-/obj/machinery/computer/security/telescreen{
-	desc = "";
-	name = "Spec. Ops. Monitor";
-	network = list("NETWORK_ERT");
-	pixel_y = 30
-	},
-/obj/machinery/computer/specops_shuttle,
-/turf/simulated/shuttle/floor{
-	icon_state = "floor_red"
-	},
-/area/shuttle/specops/centcom)
 "cl" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/orange,
@@ -960,8 +947,7 @@
 	},
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -1166,6 +1152,10 @@
 /obj/structure/bed/padded,
 /turf/simulated/shuttle/floor,
 /area/shuttle/escape)
+"dy" = (
+/obj/overmap/entity/visitable/sector/centcom_triumph,
+/turf/space,
+/area/space)
 "dz" = (
 /obj/effect/floor_decal/rust/steel_decals_rusted2,
 /obj/effect/floor_decal/industrial/warning/dust,
@@ -1307,6 +1297,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/centcom/control)
+"dY" = (
+/obj/machinery/porta_turret,
+/turf/simulated/floor/plating,
+/area/shuttle/specops/general)
 "dZ" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "plant-21"
@@ -1514,6 +1508,9 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
+"ez" = (
+/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/area/shuttle/specops/general)
 "eB" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
@@ -1568,6 +1565,9 @@
 	icon_state = "white"
 	},
 /area/centcom/control)
+"eZ" = (
+/turf/simulated/shuttle/wall/voidcraft,
+/area/shuttle/specops/general)
 "fe" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -1714,6 +1714,14 @@
 /obj/item/material/knife/butch,
 /turf/simulated/floor/tiled/white,
 /area/centcom/bar)
+"fC" = (
+/obj/machinery/porta_turret,
+/obj/machinery/flasher{
+	id = "breach_flash";
+	pixel_x = -32
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/specops/general)
 "fD" = (
 /obj/structure/table/reinforced,
 /obj/effect/floor_decal/borderfloorblack{
@@ -1760,18 +1768,8 @@
 	},
 /area/centcom/security)
 "fF" = (
-/obj/machinery/embedded_controller/radio/simple_docking_controller{
-	frequency = 1380;
-	id_tag = "marksman_corporate_dock";
-	name = "docking port controller";
-	pixel_y = 25;
-	req_one_access = list(103);
-	tag_door = "specops_centcom_dock_door"
-	},
-/turf/unsimulated/floor{
-	icon_state = "dark"
-	},
-/area/centcom/specops)
+/turf/simulated/shuttle/wall/voidcraft,
+/area/shuttle/specops/engine)
 "fG" = (
 /obj/structure/table/reinforced,
 /obj/item/perfect_tele,
@@ -2105,6 +2103,9 @@
 /obj/item/reagent_containers/food/snacks/pastatomato,
 /turf/unsimulated/floor/wood,
 /area/centcom/restaurant)
+"gt" = (
+/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/area/shuttle/specops/engine)
 "gu" = (
 /obj/machinery/shower{
 	dir = 4
@@ -2208,6 +2209,18 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
+"gK" = (
+/obj/structure/table/rack/steel,
+/obj/item/tank/phoron/pressurized,
+/obj/item/tank/phoron/pressurized,
+/obj/item/tank/phoron/pressurized,
+/obj/item/tank/phoron/pressurized,
+/obj/effect/floor_decal/industrial/outline/red,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/specops/general)
 "gL" = (
 /obj/structure/bed/padded,
 /obj/machinery/camera/network/crescent,
@@ -2447,6 +2460,11 @@
 /obj/machinery/telecomms/hub/preset_cent,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
+"hF" = (
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/obj/effect/floor_decal/industrial/outline/blue,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/specops/general)
 "hH" = (
 /obj/machinery/telecomms/bus/preset_cent,
 /turf/unsimulated/floor{
@@ -2488,6 +2506,12 @@
 	},
 /turf/unsimulated/floor/wood,
 /area/centcom/specops)
+"hS" = (
+/obj/machinery/atmospherics/component/unary/engine{
+	dir = 4
+	},
+/turf/simulated/shuttle/plating/airless/carry,
+/area/shuttle/specops/engine)
 "hU" = (
 /obj/machinery/gibber,
 /turf/unsimulated/floor/steel{
@@ -2704,24 +2728,6 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
-"iS" = (
-/obj/machinery/recharger/wallcharger{
-	pixel_x = 4;
-	pixel_y = 32
-	},
-/obj/machinery/vending/wallmed1{
-	layer = 3.3;
-	name = "Emergency NanoMed";
-	pixel_x = 28
-	},
-/obj/machinery/light{
-	dir = 4
-	},
-/obj/structure/bed/chair,
-/turf/simulated/shuttle/floor{
-	icon_state = "floor_red"
-	},
-/area/shuttle/specops/centcom)
 "iT" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -2894,6 +2900,15 @@
 	icon_state = "white"
 	},
 /area/centcom/medical)
+"jt" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 10
+	},
+/obj/structure/shuttle/engine/heater{
+	dir = 8
+	},
+/turf/simulated/shuttle/wall/voidcraft,
+/area/shuttle/specops/engine)
 "ju" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/blue/border,
@@ -2967,6 +2982,13 @@
 	icon_state = "dark"
 	},
 /area/centcom/security)
+"jH" = (
+/obj/machinery/power/smes/buildable/point_of_interest,
+/obj/structure/cable/green{
+	icon_state = "0-2"
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/specops/engine)
 "jI" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
@@ -3001,6 +3023,15 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/living)
+"jO" = (
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/obj/machinery/power/terminal{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/specops/engine)
 "jP" = (
 /obj/effect/floor_decal/corner/yellow/diagonal,
 /obj/effect/floor_decal/corner/blue/diagonal{
@@ -3041,13 +3072,6 @@
 /obj/effect/floor_decal/industrial/warning/dust,
 /turf/unsimulated/floor/steel,
 /area/centcom/evac)
-"ka" = (
-/obj/structure/shuttle/engine/propulsion{
-	dir = 8
-	},
-/turf/unsimulated/floor/techfloor_grid,
-/turf/simulated/shuttle/plating/airless/carry,
-/area/shuttle/specops/centcom)
 "kb" = (
 /obj/machinery/door/airlock{
 	name = "Unit 1"
@@ -3330,6 +3354,13 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
+"kW" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/spawner/window/low_wall/borosillicate/full/firelocks,
+/turf/simulated/floor/plating,
+/area/shuttle/specops/engine)
 "kY" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/borderfloor/corner2{
@@ -3568,6 +3599,12 @@
 	icon_state = "white"
 	},
 /area/centcom/control)
+"lF" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/specops/general)
 "lG" = (
 /obj/machinery/computer/pod{
 	id = "thunderdomehea";
@@ -4146,6 +4183,17 @@
 	},
 /turf/unsimulated/floor/wood,
 /area/centcom/restaurant)
+"nm" = (
+/obj/machinery/vending/wallmed1{
+	layer = 3.3;
+	name = "Emergency NanoMed";
+	pixel_y = 30
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/specops/general)
 "nn" = (
 /obj/machinery/vending/boozeomat,
 /turf/unsimulated/floor/wood,
@@ -4386,11 +4434,14 @@
 "nV" = (
 /obj/structure/table/rack,
 /obj/structure/window/reinforced,
-/obj/item/gun/ballistic/automatic/advanced_smg,
 /obj/item/ammo_magazine/m9mmR/saber,
 /obj/item/ammo_magazine/m9mmR/saber,
 /obj/item/ammo_magazine/m9mmR/saber,
 /obj/item/ammo_magazine/m9mmR/saber,
+/obj/item/silencer,
+/obj/item/silencer,
+/obj/item/silencer,
+/obj/item/silencer,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -4410,6 +4461,17 @@
 	icon_state = "white"
 	},
 /area/centcom/control)
+"oa" = (
+/obj/machinery/recharger/wallcharger{
+	pixel_x = 4;
+	pixel_y = 28
+	},
+/obj/structure/bed/chair/bay/shuttle,
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/specops/general)
 "ob" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -4524,17 +4586,6 @@
 	icon_state = "white"
 	},
 /area/centcom/bathroom)
-"ov" = (
-/obj/structure/bed/chair{
-	dir = 4
-	},
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/simulated/shuttle/floor{
-	icon_state = "floor_red"
-	},
-/area/shuttle/specops/centcom)
 "ox" = (
 /obj/structure/flora/ausbushes/ywflowers,
 /turf/simulated/floor/outdoors/grass/heavy/interior,
@@ -4561,6 +4612,14 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
+"oB" = (
+/obj/machinery/recharger/wallcharger{
+	pixel_x = 4;
+	pixel_y = 28
+	},
+/obj/structure/bed/chair/bay/shuttle,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/specops/general)
 "oE" = (
 /obj/machinery/vending/cola,
 /obj/effect/floor_decal/corner/yellow/diagonal,
@@ -4760,18 +4819,17 @@
 	icon_state = "white"
 	},
 /area/centcom/medical)
-"pu" = (
-/obj/machinery/computer/communications,
-/obj/item/radio/intercom{
-	dir = 1;
-	frequency = 1443;
-	name = "Spec Ops Intercom";
-	pixel_y = -28
+"pt" = (
+/obj/machinery/light{
+	dir = 4
 	},
-/turf/simulated/shuttle/floor{
-	icon_state = "floor_red"
+/obj/machinery/recharger/wallcharger{
+	pixel_x = 4;
+	pixel_y = 28
 	},
-/area/shuttle/specops/centcom)
+/obj/structure/bed/chair/bay/shuttle,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/specops/general)
 "pv" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/orange/border,
@@ -4917,6 +4975,12 @@
 /obj/item/robotanalyzer,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
+"pW" = (
+/obj/machinery/flasher{
+	id = "breach_flash"
+	},
+/turf/simulated/shuttle/wall/voidcraft,
+/area/shuttle/specops/general)
 "pX" = (
 /obj/machinery/vending/coffee,
 /obj/effect/floor_decal/borderfloor{
@@ -5059,6 +5123,15 @@
 	icon_state = "white"
 	},
 /area/centcom/control)
+"qq" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 4
+	},
+/obj/structure/shuttle/engine/heater{
+	dir = 8
+	},
+/turf/simulated/shuttle/wall/voidcraft,
+/area/shuttle/specops/engine)
 "qr" = (
 /obj/effect/floor_decal/carpet{
 	dir = 4
@@ -5275,24 +5348,6 @@
 	icon_state = "dark"
 	},
 /area/centcom/security)
-"rj" = (
-/obj/machinery/door/airlock/glass_external{
-	frequency = 1380;
-	icon_state = "door_locked";
-	id_tag = "corporate_shuttle_port_hatch";
-	name = "Port Docking Hatch"
-	},
-/obj/machinery/embedded_controller/radio/simple_docking_controller{
-	frequency = 1380;
-	id_tag = "marksman_corporate_docker";
-	name = "port docking hatch controller";
-	pixel_x = -25;
-	tag_door = "corporate_shuttle_port_hatch"
-	},
-/turf/unsimulated/floor{
-	icon_state = "dark"
-	},
-/area/shuttle/specops/centcom)
 "ro" = (
 /obj/machinery/vending/hydronutrients,
 /obj/effect/floor_decal/borderfloorblack{
@@ -5513,17 +5568,14 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/living)
 "rO" = (
-/obj/machinery/embedded_controller/radio/simple_docking_controller{
-	frequency = 1380;
-	id_tag = "specops_shuttle_fore";
-	name = "forward docking hatch controller";
-	pixel_y = -25;
-	tag_door = "specops_shuttle_fore_hatch"
+/obj/structure/cable/green{
+	icon_state = "1-4"
 	},
-/turf/simulated/shuttle/floor{
-	icon_state = "floor_red"
+/obj/machinery/computer/ship/engines{
+	dir = 4
 	},
-/area/shuttle/specops/centcom)
+/turf/simulated/floor/plating,
+/area/shuttle/specops/engine)
 "rR" = (
 /obj/structure/closet/secure_closet/medical2,
 /obj/effect/floor_decal/borderfloorwhite{
@@ -5674,12 +5726,7 @@
 	},
 /area/centcom/security)
 "sk" = (
-/obj/machinery/door/airlock/glass_external{
-	frequency = 1380;
-	icon_state = "door_locked";
-	id_tag = "specops_centcom_dock_door";
-	locked = 1
-	},
+/obj/machinery/cryopod/robot/door/travel/specops,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -5753,6 +5800,31 @@
 	icon_state = "dark"
 	},
 /area/centcom/command)
+"ss" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/structure/cable/green{
+	icon_state = "2-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 6
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/specops/engine)
+"st" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/machinery/door/airlock/hatch{
+	name = "Engine Bay";
+	req_one_access = list(103)
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/specops/engine)
 "sw" = (
 /obj/machinery/computer/med_data,
 /obj/effect/floor_decal/borderfloorwhite{
@@ -5835,10 +5907,10 @@
 	},
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/gun/energy/gun/nuclear,
-/obj/item/gun/energy/gun/nuclear,
-/obj/item/gun/energy/gun/nuclear,
-/obj/item/gun/energy/gun/nuclear,
+/obj/item/gun/energy/combat,
+/obj/item/gun/energy/combat,
+/obj/item/gun/energy/combat,
+/obj/item/gun/energy/combat,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -5895,8 +5967,7 @@
 	dir = 10
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /turf/unsimulated/floor{
 	icon_state = "dark"
@@ -5910,6 +5981,18 @@
 	icon_state = "dark"
 	},
 /area/centcom/security)
+"sQ" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/specops/general)
 "sR" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -6222,6 +6305,15 @@
 	icon_state = "white"
 	},
 /area/centcom/control)
+"tZ" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/specops/general)
 "ue" = (
 /obj/structure/table/reinforced,
 /obj/item/cell/hyper,
@@ -6369,6 +6461,21 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
+"uE" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/machinery/computer/security/telescreen{
+	desc = "";
+	name = "Spec. Ops. Monitor";
+	network = list("NETWORK_ERT");
+	pixel_y = -32
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/specops/general)
 "uF" = (
 /obj/structure/table/standard,
 /obj/item/surgical/surgicaldrill,
@@ -6405,6 +6512,18 @@
 	icon_state = "white"
 	},
 /area/centcom/medical)
+"uJ" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/specops/general)
 "uK" = (
 /obj/machinery/vending/wallmed1{
 	pixel_y = -32
@@ -6485,6 +6604,15 @@
 "vc" = (
 /turf/unsimulated/floor/steel,
 /area/centcom/evac)
+"ve" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/specops/general)
 "vi" = (
 /obj/machinery/power/port_gen/pacman,
 /turf/unsimulated/floor{
@@ -6903,12 +7031,6 @@
 	icon_state = "steel"
 	},
 /area/centcom/bathroom)
-"ww" = (
-/obj/structure/bed/chair,
-/turf/simulated/shuttle/floor{
-	icon_state = "floor_red"
-	},
-/area/shuttle/specops/centcom)
 "wy" = (
 /obj/item/megaphone,
 /obj/item/storage/box/trackimp,
@@ -7046,6 +7168,27 @@
 	icon_state = "white"
 	},
 /area/centcom/medical)
+"wP" = (
+/obj/structure/cable/green{
+	icon_state = "0-8"
+	},
+/obj/machinery/power/apc/alarms_hidden/east_bump,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/specops/general)
+"wQ" = (
+/obj/map_helper/airlock/atmos/chamber_pump,
+/obj/machinery/turretid/lethal{
+	control_area = /area/shuttle/specops/general;
+	pixel_y = 32;
+	req_access = list(103)
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
+	frequency = 1380;
+	id_tag = "specops_docker_pump";
+	power_rating = 20000
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/specops/general)
 "wR" = (
 /obj/item/stock_parts/console_screen,
 /obj/structure/table/standard,
@@ -7483,8 +7626,7 @@
 	pixel_y = 28
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 1
@@ -7592,8 +7734,7 @@
 	dir = 10
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced,
 /turf/unsimulated/floor/steel,
@@ -7730,15 +7871,17 @@
 	},
 /area/centcom/specops)
 "zi" = (
-/obj/machinery/door/airlock/glass_external{
-	frequency = 1380;
-	icon_state = "door_locked";
-	id_tag = "specops_shuttle_fore_hatch";
-	locked = 1;
-	name = "Forward Docking Hatch"
+/obj/overmap/entity/visitable/ship/landable/specops,
+/obj/machinery/button/flasher{
+	id = "breach_flash";
+	pixel_y = 26
 	},
-/turf/simulated/shuttle/plating,
-/area/shuttle/specops/centcom)
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/effect/shuttle_landmark/shuttle_initializer/specops,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/specops/general)
 "zk" = (
 /obj/item/handcuffs/legcuffs/fuzzy,
 /obj/item/handcuffs/legcuffs/fuzzy,
@@ -7904,6 +8047,16 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
+"zO" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/tank/air{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/outline/blue,
+/turf/simulated/floor/plating,
+/area/shuttle/specops/engine)
 "zP" = (
 /obj/structure/morgue{
 	dir = 8
@@ -8345,11 +8498,6 @@
 	icon_state = "dark"
 	},
 /area/centcom/specops)
-"Bg" = (
-/turf/simulated/shuttle/floor{
-	icon_state = "floor_red"
-	},
-/area/shuttle/specops/centcom)
 "Bh" = (
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 4
@@ -8433,8 +8581,7 @@
 "By" = (
 /obj/structure/table/reinforced,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/machinery/computer/skills,
 /obj/effect/floor_decal/borderfloorblack{
@@ -8486,17 +8633,6 @@
 	icon_state = "white"
 	},
 /area/centcom/medical)
-"BH" = (
-/obj/machinery/door/airlock/glass_external{
-	frequency = 1380;
-	icon_state = "door_locked";
-	id_tag = "corporate_shuttle_port_hatch";
-	name = "Port Docking Hatch"
-	},
-/turf/unsimulated/floor{
-	icon_state = "dark"
-	},
-/area/shuttle/specops/centcom)
 "BJ" = (
 /obj/effect/floor_decal/corner/grey/diagonal{
 	dir = 4
@@ -8707,8 +8843,7 @@
 	req_one_access = list(101)
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
@@ -8719,6 +8854,24 @@
 	icon_state = "white"
 	},
 /area/centcom/control)
+"CB" = (
+/obj/structure/cable/green,
+/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 9
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/specops/engine)
+"CC" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/door/airlock/hatch{
+	name = "Cockpit";
+	req_one_access = list(103)
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/specops/cockpit)
 "CD" = (
 /obj/structure/fans/tiny,
 /obj/machinery/door/airlock/glass_external{
@@ -9093,6 +9246,9 @@
 /obj/structure/sign/department/eva,
 /turf/unsimulated/wall,
 /area/centcom/security)
+"DV" = (
+/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/area/shuttle/specops/cockpit)
 "DX" = (
 /obj/effect/floor_decal/spline/fancy/wood,
 /turf/unsimulated/floor/steel,
@@ -9195,14 +9351,6 @@
 	icon_state = "white"
 	},
 /area/centcom/medical)
-"Eo" = (
-/obj/structure/bed/chair{
-	dir = 1
-	},
-/turf/simulated/shuttle/floor{
-	icon_state = "floor_red"
-	},
-/area/shuttle/specops/centcom)
 "Ep" = (
 /obj/structure/table/rack,
 /obj/item/storage/box/frags,
@@ -9262,15 +9410,13 @@
 "EA" = (
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "EC" = (
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -9291,6 +9437,11 @@
 	icon_state = "white"
 	},
 /area/centcom/control)
+"EH" = (
+/obj/machinery/mech_recharger,
+/obj/effect/floor_decal/industrial/warning/full,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/specops/general)
 "EI" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -9386,8 +9537,11 @@
 	},
 /area/centcom/medical)
 "ET" = (
-/turf/unsimulated/floor/techfloor_grid,
-/area/centcom/specops)
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/specops/general)
 "EX" = (
 /obj/landmark{
 	name = "tdome2"
@@ -9399,6 +9553,15 @@
 	icon_state = "dark"
 	},
 /area/tdome/tdome1)
+"EY" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/specops/general)
 "EZ" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/box/donkpockets,
@@ -9637,6 +9800,15 @@
 	icon_state = "carpet"
 	},
 /area/centcom/command)
+"FN" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/specops/general)
 "FQ" = (
 /obj/machinery/porta_turret/crescent{
 	density = 1
@@ -9841,6 +10013,27 @@
 	icon_state = "white"
 	},
 /area/tdome/tdomeobserve)
+"GB" = (
+/obj/machinery/access_button/airlock_interior{
+	dir = 8;
+	frequency = 1380;
+	master_tag = "specops_docker";
+	pixel_x = -8;
+	pixel_y = -26
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/map_helper/airlock/door/int_door,
+/obj/machinery/door/airlock/glass_external{
+	frequency = null;
+	name = "Ship Hatch"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/specops/general)
 "GC" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -9983,8 +10176,7 @@
 /obj/machinery/door/firedoor,
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -10124,6 +10316,15 @@
 	icon_state = "white"
 	},
 /area/centcom/medical)
+"HI" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/specops/general)
 "HN" = (
 /obj/spawner/window/low_wall/reinforced/full,
 /turf/unsimulated/floor{
@@ -10275,8 +10476,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -10295,6 +10495,24 @@
 	icon_state = "dark"
 	},
 /area/centcom/specops)
+"Ig" = (
+/obj/machinery/access_button/airlock_exterior{
+	dir = 4;
+	frequency = 1380;
+	master_tag = "specops_docker";
+	pixel_x = 8;
+	pixel_y = 26
+	},
+/obj/map_helper/airlock/door/ext_door,
+/obj/machinery/door/airlock/glass_external{
+	frequency = null;
+	name = "Ship Hatch"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/specops/general)
 "Ih" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/blast/regular{
@@ -10546,6 +10764,12 @@
 	icon_state = "white"
 	},
 /area/centcom/medical)
+"IT" = (
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/centcom/specops/dock)
 "IW" = (
 /obj/structure/bed/chair/comfy/black,
 /obj/effect/floor_decal/carpet{
@@ -10581,6 +10805,13 @@
 	icon_state = "dark"
 	},
 /area/centcom/specops)
+"Ja" = (
+/obj/machinery/atmospherics/pipe/manifold4w/hidden,
+/obj/structure/shuttle/engine/heater{
+	dir = 8
+	},
+/turf/simulated/shuttle/wall/voidcraft,
+/area/shuttle/specops/engine)
 "Jb" = (
 /obj/item/circuitboard/aiupload,
 /obj/item/circuitboard/borgupload,
@@ -10632,11 +10863,12 @@
 	},
 /area/centcom/command)
 "Jl" = (
-/turf/simulated/shuttle/wall/dark{
-	hard_corner = 1;
-	join_group = "shuttle_ert"
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 1
 	},
-/area/shuttle/specops/centcom)
+/obj/effect/floor_decal/industrial/warning,
+/turf/simulated/floor/plating,
+/area/shuttle/specops/engine)
 "Jm" = (
 /obj/structure/table/rack,
 /obj/item/hardsuit_module/mounted,
@@ -10923,14 +11155,6 @@
 	icon_state = "dark"
 	},
 /area/centcom/control)
-"Kf" = (
-/obj/machinery/computer/prisoner{
-	name = "Implant Management"
-	},
-/turf/simulated/shuttle/floor{
-	icon_state = "floor_red"
-	},
-/area/shuttle/specops/centcom)
 "Kg" = (
 /obj/machinery/door/airlock/command,
 /turf/simulated/shuttle/floor/white,
@@ -11065,6 +11289,17 @@
 	icon_state = "dark"
 	},
 /area/centcom/specops)
+"KC" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 10
+	},
+/obj/structure/fuel_port{
+	dir = 4;
+	pixel_x = 29
+	},
+/obj/effect/floor_decal/industrial/warning,
+/turf/simulated/floor/plating,
+/area/shuttle/specops/engine)
 "KD" = (
 /obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 1
@@ -11148,15 +11383,19 @@
 	icon_state = "white"
 	},
 /area/centcom/control)
+"KN" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/specops/cockpit)
 "KO" = (
-/obj/structure/shuttle/engine/heater{
+/obj/machinery/computer/shuttle_control/explore/specops{
 	dir = 8
 	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/turf/simulated/shuttle/plating/airless,
-/area/shuttle/specops/centcom)
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/specops/cockpit)
 "KP" = (
 /obj/effect/floor_decal/carpet,
 /turf/unsimulated/floor{
@@ -11353,6 +11592,10 @@
 	icon_state = "white"
 	},
 /area/centcom/control)
+"Lw" = (
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
+/area/shuttle/specops/cockpit)
 "Lx" = (
 /obj/structure/reagent_dispensers/beerkeg,
 /turf/unsimulated/floor{
@@ -11548,6 +11791,10 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
+"Mb" = (
+/obj/machinery/holopad/ship/starts_inactive,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/specops/general)
 "Md" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4
@@ -11566,6 +11813,9 @@
 /obj/structure/table/bench/wooden,
 /turf/unsimulated/floor/wood,
 /area/centcom/main_hall)
+"Mg" = (
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/specops/general)
 "Mh" = (
 /obj/machinery/fitness/heavy/lifter,
 /turf/unsimulated/floor{
@@ -11837,6 +12087,21 @@
 	icon_state = "steel"
 	},
 /area/centcom/bathroom)
+"MS" = (
+/obj/machinery/embedded_controller/radio/airlock/docking_port{
+	frequency = 1380;
+	id_tag = "specops_docker";
+	pixel_x = -25
+	},
+/obj/map_helper/airlock/atmos/chamber_pump,
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
+	dir = 1;
+	frequency = 1380;
+	id_tag = "specops_docker_pump";
+	power_rating = 20000
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/specops/general)
 "MT" = (
 /obj/effect/floor_decal/corner/grey/diagonal{
 	dir = 4
@@ -11870,6 +12135,19 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
+"Nd" = (
+/obj/machinery/airlock_sensor{
+	dir = 1;
+	frequency = 1380;
+	id_tag = "specops_docker";
+	pixel_y = -32
+	},
+/obj/map_helper/airlock/sensor/chamber_sensor,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/specops/general)
 "Ne" = (
 /obj/machinery/vending/medical,
 /obj/machinery/light{
@@ -12359,6 +12637,20 @@
 	icon_state = "dark"
 	},
 /area/centcom/specops)
+"OJ" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/centcom/specops/dock)
+"OL" = (
+/obj/machinery/computer/cryopod/ert{
+	pixel_y = 32
+	},
+/turf/unsimulated/floor{
+	icon_state = "dark"
+	},
+/area/centcom/specops)
 "OM" = (
 /obj/structure/table/reinforced,
 /obj/item/healthanalyzer/advanced,
@@ -12387,6 +12679,9 @@
 	icon_state = "dark"
 	},
 /area/centcom/security)
+"OR" = (
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/centcom/specops/dock)
 "OU" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass{
@@ -12421,6 +12716,15 @@
 /obj/effect/floor_decal/industrial/warning/dust,
 /turf/unsimulated/floor/steel,
 /area/centcom/evac)
+"Pd" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 9
+	},
+/obj/structure/shuttle/engine/heater{
+	dir = 8
+	},
+/turf/simulated/shuttle/wall/voidcraft,
+/area/shuttle/specops/engine)
 "Pj" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 6
@@ -12441,6 +12745,13 @@
 "Pk" = (
 /turf/unsimulated/wall/planetary/virgo3b,
 /area/centcom/control)
+"Pm" = (
+/obj/machinery/atmospherics/pipe/tank/phoron{
+	dir = 1
+	},
+/obj/effect/floor_decal/industrial/outline/red,
+/turf/simulated/floor/plating,
+/area/shuttle/specops/engine)
 "Pn" = (
 /obj/machinery/light{
 	dir = 4;
@@ -12649,17 +12960,6 @@
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
-"PK" = (
-/obj/structure/bed/chair{
-	dir = 1
-	},
-/obj/machinery/light{
-	dir = 4
-	},
-/turf/simulated/shuttle/floor{
-	icon_state = "floor_red"
-	},
-/area/shuttle/specops/centcom)
 "PM" = (
 /obj/structure/closet/l3closet/virology,
 /obj/item/clothing/mask/gas,
@@ -12935,6 +13235,14 @@
 	icon_state = "dark"
 	},
 /area/centcom/specops)
+"QA" = (
+/obj/machinery/atmospherics/portables_connector{
+	dir = 1
+	},
+/obj/machinery/portable_atmospherics/canister/phoron,
+/obj/effect/floor_decal/industrial/outline/red,
+/turf/simulated/floor/plating,
+/area/shuttle/specops/engine)
 "QC" = (
 /obj/effect/floor_decal/carpet{
 	dir = 4
@@ -12943,6 +13251,26 @@
 	icon_state = "carpet"
 	},
 /area/centcom/control)
+"QD" = (
+/obj/structure/bed/chair/bay/shuttle{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/turretid/lethal{
+	control_area = /area/shuttle/specops/general;
+	pixel_x = -32;
+	req_access = list(103)
+	},
+/obj/machinery/button/flasher{
+	dir = 4;
+	id = "breach_flash";
+	pixel_x = -24;
+	pixel_y = 26
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/specops/cockpit)
 "QE" = (
 /obj/structure/table/woodentable,
 /obj/machinery/cash_register/civilian,
@@ -13048,6 +13376,13 @@
 	icon_state = "dark"
 	},
 /area/centcom/specops)
+"QZ" = (
+/obj/machinery/computer/ship/helm{
+	dir = 8
+	},
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/specops/cockpit)
 "Ra" = (
 /obj/effect/floor_decal/spline/fancy/wood/corner{
 	dir = 1
@@ -13070,6 +13405,20 @@
 	icon_state = "white"
 	},
 /area/centcom/control)
+"Rf" = (
+/obj/machinery/recharge_station,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/specops/general)
+"Rg" = (
+/obj/machinery/recharger/wallcharger{
+	pixel_x = 4;
+	pixel_y = -32
+	},
+/obj/structure/bed/chair/bay/shuttle{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/specops/general)
 "Rh" = (
 /obj/structure/bed/chair,
 /turf/unsimulated/floor/steel,
@@ -13088,10 +13437,18 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/main_hall)
 "Rk" = (
-/turf/simulated/shuttle/wall/dark{
-	join_group = "shuttle_ert"
+/obj/machinery/light{
+	dir = 4
 	},
-/area/shuttle/specops/centcom)
+/obj/machinery/recharger/wallcharger{
+	pixel_x = 4;
+	pixel_y = -32
+	},
+/obj/structure/bed/chair/bay/shuttle{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/specops/general)
 "Rl" = (
 /obj/effect/floor_decal/corner_techfloor_grid,
 /turf/unsimulated/floor{
@@ -13183,8 +13540,7 @@
 "Rw" = (
 /obj/structure/table/reinforced,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -13262,6 +13618,17 @@
 /obj/structure/closet/crate/bin,
 /turf/unsimulated/floor/wood,
 /area/centcom/restaurant)
+"RL" = (
+/obj/item/radio/intercom{
+	dir = 1;
+	frequency = 1443;
+	name = "Spec Ops Intercom";
+	pixel_y = -28
+	},
+/obj/structure/cable/green,
+/obj/machinery/power/apc/alarms_hidden/west_bump,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/specops/cockpit)
 "RN" = (
 /obj/item/storage/box/evidence,
 /obj/item/folder/red,
@@ -13343,6 +13710,12 @@
 	icon_state = "dark"
 	},
 /area/centcom/specops)
+"RY" = (
+/obj/structure/memorial/small/right,
+/turf/unsimulated/floor/steel{
+	icon_state = "asteroidfloor"
+	},
+/area/centcom/main_hall)
 "Sa" = (
 /obj/machinery/camera/network/crescent,
 /turf/unsimulated/floor/steel,
@@ -13839,6 +14212,16 @@
 	icon_state = "white"
 	},
 /area/tdome/tdomeobserve)
+"TI" = (
+/obj/machinery/computer/ship/sensors{
+	dir = 8
+	},
+/obj/structure/table/steel_reinforced,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/specops/cockpit)
 "TJ" = (
 /obj/machinery/vending/snack,
 /turf/unsimulated/floor/wood,
@@ -14278,6 +14661,15 @@
 	icon_state = "dark"
 	},
 /area/centcom/command)
+"Vy" = (
+/obj/machinery/door/airlock/centcom{
+	name = "SpecOps Hangar";
+	req_access = list(103)
+	},
+/turf/unsimulated/floor{
+	icon_state = "dark"
+	},
+/area/centcom/specops/dock)
 "Vz" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 4
@@ -14343,7 +14735,14 @@
 "VI" = (
 /obj/structure/table/rack,
 /obj/structure/window/reinforced,
-/obj/item/gun/energy/sniperrifle,
+/obj/item/ammo_magazine/m57x28mm/smg/ap,
+/obj/item/ammo_magazine/m57x28mm/smg/ap,
+/obj/item/ammo_magazine/m57x28mm/smg/ap,
+/obj/item/ammo_magazine/m57x28mm/smg/ap,
+/obj/item/gun/ballistic/automatic/combat,
+/obj/item/gun/ballistic/automatic/combat,
+/obj/item/gun/ballistic/automatic/combat,
+/obj/item/gun/ballistic/automatic/combat,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -14429,6 +14828,13 @@
 	icon_state = "dark"
 	},
 /area/centcom/security)
+"VY" = (
+/obj/machinery/shipsensors{
+	dir = 1
+	},
+/obj/effect/floor_decal/industrial/warning/full,
+/turf/simulated/floor/plating,
+/area/shuttle/specops/general)
 "Wb" = (
 /obj/structure/table/reinforced,
 /obj/item/tape_recorder,
@@ -14516,6 +14922,10 @@
 	icon_state = "dark"
 	},
 /area/centcom/security)
+"Wt" = (
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
+/area/centcom/specops/dock)
 "Wu" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -14643,6 +15053,16 @@
 /obj/effect/floor_decal/corner/blue/border,
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
+"WW" = (
+/obj/machinery/embedded_controller/radio/simple_docking_controller{
+	dir = 1;
+	frequency = 1380;
+	id_tag = "specops_hangar_dock";
+	pixel_y = -28;
+	req_one_access = list(103)
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/centcom/specops/dock)
 "WX" = (
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/paleblue/border,
@@ -14687,6 +15107,16 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
+"Xf" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/door/airlock/hatch{
+	name = "Power Management";
+	req_one_access = list(103)
+	},
+/turf/simulated/floor/plating,
+/area/centcom/specops/dock)
 "Xg" = (
 /obj/structure/sink{
 	dir = 8;
@@ -15067,6 +15497,15 @@
 	icon_state = "freezerfloor"
 	},
 /area/centcom/bathroom)
+"Yo" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/plating,
+/area/centcom/specops/dock)
 "Yp" = (
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 4
@@ -15087,13 +15526,9 @@
 	},
 /area/centcom/control)
 "Yr" = (
-/obj/structure/shuttle/engine/propulsion{
-	dir = 8;
-	icon_state = "burst_r"
-	},
-/turf/unsimulated/floor/techfloor_grid,
-/turf/simulated/shuttle/plating/airless/carry,
-/area/shuttle/specops/centcom)
+/turf/space/basic,
+/turf/unsimulated/wall,
+/area/space)
 "Yt" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Commander";
@@ -15238,8 +15673,7 @@
 "YF" = (
 /obj/structure/table/reinforced,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/machinery/recharger{
 	pixel_y = 4
@@ -15291,21 +15725,23 @@
 	icon_state = "carpet"
 	},
 /area/centcom/control)
+"YJ" = (
+/obj/machinery/power/rtg/fake_gen,
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
+/turf/simulated/floor/plating,
+/area/centcom/specops/dock)
 "YK" = (
 /obj/structure/railing,
 /obj/machinery/light/flamp/noshade,
 /turf/unsimulated/floor/steel,
 /area/centcom/evac)
 "YL" = (
-/obj/machinery/recharger/wallcharger{
-	pixel_x = 4;
-	pixel_y = 32
-	},
-/obj/structure/bed/chair,
-/turf/simulated/shuttle/floor{
-	icon_state = "floor_red"
-	},
-/area/shuttle/specops/centcom)
+/obj/structure/cable,
+/obj/machinery/power/apc/alarms_hidden/south_bump,
+/turf/simulated/floor/plating,
+/area/centcom/specops/dock)
 "YM" = (
 /obj/structure/table/rack,
 /obj/item/clothing/mask/gas{
@@ -15454,6 +15890,9 @@
 	icon_state = "dark"
 	},
 /area/centcom/security)
+"Ze" = (
+/turf/simulated/floor/plating,
+/area/centcom/specops/dock)
 "Zf" = (
 /obj/item/clothing/accessory/holster/armpit,
 /obj/item/clothing/accessory/holster/armpit,
@@ -15467,7 +15906,7 @@
 	},
 /area/centcom/specops)
 "Zh" = (
-/obj/structure/memorial,
+/obj/structure/memorial/small/left,
 /turf/unsimulated/floor/steel{
 	icon_state = "asteroidfloor"
 	},
@@ -15552,6 +15991,10 @@
 "Zs" = (
 /turf/unsimulated/wall,
 /area/centcom/main_hall)
+"Zv" = (
+/obj/effect/blocker,
+/turf/simulated/floor/tiled/white,
+/area/centcom/specops)
 "Zx" = (
 /obj/machinery/atmospherics/component/unary/cryo_cell,
 /obj/effect/floor_decal/borderfloorwhite{
@@ -16077,7 +16520,7 @@ BP
 BP
 BP
 BP
-BP
+dy
 BP
 "}
 (3,1,1) = {"
@@ -38808,20 +39251,20 @@ Ic
 Ic
 Ic
 Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
+aG
+aG
+aG
+aG
+aG
+aG
+aG
+aG
+aG
+aG
+aG
+aG
+aG
+aG
 Ic
 Ic
 Ic
@@ -38883,7 +39326,7 @@ dq
 wE
 wE
 wE
-jm
+RY
 jm
 wE
 ox
@@ -39002,20 +39445,20 @@ Ic
 Ic
 Ic
 Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
+cf
+OR
+OR
+OR
+OR
+OR
+OR
+OR
+OR
+OR
+OR
+OR
+OR
+aG
 Ic
 Ic
 Ic
@@ -39196,20 +39639,20 @@ Ic
 Ic
 Ic
 Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
+cf
+OR
+OR
+fF
+hS
+hS
+hS
+hS
+hS
+fF
+OR
+OR
+OR
+aG
 Ic
 Ic
 Ic
@@ -39390,20 +39833,20 @@ Ic
 Ic
 Ic
 Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
+cf
+OR
+OR
+fF
+jt
+qq
+qq
+Ja
+Pd
+fF
+OR
+OR
+OR
+aG
 Ic
 Ic
 Ic
@@ -39584,20 +40027,20 @@ Ic
 Ic
 Ic
 Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
+cf
+OR
+OR
+fF
+jH
+rO
+zO
+Jl
+Pm
+fF
+OR
+OR
+OR
+aG
 Ic
 Ic
 Ic
@@ -39778,20 +40221,20 @@ Ic
 Ic
 Ic
 Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
+cf
+OR
+dY
+fF
+jO
+ss
+CB
+KC
+QA
+fF
+dY
+OR
+OR
+aG
 Ic
 Ic
 Ic
@@ -39972,20 +40415,20 @@ Ic
 Ic
 Ic
 Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
+cf
+OR
+ez
+gt
+kW
+st
+gt
+fF
+fF
+gt
+ez
+OR
+OR
+aG
 Ic
 Ic
 Ic
@@ -40166,20 +40609,20 @@ Ic
 Ic
 Ic
 Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
+cf
+OR
+eZ
+gK
+lF
+sQ
+CC
+KN
+QD
+RL
+eZ
+OR
+OR
+aG
 Ic
 Ic
 Ic
@@ -40360,20 +40803,20 @@ Ic
 Ic
 Ic
 Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
+cf
+OR
+eZ
+hF
+lF
+tZ
+DV
+KO
+QZ
+TI
+eZ
+OR
+WW
+aG
 Ic
 Ic
 Ic
@@ -40554,20 +40997,20 @@ Ic
 Ic
 Ic
 Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
+cf
+OR
+eZ
+ez
+nm
+uE
+DV
+Lw
+Lw
+DV
+ez
+OR
+OR
+aG
 Ic
 Ic
 Ic
@@ -40748,20 +41191,20 @@ Ic
 Ic
 Ic
 Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
+cf
+OR
+eZ
+eZ
+lF
+tZ
+EH
+Mb
+Rf
+eZ
+VY
+OR
+OR
+aG
 Ic
 Ic
 Ic
@@ -40942,20 +41385,20 @@ Ic
 Ic
 Ic
 Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
+cf
+OR
+ez
+eZ
+oa
+uJ
+ET
+Mg
+Rg
+eZ
+ez
+OR
+OR
+aG
 Ic
 Ic
 Ic
@@ -41136,20 +41579,20 @@ Ic
 Ic
 Ic
 Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
+cf
+OR
+fC
+eZ
+oB
+ve
+EY
+Mg
+Rg
+eZ
+fC
+OR
+OR
+aG
 Ic
 Ic
 Zs
@@ -41330,20 +41773,20 @@ Ic
 Ic
 Ic
 Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
+cf
+OR
+OR
+eZ
+pt
+wP
+FN
+Mg
+Rk
+eZ
+OR
+OR
+OR
+aG
 Ic
 Ic
 Zs
@@ -41524,20 +41967,20 @@ Ic
 Ic
 Ic
 Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
+cf
+OR
+OR
+ez
+eZ
+ez
+GB
+ez
+eZ
+ez
+OR
+OR
+OR
+aG
 Ic
 Ic
 Zs
@@ -41718,20 +42161,20 @@ Ic
 Ic
 Ic
 Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
+cf
+OR
+OR
+fC
+eZ
+wQ
+HI
+MS
+eZ
+fC
+OR
+OR
+OR
+aG
 Ic
 Ic
 Zs
@@ -41912,20 +42355,20 @@ Ic
 Ic
 Ic
 Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
+cf
+OR
+OR
+OR
+eZ
+zi
+lF
+Nd
+eZ
+OR
+OR
+OR
+OR
+aG
 Ic
 Ic
 xa
@@ -42106,23 +42549,23 @@ Ic
 Ic
 Ic
 Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
+cf
+OR
+OR
+OR
+pW
+ez
+Ig
+ez
+pW
+OR
+OR
+OR
+OR
+aG
+aG
+aG
+aG
 xa
 eQ
 eQ
@@ -42300,23 +42743,23 @@ Ic
 Ic
 Ic
 Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
+cf
+OR
+OR
+OR
+OR
+OR
+IT
+OJ
+OJ
+OJ
+OJ
+OJ
+OJ
+Xf
+Yo
+Yo
+YL
 xa
 eQ
 eQ
@@ -42494,23 +42937,23 @@ Ic
 Ic
 Ic
 Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
+cf
+OR
+OR
+OR
+OR
+OR
+OR
+OR
+OR
+OR
+OR
+OR
+OR
+aG
+YJ
+YJ
+Ze
 xa
 eQ
 eQ
@@ -42688,23 +43131,23 @@ Ic
 Ic
 Ic
 Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
-Ic
+aG
+aG
+aG
+aG
+aG
+aG
+aG
+aG
+aG
+Vy
+Wt
+Vy
+aG
+aG
+aG
+aG
+aG
 xa
 eQ
 eQ
@@ -42890,11 +43333,11 @@ Ic
 Ic
 Ic
 Ic
-Ic
-Ic
-Ic
-Ic
-Ic
+xa
+Nf
+Nf
+Nf
+xa
 Ic
 Ic
 Ic
@@ -43085,9 +43528,9 @@ xa
 xa
 xa
 xa
-xa
-xa
-xa
+Nf
+Nf
+Nf
 xa
 xa
 xa
@@ -48120,8 +48563,8 @@ Ic
 Ic
 Ic
 Ic
-xa
-xa
+Ic
+Ic
 xa
 xa
 xa
@@ -48314,12 +48757,12 @@ Ic
 Ic
 Ic
 Ic
-GK
-GK
-xa
-xa
-xa
-xa
+Ic
+Ic
+Ic
+Ic
+Ic
+Ic
 xa
 fn
 Pv
@@ -48508,11 +48951,11 @@ Ic
 Ic
 Ic
 Ic
-GK
-aW
-ka
-ka
-ka
+Ic
+Yr
+Yr
+Yr
+Yr
 Yr
 xa
 kQ
@@ -48702,12 +49145,12 @@ Ic
 Ic
 Ic
 Ic
-GK
-Rk
-KO
-KO
-KO
-Rk
+Ic
+Ic
+Ic
+Ic
+Ic
+Ic
 xa
 kQ
 nP
@@ -48896,12 +49339,12 @@ Ic
 Ic
 Ic
 Ic
-GK
-Rk
-ch
-ov
-pu
-Rk
+Ic
+Ic
+Ic
+Ic
+Ic
+Ic
 xa
 kQ
 nP
@@ -49090,12 +49533,12 @@ Ic
 Ic
 Ic
 Ic
-GK
-Rk
-ww
-Bg
-Kf
-Rk
+Ic
+Ic
+Ic
+Ic
+Ic
+Ic
 xa
 Sx
 Pv
@@ -49284,12 +49727,12 @@ Ic
 Ic
 Ic
 Ic
-GK
-Rk
-ww
-Bg
-Bg
-Rk
+Ic
+Ic
+Ic
+Ic
+xa
+xa
 xa
 xa
 xa
@@ -49478,12 +49921,12 @@ Ic
 Ic
 Ic
 Ic
-GK
-Rk
-ww
-Bg
-Bg
-rj
+Ic
+Ic
+Ic
+Ic
+xa
+Zv
 sk
 Nf
 Nf
@@ -49672,14 +50115,14 @@ Ic
 Ic
 Ic
 Ic
-GK
-Rk
-ww
-Bg
-Bg
-BH
-sk
-Nf
+Ic
+Ic
+Ic
+Ic
+xa
+xa
+xa
+OL
 Nf
 Nf
 Nf
@@ -49866,14 +50309,14 @@ Ic
 Ic
 Ic
 Ic
-GK
-Rk
-ww
-Bg
-Eo
-Rk
+Ic
+Ic
+Ic
+Ic
 xa
-fF
+Zv
+sk
+Nf
 Nf
 Nf
 Nf
@@ -50060,12 +50503,12 @@ Ic
 Ic
 Ic
 Ic
-GK
-Rk
-YL
-Bg
-Eo
-Rk
+Ic
+Ic
+Ic
+Ic
+xa
+xa
 xa
 xa
 xa
@@ -50254,12 +50697,12 @@ Ic
 Ic
 Ic
 Ic
-GK
-Rk
-iS
-Bg
-PK
-Rk
+Ic
+Ic
+Ic
+Ic
+Ic
+Ic
 xa
 xa
 wy
@@ -50448,12 +50891,12 @@ Ic
 Ic
 Ic
 Ic
-GK
-Rk
-Jl
-rO
-Jl
-Rk
+Ic
+Ic
+Ic
+Ic
+Ic
+Ic
 xa
 xa
 VM
@@ -50642,12 +51085,12 @@ Ic
 Ic
 Ic
 Ic
-GK
-ET
-Rk
-zi
-Rk
-ET
+Ic
+Ic
+Ic
+Ic
+Ic
+Ic
 xa
 xa
 LZ
@@ -50836,12 +51279,12 @@ Ic
 Ic
 Ic
 Ic
-GK
-GK
-GK
-GK
-GK
-GK
+Ic
+Ic
+Ic
+Ic
+Ic
+Ic
 GK
 GK
 GK

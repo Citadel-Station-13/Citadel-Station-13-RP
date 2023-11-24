@@ -1,7 +1,7 @@
 /obj/item/clothing/suit/armor
 	allowed = list(/obj/item/gun/ballistic/sec/flash, /obj/item/gun/energy,/obj/item/reagent_containers/spray/pepper,/obj/item/gun/ballistic,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/flashlight/maglight,/obj/item/clothing/head/helmet)
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
-	clothing_flags = CLOTHING_THICK_MATERIAL
+	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT
 	valid_accessory_slots = (\
 		ACCESSORY_SLOT_OVER\
 		|ACCESSORY_SLOT_MEDAL\
@@ -140,7 +140,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.01
-	clothing_flags = CLOTHING_THICK_MATERIAL
+	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS
 	allowed = list(/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/tank/emergency/oxygen,/obj/item/clothing/head/helmet)
 	encumbrance = ITEM_ENCUMBRANCE_ARMOR_HEAVY + ITEM_ENCUMBRANCE_ARMOR_HEAVY_BOOTS + ITEM_ENCUMBRANCE_ARMOR_HEAVY_GLOVES
@@ -309,7 +309,7 @@
 	allowed = list(/obj/item/gun,/obj/item/reagent_containers/spray/pepper,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/flashlight/maglight,/obj/item/clothing/head/helmet)
 
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
-	clothing_flags = CLOTHING_THICK_MATERIAL
+	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT
 
 	cold_protection = UPPER_TORSO|LOWER_TORSO
 	min_cold_protection_temperature = ARMOR_MIN_COLD_PROTECTION_TEMPERATURE
@@ -928,3 +928,48 @@
 	icon_state = "tau"
 	armor_type = /datum/armor/general/utilitarian_military
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/suit/armor/baroque
+	name = "baroque military armor"
+	desc = "This ornately decorated armor has been lovingly adorned with holy symbols. It smells faintly of incense."
+	icon = 'icons/clothing/suit/armor/baroque.dmi'
+	icon_state = "sister"
+	armor_type = /datum/armor/general/baroque_military
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/* Replika armor
+/obj/item/clothing/suit/armor/replika/klbr
+    name = "controller replikant armored chestplate"
+    desc = "A sloped titanium-composite chest plate fitted for use by 2nd generation biosynthetics. The right shoulder has been painted an imposing shade of red."
+    icon = 'icons/clothing/suit/armor/replika.dmi'
+    icon_state = "klbr"
+    worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+    body_cover_flags = UPPER_TORSO
+    armor_type = /datum/armor/station/medium
+
+/obj/item/clothing/suit/armor/replika/lstr
+    name = "combat-engineer replikant armored chestplate"
+    desc = "A sloped titanium-composite chest plate fitted for use by 2nd generation biosynthetics. This plain-white version is a staple of SbRD's combat-engineer replikants."
+    icon = 'icons/clothing/suit/armor/replika.dmi'
+    icon_state = "lstr"
+    worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+    body_cover_flags = UPPER_TORSO
+    armor_type = /datum/armor/station/medium
+
+/obj/item/clothing/suit/armor/replika/stcr
+    name = "security-controller replikant armored chestplate"
+    desc = "A sloped titanium-composite chest plate fitted for use by 2nd generation biosynthetics. This version sports multiple red adjustable straps and a lack of shoulder pads."
+    icon = 'icons/clothing/suit/armor/replika.dmi'
+    icon_state = "stcr"
+    worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+    body_cover_flags = UPPER_TORSO
+    armor_type = /datum/armor/station/medium
+
+/obj/item/clothing/suit/armor/replika/star
+    name = "security-technician replikant armored chestplate"
+    desc = "A sloped titanium-composite chest plate with a matte black finish, fitted for use by 2nd generation biosynthetics. Comes with red adjustable straps."
+    icon = 'icons/clothing/suit/armor/replika.dmi'
+    icon_state = "star"
+    worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+    body_cover_flags = UPPER_TORSO
+    armor_type = /datum/armor/station/medium */

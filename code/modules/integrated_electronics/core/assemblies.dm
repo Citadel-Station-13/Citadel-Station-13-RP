@@ -2,7 +2,7 @@
 // Specific subtypes are in their own folder.
 /obj/item/electronic_assembly
 	name = "electronic assembly"
-	obj_flags = CAN_BE_HIT
+	obj_flags = OBJ_RANGE_TARGETABLE | OBJ_MELEE_TARGETABLE
 	desc = "It's a case, for building small electronics with."
 	w_class = ITEMSIZE_SMALL
 	icon = 'icons/obj/integrated_electronics/electronic_setups.dmi'

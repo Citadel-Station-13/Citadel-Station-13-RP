@@ -206,21 +206,42 @@ modular computers
 	..()
 	tweaks += new /datum/loadout_tweak/laptop()
 
+//Backpacks//
+
+/datum/loadout_entry/utility/backpack
+	name = "Backpack"
+	path = /obj/item/storage/backpack
+	slot = SLOT_ID_BACK
+
+/datum/loadout_entry/utility/messanger
+	name = "Messanger Bag"
+	path = /obj/item/storage/backpack/messenger
+	slot = SLOT_ID_BACK
+
+/datum/loadout_entry/utility/satchel
+	name = "Satchel"
+	path = /obj/item/storage/backpack/satchel/norm
+	slot = SLOT_ID_BACK
+
+/datum/loadout_entry/utility/satchelleather
+	name = "Leather Satchel"
+	path = /obj/item/storage/backpack/satchel
+	slot = SLOT_ID_BACK
+
 /datum/loadout_entry/utility/dufflebag
 	name = "Dufflebag"
 	path = /obj/item/storage/backpack/dufflebag
 	slot = SLOT_ID_BACK
-	cost = 2
 
 /datum/loadout_entry/utility/dufflebag/black
 	name = "Dufflebag - Black"
 	path = /obj/item/storage/backpack/dufflebag/fluff
+	slot = SLOT_ID_BACK
 
 /datum/loadout_entry/utility/rigbag
 	name = "Rig Storage Unit"
 	path = /obj/item/storage/backpack/rig
 	slot = SLOT_ID_BACK
-	cost = 0
 
 /datum/loadout_entry/utility/welding_helmet
 	name = "Welding Helmet"
@@ -242,6 +263,10 @@ modular computers
 /datum/loadout_entry/utility/welding_helmet/engie
 	name = "Welding Helmet - Engie"
 	path = /obj/item/clothing/head/welding/engie
+
+/datum/loadout_entry/utility/welding_helmet/arar
+	name = "Welding Helmet - Replikant"
+	path = /obj/item/clothing/head/welding/arar
 
 /datum/loadout_entry/utility/webbing
 	name = "Webbing - Simple"

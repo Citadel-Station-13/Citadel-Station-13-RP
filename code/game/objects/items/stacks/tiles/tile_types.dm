@@ -223,7 +223,7 @@
 	singular_name = "floor tile"
 	desc = "A metal tile fit for covering a section of floor."
 	icon_state = "tile"
-	materials = list(MAT_STEEL = SHEET_MATERIAL_AMOUNT / 4)
+	materials_base = list(MAT_STEEL = SHEET_MATERIAL_AMOUNT / 4)
 	damage_force = 6.0
 	throw_force = 15.0
 	throw_speed = 5
@@ -253,21 +253,21 @@
 	name = "steel floor tile"
 	singular_name = "steel floor tile"
 	icon_state = "tile_steel"
-	materials = list(MAT_PLASTEEL = SHEET_MATERIAL_AMOUNT / 4)
+	materials_base = list(MAT_PLASTEEL = SHEET_MATERIAL_AMOUNT / 4)
 	no_variants = FALSE
 
 /obj/item/stack/tile/floor/steel
 	name = "steel floor tile"
 	singular_name = "steel floor tile"
 	icon_state = "tile_steel"
-	materials = list(MAT_PLASTEEL = SHEET_MATERIAL_AMOUNT / 4)
+	materials_base = list(MAT_PLASTEEL = SHEET_MATERIAL_AMOUNT / 4)
 	no_variants = FALSE
 
 /obj/item/stack/tile/floor/white
 	name = "white floor tile"
 	singular_name = "white floor tile"
 	icon_state = "tile_white"
-	materials = list(MAT_PLASTIC = SHEET_MATERIAL_AMOUNT / 4)
+	materials_base = list(MAT_PLASTIC = SHEET_MATERIAL_AMOUNT / 4)
 	no_variants = FALSE
 
 /obj/item/stack/tile/floor/yellow
@@ -281,21 +281,21 @@
 	name = "dark floor tile"
 	singular_name = "dark floor tile"
 	icon_state = "tile_steel"
-	materials = list(MAT_PLASTEEL = SHEET_MATERIAL_AMOUNT / 4)
+	materials_base = list(MAT_PLASTEEL = SHEET_MATERIAL_AMOUNT / 4)
 	no_variants = FALSE
 
 /obj/item/stack/tile/floor/freezer
 	name = "freezer floor tile"
 	singular_name = "freezer floor tile"
 	icon_state = "tile_freezer"
-	materials = list(MAT_PLASTIC = SHEET_MATERIAL_AMOUNT / 4)
+	materials_base = list(MAT_PLASTIC = SHEET_MATERIAL_AMOUNT / 4)
 	no_variants = FALSE
 
 /obj/item/stack/tile/floor/cyborg
 	name = "floor tile synthesizer"
 	desc = "A device that makes floor tiles."
 	gender = NEUTER
-	materials = null
+	materials_base = null
 	uses_charge = 1
 	charge_costs = list(250)
 	stacktype = /obj/item/stack/tile/floor
@@ -306,7 +306,7 @@
 	singular_name = "sandstone tile"
 	desc = "Hardened sand compacted into a brick akin to stone in toughness."
 	icon_state = "tile-sandstone"
-	materials = list("sandstone" = SHEET_MATERIAL_AMOUNT / 4)
+	materials_base = list("sandstone" = SHEET_MATERIAL_AMOUNT / 4)
 	no_variants = FALSE
 
 /obj/item/stack/tile/linoleum

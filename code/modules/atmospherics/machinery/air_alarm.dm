@@ -738,7 +738,8 @@ GLOBAL_LIST_EMPTY(air_alarms)
 		return
 
 	if(istype(W, /obj/item/card/id) || istype(W, /obj/item/pda))// trying to unlock the interface with an ID card
-		togglelock()
+		togglelock(user)
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
 
 /obj/machinery/air_alarm/verb/togglelock(mob/user as mob)
@@ -755,7 +756,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 
 /obj/machinery/air_alarm/AltClick()
 	..()
-	togglelock()
+	togglelock(usr)
 
 /obj/machinery/air_alarm/power_change()
 	..()

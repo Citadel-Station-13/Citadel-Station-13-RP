@@ -24,7 +24,7 @@
 	throw_range = 5
 	w_class = ITEMSIZE_NORMAL
 	slot_flags = SLOT_BELT
-	materials = list(MAT_STEEL = 20000, MAT_GLASS = 10000)
+	materials_base = list(MAT_STEEL = 20000, MAT_GLASS = 10000)
 	///Sparks system used when changing device in the UI
 	var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread
 	///Direction of the device we are going to spawn, set up in the UI
@@ -352,7 +352,7 @@
 	playsound(src, 'sound/items/deconstruct.ogg', 50, TRUE)
 
 /obj/item/pipe_dispenser/proc/do_wrench(var/atom/target, mob/user)
-	tool.melee_attack_chain(target, user, CLICKCHAIN_HAS_PROXIMITY)
+	tool.melee_interaction_chain(target, user, CLICKCHAIN_HAS_PROXIMITY)
 
 /obj/item/pipe_dispenser/proc/mouse_wheeled(mob/user, atom/A, delta_x, delta_y, params)
 	SIGNAL_HANDLER

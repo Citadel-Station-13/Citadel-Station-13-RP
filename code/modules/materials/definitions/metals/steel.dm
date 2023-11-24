@@ -2,14 +2,24 @@
 	id = MAT_STEEL
 	name = MAT_STEEL
 	stack_type = /obj/item/stack/material/steel
-	integrity = 150
-	conductivity = 11 // Assuming this is carbon steel, it would actually be slightly less conductive than iron, but lets ignore that.
-	protectiveness = 10 // 33%
 	icon_base = 'icons/turf/walls/metal_wall.dmi'
 	icon_reinf = 'icons/turf/walls/solid_wall_reinforced.dmi'
 	icon_colour = "#666666"
 	table_icon_base = "metal"
 	tgui_icon_key = "metal"
+
+	// the true neutral material
+
+	relative_integrity = 1
+	density = 8
+	relative_conductivity = 1
+	relative_permeability = 0
+	relative_reactivity = 0.75
+	hardness = MATERIAL_RESISTANCE_MODERATE
+	toughness = MATERIAL_RESISTANCE_HIGH
+	refraction = MATERIAL_RESISTANCE_LOW
+	absorption = MATERIAL_RESISTANCE_MODERATE
+	nullification = MATERIAL_RESISTANCE_NONE
 
 /datum/material/steel/generate_recipes()
 	. = ..()
@@ -246,7 +256,7 @@
 	id = "steel_hull"
 	name = MAT_STEELHULL
 	stack_type = /obj/item/stack/material/steel/hull
-	integrity = 250
+	relative_integrity = 2
 	explosion_resistance = 10
 	icon_colour = "#666677"
 

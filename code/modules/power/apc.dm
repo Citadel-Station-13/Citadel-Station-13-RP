@@ -265,6 +265,7 @@ GLOBAL_LIST_EMPTY(apcs)
 	anchored = 1
 	use_power = USE_POWER_OFF
 	req_access = list(ACCESS_ENGINEERING_ENGINE)
+	armor_type = /datum/armor/object/medium
 	var/area/area
 	var/areastring = null
 	var/obj/item/cell/cell
@@ -668,6 +669,8 @@ GLOBAL_LIST_EMPTY(apcs)
 //attack with an item - open/close cover, insert cell, or (un)lock interface
 
 /obj/machinery/power/apc/attackby(obj/item/W, mob/user)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
 
 	if (istype(user, /mob/living/silicon) && get_dist(src,user)>1)
 		return src.attack_hand(user)
@@ -895,8 +898,6 @@ GLOBAL_LIST_EMPTY(apcs)
 				return src.attack_hand(user)
 			if (!opened && wiresexposed && (istype(W, /obj/item/multitool) || W.is_wirecutter() || istype(W, /obj/item/assembly/signaler)))
 				return src.attack_hand(user)
-			//Placeholder until someone can do take_damage() for APCs or something.
-			to_chat(user,"<span class='notice'>The [src.name] looks too sturdy to bash open with \the [W.name].</span>")
 
 // attack with hand - remove cell (if cover open) or interact with the APC
 

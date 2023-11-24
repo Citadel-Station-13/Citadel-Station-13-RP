@@ -10,7 +10,7 @@
 	throw_force = 10
 	damtype = BURN
 	damage_force = 10
-	hitsound = 'sound/items/welder2.ogg'
+	attack_sound = 'sound/items/welder2.ogg'
 
 /obj/item/scrying/attack_self(mob/user)
 	. = ..()
@@ -40,7 +40,7 @@
 	damage_force = 15
 	throw_force = 10
 	w_class = WEIGHT_CLASS_NORMAL
-	hitsound = 'sound/weapons/bladeslice.ogg'
+	attack_sound = 'sound/weapons/bladeslice.ogg'
 	var/charges = 1
 	var/spawn_type = /obj/singularity/wizard
 	var/spawn_amt = 1

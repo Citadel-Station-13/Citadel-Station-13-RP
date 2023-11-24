@@ -72,6 +72,6 @@
 	cost = 4
 
 /datum/stack_recipe/material/tools/simple/hammer_head
-	name = "fork"
+	name = "hammer head"
 	result_type = /obj/item/material/hammer_head
 	cost = 8

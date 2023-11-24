@@ -14,8 +14,9 @@
 	smoothing_groups = (SMOOTH_GROUP_CATWALK + SMOOTH_GROUP_LATTICE + SMOOTH_GROUP_OPEN_FLOOR)
 	canSmoothWith = (SMOOTH_GROUP_CATWALK)
 
-	var/health = 100
-	var/maxhealth = 100
+	integrity = 200
+	integrity_max = 200
+
 	var/obj/item/stack/tile/plated_tile = null
 	var/static/plating_color = list(
 		/obj/item/stack/tile/floor = "#858a8f",
@@ -89,13 +90,10 @@
 				new /obj/structure/lattice(src.loc)
 				qdel(src)
 	if(C.is_screwdriver())
-		if(health < maxhealth)
+		if(integrity < integrity_max)
 			to_chat(user, "<span class='notice'>You begin repairing \the [src.name] with \the [C.name].</span>")
 			if(do_after(user, 20, src))
-				health = maxhealth
-	else
-		take_damage(C.damage_force)
-		user.setClickCooldown(user.get_attack_speed(C))
+				set_integrity(integrity_max)
 	return ..()
 
 /obj/structure/catwalk/Crossed()
@@ -109,14 +107,6 @@
 	if(target && target.z < src.z)
 		return FALSE
 	return TRUE
-
-/obj/structure/catwalk/take_damage(amount)
-	health -= amount
-	if(health <= 0)
-		visible_message("<span class='warning'>\The [src] breaks down!</span>")
-		playsound(loc, 'sound/effects/grillehit.ogg', 50, 1)
-		new /obj/item/stack/rods(get_turf(src))
-		qdel(src)
 
 /obj/structure/catwalk/prevent_z_fall(atom/movable/victim, levels = 0, fall_flags)
 	return fall_flags | FALL_BLOCKED
@@ -200,27 +190,25 @@
 				qdel(src)
 				visible_message("<span class='danger'>The planks splinter and disintegrate beneath the weight!</span>")
 			if(6 to 50)
-				take_damage(rand(10,20))
+				inflict_atom_damage(
+					rand(10, 20),
+					flag = ARMOR_MELEE,
+				)
 				visible_message("<span class='danger'>The planks creak and groan as they're crossed.</span>")
 			if(51 to 100)
 				return
 
-/obj/structure/catwalk/plank/take_damage(amount)
-	health -= amount
-	update_icon()
-	if(health <= 0)
-		visible_message("<span class='warning'>\The [src] breaks down!</span>")
-		Destroy()
-
-/obj/structure/catwalk/plank/update_icon()
-	if(health > 75)
+/obj/structure/catwalk/plank/update_icon_state()
+	var/perc = percent_integrity()
+	if(perc >= 0.75)
 		icon_state = "[initial(icon_state)]"
-	if(health < 75)
+	else if(perc >= 0.5)
 		icon_state = "[initial(icon_state)]_scuffed"
-	if(health < 50)
+	else if(perc >= 0.25)
 		icon_state = "[initial(icon_state)]_rickety"
-	if(health < 25)
+	else
 		icon_state = "[initial(icon_state)]_dangerous"
+	return ..()
 
 //Ashlander Catwalks, for bridges?
 /obj/structure/catwalk/ashlander

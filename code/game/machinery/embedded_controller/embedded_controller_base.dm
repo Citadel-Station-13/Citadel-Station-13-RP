@@ -67,8 +67,8 @@
 	icon = 'icons/obj/airlock_machines.dmi'
 	icon_state = "airlock_control_standby"
 	power_channel = ENVIRON
-	density = 0
-	unacidable = 1
+	density = FALSE
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 
 	var/id_tag
 	//var/radio_power_use = 50 //power used to xmit signals

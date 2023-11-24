@@ -18,7 +18,7 @@
 	drop_sound = 'sound/items/drop/multitool.ogg'
 	pickup_sound = 'sound/items/pickup/multitool.ogg'
 
-	materials = list(MAT_STEEL = 50, MAT_GLASS = 20)
+	materials_base = list(MAT_STEEL = 50, MAT_GLASS = 20)
 
 	var/mode_index = 1
 	var/toolmode = MULTITOOL_MODE_STANDARD
@@ -113,6 +113,18 @@
 	origin_tech = list(TECH_MAGNET = 5, TECH_ENGINEERING = 5)
 	colorable = 0
 
+/obj/item/multitool/clockwork
+	name = "clockwork multitool"
+	desc = "A slender brass device, adorned with three prongs pulsing with energy, a faintly glowing red gem, and a screen in the shape of an eye."
+	icon = 'icons/obj/clockwork.dmi'
+	icon_state = "multitool"
+	tool_speed = 0.1
+	colorable = 0
+
+/obj/item/multitool/clockwork/examine(mob/user, dist)
+	. = ..()
+	. += SPAN_NZCRENTR("The multitool seems to flash and pulse with impatience, the 'eye' appearing to be both bored and frustrated.")
+
 //Colored Variants
 /obj/item/multitool/red
 	color_overlay = "multi_r"
@@ -126,7 +138,7 @@
 	icon_state = "crystal_multitool"
 	item_state = "crystal_tool"
 	icon = 'icons/obj/crystal_tools.dmi'
-	materials = list(MATERIAL_CRYSTAL = 1250)
+	materials_base = list(MATERIAL_CRYSTAL = 1250)
 
 /obj/item/multitool/crystal/Initialize()
 	. = ..()

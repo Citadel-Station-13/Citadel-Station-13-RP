@@ -2231,7 +2231,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/bearcat/unused2)
 "fH" = (
-/obj/structure/closet/crate/veymed,
+/obj/structure/closet/crate/corporate/veymed,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/bearcat/unused2)
 "fI" = (
@@ -2433,7 +2433,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/bearcat/unused2)
 "gh" = (
-/obj/structure/closet/crate/heph,
+/obj/structure/closet/crate/corporate/heph,
 /obj/item/clothing/suit/space/void/refurb/marine,
 /obj/item/clothing/head/helmet/space/void/refurb/marine,
 /turf/simulated/floor/tiled/techfloor,

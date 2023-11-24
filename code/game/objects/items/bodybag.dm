@@ -132,7 +132,8 @@
 	icon_state = "bodybag_folded"
 	item_state = "bodybag_cryo_folded"
 	origin_tech = list(TECH_BIO = 4)
-	
+	bag_type = /obj/structure/closet/body_bag/cryobag
+
 	var/obj/item/reagent_containers/syringe/syringe
 
 /obj/item/bodybag/cryobag/create_bag(atom/where)
@@ -222,7 +223,7 @@
 		if(istype(W,/obj/item/healthanalyzer))
 			var/obj/item/healthanalyzer/analyzer = W
 			for(var/mob/living/L in contents)
-				analyzer.melee_attack_chain(L,user)
+				analyzer.melee_interaction_chain(L,user)
 
 		else if(istype(W,/obj/item/reagent_containers/syringe))
 			if(syringe)

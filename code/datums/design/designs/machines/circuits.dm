@@ -104,12 +104,6 @@
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/circuitboard/request
 
-/datum/design/machine_circuit/pipelayer
-	id = "CircuitPipeLayer"
-	lathe_type = LATHE_TYPE_AUTOLATHE
-	design_unlock = DESIGN_UNLOCK_INTRINSIC
-	build_path = /obj/item/circuitboard/pipelayer
-
 /datum/design/machine_circuit/timeclock
 	id = "CircuitTimeclock"
 	lathe_type = LATHE_TYPE_AUTOLATHE

@@ -7,7 +7,6 @@
 /obj/structure/window/reinforced/full,
 /obj/machinery/door/blast/regular{
 	density = 0;
-	destroy_hits = 1000;
 	dir = 4;
 	icon_state = "pdoor0";
 	id = "ship-lounge";
@@ -169,7 +168,6 @@
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
-	destroy_hits = 1000;
 	icon_state = "pdoor0";
 	id = "ship-lounge";
 	name = "Shuttle Blast Doors";
@@ -235,7 +233,6 @@
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
-	destroy_hits = 1000;
 	icon_state = "pdoor0";
 	id = "ship-lounge";
 	name = "Shuttle Blast Doors";
@@ -632,7 +629,6 @@
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
-	destroy_hits = 1000;
 	icon_state = "pdoor0";
 	id = "ship-hydroponics";
 	name = "Shuttle Blast Doors";
@@ -751,7 +747,6 @@
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
-	destroy_hits = 1000;
 	icon_state = "pdoor0";
 	id = "ship-kitchen";
 	name = "Shuttle Blast Doors";
@@ -1657,7 +1652,6 @@
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
-	destroy_hits = 1000;
 	dir = 4;
 	icon_state = "pdoor0";
 	id = "ship-med-surgery";
@@ -2824,7 +2818,6 @@
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
-	destroy_hits = 1000;
 	icon_state = "pdoor0";
 	id = "ship-sec-equip";
 	name = "Shuttle Blast Doors";
@@ -3043,7 +3036,6 @@
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
-	destroy_hits = 1000;
 	icon_state = "pdoor0";
 	id = "ship-med-treatment";
 	name = "Shuttle Blast Doors";
@@ -4552,7 +4544,6 @@
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
-	destroy_hits = 1000;
 	icon_state = "pdoor0";
 	id = "ship-sec-warden";
 	name = "Shuttle Blast Doors";
@@ -4814,7 +4805,6 @@
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
-	destroy_hits = 1000;
 	icon_state = "pdoor0";
 	id = "ship-med-equip";
 	name = "Shuttle Blast Doors";
@@ -5177,7 +5167,6 @@
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/blast/regular{
-	destroy_hits = 100;
 	id = "ship-armory";
 	name = "Armory"
 	},
@@ -5383,7 +5372,6 @@
 	dir = 4
 	},
 /obj/machinery/door/blast/regular{
-	destroy_hits = 100;
 	id = "ship-armory";
 	name = "Armory"
 	},
@@ -6664,7 +6652,6 @@
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
-	destroy_hits = 1000;
 	icon_state = "pdoor0";
 	id = "ship-holodeck";
 	name = "Shuttle Blast Doors";
@@ -8102,7 +8089,6 @@
 /area/mothership/engineering)
 "sq" = (
 /obj/machinery/door/blast/regular{
-	destroy_hits = 1000;
 	dir = 4;
 	id = "ship-dronehangar1";
 	name = "Drone Hangar"
@@ -9375,7 +9361,6 @@
 /area/mothership/hallway)
 "WE" = (
 /obj/machinery/door/blast/regular{
-	destroy_hits = 1000;
 	dir = 4;
 	id = "ship-dronehangar2";
 	name = "Drone Hangar"
@@ -9392,7 +9377,6 @@
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
-	destroy_hits = 1000;
 	dir = 4;
 	icon_state = "pdoor0";
 	id = "ship-lounge";

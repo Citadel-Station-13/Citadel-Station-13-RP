@@ -5,12 +5,15 @@
 	gender = PLURAL
 	origin_tech = list(TECH_MATERIAL = 1)
 	icon = 'icons/obj/stacks.dmi'
+	item_flags = ITEM_CAREFUL_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	var/singular_name
 	var/amount = 1
 	/// See stack recipes initialisation, param "max_res_amount" must be equal to this max_amount.
 	var/max_amount = 50
 	/// Determines whether different stack types can merge.
 	var/stacktype
+	/// enforce a certain type when splitting; useful if you have an infinite stack you don't want to be split into another one
+	var/split_type
 	/// Used when directly applied to a turf.
 	var/build_type = null
 	var/uses_charge = 0
@@ -69,6 +72,8 @@
 	return list()
 
 /obj/item/stack/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+	if(!stackcrafting_makes_sense())
+		return
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(isnull(ui))
 		ui = new(user, src, "StackCrafting")
@@ -79,6 +84,9 @@
 	.["recipes"] = tgui_recipes()
 	.["maxAmount"] = max_amount
 	.["name"] = name
+
+/obj/item/stack/proc/stackcrafting_makes_sense()
+	return length(explicit_recipes)
 
 /obj/item/stack/proc/tgui_recipes()
 	var/list/assembled = list()
@@ -209,6 +217,7 @@
 	return 0
 
 /// Creates a new stack with the specified amount.
+// todo: refactor and combine /change_stack into here
 /obj/item/stack/proc/split(tamount)
 	if (!amount)
 		return null
@@ -219,7 +228,8 @@
 
 	var/orig_amount = src.amount
 	if (transfer && src.use(transfer))
-		var/obj/item/stack/newstack = new src.type(loc, transfer, FALSE)
+		var/make_type = isnull(split_type)? type : split_type
+		var/obj/item/stack/newstack = new make_type(loc, transfer, FALSE)
 		newstack.color = color
 		if (prob(transfer/orig_amount * 100))
 			transfer_fingerprints_to(newstack)
@@ -294,18 +304,12 @@
 	S.add(transfer)
 	return transfer
 
-/obj/item/stack/attackby(obj/item/W, mob/user)
-	if (istype(W, /obj/item/stack))
-		var/obj/item/stack/S = W
+/obj/item/stack/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+	if (istype(I, /obj/item/stack))
+		var/obj/item/stack/S = I
 		src.transfer_to(S)
-
-		spawn(0) //give the stacks a chance to delete themselves if necessary
-			if (S && usr.machine==S)
-				S.interact(usr)
-			if (src && usr.machine==src)
-				src.interact(usr)
-	else
-		return ..()
+		return
+	return ..()
 
 /obj/item/stack/AltClick(mob/living/user)
 	. = ..()
@@ -332,10 +336,12 @@
 			to_chat(user, SPAN_NOTICE("You take [stackmaterial] sheets out of the stack"))
 		return TRUE
 
+// todo: refactor and combine with /split
 /obj/item/stack/proc/change_stack(mob/user, amount)
 	if(!use(amount, TRUE, FALSE))
 		return FALSE
-	var/obj/item/stack/F = new type(user? user : drop_location(), amount, FALSE)
+	var/make_type = isnull(split_type)? type : split_type
+	var/obj/item/stack/F = new make_type(user? user : drop_location(), amount, FALSE)
 	. = F
 	F.copy_evidences(src)
 	if(user)
@@ -381,5 +387,5 @@
 	if(amount == 0 && !no_limits)
 		qdel(src)
 		return FALSE
-
+	update_icon()
 	return TRUE

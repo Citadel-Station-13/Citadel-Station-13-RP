@@ -8,7 +8,7 @@
 	damage_force = 2
 	throw_force = 5
 	w_class = ITEMSIZE_TINY
-	materials = list(MAT_STEEL = 60)
+	materials_base = list(MAT_STEEL = 60)
 	drop_sound = 'sound/items/drop/glass.ogg'
 	pickup_sound = 'sound/items/pickup/glass.ogg'
 
@@ -35,7 +35,7 @@
 	icon_state = "ltube"
 	base_icon_state = "ltube"
 	item_state = "c_tube"
-	materials = list(MAT_GLASS = 100)
+	materials_base = list(MAT_GLASS = 100)
 	brightness_range = 8
 	brightness_power = 0.8
 	brightness_color = LIGHT_COLOR_HALOGEN
@@ -103,7 +103,7 @@
 	icon_state = "lbulb"
 	base_icon_state = "lbulb"
 	item_state = "contvapour"
-	materials = list(MAT_GLASS = 100)
+	materials_base = list(MAT_GLASS = 100)
 	brightness_color = LIGHT_COLOR_TUNGSTEN
 
 	brightness_range = 4
@@ -117,7 +117,7 @@
 	icon_state = "lbulb"
 	base_icon_state = "lbulb"
 	item_state = "contvapour"
-	materials = list(MAT_GLASS = 100)
+	materials_base = list(MAT_GLASS = 100)
 	brightness_color = LIGHT_COLOR_TUNGSTEN
 
 	brightness_range = 8
@@ -184,7 +184,7 @@
 	icon_state = "fbulb"
 	base_icon_state = "fbulb"
 	item_state = "egg4"
-	materials = list(MAT_GLASS = 100)
+	materials_base = list(MAT_GLASS = 100)
 
 /// Fairylights
 /obj/item/light/bulb/fairy
@@ -192,7 +192,7 @@
 	desc = "A tiny replacement light bulb."
 	icon_state = "fbulb"
 	base_icon_state = "fbulb"
-	materials = list(MAT_GLASS = 10)
+	materials_base = list(MAT_GLASS = 10)
 	brightness_range = 5
 
 // update the icon state and description of the light

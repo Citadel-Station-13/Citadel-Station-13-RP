@@ -140,7 +140,7 @@
 
 /obj/item/holder/fish
 	attack_verb = list("fished", "disrespected", "smacked", "smackereled")
-	hitsound = 'sound/effects/slime_squish.ogg'
+	attack_sound = 'sound/effects/slime_squish.ogg'
 	slot_flags = SLOT_HOLSTER
 	origin_tech = list(TECH_BIO = 3)
 

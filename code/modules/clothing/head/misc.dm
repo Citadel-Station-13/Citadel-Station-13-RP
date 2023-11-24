@@ -42,7 +42,7 @@
 	name = "magnetic 'pin'"
 	addblends = null
 	desc = "Finally, a hair pin even a Morpheus chassis can use."
-	materials = list(MAT_STEEL = 10)
+	materials_base = list(MAT_STEEL = 10)
 
 /obj/item/clothing/head/pin/flower
 	name = "red flower pin"
@@ -728,3 +728,9 @@
 	icon = 'icons/clothing/head/darkcleric.dmi'
 	icon_state = "darkcleric"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/head/eulrhat
+	name = "sleek side cap"
+	desc = "A simple wedge cap with red accents, highly popular within Tri-Star Compact space."
+	icon_state = "eulrhat"
+	body_cover_flags = 0

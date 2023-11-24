@@ -847,8 +847,7 @@
 /area/maintenance/lower/atmos)
 "cO" = (
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/closet/radiation,
 /obj/item/clothing/glasses/meson,
@@ -3951,8 +3950,7 @@
 /obj/item/clothing/glasses/meson,
 /obj/item/clothing/glasses/meson,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /turf/simulated/floor,
 /area/engineering/engine_gas)
@@ -6905,8 +6903,7 @@
 "vP" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/machinery/shield_gen/external,
 /turf/simulated/floor/plating,
@@ -7855,8 +7852,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/chief)
@@ -10658,8 +10654,7 @@
 /area/quartermaster/belterdock/refinery)
 "Ke" = (
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 1
@@ -11565,6 +11560,12 @@
 /obj/item/storage/single_use/med_pouch/radiation,
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/engine_room)
+"Nk" = (
+/obj/machinery/requests_console/preset/ce{
+	pixel_y = -30
+	},
+/turf/simulated/floor/tiled,
+/area/crew_quarters/heads/chief)
 "Nm" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -11979,8 +11980,7 @@
 /area/engineering/locker_room)
 "Oz" = (
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/machinery/computer/security/engineering{
 	dir = 4
@@ -12709,7 +12709,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/engineering_monitoring)
 "Rv" = (
-/obj/structure/closet/crate/nanotrasen,
+/obj/structure/closet/crate/corporate/nanotrasen,
 /turf/simulated/floor/reinforced,
 /area/rnd/secure_storage/lower)
 "Ry" = (
@@ -12803,8 +12803,7 @@
 /area/engineering/engine_eva)
 "RR" = (
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced,
 /obj/machinery/computer/station_alert{
@@ -31043,7 +31042,7 @@ he
 ol
 mE
 me
-mE
+Nk
 aA
 aA
 aa

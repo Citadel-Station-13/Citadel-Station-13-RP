@@ -9,6 +9,8 @@
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	active_power_usage = 4
+	// todo: remove when this is constructible (and all its subtypes are)
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 
 /obj/machinery/button/attack_ai(mob/user)
 	return attack_hand(user)

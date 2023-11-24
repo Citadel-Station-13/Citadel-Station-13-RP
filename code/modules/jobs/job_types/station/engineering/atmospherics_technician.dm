@@ -32,25 +32,27 @@
 						understanding of the pipes, vents, and scrubbers that move gasses around the station, and to be familiar with proper firefighting procedure."
 
 	alt_titles = list(
-		"Atmospherics Maintainer" = /datum/prototype/struct/alt_title/atmos_maint,
+		"Life Support Technician" = /datum/prototype/struct/alt_title/life_support,
 		"Pipe Network Specialist" = /datum/prototype/struct/alt_title/pipe_spec,
 		"Disposals Technician" = /datum/prototype/struct/alt_title/disposals_tech,
-		"Artificer" = /datum/prototype/struct/alt_title/atmos_artificer
+"Artificer" = /datum/prototype/struct/alt_title/atmos_artificer
 		)
 
 // Atmos Tech Alt Titles
-/datum/prototype/struct/alt_title/atmos_maint
-	title = "Atmospherics Maintainer"
+/datum/prototype/struct/alt_title/life_support
+	title = "Life Support Technician"
+	title_blurb = "A Life Support Technician is an Atmospheric Technician who specializes in establishing and maintaining breatheable air in a needed area, whether that's the primary facility or a forward base."
 
 /datum/prototype/struct/alt_title/pipe_spec
 	title = "Pipe Network Specialist"
+	title_blurb = "A Pipe Network Specialist is an Atmospheric Technician who specializes in the complicated art of pipe networks."
 
 /datum/prototype/struct/alt_title/disposals_tech
 	title = "Disposals Technician"
 	title_blurb = "A Disposals Technician is an Atmospheric Technician still and can fulfill all the same duties, although specializes more in disposals delivery system's operations and configurations."
 
 /datum/prototype/struct/alt_title/atmos_artificer
-	title = "Artificer"
+	title = "Artificer-Climatic"
 	background_allow = list(
 		/datum/lore/character_background/faction/naramadiguilds
 	)

@@ -3,7 +3,7 @@
 	desc = "A tiny laser used in certain devices."
 	icon_state = "micro_laser"
 	origin_tech = list(TECH_MAGNET = 1)
-	materials = list(MAT_STEEL = 10, MAT_GLASS = 20)
+	materials_base = list(MAT_STEEL = 10, MAT_GLASS = 20)
 
 /obj/item/stock_parts/micro_laser/high
 	name = "high-power micro-laser"
@@ -11,7 +11,7 @@
 	icon_state = "high_micro_laser"
 	origin_tech = list(TECH_MAGNET = 3)
 	rating = 2
-	materials = list(MAT_STEEL = 10, MAT_GLASS = 20)
+	materials_base = list(MAT_STEEL = 10, MAT_GLASS = 20)
 
 /obj/item/stock_parts/micro_laser/ultra
 	name = "ultra-high-power micro-laser"
@@ -19,7 +19,7 @@
 	desc = "A tiny laser used in certain devices."
 	origin_tech = list(TECH_MAGNET = 5)
 	rating = 3
-	materials = list(MAT_STEEL = 10, MAT_GLASS = 20)
+	materials_base = list(MAT_STEEL = 10, MAT_GLASS = 20)
 
 /obj/item/stock_parts/micro_laser/hyper
 	name = "hyper-power micro-laser"
@@ -27,7 +27,7 @@
 	desc = "A tiny laser used in certain devices."
 	origin_tech = list(TECH_MAGNET = 6, TECH_ARCANE = 1)
 	rating = 4
-	materials = list(MAT_STEEL = 30, MAT_GLASS = 40)
+	materials_base = list(MAT_STEEL = 30, MAT_GLASS = 40)
 
 /obj/item/stock_parts/micro_laser/omni
 	name = "omni-power micro-laser"
@@ -35,4 +35,4 @@
 	desc = "A strange laser used in certain devices."
 	origin_tech = list(TECH_MAGNET = 7, TECH_PRECURSOR  = 1)
 	rating = 5
-	materials = list(MAT_STEEL = 30, MAT_GLASS = 40)
+	materials_base = list(MAT_STEEL = 30, MAT_GLASS = 40)

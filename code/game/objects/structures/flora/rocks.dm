@@ -9,7 +9,7 @@
 	randomize_size = TRUE
 	var/mindrop = 0
 	var/upperdrop = 4
-	var/outcropdrop = /obj/item/ore/glass
+	var/outcropdrop = /obj/item/stack/ore/glass
 
 /obj/structure/flora/rock/alternative_1
 	icon_state = "basalt2"
@@ -32,7 +32,6 @@
 		to_chat(user, "<span class='notice'>[user] begins to hack away at \the [src].</span>")
 		if(do_after(user,40))
 			to_chat(user, "<span class='notice'>You have finished digging!</span>")
-			for(var/i=0;i<(rand(mindrop,upperdrop));i++)
-				new outcropdrop(get_turf(src))
+			new outcropdrop(get_turf(src),rand(mindrop,upperdrop))
 			qdel(src)
 			return

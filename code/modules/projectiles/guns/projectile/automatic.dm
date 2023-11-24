@@ -17,7 +17,7 @@
 /obj/item/gun/ballistic/automatic/advanced_smg
 	name = "advanced SMG"
 	desc = "The NT-S3W is an advanced submachine gun design, using a reflective laser optic for increased accuracy over competing models. Chambered for 9mm rounds."
-	icon_state = "advanced_smg-empty"
+	icon_state = "advanced_smg"
 	w_class = ITEMSIZE_NORMAL
 	load_method = MAGAZINE
 	caliber = "9mm"
@@ -30,10 +30,6 @@
 		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, burst_accuracy=null, dispersion=null),
 		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=4,    burst_accuracy=list(60,30,20), dispersion=list(0.0, 0.3, 0.6))
 	)
-
-/obj/item/gun/ballistic/automatic/advanced_smg/update_icon_state()
-	. = ..()
-	icon_state = (ammo_magazine)? "advanced_smg" : "advanced_smg-empty"
 
 /obj/item/gun/ballistic/automatic/advanced_smg/loaded
 	magazine_type = /obj/item/ammo_magazine/m9mmAdvanced
@@ -95,8 +91,6 @@
 	. = ..()
 	if(istype(ammo_magazine,/obj/item/ammo_magazine/m556/small))
 		icon_state = "arifle-small" // If using the small magazines, use the small magazine sprite.
-	else
-		icon_state = (ammo_magazine)? "arifle" : "arifle-empty"
 
 /obj/item/gun/ballistic/automatic/sts35/update_icon(ignore_inhands)
 	. = ..()
@@ -335,7 +329,7 @@
 	name = "automatic shotgun"
 	desc = "The AS-24 is a rugged looking automatic shotgun produced for the military by Gurov Projectile Weapons LLC. For very obvious reasons, it's illegal to own in many juristictions. Uses 12g rounds."
 	icon_state = "ashot"
-	item_state = null
+	item_state = "ashot"
 	w_class = ITEMSIZE_LARGE
 	damage_force = 10
 	caliber = "12g"
@@ -352,8 +346,9 @@
 
 	firemodes = list(
 		list(mode_name="semiauto", burst=1, fire_delay=0),
-		list(mode_name="3-round bursts", burst=3, move_delay=6, burst_accuracy = list(60,40,30,25,15), dispersion = list(0.0, 0.6, 0.6))
+		list(mode_name="3-round bursts", burst=3, move_delay=6, burst_accuracy = list(60,40,30,25,15), dispersion = list(0.0, 0.6, 0.6)),
 //		list(mode_name="6-round bursts", burst=6, move_delay=6, burst_accuracy = list(0,-15,-15,-30,-30, -30), dispersion = list(0.6, 1.0, 1.0, 1.0, 1.2, 1.2)),
+		list(mode_name="automatic", burst=1, fire_delay=-1, move_delay=null, burst_accuracy=null, dispersion=null, automatic = 1)
 		)
 
 /obj/item/gun/ballistic/automatic/as24/update_icon_state()
@@ -448,7 +443,7 @@
 
 /obj/item/gun/ballistic/automatic/p90/custom/update_icon_state()
 	. = ..()
-	icon_state = "p90smgC-[ammo_magazine ? round(ammo_magazine.stored_ammo.len, 6) : "empty"]"
+	icon_state = "p90smgC-[ammo_magazine ? round(ammo_magazine.stored_ammo.len, 6) : "e"]"
 
 /obj/item/gun/ballistic/automatic/tommygun
 	name = "\improper Tommy Gun"
@@ -498,10 +493,6 @@
 	. = ..()
 	if(istype(ammo_magazine,/obj/item/ammo_magazine/m762))
 		icon_state = "bullpup-small"
-	else if(istype(ammo_magazine,/obj/item/ammo_magazine/m762m))
-		icon_state = "bullpup"
-	else
-		item_state = "bullpup-empty"
 
 /obj/item/gun/ballistic/automatic/bullpup/update_icon()
 	. = ..()
@@ -572,7 +563,7 @@
 	name = "Holy automatic shotgun"
 	desc = "Based off of an ancient design, this hand crafted weapon has been gilded with the gold of melted icons and inscribed with sacred runes and hexagrammic wards. Works best with blessed 12g rounds."
 	icon_state = "holyshotgun"
-	item_state = null
+	item_state = "holy_shot"
 	w_class = ITEMSIZE_LARGE
 	heavy = TRUE
 	damage_force = 10
@@ -596,7 +587,7 @@
 	if(ammo_magazine)
 		icon_state = "holyshotgun"
 	else
-		icon_state = "holyshotgun_empty"
+		icon_state = "holyshotgun-empty"
 
 //Clown Rifle
 /obj/item/gun/ballistic/automatic/clown_rifle
@@ -680,6 +671,52 @@
 /obj/item/gun/ballistic/automatic/combat/update_icon_state()
 	. = ..()
 	icon_state = (ammo_magazine)? "combatsmg" : "combatsmg-empty"
+
+// Please don't spawn these regularly. I'm mostly just adding these for fun.
+/obj/item/gun/ballistic/automatic/bolter
+	name = "\improper Ballistae bolt rifle"
+	desc = "A boxy rifle clearly designed for larger hands. Uses .75 gyrojet rounds."
+	description_fluff = "The HI-GP mk 8 'Ballistae' is a bulky weapon designed to fire an obscenely robust .75 caliber gyrojet round with an explosive payload. The original design was sourced from Old Earth speculative documentation, and developed to test its efficacy. Although the weapon itself is undeniably powerful, its logistical demands, the recoil of the three-stage ammunition system, and its hefty size make it untenable on the modern battlefield."
+	icon_state = "bolter"
+	item_state = "bolter"
+	caliber = ".75"
+	origin_tech = list(TECH_COMBAT = 5, TECH_ILLEGAL = 2)
+	load_method = MAGAZINE
+	fire_sound = 'sound/weapons/gunshot/gunshot_bolter.ogg'
+	max_shells = 30
+	magazine_type = /obj/item/ammo_magazine/m75/sickle
+	allowed_magazines = list(/obj/item/ammo_magazine/m75/sickle)
+	heavy = TRUE
+	one_handed_penalty = 80
+
+	firemodes = list(
+		list(mode_name="semiauto", burst=1, fire_delay=0),
+		list(mode_name="automatic", burst=1, fire_delay=-1, move_delay=null, burst_accuracy=null, dispersion=null, automatic = 1)
+		)
+
+/obj/item/gun/ballistic/automatic/bolter/update_icon_state()
+	. = ..()
+	icon_state = "bolter-[ammo_magazine ? round(ammo_magazine.stored_ammo.len, 2) : "empty"]"
+
+/obj/item/gun/ballistic/automatic/bolter/storm
+	name = "\improper Onager heavy bolt rifle"
+	desc = "A hulking automatic weapon more fit for a crew serve position than personal use. Uses .75 gyrojet rounds."
+	description_fluff = "The HI-GP mk 2 'Onager' may perhaps be considered the one successful prototype to come out of Hephaestus' reclamatory efforts. Thanks to its large size many of the issues with ease of maintenance were successfully mitigated. However, the expense of replacing parts and the cost of the weapon's exotic ammunition still resulted in the inititative being considered a failure."
+	icon_state = "stormbolter"
+	item_state = "stormbolter"
+	max_shells = 50
+	magazine_type = /obj/item/ammo_magazine/m75/box
+	allowed_magazines = list(/obj/item/ammo_magazine/m75/box)
+	one_handed_penalty = 100
+
+	firemodes = list(
+		list(mode_name="semiauto", burst=1, fire_delay=0),
+		list(mode_name="automatic", burst=2, fire_delay=-1, move_delay=null, burst_accuracy=null, dispersion=null, automatic = 1)
+		)
+
+/obj/item/gun/ballistic/automatic/bolter/storm/update_icon_state()
+	. = ..()
+	icon_state = "stormbolter-[ammo_magazine ? round(ammo_magazine.stored_ammo.len, 10) : "empty"]"
 
 //Foam Weapons
 /obj/item/gun/ballistic/automatic/advanced_smg/foam

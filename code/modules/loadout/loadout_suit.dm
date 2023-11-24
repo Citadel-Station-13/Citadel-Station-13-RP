@@ -204,6 +204,22 @@
 	name = "Rough Torn Half Cloak (Colorable)"
 	path = /obj/item/clothing/accessory/poncho/rough_cloak_torn
 
+/datum/loadout_entry/suit/replika/klbr
+	name = "Replikant Controller chestplate"
+	path = /obj/item/clothing/accessory/replika/klbr
+
+/datum/loadout_entry/suit/replika/lstr
+	name = "Replikant Combat-Engineer Chestplate"
+	path = /obj/item/clothing/accessory/replika/lstr
+
+/datum/loadout_entry/suit/replika/stcr
+	name = "Replikant Security-Controller Chestplate"
+	path = /obj/item/clothing/accessory/replika/stcr
+
+/datum/loadout_entry/suit/replika/star
+	name = "Replikant Security-Technician Chestplate"
+	path = /obj/item/clothing/accessory/replika/star
+
 /datum/loadout_entry/suit/black_lawyer_jacket
 	name = "Suit Jacket - Black"
 	path = /obj/item/clothing/suit/storage/toggle/internalaffairs
@@ -239,6 +255,10 @@
 /datum/loadout_entry/suit/wintercoat/olive
 	name = "Winter Coat - Olive Green"
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat/olive
+
+/datum/loadout_entry/suit/wintercoat/cosmic
+	name = "Winter Coat - Cosmic"
+	path = /obj/item/clothing/suit/storage/hooded/wintercoat/cosmic
 
 /datum/loadout_entry/suit/techrobes
 	name = "Techpriest"
@@ -648,3 +668,6 @@
 		var/obj/item/clothing/suit/storage/tajaran/jacket/tajara_jacket_type = tajara_jacket
 		tajara_jackets[initial(tajara_jacket_type.name)] = tajara_jacket_type
 	tweaks += new/datum/loadout_tweak/path(tim_sort(tajara_jackets, GLOBAL_PROC_REF(cmp_text_asc)))
+
+//Signalis Armor Accessories (no armor stats)//
+

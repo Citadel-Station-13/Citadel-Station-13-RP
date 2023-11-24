@@ -52,9 +52,9 @@
 	camera_networks = list(NETWORK_ENGINEERING)
 
 /obj/item/hardsuit/ce
-	name = "advanced voidsuit control module"
-	suit_type = "advanced voidsuit"
-	desc = "An advanced voidsuit that protects against hazardous, low pressure environments. Shines with a high polish."
+	name = "advanced hardsuit control module"
+	suit_type = "advanced hardsuit"
+	desc = "An advanced hardsuit that protects against hazardous, low pressure environments. Shines with a high polish."
 	icon_state = "ce_rig"
 	armor_type = /datum/armor/hardsuit/ce
 	encumbrance = ITEM_ENCUMBRANCE_LEGACY_RIG_LIGHT

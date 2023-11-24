@@ -21,7 +21,7 @@
 	throw_speed = 4
 	throw_range = 20
 	origin_tech = list(TECH_MAGNET = 1)
-	materials = list(MAT_STEEL = 400)
+	materials_base = list(MAT_STEEL = 400)
 
 /obj/item/locator/attack_self(mob/user)
 	. = ..()
@@ -130,7 +130,7 @@ Frequency:
 	throw_speed = 3
 	throw_range = 5
 	origin_tech = list(TECH_MAGNET = 1, TECH_BLUESPACE = 3)
-	materials = list(MAT_STEEL = 10000)
+	materials_base = list(MAT_STEEL = 10000)
 	preserve_item = 1
 
 /obj/item/hand_tele/attack_self(mob/user)

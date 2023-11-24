@@ -5,7 +5,7 @@
 	name = "Debris Field"
 	desc = "Space junk galore."
 	scanner_desc = @{"[i]Information[/i]: A collection of ruins from ages ago.."}
-	icon_state = "dust2"
+	icon_state = "debrisfield"
 	color = "#BBBBBB"
 	known = FALSE
 	in_space = 1
@@ -19,7 +19,7 @@
 	desc = "Space junk galore."
 	scanner_desc = @{"[i]Transponder[/i]: Various faint signals
 [b]Notice[/b]: Warning! Significant field of space debris detected. May be salvagable."}
-	icon_state = "dust1"
+	icon_state = "debrisfield"
 	known = FALSE
 	color = "#ee3333" //Redish, so it stands out against the other debris-like icons
 	initial_generic_waypoints = list("debrisfield_se", "debrisfield_nw")
@@ -220,7 +220,7 @@
 		var/obj/item/mecha_parts/component/comp = internal_components[slot]
 		if(!istype(comp))
 			continue
-		comp.adjust_integrity(-(round(rand(comp.max_integrity - 10, 0))))
+		comp.adjust_integrity_mecha(-(round(rand(comp.integrity_max - 10, 0))))
 
 	setInternalDamage(MECHA_INT_SHORT_CIRCUIT)
 */

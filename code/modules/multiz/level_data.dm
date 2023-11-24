@@ -77,6 +77,8 @@ INITIALIZE_IMMEDIATE(/obj/level_data)
 	name = "Player Level"
 	level_flags = (ZLEVEL_CONTACT|ZLEVEL_PLAYER)
 
+BLOCK_BYOND_BUG_2072419
+
 #undef ZLEVEL_STATION
 #undef ZLEVEL_ADMIN
 #undef ZLEVEL_CONTACT

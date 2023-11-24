@@ -40,13 +40,14 @@
 	item_state = "gun"
 	item_flags = ITEM_ENCUMBERS_WHILE_HELD | ITEM_ENCUMBERS_ONLY_HELD
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
-	materials = list(MAT_STEEL = 2000)
+	materials_base = list(MAT_STEEL = 2000)
 	rad_flags = RAD_BLOCK_CONTENTS
 	w_class = ITEMSIZE_NORMAL
 	throw_force = 5
 	throw_speed = 4
 	throw_range = 5
 	damage_force = 5
+	damage_tier = MELEE_TIER_MEDIUM
 	preserve_item = 1
 	origin_tech = list(TECH_COMBAT = 1)
 	attack_verb = list("struck", "hit", "bashed")
@@ -60,7 +61,9 @@
 	var/fire_sound_text = "gunshot"
 	var/fire_anim = null
 	var/recoil = 0		//screen shake
-	var/silenced = 0
+	var/suppressible = FALSE
+	var/silenced = FALSE
+	var/silenced_icon = null
 	var/muzzle_flash = 3
 	var/accuracy = 65   //Accuracy is measured in percents. +15 accuracy means that everything is effectively one tile closer for the purpose of miss chance, -15 means the opposite. launchers are not supported, at the moment.
 	var/scoped_accuracy = null

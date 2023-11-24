@@ -866,7 +866,6 @@
 /obj/item/reagent_containers/food/snacks/fishfingers/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("protein", 9)
-	reagents.add_reagent("carpotoxin", 3)
 	bitesize = 3
 
 /obj/item/reagent_containers/food/snacks/hugemushroomslice // Buff 3 >> 5
@@ -1089,7 +1088,6 @@
 /obj/item/reagent_containers/food/snacks/fishburger/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("protein", 15)
-	reagents.add_reagent("carpotoxin", 3)
 	bitesize = 6
 
 /obj/item/reagent_containers/food/snacks/tofuburger // Buff 6 >> 10
@@ -1417,7 +1415,6 @@
 /obj/item/reagent_containers/food/snacks/cubancarp/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("protein", 9)
-	reagents.add_reagent("carpotoxin", 3)
 	reagents.add_reagent("capsaicin", 3)
 	bitesize = 4
 
@@ -2005,7 +2002,6 @@
 /obj/item/reagent_containers/food/snacks/fishandchips/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("protein", 5)
-	reagents.add_reagent("carpotoxin", 3)
 	bitesize = 3
 
 /obj/item/reagent_containers/food/snacks/sandwich // Buff 6 >> 11
@@ -3731,7 +3727,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/sashimi/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("protein", 4)
-	reagents.add_reagent("carpotoxin", 2)
 	bitesize = 3
 
 /obj/item/reagent_containers/food/snacks/benedict // Buff 6 >> 8
@@ -4795,7 +4790,7 @@ END CITADEL CHANGE */
 	nutriment_amt = 10
 
 /obj/item/reagent_containers/food/snacks/chipplate/attack_hand(mob/user, list/params)
-	. = ..()
+	// todo: sigh, no ..(); shift over to on_attack_hand
 	var/obj/item/reagent_containers/food/snacks/returningitem = new vendingobject(loc)
 	returningitem.reagents.clear_reagents()
 	reagents.trans_to_holder(returningitem.reagents, bitesize)
@@ -6781,7 +6776,7 @@ END CITADEL CHANGE */
 // Packaged Snack Foods Below
 // Wrapped
 
-/obj/item/reagent_containers/food/snacks/wrapped/candy // Buff 4 >> 8
+/obj/item/reagent_containers/food/snacks/wrapped // Buff 4 >> 8
 	name = "ABSTRACT"
 	desc = "You shouldn't be seeing this. Contact an admin!"
 	sealed = TRUE

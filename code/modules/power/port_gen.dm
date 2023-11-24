@@ -138,10 +138,11 @@
 	DropFuel()
 	return ..()
 
-/obj/machinery/power/port_gen/pacman/dismantle()
+/obj/machinery/power/port_gen/pacman/drop_products(method, atom/where)
+	. = ..()
+	// todo: refactor
 	while ( sheets > 0 )
 		DropFuel()
-	return ..()
 
 /obj/machinery/power/port_gen/pacman/RefreshParts()
 	var/temp_rating = 0

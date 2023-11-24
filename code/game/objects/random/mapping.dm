@@ -42,24 +42,24 @@
 
 /obj/random/crate/item_to_spawn() //General crates, excludes some more high-grade and medical brands
 	return pick (/obj/structure/closet/crate/plastic,
-				/obj/structure/closet/crate/aether,
-				/obj/structure/closet/crate/centauri,
-				/obj/structure/closet/crate/einstein,
-				/obj/structure/closet/crate/focalpoint,
-				/obj/structure/closet/crate/gilthari,
-				/obj/structure/closet/crate/grayson,
-				/obj/structure/closet/crate/nanotrasen,
-				/obj/structure/closet/crate/nanothreads,
-				/obj/structure/closet/crate/oculum,
-				/obj/structure/closet/crate/ward,
-				/obj/structure/closet/crate/xion,
-				/obj/structure/closet/crate/zenghu,
-				/obj/structure/closet/crate/allico,
-				/obj/structure/closet/crate/carp,
-				/obj/structure/closet/crate/galaksi,
-				/obj/structure/closet/crate/thinktronic,
-				/obj/structure/closet/crate/ummarcar,
-				/obj/structure/closet/crate/unathi,
+				/obj/structure/closet/crate/corporate/aether,
+				/obj/structure/closet/crate/corporate/centauri,
+				/obj/structure/closet/crate/corporate/einstein,
+				/obj/structure/closet/crate/corporate/focalpoint,
+				/obj/structure/closet/crate/corporate/gilthari,
+				/obj/structure/closet/crate/corporate/grayson,
+				/obj/structure/closet/crate/corporate/nanotrasen,
+				/obj/structure/closet/crate/corporate/nanothreads,
+				/obj/structure/closet/crate/corporate/oculum,
+				/obj/structure/closet/crate/corporate/ward,
+				/obj/structure/closet/crate/corporate/xion,
+				/obj/structure/closet/crate/corporate/zenghu,
+				/obj/structure/closet/crate/corporate/allico,
+				/obj/structure/closet/crate/corporate/carp,
+				/obj/structure/closet/crate/corporate/galaksi,
+				/obj/structure/closet/crate/corporate/thinktronic,
+				/obj/structure/closet/crate/corporate/ummarcar,
+				/obj/structure/closet/crate/corporate/unathi,
 				/obj/structure/closet/crate/hydroponics,
 				/obj/structure/closet/crate/engineering,
 				/obj/structure/closet/crate)
@@ -174,26 +174,26 @@
 				/obj/structure/closet/crate/science
 			),
 			prob(5);list(
-				/obj/item/ore/diamond,
-				/obj/item/ore/diamond,
-				/obj/item/ore/diamond,
-				/obj/item/ore/diamond,
-				/obj/item/ore/diamond,
-				/obj/item/ore/diamond,
-				/obj/item/ore/diamond,
-				/obj/item/ore/diamond,
-				/obj/item/ore/diamond,
-				/obj/item/ore/diamond,
-				/obj/item/ore/gold,
-				/obj/item/ore/gold,
-				/obj/item/ore/gold,
-				/obj/item/ore/gold,
-				/obj/item/ore/gold,
-				/obj/item/ore/gold,
-				/obj/item/ore/gold,
-				/obj/item/ore/gold,
-				/obj/item/ore/gold,
-				/obj/item/ore/gold,
+				/obj/item/stack/ore/diamond, //TODO: get rid of this legacy loot bullshit so we don't have nonsense like this.
+				/obj/item/stack/ore/diamond,
+				/obj/item/stack/ore/diamond,
+				/obj/item/stack/ore/diamond,
+				/obj/item/stack/ore/diamond,
+				/obj/item/stack/ore/diamond,
+				/obj/item/stack/ore/diamond,
+				/obj/item/stack/ore/diamond,
+				/obj/item/stack/ore/diamond,
+				/obj/item/stack/ore/diamond,
+				/obj/item/stack/ore/gold,
+				/obj/item/stack/ore/gold,
+				/obj/item/stack/ore/gold,
+				/obj/item/stack/ore/gold,
+				/obj/item/stack/ore/gold,
+				/obj/item/stack/ore/gold,
+				/obj/item/stack/ore/gold,
+				/obj/item/stack/ore/gold,
+				/obj/item/stack/ore/gold,
+				/obj/item/stack/ore/gold,
 				/obj/structure/closet/crate/engineering
 			),
 			prob(5);list(
@@ -518,7 +518,7 @@
 				/obj/item/clothing/mask/breath,
 				/obj/item/clothing/mask/breath,
 				/obj/item/clothing/mask/breath,
-				/obj/structure/closet/crate/aether //AETHER AIRSUPPLY
+				/obj/structure/closet/crate/corporate/aether //AETHER AIRSUPPLY
 			),
 			prob(5);list(
 				/obj/random/multiple/voidsuit/vintage,
@@ -527,7 +527,7 @@
 				/obj/random/tank,
 				/obj/item/clothing/mask/breath,
 				/obj/item/clothing/mask/breath,
-				/obj/structure/closet/crate/aether //AETHER OLDSUITS
+				/obj/structure/closet/crate/corporate/aether //AETHER OLDSUITS
 			),
 			prob(10);list(
 				/obj/random/mre,
@@ -535,7 +535,7 @@
 				/obj/random/mre,
 				/obj/random/mre,
 				/obj/random/mre,
-				/obj/structure/closet/crate/centauri //CENTAURI MRES
+				/obj/structure/closet/crate/corporate/centauri //CENTAURI MRES
 			),
 			prob(10);list(
 				/obj/item/reagent_containers/food/drinks/cans,
@@ -558,20 +558,20 @@
 				/obj/random/powercell,
 				/obj/random/powercell,
 				/obj/random/powercell,
-				/obj/structure/closet/crate/einstein //EINSTEIN BATTERYPACK
+				/obj/structure/closet/crate/corporate/einstein //EINSTEIN BATTERYPACK
 			),
 			prob(5);list(
 				/obj/item/circuitboard/smes,
 				/obj/item/smes_coil,
 				/obj/item/smes_coil,
-				/obj/structure/closet/crate/focalpoint //FOCAL SMES
+				/obj/structure/closet/crate/corporate/focalpoint //FOCAL SMES
 			),
 			prob(10);list(
 				/obj/item/module/power_control,
 				/obj/item/stack/cable_coil,
 				/obj/item/frame/apc,
 				/obj/item/cell/high,
-				/obj/structure/closet/crate/focalpoint //FOCAL APC
+				/obj/structure/closet/crate/corporate/focalpoint //FOCAL APC
 			),
 			prob(5);list(
 				/obj/random/drinkbottle,
@@ -580,7 +580,7 @@
 				/obj/random/cigarettes,
 				/obj/random/cigarettes,
 				/obj/random/cigarettes,
-				/obj/structure/closet/crate/gilthari //GILTHARI LUXURY
+				/obj/structure/closet/crate/corporate/gilthari //GILTHARI LUXURY
 			),
 			prob(10);list(
 				/obj/random/tech_supply/nofail,
@@ -588,47 +588,47 @@
 				/obj/random/tech_supply/component/nofail,
 				/obj/random/tech_supply/component/nofail,
 				/obj/random/tech_supply/component/nofail,
-				/obj/structure/closet/crate/grayson //GRAYSON TECH
+				/obj/structure/closet/crate/corporate/grayson //GRAYSON TECH
 			),
 			prob(15);list(
 				/obj/random/multiple/ores,
 				/obj/random/multiple/ores,
 				/obj/random/multiple/ores,
 				/obj/random/multiple/ores,
-				/obj/structure/closet/crate/grayson //GRAYSON ORES
+				/obj/structure/closet/crate/corporate/grayson //GRAYSON ORES
 			),
 			prob(10);list(
-				/obj/item/stack/material,
-				/obj/item/stack/material,
-				/obj/item/stack/material,
-				/obj/item/stack/material,
-				/obj/structure/closet/crate/grayson //GRAYSON MATS
+				/obj/item/stack/material/steel,
+				/obj/item/stack/material/steel,
+				/obj/item/stack/material/steel,
+				/obj/item/stack/material/steel,
+				/obj/structure/closet/crate/corporate/grayson //GRAYSON MATS
 			),
 			prob(5);list(
 				/obj/item/clothing/suit/space/void/security,
 				/obj/item/clothing/head/helmet/space/void/security,
 				/obj/random/tank,
 				/obj/item/clothing/mask/breath,
-				/obj/structure/closet/crate/secure/nanotrasen //NTSEC SUIT
+				/obj/structure/closet/crate/secure/corporate/nanotrasen //NTSEC SUIT
 			),
 			prob(5);list(
 				/obj/random/multiple/voidsuit/medical,
 				/obj/random/tank,
 				/obj/item/clothing/mask/breath,
-				/obj/structure/closet/crate/secure/veymed //VM SUIT
+				/obj/structure/closet/crate/secure/corporate/veymed //VM SUIT
 			),
 			prob(5);list(
 				/obj/random/multiple/voidsuit/mining,
 				/obj/random/tank,
 				/obj/item/clothing/mask/breath,
-				/obj/structure/closet/crate/grayson //GRAYSON SUIT
+				/obj/structure/closet/crate/corporate/grayson //GRAYSON SUIT
 			),
 			prob(5);list(
 				/obj/item/clothing/suit/space/void/engineering,
 				/obj/item/clothing/head/helmet/space/void/engineering,
 				/obj/random/tank,
 				/obj/item/clothing/mask/breath,
-				/obj/structure/closet/crate/xion //XION SUIT
+				/obj/structure/closet/crate/corporate/xion //XION SUIT
 			),
 			prob(10);list(
 				/obj/random/firstaid,
@@ -637,7 +637,7 @@
 				/obj/random/medical,
 				/obj/random/medical/lite,
 				/obj/random/medical/lite,
-				/obj/structure/closet/crate/veymed //VM GRABBAG
+				/obj/structure/closet/crate/corporate/veymed //VM GRABBAG
 			),
 			prob(10);list(
 				/obj/random/firstaid,
@@ -646,7 +646,7 @@
 				/obj/random/firstaid,
 				/obj/random/unidentified_medicine/fresh_medicine,
 				/obj/random/unidentified_medicine/fresh_medicine,
-				/obj/structure/closet/crate/veymed //VM FAKS
+				/obj/structure/closet/crate/corporate/veymed //VM FAKS
 			),
 			prob(10);list(
 				/obj/random/tech_supply/nofail,
@@ -654,7 +654,7 @@
 				/obj/random/tech_supply/nofail,
 				/obj/random/tech_supply/nofail,
 				/obj/random/tech_supply/nofail,
-				/obj/structure/closet/crate/xion //XION SUPPLY
+				/obj/structure/closet/crate/corporate/xion //XION SUPPLY
 			),
 			prob(10);list(
 				/obj/random/firstaid,
@@ -663,7 +663,7 @@
 				/obj/random/medical/pillbottle,
 				/obj/random/medical/lite,
 				/obj/random/medical/lite,
-				/obj/structure/closet/crate/zenghu //ZENGHU GRABBAG
+				/obj/structure/closet/crate/corporate/zenghu //ZENGHU GRABBAG
 			),
 			prob(10);list(
 				/obj/random/medical/pillbottle,
@@ -672,7 +672,7 @@
 				/obj/random/medical/pillbottle,
 				/obj/random/unidentified_medicine/fresh_medicine,
 				/obj/random/unidentified_medicine/fresh_medicine,
-				/obj/structure/closet/crate/zenghu //ZENGHU PILLS
+				/obj/structure/closet/crate/corporate/zenghu //ZENGHU PILLS
 			),
 			prob(10);list(
 				/obj/item/toner,
@@ -690,7 +690,7 @@
 				/obj/item/hand_labeler,
 				/obj/item/duct_tape_roll,
 				/obj/item/paper_bin,
-				/obj/structure/closet/crate/ummarcar //UMMARCAR OFFICE TRASH
+				/obj/structure/closet/crate/corporate/ummarcar //UMMARCAR OFFICE TRASH
 			),
 			prob(5);list(
 				/obj/item/reagent_containers/food/snacks/boxed/unajerky,
@@ -701,7 +701,7 @@
 				/obj/item/reagent_containers/food/snacks/boxed/unajerky,
 				/obj/item/reagent_containers/food/snacks/boxed/unajerky,
 				/obj/item/reagent_containers/food/snacks/boxed/unajerky,
-				/obj/structure/closet/crate/unathi //UNAJERKY
+				/obj/structure/closet/crate/corporate/unathi //UNAJERKY
 			),
 			prob(10);list(
 				/obj/item/reagent_containers/glass/bucket,
@@ -719,7 +719,7 @@
 				/obj/item/grenade/chem_grenade/cleaner,
 				/obj/item/grenade/chem_grenade/cleaner,
 				/obj/item/grenade/chem_grenade/cleaner,
-				/obj/structure/closet/crate/galaksi //GALAKSI JANITOR SUPPLIES
+				/obj/structure/closet/crate/corporate/galaksi //GALAKSI JANITOR SUPPLIES
 			),
 			prob(5);list(
 				/obj/item/reagent_containers/food/snacks/wrapped/candy,
@@ -730,7 +730,7 @@
 				/obj/item/reagent_containers/food/snacks/wrapped/candy,
 				/obj/item/reagent_containers/food/snacks/wrapped/candy,
 				/obj/item/reagent_containers/food/snacks/wrapped/candy,
-				/obj/structure/closet/crate/allico //GUMMIES
+				/obj/structure/closet/crate/corporate/allico //GUMMIES
 			),
 			prob(2);list(
 				/obj/item/tank/phoron,
@@ -742,7 +742,7 @@
 				/obj/random/coin,
 				/obj/random/coin,
 				/obj/random/coin,
-				/obj/structure/closet/crate/secure/saare //SAARE BULLION CRATE
+				/obj/structure/closet/crate/secure/corporate/saare //SAARE BULLION CRATE
 			),
 			prob(1);list(
 				/obj/random/cash,
@@ -751,7 +751,7 @@
 				/obj/random/cash,
 				/obj/random/cash,
 				/obj/random/cash,
-				/obj/structure/closet/crate/secure/saare //SAARE CASH CRATE
+				/obj/structure/closet/crate/secure/corporate/saare //SAARE CASH CRATE
 			)
 		)
 
@@ -777,7 +777,7 @@
 				/obj/random/tank,
 				/obj/item/clothing/mask/breath,
 				/obj/item/clothing/mask/breath,
-				/obj/structure/closet/crate/large/aether //AETHER SUITSBOX
+				/obj/structure/closet/crate/large/corporate/aether //AETHER SUITSBOX
 			),
 			prob(30);list(
 				/obj/random/powercell,
@@ -792,7 +792,7 @@
 				/obj/random/powercell,
 				/obj/random/powercell,
 				/obj/random/powercell,
-				/obj/structure/closet/crate/large/einstein //EIN BATTERY MEGAPACK
+				/obj/structure/closet/crate/large/corporate/einstein //EIN BATTERY MEGAPACK
 			),
 			prob(20);list(
 				/obj/item/circuitboard/smes,
@@ -803,7 +803,7 @@
 				/obj/item/smes_coil,
 				/obj/item/smes_coil,
 				/obj/item/smes_coil,
-				/obj/structure/closet/crate/large/einstein //EIN SMESBOX
+				/obj/structure/closet/crate/large/corporate/einstein //EIN SMESBOX
 			),
 			prob(2);list(
 				/obj/random/energy,
@@ -818,14 +818,14 @@
 				/obj/item/cell/device/weapon,
 				/obj/item/cell/device/weapon,
 				/obj/item/cell/device/weapon,
-				/obj/structure/closet/crate/large/secure/heph //HEPH ENERGY
+				/obj/structure/closet/crate/large/secure/corporate/heph //HEPH ENERGY
 			),
 			prob(2);list(
 				/obj/random/projectile/random,
 				/obj/random/projectile/random,
 				/obj/random/projectile/random,
 				/obj/random/projectile/random,
-				/obj/structure/closet/crate/large/secure/heph //HEPH BALLISTICS
+				/obj/structure/closet/crate/large/secure/corporate/heph //HEPH BALLISTICS
 			),
 			prob(20);list(
 				/obj/random/tech_supply/nofail,
@@ -838,7 +838,7 @@
 				/obj/random/tech_supply/nofail,
 				/obj/random/tech_supply/nofail,
 				/obj/random/tech_supply/nofail,
-				/obj/structure/closet/crate/large/xion //XION TECH SUPPLY
+				/obj/structure/closet/crate/large/corporate/xion //XION TECH SUPPLY
 			),
 			prob(20);list(
 				/obj/random/tech_supply/component/nofail,
@@ -851,7 +851,7 @@
 				/obj/random/tech_supply/component/nofail,
 				/obj/random/tech_supply/component/nofail,
 				/obj/random/tech_supply/component/nofail,
-				/obj/structure/closet/crate/large/secure/xion //XION TECH COMPS
+				/obj/structure/closet/crate/large/secure/corporate/xion //XION TECH COMPS
 			)
 		)
 
@@ -876,7 +876,7 @@
 				/obj/random/tank,
 				/obj/item/clothing/mask/breath,
 				/obj/item/clothing/mask/breath,
-				/obj/structure/closet/crate/large/aether //AETHER SUITSBOX
+				/obj/structure/closet/crate/large/corporate/aether //AETHER SUITSBOX
 			),
 			prob(30);list(
 				/obj/random/powercell,
@@ -891,7 +891,7 @@
 				/obj/random/powercell,
 				/obj/random/powercell,
 				/obj/random/powercell,
-				/obj/structure/closet/crate/large/einstein //EIN BATTERY MEGAPACK
+				/obj/structure/closet/crate/large/corporate/einstein //EIN BATTERY MEGAPACK
 			),
 			prob(20);list(
 				/obj/item/circuitboard/smes,
@@ -902,7 +902,7 @@
 				/obj/item/smes_coil,
 				/obj/item/smes_coil,
 				/obj/item/smes_coil,
-				/obj/structure/closet/crate/large/einstein //EIN SMESBOX
+				/obj/structure/closet/crate/large/corporate/einstein //EIN SMESBOX
 			),
 			prob(20);list(
 				/obj/random/tech_supply/nofail,
@@ -915,7 +915,7 @@
 				/obj/random/tech_supply/nofail,
 				/obj/random/tech_supply/nofail,
 				/obj/random/tech_supply/nofail,
-				/obj/structure/closet/crate/large/xion //XION TECH SUPPLY
+				/obj/structure/closet/crate/large/corporate/xion //XION TECH SUPPLY
 			),
 			prob(20);list(
 				/obj/random/tech_supply/component/nofail,
@@ -928,7 +928,7 @@
 				/obj/random/tech_supply/component/nofail,
 				/obj/random/tech_supply/component/nofail,
 				/obj/random/tech_supply/component/nofail,
-				/obj/structure/closet/crate/large/secure/xion //XION TECH COMPS
+				/obj/structure/closet/crate/large/secure/corporate/xion //XION TECH COMPS
 			)
 		)
 /obj/random/empty_or_lootable_crate
