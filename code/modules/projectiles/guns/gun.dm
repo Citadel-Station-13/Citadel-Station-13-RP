@@ -83,74 +83,31 @@
 	var/no_pin_required = FALSE
 
 	//* Rendering
-	/// completely opt out of rendering when FALSE; set this to FALSE if you override update_icon().
-	var/render_system_active = TRUE
+	/// renderer datum we use for world rendering of the gun item itself
+	/// set this in prototype to a path or an instance via 'render_system = new /datum/gun_renderer/...(...)'
+	/// if null, we will not perform default rendering/updating of item states.
+	var/datum/gun_renderer/render_system
+
+	/// perform onmob state rendering?
+	/// if FALSE, we will not perform default rendering/updating of mob states.
+	var/render_mob_enabled = FALSE
+
 	/// base onmob state override so we don't use base_icon_state if overridden
-	var/base_mob_state
+	var/render_mob_base
 	/// we render to worn_state as well as inhand_state; this is an override because
 	/// most guns do not have different states for every slot, as opposed to inhands.
-	var/use_mob_states = FALSE
+	var/render_mob_slots = FALSE
 
-	/// render system for firemode rendering
-	/// if overlays, overlay is added as "[base_icon_state]-[firemode.state_overlay]"
-	/// if state, firemode state is appended after [render_state_append] but before ammo append
-	var/render_firemode_world = GUN_RENDERING_DISABLED
-	/// firemode rendering system is used for inhands
-	/// this will result in the effective item state for onmob being modified,
-	/// or additional overlays being added during onmob rendering,
-	/// depending on what system is set to.
-	var/render_firemode_inhand = GUN_RENDERING_DISABLED
-
-	/// rendering system for ammo
-	/// in overlay mode, "[base_icon_state]-[firemode]-[count]" is added as an overlay
-	/// in state mode, this is appended as "-[count]" after state append and firemode append, if any.
-	/// in segments mode, "[base_icon_state]-[firemode]-ammo" is added for 1 to count.
-	var/render_ammo_world = GUN_RENDERING_DISABLED
-	/// ammo rendering system is used for inhands
-	/// this will result in the effective item state for onmob being modified,
-	/// or additional overlays being added during onmob rendering,
-	/// depending on what system is set to.
-	var/render_ammo_inhand = GUN_RENDERING_DISABLED
-
-	/// ammo states. this is 1 to x, rounded up
-	var/render_ammo_count = 0
-	/// last ammo state, used so we don't rebuilt unless necessary.
-	var/render_ammo_last
-
-	/// firemode is considered for ammo rendering, if firemode rendering is enabled.
-	var/render_ammo_per_firemode = TRUE
-
-	/// ammo state includes 0; overlay / state append is "-0", segment append is "-empty"
-	var/render_ammo_empty = FALSE
-	/// ammo empty is per firemode. if off, we don't include firemode in the computations.
-	/// this is separate from [render_ammo_per_firemode]
-	var/render_ammo_empty_per_firemode = FALSE
-
-	/// ammo overlays is just [number] instead of [1 to number]
-	var/render_ammo_single_overlay = TRUE
-
-	/// starting x offset for segment mode
-	var/render_ammo_x_start = 0
-	/// starting y offset for segment mode
-	var/render_ammo_y_start = 0
-	/// x offset for segment mode
-	var/render_ammo_x_offset = 0
-	/// y offset for segment mode
-	var/render_ammo_y_offset = 0
-
-	/// set an optional append to state
-	/// this is used internally to support magazines, cell-less states, etc.
-	/// this is added immediately after the base icon state, overriding everything else
-	/// please make sure you know what you're doing when you touch tihs.
-	var/render_append_state
-	/// is render state append applied to inhands?
-	/// this will result in the effective item state for onmob being modified,
-	/// or additional overlays being added during onmob rendering,
-	/// depending on what system is set to.
-	var/render_append_inhand = TRUE
-	/// skip everything but append state; used internally for energy weapon handling
-	/// this also disables worn overlays.
-	var/render_append_exclusive = FALSE
+	/// how many states are there
+	var/render_mob_count
+	/// use empty "-0" state append when empty?
+	var/render_mob_empty
+	/// if set to TRUE, firemode is appended to state before count
+	var/render_mob_firemode
+	/// appended after
+	var/render_mob_append
+	/// only use the append, ignoring count and firemode while this is enabled; use this for mag-out states for energy weapons & similar
+	var/render_mob_exclusive
 
 	#warn impl above
 

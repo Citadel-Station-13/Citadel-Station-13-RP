@@ -125,6 +125,16 @@
 	WRAP_MOB_TO_ACTOR_EVENT_ARGS(actor)
 	#warn impl
 
+/**
+ * returns string reason why we can't load something, or null if we can
+ */
+/obj/item/gun/projectile/ballistic/proc/why_cant_load_magazine(obj/item/ammo_magazine/magazine)
+
+/**
+ * returns string reason why we can't load something, or null if we can
+ */
+/obj/item/gun/projectile/ballistic/proc/why_cant_load_casing(obj/item/ammo_casing/casing)
+
 /obj/item/gun/projectile/ballistic/post_fire(atom/target, atom/movable/user, turf/where, angle, reflex, iteration)
 	. = ..()
 	process_chamber()
