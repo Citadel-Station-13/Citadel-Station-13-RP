@@ -533,6 +533,16 @@
 	desc = "A plush sweater that doesn't cover the shoulders."
 	icon_state = "sweater_shoulderless"
 
+/obj/item/clothing/accessory/sweater/cropped
+	name = "Cropped Sweater Male"
+	desc = "A comfy, warm sweater that has been slashed at the midriff, making it hardly warm or comfy, but quite rousing."
+	icon_state = "sweater_cropped_f"
+
+/obj/item/clothing/accessory/sweater/cropped/female
+	name = "Cropped Sweater Female"
+	desc = "A comfy, warm sweater that has been slashed at the midriff, making it hardly warm or comfy, but quite rousing. Comes with extra chest space."
+	icon_state = "sweater_cropped_m"
+
 /obj/item/clothing/accessory/sweater/star
 	name = "Star Sweater"
 	desc = "A white long sweater with a big yellow star at the chest. It seems like it's made of a soft material."

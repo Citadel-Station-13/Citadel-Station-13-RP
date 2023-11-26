@@ -578,19 +578,19 @@
 
 /datum/loadout_entry/suit/cropped_hoodie
 	name = "Cropped Hoodie"
-	path = /obj/item/clothing/suit/cropped_hoodie
+	path = /obj/item/clothing/suit/storage/cropped_hoodie
 
 /datum/loadout_entry/suit/cropped_hoodie/croppier
 	name = "Cropped Hoodie (high crop)"
-	path = /obj/item/clothing/suit/cropped_hoodie/croppier
+	path = /obj/item/clothing/suit/storage/cropped_hoodie/croppier
 
 /datum/loadout_entry/suit/cropped_hoodie/veryhighcrop
 	name = "Cropped Hoodie (very high crop)"
-	path = /obj/item/clothing/suit/cropped_hoodie/croppierer
+	path = /obj/item/clothing/suit/storage/cropped_hoodie/croppierer
 
 /datum/loadout_entry/suit/cropped_hoodie/croppiest
 	name = "Cropped Hoodie (supercrop)"
-	path = /obj/item/clothing/suit/cropped_hoodie/croppiest
+	path = /obj/item/clothing/suit/storage/cropped_hoodie/croppiest
 
 /datum/loadout_entry/suit/leather_cropped
 	name = "Cropped Leather Jacket"
@@ -599,6 +599,14 @@
 /datum/loadout_entry/suit/leather_supercropped
 	name = "Supercropped Leather Jacket"
 	path = /obj/item/clothing/suit/storage/leather_supercropped
+
+/datum/loadout_entry/suit/sweater_cropped_m
+	name = "Cropped Sweater (Male)"
+	path = /obj/item/clothing/suit/cropped_sweater
+
+/datum/loadout_entry/suit/sweater_cropped_f
+	name = "Cropped Sweater (Female)"
+	path = /obj/item/clothing/suit/cropped_sweater/female
 
 //Tajaran wears
 
