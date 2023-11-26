@@ -480,7 +480,7 @@
 		if(AM in view(get_turf(src))) // It must be able to 'see' the object it will copy.
 			var/list/output = get_flat_icon_with_offsets(AM)
 			if(isnull(output))
-				return FALSe
+				return FALSE
 			hologram = new(src)
 			var/icon/holo_icon = getHologramIcon(output[1])
 		//	holo_icon.GrayScale() // So it looks better colored.

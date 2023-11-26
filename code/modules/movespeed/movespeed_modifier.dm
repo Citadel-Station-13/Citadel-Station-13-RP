@@ -274,7 +274,7 @@ GLOBAL_LIST_EMPTY(movespeed_modification_cache)
 		if(M.blacklisted_movetypes & movement_type) // There's a movetype here that disables this modifier, skip
 			continue
 		//! TODO: LEGACY - this should just check for floating
-		if((M.movespeed_modifier_flags & MOVESPEED_MODIFIER_REQUIRES_GRAVITY) && !M.in_gravity)
+		if((M.movespeed_modifier_flags & MOVESPEED_MODIFIER_REQUIRES_GRAVITY) && !in_gravity)
 			continue
 		//! END
 		var/conflict = M.conflicts_with
