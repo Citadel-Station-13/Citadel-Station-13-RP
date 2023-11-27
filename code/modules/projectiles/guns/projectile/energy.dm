@@ -1,8 +1,13 @@
 /datum/firemode/energy
 	/// projectile type
 	var/projectile_type = /obj/projectile/beam
-	/// charge cost
+	/// charge cost in cell units
 	var/charge_cost = 240
+
+
+/datum/object_system/cell_slot/energy_gun
+	insert_sound = 'sound/weapons/flipblade.ogg'
+	remove_sound = 'sound/weapons/empty.ogg'
 
 /obj/item/gun/projectile/energy
 	name = "energy gun"
@@ -17,108 +22,115 @@
 	//* Rendering
 	rendered_projectile_type = /obj/projectile/beam
 
-	var/obj/item/cell/power_supply //What type of power cell this uses
-	var/charge_cost = 240 //How much energy is needed to fire.
+	/// starting cell type
+	/// this is spawned into our object cell slot system on init.
+	var/cell_initial = /obj/item/cell/device/weapon
+	/// only accepts device cells?
+	/// this affects our object cell slot system, change that at runtime instead of this or make a wrapper.
+	var/cell_device_only = TRUE
+	/// cell is removable
+	var/cell_removable = TRUE
 
-	var/accept_cell_type = /obj/item/cell/device
-	var/cell_type = /obj/item/cell/device/weapon
+	/// lazy way to set self recharging without setting it on the cell
+	var/self_charging = FALSE
+	/// charge rate in cell units per second
+	var/self_charging_rate = 24
 
-	var/modifystate
-	var/charge_meter = 1	//if set, the icon state will be chosen based on the current charge
-
-	//self-recharging
-	var/self_recharge = 0	//if set, the weapon will recharge itself
-	var/use_external_power = 0 //if set, the weapon will look for an external power source to draw from, otherwise it recharges magically
-	var/use_organic_power = 0 // If set, the weapon will draw from nutrition or blood.
-	var/recharge_time = 4
-	var/charge_tick = 0
-	var/charge_delay = 75	//delay between firing and charging
-
-	var/battery_lock = 0	//If set, weapon cannot switch batteries
+	/// use external source for self charging
+	//  todo: this is shit, we need item mount system
+	var/charge_external_draw = FALSE
+	/// use organic source for self charging
+	//  todo: this is shit, we need item mount system
+	var/charge_organic_draw = FALSE
 
 /obj/item/gun/projectile/energy/Initialize(mapload)
-	. = ..()
-	if(self_recharge)
+	reload_cell_slot()
+	if(self_charging)
 		START_PROCESSING(SSobj, src)
-	else
-		if(cell_type)
-			power_supply = new cell_type(src)
-		else
-			power_supply = null
-
-	update_icon()
-
-/obj/item/gun/projectile/energy/Destroy()
-	if(self_recharge)
-		STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/gun/projectile/energy/get_cell(inducer)
-	return power_supply
+/obj/item/gun/projectile/energy/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	return ..()
 
-/obj/item/gun/projectile/energy/process(delta_time)
-	if(self_recharge) //Every [recharge_time] ticks, recharge a shot for the battery
-		if(world.time > last_shot + charge_delay)	//Doesn't work if you've fired recently
-			if(!power_supply || power_supply.charge >= power_supply.maxcharge)
-				return 0 // check if we actually need to recharge
+/obj/item/gun/projectile/energy/vv_edit_var(var_name, var_value, mass_edit, raw_edit)
+	#warn impl
 
-			charge_tick++
-			if(charge_tick < recharge_time) return 0
-			charge_tick = 0
+/obj/item/gun/projectile/energy/object_cell_slot_mutable(mob/user, datum/object_system/cell_slot/slot)
+	return ..() && cell_removable
 
-			var/rechargeamt = power_supply.maxcharge*0.2
+/obj/item/gun/projectile/energy/proc/reload_cell_slot(creating)
+	var/datum/object_system/cell_slot/slot
+	if(isnull(obj_cell_slot))
+		slot = init_cell_slot(/datum/object_system/cell_slot/energy_gun)
+	else
+		slot = obj_cell_slot
+	if(creating)
+		var/obj/item/cell/existing = obj_cell_slot.remove_cell()
+		if(!isnull(existing))
+			qdel(existing)
+		obj_cell_slot.insert_cell(new cell_initial(src))
+	obj_cell_slot.legacy_use_device_cells = cell_device_only
 
-			if(use_external_power)
-				var/obj/item/cell/external = get_external_power_supply()
-				if(!external || !external.use(rechargeamt)) //Take power from the borg...
-					return 0
+/obj/item/gun/projectile/energy/get_ammo_percent()
+	var/datum/firemode/energy/firemode = src.firemode
+	if(!firemode.charge_cost)
+		return 1
+	return obj_cell_slot.cell.charge / obj_cell_slot.cell.maxcharge
 
-			if(use_organic_power)
-				var/mob/living/carbon/human/H
-				if(ishuman(loc))
-					H = loc
+/obj/item/gun/projectile/energy/get_ammo_amount()
+	var/datum/firemode/energy/firemode = src.firemode
+	if(!firemode.charge_cost)
+		return INFINITY
+	return obj_cell_slot.cell.charge / firemode.charge_cost
 
-				if(istype(loc, /obj/item/organ))
-					var/obj/item/organ/O = loc
-					if(O.owner)
-						H = O.owner
-
-				if(istype(H))
-					var/start_nutrition = H.nutrition
-					var/end_nutrition = 0
-
-					H.nutrition -= rechargeamt / 10
-
-					end_nutrition = H.nutrition
-
-					if(start_nutrition - max(0, end_nutrition) < rechargeamt / 10)
-						H.remove_blood((rechargeamt / 10) - (start_nutrition - max(0, end_nutrition)))
-
-			power_supply.give(rechargeamt) //... to recharge 1/5th the battery
-			update_icon()
-		else
-			charge_tick = 0
-	return 1
-
-/obj/item/gun/projectile/energy/attackby(var/obj/item/A as obj, mob/user as mob)
-	..()
-
-/obj/item/gun/projectile/energy/switch_firemodes(mob/user)
-	if(..())
-		update_icon()
-
-/obj/item/gun/projectile/energy/emp_act(severity)
-	..()
-	update_icon()
+/obj/item/gun/projectile/energy/proc/draw_power(units, allow_partial = FALSE)
+	#warn impl
 
 /obj/item/gun/projectile/energy/consume_next_projectile()
-	if(!power_supply)
-		return null
-	if(!ispath(projectile_type))
-		return null
-	if(!power_supply.checked_use(charge_cost))
-		return null
-	return new projectile_type(src)
+	if(isnull(src.firemode))
+		return
+	var/datum/firemode/energy/firemode = src.firmode
+	if(!draw_power(firemode.charge_cost))
+		return
+	return new firemode.projectile_type
+
+/obj/item/gun/projectile/energy/emp_act(severity)
+	. = ..()
+	update_icon()
+
+/obj/item/gun/projectile/energy/process(delta_time)
+	if(!self_charging)
+		return PROCESS_KILL
+	var/amount = self_charging_rate * delta_time
+	if(charge_external_draw)
+		var/obj/item/cell/external = get_external_power_supply()
+		amount = external?.use(amount) || 0
+	else if(charge_organic_draw)
+		var/mob/living/carbon/human/external
+		if(ishuman(loc))
+			external = loc
+		if(isorgan(loc))
+			var/obj/item/organ/external_organ = loc
+			external = external_organ.owner
+		if(isnull(external))
+			amount = 0
+		else
+			amount = min(amount, external.nutrition * 10)
+			external.adjust_nutrition(-amount * 0.1)
+	if(!amount)
+		return
+	obj_cell_slot?.cell?.give(amount)
+
+/obj/item/gun/projectile/energy/inducer_scan(obj/item/inducer/I, list/things_to_induce, inducer_flags)
+	if(inducer_flags & INDUCER_NO_GUNS)
+		return
+	return ..()
+
+#warn below
+
+/obj/item/gun/projectile/energy
+	var/modifystate
 
 /obj/item/gun/projectile/energy/proc/load_ammo(var/obj/item/C, mob/user)
 	if(istype(C, /obj/item/cell))
@@ -158,16 +170,6 @@
 	else
 		to_chat(user, "<span class='notice'>[src] does not have a power cell.</span>")
 
-/obj/item/gun/projectile/energy/attackby(var/obj/item/A as obj, mob/user as mob)
-	..()
-	load_ammo(A, user)
-
-/obj/item/gun/projectile/energy/attack_hand(mob/user, list/params)
-	if(user.get_inactive_held_item() == src)
-		unload_ammo(user)
-	else
-		return ..()
-
 /obj/item/gun/projectile/energy/proc/get_external_power_supply()
 	if(isrobot(src.loc))
 		var/mob/living/silicon/robot/R = src.loc
@@ -180,19 +182,6 @@
 				var/obj/item/hardsuit/suit = H.back
 				if(istype(suit))
 					return suit.cell
-	return null
-
-/obj/item/gun/projectile/energy/examine(mob/user, dist)
-	. = ..()
-	if(power_supply)
-		if(charge_cost)
-			var/shots_remaining = round(power_supply.charge / max(1, charge_cost))	// Paranoia
-			. += "Has [shots_remaining] shot\s remaining."
-		else
-			. += "Has infinite shots remaining."
-	else
-		. += "Does not have a power cell."
-	return
 
 /obj/item/gun/projectile/energy/update_icon(ignore_inhands)
 	. = ..()
@@ -224,28 +213,3 @@
 
 	if(!ignore_inhands)
 		update_held_icon()
-
-/obj/item/gun/projectile/energy/proc/start_recharge()
-	if(power_supply == null)
-		power_supply = new /obj/item/cell/device/weapon(src)
-	self_recharge = 1
-	START_PROCESSING(SSobj, src)
-	update_icon()
-
-/obj/item/gun/projectile/energy/get_description_interaction(mob/user)
-	var/list/results = list()
-
-	if(!battery_lock && !self_recharge)
-		if(power_supply)
-			results += "[desc_panel_image("offhand", user)]to remove the weapon cell."
-		else
-			results += "[desc_panel_image("weapon cell")]to add a new weapon cell."
-
-	results += ..()
-
-	return results
-
-/obj/item/gun/projectile/energy/inducer_scan(obj/item/inducer/I, list/things_to_induce, inducer_flags)
-	if(inducer_flags & INDUCER_NO_GUNS)
-		return
-	return ..()

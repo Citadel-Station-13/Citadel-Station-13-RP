@@ -233,8 +233,15 @@
  * so that we don't need to have multiple
  * versions of the core icon generation system.
  */
-/obj/item/gun/proc/percent_ammo()
+/obj/item/gun/proc/get_ammo_percent()
 	return 1
+
+/**
+ * get approximate shots left
+ * used for examines and counters
+ */
+/obj/item/gun/proc/get_ammo_amount()
+	return 0
 
 /obj/item/gun/update_icon(updates)
 	if(!render_system_active)
