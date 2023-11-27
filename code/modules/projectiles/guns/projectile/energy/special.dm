@@ -27,7 +27,7 @@
 	heavy = TRUE
 	regex_this_firemodes = list(/datum/firemode/energy/meteor)
 	cell_type = /obj/item/cell/potato
-	self_recharge = 1
+	self_charging = 1
 	recharge_time = 5 //Time it takes for shots to recharge (in ticks)
 	charge_meter = 0
 	one_handed_penalty = 20

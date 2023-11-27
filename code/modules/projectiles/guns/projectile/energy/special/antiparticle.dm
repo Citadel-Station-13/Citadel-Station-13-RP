@@ -38,7 +38,7 @@
 	heavy = TRUE
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 5, TECH_POWER = 3, TECH_MAGNET = 3)
 	fire_delay = 6	//This one's not a handgun, it should have the same fire delay as everything else
-	self_recharge = 1
+	self_charging = 1
 	modifystate = null
 	battery_lock = 1
 	recharge_time = 6 // every 6 ticks, recharge 2 shots. Slightly slower than AEG.
@@ -63,7 +63,7 @@
 	damage_force = 10
 	one_handed_penalty = 60 // The thing's heavy and huge.
 	accuracy = 70
-	self_recharge = 1
+	self_charging = 1
 	heavy = TRUE
 	charge_delay = 15 //won't start charging until it's ready to fire again
 	recharge_time = 8 //40 ticks after that to refill the whole thing.

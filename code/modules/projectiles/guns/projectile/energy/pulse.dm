@@ -47,8 +47,8 @@
 
 // todo: legacy
 /obj/item/gun/projectile/energy/pulse_rifle/mounted
-	self_recharge = TRUE
-	use_external_power = TRUE
+	self_charging = TRUE
+	charge_external_draw = TRUE
 
 /obj/item/gun/projectile/energy/pulse_rifle/destroyer
 	name = "\improper pulse destroyer"

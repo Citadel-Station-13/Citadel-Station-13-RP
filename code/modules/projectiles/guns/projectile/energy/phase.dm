@@ -25,8 +25,8 @@
 
 /obj/item/gun/projectile/energy/phasegun/pistol/mounted
 	name = "mounted phase pistol"
-	self_recharge = 1
-	use_external_power = 1
+	self_charging = 1
+	charge_external_draw = 1
 
 /obj/item/gun/projectile/energy/phasegun/pistol/mounted/cyborg
 	charge_cost = 400

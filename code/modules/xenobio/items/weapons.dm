@@ -39,7 +39,7 @@
 // Research borg's version
 /obj/item/melee/baton/slime/robot
 	hitcost = 200
-	use_external_power = TRUE
+	charge_external_draw = TRUE
 
 // Xeno stun gun + projectile
 /obj/item/gun/projectile/energy/taser/xeno
@@ -58,8 +58,8 @@
 	firemodes = list()
 
 /obj/item/gun/projectile/energy/taser/xeno/robot // Borg version
-	self_recharge = 1
-	use_external_power = 1
+	self_charging = 1
+	charge_external_draw = 1
 	recharge_time = 3
 
 /obj/item/gun/projectile/energy/taser/xeno/sec //NT's corner-cutting option for their on-station security.
@@ -72,8 +72,8 @@
 	description_fluff = "An NT Mk30 NL retrofitted after the events that occurred aboard the NRS Prometheus."
 
 /obj/item/gun/projectile/energy/taser/xeno/sec/robot //Cyborg variant of the security xeno-taser.
-	self_recharge = 1
-	use_external_power = 1
+	self_charging = 1
+	charge_external_draw = 1
 	recharge_time = 3
 
 /obj/projectile/beam/stun/xeno

@@ -149,8 +149,8 @@
 	projectile_type = /obj/projectile/beam/shock
 	charge_cost = 175
 
-	self_recharge = TRUE
-	use_external_power = TRUE
+	self_charging = TRUE
+	charge_external_draw = TRUE
 
 	firemodes = list(
 		list(mode_name="kill", projectile_type=/obj/projectile/beam/gamma, charge_cost = 300),

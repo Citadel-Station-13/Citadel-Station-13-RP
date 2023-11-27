@@ -28,8 +28,8 @@
 
 /obj/item/gun/projectile/energy/gun/mounted
 	name = "mounted energy gun"
-	self_recharge = 1
-	use_external_power = 1
+	self_charging = 1
+	charge_external_draw = 1
 
 /datum/firemode/energy/burstlaser
 

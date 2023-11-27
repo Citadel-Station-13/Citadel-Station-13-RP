@@ -90,7 +90,7 @@
 	maxcharge = 10000
 	materials_base = null
 	rating = 5
-	self_recharge = TRUE
+	self_charging = TRUE
 	charge_amount = 750
 
 //Not actually a cell, but if people look for it, they'll probably look near other cells

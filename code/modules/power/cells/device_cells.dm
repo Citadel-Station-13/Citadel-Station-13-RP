@@ -33,7 +33,7 @@
 	name = "self-charging weapon power cell"
 	desc = "A small power cell designed to power handheld weaponry. This one recharges itself."
 //	icon_state = "wcell" //TODO: Different sprite
-	self_recharge = TRUE
+	self_charging = TRUE
 	charge_amount = 120
 	charge_delay = 75
 

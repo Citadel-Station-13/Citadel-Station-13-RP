@@ -16,13 +16,13 @@
 
 /obj/item/gun/projectile/energy/taser/mounted
 	name = "mounted taser gun"
-	self_recharge = 1
-	use_external_power = 1
+	self_charging = 1
+	charge_external_draw = 1
 
 /obj/item/gun/projectile/energy/taser/mounted/augment
-	self_recharge = 1
-	use_external_power = 0
-	use_organic_power = TRUE
+	self_charging = 1
+	charge_external_draw = 0
+	charge_organic_draw = TRUE
 
 /obj/item/gun/projectile/energy/taser/mounted/cyborg
 	name = "taser gun"

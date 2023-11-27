@@ -21,13 +21,13 @@
 		)
 
 /obj/item/gun/projectile/energy/laser/mounted
-	self_recharge = 1
-	use_external_power = 1
+	self_charging = TRUE
+	charge_external_draw = TRUE
 	one_handed_penalty = 0 // Not sure if two-handing gets checked for mounted weapons, but better safe than sorry.
 
 /obj/item/gun/projectile/energy/laser/mounted/augment
-	use_external_power = FALSE
-	use_organic_power = TRUE
+	charge_external_draw = FALSE
+	charge_organic_draw = TRUE
 
 /obj/item/gun/projectile/energy/laser/practice
 	name = "practice laser carbine"
@@ -53,8 +53,8 @@
 	fire_delay = 10 //old technology
 
 /obj/item/gun/projectile/energy/retro/mounted
-	self_recharge = 1
-	use_external_power = 1
+	self_charging = 1
+	charge_external_draw = 1
 
 /obj/item/gun/projectile/energy/retro/empty
 	icon_state = "retro"
@@ -141,8 +141,8 @@
 
 /obj/item/gun/projectile/energy/lasercannon/mounted
 	name = "mounted laser cannon"
-	self_recharge = 1
-	use_external_power = 1
+	self_charging = 1
+	charge_external_draw = 1
 	recharge_time = 10
 	//accuracy = 0 // Mounted cannons are just fine the way they are.
 	one_handed_penalty = 0 // Not sure if two-handing gets checked for mounted weapons, but better safe than sorry.
