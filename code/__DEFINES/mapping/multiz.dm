@@ -18,3 +18,19 @@
 
 /// these flags mean a fall should stop
 #define FALL_FLAGS_STOP				(FALL_BLOCKED | FALL_RECOVERED | FALL_TERMINATED)
+
+/// there's a level above
+#define Z_HAS_ABOVE(z) (!isnull(SSmapping.cached_level_up[z]))
+/// there's a level below
+#define Z_HAS_BELOW(z) (!isnull(SSmapping.cached_level_down[z]))
+
+/// get turf below this turf, if any
+/// we are at the mercy of zmimic when we do this. do not use in critical maploader code.
+#define TURF_BELOW_ISH(T) (T.below || T.below())
+/// get turf above this turf, if any
+/// we are at the mercy of zmimic when we do this. do not use in critical maploader code.
+#define TURF_ABOVE_ISH(T) (T.above || T.above())
+
+/// we should use get virtual step due to our x/y being border
+/// we do not get step this, so use it on something **on** game world. (aka turf or on turf).
+#define AT_MAP_BORDER(A) (A.x == 2 || A.y == 2 || A.x == world.maxx - 1 || A.y == world.maxy - 1)

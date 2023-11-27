@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 /**
  * WARNING: This proc is unique. Read the doc here, especially the return value.
  * Check if an atom can move into us from either above or below
@@ -57,10 +60,10 @@
 	// we assume dir is up/down because why wouldn't it be
 	var/turf/dest
 	if(dir == UP)
-		dest = Above()
+		dest = above()
 		return dest && (z_pass_out_obstruction(mover, UP, dest) || dest.z_pass_in_obstruction(mover, DOWN, src))
 	else if(dir == DOWN)
-		dest = Below()
+		dest = below()
 		return dest && (z_pass_out_obstruction(mover, DOWN, dest) || dest.z_pass_in_obstruction(mover, UP, src))
 	CRASH("What?")
 
@@ -75,10 +78,10 @@
 	// we assume dir is up/down because why wouldn't it be
 	var/turf/dest
 	if(dir == UP)
-		dest = Above()
+		dest = above()
 		return dest && !z_pass_out_obstruction(mover, UP, dest) && !dest.z_pass_in_obstruction(mover, DOWN, src)
 	else if(dir == DOWN)
-		dest = Below()
+		dest = below()
 		return dest && !z_pass_out_obstruction(mover, DOWN, dest) && !dest.z_pass_in_obstruction(mover, UP, src)
 	CRASH("What?")
 
@@ -113,15 +116,53 @@
 /turf/check_impact(atom/movable/falling_atom)
 	return TRUE
 
-/turf/proc/multiz_turf_del(turf/T, dir)
-	SEND_SIGNAL(src, COMSIG_TURF_MULTIZ_DEL, T, dir)
-
-/turf/proc/multiz_turf_new(turf/T, dir)
-	SEND_SIGNAL(src, COMSIG_TURF_MULTIZ_NEW, T, dir)
-
 /turf/smooth_icon()
 	. = ..()
 	if(SSzmimic.initialized)
-		var/turf/simulated/open/above = GetAbove(src)
+		var/turf/simulated/open/above = above()
 		if(istype(above))
 			above.queue()
+
+//* lookups
+
+/turf/proc/above()
+	RETURN_TYPE(/turf)
+	return locate(x, y, SSmapping.cached_level_up[z])
+
+/turf/proc/below()
+	RETURN_TYPE(/turf)
+	return locate(x, y, SSmapping.cached_level_down[z])
+
+/**
+ * This is the basic get multiz step.
+ * It will not look across lateral transitions, only up/down.
+ */
+/turf/proc/vertical_step(dir)
+	RETURN_TYPE(/turf)
+	if((dir & (UP|DOWN)) == 0)
+		return get_step(src, dir)
+	else if(dir & UP)
+		return get_step(locate(x, y, SSmapping.cached_level_up[z]), dir & ~(UP))
+	else if(dir & DOWN)
+		return get_step(locate(x, y, SSmapping.cached_level_down[z]), dir & ~(DOWN))
+	CRASH("how did we get here?")
+
+/**
+ * Basic multiz get dir
+ * Will not look across lateral transitions, only directly up/down.
+ */
+/turf/proc/vertical_dir(turf/other)
+	if(other.z == z)
+		return get_dir(src, other)
+	else if(other.z == SSmapping.cached_level_up[z])
+		return get_dir(src, other) | UP
+	else if(other.z == SSmapping.cached_level_down[z])
+		return get_dir(src, other) | DOWN
+
+/**
+ * This is the full get multiz step.
+ * It will look across lateral transitions and other struct magic.
+ */
+/turf/proc/virtual_step(dir)
+	RETURN_TYPE(/turf)
+	return SSmapping.get_virtual_step(src, dir)

@@ -29,7 +29,7 @@
 		to_chat(src, SPAN_NOTICE("You are unable to move from here."))
 		return FALSE
 
-	var/turf/destination = (direction == UP) ? GetAbove(src) : GetBelow(src)
+	var/turf/destination = get_vertical_step(src, direction)
 	if(!destination)
 		to_chat(src, SPAN_NOTICE("There is nothing of interest in this direction."))
 		return FALSE
@@ -100,14 +100,14 @@
 		return species && species.can_overcome_gravity(src)
 
 /mob/observer/zMove(direction)
-	var/turf/destination = (direction == UP) ? GetAbove(src) : GetBelow(src)
+	var/turf/destination = (direction == UP) ? get_vertical_step(src, UP) : get_vertical_step(src, DOWN)
 	if(destination)
 		forceMove(destination)
 	else
 		to_chat(src, "<span class='notice'>There is nothing of interest in this direction.</span>")
 
 /mob/observer/eye/zMove(direction)
-	var/turf/destination = (direction == UP) ? GetAbove(src) : GetBelow(src)
+	var/turf/destination = (direction == UP) ? get_vertical_step(src, UP) : get_vertical_step(src, DOWN)
 	if(destination)
 		setLoc(destination)
 	else
@@ -187,7 +187,7 @@
 	if(!isturf(loc))
 		return
 
-	var/turf/below = GetBelow(src)
+	var/turf/below = get_vertical_step(src, DOWN)
 	if(!below)
 		return
 
@@ -278,16 +278,6 @@
 // Mechas are anchored, so we need to override.
 /obj/mecha/can_fall()
 	return TRUE
-
-/obj/item/pipe/can_fall()
-	. = ..()
-
-	if(anchored)
-		return FALSE
-
-	var/turf/below = GetBelow(src)
-	if((locate(/obj/structure/disposalpipe/up) in below) || (locate(/obj/machinery/atmospherics/pipe/zpipe/up) in below))
-		return FALSE
 
 /mob/can_fall()
 	if(buckled)

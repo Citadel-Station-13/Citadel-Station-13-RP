@@ -113,7 +113,7 @@
 
 	if(istype(I, /obj/item/stack/tile/roofing))
 		var/expended_tile = FALSE // To track the case. If a ceiling is built in a multiz zlevel, it also necessarily roofs it against weather
-		var/turf/T = GetAbove(src)
+		var/turf/T = above()
 		var/obj/item/stack/tile/roofing/R = I
 
 		// Place plating over a wall

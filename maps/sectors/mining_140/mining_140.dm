@@ -16,6 +16,7 @@
 		ZTRAIT_GRAVITY,
 	)
 	planet_path = /datum/planet/classg
+	air_outdoors = /datum/atmosphere/planet/classg
 
 /datum/map_level/sector/mining_140/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
 	. = ..()

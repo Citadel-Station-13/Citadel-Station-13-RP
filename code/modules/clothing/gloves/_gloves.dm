@@ -24,6 +24,7 @@
 // todo: this is an awful way to do it but it works
 	unequip_sound = 'sound/items/drop/gloves.ogg'
 	pickup_sound = 'sound/items/pickup/gloves.ogg'
+	material_factoring = 0
 
 /obj/item/clothing/gloves/get_fibers()
 	return "material from a pair of [name]."
