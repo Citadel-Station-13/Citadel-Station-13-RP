@@ -48,12 +48,20 @@ jobs:
         with:
           path: ~/.cargo
           key: ${{ runner.os }}-rust
-      - name: Install Tools
+      - name: Install Node
+        run: |
+          bash tools/ci/install_node.sh
+      - name: Install SpacemanDMM Suite
+        run: |
+          bash tools/ci/install_spaceman_dmm.sh dreamchecker
+      - name: Bootstrap Python
+        run: |
+          tools/bootstrap/python -c ''
+      - name: Install Setuptools
         run: |
           pip3 install setuptools
-          bash tools/ci/install_node.sh
-          bash tools/ci/install_spaceman_dmm.sh dreamchecker
-          tools/bootstrap/python -c ''
+      - name: Install Ripgrep
+        run: |
           cargo install ripgrep --features pcre2
       - name: Run Linters
         run: |
