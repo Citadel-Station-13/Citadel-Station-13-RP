@@ -13,7 +13,7 @@ jobs:
     name: Run Linters
     runs-on: ubuntu-22.04
     concurrency:
-      group: run_linters-${{ github.ref }}
+      group: run_linters-${{ github.head_ref || github.run_id }}
       cancel-in-progress: true
     steps:
       - uses: actions/checkout@v3
@@ -22,32 +22,39 @@ jobs:
         with:
           path: ~/SpacemanDMM
           key: ${{ runner.os }}-spacemandmm
-
       - name: Restore Yarn cache
         uses: actions/cache@v3
         with:
           path: tgui/.yarn/cache
           key: ${{ runner.os }}-yarn-${{ hashFiles('tgui/yarn.lock') }}
           restore-keys: |
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
-
+            ${{ runner.os }}-yarn-
+      - name: Restore Node cache
+        uses: actions/cache@v3
+        with:
+          path: ~/.nvm
+          key: ${{ runner.os }}-node-${{ hashFiles('dependencies.sh') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: Restore Bootstrap cache
+        uses: actions/cache@v3
+        with:
+          path: tools/bootstrap/.cache
+          key: ${{ runner.os }}-bootstrap-${{ hashFiles('tools/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-bootstrap-
       - name: Restore Rust cache
         uses: actions/cache@v3
         with:
           path: ~/.cargo
           key: ${{ runner.os }}-rust
-          restore-keys: |
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
-
       - name: Install Tools
         run: |
           pip3 install setuptools
           bash tools/ci/install_node.sh
           bash tools/ci/install_spaceman_dmm.sh dreamchecker
+          cargo install ripgrep --features pcre2
           tools/bootstrap/python -c ''
-
       - name: Run Linters
         run: |
           bash tools/ci/check_filedirs.sh citadel.dme
