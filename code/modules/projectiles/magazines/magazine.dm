@@ -50,7 +50,7 @@
 	/// spec:
 	/// ammo_preload is what 'current ammo' is, type-wise
 	/// ammo_internal is considered the list of 1 to n casings infront of ammo_current.
-	/// index 1 is the bottom, index ammo_internal.len is the top of the magazin.e
+	/// index 1 is the bottom, index ammo_internal.len is the top of the magazine.
 	/// peek/draw will peek/draw the last index first all the way to the first, and after that,
 	/// ammo_current is considered the 'reserve' pool (as just a number).
 	var/list/ammo_internal
@@ -137,24 +137,48 @@
 
 /**
  * put a casing into top
+ *
+ * @return TRUE/FALSE on success/failure
  */
-/obj/item/ammo_magazine/proc/insert_top(obj/item/ammo_casing/casing)
-	#warn impl
-	update_icon()
+/obj/item/ammo_magazine/proc/insert_top(obj/item/ammo_casing/casing, update_icon)
+	if(amount_remaining() >= ammo_max)
+		return FALSE
+	LAZYADD(ammo_internal, casing)
+	if(casing.loc != src)
+		casing.forceMove(src)
+	return TRUE
 
 /**
- * replace the first spent casing or insert top depending on if there's room
+ * replace the first spent casing from the top or insert top depending on if there's room
+ *
+ * @return TRUE/FALSE on success/failure
  */
-/obj/item/ammo_magazine/proc/resupply_top(obj/item/ammo_casing/casing, replace_spent)
-	#warn impl
-	update_icon()
+/obj/item/ammo_magazine/proc/resupply_top(obj/item/ammo_casing/casing, update_icon, atom/transfer_old_to)
+	// try to resupply
+	for(var/i in length(ammo_internal) to 1 step -1)
+		var/obj/item/ammo_casing/loaded = ammo_internal[i]
+		if(loaded.loaded())
+			continue
+		ammo_internal[i].forceMove(transfer_old_to || drop_location())
+		ammo_internal[i] = casing
+		if(casing.loc != src)
+			casing.forceMove(src)
+		return TRUE
+	// try to insert
+	return insert_top(casing, update_icon)
 
 /**
  * transfer as many rounds to another magazine as possible
  *
+ * @params
+ * * receiver - receiving mag
+ * * force - ignore insertion checks
+ * * update_icon - update icons for both us and receiver
+ *
  * @return rounds transferred
  */
-/obj/item/ammo_magazine/proc/transfer_rounds_to(obj/item/ammo_magazine/receiver, force)
+/obj/item/ammo_magazine/proc/transfer_rounds_to(obj/item/ammo_magazine/receiver, force, update_icon)
+	. = 0
 	#warn impl
 	update_icon()
 	receiver.update_icon()
@@ -187,9 +211,12 @@
 
 /**
  * can load a round
+ *
+ * @return null for success, a string describing why not otherwise.
  */
-/obj/item/ammo_magazine/proc/can_load_casing(obj/item/ammo_casing/casing)
-	return casing.caliber == ammo_caliber
+/obj/item/ammo_magazine/proc/why_cant_load_casing(obj/item/ammo_casing/casing)
+	if(casing.caliber != ammo_caliber)
+		return "mismatched caliber"
 
 /obj/item/ammo_magazine/detect_material_base_costs()
 	. = ..()
@@ -206,29 +233,6 @@
 	qdel(casing)
 	for(var/key in adding)
 		.[key] += adding[key] * shell_amount
-
-#warn below
-
-/obj/item/ammo_magazine/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
-	if(istype(I, /obj/item/ammo_casing))
-		var/obj/item/ammo_casing/casing = I
-		if(!can_load_casing(casing))
-			to_chat(user, SPAN_WARNING("[I] doesn't fit into [src]!"))
-			return CLICKCHAIN_DO_NOT_PROPAGATE
-		if(!amount_missing())
-			to_chat(user, SPAN_WARNING("[src] is full."))
-			return CLICKCHAIN_DO_NOT_PROPAGATE
-		if(!user.temporarily_remove_from_inventory(casing, user = user))
-			to_chat(user, SPAN_WARNING("[I] is stuck to your hand!"))
-			return CLICKCHAIN_DO_NOT_PROPAGATE
-		insert_top(casing)
-		// todo: variable load sounds
-		playsound(src, 'sound/weapons/flipblade.ogg', 50, 1)
-		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
-	else if(istype(I, /obj/item/ammo_magazine))
-		#warn impl
-	else
-		return ..()
 
 /obj/item/ammo_magazine/on_attack_self(datum/event_args/actor/e_args)
 	. = ..()
@@ -260,8 +264,34 @@
 	var/obj/item/ammo_casing/casing = draw_top()
 	e_args.performer.put_in_hands_or_drop(casing)
 
+/obj/item/ammo_magazine/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+	if(istype(I, /obj/item/ammo_casing))
+		var/obj/item/ammo_casing/casing = I
+		if(!isnull(why_cant_load_casing(casing)))
+			to_chat(user, SPAN_WARNING("[I] doesn't fit into [src]!"))
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		if(!amount_missing())
+			to_chat(user, SPAN_WARNING("[src] is full."))
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		if(!user.temporarily_remove_from_inventory(casing, user = user))
+			to_chat(user, SPAN_WARNING("[I] is stuck to your hand!"))
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		if(!insert_top(casing, update_icon = TRUE))
+			to_chat(user, SPAN_WARNING("You fail to insert [I] into [src]!"))
+			return
+		// todo: variable load sounds
+		playsound(src, 'sound/weapons/flipblade.ogg', 50, 1)
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+	else if(istype(I, /obj/item/ammo_magazine))
+		#warn impl
+	else
+		return ..()
+
+#warn below
+
+
 /**
- * puts a round into us, if possible
+ * puts a round into us, if possible - from the top.
  * does not update icon by default!
  */
 /obj/item/ammo_magazine/proc/load_casing(obj/item/ammo_casing/casing, replace_spent, update_icon)
@@ -299,6 +329,8 @@
 			return TRUE
 	return FALSE
 
+#warn above
+
 /**
  * quickly gathers stuff from turf
  * does not sainty check
@@ -311,15 +343,19 @@
  */
 /obj/item/ammo_magazine/proc/quick_gather(turf/where, mob/user)
 	. = 0
-	if(full())
+	var/needed
+	if((needed = amount_remaining()) >= ammo_max)
 		user?.action_feedback(SPAN_WARNING("[src] is full."), src)
 		return
+	// todo: de-instantiate unmodified rounds
 	for(var/obj/item/ammo_casing/casing in where)
-		if(length(stored_ammo) >= ammo_max)
+		if(. > needed)
 			break
 		if(!casing.loaded())
 			continue
-		if(!load_casing(casing, FALSE))
+		if(!isnull(why_cant_load_casing(casing)))
+			continue
+		if(!insert_top(casing, FALSE))
 			continue
 		++.
 	if(.)
@@ -327,8 +363,6 @@
 		user?.action_feedback(SPAN_NOTICE("You collect [.] rounds."), src)
 	else
 		user?.action_feedback(SPAN_WARNING("You fail to collect anything."), src)
-
-#warn above
 
 /obj/item/ammo_magazine/proc/is_full()
 	return amount_remaining() >= ammo_max

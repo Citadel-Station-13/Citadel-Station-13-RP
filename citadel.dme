@@ -274,6 +274,7 @@
 #include "code\__DEFINES\projectiles\legacy.dm"
 #include "code\__DEFINES\projectiles\magazines.dm"
 #include "code\__DEFINES\projectiles\projectiles.dm"
+#include "code\__DEFINES\projectiles\system.dm"
 #include "code\__DEFINES\radiation\flags.dm"
 #include "code\__DEFINES\radiation\ignore.dm"
 #include "code\__DEFINES\radiation\insulation.dm"
