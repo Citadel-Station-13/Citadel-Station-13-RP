@@ -7091,7 +7091,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/exploration)
 "ov" = (
-/obj/landmark/map_data/virgo3b,
 /turf/space,
 /area/space)
 "ow" = (

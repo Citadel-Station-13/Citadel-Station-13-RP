@@ -1,4 +1,4 @@
-
+/// create the standard 4 types of turfs for a given turf type.
 #define CREATE_STANDARD_TURFS(type) \
 ##type/indoors { \
 	outdoors = FALSE; \

@@ -161,8 +161,6 @@
 		Entered(AM)
 
 	var/area/A = loc
-	if(!TURF_IS_DYNAMICALLY_LIT_UNSAFE(src))
-		add_overlay(/obj/effect/fullbright)
 
 	if (light_power && light_range)
 		update_light()
@@ -557,12 +555,10 @@
 	// open but turf wants to be outside, invert to OUTSIDE_NO).
 
 	// Do we have a roof over our head? Should we care?
-	if(HasAbove(z))
-		var/turf/top_of_stack = src
-		while(HasAbove(top_of_stack.z))
-			top_of_stack = GetAbove(top_of_stack)
-			if(top_of_stack.is_open() != . || (top_of_stack.is_outside != OUTSIDE_AREA && top_of_stack.is_outside != .))
-				return !.
+	var/turf/top_of_stack = src
+	while((top_of_stack = top_of_stack.above()))
+		if(top_of_stack.is_open() != . || (top_of_stack.is_outside != OUTSIDE_AREA && top_of_stack.is_outside != .))
+			return !.
 
 /turf/proc/set_outside(new_outside, skip_weather_update = FALSE)
 	if(is_outside != new_outside)
@@ -603,6 +599,19 @@
 		if(!O.depth_projected)
 			continue
 		. = max(., O.depth_level)
+
+//? Multiz
+
+/turf/proc/update_multiz()
+	return
+
+//? Sector API
+
+/**
+ * called by planet / weather to update temperature during weather changes
+ */
+/turf/proc/sector_set_temperature(temperature)
+	return
 
 //? Radiation
 
