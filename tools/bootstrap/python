@@ -25,6 +25,8 @@ PythonDir="$Cache/python-$PythonVersion"
 PythonExe="$PythonDir/python.exe"
 Log="$Cache/last-command.log"
 
+echo "Attempting bootstrap with version $PythonVersion"
+
 # If a portable Python for Windows is not present, search on $PATH.
 if [ "$(uname)" = "Linux" ] || [ ! -f "$PythonExe" ]; then
 	# Strip the "App Execution Aliases" from $PATH. Even if the user installed
@@ -73,6 +75,8 @@ if [ "$(uname)" = "Linux" ] || [ ! -f "$PythonExe" ]; then
 		exit 1
 	fi
 fi
+
+echo "Attempting to run $PythonExe"
 
 # Use pip to install our requirements
 if [ ! -f "$PythonDir/requirements.txt" ] || [ "$(b2sum < "$Sdk/requirements.txt")" != "$(b2sum < "$PythonDir/requirements.txt")" ]; then
