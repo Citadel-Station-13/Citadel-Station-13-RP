@@ -74,6 +74,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 /obj/structure/cable/Initialize(mapload, _color, _d1, _d2, auto_merge)
 	// todo: remove this
 	if(isnull(get_turf(src)))
+		. = INITIALIZE_HINT_QDEL
 		CRASH("uh?")
 	// end
 	. = ..()
