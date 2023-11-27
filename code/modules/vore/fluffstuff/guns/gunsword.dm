@@ -16,7 +16,7 @@
 	fire_sound = 'sound/weapons/gauss_shoot.ogg'
 	charge_meter = 1
 
-	cell_type = /obj/item/cell/device/weapon/gunsword
+	cell_initial = /obj/item/cell/device/weapon/gunsword
 
 	modifystate = "gbuster"
 

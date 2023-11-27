@@ -57,7 +57,7 @@
 	silenced = 1
 	projectile_type = /obj/projectile/energy/bolt
 	charge_cost = 480
-	cell_type = /obj/item/cell/device/weapon/recharge
+	cell_initial = /obj/item/cell/device/weapon/recharge
 	battery_lock = 1
 	charge_meter = 0
 
@@ -94,4 +94,4 @@
 	projectile_type = /obj/projectile/energy/electrode/stunshot
 	fire_delay = 4
 	charge_cost = 1500
-	cell_type = /obj/item/cell/device/weapon
+	cell_initial = /obj/item/cell/device/weapon

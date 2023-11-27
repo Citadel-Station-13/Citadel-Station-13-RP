@@ -59,7 +59,7 @@
 	desc = "A huge, semi-modular energy cannon. Can mount three cores, and utilizes a robust power handler and circuitry combined with an integral large cell."
 	cores = 3
 	battery_lock = TRUE
-	cell_type = /obj/item/cell/device/weapon/modcannon
+	cell_initial = /obj/item/cell/device/weapon/modcannon
 	icon_state = "mod_cannon"
 	w_class = ITEMSIZE_HUGE
 	heavy = TRUE
@@ -78,7 +78,7 @@
 	desc = "A huge, semi-modular energy weapon. Can mount two cores, and utilizes an advanced power handler coupled with an integral RTG."
 	cores = 2
 	battery_lock = TRUE
-	cell_type = /obj/item/cell/device/weapon/recharge/captain
+	cell_initial = /obj/item/cell/device/weapon/recharge/captain
 	icon_state = "modnuc"
 	w_class = ITEMSIZE_HUGE
 	heavy = TRUE

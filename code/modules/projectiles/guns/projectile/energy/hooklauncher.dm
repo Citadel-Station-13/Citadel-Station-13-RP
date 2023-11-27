@@ -26,7 +26,7 @@
 	fire_delay = 15
 	charge_cost = 300
 
-	cell_type = /obj/item/cell/device/weapon
+	cell_initial = /obj/item/cell/device/weapon
 
 	regex_this_firemodes = list(
 		/datum/firemode/energy/gravwhip,
@@ -41,7 +41,7 @@
 
 	w_class = ITEMSIZE_TINY
 
-	cell_type = /obj/item/cell/device/weapon/recharge/alien
+	cell_initial = /obj/item/cell/device/weapon/recharge/alien
 	battery_lock = TRUE
 
 	regex_this_firemodes = list(

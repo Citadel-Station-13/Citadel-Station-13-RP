@@ -15,7 +15,7 @@
 	item_state = null
 	fire_delay = 20
 	charge_cost = 400
-	cell_type = /obj/item/cell/device/weapon
+	cell_initial = /obj/item/cell/device/weapon
 	slot_flags = SLOT_BELT|SLOT_BACK
 	w_class = ITEMSIZE_LARGE
 	heavy = TRUE

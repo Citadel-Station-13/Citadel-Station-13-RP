@@ -30,7 +30,7 @@
 #define CLICKCHAIN_REDIRECTED				(1<<3)
 /// this is from tgui or the js statpanel - we should probably be paranoid
 #define CLICKCHAIN_FROM_HREF				(1<<4)
-/// did something in the proc, logically should stop using it (the user should anyways)
+/// did something in the proc successfully; do not propagate without this can be assumed to be 'failed'.
 #define CLICKCHAIN_DID_SOMETHING			(1<<5)
 /// attack missed
 #define CLICKCHAIN_ATTACK_MISSED			(1<<6)

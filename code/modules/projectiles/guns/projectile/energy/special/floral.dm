@@ -23,7 +23,7 @@
 	icon_state = "floramut100"
 	item_state = "floramut"
 	origin_tech = list(TECH_MATERIAL = 2, TECH_BIO = 3, TECH_POWER = 3)
-	cell_type = /obj/item/cell/device/weapon/recharge
+	cell_initial = /obj/item/cell/device/weapon/recharge
 	no_pin_required = 1
 	battery_lock = 1
 	var/singleton/plantgene/gene = null

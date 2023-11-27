@@ -159,7 +159,7 @@
 		var/obj/item/ammo_casing/loaded = ammo_internal[i]
 		if(loaded.loaded())
 			continue
-		ammo_internal[i].forceMove(transfer_old_to || drop_location())
+		loaded.forceMove(transfer_old_to || drop_location())
 		ammo_internal[i] = casing
 		if(casing.loc != src)
 			casing.forceMove(src)
@@ -283,53 +283,16 @@
 		playsound(src, 'sound/weapons/flipblade.ogg', 50, 1)
 		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 	else if(istype(I, /obj/item/ammo_magazine))
-		#warn impl
+		var/obj/item/ammo_magazine/enemy = I
+		var/amount_transferred = enemy.transfer_rounds_to(src, update_icon = TRUE)
+		if(!amount_transferred)
+			to_chat(user, SPAN_WARNING("You fail to transfer any rounds from [I] to [src]."))
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		else
+			to_chat(user, SPAN_NOTICE("You transfer [amount_transferred] rounds from [I] to [src]."))
+			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 	else
 		return ..()
-
-#warn below
-
-
-/**
- * puts a round into us, if possible - from the top.
- * does not update icon by default!
- */
-/obj/item/ammo_magazine/proc/load_casing(obj/item/ammo_casing/casing, replace_spent, update_icon)
-	if(caliber)
-		if(casing.caliber != caliber)
-			return FALSE
-	else
-		if(casing.type != ammo_type)
-			return FALSE
-	if(length(stored_ammo) < ammo_max)
-		// add
-		casing.forceMove(src)
-		if(QDELETED(casing))
-			return FALSE
-		stored_ammo += casing
-		if(update_icon)
-			update_icon()
-		return TRUE
-	else if(replace_spent)
-		// replace
-		var/obj/item/ammo_casing/enemy
-		for(var/i in 1 to length(stored_ammo))
-			enemy = stored_ammo[i]
-			if(enemy.loaded())
-				continue
-			// this is the one
-			casing.forceMove(src)
-			if(QDELETED(casing))
-				return FALSE
-			stored_ammo[i] = casing
-			// kick 'em out
-			enemy.forceMove(drop_location())
-			if(update_icon)
-				update_icon()
-			return TRUE
-	return FALSE
-
-#warn above
 
 /**
  * quickly gathers stuff from turf

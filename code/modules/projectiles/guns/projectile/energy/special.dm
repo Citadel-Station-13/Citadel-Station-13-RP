@@ -1,71 +1,4 @@
 
-/datum/firemode/energy/decloner
-	name = "declone"
-	charge_cost = 240
-	projectile_type = /obj/projectile/energy/declone
-
-/obj/item/gun/projectile/energy/decloner
-	name = "biological demolecularisor"
-	desc = "A gun that discharges high amounts of controlled radiation to slowly break a target into component elements."
-	icon_state = "decloner"
-	item_state = "decloner"
-	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 4, TECH_POWER = 3)
-	regex_this_firemodes = list(/datum/firemode/energy/decloner)
-
-
-/datum/firemode/energy/meteor
-	charge_cost = 100
-	projectile_type = /obj/projectile/meteor
-
-/obj/item/gun/projectile/energy/meteorgun
-	name = "meteor gun"
-	desc = "For the love of god, make sure you're aiming this the right way!"
-	icon_state = "riotgun"
-	item_state = "c20r"
-	slot_flags = SLOT_BELT|SLOT_BACK
-	w_class = ITEMSIZE_LARGE
-	heavy = TRUE
-	regex_this_firemodes = list(/datum/firemode/energy/meteor)
-	cell_type = /obj/item/cell/potato
-	self_charging = 1
-	recharge_time = 5 //Time it takes for shots to recharge (in ticks)
-	charge_meter = 0
-	one_handed_penalty = 20
-
-/obj/item/gun/projectile/energy/meteorgun/pen
-	name = "meteor pen"
-	desc = "The pen is mightier than the sword."
-	icon = 'icons/obj/bureaucracy.dmi'
-	icon_state = "pen"
-	item_state = "pen"
-	w_class = ITEMSIZE_TINY
-	heavy = FALSE
-	slot_flags = SLOT_BELT
-	one_handed_penalty = 0
-
-/datum/firemode/energy/mindflayer
-	charge_cost = 240
-	projectile_type = /obj/projectile/beam/midnflayer
-
-/obj/item/gun/projectile/energy/mindflayer
-	name = "mind flayer"
-	desc = "A custom-built weapon of some kind."
-	icon_state = "xray"
-	regex_this_firemodes = list(/datum/firemode/energy/mindflayer)
-	one_handed_penalty = 15
-
-/datum/firemode/energy/phoron
-	charge_cost = 240
-	projectile_type = /obj/projectile/energy/phoron
-
-/obj/item/gun/projectile/energy/toxgun
-	name = "phoron pistol"
-	desc = "A failed experiment in anti-personnel weaponry from the onset of the Syndicate Wars. The Mk.1 NT-P uses an internal resevoir of phoron gas, excited into a photonic state with a standard weapon cell, to fire lethal bolts of phoron-based plasma."
-	icon_state = "toxgun"
-	w_class = ITEMSIZE_NORMAL
-	origin_tech = list(TECH_COMBAT = 5, TECH_PHORON = 4)
-	regex_this_firemodes = list(/datum/firemode/energy/phoron)
-
 /* Staves */
 
 /obj/item/gun/projectile/energy/staff
@@ -79,7 +12,7 @@
 	charge_cost = 480
 	projectile_type = /obj/projectile/change
 	origin_tech = null
-	cell_type = /obj/item/cell/device/weapon/recharge
+	cell_initial = /obj/item/cell/device/weapon/recharge
 	battery_lock = 1
 	charge_meter = 0
 
@@ -132,7 +65,7 @@
 	heavy = TRUE
 	charge_cost = 24 // 100 shots, it's a spray and pray (to RNGesus) weapon.
 	projectile_type = /obj/projectile/energy/blue_pellet
-	cell_type = /obj/item/cell/device/weapon/recharge
+	cell_initial = /obj/item/cell/device/weapon/recharge
 	battery_lock = 1
 	accuracy = 75 // Suppressive weapons don't work too well if there's no risk of being hit.
 	burst_delay = 1 // Burst faster than average.
@@ -158,8 +91,8 @@
 
 	charge_cost = 10000 // Uses large cells, can at max have 3 shots.
 	projectile_type = /obj/projectile/beam/tungsten
-	cell_type = /obj/item/cell/high
-	accept_cell_type = /obj/item/cell
+	cell_initial = /obj/item/cell/high
+	accept_cell_initial = /obj/item/cell
 
 	accuracy = 75
 	charge_meter = 0
@@ -254,8 +187,8 @@
 
 	projectile_type = /obj/projectile/beam/medigun
 
-	accept_cell_type = /obj/item/cell
-	cell_type = /obj/item/cell/high
+	accept_cell_initial = /obj/item/cell
+	cell_initial = /obj/item/cell/high
 	charge_cost = 2500
 
 /obj/item/gun/projectile/energy/service
@@ -270,7 +203,7 @@
 	origin_tech = null
 	fire_delay = 10		//Old pistol
 	charge_cost = 480	//to compensate a bit for self-recharging
-	cell_type = /obj/item/cell/device/weapon/recharge/captain
+	cell_initial = /obj/item/cell/device/weapon/recharge/captain
 	battery_lock = 1
 	one_handed_penalty = 0
 	safety_state = GUN_SAFETY_OFF
@@ -359,7 +292,7 @@
 	damage_force = 5
 	charge_meter = 0
 	firemodes = list(/datum/firemode/energy/puzzle_key)
-	cell_type = /obj/item/cell/device/weapon/recharge/captain
+	cell_initial = /obj/item/cell/device/weapon/recharge/captain
 	battery_lock = 1
 	one_handed_penalty = 0
 
@@ -374,8 +307,8 @@
 	icon_state = "ermitter_gun"
 	item_state = "pulse"
 	firemodes = list(/datum/firemode/energy/emitter_rifle)
-	cell_type = /obj/item/cell
-	accept_cell_type = /obj/item/cell
+	cell_initial = /obj/item/cell
+	accept_cell_initial = /obj/item/cell
 	slot_flags = SLOT_BELT|SLOT_BACK
 	w_class = ITEMSIZE_LARGE
 	heavy = TRUE
@@ -399,7 +332,7 @@
 	projectile_type = /obj/projectile/bullet/cyanideround/jezzail
 	fire_delay = 20
 	charge_cost = 600
-	cell_type = /obj/item/cell/device/weapon
+	cell_initial = /obj/item/cell/device/weapon
 	battery_lock = 1
 	slot_flags = SLOT_BACK
 	w_class = ITEMSIZE_LARGE

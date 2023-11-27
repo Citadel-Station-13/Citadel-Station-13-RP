@@ -7,7 +7,7 @@
 	name = "the very concept of a modular weapon"
 	desc = "An idea, given physical form? Contact your God, the Maker has made a mistake."
 	icon_state = "mod_pistol"
-	cell_type = /obj/item/cell/device/weapon
+	cell_initial = /obj/item/cell/device/weapon
 	charge_cost = 120
 	projectile_type = /obj/projectile/beam
 	var/cores = 1//How many lasing cores can we support?

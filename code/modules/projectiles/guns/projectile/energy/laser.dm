@@ -35,7 +35,7 @@
 	projectile_type = /obj/projectile/beam/practice
 	charge_cost = 48
 
-	cell_type = /obj/item/cell/device
+	cell_initial = /obj/item/cell/device
 
 	firemodes = list(
 		list(mode_name="normal", projectile_type=/obj/projectile/beam/practice, charge_cost = 48),
@@ -58,7 +58,7 @@
 
 /obj/item/gun/projectile/energy/retro/empty
 	icon_state = "retro"
-	cell_type = null
+	cell_initial = null
 
 /obj/item/gun/projectile/energy/retro/apidean
 	name = "apidean retro laser"
@@ -103,7 +103,7 @@
 	charge_cost = 480 // Five shots.
 
 	projectile_type = /obj/projectile/beam/cyan
-	cell_type = /obj/item/cell/device/weapon/recharge/alien // Self charges.
+	cell_initial = /obj/item/cell/device/weapon/recharge/alien // Self charges.
 	origin_tech = list(TECH_COMBAT = 8, TECH_MAGNET = 7)
 	modifystate = "alienpistol"
 
@@ -120,7 +120,7 @@
 	origin_tech = null
 	fire_delay = 10		//Old pistol
 	charge_cost = 480	//to compensate a bit for self-recharging
-	cell_type = /obj/item/cell/device/weapon/recharge/captain
+	cell_initial = /obj/item/cell/device/weapon/recharge/captain
 	battery_lock = 1
 
 /obj/item/gun/projectile/energy/lasercannon
@@ -192,7 +192,7 @@
 	name = "expedition marksman energy rifle"
 	desc = "A modified version of the HI DMR 9E with a replacement firing pin and reduced shot capacity in exchange for a self recharging cell."
 	pin = /obj/item/firing_pin/explorer
-	cell_type = /obj/item/cell/device/weapon/recharge/sniper
+	cell_initial = /obj/item/cell/device/weapon/recharge/sniper
 	accuracy = 45 //Modifications include slightly better hip-firing furniture.
 	battery_lock = 1 //With the change that the normal DMR can now change the weapon cell, we need to add this here so people can't take out the self-recharging special cell.
 	scoped_accuracy = 100
@@ -244,7 +244,7 @@
 	origin_tech = list(TECH_COMBAT = 1, TECH_MAGNET = 2)
 	materials_base = list(MAT_STEEL = 2000)
 	projectile_type = /obj/projectile/beam/lasertag/blue
-	cell_type = /obj/item/cell/device/weapon/recharge
+	cell_initial = /obj/item/cell/device/weapon/recharge
 	battery_lock = 1
 
 /obj/item/gun/projectile/energy/lasertag/blue
@@ -285,7 +285,7 @@
 	slot_flags = SLOT_BACK
 	charge_cost = 60 // 40 shots, lay down the firepower
 	projectile_type = /obj/projectile/beam/weaklaser
-	cell_type = /obj/item/cell/device/weapon
+	cell_initial = /obj/item/cell/device/weapon
 	origin_tech = list(TECH_COMBAT = 5, TECH_MAGNET = 5, TECH_ILLEGAL = 3)
 
 	firemodes = list(
@@ -303,7 +303,7 @@
 	slot_flags = SLOT_BELT|SLOT_BACK
 	charge_cost = 1500 //You got 1 shot...
 	projectile_type = /obj/projectile/beam/heavylaser //But it hurts a lot
-	cell_type = /obj/item/cell/device/weapon
+	cell_initial = /obj/item/cell/device/weapon
 	unstable = 1
 
 /obj/item/gun/energy/zip/consume_next_projectile(mob/user as mob)
