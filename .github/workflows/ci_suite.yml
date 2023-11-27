@@ -54,8 +54,6 @@ jobs:
           bash tools/ci/install_node.sh
           bash tools/ci/install_spaceman_dmm.sh dreamchecker
           cargo install ripgrep --features pcre2
-          sudo apt update || true
-          sudo apt install -y libgit2-dev
           tools/bootstrap/python -c ''
       - name: Run Linters
         run: |
