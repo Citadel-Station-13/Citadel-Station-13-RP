@@ -43,7 +43,8 @@
 	//? Traits / Physiology
 	/// Intrinsic datum traits to apply to the mob
 	var/list/mob_traits
-	//  todo: list of physiologies to add. list, incase we want to have separate ones for separate biology flags.
+	/// physiology modifier to add - path or instance
+	var/datum/physiology_modifier/mob_physiology_modifier
 
 	//? Additional info
 	/// what you see on tooltip/examine
@@ -312,7 +313,7 @@
 	/// Possible unarmed attacks that the mob will use in combat,
 	var/list/unarmed_types = list(
 		/datum/unarmed_attack,
-		/datum/unarmed_attack/bite
+		/datum/unarmed_attack/bite,
 	)
 	/// For empty hand harm-intent attack
 	var/list/unarmed_attacks = null
@@ -527,6 +528,9 @@
 
 	H.maxHealth = total_health
 
+	if(!isnull(mob_physiology_modifier))
+		H.add_physiology_modifier(mob_physiology_modifier)
+
 	add_inherent_verbs(H)
 
 	for(var/name in traits)
@@ -552,6 +556,9 @@
 	remove_inherent_spells(H)
 	remove_inherent_verbs(H)
 	H.holder_type = null
+
+	if(!isnull(mob_physiology_modifier))
+		H.remove_physiology_modifier(mob_physiology_modifier)
 
 	for(var/name in traits)
 		var/datum/trait/T = all_traits[name]
@@ -797,7 +804,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	for(var/datum/unarmed_attack/attack in unarmed_attacks)
 		if(!attack.is_usable(H))
 			continue
-		if(attack.shredding)
+		if(attack.damage_mode & DAMAGE_MODE_SHRED)
 			return 1
 
 	return 0

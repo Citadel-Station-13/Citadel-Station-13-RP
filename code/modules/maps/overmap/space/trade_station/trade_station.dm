@@ -58,9 +58,6 @@
 	announce_channel = "Trade"
 	on_store_name = "Beruang Trading Corp Storage"
 
-/obj/landmark/map_data/trade
-    height = 1
-
 // Their shuttle
 
 // Shuttle landmarks. Need to be removed at some point and generic waypoints used

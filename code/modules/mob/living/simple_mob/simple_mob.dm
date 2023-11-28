@@ -14,6 +14,10 @@
 	mob_swap_flags = ~HEAVY
 	mob_push_flags = ~HEAVY
 
+	//? Attacks - Basic
+	/// melee style
+	var/datum/unarmed_attack/melee_style
+
 	//? Darksight
 	/// our innate darksight
 	var/datum/vision/baseline/vision_innate = /datum/vision/baseline/default
@@ -152,10 +156,13 @@
 	var/reload_sound = 'sound/weapons/flipblade.ogg'
 
 	//* Mob melee settings *//
+
 	/// Lower bound of randomized melee damage.
-	var/melee_damage_lower = 2
+	//! Legacy var, do not use
+	var/legacy_melee_damage_lower = 2
 	/// Upper bound of randomized melee damage.
-	var/melee_damage_upper = 6
+	//! Legacy var, do not use
+	var/legacy_melee_damage_upper = 6
 	/// "You are [attacktext] by the mob!"
 	var/list/attacktext = list("attacked")
 	/// "The mob [friendly] the person."
@@ -245,6 +252,8 @@
 		for(var/key in armor_legacy_mob)
 			translated[key] = armor_legacy_mob[key] * 0.01 // new armor is / 100
 		set_armor(translated)
+	init_melee_style()
+
 	remove_verb(src, /mob/verb/observe)
 	health = maxHealth
 	randomize()
@@ -271,6 +280,18 @@
 		remove_eyes()
 	return ..()
 
+/mob/living/simple_mob/proc/init_melee_style()
+	melee_style = new
+	melee_style.damage = 0
+	melee_style.damage_add_low = legacy_melee_damage_lower
+	melee_style.damage_add_high = legacy_melee_damage_upper
+	melee_style.damage_mode = (attack_sharp? DAMAGE_MODE_SHARP : NONE) | (attack_edge? DAMAGE_MODE_EDGE : NONE)
+	melee_style.damage_flag = attack_armor_type
+	//* IT'S GAMER TIME *//
+	melee_style.damage_tier = MELEE_TIER_EXTREME
+	melee_style.attack_verb_legacy = attacktext
+	melee_style.verb_past_participle = attacktext
+
 //* randomization code. *//
 /mob/living/simple_mob/proc/randomize()
 	if(randomized == TRUE)
@@ -278,8 +299,8 @@
 		size_multiplier = mod
 		maxHealth = round(maxHealth*mod)
 		health = round(health*mod)
-		melee_damage_lower = round(melee_damage_lower*mod)
-		melee_damage_upper = round(melee_damage_upper*mod)
+		legacy_melee_damage_lower = round(legacy_melee_damage_lower*mod)
+		legacy_melee_damage_upper = round(legacy_melee_damage_upper*mod)
 		movement_cooldown = round(movement_cooldown*mod)
 		meat_amount = round(meat_amount*mod)
 		update_icons()

@@ -1,20 +1,42 @@
-// Glass shards
-
 /obj/item/material/shard
 	name = "shard"
 	icon = 'icons/obj/shards.dmi'
 	desc = "Made of nothing. How does this even exist?" // set based on material, if this desc is visible it's a bug (shards default to being made of glass)
 	icon_state = "large"
-	sharp = 1
-	edge = 1
 	w_class = ITEMSIZE_SMALL
-	force_divisor = 0.25 // 7.5 with hardness 30 (glass)
-	thrown_force_divisor = 0.5
+	material_significance = MATERIAL_SIGNIFICANCE_SHARD
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	item_state = "shard-glass"
 	attack_verb = list("stabbed", "slashed", "sliced", "cut")
-	default_material = "glass"
-	unbreakable = 1 //It's already broken.
-	drops_debris = 0
+	material_parts = /datum/material/glass
+
+/obj/item/material/shard/Initialize(mapload, material)
+	. = ..()
+	pixel_x = rand(-8, 8)
+	pixel_y = rand(-8, 8)
+
+/obj/item/material/shard/update_material_single(datum/material/material)
+	. = ..()
+	icon_state = "[material.shard_icon][pick("large", "medium", "small")]"
+	if(material_color)
+		color = material.icon_colour
+		alpha = MATERIAL_OPACITY_TO_ALPHA(material.opacity)
+	else
+		color = "#ffffff"
+		alpha = 255
+	// we don't check for material shard type; we trust the caller knows what they're doing
+	if(material.shard_type)
+		name = "[material.display_name] [material.shard_type]"
+		desc = "A small piece of [material.display_name]. It looks sharp."
+		switch(material.shard_type)
+			if(SHARD_SPLINTER, SHARD_SHRAPNEL)
+				gender = PLURAL
+			else
+				gender = NEUTER
+	else
+		name = "what???"
+		desc = "material [material.id] shard - which shouldn't exist. contact a coder."
+		gender = NEUTER
 
 /obj/item/material/shard/suicide_act(mob/user)
 	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
@@ -22,37 +44,8 @@
 	                      "<span class='danger'>\The [user] is slitting [TU.his] throat with \the [src]! It looks like [TU.hes] trying to commit suicide.</span>")
 	return (BRUTELOSS)
 
-/obj/item/material/shard/set_material(var/new_material)
-	..(new_material)
-	if(!istype(material))
-		return
-
-	icon_state = "[material.shard_icon][pick("large", "medium", "small")]"
-	pixel_x = rand(-8, 8)
-	pixel_y = rand(-8, 8)
-	update_icon()
-
-	if(material.shard_type)
-		name = "[material.display_name] [material.shard_type]"
-		desc = "A small piece of [material.display_name]. It looks sharp, you wouldn't want to step on it barefoot. Could probably be used as ... a throwing weapon?"
-		switch(material.shard_type)
-			if(SHARD_SPLINTER, SHARD_SHRAPNEL)
-				gender = PLURAL
-			else
-				gender = NEUTER
-	else
-		qdel(src)
-
-/obj/item/material/shard/update_icon()
-	if(material)
-		color = material.icon_colour
-		// 1-(1-x)^2, so that glass shards with 0.3 opacity end up somewhat visible at 0.51 opacity
-		alpha = 255 * (1 - (1 - material.opacity)*(1 - material.opacity))
-	else
-		color = "#ffffff"
-		alpha = 255
-
 /obj/item/material/shard/attackby(obj/item/W as obj, mob/user as mob)
+	var/datum/material/material = get_material_part(MATERIAL_PART_DEFAULT)
 	if(istype(W, /obj/item/weldingtool) && material.shard_can_repair)
 		var/obj/item/weldingtool/WT = W
 		if(WT.remove_fuel(0, user))
@@ -96,11 +89,11 @@
 
 	if(gloves && !protected_hands)
 		to_chat(user, "<span class='warning'>\The [src] partially cuts into your hand through your gloves as you hit \the [target]!</span>")
-		user.apply_damage(light_glove_d + will_break ? break_damage : 0, BRUTE, active_hand, 0, 0, src, src.sharp, src.edge) // Ternary to include break damage
+		user.apply_damage(light_glove_d + will_break ? break_damage : 0, BRUTE, active_hand, 0, 0, src, src.sharp || (damage_mode & DAMAGE_MODE_SHARP), src.edge || (damage_mode & DAMAGE_MODE_EDGE)) // Ternary to include break damage
 
 	else if(!gloves)
 		to_chat(user, "<span class='warning'>\The [src] cuts into your hand as you hit \the [target]!</span>")
-		user.apply_damage(no_glove_d + will_break ? break_damage : 0, BRUTE, active_hand, 0, 0, src, src.sharp, src.edge)
+		user.apply_damage(no_glove_d + will_break ? break_damage : 0, BRUTE, active_hand, 0, 0, src, src.sharp || (damage_mode & DAMAGE_MODE_SHARP), src.edge || (damage_mode & DAMAGE_MODE_EDGE))
 
 	if(will_break && src.loc == user) // If it's not in our hand anymore
 		user.visible_message("<span class='danger'>[user] hit \the [target] with \the [src], shattering it!</span>", "<span class='warning'>You shatter \the [src] in your hand!</span>")
@@ -150,11 +143,11 @@
 			return
 
 // Preset types - left here for the code that uses them
-/obj/item/material/shard/shrapnel/Initialize(mapload, material_key)
-	. = ..(mapload, "steel")
+/obj/item/material/shard/shrapnel
+	material_parts = /datum/material/steel
 
-/obj/item/material/shard/phoron/Initialize(mapload, material_key)
-	. = ..(mapload, "phglass")
+/obj/item/material/shard/phoron
+	material_parts = /datum/material/glass/phoron
 
-/obj/item/material/shard/wood/Initialize(mapload, material_key)
-	. = ..(mapload, "wood")
+/obj/item/material/shard/wood
+	material_parts = /datum/material/wood_plank

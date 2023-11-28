@@ -4,8 +4,6 @@
 	desc = "A heavy, powerful hardsuit used by construction crews and mining corporations."
 	icon_state = "engineering_rig"
 	armor_type = /datum/armor/hardsuit/industrial
-	slowdown = 1
-	offline_slowdown = 10
 	offline_vision_restriction = 2
 	emp_protection = -20
 	siemens_coefficient= 0.75

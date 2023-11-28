@@ -17000,9 +17000,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_8)
 "YS" = (
-/obj/effect/shuttle_landmark/triumph/deck2/trade{
-	docking_controller = null
-	},
+/obj/effect/shuttle_landmark/triumph/deck2/trade,
 /turf/space,
 /area/space)
 "YT" = (

@@ -4,9 +4,9 @@
 	icon_state = "glass_empty"
 	amount_per_transfer_from_this = 5
 	volume = 30
-	unacidable = 1 //glass
+	integrity_flags = INTEGRITY_ACIDPROOF
 	center_of_mass = list("x"=16, "y"=10)
-	materials = list(MAT_GLASS = 500)
+	materials_base = list(MAT_GLASS = 500)
 	icon = 'icons/obj/drinks.dmi'
 
 /obj/item/reagent_containers/food/drinks/metaglass/on_reagent_change()
@@ -559,7 +559,7 @@ Drinks Data
 	glass_icon_state = "bahama_mama"
 	glass_center_of_mass = list("x"=16, "y"=5)
 
-/datum/reagent/ethanol/bananahonk
+/datum/reagent/drink/bananahonk
 	glass_icon_state = "bananahonkglass"
 	glass_center_of_mass = list("x"=16, "y"=8)
 
@@ -713,7 +713,7 @@ Drinks Data
 	glass_icon_state = "screwdriverglass"
 	glass_center_of_mass = list("x"=15, "y"=10)
 
-/datum/reagent/ethanol/silencer
+/datum/reagent/drink/silencer
 	glass_icon_state = "silencerglass"
 	glass_center_of_mass = list("x"=16, "y"=9)
 

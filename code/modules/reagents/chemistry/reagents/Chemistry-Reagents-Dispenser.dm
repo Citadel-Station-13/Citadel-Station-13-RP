@@ -368,7 +368,7 @@
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(H.head)
-			if(H.head.unacidable)
+			if(H.head.integrity_flags & INTEGRITY_ACIDPROOF)
 				to_chat(H, "<span class='danger'>Your [H.head] protects you from the acid.</span>")
 				remove_self(volume)
 				return
@@ -382,7 +382,7 @@
 			return
 
 		if(H.wear_mask)
-			if(H.wear_mask.unacidable)
+			if(H.wear_mask.integrity_flags & INTEGRITY_ACIDPROOF)
 				to_chat(H, "<span class='danger'>Your [H.wear_mask] protects you from the acid.</span>")
 				remove_self(volume)
 				return
@@ -396,7 +396,7 @@
 			return
 
 		if(H.glasses)
-			if(H.glasses.unacidable)
+			if(H.glasses.integrity_flags & INTEGRITY_ACIDPROOF)
 				to_chat(H, "<span class='danger'>Your [H.glasses] partially protect you from the acid!</span>")
 				removed /= 2
 			else if(removed > meltdose)
@@ -424,8 +424,9 @@
 			M.take_organ_damage(0, removed * power * 0.1) // Balance. The damage is instant, so it's weaker. 10 units -> 5 damage, double for pacid. 120 units beaker could deal 60, but a) it's burn, which is not as dangerous, b) it's a one-use weapon, c) missing with it will splash it over the ground and d) clothes give some protection, so not everything will hit
 
 /datum/reagent/acid/touch_obj(obj/O)
-	if(O.unacidable)
+	if(O.integrity_flags & INTEGRITY_INDESTRUCTIBLE)
 		return
+	// todo: newacid
 	if((istype(O, /obj/item) || istype(O, /obj/effect/plant)) && (volume > meltdose))
 		var/obj/effect/debris/cleanable/molten_item/I = new/obj/effect/debris/cleanable/molten_item(O.loc)
 		I.desc = "Looks like this was \an [O] some time ago."

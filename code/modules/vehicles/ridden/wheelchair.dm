@@ -4,7 +4,7 @@
 	icon = 'icons/obj/furniture.dmi'		//Todo, move icon for wheelchair shit into their own folder
 	icon_state = "wheelchair"
 	integrity = 50
-	max_integrity = 50
+	integrity_max = 50
 	riding_handler_type = /datum/component/riding_handler/vehicle/ridden/wheelchair
 
 /obj/vehicle/ridden/wheelchair/update_icon()

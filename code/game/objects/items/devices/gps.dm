@@ -25,7 +25,7 @@
 	w_class = ITEMSIZE_TINY
 	slot_flags = SLOT_BELT
 	origin_tech = list(TECH_MATERIAL = 2, TECH_BLUESPACE = 2, TECH_MAGNET = 1)
-	materials = list(MAT_STEEL = 500)
+	materials_base = list(MAT_STEEL = 500)
 
 	/// our GPS tag
 	var/gps_tag = "GEN0"
@@ -211,7 +211,7 @@
 		hud_bound?.add_screen(hud_arrow)
 	hud_arrow.set_disabled(FALSE)
 	update_tracking()
-	START_PROCESSING(SSprocessing, src)
+	START_PROCESSING(SSfastprocess, src)
 	return TRUE
 
 /**
@@ -224,7 +224,7 @@
 	tracking = null
 	// just kick it out
 	hud_arrow?.set_disabled(TRUE)
-	STOP_PROCESSING(SSprocessing, src)
+	STOP_PROCESSING(SSfastprocess, src)
 	return TRUE
 
 /obj/item/gps/process(delta_time)
@@ -238,7 +238,7 @@
 		return
 	var/angle
 	var/valid = TRUE
-	var/curr_l_id = SSmapping.fluff_level_id(get_z(src))
+	var/curr_l_id = SSmapping.level_id(get_z(src))
 	var/turf/T = get_turf(src)
 	if(!T)
 		hud_arrow?.set_disabled(TRUE)
@@ -253,7 +253,7 @@
 		var/datum/component/gps_signal/sig = tracking
 		var/atom/A = sig.parent
 		var/turf/AT = get_turf(A)
-		if(SSmapping.fluff_level_id(get_z(A)) != curr_l_id)
+		if(SSmapping.level_id(get_z(A)) != curr_l_id)
 			valid = FALSE
 		else
 			angle = arctan(AT.x - T.x, AT.y - T.y)

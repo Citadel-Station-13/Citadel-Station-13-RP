@@ -7,6 +7,8 @@
 	icon_state = "hpad"
 	density = 0
 	anchored = 1
+	// todo: temporary, as this is unbuildable
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 	var/obj/machinery/hyperpad/centre/primary
 
 /obj/machinery/hyperpad/centre

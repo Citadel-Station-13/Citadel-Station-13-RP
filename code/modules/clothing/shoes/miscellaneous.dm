@@ -24,11 +24,11 @@
 	permeability_coefficient = 0.05
 	siemens_coefficient = 0 //They're thick rubber boots! Of course they won't conduct electricity!
 	clothing_flags = NOSLIP
-	slowdown = SHOES_SLOWDOWN+1
+	encumbrance = ITEM_ENCUMBRANCE_SHOES_GALOSHES
+	flat_encumbrance = ITEM_FLAT_ENCUMBRANCE_GALOSHES
 	species_restricted = null
 	drop_sound = 'sound/items/drop/rubber.ogg'
 	pickup_sound = 'sound/items/pickup/rubber.ogg'
-
 
 /obj/item/clothing/shoes/dress
 	name = "dress shoes"
@@ -65,7 +65,8 @@
 	desc = "The prankster's standard-issue clowning shoes. Damn they're huge!"
 	name = "clown shoes"
 	icon_state = "clown"
-	slowdown = SHOES_SLOWDOWN+1
+	encumbrance = ITEM_ENCUMBRANCE_SHOES_CLOWN
+	flat_encumbrance = ITEM_FLAT_ENCUMBRANCE_SHOES_CLOWN
 	damage_force = 0
 	var/footstep = 1	//used for squeeks whilst walking
 	species_restricted = null
@@ -137,7 +138,8 @@
 	icon_state = "flippers"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "galoshes", SLOT_ID_LEFT_HAND = "galoshes")
 	clothing_flags = NOSLIP
-	slowdown = SHOES_SLOWDOWN+1
+	encumbrance = ITEM_ENCUMBRANCE_SHOES_FINS
+	flat_encumbrance = ITEM_FLAT_ENCUMBRANCE_SHOES_FINS
 	species_restricted = null
 
 /obj/item/clothing/shoes/flipflop
@@ -255,11 +257,23 @@
 	icon_state = "antediluvian"
 
 /obj/item/clothing/shoes/antediluvian/heels
-	name = "Antediluvian legwraps"
-	desc = "These thigh-high legwraps are designed to cling tightly to the body. Secured to the feet by stirrups, it is unknown whether shoes were meant to be worn over these."
+	name = "Antediluvian heels"
+	desc = "A pair of black-gold heels based on an unknown design. The inside of the shoe has an odd texture, and snugly covers the whole foot."
 	icon_state = "ante"
 	icon = 'icons/clothing/shoes/ante.dmi'
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/shoes/antediluvian/heels/aziru
+	name = "Antediluvian exposed heels"
+	desc = "A pair of a set of heels recovered with an odd design. This version has toes exposed, granting the wearer elegance, or unsightliness."
+	icon_state = "aziru_heels"
+	icon = 'icons/clothing/shoes/ante_aziru.dmi'
+
+/obj/item/clothing/shoes/antediluvian/heels/aziru/alt
+	name = "Antediluvian exposed heels alt"
+	desc = "A pair of a set of heels recovered with an odd design. This version has toes exposed, granting the wearer elegance, or unsightliness. This one has extra gold trimming."
+	icon_state = "aziru_heels_alt"
+
 // The things folks do for fashion...
 /obj/item/clothing/shoes/galoshes/black
 	name = "black galoshes"
@@ -270,7 +284,7 @@
 	name = "dark-purple semi-galoshes"
 	desc = "A dark-purple rubber boots. They obviously don't smell like a cotton candy, roses and fresh roasted peanuts."
 	icon_state = "galoshes_sc"
-	slowdown = SHOES_SLOWDOWN
+	encumbrance = ITEM_ENCUMBRANCE_BASELINE
 
 //More Warhammer Fun
 /obj/item/clothing/shoes/utilitarian
@@ -285,4 +299,11 @@
 	desc = "These shoes feature long lace straps and flattened off toes. They originate from the Old Earth art of ballet, which featured many acrobatic and technical moves assisted by these shoes."
 	icon = 'icons/clothing/shoes/ballet.dmi'
 	icon_state = "ballet"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/shoes/socksandals
+	name = "socks and sandals"
+	desc = "These broken in leather sandals go great with a brand new pair of white socks. The ultimate in comfort for a wandering sightseer."
+	icon = 'icons/clothing/uniform/misc/tourist.dmi'
+	icon_state = "touristsandal"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL

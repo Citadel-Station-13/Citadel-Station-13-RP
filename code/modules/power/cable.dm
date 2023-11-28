@@ -238,7 +238,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 			O.show_message("<span class='warning'>[user] cuts the cable.</span>", 1)
 
 		if(d1 == DOWN || d2 == DOWN)
-			var/turf/turf = GetBelow(src)
+			var/turf/turf = get_vertical_step(src, DOWN)
 			if(turf)
 				for(var/obj/structure/cable/c in turf)
 					if(c.d1 == UP || c.d2 == UP)
@@ -364,7 +364,8 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	if(!(d1 == direction || d2 == direction)) //if the cable is not pointed in this direction, do nothing
 		return
 
-	var/turf/TB  = get_zstep(src, direction)
+	var/turf/us = get_turf(src)
+	var/turf/TB  = us.vertical_step(direction)
 
 	for(var/obj/structure/cable/C in TB)
 
@@ -440,7 +441,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 		if(cable_dir == 0)
 			continue
 		var/reverse = global.reverse_dir[cable_dir]
-		T = get_zstep(src, cable_dir)
+		T = get_vertical_step(src, cable_dir)
 		if(T)
 			for(var/obj/structure/cable/C in T)
 				if(C.d1 == reverse || C.d2 == reverse)
@@ -540,7 +541,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 2
 	throw_range = 5
-	materials = list(MAT_STEEL = 50, MAT_GLASS = 20)
+	materials_base = list(MAT_STEEL = 50, MAT_GLASS = 20)
 	slot_flags = SLOT_BELT
 	item_state = "coil"
 	attack_verb = list("whipped", "lashed", "disciplined", "flogged")
@@ -552,7 +553,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	name = "cable coil synthesizer"
 	desc = "A device that makes cable."
 	gender = NEUTER
-	materials = null
+	materials_base = null
 	uses_charge = 1
 	charge_costs = list(1)
 
@@ -718,7 +719,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 
 	put_cable(F, user, end_dir, dirn)
 	if(end_dir == DOWN)
-		put_cable(GetBelow(F), user, UP, 0)
+		put_cable(F.below(), user, UP, 0)
 		to_chat(user, "You slide some cable downward.")
 
 /obj/item/stack/cable_coil/proc/put_cable(turf/simulated/F, mob/user, d1, d2)
@@ -971,10 +972,11 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 2
 	throw_range = 5
-	materials = list(MAT_STEEL = 50, MAT_GLASS = 20)
+	materials_base = list(MAT_STEEL = 50, MAT_GLASS = 20)
 	slot_flags = SLOT_BELT
 	attack_verb = list("whipped", "lashed", "disciplined", "flogged")
 	stacktype = null
+	split_type = /obj/item/stack/cable_coil
 	tool_speed = 0.25
 
 /obj/item/stack/cable_coil/alien/Initialize(mapload, new_amount, merge, param_color)
@@ -994,34 +996,10 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	return 1
 
 /obj/item/stack/cable_coil/alien/use()	//It's endless
-	return 1
+	return TRUE
 
 /obj/item/stack/cable_coil/alien/add()	//Still endless
 	return 0
 
 /obj/item/stack/cable_coil/alien/update_wclass()
 	return 0
-
-/obj/item/stack/cable_coil/alien/split(tamount)
-	return null // no split
-
-/obj/item/stack/cable_coil/alien/attack_hand(mob/user, list/params)
-	if (user.get_inactive_held_item() == src)
-		var/N = input("How many units of wire do you want to take from [src]?  You can only take up to [amount] at a time.", "Split stacks", 1) as num|null
-		if(N && N <= amount)
-			var/obj/item/stack/cable_coil/CC = new/obj/item/stack/cable_coil(user.loc)
-			CC.amount = N
-			CC.update_icon()
-			to_chat(user,"<font color=#4F49AF>You take [N] units of wire from the [src].</font>")
-			if (CC)
-				user.put_in_hands(CC)
-				src.add_fingerprint(user)
-				CC.add_fingerprint(user)
-				spawn(0)
-					if (src && usr.machine==src)
-						src.interact(usr)
-		else
-			return
-	else
-		..()
-	return

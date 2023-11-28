@@ -469,11 +469,25 @@
 	required_reagents = list("grenadine" = 1, "tonic" = 1, "cola" = 1)
 	result_amount = 3
 
+/datum/chemical_reaction/drinks/nicola/fire
+	name = "NiCola Fire"
+	id = "nicolafire"
+	result = "nicolafire"
+	required_reagents = list("capsaicin" = 1, "nicola" = 1)
+	result_amount = 2
+
 /datum/chemical_reaction/drinks/nicola/cherry
 	name = "NiCola Sakura"
 	id = "nicolacherry"
 	result = "nicolacherry"
 	required_reagents = list("cherryjelly" = 1, "nicola" = 1)
+	result_amount = 2
+
+/datum/chemical_reaction/drinks/nicola/blue
+	name = "NiCola Blue"
+	id = "nicolablue"
+	result = "nicolablue"
+	required_reagents = list("berryjuice" = 1, "nicola" = 1)
 	result_amount = 2
 
 /datum/chemical_reaction/drinks/cherrycola
@@ -649,15 +663,15 @@
 	name = "Banana Honk"
 	id = "bananahonk"
 	result = "bananahonk"
-	required_reagents = list("banana" = 1, "cream" = 1, "sugar" = 1, "rum" = 1)
-	result_amount = 4
+	required_reagents = list("banana" = 1, "cream" = 1, "sugar" = 1)
+	result_amount = 3
 
 /datum/chemical_reaction/drinks/silencer
 	name = "Silencer"
 	id = "silencer"
 	result = "silencer"
-	required_reagents = list("nothing" = 1, "cream" = 1, "sugar" = 1, "rum" = 1)
-	result_amount = 4
+	required_reagents = list("nothing" = 1, "cream" = 1, "sugar" = 1)
+	result_amount = 3
 
 /datum/chemical_reaction/drinks/driestmartini
 	name = "Driest Martini"

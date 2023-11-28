@@ -13,7 +13,7 @@
 	throw_speed = 4
 	throw_range = 20
 	origin_tech = list(TECH_MAGNET = 1)
-	materials = list(MAT_STEEL = 400)
+	materials_base = list(MAT_STEEL = 400)
 
 /obj/item/locator/attack_self(mob/user)
 	. = ..()

@@ -16,6 +16,7 @@
 	var/nutriment_amt = 0
 	var/list/nutriment_desc = list("food" = 1)
 	var/datum/reagent/nutriment/coating/coating = null
+	var/sealed = FALSE
 	var/custom_open_sound
 	var/open_message = "You peel open the can! It looks ready to eat!"
 	var/opened_icon = 0
@@ -51,7 +52,7 @@
 	. = ..()
 	if(.)
 		return
-	if(!is_open_container())
+	if(sealed)
 		open(user)
 
 /obj/item/reagent_containers/food/snacks/proc/open(mob/user)
@@ -65,7 +66,7 @@
 		update_icon()
 
 	to_chat(user, "<span class='notice'>[open_message]</span>")
-	atom_flags |= OPENCONTAINER
+	sealed = FALSE
 
 /obj/item/reagent_containers/food/snacks/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
@@ -81,7 +82,7 @@
 		qdel(src)
 		return 0
 
-	if(!is_open_container())
+	if(sealed)
 		to_chat(user, "<span class='notice'>You need to open [src]!</span>")
 		return 0
 
@@ -865,7 +866,6 @@
 /obj/item/reagent_containers/food/snacks/fishfingers/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("protein", 9)
-	reagents.add_reagent("carpotoxin", 3)
 	bitesize = 3
 
 /obj/item/reagent_containers/food/snacks/hugemushroomslice // Buff 3 >> 5
@@ -1088,7 +1088,6 @@
 /obj/item/reagent_containers/food/snacks/fishburger/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("protein", 15)
-	reagents.add_reagent("carpotoxin", 3)
 	bitesize = 6
 
 /obj/item/reagent_containers/food/snacks/tofuburger // Buff 6 >> 10
@@ -1416,7 +1415,6 @@
 /obj/item/reagent_containers/food/snacks/cubancarp/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("protein", 9)
-	reagents.add_reagent("carpotoxin", 3)
 	reagents.add_reagent("capsaicin", 3)
 	bitesize = 4
 
@@ -2004,7 +2002,6 @@
 /obj/item/reagent_containers/food/snacks/fishandchips/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("protein", 5)
-	reagents.add_reagent("carpotoxin", 3)
 	bitesize = 3
 
 /obj/item/reagent_containers/food/snacks/sandwich // Buff 6 >> 11
@@ -3646,7 +3643,7 @@ END CITADEL CHANGE */
 	trash = /obj/item/trash/liquidfood
 	filling_color = "#A8A8A8"
 	survivalfood = TRUE
-	atom_flags = NONE //starts closed
+	sealed = TRUE
 	center_of_mass = list("x"=16, "y"=15)
 	nutriment_amt = 30
 	bitesize = 4
@@ -3730,7 +3727,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/sashimi/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("protein", 4)
-	reagents.add_reagent("carpotoxin", 2)
 	bitesize = 3
 
 /obj/item/reagent_containers/food/snacks/benedict // Buff 6 >> 8
@@ -3752,7 +3748,7 @@ END CITADEL CHANGE */
 	icon_state = "beans"
 	nutriment_amt = 4
 	nutriment_desc = list("beans" = 4)
-	atom_flags = NONE //starts closed
+	sealed = TRUE
 	opened_icon = 1
 
 /obj/item/reagent_containers/food/snacks/beans/Initialize(mapload)
@@ -4794,7 +4790,7 @@ END CITADEL CHANGE */
 	nutriment_amt = 10
 
 /obj/item/reagent_containers/food/snacks/chipplate/attack_hand(mob/user, list/params)
-	. = ..()
+	// todo: sigh, no ..(); shift over to on_attack_hand
 	var/obj/item/reagent_containers/food/snacks/returningitem = new vendingobject(loc)
 	returningitem.reagents.clear_reagents()
 	reagents.trans_to_holder(returningitem.reagents, bitesize)
@@ -6596,7 +6592,7 @@ END CITADEL CHANGE */
 	filling_color = "#015f01"
 	nutriment_amt = 5
 	nutriment_desc = list("mossy fungus" = 5)
-	atom_flags = NONE //starts closed
+	sealed = TRUE
 	opened_icon = 1
 
 /obj/item/reagent_containers/food/snacks/cavemoss_can/Initialize(mapload)
@@ -6611,7 +6607,7 @@ END CITADEL CHANGE */
 	filling_color = "#64482d"
 	nutriment_amt = 5
 	nutriment_desc = list("mushroom" = 1, "carrot" = 1, "bugflesh" = 3)
-	atom_flags = NONE //starts closed
+	sealed = TRUE
 	opened_icon = 1
 
 /obj/item/reagent_containers/food/snacks/diggerstew_can/Initialize(mapload)
@@ -6626,7 +6622,7 @@ END CITADEL CHANGE */
 	filling_color = "#759c75"
 	nutriment_amt = 5
 	nutriment_desc = list("mushroom" = 2, "bugflesh" = 3)
-	atom_flags = NONE //starts closed
+	sealed = TRUE
 	opened_icon = 1
 
 /obj/item/reagent_containers/food/snacks/canned_beetles/Initialize(mapload)
@@ -6641,7 +6637,7 @@ END CITADEL CHANGE */
 	filling_color = "#7a3f07"
 	nutriment_amt = 5
 	nutriment_desc = list(MAT_IRON = 3, "water" = 2)
-	atom_flags = NONE //starts closed
+	sealed = TRUE
 	opened_icon = 1
 
 /obj/item/reagent_containers/food/snacks/rust_can/Initialize(mapload)
@@ -6657,7 +6653,7 @@ END CITADEL CHANGE */
 	filling_color = "#331f0c"
 	nutriment_amt = 5
 	nutriment_desc = list("bugflesh" = 3, "soil" = 1, "dirt" = 1)
-	atom_flags = NONE //starts closed
+	sealed = TRUE
 
 /obj/item/reagent_containers/food/snacks/wrapped/alraune_bar/Initialize(mapload)
 	. = ..()
@@ -6741,7 +6737,7 @@ END CITADEL CHANGE */
 	filling_color = "#FC6F28"
 	nutriment_amt = 4
 	nutriment_desc = list("beans" = 4)
-	atom_flags = NONE //starts closed
+	sealed = TRUE
 	opened_icon = 1
 
 /obj/item/reagent_containers/food/snacks/baschbeans/Initialize(mapload)
@@ -6756,7 +6752,7 @@ END CITADEL CHANGE */
 	filling_color = "#FFFAD4"
 	nutriment_amt = 5
 	nutriment_desc = list("corn" = 5)
-	atom_flags = NONE //starts closed
+	sealed = TRUE
 	opened_icon = 1
 
 /obj/item/reagent_containers/food/snacks/creamcorn/Initialize(mapload)
@@ -6770,7 +6766,7 @@ END CITADEL CHANGE */
 	trash = /obj/item/trash/brainsnaxtrash
 	nutriment_amt = 5
 	nutriment_desc = list("protein" = 3, "iron" = 2)
-	atom_flags = NONE //starts closed
+	sealed = TRUE
 	opened_icon = 1
 
 /obj/item/reagent_containers/food/snacks/brainsnax/Initialize(mapload)
@@ -6780,9 +6776,12 @@ END CITADEL CHANGE */
 // Packaged Snack Foods Below
 // Wrapped
 
-/obj/item/reagent_containers/food/snacks/wrapped/candy // Buff 4 >> 8
+/obj/item/reagent_containers/food/snacks/wrapped // Buff 4 >> 8
 	name = "ABSTRACT"
 	desc = "You shouldn't be seeing this. Contact an admin!"
+	sealed = TRUE
+	custom_open_sound = 'sound/effects/pageturn2.ogg'
+	open_message = "You peel back the wrapping!"
 
 /obj/item/reagent_containers/food/snacks/wrapped/candy // Buff 4 >> 8
 	name = "candy"
@@ -6792,9 +6791,6 @@ END CITADEL CHANGE */
 	filling_color = "#7D5F46"
 	nutriment_amt = 3
 	nutriment_desc = list("candy" = 1)
-	atom_flags = NONE //starts closed
-	custom_open_sound = 'sound/effects/pageturn2.ogg'
-	open_message = "You peel back the wrapping!"
 
 /obj/item/reagent_containers/food/snacks/wrapped/candy/Initialize(mapload)
 	. = ..()
@@ -6901,6 +6897,9 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/bagged // Buff 3 >> 5
 	name = "ABSTRACT"
 	desc = "You shouldn't be seeing this. Contact an admin!"
+	sealed = TRUE
+	custom_open_sound = 'sound/bureaucracy/papercrumple.ogg'
+	open_message = "You pull the package open!"
 
 /obj/item/reagent_containers/food/snacks/bagged/chips // Buff 3 >> 5
 	name = "chips"
@@ -6910,9 +6909,6 @@ END CITADEL CHANGE */
 	filling_color = "#E8C31E"
 	nutriment_amt = 5
 	nutriment_desc = list("salt" = 1, "chips" = 2)
-	atom_flags = NONE //starts closed
-	custom_open_sound = 'sound/bureaucracy/papercrumple.ogg'
-	open_message = "You pull the package open!"
 
 /obj/item/reagent_containers/food/snacks/bagged/chips/Initialize(mapload)
 	. = ..()
@@ -6961,6 +6957,9 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/boxed // Buff 3 >> 5
 	name = "ABSTRACT"
 	desc = "You shouldn't be seeing this. Contact an admin!"
+	sealed = TRUE
+	custom_open_sound = 'sound/misc/boxopen.ogg'
+	open_message = "You pop open the box!"
 
 /obj/item/reagent_containers/food/snacks/boxed/no_raisin // Buff 6 >> 12
 	name = "4no Raisins"
@@ -6970,9 +6969,6 @@ END CITADEL CHANGE */
 	filling_color = "#343834"
 	nutriment_amt = 12
 	nutriment_desc = list("dried raisins" = 6)
-	atom_flags = NONE //starts closed
-	custom_open_sound = 'sound/misc/boxopen.ogg'
-	open_message = "You pop open the box!"
 
 /obj/item/reagent_containers/food/snacks/boxed/no_raisin/Initialize(mapload)
 	. = ..()
@@ -7002,7 +6998,7 @@ END CITADEL CHANGE */
 	center_of_mass = list("x"=17, "y"=16)
 	nutriment_amt = 6
 	nutriment_desc = list("bread" = 2, "sweetness" = 3)
-	atom_flags = NONE //starts closed
+	sealed = TRUE
 	custom_open_sound = 'sound/weapons/grenade_launcher.ogg'
 	open_message = "You pop open the tube!"
 

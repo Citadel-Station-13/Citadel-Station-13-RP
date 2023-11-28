@@ -4,14 +4,14 @@
 	w_class = ITEMSIZE_NORMAL
 	// todo: better way, for now, block all rad contamination to interior
 	rad_flags = RAD_BLOCK_CONTENTS
-	obj_flags = OBJ_IGNORE_MOB_DEPTH
+	obj_flags = OBJ_IGNORE_MOB_DEPTH | OBJ_RANGE_TARGETABLE
 	depth_level = 0
 	climb_allowed = FALSE
 
 	//? Flags
 	/// Item flags.
 	/// These flags are listed in [code/__DEFINES/inventory/item_flags.dm].
-	var/item_flags = NONE
+	var/item_flags = ITEM_ENCUMBERS_WHILE_HELD
 	/// Miscellaneous flags pertaining to equippable objects.
 	/// These flags are listed in [code/__DEFINES/inventory/item_flags.dm].
 	var/clothing_flags = NONE
@@ -36,13 +36,32 @@
 	/// economic category for items
 	var/economic_category_item = ECONOMIC_CATEGORY_ITEM_DEFAULT
 
+	//? Carry Weight
+	/// encumberance.
+	/// calculated as max() of all encumbrance
+	/// result is calculated into slowdown value
+	/// and then max()'d with carry weight for the final slowdown used.
+	var/encumbrance = ITEM_ENCUMBRANCE_BASELINE
+	/// registered encumbrance - null if not in inventory
+	var/encumbrance_registered
+	/// carry weight in kgs. this might be generalized later so KEEP IT REALISTIC.
+	var/weight = ITEM_WEIGHT_BASELINE
+	/// registered carry weight - null if not in inventory.
+	var/weight_registered
+	/// flat encumbrance - while worn, you are treated as at **least** this encumbered
+	/// e.g. if someone is wearing a flat 50 encumbrance item, but their regular encumbrance tally is only 45, they still have 50 total.
+	var/flat_encumbrance = 0
+	/// Hard slowdown. Applied before carry weight.
+	/// This affects multiplicative movespeed.
+	var/slowdown = 0
+
 	//? Combat
 	/// Amount of damage we do on melee.
 	var/damage_force = 0
 	/// armor flag for melee attacks
 	var/damage_flag = ARMOR_MELEE
 	/// damage tier
-	var/damage_tier = MELEE_TIER_DEFAULT
+	var/damage_tier = MELEE_TIER_MEDIUM
 	/// damage_mode bitfield - see [code/__DEFINES/combat/damage.dm]
 	var/damage_mode = NONE
 	// todo: port over damtype
@@ -51,11 +70,8 @@
 	/// This saves our blood splatter overlay, which will be processed not to go over the edges of the sprite
 	var/image/blood_overlay = null
 	var/r_speed = 1.0
-	var/health = null
 	var/burn_point = null
 	var/burning = null
-	/// Sound to play on hit. Set to [HITSOUND_UNSET] to have it automatically set on init.
-	var/hitsound = HITSOUND_UNSET
 	var/storage_cost = null
 	/// If it's an item we don't want to log attack_logs with, set this to TRUE
 	var/no_attack_log = FALSE
@@ -99,8 +115,6 @@
 	var/permeability_coefficient = 1
 	/// For electrical admittance/conductance (electrocution checks and shit)
 	var/siemens_coefficient = 1
-	/// How much clothing is slowing you down. Negative values speeds you up
-	var/slowdown = 0
 	/// Suit storage stuff.
 	var/list/allowed = null
 	/// All items can have an uplink hidden inside, just remember to add the triggers.
@@ -119,7 +133,9 @@
 	/// Icon overlay for ADD highlights when applicable.
 	var/addblends
 
-	//! Sounds!
+	//? Sounds
+	/// sound used when used in melee attacks. null for default for our damage tpye.
+	var/attack_sound
 	/// Used when thrown into a mob.
 	var/mob_throw_hit_sound
 	/// Sound used when equipping the item into a valid slot from hands or ground
@@ -151,11 +167,6 @@
 			embed_chance = max(5, round(damage_force/w_class))
 		else
 			embed_chance = max(5, round(damage_force/(w_class*3)))
-	if(hitsound == HITSOUND_UNSET)
-		if(damtype == "fire")
-			hitsound = 'sound/items/welder.ogg'
-		if(damtype == "brute")
-			hitsound = "swing_hit"
 
 /// Check if target is reasonable for us to operate on.
 /obj/item/proc/check_allowed_items(atom/target, not_inside, target_self)
@@ -239,6 +250,41 @@
 /obj/item/examine(mob/user, dist)
 	. = ..()
 	. += "[gender == PLURAL ? "They are" : "It is"] a [weightclass2text(w_class)] item."
+	switch(get_encumbrance())
+		if(-INFINITY to 0.1)
+			. += "It looks effortless to carry around and wear."
+		if(0.1 to 0.75)
+			. += "It looks very easy to carry around and wear."
+		if(0.75 to 2)
+			. += "It looks decently able to be carried around and worn."
+		if(2 to 5)
+			. += "It looks somewhat unwieldly."
+		if(5 to 10)
+			. += "It looks quite unwieldly."
+		if(10 to 20)
+			. += "It looks very unwieldly. It would take a good effort to run around with it."
+		if(20 to 40)
+			. += "It looks extremely unwieldly. You probably will have a hard time running with it."
+		if(40 to INFINITY)
+			. += "It's so unwieldly that it's a surprise you can hold it at all. You really won't be doing much running with it."
+	switch(get_weight())
+		if(-INFINITY to 0.1)
+			// todo: put this in when we actually get weight
+			// . += "It looks like it weighs practically nothing."
+		if(0.1 to 0.75)
+			. += "It looks like it weighs very little."
+		if(0.75 to 2)
+			. += "It looks like it's decently lightweight."
+		if(2 to 5)
+			. += "It looks like it weighs a bit."
+		if(5 to 10)
+			. += "It looks like it weighs a good amount."
+		if(10 to 20)
+			. += "It looks like it is heavy. It would take a good effort to run around with it."
+		if(20 to 40)
+			. += "It looks like it weighs a lot. You probably will have a hard time running with it."
+		if(40 to INFINITY)
+			. += "It looks like it weighs a ton. You really won't be doing much running with it."
 
 	// if(resistance_flags & INDESTRUCTIBLE)
 	// 	. += "[src] seems extremely robust! It'll probably withstand anything that could happen to it!"
@@ -378,9 +424,9 @@
 		R.activate_module(src)
 		R.hud_used.update_robot_modules_display()
 
-/obj/item/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/storage))
-		var/obj/item/storage/S = W
+/obj/item/attackby(obj/item/I, mob/user, list/params, clickchain_flags, damage_multiplier)
+	if(istype(I, /obj/item/storage))
+		var/obj/item/storage/S = I
 		if(S.use_to_pickup)
 			if(S.collection_mode) //Mode is set to collect all items
 				if(isturf(src.loc))
@@ -388,7 +434,19 @@
 
 			else if(S.can_be_inserted(src))
 				S.handle_item_insertion(src, user)
-	return
+	if(istype(I, /obj/item/cell) && !isnull(obj_cell_slot) && isnull(obj_cell_slot.cell) && obj_cell_slot.interaction_active(user))
+		if(!user.transfer_item_to_loc(I, src))
+			user.action_feedback(SPAN_WARNING("[I] is stuck to your hand!"), src)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		user.visible_action_feedback(
+			target = src,
+			hard_range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
+			visible_hard = SPAN_NOTICE("[user] inserts [I] into [src]."),
+			audible_hard = SPAN_NOTICE("You hear something being slotted in."),
+			visible_self = SPAN_NOTICE("You insert [I] into [src]."),
+		)
+		obj_cell_slot.insert_cell(I)
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 
 /obj/item/proc/talk_into(mob/M as mob, text)
 	return
@@ -419,8 +477,8 @@
 		if (throw_force > 0)
 			if (mob_throw_hit_sound)
 				playsound(A, mob_throw_hit_sound, volume, TRUE, -1)
-			else if(hitsound)
-				playsound(A, hitsound, volume, TRUE, -1)
+			else if(attack_sound)
+				playsound(A, attack_sound, volume, TRUE, -1)
 			else
 				playsound(A, 'sound/weapons/genhit.ogg', volume, TRUE, -1)
 		else
@@ -741,47 +799,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 // 	. = ..()
 // 	update_action_buttons()
 
-/**
- * grabs an attack verb to use
- *
- * @params
- * * target - thing being attacked
- * * user - person attacking
- *
- * @return attack verb
- */
-/obj/item/proc/get_attack_verb(atom/target, mob/user)
-	return length(attack_verb)? pick(attack_verb) : attack_verb
-
-//? Interaction
-
-/**
- * Called when the item is in the active hand, and clicked; alternately, there is an 'activate held object' verb or you can hit pagedown.
- *
- * You should do . = ..() and check ., if it's TRUE, it means a parent proc requested the call chain to stop.
- *
- * @params
- * * user - The person using us in hand
- *
- * @return TRUE to signal to overrides to stop the chain and do nothing.
- */
-/obj/item/proc/attack_self(mob/user)
-	// SHOULD_CALL_PARENT(TRUE)
-	// attack_self isn't really part of the item attack chain.
-	SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_SELF, user)
-	if(interaction_flags_item & INTERACT_ITEM_ATTACK_SELF)
-		interact(user)
-	on_attack_self(user)
-
-/**
- * Called after we attack self
- * Used to allow for attack_self to be interrupted by signals in nearly all cases.
- * You should usually override this instead of attack_self.
- */
-/obj/item/proc/on_attack_self(mob/user)
-	return
-
-//? Mob Armor
+//* Armor
 
 /**
  * called to be checked for mob armor
@@ -801,3 +819,224 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 /obj/item/proc/running_mob_armor(damage, tier, flag, mode, attack_type, datum/weapon, target_zone)
 	damage = fetch_armor().resultant_damage(damage, tier, flag)
 	return args.Copy()
+
+//* Attack
+
+/**
+ * grabs an attack verb to use
+ *
+ * @params
+ * * target - thing being attacked
+ * * user - person attacking
+ *
+ * @return attack verb
+ */
+/obj/item/proc/get_attack_verb(atom/target, mob/user)
+	return length(attack_verb)? pick(attack_verb) : attack_verb
+
+/**
+ * can be sharp; even if not being used as such
+ *
+ * @params
+ * * strict - require us to be toggled to sharp mode if there's multiple modes of attacking.
+ */
+/obj/item/proc/is_sharp(strict)
+	return sharp || (damage_mode & DAMAGE_MODE_SHARP)
+
+/**
+ * can be edged; even if not being used as such
+ *
+ * @params
+ * * strict - require us to be toggled to sharp mode if there's multiple modes of attacking.
+ */
+/obj/item/proc/is_edge(strict)
+	return sharp || (damage_mode & DAMAGE_MODE_EDGE)
+
+/**
+ * can be piercing; even if not being used as such
+ *
+ * @params
+ * * strict - require us to be toggled to sharp mode if there's multiple modes of attacking.
+ */
+/obj/item/proc/is_pierce(strict)
+	return (damage_mode & DAMAGE_MODE_PIERCE)
+
+/**
+ * can be shredding; even if not being used as such
+ *
+ * @params
+ * * strict - require us to be toggled to sharp mode if there's multiple modes of attacking.
+ */
+/obj/item/proc/is_shred(strict)
+	return (damage_mode & DAMAGE_MODE_SHRED)
+
+//* Interaction
+
+/**
+ * Called when the item is in the active hand, and clicked; alternately, there is an 'activate held object' verb or you can hit pagedown.
+ *
+ * You should do . = ..() and check ., if it's TRUE, it means a parent proc requested the call chain to stop.
+ *
+ * @params
+ * * user - The person using us in hand
+ *
+ * @return TRUE to signal to overrides to stop the chain and do nothing.
+ */
+/obj/item/proc/attack_self(mob/user)
+	// SHOULD_CALL_PARENT(TRUE)
+	// attack_self isn't really part of the item attack chain.
+	SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_SELF, user)
+	if(on_attack_self(new /datum/event_args/actor(user)))
+		return TRUE
+	if(interaction_flags_item & INTERACT_ITEM_ATTACK_SELF)
+		interact(user)
+
+/**
+ * Called after we attack self
+ * Used to allow for attack_self to be interrupted by signals in nearly all cases.
+ * You should usually override this instead of attack_self.
+ *
+ * You should do . = ..() and check ., if it's TRUE, it means a parent proc requested the call chain to stop.
+ *
+ * @return TRUE to signal to overrides to stop the chain and do nothing.
+ */
+/obj/item/proc/on_attack_self(datum/event_args/actor/e_args)
+	if(!isnull(obj_cell_slot?.cell) && obj_cell_slot.remove_yank_inhand && obj_cell_slot.interaction_active(src))
+		e_args.visible_feedback(
+			target = src,
+			range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
+			visible = SPAN_NOTICE("[e_args.performer] removes the cell from [src]."),
+			audible = SPAN_NOTICE("You hear fasteners falling out and something being removed."),
+			otherwise_self = SPAN_NOTICE("You remove the cell from [src]."),
+		)
+		log_construction(e_args, src, "removed cell [obj_cell_slot.cell] ([obj_cell_slot.cell.type])")
+		e_args.performer.put_in_hands_or_drop(obj_cell_slot.remove_cell(e_args.performer))
+		return TRUE
+	return FALSE
+
+/**
+ * Hitsound override when successfully melee attacking someone for melee_hit()
+ *
+ * We get final say by returning a sound here.
+ */
+/obj/item/proc/attacksound_override(atom/target, attack_type)
+	return
+
+//* Carry Weight
+
+/obj/item/proc/get_weight()
+	return weight
+
+/obj/item/proc/get_encumbrance()
+	return encumbrance
+
+/obj/item/proc/get_flat_encumbrance()
+	return flat_encumbrance
+
+/obj/item/proc/update_weight()
+	if(isnull(weight_registered))
+		return null
+	. = get_weight()
+	if(. == weight_registered)
+		return 0
+	. -= weight_registered
+	var/mob/living/wearer = worn_mob()
+	if(istype(wearer))
+		wearer.adjust_current_carry_weight(.)
+
+/obj/item/proc/update_encumbrance()
+	if(isnull(encumbrance_registered))
+		return null
+	. = get_encumbrance()
+	if(. == encumbrance_registered)
+		return 0
+	. -= encumbrance_registered
+	encumbrance_registered += .
+	var/mob/living/wearer = worn_mob()
+	if(istype(wearer))
+		wearer.adjust_current_carry_encumbrance(.)
+
+/obj/item/proc/update_flat_encumbrance()
+	var/mob/living/wearer = worn_mob()
+	if(istype(wearer))
+		wearer.recalculate_carry()
+
+/obj/item/proc/set_weight(amount)
+	if(amount == weight)
+		return
+	var/old = weight
+	weight = amount
+	update_weight()
+	propagate_weight(old, weight)
+
+/obj/item/proc/set_encumbrance(amount)
+	if(amount == encumbrance)
+		return
+	encumbrance = amount
+	update_encumbrance()
+
+/obj/item/proc/set_flat_encumbrance(amount)
+	if(amount == flat_encumbrance)
+		return
+	flat_encumbrance = amount
+	update_flat_encumbrance()
+
+/obj/item/proc/set_slowdown(amount)
+	if(amount == slowdown)
+		return
+	slowdown = amount
+	worn_mob()?.update_item_slowdown()
+
+/obj/item/proc/propagate_weight(old_weight, new_weight)
+	if(!(item_flags & ITEM_IN_STORAGE))
+		return
+	var/obj/item/storage/S = loc
+	if(!istype(S))
+		return
+	S.stored_weight_changed(src, old_weight, new_weight)
+
+//* Materials
+
+/obj/item/material_trait_brittle_shatter()
+	var/datum/material/material = get_primary_material()
+	var/turf/T = get_turf(src)
+	T.visible_message("<span class='danger'>\The [src] [material.destruction_desc]!</span>")
+	if(istype(loc, /mob/living))
+		var/mob/living/M = loc
+		if(material.shard_type == SHARD_SHARD) // Wearing glass armor is a bad idea.
+			var/obj/item/material/shard/S = material.place_shard(T)
+			M.embed(S)
+
+	playsound(src, "shatter", 70, 1)
+	qdel(src)
+
+//? VV
+
+/obj/item/vv_edit_var(var_name, var_value, mass_edit, raw_edit)
+	switch(var_name)
+		if(NAMEOF(src, item_flags))
+			var/requires_update = (item_flags & (ITEM_ENCUMBERS_WHILE_HELD | ITEM_ENCUMBERS_ONLY_HELD)) != (var_value & (ITEM_ENCUMBERS_WHILE_HELD | ITEM_ENCUMBERS_ONLY_HELD))
+			. = ..()
+			if(. && requires_update)
+				var/mob/living/L = worn_mob()
+				// check, as worn_mob() returns /mob, not /living
+				if(istype(L))
+					L.recalculate_carry()
+					L.update_carry()
+		if(NAMEOF(src, weight), NAMEOF(src, encumbrance), NAMEOF(src, flat_encumbrance))
+			// todo: introspection system update - this should be 'handled', as opposed to hooked.
+			. = ..()
+			if(. )
+				var/mob/living/L = worn_mob()
+				// check, as worn_mob() returns /mob, not /living
+				if(istype(L))
+					L.update_carry_slowdown()
+		if(NAMEOF(src, slowdown))
+			. = ..()
+			if(. )
+				var/mob/living/L = worn_mob()
+				// check, as worn_mob() returns /mob, not /living
+				if(istype(L))
+					L.update_item_slowdown()
+		else
+			return ..()

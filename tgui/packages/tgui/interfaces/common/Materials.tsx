@@ -55,7 +55,7 @@ export const MaterialStorage = (props: MaterialStorageProps, context) => {
         return (
           <>
             {props.materialButtons}
-            <NumberInput width={3} value={ejectAmt} onChange={(e, v) => setEjectAmt(v)} />
+            <NumberInput width={3} value={ejectAmt} minValue={1} onChange={(e, v) => setEjectAmt(v)} />
             <Button
               icon="eject"
               onClick={() => props.eject(id, ejectAmt)} />
@@ -100,13 +100,14 @@ export const MaterialRender = (props: MaterialRenderProps, context) => {
               <Stack.Item key={id}>
                 <Stack vertical align="center">
                   <Stack.Item>
-                    <Sprite
-                      sheet={MATERIAL_SPRITESHEET_NAME}
-                      sizeKey={MATERIAL_SPRITESHEET_SIZEKEY}
-                      style={{ transform: `scale(${scale})` }}
-                      prefix="stack"
-                      sprite={props.materialContext.materials[id].iconKey} />
-                    <Tooltip position="bottom" content={`${toTitleCase(props.materialContext.materials[id].name)}`} />
+                    <Tooltip position="bottom" content={`${toTitleCase(props.materialContext.materials[id].name)}`}>
+                      <Sprite
+                        sheet={MATERIAL_SPRITESHEET_NAME}
+                        sizeKey={MATERIAL_SPRITESHEET_SIZEKEY}
+                        style={{ transform: `scale(${scale})` }}
+                        prefix="stack"
+                        sprite={props.materialContext.materials[id].iconKey} />
+                    </Tooltip>
                   </Stack.Item>
                   <Stack.Item>
                     {renderMaterialAmount(amt)}

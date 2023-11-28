@@ -1,13 +1,13 @@
 /obj/mecha/combat/phazon
-	desc = "An exosuit which can only be described as 'WTF?'."
 	name = "Phazon"
+	desc = "A sleek exosuit with unnaturally pronounced curves."
 	icon_state = "phazon"
 	initial_icon = "phazon"
 	step_in = 1
 	dir_in = 1 //Facing North.
 	step_energy_drain = 3
-	health = 200		//God this is low
-	maxhealth = 200		//Don't forget to update the /old variant if  you change this number.
+	integrity = 200		//God this is low
+	integrity_max = 200		//Don't forget to update the /old variant if  you change this number.
 	deflect_chance = 30
 	damage_absorption = list("brute"=0.7,"fire"=0.7,"bullet"=0.7,"laser"=0.7,"energy"=0.7,"bomb"=0.7)
 	max_temperature = 25000
@@ -80,17 +80,14 @@
 
 /obj/mecha/combat/phazon/janus
 	name = "Phazon Prototype Janus Class"
-	desc = "An exosuit which a more crude civilization such as yours might describe as WTF?."
-	description_fluff = "An incredibly high-tech exosuit constructed out of salvaged alien and cutting-edge modern technology.\
-	This machine, theoretically, is capable of travelling through time, however due to the strange nature of its miniaturized \
-	supermatter-fueled bluespace drive, it is uncertain how this ability manifests."
+	desc = "A sleek exosuit that radiates a strange, alien energy."
 	icon_state = "janus"
 	initial_icon = "janus"
 	step_in = 1
 	dir_in = 1 //Facing North.
 	step_energy_drain = 3
-	health = 350
-	maxhealth = 350
+	integrity = 350
+	integrity_max = 350
 	deflect_chance = 30
 	damage_absorption = list("brute"=0.6,"fire"=0.7,"bullet"=0.7,"laser"=0.9,"energy"=0.7,"bomb"=0.5)
 	max_temperature = 10000
@@ -110,7 +107,7 @@
 	switch_dmg_type_possible = TRUE
 	cloak_possible = FALSE
 
-/obj/mecha/combat/phazon/janus/take_damage(amount, type="brute")
+/obj/mecha/combat/phazon/janus/take_damage_legacy(amount, type="brute")
 	..()
 	if(phasing)
 		phasing = FALSE
@@ -160,6 +157,6 @@
 
 /obj/mecha/combat/phazon/old/Initialize(mapload)
 	. = ..()
-	health = 25
-	maxhealth = 150	//Just slightly worse.
+	integrity = 25
+	integrity_max = 150	//Just slightly worse.
 	cell.charge = rand(0, (cell.charge/2))

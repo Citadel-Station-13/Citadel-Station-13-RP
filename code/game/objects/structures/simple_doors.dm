@@ -7,46 +7,34 @@
 	icon = 'icons/obj/doors/material_doors.dmi'
 	icon_state = "metal"
 
-	var/datum/material/material
+	material_parts = MATERIAL_DEFAULT_NONE
+	material_primary = MATERIAL_PART_DEFAULT
+	material_costs = SHEET_MATERIAL_AMOUNT * 10
+
 	var/state = 0 //closed, 1 == open
 	var/isSwitchingStates = 0
-	var/hardness = 1
 	var/oreAmount = 7
 
-/obj/structure/simple_door/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
-	TemperatureAct(exposed_temperature)
-
-/obj/structure/simple_door/proc/TemperatureAct(temperature)
-	hardness -= material.combustion_effect(get_turf(src),temperature, 0.3)
-	CheckHardness()
-
-/obj/structure/simple_door/Initialize(mapload, material_name)
-	. = ..(mapload)
-	if(!material_name)
-		material_name = MAT_STEEL
-	material = istype(material_name, /datum/material)? material_name : SSmaterials.get_material(material_name)
-	if(!material)
-		qdel(src)
-		return
-	hardness = max(1,round(material.integrity/10))
-	icon_state = material.door_icon_base
-	name = "[material.display_name] door"
-	color = material.icon_colour
-	if(material.opacity < 0.5)
-		set_opacity(0)
-	else
-		set_opacity(1)
-	if(material.products_need_process())
-		START_PROCESSING(SSobj, src)
-	update_nearby_tiles()
-
-/obj/structure/simple_door/Destroy()
-	STOP_PROCESSING(SSobj, src)
-	update_nearby_tiles()
+/obj/structure/simple_door/Initialize(mapload, material)
+	if(!isnull(material))
+		set_primary_material(SSmaterials.resolve_material(material))
 	return ..()
 
-/obj/structure/simple_door/get_material()
-	return material
+/obj/structure/simple_door/update_material_single(datum/material/material)
+	. = ..()
+	if(isnull(material))
+		name = initial(name)
+		set_multiplied_integrity(1)
+		set_armor(/datum/armor/none)
+		color = null
+		set_opacity(FALSE)
+	else
+		name = "[material.display_name] [initial(name)]"
+		set_multiplied_integrity(material.relative_integrity)
+		set_armor(material.create_armor(MATERIAL_SIGNIFICANCE_DOOR))
+		color = material.icon_colour
+		set_opacity(material.opacity > MATERIAL_OPACITY_THRESHOLD)
+	update_icon()
 
 /obj/structure/simple_door/Bumped(atom/user)
 	..()
@@ -71,7 +59,9 @@
 	return !density
 
 /obj/structure/simple_door/proc/TryToSwitchState(atom/user)
-	if(isSwitchingStates) return
+	if(isSwitchingStates)
+		return
+	var/datum/material/material = get_primary_material()
 	if(ismob(user))
 		var/mob/M = user
 		if(!material.can_open_material_door(user))
@@ -96,6 +86,7 @@
 
 /obj/structure/simple_door/proc/Open()
 	isSwitchingStates = 1
+	var/datum/material/material = get_primary_material()
 	playsound(loc, material.dooropen_noise, 100, 1)
 	flick("[material.door_icon_base]opening",src)
 	sleep(10)
@@ -108,6 +99,7 @@
 
 /obj/structure/simple_door/proc/Close()
 	isSwitchingStates = 1
+	var/datum/material/material = get_primary_material()
 	playsound(loc, material.dooropen_noise, 100, 1)
 	flick("[material.door_icon_base]closing",src)
 	sleep(10)
@@ -119,121 +111,67 @@
 	update_nearby_tiles()
 
 /obj/structure/simple_door/update_icon()
+	var/datum/material/material = get_primary_material()
+	if(isnull(material))
+		icon_state = state? "open" : "closed"
+		return
 	if(state)
 		icon_state = "[material.door_icon_base]open"
 	else
 		icon_state = material.door_icon_base
 
 /obj/structure/simple_door/attackby(obj/item/W as obj, mob/user as mob)
+	if(user.a_intent == INTENT_HARM)
+		return
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+	var/datum/material/material = get_primary_material()
 	if(istype(W,/obj/item/pickaxe))
 		var/obj/item/pickaxe/digTool = W
 		visible_message("<span class='danger'>[user] starts digging [src]!</span>")
-		if(do_after(user,digTool.digspeed*hardness) && src)
+		if(do_after(user, digTool.digspeed * material.relative_integrity, src))
 			visible_message("<span class='danger'>[user] finished digging [src]!</span>")
-			Dismantle()
-	else if(istype(W,/obj/item)) //not sure, can't not just weapons get passed to this proc?
-		hardness -= W.damage_force/10
-		visible_message("<span class='danger'>[user] hits [src] with [W]!</span>")
-		if(material == get_material_by_name("resin"))
-			playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)
-		else if(material == (get_material_by_name(MAT_WOOD) || get_material_by_name(MAT_SIFWOOD) || get_material_by_name(MAT_HARDWOOD)))
-			playsound(loc, 'sound/effects/woodcutting.ogg', 100, 1)
-		else
-			playsound(src, 'sound/weapons/smash.ogg', 50, 1)
-		CheckHardness()
-	else if(istype(W,/obj/item/weldingtool))
-		var/obj/item/weldingtool/WT = W
-		if(material.ignition_point && WT.remove_fuel(0, user))
-			TemperatureAct(150)
-	else
-		attack_hand(user)
-	return
+			deconstruct(ATOM_DECONSTRUCT_DISASSEMBLED)
 
-/obj/structure/simple_door/bullet_act(var/obj/projectile/Proj)
-	hardness -= Proj.damage/10
-	CheckHardness()
+/obj/structure/simple_door/drop_products(method, atom/where)
+	. = ..()
+	var/datum/material/material = get_primary_material()
+	material?.place_dismantled_product(where, method == ATOM_DECONSTRUCT_DISASSEMBLED? 10 : 6)
 
-/obj/structure/simple_door/take_damage(var/damage)
-	hardness -= damage/10
-	CheckHardness()
+/obj/structure/simple_door/iron
+	material_parts = /datum/material/iron
 
-/obj/structure/simple_door/attack_generic(var/mob/user, var/damage, var/attack_verb)
-	visible_message("<span class='danger'>[user] [attack_verb] the [src]!</span>")
-	if(material == get_material_by_name("resin"))
-		playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)
-	else if(material == (get_material_by_name(MAT_WOOD) || get_material_by_name(MAT_SIFWOOD) || get_material_by_name(MAT_HARDWOOD)))
-		playsound(loc, 'sound/effects/woodcutting.ogg', 100, 1)
-	else
-		playsound(src, 'sound/weapons/smash.ogg', 50, 1)
-	user.do_attack_animation(src)
-	hardness -= damage/10
-	CheckHardness()
+/obj/structure/simple_door/silver
+	material_parts = /datum/material/silver
 
-/obj/structure/simple_door/proc/CheckHardness()
-	if(hardness <= 0)
-		Dismantle(1)
+/obj/structure/simple_door/gold
+	material_parts = /datum/material/gold
 
-/obj/structure/simple_door/proc/Dismantle(devastated = 0)
-	material.place_dismantled_product(get_turf(src))
-	visible_message("<span class='danger'>The [src] is destroyed!</span>")
-	qdel(src)
+/obj/structure/simple_door/uranium
+	material_parts = /datum/material/uranium
 
-/obj/structure/simple_door/legacy_ex_act(severity = 1)
-	switch(severity)
-		if(1)
-			Dismantle(1)
-		if(2)
-			if(prob(20))
-				Dismantle(1)
-			else
-				hardness--
-				CheckHardness()
-		if(3)
-			hardness -= 0.1
-			CheckHardness()
-	return
+/obj/structure/simple_door/sandstone
+	material_parts = /datum/material/sandstone
 
-/obj/structure/simple_door/process(delta_time)
-	if(!material.radioactivity)
-		return
-	radiation_pulse(src, round(material.radioactivity / RAD_INTENSITY_DIVISOR_SIMPLE_DOOR))
+/obj/structure/simple_door/phoron
+	material_parts = /datum/material/phoron
 
-/obj/structure/simple_door/iron/Initialize(mapload, material_name)
-	return ..(mapload, "iron")
+/obj/structure/simple_door/diamond
+	material_parts = /datum/material/diamond
 
-/obj/structure/simple_door/silver/Initialize(mapload, material_name)
-	return ..(mapload, "silver")
+/obj/structure/simple_door/wood
+	material_parts = /datum/material/wood_plank
 
-/obj/structure/simple_door/gold/Initialize(mapload, material_name)
-	return ..(mapload, "gold")
+/obj/structure/simple_door/sifwood
+	material_parts = /datum/material/wood_plank/sif
 
-/obj/structure/simple_door/uranium/Initialize(mapload, material_name)
-	return ..(mapload, "uranium")
+/obj/structure/simple_door/hardwood
+	material_parts = /datum/material/wood_plank/hardwood
 
-/obj/structure/simple_door/sandstone/Initialize(mapload, material_name)
-	return ..(mapload, "sandstone")
+/obj/structure/simple_door/resin
+	material_parts = /datum/material/resin
 
-/obj/structure/simple_door/phoron/Initialize(mapload, material_name)
-	return ..(mapload, "phoron")
-
-/obj/structure/simple_door/diamond/Initialize(mapload, material_name)
-	return ..(mapload, "diamond")
-
-/obj/structure/simple_door/wood/Initialize(mapload, material_name)
-	return ..(mapload, MAT_WOOD)
-
-/obj/structure/simple_door/sifwood/Initialize(mapload, material_name)
-	return ..(mapload, MAT_SIFWOOD)
-
-/obj/structure/simple_door/hardwood/Initialize(mapload, material_name)
-	return ..(mapload, MAT_HARDWOOD)
-
-/obj/structure/simple_door/resin/Initialize(mapload, material_name)
-	return ..(mapload, "resin")
-
-/obj/structure/simple_door/cult/Initialize(mapload, material_name)
-	return ..(mapload, "cult")
+/obj/structure/simple_door/cult
+	material_parts = /datum/material/cult
 
 /obj/structure/simple_door/cult/TryToSwitchState(atom/user)
 	if(isliving(user))

@@ -7719,8 +7719,7 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/gravity_gen)
@@ -9672,8 +9671,7 @@
 "te" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced/full,
 /obj/machinery/door/firedoor/glass,
@@ -12175,8 +12173,7 @@
 	},
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/gravity_gen)
@@ -20310,8 +20307,7 @@
 /area/hallway/station/atrium)
 "OE" = (
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/machinery/power/apc{
 	dir = 4;
@@ -21299,8 +21295,7 @@
 /area/engineering/hallway)
 "Qs" = (
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/aux,
 /obj/structure/closet/walllocker/emergsuit_wall{
@@ -22175,8 +22170,7 @@
 /area/maintenance/abandonedlibraryconference)
 "Sn" = (
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/machinery/atmospherics/portables_connector/aux,
 /obj/machinery/portable_atmospherics/canister/air,
@@ -22555,8 +22549,7 @@
 	dir = 8
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 1

@@ -334,7 +334,6 @@
 "ah" = (
 /obj/structure/fans/tiny,
 /obj/machinery/door/blast/regular{
-	destroy_hits = 1000;
 	id = "tabi-hangar1"
 	},
 /turf/simulated/floor/tiled/steel_ridged,
@@ -1149,7 +1148,7 @@
 /obj/item/gun/energy/medigun,
 /obj/item/gun/energy/captain,
 /obj/item/material/knife/machete/deluxe{
-	default_material = "durasteel"
+	material_parts = /datum/material/durasteel
 	},
 /obj/item/clothing/accessory/holster/machete,
 /obj/item/storage/firstaid/combat,
@@ -1693,7 +1692,6 @@
 	req_one_access = list(108)
 	},
 /obj/machinery/door/blast/regular{
-	destroy_hits = 100;
 	dir = 4;
 	id = "tabi-vault";
 	name = "Vault"
@@ -1716,9 +1714,9 @@
 /obj/machinery/mech_recharger,
 /obj/mecha/combat/fighter/baron{
 	ground_capable = 1;
-	health = 800;
+	integrity = 800;
 	internal_damage_threshold = 100;
-	maxhealth = 800;
+	integrity_max = 800;
 	name = "Panther"
 	},
 /turf/simulated/floor/reinforced,
@@ -1731,7 +1729,6 @@
 "wz" = (
 /obj/structure/fans/tiny,
 /obj/machinery/door/blast/regular{
-	destroy_hits = 1000;
 	id = "tabi-hangar2"
 	},
 /turf/simulated/floor/tiled/steel_ridged,

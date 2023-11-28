@@ -5,9 +5,8 @@
 	icon_state = "vox_rig"
 	armor_type = /datum/armor/hardsuit/vox
 	atom_flags = PHORONGUARD
-	clothing_flags = CLOTHING_THICK_MATERIAL
+	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT
 	siemens_coefficient = 0.2
-	offline_slowdown = 5
 	allowed = list(
 		/obj/item/gun,
 		/obj/item/flashlight,

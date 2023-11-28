@@ -4,8 +4,8 @@
 	desc = "An Anomalous Material Interaction hardsuit that protects against the strangest energies the universe can throw at it."
 	icon_state = "science_rig"
 	armor_type = /datum/armor/hardsuit/ami
-	slowdown = 1
-	offline_vision_restriction = 1
+	encumbrance = ITEM_ENCUMBRANCE_LEGACY_RIG_LIGHT
+	offline_encumbrance = ITEM_ENCUMBRANCE_LEGACY_RIG_LIGHT * 2
 	siemens_coefficient= 0.75
 
 	helm_type = /obj/item/clothing/head/helmet/space/hardsuit/hazmat

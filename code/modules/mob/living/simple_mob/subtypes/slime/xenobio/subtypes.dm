@@ -25,8 +25,8 @@
 	color = "#FFA723"
 	slime_color = "orange"
 	coretype = /obj/item/slime_extract/orange
-	melee_damage_lower = 5
-	melee_damage_upper = 5
+	legacy_melee_damage_lower = 5
+	legacy_melee_damage_upper = 5
 	heat_resist = 1
 
 	description_info = "The slime is immune to burning attacks, and attacks from this slime will burn you, and can ignite you. \
@@ -118,8 +118,8 @@
 	color = "#FFF423"
 	slime_color = "yellow"
 	coretype = /obj/item/slime_extract/yellow
-	melee_damage_lower = 5
-	melee_damage_upper = 5
+	legacy_melee_damage_lower = 5
+	legacy_melee_damage_upper = 5
 	shock_resist = 1
 
 	projectiletype = /obj/projectile/beam/lightning/slime
@@ -219,8 +219,8 @@
 	glow_toggle = TRUE
 	slime_color = "dark blue"
 	coretype = /obj/item/slime_extract/dark_blue
-	melee_damage_lower = 5
-	melee_damage_upper = 5
+	legacy_melee_damage_lower = 5
+	legacy_melee_damage_upper = 5
 	cold_resist = 1
 
 	description_info = "This slime is immune to the cold, however water will still kill it. Its presense, as well as its attacks, will \
@@ -460,8 +460,8 @@
 	maxHealth = 200
 	maxHealth_adult = 250
 
-	melee_damage_lower = 10
-	melee_damage_upper = 30
+	legacy_melee_damage_lower = 10
+	legacy_melee_damage_upper = 30
 
 	movement_cooldown = 0 // This actually isn't any faster due to AI limitations that hopefully the timer subsystem can fix in the future.
 

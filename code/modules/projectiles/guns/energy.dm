@@ -46,7 +46,7 @@
 		STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/gun/energy/get_cell()
+/obj/item/gun/energy/get_cell(inducer)
 	return power_supply
 
 /obj/item/gun/energy/process(delta_time)

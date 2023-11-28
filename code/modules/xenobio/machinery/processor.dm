@@ -10,6 +10,8 @@
 	panel_icon_state = "processor-panel"
 	density = TRUE
 	anchored = TRUE
+	// todo: temporary, as this is unbuildable
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 	/// Autointaking
 	var/auto_mode = FALSE
 	var/processing = FALSE // So I heard you like processing.

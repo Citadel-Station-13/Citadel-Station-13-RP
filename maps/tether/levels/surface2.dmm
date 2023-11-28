@@ -91,7 +91,7 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/centralhall)
 "afn" = (
-/obj/structure/table/rack/holorack,
+/obj/structure/table/rack/holorack_legacy,
 /obj/random/maintenance/clean,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -581,8 +581,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/grille,
 /turf/simulated/floor/reinforced,
@@ -1098,7 +1097,8 @@
 	},
 /obj/item/material/twohanded/baseballbat{
 	desc = "Decadence";
-	health = 1989
+	integrity = 1989;
+	integrity_max = 1989
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
@@ -3001,8 +3001,8 @@
 /turf/simulated/open/virgo3b,
 /area/tether/surfacebase/outside/outside2)
 "cfW" = (
-/obj/machinery/power/breakerbox/activated{
-	RCon_tag = "Telecomms Substation Bypass"
+/obj/machinery/power/breakerbox{
+	RCon_tag = "Telecomms"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/tcomms)
@@ -5355,8 +5355,7 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -6066,8 +6065,7 @@
 	},
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/grille,
 /turf/simulated/floor/tiled/dark,
@@ -7091,8 +7089,7 @@
 /obj/structure/window/reinforced/full,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -7883,8 +7880,7 @@
 /obj/machinery/disposal,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/disposalpipe/trunk{
 	dir = 8
@@ -8079,7 +8075,7 @@
 /obj/random/maintenance/engineering,
 /obj/effect/floor_decal/rust,
 /obj/item/clothing/suit/storage/vest/hoscoat/jensen{
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0);
+	armor = list("melee"=0,"bullet"=0,"laser"=0,"energy"=0,"bomb"=0,"bio"=0,"rad"=0);
 	desc = "Its an old, dusty trenchcoat... what a shame.";
 	name = "trenchcoat"
 	},
@@ -9954,8 +9950,7 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -10447,8 +10442,7 @@
 "hog" = (
 /obj/structure/window/reinforced/full,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -13646,8 +13640,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -13843,17 +13836,13 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_two_hall)
 "jDb" = (
-/obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Telecomms";
-	charge = 100;
-	output_attempt = 0
-	},
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
+/obj/machinery/power/smes/buildable/tcomms,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/tcomms)
 "jDx" = (
@@ -15384,8 +15373,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -17518,8 +17506,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/grille,
 /obj/structure/grille,
@@ -17858,8 +17845,7 @@
 "mKH" = (
 /obj/structure/window/reinforced/full,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -20519,7 +20505,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/lower/bar)
 "oyS" = (
-/obj/structure/table/rack/holorack,
+/obj/structure/table/rack/holorack_legacy,
 /obj/effect/floor_decal/rust,
 /obj/random/maintenance/clean,
 /obj/random/tech_supply,
@@ -20723,7 +20709,7 @@
 /obj/machinery/vending/cigarette{
 	name = "Cigarette machine";
 	prices = list();
-	products = list(/obj/item/storage/fancy/cigarettes = 10, /obj/item/storage/box/matches = 10, /obj/item/flame/lighter/zippo = 4, /obj/item/clothing/mask/smokable/cigarette/cigar/havana = 2)
+	products = list(/obj/item/storage/fancy/cigarettes=10,/obj/item/storage/box/matches=10,/obj/item/flame/lighter/zippo=4,/obj/item/clothing/mask/smokable/cigarette/cigar/havana=2)
 	},
 /obj/effect/floor_decal/techfloor/hole{
 	dir = 1
@@ -21011,7 +20997,8 @@
 "oUu" = (
 /obj/item/material/twohanded/baseballbat{
 	desc = "This bat looks very off.";
-	health = 500
+	integrity_max = 500;
+	integrity = 500
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
@@ -21940,8 +21927,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -25260,8 +25246,7 @@
 /obj/structure/window/reinforced/full,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -25491,8 +25476,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -26689,7 +26673,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/atmos)
 "sZM" = (
-/obj/structure/table/rack/holorack,
+/obj/structure/table/rack/holorack_legacy,
 /obj/random/maintenance/clean,
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
@@ -27312,8 +27296,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -27613,8 +27596,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -29253,8 +29235,7 @@
 "vek" = (
 /obj/machinery/disposal,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced,
 /obj/structure/disposalpipe/trunk{
@@ -31163,8 +31144,7 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/medical/centralhall)
@@ -32198,8 +32178,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/grille,
 /turf/simulated/floor/reinforced,
@@ -32466,8 +32445,7 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -33393,7 +33371,7 @@
 	input_tag = "atmos_out";
 	name = "Atmos Intake Control";
 	output_tag = "atmos_in";
-	sensors = list("atmos_intake" = "Tank")
+	sensors = list("atmos_intake"="Tank")
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/monitoring)

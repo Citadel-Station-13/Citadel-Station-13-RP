@@ -58,7 +58,7 @@
 /turf/simulated/floor,
 /area/awaymission/labs/cave)
 "ap" = (
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /turf/simulated/floor/plating,
 /area/awaymission/labs/cave)
 "aq" = (
@@ -98,7 +98,7 @@
 /area/awaymission/labs/cave)
 "ax" = (
 /obj/effect/debris/cleanable/dirt,
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /turf/simulated/floor/plating,
 /area/awaymission/labs/cave)
 "ay" = (
@@ -198,7 +198,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/labs/cave)
 "aN" = (
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /turf/simulated/floor/outdoors/dirt,
 /area/awaymission/labs/cave)
 "aP" = (
@@ -222,7 +222,7 @@
 	},
 /area/awaymission/labs/cave)
 "aY" = (
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /turf/simulated/floor{
 	icon_state = "white"
 	},
@@ -344,8 +344,7 @@
 "bx" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	dir = 5;
-	health = 1e+007
+	dir = 5
 	},
 /turf/simulated/floor{
 	icon_state = "white"
@@ -461,7 +460,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 8
 	},
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /turf/simulated/floor{
 	icon_state = "white"
 	},
@@ -508,7 +507,7 @@
 	frequency = 1379;
 	id_tag = "medsci_pump"
 	},
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /turf/simulated/floor{
 	dir = 5
 	},
@@ -760,7 +759,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/desert)
 "cN" = (
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /turf/simulated/floor,
 /area/awaymission/labs/researchdivision)
 "cO" = (
@@ -995,7 +994,7 @@
 /area/awaymission/labs/researchdivision)
 "dt" = (
 /obj/machinery/atmospherics/component/unary/vent_pump,
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /turf/simulated/floor{
 	icon_state = "white"
 	},
@@ -1147,7 +1146,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 8
 	},
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /turf/simulated/floor{
 	icon_state = "white"
 	},
@@ -1225,7 +1224,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump,
-/obj/effect/alien/weeds{
+/obj/structure/alien/weeds{
 	icon_state = "flesh2"
 	},
 /turf/simulated/floor,
@@ -1286,8 +1285,7 @@
 "eo" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	dir = 5;
-	health = 1e+007
+	dir = 5
 	},
 /turf/simulated/floor,
 /area/awaymission/labs/militarydivision)
@@ -1345,7 +1343,7 @@
 	},
 /area/awaymission/labs/gateway)
 "ew" = (
-/obj/effect/alien/weeds{
+/obj/structure/alien/weeds{
 	icon_state = "flesh2"
 	},
 /turf/simulated/floor,
@@ -1540,8 +1538,7 @@
 "eX" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	dir = 5;
-	health = 1e+007
+	dir = 5
 	},
 /turf/simulated/floor,
 /area/awaymission/labs/gateway)
@@ -2920,7 +2917,6 @@
 	},
 /area/awaymission/labs/researchdivision)
 "iD" = (
-/obj/machinery/robotic_fabricator,
 /turf/simulated/floor{
 	temperature = 393.15
 	},
@@ -2955,8 +2951,7 @@
 "iI" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	dir = 5;
-	health = 1e+007
+	dir = 5
 	},
 /turf/simulated/floor,
 /area/awaymission/labs/researchdivision)
@@ -3065,8 +3060,7 @@
 "ja" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	dir = 5;
-	health = 1e+007
+	dir = 5
 	},
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -3534,8 +3528,7 @@
 "ks" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	dir = 5;
-	health = 1e+007
+	dir = 5
 	},
 /turf/simulated/floor,
 /area/awaymission/labs/command)
@@ -4054,7 +4047,6 @@
 	},
 /obj/structure/window/reinforced{
 	dir = 5;
-	health = 1e+007;
 	layer = 3.4
 	},
 /turf/simulated/floor,
@@ -4377,7 +4369,7 @@
 	pressure_checks = 2;
 	pump_direction = 0
 	},
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /turf/simulated/floor,
 /area/awaymission/labs/cargo)
 "mu" = (
@@ -4391,7 +4383,6 @@
 	},
 /obj/structure/window/reinforced{
 	dir = 5;
-	health = 1e+007;
 	layer = 3.4
 	},
 /turf/simulated/floor,
@@ -4412,7 +4403,6 @@
 	},
 /obj/structure/window/reinforced{
 	dir = 5;
-	health = 1e+007;
 	layer = 3.4
 	},
 /turf/simulated/floor,
@@ -4650,8 +4640,7 @@
 "ni" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	dir = 5;
-	health = 1e+007
+	dir = 5
 	},
 /turf/simulated/floor,
 /area/awaymission/labs/cave)
@@ -4770,11 +4759,12 @@
 /obj/structure/closet/crate/secure/bin{
 	name = "Valuable Ores"
 	},
-/obj/item/ore/diamond,
-/obj/item/ore/diamond,
-/obj/item/ore/uranium,
-/obj/item/ore/uranium,
-/obj/item/ore/uranium,
+/obj/item/stack/ore/diamond{
+	amount = 2
+	},
+/obj/item/stack/ore/uranium{
+	amount = 3
+	},
 /turf/simulated/floor,
 /area/awaymission/labs/cargo)
 "nA" = (
@@ -4820,7 +4810,7 @@
 	pressure_checks = 2;
 	pump_direction = 0
 	},
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /turf/simulated/floor,
 /area/awaymission/labs/cave)
 "nG" = (
@@ -5221,7 +5211,7 @@
 	},
 /area/awaymission/labs/command)
 "oL" = (
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /turf/simulated/floor,
 /area/awaymission/labs/cargo)
 "oM" = (
@@ -5386,7 +5376,7 @@
 	external_pressure_bound = 140;
 	pressure_checks = 0
 	},
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /turf/simulated/floor,
 /area/awaymission/labs/cargo)
 "ph" = (
@@ -5454,7 +5444,6 @@
 	},
 /obj/structure/window/reinforced{
 	dir = 5;
-	health = 1e+007;
 	layer = 3.4
 	},
 /turf/simulated/floor,
@@ -5669,7 +5658,7 @@
 	},
 /area/awaymission/labs/command)
 "qc" = (
-/obj/effect/alien/weeds{
+/obj/structure/alien/weeds{
 	icon_state = "flesh2"
 	},
 /turf/simulated/floor/outdoors/dirt,
@@ -5998,7 +5987,7 @@
 	},
 /area/awaymission/labs/command)
 "ra" = (
-/obj/effect/alien/weeds{
+/obj/structure/alien/weeds{
 	icon_state = "flesh2"
 	},
 /obj/effect/debris/cleanable/blood/gibs/up,
@@ -6047,7 +6036,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 1
 	},
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /turf/simulated/floor{
 	icon_state = "bar"
 	},
@@ -6095,8 +6084,7 @@
 "ro" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	dir = 5;
-	health = 1e+007
+	dir = 5
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -6431,7 +6419,6 @@
 	},
 /obj/structure/window/reinforced{
 	dir = 5;
-	health = 1e+007;
 	layer = 3.4
 	},
 /turf/simulated/floor,
@@ -6451,8 +6438,7 @@
 "sy" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	dir = 5;
-	health = 1e+007
+	dir = 5
 	},
 /turf/simulated/floor,
 /area/awaymission/labs/security)
@@ -6728,8 +6714,7 @@
 "tr" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	dir = 5;
-	health = 1e+007
+	dir = 5
 	},
 /turf/space,
 /area/awaymission/labs/medical)

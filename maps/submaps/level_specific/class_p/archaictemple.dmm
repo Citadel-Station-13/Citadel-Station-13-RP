@@ -1,8 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "av" = (
-/obj/structure/bed{
-	material = "wood"
-	},
+/obj/structure/bed,
 /obj/item/bedsheet/purple,
 /turf/simulated/floor/wood/classp,
 /area/class_p/POIs/archaic_temple)
@@ -13,9 +11,7 @@
 	},
 /area/class_p/POIs/archaic_temple)
 "bv" = (
-/obj/structure/bed{
-	material = "wood"
-	},
+/obj/structure/bed,
 /turf/simulated/floor/wood/classp,
 /area/class_p/POIs/archaic_temple)
 "bJ" = (
@@ -332,9 +328,7 @@
 /turf/simulated/floor/phoron/classp,
 /area/class_p/POIs/archaic_temple)
 "ru" = (
-/obj/structure/bed{
-	material = "wood"
-	},
+/obj/structure/bed,
 /obj/item/bedsheet,
 /turf/simulated/floor/wood/classp,
 /area/class_p/POIs/archaic_temple)
@@ -1042,9 +1036,7 @@
 /turf/simulated/floor/classp,
 /area/class_p/POIs/archaic_temple)
 "QV" = (
-/obj/structure/bed{
-	material = "wood"
-	},
+/obj/structure/bed,
 /obj/effect/debris/cleanable/dirt,
 /obj/item/bedsheet/purple,
 /turf/simulated/floor/wood/classp,

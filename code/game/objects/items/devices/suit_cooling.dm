@@ -13,7 +13,7 @@
 	throw_range = 4
 	action_button_name = "Toggle Heatsink"
 
-	materials = list(MAT_STEEL = 15000, MAT_GLASS = 3500)
+	materials_base = list(MAT_STEEL = 15000, MAT_GLASS = 3500)
 	origin_tech = list(TECH_MAGNET = 2, TECH_MATERIAL = 2)
 
 	var/on = 0				//is it turned on?
@@ -217,7 +217,7 @@
 /obj/item/suit_cooling_unit/emergency/updateicon()
 	return
 
-/obj/item/suit_cooling_unit/emergency/get_cell()
+/obj/item/suit_cooling_unit/emergency/get_cell(inducer)
 	if(on)
 		return null // Don't let recharging happen while we're on
 	return cell

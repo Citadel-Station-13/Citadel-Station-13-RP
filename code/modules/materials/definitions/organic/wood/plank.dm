@@ -3,17 +3,11 @@
 	name = MAT_WOOD
 	stack_type = /obj/item/stack/material/wood
 	icon_colour = "#9c5930"
-	integrity = 50
 	icon_base = 'icons/turf/walls/wood_wall.dmi'
 	wall_stripe_icon = 'icons/turf/walls/wood_wall_stripe.dmi'
 	explosion_resistance = 2
 	shard_type = SHARD_SPLINTER
 	shard_can_repair = 0 // you can't weld splinters back into planks
-	hardness = 15
-	weight = 18
-	protectiveness = 8 // 28%
-	conductive = 0
-	conductivity = 1
 	melting_point = T0C+300 //okay, not melting in this case, but hot enough to destroy wood
 	ignition_point = T0C+288
 	stack_origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 1)
@@ -24,6 +18,20 @@
 	sheet_plural_name = "planks"
 	table_icon_base = "wood"
 	tgui_icon_key = "plank"
+
+	sound_melee_brute = 'sound/effects/woodcutting.ogg'
+
+	relative_integrity = 0.8
+	weight_multiplier = 1
+	density = 8 * 0.4
+	relative_conductivity = 0.1
+	relative_permeability = 0.05
+	relative_reactivity = 1.5
+	hardness = MATERIAL_RESISTANCE_LOW
+	toughness = MATERIAL_RESISTANCE_MODERATE
+	refraction = MATERIAL_RESISTANCE_NONE
+	absorption = MATERIAL_RESISTANCE_MODERATE
+	nullification = MATERIAL_RESISTANCE_VULNERABLE
 
 /datum/material/wood_plank/generate_recipes()
 	. = ..()
@@ -138,23 +146,23 @@
 		product = /obj/item/clipboard,
 		cost = 1,
 	)
-	. += create_stack_recipe_datum(
+	recipes += create_stack_recipe_datum(
 		name = "wood floor tile",
 		product = /obj/item/stack/tile/wood,
 		cost = 1,
 		amount = 4,
 	)
-	. += create_stack_recipe_datum(
+	recipes += create_stack_recipe_datum(
 		name = "wood roofing tile",
 		product = /obj/item/stack/tile/roofing/wood,
 		cost = 3,
 		amount = 4,
 	)
-	. += create_stack_recipe_datum(category = "fences", name = "fence", product = /obj/structure/fence/wooden, cost = 3)
-	. += create_stack_recipe_datum(category = "fences", name = "fence end", product = /obj/structure/fence/wooden/end, cost = 3)
-	. += create_stack_recipe_datum(category = "fences", name = "fencepost", product = /obj/structure/fence/wooden/post, cost = 3)
-	. += create_stack_recipe_datum(category = "fences", name = "fence corner", product = /obj/structure/fence/wooden/corner, cost = 3)
-	. += create_stack_recipe_datum(category = "fences", name = "gate", product = /obj/structure/fence/door/wooden, cost = 3)
+	recipes += create_stack_recipe_datum(category = "fences", name = "fence", product = /obj/structure/fence/wooden, cost = 3)
+	recipes += create_stack_recipe_datum(category = "fences", name = "fence end", product = /obj/structure/fence/wooden/end, cost = 3)
+	recipes += create_stack_recipe_datum(category = "fences", name = "fencepost", product = /obj/structure/fence/wooden/post, cost = 3)
+	recipes += create_stack_recipe_datum(category = "fences", name = "fence corner", product = /obj/structure/fence/wooden/corner, cost = 3)
+	recipes += create_stack_recipe_datum(category = "fences", name = "gate", product = /obj/structure/fence/door/wooden, cost = 3)
 	return recipes
 
 /datum/material/wood_plank/holographic
@@ -195,9 +203,6 @@
 	icon_base = 'icons/turf/walls/wood_wall.dmi'
 	wall_stripe_icon = 'icons/turf/walls/wood_wall_stripe.dmi'
 	icon_reinf_directionals = TRUE
-	integrity = 65	//a bit stronger than regular wood
-	hardness = 20
-	weight = 20	//likewise, heavier
 	table_icon_base = "stone"
 
 /datum/material/wood_plank/hardwood/special_recipes()
@@ -225,5 +230,11 @@
 		product = /obj/item/wakibokken_blade/hardwood,
 		cost = 5,
 		time = 4 SECONDS,
+	)
+	recipes += create_stack_recipe_datum(
+		name = "ore box",
+		product = /obj/structure/ore_box,
+		cost = 5,
+		time = 5 SECONDS,
 	)
 	return recipes

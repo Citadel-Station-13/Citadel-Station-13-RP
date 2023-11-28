@@ -223,7 +223,7 @@
 	icon_state = "shuttle_chair"
 	color = null
 	base_icon = "shuttle_chair"
-	applies_material_colour = 0
+	material_color = 0
 	picked_up_item = null
 
 // Leaving this in for the sake of compilation.
@@ -339,12 +339,12 @@
 	icon = 'icons/obj/sofas.dmi'
 	base_icon = "sofamiddle"
 	icon_state = "sofamiddle"
-	applies_material_colour = 1
+	material_color = 1
 	var/sofa_material = "carpet"
 	picked_up_item = null
 
 /obj/structure/bed/chair/sofa/update_icon()
-	if(applies_material_colour && sofa_material)
+	if(material_color && sofa_material)
 		var/datum/material/color_material = get_material_by_name(sofa_material)
 		color = color_material.icon_colour
 
@@ -547,13 +547,23 @@
 
 //Apidean Chairs!
 /obj/structure/bed/chair/apidean
+	name = "\improper Apidean chair"
+	desc = "This waxy chair is designed to allow creatures with insectoid abdomens to lounge comfortably."
+	icon_state = "bee-throne"
+	base_icon = "bee-throne"
+	picked_up_item = null
+
+/obj/structure/bed/chair/apidean/Initialize(mapload, new_material)
+	. = ..(mapload, "wax", null)
+
+/obj/structure/bed/chair/apidean_throne
 	name = "\improper Apidean throne"
 	desc = "This waxy chair is designed to allow creatures with insectoid abdomens to lounge comfortably. Typically reserved for the Apidean upper class."
 	icon_state = "queenthrone"
 	base_icon = "queenthrone"
 	picked_up_item = null
 
-/obj/structure/bed/chair/apidean/Initialize(mapload, new_material)
+/obj/structure/bed/chair/apidean_throne/Initialize(mapload, new_material)
 	. = ..(mapload, "wax", null)
 
 //Wax Stools for Bees! I've put it here because it shouldn't inherit stool properties.
@@ -593,11 +603,9 @@
 	attack_verb = list("bashed", "battered", "chaired")
 	damage_force = 1
 	throw_force = 3
-	sharp = null
-	edge = 0
 	w_class = ITEMSIZE_LARGE
-	force_wielded = 10
-	hitsound = 'sound/effects/metal_chair_slam.ogg'
+	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_LIGHT
+	attack_sound = 'sound/effects/metal_chair_slam.ogg'
 	pickup_sound = 'sound/items/pickup/axe.ogg'
 	drop_sound = 'sound/effects/metal_chair_clang.ogg'
 	var/placed_object = /obj/structure/bed/chair

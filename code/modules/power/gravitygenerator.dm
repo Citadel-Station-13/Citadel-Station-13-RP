@@ -23,11 +23,13 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 	icon = 'icons/obj/machines/gravity_generator.dmi'
 	anchored = TRUE
 	density = TRUE
-	unacidable = TRUE
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 	use_power = USE_POWER_OFF
 	var/sprite_number = 0
 
 	pixel_y = 16
+	// todo: temporary, as this is unbuildable
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 
 /obj/machinery/gravity_generator/legacy_ex_act(severity, target)
 	if(severity == 1) // Very sturdy.

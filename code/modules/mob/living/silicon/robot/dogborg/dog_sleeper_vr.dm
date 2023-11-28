@@ -5,7 +5,7 @@
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "sleeper"
 	w_class = ITEMSIZE_TINY
-	item_flags = ITEM_NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	var/mob/living/carbon/patient = null
 	var/mob/living/silicon/robot/hound = null
 	var/inject_amount = 10
@@ -598,9 +598,10 @@
 						drain(-50 * digested)
 					if(volume)
 						water.add_charge(volume)
-					if(recycles && T.materials)
-						for(var/material in T.materials)
-							var/total_material = T.materials[material]
+					var/list/mats = T.get_materials(TRUE)
+					if(recycles && mats)
+						for(var/material in mats)
+							var/total_material = mats[material]
 							if(istype(T,/obj/item/stack))
 								var/obj/item/stack/stack = T
 								total_material *= stack.get_amount()
