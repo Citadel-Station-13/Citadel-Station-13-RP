@@ -290,7 +290,9 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
 "anx" = (
-/obj/structure/filingcabinet/chestdrawer,
+/obj/machinery/computer/robotics{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/old_cargo/purple,
 /area/assembly/robotics)
 "apg" = (
@@ -391,6 +393,7 @@
 "arY" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/box/glasses,
+/obj/item/duct_tape_roll,
 /obj/item/duct_tape_roll,
 /turf/simulated/floor/tiled/old_cargo/purple,
 /area/assembly/robotics)
@@ -851,13 +854,12 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_b)
 "aIH" = (
-/obj/structure/table/reinforced,
-/obj/machinery/computer/med_data/laptop{
-	dir = 4
-	},
 /obj/machinery/camera/network/research{
 	dir = 4;
 	network = list("Xenobiology")
+	},
+/obj/machinery/computer/mecha{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/old_cargo/purple,
 /area/assembly/robotics)
@@ -4724,9 +4726,11 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/item/mmi/digital/posibrain,
-/obj/item/mmi/digital/posibrain,
-/obj/structure/table/standard,
+/obj/structure/table/reinforced,
+/obj/machinery/computer/med_data/laptop{
+	dir = 1;
+	pixel_x = null
+	},
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/assembly/robotics/surgery)
 "eam" = (
@@ -5062,13 +5066,13 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "ejy" = (
-/obj/machinery/lathe/autolathe,
 /obj/machinery/requests_console{
 	department = "Robotics";
 	departmentType = 2;
 	name = "Robotics RC";
 	pixel_y = 30
 	},
+/obj/machinery/mecha_part_fabricator/pros,
 /turf/simulated/floor/tiled/old_cargo/purple,
 /area/assembly/robotics)
 "ejD" = (
@@ -14318,7 +14322,11 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
 "lPA" = (
-/obj/machinery/mecha_part_fabricator,
+/obj/machinery/r_n_d/circuit_imprinter,
+/obj/item/reagent_containers/glass/beaker/sulphuric,
+/obj/structure/reagent_dispensers/acid{
+	pixel_y = 30
+	},
 /turf/simulated/floor/tiled/old_cargo/purple,
 /area/assembly/robotics)
 "lPK" = (
@@ -16672,7 +16680,7 @@
 	name = "Station Intercom (General)";
 	pixel_y = 21
 	},
-/obj/machinery/mecha_part_fabricator/pros,
+/obj/machinery/mecha_part_fabricator,
 /turf/simulated/floor/tiled/old_cargo/purple,
 /area/assembly/robotics)
 "nTX" = (
@@ -20406,6 +20414,8 @@
 /obj/item/mmi,
 /obj/item/mmi,
 /obj/structure/table/standard,
+/obj/item/mmi/digital/posibrain,
+/obj/item/mmi/digital/posibrain,
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/assembly/robotics/surgery)
 "qKR" = (
@@ -21000,6 +21010,8 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
+/obj/structure/table/reinforced,
+/obj/item/storage/box/treats,
 /turf/simulated/floor/tiled/old_cargo/purple,
 /area/assembly/robotics)
 "rdA" = (
@@ -27238,12 +27250,8 @@
 /turf/simulated/wall/r_wall/prepainted/science,
 /area/assembly/chargebay)
 "wqB" = (
-/obj/machinery/r_n_d/circuit_imprinter,
-/obj/item/reagent_containers/glass/beaker/sulphuric,
-/obj/structure/reagent_dispensers/acid{
-	pixel_y = 30
-	},
 /obj/machinery/camera/network/research,
+/obj/machinery/lathe/autolathe,
 /turf/simulated/floor/tiled/old_cargo/purple,
 /area/assembly/robotics)
 "wrp" = (
