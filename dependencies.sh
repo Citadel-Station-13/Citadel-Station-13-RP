@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Project depdendencies file
+# Final authority on what's used to build.
+
 #Project dependencies file
 #Final authority on what's required to fully build the project
 

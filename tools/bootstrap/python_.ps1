@@ -9,6 +9,9 @@
 # The underscore in the name is so that typing `bootstrap/python` into
 # PowerShell finds the `.bat` file first, which ensures this script executes
 # regardless of ExecutionPolicy.
+
+. ./common.ps1
+
 $host.ui.RawUI.WindowTitle = "starting :: python $args"
 $ErrorActionPreference = "Stop"
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
@@ -27,7 +30,7 @@ function ExtractVersion {
 # Convenience variables
 $Bootstrap = Split-Path $script:MyInvocation.MyCommand.Path
 $Tools = Split-Path $Bootstrap
-$Cache = "$Bootstrap/.cache"
+$Cache = "$Bootstrap/.cache"w
 if ($Env:TG_BOOTSTRAP_CACHE) {
 	$Cache = $Env:TG_BOOTSTRAP_CACHE
 }

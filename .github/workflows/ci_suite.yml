@@ -16,12 +16,13 @@ jobs:
       group: run_linters-${{ github.head_ref || github.run_id }}
       cancel-in-progress: true
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout Branch
+        uses: actions/checkout@v3
       - name: Restore SpacemanDMM cache
         uses: actions/cache@v3
         with:
           path: ~/SpacemanDMM
-          key: ${{ runner.os }}-spacemandmm
+          key: ${{ runner.os }}-spacemandmm-${{hashFiles('dependencies.sh')}}
       - name: Restore Yarn cache
         uses: actions/cache@v3
         with:
@@ -61,7 +62,7 @@ jobs:
         run: |
           pip3 install setuptools
       - name: Install Ripgrep
-        run: |
+      run: |
           cargo install ripgrep --features pcre2
       - name: Run Linters
         run: |

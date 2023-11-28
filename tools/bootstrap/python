@@ -9,6 +9,12 @@
 # and will create a standard virtualenv in which to install `requirements.txt`.
 set -e
 
+# Init
+source "./common.sh"
+initialize_bootstrap
+
+echo "bootstrap-python: starting"
+
 # Convenience variables
 Bootstrap="$(dirname "$0")"
 Sdk="$(dirname "$Bootstrap")"
@@ -63,7 +69,7 @@ if [ "$(uname)" = "Linux" ] || [ ! -f "$PythonExe" ]; then
 	# Create a venv and activate it
 	PythonDir="$Cache/venv"
 	if [ ! -d "$PythonDir" ]; then
-		echo "Creating virtualenv..."
+		echo "Creating virtualenv with $PythonExe..."
 		"$PythonExe" -m venv "$PythonDir"
 	fi
 	if [ -f "$PythonDir/bin/python" ]; then
