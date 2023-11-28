@@ -338,24 +338,6 @@
 	if(!isnull(obj_cell_slot?.cell) && !obj_cell_slot.primary && obj_cell_slot.receive_inducer)
 		things_to_induce += obj_cell_slot.cell
 
-//? Attacks
-
-#warn cell attackby/attack hand
-
-//? Cells / Inducers
-
-/**
- * get cell slot
- */
-/obj/get_cell()
-	. = ..()
-	if(.)
-		return
-	if(object_cell_slot?.primary && !isnull(object_cell_slot.cell))
-		return object_cell_slot.cell
-
-#warn inducer
-
 //? Climbing
 
 /obj/MouseDroppedOn(atom/dropping, mob/user, proximity, params)

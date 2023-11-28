@@ -722,7 +722,6 @@
 #include "code\datums\components\crafting\guncrafting.dm"
 #include "code\datums\components\items\wielding.dm"
 #include "code\datums\components\movable\aquarium.dm"
-#include "code\datums\components\obj\cell_slot.dm"
 #include "code\datums\components\riding\riding_filter.dm"
 #include "code\datums\components\riding\riding_handler.dm"
 #include "code\datums\components\riding\mob\_mob.dm"
