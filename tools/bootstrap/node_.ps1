@@ -9,7 +9,7 @@ $ErrorActionPreference = "Stop"
 . $PSScriptRoot/common.ps1
 Initialize-Bootstrap
 
-Write-Output "bootstrap-node: starting (powershell)"
+# Write-Output "bootstrap-node: starting (powershell)"
 
 $NodePath = "$global:CacheDir/node-v$global:NODE_VERSION_PRECISE-windows-x64"
 $NodeExe = "$NodePath/node.exe"

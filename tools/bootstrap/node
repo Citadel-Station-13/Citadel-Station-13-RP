@@ -11,7 +11,7 @@ our_directory="$(dirname "$0")"
 source "$our_directory/common.sh"
 initialize_bootstrap
 
-echo "bootstrap-node: starting (bash)"
+# echo "bootstrap-node: starting (bash)"
 
 node_path="$cache_dir/node-v$NODE_VERSION_PRECISE"
 node_exe="ERROR-UNSET"
@@ -23,7 +23,7 @@ if [[ "$(uname)" = "Linux" ]]; then
 	node_exe="$node_path/bin/node"
 
 	if [[ ! -f "$node_exe" ]]; then
-		echo "bootstrap-node: node not found, downloading"
+		# echo "bootstrap-node: node not found, downloading"
 		node_archive="$node_path.tar.gz"
 		curl "https://nodejs.org/download/release/v$NODE_VERSION_PRECISE/node-v$NODE_VERSION_PRECISE-linux-x64.tar.gz" --create-dirs -o "$node_archive"
 		echo "bootstrap-node: extracting new node"
@@ -32,10 +32,10 @@ if [[ "$(uname)" = "Linux" ]]; then
 		node_path="$node_path/bin"
 		node_exe="$node_path/node"
 	else
-		echo "bootstrap-node: node found at $node_exe"
+		# echo "bootstrap-node: node found at $node_exe"
 	fi
 else
-	echo "bootstrap-node: windows mode"
+	# echo "bootstrap-node: windows mode"
 	node_path="$node_path-windows-x64"
 	node_exe="$node_path/node.exe"
 
@@ -51,6 +51,6 @@ export PATH=$node_path:$PATH
 
 # Invoke Node with passed in params
 
-echo "bootstrap-node: path is $node_exe"
-echo "bootstrap-node: using vendored node ($("$node_exe" --version))"
+# echo "bootstrap-node: path is $node_exe"
+echo "Using vendored node ($("$node_exe" --version))"
 exec "$node_exe" "$@"

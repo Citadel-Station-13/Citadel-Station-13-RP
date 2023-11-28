@@ -10,9 +10,9 @@ function initialize_bootstrap () {
 	context_dir="$(dirname "$bootstrap_dir")"
 	cache_dir="$bootstrap_dir/.cache"
 
-	echo "bootstrap-common: bootstrap in $bootstrap_dir"
-	echo "bootstrap-common: invoked from $invoke_dir"
-	echo "bootstrap-common: context in $context_dir"
+	# echo "bootstrap-common: bootstrap in $bootstrap_dir"
+	# echo "bootstrap-common: invoked from $invoke_dir"
+	# echo "bootstrap-common: context in $context_dir"
 
 	source "$bootstrap_dir/../../dependencies.sh"
 }
