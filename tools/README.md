@@ -14,4 +14,8 @@ All versions are grabbed from ../dependencies.sh
 we still need to develop:
 
 - github webhook processor replacement in js if possible to replace server'd infrastructure with only needing to put it on github actions
-- 
+- we use actions caches based on the overall dependency file. we should only build the cache key off of the actual thing being cached, to avoid unnecessary cache rebuilding.
+- proper matrix'd / concurrent ci building for all maps
+- proper map / icon lint / merge infrastructure / make it more clear
+- clean up the rest of this folder
+
