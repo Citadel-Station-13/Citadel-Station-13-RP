@@ -62,7 +62,7 @@ jobs:
         run: |
           pip3 install setuptools
       - name: Install Ripgrep
-      run: |
+        run: |
           cargo install ripgrep --features pcre2
       - name: Run Linters
         run: |
