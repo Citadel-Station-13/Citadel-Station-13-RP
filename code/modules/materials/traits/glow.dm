@@ -4,7 +4,7 @@
 /**
  * It makes things glow.
  *
- * Data should be list("power" = power, "range" = range, "color" = color, "sensitivity" = sensitivity)
+ * data: list("power" = power, "range" = range, "color" = color, "sensitivity" = sensitivity)
  * sensitivity is a multiplier for how sensitive we are to material_trait_multiplier.
  *
  * todo: does not support blending data together yet. also does not support 'stacking' multiple together, so this is primary_only for now.

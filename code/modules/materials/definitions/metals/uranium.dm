@@ -23,9 +23,7 @@
 	nullification = MATERIAL_RESISTANCE_NONE
 
 	material_traits = list(
-		/datum/material_trait/radioactive{
-			strength = 10;
-		},
+		/datum/material_trait/radioactive = 10,
 	)
 
 /datum/material/uranium/generate_recipes()
