@@ -10,9 +10,9 @@ function Initialize-Bootstrap () {
 	$global:ContextDir = (Get-Item $PSScriptRoot).Parent.FullName
 	$global:CacheDir = "$PSScriptRoot/.cache"
 
-	Write-Output "bootstrap-common: bootstrap in $($BootstrapDir)"
-	Write-Output "bootstrap-common: invoked from $($InvokeDir)"
-	Write-Output "bootstrap-common: context in $($ContextDir)"
+	# Write-Output "bootstrap-common: bootstrap in $($BootstrapDir)"
+	# Write-Output "bootstrap-common: invoked from $($InvokeDir)"
+	# Write-Output "bootstrap-common: context in $($ContextDir)"
 
 	# load dependency values
 	$DependencyFile = "$((Get-Item tools/bootstrap).parent.parent.FullName)/dependencies.sh"

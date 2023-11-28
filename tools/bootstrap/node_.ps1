@@ -16,10 +16,10 @@ $NodeExe = "$NodePath/node.exe"
 
 # Download Node if it isn't there
 if (Test-Path $NodeExe -PathType Leaf) {
-	Write-Output "bootstrap-node: found at $NodeExe"
+	# Write-Output "bootstrap-node: found at $NodeExe"
 }
 else {
-	Write-Output "bootstrap-node: downloading node v$global:NODE_VERSION_PRECISE"
+	# Write-Output "bootstrap-node: downloading node v$global:NODE_VERSION_PRECISE"
 	New-Item $NodePath -ItemType Directory -ErrorAction SilentlyContinue | Out-Null
 	$NodeDownloader = New-Object Net.WebClient
 	$NodeDownloader.DownloadFile("https://nodejs.org/download/release/v$global:NODE_VERSION_PRECISE/win-x64/node.exe", "$NodeExe.downloading")
@@ -31,7 +31,7 @@ $Env:PATH = "$NodePath;$ENV:PATH"
 
 # Invoke Node with passed in params
 $ErrorActionPreference = "Continue"
-Write-Output "bootstrap-node: path is $NodeExe"
-Write-Output "bootstrap-node: using vendored node $(& "$NodeExe" --version)"
+# Write-Output "bootstrap-node: path is $NodeExe"
+Write-Output "Using vendored node $(& "$NodeExe" --version)"
 & "$NodeExe" @Args
 exit $LastExitCode
