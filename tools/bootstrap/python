@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # bootstrap/python
 #
 # Python-finding script for all `sh` environments, including Linux, MSYS2,
@@ -8,12 +8,6 @@
 # Otherwise, this script requires a system `python3` and `pip` to be provided,
 # and will create a standard virtualenv in which to install `requirements.txt`.
 set -e
-
-# Init
-source "./common.sh"
-initialize_bootstrap
-
-echo "bootstrap-python: starting"
 
 # Convenience variables
 Bootstrap="$(dirname "$0")"
@@ -30,8 +24,6 @@ PythonVersion="$PYTHON_VERSION"
 PythonDir="$Cache/python-$PythonVersion"
 PythonExe="$PythonDir/python.exe"
 Log="$Cache/last-command.log"
-
-echo "Attempting bootstrap with version $PythonVersion"
 
 # If a portable Python for Windows is not present, search on $PATH.
 if [ "$(uname)" = "Linux" ] || [ ! -f "$PythonExe" ]; then
@@ -69,7 +61,7 @@ if [ "$(uname)" = "Linux" ] || [ ! -f "$PythonExe" ]; then
 	# Create a venv and activate it
 	PythonDir="$Cache/venv"
 	if [ ! -d "$PythonDir" ]; then
-		echo "Creating virtualenv with $PythonExe..."
+		echo "Creating virtualenv..."
 		"$PythonExe" -m venv "$PythonDir"
 	fi
 	if [ -f "$PythonDir/bin/python" ]; then
@@ -81,8 +73,6 @@ if [ "$(uname)" = "Linux" ] || [ ! -f "$PythonExe" ]; then
 		exit 1
 	fi
 fi
-
-echo "Attempting to run $PythonExe"
 
 # Use pip to install our requirements
 if [ ! -f "$PythonDir/requirements.txt" ] || [ "$(b2sum < "$Sdk/requirements.txt")" != "$(b2sum < "$PythonDir/requirements.txt")" ]; then
