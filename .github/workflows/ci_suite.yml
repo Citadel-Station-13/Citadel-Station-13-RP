@@ -16,70 +16,75 @@ jobs:
       group: run_linters-${{ github.head_ref || github.run_id }}
       cancel-in-progress: true
     steps:
-      - uses: actions/checkout@v3
-      - name: Restore SpacemanDMM cache
+      - name: Checkout Branch
+        uses: actions/checkout@v3
+      - name: Restore Bootstrap cache
         uses: actions/cache@v3
         with:
-          path: ~/SpacemanDMM
-          key: ${{ runner.os }}-spacemandmm-${{hashFiles('dependencies.sh')}}
-      - name: Restore Yarn cache
+          path: tools/bootstrap/.cache
+          key: ${{ runner.os }}-bootstrap-${{ hashFiles('dependencies.sh', 'tools/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-bootstrap-
+      - name: Restore Rust / Cargo cache
+        uses: actions/cache@v3
+        with:
+          path: ~/.cargo
+          key: ${{ runner.os }}-rust-
+      - name: Restore TGUI / Yarn cache
         uses: actions/cache@v3
         with:
           path: tgui/.yarn/cache
           key: ${{ runner.os }}-yarn-${{ hashFiles('tgui/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
-      - name: Restore Node cache
+      - name: Restore SpacemanDMM cache
         uses: actions/cache@v3
         with:
-          path: ~/.nvm
-          key: ${{ runner.os }}-node-${{ hashFiles('dependencies.sh') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-      - name: Restore Bootstrap cache
-        uses: actions/cache@v3
-        with:
-          path: tools/bootstrap/.cache
-          key: ${{ runner.os }}-bootstrap-${{ hashFiles('tools/requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-bootstrap-
-      - name: Restore Rust cache
-        uses: actions/cache@v3
-        with:
-          path: ~/.cargo
-          key: ${{ runner.os }}-rust
+          path: ~/SpacemanDMM
+          key: ${{ runner.os }}-spacemandmm-${{hashFiles('dependencies.sh')}}
       - name: Install Node
         run: |
-          bash tools/ci/install_node.sh
+          tools/bootstrap/node --version
+      - name: Install Python
+        run: |
+          tools/bootstrap/python --version
       - name: Install SpacemanDMM Suite
         run: |
-          bash tools/ci/install_spaceman_dmm.sh dreamchecker
-      - name: Bootstrap Python
-        run: |
-          tools/bootstrap/python -c ''
-      - name: Install Setuptools
-        run: |
-          pip3 install setuptools
+          bash tools/ci/install/install_spaceman_dmm.sh dreamchecker
       - name: Install Ripgrep
         run: |
           cargo install ripgrep --features pcre2
-      - name: Run Linters
+      # - name: Install Setuptools
+      #   run: |
+      #     pip3 install setuptools
+      - name: CI - DMI Tests
         run: |
-          bash tools/ci/check_filedirs.sh citadel.dme
-          bash tools/ci/check_changelogs.sh
-          bash tools/ci/check_grep.sh
-          bash tools/ci/check_misc.sh
-          tools/build/build --ci lint tgui-test
           tools/bootstrap/python -m dmi.test
+      - name: CI - DMM Tests
+        run: |
           tools/bootstrap/python -m mapmerge2.dmm_test
+      - name: CI - TGUI
+        run: |
+          tools/build/build --ci lint tgui-test
+      - name: CI - Grep (string checks)
+        run: |
+          tools/ci/check_grep.sh
+      - name: CI - Changelogs
+        run: |
+          tools/ci/check_changelogs.sh
+      - name: CI - DME Validation
+        run: |
+          tools/ci/check_filedirs.sh citadel.dme
+      - name: CI - Parse DM (dreamchecker)
+        run: |
           ~/dreamchecker > ${GITHUB_WORKSPACE}/output-annotations.txt 2>&1
-        # This is supposed to go after `bash tools/ci/check_misc.sh`
-        #  tools/bootstrap/python tools/validate_dme.py <citadel.dme
-      - name: Annotate Lints
+      - name: CI - Annotate DM (dreamchecker)
         uses: yogstation13/DreamAnnotate@v2
-        if: always()
         with:
           outputFile: output-annotations.txt
+      - name: CI - Misc
+        run: |
+          bash tools/ci/check_misc.sh
 
   compile_all_maps:
     name: Compile Maps
@@ -96,7 +101,7 @@ jobs:
           key: ${{ runner.os }}-byond
       - name: Compile All Maps
         run: |
-          bash tools/ci/install_byond.sh
+          bash tools/ci/install/install_byond.sh
           source $HOME/BYOND/byond/bin/byondsetup
           tools/build/build --ci dm -DCIBUILDING -DCITESTING -DALL_MAPS
 
@@ -131,10 +136,10 @@ jobs:
         # mysql -u root -proot tg_ci_prefixed < SQL/tgstation_schema_prefixed.sql
       - name: Install rust-g
         run: |
-          bash tools/ci/install_rust_g.sh
+          bash tools/ci/install/install_rust_g.sh
       - name: Compile and run tests
         run: |
-          bash tools/ci/install_byond.sh
+          bash tools/ci/install/install_byond.sh
           source $HOME/BYOND/byond/bin/byondsetup
           tools/build/build --ci dm -DCIBUILDING -DCITESTING
           bash tools/ci/run_server.sh

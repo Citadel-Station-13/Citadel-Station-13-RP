@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # bootstrap/python
 #
 # Python-finding script for all `sh` environments, including Linux, MSYS2,

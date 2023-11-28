@@ -1,40 +1,49 @@
-# bootstrap/python_.ps1
-#
-# Python bootstrapping script for Windows.
-#
-# Automatically downloads a portable edition of a pinned Python version to
-# a cache directory, installs Pip, installs `requirements.txt`, and then invokes
-# Python.
-#
-# The underscore in the name is so that typing `bootstrap/python` into
-# PowerShell finds the `.bat` file first, which ensures this script executes
-# regardless of ExecutionPolicy.
+## bootstrap/python_.ps1
+##
+## Python bootstrapping script for Windows.
+##
+## Automatically downloads a portable edition of a pinned Python version to
+## a cache directory, installs Pip, installs `requirements.txt`, and then invokes
+## Python.
+##
+## The underscore in the name is so that typing `bootstrap/python` into
+## PowerShell finds the `.bat` file first, which ensures this script executes
+## regardless of ExecutionPolicy.
 
-. ./common.ps1
-
-$host.ui.RawUI.WindowTitle = "starting :: python $args"
+# Set Flags
 $ErrorActionPreference = "Stop"
+
+# Init
+. $PSScriptRoot/common.ps1
+Initialize-Bootstrap
+
+Write-Output "bootstrap-python: starting (powershell)"
+
+$PythonPath = "$global:CacheDir/python-$global:PYTHON_VERSION-windows-x64"
+$PythonExe = "$PythonPath/python.exe"
+
+# Download Python if it isn't there
+if (Test-Path $PythonExe -PathType Leaf) {
+	Write-Output "bootstrap-python: found at $PythonExe"
+}
+else {
+	Write-Output "bootstrap-python: downloading python v$global:PYTHON_VERSION"
+	New-Item $PythonPath -ItemType Directory -ErrorAction SilentlyContinue | Out-Null
+
+}
+
+# Set PATH
+$Env:PATH = "$PythonPath;$ENV:PATH"
+
+
+
+
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 
-function ExtractVersion {
-	param([string] $Path, [string] $Key)
-	foreach ($Line in Get-Content $Path) {
-		if ($Line.StartsWith("export $Key=")) {
-			return $Line.Substring("export $Key=".Length)
-		}
-	}
-	throw "Couldn't find value for $Key in $Path"
-}
+
 
 # Convenience variables
-$Bootstrap = Split-Path $script:MyInvocation.MyCommand.Path
-$Tools = Split-Path $Bootstrap
-$Cache = "$Bootstrap/.cache"w
-if ($Env:TG_BOOTSTRAP_CACHE) {
-	$Cache = $Env:TG_BOOTSTRAP_CACHE
-}
-$PythonVersion = ExtractVersion -Path "$Bootstrap/../../dependencies.sh" -Key "PYTHON_VERSION"
 $PythonDir = "$Cache/python-$PythonVersion"
 $PythonExe = "$PythonDir/python.exe"
 $Log = "$Cache/last-command.log"
@@ -94,18 +103,9 @@ if (!(Test-Path "$PythonDir/requirements.txt") -or ((Get-FileHash "$Tools/requir
 	Write-Output "`n---`n"
 }
 
-# Invoke python with all command-line arguments
-Write-Output $PythonExe | Out-File -Encoding utf8 $Log
-[System.String]::Join([System.Environment]::NewLine, $args) | Out-File -Encoding utf8 -Append $Log
-Write-Output "---" | Out-File -Encoding utf8 -Append $Log
-$host.ui.RawUI.WindowTitle = "python $args"
+# Invoke Python with passed in params
 $ErrorActionPreference = "Continue"
-& $PythonExe -u $args 2>&1 | ForEach-Object {
-	$str = "$_"
-	if ($_.GetType() -eq [System.Management.Automation.ErrorRecord]) {
-		$str = $str.TrimEnd("`r`n")
-	}
-	$str | Out-File -Encoding utf8 -Append $Log
-	$str | Out-Host
-}
+Write-Output "bootstrap-python: path is $PythonExe"
+Write-Output "bootstrap-python: using vendored node $(& "$PythonExe" -- version)"
+$ "$PythonExe" -u @Args
 exit $LastExitCode

@@ -14,6 +14,7 @@ Write-Output "bootstrap-node: starting (powershell)"
 $NodePath = "$global:CacheDir/node-v$global:NODE_VERSION_PRECISE-windows-x64"
 $NodeExe = "$NodePath/node.exe"
 
+# Download Node if it isn't there
 if (Test-Path $NodeExe -PathType Leaf) {
 	Write-Output "bootstrap-node: found at $NodeExe"
 }
@@ -29,7 +30,6 @@ else {
 $Env:PATH = "$NodePath;$ENV:PATH"
 
 # Invoke Node with passed in params
-
 $ErrorActionPreference = "Continue"
 Write-Output "bootstrap-node: path is $NodeExe"
 Write-Output "bootstrap-node: using vendored node $(& "$NodeExe" --version)"
