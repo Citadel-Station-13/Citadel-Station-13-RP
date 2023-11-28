@@ -18,7 +18,7 @@ node_exe="ERROR-UNSET"
 
 # Detect system
 if [[ "$(uname)" = "Linux" ]]; then
-	echo "bootstrap-node: linux mode"
+	# echo "bootstrap-node: linux mode"
 	node_path="$node_path-linux-x64"
 	node_exe="$node_path/bin/node"
 
@@ -26,7 +26,7 @@ if [[ "$(uname)" = "Linux" ]]; then
 		# echo "bootstrap-node: node not found, downloading"
 		node_archive="$node_path.tar.gz"
 		curl "https://nodejs.org/download/release/v$NODE_VERSION_PRECISE/node-v$NODE_VERSION_PRECISE-linux-x64.tar.gz" --create-dirs -o "$node_archive"
-		echo "bootstrap-node: extracting new node"
+		# echo "bootstrap-node: extracting new node"
 		mkdir -p "$node_path"
 		tar -xf "$node_archive" -C "$cache_dir"
 		node_path="$node_path/bin"

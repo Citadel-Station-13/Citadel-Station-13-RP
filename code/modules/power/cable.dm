@@ -78,11 +78,6 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 		CRASH("no loc before ..()?")
 	// end
 	. = ..()
-	// todo: remove this
-	if(isnull(get_turf(src)))
-		. = INITIALIZE_HINT_QDEL
-		CRASH("no loc after ..()?")
-	// end
 
 	if(_color)
 		add_atom_colour(GLOB.possible_cable_coil_colours[_color] || COLOR_RED, FIXED_COLOUR_PRIORITY)
@@ -373,6 +368,8 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 
 	if(!(d1 == direction || d2 == direction)) //if the cable is not pointed in this direction, do nothing
 		return
+
+	ASSERT(!QDELETED(src))
 
 	var/turf/us = get_turf(src)
 	var/turf/TB  = us.vertical_step(direction)
