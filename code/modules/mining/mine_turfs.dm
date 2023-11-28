@@ -1,4 +1,5 @@
 /**********************Mineral deposits**************************/
+CREATE_STANDARD_TURFS(/turf/unsimulated/mineral)
 /turf/unsimulated/mineral
 	name = "impassable rock"
 	icon = 'icons/turf/walls.dmi'
