@@ -8,6 +8,7 @@
 
 /obj/item/bluespace_harpoon/Initialize(mapload)
 	. = ..()
+	init_cell_
 	init_cell_slot_easy_tool()
 
 

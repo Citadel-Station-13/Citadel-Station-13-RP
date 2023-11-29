@@ -3,20 +3,49 @@
 
 GLOBAL_LIST_BOILERPLATE(all_portals, /obj/effect/bluespace_portal)
 
-/proc/lazy_bluespace_portal_pair(turf/source, turf/destination, instability, duration = 30 SECONDS)
+/**
+ * makes a pair of portals with absolute status
+ * usually used for legacy purposes
+ *
+ * @return list(portal A, portal B)
+ */
+/proc/lazy_bluespace_portal_pair(turf/source, turf/destination, instability, duration = 30 SECONDS, icon_base, name_base)
 	var/datum/bluespace_teleport/teleport = new
 	teleport.source = source
 	teleport.destination = destination
 	teleport.instability = instability
 	teleport.absolute = TRUE
+	teleport.icon_base = icon_base
+	teleport.name_base = name_base
 	return bluespace_portal_pair(teleport)
 
+/**
+ * makes a pair of portals from a given teleportation datum
+ *
+ * @return list(portal A, portal B)
+ */
 /proc/bluespace_portal_pair(datum/bluespace_teleport/teleportation, duration = 30 SECONDS)
 	var/obj/effect/bluespace_portal/A = new(teleportation.source, teleportation, TRUE)
 	var/obj/effect/bluespace_portal/B = new(teleportation.destination, teleportation, FALSE)
 	QDEL_IN(A, 30 SECONDS)
 	QDEL_IN(B, 30 SECONDS)
 	return list(A, B)
+
+/**
+ * makes a portal to a destination
+ * usually used for legacy purposes
+ *
+ * @return portal created
+ */
+/proc/lazy_bluespace_portal_single(turf/where, turf/target, instability, duration = 30 SECONDS, icon_base, name_base)
+	var/datum/bluespace_teleport/teleport = new
+	teleport.source = where
+	teleport.destiantion = target
+	teleport.instability = instability
+	teleport.absolute = TRUE
+	teleport.icon_base = icon_base
+	teleport.name_base = name_base
+	return new /obj/effect/bluespace_portal(where, teleport, TRUE)
 
 /obj/effect/bluespace_portal
 	name = "portal"

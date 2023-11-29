@@ -9,9 +9,9 @@
 	/// what to teleport to - usually a turf
 	var/atom/target
 
-	/// inaccuracy
+	/// inaccuracy - randomizes the batch of teleportation / actual destination on a group level
 	var/inaccuracy = 0
-	/// instability
+	/// instability - randomizes the output location of everything teleported on an individual level
 	var/instability = 0
 
 	/// cannot be deviated by new sources of jamming/traps/etc
@@ -19,6 +19,10 @@
 
 	/// list of portals open
 	var/list/obj/effect/bluespace_portal/portals
+	/// base for portal icons
+	var/icon_base
+	/// base for portal names
+	var/name_base
 
 /datum/bluespace_teleport/Destroy()
 	QDEL_NULL(portals)

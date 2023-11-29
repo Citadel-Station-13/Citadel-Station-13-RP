@@ -36,15 +36,5 @@
 		return
 	chassis.use_power(energy_drain)
 	set_ready_state(0)
-	var/obj/effect/portal/P = new /obj/effect/portal(get_turf(target))
-	P.target = target_turf
-	P.creator = null
-	P.icon = 'icons/obj/objects.dmi'
-	P.failchance = 0
-	P.icon_state = "anom"
-	P.name = "wormhole"
+	lazy_bluespace_portal_single(get_turf(target), target_turf, icon_base = "wormhole", name_base = "wormhole", duration = rand(15 SECONDS, 30 SECONDS))
 	do_after_cooldown()
-	src = null
-	spawn(rand(150,300))
-		qdel(P)
-	return
