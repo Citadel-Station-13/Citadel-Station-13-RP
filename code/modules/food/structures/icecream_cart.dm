@@ -1,24 +1,65 @@
-#define ICECREAM_VANILLA 1
-#define ICECREAM_CHOCOLATE 2
-#define ICECREAM_STRAWBERRY 3
-#define ICECREAM_BLUE 4
-#define CONE_WAFFLE 5
-#define CONE_CHOC 6
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
 
-// Ported wholesale from Apollo Station.
-
+/**
+ * Citadel Station's dynamic icecream module, now with added grief potential.
+ *
+ * - Cones can be made out of flour by the machine
+ * - Cones can be infused with reagents as they are created
+ * - Cones can be scoops of anything added to them, as long as it's turned into icecream-ified reagents
+ * - You ice-creamify reagents with ice, milk, and sugar; minimum ice, but it won't taste as good without the others.
+ *
+ * Only flour, ice, milk, and sugar are stored internally.
+ * Other reagents are provided from reagent containers.
+ *
+ * This fully supports separated chemicals. Take that as you will.
+ */
+#warn obj/structure/icecream_cart
 /obj/machinery/icecream_vat
-	name = "icecream vat"
-	desc = "Ding-aling ding dong. Get your NanoTrasen-approved ice cream!"
+	name = "icecream cart"
+	desc = "Here on the galactic frontiers, even the ice-cream carts are advanced! Now with support for separated chemicals."
+	#warn reorganize sprites
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "icecream_vat"
-	density = 1
-	anchored = 0
-	use_power = 0
-	atom_flags = OPENCONTAINER | NOREACT
+	density = TRUE
+	anchored = FALSE
+
 	// todo: temporary, as this is unbuildable
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 
+	/// stored cones
+	var/list/obj/item/reagent_containers/food/snacks/ice_cream/cones
+	/// stored reagent containers to be used for drawing from
+	var/list/obj/item/reagent_containers/sources
+
+/obj/machinery/icecream_vat/Initialize(mapload)
+	create_reagents(1000)
+	. = ..()
+
+/obj/machinery/icecream_vat/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+	. = ..()
+
+/obj/machinery/icecream_vat/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+
+/obj/machinery/icecream_vat/ui_act(action, list/params, datum/tgui/ui)
+	. = ..()
+
+/obj/machinery/icecream_vat/proc/produce_cone(obj/item/reagent_containers/infuse_from, force)
+
+/obj/machinery/icecream_vat/proc/fill_cone(obj/item/reagent_containers/create_from, force)
+
+/obj/machinery/icecream_vat/proc/give_cone(obj/item/reagent_containers/food/snacks/ice_cream/cone, mob/give_to)
+
+/obj/item/reagent_containers/food/snacks/ice_cream
+	#warn impl
+
+#warn macro path generation for: vanilla, chocolate, apple, orange, lime
+
+#warn everything below is legacy
+
+/obj/machinery/icecream_vat
+	atom_flags = OPENCONTAINER | NOREACT
 	var/list/product_types = list()
 	var/dispense_flavour = ICECREAM_VANILLA
 	var/flavour_name = "vanilla"
@@ -190,9 +231,4 @@
 	desc = "Delicious [cone_type] cone with a dollop of [flavour_name] ice cream."
 	ice_creamed = 1
 
-#undef ICECREAM_VANILLA
-#undef ICECREAM_STRAWBERRY
-#undef ICECREAM_CHOCOLATE
-#undef ICECREAM_BLUE
-#undef CONE_WAFFLE
-#undef CONE_CHOC
+
