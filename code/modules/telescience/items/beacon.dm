@@ -41,6 +41,9 @@
 	/// uses power? if false, we just don't draw power.
 	var/uses_power = TRUE
 
+	/// starting cell type
+	var/cell_type = /obj/item/cell/device/weapon
+
 #warn impl all
 
 /obj/item/bluespace_beacon/Initialize(mapload)

@@ -858,19 +858,14 @@
 				if(can_phase)
 					can_phase = FALSE
 					flick("[initial_icon]-phase", src)
-					src.loc = get_step(src,src.dir)
+					forceMove(get_step(src,src.dir))
 					src.use_power(phasing_energy_drain)
 					sleep(get_step_delay() * 3)
 					can_phase = TRUE
 					occupant_message("Phazed.")
 			. = ..(obstacle)
 			return
-		if(istype(O, /obj/effect/portal))	//derpfix
-			src.anchored = 0				//I have no idea what this really fix.
-			O.Crossed(src)
-			spawn(0)//countering portal teleport spawn(0), hurr
-				src.anchored = 1
-		else if(O.anchored)
+		if(O.anchored)
 			obstacle.Bumped(src)
 		else
 			step(obstacle,src.dir)
