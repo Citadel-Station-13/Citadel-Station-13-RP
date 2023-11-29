@@ -20,8 +20,10 @@
 	var/signal_max = 100
 	/// signal power adjustable?
 	var/signal_adjust = TRUE
-	/// our transimssion boost
+	/// our transmission boost
 	var/signal_boost_power = 0
+	/// max transmission boost power
+	var/signal_boost_max = 0
 	/// conversion rate of watts to boost power
 	var/signal_boost_cost = 0
 	/// signal boost power adjustable?
@@ -36,21 +38,15 @@
 	var/signal_key
 	/// obfuscation factor of effective power if encrypted, against anything that doesn't know the key
 	var/signal_obfuscation = 0.01
-	/// power cell
-	var/obj/item/cell/cell
-	/// starting cell
-	var/cell_type = /obj/item/cell/high
 	/// uses power? if false, we just don't draw power.
-	var/cell_powered = TRUE
+	var/uses_power = TRUE
 
 #warn impl all
 
 /obj/item/bluespace_beacon/Initialize(mapload)
 	. = ..()
-	if(ispath(cell_type))
-		cell = new cell_type
+	init_cell_slot_easy_tool(cell_type, TRUE, FALSE)
 	reset_signal()
-	init_cell_slot_easy_tool()
 
 /obj/item/bluespace_beacon/proc/set_active(active)
 
@@ -76,3 +72,41 @@
 
 /obj/item/bluespace_beacon/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
+
+/obj/item/bluespace_beacon/translocator
+	name = "bluespace grappling beacon"
+	desc = "A short-lived disposable beacon that magnetizes to surfaces. You could probably pry this off with relative ease."
+	#warn sprite - use the old beacon?
+
+	uses_power = FALSE
+
+	/// active?
+	var/activated = FALSE
+	/// expired?
+	var/expired = FALSE
+
+/obj/item/bluespace_beacon/translocator/Initialize(mapload, duration = 15 MINUTES, tag = "VLT0")
+	. = ..()
+	if(duration)
+		addtimer(CALLBACK(src, PROC_REF(expire)), duration)
+
+/obj/item/bluespace_beacon/translocator/throw_land(atom/A, datum/thrownthing/TT)
+	. = ..()
+	if(!isturf(A))
+		return
+	var/turf/T = A
+	if(isspaceturf(T) || (T.mz_flags & MZ_OPEN_DOWN))
+		return
+	visible_message(
+		SPAN_WARNING("[src] magentizes to the surface of [A]!")
+	)
+	activate()
+
+/obj/item/bluespace_beacon/translocator/proc/activate()
+	#warn impl & sprite change?
+
+/obj/item/bluespace_beacon/translocator/proc/expire()
+	#warn impl
+
+
+#warn impl

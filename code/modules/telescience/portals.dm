@@ -64,10 +64,10 @@ GLOBAL_LIST_BOILERPLATE(all_portals, /obj/effect/bluespace_portal)
 	AddElement(/datum/element/connect_loc, list(COMSIG_ATOM_ENTERED, TYPE_PROC_REF(/obj/effect/bluespace_portal, on_enter)))
 	src.teleportation = teleport_datum
 	src.is_source_side = is_source
-	LAZYADD(teleport_datum.portals, src)
+	LAZYADD(src.teleportation.portals, src)
 
 /obj/effect/bluespace_portal/Destroy()
-	LAZYREMOVE(teleport_datum.portals, src)
+	LAZYREMOVE(teleportation.portals, src)
 	return ..()
 
 /obj/effect/bluespace_portal/proc/on_enter(datum/source, atom/movable/what, atom/oldloc)

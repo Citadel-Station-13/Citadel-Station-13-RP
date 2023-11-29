@@ -3,7 +3,7 @@
 
 /obj/item/bluespace_translocator
 	name = "bluespace translocator"
-	desc = "A prototype launcher that shoots bluespace signalling beacons at long ranges and accuracies."
+	desc = "A prototype launcher that shoots bluespace grappling beacons."
 
 /obj/item/bluespace_translocator/Initialize(mapload)
 	. = ..()

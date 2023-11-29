@@ -53,9 +53,17 @@
 	.["capacity"] = capacity
 	.["drawMax"] = draw_max
 
-
 //! WARNING WARNING LEGACY SHITCODE
 //! REFACTORING ON POWERNET REFACTOR.
 
+/// amt is in kw, obviously.
 /obj/machinery/teleporter/bluespace_capacitor/proc/shitcode_consume_kw_immediate(amt)
-	#warn impl
+	for(var/obj/structure/cable/cable in loc)
+		if(cable.d1)
+			continue
+		// cable is a node
+		if(isnull(cable.powernet))
+			continue
+		// cable has a powernet
+		return cable.powernet.draw_power(amt)
+	return 0

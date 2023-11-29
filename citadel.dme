@@ -4098,7 +4098,6 @@
 #include "code\modules\power\lighting\lights.dm"
 #include "code\modules\power\lighting\lightswitch.dm"
 #include "code\modules\power\powernet\powernet.dm"
-#include "code\modules\power\powernet\powernet_connection.dm"
 #include "code\modules\power\sensors\powernet_sensor.dm"
 #include "code\modules\power\sensors\sensor_monitoring.dm"
 #include "code\modules\power\singularity\act.dm"

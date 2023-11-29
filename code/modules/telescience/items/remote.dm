@@ -32,8 +32,8 @@
 
 /obj/item/bluespace_remote/director
 	name = "telescience remote"
-	desc = "A highly experimental teleporter remote. Unlike more standard variants, this one \
-	has an inbuilt signal booster and solver and is pre-linked to the installation's telescience suite. \
-	You really, really shouldn't lose this."
+	desc = "An experimental teleporter remote hard-wired into the research department's telescience suite via passive signal modulation. \
+	Includes an inbuilt lensing beacon for emergency retrievals. You really, <b>really</b> shouldn't lose this."
+
 	#warn sprite?
 	#warn impl

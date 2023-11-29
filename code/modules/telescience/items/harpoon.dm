@@ -6,10 +6,22 @@
 	desc = "A device used to rip open short duration conduits through bluespace to tunnel to a nearby location. Takes a moment to charge up and perform path calculations, and uses a lot of energy in the process."
 	#warn sprite
 
+	/// starting cell type
+	var/cell_type = /obj/item/cell/super
+
+	/// are we sending, or receiving?
+	var/sending = TRUE
+	/// last time we had a successful fire
+	var/last_fire
+	/// are we set to transmit the user as well?
+	var/send_user = TRUE
+
 /obj/item/bluespace_harpoon/Initialize(mapload)
 	. = ..()
-	init_cell_
-	init_cell_slot_easy_tool()
+	init_cell_slot(cell_type)
+	obj_cell_slot.remove_yank_context = TRUE
+	obj_cell_slot.remove_yank_offhand = TRUE
+	obj_cell_slot.legacy_use_device_cells = FALSE
 
 
 #warn below

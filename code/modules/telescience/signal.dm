@@ -41,6 +41,8 @@
 /datum/bluespace_signal
 	/// attached atom, if any
 	var/atom/attached
+	/// projecting atom - allows things like jaunters to track what they're locked to
+	var/atom/projector
 	/// for quick access: our level
 	var/z_index
 
@@ -56,8 +58,11 @@
 	/// broadcasted name, if any
 	var/label
 	/// broadcasted name only when encryption is resolved
-	var/secure_label = FALSE
-	/// random GUID always shown
+	var/encrypt_label = FALSE
+	/// secure hash; cannot be brute forced, but can be reset
+	/// used to throw things like jaunters off our trail
+	var/security_hash
+	/// random GUID always shown; this should be static per projector, if possible.
 	var/uid
 
 	/// absolute - ignore pad boosts
@@ -73,7 +78,9 @@
 	/// encryption string, if any
 	var/encryption
 	/// factor of power decrease if unauthorized, from 1 to 0
-	var/obfuscation = 0.01
+	var/obfuscation = 0.99
+
+	#warn figure out encryption/security hashing system
 
 /datum/bluespace_signal/New(atom/anchoring)
 	#warn impl

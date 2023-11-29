@@ -26,7 +26,7 @@
 	qdel(src)
 
 /obj/item/bluespace_crystal/proc/blink_mob(mob/living/L)
-	do_teleport(L, get_turf(L), blink_range, asoundin = 'sound/effects/phasein.ogg')
+	bluespace_teleport(L, get_turf(L), blink_range)
 
 /obj/item/bluespace_crystal/throw_impact(atom/hit_atom)
 	if(!..()) // not caught in mid-air

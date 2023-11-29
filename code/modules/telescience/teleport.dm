@@ -1,6 +1,18 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
+/**
+ * teleports someone around to a place
+ */
+/proc/bluespace_teleport(atom/movable/object, atom/target, instability)
+	var/datum/bluespace_teleport/teleportation = new
+	teleportation.destination = get_turf(target)
+	teleportation.source = get_turf(object)
+	teleportation.target = target
+	teleportation.virtual = TRUE
+	teleportation.absolute = TRUE
+	teleportation.translate_movable(object, target, instability)
+
 /datum/bluespace_teleport
 	/// original source turf
 	var/turf/source
@@ -16,6 +28,8 @@
 
 	/// cannot be deviated by new sources of jamming/traps/etc
 	var/absolute = FALSE
+	/// virtual / one-off ; don't generate wakes
+	var/virtual = FALSE
 
 	/// list of portals open
 	var/list/obj/effect/bluespace_portal/portals
