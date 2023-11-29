@@ -111,7 +111,7 @@ a creative player the means to solve many problems.  Circuits are held inside an
 		io.scramble()
 
 /obj/item/integrated_circuit/proc/check_interactivity(mob/user)
-	return ui_status(user, GLOB.physical_state) && !assembly || assembly.opened == UI_INTERACTIVE
+	return (ui_status(user, GLOB.physical_state) == UI_INTERACTIVE) && (!assembly || assembly.opened)
 
 /obj/item/integrated_circuit/verb/rename_component()
 	set name = "Rename Circuit"
