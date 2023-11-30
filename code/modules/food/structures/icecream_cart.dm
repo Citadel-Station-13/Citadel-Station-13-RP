@@ -27,10 +27,28 @@
 	// todo: temporary, as this is unbuildable
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 
-	/// stored cones
+	/// stored cones; this is a stack, topmost is last in list.
 	var/list/obj/item/reagent_containers/food/snacks/ice_cream/cones
 	/// stored reagent containers to be used for drawing from
 	var/list/obj/item/reagent_containers/sources
+
+	/// selected index of reagent container to infuse waffle cones with
+	var/selected_cone_infusion_source
+	/// selected index of reagent container to make ice cream with
+	var/selected_ice_cream_source
+
+	/// flour cost of cone
+	var/cone_flour_cost = 2
+	/// max cones held
+	var/cone_storage = 10
+	/// how much reagents it can pack into a cone
+	var/cone_infuse_amount = 2
+	/// milk cost of scoop
+	var/scoop_milk_cost = 2
+	/// ice cost of scoop - this is mandatory
+	var/scoop_ice_cost = 2
+	/// how much reagents it can pack into a single scoop of ice cream
+	var/scoop_infuse_amount = 3
 
 /obj/machinery/icecream_vat/Initialize(mapload)
 	create_reagents(1000)
@@ -44,91 +62,53 @@
 
 /obj/machinery/icecream_vat/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
+	if(.)
+		return
+	switch(action)
+		if("selectInfuse")
+		if("selectProduce")
+		if("dispenseCone")
+		if("dispenseFilled")
+		if("ejectSource")
+		if("produceCone")
 
 /obj/machinery/icecream_vat/proc/produce_cone(obj/item/reagent_containers/infuse_from, force)
+	if(!force)
+		if(!reagents.has_reagent(/datum/reagent/nutriment/flour, cone_flour_cost))
+			return FALSE
+		if(LAZYLEN(cones) > cone_storage)
+			return FALSE
+	reagents.remove_reagent(/datum/reagent/nutriment/flour, cone_flour_cost)
+	var/obj/item/reagent_containers/food/snacks/ice_cream/cone = new(src)
+	LAZYADD(cones, cone)
+	var/obj/item/reagent_containers/infusion_source = LAZYACCESS(sources, selected_cone_infusion_source)
+	if(!isnull(infusion_source))
+		infusion_source.reagents.trans_to(cone, cone_infuse_amount)
+	return cone
 
 /obj/machinery/icecream_vat/proc/fill_cone(obj/item/reagent_containers/create_from, force)
 
 /obj/machinery/icecream_vat/proc/give_cone(obj/item/reagent_containers/food/snacks/ice_cream/cone, mob/give_to)
+	if(isnull(cone))
+		return FALSE
+	give_to.put_in_hands_or_drop(cone)
+	LAZYREMOVE(cones, cone)
+	return TRUE
 
-/obj/item/reagent_containers/food/snacks/ice_cream
+/obj/machinery/icecream_vat/attackby(obj/item/I, mob/user, list/params, clickchain_flags, damage_multiplier)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
 	#warn impl
 
-#warn macro path generation for: vanilla, chocolate, apple, orange, lime
+/obj/machinery/icecream_vat/MouseDroppedOn(atom/dropping, mob/user, proximity, params)
+	. = ..()
+	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
+		return
+
 
 #warn everything below is legacy
 
 /obj/machinery/icecream_vat
-	atom_flags = OPENCONTAINER | NOREACT
-	var/list/product_types = list()
-	var/dispense_flavour = ICECREAM_VANILLA
-	var/flavour_name = "vanilla"
-
-/obj/machinery/icecream_vat/proc/get_ingredient_list(var/type)
-	switch(type)
-		if(ICECREAM_CHOCOLATE)
-			return list("milk", "ice", "coco")
-		if(ICECREAM_STRAWBERRY)
-			return list("milk", "ice", "berryjuice")
-		if(ICECREAM_BLUE)
-			return list("milk", "ice", "singulo")
-		if(CONE_WAFFLE)
-			return list("flour", "sugar")
-		if(CONE_CHOC)
-			return list("flour", "sugar", "coco")
-		else
-			return list("milk", "ice")
-
-/obj/machinery/icecream_vat/proc/get_flavour_name(var/flavour_type)
-	switch(flavour_type)
-		if(ICECREAM_CHOCOLATE)
-			return "chocolate"
-		if(ICECREAM_STRAWBERRY)
-			return "strawberry"
-		if(ICECREAM_BLUE)
-			return "blue"
-		if(CONE_WAFFLE)
-			return "waffle"
-		if(CONE_CHOC)
-			return "chocolate"
-		else
-			return "vanilla"
-
-/obj/machinery/icecream_vat/Initialize(mapload)
-	. = ..()
-	create_reagents(100)
-	while(product_types.len < 6)
-		product_types.Add(5)
-	reagents.add_reagent("milk", 5)
-	reagents.add_reagent("flour", 5)
-	reagents.add_reagent("sugar", 5)
-	reagents.add_reagent("ice", 5)
-
-/obj/machinery/icecream_vat/attack_hand(mob/user, list/params)
-	user.set_machine(src)
-	interact(user)
-
-/obj/machinery/icecream_vat/interact(mob/user as mob)
-	var/dat
-	dat += "<b>ICECREAM</b><br><div class='statusDisplay'>"
-	dat += "<b>Dispensing: [flavour_name] icecream </b> <br><br>"
-	dat += "<b>Vanilla icecream:</b> <a href='?src=\ref[src];select=[ICECREAM_VANILLA]'><b>Select</b></a> <a href='?src=\ref[src];make=[ICECREAM_VANILLA];amount=1'><b>Make</b></a> <a href='?src=\ref[src];make=[ICECREAM_VANILLA];amount=5'><b>x5</b></a> [product_types[ICECREAM_VANILLA]] scoops left. (Ingredients: milk, ice)<br>"
-	dat += "<b>Strawberry icecream:</b> <a href='?src=\ref[src];select=[ICECREAM_STRAWBERRY]'><b>Select</b></a> <a href='?src=\ref[src];make=[ICECREAM_STRAWBERRY];amount=1'><b>Make</b></a> <a href='?src=\ref[src];make=[ICECREAM_STRAWBERRY];amount=5'><b>x5</b></a> [product_types[ICECREAM_STRAWBERRY]] dollops left. (Ingredients: milk, ice, berry juice)<br>"
-	dat += "<b>Chocolate icecream:</b> <a href='?src=\ref[src];select=[ICECREAM_CHOCOLATE]'><b>Select</b></a> <a href='?src=\ref[src];make=[ICECREAM_CHOCOLATE];amount=1'><b>Make</b></a> <a href='?src=\ref[src];make=[ICECREAM_CHOCOLATE];amount=5'><b>x5</b></a> [product_types[ICECREAM_CHOCOLATE]] dollops left. (Ingredients: milk, ice, coco powder)<br>"
-	dat += "<b>Blue icecream:</b> <a href='?src=\ref[src];select=[ICECREAM_BLUE]'><b>Select</b></a> <a href='?src=\ref[src];make=[ICECREAM_BLUE];amount=1'><b>Make</b></a> <a href='?src=\ref[src];make=[ICECREAM_BLUE];amount=5'><b>x5</b></a> [product_types[ICECREAM_BLUE]] dollops left. (Ingredients: milk, ice, singulo)<br></div>"
-	dat += "<br><b>CONES</b><br><div class='statusDisplay'>"
-	dat += "<b>Waffle cones:</b> <a href='?src=\ref[src];cone=[CONE_WAFFLE]'><b>Dispense</b></a> <a href='?src=\ref[src];make=[CONE_WAFFLE];amount=1'><b>Make</b></a> <a href='?src=\ref[src];make=[CONE_WAFFLE];amount=5'><b>x5</b></a> [product_types[CONE_WAFFLE]] cones left. (Ingredients: flour, sugar)<br>"
-	dat += "<b>Chocolate cones:</b> <a href='?src=\ref[src];cone=[CONE_CHOC]'><b>Dispense</b></a> <a href='?src=\ref[src];make=[CONE_CHOC];amount=1'><b>Make</b></a> <a href='?src=\ref[src];make=[CONE_CHOC];amount=5'><b>x5</b></a> [product_types[CONE_CHOC]] cones left. (Ingredients: flour, sugar, coco powder)<br></div>"
-	dat += "<br>"
-	dat += "<b>VAT CONTENT</b><br>"
-	for(var/datum/reagent/R in reagents.reagent_list)
-		dat += "[R.name]: [R.volume]"
-		dat += "<A href='?src=\ref[src];disposeI=[R.id]'>Purge</A><BR>"
-	dat += "<a href='?src=\ref[src];refresh=1'>Refresh</a> <a href='?src=\ref[src];close=1'>Close</a>"
-
-	var/datum/browser/popup = new(user, "icecreamvat","Icecream Vat", 700, 500, src)
-	popup.set_content(dat)
-	popup.open()
 
 /obj/machinery/icecream_vat/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(istype(O, /obj/item/reagent_containers/food/snacks/icecream))
@@ -210,25 +190,4 @@
 		usr.unset_machine()
 		usr << browse(null,"window=icecreamvat")
 	return
-
-/obj/item/reagent_containers/food/snacks/icecream
-	name = "ice cream cone"
-	desc = "Delicious waffle cone, but no ice cream."
-	icon_state = "icecream_cone_waffle" //default for admin-spawned cones, href_list["cone"] should overwrite this all the time
-	bitesize = 3
-
-	var/ice_creamed = 0
-	var/cone_type
-
-/obj/item/reagent_containers/food/snacks/icecream/Initialize(mapload)
-	. = ..()
-	create_reagents(20)
-	reagents.add_reagent("nutriment", 5)
-
-/obj/item/reagent_containers/food/snacks/icecream/proc/add_ice_cream(var/flavour_name)
-	name = "[flavour_name] icecream"
-	add_overlay("icecream_[flavour_name]")
-	desc = "Delicious [cone_type] cone with a dollop of [flavour_name] ice cream."
-	ice_creamed = 1
-
 

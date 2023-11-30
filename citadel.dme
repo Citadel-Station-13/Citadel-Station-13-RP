@@ -2657,6 +2657,7 @@
 #include "code\modules\food\drinks\bottle\soda.dm"
 #include "code\modules\food\food\condiment.dm"
 #include "code\modules\food\food\drinks.dm"
+#include "code\modules\food\food\ice_cream.dm"
 #include "code\modules\food\food\lunch.dm"
 #include "code\modules\food\food\sandwich.dm"
 #include "code\modules\food\food\snacks.dm"
