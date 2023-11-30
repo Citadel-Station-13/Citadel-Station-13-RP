@@ -15,7 +15,7 @@ function Initialize-Bootstrap () {
 	# Write-Output "bootstrap-common: context in $($ContextDir)"
 
 	# load dependency values
-	$DependencyFile = "$((Get-Item tools/bootstrap).parent.parent.FullName)/dependencies.sh"
+	$DependencyFile = "$global:BootstrapDir/../../dependencies.sh"
 	Get-Content $DependencyFile | Select-String -Pattern "^export" | ForEach-Object {
 		$Split1=$_[0].ToString().Split("=")
 		$Split2=$Split1[0].Split(" ")

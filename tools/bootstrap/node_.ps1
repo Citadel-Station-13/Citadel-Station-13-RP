@@ -27,7 +27,7 @@ else {
 }
 
 # Set PATH
-$Env:PATH = "$NodePath;$ENV:PATH"
+$Env:PATH = "$NodePath;$Env:PATH"
 
 # Invoke Node with passed in params
 $ErrorActionPreference = "Continue"
