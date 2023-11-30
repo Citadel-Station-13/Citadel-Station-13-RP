@@ -34,6 +34,12 @@
 	/// our UI module
 	var/datum/tgui_module/teleporter_control/ui_controller
 
+	/// active teleporter locks by signal
+	var/list/locks_by_signal
+
+	/// our context
+	var/datum/teleporter_context/context
+
 /obj/machinery/teleporter_controller/Destroy()
 	unlink_everything()
 	QDEL_NULL(ui_controller)

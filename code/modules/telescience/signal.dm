@@ -39,12 +39,17 @@
  * * Signals can be set to broadcast coordinates, as well as only broadcast if someone knows the encryption.
  */
 /datum/bluespace_signal
+	//* locality
 	/// attached atom, if any
 	var/atom/attached
 	/// projecting atom - allows things like jaunters to track what they're locked to
 	var/atom/projector
 	/// for quick access: our level
 	var/z_index
+	/// our anchored overmap object
+	/// if this is null, we are considered an orphaned/standalone signal and use special calculations
+	//  todo: see [code/modules/telescience/machinery/teleporter/_teleporter_system.dm] for what this means.
+	var/obj/overmap/entity/overmap_anchor
 
 	/// signal power - 0 for passive signals.
 	var/power = 0
@@ -82,7 +87,9 @@
 
 	#warn figure out encryption/security hashing system
 
-/datum/bluespace_signal/New(atom/anchoring)
+/datum/bluespace_signal/New(atom/anchoring, atom/projector)
+	register(anchoring)
+	src.projector = projector || anchoring
 	#warn impl
 
 /datum/bluespace_signal/Destroy()
@@ -90,11 +97,11 @@
 	return ..()
 
 /datum/bluespace_signal/proc/set_host(atom/what)
-	unregister(host)
+	if(!isnull(host))
+		unregister(host)
 	host = what
-	if(isnull(host))
-		return
-	register(host)
+	if(!isnull(host))
+		register(host)
 
 /datum/bluespace_signal/proc/register(atom/host)
 	#warn impl

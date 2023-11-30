@@ -14,9 +14,9 @@
 	#warn sprite
 	#warn circuit
 
-	/// current draw
+	/// current draw in kw
 	var/power_setting = 0
-	/// max draw
+	/// max draw in kw
 	var/power_max = 1000
 
 /obj/machinery/teleporter/bluespace_scanner/Initialize(mapload)

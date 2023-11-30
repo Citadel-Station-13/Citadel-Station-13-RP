@@ -26,7 +26,7 @@ SUBSYSTEM_DEF(telesci)
 
 /datum/controller/subsystem/telesci/proc/unregister_bluespace_wake(datum/bluespace_wake/wake)
 
-/datum/controller/subsystem/telesci/proc/z_change_bluespace_wake(obj/machinery/teleporter/bluespace_scanner, old_z, new_z)
+/datum/controller/subsystem/telesci/proc/z_change_bluespace_wake(datum/bluespace_wake/wake, old_z, new_z)
 
 #warn impl
 
@@ -34,7 +34,7 @@ SUBSYSTEM_DEF(telesci)
 
 /datum/controller/subsystem/telesci/proc/unregister_bluespace_signal(datum/bluespace_signal/sig)
 
-/datum/controller/subsystem/telesci/proc/z_change_bluespace_signal(obj/machinery/teleporter/bluespace_scanner, old_z, new_z)
+/datum/controller/subsystem/telesci/proc/z_change_bluespace_signal(datum/bluespace_signal/sig, old_z, new_z)
 
 #warn impl
 
@@ -42,7 +42,7 @@ SUBSYSTEM_DEF(telesci)
 
 /datum/controller/subsystem/telesci/proc/unregister_bluespace_jamming(datum/bluespace_jamming/jam)
 
-/datum/controller/subsystem/telesci/proc/z_change_bluespace_jamming(obj/machinery/teleporter/bluespace_scanner, old_z, new_z)
+/datum/controller/subsystem/telesci/proc/z_change_bluespace_jamming(datum/bluespace_jamming/jam, old_z, new_z)
 
 #warn impl
 
@@ -50,6 +50,6 @@ SUBSYSTEM_DEF(telesci)
 
 /datum/controller/subsystem/telesci/proc/unregister_bluespace_scanner(obj/machinery/teleporter/bluespace_scanner/scanner)
 
-/datum/controller/subsystem/telesci/proc/z_change_bluespace_scanner(obj/machinery/teleporter/bluespace_scanner, old_z, new_z)
+/datum/controller/subsystem/telesci/proc/z_change_bluespace_scanner(obj/machinery/teleporter/bluespace_scanner/scanner, old_z, new_z)
 
 #warn impl
