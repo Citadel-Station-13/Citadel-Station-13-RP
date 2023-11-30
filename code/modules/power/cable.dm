@@ -72,11 +72,6 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	return TRUE
 
 /obj/structure/cable/Initialize(mapload, _color, _d1, _d2, auto_merge)
-	// todo: remove this
-	if(isnull(get_turf(src)))
-		. = INITIALIZE_HINT_QDEL
-		CRASH("no loc before ..()?")
-	// end
 	. = ..()
 
 	if(_color)
@@ -368,8 +363,6 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 
 	if(!(d1 == direction || d2 == direction)) //if the cable is not pointed in this direction, do nothing
 		return
-
-	ASSERT(!QDELETED(src))
 
 	var/turf/us = get_turf(src)
 	var/turf/TB  = us.vertical_step(direction)
