@@ -166,7 +166,7 @@
 			gasid = H.species.exhale_type
 	var/datum/gas_mixture/grave_breath = new()
 	var/datum/gas_mixture/above_air = return_air()
-	grave_breath.adjust_gas(gasid, BREATH_MOLES)
+	grave_breath.adjust_gas(gasid, (above_air.return_pressure() * above_air.volume) / (R_IDEAL_GAS_EQUATION * above_air.temperature)) // They have no oxygen, but non-zero moles and temp
 	grave_breath.temperature = (above_air.temperature) - 30	//Underground
 	return grave_breath
 

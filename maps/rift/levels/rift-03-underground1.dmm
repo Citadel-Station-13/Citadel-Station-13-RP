@@ -5693,9 +5693,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/elevator)
 "sI" = (
-/obj/effect/map_effect/portal/line/side_a{
-	dir = 4
-	},
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/underground/under1)
 "sJ" = (
@@ -6278,11 +6275,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/upper)
 "uJ" = (
-/obj/effect/map_effect/portal/master/side_a{
-	dir = 4;
-	name = "center_to_westcave";
-	portal_id = "westcavestep"
-	},
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "uM" = (
@@ -7459,9 +7451,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "yu" = (
-/obj/effect/map_effect/portal/line/side_a{
-	dir = 4
-	},
 /obj/structure/catwalk/plank,
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/underground/under1)
@@ -10212,9 +10201,6 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rift/station/fighter_bay/hangar)
 "It" = (
-/obj/effect/map_effect/portal/line/side_a{
-	dir = 4
-	},
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "Iv" = (
@@ -12467,9 +12453,6 @@
 /turf/simulated/floor/tiled,
 /area/rnd/secure_storage/upper)
 "Qc" = (
-/obj/effect/map_effect/portal/line/side_a{
-	dir = 4
-	},
 /obj/structure/railing/grey{
 	dir = 1
 	},
@@ -12607,9 +12590,6 @@
 /turf/simulated/floor,
 /area/storage/tech)
 "QJ" = (
-/obj/effect/map_effect/portal/line/side_a{
-	dir = 4
-	},
 /turf/simulated/wall/r_wall/prepainted,
 /area/rift/surfacebase/underground/under1)
 "QM" = (
@@ -12672,9 +12652,6 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "QZ" = (
-/obj/effect/map_effect/portal/line/side_a{
-	dir = 4
-	},
 /obj/structure/catwalk,
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/underground/under1)
@@ -13359,9 +13336,6 @@
 /turf/simulated/floor,
 /area/storage/tech)
 "TQ" = (
-/obj/effect/map_effect/portal/line/side_a{
-	dir = 4
-	},
 /obj/structure/railing,
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/underground/under1)

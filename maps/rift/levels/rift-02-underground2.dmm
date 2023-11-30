@@ -7808,9 +7808,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/secure_storage/critical/vault2)
 "yT" = (
-/obj/effect/map_effect/portal/line/side_a{
-	dir = 4
-	},
 /turf/simulated/floor/sky/depths/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "yU" = (
@@ -10959,11 +10956,6 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/secure_storage/lower)
 "Lg" = (
-/obj/effect/map_effect/portal/master/side_a{
-	dir = 4;
-	name = "center_to_westdeep";
-	portal_id = "westdeepstep"
-	},
 /turf/simulated/floor/sky/depths/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "Li" = (

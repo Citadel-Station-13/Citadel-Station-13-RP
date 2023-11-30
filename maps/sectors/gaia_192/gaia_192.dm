@@ -18,3 +18,4 @@
 		ZTRAIT_GRAVITY,
 	)
 	planet_path = /datum/planet/classm
+	air_outdoors = /datum/atmosphere/planet/classm

@@ -164,6 +164,13 @@
 		/area/engineering/atmos_intake, // Outside,
 		/area/rnd/external) //  Outside,
 
+/datum/map_level/rift
+	abstract_type = /datum/map_level/rift
+	air_outdoors = /datum/atmosphere/planet/lythios43c
+
+/datum/map_level/rift/station
+	abstract_type = /datum/map_level/rift/station
+
 /datum/map_level/rift/station/underground_floor
 	id = "RiftUnderground3"
 	name = "Rift - East Canyon"
@@ -179,6 +186,7 @@
 	flags = LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES|LEGACY_LEVEL_SEALED
 	planet_path = /datum/planet/lythios43c
 	link_above = /datum/map_level/rift/station/underground_deep
+	link_west = /datum/map_level/rift/base
 
 /datum/map_level/rift/station/underground_floor/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
 	. = ..()
@@ -201,6 +209,7 @@
 	planet_path = /datum/planet/lythios43c
 	link_below = /datum/map_level/rift/station/underground_floor
 	link_above = /datum/map_level/rift/station/underground_shallow
+	link_west = /datum/map_level/rift/deep
 
 /datum/map_level/rift/station/underground_deep/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
 	. = ..()
@@ -223,6 +232,7 @@
 	planet_path = /datum/planet/lythios43c
 	link_below = /datum/map_level/rift/station/underground_deep
 	link_above = /datum/map_level/rift/station/surface_low
+	link_west = /datum/map_level/rift/caves
 
 /datum/map_level/rift/station/underground_shallow/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
 	. = ..()
@@ -245,6 +255,7 @@
 	planet_path = /datum/planet/lythios43c
 	link_below = /datum/map_level/rift/station/underground_shallow
 	link_above = /datum/map_level/rift/station/surface_mid
+	link_west = /datum/map_level/rift/plains
 
 /datum/map_level/rift/station/surface_low/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
 	. = ..()
@@ -307,6 +318,7 @@
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER
 	planet_path = /datum/planet/lythios43c
 	link_above = /datum/map_level/rift/deep
+	link_east = /datum/map_level/rift/station/underground_floor
 
 /datum/map_level/rift/base/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
 	. = ..()
@@ -338,6 +350,7 @@
 	planet_path = /datum/planet/lythios43c
 	link_below = /datum/map_level/rift/base
 	link_above = /datum/map_level/rift/caves
+	link_east = /datum/map_level/rift/station/underground_deep
 
 /datum/map_level/rift/deep/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
 	. = ..()
@@ -368,6 +381,7 @@
 	planet_path = /datum/planet/lythios43c
 	link_below = /datum/map_level/rift/deep
 	link_above = /datum/map_level/rift/plains
+	link_east = /datum/map_level/rift/station/underground_shallow
 
 /datum/map_level/rift/caves/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
 	. = ..()

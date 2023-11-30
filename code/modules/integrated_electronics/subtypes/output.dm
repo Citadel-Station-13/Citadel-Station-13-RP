@@ -478,13 +478,18 @@
 
 	if(istype(AM) && assembly)
 		if(AM in view(get_turf(src))) // It must be able to 'see' the object it will copy.
+			var/list/output = get_flat_icon_with_offsets(AM)
+			if(isnull(output))
+				return FALSE
 			hologram = new(src)
-			var/icon/holo_icon = getHologramIcon(get_flat_icon(AM))
+			var/icon/holo_icon = getHologramIcon(output[1])
 		//	holo_icon.GrayScale() // So it looks better colored.
 			if(holo_color) // The color pin should ensure that it is a valid hex.
 				holo_icon.ColorTone(holo_color)
 			hologram.icon = holo_icon
 			hologram.name = "[AM.name] (Hologram)"
+			hologram.pixel_x = output[2]
+			hologram.pixel_y = output[3]
 			update_hologram()
 
 	//		holo_beam = assembly.Beam(hologram, icon_state = "holo_beam", time = INFINITY, maxdistance = world.view)
@@ -506,7 +511,8 @@
 	if(hologram)
 		update_hologram()
 
-/obj/item/integrated_circuit/output/holographic_projector/on_loc_moved(atom/oldloc)
+/obj/item/integrated_circuit/output/holographic_projector/ext_moved(atom/oldloc, dir)
+	. = ..()
 	if(hologram)
 		update_hologram_position()
 

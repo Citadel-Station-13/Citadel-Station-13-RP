@@ -663,32 +663,16 @@
 
 // Returns a list of turfs from which a field will propagate. If multi-Z mode is enabled, this will return a "column" of turfs above and below the generator.
 /obj/machinery/power/shield_generator/proc/get_base_turfs()
-	var/list/turfs = list()
 	var/turf/T = get_turf(src)
 
 	if(!istype(T))
 		return
 
-	turfs.Add(T)
-
 	// Multi-Z mode is disabled
 	if(!check_flag(MODEFLAG_MULTIZ))
-		return turfs
+		return list(T)
 
-	while(HasAbove(T.z))
-		T = GetAbove(T)
-		if(istype(T))
-			turfs.Add(T)
-
-	T = get_turf(src)
-
-	while(HasBelow(T.z))
-		T = GetBelow(T)
-		if(istype(T))
-			turfs.Add(T)
-
-	return turfs
-
+	return SSmapping.get_turfs_within_stack(T)
 
 // Starts fully charged
 /obj/machinery/power/shield_generator/charged/Initialize(mapload)

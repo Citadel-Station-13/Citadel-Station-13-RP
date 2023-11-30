@@ -66,6 +66,8 @@
 	var/last_move_time = 0
 	/// Last world.time we turned in our spot without moving (see: facing directions)
 	var/last_turn = 0
+	/// Tracks if we have gravity from environment right now.
+	var/in_gravity
 
 	//? Physiology
 	/// overall physiology - see physiology.dm

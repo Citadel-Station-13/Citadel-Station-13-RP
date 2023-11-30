@@ -26,7 +26,51 @@
 	return ordered_levels[z]?.display_name
 
 /**
- * returns the z index of an id
+ * returns level datum in dir of level
+ *
+ * if diagonal, only returns a level if both steps are consistent with each other.
  */
-/datum/controller/subsystem/mapping/proc/level_by_id(id)
-	return keyed_levels[id]?.z_index
+/datum/controller/subsystem/mapping/proc/level_datum_in_dir(z, dir)
+	if(dir & (dir - 1))
+		// if diagonal, pass to level for advanced handling
+		return ordered_levels[z].level_in_dir(dir)?.z_index
+	var/index
+	switch(dir)
+		if(NORTH)
+			index = cached_level_north[z]
+		if(SOUTH)
+			index = cached_level_south[z]
+		if(EAST)
+			index = cached_level_east[z]
+		if(WEST)
+			index = cached_level_west[z]
+		if(UP)
+			index = cached_level_up[z]
+		if(DOWN)
+			index = cached_level_down[z]
+	return ordered_levels[index]
+
+/**
+ * returns level index in dir of level
+ *
+ * if diagonal, only returns a level if both steps are consistent with each other.
+ */
+/datum/controller/subsystem/mapping/proc/level_index_in_dir(z, dir)
+	if(dir & (dir - 1))
+		// if diagonal, pass to level for advanced handling
+		return ordered_levels[z].level_in_dir(dir)
+	var/index
+	switch(dir)
+		if(NORTH)
+			index = cached_level_north[z]
+		if(SOUTH)
+			index = cached_level_south[z]
+		if(EAST)
+			index = cached_level_east[z]
+		if(WEST)
+			index = cached_level_west[z]
+		if(UP)
+			index = cached_level_up[z]
+		if(DOWN)
+			index = cached_level_down[z]
+	return index
