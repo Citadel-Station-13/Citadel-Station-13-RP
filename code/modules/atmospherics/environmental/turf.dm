@@ -75,15 +75,6 @@
 		if(i > amount)
 			return
 
-/**
- * returns a mutable gas mixture, or null
- * this does not take into account volume, and for ZAS, can return a whole room's air
- * for operations that care about this, prefer using other procs!
- */
-/atom/proc/return_air()
-	RETURN_TYPE(/datum/gas_mixture)
-	return loc?.return_air()
-
 /area/return_air()
 	CRASH("How was /area reached?")
 

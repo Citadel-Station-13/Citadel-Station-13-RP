@@ -42,6 +42,8 @@
 	update_transform()
 	// offset
 	reset_pixel_offsets()
+	// update gravity
+	update_gravity()
 	// movespeed
 	update_movespeed(TRUE)
 	update_config_movespeed()
