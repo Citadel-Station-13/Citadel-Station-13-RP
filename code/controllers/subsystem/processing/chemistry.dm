@@ -62,5 +62,5 @@ PROCESSING_SUBSYSTEM_DEF(chemistry)
  *
  * do not edit the returned instance, it is global!
  */
-/datum/controller/subsystem/processing/chemistry/proc/get_reagent(datum/reagent/id_or_path)
+/datum/controller/subsystem/processing/chemistry/proc/fetch_reagent(datum/reagent/id_or_path)
 	return reagent_lookup[ispath(id_or_path)? initial(id_or_path.id) : id_or_path]

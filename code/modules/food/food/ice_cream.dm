@@ -1,36 +1,55 @@
 /obj/item/reagent_containers/food/snacks/ice_cream
-	#warn impl
+	name = "waffle cone"
+	desc = "An empty waffle cone, presumably used to hold ice cream. How depressing."
+	icon = 'icons/modules/food/items/ice_cream.dmi'
+	icon_state = "wafflecone"
+	w_class = WEIGHT_CLASS_TINY
+	throw_force = 0
+	damage_force = 0
+	bitesize = 2
 
 	// :troll:
 	atom_flags = NOREACT
 
-
-	/// already filled? no double dipping!!
-	var/already_was_filled = FALSE
+	/// already bit into? no double dipping!
+	var/no_double_dipping = FALSE
+	/// list used to track colors of dollops
+	var/list/scoop_colors
+	/// max scoops
+	var/scoop_max = 7
 
 	/// prefill with scoops of these reagents
-	var/list/start_with_scoops
+	/// list(path, path, path, ...)
+	/// do not do path = amount; the association part of the list
+	/// is reserved for future use
+	var/list/start_with_scoop_of
+	/// standard scoop size
+	var/start_with_scoop_size = 3
+
+/obj/item/reagent_containers/food/snacks/ice_cream/Initialize(mapload)
+	. = ..()
+	var/created_any = FALSE
+	for(var/key in start_with_scoop_of)
+		created_any = add_scoop(key, start_with_scoop_size, update_icon = FALSE) || created_any
+	if(created_any)
+		update_appearance()
+
+/obj/item/reagent_containers/food/snacks/ice_cream/update_icon(updates)
+	. = ..()
+
+
+/obj/item/reagent_containers/food/snacks/ice_cream/proc/add_scoop(reagent_source, reagent_amount, update_icon = TRUE)
+	if(istype(reagent_source, /datum/reagent))
+		var/datum/reagent/from_reagent = reagent_source
+	else if(ispath(reagent_source, /datum/reagent) || istext(reagent_source))
+		var/datum/reagent/from_reagent = SSchemistry.fetch_reagent(reagent_source)
+	else if(istype(reagent_source, /datum/reagents))
+		var/datum/reagents/from_holder = reagent_source
+
+	#warn impl
+
+	return TRUE
 
 #warn macro path generation for: vanilla, chocolate, apple, orange, lime
 
-/obj/item/reagent_containers/food/snacks/icecream
-	name = "ice cream cone"
-	desc = "Delicious waffle cone, but no ice cream."
-	icon_state = "icecream_cone_waffle" //default for admin-spawned cones, href_list["cone"] should overwrite this all the time
-	bitesize = 3
-
-	var/ice_creamed = 0
-	var/cone_type
-
-/obj/item/reagent_containers/food/snacks/icecream/Initialize(mapload)
-	. = ..()
-	create_reagents(20)
-	reagents.add_reagent("nutriment", 5)
-
-/obj/item/reagent_containers/food/snacks/icecream/proc/add_ice_cream(var/flavour_name)
-	name = "[flavour_name] icecream"
-	add_overlay("icecream_[flavour_name]")
-	desc = "Delicious [cone_type] cone with a dollop of [flavour_name] ice cream."
-	ice_creamed = 1
-
-
+#warn icon states are dollop, melt1-3, wafflecone, waffledrop1-3

@@ -164,7 +164,7 @@
 		for(var/id in synth.reagents_provided)
 			if(chems_built[id])
 				continue
-			var/datum/reagent/R = SSchemistry.get_reagent(id)
+			var/datum/reagent/R = SSchemistry.fetch_reagent(id)
 			if(!R)
 				continue
 			chems_built[id] = list(

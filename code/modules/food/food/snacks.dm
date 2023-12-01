@@ -5,6 +5,7 @@
 	icon = 'icons/obj/food.dmi'
 	icon_state = null
 	atom_flags = OPENCONTAINER
+
 	var/bitesize = 1
 	var/bitecount = 0
 	var/trash = null
@@ -56,10 +57,7 @@
 		open(user)
 
 /obj/item/reagent_containers/food/snacks/proc/open(mob/user)
-	if(custom_open_sound)
-		playsound(loc,custom_open_sound, rand(10,50), 1)
-	else
-		playsound(loc,'sound/items/foodcanopen.ogg', rand(10,50), 1)
+	playsound(loc,custom_open_sound || 'sound/items/foodcanopen.ogg', rand(10,50), 1)
 
 	if(opened_icon)
 		icon_state = "[initial(icon_state)]-open"
@@ -152,7 +150,8 @@
 			user.visible_message("<span class='danger'>[user] feeds [M] [src].</span>")
 
 		if(reagents)								//Handle ingestion of the reagent.
-			playsound(M.loc,'sound/items/eatfood.ogg', rand(10,50), 1)
+			if(bite_sound)
+				playsound(M.loc,bite_sound, rand(10,50), 1)
 			if(reagents.total_volume)
 				if(reagents.total_volume > bitesize)
 					reagents.trans_to_mob(M, bitesize, CHEM_INGEST)

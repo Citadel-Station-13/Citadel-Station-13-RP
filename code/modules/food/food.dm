@@ -5,6 +5,7 @@
 /// Food.
 ////////////////////////////////////////////////////////////////////////////////
 /obj/item/reagent_containers/food
+	armor_type = /datum/armor/none
 	possible_transfer_amounts = null
 	volume = 50 //Sets the default container amount for all food items.
 	var/filling_color = "#FFFFFF" //Used by sandwiches.
@@ -23,6 +24,12 @@
 	/// this is used for condiment bottles, milk cartons, etc
 	//  todo: why tf is a milk carton /food?
 	var/list/prefill_reagents
+
+	// todo: above is legacy
+
+	//* Eating
+	/// eating bite sound
+	var/bite_sound = 'sound/items/eatfood.ogg'
 
 /obj/item/reagent_containers/food/Initialize(mapload, cooked)
 	. = ..()
