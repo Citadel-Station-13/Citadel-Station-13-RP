@@ -307,5 +307,6 @@
 		var/key = material_traits[i]
 		var/val = material_traits[key]
 		if(ispath(key))
+			ASSERT(SSmaterials.material_traits[key])
 			material_traits[i] = SSmaterials.material_traits[key]
-			material_traits[key] = val
+			material_traits[material_traits[i]] = val

@@ -72,6 +72,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	return TRUE
 
 /obj/structure/cable/Initialize(mapload, _color, _d1, _d2, auto_merge)
+
 	. = ..()
 
 	if(_color)
@@ -151,8 +152,9 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 /obj/structure/cable/setDir(new_dir)
 	SHOULD_CALL_PARENT(FALSE)
 	SEND_SIGNAL(src, COMSIG_ATOM_DIR_CHANGE, dir, new_dir)
+
 	if(powernet)
-		cut_cable_from_powernet() // Remove this cable from the powernet so the connections update
+		cut_cable_from_powernet(TRUE)
 
 	// If d1 is 0, then it's a not, and doesn't rotate
 	if(d1)
@@ -487,10 +489,11 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 			qdel(PN)
 
 // cut the cable's powernet at this cable and updates the powergrid
-/obj/structure/cable/proc/cut_cable_from_powernet()
+/obj/structure/cable/proc/cut_cable_from_powernet(snowflake_override_for_dir)
 	var/turf/T1 = loc
 	var/list/P_list
-	if(!T1)	return
+	if(!T1)
+		return
 	if(d1)
 		T1 = get_step(T1, d1)
 		P_list = power_list(T1, src, turn(d1,180),0,cable_only = 1)	// what adjacently joins on to cut cable...
@@ -518,6 +521,9 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 		for(var/obj/machinery/power/P in T1)
 			if(!P.connect_to_network()) //can't find a node cable on a the turf to connect to
 				P.disconnect_from_network() //remove from current network
+
+	if(snowflake_override_for_dir)
+		loc = T1
 
 ///////////////////////////////////////////////
 // The cable coil object, used for laying cable
