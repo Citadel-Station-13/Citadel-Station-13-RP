@@ -11,6 +11,8 @@
 	w_class = WEIGHT_CLASS_TINY // 14 fits in a box, not 7
 	volume = 60
 	start_rename = TRUE
+	/// if the vial is large or not, large vials only work with advanced units
+	var/is_large = FALSE
 	/// how many [state][#] overlays we have for reagents remaining
 	var/overlay_count = 3
 
@@ -34,6 +36,7 @@
 	)
 	w_class = WEIGHT_CLASS_SMALL
 	volume = 120
+	is_large = TRUE
 	overlay_count = 4
 
 /obj/item/reagent_containers/glass/hypovial/bluespace
