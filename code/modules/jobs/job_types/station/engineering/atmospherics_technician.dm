@@ -32,10 +32,10 @@
 						understanding of the pipes, vents, and scrubbers that move gasses around the station, and to be familiar with proper firefighting procedure."
 
 	alt_titles = list(
-		/datum/prototype/struct/alt_title/life_support,
-		/datum/prototype/struct/alt_title/pipe_spec,
-		/datum/prototype/struct/alt_title/disposals_tech,
-		/datum/prototype/struct/alt_title/atmos_artificer
+		"Life Support Technician" = /datum/prototype/struct/alt_title/life_support,
+		"Pipe Network Specialist" = /datum/prototype/struct/alt_title/pipe_spec,
+		"Disposals Technician" = /datum/prototype/struct/alt_title/disposals_tech,
+"Artificer" = /datum/prototype/struct/alt_title/atmos_artificer
 		)
 
 // Atmos Tech Alt Titles

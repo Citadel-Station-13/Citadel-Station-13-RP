@@ -13,10 +13,10 @@
 
 	outfit_type = /datum/outfit/job/station/assistant
 	alt_titles = list(
-		/datum/prototype/struct/alt_title/visitor,
-		/datum/prototype/struct/alt_title/server,
-		/datum/prototype/struct/alt_title/morale_officer,
-		/datum/prototype/struct/alt_title/assistant
+		"Visitor" = /datum/prototype/struct/alt_title/visitor,
+		"Server" = /datum/prototype/struct/alt_title/server,
+		"Morale Officer" = /datum/prototype/struct/alt_title/morale_officer,
+		"Assistant" = /datum/prototype/struct/alt_title/assistant
 	)
 
 /datum/role/job/station/assistant/get_access()
