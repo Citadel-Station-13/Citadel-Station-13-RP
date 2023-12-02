@@ -20,7 +20,7 @@
 	outfit_type = /datum/outfit/job/station/chaplain
 	desc = "The Chaplain ministers to the spiritual needs of the crew."
 	alt_titles = list(
-		"Religious Counselor" = /datum/prototype/struct/alt_title/counselor,
+		"Religious Counselor" = /datum/prototype/struct/alt_title/chaplain/counselor,
 		"Religious Affairs Advisor" = /datum/prototype/struct/alt_title/chaplain/advisor
 		)
 
