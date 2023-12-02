@@ -18,8 +18,8 @@
 	desc = "A Cyborg is a mobile station synthetic, piloted by a cybernetically preserved brain. It is considered a person, but is still required \
 						to follow its Laws."
 	alt_titles = list(
-		"Robot" = /datum/prototype/struct/alt_title/robot,
-		"Drone" = /datum/prototype/struct/alt_title/drone
+		/datum/prototype/struct/alt_title/robot,
+		/datum/prototype/struct/alt_title/drone
 		)
 
 // Cyborg Alt Titles

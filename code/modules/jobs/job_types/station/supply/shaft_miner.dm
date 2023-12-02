@@ -25,9 +25,9 @@
 	outfit_type = /datum/outfit/job/station/shaft_miner
 	desc = "A Shaft Miner mines and processes minerals to be delivered to departments that need them."
 	alt_titles = list(
-		"Drill Technician" = /datum/prototype/struct/alt_title/miner/drill_tech,
-		"Belt Miner" = /datum/prototype/struct/alt_title/miner/belt,
-		"Salvage Technician" = /datum/prototype/struct/alt_title/salvage
+		/datum/prototype/struct/alt_title/miner/drill_tech,
+		/datum/prototype/struct/alt_title/miner/belt,
+		/datum/prototype/struct/alt_title/salvage
 		)
 
 /datum/prototype/struct/alt_title/miner

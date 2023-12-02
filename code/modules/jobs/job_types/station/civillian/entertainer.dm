@@ -16,15 +16,15 @@
 	outfit_type = /datum/outfit/job/station/assistant
 	desc = "An entertainer does just that, entertains! Put on plays, play music, sing songs, tell stories, or read your favorite fanfic."
 	alt_titles = list(
-		"Performer" = /datum/prototype/struct/alt_title/entertainer/performer,
-		"Musician" = /datum/prototype/struct/alt_title/entertainer/musician,
-		"Stagehand" = /datum/prototype/struct/alt_title/entertainer/stagehand,
-		"Actor" = /datum/prototype/struct/alt_title/entertainer/actor,
-		"Dancer" = /datum/prototype/struct/alt_title/entertainer/dancer,
-		"Singer" = /datum/prototype/struct/alt_title/entertainer/singer,
-		"Magician" = /datum/prototype/struct/alt_title/entertainer/magician,
-		"Comedian" = /datum/prototype/struct/alt_title/entertainer/comedian,
-		"Tragedian" = /datum/prototype/struct/alt_title/entertainer/tragedian
+		/datum/prototype/struct/alt_title/entertainer/performer,
+		/datum/prototype/struct/alt_title/entertainer/musician,
+		/datum/prototype/struct/alt_title/entertainer/stagehand,
+		/datum/prototype/struct/alt_title/entertainer/actor,
+		/datum/prototype/struct/alt_title/entertainer/dancer,
+		/datum/prototype/struct/alt_title/entertainer/singer,
+		/datum/prototype/struct/alt_title/entertainer/magician,
+		/datum/prototype/struct/alt_title/entertainer/comedian,
+		/datum/prototype/struct/alt_title/entertainer/tragedian
 		)
 
 // Entertainer Alt Titles
