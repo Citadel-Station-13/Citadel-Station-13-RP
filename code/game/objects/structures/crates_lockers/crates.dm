@@ -557,6 +557,21 @@
 	icon_state = "scicrate"
 	//closet_appearance = /singleton/closet_appearance/crate/science
 
+/obj/structure/closet/crate/robotics
+	name = "robotics supply crate"
+	icon_state = "scicrate"
+	//closet_appearance = /singleton/closet_appearance/crate/science
+
+	starts_with = list(
+		/obj/item/stack/material/plasteel = 10,
+		/obj/fiftyspawner/steel = 5,
+		/obj/fiftyspawner/glass = 4,
+		/obj/item/cell/high = 4,
+		/obj/item/stack/cable_coil = 2,
+		/obj/item/flash/synthetic = 8,
+		/obj/item/healthanalyzer = 4,
+		/obj/item/storage/firstaid = 4)
+
 /obj/structure/closet/crate/hydroponics
 	name = "hydroponics crate"
 	desc = "All you need to destroy those pesky weeds and pests."
