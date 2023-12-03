@@ -5673,9 +5673,6 @@
 	icon_state = "4-8"
 	},
 /obj/structure/railing,
-/obj/effect/map_effect/portal/line/side_a{
-	dir = 4
-	},
 /turf/simulated/floor/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "dLp" = (
@@ -11389,9 +11386,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "hqG" = (
-/obj/effect/map_effect/portal/line/side_a{
-	dir = 4
-	},
 /turf/simulated/floor/tiled/steel_grid/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "hqO" = (
@@ -12666,11 +12660,6 @@
 /turf/simulated/floor/wood,
 /area/maintenance/starboard)
 "ieX" = (
-/obj/effect/map_effect/portal/master/side_a{
-	dir = 4;
-	name = "center_to_westplain";
-	portal_id = "westplainstep"
-	},
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "ieZ" = (
@@ -13583,9 +13572,6 @@
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "iFU" = (
-/obj/effect/map_effect/portal/line/side_a{
-	dir = 4
-	},
 /obj/structure/railing,
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 6
@@ -22023,9 +22009,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/hallway)
 "nNX" = (
-/obj/effect/map_effect/portal/line/side_a{
-	dir = 4
-	},
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "nOq" = (
@@ -24114,9 +24097,6 @@
 /turf/simulated/floor/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "oZW" = (
-/obj/effect/map_effect/portal/line/side_a{
-	dir = 4
-	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 9
 	},
@@ -36653,9 +36633,6 @@
 /area/rnd/xenobiology/xenoflora)
 "wCM" = (
 /obj/structure/railing,
-/obj/effect/map_effect/portal/line/side_a{
-	dir = 4
-	},
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "wDd" = (

@@ -811,11 +811,6 @@
 /turf/simulated/floor/tiled/steel/lythios43c,
 /area/rift/facility/interior/underground2)
 "il" = (
-/obj/effect/map_effect/portal/master/side_b{
-	dir = 8;
-	name = "westdeep_to_center";
-	portal_id = "westdeepstep"
-	},
 /turf/simulated/floor/sky/depths/west/lythios43c,
 /area/rift/surfacebase/outside/west_deep)
 "iq" = (
@@ -5484,9 +5479,6 @@
 /turf/simulated/floor/reinforced,
 /area/gateway)
 "Yw" = (
-/obj/effect/map_effect/portal/line/side_b{
-	dir = 8
-	},
 /turf/simulated/floor/sky/depths/west/lythios43c,
 /area/rift/surfacebase/outside/west_deep)
 "YA" = (

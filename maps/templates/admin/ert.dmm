@@ -1943,7 +1943,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/barracks)
 "pf" = (
-/obj/landmark/map_data/ert_ship,
 /turf/space,
 /area/space)
 "pg" = (

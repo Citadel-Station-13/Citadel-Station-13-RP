@@ -1022,7 +1022,7 @@
 	var/obj/structure/disposalpipe/P
 
 	if(nextdir == 12)
-		T = GetAbove(src)
+		T = get_vertical_step(src, UP)
 		if(!T)
 			H.forceMove(loc)
 			return
@@ -1072,7 +1072,7 @@
 	var/obj/structure/disposalpipe/P
 
 	if(nextdir == 11)
-		T = GetBelow(src)
+		T = get_vertical_step(src, DOWN)
 		if(!T)
 			H.forceMove(src.loc)
 			return

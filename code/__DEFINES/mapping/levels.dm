@@ -6,9 +6,11 @@
 /// Default - don't preprocess for unlinked sides, just leave them empty
 #define Z_LINKAGE_NORMAL "normal"
 /// Crosslinked - crosslink with other crosslinked zlevels at random using some semblence of continuity
-#define Z_LINKAGE_CROSSLINKED "crosslink"
+// todo: crosslink support
+// #define Z_LINKAGE_CROSSLINKED "crosslink"
 /// Selflooping - automatically link to itself for unlinked sides
-#define Z_LINKAGE_SELFLOOP "selfloop"
+// todo: selfloop support
+// #define Z_LINKAGE_SELFLOOP "selfloop"
 
 //? "transition"
 

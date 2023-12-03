@@ -47,9 +47,6 @@
 		"NDV Quicksilver" = list("specops_hangar")
 		)
 
-/obj/landmark/map_data/centcom
-    height = 1
-
 // ERT Shuttle can be found at '/maps/overmap/shuttles/specialops.dm'
 
 // EXCLUSIVE NAV POINT FOR DOCKING INSIDE (ERT SHUTTLE ONLY)

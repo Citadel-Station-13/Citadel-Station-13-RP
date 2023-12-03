@@ -3129,7 +3129,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hangar)
 "pf" = (
-/obj/landmark/map_data/manta_ship,
 /turf/space,
 /area/space)
 "pn" = (

@@ -21,11 +21,6 @@ var/list/flooring_cache = list()
 	if(LAZYLEN(decals))
 		add_overlay(decals)
 
-	// Show 'ceilingless' overlay.
-	var/turf/above = Above(src)
-	if(isopenturf(above) && !istype(src, /turf/simulated/floor/outdoors)) // This won't apply to outdoor turfs since its assumed they don't have a ceiling anyways.
-		add_overlay(GLOB.no_ceiling_image)
-
 	update_border_spillover() // sigh
 
 	. = ..()

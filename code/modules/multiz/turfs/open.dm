@@ -15,7 +15,7 @@
 /turf/simulated/open/Initialize(mapload)
 	. = ..()
 	icon_state = ""
-	ASSERT(HasBelow(z))
+	ASSERT(!isnull(below()))
 	queue()
 
 /turf/simulated/open/Entered(atom/movable/mover)
@@ -47,7 +47,7 @@
 	. = ..()
 	if(distance <= 2)
 		var/depth = 1
-		for(var/turf/T = GetBelow(src); (istype(T) && T.is_open()); T = GetBelow(T))
+		for(var/turf/T = below(); (istype(T) && T.is_open()); T = T.below())
 			depth += 1
 		to_chat(user, "It is about [depth] level\s deep.")
 
@@ -56,8 +56,7 @@
 	return TRUE
 
 /turf/simulated/open/is_space()
-	var/turf/below = GetBelow(src)
-	return !below || below.is_space()
+	return below()?.is_space()
 
 /turf/simulated/open/is_open()
 	return TRUE
@@ -67,7 +66,7 @@
 
 /turf/simulated/open/is_safe_to_enter(mob/living/L)
 	if(L.can_fall())
-		if(!locate(/obj/structure/stairs) in GetBelow(src))
+		if(!locate(/obj/structure/stairs) in below())
 			return FALSE
 	return ..()
 

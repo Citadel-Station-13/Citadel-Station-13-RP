@@ -1420,7 +1420,6 @@
 /turf/simulated/floor/plating,
 /area/talon/maintenance/decktwo_starboard)
 "qd" = (
-/obj/landmark/map_data/talon,
 /turf/space,
 /area/space)
 "qr" = (

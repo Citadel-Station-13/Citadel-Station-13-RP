@@ -216,3 +216,16 @@
 			to_chat(user, SPAN_NOTICE("You deconstruct \the [src]."))
 			ScrapeAway(flags = CHANGETURF_INHERIT_AIR|CHANGETURF_PRESERVE_OUTDOORS)
 			return TRUE
+
+//? Multiz
+
+/turf/simulated/floor/update_multiz()
+	update_ceilingless_overlay()
+
+/turf/simulated/floor/proc/update_ceilingless_overlay()
+	// Show 'ceilingless' overlay.
+	var/turf/above = above(src)
+	if(isopenturf(above) && !istype(src, /turf/simulated/floor/outdoors)) // This won't apply to outdoor turfs since its assumed they don't have a ceiling anyways.
+		add_overlay(GLOB.no_ceiling_image, TRUE)
+	else
+		cut_overlay(GLOB.no_ceiling_image, TRUE)

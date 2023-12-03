@@ -15,6 +15,7 @@
 		ZTRAIT_GRAVITY,
 	)
 	planet_path = /datum/planet/miaphus
+	air_outdoors = /datum/atmosphere/planet/classh
 
 /datum/map_level/sector/miaphus_192/beach
 	id = "MiaphusBeach192"
