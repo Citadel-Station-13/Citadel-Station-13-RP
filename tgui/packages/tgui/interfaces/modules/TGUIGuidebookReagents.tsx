@@ -12,7 +12,8 @@
  * @license MIT
  */
 
-import { useModule } from "../../backend";
+import { useLocalState, useModule } from "../../backend";
+import { Section, Stack, Tabs } from "../../components";
 import { Modular } from "../../layouts/Modular";
 import { TGUIGuidebookSectionData } from "./TGUIGuidebook";
 
@@ -44,6 +45,8 @@ interface TGUIGuidebookReagent {
   name: string;
   // description string
   desc: string;
+  // category
+  category: string;
 
   // alcohol strength
   alcoholStrength: number | null;
@@ -60,6 +63,8 @@ interface TGUIGuidebookReaction {
   name: string;
   // description string
   desc: string;
+  // category
+  category: string;
   // required reagent ids
   requiredReagents: string[];
   // result reagent id
@@ -70,11 +75,38 @@ interface TGUIGuidebookReaction {
 
 export const TGUIGuidebookReagents = (props: TGUIGuidebookReagentsData, context) => {
   let { act, data } = useModule<TGUIGuidebookReagentsData>(context);
+  const [activeTab, setActiveTab] = useLocalState<string | null>(context, 'activeReagentsTab', null);
+
+  let rendered = null;
+
+  switch (activeTab) {
+    case 'reagents':
+      break;
+    case 'reactions':
+      break;
+  }
 
   return (
-    <Modular>
-      {JSON.stringify(data)}
-      Test
+    <Modular window={{ width: 800, height: 800 }} section={{ fill: true }}>
+      <Stack vertical fill>
+        <Stack.Item>
+          <Tabs>
+            <Tabs.Tab selected={activeTab === "reagents"}
+              onClick={() => setActiveTab("reagents")}>
+              Reagents
+            </Tabs.Tab>
+            <Tabs.Tab selected={activeTab === "reactions"}
+              onClick={() => setActiveTab("reactions")}>
+              Reactions
+            </Tabs.Tab>
+          </Tabs>
+        </Stack.Item>
+        <Stack.Item grow={1}>
+          <Section>
+            {rendered}
+          </Section>
+        </Stack.Item>
+      </Stack>
     </Modular>
   );
 };

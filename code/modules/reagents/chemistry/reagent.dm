@@ -32,6 +32,8 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	//* Guidebook
 	/// guidebook flags
 	var/reagent_guidebook_flags = NONE
+	/// guidebook category
+	var/reagent_guidebook_category = "Unsorted"
 
 	//? legacy / unsorted
 	var/taste_description = "bitterness"
@@ -303,6 +305,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 		"id" = id,
 		"name" = display_name || name,
 		"desc" = display_desc || desc,
+		"category" = reagent_guidebook_category,
 		"flags" = reagent_flags,
 		"guidebookFlags" = reagent_guidebook_flags,
 		// todo: should this be here?

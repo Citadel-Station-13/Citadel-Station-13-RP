@@ -36,6 +36,8 @@
 	//* guidebook
 	/// guidebook flags
 	var/reaction_guidebook_flags = NONE
+	/// guidebook category
+	var/reaction_guidebook_category = "Unsorted"
 
 	//? legacy / unsorted
 	var/list/catalysts = list()
@@ -206,6 +208,7 @@
 	return list(
 		"name" = display_name || name,
 		"desc" = display_desc || desc,
+		"category" = reaction_guidebook_category,
 		"id" = id,
 		"flags" = NONE,
 		"guidebookFlags" = reaction_guidebook_flags,
