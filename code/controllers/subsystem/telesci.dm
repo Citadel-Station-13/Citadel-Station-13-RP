@@ -22,6 +22,8 @@ SUBSYSTEM_DEF(telesci)
 	scanner_lookup.len = new_z_count
 
 /datum/controller/subsystem/telesci/proc/register_bluespace_wake(datum/bluespace_wake/wake)
+	var/source_z = get_z(wake.source)
+	var/dest_z = get_z(wake.destination)
 
 /datum/controller/subsystem/telesci/proc/unregister_bluespace_wake(datum/bluespace_wake/wake)
 
