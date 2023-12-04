@@ -83,21 +83,18 @@
 	if(.)
 		return
 	if(!allowed(user))
-		to_chat(user, "access denied!")
+		to_chat(user, SPAN_WARNING("Access Denied!"))
 		return
 	if(machine_stat & (NOPOWER|BROKEN|EMPED))
-		to_chat(user, "controls are unresponsive!")
+		to_chat(user, SPAN_WARNING("The controls are unresponsive!"))
 		return
 	pick_sign(user)
 
 /obj/machinery/barsign/screwdriver_act(mob/living/user, obj/item/tool)
 	panel_open = !panel_open
 	if(panel_open)
-		to_chat(user, "panel opened")
 		set_sign(new /datum/barsign/hiddensigns/signoff)
 		return TRUE
-
-	to_chat(user, "panel closed")
 
 	if(machine_stat & (NOPOWER|BROKEN) || !chosen_sign)
 		set_sign(new /datum/barsign/hiddensigns/signoff)
@@ -111,14 +108,14 @@
 		var/obj/item/stack/cable_coil/wire = I
 
 		if(integrity >= integrity_max)
-			to_chat(user, "doesn't need repairs!")
+			to_chat(user, SPAN_INFO("The sign doesn't need repairs!"))
 			return TRUE
 
 		if(!wire.use(2))
-			to_chat(user, "need two cables!")
+			to_chat(user, SPAN_INFO("You need two cables to repair the sign!"))
 			return TRUE
 
-		to_chat(user, "repaired")
+		to_chat(user, SPAN_INFO("You repair the sign."))
 		integrity = integrity_max
 		machine_stat &= ~BROKEN
 		update_appearance()
@@ -149,10 +146,9 @@
 
 /obj/machinery/barsign/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(machine_stat & (NOPOWER|BROKEN|EMPED))
-		to_chat(user, "controls are unresponsive!")
+		to_chat((user, SPAN_WARNING("The controls are unresponsive!"))
 		return FALSE
 
-	to_chat(user, "illegal barsign loaded")
 	addtimer(CALLBACK(src, PROC_REF(finish_emag_act)), 10 SECONDS)
 	return TRUE
 
