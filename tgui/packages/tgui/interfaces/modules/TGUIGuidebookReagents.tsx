@@ -12,6 +12,7 @@
  * @license MIT
  */
 
+import { InfernoNode } from "inferno";
 import { useLocalState, useModule } from "../../backend";
 import { Section, Stack, Tabs } from "../../components";
 import { Modular } from "../../layouts/Modular";
@@ -73,16 +74,68 @@ interface TGUIGuidebookReaction {
   resultAmount: number;
 }
 
-export const TGUIGuidebookReagents = (props: TGUIGuidebookReagentsData, context) => {
+export const TGUIGuidebookReagents = (props, context) => {
   let { act, data } = useModule<TGUIGuidebookReagentsData>(context);
   const [activeTab, setActiveTab] = useLocalState<string | null>(context, 'activeReagentsTab', null);
 
-  let rendered = null;
+  let rendered: InfernoNode | null = null;
+  let categorizedReagents: Record<string, TGUIGuidebookReagent[]> = {};
+  let categorizedReactions: Record<string, TGUIGuidebookReaction[]> = {};
 
   switch (activeTab) {
     case 'reagents':
+      Object.values(data.reagents).forEach((reagent) => {
+        if (categorizedReagents[reagent.category] === undefined) {
+          categorizedReagents[reagent.category] = [];
+        }
+        categorizedReagents[reagent.category].push(reagent);
+      });
+      rendered = (
+        <Stack vertical>
+          {Object.entries(categorizedReagents).sort(([cat1, a1], [cat2, a2]) => cat1.localeCompare(cat2)).map(
+            ([cat, catReagents]) => (
+              <Stack.Item key={cat}>
+                <Section title={cat}>
+                  <Stack vertical>
+                    {catReagents.map((reagent) => (
+                      <Stack.Item key={reagent.id}>
+                        {reagent.name}
+                      </Stack.Item>
+                    ))}
+                  </Stack>
+                </Section>
+              </Stack.Item>
+            )
+          )}
+        </Stack>
+      );
       break;
     case 'reactions':
+      Object.values(data.reactions).forEach((reaction) => {
+        if (categorizedReactions[reaction.category] === undefined) {
+          categorizedReactions[reaction.category] = [];
+        }
+        categorizedReactions[reaction.category].push(reaction);
+      });
+      rendered = (
+        <Stack vertical>
+          {Object.entries(categorizedReactions).sort(([cat1, a1], [cat2, a2]) => cat1.localeCompare(cat2)).map(
+            ([cat, catReactions]) => (
+              <Stack.Item key={cat}>
+                <Section title={cat}>
+                  <Stack vertical>
+                    {catReactions.map((reaction) => (
+                      <Stack.Item key={reaction.id}>
+                        {reaction.name}
+                      </Stack.Item>
+                    ))}
+                  </Stack>
+                </Section>
+              </Stack.Item>
+            )
+          )}
+        </Stack>
+      );
       break;
   }
 
