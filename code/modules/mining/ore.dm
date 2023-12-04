@@ -1,48 +1,83 @@
-/obj/item/ore
+/obj/item/stack/ore
 	name = "small rock"
-	icon = 'icons/obj/mining.dmi'
-	icon_state = "ore2"
-	w_class = ITEMSIZE_SMALL
+	icon = 'icons/obj/stacks_ore.dmi'
+	icon_state = "ore"
+	no_variants = FALSE
+	w_class = ITEMSIZE_NORMAL
 	rad_flags = RAD_BLOCK_CONTENTS | RAD_NO_CONTAMINATE // uh let's like, not? it'd be funny but fields usually have like 400 pieces of ore in just a few tiles.
+	//^ not as horrible now that it's stacked but I'm keeping this. <3
+	singular_name = "ore"
+	max_amount = 50
+
 	var/datum/geosample/geologic_data
 	var/material
 
-/obj/item/ore/legacy_ex_act(severity)
+/obj/item/stack/ore/update_icon()
+	if(no_variants)
+		icon_state = initial(icon_state)
+	else //this is assuming that max_amount for ores will always be 50.
+		switch(amount)
+			if(-INFINITY to 1)
+				icon_state = initial(icon_state)
+			if(2 to 4)
+				icon_state = "[initial(icon_state)]_[amount]"
+			if(5 to 10)
+				icon_state = "[initial(icon_state)]_5"
+			if(11 to 26)
+				icon_state = "[initial(icon_state)]_6"
+			if(27 to INFINITY)
+				icon_state = "[initial(icon_state)]_7"
+		item_state = initial(icon_state)
+
+/obj/item/stack/ore/legacy_ex_act(severity)
 	return
 
-/obj/item/ore/uranium
+/obj/item/stack/ore/Initialize(mapload)
+	. = ..()
+	pixel_x = rand(0,16)-8
+	pixel_y = rand(0,8)-8
+
+/obj/item/stack/ore/attackby(obj/item/W as obj, mob/user as mob)
+	if(istype(W,/obj/item/core_sampler))
+		var/obj/item/core_sampler/C = W
+		C.sample_item(src, user)
+	else
+		return ..()
+
+/obj/item/stack/ore/uranium
 	name = "pitchblende"
-	icon_state = "ore_uranium"
+	icon_state = "uranium"
 	origin_tech = list(TECH_MATERIAL = 5)
-	material = "uranium"
+	material = MAT_URANIUM
 
-/obj/item/ore/iron
+/obj/item/stack/ore/iron
 	name = "hematite"
-	icon_state = "ore_iron"
+	icon_state = "iron"
 	origin_tech = list(TECH_MATERIAL = 1)
-	material = "hematite"
+	material = MAT_HEMATITE
 
-/obj/item/ore/coal
+/obj/item/stack/ore/coal
 	name = "raw carbon"
-	icon_state = "ore_coal"
+	icon_state = "coal"
 	origin_tech = list(TECH_MATERIAL = 1)
-	material = "carbon"
+	material = MAT_CARBON
 
-/obj/item/ore/marble
+/obj/item/stack/ore/marble
 	name = "recrystallized carbonate"
-	icon_state = "ore_marble"
+	icon_state = "marble"
 	origin_tech = list(TECH_MATERIAL = 1)
-	material = "marble"
+	material = MAT_MARBLE
 
-/obj/item/ore/glass
+/obj/item/stack/ore/glass
 	name = "sand"
-	icon_state = "ore_glass"
+	icon_state = "glass"
 	origin_tech = list(TECH_MATERIAL = 1)
 	material = "sand"
+	singular_name = "sand"
 	slot_flags = SLOT_HOLSTER
 
 // POCKET SAND!
-/obj/item/ore/glass/throw_impact(atom/hit_atom)
+/obj/item/stack/ore/glass/throw_impact(atom/hit_atom)
 	..()
 	var/mob/living/carbon/human/H = hit_atom
 	if(istype(H) && H.has_eyes() && prob(85))
@@ -50,56 +85,59 @@
 		H.Blind(5)
 		H.eye_blurry += 10
 		spawn(1)
-			if(istype(loc, /turf/)) qdel(src)
+			if(isturf(loc))
+				use(1) //oh no, they might toss the sand right back if you had more of it...
 
-
-/obj/item/ore/phoron
+/obj/item/stack/ore/phoron
 	name = "phoron crystals"
-	icon_state = "ore_phoron"
+	icon_state = "phoron"
+	singular_name = "crystal"
 	origin_tech = list(TECH_MATERIAL = 2)
-	material = "phoron"
+	material = MAT_PHORON
 
-/obj/item/ore/copper
+/obj/item/stack/ore/copper
 	name = "native copper ore"
-	icon_state = "ore_copper"
+	icon_state = "copper"
 	origin_tech = list(TECH_MATERIAL = 2)
-	material = "copper"
-/obj/item/ore/silver
+	material = MAT_COPPER
+
+/obj/item/stack/ore/silver
 	name = "native silver ore"
-	icon_state = "ore_silver"
+	icon_state = "silver"
 	origin_tech = list(TECH_MATERIAL = 3)
-	material = "silver"
+	material = MAT_SILVER
 
-/obj/item/ore/gold
+/obj/item/stack/ore/gold
 	name = "native gold ore"
-	icon_state = "ore_gold"
+	icon_state = "gold"
 	origin_tech = list(TECH_MATERIAL = 4)
-	material = "gold"
+	material = MAT_GOLD
 
-/obj/item/ore/diamond
+/obj/item/stack/ore/diamond
 	name = "diamonds"
-	icon_state = "ore_diamond"
+	icon_state = "diamond"
+	singular_name = "diamond"
 	origin_tech = list(TECH_MATERIAL = 6)
-	material = "diamond"
+	material = MAT_DIAMOND
 
-/obj/item/ore/osmium
+/obj/item/stack/ore/osmium
 	name = "raw platinum"
-	icon_state = "ore_platinum"
-	material = "platinum"
+	icon_state = "platinum"
+	material = MAT_PLATINUM
 
-/obj/item/ore/hydrogen
+/obj/item/stack/ore/hydrogen
 	name = "raw hydrogen"
-	icon_state = "ore_hydrogen"
-	material = "mhydrogen"
+	icon_state = "hydrogen"
+	material = MAT_METALHYDROGEN
 
-/obj/item/ore/verdantium
+/obj/item/stack/ore/verdantium
 	name = "verdantite dust"
-	icon_state = "ore_verdantium"
+	icon_state = "verdantium"
 	material = MAT_VERDANTIUM
 	origin_tech = list(TECH_MATERIAL = 7)
 
 // POCKET ... Crystal dust.
-/obj/item/ore/verdantium/throw_impact(atom/hit_atom)
+/obj/item/stack/ore/verdantium/throw_impact(atom/hit_atom)
 	..()
 	var/mob/living/carbon/human/H = hit_atom
 	if(istype(H) && H.has_eyes() && prob(85))
@@ -107,35 +145,25 @@
 		H.Blind(10)
 		H.eye_blurry += 15
 		spawn(1)
-			if(istype(loc, /turf/)) qdel(src)
+			if(isturf(loc))
+				use(1)
 
-/obj/item/ore/lead
+/obj/item/stack/ore/lead
 	name = "lead glance"
-	icon_state = "ore_lead"
+	icon_state = "lead"
 	material = MAT_LEAD
 	origin_tech = list(TECH_MATERIAL = 3)
 
-/obj/item/ore/slag
+/obj/item/stack/ore/slag
 	name = "Slag"
 	desc = "Someone screwed up..."
+	singular_name = "slag"
 	icon_state = "slag"
 	material = null
 
-/obj/item/ore/Initialize(mapload)
-	. = ..()
-	pixel_x = rand(0,16)-8
-	pixel_y = rand(0,8)-8
-
-/obj/item/ore/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W,/obj/item/core_sampler))
-		var/obj/item/core_sampler/C = W
-		C.sample_item(src, user)
-	else
-		return ..()
-
 //Vaudium
-/obj/item/ore/vaudium
+/obj/item/stack/ore/vaudium
 	name = "raw vaudium"
-	icon_state = "ore_vaudium"
+	icon_state = "vaudium"
 	material = MAT_VAUDIUM
 	origin_tech = list(TECH_MATERIAL = 7)

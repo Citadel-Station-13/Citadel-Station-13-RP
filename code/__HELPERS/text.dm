@@ -334,7 +334,7 @@
 		" ive "    = " I've ",
 		"whove"    = "who've",
 		"whod"     = "who’d",
-		"whats"    = "what’s",
+		"whats "    = "what’s ",
 		"whatd"    = "what’d",
 		"thats"    = "that’s",
 		"thatll"   = "that’ll",

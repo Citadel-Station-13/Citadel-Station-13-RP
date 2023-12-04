@@ -169,6 +169,9 @@
 	glass_name = "water"
 	glass_desc = "The father of all refreshments."
 
+	cup_name = "water"
+	cup_desc = "The father of all refreshments."
+
 /datum/reagent/water/touch_turf(turf/simulated/T)
 	if(!istype(T))
 		return

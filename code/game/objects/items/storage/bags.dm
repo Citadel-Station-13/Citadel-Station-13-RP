@@ -110,6 +110,7 @@
 // -----------------------------
 /*
  * Mechoid - Orebags are the most common quick-gathering thing, and also have tons of lag associated with it. Their checks are going to be hyper-simplified due to this, and their INCREDIBLY singular target contents.
+ * this now functions like an ore box, but limited capacity. - Blubelle
  */
 
 /obj/item/storage/bag/ore
@@ -119,10 +120,12 @@
 	icon_state = "satchel"
 	slot_flags = SLOT_BELT | SLOT_POCKET
 	w_class = ITEMSIZE_NORMAL
-	max_storage_space = ITEMSIZE_COST_NORMAL * 25
+	max_storage_space = ITEMSIZE_COST_NORMAL * 25 //kinda irrelevant now :^)
 	max_w_class = ITEMSIZE_NORMAL
-	can_hold = list(/obj/item/ore)
+	can_hold = list(/obj/item/stack/ore)
 	var/stored_ore = list()
+	var/total_ore = 0 //current ore stored
+	var/max_ore = 200 //how much ore it can hold
 	var/last_update = 0
 
 /obj/item/storage/bag/ore/update_w_class()
@@ -131,26 +134,30 @@
 /obj/item/storage/bag/ore/gather_all(turf/T as turf, mob/user as mob, var/silent = 0)
 	var/success = 0
 	var/failure = 0
-	for(var/obj/item/ore/I in T) //Only ever grabs ores. Doesn't do any extraneous checks, as all ore is the same size. Tons of checks means it causes hanging for up to three seconds.
-		if(contents.len >= max_storage_space)
+	for(var/obj/item/stack/ore/I in T) //Only ever grabs ores. Doesn't do any extraneous checks, as all ore is the same size. Tons of checks means it causes hanging for up to three seconds.
+		if(istype(user.pulling, /obj/structure/ore_box))
+			var/obj/structure/ore_box/O = user.pulling
+			I.forceMove(O)
+			if(world.time < last_message && !silent)
+				to_chat(user, "<span class='notice'>You put the contents you scooped up into [O].</span>")
+				last_message = world.time + 10
+		else if(total_ore >= max_ore || contents.len >= max_storage_space)
 			failure = 1
 			break
-		I.forceMove(src)
-		success = 1
+		else
+			I.forceMove(src)
+			success = 1
 	if(success && !failure && !silent)
-		if(world.time >= last_message == 0)
+		if(world.time < last_message == 0)
 			to_chat(user, "<span class='notice'>You put everything in [src].</span>")
 			last_message = world.time + 10
-	else if(success && (!silent || (silent && contents.len >= max_storage_space)))
+	else if (success && (!silent || total_ore >= max_ore))
 		to_chat(user, "<span class='notice'>You fill the [src].</span>")
 		last_message = world.time + 10
 	else if(!silent)
 		if(world.time >= last_message == 0)
 			to_chat(user, "<span class='notice'>You fail to pick anything up with \the [src].</span>")
 			last_message = world.time + 90
-	if(istype(user.pulling, /obj/structure/ore_box)) // buffy fix with last_message, no more spam
-		var/obj/structure/ore_box/O = user.pulling
-		O.attackby(src, user)
 
 /obj/item/storage/bag/ore/equipped(mob/user, slot, flags)
 	. = ..()
@@ -161,9 +168,78 @@
 	UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
 
 /obj/item/storage/bag/ore/proc/autoload(datum/source, atom/oldLoc, dir, forced)
-	var/obj/item/ore/O = locate() in get_turf(src)
+	var/obj/item/stack/ore/O = locate() in get_turf(src)
 	if(O)
 		gather_all(get_turf(src), ismob(source)? source : null)
+
+/obj/item/storage/bag/ore/attack_self(mob/user)
+	. = ..()
+
+	if(isOreEmpty())
+		to_chat(user, SPAN_WARNING("[src] is empty."))
+		return
+
+	to_chat(user, SPAN_NOTICE("You begin emptying [src]."))
+
+	if(do_after(usr,10,src))
+		while(!isOreEmpty())
+			if(!do_after(user, 2, src))
+				to_chat(user,SPAN_NOTICE("You stop emptying [src]."))
+				return
+			var/atom/A = drop_location()
+			if(!A || (length(A.contents) > 200))
+				to_chat(user, SPAN_WARNING("The area under [src] is too full."))
+				return
+			deposit(A,50)
+		to_chat(user,SPAN_NOTICE("You finish emptying [src]."))
+
+/obj/item/storage/bag/ore/Entered(atom/movable/AM, atom/oldLoc)
+	. = ..()
+	if(istype(AM, /obj/item/stack/ore))
+		take(AM)
+	else //shouldn't be possible unless someone's adminbussing weirdly.
+		AM.forceMove(drop_location())
+
+/obj/item/storage/bag/ore/drop_products(method, atom/where)
+	. = ..()
+	var/i = 0
+	while(!isOreEmpty() && i < 200) //may be laggy as hell if they're carrying 2,000+ sand, so capping it at 200 items dropped.
+		deposit(where, 50)
+		i++
+
+/obj/item/storage/bag/ore/proc/take(obj/item/stack/ore/O)
+	if(!istype(O))
+		return
+	var/overflow = max((total_ore + O.amount) - max_ore, 0)
+	var/store_amount = O.amount - overflow
+
+	if(!stored_ore[O.type])
+		stored_ore[O.type] = store_amount
+	else
+		stored_ore[O.type] += store_amount
+	total_ore += O.amount
+
+	if(overflow)
+		O.use(store_amount)
+		O.forceMove(drop_location())
+	else
+		qdel(O)
+
+/obj/item/storage/bag/ore/proc/deposit(atom/newloc, amount = 50)
+	if(isOreEmpty())
+		return FALSE
+	var/path = stored_ore[1]
+	if(amount > stored_ore[path])
+		amount = stored_ore[path]
+	new path(newloc, amount)
+	stored_ore[path] -= amount
+	total_ore -= amount
+	if(stored_ore[path] <= 0)
+		stored_ore -= path
+	return TRUE
+
+/obj/item/storage/bag/ore/proc/isOreEmpty()
+	return !length(stored_ore)
 
 /obj/item/storage/bag/ore/examine(mob/user, dist)
 	. = ..()
@@ -171,33 +247,20 @@
 		return
 	if(istype(user, /mob/living))
 		add_fingerprint(user)
-	if(!contents.len)
+	if(isOreEmpty())
 		. += "It is empty."
 		return
 
 	if(world.time > last_update + 10)
-		update_ore_count()
 		last_update = world.time
 
 	. += "<span class='notice'>It holds:</span>"
 	for(var/ore in stored_ore)
-		. += "<span class='notice'>- [stored_ore[ore]] [ore]</span>"
+		var/obj/item/stack/ore/O = ore
+		. += "<span class='notice'>- [stored_ore[ore]] [initial(O.name)]</span>"
 
-/obj/item/storage/bag/ore/open(mob/user as mob) //No opening it for the weird UI of having shit-tons of ore inside it.
-	if(world.time > last_update + 10)
-		update_ore_count()
-		last_update = world.time
-		user.do_examinate(src)
-
-/obj/item/storage/bag/ore/proc/update_ore_count() //Stolen from ore boxes.
-
-	stored_ore = list()
-
-	for(var/obj/item/ore/O in contents)
-		if(stored_ore[O.name])
-			stored_ore[O.name]++
-		else
-			stored_ore[O.name] = 1
+/obj/item/storage/bag/ore/open(mob/user as mob) //No opening it since the ores are nonexistent
+	user.do_examinate(src)
 
 //Ashlander variant!
 /obj/item/storage/bag/ore/ashlander

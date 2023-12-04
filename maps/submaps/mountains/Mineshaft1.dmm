@@ -53,30 +53,30 @@
 /turf/simulated/floor/tiled,
 /area/submap/cave/AMine1)
 "n" = (
-/obj/item/ore/gold,
+/obj/item/stack/ore/gold,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/AMine1)
 "o" = (
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
+/obj/item/stack/ore/gold,
+/obj/item/stack/ore/gold,
+/obj/item/stack/ore/gold,
+/obj/item/stack/ore/gold,
+/obj/item/stack/ore/gold,
+/obj/item/stack/ore/gold,
+/obj/item/stack/ore/gold,
+/obj/item/stack/ore/gold,
+/obj/item/stack/ore/gold,
+/obj/item/stack/ore/gold,
+/obj/item/stack/ore/gold,
+/obj/item/stack/ore/gold,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/AMine1)
 "p" = (
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
+/obj/item/stack/ore/gold,
+/obj/item/stack/ore/gold,
+/obj/item/stack/ore/gold,
+/obj/item/stack/ore/gold,
+/obj/item/stack/ore/gold,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/AMine1)
 "q" = (

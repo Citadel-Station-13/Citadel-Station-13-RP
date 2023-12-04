@@ -20,7 +20,7 @@ GLOBAL_LIST_INIT(wallframe_typecache, typecacheof(list(
 	color = "#57575c" //To display in mapping softwares
 	density = TRUE
 	anchored = TRUE
-	pass_flags_self = ATOM_PASS_TABLE | ATOM_PASS_THROWN
+	pass_flags_self = ATOM_PASS_TABLE | ATOM_PASS_THROWN | ATOM_PASS_CLICK
 	layer = LOW_WALL_LAYER
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_LOW_WALL)

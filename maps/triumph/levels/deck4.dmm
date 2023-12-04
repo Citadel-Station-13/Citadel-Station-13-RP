@@ -18596,7 +18596,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/primary/aft)
 "mIv" = (
-/obj/landmark/map_data/triumph,
 /turf/space,
 /area/space)
 "mID" = (

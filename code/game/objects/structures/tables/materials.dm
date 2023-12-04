@@ -14,7 +14,7 @@
 	)))
 	// sigh
 	if(SSatoms.initialized == INITIALIZATION_INNEW_REGULAR)
-		update_connections()
+		update_connections(TRUE)
 		update_appearance()
 
 /obj/structure/table/material_get_parts()

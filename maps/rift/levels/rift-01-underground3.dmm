@@ -83,9 +83,6 @@
 /area/quartermaster/mining_airlock)
 "eW" = (
 /obj/effect/zone_divider,
-/obj/effect/map_effect/portal/line/side_a{
-	dir = 4
-	},
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "fs" = (
@@ -206,9 +203,6 @@
 "ln" = (
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
-/obj/effect/map_effect/portal/line/side_a{
-	dir = 4
-	},
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "lH" = (
@@ -319,11 +313,6 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/turbolift/rmine/under3)
 "rZ" = (
-/obj/effect/map_effect/portal/master/side_a{
-	dir = 4;
-	name = "center_to_westbase";
-	portal_id = "westbasestep"
-	},
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "sc" = (
@@ -398,9 +387,6 @@
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "wN" = (
-/obj/effect/map_effect/portal/line/side_a{
-	dir = 4
-	},
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "wV" = (
@@ -765,9 +751,6 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/quartermaster/mining_airlock)
 "SW" = (
-/obj/effect/map_effect/portal/line/side_a{
-	dir = 4
-	},
 /turf/simulated/floor/outdoors/gravsnow/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "Tr" = (

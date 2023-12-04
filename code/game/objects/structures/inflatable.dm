@@ -11,6 +11,7 @@
 
 	integrity = 30
 	integrity_max = 30
+	armor_type = /datum/armor/none
 
 	hit_sound_brute = 'sound/effects/Glasshit.ogg'
 
