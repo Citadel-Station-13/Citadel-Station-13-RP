@@ -5230,7 +5230,7 @@
 	},
 /area/centcom/security)
 "qM" = (
-/obj/structure/sign/double/barsign,
+/obj/machinery/barsign,
 /turf/unsimulated/wall,
 /area/centcom/restaurant)
 "qQ" = (

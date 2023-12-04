@@ -4929,7 +4929,7 @@
 /turf/simulated/floor/wood,
 /area/centcom/simulated/restaurant)
 "oT" = (
-/obj/structure/sign/double/barsign{
+/obj/machinery/barsign{
 	dir = 8
 	},
 /turf/unsimulated/wall,

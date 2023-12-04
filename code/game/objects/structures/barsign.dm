@@ -146,7 +146,7 @@
 
 /obj/machinery/barsign/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(machine_stat & (NOPOWER|BROKEN|EMPED))
-		to_chat((user, SPAN_WARNING("The controls are unresponsive!"))
+		to_chat(user, SPAN_WARNING("The controls are unresponsive!"))
 		return FALSE
 
 	addtimer(CALLBACK(src, PROC_REF(finish_emag_act)), 10 SECONDS)
@@ -388,7 +388,7 @@
 	name = "Little Treats Tea Room"
 	icon_state = "little_treats"
 	desc = "A delightfully relaxing tearoom for all the fancy lads in the cosmos."
-	neon_color = COLOR_LIGHT_ORANGE
+	neon_color = COLOR_ORANGE
 
 /datum/barsign/assembly_line
 	name = "The Assembly Line"
