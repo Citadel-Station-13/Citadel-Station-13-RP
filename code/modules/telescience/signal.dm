@@ -104,13 +104,18 @@
 		register(host)
 
 /datum/bluespace_signal/proc/register(atom/host)
-	#warn impl
+	RegisterSignal(host, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(z_changed))
+	z_index = get_z(host)
+	SStelesci.register_bluespace_signal(src)
 
 /datum/bluespace_signal/proc/unregister(atom/host)
-	#warn impl
+	UnregisterSignal(host, COMSIG_MOVABLE_Z_CHANGED)
+	SStelesci.unregister_bluespace_signal(src)
+	z_index = null
 
 /datum/bluespace_signal/proc/z_changed(datum/source, old_z, new_z)
-	#warn impl
+	z_index = new_z
+	SStelesci.z_change_bluespace_signal(src, old_z, new_z)
 
 /**
  * rebuild everything; call this after modifying *any* variables.

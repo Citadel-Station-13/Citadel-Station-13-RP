@@ -34,13 +34,18 @@
 	register(host)
 
 /datum/bluespace_jamming/proc/register(atom/host)
-	#warn impl
+	RegisterSignal(host, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(z_changed))
+	z_index = get_z(host)
+	SStelesci.register_bluespace_jamming(src)
 
 /datum/bluespace_jamming/proc/unregister(atom/host)
-	#warn impl
+	UnregisterSignal(host, COMSIG_MOVABLE_Z_CHANGED)
+	SStelesci.unregister_bluespace_jamming(src)
+	z_index = null
 
 /datum/bluespace_jamming/proc/z_changed(datum/source, old_z, new_z)
-	#warn impl
+	z_index = new_z
+	SStelesci.z_change_bluespace_jamming(src, old_z, new_z)
 
 /**
  * Gets power coefficient to target
@@ -66,12 +71,17 @@
  * exponential falloff
  */
 /datum/bluespace_jamming/exponential
+	/// distance between falloff begins
+	var/grace = 5
 	var/exponent = 1/2
 	var/factor = 1
 
 /datum/bluespace_jamming/exponential/coefficient(turf/target)
 	var/turf/us = get_turf(host)
-	return exponent ** (game_range_to(us, target) * factor)
+	var/dist = game_range_to(us, target)
+	if(grace >= dist)
+		return 1
+	return exponent ** (dist * factor)
 
 /**
  * linear falloff
@@ -84,7 +94,7 @@
 
 /datum/bluespace_jamming/linear/coefficient(turf/target)
 	var/turf/us = get_turf(host)
-	var/dist = get_dist(us, target)
+	var/dist = game_range_to(us, target)
 	if(grace >= dist)
 		return 1
 	return max(0, 1 - ((dist - grace) * falloff))

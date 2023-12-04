@@ -38,6 +38,10 @@
 	. = ..()
 	.["powerMax"] = power_max
 
+/obj/machinery/teleporter/bluespace_scanner/on_changed_z_level(old_z, new_z)
+	. = ..()
+	SStelesci.z_change_bluespace_scanner(src, old_z, new_z)
+
 //! WARNING WARNING LEGACY SHITCODE
 //! REFACTORING ON POWERNET REFACTOR.
 
