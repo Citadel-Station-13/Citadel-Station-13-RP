@@ -93,13 +93,13 @@
 /datum/chemical_reaction/proc/generate()
 	var/datum/reagent/resolved = SSchemistry.get_reagent(result)
 	if(isnull(name))
-		name = resolved.name
-		if(isnull(display_name))
+		name = resolved?.name || "???"
+		if(isnull(display_name) && !isnull(resolved))
 			display_name = resolved.display_name
 
 	if(isnull(desc))
-		desc = resolved.desc
-		if(isnull(display_desc))
+		desc = resolved?.desc || "Unknown Description - contact coders."
+		if(isnull(display_desc) && !isnull(resolved))
 			display_desc = resolved.display_desc
 
 /datum/chemical_reaction/proc/can_happen(datum/reagents/holder)

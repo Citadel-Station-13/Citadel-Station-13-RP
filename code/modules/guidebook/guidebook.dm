@@ -39,15 +39,17 @@ GLOBAL_DATUM_INIT(guidebook, /datum/guidebook, new)
 /datum/guidebook/proc/open(mob/user, list/datum/prototype/guidebook_section/sections)
 	// build
 	var/list/built = list()
-	var/list/sections = list()
 	var/list/hash = list()
+	var/list/fetched = list()
+	var/list/lookup = list()
 	// preprocess sections & inject
 	for(var/datum/prototype/guidebook_section/section as anything in sections)
 		if(!istype(section))
 			section = RCguidebook.fetch(section)
 			if(!istype(section))
 				CRASH("invalid section, aborting")
-			hash += section.id
+		fetched += section
+		hash += section.id
 	// hash
 	hash = jointext(hash, "-")
 	// check if we need to re-open
@@ -55,11 +57,17 @@ GLOBAL_DATUM_INIT(guidebook, /datum/guidebook, new)
 		return
 	opened[user] = hash
 	// inject
-	for(var/datum/prototype/guidebook_section/section as anything in sections)
+	for(var/datum/prototype/guidebook_section/section as anything in fetched)
 		built[section.id] = section.interface_data()
-		sections[section.id] = section.title
+		lookup[section.id] = section.title
 	// open
 	ui_interact(user)
 	// send
 	push_ui_modules(user, updates = built)
-	push_ui_data(user, data = list("sections" = sections))
+	push_ui_data(user, data = list("sections" = lookup))
+
+/client/verb/access_guidebook()
+	set name = "Access Guidebook"
+	set category = "OOC"
+
+	GLOB.guidebook.ui_interact(src)
