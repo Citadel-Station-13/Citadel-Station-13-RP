@@ -3,6 +3,7 @@
 
 /datum/prototype/guidebook_section/reagents
 	title = "Reagents"
+	id = "reagents"
 
 /datum/prototype/guidebook_section/reagents/section_data()
 	. = ..()

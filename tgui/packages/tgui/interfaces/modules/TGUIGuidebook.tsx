@@ -17,7 +17,7 @@ export const TGUIGuidebook = (props, context) => {
   return (
     <Window width={800} height={800}>
       <Window.Content>
-        {data}
+        {JSON.stringify(data)}
         Test
       </Window.Content>
     </Window>

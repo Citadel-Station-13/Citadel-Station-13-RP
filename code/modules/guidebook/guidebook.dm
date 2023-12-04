@@ -12,13 +12,6 @@ GLOBAL_DATUM_INIT(guidebook, /datum/guidebook, new)
 	/// open instances mapped to list of ids
 	var/list/opened = list()
 
-/datum/guidebook/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
-	ui = SStgui.try_update_ui(user, src, ui)
-	if(isnull(ui))
-		ui = new(user, src, "TGUIGuidebook")
-		ui.set_autoupdate(FALSE)
-		ui.open()
-
 /datum/guidebook/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.always_state
 
@@ -61,10 +54,14 @@ GLOBAL_DATUM_INIT(guidebook, /datum/guidebook, new)
 		built[section.id] = section.interface_data()
 		lookup[section.id] = section.title
 	// open
-	ui_interact(user)
-	// send
-	push_ui_modules(user, updates = built)
-	push_ui_data(user, data = list("sections" = lookup))
+	var/datum/tgui/ui = SStgui.try_update_ui(user, src)
+	if(isnull(ui))
+		ui = new(user, src, "TGUIGuidebook")
+		ui.set_autoupdate(FALSE)
+		ui.open(data = list("sections" = lookup), modules = built)
+	else
+		push_ui_modules(user, updates = built)
+		push_ui_data(user, data = list("sections" = lookup))
 
 /client/verb/access_guidebook()
 	set name = "Access Guidebook"
