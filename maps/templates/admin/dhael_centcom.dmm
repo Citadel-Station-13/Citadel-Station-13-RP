@@ -14284,7 +14284,7 @@
 	},
 /area/centcom/security)
 "VX" = (
-/obj/structure/sign/double/barsign{
+/obj/machinery/barsign{
 	dir = 1
 	},
 /turf/unsimulated/floor/wood,

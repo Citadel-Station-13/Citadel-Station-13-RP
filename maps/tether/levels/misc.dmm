@@ -3522,7 +3522,7 @@
 /turf/simulated/floor/lino,
 /area/space)
 "IA" = (
-/obj/structure/sign/double/barsign{
+/obj/machinery/barsign{
 	dir = 8
 	},
 /turf/unsimulated/wall,
