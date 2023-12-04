@@ -21,5 +21,3 @@
 		log_and_message_admins("[src] failed to locate telecoms hub, no autoconnection possible.")
 	else
 		LAZYDISTINCTADD(station_hub.links, created)
-message_ad
-
