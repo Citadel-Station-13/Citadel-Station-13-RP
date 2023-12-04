@@ -168,11 +168,6 @@
 	else
 		to_chat(user, "<span class='notice'>\The [src] is already powering up!</span>")
 
-//_vr Items:
-
-/obj/item/gun/projectile/energy/ionrifle/weak
-	projectile_type = /obj/projectile/ion/small
-
 /obj/item/gun/projectile/energy/medigun //Adminspawn/ERT etc
 	name = "directed restoration system"
 	desc = "The BL-3 'Phoenix' is an adaptation on the ML-3 'Medbeam' design that channels the power of the beam into a single healing laser. It is highly energy-inefficient, but its medical power cannot be denied."
@@ -190,92 +185,6 @@
 	accept_cell_initial = /obj/item/cell
 	cell_initial = /obj/item/cell/high
 	charge_cost = 2500
-
-/obj/item/gun/projectile/energy/service
-	name = "service weapon"
-	icon_state = "service_grip"
-	item_state = "service_grip"
-	desc = "An anomalous weapon, long kept secure. It has recently been acquired by NanoTrasen's Paracausal Monitoring Division. How did it get here?"
-	damage_force = 5
-	slot_flags = SLOT_BELT
-	w_class = ITEMSIZE_NORMAL
-	projectile_type = /obj/projectile/bullet/pistol/medium/silver
-	origin_tech = null
-	fire_delay = 10		//Old pistol
-	charge_cost = 480	//to compensate a bit for self-recharging
-	cell_initial = /obj/item/cell/device/weapon/recharge/captain
-	battery_lock = 1
-	one_handed_penalty = 0
-	safety_state = GUN_SAFETY_OFF
-
-/obj/item/gun/projectile/energy/service/attack_self(mob/user)
-	. = ..()
-	if(.)
-		return
-	cycle_weapon(user)
-
-/obj/item/gun/projectile/energy/service/proc/cycle_weapon(mob/living/L)
-	var/obj/item/service_weapon
-	var/list/service_weapon_list = subtypesof(/obj/item/gun/projectile/energy/service)
-	var/list/display_names = list()
-	var/list/service_icons = list()
-	for(var/V in service_weapon_list)
-		var/obj/item/gun/projectile/energy/service/weapontype = V
-		if (V)
-			display_names[initial(weapontype.name)] = weapontype
-			service_icons += list(initial(weapontype.name) = image(icon = initial(weapontype.icon), icon_state = initial(weapontype.icon_state)))
-
-	service_icons = sortList(service_icons)
-
-	var/choice = show_radial_menu(L, src, service_icons)
-	if(!choice || !check_menu(L))
-		return
-
-	var/A = display_names[choice] // This needs to be on a separate var as list member access is not allowed for new
-	service_weapon = new A
-
-	if(service_weapon)
-		qdel(src)
-		L.put_in_active_hand(service_weapon)
-
-/obj/item/gun/projectile/energy/service/proc/check_menu(mob/user)
-	if(!istype(user))
-		return FALSE
-	if(QDELETED(src))
-		return FALSE
-	if(user.incapacitated())
-		return FALSE
-	return TRUE
-
-/obj/item/gun/projectile/energy/service/grip
-
-/obj/item/gun/projectile/energy/service/shatter
-	name = "service weapon (shatter)"
-	icon_state = "service_shatter"
-	projectile_type = /obj/projectile/bullet/pellet/shotgun/silver
-	fire_delay = 15		//Increased by 50% for strength.
-	charge_cost = 600	//Charge increased due to shotgun round.
-
-/obj/item/gun/projectile/energy/service/spin
-	name = "service weapon (spin)"
-	icon_state = "service_spin"
-	projectile_type = /obj/projectile/bullet/pistol/spin
-	fire_delay = 0	//High fire rate.
-	charge_cost = 80	//Lower cost per shot to encourage rapid fire.
-
-/obj/item/gun/projectile/energy/service/pierce
-	name = "service weapon (pierce)"
-	icon_state = "service_pierce"
-	projectile_type = /obj/projectile/bullet/rifle/a762/ap/silver
-	fire_delay = 15		//Increased by 50% for strength.
-	charge_cost = 600	//Charge increased due to sniper round.
-
-/obj/item/gun/projectile/energy/service/charge
-	name = "service weapon (charge)"
-	icon_state = "service_charge"
-	projectile_type = /obj/projectile/bullet/burstbullet/service    //Formerly: obj/projectile/bullet/gyro. A little too robust.
-	fire_delay = 20
-	charge_cost = 800	//Three shots.
 
 /datum/firemode/energy/puzzle_key
 	projectile_type = /obj/projectile/beam/emitter
@@ -295,34 +204,6 @@
 	cell_initial = /obj/item/cell/device/weapon/recharge/captain
 	battery_lock = 1
 	one_handed_penalty = 0
-
-/datum/firemode/energy/emitter_rifle
-	projectile_type = /obj/projectile/beam/emitter
-	charge_cost = 900
-	fire_delay = 1 SECONDS
-
-/obj/item/gun/energy/ermitter
-	name = "Ermitter rifle"
-	desc = "A industrial energy projector turned into a crude, portable weapon - the Tyrmalin answer to armored hardsuits used by pirates. What it lacks in precision, it makes up for in firepower. The 'Ermitter' rifle cell receptacle has been heavily modified."
-	icon_state = "ermitter_gun"
-	item_state = "pulse"
-	firemodes = list(/datum/firemode/energy/emitter_rifle)
-	cell_initial = /obj/item/cell
-	accept_cell_initial = /obj/item/cell
-	slot_flags = SLOT_BELT|SLOT_BACK
-	w_class = ITEMSIZE_LARGE
-	heavy = TRUE
-	damage_force = 10
-	origin_tech = list(TECH_COMBAT = 3, TECH_ENGINEERING = 3, TECH_MAGNET = 2)
-	materials_base = list(MAT_STEEL = 2000, MAT_GLASS = 1000)
-	one_handed_penalty = 50
-
-/obj/item/gun/energy/ionrifle/pistol/tyrmalin
-	name = "botbuster pistol"
-	desc = "These jury-rigged pistols are sometimes fielded by Tyrmalin facing synthetic pirates or malfunctioning machinery. Capable of discharging a single ionized bolt before needing to recharge, they're often treated as holdout or ambush weapons."
-	icon_state = "botbuster"
-	charge_cost = 1300
-	projectile_type = /obj/projectile/ion/pistol
 
 /obj/item/gun/projectile/energy/jezzail
 	name = "Microfission Jezzail"
