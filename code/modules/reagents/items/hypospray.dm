@@ -22,8 +22,10 @@
 	/// delay add if person is resisting. null to disallow inject.
 	var/resist_add_time = 2 SECONDS
 	/// delay add to injection port items (like hardsuits). null to disallow inject. overriden by thick_add_time.
+	//  todo: this is not actually overridden by thick_add_time, fix that; both should be considered at once and the lower should be taken.
 	var/port_add_time = 1 SECONDS
 	/// delay add to thickmaterial suits. null to disallow inject. overrides port_add_time.
+	//  todo: this is not actually overridden by port_add_time, fix that; both should be considered at once and the lower should be taken.
 	var/thick_add_time = null
 	/// injection amount
 	var/inject_amount = 5
@@ -159,7 +161,7 @@
 	// got all coverage, proceed.
 	var/delay = injection_time
 	if(block_flags & CLOTHING_INJECTION_PORT)
-		if(isnull(thick_add_time))
+		if(isnull(port_add_time))
 			user.action_feedback(SPAN_WARNING("[src] is not compatible with injection ports!"), src)
 			return FALSE
 		delay += port_add_time
