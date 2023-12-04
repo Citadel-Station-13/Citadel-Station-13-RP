@@ -1816,17 +1816,10 @@
 	glass_name = "KyoCola Sakura"
 	glass_desc = "A glass of limited edition KyoCola Sakura."
 
-<<<<<<< HEAD
-/datum/reagent/drink/soda/nicola/blue
-	name = "NiCola Blue"
-	id = "nicolablue"
-	desc = "A limited edition NiCola flavor praised for its refreshing taste."
-=======
 /datum/reagent/drink/soda/kyocola/blue
 	name = "KyoCola Blue"
 	id = "kyocolablue"
-	description = "A limited edition KyoCola flavor praised for its refreshing taste."
->>>>>>> citrp/master
+	desc = "A limited edition KyoCola flavor praised for its refreshing taste."
 	taste_description = "cough syrup, violets, and cola"
 	color = "#271402"
 
@@ -2537,13 +2530,8 @@
 /datum/reagent/ethanol/vodka
 	name = "Vodka"
 	id = "vodka"
-<<<<<<< HEAD
 	desc = "Number one drink AND fueling choice for Russians worldwide."
-	taste_description = "grain alcohol"
-=======
-	description = "Number one drink AND fueling choice for Russians worldwide."
 	taste_description = "potato alcohol"
->>>>>>> citrp/master
 	color = "#0064C8" // rgb: 0, 100, 200
 	strength = 15
 
