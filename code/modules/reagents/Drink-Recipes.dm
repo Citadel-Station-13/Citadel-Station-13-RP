@@ -462,32 +462,32 @@
 	required_reagents = list("grapejuice" = 2, "cola" = 1)
 	result_amount = 3
 
-/datum/chemical_reaction/drinks/nicola
-	name = "NiCola"
-	id = "nicola"
-	result = "nicola"
+/datum/chemical_reaction/drinks/kyocola
+	name = "KyoCola"
+	id = "kyocola"
+	result = "kyocola"
 	required_reagents = list("grenadine" = 1, "tonic" = 1, "cola" = 1)
 	result_amount = 3
 
-/datum/chemical_reaction/drinks/nicola/fire
-	name = "NiCola Fire"
-	id = "nicolafire"
-	result = "nicolafire"
-	required_reagents = list("capsaicin" = 1, "nicola" = 1)
+/datum/chemical_reaction/drinks/kyocola/fire
+	name = "KyoCola Fire"
+	id = "kyocolafire"
+	result = "kyocolafire"
+	required_reagents = list("capsaicin" = 1, "kyocola" = 1)
 	result_amount = 2
 
-/datum/chemical_reaction/drinks/nicola/cherry
-	name = "NiCola Sakura"
-	id = "nicolacherry"
-	result = "nicolacherry"
-	required_reagents = list("cherryjelly" = 1, "nicola" = 1)
+/datum/chemical_reaction/drinks/kyocola/cherry
+	name = "KyoCola Sakura"
+	id = "kyocolacherry"
+	result = "kyocolacherry"
+	required_reagents = list("cherryjelly" = 1, "kyocola" = 1)
 	result_amount = 2
 
-/datum/chemical_reaction/drinks/nicola/blue
-	name = "NiCola Blue"
-	id = "nicolablue"
-	result = "nicolablue"
-	required_reagents = list("berryjuice" = 1, "nicola" = 1)
+/datum/chemical_reaction/drinks/kyocola/blue
+	name = "KyoCola Blue"
+	id = "kyocolablue"
+	result = "kyocolablue"
+	required_reagents = list("berryjuice" = 1, "kyocola" = 1)
 	result_amount = 2
 
 /datum/chemical_reaction/drinks/cherrycola
@@ -1879,7 +1879,7 @@
 	name = "David Martinez"
 	id = "martinez"
 	result = "martinez"
-	required_reagents = list("vodka" = 1, "nicola" = 1, "ice" = 1)
+	required_reagents = list("vodka" = 1, "kyocola" = 1, "ice" = 1)
 	result_amount = 3
 
 // Unathi drinks

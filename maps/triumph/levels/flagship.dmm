@@ -13710,6 +13710,12 @@
 	icon_state = "dark"
 	},
 /area/centcom/specops)
+"RY" = (
+/obj/structure/memorial/small/right,
+/turf/unsimulated/floor/steel{
+	icon_state = "asteroidfloor"
+	},
+/area/centcom/main_hall)
 "Sa" = (
 /obj/machinery/camera/network/crescent,
 /turf/unsimulated/floor/steel,
@@ -15900,7 +15906,7 @@
 	},
 /area/centcom/specops)
 "Zh" = (
-/obj/structure/memorial,
+/obj/structure/memorial/small/left,
 /turf/unsimulated/floor/steel{
 	icon_state = "asteroidfloor"
 	},
@@ -39320,7 +39326,7 @@ dq
 wE
 wE
 wE
-jm
+RY
 jm
 wE
 ox

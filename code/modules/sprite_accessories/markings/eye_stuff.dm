@@ -21,6 +21,20 @@
 	color_blend_mode = ICON_MULTIPLY
 	body_parts = list(BP_HEAD)
 
+/datum/sprite_accessory/marking/eye_stuff/tridot
+	name = "Tri-Dot"
+	id = "marking_eye_tridot"
+	icon_state = "tridot"
+	color_blend_mode = ICON_MULTIPLY
+	body_parts = list(BP_HEAD)
+
+/datum/sprite_accessory/marking/eye_stuff/tridotflipped
+	name = "Tri-Dot Flipped"
+	id = "marking_eye_tridotflipped"
+	icon_state = "tridotflipped"
+	color_blend_mode = ICON_MULTIPLY
+	body_parts = list(BP_HEAD)
+
 /datum/sprite_accessory/marking/eye_stuff/zmask
 	name = "Eye mask"
 	id = "marking_eye_mask"

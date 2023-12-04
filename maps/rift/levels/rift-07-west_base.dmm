@@ -259,11 +259,6 @@
 /turf/simulated/wall,
 /area/rift/surfacebase/outside/west_base)
 "mb" = (
-/obj/effect/map_effect/portal/master/side_b{
-	dir = 8;
-	name = "westbase_to_center";
-	portal_id = "westbasestep"
-	},
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/west_base)
 "my" = (
@@ -308,9 +303,6 @@
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/surfacebase/outside/west_base)
 "ns" = (
-/obj/effect/map_effect/portal/line/side_b{
-	dir = 8
-	},
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/west_base)
 "nO" = (
@@ -931,9 +923,6 @@
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/underground3)
 "TM" = (
-/obj/effect/map_effect/portal/line/side_b{
-	dir = 8
-	},
 /turf/simulated/floor/outdoors/gravsnow/lythios43c,
 /area/rift/surfacebase/outside/west_base)
 "TT" = (

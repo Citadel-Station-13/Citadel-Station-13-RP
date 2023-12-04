@@ -19,9 +19,6 @@
 	announce_channel = "Talon"
 	on_store_name = "ITV Talon Robotic Storage"
 
-/obj/landmark/map_data/talon
-    height = 2
-
 ///////////////////////////
 //// The Talon
 /obj/overmap/entity/visitable/ship/talon

@@ -292,7 +292,7 @@
 	if(!worn_slot)
 		return
 	if(!equip_check_beltlink(M, worn_slot, null, INV_OP_SILENT))
-		M.drop_item_to_ground(src)
+		M.drop_item_to_ground(src, INV_OP_SILENT)
 		return
 
 /**

@@ -508,9 +508,6 @@
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "lT" = (
-/obj/effect/map_effect/portal/line/side_a{
-	dir = 8
-	},
 /turf/simulated/mineral/triumph/lavaland,
 /area/lavaland/central/explored)
 "lX" = (
@@ -1094,9 +1091,6 @@
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "tV" = (
-/obj/effect/map_effect/portal/line/side_a{
-	dir = 8
-	},
 /turf/simulated/floor/outdoors/lava/lavaland,
 /area/lavaland/central/explored)
 "ub" = (
@@ -2547,11 +2541,6 @@
 /turf/simulated/floor/outdoors/lava/lavaland,
 /area/lavaland/central/explored)
 "ZK" = (
-/obj/effect/map_effect/portal/master/side_a{
-	dir = 8;
-	name = "to_east";
-	portal_id = "eaststep"
-	},
 /turf/simulated/mineral/triumph/lavaland,
 /area/lavaland/central/explored)
 "ZO" = (

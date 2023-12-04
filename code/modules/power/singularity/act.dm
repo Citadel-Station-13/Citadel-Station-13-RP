@@ -84,7 +84,6 @@
 	if(src.fingerprintshidden)
 		prints = ", all touchers : " + src.fingerprintshidden
 
-	SetUniversalState(/datum/universal_state/supermatter_cascade)
 	log_admin("New super singularity made by eating a SM crystal [prints]. Last touched by [src.fingerprintslast].")
 	message_admins("New super singularity made by eating a SM crystal [prints]. Last touched by [src.fingerprintslast].")
 	qdel(src)
@@ -95,11 +94,6 @@
 
 /obj/effect/projectile/emitter/singularity_pull()
 	return
-
-/obj/item/storage/backpack/holding/singularity_act(S, current_size)
-	var/dist = max((current_size - 2), 1)
-	explosion(src.loc,(dist),(dist*2),(dist*4))
-	return 1000
 
 /turf/singularity_act(S, current_size)
 	ScrapeAway()

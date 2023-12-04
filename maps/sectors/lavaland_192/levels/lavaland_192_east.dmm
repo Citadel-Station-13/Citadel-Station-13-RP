@@ -34,11 +34,6 @@
 /turf/simulated/floor/bone/lavaland,
 /area/lavaland/east/ashlander_village)
 "gx" = (
-/obj/effect/map_effect/portal/master/side_b{
-	dir = 4;
-	name = "east_to_center";
-	portal_id = "eaststep"
-	},
 /turf/simulated/mineral/triumph/lavaland,
 /area/lavaland/east/explored)
 "iE" = (
@@ -350,9 +345,6 @@
 /turf/simulated/floor/outdoors/lava/indoors/noblend/lavaland,
 /area/lavaland/east/ashlander_village)
 "TF" = (
-/obj/effect/map_effect/portal/line/side_b{
-	dir = 4
-	},
 /turf/simulated/floor/outdoors/lava/lavaland,
 /area/lavaland/east/explored)
 "Uc" = (
@@ -363,9 +355,6 @@
 /turf/simulated/floor/bone/engraved/lavaland,
 /area/lavaland/east/ashlander_village)
 "WT" = (
-/obj/effect/map_effect/portal/line/side_b{
-	dir = 4
-	},
 /turf/simulated/mineral/triumph/lavaland,
 /area/lavaland/east/explored)
 "XO" = (

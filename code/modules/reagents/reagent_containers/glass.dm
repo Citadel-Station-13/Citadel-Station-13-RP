@@ -418,6 +418,7 @@
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(10,20,50,100)
 	volume = 60
+	start_reagent = /datum/reagent/fuel
 
 /obj/item/reagent_containers/portable_fuelcan/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
