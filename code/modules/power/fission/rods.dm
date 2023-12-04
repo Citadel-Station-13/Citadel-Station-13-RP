@@ -7,6 +7,7 @@
 	desc = "A nuclear rod."
 	icon = 'icons/obj/machines/power/fission.dmi'
 	icon_state = "rod"
+	worn_render_flags = WORN_RENDER_INHAND_NO_RENDER | WORN_RENDER_SLOT_NO_RENDER
 	var/gasefficiency = 0.05
 	var/insertion = 0
 	integrity = 100

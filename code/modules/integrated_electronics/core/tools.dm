@@ -204,9 +204,6 @@
 	var/mode = 0
 
 /obj/item/multitool/attack_self(mob/user)
-	. = ..()
-	if(.)
-		return
 	if(selected_io)
 		selected_io = null
 		to_chat(user, "<span class='notice'>You clear the wired connection from the multitool.</span>")
@@ -283,14 +280,6 @@
 		to_chat(user, "<span class='notice'>You set \the [src]'s memory to a reference to [target.name] \[Ref\].  The ref scanner is \
 		now off.</span>")
 		accepting_refs = 0
-
-
-
-
-
-
-
-
 
 /obj/item/storage/bag/circuits
 	name = "circuit kit"

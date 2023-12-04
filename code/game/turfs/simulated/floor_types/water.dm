@@ -106,7 +106,7 @@
 
 /turf/simulated/floor/water/deep/indoors
 	outdoors = FALSE
-	
+
 /turf/simulated/floor/water/pool
 	name = "pool"
 	desc = "Don't worry, it's not closed."
@@ -235,28 +235,6 @@ var/list/shoreline_icon_cache = list()
 	var/image/acid_sprite = image(icon = 'icons/turf/outdoors.dmi', icon_state = acid_state, layer = WATER_LAYER)
 	add_overlay(acid_sprite)
 
-/turf/simulated/floor/water/acid/return_air_for_internal_lifeform(var/mob/living/L)
-	if(L && L.lying)
-		if(L.can_breathe_water()) // For squid.
-			var/datum/gas_mixture/water_breath = new()
-			var/datum/gas_mixture/above_air = return_air()
-			var/amount = 300
-			water_breath.adjust_gas(GAS_ID_OXYGEN, amount) // Assuming water breathes just extract the oxygen directly from the water.
-			water_breath.temperature = above_air.temperature
-			return water_breath
-		else
-			var/gasid = GAS_ID_CARBON_DIOXIDE
-			if(ishuman(L))
-				var/mob/living/carbon/human/H = L
-				if(H.species && H.species.exhale_type)
-					gasid = H.species.exhale_type
-			var/datum/gas_mixture/water_breath = new()
-			var/datum/gas_mixture/above_air = return_air()
-			water_breath.adjust_gas(gasid, BREATH_MOLES) // They have no oxygen, but non-zero moles and temp
-			water_breath.temperature = above_air.temperature
-			return water_breath
-	return return_air() // Otherwise their head is above the water, so get the air from the atmosphere instead.
-
 /turf/simulated/floor/water/acid/Entered(atom/movable/AM)
 	..()
 	if(burn_stuff(AM))
@@ -344,28 +322,6 @@ var/list/shoreline_icon_cache = list()
 	icon_state = under_state // This isn't set at compile time in order for it to show as water in the map editor.
 	var/image/blood_sprite = image(icon = 'icons/turf/outdoors.dmi', icon_state = blood_state, layer = WATER_LAYER)
 	add_overlay(blood_sprite)
-
-/turf/simulated/floor/water/blood/return_air_for_internal_lifeform(var/mob/living/L)
-	if(L && L.lying)
-		if(L.can_breathe_water()) // For squid.
-			var/datum/gas_mixture/water_breath = new()
-			var/datum/gas_mixture/above_air = return_air()
-			var/amount = 300
-			water_breath.adjust_gas(GAS_ID_OXYGEN, amount) // Assuming water breathes just extract the oxygen directly from the water.
-			water_breath.temperature = above_air.temperature
-			return water_breath
-		else
-			var/gasid = GAS_ID_CARBON_DIOXIDE
-			if(ishuman(L))
-				var/mob/living/carbon/human/H = L
-				if(H.species && H.species.exhale_type)
-					gasid = H.species.exhale_type
-			var/datum/gas_mixture/water_breath = new()
-			var/datum/gas_mixture/above_air = return_air()
-			water_breath.adjust_gas(gasid, BREATH_MOLES) // They have no oxygen, but non-zero moles and temp
-			water_breath.temperature = above_air.temperature
-			return water_breath
-	return return_air() // Otherwise their head is above the water, so get the air from the atmosphere instead.
 
 //! this entire file needs refactored, jesus christ
 /turf/simulated/floor/water/blood/Entered(atom/movable/AM)
