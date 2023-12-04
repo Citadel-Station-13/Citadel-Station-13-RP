@@ -478,6 +478,12 @@
 	allowed_roles = list("Security Officer", "Head of Security", "Warden", "Detective", "Talon Guard")
 	cost = 2
 
+/datum/loadout_entry/restricted/security/back/backpack
+	name = "Security - Backpack"
+	path = /obj/item/storage/backpack/security
+	allowed_roles = list("Security Officer", "Head of Security", "Warden", "Detective", "Talon Guard")
+	cost = 2
+
 //Suit
 /datum/loadout_entry/restricted/security/suit/forensics
 	name = "Detective Forensics - Red"

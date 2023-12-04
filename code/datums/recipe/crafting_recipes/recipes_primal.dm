@@ -416,7 +416,7 @@
 	result = /obj/item/reagent_containers/glass/stone
 	time = 40
 	reqs = list(/obj/item/stack/animalhide/goliath_hide = 1,
-				/obj/item/ore/slag = 1
+				/obj/item/stack/ore/slag = 1
 				)
 	category = CAT_PRIMAL
 	always_available = FALSE
@@ -460,7 +460,7 @@
 	result = /obj/machinery/reagentgrinder/ashlander
 	time = 120
 	reqs = list(/obj/item/stack/material/bone = 10,
-				/obj/item/ore/slag = 5,
+				/obj/item/stack/ore/slag = 5,
 				/obj/item/stack/sinew = 5,
 				/obj/item/reagent_containers/glass/stone = 1
 				)
@@ -472,7 +472,7 @@
 	result = /obj/structure/ashlander/calcinator
 	time = 60
 	reqs = list(/obj/item/stack/material/bone = 5,
-				/obj/item/ore/slag = 2,
+				/obj/item/stack/ore/slag = 2,
 				/obj/item/elderstone = 1
 				)
 	category = CAT_PRIMAL
@@ -493,7 +493,7 @@
 	name = "Stone Dropper"
 	result = /obj/item/reagent_containers/dropper/ashlander
 	time = 40
-	reqs = list(/obj/item/ore/slag = 1,
+	reqs = list(/obj/item/stack/ore/slag = 1,
 				/obj/item/stack/material/bone = 1
 				)
 	category = CAT_PRIMAL
@@ -594,7 +594,7 @@
 	result = /obj/item/whetstone/ashlander
 	time = 30
 	reqs = list(/obj/item/stack/material/sandstone = 2,
-				/obj/item/ore/slag = 1)
+				/obj/item/stack/ore/slag = 1)
 	category = CAT_PRIMAL
 	always_available = FALSE
 
@@ -634,7 +634,7 @@
 	time = 300
 	reqs = list(/obj/item/reagent_containers/glass/bucket/sandstone = 1,
 				/obj/item/condensedphlogiston = 3,
-				/obj/item/ore/slag = 2,
+				/obj/item/stack/ore/slag = 2,
 				/obj/item/elderstone = 1)
 	category = CAT_PRIMAL
 	always_available = FALSE

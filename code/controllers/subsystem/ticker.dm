@@ -506,7 +506,7 @@ SUBSYSTEM_DEF(ticker)
 		game_finished = (SSemergencyshuttle.returned() || mode.station_was_nuked)
 		mode_finished = (!post_game && mode.check_finished())
 	else
-		game_finished = (mode.check_finished() || (SSemergencyshuttle.returned() && SSemergencyshuttle.evac == 1)) || universe_has_ended
+		game_finished = (mode.check_finished() || (SSemergencyshuttle.returned() && SSemergencyshuttle.evac == 1))
 		mode_finished = game_finished
 
 	if (mode_finished)

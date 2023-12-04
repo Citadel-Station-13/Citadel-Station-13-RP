@@ -144,7 +144,7 @@
 	pixel_x = 0;
 	pixel_y = 32
 	},
-/obj/item/ore/slag{
+/obj/item/stack/ore/slag{
 	desc = "Well at least Arthur doesn't have to share now...";
 	name = "pet rock"
 	},

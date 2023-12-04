@@ -147,7 +147,12 @@
 	// invoke global finalize
 	for(var/datum/map/map as anything in actually_loaded)
 		map.on_loaded_finalize()
-	// todo: rebuild?
+	// rebuild multiz
+	// this is just for visuals
+	var/list/indices_to_rebuild = list()
+	for(var/datum/map_level/level as anything in loaded_levels)
+		indices_to_rebuild += level.z_index
+	rebuild_level_multiz(indices_to_rebuild, TRUE, TRUE)
 
 /datum/controller/subsystem/mapping/proc/_load_map_impl(datum/map/instance, list/datum/map_level/loaded_levels, list/datum/callback/generation_callbacks, list/datum/map/this_batch, list/bounds_collect)
 	PRIVATE_PROC(TRUE)
@@ -171,6 +176,11 @@
 	this_batch += instance
 
 	instance.on_loaded_immediate()
+
+	// rebuild multiz
+	// this is for the lookups, which must be done immediately, as generation/hooks might require it.
+	rebuild_verticality()
+	rebuild_transitions()
 
 	// todo: legacy
 	for(var/path in instance.legacy_assert_shuttle_datums)

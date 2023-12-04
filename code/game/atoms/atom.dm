@@ -801,7 +801,7 @@
 			msg = lang.scramble(msg)
 		M.show_message(msg, 2, deaf_message, 1)
 		heard_to_floating_message += M
-	if(!no_runechat)
+	if(!no_runechat && ismovable(src))
 		INVOKE_ASYNC(src, TYPE_PROC_REF(/atom/movable, animate_chat), (message ? message : deaf_message), null, FALSE, heard_to_floating_message, 30)
 
 /atom/movable/proc/dropInto(var/atom/destination)

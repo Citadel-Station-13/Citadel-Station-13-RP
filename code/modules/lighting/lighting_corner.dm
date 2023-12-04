@@ -138,8 +138,8 @@ var/global/list/REVERSE_LIGHTING_CORNER_DIAGONAL = list(0, 0, 0, 0, 3, 4, 0, 0, 
 
 #undef OVERLAY_PRESENT
 
-#define GET_ABOVE(T) (HasAbove(T:z) ? get_step(T, UP) : null)
-#define GET_BELOW(T) (HasBelow(T:z) ? get_step(T, DOWN) : null)
+#define GET_ABOVE(T) (T.above())
+#define GET_BELOW(T) (T.below())
 
 #define UPDATE_APPARENT(T, CH) T.apparent_##CH = T.self_##CH + T.below_##CH + T.ambient_##CH + T.above_ambient_##CH
 

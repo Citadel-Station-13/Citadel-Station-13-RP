@@ -785,3 +785,8 @@
 		return
 	for(var/atom/A as anything in contents)
 		A.clean_radiation(str, mul, cheap)
+
+/obj/item/storage/drop_products(method, atom/where)
+	. = ..()
+	for(var/atom/movable/AM as anything in contents)
+		AM.forceMove(where)

@@ -936,3 +936,40 @@
 	icon_state = "sister"
 	armor_type = /datum/armor/general/baroque_military
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/* Replika armor
+/obj/item/clothing/suit/armor/replika/klbr
+    name = "controller replikant armored chestplate"
+    desc = "A sloped titanium-composite chest plate fitted for use by 2nd generation biosynthetics. The right shoulder has been painted an imposing shade of red."
+    icon = 'icons/clothing/suit/armor/replika.dmi'
+    icon_state = "klbr"
+    worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+    body_cover_flags = UPPER_TORSO
+    armor_type = /datum/armor/station/medium
+
+/obj/item/clothing/suit/armor/replika/lstr
+    name = "combat-engineer replikant armored chestplate"
+    desc = "A sloped titanium-composite chest plate fitted for use by 2nd generation biosynthetics. This plain-white version is a staple of SbRD's combat-engineer replikants."
+    icon = 'icons/clothing/suit/armor/replika.dmi'
+    icon_state = "lstr"
+    worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+    body_cover_flags = UPPER_TORSO
+    armor_type = /datum/armor/station/medium
+
+/obj/item/clothing/suit/armor/replika/stcr
+    name = "security-controller replikant armored chestplate"
+    desc = "A sloped titanium-composite chest plate fitted for use by 2nd generation biosynthetics. This version sports multiple red adjustable straps and a lack of shoulder pads."
+    icon = 'icons/clothing/suit/armor/replika.dmi'
+    icon_state = "stcr"
+    worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+    body_cover_flags = UPPER_TORSO
+    armor_type = /datum/armor/station/medium
+
+/obj/item/clothing/suit/armor/replika/star
+    name = "security-technician replikant armored chestplate"
+    desc = "A sloped titanium-composite chest plate with a matte black finish, fitted for use by 2nd generation biosynthetics. Comes with red adjustable straps."
+    icon = 'icons/clothing/suit/armor/replika.dmi'
+    icon_state = "star"
+    worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+    body_cover_flags = UPPER_TORSO
+    armor_type = /datum/armor/station/medium */

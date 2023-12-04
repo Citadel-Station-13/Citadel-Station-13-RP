@@ -69,7 +69,7 @@
 	reqs = list(/obj/item/handcuffs/cable = 1,
 				/obj/item/stack/rods = 1,
 				/obj/item/assembly/igniter = 1,
-				/obj/item/ore/bluespace_crystal = 1)
+				/obj/item/bluespace_crystal = 1)
 	time = 40
 	category = CAT_WEAPONRY
 	subcategory = CAT_MELEE

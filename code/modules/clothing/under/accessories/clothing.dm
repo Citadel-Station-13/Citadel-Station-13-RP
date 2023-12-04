@@ -165,6 +165,40 @@
 	icon_state = "rough_torn_cloak_brown"
 	item_state = "rough_torn_cloak_brown"
 
+/obj/item/clothing/accessory/replika
+	name = "generic"
+	desc = "generic"
+	icon = 'icons/obj/clothing/suits.dmi'
+	icon_state = "klbr"
+	icon_override = 'icons/mob/clothing/suits.dmi'
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "armor", SLOT_ID_LEFT_HAND = "armor")
+	allowed = list(/obj/item/gun/ballistic/sec/flash, /obj/item/gun/energy,/obj/item/reagent_containers/spray/pepper,/obj/item/gun/ballistic,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/flashlight/maglight,/obj/item/clothing/head/helmet)
+	slot_flags = SLOT_OCLOTHING | SLOT_TIE
+	body_cover_flags = UPPER_TORSO|ARMS
+	siemens_coefficient = 0.9
+	w_class = ITEMSIZE_NORMAL
+	slot = ACCESSORY_SLOT_OVER
+
+/obj/item/clothing/accessory/replika/klbr
+	name = "controller replikant chestplate"
+	desc = "A sloped titanium-composite chest plate fitted for use by 2nd generation biosynthetics. The right shoulder has been painted an imposing shade of red."
+	icon_state = "klbr"
+
+/obj/item/clothing/accessory/replika/lstr
+	name = "combat-engineer replikant chestplate"
+	desc = "A sloped titanium-composite chest plate fitted for use by 2nd generation biosynthetics. This plain-white version is a staple of SbRD's combat-engineer replikants."
+	icon_state = "lstr"
+
+/obj/item/clothing/accessory/replika/stcr
+	name = "security-controller replikant chestplate"
+	desc = "A sloped titanium-composite chest plate fitted for use by 2nd generation biosynthetics. This version sports multiple red adjustable straps and a lack of shoulder pads."
+	icon_state = "stcr"
+
+/obj/item/clothing/accessory/replika/star
+	name = "security-technician replikant chestplate"
+	desc = "A sloped titanium-composite chest plate with a matte black finish, fitted for use by 2nd generation biosynthetics. Comes with red adjustable straps."
+	icon_state = "star"
+
 //Just a little extra aesthetic for Goliath armor.
 /obj/item/clothing/accessory/poncho/rough_cloak/ashlander
 	name = "goliath hide half cloak"
@@ -498,6 +532,16 @@
 	name = "Shoulderless Sweater"
 	desc = "A plush sweater that doesn't cover the shoulders."
 	icon_state = "sweater_shoulderless"
+
+/obj/item/clothing/accessory/sweater/cropped
+	name = "Cropped Sweater Male"
+	desc = "A comfy, warm sweater that has been slashed at the midriff, making it hardly warm or comfy, but quite rousing."
+	icon_state = "sweater_cropped_f"
+
+/obj/item/clothing/accessory/sweater/cropped/female
+	name = "Cropped Sweater Female"
+	desc = "A comfy, warm sweater that has been slashed at the midriff, making it hardly warm or comfy, but quite rousing. Comes with extra chest space."
+	icon_state = "sweater_cropped_m"
 
 /obj/item/clothing/accessory/sweater/star
 	name = "Star Sweater"

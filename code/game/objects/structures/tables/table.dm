@@ -37,6 +37,9 @@ var/list/table_icon_cache = list()
 
 	var/manipulating = 0
 
+	// todo: refactor tables
+	var/is_not_a_table = FALSE
+
 	// Gambling tables. I'd prefer reinforced with carpet/felt/cloth/whatever, but AFAIK it's either harder or impossible to get /obj/item/stack/material of those.
 	// Convert if/when you can easily get stacks of these.
 	var/carpeted = 0
@@ -46,6 +49,8 @@ var/list/table_icon_cache = list()
 	var/item_place = TRUE
 	/// Do people pixel-place items or center place?
 	var/item_pixel_place = TRUE
+	/// base name
+	var/base_name = "table"
 
 /obj/structure/table/Initialize(mapload, base_material, reinforcing_material)
 	if(!isnull(base_material))
@@ -122,7 +127,7 @@ var/list/table_icon_cache = list()
 	if(!isnull(material_reinforcing))
 		e_args.chat_feedback(SPAN_WARNING("[src] needs to have its reinforcement removed before being dismantled!"))
 		return TRUE
-	if(isnull(material_base))
+	if(isnull(material_base) || is_not_a_table)
 		if(!can_deconstruct)
 			e_args.chat_feedback(SPAN_WARNING("[src] cannot be deconstructed."), src)
 			return TRUE
@@ -136,7 +141,7 @@ var/list/table_icon_cache = list()
 		log_construction(e_args, src, "started dismantling")
 		if(!use_wrench(I, e_args, flags, 1.5 SECONDS, usage = TOOL_USAGE_DECONSTRUCT))
 			return TRUE
-		if(!isnull(material_reinforcing) || !isnull(material_base))
+		if((!isnull(material_reinforcing) || !isnull(material_base)) && !is_not_a_table)
 			e_args.chat_feedback(SPAN_WARNING("[src] needs to be entirely stripped before being dismantled!"))
 			return TRUE
 		e_args.visible_feedback(
@@ -328,7 +333,7 @@ var/list/table_icon_cache = list()
 	return TRUE
 
 /obj/structure/table/update_name(updates)
-	name = isnull(material_base)? "table frame" : "[material_base.display_name] table"
+	name = isnull(material_base)? "[base_name] frame" : "[material_base.display_name] [base_name]"
 	if(!isnull(material_reinforcing))
 		name = "reinforced [name]"
 	return ..()
@@ -402,9 +407,9 @@ var/list/table_icon_cache = list()
 			I.color = material_base.icon_colour
 			I.alpha = 255 * material_base.opacity
 			overlays_to_add += I
-			name = "[material_base.display_name] table"
+			name = "[material_base.display_name] [base_name]"
 		else
-			name = "table frame"
+			name = "[base_name] frame"
 
 		if(material_reinforcing)
 			var/image/I = image(icon, "[material_reinforcing.table_reinf_icon_base]_flip[type]")

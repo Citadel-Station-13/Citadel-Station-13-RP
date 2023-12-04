@@ -145,6 +145,9 @@
 	name = "foamed metal"
 	desc = "A lightweight foamed metal wall."
 	CanAtmosPass = ATMOS_PASS_DENSITY
+	integrity = 20
+	integrity_max = 20
+	armor_type = /datum/armor/none
 	var/metal = 1 // 1 = aluminum, 2 = iron
 
 /obj/structure/foamedmetal/Initialize(mapload)
@@ -161,35 +164,3 @@
 		icon_state = "metalfoam"
 	else
 		icon_state = "ironfoam"
-
-/obj/structure/foamedmetal/legacy_ex_act(severity)
-	qdel(src)
-
-/obj/structure/foamedmetal/bullet_act(var/obj/projectile/P)
-	if(istype(P, /obj/projectile/test))
-		return
-	else if(metal == 1 || prob(50))
-		qdel(src)
-
-/obj/structure/foamedmetal/attack_hand(mob/user, list/params)
-	if ((MUTATION_HULK in user.mutations) || (prob(75 - metal * 25)))
-		user.visible_message("<span class='warning'>[user] smashes through the foamed metal.</span>", "<span class='notice'>You smash through the metal foam wall.</span>")
-		qdel(src)
-	else
-		to_chat(user, "<span class='notice'>You hit the metal foam but bounce off it.</span>")
-	return
-
-/obj/structure/foamedmetal/attackby(var/obj/item/I, var/mob/user)
-	if(istype(I, /obj/item/grab))
-		var/obj/item/grab/G = I
-		G.affecting.forceMove(loc)
-		visible_message("<span class='warning'>[G.assailant] smashes [G.affecting] through the foamed metal wall.</span>")
-		qdel(I)
-		qdel(src)
-		return
-
-	if(prob(I.damage_force * 20 - metal * 25))
-		user.visible_message("<span class='warning'>[user] smashes through the foamed metal.</span>", "<span class='notice'>You smash through the foamed metal with \the [I].</span>")
-		qdel(src)
-	else
-		to_chat(user, "<span class='notice'>You hit the metal foam to no effect.</span>")

@@ -387,5 +387,5 @@
 	if(amount == 0 && !no_limits)
 		qdel(src)
 		return FALSE
-
+	update_icon()
 	return TRUE

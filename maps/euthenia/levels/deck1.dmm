@@ -1335,7 +1335,7 @@
 /obj/effect/floor_decal/corner/mauve/full{
 	dir = 8
 	},
-/obj/structure/closet/crate/nanotrasen,
+/obj/structure/closet/crate/corporate/nanotrasen,
 /obj/machinery/light/no_nightshift{
 	dir = 1
 	},
@@ -9024,7 +9024,7 @@
 /obj/effect/floor_decal/corner/mauve{
 	dir = 9
 	},
-/obj/structure/closet/crate/nanotrasen,
+/obj/structure/closet/crate/corporate/nanotrasen,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/lab)
 "kYU" = (
@@ -16216,7 +16216,7 @@
 /area/crew_quarters/bar)
 "uIi" = (
 /obj/effect/floor_decal/corner/mauve/full,
-/obj/structure/closet/crate/nanotrasen,
+/obj/structure/closet/crate/corporate/nanotrasen,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/lab)
 "uIm" = (

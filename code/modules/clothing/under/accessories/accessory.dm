@@ -20,6 +20,7 @@
 		BODYTYPE_STRING_VOX = 'icons/mob/clothing/species/vox/ties.dmi')
 	drop_sound = 'sound/items/drop/accessory.ogg'
 	pickup_sound = 'sound/items/pickup/accessory.ogg'
+	material_factoring = 0
 
 /obj/item/clothing/accessory/Destroy()
 	accessory_host?.accessories -= src
@@ -404,83 +405,6 @@
 /obj/item/clothing/accessory/gaiter/gray
 	name = "neck gaiter (gray)"
 	icon_state = "gaiter_gray"
-
-//bracelets
-
-/obj/item/clothing/accessory/bracelet
-	name = "bracelet"
-	desc = "A simple silver bracelet with a clasp."
-	icon = 'icons/obj/clothing/ties.dmi'
-	icon_state = "bracelet"
-	w_class = ITEMSIZE_TINY
-	slot_flags = SLOT_TIE
-	slot = ACCESSORY_SLOT_DECOR
-
-/obj/item/clothing/accessory/bracelet/friendship
-	name = "friendship bracelet"
-	desc = "A beautiful friendship bracelet in all the colors of the rainbow."
-	icon_state = "friendbracelet"
-
-/obj/item/clothing/accessory/bracelet/friendship/verb/dedicate_bracelet()
-	set name = "Dedicate Bracelet"
-	set category = "Object"
-	set desc = "Dedicate your friendship bracelet to a special someone."
-	var/mob/M = usr
-	if(!M.mind)
-		return 0
-
-	var/input = sanitizeSafe(input("Who do you want to dedicate the bracelet to?", ,""), MAX_NAME_LEN)
-
-	if(src && input && !M.stat && in_range(M,src))
-		desc = "A beautiful friendship bracelet in all the colors of the rainbow. It's dedicated to [input]."
-		to_chat(M, "You dedicate the bracelet to [input], remembering the times you've had together.")
-		return 1
-
-/obj/item/clothing/accessory/bracelet/material
-	abstract_type = /obj/item/clothing/accessory/bracelet/material
-	icon_state = "materialbracelet"
-	materials_base = null
-	material_parts = /datum/material/steel
-	material_costs = 2000
-	material_primary = MATERIAL_PART_DEFAULT
-
-/obj/item/clothing/accessory/bracelet/material/Initialize(mapload, material)
-	if(!isnull(material))
-		material_parts = material
-	return ..()
-
-/obj/item/clothing/accessory/bracelet/material/update_material_single(datum/material/material)
-	. = ..()
-	name = "[material.display_name] bracelet"
-	desc = "A bracelet made from [material.display_name]."
-	color = material.icon_colour
-
-/obj/item/clothing/accessory/bracelet/material/wood
-	material_parts = /datum/material/wood_plank
-
-/obj/item/clothing/accessory/bracelet/material/plastic
-	material_parts = /datum/material/plastic
-
-/obj/item/clothing/accessory/bracelet/material/iron
-	material_parts = /datum/material/iron
-
-/obj/item/clothing/accessory/bracelet/material/steel
-	material_parts = /datum/material/steel
-
-/obj/item/clothing/accessory/bracelet/material/silver
-	material_parts = /datum/material/silver
-
-/obj/item/clothing/accessory/bracelet/material/gold
-	material_parts = /datum/material/gold
-
-/obj/item/clothing/accessory/bracelet/material/platinum
-	material_parts = /datum/material/platinum
-
-/obj/item/clothing/accessory/bracelet/material/phoron
-	material_parts = /datum/material/phoron
-
-/obj/item/clothing/accessory/bracelet/material/glass
-	material_parts = /datum/material/glass
 
 /obj/item/clothing/accessory/halfcape
 	name = "half cape"
@@ -936,6 +860,14 @@
 	desc = "A comfy pair of legwarmers. For those better in the cold than others."
 	icon_state = "legwarmers_short"
 
+// Gestalt uniform
+
+/obj/item/clothing/accessory/sleekpatch
+	name = "sleek uniform patch"
+	desc = "A somewhat old-fashioned embroidered patch of Nanotrasen's logo."
+	icon = 'icons/obj/clothing/ties.dmi'
+	icon_override = 'icons/mob/clothing/ties.dmi'
+	icon_state = "sleekpatch"
 
 //misc
 /obj/item/clothing/accessory/civ_exos_mob
