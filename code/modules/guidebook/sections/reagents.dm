@@ -4,6 +4,7 @@
 /datum/prototype/guidebook_section/reagents
 	title = "Reagents"
 	id = "reagents"
+	tgui_module = "TGUIGuidebookReagents"
 
 /datum/prototype/guidebook_section/reagents/section_data()
 	. = ..()

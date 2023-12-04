@@ -73,6 +73,7 @@ export const TGUIGuidebookReagents = (props: TGUIGuidebookReagentsData, context)
 
   return (
     <Modular>
+      {JSON.stringify(data)}
       Test
     </Modular>
   );
