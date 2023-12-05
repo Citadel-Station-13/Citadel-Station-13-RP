@@ -1,6 +1,7 @@
 /obj/item/gun/projectile/ballistic/revolver
 	name = "revolver"
 	desc = "The Lumoco Arms HE Colt is a choice revolver for when you absolutely, positively need to put a hole in the other guy. Uses .357 rounds."
+	icon = 'icons/modules/projectlies/guns/ballistic/revolver.dmi'
 	icon_state = "revolver"
 	item_state = "revolver"
 	caliber = ".357"

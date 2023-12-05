@@ -73,14 +73,6 @@
 	desc = "The Adar'Mazy pistol, produced by the Hadii-Wrack group. This pistol is the primary sidearm for low ranking officers and officals in the People's Republic of Adhomai."
 	icon_state = "colt-taj"
 
-/*//apart of reskins that have two sprites, touching may result in frustration and breaks
-/obj/item/gun/projectile/ballistic/colt/detective/attack_hand(mob/user, list/params)
-	if(!unique_reskin && loc == user)
-		reskin_gun(user)
-		return
-	..()
-*/
-
 /obj/item/gun/projectile/ballistic/sec
 	name = ".45 pistol"
 	desc = "The NT Mk58 is a cheap, ubiquitous sidearm, produced by a NanoTrasen subsidiary. Found pretty much everywhere humans are. This one is a less-lethal variant that only accepts .45 rubber or flash magazines."

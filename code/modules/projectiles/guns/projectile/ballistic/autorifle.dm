@@ -1,0 +1,3 @@
+/**
+ * fully automatic rifles
+ */
