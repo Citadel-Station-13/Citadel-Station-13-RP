@@ -25,3 +25,15 @@
 	icon_state = "botbuster"
 
 	#warn impl - sprites
+
+/obj/item/gun/projectile/ballistic/pirate/junker_pistol
+	name = "scrap pistol"
+	desc = "A strange handgun made from industrial parts. It appears to accept multiple rounds thanks to an internal magazine. Favored by Tyrmalin wannabe-gunslingers."
+	icon_state = "junker_pistol"
+	item_state = "revolver"
+	load_method = SINGLE_CASING
+	w_class = ITEMSIZE_SMALL
+	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_ILLEGAL = 3)
+	recoil = 3
+	handle_casings = CYCLE_CASINGS
+	max_shells = 3
