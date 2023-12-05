@@ -4,7 +4,7 @@
 /datum/reagent/topical
 	name = "Topical Gel"
 	id = "topical"
-	desc = "A gel meant to be applied to the skin."
+	description = "A gel meant to be applied to the skin."
 	taste_description = "Sourness"
 	taste_mult = 2
 
@@ -37,7 +37,7 @@
 /datum/reagent/topical/bicarilaze
 	name = "Bicarilaze"
 	id = "bicarilaze"
-	desc = "A gel meant to be applied to the skin to heal bruises."
+	description = "A gel meant to be applied to the skin to heal bruises."
 	color = "#FF2223"
 
 	toxicity = 3
@@ -49,7 +49,7 @@
 /datum/reagent/topical/kelotalaze
 	name = "Kelotalaze"
 	id = "kelotalaze"
-	desc = "A gel meant to be applied to the skin to heal burns."
+	description = "A gel meant to be applied to the skin to heal burns."
 	color = "#FFFF00"
 
 	toxicity = 2
@@ -61,7 +61,7 @@
 /datum/reagent/topical/tricoralaze
 	name = "Tricoralaze"
 	id = "tricoralaze"
-	desc =  "A gel meant to heal both bruises and burns"
+	description =  "A gel meant to heal both bruises and burns"
 
 	toxicity = 0
 
@@ -72,7 +72,7 @@
 /datum/reagent/topical/inaprovalaze
 	name = "Inaprovalaze"
 	id = "inaprovalaze"
-	desc = "A gel that stabalises the patient"
+	description = "A gel that stabalises the patient"
 
 	toxicity = 0
 
@@ -95,7 +95,7 @@
 /datum/reagent/topical/neurolaze
 	name = "Neurolaze"
 	id = "neurolaze"
-	desc = "Superficial painkiller, do not inject or ingest"
+	description = "Superficial painkiller, do not inject or ingest"
 	metabolism = REM * 2 //Nervocells absorb this chem super fast so much faster metabolism...
 	overdose = REAGENTS_OVERDOSE * 0.5
 
@@ -132,7 +132,7 @@
 /datum/reagent/topical/sterilaze
 	name = "Sterilaze"
 	id = "sterilaze"
-	desc = "A gel meant for sterilizing patients wounds."
+	description = "A gel meant for sterilizing patients wounds."
 
 	toxicity = 3
 
@@ -146,7 +146,7 @@
 /datum/reagent/topical/cleansalaze
 	name = "Cleansalaze"
 	id = "cleansalaze"
-	desc = "This gel purges radioactive contaminates from the skin"
+	description = "This gel purges radioactive contaminates from the skin"
 
 	toxicity = 1
 
@@ -157,7 +157,7 @@
 /datum/reagent/topical/lotion//Because chemistry should have some recreational uses
 	name = "Lotion"
 	id = "lotion"
-	desc = "A Lotion to treat your skin and relax alittle."
+	description = "A Lotion to treat your skin and relax alittle."
 
 	toxicity = 0
 

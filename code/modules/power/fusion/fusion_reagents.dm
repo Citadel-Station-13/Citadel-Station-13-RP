@@ -2,7 +2,7 @@
 
 /datum/reagent/helium3
 	name = "helium-3"
-	desc = "A colorless, odorless, tasteless and generally inert gas used in fusion reactors. Non-radioactive."
+	description = "A colorless, odorless, tasteless and generally inert gas used in fusion reactors. Non-radioactive."
 	id = "helium-3"
 	reagent_state = REAGENT_GAS
 	color = "#808080"

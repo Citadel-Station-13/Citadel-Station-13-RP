@@ -3,7 +3,7 @@
 /datum/reagent/ethanol
 	name = "Ethanol" //Parent class for all alcoholic reagents.
 	id = "ethanol"
-	desc = "A well-known alcohol with a variety of applications."
+	description = "A well-known alcohol with a variety of applications."
 	taste_description = "pure alcohol"
 	reagent_state = REAGENT_LIQUID
 	color = "#404030"
@@ -156,7 +156,7 @@
 /datum/reagent/acid
 	name = "Sulphuric acid"
 	id = "sacid"
-	desc = "A very corrosive mineral acid with the molecular formula H2SO4."
+	description = "A very corrosive mineral acid with the molecular formula H2SO4."
 	taste_description = "acid"
 	reagent_state = REAGENT_LIQUID
 	color = "#DB5008"
@@ -244,7 +244,7 @@
 /datum/reagent/sugar
 	name = "Sugar"
 	id = "sugar"
-	desc = "The organic compound commonly known as table sugar and sometimes called saccharose. This white, odorless, crystalline powder has a pleasing, sweet taste."
+	description = "The organic compound commonly known as table sugar and sometimes called saccharose. This white, odorless, crystalline powder has a pleasing, sweet taste."
 	taste_description = "sugar"
 	taste_mult = 1.8
 	reagent_state = REAGENT_SOLID
@@ -284,7 +284,7 @@
 /datum/reagent/sulfur
 	name = "Sulfur"
 	id = "sulfur"
-	desc = "A chemical element with a pungent smell."
+	description = "A chemical element with a pungent smell."
 	taste_description = "old eggs"
 	reagent_state = REAGENT_SOLID
 	color = "#BF8C00"

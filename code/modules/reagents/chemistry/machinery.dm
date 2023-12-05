@@ -330,7 +330,7 @@
 			for(var/datum/reagent/R in I.reagents.reagent_list)
 				if(!R.name)
 					continue
-				to_chat(user, SPAN_NOTICE("Contains [R.volume]u of <b>[R.name]</b>.<br>[R.desc]<br>"))
+				to_chat(user, SPAN_NOTICE("Contains [R.volume]u of <b>[R.name]</b>.<br>[R.description]<br>"))
 
 		// Last, unseal it if it's an autoinjector.
 		if(istype(I,/obj/item/reagent_containers/hypospray/autoinjector/biginjector) && !(I.atom_flags & OPENCONTAINER))

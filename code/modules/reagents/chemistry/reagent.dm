@@ -20,14 +20,16 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	//* Identity
 	/// our name - visible from guidebooks and to admins
 	var/name = "Reagent"
-	/// our desc - visible from guidebooks and to admins
-	var/desc = "A non-descript chemical of some kind."
+	/// our description - visible from guidebooks and to admins
+	var/description = "A non-descript chemical of some kind."
 	/// player-facing name - visible via scan tools
 	/// defaults to [name]
+	/// overrides name in guidebook
 	var/display_name
 	/// player-facing desc - visible via scan tools
 	/// defaults to [desc]
-	var/display_desc
+	/// overrides desc in guidebook
+	var/display_description
 
 	//* Guidebook
 	/// guidebook flags
@@ -304,7 +306,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	return list(
 		"id" = id,
 		"name" = display_name || name,
-		"desc" = display_desc || desc,
+		"desc" = display_description || description,
 		"category" = reagent_guidebook_category,
 		"flags" = reagent_flags,
 		"guidebookFlags" = reagent_guidebook_flags,

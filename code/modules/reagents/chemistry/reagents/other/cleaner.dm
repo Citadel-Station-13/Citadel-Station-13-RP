@@ -1,7 +1,7 @@
 /datum/reagent/space_cleaner
 	name = "Space cleaner"
 	id = "cleaner"
-	desc = "A compound used to clean things. Now with 50% more sodium hypochlorite!"
+	description = "A compound used to clean things. Now with 50% more sodium hypochlorite!"
 	taste_description = "sourness"
 	reagent_state = REAGENT_LIQUID
 	color = "#A5F0EE"

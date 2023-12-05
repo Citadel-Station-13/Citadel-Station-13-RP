@@ -31,7 +31,7 @@
 	/// display name; overrides name when player facing if set
 	var/display_name
 	/// display description; overrides desc when player facing if set
-	var/display_desc
+	var/display_description
 
 	//* guidebook
 	/// guidebook flags
@@ -100,9 +100,9 @@
 			display_name = resolved.display_name
 
 	if(isnull(desc))
-		desc = resolved?.desc || "Unknown Description - contact coders."
-		if(isnull(display_desc) && !isnull(resolved))
-			display_desc = resolved.display_desc
+		desc = resolved?.description || "Unknown Description - contact coders."
+		if(isnull(display_description) && !isnull(resolved))
+			display_description = resolved.display_description
 
 /datum/chemical_reaction/proc/can_happen(datum/reagents/holder)
 	// check container
@@ -207,7 +207,7 @@
 /datum/chemical_reaction/proc/tgui_guidebook_data()
 	return list(
 		"name" = display_name || name,
-		"desc" = display_desc || desc,
+		"desc" = display_description || desc,
 		"category" = reaction_guidebook_category,
 		"id" = id,
 		"flags" = NONE,

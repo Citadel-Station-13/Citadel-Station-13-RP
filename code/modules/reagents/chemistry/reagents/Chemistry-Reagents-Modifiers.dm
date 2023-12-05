@@ -5,7 +5,7 @@
 /datum/reagent/modapplying
 	name = "brute juice"
 	id = "berserkmed"
-	desc = "A liquid that is capable of causing a prolonged state of heightened aggression and durability."
+	description = "A liquid that is capable of causing a prolonged state of heightened aggression and durability."
 	taste_description = "metal"
 	reagent_state = REAGENT_LIQUID
 	color = "#ff5555"
@@ -22,7 +22,7 @@
 /datum/reagent/modapplying/cryofluid
 	name = "cryogenic slurry"
 	id = "cryoslurry"
-	desc = "An incredibly strange liquid that rapidly absorbs thermal energy from materials it contacts."
+	description = "An incredibly strange liquid that rapidly absorbs thermal energy from materials it contacts."
 	taste_description = "siberian hellscape"
 	color = "#4CDBDB"
 	metabolism = REM * 0.5

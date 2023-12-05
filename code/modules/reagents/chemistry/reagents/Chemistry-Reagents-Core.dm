@@ -161,7 +161,7 @@
 	name = "Water"
 	id = "water"
 	taste_description = "water"
-	desc = "A ubiquitous chemical substance that is composed of hydrogen and oxygen."
+	description = "A ubiquitous chemical substance that is composed of hydrogen and oxygen."
 	reagent_state = REAGENT_LIQUID
 	color = "#0064C877"
 	metabolism = REM * 10
@@ -235,7 +235,7 @@
 /datum/reagent/fuel
 	name = "Welding fuel"
 	id = "fuel"
-	desc = "Required for welders. Flamable."
+	description = "Required for welders. Flamable."
 	taste_description = "gross metal"
 	reagent_state = REAGENT_LIQUID
 	color = "#660000"

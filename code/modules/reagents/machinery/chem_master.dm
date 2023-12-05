@@ -247,7 +247,7 @@
 			beaker_contents.Add(list(list( //! list in a list because Byond merges the first list...
 				"name"        = R.name,
 				"volume"      = round(R.volume, 0.01),
-				"description" = R.desc,
+				"description" = R.description,
 				"id"          = R.id,
 			)))
 	data["beaker_contents"] = beaker_contents
@@ -258,7 +258,7 @@
 			buffer_contents.Add(list(list( //! ^
 				"name"        = R.name,
 				"volume"      = round(R.volume, 0.01),
-				"description" = R.desc,
+				"description" = R.description,
 				"id"          = R.id,
 			)))
 	data["buffer_contents"] = buffer_contents
@@ -499,7 +499,7 @@
 					"name" = initial(analyzed_reagent.name),
 					"state" = state,
 					"color" = initial(analyzed_reagent.color),
-					"description" = initial(analyzed_reagent.desc),
+					"description" = initial(analyzed_reagent.description),
 					"metaRate" = metabolization_rate,
 					"overD" = initial(analyzed_reagent.overdose),
 					// "pH" = initial(analyzed_reagent.ph),

@@ -1,7 +1,7 @@
 /datum/reagent/thermite
 	name = "Thermite"
 	id = "thermite"
-	desc = "Thermite produces an aluminothermic reaction known as a thermite reaction. Can be used to melt walls."
+	description = "Thermite produces an aluminothermic reaction known as a thermite reaction. Can be used to melt walls."
 	taste_description = "sweet tasting metal"
 	reagent_state = REAGENT_SOLID
 	color = "#673910"
