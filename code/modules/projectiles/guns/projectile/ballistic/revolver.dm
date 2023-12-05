@@ -3,7 +3,7 @@
 	desc = "The Lumoco Arms HE Colt is a choice revolver for when you absolutely, positively need to put a hole in the other guy. Uses .357 rounds."
 	icon = 'icons/modules/projectlies/guns/ballistic/revolver.dmi'
 	icon_state = "revolver"
-	item_state = "revolver"
+
 	caliber = ".357"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	handle_casings = CYCLE_CASINGS
