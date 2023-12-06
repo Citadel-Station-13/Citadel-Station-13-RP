@@ -22,3 +22,24 @@
 /obj/item/gun/projectile/ballistic/apinae_pistol/update_icon_state()
 	. = ..()
 	icon_state = "apipistol-[ammo_magazine ? round(ammo_magazine.stored_ammo.len, 2) : "e"]"
+
+/obj/item/gun/projectile/ballistic/apinae_stinger
+	name = "\improper Apinae Stinger Rifle"
+	desc = "A biotechnological marvel, this living rifle can grow its ammo when provided with liquified wax. It fires poisonous bolts of barbed chitin."
+	icon_state = "apigun"
+	item_state = "speargun"
+	w_class = ITEMSIZE_LARGE
+	heavy = TRUE
+	caliber = "apidean"
+	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3, TECH_BIO = 7)
+	slot_flags = SLOT_BACK
+	fire_sound = 'sound/weapons/rifleshot.ogg'
+	load_method = MAGAZINE
+	magazine_type = /obj/item/ammo_magazine/biovial
+	allowed_magazines = list(/obj/item/ammo_magazine/biovial)
+	projectile_type = /obj/projectile/bullet/organic/stinger
+	one_handed_penalty = 25
+
+/obj/item/gun/projectile/ballistic/apinae_stinger/update_icon_state()
+	. = ..()
+	icon_state = "apigun-[ammo_magazine ? round(ammo_magazine.stored_ammo.len, 2) : "e"]"
