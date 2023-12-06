@@ -5,6 +5,8 @@
 
 #warn a5_7mm/
 /obj/item/ammo_casing/a57x28mm
+	icon = 'icons/modules/projectiles/casings/slim.dmi'
+	icon_state = "small"
 	desc = "A 5.7x28mm bullet casing."
 	regex_this_caliber = /datum/caliber/a5_7mm
 	projectile_type = /obj/projectile/bullet/pistol/lap
@@ -12,16 +14,19 @@
 
 /obj/item/ammo_casing/a57x28mm/ap
 	desc = "A 5.7x28mm armor-piercing bullet casing."
+	icon_state = "small-reinf"
 	projectile_type = /obj/projectile/bullet/pistol/ap
 	materials_base = list(MAT_STEEL = 80, MAT_COPPER = 30)
 
 /obj/item/ammo_casing/a57x28mm/hp
+	icon_state = "small-tech"
 	desc = "A 5.7x28mm hollow-point bullet casing."
 	projectile_type = /obj/projectile/bullet/pistol/hp
 	materials_base = list(MAT_STEEL = 60, MAT_COPPER = 30)
 
 /obj/item/ammo_casing/a57x28mm/hunter
 	desc = "A 5.7x28mm hunting bullet casing."
+	icon_state = "small-silver"
 	projectile_type = /obj/projectile/bullet/pistol/hunter
 	materials_base = list(MAT_STEEL = 30, MAT_COPPER = 50)
 

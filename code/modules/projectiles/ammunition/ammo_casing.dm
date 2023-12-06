@@ -1,8 +1,8 @@
 /obj/item/ammo_casing
 	name = "bullet casing"
 	desc = "A bullet casing."
-	icon = 'icons/obj/ammo.dmi'
-	icon_state = "s-casing"
+	icon = 'icons/modules/projectiles/casings/slim.dmi'
+	icon_state = "large"
 	slot_flags = SLOT_BELT | SLOT_EARS
 	item_flags = ITEM_EASY_LATHE_DECONSTRUCT | ITEM_ENCUMBERS_WHILE_HELD
 	throw_force = 1
