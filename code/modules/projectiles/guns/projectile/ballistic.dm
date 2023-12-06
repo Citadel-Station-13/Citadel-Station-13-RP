@@ -89,6 +89,8 @@
 	/// in overlay mode, we add "[base_icon_state]-empty" as a priority overlay if we're empty.
 	/// in state mode, "-empty" is automatically inserted after base_icon_state if we're empty.
 	var/render_magazine_system = GUN_RENDERING_DISABLED
+	/// use -ext if we have an extended magazine in
+	var/render_magazine_extended = FALSE
 	/// magazine rendering system is used for inhands
 	/// this will result in the effective item state for onmob being modified,
 	/// completely ignores render_magazine_system; this only uses states!

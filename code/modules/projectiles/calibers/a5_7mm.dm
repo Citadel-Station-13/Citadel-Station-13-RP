@@ -1,9 +1,12 @@
 /datum/caliber/a5_7mm
 	caliber = "5.7x28mm"
 
+//* Casings
+
+#warn a5_7mm/
 /obj/item/ammo_casing/a57x28mm
 	desc = "A 5.7x28mm bullet casing."
-	caliber = "5.7x28mm"
+	regex_this_caliber = /datum/caliber/a5_7mm
 	projectile_type = /obj/projectile/bullet/pistol/lap
 	materials_base = list(MAT_STEEL = 30, MAT_COPPER = 30)
 
@@ -22,9 +25,15 @@
 	projectile_type = /obj/projectile/bullet/pistol/hunter
 	materials_base = list(MAT_STEEL = 30, MAT_COPPER = 50)
 
-//NTLES
+//* Magazines
 
-/obj/item/ammo_magazine/m57x28mm//* ntles	ammo_max = 30
+#warn a5_7mm/
+/obj/item/ammo_magazine/m57x28mm
+
+/obj/item/ammo_magazine/m57x28mm/ntles
+	name = "magazine"
+	icon = 'icons/modules/projectiles/magazines/old_magazine_stick.dmi'
+	ammo_max = 20
 
 /obj/item/ammo_magazine/m57x28mm/ntles/ap
 	name = "magazine (5.7x28mm armor piercing)"
@@ -72,6 +81,7 @@
 /obj/item/ammo_magazine/m57x28mm/smg
 	name = "NT-SMG-8 magazine (5.7x28mm)"
 	desc = "A compact double stack aluminum magazine."
+	icon = 'icons/modules/projectiles/magazines/old_magazine_stick.dmi'
 	icon_state = "combatsmg"
 	ammo_max = 40
 
@@ -84,6 +94,7 @@
 /obj/item/ammo_magazine/m57x28mm/fiveseven
 	name = "fiveseven magazine (5.7x28mm)"
 	desc = "A sturdy double stack magazine with a reinforced spring, designed for withstanding rough treatment."
+	icon = 'icons/modules/projectiles/magazines/old_magazine_stick.dmi'
 	icon_state = "fiveseven"
 	origin_tech = list(TECH_COMBAT = 2)
 	mag_type = MAGAZINE

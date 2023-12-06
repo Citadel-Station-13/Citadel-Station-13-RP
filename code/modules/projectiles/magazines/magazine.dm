@@ -26,6 +26,8 @@
 	/// magazine type - must match gun's to be fitted into it, if gun's is
 	/// setting this to a gun's typepath is allowed, this is an arbitrary field.
 	var/magazine_type
+	/// considered an extended magazine for guns that support rendering extended magazines?
+	var/magazine_extended = FALSE
 
 	//* for speedloaders
 	/// inherent speedloader delay, added to gun's speedloaders_delay
