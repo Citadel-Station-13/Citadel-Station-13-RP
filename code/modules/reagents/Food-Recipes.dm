@@ -204,3 +204,16 @@
 	required_reagents = list("water" = 5, "sodiumchloride" = 1, "sugar" = 1)
 	catalysts = list("enzyme" = 5)
 	result_amount = 5
+
+/datum/chemical_reaction/food/meatsicle
+	name = "Meatsicle"
+	id = "meatsicle"
+	result = "meatsicle"
+	required_reagents = list("protein" = 6, "ice" = 6)
+	result_amount = 1
+
+/datum/chemical_reaction/food/meatsicle/on_reaction(datum/reagents/holder, created_volume)
+	var/location = get_turf(holder.my_atom)
+	for(var/i = 1, i <= created_volume, i++)
+		new /obj/item/reagent_containers/food/snacks/meatsicle(location)
+	return
