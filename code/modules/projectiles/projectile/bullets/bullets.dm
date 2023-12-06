@@ -509,12 +509,9 @@
 	nodamage = 1
 	embed_chance = 0
 	sharp = 0
+	range = 2
 
 	combustion = FALSE
-
-/obj/projectile/bullet/pistol/cap/process(delta_time)
-	loc = null
-	qdel(src)
 
 /obj/projectile/bullet/blank
 	name = "blank"

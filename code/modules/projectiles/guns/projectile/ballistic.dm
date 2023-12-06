@@ -86,13 +86,12 @@
 
 	//* Rendering
 	/// rendering system for magazine
-	/// in overlay mode, we add "[base_icon_state]-mag" as a priority overlay.
-	/// in state mode, "-mag" is automatically inserted after base_icon_state.
+	/// in overlay mode, we add "[base_icon_state]-empty" as a priority overlay if we're empty.
+	/// in state mode, "-empty" is automatically inserted after base_icon_state if we're empty.
 	var/render_magazine_system = GUN_RENDERING_DISABLED
 	/// magazine rendering system is used for inhands
 	/// this will result in the effective item state for onmob being modified,
-	/// or additional overlays being added during onmob rendering,
-	/// depending on what system is set to.
+	/// completely ignores render_magazine_system; this only uses states!
 	var/render_magazine_inhand = TRUE
 	#warn hook above using render_append_state and priority overlays, and overriding build worn icon etc etc
 
