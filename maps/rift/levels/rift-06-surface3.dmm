@@ -12655,7 +12655,42 @@
 /obj/item/binoculars{
 	pixel_y = 10
 	},
-/obj/item/ano_scanner,
+/obj/item/ano_scanner{
+	pixel_y = 18
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration/body{
+	pixel_x = -6
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration/body{
+	pixel_x = -6
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration/body{
+	pixel_x = -6
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration/body{
+	pixel_x = -6
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration/body{
+	pixel_x = -6
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration/body{
+	pixel_x = -6
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration{
+	pixel_x = 4
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration{
+	pixel_x = 4
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration{
+	pixel_x = 4
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration{
+	pixel_x = 4
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration{
+	pixel_x = 4
+	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration/courser_dock)
 "aJp" = (

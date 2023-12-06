@@ -27160,10 +27160,43 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/structure/flora/pottedplant/sticky{
-	pixel_y = 8
-	},
 /obj/structure/table/reinforced,
+/obj/item/clothing/accessory/armor/helmetcamera/body{
+	pixel_x = -4
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/body{
+	pixel_x = -4
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/body{
+	pixel_x = -4
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/body{
+	pixel_x = -4
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/body{
+	pixel_x = -4
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/body{
+	pixel_x = -4
+	},
+/obj/item/clothing/accessory/armor/helmetcamera{
+	pixel_x = 4
+	},
+/obj/item/clothing/accessory/armor/helmetcamera{
+	pixel_x = 4
+	},
+/obj/item/clothing/accessory/armor/helmetcamera{
+	pixel_x = 4
+	},
+/obj/item/clothing/accessory/armor/helmetcamera{
+	pixel_x = 4
+	},
+/obj/item/clothing/accessory/armor/helmetcamera{
+	pixel_x = 4
+	},
+/obj/item/clothing/accessory/armor/helmetcamera{
+	pixel_x = 4
+	},
 /turf/simulated/floor/tiled/steel,
 /area/storage/tools)
 "qVS" = (
