@@ -41,6 +41,7 @@
 
 //* Magazines - Speedloaders
 
+#warn a357/
 /obj/item/ammo_magazine/s357
 	name = "speedloader (.357)"
 	desc = "A speedloader for .357 revolvers."
