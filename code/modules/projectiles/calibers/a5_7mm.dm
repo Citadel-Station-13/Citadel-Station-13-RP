@@ -32,11 +32,13 @@
 
 //* Magazines
 
-#warn a5_7mm/
-/obj/item/ammo_magazine/m57x28mm
+/obj/item/ammo_magazine/a5_7mm
+	ammo_caliber = /datum/caliber/a5_7mm
 
+#warn a5_7mm/
 /obj/item/ammo_magazine/m57x28mm/ntles
-	name = "magazine"
+	name = "magazine (5.7x28mm)"
+	desc = "A durable top-loading magazine, designed for withstanding rough treatment."
 	icon = 'icons/modules/projectiles/magazines/old_magazine_stick.dmi'
 	icon_state = "ntles-1"
 	base_icon_state = "ntles"

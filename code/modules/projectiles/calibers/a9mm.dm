@@ -145,6 +145,7 @@
 
 /obj/item/ammo_magazine/clip/c9mm
 	name = "ammo clip (9mm)"
+	#warn stripper clip file (small)
 	icon_state = "clip_pistol"
 	desc = "A stripper clip for reloading 9mm rounds into magazines."
 	caliber = "9mm"
@@ -194,15 +195,3 @@
 
 /obj/item/ammo_magazine/m9mmR/saber/empty
 	ammo_current = 0
-
-//* 5.7x28mm/obj/item/ammo_magazine/m57x28mm
-	name = "magazine (5.7x28mm)"
-	desc = "A durable top-loading magazine, designed for withstanding rough treatment."
-	icon_state = "ntles"
-	origin_tech = list(TECH_COMBAT = 2)
-	mag_type = MAGAZINE
-	materials_base = list(MAT_STEEL = 300, MAT_COPPER = 300)
-	caliber = "5.7x28mm"
-	ammo_preload = /obj/item/ammo_casing/a57x28mm
-	ammo_max = 20
-	multiple_sprites = 1
