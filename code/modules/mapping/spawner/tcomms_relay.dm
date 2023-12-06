@@ -14,9 +14,9 @@
 	var/obj/machinery/telecomms/hub/preset/station_hub
 	station_hub = locate(/obj/machinery/telecomms/hub/preset/rift) in world
 	if(!station_hub)
-		station_hub = locate(/obj/machinery/telecomms/hub/preset/rift) in world
+		station_hub = locate(/obj/machinery/telecomms/hub/preset/triumph) in world
 	if(!station_hub)
-		station_hub = locate(/obj/machinery/telecomms/hub/preset/rift) in world
+		station_hub = locate(/obj/machinery/telecomms/hub/preset/tether) in world
 	if(!station_hub)
 		log_and_message_admins("[src] failed to locate telecoms hub, no autoconnection possible.")
 	else
