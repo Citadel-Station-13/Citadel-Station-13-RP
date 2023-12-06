@@ -131,7 +131,7 @@
 #warn a12g_drum
 /obj/item/ammo_magazine/m12gdrum
 	name = "magazine (12 gauge)"
-	icon = 'icons/modules/projectile/magazines/old_stripper_a12.dmi'
+	icon = 'icons/modules/projectile/magazines/old_magazine_drum.dmi'
 	icon_state = "autoshotgun"
 	base_icon_state = "autoshotgun"
 	materials_base = list(MAT_STEEL = 13000)
@@ -177,7 +177,7 @@
 #warn a12g_clip
 /obj/item/ammo_magazine/clip/c12g
 	name = "ammo clip (12g slug)"
-	icon = 'icons/modules/projectiles/magazines/old_stripper_a12.dmi'
+	icon = 'icons/modules/projectiles/magazines/old_stripper.dmi'
 	icon_state = "a12-slug-2"
 	base_icon_state = "a12-slug"
 	desc = "A color-coded metal clip for holding and quickly loading shotgun shells. This one is loaded with slugs."
@@ -221,7 +221,7 @@
 /obj/item/ammo_magazine/shotholder
 	name = "shotgun slug holder"
 	desc = "A convenient pouch that holds 12 gauge shells."
-	icon = 'icons/modules/projectiles/magazines/old_pouch_a12.dmi'
+	icon = 'icons/modules/projectiles/magazines/old_pouch.dmi'
 	icon_state = "shotgun-clip-4"
 	base_icon_state = "shotgun-clip"
 	ammo_caliber = /datum/caliber/a12g

@@ -33,21 +33,25 @@
 /obj/item/ammo_magazine/m57x28mm/ntles
 	name = "magazine"
 	icon = 'icons/modules/projectiles/magazines/old_magazine_stick.dmi'
+	icon_state = "ntles-1"
+	base_icon_state = "ntles"
+	rendering_system = GUN_RENDERING_STATES
+	rendering_count = 1
 	ammo_max = 20
 
 /obj/item/ammo_magazine/m57x28mm/ntles/ap
 	name = "magazine (5.7x28mm armor piercing)"
-	ammo_mark = "ap"
+	rendering_static_overlay = "ap"
 	ammo_preload = /obj/item/ammo_casing/a57x28mm/ap
 
 /obj/item/ammo_magazine/m57x28mm/ntles/hp
 	name = "magazine (5.7x28mm hollow-point)"
-	ammo_mark = "hp"
+	rendering_static_overlay = "hp"
 	ammo_preload = /obj/item/ammo_casing/a57x28mm/hp
 
 /obj/item/ammo_magazine/m57x28mm/ntles/hunter
 	name = "magazine (5.7x28mm hunter)"
-	ammo_mark = "hunter"
+	rendering_static_overlay = "hunter"
 	ammo_preload = /obj/item/ammo_casing/a57x28mm/hunter
 
 /obj/item/ammo_magazine/m57x28mm/ntles/empty
@@ -55,22 +59,22 @@
 
 /obj/item/ammo_magazine/m57x28mm/ntles/highcap
 	name = "high capacity magazine (5.7x28mm)"
-	icon_state = "ntles_highcap"
+	icon_state = "ntles-high-1"
+	base_icon_state = "ntles-high"
 	ammo_max = 50
-	origin_tech = list(TECH_COMBAT = 2, TECH_ILLEGAL = 1)
 
 /obj/item/ammo_magazine/m57x28mm/ntles/highcap/ap
 	name = "high capacity magazine (5.7x28mm armor piercing)"
-	ammo_mark = "ap"
+	rendering_static_overlay = "ap"
 	ammo_preload = /obj/item/ammo_casing/a57x28mm/ap
 /obj/item/ammo_magazine/m57x28mm/ntles/highcap/hp
 	name = "high capacity magazine (5.7x28mm hollow-point)"
-	ammo_mark = "hp"
+	rendering_static_overlay = "hp"
 	ammo_preload = /obj/item/ammo_casing/a57x28mm/hp
 
 /obj/item/ammo_magazine/m57x28mm/ntles/highcap/hunter
 	name = "high capacity magazine (5.7x28mm hunter)"
-	ammo_mark = "hunter"
+	rendering_static_overlay = "hunter"
 	ammo_preload = /obj/item/ammo_casing/a57x28mm/hunter
 
 /obj/item/ammo_magazine/m57x28mm/ntles/highcap/empty
@@ -82,12 +86,14 @@
 	name = "NT-SMG-8 magazine (5.7x28mm)"
 	desc = "A compact double stack aluminum magazine."
 	icon = 'icons/modules/projectiles/magazines/old_magazine_stick.dmi'
-	icon_state = "combatsmg"
+	icon_state = "harpy"
+	rendering_count = 1
+	rendering_system = GUN_RENDERING_STATES
 	ammo_max = 40
 
 /obj/item/ammo_magazine/m57x28mm/smg/ap
 	name = "NT-SMG-8 magazine (5.7x28mm armor piercing)"
-	ammo_mark = "cmbtsmg_ap"
+	rendering_static_overlay = "ap"
 	ammo_preload = /obj/item/ammo_casing/a57x28mm/ap
 
 //Fiveseven mags
@@ -95,28 +101,28 @@
 	name = "fiveseven magazine (5.7x28mm)"
 	desc = "A sturdy double stack magazine with a reinforced spring, designed for withstanding rough treatment."
 	icon = 'icons/modules/projectiles/magazines/old_magazine_stick.dmi'
-	icon_state = "fiveseven"
-	origin_tech = list(TECH_COMBAT = 2)
-	mag_type = MAGAZINE
-	materials_base = list(MAT_STEEL = 300, MAT_COPPER = 300)
-	caliber = "5.7x28mm"
+	icon_state = "fiveseven-0"
+	base_icon_state = "fiveseven"
+	materials_base = list(MAT_STEEL = 300)
+	rendering_system = GUN_RENDERING_STATES
+	rendering_count = 1
+	ammo_caliber = /datum/caliber/a5_7mm
 	ammo_preload = /obj/item/ammo_casing/a57x28mm
 	ammo_max = 20
-	multiple_sprites = 1
 
 /obj/item/ammo_magazine/m57x28mm/fiveseven/ap
 	name = "magazine (5.7x28mm armor piercing)"
-	ammo_mark = "ap"
+	rendering_static_overlay = "ap"
 	ammo_preload = /obj/item/ammo_casing/a57x28mm/ap
 
 /obj/item/ammo_magazine/m57x28mm/fiveseven/hp
 	name = "magazine (5.7x28mm hollow-point)"
-	ammo_mark = "hp"
+	rendering_static_overlay = "hp"
 	ammo_preload = /obj/item/ammo_casing/a57x28mm/hp
 
 /obj/item/ammo_magazine/m57x28mm/fiveseven/hunter
 	name = "magazine (5.7x28mm hunter)"
-	ammo_mark = "hunter"
+	rendering_static_overlay = "hunter"
 	ammo_preload = /obj/item/ammo_casing/a57x28mm/hunter
 
 /obj/item/ammo_magazine/m57x28mm/fiveseven/empty
@@ -125,37 +131,36 @@
 /obj/item/ammo_magazine/m57x28mm/fiveseven/highcap
 	name = "high capacity fiveseven magazine (5.7x28mm)"
 	desc = "A sturdy, extra long double stack magazine with a reinforced spring, designed for withstanding rough treatment."
-	icon_state = "fiveseven_highcap"
+	icon_state = "fiveseven-high-1"
+	base_icon_state = "fiveseven-high"
 	ammo_max = 30
-	origin_tech = list(TECH_COMBAT = 2, TECH_ILLEGAL = 1)
 
 /obj/item/ammo_magazine/m57x28mm/fiveseven/highcap/ap
 	name = "high capacity magazine (5.7x28mm armor piercing)"
-	ammo_mark = "ap"
+	rendering_static_overlay = "ap"
 	ammo_preload = /obj/item/ammo_casing/a57x28mm/ap
 /obj/item/ammo_magazine/m57x28mm/fiveseven/highcap/hp
 	name = "high capacity magazine (5.7x28mm hollow-point)"
-	ammo_mark = "hp"
+	rendering_static_overlay = "hp"
 	ammo_preload = /obj/item/ammo_casing/a57x28mm/hp
 
 /obj/item/ammo_magazine/m57x28mm/fiveseven/highcap/hunter
 	name = "high capacity magazine (5.7x28mm hunter)"
-	ammo_mark = "hunter"
+	rendering_static_overlay = "hunter"
 	ammo_preload = /obj/item/ammo_casing/a57x28mm/hunter
 
 /obj/item/ammo_magazine/m57x28mm/fiveseven/highcap/empty
 	ammo_current = 0
 
 //p90
+#warn a5_7mm/
 /obj/item/ammo_magazine/m57x28mmp90
 	name = "high capacity top mounted magazine (5.7x28mm armor-piercing)"
-	icon_state = "p90"
-	mag_type = MAGAZINE
+	icon_state = "p90-1"
+	base_icon_state = "p90"
+	rendering_system = GUN_RENDERING_STATES
 	ammo_preload = /obj/item/ammo_casing/a57x28mm/ap
-	materials_base = list(MAT_STEEL = 1500, MAT_COPPER = 1500)
-	caliber = "5.7x28mm"
 	ammo_max = 50
-	multiple_sprites = 1
 
 /obj/item/ammo_magazine/m57x28mmp90/hunter
 	name = "high capacity top mounted magazine (5.7x28mm hunter)"
