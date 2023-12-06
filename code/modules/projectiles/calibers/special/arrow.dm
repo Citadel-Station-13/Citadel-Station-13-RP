@@ -5,7 +5,8 @@
 	name = "arrow of questionable material"
 	desc = "You shouldn't be seeing this arrow."
 	projectile_type = /obj/projectile/bullet/reusable/arrow
-	caliber = "arrow"
+	regex_this_caliber = /datum/caliber/arrow
+	icon = 'icons/modules/projectiles/casings/arrow.dmi'
 	icon_state = "arrow"
 	throw_force = 3 //good luck hitting someone with the pointy end of the arrow
 	throw_speed = 3
