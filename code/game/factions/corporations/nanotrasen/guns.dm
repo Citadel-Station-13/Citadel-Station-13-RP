@@ -107,3 +107,49 @@
 /obj/item/gun/projectile/ballistic/automatic/combat/update_icon_state()
 	. = ..()
 	icon_state = (ammo_magazine)? "combatsmg" : "combatsmg-empty"
+
+/obj/item/gun/projectile/ballistic/ntles
+	name = "NT-57 'LES'"
+	desc = "The NT-57 'LES' (Light Expeditionary Sidearm) is a tried and tested pistol often issued to Pathfinders. Featuring a polymer frame, collapsible stock, and integrated optics, the LES is lightweight and reliably functions in nearly any hazardous environment, including vacuum."
+	icon_state = "ntles"
+	item_state = "pistol"
+	caliber = "5.7x28mm"
+	load_method = MAGAZINE
+	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
+	magazine_type = /obj/item/ammo_magazine/m57x28mm/ntles
+	allowed_magazines = list(/obj/item/ammo_magazine/m57x28mm/ntles)
+	projectile_type = /obj/projectile/bullet/pistol/lap
+	one_handed_penalty = 30
+	var/collapsible = 1
+	var/extended = 0
+
+/obj/item/gun/projectile/ballistic/ntles/update_icon_state()
+	. = ..()
+	if(!extended && ammo_magazine)
+		icon_state = "ntles"
+	else if(extended && ammo_magazine)
+		icon_state = "ntles_extended"
+	else if(extended && !ammo_magazine)
+		icon_state = "ntles_extended-empty"
+	else
+		icon_state = "ntles-empty"
+
+/obj/item/gun/projectile/ballistic/ntles/attack_self(mob/user, obj/item/gun/G)
+	if(collapsible && !extended)
+		to_chat(user, "<span class='notice'>You pull out the stock on the [src], steadying the weapon.</span>")
+		w_class = ITEMSIZE_LARGE
+		one_handed_penalty = 10
+		extended = 1
+		update_icon()
+	else if(!collapsible)
+		to_chat(user, "<span class='danger'>The [src] doesn't have a stock!</span>")
+		return
+	else
+		to_chat(user, "<span class='notice'>You push the stock back into the [src], making it more compact.</span>")
+		w_class = ITEMSIZE_NORMAL
+		one_handed_penalty = 30
+		extended = 0
+		update_icon()
+
+/obj/item/gun/projectile/ballistic/ntles/pathfinder
+	pin = /obj/item/firing_pin/explorer

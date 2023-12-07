@@ -108,33 +108,6 @@
 	allowed_magazines = list(/obj/item/ammo_magazine/m45)
 	projectile_type = /obj/projectile/bullet/pistol/medium
 
-/obj/item/gun/projectile/ballistic/deagle
-	name = "desert eagle"
-	desc = "The perfect handgun for shooters with a need to hit targets through a wall and behind a fridge in your neighbor's house. Uses .44 rounds."
-	icon_state = "deagle"
-	item_state = "deagle"
-	damage_force = 14.0
-	caliber = ".44"
-	fire_sound = 'sound/weapons/Gunshot_deagle.ogg'
-	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/m44
-	allowed_magazines = list(/obj/item/ammo_magazine/m44)
-
-/obj/item/gun/projectile/ballistic/deagle/gold
-	desc = "A gold plated gun folded over a million times by superior martian gunsmiths. Uses .44 rounds."
-	icon_state = "deagleg"
-	item_state = "deagleg"
-
-/obj/item/gun/projectile/ballistic/deagle/camo
-	desc = "A Deagle brand Deagle for operators operating operationally. Uses .44 rounds."
-	icon_state = "deaglecamo"
-	item_state = "deagleg"
-
-/obj/item/gun/projectile/ballistic/deagle/taj
-	name = "Adhomai Hand Cannon"
-	desc = "The Nal'dor heavy pistol, a powerful Hadii-Wrack group handcannon that has gained an infamous reputation through its use by Commissars of the People's Republic of Adhomai."
-	icon_state = "deagle-taj"
-
 /obj/item/gun/projectile/ballistic/gyropistol // Does this even appear anywhere outside of admin abuse?
 	name = "gyrojet pistol"
 	desc = "Speak softly, and carry a big gun. Fires rare .75 caliber self-propelled exploding bolts--because fuck you and everything around you."
@@ -340,18 +313,6 @@
 	desc = "Ah, the choice of an avid gun collector! It's a nice gun, stranger."
 	ammo_type = /obj/item/ammo_casing/a9mm/silver
 
-/obj/item/gun/projectile/ballistic/clown_pistol
-	name = "clown pistol"
-	desc = "This curious weapon feeds from a compressed biomatter cartridge, and seems to fabricate its ammunition from that supply."
-	icon_state = "clownpistol"
-	item_state = "revolver"
-	caliber = "organic"
-	load_method = MAGAZINE
-	w_class = ITEMSIZE_SMALL
-	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_ILLEGAL = 3)
-	magazine_type = /obj/item/ammo_magazine/mcompressedbio/compact
-	allowed_magazines = list(/obj/item/ammo_magazine/mcompressedbio/compact)
-	projectile_type = /obj/projectile/bullet/organic
 
 //Hey did you ever see Kingsman? Well, you know this gun then.
 /obj/item/gun/projectile/ballistic/konigin
@@ -414,67 +375,4 @@
 */
 
 //Exploration/Pathfinder Sidearms
-/obj/item/gun/projectile/ballistic/ntles
-	name = "NT-57 'LES'"
-	desc = "The NT-57 'LES' (Light Expeditionary Sidearm) is a tried and tested pistol often issued to Pathfinders. Featuring a polymer frame, collapsible stock, and integrated optics, the LES is lightweight and reliably functions in nearly any hazardous environment, including vacuum."
-	icon_state = "ntles"
-	item_state = "pistol"
-	caliber = "5.7x28mm"
-	load_method = MAGAZINE
-	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
-	magazine_type = /obj/item/ammo_magazine/m57x28mm/ntles
-	allowed_magazines = list(/obj/item/ammo_magazine/m57x28mm/ntles)
-	projectile_type = /obj/projectile/bullet/pistol/lap
-	one_handed_penalty = 30
-	var/collapsible = 1
-	var/extended = 0
-
-/obj/item/gun/projectile/ballistic/ntles/update_icon_state()
-	. = ..()
-	if(!extended && ammo_magazine)
-		icon_state = "ntles"
-	else if(extended && ammo_magazine)
-		icon_state = "ntles_extended"
-	else if(extended && !ammo_magazine)
-		icon_state = "ntles_extended-empty"
-	else
-		icon_state = "ntles-empty"
-
-/obj/item/gun/projectile/ballistic/ntles/attack_self(mob/user, obj/item/gun/G)
-	if(collapsible && !extended)
-		to_chat(user, "<span class='notice'>You pull out the stock on the [src], steadying the weapon.</span>")
-		w_class = ITEMSIZE_LARGE
-		one_handed_penalty = 10
-		extended = 1
-		update_icon()
-	else if(!collapsible)
-		to_chat(user, "<span class='danger'>The [src] doesn't have a stock!</span>")
-		return
-	else
-		to_chat(user, "<span class='notice'>You push the stock back into the [src], making it more compact.</span>")
-		w_class = ITEMSIZE_NORMAL
-		one_handed_penalty = 30
-		extended = 0
-		update_icon()
-
-/obj/item/gun/projectile/ballistic/ntles/pathfinder
-	pin = /obj/item/firing_pin/explorer
-
-/obj/item/gun/projectile/ballistic/fiveseven
-	name = "\improper Five-seven sidearm"
-	desc = "This classic sidearm design utilizes an adaptable round considered by some to be superior to 9mm parabellum. Favored amongst sheild bearers in tactical units for its stability in one-handed use, and high capacity magazines."
-	icon_state = "fiveseven"
-	item_state = "pistol"
-	caliber = "5.7x28mm"
-	load_method = MAGAZINE
-	w_class = ITEMSIZE_SMALL
-	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
-	magazine_type = /obj/item/ammo_magazine/m57x28mm/fiveseven
-	allowed_magazines = list(/obj/item/ammo_magazine/m57x28mm/fiveseven)
-	one_handed_penalty = 0
-
-/obj/item/gun/projectile/ballistic/fiveseven/update_icon_state()
-	. = ..()
-	if(istype(ammo_magazine,/obj/item/ammo_magazine/m57x28mm/fiveseven/highcap))
-		icon_state = "fiveseven-extended"
 

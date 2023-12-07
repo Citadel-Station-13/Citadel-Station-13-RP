@@ -20,3 +20,8 @@
 	else
 		icon_state = "mini-uzi-taj-empty"
 		item_state = "mini-uzi-taj-empty"
+
+/obj/item/gun/projectile/ballistic/deagle/taj
+	name = "Adhomai Hand Cannon"
+	desc = "The Nal'dor heavy pistol, a powerful Hadii-Wrack group handcannon that has gained an infamous reputation through its use by Commissars of the People's Republic of Adhomai."
+	icon_state = "deagle-taj"
