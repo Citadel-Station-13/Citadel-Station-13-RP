@@ -5645,7 +5645,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "qX" = (
-/obj/structure/sign/double/barsign,
+/obj/machinery/barsign,
 /turf/simulated/wall/prepainted/civilian,
 /area/crew_quarters/coffee_shop)
 "ra" = (
@@ -15852,7 +15852,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/sign/double/barsign{
+/obj/machinery/barsign{
 	pixel_y = 30
 	},
 /obj/structure/table/marble,

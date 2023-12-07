@@ -25028,7 +25028,7 @@
 /obj/effect/floor_decal/spline/plain,
 /obj/effect/floor_decal/corner/black/diagonal,
 /obj/effect/floor_decal/corner/red/diagonal,
-/obj/structure/sign/double/barsign{
+/obj/machinery/barsign{
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/dark,

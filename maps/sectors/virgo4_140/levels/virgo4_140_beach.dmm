@@ -144,7 +144,7 @@
 	},
 /area/tether_away/beach/resort)
 "aJ" = (
-/obj/structure/sign/double/barsign,
+/obj/machinery/barsign,
 /turf/simulated/wall/sandstone,
 /area/tether_away/beach/resort/janibar)
 "aK" = (

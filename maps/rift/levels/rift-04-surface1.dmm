@@ -10767,7 +10767,7 @@
 /area/hallway/primary/surfaceone)
 "hcE" = (
 /obj/machinery/vending/sovietsoda,
-/obj/structure/sign/double/barsign{
+/obj/machinery/barsign{
 	pixel_y = 32
 	},
 /turf/simulated/floor/wood,

@@ -30240,7 +30240,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 5
 	},
-/obj/structure/sign/double/barsign,
+/obj/machinery/barsign,
 /turf/simulated/wall,
 /area/crew_quarters/bar)
 "rqi" = (

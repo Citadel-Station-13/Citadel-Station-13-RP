@@ -7151,7 +7151,7 @@
 /area/class_m/inside/main)
 "NG" = (
 /obj/structure/grille,
-/obj/structure/sign/double/barsign{
+/obj/machinery/barsign{
 	layer = 3.3
 	},
 /obj/structure/window/reinforced/full,
