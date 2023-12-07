@@ -1,58 +1,65 @@
-/datum/caliber/a49
+/datum/caliber/a45
 	caliber = ".45"
+
+//* Casings
 
 /obj/item/ammo_casing/a45
 	desc = "A .45 bullet casing."
-	caliber = ".45"
+	regex_this_caliber = /datum/caliber/a45
+	icon = 'icons/modules/projectiles/casings/slim.dmi'
+	icon_state = "large"
 	projectile_type = /obj/projectile/bullet/pistol/medium
 	materials_base = list(MAT_STEEL = 75)
 
 /obj/item/ammo_casing/a45/ap
 	desc = "A .45 Armor-Piercing bullet casing."
-	icon_state = "r-casing"
+	icon_state = "large-blue"
 	projectile_type = /obj/projectile/bullet/pistol/medium/ap
 
 /obj/item/ammo_casing/a45/hunter
 	desc = "A .45 hunting bullet casing."
+	icon_state = "large-white"
 	projectile_type = /obj/projectile/bullet/pistol/medium/hunter
-	materials_base = list(MAT_STEEL = 75)
 
 /obj/item/ammo_casing/a45/practice
 	desc = "A .45 practice bullet casing."
-	icon_state = "r-casing"
+	icon_state = "large-white"
 	projectile_type = /obj/projectile/bullet/practice
 	materials_base = list(MAT_STEEL = 60)
 
 /obj/item/ammo_casing/a45/rubber
 	desc = "A .45 rubber bullet casing."
-	icon_state = "r-casing"
+	icon_state = "large-red"
 	projectile_type = /obj/projectile/bullet/pistol/rubber
 	materials_base = list(MAT_STEEL = 60)
 
 /obj/item/ammo_casing/a45/flash
 	desc = "A .45 flash shell casing."
-	icon_state = "r-casing"
+	icon_state = "large-white"
 	projectile_type = /obj/projectile/energy/flash
 	materials_base = list(MAT_STEEL = 60)
 
 /obj/item/ammo_casing/a45/emp
 	name = ".45 haywire round"
 	desc = "A .45 bullet casing fitted with a single-use ion pulse generator."
+	icon_state = "large-blue"
 	projectile_type = /obj/projectile/ion/small
-	icon_state = "empcasing"
 	materials_base = list(MAT_STEEL = 130, MAT_URANIUM = 100)
 
 /obj/item/ammo_casing/a45/hp
 	desc = "A .45 hollow-point bullet casing."
+	icon_state = "large-red"
 	projectile_type = /obj/projectile/bullet/pistol/medium/hp
 
 /obj/item/ammo_casing/a45/silver
 	name = ".45 silver round"
 	desc = "A .45 silver bullet casing. Bless and Sancitfied to banish otherworlds entities."
-	icon_state = "ag-casing"
+	icon_state = "large-white"
 	projectile_type = /obj/projectile/bullet/pistol/silver
 	materials_base = list(MAT_STEEL = 130, MAT_SILVER = 100)
 
+
+//* Magazines
 
 /obj/item/ammo_magazine/m45
 	name = "pistol magazine (.45)"
