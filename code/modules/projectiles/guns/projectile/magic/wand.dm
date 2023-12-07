@@ -10,6 +10,7 @@
 	accuracy = 95
 	var/variable_charges = 1
 
+
 /obj/item/gun/projectile/magic/wand/Initialize(mapload)
 	if(prob(75) && variable_charges) //25% chance of listed max charges, 50% chance of 1/2 max charges, 25% chance of 1/3 max charges
 		if(prob(33))
