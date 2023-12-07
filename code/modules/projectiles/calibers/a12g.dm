@@ -7,7 +7,7 @@
 /obj/item/ammo_casing/a12g
 	name = "slug shell"
 	desc = "A 12 gauge slug."
-	icon = 'icons/modules/projectiles/casings/shotgun.dmi'
+	icon = 'icons/modules/projectiles/casings/a12g.dmi'
 	icon_state = "grey"
 	regex_this_caliber = /datum/caliber/a12g
 	projectile_type = /obj/projectile/bullet/shotgun

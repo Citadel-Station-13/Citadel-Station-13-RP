@@ -4,8 +4,10 @@
 /obj/item/ammo_casing/a10g
 	name = "heavy shotgun slug"
 	desc = "A brass jacketed 10 gauge slug shell."
-	icon_state = "brshell"
-	caliber = "10g"
+	icon = 'icons/modules/projectiles/casings/a10g.dmi'
+	icon_state = "10ga_slug"
+	icon_spent = FALSE
+	regex_this_caliber = /datum/caliber/a10g
 	projectile_type = /obj/projectile/bullet/heavy_shotgun
 	materials_base = list(MAT_STEEL = 300, "brass" = 200)
 	fall_sounds = list('sound/weapons/guns/shotgun_fall.ogg')
