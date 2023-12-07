@@ -57,32 +57,40 @@ jobs:
       # - name: Install Setuptools
       #   run: |
       #     pip3 install setuptools
-      - name: CI - DMI Tests
-        run: |
-          tools/bootstrap/python -m dmi.test
-      - name: CI - DMM Tests
-        run: |
-          tools/bootstrap/python -m mapmerge2.dmm_test
-      - name: CI - TGUI
-        run: |
-          tools/build/build --ci lint tgui-test
-      - name: CI - Grep (string checks)
-        run: |
-          tools/ci/check_grep.sh
-      - name: CI - Changelogs
-        run: |
-          tools/ci/check_changelogs.sh
-      - name: CI - DME Validation
-        run: |
-          tools/ci/check_filedirs.sh citadel.dme
       - name: CI - Parse DM (dreamchecker)
         run: |
           ~/dreamchecker > ${GITHUB_WORKSPACE}/output-annotations.txt 2>&1
       - name: CI - Annotate DM (dreamchecker)
+        if: always()
         uses: yogstation13/DreamAnnotate@v2
         with:
           outputFile: output-annotations.txt
+      - name: CI - DMI Tests
+        if: always()
+        run: |
+          tools/bootstrap/python -m dmi.test
+      - name: CI - DMM Tests
+        if: always()
+        run: |
+          tools/bootstrap/python -m mapmerge2.dmm_test
+      - name: CI - TGUI
+        if: always()
+        run: |
+          tools/build/build --ci lint tgui-test
+      - name: CI - Grep (string checks)
+        if: always()
+        run: |
+          tools/ci/check_grep.sh
+      - name: CI - Changelogs
+        if: always()
+        run: |
+          tools/ci/check_changelogs.sh
+      - name: CI - DME Validation
+        if: always()
+        run: |
+          tools/ci/check_filedirs.sh citadel.dme
       - name: CI - Misc
+        if: always()
         run: |
           bash tools/ci/check_misc.sh
 
