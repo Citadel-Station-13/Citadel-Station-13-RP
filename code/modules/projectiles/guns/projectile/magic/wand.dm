@@ -1,3 +1,5 @@
+#warn stuff was moved, we use -empty instead of -drained
+
 /obj/item/gun/projectile/magic/wand
 	name = "wand of nothing"
 	desc = "It's not just a stick, it's a MAGIC stick!"
