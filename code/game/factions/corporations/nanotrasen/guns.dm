@@ -83,3 +83,27 @@
 	projectile_type = /obj/projectile/bullet/burstbullet/service    //Formerly: obj/projectile/bullet/gyro. A little too robust.
 	fire_delay = 20
 	charge_cost = 800	//Three shots.
+
+/obj/item/gun/projectile/ballistic/automatic/combat
+	name = "\improper Harpy combat submachine gun"
+	desc = "The compact NT-SMG-8 'Harpy' submachine gun was designed for NanoTrasen special operations where close-quarters combat is likely. Chambered in 5.7x28mm with three fire modes, this gun is lethal to soft and armored targets alike."
+	icon_state = "combatsmg"
+	item_state = "combatsmg"
+	w_class = ITEMSIZE_NORMAL
+	caliber = "5.7x28mm"
+	fire_sound = 'sound/weapons/gunshot/gunshot_uzi.wav'
+	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 2)
+	slot_flags = SLOT_BELT
+	load_method = MAGAZINE
+	magazine_type = /obj/item/ammo_magazine/m57x28mm/smg/ap
+	allowed_magazines = list(/obj/item/ammo_magazine/m57x28mm/smg)
+
+	firemodes = list(
+		list(mode_name="semiauto", burst=1, fire_delay=0),
+		list(mode_name="3-round burst", burst=3, fire_delay=null, move_delay=4, burst_accuracy=list(60,30,30), dispersion=list(0.0, 0.6, 1.0)),
+		list(mode_name="automatic", burst=1, fire_delay=-1, move_delay=null, burst_accuracy=null, dispersion=null, automatic = 1)
+		)
+
+/obj/item/gun/projectile/ballistic/automatic/combat/update_icon_state()
+	. = ..()
+	icon_state = (ammo_magazine)? "combatsmg" : "combatsmg-empty"

@@ -131,18 +131,6 @@
 	recoil = 10
 	accuracy = 40
 
-/*
-//This is being stubborn. Might need more input. / In fact, I'm gonna save this work for some larger kind of "Recoil Size Check" system later.
-/obj/item/gun/projectile/ballistic/shotgun/pump/combat/grit/Fire(atom/target, mob/living/user)
-	. = ..()
-	if(user.mob_size < MOB_MEDIUM)
-		var/mob/living/L = target
-		var/throwdir = get_dir(user,L)
-		var/destination = turn(throwdir, 180)
-		user.forceMove(destination)
-		user.emote("flip")
-*/
-
 /obj/item/gun/projectile/ballistic/shotgun/doublebarrel
 	name = "double-barreled shotgun"
 	desc = "A truely classic weapon. No need to change what works. Uses 12g rounds."
@@ -265,41 +253,6 @@
 	safety_state = GUN_SAFETY_OFF
 	damage_force = 15
 
-//Flaregun Code that may work?
-/obj/item/gun/projectile/ballistic/shotgun/flare
-	name = "Emergency Flare Gun"
-	desc = "A common mass produced emergency flare gun capable of shooting a single flare great distances for signalling air and ground forces alike. As it loads 12g flare shells it can also function as improvised 12g shotgun. On it a description reads: 'Warning: Possession is prohibited outside of emergency situations'."
-	icon_state = "flareg"
-	item_state = "flareg"
-	load_method = SINGLE_CASING
-	handle_casings = CYCLE_CASINGS
-	max_shells = 1
-	w_class = ITEMSIZE_SMALL
-	damage_force = 5
-	slot_flags = SLOT_BELT
-	caliber = "12g"
-	accuracy = -15 //Its a flaregun and you expected accuracy?
-	ammo_type = /obj/item/ammo_casing/a12g/flare
-	projectile_type = /obj/projectile/energy/flash
-	one_handed_penalty = 0
-
-/obj/item/gun/projectile/ballistic/shotgun/flare/paramed
-	name = "Paramedic Flare Gun"
-	desc = "A common mass produced emergency flare gun capable of shooting a single flare great distances for signalling air and ground forces alike. As it loads 12g flare shells it can also function as improvised 12g shotgun. On it a description reads: 'For use by emergency medical services only.'"
-	icon_state = "flareg-para"
-
-
-/obj/item/gun/projectile/ballistic/shotgun/flare/explo
-	name = "Exploration Flare Gun"
-	desc = "A common mass produced emergency flare gun capable of shooting a single flare great distances for signalling air and ground forces alike. As it loads 12g flare shells it can also function as improvised 12g shotgun. On it a description reads: 'For use on extraplanetary excursions only.'"
-	icon_state = "flareg-explo"
-
-/obj/item/gun/projectile/ballistic/shotgun/flare/holy
-	name = "Brass Flare Gun"
-	desc = "A Brass Flare Gun far more exspensuve and well made then the plastic ones mass produced for signalling. It fires using an odd clockwork mechanism. Loads using 12g"
-	icon_state = "flareg-holy"
-	accuracy = 50 //Strong Gun Better Accuracy
-
 /obj/item/gun/projectile/ballistic/shotgun/doublebarrel/axe
 	name = "Shot Axe"
 	desc = " A single barrel shotgun with a long curved stock and an axe head wrapped around the end of the barrel. More axe than shotgun, the blade has been treated with an odd smelling incense. Loads using 12g shells."
@@ -366,3 +319,67 @@
 	update_icon()
 /obj/item/gun/projectile/ballistic/shotgun/pump/foam/blue
 	icon_state = "toy_shotgun_blue"
+
+/obj/item/gun/projectile/ballistic/automatic/as24
+	name = "automatic shotgun"
+	desc = "The AS-24 is a rugged looking automatic shotgun produced for the military by Gurov Projectile Weapons LLC. For very obvious reasons, it's illegal to own in many juristictions. Uses 12g rounds."
+	icon_state = "ashot"
+	item_state = "ashot"
+	w_class = ITEMSIZE_LARGE
+	damage_force = 10
+	caliber = "12g"
+	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)
+	slot_flags = SLOT_BACK
+	load_method = MAGAZINE
+	magazine_type = /obj/item/ammo_magazine/m12gdrum
+	allowed_magazines = list(/obj/item/ammo_magazine/m12gdrum)
+	projectile_type = /obj/projectile/bullet/shotgun
+	heavy = TRUE
+	one_handed_penalty = 30 //The AA12 can be fired one-handed fairly easily.
+	magazine_insert_sound = 'sound/weapons/guns/interaction/lmg_magin.ogg'
+	magazine_remove_sound = 'sound/weapons/guns/interaction/lmg_magout.ogg'
+
+	firemodes = list(
+		list(mode_name="semiauto", burst=1, fire_delay=0),
+		list(mode_name="3-round bursts", burst=3, move_delay=6, burst_accuracy = list(60,40,30,25,15), dispersion = list(0.0, 0.6, 0.6)),
+//		list(mode_name="6-round bursts", burst=6, move_delay=6, burst_accuracy = list(0,-15,-15,-30,-30, -30), dispersion = list(0.6, 1.0, 1.0, 1.0, 1.2, 1.2)),
+		list(mode_name="automatic", burst=1, fire_delay=-1, move_delay=null, burst_accuracy=null, dispersion=null, automatic = 1)
+		)
+
+/obj/item/gun/projectile/ballistic/automatic/as24/update_icon_state()
+	. = ..()
+	if(ammo_magazine)
+		icon_state = "ashot"
+	else
+		icon_state = "ashot-empty"
+	return
+
+/obj/item/gun/projectile/ballistic/automatic/holyshot
+	name = "Holy automatic shotgun"
+	desc = "Based off of an ancient design, this hand crafted weapon has been gilded with the gold of melted icons and inscribed with sacred runes and hexagrammic wards. Works best with blessed 12g rounds."
+	icon_state = "holyshotgun"
+	item_state = "holy_shot"
+	w_class = ITEMSIZE_LARGE
+	heavy = TRUE
+	damage_force = 10
+	caliber = "12g"
+	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)
+	slot_flags = SLOT_BACK
+	load_method = MAGAZINE
+	magazine_type = /obj/item/ammo_magazine/holyshot_mag
+	allowed_magazines = list(/obj/item/ammo_magazine/holyshot_mag, /obj/item/ammo_magazine/holyshot_mag/stake)
+	projectile_type = /obj/projectile/bullet/shotgun
+
+	one_handed_penalty = 40
+
+	firemodes = list(
+		list(mode_name="semiauto", burst=1, fire_delay=0),
+		list(mode_name="2-round burst", burst=2, move_delay=6, burst_accuracy = list(60,50,40,30,25), dispersion = list(0.0, 0.6, 0.6))
+		)
+
+/obj/item/gun/projectile/ballistic/automatic/holyshot/update_icon_state()
+	. = ..()
+	if(ammo_magazine)
+		icon_state = "holyshotgun"
+	else
+		icon_state = "holyshotgun-empty"
