@@ -124,6 +124,7 @@
 	ammo_caliber = /datum/caliber/a5_56mm
 	rendering_system = GUN_RENDERING_STATES
 	rendering_count = 5
+	is_speedloader = TRUE
 	ammo_preload = /obj/item/ammo_casing/a556
 	materials_base = list(MAT_STEEL = 450) // metal costs are very roughly based around one 10mm casing = 180 metal
 	ammo_max = 5

@@ -159,12 +159,13 @@
 	icon = 'icons/modules/projectiles/magazines/old_stripper.dmi'
 	icon_state = "pistol-10"
 	base_icon_state = "pistol"
+	rendering_system = GUN_RENDERING_STATES
+	rendering_count = 10
+	is_speedloader = TRUE
 	desc = "A stripper clip for reloading 9mm rounds into magazines."
 	ammo_preload = /obj/item/ammo_casing/a9mm
 	materials_base = list(MAT_STEEL = 200)
 	ammo_max = 10
-	rendering_system = GUN_RENDERING_STATES
-	rendering_count = 10
 
 /obj/item/ammo_magazine/clip/c9mm/hunter
 	name = "ammo clip (9mm hunter)"

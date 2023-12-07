@@ -333,7 +333,7 @@
 	weaken = 3
 	penetrating = 5
 	armor_penetration = 80
-	hitscan = 1 //so the PTR isn't useless as a sniper weapon
+	speed = TILES_PER_SECOND(40)
 
 /* Miscellaneous */
 
