@@ -61,17 +61,23 @@
 
 //* Magazines
 
+/obj/item/ammo_magazine/a45
+	ammo_caliber = /datum/caliber/a45
+
+#warn a45/
 /obj/item/ammo_magazine/m45
 	name = "pistol magazine (.45)"
-	icon_state = "45"
-	mag_type = MAGAZINE
+	icon = 'icons/modules/projectiles/magazines/old_magazine_stick.dmi'
+	icon_state = "45-7"
+	base_icon_state = "45"
+	rendering_system = GUN_RENDERING_STATES
+	rendering_count = 7
 	ammo_preload = /obj/item/ammo_casing/a45
-	materials_base = list(MAT_STEEL = 525) //metal costs are very roughly based around 1 .45 casing = 75 metal
-	caliber = ".45"
+	materials_base = list(MAT_STEEL = 250)
 	ammo_max = 7
-	multiple_sprites = 1
 
 /obj/item/ammo_magazine/m45/empty
+	icon_state = "45-0"
 	ammo_current = 0
 
 /obj/item/ammo_magazine/m45/hunter
@@ -94,40 +100,47 @@
 	name = "magazine (.45 AP)"
 	ammo_preload = /obj/item/ammo_casing/a45/ap
 
+#warn what the fuck is this
 /obj/item/ammo_magazine/box/emp/b45
 	name = "ammunition box (.45 haywire)"
 	ammo_preload = /obj/item/ammo_casing/a45/emp
 
+#warn a45/
 /obj/item/ammo_magazine/m45uzi
 	name = "stick magazine (.45)"
-	icon_state = "uzi45"
-	mag_type = MAGAZINE
+	icon = 'icons/modules/projectiles/magazines/old_magazine_stick.dmi'
+	icon_state = "uzi45-8"
+	base_icon_state = "uzi45"
+	rendering_system = GUN_RENDERING_STATES
+	rendering_count = 8
 	ammo_preload = /obj/item/ammo_casing/a45
 	materials_base = list(MAT_STEEL = 1200)
-	caliber = ".45"
 	ammo_max = 16
-	multiple_sprites = 1
 
 /obj/item/ammo_magazine/m45uzi/empty
+	icon_state = "uzi45-0"
 	ammo_current = 0
 
-/obj/item/ammo_magazine/m45uzi/wt274
+#warn a45/
+/obj/item/ammo_magazine/wt274
 	name = "double-stack magazine (.45)"
-	icon_state = "wt274"
-	mag_type = MAGAZINE
+	icon = 'icons/modules/projectiles/magazines/old_magazine_stick.dmi'
+	icon_state = "wt-274-1"
+	base_icon_state = "wt274"
+	rendering_system = GUN_RENDERING_STATES
+	rendering_count = 1
 	ammo_preload = /obj/item/ammo_casing/a45
-	materials_base = list(MAT_STEEL = 2400)
-	caliber = ".45"
+	materials_base = list(MAT_STEEL = 500)
 	ammo_max = 32
-	multiple_sprites = 1
 
+#warn a45/
 /obj/item/ammo_magazine/m45tommy
 	name = "Tommy Gun magazine (.45)"
+	icon = 'icons/modules/projectiles/magazines/old_magazine_stick.dmi'
 	icon_state = "tommy-mag"
-	mag_type = MAGAZINE
+	rendering_system = GUN_RENDERING_DISABLED
 	ammo_preload = /obj/item/ammo_casing/a45
-	materials_base = list(MAT_STEEL = 1500)
-	caliber = ".45"
+	materials_base = list(MAT_STEEL = 350)
 	ammo_max = 20
 
 /obj/item/ammo_magazine/m45tommy/ap
@@ -137,14 +150,15 @@
 /obj/item/ammo_magazine/m45tommy/empty
 	ammo_current = 0
 
+#warn a45/
 /obj/item/ammo_magazine/m45tommydrum
 	name = "Tommy Gun drum magazine (.45)"
+	icon = 'icons/modules/projectiles/magazines/old_magazine_drum.dmi'
 	icon_state = "tommy-drum"
-	w_class = ITEMSIZE_NORMAL // Bulky ammo doesn't fit in your pockets!
-	mag_type = MAGAZINE
+	rendering_system = GUN_RENDERING_DISABLED
+	w_class = ITEMSIZE_NORMAL
 	ammo_preload = /obj/item/ammo_casing/a45
-	materials_base = list(MAT_STEEL = 3750)
-	caliber = ".45"
+	materials_base = list(MAT_STEEL = 500)
 	ammo_max = 50
 
 /obj/item/ammo_magazine/m45tommydrum/ap
@@ -154,15 +168,18 @@
 /obj/item/ammo_magazine/m45tommydrum/empty
 	ammo_current = 0
 
+#warn a45/
 /obj/item/ammo_magazine/clip/c45
 	name = "ammo clip (.45)"
-	icon_state = "clip_pistol"
 	desc = "A stripper clip for reloading .45 rounds into magazines."
-	caliber = ".45"
+	icon = 'icons/modules/projectiles/magazines/old_stripper.dmi'
+	icon_state = "pistol-9"
+	base_icon_state = "pistol"
+	rendering_system = GUN_RENDERING_STATES
+	rendering_count = 9
 	ammo_preload = /obj/item/ammo_casing/a45
-	materials_base = list(MAT_STEEL = 675) // metal costs very roughly based around one .45 casing = 75 metal
+	materials_base = list(MAT_STEEL = 250)
 	ammo_max = 9
-	multiple_sprites = 1
 
 /obj/item/ammo_magazine/clip/c45/rubber
 	name = "ammo clip (.45 rubber)"
@@ -180,20 +197,25 @@
 	name = "ammo clip (.45 flash)"
 	ammo_preload = /obj/item/ammo_casing/a45/flash
 
+#warn a45/
 /obj/item/ammo_magazine/s45
 	name = "speedloader (.45)"
-	icon_state = "45s"
+	icon = 'icons/modules/projectiles/magazines/old_speedloader_7.dmi'
+	icon_state = "normal-7"
+	base_icon_state = "normal"
+	rendering_system = GUN_RENDERING_STATES
+	rendering_count = 7
 	ammo_preload = /obj/item/ammo_casing/a45
-	materials_base = list(MAT_STEEL = 525) //metal costs are very roughly based around 1 .45 casing = 75 metal
-	caliber = ".45"
+	materials_base = list(MAT_STEEL = 250)
 	ammo_max = 7
-	multiple_sprites = 1
 
 /obj/item/ammo_magazine/s45/empty
 	ammo_current = 0
 
 /obj/item/ammo_magazine/s45/rubber
 	name = "speedloader (.45 rubber)"
+	icon_state = "bluetip-7"
+	base_icon_state = "bluetip"
 	ammo_preload = /obj/item/ammo_casing/a45/rubber
 
 /obj/item/ammo_magazine/s45/practice
@@ -202,14 +224,18 @@
 
 /obj/item/ammo_magazine/s45/flash
 	name = "speedloader (.45 flash)"
+	icon_state = "bluetip-7"
+	base_icon_state = "bluetip"
 	ammo_preload = /obj/item/ammo_casing/a45/flash
 
 /obj/item/ammo_magazine/s45/ap
 	name = "speedloader (.45 AP)"
+	icon_state = "bluetip-7"
+	base_icon_state = "bluetip"
 	ammo_preload = /obj/item/ammo_casing/a45/ap
 
 /obj/item/ammo_magazine/s45/silver
 	name = "speedloader (.45 silver)"
-	icon_state = "ag45s"
+	icon_state = "holy-7"
+	base_icon_state = "holy"
 	ammo_preload = /obj/item/ammo_casing/a45/silver
-	materials_base = list(MAT_STEEL = 780, MAT_SILVER = 600)

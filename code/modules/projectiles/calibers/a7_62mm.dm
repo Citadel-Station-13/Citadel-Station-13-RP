@@ -55,7 +55,6 @@
 	projectile_type = /obj/projectile/bullet/rifle/a762/silver
 	materials_base = list(MAT_STEEL = 300, MAT_SILVER = 150)
 
-
 #warn a7_62mm/
 /obj/item/ammo_magazine/m762
 	name = "magazine (7.62mm)"

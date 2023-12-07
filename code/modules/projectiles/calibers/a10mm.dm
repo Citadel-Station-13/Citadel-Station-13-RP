@@ -49,6 +49,7 @@
 	materials_base = list(MAT_STEEL = 250)
 	ammo_max = 9
 
+#warn what the fuck is this
 /obj/item/ammo_magazine/box/emp/b10
 	name = "ammunition box (10mm haywire)"
 	ammo_preload = /obj/item/ammo_casing/a10mm/emp
