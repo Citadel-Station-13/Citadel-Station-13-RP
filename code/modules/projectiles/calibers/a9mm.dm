@@ -156,14 +156,15 @@
 #warn a9mm/
 /obj/item/ammo_magazine/clip/c9mm
 	name = "ammo clip (9mm)"
-	#warn stripper clip file (small)
-	icon_state = "clip_pistol"
+	icon = 'icons/modules/projectiles/magazines/old_stripper.dmi'
+	icon_state = "pistol-10"
+	base_icon_state = "pistol"
 	desc = "A stripper clip for reloading 9mm rounds into magazines."
-	caliber = "9mm"
 	ammo_preload = /obj/item/ammo_casing/a9mm
-	materials_base = list(MAT_STEEL = 600) // metal costs are very roughly based around one 9mm casing = 60 metal
+	materials_base = list(MAT_STEEL = 200)
 	ammo_max = 10
-	multiple_sprites = 1
+	rendering_system = GUN_RENDERING_STATES
+	rendering_count = 10
 
 /obj/item/ammo_magazine/clip/c9mm/hunter
 	name = "ammo clip (9mm hunter)"
@@ -184,8 +185,8 @@
 /obj/item/ammo_magazine/clip/c9mm/silver
 	name = "ammo clip (9mm silver)"
 	ammo_preload = /obj/item/ammo_casing/a9mm/silver
-	icon_state = "clip_pistol_ag"
-	materials_base = list(MAT_STEEL = 1300, MAT_SILVER = 1000)
+	icon_state = "pistol-silver-10"
+	base_icon_state = "pistol-silver"
 
 
 #warn a9mm/
