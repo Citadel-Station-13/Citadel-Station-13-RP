@@ -3,12 +3,15 @@
 
 /obj/item/ammo_casing/a9mm
 	desc = "A 9mm bullet casing."
-	caliber = "9mm"
+	icon = 'icons/modules/projectiles/casings/slim.dmi'
+	icon_state = "small"
+	regex_this_caliber = /datum/caliber/a9mm
 	projectile_type = /obj/projectile/bullet/pistol
 	materials_base = list(MAT_STEEL = 60)
 
 /obj/item/ammo_casing/a9mm/ap
 	desc = "A 9mm armor-piercing bullet casing."
+	icon_state = "small-reinf"
 	projectile_type = /obj/projectile/bullet/pistol/ap
 	materials_base = list(MAT_STEEL = 80)
 
@@ -18,55 +21,58 @@
 
 /obj/item/ammo_casing/a9mm/hunter
 	desc = "A 9mm hunting bullet casing."
+	icon_state = "small-silver"
 	projectile_type = /obj/projectile/bullet/pistol/hunter
 	materials_base = list(MAT_STEEL = 80)
 
 /obj/item/ammo_casing/a9mm/flash
 	desc = "A 9mm flash shell casing."
-	icon_state = "r-casing"
+	icon_state = "small-tech"
 	projectile_type = /obj/projectile/energy/flash
 
 /obj/item/ammo_casing/a9mm/rubber
 	desc = "A 9mm rubber bullet casing."
-	icon_state = "r-casing"
 	projectile_type = /obj/projectile/bullet/pistol/rubber
 
 /obj/item/ammo_casing/a9mm/practice
 	desc = "A 9mm practice bullet casing."
-	icon_state = "r-casing"
+	icon_state = "small-silver"
 	projectile_type = /obj/projectile/bullet/practice
 
 /obj/item/ammo_casing/a9mm/silver
 	desc = "A 9mm silver bullet casing. Bless and Sancitfied to banish otherworlds entities."
-	icon_state = "ag-casing"
+	icon_state = "small-silver"
 	projectile_type = /obj/projectile/bullet/pistol/silver
 	materials_base = list(MAT_STEEL = 130, MAT_SILVER = 100)
 
+/obj/item/ammo_magazine/a9mm
+	ammo_caliber = /datum/caliber/a9mm
+
+#warn a9mm/
 /obj/item/ammo_magazine/m9mm
 	name = "magazine (9mm)"
-	icon_state = "9x19p_fullsize"
-	origin_tech = list(TECH_COMBAT = 2)
-	mag_type = MAGAZINE
+	icon = 'icons/modules/projectiles/magazines/old_magazine_stick.dmi'
+	icon_state = "9x19-big-1"
+	base_icon_state = "9x19-big"
+	rendering_system = GUN_RENDERING_STATES
+	rendering_count = 1
 	materials_base = list(MAT_STEEL = 600)
-	caliber = "9mm"
 	ammo_preload = /obj/item/ammo_casing/a9mm
 	ammo_max = 10
-	multiple_sprites = 1
 
 /obj/item/ammo_magazine/m9mm/large
-	desc = "\"FOR LAW ENFORCEMENT/MILITARY USE ONLY\" is clearly etched on the magazine. This is probably illegal for you to have." // Remember, Security is not Law Enforcement, so it's illegal for Security to use as well.
-	icon_state = "9x19p_highcap"
+	icon_state = "9x19-ext-1"
+	base_icon_state = "9x19-ext"
 	ammo_max = 17
-	origin_tech = list(TECH_COMBAT = 2, TECH_ILLEGAL = 1)
 
-/obj/item/ammo_magazine/m9mm/large/licensed // Sold by traders.
-	desc = "A large capacity magazine produced via a joint NT-Hephaestus license, making it legal to own."
-
-/obj/item/ammo_magazine/m9mm/large/licensed/hp // Hollow Point Version
+#warn nuke /licensed
+/obj/item/ammo_magazine/m9mm/large/licensed
+/obj/item/ammo_magazine/m9mm/large/licensed/hp
 	name = "magazine (9mm hollow-point)"
 	ammo_preload = /obj/item/ammo_casing/a9mm/hp
 
 /obj/item/ammo_magazine/m9mm/empty
+	icon_state = "9x19-big-0"
 	ammo_current = 0
 
 /obj/item/ammo_magazine/m9mm/flash
@@ -84,16 +90,17 @@
 // Compact
 /obj/item/ammo_magazine/m9mm/compact
 	name = "compact magazine (9mm)"
-	icon_state = "9x19p"
-	origin_tech = list(TECH_COMBAT = 2)
-	mag_type = MAGAZINE
+	icon = 'icons/modules/projectiles/magazines/old_magazine_stick.dmi'
+	icon_state = "9x19-small-1"
+	base_icon_state = "9x19-small"
+	rendering_system = GUN_RENDERING_STATES
+	rendering_count = 1
 	materials_base = list(MAT_STEEL = 480)
-	caliber = "9mm"
 	ammo_preload = /obj/item/ammo_casing/a9mm
 	ammo_max = 8
-	multiple_sprites = 1
 
 /obj/item/ammo_magazine/m9mm/compact/empty
+	icon_state = "9x19-small-0"
 	ammo_current = 0
 
 /obj/item/ammo_magazine/m9mm/compact/flash
@@ -114,17 +121,20 @@
 	ammo_max = 16
 
 // SMG
+#warn a9mm/
 /obj/item/ammo_magazine/m9mmt
 	name = "top mounted magazine (9mm)"
-	icon_state = "9mmt"
-	mag_type = MAGAZINE
+	icon = 'icons/modules/projectiles/magazines/old_magazine_stick.dmi'
+	icon_state = "9mmt-5"
+	base_icon_state = "9mmt"
+	rendering_system = GUN_RENDERING_STATES
+	rendering_count = 5
 	ammo_preload = /obj/item/ammo_casing/a9mm
 	materials_base = list(MAT_STEEL = 1200)
-	caliber = "9mm"
 	ammo_max = 20
-	multiple_sprites = 1
 
 /obj/item/ammo_magazine/m9mmt/empty
+	icon_state = "9mmt-0"
 	ammo_current = 0
 
 /obj/item/ammo_magazine/m9mmt/hunter
@@ -143,6 +153,7 @@
 	name = "top mounted magazine (9mm practice)"
 	ammo_preload = /obj/item/ammo_casing/a9mm/practice
 
+#warn a9mm/
 /obj/item/ammo_magazine/clip/c9mm
 	name = "ammo clip (9mm)"
 	#warn stripper clip file (small)
@@ -176,22 +187,23 @@
 	icon_state = "clip_pistol_ag"
 	materials_base = list(MAT_STEEL = 1300, MAT_SILVER = 1000)
 
+
+#warn a9mm/
 /obj/item/ammo_magazine/m9mmAdvanced
 	desc = "A very high capacity double stack magazine made specially for the Advanced SMG. Filled with 21 9mm bullets."
-	icon_state = "S9mm"
-	mag_type = MAGAZINE
+	icon = 'icons/modules/projectiles/magazines/old_magazine_stick.dmi'
+	icon_state = "advsmg-1"
+	base_icon_state = "advsmg"
+	rendering_system = GUN_RENDERING_STATES
+	rendering_count = 1
 	ammo_preload = /obj/item/ammo_casing/a9mm
-	materials_base = list(MAT_STEEL = 1200)
-	caliber = "9mm"
+	materials_base = list(MAT_STEEL = 700)
 	ammo_max = 21
-	origin_tech = list(TECH_COMBAT = 2, TECH_ILLEGAL = 1)
-	multiple_sprites = 1
 
 /obj/item/ammo_magazine/m9mmAdvanced/ap
 	desc = "A high capacity double stack magazine made specially for the Advanced SMG. Filled with 21 9mm armor piercing bullets."
-	icon_state = "S9mm"
 	ammo_preload = /obj/item/ammo_casing/a9mm/ap
-	materials_base = list(MAT_STEEL = 2000)
 
 /obj/item/ammo_magazine/m9mmR/saber/empty
+	icon_state = "advsmg-0"
 	ammo_current = 0
