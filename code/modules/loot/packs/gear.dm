@@ -23,5 +23,5 @@
 		/obj/item/pickaxe/diamonddrill,
 		/obj/item/tape_recorder,
 		/obj/item/hardsuit/industrial/equipped,
-		/obj/item/bag/ore/bluespace,
+		/obj/item/storage/bag/ore/bluespace,
 	)
