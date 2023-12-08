@@ -1,5 +1,6 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:32
-
+#define ISNAN(X) (isnum(X) && X != X)
+#define RADIATION_SANATIZER(rads) ISNAN(abs(rads)) ? 0 : abs(rads)
 //NOTE: Breathing happens once per FOUR TICKS, unless the last breath fails. In which case it happens once per ONE TICK! So oxyloss healing is done once per 4 ticks while oxyloss damage is applied once per tick!
 ///Defines how much oxyloss humans can get per tick. A tile with no air at all (such as space) applies this value, otherwise it's a percentage of it.
 #define HUMAN_MAX_OXYLOSS 1
@@ -259,6 +260,9 @@
 				to_chat(src, "<span class='danger'>Your legs won't respond properly, you fall down!</span>")
 				afflict_paralyze(20 * 10)
 
+/mob/living/carbon/human/proc/stupid_rads()
+	radiation = json_decode("nan")
+
 /mob/living/carbon/human/handle_mutations_and_radiation(seconds)
 	if(inStasisNow())
 		return
@@ -278,8 +282,8 @@
 		return
 	// todo: SPECIES GLOWS - probably refactor this shit
 	if(species.species_appearance_flags & RADIATION_GLOWS)
-		var/lrange = clamp(sqrt(radiation) / 8, 0, 7)
-		var/lpower = clamp(sqrt(radiation) / 40, 0, 1)
+		var/lrange = clamp(sqrt(RADIATION_SANATIZER(radiation)) / 8, 0, 7)
+		var/lpower = clamp(sqrt(RADIATION_SANATIZER(radiation)) / 40, 0, 1)
 		var/lcolor = species.get_flesh_colour(src)
 		if(glow_toggle)
 			lpower = max(lpower, glow_intensity)
