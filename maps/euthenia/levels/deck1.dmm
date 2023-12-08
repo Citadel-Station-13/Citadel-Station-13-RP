@@ -2532,6 +2532,10 @@
 "cBZ" = (
 /turf/simulated/wall/r_wall,
 /area/security/riot_control)
+"cCn" = (
+/obj/item/chess/bknight,
+/turf/simulated/floor/plating,
+/area/main_map/maintenance/deck_one/aft/port)
 "cEi" = (
 /obj/structure/table/steel,
 /obj/item/tool/crowbar,
@@ -3979,6 +3983,17 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
 /area/main_map/hallway/deck1/fore)
+"erP" = (
+/obj/machinery/door/airlock/command{
+	id_tag = "captaindoor";
+	name = "Facility Director's Office";
+	req_access = list(20)
+	},
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "erU" = (
 /obj/effect/floor_decal/corner/paleblue/diagonal,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -8011,12 +8026,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/medical/surgery_hallway)
-"iQA" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/techmaint,
-/area/main_map/maintenance/deck_one)
 "iQD" = (
 /obj/machinery/door/firedoor,
 /obj/effect/floor_decal/borderfloorwhite{
@@ -8385,6 +8394,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/chemistry)
+"juY" = (
+/obj/item/chess/wpawn,
+/turf/simulated/floor/plating,
+/area/main_map/maintenance/deck_one/aft/port)
 "jvh" = (
 /obj/machinery/door/airlock/multi_tile/glass,
 /turf/simulated/floor/tiled/steel_ridged,
@@ -12572,6 +12585,10 @@
 "ort" = (
 /turf/simulated/wall/prepainted/civilian,
 /area/main_map/hallway/deck1/fore)
+"orw" = (
+/obj/item/chess/bqueen,
+/turf/simulated/floor/plating,
+/area/main_map/maintenance/deck_one/aft/port)
 "orT" = (
 /obj/structure/railing,
 /obj/structure/railing{
@@ -14680,6 +14697,9 @@
 	},
 /turf/simulated/floor/plating,
 /area/quartermaster/delivery)
+"qWZ" = (
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/main_map/maintenance/deck_one/aft/port)
 "qXa" = (
 /obj/machinery/door/airlock/maintenance/sec,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -14893,6 +14913,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/monotile,
 /area/crew_quarters/recreation_area)
+"rkp" = (
+/obj/item/chess/wqueen,
+/turf/simulated/floor/plating,
+/area/main_map/maintenance/deck_one/aft/port)
 "rkK" = (
 /obj/structure/closet/hydrant{
 	pixel_y = 32
@@ -20238,6 +20262,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora_storage)
+"xmr" = (
+/obj/machinery/light/small,
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/open,
+/area/main_map/maintenance/deck_one)
 "xmP" = (
 /obj/structure/bed/padded,
 /obj/random/bedsheet,
@@ -25601,7 +25632,7 @@ uYz
 wyy
 uYz
 uYz
-uYz
+rkp
 uYz
 uYz
 oPU
@@ -25797,7 +25828,7 @@ uYz
 uYz
 uYz
 uYz
-uYz
+orw
 oPU
 udV
 udV
@@ -26184,7 +26215,7 @@ wyy
 uYz
 uYz
 uYz
-uYz
+juY
 uYz
 oPU
 udV
@@ -26375,7 +26406,7 @@ uYz
 uYz
 uYz
 wyy
-uYz
+cCn
 uYz
 uYz
 uYz
@@ -29281,15 +29312,15 @@ kyq
 uYz
 uYz
 wyy
-uYz
-uYz
-uYz
-uYz
-uYz
-uYz
-uYz
-uYz
-uYz
+qWZ
+qWZ
+qWZ
+qWZ
+qWZ
+qWZ
+qWZ
+qWZ
+qWZ
 kyq
 oPU
 udV
@@ -36073,7 +36104,7 @@ pvU
 iuK
 eFc
 mxc
-oaB
+lXs
 lXs
 kPF
 eRO
@@ -36267,8 +36298,8 @@ hwv
 cOV
 nJA
 mxc
-oaB
-lXs
+pzf
+kQJ
 kPF
 hmh
 hmh
@@ -36461,8 +36492,8 @@ wIk
 wIk
 xBY
 mxc
-oaB
-tPa
+pzf
+xmr
 uTg
 fBj
 rlW
@@ -36655,8 +36686,8 @@ nUD
 nUD
 nUD
 nUD
-oaB
-lXs
+pzf
+rfm
 uTg
 sPX
 qte
@@ -36849,8 +36880,8 @@ nsF
 euS
 aax
 nUD
-oaB
-lXs
+pzf
+rfm
 uTg
 jJP
 fBj
@@ -37043,8 +37074,8 @@ oSi
 dNL
 sPs
 nUD
-oaB
-lXs
+pzf
+rfm
 uTg
 oUS
 oUS
@@ -37237,8 +37268,8 @@ eTH
 hzV
 uXb
 nUD
-oaB
-lXs
+pzf
+rfm
 dsN
 gqX
 iUY
@@ -37431,8 +37462,8 @@ vgc
 vgc
 ppG
 nUD
-kub
-niL
+pzf
+rfm
 dsN
 nUE
 hBb
@@ -37625,8 +37656,8 @@ odi
 odi
 odi
 odi
-oaB
-lXs
+pzf
+rfm
 dsN
 eUu
 fLu
@@ -37819,8 +37850,8 @@ toK
 aTd
 peW
 odi
-oaB
-lXs
+pzf
+rfm
 dsN
 ocr
 ocr
@@ -38013,8 +38044,8 @@ ttV
 mYB
 vTl
 odi
-iQA
-lXs
+pzf
+rfm
 bqC
 pUp
 egH
@@ -38207,8 +38238,8 @@ nnM
 adb
 cal
 odi
-iQA
-lXs
+kub
+niL
 bqC
 nsR
 sBy
@@ -38401,7 +38432,7 @@ iBF
 hOp
 tBJ
 odi
-iQA
+oaB
 lXs
 bqC
 uzi
@@ -38595,7 +38626,7 @@ uDX
 uDX
 uDX
 uDX
-iQA
+oaB
 lXs
 bqC
 bqC
@@ -38789,7 +38820,7 @@ pat
 hrP
 ekp
 uDX
-iQA
+oaB
 oaB
 bTF
 ktR
@@ -38983,7 +39014,7 @@ xyl
 jwl
 nIH
 uDX
-dQg
+oaB
 tPa
 niL
 ktR
@@ -48117,7 +48148,7 @@ ubb
 ubb
 ubb
 ubb
-ubb
+erP
 ubb
 ubb
 jWJ
@@ -48311,7 +48342,7 @@ ubb
 ubb
 ubb
 ubb
-ubb
+erP
 ubb
 ubb
 jWJ

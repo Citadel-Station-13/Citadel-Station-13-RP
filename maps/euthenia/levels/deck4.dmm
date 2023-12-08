@@ -6935,7 +6935,6 @@
 /obj/machinery/recharger/wallcharger{
 	pixel_x = 32
 	},
-/obj/structure/filingcabinet/filingcabinet,
 /turf/simulated/floor/wood,
 /area/tether/exploration/pathfinder_office)
 "Bg" = (
@@ -12176,6 +12175,16 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/xenobiology)
+"VP" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/mains_pipe/simple/hidden{
+	dir = 4
+	},
+/obj/structure/ladder/up,
+/turf/simulated/floor/plating,
+/area/main_map/maintenance/deck_four/forward)
 "VR" = (
 /obj/map_helper/network_builder/power_cable/green/auto,
 /obj/machinery/door/airlock/maintenance/cargo,
@@ -38623,7 +38632,7 @@ py
 kL
 nw
 nw
-oD
+VP
 wM
 wM
 nw

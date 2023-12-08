@@ -707,7 +707,6 @@
 	},
 /obj/structure/railing,
 /obj/structure/lattice,
-/obj/machinery/door/firedoor,
 /turf/simulated/open,
 /area/main_map/maintenance/deck_three/forward/port)
 "aMR" = (
@@ -7223,6 +7222,15 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/brig)
+"hGo" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/open,
+/area/main_map/maintenance/deck_three/forward/port)
 "hGu" = (
 /obj/map_helper/network_builder/power_cable/green/auto,
 /obj/machinery/power/apc/direction_bump/south,
@@ -7466,6 +7474,12 @@
 "hUC" = (
 /turf/simulated/floor/tiled/steel_ridged,
 /area/main_map/hallway/deck3)
+"hUD" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/open,
+/area/main_map/maintenance/deck_three/forward/port)
 "hVt" = (
 /obj/structure/sign/deck3{
 	pixel_y = 32
@@ -7606,9 +7620,9 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock{
-	name = "Chapel Morgue";
-	req_access = list(27)
+/obj/machinery/door/airlock/maintenance/int{
+	req_access = list(27);
+	name = "Chapel Access"
 	},
 /turf/simulated/floor/plating,
 /area/chapel/office)
@@ -9438,6 +9452,13 @@
 /obj/structure/flora/ausbushes/grassybush,
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/rnd/research)
+"jZd" = (
+/obj/machinery/door/airlock/maintenance/int{
+	req_access = list(27);
+	name = "Chapel Access"
+	},
+/turf/simulated/floor/reinforced/outdoors,
+/area/space)
 "jZC" = (
 /turf/simulated/wall/prepainted/science,
 /area/rnd/robotics/surgeryroom1)
@@ -11237,6 +11258,9 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/virologyaccess)
+"mco" = (
+/turf/simulated/floor/tiled/steel,
+/area/main_map/maintenance/deck_three/aft)
 "mcu" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/purple{
 	dir = 10
@@ -14177,6 +14201,11 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/exploration/pilot_office)
+"pcY" = (
+/obj/structure/ladder/updown,
+/obj/structure/catwalk,
+/turf/simulated/open,
+/area/main_map/maintenance/deck_three/forward/port)
 "pdt" = (
 /obj/structure/cable/green{
 	icon_state = "0-8"
@@ -15022,6 +15051,9 @@
 /obj/structure/morgue,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/robotics/surgeryroom1)
+"pPJ" = (
+/turf/simulated/open,
+/area/main_map/maintenance/deck_three/forward/port)
 "pQq" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green,
 /turf/simulated/floor/reinforced/overhang,
@@ -18546,16 +18578,6 @@
 "tPC" = (
 /turf/simulated/floor/carpet/bcarpet,
 /area/library)
-"tQb" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/machinery/door/airlock/maintenance/int{
-	req_access = list(27);
-	name = "Chapel Access"
-	},
-/turf/simulated/floor/plating,
-/area/main_map/maintenance/deck_three/forward/port)
 "tQs" = (
 /obj/machinery/door/airlock/maintenance,
 /obj/machinery/door/firedoor,
@@ -19671,6 +19693,12 @@
 /obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /turf/simulated/wall/r_wall/prepainted/medical,
 /area/medical/virology)
+"uRc" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/open,
+/area/main_map/maintenance/deck_three/forward/port)
 "uRh" = (
 /obj/spawner/window/reinforced/full/firelocks,
 /obj/structure/curtain/black,
@@ -20292,6 +20320,10 @@
 /obj/structure/ladder/up,
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_three/aft/port)
+"vAZ" = (
+/obj/structure/catwalk,
+/turf/simulated/open,
+/area/main_map/maintenance/deck_three/forward/port)
 "vBa" = (
 /obj/structure/table/rack/shelf/steel,
 /turf/simulated/floor/tiled/techmaint,
@@ -21624,6 +21656,13 @@
 /obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/monotile,
 /area/main_map/hallway/deck3)
+"wVN" = (
+/obj/machinery/door/airlock/medical{
+	name = "Morgue";
+	req_access = list(6)
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/medical/morgue)
 "wVX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -22470,6 +22509,13 @@
 /obj/structure/stairs/spawner/south,
 /turf/simulated/floor/plating,
 /area/main_map/Hangar_bay/deck2)
+"xTU" = (
+/obj/machinery/door/airlock{
+	name = "Chapel Morgue";
+	req_access = list(27)
+	},
+/turf/simulated/floor/plating,
+/area/main_map/maintenance/deck_three/forward/port)
 "xUh" = (
 /obj/structure/railing/grey{
 	dir = 4
@@ -27201,7 +27247,7 @@ jWM
 jWM
 jWM
 vny
-vny
+mco
 vny
 vny
 vny
@@ -27395,7 +27441,7 @@ vny
 vny
 xdq
 vny
-vny
+mco
 vny
 vny
 vny
@@ -27589,10 +27635,10 @@ vny
 vny
 xdq
 vny
+mco
 vny
-vny
-vny
-vny
+mco
+mco
 jWM
 ttJ
 ttJ
@@ -27785,8 +27831,8 @@ xdq
 vny
 vny
 vny
-vny
-vny
+mco
+mco
 jWM
 ttJ
 ttJ
@@ -27979,8 +28025,8 @@ xdq
 vny
 vny
 vny
-vny
-vny
+mco
+mco
 jWM
 ttJ
 ttJ
@@ -28173,8 +28219,8 @@ vny
 vny
 vny
 vny
-vny
-vny
+mco
+mco
 jWM
 ttJ
 ttJ
@@ -41582,7 +41628,7 @@ wEo
 nSZ
 tSn
 tSn
-tSn
+wVN
 tSn
 tSn
 tSn
@@ -41788,7 +41834,7 @@ fVo
 mTD
 mTD
 mTD
-err
+tVw
 qoK
 oVB
 jfJ
@@ -41982,7 +42028,7 @@ agk
 mTD
 mTD
 mTD
-tVw
+err
 qoK
 jfJ
 jfJ
@@ -46203,7 +46249,7 @@ qzS
 qzS
 qzS
 qzS
-qzS
+xTU
 qzS
 svP
 qvz
@@ -47561,15 +47607,15 @@ vva
 vva
 vva
 kEZ
-kEZ
+jZd
 kEZ
 kEZ
 vPF
 arV
 qzS
-qzS
+hUD
+pPJ
 vPF
-qzS
 qzS
 bHz
 bHz
@@ -47761,9 +47807,9 @@ kEZ
 vPF
 arV
 qzS
-qzS
+hGo
+uRc
 vPF
-qzS
 qzS
 qVM
 qzS
@@ -47953,11 +47999,11 @@ kEZ
 kEZ
 kEZ
 vPF
-tQb
-jvr
-jvr
-vPF
+arV
 qzS
+vAZ
+vAZ
+vPF
 qzS
 qVM
 qzS
@@ -48149,9 +48195,9 @@ kEZ
 vPF
 eYR
 qzS
-glo
+vAZ
+pcY
 vPF
-qzS
 qzS
 qVM
 qzS
@@ -48344,8 +48390,8 @@ vPF
 pdt
 dec
 aMc
+vAZ
 vPF
-qzS
 qzS
 qVM
 qzS
