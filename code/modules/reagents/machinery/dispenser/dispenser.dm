@@ -207,6 +207,10 @@
 		if("toggle_charge")
 			charging = !charging
 			return TRUE
+		if("guide")
+			usr.action_feedback(SPAN_WARNING("The Reagent Guidebook is currently under construction. Please check back later."), src)
+			// GLOB.guidebook.open(usr, list(/datum/prototype/guidebook_section/reagents))
+			return TRUE
 		if("reagent")
 			if(isnull(inserted?.reagents))
 				return TRUE

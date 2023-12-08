@@ -115,7 +115,7 @@
 				turf_move_cost = clamp(HUMAN_LOWEST_SLOWDOWN, turf_move_cost + species.snow_movement, 15)
 			if(shoes)
 				var/obj/item/clothing/shoes/feet = shoes
-				if(feet.water_speed)
+				if(feet.snow_speed)
 					turf_move_cost = clamp(HUMAN_LOWEST_SLOWDOWN, turf_move_cost + feet.snow_speed, 15)
 			. += turf_move_cost
 

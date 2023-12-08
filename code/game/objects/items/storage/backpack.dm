@@ -180,6 +180,9 @@
 	icon_state = "duffle-syndie"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "duffle_syndie", SLOT_ID_LEFT_HAND = "duffle_syndie")
 	weight = ITEM_WEIGHT_BASELINE
+	encumbrance = ITEM_ENCUMBRANCE_STORAGE_BACKPACK
+	flat_encumbrance = 0
+	slowdown = 0
 
 /obj/item/storage/backpack/dufflebag/syndie/med
 	name = "medical dufflebag"

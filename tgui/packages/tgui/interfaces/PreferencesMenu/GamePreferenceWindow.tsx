@@ -8,7 +8,7 @@ import { GamePreferencesSelectedPage, PreferencesMenuData } from "./data";
 import { exhaustiveCheck } from "common/exhaustive";
 
 export const GamePreferenceWindow = (props: {
-  startingPage?: GamePreferencesSelectedPage,
+  readonly startingPage?: GamePreferencesSelectedPage,
 }, context) => {
   const { act, data } = useBackend<PreferencesMenuData>(context);
 

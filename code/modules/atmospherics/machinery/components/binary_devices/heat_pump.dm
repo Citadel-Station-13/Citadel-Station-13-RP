@@ -141,13 +141,22 @@
 
 	//Now we are at the point where we need to actively pump
 	efficiency = get_thermal_efficiency()
-	var/energy_transfered = 0
 	CACHE_VSC_PROP(atmos_vsc, /atmos/heatpump/performance_factor, performance_factor)
 
-	energy_transfered = clamp(air2.get_thermal_energy_change(target_temp),performance_factor*power_rating,-performance_factor*power_rating)
+	var/actual_performance_factor = performance_factor*efficiency
 
-	var/power_draw = abs(energy_transfered/performance_factor)
-	air2.adjust_thermal_energy(-air1.adjust_thermal_energy(-energy_transfered*efficiency))//only adds the energy actually removed from air one to air two(- infront of air1 because energy was removed)
+	var/max_energy_transfer = actual_performance_factor*power_rating
+
+	var/datum/gas_mixture/sample_air = air2
+	if(length(network2.line_members)==1)
+		sample_air=network2.line_members[1].air
+
+	if(abs(sample_air.temperature - target_temp) < 0.001) // don't want wild swings and too much power use
+		return
+	//only adds the energy actually removed from air one to air two(- infront of air1 because energy was removed)
+	var/energy_transfered = -air1.adjust_thermal_energy(-clamp(sample_air.get_thermal_energy_change(target_temp),-max_energy_transfer,max_energy_transfer))
+	energy_transfered=abs(air2.adjust_thermal_energy(energy_transfered))
+	var/power_draw = abs(energy_transfered/actual_performance_factor)
 	if (power_draw >= 0)
 		last_power_draw_legacy = power_draw
 		use_power(power_draw)

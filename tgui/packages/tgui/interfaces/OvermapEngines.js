@@ -74,8 +74,10 @@ export const OvermapEnginesContent = (props, context) => {
                       </Box>
                       {engine.eng_status.map(status => {
                         if (Array.isArray(status)) {
+                          // eslint-disable-next-line react/jsx-key
                           return <Box color={status[1]}>{status[0]}</Box>;
                         } else {
+                          // eslint-disable-next-line react/jsx-key
                           return <Box>{status}</Box>;
                         }
                       })}

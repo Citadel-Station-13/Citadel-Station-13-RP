@@ -319,9 +319,9 @@ interface LatheQueueEntry {
 }
 
 interface LatheQueuedProps {
-  entry: LatheQueueEntry;
-  design?: Design;
-  index: number;
+  readonly entry: LatheQueueEntry;
+  readonly design?: Design;
+  readonly index: number;
 }
 
 const LatheQueued = (props: LatheQueuedProps, context) => {
@@ -411,7 +411,7 @@ const LatheQueued = (props: LatheQueuedProps, context) => {
 };
 
 interface LatheDesignProps {
-  design: Design;
+  readonly design: Design;
 }
 
 const areMaterialsChosen = (mats: Record<string, number>, chosen: Record<string, string>) => {
