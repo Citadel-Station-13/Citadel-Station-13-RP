@@ -283,7 +283,7 @@
 
 /obj/item/reagent_containers/food/drinks/cans/kyocola_fire/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("nicolafire", 30)
+	reagents.add_reagent("kyocolafire", 30)
 
 /obj/item/reagent_containers/food/drinks/cans/kyocola_sakura
 	name = "\improper KyoCola Sakura"

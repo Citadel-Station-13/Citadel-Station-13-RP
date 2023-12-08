@@ -80,9 +80,13 @@
  *
  * Open this UI (and initialize it with data).
  *
+ * @params
+ * * data - force certain data sends
+ * * modules - force certain module sends
+ *
  * return bool - TRUE if a new pooled window is opened, FALSE in all other situations including if a new pooled window didn't open because one already exists.
  */
-/datum/tgui/proc/open()
+/datum/tgui/proc/open(data, modules)
 	if(!user.client)
 		return FALSE
 	if(window)
@@ -115,6 +119,8 @@
 	window.send_message("update", get_payload(
 		with_data = TRUE,
 		with_static_data = TRUE,
+		force_data = data,
+		force_modules = modules,
 	))
 	if(mouse_hooked)
 		window.set_mouse_macro()
@@ -259,7 +265,7 @@
  *
  * return list
  */
-/datum/tgui/proc/get_payload(with_data, with_static_data)
+/datum/tgui/proc/get_payload(with_data, with_static_data, list/force_data, list/force_modules)
 	var/list/json_data = list()
 	json_data["config"] = list(
 		"title" = title,
@@ -293,6 +299,10 @@
 		json_data["modules"] = modules
 	if(src_object.tgui_shared_states)
 		json_data["shared"] = src_object.tgui_shared_states
+	if(!isnull(force_data))
+		json_data["data"] = (json_data["data"] || list()) | force_data
+	if(!isnull(force_modules))
+		json_data["modules"] = (json_data["modules"] || list()) | force_modules
 	return json_data
 
 /**

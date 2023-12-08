@@ -22,15 +22,15 @@ export interface AtmosVentScrubberState {
 }
 
 interface AtmosVentScrubberControlProps extends SectionProps {
-  context: GasContext;
-  state: AtmosVentScrubberState;
-  powerToggle?: (enabled?: boolean) => void;
-  siphonToggle?: (enabled?: boolean) => void;
-  expandToggle?: (enabled?: boolean) => void;
-  idToggle?: (target: AtmosGasID, enabled?: boolean) => void;
-  groupToggle?: (target: AtmosGasGroupFlags, enabled?: boolean) => void;
+  readonly context: GasContext;
+  readonly state: AtmosVentScrubberState;
+  readonly powerToggle?: (enabled?: boolean) => void;
+  readonly siphonToggle?: (enabled?: boolean) => void;
+  readonly expandToggle?: (enabled?: boolean) => void;
+  readonly idToggle?: (target: AtmosGasID, enabled?: boolean) => void;
+  readonly groupToggle?: (target: AtmosGasGroupFlags, enabled?: boolean) => void;
   // standalone window? will make button a list item instead of section item.
-  standalone?: boolean;
+  readonly standalone?: boolean;
 }
 
 export const AtmosVentScrubberControl = (props: AtmosVentScrubberControlProps) => {
