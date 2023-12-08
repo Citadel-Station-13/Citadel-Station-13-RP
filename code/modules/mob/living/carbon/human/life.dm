@@ -260,9 +260,6 @@
 				to_chat(src, "<span class='danger'>Your legs won't respond properly, you fall down!</span>")
 				afflict_paralyze(20 * 10)
 
-/mob/living/carbon/human/proc/stupid_rads()
-	radiation = json_decode("nan")
-
 /mob/living/carbon/human/handle_mutations_and_radiation(seconds)
 	if(inStasisNow())
 		return
