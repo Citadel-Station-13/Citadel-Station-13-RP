@@ -886,10 +886,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/main_map/hallway/deck0)
-"MT" = (
-/obj/landmark/map_data/euthenia,
-/turf/space,
-/area/space)
 "Nd" = (
 /obj/machinery/door/airlock/glass_external,
 /obj/map_helper/airlock/door/int_door,
@@ -1579,7 +1575,7 @@ NT
 NT
 NT
 NT
-MT
+NT
 NT
 "}
 (3,1,1) = {"
