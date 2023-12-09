@@ -11231,10 +11231,10 @@
 	pixel_x = -32
 	},
 /obj/structure/disposalpipe/segment,
-/obj/spawner/window/low_wall/reinforced/tinted/full/firelocks{
-	id = "medbay_outer"
-	},
 /obj/effect/paint/babyblue,
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	id = "medbay outer"
+	},
 /turf/simulated/floor/plating,
 /area/medical/reception)
 "hlW" = (
@@ -34260,8 +34260,8 @@
 /area/maintenance/locker)
 "vPP" = (
 /obj/effect/paint/babyblue,
-/obj/spawner/window/low_wall/reinforced/tinted/full/firelocks{
-	id = "medbay_outer"
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	id = "medbay outer"
 	},
 /turf/simulated/floor/plating,
 /area/medical/reception)
