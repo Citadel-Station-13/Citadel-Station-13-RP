@@ -20,16 +20,26 @@ SUBSYSTEM_DEF(telesci)
 	wake_lookup.len = new_z_count
 	wake_image_lookup.len = new_z_count
 	scanner_lookup.len = new_z_count
+	for(var/i in old_z_count + 1 to new_z_count)
+		signal_lookup[i] = list()
+		jamming_lookup[i] = list()
+		wake_lookup[i] = list()
+		wake_image_lookup[i] = list()
+		scanner_lookup[i] = list()
 
 /datum/controller/subsystem/telesci/proc/register_bluespace_wake(datum/bluespace_wake/wake)
 	var/source_z = get_z(wake.source)
 	var/dest_z = get_z(wake.destination)
+	if(source_z != dest_z)
+		wake_lookup[dest_z] += wake
+	wake_lookup[source_z] += wake
 
 /datum/controller/subsystem/telesci/proc/unregister_bluespace_wake(datum/bluespace_wake/wake)
-
-/datum/controller/subsystem/telesci/proc/z_change_bluespace_wake(datum/bluespace_wake/wake, old_z, new_z)
-
-#warn impl - bidirectional registration
+	var/source_z = get_z(wake.source)
+	var/dest_z = get_z(wake.destination)
+	if(source_z != dest_z)
+		wake_lookup[dest_z] -= wake
+	wake_lookup[source_z] -= wake
 
 /datum/controller/subsystem/telesci/proc/register_bluespace_signal(datum/bluespace_signal/sig)
 	if(isnull(sig.z_index))
