@@ -50,15 +50,31 @@
 	/// how much reagents it can pack into a single scoop of ice cream
 	var/scoop_infuse_amount = 3
 
+	/// self-explanatory
+	var/max_sources = 10
+
 /obj/machinery/icecream_vat/Initialize(mapload)
 	create_reagents(1000)
 	. = ..()
 
-/obj/machinery/icecream_vat/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+/obj/machinery/icecream_vat/examine(mob/user, dist)
 	. = ..()
+	. += SPAN_NOTICE("<b>Use</b> a reagent container with an open lid on this to refill its core ingredients.")
+	. += SPAN_NOTICE("<b>Click-drag</b> a reagent container with an open lid on this to add it as a mixing source.")
+
+/obj/machinery/icecream_vat/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "IcecreamCart")
+		ui.open()
 
 /obj/machinery/icecream_vat/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
+	#warn impl
+
+/obj/machinery/icecream_vat/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	#warn impl
 
 /obj/machinery/icecream_vat/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
@@ -98,12 +114,57 @@
 /obj/machinery/icecream_vat/attackby(obj/item/I, mob/user, list/params, clickchain_flags, damage_multiplier)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
-	#warn impl
+	if(!istype(I, /obj/item/reagent_containers))
+		return ..()
+	var/obj/item/reagent_containers/container = I
+	if(!container.reagents)
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	if(!container.is_open_container())
+		user.action_feedback(SPAN_WARNING("[container] is not an open container. Did you try removing the lid, if it has one?"), src)
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	var/units_transferred = container.reagents.transfer_to_holder(
+		target = reagents,
+		reagents = list(
+			/datum/reagent/nutriment/flour,
+			/datum/reagent/drink/ice,
+			/datum/reagent/drink/milk,
+		),
+	)
+	if(!units_transferred)
+		units.action_feedback(SPAN_WARNING("[container] has no valid reagents to transfer to [src]. Did you mean to insert the container instead? (<b>Click-drag</b>)"), src)
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	user.visible_action_feedback(
+		target = src,
+		hard_range = MESSAGE_RANGE_CONFIGURATION,
+		visible_hard = SPAN_NOTICE("[user] refills [src] with [container].", src),
+		visible_self = SPAN_NOTICE("You refill [src] with [units_transferred] units of reagents from [container].")
+	)
+	return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/machinery/icecream_vat/MouseDroppedOn(atom/dropping, mob/user, proximity, params)
 	. = ..()
 	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
 		return
+	if(!istype(dropping, /obj/item/reagent_containers))
+		return
+	var/obj/item/reagent_containers/container = dropping
+	if(!container.reagents)
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	if(!container.is_open_container())
+		user.action_feedback(SPAN_WARNING("[container] is not an open container. Did you try removing the lid, if it has one?"), src)
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	if(length(sources) > max_sources)
+		user.action_feedback(SPAN_WARNING("[src] already has too many containers in it. Remove one first."), src)
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	user.visible_action_feedback(
+		src,
+		hard_range = MESSAGE_RANGE_CONFIGURATION,
+		visible_hard = SPAN_NOTICE("[user] inserts [dropping] into one of [src]'s reagent slots."),
+	)
+	container.forceMove(src)
+	LAZYADD(sources, container)
+	return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
+
 
 
 #warn everything below is legacy
@@ -149,45 +210,3 @@
 			src.visible_message("<span class='info'>[user] whips up some [flavour] icecream.</span>")
 	else
 		to_chat(user, "<span class='warning'>You don't have the ingredients to make this.</span>")
-
-/obj/machinery/icecream_vat/Topic(href, href_list)
-
-	if(..())
-		return
-
-	if(href_list["select"])
-		dispense_flavour = text2num(href_list["select"])
-		flavour_name = get_flavour_name(dispense_flavour)
-		src.visible_message("<span class='notice'>[usr] sets [src] to dispense [flavour_name] flavoured icecream.</span>")
-
-	if(href_list["cone"])
-		var/dispense_cone = text2num(href_list["cone"])
-		var/cone_name = get_flavour_name(dispense_cone)
-		if(product_types[dispense_cone] >= 1)
-			product_types[dispense_cone] -= 1
-			var/obj/item/reagent_containers/food/snacks/icecream/I = new(src.loc)
-			I.cone_type = cone_name
-			I.icon_state = "icecream_cone_[cone_name]"
-			I.desc = "Delicious [cone_name] cone, but no ice cream."
-			src.visible_message("<span class='info'>[usr] dispenses a crunchy [cone_name] cone from [src].</span>")
-		else
-			to_chat(usr, "<span class='warning'>There are no [cone_name] cones left!</span>")
-
-	if(href_list["make"])
-		var/amount = (text2num(href_list["amount"]))
-		var/C = text2num(href_list["make"])
-		make(usr, C, amount)
-
-	if(href_list["disposeI"])
-		reagents.del_reagent(href_list["disposeI"])
-
-	updateDialog()
-
-	if(href_list["refresh"])
-		updateDialog()
-
-	if(href_list["close"])
-		usr.unset_machine()
-		usr << browse(null,"window=icecreamvat")
-	return
-

@@ -229,22 +229,6 @@
 				missing--
 	return !missing
 
-/**
- * returns lowest multiple of what we have compared to reagents list.
- *
- * both typepaths and ids are acceptable.
- */
-/datum/reagents/proc/has_multiple(list/reagents, multiplier = 1)
-	. = INFINITY
-	// *sigh*
-	var/list/legacy_translating = list()
-	for(var/datum/reagent/R in reagent_list)
-		legacy_translating[R.id] = R.volume
-	for(var/datum/reagent/reagent as anything in reagents)
-		. = min(., legacy_translating[ispath(reagent)? initial(reagent.id) : reagent] / reagents[reagent])
-		if(!.)
-			return
-
 /datum/reagents/proc/clear_reagents()
 	for(var/datum/reagent/current in reagent_list)
 		del_reagent(current.id)
@@ -536,13 +520,49 @@
 			do_happen = TRUE
 	return do_happen
 
-//? Queries - Whole
+//? Queries
 
 /**
  * returns volume remaining
  */
 /datum/reagents/proc/available_volume()
 	return maximum_volume - total_volume
+
+/**
+ * returns lowest multiple of what we have compared to reagents list.
+ *
+ * both typepaths and ids are acceptable.
+ */
+/datum/reagents/proc/has_multiple(list/reagents, multiplier = 1)
+	. = INFINITY
+	// *sigh*
+	var/list/legacy_translating = list()
+	for(var/datum/reagent/R in reagent_list)
+		legacy_translating[R.id] = R.volume
+	for(var/datum/reagent/reagent as anything in reagents)
+		. = min(., legacy_translating[ispath(reagent)? initial(reagent.id) : reagent] / reagents[reagent])
+		if(!.)
+			return
+
+//? Transfers
+
+/**
+ * @params
+ * * target - target holder
+ * * reagents - list of paths or ids to filter by
+ * * amount - limit of how much
+ * * copy - do not remove the reagent from source
+ * * multiplier - magically multiply the transferred reagent volumes by this much; does not affect return value.
+ *
+ * @return reagents transferred
+ */
+/datum/reagents/proc/transfer_to_holder(datum/reagents/target, list/reagents, amount = INFINITY, copy, multiplier = 1)
+	. = 0
+	if(!reagents)
+
+		#warn impl
+	else
+		#warn impl
 
 //? UI
 
