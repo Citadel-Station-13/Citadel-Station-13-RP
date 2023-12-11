@@ -17,8 +17,8 @@ PROCESSING_SUBSYSTEM_DEF(chemistry)
 
 // honestly hate that we have to do this but some things INITIALIZE_IMMEDIATE so uh fuck me I guess!
 /datum/controller/subsystem/processing/chemistry/PreInit(recovering)
-	initialize_chemical_reactions()
 	initialize_chemical_reagents()
+	initialize_chemical_reactions()
 	return ..()
 
 /**

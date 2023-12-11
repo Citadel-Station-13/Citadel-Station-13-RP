@@ -7004,3 +7004,10 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/tastybread/Initialize(mapload)
 	. = ..()
 	bitesize = 2
+
+/obj/item/reagent_containers/food/snacks/meatsicle
+	name = "meatsicle"
+	desc = "A frozen tajaran delight. This meat popsicle is sure to cool you down."
+	icon_state = "meatsicle"
+	nutriment_amt = 6
+	nutriment_desc = list("frozen meat" = 1)

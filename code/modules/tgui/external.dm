@@ -225,6 +225,14 @@
 	SIGNAL_HANDLER
 
 /**
+ * public
+ *
+ * Called on a UI's object when the UI is transferred from one mob to another.
+ */
+/datum/proc/on_ui_transfer(mob/old_mob, mob/new_mob, datum/tgui/ui)
+	return
+
+/**
  * verb
  *
  * Called by UIs when they are closed.

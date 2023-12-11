@@ -44,8 +44,8 @@ interface JoinMenuData {
 }
 
 interface JoinFactionProps {
-  faction: string;
-  departments: {
+  readonly faction: string;
+  readonly departments: {
     [key: string]: JoinableJob[]
   }
 }

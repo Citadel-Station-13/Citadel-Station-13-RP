@@ -21,8 +21,25 @@
 	/// required container typepath of holder my_atom
 	var/required_container
 
+	//* identity
+	/// name; defaults to reagent produced's name.
+	/// if this is defaulted, it also defaults display name to that reagent if unset.
+	var/name
+	/// description, if any; defaults to reagent produced's desc
+	/// if this is defaulted, it also defaults display desc to that reagent if unset.
+	var/desc
+	/// display name; overrides name when player facing if set
+	var/display_name
+	/// display description; overrides desc when player facing if set
+	var/display_description
+
+	//* guidebook
+	/// guidebook flags
+	var/reaction_guidebook_flags = NONE
+	/// guidebook category
+	var/reaction_guidebook_category = "Unsorted"
+
 	//? legacy / unsorted
-	var/name = null
 	var/list/catalysts = list()
 	var/list/inhibitors = list()
 
@@ -43,6 +60,10 @@
 	var/log_is_important = 0 // If this reaction should be considered important for logging. Important recipes message admins when mixed, non-important ones just log to file.
 
 /datum/chemical_reaction/New()
+	resolve_paths()
+	generate()
+
+/datum/chemical_reaction/proc/resolve_paths()
 	for(var/i in 1 to length(required_reagents))
 		var/datum/reagent/path = required_reagents[i]
 		if(!ispath(path))
@@ -70,6 +91,18 @@
 	if(ispath(result, /datum/reagent))
 		var/datum/reagent/result_initial = result
 		result = initial(result_initial.id)
+
+/datum/chemical_reaction/proc/generate()
+	var/datum/reagent/resolved = SSchemistry.get_reagent(result)
+	if(isnull(name))
+		name = resolved?.name || "???"
+		if(isnull(display_name) && !isnull(resolved))
+			display_name = resolved.display_name
+
+	if(isnull(desc))
+		desc = resolved?.description || "Unknown Description - contact coders."
+		if(isnull(display_description) && !isnull(resolved))
+			display_description = resolved.display_description
 
 /datum/chemical_reaction/proc/can_happen(datum/reagents/holder)
 	// check container
@@ -165,6 +198,25 @@
 //this is called just before reactants are removed.
 /datum/chemical_reaction/proc/send_data(datum/reagents/holder, reaction_limit)
 	return null
+
+//* Guidebook
+
+/**
+ * Guidebook Data for TGUIGuidebookReaction
+ */
+/datum/chemical_reaction/proc/tgui_guidebook_data()
+	return list(
+		"name" = display_name || name,
+		"desc" = display_description || desc,
+		"category" = reaction_guidebook_category,
+		"id" = id,
+		"flags" = NONE,
+		"guidebookFlags" = reaction_guidebook_flags,
+		// below are stubbed and overridden on subtypes
+		// todo: why is this the case?
+		"alcoholStrength" = null,
+	)
+
 
 /* Most medication reactions, and their precursors */
 
