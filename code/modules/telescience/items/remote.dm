@@ -13,12 +13,11 @@
 
 	/// starting cell type
 	var/cell_type = /obj/item/cell/device/weapon
-	/// power cell
-	var/obj/item/cell/cell
 
 /obj/item/bluespace_remote/Initialize(mapload)
 	. = ..()
-	init_cell_slot_easy_tool()
+	var/datum/object_system/cell_slot/cell_slot = init_cell_slot_easy_tool(cell_type)
+	cell_slot.legacy_use_device_cells = FALSE
 	#warn impl autolink
 
 /obj/item/bluespace_remote/Destroy()

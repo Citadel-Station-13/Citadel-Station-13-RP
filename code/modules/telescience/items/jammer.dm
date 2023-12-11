@@ -27,6 +27,8 @@
 	/// jamming datum path - this determiens falloff
 	var/jamming_type = /datum/bluespace_jamming/exponential
 
+	/// starting cell type
+	var/cell_type = /obj/item/cell/device/weapon
 
 #warn impl all
 
