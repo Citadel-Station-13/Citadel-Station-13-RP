@@ -34,7 +34,6 @@
 	)
 	w_class = WEIGHT_CLASS_SMALL
 	volume = 120
-	is_large = TRUE
 	overlay_count = 4
 
 /obj/item/reagent_containers/glass/hypovial/bluespace
