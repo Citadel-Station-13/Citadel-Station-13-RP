@@ -53,6 +53,9 @@
 		ui = new(user, src, "BluespaceRemote")
 
 /obj/item/bluespace_remote/ui_module_act(action, list/params, datum/tgui/ui, id)
+	. = ..()
+	if(.)
+		return
 	var/datum/tgui_module/teleporter_control/ui_controller = controller?.request_ui_controller()
 	return ui_controller.ui_module_act(arglist(args))
 

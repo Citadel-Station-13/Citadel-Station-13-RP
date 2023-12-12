@@ -48,7 +48,7 @@
 	still_active = FALSE
 	#warn impl
 	duration = falloff_duration
-	QDEL_IN(falloff_duration)
+	QDEL_IN(src, falloff_duration)
 
 /datum/bluespace_wake/proc/effective_coefficient()
 	return 1

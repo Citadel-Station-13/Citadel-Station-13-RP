@@ -40,7 +40,7 @@ GLOBAL_LIST_BOILERPLATE(all_portals, /obj/effect/bluespace_portal)
 /proc/lazy_bluespace_portal_single(turf/where, turf/target, instability, duration = 30 SECONDS, icon_base, name_base)
 	var/datum/bluespace_teleport/teleport = new
 	teleport.source = where
-	teleport.destiantion = target
+	teleport.destination = target
 	teleport.instability = instability
 	teleport.absolute = TRUE
 	teleport.icon_base = icon_base
