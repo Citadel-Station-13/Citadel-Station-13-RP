@@ -6,6 +6,7 @@
 	var/atom/host
 	/// for quick access: our level
 	var/z_index
+
 	/// jamming power; negative for boost instead of jam
 	var/power = 0
 	/// boost jamming power; this is pretty powerful
@@ -14,16 +15,26 @@
 	var/instability = 0
 	/// inaccuracy power; this is pretty powerful
 	var/inaccuracy = 0
+
 	/// lensing power - how much this jamming field affects teleportation destinations. negative repels, positive attracts.
 	var/lensing = 0
+
 	/// maximum distance this still affects something
 	var/max_distance = INFINITY
+
+	/// jamming is dirty (host moved)
+	var/locality_dirty = FALSE
+	/// affecting signals
+	var/list/datum/bluespace_signal/locality_signals
 
 /datum/bluespace_jamming/New(atom/host)
 	set_host(host)
 
 /datum/bluespace_jamming/Destroy()
 	set_host(null)
+	for(var/datum/bluespace_signal/signal as anything in locality_signals)
+		signal.locality_dirty = TRUE
+		signal.locality_jamming -= src
 	return ..()
 
 /datum/bluespace_jamming/proc/set_host(atom/what)
@@ -32,6 +43,8 @@
 	if(isnull(host))
 		return
 	register(host)
+
+#warn implement the comsig hooks needed to keep track of movements, even when we're inside something
 
 /datum/bluespace_jamming/proc/register(atom/host)
 	RegisterSignal(host, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(z_changed))

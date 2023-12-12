@@ -63,29 +63,31 @@
 	/// broadcasted name, if any
 	var/label
 	/// broadcasted name only when encryption is resolved
-	var/encrypt_label = FALSE
-	/// secure hash; cannot be brute forced, but can be reset
-	/// used to throw things like jaunters off our trail
-	var/security_hash
-	/// random GUID always shown; this should be static per projector, if possible.
-	var/uid
+	var/label_encrypted = FALSE
 
-	/// absolute - ignore pad boosts
-	var/isolated = FALSE
-	/// shielded - ignore jamming
-	var/shielded = FALSE
+	/// isolated - ignore pad boosts / positive interference
+	var/ioslated = FALSE
+	/// shielded - ignore jamming / negative interference
+	var/shielded= FALSE
 
-	/// GPS-capable
-	var/tracking = TRUE
-	/// GPS only when encryption is resolved
-	var/secure_tracking = TRUE
+	/// GPS-capable at all
+	var/location_rough = TRUE
+	/// GPS-capable down to coordinates
+	var/location_precise = TRUE
+	/// GPS precise only when encryption is resolved
+	var/location_precise_secure = TRUE
 
-	/// encryption string, if any
-	var/encryption
+	/// encryption string sha1 hash, if any
+	var/encryption_hash
 	/// factor of power decrease if unauthorized, from 1 to 0
-	var/obfuscation = 0.99
+	var/encryption_obfuscation = 0.99
 
-	#warn figure out encryption/security hashing system
+	/// dirty ; our host moved / a jamming source moved / we otherwise need a recalculation
+	var/locality_dirty = FALSE
+	/// we are being affected by these jamming sources
+	var/list/datum/bluespace_jamming/locality_jamming
+	/// the % of our signal we are at our locality (with the jamming sources in question affecting us)
+	var/locality_degradation
 
 /datum/bluespace_signal/New(atom/anchoring, atom/projector)
 	register(anchoring)
@@ -93,6 +95,8 @@
 	#warn impl
 
 /datum/bluespace_signal/Destroy()
+	for(var/datum/bluespace_jamming/jamming as anything in locality_jamming)
+		jamming.locality_signals -= src
 	#warn impl
 	return ..()
 
@@ -102,6 +106,8 @@
 	host = what
 	if(!isnull(host))
 		register(host)
+
+#warn implement the comsig hooks needed to keep track of movements, even when we're inside something
 
 /datum/bluespace_signal/proc/register(atom/host)
 	RegisterSignal(host, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(z_changed))

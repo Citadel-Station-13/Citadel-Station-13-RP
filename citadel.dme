@@ -4677,6 +4677,7 @@
 #include "code\modules\telesci\quantum_pad.dm"
 #include "code\modules\telesci\telepad.dm"
 #include "code\modules\telesci\telesci_computer.dm"
+#include "code\modules\telescience\_telescience_system.dm"
 #include "code\modules\telescience\effects.dm"
 #include "code\modules\telescience\jamming.dm"
 #include "code\modules\telescience\lock.dm"

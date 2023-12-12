@@ -80,12 +80,24 @@ GLOBAL_LIST_EMPTY(telescience_linkage_buffers)
 //? Lock System
 
 /obj/machinery/teleporter_controller/proc/attempt_signal_lock(datum/bluespace_signal/signal)
+	#warn impl
 
 /obj/machinery/teleporter_controller/proc/drop_signal_lock(datum/bluespace_signal/signal)
+	#warn impl
 
 /**
  * @params
  * * dt - time elapsed in seconds
  */
 /obj/machinery/teleporter_controller/proc/process_signal_locks(dt)
+	#warn impl
+
+//? Signal Scanning
+
+/**
+ * @return list of viable signals
+ */
+/obj/machinery/teleporter_controller/proc/signal_query()
+	#warn impl
+
 

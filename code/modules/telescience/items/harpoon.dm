@@ -18,10 +18,25 @@
 
 /obj/item/bluespace_harpoon/Initialize(mapload)
 	. = ..()
-	init_cell_slot(cell_type)
-	obj_cell_slot.remove_yank_context = TRUE
-	obj_cell_slot.remove_yank_offhand = TRUE
-	obj_cell_slot.legacy_use_device_cells = FALSE
+	var/datum/object_system/cell_slot/cell_slot = init_cell_slot(cell_type)
+	cell_slot.remove_yank_context = TRUE
+	cell_slot.remove_yank_offhand = TRUE
+	cell_slot.legacy_use_device_cells = FALSE
+
+/obj/item/bluespace_harpoon/ui_act(action, list/params, datum/tgui/ui)
+	. = ..()
+
+/obj/item/bluespace_harpoon/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+
+/obj/item/bluespace_harpoon/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+
+/obj/item/bluespace_harpoon/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "BluespaceHarpoon")
+		ui.open()
 
 
 #warn below
