@@ -18,11 +18,30 @@
 	. = ..()
 	var/datum/object_system/cell_slot/cell_slot = init_cell_slot_easy_tool(cell_type)
 	cell_slot.legacy_use_device_cells = FALSE
-	#warn impl autolink
+	if(controller_autolink_id)
+		var/buffer = GLOB.telescience_linkage_buffers[controller_autolink_id]
+		if(istype(buffer, /obj/machinery/teleporter_controller))
+			var/obj/machinery/teleporter_controller/controller = buffer
+			controller.auto_link_remote(src)
+		else
+			LAZYADD(GLOB.telescience_linkage_buffers[controller_autolink_id], src)
 
 /obj/item/bluespace_remote/Destroy()
-	#warn unlink
+	unlink_controller()
 	return ..()
+
+/obj/item/bluespace_remote/proc/controller_linked(obj/machinery/teleporter_controller/controller)
+	src.controller = controller
+
+/obj/item/bluesapce_remote/proc/controller_unlinked(obj/machinery/teleporter_controller/controller)
+	src.controller = null
+
+/obj/item/bluespace_remote/proc/link_controller(obj/machinery/teleporter_controller/controller)
+	unlink_controller()
+	controller?.link_remote(src)
+
+/obj/item/bluespace_remote/proc/unlink_controller()
+	controller?.unlink_remote(src)
 
 #warn impl all
 

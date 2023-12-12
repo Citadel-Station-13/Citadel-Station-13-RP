@@ -55,6 +55,10 @@
 		else
 			for(var/obj/machinery/teleporter/machine in GLOB.telescience_linkage_buffers[autolink_id])
 				auto_link_machine(machine)
+			for(var/obj/machinery/computer/teleporter/console in GLOB.telescience_linkage_buffers[autolink_id])
+				auto_link_console(console)
+			for(var/obj/item/bluespace_remote/remote in GLOB.telescience_linkage_buffers[autolink_id])
+				auto_link_remote(remote)
 		GLOB.telescience_linkage_buffers[autolink_id] = src
 	create_context()
 
@@ -102,6 +106,13 @@
 		LAZYADD(scanners, machine)
 	machine.controller_linked(src)
 
+/obj/machinery/teleporter_controller/proc/auto_link_machine(obj/machinery/teleporter/machine)
+	var/obj/overmap/entity/their_entity = get_overmap_sector(machine)
+	var/obj/overmap/entity/our_entity = get_overmap_sector(src)
+	if(their_entity != our_entity)
+		CRASH("wrong sector, [their_entity] vs [our_entity]")
+	return link_machine(machine)
+
 /obj/machinery/teleporter_controller/proc/unlink_console(obj/machinery/computer/teleporter/console)
 	// todo: ui static data
 
@@ -122,24 +133,19 @@
 	return link_console(console)
 
 /obj/machinery/teleporter_controller/proc/unlink_remote(obj/item/bluespace_remote/remote)
-	#warn impl
+	// todo: ui static data
+
+	LAZYREMOVE(remotes, remote)
+	remote.controller_unlinked(src)
 
 /obj/machinery/teleporter_controller/proc/link_remote(obj/item/bluespace_remote/remote)
-	#warn impl
+	// todo: ui static data
+
+	LAZYADD(remotes, remote)
+	remote.controller_linked(src)
 
 /obj/machinery/teleporter_controller/proc/auto_link_remote(obj/item/bluespace_remote/remote)
-	var/obj/overmap/entity/their_entity = get_overmap_sector(remote)
-	var/obj/overmap/entity/our_entity = get_overmap_sector(src)
-	if(their_entity != our_entity)
-		CRASH("wrong sector, [their_entity] vs [our_entity]")
 	return link_remote(remote)
-
-/obj/machinery/teleporter_controller/proc/auto_link_machine(obj/machinery/teleporter/machine)
-	var/obj/overmap/entity/their_entity = get_overmap_sector(machine)
-	var/obj/overmap/entity/our_entity = get_overmap_sector(src)
-	if(their_entity != our_entity)
-		CRASH("wrong sector, [their_entity] vs [our_entity]")
-	return link_machine(machine)
 
 //? UI
 

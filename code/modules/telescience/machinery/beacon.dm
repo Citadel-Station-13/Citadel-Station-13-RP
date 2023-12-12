@@ -6,15 +6,20 @@
 /obj/item/bluespace_beacon/integrated/draw_power(amount)
 	#warn impl
 
+/obj/item/bluespace_beacon/integrated/ui_host(mob/user, datum/tgui_module/module)
+	return loc.ui_host(arglist(args))
+
 /obj/machinery/bluespace_beacon
-	#warn name, desc, icon, icon state
+	name = "teleporter beacon"
+	desc = "A high-power beacon used to facilitate teleporter locks."
+	#warn icon, icon state
 
 	default_deconstruct = TOOL_CROWBAR
 	default_unanchor = TOOL_WRENCH
 	default_panel = TOOL_SCREWDRIVER
 
 	/// our integrated bluespace beacon
-	var/obj/item/bluespace_beacon/beacon
+	var/obj/item/bluespace_beacon/integrated/beacon = /obj/item/bluespace_beacon/integrated
 
 /obj/machinery/bluespace_beacon/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	. = ..()

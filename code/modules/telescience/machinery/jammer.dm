@@ -1,6 +1,14 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
+/obj/item/bluespace_jammer/integrated
+
+/obj/item/bluespace_jammer/integrated/draw_power(amount)
+	#warn impl
+
+/obj/item/bluespace_jammer/integrated/ui_host(mob/user, datum/tgui_module/module)
+	return loc.ui_host(arglist(args))
+
 #warn circuit
 
 /obj/machinery/bluespace_jammer
@@ -10,6 +18,14 @@
 	default_deconstruct = TOOL_CROWBAR
 	default_unanchor = TOOL_WRENCH
 	default_panel = TOOL_SCREWDRIVER
+
+	/// our integrated bluespace beacon
+	var/obj/item/bluespace_jammer/integrated/beacon = /obj/item/bluespace_jammer/integrated
+
+/obj/machinery/bluespace_jammer/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+	. = ..()
+
+#warn circuit
 
 /obj/machinery/bluespace_jammer/trap
 	name = "bluespace trap"
