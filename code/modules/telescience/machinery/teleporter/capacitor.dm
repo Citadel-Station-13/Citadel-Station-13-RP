@@ -53,6 +53,12 @@
 	.["capacity"] = capacity
 	.["drawMax"] = draw_max
 
+/obj/machinery/teleporter/bluespace_capacitor/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "TelesciCapacitor")
+		ui.open()
+
 //! WARNING WARNING LEGACY SHITCODE
 //! REFACTORING ON POWERNET REFACTOR.
 

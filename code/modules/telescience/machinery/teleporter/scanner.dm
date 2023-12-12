@@ -30,6 +30,8 @@
 	return ..()
 
 /obj/machinery/teleporter/bluespace_scanner/process(delta_time)
+	if(!power_enabled)
+		return
 	#warn impl
 
 /obj/machinery/teleporter/bluespace_scanner/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
@@ -44,6 +46,12 @@
 /obj/machinery/teleporter/bluespace_scanner/on_changed_z_level(old_z, new_z)
 	. = ..()
 	SStelesci.z_change_bluespace_scanner(src, old_z, new_z)
+
+/obj/machinery/teleporter/bluespace_scanner/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "TelesciScanner")
+		ui.open()
 
 /**
  * effective power in kw

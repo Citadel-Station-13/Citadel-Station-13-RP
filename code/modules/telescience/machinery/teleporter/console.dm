@@ -27,6 +27,12 @@
 	unlink_controller()
 	return ..()
 
+/obj/machinery/computer/teleporter/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "TelesciControl")
+		ui.open()
+
 /obj/machinery/computer/teleporter/proc/link_controller(obj/machinery/teleporter_controller/controller)
 	src.controller?.unlink_console(src)
 	controller?.link_console(src)

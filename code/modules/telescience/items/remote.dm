@@ -70,6 +70,7 @@
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "BluespaceRemote")
+		ui.open()
 
 /obj/item/bluespace_remote/ui_module_act(action, list/params, datum/tgui/ui, id)
 	. = ..()

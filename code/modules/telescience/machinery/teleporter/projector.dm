@@ -18,4 +18,10 @@
 /obj/machinery/teleporter/bluespace_projector/drain_energy(datum/actor, amount, flags)
 	return draw(amount)
 
+/obj/machinery/teleporter/bluespace_projector/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "TelesciProjector")
+		ui.open()
+
 #warn teleport_projector
