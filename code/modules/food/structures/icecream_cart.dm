@@ -136,8 +136,8 @@
 	user.visible_action_feedback(
 		target = src,
 		hard_range = MESSAGE_RANGE_CONFIGURATION,
-		visible_hard = SPAN_NOTICE("[user] refills [src] with [container].", src),
-		visible_self = SPAN_NOTICE("You refill [src] with [units_transferred] units of reagents from [container].")
+		visible_hard = SPAN_NOTICE("[user] refills [src] with [container]."),
+		visible_self = SPAN_NOTICE("You refill [src] with [units_transferred] units of reagents from [container]."),
 	)
 	return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 
@@ -164,49 +164,3 @@
 	container.forceMove(src)
 	LAZYADD(sources, container)
 	return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
-
-
-
-#warn everything below is legacy
-
-/obj/machinery/icecream_vat
-
-/obj/machinery/icecream_vat/attackby(var/obj/item/O as obj, var/mob/user as mob)
-	if(istype(O, /obj/item/reagent_containers/food/snacks/icecream))
-		var/obj/item/reagent_containers/food/snacks/icecream/I = O
-		if(!I.ice_creamed)
-			if(product_types[dispense_flavour] > 0)
-				src.visible_message("[icon2html(thing = src, target = world)] <span class='info'>[user] scoops delicious [flavour_name] icecream into [I].</span>")
-				product_types[dispense_flavour] -= 1
-				I.add_ice_cream(flavour_name)
-			//	if(beaker)
-			//		beaker.reagents.trans_to(I, 10)
-				if(I.reagents.total_volume < 10)
-					I.reagents.add_reagent("sugar", 10 - I.reagents.total_volume)
-			else
-				to_chat(user, "<span class='warning'>There is not enough icecream left!</span>")
-		else
-			to_chat(user, "<span class='notice'>[O] already has icecream in it.</span>")
-		return 1
-	else if(O.is_open_container())
-		return
-	else
-		..()
-
-/obj/machinery/icecream_vat/proc/make(var/mob/user, var/make_type, var/amount)
-	for(var/R in get_ingredient_list(make_type))
-		if(reagents.has_reagent(R, amount))
-			continue
-		amount = 0
-		break
-	if(amount)
-		for(var/R in get_ingredient_list(make_type))
-			reagents.remove_reagent(R, amount)
-		product_types[make_type] += amount
-		var/flavour = get_flavour_name(make_type)
-		if(make_type > 4)
-			src.visible_message("<span class='info'>[user] cooks up some [flavour] cones.</span>")
-		else
-			src.visible_message("<span class='info'>[user] whips up some [flavour] icecream.</span>")
-	else
-		to_chat(user, "<span class='warning'>You don't have the ingredients to make this.</span>")

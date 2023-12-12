@@ -4,6 +4,7 @@
 	var/reagent_holder_flags = NONE
 
 	///? legacy / unsorted
+	// todo: 3 lists, for volume, data, flags; data should always be a list.
 	var/list/datum/reagent/reagent_list = list()
 	var/total_volume = 0
 	var/maximum_volume = 100
@@ -558,11 +559,47 @@
  */
 /datum/reagents/proc/transfer_to_holder(datum/reagents/target, list/reagents, amount = INFINITY, copy, multiplier = 1)
 	. = 0
+	if(!total_volume)
+		return
 	if(!reagents)
-
-		#warn impl
+		var/ratio = min(1, (target.maximum_volume - target.total_volume) / total_volume)
+		. = total_volume * ratio
+		if(!copy)
+			for(var/datum/reagent/R as anything in reagent_list)
+				var/transferred = R.volume * ratio
+				target.add_reagent(R.id, transferred * multiplier, R.get_data(), safety = TRUE)
+				remove_reagent(R.id, transferred, safety = TRUE)
+		else
+			for(var/datum/reagent/R as anything in reagent_list)
+				var/transferred = R.volume * ratio
+				target.add_reagent(R.id, transferred * multiplier, R.get_data(), safety = TRUE)
 	else
-		#warn impl
+		var/total_transferable = 0
+		var/list/reagents_transferring = list()
+		// preprocess
+		for(var/i in 1 to length(reagents))
+			reagents[i] = SSchemistry.fetch_reagent(reagents[i])
+		// filter & gather
+		for(var/datum/reagent/R as anything in reagent_list)
+			if(!(R.id in reagents))
+				continue
+			total_transferable += R.volume
+			reagents_transferring += R
+		var/ratio = min(1, (target.maximum_volume - target.total_volume) / total_transferable)
+		. = total_transferable * ratio
+		if(!copy)
+			for(var/datum/reagent/R as anything in reagents_transferring)
+				var/transferred = R.volume * ratio
+				target.add_reagent(R.id, transferred * multiplier, R.get_data(), safety = TRUE)
+				remove_reagent(R.id, transferred, safety = TRUE)
+		else
+			for(var/datum/reagent/R as anything in reagents_transferring)
+				var/transferred = R.volume * ratio
+				target.add_reagent(R.id, transferred * multiplier, R.get_data(), safety = TRUE)
+
+	if(!copy)
+		handle_reactions()
+	target.handle_reactions()
 
 //? UI
 
