@@ -17,6 +17,15 @@
 	var/label
 
 /obj/machinery/teleporter/Initialize(mapload)
+	if(controller_autolink_id)
+		var/buffer = GLOB.telescience_linkage_buffers[controller_autolink_id]
+		if(istype(buffer, /obj/machinery/teleporter_controller))
+			var/obj/machinery/teleporter_controller/controller = buffer
+			controller.auto_link_machine(src)
+		else if(islist(buffer))
+			GLOB.telescience_linkage_buffers[controller_autolink_id] += src
+		else
+			GLOB.telescience_linkage_buffers[controller_autolink_id] = list(src)
 	#warn impl + autogen label
 	return ..()
 
@@ -25,10 +34,20 @@
 	return ..()
 
 /obj/machinery/teleporter/proc/link_controller(obj/machinery/teleporter_controller/controller)
-	#warn impl
+	return controller.link_machine(src)
 
 /obj/machinery/teleporter/proc/unlink_controller()
-	#warn impl
+	// ensure we're not on the list if it's there
+	if(controller_autolink_id && islist(GLOB[controller_autolink_id]))
+		GLOB[controller_autolink_id] -= src
+		controller_autolink_id = null
+	return controller?.unlink_machine(src)
+
+/obj/machinery/teleporter/proc/controller_linked(obj/machinery/teleporter_controller/controller)
+	src.controller = controller
+
+/obj/machinery/teleporter/proc/controller_unlinked(obj/machinery/teleporter_controller/controller)
+	src.controller = null
 
 /obj/machinery/teleporter/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()

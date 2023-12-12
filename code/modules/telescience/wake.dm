@@ -47,6 +47,8 @@
 /datum/bluespace_wake/proc/close(falloff_duration)
 	still_active = FALSE
 	#warn impl
+	duration = falloff_duration
+	QDEL_IN(falloff_duration)
 
 /datum/bluespace_wake/proc/effective_coefficient()
 	return 1
@@ -59,7 +61,15 @@
 	return 1 - ((world.time - closed_at) / duration)
 
 /datum/bluespace_wake/logarithmic/proc/effective_coefficient()
+
 	#warn impl or change logarhtmic to something else?
+
+/datum/bluespace_wake/quadratic/proc/effective_coefficient()
+	if(still_active)
+		return 1
+	if(world.time > closed_at + duration)
+		return 0
+	return 1 - ((world.time - closed_at) / duration) ** 2
 
 /atom/movable/overlay/bluespace_wake
 	#warn impl

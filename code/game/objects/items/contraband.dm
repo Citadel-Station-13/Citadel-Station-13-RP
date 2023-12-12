@@ -200,7 +200,7 @@
 					// /obj/item/bodysnatcher,
 					/obj/item/bluespace_harpoon,
 					/obj/item/clothing/accessory/permit/gun,
-					/obj/item/perfect_tele,
+					list(/obj/item/bluespace_translocator, /obj/item/bluespace_teleporter),
 					/obj/item/storage/belt/spike_bandolier,
 					/obj/item/seeds/ambrosiadeusseed,
 					/obj/item/seeds/ambrosiavulgarisseed,
@@ -230,7 +230,11 @@
 					/obj/item/storage/fancy/cigar/taj/premium,
 					/obj/item/storage/belt/spike_bandolier,
 					/obj/random/weapon/guarenteed)
-	new loot(usr.drop_location())
+	if(islist(loot))
+		for(var/path in loot)
+			user.put_in_hands_or_drop(new path(user))
+	else
+		user.put_in_hand_or_drop(new path(user))
 	to_chat(user, "You unwrap the package.")
 	qdel(src)
 

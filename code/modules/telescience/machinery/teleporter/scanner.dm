@@ -42,6 +42,12 @@
 	. = ..()
 	SStelesci.z_change_bluespace_scanner(src, old_z, new_z)
 
+/**
+ * effective power in kw
+ */
+/obj/machinery/teleporter/bluespace_scanner/proc/effective_power()
+	return power_setting
+
 //! WARNING WARNING LEGACY SHITCODE
 //! REFACTORING ON POWERNET REFACTOR.
 

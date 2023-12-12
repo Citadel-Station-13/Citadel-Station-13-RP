@@ -131,8 +131,7 @@
 	if(!frequency)
 		return
 	if(!radio_controller)
-		sleep(20)
-	if(!radio_controller)
+		CRASH("uh oh")
 		return
 
 	radio_controller.remove_object(src, frequency)
