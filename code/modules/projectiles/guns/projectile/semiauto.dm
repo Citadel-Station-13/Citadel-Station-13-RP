@@ -21,7 +21,7 @@
 	if(ammo_magazine)
 		icon_state = initial(icon_state)
 	else
-		icon_state = "[initial(icon_state)]-e"
+		icon_state = "[initial(icon_state)]-empty"
 
 /obj/item/gun/ballistic/garand/sniper
 	name = "M1A Garand"
@@ -59,4 +59,4 @@
 
 /obj/item/gun/ballistic/apinae_stinger/update_icon_state()
 	. = ..()
-	icon_state = "apigun-[ammo_magazine ? round(ammo_magazine.stored_ammo.len, 2) : "empty"]"
+	icon_state = "apigun-[ammo_magazine ? round(ammo_magazine.stored_ammo.len, 2) : "e"]"

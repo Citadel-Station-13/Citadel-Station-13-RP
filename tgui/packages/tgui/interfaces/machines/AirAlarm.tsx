@@ -306,13 +306,13 @@ const AirAlarmVentScreenWrapped = (props, context) => {
 };
 
 interface AirAlarmVentScreenProps {
-  powerToggle: (id: string, on?: boolean) => void;
-  internalToggle: (id: string, on?: boolean) => void;
-  externalToggle: (id: string, on?: boolean) => void;
-  internalSet: (id: string, kpa: number | 'default') => void;
-  externalSet: (id: string, kpa: number | 'default') => void;
-  dirToggle: (id: string, siphon?: boolean) => void;
-  vents: Record<string, ExtendedVentPumpState>;
+  readonly powerToggle: (id: string, on?: boolean) => void;
+  readonly internalToggle: (id: string, on?: boolean) => void;
+  readonly externalToggle: (id: string, on?: boolean) => void;
+  readonly internalSet: (id: string, kpa: number | 'default') => void;
+  readonly externalSet: (id: string, kpa: number | 'default') => void;
+  readonly dirToggle: (id: string, siphon?: boolean) => void;
+  readonly vents: Record<string, ExtendedVentPumpState>;
 }
 
 const AirAlarmVentScreen = (props: AirAlarmVentScreenProps) => {
@@ -352,13 +352,13 @@ const AirAlarmScrubberScreenWrapped = (props, context) => {
 };
 
 interface AirAlarmScrubberScreenProps {
-  powerToggle: (id: string, on?: boolean) => void;
-  siphonToggle: (id: string, on?: boolean) => void;
-  expandToggle: (id: string, on?: boolean) => void;
-  gasToggle: (id: string, gas: AtmosGasID, on?: boolean) => void;
-  groupToggle: (id: string, group: AtmosGasGroupFlags, on?: boolean) => void;
-  scrubbers: Record<string, ExtendedVentScrubberState>;
-  gasContext: GasContext;
+  readonly powerToggle: (id: string, on?: boolean) => void;
+  readonly siphonToggle: (id: string, on?: boolean) => void;
+  readonly expandToggle: (id: string, on?: boolean) => void;
+  readonly gasToggle: (id: string, gas: AtmosGasID, on?: boolean) => void;
+  readonly groupToggle: (id: string, group: AtmosGasGroupFlags, on?: boolean) => void;
+  readonly scrubbers: Record<string, ExtendedVentScrubberState>;
+  readonly gasContext: GasContext;
 }
 
 const AirAlarmScrubberScreen = (props: AirAlarmScrubberScreenProps) => {
@@ -394,8 +394,8 @@ const AirAlarmModeScreenWrapped = (props, context) => {
 };
 
 interface AirAlarmModeScreenProps {
-  selected: AirAlarmMode;
-  setAct: (AirAlarmMode) => void;
+  readonly selected: AirAlarmMode;
+  readonly setAct: (AirAlarmMode) => void;
 }
 
 const AirAlarmModeScreen = (props: AirAlarmModeScreenProps) => {
@@ -414,10 +414,10 @@ const AirAlarmModeScreen = (props: AirAlarmModeScreenProps) => {
 };
 
 interface AirAlarmModeButtonProps {
-  desc: string;
-  selected: boolean;
-  setAct?: () => void;
-  color?: string;
+  readonly desc: string;
+  readonly selected: boolean;
+  readonly setAct?: () => void;
+  readonly color?: string;
 }
 
 const AirAlarmModeButton = (props: AirAlarmModeButtonProps) => {
@@ -472,9 +472,9 @@ const AirAlarmThresholdScreenWrapped = (props, context) => {
 
 
 interface AirAlarmTLVEntryProps {
-  name: string;
-  entry: AirAlarmTLV;
-  setEntry: (val: number, index: number) => void;
+  readonly name: string;
+  readonly entry: AirAlarmTLV;
+  readonly setEntry: (val: number, index: number) => void;
 }
 
 const AirAlarmTLVEntry = (props: AirAlarmTLVEntryProps) => {

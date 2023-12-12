@@ -811,11 +811,6 @@
 /turf/simulated/floor/tiled/steel/lythios43c,
 /area/rift/facility/interior/underground2)
 "il" = (
-/obj/effect/map_effect/portal/master/side_b{
-	dir = 8;
-	name = "westdeep_to_center";
-	portal_id = "westdeepstep"
-	},
 /turf/simulated/floor/sky/depths/west/lythios43c,
 /area/rift/surfacebase/outside/west_deep)
 "iq" = (
@@ -880,15 +875,9 @@
 /area/gateway)
 "iQ" = (
 /obj/structure/closet/crate/miningcar,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
+/obj/item/stack/ore/coal{
+	amount = 10
+	},
 /turf/simulated/floor/tiled/dark,
 /area/rift/facility/interior/temple)
 "iY" = (
@@ -4655,9 +4644,7 @@
 /turf/simulated/floor/outdoors/rocks/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_deep)
 "QS" = (
-/obj/machinery/porta_turret/stationary{
-	health = 200
-	},
+/obj/machinery/porta_turret/stationary,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -4847,9 +4834,7 @@
 /turf/simulated/floor,
 /area/outpost/mining_main/outpost/recreation)
 "ST" = (
-/obj/machinery/porta_turret/stationary{
-	health = 200
-	},
+/obj/machinery/porta_turret/stationary,
 /obj/machinery/light{
 	dir = 8
 	},
@@ -5386,9 +5371,7 @@
 /turf/simulated/floor/tiled,
 /area/gateway)
 "Xy" = (
-/obj/machinery/porta_turret/stationary{
-	health = 200
-	},
+/obj/machinery/porta_turret/stationary,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/gateway)
 "Xz" = (
@@ -5496,9 +5479,6 @@
 /turf/simulated/floor/reinforced,
 /area/gateway)
 "Yw" = (
-/obj/effect/map_effect/portal/line/side_b{
-	dir = 8
-	},
 /turf/simulated/floor/sky/depths/west/lythios43c,
 /area/rift/surfacebase/outside/west_deep)
 "YA" = (

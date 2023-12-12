@@ -5,6 +5,9 @@
  * Atom damage uses this too!
  */
 #define DAMAGE_PRECISION			0.01
+#define DAMAGE_TIER_PRECISION		0.01
+#define ARMOR_PRECISION				0.001
+#define ARMOR_TIER_PRECISION		0.01
 
 //?  CPR
 /// how long CPR suppresses brain decay

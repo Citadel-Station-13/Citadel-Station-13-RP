@@ -28,7 +28,7 @@
 	maxHealth = 150
 	movement_cooldown = 0
 	pass_flags = ATOM_PASS_TABLE
-	makes_dirt = FALSE	// Goop
+	makes_dirt = FALSE	// Goopw
 	mob_class = MOB_CLASS_SLIME
 
 	response_help = "pets"
@@ -51,8 +51,8 @@
 	taser_kill = FALSE
 	water_resist = 0 // Slimes are very weak to water.
 
-	melee_damage_lower = 10
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 10
+	legacy_melee_damage_upper = 15
 	base_attack_cooldown = 10 // One attack a second.
 	attack_sound = 'sound/weapons/bite.ogg'
 	attacktext = list("glomped")
@@ -74,7 +74,7 @@
 	can_enter_vent_with = list(/obj/item/clothing/head)
 
 /datum/say_list/slime
-	speak = list("Blorp...", "Blop...")
+	speak = list("Blorp...", "Blop...", "Blorble...")
 	emote_see = list("bounces", "jiggles", "sways")
 	emote_hear = list("squishes")
 
@@ -143,6 +143,10 @@
 		if(S.slime_color == src.slime_color)
 			return TRUE
 		else
+			return FALSE
+	if(ishuman(L))
+		var/mob/living/carbon/human/H = L
+		if(istype(H.species, /datum/species/monkey))	// Monke always food
 			return FALSE
 	// The other stuff was already checked in parent proc, and the . variable will implicitly return the correct value.
 

@@ -15,13 +15,13 @@ export enum AtmosComponentUIFlags {
 
 export interface AtmosComponentControlProps extends SectionProps {
   // data
-  data: AtmosComponentData;
+  readonly data: AtmosComponentData;
   // power toggle
-  togglePowerAct?: (on: boolean) => void;
+  readonly togglePowerAct?: (on: boolean) => void;
   // set target maximum power draw
-  setPowerLimitAct?: (watts: number) => void;
+  readonly setPowerLimitAct?: (watts: number) => void;
   // additional entries
-  additionalListItems?: InfernoNode;
+  readonly additionalListItems?: InfernoNode;
 }
 
 export const AtmosComponentControl = (props: AtmosComponentControlProps, context) => {
@@ -68,11 +68,11 @@ export interface AtmosComponentData {
 }
 
 export interface AtmosComponentProps extends ComponentProps {
-  minumumHeight?: number;
-  minumumWidth?: number;
-  additionalListItems?: InfernoNode;
+  readonly minumumHeight?: number;
+  readonly minumumWidth?: number;
+  readonly additionalListItems?: InfernoNode;
   // title
-  title: string;
+  readonly title: string;
 }
 
 export const AtmosComponent = (props: AtmosComponentProps, context) => {

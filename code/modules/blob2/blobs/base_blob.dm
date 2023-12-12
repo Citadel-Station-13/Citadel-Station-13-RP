@@ -12,7 +12,7 @@ var/list/blobs = list()
 	layer = MOB_LAYER + 0.1
 	integrity = 0
 	var/point_return = 0 //How many points the blob gets back when it removes a blob of that type. If less than 0, blob cannot be removed.
-	max_integrity = 30
+	integrity_max = 30
 	var/health_regen = 2 //how much health this blob regens when pulsed
 	var/pulse_timestamp = 0 //we got pulsed when?
 	var/heal_timestamp = 0 //we got healed when?
@@ -25,7 +25,7 @@ var/list/blobs = list()
 		overmind = new_overmind
 	update_icon()
 	if(!integrity)
-		integrity = max_integrity
+		integrity = integrity_max
 	setDir(pick(GLOB.cardinal))
 	blobs += src
 	consume_tile()
@@ -81,7 +81,7 @@ var/list/blobs = list()
 	if(pulse_timestamp <= world.time)
 		consume_tile()
 		if(heal_timestamp <= world.time)
-			adjust_integrity(health_regen)
+			adjust_integrity_blob(health_regen)
 			heal_timestamp = world.time + 2 SECONDS
 		update_icon()
 		pulse_timestamp = world.time + 1 SECOND
@@ -247,7 +247,7 @@ var/list/blobs = list()
 				playsound(src, 'sound/weapons/tap.ogg', 50, 1)
 	if(overmind)
 		damage = overmind.blob_type.on_received_damage(src, damage, W.damtype, user)
-	adjust_integrity(-damage)
+	adjust_integrity_blob(-damage)
 	return
 
 /obj/structure/blob/bullet_act(var/obj/projectile/P)
@@ -272,7 +272,7 @@ var/list/blobs = list()
 	if(overmind)
 		damage = overmind.blob_type.on_received_damage(src, damage, P.damage_type, P.firer)
 
-	adjust_integrity(-damage)
+	adjust_integrity_blob(-damage)
 
 	return ..()
 
@@ -280,8 +280,8 @@ var/list/blobs = list()
 	if(overmind)
 		overmind.blob_type.on_water(src, amount)
 
-/obj/structure/blob/proc/adjust_integrity(amount)
-	integrity = clamp( integrity + amount, 0,  max_integrity)
+/obj/structure/blob/proc/adjust_integrity_blob(amount)
+	integrity = clamp( integrity + amount, 0,  integrity_max)
 	if(integrity == 0)
 		playsound(loc, 'sound/effects/splat.ogg', 50, 1)
 		if(overmind)
@@ -304,4 +304,4 @@ var/list/blobs = list()
 	qdel(src)
 
 /turf/simulated/wall/blob_act()
-	take_damage(100)
+	inflict_atom_damage(100, flag = ARMOR_MELEE, attack_type = ATTACK_TYPE_MELEE)

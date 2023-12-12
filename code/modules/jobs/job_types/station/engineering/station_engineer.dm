@@ -30,6 +30,7 @@
 		"Electrician" = /datum/prototype/struct/alt_title/electrician,
 		"Apprentice Engineer" = /datum/prototype/struct/alt_title/apprentice_engineer,
 		"Construction Engineer" = /datum/prototype/struct/alt_title/construction_engi,
+		"Damage Control Technician" = /datum/prototype/struct/alt_title/damage_tech,
 		"Artificer-Apprentice" = /datum/prototype/struct/alt_title/artificer_apprentice,
 		"Artificer" = /datum/prototype/struct/alt_title/artificer
 		)
@@ -37,8 +38,8 @@
 	minimal_player_age = 3
 
 	outfit_type = /datum/outfit/job/station/station_engineer
-	desc = "An Engineer keeps the station running. They repair damages, keep the atmosphere stable, and ensure that power is being \
-						generated and distributed. On quiet shifts, they may be called upon to make cosmetic alterations to the station."
+	desc = "A Station Engineer keeps the facility running. They repair damages, keep the atmosphere stable, and ensure that power is being \
+						generated and distributed. On quiet shifts, they may be called upon to make cosmetic alterations to the facility."
 /datum/prototype/struct/alt_title/maint_tech
 	title = "Maintenance Technician"
 	title_blurb = "A Maintenance Technician is generally a junior Engineer, and can be expected to run the mildly unpleasant or boring tasks that other \
@@ -46,21 +47,26 @@
 
 /datum/prototype/struct/alt_title/engine_tech
 	title = "Engine Technician"
-	title_blurb = "An Engine Technician tends to the engine, most commonly a Supermatter crystal. They are expected to be able to keep it stable, and \
+	title_blurb = "An Engine Technician tends to the primary engine, whatever form it takes. They are expected to be able to keep it stable, and \
 					possibly even run it beyond normal tolerances."
 
 /datum/prototype/struct/alt_title/electrician
 	title = "Electrician"
-	title_blurb = "An Electrician's primary duty is making sure power is properly distributed thoughout the station, utilizing solars, substations, and other \
+	title_blurb = "An Electrician's primary duty is making sure power is properly distributed thoughout the facility, utilizing solars, substations, and other \
 					methods to ensure every department has power in an emergency."
 
 /datum/prototype/struct/alt_title/apprentice_engineer
 	title = "Apprentice Engineer"
+	title_blurb = "An Apprentice Engineer is still learning the art of engineering, and should listen to other engineers for direction."
 
 /datum/prototype/struct/alt_title/construction_engi
 	title = "Construction Engineer"
 	title_blurb = "A Construction Engineer fulfills similar duties to other engineers, but usually occupies spare time with construction of extra facilities in dedicated areas or \
-					as additions to station layout."
+					as additions to facility layout."
+
+/datum/prototype/struct/alt_title/damage_tech
+	title = "Damage Control Technician"
+	title_blurb = "A Damage Control Technician specializes in repairing a damaged facility as quickly as possible, usually possessing good skills with both atmospherics and quick repair work."
 
 /datum/prototype/struct/alt_title/artificer_apprentice
 	title = "Artificer-Apprentice"

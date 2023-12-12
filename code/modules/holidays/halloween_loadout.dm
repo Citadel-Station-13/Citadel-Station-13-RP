@@ -136,6 +136,14 @@
 	name = "Costume Head - Knight Crusader (Winged)"
 	path = /obj/item/clothing/head/medievalfake/crusader/winged
 
+/datum/loadout_entry/seasonal/halloween/costumes/head/darkcleric
+	name = "Costume Head - Dark Cleric Circlet"
+	path = /obj/item/clothing/head/darkcleric
+
+/datum/loadout_entry/seasonal/halloween/costumes/head/aquiline
+	name = "Costume Head - Aquiline Enforcer"
+	path = /obj/item/clothing/head/helmet/aquiline
+
 // Mask
 /datum/loadout_entry/seasonal/halloween/costumes/mask
 	name = "Costume Mask - Fake Moustache"
@@ -424,6 +432,20 @@
 	name = "Costume Uniform - Imperial Soldier"
 	path = /obj/item/clothing/under/imperial
 
+/datum/loadout_entry/seasonal/halloween/costumes/under/dark_cleric
+	name = "Costume Uniform - Dark Cleric Armor"
+	path = /obj/item/clothing/under/darkcleric
+
+/datum/loadout_entry/seasonal/halloween/costumes/under/aquiline
+	name = "Costume Uniform - Aquiline Enforcer"
+	path = /obj/item/clothing/under/aquiline_enforcer
+
+// Gloves
+
+/datum/loadout_entry/seasonal/halloween/costumes/gloves
+	display_name = "Costume Gloves - Dark Cleric Bracers"
+	path = /obj/item/clothing/gloves/darkcleric
+
 // Shoes
 /datum/loadout_entry/seasonal/halloween/costumes/shoes
 	name = "Costume Shoes - Cueball Man"
@@ -441,6 +463,10 @@
 /datum/loadout_entry/seasonal/halloween/costumes/shoes/roman
 	name = "Costume Shoes - Roman Caligae"
 	path = /obj/item/clothing/shoes/roman
+
+/datum/loadout_entry/seasonal/halloween/costumes/shoes/darkcleric
+	display_name = "Costume Shoes - Dark Cleric Boots"
+	path = /obj/item/clothing/shoes/boots/darkcleric
 
 // Accessories
 /datum/loadout_entry/seasonal/halloween/costumes/accessory

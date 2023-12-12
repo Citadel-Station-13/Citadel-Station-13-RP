@@ -58,6 +58,8 @@
 	desc = "A hivebot with a crude ballistic weapon and strong armor."
 	maxHealth = 4 LASERS_TO_KILL // 120 health.
 	health = 4 LASERS_TO_KILL
+	legacy_melee_damage_lower = 15
+	legacy_melee_damage_upper = 15
 	base_attack_cooldown = 5
 
 	catalogue_data = list(/datum/category_item/catalogue/technology/drone/hivebot/strong)

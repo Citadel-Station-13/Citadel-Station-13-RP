@@ -5,8 +5,8 @@
 	icon_state = "breacher_hardsuit_cheap"
 	armor_type = /datum/armor/hardsuit/breacher
 	emp_protection = -20
-	slowdown = 6
-	offline_slowdown = 10
+	encumbrance = ITEM_ENCUMBRANCE_LEGACY_RIG_HEAVY * 2
+	offline_encumbrance = ITEM_ENCUMBRANCE_LEGACY_RIG_HEAVY * 4
 	vision_restriction = 1
 	offline_vision_restriction = 2
 	siemens_coefficient = 0.75

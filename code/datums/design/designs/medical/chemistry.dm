@@ -42,7 +42,7 @@
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/reagent_containers/hypospray/autoinjector/empty
-	materials = list(
+	materials_base = list(
 		MAT_STEEL = 250,
 		MAT_GLASS = 250,
 	)

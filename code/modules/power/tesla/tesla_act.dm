@@ -20,7 +20,7 @@
 
 /obj/structure/blob/tesla_act(power)
 	..()
-	adjust_integrity(-power/400)
+	adjust_integrity_blob(-power/400)
 
 /obj/machinery/nuclearbomb/tesla_act(power, explosive)
 	..()
@@ -62,4 +62,4 @@
 
 /obj/mecha/tesla_act(power)
 	..()
-	take_damage(power / 200, "energy") // A surface lightning strike will do 100 damage.
+	take_damage_legacy(power / 200, "energy") // A surface lightning strike will do 100 damage.

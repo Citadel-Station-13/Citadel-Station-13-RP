@@ -33,7 +33,6 @@
 		"Virologist" = /datum/prototype/struct/alt_title/virologist,
 		"Medical Resident" = /datum/prototype/struct/alt_title/doctor/resident,
 		"Medical Intern" = /datum/prototype/struct/alt_title/doctor/intern,
-		"Orderly" = /datum/prototype/struct/alt_title/orderly,
 		"Biotechnician" = /datum/prototype/struct/alt_title/biotechnician
 		)
 
@@ -53,12 +52,6 @@
 					to know the ins and outs of anesthesia and surgery."
 	title_outfit = /datum/outfit/job/station/medical_doctor/surgeon
 
-/datum/prototype/struct/alt_title/orderly
-	title = "Orderly"
-	title_blurb = "An Orderly acts as Medbay's general helping hand, assisting any doctor that might need some form of help, as well as handling manual \
-					and dirty labor around the department."
-	title_outfit = /datum/outfit/job/station/medical_doctor/nurse
-
 /datum/prototype/struct/alt_title/emergency_physician
 	title = "Emergency Physician"
 	title_blurb = "An Emergency Physician is a Medical professional trained for stabilizing and treating severely injured and/or dying patients. \
@@ -68,7 +61,7 @@
 
 /datum/prototype/struct/alt_title/nurse
 	title = "Nurse"
-	title_blurb = "A Nurse acts as a general purpose Doctor's Aide, providing basic care to non-critical patients, and stabilizing critical patients during \
+	title_blurb = "A Nurse acts as a general purpose aide to the doctors, providing basic care to non-critical patients, and stabilizing critical patients during \
 					busy periods. They frequently watch the suit sensors console, to help manage the time of other Doctors. In rare occasions, a Nurse can be \
 					called upon to revive deceased crew members."
 	title_outfit = /datum/outfit/job/station/medical_doctor/nurse
@@ -81,9 +74,11 @@
 
 /datum/prototype/struct/alt_title/doctor/resident
 	title = "Medical Resident"
-
+	title_blurb = "A Medical Resident is someone who has a medical dregree but is still in their resdiency, training under the supervision of more experienced doctors."
+	
 /datum/prototype/struct/alt_title/doctor/intern
 	title = "Medical Intern"
+	title_blurb = "A Medical Intern is someone just learning the ropes of the medical field, learning from and answering to other medbay staff."
 
 /datum/outfit/job/station/medical_doctor
 	name = OUTFIT_JOB_NAME("Medical Doctor")

@@ -11,11 +11,9 @@
 	icon = 'icons/modules/fishing/aquarium.dmi'
 	icon_state = "aquarium_base"
 
-	// todo: refactor on atom damage!!!
 	integrity = 100
-	var/integrity_max = 100
-	var/integrity_failure = 0.3
-	var/broken = FALSE
+	integrity_max = 100
+	integrity_failure = 0.3
 
 	var/fluid_type = AQUARIUM_FLUID_FRESHWATER
 	var/fluid_temp = DEFAULT_AQUARIUM_TEMP
@@ -101,7 +99,7 @@
 		. += "panel"
 
 	//Glass overlay goes on top of everything else.
-	var/mutable_appearance/glass_overlay = mutable_appearance(icon,broken ? broken_glass_icon_state : glass_icon_state,layer=AQUARIUM_MAX_OFFSET-1)
+	var/mutable_appearance/glass_overlay = mutable_appearance(icon, (atom_flags & ATOM_BROKEN) ? broken_glass_icon_state : glass_icon_state,layer=AQUARIUM_MAX_OFFSET-1)
 	. += glass_overlay
 
 /obj/structure/aquarium/examine(mob/user, dist)
@@ -118,28 +116,30 @@
 	update_appearance()
 	return TRUE
 
-/obj/structure/aquarium/dynamic_tool_functions(obj/item/I, mob/user)
+/obj/structure/aquarium/dynamic_tool_query(obj/item/I, datum/event_args/actor/clickchain/e_args, list/hint_images = list())
 	. = ..()
 	if(allow_unanchor)
-		.[TOOL_WRENCH] = anchored? "anchor" : "unanchor"
+		LAZYSET(.[TOOL_WRENCH], anchored? "unanchor" : "anchor", anchored? dyntool_image_backward(TOOL_WRENCH) : dyntool_image_forward(TOOL_WRENCH))
 
-/obj/structure/aquarium/dynamic_tool_image(function, hint)
-	switch(function)
-		if(TOOL_WRENCH)
-			return anchored? dyntool_image_backward(TOOL_WRENCH) : dyntool_image_forward(TOOL_WRENCH)
-	return ..()
-
-/obj/structure/aquarium/wrench_act(obj/item/I, mob/user, flags, hint)
+/obj/structure/aquarium/wrench_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
 	if(!allow_unanchor)
 		return ..()
-	if(use_wrench(I, user, delay = 4 SECONDS))
-		user.visible_message(SPAN_NOTICE("[user] [anchored? "fastens [src] to the ground" : "unfastens [src] from the ground"]."), range = MESSAGE_RANGE_CONSTRUCTION)
+	if(use_wrench(I, e_args, delay = 4 SECONDS))
+		log_construction(e_args.performer, src, "fastened")
+		set_anchored(!anchored)
+		e_args.visible_feedback(
+			target = src,
+			range = MESSAGE_RANGE_CONSTRUCTION,
+			visible = SPAN_NOTICE("[e_args.performer] [anchored? "fastens [src] to the ground" : "unfastens [src] from the ground"]."),
+			audible = SPAN_WARNING("You hear bolts being [anchored? "fastened" : "unfastened"]"),
+			otherwise_self = SPAN_NOTICE("You [anchored? "fasten" : "unfasten"] [src]."),
+		)
 		return TRUE
 	return ..()
 
 /obj/structure/aquarium/attackby(obj/item/I, mob/living/user, params)
 	SEND_SIGNAL(src, COMSIG_AQUARIUM_DISTURB_FISH)
-	if(broken)
+	if(atom_flags & ATOM_BROKEN)
 		var/obj/item/stack/material/glass/glass = I
 		if(istype(glass))
 			if(glass.get_amount() < 2)
@@ -148,8 +148,7 @@
 			user.action_feedback(SPAN_NOTICE("You start fixing [src]..."), src)
 			if(do_after(user, 2 SECONDS, target = src))
 				glass.use(2)
-				broken = FALSE
-				integrity = integrity_max
+				heal_integrity(integrity_max)
 				update_appearance()
 			return CLICKCHAIN_DID_SOMETHING
 	else
@@ -166,7 +165,7 @@
 	return ..()
 
 /obj/structure/aquarium/interact(mob/user)
-	if(!broken && user.pulling && isliving(user.pulling))
+	if(!(atom_flags & ATOM_BROKEN) && user.pulling && isliving(user.pulling))
 		var/mob/living/living_pulled = user.pulling
 		var/datum/component/aquarium_content/content_component = living_pulled.GetComponent(/datum/component/aquarium_content)
 		if(content_component && content_component.is_ready_to_insert(src))
@@ -273,13 +272,11 @@
 		ui.open()
 
 // todo: refactor on atom damage!!
-/obj/structure/aquarium/proc/atom_break(damage_flag)
-	// . = ..()
-	if(!broken)
-		aquarium_smash()
+/obj/structure/aquarium/atom_break(damage_flag)
+	. = ..()
+	aquarium_smash()
 
 /obj/structure/aquarium/proc/aquarium_smash()
-	broken = TRUE
 	var/possible_destinations_for_fish = list()
 	var/droploc = drop_location()
 	if(isturf(droploc))

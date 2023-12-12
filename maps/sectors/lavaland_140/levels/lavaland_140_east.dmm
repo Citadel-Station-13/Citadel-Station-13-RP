@@ -116,7 +116,7 @@
 /area/lavaland/east/ashlander_village)
 "bn" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/structure/closet/crate/secure/nanotrasen,
+/obj/structure/closet/crate/secure/corporate/nanotrasen,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/ashlander_village)
 "bo" = (
@@ -149,9 +149,6 @@
 	},
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/east/explored)
-"bL" = (
-/turf/simulated/floor/tiled/dark/lavaland,
-/area/lavaland/east/transit)
 "ch" = (
 /obj/structure/bed/double,
 /obj/item/bedsheet/orangedouble,
@@ -270,10 +267,6 @@
 /obj/machinery/vending/cola,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/ashlander_village)
-"fD" = (
-/obj/landmark/map_data/lavaland_east,
-/turf/simulated/mineral/triumph/lavaland,
-/area/lavaland/east/explored)
 "fL" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 8
@@ -302,7 +295,7 @@
 /area/lavaland/east/ashlander_village)
 "fT" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/structure/closet/crate/xion,
+/obj/structure/closet/crate/corporate/xion,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/ashlander_village)
 "ge" = (
@@ -647,7 +640,7 @@
 /area/lavaland/east/ashlander_village)
 "nc" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/structure/closet/crate/nanotrasen,
+/obj/structure/closet/crate/corporate/nanotrasen,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/ashlander_village)
 "ne" = (
@@ -943,7 +936,7 @@
 /area/lavaland/east/ashlander_village)
 "sR" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/structure/closet/crate/gilthari,
+/obj/structure/closet/crate/corporate/gilthari,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/ashlander_village)
 "tb" = (
@@ -1242,7 +1235,7 @@
 /area/lavaland/east/ashlander_village)
 "xM" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/structure/closet/crate/einstein,
+/obj/structure/closet/crate/corporate/einstein,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/ashlander_village)
 "xO" = (
@@ -1790,9 +1783,6 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/ashlander_village)
 "Kv" = (
-/obj/effect/map_effect/portal/line/side_b{
-	dir = 4
-	},
 /turf/simulated/floor/tiled/dark/lavaland,
 /area/lavaland/east/transit)
 "Kx" = (
@@ -2059,7 +2049,7 @@
 /area/lavaland/east/ashlander_village)
 "Re" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/structure/closet/crate/secure/aether,
+/obj/structure/closet/crate/secure/corporate/aether,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/ashlander_village)
 "Rj" = (
@@ -2262,12 +2252,7 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/ashlander_village)
 "TX" = (
-/obj/effect/map_effect/portal/master/side_b{
-	dir = 4;
-	name = "east_to_center";
-	portal_id = "eaststep"
-	},
-/turf/simulated/floor/tiled/dark/lavaland,
+/turf/level_border,
 /area/lavaland/east/transit)
 "TY" = (
 /obj/effect/floor_decal/industrial/warning/dust/corner{
@@ -2404,7 +2389,7 @@
 /area/lavaland/east/ashlander_village)
 "Xd" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/structure/closet/crate/veymed,
+/obj/structure/closet/crate/corporate/veymed,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/ashlander_village)
 "Xf" = (
@@ -2734,10 +2719,10 @@ wR
 wR
 ad
 TX
-Kv
-Kv
-Kv
-Kv
+TX
+TX
+TX
+TX
 ad
 wR
 wR
@@ -2876,9 +2861,9 @@ kx
 wR
 ad
 az
-bL
-bL
-bL
+Kv
+Kv
+Kv
 cU
 ad
 wR
@@ -2919,7 +2904,7 @@ kx
 kx
 kx
 kx
-fD
+kx
 wR
 "}
 (3,1,1) = {"
@@ -3018,10 +3003,10 @@ kx
 wR
 ad
 aL
-bL
-bL
-bL
-bL
+Kv
+Kv
+Kv
+Kv
 ad
 wR
 kx

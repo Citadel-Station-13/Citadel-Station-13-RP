@@ -12,7 +12,6 @@
 	volume = 60
 	w_class = ITEMSIZE_SMALL
 	atom_flags = NOCONDUCT
-	unacidable = 0 //tissues does dissolve in acid
 	drop_sound = 'sound/effects/splat.ogg'
 	pickup_sound = 'sound/effects/squelch1.ogg'
 
@@ -154,7 +153,7 @@
 	name = "waxcomb (honey)"
 	desc = "A glob of freshly produced honey encased in sturdy wax."
 	icon_state = "waxcomb"
-	materials = list("wax" = 100)
+	materials_base = list("wax" = 100)
 	volume = 30
 	w_class = ITEMSIZE_TINY
 	amount_per_transfer_from_this = 10
@@ -165,7 +164,7 @@
 	name = "waxcomb (jelly)"
 	desc = "A glob of freshly produced jelly encased in sturdy wax."
 	icon_state = "waxcomb"
-	materials = list("wax" = 100)
+	materials_base = list("wax" = 100)
 	volume = 30
 	w_class = ITEMSIZE_TINY
 	amount_per_transfer_from_this = 10

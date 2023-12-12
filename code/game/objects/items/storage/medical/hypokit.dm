@@ -4,6 +4,7 @@
 	icon = 'icons/items/storage/firstaid_small.dmi'
 	inhand_icon = 'icons/items/storage/firstaid.dmi'
 	icon_state = "normal"
+	slot_flags = SLOT_BELT
 	max_storage_space = INVENTORY_BOX_SPACE
 	can_hold = list(
 		/obj/item/reagent_containers/glass/hypovial,

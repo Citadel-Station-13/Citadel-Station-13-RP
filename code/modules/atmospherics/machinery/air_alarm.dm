@@ -178,6 +178,11 @@ GLOBAL_LIST_EMPTY(air_alarms)
 	return
 
 /obj/machinery/air_alarm/proc/handle_sounds()
+	if(!report_danger_level)
+		return
+	// todo: this needs to be a soundloop datum that adjusts volume based on if the user's been hearing it, because constant alarm whine is obnoxious
+	// disabled for now ~silicons
+/*
 	if(world.time > last_sound_played + (60 SECONDS / (danger_level ? danger_level : 1)))
 		if (danger_level == AIR_ALARM_RAISE_WARNING)
 			playsound(src,'sound/machines/air_alarm/warning.ogg', 100, pressure_affected = TRUE)
@@ -185,6 +190,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 		if (danger_level == AIR_ALARM_RAISE_DANGER)
 			playsound(src, 'sound/machines/air_alarm/danger.ogg', 100, pressure_affected = FALSE)
 			last_sound_played = world.time
+*/
 
 /obj/machinery/air_alarm/proc/handle_heating_cooling(var/datum/gas_mixture/environment)
 	var/list/tlv = tlv_temperature
@@ -672,7 +678,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 			var/index = text2num(params["index"]) + 1
 			if((index < AIR_ALARM_TLV_INDEX_MIN) || (index > AIR_ALARM_TLV_INDEX_MAX))
 				return TRUE
-			var/val = clamp(0, text2num(params["val"]), 1000000)
+			var/val = clamp(-1, text2num(params["val"]), 1000000)
 			var/list/target
 			switch(entry)
 				if("pressure")
@@ -732,7 +738,8 @@ GLOBAL_LIST_EMPTY(air_alarms)
 		return
 
 	if(istype(W, /obj/item/card/id) || istype(W, /obj/item/pda))// trying to unlock the interface with an ID card
-		togglelock()
+		togglelock(user)
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
 
 /obj/machinery/air_alarm/verb/togglelock(mob/user as mob)
@@ -749,7 +756,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 
 /obj/machinery/air_alarm/AltClick()
 	..()
-	togglelock()
+	togglelock(usr)
 
 /obj/machinery/air_alarm/power_change()
 	..()

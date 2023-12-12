@@ -11,7 +11,7 @@
 	plane = TURF_PLANE
 	layer = HEAVYDUTY_WIRE_LAYER //Just below pipes
 	color = null
-	unacidable = 1
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 	var/id = null
 
 /obj/structure/cable/ender/get_connections(var/powernetless_only = 0)

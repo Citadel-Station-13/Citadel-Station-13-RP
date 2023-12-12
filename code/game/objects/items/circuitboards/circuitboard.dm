@@ -9,7 +9,7 @@
 	name = "circuit board"
 	icon = 'icons/obj/module.dmi'
 	icon_state = "id_mod"
-	materials = list(
+	materials_base = list(
 		MAT_STEEL = 1000,
 		MAT_GLASS = 250,
 	)

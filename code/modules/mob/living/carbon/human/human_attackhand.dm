@@ -115,7 +115,8 @@
 				attack_generic(H,rand(1,3),"punched")
 				return
 
-			var/rand_damage = rand(1, 5)
+			// var/rand_damage = rand(1, 5)
+			var/rand_damage = 0
 			var/block = 0
 			var/accurate = 0
 			var/hit_zone = H.zone_sel.selecting
@@ -128,20 +129,19 @@
 			switch(src.a_intent)
 				if(INTENT_HELP)
 					// We didn't see this coming, so we get the full blow
-					rand_damage = 5
+					// rand_damage = 5
 					accurate = 1
 				if(INTENT_HARM, INTENT_GRAB)
 					// We're in a fighting stance, there's a chance we block
 					if(CHECK_MOBILITY(src, MOBILITY_CAN_MOVE) && src!=H && prob(20))
 						block = 1
 
-			if (L.grabbed_by.len)
+			// if (L.grabbed_by.len)
 				// Someone got a good grip on them, they won't be able to do much damage
-				rand_damage = max(1, rand_damage - 2)
+				// rand_damage = max(1, rand_damage - 2)
 
 			if(src.grabbed_by.len || src.buckled || !CHECK_MOBILITY(src, MOBILITY_CAN_MOVE) || src==H)
 				accurate = 1 // certain circumstances make it impossible for us to evade punches
-				rand_damage = 5
 
 			// Process evasion and blocking
 			var/miss_type = 0
@@ -198,7 +198,8 @@
 			if(attack.unarmed_override(H, src, hit_zone))
 				return FALSE
 
-			H.do_attack_animation(src)
+			H.animate_swing_at_target(src)
+			animate_hit_by_attack(attack.animation_type)
 			if(!attack_message)
 				attack.show_attack(H, src, hit_zone, rand_damage)
 			else
@@ -219,7 +220,7 @@
 					var/obj/item/clothing/gloves/G = H.gloves
 					real_damage += G.punch_force
 					hit_dam_type = G.punch_damtype
-					if(H.pulling_punches && !attack.sharp && !attack.edge)	//SO IT IS DECREED: PULLING PUNCHES WILL PREVENT THE ACTUAL DAMAGE FROM RINGS AND KNUCKLES, BUT NOT THE ADDED PAIN, BUT YOU CAN'T "PULL" A KNIFE
+					if(H.pulling_punches && !(attack.damage_mode & (DAMAGE_MODE_EDGE | DAMAGE_MODE_SHARP)))	//SO IT IS DECREED: PULLING PUNCHES WILL PREVENT THE ACTUAL DAMAGE FROM RINGS AND KNUCKLES, BUT NOT THE ADDED PAIN, BUT YOU CAN'T "PULL" A KNIFE
 						hit_dam_type = AGONY
 			real_damage *= damage_multiplier
 			rand_damage *= damage_multiplier
@@ -234,7 +235,7 @@
 			attack.apply_effects(H, src, armour, rand_damage, hit_zone)
 
 			// Finally, apply damage to target
-			apply_damage(real_damage, hit_dam_type, hit_zone, armour, soaked, sharp=attack.sharp, edge=attack.edge)
+			apply_damage(real_damage, hit_dam_type, hit_zone, armour, soaked, sharp = attack.damage_mode & DAMAGE_MODE_SHARP, edge = attack.damage_mode & DAMAGE_MODE_EDGE)
 
 		if(INTENT_DISARM)
 			add_attack_logs(H,src,"Disarmed")
@@ -456,6 +457,9 @@
 
 /mob/living/carbon/human/proc/set_default_attack(var/datum/unarmed_attack/u_attack)
 	default_attack = u_attack
+
+/mob/living/carbon/human/unarmed_attack_style()
+	return get_unarmed_attack() || ..()
 
 /datum/unarmed_attack
 	var/attack_name = "fist"

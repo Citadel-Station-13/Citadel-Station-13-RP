@@ -29,7 +29,7 @@
 		to_chat(src, SPAN_NOTICE("You are unable to move from here."))
 		return FALSE
 
-	var/turf/destination = (direction == UP) ? GetAbove(src) : GetBelow(src)
+	var/turf/destination = get_vertical_step(src, direction)
 	if(!destination)
 		to_chat(src, SPAN_NOTICE("There is nothing of interest in this direction."))
 		return FALSE
@@ -83,13 +83,9 @@
 		else
 			to_chat(src, SPAN_WARNING("Gravity stops you from moving upward."))
 			return FALSE
-	var/old_z = get_z(src)
 	// todo: this should not use Move()
 	if(!Move(destination))
 		return FALSE
-	var/new_z = get_z(src)
-	if(old_z != new_z)
-		on_changed_z_level(old_z, new_z)
 	return TRUE
 
 /mob/proc/can_overcome_gravity()
@@ -104,14 +100,14 @@
 		return species && species.can_overcome_gravity(src)
 
 /mob/observer/zMove(direction)
-	var/turf/destination = (direction == UP) ? GetAbove(src) : GetBelow(src)
+	var/turf/destination = (direction == UP) ? get_vertical_step(src, UP) : get_vertical_step(src, DOWN)
 	if(destination)
 		forceMove(destination)
 	else
 		to_chat(src, "<span class='notice'>There is nothing of interest in this direction.</span>")
 
 /mob/observer/eye/zMove(direction)
-	var/turf/destination = (direction == UP) ? GetAbove(src) : GetBelow(src)
+	var/turf/destination = (direction == UP) ? get_vertical_step(src, UP) : get_vertical_step(src, DOWN)
 	if(destination)
 		setLoc(destination)
 	else
@@ -191,7 +187,7 @@
 	if(!isturf(loc))
 		return
 
-	var/turf/below = GetBelow(src)
+	var/turf/below = get_vertical_step(src, DOWN)
 	if(!below)
 		return
 
@@ -282,16 +278,6 @@
 // Mechas are anchored, so we need to override.
 /obj/mecha/can_fall()
 	return TRUE
-
-/obj/item/pipe/can_fall()
-	. = ..()
-
-	if(anchored)
-		return FALSE
-
-	var/turf/below = GetBelow(src)
-	if((locate(/obj/structure/disposalpipe/up) in below) || (locate(/obj/machinery/atmospherics/pipe/zpipe/up) in below))
-		return FALSE
 
 /mob/can_fall()
 	if(buckled)
@@ -568,7 +554,7 @@
 
 	// And now to hurt the mech.
 	if(!planetary)
-		take_damage(rand(damage_min, damage_max))
+		take_damage_legacy(rand(damage_min, damage_max))
 	else
 		for(var/atom/movable/A in src.contents)
 			A.fall_impact(hit_atom, damage_min, damage_max, silent = TRUE)

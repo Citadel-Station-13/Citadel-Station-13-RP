@@ -57,8 +57,8 @@
 	mob_class = MOB_CLASS_ANIMAL
 	taser_kill = FALSE
 	movement_cooldown = 5
-	melee_damage_lower = 8
-	melee_damage_upper = 12
+	legacy_melee_damage_lower = 8
+	legacy_melee_damage_upper = 12
 	attacktext = list ("lashed", "whipped", "stung")
 	attack_sound = 'sound/weapons/towelwhip.ogg'
 
@@ -110,8 +110,8 @@
 	health = 200
 
 	movement_cooldown = 5
-	melee_damage_lower = 10
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 10
+	legacy_melee_damage_upper = 15
 	attack_sound = 'sound/weapons/punch2.ogg'
 
 	exotic_type = /obj/item/stack/sinew
@@ -141,8 +141,8 @@
 	if(istype(O, /obj/item/tool/wirecutters) || is_sharp(O))
 		to_chat(user, "<span class='danger'>You amputate the [src]'s stingers! It may now be domesticated!</span>")
 		neutered = 1
-		melee_damage_lower = 5
-		melee_damage_upper = 10
+		legacy_melee_damage_lower = 5
+		legacy_melee_damage_upper = 10
 		ai_holder_type = /datum/ai_holder/simple_mob/stormdrifter/bull_neutered
 
 	if(istype(O, /obj/item/saddle/stormdrifter) && !rideable)

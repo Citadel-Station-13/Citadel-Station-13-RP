@@ -93,6 +93,10 @@
 		. += "<span class='notice'>\The [src] is almost full!</span>"
 	else
 		. += "<span class='notice'>\The [src] is full!</span>"
+	if(reagents)
+		var/datum/reagent/ethanol/R = locate() in reagents.reagent_list
+		if(istype(R))
+			. += "<span class='notice'>It contains alcohol.</span>"
 
 
 ////////////////////////////////////////////////////////////////////////////////
