@@ -4576,6 +4576,7 @@
 #include "code\modules\sprite_accessories\ears\animal\murid.dm"
 #include "code\modules\sprite_accessories\ears\animal\mushroom.dm"
 #include "code\modules\sprite_accessories\ears\animal\sciurid.dm"
+#include "code\modules\sprite_accessories\ears\animal\shark.dm"
 #include "code\modules\sprite_accessories\ears\animal\ursid.dm"
 #include "code\modules\sprite_accessories\ears\fictional\deathclaw.dm"
 #include "code\modules\sprite_accessories\ears\fictional\demon.dm"
