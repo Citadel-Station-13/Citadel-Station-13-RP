@@ -132,7 +132,6 @@
 		return
 	if(!radio_controller)
 		CRASH("uh oh")
-		return
 
 	radio_controller.remove_object(src, frequency)
 	frequency = new_frequency

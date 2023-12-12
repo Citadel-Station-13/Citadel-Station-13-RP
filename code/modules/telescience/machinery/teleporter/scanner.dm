@@ -18,6 +18,8 @@
 	var/power_setting = 0
 	/// max draw in kw
 	var/power_max = 1000
+	/// are we on?
+	var/power_enabled = FALSE
 
 /obj/machinery/teleporter/bluespace_scanner/Initialize(mapload)
 	SStelesci.register_bluespace_scanner(src)
@@ -33,6 +35,7 @@
 /obj/machinery/teleporter/bluespace_scanner/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	.["powerSetting"] = power_setting
+	.["powerOn"] = power_enabled
 
 /obj/machinery/teleporter/bluespace_scanner/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()

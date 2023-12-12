@@ -26,8 +26,35 @@
 
 #warn impl all
 
-/obj/item/bluespace_remote/get_cell()
-	return cell
+/obj/item/bluespace_remote/ui_act(action, list/params, datum/tgui/ui)
+	. = ..()
+
+/obj/item/bluespace_remote/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+
+/obj/item/bluespace_remote/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+
+/obj/item/bluespace_remote/ui_module_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	var/datum/tgui_module/teleporter_control/ui_controller = controller?.request_ui_controller()
+	.["control"] = ui_controller.data(user)
+	. |= ui_controller.ui_module_data(arglist(args))
+
+/obj/item/bluespace_remote/ui_module_static(mob/user, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	var/datum/tgui_module/teleporter_control/ui_controller = controller?.request_ui_controller()
+	.["control"] = ui_controller.static_data(user)
+	. |= ui_controller.ui_module_static(arglist(args))
+
+/obj/item/bluespace_remote/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "BluespaceRemote")
+
+/obj/item/bluespace_remote/ui_module_act(action, list/params, datum/tgui/ui, id)
+	var/datum/tgui_module/teleporter_control/ui_controller = controller?.request_ui_controller()
+	return ui_controller.ui_module_act(arglist(args))
 
 /obj/item/bluespace_remote/director
 	name = "telescience remote"

@@ -89,7 +89,6 @@
 		// /obj/item/bodysnatcher,
 		/obj/item/bluespace_harpoon,
 		/obj/item/clothing/accessory/permit/gun,
-		/obj/item/perfect_tele,
 		// /obj/item/sleevemate,
 		/obj/item/disk/nifsoft/compliance,
 		/obj/item/seeds/ambrosiadeusseed,
