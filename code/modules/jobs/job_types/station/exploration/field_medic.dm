@@ -24,6 +24,7 @@
 		ACCESS_MEDICAL_EQUIPMENT,
 		ACCESS_MEDICAL_MORGUE,
 		ACCESS_GENERAL_PILOT,
+		ACCESS_GENERAL_EXPLORER,
 	)
 	outfit_type = /datum/outfit/job/station/sar
 	desc = "A Field medic works as the field doctor of expedition teams."

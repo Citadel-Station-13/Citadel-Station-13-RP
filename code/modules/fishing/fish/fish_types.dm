@@ -264,6 +264,7 @@
 	stable_population = 3
 	average_size = 20
 	average_weight = 1500
+	fillet_type = /obj/item/reagent_containers/food/snacks/meat/crab
 	favorite_bait = list(
 		/obj/item/reagent_containers/food/snacks/bait/doughball,
 	)
