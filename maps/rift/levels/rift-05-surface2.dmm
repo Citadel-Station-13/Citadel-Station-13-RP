@@ -1289,7 +1289,7 @@
 /obj/structure/sign/christmas/lights{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/patterened,
+/turf/simulated/floor/carpet/patterened/red,
 /area/crew_quarters/coffee_shop)
 "aRs" = (
 /obj/structure/toilet{
@@ -1320,7 +1320,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 6
 	},
-/turf/simulated/floor/carpet/patterened,
+/turf/simulated/floor/carpet/patterened/red,
 /area/crew_quarters/coffee_shop)
 "aTs" = (
 /obj/effect/floor_decal/industrial/warning/corner{
@@ -5158,7 +5158,7 @@
 /area/security/range)
 "dqp" = (
 /obj/structure/flora/tree/pine/xmas/presents,
-/turf/simulated/floor/carpet/patterened,
+/turf/simulated/floor/carpet/patterened/red,
 /area/crew_quarters/coffee_shop)
 "drb" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -8814,7 +8814,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/carpet/patterened,
+/turf/simulated/floor/carpet/patterened/red,
 /area/crew_quarters/coffee_shop)
 "fIH" = (
 /obj/structure/railing,
@@ -11408,7 +11408,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/carpet/patterened,
+/turf/simulated/floor/carpet/patterened/green,
 /area/crew_quarters/coffee_shop)
 "hpv" = (
 /obj/machinery/conveyor{
@@ -20229,7 +20229,7 @@
 /obj/structure/sign/christmas/lights{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/patterened,
+/turf/simulated/floor/carpet/patterened/green,
 /area/crew_quarters/coffee_shop)
 "mCK" = (
 /obj/structure/closet/secure_closet/medical3,
@@ -21217,7 +21217,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/patterened,
+/turf/simulated/floor/carpet/patterened/green,
 /area/crew_quarters/coffee_shop)
 "ngr" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -23117,7 +23117,7 @@
 /obj/structure/sign/christmas/lights{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/patterened,
+/turf/simulated/floor/carpet/patterened/red,
 /area/crew_quarters/coffee_shop)
 "owO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -28520,7 +28520,7 @@
 /obj/structure/sign/christmas/lights{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/patterened,
+/turf/simulated/floor/carpet/patterened/green,
 /area/crew_quarters/coffee_shop)
 "rOF" = (
 /obj/effect/floor_decal/borderfloorwhite{

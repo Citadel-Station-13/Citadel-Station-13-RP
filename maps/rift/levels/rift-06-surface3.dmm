@@ -264,7 +264,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/surfacethree)
 "aaS" = (
-/turf/simulated/floor/carpet/patterened,
+/turf/simulated/floor/carpet/patterened/red,
 /area/crew_quarters/bar)
 "aaT" = (
 /obj/machinery/door/airlock/vault/bolted{
@@ -466,7 +466,7 @@
 /obj/structure/sign/christmas/lights{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/patterened,
+/turf/simulated/floor/carpet/patterened/green,
 /area/crew_quarters/bar)
 "abD" = (
 /obj/structure/closet/wardrobe/captain,
@@ -682,7 +682,7 @@
 	dir = 1
 	},
 /obj/structure/bed/chair/sofa/green/left,
-/turf/simulated/floor/carpet/patterened,
+/turf/simulated/floor/carpet/patterened/red,
 /area/crew_quarters/bar)
 "aci" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -1217,7 +1217,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 6
 	},
-/turf/simulated/floor/carpet/patterened,
+/turf/simulated/floor/carpet/patterened/green,
 /area/crew_quarters/bar)
 "adO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -1522,7 +1522,7 @@
 /obj/structure/bed/chair/sofa/red/corner{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/patterened,
+/turf/simulated/floor/carpet/patterened/red,
 /area/crew_quarters/bar)
 "aeM" = (
 /obj/effect/floor_decal/industrial/outline/grey,
@@ -1948,7 +1948,7 @@
 	dir = 5
 	},
 /obj/structure/bed/chair/sofa/red/left,
-/turf/simulated/floor/carpet/patterened,
+/turf/simulated/floor/carpet/patterened/green,
 /area/crew_quarters/bar)
 "age" = (
 /obj/structure/lattice,
@@ -2186,7 +2186,7 @@
 /obj/structure/bed/chair/sofa/red/right{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/patterened,
+/turf/simulated/floor/carpet/patterened/red,
 /area/crew_quarters/bar)
 "agS" = (
 /obj/effect/floor_decal/borderfloor,
@@ -4834,7 +4834,7 @@
 	dir = 8
 	},
 /obj/structure/bed/chair/sofa/green/right,
-/turf/simulated/floor/carpet/patterened,
+/turf/simulated/floor/carpet/patterened/green,
 /area/crew_quarters/bar)
 "anQ" = (
 /obj/structure/bed/chair/comfy/brown{
@@ -4884,7 +4884,7 @@
 	pixel_x = -2;
 	pixel_y = -2
 	},
-/turf/simulated/floor/carpet/patterened,
+/turf/simulated/floor/carpet/patterened/red,
 /area/crew_quarters/bar)
 "anZ" = (
 /obj/structure/bed/chair/bay/comfy/black{
@@ -5120,7 +5120,7 @@
 /obj/structure/bed/chair/sofa/green/corner{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/patterened,
+/turf/simulated/floor/carpet/patterened/green,
 /area/crew_quarters/bar)
 "aoI" = (
 /obj/machinery/door/airlock/glass_external,
@@ -6183,7 +6183,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/carpet/patterened,
+/turf/simulated/floor/carpet/patterened/green,
 /area/crew_quarters/bar)
 "aru" = (
 /obj/machinery/door/airlock/glass_external/public{
@@ -6395,7 +6395,7 @@
 	dir = 8
 	},
 /obj/item/clothing/accessory/sweater/winterneck,
-/turf/simulated/floor/carpet/patterened,
+/turf/simulated/floor/carpet/patterened/red,
 /area/crew_quarters/bar)
 "arW" = (
 /obj/machinery/door/airlock/maintenance/int{
@@ -9894,7 +9894,7 @@
 /obj/structure/bed/chair/sofa/red/right{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/patterened,
+/turf/simulated/floor/carpet/patterened/red,
 /area/crew_quarters/bar)
 "aBr" = (
 /obj/effect/floor_decal/spline/plain{
@@ -11276,7 +11276,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/carpet/patterened,
+/turf/simulated/floor/carpet/patterened/green,
 /area/crew_quarters/bar)
 "aFx" = (
 /obj/machinery/air_alarm/alarms_hidden{
@@ -11684,7 +11684,7 @@
 	dir = 4
 	},
 /obj/item/clothing/accessory/scarf/stripedgreen,
-/turf/simulated/floor/carpet/patterened,
+/turf/simulated/floor/carpet/patterened/red,
 /area/crew_quarters/bar)
 "aGC" = (
 /obj/effect/floor_decal/spline/plain,
@@ -12470,7 +12470,7 @@
 /obj/structure/bed/chair/sofa/green/right{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/patterened,
+/turf/simulated/floor/carpet/patterened/red,
 /area/crew_quarters/bar)
 "aIJ" = (
 /obj/effect/floor_decal/spline/plain{
@@ -13009,7 +13009,7 @@
 /obj/structure/bed/chair/sofa/red/corner{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/patterened,
+/turf/simulated/floor/carpet/patterened/red,
 /area/crew_quarters/bar)
 "aJZ" = (
 /obj/structure/table/reinforced,
@@ -13085,7 +13085,7 @@
 /obj/structure/bed/chair/sofa/red{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/patterened,
+/turf/simulated/floor/carpet/patterened/green,
 /area/crew_quarters/bar)
 "aKi" = (
 /obj/effect/spider/stickyweb,
@@ -13980,7 +13980,7 @@
 /obj/structure/bed/chair/sofa/red{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/patterened,
+/turf/simulated/floor/carpet/patterened/green,
 /area/crew_quarters/bar)
 "aMI" = (
 /obj/machinery/air_alarm/alarms_hidden{
@@ -15081,7 +15081,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/turf/simulated/floor/carpet/patterened,
+/turf/simulated/floor/carpet/patterened/red,
 /area/crew_quarters/bar)
 "aPS" = (
 /obj/machinery/pointdefense_control{
@@ -16892,7 +16892,7 @@
 /obj/structure/bed/chair/sofa/red/left{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/patterened,
+/turf/simulated/floor/carpet/patterened/green,
 /area/crew_quarters/bar)
 "aUJ" = (
 /obj/machinery/photocopier,
@@ -18387,7 +18387,7 @@
 /obj/structure/bed/chair/sofa/green/right{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/patterened,
+/turf/simulated/floor/carpet/patterened/green,
 /area/crew_quarters/bar)
 "aZg" = (
 /obj/item/radio/intercom{
@@ -19160,7 +19160,7 @@
 /obj/structure/sign/christmas/lights{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/patterened,
+/turf/simulated/floor/carpet/patterened/red,
 /area/crew_quarters/bar)
 "cCj" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
@@ -19514,7 +19514,7 @@
 "dMD" = (
 /obj/structure/table/hardwoodtable,
 /obj/item/flame/candle,
-/turf/simulated/floor/carpet/patterened,
+/turf/simulated/floor/carpet/patterened/green,
 /area/crew_quarters/bar)
 "dOT" = (
 /obj/structure/table/hardwoodtable,
@@ -19613,6 +19613,12 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/stairwell/primary/surfacethree)
+"dYq" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/carpet/patterened/green,
+/area/crew_quarters/bar)
 "dYH" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
@@ -20301,7 +20307,7 @@
 	dir = 9
 	},
 /obj/structure/bed/chair/sofa/red/right,
-/turf/simulated/floor/carpet/patterened,
+/turf/simulated/floor/carpet/patterened/red,
 /area/crew_quarters/bar)
 "fsv" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
@@ -20777,7 +20783,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/patterened,
+/turf/simulated/floor/carpet/patterened/green,
 /area/crew_quarters/bar)
 "gHV" = (
 /obj/machinery/computer/security,
@@ -20791,7 +20797,7 @@
 /area/security/checkpoint2)
 "gNz" = (
 /obj/structure/bed/chair/sofa/red,
-/turf/simulated/floor/carpet/patterened,
+/turf/simulated/floor/carpet/patterened/green,
 /area/crew_quarters/bar)
 "gOf" = (
 /obj/spawner/window/low_wall/full/nogrille/firelocks,
@@ -21938,6 +21944,14 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/arrivals)
+"jNO" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/carpet/patterened/red,
+/area/crew_quarters/bar)
 "jNZ" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/beige/border,
@@ -23086,7 +23100,7 @@
 /obj/structure/bed/chair/sofa/green/left{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/patterened,
+/turf/simulated/floor/carpet/patterened/red,
 /area/crew_quarters/bar)
 "nbB" = (
 /obj/effect/floor_decal/industrial/warning,
@@ -24637,7 +24651,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/carpet/patterened,
+/turf/simulated/floor/carpet/patterened/green,
 /area/crew_quarters/bar)
 "rEc" = (
 /obj/machinery/door/firedoor/glass{
@@ -24755,7 +24769,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/carpet/patterened,
+/turf/simulated/floor/carpet/patterened/red,
 /area/crew_quarters/bar)
 "rVV" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
@@ -24962,7 +24976,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/bed/chair/sofa/red/left,
-/turf/simulated/floor/carpet/patterened,
+/turf/simulated/floor/carpet/patterened/red,
 /area/crew_quarters/bar)
 "sON" = (
 /obj/spawner/window/low_wall/full/nogrille/firelocks,
@@ -25687,7 +25701,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/carpet/patterened,
+/turf/simulated/floor/carpet/patterened/green,
 /area/crew_quarters/bar)
 "uVz" = (
 /obj/effect/floor_decal/borderfloor{
@@ -26761,7 +26775,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/bed/chair/sofa/green/left,
-/turf/simulated/floor/carpet/patterened,
+/turf/simulated/floor/carpet/patterened/red,
 /area/crew_quarters/bar)
 "xHc" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
@@ -38200,7 +38214,7 @@ aNu
 aeS
 art
 rRh
-rRh
+dYq
 sOh
 aFw
 aBn
@@ -38394,7 +38408,7 @@ pJa
 pJa
 cBD
 uTO
-uTO
+jNO
 uTO
 aPR
 adN
