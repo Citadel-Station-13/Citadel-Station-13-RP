@@ -393,7 +393,8 @@
 		var/mob/living/L = M
 		if(istype(L, /mob/living/simple_mob/slime/xenobio))
 			var/mob/living/simple_mob/slime/xenobio/S = L
-			if(!S.is_justified_to_discipline())
+			var/datum/ai_holder/simple_mob/xenobio_slime/sai = S.ai_holder
+			if(!S.is_justified_to_discipline() && !sai?.rabid) //will kill angry slimes.
 				src.ai_holder.lose_target() //quit abusing the damn slimes.
 				return
 			S.slimebatoned(src, xeno_stun_strength)
