@@ -361,7 +361,7 @@
 		var/mob/living/carbon/human/H = M
 		var/cuff = TRUE
 
-		if(!CHECK_MOBILITY(H, MOBILITY_CAN_MOVE | MOBILITY_CAN_USE) || H.handcuffed || arrest_type)
+		if(CHECK_MOBILITY(H, MOBILITY_CAN_MOVE | MOBILITY_CAN_USE) || H.handcuffed || arrest_type)
 			cuff = FALSE
 		if(!cuff)
 			H.stun_effect_act(0, stun_strength, null)
@@ -395,7 +395,7 @@
 			var/mob/living/simple_mob/slime/xenobio/S = L
 			var/datum/ai_holder/simple_mob/xenobio_slime/sai = S.ai_holder
 			if(!S.is_justified_to_discipline() && !sai?.rabid) //will kill angry slimes.
-				src.ai_holder.lose_target() //quit abusing the damn slimes.
+				attacked = FALSE //quit abusing the damn slimes. I don't care if they're hurting you.
 				return
 			S.slimebatoned(src, xeno_stun_strength)
 		L.adjustBruteLoss(xeno_harm_strength)
