@@ -74,7 +74,7 @@
 
 	data["amount"] = amount
 
-	data["possible_bmode"] = list("OFF","NORTH", "EAST", "SOUTH", "WEST")
+	data["possible_bmode"] = list("NORTH", "EAST", "SOUTH", "WEST")
 
 	data["improvefloors"] = null
 	data["eattiles"] = null
@@ -85,7 +85,7 @@
 		data["improvefloors"] = improvefloors
 		data["eattiles"] = eattiles
 		data["maketiles"] = maketiles
-		data["bmode"] = targetdirection ? dir2text(targetdirection) : "OFF"
+		data["bmode"] = dir2text(targetdirection)
 
 	return data
 
@@ -132,10 +132,7 @@
 			. = TRUE
 
 		if("bridgemode")
-			if(params["dir"] != "OFF")
-				targetdirection = text2dir(params["dir"])
-			else
-				targetdirection = null
+			targetdirection = text2dir(params["dir"])
 			. = TRUE
 
 /mob/living/bot/floorbot/handleRegular()
@@ -432,7 +429,7 @@
 	switch(build_step)
 		if(ASSEMBLY_FIRST_STEP)
 			if(isprox(W))
-				if(!user.attempt_consume_item_for_construction(W))
+				if(!user.attempt_insert_item_for_installation(W, src))
 					return
 				to_chat(user, SPAN_NOTICE("You add the proximity sensor to [src]."))
 				name = "incomplete floorbot assembly"

@@ -136,7 +136,7 @@
 		return
 	rabid = TRUE
 	my_slime.update_mood()
-	my_slime.visible_message(SPAN_DANGER("\The [my_slime] enrages!"))
+	my_slime.visible_message(SPAN_DANGER("\The [src] enrages!"))
 
 // Called to relax from being rabid (when blue slime core was used).
 /datum/ai_holder/simple_mob/xenobio_slime/proc/relax()
