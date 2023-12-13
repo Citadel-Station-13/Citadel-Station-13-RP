@@ -125,13 +125,13 @@
 	id = "Merc_Rear_Blast";
 	name = "Blast Shield"
 	},
-/obj/machinery/door/firedoor/multi_tile,
 /obj/machinery/door/airlock/multi_tile/metal{
 	req_one_access = list(150)
 	},
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/engineering)
 "aE" = (
@@ -2158,6 +2158,13 @@
 /obj/machinery/appliance/cooker/grill,
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/recreation)
+"kA" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled/techfloor,
+/area/ship/manta/engineering)
 "kF" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/storage/firstaid/surgery,
@@ -2380,7 +2387,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_aft)
 "lM" = (
-/obj/machinery/door/firedoor/multi_tile,
 /obj/machinery/door/airlock/multi_tile/glass{
 	req_one_access = list(150)
 	},
@@ -2390,6 +2396,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/bridge)
 "lO" = (
@@ -2915,6 +2922,15 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_aft)
+"oj" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/ship/manta/armoury_st)
 "om" = (
 /obj/structure/cable/orange{
 	icon_state = "2-4"
@@ -3707,13 +3723,13 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_st)
 "sz" = (
-/obj/machinery/door/firedoor/multi_tile,
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
 	req_one_access = list(150)
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/white,
 /area/ship/manta/med)
 "sG" = (
@@ -3722,6 +3738,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/white,
 /area/ship/manta/med)
 "sM" = (
@@ -3767,6 +3784,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/white,
 /area/ship/manta/med)
 "th" = (
@@ -3874,6 +3892,9 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hangar)
 "tL" = (
@@ -3891,6 +3912,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/recreation)
 "tQ" = (
@@ -3925,6 +3947,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/dock_port)
 "uc" = (
@@ -4400,9 +4423,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_port)
 "wc" = (
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 1
-	},
 /obj/effect/floor_decal/techfloor,
 /obj/machinery/door/airlock/multi_tile/metal{
 	dir = 4;
@@ -4416,6 +4436,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_st)
@@ -4590,9 +4613,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_st)
 "wQ" = (
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 1
-	},
 /obj/effect/floor_decal/techfloor,
 /obj/machinery/door/airlock/multi_tile/metal{
 	dir = 4;
@@ -4600,6 +4620,9 @@
 	},
 /obj/structure/cable/orange{
 	icon_state = "4-8"
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hangar)
@@ -4777,9 +4800,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hangar)
 "xG" = (
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 1
-	},
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 4;
 	req_one_access = list(150)
@@ -4787,6 +4807,9 @@
 /obj/effect/floor_decal/techfloor,
 /obj/structure/cable/orange{
 	icon_state = "4-8"
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hangar)
@@ -5167,6 +5190,12 @@
 	closed_layer = 4;
 	id = "Manta_Wargear";
 	layer = 4
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/mech_bay)
@@ -5549,13 +5578,13 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/holding)
 "AX" = (
-/obj/machinery/door/firedoor/multi_tile,
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
 	req_one_access = list(150)
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/barracks)
 "Bi" = (
@@ -5609,6 +5638,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/barracks)
 "BJ" = (
@@ -5789,9 +5819,6 @@
 /turf/space,
 /area/ship/manta/radiator_star)
 "CF" = (
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 1
-	},
 /obj/machinery/door/airlock/multi_tile/metal{
 	dir = 4;
 	name = "Mech Bay";
@@ -5811,6 +5838,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/mech_bay)
@@ -6293,6 +6323,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 1
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/dock_star)
 "EY" = (
@@ -7283,6 +7314,9 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/recreation)
 "KI" = (
@@ -7526,10 +7560,10 @@
 /obj/machinery/door/airlock/multi_tile/metal{
 	req_one_access = list(150)
 	},
-/obj/machinery/door/firedoor/multi_tile,
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/dock_star)
 "LZ" = (
@@ -7869,6 +7903,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/engineering)
 "NK" = (
@@ -8415,13 +8450,10 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_aft)
 "QJ" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 8
-	},
-/obj/machinery/door/firedoor/multi_tile,
 /obj/machinery/door/airlock/multi_tile/glass{
 	req_one_access = list(150)
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/recreation)
 "QO" = (
@@ -8609,10 +8641,10 @@
 /obj/machinery/door/airlock/multi_tile/glass{
 	req_one_access = list(150)
 	},
-/obj/machinery/door/firedoor/multi_tile,
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_st)
 "RU" = (
@@ -8665,6 +8697,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_st)
 "Se" = (
@@ -8721,7 +8754,6 @@
 /obj/machinery/door/airlock/multi_tile/glass{
 	req_one_access = list(150)
 	},
-/obj/machinery/door/firedoor/multi_tile,
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
@@ -8730,12 +8762,14 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_st)
 "St" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_st)
 "SF" = (
@@ -9164,7 +9198,6 @@
 /turf/simulated/floor/wood,
 /area/ship/manta/barracks/bed_2)
 "UF" = (
-/obj/machinery/door/firedoor/multi_tile,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/orange{
@@ -9176,6 +9209,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/bridge)
 "UH" = (
@@ -9539,7 +9573,6 @@
 /turf/simulated/wall/rshull,
 /area/ship/manta/dock_port)
 "WN" = (
-/obj/machinery/door/firedoor/multi_tile,
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
@@ -9552,6 +9585,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/engineering)
 "WO" = (
@@ -9568,7 +9602,6 @@
 /obj/machinery/door/airlock/multi_tile/metal{
 	req_one_access = list(150)
 	},
-/obj/machinery/door/firedoor/multi_tile,
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
@@ -9576,6 +9609,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/dock_port)
 "WV" = (
@@ -9745,6 +9779,9 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/barracks)
 "XE" = (
@@ -9799,9 +9836,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/engineering)
 "XR" = (
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 1
-	},
 /obj/machinery/door/airlock/multi_tile/metal{
 	dir = 4;
 	name = "Brig";
@@ -9813,6 +9847,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/holding)
@@ -9828,6 +9865,9 @@
 	},
 /obj/structure/cable/orange{
 	icon_state = "4-8"
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/holding)
@@ -9845,9 +9885,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/bridge)
 "Yf" = (
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 1
-	},
 /obj/effect/floor_decal/techfloor,
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 4;
@@ -9858,6 +9895,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/barracks)
@@ -9885,9 +9925,6 @@
 /area/ship/manta/hangar)
 "Yl" = (
 /obj/effect/floor_decal/techfloor,
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 1
-	},
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 4;
 	req_one_access = list(150)
@@ -9898,8 +9935,18 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/recreation)
+"Ym" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled/techfloor,
+/area/ship/manta/bridge)
 "Yo" = (
 /obj/machinery/door/window/brigdoor/northleft{
 	req_access = list(150);
@@ -9961,6 +10008,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/bridge)
 "YF" = (
@@ -10216,7 +10264,6 @@
 /turf/simulated/floor/plating,
 /area/ship/manta/dock_star)
 "ZY" = (
-/obj/machinery/door/firedoor/multi_tile,
 /obj/machinery/door/airlock/multi_tile/glass{
 	req_one_access = list(150)
 	},
@@ -10228,6 +10275,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/bridge)
 
@@ -17951,7 +17999,7 @@ ZT
 ZT
 ZT
 ZT
-ic
+oj
 wc
 ZT
 ZT
@@ -19808,7 +19856,7 @@ ag
 ag
 aJ
 tm
-WV
+Ym
 wd
 dn
 er
@@ -20385,9 +20433,9 @@ gR
 zU
 Yd
 er
-WV
+Ym
 IG
-sg
+kA
 sg
 NM
 sg

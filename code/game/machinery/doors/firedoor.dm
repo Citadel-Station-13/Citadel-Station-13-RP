@@ -8,7 +8,8 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 	/obj/structure/wall_frame/prepainted/,
 	/obj/structure/wall_frame,
 	/obj/machinery/door/airlock/multi_tile,
-	/obj/machinery/door/airlock)))
+	/obj/machinery/door/airlock,
+	/obj/machinery/door/firedoor))) //comedy.
 /// kPa
 #define FIREDOOR_MAX_PRESSURE_DIFF 25
 /// °C

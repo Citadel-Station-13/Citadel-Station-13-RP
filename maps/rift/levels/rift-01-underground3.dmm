@@ -252,6 +252,7 @@
 "oE" = (
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor,
 /area/quartermaster/mining_airlock)
 "oQ" = (
@@ -850,9 +851,9 @@
 /obj/machinery/door/airlock/multi_tile/glass{
 	req_access = list(31)
 	},
-/obj/machinery/door/firedoor/multi_tile,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor,
 /area/quartermaster/mining_airlock)
 "ZA" = (

@@ -9,13 +9,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 2;
-	req_one_access = list(301)
-	},
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 4;
 	name = "Mess Hall"
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/eris/techmaint_panels,
 /area/talon/decktwo/kitchen)
@@ -830,6 +829,9 @@
 "kh" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/eris/techmaint_panels,
 /area/talon/decktwo/bar)
@@ -1879,6 +1881,9 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/eris/techmaint_panels,
 /area/talon/decktwo/kitchen)
 "wQ" = (
@@ -2645,13 +2650,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 2;
-	req_one_access = list(301)
-	},
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 4;
 	name = "Bar"
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/eris/techmaint_panels,
 /area/talon/decktwo/bar)

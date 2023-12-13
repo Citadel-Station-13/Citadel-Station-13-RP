@@ -3019,7 +3019,7 @@
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/brown/border,
 /obj/machinery/door/firedoor{
-	dir = 1
+	dir = 4
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 1
@@ -4487,7 +4487,9 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 1
 	},
-/obj/machinery/door/firedoor,
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
 /obj/effect/floor_decal/steeldecal/steel_decals7,
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 4
@@ -7403,6 +7405,11 @@
 	},
 /turf/simulated/floor/tiled,
 /area/storage/surface_eva/external)
+"dTk" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/cargostore)
 "dTD" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
@@ -8393,6 +8400,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/brig/bathroom)
 "ewT" = (
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/steel_grid,
 /area/tether/surfacebase/cargostore/warehouse)
 "exA" = (
@@ -16317,7 +16325,7 @@
 /area/tether/surfacebase/lowernorthhall)
 "ixT" = (
 /obj/machinery/door/firedoor{
-	dir = 8
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_one_hall)
@@ -22154,7 +22162,7 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor{
-	dir = 1
+	dir = 4
 	},
 /obj/effect/floor_decal/corner/lightgrey/border,
 /obj/structure/cable/orange{
@@ -23320,7 +23328,9 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
-/obj/machinery/door/firedoor,
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 1
 	},
@@ -35138,10 +35148,10 @@
 /obj/machinery/door/airlock/multi_tile/glass{
 	name = "Cargo Shop"
 	},
-/obj/machinery/door/firedoor/multi_tile,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/cargostore)
 "sDy" = (
@@ -35170,9 +35180,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 4
 	},
-/obj/machinery/door/firedoor{
-	dir = 8
-	},
+/obj/machinery/door/firedoor,
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 10
 	},
@@ -38535,7 +38543,6 @@
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/cargostore/office)
 "uBk" = (
-/obj/machinery/door/firedoor/multi_tile,
 /obj/machinery/door/airlock/multi_tile/metal{
 	name = "Shop Warehouse";
 	req_one_access = list(48)
@@ -38546,6 +38553,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/steel_grid,
 /area/tether/surfacebase/cargostore/warehouse)
 "uBY" = (
@@ -71600,7 +71608,7 @@ aPo
 pfv
 fQU
 rGw
-fQU
+dTk
 fpi
 sIZ
 pcG

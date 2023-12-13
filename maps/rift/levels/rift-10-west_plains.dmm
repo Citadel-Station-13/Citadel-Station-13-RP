@@ -4854,9 +4854,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 1
 	},
-/obj/machinery/door/firedoor{
-	dir = 8
-	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/eva)
 "vW" = (
@@ -5893,7 +5891,7 @@
 	dir = 1
 	},
 /obj/machinery/door/firedoor{
-	dir = 1;
+	dir = 4;
 	req_one_access = list(18,47)
 	},
 /turf/simulated/floor/tiled,
@@ -8412,8 +8410,8 @@
 /area/rnd/outpost/anomaly_lab)
 "Na" = (
 /obj/machinery/door/firedoor{
-	dir = 8;
-	req_one_access = list(18,47)
+	req_one_access = list(18,47);
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
@@ -10023,6 +10021,12 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/exterior/shuttle)
+"Ui" = (
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
+/turf/simulated/mineral/icerock/lythios43c,
+/area/rift/surfacebase/outside/west)
 "Uj" = (
 /obj/structure/closet/firecloset,
 /turf/simulated/floor/tiled,
@@ -10094,7 +10098,7 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor{
-	dir = 2;
+	dir = 4;
 	req_one_access = list(18,47)
 	},
 /turf/simulated/floor/tiled,
@@ -16940,7 +16944,7 @@ PP
 PP
 PP
 PP
-PP
+Ui
 PP
 PP
 PP
