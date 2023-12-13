@@ -231,4 +231,10 @@
 		cost = 5,
 		time = 4 SECONDS,
 	)
+	recipes += create_stack_recipe_datum(
+		name = "ore box",
+		product = /obj/structure/ore_box,
+		cost = 5,
+		time = 5 SECONDS,
+	)
 	return recipes

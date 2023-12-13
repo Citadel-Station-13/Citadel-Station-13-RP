@@ -126,7 +126,7 @@
 		<a href='?src=\ref[src];change_radius=1'>+</a> \
 		<a href='?src=\ref[src];change_radius=5'>++</a> \
 		<a href='?src=\ref[src];change_radius=50'>+++</a><br>"
-		if(HasAbove(src.z) || HasBelow(src.z)) // Won't show up on maps lacking MultiZ support.
+		if(Z_HAS_ABOVE(src.z) || Z_HAS_BELOW(src.z)) // Won't show up on maps lacking MultiZ support.
 			t += "Vertical Shielding (restart required): \
 			<a href='?src=\ref[src];z_range=-1'>-</a> \
 			[z_range] Vertical Range \
@@ -287,8 +287,8 @@
 
 	if(z_range)
 		var/i = z_range
-		while(HasAbove(T.z) && i)
-			T = GetAbove(T)
+		while(Z_HAS_ABOVE(T.z) && i)
+			T = T.above()
 			i--
 			if(istype(T))
 				out += get_shielded_turfs_on_z_level(T)
@@ -296,8 +296,8 @@
 		T = get_turf(src)
 		i = z_range
 
-		while(HasBelow(T.z) && i)
-			T = GetBelow(T)
+		while(Z_HAS_BELOW(T.z) && i)
+			T = T.below()
 			i--
 			if(istype(T))
 				out += get_shielded_turfs_on_z_level(T)

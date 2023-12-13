@@ -265,45 +265,45 @@
 	. = ..()
 	reagents.add_reagent("coconutwater", 30)
 
-/obj/item/reagent_containers/food/drinks/cans/nicola
-	name = "\improper NiCola Classic"
-	desc = "A can of crisp NiCola, imported directly from Osaka IV."
-	icon_state = "nicola"
+/obj/item/reagent_containers/food/drinks/cans/kyocola
+	name = "\improper KyoCola Classic"
+	desc = "A can of crisp KyoCola, imported directly from Osaka IV."
+	icon_state = "kyocola"
 	center_of_mass = list("x"=16, "y"=10)
 
-/obj/item/reagent_containers/food/drinks/cans/nicola/Initialize(mapload)
+/obj/item/reagent_containers/food/drinks/cans/kyocola/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("nicola", 30)
+	reagents.add_reagent("kyocola", 30)
 
-/obj/item/reagent_containers/food/drinks/cans/nicola_fire
-	name = "\improper NiCola Fire"
-	desc = "A can of crisp NiCola, spiked with flaming hot spices."
-	icon_state = "nicolafire"
+/obj/item/reagent_containers/food/drinks/cans/kyocola_fire
+	name = "\improper KyoCola Fire"
+	desc = "A can of crisp KyoCola, spiked with flaming hot spices."
+	icon_state = "kyocolafire"
 	center_of_mass = list("x"=16, "y"=10)
 
-/obj/item/reagent_containers/food/drinks/cans/nicola_fire/Initialize(mapload)
+/obj/item/reagent_containers/food/drinks/cans/kyocola_fire/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("nicolafire", 30)
+	reagents.add_reagent("kyocolafire", 30)
 
-/obj/item/reagent_containers/food/drinks/cans/nicola_sakura
-	name = "\improper NiCola Sakura"
-	desc = "A can of crisp NiCola, subtly flavored with cherry blossoms."
-	icon_state = "nicolasakura"
+/obj/item/reagent_containers/food/drinks/cans/kyocola_sakura
+	name = "\improper KyoCola Sakura"
+	desc = "A can of crisp KyoCola, subtly flavored with cherry blossoms."
+	icon_state = "kyocolasakura"
 	center_of_mass = list("x"=16, "y"=10)
 
-/obj/item/reagent_containers/food/drinks/cans/nicola_sakura/Initialize(mapload)
+/obj/item/reagent_containers/food/drinks/cans/kyocola_sakura/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("nicolacherry", 30)
+	reagents.add_reagent("kyocolacherry", 30)
 
-/obj/item/reagent_containers/food/drinks/cans/nicola_blue
-	name = "\improper NiCola Blue"
-	desc = "A limited edition can of crisp NiCola, paired with a mellow violet flavor."
-	icon_state = "nicolablue"
+/obj/item/reagent_containers/food/drinks/cans/kyocola_blue
+	name = "\improper KyoCola Blue"
+	desc = "A limited edition can of crisp KyoCola, paired with a mellow violet flavor."
+	icon_state = "kyocolablue"
 	center_of_mass = list("x"=16, "y"=10)
 
-/obj/item/reagent_containers/food/drinks/cans/nicola_blue/Initialize(mapload)
+/obj/item/reagent_containers/food/drinks/cans/kyocola_blue/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("nicolablue", 30)
+	reagents.add_reagent("kyocolablue", 30)
 
 /obj/item/reagent_containers/food/drinks/cans/robustexpress
 	name = "\improper Robust Express"

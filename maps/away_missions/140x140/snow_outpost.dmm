@@ -629,7 +629,7 @@
 /turf/simulated/wall/sandstone,
 /area/awaymission/snow_outpost/dark)
 "cf" = (
-/obj/item/ore/diamond,
+/obj/item/stack/ore/diamond,
 /turf/simulated/floor/snow/snow2,
 /area/awaymission/snow_outpost/dark)
 "cg" = (
@@ -643,7 +643,7 @@
 /turf/simulated/floor/plating/external,
 /area/awaymission/snow_outpost/dark)
 "cj" = (
-/obj/item/ore,
+/obj/item/stack/ore,
 /turf/simulated/floor/plating/external,
 /area/awaymission/snow_outpost/dark)
 "ck" = (
@@ -679,7 +679,7 @@
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/awaymission/snow_outpost/outside)
 "cs" = (
-/obj/item/ore,
+/obj/item/stack/ore,
 /turf/simulated/floor/snow/snow2,
 /area/awaymission/snow_outpost/dark)
 "ct" = (
@@ -843,26 +843,15 @@
 /turf/simulated/floor/snow/snow2,
 /area/awaymission/snow_outpost/dark)
 "db" = (
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
+/obj/item/stack/ore/gold{
+	amount = 12
+	},
 /turf/simulated/floor/snow/snow2,
 /area/awaymission/snow_outpost/dark)
 "dc" = (
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
+/obj/item/stack/ore/gold{
+	amount = 5
+	},
 /turf/simulated/floor/snow/snow2,
 /area/awaymission/snow_outpost/dark)
 "dd" = (
@@ -1788,7 +1777,7 @@
 /turf/simulated/floor/snow/snow2,
 /area/awaymission/snow_outpost/dark)
 "fW" = (
-/obj/item/ore/gold,
+/obj/item/stack/ore/gold,
 /obj/tether_away_spawner/aerostat_inside,
 /turf/simulated/floor/snow/snow2,
 /area/awaymission/snow_outpost/dark)

@@ -141,6 +141,7 @@
 	encumbrance = ITEM_ENCUMBRANCE_SHOES_FINS
 	flat_encumbrance = ITEM_FLAT_ENCUMBRANCE_SHOES_FINS
 	species_restricted = null
+	water_speed = -3
 
 /obj/item/clothing/shoes/flipflop
 	name = "flip flops"

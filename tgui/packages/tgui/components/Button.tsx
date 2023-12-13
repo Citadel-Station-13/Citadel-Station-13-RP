@@ -16,23 +16,23 @@ import { Tooltip } from './Tooltip';
 const logger = createLogger('Button');
 
 export type ButtonProps = BoxProps & {
-  fluid?: BooleanLike;
-  icon?: string | BooleanLike;
-  iconRotation?: number;
-  iconSpin?: BooleanLike;
-  iconColor?: any;
-  iconPosition?: 'right' | 'left';
-  iconProps?: BoxProps;
-  color?: string | BooleanLike;
-  disabled?: BooleanLike;
-  selected?: BooleanLike;
-  tooltip?: StrictlyStringLike;
-  tooltipPosition?: Placement;
-  ellipsis?: BooleanLike;
-  circular?: BooleanLike;
-  content?: any;
-  onClick?: any;
-  verticalAlignContent?: 'top' | 'middle' | 'bottom';
+  readonly fluid?: BooleanLike;
+  readonly icon?: string | BooleanLike;
+  readonly iconRotation?: number;
+  readonly iconSpin?: BooleanLike;
+  readonly iconColor?: any;
+  readonly iconPosition?: 'right' | 'left';
+  readonly iconProps?: BoxProps;
+  readonly color?: string | BooleanLike;
+  readonly disabled?: BooleanLike;
+  readonly selected?: BooleanLike;
+  readonly tooltip?: StrictlyStringLike;
+  readonly tooltipPosition?: Placement;
+  readonly ellipsis?: BooleanLike;
+  readonly circular?: BooleanLike;
+  readonly content?: any;
+  readonly onClick?: any;
+  readonly verticalAlignContent?: 'top' | 'middle' | 'bottom';
 }
 
 export const Button = (props: ButtonProps) => {
@@ -158,7 +158,7 @@ export const Button = (props: ButtonProps) => {
 Button.defaultHooks = pureComponentHooks;
 
 interface ButtonCheckboxProps extends ButtonProps {
-  checked?: BooleanLike;
+  readonly checked?: BooleanLike;
 }
 
 export const ButtonCheckbox = (props: ButtonCheckboxProps) => {
@@ -175,8 +175,8 @@ export const ButtonCheckbox = (props: ButtonCheckboxProps) => {
 Button.Checkbox = ButtonCheckbox;
 
 type ButtonConfirmProps = ButtonProps & {
-  confirmContent?: string;
-  confirmColor?: string;
+  readonly confirmContent?: string;
+  readonly confirmColor?: string;
 }
 
 type ButtonConfirmState = {
@@ -192,7 +192,7 @@ export class ButtonConfirm extends Component<ButtonConfirmProps, ButtonConfirmSt
     if (this.state.clicked) {
       this.setClickedOnce(false);
     }
-  }
+  };
 
   setClickedOnce(clickedOnce) {
     this.setState({ clicked: clickedOnce });

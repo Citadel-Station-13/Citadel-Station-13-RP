@@ -21,7 +21,7 @@
 	if(ammo_magazine)
 		icon_state = initial(icon_state)
 	else
-		icon_state = "[initial(icon_state)]-e"
+		icon_state = "[initial(icon_state)]-empty"
 
 /obj/item/gun/ballistic/garand/sniper
 	name = "M1A Garand"

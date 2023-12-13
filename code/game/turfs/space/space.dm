@@ -27,7 +27,6 @@
 	return
 
 /turf/space/Initialize(mapload)
-
 	SHOULD_CALL_PARENT(FALSE)
 	atom_flags |= ATOM_INITIALIZED
 
@@ -44,10 +43,13 @@
 	else if(x == world.maxx || forced_dirs & EAST)
 		edge |= EAST
 
-	if(!HasBelow(z))
+	if (CONFIG_GET(flag/starlight))
+		update_starlight()
+
+	var/turf/below = below()
+	if(isnull(below))
 		return INITIALIZE_HINT_NORMAL
 
-	var/turf/below = GetBelow(src)
 	if(isspaceturf(below))
 		return INITIALIZE_HINT_NORMAL
 
@@ -55,16 +57,15 @@
 	if(!below.density && (A.area_flags & AREA_FLAG_EXTERNAL))
 		return INITIALIZE_HINT_NORMAL
 
-	if (CONFIG_GET(flag/starlight))
-		update_starlight()
-
-	return INITIALIZE_HINT_LATELOAD // oh no! we need to switch to being a different kind of turf!
+	return INITIALIZE_HINT_NORMAL
+	// todo: wtf happened there..?
+	// return INITIALIZE_HINT_LATELOAD // oh no! we need to switch to being a different kind of turf!
 
 /turf/space/Destroy()
 	// Cleanup cached z_eventually_space values above us.
 	if (above)
 		var/turf/T = src
-		while ((T = GetAbove(T)))
+		while ((T = T.above()))
 			T.z_eventually_space = FALSE
 	return ..()
 
@@ -126,7 +127,7 @@
 			to_chat(user, "<span class='warning'>The plating is going to need some support.</span>")
 
 	if(istype(C, /obj/item/stack/tile/roofing))
-		var/turf/T = GetAbove(src)
+		var/turf/T = above()
 		var/obj/item/stack/tile/roofing/R = C
 
 		// Patch holes in the ceiling

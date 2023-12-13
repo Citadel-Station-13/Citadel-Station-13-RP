@@ -20,11 +20,11 @@ const CLOTHING_SELECTION_WIDTH = 5.4;
 const CLOTHING_SELECTION_MULTIPLIER = 5.2;
 
 const CharacterControls = (props: {
-  handleRotate: () => void,
-  handleOpenSpecies: () => void,
-  gender: Gender,
-  setGender: (gender: Gender) => void,
-  showGender: boolean,
+  readonly handleRotate: () => void,
+  readonly handleOpenSpecies: () => void,
+  readonly gender: Gender,
+  readonly setGender: (gender: Gender) => void,
+  readonly showGender: boolean,
 }) => {
   return (
     <Stack>
@@ -61,13 +61,13 @@ const CharacterControls = (props: {
 };
 
 const ChoicedSelection = (props: {
-  name: string,
-  catalog: FeatureChoicedServerData,
-  selected: string,
-  supplementalFeature?: string,
-  supplementalValue?: unknown,
-  onClose: () => void,
-  onSelect: (value: string) => void,
+  readonly name: string,
+  readonly catalog: FeatureChoicedServerData,
+  readonly selected: string,
+  readonly supplementalFeature?: string,
+  readonly supplementalValue?: unknown,
+  readonly onClose: () => void,
+  readonly onSelect: (value: string) => void,
 }, context) => {
   const { act } = useBackend<PreferencesMenuData>(context);
 
@@ -169,8 +169,8 @@ const ChoicedSelection = (props: {
 };
 
 const GenderButton = (props: {
-  handleSetGender: (gender: Gender) => void,
-  gender: Gender,
+  readonly handleSetGender: (gender: Gender) => void,
+  readonly gender: Gender,
 }, context) => {
   const [genderMenuOpen, setGenderMenuOpen] = useLocalState(context, "genderMenuOpen", false);
 
@@ -215,17 +215,17 @@ const GenderButton = (props: {
 };
 
 const MainFeature = (props: {
-  catalog: FeatureChoicedServerData & {
+  readonly catalog: FeatureChoicedServerData & {
     name: string,
     supplemental_feature?: string,
   },
-  currentValue: string,
-  isOpen: boolean,
-  handleClose: () => void,
-  handleOpen: () => void,
-  handleSelect: (newClothing: string) => void,
-  randomization?: RandomSetting,
-  setRandomization: (newSetting: RandomSetting) => void,
+  readonly currentValue: string,
+  readonly isOpen: boolean,
+  readonly handleClose: () => void,
+  readonly handleOpen: () => void,
+  readonly handleSelect: (newClothing: string) => void,
+  readonly randomization?: RandomSetting,
+  readonly setRandomization: (newSetting: RandomSetting) => void,
 }, context) => {
   const { act, data } = useBackend<PreferencesMenuData>(context);
 
@@ -331,9 +331,9 @@ const sortPreferences = sortBy<[string, unknown]>(
   });
 
 const PreferenceList = (props: {
-  act: typeof sendAct,
-  preferences: Record<string, unknown>,
-  randomizations: Record<string, RandomSetting>,
+  readonly act: typeof sendAct,
+  readonly preferences: Record<string, unknown>,
+  readonly randomizations: Record<string, RandomSetting>,
 }) => {
   return (
     <Stack.Item basis="50%" grow style={{
@@ -393,7 +393,7 @@ const PreferenceList = (props: {
 };
 
 export const MainPage = (props: {
-  openSpecies: () => void,
+  readonly openSpecies: () => void,
 }, context) => {
   const { act, data } = useBackend<PreferencesMenuData>(context);
   const [currentClothingMenu, setCurrentClothingMenu]

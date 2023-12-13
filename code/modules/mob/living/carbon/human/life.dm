@@ -424,10 +424,19 @@
 		else
 			adjustOxyLoss(HUMAN_CRIT_MAX_OXYLOSS)
 
+		// todo: this is technically not physics-ally accurate
+		// basically, people's lungs rupture when breathing null gasmixes even in atmos
+		// this mechanic shouldn't be for that as we don't exactly need to simulate vacuum pumps killing people or something
+		// so we just add a quick and dirty check for environment
 		if(breath && should_have_organ(O_LUNGS))
-			var/obj/item/organ/internal/lungs/L = internal_organs_by_name[O_LUNGS]
-			if(!L.is_bruised() && prob(8))
-				rupture_lung()
+			var/turf/our_location = get_turf(src)
+			//* returned air is immutable - do not edit *//
+			var/datum/gas_mixture/our_location_air = our_location.return_air_immutable()
+			var/external_vacuum = our_location_air.return_pressure() < 5
+			if(external_vacuum)
+				var/obj/item/organ/internal/lungs/L = internal_organs_by_name[O_LUNGS]
+				if(!L.is_bruised() && prob(8))
+					rupture_lung()
 
 		oxygen_alert = max(oxygen_alert, 1)
 

@@ -21,20 +21,22 @@ export enum AccessListSet {
 }
 
 export interface AccessListProps {
-  access: Array<Access>, // all available accesses
+  readonly access: Array<Access>, // all available accesses
   // override: what accesses to show. must be subset of access.
-  accessShown?: AccessId[],
-  uid: string, // must be unique in a window, to avoid localstate collisions.
-  fill?: boolean,
+  readonly accessShown?: AccessId[],
+  // must be unique in a window, to avoid localstate collisions.
+  // eslint-disable-next-line react/no-unused-prop-types
+  readonly uid: string,
+  readonly fill?: boolean,
 }
 
 interface AccessListSelectProps extends AccessListProps {
   select?(id: AccessId): void,
-  selected: AccessId,
+  readonly selected: AccessId,
 }
 
 interface AccessListModProps extends AccessListProps {
-  selected: Array<AccessId>,
+  readonly selected: Array<AccessId>,
   set?(id: AccessId): void,
   grant?(category?: string): void,
   deny?(category?: string): void,
@@ -43,8 +45,8 @@ interface AccessListModProps extends AccessListProps {
 interface AccessListAuthProps extends AccessListProps {
   set?(id: AccessId, mode: AccessListSet): void,
   wipe?(category?: string): void,
-  req_access?: Array<AccessId>,
-  req_one_access?: Array<AccessId>,
+  readonly req_access?: Array<AccessId>,
+  readonly req_one_access?: Array<AccessId>,
 }
 
 export type AccessId = number;

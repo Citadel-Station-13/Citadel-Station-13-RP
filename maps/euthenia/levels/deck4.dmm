@@ -8165,7 +8165,6 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research/testingrange)
 "Yw" = (
-/obj/landmark/map_data/euthenia,
 /turf/space,
 /area/space)
 "Yx" = (

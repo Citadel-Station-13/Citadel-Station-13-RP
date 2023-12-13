@@ -29,19 +29,19 @@
 		icon_state = "sandbag_empty"
 
 /obj/item/stack/emptysandbag/attackby(var/obj/item/W, var/mob/user)
-	if(istype(W, /obj/item/ore/glass) && !interact(user, src))
+	if(istype(W, /obj/item/stack/ore/glass) && !interact(user, src))
 		if(do_after(user, 1 SECONDS, src) && use(1))
+			var/obj/item/stack/ore/glass/O = W
 			var/turf/T = get_turf(user)
-			to_chat(user, "<span class='notice'>You fill the sandbag.</span>")
-			qdel(W)
-			new /obj/item/stack/sandbags(T)
+			if(O.use(1))
+				to_chat(user, "<span class='notice'>You fill the sandbag.</span>")
+				new /obj/item/stack/sandbags(T)
 			return
 	else if(is_sharp(W))
 		user.visible_message("<span class='notice'>\The [user] begins cutting up [src] with [W].</span>", "<span class='notice'>You begin cutting up [src] with [W].</span>")
 		if(do_after(user, 3 SECONDS, src) && use(1))
 			to_chat(user, "<span class='notice'>You cut [src] into pieces!</span>")
-			for(var/i in 1 to rand(1,2))
-				new /obj/item/stack/material/cloth(drop_location())
+			new /obj/item/stack/material/cloth(drop_location(),rand(1,2))
 		return
 	return ..()
 
@@ -86,7 +86,7 @@
 			to_chat(user, "<span class='notice'>You cut [src] into pieces, causing sand to spill everywhere!</span>")
 			for(var/i in 1 to rand(1,1))
 				new /obj/item/stack/material/cloth(drop_location())
-				new /obj/item/ore/glass(drop_location())
+				new /obj/item/stack/ore/glass(drop_location())
 		return
 	else
 		if(do_after(user, 1 SECONDS, src) && use(1))
@@ -94,7 +94,7 @@
 			to_chat(user, "<span class='notice'>You cut the cords securing the sandbag, spilling sand everywhere!</span>")
 			for(var/i in 1 to rand(1,1))
 				new /obj/item/stack/emptysandbag(T)
-				new /obj/item/ore/glass(T)
+				new /obj/item/stack/ore/glass(T)
 		return
 
 //Sandbag Barricades
@@ -158,5 +158,5 @@
 		new /obj/item/stack/sandbags(src.loc)
 	else
 		new /obj/item/stack/material/cloth(src.loc)
-		new /obj/item/ore/glass(src.loc)
+		new /obj/item/stack/ore/glass(src.loc)
 	qdel(src)
