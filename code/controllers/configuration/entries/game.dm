@@ -89,6 +89,7 @@
 		"PublicHalls",
 		"PublicAreas",
 		"DepartmentHalls",
+		"DepartmentLeisure",
 		"CommandHalls",
 	)
 	key_mode = KEY_MODE_TEXT
