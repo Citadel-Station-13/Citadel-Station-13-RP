@@ -18,9 +18,8 @@
 /obj/machinery/icecream_vat
 	name = "icecream cart"
 	desc = "Here on the galactic frontiers, even the ice-cream carts are advanced! Now with support for separated chemicals."
-	#warn reorganize sprites
-	icon = 'icons/obj/kitchen.dmi'
-	icon_state = "icecream_vat"
+	icon = 'icons/modules/food/structures/ice_cream.dmi'
+	icon_state = "cart"
 	density = TRUE
 	anchored = FALSE
 
@@ -70,11 +69,32 @@
 
 /obj/machinery/icecream_vat/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
-	#warn impl
+	.["scoopSource"] = selected_ice_cream_source
+	.["coneSource"] = selected_cone_infusion_source
 
 /obj/machinery/icecream_vat/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
-	#warn impl
+	.["coneFlourCost"] = cone_flour_cost
+	.["coneInfuseCost"] = cone_infuse_amount
+	.["scoopMilkCost"] = scoop_milk_cost
+	.["scoopIceCost"] = scoop_ice_cost
+	.["scoopInfuseCost"] = scoop_infuse_amount
+	var/list/collect_sources = list()
+	var/list/collect_base = list(
+		reagents.get_reagent_amount(/datum/reagent/drink/milk),
+		reagents.get_reagent_amount(/datum/reagent/nutriment/flour),
+		reagents.get_reagent_amount(/datum/reagent/sugar),
+		reagents.get_reagent_amount(/datum/reagent/drink/ice),
+	)
+	for(var/obj/item/reagent_containers/container as anything in sources)
+		collect_sources[++collect_sources.len] = list(
+			"name" = container.name,
+			"volume" = container.reagents.total_volume,
+			"maxVolume" = container.reagents.maximum_volume,
+			"color" = container.reagents.get_color(),
+		)
+	.["baseIngredients"] = collect_base
+	.["sources"] = collect_sources
 
 /obj/machinery/icecream_vat/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
@@ -82,11 +102,33 @@
 		return
 	switch(action)
 		if("selectInfuse")
+			var/index = text2num(params["index"])
+			selected_cone_infusion_source = (sources && index >= 1 && index <= length(sources))? index : null
+			return TRUE
 		if("selectProduce")
+			var/index = text2num(params["index"])
+			selected_ice_cream_source = (sources && index >= 1 && index <= length(sources))? index : null
+			return TRUE
 		if("dispenseCone")
+			#warn impl
 		if("dispenseFilled")
+			#warn impl
 		if("ejectSource")
+			var/index = text2num(params["index"])
+			var/obj/item/reagent_containers/container = SAFEINDEXACCESS(sources, index)
+			if(isnull(container))
+				return TRUE
+			usr.grab_item_from_interacted_with(container, src)
+			sources -= container
+			usr.visible_action_feedback(
+				target = src,
+				hard_range = MESSAGE_RANGE_CONFIGURATION,
+				visible_hard = SPAN_NOTICE("[usr] removes [container] from [src]."),
+			)
+			update_static_data()
+			return TRUE
 		if("produceCone")
+			#warn impl
 
 /obj/machinery/icecream_vat/proc/produce_cone(obj/item/reagent_containers/infuse_from, force)
 	if(!force)
@@ -103,6 +145,7 @@
 	return cone
 
 /obj/machinery/icecream_vat/proc/fill_cone(obj/item/reagent_containers/create_from, force)
+	#warn impl
 
 /obj/machinery/icecream_vat/proc/give_cone(obj/item/reagent_containers/food/snacks/ice_cream/cone, mob/give_to)
 	if(isnull(cone))
@@ -131,7 +174,7 @@
 		),
 	)
 	if(!units_transferred)
-		units.action_feedback(SPAN_WARNING("[container] has no valid reagents to transfer to [src]. Did you mean to insert the container instead? (<b>Click-drag</b>)"), src)
+		user.action_feedback(SPAN_WARNING("[container] has no valid reagents to transfer to [src]. Did you mean to insert the container instead? (<b>Click-drag</b>)"), src)
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	user.visible_action_feedback(
 		target = src,
