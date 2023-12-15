@@ -86,12 +86,14 @@
 
 /datum/config_entry/keyed_list/nightshift_levels
 	default = list(
+		"Unset",
 		"PublicHalls",
 		"PublicAreas",
 		"DepartmentHalls",
 		"DepartmentLeisure",
 		"CommandHalls",
 	)
+	lowercase = FALSE
 	key_mode = KEY_MODE_TEXT
 	value_mode = VALUE_MODE_FLAG
 
@@ -99,11 +101,11 @@
 	. = ..()
 	if(!.)
 		return
-	var/datum/bitfield/target_bitfield = /datum/bitfield/nightshift_level
+	var/datum/bitfield/single/target_bitfield = /datum/bitfield/single/nightshift_level
 	var/target_bitname = initial(target_bitfield.variable)
-	var/datum/bitfield/actual_bitfield = GLOB.bitfields[target_bitname]
+	var/list/actual_bitfield = GLOB.bitfields[target_bitname]
 	var/new_flags = NONE
 	for(var/key in config_entry_value)
 		if(config_entry_value[key])
-			new_flags |= actual_bitfield.flag[key]
+			new_flags |= actual_bitfield[key]
 	SSnightshift.nightshift_level = new_flags
