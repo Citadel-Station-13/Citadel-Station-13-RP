@@ -37,9 +37,6 @@
 /datum/config_entry/flag/allow_holidays
 	default = TRUE
 
-/datum/config_entry/flag/nightshifts_enabled
-	default = TRUE
-
 /datum/config_entry/string/alert_desc_green
 	default = "All threats to the station have passed. Security may not have weapons visible, privacy laws are once again fully enforced."
 
@@ -81,3 +78,31 @@
 
 /datum/config_entry/flag/almost_everyone_has_maintenance_access
 	default = TRUE
+
+//* Nightshifts *//
+
+/datum/config_entry/flag/nightshifts_enabled
+	default = TRUE
+
+/datum/config_entry/keyed_list/nightshift_levels
+	default = list(
+		"PublicHalls",
+		"PublicAreas",
+		"DepartmentHalls",
+		"CommandHalls",
+	)
+	key_mode = KEY_MODE_TEXT
+	value_mode = VALUE_MODE_FLAG
+
+/datum/config_entry/keyed_list/nightshift_levels/ValidateAndSet(str_val)
+	. = ..()
+	if(!.)
+		return
+	var/datum/bitfield/target_bitfield = /datum/bitfield/nightshift_level
+	var/target_bitname = initial(target_bitfield.variable)
+	var/datum/bitfield/actual_bitfield = GLOB.bitfields[target_bitname]
+	var/new_flags = NONE
+	for(var/key in config_entry_value)
+		if(config_entry_value[key])
+			new_flags |= actual_bitfield.flag[key]
+	SSnightshift.nightshift_level = new_flags
