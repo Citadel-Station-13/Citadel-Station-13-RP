@@ -3,9 +3,8 @@
 
 /**
  * An array-backed priority queue.
- * Higher value'd entries go first.
  *
- * The provided comparison function should return < 0, == 0, > 0, for a < b, a == b, and a > b respectively.
+ * The "front" of the queue is popped first; check comparators.dm for what this means.
  */
 /datum/priority_queue
 	/// comparaison function
@@ -37,7 +36,7 @@
 
 // todo: define this
 /datum/priority_queue/proc/bubble_up(index)
-	while(index >= 2 && call(comparison)(array[index], array[index / 2]) > 0)
+	while(index >= 2 && call(comparison)(array[index], array[index / 2]) < 0)
 		array.Swap(index, index / 2)
 		index /= 2
 
@@ -47,14 +46,14 @@
 	var/next = index * 2
 	while(next <= length)
 		// left always exists, right doesn't necessarily exist
-		if(call(comparison)(array[next], array[index]) > 0)
-			if(next < length && call(comparison)(array[next], array[next + 1]) < 0)
+		if(call(comparison)(array[next], array[index]) < 0)
+			if(next < length && call(comparison)(array[next], array[next + 1]) > 0)
 				array.Swap(index, next + 1)
 				index = next + 1
 			else
 				array.Swap(index, next)
 				index = next
-		else if(next < length && call(comparison)(array[next + 1], array[index]) > 0)
+		else if(next < length && call(comparison)(array[next + 1], array[index]) < 0)
 			array.Swap(index, next + 1)
 			index = next + 1
 		else

@@ -1,6 +1,10 @@
 /**
  * Comparators for use with /datum/sort_instance (or wherever you want)
- * They should return negative, zero, or positive numbers for a < b, a == b, and a > b respectively.
+ *
+ * They should return negative, zero, or positive numbers for a < b, a == b, and a > b respectively, where
+ * * neg : a < b  = "a should be in front of b",
+ * * zero: a == b = "a and b are equivalent"
+ * * pos : a > b  = "a should be behind b"
  */
 
 //! Standard Sort
