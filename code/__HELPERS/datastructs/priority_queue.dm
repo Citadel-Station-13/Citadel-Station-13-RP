@@ -72,7 +72,7 @@
 		return
 	if(index == length)
 		. = array[index]
-		--array.length
+		--array.len
 		return
 	. = array[index]
 	array.Swap(index, length)
