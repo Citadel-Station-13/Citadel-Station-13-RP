@@ -107,11 +107,11 @@
 	update_icons()
 	var/cleantime = istype(D, /obj/effect/debris/cleanable/dirt) ? 10 : 50
 	if(do_after(src, cleantime))
-		if(istype(loc, /turf/simulated))
-			var/turf/simulated/f = loc
-			f.dirt = FALSE
 		if(!D)
 			return
+		if(istype(get_turf(D), /turf/simulated))
+			var/turf/simulated/f = get_turf(D)
+			f.dirt = 0
 		qdel(D)
 		if(D == target)
 			target = null

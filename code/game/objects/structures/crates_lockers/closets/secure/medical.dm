@@ -106,6 +106,7 @@
 		/obj/item/clothing/suit/storage/toggle/fr_jacket,
 		/obj/item/clothing/suit/storage/toggle/labcoat/emt,
 		/obj/item/radio/headset/headset_med/alt,
+		/obj/item/clothing/accessory/armor/helmetcamera/body,
 		/obj/item/clothing/suit/storage/hooded/wintercoat/medical/para,
 		/obj/item/cartridge/medical,
 		/obj/item/storage/briefcase/inflatable,

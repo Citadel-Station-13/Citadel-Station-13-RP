@@ -178,6 +178,8 @@ var/list/floor_light_cache = list()
 	name = "changing floor light"
 
 /obj/machinery/floor_light/changing/process(delta_time)
+	if(!on)
+		return
 	. = ..()
 	update_color()
 
@@ -205,4 +207,5 @@ var/list/floor_light_cache = list()
 
 /obj/machinery/floor_light/changing/prebuilt
 	anchored = TRUE
+	on = FALSE
 
