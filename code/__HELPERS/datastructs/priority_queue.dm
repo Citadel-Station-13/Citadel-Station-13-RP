@@ -37,7 +37,7 @@
 
 // todo: define this
 /datum/priority_queue/proc/bubble_up(index)
-	while(call(comparison)(array[index], array[index / 2]) > 0)
+	while(index >= 2 && call(comparison)(array[index], array[index / 2]) > 0)
 		array.Swap(index, index / 2)
 		index /= 2
 
