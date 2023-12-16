@@ -43,22 +43,23 @@
 
 // todo: define this
 /datum/priority_queue/proc/bubble_down(index)
-	var/left
-	var/right
-	do
-		left = array[index * 2]
-		right = array[index * 2 + 1]
-		if(call(comparison)(left, array[index]) > 0)
-			if(call(comparison)(left, right) > 0)
-				array.Swap(index, index * 2)
-				index = index * 2
+	var/length = length(array)
+	var/next = index * 2
+	while(next <= length)
+		// left always exists, right doesn't necessarily exist
+		if(call(comparison)(array[next], array[index]) > 0)
+			if(next < length && call(comparison)(array[next], array[next + 1]) < 0)
+				array.Swap(index, next + 1)
+				index = next + 1
 			else
-				array.Swap(index, index * 2 + 1)
-				index = index * 2 + 1
-		else if(call(comparison)(right, array[index]) > 0)
-			array.Swap(index, index * 2 + 1)
-			index = index * 2 + 1
-	while(TRUE)
+				array.Swap(index, next)
+				index = next
+		else if(next < length && call(comparison)(array[next + 1], array[index]) > 0)
+			array.Swap(index, next + 1)
+			index = next + 1
+		else
+			break
+		next = index * 2
 
 /**
  * returns copy of list of entries in no particular order
