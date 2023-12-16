@@ -140,7 +140,7 @@
 	var/dir
 	var/spread
 	var/existing
-	var/inverse_square_factor = (falloff_modifier * cycles)**-2
+	var/inverse_square_factor = 1 / (2 ** (falloff_modifier * cycles))
 
 	for(i in length(turfs) to 1 step -1)
 		T = turfs[i]
