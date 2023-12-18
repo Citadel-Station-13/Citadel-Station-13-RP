@@ -252,7 +252,7 @@
 			),
 			prob(2);list(
 				/obj/item/hardsuit/industrial/equipped,
-				/obj/item/storage/bag/ore,
+				/obj/random/ore_bag,
 				/obj/structure/closet/crate/engineering
 			),
 			prob(2);list(
@@ -311,43 +311,43 @@
 			),
 			prob(2);list(
 				/obj/item/pickaxe/silver,
-				/obj/item/storage/bag/ore,
+				/obj/random/ore_bag,
 				/obj/item/clothing/glasses/material,
 				/obj/structure/closet/crate/engineering
 			),
 			prob(2);list(
 				/obj/item/pickaxe/drill,
-				/obj/item/storage/bag/ore,
+				/obj/random/ore_bag,
 				/obj/item/clothing/glasses/material,
 				/obj/structure/closet/crate/engineering
 			),
 			prob(2);list(
 				/obj/item/pickaxe/jackhammer,
-				/obj/item/storage/bag/ore,
+				/obj/random/ore_bag,
 				/obj/item/clothing/glasses/material,
 				/obj/structure/closet/crate/engineering
 			),
 			prob(2);list(
 				/obj/item/pickaxe/diamond,
-				/obj/item/storage/bag/ore,
+				/obj/random/ore_bag,
 				/obj/item/clothing/glasses/material,
 				/obj/structure/closet/crate/engineering
 			),
 			prob(2);list(
 				/obj/item/pickaxe/diamonddrill,
-				/obj/item/storage/bag/ore,
+				/obj/random/ore_bag,
 				/obj/item/clothing/glasses/material,
 				/obj/structure/closet/crate/engineering
 			),
 			prob(2);list(
 				/obj/item/pickaxe/gold,
-				/obj/item/storage/bag/ore,
+				/obj/random/ore_bag,
 				/obj/item/clothing/glasses/material,
 				/obj/structure/closet/crate/engineering
 			),
 			prob(2);list(
 				/obj/item/pickaxe/plasmacutter,
-				/obj/item/storage/bag/ore,
+				/obj/random/ore_bag,
 				/obj/item/clothing/glasses/material,
 				/obj/structure/closet/crate/engineering
 			),

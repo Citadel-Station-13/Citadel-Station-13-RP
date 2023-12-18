@@ -8,10 +8,10 @@ import { BooleanLike, classes, pureComponentHooks } from 'common/react';
 import { Box, BoxProps } from './Box';
 
 export type NoticeBoxProps = BoxProps & {
-  warning?: BooleanLike;
-  success?: BooleanLike;
-  danger?: BooleanLike;
-  info?: BooleanLike;
+  readonly warning?: BooleanLike;
+  readonly success?: BooleanLike;
+  readonly danger?: BooleanLike;
+  readonly info?: BooleanLike;
 }
 
 export const NoticeBox = (props: NoticeBoxProps) => {

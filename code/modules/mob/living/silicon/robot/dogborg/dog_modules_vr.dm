@@ -241,7 +241,10 @@
 				to_chat(user, "<span class='notice'>You finish off [target].</span>")
 				qdel(target)
 				var/mob/living/silicon/robot/R = user
-				R.cell.charge += 250
+				if(istype(target,/obj/item/trash/rkibble))
+					R.cell.charge += 1000
+				else
+					R.cell.charge += 250
 				water.use_charge(5)
 			return
 		if(istype(target,/obj/item/cell))

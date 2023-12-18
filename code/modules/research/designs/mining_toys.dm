@@ -82,3 +82,10 @@
 	req_tech = list(TECH_MAGNET = 4, TECH_ENGINEERING = 4)
 	materials_base = list(MAT_STEEL = 2000, MAT_GLASS = 1000)
 	build_path = /obj/item/mining_scanner/advanced
+
+/datum/design/science/mining/bs_mining_satchel
+	design_name = "Mining Satchel of Holding"
+	id = "bs_mining_satchel"
+	req_tech = list(TECH_BLUESPACE = 4, TECH_MATERIAL = 6, TECH_PHORON = 4)
+	materials_base = list(MAT_GOLD = 1500, MAT_DIAMOND = 750, MAT_URANIUM = 150, MAT_PHORON = 100, MAT_VERDANTIUM = 100)
+	build_path = /obj/item/storage/bag/ore/bluespace
