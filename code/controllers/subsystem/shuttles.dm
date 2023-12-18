@@ -12,6 +12,18 @@ SUBSYSTEM_DEF(shuttle)
 	subsystem_flags = SS_KEEP_TIMING|SS_NO_TICK_CHECK
 	runlevels = RUNLEVEL_GAME|RUNLEVEL_POSTGAME
 
+	//* Docks
+	/// shuttle docks by type for non-id registration
+	var/static/list/dock_type_registry = list()
+	/// shuttle docks by id for id registration
+	var/static/list/dock_id_registry = list()
+
+	//* Controllers & Maps
+	/// Web maps by path
+	var/static/list/shuttle_web_type_registry = list()
+
+	//* legacy below
+
 	/// Whether ships can move on the overmap; used for adminbus.
 	var/static/overmap_halted = FALSE
 	/// List of all ships.
@@ -54,6 +66,9 @@ SUBSYSTEM_DEF(shuttle)
 	 *! I made these shitty vars so we don't search for these in GOD DAMN WORLD
 	 *! If I find these are still here in 2023 I'll be very upset.
 	 * @Zandario
+	 *
+	 *? it's 2023 owned liked and subscribed lmao
+	 *? @silicons
 	 */
 
 	var/list/unary_engines = list()
@@ -215,3 +230,8 @@ SUBSYSTEM_DEF(shuttle)
 
 /datum/controller/subsystem/shuttle/stat_entry()
 	return ..() + " Shuttles:[process_shuttles.len]/[shuttles.len], Ships:[ships.len], L:[registered_shuttle_landmarks.len][overmap_halted ? ", HALT" : ""]"
+
+//* Controllers & Maps
+
+/datum/controller/subsystem/shuttle/proc/request_web_map(typepath)
+	#warn impl - how do we handle init? how do we handle /datum/map lateload injection into webs?

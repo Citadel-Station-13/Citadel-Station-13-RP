@@ -2,7 +2,10 @@
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
 /**
- * datums used to hold data for procs without having to pass too many args around
+ * Shuttle custom docking handler
  */
-/datum/event_args
-	abstract_type = /datum/event_args
+/datum/shuttle_docker
+	/// our host shuttle
+	var/datum/shuttle/shuttle
+
+#warn impl all

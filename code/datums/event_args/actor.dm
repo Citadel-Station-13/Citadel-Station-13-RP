@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 /**
  * used to hold semantic data about an action being done by an actor vs initiator (controller)
  */
@@ -20,6 +23,8 @@
 	performer.bubble_action_feedback(msg, target)
 	if(performer != initiator)
 		initiator.bubble_action_feedback(msg, target)
+
+// todo: rework a lot of this shit
 
 /**
  * It is highly recommended to use named parameters with this.

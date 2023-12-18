@@ -2,7 +2,8 @@
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
 /**
- * datums used to hold data for procs without having to pass too many args around
+ * manual dock
  */
-/datum/event_args
-	abstract_type = /datum/event_args
+/obj/shuttle_dock/ephemeral/manual
+
+#warn impl
