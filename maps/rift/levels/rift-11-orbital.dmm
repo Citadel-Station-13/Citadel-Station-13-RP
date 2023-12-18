@@ -159,7 +159,9 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_theatre)
 "aJ" = (
-/obj/machinery/door/window/holowindoor,
+/obj/machinery/door/window/holowindoor{
+	dir = 4
+	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_courtroom)
 "aK" = (
@@ -304,6 +306,7 @@
 /area/holodeck/source_courtroom)
 "bf" = (
 /obj/machinery/door/window/holowindoor{
+	dir = 4;
 	name = "Red Team"
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
@@ -764,6 +767,7 @@
 "cB" = (
 /obj/machinery/door/window/holowindoor{
 	base_state = "right";
+	dir = 4;
 	icon_state = "right"
 	},
 /turf/simulated/floor/holofloor/tiled,
@@ -783,6 +787,7 @@
 "cE" = (
 /obj/machinery/door/window/holowindoor{
 	base_state = "right";
+	dir = 4;
 	icon_state = "right";
 	name = "Green Team"
 	},
@@ -1251,6 +1256,7 @@
 /area/holodeck/source_meetinghall)
 "eg" = (
 /obj/machinery/door/window/holowindoor{
+	dir = 4;
 	name = "Red Team"
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
@@ -1266,6 +1272,7 @@
 /area/holodeck/source_beach)
 "ej" = (
 /obj/machinery/door/window/holowindoor{
+	dir = 4;
 	name = "Red Team"
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
@@ -1873,6 +1880,7 @@
 "fX" = (
 /obj/machinery/door/window/holowindoor{
 	base_state = "right";
+	dir = 4;
 	icon_state = "right";
 	name = "Green Team"
 	},
@@ -1892,6 +1900,7 @@
 "ga" = (
 /obj/machinery/door/window/holowindoor{
 	base_state = "right";
+	dir = 4;
 	icon_state = "right";
 	name = "Green Team"
 	},

@@ -269,6 +269,14 @@
 	icon = 'icons/obj/lavaland.dmi'
 	icon_state = "golisatchel"
 
+//Bluespace.
+/obj/item/storage/bag/ore/bluespace
+	name = "mining satchel of holding"
+	desc = "This advanced spacious storage efficiently stores and transports ores using bluespace technology. It's like having an ore box latched onto your pocket!"
+	icon_state = "satchel_bspace"
+	max_ore = SHORT_REAL_LIMIT //if someone manages to reach 16+ million ores in a single 5 hour round, they'd have to be something else.
+
+
 // -----------------------------
 //          Plant bag
 // -----------------------------

@@ -952,6 +952,22 @@
 /obj/structure/bed/chair/office/dark,
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/research)
+"aGC" = (
+/obj/effect/floor_decal/borderfloorwhite,
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/border,
+/obj/machinery/button/windowtint/multitint{
+	id = "operating_theatre_1";
+	pixel_x = -24;
+	pixel_y = -2
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/surgery)
 "aHd" = (
 /obj/structure/frame{
 	anchored = 1
@@ -2166,8 +2182,11 @@
 /turf/simulated/floor/tiled/steel,
 /area/rnd/research)
 "bmS" = (
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
 /obj/effect/paint/babyblue,
+/obj/spawner/window/low_wall/reinforced/electrochromic/full{
+	id = "operating_theatre_2";
+	spawn_grille = 0
+	},
 /turf/simulated/floor/plating,
 /area/medical/surgery2)
 "bmY" = (
@@ -3442,7 +3461,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/door/airlock/medical{
+/obj/machinery/door/airlock/glass/medical/polarized{
 	id_tint = "medbay_outer";
 	name = "Medbay Lobby"
 	},
@@ -5146,12 +5165,12 @@
 /area/maintenance/research/rnd)
 "drO" = (
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/medical{
-	name = "Chemistry";
-	req_one_access = list(33)
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/machinery/door/airlock/glass/medical{
+	name = "Chemistry";
+	req_one_access = list(33)
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/chemistry)
@@ -5627,13 +5646,15 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
 "dCV" = (
-/obj/machinery/door/airlock/medical{
-	name = "Operating Theatre 2";
-	req_access = list(45)
-	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -5643,6 +5664,14 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock/glass/medical/polarized{
+	id_tint = "operating_theatre_2";
+	name = "Operating Theatre 2";
+	req_access = list(45)
+	},
+/obj/machinery/holosign/surgery{
+	id = "operating_theatre_2"
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery2)
@@ -5897,8 +5926,12 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
 /obj/machinery/camera/network/security{
 	dir = 4
 	},
@@ -6539,6 +6572,11 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/paleblue/border,
+/obj/machinery/button/windowtint/multitint{
+	id = "operating_theatre_1";
+	pixel_x = -24;
+	pixel_y = 7
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery)
 "ehg" = (
@@ -6635,7 +6673,7 @@
 	dir = 10
 	},
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/multi_tile/medical{
+/obj/machinery/door/airlock/multi_tile/glass/medical{
 	id_tag = "medbay_lobby";
 	id_tint = "medbay_outer";
 	name = "Medbay Lobby";
@@ -9095,8 +9133,11 @@
 /turf/simulated/floor/tiled/monotile,
 /area/security/brig)
 "fSS" = (
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
 /obj/effect/paint/babyblue,
+/obj/spawner/window/low_wall/reinforced/electrochromic/full{
+	id = "operating_theatre_1";
+	spawn_grille = 0
+	},
 /turf/simulated/floor/plating,
 /area/medical/surgery)
 "fTu" = (
@@ -11190,8 +11231,10 @@
 	pixel_x = -32
 	},
 /obj/structure/disposalpipe/segment,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/effect/paint/babyblue,
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	id = "medbay outer"
+	},
 /turf/simulated/floor/plating,
 /area/medical/reception)
 "hlW" = (
@@ -11218,6 +11261,12 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "1-4"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
@@ -11897,6 +11946,12 @@
 /obj/structure/foamedmetal,
 /turf/simulated/floor/plating,
 /area/rift/surfacebase/outside/outside2)
+"hJB" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel,
+/area/security/evastorage)
 "hJF" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -12108,6 +12163,11 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/paleblue/border,
+/obj/machinery/button/windowtint/multitint{
+	id = "operating_theatre_2";
+	pixel_x = -24;
+	pixel_y = 7
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery2)
 "hNv" = (
@@ -12727,29 +12787,45 @@
 	},
 /obj/item/clothing/accessory/armor/tag/ntbs{
 	pixel_x = 5;
-	pixel_y = 1
-	},
-/obj/item/clothing/accessory/armor/tag/ntbs{
-	pixel_x = 5;
-	pixel_y = 1
-	},
-/obj/item/clothing/accessory/armor/tag/ntbs{
-	pixel_x = 5;
-	pixel_y = 1
+	pixel_y = 6
 	},
 /obj/item/clothing/accessory/armor/tag/ntc{
 	pixel_x = 5;
-	pixel_y = 5
-	},
-/obj/item/clothing/accessory/armor/tag/ntc{
-	pixel_x = 5;
-	pixel_y = 5
-	},
-/obj/item/clothing/accessory/armor/tag/ntc{
-	pixel_x = 5;
-	pixel_y = 5
+	pixel_y = 9
 	},
 /obj/effect/floor_decal/corner/red/border,
+/obj/item/clothing/accessory/armor/helmetcamera/security/body{
+	pixel_x = 4;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/security/body{
+	pixel_x = 4;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/security/body{
+	pixel_x = 4;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/security/body{
+	pixel_x = 4;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/security{
+	pixel_x = 4;
+	pixel_y = 2
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/security{
+	pixel_x = 4;
+	pixel_y = 2
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/security{
+	pixel_x = 4;
+	pixel_y = 2
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/security{
+	pixel_x = 4;
+	pixel_y = 2
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
 "ieu" = (
@@ -14144,6 +14220,12 @@
 "jbn" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/evastorage)
@@ -19636,6 +19718,26 @@
 	},
 /turf/simulated/floor/plating,
 /area/security/interrogation)
+"mqP" = (
+/obj/effect/floor_decal/borderfloorwhite,
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/border,
+/obj/machinery/button/windowtint/multitint{
+	id = "operating_theatre_2";
+	pixel_x = -24;
+	pixel_y = -2
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/surgery2)
+"mre" = (
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
+/turf/simulated/floor/tiled/steel,
+/area/security/evastorage)
 "mrE" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/red/border,
@@ -19670,6 +19772,12 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/evastorage)
@@ -25003,6 +25111,10 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/lockers)
+"pPl" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
+/turf/simulated/floor/tiled/steel,
+/area/security/evastorage)
 "pPM" = (
 /turf/simulated/floor/tiled,
 /area/security/briefing_room)
@@ -25020,10 +25132,6 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/hammerhead/general)
 "pPZ" = (
-/obj/machinery/door/airlock/medical{
-	name = "Operating Theatre 1";
-	req_access = list(45)
-	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -25033,6 +25141,14 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock/glass/medical/polarized{
+	id_tint = "operating_theatre_1";
+	name = "Operating Theatre 1";
+	req_access = list(45)
+	},
+/obj/machinery/holosign/surgery{
+	id = "operating_theatre_1"
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery)
@@ -26182,7 +26298,7 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/light,
 /turf/simulated/floor/tiled/monotile,
-/area/space)
+/area/security/security_lockerroom)
 "qBo" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
@@ -29377,6 +29493,12 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel,
 /area/security/evastorage)
 "sEV" = (
@@ -32468,6 +32590,15 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/sleep)
+"uPK" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/steel,
+/area/security/evastorage)
 "uQA" = (
 /obj/effect/floor_decal/industrial/warning,
 /obj/machinery/atmospherics/pipe/cap/hidden,
@@ -32520,6 +32651,12 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/heads/hor)
+"uRz" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/steel,
+/area/security/evastorage)
 "uRC" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -34122,8 +34259,10 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/locker)
 "vPP" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/effect/paint/babyblue,
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	id = "medbay outer"
+	},
 /turf/simulated/floor/plating,
 /area/medical/reception)
 "vQg" = (
@@ -50004,13 +50143,13 @@ hga
 hga
 kIL
 rzB
-sop
+mqP
 xlp
 hNg
 iJA
 eut
 aAG
-uFg
+aGC
 guh
 ehd
 eXK
@@ -56778,8 +56917,8 @@ lMt
 aZS
 eRj
 vqS
-vqS
-vqS
+mre
+uPK
 jbn
 dXY
 vek
@@ -56973,7 +57112,7 @@ aZS
 ske
 ske
 ske
-vqS
+hJB
 jqL
 dXY
 tXm
@@ -57167,7 +57306,7 @@ aZS
 nEx
 nCa
 nCa
-vqS
+hJB
 kKh
 dXY
 nYB
@@ -57360,8 +57499,8 @@ lMt
 aZS
 eRj
 vqS
-vqS
-vqS
+pPl
+uRz
 lye
 dXY
 eIB

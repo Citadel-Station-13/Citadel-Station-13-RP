@@ -4273,6 +4273,17 @@
 	glass_name = "Piña Colada"
 	glass_desc = "For those not into yoga."
 
+/datum/reagent/ethanol/mimosa
+	name = "Mimosa"
+	id = "mimosa"
+	description = "An airy blend of champagne and orange juice, often drunk as a morning refreshment."
+	taste_description = "orange juice and a dry, bubbly wine"
+	color = "#daa411"
+	strength = 20
+
+	glass_name = "Mimosa"
+	glass_desc = "A bubbly and tangy refreshment."
+
 //Never Fade Away
 /datum/reagent/ethanol/silverhand
 	name = "Johnny Silverhand"

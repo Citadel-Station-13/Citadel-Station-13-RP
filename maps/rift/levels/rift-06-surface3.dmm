@@ -314,6 +314,10 @@
 	dir = 5
 	},
 /obj/structure/disposalpipe/trunk,
+/obj/machinery/air_alarm{
+	desc = " ";
+	pixel_y = 24
+	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration/pathfinder_office)
 "abf" = (
@@ -1359,9 +1363,6 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/surfaceeva/aa/cliff_south)
-"aen" = (
-/turf/simulated/open/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "aep" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
@@ -11364,6 +11365,10 @@
 /area/exploration)
 "aFL" = (
 /obj/structure/reagent_dispensers/water_cooler/full,
+/obj/machinery/air_alarm{
+	desc = " ";
+	pixel_y = 24
+	},
 /turf/simulated/floor/wood,
 /area/exploration/meeting)
 "aFM" = (
@@ -12650,7 +12655,42 @@
 /obj/item/binoculars{
 	pixel_y = 10
 	},
-/obj/item/ano_scanner,
+/obj/item/ano_scanner{
+	pixel_y = 18
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration/body{
+	pixel_x = -6
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration/body{
+	pixel_x = -6
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration/body{
+	pixel_x = -6
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration/body{
+	pixel_x = -6
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration/body{
+	pixel_x = -6
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration/body{
+	pixel_x = -6
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration{
+	pixel_x = 4
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration{
+	pixel_x = 4
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration{
+	pixel_x = 4
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration{
+	pixel_x = 4
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration{
+	pixel_x = 4
+	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration/courser_dock)
 "aJp" = (
@@ -23422,19 +23462,6 @@
 "owP" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/security/nuke_storage)
-"oxo" = (
-/obj/structure/table/reinforced,
-/obj/effect/floor_decal/corner/grey/diagonal,
-/obj/machinery/door/blast/shutters{
-	id = "kitchen_shutters";
-	name = "Kitchen Shutters"
-	},
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/light{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/white,
-/area/crew_quarters/kitchen)
 "oxz" = (
 /obj/machinery/light,
 /obj/structure/cable/green{
@@ -27308,7 +27335,7 @@ aOi
 aOi
 aOi
 aOi
-aen
+aOi
 aOC
 "}
 (3,1,1) = {"
@@ -38871,7 +38898,7 @@ amd
 wec
 aNU
 aMs
-oxo
+aUj
 aCk
 amJ
 aWd
