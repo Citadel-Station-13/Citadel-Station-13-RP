@@ -17,6 +17,7 @@
 	var/greentext_syndrome = FALSE
 	/// when TRUE, not even the explanation blurb is reported for completion
 	var/baystation_syndrome = FALSE
+	#warn refactor that
 
 /datum/game_objective/New()
 
@@ -28,13 +29,11 @@
  * @params
  * * individual - if provided, we operate as individual mode
  * * faction - if provided, we operate as faction mode
- * * status - provide vague completion status
- * * exact - provide exact numbers
  *
  * return list("status" = GAME_OBJECTIVE_X status enum, "ratio" = -1 to 1 for how failed/succeeded, "explain" = qualitative blurb)
  */
-/datum/game_objective/proc/check_completion(datum/mind/individual, datum/game_faction/faction, status = TRUE, exact = TRUE)
-	SHOULD_CALL_PARENT(TRUE)
+/datum/game_objective/proc/check_completion(datum/mind/individual, datum/game_faction/faction)
+	SHOULD_NOT_OVERRIDE(TRUE)
 	if(!isnull(individual))
 		. = check_completion_individual(individual)
 	else if(!isnull(faction))
@@ -71,7 +70,7 @@
 /**
  * tgui roundend data
  */
-/datum/game_objective/proc/tgui_roundend_data()
+/datum/game_objective/proc/tgui_roundend_data(datum/game_faction/faction, datum/mind/mind)
 	/**
 	 * GameObjective{} ->
 	 *
@@ -84,7 +83,7 @@
 	return list(
 		"task" = task,
 		"explanation" = explanation,
-		"completion" = check_completion(faction),
+		"completion" = check_completion(faction = faction, mind = mind),
 		"showExplain" = !baystation_syndrome,
 		"showVictory" = greentext_syndrome,
 	)

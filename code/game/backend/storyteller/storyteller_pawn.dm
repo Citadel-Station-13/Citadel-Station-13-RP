@@ -15,6 +15,11 @@
 	/// id - must be globally, cross-round unique! leave blank for hardcoded instances if you want; it'll autogen from path
 	/// this means you should not have any ids with /'s in them.
 	var/id
+
+	/// our entity descriptor
+	/// hard reference, set to typepath to init
+	var/datum/storyteller_entity/entity
+
 	/// faction we belong to - hard reference
 	var/datum/storyteller_faction/faction
 	/// our storyteller location descriptor

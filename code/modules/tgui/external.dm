@@ -211,19 +211,6 @@
 /client/var/tgui_cache_reloaded = FALSE
 
 /**
- * public
- *
- * Called on a UI's object when the UI is closed, not to be confused with
- * client/verb/uiclose(), which closes the ui window
- *
- * @params
- * * user - closing mob
- * * module - (optional) the module it came from, if any
- */
-/datum/proc/ui_close(mob/user, datum/tgui_module/module)
-	SIGNAL_HANDLER
-
-/**
  * verb
  *
  * Called by UIs when they are closed.
@@ -289,3 +276,24 @@
 	if(window)
 		window.on_message(type, payload, href_list)
 	return TRUE
+
+//* Hooks *//
+
+// todo: on_ui_open(datum/tgui/ui, datum/tgui_module/module)
+
+// todo: rename to on_ui_close(datum/tgui/ui, datum/tgui_module/module)
+/**
+ * public
+ *
+ * Called on a UI's object when the UI is closed, not to be confused with
+ * client/verb/uiclose(), which closes the ui window
+ *
+ * @params
+ * * user - closing mob
+ * * module - (optional) the standalone module it came from, if any
+ */
+/datum/proc/ui_close(mob/user, datum/tgui_module/module)
+	SIGNAL_HANDLER
+
+// todo: on_ui_transfer_to(datum/destination, datum/tgui/ui)
+// todo: on_ui_transfer_from(datum/origin, datum/tgui/ui)

@@ -1,4 +1,4 @@
-/datum/world_faction/vox
-	abstract_type = /datum/world_faction/vox
+/datum/world_faction/species/vox
+	abstract_type = /datum/world_faction/species/vox
 
 #warn impl

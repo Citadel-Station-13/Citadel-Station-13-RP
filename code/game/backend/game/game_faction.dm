@@ -40,7 +40,7 @@
 /datum/game_faction/proc/tgui_roundend_data()
 	var/list/built_objectives = list()
 	for(var/datum/game_objective/objective as anything in objectives)
-		built_objectives[++built_objectives.len] = objective.tgui_roundend_data()
+		built_objectives[++built_objectives.len] = objective.tgui_roundend_data(faction = src)
 	/**
 	 * GameFaction{} -->
 	 *
