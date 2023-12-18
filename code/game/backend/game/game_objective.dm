@@ -17,18 +17,33 @@
 	var/greentext_syndrome = FALSE
 	/// when TRUE, not even the explanation blurb is reported for completion
 	var/baystation_syndrome = FALSE
-	/// owning faction - if any (so when we're made); this is always going to be non-null when we check completion
-	var/datum/game_faction/faction
+
+/datum/game_objective/New()
+
+#warn how to handle 'auto build'..?
 
 /**
  * completion check
  *
+ * @params
+ * * individual - if provided, we operate as individual mode
+ * * faction - if provided, we operate as faction mode
+ * * status - provide vague completion status
+ * * exact - provide exact numbers
+ *
  * return list("status" = GAME_OBJECTIVE_X status enum, "ratio" = -1 to 1 for how failed/succeeded, "explain" = qualitative blurb)
  */
-/datum/game_objective/proc/check_completion()
+/datum/game_objective/proc/check_completion(datum/mind/individual, datum/game_faction/faction, status = TRUE, exact = TRUE)
 	SHOULD_CALL_PARENT(TRUE)
-	if(isnull(faction))
-		STACK_TRACE("tried to check completion with no faction")
+	if(!isnull(individual))
+		. = check_completion_individual(individual)
+	else if(!isnull(faction))
+		. = check_completion_faction(faction)
+	if(isnull(.))
+		. = check_completion_generic()
+
+
+/datum/game_objective/proc/check_completion_generic()
 	/**
 	 * GameObjectiveCompletion{} -->
 	 * status: GameObjectiveStatus;
@@ -40,6 +55,18 @@
 		"ratio" = null,
 		"explain" = null,
 	)
+
+/**
+ * return null to fallback to generic
+ */
+/datum/game_objective/proc/check_completion_faction(datum/game_faction/faction)
+	return null
+
+/**
+ * return null to fallback to generic
+ */
+/datum/game_objective/proc/check_completion_individual(datum/mind/mind)
+	return null
 
 /**
  * tgui roundend data

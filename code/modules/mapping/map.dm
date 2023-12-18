@@ -152,6 +152,7 @@
 	var/list/world_location_ids = list(/datum/world_location/frontier)
 	/// world faction this is primarily under the control of
 	/// set to id, or typepath to parse into id in New()
+	/// this is considered the primary, player-facing faction of the round, with other factions being 'off'-maps.
 	var/world_faction_id = /datum/world_faction/nanotrasen
 
 	//! legacy below

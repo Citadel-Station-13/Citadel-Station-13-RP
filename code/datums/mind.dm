@@ -39,6 +39,7 @@
 	var/list/datum/game_faction/factions
 
 	//* Roles
+	//  todo: add var/datum/role/role_assigned, for what we joined as.
 	/// all /datum/role's associated with us
 	var/list/datum/role/roles
 

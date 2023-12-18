@@ -12,6 +12,11 @@
 	/// the target overmap entity
 	var/obj/overmap/entity/parent
 
+/datum/game_objective/overmap_unary/New(parent)
+	if(!isnull(parent))
+		src.parent = parent
+	..()
+
 #warn impl
 
 /**

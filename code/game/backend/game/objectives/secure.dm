@@ -13,6 +13,13 @@
 	/// target location
 	var/datum/game_location/target_location
 
+/datum/game_objective/secure/New(entity, location)
+	if(!isnull(entity))
+		target_entity = entity
+	if(!isnull(location))
+		target_location = location
+	..()
+
 #warn impl
 
 

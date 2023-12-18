@@ -33,6 +33,14 @@
 /datum/game_location/proc/entity_is_inside(datum/game_entity/entity)
 	CRASH("abstract proc unimplemented")
 
+/**
+ * how far an entity is from us
+ *
+ * @return distance in tiles, null for invalid, INFINITY for "too much to care"
+ */
+/datum/game_location/proc/entity_distance(datum/game_entity/entity)
+	CRASH("abstract proc unimplemented")
+
 /datum/game_location/specific_turf
 	/// target turf
 	var/turf/target
@@ -54,7 +62,7 @@
 	if(isnull(target))
 		return "at an unknown location (uh oh!)"
 	var/datum/map_level/their_level = SSmapping.ordered_levels[target.z]
-	return "at coordinates [target.x], [target.y], on [their_level.display_name]"
+	return "at coordinates [target.x], [target.y], in sector designation [their_level.display_name]"
 
 /datum/game_location/entity
 	abstract_type = /datum/game_location/entity
@@ -93,8 +101,7 @@
 /datum/game_location/entity/overmap_entity/explain(detailed)
 	if(isnull(target))
 		return "at an unknown location (uh oh!)"
-
-#warn explain
+	return "on \the [target]"
 
 /datum/game_location/entity/movable_entity
 
@@ -108,9 +115,11 @@
 /datum/game_location/entity/movable_entity/explain(detailed)
 	if(isnull(target))
 		return "at an unknown location (uh oh!)"
-	var/turf/target_turf = get_turF(target)
+	var/turf/target_turf = get_turf(target)
 	if(isnull(target_turf))
 		return "inside [target]"
+	if(!detailed)
+		return "on, in, or being carried by (as applicable) [target]"
 	var/datum/map_level/their_level = SSmapping.ordered_levels[target_turf.z]
-
-#warn explain
+	return "on, in, or being carried by (as applicable) [target], \
+		currently at [target_turf.x], [target_turf.y], in sector designation [their_level.display_name]"

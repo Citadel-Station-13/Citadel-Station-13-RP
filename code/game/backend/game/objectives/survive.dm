@@ -9,6 +9,10 @@
 	/// target percent from 0 to 100
 	var/required_percent = 100
 
+/datum/game_objective/survive/New(percent_required)
+	if(!isnull(percent_required))
+		src.required_percent = percent_required
+	..()
 
 #warn impl
 

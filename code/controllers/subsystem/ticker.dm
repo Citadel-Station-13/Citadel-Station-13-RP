@@ -79,6 +79,7 @@ SUBSYSTEM_DEF(ticker)
 	var/list/datum/game_faction/game_factions
 	/// objectives that need ticking
 	var/list/datum/game_objective/game_objectives_ticking
+	#warn hook stuff
 
 /datum/controller/subsystem/ticker/Initialize()
 	if(!syndicate_code_phrase)
