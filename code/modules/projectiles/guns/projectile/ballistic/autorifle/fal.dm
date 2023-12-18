@@ -13,6 +13,8 @@
 	allowed_magazines = list(/obj/item/ammo_magazine/m762, /obj/item/ammo_magazine/m762m)
 	heavy = TRUE
 	projectile_type = /obj/projectile/bullet/rifle/a762
+	magazine_insert_sound = 'sound/weapons/guns/interaction/batrifle_magin.ogg'
+	magazine_remove_sound = 'sound/weapons/guns/interaction/batrifle_magout.ogg'
 
 	firemodes = list(
 		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, burst_accuracy=null, dispersion=null),

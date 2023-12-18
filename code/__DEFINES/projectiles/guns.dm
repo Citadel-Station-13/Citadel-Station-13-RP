@@ -16,3 +16,18 @@
 #define GUN_FIRE_NO_AMMO 1
 /// generic failure
 #define GUN_FIRE_FAILURE 2
+
+//* Gun attachment slots *//
+
+/// attached to the barrel
+#define GUN_ATTACHMENT_BARREL "barrel"
+/// attached to / extends the stock
+#define GUN_ATTACHMENT_STOCK "stock"
+/// under the barrel
+#define GUN_ATTACHMENT_UNDERBARREL "underbarrel"
+/// side of barrel (currently should only be flashlights)
+#define GUN_ATTACHMENT_SIDEBARREL "sidebarrel"
+/// most rail attachments are this
+#define GUN_ATTACHMENT_SIGHT "sight"
+/// the only other kind of rail attachment right now, so it doesn't collide with scope
+#define GUN_ATTACHMENT_HARNESS "harness"

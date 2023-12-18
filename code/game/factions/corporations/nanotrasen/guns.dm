@@ -153,3 +153,39 @@
 
 /obj/item/gun/projectile/ballistic/ntles/pathfinder
 	pin = /obj/item/firing_pin/explorer
+
+/obj/item/gun/projectile/ballistic/revolver/combat
+	name = "\improper Ogre combat revolver"
+	desc = "The NT-R-7 'Ogre' combat revolver is tooled for NanoTrasen special operations. Chambered in .44 Magnum with an advanced high-speed firing mechanism, it serves as the perfect sidearm for any off the books endeavor."
+	icon_state = "combatrevolver"
+	caliber = ".44"
+	fire_delay = 5.7
+	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3)
+	ammo_type = /obj/item/ammo_casing/a44
+
+/obj/item/gun/projectile/ballistic/revolver/combat/update_icon_state()
+	. = ..()
+	if(loaded.len)
+		icon_state = "combatrevolver"
+	else
+		icon_state = "combatrevolver-e"
+
+/obj/item/gun/projectile/ballistic/sec
+	name = ".45 pistol"
+	desc = "The NT Mk58 is a cheap, ubiquitous sidearm, produced by a NanoTrasen subsidiary. Found pretty much everywhere humans are. This one is a less-lethal variant that only accepts .45 rubber or flash magazines."
+	icon_state = "secguncomp"
+	magazine_type = /obj/item/ammo_magazine/m45/rubber
+	allowed_magazines = list(/obj/item/ammo_magazine/m45/rubber, /obj/item/ammo_magazine/m45/flash, /obj/item/ammo_magazine/m45/practice)
+	projectile_type = /obj/projectile/bullet/pistol/medium
+	caliber = ".45"
+	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
+	load_method = MAGAZINE
+
+/obj/item/gun/projectile/ballistic/sec/flash
+	name = ".45 signal pistol"
+	magazine_type = /obj/item/ammo_magazine/m45/flash
+
+/obj/item/gun/projectile/ballistic/sec/wood
+	desc = "The NT Mk58 is a cheap, ubiquitous sidearm, produced by a NanoTrasen subsidiary. This one has a sweet wooden grip and only accepts .45 rubber or flash magazines."
+	name = "custom .45 pistol"
+	icon_state = "secgundark"

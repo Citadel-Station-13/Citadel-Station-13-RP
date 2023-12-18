@@ -14,6 +14,8 @@
 	projectile_type = /obj/projectile/bullet/rifle/a762
 	heavy = TRUE
 	one_handed_penalty = 45
+	magazine_insert_sound = 'sound/weapons/guns/interaction/smg_magin.ogg'
+	magazine_remove_sound = 'sound/weapons/guns/interaction/smg_magout.ogg'
 
 	firemodes = list(
 		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, burst_accuracy=null, dispersion=null),

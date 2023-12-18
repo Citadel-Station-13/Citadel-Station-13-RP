@@ -8,6 +8,8 @@
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2, TECH_ILLEGAL = 5)
 	magazine_type = /obj/item/ammo_magazine/m45uzi
 	allowed_magazines = list(/obj/item/ammo_magazine/m45uzi)
+	magazine_insert_sound = 'sound/weapons/guns/interaction/smg_magin.ogg'
+	magazine_remove_sound = 'sound/weapons/guns/interaction/smg_magout.ogg'
 
 	firemodes = list(
 		list(mode_name="semiauto", burst=1, fire_delay=0),

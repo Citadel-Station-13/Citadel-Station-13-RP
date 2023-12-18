@@ -14,6 +14,8 @@
 	projectile_type = /obj/projectile/bullet/pistol/medium
 	auto_eject = 1
 	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
+	magazine_insert_sound = 'sound/weapons/guns/interaction/smg_magin.ogg'
+	magazine_remove_sound = 'sound/weapons/guns/interaction/smg_magout.ogg'
 
 	one_handed_penalty = 15
 

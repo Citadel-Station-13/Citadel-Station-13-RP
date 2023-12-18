@@ -22,7 +22,7 @@
 	name = "gun"
 	desc = "Devs fucked up."
 
-	#warn impl
+	#warn sprite
 
 	#warn impl keybind priority
 
@@ -55,6 +55,10 @@
 	var/instability_stored = 0
 	/// last instability decay time
 	var/instability_decay
+
+	//* Attachments *//
+	/// all attached attachments
+	var/list/obj/item/gun_attachment/attachments
 
 	//* Firemodes
 	/// current firemode
@@ -127,10 +131,43 @@
 		pin = new pin
 	init_firemodes()
 
-/obj/item/gun/unequipped(mob/user, slot, flags)
-	. = ..()
-	if(firing && user == firing_user)
-		stop_firing()
+//* Ammo *//
+
+/**
+ * gets % of total ammo as number from 0 to 1.
+ * used in icon update procs for modularity,
+ * so that we don't need to have multiple
+ * versions of the core icon generation system.
+ */
+/obj/item/gun/proc/get_ammo_percent()
+	return 1
+
+/**
+ * get approximate shots left
+ * used for examines and counters
+ */
+/obj/item/gun/proc/get_ammo_amount()
+	return 0
+
+//* Attachments *//
+
+/obj/item/gun/proc/attempt_attachment(datum/event_args/actor/actor, obj/item/gun_attachment/attachment)
+
+/obj/item/gun/proc/attach_attachment(obj/item/gun_attachment/attachment)
+
+/obj/item/gun/proc/detach_attachment(obj/item/gun_attachment/attachment, atom/newLoc = drop_location())
+	if(newLoc == FALSE)
+		newLoc = null
+
+/obj/item/gun/proc/why_cant_fit_attachment(obj/item/gun_attachment/attachment)
+
+/obj/item/gun/proc/on_attach_attachment(obj/item/gun_attachment/attachment)
+
+/obj/item/gun/proc/on_detach_attachment(obj/item/gun_attachment/attachment)
+
+#warn impl all
+
+//* Firing *//
 
 /**
  * terminate the current firing cycle
@@ -175,12 +212,6 @@
 	return TRUE
 
 /**
- * restock the gun to full, whatever that means in the context of the gun
- */
-/obj/item/gun/proc/restock_to_full()
-	return
-
-/**
  * called after firing
  *
  * @params
@@ -218,6 +249,12 @@
 /obj/item/gun/proc/handle_fire_empty(atom/target, atom/movable/user, turf/where, angle, reflex, iteration)
 	return
 
+//* Inventory *//
+
+/obj/item/gun/unequipped(mob/user, slot, flags)
+	. = ..()
+	if(firing && user == firing_user)
+		stop_firing()
 
 /obj/item/gun/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
@@ -227,21 +264,7 @@
 	. = ..()
 	update_appearance()
 
-/**
- * gets % of total ammo as number from 0 to 1.
- * used in icon update procs for modularity,
- * so that we don't need to have multiple
- * versions of the core icon generation system.
- */
-/obj/item/gun/proc/get_ammo_percent()
-	return 1
-
-/**
- * get approximate shots left
- * used for examines and counters
- */
-/obj/item/gun/proc/get_ammo_amount()
-	return 0
+//* Rendering *//
 
 /obj/item/gun/update_icon(updates)
 	if(!render_system_active)
@@ -271,12 +294,20 @@
 		if(GUN_RENDERING_STATES)
 		if(GUN_RENDERING_SEGMENTS)
 	switch(render_ammo_inhand)
-	#warn impl
+	#warn dea lwith all this via renderers for the gun itself
 
 	// do default behavior last
 	. = ..()
 	// update inhand
 	update_worn_icon()
+
+//* Restock
+
+/**
+ * restock the gun to full, whatever that means in the context of the gun
+ */
+/obj/item/gun/proc/restock_to_full()
+	return
 
 #warn below
 
@@ -440,21 +471,6 @@
 	return ..() //Pistolwhippin'
 
 /obj/item/gun/projectile/attackby(obj/item/A, mob/user)
-
-	if(A.is_screwdriver())
-		if(dna_lock && attached_lock && !attached_lock.controller_lock)
-			to_chat(user, "<span class='notice'>You begin removing \the [attached_lock] from \the [src].</span>")
-			playsound(src, A.tool_sound, 50, 1)
-			if(do_after(user, 25 * A.tool_speed))
-				to_chat(user, "<span class='notice'>You remove \the [attached_lock] from \the [src].</span>")
-				user.put_in_hands(attached_lock)
-				dna_lock = 0
-				attached_lock = null
-				remove_obj_verb(src, /obj/item/gun/projectile/verb/remove_dna)
-				remove_obj_verb(src, /obj/item/gun/projectile/verb/give_dna)
-				remove_obj_verb(src, /obj/item/gun/projectile/verb/allow_dna)
-		else
-			to_chat(user, "<span class='warning'>\The [src] is not accepting modifications at this time.</span>")
 
 	#warn get rid of this fucking shitcode
 

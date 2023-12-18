@@ -87,10 +87,21 @@
 	//* Rendering
 	/// rendering system for magazine
 	/// in overlay mode, we add "[base_icon_state]-empty" as a priority overlay if we're empty.
-	/// in state mode, "-empty" is automatically inserted after base_icon_state if we're empty.
+	/// in state mode, "-empty" is automatically inserted after base_icon_state if we're empty, after bolt state (if applicable).
+	/// in state mode, we will override all other states.
 	var/render_magazine_system = GUN_RENDERING_DISABLED
 	/// use -ext if we have an extended magazine in
 	var/render_magazine_extended = FALSE
+	/// magazine rendering system is used for inhands
+	/// this will result in the effective item state for onmob being modified,
+	/// completely ignores render_magazine_system; this only uses states!
+	var/render_magazine_inhand = TRUE
+	#warn hook above using render_append_state and priority overlays, and overriding build worn icon etc etc
+	/// rendering system for bolt
+	/// in overlay mode, we add "[base_icon_state]-open" as a priority overlay if we're open.
+	/// in state mode, "-open" is automatically inserted after base_icon_state if we're open, before any other state.
+	/// in state mode, we will override all other states.
+	var/render_magazine_system = GUN_RENDERING_DISABLED
 	/// magazine rendering system is used for inhands
 	/// this will result in the effective item state for onmob being modified,
 	/// completely ignores render_magazine_system; this only uses states!

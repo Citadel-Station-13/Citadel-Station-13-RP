@@ -156,3 +156,13 @@
 		var/throwdir = get_dir(firer,target)
 		target.throw_at_old(get_edge_target_turf(target, throwdir), rand(1,6), 10)
 		return 1
+
+//* Vox Bolt-Action Rifle *//
+/obj/item/gun/projectile/ballistic/shotgun/pump/rifle/vox_hunting
+	name = "vox hunting rifle"
+	desc = "This ancient rifle bears traces of an assembly meant to house power cells, implying it used to fire energy beams. It has since been crudely modified to fire standard 7.62mm rounds."
+	icon_state = "vox_hunting"
+	item_state = "vox_hunting"
+	ammo_type = /obj/item/ammo_casing/a762
+	throw_force = 10
+	damage_force = 20

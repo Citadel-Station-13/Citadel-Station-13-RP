@@ -1,5 +1,4 @@
 // For all intents and purposes, these work exactly the same as pump shotguns. It's unnecessary to make their own procs for them.
-
 /obj/item/gun/projectile/ballistic/shotgun/pump/rifle
 	name = "bolt action rifle"
 	desc = "A reproduction of an almost ancient weapon design from the early 20th century. It's still popular among hunters and collectors due to its reliability. Uses 7.62mm rounds."
@@ -29,22 +28,6 @@
 	name = "blessed bolt-action rifle"
 	desc = "A bolt-action rifle with a heavy, high-quality wood stock that has a beautiful finish. Clearly not intended to be used in combat. Uses 7.62mm rounds."
 	ammo_type = /obj/item/ammo_casing/a762/silver
-
-/obj/item/gun/projectile/ballistic/shotgun/pump/rifle/taj
-	name = "Adhomai bolt action rifle"
-	desc = "The A&K-c bolt action rifle. Though a simple and dated design, this Akhan and Khan rifle is a mainstay of the of the Imperial Adhomain Army and has kept Tajaran monarchy safe since the civil war."
-	item_state = "boltaction-taj"
-	icon_state = "boltaction-taj"
-	wielded_item_state = "boltaction-taj-wielded"
-
-/obj/item/gun/projectile/ballistic/shotgun/pump/rifle/vox_hunting
-	name = "vox hunting rifle"
-	desc = "This ancient rifle bears traces of an assembly meant to house power cells, implying it used to fire energy beams. It has since been crudely modified to fire standard 7.62mm rounds."
-	icon_state = "vox_hunting"
-	item_state = "vox_hunting"
-	ammo_type = /obj/item/ammo_casing/a762
-	throw_force = 10
-	damage_force = 20
 
 // Stole hacky terrible code from doublebarrel shotgun. -Spades
 /obj/item/gun/projectile/ballistic/shotgun/pump/rifle/ceremonial/attackby(var/obj/item/A as obj, mob/user as mob)

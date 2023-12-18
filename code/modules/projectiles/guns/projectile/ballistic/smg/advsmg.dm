@@ -9,6 +9,8 @@
 	slot_flags = SLOT_BELT
 	magazine_type = null // R&D builds this. Starts unloaded.
 	allowed_magazines = list(/obj/item/ammo_magazine/m9mmAdvanced, /obj/item/ammo_magazine/m9mm)
+	magazine_insert_sound = 'sound/weapons/guns/interaction/smg_magin.ogg'
+	magazine_remove_sound = 'sound/weapons/guns/interaction/smg_magout.ogg'
 
 	firemodes = list(
 		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, burst_accuracy=null, dispersion=null),

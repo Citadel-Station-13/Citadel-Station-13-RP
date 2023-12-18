@@ -12,6 +12,8 @@
 	magazine_type = /obj/item/ammo_magazine/m9mmt/rubber
 	allowed_magazines = list(/obj/item/ammo_magazine/m9mmt)
 	projectile_type = /obj/projectile/bullet/pistol/medium
+	magazine_insert_sound = 'sound/weapons/guns/interaction/smg_magin.ogg'
+	magazine_remove_sound = 'sound/weapons/guns/interaction/smg_magout.ogg'
 
 /obj/item/gun/projectile/ballistic/automatic/wt550/update_icon_state()
 	. = ..()

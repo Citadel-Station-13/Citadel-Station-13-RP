@@ -324,20 +324,3 @@
 /obj/item/gun/projectile/ballistic/revolver/dirty_harry/holy
 	name = "Blessed Model 29"
 	ammo_type = /obj/item/ammo_casing/a44/silver
-
-//NT SpecOps Revolver
-/obj/item/gun/projectile/ballistic/revolver/combat
-	name = "\improper Ogre combat revolver"
-	desc = "The NT-R-7 'Ogre' combat revolver is tooled for NanoTrasen special operations. Chambered in .44 Magnum with an advanced high-speed firing mechanism, it serves as the perfect sidearm for any off the books endeavor."
-	icon_state = "combatrevolver"
-	caliber = ".44"
-	fire_delay = 5.7
-	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3)
-	ammo_type = /obj/item/ammo_casing/a44
-
-/obj/item/gun/projectile/ballistic/revolver/combat/update_icon_state()
-	. = ..()
-	if(loaded.len)
-		icon_state = "combatrevolver"
-	else
-		icon_state = "combatrevolver-e"

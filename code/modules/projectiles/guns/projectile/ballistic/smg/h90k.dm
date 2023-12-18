@@ -11,6 +11,8 @@
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/m57x28mmp90
 	allowed_magazines = list(/obj/item/ammo_magazine/m57x28mmp90) // ToDo: New sprite for the different mag.
+	magazine_insert_sound = 'sound/weapons/guns/interaction/smg_magin.ogg'
+	magazine_remove_sound = 'sound/weapons/guns/interaction/smg_magout.ogg'
 
 	firemodes = list(
 		list(mode_name="semiauto", burst=1, fire_delay=0),

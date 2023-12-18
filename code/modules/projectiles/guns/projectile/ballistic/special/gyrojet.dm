@@ -1,21 +1,40 @@
-/obj/item/gun/projectile/ballistic/automatic //This should never be spawned in, it is just here because of code necessities.
-	name = "daka SMG"
-	desc = "A small SMG. You really shouldn't be able to get this gun. Uses 9mm rounds."
-	icon_state = "c05r"	//Used because it's not used anywhere else
-	load_method = SPEEDLOADER
-	ammo_type = /obj/item/ammo_casing/a9mm
-	projectile_type = /obj/projectile/bullet/pistol
-	magazine_insert_sound = 'sound/weapons/guns/interaction/smg_magin.ogg'
-	magazine_remove_sound = 'sound/weapons/guns/interaction/smg_magout.ogg'
-//Burst is the number of bullets fired; Fire delay is the time you have to wait to shoot the gun again, Move delay is the same but for moving after shooting. .
-//Burst accuracy is the accuracy of each bullet fired in the burst. Dispersion is how much the bullets will 'spread' away from where you aimed.
+/obj/item/gun/projectile/ballistic/gyropistol // Does this even appear anywhere outside of admin abuse?
+	name = "gyrojet pistol"
+	desc = "Speak softly, and carry a big gun. Fires rare .75 caliber self-propelled exploding bolts--because fuck you and everything around you."
+	icon_state = "gyropistol"
+	max_shells = 8
+	caliber = ".75"
+	fire_sound = 'sound/weapons/railgun.ogg'
+	origin_tech = list(TECH_COMBAT = 3)
+	ammo_type = "/obj/item/ammo_casing/a75"
+	load_method = MAGAZINE
+	magazine_type = /obj/item/ammo_magazine/m75
+	allowed_magazines = list(/obj/item/ammo_magazine/m75)
+	auto_eject = 1
+	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
 
-	firemodes = list(
-		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, burst_accuracy=null, dispersion=null),
-		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=4,    burst_accuracy=list(60,30,0), dispersion=list(0.0, 0.6, 1.0)))
+/obj/item/gun/ballistic/gyropistol/bolter
+	name = "\improper Scorpion bolt pistol"
+	desc = "A boxy sidearm seemingly designed for a larger hand. Uses .75 gyrojet rounds."
+	description_fluff = "The HI-GP mk 3 'Scorpion' was an attempt to downsize the larger Ballistae model even further. Many of the weapon's issues persisted, compounded by the smaller size of the mechanical components within. Most prototypes sheared or broke, and were prone to malfunction due to the instense strain of extensive firing."
+	icon_state = "bolt_pistol"
+	item_state = "bolt_pistol"
+	max_shells = 10
+	fire_sound = 'sound/weapons/gunshot/gunshot_bolter.ogg'
+	origin_tech = list(TECH_COMBAT = 5, TECH_ILLEGAL = 3)
+	magazine_type = /obj/item/ammo_magazine/m75/pistol
+	allowed_magazines = list(/obj/item/ammo_magazine/m75/pistol)
+	auto_eject = 0
 
+/obj/item/gun/ballistic/gyropistol/bolter/black
+	desc = "A boxy sidearm seemingly designed for a larger hand. This one is painted black."
+	icon_state = "bolt_pistolblack"
+	item_state = "bolt_pistolblack"
 
-// Please don't spawn these regularly. I'm mostly just adding these for fun.
+/obj/item/gun/ballistic/gyropistol/bolter/black/update_icon_state()
+	. = ..()
+	icon_state = "bolt_pistolblack-[ammo_magazine ? round(ammo_magazine.stored_ammo.len, 2) : "empty"]"
+
 /obj/item/gun/ballistic/automatic/bolter
 	name = "\improper Ballistae bolt rifle"
 	desc = "A boxy rifle clearly designed for larger hands. Uses .75 gyrojet rounds."

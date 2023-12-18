@@ -9,6 +9,8 @@
 	magazine_type = /obj/item/ammo_magazine/m45uzi/wt274
 	allowed_magazines = list(/obj/item/ammo_magazine/m45uzi/wt274)
 	one_handed_penalty = 10
+	magazine_insert_sound = 'sound/weapons/guns/interaction/smg_magin.ogg'
+	magazine_remove_sound = 'sound/weapons/guns/interaction/smg_magout.ogg'
 
 	firemodes = list(
 		list(mode_name="standard fire", burst=2, fire_delay=0),
