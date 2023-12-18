@@ -30,7 +30,7 @@
 	var/p_open = 0//[bool]is the door open?
 	var/operating = 0//[bool]Is the door opening or closing?
 	var/autoclose = 0//[bool]should the door close automaticly
-	var/glass = 0
+	var/glass = 0 //[bool] is the door see-through?
 	var/normalspeed = 1
 	var/heat_resistance = 1000 // For glass airlocks/opacity firedoors
 	var/air_properties_vary_with_direction = 0
@@ -46,9 +46,7 @@
 	var/atom/movable/overlay/c_animation = null
 
 	var/reinforcing = 0
-	var/tintable = 0
-	var/icon_tinted
-	var/id_tint
+	
 
 /obj/machinery/door/Initialize(mapload, newdir)
 	. = ..()

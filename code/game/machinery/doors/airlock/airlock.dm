@@ -100,7 +100,7 @@ GLOBAL_REAL_VAR(airlock_typecache) = typecacheof(list(
 	var/color_fill_file = 'icons/obj/doors/station/fill_color.dmi'
 	var/stripe_file = 'icons/obj/doors/station/stripe.dmi'
 	var/stripe_fill_file = 'icons/obj/doors/station/fill_stripe.dmi'
-	var/glass_file = 'icons/obj/doors/station/fill_glass.dmi'
+	//var/glass_file = 'icons/obj/doors/station/fill_glass.dmi'
 	var/bolts_file = 'icons/obj/doors/station/lights_bolts.dmi'
 	var/deny_file = 'icons/obj/doors/station/lights_deny.dmi'
 	var/lights_file = 'icons/obj/doors/station/lights_green.dmi'
@@ -115,7 +115,8 @@ GLOBAL_REAL_VAR(airlock_typecache) = typecacheof(list(
 
 	/// Bandaid around a problem.
 	var/last_spark = 0
-
+	var/tinted
+	var/id_tint
 
 /obj/machinery/door/airlock/proc/set_airlock_overlays(state)
 	var/icon/color_overlay
@@ -138,26 +139,21 @@ GLOBAL_REAL_VAR(airlock_typecache) = typecacheof(list(
 			color_overlay = new(color_file)
 			color_overlay.Blend(door_color, ICON_MULTIPLY)
 			GLOB.airlock_icon_cache["[ikey]"] = color_overlay
-	if(glass)
-		if (window_color && window_color != "none")
-			var/ikey = "[airlock_type]-[window_color]-windowcolor"
-			filling_overlay = GLOB.airlock_icon_cache["[ikey]"]
-			if (!filling_overlay)
-				filling_overlay = new(glass_file)
-				filling_overlay.Blend(window_color, ICON_MULTIPLY)
-				GLOB.airlock_icon_cache["[ikey]"] = filling_overlay
-		else
-			filling_overlay = glass_file
-	else
-		if(door_color && !(door_color == "none"))
-			var/ikey = "[airlock_type]-[door_color]-fillcolor"
-			filling_overlay = GLOB.airlock_icon_cache["[ikey]"]
-			if(!filling_overlay)
-				filling_overlay = new(color_fill_file)
+
+	if(door_color && !(door_color == "none"))
+		var/ikey = "[airlock_type]-[door_color]-fillcolor-[glass]"
+		filling_overlay = GLOB.airlock_icon_cache["[ikey]"]
+		if(!filling_overlay)
+			filling_overlay = new(fill_file)
+			if(!glass || tinted)
 				filling_overlay.Blend(door_color, ICON_MULTIPLY)
-				GLOB.airlock_icon_cache["[ikey]"] = filling_overlay
-		else
-			filling_overlay = fill_file
+			else
+				filling_overlay.Blend(window_color, ICON_MULTIPLY)
+			GLOB.airlock_icon_cache["[ikey]"] = filling_overlay
+	else
+		filling_overlay = fill_file
+
+
 	if(stripe_color && !(stripe_color == "none"))
 		var/ikey = "[airlock_type]-[stripe_color]-stripe"
 		stripe_overlay = GLOB.airlock_icon_cache["[ikey]"]
@@ -1178,6 +1174,19 @@ About the new airlock wires panel:
 		src.lock()
 	return
 
+/obj/machinery/door/airlock/proc/toggle()
+	if(!glass)
+		return
+	if(tinted)
+		tinted = 0
+		if(!operating && density)
+			set_opacity(1)
+	else
+		icon = initial(icon)
+		tinted = 1
+		if(!operating)
+			set_opacity(0)
+	set_airlock_overlays(src.state)
 
 /obj/machinery/door/airlock/rcd_values(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
 	switch(passed_mode)

@@ -96,12 +96,15 @@
 	fill_file = 'icons/obj/doors/external/fill_steel.dmi'
 	color_file = 'icons/obj/doors/external/color.dmi'
 	color_fill_file = 'icons/obj/doors/external/fill_color.dmi'
-	glass_file = 'icons/obj/doors/external/fill_glass.dmi'
 	bolts_file = 'icons/obj/doors/external/lights_bolts.dmi'
 	deny_file = 'icons/obj/doors/external/lights_deny.dmi'
 	lights_file = 'icons/obj/doors/external/lights_green.dmi'
 	emag_file = 'icons/obj/doors/external/emag.dmi'
 	door_color = COLOR_NT_RED
+
+/obj/machinery/door/airlock/external/glass
+	name = "External Glass Airlock"
+	fill_file = 'icons/obj/doors/external/fill_glass.dmi'
 
 /obj/machinery/door/airlock/external/glass/bolted
 	window_color = GLASS_COLOR
@@ -116,10 +119,9 @@
 	name = "External Airlock"
 	airlock_type = "GExternal"
 	icon = 'icons/obj/doors/external/door.dmi'
-	fill_file = 'icons/obj/doors/external/fill_steel.dmi'
+	fill_file = 'icons/obj/doors/external/fill_glass.dmi'
 	color_file = 'icons/obj/doors/external/color.dmi'
 	color_fill_file = 'icons/obj/doors/external/fill_color.dmi'
-	glass_file = 'icons/obj/doors/external/fill_glass.dmi'
 	bolts_file = 'icons/obj/doors/external/lights_bolts.dmi'
 	deny_file = 'icons/obj/doors/external/lights_deny.dmi'
 	lights_file = 'icons/obj/doors/external/lights_green.dmi'
@@ -141,9 +143,10 @@
 	close_sound_powered = 'sound/machines/door/hall1c.ogg'
 	hit_sound_brute = 'sound/effects/Glasshit.ogg'
 	explosion_resistance = 5
-	opacity = FALSE
+	opacity = TRUE
 	glass = TRUE
 	window_color = GLASS_COLOR
+	fill_file = 'icons/obj/doors/station/fill_glass.dmi'
 
 /obj/machinery/door/airlock/centcom
 	name = "Centcom Airlock"
