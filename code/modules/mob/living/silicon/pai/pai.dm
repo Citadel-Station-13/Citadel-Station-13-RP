@@ -139,6 +139,8 @@
 		card.radio = new /obj/item/radio(src.card)
 		radio = card.radio
 
+	/// Verbs & Actions
+	generate_actions()
 	add_verb(src, /mob/living/silicon/pai/proc/choose_chassis)
 	add_verb(src, /mob/living/silicon/pai/proc/choose_verbs)
 	add_verb(src, /mob/living/proc/set_size)
