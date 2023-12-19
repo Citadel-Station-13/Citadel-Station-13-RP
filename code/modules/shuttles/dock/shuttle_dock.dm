@@ -19,13 +19,17 @@
 	/// this should usually be TRUE so people can't block off areas
 	var/trample_bounding_box = TRUE
 	/// see /obj/shuttle_anchor for how this works; it works the same as the shuttle variant
-	var/size_x = 0
+	/// set to null for autodetect via /obj/shuttle_dock_corner
+	var/size_x
 	/// see /obj/shuttle_anchor for how this works; it works the same as the shuttle variant
-	var/size_y = 0
+	/// set to null for autodetect via /obj/shuttle_dock_corner
+	var/size_y
 	/// see /obj/shuttle_anchor for how this works; it works the same as the shuttle variant
-	var/offset_x = 0870
+	/// set to null for autodetect via /obj/shuttle_dock_corner
+	var/offset_x
 	/// see /obj/shuttle_anchor for how this works; it works the same as the shuttle variant
-	var/offset_y = 0
+	/// set to null for autodetect via /obj/shuttle_dock_corner
+	var/offset_y
 	#warn impl
 
 	//* docking (alignment)
