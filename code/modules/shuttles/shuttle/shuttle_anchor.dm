@@ -63,6 +63,14 @@
  * 0000
  *
  * Offsets can position the anchor outside. This works, albeit is a bad idea.
+ *
+ * ## Mappers
+ *
+ * You only need to place down:
+ * * The master anchor, somewhere on the shuttle (usually a central location)
+ * * At least one port anchor if you want it to dock to airlocks, aligned to the airlock in question.
+ *
+ * Do not mess with the variables; the init system will set them.
  */
 /obj/shuttle_anchor
 	name = "Shuttle (uninitialized)"

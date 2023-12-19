@@ -10,6 +10,22 @@
 	#warn icon/etc
 
 	//* bounding box
+	/// allow docking inside bounding box as long as a shuttle fits, even if the dock doesn't align
+	var/undocked_landing_allowed = TRUE
+	/// protect our bounding box from manual landing
+	var/protect_bounding_box = FALSE
+	#warn hook
+	/// shuttles are clear to land in our bounding box without the normal obstruction checks
+	/// this should usually be TRUE so people can't block off areas
+	var/trample_bounding_box = TRUE
+	/// see /obj/shuttle_anchor for how this works; it works the same as the shuttle variant
+	var/size_x = 0
+	/// see /obj/shuttle_anchor for how this works; it works the same as the shuttle variant
+	var/size_y = 0
+	/// see /obj/shuttle_anchor for how this works; it works the same as the shuttle variant
+	var/offset_x = 0870
+	/// see /obj/shuttle_anchor for how this works; it works the same as the shuttle variant
+	var/offset_y = 0
 	#warn impl
 
 	//* docking (alignment)
