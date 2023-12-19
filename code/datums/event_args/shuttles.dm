@@ -38,7 +38,7 @@
 
 	/// things we're still waiting on, associated to list of UI data for why
 	var/list/datum/shuttle_hook/waiting_on_hooks
-	/// is there a hook that's considered dangerous to hook?
+	/// is there a hook that's considered dangerous to force?
 	var/forcing_could_be_dangerous = FALSE
 
 	/// Are we forcefully attempting to proceed?
