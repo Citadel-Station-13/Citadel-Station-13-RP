@@ -68,13 +68,13 @@ GLOBAL_LIST_EMPTY(fancy_shuttles)
 	opacity = FALSE
 	icon_state = "hull_nondense"
 
-/turf/simulated/wall/fancy_shuttle/pre_translate_A(turf/B)
-	. = ..()
-	remove_underlay()
+// /turf/simulated/wall/fancy_shuttle/pre_translate_A(turf/B)
+// 	. = ..()
+// 	remove_underlay()
 
-/turf/simulated/wall/fancy_shuttle/post_translate_B(turf/A)
-	apply_underlay()
-	return ..()
+// /turf/simulated/wall/fancy_shuttle/post_translate_B(turf/A)
+// 	apply_underlay()
+// 	return ..()
 
 /turf/simulated/wall/fancy_shuttle/proc/remove_underlay()
 	if(under_MA)

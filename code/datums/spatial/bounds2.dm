@@ -21,7 +21,7 @@
 		enemy.x_low > x_high || \
 		enemy.x_high < x_low || \
 		enemy.y_low > y_high || \
-		enemy.y_high < y_low || \
+		enemy.y_high < y_low \
 	)
 
 /datum/bounds2/proc/contains_xy(x, y)

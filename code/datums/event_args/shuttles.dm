@@ -3,6 +3,30 @@
 
 /**
  * Shuttle event
+ *
+ * ## Order of Operations
+ *
+ * Docking
+ * * Docking fired
+ * * On success, post-docking is fired (non-blocking)
+ *
+ * If docking fails
+ * * Undocking fired (should always succeed)
+ * * Post-undocking fired (non-blocking)
+ *
+ * Undocking
+ * * Undocking fired (should always succeed)
+ * * Post-undocking fired (non-blocking)
+ *
+ * Movement
+ * * Takeoff fired
+ * * On success, post-takeoff is fired (non-blocking)
+ * * Landing is fired
+ * * On success, post-landing is fired (non-blocking)
+ *
+ * If takeoff or landing fails
+ * * Landing fired on the dock the shuttle just attempted to leave (should always succeed)
+ * * Post-landing fired on the dock the shuttle just attempted to leave (non-blocking)
  */
 /datum/event_args/shuttle
 	/// shuttle ref
@@ -24,14 +48,20 @@
 	/// Are we recovering from a bad dock operation?
 	var/recovering = FALSE
 
+/datum/event_args/shuttle/proc/finish()
+	#warn make hooks gtfo
+
 /datum/event_args/shuttle/proc/block(datum/shuttle_hook/hook, list/reason_or_reasons, dangerous)
+	ASSERT(isnull(hook.blocking))
+	hook.blocking = src
 	waiting_on_hooks[hook] = islist(reason_or_reasons)? reason_or_reasons : list(reason_or_reasons)
-	
+
 	if(dangerous)
 		forcing_could_be_dangerous = TRUE
 
 /datum/event_args/shuttle/proc/release(datum/shuttle_hook/hook)
 	waiting_on_hooks -= hook
+	hook.blocking = null
 
 /datum/event_args/shuttle/proc/update(datum/shuttle_hook/hook, list/reason_or_reasons)
 	waiting_on_hooks[hook] = islist(reason_or_reasons)? reason_or_reasons : list(reason_or_reasons)

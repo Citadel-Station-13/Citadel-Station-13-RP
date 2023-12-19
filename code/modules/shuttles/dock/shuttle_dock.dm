@@ -65,6 +65,8 @@
 	#warn vv hook
 	/// are we registered?
 	var/registered = FALSE
+	/// registered shuttle hooks
+	var/list/datum/shuttle_hook/hooks
 
 	//* identity
 	/// display name - visible to everyone at all times; if null, we use name.
