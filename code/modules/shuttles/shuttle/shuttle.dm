@@ -12,4 +12,10 @@
 	var/datum/shuttle_controller/controller
 
 	/// our physical shuttle object
-	var/obj/shuttle/physical
+	var/obj/shuttle_anchor/anchor
+	
+
+	/// are we mid-delete? controls whether we, and our components are immune to deletion.
+	var/being_deleted = FALSE
+
+/datum/

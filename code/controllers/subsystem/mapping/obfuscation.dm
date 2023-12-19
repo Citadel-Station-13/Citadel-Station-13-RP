@@ -42,3 +42,6 @@
 		LAZYINITLIST(obfuscation_cache[id_type])
 		obfuscation_cache[id_type][original] = "[original]_[num2text(rand(0, (16 ** 4) - 1), 4, 16)]"
 	return obfuscation_cache[id_type][original]
+
+#warn entirely rework this to allow for map-template and map-instance specific's.
+#warn shuttles must always have full isolation.
