@@ -1,6 +1,8 @@
 /**
  * Standard Spans
  * Sorted alphabetically
+ *
+ * todo: we gotta audit all of this.
  */
 #define SPAN_ABDUCTOR(str) ("<span class='abductor'>[str]</span>")
 #define SPAN_ADMIN(str) ("<span class='admin'>[str]</span>")
@@ -128,6 +130,7 @@
 #define SPAN_SCIRADIO(str) ("<span class='sciradio'>[str]</span>")
 #define SPAN_SECRADIO(str) ("<span class='secradio'>[str]</span>")
 #define SPAN_SERVRADIO(str) ("<span class='servradio'>[str]</span>")
+
 #define SPAN_SINGING(str) ("<span class='singing'>[str]</span>")
 #define SPAN_SLIME(str) ("<span class='slime'>[str]</span>")
 #define SPAN_SMALL(str) ("<span class='small'>[str]</span>")
@@ -147,6 +150,14 @@
 #define SPAN_WARNING(str) ("<span class='warning'>[str]</span>")
 #define SPAN_YELL(str) ("<span class='yell'>[str]</span>")
 #define SPAN_YELLOWTEAMRADIO(str) ("<span class='yellowteamradio'>[str]</span>")
+
+/**
+ * Automatic message formatting
+ */
+#define FORMAT_SERVER_NOTICE(str) ("<span class='boldnotice'>Server: [str]</span>")
+#define FORMAT_SERVER_WARN(str) ("<span class='announce'>Server: [str]</span>")
+#define FORMAT_SERVER_ERROR(str) ("<span class='boldannounce'>Server: [str]</span>")
+#define FORMAT_SERVER_FATAL(str) ("<span class='boldannounce'>Server: [str]</span>")
 
 /**
  * Spans that use embedded tgui components:

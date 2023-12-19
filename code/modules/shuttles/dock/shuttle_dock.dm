@@ -81,9 +81,24 @@
 	#warn hook
 
 /obj/shuttle_dock/Initialize(mapload)
+	. = ..()
+	if(. == INITIALIZE_HINT_QDEL)
+		return
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/shuttle_dock/LateInitialize()
+	. = ..()
+	#warn auto-register bounds if needed, otherwise error if missing
 	if(!register_dock())
-		return INITIALIZE_HINT_QDEL
-	return ..()
+		stack_trace("shuttle dock at [COORD(src)] failed registration; something is seriously wrong!")
+		to_chat(
+			target = world,
+			html = FORMAT_SERVER_FATAL("Shuttle dock at [COORD(src)] failed to register. Please contact coders if you see this message."),
+			type = MESSAGE_TYPE_SERVER_FATAL,
+		)
+		qdel(src)
+		return
+	#warn load shuttle
 
 /obj/shuttle_dock/Destroy()
 	unregister_dock()
