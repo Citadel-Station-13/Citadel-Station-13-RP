@@ -25,7 +25,7 @@
 		return
 	unlook(user)
 
-/datum/tgui_module_old/ship/ui_close(mob/user, datum/tgui_module/module)
+/datum/tgui_module_old/ship/ui_close(mob/user, datum/tgui/ui, datum/tgui_module/module)
 	. = ..()
 	user.unset_machine()
 	unlook(user)

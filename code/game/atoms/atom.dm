@@ -309,7 +309,7 @@
  * code has been run
  */
 /atom/proc/LateInitialize()
-	set waitfor = FALSE
+	SHOULD_NOT_SLEEP(TRUE)
 
 /**
  * Top level of the destroy chain for most atoms

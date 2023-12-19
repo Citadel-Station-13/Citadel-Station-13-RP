@@ -158,7 +158,7 @@
 		ui = new(user, src, "TextInputModal")
 		ui.open()
 
-/datum/tgui_input_text/ui_close(mob/user, datum/tgui_module/module)
+/datum/tgui_input_text/ui_close(mob/user, datum/tgui/ui, datum/tgui_module/module)
 	. = ..()
 	closed = TRUE
 
