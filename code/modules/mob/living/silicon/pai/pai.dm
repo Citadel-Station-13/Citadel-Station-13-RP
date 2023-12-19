@@ -344,3 +344,99 @@
 
 /mob/living/silicon/pai/get_centering_pixel_x_offset(dir)
 	return base_pixel_x + (WORLD_ICON_SIZE - icon_x_dimension) / 2
+
+/mob/living/silicon/pai/proc/update_chassis()
+	var/original_chassis = chassis
+	var/choice
+	var/finalized = "No"
+	while(finalized == "No" && src.client)
+
+		choice = input(usr,"What would you like to use for your mobile chassis icon?") as null|anything in (list("-- LOAD CHARACTER SLOT --") + possible_chassis)
+		if(!choice)
+			chassis = original_chassis
+			return
+
+		if(choice == "-- LOAD CHARACTER SLOT --")
+			last_rendered_hologram_icon = get_holo_image()
+			card.cached_holo_image = null
+			card.get_holo_image()
+			icon = last_rendered_hologram_icon
+			chassis = possible_chassis[choice]
+			update_icon(FALSE)
+		else
+			icon = 'icons/mob/pai_vr.dmi'
+			chassis = possible_chassis[choice]
+			update_icon(FALSE)
+
+		finalized = alert("Look at your sprite. Is this what you wish to use?",,"No","Yes")
+
+	add_verb(src, /mob/living/proc/hide)
+	update_icon(FALSE)
+
+/mob/living/silicon/pai/proc/revert_to_card()
+	if(!can_change_shell())
+		return
+	if(!card || card.loc != src || card == shell)
+		return
+	switch_shell(card)
+
+/mob/living/silicon/pai/proc/change_shell_clothing()
+	if(!can_change_shell())
+		return
+
+	var/clothing_entry = tgui_input_list(usr, "What clothing would you like to change your shell to?", "Options", list("Chameleon Clothing List","Last Uploaded Clothing"))
+	if(clothing_entry)
+		if(clothing_entry == "Chameleon Clothing List")
+			var/clothing_type_entry = tgui_input_list(usr, "What type of clothing would you like to change your shell to?", "Clothing Type", list("Undershirt", "Suit", "Hat", "Shoes", "Gloves", "Mask", "Glasses", "Accessory"))
+			var/list/clothing_for_type
+			if(clothing_type_entry)
+				switch(clothing_type_entry)
+					if("Undershirt")
+						clothing_for_type = GLOB.clothing_under
+					if("Suit")
+						clothing_for_type = GLOB.clothing_suit
+					if("Hat")
+						clothing_for_type = GLOB.clothing_head
+					if("Shoes")
+						clothing_for_type = GLOB.clothing_shoes
+					if("Gloves")
+						clothing_for_type = GLOB.clothing_gloves
+					if("Mask")
+						clothing_for_type = GLOB.clothing_mask
+					if("Glasses")
+						clothing_for_type = GLOB.clothing_glasses
+					if("Accessory")
+						clothing_for_type = GLOB.clothing_accessory
+				var/clothing_item_entry = tgui_input_list(usr, "Choose clothing item", "Clothing", clothing_for_type)
+				if(clothing_item_entry)
+					change_shell_by_path(clothing_for_type[clothing_item_entry])
+		else if(clothing_entry == "Last Uploaded Clothing")
+			if(last_uploaded_path && can_change_shell())
+				last_special = world.time + 20
+				var/state = initial(last_uploaded_path.icon_state)
+				var/icon = initial(last_uploaded_path.icon)
+				var/obj/item/clothing/new_clothing = new base_uploaded_path
+				new_clothing.forceMove(src.loc)
+				new_clothing.name = "[src.name] (pAI)"
+				new_clothing.desc = src.desc
+				new_clothing.icon = icon
+				new_clothing.icon_state = state
+				new_clothing.add_atom_colour(uploaded_color, FIXED_COLOUR_PRIORITY)
+
+				var/obj/item/clothing/under/U = new_clothing
+				if(istype(U))
+					U.snowflake_worn_state = uploaded_snowflake_worn_state
+
+				switch_shell(new_clothing)
+
+/mob/living/silicon/pai/proc/card_hologram_display()
+	if(src.loc == card)
+		var/scanned_item_to_show = tgui_input_list(usr, "Select Scanned Object", "Scanned Objects", list("Cancel") + scanned_objects)
+		if(scanned_item_to_show)
+			if(scanned_item_to_show == "Cancel")
+				card.stop_displaying_hologram()
+			else
+				var/image/I = scanned_objects[scanned_item_to_show]
+				card.display_hologram_from_image(I)
+	else
+		to_chat(src, "You must be in card form to do this!")
