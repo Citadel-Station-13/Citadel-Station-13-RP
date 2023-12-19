@@ -2,30 +2,13 @@
 	set category = "pAI Commands"
 	set name = "Unfold Chassis"
 
-	// see pai/mobility.dm
-	// we don't check mobility here because while folded up, you can't move
-	if(!can_action())
-		return
-	// to fold out we need to be in the shell
-	if(src.loc != shell)
-		return
-
-	open_up()
+	open_up_safe()
 
 /mob/living/silicon/pai/verb/fold_up()
 	set category = "pAI Commands"
 	set name = "Collapse Chassis"
 
-	// we check mobility here to stop people folding up if they currently cannot move
-	if(!CHECK_MOBILITY(src, MOBILITY_CAN_MOVE))
-		return
-	if(!can_action())
-		return
-	// to fold up we need to not be in the card already
-	if(src.loc == shell)
-		return
-
-	close_up()
+	close_up_safe()
 
 /mob/living/silicon/pai/proc/choose_chassis()
 	set category = "pAI Commands"

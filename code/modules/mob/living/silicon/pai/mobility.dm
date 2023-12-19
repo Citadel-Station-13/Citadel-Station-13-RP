@@ -3,12 +3,11 @@
 		return FALSE
 	..()
 
-/mob/living/silicon/pai/proc/close_up()
+/mob/living/silicon/pai/proc/close_up_safe()
 	// we can't close up if already inside our shell
 	if(src.loc == shell)
 		return
 
-	// we check mobility here to stop people folding up if they currently cannot move
 	if(!CHECK_MOBILITY(src, MOBILITY_CAN_MOVE))
 		return
 
@@ -19,8 +18,11 @@
 	if(!can_action())
 		return
 
-	last_special = world.time + 20
+	close_up()
 
+	last_special = world.time + 2 SECONDS
+
+/mob/living/silicon/pai/proc/close_up()
 	release_vore_contents()
 
 	stop_pulling()
@@ -41,9 +43,19 @@
 	update_icon()
 	remove_verb(src, /mob/living/silicon/pai/proc/pai_nom)
 
-/mob/living/silicon/pai/proc/open_up()
-	last_special = world.time + 20
+/mob/living/silicon/pai/proc/open_up_safe()
+	// we don't check mobility here because while folded up, you can't move
+	if(!can_action())
+		return
+	// to fold out we need to be in the shell
+	if(src.loc != shell)
+		return
 
+	open_up()
+
+	last_special = world.time + 2 SECONDS
+
+/mob/living/silicon/pai/proc/open_up()
 	// stops unfolding in hardsuits and vore bellies, if implanted you explode out
 	if(istype(shell.loc,/obj/item/hardsuit_module))
 		to_chat(src, "There is no room to unfold inside this hardsuit module. You're good and stuck.")
@@ -116,7 +128,7 @@
 /mob/living/silicon/pai/Process_Spacemove(movement_dir = NONE)
 	. = ..()
 	if(!. && src.loc != shell)
-		if(world.time >= last_space_movement + 30)
+		if(world.time >= last_space_movement + 3 SECONDS)
 			last_space_movement = world.time
 			// place an effect for the movement
 			new /obj/effect/temp_visual/pai_ion_burst(get_turf(src))
