@@ -1,13 +1,15 @@
 /datum/action/pai
 	button_icon = 'icons/screen/actions/pai.dmi'
+	var/update_on_grant = FALSE
 
 /// Toggle unfolding/collapsing chassis
 /datum/action/pai/toggle_fold
 	name = "Unfold Chassis"
 	desc = "Unfold Chassis"
 	button_icon_state = "pai_open"
+	update_on_grant = TRUE
 
-/datum/action/pai/toggle_fold/proc/update_icon()
+/datum/action/pai/toggle_fold/update_button()
 	var/mob/living/silicon/pai/user = owner
 	if(!istype(user))
 		return
@@ -15,11 +17,15 @@
 	if(user.loc == user.shell)
 		name = "Unfold Chassis"
 		desc = "Unfold Chassis"
-		button_icon_state = "pai_open"
+		button_icon = initial(button_icon)
+		button_icon_state = initial(button_icon_state)
 	else
 		name = "Collapse Chassis"
 		desc = "Collapse Chassis"
-		button_icon_state = "pai_close"
+		button_icon = user.icon
+		button_icon_state = user.chassis
+
+	..()
 
 /datum/action/pai/toggle_fold/on_trigger(mob/living/silicon/pai/user)
 	if(user.loc == user.shell)
@@ -27,7 +33,7 @@
 	else
 		user.close_up_safe()
 
-	update_icon()
+	update_button()
 
 /// Change chassis
 /datum/action/pai/change_chassis

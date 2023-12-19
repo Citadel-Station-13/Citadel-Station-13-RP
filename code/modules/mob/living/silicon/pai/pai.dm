@@ -450,5 +450,8 @@
 
 /mob/living/silicon/pai/proc/generate_actions()
 	for(var/path in actions_to_grant)
-		var/datum/action/A = new path()
+		var/datum/action/pai/A = new path()
 		A.grant(src)
+		if(A.update_on_grant)
+			A.update_button()
+
