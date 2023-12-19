@@ -119,6 +119,13 @@
 	var/list/scanned_objects = list()
 	var/last_scanned_time = 0
 
+	var/list/actions_to_grant = list(/datum/action/pai/toggle_fold,
+									 /datum/action/pai/change_chassis,
+									 /datum/action/pai/clothing_transform,
+									 /datum/action/pai/revert_to_card,
+									 /datum/action/pai/hologram_display)
+
+
 /mob/living/silicon/pai/Initialize(mapload)
 	. = ..()
 	shell = loc
@@ -440,3 +447,8 @@
 				card.display_hologram_from_image(I)
 	else
 		to_chat(src, "You must be in card form to do this!")
+
+/mob/living/silicon/pai/proc/generate_actions()
+	for(var/path in actions_to_grant)
+		var/A = new path()
+		A.grant(src)
