@@ -90,7 +90,7 @@
 	set category = "pAI Commands"
 	set desc = "Allows you to transform your shell into clothing."
 
-	change_shell_clothing()
+	change_to_clothing()
 
 /mob/living/silicon/pai/verb/revert_shell_to_card()
 	set name = "Reset Shell"

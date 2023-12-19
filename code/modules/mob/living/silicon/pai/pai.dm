@@ -387,7 +387,7 @@
 		return
 	switch_shell(card)
 
-/mob/living/silicon/pai/proc/change_shell_clothing()
+/mob/living/silicon/pai/proc/change_to_clothing()
 	if(!can_change_shell())
 		return
 
@@ -450,5 +450,5 @@
 
 /mob/living/silicon/pai/proc/generate_actions()
 	for(var/path in actions_to_grant)
-		var/A = new path()
+		var/datum/action/A = new path()
 		A.grant(src)

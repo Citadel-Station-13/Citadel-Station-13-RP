@@ -7,7 +7,7 @@
 	desc = "Unfold Chassis"
 	button_icon_state = "pai_open"
 
-/datum/action/pai/toggle_fold/update_icon()
+/datum/action/pai/toggle_fold/proc/update_icon()
 	var/mob/living/silicon/pai/user = owner
 	if(!istype(user))
 		return
@@ -23,9 +23,9 @@
 
 /datum/action/pai/toggle_fold/on_trigger(mob/living/silicon/pai/user)
 	if(user.loc == user.shell)
-		open_up_safe()
+		user.open_up_safe()
 	else
-		close_up_safe()
+		user.close_up_safe()
 
 	update_icon()
 
@@ -36,7 +36,7 @@
 	button_icon_state = "pai_chassis_change"
 
 /datum/action/pai/change_chassis/on_trigger(mob/living/silicon/pai/user)
-	update_chassis()
+	user.update_chassis()
 
 /// Revert to card
 /// This only shows if your shell is not currently the card, otherwise this action is hidden
@@ -46,7 +46,7 @@
 	button_icon_state = "pai_shell_revert"
 
 /datum/action/pai/revert_to_card/on_trigger(mob/living/silicon/pai/user)
-	revert_to_card()
+	user.revert_to_card()
 
 /// Clothing Transform
 /datum/action/pai/clothing_transform
@@ -55,7 +55,7 @@
 	button_icon_state = "pai_clothing"
 
 /datum/action/pai/clothing_transform/on_trigger(mob/living/silicon/pai/user)
-	change_shell_clothing()
+	user.change_to_clothing()
 
 /// Hologram Display (show scanned object from card form)
 /// This only shows if you are in card form, otherwise this action is hidden
@@ -65,4 +65,4 @@
 	button_icon_state = "pai_hologram_display"
 
 /datum/action/pai/hologram_display/on_trigger(mob/living/silicon/pai/user)
-	card_hologram_display()
+	user.card_hologram_display()
