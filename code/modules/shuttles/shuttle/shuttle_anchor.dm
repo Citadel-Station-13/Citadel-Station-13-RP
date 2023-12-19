@@ -116,7 +116,7 @@
  */
 /obj/shuttle_anchor/proc/immediate_yank_to(turf/location, direction)
 	ASSERT(isturf(location))
-	ASSERT(direction in GLOB.cardinals)
+	ASSERT(direction in GLOB.cardinal)
 	#warn impl
 
 #warn impl all
