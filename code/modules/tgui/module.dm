@@ -55,7 +55,7 @@
 	qdel(src)
 
 /datum/tgui_module/ui_host()
-	return isnull(host)? src : host.ui_host(user, src)
+	return isnull(host)? src : host.ui_host()
 
 /datum/tgui_module/on_ui_close(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	. = ..()
@@ -64,7 +64,7 @@
 		qdel(src)
 
 /datum/tgui_module/ui_state()
-	return isnull(host)? ..() : host.ui_state(user, src)
+	return isnull(host)? ..() : host.ui_state()
 
 /datum/tgui_module/ui_status(mob/user, datum/ui_state/state)
 	return isnull(host)? ..() : host.ui_status(user, state, src)

@@ -38,9 +38,17 @@
 	/// Are byond mouse events beyond the window passed in to the ui
 	var/mouse_hooked = FALSE
 	/// The Parent UI
+	//? STOP USING THIS. USE EMBEDDING. ~SILICONS
 	var/datum/tgui/parent_ui
 	/// Children of this UI
+	//? STOP USING THIS. USE EMBEDDING. ~SILICONS
 	var/list/children = list()
+
+	//* Embedding *//
+	/// embedded datums to IDs
+	var/list/datum/embeddings
+	/// processed embeddings
+	var/list/datum/embeddings_processed
 
 /**
  * public
@@ -407,3 +415,32 @@
 			LAZYINITLIST(src_object.tgui_shared_states)
 			src_object.tgui_shared_states[href_list["key"]] = href_list["value"]
 			SStgui.update_uis(src_object)
+
+//* TGUI Embedding *//
+
+/**
+ * Embeds a datum as a module into this UI.
+ * 
+ * @params
+ * * module - the module in question
+ * * id - the id to use for the module
+ * * interface - the interface identifier (e.g. TGUILatheContrrol)
+ * * process - should this be a processed / auto updated module?
+ */
+/datum/tgui/proc/embed_module(datum/module, id, interface, process = TRUE)
+	#warn impl
+
+/datum/tgui/proc/remove_module(datum/module)
+	#warn impl
+
+/datum/tgui/proc/module_deleted(datum/source)
+	SIGNAL_HANDLER
+	#warn impl
+
+//* Helpers - Invoked from ui_act() *//
+
+/**
+ * Lazy check to see if the host window is still interactive.
+ */
+/datum/tgui/proc/still_interactive()
+	return status == UI_INTERACTIVE
