@@ -463,3 +463,4 @@
 	for(var/datum/action/pai/A in actions)
 		if(A.update_on_chassis_change)
 			A.update_button()
+	update_action_buttons()
