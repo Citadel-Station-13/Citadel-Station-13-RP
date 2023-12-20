@@ -361,7 +361,7 @@
 	var/finalized = "No"
 	while(finalized == "No" && src.client)
 
-		choice = tgui_input_list(usr, "What would you like to use for your mobile chassis icon?", "Options", list("-- LOAD CHARACTER SLOT --") + possible_chassis))
+		choice = tgui_input_list(usr, "What would you like to use for your mobile chassis icon?", "Options", list("-- LOAD CHARACTER SLOT --") + possible_chassis)
 		if(!choice)
 			chassis = original_chassis
 			return
