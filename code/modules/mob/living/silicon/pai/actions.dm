@@ -6,7 +6,7 @@
 /datum/action/pai/toggle_fold
 	name = "Unfold Chassis"
 	desc = "Unfold Chassis"
-	button_icon_state = "pai_open"
+	button_icon_state = "pai"
 	update_on_grant = TRUE
 
 /datum/action/pai/toggle_fold/update_button()
@@ -17,13 +17,13 @@
 	if(user.loc == user.shell)
 		name = "Unfold Chassis"
 		desc = "Unfold Chassis"
-		button_icon = initial(button_icon)
-		button_icon_state = initial(button_icon_state)
+		button_icon = user.icon
+		button_icon_state = user.icon_state
 	else
 		name = "Collapse Chassis"
 		desc = "Collapse Chassis"
-		button_icon = user.icon
-		button_icon_state = user.chassis
+		button_icon = user.shell.icon
+		button_icon_state = user.shell.icon_state
 
 	..()
 

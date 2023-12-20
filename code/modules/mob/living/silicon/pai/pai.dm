@@ -125,7 +125,6 @@
 									 /datum/action/pai/revert_to_card,
 									 /datum/action/pai/hologram_display)
 
-
 /mob/living/silicon/pai/Initialize(mapload)
 	. = ..()
 	shell = loc
@@ -456,4 +455,3 @@
 		A.grant(src)
 		if(A.update_on_grant)
 			A.update_button()
-
