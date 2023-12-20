@@ -404,7 +404,7 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 	var/pai_name
 	var/actual_pai_name
 
-	if(!(has_pAI_data && options[choice] == 1))
+	if(choice == "Yes (Pick Name)")
 		pai_name = input(user, "Choose your character's name", "Character Name") as text
 		actual_pai_name = sanitize_species_name(pai_name)
 	else
@@ -419,7 +419,7 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 	var/mob/living/silicon/pai/pai = new(card)
 	qdel(src)
 
-	if((has_pAI_data && options[choice] == 1))
+	if(choice != "Yes (Pick Name)")
 		pai.desc = prefs.description
 
 	pai.key = pai_key
