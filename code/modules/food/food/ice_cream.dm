@@ -58,9 +58,29 @@
 	name = "smashed ice cream"
 	desc = "How depressing."
 	icon = 'icons/modules/food/items/ice_cream.dmi'
+	icon_state = "melt1"
 
 	#warn impl
 
+	var/waffle_stage = 1
+
+	/// list of colors
+	var/list/dollops_left_colors
+
 /obj/effect/debris/cleanable/ice_cream/Initialize(mapload, obj/item/reagent_containers/food/snacks/ice_cream/from_cone)
 	. = ..()
+	#warn impl
+	addtimer(CALLBACK(src, PROC_REF(melt_more)), rand(2, 5 MINUTES))
+
+/obj/effect/debris/cleanable/ice_cream/proc/melt_more()
+	#warn uhh
+
+	cut_overlays()
+
+	waffle_stage = min(3, waffle_stage + 1)
+	#warn waffle overlay
+
+	if(length(dollops_left_colors))
+		addtimer(CALLBACK(src, PROC_REF(melt_more)), rand(2, 5 MINUTES))
+
 
