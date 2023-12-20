@@ -418,7 +418,7 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 	var/mob/living/silicon/pai/pai = new(card)
 	qdel(src)
 
-	if(!(has_pAI_data && options[choice] == 1))
+	if((has_pAI_data && options[choice] == 1))
 		pai.desc = prefs.description
 
 	pai.key = pai_key
