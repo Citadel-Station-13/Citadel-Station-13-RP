@@ -392,7 +392,7 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 		user.examinate(src)
 		return
 
-	var/datum/category_item/player_setup_item/player_global/pai/pai_pref = user.client.prefs.preference_by_type["pAI"]
+	var/datum/category_item/player_setup_item/player_global/pai/pai_pref = user.client.prefs.preference_by_type[/datum/category_item/player_setup_item/player_global/pai]
 	var/datum/paiCandidate/prefs = pai_pref?.candidate
 	var/has_pAI_data = !isnull(prefs) && !isnull(prefs.name)
 	var/options = (has_pAI_data ? list("Yes (As [prefs.name])") : list()) + list("Yes (Pick Name)", "No")
