@@ -1,6 +1,7 @@
 /datum/action/pai
 	button_icon = 'icons/screen/actions/pai.dmi'
 	var/update_on_grant = FALSE
+	var/update_on_chassis_change = FALSE
 
 /// Toggle unfolding/collapsing chassis
 /datum/action/pai/toggle_fold
@@ -8,6 +9,7 @@
 	desc = "Unfold Chassis"
 	button_icon_state = "pai"
 	update_on_grant = TRUE
+	update_on_chassis_change = TRUE
 
 /datum/action/pai/toggle_fold/update_button()
 	var/mob/living/silicon/pai/user = owner
@@ -32,8 +34,6 @@
 		user.open_up_safe()
 	else
 		user.close_up_safe()
-
-	update_button()
 
 /// Change chassis
 /datum/action/pai/change_chassis

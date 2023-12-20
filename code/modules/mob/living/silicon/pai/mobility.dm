@@ -42,6 +42,7 @@
 	update_mobility()
 	update_icon()
 	remove_verb(src, /mob/living/silicon/pai/proc/pai_nom)
+	update_chassis_actions()
 
 /mob/living/silicon/pai/proc/open_up_safe()
 	/// Don't check mobility here because while folded up, you can't move
@@ -97,6 +98,7 @@
 	add_verb(src, /mob/living/silicon/pai/proc/pai_nom)
 	card.stop_displaying_hologram()
 	update_icon()
+	update_chassis_actions()
 
 /// Handle being picked up.
 /mob/living/silicon/pai/get_scooped(var/mob/living/carbon/grabber, var/self_drop)

@@ -272,6 +272,8 @@
 	if(!istype(new_shell, /obj/item/paicard))
 		RegisterSignal(shell, COMSIG_ITEM_ATTACK_SELF, PROC_REF(pass_attack_self_to_card))
 
+	update_chassis_actions()
+
 // changing the shell into clothing
 /mob/living/silicon/pai/proc/change_shell_by_path(obj/item/clothing/object_path)
 	if(!can_change_shell())
@@ -380,6 +382,7 @@
 
 	add_verb(src, /mob/living/proc/hide)
 	update_icon(FALSE)
+	update_chassis_actions()
 
 /mob/living/silicon/pai/proc/revert_to_card()
 	if(!can_change_shell())
@@ -454,4 +457,9 @@
 		var/datum/action/pai/A = new path()
 		A.grant(src)
 		if(A.update_on_grant)
+			A.update_button()
+
+/mob/living/silicon/pai/proc/update_chassis_actions()
+	for(var/datum/action/pai/A in actions)
+		if(A.update_on_chassis_change)
 			A.update_button()
