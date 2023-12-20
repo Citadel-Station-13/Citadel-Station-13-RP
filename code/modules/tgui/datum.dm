@@ -25,13 +25,14 @@
 /**
  * public
  *
- * todo: this is just completely ignored for modules/embedding. is this a good thing? ~silicons
- * todo: no it's not ~silicons
- *
  * Called on an object when a tgui object is being created, allowing you to
  * push various assets to tgui, for examples spritesheets.
+ * 
+ * todo: support typepaths
+ * todo: support file paths
+ * todo: this should be sent to embedding interfaces
  *
- * return list List of asset datums or file paths.
+ * return list List of asset datum instances (must be /datum/asset instance, not path)
  */
 /datum/proc/ui_assets(mob/user)
 	return list()
@@ -42,12 +43,15 @@
  * Called on a UI when the UI receieves a href.
  * Think of this as Topic().
  *
- * required action string The action/button that has been invoked by the user.
- * required params list A list of parameters attached to the button.
+ * @params
+ * * action - the string of the TGUI-side act() that was invoked by the user
+ * * params - the list of key-value parameters of the act() invocation. This is always strings for both key and value!
+ * * ui - the TGUI instance invoking this (host window)
+ * * embed_context - (optional) if non-null, this datum is receiving an UI act as an embedded UI
  *
- * return bool If the user's input has been handled and the UI should update.
+ * @return bool If the user's input has been handled and the UI should update.
  */
-/datum/proc/ui_act(action, list/params, datum/tgui/ui)
+/datum/proc/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_UI_ACT, usr, action, params, ui)
 	// If UI is not interactive or usr calling Topic is not the UI user, bail.
@@ -60,11 +64,14 @@
  * Data to be sent to the UI.
  * This must be implemented for a UI to work.
  *
- * required user mob The mob interacting with the UI.
+ * @params
+ * * user - (optional) the mob using the UI
+ * * ui - (optional) the host tgui
+ * * embed_context - (optional) if non-null, we are an embedded UI.
  *
  * return list Data to be sent to the UI.
  */
-/datum/proc/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/datum/proc/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	return list() // Not implemented.
 
 /**
@@ -77,11 +84,15 @@
  * be sending a lot of redundant data frequently. Gets squished into one
  * object on the frontend side, but the static part is cached.
  *
- * required user mob The mob interacting with the UI.
  *
- * return list Statuic Data to be sent to the UI.
+ * @params
+ * * user - (optional) the mob using the UI
+ * * ui - (optional) the host tgui
+ * * embed_context - (optional) if non-null, we are an embedded UI.
+ *
+ * return list Static Data to be sent to the UI.
  */
-/datum/proc/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/datum/proc/ui_static_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	return list()
 
 /**
@@ -89,6 +100,8 @@
  *
  * Used to open and update UIs.
  * If this proc is not implemented properly, the UI will not update correctly.
+ * 
+ * todo: how should i ruin this proc? i don't really like update being twined with opening, but it makes sense..? ~silicons
  *
  * required user mob The mob who opened/is using the UI.
  * optional ui datum/tgui The UI to be updated, if it exists.
@@ -101,27 +114,60 @@
 
 /**
  * private
- *
+ * 
  * todo: this is just completely ignored for modules/embedding. is this a good thing? ~silicons
  *
  * The UI's host object (usually src_object).
  * This allows modules/datums to have the UI attached to them,
  * and be a part of another object.
  */
-/datum/proc/ui_host(mob/user, datum/tgui_module/module)
+/datum/proc/ui_host()
 	return src // Default src.
-
 
 /**
  * private
  *
  * todo: this is just completely ignored for modules/embedding. is this a good thing? ~silicons
- *
+ * 
  * The UI's state controller to be used for created uis
  * This is a proc over a var for memory reasons
  */
-/datum/proc/ui_state(mob/user, datum/tgui_module/module)
+/datum/proc/ui_state()
 	return GLOB.default_state
+
+/**
+ * public
+ *
+ * Checks the overall UI state for a mob.
+ *
+ * todo: this is just completely ignored for modules/embedding. is this a good thing? ~silicons
+ * 
+ * @params
+ * * user - The mob who opened/is using the UI.
+ * * state - The state to check.
+ *
+ * return UI_state The state of the UI.
+ */
+/datum/proc/ui_status(mob/user, datum/ui_state/state)
+	var/src_object = ui_host(user)
+	. = UI_CLOSE
+	if(!state)
+		return
+
+	if(isobserver(user))
+		// If they turn on ghost AI control, admins can always interact.
+		if(IsAdminGhost(user))
+			. = max(., UI_INTERACTIVE)
+
+		// Regular ghosts can always at least view if in range.
+		if(user.client)
+			// todo: in view range for zooming
+			if(get_dist(src_object, user) < max(CEILING(user.client.current_viewport_width / 2, 1), CEILING(user.client.current_viewport_height / 2, 1)))
+				. = max(., UI_UPDATE)
+
+	// Check if the state allows interaction
+	var/result = state.can_use_topic(src_object, user)
+	. = max(., result)
 
 //* API - Update - Optimizers, look here! *//
 
@@ -229,6 +275,7 @@
  * * embed_context - the embedding context; if null, this is a root/host window.
  */
 /datum/proc/on_ui_open(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+	#warn hook this proc
 	SIGNAL_HANDLER
 
 /**
