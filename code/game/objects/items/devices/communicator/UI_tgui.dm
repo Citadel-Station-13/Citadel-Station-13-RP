@@ -108,7 +108,7 @@
 	if(custom_state) // Just in case
 		ui.set_state(custom_state)
 
-/obj/item/communicator/ui_close(mob/user, datum/tgui_module/module)
+/obj/item/communicator/on_ui_close(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	. = ..()
 	if(isnull(user.client))
 		return // what???

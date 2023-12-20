@@ -76,7 +76,7 @@
 
 	return data
 
-/datum/tgui_module_old/atmos_control/ui_close()
+/datum/tgui_module_old/atmos_control/on_ui_close()
 	. = ..()
 	ui_ref = null
 

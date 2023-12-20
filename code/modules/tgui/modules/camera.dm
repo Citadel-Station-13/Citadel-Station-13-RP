@@ -260,7 +260,7 @@
 	cam_background.icon_state = "scanline2"
 	cam_background.fill_rect(1, 1, default_map_size, default_map_size)
 
-/datum/tgui_module_old/camera/ui_close(mob/user, datum/tgui_module/module)
+/datum/tgui_module_old/camera/on_ui_close(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	. = ..()
 	var/user_ref = REF(user)
 	var/is_living = isliving(user)

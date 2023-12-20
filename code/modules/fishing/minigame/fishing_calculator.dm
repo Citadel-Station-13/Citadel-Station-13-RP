@@ -24,7 +24,7 @@
 /datum/fishing_calculator/ui_state(mob/user)
 	return GLOB.always_state
 
-/datum/fishing_calculator/ui_close(mob/user)
+/datum/fishing_calculator/on_ui_close(mob/user)
 	qdel(src)
 
 /datum/fishing_calculator/ui_static_data(mob/user)

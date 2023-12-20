@@ -159,7 +159,7 @@
 	return lure //Could be the target really
 
 // Manually closing the ui is treated as lose
-/datum/fishing_challenge/ui_close(mob/user)
+/datum/fishing_challenge/on_ui_close(mob/user)
 	. = ..()
 	if(!completed)
 		complete(FALSE)
