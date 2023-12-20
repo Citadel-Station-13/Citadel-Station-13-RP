@@ -156,7 +156,7 @@
 	var/list/consoles = list()
 	var/badmin = 0
 
-/obj/machinery/computer/rdservercontrol/ui_status(mob/user)
+/obj/machinery/computer/rdservercontrol/ui_status(mob/user, datum/ui_state/state)
 	. = ..()
 	if(!allowed(user) && !emagged)
 		. = min(., UI_UPDATE)

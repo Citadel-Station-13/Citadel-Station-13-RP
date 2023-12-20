@@ -523,7 +523,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 	ui_interact(user)
 	wires.Interact(user)
 
-/obj/machinery/air_alarm/ui_status(mob/user)
+/obj/machinery/air_alarm/ui_status(mob/user, datum/ui_state/state)
 	if(isAI(user) && aidisabled)
 		to_chat(user, "AI control has been disabled.")
 	else if(!shorted)

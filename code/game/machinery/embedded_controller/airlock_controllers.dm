@@ -25,7 +25,7 @@
 	//dummy_terminals.Cut()
 	return ..()
 
-/obj/machinery/embedded_controller/radio/airlock/ui_status(mob/user, datum/ui_state/state, datum/tgui_module/module)
+/obj/machinery/embedded_controller/radio/airlock/ui_status(mob/user, datum/ui_state/state)
 	. = ..()
 	if(!allowed(user))
 		return min(UI_UPDATE, .)

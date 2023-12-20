@@ -101,7 +101,7 @@
 /obj/machinery/computer/ship/proc/viewing_overmap(mob/user)
 	return (WEAKREF(user) in viewers)
 
-/obj/machinery/computer/ship/ui_status(mob/user)
+/obj/machinery/computer/ship/ui_status(mob/user, datum/ui_state/state)
 	. = ..()
 	if(. > UI_DISABLED)
 		if(viewing_overmap(user))

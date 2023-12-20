@@ -66,7 +66,7 @@
 /datum/tgui_module/ui_state(mob/user, datum/tgui_module/module)
 	return isnull(host)? ..() : host.ui_state(user, src)
 
-/datum/tgui_module/ui_status(mob/user, datum/ui_state/state, datum/tgui_module/module)
+/datum/tgui_module/ui_status(mob/user, datum/ui_state/state)
 	return isnull(host)? ..() : host.ui_status(user, state, src)
 
 /datum/tgui_module/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)

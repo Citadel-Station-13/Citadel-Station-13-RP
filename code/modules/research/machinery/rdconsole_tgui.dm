@@ -19,7 +19,7 @@
 		ui = new(user, src, "ResearchConsole", name)
 		ui.open()
 
-/obj/machinery/computer/rdconsole/ui_status(mob/user)
+/obj/machinery/computer/rdconsole/ui_status(mob/user, datum/ui_state/state)
 	. = ..()
 	if(locked && !allowed(user) && !emagged)
 		. = min(., UI_UPDATE)

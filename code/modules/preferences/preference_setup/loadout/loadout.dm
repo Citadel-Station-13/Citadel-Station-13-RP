@@ -114,7 +114,7 @@
 		ui = new(user, src, "CharacterLoadoutStandalone")
 		ui.open()
 
-/datum/category_item/player_setup_item/loadout/gear/ui_status(mob/user, datum/ui_state/state, datum/tgui_module/module)
+/datum/category_item/player_setup_item/loadout/gear/ui_status(mob/user, datum/ui_state/state)
 	return UI_INTERACTIVE
 
 /datum/category_item/player_setup_item/loadout/gear/proc/tgui_loadout_selected(list/loadout_slot)

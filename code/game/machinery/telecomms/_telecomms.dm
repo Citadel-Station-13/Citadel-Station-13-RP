@@ -357,7 +357,7 @@
 
 	return data
 
-/obj/machinery/telecomms/ui_status(mob/user)
+/obj/machinery/telecomms/ui_status(mob/user, datum/ui_state/state)
 	if(!issilicon(user))
 		if(!istype(user.get_active_held_item(), /obj/item/multitool))
 			return UI_CLOSE

@@ -14,7 +14,7 @@
 /obj/machinery/computer/drone_control/attack_ai(var/mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/computer/drone_control/ui_status(mob/user)
+/obj/machinery/computer/drone_control/ui_status(mob/user, datum/ui_state/state)
 	if(!allowed(user))
 		return UI_CLOSE
 	return ..()
