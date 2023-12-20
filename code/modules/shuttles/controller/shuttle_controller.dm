@@ -23,3 +23,6 @@
 
 /datum/shuttle_controller/proc/tgui_act(action, list/params, authorization)
 	#warn impl
+
+/datum/shuttle_controller/proc/tgui_push(list/data)
+	#warn impl

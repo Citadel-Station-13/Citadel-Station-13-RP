@@ -20,4 +20,7 @@
 	/// are we mid-delete? controls whether we, and our components are immune to deletion.
 	var/being_deleted = FALSE
 
+	/// where we are docked, if any
+	var/obj/shuttle_dock/docked
+
 #warn impl all

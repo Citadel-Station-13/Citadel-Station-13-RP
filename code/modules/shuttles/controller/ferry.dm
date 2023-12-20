@@ -16,5 +16,13 @@
 	var/dock_away_id
 	#warn hook init for both
 
+/datum/shuttle_controller/ferry/proc/is_at_home()
+	return shuttle.docked.dock_id == dock_home_id
 
+/datum/shuttle_controller/ferry/proc/is_at_away()
+	return shuttle.docked.dock_id == dock_away_id
 
+/datum/shuttle_controller/ferry/proc/is_at_known_location()
+	return is_at_home() || is_at_away()
+
+#warn impl all
