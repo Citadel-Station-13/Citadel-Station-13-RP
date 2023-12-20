@@ -81,7 +81,7 @@
 	qdel(src)
 	return
 
-/mob/living/bot/cleanbot/edCLN/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/mob/living/bot/cleanbot/edCLN/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 	data["version"] = "v3.0"
 	data["rgbpanel"] = TRUE
@@ -90,7 +90,7 @@
 	data["blue_switch"] = blue_switch
 	return data
 
-/mob/living/bot/cleanbot/edCLN/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/mob/living/bot/cleanbot/edCLN/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

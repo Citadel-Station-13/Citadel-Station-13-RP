@@ -171,7 +171,7 @@
 		ui = new(user, src, "XenoarchDepthScanner", name)
 		ui.open()
 
-/obj/item/depth_scanner/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/item/depth_scanner/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	data["current"] = list()
@@ -202,7 +202,7 @@
 
 	return data
 
-/obj/item/depth_scanner/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/item/depth_scanner/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -298,7 +298,7 @@
 		ui = new(user, src, "BeaconLocator", name)
 		ui.open()
 
-/obj/item/beacon_locator/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/item/beacon_locator/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	data["scan_ticks"] = scan_ticks
@@ -312,7 +312,7 @@
 
 	return data
 
-/obj/item/beacon_locator/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/item/beacon_locator/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

@@ -138,7 +138,7 @@
 		ui = new(user, src, "Secbot", name)
 		ui.open()
 
-/mob/living/bot/secbot/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/mob/living/bot/secbot/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	data["on"] = on
@@ -166,7 +166,7 @@
 /mob/living/bot/secbot/attack_hand(mob/user, list/params)
 	ui_interact(user)
 
-/mob/living/bot/secbot/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/mob/living/bot/secbot/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

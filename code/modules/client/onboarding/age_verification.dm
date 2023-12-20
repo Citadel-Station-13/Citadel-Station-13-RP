@@ -43,7 +43,7 @@ GLOBAL_DATUM_INIT(age_verify_menu, /datum/age_verify_menu, new)
 /datum/age_verify_menu/ui_status(mob/user, datum/ui_state/state)
 	return UI_INTERACTIVE
 
-/datum/age_verify_menu/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/age_verify_menu/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return

@@ -13,13 +13,6 @@
  */
 /datum/var/list/tgui_shared_states
 
-/**
- * read-only
- *
- * The type of /datum/tgui_embed_context that should be provided to this datum when it's embedded in another UI.
- */
-/datum/var/tgui_embed_context = /datum/tgui_embed_context
-
 //* API - Main - UI devs, look here! *//
 
 /**
@@ -27,7 +20,7 @@
  *
  * Called on an object when a tgui object is being created, allowing you to
  * push various assets to tgui, for examples spritesheets.
- * 
+ *
  * todo: support typepaths
  * todo: support file paths
  * todo: this should be sent to embedding interfaces
@@ -51,7 +44,7 @@
  *
  * @return bool If the user's input has been handled and the UI should update.
  */
-/datum/proc/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/proc/ui_act(action, list/params, datum/tgui/ui)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_UI_ACT, usr, action, params, ui)
 	// If UI is not interactive or usr calling Topic is not the UI user, bail.
@@ -67,11 +60,10 @@
  * @params
  * * user - (optional) the mob using the UI
  * * ui - (optional) the host tgui
- * * embed_context - (optional) if non-null, we are an embedded UI.
  *
  * return list Data to be sent to the UI.
  */
-/datum/proc/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/proc/ui_data(mob/user, datum/tgui/ui)
 	return list() // Not implemented.
 
 /**
@@ -88,11 +80,10 @@
  * @params
  * * user - (optional) the mob using the UI
  * * ui - (optional) the host tgui
- * * embed_context - (optional) if non-null, we are an embedded UI.
  *
  * return list Static Data to be sent to the UI.
  */
-/datum/proc/ui_static_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/proc/ui_static_data(mob/user, datum/tgui/ui)
 	return list()
 
 /**
@@ -100,7 +91,7 @@
  *
  * Used to open and update UIs.
  * If this proc is not implemented properly, the UI will not update correctly.
- * 
+ *
  * todo: how should i ruin this proc? i don't really like update being twined with opening, but it makes sense..? ~silicons
  *
  * required user mob The mob who opened/is using the UI.
@@ -114,7 +105,7 @@
 
 /**
  * private
- * 
+ *
  * todo: this is just completely ignored for modules/embedding. is this a good thing? ~silicons
  *
  * The UI's host object (usually src_object).
@@ -128,7 +119,7 @@
  * private
  *
  * todo: this is just completely ignored for modules/embedding. is this a good thing? ~silicons
- * 
+ *
  * The UI's state controller to be used for created uis
  * This is a proc over a var for memory reasons
  */
@@ -136,12 +127,29 @@
 	return GLOB.default_state
 
 /**
+ * Called to route UI act calls to modules.
+ * 
+ * This is a proc so you can override yourself - very useful if you're doing your own module system
+ * rather than copy-pasting module code.
+ * 
+ * @params
+ * * action - the action string of the ui_act
+ * * params - list of string key-values; this is always strings, text2num your number args if needed!
+ * * ui - the host window ui datum
+ * * id - the module ID of the route request
+ * 
+ * @return TRUE if it was handled by modules.
+ */
+/datum/proc/ui_route(action, list/params, datum/tgui/ui, id)
+	#warn uhh
+
+/**
  * public
  *
  * Checks the overall UI state for a mob.
  *
  * todo: this is just completely ignored for modules/embedding. is this a good thing? ~silicons
- * 
+ *
  * @params
  * * user - The mob who opened/is using the UI.
  * * state - The state to check.
@@ -274,7 +282,7 @@
  * * ui - the tgui instance
  * * embed_context - the embedding context; if null, this is a root/host window.
  */
-/datum/proc/on_ui_open(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/proc/on_ui_open(mob/user, datum/tgui/ui)
 	#warn hook this proc
 	SIGNAL_HANDLER
 
@@ -290,7 +298,7 @@
  * * ui - the tgui instance
  * * embed_context - the embedding context; if null, this is a root/host window.
  */
-/datum/proc/on_ui_close(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/proc/on_ui_close(mob/user, datum/tgui/ui)
 	SIGNAL_HANDLER
 
 /**
@@ -306,5 +314,5 @@
  * * ui - the tgui instance
  * * embed_context - the embedding context; if null, this is a root/host window.
  */
-/datum/proc/on_ui_transfer(mob/old_mob, mob/new_mob, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/proc/on_ui_transfer(mob/old_mob, mob/new_mob, datum/tgui/ui)
 	return

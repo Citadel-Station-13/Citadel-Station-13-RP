@@ -164,7 +164,7 @@
 	if(!completed)
 		complete(FALSE)
 
-/datum/fishing_challenge/ui_static_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/fishing_challenge/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["difficulty"] = max(1,min(difficulty,100))
 	.["fish_ai"] = fish_ai
@@ -180,7 +180,7 @@
 		ui_status_user_is_abled(user, lure),
 	)
 
-/datum/fishing_challenge/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/fishing_challenge/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return

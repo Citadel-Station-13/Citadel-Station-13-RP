@@ -96,7 +96,7 @@
 		ui = new(user, src, "SuitStorageUnit", name)
 		ui.open()
 
-/obj/machinery/suit_storage_unit/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/machinery/suit_storage_unit/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 
 	data["broken"] = isbroken
@@ -130,7 +130,7 @@
 		data["occupied"] = FALSE
 	return data
 
-/obj/machinery/suit_storage_unit/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/machinery/suit_storage_unit/ui_act(action, list/params, datum/tgui/ui)
 	if(..() || isUV || isbroken)
 		return TRUE
 

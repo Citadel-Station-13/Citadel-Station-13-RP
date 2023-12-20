@@ -95,7 +95,7 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 		ui = new(user, src, "OvermapHelm", "[linked.name] Helm Control") // 565, 545
 		ui.open()
 
-/obj/machinery/computer/ship/helm/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/machinery/computer/ship/helm/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	var/turf/T = get_turf(linked)
@@ -145,7 +145,7 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 	data["locations"] = locations
 	return data
 
-/obj/machinery/computer/ship/helm/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/machinery/computer/ship/helm/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

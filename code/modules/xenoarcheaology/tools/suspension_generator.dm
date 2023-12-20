@@ -55,7 +55,7 @@
 		ui = new(user, src, "XenoarchSuspension", name)
 		ui.open()
 
-/obj/machinery/suspension_gen/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/machinery/suspension_gen/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	data["cell"] = cell
@@ -67,7 +67,7 @@
 
 	return data
 
-/obj/machinery/suspension_gen/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/machinery/suspension_gen/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

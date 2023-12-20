@@ -147,12 +147,12 @@
 		ui = new(user, src, "XenoarchReplicator", name)
 		ui.open()
 
-/obj/machinery/replicator/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/machinery/replicator/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 	data["tgui_construction"] = tgui_construction
 	return data
 
-/obj/machinery/replicator/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/machinery/replicator/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

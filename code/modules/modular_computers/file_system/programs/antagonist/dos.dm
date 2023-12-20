@@ -40,7 +40,7 @@
 
 	..(forced)
 
-/datum/computer_file/program/ntnet_dos/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/computer_file/program/ntnet_dos/ui_data(mob/user, datum/tgui/ui)
 	if(!ntnet_global)
 		return
 
@@ -62,7 +62,7 @@
 
 	return data
 
-/datum/computer_file/program/ntnet_dos/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/computer_file/program/ntnet_dos/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 	switch(action)

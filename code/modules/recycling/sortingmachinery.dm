@@ -338,7 +338,7 @@
 		ui = new(user, src, "DestinationTagger", name)
 		ui.open()
 
-/obj/item/destTagger/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/item/destTagger/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	data["currTag"] = currTag
@@ -352,7 +352,7 @@
 		return
 	ui_interact(user)
 
-/obj/item/destTagger/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/item/destTagger/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 	add_fingerprint(usr)

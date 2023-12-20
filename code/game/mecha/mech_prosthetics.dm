@@ -79,7 +79,7 @@
 		for(var/i in I.materials_base)
 			I.materials_base[i] = I.materials_base[i] * component_coeff
 
-/obj/machinery/mecha_part_fabricator/pros/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/machinery/mecha_part_fabricator/pros/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	data["species_types"] = species_types
@@ -100,7 +100,7 @@
 
 	return data
 
-/obj/machinery/mecha_part_fabricator/pros/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/machinery/mecha_part_fabricator/pros/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

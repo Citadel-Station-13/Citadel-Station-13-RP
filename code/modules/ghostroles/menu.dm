@@ -11,7 +11,7 @@ GLOBAL_DATUM_INIT(ghostrole_menu, /datum/ghostrole_menu, new)
 		ui = new(user, src, "SpawnersMenu")
 		ui.open()
 
-/datum/ghostrole_menu/ui_static_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/ghostrole_menu/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	var/list/spawners = list()
 	.["spawners"] = spawners
@@ -31,7 +31,7 @@ GLOBAL_DATUM_INIT(ghostrole_menu, /datum/ghostrole_menu, new)
 		data["amount_left"] = slots == INFINITY? -1 : slots
 		spawners += list(data)	// wrap
 
-/datum/ghostrole_menu/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/ghostrole_menu/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return
 	if(!isobserver(usr))

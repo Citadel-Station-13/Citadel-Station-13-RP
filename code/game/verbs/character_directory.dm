@@ -26,7 +26,7 @@ GLOBAL_DATUM(character_directory, /datum/character_directory)
 		ui = new(user, src, "CharacterDirectory", "Character Directory")
 		ui.open()
 
-/datum/character_directory/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/character_directory/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	data["personalVisibility"] = user?.client?.prefs?.show_in_directory
@@ -35,7 +35,7 @@ GLOBAL_DATUM(character_directory, /datum/character_directory)
 
 	return data
 
-/datum/character_directory/ui_static_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/character_directory/ui_static_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	var/list/directory_mobs = list()
@@ -101,7 +101,7 @@ GLOBAL_DATUM(character_directory, /datum/character_directory)
 	return data
 
 
-/datum/character_directory/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/character_directory/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return

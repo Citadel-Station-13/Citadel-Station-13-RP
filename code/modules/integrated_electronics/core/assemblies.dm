@@ -162,7 +162,7 @@
 		ui = new(user, src, "ICAssembly", name, parent_ui)
 		ui.open()
 
-/obj/item/electronic_assembly/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/item/electronic_assembly/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	var/total_parts = 0
@@ -203,7 +203,7 @@
 				)))*/
 	return data
 
-/obj/item/electronic_assembly/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/item/electronic_assembly/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

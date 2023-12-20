@@ -16,16 +16,16 @@
 		ui = new(user, src, "AirlockElectronics")
 		ui.open()
 
-/obj/item/airlock_electronics/ui_static_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/item/airlock_electronics/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["access"] = SSjob.tgui_access_data()
 
-/obj/item/airlock_electronics/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/item/airlock_electronics/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["req_access"] = conf_req_access || list()
 	.["req_one_access"] = conf_req_one_access || list()
 
-/obj/item/airlock_electronics/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/item/airlock_electronics/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return

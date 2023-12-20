@@ -112,7 +112,7 @@
  * ui_data gives the UI any relevant data it needs.
  * In our case, that's basically everything from our statpanel.
  */
-/obj/item/nif/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/item/nif/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	data["theme"] = save_data["ui_theme"]
@@ -152,7 +152,7 @@
 /**
  * ui_act handles all user input in the UI.
  */
-/obj/item/nif/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/item/nif/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

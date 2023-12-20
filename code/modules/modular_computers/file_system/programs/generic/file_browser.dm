@@ -14,7 +14,7 @@
 	var/open_file
 	var/error
 
-/datum/computer_file/program/filemanager/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/computer_file/program/filemanager/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -140,7 +140,7 @@
 			HDD.store_file(C)
 			return TRUE
 
-/datum/computer_file/program/filemanager/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/computer_file/program/filemanager/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = get_header_data()
 
 	var/obj/item/computer_hardware/hard_drive/HDD = computer.hard_drive

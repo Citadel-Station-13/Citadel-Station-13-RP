@@ -116,7 +116,7 @@ GLOBAL_LIST_EMPTY(species_picker_active)
 /datum/tgui_species_picker/ui_status(mob/user, datum/ui_state/state)
 	return UI_INTERACTIVE
 
-/datum/tgui_species_picker/ui_static_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/tgui_species_picker/ui_static_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 	data["whitelisted"] = whitelisted
 	data["species"] = SScharacters.character_species_cache
@@ -124,12 +124,12 @@ GLOBAL_LIST_EMPTY(species_picker_active)
 	data["admin"] = !!admin_datums[user.ckey]
 	return data
 
-/datum/tgui_species_picker/on_ui_close(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/tgui_species_picker/on_ui_close(mob/user, datum/tgui/ui)
 	. = ..()
 	if(!QDELING(src))
 		qdel(src)
 
-/datum/tgui_species_picker/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/tgui_species_picker/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	switch(action)
 		if("pick")

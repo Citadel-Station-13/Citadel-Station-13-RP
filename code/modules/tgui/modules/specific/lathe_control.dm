@@ -44,7 +44,7 @@
 	.["queue"] = ui_queue_data()
 	.["ingredients"] = isnull(lathe.stored_items)? list() : ui_ingredients_available(lathe.stored_items)
 
-/datum/tgui_module/lathe_control/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/tgui_module/lathe_control/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return

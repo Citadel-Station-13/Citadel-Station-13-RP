@@ -13,18 +13,18 @@
 		ui = new(user, src, "Filteriffic")
 		ui.open()
 
-/datum/filter_editor/ui_static_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/filter_editor/ui_static_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 	data["filter_info"] = GLOB.master_filter_info
 	return data
 
-/datum/filter_editor/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/filter_editor/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 	data["target_name"] = target.name
 	data["target_filter_data"] = target.filter_data
 	return data
 
-/datum/filter_editor/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/filter_editor/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return

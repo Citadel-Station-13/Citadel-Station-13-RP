@@ -27,7 +27,7 @@
 			if(laws.selectable)
 				player_laws += laws
 
-/datum/tgui_module_old/law_manager/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/tgui_module_old/law_manager/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -145,7 +145,7 @@
 	owner.lawsync()
 	return ..() // 800, is_malf(user) ? 600 : 400
 
-/datum/tgui_module_old/law_manager/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/tgui_module_old/law_manager/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	data["ion_law_nr"] = ionnum()

@@ -173,7 +173,7 @@
 	closed = TRUE
 	return ..()
 
-/datum/tgui_dynamic_input/ui_static_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/tgui_dynamic_input/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["query"] = query.get_query()
 	.["title"] = title
@@ -187,7 +187,7 @@
 		ui.set_autoupdate(FALSE)
 		ui.open()
 
-/datum/tgui_dynamic_input/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/tgui_dynamic_input/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return

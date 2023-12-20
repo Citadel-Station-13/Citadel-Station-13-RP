@@ -59,7 +59,7 @@
 		ui.open()
 
 
-/obj/machinery/dnaforensics/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/machinery/dnaforensics/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	data["scan_progress"] = round(scanner_progress)
@@ -70,7 +70,7 @@
 	return data
 
 
-/obj/machinery/dnaforensics/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/machinery/dnaforensics/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

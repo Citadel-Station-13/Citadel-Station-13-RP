@@ -344,7 +344,7 @@
 		ui = new(user, src, "PersonalCrafting")
 		ui.open()
 
-/datum/component/personal_crafting/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/component/personal_crafting/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 	data["busy"] = busy
 	data["category"] = cur_category
@@ -368,7 +368,7 @@
 	data["craftability"] = craftability
 	return data
 
-/datum/component/personal_crafting/ui_static_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/component/personal_crafting/ui_static_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 
 	var/list/crafting_recipes = list()
@@ -395,7 +395,7 @@
 	data["crafting_recipes"] = crafting_recipes
 	return data
 
-/datum/component/personal_crafting/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/component/personal_crafting/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return
 	switch(action)

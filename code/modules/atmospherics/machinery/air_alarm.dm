@@ -538,7 +538,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 			ui.set_state(state)
 		ui.open()
 
-/obj/machinery/air_alarm/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/machinery/air_alarm/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	var/datum/gas_mixture/environment = loc.return_air()
 	.["environment"] = environment.tgui_analyzer_scan(GAS_GROUP_REAGENT | GAS_GROUP_UNKNOWN)
@@ -572,7 +572,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 	. += data
 	//! end
 
-/obj/machinery/air_alarm/ui_static_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/machinery/air_alarm/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["gasContext"] = global.gas_data.tgui_gas_context()
 	.["gasTLV"] = tlv_ids
@@ -588,7 +588,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 	data["temperatureTLV"] = tlv_temperature
 	push_ui_data(data = data)
 
-/obj/machinery/air_alarm/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/machinery/air_alarm/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return

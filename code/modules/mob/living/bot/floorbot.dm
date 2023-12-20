@@ -65,7 +65,7 @@
 		ui = new(user, src, "Floorbot", name)
 		ui.open()
 
-/mob/living/bot/floorbot/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/mob/living/bot/floorbot/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	data["on"] = on
@@ -101,7 +101,7 @@
 			playsound(src.loc, 'sound/machines/buzzbeep.ogg', 50, FALSE)
 		return TRUE
 
-/mob/living/bot/floorbot/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/mob/living/bot/floorbot/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

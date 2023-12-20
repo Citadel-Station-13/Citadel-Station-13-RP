@@ -50,7 +50,7 @@
 		message = "Successfully decrypted and saved operational key codes. Downloaded access codes for: [target_access.access_name]"
 		target_access = null
 
-/datum/computer_file/program/access_decrypter/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/computer_file/program/access_decrypter/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 	switch(action)
@@ -77,7 +77,7 @@
 				ntnet_global.intrusion_detection_alarm = TRUE
 			return TRUE
 
-/datum/computer_file/program/access_decrypter/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/computer_file/program/access_decrypter/ui_data(mob/user, datum/tgui/ui)
 	if(!ntnet_global)
 		return
 	var/list/data = get_header_data()

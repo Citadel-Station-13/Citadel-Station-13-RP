@@ -142,7 +142,7 @@ GLOBAL_LIST_INIT(atm_sounds, list('sound/items/polaroid1.ogg', 'sound/items/pola
 		ui = new(user, src, "ATM", "[machine_id]")
 		ui.open()
 
-/obj/machinery/atm/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/machinery/atm/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	var/data[0]
 
@@ -164,7 +164,7 @@ GLOBAL_LIST_INIT(atm_sounds, list('sound/items/polaroid1.ogg', 'sound/items/pola
 
 	return data
 
-/obj/machinery/atm/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/machinery/atm/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	var/mob/living/carbon/human/user = usr
 	switch(action)

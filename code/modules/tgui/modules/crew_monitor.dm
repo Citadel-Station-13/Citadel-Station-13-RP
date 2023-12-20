@@ -7,7 +7,7 @@
 		get_asset_datum(/datum/asset/simple/nanomaps),
 	)
 
-/datum/tgui_module_old/crew_monitor/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/tgui_module_old/crew_monitor/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -45,7 +45,7 @@
 		ui.open()
 
 
-/datum/tgui_module_old/crew_monitor/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/tgui_module_old/crew_monitor/ui_data(mob/user, datum/tgui/ui)
 	var/data[0]
 
 	data["isAI"] = isAI(user)

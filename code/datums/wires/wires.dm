@@ -95,7 +95,7 @@
 /datum/wires/ui_state()
 	return GLOB.physical_state
 
-/datum/wires/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/wires/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 	var/list/replace_colors
 
@@ -150,7 +150,7 @@
 	data["status"] = status
 	return data
 
-/datum/wires/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/wires/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return
 

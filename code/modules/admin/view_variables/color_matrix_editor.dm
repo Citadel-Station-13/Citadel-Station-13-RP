@@ -78,13 +78,13 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/color_matrix_proxy_view)
 /datum/color_matrix_editor/ui_state()
 	return GLOB.admin_state
 
-/datum/color_matrix_editor/ui_static_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/color_matrix_editor/ui_static_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 	data["mapRef"] = proxy_view.assigned_map
 
 	return data
 
-/datum/color_matrix_editor/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/color_matrix_editor/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 	data["currentColor"] = current_color
 
@@ -96,7 +96,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/color_matrix_proxy_view)
 		ui = new(user, src, "ColorMatrixEditor")
 		ui.open()
 
-/datum/color_matrix_editor/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/color_matrix_editor/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return
@@ -108,7 +108,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/color_matrix_proxy_view)
 			on_confirm()
 			SStgui.close_uis(src)
 
-/datum/color_matrix_editor/on_ui_close(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/color_matrix_editor/on_ui_close(mob/user, datum/tgui/ui)
 	. = ..()
 	closed = TRUE
 

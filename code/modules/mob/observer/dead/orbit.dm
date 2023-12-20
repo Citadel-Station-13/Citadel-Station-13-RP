@@ -15,7 +15,7 @@
 		ui = new(user, src, "Orbit")
 		ui.open()
 
-/datum/orbit_menu/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/orbit_menu/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return
@@ -35,7 +35,7 @@
 			update_static_data()
 			. = TRUE
 
-/datum/orbit_menu/ui_static_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/orbit_menu/ui_static_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 
 	var/list/players = list()

@@ -25,7 +25,7 @@
 		return
 	unlook(user)
 
-/datum/tgui_module_old/ship/on_ui_close(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/tgui_module_old/ship/on_ui_close(mob/user, datum/tgui/ui)
 	. = ..()
 	user.unset_machine()
 	unlook(user)
@@ -102,7 +102,7 @@
 
 	. = ..()
 
-/datum/tgui_module_old/ship/nav/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/tgui_module_old/ship/nav/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	var/turf/T = get_turf(linked)
@@ -124,7 +124,7 @@
 
 	return data
 
-/datum/tgui_module_old/ship/nav/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/tgui_module_old/ship/nav/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -178,7 +178,7 @@
 			break
 
 // Beware ye eyes. This holds all of the data from helm, engine, and sensor control all at once.
-/datum/tgui_module_old/ship/fullmonty/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/tgui_module_old/ship/fullmonty/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	// HELM
@@ -294,7 +294,7 @@
 	return data
 
 // Beware ye eyes. This holds all of the ACTIONS from helm, engine, and sensor control all at once.
-/datum/tgui_module_old/ship/fullmonty/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/tgui_module_old/ship/fullmonty/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

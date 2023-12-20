@@ -38,17 +38,17 @@
 	/// Are byond mouse events beyond the window passed in to the ui
 	var/mouse_hooked = FALSE
 	/// The Parent UI
-	//? STOP USING THIS. USE EMBEDDING. ~SILICONS
+	//? STOP USING THIS. USE MODULES. ~SILICONS
 	var/datum/tgui/parent_ui
 	/// Children of this UI
-	//? STOP USING THIS. USE EMBEDDING. ~SILICONS
+	//? STOP USING THIS. USE MODULES. ~SILICONS
 	var/list/children = list()
 
-	//* Embedding *//
-	/// embedded datums to IDs
-	var/list/datum/embeddings
-	/// processed embeddings
-	var/list/datum/embeddings_processed
+	//* Modules *//
+	/// datums to IDs
+	var/list/datum/modules_registered
+	/// processed modules
+	var/list/datum/modules_processed
 
 /**
  * public
@@ -176,6 +176,8 @@
  * public
  *
  * Enable/disable passing through byond mouse events to the window
+ * 
+ * todo: this is like the least documented proc in history wtf
  *
  * required value bool Enable/disable hooking.
  */
@@ -247,24 +249,6 @@
 	window.send_message("update", get_payload(
 		with_data = should_update_data,
 	))
-
-/**
- * public
- *
- * Send a partial update to the client of only the provided data lists
- * Does not update config at all
- *
- * WARNING: Do not use this unless you know what you are doing
- *
- * required data The data to send
- * optional force bool Send an update even if UI is not interactive.
- */
-/datum/tgui/proc/push_data(data, force)
-	if(!user.client || !initialized || closing)
-		return
-	if(!force && status < UI_UPDATE)
-		return
-	window.send_message("data", data)
 
 /**
  * private
@@ -416,21 +400,62 @@
 			src_object.tgui_shared_states[href_list["key"]] = href_list["value"]
 			SStgui.update_uis(src_object)
 
-//* TGUI Embedding *//
+//* Advanced API - Updates *//
 
 /**
- * Embeds a datum as a module into this UI.
- * 
+ * public
+ *
+ * Send a partial update to the client of only the provided data lists
+ * Does not update config at all
+ *
+ * WARNING: Do not use this unless you know what you are doing
+ *
+ * required data The data to send
+ * optional force bool Send an update even if UI is not interactive.
+ */
+/datum/tgui/proc/push_data(data, force)
+	if(!user.client || !initialized || closing)
+		return
+	if(!force && status < UI_UPDATE)
+		return
+	window.send_message("data", data)
+
+/**
+ * public
+ *
+ * Send an update to module data.
+ * As with normal data, this will be combined by a reducer
+ * to overwrite only where necessary, so partial pushes
+ * can work fine.
+ *
+ * WARNING: Do not use this unless you know what you are doing.
+ *
+ * @params
+ * * updates - list(id = list(data...), ...) of modules to update.
+ * * force - (optional) send update even if UI is not interactive
+ */
+/datum/tgui/proc/push_modules(list/updates, force)
+	if(isnull(user.client) || !initialized || closing)
+		return
+	if(!force && status < UI_UPDATE)
+		return
+	window.send_message("modules", updates)
+
+//* Module System *//
+
+/**
+ * Registers a datum as a module into this UI.
+ *
  * @params
  * * module - the module in question
  * * id - the id to use for the module
  * * interface - the interface identifier (e.g. TGUILatheContrrol)
  * * process - should this be a processed / auto updated module?
  */
-/datum/tgui/proc/embed_module(datum/module, id, interface, process = TRUE)
+/datum/tgui/proc/register_module(datum/module, id, interface, process = TRUE)
 	#warn impl
 
-/datum/tgui/proc/remove_module(datum/module)
+/datum/tgui/proc/unregister_module(datum/module)
 	#warn impl
 
 /datum/tgui/proc/module_deleted(datum/source)

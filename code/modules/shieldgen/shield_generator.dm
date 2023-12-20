@@ -402,7 +402,7 @@
 		ui = new(user, src, "OvermapShieldGenerator", name) // 500, 800
 		ui.open()
 
-/obj/machinery/power/shield_generator/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/machinery/power/shield_generator/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 
 	data["running"] = running
@@ -446,7 +446,7 @@
 		return min(..(), UI_DISABLED)
 	return ..()
 
-/obj/machinery/power/shield_generator/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/machinery/power/shield_generator/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

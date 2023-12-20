@@ -18,7 +18,7 @@
 		// machines may not yet be ordered at this point
 		monitored_alarms = dd_sortedObjectList(monitored_alarms)
 
-/datum/tgui_module_old/atmos_control/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/tgui_module_old/atmos_control/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -45,7 +45,7 @@
 		ui.open()
 	ui_ref = ui
 
-/datum/tgui_module_old/atmos_control/ui_static_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/tgui_module_old/atmos_control/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 
 	var/z = get_z(user)
@@ -67,7 +67,7 @@
 			"z" = alarm.z)
 	.["alarms"] = alarms
 
-/datum/tgui_module_old/atmos_control/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/tgui_module_old/atmos_control/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 
 	var/z = get_z(user)

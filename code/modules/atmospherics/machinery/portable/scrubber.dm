@@ -55,17 +55,17 @@
 
 //! LEGACY ABOVE
 
-/obj/machinery/portable_atmospherics/powered/scrubber/ui_static_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/machinery/portable_atmospherics/powered/scrubber/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["atmosContext"] = global.gas_data.tgui_gas_context()
 	.["scrubbingIds"] = scrubbing_ids
 	.["scrubbingGroups"] = scrubbing_groups
 
-/obj/machinery/portable_atmospherics/powered/scrubber/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/machinery/portable_atmospherics/powered/scrubber/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["moleRate"] = transfer_current
 
-/obj/machinery/portable_atmospherics/powered/scrubber/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/machinery/portable_atmospherics/powered/scrubber/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return

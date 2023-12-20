@@ -57,7 +57,7 @@
 /datum/tgui_module/ui_host()
 	return isnull(host)? src : host.ui_host()
 
-/datum/tgui_module/on_ui_close(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/tgui_module/on_ui_close(mob/user, datum/tgui/ui)
 	. = ..()
 	host?.ui_close(user, src)
 	if(ephemeral)
@@ -78,21 +78,19 @@
 /**
  * called directly, if operating standalone. routes to static_data(user), with all other args skipped.
  */
-/datum/tgui_module/ui_static_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/tgui_module/ui_static_data(mob/user, datum/tgui/ui)
 	return static_data(user)
 
 /**
  * called directly, if operating standalone. routes to data(user), with all other args skipped.
  */
-/datum/tgui_module/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/tgui_module/ui_data(mob/user, datum/tgui/ui)
 	return data(user)
 
 /**
  * called directly, if operating standalone.
  */
-/datum/tgui_module/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
-	// we only override this to provide comment
-	// yes yes proc overhead sue me it's called like 10k times a round, tops.
+/datum/tgui_module/ui_act(action, list/params, datum/tgui/ui)
 	return ..()
 
 /**
@@ -125,6 +123,7 @@
 	// it's not us, respect overrides that wish to hook module behavior
 	if(ui_module_act(action, params, ui, id))
 		return TRUE
+#warn get rid of this
 
 /**
  * called as a hook for intercepting ui acts from a module
@@ -140,56 +139,4 @@
 /datum/proc/ui_module_act(action, list/params, datum/tgui/ui, id)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_UI_MODULE_ACT, usr, id, action, params, ui)
-
-/**
- * called to inject ui module data.
- * they will be handled by a separate reducer to make static data work.
- * you can technically use this for things other than tgui_module's
- * for example, for RIG/other "modular items-in-items" to hold data.
- *
- * this will be sent into data.modules.* instead of just data.*
- *
- * @params
- * * user - user
- * * ui - root tgui module is in
- * * state - ui state
- */
-/datum/proc/ui_module_data(mob/user, datum/tgui/ui, datum/ui_state/state)
-	return list()
-
-/**
- * called to inject ui module static data.
- * they will be handled by a separate reducer to make static data work.
- * you can technically use this for things other than tgui_module's
- * for example, for RIG/other "modular items-in-items" to hold data.
- *
- * this will be sent into data.modules[id].* instead of just data.*
- *
- * @params
- * * user - user
- * * ui - root tgui module is in
- * * state - ui state
- */
-/datum/proc/ui_module_static(mob/user, datum/tgui/ui, datum/ui_state/state)
-	return list()
-
-/**
- * public
- *
- * Send an update to module data.
- * As with normal data, this will be combined by a reducer
- * to overwrite only where necessary, so partial pushes
- * can work fine.
- *
- * WARNING: Do not use this unless you know what you are doing.
- *
- * @params
- * * updates - list(id = list(data...), ...) of modules to update.
- * * force - (optional) send update even if UI is not interactive
- */
-/datum/tgui/proc/push_modules(list/updates, force)
-	if(isnull(user.client) || !initialized || closing)
-		return
-	if(!force && status < UI_UPDATE)
-		return
-	window.send_message("modules", updates)
+#warn get rid of this

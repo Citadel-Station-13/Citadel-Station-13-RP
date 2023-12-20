@@ -93,7 +93,7 @@
 		ui.set_autoupdate(FALSE)
 		ui.open()
 
-/obj/structure/filingcabinet/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/structure/filingcabinet/ui_data(mob/user, datum/tgui/ui)
 	var/list/files = list()
 	for(var/obj/item/P in src)
 		files.Add(list(list(
@@ -103,7 +103,7 @@
 
 	return list("contents" = files)
 
-/obj/structure/filingcabinet/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/structure/filingcabinet/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

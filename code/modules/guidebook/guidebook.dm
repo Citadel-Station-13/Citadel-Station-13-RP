@@ -15,7 +15,7 @@ GLOBAL_DATUM_INIT(guidebook, /datum/guidebook, new)
 /datum/guidebook/ui_state()
 	return GLOB.always_state
 
-/datum/guidebook/on_ui_close(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/datum/guidebook/on_ui_close(mob/user, datum/tgui/ui)
 	opened -= user
 	return ..()
 

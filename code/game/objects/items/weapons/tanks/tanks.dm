@@ -233,7 +233,7 @@ var/list/global/tank_gauge_cache = list()
 		ui = new(user, src, "Tank", name)
 		ui.open()
 
-/obj/item/tank/ui_static_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/item/tank/ui_static_data(mob/user, datum/tgui/ui)
 	. = list (
 		"defaultReleasePressure" = round(TANK_DEFAULT_RELEASE_PRESSURE),
 		"minReleasePressure" = round(TANK_MIN_RELEASE_PRESSURE),
@@ -242,7 +242,7 @@ var/list/global/tank_gauge_cache = list()
 		"fragmentPressure" = round(TANK_FRAGMENT_PRESSURE)
 	)
 
-/obj/item/tank/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/item/tank/ui_data(mob/user, datum/tgui/ui)
 	. = list(
 		"tankPressure" = round(air_contents.return_pressure()),
 		"releasePressure" = round(distribute_pressure)
@@ -266,7 +266,7 @@ var/list/global/tank_gauge_cache = list()
 
 	return .
 
-/obj/item/tank/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/item/tank/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 	switch(action)

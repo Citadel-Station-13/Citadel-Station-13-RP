@@ -139,7 +139,7 @@ a creative player the means to solve many problems.  Circuits are held inside an
 		ui = new(user, src, "ICCircuit", name, parent_ui)
 		ui.open()
 
-/obj/item/integrated_circuit/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/item/integrated_circuit/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	data["name"] = name
@@ -206,7 +206,7 @@ a creative player the means to solve many problems.  Circuits are held inside an
 
 	return pindata
 
-/obj/item/integrated_circuit/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/item/integrated_circuit/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

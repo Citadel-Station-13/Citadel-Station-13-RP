@@ -174,7 +174,7 @@
 		ui.autoupdate = TRUE
 		ui.open()
 
-/obj/machinery/computer/arcade/clawmachine/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/machinery/computer/arcade/clawmachine/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 
 	data["wintick"] = wintick
@@ -184,7 +184,7 @@
 
 	return data
 
-/obj/machinery/computer/arcade/clawmachine/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/machinery/computer/arcade/clawmachine/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return
 

@@ -85,7 +85,7 @@
 		ui = new(user, src, "TransferValve", name) // 460, 320
 		ui.open()
 
-/obj/item/transfer_valve/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/item/transfer_valve/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 	data["tank_one"] = tank_one ? tank_one.name : null
 	data["tank_two"] = tank_two ? tank_two.name : null
@@ -93,7 +93,7 @@
 	data["valve"] = valve_open
 	return data
 
-/obj/item/transfer_valve/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/item/transfer_valve/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return
 	. = TRUE

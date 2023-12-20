@@ -244,7 +244,7 @@
 		ui = new(user, src, "SeedStorage", name)
 		ui.open()
 
-/obj/machinery/seed_storage/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/machinery/seed_storage/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	if(smart)
@@ -355,7 +355,7 @@
 
 	return data
 
-/obj/machinery/seed_storage/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/machinery/seed_storage/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 	var/ID = text2num(params["id"])

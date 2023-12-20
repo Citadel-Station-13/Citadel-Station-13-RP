@@ -37,7 +37,7 @@
 		ui = new(user, src, "OvermapShipSensors", "[linked.name] Sensors Control") // 420, 530
 		ui.open()
 
-/obj/machinery/computer/ship/sensors/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/machinery/computer/ship/sensors/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 
 	data["viewing"] = viewing_overmap(user)
@@ -79,7 +79,7 @@
 
 	return data
 
-/obj/machinery/computer/ship/sensors/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/machinery/computer/ship/sensors/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

@@ -30,7 +30,7 @@
 	. = ..()
 	stack_trace("WARNING: Embedded controller [src] ([type]) had Topic() called unexpectedly. Please report this.")
 
-/obj/machinery/embedded_controller/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/machinery/embedded_controller/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 	if(LAZYLEN(valid_actions))

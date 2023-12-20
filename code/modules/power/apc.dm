@@ -1002,7 +1002,7 @@ GLOBAL_LIST_EMPTY(apcs)
 		ui = new(user, src, "APC", name) // 510, 460
 		ui.open()
 
-/obj/machinery/power/apc/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/machinery/power/apc/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list(
 		"locked" = locked,
 		"normallyLocked" = locked,
@@ -1058,7 +1058,7 @@ GLOBAL_LIST_EMPTY(apcs)
 
 	return data
 
-/obj/machinery/power/apc/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/machinery/power/apc/ui_act(action, list/params, datum/tgui/ui)
 	if(..() || !can_use(usr, TRUE))
 		return TRUE
 

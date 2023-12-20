@@ -21,7 +21,7 @@
 /obj/item/plant_analyzer/ui_state()
 	return GLOB.inventory_state
 
-/obj/item/plant_analyzer/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/item/plant_analyzer/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	var/datum/seed/grown_seed = locate(last_seed)
@@ -34,7 +34,7 @@
 
 	return data
 
-/obj/item/plant_analyzer/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
+/obj/item/plant_analyzer/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
