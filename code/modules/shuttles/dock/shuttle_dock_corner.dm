@@ -13,9 +13,70 @@ GLOBAL_LIST_EMPTY(uninitialized_shuttle_dock_bounds)
 	desc = "Why do you see this? Report it."
 	#warn sprite
 
-	#warn impl all
+	/// constructed
+	var/constructed = FALSE
 
-#warn impl all
+/obj/shuttle_dock_corner/Initialize(mapload)
+	SHOULD_CALL_PARENT(FALSE)
+	construct()
+	return INITIALIZE_HINT_QDEL
+
+/obj/shuttle_dock_corner/proc/construct()
+	if(constructed)
+		return
+	var/obj/shuttle_dock_corner/bottom_left/bottom_left
+	var/obj/shuttle_dock_corner/bottom_right/bottom_right
+	var/obj/shuttle_dock_corner/top_left/top_left
+	var/obj/shuttle_dock_corner/top_right/top_right
+	var/list/processing = list(
+		(type) = src,
+	)
+	while(length(processing))
+		var/type = processing[processing.len]
+		--processing.len
+		var/obj/shuttle_dock_corner/corner = processing[type]
+		corner.constructed = TRUE
+		switch(type)
+			if(/obj/shuttle_dock_corner/bottom_left)
+				bottom_left = corner
+				if(isnull(bottom_right))
+					cardinal_scan(processing, /obj/shuttle_dock_corner/bottom_right, EAST)
+				if(isnull(top_left))
+					cardinal_scan(processing, /obj/shuttle_dock_corner/top_left, NORTH)
+			if(/obj/shuttle_dock_corner/bottom_right)
+				bottom_right = corner
+				if(isnull(top_right))
+					cardinal_scan(processing, /obj/shuttle_dock_corner/top_right, NORTH)
+				if(isnull(bottom_left))
+					cardinal_scan(processing, /obj/shuttle_dock_corner/bottom_left, WEST)
+			if(/obj/shuttle_dock_corner/top_left)
+				top_left = corner
+				if(isnull(top_right))
+					cardinal_scan(processing, /obj/shuttle_dock_corner/top_right, EAST)
+				if(isnull(bottom_left))
+					cardinal_scan(processing, /obj/shuttle_dock_corner/bottom_left, SOUTH)
+			if(/obj/shuttle_dock_corner/top_right)
+				top_right = corner
+				if(isnull(top_left))
+					cardinal_scan(processing, /obj/shuttle_dock_corner/top_left, WEST)
+				if(isnull(bottom_right))
+					cardinal_scan(processing, /obj/shuttle_dock_corner/bottom_right, SOUTH)
+
+	if(isnull(bottom_left) || isnull(bottom_right) || isnull(top_left) || isnull(top_right))
+		CRASH("missing something: bl: [COORD(bottom_left)] br: [COORD(bottom_right)] tl: [COORD(top_left)] tr: [COORD(top_right)]")
+	var/datum/bounds2/bounds = new(bottom_left.x, bottom_left.y, top_right.x, top_right.y)
+	if(!bounds.valid())
+		CRASH("invalid bounds: bl: [COORD(bottom_left)] br: [COORD(bottom_right)] tl: [COORD(top_left)] tr: [COORD(top_right)]")
+	GLOB.uninitialized_shuttle_dock_bounds += bounds
+
+/obj/shuttle_dock_corner/proc/cardinal_scan(list/injecting, wanted_type, dir)
+	var/turf/T = get_turf(src)
+	while(T)
+		T = get_step(T, dir)
+		var/obj/shuttle_dock_corner/found
+		if(found = (locate(wanted_type) in T))
+			injecting[found.type] = found
+			return
 
 /obj/shuttle_dock_corner/bottom_left
 

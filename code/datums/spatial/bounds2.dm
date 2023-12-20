@@ -3,6 +3,8 @@
 
 /**
  * simple 2d bounds
+ *
+ * numbers are arbitrary, doesn't necessarily have to corrospond to the world bounds.
  */
 /datum/bounds2
 	var/x_low
@@ -23,6 +25,9 @@
 		enemy.y_low > y_high || \
 		enemy.y_high < y_low \
 	)
+
+/datum/bounds2/proc/valid()
+	return x_low <= x_high && y_low <= y_high
 
 /datum/bounds2/proc/contains_xy(x, y)
 	return (x >= x_low && x <= x_high) && (y >= y_low && y <= y_high)
