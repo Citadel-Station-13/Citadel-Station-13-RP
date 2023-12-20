@@ -535,6 +535,8 @@
 
 	var/button_number = 0
 	for(var/datum/action/A in actions)
+		if(!A.button_visibility)
+			return
 		button_number++
 		var/atom/movable/screen/movable/action_button/B = A.button
 
