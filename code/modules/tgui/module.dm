@@ -138,5 +138,4 @@
  */
 /datum/proc/ui_module_act(action, list/params, datum/tgui/ui, id)
 	SHOULD_CALL_PARENT(TRUE)
-	SEND_SIGNAL(src, COMSIG_UI_MODULE_ACT, usr, id, action, params, ui)
 #warn get rid of this

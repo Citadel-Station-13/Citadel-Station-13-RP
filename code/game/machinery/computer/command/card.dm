@@ -29,14 +29,6 @@
 		if("modify")
 			return tgui_cardmod.ui_act(action, params, ui)
 
-/obj/machinery/computer/card/ui_module_data(mob/user, datum/tgui/ui, datum/ui_state/state)
-	. = ..()
-	.["modify"] = tgui_cardmod.data(user, editing, authing)
-
-/obj/machinery/computer/card/ui_module_static(mob/user, datum/tgui/ui, datum/ui_state/state)
-	. = ..()
-	.["modify"] = tgui_cardmod.static_data(user, editing, authing)
-
 /**
  * for later use: authorized to change slots
  */
@@ -116,6 +108,7 @@
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "IdentificationComputer", name)
+		ui.register_module(tgui_cardmod, "modify")
 		ui.open()
 
 /obj/machinery/computer/card/ui_static_data(mob/user, datum/tgui/ui)

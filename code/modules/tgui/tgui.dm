@@ -176,7 +176,7 @@
  * public
  *
  * Enable/disable passing through byond mouse events to the window
- * 
+ *
  * todo: this is like the least documented proc in history wtf
  *
  * required value bool Enable/disable hooking.
@@ -279,14 +279,18 @@
 			"observer" = isobserver(user),
 		),
 	)
-	var/list/modules
+	var/list/modules = list()
 	// static first
 	if(with_static_data)
 		json_data["static"] = src_object.ui_static_data(user, src, state)
-		modules = src_object.ui_module_static(user, src, state)
+		for(var/datum/module as anything in modules_registered)
+			var/id = modules_registered[module]
+			modules[id] = module.ui_static_data(user, src, TRUE)
 	if(with_data)
 		json_data["data"] = src_object.ui_data(user, src, state)
-		modules = (modules || list()) | src_object.ui_module_data(user, src, state)
+		for(var/datum/module as anything in (with_static_data? modules_registered : modules_processed))
+			var/id = modules_registered[module]
+			modules[id] = modules[id] | module.ui_data(user, src, TRUE)
 	if(modules)
 		json_data["modules"] = modules
 	if(src_object.tgui_shared_states)
@@ -453,6 +457,9 @@
  * * process - should this be a processed / auto updated module?
  */
 /datum/tgui/proc/register_module(datum/module, id, interface, process = TRUE)
+	if(isnull(interface) && istype(module, /datum/tgui_module))
+		var/datum/tgui_module/actual_module = module
+		interface = actual_module.tgui_id
 	#warn impl
 
 /datum/tgui/proc/unregister_module(datum/module)

@@ -25,7 +25,7 @@ Code is pretty much ripped verbatim from nano modules, but with un-needed stuff 
 
 /datum/tgui_module_old/on_ui_close(mob/user, datum/tgui/ui)
 	if(host)
-		host.ui_close(user)
+		host.on_ui_close(user, ui, TRUE)
 
 /datum/tgui_module_old/proc/check_eye(mob/user)
 	return -1

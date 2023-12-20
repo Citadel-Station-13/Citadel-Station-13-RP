@@ -46,7 +46,6 @@
  */
 /datum/proc/ui_act(action, list/params, datum/tgui/ui)
 	SHOULD_CALL_PARENT(TRUE)
-	SEND_SIGNAL(src, COMSIG_UI_ACT, usr, action, params, ui)
 	// If UI is not interactive or usr calling Topic is not the UI user, bail.
 	if(!ui || ui.status != UI_INTERACTIVE)
 		return TRUE
@@ -128,16 +127,16 @@
 
 /**
  * Called to route UI act calls to modules.
- * 
+ *
  * This is a proc so you can override yourself - very useful if you're doing your own module system
  * rather than copy-pasting module code.
- * 
+ *
  * @params
  * * action - the action string of the ui_act
  * * params - list of string key-values; this is always strings, text2num your number args if needed!
  * * ui - the host window ui datum
  * * id - the module ID of the route request
- * 
+ *
  * @return TRUE if it was handled by modules.
  */
 /datum/proc/ui_route(action, list/params, datum/tgui/ui, id)
@@ -280,7 +279,7 @@
  * @params
  * * user - opening mob
  * * ui - the tgui instance
- * * embed_context - the embedding context; if null, this is a root/host window.
+ * * embedded - this was an embedded ui / the datum is being embedded
  */
 /datum/proc/on_ui_open(mob/user, datum/tgui/ui)
 	#warn hook this proc
@@ -296,7 +295,7 @@
  * @params
  * * user - opening mob
  * * ui - the tgui instance
- * * embed_context - the embedding context; if null, this is a root/host window.
+ * * embedded - this was an embedded ui / the datum is being un-embedded
  */
 /datum/proc/on_ui_close(mob/user, datum/tgui/ui)
 	SIGNAL_HANDLER
