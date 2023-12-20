@@ -583,7 +583,7 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 			outgoing_call.cleanup_remote_presence()
 			return TRUE
 
-/obj/machinery/holopad/on_ui_close(mob/user)
+/obj/machinery/holopad/on_ui_close(mob/user, datum/tgui/ui, embedded)
 	. = ..()
 	// if they were remoting, kick 'em - they do get buttons on top left but
 	// we want to enforce interface being open.

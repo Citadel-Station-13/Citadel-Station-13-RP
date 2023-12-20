@@ -20,9 +20,8 @@
 	////#define COMPONENT_VV_HANDLED (1<<0)
 /// From datum ui_act (usr, action, list/params, datum/tgui/ui, datum/tgui_module_context/module_context)
 #define COMSIG_DATUM_UI_ACT "ui_act"
-/// From datum push_ui_data: (list/data)
+/// From datum push_ui_data: (mob/user, datum/tgui/ui, list/data)
 #define COMSIG_DATUM_PUSH_UI_DATA "push_ui_data"
-#warn use this to hook stuff
 
 /// Fires on the target datum when an element is attached to it (/datum/element)
 ////#define COMSIG_ELEMENT_ATTACH "element_attach"

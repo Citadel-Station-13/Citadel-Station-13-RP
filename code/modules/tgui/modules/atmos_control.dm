@@ -76,7 +76,7 @@
 
 	return data
 
-/datum/tgui_module_old/atmos_control/on_ui_close()
+/datum/tgui_module_old/atmos_control/on_ui_close(mob/user, datum/tgui/ui, embedded)
 	. = ..()
 	ui_ref = null
 

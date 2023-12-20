@@ -23,7 +23,7 @@ Code is pretty much ripped verbatim from nano modules, but with un-needed stuff 
 /datum/tgui_module_old/ui_host()
 	return host ? host.ui_host() : src
 
-/datum/tgui_module_old/on_ui_close(mob/user, datum/tgui/ui)
+/datum/tgui_module_old/on_ui_close(mob/user, datum/tgui/ui, embedded)
 	if(host)
 		host.on_ui_close(user, ui, TRUE)
 

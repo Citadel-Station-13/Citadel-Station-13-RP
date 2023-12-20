@@ -185,6 +185,8 @@
  *
  * If no user is provided, every user will be updated.
  *
+ * todo: this does not update embedders
+ *
  * @params
  * * user - (optional) the mob to update
  * * ui - (optional) the /datum/tgui to update
@@ -204,6 +206,8 @@
  *
  * If no user is provided, every user will be updated.
  *
+ * todo: this does not update embedders
+ *
  * optional user the mob currently interacting with the ui
  * optional ui tgui to be updated
  * optional hard_refreshion use if you need to block the ui from showing if the refresh queues
@@ -222,12 +226,21 @@
 /**
  * immediately shunts this data to either an user, an ui, or all users.
  *
+ * prefer to use this instead of update_static_data or update_ui_data, because this supports embedding
+ * and is generally faster.
+ *
  * @params
  * * user - when specified, only pushes this user. else, pushes to all windows.
  * * ui - when specified, only pushes this ui for a given user.
  * * updates - list(id = list(data...), ...) for modules. the reducer on tgui-side will only overwrite provided data keys.
  */
 /datum/proc/push_ui_data(mob/user, datum/tgui/ui, list/data)
+	// todo: the way this works is so jank; this should be COMSIG_DATUM_HOOK_UI_PUSH instead?
+	// todo: this is because user, ui, data needs to go to the signal before being auto-resolved, as modules
+	// todo: won't necessarily match the values!
+	// FUCK
+	// ~silicons
+	SEND_SIGNAL(src, COMSIG_DATUM_PUSH_UI_DATA, user, ui, data)
 	if(!user)
 		for (var/datum/tgui/window as anything in SStgui.open_uis_by_src[REF(src)])
 			window.push_data(data)
@@ -235,8 +248,8 @@
 	if(!ui)
 		ui = SStgui.get_open_ui(user, src)
 	if(ui)
-		ui.push_data(data)
-	#warn send to embedders
+		// todo: this is force because otherwise static data can be desynced. should static data be on another proc instead?
+		ui.push_data(data, TRUE)
 
 /**
  * immediately pushes module updates to user, an ui, or all users
@@ -255,7 +268,6 @@
 		ui = SStgui.get_open_ui(user, src)
 	if(ui)
 		ui.push_modules(updates)
-	#warn send to embedders
 
 //* Checks *//
 
@@ -281,7 +293,7 @@
  * * ui - the tgui instance
  * * embedded - this was an embedded ui / the datum is being embedded
  */
-/datum/proc/on_ui_open(mob/user, datum/tgui/ui)
+/datum/proc/on_ui_open(mob/user, datum/tgui/ui, embedded)
 	#warn hook this proc
 	SIGNAL_HANDLER
 
@@ -297,7 +309,7 @@
  * * ui - the tgui instance
  * * embedded - this was an embedded ui / the datum is being un-embedded
  */
-/datum/proc/on_ui_close(mob/user, datum/tgui/ui)
+/datum/proc/on_ui_close(mob/user, datum/tgui/ui, embedded)
 	SIGNAL_HANDLER
 
 /**
@@ -311,7 +323,8 @@
  * * old_mob - the old mob
  * * new_mob - the new mob
  * * ui - the tgui instance
- * * embed_context - the embedding context; if null, this is a root/host window.
+ * * embedded - this was an embedded transfer
  */
-/datum/proc/on_ui_transfer(mob/old_mob, mob/new_mob, datum/tgui/ui)
+/datum/proc/on_ui_transfer(mob/old_mob, mob/new_mob, datum/tgui/ui, embedded)
+	#warn hook embedded to calls
 	return

@@ -188,7 +188,7 @@
 		return
 	unlook(user)
 
-/datum/tgui_module_old/uav/on_ui_close(mob/user, datum/tgui/ui)
+/datum/tgui_module_old/uav/on_ui_close(mob/user, datum/tgui/ui, embedded)
 	. = ..()
 	unlook(user)
 

@@ -109,7 +109,7 @@
 		return
 	unlook(user)
 
-/obj/machinery/computer/ship/on_ui_close(mob/user, datum/tgui/ui)
+/obj/machinery/computer/ship/on_ui_close(mob/user, datum/tgui/ui, embedded)
 	. = ..()
 	user.unset_machine()
 	unlook(user)

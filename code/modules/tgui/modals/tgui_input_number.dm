@@ -136,7 +136,7 @@
 		ui = new(user, src, "NumberInputModal")
 		ui.open()
 
-/datum/tgui_input_number/on_ui_close(mob/user, datum/tgui/ui)
+/datum/tgui_input_number/on_ui_close(mob/user, datum/tgui/ui, embedded)
 	. = ..()
 	closed = TRUE
 

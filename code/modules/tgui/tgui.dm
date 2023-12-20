@@ -469,6 +469,14 @@
 	SIGNAL_HANDLER
 	#warn impl
 
+/datum/tgui/proc/module_send_data(datum/source, mob/user, datum/tgui/ui, list/data)
+	if(!isnull(user) && user != user)
+		return
+	if(!isnull(ui) && ui != src)
+		return
+	// todo: this is force because otherwise static data can be desynced. should static data be on another proc instead?
+	push_data(data, TRUE)
+
 //* Helpers - Invoked from ui_act() *//
 
 /**

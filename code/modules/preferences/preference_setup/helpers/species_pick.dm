@@ -124,7 +124,7 @@ GLOBAL_LIST_EMPTY(species_picker_active)
 	data["admin"] = !!admin_datums[user.ckey]
 	return data
 
-/datum/tgui_species_picker/on_ui_close(mob/user, datum/tgui/ui)
+/datum/tgui_species_picker/on_ui_close(mob/user, datum/tgui/ui, embedded)
 	. = ..()
 	if(!QDELING(src))
 		qdel(src)

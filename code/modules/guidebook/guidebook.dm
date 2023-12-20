@@ -15,11 +15,11 @@ GLOBAL_DATUM_INIT(guidebook, /datum/guidebook, new)
 /datum/guidebook/ui_state()
 	return GLOB.always_state
 
-/datum/guidebook/on_ui_close(mob/user, datum/tgui/ui)
+/datum/guidebook/on_ui_close(mob/user, datum/tgui/ui, embedded)
 	opened -= user
 	return ..()
 
-/datum/guidebook/on_ui_transfer(mob/old_mob, mob/new_mob, datum/tgui/ui)
+/datum/guidebook/on_ui_transfer(mob/old_mob, mob/new_mob, datum/tgui/ui, embedded)
 	opened[new_mob] = opened[old_mob]
 	opened -= old_mob
 	return ..()

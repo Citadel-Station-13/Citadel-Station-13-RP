@@ -134,7 +134,7 @@
 		ui = new(user, src, "ListInputModal")
 		ui.open()
 
-/datum/tgui_list_input/on_ui_close(mob/user, datum/tgui/ui)
+/datum/tgui_list_input/on_ui_close(mob/user, datum/tgui/ui, embedded)
 	. = ..()
 	closed = TRUE
 

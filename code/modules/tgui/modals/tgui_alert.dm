@@ -116,7 +116,7 @@
 		ui = new(user, src, "AlertModal")
 		ui.open()
 
-/datum/tgui_modal/on_ui_close(mob/user, datum/tgui/ui)
+/datum/tgui_modal/on_ui_close(mob/user, datum/tgui/ui, embedded)
 	. = ..()
 	closed = TRUE
 
