@@ -38,7 +38,7 @@
 		ui = new(user, src, "XenoarchArtifactAnalyzer", name)
 		ui.open()
 
-/obj/machinery/artifact_analyser/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/artifact_analyser/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	var/list/data = ..()
 
 	data["owned_scanner"] = owned_scanner
@@ -46,7 +46,7 @@
 
 	return data
 
-/obj/machinery/artifact_analyser/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/artifact_analyser/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	if(..())
 		return TRUE
 

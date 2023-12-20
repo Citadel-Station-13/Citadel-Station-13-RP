@@ -286,7 +286,7 @@
 		"power" = on,
 	)
 
-/obj/machinery/atmospherics/component/unary/vent_scrubber/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/atmospherics/component/unary/vent_scrubber/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	. = ..()
 	if(.)
 		return
@@ -318,11 +318,11 @@
 			scrub_groups ^= target
 			return TRUE
 
-/obj/machinery/atmospherics/component/unary/vent_scrubber/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/atmospherics/component/unary/vent_scrubber/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	. = ..()
 	.["state"] = ui_scrubber_data()
 
-/obj/machinery/atmospherics/component/unary/vent_scrubber/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/atmospherics/component/unary/vent_scrubber/ui_static_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	. = ..()
 	.["gasContext"] = global.gas_data.tgui_gas_context()
 	.["name"] = name

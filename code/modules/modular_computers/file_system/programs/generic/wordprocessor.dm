@@ -65,7 +65,7 @@
 	if(HDD.store_file(F))
 		return F
 
-/datum/computer_file/program/wordprocessor/ui_act(action, list/params, datum/tgui/ui)
+/datum/computer_file/program/wordprocessor/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	if(..())
 		return TRUE
 
@@ -182,7 +182,7 @@
 				return TRUE
 			return TRUE
 
-/datum/computer_file/program/wordprocessor/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/datum/computer_file/program/wordprocessor/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	var/list/data = get_header_data()
 
 	var/obj/item/computer_hardware/hard_drive/HDD = computer.hard_drive

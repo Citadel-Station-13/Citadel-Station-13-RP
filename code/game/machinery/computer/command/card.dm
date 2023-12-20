@@ -118,14 +118,14 @@
 		ui = new(user, src, "IdentificationComputer", name)
 		ui.open()
 
-/obj/machinery/computer/card/ui_static_data(mob/user)
+/obj/machinery/computer/card/ui_static_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	. = ..()
 	//? manifest
 	// todo: refactor PDA_Manifest and CrewManifest.js
 	data_core.get_manifest_list()
 	.["manifest"] = GLOB.PDA_Manifest
 
-/obj/machinery/computer/card/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/computer/card/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	. = ..()
 
 	//? general
@@ -147,7 +147,7 @@
 	.["authed_cardmod"] = authed_for_edit()
 	.["authed_slotmod"] = authed_for_slotmod()
 
-/obj/machinery/computer/card/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/computer/card/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	if(..())
 		return TRUE
 

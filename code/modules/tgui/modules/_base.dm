@@ -55,14 +55,14 @@ Code is pretty much ripped verbatim from nano modules, but with un-needed stuff 
 
 	return 0
 
-/datum/tgui_module_old/ui_static_data()
+/datum/tgui_module_old/ui_static_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	. = ..()
 
 	var/obj/item/modular_computer/host = ui_host()
 	if(istype(host))
 		. += host.get_header_data()
 
-/datum/tgui_module_old/ui_act(action, params)
+/datum/tgui_module_old/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	if(..())
 		return TRUE
 

@@ -176,7 +176,7 @@
 		return
 	ui_interact(user)
 
-/obj/item/integrated_circuit_printer/ui_state(mob/user, datum/tgui_module/module)
+/obj/item/integrated_circuit_printer/ui_state()
 	return GLOB.physical_state
 
 /obj/item/integrated_circuit_printer/ui_interact(mob/user, datum/tgui/ui)
@@ -189,7 +189,7 @@
 		ui = new(user, src, "ICPrinter", name) // 500, 600
 		ui.open()
 
-/obj/item/integrated_circuit_printer/ui_static_data(mob/user)
+/obj/item/integrated_circuit_printer/ui_static_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	var/list/data = ..()
 
 	var/list/categories = list()
@@ -233,7 +233,7 @@
 
 	return data
 
-/obj/item/integrated_circuit_printer/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/item/integrated_circuit_printer/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	var/list/data = ..()
 
 	data["metal"] = cur_metal
@@ -255,7 +255,7 @@
 
 	return data
 
-/obj/item/integrated_circuit_printer/ui_act(action, list/params, datum/tgui/ui)
+/obj/item/integrated_circuit_printer/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	if(..())
 		return TRUE
 

@@ -83,7 +83,7 @@
 // Proc: ui_state()
 // Parameters: User
 // Description: This tells TGUI to only allow us to be interacted with while in a mob inventory.
-/obj/item/communicator/ui_state(mob/user, datum/tgui_module/module)
+/obj/item/communicator/ui_state()
 	return GLOB.inventory_state
 
 // Proc: ui_interact()
@@ -118,7 +118,7 @@
 // Proc: ui_data()
 // Parameters: User, UI, State
 // Description: Uses a bunch of for loops to turn lists into lists of lists, so they can be displayed in nanoUI, then displays various buttons to the user.
-/obj/item/communicator/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/item/communicator/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	// this is the data which will be sent to the ui
 	var/list/data = list()						//General nanoUI information
 	var/list/communicators = list()			    //List of communicators
@@ -298,7 +298,7 @@
 // Proc: ui_static_data()
 // Parameters: User, UI, State
 // Description: Just like ui_data, except it only gets called once when the user opens the UI, not every tick.
-/obj/item/communicator/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/item/communicator/ui_static_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	var/list/data = ..()
 	// Update manifest'
 	if(data_core)
@@ -310,7 +310,7 @@
 // Proc: tgui-act()
 // Parameters: 4 (standard ui_act arguments)
 // Description: Responds to UI button presses.
-/obj/item/communicator/ui_act(action, list/params, datum/tgui/ui)
+/obj/item/communicator/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	if(..())
 		return TRUE
 

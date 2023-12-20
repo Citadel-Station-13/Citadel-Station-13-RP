@@ -70,15 +70,15 @@
 
 // todo: use a special state to handle multitool hijacking
 
-// /obj/machinery/atmospherics/component/ui_state(mob/user, datum/tgui_module/module)
+// /obj/machinery/atmospherics/component/ui_state()
 // 	return GLOB.default_state
 
-/obj/machinery/atmospherics/component/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/atmospherics/component/ui_static_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	. = ..()
 	.["powerRating"] = power_maximum
 	.["controlFlags"] = atmos_component_ui_flags
 
-/obj/machinery/atmospherics/component/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/atmospherics/component/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	. = ..()
 	if(!tgui_interface)
 		return
@@ -86,7 +86,7 @@
 	.["powerSetting"] = power_setting
 	.["powerUsage"] = power_current
 
-/obj/machinery/atmospherics/component/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/atmospherics/component/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	. = ..()
 	if(.)
 		return

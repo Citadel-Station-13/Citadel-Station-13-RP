@@ -42,7 +42,7 @@
 		ui = new(user, src, "IsolationCentrifuge", name)
 		ui.open()
 
-/obj/machinery/computer/centrifuge/ui_data(mob/user)
+/obj/machinery/computer/centrifuge/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	var/list/data = list()
 	data["antibodies"] = null
 	data["pathogens"] = list()
@@ -90,7 +90,7 @@
 		if(isolating == 0)
 			isolate()
 
-/obj/machinery/computer/centrifuge/ui_act(action, params)
+/obj/machinery/computer/centrifuge/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	if(..())
 		return TRUE
 

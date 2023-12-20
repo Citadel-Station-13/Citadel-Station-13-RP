@@ -117,7 +117,7 @@
 		ui = new(user, src, "BombTester", name)
 		ui.open()
 
-/obj/machinery/bomb_tester/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/bomb_tester/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	var/list/data = ..()
 
 	data["simulating"] = simulating
@@ -132,7 +132,7 @@
 
 	return data
 
-/obj/machinery/bomb_tester/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/bomb_tester/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	if(..())
 		return TRUE
 

@@ -42,7 +42,7 @@
 		ui = new(user, src, "Farmbot", name)
 		ui.open()
 
-/mob/living/bot/farmbot/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/mob/living/bot/farmbot/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	var/list/data = ..()
 
 	data["on"] = on
@@ -85,7 +85,7 @@
 			emagged = TRUE
 		return TRUE
 
-/mob/living/bot/farmbot/ui_act(action, list/params, datum/tgui/ui)
+/mob/living/bot/farmbot/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	if(..())
 		return TRUE
 

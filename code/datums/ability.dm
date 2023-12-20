@@ -302,7 +302,7 @@
 /**
  * static data for tgui panel
  */
-/datum/ability/ui_static_data(mob/user)
+/datum/ability/ui_static_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	return list(
 		"$tgui" = tgui_id,
 		"$src" = REF(src),

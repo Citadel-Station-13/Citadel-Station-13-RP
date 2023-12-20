@@ -127,7 +127,7 @@
 		ui = new(user, src, "OvermapDisperser", "[linked.name] ORB control") // 400, 550
 		ui.open()
 
-/obj/machinery/computer/ship/disperser/ui_data(mob/user)
+/obj/machinery/computer/ship/disperser/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	var/list/data = list()
 	data["faillink"] = FALSE
 	data["calibration"] = null
@@ -162,7 +162,7 @@
 
 	return data
 
-/obj/machinery/computer/ship/disperser/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/computer/ship/disperser/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	if(..())
 		return TRUE
 

@@ -215,7 +215,7 @@ SUBSYSTEM_DEF(vote)
 		ui = new(user, src, "Vote")
 		ui.open()
 
-/datum/controller/subsystem/vote/ui_data(mob/user)
+/datum/controller/subsystem/vote/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	var/list/data = list(
 		"choices" = list(),
 		"question" = question,
@@ -235,7 +235,7 @@ SUBSYSTEM_DEF(vote)
 
 	return data
 
-/datum/controller/subsystem/vote/ui_act(action, params)
+/datum/controller/subsystem/vote/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	. = ..()
 	if(.)
 		return

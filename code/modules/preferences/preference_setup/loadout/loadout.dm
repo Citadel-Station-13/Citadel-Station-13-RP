@@ -98,7 +98,7 @@
 			. = FALSE
 		current_cost += entry.cost
 
-/datum/category_item/player_setup_item/loadout/gear/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/datum/category_item/player_setup_item/loadout/gear/ui_static_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	. = ..()
 	.["gearContext"] = tgui_loadout_context()
 	var/list/allowed_ids = list()
@@ -164,7 +164,7 @@
 	.["slot"] = tgui_loadout_selected(the_slot)
 	.["slotIndex"] = slot_index
 
-/datum/category_item/player_setup_item/loadout/gear/ui_act(action, list/params, datum/tgui/ui)
+/datum/category_item/player_setup_item/loadout/gear/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	. = ..()
 	if(.)
 		return

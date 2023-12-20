@@ -116,7 +116,7 @@ GLOBAL_LIST_EMPTY(species_picker_active)
 /datum/tgui_species_picker/ui_status(mob/user, datum/ui_state/state)
 	return UI_INTERACTIVE
 
-/datum/tgui_species_picker/ui_static_data(mob/user)
+/datum/tgui_species_picker/ui_static_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	var/list/data = ..()
 	data["whitelisted"] = whitelisted
 	data["species"] = SScharacters.character_species_cache
@@ -129,7 +129,7 @@ GLOBAL_LIST_EMPTY(species_picker_active)
 	if(!QDELING(src))
 		qdel(src)
 
-/datum/tgui_species_picker/ui_act(action, list/params, datum/tgui/ui)
+/datum/tgui_species_picker/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	. = ..()
 	switch(action)
 		if("pick")

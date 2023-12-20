@@ -75,16 +75,16 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/color_matrix_proxy_view)
 	QDEL_NULL(proxy_view)
 	return ..()
 
-/datum/color_matrix_editor/ui_state(mob/user, datum/tgui_module/module)
+/datum/color_matrix_editor/ui_state()
 	return GLOB.admin_state
 
-/datum/color_matrix_editor/ui_static_data(mob/user)
+/datum/color_matrix_editor/ui_static_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	var/list/data = list()
 	data["mapRef"] = proxy_view.assigned_map
 
 	return data
 
-/datum/color_matrix_editor/ui_data(mob/user)
+/datum/color_matrix_editor/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	var/list/data = list()
 	data["currentColor"] = current_color
 
@@ -96,7 +96,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/color_matrix_proxy_view)
 		ui = new(user, src, "ColorMatrixEditor")
 		ui.open()
 
-/datum/color_matrix_editor/ui_act(action, list/params, datum/tgui/ui)
+/datum/color_matrix_editor/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	. = ..()
 	if(.)
 		return

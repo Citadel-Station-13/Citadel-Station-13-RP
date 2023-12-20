@@ -2,7 +2,7 @@
 	name = "Agent Card"
 	tgui_id = "AgentCard"
 
-/datum/tgui_module_old/agentcard/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/datum/tgui_module_old/agentcard/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	var/list/data = ..()
 
 	var/obj/item/card/id/syndicate/S = ui_host()
@@ -34,7 +34,7 @@
 		return UI_CLOSE
 	return ..()
 
-/datum/tgui_module_old/agentcard/ui_act(action, list/params, datum/tgui/ui)
+/datum/tgui_module_old/agentcard/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	if(..())
 		return TRUE
 

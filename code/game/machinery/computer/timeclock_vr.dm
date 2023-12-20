@@ -77,7 +77,7 @@
 		ui = new(user, src, "TimeClock", name)
 		ui.open()
 
-/obj/machinery/computer/timeclock/ui_data(mob/user)
+/obj/machinery/computer/timeclock/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	var/list/data = ..()
 
 	// Okay, data for showing the user's OWN PTO stuff
@@ -111,7 +111,7 @@
 
 	return data
 
-/obj/machinery/computer/timeclock/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/computer/timeclock/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	if(..())
 		return TRUE
 

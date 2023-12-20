@@ -96,7 +96,7 @@
 /**
  * The NIF State ensures that only our authorized implanted user can touch us.
  */
-/obj/item/nif/ui_state(mob/user, datum/tgui_module/module)
+/obj/item/nif/ui_state()
 	return GLOB.ui_nif_main_state
 
 /**
@@ -112,7 +112,7 @@
  * ui_data gives the UI any relevant data it needs.
  * In our case, that's basically everything from our statpanel.
  */
-/obj/item/nif/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/item/nif/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	var/list/data = ..()
 
 	data["theme"] = save_data["ui_theme"]
@@ -152,7 +152,7 @@
 /**
  * ui_act handles all user input in the UI.
  */
-/obj/item/nif/ui_act(action, list/params, datum/tgui/ui)
+/obj/item/nif/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	if(..())
 		return TRUE
 

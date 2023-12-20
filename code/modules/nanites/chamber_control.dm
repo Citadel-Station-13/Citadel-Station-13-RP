@@ -60,7 +60,7 @@
 		ui = new(user, src, "NaniteChamberControl")
 		ui.open()
 
-/obj/machinery/computer/nanite_chamber/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/computer/nanite_chamber/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	. = ..()
 	switch(action)
 		if("lock")
@@ -73,7 +73,7 @@
 			linked.try_refresh_protean(usr)
 			return TRUE
 
-/obj/machinery/computer/nanite_chamber/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/computer/nanite_chamber/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	. = ..()
 	if(isnull(linked))
 		return
@@ -81,7 +81,7 @@
 	.["locked"] = linked.locked
 	.["operating"] = linked.operating
 
-/obj/machinery/computer/nanite_chamber/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/computer/nanite_chamber/ui_static_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	. = ..()
 	if(isnull(linked))
 		.["hasChamber"] = FALSE

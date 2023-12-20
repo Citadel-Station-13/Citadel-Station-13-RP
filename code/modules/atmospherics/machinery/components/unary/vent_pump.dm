@@ -312,12 +312,12 @@
 	ui = new(user, src, "AtmosVentPump")
 	ui.open()
 
-/obj/machinery/atmospherics/component/unary/vent_pump/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/atmospherics/component/unary/vent_pump/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	. = ..()
 	.["state"] = ui_vent_data()
 	.["name"] = name
 
-/obj/machinery/atmospherics/component/unary/vent_pump/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/atmospherics/component/unary/vent_pump/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	. = ..()
 	if(.)
 		return

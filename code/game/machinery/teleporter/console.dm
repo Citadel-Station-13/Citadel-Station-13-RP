@@ -95,7 +95,7 @@
 		ui = new(user, src, "TeleporterConsole", name) // 500, 800
 		ui.open()
 
-/obj/machinery/computer/teleporter/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/computer/teleporter/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	var/list/data = list()
 
 	data["disabled"] = is_disabled()
@@ -107,7 +107,7 @@
 	data["valid_destinations"] = generate_telebeacon_list()
 	return data
 
-/obj/machinery/computer/teleporter/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/computer/teleporter/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	switch(action)
 		if("set_destination")
 			set_destination(compare_beacon_to_identifier(params["new_locked"], beacon_uuid_assoc.Copy()))

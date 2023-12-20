@@ -75,7 +75,7 @@
 		ui = new(user, src, "AssemblyTimer", name)
 		ui.open()
 
-/obj/item/assembly/timer/ui_data(mob/user)
+/obj/item/assembly/timer/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	var/list/data = ..()
 	var/time_left = time
 	data["seconds"] = round(time_left % 60)
@@ -84,7 +84,7 @@
 	data["loop"] = loop
 	return data
 
-/obj/item/assembly/timer/ui_act(action, list/params, datum/tgui/ui)
+/obj/item/assembly/timer/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	if(..())
 		return TRUE
 

@@ -24,7 +24,7 @@
 		ui = new(user, src, "MechaControlConsole", name)
 		ui.open()
 
-/obj/machinery/computer/mecha/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/computer/mecha/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	var/list/data = ..()
 
 	data["beacons"] = list()
@@ -38,7 +38,7 @@
 
 	return data
 
-/obj/machinery/computer/mecha/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/computer/mecha/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	if(..())
 		return TRUE
 
@@ -75,7 +75,7 @@
 	icon_state = "motion2"
 	origin_tech = list(TECH_DATA = 2, TECH_MAGNET = 2)
 
-/obj/item/mecha_parts/mecha_tracking/ui_data(mob/user)
+/obj/item/mecha_parts/mecha_tracking/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	var/list/data = ..()
 	if(!in_mecha())
 		return FALSE

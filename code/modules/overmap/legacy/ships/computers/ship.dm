@@ -54,7 +54,7 @@
 // 	ui_interact(user)
 // 	return TRUE
 
-/obj/machinery/computer/ship/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/computer/ship/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	if(..())
 		return TRUE
 	switch(action)

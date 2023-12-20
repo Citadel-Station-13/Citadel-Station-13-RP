@@ -49,7 +49,7 @@
 		ui = new(user, src, "DiseaseSplicer", name)
 		ui.open()
 
-/obj/machinery/computer/diseasesplicer/ui_data(mob/user)
+/obj/machinery/computer/diseasesplicer/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	var/list/data = list()
 
 	data["dish_inserted"] = !!dish
@@ -130,7 +130,7 @@
 			ping("\The [src] pings, \"Backup disk saved.\"")
 			SStgui.update_uis(src)
 
-/obj/machinery/computer/diseasesplicer/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/computer/diseasesplicer/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	if(..())
 		return TRUE
 

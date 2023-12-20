@@ -162,7 +162,7 @@
 		ui = new(user, src, "Biogenerator", name)
 		ui.open()
 
-/obj/machinery/biogenerator/ui_data(mob/user)
+/obj/machinery/biogenerator/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	var/list/data = ..()
 
 	data["build_eff"] = build_eff
@@ -172,7 +172,7 @@
 
 	return data
 
-/obj/machinery/biogenerator/ui_static_data(mob/user)
+/obj/machinery/biogenerator/ui_static_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	var/list/static_data[0]
 
 	// Available items - in static data because we don't wanna compute this list every time! It hardly changes.
@@ -186,7 +186,7 @@
 
 	return static_data
 
-/obj/machinery/biogenerator/ui_act(action, list/params)
+/obj/machinery/biogenerator/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	. = ..()
 	if(.)
 		return

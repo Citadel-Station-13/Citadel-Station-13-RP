@@ -149,7 +149,7 @@
 		ui = new(user, src, "Cleanbot", name)
 		ui.open()
 
-/mob/living/bot/cleanbot/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/mob/living/bot/cleanbot/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	var/list/data = ..()
 	data["on"] = on
 	data["open"] = open
@@ -163,7 +163,7 @@
 	data["version"] = "v2.0"
 	return data
 
-/mob/living/bot/cleanbot/ui_act(action, list/params, datum/tgui/ui)
+/mob/living/bot/cleanbot/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	if(..())
 		return TRUE
 

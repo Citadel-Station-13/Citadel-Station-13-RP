@@ -143,7 +143,7 @@
 		ui = new(user, src, "BotanyIsolator", name)
 		ui.open()
 
-/obj/machinery/botany/extractor/ui_data(mob/user)
+/obj/machinery/botany/extractor/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	var/list/data = ..()
 
 	var/list/geneMasks = SSplants.gene_masked_list
@@ -173,7 +173,7 @@
 
 	return data
 
-/obj/machinery/botany/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/botany/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	if(..())
 		return TRUE
 
@@ -204,7 +204,7 @@
 			loaded_disk = null
 			return TRUE
 
-/obj/machinery/botany/extractor/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/botany/extractor/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	if(..())
 		return TRUE
 
@@ -271,7 +271,7 @@
 		ui = new(user, src, "BotanyEditor", name)
 		ui.open()
 
-/obj/machinery/botany/editor/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/botany/editor/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	var/list/data = ..()
 
 	data["activity"] = active
@@ -302,7 +302,7 @@
 
 	return data
 
-/obj/machinery/botany/editor/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/botany/editor/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	if(..())
 		return TRUE
 

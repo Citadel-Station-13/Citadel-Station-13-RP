@@ -268,7 +268,7 @@
 		ui = new(user, src, "Medibot", name)
 		ui.open()
 
-/mob/living/bot/medibot/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/mob/living/bot/medibot/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	var/list/data = ..()
 	data["on"] = on
 	data["open"] = open
@@ -310,7 +310,7 @@
 	else
 		..()
 
-/mob/living/bot/medibot/ui_act(action, list/params, datum/tgui/ui)
+/mob/living/bot/medibot/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	if(..())
 		return TRUE
 

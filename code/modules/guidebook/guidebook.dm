@@ -12,7 +12,7 @@ GLOBAL_DATUM_INIT(guidebook, /datum/guidebook, new)
 	/// open instances mapped to list of ids
 	var/list/opened = list()
 
-/datum/guidebook/ui_state(mob/user, datum/tgui_module/module)
+/datum/guidebook/ui_state()
 	return GLOB.always_state
 
 /datum/guidebook/on_ui_close(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)

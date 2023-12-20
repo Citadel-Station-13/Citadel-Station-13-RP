@@ -54,7 +54,7 @@
 	SIGNAL_HANDLER
 	qdel(src)
 
-/datum/tgui_module/ui_host(mob/user, datum/tgui_module/module)
+/datum/tgui_module/ui_host()
 	return isnull(host)? src : host.ui_host(user, src)
 
 /datum/tgui_module/on_ui_close(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
@@ -63,7 +63,7 @@
 	if(ephemeral)
 		qdel(src)
 
-/datum/tgui_module/ui_state(mob/user, datum/tgui_module/module)
+/datum/tgui_module/ui_state()
 	return isnull(host)? ..() : host.ui_state(user, src)
 
 /datum/tgui_module/ui_status(mob/user, datum/ui_state/state)
@@ -78,19 +78,19 @@
 /**
  * called directly, if operating standalone. routes to static_data(user), with all other args skipped.
  */
-/datum/tgui_module/ui_static_data(mob/user)
+/datum/tgui_module/ui_static_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	return static_data(user)
 
 /**
  * called directly, if operating standalone. routes to data(user), with all other args skipped.
  */
-/datum/tgui_module/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/datum/tgui_module/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	return data(user)
 
 /**
  * called directly, if operating standalone.
  */
-/datum/tgui_module/ui_act(action, list/params, datum/tgui/ui)
+/datum/tgui_module/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	// we only override this to provide comment
 	// yes yes proc overhead sue me it's called like 10k times a round, tops.
 	return ..()

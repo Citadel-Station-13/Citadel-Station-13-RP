@@ -155,7 +155,7 @@
 		ui.set_mouse_hook(TRUE)
 		ui.open()
 
-/datum/fishing_challenge/ui_host(mob/user)
+/datum/fishing_challenge/ui_host()
 	return lure //Could be the target really
 
 // Manually closing the ui is treated as lose
@@ -164,7 +164,7 @@
 	if(!completed)
 		complete(FALSE)
 
-/datum/fishing_challenge/ui_static_data(mob/user)
+/datum/fishing_challenge/ui_static_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	. = ..()
 	.["difficulty"] = max(1,min(difficulty,100))
 	.["fish_ai"] = fish_ai
@@ -180,7 +180,7 @@
 		ui_status_user_is_abled(user, lure),
 	)
 
-/datum/fishing_challenge/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/datum/fishing_challenge/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	. = ..()
 	if(.)
 		return

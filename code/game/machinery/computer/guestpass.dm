@@ -115,7 +115,7 @@
 			deltimer(print_timer)
 			print_timer = null
 
-/obj/machinery/computer/guestpass/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/computer/guestpass/ui_static_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	. = ..()
 	.["access"] = SSjob.tgui_access_data()
 	.["allowed"] = allowed_accesses()
@@ -124,7 +124,7 @@
 	.["durationMin"] = min_duration
 	.["auth"] = tgui_inserted_card()
 
-/obj/machinery/computer/guestpass/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/computer/guestpass/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	. = ..()
 	.["guestName"] = guest_name
 	.["guestReason"] = guest_reason
@@ -162,7 +162,7 @@
 	RETURN_TYPE(/list)
 	return isnull(giver)? list() : giver.access
 
-/obj/machinery/computer/guestpass/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/computer/guestpass/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	. = ..()
 	if(.)
 		return TRUE

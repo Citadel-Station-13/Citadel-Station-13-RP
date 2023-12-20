@@ -63,7 +63,7 @@ GLOBAL_LIST_EMPTY(language_picker_active)
 /datum/tgui_language_picker/ui_status(mob/user, datum/ui_state/state)
 	return UI_INTERACTIVE
 
-/datum/tgui_language_picker/ui_static_data(mob/user)
+/datum/tgui_language_picker/ui_static_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	var/list/data = ..()
 	var/list/built = list()
 	var/list/categories = list("General")
@@ -86,7 +86,7 @@ GLOBAL_LIST_EMPTY(language_picker_active)
 	if(!QDELING(src))
 		qdel(src)
 
-/datum/tgui_language_picker/ui_act(action, list/params, datum/tgui/ui)
+/datum/tgui_language_picker/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	. = ..()
 	switch(action)
 		if("pick")

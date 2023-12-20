@@ -10,7 +10,7 @@
 		ui = new(user, src, "Changelog")
 		ui.open()
 
-/datum/changelog/ui_act(action, list/params, datum/tgui/ui)
+/datum/changelog/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	. = ..()
 	if(.)
 		return
@@ -21,7 +21,7 @@
 			changelog_items[params["date"]] = changelog_item
 		return ui.send_asset(changelog_item)
 
-/datum/changelog/ui_static_data()
+/datum/changelog/ui_static_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	var/list/data = list( "dates" = list() )
 	var/regex/ymlRegex = regex(@"\.yml", "g")
 

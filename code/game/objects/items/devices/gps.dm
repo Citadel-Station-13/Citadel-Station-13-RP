@@ -344,11 +344,11 @@
 /obj/item/gps/proc/push_waypoint_data()
 	push_ui_data(data = list("waypoints" = ui_waypoint_data()))
 
-/obj/item/gps/ui_static_data(mob/user)
+/obj/item/gps/ui_static_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	. = ..()
 	.["waypoints"] = ui_waypoint_data()
 
-/obj/item/gps/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/item/gps/ui_data(mob/user, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	. = ..()
 
 	.["on"] = !!on
@@ -386,7 +386,7 @@
 				"name" = sig.gps_tag
 			))
 
-/obj/item/gps/ui_act(action, list/params, datum/tgui/ui)
+/obj/item/gps/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	. = ..()
 	if(.)
 		return

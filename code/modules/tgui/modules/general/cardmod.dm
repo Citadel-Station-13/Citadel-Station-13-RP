@@ -203,7 +203,7 @@
 	.["granted"] = editing?.access
 	.["can_demote"] = auth_demote(user, editing, authing, editing?.rank)
 
-/datum/tgui_module/card_mod/ui_act(action, list/params, datum/tgui/ui)
+/datum/tgui_module/card_mod/ui_act(action, list/params, datum/tgui/ui, datum/tgui_embed_context/embed_context)
 	. = ..()
 	var/obj/item/card/id/target = edit_target()
 	var/obj/item/card/id/source = auth_source(usr)
@@ -432,7 +432,7 @@
  */
 /datum/tgui_module/card_mod/admin
 
-/datum/tgui_module/card_mod/admin/ui_state(mob/user, datum/tgui_module/module)
+/datum/tgui_module/card_mod/admin/ui_state()
 	return GLOB.admin_state
 
 
