@@ -17,6 +17,9 @@ SUBSYSTEM_DEF(shuttle)
 	var/static/list/dock_type_registry = list()
 	/// shuttle docks by id for id registration
 	var/static/list/dock_id_registry = list()
+	/// docks by zlevel
+	#warn hook
+	var/static/list/docks_by_level = list()
 
 	//* Controllers & Maps
 	/// Web maps by path
@@ -73,6 +76,14 @@ SUBSYSTEM_DEF(shuttle)
 
 	var/list/unary_engines = list()
 	var/list/ion_engines = list()
+
+/datum/controller/subsystem/shuttle/on_max_z_changed(old_z_count, new_z_count)
+	. = ..()
+	docks_by_level.len = new_z_count
+	for(var/i in old_z_count to new_z_count)
+		if(!isnull(docks_by_level[i]))
+			continue
+		docks_by_level[i] = list()
 
 /datum/controller/subsystem/shuttle/Initialize(timeofday)
 	last_landmark_registration_time = world.time

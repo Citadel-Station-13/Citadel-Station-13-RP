@@ -12,6 +12,8 @@
 	//* bounding box
 	/// allow docking inside bounding box as long as a shuttle fits, even if the dock doesn't align
 	var/undocked_landing_allowed = TRUE
+	/// counted as a 'beacon' for default positionings of shuttle dockers
+	var/manual_docking_beacon = TRUE
 	/// protect our bounding box from manual landing
 	var/protect_bounding_box = FALSE
 	#warn hook
@@ -159,3 +161,10 @@
 	ASSERT(isturf(loc))
 	#warn impl
 
+/obj/shuttle_dock/Move(...)
+	return FALSE
+
+/obj/shuttle_dock/doMove(atom/destination)
+	unregister_dock()
+	. = ..()
+	register_dock()

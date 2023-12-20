@@ -23,4 +23,13 @@
 	/// where we are docked, if any
 	var/obj/shuttle_dock/docked
 
+	/// lower-left aligned preview overlay; used for shuttle dockers and similar
+	var/mutable_appearance/preview_overlay
+
 #warn impl all
+
+/datum/shuttle/proc/get_preview(regenerate)
+	if(!isnull(preview_overlay) && !regenerate)
+		return preview_overlay
+	preview_overlay = new /mutable_appearance
+	#warn impl
