@@ -19,6 +19,7 @@ GLOBAL_LIST_EMPTY(uninitialized_shuttle_dock_bounds)
 /obj/shuttle_dock_corner/Initialize(mapload)
 	SHOULD_CALL_PARENT(FALSE)
 	construct()
+	#warn CF_SHUTTLE_VISUALIZE_BOUNDING_BOXES
 	return INITIALIZE_HINT_QDEL
 
 /obj/shuttle_dock_corner/proc/construct()
@@ -67,6 +68,9 @@ GLOBAL_LIST_EMPTY(uninitialized_shuttle_dock_bounds)
 	var/datum/bounds2/bounds = new(bottom_left.x, bottom_left.y, top_right.x, top_right.y)
 	if(!bounds.valid())
 		CRASH("invalid bounds: bl: [COORD(bottom_left)] br: [COORD(bottom_right)] tl: [COORD(top_left)] tr: [COORD(top_right)]")
+	for(var/datum/bounds2/enemy in GLOB.uninitialized_shuttle_dock_bounds)
+		if(enemy.overlaps(bounds))
+			CRASH("overlapping bounds [enemy.to_text()] with self [bounds.to_text()]")
 	GLOB.uninitialized_shuttle_dock_bounds += bounds
 
 /obj/shuttle_dock_corner/proc/cardinal_scan(list/injecting, wanted_type, dir)

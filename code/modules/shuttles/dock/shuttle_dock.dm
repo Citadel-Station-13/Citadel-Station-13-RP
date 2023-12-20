@@ -90,7 +90,15 @@
 
 /obj/shuttle_dock/LateInitialize()
 	. = ..()
-	#warn auto-register bounds if needed, otherwise error if missing
+	if(!init_bounds())
+		stack_trace("shuttle dock at [COORD(src)] failed bounds init; something is seriously wrong!")
+		to_chat(
+			target = world,
+			html = FORMAT_SERVER_FATAL("Shuttle dock at [COORD(src)] failed to find its bounds. Please contact coders if you see this message."),
+			type = MESSAGE_TYPE_SERVER_FATAL,
+		)
+		qdel(src)
+		return
 	if(!register_dock())
 		stack_trace("shuttle dock at [COORD(src)] failed registration; something is seriously wrong!")
 		to_chat(
@@ -100,6 +108,7 @@
 		)
 		qdel(src)
 		return
+	#warn CF_SHUTTLE_VISUALIZE_BOUNDING_BOXES
 	#warn load shuttle
 
 /obj/shuttle_dock/Destroy()
@@ -112,5 +121,41 @@
 /obj/shuttle_dock/proc/unregister_dock()
 	#warn impl
 
+/obj/shuttle_dock/proc/init_bounds()
+	var/any_null = isnull(size_x) || isnull(size_y) || isnull(offset_x) || isnull(offset_y)
+	var/all_null = isnull(size_x) && isnull(size_y) && isnull(offset_x) && isnull(offset_y)
+	if(any_null != all_null)
+		. = FALSE
+		CRASH("mismatch: some, but not all bounds were null. why?")
+	if(!any_null)
+		return TRUE
+	for(var/datum/bounds2/bounds in GLOB.uninitialized_shuttle_dock_bounds)
+		if(bounds.contains_xy(x, y))
+			switch(dir)
+				if(NORTH)
+					size_x = bounds.x_high - bounds.x_low + 1
+					size_y = bounds.y_high - bounds.y_low + 1
+					offset_x = x - bounds.x_low
+					offset_y = y - bounds.y_high
+				if(SOUTH)
+					size_x = bounds.x_high - bounds.x_low + 1
+					size_y = bounds.y_high - bounds.y_low + 1
+					offset_x = bounds.x_high - x
+					offset_y = bounds.y_low - y
+				if(EAST)
+					size_y = bounds.x_high - bounds.x_low + 1
+					size_x = bounds.y_high - bounds.y_low + 1
+					offset_x = bounds.y_high - y
+					offset_y = x - bounds.x_low
+				if(WEST)
+					size_y = bounds.x_high - bounds.x_low + 1
+					size_x = bounds.y_high - bounds.y_low + 1
+					offset_x = y - bounds.y_low
+					offset_y = bounds.x_low - x
+			return TRUE
+	return FALSE
 
+/obj/shuttle_dock/proc/bounding_ordered_turfs()
+	ASSERT(isturf(loc))
+	#warn impl
 
