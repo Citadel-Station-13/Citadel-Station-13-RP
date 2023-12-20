@@ -53,3 +53,14 @@
 #warn macro path generation for: vanilla, chocolate, apple, orange, lime
 
 #warn icon states are dollop, melt1-3, wafflecone, waffledrop1-3
+
+/obj/effect/debris/cleanable/ice_cream
+	name = "smashed ice cream"
+	desc = "How depressing."
+	icon = 'icons/modules/food/items/ice_cream.dmi'
+
+	#warn impl
+
+/obj/effect/debris/cleanable/ice_cream/Initialize(mapload, obj/item/reagent_containers/food/snacks/ice_cream/from_cone)
+	. = ..()
+

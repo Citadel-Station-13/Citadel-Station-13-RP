@@ -15,6 +15,8 @@ interface IcecreamCartData {
     maxVolume: number,
     color: ByondAtomColor,
   }[];
+  coneSource: number | null;
+  scoopSource: number | null;
 }
 
 export const IcecreamCart = (props, context) => {

@@ -110,6 +110,7 @@
 			selected_ice_cream_source = (sources && index >= 1 && index <= length(sources))? index : null
 			return TRUE
 		if("dispenseCone")
+
 			#warn impl
 		if("dispenseFilled")
 			#warn impl
@@ -128,6 +129,7 @@
 			update_static_data()
 			return TRUE
 		if("produceCone")
+
 			#warn impl
 
 /obj/machinery/icecream_vat/proc/produce_cone(obj/item/reagent_containers/infuse_from, force)
