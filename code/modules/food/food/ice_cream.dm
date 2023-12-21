@@ -3,6 +3,7 @@
 	desc = "An empty waffle cone, presumably used to hold ice cream. How depressing."
 	icon = 'icons/modules/food/items/ice_cream.dmi'
 	icon_state = "wafflecone"
+	appearance_flags = KEEP_TOGETHER
 	w_class = WEIGHT_CLASS_TINY
 	throw_force = 0
 	damage_force = 0
@@ -13,10 +14,12 @@
 
 	/// already bit into? no double dipping!
 	var/no_double_dipping = FALSE
-	/// list used to track colors of dollops
-	var/list/scoop_colors
+	/// overall sugar-ation; continuously compounded to be the % of scoops with sugar
+	var/snowflake_deliciousness = 0
 	/// max scoops
 	var/scoop_max = 7
+	/// current scoop position
+	var/scoop_current = 0
 
 	/// prefill with scoops of these reagents
 	/// list(path, path, path, ...)

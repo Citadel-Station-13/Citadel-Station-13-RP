@@ -26,13 +26,9 @@
 	// todo: temporary, as this is unbuildable
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 
-	/// stored cones; this is a stack, topmost is last in list.
-	var/list/obj/item/reagent_containers/food/snacks/ice_cream/cones
 	/// stored reagent containers to be used for drawing from
 	var/list/obj/item/reagent_containers/sources
 
-	/// selected index of reagent container to infuse waffle cones with
-	var/selected_cone_infusion_source
 	/// selected index of reagent container to make ice cream with
 	var/selected_ice_cream_source
 
@@ -40,14 +36,14 @@
 	var/cone_flour_cost = 2
 	/// max cones held
 	var/cone_storage = 10
-	/// how much reagents it can pack into a cone
-	var/cone_infuse_amount = 2
 	/// milk cost of scoop
 	var/scoop_milk_cost = 2
 	/// ice cost of scoop - this is mandatory
 	var/scoop_ice_cost = 2
 	/// how much reagents it can pack into a single scoop of ice cream
 	var/scoop_infuse_amount = 3
+	/// how much sugar is needed per scoop for it to taste good
+	var/scoop_sugar_cost = 1
 
 	/// self-explanatory
 	var/max_sources = 10
@@ -60,6 +56,7 @@
 	. = ..()
 	. += SPAN_NOTICE("<b>Use</b> a reagent container with an open lid on this to refill its core ingredients.")
 	. += SPAN_NOTICE("<b>Click-drag</b> a reagent container with an open lid on this to add it as a mixing source.")
+	. += SPAN_NOTICE("<b>Click</b> on this with an intact ice-cream cone to dispense a dollop of ice cream into it.")
 
 /obj/machinery/icecream_vat/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -70,21 +67,19 @@
 /obj/machinery/icecream_vat/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	.["scoopSource"] = selected_ice_cream_source
-	.["coneSource"] = selected_cone_infusion_source
 
 /obj/machinery/icecream_vat/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	.["coneFlourCost"] = cone_flour_cost
-	.["coneInfuseCost"] = cone_infuse_amount
 	.["scoopMilkCost"] = scoop_milk_cost
 	.["scoopIceCost"] = scoop_ice_cost
 	.["scoopInfuseCost"] = scoop_infuse_amount
 	var/list/collect_sources = list()
 	var/list/collect_base = list(
-		reagents.get_reagent_amount(/datum/reagent/drink/milk),
-		reagents.get_reagent_amount(/datum/reagent/nutriment/flour),
-		reagents.get_reagent_amount(/datum/reagent/sugar),
-		reagents.get_reagent_amount(/datum/reagent/drink/ice),
+		"milk" = reagents.get_reagent_amount(/datum/reagent/drink/milk),
+		"flour" = reagents.get_reagent_amount(/datum/reagent/nutriment/flour),
+		"sugar" = reagents.get_reagent_amount(/datum/reagent/sugar),
+		"ice" = reagents.get_reagent_amount(/datum/reagent/drink/ice),
 	)
 	for(var/obj/item/reagent_containers/container as anything in sources)
 		collect_sources[++collect_sources.len] = list(
@@ -109,11 +104,6 @@
 			var/index = text2num(params["index"])
 			selected_ice_cream_source = (sources && index >= 1 && index <= length(sources))? index : null
 			return TRUE
-		if("dispenseCone")
-
-			#warn impl
-		if("dispenseFilled")
-			#warn impl
 		if("ejectSource")
 			var/index = text2num(params["index"])
 			var/obj/item/reagent_containers/container = SAFEINDEXACCESS(sources, index)
@@ -129,37 +119,62 @@
 			update_static_data()
 			return TRUE
 		if("produceCone")
+			if(!reagents.has_reagent(/datum/reagent/nutriment/flour, cone_flour_cost))
+				usr.action_feedback(SPAN_WARNING("[src] doesn't have enough flour left for a new cone."), src)
+				return TRUE
+			if(!give_cone(produce_cone(), usr))
+				return TRUE
+			usr.action_feedback(SPAN_NOTICE("You create an empty waffle cone."), src)
+			return TRUE
 
-			#warn impl
-
-/obj/machinery/icecream_vat/proc/produce_cone(obj/item/reagent_containers/infuse_from, force)
+/obj/machinery/icecream_vat/proc/produce_cone(force)
 	if(!force)
 		if(!reagents.has_reagent(/datum/reagent/nutriment/flour, cone_flour_cost))
 			return FALSE
-		if(LAZYLEN(cones) > cone_storage)
-			return FALSE
 	reagents.remove_reagent(/datum/reagent/nutriment/flour, cone_flour_cost)
 	var/obj/item/reagent_containers/food/snacks/ice_cream/cone = new(src)
-	LAZYADD(cones, cone)
-	var/obj/item/reagent_containers/infusion_source = LAZYACCESS(sources, selected_cone_infusion_source)
-	if(!isnull(infusion_source))
-		infusion_source.reagents.trans_to(cone, cone_infuse_amount)
 	return cone
-
-/obj/machinery/icecream_vat/proc/fill_cone(obj/item/reagent_containers/create_from, force)
-	#warn impl
 
 /obj/machinery/icecream_vat/proc/give_cone(obj/item/reagent_containers/food/snacks/ice_cream/cone, mob/give_to)
 	if(isnull(cone))
 		return FALSE
-	give_to.put_in_hands_or_drop(cone)
+	give_to.put_in_hands_or_drop(cone, drop_loc = drop_location())
 	LAZYREMOVE(cones, cone)
+	return TRUE
+
+/obj/machinery/icecream_vat/proc/fill_cone(obj/item/reagent_containers/food/snacks/ice_cream/cone, force, mob/user)
+	if(!reagents.has_reagent(/datum/reagent/drink/ice, scoop_ice_cost))
+		user.action_feedback(SPAN_WARNING("There is not enough ice left in [src] to make a dollop."), src)
+		return FALSE
+	if(!reagents.has_reagent(/datum/reagent/drink/milk, scoop_milk_cost))
+		user.action_feedback(SPAN_WARNING("There is not enough milk left in [src] to make a dollop."), src)
+		return FALSE
+	var/has_sugar = !reagents.has_reagent(/datum/reagent/sugar, scoop_sugar_cost)
+	reagents.remove_reagent(/datum/reagent/drink/ice, scoop_ice_cost)
+	reagents.remove_reagent(/datum/reagent/drink/milk, scoop_milk_cost)
+	if(has_sugar)
+		reagents.remove_reagent(/datum/reagent/sugar, scoop_sugar_cost)
+	var/obj/item/reagent_containers/infuse_source = SAFEINDEXACCESS(sources, selected_ice_cream_source)
+	cone.add_scoop(infuse_source.reagents, scoop_infuse_amount, TRUE)
 	return TRUE
 
 /obj/machinery/icecream_vat/attackby(obj/item/I, mob/user, list/params, clickchain_flags, damage_multiplier)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
+	// handle cones
+	if(istype(I, /obj/item/reagent_containers/food/snacks/ice_cream))
+		var/obj/item/reagent_containers/food/snacks/ice_cream/ice_cream = I
+		if(!fill_cone(ice_cream, user = user))
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		user.visible_action_feedback(
+			target = src,
+			hard_range = MESSAGE_RANGE_CONSTRUCTION,
+			visible_hard = SPAN_NOTICE("[user] fills \the [ice_cream] with [length(ice_cream.scoop_colors) > 1? "another" : "a"] delicious dollop of ice cream from \the [src].")
+		)
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+	// handle filling
 	if(!istype(I, /obj/item/reagent_containers))
+		// not a container
 		return ..()
 	var/obj/item/reagent_containers/container = I
 	if(!container.reagents)
@@ -176,7 +191,7 @@
 		),
 	)
 	if(!units_transferred)
-		user.action_feedback(SPAN_WARNING("[container] has no valid reagents to transfer to [src]. Did you mean to insert the container instead? (<b>Click-drag</b>)"), src)
+		user.action_feedback(SPAN_WARNING("[container] has no valid reagents to transfer to [src]. Did you mean to insert the container as a reagent source instead? (<b>Click-drag</b>)"), src)
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	user.visible_action_feedback(
 		target = src,
