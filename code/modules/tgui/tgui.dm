@@ -469,8 +469,10 @@
 	if(isnull(interface) && istype(module, /datum/tgui_module))
 		var/datum/tgui_module/actual_module = module
 		interface = actual_module.tgui_id
+	LAZYINITLIST(modules_registered)
 	modules_registered[module] = id
 	if(process)
+		LAZYINITLIST(modules_processed)
 		modules_processed += module
 	RegisterSignal(module, COMSIG_PARENT_QDELETING, PROC_REF(module_deleted))
 	RegisterSignal(module, COMSIG_DATUM_PUSH_UI_DATA, PROC_REF(module_send_data))
