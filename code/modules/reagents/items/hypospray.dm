@@ -76,6 +76,9 @@
 /obj/item/hypospray/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 	if(istype(I, /obj/item/reagent_containers/glass/hypovial))
 		var/obj/item/reagent_containers/glass/hypovial/vial = I
+		if(istype(vial, /obj/item/reagent_containers/glass/hypovial/large) && !allow_large)
+			user.action_feedback(SPAN_WARNING("[vial] requires an advanced hypospray to use!"), src)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
 		if(!user.transfer_item_to_loc(vial, src))
 			user.action_feedback(SPAN_WARNING("[vial] is stuck to your hand!"), src)
 			return CLICKCHAIN_DO_NOT_PROPAGATE

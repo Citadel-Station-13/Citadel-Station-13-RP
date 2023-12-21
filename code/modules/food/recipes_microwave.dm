@@ -1349,7 +1349,7 @@
 	result = /obj/item/reagent_containers/food/snacks/crayonburger_rbw
 
 /datum/recipe/rkibble
-	reagents = list("milk" = 5, "cooking_oil" = 10)
+	reagents = list("milk" = 5, "tallow" = 10)
 	items = list(
 		/obj/item/robot_parts/head,
 		/obj/item/stack/rods

@@ -41,7 +41,7 @@
 // Atmos Tech Alt Titles
 /datum/prototype/struct/alt_title/life_support
 	title = "Life Support Technician"
-	title_blurb = "A Life Support Technician is an Atmospheric Technician who specializes in establishing and maintaining breatheable air in a needed area, whether that's the primary facility or a forward base."
+	title_blurb = "A Life Support Technician is an Atmospheric Technician who specializes in establishing and maintaining breathable air in a needed area, whether that's the primary facility or a forward base."
 
 /datum/prototype/struct/alt_title/pipe_spec
 	title = "Pipe Network Specialist"

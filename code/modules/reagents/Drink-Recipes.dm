@@ -1882,6 +1882,13 @@
 	required_reagents = list("vodka" = 1, "kyocola" = 1, "ice" = 1)
 	result_amount = 3
 
+/datum/chemical_reaction/drinks/mimosa
+	name = "Mimosa"
+	id = "mimosa"
+	result = "mimosa"
+	required_reagents = list("orangejuice" = 1, "champagne" = 1)
+	result_amount = 3
+
 // Unathi drinks
 
 /datum/chemical_reaction/drinks/skrianhi
