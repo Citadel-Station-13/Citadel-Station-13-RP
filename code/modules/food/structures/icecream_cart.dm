@@ -96,10 +96,6 @@
 	if(.)
 		return
 	switch(action)
-		if("selectInfuse")
-			var/index = text2num(params["index"])
-			selected_cone_infusion_source = (sources && index >= 1 && index <= length(sources))? index : null
-			return TRUE
 		if("selectProduce")
 			var/index = text2num(params["index"])
 			selected_ice_cream_source = (sources && index >= 1 && index <= length(sources))? index : null
@@ -139,7 +135,6 @@
 	if(isnull(cone))
 		return FALSE
 	give_to.put_in_hands_or_drop(cone, drop_loc = drop_location())
-	LAZYREMOVE(cones, cone)
 	return TRUE
 
 /obj/machinery/icecream_vat/proc/fill_cone(obj/item/reagent_containers/food/snacks/ice_cream/cone, force, mob/user)
@@ -164,12 +159,15 @@
 	// handle cones
 	if(istype(I, /obj/item/reagent_containers/food/snacks/ice_cream))
 		var/obj/item/reagent_containers/food/snacks/ice_cream/ice_cream = I
+		if(ice_cream.no_double_dipping)
+			user.action_feedback(SPAN_WARNING("[ice_cream] was already bitten out of!"), src)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
 		if(!fill_cone(ice_cream, user = user))
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		user.visible_action_feedback(
 			target = src,
 			hard_range = MESSAGE_RANGE_CONSTRUCTION,
-			visible_hard = SPAN_NOTICE("[user] fills \the [ice_cream] with [length(ice_cream.scoop_colors) > 1? "another" : "a"] delicious dollop of ice cream from \the [src].")
+			visible_hard = SPAN_NOTICE("[user] fills \the [ice_cream] with [ice_cream.scoop_current > 1? "another" : "a"] delicious dollop of ice cream from \the [src].")
 		)
 		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 	// handle filling
