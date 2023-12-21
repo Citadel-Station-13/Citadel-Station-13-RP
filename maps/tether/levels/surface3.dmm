@@ -29131,7 +29131,7 @@
 /turf/simulated/floor/tiled/eris/white/orangecorner,
 /area/shuttle/tourbus/cockpit)
 "qCJ" = (
-/obj/machinery/icecream_vat,
+/obj/structure/icecream_cart,
 /turf/simulated/floor/tiled/freezer/cold,
 /area/crew_quarters/freezer)
 "qDj" = (

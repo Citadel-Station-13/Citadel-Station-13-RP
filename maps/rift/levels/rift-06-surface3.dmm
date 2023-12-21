@@ -1695,7 +1695,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/meeting_room)
 "afw" = (
-/obj/machinery/icecream_vat,
+/obj/structure/icecream_cart,
 /turf/simulated/floor/tiled/freezer/cold,
 /area/crew_quarters/freezer)
 "afx" = (

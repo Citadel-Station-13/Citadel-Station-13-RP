@@ -20960,7 +20960,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/main_map/maintenance/deck_two/aft/starboard)
 "rkT" = (
-/obj/machinery/icecream_vat,
+/obj/structure/icecream_cart,
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/freezer)
 "rlc" = (

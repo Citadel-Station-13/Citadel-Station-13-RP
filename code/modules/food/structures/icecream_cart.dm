@@ -15,7 +15,7 @@
  * This fully supports separated chemicals. Take that as you will.
  */
 #warn obj/structure/icecream_cart
-/obj/machinery/icecream_vat
+/obj/structure/icecream_cart
 	name = "icecream cart"
 	desc = "Here on the galactic frontiers, even the ice-cream carts are advanced! Now with support for separated chemicals."
 	icon = 'icons/modules/food/structures/ice_cream.dmi'
@@ -48,27 +48,27 @@
 	/// self-explanatory
 	var/max_sources = 10
 
-/obj/machinery/icecream_vat/Initialize(mapload)
+/obj/structure/icecream_cart/Initialize(mapload)
 	create_reagents(1000)
 	. = ..()
 
-/obj/machinery/icecream_vat/examine(mob/user, dist)
+/obj/structure/icecream_cart/examine(mob/user, dist)
 	. = ..()
 	. += SPAN_NOTICE("<b>Use</b> a reagent container with an open lid on this to refill its core ingredients.")
 	. += SPAN_NOTICE("<b>Click-drag</b> a reagent container with an open lid on this to add it as a mixing source.")
 	. += SPAN_NOTICE("<b>Click</b> on this with an intact ice-cream cone to dispense a dollop of ice cream into it.")
 
-/obj/machinery/icecream_vat/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+/obj/structure/icecream_cart/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "IcecreamCart")
 		ui.open()
 
-/obj/machinery/icecream_vat/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/structure/icecream_cart/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	.["scoopSource"] = selected_ice_cream_source
 
-/obj/machinery/icecream_vat/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/structure/icecream_cart/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	.["coneFlourCost"] = cone_flour_cost
 	.["scoopMilkCost"] = scoop_milk_cost
@@ -91,7 +91,7 @@
 	.["baseIngredients"] = collect_base
 	.["sources"] = collect_sources
 
-/obj/machinery/icecream_vat/ui_act(action, list/params, datum/tgui/ui)
+/obj/structure/icecream_cart/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return
@@ -123,7 +123,7 @@
 			usr.action_feedback(SPAN_NOTICE("You create an empty waffle cone."), src)
 			return TRUE
 
-/obj/machinery/icecream_vat/proc/produce_cone(force)
+/obj/structure/icecream_cart/proc/produce_cone(force)
 	if(!force)
 		if(!reagents.has_reagent(/datum/reagent/nutriment/flour, cone_flour_cost))
 			return FALSE
@@ -131,13 +131,13 @@
 	var/obj/item/reagent_containers/food/snacks/ice_cream/cone = new(src)
 	return cone
 
-/obj/machinery/icecream_vat/proc/give_cone(obj/item/reagent_containers/food/snacks/ice_cream/cone, mob/give_to)
+/obj/structure/icecream_cart/proc/give_cone(obj/item/reagent_containers/food/snacks/ice_cream/cone, mob/give_to)
 	if(isnull(cone))
 		return FALSE
 	give_to.put_in_hands_or_drop(cone, drop_loc = drop_location())
 	return TRUE
 
-/obj/machinery/icecream_vat/proc/fill_cone(obj/item/reagent_containers/food/snacks/ice_cream/cone, force, mob/user)
+/obj/structure/icecream_cart/proc/fill_cone(obj/item/reagent_containers/food/snacks/ice_cream/cone, force, mob/user)
 	if(!reagents.has_reagent(/datum/reagent/drink/ice, scoop_ice_cost))
 		user.action_feedback(SPAN_WARNING("There is not enough ice left in [src] to make a dollop."), src)
 		return FALSE
@@ -153,7 +153,7 @@
 	cone.add_scoop(infuse_source.reagents, scoop_infuse_amount, TRUE)
 	return TRUE
 
-/obj/machinery/icecream_vat/attackby(obj/item/I, mob/user, list/params, clickchain_flags, damage_multiplier)
+/obj/structure/icecream_cart/attackby(obj/item/I, mob/user, list/params, clickchain_flags, damage_multiplier)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	// handle cones
@@ -199,7 +199,7 @@
 	)
 	return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 
-/obj/machinery/icecream_vat/MouseDroppedOn(atom/dropping, mob/user, proximity, params)
+/obj/structure/icecream_cart/MouseDroppedOn(atom/dropping, mob/user, proximity, params)
 	. = ..()
 	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
 		return
