@@ -21,7 +21,7 @@
 	QDEL_NULL(tgui_cardmod)
 	return ..()
 
-/obj/machinery/computer/card/ui_module_route(action, list/params, datum/tgui/ui, id)
+/obj/machinery/computer/card/ui_route(action, list/params, datum/tgui/ui, id)
 	. = ..()
 	if(.)
 		return

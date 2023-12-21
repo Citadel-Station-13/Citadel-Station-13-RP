@@ -81,6 +81,8 @@
 /datum/tgui/Destroy()
 	user = null
 	src_object = null
+	for(var/datum/module in modules_registered)
+		unregister_module(module)
 	return ..()
 
 /**
@@ -133,6 +135,10 @@
 	if(mouse_hooked)
 		window.set_mouse_macro()
 	SStgui.on_open(src)
+	// todo: should these hooks be here?
+	src_object.on_ui_open(user, src)
+	for(var/datum/module as anything in modules_registered)
+		module.on_ui_open(user, src, TRUE)
 	return TRUE
 
 /**
@@ -154,12 +160,15 @@
 		// the error message properly.
 		window.release_lock()
 		window.close(can_be_suspended)
-		src_object.ui_close(user)
 		SStgui.on_close(src)
 	state = null
 	if(parent_ui)
 		parent_ui.children -= src
 	parent_ui = null
+	// todo: should these hooks be here?
+	src_object.on_ui_close(user, src)
+	for(var/datum/module as anything in modules_registered)
+		module.on_ui_close(user, src, TRUE)
 	qdel(src)
 
 /**
@@ -379,7 +388,7 @@
 				// we're kind of stuck doing this
 				// maybe in the future we'll just have ui modules list but for now
 				// eh.
-				if(src_object.ui_module_route(action, payload, src, id))
+				if(src_object.ui_route(action, payload, src, id))
 					SStgui.update_uis(src_object)
 				return FALSE
 	switch(type)
@@ -460,14 +469,23 @@
 	if(isnull(interface) && istype(module, /datum/tgui_module))
 		var/datum/tgui_module/actual_module = module
 		interface = actual_module.tgui_id
-	#warn impl
+	modules_registered[module] = id
+	if(process)
+		modules_processed += module
+	RegisterSignal(module, COMSIG_PARENT_QDELETING, PROC_REF(module_deleted))
+	RegisterSignal(module, COMSIG_DATUM_PUSH_UI_DATA, PROC_REF(module_send_data))
 
 /datum/tgui/proc/unregister_module(datum/module)
-	#warn impl
+	modules_processed -= module
+	modules_registered -= module
+	UnregisterSignal(module, list(
+		COMSIG_PARENT_QDELETING,
+		COMSIG_DATUM_PUSH_UI_DATA,
+	))
 
 /datum/tgui/proc/module_deleted(datum/source)
 	SIGNAL_HANDLER
-	#warn impl
+	unregister_module(source)
 
 /datum/tgui/proc/module_send_data(datum/source, mob/user, datum/tgui/ui, list/data)
 	if(!isnull(user) && user != user)
@@ -475,7 +493,12 @@
 	if(!isnull(ui) && ui != src)
 		return
 	// todo: this is force because otherwise static data can be desynced. should static data be on another proc instead?
-	push_data(data, TRUE)
+	push_modules(
+		updates = list(
+			(modules_registered[source]) = data,
+		),
+		force = TRUE,
+	)
 
 //* Helpers - Invoked from ui_act() *//
 

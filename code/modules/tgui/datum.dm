@@ -40,7 +40,6 @@
  * * action - the string of the TGUI-side act() that was invoked by the user
  * * params - the list of key-value parameters of the act() invocation. This is always strings for both key and value!
  * * ui - the TGUI instance invoking this (host window)
- * * embed_context - (optional) if non-null, this datum is receiving an UI act as an embedded UI
  *
  * @return bool If the user's input has been handled and the UI should update.
  */
@@ -140,7 +139,13 @@
  * @return TRUE if it was handled by modules.
  */
 /datum/proc/ui_route(action, list/params, datum/tgui/ui, id)
-	#warn uhh
+	SHOULD_CALL_PARENT(TRUE)
+	// todo: the fact this is here is probably a bad thing, as it's very poorly documented.
+	// this basically matches the useModule<>() hook used on the UI side, because id is null if
+	// we're a host window, and not an act call from an embedded component.
+	if(!id)
+		return ui_act(action, params, ui)
+	return FALSE
 
 /**
  * public
@@ -196,7 +201,6 @@
 		SStgui.update_uis(src)
 	else
 		SStgui.try_update_ui(user, src, ui)
-	#warn send to embedders
 
 /**
  * public
@@ -221,7 +225,6 @@
 		ui = SStgui.get_open_ui(user, src)
 	if(ui)
 		ui.send_full_update(hard_refresh = hard_refresh)
-	#warn send to embedders
 
 /**
  * immediately shunts this data to either an user, an ui, or all users.
@@ -294,7 +297,6 @@
  * * embedded - this was an embedded ui / the datum is being embedded
  */
 /datum/proc/on_ui_open(mob/user, datum/tgui/ui, embedded)
-	#warn hook this proc
 	SIGNAL_HANDLER
 
 /**
@@ -326,5 +328,4 @@
  * * embedded - this was an embedded transfer
  */
 /datum/proc/on_ui_transfer(mob/old_mob, mob/new_mob, datum/tgui/ui, embedded)
-	#warn hook embedded to calls
 	return

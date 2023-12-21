@@ -167,8 +167,12 @@
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui && tgui_id)
 		ui = new(user, src, tgui_id, filedesc)
+		ui_pre_open(ui)
 		ui.open()
 	return 1
+
+/datum/computer_file/program/proc/ui_pre_open(datum/tgui/ui)
+	return
 
 // CONVENTIONS, READ THIS WHEN CREATING NEW PROGRAM AND OVERRIDING THIS PROC:
 // Topic calls are automagically forwarded from NanoModule this program contains.
