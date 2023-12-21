@@ -1021,3 +1021,7 @@ Drinks Data
 /datum/reagent/ethanol/martinez
 	glass_icon_state = "martinez"
 	glass_center_of_mass = list("x"=16, "y"=8)
+
+/datum/reagent/ethanol/mimosa
+	glass_icon_state = "mimosa"
+	glass_center_of_mass = list("x"=16, "y"=8)

@@ -30,7 +30,7 @@
 
 	outfit_type = /datum/outfit/job/station/station_engineer/senior
 	desc = "A Senior Engineer fulfills similar duties to other engineers, but usually occupies spare time with with training of other, newer Engineers \
-			and giving advice in tricky engineering situtations. You are not in command of the Engineering departement, but should assist the CE in accordance with Standard Operating Procedures."
+			and giving advice in tricky engineering situations. You are not in command of the Engineering department, but should assist the CE in accordance with Standard Operating Procedures."
 
 	alt_titles = list(
 		"Engineering Training Specialist" = /datum/prototype/struct/alt_title/engi_trainer,

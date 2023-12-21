@@ -20,6 +20,9 @@
 /datum/trait/proc/apply(datum/species/S, mob/living/carbon/human/H)
 	SHOULD_CALL_PARENT(TRUE)
 
+	if(istype(H, /mob/observer))
+		return
+
 	for(var/trait in traits)
 		ADD_TRAIT(H, trait, QUIRK_TRAIT)
 

@@ -40,7 +40,7 @@
 /obj/random/multiple/underdark/ores/item_to_spawn()
 	return pick(
 				prob(9);list(
-							/obj/item/storage/bag/ore,
+							/obj/random/ore_bag,
 							/obj/item/shovel,
 							/obj/item/stack/ore/glass, //TODO: tell this legacy loot bullshit to fuck off so we don't have this happening.
 							/obj/item/stack/ore/glass,
@@ -60,7 +60,7 @@
 							/obj/item/stack/ore/hydrogen
 							),
 				prob(7);list(
-							/obj/item/storage/bag/ore,
+							/obj/random/ore_bag,
 							/obj/item/pickaxe,
 							/obj/item/stack/ore/osmium,
 							/obj/item/stack/ore/osmium,

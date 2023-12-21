@@ -3,9 +3,9 @@
 	for(var/i in 1 to 1000)
 		queue.enqueue(rand(1, 100000))
 	var/last = queue.dequeue()
-	while(length(queue.queue))
+	while(length(queue.array))
 		var/next = queue.dequeue()
 		if(next < last)
-			TEST_FAIL("Priority queue out of order. next [next] last [last] queue [json_encode(queue.queue)]")
+			TEST_FAIL("Priority queue out of order. next [next] last [last] queue [json_encode(queue.array)]")
 			return
 		last = next

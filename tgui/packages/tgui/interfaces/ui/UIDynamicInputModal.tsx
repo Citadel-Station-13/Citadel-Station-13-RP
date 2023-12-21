@@ -144,10 +144,10 @@ const preprocessOptions = (picked: Record<string, any>, query: Record<string, UI
 
 interface DynamicEntryProps {
   // eslint-disable-next-line react/no-unused-prop-types
-  id: string;
-  entry: UIDynamicInputEntry;
-  current: UIDynamicInputOption;
-  pick: (val: any) => void;
+  readonly id: string;
+  readonly entry: UIDynamicInputEntry;
+  readonly current: UIDynamicInputOption;
+  readonly pick: (val: any) => void;
 }
 
 const DynamicEntry = (props: DynamicEntryProps, context) => {

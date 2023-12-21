@@ -17,10 +17,10 @@ interface StackCraftingData {
 }
 
 interface StackCraftingEntryProps {
-  recipe: StackRecipeData;
-  craft: (ref: string, amt: number) => void;
-  stackName: string;
-  stackAmt: number;
+  readonly recipe: StackRecipeData;
+  readonly craft: (ref: string, amt: number) => void;
+  readonly stackName: string;
+  readonly stackAmt: number;
 }
 
 const StackCraftingEntry = (props: StackCraftingEntryProps, context) => {

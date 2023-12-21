@@ -1,66 +1,89 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 /**
- * array-backed priority heap
+ * An array-backed priority queue.
  *
- * not written in house, cloned from oldish polaris/bay (?)
+ * The "front" of the queue is popped first; check comparators.dm for what this means.
  */
 /datum/priority_queue
-	var/list/queue
-	var/comparison_function
+	/// comparaison function
+	var/procpath/comparison
+	/// internal array
+	var/list/array = list()
 
-/datum/priority_queue/New(compare)
-	queue = list()
-	comparison_function = compare
+/datum/priority_queue/New(cmp)
+	src.comparison = cmp
+	array = list()
 
 /datum/priority_queue/proc/is_empty()
-	return !queue.len
+	return length(array) == 0
 
-/datum/priority_queue/proc/enqueue(data)
-	queue.Add(data)
-	var/index = queue.len
-
-	//From what I can tell, this automagically sorts the added data into the correct location.
-	while(index > 2 && call(comparison_function)(queue[index / 2], queue[index]) > 0)
-		queue.Swap(index, index / 2)
-		index /= 2
+/datum/priority_queue/proc/enqueue(entry)
+	array += entry
+	bubble_up(length(array))
 
 /datum/priority_queue/proc/dequeue()
-	if(!queue.len)
-		return 0
-	return remove(1)
+	if(length(array) == 0)
+		return null
+	. = array[1]
+	array.Swap(1, length(array))
+	--array.len
+	bubble_down(1)
 
-/datum/priority_queue/proc/remove(index)
-	if(index > queue.len)
-		return 0
+/datum/priority_queue/proc/peek()
+	return length(array)? array[1] : null
 
-	var/thing = queue[index]
-	queue.Swap(index, queue.len)
-	--queue.len
-	if(index < queue.len)
-		fix_queue(index)
-	return thing
+// todo: define this
+/datum/priority_queue/proc/bubble_up(index)
+	while(index >= 2 && call(comparison)(array[index], array[index / 2]) < 0)
+		array.Swap(index, index / 2)
+		index /= 2
 
-/datum/priority_queue/proc/fix_queue(index)
-	var/child = 2 * index
-	var/item = queue[index]
-
-	while(child <= queue.len)
-		if(child < queue.len && call(comparison_function)(queue[child], queue[child + 1]) > 0)
-			child++
-		if(call(comparison_function)(item, queue[child]) > 0)
-			queue[index] = queue[child]
-			index = child
+// todo: define this
+/datum/priority_queue/proc/bubble_down(index)
+	var/length = length(array)
+	var/next = index * 2
+	while(next <= length)
+		// left always exists, right doesn't necessarily exist
+		if(call(comparison)(array[next], array[index]) < 0)
+			if(next < length && call(comparison)(array[next], array[next + 1]) > 0)
+				array.Swap(index, next + 1)
+				index = next + 1
+			else
+				array.Swap(index, next)
+				index = next
+		else if(next < length && call(comparison)(array[next + 1], array[index]) < 0)
+			array.Swap(index, next + 1)
+			index = next + 1
 		else
 			break
-		child = 2 * index
-	queue[index] = item
+		next = index * 2
 
-/datum/priority_queue/proc/clone_list()
-	return queue.Copy()
+/**
+ * returns copy of list of entries in no particular order
+ */
+/datum/priority_queue/proc/flattened()
+	return array.Copy()
+
+/datum/priority_queue/proc/remove_index(index)
+	var/length = length(array)
+	if(!index || index > length)
+		return
+	if(index == length)
+		. = array[index]
+		--array.len
+		return
+	. = array[index]
+	array.Swap(index, length)
+	--array.len
+	bubble_down(index)
+
+/datum/priority_queue/proc/find(entry)
+	return array.Find(entry)
+
+/datum/priority_queue/proc/remove_entry(entry)
+	return remove_index(array.Find(entry))
 
 /datum/priority_queue/proc/size()
-	return queue.len
-
-/datum/priority_queue/proc/remove_item(data)
-	var/index = queue.Find(data)
-	if(index)
-		return remove(index)
+	return length(array)
