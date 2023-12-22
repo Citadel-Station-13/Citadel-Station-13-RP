@@ -1,36 +1,3 @@
-//shuttle moving state defines are in setup.dm
-
-/datum/shuttle
-	var/name = ""
-	var/warmup_time = 0
-	var/moving_status = SHUTTLE_IDLE
-
-	var/list/shuttle_area	// Initial value can be either a single area type or a list of area types
-	var/obj/effect/shuttle_landmark/current_location	// This variable is type-abused initially: specify the landmark_tag, not the actual landmark.
-
-	var/tmp/arrive_time = 0	// The time at which the shuttle arrives when long jumping
-	var/flags = SHUTTLE_FLAGS_NONE
-	var/process_state = IDLE_STATE	// Used with SHUTTLE_FLAGS_PROCESS, as well as to store current state.
-	var/category = /datum/shuttle
-	var/multiz = 0	// How many multiz levels, starts at 0  TODO Leshana - Are we porting this?
-
-	var/ceiling_type = /turf/simulated/shuttle_ceiling	// Type path of turf to roof over the shuttle when at multi-z landmarks.  Ignored if null.
-
-	var/sound_takeoff = 'sound/effects/shuttles/shuttle_takeoff.ogg'
-	var/sound_landing = 'sound/effects/shuttles/shuttle_landing.ogg'
-
-	var/knockdown = 1	// Whether shuttle downs non-buckled people when it moves
-
-	var/defer_initialisation = FALSE // If this this shuttle should be initialised automatically.
-									 // If set to true, you are responsible for initialzing the shuttle manually.
-									 // Useful for shuttles that are initialized by map_template loading, or shuttles that are created in-game or not used.
-
-	var/mothershuttle // Tag of mothershuttle
-	var/motherdock	  // Tag of mothershuttle landmark, defaults to starting location
-
-	var/tmp/depart_time = 0	// Similar to above, set when the shuttle leaves when long jumping.  Used for progress bars.
-
-	// Future Thoughts: Baystation put "docking" stuff in a subtype, leaving base type pure and free of docking stuff. Is this best?
 
 /datum/shuttle/New(_name, var/obj/effect/shuttle_landmark/initial_location)
 	..()

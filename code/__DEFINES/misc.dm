@@ -60,25 +60,10 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 /// 2 minutes = 120 seconds - for some reason it takes less time to come back, go figure.
 #define SHUTTLE_TRANSIT_DURATION_RETURN	120
 
-// Shuttle moving status.
-#define SHUTTLE_IDLE		0
-#define SHUTTLE_WARMUP		1
-#define SHUTTLE_INTRANSIT	2
-/// Yup that can happen now
-#define SHUTTLE_CRASHED	3
-
 // Sound defines for shuttles.
 #define HYPERSPACE_WARMUP	0
 #define HYPERSPACE_PROGRESS	1
 #define HYPERSPACE_END		2
-
-// Ferry shuttle processing status.
-#define IDLE_STATE		0
-#define WAIT_LAUNCH		1
-#define FORCE_LAUNCH	2
-#define WAIT_ARRIVE		3
-#define WAIT_FINISH		4
-#define DO_AUTOPILOT	5
 
 // Bluespace shelter deploy checks
 #define SHELTER_DEPLOY_ALLOWED			"allowed"

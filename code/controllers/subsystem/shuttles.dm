@@ -110,15 +110,6 @@ SUBSYSTEM_DEF(shuttle)
 		if(MC_TICK_CHECK)
 			return
 
-/datum/controller/subsystem/shuttle/proc/legacy_shuttle_assert(datum/shuttle/path)
-	if(initial(path.defer_initialisation))
-		return
-	if(initial(path.category) == path)
-		CRASH("attempted to init abstract shuttle")
-	if(!isnull(shuttle_types[path]))
-		return
-	shuttles_to_initialize += path
-
 /datum/controller/subsystem/shuttle/proc/process_init_queues()
 	if(block_init_queue)
 		return
@@ -213,17 +204,6 @@ SUBSYSTEM_DEF(shuttle)
 		return shuttle
 		// Historical note:  No need to call shuttle.init_docking_controllers(), controllers register themselves
 		// and shuttles fetch refs in New().  Shuttles also dock() themselves in new if they want.
-
-// TODO - Leshana to hook up more of this when overmap is ported.
-/datum/controller/subsystem/shuttle/proc/hook_up_motherships(shuttles_list)
-	for(var/datum/shuttle/S in shuttles_list)
-		if(S.mothershuttle && !S.motherdock)
-			var/datum/shuttle/mothership = shuttles[S.mothershuttle]
-			if(mothership)
-				S.motherdock = S.current_location.landmark_tag
-				mothership.shuttle_area |= S.shuttle_area
-			else
-				log_debug(SPAN_DEBUG("Shuttle [S] was unable to find mothership [mothership]!"))
 
 // Let shuttles scan their owned areas for objects they want to configure (Called after mothership hookup)
 /datum/controller/subsystem/shuttle/proc/hook_up_shuttle_objects(shuttles_list)
