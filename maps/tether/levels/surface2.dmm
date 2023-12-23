@@ -2089,7 +2089,7 @@
 /obj/machinery/door/airlock/multi_tile/glass{
 	name = "Infirmary Lobby"
 	},
-/obj/machinery/door/firedoor/multi_tile,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/north)
 "byZ" = (
@@ -3831,11 +3831,9 @@
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/reading_room)
 "cGZ" = (
-/obj/machinery/door/firedoor{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/white,
-/area/tether/surfacebase/medical/centralhall)
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/tiled/techfloor,
+/area/maintenance/lower/north)
 "cHi" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -4340,9 +4338,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass{
-	dir = 8
-	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/surface_two_hall)
 "cYW" = (
@@ -7427,6 +7423,7 @@
 "fmp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/breakroom)
 "fmr" = (
@@ -12421,7 +12418,7 @@
 	req_access = list(5);
 	req_one_access = list(5)
 	},
-/obj/machinery/door/firedoor/multi_tile,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/uppersouthstairwell)
 "iER" = (
@@ -13387,9 +13384,7 @@
 /obj/effect/floor_decal/corner/paleblue/bordercorner2{
 	dir = 5
 	},
-/obj/machinery/door/firedoor{
-	dir = 8
-	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/centralhall)
 "joP" = (
@@ -14629,9 +14624,7 @@
 /obj/structure/window/basic{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass{
-	dir = 8
-	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/surface_two_hall)
 "klB" = (
@@ -17246,7 +17239,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
-/obj/machinery/door/firedoor/multi_tile,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/breakroom)
 "mlv" = (
@@ -22101,6 +22094,7 @@
 /area/engineering/lower/lobby)
 "pLd" = (
 /obj/structure/disposalpipe/segment,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/breakroom)
 "pLq" = (
@@ -22518,6 +22512,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/uppersouthstairwell)
 "qaV" = (
@@ -22543,9 +22538,7 @@
 /obj/machinery/camera/network/tether{
 	dir = 9
 	},
-/obj/machinery/door/firedoor/glass{
-	dir = 8
-	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/surface_two_hall)
 "qbU" = (
@@ -24101,9 +24094,7 @@
 /obj/structure/window/basic{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass{
-	dir = 8
-	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/surface_two_hall)
 "rkP" = (
@@ -24310,7 +24301,6 @@
 	},
 /area/tcommsat/chamber)
 "rqQ" = (
-/obj/machinery/door/firedoor/multi_tile,
 /obj/machinery/door/airlock/multi_tile/glass{
 	name = "Medbay Breakroom";
 	req_access = list(5);
@@ -24322,6 +24312,7 @@
 	name = "Exit Button";
 	pixel_x = -24
 	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/breakroom)
 "rrk" = (
@@ -60645,7 +60636,7 @@ hJZ
 hJZ
 hTQ
 hJZ
-hJZ
+cGZ
 pBp
 nlg
 dTM
@@ -60821,7 +60812,7 @@ jnR
 vrc
 lVn
 krf
-cGZ
+vCf
 eBr
 krf
 xhM

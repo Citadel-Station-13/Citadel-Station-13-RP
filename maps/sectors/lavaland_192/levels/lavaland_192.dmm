@@ -65,10 +65,6 @@
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "do" = (
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 1;
-	req_one_access = list(48)
-	},
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 4;
 	name = "Dorms";
@@ -80,6 +76,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
@@ -232,6 +231,12 @@
 	dir = 10
 	},
 /turf/simulated/floor/plating,
+/area/lavaland/central/base/common)
+"hh" = (
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "hi" = (
 /obj/machinery/atmospherics/portables_connector,
@@ -1039,6 +1044,18 @@
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
+"sW" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/lavaland/central/base/common)
 "sX" = (
 /obj/machinery/sleep_console,
 /turf/simulated/floor/tiled,
@@ -1455,15 +1472,14 @@
 /turf/simulated/floor/wood,
 /area/lavaland/central/base/common)
 "As" = (
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 1;
-	req_one_access = list(48)
-	},
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 4;
 	name = "Lounge";
 	req_access = null;
 	req_one_access = list(1,5,31,38,47,48)
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/wood,
 /area/lavaland/central/base/common)
@@ -1723,13 +1739,11 @@
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "IR" = (
-/obj/machinery/door/firedoor/multi_tile{
-	req_one_access = list(48)
-	},
 /obj/machinery/door/airlock/multi_tile/glass{
 	name = "Lounge";
 	req_one_access = list(1,5,31,38,47,48)
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/wood,
 /area/lavaland/central/base/common)
 "IV" = (
@@ -2082,6 +2096,10 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
+/area/lavaland/central/base/common)
+"Su" = (
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/wood,
 /area/lavaland/central/base/common)
 "SH" = (
 /obj/machinery/light/small{
@@ -10121,7 +10139,7 @@ yX
 yw
 yw
 yw
-yw
+Su
 PZ
 SN
 ew
@@ -10505,7 +10523,7 @@ so
 AO
 AO
 AO
-ws
+sW
 As
 db
 db
@@ -11289,7 +11307,7 @@ IV
 QN
 UV
 AO
-ew
+hh
 do
 AO
 AO
