@@ -292,6 +292,7 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 	setEmotion("null")
 	src.forceMove(get_turf(src))
 	pai.open_up()
+	pai.update_action_buttons()
 
 /obj/item/paicard/proc/removePersonality()
 	QDEL_NULL(pai)
