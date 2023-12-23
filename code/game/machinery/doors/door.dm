@@ -417,12 +417,6 @@
 
 	update_nearby_tiles()
 
-/obj/machinery/door/proc/check_opacity()
-	if(visible)
-		if((!glass) || tinted)
-			set_opacity(1)	//caaaaarn!
-
-
 /obj/machinery/door/morgue
 	icon = 'icons/obj/doors/doormorgue.dmi'
 
