@@ -46,7 +46,7 @@
 	var/atom/movable/overlay/c_animation = null
 
 	var/reinforcing = 0
-	
+
 
 /obj/machinery/door/Initialize(mapload, newdir)
 	. = ..()
@@ -366,7 +366,7 @@
 	update_nearby_tiles()
 	sleep(7)
 	update_icon()
-	if(visible && !glass)
+	if(visible && (!glass || tinted))
 		set_opacity(1)	//caaaaarn!
 	rad_insulation = initial(rad_insulation)
 	operating = 0
@@ -416,6 +416,12 @@
 			bound_height = width * world.icon_size
 
 	update_nearby_tiles()
+
+/obj/machinery/door/proc/check_opacity()
+	if(visible)
+		if((!glass) || tinted)
+			set_opacity(1)	//caaaaarn!
+
 
 /obj/machinery/door/morgue
 	icon = 'icons/obj/doors/doormorgue.dmi'
