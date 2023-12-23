@@ -14,7 +14,6 @@
  *
  * This fully supports separated chemicals. Take that as you will.
  */
-#warn obj/structure/icecream_cart
 /obj/structure/icecream_cart
 	name = "icecream cart"
 	desc = "Here on the galactic frontiers, even the ice-cream carts are advanced! Now with support for separated chemicals."

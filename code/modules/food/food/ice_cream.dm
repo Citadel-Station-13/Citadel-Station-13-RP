@@ -66,7 +66,12 @@
 
 /obj/item/reagent_containers/food/snacks/ice_cream/proc/add_bite()
 	#warn impl
-S
+
+/obj/item/reagent_containers/food/snacks/ice_cream/proc/overlay_position(i)
+	switch(i)
+		if(1)
+			return list(0, 0)
+
 
 #warn icon states are dollop, melt1-3, wafflecone, waffledrop1-3
 
