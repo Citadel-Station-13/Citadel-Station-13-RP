@@ -49,6 +49,7 @@
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary
 	var/frequency = 0
 	var/datum/radio_frequency/radio_connection
+	scrubbing_ids = list("phoron", "co2")
 
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/Initialize(mapload)
 	. = ..()
