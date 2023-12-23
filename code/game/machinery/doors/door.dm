@@ -366,8 +366,8 @@
 	update_nearby_tiles()
 	sleep(7)
 	update_icon()
-	if(visible && (!glass || tinted))
-		set_opacity(1)	//caaaaarn!
+	set_opacity_on_close()
+
 	rad_insulation = initial(rad_insulation)
 	operating = 0
 
@@ -377,6 +377,10 @@
 		qdel(fire)
 
 	return 1
+
+/obj/machinery/door/proc/set_opacity_on_close()
+	if(visible && !glass)
+		set_opacity(1)
 
 /obj/machinery/door/proc/toggle_open(var/forced)
 	if(density)

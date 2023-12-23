@@ -923,6 +923,10 @@ About the new airlock wires panel:
 			LEGACY_EX_ACT(killthis, 2, null)//Smashin windows
 	return ..()
 
+/obj/machinery/door/airlock/set_opacity_on_close()
+	if(visible && (!glass || tinted))
+		set_opacity(1)
+
 /obj/machinery/door/airlock/can_open(var/forced=0)
 	if(!forced)
 		if(!arePowerSystemsOn() || wires.is_cut(WIRE_OPEN_DOOR))
