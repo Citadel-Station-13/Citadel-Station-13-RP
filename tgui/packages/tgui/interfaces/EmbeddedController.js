@@ -474,7 +474,7 @@ const AirlockConsolePhoron = (props, context) => {
       label: "Chamber Temperature",
       textValue: data.chamber_temperature + " °C",
       color: (value => {
-        return (value < 0 ) ? 'bad'
+        return (value < 0) ? 'bad'
           : (value < 15) ? 'average'
             : 'good';
       }),
