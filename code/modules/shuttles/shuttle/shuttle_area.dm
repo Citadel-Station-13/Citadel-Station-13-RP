@@ -2,8 +2,9 @@
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
 /**
- * manual dock
+ * shuttle areas
  */
-/obj/shuttle_dock/ephemeral/manual
+/area/shuttle
+	unique = FALSE
 
-#warn impl
+#warn impl all

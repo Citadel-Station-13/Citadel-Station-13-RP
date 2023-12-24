@@ -137,9 +137,6 @@ LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 /turf/simulated/mineral/floor/lythios43c/indoors
 	outdoors = FALSE
 
-/turf/simulated/floor/plating/indoors
-	outdoors = FALSE
-
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors
 	outdoors = FALSE
 

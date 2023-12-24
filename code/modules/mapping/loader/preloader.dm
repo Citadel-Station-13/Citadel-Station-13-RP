@@ -87,11 +87,13 @@ GLOBAL_REAL(preloader, /datum/map_preloader) = new
 		what.pixel_x = px
 		what.pixel_y = py
 
+// todo: /area/ignore
 /area/template_noop
 	name = "Area Passthrough"
 	icon = 'icons/mapping/helpers/maploader_objects.dmi'
 	icon_state = "area_noop"
 
+// todo: /turf/ignore
 /turf/template_noop
 	name = "Turf Passthrough"
 	icon = 'icons/mapping/helpers/maploader_objects.dmi'

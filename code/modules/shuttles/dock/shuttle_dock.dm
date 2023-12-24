@@ -168,3 +168,26 @@
 	unregister_dock()
 	. = ..()
 	register_dock()
+
+/**
+ * ephemeral docks
+ *
+ * deletes when a shuttle leaves
+ */
+/obj/shuttle_dock/ephemeral
+
+#warn impl
+
+/**
+ * manual dock
+ */
+/obj/shuttle_dock/ephemeral/manual
+
+#warn impl
+
+/**
+ * transit dock
+ */
+/obj/shuttle_dock/ephemeral/transit
+
+#warn impl
