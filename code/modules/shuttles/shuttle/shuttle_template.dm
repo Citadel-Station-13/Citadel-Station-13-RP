@@ -16,6 +16,10 @@
 	/// lore fluff
 	var/fluff
 
+	/// direction the shuttle is facing, in the map
+	/// please try to map shuttles in facing north.
+	var/facing_dir = NORTH
+
 	/// unique ID - use CamelCase, must be unique & stable, including across rounds.
 	/// this means hardcoded ones shouldn't be changed willy-nilly.
 	var/id
@@ -32,6 +36,8 @@
 
 	/// mass in kilotons
 	var/mass = 5
+	/// if set to false, this is absolute-ly unable to land on a planet
+	var/allow_atmospheric_landing = TRUE
 
 #warn impl all
 
