@@ -1,7 +1,63 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/area/space,
-/turf/space/basic)
+/turf/space/basic,
+/area/space)
+"g" = (
+/obj/machinery/power/apc/critical/south_bump,
+/turf/simulated/floor/plating/indoors,
+/area/space)
+"h" = (
+/obj/structure/handrail{
+	dir = 8
+	},
+/turf/simulated/floor/plating/indoors,
+/area/space)
+"i" = (
+/turf/simulated/shuttle/wall/voidcraft,
+/area/space)
+"j" = (
+/obj/machinery/shipsensors,
+/turf/simulated/floor/plating/outdoors,
+/area/space)
+"k" = (
+/obj/structure/handrail{
+	dir = 4
+	},
+/turf/simulated/floor/plating/indoors,
+/area/space)
+"q" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/plating/indoors,
+/area/space)
+"t" = (
+/obj/structure/railing,
+/turf/simulated/floor/plating/indoors,
+/area/space)
+"w" = (
+/obj/effect/floor_decal/industrial/warning/full,
+/turf/simulated/floor/plating/indoors,
+/area/space)
+"y" = (
+/obj/effect/floor_decal/industrial/warning/full,
+/turf/space/basic,
+/area/space)
+"B" = (
+/obj/spawner/window/low_wall/reinforced/full,
+/turf/simulated/floor/plating/indoors,
+/area/space)
+"E" = (
+/turf/simulated/floor/plating/indoors,
+/area/space)
+"L" = (
+/obj/structure/table/rack/shelf,
+/turf/simulated/floor/plating/indoors,
+/area/space)
+"P" = (
+/obj/machinery/door/airlock/external/glass,
+/turf/simulated/floor/plating/indoors,
+/area/space)
 
 (1,1,1) = {"
 a
@@ -445,9 +501,9 @@ a
 a
 a
 a
-a
-a
-a
+y
+y
+y
 a
 a
 a
@@ -485,11 +541,11 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
+j
+i
+B
+B
+i
 a
 a
 a
@@ -526,14 +582,14 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
-a
+i
+B
+i
+w
+w
+w
+i
+w
 a
 a
 a
@@ -567,15 +623,15 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+i
+L
+t
+k
+h
+E
+E
+i
+w
 a
 a
 a
@@ -609,14 +665,14 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
-a
+B
+w
+E
+w
+i
+w
+E
+P
 a
 a
 a
@@ -651,14 +707,14 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
-a
+B
+w
+E
+g
+i
+w
+E
+P
 a
 a
 a
@@ -693,15 +749,15 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+i
+L
+t
+h
+k
+E
+E
+i
+w
 a
 a
 a
@@ -736,14 +792,14 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
-a
+i
+B
+i
+w
+q
+E
+i
+w
 a
 a
 a
@@ -780,10 +836,10 @@ a
 a
 a
 a
-a
-a
-a
-a
+i
+B
+B
+i
 a
 a
 a
@@ -823,9 +879,9 @@ a
 a
 a
 a
-a
-a
-a
+y
+y
+y
 a
 a
 a
