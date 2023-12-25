@@ -5,7 +5,8 @@
 	abstract_type = /datum/rig_theme/station/security
 	base_icon = 'icons/modules/rigsuits/suits/security.dmi'
 
-DECLARE_RIG_THEME(/station/security/standard)
+AUTO_RIG_THEME(/station/security/standard)
+/datum/rig_theme/station/security/standard
 	name = "security rig"
 	base_state = "security"
 	desc = "TBD"
@@ -14,7 +15,8 @@ DECLARE_RIG_THEME(/station/security/standard)
 	visible_name = "Security"
 	#warn impl
 
-DECLARE_RIG_THEME(/station/security/)
+AUTO_RIG_THEME(/station/security/)
+/datum/rig_theme/station/security/
 	name = "security rig"
 	base_state = "safeguard"
 	desc = "TBD"

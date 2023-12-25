@@ -5,7 +5,8 @@
 	abstract_type = /datum/rig_theme/station/medical
 	base_icon = 'icons/modules/rigsuits/suits/medical.dmi'
 
-DECLARE_RIG_THEME(/station/medical/standard)
+AUTO_RIG_THEME(/station/medical/standard)
+/datum/rig_theme/station/medical/standard
 	name = "medical rig"
 	base_state = "medical"
 	desc = "TBD"
@@ -28,7 +29,8 @@ DECLARE_RIG_THEME(/station/medical/standard)
 	)
 	#warn impl
 
-DECLARE_RIG_THEME(/station/medical/advanced)
+AUTO_RIG_THEME(/station/medical/advanced)
+/datum/rig_theme/station/medical/advanced
 	name = "chief medical rig"
 	base_state = "corpsman"
 	desc = "TBD"

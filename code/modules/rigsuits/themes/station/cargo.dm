@@ -5,7 +5,8 @@
 	abstract_type = /datum/rig_theme/station/cargo
 	base_icon = 'icons/modules/rigsuits/suits/cargo.dmi'
 
-DECLARE_RIG_THEME(/station/cargo/asteroid)
+AUTO_RIG_THEME(/station/cargo/asteroid)
+/datum/rig_theme/station/cargo/asteroid
 	name = "salvage rig"
 	base_state = "salvage"
 	desc = "TBD"
@@ -14,7 +15,8 @@ DECLARE_RIG_THEME(/station/cargo/asteroid)
 	visible_name = "Salvage"
 	#warn impl
 
-DECLARE_RIG_THEME(/station/cargo/mining)
+AUTO_RIG_THEME(/station/cargo/mining)
+/datum/rig_theme/station/cargo/mining
 	name = "mining rig"
 	base_state = "mining"
 	desc = "TBD"
@@ -23,7 +25,8 @@ DECLARE_RIG_THEME(/station/cargo/mining)
 	visible_name = "Mining"
 	#warn impl
 
-DECLARE_RIG_THEME(/station/cargo/loader)
+AUTO_RIG_THEME(/station/cargo/loader)
+/datum/rig_theme/station/cargo/loader
 	name = "loader rig"
 	base_state = "loader"
 	desc = "TBD"

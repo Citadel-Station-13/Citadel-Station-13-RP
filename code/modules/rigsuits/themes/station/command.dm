@@ -5,7 +5,8 @@
 	abstract_type = /datum/rig_theme/station/command
 	base_icon = 'icons/modules/rigsuits/suits/command.dmi'
 
-DECLARE_RIG_THEME(/station/command/captain)
+AUTO_RIG_THEME(/station/command/captain)
+/datum/rig_theme/station/command/captain
 	name = "director rig"
 	base_state = "magnate"
 	desc = "TBD"
