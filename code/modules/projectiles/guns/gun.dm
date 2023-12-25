@@ -135,11 +135,15 @@
 	//* Wielding
 	/// allow wielding
 	var/wieldable = FALSE
+	#warn hook vv for this
 
 /obj/item/gun/Initialize(mapload)
 	. = ..()
 	if(ispath(pin))
 		pin = new pin
+	if(wieldable)
+		#warn use the button variant
+		AddComponent(/datum/component/wielding)
 	init_firemodes()
 
 //* Ammo *//
@@ -323,36 +327,10 @@
 #warn below
 
 /obj/item/gun
-	icon = 'icons/obj/gun/ballistic.dmi'
-	item_icons = list(
-		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_guns.dmi',
-		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_guns.dmi',
-		)
-	icon_state = "detective"
-	item_state = "gun"
-
-	throw_force = 5
-	throw_speed = 4
-	throw_range = 5
-	damage_force = 5
-	damage_tier = MELEE_TIER_MEDIUM
-	preserve_item = 1
-	zoomdevicename = "scope"
 
 	var/fire_sound_text = "gunshot"
-	var/recoil = 0		//screen shake
-	var/suppressible = FALSE
-	var/silenced = FALSE
-	var/silenced_icon = null
+	#warn suppressors should change this.
 	var/muzzle_flash = 3
-	var/accuracy = 65   //Accuracy is measured in percents. +15 accuracy means that everything is effectively one tile closer for the purpose of miss chance, -15 means the opposite. launchers are not supported, at the moment.
-	var/scoped_accuracy = null
-	var/list/burst_accuracy = list(0) //allows for different accuracies for each shot in a burst. Applied on top of accuracy
-	var/list/dispersion = list(0)
-
-	var/wielded_item_state
-	var/one_handed_penalty = 0 // Penalty applied if someone fires a two-handed gun with one hand.
-	var/atom/movable/screen/auto_target/auto_target
 
 	//aiming system stuff
 	var/keep_aim = 1 	//1 for keep shooting until aim is lowered
@@ -364,17 +342,6 @@
 	var/tmp/lock_time = -100
 
 	var/last_shot = 0			//records the last shot fired
-
-	var/charge_sections = 4
-	var/shaded_charge = FALSE
-	var/ammo_x_offset = 2
-	var/ammo_y_offset = 0
-	var/can_flashlight = FALSE
-	var/gun_light = FALSE
-	var/light_state = "flight"
-	var/light_brightness = 4
-	var/flight_x_offset = 0
-	var/flight_y_offset = 0
 
 	var/scrambled = 0
 

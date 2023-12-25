@@ -1,7 +1,8 @@
-// todo: can element this by usign 3 signals instead of 2, one to receive a keybind signal.
+// can element this by using 3 signals instead of 2, one to receive a keybind signal.
+// todo: currently, item/examine() hard-checks for this to save on a signal. is there a better way?
 /datum/component/wielding
 	registered_type = /datum/component/wielding
-	
+
 	/// hands needed
 	var/hands
 	/// lazylist
@@ -109,3 +110,5 @@
 
 /obj/item/proc/on_unwield(mob/user, hands)
 	return
+
+#warn /button path, for one with a button instead of just a hotkey.

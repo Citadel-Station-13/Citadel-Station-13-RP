@@ -165,3 +165,6 @@
 					movement_keys[key] = WEST
 				if("South")
 					movement_keys[key] = SOUTH
+
+/client/proc/friendly_key_name_for_binding(keybind_path)
+	#warn impl

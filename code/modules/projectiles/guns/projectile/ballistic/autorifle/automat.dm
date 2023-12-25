@@ -8,10 +8,18 @@
 	desc = " A Bolt Action Rifle taken apart and retooled into a primitive machine gun. Bulky and obtuse, it still capable of unleashing devastating firepower with its 15 round internal drum magazine. Loads with 7.62 stripper clips."
 	icon = 'icons/modules/projectiles/guns/ballistic/autorifle.dmi'
 	icon_state = "automat"
+	base_icon_state = "automat"
 	render_flick_firing = "automat-fire"
 	damage_force = 10
 	w_class = ITEMSIZE_LARGE
 	slot_flags = SLOT_BACK
+	worn_icon = 'icons/modules/projectiles/guns/ballistic/autorifle.dmi'
+	worn_state = "automat"
+	inhand_icon = 'icons/modules/projectiles/guns/generic.dmi'
+	inhand_state = "autorifle"
+	render_mob_wielded = TRUE
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	wieldable = TRUE
 
 	regex_this_firemodes = /datum/caliber/a7_62mm
 
@@ -25,7 +33,7 @@
 	internal_ammo_preload = /obj/item/ammo_casing/a762
 
 	regex_this_firemodes = list(
-		/datum/firemode/ballistic/autorifle/automat
+		/datum/firemode/ballistic/autorifle/automat,
 	)
 
 /obj/item/gun/projectile/ballistic/automat/holy

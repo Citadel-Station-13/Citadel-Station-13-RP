@@ -249,7 +249,10 @@
 /// See inventory_sizes.dm for the defines.
 /obj/item/examine(mob/user, dist)
 	. = ..()
+	// todo: this is bad
 	. += "[gender == PLURAL ? "They are" : "It is"] a [weightclass2text(w_class)] item."
+	if(GetComponent(/datum/component/wielding) && user.client)
+		. += SPAN_NOTICE("Press <b>[user.client.friendly_key_name_for_binding(/datum/keybinding/mob/multihand_wield)]</b> to wield this in your hands.")
 	switch(get_encumbrance())
 		if(-INFINITY to 0.1)
 			. += "It looks effortless to carry around and wear."
