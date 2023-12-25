@@ -11,6 +11,7 @@
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3) //A real work around to a automatic rifle.
 	slot_flags = SLOT_BACK
 	load_method = SPEEDLOADER
+	internal_ammo_preload = /obj/item/ammo_casing/a762
 	ammo_type = /obj/item/ammo_casing/a762
 	max_shells =  15
 	burst = 3

@@ -22,7 +22,16 @@
 	#warn find a sound
 	/// compatible calibers - either an enum or a list
 	/// this controls what magazines we can load, as well as what bullets we can hold
-	var/list/caliber
+	/// if unset, we use caliber_bounds system!
+	var/list/regex_this_caliber
+	/// determines what can fit in this gun
+	var/caliber_bound_diameter_low = 0
+	/// determines what can fit in this gun
+	var/caliber_bound_diameter_high = INFINITY
+	/// determines what can fit in this gun
+	var/caliber_bound_length_low = 0
+	/// determines what can fit in this gun
+	var/caliber_bound_length_high = INFINITY
 	/// ammo load sound
 	var/casing_load_sound = 'sound/weapons/guns/interaction/bullet_insert.ogg'
 	#warn find a sound
