@@ -112,9 +112,17 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 	#warn impl
 	// update
 	control_module.update_icon()
+	control_module.update_encumbrance()
+	control_module.update_weight()
 
 /datum/rig_theme/proc/imprint_control_behavior(obj/item/rig/control_module)
 	control_module.siemens_coefficient = siemens_coefficient
+	control_module.offline_encumbrance = offline_encumbrance
+	control_module.offline_weight = offline_weight
+	control_module.online_encumbrance = online_encumbrance
+	control_module.online_weight = online_weight
+	control_module.boot_delay = boot_delay
+	control_module.seal_delay = seal_delay
 	#warn impl
 
 /datum/rig_theme/proc/imprint_control_legacy(obj/item/rig/control_module)

@@ -57,6 +57,7 @@
 	/// startup/shutdown time
 	var/boot_delay
 	/// seal/unseal time
+	//  todo: maybe by-piece ones too..?
 	var/seal_delay
 	/// offline weight
 	var/offline_weight
@@ -111,6 +112,21 @@
 /obj/item/rig/proc/wipe_everything()
 	hard_reset()
 	#warn impl
+
+/obj/item/rig/get_encumbrance()
+	return fully_activated()? online_encumbrance : offline_encumbrance
+
+/obj/item/rig/get_weight()
+	return fully_activated()? online_weight : offline_weight
+
+/obj/item/rig/update_icon_state()
+	if(partially_activated())
+		icon_state = state_sealed
+		worn_state = state_worn_sealed
+	else
+		icon_state = state_unsealed
+		worn_state = state_worn_unsealed
+	return ..()
 
 #warn debug only code below
 
