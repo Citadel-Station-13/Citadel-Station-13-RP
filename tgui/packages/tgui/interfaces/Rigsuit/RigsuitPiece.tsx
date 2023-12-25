@@ -9,6 +9,7 @@ export interface RigsuitPieceData {
 }
 
 export const RigsuitPiece = (props, context) => {
+
   return (
     <Section>
       Test
