@@ -20,6 +20,7 @@
 	render_mob_wielded = TRUE
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	wieldable = TRUE
+	encumbrance = ITEM_ENCUMBRANCE_GUN_LARGE
 
 	regex_this_firemodes = /datum/caliber/a7_62mm
 

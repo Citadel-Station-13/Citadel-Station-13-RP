@@ -117,7 +117,9 @@
 	var/render_mob_append
 	/// only use the append, ignoring count and firemode while this is enabled; use this for mag-out states for energy weapons & similar
 	var/render_mob_exclusive
+
 	/// render as -wield if we're wielded? applied at the end, even while [render_mob_exclusive] is on.
+	/// ignores render_mob_enabled.
 	var/render_mob_wielded = FALSE
 
 	#warn impl above
@@ -135,6 +137,8 @@
 	//* Wielding
 	/// allow wielding
 	var/wieldable = FALSE
+	/// wielded encumbrance modifier
+	var/wielded_encumbrance_modifier
 	#warn hook vv for this
 
 /obj/item/gun/Initialize(mapload)
