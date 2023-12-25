@@ -94,6 +94,8 @@
 	/// set this in prototype to a path or an instance via 'render_system = new /datum/gun_renderer/...(...)'
 	/// if null, we will not perform default rendering/updating of item states.
 	var/datum/gun_renderer/render_system
+	/// if set, flick()s this state while firing.
+	var/render_flick_firing
 
 	/// perform onmob state rendering?
 	/// if FALSE, we will not perform default rendering/updating of mob states.
@@ -338,7 +340,6 @@
 	zoomdevicename = "scope"
 
 	var/fire_sound_text = "gunshot"
-	var/fire_anim = null
 	var/recoil = 0		//screen shake
 	var/suppressible = FALSE
 	var/silenced = FALSE
@@ -722,8 +723,6 @@
 
 //called after successfully firing
 /obj/item/gun/projectile/proc/handle_post_fire(mob/user, atom/target, var/pointblank=0, var/reflex=0)
-	if(fire_anim)
-		flick(fire_anim, src)
 
 	if(silenced)
 		to_chat(user, "<span class='warning'>You fire \the [src][pointblank ? " point blank at \the [target]":""][reflex ? " by reflex":""]</span>")

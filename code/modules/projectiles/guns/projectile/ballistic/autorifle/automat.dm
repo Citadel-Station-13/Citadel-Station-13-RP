@@ -1,24 +1,32 @@
+/datum/firemode/ballistic/autorifle/automat
+	burst_amount = 3
+	burst_spacing = 1.5
+	fire_delay = 7.5
+
 /obj/item/gun/projectile/ballistic/automat
 	name = "Avtomat Rifle"
 	desc = " A Bolt Action Rifle taken apart and retooled into a primitive machine gun. Bulky and obtuse, it still capable of unleashing devastating firepower with its 15 round internal drum magazine. Loads with 7.62 stripper clips."
+	icon = 'icons/modules/projectiles/guns/ballistic/autorifle.dmi'
 	icon_state = "automat"
-	item_state = "automat"
-	fire_anim = "automat_fire"
-	w_class = ITEMSIZE_LARGE
+	render_flick_firing = "automat-fire"
 	damage_force = 10
-	caliber = "7.62mm"
-	heavy = TRUE
-	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3) //A real work around to a automatic rifle.
+	w_class = ITEMSIZE_LARGE
 	slot_flags = SLOT_BACK
-	load_method = SPEEDLOADER
+
+	regex_this_firemodes = /datum/caliber/a7_62mm
+
+	recoil = GUN_RECOIL_HEAVY
+	recoil_wielded_multiplier = GUN_RECOIL_MITIGATION_HIGH
+	instability_motion = GUN_INSTABILITY_MOTION_HEAVY
+
+	use_magazines = FALSE
+	speedloader_allowed = TRUE
+	internal_ammo_capacity = 14
 	internal_ammo_preload = /obj/item/ammo_casing/a762
-	ammo_type = /obj/item/ammo_casing/a762
-	max_shells =  15
-	burst = 3
-	fire_delay = 7.2
-	move_delay = 6
-	burst_accuracy = list(60,30,15)
-	dispersion = list(0.0, 0.6,1.0)
+
+	regex_this_firemodes = list(
+		/datum/firemode/ballistic/autorifle/automat
+	)
 
 /obj/item/gun/projectile/ballistic/automat/holy
-	ammo_type = /obj/item/ammo_casing/a762/silver
+	internal_ammo_preload = /obj/item/ammo_casing/a762/silver

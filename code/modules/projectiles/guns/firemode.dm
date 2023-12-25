@@ -15,6 +15,8 @@
 	var/burst_spacing = 0.5
 	/// override fire delay after shooting before the gun can be shot again
 	/// this overrides clickdelay!
+	///
+	/// with burst weapons, we can start another burst as long as the last burst is finished and fire_delay has elapsed between the start of the last burst.
 	var/fire_delay
 	/// override fire sound
 	/// priority:
