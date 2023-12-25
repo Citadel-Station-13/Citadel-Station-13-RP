@@ -76,11 +76,6 @@
 	icon_state = "m762-0"
 	ammo_current = 0
 
-#warn convert to above
-/obj/item/ammo_magazine/m762m // Intentionally not a subtype of m762 because it's supposed to be incompatible with the Z8 Bulldog rifle.
-/obj/item/ammo_magazine/m762m/ap
-/obj/item/ammo_magazine/m762m/empty
-
 #warn a7_62mm/
 /obj/item/ammo_magazine/m762garand
 	name = "garand clip (7.62mm)" // The clip goes into the magazine, hence the name. I'm very sure this is correct.

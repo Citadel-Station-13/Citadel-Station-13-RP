@@ -117,7 +117,7 @@
 	var/render_mob_append
 	/// only use the append, ignoring count and firemode while this is enabled; use this for mag-out states for energy weapons & similar
 	var/render_mob_exclusive
-	/// render as -wielded if we're wielded? applied at the end, even while [render_mob_exclusive] is on.
+	/// render as -wield if we're wielded? applied at the end, even while [render_mob_exclusive] is on.
 	var/render_mob_wielded = FALSE
 
 	#warn impl above

@@ -16,7 +16,7 @@
 	worn_icon = 'icons/modules/projectiles/guns/ballistic/autorifle.dmi'
 	worn_state = "automat"
 	inhand_icon = 'icons/modules/projectiles/guns/generic.dmi'
-	inhand_state = "autorifle"
+	inhand_state = "rifle1"
 	render_mob_wielded = TRUE
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	wieldable = TRUE

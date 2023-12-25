@@ -908,7 +908,7 @@
 		prob(3);/obj/item/cell/device/weapon,
 		prob(2);/obj/item/ammo_magazine/m44,
 		prob(2);/obj/item/ammo_magazine/s357,
-		prob(2);/obj/item/ammo_magazine/m762m,
+		prob(2);/obj/item/ammo_magazine/m762,
 		prob(2);/obj/item/ammo_magazine/clip/c12g,
 		prob(2);/obj/item/ammo_magazine/clip/c12g/pellet,
 		prob(1);/obj/item/ammo_magazine/m45tommy,

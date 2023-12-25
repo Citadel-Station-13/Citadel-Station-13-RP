@@ -43,4 +43,3 @@
 	/// for overlay:
 	/// the spec is "[base_icon_state]-[state_overlay]" as an overlay
 	var/render_state
-

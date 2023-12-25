@@ -9,8 +9,8 @@
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)
 	slot_flags = SLOT_BACK
 	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/m762m
-	allowed_magazines = list(/obj/item/ammo_magazine/m762, /obj/item/ammo_magazine/m762m)
+	magazine_type = /obj/item/ammo_magazine/m762
+	allowed_magazines = list(/obj/item/ammo_magazine/m762, /obj/item/ammo_magazine/m762)
 	heavy = TRUE
 	projectile_type = /obj/projectile/bullet/rifle/a762
 	magazine_insert_sound = 'sound/weapons/guns/interaction/batrifle_magin.ogg'

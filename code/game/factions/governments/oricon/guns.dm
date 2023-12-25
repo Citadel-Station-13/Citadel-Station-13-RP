@@ -1,7 +1,7 @@
 /obj/item/gun/projectile/ballistic/jsdf_rifle
 	name = "\improper JSDF service rifle"
 	desc = "You had your chance to be afraid before you joined my beloved Corps! But, to guide you back to the true path, I have brought this motivational device! Uses 9.5x40mm rounds."
-	icon = 'icons/modules/projectiles/guns/ballistic/autorifle.dmi'
+	icon = 'icons/factions/governments/oricon/guns.dmi'
 	icon_state = "battlerifle"
 	base_icon_state = "battlerifle"
 	worn_state = "battlerifle"

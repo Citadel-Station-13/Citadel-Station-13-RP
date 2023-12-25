@@ -1,32 +1,31 @@
 /obj/item/gun/projectile/ballistic/bullpup
 	name = "bullpup rifle"
 	desc = "The bullpup configured GP3000 is a battle rifle produced by Gurov Projectile Weapons LLC. It is sold almost exclusively to standing armies. Uses 7.62mm rounds."
-	icon_state = "bullpup-small"
-	item_state = "bullpup"
+	icon = 'icons/modules/projectiles/guns/ballistic/autorifle.dmi'
+	icon_state = "bullpup"
+	worn_icon = 'icons/modules/projectiles/guns/generic.dmi'
+	worn_state = "rifle2"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	w_class = ITEMSIZE_LARGE
 	damage_force = 10
 	regex_this_caliber = /datum/caliber/a7_62mm
-
 	slot_flags = SLOT_BACK
-	load_method = MAGAZINE
+
+	use_magazines = TRUE
 	magazine_type = /obj/item/ammo_magazine/m762
-	allowed_magazines = list(/obj/item/ammo_magazine/m762, /obj/item/ammo_magazine/m762m)
-	projectile_type = /obj/projectile/bullet/rifle/a762
-	heavy = TRUE
-	one_handed_penalty = 45
+	recoil = GUN_RECOIL_HEAVY
+	recoil_wielded_multiplier = GUN_RECOIL_MITIGATION_HIGH
+
 	magazine_insert_sound = 'sound/weapons/guns/interaction/smg_magin.ogg'
 	magazine_remove_sound = 'sound/weapons/guns/interaction/smg_magout.ogg'
 
-	firemodes = list(
-		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, burst_accuracy=null, dispersion=null),
-		list(mode_name="2-round bursts", burst=2, fire_delay=null, move_delay=6,    burst_accuracy=list(60,45), dispersion=list(0.0, 0.6))
-		)
-
-/obj/item/gun/projectile/ballistic/bullpup/update_icon_state()
-	. = ..()
-	if(istype(ammo_magazine,/obj/item/ammo_magazine/m762))
-		icon_state = "bullpup-small"
-
-/obj/item/gun/projectile/ballistic/bullpup/update_icon()
-	. = ..()
-	update_held_icon()
+	regex_this_firemodes = list(
+		/datum/firemode{
+			name = "single fire";
+		},
+		/datum/firemode{
+			name = "2-burst";
+			burst_amount = 2;
+			burst_spacing = 1;
+		}
+	)
