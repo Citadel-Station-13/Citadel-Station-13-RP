@@ -3,6 +3,13 @@
 	if(name != GetVoice())
 		alt_name = "(as [get_id_name("Unknown")])"
 
+	var/list/message_args = list("message" = message, "whispering" = whispering, "cancelled" = FALSE)
+
+	SEND_SIGNAL(src, COMSIG_MOB_SAY, message_args)
+
+	if(message_args["cancelled"])
+		return
+
 	message = sanitize_or_reflect(message,src) // Reflect too-long messages, within reason
 	..(message, alt_name = alt_name, whispering = whispering)
 

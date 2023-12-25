@@ -5,6 +5,8 @@
 	icon_state = "setup_small"
 	w_class = ITEMSIZE_SMALL
 	var/named
+	var/activated = FALSE
+	var/mob/linked_user
 
 /obj/item/text_to_speech/attack_self(mob/user)
 	. = ..()
@@ -14,27 +16,27 @@
 		to_chat(user, "You cannot activate the device in your state.")
 		return
 
-	if(!named)
-		to_chat(user, "You input your name into the device.")
-		name = "[initial(name)] ([user.real_name])"
-		desc = "[initial(desc)] This one is assigned to [user.real_name]."
-		named = 1
-		/* //Another way of naming the device. Gives more freedom, but could lead to issues.
-		device_name = copytext(sanitize(input(user, "What would you like to name your device? You must input a name before the device can be used.", "Name your device", "") as null|text),1,MAX_NAME_LEN)
-		name = "[initial(name)] - [device_name]"
-		named = 1
-		*/
-	playsound(src, 'sound/items/tts/started_type.ogg', 25, TRUE)
-	user.say_overhead("typing...")
-	var/message = sanitize(input(user,"Choose a message to relay to those around you.") as text|null)
-	if(message)
-		var/obj/item/text_to_speech/O = src
-		audible_message("[icon2html(thing = O, target = world)] \The [O.name] states, \"[message]\"")
-		user.say_overhead(message, FALSE, MESSAGE_RANGE_COMBAT_LOUD) // I don't like this, I wish I could just invoke what this calls directly!
-	else
-		playsound(src, 'sound/items/tts/stopped_type.ogg', 25, TRUE)
-		user.say_overhead("stopped typing.")
+	activated = !activated
+
+	to_chat(user, "You [activated ? "activate" : "deactivate"] the device.")
 
 
-/obj/item/text_to_speech/AltClick(mob/user) // QOL Change
-	attack_self(user)
+/obj/item/text_to_speech/equipped(mob/user, slot, accessory, creation, silent)
+	link_to_user(user)
+	. = ..()
+
+/obj/item/text_to_speech/unequipped(mob/user, slot, flags)
+	unlink()
+	. = ..()
+
+/obj/item/text_to_speech/proc/link_to_user(mob/user)
+	linked_user = user
+	RegisterSignal(user, COMSIG_MOB_SAY, PROC_REF(handle_speech))
+
+/obj/item/text_to_speech/proc/unlink()
+	UnregisterSignal(linked_user, COMSIG_MOB_SAY)
+
+/obj/item/text_to_speech/proc/handle_speech(datum/source, list/message_args)
+	if(activated)
+		message_args["cancelled"] = TRUE
+		audible_message("[icon2html(thing = linked_user.name, target = world)] \The [linked_user.name] states, \"[message_args["message"]]\"")
