@@ -84,7 +84,7 @@
 	fire_delay = 20
 	charge_cost = 800	//Three shots.
 
-/obj/item/gun/projectile/ballistic/automatic/combat
+/obj/item/gun/projectile/ballistic/combat
 	name = "\improper Harpy combat submachine gun"
 	desc = "The compact NT-SMG-8 'Harpy' submachine gun was designed for NanoTrasen special operations where close-quarters combat is likely. Chambered in 5.7x28mm with three fire modes, this gun is lethal to soft and armored targets alike."
 	icon_state = "combatsmg"
@@ -104,7 +104,7 @@
 		list(mode_name="automatic", burst=1, fire_delay=-1, move_delay=null, burst_accuracy=null, dispersion=null, automatic = 1)
 		)
 
-/obj/item/gun/projectile/ballistic/automatic/combat/update_icon_state()
+/obj/item/gun/projectile/ballistic/combat/update_icon_state()
 	. = ..()
 	icon_state = (ammo_magazine)? "combatsmg" : "combatsmg-empty"
 

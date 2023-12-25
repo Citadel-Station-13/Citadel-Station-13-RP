@@ -121,18 +121,18 @@
 /datum/uplink_item/item/visible_weapons/tommygun
 	name = "Tommy Gun (.45)" // We're keeping this because it's CLASSY. -Spades
 	item_cost = 60
-	path = /obj/item/gun/projectile/ballistic/automatic/tommygun
+	path = /obj/item/gun/projectile/ballistic/tommygun
 
 //These are for traitors (or other antags, perhaps) to have the option of purchasing some merc gear.
 /datum/uplink_item/item/visible_weapons/submachinegun
 	name = "Submachine Gun (10mm)"
 	item_cost = 60
-	path = /obj/item/gun/projectile/ballistic/automatic/c20r
+	path = /obj/item/gun/projectile/ballistic/c20r
 
 /datum/uplink_item/item/visible_weapons/assaultrifle
 	name = "Assault Rifle (5.56mm)"
 	item_cost = 75
-	path = /obj/item/gun/projectile/ballistic/automatic/sts35
+	path = /obj/item/gun/projectile/ballistic/sts35
 
 /datum/uplink_item/item/visible_weapons/combatshotgun
 	name = "Combat Shotgun"

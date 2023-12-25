@@ -1,4 +1,4 @@
-/obj/item/gun/projectile/ballistic/automatic/fal
+/obj/item/gun/projectile/ballistic/fal
 	name = "FN-FAL"
 	desc = "A 20th century Assault Rifle originally designed by Fabrique National. Famous for its use by mercs in grinding proxy wars in backwater nations. This reproduction was probably made for similar purposes."
 	icon_state = "fal"
@@ -21,7 +21,7 @@
 		list(mode_name="2-round bursts", burst=2, fire_delay=null, move_delay=6,    burst_accuracy=list(60,35), dispersion=list(0.0, 0.6))
 		)
 
-/obj/item/gun/projectile/ballistic/automatic/fal/update_icon_state()
+/obj/item/gun/projectile/ballistic/fal/update_icon_state()
 	. = ..()
 	if(ammo_magazine)
 		icon_state = initial(icon_state)

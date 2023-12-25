@@ -1,4 +1,4 @@
-/obj/item/gun/projectile/ballistic/automatic/as24
+/obj/item/gun/projectile/ballistic/as24
 	name = "automatic shotgun"
 	desc = "The AS-24 is a rugged looking automatic shotgun produced for the military by Gurov Projectile Weapons LLC. For very obvious reasons, it's illegal to own in many juristictions. Uses 12g rounds."
 	icon_state = "ashot"
@@ -24,7 +24,7 @@
 		list(mode_name="automatic", burst=1, fire_delay=-1, move_delay=null, burst_accuracy=null, dispersion=null, automatic = 1)
 		)
 
-/obj/item/gun/projectile/ballistic/automatic/as24/update_icon_state()
+/obj/item/gun/projectile/ballistic/as24/update_icon_state()
 	. = ..()
 	if(ammo_magazine)
 		icon_state = "ashot"

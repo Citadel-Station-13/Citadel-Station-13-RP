@@ -1,5 +1,5 @@
 // For general use
-/obj/item/gun/projectile/ballistic/automatic/battlerifle
+/obj/item/gun/projectile/ballistic/battlerifle
 	name = "\improper JSDF service rifle"
 	desc = "You had your chance to be afraid before you joined my beloved Corps! But, to guide you back to the true path, I have brought this motivational device! Uses 9.5x40mm rounds."
 	icon_state = "battlerifle"
@@ -30,7 +30,7 @@
 	max_shells = 12
 
 // For general use
-/obj/item/gun/projectile/ballistic/automatic/pdw
+/obj/item/gun/projectile/ballistic/pdw
 	name = "personal defense weapon"
 	desc = "The X-9MM is a select-fire personal defense weapon designed in-house by Xing Private Security. It was made to compete with the WT550 Saber, but never caught on with NanoTrasen. Uses 9mm rounds."
 	icon_state = "pdw"
@@ -48,11 +48,11 @@
 		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=6,    burst_accuracy=list(0,-15,-30), dispersion=list(0.0, 0.6, 0.6))
 		)
 
-/obj/item/gun/projectile/ballistic/automatic/pdw/update_icon()
+/obj/item/gun/projectile/ballistic/pdw/update_icon()
 	. = ..()
 	update_held_icon()
 
-/obj/item/gun/projectile/ballistic/automatic/pdw/update_icon_state()
+/obj/item/gun/projectile/ballistic/pdw/update_icon_state()
 	. = ..()
 	if(istype(ammo_magazine,/obj/item/ammo_magazine/m9mm))
 		icon_state = "pdw-short"
@@ -76,7 +76,7 @@
 	projectile_type = /obj/projectile/beam/imperial
 
 // For general use
-/obj/item/gun/projectile/ballistic/automatic/stg
+/obj/item/gun/projectile/ballistic/stg
 	name = "\improper Sturmgewehr"
 	desc = "An STG-560 built by RauMauser. Experience the terror of the Siegfried line, redone for the 26th century! The Kaiser would be proud. Uses unique 7.92x33mm Kurz rounds."
 	icon_state = "stg60"
@@ -89,11 +89,11 @@
 	allowed_magazines = list(/obj/item/ammo_magazine/mtg)
 	load_method = MAGAZINE
 
-/obj/item/gun/projectile/ballistic/automatic/stg/update_icon()
+/obj/item/gun/projectile/ballistic/stg/update_icon()
 	. = ..()
 	update_held_icon()
 
-/obj/item/gun/projectile/ballistic/automatic/stg/update_icon_state()
+/obj/item/gun/projectile/ballistic/stg/update_icon_state()
 	. = ..()
 	icon_state = (ammo_magazine)? "stg60" : "stg60-e"
 	item_state = (ammo_magazine)? "arifle" : "arifle-e"
@@ -188,7 +188,7 @@
 		. += "inspector_on"
 
 // No idea what this is for.
-/obj/item/gun/projectile/ballistic/automatic/sol
+/obj/item/gun/projectile/ballistic/sol
 	name = "\improper \"Sol\" SMG"
 	desc = "The FS 9x19mm \"Sol\" is a compact and reliable submachine gun. Uses 9mm rounds."
 	icon_state = "SMG-IS"
@@ -207,7 +207,7 @@
 		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=4,    burst_accuracy=list(0,-15,-15),       dispersion=list(0.0, 0.6, 1.0)),
 		)
 
-/obj/item/gun/projectile/ballistic/automatic/sol/proc/update_charge()
+/obj/item/gun/projectile/ballistic/sol/proc/update_charge()
 	if(!ammo_magazine)
 		return
 	var/ratio = ammo_magazine.stored_ammo.len / ammo_magazine.ammo_max
@@ -216,7 +216,7 @@
 	ratio = round(ratio, 0.25) * 100
 	add_overlay("smg_[ratio]")
 
-/obj/item/gun/projectile/ballistic/automatic/sol/update_icon()
+/obj/item/gun/projectile/ballistic/sol/update_icon()
 	icon_state = (ammo_magazine)? "SMG-IS" : "SMG-IS-empty"
 	cut_overlay()
 	update_charge()

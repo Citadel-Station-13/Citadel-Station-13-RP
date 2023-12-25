@@ -1,4 +1,4 @@
-/obj/item/gun/projectile/ballistic/automatic/tommygun
+/obj/item/gun/projectile/ballistic/tommygun
 	name = "\improper Tommy Gun"
 	desc = "This weapon was made famous by gangsters in the 20th century. Cybersun Industries is currently reproducing these for a target market of historic gun collectors and classy criminals. Uses .45 rounds."
 	icon_state = "tommygun"
@@ -17,6 +17,6 @@
 		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=4,    burst_accuracy=list(60,30,25), dispersion=list(0.0, 0.6, 1.0))
 		)
 
-/obj/item/gun/projectile/ballistic/automatic/tommygun/update_icon_state()
+/obj/item/gun/projectile/ballistic/tommygun/update_icon_state()
 	. = ..()
 	icon_state = (ammo_magazine)? "tommygun" : "tommygun-empty"

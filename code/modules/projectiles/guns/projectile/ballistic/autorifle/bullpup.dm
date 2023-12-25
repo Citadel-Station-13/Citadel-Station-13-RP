@@ -1,4 +1,4 @@
-/obj/item/gun/projectile/ballistic/automatic/bullpup
+/obj/item/gun/projectile/ballistic/bullpup
 	name = "bullpup rifle"
 	desc = "The bullpup configured GP3000 is a battle rifle produced by Gurov Projectile Weapons LLC. It is sold almost exclusively to standing armies. Uses 7.62mm rounds."
 	icon_state = "bullpup-small"
@@ -22,11 +22,11 @@
 		list(mode_name="2-round bursts", burst=2, fire_delay=null, move_delay=6,    burst_accuracy=list(60,45), dispersion=list(0.0, 0.6))
 		)
 
-/obj/item/gun/projectile/ballistic/automatic/bullpup/update_icon_state()
+/obj/item/gun/projectile/ballistic/bullpup/update_icon_state()
 	. = ..()
 	if(istype(ammo_magazine,/obj/item/ammo_magazine/m762))
 		icon_state = "bullpup-small"
 
-/obj/item/gun/projectile/ballistic/automatic/bullpup/update_icon()
+/obj/item/gun/projectile/ballistic/bullpup/update_icon()
 	. = ..()
 	update_held_icon()

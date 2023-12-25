@@ -126,7 +126,7 @@
 		/obj/item/clothing/under/tactical = 4,
 		/obj/item/clothing/accessory/storage/black_vest = 4,
 		/obj/item/clothing/head/soft/black = 4,
-		/obj/item/gun/projectile/ballistic/automatic/p90 = 2,
+		/obj/item/gun/projectile/ballistic/p90 = 2,
 		/obj/item/ammo_magazine/m57x28mmp90 = 4,
 		/obj/item/gun/projectile/ballistic/p92x = 1,
 		/obj/item/ammo_magazine/m9mm = 2,

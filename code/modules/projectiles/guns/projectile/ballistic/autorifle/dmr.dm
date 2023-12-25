@@ -1,4 +1,4 @@
-/obj/item/gun/projectile/ballistic/automatic/z8
+/obj/item/gun/projectile/ballistic/z8
 	name = "designated marksman rifle"
 	desc = "The Z8 Bulldog is an older model designated marksman rifle, made by the now defunct Zendai Foundries. Makes you feel like a space marine when you hold it, even though it can only hold 10 round magazines. Uses 7.62mm rounds."
 	icon_state = "carbine" // This isn't a carbine. :T
@@ -26,7 +26,7 @@
 		list(mode_name="2-round bursts", burst=2,    fire_delay=null, move_delay=6,    use_launcher=null, burst_accuracy=list(60,45), dispersion=list(0.0, 0.6)),
 		)
 
-/obj/item/gun/projectile/ballistic/automatic/z8/update_icon_state()
+/obj/item/gun/projectile/ballistic/z8/update_icon_state()
 	. = ..()
 	if(ammo_magazine)
 		icon_state = "carbine-[round(ammo_magazine.stored_ammo.len,2)]"

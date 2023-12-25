@@ -1,4 +1,4 @@
-/obj/item/gun/projectile/ballistic/automatic/automat
+/obj/item/gun/projectile/ballistic/automat
 	name = "Avtomat Rifle"
 	desc = " A Bolt Action Rifle taken apart and retooled into a primitive machine gun. Bulky and obtuse, it still capable of unleashing devastating firepower with its 15 round internal drum magazine. Loads with 7.62 stripper clips."
 	icon_state = "automat"
@@ -20,5 +20,5 @@
 	burst_accuracy = list(60,30,15)
 	dispersion = list(0.0, 0.6,1.0)
 
-/obj/item/gun/projectile/ballistic/automatic/automat/holy
+/obj/item/gun/projectile/ballistic/automat/holy
 	ammo_type = /obj/item/ammo_casing/a762/silver

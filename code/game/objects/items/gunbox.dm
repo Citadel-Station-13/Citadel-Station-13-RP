@@ -128,8 +128,8 @@
 
 /obj/item/gunbox/donksoft/smg/attack_self(mob/user)
 	var/list/options = list()
-	options["Classic DONKsoft SMG"] = list(/obj/item/gun/projectile/ballistic/automatic/advanced_smg/foam, /obj/item/ammo_magazine/mfoam/smg, /obj/item/ammo_magazine/mfoam/smg)
-	options["Blue DONKsoft SMG"] = list(/obj/item/gun/projectile/ballistic/automatic/advanced_smg/foam/blue, /obj/item/ammo_magazine/mfoam/smg, /obj/item/ammo_magazine/mfoam/smg)
+	options["Classic DONKsoft SMG"] = list(/obj/item/gun/projectile/ballistic/advanced_smg/foam, /obj/item/ammo_magazine/mfoam/smg, /obj/item/ammo_magazine/mfoam/smg)
+	options["Blue DONKsoft SMG"] = list(/obj/item/gun/projectile/ballistic/advanced_smg/foam/blue, /obj/item/ammo_magazine/mfoam/smg, /obj/item/ammo_magazine/mfoam/smg)
 	var/choice = input(user,"What toy is in this box?") as null|anything in options
 	if(src && choice)
 		var/list/things_to_spawn = options[choice]

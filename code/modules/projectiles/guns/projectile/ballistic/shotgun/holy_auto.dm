@@ -1,4 +1,4 @@
-/obj/item/gun/projectile/ballistic/automatic/holyshot
+/obj/item/gun/projectile/ballistic/holyshot
 	name = "Holy automatic shotgun"
 	desc = "Based off of an ancient design, this hand crafted weapon has been gilded with the gold of melted icons and inscribed with sacred runes and hexagrammic wards. Works best with blessed 12g rounds."
 	icon_state = "holyshotgun"
@@ -21,7 +21,7 @@
 		list(mode_name="2-round burst", burst=2, move_delay=6, burst_accuracy = list(60,50,40,30,25), dispersion = list(0.0, 0.6, 0.6))
 		)
 
-/obj/item/gun/projectile/ballistic/automatic/holyshot/update_icon_state()
+/obj/item/gun/projectile/ballistic/holyshot/update_icon_state()
 	. = ..()
 	if(ammo_magazine)
 		icon_state = "holyshotgun"

@@ -113,7 +113,7 @@
 
 /datum/supply_pack/munitions/bsmg
 	name = "Weapons - Ballistic SMGs"
-	contains = list(/obj/item/gun/projectile/ballistic/automatic/wt550 = 2)
+	contains = list(/obj/item/gun/projectile/ballistic/wt550 = 2)
 	cost = 50
 	container_type = /obj/structure/closet/crate/secure/corporate/ward
 	container_name = "Ballistic weapon crate"
@@ -121,7 +121,7 @@
 
 /datum/supply_pack/munitions/brifle
 	name = "Weapons - Ballistic Rifles"
-	contains = list(/obj/item/gun/projectile/ballistic/automatic/z8 = 2)
+	contains = list(/obj/item/gun/projectile/ballistic/z8 = 2)
 	cost = 80
 	container_type = /obj/structure/closet/crate/secure/weapon
 	container_name = "Ballistic weapon crate"

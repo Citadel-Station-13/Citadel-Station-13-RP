@@ -1,4 +1,4 @@
-/obj/item/gun/projectile/ballistic/automatic/lmg
+/obj/item/gun/projectile/ballistic/lmg
 	name = "light machine gun"
 	desc = "A rather traditionally made L6 SAW with a pleasantly lacquered wooden pistol grip. 'Aussec Armoury-2531' is engraved on the reciever. Uses 5.56mm rounds. It's also compatible with magazines from STS-35 assault rifles."
 	icon_state = "l6closed50"
@@ -37,35 +37,35 @@
 		)
 */
 
-/obj/item/gun/projectile/ballistic/automatic/lmg/special_check(mob/user)
+/obj/item/gun/projectile/ballistic/lmg/special_check(mob/user)
 	if(cover_open)
 		to_chat(user, "<span class='warning'>[src]'s cover is open! Close it before firing!</span>")
 		return 0
 	return ..()
 
-/obj/item/gun/projectile/ballistic/automatic/lmg/proc/toggle_cover(mob/user)
+/obj/item/gun/projectile/ballistic/lmg/proc/toggle_cover(mob/user)
 	cover_open = !cover_open
 	to_chat(user, "<span class='notice'>You [cover_open ? "open" : "close"] [src]'s cover.</span>")
 	update_icon()
 	update_held_icon()
 
-/obj/item/gun/projectile/ballistic/automatic/lmg/attack_self(mob/user)
+/obj/item/gun/projectile/ballistic/lmg/attack_self(mob/user)
 	if(cover_open)
 		toggle_cover(user) //close the cover
 	else
 		return ..() //once closed, behave like normal
 
-/obj/item/gun/projectile/ballistic/automatic/lmg/attack_hand(mob/user, list/params)
+/obj/item/gun/projectile/ballistic/lmg/attack_hand(mob/user, list/params)
 	if(!cover_open && user.get_inactive_held_item() == src)
 		toggle_cover(user) //open the cover
 	else
 		return ..() //once open, behave like normal
 
-/obj/item/gun/projectile/ballistic/automatic/lmg/update_icon()
+/obj/item/gun/projectile/ballistic/lmg/update_icon()
 	. = ..()
 	update_held_icon()
 
-/obj/item/gun/projectile/ballistic/automatic/lmg/update_icon_state()
+/obj/item/gun/projectile/ballistic/lmg/update_icon_state()
 	. = ..()
 	if(istype(ammo_magazine,/obj/item/ammo_magazine/m762))
 		icon_state = "l6[cover_open ? "open" : "closed"]mag"
@@ -74,13 +74,13 @@
 		icon_state = "l6[cover_open ? "open" : "closed"][ammo_magazine ? round(ammo_magazine.stored_ammo.len, 10) : "-empty"]"
 		item_state = "l6[cover_open ? "open" : "closed"][ammo_magazine ? "" : "-empty"]"
 
-/obj/item/gun/projectile/ballistic/automatic/lmg/load_ammo(var/obj/item/A, mob/user)
+/obj/item/gun/projectile/ballistic/lmg/load_ammo(var/obj/item/A, mob/user)
 	if(!cover_open)
 		to_chat(user, "<span class='warning'>You need to open the cover to load [src].</span>")
 		return
 	..()
 
-/obj/item/gun/projectile/ballistic/automatic/lmg/unload_ammo(mob/user, var/allow_dump=1)
+/obj/item/gun/projectile/ballistic/lmg/unload_ammo(mob/user, var/allow_dump=1)
 	if(!cover_open)
 		to_chat(user, "<span class='warning'>You need to open the cover to unload [src].</span>")
 		return

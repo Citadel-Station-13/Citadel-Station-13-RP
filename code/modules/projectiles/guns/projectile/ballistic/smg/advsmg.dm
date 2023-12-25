@@ -1,4 +1,4 @@
-/obj/item/gun/projectile/ballistic/automatic/advanced_smg
+/obj/item/gun/projectile/ballistic/advanced_smg
 	name = "advanced SMG"
 	desc = "The NT-S3W is an advanced submachine gun design, using a reflective laser optic for increased accuracy over competing models. Chambered for 9mm rounds."
 	icon_state = "advanced_smg"
@@ -17,6 +17,6 @@
 		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=4,    burst_accuracy=list(60,30,20), dispersion=list(0.0, 0.3, 0.6))
 	)
 
-/obj/item/gun/projectile/ballistic/automatic/advanced_smg/loaded
+/obj/item/gun/projectile/ballistic/advanced_smg/loaded
 	magazine_type = /obj/item/ammo_magazine/m9mmAdvanced
 

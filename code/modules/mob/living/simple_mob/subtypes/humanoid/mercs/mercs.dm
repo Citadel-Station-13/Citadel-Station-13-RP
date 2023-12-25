@@ -214,7 +214,7 @@
 	icon_state = "syndicateranged_smg"
 	icon_living = "syndicateranged_smg"
 
-	loot_list = list(/obj/item/gun/projectile/ballistic/automatic/c20r = 100)
+	loot_list = list(/obj/item/gun/projectile/ballistic/c20r = 100)
 
 	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged/surpressor
 
@@ -236,7 +236,7 @@
 	catalogue_data = list(/datum/category_item/catalogue/fauna/mercenary/human/peacekeeper)
 
 	corpse = /obj/spawner/corpse/solarpeacekeeper
-	loot_list = list(/obj/item/gun/projectile/ballistic/automatic/c20r = 100)
+	loot_list = list(/obj/item/gun/projectile/ballistic/c20r = 100)
 
 	base_attack_cooldown = 5 // Two attacks a second or so.
 	reload_max = 20
@@ -399,7 +399,7 @@
 	base_attack_cooldown = 5 // Two attacks a second or so.
 	reload_max = 20
 
-	loot_list = list(/obj/item/gun/projectile/ballistic/automatic/c20r = 100)
+	loot_list = list(/obj/item/gun/projectile/ballistic/c20r = 100)
 
 /mob/living/simple_mob/humanoid/merc/ranged/space/Process_Spacemove(var/check_drift = 0)
 	return
@@ -435,7 +435,7 @@
 	projectiletype = /obj/projectile/bullet/pellet/shotgun		// Buckshot
 	projectilesound = 'sound/weapons/Gunshot_shotgun.ogg'
 
-	loot_list = list(/obj/item/gun/projectile/ballistic/automatic/as24 = 100)
+	loot_list = list(/obj/item/gun/projectile/ballistic/as24 = 100)
 
 	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged/sweeper
 
@@ -452,7 +452,7 @@
 	projectiletype = /obj/projectile/bullet/rifle/a556
 	projectilesound = 'sound/weapons/Gunshot_light.ogg'
 
-	loot_list = list(/obj/item/gun/projectile/ballistic/automatic/lmg = 100)
+	loot_list = list(/obj/item/gun/projectile/ballistic/lmg = 100)
 
 	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged/surpressor
 
@@ -482,7 +482,7 @@
 	projectiletype = /obj/projectile/bullet/rifle/a762
 	projectilesound = 'sound/weapons/Gunshot_heavy.ogg'
 
-	loot_list = list(/obj/item/gun/projectile/ballistic/automatic/fal = 100)
+	loot_list = list(/obj/item/gun/projectile/ballistic/fal = 100)
 
 	reload_max = 20
 

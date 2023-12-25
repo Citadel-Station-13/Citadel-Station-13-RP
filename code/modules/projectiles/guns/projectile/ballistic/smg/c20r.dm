@@ -1,4 +1,4 @@
-/obj/item/gun/projectile/ballistic/automatic/c20r
+/obj/item/gun/projectile/ballistic/c20r
 	name = "submachine gun"
 	desc = "The C-20r is a lightweight and rapid firing SMG, for when you REALLY need someone dead. It has 'Scarborough Arms - Per falcis, per pravitas' inscribed on the stock. Uses 10mm rounds."
 	icon_state = "c20r"
@@ -19,7 +19,7 @@
 
 	one_handed_penalty = 15
 
-/obj/item/gun/projectile/ballistic/automatic/c20r/update_icon_state()
+/obj/item/gun/projectile/ballistic/c20r/update_icon_state()
 	. = ..()
 	if(ammo_magazine)
 		icon_state = "c20r-[round(ammo_magazine.stored_ammo.len,4)]"

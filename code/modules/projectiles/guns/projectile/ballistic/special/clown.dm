@@ -1,5 +1,5 @@
 
-/obj/item/gun/projectile/ballistic/automatic/clown_rifle
+/obj/item/gun/projectile/ballistic/clown_rifle
 	name = "clown assault rifle"
 	desc = "The WSS-29m6 is the latest version of the standard Columbina service rifle. Originally a cheap knock-off of the STS-35, the m6 now matches its inspiration in durability. Utilizing a proprietary ROF system, the m6 is able to fire unorthodox, yet effective, weaponry."
 	icon_state = "clownrifle"
@@ -24,7 +24,7 @@
 //		list(mode_name="short bursts", 	burst=5, fire_delay=null, move_delay=6,    burst_accuracy=list(0,-15,-30,-30,-45), dispersion=list(0.6, 1.0, 1.0, 1.0, 1.2)),
 		)
 
-/obj/item/gun/projectile/ballistic/automatic/clown_rifle/update_icon_state()
+/obj/item/gun/projectile/ballistic/clown_rifle/update_icon_state()
 	. = ..()
 	if(ammo_magazine)
 		icon_state = "[initial(icon_state)]"

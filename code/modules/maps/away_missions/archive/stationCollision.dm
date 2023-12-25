@@ -80,9 +80,9 @@ obj/item/gun/projectile/energy/laser/retro/sc_retro
 			loaded -= ammo
 
 //Syndicate sub-machine guns.
-/obj/item/gun/projectile/ballistic/automatic/c20r/sc_c20r
+/obj/item/gun/projectile/ballistic/c20r/sc_c20r
 
-/obj/item/gun/projectile/ballistic/automatic/c20r/sc_c20r/Initialize(mapload, starts_loaded)
+/obj/item/gun/projectile/ballistic/c20r/sc_c20r/Initialize(mapload, starts_loaded)
 	. = ..()
 	for(var/ammo in loaded)
 		if(prob(95)) //95% chance

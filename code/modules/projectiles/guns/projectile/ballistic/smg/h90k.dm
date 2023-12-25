@@ -1,4 +1,4 @@
-/obj/item/gun/projectile/ballistic/automatic/p90
+/obj/item/gun/projectile/ballistic/p90
 	name = "personal defense weapon"
 	desc = "The H90K is a compact, large capacity submachine gun produced by Hephaestus Industries. Despite its fierce reputation, it still manages to feel like a toy. Uses 5.7x28mm rounds."
 	icon_state = "p90smg"
@@ -19,11 +19,11 @@
 		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=4,    burst_accuracy=list(60,30,30), dispersion=list(0.0, 0.6, 1.0))
 		)
 
-/obj/item/gun/projectile/ballistic/automatic/p90/update_icon_state()
+/obj/item/gun/projectile/ballistic/p90/update_icon_state()
 	. = ..()
 	icon_state = "p90smg-[ammo_magazine ? round(ammo_magazine.stored_ammo.len, 6) : "empty"]"
 
-/obj/item/gun/projectile/ballistic/automatic/p90/custom
+/obj/item/gun/projectile/ballistic/p90/custom
 	name = "custom personal defense weapon"
 	desc = "An H90K from Hephaestus Industries. This one has a different colored receiver and a sling."
 	icon_state = "p90smgC"
@@ -31,6 +31,6 @@
 	slot_flags = SLOT_BELT|SLOT_BACK
 	pin = /obj/item/firing_pin/explorer
 
-/obj/item/gun/projectile/ballistic/automatic/p90/custom/update_icon_state()
+/obj/item/gun/projectile/ballistic/p90/custom/update_icon_state()
 	. = ..()
 	icon_state = "p90smgC-[ammo_magazine ? round(ammo_magazine.stored_ammo.len, 6) : "e"]"

@@ -266,7 +266,7 @@
 	minbodytemp = 0
 
 	corpse = /obj/spawner/corpse/clown/clownop/space
-	loot_list = list(/obj/item/gun/projectile/ballistic/automatic/clown_rifle = 100,
+	loot_list = list(/obj/item/gun/projectile/ballistic/clown_rifle = 100,
 					/obj/item/ammo_magazine/mcompressedbio/large/banana = 30,
 					/obj/item/ammo_magazine/mcompressedbio/large/banana = 30
 					)

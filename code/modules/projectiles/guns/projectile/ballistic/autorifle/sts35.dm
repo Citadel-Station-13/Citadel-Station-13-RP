@@ -1,4 +1,4 @@
-/obj/item/gun/projectile/ballistic/automatic/sts35
+/obj/item/gun/projectile/ballistic/sts35
 	name = "assault rifle"
 	desc = "The rugged STS-35 is a durable automatic weapon of a make popular on the frontier worlds. Uses 5.56mm rounds."
 	icon_state = "arifle"
@@ -25,11 +25,11 @@
 //		list(mode_name="short bursts", 	burst=5, fire_delay=null, move_delay=6,    burst_accuracy=list(0,-15,-30,-30,-45), dispersion=list(0.6, 1.0, 1.0, 1.0, 1.2)),
 		)
 
-/obj/item/gun/projectile/ballistic/automatic/sts35/update_icon_state()
+/obj/item/gun/projectile/ballistic/sts35/update_icon_state()
 	. = ..()
 	if(istype(ammo_magazine,/obj/item/ammo_magazine/m556/small))
 		icon_state = "arifle-small" // If using the small magazines, use the small magazine sprite.
 
-/obj/item/gun/projectile/ballistic/automatic/sts35/update_icon(ignore_inhands)
+/obj/item/gun/projectile/ballistic/sts35/update_icon(ignore_inhands)
 	. = ..()
 	update_held_icon()
