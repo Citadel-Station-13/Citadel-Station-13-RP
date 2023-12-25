@@ -23,6 +23,8 @@
 	var/obj/item/rig/controller
 	/// Our deployment slot
 	var/inventory_slot
+	/// our controller-unique ID; this is set per controller
+	var/lookup_id
 
 	//* Sealing
 	/// are we sealed?
@@ -72,10 +74,18 @@
 	var/obj/item/physical = parent
 	return list(
 		"name" = display_name,
+		"id" = lookup_id,
 		"sealed" = sealed,
+		"deployed" = is_deployed(),
 		"flags" = rig_piece_flags,
 		"sprite64" = isnull(cached_tgui_icon_b64)? (cached_tgui_icon_b64 = icon2base64(icon(physical.icon, state_sealed))) : cached_tgui_icon_b64
 	)
+
+/datum/component/rig_piece/proc/push_piece_data(list/data)
+	controller?.push_ui_modules(updates = list(RIG_UI_ENCODE_PIECE_REF(src) = data))
+
+/datum/component/rig_piece/proc/update_piece_data()
+	controller?.ui_queue_piece(src)
 
 /**
  * @params
@@ -90,6 +100,7 @@
 	physical.worn_state = state_worn_sealed
 	physical.icon_state = state_sealed
 	controller.legacy_sync_piece(src, TRUE)
+	update_piece_data()
 
 /**
  * @params
@@ -104,6 +115,7 @@
 	physical.worn_state = state_worn_unsealed
 	physical.icon_state = state_unsealed
 	controller.legacy_sync_piece(src, FALSE)
+	update_piece_data()
 
 /datum/component/rig_piece/proc/deploy(mob/onto, inv_op_flags)
 	var/obj/item/I = parent
@@ -117,6 +129,7 @@
 	if(!.)
 		return
 	// todo: some kind of visual feedback to people around them?
+	update_piece_data()
 
 /datum/component/rig_piece/proc/retract(inv_op_flags)
 	var/obj/item/I = parent
@@ -130,6 +143,7 @@
 		if(!.)
 			return	#warn impl
 	// todo: some kind of visual feedback to people around them?
+	update_piece_data()
 
 /datum/component/rig_piece/proc/is_deployed()
 	var/obj/item/I = parent

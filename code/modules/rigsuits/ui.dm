@@ -50,7 +50,7 @@
 			assembled_fragments[reference] = piece.tgui_piece_data()
 			piece_refs += reference
 
-		//! yes, in null. fuck you.
+		// todo: make this actually do something (yes the in null is intentional)
 		for(var/obj/item/rig_module/module as anything in null)
 			var/reference = RIG_UI_ENCODE_MODULE_REF(ref(module))
 			// todo: for when modules are made
@@ -75,7 +75,7 @@
 		for(var/datum/component/rig_piece/piece as anything in piece_components)
 			var/reference = RIG_UI_ENCODE_PIECE_REF(ref(piece))
 			piece_refs += reference
-		//! yes, in null. fuck you.
+		// todo: make this actually do something (yes the in null is intentional)
 		for(var/obj/item/rig_module/module as anything in null)
 			var/reference = RIG_UI_ENCODE_MODULE_REF(ref(module))
 			// todo: for when modules are made
@@ -88,7 +88,6 @@
 	if(length(ui_queued_modules))
 		var/list/assembled_fragments = list()
 
-		//! yes, in null. fuck you.
 		for(var/obj/item/rig_module/module as anything in ui_queued_modules)
 			var/reference = RIG_UI_ENCODE_MODULE_REF(ref(module))
 			// todo: for when modules are made
@@ -100,13 +99,13 @@
 	if(length(ui_queued_pieces))
 		var/list/assembled_fragments = list()
 
-		for(var/datum/component/rig_piece/piece as anything in piece_components)
+		for(var/id in piece_lookup)
+			var/datum/component/rig_piece/piece = id
 			var/reference = RIG_UI_ENCODE_PIECE_REF(ref(piece))
 			assembled_fragments[reference] = piece.tgui_piece_data()
 
 		push_ui_modules(updates = assembled_fragments)
 		ui_queued_pieces = null
-
 
 #warn impl all
 
@@ -114,7 +113,8 @@
 	. = ..()
 	var/list/piece_refs = list()
 	var/list/module_refs = list()
-	for(var/datum/component/rig_piece/piece as anything in piece_components)
+	for(var/id in piece_lookup)
+		var/datum/component/rig_piece/piece = id
 		var/reference = RIG_UI_ENCODE_PIECE_REF(ref(piece))
 		piece_refs += reference
 	//! yes, in null. fuck you.
@@ -139,8 +139,9 @@
 	for(var/obj/item/rig_module/module as anything in null)
 		// todo: modules
 		.[RIG_UI_ENCODE_MODULE_REF(ref(module))] = list()
-	for(var/datum/component/rig_piece/piece as anything in piece_components)
-		.[RIG_UI_ENCODE_PIECE_REF(ref(piece()))] = piece.tgui_piece_data()
+	for(var/id in piece_lookup)
+		var/datum/component/rig_piece/piece = piece_lookup[id]
+		.[RIG_UI_ENCODE_PIECE_REF(ref(piece))] = piece.tgui_piece_data()
 
 /obj/item/rig/ui_module_act(action, list/params, datum/tgui/ui, id)
 	. = ..()
@@ -150,9 +151,11 @@
 	// todo: need fast lookup for module control
 	switch(id[1])
 		if("P")
+			var/lookup_id = params["id"]
 			#warn piece control (?)
 			return TRUE
 		if("M")
+			var/lookup_id = params["id"]
 			// todo: route to modules
 			return TRUE
 

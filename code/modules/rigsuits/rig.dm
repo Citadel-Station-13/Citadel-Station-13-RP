@@ -35,9 +35,14 @@
 	var/min_temperature_protect
 	var/max_temperature_protect
 
+	//* Modules
+	//  todo: unfinished
+	/// list of /obj/item/rig_module's by its lookup_id
+	var/list/obj/item/rig_module/module_lookup
+
 	//* Pieces
-	/// list of /datum/component/rig_piece's
-	var/list/datum/component/rig_piece/piece_components
+	/// list of /datum/component/rig_piece's by its lookup_id
+	var/list/datum/component/rig_piece/piece_lookup
 	/// direct access cache to the items held by those pieces
 	var/list/obj/item/piece_items
 
