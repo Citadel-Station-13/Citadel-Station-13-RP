@@ -856,7 +856,7 @@
 		prob(2);/obj/item/gun/launcher/crossbow,
 		prob(1);/obj/item/gun/projectile/energy/plasma,
 		prob(1);/obj/item/gun/projectile/energy/plasma/pistol,
-		// prob(1);/obj/item/gun/projectile/ballistic/battlerifle, // Too OP
+		// prob(1);/obj/item/gun/projectile/ballistic/jsdf_rifle, // Too OP
 		prob(1);/obj/item/gun/projectile/ballistic/deagle/gold,
 		prob(1);/obj/item/gun/projectile/ballistic/lmg/mg42,
 		prob(1);/obj/item/gun/projectile/ballistic/lmg/m60,

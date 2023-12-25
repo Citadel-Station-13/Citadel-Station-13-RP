@@ -661,7 +661,7 @@
 /datum/supply_pack/security/battlerifle
 	name = "Battle Rifle Pack"
 	contains = list(
-			/obj/item/gun/projectile/ballistic/battlerifle = 2,
+			/obj/item/gun/projectile/ballistic/jsdf_rifle = 2,
 			/obj/item/ammo_magazine/m95 = 4
 			)
 	cost = 60

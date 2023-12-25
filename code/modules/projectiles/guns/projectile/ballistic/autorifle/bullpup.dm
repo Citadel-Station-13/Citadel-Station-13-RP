@@ -5,8 +5,8 @@
 	item_state = "bullpup"
 	w_class = ITEMSIZE_LARGE
 	damage_force = 10
-	caliber = "7.62mm"
-	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)
+	regex_this_caliber = /datum/caliber/a7_62mm
+
 	slot_flags = SLOT_BACK
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/m762

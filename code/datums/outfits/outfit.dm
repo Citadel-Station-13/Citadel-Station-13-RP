@@ -196,7 +196,7 @@
 	l_pocket = /obj/item/ammo_magazine/m95
 	l_hand = /obj/item/ammo_magazine/m95
 	r_hand = /obj/item/ammo_magazine/m95
-	back = /obj/item/gun/projectile/ballistic/battlerifle
+	back = /obj/item/gun/projectile/ballistic/jsdf_rifle
 	backpack_contents = list(/obj/item/storage/box = 1)
 	abstract_type = /datum/outfit/wizard
 	head = /obj/item/clothing/head/helmet/combat/JSDF

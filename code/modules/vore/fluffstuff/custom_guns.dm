@@ -1,63 +1,6 @@
 // For general use
-/obj/item/gun/projectile/ballistic/battlerifle
-	name = "\improper JSDF service rifle"
-	desc = "You had your chance to be afraid before you joined my beloved Corps! But, to guide you back to the true path, I have brought this motivational device! Uses 9.5x40mm rounds."
-	icon_state = "battlerifle"
-	icon_override = 'icons/obj/gun/ballistic.dmi'
-	item_state = "battlerifle_i"
-	item_icons = null
-	w_class = ITEMSIZE_LARGE
-	recoil = 2 // The battlerifle was known for its nasty recoil.
-	max_shells = 36
-	caliber = "9.5x40mm"
-	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2)
-	magazine_type = /obj/item/ammo_magazine/m95
-	allowed_magazines = list(/obj/item/ammo_magazine/m95)
-	fire_sound = 'sound/weapons/battlerifle.ogg'
-	load_method = MAGAZINE
-	slot_flags = SLOT_BACK
-	one_handed_penalty = 60 // The weapon itself is heavy
 
 // For general use
-/obj/item/gun/projectile/ballistic/shotgun/pump/JSDF
-	name = "\improper JSDF tactical shotgun"
-	desc = "All you greenhorns who wanted to see Xenomorphs up close... this is your lucky day. Uses 12g rounds."
-	icon_state = "haloshotgun"
-	icon_override = 'icons/obj/gun/ballistic.dmi'
-	item_state = "haloshotgun_i"
-	item_icons = null
-	ammo_type = /obj/item/ammo_casing/a12g
-	max_shells = 12
-
-// For general use
-/obj/item/gun/projectile/ballistic/pdw
-	name = "personal defense weapon"
-	desc = "The X-9MM is a select-fire personal defense weapon designed in-house by Xing Private Security. It was made to compete with the WT550 Saber, but never caught on with NanoTrasen. Uses 9mm rounds."
-	icon_state = "pdw"
-	item_state = "c20r" // Placeholder
-	w_class = ITEMSIZE_NORMAL
-	caliber = "9mm"
-	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2)
-	slot_flags = SLOT_BELT
-	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/m9mml
-	allowed_magazines = list(/obj/item/ammo_magazine/m9mm, /obj/item/ammo_magazine/m9mml)
-
-	firemodes = list(
-		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, burst_accuracy=null, dispersion=null),
-		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=6,    burst_accuracy=list(0,-15,-30), dispersion=list(0.0, 0.6, 0.6))
-		)
-
-/obj/item/gun/projectile/ballistic/pdw/update_icon()
-	. = ..()
-	update_held_icon()
-
-/obj/item/gun/projectile/ballistic/pdw/update_icon_state()
-	. = ..()
-	if(istype(ammo_magazine,/obj/item/ammo_magazine/m9mm))
-		icon_state = "pdw-short"
-	else
-		icon_state = (ammo_magazine)? "pdw" : "pdw-empty"
 
 // For general use
 /obj/item/gun/projectile/energy/imperial
@@ -75,82 +18,7 @@
 	materials_base = list(MAT_STEEL = 2000)
 	projectile_type = /obj/projectile/beam/imperial
 
-// For general use
-/obj/item/gun/projectile/ballistic/stg
-	name = "\improper Sturmgewehr"
-	desc = "An STG-560 built by RauMauser. Experience the terror of the Siegfried line, redone for the 26th century! The Kaiser would be proud. Uses unique 7.92x33mm Kurz rounds."
-	icon_state = "stg60"
-	item_state = "arifle"
-	w_class = ITEMSIZE_LARGE
-	max_shells = 30
-	caliber = "7.92x33mm"
-	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2, TECH_ILLEGAL = 6)
-	magazine_type = /obj/item/ammo_magazine/mtg
-	allowed_magazines = list(/obj/item/ammo_magazine/mtg)
-	load_method = MAGAZINE
 
-/obj/item/gun/projectile/ballistic/stg/update_icon()
-	. = ..()
-	update_held_icon()
-
-/obj/item/gun/projectile/ballistic/stg/update_icon_state()
-	. = ..()
-	icon_state = (ammo_magazine)? "stg60" : "stg60-e"
-	item_state = (ammo_magazine)? "arifle" : "arifle-e"
-
-//-----------------------Tranq Gun----------------------------------
-/obj/item/gun/projectile/ballistic/dartgun/tranq
-	name = "tranquilizer gun"
-	desc = "A gas-powered dart gun designed by the National Armory of Gaia. This gun is used primarily by United Federation special forces for Tactical Espionage missions. Don't forget your bandana."
-	icon_state = "tranqgun"
-	item_state = null
-
-	caliber = "dart"
-	fire_sound = 'sound/weapons/empty.ogg'
-	fire_sound_text = "a metallic click"
-	recoil = 0
-	silenced = 1
-	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/chemdart
-	allowed_magazines = list(/obj/item/ammo_magazine/chemdart)
-	auto_eject = 0
-
-// ------------ Energy Luger ------------
-/obj/item/gun/projectile/energy/gun/eluger
-	name = "energy Luger"
-	desc = "The finest sidearm produced by RauMauser. Although its battery cannot be removed, its ergonomic design makes it easy to shoot, allowing for rapid follow-up shots. It also has the ability to toggle between stun and kill."
-	icon_state = "elugerstun100"
-	item_state = "gun"
-	fire_delay = null // Lugers are quite comfortable to shoot, thus allowing for more controlled follow-up shots. Rate of fire similar to a laser carbine.
-	battery_lock = 1 // In exchange for balance, you cannot remove the battery. Also there's no sprite for that and I fucking suck at sprites. -Ace
-	origin_tech = list(TECH_COMBAT = 3, TECH_MAGNET = 2, TECH_ILLEGAL = 2)
-	modifystate = "elugerstun"
-	fire_sound = 'sound/weapons/Taser.ogg'
-	firemodes = list(
-	list(mode_name="stun", charge_cost=120,projectile_type=/obj/projectile/beam/stun, modifystate="elugerstun", fire_sound='sound/weapons/Taser.ogg'),
-	list(mode_name="lethal", charge_cost=240,projectile_type=/obj/projectile/beam/eluger, modifystate="elugerkill", fire_sound='sound/weapons/eluger.ogg'),
-	)
-
-
-//Civilian gun
-/obj/item/gun/projectile/ballistic/giskard
-	name = "\improper \"Giskard\" holdout pistol"
-	desc = "The FS HG .380 \"Giskard\" can even fit into the pocket! Uses .380 rounds."
-	icon_state = "giskardcivil"
-	caliber = ".380"
-	magazine_type = /obj/item/ammo_magazine/m380
-	allowed_magazines = list(/obj/item/ammo_magazine/m380)
-	load_method = MAGAZINE
-	w_class = ITEMSIZE_SMALL
-	fire_sound = 'sound/weapons/gunshot_pathetic.ogg'
-	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 3)
-
-/obj/item/gun/projectile/ballistic/giskard/update_icon_state()
-	. = ..()
-	if(ammo_magazine && ammo_magazine.stored_ammo.len)
-		icon_state = "giskardcivil"
-	else
-		icon_state = "giskardcivil_empty"
 
 //Not so civilian gun
 /obj/item/gun/projectile/ballistic/giskard/olivaw
@@ -170,56 +38,8 @@
 		icon_state = "olivawcivil_empty"
 
 //Detective gun
-/obj/item/gun/projectile/ballistic/revolver/consul
-	name = "\improper \"Consul\" Revolver"
-	desc = "Are you feeling lucky, punk? Uses .44 rounds."
-	icon_state = "inspector"
-	item_state = "revolver"
-	caliber = ".44"
-	ammo_type = /obj/item/ammo_casing/a44/rubber
-	handle_casings = CYCLE_CASINGS
-	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3)
-
-/obj/item/gun/projectile/ballistic/revolver/consul/update_overlays()
-	. = ..()
-	if(loaded.len==0)
-		. += "inspector_off"
-	else
-		. += "inspector_on"
 
 // No idea what this is for.
-/obj/item/gun/projectile/ballistic/sol
-	name = "\improper \"Sol\" SMG"
-	desc = "The FS 9x19mm \"Sol\" is a compact and reliable submachine gun. Uses 9mm rounds."
-	icon_state = "SMG-IS"
-	item_state = "wt550"
-	w_class = ITEMSIZE_LARGE
-	slot_flags = SLOT_BELT
-	caliber = "9mm"
-	magazine_type = /obj/item/ammo_magazine/m9mm
-	allowed_magazines = list(/obj/item/ammo_magazine/m9mm)
-	load_method = MAGAZINE
-	multi_aim = 1
-	burst_delay = 2
-	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2)
-	firemodes = list(
-		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, burst_accuracy=null, dispersion=null),
-		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=4,    burst_accuracy=list(0,-15,-15),       dispersion=list(0.0, 0.6, 1.0)),
-		)
-
-/obj/item/gun/projectile/ballistic/sol/proc/update_charge()
-	if(!ammo_magazine)
-		return
-	var/ratio = ammo_magazine.stored_ammo.len / ammo_magazine.ammo_max
-	if(ratio < 0.25 && ratio != 0)
-		ratio = 0.25
-	ratio = round(ratio, 0.25) * 100
-	add_overlay("smg_[ratio]")
-
-/obj/item/gun/projectile/ballistic/sol/update_icon()
-	icon_state = (ammo_magazine)? "SMG-IS" : "SMG-IS-empty"
-	cut_overlay()
-	update_charge()
 
 //HoP gun
 /obj/item/gun/projectile/energy/gun/martin

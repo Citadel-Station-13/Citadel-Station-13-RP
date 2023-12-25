@@ -242,3 +242,20 @@
 
 /obj/projectile/bullet/chemdart/small
 	reagent_amount = 10
+
+/obj/item/gun/projectile/ballistic/dartgun/tranq
+	name = "tranquilizer gun"
+	desc = "A gas-powered dart gun designed by the National Armory of Gaia. This gun is used primarily by United Federation special forces for Tactical Espionage missions. Don't forget your bandana."
+	icon_state = "tranqgun"
+	item_state = null
+
+	caliber = "dart"
+	fire_sound = 'sound/weapons/empty.ogg'
+	fire_sound_text = "a metallic click"
+	recoil = 0
+	silenced = 1
+	load_method = MAGAZINE
+	magazine_type = /obj/item/ammo_magazine/chemdart
+	allowed_magazines = list(/obj/item/ammo_magazine/chemdart)
+	auto_eject = 0
+
