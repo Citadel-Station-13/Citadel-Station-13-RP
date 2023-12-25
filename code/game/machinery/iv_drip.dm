@@ -233,10 +233,12 @@
 	// log_combat(usr, target, "attached_victim", src, "containing: ([container.get_reagent_log_string()])")
 	add_fingerprint(usr)
 	attached_victim = target
-	if(!speed_process)
+	if(speed_process == PROCESS_ON_SSMACHINES)
 		START_MACHINE_PROCESSING(src)
-	else
+	else if (speed_process == PROCESS_ON_SSFASTPROCESS)
 		START_PROCESSING(SSfastprocess, src)
+	else if (speed_process == PROCESS_ON_SSPROCESSING)
+		START_PROCESSING(SSprocessing, src)
 	update_appearance()
 
 	//! Plumbing Signal

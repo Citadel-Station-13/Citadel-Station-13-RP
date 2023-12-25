@@ -152,7 +152,7 @@
 	density = TRUE
 	anchored = TRUE
 	light_range = 3
-	speed_process = TRUE
+	speed_process = PROCESS_ON_SSFASTPROCESS
 	var/tick = 0
 	var/obj/machinery/mineral/input = null
 	var/obj/machinery/mineral/output = null

@@ -48,7 +48,7 @@
 /obj/machinery/appliance/Initialize(mapload, newdir)
 	. = ..()
 	component_parts = list()
-	component_parts += /obj/item/circuitboard/cooking
+	component_parts += /obj/item/circuitboard/appliance
 	component_parts += /obj/item/stock_parts/capacitor
 	component_parts += /obj/item/stock_parts/capacitor
 	component_parts += /obj/item/stock_parts/capacitor
@@ -716,7 +716,7 @@
 	active_power_usage = initial(active_power_usage) - scan_rating*10
 	cooking_power = initial(cooking_power) + (scan_rating+cap_rating)/10
 
-/obj/item/circuitboard/cooking
+/obj/item/circuitboard/appliance
 	name = "kitchen appliance circuitry"
 	desc = "The circuitboard for many kitchen appliances. Not of much use."
 	origin_tech = list(TECH_MAGNET = 2, TECH_ENGINEERING = 2)

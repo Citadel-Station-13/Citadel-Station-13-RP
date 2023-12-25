@@ -10,3 +10,7 @@
 #define HEAT_LOW 1
 #define HEAT_MID 2
 #define HEAT_HIGH 3
+
+#define METHOD_OVEN "oven"
+#define METHOD_GRILL "grill"
+#define METHOD_STOVE "stove"

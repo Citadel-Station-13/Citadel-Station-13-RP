@@ -24,14 +24,22 @@
 	//should be everything for now
 
 
-/obj/item/reagent_containers/food/snacks/ingredient/proc/process_cooked()
+
+/obj/item/reagent_containers/food/snacks/ingredient/proc/process_cooked(var/time_cooked, var/heat_level, var/cook_method)
+	switch(heat_level)
+		if(HEAT_LOW)
+			cooking_ingredient.accumulated_time_cooked += cooking_ingredient.cooktime_mult_low * time_cooked
+		if(HEAT_MID)
+			cooking_ingredient.accumulated_time_cooked += cooking_ingredient.cooktime_mult_mid * time_cooked
+		if(HEAT_HIGH)
+			cooking_ingredient.accumulated_time_cooked += cooking_ingredient.cooktime_mult_high * time_cooked
 	if(cookstage >= BURNT)
 		return //we dont need to do anything if we're burnt
 	var/next_cookstage = cookstage + 1
 
 	if(accumulated_time_cooked >= cookstage_information[next_cookstage][COOKINFO_TIME])
 		cookstage = next_cookstage
-		on_cooked(cookstage)
+		on_cooked(cookstage, cook_method)
 
-/obj/item/reagent_containers/food/snacks/ingredient/proc/on_cooked(var/reached_stage)
+/obj/item/reagent_containers/food/snacks/ingredient/proc/on_cooked(var/reached_stage, var/cook_method)
 	return //we dont do anything special

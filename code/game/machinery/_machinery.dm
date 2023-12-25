@@ -154,8 +154,8 @@
 	///Volume of interface sounds.
 	var/clickvol = 40
 	var/obj/item/circuitboard/circuit = null
-	///If false, SSmachines. If true, SSfastprocess.
-	var/speed_process = FALSE
+	///If PROCESS_ON_SSMACHINES, SSmachines. If PROCESS_ON_SSFASTPROCESS, SSfastprocess. if PROCESS_ON_SSPROCESSING, ssprocessing (1nce a second)
+	var/speed_process = PROCESS_ON_SSMACHINES
 
 	var/interaction_flags_machine = INTERACT_MACHINE_WIRES_IF_OPEN | INTERACT_MACHINE_ALLOW_SILICON | INTERACT_MACHINE_OPEN_SILICON | INTERACT_MACHINE_SET_MACHINE
 
@@ -170,20 +170,24 @@
 		circuit = new circuit(src)
 		default_apply_parts()
 
-	if(!speed_process)
+	if(speed_process == PROCESS_ON_SSMACHINES)
 		START_MACHINE_PROCESSING(src)
-	else
+	else if (speed_process == PROCESS_ON_SSFASTPROCESS)
 		START_PROCESSING(SSfastprocess, src)
+	else if (speed_process == PROCESS_ON_SSPROCESSING)
+		START_PROCESSING(SSprocessing, src)
 
 	if(!mapload)	// area handles this
 		power_change()
 
 /obj/machinery/Destroy()
 	GLOB.machines.Remove(src)
-	if(!speed_process)
+	if(speed_process == PROCESS_ON_SSMACHINES)
 		STOP_MACHINE_PROCESSING(src)
-	else
+	else if (speed_process == PROCESS_ON_SSFASTPROCESS)
 		STOP_PROCESSING(SSfastprocess, src)
+	else if (speed_process == PROCESS_ON_SSPROCESSING)
+		STOP_PROCESSING(SSprocessing, src)
 	if(component_parts)
 		for(var/atom/A in component_parts)
 			if(A.loc == src) // If the components are inside the machine, delete them.
