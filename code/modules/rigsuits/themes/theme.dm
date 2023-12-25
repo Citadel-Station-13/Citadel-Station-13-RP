@@ -40,9 +40,9 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 	var/control_state_append = "-control"
 	/// control module sealed append
 	var/control_sealed_append = "-sealed"
-	/// control module base state
+	/// control module base state; defaults to base_state
 	var/control_base_state
-	/// control module worn icon uses base state; defaults to base_state
+	/// control module worn icon uses base state; defaults to control_base_state, then base_state
 	var/control_base_state_worn
 	/// default coloration colors
 	var/list/coloration_colors
@@ -95,7 +95,23 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 		add_piece(path)
 
 /datum/rig_theme/proc/imprint_control_appearance(obj/item/rig/control_module)
+	control_module.icon = base_icon
+	// todo: optimize
+	// state
+	control_module.state_sealed = "[control_base_state || base_state][control_state_append][control_sealed_append]"
+	control_module.state_unsealed = "[control_base_state || base_state][control_state_append]"
+	control_module.state_worn_sealed = "[control_base_state_worn || control_base_state || base_state][control_state_append][control_sealed_append]"
+	control_module.state_worn_unsealed = "[control_base_state_worn || control_base_state || base_state][control_state_append]"
+	// coloration
+	control_module.coloration_amount = ccoloration_amount
+	control_module.coloration_mode = coloration_mode
+	if(control_module.coloration_mode == COLORATION_MODE_MATRIX)
+		control_module.set_coloration_matrix(coloration_matrix)
+	else
+		control_module.set_coloration_parts(coloration_colors)
 	#warn impl
+	// update
+	control_module.update_icon()
 
 /datum/rig_theme/proc/imprint_control_behavior(obj/item/rig/control_module)
 	control_module.siemens_coefficient = siemens_coefficient
@@ -137,7 +153,7 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 	var/sealed_state_append = "-sealed"
 	/// base state - defaults to rig theme
 	var/piece_base_state
-	/// base state used when worn - defaults to rig theme
+	/// base state used when worn - defaults to piece_base_state, then rig theme
 	var/piece_base_state_worn
 	/// worn rendering flags
 	var/worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
@@ -181,16 +197,24 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 
 /datum/rig_piece/proc/imprint_appearance(datum/rig_theme/theme, datum/component/rig_piece/piece_component)
 	var/obj/item/physical = piece_component.parent
+	// inv appearance / hide flags
 	piece_component.inv_hide_flags_sealed = inv_hide_flags_active
 	piece_component.inv_hide_flags_unsealed = inv_hide_flags_inactive
+	// bodytypes
+	physical.worn_bodytypes = worn_bodytypes
+	physical.worn_bodytypes_fallback = worn_bodytypes_fallback
+	// state
+	piece_component.state_sealed = "[piece_base_state || theme.base_state][piece_state_append][sealed_state_append]"
+	piece_component.state_unsealed = "[piece_base_state || theme.base_state][piece_state_append]"
+	piece_component.state_worn_sealed = "[piece_base_state_worn || piece_base_state || theme.base_state][piece_state_append][sealed_state_append]"
+	piece_component.state_worn_unsealed = "[piece_base_state_worn || piece_base_state || theme.base_state][piece_state_append]"
+	// coloration
 	physical.coloration_amount = isnull(coloration_amount)? theme.coloration_amount : coloration_amount
 	physical.coloration_mode = isnull(coloration_mode)? theme.coloration_mode : coloration_mode
 	if(physical.coloration_mode == COLORATION_MODE_MATRIX)
 		physical.set_coloration_matrix(isnull(coloration_matrix)? theme.coloration_matrix : coloration_matrix)
 	else
 		physical.set_coloration_parts(isnull(coloration_colors)? theme.coloration_colors : coloration_colors)
-	// todo: bodytypes
-	// todo: state
 	#warn impl
 
 /datum/rig_piece/proc/imprint_behavior(datum/rig_theme/theme, datum/component/rig_piece/piece_component)

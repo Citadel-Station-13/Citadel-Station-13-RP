@@ -98,12 +98,7 @@
 
 /obj/item/rig/Initialize(mapload, datum/rig_theme/theme_like)
 	. = ..()
-	if(isnull(theme_like))
-		theme_like = theme_preset
-	if(ispath(theme_like))
-		theme_preset = theme_like
-	else
-		init_theme(theme_like)
+	init_theme(theme_like || theme_preset)
 
 /obj/item/rig/Destroy()
 	hard_reset()

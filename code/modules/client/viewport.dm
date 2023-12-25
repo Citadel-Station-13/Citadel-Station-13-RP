@@ -57,7 +57,7 @@
 	target = get_turf(target)
 	if(isnull(target))
 		return FALSE
-	return get_dist(target, eye) < ceil(max(current_viewport_height, current_viewport_width) / 2)
+	return get_dist(target, eye) < CEILING(max(current_viewport_height, current_viewport_width) / 2, 1)
 
 // these two variables control max dynamic resize for viewport
 GLOBAL_VAR_INIT(max_client_view_x, 19)

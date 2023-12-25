@@ -5,7 +5,7 @@
 	abstract_type = /datum/rig_theme/station/engineering
 	base_icon = 'icons/modules/rigsuits/suits/engineering.dmi'
 
-/datum/rig_theme/station/engineering/standard
+DECLARE_RIG_THEME(/station/engineering/standard)
 	name = "engineering rig"
 	base_state = "engineering"
 	desc = "TBD"
@@ -14,7 +14,7 @@
 	visible_name = "Engineering"
 	#warn impl
 
-/datum/rig_theme/station/engineering/atmospherics
+DECLARE_RIG_THEME(/station/engineering/atmospherics)
 	name = "atmospherics rig"
 	base_state = "atmospheric"
 	desc = "TBD"
@@ -23,7 +23,7 @@
 	visible_name = "Atmospherics"
 	#warn impl
 
-/datum/rig_theme/station/engineering/advanced
+DECLARE_RIG_THEME(/station/engineering/advanced)
 	name = "advanced rig"
 	base_state = "advanced"
 	desc = "TBD"

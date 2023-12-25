@@ -7,11 +7,11 @@
 /datum/rig_theme/mercenary
 	abstract_type = /datum/rig_theme/mercenary
 
-/datum/rig_theme/mercenary/gorlex
+DECLARE_RIG_THEME(/mercenary/gorlex)
 	abstract_type = /datum/rig_theme/mercenary/gorlex
 	base_icon = 'icons/modules/rigsuits/suits/factions/military_gorlex.dmi'
 
-/datum/rig_theme/mercenary/gorlex_raider
+DECLARE_RIG_THEME(/mercenary/gorlex_raider)
 	name = "nukeops rig"
 	base_state = "syndicate"
 	desc = "TBD"
@@ -20,7 +20,7 @@
 	visible_name = "Operator"
 	#warn impl
 
-/datum/rig_theme/mercenary/gorlex_infiltrator
+DECLARE_RIG_THEME(/mercenary/gorlex_infiltrator)
 	name = "contractor rig"
 	base_state = "infiltrator"
 	desc = "TBD"
@@ -29,7 +29,7 @@
 	visible_name = "Streamlined"
 	#warn impl
 
-/datum/rig_theme/mercenary/gorlex_assault
+DECLARE_RIG_THEME(/mercenary/gorlex_assault)
 	name = "elite nukeops rig"
 	base_state = "elite"
 	desc = "TBD"
@@ -38,7 +38,7 @@
 	visible_name = "Battle"
 	#warn impl
 
-/datum/rig_theme/mercenary/marine
+DECLARE_RIG_THEME(/mercenary/marine)
 	base_icon = 'icons/modules/rigsuits/suits/factions/military_marine.dmi'
 	name = "marine rig"
 	base_state = "marine"
@@ -66,7 +66,7 @@
 		},
 	)
 
-/datum/rig_theme/mercenary/pmc/commander
+DECLARE_RIG_THEME(/mercenary/pmc/commander)
 	name = "pmc commander rig"
 	base_state = "commander"
 	desc = "TBD"
@@ -75,7 +75,7 @@
 	visible_name = "Leader"
 	#warn impl
 
-/datum/rig_theme/mercenary/pmc/medic
+DECLARE_RIG_THEME(/mercenary/pmc/medic)
 	name = "pmc medic rig"
 	base_state = "medic"
 	desc = "TBD"
@@ -85,7 +85,7 @@
 	#warn impl
 
 
-/datum/rig_theme/mercenary/pmc/engineer
+DECLARE_RIG_THEME(/mercenary/pmc/engineer)
 	name = "pmc engineer rig"
 	base_state = "engineer"
 	desc = "TBD"
@@ -95,7 +95,7 @@
 	#warn impl
 
 
-/datum/rig_theme/mercenary/pmc/security
+DECLARE_RIG_THEME(/mercenary/pmc/security)
 	name = "pmc security rig"
 	base_state = "security"
 	desc = "TBD"
@@ -104,7 +104,7 @@
 	visible_name = "Officer"
 	#warn impl
 
-/datum/rig_theme/mercenary/sleek
+DECLARE_RIG_THEME(/mercenary/sleek)
 	base_icon = 'icons/modules/rigsuits/suits/factions/military_sleek.dmi'
 	name = "sleek combat rig"
 	base_state = "sleek"

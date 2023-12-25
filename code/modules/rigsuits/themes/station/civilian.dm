@@ -5,7 +5,7 @@
 	abstract_type = /datum/rig_theme/station/civilian
 	base_icon = 'icons/modules/rigsuits/suits/civilian.dmi'
 
-/datum/rig_theme/station/civilian/standard
+DECLARE_RIG_THEME(/station/civilian/standard)
 	name = "standard rig"
 	base_state = "standard"
 	desc = "TBD"

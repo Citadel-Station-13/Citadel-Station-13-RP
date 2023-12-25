@@ -5,7 +5,7 @@
 	abstract_type = /datum/rig_theme/station/science
 	base_icon = 'icons/modules/rigsuits/suits/science.dmi'
 
-/datum/rig_theme/station/science/standard
+DECLARE_RIG_THEME(/station/science/standard)
 	name = "prototype rig"
 	base_state = "prototype"
 	desc = "TBD"
@@ -14,7 +14,7 @@
 	visible_name = "Prototype"
 	#warn impl
 
-/datum/rig_theme/station/science/anomaly
+DECLARE_RIG_THEME(/station/science/anomaly)
 	name = "anomaly rig"
 	base_state = "apocryphal"
 	desc = "TBD"

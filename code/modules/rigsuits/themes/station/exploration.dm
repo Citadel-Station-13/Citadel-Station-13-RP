@@ -15,7 +15,7 @@
 	control_base_state_worn = ""
 	control_sealed_append = ""
 
-/datum/rig_theme/station/exploration/standard
+DECLARE_RIG_THEME(/station/exploration/standard)
 	name = "excursion rig"
 	base_state = "explo"
 	desc = "TBD"
@@ -24,7 +24,7 @@
 	visible_name = "excursion"
 	#warn impl
 
-/datum/rig_theme/station/exploration/pathfinder
+DECLARE_RIG_THEME(/station/exploration/pathfinder)
 	name = "pathfinder rig"
 	base_state = "pf"
 	desc = "TBD"
@@ -34,7 +34,7 @@
 	control_base_state_worn = null
 	#warn impl
 
-/datum/rig_theme/station/exploration/medic
+DECLARE_RIG_THEME(/station/exploration/medic)
 	name = "field medic rig"
 	base_state = "medic"
 	desc = "TBD"
@@ -43,7 +43,7 @@
 	visible_name = "medic"
 	#warn impl
 
-/datum/rig_theme/station/exploration/pilot
+DECLARE_RIG_THEME(/station/exploration/pilot)
 	name = "pilot rig"
 	base_state = "pilot"
 	desc = "TBD"

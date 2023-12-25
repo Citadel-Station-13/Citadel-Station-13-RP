@@ -4,7 +4,7 @@
 /datum/rig_theme/nanotrasen
 	abstract_type = /datum/rig_theme/nanotrasen
 
-/datum/rig_theme/nanotrasen/asset_protection
+DECLARE_RIG_THEME(/nanotrasen/asset_protection)
 	name = "deathsquad rig"
 	base_state = "deathsquad"
 	base_icon = 'icons/modules/rigsuits/suits/factions/nanotrasen_military.dmi'
@@ -15,7 +15,7 @@
 	fluff_desc = "TBD"
 	#warn impl
 
-/datum/rig_theme/nanotrasen/officer
+DECLARE_RIG_THEME(/nanotrasen/officer)
 	name = "centcom rig"
 	base_state = "responsory"
 	base_icon = 'icons/modules/rigsuits/suits/factions/nanotrasen.dmi'
@@ -26,7 +26,7 @@
 	fluff_desc = "TBD"
 	#warn impl
 
-/datum/rig_theme/nanotrasen/inquisition
+DECLARE_RIG_THEME(/nanotrasen/inquisition)
 	name = "inquisition rig"
 	base_state = "inquisitory"
 	base_icon = 'icons/modules/rigsuits/suits/factions/nanotrasen.dmi'
@@ -42,7 +42,7 @@
 	abstract_type = /datum/rig_theme/nanotrasen/response
 	control_sealed_append = ""
 
-/datum/rig_theme/nanotrasen/response/commander
+DECLARE_RIG_THEME(/nanotrasen/response/commander)
 	name = "ert commander rig"
 	base_state = "commander"
 	base_icon = 'icons/modules/rigsuits/suits/factions/nanotrasen_response.dmi'
@@ -53,7 +53,7 @@
 	fluff_desc = "TBD"
 	#warn impl
 
-/datum/rig_theme/nanotrasen/response/medic
+DECLARE_RIG_THEME(/nanotrasen/response/medic)
 	name = "ert medic rig"
 	base_state = "medic"
 	base_icon = 'icons/modules/rigsuits/suits/factions/nanotrasen_response.dmi'
@@ -64,7 +64,7 @@
 	fluff_desc = "TBD"
 	#warn impl
 
-/datum/rig_theme/nanotrasen/response/engineer
+DECLARE_RIG_THEME(/nanotrasen/response/engineer)
 	name = "ert engineer rig"
 	base_state = "engineer"
 	base_icon = 'icons/modules/rigsuits/suits/factions/nanotrasen_response.dmi'
@@ -75,7 +75,7 @@
 	fluff_desc = "TBD"
 	#warn impl
 
-/datum/rig_theme/nanotrasen/response/security
+DECLARE_RIG_THEME(/nanotrasen/response/security)
 	name = "ert security rig"
 	base_state = "security"
 	base_icon = 'icons/modules/rigsuits/suits/factions/nanotrasen_response.dmi'
