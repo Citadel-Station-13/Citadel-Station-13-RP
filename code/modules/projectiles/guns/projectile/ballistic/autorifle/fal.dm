@@ -1,30 +1,32 @@
 /obj/item/gun/projectile/ballistic/fal
 	name = "FN-FAL"
 	desc = "A 20th century Assault Rifle originally designed by Fabrique National. Famous for its use by mercs in grinding proxy wars in backwater nations. This reproduction was probably made for similar purposes."
+	icon = 'icons/modules/projectiles/guns/ballistic/autorifle.dmi'
 	icon_state = "fal"
-	item_state = "fal"
 	w_class = ITEMSIZE_LARGE
 	damage_force = 10
-	caliber = "7.62mm"
-	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)
+	regex_this_caliber = /datum/caliber/a7_62mm
 	slot_flags = SLOT_BACK
-	load_method = MAGAZINE
+	use_magazines = TRUE
 	magazine_type = /obj/item/ammo_magazine/m762
-	allowed_magazines = list(/obj/item/ammo_magazine/m762, /obj/item/ammo_magazine/m762)
-	heavy = TRUE
-	projectile_type = /obj/projectile/bullet/rifle/a762
+
 	magazine_insert_sound = 'sound/weapons/guns/interaction/batrifle_magin.ogg'
 	magazine_remove_sound = 'sound/weapons/guns/interaction/batrifle_magout.ogg'
 
-	firemodes = list(
-		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, burst_accuracy=null, dispersion=null),
-		list(mode_name="2-round bursts", burst=2, fire_delay=null, move_delay=6,    burst_accuracy=list(60,35), dispersion=list(0.0, 0.6))
-		)
+	recoil = GUN_RECOIL_HEAVY
+	recoil_wielded_multiplier = GUN_RECOIL_MITIGATION_HIGH
+	instability_draw = GUN_INSTABILITY_DRAW_HEAVY
+	instability_wield = GUN_INSTABILITY_WIELD_MEDIUM
+	instability_motion = GUN_INSTABILITY_MOTION_LIGHT
 
-/obj/item/gun/projectile/ballistic/fal/update_icon_state()
-	. = ..()
-	if(ammo_magazine)
-		icon_state = initial(icon_state)
-	else
-		icon_state = "[initial(icon_state)]-empty"
 
+	regex_this_firemodes = list(
+		/datum/firemode{
+			name = "single fire";
+		},
+		/datum/firemode{
+			name = "2-burst";
+			burst_amount = 2;
+			burst_spacing = 1;
+		}
+	)
