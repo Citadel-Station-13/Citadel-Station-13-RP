@@ -46,13 +46,13 @@
 		var/list/module_refs = list()
 
 		for(var/id in piece_lookup)
-			var/datum/component/rig_piece/piece = id
+			var/datum/component/rig_piece/piece = piece_lookup[id]
 			var/reference = RIG_UI_ENCODE_PIECE_REF(ref(piece))
 			assembled_fragments[reference] = piece.tgui_piece_data()
 			piece_refs += reference
 
 		for(var/id in module_lookup)
-			var/obj/item/rig_module/module = id
+			var/obj/item/rig_module/module = module_lookup[id]
 			var/reference = RIG_UI_ENCODE_MODULE_REF(ref(module))
 			// todo: for when modules are made
 			assembled_fragments[reference] = list()
@@ -75,11 +75,11 @@
 		var/list/piece_refs = list()
 		var/list/module_refs = list()
 		for(var/id in piece_lookup)
-			var/datum/component/rig_piece/piece = id
+			var/datum/component/rig_piece/piece = piece_lookup[id]
 			var/reference = RIG_UI_ENCODE_PIECE_REF(ref(piece))
 			piece_refs += reference
 		for(var/id in module_lookup)
-			var/obj/item/rig_module/module = id
+			var/obj/item/rig_module/module = module_lookup[id]
 			var/reference = RIG_UI_ENCODE_MODULE_REF(ref(module))
 			// todo: for when modules are made
 			module_refs += reference
@@ -102,8 +102,7 @@
 	if(length(ui_queued_pieces))
 		var/list/assembled_fragments = list()
 
-		for(var/id in piece_lookup)
-			var/datum/component/rig_piece/piece = id
+		for(var/datum/component/rig_piece/piece as anything in ui_queued_pieces)
 			var/reference = RIG_UI_ENCODE_PIECE_REF(ref(piece))
 			assembled_fragments[reference] = piece.tgui_piece_data()
 
@@ -118,11 +117,11 @@
 	var/list/piece_refs = list()
 	var/list/module_refs = list()
 	for(var/id in piece_lookup)
-		var/datum/component/rig_piece/piece = id
+		var/datum/component/rig_piece/piece = piece_lookup[id]
 		var/reference = RIG_UI_ENCODE_PIECE_REF(ref(piece))
 		piece_refs += reference
-	//! yes, in null. fuck you.
-	for(var/obj/item/rig_module/module as anything in null)
+	for(var/id in module_lookup)
+		var/obj/item/rig_module/module = module_lookup[id]
 		var/reference = RIG_UI_ENCODE_MODULE_REF(ref(module))
 		// todo: for when modules are made
 		module_refs += reference

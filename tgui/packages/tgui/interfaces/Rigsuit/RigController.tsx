@@ -1,5 +1,6 @@
-import { RigsuitData } from ".";
 import { LabeledList, NoticeBox, ProgressBar, Section, Stack } from "../../components";
+import { Module } from "../../components/Module";
+import { RigsuitData } from "./Rigsuit";
 
 export interface RigControllerProps {
   rig: RigsuitData;
@@ -14,11 +15,11 @@ export const RigController = (props: RigControllerProps, context) => {
             <Stack.Item grow={1}>
               <Section title="Pieces">
                 <Stack vertical>
-                {props.rig.pieceRefs.map((ref) => {
+                {props.rig.pieceRefs.map((ref) => (
                   <Stack.Item key={ref}>
-                    {ref}
+                    <Module id={ref} />
                   </Stack.Item>
-                })}
+                ))}
                 </Stack>
               </Section>
             </Stack.Item>
@@ -26,7 +27,7 @@ export const RigController = (props: RigControllerProps, context) => {
               <Section title="Systems">
               <LabeledList>
                 <LabeledList.Item label="Systems">
-                  <div color='red'>Unknown</div>
+                  <div style={{color: 'red'}}>Unknown</div>
                 </LabeledList.Item>
                 <LabeledList.Item label="Energy">
                   <ProgressBar value={1}>100%</ProgressBar>

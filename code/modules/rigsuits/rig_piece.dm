@@ -72,7 +72,10 @@
 
 /datum/component/rig_piece/proc/tgui_piece_data()
 	var/obj/item/physical = parent
+	#warn nedes to have better caching for the b64, this is way too slow for production
 	return list(
+		"$tgui" = "RigsuitPiece",
+		"$src" = RIG_UI_ENCODE_MODULE_REF(ref(src)),
 		"name" = display_name,
 		"id" = lookup_id,
 		"sealed" = sealed,
