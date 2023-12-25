@@ -4007,7 +4007,6 @@
 	dir = 9
 	},
 /obj/machinery/firealarm{
-	dir = 1;
 	pixel_y = 24
 	},
 /obj/machinery/holoposter{
@@ -13503,7 +13502,7 @@
 "iGG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/firealarm{
-	dir = 8;
+	dir = 4;
 	pixel_x = 24
 	},
 /obj/machinery/light{
@@ -14605,7 +14604,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
 "jqf" = (
-/obj/machinery/door/firedoor/multi_tile,
 /obj/machinery/door/airlock/multi_tile/glass{
 	name = "Public Garden"
 	},
@@ -14615,6 +14613,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/sleep)
 "jqg" = (
@@ -14769,7 +14768,6 @@
 	dir = 1
 	},
 /obj/machinery/firealarm{
-	dir = 1;
 	pixel_y = 24
 	},
 /obj/machinery/light{
@@ -15900,6 +15898,7 @@
 /turf/simulated/wall/r_wall/prepainted/medical,
 /area/medical/resleeving)
 "kiq" = (
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/sleep)
 "kiJ" = (
@@ -19244,7 +19243,6 @@
 	dir = 1
 	},
 /obj/machinery/firealarm{
-	dir = 1;
 	pixel_y = 24
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -32255,6 +32253,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
 "uFl" = (
@@ -34812,7 +34811,7 @@
 /obj/landmark/spawnpoint/job/senior_researcher,
 /obj/machinery/firealarm{
 	dir = 8;
-	pixel_x = -26
+	pixel_x = -24
 	},
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
@@ -35252,7 +35251,7 @@
 /area/rift/surfacebase/outside/outside2)
 "wAb" = (
 /obj/machinery/firealarm{
-	dir = 4;
+	dir = 8;
 	pixel_x = -24
 	},
 /turf/simulated/floor/plating,
@@ -35358,7 +35357,7 @@
 /area/assembly/robotics)
 "wCr" = (
 /obj/machinery/firealarm{
-	dir = 4;
+	dir = 8;
 	pixel_x = -24
 	},
 /obj/structure/cable/green{
@@ -37082,7 +37081,7 @@
 /obj/machinery/door/airlock/multi_tile/metal/mait{
 	name = "Maintenance Access"
 	},
-/obj/machinery/door/firedoor/multi_tile,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
 "xNm" = (
@@ -37109,19 +37108,13 @@
 	},
 /turf/simulated/floor,
 /area/maintenance/substation/research)
-"xNR" = (
-/obj/machinery/door/firedoor/glass{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/dark,
-/area/rnd/outpost/xenobiology/outpost_slimepens)
 "xOj" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/purple/border,
 /obj/effect/floor_decal/borderfloor/corner2,
 /obj/effect/floor_decal/corner/purple/bordercorner2,
 /obj/machinery/door/firedoor/glass{
-	dir = 1
+	dir = 4
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
@@ -45552,11 +45545,11 @@ sUg
 cuM
 gbO
 cuM
-xNR
+qYi
 cuM
 gbO
 cuM
-xNR
+qYi
 cuM
 gbO
 cuM

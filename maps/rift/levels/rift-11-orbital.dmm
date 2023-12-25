@@ -306,8 +306,8 @@
 /area/holodeck/source_courtroom)
 "bf" = (
 /obj/machinery/door/window/holowindoor{
-	dir = 4;
-	name = "Red Team"
+	name = "Red Team";
+	dir = 4
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_emptycourt)
@@ -767,8 +767,8 @@
 "cB" = (
 /obj/machinery/door/window/holowindoor{
 	base_state = "right";
-	dir = 4;
-	icon_state = "right"
+	icon_state = "right";
+	dir = 4
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_courtroom)
@@ -787,9 +787,9 @@
 "cE" = (
 /obj/machinery/door/window/holowindoor{
 	base_state = "right";
-	dir = 4;
 	icon_state = "right";
-	name = "Green Team"
+	name = "Green Team";
+	dir = 4
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_emptycourt)
@@ -1256,8 +1256,8 @@
 /area/holodeck/source_meetinghall)
 "eg" = (
 /obj/machinery/door/window/holowindoor{
-	dir = 4;
-	name = "Red Team"
+	name = "Red Team";
+	dir = 4
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_basketball)
@@ -1272,8 +1272,8 @@
 /area/holodeck/source_beach)
 "ej" = (
 /obj/machinery/door/window/holowindoor{
-	dir = 4;
-	name = "Red Team"
+	name = "Red Team";
+	dir = 4
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_thunderdomecourt)
@@ -1880,9 +1880,9 @@
 "fX" = (
 /obj/machinery/door/window/holowindoor{
 	base_state = "right";
-	dir = 4;
 	icon_state = "right";
-	name = "Green Team"
+	name = "Green Team";
+	dir = 4
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_basketball)
@@ -1900,9 +1900,9 @@
 "ga" = (
 /obj/machinery/door/window/holowindoor{
 	base_state = "right";
-	dir = 4;
 	icon_state = "right";
-	name = "Green Team"
+	name = "Green Team";
+	dir = 4
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_thunderdomecourt)
@@ -2735,7 +2735,7 @@
 	},
 /area/centcom/simulated/evac)
 "iS" = (
-/obj/structure/memorial/small/left,
+/obj/structure/memorial,
 /turf/unsimulated/floor/steel{
 	icon_state = "asteroidfloor"
 	},
@@ -5397,7 +5397,7 @@
 /obj/machinery/door/airlock/multi_tile/glass{
 	req_access = list(5)
 	},
-/obj/machinery/door/firedoor/multi_tile,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "qn" = (
@@ -8850,6 +8850,10 @@
 /obj/structure/table/reinforced,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
+"OM" = (
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled/white,
+/area/centcom/simulated/medical)
 "OY" = (
 /obj/structure/bed/chair/backed_grey,
 /turf/simulated/floor/reinforced,
@@ -9550,12 +9554,6 @@
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
-"WI" = (
-/obj/structure/memorial/small/right,
-/turf/unsimulated/floor/steel{
-	icon_state = "asteroidfloor"
-	},
-/area/centcom/simulated/evac)
 "WL" = (
 /obj/structure/table/rack/steel,
 /obj/item/tank/phoron/pressurized,
@@ -20669,7 +20667,7 @@ hP
 cN
 hy
 ij
-WI
+iT
 iT
 iP
 ij
@@ -21656,7 +21654,7 @@ nU
 pg
 nU
 nU
-nU
+OM
 qR
 nU
 nU

@@ -629,9 +629,7 @@
 	pixel_y = 24
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/stairs_two)
 "bG" = (
@@ -842,9 +840,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/lightorange/border,
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/stairs_two)
 "bW" = (
@@ -1213,7 +1209,7 @@
 /area/maintenance/engineering/upper)
 "cN" = (
 /obj/machinery/firealarm{
-	dir = 8;
+	dir = 4;
 	pixel_x = 24
 	},
 /obj/structure/cable{
@@ -1328,7 +1324,7 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass{
-	dir = 1
+	dir = 8
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
 /turf/simulated/floor/tiled/steel,
@@ -1665,7 +1661,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/firedoor/glass{
-	dir = 1
+	dir = 8
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
 /obj/structure/cable/green{
@@ -1818,16 +1814,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
-	},
-/turf/simulated/floor/tiled/steel,
-/area/hallway/primary/underone)
-"eb" = (
-/obj/effect/floor_decal/borderfloor,
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals5{
-	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
@@ -2220,9 +2206,7 @@
 	},
 /obj/item/folder/yellow,
 /obj/item/pen/red,
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
+/obj/machinery/door/firedoor/glass,
 /obj/item/pen/blue,
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/atmos/hallway)
@@ -2270,9 +2254,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
+/obj/machinery/door/firedoor/glass,
 /obj/item/storage/single_use/med_pouch/oxyloss,
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/atmos/hallway)
@@ -2286,9 +2268,7 @@
 	},
 /obj/item/packageWrap,
 /obj/item/hand_labeler,
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
+/obj/machinery/door/firedoor/glass,
 /obj/item/toy/figure/engineer{
 	pixel_x = -17
 	},
@@ -2487,9 +2467,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
+/obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/aux,
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/atmos/hallway)
@@ -2547,6 +2525,9 @@
 	id = "hangar_lockdown";
 	name = "Hangar Lockdown Blast Doors";
 	opacity = 0
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
@@ -5292,9 +5273,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
+/obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/aux,
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/atmos/hallway)
@@ -6308,7 +6287,7 @@
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/machinery/firealarm{
-	dir = 8;
+	dir = 4;
 	pixel_x = 24
 	},
 /turf/simulated/floor/plating,
@@ -6756,7 +6735,7 @@
 /area/rift/surfacebase/underground/under1)
 "ws" = (
 /obj/machinery/firealarm{
-	dir = 4;
+	dir = 8;
 	pixel_x = -24
 	},
 /turf/simulated/floor/concrete/rng/indoors,
@@ -7220,9 +7199,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment,
-/obj/machinery/door/firedoor/glass{
-	dir = 8
-	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
 "xJ" = (
@@ -7292,7 +7269,7 @@
 "xU" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/machinery/door/firedoor/glass{
-	dir = 1
+	dir = 8
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 1
@@ -7577,12 +7554,6 @@
 	},
 /turf/simulated/floor/concrete/rng/indoors,
 /area/rift/station/fighter_bay/transport_tunnel_garage)
-"yS" = (
-/obj/machinery/door/firedoor/glass{
-	dir = 8
-	},
-/turf/simulated/floor/tiled,
-/area/engineering/atmos)
 "yT" = (
 /turf/simulated/floor/plating,
 /area/rift/trade_shop)
@@ -8357,10 +8328,10 @@
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/underground/under1)
 "BS" = (
-/obj/machinery/door/firedoor/multi_tile,
 /obj/machinery/door/airlock/multi_tile/glass{
 	name = "Ready Room"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
 "BT" = (
@@ -8533,7 +8504,9 @@
 /turf/simulated/floor/reinforced/phoron,
 /area/engineering/atmos)
 "CC" = (
-/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
@@ -8747,7 +8720,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
 "Dq" = (
-/obj/machinery/door/firedoor/multi_tile,
 /obj/machinery/door/airlock/multi_tile/metal{
 	dir = 4;
 	name = "Fighter Hangar";
@@ -8759,6 +8731,9 @@
 	id = "hangar_lockdown";
 	name = "Hangar Lockdown Blast Doors";
 	opacity = 0
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
@@ -9740,9 +9715,7 @@
 	dir = 8;
 	pixel_x = 22
 	},
-/obj/machinery/door/firedoor/glass{
-	dir = 8
-	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/atmos/hallway)
 "GO" = (
@@ -12753,12 +12726,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/drone_fabrication)
-"Rn" = (
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
-/turf/simulated/floor/tiled,
-/area/engineering/atmos)
 "Rp" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4
@@ -13018,9 +12985,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
 "Sr" = (
@@ -13485,9 +13450,7 @@
 /obj/machinery/firealarm{
 	pixel_y = 24
 	},
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
 "Uw" = (
@@ -14130,6 +14093,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
 "WH" = (
@@ -28750,7 +28714,7 @@ ae
 ae
 cW
 CC
-eb
+XF
 XQ
 dI
 XQ
@@ -32651,7 +32615,7 @@ kl
 ka
 Zx
 Zx
-Rn
+qT
 NU
 NU
 NU
@@ -32845,7 +32809,7 @@ eT
 eT
 Zx
 Zx
-yS
+qT
 Zx
 Zx
 Zx
