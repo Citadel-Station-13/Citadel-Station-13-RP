@@ -1180,7 +1180,7 @@
 	dir = 8
 	},
 /turf/simulated/shuttle/floor,
-/area/space)
+/area/shuttle/supply)
 "mM" = (
 /obj/machinery/status_display{
 	pixel_y = -30
@@ -1248,7 +1248,7 @@
 /turf/simulated/shuttle/plating/airless/carry{
 	dir = 1
 	},
-/area/space)
+/area/shuttle/supply)
 "ns" = (
 /obj/landmark{
 	name = "endgame_exit"
@@ -1667,7 +1667,7 @@
 	id = "QMLoad2"
 	},
 /turf/simulated/shuttle/plating,
-/area/space)
+/area/shuttle/supply)
 "qZ" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -1887,7 +1887,7 @@
 /turf/simulated/shuttle/plating/airless/carry{
 	dir = 1
 	},
-/area/space)
+/area/shuttle/supply)
 "tI" = (
 /obj/structure/window/reinforced/holowindow/disappearing,
 /obj/effect/floor_decal/corner/red{
@@ -2204,7 +2204,7 @@
 	id = "QMLoad2"
 	},
 /turf/simulated/shuttle/floor,
-/area/space)
+/area/shuttle/supply)
 "wJ" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/box/donut,
@@ -2240,7 +2240,7 @@
 /turf/simulated/shuttle/plating/airless/carry{
 	dir = 1
 	},
-/area/space)
+/area/shuttle/supply)
 "wR" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 8
@@ -2609,7 +2609,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/airless,
-/area/space)
+/area/shuttle/supply)
 "zQ" = (
 /obj/structure/closet/walllocker/emerglocker/east,
 /obj/effect/floor_decal/borderfloor/corner{
@@ -3017,7 +3017,7 @@
 	dir = 4
 	},
 /turf/simulated/shuttle/floor,
-/area/space)
+/area/shuttle/supply)
 "Eq" = (
 /obj/structure/table/glass,
 /obj/item/paper_bin{
@@ -3171,7 +3171,7 @@
 /area/space)
 "FC" = (
 /turf/simulated/shuttle/floor,
-/area/space)
+/area/shuttle/supply)
 "FG" = (
 /obj/effect/floor_decal/corner/red{
 	dir = 9
@@ -3724,7 +3724,7 @@
 	tag_door = "supply_shuttle_hatch"
 	},
 /turf/simulated/shuttle/floor,
-/area/space)
+/area/shuttle/supply)
 "Km" = (
 /obj/effect/overlay/palmtree_l,
 /turf/simulated/floor/holofloor/beach/sand,
@@ -4002,7 +4002,7 @@
 	id = "QMLoad"
 	},
 /turf/simulated/shuttle/floor,
-/area/space)
+/area/shuttle/supply)
 "Nj" = (
 /obj/structure/table/standard,
 /obj/item/material/ashtray/plastic,
@@ -4365,7 +4365,7 @@
 /turf/simulated/shuttle/plating/airless/carry{
 	dir = 1
 	},
-/area/space)
+/area/shuttle/supply)
 "Qh" = (
 /obj/structure/table/holotable,
 /obj/machinery/readybutton,
@@ -4606,7 +4606,7 @@
 	name = "Shuttle Hatch"
 	},
 /turf/simulated/shuttle/floor,
-/area/space)
+/area/shuttle/supply)
 "Sc" = (
 /turf/simulated/floor/holofloor/desert,
 /area/space)
@@ -5033,6 +5033,9 @@
 	},
 /turf/simulated/floor/wood,
 /area/space)
+"We" = (
+/turf/simulated/shuttle/wall,
+/area/shuttle/supply)
 "Wn" = (
 /obj/effect/floor_decal/corner/white/full,
 /obj/effect/floor_decal/corner/white{
@@ -5323,7 +5326,7 @@
 	id = "QMLoad"
 	},
 /turf/simulated/shuttle/plating,
-/area/space)
+/area/shuttle/supply)
 "Yp" = (
 /obj/structure/closet/crate/freezer,
 /obj/item/reagent_containers/blood/OMinus,
@@ -37002,17 +37005,17 @@ Yh
 Yh
 eF
 pb
-BK
-BK
-BK
+We
+We
+We
 qX
 Sb
-BK
+We
 Sb
 Yk
-BK
-BK
-BK
+We
+We
+We
 pb
 pb
 Yi
@@ -37196,7 +37199,7 @@ Yh
 Yh
 eF
 pb
-BK
+We
 FC
 mL
 wC
@@ -37205,8 +37208,8 @@ Ke
 FC
 Nb
 mL
-BK
-BK
+We
+We
 Qd
 pb
 Yi
@@ -37390,7 +37393,7 @@ Yh
 Yh
 eF
 pb
-BK
+We
 FC
 FC
 wC
@@ -37584,7 +37587,7 @@ Yh
 Yh
 eF
 pb
-BK
+We
 FC
 FC
 wC
@@ -37778,7 +37781,7 @@ Yh
 Yh
 eF
 pb
-BK
+We
 FC
 FC
 FC
@@ -37972,7 +37975,7 @@ Yh
 Yh
 eF
 pb
-BK
+We
 FC
 En
 FC
@@ -37981,8 +37984,8 @@ FC
 FC
 FC
 En
-BK
-BK
+We
+We
 tH
 pb
 Yi
@@ -38166,17 +38169,17 @@ Yh
 Yh
 eF
 pb
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
+We
+We
+We
+We
+We
+We
+We
+We
+We
+We
+We
 qQ
 pb
 Yi
