@@ -3,7 +3,7 @@
 
 /datum/rig_theme/station/science
 	abstract_type = /datum/rig_theme/station/science
-	base_icon = 'icons/modules/rigsuits/suits/station/science.dmi'
+	base_icon = 'icons/modules/rigsuits/suits/science.dmi'
 
 /datum/rig_theme/station/science/standard
 	name = "prototype rig"

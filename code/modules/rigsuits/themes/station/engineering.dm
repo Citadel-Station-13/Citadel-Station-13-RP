@@ -3,7 +3,7 @@
 
 /datum/rig_theme/station/engineering
 	abstract_type = /datum/rig_theme/station/engineering
-	base_icon = 'icons/modules/rigsuits/suits/station/engineering.dmi'
+	base_icon = 'icons/modules/rigsuits/suits/engineering.dmi'
 
 /datum/rig_theme/station/engineering/standard
 	name = "engineering rig"

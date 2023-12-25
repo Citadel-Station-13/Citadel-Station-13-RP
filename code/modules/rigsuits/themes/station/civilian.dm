@@ -3,7 +3,7 @@
 
 /datum/rig_theme/station/civilian
 	abstract_type = /datum/rig_theme/station/civilian
-	base_icon = 'icons/modules/rigsuits/suits/station/civilian.dmi'
+	base_icon = 'icons/modules/rigsuits/suits/civilian.dmi'
 
 /datum/rig_theme/station/civilian/standard
 	name = "standard rig"

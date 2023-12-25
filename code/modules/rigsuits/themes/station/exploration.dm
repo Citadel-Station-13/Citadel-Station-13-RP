@@ -3,7 +3,7 @@
 
 /datum/rig_theme/station/exploration
 	abstract_type = /datum/rig_theme/station/exploration
-	base_icon = 'icons/modules/rigsuits/suits/station/exploration.dmi'
+	base_icon = 'icons/modules/rigsuits/suits/exploration.dmi'
 	pieces = list(
 		/datum/rig_piece/helmet,
 		/datum/rig_piece/chestplate,

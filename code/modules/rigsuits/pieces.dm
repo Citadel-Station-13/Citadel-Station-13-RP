@@ -24,7 +24,8 @@
 /obj/item/rig/proc/unseal_async(datum/event_args/actor/actor, instant, override)
 
 /obj/item/rig/proc/add_piece(datum/component/rig_piece/piece)
-	piece_components += piece
+	piece.lookup_id = ++next_lookup_id
+	piece_lookup[piece.lookup_id] = piece
 	piece_items += piece.parent
 
 /obj/item/rig/proc/legacy_sync_piece(datum/component/rig_piece/piece, sealed)

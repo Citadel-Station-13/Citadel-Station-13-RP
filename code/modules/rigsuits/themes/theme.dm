@@ -171,7 +171,7 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
  */
 /datum/rig_piece/proc/instantiate(datum/rig_theme/theme, obj/item/rig/controller)
 	ASSERT(ispath(path, /obj/item))
-	var/obj/item/created_item = new path
+	var/obj/item/created_item = new path(controller)
 	var/datum/component/rig_piece/created_piece = created_item.AddComponent(/datum/component/rig_piece, controller)
 	imprint_appearance(theme, created_piece)
 	imprint_behavior(theme, created_piece)

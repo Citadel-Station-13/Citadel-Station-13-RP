@@ -3,7 +3,7 @@
 
 /datum/rig_theme/station/medical
 	abstract_type = /datum/rig_theme/station/medical
-	base_icon = 'icons/modules/rigsuits/suits/station/medical.dmi'
+	base_icon = 'icons/modules/rigsuits/suits/medical.dmi'
 
 /datum/rig_theme/station/medical/standard
 	name = "medical rig"

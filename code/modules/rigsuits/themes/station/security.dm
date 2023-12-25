@@ -3,7 +3,7 @@
 
 /datum/rig_theme/station/security
 	abstract_type = /datum/rig_theme/station/security
-	base_icon = 'icons/modules/rigsuits/suits/station/security.dmi'
+	base_icon = 'icons/modules/rigsuits/suits/security.dmi'
 
 /datum/rig_theme/station/security/standard
 	name = "security rig"

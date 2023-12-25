@@ -3,7 +3,7 @@
 
 /datum/rig_theme/station/cargo
 	abstract_type = /datum/rig_theme/station/cargo
-	base_icon = 'icons/modules/rigsuits/suits/station/cargo.dmi'
+	base_icon = 'icons/modules/rigsuits/suits/cargo.dmi'
 
 /datum/rig_theme/station/cargo/asteroid
 	name = "salvage rig"

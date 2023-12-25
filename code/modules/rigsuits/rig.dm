@@ -14,6 +14,9 @@
 	name = "rig control module"
 	desc = "A control module for some kind of suit."
 
+	#warn we gotta refactor actions for this lmao, esp for remote control (?!!)
+	action_button_name = "Debug UI"
+
 	//* Activation
 	/// activation state
 	var/activation_state = RIG_ACTIVATION_OFFLINE
@@ -34,6 +37,10 @@
 	var/max_pressure_protect
 	var/min_temperature_protect
 	var/max_temperature_protect
+
+	//* Internal
+	/// lookup id
+	var/next_lookup_id = 0
 
 	//* Modules
 	//  todo: unfinished
@@ -109,3 +116,9 @@
 /obj/item/rig/proc/wipe_everything()
 	hard_reset()
 	#warn impl
+
+#warn debug only code below
+
+/obj/item/rig/ui_action_click(datum/action/action, mob/user)
+	. = ..()
+	ui_interact(user)

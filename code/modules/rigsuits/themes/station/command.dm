@@ -3,7 +3,7 @@
 
 /datum/rig_theme/station/command
 	abstract_type = /datum/rig_theme/station/command
-	base_icon = 'icons/modules/rigsuits/suits/station/command.dmi'
+	base_icon = 'icons/modules/rigsuits/suits/command.dmi'
 
 /datum/rig_theme/station/command/captain
 	name = "director rig"
