@@ -26,8 +26,10 @@
 	var/radial_state
 	/// sound played when someone switches to this firemode
 	var/select_sound = 'sound/weapons/guns/selector.ogg'
-	/// recoil multiplier
+	/// recoil multiplier to be compounded with the gun's
 	var/recoil_multiplier = 1
+	/// recoil wielded multiplier to be compuonded with the gun's
+	var/recoil_wielded_multiplier = 1
 	/// special firemode state.
 	/// what this does depends on the gun, and the gun has to implement handling for this.
 	/// in general:

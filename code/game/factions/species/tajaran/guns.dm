@@ -46,3 +46,32 @@
 		icon_state = "SVD-taj"
 	else
 		icon_state = "SVD-taj-empty"
+
+/obj/item/gun/projectile/ballistic/revolver/mateba/taj
+	name = "Adhomai revolver"
+	desc = "The Akhan and Khan Royal Service Revolver. Sophisticated but dated, this weapon is a metaphor for the New Kingdom of Adhomai itself."
+	icon_state = "mateba-taj"
+
+/obj/item/gun/projectile/ballistic/revolver/mateba/taj/knife
+	name = "Adhomai knife revolver"
+	desc = "An ornate knife revolver from an Adhomai gunsmith. Popular among Tajaran nobility just before the civil war and even to this day, many of these revolvers found their way into the market when they were taken as trophies by Grand People's Army soldiers and DPRA guerillas."
+	icon_state = "knifegun"
+	caliber = ".38"
+	ammo_type = /obj/item/ammo_casing/a38
+	damage_force = 15
+	sharp = 1
+	edge = 1
+
+/obj/item/gun/projectile/ballistic/contender/taj
+	name = "Adhomai pocket rifle"
+	desc = "A hand cannon produced by Akhan and Khan. Its simple design dates back to the civil war where hand cannons like it were rushed into service to counter the massive arms shortage the Kingdom of Adhomai faced at the start of the war. Since then A&K have refined the design into a mainstay backup weapon of solider and civilian alike."
+	icon_state = "pockrifle_d"
+	icon_retracted = "pockrifle_d-empty"
+
+/obj/item/gun/projectile/ballistic/contender/taj/a44
+	caliber = ".44"
+	ammo_type = /obj/item/ammo_casing/a44
+
+/obj/item/gun/projectile/ballistic/contender/taj/a762
+	caliber = "7.62mm"
+	ammo_type = /obj/item/ammo_casing/a762

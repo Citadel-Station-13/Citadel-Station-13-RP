@@ -37,22 +37,25 @@
 
 	//* Accuracy & Stability
 	/// recoil to inflict per shot
-	var/recoil = 0
+	var/recoil = GUN_RECOIL_NONE
 	/// multiplier to recoil to inflict per shot when wielded
 	var/recoil_wielded_multiplier = 1
 	/// screenshake forced; null = auto
 	var/recoil_screen_shake
 	/// instability applied per tile moved
-	var/instability_motion = 0
+	var/instability_motion = GUN_INSTABILITY_MOTION_NONE
 	/// instability applied when drawing the weapon out
-	var/instability_draw = 0
+	var/instability_draw = GUN_INSTABILITY_DRAW_NONE
 	/// instability applied when wielding the weapon
-	var/instability_wield = 0
+	var/instability_wield = GUN_INSTABILITY_WIELD_NONE
 	/// how sensitive we are to instability ; multiplied to instability of firer
 	var/instability_sensitivity = 1
 	/// inherent instability stored on gun
 	/// picking up or wielding a gun only applies instability to that gun
 	var/instability_stored = 0
+	/// recovery factor
+	#warn what should this mean?
+	var/instability_recovery = GUN_INSTABILITY_RECOVERY_NORMAL
 	/// last instability decay time
 	var/instability_decay
 
@@ -112,6 +115,8 @@
 	var/render_mob_append
 	/// only use the append, ignoring count and firemode while this is enabled; use this for mag-out states for energy weapons & similar
 	var/render_mob_exclusive
+	/// render as -wielded if we're wielded? applied at the end, even while [render_mob_exclusive] is on.
+	var/render_mob_wielded = FALSE
 
 	#warn impl above
 
@@ -124,6 +129,10 @@
 	/// todo: priority is undefined right now :/
 	#warn do it
 	var/fire_sound = "gunshot"
+
+	//* Wielding
+	/// allow wielding
+	var/wieldable = FALSE
 
 /obj/item/gun/Initialize(mapload)
 	. = ..()
@@ -951,11 +960,11 @@
 				regex_this_firemodes[i] = new val
 		set_firemode(regex_this_firemodes[1])
 	else if(istype(regex_this_firemodes, /datum/firemode))
-		set_firemode(regex_this_firemodes)
 		regex_this_firemodes = list(regex_this_firemodes)
+		set_firemode(regex_this_firemodes[1])
 	else if(ispath(regex_this_firemodes))
 		regex_this_firemodes = list(new regex_this_firemodes)
-		set_firemode(regex_this_firemodes)
+		set_firemode(regex_this_firemodes[1])
 	else
 		CRASH("gun didn't have a firemode. why is it even a gun if so?")
 
