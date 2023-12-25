@@ -114,29 +114,6 @@
 /obj/item/ammo_magazine/mtg/empty
 	initial_ammo = 0
 
-//------------- Battlerifle -------------
-/obj/item/ammo_magazine/m95
-	name = "box mag (9.5x40mm)"
-	icon = 'icons/obj/ammo_vr.dmi'
-	icon_state = "battlerifle"
-	caliber = "9.5x40mm"
-	ammo_type = /obj/item/ammo_casing/a95
-	ammo_max = 36
-	mag_type = MAGAZINE
-	multiple_sprites = 1
-
-/obj/item/ammo_casing/a95
-	desc = "A 9.5x40mm bullet casing."
-	icon_state = "rifle-casing"
-	caliber = "9.5x40mm"
-	projectile_type = /obj/projectile/bullet/rifle/a95
-
-/obj/projectile/bullet/rifle/a95
-	damage = 40
-
-/obj/item/ammo_magazine/m95/empty
-	initial_ammo = 0
-
 //---------------- PDW ------------------
 /obj/item/ammo_magazine/m9mml
 	name = "\improper SMG magazine (9mm)"

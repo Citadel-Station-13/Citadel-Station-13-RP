@@ -4208,6 +4208,7 @@
 #include "code\modules\projectiles\calibers\a5_7mm.dm"
 #include "code\modules\projectiles\calibers\a75.dm"
 #include "code\modules\projectiles\calibers\a7_62mm.dm"
+#include "code\modules\projectiles\calibers\a9_5mm.dm"
 #include "code\modules\projectiles\calibers\a9mm.dm"
 #include "code\modules\projectiles\calibers\special\arrow.dm"
 #include "code\modules\projectiles\calibers\special\biomatter.dm"

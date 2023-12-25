@@ -1,21 +1,22 @@
 /obj/item/gun/projectile/ballistic/jsdf_rifle
 	name = "\improper JSDF service rifle"
 	desc = "You had your chance to be afraid before you joined my beloved Corps! But, to guide you back to the true path, I have brought this motivational device! Uses 9.5x40mm rounds."
+	icon = 'icons/modules/projectiles/guns/ballistic/autorifle.dmi'
 	icon_state = "battlerifle"
-	icon_override = 'icons/obj/gun/ballistic.dmi'
-	item_state = "battlerifle_i"
-	item_icons = null
+	base_icon_state = "battlerifle"
+	worn_state = "battlerifle"
+	inhand_state = "battlerifle"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	w_class = ITEMSIZE_LARGE
-	recoil = 2 // The battlerifle was known for its nasty recoil.
-	max_shells = 36
-	caliber = "9.5x40mm"
-	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2)
-	magazine_type = /obj/item/ammo_magazine/m95
-	allowed_magazines = list(/obj/item/ammo_magazine/m95)
-	fire_sound = 'sound/weapons/battlerifle.ogg'
-	load_method = MAGAZINE
 	slot_flags = SLOT_BACK
-	one_handed_penalty = 60 // The weapon itself is heavy
+
+	recoil = GUN_RECOIL_HEAVY
+	recoil_wielded_multiplier = GUN_RECOIL_MITIGATION_MEDIUM
+
+	fire_sound = 'sound/weapons/battlerifle.ogg'
+
+	use_magazines = TRUE
+	regex_this_caliber = /datum/caliber/a9_5mm
 
 /obj/item/gun/projectile/ballistic/shotgun/pump/JSDF
 	name = "\improper JSDF tactical shotgun"
