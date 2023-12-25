@@ -56,6 +56,8 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 	var/datum/bodytypes/worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	/// fallback bodytypes
 	var/datum/bodytypes/worn_bodytypes_fallback = BODYTYPES_ALL
+	/// render flags
+	var/worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 	//* base stats
 	/// startup / shutdown time
@@ -109,6 +111,8 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 		control_module.set_coloration_matrix(coloration_matrix)
 	else
 		control_module.set_coloration_parts(coloration_colors)
+	// rendering
+	control_module.worn_render_flags = worn_render_flags
 	#warn impl
 	// update
 	control_module.update_icon()
@@ -209,9 +213,11 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 	// inv appearance / hide flags
 	piece_component.inv_hide_flags_sealed = inv_hide_flags_active
 	piece_component.inv_hide_flags_unsealed = inv_hide_flags_inactive
+	// rendering
+	physical.worn_render_flags = worn_render_flags || theme.worn_render_flags
 	// bodytypes
-	physical.worn_bodytypes = worn_bodytypes
-	physical.worn_bodytypes_fallback = worn_bodytypes_fallback
+	physical.worn_bodytypes = worn_bodytypes || theme.worn_bodytypes
+	physical.worn_bodytypes_fallback = worn_bodytypes_fallback || theme.worn_bodytypes_fallback
 	// state
 	piece_component.state_sealed = "[piece_base_state || theme.base_state][piece_state_append][sealed_state_append]"
 	piece_component.state_unsealed = "[piece_base_state || theme.base_state][piece_state_append]"
