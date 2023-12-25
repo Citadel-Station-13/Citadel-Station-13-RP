@@ -1,5 +1,5 @@
 import { RigsuitData } from ".";
-import { Section } from "../../components";
+import { NoticeBox, Section } from "../../components";
 
 export interface RigMaintenanceProps {
   rig: RigsuitData;
@@ -8,7 +8,7 @@ export interface RigMaintenanceProps {
 export const RigMaintenance = (props: RigMaintenanceProps, context) => {
   return (
     <Section fill>
-      Test
+      <NoticeBox warning>This section is under construction.</NoticeBox>
     </Section>
   );
 };

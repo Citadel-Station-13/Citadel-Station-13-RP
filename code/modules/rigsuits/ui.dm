@@ -62,6 +62,7 @@
 		push_ui_data(data = list(
 			"pieceRefs" = piece_refs,
 			"moduleRefs" = module_refs,
+			"theme" = theme_name,
 		))
 		push_ui_modules(updates = assembled_fragments)
 		return
@@ -113,7 +114,7 @@
 
 /obj/item/rig/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
-	.["theme"]
+	.["theme"] = theme_name
 	var/list/piece_refs = list()
 	var/list/module_refs = list()
 	for(var/id in piece_lookup)

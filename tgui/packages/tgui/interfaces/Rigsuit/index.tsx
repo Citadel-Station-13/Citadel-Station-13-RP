@@ -11,6 +11,7 @@ export interface RigsuitData {
   controlFlags: RigControlFlags;
   pieceRefs: RigPieceReflist;
   moduleRefs: RigModuleReflist;
+  theme: string;
 }
 
 export const Rigsuit = (props, context) => {
@@ -34,16 +35,16 @@ export const Rigsuit = (props, context) => {
   }
 
   return (
-    <Window width={400} height={400}>
+    <Window width={550} height={800} title={`${data.theme}`}>
       <Window.Content>
         <Stack fill vertical>
-          <Stack.Item>
+          {/* <Stack.Item>
             <Tabs>
               <Tabs.Tab selected={screen === 1} onClick={() => setScreen(1)}>Controller</Tabs.Tab>
               <Tabs.Tab selected={screen === 2} onClick={() => setScreen(2)}>Authorization</Tabs.Tab>
               <Tabs.Tab selected={screen === 3} onClick={() => setScreen(3)}>Maintenance</Tabs.Tab>
             </Tabs>
-          </Stack.Item>
+          </Stack.Item> */}
           <Stack.Item grow={1}>
             {screenRendered}
           </Stack.Item>

@@ -1,5 +1,5 @@
 import { RigsuitData } from ".";
-import { Section } from "../../components";
+import { NoticeBox, Section } from "../../components";
 
 export interface RigAuthorizationProps {
   rig: RigsuitData;
@@ -8,7 +8,7 @@ export interface RigAuthorizationProps {
 export const RigAuthorization = (props: RigAuthorizationProps, context) => {
   return (
     <Section fill>
-      Test
+      <NoticeBox warning>This section is under construction.</NoticeBox>
     </Section>
   );
 };

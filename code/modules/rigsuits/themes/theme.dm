@@ -134,9 +134,12 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 	#warn impl - vars like armor/insulated/etc
 
 /datum/rig_theme/proc/add_piece(datum/rig_piece/piece_path)
+	var/datum/rig_piece/piece
 	if(ispath(piece_path))
-		piece_path = new piece_path
-	#warn imprint piece with base states
+		piece = new piece_path
+	else if(istype(piece_path))
+		piece = piece_path
+	pieces += piece
 
 /datum/rig_theme/proc/apply_piece(datum/component/rig_piece/piece)
 	#warn impl
@@ -246,6 +249,7 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 	rig_piece_flags = RIG_PIECE_APPLY_ARMOR | RIG_PIECE_APPLY_ENVIRONMENTALS
 	piece_state_append = "-helmet"
 	inv_hide_flags_active = HIDEFACE | HIDEEARS | HIDEEARS | HIDEEYES | HIDEMASK | BLOCKHEADHAIR
+	equip_slot = /datum/inventory_slot_meta/inventory/head
 
 /datum/rig_piece/chestplate
 	display_name = "chestplate"
@@ -254,6 +258,7 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 	rig_piece_flags = RIG_PIECE_APPLY_ARMOR | RIG_PIECE_APPLY_ENVIRONMENTALS
 	piece_state_append = "-chestplate"
 	inv_hide_flags_active = HIDETAIL | HIDEJUMPSUIT | HIDETIE
+	equip_slot = /datum/inventory_slot_meta/inventory/suit
 
 /datum/rig_piece/gloves
 	display_name = "gauntlets"
@@ -261,6 +266,7 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 	path = /obj/item/clothing/gloves/rig
 	rig_piece_flags = RIG_PIECE_APPLY_ARMOR | RIG_PIECE_APPLY_ENVIRONMENTALS
 	piece_state_append = "-gloves"
+	equip_slot = /datum/inventory_slot_meta/inventory/gloves
 
 /datum/rig_piece/gloves/imprint_behavior(datum/rig_theme/theme, datum/component/rig_piece/piece_component)
 	. = ..()
@@ -274,3 +280,4 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 	path = /obj/item/clothing/shoes/rig
 	rig_piece_flags = RIG_PIECE_APPLY_ARMOR | RIG_PIECE_APPLY_ENVIRONMENTALS
 	piece_state_append = "-boots"
+	equip_slot = /datum/inventory_slot_meta/inventory/shoes
