@@ -13,6 +13,9 @@
 /obj/item/rig
 	name = "rig control module"
 	desc = "A control module for some kind of suit."
+	w_class = WEIGHT_CLASS_HUGE
+	slot_flags = SLOT_BACK
+
 
 	#warn we gotta refactor actions for this lmao, esp for remote control (?!!)
 	action_button_name = "Debug UI"
@@ -75,6 +78,8 @@
 	var/theme_preset = /datum/rig_theme/station/civilian/standard
 	/// Is our theme initialized?
 	var/theme_initialized = FALSE
+	/// theme name - this is the fluff/player facing name
+	var/theme_name = "Unknown"
 
 	//* UI
 	/// update timerid

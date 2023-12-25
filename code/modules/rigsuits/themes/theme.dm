@@ -103,7 +103,7 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 	control_module.state_worn_sealed = "[control_base_state_worn || control_base_state || base_state][control_state_append][control_sealed_append]"
 	control_module.state_worn_unsealed = "[control_base_state_worn || control_base_state || base_state][control_state_append]"
 	// coloration
-	control_module.coloration_amount = ccoloration_amount
+	control_module.coloration_amount = coloration_amount
 	control_module.coloration_mode = coloration_mode
 	if(control_module.coloration_mode == COLORATION_MODE_MATRIX)
 		control_module.set_coloration_matrix(coloration_matrix)
@@ -123,6 +123,7 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 	control_module.online_weight = online_weight
 	control_module.boot_delay = boot_delay
 	control_module.seal_delay = seal_delay
+	control_module.theme_name = display_name || name
 	#warn impl
 
 /datum/rig_theme/proc/imprint_control_legacy(obj/item/rig/control_module)

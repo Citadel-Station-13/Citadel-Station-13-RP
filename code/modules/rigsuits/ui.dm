@@ -113,6 +113,7 @@
 
 /obj/item/rig/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
+	.["theme"]
 	var/list/piece_refs = list()
 	var/list/module_refs = list()
 	for(var/id in piece_lookup)
