@@ -12587,7 +12587,6 @@
 /area/engineering/portnacelle)
 "Qp" = (
 /obj/machinery/firealarm{
-	dir = 1;
 	pixel_y = 24
 	},
 /obj/effect/floor_decal/techfloor/orange{
@@ -14796,15 +14795,6 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/engineering/hallway)
-"XH" = (
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/table/reinforced,
-/obj/item/storage/briefcase/inflatable,
-/obj/item/storage/briefcase/inflatable,
-/turf/simulated/floor/tiled,
-/area/engineering/atmos/monitoring)
 "XI" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/carpet/blucarpet,
@@ -35325,7 +35315,7 @@ zj
 ZJ
 yp
 Lo
-XH
+YL
 eN
 vW
 nC
