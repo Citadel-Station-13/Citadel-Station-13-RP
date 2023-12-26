@@ -299,6 +299,7 @@
 #include "code\__DEFINES\rigsuits\piece.dm"
 #include "code\__DEFINES\rigsuits\theme.dm"
 #include "code\__DEFINES\rigsuits\ui.dm"
+#include "code\__DEFINES\rigsuits\zones.dm"
 #include "code\__DEFINES\sound\alias.dm"
 #include "code\__DEFINES\sound\ambience.dm"
 #include "code\__DEFINES\sound\channels.dm"

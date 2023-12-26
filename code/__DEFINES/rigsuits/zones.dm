@@ -1,0 +1,31 @@
+
+#define RIG_ZONE_CHEST "chest"
+#define RIG_ZONE_HEAD "head"
+#define RIG_ZONE_LEFT_ARM "left_arm"
+#define RIG_ZONE_RIGHT_ARM "right_arm"
+#define RIG_ZONE_LEFT_LEG "left_leg"
+#define RIG_ZONE_RIGHT_LEG "right_leg"
+
+#define RIG_ZONES_ALL list( \
+	RIG_ZONE_CHEST, \
+	RIG_ZONE_HEAD, \
+	RIG_ZONE_LEFT_ARM, \
+	RIG_ZONE_RIGHT_ARM, \
+	RIG_ZONE_LEFT_LEG, \
+	RIG_ZONE_RIGHT_LEG, \
+)
+
+#warn lookup to flags
+
+#define RIG_ZONE_BIT_CHEST (1<<0)
+#define RIG_ZONE_BIT_HEAD (1<<1)
+#define RIG_ZONE_BIT_LEFT_ARM (1<<2)
+#define RIG_ZONE_BIT_RIGHT_ARM (1<<3)
+#define RIG_ZONE_BIT_LEFT_LEG (1<<4)
+#define RIG_ZONE_BIT_RIGHT_LEG (1<<5)
+
+#define RIG_ZONE_BIT_LEGS (RIG_ZONE_BIT_LEFT_LEG | RIG_ZONE_BIT_RIGHT_LEG)
+#define RIG_ZONE_BIT_ARMS (RIG_ZONE_BIT_LEFT_ARM | RIG_ZONE_BIT_RIGHT_ARM)
+#define RIG_ZONE_BIT_ALL (ALL)
+
+#warn DEFINE_BITFIELD
