@@ -210,9 +210,6 @@
 /turf/simulated/wall/prepainted/exploration,
 /area/tether/exploration/equipment)
 "av" = (
-/obj/machinery/light/small{
-	dir = 1
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
 	},
@@ -1326,9 +1323,6 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
-	id = "secondary_bridge"
-	},
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -1337,6 +1331,10 @@
 	opacity = 0
 	},
 /obj/effect/paint_stripe/commandblue,
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	id = "secondary_bridge";
+	name = "Secondary Bridge"
+	},
 /turf/simulated/floor/plating,
 /area/bridge/secondary)
 "cF" = (
@@ -2764,6 +2762,10 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/engine_airlock)
+"fj" = (
+/obj/spawner/window/low_wall/full/firelocks,
+/turf/simulated/floor/tiled,
+/area/security/checkpoint/science)
 "fk" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8
@@ -3822,7 +3824,6 @@
 /turf/simulated/floor/tiled,
 /area/bridge/secondary)
 "hC" = (
-/obj/machinery/light/small,
 /obj/machinery/portable_atmospherics/canister/phoron,
 /obj/effect/floor_decal/industrial/outline/red,
 /obj/machinery/atmospherics/portables_connector/fuel{
@@ -4424,18 +4425,19 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/atrium)
 "iN" = (
+/obj/effect/paint_stripe/sun,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
 	id = "englockdown";
 	name = "Engineering Lockdown";
-	opacity = 0
+	opacity = 0;
+	dir = 4
 	},
-/obj/spawner/window/low_wall/reinforced/tinted/full/firelocks{
-	id = "ce_office";
-	name = "CE Polarized"
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	name = "CE Polarized";
+	id = "ce_office"
 	},
-/obj/effect/paint_stripe/sun,
 /turf/simulated/floor,
 /area/crew_quarters/heads/chief)
 "iO" = (
@@ -13102,7 +13104,7 @@
 /turf/simulated/floor/plating,
 /area/storage/emergency_storage/emergency4)
 "Az" = (
-/obj/spawner/window/low_wall/full/firelocks,
+/obj/spawner/window/low_wall/full/firelocks/nogrille,
 /turf/simulated/floor,
 /area/hallway/station/docks)
 "AA" = (
@@ -13752,6 +13754,9 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
+/obj/machinery/light/small{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/eris/dark/techfloor,
 /area/shuttle/medivac/engines)
 "BS" = (
@@ -14228,9 +14233,6 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
-	id = "secondary_bridge"
-	},
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -14239,6 +14241,10 @@
 	opacity = 0
 	},
 /obj/effect/paint_stripe/commandblue,
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	id = "secondary_bridge";
+	name = "Secondary Bridge"
+	},
 /turf/simulated/floor/plating,
 /area/bridge/secondary)
 "CJ" = (
@@ -14720,9 +14726,6 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
-	id = "secondary_bridge"
-	},
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -14731,6 +14734,10 @@
 	opacity = 0
 	},
 /obj/effect/paint_stripe/commandblue,
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	id = "secondary_bridge";
+	name = "Secondary Bridge"
+	},
 /turf/simulated/floor/plating,
 /area/bridge/secondary)
 "DI" = (
@@ -16632,8 +16639,8 @@
 	name = "Engineering Lockdown";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/full/firelocks,
 /obj/effect/paint_stripe/sun,
+/obj/spawner/window/low_wall/full/firelocks/nogrille,
 /turf/simulated/floor,
 /area/engineering/foyer)
 "Hu" = (
@@ -17777,7 +17784,7 @@
 /turf/simulated/floor/carpet/oracarpet,
 /area/crew_quarters/heads/chief)
 "JN" = (
-/obj/spawner/window/low_wall/full/firelocks,
+/obj/spawner/window/low_wall/full/firelocks/nogrille,
 /turf/simulated/floor,
 /area/hallway/station/atrium)
 "JO" = (
@@ -18617,7 +18624,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/atrium)
 "Lq" = (
-/obj/effect/paint_stripe/red,
+/obj/effect/paint_stripe/darkred,
 /obj/spawner/window/low_wall/full/firelocks,
 /turf/simulated/floor/plating,
 /area/security/checkpoint/science)
@@ -19139,11 +19146,11 @@
 /area/bridge/secondary)
 "Mz" = (
 /obj/structure/cable/green,
-/obj/spawner/window/low_wall/reinforced/tinted/full/firelocks{
-	id = "ce_office";
-	name = "CE Polarized"
-	},
 /obj/effect/paint_stripe/sun,
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	name = "CE Polarized";
+	id = "ce_office"
+	},
 /turf/simulated/floor,
 /area/crew_quarters/heads/chief)
 "MA" = (
@@ -19322,9 +19329,25 @@
 	},
 /turf/simulated/floor/tiled/eris/dark/techfloor_grid,
 /area/shuttle/securiship/engines)
+"MU" = (
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "englockdown";
+	name = "Engineering Lockdown";
+	opacity = 0;
+	dir = 4
+	},
+/obj/effect/paint_stripe/sun,
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	name = "CE Polarized";
+	id = "ce_office"
+	},
+/turf/simulated/floor,
+/area/crew_quarters/heads/chief)
 "MV" = (
-/obj/spawner/window/full/firelocks,
 /obj/effect/paint_stripe/violet,
+/obj/spawner/window/low_wall/full/firelocks/nogrille,
 /turf/simulated/floor/plating,
 /area/tether/exploration/hallway)
 "MW" = (
@@ -23814,8 +23837,8 @@
 	name = "Engineering Lockdown";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/full/firelocks,
 /obj/effect/paint_stripe/sun,
+/obj/spawner/window/low_wall/full/firelocks/nogrille,
 /turf/simulated/floor/plating,
 /area/engineering/foyer)
 "VX" = (
@@ -24299,6 +24322,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/aux{
 	dir = 9
 	},
+/obj/machinery/light/small,
 /turf/simulated/floor/tiled/eris/dark/techfloor,
 /area/shuttle/medivac/engines)
 "WW" = (
@@ -25671,9 +25695,6 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
-	id = "secondary_bridge"
-	},
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -25682,6 +25703,10 @@
 	opacity = 0
 	},
 /obj/effect/paint_stripe/commandblue,
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	id = "secondary_bridge";
+	name = "Secondary Bridge"
+	},
 /turf/simulated/floor/plating,
 /area/bridge/secondary)
 "ZK" = (
@@ -41997,7 +42022,7 @@ IL
 yn
 yn
 iN
-iN
+MU
 iN
 yn
 yn
@@ -54018,7 +54043,7 @@ qL
 gM
 sq
 tN
-sq
+fj
 Lq
 uG
 Et
