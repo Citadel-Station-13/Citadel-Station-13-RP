@@ -10,6 +10,10 @@
 	var/state_worn_sealed
 	var/state_worn_unsealed
 
+	//* Deployment
+	/// currently undeploying - used as a mutex-ish so deploy/undeploy can interrupt each other.
+	var/currently_retracting = FALSE
+
 	//* Flags
 	/// piece intrinsic flags
 	var/rig_piece_flags = NONE
@@ -28,6 +32,7 @@
 
 	//* Sealing
 	/// are we sealed?
+	/// if we're currently cycling, seal_mutex should always be TRUE. the opposite is not always the case.
 	var/sealed = RIG_PIECE_UNSEALED
 	/// in the process of a seal operation - used internally as a mutex. don't fuck with this var.
 	var/seal_mutex = FALSE
@@ -72,7 +77,7 @@
 
 /datum/component/rig_piece/proc/tgui_piece_data()
 	var/obj/item/physical = parent
-	#warn nedes to have better caching for the b64, this is way too slow for production
+	#warn needs to have better caching for the b64, this is way too slow for production
 	return list(
 		"$tgui" = "RigsuitPiece",
 		"$src" = RIG_UI_ENCODE_MODULE_REF(ref(src)),
@@ -135,6 +140,7 @@
 	if(!.)
 		return
 	// todo: some kind of visual feedback to people around them?
+	#warn impl
 	update_piece_data()
 
 /datum/component/rig_piece/proc/retract(inv_op_flags)
@@ -147,13 +153,32 @@
 	else
 		. = wearing.transfer_item_to_loc(I, controller, inv_op_flags, wearing)
 		if(!.)
-			return	#warn impl
+			return
 	// todo: some kind of visual feedback to people around them?
+	#warn impl
 	update_piece_data()
 
 /datum/component/rig_piece/proc/is_deployed()
 	var/obj/item/I = parent
 	return I.loc != controller
+
+/**
+ * interrupt if sealing
+ */
+/datum/component/rig_piece/proc/interrupt_if_sealing()
+	if(sealed != RIG_PIECE_SEALING)
+		return
+	sealed = RIG_PIECE_UNSEALED
+	++seal_operation
+
+/**
+ * interrupt if unsealing
+ */
+/datum/component/rig_piece/proc/interrupt_if_unsealing()
+	if(sealed != RIG_PIECE_UNSEALING)
+		return
+	sealed = RIG_PIECE_SEALED
+	++seal_operation
 
 /obj/item/clothing/head/rig
 

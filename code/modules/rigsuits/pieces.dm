@@ -15,7 +15,12 @@
  * @return TRUE/FALSE success/failure
  */
 /obj/item/rig/proc/deploy_piece_sync(datum/component/rig_piece/piece, auto_seal = TRUE, instant_seal = FALSE, force = FALSE)
-	#warn impl
+	if(!piece.deploy(wearer, force? INV_OP_FORCE | INV_OP_CAN_DISPLACE, NONE))
+		return FALSE
+	piece.currently_retracting = FALSE
+	if(auto_seal)
+		seal_piece_async(instant_seal)
+	return TRUE
 
 /**
  * blocks on unsealing
@@ -23,7 +28,15 @@
  * @return TRUE/FALSE success/failure
  */
 /obj/item/rig/proc/undeploy_piece_sync(datum/component/rig_piece/piece, instant_unseal = FALSE, force = FALSE)
-	#warn impl
+	piece.currently_retracting = TRUE
+	if(!unseal_piece_sync(instant_unseal))
+		return FALSE
+	if(!piece.currently_retracting)
+		return
+	piece.currently_retracting = FALSE
+	if(!piece.retract(force? INV_OP_FORCE : NONE))
+		return FALSE
+	return TRUE
 
 /**
  * blocks on sealing
@@ -51,7 +64,9 @@
  * deploys all pieces; non-blocking
  */
 /obj/item/rig/proc/deploy_suit_async(auto_seal = TRUE, instant_seal = FALSE, force = FALSE)
-	#warn impl
+	for(var/id in piece_lookup)
+		var/datum/component/rig_piece/piece = piece_lookup[id]
+		INVOKE_ASYNC(src, PROC_REF(deploy_piece_sync), piece, auto_seal, instant_seal, force)
 
 /**
  * deploys all pieces; blocking
@@ -63,7 +78,9 @@
  * undeploys all pieces; non-blocking
  */
 /obj/item/rig/proc/undeploy_suit_async(instant_unseal = FALSE, force = FALSE)
-	#warn impl
+	for(var/id in piece_lookup)
+		var/datum/component/rig_piece/piece = piece_lookup[id]
+		INVOKE_ASYNC(src, PROC_REF(undeploy_piece_sync), piece, instant_unseal, force)
 
 /**
  * undeploys all pieces; blocking
