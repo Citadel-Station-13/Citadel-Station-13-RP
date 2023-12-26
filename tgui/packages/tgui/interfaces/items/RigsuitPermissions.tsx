@@ -1,11 +1,16 @@
-import { RigsuitData } from ".";
-import { NoticeBox, Section } from "../../components";
+/**
+ * @file
+ * @license MIT
+ */
 
-export interface RigMaintenanceProps {
+import { NoticeBox, Section } from "../../components";
+import { RigsuitData } from "./Rigsuit";
+
+export interface RigAuthorizationProps {
   rig: RigsuitData;
 }
 
-export const RigMaintenance = (props: RigMaintenanceProps, context) => {
+export const RigAuthorization = (props: RigAuthorizationProps, context) => {
   return (
     <Section fill>
       <NoticeBox warning>This section is under construction.</NoticeBox>

@@ -67,7 +67,7 @@
 	SIGNAL_HANDLER
 	if(flags & INV_OP_SHOULD_NOT_INTERCEPT)
 		return
-	retract(INV_OP_FORCE)
+	retract(INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT)
 	return COMPONENT_ITEM_INV_OP_RELOCATE | COMPONENT_ITEM_INV_OP_SUPPRESS_SOUND
 
 /datum/component/rig_piece/proc/tgui_piece_data()

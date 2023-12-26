@@ -1,8 +1,14 @@
-import { BooleanLike } from "common/react";
-import { Section } from "../../components";
-import { RigPieceFlags, RigPieceSealStatus } from "./common";
+/**
+ * @file
+ * @license MIT
+ */
 
-export interface RigsuitPieceData {
+import { BooleanLike } from "common/react";
+import { ModuleData } from "../../backend";
+import { Section } from "../../components";
+import { RigPieceFlags, RigPieceSealStatus } from "./Rigsuit";
+
+export interface RigsuitPieceData extends ModuleData {
   name: string;
   id: string;
   sealed: RigPieceSealStatus;

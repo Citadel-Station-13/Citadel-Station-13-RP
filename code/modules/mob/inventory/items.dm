@@ -33,8 +33,6 @@
  */
 /obj/item/proc/equipped(mob/user, slot, flags)
 	SHOULD_CALL_PARENT(TRUE)
-	SEND_SIGNAL(src, COMSIG_ITEM_EQUIPPED, user, slot, flags)
-	SEND_SIGNAL(user, COMSIG_MOB_ITEM_EQUIPPED, user, slot, flags)
 	worn_slot = slot
 	if(!(flags & INV_OP_IS_ACCESSORY))
 		// todo: shouldn't be in here
@@ -57,6 +55,9 @@
 				encumbrance_registered = get_encumbrance()
 				L.adjust_current_carry_encumbrance(encumbrance_registered)
 
+	SEND_SIGNAL(src, COMSIG_ITEM_EQUIPPED, user, slot, flags)
+	SEND_SIGNAL(user, COMSIG_MOB_ITEM_EQUIPPED, user, slot, flags)
+
 /**
  * called when an item is unequipped from inventory or moved around in inventory
  *
@@ -67,8 +68,6 @@
  */
 /obj/item/proc/unequipped(mob/user, slot, flags)
 	SHOULD_CALL_PARENT(TRUE)
-	SEND_SIGNAL(src, COMSIG_ITEM_UNEQUIPPED, user, slot, flags)
-	SEND_SIGNAL(user, COMSIG_MOB_ITEM_UNEQUIPPED, user, slot, flags)
 	worn_slot = null
 	if(!(flags & INV_OP_IS_ACCESSORY))
 		// todo: shouldn't be in here
@@ -87,6 +86,9 @@
 		else if(!isnull(encumbrance_registered))
 			L.adjust_current_carry_encumbrance(-encumbrance_registered)
 			encumbrance_registered = null
+
+	SEND_SIGNAL(src, COMSIG_ITEM_UNEQUIPPED, user, slot, flags)
+	SEND_SIGNAL(user, COMSIG_MOB_ITEM_UNEQUIPPED, user, slot, flags)
 
 /**
  * called when a mob drops an item

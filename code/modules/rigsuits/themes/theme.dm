@@ -221,6 +221,8 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 	// bodytypes
 	physical.worn_bodytypes = worn_bodytypes || theme.worn_bodytypes
 	physical.worn_bodytypes_fallback = worn_bodytypes_fallback || theme.worn_bodytypes_fallback
+	// icon
+	physical.icon = theme.base_icon
 	// state
 	piece_component.state_sealed = "[piece_base_state || theme.base_state][piece_state_append][sealed_state_append]"
 	piece_component.state_unsealed = "[piece_base_state || theme.base_state][piece_state_append]"
