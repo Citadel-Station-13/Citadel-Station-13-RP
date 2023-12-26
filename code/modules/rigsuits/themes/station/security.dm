@@ -16,11 +16,11 @@ AUTO_RIG_THEME(/station/security/standard)
 	#warn impl
 
 AUTO_RIG_THEME(/station/security/)
-/datum/rig_theme/station/security/
-	name = "security rig"
+/datum/rig_theme/station/security/safeguard
+	name = "safeguard rig"
 	base_state = "safeguard"
 	desc = "TBD"
 	fluff_desc = "TBD"
-	display_name = "security"
-	visible_name = "Security"
+	display_name = "safeguard"
+	visible_name = "Safeguard"
 	#warn impl
