@@ -34,6 +34,11 @@
 	var/state_sealed
 	var/state_unsealed
 
+	//* Control
+	/// authentication modification panel
+	/// lazy-init'd
+	var/datum/rig_auth_panel/auth_panel
+
 	//* Legacy - to be made into dynamic data once components/modules are done.
 	var/datum/armor/suit_armor
 	var/min_pressure_protect
@@ -44,6 +49,11 @@
 	//* Internal
 	/// lookup id
 	var/next_lookup_id = 0
+
+	//* Maintenance
+	/// panel datum to host our maint tgui
+	/// lazy-init'd
+	var/datum/rig_maint_panel/maint_panel
 
 	//* Modules
 	//  todo: unfinished
@@ -112,6 +122,8 @@
 /obj/item/rig/Destroy()
 	hard_reset()
 	wipe_everything()
+	QDEL_NULL(auth_panel)
+	QDEL_NULL(maint_panel)
 	return ..()
 
 /obj/item/rig/proc/hard_reset()

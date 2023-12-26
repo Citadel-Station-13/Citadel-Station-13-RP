@@ -116,6 +116,7 @@
 #warn impl all
 
 /obj/item/rig/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+	#warn icecream update will modify this, check the root definition!
 	. = ..()
 	.["theme"] = theme_name
 	.["sprite64"] = isnull(cached_tgui_icon_b64)? (cached_tgui_icon_b64 = icon2base64(icon(icon, state_sealed, NORTH, 1, FALSE))) : cached_tgui_icon_b64
@@ -134,15 +135,18 @@
 	.["moduleRefs"] = module_refs
 
 /obj/item/rig/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+	#warn icecream update will modify this, check the root definition!
 	. = ..()
 	// todo: maybe cache this
 	.["controlFlags"] = effective_control_flags(user)
 
 /obj/item/rig/ui_module_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+	#warn icecream update will modify this, check the root definition!
 	. = ..()
 	// todo: some pieces/modules data might need updating every tick?
 
 /obj/item/rig/ui_module_static(mob/user, datum/tgui/ui, datum/ui_state/state)
+	#warn icecream update will modify this, check the root definition!
 	. = ..()
 	for(var/obj/item/rig_module/module as anything in null)
 		// todo: modules
@@ -152,6 +156,7 @@
 		.[RIG_UI_ENCODE_PIECE_REF(ref(piece))] = piece.tgui_piece_data()
 
 /obj/item/rig/ui_module_act(action, list/params, datum/tgui/ui, id)
+	#warn icecream update will modify this, check the root definition!
 	. = ..()
 	if(.)
 		return
@@ -168,19 +173,23 @@
 			return TRUE
 
 /obj/item/rig/ui_act(action, list/params, datum/tgui/ui)
+	#warn icecream update will modify this, check the root definition!
 	. = ..()
 
 /obj/item/rig/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+	#warn icecream update will modify this, check the root definition!
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(isnull(ui))
 		ui = new(user, src, "Rigsuit")
 		ui.open()
 
 /obj/item/rig/ui_state(mob/user, datum/tgui_module/module)
+	#warn icecream update will modify this, check the root definition!
 	// give always state because we manually override all of this in ui_status
 	return GLOB.always_state
 
 /obj/item/rig/ui_status(mob/user, datum/ui_state/state, datum/tgui_module/module)
+	#warn icecream update will modify this, check the root definition!
 	// "guys, I swear I have a reason to reimplement all of this"
 	// rigs use a very complicated status system so things like AI control can be done
 	// it'd be a better idea to use state datums but i don't care
