@@ -467,6 +467,18 @@ const AirlockConsolePhoron = (props, context) => {
             : 'good';
       }),
     },
+    {
+      minValue: -273,
+      maxValue: 310,
+      value: data.chamber_temperature,
+      label: "Chamber Temperature",
+      textValue: data.chamber_temperature + " °C",
+      color: (value => {
+        return (value < 0) ? 'bad'
+          : (value < 15) ? 'average'
+            : 'good';
+      }),
+    },
   ];
 
   return (
