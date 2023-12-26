@@ -20,8 +20,8 @@
 	health = 150
 	randomized = TRUE
 	minbodytemp = 200
-	melee_damage_lower = 2
-	melee_damage_upper = 7 //Don't break my bones bro
+	legacy_melee_damage_lower = 2
+	legacy_melee_damage_upper = 7 //Don't break my bones bro
 	response_help = "pets the"
 	response_disarm = "bops the"
 	response_harm = "hits the"

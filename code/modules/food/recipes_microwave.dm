@@ -1367,7 +1367,7 @@ I said no!
 	result = /obj/item/reagent_containers/food/snacks/crayonburger_rbw
 
 /datum/recipe/rkibble
-	reagents = list("milk" = 5, "cooking_oil" = 10)
+	reagents = list("milk" = 5, "tallow" = 10)
 	items = list(
 		/obj/item/robot_parts/head,
 		/obj/item/stack/rods
@@ -1388,9 +1388,9 @@ I said no!
 	fruit = list("carrot" = 1, "mushroom" = 1)
 	reagents = list("spacespice" = 2, "water" = 10)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/worm,
-		/obj/item/reagent_containers/food/snacks/worm,
-		/obj/item/reagent_containers/food/snacks/worm
+		/obj/item/reagent_containers/food/snacks/bait/worm,
+		/obj/item/reagent_containers/food/snacks/bait/worm,
+		/obj/item/reagent_containers/food/snacks/bait/worm
 	)
 	result = /obj/item/reagent_containers/food/snacks/diggerstew
 
@@ -1398,9 +1398,9 @@ I said no!
 	fruit = list("carrot" = 1, "potato" = 1, "mushroom" = 1)
 	reagents = list("spacespice" = 2, "water" = 10)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/worm,
-		/obj/item/reagent_containers/food/snacks/worm,
-		/obj/item/reagent_containers/food/snacks/worm
+		/obj/item/reagent_containers/food/snacks/bait/worm,
+		/obj/item/reagent_containers/food/snacks/bait/worm,
+		/obj/item/reagent_containers/food/snacks/bait/worm
 	)
 	result = /obj/item/reagent_containers/food/snacks/diggerstew_pot
 
@@ -1416,7 +1416,7 @@ I said no!
 	reagents = list("spacespice" = 2, "water" = 10)
 	items = list(
 		/obj/item/reagent_containers/food/snacks/meat/grubmeat,
-		/obj/item/reagent_containers/food/snacks/worm
+		/obj/item/reagent_containers/food/snacks/bait/worm
 	)
 	result = /obj/item/reagent_containers/food/snacks/greenham
 
@@ -1426,7 +1426,7 @@ I said no!
 		/obj/item/reagent_containers/food/snacks/egg,
 		/obj/item/reagent_containers/food/snacks/egg,
 		/obj/item/reagent_containers/food/snacks/meat/grubmeat,
-		/obj/item/reagent_containers/food/snacks/worm
+		/obj/item/reagent_containers/food/snacks/bait/worm
 	)
 	result = /obj/item/reagent_containers/food/snacks/greenham
 
@@ -1548,8 +1548,8 @@ I said no!
 /datum/recipe/wormburger
 	items = list(
 		/obj/item/reagent_containers/food/snacks/bun,
-		/obj/item/reagent_containers/food/snacks/worm,
-		/obj/item/reagent_containers/food/snacks/worm,
+		/obj/item/reagent_containers/food/snacks/bait/worm,
+		/obj/item/reagent_containers/food/snacks/bait/worm,
 		/obj/item/reagent_containers/food/snacks/meat
 	)
 	result = /obj/item/reagent_containers/food/snacks/wormburger
@@ -1571,9 +1571,9 @@ I said no!
 
 /datum/recipe/saplingsdelight
 	items = list(
-		/obj/item/reagent_containers/food/snacks/worm,
-		/obj/item/reagent_containers/food/snacks/worm,
-		/obj/item/reagent_containers/food/snacks/worm,
+		/obj/item/reagent_containers/food/snacks/bait/worm,
+		/obj/item/reagent_containers/food/snacks/bait/worm,
+		/obj/item/reagent_containers/food/snacks/bait/worm,
 		/obj/item/reagent_containers/food/snacks/badrecipe
 	)
 	result = /obj/item/reagent_containers/food/snacks/saplingsdelight

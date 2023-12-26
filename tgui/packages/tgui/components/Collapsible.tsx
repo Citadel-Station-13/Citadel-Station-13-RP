@@ -11,14 +11,15 @@ import { Button, ButtonProps } from './Button';
 import { ComponentProps } from './Component';
 
 interface CollapsibleProps extends ComponentProps{
-  buttons?: InfernoNode;
-  color?: string;
-  title?: string | InfernoNode;
-  open?: BooleanLike;
-  captureKeys?: BooleanLike;
-  more?: InfernoNode;
-  boxProps?: BoxProps;
-  headerProps?: ButtonProps;
+  readonly buttons?: InfernoNode;
+  readonly color?: string;
+  readonly title?: string | InfernoNode;
+  readonly open?: BooleanLike;
+  readonly captureKeys?: BooleanLike;
+  readonly more?: InfernoNode;
+  readonly boxProps?: BoxProps;
+  readonly headerProps?: ButtonProps;
+  readonly contentFunction?: () => InfernoNode;
 }
 
 interface CollapsibleState {
@@ -28,7 +29,7 @@ interface CollapsibleState {
 export class Collapsible extends Component<CollapsibleProps, CollapsibleState> {
   state: CollapsibleState = {
     open: false,
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -76,7 +77,7 @@ export class Collapsible extends Component<CollapsibleProps, CollapsibleState> {
         </div>
         {open && (
           <div className="Collapsible__content">
-            {children}
+            {!!props.contentFunction && props.contentFunction()}{children}
           </div>
         )}
       </Box>
@@ -104,7 +105,7 @@ export class Collapsible extends Component<CollapsibleProps, CollapsibleState> {
         </div>
         {open && (
           <div className="Collapsible__content">
-            {children}
+            {!!props.contentFunction && props.contentFunction()}{children}
           </div>
         )}
       </Box>

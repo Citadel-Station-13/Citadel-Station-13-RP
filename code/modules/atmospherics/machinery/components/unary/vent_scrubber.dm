@@ -47,7 +47,7 @@
 	/// additional power when expanded
 	var/expanded_power = 7500
 	/// additional volume when expanded
-	var/expanded_scrub = 1250
+	var/expanded_scrub = 2500
 	/// mole boost
 	var/scrub_boost = 50
 

@@ -828,9 +828,6 @@
 /turf/simulated/wall/prepainted/cargo,
 /area/outpost/mining_main/dorms)
 "us" = (
-/obj/effect/map_effect/portal/line/side_b{
-	dir = 1
-	},
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/outpost/mining_main/passage)
 "ut" = (
@@ -2040,10 +2037,6 @@
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/secondary_gear_storage)
 "ZF" = (
-/obj/effect/map_effect/portal/master/side_b{
-	dir = 1;
-	portal_id = "surfacemine"
-	},
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/outpost/mining_main/passage)
 "ZO" = (

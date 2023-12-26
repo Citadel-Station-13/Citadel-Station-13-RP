@@ -9,11 +9,50 @@
 	melting_point = T0C+300
 	sheet_singular_name = "blob"
 	sheet_plural_name = "blobs"
-	conductive = 0
 	explosion_resistance = 60
-	radiation_resistance = 10
 	stack_origin_tech = list(TECH_MATERIAL = 8, TECH_PHORON = 4, TECH_BLUESPACE = 4, TECH_BIO = 7)
 	stack_type = /obj/item/stack/material/resin
+	sound_melee_brute = 'sound/effects/attackblob.ogg'
+
+	relative_integrity = 1
+	weight_multiplier = 0.5
+	density = 8 * 1
+	relative_conductivity = 0.1
+	relative_permeability = 0.2
+	relative_reactivity = 0.45
+	hardness = MATERIAL_RESISTANCE_LOW
+	toughness = MATERIAL_RESISTANCE_HIGH
+	refraction = MATERIAL_RESISTANCE_NONE
+	absorption = MATERIAL_RESISTANCE_VULNERABLE
+	nullification = MATERIAL_RESISTANCE_VERY_VULNERABLE
+
+/datum/material/resin/generate_recipes()
+	. = ..()
+	. += create_stack_recipe_datum(
+		name = "resin nest",
+		product = /obj/structure/bed/nest,
+		exclusitivity = /obj/structure/bed,
+		cost = 2,
+		time = 2 SECONDS,
+	)
+	. += create_stack_recipe_datum(
+		name = "crude resin bandage",
+		product = /obj/item/stack/medical/crude_pack,
+		time = 2 SECONDS,
+		cost = 1,
+	)
+	. += create_stack_recipe_datum(
+		name = "resin membrane",
+		product = /obj/structure/alien/resin/membrane,
+		cost = 1,
+		time = 2 SECONDS,
+	)
+	. += create_stack_recipe_datum(
+		name = "resin node",
+		product = /obj/structure/alien/weeds/node,
+		cost = 1,
+		time = 2 SECONDS,
+	)
 
 /datum/material/resin/can_open_material_door(var/mob/living/user)
 	var/mob/living/carbon/M = user

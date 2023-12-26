@@ -388,10 +388,9 @@
 /datum/reagent/toxin/plantbgone/touch_obj(obj/O, volume)
 	if(istype(O, /obj/effect/plant))
 		qdel(O)
-	else if(istype(O, /obj/effect/alien/weeds/))
-		var/obj/effect/alien/weeds/alien_weeds = O
-		alien_weeds.health -= rand(15, 35)
-		alien_weeds.healthcheck()
+	else if(istype(O, /obj/structure/alien/weeds/))
+		var/obj/structure/alien/weeds/alien_weeds = O
+		alien_weeds.damage_integrity(15, 35)
 
 /datum/reagent/toxin/plantbgone/affect_blood(mob/living/carbon/M, alien, removed)
 	if(alien == IS_ALRAUNE)

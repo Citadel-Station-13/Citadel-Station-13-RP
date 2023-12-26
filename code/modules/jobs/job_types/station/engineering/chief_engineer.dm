@@ -47,8 +47,7 @@
 
 	minimal_player_age = 7
 	alt_titles = list(
-		"Head Engineer" = /datum/prototype/struct/alt_title/head_engineer,
-		"Maintenance Manager" = /datum/prototype/struct/alt_title/maintenance_manager,
+		"Head of Engineering" = /datum/prototype/struct/alt_title/head_engineer,
 		"Engineering Director" = /datum/prototype/struct/alt_title/engineering_director
 		)
 
@@ -61,10 +60,7 @@
 	title = "Engineering Director"
 
 /datum/prototype/struct/alt_title/head_engineer
-	title = "Head Engineer"
-
-/datum/prototype/struct/alt_title/maintenance_manager
-	title = "Maintenance Manager"
+	title = "Head of Engineering"
 
 /datum/outfit/job/station/chief_engineer
 	name = OUTFIT_JOB_NAME("Chief engineer")

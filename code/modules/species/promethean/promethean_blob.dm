@@ -6,14 +6,14 @@
 	color = null // Uses a special icon_state.
 	slime_color = "rainbow"
 	unity = TRUE
-	water_resist = 100 // Lets not kill the prommies
+	water_resist = 1 // Lets not kill the prommies
 	cores = 0
 	movement_cooldown = 3
 	//species_appearance_flags = RADIATION_GLOWS
 	shock_resist = 0 // Lets not be immune to zaps.
 	friendly = list("nuzzles", "glomps", "snuggles", "cuddles", "squishes") // lets be cute :3
-	melee_damage_upper = 0
-	melee_damage_lower = 0
+	legacy_melee_damage_upper = 0
+	legacy_melee_damage_lower = 0
 	player_msg = "You're a little squisher! Your cuteness level has increased tenfold."
 	heat_damage_per_tick = 20 // Hot and cold are bad, but cold is AS bad for prommies as it is for slimes.
 	cold_damage_per_tick = 20
@@ -518,11 +518,11 @@
 		. += "They are wearing \a [hat]."
 
 /mob/living/simple_mob/slime/promethean/say_understands(var/mob/other, var/datum/language/speaking = null)
-	if(speaking?.name == LANGUAGE_SOL_COMMON)	//Promethean and sign are both nonverbal, so won't work with the same trick as below, so let's check for them /Citadel change, since LANGUAGE_PROMETHEAN does not exist here, changing it to the race's defaul, Sol
+	if(speaking?.id == LANGUAGE_ID_PROMETHEAN) //Promethean and sign are both nonverbal, so won't work with the same trick as below, so let's check for them
 		return TRUE
-	else if(speaking?.name == LANGUAGE_SIGN)
+	else if(speaking?.id == LANGUAGE_ID_SIGN)
 		for(var/datum/language/L in humanform.languages)
-			if(L.name == LANGUAGE_SIGN)
+			if(L.id == LANGUAGE_ID_SIGN)
 				return TRUE
 	else if(humanform.say_understands(other, speaking))		//So they're speaking something other than promethean or sign, let's just ask our original mob if it understands
 		return TRUE

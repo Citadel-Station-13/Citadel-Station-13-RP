@@ -52,6 +52,10 @@
 	/// panic bunker is still resolving
 	var/panic_bunker_pending = FALSE
 
+	//? Context Menus
+	/// open context menu
+	var/datum/radial_menu/context_menu/context_menu
+
 	//? Rendering
 	/// Click catcher
 	var/atom/movable/screen/click_catcher/click_catcher

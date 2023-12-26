@@ -48,6 +48,3 @@
 
 /// When the transform or an atom is varedited through vv topic.
 ////#define COMSIG_ATOM_VV_MODIFY_TRANSFORM "atom_vv_modify_transform"
-
-/// Generally called before temporary non-parallel animate()s on the atom (animation_duration)
-////#define COMSIG_ATOM_TEMPORARY_ANIMATION_START "atom_temp_animate_start"

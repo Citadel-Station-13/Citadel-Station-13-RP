@@ -65,20 +65,20 @@
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "do" = (
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 1;
-	req_one_access = list(48)
-	},
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 4;
 	name = "Dorms";
-	req_access = list(48)
+	req_access = null;
+	req_one_access = list(1,5,31,38,47,48)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
@@ -231,6 +231,12 @@
 	dir = 10
 	},
 /turf/simulated/floor/plating,
+/area/lavaland/central/base/common)
+"hh" = (
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "hi" = (
 /obj/machinery/atmospherics/portables_connector,
@@ -507,9 +513,6 @@
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "lT" = (
-/obj/effect/map_effect/portal/line/side_a{
-	dir = 8
-	},
 /turf/simulated/mineral/triumph/lavaland,
 /area/lavaland/central/explored)
 "lX" = (
@@ -1041,6 +1044,18 @@
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
+"sW" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/lavaland/central/base/common)
 "sX" = (
 /obj/machinery/sleep_console,
 /turf/simulated/floor/tiled,
@@ -1093,9 +1108,6 @@
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "tV" = (
-/obj/effect/map_effect/portal/line/side_a{
-	dir = 8
-	},
 /turf/simulated/floor/outdoors/lava/lavaland,
 /area/lavaland/central/explored)
 "ub" = (
@@ -1460,14 +1472,14 @@
 /turf/simulated/floor/wood,
 /area/lavaland/central/base/common)
 "As" = (
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 1;
-	req_one_access = list(48)
-	},
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 4;
 	name = "Lounge";
-	req_access = list(48)
+	req_access = null;
+	req_one_access = list(1,5,31,38,47,48)
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/wood,
 /area/lavaland/central/base/common)
@@ -1558,7 +1570,7 @@
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
 	name = "Logistics";
-	req_one_access = list(48)
+	req_one_access = list(1,5,31,38,47,48)
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
@@ -1727,13 +1739,11 @@
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "IR" = (
-/obj/machinery/door/firedoor/multi_tile{
-	req_one_access = list(48)
-	},
 /obj/machinery/door/airlock/multi_tile/glass{
 	name = "Lounge";
-	req_one_access = list(48)
+	req_one_access = list(1,5,31,38,47,48)
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/wood,
 /area/lavaland/central/base/common)
 "IV" = (
@@ -2087,6 +2097,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
+"Su" = (
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/wood,
+/area/lavaland/central/base/common)
 "SH" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -2328,7 +2342,8 @@
 	},
 /obj/machinery/door/airlock/glass{
 	name = "Transit";
-	req_access = list(48)
+	req_access = null;
+	req_one_access = list(1,5,31,38,47,48)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -2444,7 +2459,7 @@
 "Yb" = (
 /obj/machinery/door/airlock/glass/medical{
 	name = "Triage";
-	req_one_access = list(48)
+	req_one_access = list(1,5,31,38,47,48)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -2544,11 +2559,6 @@
 /turf/simulated/floor/outdoors/lava/lavaland,
 /area/lavaland/central/explored)
 "ZK" = (
-/obj/effect/map_effect/portal/master/side_a{
-	dir = 8;
-	name = "to_east";
-	portal_id = "eaststep"
-	},
 /turf/simulated/mineral/triumph/lavaland,
 /area/lavaland/central/explored)
 "ZO" = (
@@ -2568,7 +2578,7 @@
 	name = "Staging Area Shutters";
 	pixel_x = 26;
 	pixel_y = 26;
-	req_one_access = list(48)
+	req_one_access = list(1,5,31,38,47,48)
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
@@ -10129,7 +10139,7 @@ yX
 yw
 yw
 yw
-yw
+Su
 PZ
 SN
 ew
@@ -10513,7 +10523,7 @@ so
 AO
 AO
 AO
-ws
+sW
 As
 db
 db
@@ -11297,7 +11307,7 @@ IV
 QN
 UV
 AO
-ew
+hh
 do
 AO
 AO

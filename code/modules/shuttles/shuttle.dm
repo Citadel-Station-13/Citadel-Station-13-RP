@@ -49,7 +49,7 @@
 		for(var/turf/T in A.contents)
 			// inject ceiling
 			if(ceiling_type)
-				var/turf/above = GetAbove(T)
+				var/turf/above = T.above()
 				if(above && !(above.loc in shuttle_area))
 					above.PlaceBelowLogicalBottom(ceiling_type, CHANGETURF_INHERIT_AIR | CHANGETURF_PRESERVE_OUTDOORS)
 			// inject floor
@@ -325,9 +325,9 @@
 	var/list/powernets = list()
 	for(var/area/A in shuttle_area)
 		// If there was a zlevel above our origin and we own the ceiling, erase our ceiling now we're leaving
-		if(ceiling_type && HasAbove(current_location.z))
+		if(ceiling_type && Z_HAS_ABOVE(current_location.z))
 			for(var/turf/TO in A.contents)
-				var/turf/TA = GetAbove(TO)
+				var/turf/TA = TO.above()
 				TA.ScrapeFromLogicalBottom(CHANGETURF_INHERIT_AIR | CHANGETURF_PRESERVE_OUTDOORS, ceiling_type)
 		if(knockdown)
 			for(var/mob/living/M in A)
@@ -352,10 +352,10 @@
 	current_location = destination
 
 	// If there's a zlevel above our destination, paint in a ceiling on it so we retain our air
-	if(ceiling_type && HasAbove(current_location.z))
+	if(ceiling_type && Z_HAS_ABOVE(current_location.z))
 		for(var/area/A in shuttle_area)
 			for(var/turf/TD in A.contents)
-				var/turf/TA = GetAbove(TD)
+				var/turf/TA = TD.above()
 				if(TA.loc in shuttle_area)
 					continue
 				TA.PlaceBelowLogicalBottom(ceiling_type, CHANGETURF_INHERIT_AIR | CHANGETURF_PRESERVE_OUTDOORS)

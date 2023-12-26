@@ -947,6 +947,7 @@
 	glass_desc = "Deliciously fattening!"
 
 /datum/reagent/drink/milk/chocolate/affect_ingest(mob/living/carbon/M, alien, removed)
+	..()
 	if(alien == IS_ALRAUNE) //cit change: choccy is full of natural easily digestible plant fats
 		M.nutrition += removed * 5
 
@@ -960,7 +961,7 @@
 	holder.remove_reagent("capsaicin", 10 * removed)
 	if(contains_lactose == TRUE && alien == IS_NARAMADI) //Species-wide lactose intolerance, also funny that cheeses can't drink milk.
 		if(prob(5))
-			to_chat("You feel nauseous!")
+			to_chat(M, SPAN_WARNING("You feel nauseous!"))
 			return
 		if(prob(20))
 			var/mob/living/L = M
@@ -1528,7 +1529,7 @@
 			M.drowsyness = max(M.drowsyness, 60)
 	if(contains_lactose == TRUE && alien == IS_NARAMADI)
 		if(prob(5))
-			to_chat("You feel nauseous!")
+			to_chat(M, SPAN_WARNING("You feel nauseous!"))
 			return
 		if(prob(20))
 			var/mob/living/L = M
@@ -1785,25 +1786,45 @@
 	glass_desc = "The original, refreshing not-actually-ale."
 	glass_special = list(DRINK_FIZZ)
 
-/datum/reagent/drink/soda/nicola
-	name = "NiCola"
-	id = "nicola"
+/datum/reagent/drink/soda/kyocola
+	name = "KyoCola"
+	id = "kyocola"
 	description = "Imported straight from Osaka IV."
 	taste_description = "cough syrup and cola"
 	color = "#271402"
 
-	glass_name = "NiCola"
-	glass_desc = "A glass of imported Japanese NiCola."
+	glass_name = "KyoCola"
+	glass_desc = "A glass of imported Japanese KyoCola."
 
-/datum/reagent/drink/soda/nicola/cherry
-	name = "NiCola Sakura"
-	id = "nicolacherry"
-	description = "Originally a limited flavor, brought back by popular demand."
-	taste_description = "cherry cough syrup and cola"
+/datum/reagent/drink/soda/kyocola/fire
+	name = "KyoCola Fire"
+	id = "kyocolafire"
+	description = "Cool imported cola mixed with firey hot spices."
+	taste_description = "cough syrup, capsaicin, and cola"
 	color = "#271402"
 
-	glass_name = "NiCola Sakura"
-	glass_desc = "A glass of limited edition NiCola Sakura."
+	glass_name = "KyoCola Fire"
+	glass_desc = "A glass of spicy Japanese KyoCola Fire."
+
+/datum/reagent/drink/soda/kyocola/cherry
+	name = "KyoCola Sakura"
+	id = "kyocolacherry"
+	description = "Originally a limited flavor, brought back by popular demand."
+	taste_description = "cough syrup, cherry blossoms, and cola"
+	color = "#271402"
+
+	glass_name = "KyoCola Sakura"
+	glass_desc = "A glass of limited edition KyoCola Sakura."
+
+/datum/reagent/drink/soda/kyocola/blue
+	name = "KyoCola Blue"
+	id = "kyocolablue"
+	description = "A limited edition KyoCola flavor praised for its refreshing taste."
+	taste_description = "cough syrup, violets, and cola"
+	color = "#271402"
+
+	glass_name = "KyoCola Blue"
+	glass_desc = "A glass of limited edition KyoCola Blue."
 
 /datum/reagent/drink/shirley_temple
 	name = "Shirley Temple"
@@ -2204,27 +2225,27 @@
 	glass_special = list(DRINK_FIZZ)
 
 /datum/reagent/drink/soda/sarsaparilla
-	name = "CC's Homemade Sarsaparilla"
+	name = "Sarsaparilla"
 	id = "sarsaparilla"
 	description = "The Cyan Cowgirl rides again!"
 	taste_description = "earthy vanilla and harsh bubbles"
 	color = "#503301"
 	adj_temp = -2
 
-	glass_name = "CC's Homemade Sarsaparilla"
+	glass_name = "Sarsaparilla"
 	glass_desc = "Real girls drink from the bottle."
 	glass_icon = DRINK_ICON_NOISY
 	glass_special = list(DRINK_FIZZ)
 
 /datum/reagent/drink/soda/sassafras
-	name = "CC's Famous Root Beer"
+	name = "Root Beer"
 	id = "sassafras"
 	description = "Feel nostalgia for a range you never rode."
 	taste_description = "bitter licorice and sweet vanilla"
 	color = "#312003"
 	adj_temp = -2
 
-	glass_name = "CC's Famous Root Beer"
+	glass_name = "Root Beer"
 	glass_desc = "Wet your whistle!"
 	glass_icon = DRINK_ICON_NOISY
 	glass_special = list(DRINK_FIZZ)
@@ -2238,6 +2259,19 @@
 
 	glass_name = "Root Beer Float"
 	glass_desc = "A classic from Humanity's early days. Soothing, cool, and nostalgic."
+
+/datum/reagent/drink/milk/pilk
+	name = "Pilk"
+	id = "pilk"
+	description = "Milk and Space Cola mixed together. What?"
+	taste_description = "creamed up cola"
+	color = "#c9ab84" //usually most pilk mixtures have the milk presence dominate.
+	adj_drowsy = -3 //space cola effects
+	adj_temp = -3
+
+	glass_name = "Pilk"
+	glass_desc = "Milk and Space Cola mixed together. <i>Burenyuu~</i>. While the soda ingredient isn't exactly the one based on the original \
+	old Terra brand, the \"Pilk\" name has stuck all of these centuries later. It's a drink mixture that many still get upset about to this day."
 
 /* Alcohol */
 
@@ -2497,7 +2531,7 @@
 	name = "Vodka"
 	id = "vodka"
 	description = "Number one drink AND fueling choice for Russians worldwide."
-	taste_description = "grain alcohol"
+	taste_description = "potato alcohol"
 	color = "#0064C8" // rgb: 0, 100, 200
 	strength = 15
 
@@ -2702,14 +2736,13 @@
 	glass_name = "Bahama Mama"
 	glass_desc = "Tropical cocktail."
 
-/datum/reagent/ethanol/bananahonk
+/datum/reagent/drink/bananahonk
 	name = "Banana Mama"
 	id = "bananahonk"
 	description = "A drink from Clown Heaven."
 	taste_description = "bananas and sugar"
-	nutriment_factor = 1
+	nutrition = 1
 	color = "#FFFF91"
-	strength = 12
 
 	glass_name = "Banana Honk"
 	glass_desc = "A drink from Banana Heaven."
@@ -2855,13 +2888,12 @@
 	glass_name = "Gin Fizz"
 	glass_desc = "Refreshingly lemony, deliciously dry."
 
-/datum/reagent/ethanol/nebula_riptide
+/datum/reagent/drink/soda/nebula_riptide
 	name = "Nebula Riptide"
 	id = "nebula_riptide"
 	description = "The drink is compounded into form from a larger volume, leaving little to drink."
 	taste_description = "Burning hot, Freezing cold, and bitter irony"
 	color = "#09dbf7"
-	strength = 10
 
 	glass_name = "Nebula Riptide"
 	glass_desc = "Nebula Riptide. It's thick enough to stand on it's own, almost even parts spice and liquid."
@@ -3183,15 +3215,14 @@
 	glass_name = "Screwdriver"
 	glass_desc = "A simple, yet superb mixture of Vodka and orange juice. Just the thing for the tired engineer."
 
-/datum/reagent/ethanol/silencer
+/datum/reagent/drink/silencer
 	name = "Silencer"
 	id = "silencer"
 	description = "A drink from Mime Heaven."
 	taste_description = "a pencil eraser"
 	taste_mult = 1.2
-	nutriment_factor = 1
+	nutrition = 1
 	color = "#FFFFFF"
-	strength = 12
 
 	glass_name = "Silencer"
 	glass_desc = "A drink from mime Heaven."
@@ -3932,12 +3963,11 @@
 	glass_name = "Ichor Mead"
 	glass_desc = "A trip to Valhalla."
 
-/datum/reagent/ethanol/gibbfloat
+/datum/reagent/drink/soda/gibbfloat
 	name = "Gibbfloat"
 	id = "gibbfloat"
 	description = "A tasty, frothy drink."
 	taste_description = "soda float"
-	strength = 100
 
 	glass_name = "Gibbfloat"
 	glass_desc = "A tasty, frothy drink"
@@ -4015,7 +4045,7 @@
 	glass_desc = "A spicy take on a summer classic."
 
 /datum/reagent/ethanol/alcsassafras
-	name = "CC's Hard Rootbeer"
+	name = "Hard Rootbeer"
 	id = "alcsassafras"
 	description = "Doesn't matter if you're drunk when you have a horse to take you home!"
 	taste_description = "bitter vanilla with a sharp burn"
@@ -4242,6 +4272,17 @@
 
 	glass_name = "Piña Colada"
 	glass_desc = "For those not into yoga."
+
+/datum/reagent/ethanol/mimosa
+	name = "Mimosa"
+	id = "mimosa"
+	description = "An airy blend of champagne and orange juice, often drunk as a morning refreshment."
+	taste_description = "orange juice and a dry, bubbly wine"
+	color = "#daa411"
+	strength = 20
+
+	glass_name = "Mimosa"
+	glass_desc = "A bubbly and tangy refreshment."
 
 //Never Fade Away
 /datum/reagent/ethanol/silverhand
@@ -4608,7 +4649,7 @@
 /datum/reagent/nutriment/protein/cheese/affect_ingest(mob/living/carbon/M, alien, removed) //Cheese is a kind of milk.
 	if(alien == IS_NARAMADI)
 		if(prob(5))
-			to_chat("You feel nauseous!")
+			to_chat(M, SPAN_WARNING("You feel nauseous!"))
 			return
 		if(prob(20))
 			var/mob/living/L = M
@@ -4801,19 +4842,53 @@
 	glass_name = "Italian Crisis"
 	glass_desc = "This drink looks like it was a mistake."
 
-/datum/reagent/ethanol/shroomjuice
+/datum/reagent/drink/shroomjuice
 	name = "Dumb Shroom Juice"
 	id = "shroomjuice"
 	description = "The mushroom farmer didn't sort through their stock very well."
 	taste_description = "sweet and sour citrus with a savory kick."
-	strength = 100
-	druggy = 30
-	halluci = 30
-	var/adj_dizzy = 30
 	color = "#d3785d"
 
 	glass_name = "Dumb Shroom Juice"
 	glass_desc = "Touch fuzzy, get dizzy."
+
+/datum/reagent/drink/shroomjuice/affect_blood(mob/living/carbon/M, alien, removed)
+	. = ..()
+
+	if(alien == IS_DIONA)
+		return
+
+	var/threshold = 1
+	if(alien == IS_SKRELL)
+		threshold = 1.2
+
+	if(alien == IS_SLIME)
+		threshold = 0.8
+
+	M.druggy = max(M.druggy, 30)
+
+	var/effective_dose = dose
+	if(issmall(M)) effective_dose *= 2
+	if(effective_dose < 1 * threshold)
+		M.apply_effect(3, STUTTER)
+		M.make_dizzy(5)
+		if(prob(5))
+			M.emote(pick("twitch", "giggle"))
+	else if(effective_dose < 2 * threshold)
+		M.apply_effect(3, STUTTER)
+		M.make_jittery(5)
+		M.make_dizzy(5)
+		M.druggy = max(M.druggy, 35)
+		if(prob(10))
+			M.emote(pick("twitch", "giggle"))
+	else
+		M.apply_effect(3, STUTTER)
+		M.make_jittery(10)
+		M.make_dizzy(10)
+		M.druggy = max(M.druggy, 40)
+		if(prob(15))
+			M.emote(pick("twitch", "giggle"))
+
 
 /datum/reagent/ethanol/honeyshot
 	name = "Honey Shot"

@@ -33,9 +33,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
-/obj/machinery/firealarm{
-	layer = 3.3;
-	pixel_y = 26
+/obj/machinery/firealarm/alarms_hidden{
+	pixel_y = 23
 	},
 /turf/simulated/floor/plating,
 /area/ship/mercenary/engine1)
@@ -520,9 +519,8 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
-/obj/machinery/firealarm{
-	layer = 3.3;
-	pixel_y = 26
+/obj/machinery/firealarm/alarms_hidden{
+	pixel_y = 23
 	},
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/barracks)
@@ -604,9 +602,8 @@
 /obj/machinery/button/remote/blast_door{
 	id = "mercblast"
 	},
-/obj/machinery/firealarm{
-	layer = 3.3;
-	pixel_y = 26
+/obj/machinery/firealarm/alarms_hidden{
+	pixel_y = 23
 	},
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/bridge)
@@ -1305,9 +1302,9 @@
 /area/ship/mercenary/hangar)
 "cL" = (
 /obj/effect/floor_decal/borderfloorblack,
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/alarms_hidden{
 	dir = 1;
-	pixel_y = -24
+	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/med1)
@@ -2089,12 +2086,11 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 9
 	},
-/obj/machinery/firealarm{
-	layer = 3.3;
-	pixel_y = 26
+/obj/fiftyspawner/uranium,
+/obj/fiftyspawner/uranium,
+/obj/machinery/firealarm/alarms_hidden{
+	pixel_y = 23
 	},
-/obj/fiftyspawner/uranium,
-/obj/fiftyspawner/uranium,
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/engineeringcntrl)
 "ep" = (
@@ -2650,9 +2646,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/alarms_hidden{
 	dir = 1;
-	pixel_y = -24
+	pixel_y = -26
 	},
 /turf/simulated/floor/plating,
 /area/ship/mercenary/engine)
@@ -2696,9 +2692,9 @@
 	dir = 9
 	},
 /obj/machinery/meter,
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/alarms_hidden{
 	dir = 1;
-	pixel_y = -24
+	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/atmos)
@@ -3232,9 +3228,8 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
-/obj/machinery/firealarm{
-	layer = 3.3;
-	pixel_y = 26
+/obj/machinery/firealarm/alarms_hidden{
+	pixel_y = 23
 	},
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/hall2)
@@ -3357,9 +3352,9 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/borderfloorblack,
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/alarms_hidden{
 	dir = 1;
-	pixel_y = -24
+	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/hall1)
@@ -3379,9 +3374,9 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/borderfloorblack,
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/alarms_hidden{
 	dir = 1;
-	pixel_y = -24
+	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/white,
 /area/ship/mercenary/fighter)
@@ -3429,9 +3424,8 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
-/obj/machinery/firealarm{
-	layer = 3.3;
-	pixel_y = 26
+/obj/machinery/firealarm/alarms_hidden{
+	pixel_y = 23
 	},
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/engineering)
@@ -3465,9 +3459,9 @@
 	dir = 5
 	},
 /obj/effect/floor_decal/borderfloorblack,
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/alarms_hidden{
 	dir = 1;
-	pixel_y = -24
+	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/white,
 /area/ship/mercenary/armoury)
@@ -3621,9 +3615,9 @@
 /area/ship/mercenary/engineering)
 "hp" = (
 /obj/effect/floor_decal/borderfloorblack,
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/alarms_hidden{
 	dir = 1;
-	pixel_y = -24
+	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/hangar)
@@ -3749,9 +3743,9 @@
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/borderfloorblack,
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/alarms_hidden{
 	dir = 1;
-	pixel_y = -24
+	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/med)

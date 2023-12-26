@@ -34,15 +34,15 @@
 	access = ACCESS_ENGINEERING_MAIN
 	cost = 250
 	p_drain = 0.025
-	var/datum/nano_module/alarm_monitor/engineering/arscreen
+	var/datum/tgui_module_old/alarm_monitor/engineering/nif/arscreen
 
 /datum/nifsoft/alarmmonitor/New()
 	..()
 	arscreen = new(nif)
 
 /datum/nifsoft/alarmmonitor/Destroy()
-		QDEL_NULL(arscreen)
-		return ..()
+	QDEL_NULL(arscreen)
+	return ..()
 
 /datum/nifsoft/alarmmonitor/activate()
 	if((. = ..()))

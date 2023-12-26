@@ -1,3 +1,7 @@
+/proc/create_actor_progress_bar(datum/event_args/actor/e_args, goal_number, atom/target)
+	// todo: also show initiator the progress bar
+	return new /datum/progressbar(e_args.performer, goal_number, target)
+
 /datum/progressbar
 	var/goal = 1
 	var/image/bar

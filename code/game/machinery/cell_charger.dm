@@ -143,7 +143,7 @@
 		)
 	item_state = "syringe_kit"
 	w_class = ITEMSIZE_NORMAL
-	materials = list(MAT_STEEL = 4000, MAT_GLASS = 1000)
+	materials_base = list(MAT_STEEL = 4000, MAT_GLASS = 1000)
 
 /obj/item/cell_charger_kit/attack_self(mob/user)
 	. = ..()

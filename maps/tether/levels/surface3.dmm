@@ -881,11 +881,11 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/iaa)
 "atO" = (
-/mob/living/simple_mob/animal/passive/cow,
 /obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 24
 	},
+/mob/living/simple_mob/animal/passive/cow,
 /turf/simulated/floor/grass,
 /area/hydroponics/cafegarden)
 "atT" = (
@@ -2409,6 +2409,7 @@
 /obj/item/clothing/mask/breath,
 /obj/item/clothing/suit/space/void/headofsecurity,
 /obj/item/clothing/head/helmet/space/void/headofsecurity,
+/obj/item/hardsuit/hazard/equipped,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/security/hos)
 "biw" = (
@@ -6280,6 +6281,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/triage)
+"duG" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled/white,
+/area/tether/surfacebase/medical/storage)
 "duJ" = (
 /obj/machinery/conveyor{
 	dir = 1;
@@ -6410,8 +6418,7 @@
 	open_layer = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /turf/simulated/wall,
 /area/tether/surfacebase/medical/storage)
@@ -8689,7 +8696,6 @@
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/paleblue/border,
 /obj/effect/floor_decal/corner/paleblue/border,
-/obj/machinery/door/firedoor/multi_tile,
 /obj/effect/floor_decal/borderfloorwhite/corner2,
 /obj/effect/floor_decal/corner/paleblue/bordercorner2,
 /obj/effect/floor_decal/borderfloorwhite/corner2,
@@ -8699,6 +8705,9 @@
 	name = "Medbay Airlock";
 	req_access = list(5);
 	req_one_access = list(5)
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/admin)
@@ -10989,7 +10998,7 @@
 	req_access = list(5);
 	req_one_access = list(5)
 	},
-/obj/machinery/door/firedoor/multi_tile,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/storage)
 "ghn" = (
@@ -11677,6 +11686,14 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/medsec_maintenance)
+"gzG" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/structure/disposalpipe/segment,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled/white,
+/area/tether/surfacebase/medical/lobby)
 "gzU" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -11720,8 +11737,7 @@
 	open_layer = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/medical/triage)
@@ -11836,8 +11852,7 @@
 	open_layer = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -12465,6 +12480,9 @@
 	},
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 1
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/admin)
@@ -14004,13 +14022,13 @@
 /obj/machinery/door/airlock/multi_tile/glass{
 	name = "Internal Affairs"
 	},
-/obj/machinery/door/firedoor/multi_tile,
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/red/border{
 	dir = 8
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/iaa)
 "icv" = (
@@ -14363,8 +14381,7 @@
 	open_layer = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/medical/uppernorthstairwell)
@@ -18294,8 +18311,7 @@
 	req_access = list(20)
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/item/clothing/head/helmet/space/void/captain,
 /obj/item/clothing/suit/space/void/captain,
@@ -18313,8 +18329,7 @@
 /area/rnd/outpost/xenobiology/outpost_first_aid)
 "kCR" = (
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -21782,6 +21797,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/triage)
 "mKp" = (
@@ -23453,8 +23469,7 @@
 /obj/structure/grille,
 /obj/machinery/door/firedoor/glass,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -25248,7 +25263,6 @@
 /obj/structure/sign/department/medbay{
 	pixel_x = -32
 	},
-/obj/machinery/door/firedoor/multi_tile,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/airlock/multi_tile/glass/polarized{
@@ -25257,6 +25271,7 @@
 	name = "Medbay Airlock";
 	req_one_access = list(5)
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/lobby)
 "oAH" = (
@@ -27379,8 +27394,7 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora_storage)
@@ -28810,8 +28824,7 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
@@ -29774,6 +29787,7 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/iaa)
 "raD" = (
@@ -36294,7 +36308,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/robotics/mechbay)
 "uJx" = (
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "uJD" = (
@@ -37605,8 +37619,7 @@
 	open_layer = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -39157,10 +39170,10 @@
 	name = "Medbay Airlock";
 	req_one_access = list(5)
 	},
-/obj/machinery/door/firedoor/multi_tile,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 1
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/triage)
 "wpb" = (
@@ -40212,8 +40225,7 @@
 	},
 /obj/machinery/portable_atmospherics/canister/air,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/effect/floor_decal/industrial/outline,
 /obj/machinery/door/window/northleft,
@@ -41803,8 +41815,7 @@
 "xKJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/shuttle/engine/heater,
 /turf/simulated/floor/plating,
@@ -70455,7 +70466,7 @@ hEQ
 ccI
 bfh
 gOY
-ygY
+gzG
 fKO
 fTJ
 hUc
@@ -73165,7 +73176,7 @@ bmE
 hsL
 qTV
 snx
-hsL
+duG
 imL
 rha
 caI

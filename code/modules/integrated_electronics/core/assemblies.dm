@@ -2,12 +2,12 @@
 // Specific subtypes are in their own folder.
 /obj/item/electronic_assembly
 	name = "electronic assembly"
-	obj_flags = CAN_BE_HIT
+	obj_flags = OBJ_RANGE_TARGETABLE | OBJ_MELEE_TARGETABLE
 	desc = "It's a case, for building small electronics with."
 	w_class = ITEMSIZE_SMALL
 	icon = 'icons/obj/integrated_electronics/electronic_setups.dmi'
 	icon_state = "setup_small"
-	item_flags = ITEM_NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	show_messages = TRUE
 	datum_flags = DF_USE_TAG
 	var/list/assembly_components = list()
@@ -149,7 +149,7 @@
 /obj/item/electronic_assembly/proc/check_interactivity(mob/user)
 	return ui_status(user, GLOB.physical_state) == UI_INTERACTIVE
 
-/obj/item/electronic_assembly/get_cell()
+/obj/item/electronic_assembly/get_cell(inducer)
 	return battery
 
 // TGUI

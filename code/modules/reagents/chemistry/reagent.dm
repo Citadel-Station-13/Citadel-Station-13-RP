@@ -11,15 +11,33 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 /datum/reagent
 	abstract_type = /datum/reagent
 
-	//? core
+	//* Core
 	/// id - must be unique and in CamelCase.
 	var/id
 	/// reagent flags - see [code/__DEFINES/reagents/flags.dm]
 	var/reagent_flags = NONE
 
-	//? legacy / unsorted
+	//* Identity
+	/// our name - visible from guidebooks and to admins
 	var/name = "Reagent"
-	var/description = "A non-descript chemical."
+	/// our description - visible from guidebooks and to admins
+	var/description = "A non-descript chemical of some kind."
+	/// player-facing name - visible via scan tools
+	/// defaults to [name]
+	/// overrides name in guidebook
+	var/display_name
+	/// player-facing desc - visible via scan tools
+	/// defaults to [desc]
+	/// overrides desc in guidebook
+	var/display_description
+
+	//* Guidebook
+	/// guidebook flags
+	var/reagent_guidebook_flags = NONE
+	/// guidebook category
+	var/reagent_guidebook_category = "Unsorted"
+
+	//? legacy / unsorted
 	var/taste_description = "bitterness"
 	/// How this taste compares to others. Higher values means it is more noticable
 	var/taste_mult = 1
@@ -279,6 +297,25 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 /datum/reagent/proc/on_update(atom/A)
 	return
 
+//* Guidebook
+
+/**
+ * Guidebook Data for TGUIGuidebookReagent
+ */
+/datum/reagent/proc/tgui_guidebook_data()
+	return list(
+		"id" = id,
+		"name" = display_name || name,
+		"desc" = display_description || description,
+		"category" = reagent_guidebook_category,
+		"flags" = reagent_flags,
+		"guidebookFlags" = reagent_guidebook_flags,
+		// todo: should this be here?
+		"alcoholStrength" = null,
+	)
+
+//* Holder - Application
+
 /**
  * called when we first get applied to a mob
  *
@@ -320,6 +357,8 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
  */
 // todo: implement this proc, replace touch_turf/reaction_turf and similar with it.
 // /datum/reagent/proc/apply_to_turf(turf/target, amount, list/data)
+
+//* Holder - Mixing
 
 /**
  * called when a new reagent is being mixed with this one to mix our data lists.

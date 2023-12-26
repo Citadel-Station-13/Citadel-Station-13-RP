@@ -10,6 +10,8 @@
 	var/key
 	/// available: null if don't know yet, FALSE if no dbcon, TRUE if loaded
 	var/available
+	/// is guest
+	var/is_guest
 	/// loading?
 	var/loading = FALSE
 	/// saving?
@@ -32,6 +34,7 @@
 	if(!src.ckey)
 		return
 	src.key = key
+	is_guest = IsGuestKey(key)
 	load()
 
 /**

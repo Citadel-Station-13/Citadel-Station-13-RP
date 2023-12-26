@@ -1,3 +1,7 @@
+/datum/physiology_modifier/intrinsic/species/teshari
+	carry_strength_add = CARRY_STRENGTH_ADD_TESHARI
+	carry_strength_factor = CARRY_FACTOR_MOD_TESHARI
+
 /datum/species/teshari
 	uid = SPECIES_ID_TESHARI
 	id = SPECIES_ID_TESHARI
@@ -6,6 +10,7 @@
 	category = "Teshari"
 	name_plural = "Tesharii"
 	uid = SPECIES_ID_TESHARI
+	mob_physiology_modifier = /datum/physiology_modifier/intrinsic/species/teshari
 
 	blurb = {"
 	A race of feathered raptors who developed alongside the Skrell, inhabiting

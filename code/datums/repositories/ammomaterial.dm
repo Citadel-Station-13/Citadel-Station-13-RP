@@ -12,7 +12,7 @@ var/global/datum/repository/ammomaterial/ammo_repository = new()
 	if(!(I in ammotypes))
 		ammotypes += I
 		var/obj/item/ammo_casing/temp = new I
-		ammotypes[I] = temp.materials
+		ammotypes[I] = temp.materials_base
 		qdel(temp)
 
 	return ammotypes[I]

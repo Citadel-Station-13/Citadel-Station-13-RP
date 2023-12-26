@@ -12,6 +12,8 @@
 	atom_flags = NOREACT
 	pass_flags = NONE
 	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED
+	// todo: temporary, as this is unbuildable
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 	var/max_n_of_items = 999 // Sorry but the BYOND infinite loop detector doesn't look things over 1000.
 	var/list/item_records = list()
 	var/datum/stored_item/currently_vending = null	//What we're putting out of the machine.
@@ -394,17 +396,18 @@
 	add_overlay(overlays_to_add)
 
 /obj/machinery/smartfridge/drying_rack/attackby(var/obj/item/O as obj, mob/user)
-	. = ..()
 	if(istype(O, /obj/item/stack/wetleather/))
 		var/obj/item/stack/wetleather/WL = O
-		if(WL.amount > 2)
-			to_chat("<span class='notice'>The rack can only fit one sheet at a time!</span>")
+		if(WL.amount > 1)
+			to_chat(user, "<span class='notice'>The rack can only fit one sheet at a time!</span>")
 			return 1
 		else
 			if(!user.attempt_insert_item_for_installation(WL, src))
 				return
 			stock(WL)
 			user.visible_message("<span class='notice'>[user] has added \the [WL] to \the [src].</span>", "<span class='notice'>You add \the [WL] to \the [src].</span>")
+	else
+		. = ..()
 
 /obj/machinery/smartfridge/drying_rack/proc/dry()
 	for(var/datum/stored_item/I in item_records)

@@ -669,7 +669,6 @@
 	dir = 4
 	},
 /obj/machinery/firealarm{
-	dir = 1;
 	pixel_y = 24
 	},
 /turf/simulated/floor/plating,
@@ -860,7 +859,6 @@
 	dir = 1;
 	frequency = 1438;
 	id = "cooling_in";
-	unacidable = 1;
 	use_power = 1
 	},
 /turf/simulated/floor/reinforced,
@@ -1254,7 +1252,6 @@
 /obj/machinery/atmospherics/component/unary/outlet_injector{
 	frequency = 1438;
 	id = "cooling_in";
-	unacidable = 1;
 	use_power = 1
 	},
 /turf/simulated/floor/reinforced,

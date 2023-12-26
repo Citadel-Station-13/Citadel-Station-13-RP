@@ -34,8 +34,8 @@
 	maxHealth = 200 // Tanky fuckers.
 	health = 200 // Tanky fuckers.
 
-	melee_damage_lower = 5
-	melee_damage_upper = 10
+	legacy_melee_damage_lower = 5
+	legacy_melee_damage_upper = 10
 
 	movement_cooldown = 5
 
@@ -163,6 +163,9 @@
 /mob/living/simple_mob/vore/solarmoth/lunarmoth
 	name = "Lunarmoth"
 	desc = "A peculiar adult variation of a solargrub. Don't stare for too long and start running."
+	icon_state = "lunarmoth"
+	icon_living = "lunarmoth"
+	icon_dead = "lunarmoth-dead"
 	var/nospampls = 0
 	cold_damage_per_tick = 0
 	//ATMOS
@@ -206,15 +209,13 @@
 	if(prob(10))
 		for(var/obj/structure/window/window in range(5, src))
 			if(prob(50))
-				window.shatter()
+				window.atom_destruction()
 	if(prob(20))
 		for(var/obj/machinery/door/firedoor/door in range(14, src)) //double viewrange
 			if(prob(5))
 				visible_message("<span class='danger'>Emergency Shutter malfunction!</span>")
 				door.blocked = 0
 				door.open(1)
-
 	spawn(100)
 		nospampls = 0
-
 

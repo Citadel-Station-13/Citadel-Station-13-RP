@@ -316,6 +316,15 @@
 /obj/spawner/window/reinforced/full,
 /turf/simulated/floor,
 /area/turbolift/rwest_mining/deep)
+"cL" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/plating,
+/area/outpost/mining_main/outpost/maintenance)
 "cP" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
@@ -456,6 +465,14 @@
 /area/outpost/mining_main/outpost/maintenance/north)
 "eI" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/blue,
+/turf/simulated/floor/plating,
+/area/outpost/mining_main/outpost/maintenance/north)
+"eM" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance/north)
 "eN" = (
@@ -706,7 +723,7 @@
 	dir = 1
 	},
 /obj/machinery/firealarm{
-	dir = 4;
+	dir = 8;
 	pixel_x = -24
 	},
 /turf/simulated/floor/wood,
@@ -811,11 +828,6 @@
 /turf/simulated/floor/tiled/steel/lythios43c,
 /area/rift/facility/interior/underground2)
 "il" = (
-/obj/effect/map_effect/portal/master/side_b{
-	dir = 8;
-	name = "westdeep_to_center";
-	portal_id = "westdeepstep"
-	},
 /turf/simulated/floor/sky/depths/west/lythios43c,
 /area/rift/surfacebase/outside/west_deep)
 "iq" = (
@@ -880,15 +892,9 @@
 /area/gateway)
 "iQ" = (
 /obj/structure/closet/crate/miningcar,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
+/obj/item/stack/ore/coal{
+	amount = 10
+	},
 /turf/simulated/floor/tiled/dark,
 /area/rift/facility/interior/temple)
 "iY" = (
@@ -2119,6 +2125,12 @@
 	name = "glacier wall"
 	},
 /area/rift/surfacebase/outside/west_deep)
+"sT" = (
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/outpost/mining_main/refinery)
 "sW" = (
 /obj/structure/table/standard,
 /obj/machinery/recharger,
@@ -3586,6 +3598,9 @@
 /turf/simulated/floor/water,
 /area/space)
 "FW" = (
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/gateway/prep_room)
 "FX" = (
@@ -3932,10 +3947,10 @@
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance/north)
 "Jt" = (
-/obj/machinery/door/firedoor/multi_tile,
 /obj/machinery/door/airlock/multi_tile/metal/mait{
 	name = "Maintenance Access"
 	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance/north)
 "Jv" = (
@@ -4283,11 +4298,11 @@
 	name = "Material Processing";
 	req_one_access = list(48)
 	},
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 1
-	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
+	},
+/obj/machinery/door/firedoor{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/outpost/mining_main/refinery)
@@ -4344,7 +4359,7 @@
 /turf/simulated/floor/tiled,
 /area/gateway)
 "Ne" = (
-/obj/machinery/door/firedoor/multi_tile,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/outpost/underground)
 "Nf" = (
@@ -4367,8 +4382,8 @@
 	dir = 4;
 	name = "Gateway Prep"
 	},
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 1
+/obj/machinery/door/firedoor{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/gateway/prep_room)
@@ -4655,9 +4670,7 @@
 /turf/simulated/floor/outdoors/rocks/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_deep)
 "QS" = (
-/obj/machinery/porta_turret/stationary{
-	health = 200
-	},
+/obj/machinery/porta_turret/stationary,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -4847,9 +4860,7 @@
 /turf/simulated/floor,
 /area/outpost/mining_main/outpost/recreation)
 "ST" = (
-/obj/machinery/porta_turret/stationary{
-	health = 200
-	},
+/obj/machinery/porta_turret/stationary,
 /obj/machinery/light{
 	dir = 8
 	},
@@ -5316,7 +5327,7 @@
 /obj/machinery/door/airlock/multi_tile/metal/mait{
 	name = "Maintenance Access"
 	},
-/obj/machinery/door/firedoor/multi_tile,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance)
 "WM" = (
@@ -5386,9 +5397,7 @@
 /turf/simulated/floor/tiled,
 /area/gateway)
 "Xy" = (
-/obj/machinery/porta_turret/stationary{
-	health = 200
-	},
+/obj/machinery/porta_turret/stationary,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/gateway)
 "Xz" = (
@@ -5496,9 +5505,6 @@
 /turf/simulated/floor/reinforced,
 /area/gateway)
 "Yw" = (
-/obj/effect/map_effect/portal/line/side_b{
-	dir = 8
-	},
 /turf/simulated/floor/sky/depths/west/lythios43c,
 /area/rift/surfacebase/outside/west_deep)
 "YA" = (
@@ -5635,6 +5641,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/outpost/mining_main/outpost/recreation)
 "ZQ" = (
@@ -5659,8 +5668,8 @@
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 1
+/obj/machinery/door/firedoor{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/outpost/mining_main/outpost/recreation)
@@ -34703,7 +34712,7 @@ vA
 JM
 KF
 KF
-KF
+Ne
 KF
 KF
 Lm
@@ -35249,7 +35258,7 @@ uJ
 uJ
 uJ
 uJ
-aV
+sT
 Mp
 uJ
 Nw
@@ -36225,7 +36234,7 @@ fa
 bM
 Hy
 ox
-bM
+eM
 NV
 Du
 Nw
@@ -38364,7 +38373,7 @@ ti
 mI
 kQ
 nG
-nG
+cL
 sI
 Dd
 XP

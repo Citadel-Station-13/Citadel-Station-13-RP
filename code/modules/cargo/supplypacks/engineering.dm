@@ -84,7 +84,7 @@
 			/obj/item/paper/solar
 			)
 	cost = 20
-	container_type = /obj/structure/closet/crate/focalpoint
+	container_type = /obj/structure/closet/crate/corporate/focalpoint
 	container_name = "Solar pack crate"
 
 /datum/supply_pack/eng/engine
@@ -327,14 +327,14 @@
 	name = "Point Defense Turret Circuit"
 	contains = list(/obj/item/circuitboard/pointdefense = 2)
 	cost = 20
-	container_type = /obj/structure/closet/crate/heph
+	container_type = /obj/structure/closet/crate/corporate/heph
 	container_name = "point defense turret circuit crate"
 
 /datum/supply_pack/eng/point_defense_control_circuit
 	name = "Point Defense Controller Circuit"
 	contains = list(/obj/item/circuitboard/pointdefense_control = 1)
 	cost = 30
-	container_type = /obj/structure/closet/crate/heph
+	container_type = /obj/structure/closet/crate/corporate/heph
 	container_name = "point defense mainframe circuit crate"
 
 /datum/supply_pack/eng/portable_pump

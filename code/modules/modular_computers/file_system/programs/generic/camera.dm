@@ -79,4 +79,4 @@
 	size = 8
 	available_on_ntnet = 1
 	requires_ntnet = 1
-	required_access = ACCESS_GENERAL_EXPLORER
+	required_access = ACCESS_GENERAL_PILOT

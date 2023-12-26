@@ -3,7 +3,7 @@
 	desc = "A special mechanical module made to store, sort, and apply standard machine parts."
 	icon_state = "RPED"
 	w_class = ITEMSIZE_HUGE
-	can_hold = list(/obj/item/stock_parts)
+	can_hold = list(/obj/item/stock_parts, /obj/item/cell/, /obj/item/reagent_containers/glass/beaker/)
 	storage_slots = 100
 	use_to_pickup = 1
 	allow_quick_gather = 1
@@ -12,7 +12,7 @@
 	display_contents_with_number = 1
 	max_w_class = ITEMSIZE_NORMAL
 	max_storage_space = 200
-	materials = list(
+	materials_base = list(
 		MAT_STEEL = 8000,
 		MAT_GLASS = 2500,
 	)
@@ -22,7 +22,7 @@
 	name = "basic part exchanger"
 	desc = "A basic part exchanger. It can't seem to store much."
 	storage_slots = 35
-	materials = list(
+	materials_base = list(
 		MAT_STEEL = 4000,
 		MAT_GLASS = 1500,
 	)
@@ -31,17 +31,9 @@
 	name = "advanced rapid part exchange device"
 	desc = "A special mechanical module made to store, sort, and apply standard machine parts.  This one has a greatly upgraded storage capacity"
 	icon_state = "RPED"
-	w_class = ITEMSIZE_HUGE
-	can_hold = list(/obj/item/stock_parts)
 	storage_slots = 200
-	use_to_pickup = 1
-	allow_quick_gather = 1
-	allow_quick_empty = 1
-	collection_mode = 1
-	display_contents_with_number = 1
-	max_w_class = ITEMSIZE_NORMAL
 	max_storage_space = 400
-	materials = list(
+	materials_base = list(
 		MAT_STEEL = 12000,
 		MAT_GLASS = 4000,
 	)

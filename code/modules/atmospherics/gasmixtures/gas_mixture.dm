@@ -543,6 +543,7 @@
 		return
 	var/pressure = return_pressure()
 	. += SPAN_NOTICE("Pressure: [round(pressure, 0.001)] kPa")
+	. += SPAN_NOTICE("Volume: [round(volume, 0.001)] L")
 	. += SPAN_NOTICE("Temperature: [round(temperature, 0.001)]&deg;K ([round(temperature - T0C, 0.001)]&deg;C)")
 	var/reagents = 0
 	var/other = 0

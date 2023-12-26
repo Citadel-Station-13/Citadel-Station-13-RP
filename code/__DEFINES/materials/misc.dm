@@ -1,5 +1,7 @@
 
 // Material Defines
+// todo: stop using these please, we're reliance on them out.
+#define MAT_ALGAE			"algae"
 #define MAT_BANANIUM		"bananium"
 #define MAT_CARBON			"carbon"
 #define MAT_CHITIN			"chitin"
@@ -43,18 +45,10 @@
 #define MAT_VERDANTIUM		"verdantium"
 #define MAT_WOOD			"wood"
 
-
 #define SHARD_SHARD			"shard"
 #define SHARD_SHRAPNEL		"shrapnel"
 #define SHARD_STONE_PIECE	"piece"
 #define SHARD_SPLINTER		"splinters"
 #define SHARD_NONE			""
-
-#define MATERIAL_UNMELTABLE	0x1
-#define MATERIAL_BRITTLE	0x2
-#define MATERIAL_PADDING	0x4
-
-/// Amount table damage is multiplied by if it is made of a brittle material (e.g. glass)
-#define TABLE_BRITTLE_MATERIAL_MULTIPLIER 4
 
 #define SHEET_MATERIAL_AMOUNT 2000

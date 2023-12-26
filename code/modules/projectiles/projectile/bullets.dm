@@ -50,10 +50,10 @@
 	var/chance = damage
 	if(istype(A, /turf/simulated/wall))
 		var/turf/simulated/wall/W = A
-		chance = round(damage/W.material.integrity*180)
+		chance = round(damage/W.material_outer.density*1.8)
 	else if(istype(A, /obj/machinery/door))
 		var/obj/machinery/door/D = A
-		chance = round(damage/D.maxhealth*180)
+		chance = round(damage/D.integrity_max*180)
 		if(D.glass) chance *= 2
 	else if(istype(A, /obj/structure/girder))
 		chance = 100
@@ -483,11 +483,14 @@
 	icon_state = "fireball"
 	damage = 10
 	embed_chance = 0
-	incendiary = 2
+	//incendiary = 2 //The Trail of Fire doesn't work.
 	flammability = 4
 	agony = 30
 	range = 4
 	vacuum_traversal = 0
+
+/obj/projectile/bullet/incendiary/flamethrower/weak
+	flammability = 2
 
 /obj/projectile/bullet/incendiary/flamethrower/large
 	damage = 15

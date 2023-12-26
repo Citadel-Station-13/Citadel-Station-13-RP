@@ -67,6 +67,7 @@
 	else
 		SStgui.try_update_ui(user, src, ui)
 
+
 /**
  * public
  *
@@ -222,6 +223,14 @@
  */
 /datum/proc/ui_close(mob/user, datum/tgui_module/module)
 	SIGNAL_HANDLER
+
+/**
+ * public
+ *
+ * Called on a UI's object when the UI is transferred from one mob to another.
+ */
+/datum/proc/on_ui_transfer(mob/old_mob, mob/new_mob, datum/tgui/ui)
+	return
 
 /**
  * verb

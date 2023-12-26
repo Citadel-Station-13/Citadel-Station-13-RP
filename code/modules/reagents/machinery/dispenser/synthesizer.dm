@@ -79,7 +79,6 @@
 		/datum/reagent/ethanol/cider,
 		/datum/reagent/ethanol/ale,
 		/datum/reagent/ethanol/mead,
-		/datum/reagent/ethanol/alcsassafras
 	)
 
 /obj/item/reagent_synth/cafe
@@ -121,6 +120,7 @@
 		/datum/reagent/drink/juice/lemon,
 		/datum/reagent/drink/soda/sassafras,
 		/datum/reagent/drink/soda/sarsaparilla,
+		/datum/reagent/drink/soda/gingerale,
 	)
 
 /obj/item/reagent_synth/medicine

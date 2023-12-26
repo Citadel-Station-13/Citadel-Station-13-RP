@@ -20,7 +20,7 @@
 /obj/structure/ashlander/production/attackby(var/obj/item/I, mob/user)
 	. = ..()
 	var/msg = insert_msg_override[I.type] || default_message
-	if(istype(I, /obj/item/ore))
+	if(istype(I, /obj/item/stack/ore))
 		to_chat(user, "<span class='danger'>You pour the [I] into the [src]! [msg]</span>")
 		attempt_consume()
 	if(istype(I, /obj/item/storage/bag))
@@ -47,7 +47,7 @@
  * @return TRUE / FALSE based on success / failure.
  */
 
-/obj/structure/ashlander/production/proc/attempt_consume(obj/item/ore/O, mob/user)
+/obj/structure/ashlander/production/proc/attempt_consume(obj/item/stack/ore/O, mob/user)
 	if (!istype(O))
 		return FALSE
 
@@ -60,7 +60,8 @@
 		if (istype(O, ty))
 			var/target_type = ore_mapping[ty]
 			new target_type(get_turf(src))
-			qdel(O)
+			if(!O.use(1))
+				return FALSE
 			return TRUE
 
 	return FALSE
@@ -70,13 +71,13 @@
 	desc = "A primitive forge of Scorian design. It is used primarily to convert iron and lead into more workable shapes."
 	default_message = "It begins to melt in the crucible."
 	ore_mapping = list(
-		/obj/item/ore/lead = /obj/item/stack/material/lead,
-        /obj/item/ore/copper = /obj/item/stack/material/copper,
-		/obj/item/ore/iron = /obj/item/stack/rods,
-		/obj/item/ore/glass = /obj/item/ore/slag
+		/obj/item/stack/ore/lead = /obj/item/stack/material/lead,
+        /obj/item/stack/ore/copper = /obj/item/stack/material/copper,
+		/obj/item/stack/ore/iron = /obj/item/stack/rods,
+		/obj/item/stack/ore/glass = /obj/item/stack/ore/slag
     )
 	insert_msg_override = list(
-		/obj/item/ore/iron = "It slowly feeds through the extruder."
+		/obj/item/stack/ore/iron = "It slowly feeds through the extruder."
 	)
 
 /obj/structure/ashlander/production/brickmaker
@@ -85,16 +86,19 @@
 	icon_state = "brickmaker"
 	default_message = "It is slowly compacted by the press."
 	ore_mapping = list(
-		/obj/item/ore/glass = /obj/item/stack/material/sandstone
+		/obj/item/stack/ore/glass = /obj/item/stack/material/sandstone
 	)
 
-/obj/structure/ashlander/production/brickmaker/attackby(obj/item/O, mob/user)
+/obj/structure/ashlander/production/brickmaker/attackby(obj/item/I, mob/user)
 	. = ..()
-	if(istype(O, /obj/item/ore/glass))
-		to_chat(user, "<span class='danger'>You pour the [O] into the [src]! After some work you compress it into a sturdy brick.</span>")
-		qdel(O)
-		var/turf/T = get_turf(src)
-		new /obj/item/stack/material/sandstone(T)
+	if(istype(I, /obj/item/stack/ore/glass))
+		var/obj/item/stack/ore/glass/O = I
+		if(O.use(1))
+			to_chat(user, "<span class='danger'>You pour the [O] into [src]! After some work you compress it into a sturdy brick.</span>")
+			var/turf/T = get_turf(src)
+			new /obj/item/stack/material/sandstone(T)
+		else
+			to_chat(user, SPAN_WARNING("You try to pour the [O] into [src], but realize [O] didn't actually exist. (you somehow had zero or less of a stack??? yell at coders how you did that.)"))
 
 //This is a child of the Hydroponics seed extractor, and was originally in that file. But I've moved it here since it's an Ashlander "machine".
 /obj/machinery/seed_extractor/press

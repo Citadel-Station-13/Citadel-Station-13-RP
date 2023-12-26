@@ -96,7 +96,7 @@
 /obj/machinery/portable_atmospherics/powered/scrubber/process(delta_time)
 	..()
 
-	if(on && cell?.charge)
+	if(on && (cell?.charge || !use_cell))
 		var/datum/gas_mixture/scrubbing = isnull(holding)? loc.return_air() : holding.air_contents
 		var/old_mols = scrubbing.total_moles
 		// todo: compensate for delta_time, right now this is not stable and will go faster/slower based on SSair tick rate.

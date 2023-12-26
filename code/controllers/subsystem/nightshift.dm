@@ -5,6 +5,11 @@ SUBSYSTEM_DEF(nightshift)
 	wait = 60 SECONDS
 	subsystem_flags = SS_NO_TICK_CHECK
 
+	/// Set from configuration - enabled nightshift flags.
+	var/nightshift_level = NONE
+
+	//! legacy below
+
 	var/nightshift_active = FALSE
 	var/nightshift_start_time = 19 HOURS + 30 MINUTES		//7:30 PM, station time
 	var/nightshift_end_time = 7 HOURS + 30 MINUTES		//7:30 AM, station time
@@ -64,7 +69,7 @@ SUBSYSTEM_DEF(nightshift)
 
 	for(var/obj/machinery/power/apc/apc in GLOB.apcs)
 		if(apc.z in (LEGACY_MAP_DATUM).station_levels)
-			apc.set_nightshift(active, TRUE)
+			apc.set_nightshift(active && (apc.area.nightshift_level & nightshift_level), TRUE)
 			CHECK_TICK
 
 	SSlighting.resume_instant()

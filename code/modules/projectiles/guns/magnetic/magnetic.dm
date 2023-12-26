@@ -35,7 +35,7 @@
 	QDEL_NULL(capacitor)
 	. = ..()
 
-/obj/item/gun/magnetic/get_cell()
+/obj/item/gun/magnetic/get_cell(inducer)
 	return cell
 
 /obj/item/gun/magnetic/process(delta_time)
