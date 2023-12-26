@@ -118,7 +118,7 @@
 /obj/item/rig/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	.["theme"] = theme_name
-	.["sprite64"] = isnull(cached_tgui_icon_b64)? (cached_tgui_icon_b64 = icon2base64(icon(icon, state_sealed))) : cached_tgui_icon_b64
+	.["sprite64"] = isnull(cached_tgui_icon_b64)? (cached_tgui_icon_b64 = icon2base64(icon(icon, state_sealed, NORTH, 1, FALSE))) : cached_tgui_icon_b64
 	var/list/piece_refs = list()
 	var/list/module_refs = list()
 	for(var/id in piece_lookup)

@@ -81,7 +81,7 @@
 		"sealed" = sealed,
 		"deployed" = is_deployed(),
 		"flags" = rig_piece_flags,
-		"sprite64" = isnull(cached_tgui_icon_b64)? (cached_tgui_icon_b64 = icon2base64(icon(physical.icon, state_sealed))) : cached_tgui_icon_b64
+		"sprite64" = isnull(cached_tgui_icon_b64)? (cached_tgui_icon_b64 = icon2base64(icon(physical.icon, state_sealed, NORTH, 1, FALSE))) : cached_tgui_icon_b64
 	)
 
 /datum/component/rig_piece/proc/push_piece_data(list/data)
