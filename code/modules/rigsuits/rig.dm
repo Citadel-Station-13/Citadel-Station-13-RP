@@ -114,6 +114,7 @@
 
 #warn impl all
 
+//* Main
 
 /obj/item/rig/Initialize(mapload, datum/rig_theme/theme_like)
 	. = ..()
