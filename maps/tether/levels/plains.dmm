@@ -62,10 +62,6 @@
 /obj/machinery/power/port_gen/pacman,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/outpost/exploration_shed)
-"p" = (
-/obj/effect/floor_decal/rust,
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
-/area/tether/outpost/exploration_shed)
 "r" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
@@ -139,6 +135,7 @@
 /area/tether/outpost/exploration_shed)
 "O" = (
 /obj/effect/floor_decal/rust,
+/obj/effect/step_trigger/teleporter/from_plains,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/outpost/exploration_shed)
 "P" = (
@@ -22852,10 +22849,10 @@ b
 "}
 (118,1,1) = {"
 O
-p
+B
 E
-p
-p
+B
+B
 F
 t
 d
@@ -23045,11 +23042,11 @@ u
 b
 "}
 (119,1,1) = {"
+O
 B
-p
-p
-p
-p
+B
+B
+B
 Y
 t
 d
@@ -23239,13 +23236,13 @@ u
 b
 "}
 (120,1,1) = {"
+O
 B
-p
-p
-p
-p
+B
+B
+B
 j
-p
+B
 d
 d
 d
@@ -23433,13 +23430,13 @@ u
 b
 "}
 (121,1,1) = {"
+O
 B
-p
-p
-p
-p
+B
+B
+B
 k
-p
+B
 d
 d
 w
@@ -23627,10 +23624,10 @@ u
 b
 "}
 (122,1,1) = {"
+O
 B
-p
-p
-p
+B
+B
 M
 F
 l
@@ -23821,13 +23818,13 @@ u
 b
 "}
 (123,1,1) = {"
+O
 B
-p
-p
-p
-p
+B
+B
+B
 j
-p
+B
 d
 w
 w
@@ -24015,13 +24012,13 @@ u
 b
 "}
 (124,1,1) = {"
+O
 B
-p
-p
-p
-p
+B
+B
+B
 k
-p
+B
 d
 d
 w
@@ -24209,11 +24206,11 @@ u
 b
 "}
 (125,1,1) = {"
+O
 B
-p
-p
-p
-p
+B
+B
+B
 Y
 t
 d
@@ -24403,8 +24400,8 @@ u
 b
 "}
 (126,1,1) = {"
+O
 B
-p
 m
 G
 o
