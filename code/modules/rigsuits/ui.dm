@@ -12,12 +12,12 @@
 		ui_queued_timer = addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/item/rig, ui_flush), 0, TIMER_STOPPABLE))
 
 /obj/item/rig/proc/ui_queue_piece(datum/component/rig_piece/piece)
-	LAZYADD(ui_queued_pieces, piece)
+	LAZYDISTINCTADD(ui_queued_pieces, piece)
 	if(isnull(ui_queued_timer))
 		ui_queued_timer = addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/item/rig, ui_flush), 0, TIMER_STOPPABLE))
 
 /obj/item/rig/proc/ui_queue_module(obj/item/rig_module/module)
-	LAZYADD(ui_queued_modules, module)
+	LAZYDISTINCTADD(ui_queued_modules, module)
 	if(isnull(ui_queued_timer))
 		ui_queued_timer = addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/item/rig, ui_flush), 0, TIMER_STOPPABLE))
 

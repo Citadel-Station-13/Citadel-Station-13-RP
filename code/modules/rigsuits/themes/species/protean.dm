@@ -14,6 +14,7 @@ AUTO_RIG_THEME(/species/protean)
 	insulated_gloves = TRUE
 	siemens_coefficient = 0.5
 	armor = /datum/armor/rigsuit/species/protean
+	#warn encumbrance
 
 /datum/armor/rigsuit/species/protean
 	melee = 0.3
