@@ -59,7 +59,7 @@ AUTO_RIG_THEME(/station/cargo/mining)
 	min_pressure_protect = ONE_ATMOSPHERE
 	max_pressure_protect = ONE_ATMOSPHERE
 	min_temperature_protect = COLD_PROTECTION_HEAVY_WINTER_CLOTHING
-	max_temperature_protect = HEAT_PROTECTION_LIGHT_THICK_CLOTHING
+	max_temperature_protect = HEAT_PROTECTION_LIGHT_FIRESUIT
 	#warn encumbrance
 
 /datum/armor/rigsuit/station/cargo/mining

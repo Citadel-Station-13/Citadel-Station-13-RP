@@ -16,15 +16,27 @@
 /obj/item/rig/proc/partially_activated()
 	return activation_state & RIG_ACTIVATION_IS_CYCLING
 
-/obj/item/rig/proc/activation_sequence(datum/event_args/actor/actor, instant, deploy, instant_seal)
+/**
+ * blocking proc
+ *
+ * uses existing activation operation if one is in progress
+ * interrupts existing deactivation operation if one is in progress
+ *
+ * @return TRUE / FALSE success / failure
+ */
+/obj/item/rig/proc/activation_sequence(datum/event_args/actor/actor, instant, deploy, auto_seal = TRUE, instant_seal)
 	#warn impl
 
-
+/**
+ * blocking proc
+ *
+ * uses existing activation operation if one is in progress
+ * interrupts existing deactivation operation if one is in progress
+ *
+ * @return TRUE / FALSE success / failure
+ */
 /obj/item/rig/proc/deactivation_sequence(datum/event_args/actor/actor, instant)
-	for(var/id in piece_lookup)
-		var/datum/component/rig_piece/piece = id
-		if(!piece.is_deployed())
-			continue
+
 
 
 	#warn impl

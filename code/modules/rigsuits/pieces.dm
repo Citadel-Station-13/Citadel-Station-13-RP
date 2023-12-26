@@ -1,27 +1,77 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
-/obj/item/rig/proc/deploy_piece(datum/event_args/actor/actor, datum/component/rig_piece/piece, seal = TRUE, instant_seal, force)
+/// Regarding sealing / unsealing
+///
+/// RIG pieces are nominally sealed if the RIG is activated,
+/// unsealed otherwise.
+///
+/// They must unseal to retract.
+/// They should seal after deployment.
+
+/**
+ * does not block
+ *
+ * @return TRUE/FALSE success/failure
+ */
+/obj/item/rig/proc/deploy_piece_sync(datum/component/rig_piece/piece, auto_seal = TRUE, instant_seal = FALSE, force = FALSE)
 	#warn impl
 
-/obj/item/rig/proc/undeploy_piece(datum/event_args/actor/actor, datum/component/rig_piece/piece, unseal = TRUE, instant_unseal)
+/**
+ * blocks on unsealing
+ *
+ * @return TRUE/FALSE success/failure
+ */
+/obj/item/rig/proc/undeploy_piece_sync(datum/component/rig_piece/piece, instant_unseal = FALSE, force = FALSE)
 	#warn impl
 
-/obj/item/rig/proc/seal_piece(datum/event_args/actor/actor, datum/component/rig_piece/piece, instant, override)
+/**
+ * blocks on sealing
+ *
+ * if existing sealing operation is occurring, uses that instead of starting a new one.
+ * if existing unsealing operation is occurring, interrupts that.
+ *
+ * @return TRUE/FALSE success/failure
+ */
+/obj/item/rig/proc/seal_piece_sync(datum/component/rig_piece/piece, instant = FALSE)
 	#warn impl
 
-/obj/item/rig/proc/unseal_piece(datum/event_args/actor/actor, datum/component/rig_piece/piece, instant, override)
+/**
+ * blocks on unsealing
+ *
+ * if existing unsealing operation is occurring, uses that instead of starting a new one.
+ * if existing sealing operation is occurring, interrupts that.
+ *
+ * @return TRUE/FALSE success/failure
+ */
+/obj/item/rig/proc/unseal_piece_sync(datum/component/rig_piece/piece, instant = FALSE)
+	#warn impl
+
+/**
+ * deploys all pieces; non-blocking
+ */
+/obj/item/rig/proc/deploy_suit_async(auto_seal = TRUE, instant_seal = FALSE, force = FALSE)
+	#warn impl
+
+/**
+ * deploys all pieces; blocking
+ */
+/obj/item/rig/proc/deploy_suit_sync(auto_seal = TRUE, instant_seal = FALSE, force = FALSE)
+	#warn impl
+
+/**
+ * undeploys all pieces; non-blocking
+ */
+/obj/item/rig/proc/undeploy_suit_async(instant_unseal = FALSE, force = FALSE)
+	#warn impl
+
+/**
+ * undeploys all pieces; blocking
+ */
+/obj/item/rig/proc/undeploy_suit_sync(instant_unseal = FALSE, force = FALSE)
 	#warn impl
 
 #warn impl
-
-/obj/item/rig/proc/deploy_async(datum/event_args/actor/actor, seal = TRUE, instant_seal, force)
-
-/obj/item/rig/proc/undeploy_async(datum/event_args/actor/actor, unseal = TRUE, instant_unseal)
-
-/obj/item/rig/proc/seal_async(datum/event_args/actor/actor, instant, override)
-
-/obj/item/rig/proc/unseal_async(datum/event_args/actor/actor, instant, override)
 
 /obj/item/rig/proc/add_piece(datum/component/rig_piece/piece)
 	piece.lookup_id = "[++next_lookup_id]"
