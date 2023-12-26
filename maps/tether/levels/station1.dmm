@@ -757,13 +757,6 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/button/remote/blast_door{
-	desc = "A remote control-switch for the engine control room blast doors.";
-	id = "EngineEmitterPortWest2";
-	name = "Engine Room Blast Doors";
-	pixel_x = 25;
-	req_one_access = list(11,24)
-	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
@@ -820,9 +813,20 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/engi_wash)
 "bC" = (
-/obj/machinery/suit_storage_unit/atmos,
-/turf/simulated/floor/tiled,
-/area/engineering/engine_eva)
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor,
+/area/constructionsite)
 "bD" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/blue/border,
@@ -956,6 +960,10 @@
 /obj/machinery/floodlight,
 /turf/simulated/floor/plating,
 /area/maintenance/station/eng_lower)
+"bW" = (
+/obj/machinery/suit_storage_unit/engineering,
+/turf/simulated/floor/tiled,
+/area/engineering/engine_eva)
 "bX" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -1110,21 +1118,9 @@
 /turf/simulated/floor,
 /area/maintenance/station/eng_lower)
 "cn" = (
-/obj/machinery/door/blast/regular{
-	density = 0;
-	icon_state = "pdoor0";
-	id = "englockdown";
-	name = "Engineering Lockdown";
-	opacity = 0;
-	dir = 4
-	},
-/obj/effect/paint_stripe/sun,
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
-	name = "CE Polarized";
-	id = "ce_office"
-	},
-/turf/simulated/floor,
-/area/crew_quarters/heads/chief)
+/obj/machinery/suit_storage_unit/atmos,
+/turf/simulated/floor/tiled,
+/area/engineering/engine_eva)
 "co" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -3141,6 +3137,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
+"gf" = (
+/obj/machinery/holoposter{
+	pixel_y = -30
+	},
+/turf/simulated/floor,
+/area/constructionsite)
 "gg" = (
 /obj/machinery/computer/supplycomp,
 /turf/simulated/floor/tiled/dark,
@@ -3950,10 +3952,6 @@
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor,
 /area/constructionsite)
-"hU" = (
-/obj/machinery/suit_storage_unit/engineering,
-/turf/simulated/floor/tiled,
-/area/engineering/engine_eva)
 "hV" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -8792,16 +8790,6 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/docks)
 "rI" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/obj/machinery/door/blast/regular{
-	dir = 4;
-	id = "EngineEmitterPortWest2";
-	layer = 3.3;
-	name = "Engine Gas Storage"
-	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/atmos/backup)
 "rJ" = (
@@ -10052,15 +10040,9 @@
 /turf/simulated/floor/plating,
 /area/tether/exploration/staircase)
 "uu" = (
-/obj/machinery/door/firedoor{
-	dir = 8
-	},
-/obj/machinery/door/airlock{
-	id_tag = "bathroomlock19";
-	name = "Engineering Washroom Toilet 1"
-	},
-/turf/simulated/floor/tiled/white,
-/area/crew_quarters/sleep/engi_wash)
+/obj/machinery/light/small,
+/turf/simulated/floor,
+/area/constructionsite)
 "uv" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -10812,6 +10794,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/exploration/equipment)
+"wa" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/airlock/maintenance/common,
+/turf/simulated/floor,
+/area/constructionsite)
 "wb" = (
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 5
@@ -12142,7 +12130,7 @@
 /area/maintenance/abandonedlibrary)
 "yH" = (
 /obj/machinery/holoposter,
-/turf/simulated/wall,
+/turf/simulated/wall/prepainted,
 /area/constructionsite)
 "yI" = (
 /obj/machinery/power/breakerbox/activated{
@@ -12754,20 +12742,12 @@
 /turf/simulated/floor/tiled,
 /area/bridge/secondary/hallway)
 "zW" = (
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/door/blast/regular{
-	dir = 4;
-	id = "EngineEmitterPortWest2";
-	layer = 3.3;
-	name = "Engine Gas Storage"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled/steel_grid,
-/area/engineering/atmos/backup)
+/obj/machinery/door/airlock/maintenance/common,
+/turf/simulated/floor,
+/area/constructionsite)
 "zX" = (
 /obj/effect/floor_decal/rust,
-/turf/simulated/floor,
+/turf/simulated/wall/prepainted,
 /area/constructionsite)
 "zY" = (
 /obj/structure/cryofeed{
@@ -13079,37 +13059,21 @@
 /turf/simulated/floor/plating,
 /area/storage/emergency_storage/emergency4)
 "AE" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "englockdown";
+	name = "Engineering Lockdown";
+	opacity = 0;
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
+/obj/effect/paint_stripe/sun,
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	name = "CE Polarized";
+	id = "ce_office"
 	},
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/yellow/border,
-/obj/effect/floor_decal/borderfloor/corner2{
-	dir = 9
-	},
-/obj/effect/floor_decal/corner/yellow/bordercorner2{
-	dir = 9
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals7{
-	dir = 8
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals7{
-	dir = 1
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/door/airlock/multi_tile/glass{
-	dir = 4
-	},
-/turf/simulated/floor/tiled,
-/area/engineering/hallway)
+/turf/simulated/floor,
+/area/crew_quarters/heads/chief)
 "AF" = (
 /obj/structure/closet/crate,
 /obj/random/junk,
@@ -13599,6 +13563,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
+/obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor,
 /area/constructionsite)
 "BG" = (
@@ -14368,6 +14333,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 9
 	},
+/obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor,
 /area/constructionsite)
 "Df" = (
@@ -15502,6 +15468,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor,
 /area/constructionsite)
 "Fn" = (
@@ -18014,12 +17981,6 @@
 /obj/structure/bed/chair/office/dark,
 /turf/simulated/floor/tiled,
 /area/bridge/secondary)
-"Km" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/random/cutout,
-/turf/simulated/floor,
-/area/constructionsite)
 "Kn" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -18978,7 +18939,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 9
 	},
-/turf/simulated/floor,
+/turf/simulated/wall/prepainted,
 /area/constructionsite)
 "Mn" = (
 /obj/structure/bed/chair/office/dark,
@@ -19440,6 +19401,26 @@
 	},
 /turf/simulated/floor/wood,
 /area/bridge/meeting_room)
+"Nn" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/yellow/border,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/engineering/hallway)
 "No" = (
 /obj/machinery/vending/coffee{
 	dir = 8
@@ -23027,6 +23008,16 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor,
 /area/maintenance/station/eng_lower)
+"Uu" = (
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
+/obj/machinery/door/airlock{
+	id_tag = "bathroomlock19";
+	name = "Engineering Washroom Toilet 1"
+	},
+/turf/simulated/floor/tiled/white,
+/area/crew_quarters/sleep/engi_wash)
 "Uv" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -23690,11 +23681,23 @@
 	},
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/yellow/border,
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/yellow/bordercorner2{
+	dir = 9
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 1
+	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/door/firedoor{
-	dir = 8
+/obj/machinery/door/airlock/multi_tile/glass{
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
@@ -41973,7 +41976,7 @@ IL
 yn
 yn
 iN
-cn
+AE
 iN
 yn
 yn
@@ -42146,7 +42149,7 @@ VX
 VX
 VX
 VX
-zW
+rI
 yS
 LN
 na
@@ -42157,10 +42160,10 @@ Ww
 Av
 pw
 Rs
-bC
+cn
 lz
 Xt
-hU
+bW
 yv
 Kx
 Tq
@@ -42351,10 +42354,10 @@ QM
 Ik
 Hh
 Rs
-bC
+cn
 mN
 mN
-hU
+bW
 xy
 Cs
 en
@@ -42545,10 +42548,10 @@ Ml
 un
 xx
 Rs
-bC
+cn
 mN
 mN
-hU
+bW
 xy
 jb
 Kh
@@ -42742,7 +42745,7 @@ Rs
 iX
 VT
 Wj
-hU
+bW
 xy
 SC
 gr
@@ -42777,7 +42780,7 @@ ZZ
 ZZ
 ZZ
 ZZ
-Ey
+ZZ
 Nh
 ZZ
 ZZ
@@ -43909,7 +43912,7 @@ Hv
 zl
 xh
 bH
-VK
+Nn
 hj
 NR
 if
@@ -44103,7 +44106,7 @@ rc
 lj
 zl
 jb
-AE
+VK
 hj
 gh
 dW
@@ -46281,7 +46284,7 @@ ZZ
 ZZ
 ZZ
 ZZ
-Ey
+ZZ
 ZZ
 ZZ
 ZZ
@@ -46619,13 +46622,13 @@ gJ
 Fj
 cW
 tL
-uu
+Uu
 Xp
-uu
+Uu
 Xp
-uu
+Uu
 Xp
-uu
+Uu
 Rh
 JF
 Me
@@ -47824,7 +47827,7 @@ lf
 lf
 sC
 Qg
-Qg
+LC
 Qg
 MJ
 BP
@@ -48011,11 +48014,11 @@ Qg
 fv
 Qg
 Qg
-Qg
-Qg
-Qg
-Qg
-Qg
+LC
+LC
+LC
+LC
+LC
 ZW
 GZ
 BF
@@ -48197,7 +48200,7 @@ SK
 SK
 LC
 LC
-Qg
+LC
 Ap
 aF
 Qg
@@ -48205,13 +48208,13 @@ Qg
 Ji
 fv
 Qg
-Qg
+LC
 Jh
 fv
 Qg
-Qg
+LC
 rF
-LR
+Qg
 Mm
 Qg
 UR
@@ -48391,23 +48394,23 @@ nf
 SK
 Vj
 MJ
-Qg
-Ap
+LC
+bC
 Qg
 Qg
 Qg
 Qg
 Qg
 fv
+LC
 Qg
 Qg
 Qg
-Qg
-LR
+LC
 Ap
 Qg
+LC
 mf
-Qg
 UR
 Vj
 Rm
@@ -48585,7 +48588,7 @@ Wc
 SK
 bS
 Wp
-Qg
+LC
 Si
 Jh
 Qg
@@ -48593,15 +48596,15 @@ Qg
 fv
 Wp
 Qg
+LC
 Qg
 Qg
-LR
 Qg
-Qg
+LC
 Ap
-LR
+uu
+LC
 Wp
-Qg
 gt
 Vj
 Rm
@@ -48779,25 +48782,25 @@ Jq
 SK
 UR
 yH
-Qg
+LC
 Ap
 Qg
 Qg
 bJ
-Qg
+LC
 yH
-Qg
-LR
+LC
+LC
 fv
 fv
 fv
-LR
+LC
 Ap
-Qg
-yH
-YM
-GD
-Vj
+gf
+LC
+LC
+LC
+LC
 Rm
 ZZ
 ZZ
@@ -48978,19 +48981,19 @@ af
 Qg
 Qg
 Qg
-Qg
+LC
 pA
 Qg
 Qg
 Qg
-LR
-Qg
-Qg
+LC
+LC
+LC
 Ap
-LR
-pA
+LC
+LC
 Qg
-jj
+GD
 Vj
 Rm
 ZZ
@@ -49167,19 +49170,19 @@ Jq
 SK
 jj
 Qg
-Qg
+LC
 Ap
 fv
 Qg
 Qg
-Qg
+LC
 YM
 Qg
 Qg
 Qg
+LC
 Qg
 Qg
-LR
 Ap
 Qg
 Mm
@@ -49361,22 +49364,22 @@ SK
 SK
 Uj
 fv
-Qg
+LC
 Pc
 Qg
 fv
 Qg
-Qg
+LC
 Qg
 aF
 Qg
 fv
-Qg
+LC
 Qg
 Qg
 cI
-Km
-GZ
+tV
+wa
 tV
 zz
 mz
@@ -49555,17 +49558,17 @@ Qg
 Qg
 fv
 Qg
-Bg
+LC
 Fm
-Qg
-Qg
-fv
-Qg
-Qg
-Qg
-Qg
-Qg
-Qg
+LC
+LC
+LC
+LC
+LC
+LC
+zW
+LC
+LC
 fv
 Qg
 Qg
@@ -49749,22 +49752,22 @@ Vj
 KA
 AF
 Wp
-Qg
+Bg
 ll
 Qg
 Qg
-Qg
+fv
 Qg
 Jh
 Qg
 Qg
 Qg
+LC
 Qg
 Qg
 Qg
 Qg
-Qg
-Qg
+LC
 Rm
 Rm
 Rm
@@ -49953,12 +49956,12 @@ Vj
 Vj
 Vj
 Wp
-Vj
+LC
 kq
 Vj
 Vj
 Qg
-Qg
+LR
 Rm
 Vp
 Vp
