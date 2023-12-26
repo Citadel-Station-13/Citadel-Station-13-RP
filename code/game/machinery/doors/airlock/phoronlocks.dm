@@ -17,26 +17,6 @@
 	icon = 'icons/obj/airlock_machines.dmi'
 	icon_state = "airlock_sensor_off"
 	name = "phoronlock sensor"
-	var/previousPhoron
-
-/obj/machinery/airlock_sensor/phoron/process()
-	if(on)
-		var/datum/gas_mixture/air_sample = return_air()
-		var/pressure = round(air_sample.return_pressure(), 0.1)
-		var/phoron = (GAS_ID_PHORON in air_sample.gas) ? round(air_sample.gas[GAS_ID_PHORON], 0.1) : 0
-
-		if(abs(pressure - previousPressure) > 0.1 || previousPressure == null || abs(phoron - previousPhoron) > 0.1 || previousPhoron == null)
-			var/datum/signal/signal = new
-			signal.transmission_method = TRANSMISSION_RADIO //radio signal
-			signal.data["tag"] = id_tag
-			signal.data["timestamp"] = world.time
-			signal.data["pressure"] = num2text(pressure)
-			signal.data["phoron"] = num2text(phoron)
-			radio_connection.post_signal(src, signal, range = AIRLOCK_CONTROL_RANGE, radio_filter = RADIO_AIRLOCK)
-			previousPressure = pressure
-			previousPhoron = phoron
-			alert = (pressure < ONE_ATMOSPHERE*0.8) || (phoron > 0.5)
-			update_icon()
 
 /obj/machinery/airlock_sensor/phoron/airlock_interior
 	command = "cycle_interior"
@@ -49,6 +29,7 @@
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary
 	var/frequency = 0
 	var/datum/radio_frequency/radio_connection
+	scrubbing_ids = list("phoron", "co2")
 
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/Initialize(mapload)
 	. = ..()
@@ -94,7 +75,7 @@
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock		//Special scrubber with bonus inbuilt heater
 	active_power_usage = 2000
 	efficiency_multiplier = 4
-	var/target_temp = T20C
+	var/target_temp = T20C + 2
 	var/heating_power = 150000
 
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock/heater //Variant for use on rift
@@ -116,9 +97,6 @@
 //
 // PHORON LOCK CONTROLLER
 //
-/obj/machinery/embedded_controller/radio/airlock/phoron
-	var/tag_scrubber
-
 /obj/machinery/embedded_controller/radio/airlock/phoron/Initialize(mapload)
 	. = ..()
 	program = new/datum/computer/file/embedded_program/airlock/phoron(src)
@@ -127,11 +105,13 @@
 /obj/machinery/embedded_controller/radio/airlock/phoron
 	name = "Phoron Lock Controller"
 	valid_actions = list("cycle_ext", "cycle_int", "force_ext", "force_int", "abort", "secure")
+	var/tag_scrubber
 
 /obj/machinery/embedded_controller/radio/airlock/phoron/ui_data(mob/user)
 	. = list(
 		"chamber_pressure" = program.memory["chamber_sensor_pressure"],
 		"chamber_phoron" = program.memory["chamber_sensor_phoron"],
+		"chamber_temperature" = round(program.memory["chamber_sensor_temperature"] - 273.15, 0.1),
 		"exterior_status" = program.memory["exterior_status"],
 		"interior_status" = program.memory["interior_status"],
 		"processing" = program.memory["processing"],
@@ -144,14 +124,51 @@
 
 //Handles the control of airlocks
 
-#define STATE_IDLE			0
-#define STATE_PREPARE		1
-#define STATE_CLEAN			16
-#define STATE_PRESSURIZE	17
+//Stable states
+#define STATE_UNDEFINED -1 //Manual overrides
+#define STATE_CLOSED 0 //Both doors closed
+#define STATE_OPEN_IN 1 //Interior doors open, exterior closed
+#define STATE_OPEN_OUT 2 //Exterior doors open, interior closed
 
-#define TARGET_NONE			0
-#define TARGET_INOPEN		-1
-#define TARGET_OUTOPEN		-2
+//Transitional states
+#define STATE_CYCLING_IN 3 //Matching indoors pressure and composition
+#define STATE_CYCLING_OUT 4 //Matching outdoors pressure
+#define STATE_SEALING 5 //Closing both doors
+
+/datum/computer/file/embedded_program/airlock/phoron/proc/stop_everything()
+	signalScrubber(tag_scrubber, 0)//Turn off scrubbers
+	signalPump(tag_airpump, 0, 1, memory["target_pressure"])//Stop the pumps
+	state = STATE_UNDEFINED
+	memory["processing"] = FALSE
+
+/datum/computer/file/embedded_program/airlock/phoron/receive_user_command(command)
+	switch(command)
+		if("cycle_ext")
+			state = STATE_CYCLING_OUT
+			memory["processing"] = TRUE
+		if("cycle_int")
+			state = STATE_CYCLING_IN
+			memory["processing"] = TRUE
+		if("secure")
+			state = STATE_SEALING
+			memory["processing"] = TRUE
+		if("force_ext")
+			state = STATE_UNDEFINED
+			memory["processing"] = FALSE
+			if(memory["exterior_status"]["state"] == "open")
+				toggleDoor(memory["exterior_status"],tag_exterior_door, 1, "close")
+			else if(memory["exterior_status"]["state"] == "closed")
+				toggleDoor(memory["exterior_status"],tag_exterior_door, 1, "open")
+		if("force_int")
+			state = STATE_UNDEFINED
+			memory["processing"] = FALSE
+			if(memory["interior_status"]["state"] == "open")
+				toggleDoor(memory["interior_status"],tag_interior_door, 1, "close")
+			else if(memory["interior_status"]["state"] == "closed")
+				toggleDoor(memory["interior_status"],tag_interior_door, 1, "open")
+		if("abort")
+			stop_everything()
+
 
 /datum/computer/file/embedded_program/airlock/phoron
 	var/tag_scrubber
@@ -164,6 +181,7 @@
 	memory["external_sensor_pressure"] = 82.4
 	memory["external_sensor_phoron"] = (82.4*CELL_VOLUME) / (8.134 * 234) // n = pv/rt
 	memory["internal_sensor_phoron"] = 0
+	memory["target_temperature"] = T20C
 	memory["scrubber_status"] = "unknown"
 	memory["target_phoron"] = 0.1
 	memory["secure"] = 1
@@ -178,14 +196,19 @@
 	if(..()) return 1
 
 	if(receive_tag==tag_chamber_sensor)
-		memory["chamber_sensor_phoron"] = text2num(signal.data["phoron"])
-		memory["chamber_sensor_pressure"] = text2num(signal.data["pressure"])
+		memory["chamber_sensor_phoron"] = round(text2num(signal.data["phoron"]), 0.1)
+		memory["chamber_sensor_pressure"] = round(text2num(signal.data["pressure"]), 0.1)
+		memory["chamber_sensor_temperature"] = round(text2num(signal.data["temperature"]), 0.1)
 
 	else if(receive_tag==tag_exterior_sensor)
-		memory["external_sensor_phoron"] = text2num(signal.data["phoron"])
+		memory["external_sensor_phoron"] = round(text2num(signal.data["phoron"]), 0.1)
+		memory["external_sensor_pressure"] = round(text2num(signal.data["pressure"]), 0.1)
+		memory["external_sensor_temperature"] = round(text2num(signal.data["temperature"]), 0.1)
 
 	else if(receive_tag==tag_interior_sensor)
-		memory["internal_sensor_phoron"] = text2num(signal.data["phoron"])
+		memory["internal_sensor_phoron"] = round(text2num(signal.data["phoron"]), 0.1)
+		memory["internal_sensor_pressure"] = round(text2num(signal.data["pressure"]), 0.1)
+		memory["internal_sensor_temperature"] = round(text2num(signal.data["temperature"]), 0.1)
 
 	else if(receive_tag==tag_scrubber)
 		if(signal.data["power"])
@@ -198,72 +221,58 @@
 // But lets evaluate how it actually works in the game.
 /datum/computer/file/embedded_program/airlock/phoron/process()
 	switch(state)
-		if(STATE_IDLE)
-			if(target_state == TARGET_INOPEN)
-				// TODO - Check if okay to just open immediately
-				close_doors()
-				state = STATE_PREPARE
-			else if(target_state == TARGET_OUTOPEN)
-				close_doors()
-				state = STATE_PREPARE
-			// else if(memory["scrubber_status"] != "off")
-			// 	signalScrubber(tag_scrubber, 0) // Keep scrubbers off while idle
-			// else if(memory["pump_status"] != "off")
-			// 	signalPump(tag_airpump, 0) // Keep vent pump off while idle
-
-		if(STATE_PREPARE)
-			if (check_doors_secured())
-				if(target_state == TARGET_INOPEN)
-					playsound(master, 'sound/AI/airlockin.ogg', 100, 0)
-					if(memory["chamber_sensor_phoron"] > memory["target_phoron"])
-						state = STATE_CLEAN
-						signalScrubber(tag_scrubber, 1) // Start cleaning
-						signalPump(tag_airpump, 1, 1, memory["target_pressure"]) // And pressurizng to offset losses
-					else // We can go directly to pressurize
-						state = STATE_PRESSURIZE
-						signalPump(tag_airpump, 1, 1, memory["target_pressure"]) // Send a signal to start pressurizing
-				// We must be cycling outwards! Shut down the pumps and such!
-				else if(memory["scrubber_status"] != "off")
-					signalScrubber(tag_scrubber, 0)
-				else if(memory["pump_status"] != "off")
-					signalPump(tag_airpump, 0)
-				else
-					playsound(master, 'sound/AI/airlockout.ogg', 100, 0)
-					cycleDoors(target_state)
-					state = STATE_IDLE
-					target_state = TARGET_NONE
-
-		if(STATE_CLEAN)
-			playsound(master, 'sound/machines/2beep.ogg', 100, 0)
-			if(!check_doors_secured())
-				//the airlock will not allow itself to continue to cycle when any of the doors are forced open.
-				stop_cycling()
-			else if(memory["chamber_sensor_phoron"] <= memory["target_phoron"])
-				// Okay, we reached target phoron! Turn off the scrubber
+		if(STATE_UNDEFINED)
+			return
+		if(STATE_CLOSED)//First the three stable states:
+			return
+		if(STATE_OPEN_IN)
+			return
+		if(STATE_OPEN_OUT)
+			return
+		if(STATE_CYCLING_IN)//Now the changing states:
+			if(memory["exterior_status"]["state"] == "open")
+				toggleDoor(memory["exterior_status"],tag_exterior_door, 1, "close")
+			else if(memory["chamber_sensor_phoron"] > memory["target_phoron"])
+				signalScrubber(tag_scrubber, 1) // Start cleaning
+				signalPump(tag_airpump, 1, 1, memory["target_pressure"]) // And pressurizng to offset losses
+				memory["processing"] = TRUE
+			else if(memory["chamber_sensor_temperature"] < memory["target_temperature"])
+				signalScrubber(tag_scrubber, 1)//the scrubbers also work as heats because fuck making sense
+				memory["processing"] = TRUE
+			else if(memory["chamber_sensor_pressure"] < memory["internal_sensor_pressure"] - 0.1)
+				signalScrubber(tag_scrubber, 0) // stop cleaning
+				signalPump(tag_airpump, 1, 1, memory["target_pressure"]) // continue pressurizng to offset losses
+				memory["processing"] = TRUE
+			else // both phoron and pressure levels are acceptable
+				toggleDoor(memory["interior_status"],tag_interior_door, 1, "open")
 				signalScrubber(tag_scrubber, 0)
-				// And proceed to finishing pressurization
-				state = STATE_PRESSURIZE
-
-		if(STATE_PRESSURIZE)
-			playsound(master, 'sound/machines/2beep.ogg', 100, 0)
-			if(!check_doors_secured())
-				//the airlock will not allow itself to continue to cycle when any of the doors are forced open.
-				stop_cycling()
-			else if(memory["chamber_sensor_pressure"] >= memory["target_pressure"] * 0.95)
-				signalPump(tag_airpump, 0)	// send a signal to stop pumping. No need to wait for it tho.
-				cycleDoors(target_state)
-				playsound(master, 'sound/AI/airlockdone.ogg', 100, 0)
-				state = STATE_IDLE
-				target_state = TARGET_NONE
-
-	memory["processing"] = (state != target_state)
+				signalPump(tag_airpump, 0, 1, memory["external_sensor_pressure"])//Turn the pump off
+				state = STATE_OPEN_IN
+				memory["processing"] = FALSE
+		if(STATE_CYCLING_OUT)
+			if(memory["interior_status"]["state"] == "open")
+				toggleDoor(memory["interior_status"],tag_interior_door, 1, "close")
+			else if((memory["chamber_sensor_pressure"] - memory["external_sensor_pressure"]) > 1 )
+				signalPump(tag_airpump, 1, 0, memory["external_sensor_pressure"]) // siphon air out to avoid being pulled from your feet
+				memory["processing"] = TRUE
+			else if(memory["interior_status"]["state"] == "open") //double check
+				toggleDoor(memory["interior_status"],tag_interior_door, 1, "close")
+			else  //  pressure levels are acceptable and interior doors are closed
+				toggleDoor(memory["exterior_status"],tag_exterior_door, 1, "open")
+				signalPump(tag_airpump, 0, 1, memory["external_sensor_pressure"])//Turn the pump off
+				state = STATE_OPEN_OUT
+				memory["processing"] = FALSE
+		if(STATE_SEALING)
+			if(memory["interior_status"]["state"] == "open")
+				toggleDoor(memory["interior_status"],tag_interior_door, 1, "close")
+				memory["processing"] = TRUE
+			else if(memory["exterior_status"]["state"] == "open")
+				toggleDoor(memory["exterior_status"],tag_exterior_door, 1, "close")
+				memory["processing"] = TRUE
+			else
+				state = STATE_CLOSED
+				memory["processing"] = FALSE
 	return 1
-
-/datum/computer/file/embedded_program/airlock/phoron/stop_cycling()
-	state = STATE_IDLE
-	target_state = TARGET_NONE
-	signalPump(tag_airpump, 0)
-	signalScrubber(tag_scrubber, 0)
 
 /datum/computer/file/embedded_program/airlock/phoron/proc/signalScrubber(var/tag, var/power)
 	var/datum/signal/signal = new
@@ -274,12 +283,14 @@
 	)
 	post_signal(signal)
 
+//Stable states
+#undef STATE_UNDEFINED
+#undef STATE_CLOSED
+#undef STATE_OPEN_IN
+#undef STATE_OPEN_OUT
 
-#undef STATE_IDLE
-#undef STATE_PREPARE
-#undef STATE_CLEAN
-#undef STATE_PRESSURIZE
+//Transitional states
+#undef STATE_CYCLING_IN
+#undef STATE_CYCLING_OUT
+#undef STATE_SEALING
 
-#undef TARGET_NONE
-#undef TARGET_INOPEN
-#undef TARGET_OUTOPEN
