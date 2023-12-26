@@ -66,7 +66,8 @@ $fg-map: colors.$fg-map !default;
 .Tab {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-items: center;
+  justify-content: space-around;
   background-color: $tab-color;
   color: $text-color;
   min-height: 2.25em;
@@ -83,7 +84,6 @@ $fg-map: colors.$fg-map !default;
 }
 
 .Tab__text {
-  flex-grow: 1;
   margin: 0 0.5em;
 }
 
@@ -105,6 +105,7 @@ $fg-map: colors.$fg-map !default;
     border-bottom: math.div(1em, 6) solid transparent;
     border-top-left-radius: 0.25em;
     border-top-right-radius: 0.25em;
+    flex-direction: "row";
   }
 
   .Tab--selected {
@@ -119,6 +120,7 @@ $fg-map: colors.$fg-map !default;
     border-right: math.div(1em, 6) solid transparent;
     border-top-left-radius: 0.25em;
     border-bottom-left-radius: 0.25em;
+    flex-direction: "column";
   }
 
   .Tab--selected {

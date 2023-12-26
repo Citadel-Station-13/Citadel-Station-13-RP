@@ -5,7 +5,7 @@
 
 import { InfernoNode } from "inferno";
 import { useBackend, useLocalState } from "../../backend";
-import { Section, Stack, Tabs } from "../../components";
+import { Section, Stack } from "../../components";
 import { Window } from "../../layouts";
 import { RigAuthorization } from "./RigsuitPermissions";
 import { RigController } from "./RigsuitController";

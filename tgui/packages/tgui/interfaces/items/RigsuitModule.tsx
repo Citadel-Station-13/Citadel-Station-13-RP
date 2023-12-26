@@ -11,4 +11,4 @@ export interface RigsuitModuleData extends ModuleData {
 
 export const RigsuitModule = (props, context) => {
 
-}
+};

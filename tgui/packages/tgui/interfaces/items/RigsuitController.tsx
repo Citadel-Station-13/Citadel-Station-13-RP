@@ -4,7 +4,8 @@
  */
 
 import { getModuleData, useLocalState } from "../../backend";
-import { Button, LabeledList, NoticeBox, Section, Stack, Tabs } from "../../components";
+import { LabeledList, NoticeBox, Section, Stack, Tabs } from "../../components";
+import { Module } from "../../components/Module";
 import { RigsuitData } from "./Rigsuit";
 import { RigsuitPieceData } from "./RigsuitPiece";
 
@@ -21,7 +22,7 @@ export const RigController = (props: RigControllerProps, context) => {
         <Section>
           <Stack vertical>
             <Stack.Item>
-              <Tabs>
+              <Tabs fluid>
                 <Tabs.Tab onClick={() => setSystemTab(1)} selected={systemTab === 1}>Systems</Tabs.Tab>
                 <Tabs.Tab onClick={() => setSystemTab(2)} selected={systemTab === 2}>Core</Tabs.Tab>
                 <Tabs.Tab onClick={() => setSystemTab(3)} selected={systemTab === 3}>Wearer</Tabs.Tab>
@@ -61,45 +62,42 @@ export const RigController = (props: RigControllerProps, context) => {
         </Section>
       </Stack.Item>
       <Stack.Item grow={1}>
-        <Section fill title="Hardsuit">
-          <Stack fill vertical>
+        <Section fill>
+          <Stack vertical fill>
             <Stack.Item>
-              <Section overflowX="auto">
-                <Stack fill>
-                  <Stack.Item>
-                    <Stack vertical>
-                      <Stack.Item>
-                        <Button
-                          color="transparent"
-                          onClick={() => setSuitSection('All')}
-                          selected={suitSection === "All"}>
-                          <img src={`data:image/png;base64, ${props.rig.sprite64}`} />
-                        </Button>
-                      </Stack.Item>
-                      {props.rig.pieceRefs.map((ref) => {
-                        let pieceData = getModuleData<RigsuitPieceData>(context, ref);
-                        return (
-                          <Stack.Item key={ref}>
-                            <Button
-                              color="transparent"
-                              onClick={() => setSuitSection(ref)}
-                              selected={suitSection === ref}>
-                              <img src={`data:image/png;base64, ${pieceData.sprite64}`} />
-                            </Button>
-                          </Stack.Item>
-                        );
-                      })}
-                    </Stack>
-                  </Stack.Item>
-                  <Stack.Item grow={1}>
-                    Data
-                  </Stack.Item>
-                </Stack>
+              <Tabs fluid>
+                <Tabs.Tab
+                  color="transparent"
+                  onClick={() => setSuitSection('All')}
+                  selected={suitSection === "All"}>
+                  <img src={`data:image/png;base64, ${props.rig.sprite64}`}
+                    style={{ transform: `scale(1.5)` }} />
+                </Tabs.Tab>
+                {props.rig.pieceRefs.map((ref) => {
+                  let pieceData = getModuleData<RigsuitPieceData>(context, ref);
+                  return (
+                    <Tabs.Tab
+                      key={ref}
+                      color="transparent"
+                      onClick={() => setSuitSection(ref)}
+                      selected={suitSection === ref}>
+                      <img src={`data:image/png;base64, ${pieceData.sprite64}`}
+                        style={{ transform: `scale(1.5)` }} />
+                    </Tabs.Tab>
+                  );
+                })}
+              </Tabs>
+            </Stack.Item>
+            <Stack.Item>
+              <Section>
+                {suitSection !== "All" && (
+                  <Module id={suitSection} />
+                )}
               </Section>
             </Stack.Item>
             <Stack.Item grow={1}>
               <Section fill>
-                Test
+                <NoticeBox warning>OS-WIP-FRAGMENT-7</NoticeBox>
               </Section>
             </Stack.Item>
           </Stack>

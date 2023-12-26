@@ -4,7 +4,7 @@
  */
 
 import { BooleanLike } from "common/react";
-import { ModuleData } from "../../backend";
+import { ModuleData, useModule } from "../../backend";
 import { Section } from "../../components";
 import { RigPieceFlags, RigPieceSealStatus } from "./RigsuitCommon";
 
@@ -18,10 +18,10 @@ export interface RigsuitPieceData extends ModuleData {
 }
 
 export const RigsuitPiece = (props, context) => {
-
+  const { act, data } = useModule<RigsuitPieceData>(context);
   return (
     <Section>
-      Test
+      OS-WIP-FRAGMENT-11
     </Section>
   );
 };
