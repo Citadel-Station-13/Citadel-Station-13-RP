@@ -135,7 +135,7 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 
 /datum/rig_theme/proc/add_piece(datum/rig_piece/piece_path)
 	var/datum/rig_piece/piece
-	if(ispath(piece_path) || IS_ANONYMOUS_TYPE(piece_path))
+	if(ispath(piece_path) || IS_ANONYMOUS_TYPEPATH(piece_path))
 		piece = new piece_path
 	else if(istype(piece_path))
 		piece = piece_path
