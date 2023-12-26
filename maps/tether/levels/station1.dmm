@@ -818,22 +818,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/engi_wash)
 "bC" = (
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/table/rack{
-	dir = 8;
-	layer = 2.6
-	},
-/obj/machinery/door/window/northright{
-	dir = 2;
-	name = "Atmospherics Hardsuits";
-	req_access = list(24)
-	},
-/obj/item/clothing/shoes/magboots,
-/obj/item/clothing/suit/space/void/atmos,
-/obj/item/clothing/mask/breath,
-/obj/item/clothing/head/helmet/space/void/atmos,
+/obj/machinery/suit_storage_unit/atmos,
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
 "bD" = (
@@ -972,23 +957,9 @@
 /turf/simulated/floor/plating,
 /area/maintenance/station/eng_lower)
 "bW" = (
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/table/rack{
-	dir = 8;
-	layer = 2.6
-	},
-/obj/machinery/door/window/northright{
-	name = "Engineering Hardsuits";
-	req_access = list(11)
-	},
-/obj/item/clothing/shoes/magboots,
-/obj/item/clothing/suit/space/void/engineering,
-/obj/item/clothing/mask/breath,
-/obj/item/clothing/head/helmet/space/void/engineering,
+/obj/spawner/window/low_wall/full/firelocks,
 /turf/simulated/floor/tiled,
-/area/engineering/engine_eva)
+/area/security/checkpoint/science)
 "bX" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -1112,6 +1083,7 @@
 /obj/structure/table/reinforced,
 /obj/item/suit_cooling_unit,
 /obj/item/suit_cooling_unit,
+/obj/item/suit_cooling_unit,
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
 "cj" = (
@@ -1142,21 +1114,21 @@
 /turf/simulated/floor,
 /area/maintenance/station/eng_lower)
 "cn" = (
-/obj/structure/window/reinforced{
-	dir = 8
+/obj/effect/paint_stripe/sun,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "englockdown";
+	name = "Engineering Lockdown";
+	opacity = 0;
+	dir = 4
 	},
-/obj/machinery/door/window/southleft{
-	name = "Jetpack Storage";
-	req_access = list();
-	req_one_access = list(11,24)
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	name = "CE Polarized";
+	id = "ce_office"
 	},
-/obj/structure/table/rack{
-	dir = 8;
-	layer = 2.6
-	},
-/obj/item/tank/jetpack/carbondioxide,
-/turf/simulated/floor/tiled,
-/area/engineering/engine_eva)
+/turf/simulated/floor,
+/area/crew_quarters/heads/chief)
 "co" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -2762,10 +2734,6 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/engine_airlock)
-"fj" = (
-/obj/spawner/window/low_wall/full/firelocks,
-/turf/simulated/floor/tiled,
-/area/security/checkpoint/science)
 "fk" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8
@@ -3996,21 +3964,7 @@
 /turf/simulated/floor,
 /area/constructionsite)
 "hU" = (
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/table/rack{
-	dir = 8;
-	layer = 2.6
-	},
-/obj/machinery/door/window/northleft{
-	name = "Engineering Hardsuits";
-	req_access = list(11)
-	},
-/obj/item/clothing/shoes/magboots,
-/obj/item/clothing/suit/space/void/engineering,
-/obj/item/clothing/mask/breath,
-/obj/item/clothing/head/helmet/space/void/engineering,
+/obj/machinery/suit_storage_unit/engineering,
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
 "hV" = (
@@ -4425,7 +4379,6 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/atrium)
 "iN" = (
-/obj/effect/paint_stripe/sun,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -4434,6 +4387,7 @@
 	opacity = 0;
 	dir = 4
 	},
+/obj/effect/paint_stripe/sun,
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
 	name = "CE Polarized";
 	id = "ce_office"
@@ -4516,18 +4470,17 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/machinery/door/window/southright{
-	name = "Jetpack Storage";
-	req_one_access = list(11,24)
-	},
 /obj/structure/table/rack{
 	dir = 8;
 	layer = 2.6
 	},
-/obj/item/tank/jetpack/carbondioxide,
 /obj/machinery/status_display{
 	pixel_y = 32
 	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/item/hardsuit/industrial,
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
 "iY" = (
@@ -13135,25 +13088,6 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/storage/emergency_storage/emergency4)
-"AE" = (
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/table/rack{
-	dir = 8;
-	layer = 2.6
-	},
-/obj/machinery/door/window/northleft{
-	dir = 2;
-	name = "Atmospherics Hardsuits";
-	req_access = list(24)
-	},
-/obj/item/clothing/shoes/magboots,
-/obj/item/clothing/suit/space/void/atmos,
-/obj/item/clothing/mask/breath,
-/obj/item/clothing/head/helmet/space/void/atmos,
-/turf/simulated/floor/tiled,
-/area/engineering/engine_eva)
 "AF" = (
 /obj/structure/closet/crate,
 /obj/random/junk,
@@ -19329,22 +19263,6 @@
 	},
 /turf/simulated/floor/tiled/eris/dark/techfloor_grid,
 /area/shuttle/securiship/engines)
-"MU" = (
-/obj/machinery/door/blast/regular{
-	density = 0;
-	icon_state = "pdoor0";
-	id = "englockdown";
-	name = "Engineering Lockdown";
-	opacity = 0;
-	dir = 4
-	},
-/obj/effect/paint_stripe/sun,
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
-	name = "CE Polarized";
-	id = "ce_office"
-	},
-/turf/simulated/floor,
-/area/crew_quarters/heads/chief)
 "MV" = (
 /obj/effect/paint_stripe/violet,
 /obj/spawner/window/low_wall/full/firelocks/nogrille,
@@ -42021,9 +41939,9 @@ BN
 IL
 yn
 yn
+cn
 iN
-MU
-iN
+cn
 yn
 yn
 yn
@@ -42206,7 +42124,7 @@ Ww
 Av
 pw
 Rs
-AE
+bC
 lz
 Xt
 hU
@@ -42403,7 +42321,7 @@ Rs
 bC
 mN
 mN
-bW
+hU
 xy
 Cs
 en
@@ -42594,7 +42512,7 @@ Ml
 un
 xx
 Rs
-cn
+bC
 mN
 mN
 hU
@@ -42791,7 +42709,7 @@ Rs
 iX
 VT
 Wj
-bW
+hU
 xy
 SC
 gr
@@ -54043,7 +53961,7 @@ qL
 gM
 sq
 tN
-fj
+bW
 Lq
 uG
 Et
