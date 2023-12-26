@@ -4,7 +4,7 @@
  */
 
 import { getModuleData, useLocalState } from "../../backend";
-import { LabeledList, NoticeBox, Section, Stack, Tabs } from "../../components";
+import { Button, LabeledList, NoticeBox, Section, Stack, Tabs } from "../../components";
 import { Module } from "../../components/Module";
 import { RigsuitData } from "./Rigsuit";
 import { RigsuitPieceData } from "./RigsuitPiece";
@@ -61,8 +61,8 @@ export const RigController = (props: RigControllerProps, context) => {
           </Stack>
         </Section>
       </Stack.Item>
-      <Stack.Item grow={1}>
-        <Section fill>
+      <Stack.Item>
+        <Section fill title="Hardsuit">
           <Stack vertical fill>
             <Stack.Item>
               <Tabs fluid>
@@ -71,7 +71,7 @@ export const RigController = (props: RigControllerProps, context) => {
                   onClick={() => setSuitSection('All')}
                   selected={suitSection === "All"}>
                   <img src={`data:image/png;base64, ${props.rig.sprite64}`}
-                    style={{ transform: `scale(1.5)` }} />
+                    style={{ transform: `scale(2)` }} />
                 </Tabs.Tab>
                 {props.rig.pieceRefs.map((ref) => {
                   let pieceData = getModuleData<RigsuitPieceData>(context, ref);
@@ -80,27 +80,37 @@ export const RigController = (props: RigControllerProps, context) => {
                       key={ref}
                       color="transparent"
                       onClick={() => setSuitSection(ref)}
-                      selected={suitSection === ref}>
-                      <img src={`data:image/png;base64, ${pieceData.sprite64}`}
-                        style={{ transform: `scale(1.5)` }} />
+                      selected={suitSection === ref}
+                      innerStyle={{ height: "100%", width: "100%" }}>
+                      <Stack fill vertical>
+                        <Stack.Item grow={1} align="center" justify="space-around">
+                          <img src={`data:image/png;base64, ${pieceData.sprite64}`}
+                            style={{ transform: `scale(1.75)`, "margin": "0.5em 0" }} />
+                        </Stack.Item>
+                        <Stack.Item>
+                          <Button.Confirm
+                            fluid
+                            color="transparent"
+                            style={{ "text-align": "center" }}
+                            content={1? `Deployed` : `Retracted`} />
+                        </Stack.Item>
+                      </Stack>
                     </Tabs.Tab>
                   );
                 })}
               </Tabs>
             </Stack.Item>
             <Stack.Item>
-              <Section>
-                {suitSection !== "All" && (
-                  <Module id={suitSection} />
-                )}
-              </Section>
-            </Stack.Item>
-            <Stack.Item grow={1}>
-              <Section fill>
-                <NoticeBox warning>OS-WIP-FRAGMENT-7</NoticeBox>
-              </Section>
+              {suitSection !== "All" && (
+                <Module id={suitSection} />
+              )}
             </Stack.Item>
           </Stack>
+        </Section>
+      </Stack.Item>
+      <Stack.Item grow={1}>
+        <Section fill title="Modules">
+          <NoticeBox warning>OS-WIP-FRAGMENT-7</NoticeBox>
         </Section>
       </Stack.Item>
     </Stack>

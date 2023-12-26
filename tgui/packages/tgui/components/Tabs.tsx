@@ -39,6 +39,8 @@ interface TabProps extends BoxProps {
   readonly rightSlot?: InfernoNode;
   readonly selected: BooleanLike;
   readonly icon?: string;
+  // directly passed to inner <div> - advanced users only!
+  readonly innerStyle?: CSSProperties;
 }
 
 const Tab = (props: TabProps) => {
@@ -62,7 +64,7 @@ const Tab = (props: TabProps) => {
           <Icon name={props.icon} />
         </div>
       )}
-      <div className="Tab__text">
+      <div className="Tab__text" style={props.innerStyle}>
         {props.children}
       </div>
       {canRender(props.rightSlot) && (
