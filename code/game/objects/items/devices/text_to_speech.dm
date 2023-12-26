@@ -33,9 +33,13 @@
 /obj/item/text_to_speech/proc/link_to_user(mob/user)
 	linked_user = user
 	RegisterSignal(user, COMSIG_MOB_SAY, PROC_REF(handle_speech))
+	name = "[initial(name)] ([user.real_name])"
+	desc = "[initial(desc)] This one is assigned to [user.real_name]."
 
 /obj/item/text_to_speech/proc/unlink()
 	UnregisterSignal(linked_user, COMSIG_MOB_SAY)
+	name = initial(name)
+	desc = initial(desc)
 
 /obj/item/text_to_speech/proc/handle_speech(datum/source, list/message_args)
 	if(loc != linked_user) // this should never happen, but it's best to be safe in case an unsafe unequip happens somehow
@@ -48,4 +52,7 @@
 		var/message = message_args["message"]
 		var/whispering = message_args["whispering"]
 		message_args["cancelled"] = TRUE
-		audible_message("[icon2html(thing = linked_user.name, target = world)] \The [linked_user.name] [whispering ? "quietly states" : "states"], \"[message]\"", null, whispering ? 2 : world.view)
+		audible_message("[icon2html(thing = src, target = world)] \The [name] [whispering ? "quietly states" : "states"], \"[message]\"", null, whispering ? 2 : world.view)
+		if(!whispering)
+			linked_user.say_overhead(message, FALSE, MESSAGE_RANGE_COMBAT_LOUD)
+		playsound(src, 'sound/items/tts/stopped_type.ogg', 25, TRUE)
