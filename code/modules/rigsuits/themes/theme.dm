@@ -80,9 +80,9 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 	//* vars to be replaced by components/modules at some point
 	var/datum/armor/armor = /datum/armor/rigsuit
 	var/min_pressure_protect = 0 * ONE_ATMOSPHERE
-	var/max_pressure_protect = 2 * ONE_ATMOSPHERE
-	var/min_temperature_protect = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
-	var/max_temperature_protect = SPACE_SUIT_MAX_HEAT_PROTECTION_TEMPERATURE
+	var/max_pressure_protect = 10 * ONE_ATMOSPHERE
+	var/min_temperature_protect = COLD_PROTECTION_VOIDSUIT
+	var/max_temperature_protect = HEAT_PROTECTION_NORMAL_VOIDSUIT
 	var/insulated_gloves = TRUE
 	var/siemens_coefficient = 0.3
 
@@ -193,6 +193,8 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 	var/coloration_amount
 	/// seal delay add to base seal delay
 	var/piece_seal_delay_adjust = 0
+	/// body cover flags
+	var/body_cover_flags = NONE
 
 /datum/rig_piece/New()
 	CONSTRUCT_BODYTYPES(worn_bodytypes)
@@ -213,9 +215,12 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 
 /datum/rig_piece/proc/imprint_appearance(datum/rig_theme/theme, datum/component/rig_piece/piece_component)
 	var/obj/item/physical = piece_component.parent
-	// inv appearance / hide flags
+	// inv appearance / hide / cover flags
 	piece_component.inv_hide_flags_sealed = inv_hide_flags_active
 	piece_component.inv_hide_flags_unsealed = inv_hide_flags_inactive
+	physical.body_cover_flags = body_cover_flags
+	physical.heat_protection = body_cover_flags
+	physical.cold_protection = body_cover_flags
 	// rendering
 	physical.worn_render_flags = worn_render_flags || theme.worn_render_flags
 	// bodytypes
@@ -252,6 +257,7 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 	piece_state_append = "-helmet"
 	inv_hide_flags_active = HIDEFACE | HIDEEARS | HIDEEARS | HIDEEYES | HIDEMASK | BLOCKHEADHAIR
 	equip_slot = /datum/inventory_slot_meta/inventory/head
+	body_cover_flags = HEAD
 
 /datum/rig_piece/chestplate
 	display_name = "chestplate"
@@ -261,6 +267,7 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 	piece_state_append = "-chestplate"
 	inv_hide_flags_active = HIDETAIL | HIDEJUMPSUIT | HIDETIE
 	equip_slot = /datum/inventory_slot_meta/inventory/suit
+	body_cover_flags = UPPER_TORSO | LOWER_TORSO | ARMS | LEGS
 
 /datum/rig_piece/gloves
 	display_name = "gauntlets"
@@ -269,6 +276,7 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 	rig_piece_flags = RIG_PIECE_APPLY_ARMOR | RIG_PIECE_APPLY_ENVIRONMENTALS
 	piece_state_append = "-gloves"
 	equip_slot = /datum/inventory_slot_meta/inventory/gloves
+	body_cover_flags = HANDS
 
 /datum/rig_piece/gloves/imprint_behavior(datum/rig_theme/theme, datum/component/rig_piece/piece_component)
 	. = ..()
@@ -283,3 +291,4 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 	rig_piece_flags = RIG_PIECE_APPLY_ARMOR | RIG_PIECE_APPLY_ENVIRONMENTALS
 	piece_state_append = "-boots"
 	equip_slot = /datum/inventory_slot_meta/inventory/shoes
+	body_cover_flags = FEET

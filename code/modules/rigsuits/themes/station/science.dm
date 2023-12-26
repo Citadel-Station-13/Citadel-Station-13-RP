@@ -24,4 +24,3 @@ AUTO_RIG_THEME(/station/science/anomaly)
 	display_name = "AMI"
 	visible_name = "AMI"
 	#warn impl
-
