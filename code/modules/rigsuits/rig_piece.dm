@@ -88,6 +88,9 @@
 	controller?.push_ui_modules(updates = list(RIG_UI_ENCODE_PIECE_REF(src) = data))
 
 /datum/component/rig_piece/proc/update_piece_data()
+	if(ui_update_queued)
+		return
+	ui_update_queued = TRUE
 	controller?.ui_queue_piece(src)
 
 /**

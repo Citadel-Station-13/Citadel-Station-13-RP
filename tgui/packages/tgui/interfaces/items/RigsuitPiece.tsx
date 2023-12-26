@@ -6,7 +6,7 @@
 import { BooleanLike } from "common/react";
 import { ModuleData } from "../../backend";
 import { Section } from "../../components";
-import { RigPieceFlags, RigPieceSealStatus } from "./Rigsuit";
+import { RigPieceFlags, RigPieceSealStatus } from "./RigsuitCommon";
 
 export interface RigsuitPieceData extends ModuleData {
   name: string;

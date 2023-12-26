@@ -50,6 +50,7 @@
 			var/reference = RIG_UI_ENCODE_PIECE_REF(ref(piece))
 			assembled_fragments[reference] = piece.tgui_piece_data()
 			piece_refs += reference
+			piece.ui_update_queued = FALSE
 
 		for(var/id in module_lookup)
 			var/obj/item/rig_module/module = module_lookup[id]
@@ -57,6 +58,7 @@
 			// todo: for when modules are made
 			assembled_fragments[reference] = list()
 			module_refs += reference
+			module.ui_update_queued = FALSE
 
 		// control flags skipped as it's per-person, and is updated later.
 		push_ui_data(data = list(
@@ -95,6 +97,7 @@
 			var/reference = RIG_UI_ENCODE_MODULE_REF(ref(module))
 			// todo: for when modules are made
 			assembled_fragments[reference] = list()
+			module.ui_update_queued = FALSE
 
 		push_ui_modules(updates = assembled_fragments)
 		ui_queued_modules = null
@@ -105,6 +108,7 @@
 		for(var/datum/component/rig_piece/piece as anything in ui_queued_pieces)
 			var/reference = RIG_UI_ENCODE_PIECE_REF(ref(piece))
 			assembled_fragments[reference] = piece.tgui_piece_data()
+			piece.ui_update_queued = FALSE
 
 		push_ui_modules(updates = assembled_fragments)
 		ui_queued_pieces = null
@@ -114,6 +118,7 @@
 /obj/item/rig/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	.["theme"] = theme_name
+	.["sprite64"] = isnull(cached_tgui_icon_b64)? (cached_tgui_icon_b64 = icon2base64(icon(icon, state_sealed))) : cached_tgui_icon_b64
 	var/list/piece_refs = list()
 	var/list/module_refs = list()
 	for(var/id in piece_lookup)

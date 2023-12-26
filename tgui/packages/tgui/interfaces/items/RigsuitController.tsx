@@ -58,15 +58,17 @@ export const RigController = (props: RigControllerProps, context) => {
         </Stack.Item>
         <Stack.Item grow={1}>
           <Section fill title="Hardsuit">
-            <Stack fill>
+            <Stack fill vertical>
               <Stack.Item>
-                <Section fill>
-                  <Stack vertical fill>
+                <Section overflowX="auto">
+                  <Stack fill>
                     <Stack.Item>
-                      <Button content="All"
+                      <Button
                           color="transparent"
                           onClick={() => setSuitSection('All')}
-                        selected={suitSection === "All"}></Button>
+                          selected={suitSection === "All"}>
+                        <img src={`data:image/png;base64, ${props.rig.sprite64}`} />
+                      </Button>
                     </Stack.Item>
                     {props.rig.pieceRefs.map((ref) => {
                       let pieceData = getModuleData<RigsuitPieceData>(context, ref);

@@ -94,6 +94,9 @@
 	var/list/datum/component/rig_piece/ui_queued_pieces
 	/// modules awaiting update
 	var/list/obj/item/rig_module/ui_queued_modules
+	//! todo: this is fucking evil
+	/// cached b64 string of our UI icon
+	var/cached_tgui_icon_b64
 
 	//* Wearer
 	/// Our wearer
