@@ -40,7 +40,7 @@ GLOBAL_DATUM_INIT(age_verify_menu, /datum/age_verify_menu, new)
 		ui = new(user, src, "AgeVerifyMenu")
 		ui.open()
 
-/datum/age_verify_menu/ui_status(mob/user, datum/ui_state/state, datum/tgui_module/module)
+/datum/age_verify_menu/ui_status(mob/user, datum/ui_state/state)
 	return UI_INTERACTIVE
 
 /datum/age_verify_menu/ui_act(action, list/params, datum/tgui/ui)

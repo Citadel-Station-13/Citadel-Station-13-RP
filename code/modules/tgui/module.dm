@@ -54,19 +54,18 @@
 	SIGNAL_HANDLER
 	qdel(src)
 
-/datum/tgui_module/ui_host(mob/user, datum/tgui_module/module)
-	return isnull(host)? src : host.ui_host(user, src)
+/datum/tgui_module/ui_host()
+	return isnull(host)? src : host.ui_host()
 
-/datum/tgui_module/ui_close(mob/user, datum/tgui_module/module)
+/datum/tgui_module/on_ui_close(mob/user, datum/tgui/ui, embedded)
 	. = ..()
-	host?.ui_close(user, src)
 	if(ephemeral)
 		qdel(src)
 
-/datum/tgui_module/ui_state(mob/user, datum/tgui_module/module)
-	return isnull(host)? ..() : host.ui_state(user, src)
+/datum/tgui_module/ui_state()
+	return isnull(host)? ..() : host.ui_state()
 
-/datum/tgui_module/ui_status(mob/user, datum/ui_state/state, datum/tgui_module/module)
+/datum/tgui_module/ui_status(mob/user, datum/ui_state/state)
 	return isnull(host)? ..() : host.ui_status(user, state, src)
 
 /datum/tgui_module/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
@@ -78,21 +77,19 @@
 /**
  * called directly, if operating standalone. routes to static_data(user), with all other args skipped.
  */
-/datum/tgui_module/ui_static_data(mob/user)
+/datum/tgui_module/ui_static_data(mob/user, datum/tgui/ui)
 	return static_data(user)
 
 /**
  * called directly, if operating standalone. routes to data(user), with all other args skipped.
  */
-/datum/tgui_module/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/datum/tgui_module/ui_data(mob/user, datum/tgui/ui)
 	return data(user)
 
 /**
  * called directly, if operating standalone.
  */
 /datum/tgui_module/ui_act(action, list/params, datum/tgui/ui)
-	// we only override this to provide comment
-	// yes yes proc overhead sue me it's called like 10k times a round, tops.
 	return ..()
 
 /**
@@ -109,87 +106,3 @@
  */
 /datum/tgui_module/proc/data(mob/user, ...)
 	return list()
-
-/**
- * route a received ui_act for module handling
- * remember that $id, $ref in params corrosponds to module id, module ref.
- *
- * we use id instead of module to prevent potential security issues down the line.
- */
-/datum/proc/ui_module_route(action, list/params, datum/tgui/ui, id)
-	if(!id)
-		// no id?
-		// i know that guy!
-		// it's me!
-		return ui_act(action, params, ui)
-	// it's not us, respect overrides that wish to hook module behavior
-	if(ui_module_act(action, params, ui, id))
-		return TRUE
-
-/**
- * called as a hook for intercepting ui acts from a module
- * remember that $id, $ref in params corrosponds to module id, module ref.
- * we don't provide $ref directly for security reasons.
- * you can use it if you know what you're doing.
- *
- * this is an advanced proc.
- * the module's ui_status() is *not* checked for you in ..()!
- *
- * return TRUE for ui update + prevent propagation to the module
- */
-/datum/proc/ui_module_act(action, list/params, datum/tgui/ui, id)
-	SHOULD_CALL_PARENT(TRUE)
-	SEND_SIGNAL(src, COMSIG_UI_MODULE_ACT, usr, id, action, params, ui)
-
-/**
- * called to inject ui module data.
- * they will be handled by a separate reducer to make static data work.
- * you can technically use this for things other than tgui_module's
- * for example, for RIG/other "modular items-in-items" to hold data.
- *
- * this will be sent into data.modules.* instead of just data.*
- *
- * @params
- * * user - user
- * * ui - root tgui module is in
- * * state - ui state
- */
-/datum/proc/ui_module_data(mob/user, datum/tgui/ui, datum/ui_state/state)
-	return list()
-
-/**
- * called to inject ui module static data.
- * they will be handled by a separate reducer to make static data work.
- * you can technically use this for things other than tgui_module's
- * for example, for RIG/other "modular items-in-items" to hold data.
- *
- * this will be sent into data.modules[id].* instead of just data.*
- *
- * @params
- * * user - user
- * * ui - root tgui module is in
- * * state - ui state
- */
-/datum/proc/ui_module_static(mob/user, datum/tgui/ui, datum/ui_state/state)
-	return list()
-
-/**
- * public
- *
- * Send an update to module data.
- * As with normal data, this will be combined by a reducer
- * to overwrite only where necessary, so partial pushes
- * can work fine.
- *
- * WARNING: Do not use this unless you know what you are doing.
- *
- * @params
- * * updates - list(id = list(data...), ...) of modules to update.
- * * force - (optional) send update even if UI is not interactive
- */
-/datum/tgui/proc/push_modules(list/updates, force)
-	if(isnull(user.client) || !initialized || closing)
-		return
-	if(!force && status < UI_UPDATE)
-		return
-	window.send_message("modules", updates)

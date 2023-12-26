@@ -312,7 +312,7 @@ GLOBAL_LIST_EMPTY(smeses)
 		ui = new(user, src, "Smes", name)
 		ui.open()
 
-/obj/machinery/power/smes/ui_data()
+/obj/machinery/power/smes/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list(
 		"capacity" = capacity,
 		"capacityPercent" = round(100.0*charge/capacity, 0.1),
@@ -330,7 +330,7 @@ GLOBAL_LIST_EMPTY(smeses)
 	)
 	return data
 
-/obj/machinery/power/smes/ui_act(action, params)
+/obj/machinery/power/smes/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 	switch(action)

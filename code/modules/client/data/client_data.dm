@@ -13,9 +13,6 @@ GLOBAL_LIST_EMPTY(client_data)
  * client data datums, to hold
  * round-based data that we don't want wiped
  * by a disconnect.
- *
- * this can absolutely contain player specific data, especially if we don't
- * want to reload it every connect.
  */
 /datum/client_data
 	/// owner ckey
@@ -68,6 +65,44 @@ GLOBAL_LIST_EMPTY(client_data)
 		log_shadowban("[ckey] autobanned based on [why].")
 		message_admins(SPAN_DANGER("Automatically shadowbanning [ckey] based on configuration (matched on [why]). Varedit client.persistent.ligma to change this."))
 
+/datum/client_data/proc/block_on_account_age_loaded(timeout = INFINITY)
+	var/timed_out = world.time + timeout
+	UNTIL(!isnull(account_age) || world.time > timed_out)
+	return account_age
+
+/datum/client_data/proc/load_account_age()
+	if(is_guest)
+		account_age = 0
+		return
+	var/list/http = world.Export("http://byond.com/members/[ckey]?format=text")
+	if(!http)
+		log_world("Failed to connect to byond age check for [ckey]")
+		return
+	var/F = file2text(http["CONTENT"])
+	. = null
+	if(F)
+		// year-month-day
+		var/regex/R = regex("joined = \"(\\d{4}-\\d{2}-\\d{2})\"")
+		if(R.Find(F))
+			var/str = R.group[1]
+			account_join = str
+			if(!SSdbcore.Connect())
+				account_age = null
+				return
+			var/datum/db_query/query = SSdbcore.RunQuery(
+				"SELECT DATEDIFF(Now(), :date)",
+				list(
+					"date" = str,
+				)
+			)
+			if(query.NextRow())
+				. = text2num(query.item[1])
+		else
+			CRASH("Age check regex failed for [src.ckey]")
+	account_age = .
+
+//* External - Playtime *//
+
 /datum/client_data/proc/load_playtime()
 	set waitfor = FALSE
 	if(playtime_loaded)
@@ -112,39 +147,3 @@ GLOBAL_LIST_EMPTY(client_data)
 	var/timed_out = world.time + timeout
 	load_playtime()
 	UNTIL(playtime_loaded || world.time > timed_out)
-
-/datum/client_data/proc/block_on_account_age_loaded(timeout = INFINITY)
-	var/timed_out = world.time + timeout
-	UNTIL(!isnull(account_age) || world.time > timed_out)
-	return account_age
-
-/datum/client_data/proc/load_account_age()
-	if(is_guest)
-		account_age = 0
-		return
-	var/list/http = world.Export("http://byond.com/members/[ckey]?format=text")
-	if(!http)
-		log_world("Failed to connect to byond age check for [ckey]")
-		return
-	var/F = file2text(http["CONTENT"])
-	. = null
-	if(F)
-		// year-month-day
-		var/regex/R = regex("joined = \"(\\d{4}-\\d{2}-\\d{2})\"")
-		if(R.Find(F))
-			var/str = R.group[1]
-			account_join = str
-			if(!SSdbcore.Connect())
-				account_age = null
-				return
-			var/datum/db_query/query = SSdbcore.RunQuery(
-				"SELECT DATEDIFF(Now(), :date)",
-				list(
-					"date" = str,
-				)
-			)
-			if(query.NextRow())
-				. = text2num(query.item[1])
-		else
-			CRASH("Age check regex failed for [src.ckey]")
-	account_age = .
