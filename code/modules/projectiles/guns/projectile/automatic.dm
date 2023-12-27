@@ -431,7 +431,7 @@
 
 /obj/item/gun/ballistic/automatic/p90/update_icon_state()
 	. = ..()
-	icon_state = "p90smg-[ammo_magazine ? round(ammo_magazine.stored_ammo.len, 6) : "e"]"
+	icon_state = "p90smg-[ammo_magazine ? round(ammo_magazine.stored_ammo.len, 6) : "empty"]"
 
 /obj/item/gun/ballistic/automatic/p90/custom
 	name = "custom personal defense weapon"

@@ -10,24 +10,8 @@
 	alpha = 0
 	blocks_air = 0
 	// Set these to get your desired planetary atmosphere.
-	initial_gas_mix = GAS_STRING_STP
+	initial_gas_mix = ATMOSPHERE_USE_OUTDOORS
 
-/turf/unsimulated/wall/planetary/Initialize(mapload)
-	. = ..()
-	SSplanets.addWall(src)
-
-/turf/unsimulated/wall/planetary/Destroy()
-	SSplanets.removeWall(src)
-	return ..()
-
-/turf/unsimulated/wall/planetary/proc/set_temperature(var/new_temperature)
-	if(new_temperature == temperature)
-		return
-	temperature = new_temperature
-	// Force ZAS to reconsider our connections because our temperature has changed
-	if(connections)
-		connections.erase_all()
-	queue_zone_update()
 
 // Normal station/earth air.
 /turf/unsimulated/wall/planetary/normal

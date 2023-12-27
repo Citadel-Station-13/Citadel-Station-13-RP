@@ -35,7 +35,7 @@
 	detail_overlay.color = detail_color
 	add_overlay(detail_overlay)
 
-/obj/item/integrated_electronics/detailer/ui_state(mob/user, datum/tgui_module/module)
+/obj/item/integrated_electronics/detailer/ui_state()
 	return GLOB.inventory_state
 
 /obj/item/integrated_electronics/detailer/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
@@ -44,7 +44,7 @@
 		ui = new(user, src, "ICDetailer", name)
 		ui.open()
 
-/obj/item/integrated_electronics/detailer/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/item/integrated_electronics/detailer/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 	data["detail_color"] = detail_color
 	data["color_list"] = color_list

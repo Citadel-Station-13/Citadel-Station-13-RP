@@ -1,6 +1,12 @@
 //* movespeed_modifier_flags
-// None yet
+/// doesn't apply while in gravity
+#define MOVESPEED_MODIFIER_REQUIRES_GRAVITY (1<<0)
 
+DEFINE_SHARED_BITFIELD(movespeed_modifier_flags, list(
+	"movespeed_modifier_flags",
+), list(
+	BITFIELD_NAMED("Requires Gravity", MOVESPEED_MODIFIER_REQUIRES_GRAVITY),
+))
 //* calculation_type
 
 /// just use multiplicative_slowdown

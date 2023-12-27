@@ -6,16 +6,10 @@
 	desc = "Placeholder. Yell at Firecage if you SOMEHOW see this."
 	icon = 'icons/obj/statue.dmi'
 	icon_state = ""
-	density = 1
-	anchored = 0
-	var/hardness = 1
-	var/oreAmount = 7
-	var/materialType = "steel"
-	var/material = "steel"
-
-/obj/structure/statue/Destroy()
-	density = 0
-	return ..()
+	density = TRUE
+	anchored = FALSE
+	armor_type = /datum/armor/object/medium
+	material_parts = MATERIAL_DEFAULT_NONE
 
 /obj/structure/statue/attackby(obj/item/tool/W, mob/living/user, params)
 	add_fingerprint(user)
@@ -43,30 +37,7 @@
 				user.visible_message("[user] has secured the [name]'s bolts.", \
 									 "<span class='notice'>You have secured the [name]'s bolts.</span>")
 				anchored = 1
-
-	else if(istype(W, /obj/item/pickaxe/plasmacutter))
-		playsound(src, 'sound/items/Welder.ogg', 100, 1)
-		user.visible_message("[user] is slicing apart the [name]...", \
-							 "<span class='notice'>You are slicing apart the [name]...</span>")
-		if(do_after(user,30, target = src))
-			if(!src.loc)
-				return
-			user.visible_message("[user] slices apart the [name].", \
-								 "<span class='notice'>You slice apart the [name].</span>")
-			Dismantle(1)
-
-	else if(istype(W, /obj/item/pickaxe))
-		if(!src.loc)
-			return
-		user.visible_message("[user] destroys the [name]!", \
-							 "<span class='notice'>You are destroying the [name].</span>")
-		if(do_after(user,30, target = src))
-			if(!src.loc)
-				return
-			user.visible_message("[user] smashes the [name].", \
-								 "<span class='notice'>You destroy the [name].</span>")
-			qdel(src)
-
+		return
 	else if(istype(W, /obj/item/weldingtool) && !anchored)
 		playsound(loc, 'sound/items/Welder.ogg', 40, 1)
 		user.visible_message("[user] is slicing apart the [name].", \
@@ -77,78 +48,23 @@
 			playsound(loc, 'sound/items/Welder2.ogg', 50, 1)
 			user.visible_message("[user] slices apart the [name].", \
 								 "<span class='notice'>You slice apart the [name]!</span>")
-			Dismantle(1)
-
-	else
-		hardness -= W.damage_force/100
-		..()
-		CheckHardness()
-
+			deconstruct(ATOM_DECONSTRUCT_DISASSEMBLED)
+		return
+	return ..()
 /obj/structure/statue/attack_hand(mob/user, list/params)
 	add_fingerprint(user)
 	user.visible_message("[user] rubs some dust off from the [name]'s surface.", \
 						 "<span class='notice'>You rub some dust off from the [name]'s surface.</span>")
 
-/obj/structure/statue/bullet_act(obj/projectile/Proj)
-	hardness -= Proj.damage
-	..()
-	CheckHardness()
-	return
-
-/obj/structure/statue/proc/CheckHardness()
-	if(hardness <= 0)
-		Dismantle(1)
-
-/obj/structure/statue/proc/Dismantle(devastated = 0)
-	if(!devastated)
-		if (materialType == "steel")
-			var/ore = /obj/item/stack/material/steel
-			for(var/i = 1, i <= oreAmount, i++)
-				new ore(get_turf(src))
-		else
-			var/ore = text2path("/obj/item/stack/material/[materialType]")
-			if(!ispath(ore))
-				qdel(src)
-				CRASH("Invalid ore [ore].")
-			for(var/i = 1, i <= oreAmount, i++)
-				new ore(get_turf(src))
-	else
-		if (materialType == "steel")
-			var/ore = /obj/item/stack/material/steel
-			for(var/i = 3, i <= oreAmount, i++)
-				new ore(get_turf(src))
-		else
-			var/ore = text2path("/obj/item/stack/material/[materialType]")
-			if(!ispath(ore))
-				qdel(src)
-				CRASH("Invalid ore [ore].")
-			for(var/i = 3, i <= oreAmount, i++)
-				new ore(get_turf(src))
-	qdel(src)
-
-/obj/structure/statue/legacy_ex_act(severity = 1)
-	switch(severity)
-		if(1)
-			Dismantle(1)
-		if(2)
-			if(prob(20))
-				Dismantle(1)
-			else
-				hardness--
-				CheckHardness()
-		if(3)
-			hardness -= 0.1
-			CheckHardness()
-	return
-
-//////////////////////////////////////STATUES/////////////////////////////////////////////////////////////
-//////////////////////////silver///////////////////////////////////////
+/obj/structure/statue/drop_products(method, atom/where)
+	. = ..()
+	var/datum/material/primary = get_primary_material()
+	if(!isnull(primary))
+		drop_product(method, primary.place_sheet(null, 10), where)
 
 /obj/structure/statue/silver
-	hardness = 3
-	materialType = "silver"
-	material = "silver"
 	desc = "This is a valuable statue made from silver."
+	material_parts = /datum/material/silver
 
 /obj/structure/statue/silver/hos
 	name = "Statue of a Head of Security"
@@ -177,10 +93,8 @@
 //////////////////////gold///////////////////////////////////////
 
 /obj/structure/statue/gold
-	hardness = 3
-	materialType = "gold"
-	material = "gold"
 	desc = "This is a highly valuable statue made from gold."
+	material_parts = /datum/material/gold
 
 /obj/structure/statue/gold/hos
 	name = "Statue of the Head of Security"
@@ -205,10 +119,8 @@
 ////////////////////////////phoron///////////////////////////////////////////////////////////////////////
 
 /obj/structure/statue/phoron
-	hardness = 2
-	materialType = "phoron"
-	material = "phoron"
 	desc = "This statue is suitably made from phoron."
+	material_parts = /datum/material/phoron
 
 /obj/structure/statue/phoron/scientist
 	name = "Statue of a Scientist"
@@ -221,11 +133,9 @@
 ////////////////////////uranium///////////////////////////////////
 
 /obj/structure/statue/uranium
-	hardness = 3
 	luminosity = 2
-	materialType = "uranium"
-	material = "uranium"
 	desc = "If you can read this, go to Medical."
+	material_parts = /datum/material/uranium
 
 /obj/structure/statue/uranium/nuke
 	name = "Statue of a Nuclear Fission Explosive"
@@ -240,10 +150,8 @@
 /////////////////////////diamond/////////////////////////////////////////
 
 /obj/structure/statue/diamond
-	hardness = 10
-	materialType = "diamond"
-	material = "diamond"
 	desc = "This is a very expensive diamond statue"
+	material_parts = /datum/material/diamond
 
 /obj/structure/statue/diamond/captain
 	name = "Statue of THE Captain."
@@ -260,10 +168,8 @@
 ////////////////////////bananium///////////////////////////////////////
 
 /obj/structure/statue/bananium
-	hardness = 3
-	materialType = "bananium"
-	material = "bananium"
 	desc = "A bananium statue with a small engraving:'HOOOOOOONK'."
+	material_parts = /datum/material/bananium
 
 /obj/structure/statue/bananium/clown
 	name = "Statue of a clown"
@@ -272,9 +178,7 @@
 /////////////////////sandstone/////////////////////////////////////////
 
 /obj/structure/statue/sandstone
-	hardness = 0.5
-	materialType = "sandstone"
-	material = "sandstone"
+	material_parts = /datum/material/sandstone
 
 /obj/structure/statue/sandstone/assistant
 	name = "Statue of an assistant"
@@ -284,10 +188,8 @@
 /////////////////////marble/////////////////////////////////////////
 
 /obj/structure/statue/marble
-	hardness = 3
-	materialType = "marble"
-	material = "marble"
 	desc = "This is a shiny statue made from marble."
+	material_parts = /datum/material/marble
 
 /obj/structure/statue/marble/male
 	name = "male statue"
@@ -321,12 +223,14 @@
 	name = "wood statue"
 	desc = "A simple wooden mannequin, generally used to display clothes or equipment. Water frequently."
 	icon_state = "fashion_m"
+	material_parts = /datum/material/wood_log
 
 /obj/structure/statue/bone
 	name = "bone statue"
 	desc = "A towering menhir of bone, perhaps the colossal rib of some fallen beast."
 	icon = 'icons/obj/statuelarge.dmi'
 	icon_state = "rib"
+	material_parts = /datum/material/bone
 
 /obj/structure/statue/bone/skull
 	name = "skull statue"
@@ -357,6 +261,8 @@
 
 /obj/structure/memorial/small/left
 	icon_state = "memorial_l"
+	description_fluff = "This slab has a NanoTrasen logo emblazoned across the top. Below the logo, an inscription has been etched with painstaking precision: 'This memorial stands as a testament to the bravery and ingenuity of the human spirit. NanoTrasen takes great pride in the exemplary service of its employees, and no contributors are more valued than those who made the ultimate sacrifice. Regardless of how far into the stars we reach, we must never forget whose hands have raised us there. Aeternum in Memoria'"
 
 /obj/structure/memorial/small/right
 	icon_state = "memorial_r"
+	description_fluff = "This slab is marked with a list of names, over which is engraved 'Honor to the Fallen'. The names that appear on this slab are the local NanoTrasen employees who have died in the line of duty. The list is too long to fit on the slab normally - so the stone utilizes a nanotech etch/fill cycle to 'scroll' names from one slot, down to the next. The soft rumbling of stone etching away and filling in is referred to as the 'March of Progress'. Scrolling past on the list are several familiar names: '...Dean Fitzgerald, Demetrius Hill...'"

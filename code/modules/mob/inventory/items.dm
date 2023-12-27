@@ -129,6 +129,12 @@
 	// close context menus
 	context_close()
 
+	// get rid of shieldcalls
+	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
+		if(!shieldcall.shields_in_inventory)
+			continue
+		user.unregister_shieldcall(shieldcall)
+
 	return ((. & COMPONENT_ITEM_DROPPED_RELOCATE)? ITEM_RELOCATED_BY_DROPPED : NONE)
 
 /**
@@ -153,6 +159,12 @@
 	if(isliving(user))
 		var/mob/living/L = user
 		L.adjust_current_carry_weight(weight_registered)
+
+	// get rid of shieldcalls
+	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
+		if(!shieldcall.shields_in_inventory)
+			continue
+		user.register_shieldcall(shieldcall)
 
 /**
  * update our worn icon if we can
@@ -280,7 +292,7 @@
 	if(!worn_slot)
 		return
 	if(!equip_check_beltlink(M, worn_slot, null, INV_OP_SILENT))
-		M.drop_item_to_ground(src)
+		M.drop_item_to_ground(src, INV_OP_SILENT)
 		return
 
 /**
@@ -404,3 +416,15 @@
 	if(slot != worn_slot || M != worn_mob())
 		return
 	return TRUE
+
+//* Shieldcall registration
+
+/obj/item/register_shieldcall(datum/shieldcall/delegate)
+	. = ..()
+	if(delegate.shields_in_inventory)
+		worn_mob()?.register_shieldcall(delegate)
+
+/obj/item/unregister_shieldcall(datum/shieldcall/delegate)
+	. = ..()
+	if(delegate.shields_in_inventory)
+		worn_mob()?.unregister_shieldcall(delegate)

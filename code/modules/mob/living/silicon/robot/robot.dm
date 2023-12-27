@@ -435,7 +435,7 @@
 	to_chat(usr, "You [lights_on ? "enable" : "disable"] your integrated light.")
 
 	if (lights_on)
-		radio.set_light(integrated_light_power, 0.75, l_color = get_light_color_for_icontype(), angle = LIGHT_WIDE)
+		radio.set_light(integrated_light_power, 2, l_color = get_light_color_for_icontype(), angle = LIGHT_WIDE)
 	else
 		radio.set_light(0)
 
@@ -1129,7 +1129,7 @@
 							cleaned_human.clean_blood(1)
 							to_chat(cleaned_human, "<font color='red'>[src] cleans your face!</font>")
 
-		if((module_state_1 && istype(module_state_1, /obj/item/storage/bag/ore)) || (module_state_2 && istype(module_state_2, /obj/item/storage/bag/ore)) || (module_state_3 && istype(module_state_3, /obj/item/storage/bag/ore))) //Borgs and drones can use their mining bags ~automagically~ if they're deployed in a slot. Only mining bags, as they're optimized for mass use.
+		if(istype(module_state_1, /obj/item/storage/bag/ore) || istype(module_state_2, /obj/item/storage/bag/ore) || istype(module_state_3, /obj/item/storage/bag/ore)) //Borgs and drones can use their mining bags ~automagically~ if they're deployed in a slot. Only mining bags, as they're optimized for mass use.
 			var/obj/item/storage/bag/ore/B = null
 			if(istype(module_state_1, /obj/item/storage/bag/ore)) //First orebag has priority, if they for some reason have multiple.
 				B = module_state_1

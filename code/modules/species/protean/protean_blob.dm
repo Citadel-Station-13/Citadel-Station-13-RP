@@ -21,8 +21,8 @@
 	response_harm = "hits the"
 
 	harm_intent_damage = 2
-	melee_damage_lower = 10
-	melee_damage_upper = 10
+	legacy_melee_damage_lower = 15
+	legacy_melee_damage_upper = 15
 	attacktext = list("smashed", "rammed") // Why would an amorphous blob be slicing stuff?
 
 	aquatic_movement = 1
@@ -86,6 +86,10 @@
 	if(healing)
 		healing.expire()
 	return ..()
+
+/mob/living/simple_mob/protean_blob/init_melee_style()
+	. = ..()
+	melee_style.damage_structural_add = 30
 
 /mob/living/simple_mob/protean_blob/init_vore()
 	return //Don't make a random belly, don't waste your time

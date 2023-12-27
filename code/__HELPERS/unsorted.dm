@@ -1020,6 +1020,10 @@
 		return TRUE
 	if(O.edge)
 		return TRUE
+	if(isitem(O))
+		var/obj/item/I = O
+		if(I.damage_mode & DAMAGE_MODE_SHARP)
+			return TRUE
 	return FALSE
 
 /// Whether or not the given item counts as cutting with an edge in terms of removing limbs.
@@ -1028,6 +1032,10 @@
 		return FALSE
 	if(O.edge)
 		return TRUE
+	if(isitem(O))
+		var/obj/item/I = O
+		if(I.damage_mode & DAMAGE_MODE_EDGE)
+			return TRUE
 	return FALSE
 
 /// Returns 1 if the given item is capable of popping things like balloons, inflatable barriers, or cutting police tape.

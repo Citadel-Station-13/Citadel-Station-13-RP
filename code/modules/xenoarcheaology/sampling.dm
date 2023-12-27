@@ -48,8 +48,8 @@
 /obj/item/core_sampler/proc/sample_item(var/item_to_sample, var/mob/user)
 	var/datum/geosample/geo_data
 
-	if(istype(item_to_sample, /obj/item/ore))
-		var/obj/item/ore/O = item_to_sample
+	if(istype(item_to_sample, /obj/item/stack/ore))
+		var/obj/item/stack/ore/O = item_to_sample
 		geo_data = O.geologic_data
 
 	if(geo_data)

@@ -358,8 +358,8 @@
 	req_access = list();
 	req_one_access = list(19,43,67)
 	},
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 1
+/obj/machinery/door/firedoor{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/outpost/underground)
@@ -891,6 +891,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/outpost/underground)
 "kt" = (
@@ -1133,6 +1136,9 @@
 /obj/structure/cable/green{
 	icon_state = "6-8"
 	},
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/underground)
 "nG" = (
@@ -1287,7 +1293,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/medical)
 "pl" = (
-/obj/machinery/door/firedoor/multi_tile,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/underground)
 "pt" = (
@@ -1295,9 +1301,6 @@
 /area/rift/geothermal)
 "pA" = (
 /obj/structure/catwalk/plank,
-/obj/effect/map_effect/portal/line/side_b{
-	dir = 8
-	},
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
 "pB" = (
@@ -1747,11 +1750,6 @@
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/surfacebase/outside/west_caves)
 "uD" = (
-/obj/effect/map_effect/portal/master/side_b{
-	dir = 8;
-	name = "westcave_to_center";
-	portal_id = "westcavestep"
-	},
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
 "uJ" = (
@@ -2424,9 +2422,6 @@
 	dir = 1
 	},
 /obj/structure/catwalk/plank,
-/obj/effect/map_effect/portal/line/side_b{
-	dir = 8
-	},
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
 "Cv" = (
@@ -2728,8 +2723,8 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/outpost/storage)
 "EU" = (
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 1
+/obj/machinery/door/firedoor{
+	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/underground)
@@ -2901,9 +2896,6 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/outpost/mining_main/outpost)
 "GI" = (
-/obj/effect/map_effect/portal/line/side_b{
-	dir = 8
-	},
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
 "GN" = (
@@ -3462,9 +3454,6 @@
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/surfacebase/outside/west_caves/submap_seedzone)
 "Ot" = (
-/obj/effect/map_effect/portal/line/side_b{
-	dir = 8
-	},
 /obj/structure/catwalk,
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
@@ -4009,9 +3998,6 @@
 /turf/simulated/floor/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
 "Uz" = (
-/obj/effect/map_effect/portal/line/side_b{
-	dir = 8
-	},
 /obj/structure/railing,
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
@@ -4187,9 +4173,6 @@
 /turf/simulated/floor,
 /area/rnd/outpost/maintenance)
 "VS" = (
-/obj/effect/map_effect/portal/line/side_b{
-	dir = 8
-	},
 /turf/simulated/wall/r_wall,
 /area/rift/surfacebase/outside/west_caves)
 "VU" = (
@@ -4486,6 +4469,12 @@
 /obj/random/trash_pile,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/exterior/bunker/lower)
+"Yy" = (
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
+/turf/simulated/mineral/icerock/lythios43c,
+/area/rift/surfacebase/outside/west_caves/submap_seedzone)
 "YB" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -8643,7 +8632,7 @@ Sn
 Sn
 Sn
 Sn
-Sn
+Yy
 Sn
 Sn
 Sn
@@ -33635,7 +33624,7 @@ be
 Iq
 qM
 qM
-oI
+pl
 oI
 Gr
 uL
@@ -33644,7 +33633,7 @@ Sc
 oR
 hJ
 oI
-oI
+pl
 oI
 mW
 Iq

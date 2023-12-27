@@ -131,19 +131,20 @@
 	newavail = 0
 
 /datum/powernet/proc/get_electrocute_damage()
-	switch(avail)
-		if (1000 to INFINITY)
-			return min(rand(50,160),rand(50,160))
-		if (200 to 1000)
-			return min(rand(25,80),rand(25,80))
-		if (100 to 200)//Ave powernet
-			return min(rand(20,60),rand(20,60))
-		if (50 to 100)
-			return min(rand(15,40),rand(15,40))
-		if (1 to 50)
-			return min(rand(10,20),rand(10,20))
-		else
-			return 0
+	//1kW = 5
+	//10kW = 24
+	//100kW = 45
+	//250kW = 53
+	//1MW = 66
+	//10MW = 88
+	//100MW = 110
+	//1GW = 132
+	if(avail >= 1000)
+		var/damage = log(1.1,avail)
+		damage = damage - (log(1.1,damage)*1.5)
+		return round(damage)
+	else
+		return 0
 
 /datum/powernet/proc/drain_energy_handler(datum/actor, amount, flags)
 	// amount is in kj so no conversion needed

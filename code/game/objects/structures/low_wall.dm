@@ -20,7 +20,7 @@ GLOBAL_LIST_INIT(wallframe_typecache, typecacheof(list(
 	color = "#57575c" //To display in mapping softwares
 	density = TRUE
 	anchored = TRUE
-	pass_flags_self = ATOM_PASS_TABLE | ATOM_PASS_THROWN
+	pass_flags_self = ATOM_PASS_TABLE | ATOM_PASS_THROWN | ATOM_PASS_CLICK
 	layer = LOW_WALL_LAYER
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_LOW_WALL)
@@ -30,9 +30,10 @@ GLOBAL_LIST_INIT(wallframe_typecache, typecacheof(list(
 	climb_allowed = TRUE
 	climb_delay = 2.0 SECONDS
 	plane = OBJ_PLANE
+	material_parts = /datum/material/steel
+	material_primary = MATERIAL_PART_DEFAULT
+	material_costs = SHEET_MATERIAL_AMOUNT * 2
 
-	var/default_material = MAT_STEEL
-	var/datum/material/const_material
 	var/paint_color
 	var/stripe_color
 	var/str
@@ -40,55 +41,27 @@ GLOBAL_LIST_INIT(wallframe_typecache, typecacheof(list(
 	var/shiny_stripe
 	var/health
 	var/max_health
-	var/applies_material_colour = TRUE
+	var/material_color = TRUE
 
 /obj/structure/wall_frame/prepainted
 	paint_color = COLOR_WALL_GUNMETAL
 	stripe_color = COLOR_WALL_GUNMETAL
 
-/obj/structure/wall_frame/Initialize(mapload, material_key)
+/obj/structure/wall_frame/Initialize(mapload, material)
+	if(!isnull(material))
+		set_primary_material(SSmaterials.resolve_material(material))
 	. = ..()
-	if(!material_key)
-		material_key = default_material
-	set_material(material_key)
 	update_overlays()
 
-/obj/structure/wall_frame/Destroy()
-	if(const_material.products_need_process())
-		STOP_PROCESSING(SSobj, src)
+/obj/structure/wall_frame/update_material_single(datum/material/material)
 	. = ..()
-
-/obj/structure/wall_frame/process(delta_time)
-	if(!radiate())
-		STOP_PROCESSING(SSobj, src)
-		return
-
-/obj/structure/wall_frame/proc/radiate()
-	var/total_radiation = const_material.radioactivity
-	if(!total_radiation)
-		return
-
-	radiation_pulse(src, total_radiation)
-	return total_radiation
-
-/obj/structure/wall_frame/proc/set_material(var/new_material)
-	const_material = get_material_by_name(new_material)
-	if(!const_material)
-		qdel(src)
-		return
-	name = "[const_material.display_name] [initial(name)]"
-	max_health = round(const_material.integrity) //Should be 150 with default integrity (steel). Weaker than ye-olden Girders now.
-	health = max_health
-	if(applies_material_colour)
-		color = const_material.icon_colour
-	if(const_material.products_need_process()) //Am I radioactive or some other? Process me!
-		START_PROCESSING(SSobj, src)
-	else if(datum_flags & DF_ISPROCESSING) //If I happened to be radioactive or s.o. previously, and am not now, stop processing.
-		STOP_PROCESSING(SSobj, src)
+	name = "[material.display_name] [initial(name)]"
+	set_multiplied_integrity(material.relative_integrity)
 
 /obj/structure/wall_frame/update_overlays()
 	cut_overlays()
 
+	var/datum/material/const_material = get_primary_material()
 	color = const_material.icon_colour
 
 	var/image/smoothed_stripe = image(const_material.wall_stripe_icon, icon_state, layer = ABOVE_WINDOW_LAYER)
@@ -132,28 +105,31 @@ GLOBAL_LIST_INIT(wallframe_typecache, typecacheof(list(
 		return TRUE
 
 /obj/structure/wall_frame/attackby(var/obj/item/I, var/mob/user)
+	//grille placing
+	if(istype(I, /obj/item/stack/rods))
+		for(var/obj/structure/window/WINDOW in loc)
+			if(WINDOW.dir == get_dir(src, user))
+				to_chat(user, SPAN_WARNING("There is a window in the way."))
+				return CLICKCHAIN_DO_NOT_PROPAGATE
+		place_grille(user, loc, I)
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 
+	//window placing
+	if(istype(I,/obj/item/stack/material/glass) && isnull(locate(/obj/structure/window) in loc))
+		var/obj/item/stack/material/ST = I
+		if(ST.material.opacity <= 0.7)
+			place_window(user, loc, ST, TRUE, TRUE)
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+
+	if(I.is_wrench())
+		if(do_after(user,40 * I.tool_speed))
+			playsound(src, I.tool_sound, 100, 1)
+			deconstruct(ATOM_DECONSTRUCT_DISASSEMBLED)
+			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()
+
+/obj/structure/wall_frame/drop_products(method, atom/where)
 	. = ..()
-	if(!.)
-		//grille placing
-		if(istype(I, /obj/item/stack/rods))
-			for(var/obj/structure/window/WINDOW in loc)
-				if(WINDOW.dir == get_dir(src, user))
-					to_chat(user, SPAN_WARNING("There is a window in the way."))
-					return TRUE
-			place_grille(user, loc, I)
-			return TRUE
-
-		//window placing
-		if(istype(I,/obj/item/stack/material/glass) && isnull(locate(/obj/structure/window) in loc))
-			var/obj/item/stack/material/ST = I
-			if(ST.material.opacity <= 0.7)
-				place_window(user, loc, ST, TRUE, TRUE)
-			return TRUE
-
-		if(I.is_wrench())
-			if(do_after(user,40 * I.tool_speed))
-				playsound(src, I.tool_sound, 100, 1)
-				new const_material.stack_type(get_turf(src), 2)
-				qdel(src)
-
+	var/datum/material/made_of = get_primary_material()
+	made_of?.place_sheet(where, 2)

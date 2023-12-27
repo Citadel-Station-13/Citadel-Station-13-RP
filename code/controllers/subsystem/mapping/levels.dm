@@ -7,21 +7,164 @@
  * All adds/removes should go through this. Directly modifying zlevel amount/whatever is forbidden.
  */
 /datum/controller/subsystem/mapping
+	//* level lookups
 	/// indexed level datums
 	var/static/list/datum/map_level/ordered_levels = list()
 	/// k-v id to level datum lookup
 	var/static/list/datum/map_level/keyed_levels = list()
+
+	//* level fluff lookups
 	/// literally just a random hexadecimal store to prevent collision
 	var/static/list/random_fluff_level_hashes = list()
+
+	//* multiz core
+	/// Ordered lookup list for multiz up
+	var/list/cached_level_up
+	/// Ordered lookup list for multiz down
+	var/list/cached_level_down
+	/// Ordered lookup list for east transition
+	var/list/cached_level_east
+	/// Ordered lookup list for west transition
+	var/list/cached_level_west
+	/// Ordered lookup list for north transition
+	var/list/cached_level_north
+	/// Ordered lookup list for south transition
+	var/list/cached_level_south
+	/// Z access lookup - z = list() of zlevels it can access. For performance, this is currently only including bidirectional links, AND does not support looping.
+	var/list/z_stack_lookup
+	/// does z stack lookup need a rebuild?
+	var/z_stack_dirty = TRUE
+
+	//* initializations
 	/// stuff that puts themselves in this get map_initializations() hook called on them
 	/// at end of level or map load cycle before general atom init.
 	var/tmp/list/obj/map_helper/map_initialization_hooked
 	/// this initializations hooked - this cycle
 	var/tmp/list/obj/map_helper/map_initialization_hooking
 
+//* Rebuilds / Caching
+
 /datum/controller/subsystem/mapping/on_max_z_changed(old_z_count, new_z_count)
 	. = ..()
-	// synchronize datastructures *except* for ordered_levels; allocate_z_index should be doing that.
+	synchronize_datastructures()
+
+/**
+ * Ensure all synchronized lists are valid
+ */
+/datum/controller/subsystem/mapping/proc/synchronize_datastructures()
+#define SYNC(var) if(!var) { var = list() ; } ; if(var.len != world.maxz) { . = TRUE ; var.len = world.maxz; }
+	. = FALSE
+	SYNC(cached_level_up)
+	SYNC(cached_level_down)
+	SYNC(cached_level_east)
+	SYNC(cached_level_west)
+	SYNC(cached_level_north)
+	SYNC(cached_level_south)
+	SYNC(z_stack_lookup)
+	z_stack_dirty = FALSE
+	if(.)
+		z_stack_dirty = TRUE
+#undef SYNC
+
+/**
+ * Call whenever a zlevel's up/down is modified
+ *
+ * This does NOT rebuild turf graphics - call it on each level for that.
+ *
+ * @params
+ * * updated - the level updated, if doing a single update
+ * * targeted - the new level the level is pointing to, if doing a single update
+ * * dir - the direction from updated to targeted
+ */
+/datum/controller/subsystem/mapping/proc/rebuild_verticality(datum/map_level/updated, datum/map_level/targeted, dir)
+	if(!updated || !cached_level_up || !cached_level_down)
+		// full rebuild
+		z_stack_dirty = TRUE
+		cached_level_up = list()
+		cached_level_down = list()
+		cached_level_up.len = world.maxz
+		cached_level_down.len = world.maxz
+		for(var/i in 1 to world.maxz)
+			var/datum/map_level/level = ordered_levels[i]
+			cached_level_up[i] = level.level_in_dir(UP)?.z_index
+			cached_level_down[i] = level.level_in_dir(DOWN)?.z_index
+	else
+		// smart rebuild
+		ASSERT(dir)
+		if(!updated.loaded)
+			return
+		z_stack_dirty = TRUE
+		var/datum/map_level/level = updated
+		switch(dir)
+			if(UP)
+				cached_level_up[level.z_index] = level.level_in_dir(UP)?.z_index
+			if(DOWN)
+				cached_level_down[level.z_index] = level.level_in_dir(DOWN)?.z_index
+			else
+				CRASH("Invalid dir: [dir]")
+
+/**
+ * Call whenever a zlevel's east/west/north/south is modified
+ *
+ * This does NOT rebuild turf graphics - call it on each level for that.
+ *
+ * @params
+ * * updated - the level updated, if doing a single update
+ * * targeted - the new level the level is pointing to, if doing a single update
+ * * dir - the direction from updated to targeted
+ */
+/datum/controller/subsystem/mapping/proc/rebuild_transitions(datum/map_level/updated, datum/map_level/targeted, dir)
+	if(!updated || !cached_level_east || !cached_level_west || !cached_level_north || !cached_level_south)
+		// full rebuild
+		cached_level_east = list()
+		cached_level_west = list()
+		cached_level_north = list()
+		cached_level_south = list()
+		cached_level_east.len = cached_level_west.len = cached_level_north.len = cached_level_south.len = world.maxz
+		for(var/i in 1 to world.maxz)
+			var/datum/map_level/level = ordered_levels[i]
+			cached_level_north[i] = level.level_in_dir(NORTH)?.z_index
+			cached_level_south[i] = level.level_in_dir(SOUTH)?.z_index
+			cached_level_east[i] = level.level_in_dir(EAST)?.z_index
+			cached_level_west[i] = level.level_in_dir(WEST)?.z_index
+	else
+		// smart rebuild
+		if(!updated.loaded)
+			return
+		ASSERT(dir)
+		var/datum/map_level/level = updated
+		switch(dir)
+			if(NORTH)
+				cached_level_north[level.z_index] = level.level_in_dir(NORTH)?.z_index
+			if(SOUTH)
+				cached_level_south[level.z_index] = level.level_in_dir(SOUTH)?.z_index
+			if(EAST)
+				cached_level_east[level.z_index] = level.level_in_dir(EAST)?.z_index
+			if(WEST)
+				cached_level_west[level.z_index] = level.level_in_dir(WEST)?.z_index
+			else
+				CRASH("Invalid dir: [dir]")
+
+/**
+ * Automatically rebuilds the transitions and multiz of any zlevel that has them.
+ * Usually called on world load.
+ *
+ * Can specify a list of zlevels to check (indices, not datums!), otherwise rebuilds all
+ */
+/datum/controller/subsystem/mapping/proc/rebuild_level_multiz(list/indices, turfs, transitions)
+	if(!indices)
+		indices = list()
+		for(var/i in 1 to world.maxz)
+			indices += i
+	for(var/number in indices)
+		var/datum/map_level/L = ordered_levels[number]
+		if(transitions)
+			L.rebuild_transitions()
+		if(turfs)
+			L.rebuild_turfs()
+		CHECK_TICK
+
+//* Allocations & Deallocations
 
 /**
  * allocates a new map level using the given datum.
@@ -68,7 +211,11 @@
 	if(isnull(level_or_path.display_name))
 		level_or_path.display_name = "Sector [level_or_path.display_id]"
 
-	// todo: rebuild?
+	if(rebuild)
+		rebuild_verticality()
+		rebuild_transitions()
+		rebuild_level_multiz(list(z_index), TRUE, TRUE)
+
 	// todo: legacy
 	if(!isnull(level_or_path.planet_path))
 		SSplanets.legacy_planet_assert(z_index, level_or_path.planet_path)
@@ -181,7 +328,10 @@
 
 	. = loaded_bounds
 
-	// todo: rebuild?
+	if(rebuild)
+		rebuild_verticality()
+		rebuild_transitions()
+		rebuild_level_multiz(list(real_z), TRUE, TRUE)
 
 /**
  * destroys a loaded level and frees it for later usage
@@ -202,6 +352,8 @@
  */
 /datum/controller/subsystem/mapping/proc/deallocate_level(datum/map_level/instance)
 	CRASH("unimplemented")
+
+//* Traits, Attributes, and IDs
 
 /**
  * called when a trait is added to a loaded level
@@ -239,3 +391,87 @@
 		. = "[discriminator][num2hex(rand(1, 16 ** 4 - 1))]"
 	while(. in random_fluff_level_hashes)
 	random_fluff_level_hashes += .
+
+//* Z stacks
+
+/**
+ * Gets the sorted Z stack list of a level - the levels accessible from a single level, in multiz
+ */
+/datum/controller/subsystem/mapping/proc/get_z_stack(z)
+	if(z_stack_dirty)
+		recalculate_z_stack()
+	var/list/L = z_stack_lookup[z]
+	return L.Copy()
+
+/**
+ * Recalculates Z stack
+ *
+ * **Warning**: rebuild_verticality must be called to recalculate up/down lookups,
+ * as this proc uses them for speed!
+ */
+/datum/controller/subsystem/mapping/proc/recalculate_z_stack()
+	validate_no_loops()
+	z_stack_lookup = list()
+	z_stack_lookup.len = world.maxz
+	var/list/left = list()
+	for(var/z in 1 to world.maxz)
+		// todo: stacks
+		// if(struct_by_z[z])
+		// 	var/datum/world_struct/struct = struct_by_z[z]
+		// 	z_stack_lookup[z] = struct.stack_lookup[struct.real_indices.Find(z)]
+		// else
+		// 	left += z
+		left += z
+	var/list/datum/map_level/bottoms = list()
+	// let's sing the bottom song
+	for(var/z in left)
+		if(cached_level_down[z])
+			continue
+		bottoms += ordered_levels[z]
+	for(var/datum/map_level/bottom as anything in bottoms)
+		// register us
+		var/list/stack = list(bottom.z_index)
+		z_stack_lookup[bottom.z_index] = stack
+		// let's sing the list manipulation song
+		var/datum/map_level/next = ordered_levels[cached_level_up[bottom.z_index]]
+		while(next)
+			stack += next.z_index
+			z_stack_lookup[next.z_index] = stack
+			next = ordered_levels[cached_level_up[next.z_index]]
+
+/**
+ * Ensures there's no up/down infinite loops
+ */
+/datum/controller/subsystem/mapping/proc/validate_no_loops()
+	var/list/loops = list()
+	for(var/z in 1 to world.maxz)
+		var/list/found
+		found = list(z)
+		var/next = z
+		while(next)
+			next = cached_level_up[next]
+			if(next in found)
+				loops += next
+				break
+			if(next)
+				found += next
+		next = z
+		while(next)
+			next = cached_level_down[next]
+			if(next in found)
+				loops += next
+				break
+			if(next)
+				found += next
+	if(!loops.len)
+		return
+	for(var/z in loops)
+		var/datum/map_level/level = ordered_levels[z]
+		level.link_above = null
+		level.link_below = null
+		// if(struct_by_z[z])
+		// 	var/datum/world_struct/struct = struct_by_z[z]
+		// 	struct.Deconstruct()
+		// 	qdel(struct)
+	stack_trace("WARNING: Up/Down loops found in zlevels [english_list(loops)]. This is not allowed and will cause both falling and zcopy to infinitely loop. All zlevels involved have been disconnected, and any structs involved have been destroyed.")
+	rebuild_verticality()

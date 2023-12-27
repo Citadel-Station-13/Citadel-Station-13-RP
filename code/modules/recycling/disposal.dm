@@ -670,23 +670,24 @@
 	plane = TURF_PLANE
 	layer = DISPOSAL_LAYER // slightly lower than wires and other pipes.
 
+	integrity = 100
+	integrity_max = 100
+
 	#ifdef IN_MAP_EDITOR // Display disposal pipes etc. above walls in map editors.
 	alpha = 128 // Set for the benefit of mapping.
 	#endif
 
 	/// Bitmask of pipe directions.
 	var/dpdir = 0
-	/// Health points 0-10
-	var/health = 10
 	var/sortType = ""
 	var/subtype = 0
 	// new pipe, set the icon_state as on map
 
-/obj/structure/disposalpipe/New()
-	..()
+/obj/structure/disposalpipe/Initialize(mapload, dir)
+	. = ..()
 	base_icon_state = icon_state
-	return
-
+	if(!isnull(dir))
+		setDir(dir)
 
 // pipe is deleted
 // ensure if holder is present, it is expelled
@@ -819,19 +820,8 @@
 			H.vent_gas(T)	// all gas vent to turf
 			qdel(H)
 
-	return
-
-// call to break the pipe
-// will expel any holder inside at the time
-// then delete the pipe
-// remains : set to leave broken pipe pieces in place
-/obj/structure/disposalpipe/proc/broken(var/remains = 0)
-	if(remains)
-		for(var/D in GLOB.cardinal)
-			if(D & dpdir)
-				var/obj/structure/disposalpipe/broken/P = new(src.loc)
-				P.setDir(D)
-
+/obj/structure/disposalpipe/deconstructed(method)
+	. = ..()
 	src.invisibility = 101	// make invisible (since we won't delete the pipe immediately)
 	var/obj/structure/disposalholder/H = locate() in src
 	if(H)
@@ -851,35 +841,12 @@
 		// otherwise, do normal expel from turf
 		if(H)
 			expel(H, T, 0)
+	return ..()
 
-	spawn(2)	// delete pipe after 2 ticks to ensure expel proc finished
-		qdel(src)
-
-
-// pipe affected by explosion
-/obj/structure/disposalpipe/legacy_ex_act(severity)
-
-	switch(severity)
-		if(1.0)
-			broken(0)
-			return
-		if(2.0)
-			health -= rand(5,15)
-			healthcheck()
-			return
-		if(3.0)
-			health -= rand(0,15)
-			healthcheck()
-			return
-
-
-// test health for brokenness
-/obj/structure/disposalpipe/proc/healthcheck()
-	if(health < -2)
-		broken(0)
-	else if(health<1)
-		broken(1)
-	return
+/obj/structure/disposalpipe/drop_products(method, atom/where)
+	. = ..()
+	if(method != ATOM_DECONSTRUCT_DISASSEMBLED)
+		new /obj/structure/disposalpipe/broken(where, dir)
 
 //attack by item
 //weldingtool: unfasten and convert to obj/disposalconstruct
@@ -1023,7 +990,7 @@
 	var/obj/structure/disposalpipe/P
 
 	if(nextdir == 12)
-		T = GetAbove(src)
+		T = get_vertical_step(src, UP)
 		if(!T)
 			H.forceMove(loc)
 			return
@@ -1073,7 +1040,7 @@
 	var/obj/structure/disposalpipe/P
 
 	if(nextdir == 11)
-		T = GetBelow(src)
+		T = get_vertical_step(src, DOWN)
 		if(!T)
 			H.forceMove(src.loc)
 			return

@@ -37,7 +37,7 @@
 //Medical
 /datum/loadout_entry/restricted/medical
 	subcategory = "Medical"
-	allowed_roles = list("Medical Doctor", "Chief Medical Officer", "Chemist", "Paramedic", "Geneticist", "Psychiatrist", "Field Medic", "Head Nurse")
+	allowed_roles = list("Medical Doctor", "Chief Medical Officer", "Chemist", "Paramedic", "Geneticist", "Psychiatrist", "Field Medic", "Senior Physician")
 
 /datum/loadout_entry/restricted/medical/eyes
 	slot = SLOT_ID_GLASSES
@@ -207,7 +207,7 @@
 //Medical + Science
 /datum/loadout_entry/restricted/med_sci
 	subcategory = "Med-Sci"
-	allowed_roles = list("Research Director", "Scientist", "Xenobiologist", "Roboticist", "Explorer", "Senior Researcher", "Pathfinder", "Medical Doctor", "Chief Medical Officer", "Chemist", "Paramedic", "Geneticist", "Psychiatrist", "Field Medic", "Head Nurse")
+	allowed_roles = list("Research Director", "Scientist", "Xenobiologist", "Roboticist", "Explorer", "Senior Researcher", "Pathfinder", "Medical Doctor", "Chief Medical Officer", "Chemist", "Paramedic", "Geneticist", "Psychiatrist", "Field Medic", "Senior Physician")
 
 /datum/loadout_entry/restricted/med_sci/head
 	slot = SLOT_ID_HEAD
@@ -475,6 +475,12 @@
 /datum/loadout_entry/restricted/security/back/dufflebag
 	name = "Security - Dufflebag"
 	path = /obj/item/storage/backpack/dufflebag/sec
+	allowed_roles = list("Security Officer", "Head of Security", "Warden", "Detective", "Talon Guard")
+	cost = 2
+
+/datum/loadout_entry/restricted/security/back/backpack
+	name = "Security - Backpack"
+	path = /obj/item/storage/backpack/security
 	allowed_roles = list("Security Officer", "Head of Security", "Warden", "Detective", "Talon Guard")
 	cost = 2
 

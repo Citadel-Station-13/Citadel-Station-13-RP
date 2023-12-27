@@ -8,6 +8,8 @@
 	icon_state = "generic"
 	anchored = TRUE
 	density = TRUE
+	// todo: temporary, as this is unbuildable
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 
 //! ## Icons
 	/// Icon_state when vending.
@@ -788,10 +790,10 @@
 		/obj/item/reagent_containers/food/drinks/bottle/small/sassafras = 10,
 		/obj/item/reagent_containers/food/drinks/bottle/small/sarsaparilla = 10,
 		/obj/item/reagent_containers/food/drinks/cans/gingerale = 10,
-		/obj/item/reagent_containers/food/drinks/cans/nicola = 10,
-		/obj/item/reagent_containers/food/drinks/cans/nicola_fire = 10,
-		/obj/item/reagent_containers/food/drinks/cans/nicola_sakura = 10,
-		/obj/item/reagent_containers/food/drinks/cans/nicola_blue = 10,
+		/obj/item/reagent_containers/food/drinks/cans/kyocola = 10,
+		/obj/item/reagent_containers/food/drinks/cans/kyocola_fire = 10,
+		/obj/item/reagent_containers/food/drinks/cans/kyocola_sakura = 10,
+		/obj/item/reagent_containers/food/drinks/cans/kyocola_blue = 10,
 		/obj/item/reagent_containers/food/drinks/cans/crystalgibb = 10,
 		/obj/item/reagent_containers/food/drinks/cans/dr_gibb = 10,
 		/obj/item/reagent_containers/food/drinks/cans/dr_gibb_cherry = 10,
@@ -835,10 +837,10 @@
 		/obj/item/reagent_containers/food/drinks/bludbox = 25,
 		/obj/item/reagent_containers/food/drinks/bludboxlight = 35,
 		/obj/item/reagent_containers/food/drinks/cans/coconutwater = 6,
-		/obj/item/reagent_containers/food/drinks/cans/nicola = 2,
-		/obj/item/reagent_containers/food/drinks/cans/nicola_fire = 2,
-		/obj/item/reagent_containers/food/drinks/cans/nicola_sakura = 2,
-		/obj/item/reagent_containers/food/drinks/cans/nicola_blue = 2,
+		/obj/item/reagent_containers/food/drinks/cans/kyocola = 2,
+		/obj/item/reagent_containers/food/drinks/cans/kyocola_fire = 2,
+		/obj/item/reagent_containers/food/drinks/cans/kyocola_sakura = 2,
+		/obj/item/reagent_containers/food/drinks/cans/kyocola_blue = 2,
 		/obj/item/reagent_containers/food/drinks/cans/dr_gibb_cherry = 2,
 		/obj/item/reagent_containers/food/drinks/cans/cola_cherry = 2,
 		/obj/item/reagent_containers/food/drinks/cans/cola_coffee = 2,
@@ -895,10 +897,10 @@
 		/obj/item/reagent_containers/food/snacks/bagged/wpeas = 10,
 		/obj/item/reagent_containers/food/drinks/cans/ochamidori = 10,
 		/obj/item/reagent_containers/food/drinks/cans/ramune = 10,
-		/obj/item/reagent_containers/food/drinks/cans/nicola = 10,
-		/obj/item/reagent_containers/food/drinks/cans/nicola_fire = 10,
-		/obj/item/reagent_containers/food/drinks/cans/nicola_sakura = 10,
-		/obj/item/reagent_containers/food/drinks/cans/nicola_blue = 10,
+		/obj/item/reagent_containers/food/drinks/cans/kyocola = 10,
+		/obj/item/reagent_containers/food/drinks/cans/kyocola_fire = 10,
+		/obj/item/reagent_containers/food/drinks/cans/kyocola_sakura = 10,
+		/obj/item/reagent_containers/food/drinks/cans/kyocola_blue = 10,
 		/obj/item/clothing/under/kimono = 5,
 		/obj/item/clothing/under/kimono/yellow = 5,
 		/obj/item/clothing/under/kimono/blue = 5,
@@ -921,10 +923,10 @@
 		/obj/item/reagent_containers/food/snacks/bagged/wpeas = 5,
 		/obj/item/reagent_containers/food/drinks/cans/ochamidori = 8,
 		/obj/item/reagent_containers/food/drinks/cans/ramune = 10,
-		/obj/item/reagent_containers/food/drinks/cans/nicola = 2,
-		/obj/item/reagent_containers/food/drinks/cans/nicola_fire = 2,
-		/obj/item/reagent_containers/food/drinks/cans/nicola_sakura = 2,
-		/obj/item/reagent_containers/food/drinks/cans/nicola_blue = 2,
+		/obj/item/reagent_containers/food/drinks/cans/kyocola = 2,
+		/obj/item/reagent_containers/food/drinks/cans/kyocola_fire = 2,
+		/obj/item/reagent_containers/food/drinks/cans/kyocola_sakura = 2,
+		/obj/item/reagent_containers/food/drinks/cans/kyocola_blue = 2,
 		/obj/item/clothing/under/kimono = 10,
 		/obj/item/clothing/under/kimono/yellow = 10,
 		/obj/item/clothing/under/kimono/blue = 10,

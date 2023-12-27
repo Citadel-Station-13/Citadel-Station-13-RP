@@ -29,7 +29,7 @@
 
 	outfit_type = /datum/outfit/job/station/scientist/senior_researcher
 	desc = "A Senior Researcher fulfills similar duties to other scientists, but usually occupies spare time with with training of other, newer scientists \
-			and giving advice to ensure safety. You are not in command of the Science departement, but should assist the RD in accordance with Standard Operating Procedures."
+			and giving advice to ensure safety. You are not in command of the Science department, but should assist the RD in accordance with Standard Operating Procedures."
 
 	alt_titles = list(
 		"Research Training Specialist" = /datum/prototype/struct/alt_title/sci_trainer

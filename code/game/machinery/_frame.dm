@@ -543,7 +543,7 @@
 				state = FRAME_FASTENED
 				new /obj/item/stack/cable_coil(loc, 5)
 
-	else if(istype(P, /obj/item/stack/material) && P.get_material_name() == "glass")
+	else if(P.is_material_stack_of(/datum/material/glass))
 		if(state == FRAME_WIRED)
 			if(frame_type.frame_class == FRAME_CLASS_COMPUTER)
 				var/obj/item/stack/G = P

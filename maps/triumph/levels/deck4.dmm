@@ -3299,9 +3299,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/primary/aft)
 "clB" = (
-/obj/machinery/porta_turret/stationary{
-	health = 200
-	},
+/obj/machinery/porta_turret/stationary,
 /turf/simulated/floor/tiled/dark,
 /area/gateway)
 "clD" = (
@@ -3311,8 +3309,7 @@
 /obj/structure/window/reinforced,
 /obj/structure/table/marble,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -5513,9 +5510,7 @@
 	name = "east bump";
 	pixel_x = 28
 	},
-/obj/machinery/porta_turret/stationary{
-	health = 200
-	},
+/obj/machinery/porta_turret/stationary,
 /turf/simulated/floor/tiled/dark,
 /area/gateway)
 "dGR" = (
@@ -8563,8 +8558,7 @@
 /area/maintenance/security/starboard)
 "fPk" = (
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/machinery/power/apc{
 	name = "south bump";
@@ -9255,8 +9249,7 @@
 /area/ai_upload)
 "gmV" = (
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced,
 /obj/machinery/door/window/brigdoor/northright{
@@ -9812,8 +9805,7 @@
 /obj/structure/window/reinforced,
 /obj/structure/table/marble,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -15390,8 +15382,7 @@
 /area/exploration/excursion_dock)
 "kpE" = (
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/security/forensics)
@@ -17022,9 +17013,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/machinery/porta_turret/stationary{
-	health = 200
-	},
+/obj/machinery/porta_turret/stationary,
 /turf/simulated/floor/tiled/dark,
 /area/gateway)
 "lwU" = (
@@ -18607,7 +18596,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/primary/aft)
 "mIv" = (
-/obj/landmark/map_data/triumph,
 /turf/space,
 /area/space)
 "mID" = (
@@ -29173,8 +29161,7 @@
 	pixel_y = 4
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/effect/floor_decal/corner/red{
 	dir = 5
@@ -31092,8 +31079,7 @@
 /obj/structure/window/reinforced/full,
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/curtain/black{
 	anchored = 1
@@ -34744,15 +34730,12 @@
 /obj/structure/cable/green{
 	icon_state = "2-4"
 	},
-/obj/machinery/porta_turret/stationary{
-	health = 200
-	},
+/obj/machinery/porta_turret/stationary,
 /turf/simulated/floor/tiled/dark,
 /area/gateway)
 "xST" = (
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4

@@ -204,6 +204,22 @@
 	name = "Rough Torn Half Cloak (Colorable)"
 	path = /obj/item/clothing/accessory/poncho/rough_cloak_torn
 
+/datum/loadout_entry/suit/replika/klbr
+	name = "Replikant Controller chestplate"
+	path = /obj/item/clothing/accessory/replika/klbr
+
+/datum/loadout_entry/suit/replika/lstr
+	name = "Replikant Combat-Engineer Chestplate"
+	path = /obj/item/clothing/accessory/replika/lstr
+
+/datum/loadout_entry/suit/replika/stcr
+	name = "Replikant Security-Controller Chestplate"
+	path = /obj/item/clothing/accessory/replika/stcr
+
+/datum/loadout_entry/suit/replika/star
+	name = "Replikant Security-Technician Chestplate"
+	path = /obj/item/clothing/accessory/replika/star
+
 /datum/loadout_entry/suit/black_lawyer_jacket
 	name = "Suit Jacket - Black"
 	path = /obj/item/clothing/suit/storage/toggle/internalaffairs
@@ -562,19 +578,19 @@
 
 /datum/loadout_entry/suit/cropped_hoodie
 	name = "Cropped Hoodie"
-	path = /obj/item/clothing/suit/cropped_hoodie
+	path = /obj/item/clothing/suit/storage/cropped_hoodie
 
 /datum/loadout_entry/suit/cropped_hoodie/croppier
 	name = "Cropped Hoodie (high crop)"
-	path = /obj/item/clothing/suit/cropped_hoodie/croppier
+	path = /obj/item/clothing/suit/storage/cropped_hoodie/croppier
 
 /datum/loadout_entry/suit/cropped_hoodie/veryhighcrop
 	name = "Cropped Hoodie (very high crop)"
-	path = /obj/item/clothing/suit/cropped_hoodie/croppierer
+	path = /obj/item/clothing/suit/storage/cropped_hoodie/croppierer
 
 /datum/loadout_entry/suit/cropped_hoodie/croppiest
 	name = "Cropped Hoodie (supercrop)"
-	path = /obj/item/clothing/suit/cropped_hoodie/croppiest
+	path = /obj/item/clothing/suit/storage/cropped_hoodie/croppiest
 
 /datum/loadout_entry/suit/leather_cropped
 	name = "Cropped Leather Jacket"
@@ -583,6 +599,14 @@
 /datum/loadout_entry/suit/leather_supercropped
 	name = "Supercropped Leather Jacket"
 	path = /obj/item/clothing/suit/storage/leather_supercropped
+
+/datum/loadout_entry/suit/sweater_cropped_m
+	name = "Cropped Sweater (Male)"
+	path = /obj/item/clothing/suit/cropped_sweater
+
+/datum/loadout_entry/suit/sweater_cropped_f
+	name = "Cropped Sweater (Female)"
+	path = /obj/item/clothing/suit/cropped_sweater/female
 
 //Tajaran wears
 
@@ -652,3 +676,6 @@
 		var/obj/item/clothing/suit/storage/tajaran/jacket/tajara_jacket_type = tajara_jacket
 		tajara_jackets[initial(tajara_jacket_type.name)] = tajara_jacket_type
 	tweaks += new/datum/loadout_tweak/path(tim_sort(tajara_jackets, GLOBAL_PROC_REF(cmp_text_asc)))
+
+//Signalis Armor Accessories (no armor stats)//
+

@@ -13,10 +13,10 @@
 	initialize_directions = 1;
 	internal_pressure_bound = 4000;
 	internal_pressure_bound_default = 4000;
+	on = 1;
 	pressure_checks = 2;
 	pressure_checks_default = 2;
-	pump_direction = 0;
-	on = 1
+	pump_direction = 0
 	},
 /turf/simulated/floor/reinforced/phoron,
 /area/engineering/atmos)
@@ -629,9 +629,7 @@
 	pixel_y = 24
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/stairs_two)
 "bG" = (
@@ -842,9 +840,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/lightorange/border,
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/stairs_two)
 "bW" = (
@@ -1213,7 +1209,7 @@
 /area/maintenance/engineering/upper)
 "cN" = (
 /obj/machinery/firealarm{
-	dir = 8;
+	dir = 4;
 	pixel_x = 24
 	},
 /obj/structure/cable{
@@ -1328,7 +1324,7 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass{
-	dir = 1
+	dir = 8
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
 /turf/simulated/floor/tiled/steel,
@@ -1665,7 +1661,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/firedoor/glass{
-	dir = 1
+	dir = 8
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
 /obj/structure/cable/green{
@@ -1818,16 +1814,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
-	},
-/turf/simulated/floor/tiled/steel,
-/area/hallway/primary/underone)
-"eb" = (
-/obj/effect/floor_decal/borderfloor,
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals5{
-	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
@@ -1989,7 +1975,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "eF" = (
-/obj/structure/closet/crate/nanotrasen,
+/obj/structure/closet/crate/corporate/nanotrasen,
 /obj/effect/floor_decal/industrial/warning/full,
 /obj/machinery/light/small{
 	dir = 8
@@ -2220,9 +2206,7 @@
 	},
 /obj/item/folder/yellow,
 /obj/item/pen/red,
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
+/obj/machinery/door/firedoor/glass,
 /obj/item/pen/blue,
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/atmos/hallway)
@@ -2270,9 +2254,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
+/obj/machinery/door/firedoor/glass,
 /obj/item/storage/single_use/med_pouch/oxyloss,
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/atmos/hallway)
@@ -2286,9 +2268,7 @@
 	},
 /obj/item/packageWrap,
 /obj/item/hand_labeler,
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
+/obj/machinery/door/firedoor/glass,
 /obj/item/toy/figure/engineer{
 	pixel_x = -17
 	},
@@ -2487,9 +2467,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
+/obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/aux,
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/atmos/hallway)
@@ -2547,6 +2525,9 @@
 	id = "hangar_lockdown";
 	name = "Hangar Lockdown Blast Doors";
 	opacity = 0
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
@@ -2933,7 +2914,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "hX" = (
-/obj/effect/alien/weeds,
+/obj/structure/alien/weeds,
 /obj/structure/barricade/cutout/lusty,
 /turf/simulated/floor/plating,
 /area/engineering/atmos/hallway)
@@ -3243,7 +3224,6 @@
 /area/rift/surfacebase/underground/under1)
 "jl" = (
 /obj/machinery/door/window{
-	dir = 2;
 	req_one_access = list(10)
 	},
 /turf/simulated/floor/tiled/steel_ridged,
@@ -3898,6 +3878,15 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/engineering)
+"lD" = (
+/obj/machinery/atmospherics/pipe/simple/visible{
+	dir = 4
+	},
+/obj/machinery/firealarm{
+	pixel_y = 24
+	},
+/turf/simulated/floor/tiled,
+/area/engineering/atmos)
 "lF" = (
 /obj/structure/cable/green{
 	icon_state = "1-8"
@@ -4277,7 +4266,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "mO" = (
-/obj/effect/alien/weeds,
+/obj/structure/alien/weeds,
 /turf/simulated/floor/plating,
 /area/engineering/atmos/hallway)
 "mP" = (
@@ -4337,7 +4326,7 @@
 /turf/simulated/floor/tiled/kafel_full/blue,
 /area/crew_quarters/pool)
 "nj" = (
-/obj/effect/alien/weeds,
+/obj/structure/alien/weeds,
 /obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 22
@@ -4555,10 +4544,10 @@
 	initialize_directions = 1;
 	internal_pressure_bound = 4000;
 	internal_pressure_bound_default = 4000;
+	on = 1;
 	pressure_checks = 2;
 	pressure_checks_default = 2;
-	pump_direction = 0;
-	on = 1
+	pump_direction = 0
 	},
 /turf/simulated/floor/reinforced/oxygen,
 /area/engineering/atmos)
@@ -4804,7 +4793,6 @@
 	dir = 4
 	},
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_y = 24
 	},
 /obj/effect/floor_decal/borderfloorblack{
@@ -5285,9 +5273,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
+/obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/aux,
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/atmos/hallway)
@@ -5396,10 +5382,10 @@
 	initialize_directions = 1;
 	internal_pressure_bound = 4000;
 	internal_pressure_bound_default = 4000;
+	on = 1;
 	pressure_checks = 2;
 	pressure_checks_default = 2;
-	pump_direction = 0;
-	on = 1
+	pump_direction = 0
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/engineering/atmos)
@@ -5693,9 +5679,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/elevator)
 "sI" = (
-/obj/effect/map_effect/portal/line/side_a{
-	dir = 4
-	},
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/underground/under1)
 "sJ" = (
@@ -5877,10 +5860,10 @@
 "tm" = (
 /obj/structure/grille,
 /obj/machinery/power/apc{
+	alarms_hidden = 1;
 	dir = 4;
 	name = "east bump";
-	pixel_x = 24;
-	alarms_hidden = 1
+	pixel_x = 24
 	},
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/underground/under1)
@@ -6278,11 +6261,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/upper)
 "uJ" = (
-/obj/effect/map_effect/portal/master/side_a{
-	dir = 4;
-	name = "center_to_westcave";
-	portal_id = "westcavestep"
-	},
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "uM" = (
@@ -6309,7 +6287,7 @@
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/machinery/firealarm{
-	dir = 8;
+	dir = 4;
 	pixel_x = 24
 	},
 /turf/simulated/floor/plating,
@@ -6757,7 +6735,7 @@
 /area/rift/surfacebase/underground/under1)
 "ws" = (
 /obj/machinery/firealarm{
-	dir = 4;
+	dir = 8;
 	pixel_x = -24
 	},
 /turf/simulated/floor/concrete/rng/indoors,
@@ -6831,9 +6809,9 @@
 	initialize_directions = 1;
 	internal_pressure_bound = 4000;
 	internal_pressure_bound_default = 4000;
+	on = 1;
 	pressure_checks_default = 2;
-	pump_direction = 0;
-	on = 1
+	pump_direction = 0
 	},
 /turf/simulated/floor/bluegrid{
 	initial_gas_mix = "n2=100;TEMP=80";
@@ -6894,10 +6872,10 @@
 	initialize_directions = 1;
 	internal_pressure_bound = 4000;
 	internal_pressure_bound_default = 4000;
+	on = 1;
 	pressure_checks = 2;
 	pressure_checks_default = 2;
-	pump_direction = 0;
-	on = 1
+	pump_direction = 0
 	},
 /turf/simulated/floor/reinforced/n20,
 /area/engineering/atmos)
@@ -7221,9 +7199,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment,
-/obj/machinery/door/firedoor/glass{
-	dir = 8
-	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
 "xJ" = (
@@ -7293,7 +7269,7 @@
 "xU" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/machinery/door/firedoor/glass{
-	dir = 1
+	dir = 8
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 1
@@ -7459,9 +7435,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "yu" = (
-/obj/effect/map_effect/portal/line/side_a{
-	dir = 4
-	},
 /obj/structure/catwalk/plank,
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/underground/under1)
@@ -7581,12 +7554,6 @@
 	},
 /turf/simulated/floor/concrete/rng/indoors,
 /area/rift/station/fighter_bay/transport_tunnel_garage)
-"yS" = (
-/obj/machinery/door/firedoor/glass{
-	dir = 8
-	},
-/turf/simulated/floor/tiled,
-/area/engineering/atmos)
 "yT" = (
 /turf/simulated/floor/plating,
 /area/rift/trade_shop)
@@ -8361,10 +8328,10 @@
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/underground/under1)
 "BS" = (
-/obj/machinery/door/firedoor/multi_tile,
 /obj/machinery/door/airlock/multi_tile/glass{
 	name = "Ready Room"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
 "BT" = (
@@ -8537,7 +8504,9 @@
 /turf/simulated/floor/reinforced/phoron,
 /area/engineering/atmos)
 "CC" = (
-/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
@@ -8751,9 +8720,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
 "Dq" = (
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 2
-	},
 /obj/machinery/door/airlock/multi_tile/metal{
 	dir = 4;
 	name = "Fighter Hangar";
@@ -8765,6 +8731,9 @@
 	id = "hangar_lockdown";
 	name = "Hangar Lockdown Blast Doors";
 	opacity = 0
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
@@ -8971,10 +8940,10 @@
 	initialize_directions = 1;
 	internal_pressure_bound = 4000;
 	internal_pressure_bound_default = 4000;
+	on = 1;
 	pressure_checks = 2;
 	pressure_checks_default = 2;
-	pump_direction = 0;
-	on = 1
+	pump_direction = 0
 	},
 /turf/simulated/floor/reinforced/carbon_dioxide,
 /area/engineering/atmos)
@@ -9275,9 +9244,9 @@
 	external_pressure_bound = 140;
 	external_pressure_bound_default = 140;
 	icon_state = "map_vent_out";
+	on = 1;
 	pressure_checks = 0;
-	pressure_checks_default = 0;
-	on = 1
+	pressure_checks_default = 0
 	},
 /turf/simulated/floor/bluegrid{
 	initial_gas_mix = "n2=100;TEMP=80";
@@ -9746,9 +9715,7 @@
 	dir = 8;
 	pixel_x = 22
 	},
-/obj/machinery/door/firedoor/glass{
-	dir = 8
-	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/atmos/hallway)
 "GO" = (
@@ -10212,9 +10179,6 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rift/station/fighter_bay/hangar)
 "It" = (
-/obj/effect/map_effect/portal/line/side_a{
-	dir = 4
-	},
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "Iv" = (
@@ -10308,8 +10272,8 @@
 /turf/simulated/floor/tiled/kafel_full/beige,
 /area/crew_quarters/pool)
 "IM" = (
-/obj/effect/alien/weeds,
-/obj/effect/alien/resin/wall{
+/obj/structure/alien/weeds,
+/obj/structure/alien/resin/wall{
 	color = "#332342"
 	},
 /turf/simulated/floor/plating,
@@ -11134,7 +11098,7 @@
 /turf/simulated/floor/reinforced,
 /area/rnd/secure_storage/upper)
 "Ly" = (
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /turf/simulated/floor/plating,
 /area/engineering/atmos/hallway)
 "LC" = (
@@ -12106,10 +12070,6 @@
 /obj/machinery/light/spot{
 	dir = 4
 	},
-/obj/machinery/firealarm{
-	dir = 8;
-	pixel_x = 24
-	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "OM" = (
@@ -12467,9 +12427,6 @@
 /turf/simulated/floor/tiled,
 /area/rnd/secure_storage/upper)
 "Qc" = (
-/obj/effect/map_effect/portal/line/side_a{
-	dir = 4
-	},
 /obj/structure/railing/grey{
 	dir = 1
 	},
@@ -12607,9 +12564,6 @@
 /turf/simulated/floor,
 /area/storage/tech)
 "QJ" = (
-/obj/effect/map_effect/portal/line/side_a{
-	dir = 4
-	},
 /turf/simulated/wall/r_wall/prepainted,
 /area/rift/surfacebase/underground/under1)
 "QM" = (
@@ -12672,9 +12626,6 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "QZ" = (
-/obj/effect/map_effect/portal/line/side_a{
-	dir = 4
-	},
 /obj/structure/catwalk,
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/underground/under1)
@@ -12775,12 +12726,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/drone_fabrication)
-"Rn" = (
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
-/turf/simulated/floor/tiled,
-/area/engineering/atmos)
 "Rp" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4
@@ -12931,12 +12876,9 @@
 "RP" = (
 /obj/structure/closet/crate/miningcar,
 /obj/effect/floor_decal/rust,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
+/obj/item/stack/ore/coal{
+	amount = 6
+	},
 /turf/simulated/floor/tiled,
 /area/maintenance/elevator)
 "RQ" = (
@@ -13043,9 +12985,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
 "Sr" = (
@@ -13122,8 +13062,8 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/hallway/primary/underone)
 "SG" = (
-/obj/effect/alien/weeds,
-/obj/effect/alien/resin/membrane{
+/obj/structure/alien/weeds,
+/obj/structure/alien/resin/membrane{
 	color = "#332342"
 	},
 /turf/simulated/floor/plating,
@@ -13302,7 +13242,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
 "TB" = (
-/obj/effect/alien/weeds,
+/obj/structure/alien/weeds,
 /obj/structure/barricade/cutout/fukken_xeno,
 /turf/simulated/floor/plating,
 /area/engineering/atmos/hallway)
@@ -13359,9 +13299,6 @@
 /turf/simulated/floor,
 /area/storage/tech)
 "TQ" = (
-/obj/effect/map_effect/portal/line/side_a{
-	dir = 4
-	},
 /obj/structure/railing,
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/underground/under1)
@@ -13511,12 +13448,9 @@
 	dir = 1
 	},
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_y = 24
 	},
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
 "Uw" = (
@@ -13909,7 +13843,6 @@
 /obj/effect/floor_decal/industrial/warning,
 /obj/structure/railing,
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -14160,6 +14093,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
 "WH" = (
@@ -14600,10 +14534,10 @@
 	initialize_directions = 1;
 	internal_pressure_bound = 4000;
 	internal_pressure_bound_default = 4000;
+	on = 1;
 	pressure_checks = 2;
 	pressure_checks_default = 2;
-	pump_direction = 0;
-	on = 1
+	pump_direction = 0
 	},
 /turf/simulated/floor/reinforced/nitrogen,
 /area/engineering/atmos)
@@ -14892,10 +14826,10 @@
 	initialize_directions = 1;
 	internal_pressure_bound = 4000;
 	internal_pressure_bound_default = 4000;
+	on = 1;
 	pressure_checks = 2;
 	pressure_checks_default = 2;
-	pump_direction = 0;
-	on = 1
+	pump_direction = 0
 	},
 /turf/simulated/floor/reinforced/airmix,
 /area/engineering/atmos)
@@ -28780,7 +28714,7 @@ ae
 ae
 cW
 CC
-eb
+XF
 XQ
 dI
 XQ
@@ -32669,7 +32603,7 @@ Xp
 mQ
 if
 eT
-VH
+lD
 jN
 OL
 VH
@@ -32681,7 +32615,7 @@ kl
 ka
 Zx
 Zx
-Rn
+qT
 NU
 NU
 NU
@@ -32875,7 +32809,7 @@ eT
 eT
 Zx
 Zx
-yS
+qT
 Zx
 Zx
 Zx

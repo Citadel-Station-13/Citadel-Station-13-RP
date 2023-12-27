@@ -314,6 +314,10 @@
 	dir = 5
 	},
 /obj/structure/disposalpipe/trunk,
+/obj/machinery/air_alarm{
+	desc = " ";
+	pixel_y = 24
+	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration/pathfinder_office)
 "abf" = (
@@ -401,9 +405,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/captain)
 "abq" = (
-/obj/machinery/camera/network/exploration{
-	dir = 6
-	},
+/obj/machinery/camera/network/exploration,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/exploration/courser_dock)
 "abr" = (
@@ -1361,10 +1363,6 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/surfaceeva/aa/cliff_south)
-"aen" = (
-/obj/landmark/map_data/lythios43c,
-/turf/simulated/open/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "aep" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
@@ -5230,7 +5228,7 @@
 /area/shuttle/excursion/general)
 "aoV" = (
 /obj/machinery/camera/network/exploration{
-	dir = 10
+	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
 /area/exploration/courser_dock)
@@ -7447,6 +7445,9 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/outline,
+/obj/machinery/firealarm{
+	pixel_y = 24
+	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration/explorer_prep)
 "auU" = (
@@ -8372,8 +8373,7 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/manifold4w/visible/fuel,
 /turf/simulated/floor/lythios43c/indoors,
@@ -8455,6 +8455,10 @@
 /obj/machinery/light,
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -25
 	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration)
@@ -8934,8 +8938,7 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced,
 /obj/machinery/atmospherics/pipe/simple/visible/fuel{
@@ -10216,9 +10219,7 @@
 "aCt" = (
 /obj/machinery/portable_atmospherics/canister/air,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/camera/network/exploration{
-	dir = 6
-	},
+/obj/machinery/camera/network/exploration,
 /turf/simulated/floor/tiled/steel,
 /area/exploration/courser_dock)
 "aCu" = (
@@ -10641,6 +10642,10 @@
 /obj/effect/floor_decal/corner/beige/border{
 	dir = 10
 	},
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -25
+	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration/pathfinder_office)
 "aDL" = (
@@ -10946,8 +10951,7 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 1
@@ -11352,10 +11356,19 @@
 /obj/effect/floor_decal/corner/beige/bordercorner2{
 	dir = 4
 	},
+/obj/machinery/firealarm{
+	dir = 4;
+	layer = 3.3;
+	pixel_x = 26
+	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration)
 "aFL" = (
 /obj/structure/reagent_dispensers/water_cooler/full,
+/obj/machinery/air_alarm{
+	desc = " ";
+	pixel_y = 24
+	},
 /turf/simulated/floor/wood,
 /area/exploration/meeting)
 "aFM" = (
@@ -12357,9 +12370,6 @@
 /turf/simulated/floor/plating,
 /area/shuttle/courser/cockpit)
 "aIC" = (
-/obj/machinery/vending/coffee{
-	dir = 4
-	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
 	},
@@ -12369,6 +12379,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals6{
 	dir = 10
 	},
+/obj/machinery/vending/coffee,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
 "aID" = (
@@ -12627,11 +12638,11 @@
 "aJm" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/beige/border,
-/obj/machinery/camera/network/exploration{
-	dir = 10
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/machinery/camera/network/exploration{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration)
@@ -12644,7 +12655,42 @@
 /obj/item/binoculars{
 	pixel_y = 10
 	},
-/obj/item/ano_scanner,
+/obj/item/ano_scanner{
+	pixel_y = 18
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration/body{
+	pixel_x = -6
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration/body{
+	pixel_x = -6
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration/body{
+	pixel_x = -6
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration/body{
+	pixel_x = -6
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration/body{
+	pixel_x = -6
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration/body{
+	pixel_x = -6
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration{
+	pixel_x = 4
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration{
+	pixel_x = 4
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration{
+	pixel_x = 4
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration{
+	pixel_x = 4
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration{
+	pixel_x = 4
+	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration/courser_dock)
 "aJp" = (
@@ -15828,6 +15874,9 @@
 /area/bridge/bridge_hallway)
 "aSj" = (
 /obj/effect/floor_decal/spline/plain,
+/obj/machinery/firealarm{
+	pixel_y = 24
+	},
 /turf/simulated/floor/wood,
 /area/exploration/meeting)
 "aSk" = (
@@ -16621,7 +16670,7 @@
 /obj/structure/table/standard{
 	name = "plastic table frame"
 	},
-/obj/item/multitool/ai_detector,
+/obj/item/multitool,
 /turf/simulated/floor/tiled,
 /area/hydroponics)
 "aUr" = (
@@ -17698,8 +17747,7 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/manifold/visible/fuel{
 	dir = 8
@@ -17865,6 +17913,10 @@
 	},
 /obj/effect/floor_decal/corner/beige/bordercorner2{
 	dir = 10
+	},
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -24
 	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration/excursion_dock)
@@ -20934,6 +20986,9 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "hDa" = (
@@ -21200,10 +21255,12 @@
 /turf/simulated/floor/plating,
 /area/exploration/pathfinder_office)
 "iio" = (
-/obj/machinery/door/firedoor/multi_tile,
 /obj/machinery/door/airlock/multi_tile/metal/mait{
 	dir = 4;
 	name = "Maintenance Access"
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
@@ -21485,6 +21542,13 @@
 /obj/effect/floor_decal/corner/red/diagonal,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
+"jew" = (
+/obj/structure/table/bench/standard,
+/obj/machinery/firealarm{
+	pixel_y = 24
+	},
+/turf/simulated/floor/tiled/steel,
+/area/exploration/courser_dock)
 "jil" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 4
@@ -23332,6 +23396,12 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway2)
+"orx" = (
+/obj/machinery/firealarm{
+	pixel_y = 24
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/exploration/courser_dock)
 "oti" = (
 /obj/structure/bed/chair/bay/chair{
 	dir = 1
@@ -23397,19 +23467,6 @@
 "owP" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/security/nuke_storage)
-"oxo" = (
-/obj/structure/table/reinforced,
-/obj/effect/floor_decal/corner/grey/diagonal,
-/obj/machinery/door/blast/shutters{
-	id = "kitchen_shutters";
-	name = "Kitchen Shutters"
-	},
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/light{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/white,
-/area/crew_quarters/kitchen)
 "oxz" = (
 /obj/machinery/light,
 /obj/structure/cable/green{
@@ -24399,6 +24456,10 @@
 /obj/effect/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/telescience_lab)
+"riD" = (
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/plating,
+/area/maintenance/commandmaint)
 "riL" = (
 /obj/structure/cable/green{
 	icon_state = "1-4"
@@ -25365,6 +25426,25 @@
 /obj/effect/paint/commandblue,
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/bridge)
+"uAA" = (
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals9,
+/obj/effect/floor_decal/industrial/outline,
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -24
+	},
+/turf/simulated/floor/tiled,
+/area/exploration/explorer_prep)
 "uCG" = (
 /obj/machinery/door/blast/shutters{
 	density = 0;
@@ -26393,7 +26473,7 @@
 /obj/machinery/door/airlock/multi_tile/metal/mait{
 	name = "Maintenance Access"
 	},
-/obj/machinery/door/firedoor/multi_tile,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "xbb" = (
@@ -26606,7 +26686,6 @@
 "xHc" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/machinery/firealarm{
-	dir = 1;
 	pixel_y = 24
 	},
 /obj/effect/floor_decal/borderfloorblack{
@@ -27264,7 +27343,7 @@ aOi
 aOi
 aOi
 aOi
-aen
+aOi
 aOC
 "}
 (3,1,1) = {"
@@ -38827,7 +38906,7 @@ amd
 wec
 aNU
 aMs
-oxo
+aUj
 aCk
 amJ
 aWd
@@ -44660,7 +44739,7 @@ qnv
 pnT
 jNZ
 dIa
-asy
+uAA
 aTd
 aTd
 aTd
@@ -46031,7 +46110,7 @@ cvI
 aJN
 aVX
 cvI
-aYe
+orx
 aNv
 aHS
 aHp
@@ -46411,7 +46490,7 @@ aQr
 asV
 ahq
 hXj
-axm
+jew
 axm
 ciu
 mXd
@@ -52771,7 +52850,7 @@ aaA
 aaA
 aaA
 aaA
-aaA
+riD
 aaA
 aaA
 aAN

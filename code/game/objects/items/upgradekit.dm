@@ -11,16 +11,16 @@
 	if(istype(target, /obj/item/clothing/under))
 		var/obj/item/clothing/under/C = target
 		if(C.fetch_armor().is_atleast(list(
-			ARMOR_MELEE = 40,
-			ARMOR_BULLET = 20,
-			ARMOR_LASER = 20,
+			ARMOR_MELEE = 0.2,
+			ARMOR_BULLET = 0.1,
+			ARMOR_LASER = 0.1,
 		)))
 			to_chat(user, "This item cannot be upgraded any further!")
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		C.set_armor(C.fetch_armor().boosted(list(
-			ARMOR_MELEE = 40,
-			ARMOR_BULLET = 20,
-			ARMOR_LASER = 20,
+			ARMOR_MELEE = 0.2,
+			ARMOR_BULLET = 0.1,
+			ARMOR_LASER = 0.1,
 		)))
 
 		to_chat(user, "Armor upgrade successful!")

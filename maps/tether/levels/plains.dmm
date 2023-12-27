@@ -93,7 +93,6 @@
 /area/tether/outpost/exploration_shed)
 "B" = (
 /obj/effect/floor_decal/rust,
-/obj/effect/map_effect/portal/line/side_b,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/outpost/exploration_shed)
 "D" = (
@@ -140,10 +139,6 @@
 /area/tether/outpost/exploration_shed)
 "O" = (
 /obj/effect/floor_decal/rust,
-/obj/effect/map_effect/portal/master/side_b{
-	name = "from_tether_to_wild";
-	portal_id = "wilderness_step"
-	},
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/outpost/exploration_shed)
 "P" = (

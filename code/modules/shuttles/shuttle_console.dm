@@ -72,7 +72,7 @@
 		return FALSE
 	return TRUE
 
-/obj/machinery/computer/shuttle_control/ui_act(action, list/params)
+/obj/machinery/computer/shuttle_control/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 	if(skip_act)
@@ -113,7 +113,7 @@
 		ui.open()
 
 // We delegate populating data to another proc to make it easier for overriding types to add their data.
-/obj/machinery/computer/shuttle_control/ui_data(mob/user)
+/obj/machinery/computer/shuttle_control/ui_data(mob/user, datum/tgui/ui)
 	var/datum/shuttle/autodock/shuttle = SSshuttle.shuttles[shuttle_tag]
 	if(!istype(shuttle))
 		to_chat(user, "<span class='warning'>Unable to establish link with the shuttle.</span>")

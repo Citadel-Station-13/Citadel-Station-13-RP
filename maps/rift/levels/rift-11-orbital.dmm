@@ -45,14 +45,14 @@
 /turf/simulated/floor/holofloor/grass,
 /area/holodeck/source_picnicarea)
 "ao" = (
-/obj/structure/table/rack/holorack,
+/obj/structure/table/rack/holorack_legacy,
 /obj/item/clothing/under/dress/dress_saloon,
 /obj/item/clothing/head/pin/flower,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_theatre)
 "ap" = (
 /obj/landmark/costume,
-/obj/structure/table/rack/holorack,
+/obj/structure/table/rack/holorack_legacy,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_theatre)
 "aq" = (
@@ -159,7 +159,9 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_theatre)
 "aJ" = (
-/obj/machinery/door/window/holowindoor,
+/obj/machinery/door/window/holowindoor{
+	dir = 4
+	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_courtroom)
 "aK" = (
@@ -304,7 +306,8 @@
 /area/holodeck/source_courtroom)
 "bf" = (
 /obj/machinery/door/window/holowindoor{
-	name = "Red Team"
+	name = "Red Team";
+	dir = 4
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_emptycourt)
@@ -764,7 +767,8 @@
 "cB" = (
 /obj/machinery/door/window/holowindoor{
 	base_state = "right";
-	icon_state = "right"
+	icon_state = "right";
+	dir = 4
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_courtroom)
@@ -784,7 +788,8 @@
 /obj/machinery/door/window/holowindoor{
 	base_state = "right";
 	icon_state = "right";
-	name = "Green Team"
+	name = "Green Team";
+	dir = 4
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_emptycourt)
@@ -1251,7 +1256,8 @@
 /area/holodeck/source_meetinghall)
 "eg" = (
 /obj/machinery/door/window/holowindoor{
-	name = "Red Team"
+	name = "Red Team";
+	dir = 4
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_basketball)
@@ -1266,7 +1272,8 @@
 /area/holodeck/source_beach)
 "ej" = (
 /obj/machinery/door/window/holowindoor{
-	name = "Red Team"
+	name = "Red Team";
+	dir = 4
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_thunderdomecourt)
@@ -1874,7 +1881,8 @@
 /obj/machinery/door/window/holowindoor{
 	base_state = "right";
 	icon_state = "right";
-	name = "Green Team"
+	name = "Green Team";
+	dir = 4
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_basketball)
@@ -1893,7 +1901,8 @@
 /obj/machinery/door/window/holowindoor{
 	base_state = "right";
 	icon_state = "right";
-	name = "Green Team"
+	name = "Green Team";
+	dir = 4
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_thunderdomecourt)
@@ -5388,7 +5397,7 @@
 /obj/machinery/door/airlock/multi_tile/glass{
 	req_access = list(5)
 	},
-/obj/machinery/door/firedoor/multi_tile,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "qn" = (
@@ -8841,6 +8850,10 @@
 /obj/structure/table/reinforced,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
+"OM" = (
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled/white,
+/area/centcom/simulated/medical)
 "OY" = (
 /obj/structure/bed/chair/backed_grey,
 /turf/simulated/floor/reinforced,
@@ -21641,7 +21654,7 @@ nU
 pg
 nU
 nU
-nU
+OM
 qR
 nU
 nU

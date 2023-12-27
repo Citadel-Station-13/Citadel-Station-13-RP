@@ -26,16 +26,16 @@ export const LabeledList = (props: LabeledListProps) => {
 LabeledList.defaultHooks = pureComponentHooks;
 
 type LabeledListItemProps = {
-  className?: string | BooleanLike;
-  label?: string | InfernoNode | BooleanLike;
-  labelColor?: string | BooleanLike;
-  color?: string | BooleanLike;
-  textAlign?: string | BooleanLike;
-  buttons?: InfernoNode,
+  readonly className?: string | BooleanLike;
+  readonly label?: string | InfernoNode | BooleanLike;
+  readonly labelColor?: string | BooleanLike;
+  readonly color?: string | BooleanLike;
+  readonly textAlign?: string | BooleanLike;
+  readonly buttons?: InfernoNode,
   /** @deprecated */
-  content?: any,
-  children?: InfernoNode;
-  verticalAlign?: string;
+  readonly content?: any,
+  readonly children?: InfernoNode;
+  readonly verticalAlign?: string;
 };
 
 const LabeledListItem = (props: LabeledListItemProps) => {
@@ -91,7 +91,7 @@ const LabeledListItem = (props: LabeledListItemProps) => {
 LabeledListItem.defaultHooks = pureComponentHooks;
 
 type LabeledListDividerProps = {
-  size?: number;
+  readonly size?: number;
 };
 
 const LabeledListDivider = (props: LabeledListDividerProps) => {

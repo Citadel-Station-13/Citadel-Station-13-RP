@@ -20,6 +20,7 @@ Yes, this currently includes all turfs, mobs, objs, and misc things. Sorry. We'l
       - /misc - unsorted things
       - /rank - "formal" "rank"-wear like flight suits, military/naval, etc
     - /gearsets - bundled sets, like voidsuits, cryosuits, etc
+  - /effects - generic visual effects that are not screen/rendering: e.g. attack, emp, bomb, etc.
   - /items - general, non-module, non-clothing items placed in here
   - /interface - used for stuff going into spritesheets for tgui, etc. if it's a HUD object, it should go in /screen instead.
   - /machinery - used for sprites for general, non-module machines. use subdirectories if more than one .dmi is needed, or for closely related machinery.

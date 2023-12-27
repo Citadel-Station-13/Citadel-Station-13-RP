@@ -68,7 +68,7 @@
 	throw_range = 4
 	w_class = ITEMSIZE_LARGE
 	origin_tech = list(TECH_MATERIAL = 2)
-	materials = list(MAT_GLASS = 7500, MAT_STEEL = 1000)
+	materials_base = list(MAT_GLASS = 7500, MAT_STEEL = 1000)
 	attack_verb = list("shoved", "bashed")
 	var/cooldown = 0 //shield bash cooldown. based on world.time
 
@@ -134,7 +134,7 @@
 /obj/item/shield/riot/flash/handle_shield(mob/living/owner, atom/object, damage, attack_text, attack_type, armour_penetration, mob/attacker, def_zone, final_block_chance, list/block_return)
 	. = ..()
 	if (. && damage && !embedded_flash.broken)
-		embedded_flash.melee_attack_chain()
+		embedded_flash.melee_interaction_chain()
 		update_icon()
 
 /obj/item/shield/riot/flash/attackby(obj/item/W, mob/user)
@@ -206,7 +206,7 @@
 	icon_state = "holoshield"
 	slowdown = 1
 	shield_flags = SHIELD_FLAGS_DEFAULT
-	max_integrity = 100
+	integrity_max = 100
 	obj_integrity = 100
 	can_shatter = FALSE
 	clothing_flags = ITEM_CAN_BLOCK
@@ -215,7 +215,7 @@
 	var/recharge_delay = 15 SECONDS
 
 /// Entirely overriden take_damage. This shouldn't exist outside of an implant (other than maybe christmas).
-/obj/item/shield/riot/implant/take_damage(damage_amount, damage_type = BRUTE, damage_flag = 0, sound_effect = 1, attack_dir, armour_penetration = 0)
+/obj/item/shield/riot/implant/take_damage_legacy(damage_amount, damage_type = BRUTE, damage_flag = 0, sound_effect = 1, attack_dir, armour_penetration = 0)
 	obj_integrity -= damage_amount
 	if(obj_integrity < 0)
 		obj_integrity = 0
@@ -236,9 +236,9 @@
 			recharge_timerid = null
 
 /obj/item/shield/riot/implant/proc/recharge()
-	if(obj_integrity == max_integrity)
+	if(obj_integrity == integrity_max)
 		return
-	obj_integrity = max_integrity
+	obj_integrity = integrity_max
 	if(ismob(loc.loc))		//cyberimplant.user
 		to_chat(loc, "<span class='notice'>[src] has recharged its reinforcement matrix and is ready for use!</span>")
 */
@@ -260,7 +260,7 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "roman_shield"
 	slot_flags = SLOT_BACK
-	materials = list(MAT_WOOD = 7500, MAT_STEEL = 1000)
+	materials_base = list(MAT_WOOD = 7500, MAT_STEEL = 1000)
 	item_icons = list(
 			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
 			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
@@ -272,7 +272,7 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "buckler"
 	slot_flags = SLOT_BACK | SLOT_BELT
-	materials = list(MAT_WOOD = 7500, MAT_STEEL = 1000)
+	materials_base = list(MAT_WOOD = 7500, MAT_STEEL = 1000)
 	item_icons = list(
 			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
 			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
@@ -485,7 +485,7 @@
 	throw_force = 0
 	throw_speed = 2
 	throw_range = 6
-	materials = list(MAT_PLASTIC = 7500, "foam" = 1000)
+	materials_base = list(MAT_PLASTIC = 7500, "foam" = 1000)
 	item_icons = list(
 			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
 			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',

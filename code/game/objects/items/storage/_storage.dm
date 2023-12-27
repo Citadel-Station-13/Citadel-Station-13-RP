@@ -134,8 +134,6 @@
 	var/old = weight_cached
 	weight_cached += diff
 	propagate_weight(old, weight_cached)
-	update_weight()
-
 /obj/item/storage/proc/reset_weight_recursive()
 	do_reset_weight_recursive(200)
 
@@ -164,7 +162,6 @@
 	else if(isliving(user) && user.Reachability(src))
 		open(user)
 	else
-		return ..()
 
 /obj/item/storage/proc/return_inv()
 
@@ -628,7 +625,7 @@
 		starts_with = null //Reduce list count.
 
 /obj/item/storage/proc/PopulateContents()
-
+	return
 
 ///Prevents spawned containers from being too small for their contents.
 /obj/item/storage/proc/calibrate_size()
@@ -788,3 +785,8 @@
 		return
 	for(var/atom/A as anything in contents)
 		A.clean_radiation(str, mul, cheap)
+
+/obj/item/storage/drop_products(method, atom/where)
+	. = ..()
+	for(var/atom/movable/AM as anything in contents)
+		AM.forceMove(where)

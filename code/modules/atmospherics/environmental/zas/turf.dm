@@ -25,7 +25,7 @@
 	for(var/d = 1, d < 16, d *= 2)
 	#endif
 
-		var/turf/simulated/potential = get_step_multiz(src, d)
+		var/turf/simulated/potential = vertical_step(d)
 
 		if(!istype(potential) || !potential.has_valid_zone())
 			continue
@@ -145,7 +145,7 @@ GLOBAL_REAL_VAR(list/gzn_check) = list(NORTH, SOUTH, EAST, WEST)
 	for(var/d = 1, d < 16, d *= 2)
 	#endif
 
-		var/turf/potential = get_step_multiz(src, d)
+		var/turf/potential = vertical_step(d)
 		if(!potential)
 			continue
 		var/them_to_us = potential.CanAtmosPass(src, global.reverse_dir[d])

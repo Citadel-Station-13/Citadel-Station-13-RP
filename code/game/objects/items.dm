@@ -4,7 +4,7 @@
 	w_class = ITEMSIZE_NORMAL
 	// todo: better way, for now, block all rad contamination to interior
 	rad_flags = RAD_BLOCK_CONTENTS
-	obj_flags = OBJ_IGNORE_MOB_DEPTH
+	obj_flags = OBJ_IGNORE_MOB_DEPTH | OBJ_RANGE_TARGETABLE
 	depth_level = 0
 	climb_allowed = FALSE
 
@@ -61,7 +61,7 @@
 	/// armor flag for melee attacks
 	var/damage_flag = ARMOR_MELEE
 	/// damage tier
-	var/damage_tier = MELEE_TIER_DEFAULT
+	var/damage_tier = MELEE_TIER_MEDIUM
 	/// damage_mode bitfield - see [code/__DEFINES/combat/damage.dm]
 	var/damage_mode = NONE
 	// todo: port over damtype
@@ -70,11 +70,8 @@
 	/// This saves our blood splatter overlay, which will be processed not to go over the edges of the sprite
 	var/image/blood_overlay = null
 	var/r_speed = 1.0
-	var/health = null
 	var/burn_point = null
 	var/burning = null
-	/// Sound to play on hit. Set to [HITSOUND_UNSET] to have it automatically set on init.
-	var/hitsound = HITSOUND_UNSET
 	var/storage_cost = null
 	/// If it's an item we don't want to log attack_logs with, set this to TRUE
 	var/no_attack_log = FALSE
@@ -136,7 +133,9 @@
 	/// Icon overlay for ADD highlights when applicable.
 	var/addblends
 
-	//! Sounds!
+	//? Sounds
+	/// sound used when used in melee attacks. null for default for our damage tpye.
+	var/attack_sound
 	/// Used when thrown into a mob.
 	var/mob_throw_hit_sound
 	/// Sound used when equipping the item into a valid slot from hands or ground
@@ -168,11 +167,6 @@
 			embed_chance = max(5, round(damage_force/w_class))
 		else
 			embed_chance = max(5, round(damage_force/(w_class*3)))
-	if(hitsound == HITSOUND_UNSET)
-		if(damtype == "fire")
-			hitsound = 'sound/items/welder.ogg'
-		if(damtype == "brute")
-			hitsound = "swing_hit"
 
 /// Check if target is reasonable for us to operate on.
 /obj/item/proc/check_allowed_items(atom/target, not_inside, target_self)
@@ -483,8 +477,8 @@
 		if (throw_force > 0)
 			if (mob_throw_hit_sound)
 				playsound(A, mob_throw_hit_sound, volume, TRUE, -1)
-			else if(hitsound)
-				playsound(A, hitsound, volume, TRUE, -1)
+			else if(attack_sound)
+				playsound(A, attack_sound, volume, TRUE, -1)
 			else
 				playsound(A, 'sound/weapons/genhit.ogg', volume, TRUE, -1)
 		else
@@ -805,7 +799,130 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 // 	. = ..()
 // 	update_action_buttons()
 
-//? Carry Weight
+//* Armor
+
+/**
+ * called to be checked for mob armor
+ *
+ * @returns copy of args with modified values
+ */
+/obj/item/proc/checking_mob_armor(damage, tier, flag, mode, attack_type, datum/weapon, target_zone)
+	damage = fetch_armor().resultant_damage(damage, tier, flag)
+	return args.Copy()
+
+/**
+ * called to be used as mob armor
+ * side effects are allowed
+ *
+ * @returns copy of args with modified values
+ */
+/obj/item/proc/running_mob_armor(damage, tier, flag, mode, attack_type, datum/weapon, target_zone)
+	damage = fetch_armor().resultant_damage(damage, tier, flag)
+	return args.Copy()
+
+//* Attack
+
+/**
+ * grabs an attack verb to use
+ *
+ * @params
+ * * target - thing being attacked
+ * * user - person attacking
+ *
+ * @return attack verb
+ */
+/obj/item/proc/get_attack_verb(atom/target, mob/user)
+	return length(attack_verb)? pick(attack_verb) : attack_verb
+
+/**
+ * can be sharp; even if not being used as such
+ *
+ * @params
+ * * strict - require us to be toggled to sharp mode if there's multiple modes of attacking.
+ */
+/obj/item/proc/is_sharp(strict)
+	return sharp || (damage_mode & DAMAGE_MODE_SHARP)
+
+/**
+ * can be edged; even if not being used as such
+ *
+ * @params
+ * * strict - require us to be toggled to sharp mode if there's multiple modes of attacking.
+ */
+/obj/item/proc/is_edge(strict)
+	return sharp || (damage_mode & DAMAGE_MODE_EDGE)
+
+/**
+ * can be piercing; even if not being used as such
+ *
+ * @params
+ * * strict - require us to be toggled to sharp mode if there's multiple modes of attacking.
+ */
+/obj/item/proc/is_pierce(strict)
+	return (damage_mode & DAMAGE_MODE_PIERCE)
+
+/**
+ * can be shredding; even if not being used as such
+ *
+ * @params
+ * * strict - require us to be toggled to sharp mode if there's multiple modes of attacking.
+ */
+/obj/item/proc/is_shred(strict)
+	return (damage_mode & DAMAGE_MODE_SHRED)
+
+//* Interaction
+
+/**
+ * Called when the item is in the active hand, and clicked; alternately, there is an 'activate held object' verb or you can hit pagedown.
+ *
+ * You should do . = ..() and check ., if it's TRUE, it means a parent proc requested the call chain to stop.
+ *
+ * @params
+ * * user - The person using us in hand
+ *
+ * @return TRUE to signal to overrides to stop the chain and do nothing.
+ */
+/obj/item/proc/attack_self(mob/user)
+	// SHOULD_CALL_PARENT(TRUE)
+	// attack_self isn't really part of the item attack chain.
+	SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_SELF, user)
+	if(on_attack_self(new /datum/event_args/actor(user)))
+		return TRUE
+	if(interaction_flags_item & INTERACT_ITEM_ATTACK_SELF)
+		interact(user)
+
+/**
+ * Called after we attack self
+ * Used to allow for attack_self to be interrupted by signals in nearly all cases.
+ * You should usually override this instead of attack_self.
+ *
+ * You should do . = ..() and check ., if it's TRUE, it means a parent proc requested the call chain to stop.
+ *
+ * @return TRUE to signal to overrides to stop the chain and do nothing.
+ */
+/obj/item/proc/on_attack_self(datum/event_args/actor/e_args)
+	if(!isnull(obj_cell_slot?.cell) && obj_cell_slot.remove_yank_inhand && obj_cell_slot.interaction_active(src))
+		e_args.visible_feedback(
+			target = src,
+			range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
+			visible = SPAN_NOTICE("[e_args.performer] removes the cell from [src]."),
+			audible = SPAN_NOTICE("You hear fasteners falling out and something being removed."),
+			otherwise_self = SPAN_NOTICE("You remove the cell from [src]."),
+		)
+		log_construction(e_args, src, "removed cell [obj_cell_slot.cell] ([obj_cell_slot.cell.type])")
+		e_args.performer.put_in_hands_or_drop(obj_cell_slot.remove_cell(e_args.performer))
+		return TRUE
+	return FALSE
+
+/**
+ * Hitsound override when successfully melee attacking someone for melee_hit()
+ *
+ * We get final say by returning a sound here.
+ */
+/obj/item/proc/attacksound_override(atom/target, attack_type)
+	return
+
+//* Carry Weight
 
 /obj/item/proc/get_weight()
 	return weight
@@ -878,84 +995,20 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 		return
 	S.stored_weight_changed(src, old_weight, new_weight)
 
-//? Attack Verbs
+//* Materials
 
-/**
- * grabs an attack verb to use
- *
- * @params
- * * target - thing being attacked
- * * user - person attacking
- *
- * @return attack verb
- */
-/obj/item/proc/get_attack_verb(atom/target, mob/user)
-	return length(attack_verb)? pick(attack_verb) : attack_verb
+/obj/item/material_trait_brittle_shatter()
+	var/datum/material/material = get_primary_material()
+	var/turf/T = get_turf(src)
+	T.visible_message("<span class='danger'>\The [src] [material.destruction_desc]!</span>")
+	if(istype(loc, /mob/living))
+		var/mob/living/M = loc
+		if(material.shard_type == SHARD_SHARD) // Wearing glass armor is a bad idea.
+			var/obj/item/material/shard/S = material.place_shard(T)
+			M.embed(S)
 
-//? Interaction
-
-/**
- * Called when the item is in the active hand, and clicked; alternately, there is an 'activate held object' verb or you can hit pagedown.
- *
- * You should do . = ..() and check ., if it's TRUE, it means a parent proc requested the call chain to stop.
- *
- * @params
- * * user - The person using us in hand
- *
- * @return TRUE to signal to overrides to stop the chain and do nothing.
- */
-/obj/item/proc/attack_self(mob/user)
-	// SHOULD_CALL_PARENT(TRUE)
-	// attack_self isn't really part of the item attack chain.
-	SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_SELF, user)
-	if(on_attack_self(new /datum/event_args/actor(user)))
-		return TRUE
-	if(interaction_flags_item & INTERACT_ITEM_ATTACK_SELF)
-		interact(user)
-
-/**
- * Called after we attack self
- * Used to allow for attack_self to be interrupted by signals in nearly all cases.
- * You should usually override this instead of attack_self.
- *
- * You should do . = ..() and check ., if it's TRUE, it means a parent proc requested the call chain to stop.
- *
- * @return TRUE to signal to overrides to stop the chain and do nothing.
- */
-/obj/item/proc/on_attack_self(datum/event_args/actor/e_args)
-	if(!isnull(obj_cell_slot?.cell) && obj_cell_slot.remove_yank_inhand && obj_cell_slot.interaction_active(src))
-		e_args.visible_feedback(
-			target = src,
-			range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
-			visible = SPAN_NOTICE("[e_args.performer] removes the cell from [src]."),
-			audible = SPAN_NOTICE("You hear fasteners falling out and something being removed."),
-			otherwise_self = SPAN_NOTICE("You remove the cell from [src]."),
-		)
-		log_construction(e_args, src, "removed cell [obj_cell_slot.cell] ([obj_cell_slot.cell.type])")
-		e_args.performer.put_in_hands_or_drop(obj_cell_slot.remove_cell(e_args.performer))
-		return TRUE
-	return FALSE
-
-//? Mob Armor
-
-/**
- * called to be checked for mob armor
- *
- * @returns copy of args with modified values
- */
-/obj/item/proc/checking_mob_armor(damage, tier, flag, mode, attack_type, datum/weapon, target_zone)
-	damage = fetch_armor().resultant_damage(damage, tier, flag)
-	return args.Copy()
-
-/**
- * called to be used as mob armor
- * side effects are allowed
- *
- * @returns copy of args with modified values
- */
-/obj/item/proc/running_mob_armor(damage, tier, flag, mode, attack_type, datum/weapon, target_zone)
-	damage = fetch_armor().resultant_damage(damage, tier, flag)
-	return args.Copy()
+	playsound(src, "shatter", 70, 1)
+	qdel(src)
 
 //? VV
 

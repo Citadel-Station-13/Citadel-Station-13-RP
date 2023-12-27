@@ -16,6 +16,8 @@
 	anchored = 0
 	use_power = 0
 	atom_flags = OPENCONTAINER | NOREACT
+	// todo: temporary, as this is unbuildable
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 
 	var/list/product_types = list()
 	var/dispense_flavour = ICECREAM_VANILLA

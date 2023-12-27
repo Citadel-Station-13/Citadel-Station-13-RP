@@ -33,6 +33,7 @@ SUBSYSTEM_DEF(planets)
 		existing = new planet_path
 		planets += existing
 	z_to_planet[z_index] = existing
+	LAZYDISTINCTADD(existing.expected_z_levels, z_index)
 
 /datum/controller/subsystem/planets/proc/addTurf(turf/T)
 	if(T.turf_flags & (TURF_PLANET_QUEUED | TURF_PLANET_REGISTERED))
@@ -180,17 +181,6 @@ SUBSYSTEM_DEF(planets)
 
 /datum/controller/subsystem/planets/proc/updateTemp(datum/planet/P)
 	//Set new temperatures
-	for(var/W in P.planet_walls)
-		var/turf/unsimulated/wall/planetary/wall = W
-		wall.set_temperature(P.weather_holder.temperature)
+	for(var/turf/T in P.planet_walls)
+		T.sector_set_temperature(P.weather_holder.temperature)
 		CHECK_TICK
-
-/datum/controller/subsystem/planets/proc/weatherDisco()
-	var/count = 100000
-	while(count > 0)
-		count--
-		for(var/planet in planets)
-			var/datum/planet/P = planet
-			if(P.weather_holder)
-				P.weather_holder.change_weather(pick(P.weather_holder.allowed_weather_types))
-		sleep(3)

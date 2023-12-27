@@ -80,7 +80,7 @@
 
 /obj/structure/sculpting_block/Initialize(mapload, material)
 	// todo: materials system
-	src.material = SSmaterials.get_material(material || src.material)
+	src.material = SSmaterials.resolve_material(material || src.material)
 	// todo: if it autoinit'd, don't do this
 	reset_sculpting()
 	return ..()

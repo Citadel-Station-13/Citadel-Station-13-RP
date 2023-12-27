@@ -10,7 +10,7 @@
 	icon_state = "outcrop"
 	var/mindrop = 5
 	var/upperdrop = 10
-	var/outcropdrop = /obj/item/ore/glass
+	var/outcropdrop = /obj/item/stack/ore/glass
 
 /obj/structure/outcrop/Initialize(mapload)
 	. = ..()
@@ -23,7 +23,7 @@
 	icon_state = "outcrop-diamond"
 	mindrop = 2
 	upperdrop = 4
-	outcropdrop = /obj/item/ore/diamond
+	outcropdrop = /obj/item/stack/ore/diamond
 
 /obj/structure/outcrop/phoron
 	name = "shiny outcrop"
@@ -31,7 +31,7 @@
 	icon_state = "outcrop-phoron"
 	mindrop = 4
 	upperdrop = 8
-	outcropdrop = /obj/item/ore/phoron
+	outcropdrop = /obj/item/stack/ore/phoron
 
 /obj/structure/outcrop/iron
 	name = "rugged outcrop"
@@ -39,7 +39,7 @@
 	icon_state = "outcrop-iron"
 	mindrop = 10
 	upperdrop = 20
-	outcropdrop = /obj/item/ore/iron
+	outcropdrop = /obj/item/stack/ore/iron
 
 /obj/structure/outcrop/coal
 	name = "rugged outcrop"
@@ -47,7 +47,7 @@
 	icon_state = "outcrop-coal"
 	mindrop = 10
 	upperdrop = 20
-	outcropdrop = /obj/item/ore/coal
+	outcropdrop = /obj/item/stack/ore/coal
 
 /obj/structure/outcrop/lead
 	name = "rugged outcrop"
@@ -55,7 +55,7 @@
 	icon_state = "outcrop-lead"
 	mindrop = 2
 	upperdrop = 5
-	outcropdrop = /obj/item/ore/lead
+	outcropdrop = /obj/item/stack/ore/lead
 
 /obj/structure/outcrop/gold
 	name = "hollow outcrop"
@@ -63,7 +63,7 @@
 	icon_state = "outcrop-gold"
 	mindrop = 4
 	upperdrop = 6
-	outcropdrop = /obj/item/ore/gold
+	outcropdrop = /obj/item/stack/ore/gold
 
 /obj/structure/outcrop/silver
 	name = "hollow outcrop"
@@ -71,7 +71,7 @@
 	icon_state = "outcrop-silver"
 	mindrop = 6
 	upperdrop = 8
-	outcropdrop = /obj/item/ore/silver
+	outcropdrop = /obj/item/stack/ore/silver
 
 /obj/structure/outcrop/platinum
 	name = "hollow outcrop"
@@ -79,7 +79,7 @@
 	icon_state = "outcrop-platinum"
 	mindrop = 2
 	upperdrop = 5
-	outcropdrop = /obj/item/ore/osmium
+	outcropdrop = /obj/item/stack/ore/osmium
 
 /obj/structure/outcrop/uranium
 	name = "spiky outcrop"
@@ -87,7 +87,7 @@
 	icon_state = "outcrop-uranium"
 	mindrop = 4
 	upperdrop = 8
-	outcropdrop = /obj/item/ore/uranium
+	outcropdrop = /obj/item/stack/ore/uranium
 
 /obj/structure/outcrop/elder
 	name = "chiming outcrop"
@@ -102,8 +102,7 @@
 		to_chat(user, "<span class='notice'>[user] begins to hack away at \the [src].</span>")
 		if(do_after(user,40))
 			to_chat(user, "<span class='notice'>You have finished digging!</span>")
-			for(var/i=0;i<(rand(mindrop,upperdrop));i++)
-				new outcropdrop(get_turf(src))
+			new outcropdrop(get_turf(src), rand(mindrop,upperdrop))
 			qdel(src)
 			return
 

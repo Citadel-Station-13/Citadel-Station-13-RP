@@ -47,11 +47,11 @@
 
 /obj/machinery/mineral/mint/process(delta_time)
 	if (input)
-		var/obj/item/stack/O
-		O = locate(/obj/item/stack, input.loc)
+		var/obj/item/stack/material/O
+		O = locate(/obj/item/stack/material, input.loc)
 		if(O)
 			var/processed = 1
-			switch(O.get_material_name())
+			switch(O.material.name)
 				if("supermatter")
 					amt_supermatter += 100 * O.get_amount()
 				if("bananium")

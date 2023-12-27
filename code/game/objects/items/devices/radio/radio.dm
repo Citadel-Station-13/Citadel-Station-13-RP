@@ -65,7 +65,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	var/bs_tx_preload_id
 	var/bs_rx_preload_id
 
-	materials = list(MAT_GLASS = 25,MAT_STEEL = 75)
+	materials_base = list(MAT_GLASS = 25,MAT_STEEL = 75)
 	var/const/FREQ_LISTENING = 1
 	var/list/internal_channels
 
@@ -160,7 +160,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 		ui = new(user, src, "Radio", name)
 		ui.open()
 
-/obj/item/radio/ui_data(mob/user)
+/obj/item/radio/ui_data(mob/user, datum/tgui/ui)
 	var/data[0]
 
 	data["rawfreq"] = frequency
@@ -187,7 +187,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 
 	return data
 
-/obj/item/radio/ui_act(action, params)
+/obj/item/radio/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

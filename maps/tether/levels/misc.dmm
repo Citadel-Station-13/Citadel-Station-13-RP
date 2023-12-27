@@ -439,7 +439,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/space)
 "ft" = (
-/obj/structure/table/rack/holorack,
+/obj/structure/table/rack/holorack_legacy,
 /obj/item/clothing/under/dress/dress_saloon,
 /obj/item/clothing/head/pin/flower,
 /turf/simulated/floor/holofloor/tiled/dark,
@@ -1502,6 +1502,10 @@
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/space)
+"pN" = (
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled/white,
+/area/space)
 "pP" = (
 /obj/structure/table/standard,
 /obj/item/reagent_containers/food/snacks/bagged/chips,
@@ -2525,7 +2529,7 @@
 /obj/machinery/door/airlock/multi_tile/glass{
 	req_access = list(5)
 	},
-/obj/machinery/door/firedoor/multi_tile,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/white,
 /area/space)
 "zy" = (
@@ -3703,7 +3707,12 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/space)
 "Kd" = (
-/obj/machinery/door/airlock/multi_tile/glass,
+/obj/machinery/door/airlock/multi_tile/glass{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
 /turf/simulated/floor/wood,
 /area/space)
 "Ke" = (
@@ -3792,6 +3801,12 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
+/area/space)
+"Ln" = (
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
 /area/space)
 "Lp" = (
 /obj/structure/table/standard,
@@ -5345,7 +5360,7 @@
 /area/space)
 "Yy" = (
 /obj/landmark/costume/random,
-/obj/structure/table/rack/holorack,
+/obj/structure/table/rack/holorack_legacy,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/space)
 "YC" = (
@@ -34308,7 +34323,7 @@ Vx
 Vx
 Vx
 IA
-Zn
+Ln
 Kd
 Vx
 Vx
@@ -39742,7 +39757,7 @@ sU
 Sn
 sU
 sU
-sU
+pN
 dw
 sU
 sU
