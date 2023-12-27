@@ -99,14 +99,14 @@ export const RigController = (props: RigControllerProps, context) => {
                           style={{ transform: `scale(1.75)`, "margin": "0.25em 0.125em" }} />
                       </Stack.Item>
                       <Stack.Item>
-                        <Stack vertical>
-                          <Stack.Item>
+                        <Stack vertical fill justify="space-around">
+                          <Stack.Item align="center" justify="space-around">
                             <Button.Confirm
                               color="transparent"
                               icon={0? "lock" : "unlock"}
                               confirmContent="?" />
                           </Stack.Item>
-                          <Stack.Item>
+                          <Stack.Item align="center" justify="space-around">
                             <Button.Confirm
                               color="transparent"
                               icon={0? "circle" : "circle-o"}
@@ -130,9 +130,15 @@ export const RigController = (props: RigControllerProps, context) => {
                 {RigUIZoneSelection.map((zone) => (
                   <Tabs.Tab onClick={() => setModuleSection(zone.key)}
                     selected={moduleSection === zone.key} key={zone.key}>
-                    <Icon name={zone.icon} />
+                    <Icon name={zone.icon} size={5} backgroundColor="#aa7700" height="50px" />
                   </Tabs.Tab>
                 ))}
+                <Tabs.Tab selected={0}>
+                  <Icon name="circle" size={2.5} backgroundColor="#aa7700" height="50px" />
+                </Tabs.Tab>
+                <Tabs.Tab selected={0}>
+                  <Icon name="tg-non-binary" size={2.5} backgroundColor="#aa7700" />
+                </Tabs.Tab>
               </Tabs>
             </Stack.Item>
             <Stack.Item grow={1}>

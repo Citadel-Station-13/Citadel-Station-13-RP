@@ -220,9 +220,10 @@ export class ButtonConfirm extends Component<ButtonConfirmProps, ButtonConfirmSt
         content={this.state.clicked ? confirmContent : content}
         icon={this.state.clicked ? confirmIcon : icon}
         color={this.state.clicked ? confirmColor : color}
-        onClick={(e) => this.state.clicked
-          ? onClick?.(e)
-          : this.setClickedOnce(true)}
+        onClick={(e) => {
+          e.preventDefault();
+          this.state.clicked ? onClick?.(e) : this.setClickedOnce(true);
+        }}
         {...rest}
       />
     );
