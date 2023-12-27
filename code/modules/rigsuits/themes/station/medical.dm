@@ -66,7 +66,7 @@ AUTO_RIG_THEME(/station/medical/advanced)
 	armor = /datum/armor/rigsuit/station/medical/advanced
 	#warn encumbrance
 
-/datum/armor/rigsiut/station/medical/advanced
+/datum/armor/rigsuit/station/medical/advanced
 	melee = 0.35
 	melee_tier = MELEE_TIER_MEDIUM
 	bullet = 0.2

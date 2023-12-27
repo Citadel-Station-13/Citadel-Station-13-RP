@@ -12,16 +12,16 @@
 	///
 	/// slots is the metric used to balance complexity / variety of functions
 	/// more niche & powerful/varied gear takes up more slots
-	var/slots = 0
+	var/module_slots = 0
 	/// size this takes up
 	///
 	/// size is the metric used to balance offense/defense/storage
 	/// you generally can have two of the three, not all of the above
-	var/size = 0
+	var/module_size = 0
 	/// weight to add to rigsuit
 	///
 	/// stuff like heavy armor tends to be heavier.
-	var/weight = 0
+	var/module_weight = 0
 
 	//* UI
 	//! todo: this is fucking evil

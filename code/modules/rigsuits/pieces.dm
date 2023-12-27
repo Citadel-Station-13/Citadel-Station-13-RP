@@ -15,11 +15,11 @@
  * @return TRUE/FALSE success/failure
  */
 /obj/item/rig/proc/deploy_piece_sync(datum/component/rig_piece/piece, auto_seal = TRUE, instant_seal = FALSE, force = FALSE)
-	if(!piece.deploy(wearer, force? INV_OP_FORCE | INV_OP_CAN_DISPLACE, NONE))
+	if(!piece.deploy(wearer, force? INV_OP_FORCE | INV_OP_CAN_DISPLACE : NONE))
 		return FALSE
 	piece.currently_retracting = FALSE
 	if(auto_seal)
-		seal_piece_async(instant_seal)
+		INVOKE_ASYNC(src, PROC_REF(seal_piece_sync), instant_seal)
 	return TRUE
 
 /**
