@@ -51,8 +51,6 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 	var/next_process_time = 0
 	var/low_profile = FALSE
 
-	var/hatch_open = 0
-
 	power_channel = ENVIRON
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 5
@@ -303,21 +301,21 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 			return
 
 	if(density && C.is_screwdriver())
-		hatch_open = !hatch_open
+		panel_open = !panel_open
 		playsound(src, C.tool_sound, 50, 1)
-		user.visible_message("<span class='danger'>[user] has [hatch_open ? "opened" : "closed"] \the [src] maintenance hatch.</span>",
-									"You have [hatch_open ? "opened" : "closed"] the [src] maintenance hatch.")
+		user.visible_message("<span class='danger'>[user] has [panel_open ? "opened" : "closed"] \the [src] maintenance hatch.</span>",
+									"You have [panel_open ? "opened" : "closed"] the [src] maintenance hatch.")
 		update_icon()
 		return
 
 	if(blocked && C.is_crowbar() && !repairing)
-		if(!hatch_open)
+		if(!panel_open)
 			to_chat(user, "<span class='danger'>You must open the maintenance hatch first!</span>")
 		else
 			user.visible_message("<span class='danger'>[user] is removing the electronics from \the [src].</span>",
 									"You start to remove the electronics from [src].")
 			if(do_after(user,30))
-				if(blocked && density && hatch_open)
+				if(blocked && density && panel_open)
 					playsound(src, C.tool_sound, 50, 1)
 					user.visible_message("<span class='danger'>[user] has removed the electronics from \the [src].</span>",
 										"You have removed the electronics from [src].")
@@ -449,8 +447,8 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 	return ..()
 
 /obj/machinery/door/firedoor/open(var/forced = 0)
-	if(hatch_open)
-		hatch_open = 0
+	if(panel_open)
+		panel_open = 0
 		visible_message("The maintenance hatch of \the [src] closes.")
 		update_icon()
 
