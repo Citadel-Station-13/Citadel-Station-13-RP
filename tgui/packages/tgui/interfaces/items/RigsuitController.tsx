@@ -130,7 +130,7 @@ export const RigController = (props: RigControllerProps, context) => {
                 {RigUIZoneSelection.map((zone) => (
                   <Tabs.Tab onClick={() => setModuleSection(zone.key)}
                     selected={moduleSection === zone.key} key={zone.key}>
-                    <Icon name={zone.icon} size={5} backgroundColor="#aa7700" height="50px" />
+                    <Icon name={zone.icon} size={5} backgroundColor="#aa7700" height="50px" maxHeight="50px" />
                   </Tabs.Tab>
                 ))}
                 <Tabs.Tab selected={0}>
