@@ -41,7 +41,7 @@ export const Rigsuit = (props, context) => {
   }
 
   return (
-    <Window width={550} height={800} title={`${data.theme} hardsuit controller`}>
+    <Window width={450} height={800} title={`${data.theme} hardsuit controller`}>
       <Window.Content>
         <Stack fill vertical>
           {/* <Stack.Item>
