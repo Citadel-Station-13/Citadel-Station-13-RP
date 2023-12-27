@@ -555,7 +555,7 @@ About the new airlock wires panel:
 		ui.open()
 	return TRUE
 
-/obj/machinery/door/airlock/ui_data(mob/user)
+/obj/machinery/door/airlock/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 
 	var/list/power = list()
@@ -669,7 +669,7 @@ About the new airlock wires panel:
 		..(user)
 	return
 
-/obj/machinery/door/airlock/ui_act(action, params)
+/obj/machinery/door/airlock/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 	if(!user_allowed(usr))

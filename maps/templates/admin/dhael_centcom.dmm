@@ -6504,7 +6504,7 @@
 /obj/machinery/door/airlock/multi_tile/glass{
 	req_access = list(5)
 	},
-/obj/machinery/door/firedoor/multi_tile,
+/obj/machinery/door/firedoor/glass,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -12331,6 +12331,12 @@
 	icon_state = "dark"
 	},
 /area/centcom/specops)
+"NC" = (
+/obj/machinery/door/firedoor/glass,
+/turf/unsimulated/floor/steel{
+	icon_state = "white"
+	},
+/area/centcom/medical)
 "NE" = (
 /obj/structure/table/reinforced,
 /obj/item/material/minihoe,
@@ -21803,7 +21809,7 @@ kv
 pT
 oS
 kv
-kv
+NC
 kv
 kv
 kv

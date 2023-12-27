@@ -33,7 +33,7 @@
 		ui.set_autoupdate(TRUE)
 		ui.open()
 
-/obj/item/modular_computer/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/item/modular_computer/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = get_header_data()
 
 	data["login"] = list()
@@ -76,7 +76,7 @@
 	return data
 
 // Handles user's GUI input
-/obj/item/modular_computer/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/item/modular_computer/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

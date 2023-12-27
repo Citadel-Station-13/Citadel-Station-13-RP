@@ -35,7 +35,7 @@
 	else
 		..()
 
-/obj/machinery/embedded_controller/radio/airlock/docking_port/ui_data(mob/user)
+/obj/machinery/embedded_controller/radio/airlock/docking_port/ui_data(mob/user, datum/tgui/ui)
 	var/datum/computer/file/embedded_program/docking/airlock/docking_program = program
 	var/datum/computer/file/embedded_program/airlock/docking/airlock_program = docking_program.airlock_program
 

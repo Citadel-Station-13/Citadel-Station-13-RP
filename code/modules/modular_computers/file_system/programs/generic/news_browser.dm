@@ -36,7 +36,7 @@
 		requires_ntnet = 0 // Turn off NTNet requirement as we already loaded the file into local memory.
 	SStgui.update_uis(src)
 
-/datum/computer_file/program/newsbrowser/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/datum/computer_file/program/newsbrowser/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = get_header_data()
 
 	var/list/all_articles = list()

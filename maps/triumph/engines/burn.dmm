@@ -2,7 +2,6 @@
 "as" = (
 /obj/effect/floor_decal/industrial/warning,
 /obj/machinery/firealarm{
-	dir = 1;
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/techfloor/grid,

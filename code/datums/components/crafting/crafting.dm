@@ -328,7 +328,7 @@
 	if(user == parent)
 		INVOKE_ASYNC(src, PROC_REF(ui_interact), user)
 
-/datum/component/personal_crafting/ui_state(mob/user, datum/tgui_module/module)
+/datum/component/personal_crafting/ui_state()
 	return GLOB.not_incapacitated_turf_state
 
 //For the UI related things we're going to assume the user is a mob rather than typesetting it to an atom as the UI isn't generated if the parent is an atom
@@ -344,7 +344,7 @@
 		ui = new(user, src, "PersonalCrafting")
 		ui.open()
 
-/datum/component/personal_crafting/ui_data(mob/user)
+/datum/component/personal_crafting/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 	data["busy"] = busy
 	data["category"] = cur_category
@@ -368,7 +368,7 @@
 	data["craftability"] = craftability
 	return data
 
-/datum/component/personal_crafting/ui_static_data(mob/user)
+/datum/component/personal_crafting/ui_static_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 
 	var/list/crafting_recipes = list()
@@ -395,7 +395,7 @@
 	data["crafting_recipes"] = crafting_recipes
 	return data
 
-/datum/component/personal_crafting/ui_act(action, params)
+/datum/component/personal_crafting/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return
 	switch(action)

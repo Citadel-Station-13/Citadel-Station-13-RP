@@ -60,10 +60,10 @@ GLOBAL_LIST_EMPTY(language_picker_active)
 		ui.autoupdate = FALSE			// why the fuck are you updating language data??
 		ui.open()
 
-/datum/tgui_language_picker/ui_status(mob/user, datum/ui_state/state, datum/tgui_module/module)
+/datum/tgui_language_picker/ui_status(mob/user, datum/ui_state/state)
 	return UI_INTERACTIVE
 
-/datum/tgui_language_picker/ui_static_data(mob/user)
+/datum/tgui_language_picker/ui_static_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 	var/list/built = list()
 	var/list/categories = list("General")
@@ -81,7 +81,7 @@ GLOBAL_LIST_EMPTY(language_picker_active)
 	data["categories"] = categories
 	return data
 
-/datum/tgui_language_picker/ui_close(mob/user, datum/tgui_module/module)
+/datum/tgui_language_picker/on_ui_close(mob/user, datum/tgui/ui, embedded)
 	. = ..()
 	if(!QDELING(src))
 		qdel(src)

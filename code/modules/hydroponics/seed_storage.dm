@@ -244,7 +244,7 @@
 		ui = new(user, src, "SeedStorage", name)
 		ui.open()
 
-/obj/machinery/seed_storage/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/seed_storage/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	if(smart)
