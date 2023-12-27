@@ -97,7 +97,6 @@
 	color_file = 'icons/obj/doors/external/color.dmi'
 	color_fill_file = 'icons/obj/doors/external/fill_color.dmi'
 	bolts_file = 'icons/obj/doors/external/lights_bolts.dmi'
-	deny_file = 'icons/obj/doors/external/lights_deny.dmi'
 	lights_file = 'icons/obj/doors/external/lights_green.dmi'
 	emag_file = 'icons/obj/doors/external/emag.dmi'
 	door_color = COLOR_NT_RED
@@ -123,7 +122,6 @@
 	color_file = 'icons/obj/doors/external/color.dmi'
 	color_fill_file = 'icons/obj/doors/external/fill_color.dmi'
 	bolts_file = 'icons/obj/doors/external/lights_bolts.dmi'
-	deny_file = 'icons/obj/doors/external/lights_deny.dmi'
 	lights_file = 'icons/obj/doors/external/lights_green.dmi'
 	emag_file = 'icons/obj/doors/external/emag.dmi'
 	opacity = FALSE
@@ -205,7 +203,6 @@
 	stripe_file = 'icons/obj/doors/hatch/stripe.dmi'
 	stripe_fill_file = 'icons/obj/doors/hatch/fill_stripe.dmi'
 	bolts_file = 'icons/obj/doors/hatch/lights_bolts.dmi'
-	deny_file = 'icons/obj/doors/hatch/lights_deny.dmi'
 	lights_file = 'icons/obj/doors/hatch/lights_green.dmi'
 	panel_file = 'icons/obj/doors/hatch/panel.dmi'
 	welded_file = 'icons/obj/doors/hatch/welded.dmi'
@@ -228,7 +225,6 @@
 	stripe_file = 'icons/obj/doors/hatch/stripe.dmi'
 	stripe_fill_file = 'icons/obj/doors/hatch/fill_stripe.dmi'
 	bolts_file = 'icons/obj/doors/hatch/lights_bolts.dmi'
-	deny_file = 'icons/obj/doors/hatch/lights_deny.dmi'
 	lights_file = 'icons/obj/doors/hatch/lights_green.dmi'
 	panel_file = 'icons/obj/doors/hatch/panel.dmi'
 	welded_file = 'icons/obj/doors/hatch/welded.dmi'

@@ -102,7 +102,6 @@ GLOBAL_REAL_VAR(airlock_typecache) = typecacheof(list(
 	var/stripe_fill_file = 'icons/obj/doors/station/fill_stripe.dmi'
 	//var/glass_file = 'icons/obj/doors/station/fill_glass.dmi'
 	var/bolts_file = 'icons/obj/doors/station/lights_bolts.dmi'
-	var/deny_file = 'icons/obj/doors/station/lights_deny.dmi'
 	var/lights_file = 'icons/obj/doors/station/lights_green.dmi'
 	var/panel_file = 'icons/obj/doors/station/panel.dmi'
 	var/sparks_damaged_file = 'icons/obj/doors/station/sparks_damaged.dmi'
@@ -174,11 +173,6 @@ GLOBAL_REAL_VAR(airlock_typecache) = typecacheof(list(
 			if(AIRLOCK_CLOSED)
 				if(lights && locked)
 					lights_overlay = bolts_file
-					set_light(1, 2, l_color = COLOR_RED_LIGHT)
-
-			if(AIRLOCK_DENY)
-				if(lights)
-					lights_overlay = deny_file
 					set_light(1, 2, l_color = COLOR_RED_LIGHT)
 
 			if(AIRLOCK_EMAG)

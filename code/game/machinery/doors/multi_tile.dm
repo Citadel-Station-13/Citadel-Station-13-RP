@@ -13,7 +13,6 @@
 	color_file = 'icons/obj/doors/double/color.dmi'
 	color_fill_file = 'icons/obj/doors/double/fill_color.dmi'
 	bolts_file = 'icons/obj/doors/double/lights_bolts.dmi'
-	deny_file = 'icons/obj/doors/double/lights_deny.dmi'
 	lights_file = 'icons/obj/doors/double/lights_green.dmi'
 	emag_file = 'icons/obj/doors/double/emag.dmi'
 	stripe_file = 'icons/obj/doors/double/stripe.dmi'
