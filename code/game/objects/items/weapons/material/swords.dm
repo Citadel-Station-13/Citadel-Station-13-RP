@@ -44,7 +44,7 @@
 	material_parts = /datum/material/plasteel
 
 /obj/item/material/sword/katana/durasteel
-	default_material = "durasteel"
+	material_parts = /datum/material/durasteel
 
 /obj/item/material/sword/wakizashi
 	name = "wakizashi"
@@ -52,9 +52,9 @@
 	description_fluff = "This short blade was traditionally used as a backup weapon if the wielder's katana was lost, or if the fighting took place in close quarters. The wakizashi would also be employed for ceremonial purposes such as seppuku or the collection of enemy heads."
 	icon_state = "wakizashi"
 	slot_flags = SLOT_BELT | SLOT_BACK
+	material_parts = /datum/material/durasteel
 
 /obj/item/material/sword/wakizashi/suicide_act(mob/user)
 	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 	visible_message(SPAN_DANGER("[user] is slitting [TU.his] stomach open with \the [src.name]! It looks like [TU.hes] trying to commit seppuku."), SPAN_DANGER("You slit your stomach open with \the [src.name]!"), SPAN_DANGER("You hear the sound of flesh tearing open.")) // gory, but it gets the point across
 	return(BRUTELOSS)
-	material_parts = /datum/material/durasteel
