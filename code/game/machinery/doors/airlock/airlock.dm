@@ -924,8 +924,14 @@ About the new airlock wires panel:
 	return ..()
 
 /obj/machinery/door/airlock/set_opacity_on_close()
-	if(visible && (!glass || tinted))
-		set_opacity(1)
+	if(visible)
+		if(glass)
+			if(tinted)
+				set_opacity(1)
+			else
+				set_opacity(0)
+		else
+			set_opacity(1)
 
 /obj/machinery/door/airlock/can_open(var/forced=0)
 	if(!forced)
@@ -1181,15 +1187,15 @@ About the new airlock wires panel:
 /obj/machinery/door/airlock/proc/toggle()
 	if(!glass)
 		return
+	tinted = !tinted
 	if(tinted)
-		tinted = 0
+		icon = initial(icon)
 		if(!operating && density)
 			set_opacity(1)
 	else
-		icon = initial(icon)
-		tinted = 1
 		if(!operating)
 			set_opacity(0)
+
 	set_airlock_overlays(src.state)
 
 /obj/machinery/door/airlock/rcd_values(mob/living/user, obj/item/rcd/the_rcd, passed_mode)

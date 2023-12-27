@@ -143,8 +143,9 @@
 	close_sound_powered = 'sound/machines/door/hall1c.ogg'
 	hit_sound_brute = 'sound/effects/Glasshit.ogg'
 	explosion_resistance = 5
-	opacity = TRUE
+	opacity = FALSE
 	glass = TRUE
+	tinted = FALSE
 	window_color = GLASS_COLOR
 	fill_file = 'icons/obj/doors/station/fill_glass.dmi'
 

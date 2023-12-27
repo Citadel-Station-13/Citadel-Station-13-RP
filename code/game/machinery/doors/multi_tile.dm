@@ -41,26 +41,6 @@
 	. = ..()
 	SetBounds()
 
-/obj/machinery/door/airlock/multi_tile/open()
-	. = ..()
-
-	if(filler1)
-		filler1.set_opacity(opacity)
-		if(filler2)
-			filler2.set_opacity(opacity)
-
-	return .
-
-/obj/machinery/door/airlock/multi_tile/close()
-	. = ..()
-
-	if(filler1)
-		filler1.set_opacity(opacity)
-		if(filler2)
-			filler2.set_opacity(opacity)
-
-	return .
-
 /obj/machinery/door/airlock/multi_tile/proc/SetBounds()
 	if(width > 1)
 		if(dir in list(EAST, WEST))
@@ -96,6 +76,14 @@
 	window_color = GLASS_COLOR
 	fill_file = 'icons/obj/doors/double/fill_glass.dmi'
 
+/obj/machinery/door/airlock/multi_tile/toggle()
+	. = ..()
+
+/obj/machinery/door/airlock/multi_tile/set_opacity(var/new_opacity)
+	filler1.set_opacity(new_opacity)
+	filler2.set_opacity(new_opacity)
+	TO_WORLD("[src]([src.opacity]): Filler1 is now [filler1.opacity], filler2 is now [filler2.opacity]")
+	//. = ..()
 
 /obj/machinery/door/airlock/multi_tile/metal
 	name = "Airlock"
