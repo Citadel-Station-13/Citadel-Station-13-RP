@@ -27,7 +27,6 @@
 	var/closed_layer = DOOR_CLOSED_LAYER
 
 	var/visible = 1
-	//var/p_open = 0//[bool]is the door open?
 	var/operating = 0//[bool]Is the door opening or closing?
 	var/autoclose = 0//[bool]should the door close automaticly
 	var/glass = 0 //[bool] is the door see-through?
