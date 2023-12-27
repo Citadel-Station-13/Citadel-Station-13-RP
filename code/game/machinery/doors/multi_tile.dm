@@ -14,6 +14,7 @@
 	color_fill_file = 'icons/obj/doors/double/fill_color.dmi'
 	bolts_file = 'icons/obj/doors/double/lights_bolts.dmi'
 	lights_file = 'icons/obj/doors/double/lights_green.dmi'
+	panel_file = 'icons/obj/doors/double/panel.dmi'
 	emag_file = 'icons/obj/doors/double/emag.dmi'
 	stripe_file = 'icons/obj/doors/double/stripe.dmi'
 	stripe_fill_file = 'icons/obj/doors/double/fill_stripe.dmi'
