@@ -4,8 +4,9 @@
  */
 
 import { getModuleData, useLocalState } from "../../backend";
-import { Button, LabeledList, NoticeBox, Section, Stack, Tabs } from "../../components";
+import { Button, Icon, LabeledList, NoticeBox, Section, Stack, Tabs } from "../../components";
 import { RigsuitData } from "./Rigsuit";
+import { RigUIZoneSelection } from "./RigsuitCommon";
 import { RigsuitPieceData } from "./RigsuitPiece";
 
 export interface RigControllerProps {
@@ -15,6 +16,7 @@ export interface RigControllerProps {
 export const RigController = (props: RigControllerProps, context) => {
   const [systemTab, setSystemTab] = useLocalState<number>(context, 'rigsuitSystemTab', 1);
   const [suitSection, setSuitSection] = useLocalState<string>(context, "rigsuitSectionTab", "All");
+  const [moduleSection, setModuleSection] = useLocalState<string>(context, "rigsuitModuleTab", RigUIZoneSelection[0].key);
   return (
     <Stack fill vertical>
       <Stack.Item maxHeight="40%">
@@ -22,7 +24,6 @@ export const RigController = (props: RigControllerProps, context) => {
           {suitSection === "All" && (
             <Stack.Item grow={1}>
               <Section fill>
-
                 <Stack vertical>
                   <Stack.Item>
                     <Tabs fluid>
@@ -81,7 +82,7 @@ export const RigController = (props: RigControllerProps, context) => {
                 onClick={() => setSuitSection('All')}
                 selected={suitSection === "All"}>
                 <img src={`data:image/png;base64, ${props.rig.sprite64}`}
-                  style={{ transform: `scale(1.75)`, "margin": "0.25em" }} />
+                  style={{ transform: `scale(1.75)`, "margin": "0.25em 0.125em" }} />
               </Tabs.Tab>
               {props.rig.pieceRefs.map((ref) => {
                 let pieceData = getModuleData<RigsuitPieceData>(context, ref);
@@ -95,14 +96,23 @@ export const RigController = (props: RigControllerProps, context) => {
                     <Stack>
                       <Stack.Item align="center" justify="space-around">
                         <img src={`data:image/png;base64, ${pieceData.sprite64}`}
-                          style={{ transform: `scale(1.75)`, "margin": "0.25em" }} />
+                          style={{ transform: `scale(1.75)`, "margin": "0.25em 0.125em" }} />
                       </Stack.Item>
                       <Stack.Item>
-                        {/* <Button.Confirm
-                          fluid
-                          color="transparent"
-                          style={{ "text-align": "center" }}
-                          content={1? `Deployed` : `Retracted`} /> */}
+                        <Stack vertical>
+                          <Stack.Item>
+                            <Button.Confirm
+                              color="transparent"
+                              icon={0? "lock" : "unlock"}
+                              confirmContent="?" />
+                          </Stack.Item>
+                          <Stack.Item>
+                            <Button.Confirm
+                              color="transparent"
+                              icon={0? "circle" : "circle-o"}
+                              confirmContent="?" />
+                          </Stack.Item>
+                        </Stack>
                       </Stack.Item>
                     </Stack>
                   </Tabs.Tab>
@@ -117,38 +127,12 @@ export const RigController = (props: RigControllerProps, context) => {
           <Stack vertical fill>
             <Stack.Item>
               <Tabs fluid>
-                <Tabs.Tab
-                  color="transparent"
-                  onClick={() => setSuitSection('All')}
-                  selected={suitSection === "All"}>
-                  <img src={`data:image/png;base64, ${props.rig.sprite64}`}
-                    style={{ transform: `scale(2)` }} />
-                </Tabs.Tab>
-                {props.rig.pieceRefs.map((ref) => {
-                  let pieceData = getModuleData<RigsuitPieceData>(context, ref);
-                  return (
-                    <Tabs.Tab
-                      key={ref}
-                      color="transparent"
-                      onClick={() => setSuitSection(ref)}
-                      selected={suitSection === ref}
-                      innerStyle={{ height: "100%", width: "100%" }}>
-                      <Stack fill vertical>
-                        <Stack.Item grow={1} align="center" justify="space-around">
-                          <img src={`data:image/png;base64, ${pieceData.sprite64}`}
-                            style={{ transform: `scale(1.75)`, "margin": "0.5em 0" }} />
-                        </Stack.Item>
-                        <Stack.Item>
-                          <Button.Confirm
-                            fluid
-                            color="transparent"
-                            style={{ "text-align": "center" }}
-                            content={1? `Deployed` : `Retracted`} />
-                        </Stack.Item>
-                      </Stack>
-                    </Tabs.Tab>
-                  );
-                })}
+                {RigUIZoneSelection.map((zone) => (
+                  <Tabs.Tab onClick={() => setModuleSection(zone.key)}
+                    selected={moduleSection === zone.key} key={zone.key}>
+                    <Icon name={zone.icon} />
+                  </Tabs.Tab>
+                ))}
               </Tabs>
             </Stack.Item>
             <Stack.Item grow={1}>

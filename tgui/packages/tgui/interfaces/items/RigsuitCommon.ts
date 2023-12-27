@@ -38,3 +38,41 @@ export type RigPieceReflist = RigPieceReference[];
 
 export type RigModuleReference = string;
 export type RigModuleReflist = RigModuleReference[];
+
+export const RigUIZoneSelection:
+  {
+    name: string;
+    icon: string;
+    key: string;
+  }[] = [
+    {
+      name: "All",
+      icon: "tg-s1-stack",
+      key: "all",
+    },
+    {
+      name: "Head",
+      icon: "tg-s1-space-helmet",
+      key: "head",
+    },
+    {
+      name: "Torso",
+      icon: "tg-s1-chestplate",
+      key: "torso",
+    },
+    {
+      name: "Arms",
+      icon: "tg-s1-gloves",
+      key: "arms",
+    },
+    {
+      name: "Legs",
+      icon: "tg-s1-boots",
+      key: "legs",
+    },
+    {
+      name: "Misc",
+      icon: "tg-s1-cube",
+      key: "misc",
+    },
+  ];
