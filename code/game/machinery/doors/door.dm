@@ -27,7 +27,7 @@
 	var/closed_layer = DOOR_CLOSED_LAYER
 
 	var/visible = 1
-	var/p_open = 0//[bool]is the door open?
+	//var/p_open = 0//[bool]is the door open?
 	var/operating = 0//[bool]Is the door opening or closing?
 	var/autoclose = 0//[bool]should the door close automaticly
 	var/glass = 0 //[bool] is the door see-through?
@@ -98,7 +98,7 @@
 
 /obj/machinery/door/Bumped(atom/AM)
 	. = ..()
-	if(p_open || operating)
+	if(panel_open || operating)
 		return
 	if(ismob(AM))
 		var/mob/M = AM
@@ -309,12 +309,12 @@
 /obj/machinery/door/proc/do_animate(animation)
 	switch(animation)
 		if(DOOR_ANIMATION_OPEN)
-			if(p_open)
+			if(panel_open)
 				flick("o_doorc0", src)
 			else
 				flick("doorc0", src)
 		if(DOOR_ANIMATION_CLOSE)
-			if(p_open)
+			if(panel_open)
 				flick("o_doorc1", src)
 			else
 				flick("doorc1", src)

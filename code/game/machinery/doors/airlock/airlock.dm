@@ -656,7 +656,7 @@ About the new airlock wires panel:
 			src.attack_alien(user)
 			return
 
-	if(src.p_open)
+	if(src.panel_open)
 		user.set_machine(src)
 		wires.Interact(user)
 	else
@@ -764,7 +764,7 @@ About the new airlock wires panel:
 		open()
 
 /obj/machinery/door/airlock/proc/can_remove_electronics()
-	return src.p_open && (operating < 0 || (!operating && welded && !src.arePowerSystemsOn() && density && (!src.locked || (machine_stat & BROKEN))))
+	return src.panel_open && (operating < 0 || (!operating && welded && !src.arePowerSystemsOn() && density && (!src.locked || (machine_stat & BROKEN))))
 
 /obj/machinery/door/airlock/attackby(obj/item/C, mob/user as mob)
 	//TO_WORLD("airlock attackby src [src] obj [C] mob [user]")
@@ -791,14 +791,14 @@ About the new airlock wires panel:
 		else
 			return
 	else if(C.is_screwdriver())
-		if (src.p_open)
+		if (src.panel_open)
 			if (machine_stat & BROKEN)
 				to_chat(usr, "<span class='warning'>The panel is broken and cannot be closed.</span>")
 			else
-				src.p_open = 0
+				src.panel_open = 0
 				playsound(src, C.tool_sound, 50, 1)
 		else
-			src.p_open = 1
+			src.panel_open = 1
 			playsound(src, C.tool_sound, 50, 1)
 		src.update_icon()
 	else if(C.is_wirecutter())
@@ -859,7 +859,7 @@ About the new airlock wires panel:
 	..()
 
 /obj/machinery/door/airlock/atom_break()
-	src.p_open = 1
+	src.panel_open = 1
 	if (secured_wires)
 		lock()
 	. = ..()

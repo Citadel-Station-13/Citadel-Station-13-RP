@@ -159,7 +159,7 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 		. += "<span class = 'danger'>These people have opened \the [src] during an alert: [users_to_open_string].</span>"
 
 /obj/machinery/door/firedoor/Bumped(atom/AM)
-	if(p_open || operating)
+	if(panel_open || operating)
 		return
 	if(!density)
 		return ..()
