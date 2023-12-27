@@ -176,6 +176,7 @@
 	close_sound_powered = 'sound/machines/door/vault1c.ogg'
 	icon = 'icons/obj/doors/vault/door.dmi'
 	fill_file = 'icons/obj/doors/vault/fill_steel.dmi'
+	panel_file = 'icons/obj/doors/vault/panel.dmi'
 	heat_resistance = 6000
 
 /obj/machinery/door/airlock/vault/bolted
