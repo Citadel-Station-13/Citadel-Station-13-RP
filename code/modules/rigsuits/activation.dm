@@ -24,7 +24,7 @@
  *
  * @return TRUE / FALSE success / failure
  */
-/obj/item/rig/proc/activation_sequence(datum/event_args/actor/actor, instant, deploy, auto_seal = TRUE, instant_seal)
+/obj/item/rig/proc/activation_sequence(instant, deploy, auto_seal = TRUE, instant_seal)
 	if(activation_state == RIG_ACTIVATION_ONLINE)
 		return TRUE
 	interrupt_if_deactivating()
@@ -36,7 +36,7 @@
 
 	activation_mutex = TRUE
 	activation_state = RIG_ACTIVATION_ACTIVATING
-	push_ui_data("activation" = RIG_ACTIVATION_ACTIVATING)
+	push_ui_data(list("activation" = RIG_ACTIVATION_ACTIVATING))
 
 	#warn feedback to people around
 
@@ -62,7 +62,7 @@
  *
  * @return TRUE / FALSE success / failure
  */
-/obj/item/rig/proc/deactivation_sequence(datum/event_args/actor/actor, instant)
+/obj/item/rig/proc/deactivation_sequence(instant)
 	if(activation_state == RIG_ACTIVATION_OFFLINE)
 		return TRUE
 	interrupt_if_activating()
@@ -74,7 +74,7 @@
 
 	activation_mutex = TRUE
 	activation_state = RIG_ACTIVATION_DEACTIVATING
-	push_ui_data("activation" = RIG_ACTIVATION_DEACTIVATING)
+	push_ui_data(list("activation" = RIG_ACTIVATION_DEACTIVATING))
 
 	#warn feedback to people around
 
@@ -97,7 +97,7 @@
 	set_encumbrance(online_encumbrance)
 
 	activation_state = RIG_ACTIVATION_ONLINE
-	push_ui_data("activation" = RIG_ACTIVATION_ONLINE)
+	push_ui_data(list("activation" = RIG_ACTIVATION_ONLINE))
 
 	#warn feedback to people around
 
@@ -106,7 +106,7 @@
 	set_encumbrance(offline_encumbrance)
 
 	activation_state = RIG_ACTIVATION_OFFLINE
-	push_ui_data("activation" = RIG_ACTIVATION_OFFLINE)
+	push_ui_data(list("activation" = RIG_ACTIVATION_OFFLINE))
 
 	#warn feedback to people around
 

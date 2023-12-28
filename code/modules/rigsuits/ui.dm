@@ -185,8 +185,17 @@
 			// todo: better reject
 			if(!check_control_flags_or_reject(user, RIG_CONTROL_ACTIVATION))
 				return
-
-			#warn impl
+			if(isnull(desired))
+				return TRUE
+			if(desired)
+				if(activation_state == RIG_ACTIVATION_ACTIVATING || activation_state == RIG_ACTIVATION_ONLINE)
+					return TRUE
+				INVOKE_ASYNC(src, PROC_REF(activation_sequence))
+			else
+				if(activation_state == RIG_ACTIVATION_DEACTIVATING || activation_state == RIG_ACTIVATION_OFFLINE)
+					return TRUE
+				INVOKE_ASYNC(src, PROC_REF(deactivation_sequence))
+			return TRUE
 		if("seal")
 			if(activation_state != RIG_ACTIVATION_ONLINE)
 				return TRUE
@@ -199,13 +208,17 @@
 				return TRUE
 			if(isnull(piece))
 				return TRUE
-			var/datum/rig_piece/piece = piece_lookup[piece]
-			if(isnull(piece))
+			var/datum/component/rig_piece/piece_instance = piece_lookup[piece]
+			if(isnull(piece_instance))
 				return TRUE
 			if(desired)
-				seal_piece_sync(piece)
+				if(piece_instance.sealed == RIG_PIECE_SEALING || piece_instance.sealed == RIG_PIECE_SEALED)
+					return TRUE
+				INVOKE_ASYNC(src, PROC_REF(seal_piece_sync), piece_instance)
 			else
-				INVOKE_ASYNC(src, PROC_REF(unseal_piece_sync), piece)
+				if(piece_instance.sealed == RIG_PIECE_UNSEALING || piece_instance.sealed == RIG_PIECE_UNSEALED)
+					return TRUE
+				INVOKE_ASYNC(src, PROC_REF(unseal_piece_sync), piece_instance)
 			return TRUE
 		if("deploy")
 			var/piece = params["piece"]
@@ -222,13 +235,17 @@
 					undeploy_suit_async()
 				return TRUE
 			else
-				var/datum/rig_piece/piece = piece_lookup[piece]
+				var/datum/component/rig_piece/piece_instance = piece_lookup[piece]
 				if(isnull(piece))
 					return TRUE
 				if(desired)
-					deploy_piece_async(piece, TRUE)
+					if(piece_instance.is_deployed())
+						return TRUE
+					deploy_piece_async(piece_instance, TRUE)
 				else
-					INVOKE_ASYNC(src, PROC_REF(undeploy_piece_sync), piece)
+					if(!piece_instance.is_deployed())
+						return TRUE
+					INVOKE_ASYNC(src, PROC_REF(undeploy_piece_sync), piece_instance)
 				return TRUE
 		#warn impl restricted_camera_networks
 
