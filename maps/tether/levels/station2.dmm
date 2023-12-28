@@ -11132,6 +11132,9 @@
 	dir = 8;
 	pixel_x = 22
 	},
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 8
+	},
 /turf/simulated/floor/wood,
 /area/tether/station/burial)
 "wz" = (
@@ -13189,6 +13192,13 @@
 /obj/item/storage/toolbox/mechanical,
 /turf/simulated/floor/tiled/dark,
 /area/tether/exploration/pilot_office)
+"AU" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/tether/station/burial)
 "AV" = (
 /obj/structure/catwalk,
 /obj/structure/disposalpipe/segment{
@@ -16498,6 +16508,9 @@
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 8
+	},
 /turf/simulated/floor/wood,
 /area/tether/station/burial)
 "HI" = (
@@ -16806,6 +16819,13 @@
 "Ir" = (
 /turf/simulated/floor/plating,
 /area/maintenance/station/cargo)
+"It" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/tether/station/burial)
 "Iu" = (
 /obj/structure/bed/chair/wood/wings{
 	dir = 1
@@ -45746,8 +45766,8 @@ gz
 Ez
 gz
 gz
-gz
-gz
+It
+AU
 gz
 Zu
 BS
