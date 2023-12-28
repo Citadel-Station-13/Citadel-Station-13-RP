@@ -12,7 +12,7 @@
 	. = ..()
 	if(.)
 		return
-	if(user.incapacitated(INCAPACITATION_KNOCKDOWN) || user.incapacitated(INCAPACITATION_DISABLED)) // EDIT: We can use the device only if we are not in certain types of incapacitation. We don't want chairs stopping us from texting!!
+	if(user.incapacitated(INCAPACITATION_STUNNED)) // EDIT: We can use the device only if we are not in certain types of incapacitation. We don't want chairs stopping us from texting!!
 		to_chat(user, "You cannot activate the device in your state.")
 		return
 
@@ -45,7 +45,7 @@
 	if(loc != linked_user) // this should never happen, but it's best to be safe in case an unsafe unequip happens somehow
 		unlink()
 	// you can't use TTS if knocked down or otherwise incapacitated
-	if(linked_user.incapacitated(INCAPACITATION_KNOCKDOWN) || linked_user.incapacitated(INCAPACITATION_DISABLED))
+	if(linked_user.incapacitated(INCAPACITATION_STUNNED))
 		return
 
 	if(activated)
