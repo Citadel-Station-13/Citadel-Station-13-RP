@@ -25,7 +25,34 @@
  * @return TRUE / FALSE success / failure
  */
 /obj/item/rig/proc/activation_sequence(datum/event_args/actor/actor, instant, deploy, auto_seal = TRUE, instant_seal)
-	#warn impl
+	if(activation_state == RIG_ACTIVATION_ONLINE)
+		return TRUE
+	interrupt_if_deactivating()
+	if(activation_mutex)
+		if(instant)
+			interrupt_if_activating()
+		else
+			block_on_activation(activation_operation)
+
+	activation_mutex = TRUE
+	activation_state = RIG_ACTIVATION_ACTIVATING
+	push_ui_data("activation" = RIG_ACTIVATION_ACTIVATING)
+
+	#warn feedback to people around
+
+	var/delay = instant? 0 : boot_delay
+	var/start_time = world.time
+	var/operation_id = activation_operation
+
+	while(world.time < start_time + delay)
+		if(activation_operation != operation_id)
+			break
+		stoplag(1)
+
+	if(activation_operation == operation_id)
+		activate(deploy, auto_seal, instant_seal)
+		++activation_operation
+		activation_mutex = FALSE
 
 /**
  * blocking proc
@@ -36,9 +63,69 @@
  * @return TRUE / FALSE success / failure
  */
 /obj/item/rig/proc/deactivation_sequence(datum/event_args/actor/actor, instant)
+	if(activation_state == RIG_ACTIVATION_OFFLINE)
+		return TRUE
+	interrupt_if_activating()
+	if(activation_mutex)
+		if(instant)
+			interrupt_if_deactivating()
+		else
+			block_on_deactivation(activation_operation)
 
+	activation_mutex = TRUE
+	activation_state = RIG_ACTIVATION_DEACTIVATING
+	push_ui_data("activation" = RIG_ACTIVATION_DEACTIVATING)
 
+	#warn feedback to people around
 
-	#warn impl
+	var/delay = instant? 0 : boot_delay
+	var/start_time = world.time
+	var/operation_id = activation_operation
 
+	while(world.time < start_time + delay)
+		if(activation_operation != operation_id)
+			break
+		stoplag(1)
 
+	if(activation_operation == operation_id)
+		deactivate()
+		++activation_operation
+		activation_mutex = FALSE
+
+/obj/item/rig/proc/activate()
+	set_weight(online_weight)
+	set_encumbrance(online_encumbrance)
+
+	activation_state = RIG_ACTIVATION_ONLINE
+	push_ui_data("activation" = RIG_ACTIVATION_ONLINE)
+
+	#warn feedback to people around
+
+/obj/item/rig/proc/deactivate()
+	set_weight(offline_weight)
+	set_encumbrance(offline_encumbrance)
+
+	activation_state = RIG_ACTIVATION_OFFLINE
+	push_ui_data("activation" = RIG_ACTIVATION_OFFLINE)
+
+	#warn feedback to people around
+
+/obj/item/rig/proc/interrupt_if_activating()
+	if(activation_state != RIG_ACTIVATION_ACTIVATING)
+		return
+	++activation_operation
+
+/obj/item/rig/proc/interrupt_if_deactivating()
+	if(activation_state != RIG_ACTIVATION_DEACTIVATING)
+		return
+	++activation_operation
+
+/obj/item/rig/proc/block_on_activation(operation_id)
+	// todo: behavior unverified; operation id is not checked.
+	UNTIL(!activation_mutex)
+	return activation_state == RIG_ACTIVATION_ONLINE
+
+/obj/item/rig/proc/block_on_deactivation(operation_id)
+	// todo: behavior unverified; operation id is not checked.
+	UNTIL(!activation_mutex)
+	return activation_state == RIG_ACTIVATION_OFFLINE

@@ -8,20 +8,12 @@ import { useBackend, useLocalState } from "../../backend";
 import { Section, Stack } from "../../components";
 import { Window } from "../../layouts";
 import { RigAuthorization } from "./RigsuitPermissions";
-import { RigController } from "./RigsuitController";
+import { RigController, RigsuitControllerData } from "./RigsuitController";
 import { RigMaintenance } from "./RigsuitMaintenance";
-import { RigControlFlags, RigModuleReflist, RigPieceReflist } from "./RigsuitCommon";
 
-export interface RigsuitData {
-  controlFlags: RigControlFlags;
-  pieceRefs: RigPieceReflist;
-  moduleRefs: RigModuleReflist;
-  sprite64: string;
-  theme: string;
-}
 
 export const Rigsuit = (props, context) => {
-  const { act, data } = useBackend<RigsuitData>(context);
+  const { act, data } = useBackend<RigsuitControllerData>(context);
   const [screen, setScreen] = useLocalState<number>(context, 'screen', 1);
 
   let screenRendered: InfernoNode;

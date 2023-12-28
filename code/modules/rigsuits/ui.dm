@@ -119,6 +119,7 @@
 	#warn icecream update will modify this, check the root definition!
 	. = ..()
 	.["theme"] = theme_name
+	.["activation"] = activation_state
 	.["sprite64"] = isnull(cached_tgui_icon_b64)? (cached_tgui_icon_b64 = icon2base64(icon(icon, state_sealed, SOUTH, 1, FALSE))) : cached_tgui_icon_b64
 	var/list/piece_refs = list()
 	var/list/module_refs = list()

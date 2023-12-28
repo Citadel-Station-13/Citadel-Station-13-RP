@@ -110,7 +110,11 @@
 	interrupt_if_unsealing()
 	// we're still sealing / not interrupted
 	if(seal_mutex)
-		return block_on_sealing(seal_operation)
+		// if instant, interrupt anyways
+		if(instant)
+			interrupt_if_sealing()
+		else
+			return block_on_sealing(seal_operation)
 	seal_mutex = TRUE
 	sealed = RIG_PIECE_SEALING
 	push_piece_data(list("sealed" = RIG_PIECE_SEALING))
@@ -126,9 +130,8 @@
 
 	if(seal_operation == operation_id)
 		seal(silent, subtle)
-
-	++seal_operation
-	seal_mutex = FALSE
+		++seal_operation
+		seal_mutex = FALSE
 
 /datum/component/rig_piece/proc/unseal_sync(instant, silent, subtle)
 	if(sealed == RIG_PIECE_UNSEALED)
@@ -136,7 +139,11 @@
 	interrupt_if_sealing()
 	// we're still sealing / not interrupted
 	if(seal_mutex)
-		return block_on_unsealing(seal_operation)
+		// if instant, interrupt anyways
+		if(instant)
+			interrupt_if_unsealing()
+		else
+			return block_on_unsealing(seal_operation)
 	seal_mutex = TRUE
 	sealed = RIG_PIECE_UNSEALING
 	push_piece_data(list("sealed" = RIG_PIECE_UNSEALING))
@@ -152,9 +159,8 @@
 
 	if(seal_operation == operation_id)
 		unseal(silent, subtle)
-
-	++seal_operation
-	seal_mutex = FALSE
+		++seal_operation
+		seal_mutex = FALSE
 
 /**
  * @params
@@ -228,6 +234,7 @@
 		return
 	sealed = RIG_PIECE_UNSEALED
 	++seal_operation
+	seal_mutex = FALSE
 
 /**
  * interrupt if unsealing
@@ -237,13 +244,16 @@
 		return
 	sealed = RIG_PIECE_SEALED
 	++seal_operation
+	seal_mutex = FALSE
 
 /datum/component/rig_piece/proc/block_on_sealing(operation_id)
-	UNTIL((seal_operation != operation_id) || !seal_mutex)
+	// todo: behavior unverified; operation id is not checked.
+	UNTIL(!seal_mutex && (sealed == RIG_PIECE_SEALING))
 	return sealed == RIG_PIECE_SEALED
 
 /datum/component/rig_piece/proc/block_on_unsealing(operation_id)
-	UNTIL((seal_operation != operation_id) || !seal_mutex)
+	// todo: behavior unverified; operation id is not checked.
+	UNTIL(!seal_mutex && (sealed == RIG_PIECE_UNSEALING))
 	return sealed == RIG_PIECE_UNSEALED
 
 /obj/item/clothing/head/rig

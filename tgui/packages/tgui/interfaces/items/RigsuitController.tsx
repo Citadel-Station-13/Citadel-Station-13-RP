@@ -5,18 +5,28 @@
 
 import { getModuleData, useLocalState } from "../../backend";
 import { Button, Icon, LabeledList, NoticeBox, Section, Stack, Tabs } from "../../components";
-import { RigsuitData } from "./Rigsuit";
-import { RigUIZoneSelection } from "./RigsuitCommon";
+import { RigActivationStatus, RigControlFlags, RigModuleReflist, RigPieceReflist, RigUIZoneSelection } from "./RigsuitCommon";
 import { RigsuitPieceData } from "./RigsuitPiece";
 
+export interface RigsuitControllerData {
+  controlFlags: RigControlFlags;
+  activation: RigActivationStatus;
+  pieceRefs: RigPieceReflist;
+  moduleRefs: RigModuleReflist;
+  sprite64: string;
+  theme: string;
+}
 export interface RigControllerProps {
-  readonly rig: RigsuitData;
+  readonly rig: RigsuitControllerData;
 }
 
 export const RigController = (props: RigControllerProps, context) => {
   const [systemTab, setSystemTab] = useLocalState<number>(context, 'rigsuitSystemTab', 1);
   const [suitSection, setSuitSection] = useLocalState<string>(context, "rigsuitSectionTab", "All");
   const [moduleSection, setModuleSection] = useLocalState<string>(context, "rigsuitModuleTab", RigUIZoneSelection[0].key);
+
+  const { rig } = props;
+
   return (
     <Stack fill vertical>
       <Stack.Item maxHeight="40%">
@@ -83,7 +93,7 @@ export const RigController = (props: RigControllerProps, context) => {
                 selected={suitSection === "All"}>
                 <Stack>
                   <Stack.Item>
-                    <img src={`data:image/png;base64, ${props.rig.sprite64}`}
+                    <img src={`data:image/png;base64, ${rig.sprite64}`}
                       style={{ transform: `scale(1.75)`, "margin": "0.25em 0.125em" }} />
                   </Stack.Item>
                   <Stack.Item>
@@ -100,7 +110,7 @@ export const RigController = (props: RigControllerProps, context) => {
                   </Stack.Item>
                 </Stack>
               </Tabs.Tab>
-              {props.rig.pieceRefs.map((ref) => {
+              {rig.pieceRefs.map((ref) => {
                 let pieceData = getModuleData<RigsuitPieceData>(context, ref);
                 return (
                   <Tabs.Tab

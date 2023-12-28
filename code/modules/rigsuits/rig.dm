@@ -24,7 +24,8 @@
 	/// activation state
 	var/activation_state = RIG_ACTIVATION_OFFLINE
 	/// currently in an activation operation.
-	var/activation_cycling = FALSE
+	/// do not fuck with this var.
+	var/activation_mutex = FALSE
 	/// activation operation identifier - this lets us abort by just changing this while the loop is running
 	var/activation_operation = 0
 
