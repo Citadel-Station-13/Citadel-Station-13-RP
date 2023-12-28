@@ -52,6 +52,8 @@
 		serialized["ref"] = REF(name)
 
 		var/mob/M = name
+		if(M.invisibility == INVISIBILITY_OBSERVER)
+			continue
 		if(!istype(M))
 			misc += list(serialized)
 			continue
