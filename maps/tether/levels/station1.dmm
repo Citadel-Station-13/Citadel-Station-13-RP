@@ -1747,8 +1747,8 @@
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 4
 	},
-/obj/effect/paint_stripe/cyanblue,
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint_stripe/pipecyan,
 /turf/simulated/floor,
 /area/engineering/atmos/backup)
 "ds" = (
@@ -2064,6 +2064,7 @@
 /area/engineering/engineering_monitoring)
 "dX" = (
 /obj/spawner/window/low_wall/full/firelocks,
+/obj/effect/paint_stripe/violet,
 /turf/simulated/floor/plating,
 /area/tether/exploration/crew)
 "dY" = (
@@ -4358,22 +4359,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/station/atrium)
-"iN" = (
-/obj/effect/paint_stripe/sun,
-/obj/machinery/door/blast/regular{
-	density = 0;
-	icon_state = "pdoor0";
-	id = "englockdown";
-	name = "Engineering Lockdown";
-	opacity = 0;
-	dir = 4
-	},
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
-	name = "CE Polarized";
-	id = "ce_office"
-	},
-/turf/simulated/floor,
-/area/crew_quarters/heads/chief)
 "iO" = (
 /turf/simulated/floor/wood/broken,
 /area/maintenance/abandonedlibraryconference)
@@ -5901,6 +5886,7 @@
 	pixel_x = 4;
 	pixel_y = -28
 	},
+/obj/item/defib_kit/loaded,
 /turf/simulated/floor/tiled,
 /area/tether/exploration/equipment)
 "lR" = (
@@ -12569,8 +12555,8 @@
 	name = "Engineering Lockdown";
 	opacity = 0
 	},
-/obj/effect/paint_stripe/cyanblue,
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint_stripe/pipecyan,
 /turf/simulated/floor,
 /area/engineering/atmos/backup)
 "zG" = (
@@ -13039,11 +13025,11 @@
 	opacity = 0;
 	dir = 4
 	},
-/obj/effect/paint_stripe/sun,
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
 	name = "CE Polarized";
 	id = "ce_office"
 	},
+/obj/effect/paint_stripe/sun,
 /turf/simulated/floor,
 /area/crew_quarters/heads/chief)
 "AF" = (
@@ -19037,11 +19023,11 @@
 /area/bridge/secondary)
 "Mz" = (
 /obj/structure/cable/green,
-/obj/effect/paint_stripe/sun,
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
 	name = "CE Polarized";
 	id = "ce_office"
 	},
+/obj/effect/paint_stripe/sun,
 /turf/simulated/floor,
 /area/crew_quarters/heads/chief)
 "MA" = (
@@ -25679,7 +25665,7 @@
 	dir = 4
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/cyanblue,
+/obj/effect/paint_stripe/pipecyan,
 /turf/simulated/floor,
 /area/engineering/atmos/backup)
 "ZR" = (
@@ -41924,9 +41910,9 @@ BN
 IL
 yn
 yn
-iN
 AE
-iN
+AE
+AE
 yn
 yn
 yn
