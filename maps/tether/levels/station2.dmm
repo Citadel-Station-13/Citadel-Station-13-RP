@@ -5963,6 +5963,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
+/obj/structure/window/reinforced/tinted,
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "mo" = (
@@ -8144,6 +8145,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/carpet/oracarpet,
 /area/chapel/main)
+"qK" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/tether/station/burial)
 "qL" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -10662,9 +10670,6 @@
 	},
 /obj/machinery/disposal/deliveryChute{
 	dir = 4
-	},
-/obj/structure/window/reinforced/tinted{
-	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
@@ -13192,13 +13197,6 @@
 /obj/item/storage/toolbox/mechanical,
 /turf/simulated/floor/tiled/dark,
 /area/tether/exploration/pilot_office)
-"AU" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 8
-	},
-/turf/simulated/floor/wood,
-/area/tether/station/burial)
 "AV" = (
 /obj/structure/catwalk,
 /obj/structure/disposalpipe/segment{
@@ -14824,9 +14822,6 @@
 	dir = 8;
 	id = "packageSort1"
 	},
-/obj/structure/window/reinforced/tinted{
-	dir = 1
-	},
 /obj/structure/plasticflaps,
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
@@ -16186,6 +16181,7 @@
 	departmentType = 2;
 	pixel_y = 30
 	},
+/obj/machinery/camera/network/cargo,
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "GV" = (
@@ -16819,13 +16815,6 @@
 "Ir" = (
 /turf/simulated/floor/plating,
 /area/maintenance/station/cargo)
-"It" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 8
-	},
-/turf/simulated/floor/wood,
-/area/tether/station/burial)
 "Iu" = (
 /obj/structure/bed/chair/wood/wings{
 	dir = 1
@@ -21894,6 +21883,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/warning,
+/obj/structure/window/reinforced/tinted,
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "Te" = (
@@ -24120,16 +24110,12 @@
 /turf/simulated/floor/plating,
 /area/quartermaster/storage)
 "Xq" = (
-/obj/machinery/conveyor{
-	dir = 8;
-	id = "packageSort1"
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
 	},
-/obj/machinery/camera/network/cargo{
-	dir = 1;
-	name = "security camera"
-	},
-/turf/simulated/floor/tiled,
-/area/quartermaster/office)
+/turf/simulated/floor/wood,
+/area/tether/station/burial)
 "Xr" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -45766,8 +45752,8 @@ gz
 Ez
 gz
 gz
-It
-AU
+qK
+Xq
 gz
 Zu
 BS
@@ -55817,7 +55803,7 @@ Oe
 rx
 mU
 kg
-Xq
+HD
 kS
 DB
 TX
