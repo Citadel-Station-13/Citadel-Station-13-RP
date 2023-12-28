@@ -3116,6 +3116,7 @@
 #include "code\modules\mapping\map_helpers\network_builder\_network_builder.dm"
 #include "code\modules\mapping\map_helpers\network_builder\power_cable.dm"
 #include "code\modules\mapping\spawner\_spawner.dm"
+#include "code\modules\mapping\spawner\tcomms_relay.dm"
 #include "code\modules\mapping\spawner\window.dm"
 #include "code\modules\mapping\templates\engine.dm"
 #include "code\modules\maps\_shim\away_spawner.dm"
