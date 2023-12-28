@@ -52,13 +52,14 @@
 		serialized["ref"] = REF(name)
 
 		var/mob/M = name
-		if(M.invisibility == INVISIBILITY_OBSERVER)
-			continue
+
 		if(!istype(M))
 			misc += list(serialized)
 			continue
 
 		if(isobserver(M))
+			if(M.client.is_preference_enabled(/datum/client_preference/holder/stealth_ghost_mode))
+				continue
 			ghosts += list(serialized)
 		else if(issimple(M))
 			simplemobs += list(serialized)
