@@ -728,6 +728,9 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled,
 /area/hallway/station/atrium)
+"bu" = (
+/turf/simulated/wall/r_wall/prepainted,
+/area/tether/station/stairs_one)
 "bv" = (
 /obj/structure/table/steel,
 /obj/random/action_figure,
@@ -1804,16 +1807,10 @@
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 4
 	},
-/obj/structure/table/rack/shelf,
 /obj/machinery/holoposter{
 	pixel_x = 30
 	},
-/obj/item/suit_cooling_unit,
-/obj/item/clothing/mask/gas/half,
-/obj/item/tank/oxygen,
-/obj/item/clothing/shoes/magboots,
-/obj/item/clothing/suit/space/void/exploration,
-/obj/item/clothing/head/helmet/space/void/exploration,
+/obj/machinery/suit_storage_unit/exploration,
 /turf/simulated/floor/tiled,
 /area/tether/exploration/equipment)
 "dx" = (
@@ -3977,7 +3974,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/docks)
 "hY" = (
-/turf/simulated/wall/r_wall/prepainted,
+/turf/simulated/wall/r_wall/prepainted/command,
 /area/ai_upload_foyer)
 "hZ" = (
 /obj/structure/toilet{
@@ -4280,7 +4277,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
 "iD" = (
-/turf/simulated/wall/r_wall/prepainted,
+/turf/simulated/wall/r_wall/prepainted/command,
 /area/ai_cyborg_station)
 "iE" = (
 /obj/machinery/light{
@@ -7038,7 +7035,7 @@
 /area/ai_upload)
 "of" = (
 /obj/structure/sign/securearea,
-/turf/simulated/wall/r_wall/prepainted,
+/turf/simulated/wall/r_wall/prepainted/command,
 /area/ai_upload_foyer)
 "og" = (
 /obj/machinery/disposal,
@@ -8085,13 +8082,7 @@
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 5
 	},
-/obj/structure/table/rack/shelf,
-/obj/item/suit_cooling_unit,
-/obj/item/clothing/mask/gas/half,
-/obj/item/tank/oxygen,
-/obj/item/clothing/shoes/magboots,
-/obj/item/clothing/suit/space/void/exploration,
-/obj/item/clothing/head/helmet/space/void/exploration,
+/obj/machinery/suit_storage_unit/exploration,
 /turf/simulated/floor/tiled,
 /area/tether/exploration/equipment)
 "qm" = (
@@ -15053,7 +15044,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/exploration/hallway)
 "Eu" = (
-/turf/simulated/wall/r_wall/prepainted,
+/turf/simulated/wall/r_wall/prepainted/command,
 /area/ai_server_room)
 "Ev" = (
 /obj/structure/cable{
@@ -15360,6 +15351,13 @@
 /obj/structure/cable/pink{
 	icon_state = "0-8"
 	},
+/obj/item/tank/oxygen,
+/obj/item/tank/oxygen,
+/obj/item/tank/oxygen,
+/obj/structure/table/rack/shelf,
+/obj/item/tank/oxygen,
+/obj/item/tank/oxygen,
+/obj/item/tank/oxygen,
 /turf/simulated/floor/tiled,
 /area/tether/exploration/equipment)
 "Fa" = (
@@ -17966,6 +17964,9 @@
 /obj/structure/bed/chair/office/dark,
 /turf/simulated/floor/tiled,
 /area/bridge/secondary)
+"Km" = (
+/turf/simulated/wall/r_wall/prepainted/exploration,
+/area/tether/exploration/showers)
 "Kn" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -18413,13 +18414,7 @@
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 4
 	},
-/obj/structure/table/rack/shelf,
-/obj/item/suit_cooling_unit,
-/obj/item/clothing/mask/gas/half,
-/obj/item/tank/oxygen,
-/obj/item/clothing/shoes/magboots,
-/obj/item/clothing/suit/space/void/exploration,
-/obj/item/clothing/head/helmet/space/void/exploration,
+/obj/machinery/suit_storage_unit/exploration,
 /turf/simulated/floor/tiled,
 /area/tether/exploration/equipment)
 "Lg" = (
@@ -19817,7 +19812,6 @@
 	},
 /obj/item/suit_cooling_unit,
 /obj/item/clothing/mask/breath,
-/obj/item/tank/oxygen,
 /obj/item/clothing/shoes/magboots,
 /obj/item/clothing/suit/space/void/medical/emt,
 /obj/item/clothing/head/helmet/space/void/medical/emt,
@@ -21119,7 +21113,6 @@
 	},
 /obj/item/suit_cooling_unit,
 /obj/item/clothing/mask/breath,
-/obj/item/tank/oxygen,
 /obj/item/clothing/shoes/magboots,
 /obj/item/clothing/suit/space/void/medical/emt,
 /obj/item/clothing/head/helmet/space/void/medical/emt,
@@ -22512,6 +22505,12 @@
 /obj/machinery/suit_cycler/medical,
 /turf/simulated/floor/tiled,
 /area/tether/exploration/equipment)
+"Tz" = (
+/obj/effect/paint_stripe/darkred,
+/obj/spawner/window/low_wall/full/firelocks,
+/obj/machinery/suit_storage_unit/medic,
+/turf/simulated/floor/plating,
+/area/security/checkpoint/science)
 "TA" = (
 /obj/structure/cable/green{
 	icon_state = "2-4"
@@ -23251,7 +23250,7 @@
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/tether/exploration/hallway)
 "UT" = (
-/turf/simulated/wall/r_wall/prepainted,
+/turf/simulated/wall/r_wall/prepainted/command,
 /area/ai_upload)
 "UU" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -25673,7 +25672,7 @@
 /area/storage/tools)
 "ZP" = (
 /obj/structure/sign/department/ai,
-/turf/simulated/wall/r_wall/prepainted,
+/turf/simulated/wall/r_wall/prepainted/command,
 /area/ai_upload_foyer)
 "ZQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/red{
@@ -45624,7 +45623,7 @@ CD
 Zn
 Kr
 qq
-Ij
+bu
 FV
 Ij
 JS
@@ -45818,7 +45817,7 @@ eO
 Ow
 Kr
 qq
-Ij
+bu
 FV
 Ij
 Ot
@@ -53158,8 +53157,8 @@ sA
 NA
 Hz
 sA
-sA
-sA
+Km
+Km
 sA
 OB
 EY
@@ -54914,7 +54913,7 @@ fL
 fL
 fL
 qL
-Lq
+Tz
 zZ
 Lq
 qL
