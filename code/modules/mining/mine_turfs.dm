@@ -121,6 +121,7 @@ CREATE_STANDARD_TURFS(/turf/unsimulated/mineral)
 	opacity = 0
 	blocks_air = 0
 	can_build_into_floor = TRUE
+	smoothing_groups = 0 //This fixes smoothing happening with non wall mineral turfs
 
 //Alternative sand floor sprite.
 /turf/simulated/mineral/floor/light
