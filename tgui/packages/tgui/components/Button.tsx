@@ -17,7 +17,7 @@ const logger = createLogger('Button');
 
 export type ButtonProps = BoxProps & {
   readonly fluid?: BooleanLike;
-  readonly icon?: string | BooleanLike;
+  readonly icon?: string;
   readonly iconRotation?: number;
   readonly iconSpin?: BooleanLike;
   readonly iconColor?: any;
@@ -175,8 +175,9 @@ export const ButtonCheckbox = (props: ButtonCheckboxProps) => {
 Button.Checkbox = ButtonCheckbox;
 
 type ButtonConfirmProps = ButtonProps & {
-  readonly confirmContent?: string;
+  readonly confirmContent?: string | null;
   readonly confirmColor?: string;
+  readonly confirmIcon?: string;
 }
 
 type ButtonConfirmState = {
@@ -221,7 +222,7 @@ export class ButtonConfirm extends Component<ButtonConfirmProps, ButtonConfirmSt
         icon={this.state.clicked ? confirmIcon : icon}
         color={this.state.clicked ? confirmColor : color}
         onClick={(e) => {
-          e.preventDefault();
+          e.stopPropagation();
           this.state.clicked ? onClick?.(e) : this.setClickedOnce(true);
         }}
         {...rest}

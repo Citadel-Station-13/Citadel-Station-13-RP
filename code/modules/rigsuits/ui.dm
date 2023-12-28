@@ -175,6 +175,61 @@
 /obj/item/rig/ui_act(action, list/params, datum/tgui/ui)
 	#warn icecream update will modify this, check the root definition!
 	. = ..()
+	if(.)
+		return
+	var/mob/user = usr
+	switch(action)
+		if("activation")
+			var/desired = text2num(params["on"])
+			// todo: better reject
+			if(!check_control_flags_or_reject(user, RIG_CONTROL_ACTIVATION))
+				return
+
+			#warn impl
+		if("seal")
+			if(activation_state != RIG_ACTIVATION_ONLINE)
+				return TRUE
+			var/piece = params["piece"]
+			var/desired = text2num(params["on"])
+			// todo: better reject
+			if(!check_control_flags_or_reject(user, RIG_CONTROL_PIECES))
+				return TRUE
+			if(isnull(desired))
+				return TRUE
+			if(isnull(piece))
+				return TRUE
+			var/datum/rig_piece/piece = piece_lookup[piece]
+			if(isnull(piece))
+				return TRUE
+			if(desired)
+				seal_piece_sync(piece)
+			else
+				INVOKE_ASYNC(src, PROC_REF(unseal_piece_sync), piece)
+			return TRUE
+		if("deploy")
+			var/piece = params["piece"]
+			var/desired = text2num(params["on"])
+			// todo: better reject
+			if(!check_control_flags_or_reject(user, RIG_CONTROL_PIECES))
+				return TRUE
+			if(isnull(desired))
+				return TRUE
+			if(isnull(piece))
+				if(desired)
+					deploy_suit_async(TRUE)
+				else
+					undeploy_suit_async()
+				return TRUE
+			else
+				var/datum/rig_piece/piece = piece_lookup[piece]
+				if(isnull(piece))
+					return TRUE
+				if(desired)
+					deploy_piece_async(piece, TRUE)
+				else
+					INVOKE_ASYNC(src, PROC_REF(undeploy_piece_sync), piece)
+				return TRUE
+		#warn impl restricted_camera_networks
 
 /obj/item/rig/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	#warn icecream update will modify this, check the root definition!

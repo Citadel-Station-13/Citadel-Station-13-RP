@@ -14,7 +14,7 @@
  *
  * @return TRUE/FALSE success/failure
  */
-/obj/item/rig/proc/deploy_piece_sync(datum/component/rig_piece/piece, auto_seal = TRUE, instant_seal = FALSE, force = FALSE)
+/obj/item/rig/proc/deploy_piece_async(datum/component/rig_piece/piece, auto_seal = TRUE, instant_seal = FALSE, force = FALSE)
 	if(!piece.deploy(wearer, force? INV_OP_FORCE | INV_OP_CAN_DISPLACE : NONE))
 		return FALSE
 	piece.currently_retracting = FALSE
@@ -47,7 +47,7 @@
  * @return TRUE/FALSE success/failure
  */
 /obj/item/rig/proc/seal_piece_sync(datum/component/rig_piece/piece, instant = FALSE)
-	#warn impl
+	return piece.seal_sync(instant)
 
 /**
  * blocks on unsealing
@@ -58,7 +58,7 @@
  * @return TRUE/FALSE success/failure
  */
 /obj/item/rig/proc/unseal_piece_sync(datum/component/rig_piece/piece, instant = FALSE)
-	#warn impl
+	return piece.unseal_sync(instant)
 
 /**
  * deploys all pieces; non-blocking
@@ -66,13 +66,8 @@
 /obj/item/rig/proc/deploy_suit_async(auto_seal = TRUE, instant_seal = FALSE, force = FALSE)
 	for(var/id in piece_lookup)
 		var/datum/component/rig_piece/piece = piece_lookup[id]
-		INVOKE_ASYNC(src, PROC_REF(deploy_piece_sync), piece, auto_seal, instant_seal, force)
-
-/**
- * deploys all pieces; blocking
- */
-/obj/item/rig/proc/deploy_suit_sync(auto_seal = TRUE, instant_seal = FALSE, force = FALSE)
-	#warn impl
+		INVOKE_ASYNC(src, PROC_REF(deploy_piece_async), piece, auto_seal, instant_seal, force)
+	return TRUE
 
 /**
  * undeploys all pieces; non-blocking
@@ -81,14 +76,32 @@
 	for(var/id in piece_lookup)
 		var/datum/component/rig_piece/piece = piece_lookup[id]
 		INVOKE_ASYNC(src, PROC_REF(undeploy_piece_sync), piece, instant_unseal, force)
+	return TRUE
 
 /**
  * undeploys all pieces; blocking
+ *
+ * can instantly fails if one piece fails, does not wait for the others.
+ * this behavior is not ensured 100% of the time.
+ *
+ * @return TRUE / FALSE on success / failure
  */
 /obj/item/rig/proc/undeploy_suit_sync(instant_unseal = FALSE, force = FALSE)
-	#warn impl
-
-#warn impl
+	var/list/collected = list()
+	. = TRUE
+	for(var/id in piece_lookup)
+		var/datum/component/rig_piece/piece = piece_lookup[id]
+		INVOKE_ASYNC(src, PROC_REF(undeploy_piece_sync), piece, instant_unseal, force)
+		//* warning: shitcode ahead
+		//* this relies on the fact byond is single-threaded
+		//* because we know for sure that sync immediately sleeps, wihch means that
+		//* we can grab the operation id immediately
+		if(!piece.seal_mutex && (piece.sealed != RIG_PIECE_UNSEALED))
+			// failed instantly
+			. = FALSE
+		collected[piece] = piece.seal_operation
+	for(var/datum/component/rig_piece/piece as anything in collected)
+		. = . && piece.block_on_unsealing(collected[piece])
 
 /obj/item/rig/proc/add_piece(datum/component/rig_piece/piece)
 	piece.lookup_id = "[++next_lookup_id]"

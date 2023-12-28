@@ -35,8 +35,11 @@
 	/// if we're currently cycling, seal_mutex should always be TRUE. the opposite is not always the case.
 	var/sealed = RIG_PIECE_UNSEALED
 	/// in the process of a seal operation - used internally as a mutex. don't fuck with this var.
+	/// this is set to TRUE at the start of a cycle and set to FALSe after
+	/// do not use this to interrupt, do not fuck with this var.
 	var/seal_mutex = FALSE
 	/// the cycle of the sealing operation we're in, so we can override existing ones by changing this number
+	/// when a new operation starts, the current number is used; interrupting or finishing adds 1.
 	var/seal_operation = 0
 
 	//* Stats
@@ -65,6 +68,9 @@
 	RegisterSignal(parent, COMSIG_ITEM_UNEQUIPPED, PROC_REF(signal_unequipped))
 
 /datum/component/rig_piece/UnregisterFromParent()
+	// todo: optimize this
+	interrupt_if_sealing()
+	interrupt_if_unsealing()
 	. = ..()
 	UnregisterSignal(parent, COMSIG_ITEM_UNEQUIPPED)
 
@@ -98,13 +104,65 @@
 	ui_update_queued = TRUE
 	controller?.ui_queue_piece(src)
 
+/datum/component/rig_piece/proc/seal_sync(instant, silent, subtle)
+	if(sealed == RIG_PIECE_SEALED)
+		return TRUE
+	interrupt_if_unsealing()
+	// we're still sealing / not interrupted
+	if(seal_mutex)
+		return block_on_sealing(seal_operation)
+	seal_mutex = TRUE
+	sealed = RIG_PIECE_SEALING
+	push_piece_data(list("sealed" = RIG_PIECE_SEALING))
+
+	var/delay = instant? 0 : controller.seal_delay
+	var/start_time = world.time
+	var/operation_id = seal_operation
+
+	while(world.time < start_time + delay)
+		if(seal_operation != operation_id)
+			break
+		stoplag(1)
+
+	if(seal_operation == operation_id)
+		seal(silent, subtle)
+
+	++seal_operation
+	seal_mutex = FALSE
+
+/datum/component/rig_piece/proc/unseal_sync(instant, silent, subtle)
+	if(sealed == RIG_PIECE_UNSEALED)
+		return TRUE
+	interrupt_if_sealing()
+	// we're still sealing / not interrupted
+	if(seal_mutex)
+		return block_on_unsealing(seal_operation)
+	seal_mutex = TRUE
+	sealed = RIG_PIECE_UNSEALING
+	push_piece_data(list("sealed" = RIG_PIECE_UNSEALING))
+
+	var/delay = instant? 0 : controller.seal_delay
+	var/start_time = world.time
+	var/operation_id = seal_operation
+
+	while(world.time < start_time + delay)
+		if(seal_operation != operation_id)
+			break
+		stoplag(1)
+
+	if(seal_operation == operation_id)
+		unseal(silent, subtle)
+
+	++seal_operation
+	seal_mutex = FALSE
+
 /**
  * @params
  * * actor - (optional) actor data for this action
  * * silent - suppress sound
  * * subtle - suppress message
  */
-/datum/component/rig_piece/proc/seal(datum/event_args/actor/actor, silent, subtle)
+/datum/component/rig_piece/proc/seal(silent, subtle)
 	// todo: sound
 	// todo: feedback visual?
 	var/obj/item/physical = parent
@@ -179,6 +237,14 @@
 		return
 	sealed = RIG_PIECE_SEALED
 	++seal_operation
+
+/datum/component/rig_piece/proc/block_on_sealing(operation_id)
+	UNTIL((seal_operation != operation_id) || !seal_mutex)
+	return sealed == RIG_PIECE_SEALED
+
+/datum/component/rig_piece/proc/block_on_unsealing(operation_id)
+	UNTIL((seal_operation != operation_id) || !seal_mutex)
+	return sealed == RIG_PIECE_UNSEALED
 
 /obj/item/clothing/head/rig
 

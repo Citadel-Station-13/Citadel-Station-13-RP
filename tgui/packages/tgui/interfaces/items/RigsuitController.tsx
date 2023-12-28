@@ -81,8 +81,24 @@ export const RigController = (props: RigControllerProps, context) => {
                 color="transparent"
                 onClick={() => setSuitSection('All')}
                 selected={suitSection === "All"}>
-                <img src={`data:image/png;base64, ${props.rig.sprite64}`}
-                  style={{ transform: `scale(1.75)`, "margin": "0.25em 0.125em" }} />
+                <Stack>
+                  <Stack.Item>
+                    <img src={`data:image/png;base64, ${props.rig.sprite64}`}
+                      style={{ transform: `scale(1.75)`, "margin": "0.25em 0.125em" }} />
+                  </Stack.Item>
+                  <Stack.Item>
+                    <Stack vertical fill>
+                      <Stack.Item>
+                        <Button.Confirm
+                          color="transparent"
+                          icon={0? "lock" : "unlock"}
+                          confirmColor="average"
+                          confirmContent={null}
+                          confirmIcon={0? "lock": "unlock"} />
+                      </Stack.Item>
+                    </Stack>
+                  </Stack.Item>
+                </Stack>
               </Tabs.Tab>
               {props.rig.pieceRefs.map((ref) => {
                 let pieceData = getModuleData<RigsuitPieceData>(context, ref);
@@ -104,13 +120,17 @@ export const RigController = (props: RigControllerProps, context) => {
                             <Button.Confirm
                               color="transparent"
                               icon={0? "lock" : "unlock"}
-                              confirmContent="?" />
+                              confirmColor="average"
+                              confirmContent={null}
+                              confirmIcon={0? "lock": "unlock"} />
                           </Stack.Item>
                           <Stack.Item align="center" justify="space-around">
                             <Button.Confirm
                               color="transparent"
                               icon={0? "circle" : "circle-o"}
-                              confirmContent="?" />
+                              confirmColor="average"
+                              confirmContent={null}
+                              confirmIcon={0? "circle": "circle-o"} />
                           </Stack.Item>
                         </Stack>
                       </Stack.Item>
@@ -130,7 +150,7 @@ export const RigController = (props: RigControllerProps, context) => {
                 {RigUIZoneSelection.map((zone) => (
                   <Tabs.Tab onClick={() => setModuleSection(zone.key)}
                     selected={moduleSection === zone.key} key={zone.key}>
-                    <Icon name={zone.icon} size={5} backgroundColor="#aa7700" height="50px" maxHeight="50px" />
+                    <Icon name={zone.icon} size={2.5} backgroundColor="#aa7700" height="50px" maxHeight="50px" />
                   </Tabs.Tab>
                 ))}
                 <Tabs.Tab selected={0}>
