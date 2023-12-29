@@ -233,7 +233,7 @@
 
 //This function is overridden by cookers that do stuff with containers
 /obj/machinery/appliance/proc/has_space(var/obj/item/I)
-	if (cooking_objs.len >= max_contents)
+	if (cooking_objs.len >= max_contents) 
 		return FALSE
 
 	return TRUE
