@@ -114,10 +114,8 @@
 	set_weight(online_weight)
 	set_encumbrance(online_encumbrance)
 
-	if(ismob(loc))
-		wearer = loc
-		ADD_TRAIT(src, TRAIT_ITEM_NODROP, RIG_TRAIT)
-	else
+	ADD_TRAIT(src, TRAIT_ITEM_NODROP, RIG_TRAIT)
+	if(!ismob(loc))
 		stack_trace("rig activated without a mob loc. uh oh.")
 
 	activation_state = RIG_ACTIVATION_ONLINE
@@ -151,7 +149,6 @@
 			unseal_piece_sync(piece, TRUE)
 
 	REMOVE_TRAIT(src, TRAIT_ITEM_NODROP, RIG_TRAIT)
-	wearer = null
 
 	activation_state = RIG_ACTIVATION_OFFLINE
 	push_ui_data(list("activation" = RIG_ACTIVATION_OFFLINE))

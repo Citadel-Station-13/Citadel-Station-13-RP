@@ -4,7 +4,8 @@
  */
 
 import { BooleanLike } from "common/react";
-import { getModuleData, useLocalState } from "../../backend";
+import { InfernoNode } from "inferno";
+import { getModuleData, useBackend, useLocalState } from "../../backend";
 import { Button, Flex, Icon, LabeledList, NoticeBox, Section, Stack, Tabs } from "../../components";
 import { ButtonProps } from "../../components/Button";
 import { RigActivationStatus, RigControlFlags, RigModuleReflist, RigPieceReflist, RigPieceSealStatus, RigUIZoneSelection } from "./RigsuitCommon";
@@ -28,18 +29,46 @@ export const RigController = (props: RigControllerProps, context) => {
   const [suitSection, setSuitSection] = useLocalState<string>(context, "rigsuitSectionTab", "All");
   const [moduleSection, setModuleSection] = useLocalState<string>(context, "rigsuitModuleTab", RigUIZoneSelection[0].key);
 
+  const { act } = useBackend(context);
   const { rig } = props;
 
-  let rigActivationButtonProps: ButtonProps = {};
+  let rigActivationButton: InfernoNode | null = null;
 
   switch (rig.activation) {
     case RigActivationStatus.Activating:
+      rigActivationButton = (
+        <Button
+          color="average"
+          icon="lock"
+          onClick={() => act('activation', { on: false })} />
+      );
       break;
     case RigActivationStatus.Deactivating:
+      rigActivationButton = (
+        <Button
+          color="average"
+          icon="unlock"
+          onClick={() => act('activation', { on: true })} />
+      );
       break;
     case RigActivationStatus.Offline:
+      rigActivationButton = (
+        <Button
+          color="bad"
+          icon="unlock"
+          onClick={() => act('activation', { on: true })} />
+      );
       break;
     case RigActivationStatus.Online:
+      rigActivationButton = (
+        <Button.Confirm
+          color="good"
+          icon="lock"
+          confirmColor="bad"
+          confirmContent={null}
+          confirmIcon="unlock"
+          onClick={() => act('activation', { on: false })} />
+      );
       break;
   }
 
@@ -113,14 +142,9 @@ export const RigController = (props: RigControllerProps, context) => {
                       style={{ transform: `scale(1.75)`, "margin": "0.25em 0.125em" }} />
                   </Stack.Item>
                   <Stack.Item>
-                    <Flex direction="column" justify="space-around">
+                    <Flex height="100%" direction="column" justify="space-around">
                       <Flex.Item>
-                        <Button.Confirm
-                          color="transparent"
-                          icon={0? "lock" : "unlock"}
-                          confirmColor="average"
-                          confirmContent={null}
-                          confirmIcon={0? "lock": "unlock"} />
+                        {rigActivationButton}
                       </Flex.Item>
                     </Flex>
                   </Stack.Item>

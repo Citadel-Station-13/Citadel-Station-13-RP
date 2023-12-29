@@ -132,9 +132,10 @@
 	return ..()
 
 /obj/item/rig/unequipped()
+	. = ..()
 	// todo: should we optimize this?
 	hard_reset()
-	return ..()
+	wearer = null
 
 /obj/item/rig/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
@@ -142,7 +143,10 @@
 
 /obj/item/rig/equipped(mob/user, slot, flags)
 	. = ..()
-	push_ui_data(data = list("wornCorrectly" = is_in_right_slot()))
+	var/right_slot = is_in_right_slot()
+	push_ui_data(data = list("wornCorrectly" = right_slot))
+	if(right_slot)
+		wearer = user
 
 /obj/item/rig/proc/hard_reset()
 	deactivate(TRUE, TRUE, TRUE, TRUE)
