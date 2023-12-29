@@ -112,6 +112,8 @@
 	//* Wearer
 	/// Our wearer
 	var/mob/wearer
+	/// What slot we must be in - typepath or ID.
+	var/wearer_required_slot_id = /datum/inventory_slot_meta/inventory/back
 
 #warn impl all
 
@@ -128,8 +130,22 @@
 	QDEL_NULL(maint_panel)
 	return ..()
 
+/obj/item/rig/unequipped()
+	// todo: should we optimize this?
+	hard_reset()
+	return ..()
+
+/obj/item/rig/dropped(mob/user, flags, atom/newLoc)
+	. = ..()
+	push_ui_data(data = list("wornCorrectly" = is_in_right_slot()))
+
+/obj/item/rig/equipped(mob/user, slot, flags)
+	. = ..()
+	push_ui_data(data = list("wornCorrectly" = is_in_right_slot()))
+
 /obj/item/rig/proc/hard_reset()
-	#warn get everything back inside and set activation to deactivated
+	undeploy_suit_sync(TRUE, TRUE)
+	deactivate()
 
 /obj/item/rig/proc/wipe_everything()
 	hard_reset()

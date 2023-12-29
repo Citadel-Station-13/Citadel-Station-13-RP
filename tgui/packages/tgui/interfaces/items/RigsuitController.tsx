@@ -3,6 +3,7 @@
  * @license MIT
  */
 
+import { BooleanLike } from "common/react";
 import { getModuleData, useLocalState } from "../../backend";
 import { Button, Flex, Icon, LabeledList, NoticeBox, Section, Stack, Tabs } from "../../components";
 import { ButtonProps } from "../../components/Button";
@@ -16,6 +17,7 @@ export interface RigsuitControllerData {
   moduleRefs: RigModuleReflist;
   sprite64: string;
   theme: string;
+  wornCorrectly: BooleanLike;
 }
 export interface RigControllerProps {
   readonly rig: RigsuitControllerData;

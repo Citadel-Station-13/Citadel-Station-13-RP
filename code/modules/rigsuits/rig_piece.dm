@@ -164,7 +164,6 @@
 
 /**
  * @params
- * * actor - (optional) actor data for this action
  * * silent - suppress sound
  * * subtle - suppress message
  */
@@ -177,13 +176,18 @@
 	controller.legacy_sync_piece(src, TRUE)
 	update_piece_data()
 
+	if(!is_deployed())
+		stack_trace("not properly deployed?")
+
+	ADD_TRAIT(src, TRAIT_ITEM_NODROP, RIG_TRAIT)
+
 /**
  * @params
  * * actor - (optional) actor data for this action
  * * silent - suppress sound
  * * subtle - suppress message
  */
-/datum/component/rig_piece/proc/unseal(datum/event_args/actor/actor, silent, subtle)
+/datum/component/rig_piece/proc/unseal(silent, subtle)
 	// todo: sound
 	// todo: feedback visual?
 	var/obj/item/physical = parent
@@ -191,6 +195,8 @@
 	physical.icon_state = state_unsealed
 	controller.legacy_sync_piece(src, FALSE)
 	update_piece_data()
+
+	REMOVE_TRAIT(src, TRAIT_ITEM_NODROP, RIG_TRAIT)
 
 /datum/component/rig_piece/proc/deploy(mob/onto, inv_op_flags)
 	var/obj/item/I = parent
@@ -211,6 +217,16 @@
 	var/obj/item/I = parent
 	if(I.loc == controller)
 		return TRUE
+
+	switch(sealed)
+		if(RIG_PIECE_SEALED)
+			unseal()
+		if(RIG_PIECE_SEALING)
+			interrupt_if_sealing()
+		if(RIG_PIECE_UNSEALING)
+			interrupt_if_unsealing()
+			unseal()
+
 	var/mob/wearing = I.worn_mob()
 	if(!isnull(wearing))
 		I.forceMove(controller)
@@ -224,7 +240,10 @@
 
 /datum/component/rig_piece/proc/is_deployed()
 	var/obj/item/I = parent
-	return I.loc != controller
+	if(ispath(inventory_slot))
+		var/datum/inventory_slot_meta/slot_meta = inventory_slot
+		inventory_slot = initial(slot_meta.id)
+	return I.worn_slot() == inventory_slot
 
 /**
  * interrupt if sealing

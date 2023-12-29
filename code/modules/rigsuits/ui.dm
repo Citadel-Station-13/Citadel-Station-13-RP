@@ -134,6 +134,7 @@
 		module_refs += reference
 	.["pieceRefs"] = piece_refs
 	.["moduleRefs"] = module_refs
+	.["wornCorrectly"] = is_in_right_slot()
 
 /obj/item/rig/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	#warn icecream update will modify this, check the root definition!

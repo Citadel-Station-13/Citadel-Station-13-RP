@@ -17,6 +17,13 @@
 	return activation_state & RIG_ACTIVATION_IS_CYCLING
 
 /**
+ * checks if we're in the right inventory slot to activate.
+ */
+/obj/item/rig/proc/is_in_right_slot()
+	var/datum/inventory_slot_meta/wslot = wearer_required_slot_id
+	return worn_slot() == ispath(wslot)? initial(wslot.id) : wslot
+
+/**
  * blocking proc
  *
  * uses existing activation operation if one is in progress
@@ -24,7 +31,10 @@
  *
  * @return TRUE / FALSE success / failure
  */
-/obj/item/rig/proc/activation_sequence(instant, deploy, auto_seal = TRUE, instant_seal)
+/obj/item/rig/proc/activation_sequence(instant, deploy, auto_seal = TRUE, instant_seal, subtle, silent, force)
+	if(!is_in_right_slot())
+		return FALSE
+
 	if(activation_state == RIG_ACTIVATION_ONLINE)
 		return TRUE
 	interrupt_if_deactivating()
@@ -33,6 +43,9 @@
 			interrupt_if_activating()
 		else
 			block_on_activation(activation_operation)
+
+	if(deploy)
+		deploy_suit_async(FALSE, FALSE, force)
 
 	activation_mutex = TRUE
 	activation_state = RIG_ACTIVATION_ACTIVATING
@@ -50,7 +63,7 @@
 		stoplag(1)
 
 	if(activation_operation == operation_id)
-		activate(deploy, auto_seal, instant_seal)
+		activate(deploy, auto_seal, instant_seal, silent, subtle, force)
 		++activation_operation
 		activation_mutex = FALSE
 
@@ -62,7 +75,7 @@
  *
  * @return TRUE / FALSE success / failure
  */
-/obj/item/rig/proc/deactivation_sequence(instant)
+/obj/item/rig/proc/deactivation_sequence(instant, undeploy, silent, subtle, force)
 	if(activation_state == RIG_ACTIVATION_OFFLINE)
 		return TRUE
 	interrupt_if_activating()
@@ -88,25 +101,62 @@
 		stoplag(1)
 
 	if(activation_operation == operation_id)
-		deactivate()
+		deactivate(silent, subtle, force)
 		++activation_operation
 		activation_mutex = FALSE
 
-/obj/item/rig/proc/activate()
+/obj/item/rig/proc/activate(deploy, auto_seal, instant_seal, silent, subtle, force)
+	if(!is_in_right_slot())
+		return FALSE
+
+	. = TRUE
+
 	set_weight(online_weight)
 	set_encumbrance(online_encumbrance)
+
+	if(ismob(loc))
+		wearer = loc
+		ADD_TRAIT(src, TRAIT_ITEM_NODROP, RIG_TRAIT)
+	else
+		stack_trace("rig activated without a mob loc. uh oh.")
 
 	activation_state = RIG_ACTIVATION_ONLINE
 	push_ui_data(list("activation" = RIG_ACTIVATION_ONLINE))
 
+	#warn update wearer/etc data
+
 	#warn feedback to people around
 
-/obj/item/rig/proc/deactivate()
+	if(deploy)
+		deploy_suit_async(auto_seal, instant_seal, force)
+	else if(auto_seal)
+		for(var/id in piece_lookup)
+			var/datum/component/rig_piece/piece = piece_lookup[id]
+			if(!piece.is_deployed())
+				continue
+			INVOKE_ASYNC(src, PROC_REF(seal_piece_sync), piece)
+
+/obj/item/rig/proc/deactivate(undeploy, silent, subtle, force)
 	set_weight(offline_weight)
 	set_encumbrance(offline_encumbrance)
 
+	// todo: for now, undeploy/unseal is just instant, instead of being done before the main shutdown sequence
+	if(undeploy)
+		undeploy_suit_async(TRUE, force)
+	else
+		for(var/id in piece_lookup)
+			var/datum/component/rig_piece/piece = piece_lookup[id]
+			if(!piece.is_deployed())
+				continue
+			unseal_piece_sync(piece, TRUE)
+
+	REMOVE_TRAIT(src, TRAIT_ITEM_NODROP, RIG_TRAIT)
+	wearer = null
+
 	activation_state = RIG_ACTIVATION_OFFLINE
 	push_ui_data(list("activation" = RIG_ACTIVATION_OFFLINE))
+
+	#warn update wearer/etc data
 
 	#warn feedback to people around
 
