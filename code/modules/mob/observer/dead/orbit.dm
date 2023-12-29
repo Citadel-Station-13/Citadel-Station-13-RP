@@ -53,12 +53,15 @@
 
 		var/mob/M = name
 
+		if(M == user)
+			continue//Should only really happen with observers, but just to be sure
+
 		if(!istype(M))
 			misc += list(serialized)
 			continue
 
 		if(isobserver(M))
-			if(M.client.is_preference_enabled(/datum/client_preference/holder/stealth_ghost_mode))
+			if(M.invisibility >= INVISIBILITY_MAXIMUM)
 				continue
 			ghosts += list(serialized)
 		else if(issimple(M))
