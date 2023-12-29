@@ -1,18 +1,21 @@
-//! FLAG BITMASKS - Used in /atom/var/flags
+//? FLAG BITMASKS - Used in /atom/var/flags
 /// The atom is initialized
 #define ATOM_INITIALIZED    (1<<0)
 /// Item has priority to check when entering or leaving.
 #define ATOM_BORDER         (1<<1)
-/// Atom is admin spawned
-#define ATOM_ADMINSPAWNED   (1<<2)
 /// get_hearers_in_view() returns us, meaning we intercept usually for-players messages. Mobs, mechas, etc should all have this!
-#define ATOM_HEAR           (1<<3)
+#define ATOM_HEAR           (1<<2)
 /// Atom queued to SSoverlay for compile_overlays
-#define ATOM_OVERLAY_QUEUED (1<<4)
+#define ATOM_OVERLAY_QUEUED (1<<3)
 /// Atom is absolute-abstract - should not be interactable or movable in any way shape or form
-#define ATOM_ABSTRACT       (1<<5)
-/// We are an holographic atom from a holodeck/AR system
-#define HOLOGRAM            (1<<6) // TODO: should this be an atom flag?
+/// This is for stuff like lighting.
+#define ATOM_ABSTRACT       (1<<4)
+/// Atom is not considered a game world object.
+/// This means semantic "wipe game world state" things like turf.empty(), saving, loading, etc, should ignore it,
+/// but the atom is not abstract.
+#define ATOM_NONWORLD       (1<<5)
+/// uses integrity, and is broken
+#define ATOM_BROKEN			(1<<6)
 /// Used for items if they don't want to get a blood overlay.
 #define NOBLOODY            (1<<7) // TODO: item flag
 /// Reagents don't react inside this container.
@@ -25,6 +28,7 @@
 #define PHORONGUARD         (1<<11) // TODO: item flag
 /// Does not leave user's fingerprints/fibers when used on things?
 #define NOPRINT             (1<<12) // TODO: item flag
+
 ///CITMAIN FLAG BITMASKS - Completely unused.
 /*
 /// Early returns mob.face_atom()
@@ -40,26 +44,30 @@
 /// should not get harmed if this gets caught by an explosion?
 #define PREVENT_CONTENTS_EXPLOSION	(1<<22)
 */
-#define HTML_USE_INITIAL_ICON		(1<<23)
+/// We are ticking in materials
+#define ATOM_MATERIALS_TICKING		(1<<22)
+/// Use initial icon/icon state for HTML renders in things like VV
+#define ATOM_HTML_INITIAL_ICON		(1<<23)
 
 DEFINE_BITFIELD(atom_flags, list(
 	BITFIELD(ATOM_INITIALIZED),
 	BITFIELD(ATOM_BORDER),
-	BITFIELD(ATOM_ADMINSPAWNED),
 	BITFIELD(ATOM_HEAR),
 	BITFIELD(ATOM_OVERLAY_QUEUED),
 	BITFIELD(ATOM_ABSTRACT),
-	BITFIELD(HOLOGRAM),
+	BITFIELD(ATOM_NONWORLD),
+	BITFIELD(ATOM_BROKEN),
 	BITFIELD(NOBLOODY),
 	BITFIELD(NOREACT),
 	BITFIELD(NOCONDUCT),
 	BITFIELD(OPENCONTAINER),
 	BITFIELD(PHORONGUARD),
 	BITFIELD(NOPRINT),
-	BITFIELD(HTML_USE_INITIAL_ICON),
+	BITFIELD(ATOM_MATERIALS_TICKING),
+	BITFIELD(ATOM_HTML_INITIAL_ICON),
 ))
 
-//! /atom/movable/var/movable_flags
+//? /atom/movable/var/movable_flags
 /// Throwing does not scale damage at all regardless of force.
 #define MOVABLE_NO_THROW_SPEED_SCALING  (1<<0)
 /// Throwing should ignore move force scaling entirely.
@@ -140,7 +148,34 @@ DEFINE_BITFIELD(movement_type, list(
 	BITFIELD(MOVEMENT_FLOATING),
 ))
 
-//! /atom/movable buckle_flags
+//? /atom integrity_flags
+/// cannot be broken, period
+#define INTEGRITY_INDESTRUCTIBLE (1<<0)
+/// completely immune to fire, can't even light
+#define INTEGRITY_FIREPROOF (1<<1)
+/// completely immune to acid, can't even have it stick
+#define INTEGRITY_ACIDPROOF (1<<2)
+/// completely immune to lava
+#define INTEGRITY_LAVAPROOF (1<<3)
+/// don't delete on atom_destruction()
+/// be very careful with this flag, as atom_destruction()
+/// will keep being called every time it gets damaged while 0 integrity!
+#define INTEGRITY_NO_DECONSTRUCT (1<<4)
+/// flammable by dynamic atom fire
+/// this is opt in as a flag so people have to think about it before throwing it onto things.
+/// <--- clueless comment author
+#define INTEGRITY_FLAMMABLE (1<<5)
+
+DEFINE_BITFIELD(integrity_flags, list(
+	BITFIELD(INTEGRITY_INDESTRUCTIBLE),
+	BITFIELD(INTEGRITY_FIREPROOF),
+	BITFIELD(INTEGRITY_ACIDPROOF),
+	BITFIELD(INTEGRITY_LAVAPROOF),
+	BITFIELD(INTEGRITY_NO_DECONSTRUCT),
+	BITFIELD(INTEGRITY_FLAMMABLE),
+))
+
+//? /atom/movable buckle_flags
 /// Requires restrained() (usually handcuffs) to work.
 #define BUCKLING_REQUIRES_RESTRAINTS          (1<<0)
 /// Buckling doesn't allow you to pull the person to try to move the object (assuming the object otherwise can be pulled). This does NOT stop them from pulling the buckled object!

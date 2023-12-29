@@ -37,7 +37,7 @@
 //Medical
 /datum/loadout_entry/restricted/medical
 	subcategory = "Medical"
-	allowed_roles = list("Medical Doctor", "Chief Medical Officer", "Chemist", "Paramedic", "Geneticist", "Psychiatrist", "Field Medic", "Head Nurse")
+	allowed_roles = list("Medical Doctor", "Chief Medical Officer", "Chemist", "Paramedic", "Geneticist", "Psychiatrist", "Field Medic", "Senior Physician")
 
 /datum/loadout_entry/restricted/medical/eyes
 	slot = SLOT_ID_GLASSES
@@ -89,7 +89,7 @@
 //Command
 /datum/loadout_entry/restricted/command
 	subcategory = "Command"
-	allowed_roles = list("Facility Director", "Head of Personnel", "Chief Medical Officer", "Head of Security", "Research Director", "Chief Engineer", "Command Secretary", "Blueshield")
+	allowed_roles = list("Facility Director", "Head of Personnel", "Chief Medical Officer", "Head of Security", "Research Director", "Chief Engineer", "Bridge Officer", "Blueshield")
 
 /datum/loadout_entry/restricted/command/eyes
 	slot = SLOT_ID_GLASSES
@@ -207,7 +207,7 @@
 //Medical + Science
 /datum/loadout_entry/restricted/med_sci
 	subcategory = "Med-Sci"
-	allowed_roles = list("Research Director", "Scientist", "Xenobiologist", "Roboticist", "Explorer", "Senior Researcher", "Pathfinder", "Medical Doctor", "Chief Medical Officer", "Chemist", "Paramedic", "Geneticist", "Psychiatrist", "Field Medic", "Head Nurse")
+	allowed_roles = list("Research Director", "Scientist", "Xenobiologist", "Roboticist", "Explorer", "Senior Researcher", "Pathfinder", "Medical Doctor", "Chief Medical Officer", "Chemist", "Paramedic", "Geneticist", "Psychiatrist", "Field Medic", "Senior Physician")
 
 /datum/loadout_entry/restricted/med_sci/head
 	slot = SLOT_ID_HEAD
@@ -475,6 +475,12 @@
 /datum/loadout_entry/restricted/security/back/dufflebag
 	name = "Security - Dufflebag"
 	path = /obj/item/storage/backpack/dufflebag/sec
+	allowed_roles = list("Security Officer", "Head of Security", "Warden", "Detective", "Talon Guard")
+	cost = 2
+
+/datum/loadout_entry/restricted/security/back/backpack
+	name = "Security - Backpack"
+	path = /obj/item/storage/backpack/security
 	allowed_roles = list("Security Officer", "Head of Security", "Warden", "Detective", "Talon Guard")
 	cost = 2
 
@@ -874,22 +880,22 @@
 /datum/loadout_entry/restricted/engineering/uniform/jeans/atmos
 	name = "Atmospheric Technicians Jumpjeans"
 	path = /obj/item/clothing/under/rank/atmospheric_technician/jeans
-	allowed_roles = list("Chief Engineer", "Atmospheric Technician")
+	allowed_roles = list("Chief Engineer", "Atmospheric Technician", "Senior Engineer")
 
 /datum/loadout_entry/restricted/engineering/uniform/fem_jeans/atmos
 	name = "Atmospheric Technicians Jumpjeans - Female"
 	path = /obj/item/clothing/under/rank/atmospheric_technician/fem_jeans
-	allowed_roles = list("Chief Engineer", "Atmospheric Technician")
+	allowed_roles = list("Chief Engineer", "Atmospheric Technician", "Senior Engineer")
 
 /datum/loadout_entry/restricted/engineering/uniform/atmos_skirt
 	name = "Atmospherics Skirt"
 	path = /obj/item/clothing/under/rank/atmospheric_technician/skirt
-	allowed_roles = list("Chief Engineer", "Atmospheric Technician")
+	allowed_roles = list("Chief Engineer", "Atmospheric Technician", "Senior Engineer")
 
 /datum/loadout_entry/restricted/engineering/uniform/atmos_pleated_skirt
 	name = "Atmospherics Pleated Skirt"
 	path = /obj/item/clothing/under/rank/atmospheric_technician/skirt_pleated
-	allowed_roles = list("Chief Engineer", "Atmospheric Technician")
+	allowed_roles = list("Chief Engineer", "Atmospheric Technician", "Senior Engineer")
 
 /datum/loadout_entry/restricted/engineering/uniform/jeans
 	name = "Engineering Jumpjeans"
@@ -943,7 +949,7 @@
 /datum/loadout_entry/restricted/engineering/suit/wintercoat/atmos
 	name = "Atmospherics Winter Coat"
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat/engineering/atmos
-	allowed_roles = list("Chief Engineer", "Atmospheric Technician")
+	allowed_roles = list("Chief Engineer", "Atmospheric Technician", "Senior Engineer")
 
 /datum/loadout_entry/restricted/engineering/suit/wintercoat/ce
 	name = "Chief Engineers Winter Coat"
@@ -987,7 +993,7 @@
 /datum/loadout_entry/restricted/engineering/shoes/winterboots/atmos
 	name = "Atmospherics Winter Boots"
 	path = /obj/item/clothing/shoes/boots/winter/atmos
-	allowed_roles = list("Chief Engineer", "Atmospheric Technician")
+	allowed_roles = list("Chief Engineer", "Atmospheric Technician", "Senior Engineer")
 
 
 

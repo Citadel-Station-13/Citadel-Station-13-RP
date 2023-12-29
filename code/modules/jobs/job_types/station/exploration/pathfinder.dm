@@ -30,19 +30,11 @@
 	outfit_type = /datum/outfit/job/station/pathfinder
 	desc = "The Pathfinder's job is to lead and manage expeditions, and is the primary authority on all off-station expeditions."
 	alt_titles = list(
-		"Expedition Lead" = /datum/prototype/struct/alt_title/expedition_lead,
-		"Exploration Manager" = /datum/prototype/struct/alt_title/exploration_manager,
-		"Lead Pioneer" = /datum/prototype/struct/alt_title/pathfinder/pioneer
+		"Expedition Lead" = /datum/prototype/struct/alt_title/expedition_lead
 		)
 
 /datum/prototype/struct/alt_title/expedition_lead
 	title = "Expedition Lead"
-
-/datum/prototype/struct/alt_title/exploration_manager
-	title = "Exploration Manager"
-
-/datum/prototype/struct/alt_title/pathfinder/pioneer
-	title = "Lead Pioneer"
 
 /datum/outfit/job/station/pathfinder
 	name = OUTFIT_JOB_NAME("Pathfinder")

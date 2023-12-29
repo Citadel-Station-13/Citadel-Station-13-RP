@@ -147,16 +147,9 @@
 "iz" = (
 /obj/effect/floor_decal/industrial/outline,
 /obj/structure/closet/crate/secure,
-/obj/item/ore/vaudium,
-/obj/item/ore/vaudium,
-/obj/item/ore/vaudium,
-/obj/item/ore/vaudium,
-/obj/item/ore/vaudium,
-/obj/item/ore/vaudium,
-/obj/item/ore/vaudium,
-/obj/item/ore/vaudium,
-/obj/item/ore/vaudium,
-/obj/item/ore/vaudium,
+/obj/item/stack/ore/vaudium{
+	amount = 10
+	},
 /obj/machinery/light{
 	dir = 8
 	},

@@ -1786,25 +1786,45 @@
 	glass_desc = "The original, refreshing not-actually-ale."
 	glass_special = list(DRINK_FIZZ)
 
-/datum/reagent/drink/soda/nicola
-	name = "NiCola"
-	id = "nicola"
+/datum/reagent/drink/soda/kyocola
+	name = "KyoCola"
+	id = "kyocola"
 	description = "Imported straight from Osaka IV."
 	taste_description = "cough syrup and cola"
 	color = "#271402"
 
-	glass_name = "NiCola"
-	glass_desc = "A glass of imported Japanese NiCola."
+	glass_name = "KyoCola"
+	glass_desc = "A glass of imported Japanese KyoCola."
 
-/datum/reagent/drink/soda/nicola/cherry
-	name = "NiCola Sakura"
-	id = "nicolacherry"
-	description = "Originally a limited flavor, brought back by popular demand."
-	taste_description = "cherry cough syrup and cola"
+/datum/reagent/drink/soda/kyocola/fire
+	name = "KyoCola Fire"
+	id = "kyocolafire"
+	description = "Cool imported cola mixed with firey hot spices."
+	taste_description = "cough syrup, capsaicin, and cola"
 	color = "#271402"
 
-	glass_name = "NiCola Sakura"
-	glass_desc = "A glass of limited edition NiCola Sakura."
+	glass_name = "KyoCola Fire"
+	glass_desc = "A glass of spicy Japanese KyoCola Fire."
+
+/datum/reagent/drink/soda/kyocola/cherry
+	name = "KyoCola Sakura"
+	id = "kyocolacherry"
+	description = "Originally a limited flavor, brought back by popular demand."
+	taste_description = "cough syrup, cherry blossoms, and cola"
+	color = "#271402"
+
+	glass_name = "KyoCola Sakura"
+	glass_desc = "A glass of limited edition KyoCola Sakura."
+
+/datum/reagent/drink/soda/kyocola/blue
+	name = "KyoCola Blue"
+	id = "kyocolablue"
+	description = "A limited edition KyoCola flavor praised for its refreshing taste."
+	taste_description = "cough syrup, violets, and cola"
+	color = "#271402"
+
+	glass_name = "KyoCola Blue"
+	glass_desc = "A glass of limited edition KyoCola Blue."
 
 /datum/reagent/drink/shirley_temple
 	name = "Shirley Temple"
@@ -2205,27 +2225,27 @@
 	glass_special = list(DRINK_FIZZ)
 
 /datum/reagent/drink/soda/sarsaparilla
-	name = "CC's Homemade Sarsaparilla"
+	name = "Sarsaparilla"
 	id = "sarsaparilla"
 	description = "The Cyan Cowgirl rides again!"
 	taste_description = "earthy vanilla and harsh bubbles"
 	color = "#503301"
 	adj_temp = -2
 
-	glass_name = "CC's Homemade Sarsaparilla"
+	glass_name = "Sarsaparilla"
 	glass_desc = "Real girls drink from the bottle."
 	glass_icon = DRINK_ICON_NOISY
 	glass_special = list(DRINK_FIZZ)
 
 /datum/reagent/drink/soda/sassafras
-	name = "CC's Famous Root Beer"
+	name = "Root Beer"
 	id = "sassafras"
 	description = "Feel nostalgia for a range you never rode."
 	taste_description = "bitter licorice and sweet vanilla"
 	color = "#312003"
 	adj_temp = -2
 
-	glass_name = "CC's Famous Root Beer"
+	glass_name = "Root Beer"
 	glass_desc = "Wet your whistle!"
 	glass_icon = DRINK_ICON_NOISY
 	glass_special = list(DRINK_FIZZ)
@@ -2511,7 +2531,7 @@
 	name = "Vodka"
 	id = "vodka"
 	description = "Number one drink AND fueling choice for Russians worldwide."
-	taste_description = "grain alcohol"
+	taste_description = "potato alcohol"
 	color = "#0064C8" // rgb: 0, 100, 200
 	strength = 15
 
@@ -4025,7 +4045,7 @@
 	glass_desc = "A spicy take on a summer classic."
 
 /datum/reagent/ethanol/alcsassafras
-	name = "CC's Hard Rootbeer"
+	name = "Hard Rootbeer"
 	id = "alcsassafras"
 	description = "Doesn't matter if you're drunk when you have a horse to take you home!"
 	taste_description = "bitter vanilla with a sharp burn"
@@ -4252,6 +4272,17 @@
 
 	glass_name = "Piña Colada"
 	glass_desc = "For those not into yoga."
+
+/datum/reagent/ethanol/mimosa
+	name = "Mimosa"
+	id = "mimosa"
+	description = "An airy blend of champagne and orange juice, often drunk as a morning refreshment."
+	taste_description = "orange juice and a dry, bubbly wine"
+	color = "#daa411"
+	strength = 20
+
+	glass_name = "Mimosa"
+	glass_desc = "A bubbly and tangy refreshment."
 
 //Never Fade Away
 /datum/reagent/ethanol/silverhand

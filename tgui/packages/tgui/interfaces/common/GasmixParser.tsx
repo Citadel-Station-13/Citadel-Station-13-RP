@@ -12,14 +12,14 @@ export type Gasmix = {
 };
 
 type GasmixParserProps = {
-  gasmix: Gasmix;
-  gasesOnClick?: (gas_id: string) => void;
-  temperatureOnClick?: () => void;
-  volumeOnClick?: () => void;
-  pressureOnClick?: () => void;
-  reactionOnClick?: (reaction_id: string) => void;
+  readonly gasmix: Gasmix;
+  readonly gasesOnClick?: (gas_id: string) => void;
+  readonly temperatureOnClick?: () => void;
+  readonly volumeOnClick?: () => void;
+  readonly pressureOnClick?: () => void;
+  readonly reactionOnClick?: (reaction_id: string) => void;
   // Whether we need to show the number of the reaction or not
-  detailedReactions?: boolean; 
+  readonly detailedReactions?: boolean;
 };
 
 export const GasmixParser = (props: GasmixParserProps, context) => {
@@ -104,12 +104,14 @@ export const GasmixParser = (props: GasmixParserProps, context) => {
           {reactions.length
             ? reactions.map((reaction) =>
               reactionOnClick ? (
+              // eslint-disable-next-line react/jsx-key
                 <Box mb="0.5em">
                   <Button
                     content={reaction[1]}
                     onClick={() => reactionOnClick(reaction[0])}
                   />
                 </Box>
+              // eslint-disable-next-line react/jsx-key
               ) : (<div>{reaction[1]}</div>)
             )
             : 'No reactions detected'}

@@ -45,14 +45,14 @@
 /turf/simulated/floor/holofloor/grass,
 /area/holodeck/source_picnicarea)
 "ao" = (
-/obj/structure/table/rack/holorack,
+/obj/structure/table/rack/holorack_legacy,
 /obj/item/clothing/under/dress/dress_saloon,
 /obj/item/clothing/head/pin/flower,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_theatre)
 "ap" = (
 /obj/landmark/costume,
-/obj/structure/table/rack/holorack,
+/obj/structure/table/rack/holorack_legacy,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_theatre)
 "aq" = (
@@ -159,7 +159,9 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_theatre)
 "aJ" = (
-/obj/machinery/door/window/holowindoor,
+/obj/machinery/door/window/holowindoor{
+	dir = 4
+	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_courtroom)
 "aK" = (
@@ -304,7 +306,8 @@
 /area/holodeck/source_courtroom)
 "bf" = (
 /obj/machinery/door/window/holowindoor{
-	name = "Red Team"
+	name = "Red Team";
+	dir = 4
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_emptycourt)
@@ -764,7 +767,8 @@
 "cB" = (
 /obj/machinery/door/window/holowindoor{
 	base_state = "right";
-	icon_state = "right"
+	icon_state = "right";
+	dir = 4
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_courtroom)
@@ -784,7 +788,8 @@
 /obj/machinery/door/window/holowindoor{
 	base_state = "right";
 	icon_state = "right";
-	name = "Green Team"
+	name = "Green Team";
+	dir = 4
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_emptycourt)
@@ -1251,7 +1256,8 @@
 /area/holodeck/source_meetinghall)
 "eg" = (
 /obj/machinery/door/window/holowindoor{
-	name = "Red Team"
+	name = "Red Team";
+	dir = 4
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_basketball)
@@ -1266,7 +1272,8 @@
 /area/holodeck/source_beach)
 "ej" = (
 /obj/machinery/door/window/holowindoor{
-	name = "Red Team"
+	name = "Red Team";
+	dir = 4
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_thunderdomecourt)
@@ -1874,7 +1881,8 @@
 /obj/machinery/door/window/holowindoor{
 	base_state = "right";
 	icon_state = "right";
-	name = "Green Team"
+	name = "Green Team";
+	dir = 4
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_basketball)
@@ -1893,7 +1901,8 @@
 /obj/machinery/door/window/holowindoor{
 	base_state = "right";
 	icon_state = "right";
-	name = "Green Team"
+	name = "Green Team";
+	dir = 4
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_thunderdomecourt)
@@ -3078,11 +3087,7 @@
 /turf/simulated/floor/holofloor/reinforced,
 /area/space)
 "jM" = (
-/obj/machinery/door/firedoor{
-	req_one_access = list(103)
-	},
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/specops/cockpit)
 "jN" = (
@@ -4354,15 +4359,16 @@
 /turf/simulated/floor/tiled,
 /area/centcom/simulated/terminal)
 "nl" = (
-/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
-	frequency = 1380;
-	id_tag = "specops_docker_pump"
-	},
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/turretid/lethal{
 	control_area = /area/shuttle/specops/general;
 	pixel_y = 32;
 	req_access = list(103)
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
+	frequency = 1380;
+	id_tag = "specops_docker_pump";
+	power_rating = 20000
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/specops/general)
@@ -5391,7 +5397,7 @@
 /obj/machinery/door/airlock/multi_tile/glass{
 	req_access = list(5)
 	},
-/obj/machinery/door/firedoor/multi_tile,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "qn" = (
@@ -7786,7 +7792,7 @@
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/centcom/specops/dock)
 "De" = (
 /obj/structure/table/reinforced,
@@ -7881,17 +7887,18 @@
 /turf/simulated/floor/tiled/white,
 /area/holodeck/source_chess)
 "DO" = (
-/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
-	dir = 1;
-	frequency = 1380;
-	id_tag = "specops_docker_pump"
-	},
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	frequency = 1380;
 	id_tag = "specops_docker";
 	pixel_x = -25
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
+	dir = 1;
+	frequency = 1380;
+	id_tag = "specops_docker_pump";
+	power_rating = 20000
+	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/specops/general)
 "DR" = (
@@ -7961,7 +7968,7 @@
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/centcom/specops/dock)
 "EC" = (
 /obj/machinery/vending/tool,
@@ -8674,11 +8681,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/firedoor{
-	req_one_access = list(103)
-	},
-/obj/structure/grille,
-/obj/structure/window/phoronreinforced/full,
+/obj/spawner/window/low_wall/borosillicate/full/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/specops/engine)
 "MJ" = (
@@ -8847,6 +8850,10 @@
 /obj/structure/table/reinforced,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
+"OM" = (
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled/white,
+/area/centcom/simulated/medical)
 "OY" = (
 /obj/structure/bed/chair/backed_grey,
 /turf/simulated/floor/reinforced,
@@ -8949,7 +8956,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/centcom/specops/dock)
 "Qs" = (
 /obj/structure/table/reinforced,
@@ -9081,7 +9088,7 @@
 /turf/unsimulated/floor/wood,
 /area/centcom/specops)
 "RY" = (
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/centcom/specops/dock)
 "Sc" = (
 /obj/structure/closet/crate/medical,
@@ -9210,7 +9217,7 @@
 	pixel_y = 28;
 	req_one_access = list(103)
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/centcom/specops/dock)
 "Tr" = (
 /obj/structure/table/rack,
@@ -9302,7 +9309,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/centcom/specops/dock)
 "Ug" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -21647,7 +21654,7 @@ nU
 pg
 nU
 nU
-nU
+OM
 qR
 nU
 nU
@@ -29608,8 +29615,8 @@ Bv
 ss
 Cw
 Cw
-Ay
 Cw
+Ay
 Cw
 Cw
 Cw

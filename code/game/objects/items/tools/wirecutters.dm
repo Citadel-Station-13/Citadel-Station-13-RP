@@ -14,9 +14,9 @@
 	throw_range = 9
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
-	materials = list(MAT_STEEL = 80)
+	materials_base = list(MAT_STEEL = 80)
 	attack_verb = list("pinched", "nipped")
-	hitsound = 'sound/items/wirecutter.ogg'
+	attack_sound = 'sound/items/wirecutter.ogg'
 	tool_sound = 'sound/items/wirecutter.ogg'
 	drop_sound = 'sound/items/drop/wirecutter.ogg'
 	pickup_sound = 'sound/items/pickup/wirecutter.ogg'
@@ -66,6 +66,18 @@
 	tool_speed = 0.75
 	random_color = FALSE
 
+/obj/item/tool/wirecutters/clockwork
+	name = "clockwork wirecutters"
+	desc = "An antiquated pair of wirecutters, fashioned out of extremely dense brass."
+	icon = 'icons/obj/clockwork.dmi'
+	icon_state = "cutters_clock"
+	tool_speed = 0.1
+	random_color = FALSE
+
+/obj/item/tool/wirecutters/clockwork/examine(mob/user, dist)
+	. = ..()
+	. += SPAN_NEZBERE("The blades are utterly dull and impotent when placed against flesh, yet cuts with an unreasonable, almost murderously sharp edge when set upon wires and metal sheets.")
+
 /datum/category_item/catalogue/anomalous/precursor_a/alien_wirecutters
 	name = "Precursor Alpha Object - Wire Seperator"
 	desc = "An object appearing to have a tool shape. It has two handles, and two \
@@ -107,7 +119,7 @@
 	catalogue_data = list(/datum/category_item/catalogue/anomalous/precursor_a/alien_wirecutters)
 	icon_state = "hybcutters"
 	w_class = ITEMSIZE_NORMAL
-	slowdown = 0.1
+	weight = ITEM_WEIGHT_HYBRID_TOOLS
 	origin_tech = list(TECH_MATERIAL = 3, TECH_ENGINEERING = 3, TECH_PHORON = 2)
 	attack_verb = list("pinched", "nipped", "warped", "blasted")
 	tool_sound = 'sound/effects/stealthoff.ogg'
@@ -121,7 +133,7 @@
 	icon_state = "jaws_cutter"
 	item_state = "jawsoflife"
 	origin_tech = list(TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
-	materials = list(MAT_METAL=150, MAT_SILVER=50)
+	materials_base = list(MAT_METAL=150, MAT_SILVER=50)
 	tool_sound = 'sound/items/jaws_cut.ogg'
 	damage_force = 15
 	tool_speed = 0.25
@@ -157,7 +169,7 @@
 	icon_state = "crystal_wirecutter"
 	item_state = "crystal_tool"
 	icon = 'icons/obj/crystal_tools.dmi'
-	materials = list(MATERIAL_CRYSTAL = 1250)
+	materials_base = list(MATERIAL_CRYSTAL = 1250)
 	tool_speed = 0.2
 
 /obj/item/tool/wirecutters/crystal/Initialize()

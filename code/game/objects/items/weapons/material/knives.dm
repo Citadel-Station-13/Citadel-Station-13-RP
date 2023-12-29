@@ -3,33 +3,31 @@
 	desc = "A basic metal blade concealed in a lightweight plasteel grip. Small enough when folded to fit in a pocket."
 	icon_state = "butterflyknife"
 	item_state = null
-	hitsound = null
-	var/active = 0
+	attack_sound = null
 	w_class = ITEMSIZE_SMALL
 	attack_verb = list("patted", "tapped")
-	force_divisor = 0.25 // 15 when wielded with hardness 60 (steel)
-	thrown_force_divisor = 0.25 // 5 when thrown with weight 20 (steel)
+	force_multiplier = 0.1
+	throw_force_multiplier = 1.5
 	drop_sound = 'sound/items/drop/knife.ogg'
 	pickup_sound = 'sound/items/pickup/knife.ogg'
+	var/active = FALSE
 
-/obj/item/material/butterfly/update_force()
+/obj/item/material/butterfly/proc/set_active(active)
+	src.active = active
 	if(active)
-		edge = 1
-		sharp = 1
-		..() //Updates damage_force.
-		throw_force = max(3,damage_force-3)
-		hitsound = 'sound/weapons/bladeslice.ogg'
+		damage_mode = DAMAGE_MODE_EDGE | DAMAGE_MODE_SHARP
+		attack_sound = 'sound/weapons/bladeslice.ogg'
+		force_multiplier = 1
 		icon_state += "_open"
 		w_class = ITEMSIZE_NORMAL
-		attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	else
-		damage_force = 3
-		edge = 0
-		sharp = 0
-		hitsound = initial(hitsound)
+		damage_mode = initial(damage_mode)
+		attack_sound = initial(attack_sound)
 		icon_state = initial(icon_state)
 		w_class = initial(w_class)
 		attack_verb = initial(attack_verb)
+		force_multiplier = initial(force_multiplier)
+	update_material_parts()
 
 /obj/item/material/butterfly/switchblade
 	name = "switchblade"
@@ -40,32 +38,30 @@
 	name = "gold-plated balisong"
 	desc = "An exquisite, gold-plated butterfly knife. The centerpiece of any aspiring knife collector's showcase."
 	icon_state = "butterflyknife_gold"
-	applies_material_colour = 0
+	material_color = 0
 
 /obj/item/material/butterfly/butterfly_wooden
 	name = "wood-handled butterfly knife"
 	desc = "A concealable butterlfly knife with an ornate, wooden handle. Requires far too much care to use more than once."
 	icon_state = "butterflyknife_wooden"
-	applies_material_colour = 0
+	material_color = 0
 
 /obj/item/material/butterfly/boxcutter
 	name = "box cutter"
 	desc = "A thin, inexpensive razor-blade knife designed to open cardboard boxes."
 	icon_state = "boxcutter"
-	force_divisor = 0.1 // 6 when wielded with hardness 60 (steel)
-	thrown_force_divisor = 0.2 // 4 when thrown with weight 20 (steel)
+	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_ULTRALIGHT
 
 /obj/item/material/butterfly/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return
-	active = !active
+	set_active(!active)
 	if(active)
 		to_chat(user, "<span class='notice'>You flip out \the [src].</span>")
 		playsound(user, 'sound/weapons/flipblade.ogg', 15, 1)
 	else
 		to_chat(user, "<span class='notice'>\The [src] can now be concealed.</span>")
-	update_force()
 	add_fingerprint(user)
 
 /*
@@ -76,10 +72,9 @@
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "knife"
 	desc = "A general purpose chef's knife. Glithari Exports filet knives, Centauri bread knives, all pale in comparison to NanoTrasen's very own Cookware line of cheap, affordable chef's knives."
-	sharp = 1
-	edge = 1
-	force_divisor = 0.15 // 9 when wielded with hardness 60 (steel)
-	materials = list(MAT_STEEL = 12000)
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
+	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_LIGHT
+	materials_base = list(MAT_STEEL = 12000)
 	origin_tech = list(TECH_MATERIAL = 1)
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
@@ -97,9 +92,10 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "tacknife"
 	item_state = "knife"
-	force_divisor = 0.20 //12 when hardness 60 (steel)
+	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_LIGHT
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	attack_verb = list("stabbed", "chopped", "cut")
-	applies_material_colour = 1
+	material_color = TRUE
 
 /obj/item/material/knife/tacknife/combatknife
 	name = "combat knife"
@@ -107,10 +103,10 @@
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "buckknife"
 	item_state = "knife"
-	force_divisor = 0.25 // 15 with hardness 60 (steel)
-	thrown_force_divisor = 1.75 // 20 with weight 20 (steel)
+	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_LIGHT
+	force_multiplier = 1.2
 	attack_verb = list("sliced", "stabbed", "chopped", "cut")
-	applies_material_colour = 1
+	material_color = TRUE
 
 /obj/item/material/knife/stiletto
 	name = "stiletto knife"
@@ -118,14 +114,14 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "stiletto"
 	item_state = "knife"
-	edge = 0 //Shouldn't be able to remove limbs
-	force_divisor = 0.1 //6 when hardness 60 (steel)
+	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_ULTRALIGHT
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_PIERCE
 	attack_verb = list("stabbed", "shanked", "punctured", "impaled", "skewered")
-	applies_material_colour = 1
+	material_color = TRUE
 
 /obj/item/material/knife/tacknife/combatknife/bone
 	icon_state = "boneknife"
-	default_material = "bone"
+	material_parts = /datum/material/bone
 
 // Identical to the tactical knife but nowhere near as stabby.
 // Kind of like the toy esword compared to the real thing.
@@ -135,8 +131,7 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "tacknife"
 	item_state = "knife"
-	force_divisor = 0.15
-	applies_material_colour = 0
+	material_color = 0
 
 /obj/item/material/knife/hook
 	name = "meat hook"
@@ -148,34 +143,33 @@
 	desc = "The unearthly energies that once powered this blade are now dormant."
 	icon = 'icons/obj/wizard.dmi'
 	icon_state = "render"
-	applies_material_colour = 0
+	material_color = 0
 
 /obj/item/material/knife/butch
 	name = "butcher's cleaver"
 	icon_state = "butch"
 	desc = "Another fine product from NanoTrasen's Cookware line. The heavy head and grooved grip makes chopping meat a breeze."
-	force_divisor = 0.25 // 15 when wielded with hardness 60 (steel)
+	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_HEAVY
 	attack_verb = list("cleaved", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	force_multiplier = 1.15
 
 /obj/item/material/knife/machete
 	name = "machete"
 	desc = "A sharp machete often found in survival kits."
 	icon_state = "machete"
-	force_divisor = 0.3 // 18 when hardness 60 (steel)
 	attack_verb = list("slashed", "chopped", "gouged", "ripped", "cut")
 	can_cleave = TRUE //Now hatchets inherit from the machete, and thus knives. Tables turned.
 	slot_flags = SLOT_BELT | SLOT_HOLSTER
-	default_material = "plasteel"
+	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_HEAVY
+	material_parts = /datum/material/plasteel
+	force_multiplier = 1.3
 
 /obj/item/material/knife/machete/armblade
 	name = "arm-mounted blade"
 	desc = "A long, machete-like blade, mounted to your arm. Courtesy of Hephaestus, this machete is ideal for parrying blows."
 	icon_state = "armblade"
 	item_state = "armblade"
-	force_divisor = 0.5 // long and arm-mounted but you gotta use a suit for it
-	slot_flags = null
-	unbreakable = TRUE
-	can_dull = FALSE
+	slot_flags = NONE
 
 /obj/item/material/knife/machete/armblade/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 	if(default_parry_check(user, attacker, damage_source) && prob(33))
@@ -185,7 +179,6 @@
 	return FALSE
 
 /obj/item/material/knife/machete/armblade/hardsuit
-	default_material = MAT_STEEL
 	var/obj/item/hardsuit_module/armblade/storing_module
 
 /obj/item/material/knife/machete/armblade/hardsuit/dropped(mob/user, flags, atom/newLoc)
@@ -208,15 +201,15 @@
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "survivalknife"
 	item_state = "knife"
-	applies_material_colour = FALSE
-	default_material = "plasteel"
+	material_color = FALSE
+	material_parts = /datum/material/plasteel
 	tool_speed = 2 // Use a real axe if you want to chop logs.
 
 /obj/item/material/knife/tacknife/survival/bone
 	name = "primitive survival knife"
 	desc = "A hunting grade survival knife with a sleek leather grip."
-	applies_material_colour =TRUE
-	default_material = "bone"
+	material_parts = /datum/material/bone
+
 /obj/item/material/knife/machete/deluxe
 	name = "deluxe machete"
 	desc = "A fine example of a machete, with a polished blade, wooden handle and a leather cord loop."
@@ -226,58 +219,58 @@
 
 // Knife Material Variants
 /obj/item/material/butterfly/plasteel
-	default_material = "plasteel"
+	material_parts = /datum/material/plasteel
 
 /obj/item/material/butterfly/durasteel
-	default_material = "durasteel"
+	material_parts = /datum/material/durasteel
 
 /obj/item/material/butterfly/switchblade/plasteel
-	default_material = "plasteel"
+	material_parts = /datum/material/plasteel
 
 /obj/item/material/butterfly/switchblade/durasteel
-	default_material = "durasteel"
+	material_parts = /datum/material/durasteel
 
 /obj/item/material/butterfly/boxcutter/plasteel
-	default_material = "plasteel"
+	material_parts = /datum/material/plasteel
 
 /obj/item/material/butterfly/boxcutter/durasteel
-	default_material = "durasteel"
+	material_parts = /datum/material/durasteel
 
 /obj/item/material/knife/tacknife/plasteel
-	default_material = "plasteel"
+	material_parts = /datum/material/plasteel
 
 /obj/item/material/knife/tacknife/durasteel
-	default_material = "durasteel"
+	material_parts = /datum/material/durasteel
 
 /obj/item/material/knife/tacknife/combatknife/plasteel
-	default_material = "plasteel"
+	material_parts = /datum/material/plasteel
 
 /obj/item/material/knife/tacknife/combatknife/durasteel
-	default_material = "durasteel"
+	material_parts = /datum/material/durasteel
 
 /obj/item/material/knife/hook/plasteel
-	default_material = "plasteel"
+	material_parts = /datum/material/plasteel
 
 /obj/item/material/knife/hook/durasteel
-	default_material = "durasteel"
+	material_parts = /datum/material/durasteel
 
 /obj/item/material/knife/ritual/plasteel
-	default_material = "plasteel"
+	material_parts = /datum/material/plasteel
 
 /obj/item/material/knife/ritual/durasteel
-	default_material = "durasteel"
+	material_parts = /datum/material/durasteel
 
 /obj/item/material/knife/butch/plasteel
-	default_material = "plasteel"
+	material_parts = /datum/material/plasteel
 
 /obj/item/material/knife/butch/durasteel
-	default_material = "durasteel"
+	material_parts = /datum/material/durasteel
 
 /obj/item/material/knife/machete/durasteel
-	default_material = "durasteel"
+	material_parts = /datum/material/durasteel
 
 /obj/item/material/knife/machete/deluxe/durasteel
-	default_material = "durasteel"
+	material_parts = /datum/material/durasteel
 
 /obj/item/material/knife/tacknife/survival/durasteel
-	default_material = "durasteel"
+	material_parts = /datum/material/durasteel

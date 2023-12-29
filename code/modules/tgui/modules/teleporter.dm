@@ -6,7 +6,7 @@
 	var/obj/machinery/tele_projector/station = null
 	var/obj/machinery/tele_pad/hub = null
 
-/datum/tgui_module_old/teleport_control/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/datum/tgui_module_old/teleport_control/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	data["locked_name"] = locked_name || "No Target"
@@ -17,7 +17,7 @@
 
 	return data
 
-/datum/tgui_module_old/teleport_control/ui_act(action, params, datum/tgui/ui, datum/ui_state/state)
+/datum/tgui_module_old/teleport_control/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

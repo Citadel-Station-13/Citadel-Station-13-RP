@@ -220,9 +220,9 @@
 		else
 			to_chat(user, "<span class='notice'>This cell is not fitted for [src].</span>")
 
-	if(istype(W, /obj/item/ore/bluespace_crystal))
+	if(istype(W, /obj/item/bluespace_crystal))
 		if(!bcell)
-			var/obj/item/ore/bluespace_crystal/BSC = W
+			var/obj/item/bluespace_crystal/BSC = W
 			var/obj/item/melee/baton/cattleprod/teleprod/S = new /obj/item/melee/baton/cattleprod/teleprod
 			qdel(src)
 			qdel(BSC)

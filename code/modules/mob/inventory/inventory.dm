@@ -203,7 +203,8 @@
 
 	if(!(flags & INV_OP_FORCE) && HAS_TRAIT(I, TRAIT_ITEM_NODROP))
 		if(!(flags & INV_OP_SUPPRESS_WARNING))
-			to_chat(user, SPAN_WARNING("[I] is stuck to your hand!"))
+			var/datum/inventory_slot_meta/slot_meta = resolve_inventory_slot_meta(slot)
+			to_chat(user, SPAN_WARNING("[I] is stubbornly stuck [slot_meta.display_preposition] your [slot_meta.display_name]!"))
 		return FALSE
 
 	var/blocked_by
@@ -390,7 +391,7 @@
 		affected = list(affected)
 	for(var/obj/item/I as anything in affected)
 		if(!inventory_slot_bodypart_check(I, I.worn_slot, null, INV_OP_SILENT))
-			drop_item_to_ground(I)
+			drop_item_to_ground(I, INV_OP_SILENT)
 
 /**
  * checks for slot conflict

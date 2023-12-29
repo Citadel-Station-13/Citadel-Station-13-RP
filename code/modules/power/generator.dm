@@ -202,7 +202,7 @@ GLOBAL_LIST_EMPTY(all_turbines)
 		ui = new(user, src, "TEGenerator", name)
 		ui.open()
 
-/obj/machinery/power/generator/ui_data(mob/user)
+/obj/machinery/power/generator/ui_data(mob/user, datum/tgui/ui)
 	// this is the data which will be sent to the ui
 	var/vertical = 0
 	if (dir == NORTH || dir == SOUTH)

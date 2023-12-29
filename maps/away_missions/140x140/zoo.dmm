@@ -2351,22 +2351,18 @@
 "hb" = (
 /obj/structure/window/phoronreinforced{
 	dir = 1;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 8;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced{
 	dir = 4;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /turf/simulated/floor/plating,
@@ -2417,16 +2413,13 @@
 "hh" = (
 /obj/structure/window/phoronreinforced{
 	dir = 1;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 8;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/grille,
@@ -2435,11 +2428,9 @@
 "hi" = (
 /obj/structure/window/phoronreinforced{
 	dir = 1;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/grille,
@@ -2448,16 +2439,13 @@
 "hj" = (
 /obj/structure/window/phoronreinforced{
 	dir = 1;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 4;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/grille,
@@ -2480,17 +2468,14 @@
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced{
 	dir = 4;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 1;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 8;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /turf/simulated/floor/plating,
@@ -2584,12 +2569,10 @@
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced{
 	dir = 4;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 8;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /turf/simulated/floor/plating,
@@ -2628,17 +2611,14 @@
 "hI" = (
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced{
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 4;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 8;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /turf/simulated/floor/plating,
@@ -3272,12 +3252,10 @@
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced{
 	dir = 1;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 8;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /turf/simulated/floor/plating,
@@ -3286,16 +3264,13 @@
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced{
 	dir = 4;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 1;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /turf/simulated/floor/plating,
@@ -3310,16 +3285,13 @@
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced{
 	dir = 8;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 1;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /turf/simulated/floor/plating,
@@ -3328,12 +3300,10 @@
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced{
 	dir = 1;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 4;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /turf/simulated/floor/plating,
@@ -3348,11 +3318,9 @@
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced{
 	dir = 4;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /turf/simulated/floor/plating,
@@ -3361,11 +3329,9 @@
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced{
 	dir = 8;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /turf/simulated/floor/plating,
@@ -3374,16 +3340,13 @@
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced{
 	dir = 4;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 8;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /turf/simulated/floor/plating,
@@ -3392,16 +3355,13 @@
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced{
 	dir = 8;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 4;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /turf/simulated/floor/plating,
@@ -3439,8 +3399,7 @@
 /area/awaymission/zoo)
 "jq" = (
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 1
@@ -3466,8 +3425,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 4;
-	health = 1e+006
+	dir = 4
 	},
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "dgrass0"
@@ -3743,8 +3701,7 @@
 /area/awaymission/zoo)
 "ki" = (
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "dgrass0"
@@ -3752,8 +3709,7 @@
 /area/awaymission/zoo)
 "kj" = (
 /obj/structure/window/reinforced{
-	dir = 4;
-	health = 1e+006
+	dir = 4
 	},
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "dgrass0"
@@ -4371,8 +4327,7 @@
 /area/awaymission/zoo)
 "mk" = (
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced,
 /turf/simulated/floor/holofloor/beach/sand{
@@ -4381,8 +4336,7 @@
 /area/awaymission/zoo)
 "ml" = (
 /obj/structure/window/reinforced{
-	dir = 4;
-	health = 1e+006
+	dir = 4
 	},
 /obj/structure/window/reinforced,
 /turf/simulated/floor/holofloor/beach/sand{
@@ -4420,17 +4374,14 @@
 "mr" = (
 /obj/structure/window/phoronreinforced{
 	dir = 8;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 4;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 1;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/grille,
@@ -4442,12 +4393,10 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
-	dir = 4;
-	health = 1e+006
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
@@ -4469,12 +4418,10 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 4;
-	health = 1e+006
+	dir = 4
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
@@ -4517,17 +4464,14 @@
 "my" = (
 /obj/structure/window/phoronreinforced{
 	dir = 8;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 1;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 4;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/grille,
@@ -4536,11 +4480,9 @@
 "mz" = (
 /obj/structure/window/phoronreinforced{
 	dir = 8;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/grille,
@@ -4549,12 +4491,10 @@
 "mA" = (
 /obj/structure/window/phoronreinforced{
 	dir = 4;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 1;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/grille,
@@ -4566,8 +4506,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
@@ -4575,8 +4514,7 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 4;
-	health = 1e+006
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
@@ -4587,8 +4525,7 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
@@ -4598,8 +4535,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 4;
-	health = 1e+006
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
@@ -4628,12 +4564,10 @@
 "mL" = (
 /obj/structure/window/phoronreinforced{
 	dir = 8;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 1;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/grille,
@@ -4642,11 +4576,9 @@
 "mM" = (
 /obj/structure/window/phoronreinforced{
 	dir = 4;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/grille,
@@ -4655,16 +4587,13 @@
 "mN" = (
 /obj/structure/window/phoronreinforced{
 	dir = 4;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 1;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/grille,
@@ -4677,8 +4606,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
@@ -4689,8 +4617,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 4;
-	health = 1e+006
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
@@ -4729,16 +4656,13 @@
 "mW" = (
 /obj/structure/window/phoronreinforced{
 	dir = 8;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 1;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/grille,
@@ -5977,8 +5901,7 @@
 "qx" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 1
@@ -5995,12 +5918,10 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 4;
-	health = 1e+006
+	dir = 4
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
@@ -8287,12 +8208,10 @@
 "wj" = (
 /obj/machinery/door/window/brigdoor/southleft,
 /obj/structure/window/reinforced{
-	dir = 1;
-	health = 1e+006
+	dir = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/table/rack,
 /obj/random/weapon,
@@ -8303,8 +8222,7 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced{
-	dir = 1;
-	health = 1e+006
+	dir = 1
 	},
 /obj/structure/table/rack,
 /obj/machinery/door/window/brigdoor/southright,
@@ -8322,8 +8240,7 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced{
-	dir = 1;
-	health = 1e+006
+	dir = 1
 	},
 /obj/structure/table/rack,
 /obj/random/weapon,
@@ -8574,12 +8491,9 @@
 /area/awaymission/zoo)
 "xf" = (
 /obj/machinery/door/window/brigdoor/northleft,
+/obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	health = 1e+006
-	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/table/rack,
 /obj/random/ammo_all,
@@ -8590,21 +8504,16 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/structure/window/reinforced{
-	health = 1e+006
-	},
+/obj/structure/window/reinforced,
 /obj/structure/table/rack,
 /obj/random/ammo_all,
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/zoo)
 "xh" = (
 /obj/machinery/door/window/brigdoor/northleft,
+/obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	health = 1e+006
-	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/table/rack,
 /obj/random/weapon,
@@ -8615,9 +8524,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/structure/window/reinforced{
-	health = 1e+006
-	},
+/obj/structure/window/reinforced,
 /obj/structure/table/rack,
 /obj/random/weapon,
 /turf/simulated/floor/tiled/dark,

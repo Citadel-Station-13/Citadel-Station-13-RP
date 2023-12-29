@@ -24,8 +24,8 @@ const IDCARD_BLANK = {
 };
 
 export interface IDSlotProps {
-  card: IDCard;
-  onClick: (e) => void;
+  readonly card: IDCard;
+  readonly onClick: (e) => void;
 }
 
 export const IDSlot = (props: IDSlotProps, context) => {

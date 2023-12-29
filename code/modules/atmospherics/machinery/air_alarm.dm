@@ -523,7 +523,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 	ui_interact(user)
 	wires.Interact(user)
 
-/obj/machinery/air_alarm/ui_status(mob/user)
+/obj/machinery/air_alarm/ui_status(mob/user, datum/ui_state/state)
 	if(isAI(user) && aidisabled)
 		to_chat(user, "AI control has been disabled.")
 	else if(!shorted)
@@ -538,7 +538,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 			ui.set_state(state)
 		ui.open()
 
-/obj/machinery/air_alarm/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/air_alarm/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	var/datum/gas_mixture/environment = loc.return_air()
 	.["environment"] = environment.tgui_analyzer_scan(GAS_GROUP_REAGENT | GAS_GROUP_UNKNOWN)
@@ -572,7 +572,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 	. += data
 	//! end
 
-/obj/machinery/air_alarm/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/air_alarm/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["gasContext"] = global.gas_data.tgui_gas_context()
 	.["gasTLV"] = tlv_ids
@@ -588,7 +588,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 	data["temperatureTLV"] = tlv_temperature
 	push_ui_data(data = data)
 
-/obj/machinery/air_alarm/ui_act(action, params, datum/tgui/ui)
+/obj/machinery/air_alarm/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return
@@ -738,7 +738,8 @@ GLOBAL_LIST_EMPTY(air_alarms)
 		return
 
 	if(istype(W, /obj/item/card/id) || istype(W, /obj/item/pda))// trying to unlock the interface with an ID card
-		togglelock()
+		togglelock(user)
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
 
 /obj/machinery/air_alarm/verb/togglelock(mob/user as mob)
@@ -755,7 +756,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 
 /obj/machinery/air_alarm/AltClick()
 	..()
-	togglelock()
+	togglelock(usr)
 
 /obj/machinery/air_alarm/power_change()
 	..()

@@ -27,7 +27,7 @@
 		ui = new(user, src, "PipeDispenser", name)
 		ui.open()
 
-/obj/machinery/pipedispenser/ui_data(mob/user)
+/obj/machinery/pipedispenser/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list(
 		"disposals" = disposals,
 		"p_layer" = p_layer,
@@ -59,7 +59,7 @@
 
 	return data
 
-/obj/machinery/pipedispenser/ui_act(action, params)
+/obj/machinery/pipedispenser/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

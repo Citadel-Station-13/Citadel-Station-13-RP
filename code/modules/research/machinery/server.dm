@@ -2,8 +2,8 @@
 	name = "R&D Server"
 	icon = 'icons/obj/machines/research.dmi'
 	icon_state = "server"
+
 	var/datum/research/files
-	var/health = 100
 	///List of R&D consoles with upload to server access.
 	var/list/id_with_upload = list()
 	///List of R&D consoles with download from server access.
@@ -15,6 +15,7 @@
 	var/produces_heat = TRUE
 	idle_power_usage = 800
 	var/delay = 10
+	var/health = 100
 	req_access = list(ACCESS_SCIENCE_RD) //Only the R&D can change server settings.
 	circuit = /obj/item/circuitboard/rdserver
 
@@ -155,7 +156,7 @@
 	var/list/consoles = list()
 	var/badmin = 0
 
-/obj/machinery/computer/rdservercontrol/ui_status(mob/user)
+/obj/machinery/computer/rdservercontrol/ui_status(mob/user, datum/ui_state/state)
 	. = ..()
 	if(!allowed(user) && !emagged)
 		. = min(., UI_UPDATE)
@@ -166,7 +167,7 @@
 		ui = new(user, src, "ResearchServerController", name)
 		ui.open()
 
-/obj/machinery/computer/rdservercontrol/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/computer/rdservercontrol/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	data["badmin"] = badmin

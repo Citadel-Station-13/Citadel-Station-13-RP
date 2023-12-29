@@ -2,17 +2,23 @@
 	name = "plastic"
 	id = "plastic"
 	stack_type = /obj/item/stack/material/plastic
-	flags = MATERIAL_BRITTLE
 	icon_base = 'icons/turf/walls/solid_wall.dmi'
 	icon_reinf = 'icons/turf/walls/solid_wall_reinforced.dmi'
 	icon_colour = "#CCCCCC"
-	hardness = 10
-	weight = 12
-	protectiveness = 5 // 20%
-	conductive = 0
-	conductivity = 2 // For the sake of material armor diversity, we're gonna pretend this plastic is a good insulator.
 	melting_point = T0C+371 //assuming heat resistant plastic
 	stack_origin_tech = list(TECH_MATERIAL = 3)
+
+	relative_integrity = 0.65
+	weight_multiplier = 0.75
+	density = 8 * 1
+	relative_conductivity = 0.5
+	relative_permeability = 0
+	relative_reactivity = 0.25
+	hardness = MATERIAL_RESISTANCE_LOW
+	toughness = MATERIAL_RESISTANCE_LOW
+	refraction = MATERIAL_RESISTANCE_NONE
+	absorption = MATERIAL_RESISTANCE_LOW
+	nullification = MATERIAL_RESISTANCE_NONE
 
 /datum/material/plastic/generate_recipes()
 	. = ..()

@@ -2,17 +2,13 @@
 	id = MAT_GLASS
 	name = "glass"
 	stack_type = /obj/item/stack/material/glass
-	flags = MATERIAL_BRITTLE
 	icon_colour = "#00E1FF"
 	opacity = 0.3
-	integrity = 100
+	relative_integrity = 0.25
 	shard_type = SHARD_SHARD
 	tableslam_noise = 'sound/effects/Glasshit.ogg'
-	hardness = 30
-	weight = 15
-	protectiveness = 0 // 0%
-	conductive = 0
-	conductivity = 1 // Glass shards don't conduct.
+	// glass doesn't conduct
+	relative_conductivity = 0
 	door_icon_base = "stone"
 	destruction_desc = "shatters"
 	window_options = list("One Direction" = 1, "Full Window" = 2, "Windoor" = 2)
@@ -22,6 +18,17 @@
 	table_icon_base = "glass"
 	table_reinf_icon_base = "rglass"
 	tgui_icon_key = "glass"
+
+	relative_integrity = 0.75
+	relative_reactivity = 0
+	relative_permeability = 0
+	hardness = MATERIAL_RESISTANCE_HIGH
+	toughness = MATERIAL_RESISTANCE_VERY_VULNERABLE
+	refraction = MATERIAL_RESISTANCE_NONE
+	absorption = MATERIAL_RESISTANCE_NONE
+	nullification = MATERIAL_RESISTANCE_NONE
+	density = 8 * 1
+	relative_conductivity = 0
 
 /datum/material/glass/build_windows(var/mob/living/user, var/obj/item/stack/used_stack)
 
@@ -97,21 +104,18 @@
 	return 1
 
 /datum/material/glass/proc/is_reinforced()
-	return (hardness > 35) //todo
+	return FALSE
 
 /datum/material/glass/reinforced
 	id = "glass_reinf"
 	name = "rglass"
 	display_name = "reinforced glass"
 	stack_type = /obj/item/stack/material/glass/reinforced
-	flags = MATERIAL_BRITTLE
 	icon_colour = "#00E1FF"
-	opacity = 0.3
-	integrity = 100
+	opacity = 0.
+	relative_integrity = 0.5
 	shard_type = SHARD_SHARD
 	tableslam_noise = 'sound/effects/Glasshit.ogg'
-	hardness = 40
-	weight = 30
 	stack_origin_tech = list(TECH_MATERIAL = 2)
 	composite_material = list(MAT_STEEL = SHEET_MATERIAL_AMOUNT / 2, MAT_GLASS = SHEET_MATERIAL_AMOUNT)
 	window_options = list("One Direction" = 1, "Full Window" = 2, "Windoor" = 2)
@@ -121,13 +125,23 @@
 	rod_product = null
 	tgui_icon_key = "rglass"
 
+	relative_integrity = 1
+	hardness = MATERIAL_RESISTANCE_HIGH
+	toughness = MATERIAL_RESISTANCE_VULNERABLE
+	refraction = MATERIAL_RESISTANCE_NONE
+	absorption = MATERIAL_RESISTANCE_NONE
+	nullification = MATERIAL_RESISTANCE_NONE
+	density = 8 * 1.15
+
+/datum/material/glass/reinforced/is_reinforced()
+	return TRUE
+
 /datum/material/glass/phoron
 	id = "glass_boro"
 	name = "borosilicate glass"
 	display_name = "borosilicate glass"
 	stack_type = /obj/item/stack/material/glass/phoronglass
-	flags = MATERIAL_BRITTLE
-	integrity = 100
+	relative_integrity = 1
 	icon_colour = "#FC2BC5"
 	stack_origin_tech = list(TECH_MATERIAL = 4)
 	window_options = list("One Direction" = 1, "Full Window" = 2)
@@ -137,19 +151,37 @@
 	rod_product = /obj/item/stack/material/glass/phoronrglass
 	tgui_icon_key = "pglass"
 
+	relative_integrity = 1.25
+	hardness = MATERIAL_RESISTANCE_HIGH
+	toughness = MATERIAL_RESISTANCE_MODERATE
+	refraction = MATERIAL_RESISTANCE_LOW
+	absorption = MATERIAL_RESISTANCE_LOW
+	nullification = MATERIAL_RESISTANCE_NONE
+	density = 8 * 1.3
+
 /datum/material/glass/phoron/reinforced
 	id = "glass_boro_reinf"
 	name = "reinforced borosilicate glass"
 	display_name = "reinforced borosilicate glass"
 	stack_type = /obj/item/stack/material/glass/phoronrglass
 	stack_origin_tech = list(TECH_MATERIAL = 5)
+	relative_integrity = 1.25
 	composite_material = list() //todo
 	window_options = list("One Direction" = 1, "Full Window" = 2)
 	created_window = /obj/structure/window/phoronreinforced
 	created_fulltile_window = /obj/structure/window/phoronreinforced/full
-	hardness = 40
-	weight = 30
 	stack_origin_tech = list(TECH_MATERIAL = 2)
 	composite_material = list() //todo
 	rod_product = null
 	tgui_icon_key = "prglass"
+
+	relative_integrity = 1.5
+	hardness = MATERIAL_RESISTANCE_HIGH
+	toughness = MATERIAL_RESISTANCE_HIGH
+	refraction = MATERIAL_RESISTANCE_LOW
+	absorption = MATERIAL_RESISTANCE_HIGH
+	nullification = MATERIAL_RESISTANCE_NONE
+	density = 8 * 1.6
+
+/datum/material/glass/phoron/reinforced/is_reinforced()
+	return TRUE

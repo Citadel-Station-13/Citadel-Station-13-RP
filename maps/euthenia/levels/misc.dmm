@@ -378,7 +378,7 @@
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_courtroom)
 "iw" = (
-/obj/structure/table/rack/holorack,
+/obj/structure/table/rack/holorack_legacy,
 /obj/item/clothing/under/dress/dress_saloon,
 /obj/item/clothing/head/pin/flower,
 /turf/simulated/floor/holofloor/tiled/dark,
@@ -1439,7 +1439,7 @@
 /area/holodeck/source_boxingcourt)
 "JH" = (
 /obj/landmark/costume,
-/obj/structure/table/rack/holorack,
+/obj/structure/table/rack/holorack_legacy,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_theatre)
 "JS" = (

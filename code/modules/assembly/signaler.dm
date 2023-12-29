@@ -4,7 +4,7 @@
 	icon_state = "signaller"
 	item_state = "signaler"
 	origin_tech = list(TECH_MAGNET = 1)
-	materials = list(MAT_STEEL = 1000, MAT_GLASS = 200)
+	materials_base = list(MAT_STEEL = 1000, MAT_GLASS = 200)
 	wires = WIRE_RECEIVE | WIRE_PULSE | WIRE_RADIO_PULSE | WIRE_RADIO_RECEIVE
 
 	secured = TRUE
@@ -42,7 +42,7 @@
 		ui = new(user, src, "Signaler", name)
 		ui.open()
 
-/obj/item/assembly/signaler/ui_data(mob/user)
+/obj/item/assembly/signaler/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 	data["frequency"] = frequency
 	data["code"] = code
@@ -50,7 +50,7 @@
 	data["maxFrequency"] = RADIO_HIGH_FREQ
 	return data
 
-/obj/item/assembly/signaler/ui_act(action, params)
+/obj/item/assembly/signaler/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

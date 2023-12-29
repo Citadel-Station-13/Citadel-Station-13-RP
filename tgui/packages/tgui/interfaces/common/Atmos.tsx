@@ -88,7 +88,7 @@ export interface AtmosAnalyzerResults {
 }
 
 interface AtmosAnalysisProps extends SectionProps {
-  results: AtmosAnalyzerResults;
+  readonly results: AtmosAnalyzerResults;
 }
 
 export const AtmosAnalysis = (props: AtmosAnalysisProps) => {
@@ -121,11 +121,11 @@ export const AtmosAnalysis = (props: AtmosAnalysisProps) => {
 //* Filtering
 
 interface AtmosFilterListProps extends SectionProps {
-  gasContext: GasContext;
-  selectedGroups: AtmosGasGroups;
-  selectedIds: AtmosGasIDs;
-  selectGroup?: (group: AtmosGasGroupFlags, filter: boolean) => void;
-  selectId?: (id: AtmosGasID, filter: boolean) => void;
+  readonly gasContext: GasContext;
+  readonly selectedGroups: AtmosGasGroups;
+  readonly selectedIds: AtmosGasIDs;
+  readonly selectGroup?: (group: AtmosGasGroupFlags, filter: boolean) => void;
+  readonly selectId?: (id: AtmosGasID, filter: boolean) => void;
 }
 
 export const AtmosFilterList = (props: AtmosFilterListProps) => {
@@ -184,9 +184,9 @@ export interface AtmosTank {
 }
 
 interface AtmosTankSlotProps extends SectionProps {
-  ejectAct?: () => void;
-  canEject?: boolean;
-  tank: AtmosTank | null;
+  readonly ejectAct?: () => void;
+  readonly canEject?: boolean;
+  readonly tank: AtmosTank | null;
 }
 
 export const AtmosTankSlot = (props: AtmosTankSlotProps, context) => {

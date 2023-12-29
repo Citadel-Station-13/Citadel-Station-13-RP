@@ -8,7 +8,7 @@
 	icon_state = "bullet"
 	density = FALSE
 	anchored = TRUE
-	unacidable = TRUE
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE | INTEGRITY_ACIDPROOF | INTEGRITY_FIREPROOF | INTEGRITY_LAVAPROOF
 	pass_flags = ATOM_PASS_TABLE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	depth_level = INFINITY // nothing should be passing over us from depth
@@ -155,7 +155,6 @@
 
 	var/temporary_unstoppable_movement = FALSE
 	var/no_attack_log = FALSE
-	var/hitsound
 
 /obj/projectile/proc/Range()
 	range--
@@ -541,6 +540,8 @@
 	if(target.density)		//This thing blocks projectiles, hit it regardless of layer/mob stuns/etc.
 		return TRUE
 	if(!isliving(target))
+		if(direct_target)
+			return TRUE
 		if(target.layer < PROJECTILE_HIT_THRESHOLD_LAYER)
 			return FALSE
 	else
@@ -801,3 +802,18 @@
  */
 /obj/projectile/proc/get_final_damage(atom/target)
 	return run_damage_vulnerability(target)
+
+//? Targeting
+
+/**
+ * Checks if something is a valid target when directly clicked.
+ */
+/obj/projectile/proc/is_valid_target(atom/target)
+	if(isobj(target))
+		var/obj/O = target
+		return O.obj_flags & OBJ_RANGE_TARGETABLE
+	else if(isliving(target))
+		return TRUE
+	else if(isturf(target))
+		return target.density
+	return FALSE

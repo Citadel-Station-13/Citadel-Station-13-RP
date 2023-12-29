@@ -64,6 +64,71 @@
 	)
 	*/
 
+/obj/item/fish/bass
+	name = "bass"
+	desc = "A common ray-finned fish originally native to Earth. Although frequently eaten, bass were also popular for sport fishing."
+	//description_fluff = "As with most native Earth species, the common bass went extinct as a consequence of the Final War. However, as with many other surviving Terran species, the bass has survived thanks to genetic blueprints, vaulted biologial material, and the exportation of living samples to Mars and Luna prior to the collapse. The bass continues to see usage as a livestock animal, and may even be introduced into the local population of planetary colonies with sufficiently converted freshwater lakes."
+	icon_state = "bass"
+	stable_population = 3
+	average_size = 40
+	average_weight = 5000
+	favorite_bait = list(
+		/obj/item/reagent_containers/food/snacks/bait/worm,
+	)
+
+/obj/item/fish/bass/glitter
+	name = "glitter bass"
+	desc = "An uncommon genetic modification of the common bass. Its darkly colored scales belie the iridescent way its body glimmers when exposed to sunlight."
+	icon_state = "sifbass"
+
+/obj/item/fish/trout
+	name = "trout"
+	desc = "A common ray-finned fish originally native to Earth. Their oily meat made them a staple of predatory wildlife and humans alike."
+	//description_fluff = ""
+	icon_state = "trout"
+	stable_population = 3
+	average_size = 50
+	average_weight = 1300
+
+/obj/item/fish/salmon
+	name = "salmon"
+	desc = "These fish were heavily farmed on Old Earth. To this day, salmon remain the most farmed fish in the galaxy."
+	//description_fluff = ""
+	icon_state = "salmon"
+	stable_population = 3
+	average_size = 60
+	average_weight = 4500
+
+/obj/item/fish/perch
+	name = "perch"
+	desc = "These fish are small and powerful. Popularly fished for sport due to their tenacity, perch were also considered appetizing."
+	//description_fluff = ""
+	icon_state = "perch"
+	stable_population = 3
+	average_size = 20
+	average_weight = 5000
+	fish_ai_type = FISH_AI_ZIPPY
+
+/obj/item/fish/pike
+	name = "pike"
+	desc = "An aggressive fish known to be so vicious that it will engage in cannibalism. Considered poor foodstock, pike were almost exclusively a target of sport fishing."
+	//description_fluff = ""
+	icon_state = "pike"
+	stable_population = 3
+	average_size = 40
+	average_weight = 900
+	fishing_traits = list(/datum/fishing_trait/carnivore)
+
+/obj/item/fish/koi
+	name = "koi"
+	desc = "A fish originally native to Asia. Due to its unique coloration it has remained a popular choice for decorative ponds and large-scale aquariums."
+	description_fluff = "But they told me he swears, tryin' ta talk to me. Coy koi."
+	icon_state = "koi"
+	random_case_rarity = FISH_RARITY_VERY_RARE
+	stable_population = 3
+	average_size = 35
+	average_weight = 5400
+
 // Saltwater fish below
 
 /obj/item/fish/clownfish
@@ -145,6 +210,78 @@
 	stable_population = 3
 
 	fishing_traits = list(/datum/fishing_trait/nocturnal)
+
+/obj/item/fish/murkin
+	name = "murkfish"
+	desc = "This alien fish bears a passing resemblance to the Terran perch. Known for its poor taste and enlarged dorsal fin, the murkfish has little value to farmers or sport fishers."
+	//description_fluff = ""
+	icon_state = "murkin"
+	fillet_type = /obj/item/reagent_containers/food/snacks/carpmeat/fish/murkfish
+	required_fluid_type = AQUARIUM_FLUID_SALTWATER
+	stable_population = 3
+	average_size = 30
+	average_weight = 2000
+
+/obj/item/fish/javelin
+	name = "javelin"
+	desc = "This carnivorous fish, native to Old Earth, is incredibly tenacious, and was even known to feed on octopi. It is not considered especially worthy in terms of meat or sport."
+	//description_fluff = ""
+	icon_state = "javelin"
+	required_fluid_type = AQUARIUM_FLUID_SALTWATER
+	stable_population = 3
+	average_size = 30
+	average_weight = 2500
+	fishing_traits = list(/datum/fishing_trait/carnivore)
+	fish_ai_type = FISH_AI_ZIPPY
+
+/obj/item/fish/rockfish
+	name = "rockfish"
+	desc = "These incredibly poisonous fish are famous for their piercing spines. They were also colloquially known as 'scorpionfish'. Physical contact is not recommended."
+	//description_fluff = ""
+	icon_state = "rockfish"
+	required_fluid_type = AQUARIUM_FLUID_SALTWATER
+	stable_population = 3
+	average_size = 50
+	average_weight = 4500
+
+/obj/item/fish/solarfin
+	name = "solarfin"
+	desc = "A genetically engineered fish popularly chosen for aquariums and decorative ponds. Its bioluminescent fins make it easily recognizable."
+	//description_fluff = ""
+	icon_state = "solarfin"
+	required_fluid_type = AQUARIUM_FLUID_SALTWATER
+	random_case_rarity = FISH_RARITY_VERY_RARE
+	stable_population = 3
+	average_size = 30
+	average_weight = 3000
+
+/obj/item/fish/crab
+	name = "crab"
+	desc = "Crabs - an Old Earth crustacean - were frequently hunted due to the richness of their meat. They remain a heavily farmed source of food to this day."
+	//description_fluff = ""
+	icon_state = "crab"
+	required_fluid_type = AQUARIUM_FLUID_SALTWATER
+	stable_population = 3
+	average_size = 20
+	average_weight = 1500
+	fillet_type = /obj/item/reagent_containers/food/snacks/meat/crab
+	favorite_bait = list(
+		/obj/item/reagent_containers/food/snacks/bait/doughball,
+	)
+
+/obj/item/fish/crab/evil
+	name = "anomalous crab"
+	desc = "A strange energy seems to have affected this otherwise normal crab. Its shell lacks color and its eyes glow a menacing red."
+	//description_fluff = ""
+	icon_state = "evilcrab"
+	required_fluid_type = AQUARIUM_FLUID_SALTWATER
+	random_case_rarity = FISH_RARITY_VERY_RARE
+	stable_population = 3
+	average_size = 20
+	average_weight = 1500
+	favorite_bait = list(
+		/obj/item/reagent_containers/food/snacks/bait/doughball,
+	)
 
 //Tiziran Fish
 /obj/item/fish/dwarf_moonfish

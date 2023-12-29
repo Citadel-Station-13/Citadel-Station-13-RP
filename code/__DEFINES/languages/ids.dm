@@ -23,8 +23,6 @@
 #define LANGUAGE_ID_ADHERENT "adherent"
 /// akula
 #define LANGUAGE_ID_AKULA "akula"
-/// altevians
-#define LANGUAGE_ID_ALTEVIAN "altevian"
 /// ????????
 #define LANGUAGE_ID_BIRDSONG "birdsong"
 /// aurils
@@ -45,6 +43,8 @@
 #define LANGUAGE_ID_NARAMADI "naramadi"
 /// phoronoids
 #define LANGUAGE_ID_PHORONOID "phoronoid"
+/// krisitik
+#define LANGUAGE_ID_SQUEAKISH "squeakish"
 /// shadekin
 #define LANGUAGE_ID_SHADEKIN_HIVEMIND "shadekin_global"
 /// skrell

@@ -40,6 +40,8 @@ Note: Must be placed within 3 tiles of the R&D Console
 		icon_state = "d_analyzer"
 
 /obj/machinery/r_n_d/destructive_analyzer/attackby(var/obj/item/O as obj, var/mob/user as mob)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
 	if(busy)
 		to_chat(user, "<span class='notice'>\The [src] is busy right now.</span>")
 		return
@@ -106,10 +108,11 @@ Note: Must be placed within 3 tiles of the R&D Console
 		for(var/obj/item/B in replacer.contents)
 			if(B.rped_rating() > lowest_rating)
 				continue
-			if(lathe_to_fill && B.materials) // Sending salvaged materials to the lathe...
-				for(var/t in B.materials)
+			if(lathe_to_fill) // Sending salvaged materials to the lathe...
+				var/list/mats = B.get_materials(TRUE)
+				for(var/t in mats)
 					if(t in lathe_to_fill.stored_materials)
-						lathe_to_fill.stored_materials[t] += B.materials[t] * src.decon_mod
+						lathe_to_fill.stored_materials[t] += mats[t] * src.decon_mod
 			qdel(B)
 		playsound(get_turf(src), 'sound/machines/click.ogg', 50, 1)
 		rped_recycler_ready = FALSE

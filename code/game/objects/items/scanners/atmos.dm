@@ -9,7 +9,7 @@
 	throw_force = 5
 	throw_speed = 4
 	throw_range = 20
-	materials = list(MAT_STEEL = 30, MAT_GLASS = 20)
+	materials_base = list(MAT_STEEL = 30, MAT_GLASS = 20)
 	origin_tech = list(TECH_MAGNET = 1, TECH_ENGINEERING = 1)
 
 /obj/item/atmos_analyzer/apidean
@@ -28,7 +28,7 @@
 	throw_force = 5
 	throw_speed = 4
 	throw_range = 20
-	materials = list(MAT_STEEL = 30, MAT_GLASS = 20)
+	materials_base = list(MAT_STEEL = 30, MAT_GLASS = 20)
 	origin_tech = list(TECH_MAGNET = 3, TECH_ENGINEERING = 3)
 
 /obj/item/atmos_analyzer/atmosanalyze(var/mob/user)

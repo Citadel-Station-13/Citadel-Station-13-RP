@@ -22,7 +22,7 @@
 /turf/simulated/floor/plating/external,
 /area/submap/cave/digsite)
 "h" = (
-/obj/item/ore,
+/obj/item/stack/ore,
 /turf/simulated/floor/plating/external,
 /area/submap/cave/digsite)
 "i" = (
@@ -55,7 +55,7 @@
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/digsite)
 "p" = (
-/obj/item/ore,
+/obj/item/stack/ore,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/digsite)
 "q" = (

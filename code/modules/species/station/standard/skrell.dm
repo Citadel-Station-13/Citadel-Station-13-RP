@@ -1,9 +1,11 @@
+#define WETFLOOR_COST 50
 /datum/species/skrell
 	uid = SPECIES_ID_SKRELL
 	id = SPECIES_ID_SKRELL
 	name = SPECIES_SKRELL
 	name_plural = SPECIES_SKRELL
 	primitive_form = SPECIES_MONKEY_SKRELL
+	category = "Skrell"
 	icobase = 'icons/mob/species/skrell/body_greyscale.dmi'
 	deform = 'icons/mob/species/skrell/deformed_body_greyscale.dmi'
 
@@ -30,6 +32,7 @@
 	)
 	assisted_langs   = list(LANGUAGE_EAL, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX, LANGUAGE_PROMETHEAN)
 
+	slowdown  = -0.2
 	color_mult = 1
 	health_hud_intensity = 2
 
@@ -37,7 +40,7 @@
 
 	max_age = 130
 
-	vision_innate = /datum/vision/baseline/species_tier_1
+	vision_innate = /datum/vision/baseline/species_tier_2
 
 	flash_mod  = 1.2
 	chemOD_mod = 0.9
@@ -46,6 +49,7 @@
 
 	ambiguous_genders = TRUE
 
+	species_flags = NO_SLIP
 	species_spawn_flags = SPECIES_SPAWN_CHARACTER
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
@@ -89,6 +93,60 @@
 		/datum/unarmed_attack/punch,
 	)
 
+	abilities = list(
+		/datum/ability/species/skrell/puddle
+	)
 
 /datum/species/skrell/can_breathe_water()
 	return TRUE
+
+/datum/ability/species/skrell
+	abstract_type = /datum/ability/species/skrell
+	category = "Skrell"
+	always_bind = TRUE
+	ability_check_flags = NONE
+	action_icon = 'icons/screen/actions/actions.dmi'
+
+	//cost in water, drink up skrellies
+	var/hydration_cost
+
+/datum/ability/species/skrell/check_trigger(mob/user, toggling)
+	. = ..()
+	if(!.)
+		return
+	if(!ishuman(owner))
+		return FALSE
+	if(istype(owner,/mob/living/carbon/human))
+		var/mob/living/carbon/human/H = owner
+
+		if(hydration_cost > H.hydration)
+			to_chat(user,"<span class = 'notice'>We are too dry! Drink more!</span>")
+			return FALSE
+		else
+			return TRUE
+	else
+		return TRUE
+
+/datum/ability/species/skrell/puddle
+	name = "Puddle"
+	desc = "Concentrate on all of your glands to leave a puddle of water on the ground."
+	action_state = "pissbomb"
+	cooldown = 5 SECONDS
+	hydration_cost = WETFLOOR_COST //50
+
+/datum/ability/species/skrell/puddle/on_trigger()
+	. = ..()
+	if(!ishuman(owner))
+		return
+	var/turf/T = get_turf(owner)
+	if(T)
+		var/datum/reagents/R = new /datum/reagents(10)
+		R.add_reagent("water", 10)
+		T.reagents = R
+		T.clean(T, owner, 1)
+
+		owner.visible_message(
+		SPAN_WARNING("[owner] secretes a lot of liquid, wetting the floor underneath!"),
+		SPAN_NOTICE("You strain all of your glands, releasing a splash of liquid right underneath you.")
+		)
+		playsound(T, 'sound/effects/slosh.ogg', 25, 1)

@@ -90,7 +90,7 @@
 /**
  * This provides all of the relevant data to the UI in a list().
  */
-/datum/computer_file/program/game/ui_data(mob/user)
+/datum/computer_file/program/game/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = get_header_data()
 	data["Hitpoints"] = boss_hp
 	data["PlayerHitpoints"] = player_hp
@@ -105,7 +105,7 @@
 /**
  * This is tgui's replacement for Topic(). It handles any user input from the UI.
  */
-/datum/computer_file/program/game/ui_act(action, list/params)
+/datum/computer_file/program/game/ui_act(action, list/params, datum/tgui/ui)
 	if(..()) // Always call parent in ui_act, it handles making sure the user is allowed to interact with the UI.
 		return TRUE
 

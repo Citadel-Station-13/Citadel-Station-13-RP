@@ -35,8 +35,8 @@
 
 	movement_cooldown = 5
 
-	melee_damage_lower = 10
-	melee_damage_upper = 10
+	legacy_melee_damage_lower = 10
+	legacy_melee_damage_upper = 10
 	poison_chance = 30
 	poison_type = "cryptobiolin"
 	poison_per_bite = 1

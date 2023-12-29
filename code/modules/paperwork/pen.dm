@@ -24,7 +24,7 @@
 	w_class = ITEMSIZE_TINY
 	throw_speed = 7
 	throw_range = 15
-	materials = list(MAT_STEEL = 10)
+	materials_base = list(MAT_STEEL = 10)
 	var/colour = "black"	//what colour the ink is!
 	pressure_resistance = 2
 	drop_sound = 'sound/items/drop/accessory.ogg'
@@ -362,4 +362,4 @@
 	name = "charcoal stick"
 	desc = "Carefully burnt carbon, compacted and held together with a binding agent. One of the oldest common implements for writing across the galaxy."
 	icon_state = "charcoal"
-	materials = list(MAT_CARBON = 10)
+	materials_base = list(MAT_CARBON = 10)

@@ -58,3 +58,30 @@
 	return FALSE
 
 */
+
+// todo: refactor return_air to just call return_air_mutable
+
+/**
+ * returns a mutable gas mixture, or null
+ * this does not take into account volume, and for ZAS, can return a whole room's air
+ * for operations that care about this, prefer using other procs!
+ */
+/atom/proc/return_air()
+	RETURN_TYPE(/datum/gas_mixture)
+	return loc?.return_air()
+
+/**
+ * returns a gas mixture; this mixture must never be mutated
+ *
+ * this allows us to micro-optimize accesses without activating zones.
+ */
+/atom/proc/return_air_immutable()
+	return return_air()
+
+/**
+ * returns a gas mixture; this mixture may, but does not necessarily have to be mutated.
+ *
+ * this should always trigger updates/checks like making a zone active
+ */
+/atom/proc/return_air_mutable()
+	return return_air()
