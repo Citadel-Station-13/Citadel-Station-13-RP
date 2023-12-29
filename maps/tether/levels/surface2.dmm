@@ -4526,7 +4526,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
 /obj/structure/catwalk,
-/turf/simulated/wall/prepainted/civilian,
+/turf/simulated/floor/plating,
 /area/tether/surfacebase/reading_room)
 "dgM" = (
 /obj/structure/catwalk,
@@ -5966,7 +5966,6 @@
 /area/maintenance/lower/north)
 "epk" = (
 /obj/structure/cable/green{
-	dir = 1;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/white,
@@ -6083,7 +6082,6 @@
 	dir = 1
 	},
 /obj/structure/cable/green{
-	dir = 1;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/white,
@@ -10347,7 +10345,7 @@
 /area/tether/surfacebase/security/interrogation)
 "hqD" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/cyanblue,
+/obj/effect/paint_stripe/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/lower/atmos_eva)
 "hra" = (
@@ -12246,7 +12244,7 @@
 /area/tether/surfacebase/medical/uppersouthstairwell)
 "iER" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/cyanblue,
+/obj/effect/paint_stripe/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "iFh" = (
@@ -12476,7 +12474,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
-	dir = 1;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/white,
@@ -13597,7 +13594,7 @@
 /area/tether/surfacebase/medical/patient_b)
 "jCm" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/cyanblue,
+/obj/effect/paint_stripe/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos/monitoring)
 "jCp" = (
@@ -23490,7 +23487,7 @@
 /area/maintenance/lower/south)
 "rcx" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/cyanblue,
+/obj/effect/paint_stripe/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/drone_fabrication)
 "rdr" = (
@@ -23707,7 +23704,7 @@
 /area/tether/surfacebase/security/detective/officeb)
 "rja" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/cyanblue,
+/obj/effect/paint_stripe/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/lower/breakroom)
 "rke" = (
@@ -24933,10 +24930,10 @@
 /area/tether/surfacebase/surface_two_hall)
 "shF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/firedoor,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/centralhall)
 "shL" = (
@@ -27038,7 +27035,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/cyanblue,
+/obj/effect/paint_stripe/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/lower/lobby)
 "tLQ" = (
@@ -32894,7 +32891,7 @@
 /area/engineering/atmos)
 "ydd" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/cyanblue,
+/obj/effect/paint_stripe/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/lower/atmos_lockers)
 "ydu" = (
@@ -33107,7 +33104,7 @@
 /area/tether/surfacebase/medical/morgue)
 "ykZ" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/cyanblue,
+/obj/effect/paint_stripe/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/lower/lobby)
 "yli" = (
