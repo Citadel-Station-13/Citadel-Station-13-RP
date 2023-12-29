@@ -4251,7 +4251,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
-	dir = 1;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled,
@@ -5280,7 +5279,6 @@
 	dir = 6
 	},
 /obj/structure/cable/green{
-	dir = 1;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled,
@@ -5772,18 +5770,16 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/atrium)
 "lE" = (
-/obj/structure/cable/green{
-	dir = 1;
-	icon_state = "1-2"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/aux{
 	dir = 9
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/eris/steel/gray_perforated,
 /area/shuttle/securiship/general)
 "lF" = (
 /obj/structure/cable/green{
-	dir = 1;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled,
@@ -6875,7 +6871,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
-	dir = 1;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled,
@@ -11093,7 +11088,6 @@
 /area/tether/exploration/hallway)
 "wK" = (
 /obj/structure/cable/green{
-	dir = 1;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/eris/techmaint_panels,
@@ -13046,14 +13040,13 @@
 /turf/simulated/floor/plating,
 /area/maintenance/station/eng_lower)
 "AH" = (
-/obj/structure/cable/green{
-	dir = 1;
-	icon_state = "1-2"
-	},
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume/aux,
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/light/small{
 	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/eris/techmaint_cargo,
 /area/shuttle/securiship/general)
@@ -14526,7 +14519,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
-	dir = 1;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled,
@@ -17353,7 +17345,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/green{
-	dir = 1;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled,
@@ -18620,7 +18611,6 @@
 /area/engineering/hallway)
 "LG" = (
 /obj/structure/cable/green{
-	dir = 1;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/eris/steel/gray_perforated,
@@ -19197,12 +19187,11 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/ai_upload_foyer)
 "MT" = (
-/obj/structure/cable/green{
-	dir = 1;
-	icon_state = "1-2"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 6
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/eris/dark/techfloor_grid,
 /area/shuttle/securiship/engines)
@@ -20686,7 +20675,6 @@
 	dir = 4
 	},
 /obj/structure/cable/green{
-	dir = 1;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled,
@@ -21118,12 +21106,11 @@
 /area/ai_upload)
 "QR" = (
 /obj/machinery/door/airlock/glass_external,
-/obj/structure/cable/green{
-	dir = 1;
-	icon_state = "1-2"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/aux,
 /obj/map_helper/airlock/door/int_door,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/eris/techmaint_panels,
 /area/shuttle/securiship/general)
 "QS" = (
