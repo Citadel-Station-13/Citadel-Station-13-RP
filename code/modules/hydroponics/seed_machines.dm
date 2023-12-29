@@ -143,7 +143,7 @@
 		ui = new(user, src, "BotanyIsolator", name)
 		ui.open()
 
-/obj/machinery/botany/extractor/ui_data(mob/user)
+/obj/machinery/botany/extractor/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	var/list/geneMasks = SSplants.gene_masked_list
@@ -271,7 +271,7 @@
 		ui = new(user, src, "BotanyEditor", name)
 		ui.open()
 
-/obj/machinery/botany/editor/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/botany/editor/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	data["activity"] = active

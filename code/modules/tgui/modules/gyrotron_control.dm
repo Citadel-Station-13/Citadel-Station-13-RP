@@ -5,7 +5,7 @@
 	var/gyro_tag = ""
 	var/scan_range = 25
 
-/datum/tgui_module_old/gyrotron_control/ui_act(action, params)
+/datum/tgui_module_old/gyrotron_control/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -43,7 +43,7 @@
 				G.rate = new_delay
 			return TRUE
 
-/datum/tgui_module_old/gyrotron_control/ui_data(mob/user)
+/datum/tgui_module_old/gyrotron_control/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 	var/list/gyros = list()
 

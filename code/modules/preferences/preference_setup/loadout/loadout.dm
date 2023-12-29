@@ -98,7 +98,7 @@
 			. = FALSE
 		current_cost += entry.cost
 
-/datum/category_item/player_setup_item/loadout/gear/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/datum/category_item/player_setup_item/loadout/gear/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["gearContext"] = tgui_loadout_context()
 	var/list/allowed_ids = list()
@@ -114,7 +114,7 @@
 		ui = new(user, src, "CharacterLoadoutStandalone")
 		ui.open()
 
-/datum/category_item/player_setup_item/loadout/gear/ui_status(mob/user, datum/ui_state/state, datum/tgui_module/module)
+/datum/category_item/player_setup_item/loadout/gear/ui_status(mob/user, datum/ui_state/state)
 	return UI_INTERACTIVE
 
 /datum/category_item/player_setup_item/loadout/gear/proc/tgui_loadout_selected(list/loadout_slot)

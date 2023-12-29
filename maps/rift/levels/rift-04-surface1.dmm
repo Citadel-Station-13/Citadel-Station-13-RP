@@ -3177,7 +3177,7 @@
 /area/rift/station/public_garden)
 "cfP" = (
 /obj/machinery/firealarm{
-	dir = 8;
+	dir = 4;
 	pixel_x = 24
 	},
 /turf/simulated/floor/plating,
@@ -3772,7 +3772,6 @@
 /area/rift/surfacebase/outside/outside1)
 "cAs" = (
 /obj/machinery/firealarm{
-	dir = 1;
 	pixel_y = 24
 	},
 /obj/machinery/light{
@@ -4507,13 +4506,6 @@
 /obj/item/book/bundle/custom_library/religious,
 /turf/simulated/floor/wood,
 /area/library)
-"das" = (
-/obj/effect/floor_decal/rust,
-/obj/machinery/door/firedoor/glass{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/steel,
-/area/security/prison)
 "daS" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
@@ -6481,7 +6473,7 @@
 /area/medical/virologypurge)
 "egb" = (
 /obj/machinery/firealarm{
-	dir = 8;
+	dir = 4;
 	pixel_x = 24
 	},
 /obj/structure/disposalpipe/segment,
@@ -9821,7 +9813,6 @@
 	},
 /obj/random/trash_pile,
 /obj/machinery/firealarm{
-	dir = 1;
 	pixel_y = 24
 	},
 /turf/simulated/floor/plating,
@@ -11626,7 +11617,6 @@
 /area/quartermaster/office)
 "hCl" = (
 /obj/machinery/firealarm{
-	dir = 1;
 	pixel_y = 24
 	},
 /obj/structure/catwalk,
@@ -12113,7 +12103,6 @@
 /area/maintenance/cargo)
 "hPI" = (
 /obj/machinery/firealarm{
-	dir = 1;
 	pixel_y = 24
 	},
 /obj/machinery/holopad,
@@ -12320,13 +12309,13 @@
 /obj/machinery/atmospherics/pipe/simple/visible/supply,
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/door/firedoor/multi_tile,
 /obj/machinery/door/airlock/multi_tile/metal/mait{
 	name = "Maintenance Access"
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/rift/surfaceeva)
 "hWp" = (
@@ -12521,7 +12510,6 @@
 	dir = 5
 	},
 /obj/machinery/firealarm{
-	dir = 1;
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/steel,
@@ -13918,9 +13906,7 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass{
-	dir = 8
-	},
+/obj/machinery/door/firedoor/glass,
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 8
 	},
@@ -17953,9 +17939,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 8
 	},
-/obj/machinery/door/firedoor/glass{
-	dir = 8
-	},
+/obj/machinery/door/firedoor/glass,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -19095,7 +19079,6 @@
 	dir = 1
 	},
 /obj/machinery/firealarm{
-	dir = 1;
 	pixel_y = 24
 	},
 /obj/machinery/light{
@@ -23381,7 +23364,7 @@
 /area/security/security_cell_hallway)
 "oHy" = (
 /obj/machinery/firealarm{
-	dir = 4;
+	dir = 8;
 	pixel_x = -24
 	},
 /obj/structure/disposalpipe/segment{
@@ -24385,7 +24368,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass,
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -26685,10 +26667,10 @@
 	name = "Cargo Garage";
 	req_one_access = list(31)
 	},
-/obj/machinery/door/firedoor/multi_tile,
 /obj/effect/floor_decal/techfloor/orange/corner{
 	dir = 8
 	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/techfloor,
 /area/quartermaster/garage)
 "qFN" = (
@@ -26851,9 +26833,7 @@
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass{
-	dir = 8
-	},
+/obj/machinery/door/firedoor/glass,
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 8
 	},
@@ -28615,7 +28595,6 @@
 	dir = 1
 	},
 /obj/machinery/firealarm{
-	dir = 1;
 	pixel_y = 24
 	},
 /obj/item/paper{
@@ -29153,7 +29132,6 @@
 	dir = 1
 	},
 /obj/machinery/firealarm{
-	dir = 1;
 	pixel_y = 24
 	},
 /obj/machinery/space_heater,
@@ -33055,6 +33033,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/rift/surfaceeva)
 "uqR" = (
@@ -38113,6 +38092,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/techfloor,
 /area/quartermaster/garage)
 "xvW" = (
@@ -38725,6 +38705,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/maintenance/evahallway)
 "xQG" = (
@@ -39012,11 +38993,11 @@
 /obj/machinery/door/airlock/multi_tile/metal/mait{
 	name = "Maintenance Access"
 	},
-/obj/machinery/door/firedoor/multi_tile,
 /obj/structure/catwalk,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/maintenance/evahallway)
 "xZu" = (
@@ -56423,7 +56404,7 @@ pZn
 iTF
 abL
 luv
-das
+izR
 erN
 vsb
 kwn

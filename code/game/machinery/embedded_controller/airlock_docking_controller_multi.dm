@@ -15,7 +15,7 @@
 		for (var/i = 1; i <= tags.len; i++)
 			child_names[tags[i]] = names[i]
 
-/obj/machinery/embedded_controller/radio/docking_port_multi/ui_data(mob/user)
+/obj/machinery/embedded_controller/radio/docking_port_multi/ui_data(mob/user, datum/tgui/ui)
 	var/datum/computer/file/embedded_program/docking/multi/docking_program = program // Cast to proper type
 
 	var/list/airlocks[child_names.len]
@@ -29,7 +29,7 @@
 		"internalTemplateName" = "DockingConsoleMulti",
 	)
 
-/obj/machinery/embedded_controller/radio/docking_port_multi/ui_act(action, params)
+/obj/machinery/embedded_controller/radio/docking_port_multi/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	return //Apparently we swallow all input (this is corrected legacy code)
 
@@ -43,7 +43,7 @@
 	valid_actions = list("cycle_ext", "cycle_int", "force_ext", "force_int", "abort", "toggle_override")
 
 
-/obj/machinery/embedded_controller/radio/airlock/docking_port_multi/ui_data(mob/user)
+/obj/machinery/embedded_controller/radio/airlock/docking_port_multi/ui_data(mob/user, datum/tgui/ui)
 	var/datum/computer/file/embedded_program/airlock/multi_docking/airlock_program = program // Cast to proper type
 
 	. = list(

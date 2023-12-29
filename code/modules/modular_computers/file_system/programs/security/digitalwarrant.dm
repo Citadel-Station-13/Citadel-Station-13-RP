@@ -25,7 +25,7 @@ var/global/warrant_uid = 0
 
 	var/datum/data/record/warrant/activewarrant
 
-/datum/computer_file/program/digitalwarrant/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/datum/computer_file/program/digitalwarrant/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = get_header_data()
 
 	data["warrantname"] = null
@@ -52,7 +52,7 @@ var/global/warrant_uid = 0
 
 	return data
 
-/datum/computer_file/program/digitalwarrant/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/datum/computer_file/program/digitalwarrant/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -81,7 +81,7 @@ var/global/warrant_uid = 0
 			. = TRUE
 			var/datum/data/record/warrant/W = new()
 			var/temp = sanitize(input(usr, "Do you want to create a search-, or an arrest warrant?") as null|anything in list("search","arrest"))
-			if(ui_status(usr, state) == UI_INTERACTIVE)
+			if(ui?.still_interactive())
 				if(temp == "arrest")
 					W.fields["namewarrant"] = "Unknown"
 					W.fields["charges"] = "No charges present"
@@ -110,7 +110,7 @@ var/global/warrant_uid = 0
 			for(var/datum/data/record/t in data_core.general)
 				namelist += t.fields["name"]
 			var/new_name = sanitize(input(usr, "Please input name") as null|anything in namelist)
-			if(ui_status(usr, state) == UI_INTERACTIVE)
+			if(ui?.still_interactive())
 				if (!new_name)
 					return
 				activewarrant.fields["namewarrant"] = new_name
@@ -118,7 +118,7 @@ var/global/warrant_uid = 0
 		if("editwarrantnamecustom")
 			. = TRUE
 			var/new_name = sanitize(input("Please input name") as null|text)
-			if(ui_status(usr, state) == UI_INTERACTIVE)
+			if(ui?.still_interactive())
 				if (!new_name)
 					return
 				activewarrant.fields["namewarrant"] = new_name
@@ -126,7 +126,7 @@ var/global/warrant_uid = 0
 		if("editwarrantcharges")
 			. = TRUE
 			var/new_charges = sanitize(input("Please input charges", "Charges", activewarrant.fields["charges"]) as null|text)
-			if(ui_status(usr, state) == UI_INTERACTIVE)
+			if(ui?.still_interactive())
 				if (!new_charges)
 					return
 				activewarrant.fields["charges"] = new_charges

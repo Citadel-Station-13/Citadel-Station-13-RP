@@ -25,7 +25,7 @@
 			"fuel_span" = fuel_span
 		)
 
-/obj/machinery/computer/shuttle_control/explore/ui_act(action, list/params)
+/obj/machinery/computer/shuttle_control/explore/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
