@@ -51,8 +51,9 @@
 			var/datum/material/mat = got[key]
 			.[mat.id] += material_costs[i]
 	else
-		var/datum/material/mat = material_parts
-		.[mat.id] += material_costs
+		if(material_parts)
+			var/datum/material/mat = material_parts
+			.[mat.id] += material_costs
 	if(respect_multiplier && material_multiplier != 1)
 		for(var/key in .)
 			.[key] *= material_multiplier

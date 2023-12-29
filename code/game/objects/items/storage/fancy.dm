@@ -255,7 +255,8 @@
 	// Don't try to transfer reagents to lighters
 	if(istype(W, /obj/item/clothing/mask/smokable/cigarette))
 		var/obj/item/clothing/mask/smokable/cigarette/C = W
-		reagents?.trans_to_obj(C, (reagents.total_volume/contents.len))
+		if(contents.len)
+			reagents?.trans_to_obj(C, (reagents.total_volume/contents.len))
 	return ..()
 
 /obj/item/storage/fancy/cigarettes/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)

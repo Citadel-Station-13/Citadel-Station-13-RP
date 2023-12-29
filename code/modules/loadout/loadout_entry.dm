@@ -92,23 +92,24 @@ var/list/gear_datums = list()
 		where = tweak.tweak_spawn_location(where, tweak_data)
 		path = tweak.tweak_spawn_path(path, tweak_data)
 		tweak_assembled[tweak] = tweak_data
-	var/obj/item/spawned = new path(where)
-	if((loadout_customize_flags & LOADOUT_CUSTOMIZE_NAME) && entry_data[LOADOUT_ENTRYDATA_RENAME])
-		spawned.name = entry_data[LOADOUT_ENTRYDATA_RENAME]
-	if((loadout_customize_flags & LOADOUT_CUSTOMIZE_DESC) && entry_data[LOADOUT_ENTRYDATA_REDESC])
-		spawned.desc = entry_data[LOADOUT_ENTRYDATA_REDESC]
-	if((loadout_customize_flags & LOADOUT_CUSTOMIZE_COLOR) && entry_data[LOADOUT_ENTRYDATA_RECOLOR])
-		spawned.color = entry_data[LOADOUT_ENTRYDATA_RECOLOR]
-	for(var/datum/loadout_tweak/tweak as anything in tweak_assembled)
-		tweak.tweak_item(spawned, tweak_assembled[tweak])
+	if(path)
+		var/obj/item/spawned = new path(where)
+		if((loadout_customize_flags & LOADOUT_CUSTOMIZE_NAME) && entry_data[LOADOUT_ENTRYDATA_RENAME])
+			spawned.name = entry_data[LOADOUT_ENTRYDATA_RENAME]
+		if((loadout_customize_flags & LOADOUT_CUSTOMIZE_DESC) && entry_data[LOADOUT_ENTRYDATA_REDESC])
+			spawned.desc = entry_data[LOADOUT_ENTRYDATA_REDESC]
+		if((loadout_customize_flags & LOADOUT_CUSTOMIZE_COLOR) && entry_data[LOADOUT_ENTRYDATA_RECOLOR])
+			spawned.color = entry_data[LOADOUT_ENTRYDATA_RECOLOR]
+		for(var/datum/loadout_tweak/tweak as anything in tweak_assembled)
+			tweak.tweak_item(spawned, tweak_assembled[tweak])
 
-	//! legacy start
-	var/mob/M = where
-	if(istype(M) && exploitable)
-		M.amend_exploitable(spawned)
-	//! end
+		//! legacy start
+		var/mob/M = where
+		if(istype(M) && exploitable)
+			M.amend_exploitable(spawned)
+		//! end
 
-	return spawned
+		return spawned
 
 /hook/startup/proc/populate_gear_list()
 

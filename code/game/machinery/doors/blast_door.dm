@@ -148,22 +148,22 @@
 			else
 				to_chat(user, "<span class='notice'>[src]'s motors resist your effort.</span>")
 			return
-	else if(I.is_material_stack_of(/datum/material/plasteel)) // Repairing.
-		var/amt = CEILING((integrity_max - integrity)/150, 1)
-		if(!amt)
-			to_chat(user, "<span class='notice'>\The [src] is already fully repaired.</span>")
-			return
-		var/obj/item/stack/P = I
-		if(P.amount < amt)
-			to_chat(user, "<span class='warning'>You don't have enough sheets to repair this! You need at least [amt] sheets.</span>")
-			return
-		to_chat(user, "<span class='notice'>You begin repairing [src]...</span>")
-		if(do_after(usr, 30))
-			if(P.use(amt))
-				to_chat(user, "<span class='notice'>You have repaired \The [src]</span>")
-				src.repair()
-			else
+		else if(I.is_material_stack_of(/datum/material/plasteel)) // Repairing.
+			var/amt = CEILING((integrity_max - integrity)/150, 1)
+			if(!amt)
+				to_chat(user, "<span class='notice'>\The [src] is already fully repaired.</span>")
+				return
+			var/obj/item/stack/P = I
+			if(P.amount < amt)
 				to_chat(user, "<span class='warning'>You don't have enough sheets to repair this! You need at least [amt] sheets.</span>")
+				return
+			to_chat(user, "<span class='notice'>You begin repairing [src]...</span>")
+			if(do_after(usr, 30))
+				if(P.use(amt))
+					to_chat(user, "<span class='notice'>You have repaired \The [src]</span>")
+					src.repair()
+				else
+					to_chat(user, "<span class='warning'>You don't have enough sheets to repair this! You need at least [amt] sheets.</span>")
 		return ..()
 
 // Proc: attack_alien()

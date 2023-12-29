@@ -158,8 +158,9 @@
 	if(length_char(message) >= 2 && is_language_prefix(prefix))
 		var/language_prefix = copytext_char(message, 2 ,3)
 		var/datum/language/L = SScharacters.resolve_language_key(language_prefix)
-		if (can_speak(L))
-			return L
+		if(L)
+			if (can_speak(L))
+				return L
 		else
 			var/alert_result = alert(src, "You don't know that language. Would you rather speak your default language, gibberish, or nothing?", "Unknown Language Alert","Default Language","Gibberish", "Whoops I made a typo!")
 			switch(alert_result)

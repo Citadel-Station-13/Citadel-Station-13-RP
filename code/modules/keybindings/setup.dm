@@ -41,7 +41,10 @@
 		return
 	log_debug(SPAN_DEBUG("[src] reset their keybindings."))
 	to_chat(src, "<span class='danger'>Force-reasserting all macros.</span>")
-	set_macros(prefs)
+	if(prefs)
+		set_macros(prefs)
+	else
+		message_admins("Found null client preferences, please check the server logs and notify coders.")
 
 // removes all the existing macros
 /client/proc/erase_all_macros()

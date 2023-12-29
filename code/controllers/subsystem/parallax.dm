@@ -106,32 +106,36 @@ SUBSYSTEM_DEF(parallax)
  */
 /datum/controller/subsystem/parallax/proc/update_clients_on_z(z)
 	for(var/client/C in GLOB.clients)
-		if(C.mob.z == z)
-			C.parallax_holder?.Update(TRUE)
+		if(C.mob)
+			if(C.mob.z == z)
+				C.parallax_holder?.Update(TRUE)
 
 /**
  * resets all parallax for clients on a z
  */
 /datum/controller/subsystem/parallax/proc/reset_clients_on_z(z)
 	for(var/client/C in GLOB.clients)
-		if(C.mob.z == z)
-			C.parallax_holder?.reset()
+		if(C.mob)
+			if(C.mob.z == z)
+				C.parallax_holder?.reset()
 
 /**
  * resets vis contents for clients on a z
  */
 /datum/controller/subsystem/parallax/proc/update_z_vis_contents(z)
 	for(var/client/C in GLOB.clients)
-		if(C.mob.z == z)
-			C.parallax_holder?.SyncVisContents()
+		if(C.mob)
+			if(C.mob.z == z)
+				C.parallax_holder?.SyncVisContents()
 
 /**
  * updates motion of all clients on z
  */
 /datum/controller/subsystem/parallax/proc/update_z_motion(z)
 	for(var/client/C in GLOB.clients)
-		if(C.mob.z == z)
-			C.parallax_holder?.UpdateMotion()
+		if(C.mob)
+			if(C.mob.z == z)
+				C.parallax_holder?.UpdateMotion()
 
 /**
  * queues a zlevel for update of vis contents
