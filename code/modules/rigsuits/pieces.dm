@@ -19,7 +19,7 @@
 		return FALSE
 	piece.currently_retracting = FALSE
 	if(auto_seal)
-		INVOKE_ASYNC(src, PROC_REF(seal_piece_sync), instant_seal)
+		INVOKE_ASYNC(src, PROC_REF(seal_piece_sync), piece, instant_seal)
 	return TRUE
 
 /**
@@ -29,10 +29,10 @@
  */
 /obj/item/rig/proc/undeploy_piece_sync(datum/component/rig_piece/piece, instant_unseal = FALSE, force = FALSE)
 	piece.currently_retracting = TRUE
-	if(!unseal_piece_sync(instant_unseal))
+	if(!unseal_piece_sync(piece, instant_unseal))
 		return FALSE
 	if(!piece.currently_retracting)
-		return
+		return FALSE
 	piece.currently_retracting = FALSE
 	if(!piece.retract(force? INV_OP_FORCE : NONE))
 		return FALSE

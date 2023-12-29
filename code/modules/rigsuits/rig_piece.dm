@@ -243,7 +243,7 @@
 	if(ispath(inventory_slot))
 		var/datum/inventory_slot_meta/slot_meta = inventory_slot
 		inventory_slot = initial(slot_meta.id)
-	return I.worn_slot() == inventory_slot
+	return I.worn_slot == inventory_slot
 
 /**
  * interrupt if sealing
@@ -267,12 +267,12 @@
 
 /datum/component/rig_piece/proc/block_on_sealing(operation_id)
 	// todo: behavior unverified; operation id is not checked.
-	UNTIL(!seal_mutex && (sealed == RIG_PIECE_SEALING))
+	UNTIL(!(seal_mutex && (sealed == RIG_PIECE_SEALING)))
 	return sealed == RIG_PIECE_SEALED
 
 /datum/component/rig_piece/proc/block_on_unsealing(operation_id)
 	// todo: behavior unverified; operation id is not checked.
-	UNTIL(!seal_mutex && (sealed == RIG_PIECE_UNSEALING))
+	UNTIL(!(seal_mutex && (sealed == RIG_PIECE_UNSEALING)))
 	return sealed == RIG_PIECE_UNSEALED
 
 /obj/item/clothing/head/rig

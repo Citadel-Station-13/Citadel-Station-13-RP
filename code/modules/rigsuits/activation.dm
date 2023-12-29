@@ -21,7 +21,7 @@
  */
 /obj/item/rig/proc/is_in_right_slot()
 	var/datum/inventory_slot_meta/wslot = wearer_required_slot_id
-	return worn_slot() == ispath(wslot)? initial(wslot.id) : wslot
+	return worn_slot == ispath(wslot)? initial(wslot.id) : wslot
 
 /**
  * blocking proc

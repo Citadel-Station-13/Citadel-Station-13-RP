@@ -121,7 +121,8 @@
 
 /obj/item/rig/Initialize(mapload, datum/rig_theme/theme_like)
 	. = ..()
-	init_theme(theme_like || theme_preset)
+	// todo: this is shitcode and just bypasses the init sleep check, if shit breaks idfk lmao
+	INVOKE_ASYNC(src, PROC_REF(init_theme), theme_like || theme_preset)
 
 /obj/item/rig/Destroy()
 	hard_reset()
@@ -144,8 +145,7 @@
 	push_ui_data(data = list("wornCorrectly" = is_in_right_slot()))
 
 /obj/item/rig/proc/hard_reset()
-	undeploy_suit_sync(TRUE, TRUE)
-	deactivate()
+	deactivate(TRUE, TRUE, TRUE, TRUE)
 
 /obj/item/rig/proc/wipe_everything()
 	hard_reset()
