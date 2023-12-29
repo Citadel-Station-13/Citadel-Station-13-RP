@@ -30,7 +30,7 @@
 	/// action button background icon
 	var/background_icon = 'icons/screen/actions/backgrounds.dmi'
 	/// action button background icon state - the _on overlay will be added while active, automatically.
-	var/background_state = "alien"
+	var/background_state = "default"
 	/// currently hotbound?
 	var/bound = FALSE
 	/// automatically hotbound?
@@ -199,12 +199,16 @@
 	enabled = TRUE
 	if(update_action)
 		update_action()
+	action?.background_icon_state += "_on"
+	action?.update_button()
 	on_enable()
 
 /datum/ability/proc/disable(update_action)
 	enabled = FALSE
 	if(update_action)
 		update_action()
+	action?.background_icon_state = background_state
+	action?.update_button()
 	on_disable()
 
 /datum/ability/proc/on_enable()
