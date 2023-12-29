@@ -1949,7 +1949,7 @@
 	pixel_x = 30;
 	req_access = list(160)
 	},
-/obj/machinery/button/windowtint/doortint{
+/obj/machinery/button/windowtint/multitint{
 	id = "traderstardoor";
 	pixel_x = -8;
 	pixel_y = -23
@@ -5257,7 +5257,7 @@
 	pixel_x = 34;
 	pixel_y = 3
 	},
-/obj/machinery/button/windowtint/doortint{
+/obj/machinery/button/windowtint/multitint{
 	id = "traderportdoor";
 	pixel_x = -8;
 	pixel_y = 23
