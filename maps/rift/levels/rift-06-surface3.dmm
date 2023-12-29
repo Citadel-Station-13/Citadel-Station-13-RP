@@ -314,6 +314,10 @@
 	dir = 5
 	},
 /obj/structure/disposalpipe/trunk,
+/obj/machinery/air_alarm{
+	desc = " ";
+	pixel_y = 24
+	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration/pathfinder_office)
 "abf" = (
@@ -1359,10 +1363,6 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/surfaceeva/aa/cliff_south)
-"aen" = (
-/obj/landmark/map_data/lythios43c,
-/turf/simulated/open/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "aep" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
@@ -8373,8 +8373,7 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/manifold4w/visible/fuel,
 /turf/simulated/floor/lythios43c/indoors,
@@ -8939,8 +8938,7 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced,
 /obj/machinery/atmospherics/pipe/simple/visible/fuel{
@@ -10953,8 +10951,7 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 1
@@ -11368,6 +11365,10 @@
 /area/exploration)
 "aFL" = (
 /obj/structure/reagent_dispensers/water_cooler/full,
+/obj/machinery/air_alarm{
+	desc = " ";
+	pixel_y = 24
+	},
 /turf/simulated/floor/wood,
 /area/exploration/meeting)
 "aFM" = (
@@ -12654,7 +12655,42 @@
 /obj/item/binoculars{
 	pixel_y = 10
 	},
-/obj/item/ano_scanner,
+/obj/item/ano_scanner{
+	pixel_y = 18
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration/body{
+	pixel_x = -6
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration/body{
+	pixel_x = -6
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration/body{
+	pixel_x = -6
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration/body{
+	pixel_x = -6
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration/body{
+	pixel_x = -6
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration/body{
+	pixel_x = -6
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration{
+	pixel_x = 4
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration{
+	pixel_x = 4
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration{
+	pixel_x = 4
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration{
+	pixel_x = 4
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration{
+	pixel_x = 4
+	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration/courser_dock)
 "aJp" = (
@@ -17711,8 +17747,7 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/manifold/visible/fuel{
 	dir = 8
@@ -20951,6 +20986,9 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "hDa" = (
@@ -21217,10 +21255,12 @@
 /turf/simulated/floor/plating,
 /area/exploration/pathfinder_office)
 "iio" = (
-/obj/machinery/door/firedoor/multi_tile,
 /obj/machinery/door/airlock/multi_tile/metal/mait{
 	dir = 4;
 	name = "Maintenance Access"
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
@@ -23427,19 +23467,6 @@
 "owP" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/security/nuke_storage)
-"oxo" = (
-/obj/structure/table/reinforced,
-/obj/effect/floor_decal/corner/grey/diagonal,
-/obj/machinery/door/blast/shutters{
-	id = "kitchen_shutters";
-	name = "Kitchen Shutters"
-	},
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/light{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/white,
-/area/crew_quarters/kitchen)
 "oxz" = (
 /obj/machinery/light,
 /obj/structure/cable/green{
@@ -24429,6 +24456,10 @@
 /obj/effect/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/telescience_lab)
+"riD" = (
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/plating,
+/area/maintenance/commandmaint)
 "riL" = (
 /obj/structure/cable/green{
 	icon_state = "1-4"
@@ -26442,7 +26473,7 @@
 /obj/machinery/door/airlock/multi_tile/metal/mait{
 	name = "Maintenance Access"
 	},
-/obj/machinery/door/firedoor/multi_tile,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "xbb" = (
@@ -26655,7 +26686,6 @@
 "xHc" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/machinery/firealarm{
-	dir = 1;
 	pixel_y = 24
 	},
 /obj/effect/floor_decal/borderfloorblack{
@@ -27313,7 +27343,7 @@ aOi
 aOi
 aOi
 aOi
-aen
+aOi
 aOC
 "}
 (3,1,1) = {"
@@ -38876,7 +38906,7 @@ amd
 wec
 aNU
 aMs
-oxo
+aUj
 aCk
 amJ
 aWd
@@ -52820,7 +52850,7 @@ aaA
 aaA
 aaA
 aaA
-aaA
+riD
 aaA
 aaA
 aAN

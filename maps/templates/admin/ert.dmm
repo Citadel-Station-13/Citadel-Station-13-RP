@@ -212,6 +212,7 @@
 "ch" = (
 /obj/machinery/door/airlock/glass_external,
 /obj/map_helper/airlock/door/int_door,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/dock_star)
 "ci" = (
@@ -392,6 +393,7 @@
 	name = "Medical Bay";
 	req_access = list(103)
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/hangar)
 "dB" = (
@@ -474,14 +476,15 @@
 "dY" = (
 /obj/machinery/door/airlock/glass_external,
 /obj/map_helper/airlock/door/int_door,
-/obj/machinery/door/firedoor/multi_tile,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/dock_port)
 "ee" = (
-/obj/machinery/door/airlock/glass_external,
-/obj/map_helper/airlock/door/int_door,
-/turf/simulated/floor/tiled/techfloor,
-/area/ship/ert/dock_port)
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/ship/ert/barracks)
 "ef" = (
 /obj/structure/table/rack/steel,
 /obj/item/clothing/glasses/night,
@@ -819,6 +822,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/white,
 /area/ship/ert/med_surg)
 "ha" = (
@@ -999,6 +1005,9 @@
 	id = "NRV_DELTA";
 	layer = 4
 	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/mech_bay)
 "iB" = (
@@ -1072,6 +1081,9 @@
 	name = "Engineering";
 	req_access = list(103)
 	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/mech_bay)
 "jQ" = (
@@ -1127,6 +1139,9 @@
 	closed_layer = 4;
 	id = "NRV_MECHS";
 	layer = 4
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/mech_bay)
@@ -1465,13 +1480,12 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 1;
-	req_one_access = list(103)
-	},
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 4;
 	req_one_access = list(103)
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/barracks)
@@ -1540,12 +1554,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 1
-	},
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 4;
 	req_one_access = list(103)
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/barracks)
@@ -1604,8 +1618,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 1
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/mech_bay)
@@ -1676,13 +1690,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 1
-	},
 /obj/machinery/door/blast/regular{
 	closed_layer = 4;
 	id = "NRV_MECHS";
 	layer = 4
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/mech_bay)
@@ -1696,13 +1710,13 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 1
-	},
 /obj/machinery/door/blast/regular{
 	closed_layer = 4;
 	id = "NRV_DELTA";
 	layer = 4
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/mech_bay)
@@ -1846,6 +1860,18 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/med)
+"oS" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/ship/ert/barracks)
 "oV" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -1943,7 +1969,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/barracks)
 "pf" = (
-/obj/landmark/map_data/ert_ship,
 /turf/space,
 /area/space)
 "pg" = (
@@ -1989,6 +2014,9 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/white,
 /area/ship/ert/med_surg)
 "pq" = (
@@ -2025,12 +2053,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 1
-	},
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 4;
 	req_one_access = list(103)
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/med)
@@ -2370,7 +2398,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/door/firedoor/multi_tile,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/hangar)
 "sd" = (
@@ -2539,10 +2567,10 @@
 "ta" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/door/firedoor/multi_tile,
 /obj/machinery/door/airlock/multi_tile/glass{
 	req_one_access = list(103)
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/hangar)
 "tg" = (
@@ -2688,6 +2716,9 @@
 	},
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/med)
@@ -2852,10 +2883,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/door/firedoor/multi_tile,
 /obj/machinery/door/airlock/multi_tile/glass{
 	req_one_access = list(103)
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/hallways)
 "wl" = (
@@ -3485,6 +3516,9 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/armoury_dl)
 "AI" = (
@@ -3616,6 +3650,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/armoury_st)
 "Br" = (
@@ -3739,12 +3776,12 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/engine)
 "CP" = (
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 1
-	},
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 4;
 	req_one_access = list(103)
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
 /area/ship/ert/med_surg)
@@ -4169,8 +4206,8 @@
 /obj/machinery/door/airlock/glass/security{
 	req_one_access = list(103)
 	},
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 1
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/armoury_st)
@@ -5546,6 +5583,12 @@
 /obj/effect/floor_decal/industrial/outline/grey,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/armoury_dl)
+"OQ" = (
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/ship/ert/med)
 "OR" = (
 /obj/effect/floor_decal/corner/red{
 	dir = 6
@@ -5889,11 +5932,9 @@
 /turf/simulated/floor/reinforced/airless,
 /area/ship/ert/engineering)
 "Rh" = (
-/obj/machinery/door/airlock/glass_external,
-/obj/map_helper/airlock/door/int_door,
-/obj/machinery/door/firedoor/multi_tile,
-/turf/simulated/floor/tiled/techfloor,
-/area/ship/ert/dock_star)
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled/techmaint,
+/area/ship/ert/hangar)
 "Rt" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -5904,12 +5945,12 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/bridge)
 "Rv" = (
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 1
-	},
 /obj/machinery/door/airlock/glass/medical{
 	name = "Medical Bay";
 	req_access = list(103)
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
 /area/ship/ert/med_surg)
@@ -5930,8 +5971,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 1
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/armoury_dl)
@@ -6355,12 +6396,12 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/engineering)
 "VJ" = (
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 1
-	},
 /obj/machinery/door/airlock/glass/medical{
 	name = "Medical Bay";
 	req_access = list(103)
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/med)
@@ -6657,6 +6698,10 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/bridge)
+"Yv" = (
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled/techmaint,
+/area/ship/ert/hallways)
 "Yx" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -14980,7 +15025,7 @@ Sz
 Sz
 Ql
 sC
-Rh
+ch
 bJ
 uE
 yo
@@ -15102,7 +15147,7 @@ yz
 ae
 am
 dn
-ee
+dY
 ik
 lX
 oV
@@ -16669,7 +16714,7 @@ OU
 mF
 ip
 ip
-BW
+Yv
 Bc
 BW
 Js
@@ -16679,7 +16724,7 @@ BW
 VP
 sX
 Jf
-BW
+Yv
 Br
 Br
 Br
@@ -16949,7 +16994,7 @@ Ye
 Zo
 Bo
 Bo
-Jd
+oS
 mI
 Bo
 tH
@@ -16966,7 +17011,7 @@ Rz
 Yd
 ZT
 yI
-QT
+OQ
 pz
 KI
 KI
@@ -18227,7 +18272,7 @@ Ye
 Zo
 Bo
 Bo
-ip
+ee
 mZ
 Bo
 tH
@@ -18656,7 +18701,7 @@ fj
 jD
 JM
 ip
-Tl
+Rh
 JE
 Nf
 Nf

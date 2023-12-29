@@ -1,4 +1,5 @@
 /**********************Mineral deposits**************************/
+CREATE_STANDARD_TURFS(/turf/unsimulated/mineral)
 /turf/unsimulated/mineral
 	name = "impassable rock"
 	icon = 'icons/turf/walls.dmi'
@@ -409,7 +410,7 @@
 		else if(istype(W,/obj/item/storage/bag/ore))
 			var/obj/item/storage/bag/ore/S = W
 			if(S.collection_mode)
-				for(var/obj/item/ore/O in contents)
+				for(var/obj/item/stack/ore/O in contents)
 					O.attackby(W,user)
 					return
 
@@ -521,7 +522,7 @@
 					next_rock += P.excavation_amount
 					while(next_rock > 50)
 						next_rock -= 50
-						new /obj/item/ore(src)
+						new /obj/item/stack/ore(src)
 				return
 			else
 				return
@@ -574,7 +575,7 @@
 					next_rock += T.excavation_amount
 					while(next_rock > 50)
 						next_rock -= 50
-						var/obj/item/ore/O = new(src)
+						var/obj/item/stack/ore/O = new(src)
 						O.geologic_data = geologic_data
 				return
 			else
@@ -634,11 +635,11 @@
 	for(var/obj/effect/mineral/M in contents)
 		qdel(M)
 
-/turf/simulated/mineral/proc/DropMineral()
+/turf/simulated/mineral/proc/DropMineral(var/amount)
 	if(!mineral)
 		return
 	clear_ore_effects()
-	var/obj/item/ore/O = new mineral.ore (src)
+	var/obj/item/stack/ore/O = new mineral.ore(src,amount)
 	return O
 
 /turf/simulated/mineral/proc/excavate_turf()
@@ -666,16 +667,13 @@
 	if(!density)
 		if(!sand_dug)
 			sand_dug = 1
-			for(var/i=0;i<5;i++)
-				new/obj/item/ore/glass(src)
+			new/obj/item/stack/ore/glass(src,5)
 			QUEUE_SMOOTH(src)
 		return
 
 	if (mineral && mineral.result_amount)
-
 		//if the turf has already been excavated, some of it's ore has been removed
-		for (var/i = 1 to mineral.result_amount - mined_ore)
-			DropMineral()
+		DropMineral(mineral.result_amount - mined_ore)
 
 	//destroyed artifacts have weird, unpleasant effects
 	//make sure to destroy them before changing the turf though

@@ -3,7 +3,7 @@
 	desc = "Used to time things. Works well with contraptions which has to count down. Tick tock."
 	icon_state = "timer"
 	origin_tech = list(TECH_MAGNET = 1)
-	materials = list(MAT_STEEL = 500, MAT_GLASS = 50)
+	materials_base = list(MAT_STEEL = 500, MAT_GLASS = 50)
 
 	wires = WIRE_PULSE
 
@@ -75,7 +75,7 @@
 		ui = new(user, src, "AssemblyTimer", name)
 		ui.open()
 
-/obj/item/assembly/timer/ui_data(mob/user)
+/obj/item/assembly/timer/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 	var/time_left = time
 	data["seconds"] = round(time_left % 60)

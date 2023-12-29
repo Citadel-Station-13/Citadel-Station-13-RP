@@ -24,8 +24,8 @@
 	response_harm   = "smacks"
 
 	harm_intent_damage = 0
-	melee_damage_lower = 0
-	melee_damage_upper = 0
+	legacy_melee_damage_lower = 0
+	legacy_melee_damage_upper = 0
 	attacktext = list("honked")
 
 	armor_legacy_mob = list(
@@ -64,8 +64,8 @@
 	response_harm   = "smacks"
 
 	harm_intent_damage = 0
-	melee_damage_lower = 0
-	melee_damage_upper = 0
+	legacy_melee_damage_lower = 0
+	legacy_melee_damage_upper = 0
 	attacktext = list("...")
 
 	armor_legacy_mob = list(

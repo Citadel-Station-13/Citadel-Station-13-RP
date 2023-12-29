@@ -25,11 +25,6 @@ meteor_act
 	if(!P.nodamage)
 		organ.add_autopsy_data("[P.name]", P.damage)
 
-	// Tell clothing we're wearing that it got hit by a bullet/laser/etc
-	var/list/clothing = get_clothing_list_organ(organ)
-	for(var/obj/item/clothing/C in clothing)
-		C.clothing_impact(P, P.damage)
-
 	//Shrapnel
 	if(P.can_embed())
 		var/armor = getarmor_organ(organ, "bullet")
@@ -258,12 +253,6 @@ meteor_act
 	var/obj/item/organ/external/affecting = get_organ(hit_zone)
 	if(!affecting)
 		return 0
-
-	// Allow clothing to respond to being hit.
-	// This is done up here so that clothing damage occurs even if fully blocked.
-	var/list/clothing = get_clothing_list_organ(affecting)
-	for(var/obj/item/clothing/C in clothing)
-		C.clothing_impact(I, effective_force)
 
 	if(soaked >= round(effective_force*0.8))
 		effective_force -= round(effective_force*0.8)
@@ -592,7 +581,7 @@ meteor_act
 	var/damage = shank_armor_helper(W, G, user)
 	var/obj/item/organ/external/chest = get_organ(hit_zone)
 
-	if(W.edge)
+	if(W.edge || (W.damage_mode & DAMAGE_MODE_EDGE))
 		organ_chance = 75
 	user.next_move = world.time + 20
 	user.visible_message("<span class='danger'>\The [user] begins to twist \the [W] around inside [src]'s [chest]!</span>")

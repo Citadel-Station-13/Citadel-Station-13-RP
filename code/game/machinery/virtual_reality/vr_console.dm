@@ -72,7 +72,7 @@
 	add_fingerprint(user)
 
 	if(occupant && (istype(I, /obj/item/healthanalyzer) || istype(I, /obj/item/robotanalyzer)))
-		I.melee_attack_chain(occupant, user)
+		I.melee_interaction_chain(occupant, user)
 		return
 
 	if(default_deconstruction_screwdriver(user, I))

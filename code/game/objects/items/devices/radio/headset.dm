@@ -4,7 +4,7 @@
 	var/radio_desc = ""
 	icon_state = "headset"
 	item_state = null	// To remove the radio's state
-	materials = list(MAT_STEEL = 75)
+	materials_base = list(MAT_STEEL = 75)
 	subspace_transmission = 1
 	canhear_range = 0	// Can't hear headsets from very far away
 	slot_flags = SLOT_EARS
@@ -70,7 +70,7 @@
 		return ..(freq, level)
 	return -1
 
-/obj/item/radio/headset/ui_state(mob/user, datum/tgui_module/module)
+/obj/item/radio/headset/ui_state()
 	return GLOB.inventory_state
 
 /obj/item/radio/headset/syndicate

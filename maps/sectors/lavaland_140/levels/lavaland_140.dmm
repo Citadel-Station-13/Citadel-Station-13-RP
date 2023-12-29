@@ -41,12 +41,7 @@
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "bu" = (
-/obj/effect/map_effect/portal/master/side_a{
-	dir = 8;
-	name = "to_east";
-	portal_id = "eaststep"
-	},
-/turf/simulated/floor/tiled/dark/lavaland,
+/turf/level_border,
 /area/lavaland/central/transit)
 "bG" = (
 /obj/machinery/atmospherics/portables_connector,
@@ -61,6 +56,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
+"bT" = (
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/central/base/common)
 "ch" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -74,6 +75,10 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/outdoors/lava/lavaland,
 /area/lavaland/central/explored)
+"cl" = (
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/wood,
+/area/lavaland/central/base/common)
 "cF" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 4
@@ -128,12 +133,6 @@
 	},
 /turf/simulated/floor/tiled/old_tile,
 /area/lavaland/central/base/common)
-"eb" = (
-/obj/effect/map_effect/portal/line/side_a{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/dark/lavaland,
-/area/lavaland/central/transit)
 "ew" = (
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
@@ -943,6 +942,12 @@
 	},
 /turf/simulated/floor/outdoors/lava/lavaland,
 /area/lavaland/central/explored)
+"sc" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled,
+/area/lavaland/central/base/common)
 "so" = (
 /obj/machinery/atmospherics/portables_connector{
 	dir = 1
@@ -1093,6 +1098,18 @@
 	dir = 4
 	},
 /turf/simulated/floor/carpet/blucarpet,
+/area/lavaland/central/base/common)
+"vS" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
 /area/lavaland/central/base/common)
 "vW" = (
 /obj/structure/table/standard,
@@ -1566,10 +1583,6 @@
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/central/unexplored)
 "FF" = (
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 1;
-	req_one_access = list(48)
-	},
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 4;
 	name = "Dorms";
@@ -1580,6 +1593,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
@@ -1665,14 +1681,13 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/lavaland/central/base/common)
 "GT" = (
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 1;
-	req_one_access = list(48)
-	},
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 4;
 	name = "Lounge";
 	req_access = list(1,5,31,38,47,48)
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/wood,
 /area/lavaland/central/base/common)
@@ -1979,13 +1994,11 @@
 /turf/simulated/floor/wood,
 /area/lavaland/central/base/common)
 "NN" = (
-/obj/machinery/door/firedoor/multi_tile{
-	req_one_access = list(48)
-	},
 /obj/machinery/door/airlock/multi_tile/glass{
 	name = "Lounge";
 	req_one_access = list(1,5,31,38,47,48)
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/wood,
 /area/lavaland/central/base/common)
 "NV" = (
@@ -2067,13 +2080,11 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/lavaland/central/base/common)
 "Pk" = (
-/obj/machinery/door/firedoor/multi_tile{
-	req_one_access = list(48)
-	},
 /obj/machinery/door/airlock/multi_tile/glass{
 	name = "Logistics";
 	req_one_access = list(1,5,31,38,47,48)
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "Pr" = (
@@ -8101,7 +8112,7 @@ XQ
 HB
 HB
 HB
-HB
+cl
 AJ
 Bs
 ew
@@ -8381,7 +8392,7 @@ vA
 AO
 AO
 AO
-wN
+vS
 GT
 db
 db
@@ -8957,7 +8968,7 @@ Zw
 AA
 Wh
 AO
-ew
+bT
 FF
 AO
 AO
@@ -9377,7 +9388,7 @@ EX
 db
 Jl
 nE
-nE
+sc
 nE
 pn
 nE
@@ -22416,10 +22427,10 @@ Ru
 Ru
 MV
 bu
-eb
-eb
-eb
-eb
+bu
+bu
+bu
+bu
 MV
 Ru
 Ru

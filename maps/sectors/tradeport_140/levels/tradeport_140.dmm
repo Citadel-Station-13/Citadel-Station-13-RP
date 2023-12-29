@@ -1240,7 +1240,7 @@
 /obj/structure/flora/pottedplant/drooping,
 /obj/machinery/firealarm{
 	dir = 8;
-	pixel_x = -26
+	pixel_x = -24
 	},
 /turf/simulated/floor/wood,
 /area/tradeport/cafeteria)
@@ -1566,9 +1566,6 @@
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/tradeport/safari)
 "fN" = (
-/obj/machinery/door/firedoor/multi_tile{
-	req_one_access = list(160)
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/airlock/multi_tile/glass{
@@ -1578,6 +1575,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/tradeport)
 "fP" = (
@@ -1951,7 +1949,7 @@
 	pixel_x = 30;
 	req_access = list(160)
 	},
-/obj/machinery/button/windowtint/doortint{
+/obj/machinery/button/windowtint/multitint{
 	id = "traderstardoor";
 	pixel_x = -8;
 	pixel_y = -23
@@ -2127,7 +2125,7 @@
 	},
 /obj/machinery/firealarm{
 	dir = 8;
-	pixel_x = -26
+	pixel_x = -24
 	},
 /turf/simulated/wall,
 /area/tradeport/commons)
@@ -2196,8 +2194,7 @@
 	},
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor,
@@ -2267,8 +2264,7 @@
 "iJ" = (
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -2623,8 +2619,7 @@
 	name = "The Staff of Ahten-Ka"
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -4450,8 +4445,7 @@
 	name = "Harvest Blade"
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -5146,7 +5140,7 @@
 	},
 /obj/machinery/firealarm{
 	dir = 8;
-	pixel_x = -26
+	pixel_x = -24
 	},
 /turf/simulated/shuttle/floor/white,
 /area/tradeport/commons)
@@ -5263,7 +5257,7 @@
 	pixel_x = 34;
 	pixel_y = 3
 	},
-/obj/machinery/button/windowtint/doortint{
+/obj/machinery/button/windowtint/multitint{
 	id = "traderportdoor";
 	pixel_x = -8;
 	pixel_y = 23
@@ -5561,17 +5555,9 @@
 /turf/simulated/floor/tiled/freezer,
 /area/tradeport)
 "uF" = (
-/obj/machinery/door/firedoor{
-	req_one_access = list(160)
-	},
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
-	},
-/obj/structure/window/reinforced/full,
-/turf/simulated/floor/plating,
-/area/tradeport/spine)
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled/old_tile/red,
+/area/tradeport)
 "uG" = (
 /obj/structure/window/reinforced,
 /turf/simulated/floor/snow,
@@ -5622,7 +5608,7 @@
 	},
 /obj/machinery/firealarm{
 	dir = 8;
-	pixel_x = -26
+	pixel_x = -24
 	},
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
@@ -7433,8 +7419,7 @@
 	},
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/plating,
@@ -7600,7 +7585,7 @@
 "BZ" = (
 /obj/machinery/firealarm{
 	dir = 8;
-	pixel_x = -26
+	pixel_x = -24
 	},
 /turf/simulated/shuttle/floor/white,
 /area/tradeport/commons)
@@ -8367,8 +8352,7 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced,
 /obj/structure/table/marble,
@@ -9113,7 +9097,7 @@
 	},
 /obj/machinery/firealarm{
 	dir = 8;
-	pixel_x = -26
+	pixel_x = -24
 	},
 /turf/simulated/floor/carpet/blue,
 /area/tradeport/commons)
@@ -11545,14 +11529,14 @@
 /area/tradeport/commons)
 "RH" = (
 /obj/item/stool/padded,
-/obj/machinery/firealarm{
-	dir = 8;
-	pixel_x = -26
-	},
 /obj/item/toy/plushie/squid/blue,
 /obj/landmark/spawnpoint/job/trader,
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
+	},
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -24
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/commons)
@@ -13008,6 +12992,10 @@
 /area/tradeport/atmospherics)
 "Xo" = (
 /obj/effect/floor_decal/spline/fancy/wood,
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -24
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/commons)
 "Xt" = (
@@ -23006,7 +22994,7 @@ sm
 sm
 GT
 fE
-uF
+zd
 zd
 zd
 zd
@@ -23017,7 +23005,7 @@ Xt
 zd
 zd
 zd
-uF
+zd
 fE
 Mq
 sm
@@ -27834,7 +27822,7 @@ Tk
 Tk
 GT
 fE
-uF
+zd
 lm
 zd
 hC
@@ -27845,7 +27833,7 @@ Xt
 mZ
 zd
 lm
-uF
+zd
 fE
 Pf
 rX
@@ -29395,7 +29383,7 @@ lA
 VZ
 EP
 LP
-EP
+uF
 AV
 Ag
 vs

@@ -1,6 +1,8 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "ac" = (
-/obj/machinery/door/airlock/multi_tile/glass,
+/obj/machinery/door/airlock/multi_tile/glass{
+	dir = 4
+	},
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "ae" = (
@@ -504,8 +506,7 @@
 	dir = 8
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
@@ -948,8 +949,7 @@
 	},
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -5969,8 +5969,7 @@
 	dir = 10
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /turf/unsimulated/floor{
 	icon_state = "dark"
@@ -6795,6 +6794,12 @@
 	name = "plating"
 	},
 /area/centcom/terminal)
+"vO" = (
+/obj/machinery/door/firedoor/glass,
+/turf/unsimulated/floor/steel{
+	icon_state = "white"
+	},
+/area/centcom/medical)
 "vP" = (
 /turf/unsimulated/wall/planetary/virgo3b,
 /area/centcom/security)
@@ -7629,8 +7634,7 @@
 	pixel_y = 28
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 1
@@ -7738,8 +7742,7 @@
 	dir = 10
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced,
 /turf/unsimulated/floor/steel,
@@ -7899,6 +7902,12 @@
 	icon_state = "dark"
 	},
 /area/centcom/control)
+"zm" = (
+/obj/spawner/window/low_wall/full/firelocks,
+/turf/unsimulated/floor{
+	name = "plating"
+	},
+/area/centcom/security)
 "zt" = (
 /obj/machinery/button/remote/blast_door{
 	id = "HEAVY";
@@ -8586,8 +8595,7 @@
 "By" = (
 /obj/structure/table/reinforced,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/machinery/computer/skills,
 /obj/effect/floor_decal/borderfloorblack{
@@ -8849,8 +8857,7 @@
 	req_one_access = list(101)
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
@@ -9377,6 +9384,8 @@
 	},
 /area/centcom/command)
 "Et" = (
+/obj/spawner/window/low_wall/full/firelocks,
+/obj/spawner/window/low_wall/full/firelocks,
 /turf/unsimulated/floor{
 	name = "plating"
 	},
@@ -9417,15 +9426,13 @@
 "EA" = (
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "EC" = (
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -10185,8 +10192,7 @@
 /obj/machinery/door/firedoor,
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -10374,7 +10380,8 @@
 "HS" = (
 /obj/machinery/door/window/brigdoor{
 	req_access = list(63);
-	req_one_access = list(1)
+	req_one_access = list(1);
+	dir = 4
 	},
 /obj/machinery/button/remote/airlock{
 	id = "front";
@@ -10486,8 +10493,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -11728,6 +11734,9 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/blue/bordercorner2{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
 	dir = 8
 	},
 /turf/unsimulated/floor{
@@ -13339,7 +13348,8 @@
 /obj/structure/table/reinforced,
 /obj/machinery/door/window/brigdoor{
 	req_access = list(63);
-	req_one_access = list(1)
+	req_one_access = list(1);
+	dir = 4
 	},
 /turf/unsimulated/floor{
 	icon_state = "dark"
@@ -13551,8 +13561,7 @@
 "Rw" = (
 /obj/structure/table/reinforced,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -13722,6 +13731,12 @@
 	icon_state = "dark"
 	},
 /area/centcom/specops)
+"RY" = (
+/obj/structure/memorial/small/right,
+/turf/unsimulated/floor/steel{
+	icon_state = "asteroidfloor"
+	},
+/area/centcom/main_hall)
 "Sa" = (
 /obj/machinery/camera/network/crescent,
 /turf/unsimulated/floor/steel,
@@ -14956,7 +14971,8 @@
 /obj/machinery/door/airlock/multi_tile/glass{
 	req_access = list(5)
 	},
-/obj/machinery/door/firedoor/multi_tile,
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/firedoor/glass,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -15679,8 +15695,7 @@
 "YF" = (
 /obj/structure/table/reinforced,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/machinery/recharger{
 	pixel_y = 4
@@ -15913,7 +15928,7 @@
 	},
 /area/centcom/specops)
 "Zh" = (
-/obj/structure/memorial,
+/obj/structure/memorial/small/left,
 /turf/unsimulated/floor/steel{
 	icon_state = "asteroidfloor"
 	},
@@ -38925,7 +38940,7 @@ dw
 gQ
 Ft
 dw
-dw
+vO
 dw
 dw
 dw
@@ -39333,7 +39348,7 @@ dq
 wE
 wE
 wE
-jm
+RY
 jm
 wE
 ox
@@ -46703,7 +46718,7 @@ WK
 WK
 WK
 WK
-Et
+zm
 Et
 WK
 wp

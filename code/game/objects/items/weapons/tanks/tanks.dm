@@ -30,7 +30,7 @@ var/list/global/tank_gauge_cache = list()
 	var/datum/gas_mixture/air_contents = null
 	var/distribute_pressure = ONE_ATMOSPHERE
 	integrity = 20
-	max_integrity = 20
+	integrity_max = 20
 	var/valve_welded = 0
 	var/obj/item/tankassemblyproxy/proxyassembly
 
@@ -201,8 +201,8 @@ var/list/global/tank_gauge_cache = list()
 					message_admins("[key_name_admin(user)] attempted to weld a [src]. [air_contents.temperature-T0C]")
 					if(WT.welding)
 						to_chat(user, "<span class='danger'>You accidentally rake \the [W] across \the [src]!</span>")
-						max_integrity -= rand(2,6)
-						integrity = min(integrity,max_integrity)
+						integrity_max -= rand(2,6)
+						integrity = min(integrity,integrity_max)
 						air_contents.adjust_thermal_energy(rand(2000,50000))
 				WT.eyecheck(user)
 			else
@@ -224,7 +224,7 @@ var/list/global/tank_gauge_cache = list()
 	if (src.proxyassembly.assembly)
 		src.proxyassembly.assembly.attack_self(user)
 
-/obj/item/weapon/tank/ui_state(mob/user, datum/tgui_module/module)
+/obj/item/weapon/tank/ui_state()
 	return GLOB.deep_inventory_state
 
 /obj/item/tank/ui_interact(mob/user, datum/tgui/ui)
@@ -233,7 +233,7 @@ var/list/global/tank_gauge_cache = list()
 		ui = new(user, src, "Tank", name)
 		ui.open()
 
-/obj/item/tank/ui_static_data(mob/user)
+/obj/item/tank/ui_static_data(mob/user, datum/tgui/ui)
 	. = list (
 		"defaultReleasePressure" = round(TANK_DEFAULT_RELEASE_PRESSURE),
 		"minReleasePressure" = round(TANK_MIN_RELEASE_PRESSURE),
@@ -242,7 +242,7 @@ var/list/global/tank_gauge_cache = list()
 		"fragmentPressure" = round(TANK_FRAGMENT_PRESSURE)
 	)
 
-/obj/item/tank/ui_data(mob/user)
+/obj/item/tank/ui_data(mob/user, datum/tgui/ui)
 	. = list(
 		"tankPressure" = round(air_contents.return_pressure()),
 		"releasePressure" = round(distribute_pressure)
@@ -266,7 +266,7 @@ var/list/global/tank_gauge_cache = list()
 
 	return .
 
-/obj/item/tank/ui_act(action, params)
+/obj/item/tank/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 	switch(action)
@@ -521,11 +521,11 @@ var/list/global/tank_gauge_cache = list()
 		else
 			integrity-= 1
 	else
-		if(integrity < max_integrity)
+		if(integrity < integrity_max)
 			integrity++
 			if(leaking)
 				integrity++
-			if(integrity == max_integrity)
+			if(integrity == integrity_max)
 				leaking = 0
 
 /obj/item/tank/proc/onetankbomb(fill = 1)

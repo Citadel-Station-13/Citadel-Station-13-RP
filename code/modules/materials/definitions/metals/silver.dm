@@ -3,13 +3,22 @@
 	name = "silver"
 	stack_type = /obj/item/stack/material/silver
 	icon_colour = "#D1E6E3"
-	weight = 22
-	hardness = 50
-	conductivity = 63
 	stack_origin_tech = list(TECH_MATERIAL = 3)
 	sheet_singular_name = "ingot"
 	sheet_plural_name = "ingots"
 	tgui_icon_key = "silver"
+
+	relative_integrity = 0.7
+	weight_multiplier = 1
+	density = 8 * 1.4
+	relative_conductivity = 2.5
+	relative_permeability = 0
+	relative_reactivity = 0.05
+	hardness = MATERIAL_RESISTANCE_LOW
+	toughness = MATERIAL_RESISTANCE_LOW
+	refraction = MATERIAL_RESISTANCE_MODERATE
+	absorption = MATERIAL_RESISTANCE_LOW
+	nullification = MATERIAL_RESISTANCE_MODERATE
 
 /datum/material/silver/generate_recipes()
 	. = ..()

@@ -24,7 +24,7 @@
 	username = "DefaultUser[rand(100, 999)]"
 	ntnet = ntnet_global
 
-/datum/computer_file/program/chatclient/ui_act(action, params)
+/datum/computer_file/program/chatclient/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return
 
@@ -170,12 +170,12 @@
 		channel.remove_client(src)
 	..()
 
-/datum/computer_file/program/chatclient/ui_static_data(mob/user)
+/datum/computer_file/program/chatclient/ui_static_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 	data["can_admin"] = can_run(user, FALSE, ACCESS_NETWORK)
 	return data
 
-/datum/computer_file/program/chatclient/ui_data(mob/user)
+/datum/computer_file/program/chatclient/ui_data(mob/user, datum/tgui/ui)
 	if(!ntnet_global || !ntnet_global.chat_channels)
 		return list()
 

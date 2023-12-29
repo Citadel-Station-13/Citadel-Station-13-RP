@@ -155,7 +155,7 @@
 		macros_built[++macros_built.len] = L | list("index" = ++index)
 	return macros_built
 
-/obj/machinery/chemical_dispenser/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/chemical_dispenser/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["cartridges"] = ui_cartridge_data()
 	var/list/chems_built = list()
@@ -180,7 +180,7 @@
 	.["macros_full"] = length(macros) >= MAX_MACROS
 	.["macros_max_steps"] = MAX_MACRO_STEPS
 
-/obj/machinery/chemical_dispenser/ui_data(mob/user)
+/obj/machinery/chemical_dispenser/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["amount"] = dispense_amount
 	.["amount_max"] = dispense_amount_max
@@ -198,7 +198,7 @@
 	.["recharging"] = charging
 	.["recharge_rate"] = recharge_rate
 
-/obj/machinery/chemical_dispenser/ui_act(action, params)
+/obj/machinery/chemical_dispenser/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return
@@ -206,6 +206,10 @@
 	switch(action)
 		if("toggle_charge")
 			charging = !charging
+			return TRUE
+		if("guide")
+			usr.action_feedback(SPAN_WARNING("The Reagent Guidebook is currently under construction. Please check back later."), src)
+			// GLOB.guidebook.open(usr, list(/datum/prototype/guidebook_section/reagents))
 			return TRUE
 		if("reagent")
 			if(isnull(inserted?.reagents))
@@ -493,7 +497,7 @@
 	update_static_data()
 	return TRUE
 
-/obj/machinery/chemical_dispenser/drop_products(method)
+/obj/machinery/chemical_dispenser/drop_products(method, atom/where)
 	. = ..()
 	if(synthesizers && !synthesizers_swappable)
 		QDEL_LIST(synthesizers) // nope

@@ -18,19 +18,19 @@
 	var/obj/item/radio/intercom/faultreporter = new /obj/item/radio/intercom{channels=list("Supply")}(null)
 	var/gps_tag = "DRILL0"
 	var/list/ore_types = list(
-		MAT_HEMATITE = /obj/item/ore/iron,
-		MAT_URANIUM = /obj/item/ore/uranium,
-		MAT_GOLD = /obj/item/ore/gold,
-		MAT_SILVER = /obj/item/ore/silver,
-		MAT_COPPER = /obj/item/ore/copper,
-		MAT_DIAMOND = /obj/item/ore/diamond,
-		MAT_PHORON = /obj/item/ore/phoron,
-		MAT_OSMIUM = /obj/item/ore/osmium,
-		"hydrogen" = /obj/item/ore/hydrogen,
-		"silicates" = /obj/item/ore/glass,
-		MAT_CARBON = /obj/item/ore/coal,
-		MAT_MARBLE = /obj/item/ore/marble,
-		MAT_LEAD = /obj/item/ore/lead,
+		MAT_HEMATITE = /obj/item/stack/ore/iron,
+		MAT_URANIUM = /obj/item/stack/ore/uranium,
+		MAT_GOLD = /obj/item/stack/ore/gold,
+		MAT_SILVER = /obj/item/stack/ore/silver,
+		MAT_COPPER = /obj/item/stack/ore/copper,
+		MAT_DIAMOND = /obj/item/stack/ore/diamond,
+		MAT_PHORON = /obj/item/stack/ore/phoron,
+		MAT_OSMIUM = /obj/item/stack/ore/osmium,
+		"hydrogen" = /obj/item/stack/ore/hydrogen,
+		"silicates" = /obj/item/stack/ore/glass,
+		MAT_CARBON = /obj/item/stack/ore/coal,
+		MAT_MARBLE = /obj/item/stack/ore/marble,
+		MAT_LEAD = /obj/item/stack/ore/lead,
 		)
 
 	//Upgrades
@@ -104,15 +104,19 @@
 
 		for(var/metal in GLOB.ore_types)
 
-			if(contents.len >= capacity)
+			var/orecount = 0
+			for(var/obj/item/stack/ore/s in contents)
+				orecount += s.amount
+
+			if(orecount >= capacity)
 				system_error("Insufficient storage space.")
 				active = 0
 				need_player_check = 1
 				update_icon()
 				return
 
-			if(contents.len + total_harvest >= capacity)
-				total_harvest = capacity - contents.len
+			if(orecount + total_harvest >= capacity)
+				total_harvest = capacity - orecount
 
 			if(total_harvest <= 0)
 				break
@@ -295,7 +299,7 @@
 
 	var/obj/structure/ore_box/B = locate() in orange(1)
 	if(B)
-		for(var/obj/item/ore/O in contents)
+		for(var/obj/item/stack/ore/O in contents)
 			B.take(O)
 		to_chat(usr, "<span class='notice'>You unload the drill's storage cache into the ore box.</span>")
 	else

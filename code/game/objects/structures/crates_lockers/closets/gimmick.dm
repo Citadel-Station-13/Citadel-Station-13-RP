@@ -93,8 +93,9 @@
 	icon_state = "box"
 	icon_closed = "box"
 	icon_opened = "boxopen"
+	armor_type = /datum/armor/none
 	seal_tool = /obj/item/duct_tape_roll
-	health = 10
+	integrity_max = 30
 	breakout_time = 0.5
 	breakout_sound = 'sound/misc/boxtear.ogg'
 	open_sound = 'sound/misc/boxopen.ogg'

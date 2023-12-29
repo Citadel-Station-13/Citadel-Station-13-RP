@@ -242,12 +242,12 @@
 /obj/machinery/computer/ship/sensors{
 	dir = 4
 	},
-/obj/machinery/firealarm{
-	dir = 8;
-	pixel_x = -29
-	},
 /obj/machinery/light{
 	dir = 8
+	},
+/obj/machinery/firealarm/alarms_hidden{
+	dir = 8;
+	pixel_x = -26
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/shuttle/curabitur/curashuttle/cockpit)
@@ -599,16 +599,15 @@
 /area/shuttle/curabitur/curashuttle/med)
 "bi" = (
 /obj/machinery/suit_cycler/medical,
-/obj/machinery/air_alarm{
-	pixel_y = 25
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/machinery/air_alarm/alarms_hidden{
+	pixel_y = 26
 	},
 /obj/machinery/firealarm{
 	dir = 4;
-	layer = 3.3;
-	pixel_y = 26
-	},
-/obj/machinery/light{
-	dir = 1
+	pixel_x = 26
 	},
 /turf/simulated/floor/tiled,
 /area/shuttle/curabitur/curashuttle/med)
@@ -985,11 +984,6 @@
 /area/shuttle/curabitur/curashuttle/hangar)
 "bT" = (
 /obj/structure/handrail,
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 28
-	},
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
@@ -999,6 +993,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 4
 	},
+/obj/machinery/power/apc/alarms_hidden/north_bump,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/curabitur/curashuttle/eng)
 "bU" = (
@@ -1247,6 +1242,10 @@
 /obj/machinery/computer/ship/engines{
 	dir = 1
 	},
+/obj/machinery/air_alarm/alarms_hidden{
+	dir = 1;
+	pixel_y = -26
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/curabitur/curashuttle/eng)
 "cy" = (
@@ -1263,20 +1262,17 @@
 /area/shuttle/curabitur/curashuttle/med)
 "cA" = (
 /obj/structure/cable,
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
 /obj/structure/handrail{
 	dir = 1
 	},
+/obj/machinery/power/apc/alarms_hidden/south_bump,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/curabitur/curashuttle/hangar)
 "cB" = (
 /obj/machinery/light,
-/obj/machinery/air_alarm{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
-	pixel_y = -32
+	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/curabitur/curashuttle/hangar)
@@ -1343,12 +1339,12 @@
 "cL" = (
 /obj/mecha/combat/fighter/pinnace{
 	desc = "A modified Pinnace made to be able to fit a wide arsenal of equipment for rescue missions in space.";
-	health = 200;
+	integrity = 200;
 	max_equip = 1;
 	max_hull_equip = 2;
 	max_universal_equip = 2;
 	max_utility_equip = 3;
-	maxhealth = 200;
+	integrity_max = 200;
 	name = "Curabitur Pinnace"
 	},
 /obj/machinery/mech_recharger,

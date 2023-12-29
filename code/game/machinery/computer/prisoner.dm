@@ -27,7 +27,7 @@
 		ui = new(user, src, "PrisonerManagement", name)
 		ui.open()
 
-/obj/machinery/computer/prisoner/ui_data(mob/user)
+/obj/machinery/computer/prisoner/ui_data(mob/user, datum/tgui/ui)
 	var/list/chemImplants = list()
 	var/list/trackImplants = list()
 	if(screen)
@@ -64,7 +64,7 @@
 	return list("locked" = !screen, "chemImplants" = chemImplants, "trackImplants" = trackImplants)
 
 
-/obj/machinery/computer/prisoner/ui_act(action, list/params)
+/obj/machinery/computer/prisoner/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

@@ -560,9 +560,9 @@ var/global/list/light_type_cache = list()
 		needsound = FALSE // Don't play sound again until we've been turned off
 
 	if(on)
-		var/correct_range = nightshift_enabled ? brightness_range_ns : brightness_range
-		var/correct_power = nightshift_enabled ? brightness_power_ns : brightness_power
-		var/correct_color = nightshift_enabled ? brightness_color_ns : brightness_color
+		var/correct_range = nightshift_enabled ? (brightness_range_ns || brightness_range) : brightness_range
+		var/correct_power = nightshift_enabled ? (brightness_power_ns || brightness_power) : brightness_power
+		var/correct_color = nightshift_enabled ? (brightness_color_ns || brightness_color) : brightness_color
 		if(light_range != correct_range || light_power != correct_power || light_color != correct_color)
 			if(!auto_flicker)
 				switchcount++
@@ -613,17 +613,12 @@ var/global/list/light_type_cache = list()
 	broken()
 	return 1
 
-/obj/machinery/light/take_damage(var/damage)
-	if(!damage)
-		return
+/obj/machinery/light/atom_break()
+	. = ..()
 	if(status == LIGHT_EMPTY||status == LIGHT_BROKEN)
 		return
 	if(!(status == LIGHT_OK||status == LIGHT_BURNED))
 		return
-	broken()
-	return 1
-
-/obj/machinery/light/blob_act()
 	broken()
 
 // attempt to set the light's on/off status

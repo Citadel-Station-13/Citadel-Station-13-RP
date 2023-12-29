@@ -17,7 +17,7 @@
 	desc = "A head-mounted face cover designed to protect the wearer completely from space-arc eye."
 	icon_state = "welding"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "welding", SLOT_ID_LEFT_HAND = "welding")
-	materials = list(MAT_STEEL = 3000, MAT_GLASS = 1000)
+	materials_base = list(MAT_STEEL = 3000, MAT_GLASS = 1000)
 	var/up = 0
 	armor_type = /datum/armor/head/hardhat
 	inv_hide_flags = (HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE)
@@ -105,6 +105,14 @@
 		SLOT_ID_RIGHT_HAND = "engiewelding",
 		)
 
+/obj/item/clothing/head/welding/arar
+	name = "replikant welding helmet"
+	desc = "A protective welding mask designed for repair-technician replikants, the visor slits are particularly difficult to see out of."
+	icon_state = "ararwelding"
+	item_state_slots = list(
+		SLOT_ID_LEFT_HAND = "ararwelding",
+		SLOT_ID_RIGHT_HAND = "ararwelding",
+		)
 
 /*
  * Cakehat

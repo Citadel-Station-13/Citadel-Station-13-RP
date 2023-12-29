@@ -80,7 +80,7 @@
 		chassis.visible_message("The [chassis.name] armor deflects the projectile")
 		chassis.log_append_to_last("Armor saved.")
 	else
-		chassis.take_damage(round(Proj.damage*src.damage_coeff),Proj.damage_flag)
+		chassis.take_damage_legacy(round(Proj.damage*src.damage_coeff),Proj.damage_flag)
 		chassis.check_for_internal_damage(list(MECHA_INT_FIRE,MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
 		Proj.on_hit(chassis)
 	set_ready_state(0)
@@ -101,7 +101,7 @@
 	else if(istype(A, /obj))
 		var/obj/O = A
 		if(O.throw_force)
-			chassis.take_damage(round(O.throw_force*damage_coeff))
+			chassis.take_damage_legacy(round(O.throw_force*damage_coeff))
 			chassis.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
 	set_ready_state(0)
 	chassis.use_power(energy_drain)

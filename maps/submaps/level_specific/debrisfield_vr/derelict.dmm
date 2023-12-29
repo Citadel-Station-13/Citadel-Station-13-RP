@@ -8,8 +8,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/grille,
 /turf/simulated/floor/plating,
@@ -37,8 +36,7 @@
 "ae" = (
 /obj/structure/window/reinforced/full,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -734,8 +732,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/submap/debrisfield_vr/derelict/interior)
 "cF" = (
-/obj/effect/alien/egg,
-/obj/effect/alien/weeds,
+/obj/structure/alien/egg,
+/obj/structure/alien/weeds,
 /turf/simulated/floor/tiled/dark,
 /area/submap/debrisfield_vr/derelict/interior)
 "cG" = (

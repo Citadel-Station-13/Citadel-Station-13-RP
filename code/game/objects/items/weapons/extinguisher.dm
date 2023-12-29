@@ -4,12 +4,12 @@
 	icon = 'icons/obj/items.dmi'
 	icon_state = "fire_extinguisher0"
 	item_state = "fire_extinguisher"
-	hitsound = 'sound/weapons/smash.ogg'
+	attack_sound = 'sound/weapons/smash.ogg'
 	throw_force = 10
 	w_class = ITEMSIZE_NORMAL
 	throw_speed = 2
 	throw_range = 10
-	materials = list(MAT_STEEL = 90)
+	materials_base = list(MAT_STEEL = 90)
 	damage_force = 10
 	attack_verb = list("slammed", "whacked", "bashed", "thunked", "battered", "bludgeoned", "thrashed")
 	drop_sound = 'sound/items/drop/gascan.ogg'
@@ -27,7 +27,7 @@
 	desc = "A light and compact fibreglass-framed model fire extinguisher."
 	icon_state = "miniFE0"
 	item_state = "miniFE"
-	hitsound = null	//it is much lighter, after all.
+	attack_sound = null	//it is much lighter, after all.
 	throw_force = 2
 	w_class = ITEMSIZE_SMALL
 	damage_force = 3.0

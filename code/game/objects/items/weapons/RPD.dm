@@ -24,7 +24,7 @@
 	throw_range = 5
 	w_class = ITEMSIZE_NORMAL
 	slot_flags = SLOT_BELT
-	materials = list(MAT_STEEL = 20000, MAT_GLASS = 10000)
+	materials_base = list(MAT_STEEL = 20000, MAT_GLASS = 10000)
 	///Sparks system used when changing device in the UI
 	var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread
 	///Direction of the device we are going to spawn, set up in the UI
@@ -117,7 +117,7 @@
 		get_asset_datum(/datum/asset/spritesheet/pipes),
 	)
 
-/obj/item/pipe_dispenser/ui_state(mob/user, datum/tgui_module/module)
+/obj/item/pipe_dispenser/ui_state()
 	return GLOB.inventory_state
 
 /obj/item/pipe_dispenser/ui_interact(mob/user, datum/tgui/ui)
@@ -127,11 +127,11 @@
 		ui = new(user, src, "RapidPipeDispenser", name)
 		ui.open()
 
-/obj/item/pipe_dispenser/ui_static_data(mob/user)
+/obj/item/pipe_dispenser/ui_static_data(mob/user, datum/tgui/ui)
 	var/list/data = list("paint_colors" = GLOB.pipe_paint_colors)
 	return data
 
-/obj/item/pipe_dispenser/ui_data(mob/user)
+/obj/item/pipe_dispenser/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list(
 		"category" = category,
 		"piping_layer" = piping_layer,
@@ -165,7 +165,7 @@
 	data["init_directions"] = init_directions
 	return data
 
-/obj/item/pipe_dispenser/ui_act(action, params)
+/obj/item/pipe_dispenser/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return
@@ -352,7 +352,7 @@
 	playsound(src, 'sound/items/deconstruct.ogg', 50, TRUE)
 
 /obj/item/pipe_dispenser/proc/do_wrench(var/atom/target, mob/user)
-	tool.melee_attack_chain(target, user, CLICKCHAIN_HAS_PROXIMITY)
+	tool.melee_interaction_chain(target, user, CLICKCHAIN_HAS_PROXIMITY)
 
 /obj/item/pipe_dispenser/proc/mouse_wheeled(mob/user, atom/A, delta_x, delta_y, params)
 	SIGNAL_HANDLER

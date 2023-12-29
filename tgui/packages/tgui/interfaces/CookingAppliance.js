@@ -38,6 +38,7 @@ export const CookingAppliance = (props, context) => {
             {our_contents.map((content, i) => {
               if (content.empty) {
                 return (
+                // eslint-disable-next-line react/jsx-key
                   <LabeledList.Item label={"Slot #" + (i + 1)} >
                     <Button
                       onClick={() => act("slot", { slot: i + 1 })}>

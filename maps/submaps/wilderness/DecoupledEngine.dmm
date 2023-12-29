@@ -307,8 +307,7 @@
 /obj/structure/lattice,
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	dir = 2;
-	health = 1e+006
+	dir = 2
 	},
 /turf/template_noop,
 /area/submap/DecoupledEngine)
@@ -316,15 +315,13 @@
 /obj/structure/lattice,
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	dir = 2;
-	health = 1e+006
+	dir = 2
 	},
 /obj/structure/window/reinforced{
 	dir = 4
 	},
 /obj/structure/window/reinforced{
-	dir = 1;
-	health = 1e+006
+	dir = 1
 	},
 /turf/template_noop,
 /area/submap/DecoupledEngine)

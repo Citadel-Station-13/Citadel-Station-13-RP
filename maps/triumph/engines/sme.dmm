@@ -471,7 +471,6 @@
 /area/engineering/engine_room)
 "sY" = (
 /obj/machinery/firealarm{
-	dir = 1;
 	pixel_y = 24
 	},
 /obj/machinery/atmospherics/pipe/manifold/visible/green{

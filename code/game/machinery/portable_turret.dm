@@ -50,14 +50,13 @@
 	power_channel = EQUIP
 	req_one_access = list(ACCESS_SECURITY_EQUIPMENT, ACCESS_COMMAND_BRIDGE)
 
+	integrity = 200
+	integrity_max = 200
+
 	/// If the turret cover is "open" and the turret is raised.
 	var/raised = FALSE
 	/// If the turret is currently opening or closing its cover.
 	var/raising= FALSE
-	/// The turret's health.
-	var/health = 80
-	/// The turret's maximum health.
-	var/maxhealth = 80
 	/// If the turret slowly repairs itself.
 	var/auto_repair = FALSE
 	/// If the turret's behaviour control access is locked.
@@ -167,8 +166,8 @@
 	desc = "This variant appears to be much more durable."
 	req_one_access = list(ACCESS_SPECIAL_SILICONS) // Just in case.
 	installation = /obj/item/gun/energy/xray // For the armor pen.
-	health = 250 // Since lasers do 40 each.
-	maxhealth = 250
+	integrity = 250 // Since lasers do 40 each.
+	integrity_max = 250
 
 /datum/category_item/catalogue/anomalous/precursor_a/alien_turret
 	name = "Precursor Alpha Object - Turrets"
@@ -193,8 +192,8 @@
 	lethal = TRUE
 	ailock = TRUE
 	check_all = TRUE
-	health = 250 // Similar to the AI turrets.
-	maxhealth = 250
+	integrity = 250 // Similar to the AI turrets.
+	integrity_max = 250
 	turret_type = "alien"
 
 /obj/machinery/porta_turret/alien/destroyed // Turrets that are already dead, to act as a warning of what the rest of the submap contains.
@@ -210,24 +209,18 @@
 	req_one_access = list(ACCESS_COMMAND_BRIDGE)
 	icon_state = "turret_cover_industrial"
 	installation = /obj/item/gun/energy/phasegun
-	health = 200
-	maxhealth = 200
+	integrity = 200
+	integrity_max = 200
 	turret_type = "industrial"
 
 /obj/machinery/porta_turret/industrial/bullet_act(obj/projectile/Proj)
-	var/damage = round(Proj.get_structure_damage() * 1.33)
-
-	if(!damage)
-		return
-
+	. = ..()
 	if(enabled)
 		if(!attacked && !emagged)
 			attacked = TRUE
 			spawn()
 				sleep(60)
 				attacked = FALSE
-
-	take_damage(damage)
 
 /obj/machinery/porta_turret/industrial/attack_generic(mob/living/L, damage)
 	return ..(L, damage * 0.8)
@@ -237,8 +230,8 @@
 	desc = "This variant appears to be much more durable, with a rugged outer coating."
 	req_one_access = list(ACCESS_COMMAND_BRIDGE)
 	installation = /obj/item/gun/energy/gun/burst
-	health = 250
-	maxhealth = 250
+	integrity = 250
+	integrity_max = 250
 
 /obj/machinery/porta_turret/poi	//These are always angry
 	enabled = TRUE
@@ -603,29 +596,7 @@
 		else
 			to_chat(user, "<span class='notice'>Access denied.</span>")
 
-	else
-		//if the turret was attacked with the intention of harming it:
-		user.setClickCooldown(user.get_attack_speed(I))
-		take_damage(I.damage_force * 0.5)
-		if(I.damage_force * 0.5 > 1) //if the force of impact dealt at least 1 damage, the turret gets pissed off
-			if(!attacked && !emagged)
-				attacked = 1
-				spawn()
-					sleep(60)
-					attacked = 0
 		..()
-
-/obj/machinery/porta_turret/attack_generic(mob/living/L, damage)
-	if(isanimal(L))
-		var/mob/living/simple_mob/S = L
-		if(damage >= STRUCTURE_MIN_DAMAGE_THRESHOLD)
-			var/incoming_damage = round(damage - (damage / 5)) //Turrets are slightly armored, assumedly.
-			visible_message("<span class='danger'>\The [S] [pick(S.attacktext)] \the [src]!</span>")
-			take_damage(incoming_damage)
-			S.do_attack_animation(src)
-			return 1
-		visible_message("<span class='notice'>\The [L] bonks \the [src]'s casing!</span>")
-	return ..()
 
 /obj/machinery/porta_turret/emag_act(remaining_charges, mob/user)
 	if(!emagged)
@@ -640,34 +611,19 @@
 		enabled = TRUE //turns it back on. The cover popUp() popDown() are automatically called in process(), no need to define it here
 		return 1
 
-/obj/machinery/porta_turret/take_damage(force)
-	if(!raised && !raising)
-		force = force / 8
-		if(force < 5)
-			return
-
-	health -= force
-	if(force > 5 && prob(45))
+/obj/machinery/porta_turret/damage_integrity(amount, gradual, do_not_break)
+	. = ..()
+	if(!gradual && prob(45) && amount > 5)
 		spark_system.start()
-	if(health <= 0)
-		die()	//the death process :(
 
-/obj/machinery/porta_turret/bullet_act(obj/projectile/Proj)
-	var/damage = Proj.get_structure_damage()
+/obj/machinery/porta_turret/bullet_act(obj/projectile/P, def_zone)
+	aggro_for(6 SECONDS)
+	return ..()
 
-	if(!damage)
-		return
-
-	if(enabled)
-		if(!attacked && !emagged)
-			attacked = 1
-			spawn()
-				sleep(60)
-				attacked = FALSE
-
-	..()
-
-	take_damage(damage)
+/obj/machinery/porta_turret/melee_act(mob/user, obj/item/weapon, target_zone, mult)
+	. = ..()
+	if(. > 0)
+		aggro_for(6 SECONDS, user)
 
 /obj/machinery/porta_turret/emp_act(severity)
 	if(enabled)
@@ -701,21 +657,8 @@
 		if(!enabled)
 			enabled = TRUE
 
-/obj/machinery/porta_turret/legacy_ex_act(severity)
-	switch (severity)
-		if(1)
-			qdel(src)
-		if(2)
-			if(prob(25))
-				qdel(src)
-			else
-				take_damage(initial(health) * 8) //should instakill most turrets
-		if(3)
-			take_damage(initial(health) * 8 / 3) //Level 4 is too weak to bother turrets
-
-/obj/machinery/porta_turret/proc/die()	//called when the turret dies, ie, health <= 0
-	health = 0
-	machine_stat |= BROKEN	//enables the BROKEN bit
+/obj/machinery/porta_turret/atom_break()
+	. = ..()
 	spark_system.start()	//creates some sparks because they look cool
 	update_icon()
 
@@ -745,9 +688,9 @@
 				spawn()
 					popDown() // no valid targets, close the cover
 
-	if(auto_repair && (health < maxhealth))
+	if(auto_repair && (integrity < integrity_max))
 		use_power(20000)
-		health = min(health+1, maxhealth) // 1HP for 20kJ
+		heal_integrity(1)
 
 /obj/machinery/porta_turret/proc/assess_and_assign(mob/living/L, list/targets, list/secondarytargets)
 	switch(assess_living(L))
@@ -937,6 +880,11 @@
 	// Reset the time needed to go back down, since we just tried to shoot at someone.
 	timeout = 10
 
+/obj/machinery/porta_turret/proc/aggro_for(seconds, mob/aggressor)
+	timeout = round(seconds / 2)
+	spawn(-1)
+		popUp()
+
 /datum/turret_checks
 	var/enabled
 	var/lethal
@@ -1007,7 +955,7 @@
 				return
 
 		if(1)
-			if(istype(I, /obj/item/stack/material) && I.get_material_name() == MAT_STEEL)
+			if(I.is_material_stack_of(/datum/material/steel))
 				var/obj/item/stack/M = I
 				if(M.use(2))
 					to_chat(user, "<span class='notice'>You add some metal armor to the interior frame.</span>")
@@ -1087,7 +1035,7 @@
 			//attack_hand() removes the prox sensor
 
 		if(6)
-			if(istype(I, /obj/item/stack/material) && I.get_material_name() == MAT_STEEL)
+			if(I.is_material_stack_of(/datum/material/steel))
 				var/obj/item/stack/M = I
 				if(M.use(2))
 					to_chat(user, "<span class='notice'>You add some metal armor to the exterior frame.</span>")

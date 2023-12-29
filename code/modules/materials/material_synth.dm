@@ -4,38 +4,36 @@
 	uses_charge = 1
 	charge_costs = list(1000)
 	gender = NEUTER
-	materials = null // Don't shove it in the autholathe.
 
 /obj/item/stack/material/cyborg/Initialize(mapload, new_amount, merge)
 	. = ..()
 	name = "[material.display_name] synthesizer"
 	desc = "A device that synthesises [material.display_name]."
-	materials = null
 
 /obj/item/stack/material/cyborg/update_strings()
 	return
 
 /obj/item/stack/material/cyborg/plastic
 	icon_state = "sheet-plastic"
-	default_type = "plastic"
+	material = /datum/material/plastic
 
 /obj/item/stack/material/cyborg/steel
 	icon_state = "sheet-metal"
-	default_type = "steel"
+	material = /datum/material/steel
 
 /obj/item/stack/material/cyborg/plasteel
 	icon_state = "sheet-plasteel"
-	default_type = "plasteel"
+	material = /datum/material/plasteel
 
 /obj/item/stack/material/cyborg/wood
 	icon_state = "sheet-wood"
-	default_type = "wood"
+	material = /datum/material/wood_plank
 
 /obj/item/stack/material/cyborg/glass
 	icon_state = "sheet-glass"
-	default_type = "glass"
+	material = /datum/material/glass
 
 /obj/item/stack/material/cyborg/glass/reinforced
 	icon_state = "sheet-rglass"
-	default_type = "rglass"
+	material = /datum/material/glass/reinforced
 	charge_costs = list(500, 1000)

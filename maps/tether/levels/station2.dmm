@@ -792,6 +792,24 @@
 	},
 /turf/simulated/floor/plating,
 /area/tether/station/visitorhallway/laundry)
+"bF" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/tether/station/burial)
 "bG" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 4
@@ -1277,9 +1295,11 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/foyer)
 "cF" = (
-/obj/machinery/door/firedoor/multi_tile,
 /obj/machinery/door/airlock/multi_tile/glass{
 	name = "Chapel Services";
+	dir = 8
+	},
+/obj/machinery/door/firedoor{
 	dir = 8
 	},
 /turf/simulated/floor/wood,
@@ -1772,12 +1792,12 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/general)
 "dG" = (
-/obj/machinery/door/firedoor/multi_tile,
 /obj/machinery/door/airlock/multi_tile/glass{
 	name = "Evacuation Hallway"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
 /area/hallway/station/port)
 "dH" = (
@@ -7091,7 +7111,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/exploration)
 "ov" = (
-/obj/landmark/map_data/virgo3b,
 /turf/space,
 /area/space)
 "ow" = (
@@ -12456,6 +12475,10 @@
 /obj/structure/flora/ausbushes/sparsegrass,
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/tether/exploration/pilot_office)
+"yQ" = (
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/tiled,
+/area/hallway/station/port)
 "yR" = (
 /obj/machinery/media/jukebox,
 /turf/simulated/floor/tiled/steel_grid,
@@ -15271,7 +15294,7 @@
 /obj/machinery/door/airlock/multi_tile/glass{
 	name = "Funerary Services"
 	},
-/obj/machinery/door/firedoor/multi_tile,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/wood,
 /area/tether/station/burial)
 "EA" = (
@@ -20040,8 +20063,7 @@
 /obj/structure/window/reinforced/full,
 /obj/machinery/door/firedoor/glass,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/cockpit)
@@ -46452,7 +46474,7 @@ qt
 Lh
 Vz
 qz
-qz
+tw
 qz
 qz
 HH
@@ -48002,7 +48024,7 @@ iq
 ud
 ud
 iq
-xz
+bF
 cF
 ro
 ro
@@ -51100,14 +51122,14 @@ Fv
 nm
 bK
 ZB
-Wl
+yQ
 kN
 Wl
 Wl
 Wl
 Wl
 ZB
-Wl
+yQ
 kN
 Wl
 Wl

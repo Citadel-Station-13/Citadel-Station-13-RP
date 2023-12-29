@@ -6,8 +6,8 @@
 	desc = "An even bigger stompy mech!!"
 
 	movement_cooldown = 10
-	melee_damage_lower = 30
-	melee_damage_upper = 30
+	legacy_melee_damage_lower = 30
+	legacy_melee_damage_upper = 30
 	melee_attack_delay = 1 SECOND
 	attacktext = list("punched", "slammed", "uppercutted", "pummeled")
 

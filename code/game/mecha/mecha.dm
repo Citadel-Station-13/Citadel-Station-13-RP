@@ -23,13 +23,14 @@
 	description_info = "Alt click to strafe."
 	icon = 'icons/mecha/mecha.dmi'
 	/// Dense. To raise the heat.
-	density = 1
+	density = TRUE
 	/// Opaque. Menacing.
-	opacity = 1
+	opacity = TRUE
 	/// No pulling around.
-	anchored = 1
-	/// And no deleting hoomans inside.
-	unacidable = 1
+	anchored = TRUE
+	integrity_flags = INTEGRITY_ACIDPROOF | INTEGRITY_FIREPROOF
+	integrity = 300
+	integrity_max = 300
 	/// Icon draw layer.
 	layer = MOB_LAYER
 	/// Byond implementation is bugged.
@@ -47,10 +48,6 @@
 	/// What direction will the mech face when entered/powered on? Defaults to South.
 	var/dir_in = 2
 	var/step_energy_drain = 10
-	/// Health is healthdrain = 10
-	var/health = 300
-	/// Maxhealth is maxhealth.
-	var/maxhealth = 300
 	/// Chance to deflect the incoming projectiles, hits, or lesser the effect of legacy_ex_act.
 	var/deflect_chance = 10
 	/// The values in this list show how much damage will pass through, not how much will be absorbed.
@@ -468,7 +465,7 @@
 		. += "It does not seem to have a completed hull."
 
 
-	var/integrity = health/initial(health)*100
+	var/integrity = src.integrity/initial(src.integrity)*100
 	switch(integrity)
 		if(85 to 100)
 			. += "It's fully intact."
@@ -762,8 +759,8 @@
 		return 0
 
 	if(overload)//Check if you have leg overload
-		health--
-		if(health < initial(health) - initial(health)/3)
+		integrity--
+		if(integrity < initial(integrity) - initial(integrity)/3)
 			overload = 0
 			step_energy_drain = initial(step_energy_drain)
 			src.occupant_message("<font color='red'>Leg actuators damage threshold exceded. Disabling overload.</font>")
@@ -890,7 +887,7 @@
 /obj/mecha/proc/check_for_internal_damage(var/list/possible_int_damage,var/ignore_threshold=null)
 	if(!islist(possible_int_damage) || !length(possible_int_damage)) return
 	if(prob(30))
-		if(ignore_threshold || src.health*100/initial(src.health) < src.internal_damage_threshold)
+		if(ignore_threshold || src.integrity*100/initial(src.integrity) < src.internal_damage_threshold)
 			for(var/T in possible_int_damage)
 				if(internal_damage & T)
 					possible_int_damage -= T
@@ -900,7 +897,7 @@
 			return	//It already hurts to get some, lets not get both.
 
 	if(prob(10))
-		if(ignore_threshold || src.health*100/initial(src.health) < src.internal_damage_threshold)
+		if(ignore_threshold || src.integrity*100/initial(src.integrity) < src.internal_damage_threshold)
 			var/obj/item/mecha_parts/mecha_equipment/destr = SAFEPICK(equipment)
 			if(destr)
 				destr.destroy()
@@ -936,14 +933,14 @@
 ////////  Health related procs  ////////
 ////////////////////////////////////////
 
-/obj/mecha/take_damage(amount, type="brute")
+/obj/mecha/proc/take_damage_legacy(amount, type="brute")
 	update_damage_alerts()
 	if(amount)
 		var/damage = absorbDamage(amount,type)
 
 		damage = components_handle_damage(damage,type)
 
-		health -= damage
+		damage_integrity(damage)
 
 		update_health()
 		log_append_to_last("Took [damage] points of damage. Damage type: \"[type]\".",1)
@@ -994,13 +991,13 @@
 
 /obj/mecha/airlock_crush(var/crush_damage)
 	..()
-	take_damage(crush_damage)
+	take_damage_legacy(crush_damage)
 	if(prob(50))	//Try to avoid that.
 		check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
 	return 1
 
 /obj/mecha/proc/update_health()
-	if(src.health > 0)
+	if(src.integrity > 0)
 		src.spark_system.start()
 	else
 		qdel(src)
@@ -1028,7 +1025,7 @@
 		var/mob/living/carbon/human/H = user
 		if(H.species.can_shred(user))
 			if(!prob(temp_deflect_chance))
-				src.take_damage(15)	//The take_damage() proc handles armor values
+				src.take_damage_legacy(15)	//The take_damage_legacy() proc handles armor values
 				if(prob(25))	//Why would they get free internal damage. At least make it a bit RNG.
 					src.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
 				playsound(src, 'sound/weapons/slash.ogg', 50, 1, -1)
@@ -1045,7 +1042,7 @@
 			src.log_append_to_last("Armor saved.")
 		return
 	else if ((MUTATION_HULK in user.mutations) && !prob(temp_deflect_chance))
-		src.take_damage(15)	//The take_damage() proc handles armor values
+		src.take_damage_legacy(15)	//The take_damage_legacy() proc handles armor values
 		if(prob(25))	//Hulks punch hard but lets not give them consistent internal damage.
 			src.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
 		user.visible_message("<font color='red'><b>[user] hits [src.name], doing some damage.</b></font>", "<font color='red'><b>You hit [src.name] with all your might. The metal creaks and bends.</b></font>")
@@ -1117,7 +1114,7 @@
 				pass_damage = ME.handle_ranged_contact(A, pass_damage)
 
 			pass_damage = (pass_damage*pass_damage_reduc_mod)//Applying damage reduction
-			src.take_damage(pass_damage)	//The take_damage() proc handles armor values
+			src.take_damage_legacy(pass_damage)	//The take_damage_legacy() proc handles armor values
 			if(pass_damage > internal_damage_minimum)	//Only decently painful attacks trigger a chance of mech damage.
 				src.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
 	return
@@ -1189,7 +1186,7 @@
 			pass_damage_reduc_mod = 1
 
 		pass_damage = (pass_damage_reduc_mod*pass_damage)//Apply damage reduction before usage.
-		src.take_damage(pass_damage, Proj.damage_flag)	//The take_damage() proc handles armor values
+		src.take_damage_legacy(pass_damage, Proj.damage_flag)	//The take_damage_legacy() proc handles armor values
 		if(prob(25))
 			spark_system.start()
 		if(pass_damage > internal_damage_minimum)	//Only decently painful attacks trigger a chance of mech damage.
@@ -1233,18 +1230,18 @@
 		src.log_append_to_last("Armor saved, changing severity to [severity].")
 	switch(severity)
 		if(1.0)
-			src.take_damage(initial(src.health), "bomb")
+			src.take_damage_legacy(initial(src.integrity), "bomb")
 		if(2.0)
 			if (prob(30))
-				src.take_damage(initial(src.health), "bomb")
+				src.take_damage_legacy(initial(src.integrity), "bomb")
 			else
-				src.take_damage(initial(src.health)/2, "bomb")
+				src.take_damage_legacy(initial(src.integrity)/2, "bomb")
 				src.check_for_internal_damage(list(MECHA_INT_FIRE,MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST,MECHA_INT_SHORT_CIRCUIT),1)
 		if(3.0)
 			if (prob(5))
 				qdel(src)
 			else
-				src.take_damage(initial(src.health)/5, "bomb")
+				src.take_damage_legacy(initial(src.integrity)/5, "bomb")
 				src.check_for_internal_damage(list(MECHA_INT_FIRE,MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST,MECHA_INT_SHORT_CIRCUIT),1)
 	return
 
@@ -1252,7 +1249,7 @@
 /obj/mecha/attack_blob(mob/user as mob)
 	src.log_message("Attack by blob. Attacker - [user].",1)
 	if(!prob(src.deflect_chance))
-		src.take_damage(6)
+		src.take_damage_legacy(6)
 		src.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
 		playsound(src, 'sound/effects/blobattack.ogg', 50, 1, -1)
 		to_chat(user, "<span class='danger'>You smash at the armored suit!</span>")
@@ -1273,7 +1270,7 @@
 /obj/mecha/emp_act(severity)
 	if(get_charge())
 		use_power((cell.charge/2)/severity)
-		take_damage(50 / severity,"energy")
+		take_damage_legacy(50 / severity,"energy")
 	src.log_message("EMP detected",1)
 	if(prob(80))
 		check_for_internal_damage(list(MECHA_INT_FIRE,MECHA_INT_TEMP_CONTROL,MECHA_INT_CONTROL_LOST,MECHA_INT_SHORT_CIRCUIT),1)
@@ -1285,7 +1282,7 @@
 /obj/mecha/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 	if(exposed_temperature>src.max_temperature)
 		src.log_message("Exposed to dangerous temperature.",1)
-		src.take_damage(5,"fire")	//The take_damage() proc handles armor values
+		src.take_damage_legacy(5,"fire")	//The take_damage_legacy() proc handles armor values
 		src.check_for_internal_damage(list(MECHA_INT_FIRE, MECHA_INT_TEMP_CONTROL))
 	return
 
@@ -1337,7 +1334,7 @@
 		pass_damage = (pass_damage*pass_damage_reduc_mod)	//Apply the reduction of damage from not having enough armor penetration. This is not regular armor values at play.
 		for(var/obj/item/mecha_parts/mecha_equipment/ME in equipment)
 			pass_damage = ME.handle_projectile_contact(W, user, pass_damage)
-		src.take_damage(pass_damage,W.damtype)	//The take_damage() proc handles armor values
+		src.take_damage_legacy(pass_damage,W.damtype)	//The take_damage_legacy() proc handles armor values
 		if(pass_damage > internal_damage_minimum)	//Only decently painful attacks trigger a chance of mech damage.
 			src.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
 	return
@@ -1485,9 +1482,9 @@
 				to_chat(user, "<span class='notice'>You repair the damaged gas tank.</span>")
 		else
 			return
-		if(src.health<initial(src.health))
+		if(src.integrity<initial(src.integrity))
 			to_chat(user, "<span class='notice'>You repair some damage to [src.name].</span>")
-			src.health += min(10, initial(src.health)-src.health)
+			src.integrity += min(10, initial(src.integrity)-src.integrity)
 			update_damage_alerts()
 		else
 			to_chat(user, "The [src.name] is at full integrity")
@@ -1508,10 +1505,10 @@
 
 				if(C)
 
-					if(C.integrity < C.max_integrity)
-						while(C.integrity < C.max_integrity && NP && do_after(user, 1 SECOND, src))
+					if(C.integrity < C.integrity_max)
+						while(C.integrity < C.integrity_max && NP && do_after(user, 1 SECOND, src))
 							if(NP.use(1))
-								C.adjust_integrity(10)
+								C.adjust_integrity_mecha(10)
 
 						to_chat(user, "<span class='notice'>You repair damage to \the [C].</span>")
 
@@ -1536,7 +1533,7 @@
 		else
 			src.occupant_message("<font color='red'><b>[user] hits [src] with [W].</b></font>")
 			user.visible_message("<font color='red'><b>[user] hits [src] with [W].</b></font>", "<font color='red'><b>You hit [src] with [W].</b></font>")
-			src.take_damage(W.force,W.damtype)
+			src.take_damage_legacy(W.force,W.damtype)
 			src.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
 */
 	return
@@ -2117,7 +2114,7 @@
 
 
 /obj/mecha/proc/get_stats_part()
-	var/integrity = health/initial(health)*100
+	var/integrity = src.integrity/initial(src.integrity)*100
 	var/cell_charge = get_charge()
 	var/tank_pressure = internal_tank ? round(internal_tank.return_pressure(),0.01) : "None"
 	var/tank_temperature = internal_tank ? internal_tank.return_temperature() : "Unknown"
@@ -2126,9 +2123,9 @@
 	var/obj/item/mecha_parts/component/hull/HC = internal_components[MECH_HULL]
 	var/obj/item/mecha_parts/component/armor/AC = internal_components[MECH_ARMOR]
 
-	var/output = {"[report_internal_damage()]
-						<b>Armor Integrity: </b>[AC?"[round(AC.integrity / AC.max_integrity * 100, 0.1)]%":"<span class='warning'>ARMOR MISSING</span>"]<br>
-						<b>Hull Integrity: </b>[HC?"[round(HC.integrity / HC.max_integrity * 100, 0.1)]%":"<span class='warning'>HULL MISSING</span>"]<br>
+	var/output_text = {"[report_internal_damage()]
+						<b>Armor Integrity: </b>[AC?"[round(AC.integrity / AC.integrity_max * 100, 0.1)]%":"<span class='warning'>ARMOR MISSING</span>"]<br>
+						<b>Hull Integrity: </b>[HC?"[round(HC.integrity / HC.integrity_max * 100, 0.1)]%":"<span class='warning'>HULL MISSING</span>"]<br>
 						[integrity<30?"<font color='red'><b>DAMAGE LEVEL CRITICAL</b></font><br>":null]
 						<b>Chassis Integrity: </b> [integrity]%<br>
 						<b>Powercell charge: </b>[isnull(cell_charge)?"No powercell installed":"[cell.percent()]%"]<br>
@@ -2143,26 +2140,26 @@
 
 
 	if(defence_mode_possible)
-		output += "<b>Defence mode: [defence_mode?"on":"off"]</b><br>"
+		output_text += "<b>Defence mode: [defence_mode?"on":"off"]</b><br>"
 	if(overload_possible)
-		output += "<b>Leg actuators overload: [overload?"on":"off"]</b><br>"
+		output_text += "<b>Leg actuators overload: [overload?"on":"off"]</b><br>"
 	if(smoke_possible)
-		output += "<b>Smoke:</b> [smoke_reserve]<br>"
+		output_text += "<b>Smoke:</b> [smoke_reserve]<br>"
 	if(thrusters_possible)
-		output += "<b>Thrusters:</b> [thrusters?"on":"off"]<br>"
+		output_text += "<b>Thrusters:</b> [thrusters?"on":"off"]<br>"
 
 //Cargo components. Keep this last otherwise it does weird alignment issues.
-	output += "<b>Cargo Compartment Contents:</b><div style=\"margin-left: 15px;\">"
+	output_text += "<b>Cargo Compartment Contents:</b><div style=\"margin-left: 15px;\">"
 	if(src.cargo.len)
 		for(var/obj/O in src.cargo)
-			output += "<a href='?src=\ref[src];drop_from_cargo=\ref[O]'>Unload</a> : [O]<br>"
+			output_text += "<a href='?src=\ref[src];drop_from_cargo=\ref[O]'>Unload</a> : [O]<br>"
 	else
-		output += "Nothing"
-	output += "</div>"
-	return output
+		output_text += "Nothing"
+	output_text += "</div>"
+	return output_text
 
 /obj/mecha/proc/get_commands()
-	var/output = {"<div class='wr'>
+	var/output_text = {"<div class='wr'>
 						<div class='header'>Electronics</div>
 						<div class='links'>
 						<a href='?src=\ref[src];toggle_lights=1'>Toggle Lights</a><br>
@@ -2198,29 +2195,29 @@
 						<hr>
 						[(/obj/mecha/verb/eject in src.verbs)?"<a href='?src=\ref[src];eject=1'>Eject</a><br>":null]
 						"}
-	return output
+	return output_text
 
 /obj/mecha/proc/get_equipment_menu() //outputs mecha html equipment menu
-	var/output
+	var/output_text
 	if(equipment.len)
-		output += {"<div class='wr'>
+		output_text += {"<div class='wr'>
 						<div class='header'>Equipment</div>
 						<div class='links'>"}
 		for(var/obj/item/mecha_parts/mecha_equipment/W in hull_equipment)
-			output += "Hull Module: [W.name] <a href='?src=\ref[W];detach=1'>Detach</a><br>"
+			output_text += "Hull Module: [W.name] <a href='?src=\ref[W];detach=1'>Detach</a><br>"
 		for(var/obj/item/mecha_parts/mecha_equipment/W in weapon_equipment)
-			output += "Weapon Module: [W.name] <a href='?src=\ref[W];detach=1'>Detach</a><br>"
+			output_text += "Weapon Module: [W.name] <a href='?src=\ref[W];detach=1'>Detach</a><br>"
 		for(var/obj/item/mecha_parts/mecha_equipment/W in utility_equipment)
-			output += "Utility Module: [W.name] <a href='?src=\ref[W];detach=1'>Detach</a><br>"
+			output_text += "Utility Module: [W.name] <a href='?src=\ref[W];detach=1'>Detach</a><br>"
 		for(var/obj/item/mecha_parts/mecha_equipment/W in universal_equipment)
-			output += "Universal Module: [W.name] <a href='?src=\ref[W];detach=1'>Detach</a><br>"
+			output_text += "Universal Module: [W.name] <a href='?src=\ref[W];detach=1'>Detach</a><br>"
 		for(var/obj/item/mecha_parts/mecha_equipment/W in special_equipment)
-			output += "Special Module: [W.name] <a href='?src=\ref[W];detach=1'>Detach</a><br>"
+			output_text += "Special Module: [W.name] <a href='?src=\ref[W];detach=1'>Detach</a><br>"
 		for(var/obj/item/mecha_parts/mecha_equipment/W in micro_utility_equipment)
-			output += "Micro Utility Module: [W.name] <a href='?src=\ref[W];detach=1'>Detach</a><br>"
+			output_text += "Micro Utility Module: [W.name] <a href='?src=\ref[W];detach=1'>Detach</a><br>"
 		for(var/obj/item/mecha_parts/mecha_equipment/W in micro_weapon_equipment)
-			output += "Micro Weapon Module: [W.name] <a href='?src=\ref[W];detach=1'>Detach</a><br>"
-	output += {"<b>Available hull slots:</b> [max_hull_equip-hull_equipment.len]<br>
+			output_text += "Micro Weapon Module: [W.name] <a href='?src=\ref[W];detach=1'>Detach</a><br>"
+	output_text += {"<b>Available hull slots:</b> [max_hull_equip-hull_equipment.len]<br>
 	 <b>Available weapon slots:</b> [max_weapon_equip-weapon_equipment.len]<br>
 	 <b>Available micro weapon slots:</b> [max_micro_weapon_equip-micro_weapon_equipment.len]<br>
 	 <b>Available utility slots:</b> [max_utility_equip-utility_equipment.len]<br>
@@ -2229,26 +2226,26 @@
 	 <b>Available special slots:</b> [max_special_equip-special_equipment.len]<br>
 	 </div></div>
 	 "}
-	return output
+	return output_text
 
 /obj/mecha/proc/get_equipment_list() //outputs mecha equipment list in html
 	if(!equipment.len)
 		return
-	var/output = "<b>Equipment:</b><div style=\"margin-left: 15px;\">"
+	var/output_text = "<b>Equipment:</b><div style=\"margin-left: 15px;\">"
 	for(var/obj/item/mecha_parts/mecha_equipment/MT in equipment)
-		output += "<div id='\ref[MT]'>[MT.get_equip_info()]</div>"
-	output += "</div>"
-	return output
+		output_text += "<div id='\ref[MT]'>[MT.get_equip_info()]</div>"
+	output_text += "</div>"
+	return output_text
 
 
 /obj/mecha/proc/get_log_html()
-	var/output = "<html><head><title>[src.name] Log</title></head><body style='font: 13px 'Courier', monospace;'>"
+	var/output_text = "<html><head><title>[src.name] Log</title></head><body style='font: 13px 'Courier', monospace;'>"
 	for(var/list/entry in log)
-		output += {"<div style='font-weight: bold;'>[time2text(entry["time"],"DDD MMM DD hh:mm:ss")] [game_year]</div>
+		output_text += {"<div style='font-weight: bold;'>[time2text(entry["time"],"DDD MMM DD hh:mm:ss")] [game_year]</div>
 						<div style='margin-left:15px; margin-bottom:10px;'>[entry["message"]]</div>
 						"}
-	output += "</body></html>"
-	return output
+	output_text += "</body></html>"
+	return output_text
 
 /obj/mecha/proc/get_log_tgui()
 	var/list/data = list()
@@ -2263,7 +2260,7 @@
 
 /obj/mecha/proc/output_access_dialog(obj/item/card/id/id_card, mob/user)
 	if(!id_card || !user) return
-	var/output = {"<html>
+	var/output_text = {"<html>
 						<head><style>
 						h1 {font-size:15px;margin-bottom:4px;}
 						body {color: #00ff00; background: #000000; font-family:"Courier New", Courier, monospace; font-size: 12px;}
@@ -2273,16 +2270,16 @@
 						<body>
 						<h1>Following keycodes are present in this system:</h1>"}
 	for(var/a in operation_req_access)
-		output += "[get_access_desc(a)] - <a href='?src=\ref[src];del_req_access=[a];user=\ref[user];id_card=\ref[id_card]'>Delete</a><br>"
-	output += "<hr><h1>Following keycodes were detected on portable device:</h1>"
+		output_text += "[get_access_desc(a)] - <a href='?src=\ref[src];del_req_access=[a];user=\ref[user];id_card=\ref[id_card]'>Delete</a><br>"
+	output_text += "<hr><h1>Following keycodes were detected on portable device:</h1>"
 	for(var/a in id_card.access)
 		if(a in operation_req_access) continue
 		var/a_name = get_access_desc(a)
 		if(!a_name) continue //there's some strange access without a name
-		output += "[a_name] - <a href='?src=\ref[src];add_req_access=[a];user=\ref[user];id_card=\ref[id_card]'>Add</a><br>"
-	output += "<hr><a href='?src=\ref[src];finish_req_access=1;user=\ref[user]'>Finish</a> <font color='red'>(Warning! The ID upload panel will be locked. It can be unlocked only through Exosuit Interface.)</font>"
-	output += "</body></html>"
-	user << browse(output, "window=exosuit_add_access")
+		output_text += "[a_name] - <a href='?src=\ref[src];add_req_access=[a];user=\ref[user];id_card=\ref[id_card]'>Add</a><br>"
+	output_text += "<hr><a href='?src=\ref[src];finish_req_access=1;user=\ref[user]'>Finish</a> <font color='red'>(Warning! The ID upload panel will be locked. It can be unlocked only through Exosuit Interface.)</font>"
+	output_text += "</body></html>"
+	user << browse(output_text, "window=exosuit_add_access")
 	onclose(user, "exosuit_add_access")
 	return
 
@@ -2293,7 +2290,7 @@
 	if (locate(/obj/item/mecha_parts/mecha_equipment/tool/passenger) in contents)
 		maint_options += "<a href='?src=\ref[src];remove_passenger=1;user=\ref[user]'>Remove Passenger</a>"
 
-	var/output = {"<html>
+	var/output_text = {"<html>
 						<head>
 						<style>
 						body {color: #00ff00; background: #000000; font-family:"Courier New", Courier, monospace; font-size: 12px;}
@@ -2306,7 +2303,7 @@
 						[(state>0) ? maint_options : ""]
 						</body>
 						</html>"}
-	user << browse(output, "window=exosuit_maint_console")
+	user << browse(output_text, "window=exosuit_maint_console")
 	onclose(user, "exosuit_maint_console")
 	return
 
@@ -2673,7 +2670,7 @@
 		return
 
 	else
-		src.take_damage(damage)	//Apply damage - The take_damage() proc handles armor values
+		src.take_damage_legacy(damage)	//Apply damage - The take_damage_legacy() proc handles armor values
 		if(damage > internal_damage_minimum)	//Only decently painful attacks trigger a chance of mech damage.
 			src.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
 		visible_message("<span class='danger'>[user] [attack_message] [src]!</span>")
@@ -2757,7 +2754,7 @@
 		if(mecha.cabin_air && mecha.cabin_air.volume>0)
 			mecha.cabin_air.temperature = min(6000+T0C, mecha.cabin_air.temperature+rand(10,15))
 			if(mecha.cabin_air.temperature>mecha.max_temperature/2)
-				mecha.take_damage(4/round(mecha.max_temperature/mecha.cabin_air.temperature,0.1),"fire")	//The take_damage() proc handles armor values
+				mecha.take_damage_legacy(4/round(mecha.max_temperature/mecha.cabin_air.temperature,0.1),"fire")	//The take_damage_legacy() proc handles armor values
 	if(mecha.hasInternalDamage(MECHA_INT_TEMP_CONTROL)) //stop the mecha_preserve_temp loop datum
 		mecha.pr_int_temp_processor.stop()
 	if(mecha.hasInternalDamage(MECHA_INT_TANK_BREACH)) //remove some air from internal tank
@@ -2819,7 +2816,7 @@
 						</html>"}
 
 	occupant << browse(output, "window=ex_debug")
-	//src.health = initial(src.health)/2.2
+	//src.integrity = initial(src.integrity)/2.2
 	//src.check_for_internal_damage(list(MECHA_INT_FIRE,MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
 	return
 */
@@ -2841,7 +2838,7 @@
 
 /obj/mecha/proc/update_damage_alerts()
 	if(occupant)
-		var/integrity = health/initial(health)*100
+		var/integrity = src.integrity/initial(src.integrity)*100
 		switch(integrity)
 			if(30 to 45)
 				occupant.throw_alert("mech damage", /atom/movable/screen/alert/low_mech_integrity, 1)
