@@ -8,11 +8,11 @@ import { BooleanLike, classes, pureComponentHooks } from 'common/react';
 import { BoxProps, computeBoxClassName, computeBoxProps, unit } from './Box';
 
 export type FlexProps = BoxProps & {
-  direction?: CSSWideKeyword | "column" | "row" | "row-reverse" | "column-reverse" | undefined;
-  wrap?: CSSWideKeyword | "wrap" | "nowrap" | "wrap-reverse" | boolean | undefined;
-  align?: CSSWideKeyword | "flex-start" | "flex-end" | "center" | "baseline" | "stretch" | undefined;
-  justify?: CSSWideKeyword | "flex-start" | "flex-end" | "center" | "stretch" | "space-between" | "space-around" | "space-evenly" | undefined;
-  inline?: BooleanLike;
+  readonly direction?: CSSWideKeyword | "column" | "row" | "row-reverse" | "column-reverse" | undefined;
+  readonly wrap?: CSSWideKeyword | "wrap" | "nowrap" | "wrap-reverse" | boolean | undefined;
+  readonly align?: CSSWideKeyword | "flex-start" | "flex-end" | "center" | "baseline" | "stretch" | undefined;
+  readonly justify?: CSSWideKeyword | "flex-start" | "flex-end" | "center" | "stretch" | "space-between" | "space-around" | "space-evenly" | undefined;
+  readonly inline?: BooleanLike;
 };
 
 export const computeFlexClassName = (props: FlexProps) => {
@@ -43,7 +43,7 @@ export const computeFlexProps = (props: FlexProps) => {
   });
 };
 
-export const Flex = props => {
+export const Flex = (props: FlexProps) => {
   const { className, ...rest } = props;
   return (
     <div
@@ -59,11 +59,11 @@ export const Flex = props => {
 Flex.defaultHooks = pureComponentHooks;
 
 export type FlexItemProps = BoxProps & {
-  grow?: number | CSSWideKeyword | undefined;
-  order?: number;
-  shrink?: number | CSSWideKeyword | undefined;
-  basis?: string | BooleanLike;
-  align?: CSSWideKeyword | "flex-start" | "flex-end" | "center" | "baseline" | "stretch" | "auto" | undefined;
+  readonly grow?: number | CSSWideKeyword | undefined;
+  readonly order?: number;
+  readonly shrink?: number | CSSWideKeyword | undefined;
+  readonly basis?: string | BooleanLike;
+  readonly align?: CSSWideKeyword | "flex-start" | "flex-end" | "center" | "baseline" | "stretch" | "auto" | undefined;
 };
 
 export const computeFlexItemClassName = (props: FlexItemProps) => {
@@ -101,7 +101,7 @@ export const computeFlexItemProps = (props: FlexItemProps) => {
   });
 };
 
-const FlexItem = props => {
+const FlexItem = (props: FlexItemProps) => {
   const { className, ...rest } = props;
   return (
     <div

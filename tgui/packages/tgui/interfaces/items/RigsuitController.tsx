@@ -4,8 +4,9 @@
  */
 
 import { getModuleData, useLocalState } from "../../backend";
-import { Button, Icon, LabeledList, NoticeBox, Section, Stack, Tabs } from "../../components";
-import { RigActivationStatus, RigControlFlags, RigModuleReflist, RigPieceReflist, RigUIZoneSelection } from "./RigsuitCommon";
+import { Button, Flex, Icon, LabeledList, NoticeBox, Section, Stack, Tabs } from "../../components";
+import { ButtonProps } from "../../components/Button";
+import { RigActivationStatus, RigControlFlags, RigModuleReflist, RigPieceReflist, RigPieceSealStatus, RigUIZoneSelection } from "./RigsuitCommon";
 import { RigsuitPieceData } from "./RigsuitPiece";
 
 export interface RigsuitControllerData {
@@ -26,6 +27,19 @@ export const RigController = (props: RigControllerProps, context) => {
   const [moduleSection, setModuleSection] = useLocalState<string>(context, "rigsuitModuleTab", RigUIZoneSelection[0].key);
 
   const { rig } = props;
+
+  let rigActivationButtonProps: ButtonProps = {};
+
+  switch (rig.activation) {
+    case RigActivationStatus.Activating:
+      break;
+    case RigActivationStatus.Deactivating:
+      break;
+    case RigActivationStatus.Offline:
+      break;
+    case RigActivationStatus.Online:
+      break;
+  }
 
   return (
     <Stack fill vertical>
@@ -97,21 +111,32 @@ export const RigController = (props: RigControllerProps, context) => {
                       style={{ transform: `scale(1.75)`, "margin": "0.25em 0.125em" }} />
                   </Stack.Item>
                   <Stack.Item>
-                    <Stack vertical fill>
-                      <Stack.Item>
+                    <Flex direction="column" justify="space-around">
+                      <Flex.Item>
                         <Button.Confirm
                           color="transparent"
                           icon={0? "lock" : "unlock"}
                           confirmColor="average"
                           confirmContent={null}
                           confirmIcon={0? "lock": "unlock"} />
-                      </Stack.Item>
-                    </Stack>
+                      </Flex.Item>
+                    </Flex>
                   </Stack.Item>
                 </Stack>
               </Tabs.Tab>
               {rig.pieceRefs.map((ref) => {
                 let pieceData = getModuleData<RigsuitPieceData>(context, ref);
+                let pieceSealButtonProps: ButtonProps = {};
+                switch (pieceData.sealed) {
+                  case RigPieceSealStatus.Sealed:
+                    break;
+                  case RigPieceSealStatus.Unsealed:
+                    break;
+                  case RigPieceSealStatus.Sealing:
+                    break;
+                  case RigPieceSealStatus.Unsealing:
+                    break;
+                }
                 return (
                   <Tabs.Tab
                     key={ref}
@@ -125,24 +150,24 @@ export const RigController = (props: RigControllerProps, context) => {
                           style={{ transform: `scale(1.75)`, "margin": "0.25em 0.125em" }} />
                       </Stack.Item>
                       <Stack.Item>
-                        <Stack vertical fill justify="space-around">
-                          <Stack.Item align="center" justify="space-around">
+                        <Flex direction="column" fill justify="space-around">
+                          <Flex.Item>
                             <Button.Confirm
                               color="transparent"
                               icon={0? "lock" : "unlock"}
                               confirmColor="average"
                               confirmContent={null}
                               confirmIcon={0? "lock": "unlock"} />
-                          </Stack.Item>
-                          <Stack.Item align="center" justify="space-around">
+                          </Flex.Item>
+                          <Flex.Item>
                             <Button.Confirm
                               color="transparent"
                               icon={0? "circle" : "circle-o"}
                               confirmColor="average"
                               confirmContent={null}
                               confirmIcon={0? "circle": "circle-o"} />
-                          </Stack.Item>
-                        </Stack>
+                          </Flex.Item>
+                        </Flex>
                       </Stack.Item>
                     </Stack>
                   </Tabs.Tab>
@@ -160,15 +185,9 @@ export const RigController = (props: RigControllerProps, context) => {
                 {RigUIZoneSelection.map((zone) => (
                   <Tabs.Tab onClick={() => setModuleSection(zone.key)}
                     selected={moduleSection === zone.key} key={zone.key}>
-                    <Icon name={zone.icon} size={2.5} backgroundColor="#aa7700" height="50px" maxHeight="50px" />
+                    <Icon name={zone.icon} size={2.5} />
                   </Tabs.Tab>
                 ))}
-                <Tabs.Tab selected={0}>
-                  <Icon name="circle" size={2.5} backgroundColor="#aa7700" height="50px" />
-                </Tabs.Tab>
-                <Tabs.Tab selected={0}>
-                  <Icon name="tg-non-binary" size={2.5} backgroundColor="#aa7700" />
-                </Tabs.Tab>
               </Tabs>
             </Stack.Item>
             <Stack.Item grow={1}>
