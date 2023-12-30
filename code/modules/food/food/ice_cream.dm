@@ -18,7 +18,7 @@
 	/// overall sugar-ation; continuously compounded to be the % of scoops with sugar
 	var/snowflake_deliciousness = 0
 	/// max scoops
-	var/scoop_max = 7
+	var/scoop_max = 8
 	/// current scoop position
 	/// once we're biting out of it, this goes down with every bite and is used to track overlays.
 	var/scoop_current = 0
@@ -48,32 +48,69 @@
 		// 1 bite per scoop, plus 1 for the base scoop, plus 1 for the cone
 		bitesize = reagents.total_volume / (scoop_current + 1 + 1)
 	. = ..()
-	add_bite()
+	add_bite_mark()
 
 //! END
 
+/**
+ * If reagent source is a holder, we will consume reagent_amount from it; otherwise, we magically make more.
+ */
 /obj/item/reagent_containers/food/snacks/ice_cream/proc/add_scoop(reagent_source, reagent_amount, update_icon = TRUE)
+	var/color
 	if(istype(reagent_source, /datum/reagent))
 		var/datum/reagent/from_reagent = reagent_source
+		color = from_reagent.color
+		reagents.add_reagent(from_reagent.id, reagent_amount)
 	else if(ispath(reagent_source, /datum/reagent) || istext(reagent_source))
 		var/datum/reagent/from_reagent = SSchemistry.fetch_reagent(reagent_source)
+		color = from_reagent.color
+		reagents.add_reagent(from_reagent.id, reagent_amount)
 	else if(istype(reagent_source, /datum/reagents))
 		var/datum/reagents/from_holder = reagent_source
+		color = from_holder.get_color()
+		from_holder.transfer_to_holder(reagents, amount = reagent_amount)
 
-	#warn impl
+	var/list/pos = overlay_position(++scoop_current)
+	if(isnull(pos))
+		return TRUE
+	var/image/dollop = image(icon, icon_state = "dollop", pixel_x = pos[1], pixel_y = pos[2])
+	dollop.color = color
+	add_overlay(dollop)
 
 	return TRUE
 
-/obj/item/reagent_containers/food/snacks/ice_cream/proc/add_bite()
-	#warn impl
+/obj/item/reagent_containers/food/snacks/ice_cream/proc/add_bite_mark()
+	var/pos = scoop_current--
+	var/list/offsets = overlay_position(pos)
+	if(isnull(offsets))
+		return
+	var/image/bite_overlay = image(icon = icon, icon_state = "bite_mask")
+	bite_overlay.blend_mode = BLEND_SUBTRACT
+	bite_overlay.pixel_x = offsets[1]
+	bite_overlay.pixel_y = offsets[2]
+	add_overlay(bite_overlay)
 
 /obj/item/reagent_containers/food/snacks/ice_cream/proc/overlay_position(i)
 	switch(i)
+		if(0)
+			// this is bite mark for 'we're out'
+			return list(0, -4)
 		if(1)
 			return list(0, 0)
-
-
-#warn icon states are dollop, melt1-3, wafflecone, waffledrop1-3
+		if(2)
+			return list(-4, 4)
+		if(3)
+			return list(4, 4)
+		if(4)
+			return list(0, 8)
+		if(5)
+			return list(-6, 8)
+		if(6)
+			return list(6, 8)
+		if(7)
+			return list(-4, 12)
+		if(8)
+			return list(4, 12)
 
 #define ICE_CREAM_PATHS(REAGENT_PATH, PATH_APPEND) \
 /obj/item/reagent_containers/food/snacks/ice_cream/##PATH_APPEND { \
