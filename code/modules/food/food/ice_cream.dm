@@ -48,7 +48,7 @@
 		// 1 bite per scoop, plus 1 for the base scoop, plus 1 for the cone
 		bitesize = reagents.total_volume / (scoop_current + 1 + 1)
 	. = ..()
-	add_bite_mark()
+	// add_bite_mark()
 
 //! END
 
@@ -79,6 +79,10 @@
 
 	return TRUE
 
+// todo: byond's renderer can go die in a goddamn fire; BLEND_SUBTRACT doesn't work for alpha masks obviously
+//       so we don't have a fast way of rendering dynamic bite marks without having to hard-sprite shit,
+//       which kinda ruins the point of dynamic ice cream, don't you think?
+/*
 /obj/item/reagent_containers/food/snacks/ice_cream/proc/add_bite_mark()
 	var/pos = scoop_current--
 	var/list/offsets = overlay_position(pos)
@@ -89,6 +93,7 @@
 	bite_overlay.pixel_x = offsets[1]
 	bite_overlay.pixel_y = offsets[2]
 	add_overlay(bite_overlay)
+*/
 
 /obj/item/reagent_containers/food/snacks/ice_cream/proc/overlay_position(i)
 	switch(i)
@@ -98,19 +103,19 @@
 		if(1)
 			return list(0, 0)
 		if(2)
-			return list(-4, 4)
+			return list(-3, 3)
 		if(3)
-			return list(4, 4)
+			return list(3, 3)
 		if(4)
-			return list(0, 8)
+			return list(0, 5)
 		if(5)
-			return list(-6, 8)
+			return list(-5, 5)
 		if(6)
-			return list(6, 8)
+			return list(5, 5)
 		if(7)
-			return list(-4, 12)
+			return list(-4, 8)
 		if(8)
-			return list(4, 12)
+			return list(4, 8)
 
 #define ICE_CREAM_PATHS(REAGENT_PATH, PATH_APPEND) \
 /obj/item/reagent_containers/food/snacks/ice_cream/##PATH_APPEND { \

@@ -222,3 +222,13 @@
 	container.forceMove(src)
 	LAZYADD(sources, container)
 	return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
+
+/obj/structure/icecream_cart/loaded
+	var/prefill_amount = 60
+
+/obj/structure/icecream_cart/loaded/Initialize()
+	. = ..()
+	reagents.add_reagent(/datum/reagent/drink/ice, prefill_amount)
+	reagents.add_reagent(/datum/reagent/drink/milk, prefill_amount)
+	reagents.add_reagent(/datum/reagent/sugar, prefill_amount)
+	reagents.add_reagent(/datum/reagent/nutriment/flour, prefill_amount)
