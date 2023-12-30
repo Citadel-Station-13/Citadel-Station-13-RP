@@ -78,7 +78,8 @@
 /obj/item/rig/proc/deactivation_sequence(instant, undeploy, silent, subtle, force)
 	if(activation_state == RIG_ACTIVATION_OFFLINE)
 		return TRUE
-	interrupt_if_activating()
+	if(interrupt_if_activating())
+		return TRUE
 	if(activation_mutex)
 		if(instant)
 			interrupt_if_deactivating()
@@ -157,15 +158,27 @@
 
 	#warn feedback to people around
 
+/**
+ * @return TRUE if op was interrupted
+ */
 /obj/item/rig/proc/interrupt_if_activating()
 	if(activation_state != RIG_ACTIVATION_ACTIVATING)
-		return
+		return FALSE
 	++activation_operation
+	activation_mutex = FALSE
+	activation_state = RIG_ACTIVATION_OFFLINE
+	return TRUE
 
+/**
+ * @return TRUE if op was interrupted
+ */
 /obj/item/rig/proc/interrupt_if_deactivating()
 	if(activation_state != RIG_ACTIVATION_DEACTIVATING)
-		return
+		return TRUE
 	++activation_operation
+	activation_mutex = FALSE
+	activation_state = RIG_ACTIVATION_ONLINE
+	return FALSE
 
 /obj/item/rig/proc/block_on_activation(operation_id)
 	// todo: behavior unverified; operation id is not checked.

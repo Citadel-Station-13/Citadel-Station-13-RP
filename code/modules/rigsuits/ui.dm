@@ -185,7 +185,7 @@
 			var/desired = text2num(params["on"])
 			// todo: better reject
 			if(!check_control_flags_or_reject(user, RIG_CONTROL_ACTIVATION))
-				return
+				return TRUE
 			if(isnull(desired))
 				return TRUE
 			if(desired)
@@ -254,7 +254,7 @@
 	#warn icecream update will modify this, check the root definition!
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(isnull(ui))
-		ui = new(user, src, "Rigsuit")
+		ui = new(user, src, "RigsuitController")
 		ui.open()
 
 /obj/item/rig/ui_state(mob/user, datum/tgui_module/module)

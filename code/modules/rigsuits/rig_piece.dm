@@ -199,6 +199,8 @@
 	REMOVE_TRAIT(src, TRAIT_ITEM_NODROP, RIG_TRAIT)
 
 /datum/component/rig_piece/proc/deploy(mob/onto, inv_op_flags)
+	if(isnull(onto))
+		return FALSE
 	var/obj/item/I = parent
 	if(I.loc == onto)
 		return TRUE
