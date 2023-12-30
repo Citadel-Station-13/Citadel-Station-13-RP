@@ -41,6 +41,8 @@
 	var/interact_type = ABILITY_INTERACT_NONE
 	/// currently hidden?
 	var/hidden = FALSE
+	/// targeted?
+	var/targeted = FALSE
 
 	//? ui
 	/// tgui id
