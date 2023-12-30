@@ -5,6 +5,7 @@
 	abstract_type = /datum/rig_theme/station/engineering
 	base_icon = 'icons/modules/rigsuits/suits/engineering.dmi'
 	armor = /datum/armor/rigsuit/station/engineering
+	siemens_coefficient = 0.7
 
 /datum/armor/rigsuit/station/engineering
 	melee = 0.25
@@ -43,7 +44,7 @@ AUTO_RIG_THEME(/station/engineering/standard)
 	#warn encumbrance
 
 /datum/armor/rigsuit/station/engineering/standard
-	rad = 0.85
+	rad = 0.8
 
 AUTO_RIG_THEME(/station/engineering/atmospherics)
 /datum/rig_theme/station/engineering/atmospherics

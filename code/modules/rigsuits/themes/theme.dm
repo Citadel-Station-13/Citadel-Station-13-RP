@@ -84,7 +84,14 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 	var/min_temperature_protect = COLD_PROTECTION_VOIDSUIT
 	var/max_temperature_protect = HEAT_PROTECTION_NORMAL_VOIDSUIT
 	var/insulated_gloves = TRUE
-	var/siemens_coefficient = 0.3
+	// todo: this should be dropped down way more later so tasers hit the suit instead of the user
+	//       this is pretty much a maintainer mandate too so discuss before trying to go against this
+	//       if you're reading it
+	//       hardsuits, like armor, absolutely should be one of those things that forces a lethal
+	//       engagement if you don't want an easy 3 click win via stuns
+	//       that said, ions/electrical stuns absolutely should fuck up internal systems and cause lockups
+	//       so it's still very useful to pack a taser to a rig fight
+	var/siemens_coefficient = 0.8
 
 	#warn values lmao
 

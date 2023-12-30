@@ -6,6 +6,8 @@
  */
 /datum/rig_theme/mercenary
 	abstract_type = /datum/rig_theme/mercenary
+	// bye-bye security
+	siemens_coefficient = 0.5
 
 AUTO_RIG_THEME(/mercenary/gorlex)
 /datum/rig_theme/mercenary/gorlex

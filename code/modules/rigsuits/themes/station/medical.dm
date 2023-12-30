@@ -64,6 +64,7 @@ AUTO_RIG_THEME(/station/medical/advanced)
 	display_name = "rescue"
 	visible_name = "Rescue"
 	armor = /datum/armor/rigsuit/station/medical/advanced
+	siemens_coefficient = 0.7
 	#warn encumbrance
 
 /datum/armor/rigsuit/station/medical/advanced

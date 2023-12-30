@@ -3,6 +3,8 @@
 
 /datum/rig_theme/nanotrasen
 	abstract_type = /datum/rig_theme/nanotrasen
+	// bye-bye security
+	siemens_coefficient = 0.5
 
 AUTO_RIG_THEME(/nanotrasen/asset_protection)
 /datum/rig_theme/nanotrasen/asset_protection
@@ -18,6 +20,8 @@ AUTO_RIG_THEME(/nanotrasen/asset_protection)
 	Asset Protection hardsuit is rarely something seen on exonet marketing streams - and rarely something one \
 	sees in person while still living to tell the tale."
 	armor = /datum/armor/rigsuit/nanotrasen/asset_protection
+	// bye-bye security
+	siemens_coefficient = 0.35
 	#warn encumbrance
 
 /datum/armor/rigsuit/nanotrasen/asset_protection
