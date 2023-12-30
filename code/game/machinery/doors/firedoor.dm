@@ -562,3 +562,8 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 	icon_state = "open"
 	glass = 1
 
+/obj/machinery/door/firedoor/glass/hidden
+	name = "\improper Emergency Glass Shutter"
+	desc = "Emergency air-tight shutter, capable of sealing off breached areas. This one has a resilient glass window, allowing you to see the danger."
+	icon_state = "open_lowprofile"
+	glass = 1
