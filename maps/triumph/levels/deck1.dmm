@@ -10854,15 +10854,9 @@
 	name = "Engineering Hardsuits";
 	req_access = list(11)
 	},
-/obj/item/hardsuit/eva/equipped{
-	req_access = list(10)
-	},
-/obj/item/hardsuit/eva/equipped{
-	req_access = list(10)
-	},
-/obj/item/hardsuit/eva/equipped{
-	req_access = list(10)
-	},
+/obj/item/hardsuit/eva/equipped,
+/obj/item/hardsuit/eva/equipped,
+/obj/item/hardsuit/eva/equipped,
 /obj/effect/floor_decal/techfloor/orange,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)

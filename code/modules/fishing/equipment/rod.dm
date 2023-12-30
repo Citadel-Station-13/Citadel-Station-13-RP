@@ -310,7 +310,7 @@
 		return TRUE
 	return ..()
 
-/obj/item/fishing_rod/ui_data(mob/user)
+/obj/item/fishing_rod/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	var/list/data = list()
 
@@ -343,7 +343,7 @@
 				return FALSE
 	return TRUE
 
-/obj/item/fishing_rod/ui_act(action, list/params)
+/obj/item/fishing_rod/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return .

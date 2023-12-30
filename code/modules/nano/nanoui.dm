@@ -445,7 +445,7 @@
  */
 /datum/nanoui/proc/close()
 	is_auto_updating = 0
-	SSnanoui.ui_closed(src)
+	SSnanoui.on_ui_closed(src)
 	user << browse(null, "window=[window_id]")
 	for(var/datum/nanoui/child in children)
 		child.close()

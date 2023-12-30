@@ -171,7 +171,7 @@
 		ui = new(user, src, "Jukebox", "PodZu Music Player")
 		ui.open()
 
-/obj/item/device/walkpod/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/item/device/walkpod/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	data["playing"] = playing
@@ -193,7 +193,7 @@
 
 	return data
 
-/obj/item/device/walkpod/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/item/device/walkpod/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

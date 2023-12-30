@@ -162,7 +162,7 @@
 		return
 	ui_interact(user)
 
-/obj/item/depth_scanner/ui_state(mob/user, datum/tgui_module/module)
+/obj/item/depth_scanner/ui_state()
 	return GLOB.deep_inventory_state
 
 /obj/item/depth_scanner/ui_interact(mob/user, datum/tgui/ui)
@@ -171,7 +171,7 @@
 		ui = new(user, src, "XenoarchDepthScanner", name)
 		ui.open()
 
-/obj/item/depth_scanner/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/item/depth_scanner/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	data["current"] = list()
@@ -289,7 +289,7 @@
 		return
 	return ui_interact(user)
 
-/obj/item/beacon_locator/ui_state(mob/user, datum/tgui_module/module)
+/obj/item/beacon_locator/ui_state()
 	return GLOB.inventory_state
 
 /obj/item/beacon_locator/ui_interact(mob/user, datum/tgui/ui)
@@ -298,7 +298,7 @@
 		ui = new(user, src, "BeaconLocator", name)
 		ui.open()
 
-/obj/item/beacon_locator/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/item/beacon_locator/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	data["scan_ticks"] = scan_ticks

@@ -77,7 +77,7 @@
 		ui = new(user, src, "TimeClock", name)
 		ui.open()
 
-/obj/machinery/computer/timeclock/ui_data(mob/user)
+/obj/machinery/computer/timeclock/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	// Okay, data for showing the user's OWN PTO stuff
