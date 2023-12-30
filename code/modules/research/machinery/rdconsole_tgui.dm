@@ -19,12 +19,12 @@
 		ui = new(user, src, "ResearchConsole", name)
 		ui.open()
 
-/obj/machinery/computer/rdconsole/ui_status(mob/user)
+/obj/machinery/computer/rdconsole/ui_status(mob/user, datum/ui_state/state)
 	. = ..()
 	if(locked && !allowed(user) && !emagged)
 		. = min(., UI_UPDATE)
 
-/obj/machinery/computer/rdconsole/ui_static_data(mob/user)
+/obj/machinery/computer/rdconsole/ui_static_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	data["tech"] = tgui_GetResearchLevelsInfo()
@@ -35,7 +35,7 @@
 
 	return data
 
-/obj/machinery/computer/rdconsole/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/computer/rdconsole/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	data["locked"] = locked

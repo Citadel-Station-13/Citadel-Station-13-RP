@@ -7,8 +7,7 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 	/obj/structure/window/reinforced/polarized/full,
 	/obj/structure/wall_frame/prepainted/,
 	/obj/structure/wall_frame,
-	/obj/machinery/door/airlock/multi_tile,
-	/obj/machinery/door/airlock)))
+	/obj/machinery/door))) //comedy.
 /// kPa
 #define FIREDOOR_MAX_PRESSURE_DIFF 25
 /// °C
@@ -57,7 +56,7 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 	power_channel = ENVIRON
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 5
-	autoset_dir = FALSE
+	autoset_dir = TRUE
 
 	var/list/tile_info[4]
 	var/list/dir_alerts[4] // 4 dirs, bitflags
@@ -88,7 +87,32 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/door/firedoor/LateInitialize()
-	setDir(dir)
+	. = ..()
+	if(autoset_dir)
+		for (var/cardinal in GLOB.cardinal)
+			var/turf/step_turf = get_step(src, cardinal)
+			if (step_turf.density == TRUE)
+				switch(cardinal)
+					if(EAST)
+						setDir(SOUTH)
+					if(WEST)
+						setDir(SOUTH)
+					if(NORTH)
+						setDir(WEST)
+					if(SOUTH)
+						setDir(WEST)
+			for(var/atom/thing as anything in step_turf)
+				if(thing.type in GLOB.firelock_align_types)
+					switch(cardinal)
+						if(EAST)
+							setDir(SOUTH)
+						if(WEST)
+							setDir(SOUTH)
+						if(NORTH)
+							setDir(WEST)
+						if(SOUTH)
+							setDir(WEST)
+					break
 
 /obj/machinery/door/firedoor/Destroy()
 	for(var/area/A in areas_added)
@@ -444,10 +468,10 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 
 /obj/machinery/door/firedoor/do_animate(animation)
 	switch(animation)
-		if("opening")
+		if(DOOR_ANIMATION_OPEN)
 			flick("opening", src)
 			playsound(src, 'sound/machines/firelockopen.ogg', 37, 1)
-		if("closing")
+		if(DOOR_ANIMATION_CLOSE)
 			playsound(src, 'sound/machines/firelockclose.ogg', 37, 1)
 			flick("closing", src)
 	return
@@ -485,42 +509,6 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 		set_light(2, 0.25, COLOR_SUN)
 
 	return
-
-/obj/machinery/door/firedoor/setDir(ndir)
-	for(var/D in GLOB.cardinal)
-		var/turf/T = get_step(src, D)
-		for(var/obj/A in T.contents)
-			if(A.type in GLOB.firelock_align_types) //this is mainly for the cases where mappers can't manually align firelocks, i.e window spawners.
-				switch(D)
-					if(NORTH)
-						dir = WEST
-						break
-					if(EAST)
-						dir = SOUTH
-						break
-					if(SOUTH)
-						dir = WEST
-						break
-					if(WEST)
-						dir = SOUTH
-						break
-		if(T.density)
-			switch(D)
-				if(NORTH)
-					dir = WEST
-					break
-				if(EAST)
-					dir = SOUTH
-					break
-				if(SOUTH)
-					dir = WEST
-					break
-				if(WEST)
-					dir = SOUTH
-					break
-	..()
-
-
 
 /obj/machinery/door/firedoor/border_only
 /*

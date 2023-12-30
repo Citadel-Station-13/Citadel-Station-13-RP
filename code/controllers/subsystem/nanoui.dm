@@ -182,7 +182,7 @@ SUBSYSTEM_DEF(nanoui)
  *
  * @return bool FALSE if no ui was removed, TRUE if removed successfully
  */
-/datum/controller/subsystem/nanoui/proc/ui_closed(datum/nanoui/ui)
+/datum/controller/subsystem/nanoui/proc/on_ui_closed(datum/nanoui/ui)
 	var/src_object_key = "\ref[ui.src_object]"
 	if (!open_uis[src_object_key] || !open_uis[src_object_key][ui.ui_key])
 		return FALSE // wasn't open

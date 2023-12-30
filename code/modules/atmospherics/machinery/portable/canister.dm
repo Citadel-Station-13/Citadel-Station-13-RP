@@ -299,7 +299,7 @@ update_flag
 /obj/machinery/portable_atmospherics/canister/attack_hand(mob/user, list/params)
 	return src.ui_interact(user)
 
-/obj/machinery/portable_atmospherics/canister/ui_state(mob/user, datum/tgui_module/module)
+/obj/machinery/portable_atmospherics/canister/ui_state()
 	return GLOB.physical_state
 
 /obj/machinery/portable_atmospherics/canister/ui_interact(mob/user, datum/tgui/ui)
@@ -308,7 +308,7 @@ update_flag
 		ui = new(user, src, "Canister", name)
 		ui.open()
 
-/obj/machinery/portable_atmospherics/canister/ui_static_data(mob/user)
+/obj/machinery/portable_atmospherics/canister/ui_static_data(mob/user, datum/tgui/ui)
 	return list(
 		"defaultReleasePressure" = round(CAN_DEFAULT_RELEASE_PRESSURE),
 		"minReleasePressure" = round(can_min_release_pressure),
@@ -318,7 +318,7 @@ update_flag
 		"holdingTankFragPressure" = round(TANK_FRAGMENT_PRESSURE)
 	)
 
-/obj/machinery/portable_atmospherics/canister/ui_data()
+/obj/machinery/portable_atmospherics/canister/ui_data(mob/user, datum/tgui/ui)
 	. = list(
 		"portConnected" = !!connected_port,
 		"tankPressure" = round(air_contents.return_pressure()),
@@ -347,7 +347,7 @@ update_flag
 			)
 		)
 
-/obj/machinery/portable_atmospherics/canister/ui_act(action, params)
+/obj/machinery/portable_atmospherics/canister/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return

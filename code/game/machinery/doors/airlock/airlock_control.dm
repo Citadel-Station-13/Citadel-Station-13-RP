@@ -163,7 +163,9 @@
 
 	var/on = 1
 	var/alert = 0
-	var/previousPressure
+	var/previous_pressure
+	var/previous_phoron
+	var/previous_temperature
 
 /obj/machinery/airlock_sensor/update_icon()
 	if(on)
@@ -183,21 +185,39 @@
 	radio_connection.post_signal(src, signal, range = AIRLOCK_CONTROL_RANGE, radio_filter = RADIO_AIRLOCK)
 	flick("airlock_sensor_cycle", src)
 
+// Checks the change of the values, if the change is sufficently large on any of them, send a new signal
+/obj/machinery/airlock_sensor/proc/delta_check(var/new_pressure, var/new_phoron, var/new_temperature)
+	if(previous_pressure == null || previous_phoron == null || previous_temperature == null)
+		return 1
+	if(abs(new_pressure - previous_pressure) > 0.1)
+		return 1
+	if(abs(new_phoron - previous_phoron) > 0.1)
+		return 1
+	if(abs(previous_temperature - previous_temperature) > 0.1)
+		return 1
+	return 0
+
 /obj/machinery/airlock_sensor/process(delta_time)
 	if(on)
 		var/datum/gas_mixture/air_sample = return_air()
 		var/pressure = round(air_sample.return_pressure(),0.1)
+		var/phoron = (GAS_ID_PHORON in air_sample.gas) ? round(air_sample.gas[GAS_ID_PHORON], 0.1) : 0
+		var/temperature = round(air_sample.temperature, 0.1)
 
-		if(abs(pressure - previousPressure) > 0.001 || previousPressure == null)
+		if(delta_check(pressure, phoron, temperature))
 			var/datum/signal/signal = new
 			signal.transmission_method = TRANSMISSION_RADIO //radio signal
 			signal.data["tag"] = id_tag
 			signal.data["timestamp"] = world.time
 			signal.data["pressure"] = num2text(pressure)
+			signal.data["phoron"] = num2text(phoron)
+			signal.data["temperature"] = num2text(temperature)
 
 			radio_connection.post_signal(src, signal, range = AIRLOCK_CONTROL_RANGE, radio_filter = RADIO_AIRLOCK)
 
-			previousPressure = pressure
+			previous_pressure = pressure
+			previous_phoron = phoron
+			previous_temperature = temperature
 
 			alert = (pressure < ONE_ATMOSPHERE*0.8)
 

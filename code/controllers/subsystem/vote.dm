@@ -184,8 +184,11 @@ SUBSYSTEM_DEF(vote)
 		log_vote(text)
 
 		to_chat(world, "<span class='infoplain'><font color='purple'><b>[text]</b>\nType <b>vote</b> or click <a href='?src=\ref[src]'>here</a> to place your votes.\nYou have [config_legacy.vote_period / 10] seconds to vote.</font>")
-		if(vote_type == VOTE_CREW_TRANSFER || vote_type == VOTE_GAMEMODE || vote_type == VOTE_CUSTOM)
+		if(vote_type == VOTE_CREW_TRANSFER || vote_type == VOTE_GAMEMODE)
 			SEND_SOUND(world, sound('sound/ambience/alarm4.ogg', repeat = 0, wait = 0, volume = 50, channel = 3))
+
+		if(vote_type == VOTE_CUSTOM)
+			SEND_SOUND(world, sound('sound/custom_vote.ogg', repeat = 0, wait = 0, volume = 30, channel = 3))
 
 		time_remaining = round(config_legacy.vote_period / 10)
 		return 1
@@ -215,7 +218,7 @@ SUBSYSTEM_DEF(vote)
 		ui = new(user, src, "Vote")
 		ui.open()
 
-/datum/controller/subsystem/vote/ui_data(mob/user)
+/datum/controller/subsystem/vote/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list(
 		"choices" = list(),
 		"question" = question,
@@ -235,7 +238,7 @@ SUBSYSTEM_DEF(vote)
 
 	return data
 
-/datum/controller/subsystem/vote/ui_act(action, params)
+/datum/controller/subsystem/vote/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return

@@ -48,7 +48,7 @@
 		ui = new(user, src, "IVDrip", name)
 		ui.open()
 
-/obj/machinery/iv_drip/ui_data(mob/user)
+/obj/machinery/iv_drip/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 	data["transferRate"] = transfer_rate
 	data["maxInjectRate"] = MAX_IV_TRANSFER_RATE
@@ -58,7 +58,7 @@
 	data["beakerAttached"] = reagent_container ? TRUE : FALSE
 	return data
 
-/obj/machinery/iv_drip/ui_act(action, params)
+/obj/machinery/iv_drip/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return

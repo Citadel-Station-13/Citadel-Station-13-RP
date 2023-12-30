@@ -84,7 +84,7 @@
 				feedback_inc("alert_comms_blue",1)
 	tmp_alertlevel = 0
 
-/datum/tgui_module_old/communications/ui_data(mob/user)
+/datum/tgui_module_old/communications/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 	data["is_ai"]         = isAI(user) || isrobot(user)
 	data["menu_state"]    = data["is_ai"] ? ai_menu_state : menu_state
@@ -194,7 +194,7 @@
 
 	frequency.post_signal(null, status_signal)
 
-/datum/tgui_module_old/communications/ui_act(action, params)
+/datum/tgui_module_old/communications/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 	if((LEGACY_MAP_DATUM) && !(get_z(usr) in (LEGACY_MAP_DATUM).contact_levels))

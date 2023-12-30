@@ -75,7 +75,7 @@
 		ui = new(user, src, "AssemblyTimer", name)
 		ui.open()
 
-/obj/item/assembly/timer/ui_data(mob/user)
+/obj/item/assembly/timer/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 	var/time_left = time
 	data["seconds"] = round(time_left % 60)
