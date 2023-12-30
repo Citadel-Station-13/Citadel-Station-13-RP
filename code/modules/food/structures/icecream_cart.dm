@@ -86,6 +86,7 @@
 			"volume" = container.reagents.total_volume,
 			"maxVolume" = container.reagents.maximum_volume,
 			"color" = container.reagents.get_color(),
+			"ref" = ref(container),
 		)
 	.["baseIngredients"] = collect_base
 	.["sources"] = collect_sources
