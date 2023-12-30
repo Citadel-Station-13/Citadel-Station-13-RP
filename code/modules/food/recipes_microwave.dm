@@ -660,7 +660,7 @@
 /datum/recipe/icecreamsandwich
 	reagents = list("milk" = 5, "ice" = 5)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/icecream
+		/obj/item/reagent_containers/food/snacks/ice_cream,
 	)
 	result = /obj/item/reagent_containers/food/snacks/icecreamsandwich
 
@@ -1522,8 +1522,8 @@
 	reagents = list("milk" = 5, "ice" = 5)
 	items = list(
 		/obj/item/reagent_containers/food/snacks/chocolatebar,
-		/obj/item/reagent_containers/food/snacks/icecream,
-		/obj/item/reagent_containers/food/snacks/icecream
+		/obj/item/reagent_containers/food/snacks/ice_cream,
+		/obj/item/reagent_containers/food/snacks/ice_cream,
 	)
 	result = /obj/item/reagent_containers/food/snacks/bananasplit
 

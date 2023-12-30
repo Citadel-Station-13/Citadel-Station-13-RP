@@ -48,7 +48,7 @@
 	desc = "A widely known, Mexican coffee-flavoured liqueur. In production since 1936."
 	icon_state = "kahluabottle"
 	center_of_mass = list("x"=17, "y"=3)
-	start_reagent = /datum/reagent/ethanol/kahlua
+	start_reagent = /datum/reagent/ethanol/coffee/kahlua
 
 /obj/item/reagent_containers/food/drinks/bottle/melonliquor
 	name = "Emeraldine Melon Liquor"
