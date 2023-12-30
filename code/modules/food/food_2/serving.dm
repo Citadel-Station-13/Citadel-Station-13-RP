@@ -3,6 +3,8 @@
 /obj/item/food_serving
 	name = "generic food serving object"
 	desc = "A generic bowl or plate or something. Neat."
+	var/serving_type = "bowl"
+	var/trash_type
 
 
 /obj/item/reagent_containers/food/snacks/food_serving

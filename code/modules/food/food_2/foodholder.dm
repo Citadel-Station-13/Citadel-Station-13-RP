@@ -50,6 +50,21 @@
 /obj/item/reagent_containers/food_holder/proc/try_merge(obj/item/reagent_containers/food/snacks/ingredient/I, mob/user)
 	if(!istype(I))
 		return
-	for(var/obj/item/reagent_containers/food/snacks/ingredient/compare_ingredient in contents))
+	for(var/obj/item/reagent_containers/food/snacks/ingredient/compare_ingredient in contents)
 		if(compare_ingredient.type == I.type)
-			
+			if((compare_ingredient.accumulated_time_cooked - INGREDIENT_COOKTIME_MAX_SEPERATION) < I.accumulated_time_cooked && I.accumulated_time_cooked < (compare_ingredient.accumulated_time_cooked + INGREDIENT_COOKTIME_MAX_SEPERATION))
+				if(user.attempt_insert_item_for_installation(I, src))
+					compare_ingredient.merge_ingredient(I)
+
+
+/obj/item/reagent_containers/food_holder/proc/generate_serving(var/obj/item/food_serving/FS, mob/user)
+	var/obj/item/reagent_containers/food/snacks/food_serving/generated_serving = new /obj/item/reagent_containers/food/snacks/food_serving(null)
+	var/list/tally_flavours = list()
+	generated_serving.name = "a [FS.serving_type] of" += generate_food_name()
+	for(var/obj/item/reagent_containers/food/snacks/ingredient/tally_ingredient in contents)
+		tally_flavours[cookstage_information[tally_ingredient.cookstage][COOKINFO_TASTE]] = tally_ingredient.serving_amount
+serving_type
+
+
+/obj/item/reagent_containers/food_holder/proc/generate_food_name()
+	return "indescribable melange"

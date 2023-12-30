@@ -22,7 +22,6 @@
 	//how many servings it will give when added to stuff
 	var/serving_amount = 1
 
-
 	//should be everything for now
 
 
@@ -49,7 +48,7 @@
 
 /obj/item/reagent_containers/food/snacks/ingredient/examine(mob/user, dist)
 	. = ..()
-	. += SPAN_NOTICE("<b>Alt-click</b> with a <b>sharp object</b> in hand to split off servings.")
+	. += SPAN_NOTICE("<b>Alt-click</b> to split off servings.")
 	. += cooking_information(TRUE)
 
 /obj/item/reagent_containers/food/snacks/ingredient/proc/cooking_information(var/detailed = FALSE)
@@ -88,3 +87,36 @@
 			return "overcooked"
 		if(BURNT)
 			return "burnt"
+
+/obj/item/reagent_containers/food/snacks/ingredient/proc/merge_ingredient(obj/item/reagent_containers/food/snacks/ingredient/I)
+	accumulated_time_cooked = (accumulated_time_cooked + I.accumulated_time_cooked) / 2
+	serving_amount += I.serving_amount
+	qdel(I)
+
+
+
+/obj/item/reagent_containers/food/snacks/ingredient/attackby(obj/item/I, mob/user)
+	if(I.type != type)
+		return ..()
+	var/obj/item/reagent_containers/food/snacks/ingredient/add_ingredient = I
+	if(((accumulated_time_cooked - INGREDIENT_COOKTIME_MAX_SEPERATION) < add_ingredient.accumulated_time_cooked) && (add_ingredient.accumulated_time_cooked < (accumulated_time_cooked + INGREDIENT_COOKTIME_MAX_SEPERATION)))
+		to_chat(user, SPAN_NOTICE("You combine [I] into [src]."))
+		merge_ingredient(I)
+	
+
+/obj/item/reagent_containers/food/snacks/ingredient/AltClick(mob/user)
+	if(!isliving(user))
+		return ..()
+	if(serving_amount < 1)
+		to_chat(user, SPAN_WARNING("There's not enough of [src] to split off!"))
+		return
+	var/amount = input("How much to split?", "Split ingredient") as null|num
+	if(amount && amount < serving_amount)
+		serving_amount -= amount
+		var/obj/item/reagent_containers/food/snacks/ingredient/split_ingredient = new type(src)
+		split_ingredient.accumulated_time_cooked = accumulated_time_cooked
+		split_ingredient.serving_amount = amount
+		user.put_in_hands_or_drop(split_ingredient)
+		to_chat(user, SPAN_NOTICE("You split off [src]."))
+	else
+		to_chat(user, SPAN_WARNING("There's not enough serves in the [src]!"))
