@@ -3,6 +3,8 @@
 
 //* Objective completion status
 
+/// default - unknown
+#define GAME_OBJECTIVE_UNKNOWN 0
 /// got the target/whatever
 #define GAME_OBJECTIVE_SUCCESS 1
 /// didn't yet get the target/whatever

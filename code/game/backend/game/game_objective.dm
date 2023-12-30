@@ -2,6 +2,24 @@
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
 /**
+ * completion status struct for objectives
+ */
+/datum/game_objective_status
+	/// status enum
+	var/status = GAME_OBJECTIVE_UNKNOWN
+	/// ratio of completion, 0 to infinity inclusive; >= 1 means completed.
+	var/ratio = 1
+	/// qualitative description of completion: string or null
+	var/explain = null
+
+/datum/game_objective_status/proc/tgui_objective_status()
+	return list(
+		"status" = status,
+		"ratio" = ratio,
+		"explain" = explain,
+	)
+
+/**
  * an objective
  *
  * these are more 'handler'-likes, usually created by storyteller, rather than being hard defined objectives like on /tg/
@@ -19,9 +37,13 @@
 	var/baystation_syndrome = FALSE
 	#warn refactor that
 
-/datum/game_objective/New()
+/datum/game_objective/New(...)
+	auto_build(args.Copy())
 
 #warn how to handle 'auto build'..?
+
+/datum/game_objective/proc/auto_build(list/specifiers)
+	#warn impl
 
 /**
  * completion check
@@ -30,41 +52,34 @@
  * * individual - if provided, we operate as individual mode
  * * faction - if provided, we operate as faction mode
  *
- * return list("status" = GAME_OBJECTIVE_X status enum, "ratio" = -1 to 1 for how failed/succeeded, "explain" = qualitative blurb)
+ * return /datum/game_objective_status
  */
-/datum/game_objective/proc/check_completion(datum/mind/individual, datum/game_faction/faction)
+/datum/game_objective/proc/check_status(datum/mind/individual, datum/game_faction/faction)
 	SHOULD_NOT_OVERRIDE(TRUE)
+	RETURN_TYPE(/datum/game_objective_status)
 	if(!isnull(individual))
-		. = check_completion_individual(individual)
+		. = check_status_individual(individual)
 	else if(!isnull(faction))
-		. = check_completion_faction(faction)
+		. = check_status_faction(faction)
 	if(isnull(.))
-		. = check_completion_generic()
+		. = check_status_generic()
 
 
-/datum/game_objective/proc/check_completion_generic()
-	/**
-	 * GameObjectiveCompletion{} -->
-	 * status: GameObjectiveStatus;
-	 * ratio: number;
-	 * explain: string;
-	 */
-	return list(
-		"status" = null,
-		"ratio" = null,
-		"explain" = null,
-	)
+/datum/game_objective/proc/check_status_generic()
+	return new /datum/game_objective_status
 
 /**
  * return null to fallback to generic
  */
-/datum/game_objective/proc/check_completion_faction(datum/game_faction/faction)
+/datum/game_objective/proc/check_status_faction(datum/game_faction/faction)
+	RETURN_TYPE(/datum/game_objective_status)
 	return null
 
 /**
  * return null to fallback to generic
  */
-/datum/game_objective/proc/check_completion_individual(datum/mind/mind)
+/datum/game_objective/proc/check_status_individual(datum/mind/mind)
+	RETURN_TYPE(/datum/game_objective_status)
 	return null
 
 /**
@@ -83,7 +98,7 @@
 	return list(
 		"task" = task,
 		"explanation" = explanation,
-		"completion" = check_completion(faction = faction, mind = mind),
+		"status" = check_status(faction = faction, mind = mind),
 		"showExplain" = !baystation_syndrome,
 		"showVictory" = greentext_syndrome,
 	)

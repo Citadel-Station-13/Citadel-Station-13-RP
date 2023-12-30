@@ -29,6 +29,7 @@
 	var/list/datum/mind/minds
 
 /datum/game_faction/Destroy()
+	QDEL_LIST(objectives)
 	#warn clear minds
 	return ..()
 

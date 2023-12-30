@@ -18,19 +18,17 @@ SUBSYSTEM_DEF(storyteller)
 
 	/// factions by ID
 	var/list/world_faction_lookup
-	/// all factions
-	var/list/datum/world_faction/world_factions
 
 	#warn world factions
 
-	// todo: configured time
+	// todo: configured time & some randomization
 	var/legacy_intercept_time = 15 MINUTES
 
 #warn impl
 
 /datum/controller/subsystem/storyteller/Initialize()
 	create_factions()
-	create_stat()
+	create_state()
 	create_driver()
 	pregame_cycle()
 	return ..()
@@ -44,17 +42,16 @@ SUBSYSTEM_DEF(storyteller)
 		if(initial(faction.abstract_type) == faction)
 			continue
 		faction = new faction
-		world_factions += faction
 		world_faction_lookup[faction.id] = faction
 
-/datum/controller/subsystme/storyteller/proc/create_state()
+/datum/controller/subsystem/storyteller/proc/create_state()
 	storyteller_state = new
 
 /datum/controller/subsystem/storyteller/proc/create_driver()
 	storyteller_driver = new
 	// todo: verify map values are valid
 	storyteller_driver.primary_faction_id = SSmapping.loaded_station.world_faction_id
-	storyteller_driver.world_location_id = SSmapping.loaded_station.world_location_ids
+	storyteller_driver.world_location_ids = SSmapping.loaded_station.world_location_ids
 	#warn impl
 
 /**
@@ -65,7 +62,7 @@ SUBSYSTEM_DEF(storyteller)
 	SSticker.OnRoundstart(CALLBACK(src, PROC_REF(roundstart_cycle)))
 
 /**
- * called on roundstart
+ * called on roundstart, right after everyone's loaded in
  */
 /datum/controller/subsystem/storyteller/proc/roundstart_cycle()
 
@@ -85,3 +82,8 @@ SUBSYSTEM_DEF(storyteller)
  * called every minute
  */
 /datum/controller/subsystem/storyteller/proc/midround_cycle()
+
+/**
+ * called right before roundend completion is declared
+ */
+/datum/controller/subsystem/storyteller/proc/roundend_cycle()

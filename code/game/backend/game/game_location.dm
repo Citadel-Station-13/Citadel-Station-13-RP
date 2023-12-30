@@ -13,6 +13,8 @@
 	abstract_type = /datum/game_location
 
 /datum/game_location/New(bind_to)
+	if(isnull(bind_to))
+		return
 	bind_to(bind_to)
 
 /datum/game_location/proc/bind_to(to_where)
@@ -41,29 +43,9 @@
 /datum/game_location/proc/entity_distance(datum/game_entity/entity)
 	CRASH("abstract proc unimplemented")
 
-/datum/game_location/specific_turf
-	/// target turf
-	var/turf/target
-
-/datum/game_location/specific_turf/bind_to(to_where)
-	. = FALSE
-	ASSERT(isturf(to_where))
-	target = to_where
-	return TRUE
-
-/datum/game_location/specific_turf/entity_is_inside(datum/game_entity/entity)
-	. = entity.special_in_location(src)
-	if(!isnull(.))
-		return
-	var/atom/movable/potential = entity.resolve()
-	return istype(potential) && (potential in target)
-
-/datum/game_location/specific_turf/explain(detailed)
-	if(isnull(target))
-		return "at an unknown location (uh oh!)"
-	var/datum/map_level/their_level = SSmapping.ordered_levels[target.z]
-	return "at coordinates [target.x], [target.y], in sector designation [their_level.display_name]"
-
+/**
+ * basic comsig-qdeletion hooked tracker for locations that are represented by a movable object.
+ */
 /datum/game_location/entity
 	abstract_type = /datum/game_location/entity
 	/// target atom/movable
@@ -83,43 +65,3 @@
 	if(parent != target)
 		return
 	target = null
-
-/datum/game_location/entity/overmap_entity
-
-/datum/game_location/entity/overmap_entity/entity_is_inside(datum/game_entity/entity)
-	. = entity.special_in_location(src)
-	if(!isnull(.))
-		return
-	var/atom/movable/potential = entity.resolve()
-	if(!istype(potential))
-		return
-	var/obj/overmap/entity/our_entity = target
-	var/turf/where_they_are = get_turf(potential)
-	// todo: ugh
-	return get_overmap_sector(where_they_are) == our_entity
-
-/datum/game_location/entity/overmap_entity/explain(detailed)
-	if(isnull(target))
-		return "at an unknown location (uh oh!)"
-	return "on \the [target]"
-
-/datum/game_location/entity/movable_entity
-
-/datum/game_location/entity/movable_entity/entity_is_inside(datum/game_entity/entity)
-	. = entity.special_in_location(src)
-	if(!isnull(.))
-		return
-	var/atom/movable/potential = entity.resolve()
-	return istype(potential) && (potential in target)
-
-/datum/game_location/entity/movable_entity/explain(detailed)
-	if(isnull(target))
-		return "at an unknown location (uh oh!)"
-	var/turf/target_turf = get_turf(target)
-	if(isnull(target_turf))
-		return "inside [target]"
-	if(!detailed)
-		return "on, in, or being carried by (as applicable) [target]"
-	var/datum/map_level/their_level = SSmapping.ordered_levels[target_turf.z]
-	return "on, in, or being carried by (as applicable) [target], \
-		currently at [target_turf.x], [target_turf.y], in sector designation [their_level.display_name]"

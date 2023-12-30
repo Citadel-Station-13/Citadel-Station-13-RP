@@ -1,4 +1,10 @@
 /**
+ * # Minds
+ *
+ * Minds track an IC character across bodies.
+ * All player-occupied mobs should have minds.
+ * AI-controlled mobs may or may not have minds.
+ *
  *!	Note from Carnie:
  * 	The way datum/mind stuff works has been changed a lot.
  * 	Minds now represent IC characters rather than following a client around constantly.

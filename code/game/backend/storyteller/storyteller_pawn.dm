@@ -17,7 +17,7 @@
 	var/id
 
 	/// our entity descriptor
-	/// hard reference, set to typepath to init
+	/// hard reference, set to typepath for autoinit
 	var/datum/storyteller_entity/entity
 
 	/// faction we belong to - hard reference
@@ -26,6 +26,10 @@
 	/// this may be set during placement - because we don't have a distinction between 'instance' and 'describe'
 	/// for now.
 	var/datum/storyteller_location/location
+
+	/// inherent chaos to have this in (not danger)
+	/// inherent danger is intentionally omitted as it doesn't make sense given our definition of danger (which requires relativity to another pawn)
+	var/inherent_chaos = 0
 
 /datum/storyteller_pawn/New()
 	if(isnull(id))
