@@ -35,6 +35,8 @@
 	if(!is_in_right_slot())
 		return FALSE
 
+	ASSERT(!isnull(wearer))
+
 	if(activation_state == RIG_ACTIVATION_ONLINE)
 		return TRUE
 	interrupt_if_deactivating()
@@ -42,7 +44,7 @@
 		if(instant)
 			interrupt_if_activating()
 		else
-			block_on_activation(activation_operation)
+			return block_on_activation(activation_operation)
 
 	if(deploy)
 		deploy_suit_async(FALSE, FALSE, force)
@@ -50,6 +52,11 @@
 	activation_mutex = TRUE
 	activation_state = RIG_ACTIVATION_ACTIVATING
 	push_ui_data(list("activation" = RIG_ACTIVATION_ACTIVATING))
+
+	if(!instant)
+		wearer.visible_message(
+			SPAN_NOTICE("[src] hums to life, adjusting its seals as it starts to attach to [wearer].")
+		)
 
 	#warn feedback to people around
 
@@ -63,7 +70,7 @@
 		stoplag(1)
 
 	if(activation_operation == operation_id)
-		activate(deploy, auto_seal, instant_seal, silent, subtle, force)
+		activate(deploy, auto_seal, instant_seal, silent, subtle, force, instant)
 		++activation_operation
 		activation_mutex = FALSE
 
@@ -84,11 +91,17 @@
 		if(instant)
 			interrupt_if_deactivating()
 		else
-			block_on_deactivation(activation_operation)
+			return block_on_deactivation(activation_operation)
 
 	activation_mutex = TRUE
 	activation_state = RIG_ACTIVATION_DEACTIVATING
 	push_ui_data(list("activation" = RIG_ACTIVATION_DEACTIVATING))
+
+	if(!instant)
+		// wearer is not necessarily there for deactivation
+		wearer?.visible_message(
+			SPAN_NOTICE("[src] hums to life, adjusting its seals as it starts to detach from [wearer].")
+		)
 
 	#warn feedback to people around
 
@@ -102,13 +115,15 @@
 		stoplag(1)
 
 	if(activation_operation == operation_id)
-		deactivate(silent, subtle, force)
+		deactivate(silent, subtle, force, instant)
 		++activation_operation
 		activation_mutex = FALSE
 
-/obj/item/rig/proc/activate(deploy, auto_seal, instant_seal, silent, subtle, force)
+/obj/item/rig/proc/activate(deploy, auto_seal, instant_seal, silent, subtle, force, was_instant)
 	if(!is_in_right_slot())
 		return FALSE
+
+	ASSERT(!isnull(wearer))
 
 	. = TRUE
 
@@ -116,11 +131,18 @@
 	set_encumbrance(online_encumbrance)
 
 	ADD_TRAIT(src, TRAIT_ITEM_NODROP, RIG_TRAIT)
-	if(!ismob(loc))
-		stack_trace("rig activated without a mob loc. uh oh.")
 
 	activation_state = RIG_ACTIVATION_ONLINE
 	push_ui_data(list("activation" = RIG_ACTIVATION_ONLINE))
+
+	if(was_instant)
+		wearer.visible_message(
+			SPAN_NOTICE("[src] latches itself around [wearer], its seals and mechanisms locking snugly around their body.")
+		)
+	else
+		wearer.visible_message(
+			SPAN_NOTICE("[src] finishes adjusting its seals around [wearer], snugly latching itself around their body")
+		)
 
 	#warn update wearer/etc data
 
@@ -135,7 +157,7 @@
 				continue
 			INVOKE_ASYNC(src, PROC_REF(seal_piece_sync), piece)
 
-/obj/item/rig/proc/deactivate(undeploy, silent, subtle, force)
+/obj/item/rig/proc/deactivate(undeploy, silent, subtle, force, was_instant)
 	set_weight(offline_weight)
 	set_encumbrance(offline_encumbrance)
 
@@ -153,6 +175,11 @@
 
 	activation_state = RIG_ACTIVATION_OFFLINE
 	push_ui_data(list("activation" = RIG_ACTIVATION_OFFLINE))
+
+	// wearer is not always there for deactivation
+	wearer?.visible_message(
+		SPAN_NOTICE("[src] completely detaches from [wearer], its lights and panels going dim.")
+	)
 
 	#warn update wearer/etc data
 

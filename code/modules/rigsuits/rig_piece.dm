@@ -181,6 +181,12 @@
 
 	ADD_TRAIT(src, TRAIT_ITEM_NODROP, RIG_TRAIT)
 
+	if(!subtle)
+		physical.visible_message(
+			SPAN_NOTICE("[physical] snugly latches around [controller.wearer]."),
+			range = MESSAGE_RANGE_INVENTORY_SOFT,
+		)
+
 /**
  * @params
  * * actor - (optional) actor data for this action
@@ -198,24 +204,30 @@
 
 	REMOVE_TRAIT(src, TRAIT_ITEM_NODROP, RIG_TRAIT)
 
-/datum/component/rig_piece/proc/deploy(mob/onto, inv_op_flags)
+	if(!subtle)
+		physical.visible_message(
+			SPAN_NOTICE("[physical] unlatches from [controller.wearer]."),
+			range = MESSAGE_RANGE_INVENTORY_SOFT,
+		)
+
+/datum/component/rig_piece/proc/deploy(mob/onto, inv_op_flags, subtle, silent)
 	if(isnull(onto))
 		return FALSE
 	var/obj/item/I = parent
 	if(I.loc == onto)
 		return TRUE
 	else if(I.loc != controller)
-		retract(inv_op_flags)
+		retract(INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT, TRUE, TRUE)
 	if(isnull(inventory_slot))
 		return FALSE
 	. = onto.equip_to_slot_if_possible(I, inventory_slot, inv_op_flags, onto)
 	if(!.)
 		return
 	// todo: some kind of visual feedback to people around them?
-	#warn impl
+	#warn impl - audio only
 	update_piece_data()
 
-/datum/component/rig_piece/proc/retract(inv_op_flags)
+/datum/component/rig_piece/proc/retract(inv_op_flags, subtle, silent)
 	var/obj/item/I = parent
 	if(I.loc == controller)
 		return TRUE
@@ -237,7 +249,7 @@
 		if(!.)
 			return
 	// todo: some kind of visual feedback to people around them?
-	#warn impl
+	#warn impl - audio only
 	update_piece_data()
 
 /datum/component/rig_piece/proc/is_deployed()

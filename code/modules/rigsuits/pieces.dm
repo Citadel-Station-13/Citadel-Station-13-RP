@@ -14,12 +14,12 @@
  *
  * @return TRUE/FALSE success/failure
  */
-/obj/item/rig/proc/deploy_piece_async(datum/component/rig_piece/piece, auto_seal = TRUE, instant_seal = FALSE, force = FALSE)
-	if(!piece.deploy(wearer, force? INV_OP_FORCE | INV_OP_CAN_DISPLACE : NONE))
+/obj/item/rig/proc/deploy_piece_async(datum/component/rig_piece/piece, auto_seal = TRUE, instant_seal, force, subtle, silent)
+	if(!piece.deploy(wearer, force? INV_OP_FORCE | INV_OP_CAN_DISPLACE : NONE, subtle, silent))
 		return FALSE
 	piece.currently_retracting = FALSE
 	if(auto_seal)
-		INVOKE_ASYNC(src, PROC_REF(seal_piece_sync), piece, instant_seal)
+		INVOKE_ASYNC(src, PROC_REF(seal_piece_sync), piece, instant_seal, subtle, silent)
 	return TRUE
 
 /**
@@ -27,14 +27,14 @@
  *
  * @return TRUE/FALSE success/failure
  */
-/obj/item/rig/proc/undeploy_piece_sync(datum/component/rig_piece/piece, instant_unseal = FALSE, force = FALSE)
+/obj/item/rig/proc/undeploy_piece_sync(datum/component/rig_piece/piece, instant_unseal, force, subtle, silent)
 	piece.currently_retracting = TRUE
-	if(!unseal_piece_sync(piece, instant_unseal))
+	if(!unseal_piece_sync(piece, instant_unseal, subtle, silent))
 		return FALSE
 	if(!piece.currently_retracting)
 		return FALSE
 	piece.currently_retracting = FALSE
-	if(!piece.retract(force? INV_OP_FORCE : NONE))
+	if(!piece.retract(force? INV_OP_FORCE : NONE, subtle, silent))
 		return FALSE
 	return TRUE
 
@@ -46,8 +46,8 @@
  *
  * @return TRUE/FALSE success/failure
  */
-/obj/item/rig/proc/seal_piece_sync(datum/component/rig_piece/piece, instant = FALSE)
-	return piece.seal_sync(instant)
+/obj/item/rig/proc/seal_piece_sync(datum/component/rig_piece/piece, instant, subtle, silent)
+	return piece.seal_sync(instant, subtle, silent)
 
 /**
  * blocks on unsealing
@@ -57,25 +57,25 @@
  *
  * @return TRUE/FALSE success/failure
  */
-/obj/item/rig/proc/unseal_piece_sync(datum/component/rig_piece/piece, instant = FALSE)
-	return piece.unseal_sync(instant)
+/obj/item/rig/proc/unseal_piece_sync(datum/component/rig_piece/piece, instant, subtle, silent)
+	return piece.unseal_sync(instant, subtle, silent)
 
 /**
  * deploys all pieces; non-blocking
  */
-/obj/item/rig/proc/deploy_suit_async(auto_seal = TRUE, instant_seal = FALSE, force = FALSE)
+/obj/item/rig/proc/deploy_suit_async(auto_seal = TRUE, instant_seal, force, subtle, silent)
 	for(var/id in piece_lookup)
 		var/datum/component/rig_piece/piece = piece_lookup[id]
-		INVOKE_ASYNC(src, PROC_REF(deploy_piece_async), piece, auto_seal, instant_seal, force)
+		INVOKE_ASYNC(src, PROC_REF(deploy_piece_async), piece, auto_seal, instant_seal, force, subtle, silent)
 	return TRUE
 
 /**
  * undeploys all pieces; non-blocking
  */
-/obj/item/rig/proc/undeploy_suit_async(instant_unseal = FALSE, force = FALSE)
+/obj/item/rig/proc/undeploy_suit_async(instant_unseal, force, subtle, silent)
 	for(var/id in piece_lookup)
 		var/datum/component/rig_piece/piece = piece_lookup[id]
-		INVOKE_ASYNC(src, PROC_REF(undeploy_piece_sync), piece, instant_unseal, force)
+		INVOKE_ASYNC(src, PROC_REF(undeploy_piece_sync), piece, instant_unseal, force, subtle, silent)
 	return TRUE
 
 /**
@@ -86,12 +86,12 @@
  *
  * @return TRUE / FALSE on success / failure
  */
-/obj/item/rig/proc/undeploy_suit_sync(instant_unseal = FALSE, force = FALSE)
+/obj/item/rig/proc/undeploy_suit_sync(instant_unseal, force, subtle, silent)
 	var/list/collected = list()
 	. = TRUE
 	for(var/id in piece_lookup)
 		var/datum/component/rig_piece/piece = piece_lookup[id]
-		INVOKE_ASYNC(src, PROC_REF(undeploy_piece_sync), piece, instant_unseal, force)
+		INVOKE_ASYNC(src, PROC_REF(undeploy_piece_sync), piece, instant_unseal, force, subtle, silent)
 		//* warning: shitcode ahead
 		//* this relies on the fact byond is single-threaded
 		//* because we know for sure that sync immediately sleeps, wihch means that
