@@ -16,8 +16,10 @@
 
 
 /obj/item/reagent_containers/food_holder/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/reagent_containers/food_holder) || istype(I, /obj/item/reagent_containers/food/snacks/ingredient))
-		if(!user.attempt_insert_item_for_installation(I, src))
+	if(istype(I, /obj/item/reagent_containers/food/snacks/ingredient))
+		if(is_type_in_list(I, contents))
+			try_merge(I, user)
+		else if(!user.attempt_insert_item_for_installation(I, src))
 			return
 		user.visible_message("<span class='notice'>[user] puts [I] into [src].</span>", "<span class='notice'>You put [I] into [src].</span>")
 		return
@@ -44,3 +46,10 @@
 		user.put_in_hands_or_drop(removables[remove_item])
 		return TRUE
 	return FALSE
+
+/obj/item/reagent_containers/food_holder/proc/try_merge(obj/item/reagent_containers/food/snacks/ingredient/I, mob/user)
+	if(!istype(I))
+		return
+	for(var/obj/item/reagent_containers/food/snacks/ingredient/compare_ingredient in contents))
+		if(compare_ingredient.type == I.type)
+			

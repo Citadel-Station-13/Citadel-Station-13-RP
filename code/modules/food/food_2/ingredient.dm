@@ -49,6 +49,7 @@
 
 /obj/item/reagent_containers/food/snacks/ingredient/examine(mob/user, dist)
 	. = ..()
+	. += SPAN_NOTICE("<b>Alt-click</b> with a <b>sharp object</b> in hand to split off servings.")
 	. += cooking_information(TRUE)
 
 /obj/item/reagent_containers/food/snacks/ingredient/proc/cooking_information(var/detailed = FALSE)
