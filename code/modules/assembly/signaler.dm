@@ -42,7 +42,7 @@
 		ui = new(user, src, "Signaler", name)
 		ui.open()
 
-/obj/item/assembly/signaler/ui_data(mob/user)
+/obj/item/assembly/signaler/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 	data["frequency"] = frequency
 	data["code"] = code
@@ -50,7 +50,7 @@
 	data["maxFrequency"] = RADIO_HIGH_FREQ
 	return data
 
-/obj/item/assembly/signaler/ui_act(action, params)
+/obj/item/assembly/signaler/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

@@ -101,7 +101,7 @@
 /obj/machinery/computer/ship/proc/viewing_overmap(mob/user)
 	return (WEAKREF(user) in viewers)
 
-/obj/machinery/computer/ship/ui_status(mob/user)
+/obj/machinery/computer/ship/ui_status(mob/user, datum/ui_state/state)
 	. = ..()
 	if(. > UI_DISABLED)
 		if(viewing_overmap(user))
@@ -109,7 +109,7 @@
 		return
 	unlook(user)
 
-/obj/machinery/computer/ship/ui_close(mob/user, datum/tgui_module/module)
+/obj/machinery/computer/ship/on_ui_close(mob/user, datum/tgui/ui, embedded)
 	. = ..()
 	user.unset_machine()
 	unlook(user)

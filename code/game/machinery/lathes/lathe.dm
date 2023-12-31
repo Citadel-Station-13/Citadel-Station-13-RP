@@ -579,7 +579,7 @@
 	/// items to use for design - order matters! uses weakref's.
 	var/list/ingredient_parts
 
-/datum/lathe_queue_entry/ui_data()
+/datum/lathe_queue_entry/ui_data(mob/user, datum/tgui/ui)
 	return list(
 		"design" = design_id,
 		"amount" = amount,

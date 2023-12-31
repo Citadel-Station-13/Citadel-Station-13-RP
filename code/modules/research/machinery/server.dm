@@ -156,7 +156,7 @@
 	var/list/consoles = list()
 	var/badmin = 0
 
-/obj/machinery/computer/rdservercontrol/ui_status(mob/user)
+/obj/machinery/computer/rdservercontrol/ui_status(mob/user, datum/ui_state/state)
 	. = ..()
 	if(!allowed(user) && !emagged)
 		. = min(., UI_UPDATE)
@@ -167,7 +167,7 @@
 		ui = new(user, src, "ResearchServerController", name)
 		ui.open()
 
-/obj/machinery/computer/rdservercontrol/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/computer/rdservercontrol/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	data["badmin"] = badmin
