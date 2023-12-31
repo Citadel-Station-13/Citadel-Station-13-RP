@@ -151,7 +151,7 @@
 	beaker = null
 	update_appearance()
 
-/obj/machinery/biogenerator/ui_status(mob/user)
+/obj/machinery/biogenerator/ui_status(mob/user, datum/ui_state/state)
 	if(machine_stat & BROKEN || panel_open)
 		return UI_CLOSE
 	return ..()
@@ -162,7 +162,7 @@
 		ui = new(user, src, "Biogenerator", name)
 		ui.open()
 
-/obj/machinery/biogenerator/ui_data(mob/user)
+/obj/machinery/biogenerator/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	data["build_eff"] = build_eff
@@ -172,7 +172,7 @@
 
 	return data
 
-/obj/machinery/biogenerator/ui_static_data(mob/user)
+/obj/machinery/biogenerator/ui_static_data(mob/user, datum/tgui/ui)
 	var/list/static_data[0]
 
 	// Available items - in static data because we don't wanna compute this list every time! It hardly changes.
@@ -186,7 +186,7 @@
 
 	return static_data
 
-/obj/machinery/biogenerator/ui_act(action, list/params)
+/obj/machinery/biogenerator/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return

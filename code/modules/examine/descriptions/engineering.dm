@@ -58,7 +58,7 @@
 	else
 		results += "[desc_panel_image("welder", user)]to weld, preventing it from opening."
 
-	if(p_open)
+	if(panel_open)
 		results += "[desc_panel_image("screwdriver", user)]to close the wire panel."
 		results += "[desc_panel_image("wirecutters", user)]to cut an internal wire while hacking."
 		results += "[desc_panel_image("multitool", user)]to pulse an internal wire while hacking."

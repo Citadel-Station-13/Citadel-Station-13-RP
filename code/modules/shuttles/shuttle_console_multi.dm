@@ -14,7 +14,7 @@
 			// "engines_charging" = ((shuttle.last_move + (shuttle.cooldown SECONDS)) > world.time), // Replaced by longer warmup_time
 		)
 
-/obj/machinery/computer/shuttle_control/multi/ui_act(action, list/params)
+/obj/machinery/computer/shuttle_control/multi/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

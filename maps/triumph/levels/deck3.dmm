@@ -4292,7 +4292,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/firedoor/multi_tile,
 /obj/structure/curtain/open/shower/medical,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 8
@@ -4300,6 +4299,7 @@
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 8
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
 "dHN" = (
@@ -7710,6 +7710,7 @@
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
 "guJ" = (
@@ -9869,6 +9870,9 @@
 	},
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 1
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
@@ -22355,10 +22359,12 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "skW" = (
-/obj/machinery/door/firedoor/multi_tile,
 /obj/structure/curtain/open/shower/medical,
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/blue/border,
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
 "slc" = (

@@ -402,7 +402,7 @@
 		ui = new(user, src, "OvermapShieldGenerator", name) // 500, 800
 		ui.open()
 
-/obj/machinery/power/shield_generator/ui_data(mob/user)
+/obj/machinery/power/shield_generator/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 
 	data["running"] = running
@@ -439,7 +439,7 @@
 		return
 	ui_interact(user)
 
-/obj/machinery/power/shield_generator/ui_status(mob/user)
+/obj/machinery/power/shield_generator/ui_status(mob/user, datum/ui_state/state)
 	if(issilicon(user) && !Adjacent(user) && ai_control_disabled)
 		return UI_UPDATE
 	if(panel_open)

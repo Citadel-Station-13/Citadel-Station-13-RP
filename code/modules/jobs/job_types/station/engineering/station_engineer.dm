@@ -52,7 +52,7 @@
 
 /datum/prototype/struct/alt_title/electrician
 	title = "Electrician"
-	title_blurb = "An Electrician's primary duty is making sure power is properly distributed thoughout the facility, utilizing solars, substations, and other \
+	title_blurb = "An Electrician's primary duty is making sure power is properly distributed throughout the facility, utilizing solars, substations, and other \
 					methods to ensure every department has power in an emergency."
 
 /datum/prototype/struct/alt_title/apprentice_engineer

@@ -3143,15 +3143,17 @@
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/shuttle/trade_ship/general)
 "lg" = (
+/obj/structure/closet/crate/bin{
+	anchored = 1
+	},
 /obj/machinery/firealarm{
 	dir = 8;
 	pixel_x = -24
 	},
-/obj/machinery/firealarm{
-	dir = 8;
-	pixel_x = -26
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 10
 	},
-/turf/simulated/wall,
+/turf/simulated/floor/carpet,
 /area/tradeport/commons)
 "lh" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -6674,7 +6676,7 @@
 	pixel_x = 34;
 	pixel_y = 3
 	},
-/obj/machinery/button/windowtint/doortint{
+/obj/machinery/button/windowtint/multitint{
 	id = "traderportdoor";
 	pixel_x = -8;
 	pixel_y = 23
@@ -6794,14 +6796,14 @@
 /area/shuttle/trade_ship/cockpit)
 "yI" = (
 /obj/item/stool/padded,
-/obj/machinery/firealarm{
-	dir = 8;
-	pixel_x = -26
-	},
 /obj/item/toy/plushie/squid/blue,
 /obj/landmark/spawnpoint/job/trader,
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
+	},
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -24
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/commons)
@@ -6864,7 +6866,7 @@
 	pixel_x = 30;
 	req_access = list(160)
 	},
-/obj/machinery/button/windowtint/doortint{
+/obj/machinery/button/windowtint/multitint{
 	id = "traderstardoor";
 	pixel_x = -8;
 	pixel_y = -23
@@ -42575,7 +42577,7 @@ PJ
 NQ
 nq
 tu
-lg
+tu
 cA
 tu
 tu
@@ -43945,7 +43947,7 @@ GO
 fE
 Rv
 Hq
-iq
+lg
 nq
 rf
 Ym

@@ -1,3 +1,5 @@
+// todo: this has to be globally cached for new admin panel
+
 /**
  * holds db-related data
  * loaded every connect

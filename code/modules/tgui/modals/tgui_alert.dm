@@ -116,14 +116,14 @@
 		ui = new(user, src, "AlertModal")
 		ui.open()
 
-/datum/tgui_modal/ui_close(mob/user, datum/tgui_module/module)
+/datum/tgui_modal/on_ui_close(mob/user, datum/tgui/ui, embedded)
 	. = ..()
 	closed = TRUE
 
-/datum/tgui_modal/ui_state(mob/user, datum/tgui_module/module)
+/datum/tgui_modal/ui_state()
 	return GLOB.always_state
 
-/datum/tgui_modal/ui_static_data(mob/user)
+/datum/tgui_modal/ui_static_data(mob/user, datum/tgui/ui)
 	. = list()
 	.["autofocus"] = autofocus
 	.["buttons"] = buttons
@@ -132,12 +132,12 @@
 	.["swapped_buttons"] = FALSE//user.client.prefs.read_preference(/datum/preference/toggle/tgui_input_swapped)
 	.["title"] = title
 
-/datum/tgui_modal/ui_data(mob/user)
+/datum/tgui_modal/ui_data(mob/user, datum/tgui/ui)
 	. = list()
 	if(timeout)
 		.["timeout"] = CLAMP01((timeout - (world.time - start_time) - 1 SECONDS) / (timeout - 1 SECONDS))
 
-/datum/tgui_modal/ui_act(action, list/params)
+/datum/tgui_modal/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if (.)
 		return

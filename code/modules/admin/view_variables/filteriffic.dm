@@ -4,7 +4,7 @@
 /datum/filter_editor/New(atom/target)
 	src.target = target
 
-/datum/filter_editor/ui_state(mob/user, datum/tgui_module/module)
+/datum/filter_editor/ui_state()
 	return GLOB.admin_state
 
 /datum/filter_editor/ui_interact(mob/user, datum/tgui/ui)
@@ -13,18 +13,18 @@
 		ui = new(user, src, "Filteriffic")
 		ui.open()
 
-/datum/filter_editor/ui_static_data(mob/user)
+/datum/filter_editor/ui_static_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 	data["filter_info"] = GLOB.master_filter_info
 	return data
 
-/datum/filter_editor/ui_data()
+/datum/filter_editor/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 	data["target_name"] = target.name
 	data["target_filter_data"] = target.filter_data
 	return data
 
-/datum/filter_editor/ui_act(action, list/params)
+/datum/filter_editor/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return
