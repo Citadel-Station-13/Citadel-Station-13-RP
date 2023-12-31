@@ -16583,6 +16583,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
 /area/hallway/lower/first_west)
+"iDK" = (
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/lowernortheva/external)
 "iDS" = (
 /turf/simulated/floor/plating,
 /area/maintenance/lower/xenoflora)
@@ -16977,7 +16980,6 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
 "iQX" = (
-/obj/effect/step_trigger/teleporter/to_plains,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/outside/outside1)
 "iRw" = (
@@ -39174,6 +39176,9 @@
 "uXk" = (
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/funny/clownoffice)
+"uXC" = (
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/outside/outside1)
 "uXS" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -40278,6 +40283,9 @@
 /obj/machinery/gear_painter,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/visitor_laundry)
+"vAn" = (
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/lowernortheva/external)
 "vAp" = (
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/tether/elevator)
@@ -68439,7 +68447,7 @@ aFY
 eJo
 bre
 bre
-iQX
+uXC
 "}
 (120,1,1) = {"
 qbg
@@ -68633,7 +68641,7 @@ aFY
 bre
 bre
 bre
-iQX
+uXC
 "}
 (121,1,1) = {"
 qbg
@@ -68827,7 +68835,7 @@ eJo
 bre
 bre
 bre
-iQX
+uXC
 "}
 (122,1,1) = {"
 ujj
@@ -69021,7 +69029,7 @@ bre
 bre
 bre
 bre
-iQX
+uXC
 "}
 (123,1,1) = {"
 ujj
@@ -69215,7 +69223,7 @@ eJo
 bre
 bre
 bre
-iQX
+uXC
 "}
 (124,1,1) = {"
 ujj
@@ -69409,7 +69417,7 @@ bre
 bre
 bre
 bre
-iQX
+uXC
 "}
 (125,1,1) = {"
 ujj
@@ -69603,7 +69611,7 @@ aFY
 eJo
 bre
 bre
-iQX
+uXC
 "}
 (126,1,1) = {"
 ujj
@@ -69797,12 +69805,12 @@ aFY
 bre
 bre
 bre
-iQX
+uXC
 "}
 (127,1,1) = {"
 bAS
-bAS
-bAS
+iDK
+iDK
 wMH
 wMH
 wMH
@@ -69994,9 +70002,9 @@ ujj
 ujj
 "}
 (128,1,1) = {"
-bAS
-bAS
-bAS
+vAn
+iDK
+iDK
 wMH
 wMH
 wMH
@@ -70188,13 +70196,13 @@ osh
 qbg
 "}
 (129,1,1) = {"
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
+vAn
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
 wMH
 wMH
 wMH
@@ -70206,7 +70214,7 @@ wMH
 wMH
 wMH
 wMH
-bAS
+iDK
 fha
 uUi
 wJa
@@ -70382,17 +70390,17 @@ osh
 qbg
 "}
 (130,1,1) = {"
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
+vAn
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
 wMH
 wMH
 wMH
@@ -70400,8 +70408,8 @@ fku
 wMH
 wMH
 wMH
-bAS
-bAS
+iDK
+iDK
 qog
 geY
 ufe
@@ -70576,25 +70584,25 @@ osh
 qbg
 "}
 (131,1,1) = {"
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
+vAn
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
 qVb
 eGP
 iUX
@@ -70770,26 +70778,26 @@ osh
 qbg
 "}
 (132,1,1) = {"
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
+vAn
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
 azD
 azD
 azD
@@ -70964,26 +70972,26 @@ osh
 qbg
 "}
 (133,1,1) = {"
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
+vAn
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
 azD
 jgC
 jgC
@@ -71158,26 +71166,26 @@ osh
 qbg
 "}
 (134,1,1) = {"
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
-bAS
+vAn
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
+iDK
 azD
 jgC
 jgC
@@ -71352,9 +71360,9 @@ osh
 qbg
 "}
 (135,1,1) = {"
-bAS
-bAS
-bAS
+vAn
+iDK
+iDK
 wMH
 wMH
 wMH
@@ -71368,10 +71376,10 @@ wMH
 wMH
 wMH
 wMH
-bAS
+iDK
 vVY
-bAS
-bAS
+iDK
+iDK
 azD
 jgC
 jgC
@@ -71546,9 +71554,9 @@ osh
 qbg
 "}
 (136,1,1) = {"
-bAS
-bAS
-bAS
+vAn
+iDK
+iDK
 wMH
 wMH
 wMH
@@ -71562,9 +71570,9 @@ wMH
 wMH
 wMH
 wMH
-bAS
-bAS
-bAS
+iDK
+iDK
+iDK
 rKa
 rKa
 rKa
