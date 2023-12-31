@@ -5107,6 +5107,10 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
+/obj/machinery/door/airlock/glass/engineering{
+	name = "Break Room";
+	req_access = list(10)
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/break_room)
 "kl" = (
@@ -11014,10 +11018,6 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
-/obj/machinery/door/airlock/glass/engineering{
-	name = "Break Room";
-	req_access = list(10)
-	},
 /turf/simulated/floor/wood,
 /area/engineering/break_room)
 "wy" = (
@@ -13549,6 +13549,10 @@
 	},
 /obj/machinery/door/firedoor/glass{
 	dir = 8
+	},
+/obj/machinery/door/airlock/glass/engineering{
+	name = "Break Room";
+	req_access = list(10)
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/break_room)
