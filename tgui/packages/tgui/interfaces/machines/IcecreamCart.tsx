@@ -17,7 +17,6 @@ interface IcecreamCartData {
     color: ByondAtomColor,
     ref: string,
   }[];
-  coneSource: number | null;
   scoopSource: number | null;
 }
 
@@ -25,7 +24,7 @@ export const IcecreamCart = (props, context) => {
   let { data, act } = useBackend<IcecreamCartData>(context);
 
   return (
-    <Window title="Icecream Cart" width={350} height={600}>
+    <Window title="Icecream Cart" width={450} height={600}>
       <Window.Content>
         <Stack vertical fill>
           <Stack.Item>
@@ -55,6 +54,11 @@ export const IcecreamCart = (props, context) => {
                   <Stack.Item key={s.ref}>
                     <Stack>
                       <Stack.Item>
+                        <Button selected={data.scoopSource === i + 1}
+                          content="Select"
+                          onClick={() => act('selectProduce', { index: i + 1 })} />
+                      </Stack.Item>
+                      <Stack.Item>
                         {s.name}
                       </Stack.Item>
                       <Stack.Item grow={1}>
@@ -63,7 +67,7 @@ export const IcecreamCart = (props, context) => {
                         </ProgressBar>
                       </Stack.Item>
                       <Stack.Item>
-                        <Button.Confirm content="Eject" onClick={() => act('ejectSource', { index: i })} />
+                        <Button.Confirm content="Eject" onClick={() => act('ejectSource', { index: i + 1 })} />
                       </Stack.Item>
                     </Stack>
                   </Stack.Item>

@@ -128,6 +128,8 @@
 		if(!reagents.has_reagent(/datum/reagent/nutriment/flour, cone_flour_cost))
 			return FALSE
 	reagents.remove_reagent(/datum/reagent/nutriment/flour, cone_flour_cost)
+	// todo: doesn't require full resend
+	update_static_data()
 	var/obj/item/reagent_containers/food/snacks/ice_cream/cone = new(src)
 	return cone
 
@@ -150,7 +152,7 @@
 	if(has_sugar)
 		reagents.remove_reagent(/datum/reagent/sugar, scoop_sugar_cost)
 	var/obj/item/reagent_containers/infuse_source = SAFEINDEXACCESS(sources, selected_ice_cream_source)
-	cone.add_scoop(infuse_source.reagents, scoop_infuse_amount, TRUE)
+	cone.add_scoop(infuse_source?.reagents || /datum/reagent/drink/milk, scoop_infuse_amount, has_sugar, TRUE)
 	return TRUE
 
 /obj/structure/icecream_cart/attackby(obj/item/I, mob/user, list/params, clickchain_flags, damage_multiplier)
@@ -162,6 +164,9 @@
 		if(ice_cream.no_double_dipping)
 			user.action_feedback(SPAN_WARNING("[ice_cream] was already bitten out of!"), src)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
+		if(ice_cream.scoop_current >= ice_cream.scoop_max)
+			user.action_feedback(SPAN_WARNING("[ice_cream] is more than topped off already!"), src)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
 		if(!fill_cone(ice_cream, user = user))
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		user.visible_action_feedback(
@@ -169,6 +174,7 @@
 			hard_range = MESSAGE_RANGE_CONSTRUCTION,
 			visible_hard = SPAN_NOTICE("[user] fills \the [ice_cream] with [ice_cream.scoop_current > 1? "another" : "a"] delicious dollop of ice cream from \the [src].")
 		)
+		update_static_data()
 		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 	// handle filling
 	if(!istype(I, /obj/item/reagent_containers))
@@ -197,6 +203,8 @@
 		visible_hard = SPAN_NOTICE("[user] refills [src] with [container]."),
 		visible_self = SPAN_NOTICE("You refill [src] with [units_transferred] units of reagents from [container]."),
 	)
+	// todo: this doesn't need a full data push
+	update_static_data()
 	return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/structure/icecream_cart/MouseDroppedOn(atom/dropping, mob/user, proximity, params)
@@ -221,6 +229,7 @@
 	)
 	container.forceMove(src)
 	LAZYADD(sources, container)
+	update_static_data()
 	return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/structure/icecream_cart/loaded

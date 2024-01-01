@@ -180,6 +180,9 @@
 			update_total()
 
 /datum/reagents/proc/remove_reagent(id, amount, safety = 0)
+	if(ispath(id))
+		var/datum/reagent/path = id
+		id = initial(path.id)
 	if(!isnum(amount))
 		return 0
 	for(var/datum/reagent/current in reagent_list)
@@ -204,6 +207,9 @@
 			return 0
 
 /datum/reagents/proc/has_reagent(id, amount = 0)
+	if(ispath(id))
+		var/datum/reagent/path = id
+		id = initial(path.id)
 	for(var/datum/reagent/current in reagent_list)
 		if(current.id == id)
 			if(current.volume >= amount)
@@ -241,6 +247,9 @@
 			return current
 
 /datum/reagents/proc/get_reagent_amount(id)
+	if(ispath(id))
+		var/datum/reagent/path = id
+		id = initial(path.id)
 	for(var/datum/reagent/current in reagent_list)
 		if(current.id == id)
 			return current.volume
@@ -554,10 +563,11 @@
  * * amount - limit of how much
  * * copy - do not remove the reagent from source
  * * multiplier - magically multiply the transferred reagent volumes by this much; does not affect return value.
+ * * defer_reactions - should we + the recipient handle reactions?
  *
  * @return reagents transferred
  */
-/datum/reagents/proc/transfer_to_holder(datum/reagents/target, list/reagents, amount = INFINITY, copy, multiplier = 1)
+/datum/reagents/proc/transfer_to_holder(datum/reagents/target, list/reagents, amount = INFINITY, copy, multiplier = 1, defer_reactions)
 	. = 0
 	if(!total_volume)
 		return
@@ -597,9 +607,10 @@
 				var/transferred = R.volume * ratio
 				target.add_reagent(R.id, transferred * multiplier, R.get_data(), safety = TRUE)
 
-	if(!copy)
-		handle_reactions()
-	target.handle_reactions()
+	if(!defer_reactions)
+		if(!copy)
+			handle_reactions()
+		target.handle_reactions()
 
 //? UI
 

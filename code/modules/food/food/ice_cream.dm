@@ -55,7 +55,7 @@
 /**
  * If reagent source is a holder, we will consume reagent_amount from it; otherwise, we magically make more.
  */
-/obj/item/reagent_containers/food/snacks/ice_cream/proc/add_scoop(reagent_source, reagent_amount, update_icon = TRUE)
+/obj/item/reagent_containers/food/snacks/ice_cream/proc/add_scoop(reagent_source, reagent_amount, sugarized = TRUE, update_icon = TRUE)
 	var/color
 	if(istype(reagent_source, /datum/reagent))
 		var/datum/reagent/from_reagent = reagent_source
@@ -75,7 +75,17 @@
 		return TRUE
 	var/image/dollop = image(icon, icon_state = "dollop", pixel_x = pos[1], pixel_y = pos[2])
 	dollop.color = color
+	dollop.appearance_flags = KEEP_APART | RESET_COLOR
 	add_overlay(dollop)
+
+	// todo: this is awful
+	if(sugarized)
+		reagents.add_reagent(/datum/reagent/sugar, 2)
+		snowflake_deliciousness = ((snowflake_deliciousness * (scoop_current - 1)) + sugarized? 1 : 0) / scoop_current
+
+	if(name == initial(name))
+		name = "ice cream"
+		desc = "Delicious ice cream. This one has [scoop_current] scoops."
 
 	return TRUE
 
@@ -95,6 +105,15 @@
 	add_overlay(bite_overlay)
 */
 
+/obj/item/reagent_containers/food/snacks/ice_cream/throw_land(atom/A, datum/thrownthing/TT)
+	smash()
+	return COMPONENT_THROW_HIT_TERMINATE
+
+/obj/item/reagent_containers/food/snacks/ice_cream/proc/smash()
+	visible_message(SPAN_WARNING("[src] falls, getting smushed in the process."))
+	new /obj/effect/debris/cleanable/ice_cream(drop_location(), src)
+	qdel(src)
+
 /obj/item/reagent_containers/food/snacks/ice_cream/proc/overlay_position(i)
 	switch(i)
 		if(0)
@@ -113,9 +132,9 @@
 		if(6)
 			return list(5, 5)
 		if(7)
-			return list(-4, 8)
+			return list(-3, 8)
 		if(8)
-			return list(4, 8)
+			return list(3, 8)
 
 #define ICE_CREAM_PATHS(REAGENT_PATH, PATH_APPEND) \
 /obj/item/reagent_containers/food/snacks/ice_cream/##PATH_APPEND { \
@@ -150,7 +169,14 @@ ICE_CREAM_PATHS(/datum/reagent/drink/juice/apple, apple)
 
 /obj/effect/debris/cleanable/ice_cream/Initialize(mapload, obj/item/reagent_containers/food/snacks/ice_cream/from_cone)
 	. = ..()
+	dollops_left_colors = list()
+	for(var/appearance/A as anything in from_cone?.overlays)
+		if(A.icon_state != "dollop")
+			continue
+		dollops_left_colors += A.color
 	create_reagents(1000)
+	// we're not reacting btw :)
+	from_cone.reagents.transfer_to_holder(reagents)
 	addtimer(CALLBACK(src, PROC_REF(start_reaction)), rand(0.5, 1.5 SECONDS))
 	melt_more()
 
@@ -171,9 +197,12 @@ ICE_CREAM_PATHS(/datum/reagent/drink/juice/apple, apple)
 			var/image/dollop = image(icon = icon, icon_state = "dollop")
 			dollop.color = color
 			dollop.pixel_x = rand(-8, 8)
-			dollop.pixel_y = rand(-8, 8)
+			dollop.pixel_y = rand(-8, 8) - 4
 			dollop.appearance_flags = KEEP_APART | RESET_COLOR
+			dollop.layer = FLOAT_LAYER
 			add_overlay(dollop)
+			var/image/puddle = image(dollop)
+			puddle.icon_state = ""
 
 		addtimer(CALLBACK(src, PROC_REF(melt_more)), rand(2, 5 MINUTES))
 
