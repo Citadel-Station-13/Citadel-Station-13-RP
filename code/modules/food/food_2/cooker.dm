@@ -120,10 +120,15 @@
 	for(var/obj/item/reagent_containers/food/snacks/ingredient/I in food_containers)
 		if(counter)
 			removables["[I.name] ([counter]) \[[I.cookstage2text()]\]"] = I
-			to_chat(user, "Option [I.name] ([counter]) \[[I.cookstage2text()]\] = [I]")
 		else
 			removables["[I.name] \[[I.cookstage2text()]\]"] = I
-			to_chat(user, "Option [I.name] \[[I.cookstage2text()]\] = [I]")
+		counter++
+	counter = 0
+	for(var/obj/item/reagent_containers/food_holder/FH in food_containers)
+		if(counter)
+			removables["[FH.name] ([counter])"] = FH
+		else
+			removables[FH.name] = FH
 		counter++
 	var/remove_item = removables[1]
 	to_chat(user, "You attempt remove [remove_item] from [src]")

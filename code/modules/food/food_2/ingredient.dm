@@ -2,11 +2,12 @@
 	name = "generic ingredient"
 	desc = "This is a generic ingredient. It's so perfectly generic you're having a hard time even looking at it."
 	icon_state = "meat"
+	nutriment_amt = 5
 	//cookstage_information is a list of lists
 	//it contains a bunch of information about: how long it takes, what nutrition multiplier the ingredient has, what taste the ingredient has at various cook stages (raw, cooked, overcooked, burnt)
 	//an example one would be list(list(0, 0.5, "raw meat"), list(10 SECONDS, 1.2, "cooked meat"), list(16 SECONDS, 0.9, "rubbery and chewy meat"), list(20 SECONDS, 0.1, "charcoal"))
 	//these are defines, so to get the taste of a raw slab of meat you would do cookstage_information[RAW][COOKINFO_TASTE]
-	var/list/cookstage_information = list(list(0, 0.5, "genericness"), list(10 SECONDS, 1.2, "cooked genericness"), list(16 SECONDS, 0.9, "rubbery genericness"), list(20 SECONDS, 0.1, "gneric sharcoal"))
+	var/list/cookstage_information = list(list(0, 0.5, "raw genericness"), list(10 SECONDS, 1.2, "cooked genericness"), list(16 SECONDS, 0.9, "rubbery genericness"), list(20 SECONDS, 0.1, "gneric sharcoal"))
 	//how much cooking time (effective) have we accumulated
 	var/accumulated_time_cooked
 	//what stage we're in
@@ -40,6 +41,12 @@
 
 	if(accumulated_time_cooked >= cookstage_information[next_cookstage][COOKINFO_TIME])
 		cookstage = next_cookstage
+		var/datum/reagent/nutriment/our_nutrient = reagents.get_reagent("nutriment")
+		our_nutrient.data = list()
+		our_nutrient.data[cookstage_information[cookstage][COOKINFO_TASTE]] = serving_amount
+		//if(istype(loc, /obj/item/reagent_containers/food_holder))
+			//var/obj/item/reagent_containers/food_holder/FH = loc
+			//FH.()
 		on_cooked(cookstage, cook_method)
 
 /obj/item/reagent_containers/food/snacks/ingredient/proc/on_cooked(var/reached_stage, var/cook_method)
@@ -89,6 +96,7 @@
 			return "burnt"
 
 /obj/item/reagent_containers/food/snacks/ingredient/proc/merge_ingredient(obj/item/reagent_containers/food/snacks/ingredient/I)
+	I.reagents.trans_to_holder(reagents, I.reagents.total_volume, 1, TRUE)
 	accumulated_time_cooked = (accumulated_time_cooked + I.accumulated_time_cooked) / 2
 	serving_amount += I.serving_amount
 	qdel(I)
@@ -99,7 +107,7 @@
 	if(I.type != type)
 		return ..()
 	var/obj/item/reagent_containers/food/snacks/ingredient/add_ingredient = I
-	if(((accumulated_time_cooked - INGREDIENT_COOKTIME_MAX_SEPERATION) < add_ingredient.accumulated_time_cooked) && (add_ingredient.accumulated_time_cooked < (accumulated_time_cooked + INGREDIENT_COOKTIME_MAX_SEPERATION)))
+	if((((accumulated_time_cooked - INGREDIENT_COOKTIME_MAX_SEPERATION) < add_ingredient.accumulated_time_cooked) && (add_ingredient.accumulated_time_cooked < (accumulated_time_cooked + INGREDIENT_COOKTIME_MAX_SEPERATION))) && (add_ingredient.cookstage = cookstage))
 		to_chat(user, SPAN_NOTICE("You combine [I] into [src]."))
 		merge_ingredient(I)
 	
@@ -111,6 +119,7 @@
 		to_chat(user, SPAN_WARNING("There's not enough of [src] to split off!"))
 		return
 	var/amount = input("How much to split?", "Split ingredient") as null|num
+	amount = round(amount) //0.2 > 1
 	if(amount && amount < serving_amount)
 		serving_amount -= amount
 		var/obj/item/reagent_containers/food/snacks/ingredient/split_ingredient = new type(src)
@@ -120,3 +129,14 @@
 		to_chat(user, SPAN_NOTICE("You split off [src]."))
 	else
 		to_chat(user, SPAN_WARNING("There's not enough serves in the [src]!"))
+
+/obj/item/reagent_containers/food/snacks/ingredient/plant
+	name = "plant based generic ingredient"
+	desc = "This is a generic ingredient. It's so perfectly generic you're having a hard time even looking at it."
+	icon_state = "loadedbakedpotato"
+	//cookstage_information is a list of lists
+	//it contains a bunch of information about: how long it takes, what nutrition multiplier the ingredient has, what taste the ingredient has at various cook stages (raw, cooked, overcooked, burnt)
+	//an example one would be list(list(0, 0.5, "raw meat"), list(10 SECONDS, 1.2, "cooked meat"), list(16 SECONDS, 0.9, "rubbery and chewy meat"), list(20 SECONDS, 0.1, "charcoal"))
+	//these are defines, so to get the taste of a raw slab of meat you would do cookstage_information[RAW][COOKINFO_TASTE]
+	cookstage_information = list(list(0, 0.5, "raw vegetable"), list(4 SECONDS, 1.2, "cooked vegetable"), list(16 SECONDS, 0.9, "mushy vegetable"), list(20 SECONDS, 0.1, "charcoal vegetable"))
+	//how much cooking time (effective) have we accumulated
