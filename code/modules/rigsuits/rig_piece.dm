@@ -29,6 +29,8 @@
 	var/inventory_slot
 	/// our controller-unique ID; this is set per controller
 	var/lookup_id
+	/// lookup prefix
+	var/lookup_prefix = "unkw"
 
 	//* Sealing
 	/// are we sealed?
@@ -288,6 +290,36 @@
 	// todo: behavior unverified; operation id is not checked.
 	UNTIL(!(seal_mutex && (sealed == RIG_PIECE_UNSEALING)))
 	return sealed == RIG_PIECE_UNSEALED
+
+//* Console *//
+
+/**
+ * @return list(command = desc, ...)
+ */
+/datum/component/rig_piece/proc/console_query(mob/user)
+	return list(
+		"deploy \[\"seal\"?\]" = "Deploy to user. Use 'deploy seal' to seal after deployment.",
+		"retract" = "Retract into controller.",
+		"seal" = "Seal around user",
+		"unseal" = "Unseal from user.",
+	)
+
+/**
+ * @return list(output, admin log text)
+ */
+/datum/component/rig_piece/proc/console_process(mob/user, command, list/arguments)
+	switch(command)
+		if("deploy")
+			#warn impl
+		if("retract")
+			#warn impl
+		if("seal")
+			#warn impl
+		if("unseal")
+			#warn impl
+	return list("unknown command", "<invalid>")
+
+//* Base Piece Defs *//
 
 /obj/item/clothing/head/rig
 

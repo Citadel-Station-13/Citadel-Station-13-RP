@@ -115,7 +115,7 @@
 
 #warn impl all
 
-/obj/item/rig/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/item/rig/ui_static_data(mob/user, datum/tgui/ui)
 	#warn icecream update will modify this, check the root definition!
 	. = ..()
 	.["theme"] = theme_name
@@ -136,19 +136,16 @@
 	.["moduleRefs"] = module_refs
 	.["wornCorrectly"] = is_in_right_slot()
 
-/obj/item/rig/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
-	#warn icecream update will modify this, check the root definition!
+/obj/item/rig/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	// todo: maybe cache this
 	.["controlFlags"] = effective_control_flags(user)
 
-/obj/item/rig/ui_module_data(mob/user, datum/tgui/ui, datum/ui_state/state)
-	#warn icecream update will modify this, check the root definition!
+/obj/item/rig/ui_module_data(mob/user, datum/tgui/ui)
 	. = ..()
 	// todo: some pieces/modules data might need updating every tick?
 
-/obj/item/rig/ui_module_static(mob/user, datum/tgui/ui, datum/ui_state/state)
-	#warn icecream update will modify this, check the root definition!
+/obj/item/rig/ui_static_modules(mob/user, datum/tgui/ui)
 	. = ..()
 	for(var/obj/item/rig_module/module as anything in null)
 		// todo: modules
@@ -157,8 +154,7 @@
 		var/datum/component/rig_piece/piece = piece_lookup[id]
 		.[RIG_UI_ENCODE_PIECE_REF(ref(piece))] = piece.tgui_piece_data()
 
-/obj/item/rig/ui_module_act(action, list/params, datum/tgui/ui, id)
-	#warn icecream update will modify this, check the root definition!
+/obj/item/rig/ui_route(action, list/params, datum/tgui/ui, id)
 	. = ..()
 	if(.)
 		return
@@ -173,9 +169,9 @@
 			var/lookup_id = params["id"]
 			// todo: route to modules
 			return TRUE
+	#warn impl :/
 
 /obj/item/rig/ui_act(action, list/params, datum/tgui/ui)
-	#warn icecream update will modify this, check the root definition!
 	. = ..()
 	if(.)
 		return
@@ -248,22 +244,21 @@
 						return TRUE
 					INVOKE_ASYNC(src, PROC_REF(undeploy_piece_sync), piece_instance)
 				return TRUE
-		#warn impl restricted_camera_networks
+		#warn impl all
 
 /obj/item/rig/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
-	#warn icecream update will modify this, check the root definition!
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(isnull(ui))
 		ui = new(user, src, "RigsuitController")
 		ui.open()
 
-/obj/item/rig/ui_state(mob/user, datum/tgui_module/module)
-	#warn icecream update will modify this, check the root definition!
+/obj/item/rig/ui_state()
 	// give always state because we manually override all of this in ui_status
+	#warn shitcode lol
 	return GLOB.always_state
 
-/obj/item/rig/ui_status(mob/user, datum/ui_state/state, datum/tgui_module/module)
-	#warn icecream update will modify this, check the root definition!
+/obj/item/rig/ui_status(mob/user, datum/ui_state/state)
+	#warn shitcode lol
 	// "guys, I swear I have a reason to reimplement all of this"
 	// rigs use a very complicated status system so things like AI control can be done
 	// it'd be a better idea to use state datums but i don't care

@@ -7,6 +7,12 @@
 /obj/item/rig_module
 	#warn impl all
 
+	//* Core
+	/// lookup id
+	var/lookup_id
+	/// lookup prefix - set this please
+	var/lookup_prefix = "unkw"
+
 	//* Balancing
 	/// slots this takes up
 	///
@@ -33,3 +39,14 @@
 	//* Zone
 	#warn ughh
 
+/**
+ * @return list(command = desc, ...)
+ */
+/obj/item/rig_module/proc/console_query(mob/user)
+	return list()
+
+/**
+ * @return list(output, admin log text)
+ */
+/obj/item/rig_module/proc/console_process(mob/user, command, list/arguments)
+	return list("unknown command", "<invalid>")

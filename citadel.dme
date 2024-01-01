@@ -4435,7 +4435,6 @@
 #include "code\modules\rigsuits\interaction.dm"
 #include "code\modules\rigsuits\pieces.dm"
 #include "code\modules\rigsuits\rig.dm"
-#include "code\modules\rigsuits\rig_auth_panel.dm"
 #include "code\modules\rigsuits\rig_console.dm"
 #include "code\modules\rigsuits\rig_maint_panel.dm"
 #include "code\modules\rigsuits\rig_piece.dm"

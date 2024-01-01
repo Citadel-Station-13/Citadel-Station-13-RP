@@ -163,6 +163,8 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 	var/display_name
 	/// visible name - appended directly to host theme's visible name
 	var/visible_name
+	/// lookup prefix
+	var/lookup_prefix
 	/// piece component flags
 	var/rig_piece_flags = NONE
 	/// multiplier for armor to apply - does not affect tier.
@@ -255,10 +257,12 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 	piece_component.inv_hide_flags_unsealed = inv_hide_flags_inactive
 	piece_component.rig_piece_flags = rig_piece_flags
 	piece_component.inventory_slot = equip_slot
+	piece_component.lookup_prefix = lookup_prefix
 
 /datum/rig_piece/helmet
 	display_name = "helmet"
 	visible_name = "Helmet"
+	lookup_prefix = "helmet"
 	path = /obj/item/clothing/head/rig
 	rig_piece_flags = RIG_PIECE_APPLY_ARMOR | RIG_PIECE_APPLY_ENVIRONMENTALS
 	piece_state_append = "-helmet"
@@ -269,6 +273,7 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 /datum/rig_piece/chestplate
 	display_name = "chestplate"
 	visible_name = "Chestplate"
+	lookup_prefix = "torso"
 	path = /obj/item/clothing/suit/rig
 	rig_piece_flags = RIG_PIECE_APPLY_ARMOR | RIG_PIECE_APPLY_ENVIRONMENTALS
 	piece_state_append = "-chestplate"
@@ -279,6 +284,7 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 /datum/rig_piece/gloves
 	display_name = "gauntlets"
 	visible_name = "Gauntlets"
+	lookup_prefix = "arms"
 	path = /obj/item/clothing/gloves/rig
 	rig_piece_flags = RIG_PIECE_APPLY_ARMOR | RIG_PIECE_APPLY_ENVIRONMENTALS
 	piece_state_append = "-gloves"
@@ -294,6 +300,7 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 /datum/rig_piece/boots
 	display_name = "boots"
 	visible_name = "Boots"
+	lookup_prefix = "legs"
 	path = /obj/item/clothing/shoes/rig
 	rig_piece_flags = RIG_PIECE_APPLY_ARMOR | RIG_PIECE_APPLY_ENVIRONMENTALS
 	piece_state_append = "-boots"

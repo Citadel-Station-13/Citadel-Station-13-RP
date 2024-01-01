@@ -87,6 +87,24 @@
 /**
  * public
  *
+ * Static module data to be sent to the UI.
+ *
+ * * We only have this, and not a module update, because you should be using module registration.
+ * * This is for stuff like RIGsuits, which do special implementations and need the first data send to have modules.
+ *
+ *
+ * @params
+ * * user - (optional) the mob using the UI
+ * * ui - (optional) the host tgui
+ *
+ * return key-value list: key is module ID, value is a list of data.
+ */
+/datum/proc/ui_static_modules(mob/user, datum/tgui/ui)
+	return list()
+
+/**
+ * public
+ *
  * Used to open and update UIs.
  * If this proc is not implemented properly, the UI will not update correctly.
  *

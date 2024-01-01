@@ -35,10 +35,12 @@
 	var/state_sealed
 	var/state_unsealed
 
+	//* Console
+	/// Our console
+	var/datum/rig_console/console
+
 	//* Control
-	/// authentication modification panel
-	/// lazy-init'd
-	var/datum/rig_auth_panel/auth_panel
+	// todo.
 
 	//* Legacy - to be made into dynamic data once components/modules are done.
 	var/datum/armor/suit_armor
@@ -127,7 +129,7 @@
 /obj/item/rig/Destroy()
 	hard_reset()
 	wipe_everything()
-	QDEL_NULL(auth_panel)
+	QDEL_NULL(console)
 	QDEL_NULL(maint_panel)
 	return ..()
 
@@ -175,3 +177,11 @@
 /obj/item/rig/ui_action_click(datum/action/action, mob/user)
 	. = ..()
 	ui_interact(user)
+
+//* Console
+
+/obj/item/rig/proc/request_console()
+	RETURN_TYPE(/datum/rig_console)
+	if(isnull(rig_console))
+		rig_console = new(src)
+	return rig_console

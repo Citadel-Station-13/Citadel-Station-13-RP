@@ -288,18 +288,18 @@
 			"observer" = isobserver(user),
 		),
 	)
-	var/list/modules = list()
+	var/list/modules = src_object.ui_static_modules(user, src)
 	// static first
 	if(with_static_data)
-		json_data["static"] = src_object.ui_static_data(user, src, state)
+		json_data["static"] = src_object.ui_static_data(user, src)
 		for(var/datum/module as anything in modules_registered)
 			var/id = modules_registered[module]
-			modules[id] = module.ui_static_data(user, src, TRUE)
+			modules[id] = module.ui_static_data(user, src)
 	if(with_data)
 		json_data["data"] = src_object.ui_data(user, src, state)
 		for(var/datum/module as anything in (with_static_data? modules_registered : modules_processed))
 			var/id = modules_registered[module]
-			modules[id] = modules[id] | module.ui_data(user, src, TRUE)
+			modules[id] = modules[id] | module.ui_data(user, src)
 	if(modules)
 		json_data["modules"] = modules
 	if(src_object.tgui_shared_states)
