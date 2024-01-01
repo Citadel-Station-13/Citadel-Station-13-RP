@@ -161,11 +161,13 @@ ICE_CREAM_PATHS(/datum/reagent/drink/juice/apple, apple)
 	appearance_flags = KEEP_TOGETHER
 	atom_flags = NOREACT
 
-	var/waffle_stage = 1
-	var/melt_stage = 1
+	var/waffle_stage = 0
+	var/melt_stage = 0
 
 	/// list of colors
 	var/list/dollops_left_colors
+	/// final color
+	var/final_color
 
 /obj/effect/debris/cleanable/ice_cream/Initialize(mapload, obj/item/reagent_containers/food/snacks/ice_cream/from_cone)
 	. = ..()
@@ -177,7 +179,11 @@ ICE_CREAM_PATHS(/datum/reagent/drink/juice/apple, apple)
 	create_reagents(1000)
 	// we're not reacting btw :)
 	from_cone.reagents.transfer_to_holder(reagents)
+	// get final color
+	final_color = reagents.get_color()
+	// trigger reactions in a bit
 	addtimer(CALLBACK(src, PROC_REF(start_reaction)), rand(0.5, 1.5 SECONDS))
+	// trigger melt cycle
 	melt_more()
 
 /obj/effect/debris/cleanable/ice_cream/proc/start_reaction()
@@ -190,6 +196,12 @@ ICE_CREAM_PATHS(/datum/reagent/drink/juice/apple, apple)
 	melt_stage = min(3, melt_stage + 1)
 	icon_state = "melt[melt_stage]"
 
+	var/image/middle = image(icon, icon_state = "melt[melt_stage]")
+	middle.layer = FLOAT_LAYER - 2
+	middle.color = final_color
+	middle.appearance_flags = KEEP_APART | RESET_COLOR
+	add_overlay(middle)
+
 	if(length(dollops_left_colors))
 		color = BlendRGB(color || "#ffffff", dollops_left_colors[1], 0.5)
 		dollops_left_colors.Cut(1, 2)
@@ -199,15 +211,19 @@ ICE_CREAM_PATHS(/datum/reagent/drink/juice/apple, apple)
 			dollop.pixel_x = rand(-8, 8)
 			dollop.pixel_y = rand(-8, 8) - 4
 			dollop.appearance_flags = KEEP_APART | RESET_COLOR
-			dollop.layer = FLOAT_LAYER
-			add_overlay(dollop)
+			dollop.layer = FLOAT_LAYER - 1
 			var/image/puddle = image(dollop)
-			puddle.icon_state = ""
+			puddle.icon_state = "melt[melt_stage]"
+			puddle.layer = FLOAT_LAYER - 2
+			puddle.pixel_y = 4
+			add_overlay(puddle)
 
+	if(length(dollops_left_colors) || melt_stage < 3 || waffle_stage < 3)
 		addtimer(CALLBACK(src, PROC_REF(melt_more)), rand(2, 5 MINUTES))
 
 	waffle_stage = min(3, waffle_stage + 1)
 	var/image/waffle = image(icon = icon, icon_state = "waffledrop[waffle_stage]")
 	waffle.color = "#ffcc66"
 	waffle.appearance_flags = KEEP_APART | RESET_COLOR
+	waffle.layer = FLOAT_LAYER
 	add_overlay(waffle)

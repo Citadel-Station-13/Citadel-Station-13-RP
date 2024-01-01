@@ -40,7 +40,7 @@
 	/// ice cost of scoop - this is mandatory
 	var/scoop_ice_cost = 2
 	/// how much reagents it can pack into a single scoop of ice cream
-	var/scoop_infuse_amount = 3
+	var/scoop_infuse_amount = 2
 	/// how much sugar is needed per scoop for it to taste good
 	var/scoop_sugar_cost = 1
 
