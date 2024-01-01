@@ -26,6 +26,39 @@
 	//should be everything for now
 
 
+/obj/item/reagent_containers/food/snacks/ingredient/examine(mob/user, dist)
+	. = ..()
+	. += SPAN_NOTICE("<b>Alt-click</b> to split off servings.")
+	. += cooking_information(TRUE)
+
+
+/obj/item/reagent_containers/food/snacks/ingredient/attackby(obj/item/I, mob/user)
+	if(I.type != type)
+		return ..()
+	var/obj/item/reagent_containers/food/snacks/ingredient/add_ingredient = I
+	if((((accumulated_time_cooked - INGREDIENT_COOKTIME_MAX_SEPERATION) < add_ingredient.accumulated_time_cooked) && (add_ingredient.accumulated_time_cooked < (accumulated_time_cooked + INGREDIENT_COOKTIME_MAX_SEPERATION))) && (add_ingredient.cookstage = cookstage))
+		to_chat(user, SPAN_NOTICE("You combine [I] into [src]."))
+		merge_ingredient(I)
+	
+
+/obj/item/reagent_containers/food/snacks/ingredient/AltClick(mob/user)
+	if(!isliving(user))
+		return ..()
+	if(serving_amount < 1)
+		to_chat(user, SPAN_WARNING("There's not enough of [src] to split off!"))
+		return
+	var/amount = input("How much to split?", "Split ingredient") as null|num
+	amount = round(amount) //0.2 > 1
+	if(amount && amount < serving_amount)
+		serving_amount -= amount
+		var/obj/item/reagent_containers/food/snacks/ingredient/split_ingredient = new type(src)
+		split_ingredient.accumulated_time_cooked = accumulated_time_cooked
+		split_ingredient.serving_amount = amount
+		user.put_in_hands_or_drop(split_ingredient)
+		to_chat(user, SPAN_NOTICE("You split off [src]."))
+	else
+		to_chat(user, SPAN_WARNING("There's not enough serves in the [src]!"))
+
 
 /obj/item/reagent_containers/food/snacks/ingredient/proc/process_cooked(var/time_cooked, var/heat_level, var/cook_method)
 	switch(heat_level)
@@ -44,19 +77,15 @@
 		var/datum/reagent/nutriment/our_nutrient = reagents.get_reagent("nutriment")
 		our_nutrient.data = list()
 		our_nutrient.data[cookstage_information[cookstage][COOKINFO_TASTE]] = serving_amount
-		//if(istype(loc, /obj/item/reagent_containers/food_holder))
-			//var/obj/item/reagent_containers/food_holder/FH = loc
-			//FH.()
+		if(istype(loc, /obj/item/reagent_containers/food_holder))
+			var/turf/T = get_turf(src)
+			T.visible_message("The [src] is checking recipe completion in [loc]")
+			var/obj/item/reagent_containers/food_holder/FH = loc
+			FH.check_recipe_completion()
 		on_cooked(cookstage, cook_method)
 
 /obj/item/reagent_containers/food/snacks/ingredient/proc/on_cooked(var/reached_stage, var/cook_method)
 	return //we dont do anything special
-
-
-/obj/item/reagent_containers/food/snacks/ingredient/examine(mob/user, dist)
-	. = ..()
-	. += SPAN_NOTICE("<b>Alt-click</b> to split off servings.")
-	. += cooking_information(TRUE)
 
 /obj/item/reagent_containers/food/snacks/ingredient/proc/cooking_information(var/detailed = FALSE)
 	var/info = ""
@@ -101,34 +130,10 @@
 	serving_amount += I.serving_amount
 	qdel(I)
 
-
-
-/obj/item/reagent_containers/food/snacks/ingredient/attackby(obj/item/I, mob/user)
-	if(I.type != type)
-		return ..()
-	var/obj/item/reagent_containers/food/snacks/ingredient/add_ingredient = I
-	if((((accumulated_time_cooked - INGREDIENT_COOKTIME_MAX_SEPERATION) < add_ingredient.accumulated_time_cooked) && (add_ingredient.accumulated_time_cooked < (accumulated_time_cooked + INGREDIENT_COOKTIME_MAX_SEPERATION))) && (add_ingredient.cookstage = cookstage))
-		to_chat(user, SPAN_NOTICE("You combine [I] into [src]."))
-		merge_ingredient(I)
-	
-
-/obj/item/reagent_containers/food/snacks/ingredient/AltClick(mob/user)
-	if(!isliving(user))
-		return ..()
-	if(serving_amount < 1)
-		to_chat(user, SPAN_WARNING("There's not enough of [src] to split off!"))
-		return
-	var/amount = input("How much to split?", "Split ingredient") as null|num
-	amount = round(amount) //0.2 > 1
-	if(amount && amount < serving_amount)
-		serving_amount -= amount
-		var/obj/item/reagent_containers/food/snacks/ingredient/split_ingredient = new type(src)
-		split_ingredient.accumulated_time_cooked = accumulated_time_cooked
-		split_ingredient.serving_amount = amount
-		user.put_in_hands_or_drop(split_ingredient)
-		to_chat(user, SPAN_NOTICE("You split off [src]."))
-	else
-		to_chat(user, SPAN_WARNING("There's not enough serves in the [src]!"))
+/obj/item/reagent_containers/food/snacks/ingredient/proc/consume_serving(var/remove_amount = 1)
+	serving_amount -= remove_amount
+	if(serving_amount <= 0)
+		qdel(src)
 
 /obj/item/reagent_containers/food/snacks/ingredient/plant
 	name = "plant based generic ingredient"
