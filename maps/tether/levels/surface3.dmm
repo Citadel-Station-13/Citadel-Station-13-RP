@@ -6812,12 +6812,6 @@
 "dMn" = (
 /turf/simulated/wall/prepainted/science,
 /area/rnd/workshop)
-"dMz" = (
-/obj/structure/bed/chair{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/white,
-/area/tether/surfacebase/medical/admin)
 "dMR" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -12456,7 +12450,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 4
 	},
-/obj/structure/flora/pottedplant/unusual,
+/obj/structure/closet/secure_closet/medical_wall/anesthetics,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/admin)
 "hip" = (
@@ -15986,6 +15980,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 4
 	},
+/obj/machinery/oxygen_pump/mobile/anesthetic,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/admin)
 "jmk" = (
@@ -30604,6 +30599,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
+/obj/structure/medical_stand/anesthetic,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/admin)
 "rPr" = (
@@ -72980,7 +72976,7 @@ jhw
 wbQ
 kcM
 uMw
-dMz
+nlx
 nlx
 rOz
 fxY
