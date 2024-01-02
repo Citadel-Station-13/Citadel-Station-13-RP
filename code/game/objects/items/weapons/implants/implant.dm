@@ -375,7 +375,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 /obj/item/implant/chem/activate(var/cause)
 	if((!cause) || (!src.imp_in))	return 0
 	var/mob/living/carbon/R = src.imp_in
-	src.reagents.trans_to_mob(R, cause, CHEM_INJECT)
+	src.reagents.trans_to_mob(R, cause, REAGENT_APPLY_INJECT)
 	to_chat(R, "You hear a faint *beep*.")
 	if(!src.reagents.total_volume)
 		to_chat(R, "You hear a faint click from your chest.")

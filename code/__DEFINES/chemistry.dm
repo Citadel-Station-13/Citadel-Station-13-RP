@@ -1,18 +1,27 @@
-//* Reagent exposure methods.
-//* These are flags for combined checks, but are often passed as an one-bit-value enum to procs.
 
+//* Application *//
+
+//* These are flags for combined checks, but are often passed as an one-bit-value enum to procs.
 /// Splashed, touched, sprayed, etc
-#define CHEM_TOUCH (1<<0)
+#define REAGENT_APPLY_TOUCH (1<<0)
 /// Eaten, drunk, etc
-#define CHEM_INGEST (1<<1)
+#define REAGENT_APPLY_INGEST (1<<1)
 /// Injected into bloodstream or equivalent
-#define CHEM_INJECT (1<<2)
+#define REAGENT_APPLY_INJECT (1<<2)
 /// Inhaled or immersed in gas
 //  todo: this is currently unimplemented.
-#define CHEM_VAPOR (1<<3)
+#define REAGENT_APPLY_VAPOR (1<<3)
+
+//* Simulation *//
+
+/// accuracy
+#define REAGENT_ACCURACY 0.01
+/// quantize
+#define REAGENT_QUANTIZE(N) round(N, REAGENT_ACCURACY)
 
 //* Unsorted
 
+// todo: why is this in chemistry?
 /// Factor of how fast mob nutrition decreases
 #define DEFAULT_HUNGER_FACTOR 0.03
 /// Factor of how fast mob hydration decreases
@@ -29,8 +38,6 @@
 
 #define REAGENTS_OVERDOSE 30
 
-/// How much energy does it take to synthesize 1 unit of chemical, in Joules.
-#define CHEM_SYNTH_ENERGY 500
 // Some on_mob_life() procs check for alien races.
 // TODO: better way? flags? we won't possibly need more than 24 right...?
 #define IS_DIONA   1

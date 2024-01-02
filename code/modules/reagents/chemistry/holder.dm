@@ -3,14 +3,39 @@
 	/// reagent holder flags - see [code/__DEFINES/reagents/flags.dm]
 	var/reagent_holder_flags = NONE
 
+	//* Reagents
+	/// volumes; id = volume
+	var/list/reagent_volumes = list()
+	/// datas; id = list(...)
+	var/list/reagent_datas = list()
+
+	//* Volume
+	/// updated by add/remove procs, as well as update_total().
+	var/total_volume = 0
+	/// updated by add/remove procs, as well as update_total().
+	var/maximum_volume = 100
+
 	///? legacy / unsorted
 	var/list/datum/reagent/reagent_list = list()
-	var/total_volume = 0
-	var/maximum_volume = 100
 
 	var/atom/my_atom = null
 	// todo: remove / refactor this var into reagent_holder_flags with proper defines, this was never ported properly.
 	var/reagents_holder_flags
+
+//* Reactions *//
+
+/datum/reagents/proc/
+
+//* Updates *//
+
+/**
+ * update totals and quantize
+ */
+/datum/reagents/proc/update_total()
+	total_volume = 0
+	#warn impl
+
+//! Legacy Below
 
 /datum/reagents/New(max = 100, atom/A = null, new_flags = NONE)
 	..()
@@ -411,20 +436,20 @@
 			if(H.check_shields(0, null, null, null, "the spray") == 1)		//If they block the spray, it does nothing.
 				amount = 0
 		perm = L.reagent_permeability()
-	return trans_to_mob(target, amount, CHEM_TOUCH, perm, copy)
+	return trans_to_mob(target, amount, REAGENT_APPLY_TOUCH, perm, copy)
 
-/datum/reagents/proc/trans_to_mob(mob/target, amount = 1, type = CHEM_INJECT, multiplier = 1, copy = 0) // Transfer after checking into which holder...
+/datum/reagents/proc/trans_to_mob(mob/target, amount = 1, type = REAGENT_APPLY_INJECT, multiplier = 1, copy = 0) // Transfer after checking into which holder...
 	if(!target || !istype(target))
 		return
 	if(iscarbon(target))
 		var/mob/living/carbon/C = target
-		if(type == CHEM_INJECT)
+		if(type == REAGENT_APPLY_INJECT)
 			var/datum/reagents/R = C.reagents
 			return trans_to_holder(R, amount, multiplier, copy)
-		if(type == CHEM_INGEST)
+		if(type == REAGENT_APPLY_INGEST)
 			var/datum/reagents/R = C.ingested
 			return C.ingest(src, R, amount, multiplier, copy)
-		if(type == CHEM_TOUCH)
+		if(type == REAGENT_APPLY_TOUCH)
 			var/datum/reagents/R = C.touching
 			return trans_to_holder(R, amount, multiplier, copy)
 	else

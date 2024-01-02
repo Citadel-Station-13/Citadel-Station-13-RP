@@ -43,7 +43,7 @@
 
 			to_chat(target, "<span class='notice'>You swallow \the [src].</span>")
 			if(reagents.total_volume)
-				reagents.trans_to_mob(target, reagents.total_volume, CHEM_INGEST)
+				reagents.trans_to_mob(target, reagents.total_volume, REAGENT_APPLY_INGEST)
 			qdel(src)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 
@@ -69,7 +69,7 @@
 		var/contained = reagentlist()
 		add_attack_logs(user,target,"Fed a pill containing [contained]")
 		if(reagents && reagents.total_volume)
-			reagents.trans_to_mob(target, reagents.total_volume, CHEM_INGEST)
+			reagents.trans_to_mob(target, reagents.total_volume, REAGENT_APPLY_INGEST)
 		qdel(src)
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 

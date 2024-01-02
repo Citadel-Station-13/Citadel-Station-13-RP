@@ -155,9 +155,9 @@
 			playsound(M.loc,'sound/items/eatfood.ogg', rand(10,50), 1)
 			if(reagents.total_volume)
 				if(reagents.total_volume > bitesize)
-					reagents.trans_to_mob(M, bitesize, CHEM_INGEST)
+					reagents.trans_to_mob(M, bitesize, REAGENT_APPLY_INGEST)
 				else
-					reagents.trans_to_mob(M, reagents.total_volume, CHEM_INGEST)
+					reagents.trans_to_mob(M, reagents.total_volume, REAGENT_APPLY_INGEST)
 				bitecount++
 				On_Consume(M)
 			return 1
@@ -263,7 +263,7 @@
 	user.visible_message("<b>[user]</b> nibbles away at \the [src].","You nibble away at \the [src].")
 	bitecount++
 	if(reagents)
-		reagents.trans_to_mob(user, bitesize, CHEM_INGEST)
+		reagents.trans_to_mob(user, bitesize, REAGENT_APPLY_INGEST)
 	spawn(5)
 		if(!src && !user.client)
 			user.custom_emote(1,"[pick("burps", "cries for more", "burps twice", "looks at the area where the food was")]")

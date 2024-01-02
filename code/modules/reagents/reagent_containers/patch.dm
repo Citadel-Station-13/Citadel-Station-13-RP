@@ -66,7 +66,7 @@
 			to_chat(H, SPAN_NOTICE("\The [src] is placed on your [affecting]."))
 			target.temporarily_remove_from_inventory(src, INV_OP_FORCE)
 			if(reagents.total_volume)
-				reagents.trans_to_mob(target, reagents.total_volume, CHEM_TOUCH)
+				reagents.trans_to_mob(target, reagents.total_volume, REAGENT_APPLY_TOUCH)
 			qdel(src)
 
 			for(var/datum/wound/W as anything in affecting.wounds)
@@ -117,7 +117,7 @@
 		target.temporarily_remove_from_inventory(src, INV_OP_FORCE)
 
 		if(reagents.total_volume)
-			reagents.trans_to_mob(target, reagents.total_volume, CHEM_TOUCH)
+			reagents.trans_to_mob(target, reagents.total_volume, REAGENT_APPLY_TOUCH)
 		qdel(src)
 
 		for(var/datum/wound/W in affecting.wounds)

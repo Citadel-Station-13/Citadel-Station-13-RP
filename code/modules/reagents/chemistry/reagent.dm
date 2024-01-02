@@ -150,7 +150,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
 			if(!H.isSynthetic())
-				if(H.species.has_organ[O_HEART] && (active_metab.metabolism_class == CHEM_INJECT))
+				if(H.species.has_organ[O_HEART] && (active_metab.metabolism_class == REAGENT_APPLY_INJECT))
 					var/obj/item/organ/internal/heart/Pump = H.internal_organs_by_name[O_HEART]
 					// todo: completely optimize + refactor metabolism, none of these checks should be in here
 					if(mechanical_circulation)
@@ -162,14 +162,14 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 					else // Otherwise, chemicals process as per percentage of your current pulse, or, if you have no pulse but are alive, by a miniscule amount.
 						removed *= max(0.1, H.pulse / Pump.standard_pulse_level)
 
-				if(H.species.has_organ[O_STOMACH] && (active_metab.metabolism_class == CHEM_INGEST))
+				if(H.species.has_organ[O_STOMACH] && (active_metab.metabolism_class == REAGENT_APPLY_INGEST))
 					var/obj/item/organ/internal/stomach/Chamber = H.internal_organs_by_name[O_STOMACH]
 					if(Chamber)
 						ingest_rem_mult *= max(0.1, 1 - (Chamber.damage / Chamber.max_damage))
 					else
 						ingest_rem_mult = 0.1
 
-				if(H.species.has_organ[O_INTESTINE] && (active_metab.metabolism_class == CHEM_INGEST))
+				if(H.species.has_organ[O_INTESTINE] && (active_metab.metabolism_class == REAGENT_APPLY_INGEST))
 					var/obj/item/organ/internal/intestine/Tube = H.internal_organs_by_name[O_INTESTINE]
 					if(Tube)
 						ingest_abs_mult *= max(0.1, 1 - (Tube.damage / Tube.max_damage))
@@ -180,13 +180,13 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 				var/obj/item/organ/internal/heart/machine/Pump = H.internal_organs_by_name[O_PUMP]
 				var/obj/item/organ/internal/stomach/machine/Cycler = H.internal_organs_by_name[O_CYCLER]
 
-				if(active_metab.metabolism_class == CHEM_INJECT)
+				if(active_metab.metabolism_class == REAGENT_APPLY_INJECT)
 					if(Pump)
 						removed *= 1.1 - Pump.damage / Pump.max_damage
 					else
 						removed *= 0.1
 
-				else if(active_metab.metabolism_class == CHEM_INGEST) // If the pump is damaged, we waste chems from the tank.
+				else if(active_metab.metabolism_class == REAGENT_APPLY_INGEST) // If the pump is damaged, we waste chems from the tank.
 					if(Pump)
 						ingest_abs_mult *= max(0.25, 1 - Pump.damage / Pump.max_damage)
 
@@ -199,7 +199,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 					else
 						ingest_rem_mult = 0.1
 
-				else if(active_metab.metabolism_class == CHEM_TOUCH) // Machines don't exactly absorb chemicals.
+				else if(active_metab.metabolism_class == REAGENT_APPLY_TOUCH) // Machines don't exactly absorb chemicals.
 					removed *= 0.5
 
 			if(filtered_organs && filtered_organs.len && !mechanical_circulation)
@@ -207,43 +207,43 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 					var/obj/item/organ/internal/O = H.internal_organs_by_name[organ_tag]
 					if(O && !O.is_broken() && prob(max(0, O.max_damage - O.damage)))
 						removed *= 0.8
-						if(active_metab.metabolism_class == CHEM_INGEST)
+						if(active_metab.metabolism_class == REAGENT_APPLY_INGEST)
 							ingest_rem_mult *= 0.8
 
-	if(ingest_met && (active_metab.metabolism_class == CHEM_INGEST))
+	if(ingest_met && (active_metab.metabolism_class == REAGENT_APPLY_INGEST))
 		removed = ingest_met * ingest_rem_mult
-	if(touch_met && (active_metab.metabolism_class == CHEM_TOUCH))
+	if(touch_met && (active_metab.metabolism_class == REAGENT_APPLY_TOUCH))
 		removed = touch_met
 	removed = min(removed, volume)
 	max_dose = max(volume, max_dose)
 	dose = min(dose + removed, max_dose)
 	if(removed >= (metabolism * 0.1) || removed >= 0.1) // If there's too little chemical, don't affect the mob, just remove it
 		switch(active_metab.metabolism_class)
-			if(CHEM_INJECT)
+			if(REAGENT_APPLY_INJECT)
 				affect_blood(M, alien, removed)
-			if(CHEM_INGEST)
+			if(REAGENT_APPLY_INGEST)
 				affect_ingest(M, alien, removed * ingest_abs_mult)
-			if(CHEM_TOUCH)
+			if(REAGENT_APPLY_TOUCH)
 				affect_touch(M, alien, removed)
-	if(overdose && (volume > overdose) && (active_metab.metabolism_class != CHEM_TOUCH && !can_overdose_touch))
+	if(overdose && (volume > overdose) && (active_metab.metabolism_class != REAGENT_APPLY_TOUCH && !can_overdose_touch))
 		overdose(M, alien, removed)
 	remove_self(removed)
 	return
 
-// todo: on_mob_life with method of CHEM_INJECT, or tick_mob_blood
+// todo: on_mob_life with method of REAGENT_APPLY_INJECT, or tick_mob_blood
 /datum/reagent/proc/affect_blood(mob/living/carbon/M, alien, removed)
 	return
 
-// todo: on_mob_life with method of CHEM_INGEST, or tick_mob_ingest
+// todo: on_mob_life with method of REAGENT_APPLY_INGEST, or tick_mob_ingest
 /datum/reagent/proc/affect_ingest(mob/living/carbon/M, alien, removed)
 	M.bloodstr.add_reagent(id, removed)
 	return
 
-// todo: on_mob_life with method of CHEM_TOUCH, or tick_mob_touch
+// todo: on_mob_life with method of REAGENT_APPLY_TOUCH, or tick_mob_touch
 /datum/reagent/proc/affect_touch(mob/living/carbon/M, alien, removed)
 	return
 
-// todo: fourth apply method of CHEM_VAPOR implementation?
+// todo: fourth apply method of REAGENT_APPLY_VAPOR implementation?
 
 /datum/reagent/proc/handle_vampire(var/mob/living/carbon/M, var/alien, var/removed, var/is_vampire)
 	if(blood_content > 0 && is_vampire)
