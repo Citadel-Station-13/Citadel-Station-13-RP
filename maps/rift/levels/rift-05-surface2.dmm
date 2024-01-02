@@ -3794,6 +3794,7 @@
 /area/maintenance/substation/research/xenobiology_lab)
 "crX" = (
 /obj/effect/floor_decal/steeldecal/steel_decals5,
+/obj/machinery/door/firedoor/glass/hidden,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "csj" = (
@@ -12080,6 +12081,9 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 8
 	},
+/obj/machinery/door/firedoor/glass/hidden{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "hMP" = (
@@ -14482,12 +14486,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/chemistry)
-"jmj" = (
-/obj/effect/floor_decal/steeldecal/steel_decals5{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/steel,
-/area/hallway/primary/surfacetwo)
 "jmn" = (
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255
@@ -14653,6 +14651,9 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/glass/hidden{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
@@ -28852,12 +28853,6 @@
 	},
 /turf/simulated/floor,
 /area/maintenance/substation/security)
-"sfB" = (
-/obj/effect/floor_decal/steeldecal/steel_decals5{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/steel,
-/area/hallway/primary/surfacetwo)
 "sfC" = (
 /obj/structure/toilet{
 	pixel_y = 9
@@ -53295,7 +53290,7 @@ rCo
 rCo
 rCo
 xUe
-sfB
+gvL
 bgP
 bgP
 bgP
@@ -53683,7 +53678,7 @@ rCo
 rCo
 rCo
 xUe
-jmj
+gKF
 bgP
 bgP
 bgP

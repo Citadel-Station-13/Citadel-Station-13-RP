@@ -4746,12 +4746,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration)
-"anE" = (
-/obj/effect/floor_decal/steeldecal/steel_decals5{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/steel,
-/area/hallway/primary/surfacethree)
 "anH" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 8
@@ -24746,12 +24740,6 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab)
-"suT" = (
-/obj/effect/floor_decal/steeldecal/steel_decals5{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/steel,
-/area/hallway/primary/surfacethree)
 "swD" = (
 /obj/machinery/light,
 /obj/effect/floor_decal/borderfloor,
@@ -25069,6 +25057,7 @@
 /area/maintenance/bar/lower)
 "tCt" = (
 /obj/effect/floor_decal/steeldecal/steel_decals5,
+/obj/machinery/door/firedoor/glass/hidden,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
 "tEl" = (
@@ -41972,7 +41961,7 @@ aXM
 aXM
 aXM
 aPk
-anE
+bnc
 aWg
 jpv
 aWg
@@ -42166,7 +42155,7 @@ aBU
 aBU
 aBU
 aXM
-suT
+rEc
 aWg
 jpv
 aWg
@@ -42554,7 +42543,7 @@ aBU
 aBU
 aBU
 aXM
-anE
+bnc
 aWg
 jpv
 aWg
@@ -42748,7 +42737,7 @@ aXM
 aXM
 aXM
 aPk
-suT
+rEc
 aWg
 jpv
 aWg
