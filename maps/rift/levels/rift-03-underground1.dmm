@@ -1060,10 +1060,14 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 8
 	},
+/obj/machinery/door/firedoor/glass/hidden{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
 "cz" = (
 /obj/effect/floor_decal/steeldecal/steel_decals5,
+/obj/machinery/door/firedoor/glass/hidden,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
 "cA" = (
@@ -1084,6 +1088,9 @@
 /area/rift/station/stairs_two)
 "cC" = (
 /obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/glass/hidden{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
@@ -1611,6 +1618,15 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/atmos)
+"dA" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel,
+/area/hallway/primary/underone)
 "dB" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 4
@@ -3078,6 +3094,12 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/atmos/hallway)
+"iD" = (
+/obj/effect/floor_decal/borderfloor/corner{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel,
+/area/hallway/primary/underone)
 "iE" = (
 /obj/structure/table/steel,
 /turf/simulated/floor/wood/broken,
@@ -3660,6 +3682,16 @@
 "kG" = (
 /turf/simulated/floor/water/deep/pool,
 /area/crew_quarters/pool)
+"kI" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/monotile,
+/area/hallway/primary/underone)
+"kJ" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/steel,
+/area/hallway/primary/underone)
 "kK" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 9
@@ -5553,6 +5585,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+"rQ" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/hallway/primary/underone)
 "rS" = (
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/concrete/rng/indoors,
@@ -6690,6 +6728,12 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 10
 	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 9
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
 "wg" = (
@@ -6718,6 +6762,12 @@
 /obj/structure/bed/chair/bay,
 /turf/simulated/floor/plating,
 /area/maintenance/elevator)
+"wl" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel,
+/area/hallway/primary/underone)
 "wm" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
@@ -6886,9 +6936,9 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6
+	dir = 8
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
 "wM" = (
 /obj/machinery/door/window/eastleft{
@@ -7528,7 +7578,10 @@
 /obj/structure/transit_tube/station{
 	automatic_launch_time = 40
 	},
-/turf/simulated/floor/tiled/monotile,
+/obj/effect/floor_decal/borderfloor/cee{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
 "yM" = (
 /obj/effect/floor_decal/rust,
@@ -7586,6 +7639,12 @@
 "zb" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 10
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
@@ -7920,6 +7979,12 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
+"Ae" = (
+/obj/structure/barricade,
+/obj/item/barrier_tape_segment/engineering,
+/obj/effect/floor_decal/borderfloor,
+/turf/simulated/floor/tiled/steel,
+/area/hallway/primary/underone)
 "Af" = (
 /obj/structure/fans/tiny,
 /obj/machinery/door/blast/regular{
@@ -8167,6 +8232,10 @@
 "Bj" = (
 /turf/simulated/shuttle/wall/voidcraft,
 /area/turbolift/rmine/under1)
+"Bk" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/tiled/monotile,
+/area/hallway/primary/underone)
 "Bm" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -8372,7 +8441,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
 	},
-/turf/simulated/floor/tiled/monotile,
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
 "Ce" = (
 /obj/structure/railing{
@@ -8664,7 +8736,10 @@
 /obj/machinery/air_alarm{
 	pixel_y = 24
 	},
-/turf/simulated/floor/tiled/monotile,
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
 "Dg" = (
 /obj/effect/floor_decal/borderfloor{
@@ -9312,8 +9387,11 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "FD" = (
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	dir = 4
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/underone)
@@ -9370,16 +9448,13 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/secure_storage/upper)
 "FK" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
 "FL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -10238,8 +10313,13 @@
 /area/maintenance/elevator)
 "IG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/tiled/monotile,
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
 "IH" = (
 /turf/simulated/wall/r_wall/prepainted/science,
@@ -10448,10 +10528,10 @@
 /turf/simulated/wall/r_wall/prepainted,
 /area/rift/trade_shop)
 "Jm" = (
-/obj/machinery/door/airlock/multi_tile/glass{
-	dir = 4
+/obj/effect/floor_decal/borderfloor{
+	dir = 5
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
 "Jn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/blue,
@@ -10501,6 +10581,15 @@
 "Jy" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/security/prison)
+"JA" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 9
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/steel,
+/area/hallway/primary/underone)
 "JB" = (
 /obj/structure/bed/chair/bay{
 	dir = 1
@@ -10707,6 +10796,12 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled,
 /area/maintenance/elevator)
+"Kn" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel,
+/area/hallway/primary/underone)
 "Ko" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -10971,7 +11066,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/monotile,
+/obj/machinery/door/airlock/maintenance,
+/turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
 "Lf" = (
 /obj/effect/overlay/snow/floor,
@@ -11225,10 +11321,13 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
 "LZ" = (
 /obj/effect/floor_decal/borderfloor{
@@ -11563,7 +11662,10 @@
 /area/maintenance/engineering)
 "Nk" = (
 /obj/structure/transit_tube/high_velocity,
-/turf/simulated/floor/tiled/monotile,
+/obj/effect/floor_decal/borderfloor/cee{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
 "Nm" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
@@ -12177,7 +12279,7 @@
 "Pd" = (
 /obj/structure/barricade,
 /obj/item/barrier_tape_segment/engineering,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
 "Pe" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -12505,7 +12607,10 @@
 "Qs" = (
 /obj/structure/barricade,
 /obj/item/barrier_tape_segment/engineering,
-/turf/simulated/floor/plating,
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
 "Qt" = (
 /obj/structure/table/steel,
@@ -12935,6 +13040,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/underone)
 "Sf" = (
@@ -13047,7 +13153,8 @@
 /area/hallway/primary/underone)
 "SA" = (
 /obj/machinery/light,
-/turf/simulated/floor/tiled/monotile,
+/obj/effect/floor_decal/borderfloor,
+/turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
 "SB" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -13626,7 +13733,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
 "Vd" = (
 /obj/structure/table/steel,
@@ -13777,7 +13884,6 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "VB" = (
-/obj/effect/floor_decal/borderfloor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
@@ -14179,7 +14285,6 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
-/obj/effect/floor_decal/borderfloor,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
 "WZ" = (
@@ -14247,11 +14352,7 @@
 /turf/simulated/floor/tiled/steel_grid/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "Xj" = (
-/obj/machinery/light{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
 "Xl" = (
 /obj/effect/floor_decal/borderfloor{
@@ -14470,6 +14571,14 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
+"Yj" = (
+/obj/structure/barricade,
+/obj/item/barrier_tape_segment/engineering,
+/obj/effect/floor_decal/borderfloor{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/steel,
+/area/hallway/primary/underone)
 "Yk" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
@@ -14677,7 +14786,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
 "YY" = (
 /obj/machinery/computer/rdconsole/robotics,
@@ -21929,9 +22038,9 @@ FF
 DK
 TW
 Md
-Qs
+Yj
 Nk
-dP
+kJ
 Md
 aa
 WR
@@ -22312,14 +22421,14 @@ WU
 lz
 NH
 Yu
-dP
-Se
-dP
-dP
-dP
-dP
+JA
+wl
+Xj
+dA
+Kn
+iD
 Pd
-Pd
+Ae
 Md
 aa
 WR
@@ -22508,12 +22617,12 @@ xS
 Yu
 De
 Se
-dP
+kI
 FD
-dP
-et
-dP
-dP
+Bk
+Bk
+rQ
+rT
 Md
 aa
 aa
@@ -22700,14 +22809,14 @@ Oz
 XW
 NW
 Yu
-dP
+Jm
 Cc
-Xj
+LY
 wL
 IG
 LY
 Vc
-dP
+sn
 Md
 aa
 aa
@@ -22898,7 +23007,7 @@ SI
 BX
 Md
 Le
-Jm
+Md
 Md
 FE
 Md
@@ -23674,7 +23783,7 @@ yx
 Vh
 Hg
 eg
-rT
+fO
 Md
 sR
 zH

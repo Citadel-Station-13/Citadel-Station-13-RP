@@ -8320,6 +8320,11 @@
 "AX" = (
 /turf/simulated/wall/prepainted/cargo,
 /area/quartermaster/belterdock/gear)
+"AY" = (
+/turf/simulated/wall/prepainted{
+	can_open = 1
+	},
+/area/maintenance/lower/mining)
 "AZ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -36490,7 +36495,7 @@ VU
 Ka
 Ka
 Ka
-JP
+AY
 Ze
 Ze
 Ze

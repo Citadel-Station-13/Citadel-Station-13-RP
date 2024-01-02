@@ -1122,6 +1122,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_stairs)
+"aPm" = (
+/obj/structure/sign/graffiti/pisoff{
+	pixel_y = 18
+	},
+/turf/simulated/floor/snow,
+/area/rift/surfacebase/outside/outside1)
 "aPr" = (
 /obj/machinery/camera/network/medbay{
 	dir = 4
@@ -2908,7 +2914,9 @@
 /turf/simulated/wall/prepainted,
 /area/maintenance/cargo)
 "bYi" = (
-/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/firedoor/glass/hidden{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenobiology/outpost_main)
 "bYO" = (
@@ -3139,9 +3147,11 @@
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_south_airlock)
 "cfn" = (
-/obj/machinery/door/firedoor/glass,
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/machinery/door/firedoor/glass/hidden{
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenobiology/outpost_main)
@@ -4266,6 +4276,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/machinery/door/firedoor/glass/hidden,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfaceone)
 "cSc" = (
@@ -5316,7 +5327,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/security/lower)
 "dzt" = (
-/obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -5326,6 +5336,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/machinery/door/firedoor/glass/hidden,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenobiology/outpost_main)
 "dzN" = (
@@ -7655,9 +7666,11 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass,
 /obj/machinery/light{
 	dir = 8
+	},
+/obj/machinery/door/firedoor/glass/hidden{
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenobiology/outpost_hallway)
@@ -12050,7 +12063,7 @@
 	dir = 1
 	},
 /obj/structure/sign/graffiti/pisoff{
-	pixel_y = 26
+	pixel_y = 18
 	},
 /turf/simulated/floor/snow/gravsnow,
 /area/maintenance/maint_bar)
@@ -13252,7 +13265,7 @@
 /area/maintenance/research/lower)
 "izR" = (
 /obj/effect/floor_decal/rust,
-/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/firedoor/glass/hidden,
 /turf/simulated/floor/tiled/steel,
 /area/security/prison)
 "izU" = (
@@ -14121,7 +14134,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 1
 	},
-/obj/machinery/door/firedoor/glass{
+/obj/machinery/door/firedoor/glass/hidden{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -17460,6 +17473,9 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/machinery/door/firedoor/glass/hidden{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfaceone)
 "lcM" = (
@@ -17925,12 +17941,14 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 8
 	},
-/obj/machinery/door/firedoor/glass,
 /obj/machinery/light{
 	dir = 4
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
+	},
+/obj/machinery/door/firedoor/glass/hidden{
+	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenobiology/outpost_hallway)
@@ -18731,7 +18749,9 @@
 /area/security/prison)
 "lYg" = (
 /obj/structure/symbol/sa,
-/turf/simulated/wall/prepainted,
+/turf/simulated/wall/prepainted{
+	can_open = 1
+	},
 /area/maintenance/starboard)
 "lYS" = (
 /obj/structure/cable/green{
@@ -18826,10 +18846,8 @@
 /obj/effect/floor_decal/corner/paleblue/bordercorner{
 	dir = 1
 	},
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
 /obj/structure/disposalpipe/segment,
+/obj/machinery/door/firedoor/glass/hidden,
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_wing)
 "mbT" = (
@@ -23183,15 +23201,13 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenobiology/outpost_hallway)
 "oDa" = (
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/machinery/door/firedoor/glass/hidden,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_main)
 "oDh" = (
@@ -27041,6 +27057,9 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/machinery/door/firedoor/glass/hidden{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfaceone)
 "qTT" = (
@@ -27716,20 +27735,17 @@
 /turf/simulated/floor/tiled,
 /area/medical/virology)
 "rqu" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/disposalpipe/segment{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
 	},
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/purple/border,
-/obj/machinery/door/firedoor{
-	dir = 8
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 1
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/machinery/door/firedoor/glass/hidden,
+/obj/effect/floor_decal/steeldecal/steel_decals5,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenobiology/outpost_hallway)
 "rqM" = (
@@ -30152,8 +30168,8 @@
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "sIP" = (
-/obj/effect/overlay/snow/floor,
 /obj/effect/floor_decal/rust,
+/obj/effect/overlay/snow/floor,
 /turf/simulated/floor/plating,
 /area/maintenance/starboard)
 "sJo" = (
@@ -31490,10 +31506,10 @@
 /obj/effect/floor_decal/corner/paleblue/bordercorner{
 	dir = 8
 	},
-/obj/machinery/door/firedoor/glass{
+/obj/structure/disposalpipe/segment,
+/obj/machinery/door/firedoor/glass/hidden{
 	dir = 1
 	},
-/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_wing)
 "tyY" = (
@@ -32841,11 +32857,11 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/office)
 "und" = (
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
 /obj/effect/floor_decal/borderfloor/corner,
 /obj/effect/floor_decal/corner/red/bordercorner,
+/obj/machinery/door/firedoor/glass/hidden{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel,
 /area/security/security_cell_hallway)
 "une" = (
@@ -35839,6 +35855,11 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
+"wif" = (
+/turf/simulated/wall/prepainted{
+	can_open = 1
+	},
+/area/maintenance/lowmedbaymaint)
 "wjj" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8
@@ -35848,9 +35869,6 @@
 	},
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 1
-	},
-/obj/machinery/door/firedoor{
-	dir = 8
 	},
 /obj/machinery/button/remote/blast_door{
 	id = "main_ext_shutter";
@@ -36083,6 +36101,26 @@
 	icon_state = "icerock-dark"
 	},
 /area/rift/surfacebase/outside/outside1)
+"wpU" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/purple/border,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/door/firedoor/glass/hidden{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/outpost/xenobiology/outpost_hallway)
 "wqh" = (
 /obj/structure/catwalk,
 /obj/effect/floor_decal/rust,
@@ -38438,6 +38476,11 @@
 "xIm" = (
 /turf/simulated/wall/prepainted,
 /area/rnd/outpost/xenobiology/outpost_stairs)
+"xIr" = (
+/turf/simulated/wall/prepainted{
+	can_open = 1
+	},
+/area/maintenance/security/lower)
 "xJV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -38649,9 +38692,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_main)
 "xQq" = (
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
+/obj/machinery/door/firedoor/glass/hidden,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_main)
 "xQz" = (
@@ -38776,9 +38817,7 @@
 /obj/effect/floor_decal/corner/red/bordercorner{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
+/obj/machinery/door/firedoor/glass/hidden,
 /turf/simulated/floor/tiled/steel,
 /area/security/security_cell_hallway)
 "xUv" = (
@@ -47505,8 +47544,8 @@ nNX
 nNX
 vgp
 qqW
-wqA
-lTj
+rqu
+wpU
 qqW
 vfP
 vfP
@@ -48670,7 +48709,7 @@ mBd
 nBB
 qqW
 wjj
-rqu
+lTj
 qqW
 nNX
 nNX
@@ -50415,8 +50454,8 @@ xUK
 wes
 oZM
 qqW
-wqA
-lTj
+rqu
+wpU
 qqW
 evV
 evV
@@ -53085,7 +53124,7 @@ bNj
 bNj
 miX
 dIS
-gTC
+wif
 gTC
 wRP
 vaP
@@ -58701,7 +58740,7 @@ iTF
 iTF
 tdI
 tdI
-tdI
+xIr
 nqs
 nqs
 eNr
@@ -62380,7 +62419,7 @@ lHT
 mXL
 hqO
 cBk
-owx
+aPm
 xSV
 owx
 hgE
