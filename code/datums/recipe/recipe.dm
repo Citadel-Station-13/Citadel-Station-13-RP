@@ -104,7 +104,7 @@
 		var/list/checklist = list()
 		 // You should trust Copy().
 		checklist = fruit.Copy()
-		for(var/obj/item/reagent_containers/food/snacks/grown/G in container)
+		for(var/obj/item/reagent_containers/food/snacks/ingredient/grown/G in container)
 			if(!G.seed || !G.seed.kitchen_tag || isnull(checklist[G.seed.kitchen_tag]))
 				continue
 
@@ -127,7 +127,7 @@
 		var/list/checklist = list()
 		checklist = items.Copy() // You should really trust Copy
 		for(var/obj/O in container)
-			if(istype(O,/obj/item/reagent_containers/food/snacks/grown))
+			if(istype(O,/obj/item/reagent_containers/food/snacks/ingredient/grown))
 				continue // Fruit is handled in check_fruit().
 			var/found = 0
 			for(var/i = 1; i < checklist.len+1; i++)
@@ -210,7 +210,7 @@
 		var/list/checklist = list()
 		checklist = fruit.Copy()
 
-		for(var/obj/item/reagent_containers/food/snacks/grown/G in container)
+		for(var/obj/item/reagent_containers/food/snacks/ingredient/grown/G in container)
 			if(!G.seed || !G.seed.kitchen_tag || isnull(checklist[G.seed.kitchen_tag]))
 				continue
 

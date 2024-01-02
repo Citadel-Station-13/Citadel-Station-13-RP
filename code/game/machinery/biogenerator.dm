@@ -274,12 +274,12 @@
 		to_chat(user, SPAN_NOTICE("\The [src] is currently processing."))
 	else if(istype(O, /obj/item/storage/bag))
 		var/i = 0
-		for(var/obj/item/reagent_containers/food/snacks/grown/G in contents)
+		for(var/obj/item/reagent_containers/food/snacks/ingredient/grown/G in contents)
 			i++
 		if(i >= 10)
 			to_chat(user, SPAN_NOTICE("\The [src] is already full! Activate it."))
 		else
-			for(var/obj/item/reagent_containers/food/snacks/grown/G in O.contents)
+			for(var/obj/item/reagent_containers/food/snacks/ingredient/grown/G in O.contents)
 				G.loc = src
 				i++
 				if(i >= 10)
@@ -289,11 +289,11 @@
 				to_chat(user, SPAN_NOTICE("You empty \the [O] into \the [src]."))
 
 
-	else if(!istype(O, /obj/item/reagent_containers/food/snacks/grown))
+	else if(!istype(O, /obj/item/reagent_containers/food/snacks/ingredient/grown))
 		to_chat(user, SPAN_NOTICE("You cannot put this in \the [src]."))
 	else
 		var/i = 0
-		for(var/obj/item/reagent_containers/food/snacks/grown/G in contents)
+		for(var/obj/item/reagent_containers/food/snacks/ingredient/grown/G in contents)
 			i++
 		if(i >= 10)
 			to_chat(user, SPAN_NOTICE("\The [src] is full! Activate it."))
@@ -312,7 +312,7 @@
 		to_chat(usr, SPAN_NOTICE("The biogenerator is in the process of working."))
 		return
 	var/S = 0
-	for(var/obj/item/reagent_containers/food/snacks/grown/I in contents)
+	for(var/obj/item/reagent_containers/food/snacks/ingredient/grown/I in contents)
 		S += 5
 		if(I.reagents.get_reagent_amount("nutriment") < 0.1)
 			points += 1

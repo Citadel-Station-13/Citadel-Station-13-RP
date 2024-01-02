@@ -1,5 +1,5 @@
 //Food items that are eaten normally and don't leave anything behind.
-/obj/item/reagent_containers/food/snacks
+/obj/item/reagent_containers/food/snacks/
 	name = "snack"
 	desc = "yummy"
 	icon = 'icons/obj/food.dmi'
@@ -3615,14 +3615,16 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/flatbread/Initialize(mapload)
 	. = ..()
 
+/*
 // potato + knife = raw sticks
-/obj/item/reagent_containers/food/snacks/grown/attackby(obj/item/W, mob/user)
+/obj/item/reagent_containers/food/snacks/ingredient/grown/attackby(obj/item/W, mob/user)
 	if(seed && seed.kitchen_tag && seed.kitchen_tag == "potato" && istype(W,/obj/item/material/knife))
 		new /obj/item/reagent_containers/food/snacks/rawsticks(get_turf(src))
 		to_chat(user, "You cut the potato.")
 		qdel(src)
 	else
 		. = ..()
+		*/
 
 /obj/item/reagent_containers/food/snacks/rawsticks
 	name = "raw potato sticks"
@@ -6786,7 +6788,7 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/wrapped/candy // Buff 4 >> 8
 	name = "candy"
 	desc = "Nougat, love it or hate it."
-	icon_state = "candy"
+	icon_state = "candy"	
 	trash = /obj/item/trash/candy
 	filling_color = "#7D5F46"
 	nutriment_amt = 3

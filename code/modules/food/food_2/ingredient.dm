@@ -54,7 +54,7 @@
 		serving_amount -= amount
 		var/obj/item/reagent_containers/food/snacks/ingredient/split_ingredient = new type(src)
 		split_ingredient.accumulated_time_cooked = accumulated_time_cooked
-		split_ingredient.reagents.clear_reagents()
+		split_ingredient.reagents.clear_reagents() //so we aren't making it taste raw on init
 		split_ingredient.reagents.trans_to_holder(reagents, reagents.total_volume * final_ratio, 1, TRUE)
 		split_ingredient.serving_amount = amount
 		user.put_in_hands_or_drop(split_ingredient)

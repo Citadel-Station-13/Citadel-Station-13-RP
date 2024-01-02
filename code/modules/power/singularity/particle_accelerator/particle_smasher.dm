@@ -262,7 +262,7 @@
 		if(istype(container, /obj/machinery/particle_smasher))
 			var/obj/machinery/particle_smasher/machine = container
 			for(var/obj/O in machine.storage)
-				if(istype(O,/obj/item/reagent_containers/food/snacks/grown))
+				if(istype(O,/obj/item/reagent_containers/food/snacks/ingredient/grown))
 					continue // Fruit is handled in check_fruit().
 				var/found = 0
 				for(var/i = 1; i < checklist.len+1; i++)

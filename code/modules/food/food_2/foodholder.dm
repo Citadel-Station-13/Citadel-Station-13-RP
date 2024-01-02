@@ -112,15 +112,7 @@
 	return "[ingredients_names] melange"
 
 /*
-			if(istype(check_ingredient, /obj/item/reagent_containers/food/snacks/grown) && check_recipe.recipe_fruit)
-				to_chat(user, "checking growns for recipe [check_recipe.result]")
-				var/obj/item/reagent_containers/food/snacks/grown/fruit = check_ingredient
-				if(fruit.seed.kitchen_tag && (fruit.seed.kitchen_tag in check_recipe.recipe_fruit))
-					to_chat(user, "correct grown")
-					continue // correct type of fruit, move on
-				else
-					to_chat(user, "wrong grown")
-					return FALSE //wrong fruit, we dont make anything
+
 					*/
 
 
@@ -155,23 +147,35 @@
 		for(var/j=0,j<check_recipe.result_quantity,j++)
 			new check_recipe.result(get_turf(src))
 		qdel(i)
+		return
 
 /obj/item/reagent_containers/food_holder/proc/check_ingredient_for_recipe(var/datum/cooking_recipe/R)
 	for(var/obj/item/reagent_containers/food/snacks/ingredient/check_ingredient in contents)
-		to_chat(world, "checking ingredient [check_ingredient] for recipe [R.result]")
-		if((!is_type_in_list(check_ingredient, R.recipe_items)))
+		to_chat(world, "checking ingredient [check_ingredient] for recipe [R]")
+		if(R.recipe_fruit)
+			if(istype(check_ingredient, /obj/item/reagent_containers/food/snacks/ingredient/grown))
+				to_chat(world, "checking growns for recipe [R]")
+				var/obj/item/reagent_containers/food/snacks/ingredient/grown/fruit = check_ingredient
+				if(!(fruit.seed.kitchen_tag in R.recipe_fruit))
+					to_chat(world, "wrong grown")
+					return FALSE //wrong fruit, we dont make anything
+				if(R.recipe_fruit[fruit.seed.kitchen_tag] > fruit.serving_amount)
+					to_chat(world, "not enough fruit ([R.recipe_fruit[fruit.seed.kitchen_tag]] > [fruit.serving_amount])")
+					return FALSE
+					
+		if(!(is_exact_type_in_list(check_ingredient, R.recipe_items)))
 			to_chat(world, "wrong ingredient ([is_type_in_list(check_ingredient, R.recipe_items)])")
 			return FALSE //wrong stuff
 		if(R.recipe_items[check_ingredient] > check_ingredient.serving_amount)
 			to_chat(world, "not enough ingredient ([R.recipe_items[check_ingredient]] > [check_ingredient.serving_amount])")
 			return FALSE
-	return TRUE
+	return TRUE	
 
 /obj/item/reagent_containers/food_holder/proc/check_reagent_for_recipe(var/datum/cooking_recipe/R)
-	for(var/check_reagent in check_recipe.recipe_reagents)
+	for(var/check_reagent in R.recipe_reagents)
 		var/available_reagent_amount = reagents.get_reagent_amount(check_reagent)
-		to_chat(world, "reagent [check_reagent] has amount [available_reagent_amount.] we need [check_recipe.recipe_reagents[check_reagent]]")
-		if(available_reagent_amount < check_recipe.recipe_reagents[check_reagent])
+		to_chat(world, "reagent [check_reagent] has amount [available_reagent_amount] we need [R.recipe_reagents[check_reagent]]")
+		if(available_reagent_amount < R.recipe_reagents[check_reagent])
 			to_chat(world, "not enough reagent")
 			return FALSE
 	return TRUE

@@ -634,7 +634,7 @@
 	name = "Coconut Bong"
 	result = /obj/item/bong/coconut
 	reqs = list(/obj/item/stack/material/mineral/bamboo = 2,
-				/obj/item/reagent_containers/food/snacks/grown/coconut = 1)
+				/obj/item/reagent_containers/food/snacks/ingredient/grown/coconut = 1)
 	time = 70
 	subcategory = CAT_MISCELLANEOUS
 	category = CAT_MISCELLANEOUS

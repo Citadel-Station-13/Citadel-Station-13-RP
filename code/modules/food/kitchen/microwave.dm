@@ -51,7 +51,7 @@
 		// will also allow anything using the holder item to be microwaved into
 		// impure carbon. ~Z
 		acceptable_items |= /obj/item/holder
-		acceptable_items |= /obj/item/reagent_containers/food/snacks/grown
+		acceptable_items |= /obj/item/reagent_containers/food/snacks/ingredient/grown
 
 /*******************
 *   Item Adding
