@@ -161,7 +161,7 @@
 	// handle cones
 	if(istype(I, /obj/item/reagent_containers/food/snacks/ice_cream))
 		var/obj/item/reagent_containers/food/snacks/ice_cream/ice_cream = I
-		if(ice_cream.no_double_dipping)
+		if(!ice_cream.can_keep_scooping)
 			user.action_feedback(SPAN_WARNING("[ice_cream] was already bitten out of!"), src)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		if(ice_cream.scoop_current >= ice_cream.scoop_max)

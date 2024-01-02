@@ -10,6 +10,15 @@
 	isGlass = 0
 	start_reagent = /datum/reagent/drink/juice/apple
 
+/obj/item/reagent_containers/food/drinks/bottle/coconutmilk
+	name = "Coconut Milk"
+	desc = "A carton of NutClarity brand coconut milk."
+	icon_state = "milkbox"
+	item_state = "carton"
+	center_of_mass = list("x"=16, "y"=8)
+	isGlass = 0
+	start_reagent = /datum/reagent/drink/milk/coconutmilk
+
 /obj/item/reagent_containers/food/drinks/bottle/lemonjuice
 	name = "Lemon Juice"
 	desc = "Sweet-sour goodness. Minus the sweet."

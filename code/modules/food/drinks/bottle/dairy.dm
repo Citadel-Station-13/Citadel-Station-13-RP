@@ -1,15 +1,6 @@
 //* KEEP THIS FILE SORTED OR I WILL SPRINKLE PEPPER ON YOUR EYEBALLS *//
 //* SORT BY PATH, NOT BY NAME. *//
 
-/obj/item/reagent_containers/food/drinks/bottle/coconutmilk
-	name = "Coconut Milk"
-	desc = "A carton of NutClarity brand coconut milk."
-	icon_state = "milkbox"
-	item_state = "carton"
-	center_of_mass = list("x"=16, "y"=8)
-	isGlass = 0
-	start_reagent = /datum/reagent/drink/milk/coconutmilk
-
 /obj/item/reagent_containers/food/drinks/bottle/cream
 	name = "Milk Cream"
 	desc = "It's cream. Made from milk. What else did you think you'd find in there?"

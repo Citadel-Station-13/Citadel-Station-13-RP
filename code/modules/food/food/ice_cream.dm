@@ -14,7 +14,7 @@
 	atom_flags = NOREACT
 
 	/// already bit into? no double dipping!
-	var/no_double_dipping = FALSE
+	var/can_keep_scooping = FALSE
 	/// overall sugar-ation; continuously compounded to be the % of scoops with sugar
 	var/snowflake_deliciousness = 0
 	/// max scoops
@@ -42,9 +42,9 @@
 //! LEGACY CODE START
 
 /obj/item/reagent_containers/food/snacks/ice_cream/attempt_feed(mob/living/M, mob/living/user)
-	if(!no_double_dipping)
+	if(can_keep_scooping)
 		// being bitten into for the first time, compute values as needed
-		no_double_dipping = TRUE
+		can_keep_scooping = FALSE
 		// 1 bite per scoop, plus 1 for the base scoop, plus 1 for the cone
 		bitesize = reagents.total_volume / (scoop_current + 1 + 1)
 	. = ..()
