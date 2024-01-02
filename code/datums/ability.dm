@@ -315,14 +315,22 @@
 	if(always_bind)
 		quickbind()
 
+
+/**
+ * checks if the target is within range and the ability is triggerable
+ */
 /datum/ability/proc/target_check(mob/user, atom/target)
 	if(range)
 		if(get_dist(get_turf(user),get_turf(target)) <= range)
 		else return FALSE
-	target_trigger(user, target)
-	return TRUE
+	if(check_trigger(user))
+		target_trigger(user,target)
+		return TRUE
+	return FALSE
 
-
+/**
+ * target-affecting proc
+ */
 /datum/ability/proc/target_trigger(mob/user, atom/target)
 	//target-related code goes here
 	disable()

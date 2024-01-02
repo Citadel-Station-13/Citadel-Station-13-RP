@@ -20,7 +20,7 @@
 /datum/ability_handler/proc/process_click(mob/user, atom/A)
 	if(current)
 		if(istype(A,target_type) && !istype(A,/atom/movable))
-			if(current.check_trigger(user, A))
+			if(current.target_check(user, A))
 				current = null
 				return TRUE
 	return FALSE
