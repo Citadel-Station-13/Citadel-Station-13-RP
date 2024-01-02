@@ -60,6 +60,7 @@
 /obj/machinery/mining/drill/examine()
 	. += ..()
 	. += SPAN_NOTICE("It looks like the storage cache can fit about [capacity - orecount] more ores before it reaches capacity.")
+	. += SPAN_NOTICE("The charge meter for the cell in the drill reads about [round(cell.percent())]%.")
 	. += SPAN_INFO("Alt-click to empty the drill's cache, if you have an ore satchel on you or an ore box nearby.")
 	. += SPAN_INFO("Use a multitool to change the drill's ID.")
 
