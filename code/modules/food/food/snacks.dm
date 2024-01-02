@@ -412,7 +412,7 @@
 	desc = "Freeze Dried peas covered in a very spicy substance!"
 	icon_state = "wasabi_peas"
 	nutriment_amt = 4
-	nutriment_desc = list("capsaicin" = 2, "protein" = 2)
+	nutriment_desc = list("wasabi" = 2, "protein" = 2)
 
 /obj/item/reagent_containers/food/snacks/bagged/wpeas/Initialize(mapload)
 	. = ..()

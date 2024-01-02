@@ -1975,6 +1975,10 @@
 /obj/spawner/window/low_wall/borosillicate/full,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/secondary_gear_storage)
+"ZF" = (
+/obj/effect/step_trigger/teleporter/from_mining,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/outpost/mining_main/passage)
 "ZO" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -26638,7 +26642,7 @@ OH
 us
 us
 us
-us
+ZF
 "}
 (128,1,1) = {"
 Se
@@ -26832,7 +26836,7 @@ OH
 us
 us
 us
-us
+ZF
 "}
 (129,1,1) = {"
 Se
@@ -27026,7 +27030,7 @@ mk
 us
 us
 us
-us
+ZF
 "}
 (130,1,1) = {"
 Se
@@ -27220,7 +27224,7 @@ mk
 us
 us
 us
-us
+ZF
 "}
 (131,1,1) = {"
 Se
@@ -27414,7 +27418,7 @@ OH
 us
 us
 us
-us
+ZF
 "}
 (132,1,1) = {"
 Se
@@ -27608,7 +27612,7 @@ mk
 us
 us
 us
-us
+ZF
 "}
 (133,1,1) = {"
 Se
@@ -27802,7 +27806,7 @@ OH
 us
 us
 us
-us
+ZF
 "}
 (134,1,1) = {"
 Se
@@ -27996,7 +28000,7 @@ mk
 us
 us
 us
-us
+ZF
 "}
 (135,1,1) = {"
 Se
@@ -28190,7 +28194,7 @@ OH
 us
 us
 us
-us
+ZF
 "}
 (136,1,1) = {"
 Se
@@ -28384,7 +28388,7 @@ OH
 us
 us
 us
-us
+ZF
 "}
 (137,1,1) = {"
 Se
