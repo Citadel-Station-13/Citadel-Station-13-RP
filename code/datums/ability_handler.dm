@@ -15,6 +15,7 @@
 		else
 			target_type = null
 			return
+	ab.owner.client.mouse_pointer_icon = file("icons/screen/mouse_pointers/standard1.dmi")
 
 ///Is called by a click if there's an ability in 'current'
 /datum/ability_handler/proc/process_click(mob/user, atom/A)
@@ -22,5 +23,6 @@
 		if(istype(A,target_type) && !istype(A,/atom/movable))
 			if(current.target_check(user, A))
 				current = null
+				user.client?.mouse_pointer_icon = initial(user.client.mouse_pointer_icon)
 				return TRUE
 	return FALSE
