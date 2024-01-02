@@ -49,6 +49,11 @@
 			. += copytext_char(raw, 1, i)
 			in_space = TRUE
 
+/datum/rig_console/proc/tgui_console_data()
+	return list(
+		"lines" = command_logs,
+	)
+
 /**
  * @return list(text, log text override)
  */
@@ -88,7 +93,7 @@
 					var/id = fragments[2]
 					if(isnull(host.module_lookup[id]))
 						return list("invalid module", "<module - not found>")
-					var/obj/item/rig_module/module = module_lookup[id]
+					var/obj/item/rig_module/module = host.module_lookup[id]
 					var/list/query = module.console_query(user)
 					var/list/built = list("-- [id] commands --")
 					for(var/command in query)
@@ -98,7 +103,7 @@
 					var/id = fragments[2]
 					if(isnull(host.module_lookup[id]))
 						return list("invalid module", "<module - not found>")
-					var/obj/item/rig_module/module = module_lookup[id]
+					var/obj/item/rig_module/module = host.module_lookup[id]
 					return module.console_process(user, fragments[3], fragments.Copy(4))
 		if("piece")
 			switch(length(fragments))
@@ -111,7 +116,7 @@
 					var/id = fragments[2]
 					if(isnull(host.piece_lookup[id]))
 						return list("invalid piece", "<piece - not found>")
-					var/datum/component/rig_piece/piece = piece_lookup[id]
+					var/datum/component/rig_piece/piece = host.piece_lookup[id]
 					var/list/query = piece.console_query(user)
 					var/list/built = list("-- [id] commands --")
 					for(var/command in query)
@@ -121,11 +126,11 @@
 					var/id = fragments[2]
 					if(isnull(host.piece_lookup[id]))
 						return list("invalid piece", "<piece - not found>")
-					var/datum/component/rig_piece/piece = piece_lookup[id]
+					var/datum/component/rig_piece/piece = host.piece_lookup[id]
 					return piece.console_process(user, fragments[3], fragments.Copy(4))
 
 		if("deploy", "retract", "seal", "unseal")
-			switch(legnth(fragments))
+			switch(length(fragments))
 				if(1)
 					var/list/built = list("-- Piece List --")
 					for(var/id in host.piece_lookup)
@@ -135,7 +140,7 @@
 					var/id = fragments[2]
 					if(isnull(host.piece_lookup[id]))
 						return list("invalid piece", "<piece - not found>")
-					var/datum/component/rig_piece/piece = piece_lookup[id]
+					var/datum/component/rig_piece/piece = host.piece_lookup[id]
 					return piece.console_process(user, fragments[1], fragments.Copy(3))
 
 		else

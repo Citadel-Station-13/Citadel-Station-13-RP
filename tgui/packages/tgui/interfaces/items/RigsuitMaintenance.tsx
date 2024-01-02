@@ -3,17 +3,21 @@
  * @license MIT
  */
 
-import { NoticeBox, Section } from "../../components";
-import { RigsuitData } from "./Rigsuit";
+import { useBackend } from "../../backend";
+import { Window } from "../../layouts";
+import { RigsuitConsoleData } from "./RigsuitConsole";
 
-export interface RigMaintenanceProps {
-  rig: RigsuitData;
+interface RigsuitMaintenanceData {
+  console: RigsuitConsoleData;
 }
 
-export const RigMaintenance = (props: RigMaintenanceProps, context) => {
+export const RigsuitMaintenance = (props, context) => {
+  const { act, data } = useBackend<RigsuitMaintenanceData>(context);
   return (
-    <Section fill>
-      <NoticeBox warning>This section is under construction.</NoticeBox>
-    </Section>
+    <Window width={800} height={550}>
+      <Window.Content>
+        Test
+      </Window.Content>
+    </Window>
   );
 };

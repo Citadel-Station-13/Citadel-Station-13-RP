@@ -298,7 +298,7 @@
  */
 /datum/component/rig_piece/proc/console_query(mob/user)
 	return list(
-		"deploy \[\"seal\"?\]" = "Deploy to user. Use 'deploy seal' to seal after deployment.",
+		"deploy \['seal'?\]" = "Deploy to user. Use 'deploy seal' to seal after deployment.",
 		"retract" = "Retract into controller.",
 		"seal" = "Seal around user",
 		"unseal" = "Unseal from user.",

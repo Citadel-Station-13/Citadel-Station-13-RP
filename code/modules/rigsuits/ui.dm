@@ -141,10 +141,6 @@
 	// todo: maybe cache this
 	.["controlFlags"] = effective_control_flags(user)
 
-/obj/item/rig/ui_module_data(mob/user, datum/tgui/ui)
-	. = ..()
-	// todo: some pieces/modules data might need updating every tick?
-
 /obj/item/rig/ui_static_modules(mob/user, datum/tgui/ui)
 	. = ..()
 	for(var/obj/item/rig_module/module as anything in null)

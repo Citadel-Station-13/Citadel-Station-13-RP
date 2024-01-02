@@ -61,14 +61,14 @@ AUTO_RIG_THEME(/mercenary/marine)
 	base_icon = 'icons/modules/rigsuits/suits/factions/military_pmc.dmi'
 	control_sealed_append = ""
 	pieces = list(
-		/datum/rig_piece/helmet{
+		/datum/rig_theme_piece/helmet{
 			worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_SKRELL);
 		},
-		/datum/rig_piece/chestplate,
-		/datum/rig_piece/gloves{
+		/datum/rig_theme_piece/chestplate,
+		/datum/rig_theme_piece/gloves{
 			piece_base_state = "pmc";
 		},
-		/datum/rig_piece/boots{
+		/datum/rig_theme_piece/boots{
 			piece_base_state = "pmc";
 		},
 	)

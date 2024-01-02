@@ -5,10 +5,10 @@
 	abstract_type = /datum/rig_theme/station/exploration
 	base_icon = 'icons/modules/rigsuits/suits/exploration.dmi'
 	pieces = list(
-		/datum/rig_piece/helmet,
-		/datum/rig_piece/chestplate,
-		/datum/rig_piece/gloves,
-		/datum/rig_piece/boots{
+		/datum/rig_theme_piece/helmet,
+		/datum/rig_theme_piece/chestplate,
+		/datum/rig_theme_piece/gloves,
+		/datum/rig_theme_piece/boots{
 			piece_base_state = "";
 		},
 	)

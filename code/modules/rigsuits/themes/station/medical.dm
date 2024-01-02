@@ -37,16 +37,16 @@ AUTO_RIG_THEME(/station/medical/standard)
 	display_name = "medical"
 	visible_name = "Medical"
 	pieces = list(
-		/datum/rig_piece/helmet{
+		/datum/rig_theme_piece/helmet{
 			worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TAJARAN, BODYTYPE_SKRELL, BODYTYPE_UNATHI, BODYTYPE_UNATHI_DIGI, BODYTYPE_IPC);
 		},
-		/datum/rig_piece/chestplate{
+		/datum/rig_theme_piece/chestplate{
 			worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TAJARAN, BODYTYPE_UNATHI, BODYTYPE_UNATHI_DIGI, BODYTYPE_IPC);
 		},
-		/datum/rig_piece/gloves{
+		/datum/rig_theme_piece/gloves{
 			worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TAJARAN, BODYTYPE_IPC);
 		},
-		/datum/rig_piece/boots{
+		/datum/rig_theme_piece/boots{
 			worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TAJARAN, BODYTYPE_IPC);
 		},
 	)

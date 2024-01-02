@@ -182,6 +182,6 @@
 
 /obj/item/rig/proc/request_console()
 	RETURN_TYPE(/datum/rig_console)
-	if(isnull(rig_console))
-		rig_console = new(src)
-	return rig_console
+	if(isnull(console))
+		console = new(src)
+	return console
