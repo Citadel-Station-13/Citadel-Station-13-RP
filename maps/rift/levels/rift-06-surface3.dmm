@@ -18719,6 +18719,9 @@
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment,
+/obj/machinery/door/firedoor/glass/hidden{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration)
 "boK" = (
@@ -21422,6 +21425,9 @@
 	dir = 1;
 	icon_state = "pipe-c"
 	},
+/obj/machinery/door/firedoor/glass/hidden{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration)
 "iFT" = (
@@ -21889,26 +21895,6 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/arrivals)
-"jNZ" = (
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/beige/border,
-/obj/effect/floor_decal/borderfloor/corner2{
-	dir = 9
-	},
-/obj/effect/floor_decal/corner/beige/bordercorner2{
-	dir = 9
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals5{
-	dir = 1
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/door/firedoor/glass/hidden{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/steel,
-/area/exploration)
 "jQb" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 1
@@ -22078,9 +22064,6 @@
 	},
 /obj/machinery/camera/network/exploration{
 	dir = 1
-	},
-/obj/structure/bed/chair/backed_grey{
-	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration/excursion_dock)
@@ -22428,12 +22411,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/telescience_lab)
-"lEZ" = (
-/obj/machinery/door/firedoor/glass{
-	dir = 8
-	},
-/turf/simulated/open,
-/area/exploration)
 "lJb" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -23762,15 +23739,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
-"pnT" = (
-/obj/effect/floor_decal/steeldecal/steel_decals5{
-	dir = 8
-	},
-/obj/machinery/door/firedoor/glass/hidden{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/steel,
-/area/exploration)
 "pov" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -24164,29 +24132,6 @@
 /obj/effect/floor_decal/corner/beige/bordercorner2,
 /turf/simulated/floor/tiled/steel,
 /area/exploration/courser_dock)
-"qnv" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/beige/border{
-	dir = 1
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals5,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/machinery/door/firedoor/glass/hidden,
-/turf/simulated/floor/tiled/steel,
-/area/exploration)
 "qnV" = (
 /obj/structure/cable{
 	icon_state = "2-4"
@@ -25840,6 +25785,7 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
 /obj/structure/disposalpipe/segment,
+/obj/machinery/door/firedoor/glass/hidden,
 /turf/simulated/floor/tiled/steel,
 /area/exploration)
 "vtz" = (
@@ -43985,8 +43931,8 @@ arm
 aNp
 ayj
 ung
-lEZ
-lEZ
+abm
+abm
 ung
 agz
 wAD
@@ -44760,9 +44706,9 @@ sON
 sON
 lZM
 lZM
-qnv
-pnT
-jNZ
+awO
+agW
+aXG
 dIa
 uAA
 aTd
