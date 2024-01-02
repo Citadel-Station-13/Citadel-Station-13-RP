@@ -423,7 +423,7 @@
 	mrate_static = TRUE
 	scannable = 1
 
-/datum/reagent/necroxadone/on_mob_life(mob/living/carbon/M, alien, datum/reagents/metabolism/location)
+/datum/reagent/necroxadone/on_mob_life(mob/living/carbon/M, alien, datum/reagent_holder/metabolism/location)
 	if(M.stat == DEAD && M.has_modifier_of_type(/datum/modifier/bloodpump_corpse))
 		affects_dead = TRUE
 	else

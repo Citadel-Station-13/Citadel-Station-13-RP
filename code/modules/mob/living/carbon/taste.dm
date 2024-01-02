@@ -1,4 +1,4 @@
-/mob/living/carbon/proc/ingest(datum/reagents/from, datum/reagents/target, amount = 1, multiplier = 1, copy = 0) //we kind of 'sneak' a proc in here for ingesting stuff so we can play with it.
+/mob/living/carbon/proc/ingest(datum/reagent_holder/from, datum/reagent_holder/target, amount = 1, multiplier = 1, copy = 0) //we kind of 'sneak' a proc in here for ingesting stuff so we can play with it.
 	if(last_taste_time + 50 < world.time)
 		var/datum/reagent_holder/temp = new(amount) //temporary holder used to analyse what gets transfered.
 		from.trans_to_holder(temp, amount, multiplier, 1)

@@ -327,7 +327,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
  * @return amount to inject into the mob side holder. defaults to amount. this can be overriden by the mob / transfer procs.
  */
 // todo: implement this proc, replace reaction mob and similar with it.
-// /datum/reagent/proc/apply_to_mob(mob/target, datum/reagents/holder, amount, list/data)
+// /datum/reagent/proc/apply_to_mob(mob/target, datum/reagent_holder/holder, amount, list/data)
 // 	return amount
 
 /**
@@ -370,5 +370,5 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
  * * new_data - new inbound data. not necessarily a list, only typedcasted to one.
  * * new_amount - the amount that's coming in, not what we will be at after mixing.
  */
-/datum/reagent/proc/mix_data(datum/reagents/holder, list/current_data, current_amount, list/new_data, new_amount)
+/datum/reagent/proc/mix_data(datum/reagent_holder/holder, list/current_data, current_amount, list/new_data, new_amount)
 	return

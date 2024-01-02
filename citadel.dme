@@ -4320,6 +4320,7 @@
 #include "code\modules\reagents\chemistry\reagents\other\cleaner.dm"
 #include "code\modules\reagents\chemistry\reagents\pyrotechnics\thermite.dm"
 #include "code\modules\reagents\chemistry\recipes\medicine.dm"
+#include "code\modules\reagents\chemistry\recipes\unsorted.dm"
 #include "code\modules\reagents\distilling\Distilling-Recipes.dm"
 #include "code\modules\reagents\distilling\distilling.dm"
 #include "code\modules\reagents\items\hypospray.dm"

@@ -84,7 +84,7 @@ About the Holder:
 		remove_any(amount = 1)
 			Removes up to [amount] of reagents from [src]. Returns actual amount removed.
 
-		trans_to_holder(datum/reagents/target, amount = 1, multiplier = 1, copy = 0)
+		trans_to_holder(datum/reagent_holder/target, amount = 1, multiplier = 1, copy = 0)
 			Transfers [amount] reagents from [src] to [target], multiplying them by [multiplier]. Returns actual amount removed from [src] (not amount transferred to [target]). If [copy] is 1, copies reagents instead.
 
 		touch(var/atom/target)
@@ -146,7 +146,7 @@ About Reagents:
 		description
 			Description that shows up in-game.
 
-		datum/reagents/holder
+		datum/reagent_holder/holder
 			Reference to holder.
 
 		reagent_state
@@ -274,7 +274,7 @@ About Recipes:
 		can_happen(var/datum/reagent_holder/holder)
 			Customizable. If it returns 0, reaction will not happen. Defaults to always returning 1. Used by slime core reactions.
 
-		on_reaction(datum/reagents/holder, created_volume)
+		on_reaction(datum/reagent_holder/holder, created_volume)
 			Called when reaction happens. Used by explosives.
 
 		send_data(var/datum/reagent_holder/T)

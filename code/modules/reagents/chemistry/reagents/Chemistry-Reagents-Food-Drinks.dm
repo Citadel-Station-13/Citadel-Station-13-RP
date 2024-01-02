@@ -15,7 +15,7 @@
 
 // todo: review data procs
 
-/datum/reagent/nutriment/mix_data(datum/reagents/holder, list/current_data, current_amount, list/new_data, new_amount)
+/datum/reagent/nutriment/mix_data(datum/reagent_holder/holder, list/current_data, current_amount, list/new_data, new_amount)
 
 	if(!islist(new_data) || !length(new_data))
 		return
@@ -4492,7 +4492,7 @@
 
 //Handles setting the temperature when oils are mixed
 // todo: review data procs
-/datum/reagent/nutriment/coating/mix_data(datum/reagents/holder, list/current_data, current_amount, list/new_data, new_amount)
+/datum/reagent/nutriment/coating/mix_data(datum/reagent_holder/holder, list/current_data, current_amount, list/new_data, new_amount)
 	LAZYINITLIST(data)
 	data["cooked"] = new_data["cooked"]
 
@@ -4557,7 +4557,7 @@
 		data = list("temperature" = T20C)
 
 //Handles setting the temperature when oils are mixed
-/datum/reagent/nutriment/triglyceride/oil/mix_data(datum/reagents/holder, list/current_data, current_amount, list/new_data, new_amount)
+/datum/reagent/nutriment/triglyceride/oil/mix_data(datum/reagent_holder/holder, list/current_data, current_amount, list/new_data, new_amount)
 	LAZYINITLIST(data)
 	if (current_amount <= 0 || !data["temperature"] || !volume)
 		//If we get here, then this reagent has just been created, just copy the temperature exactly
