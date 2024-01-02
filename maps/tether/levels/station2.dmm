@@ -1151,6 +1151,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/light,
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/foyer)
 "ct" = (
@@ -3444,6 +3445,7 @@
 /obj/machinery/door/airlock/glass/mining{
 	name = "Magmatic Rift Leap Pad"
 	},
+/obj/machinery/door/firedoor/border_only,
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "hc" = (
@@ -10819,7 +10821,6 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/techmaint,
 /area/quartermaster/office)
 "vz" = (
@@ -14349,12 +14350,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/foyer_mezzenine)
-"Cz" = (
-/obj/machinery/light/small{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/techmaint,
-/area/quartermaster/office)
 "CA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -16758,6 +16753,7 @@
 	req_one_access = list(1,5,31,38,47,48)
 	},
 /obj/structure/disposalpipe/segment,
+/obj/machinery/door/firedoor/border_only,
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "Hy" = (
@@ -58738,7 +58734,7 @@ rc
 cV
 IV
 IV
-vy
+IV
 uR
 xq
 Xm
@@ -59124,9 +59120,9 @@ QH
 Fb
 Ho
 ON
-Cz
 PK
 PK
+vy
 Nu
 pV
 GB
