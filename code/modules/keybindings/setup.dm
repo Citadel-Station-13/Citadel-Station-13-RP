@@ -44,7 +44,7 @@
 	if(prefs)
 		set_macros(prefs)
 	else
-		message_admins("Found null client preferences, please check the server logs and notify coders.")
+		message_admins("Found null client preferences on [src], please check the server logs and notify coders.")
 
 // removes all the existing macros
 /client/proc/erase_all_macros()
