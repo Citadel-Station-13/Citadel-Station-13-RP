@@ -41,10 +41,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/taste_description = "bitterness"
 	/// How this taste compares to others. Higher values means it is more noticable
 	var/taste_mult = 1
-	var/datum/reagent_holder/holder = null
 	var/reagent_state = REAGENT_SOLID
-	var/list/data = null
-	var/volume = 0
 	var/metabolism = REM // This would be 0.2 normally
 	/// Used for vampric-Digestion
 	var/blood_content = 0
@@ -88,6 +85,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/economic_category_reagent = ECONOMIC_CATEGORY_REAGENT_DEFAULT
 
 	//? wiki markup generation additional
+	//  todo: combine with guidebook 
 	/// override "name"
 	var/wiki_name
 	/// override "desc"
@@ -358,7 +356,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 // todo: implement this proc, replace touch_turf/reaction_turf and similar with it.
 // /datum/reagent/proc/apply_to_turf(turf/target, amount, list/data)
 
-//* Holder - Mixing
+//* Mixing
 
 /**
  * called when a new reagent is being mixed with this one to mix our data lists.

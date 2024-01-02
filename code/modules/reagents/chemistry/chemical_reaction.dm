@@ -3,25 +3,23 @@
 
 /datum/chemical_reaction
 	abstract_type = /datum/chemical_reaction
+
 	//* core *//
+	
 	/// id - must be unique and in CamelCase.
 	var/id
 	/// reagent reaction flags - see [code/__DEFINES/reagents/flags.dm]
 	var/chemical_reaction_flags = NONE
 
-	//* reaction *//
-	/// required reagents as ratios. path or id is supported, prefer paths for compile time checking.
-	var/list/required_reagents = list()
-	/// result reagent path or id. prefer path for compile time checking.
-	var/result
-	/// how much of the result is made per 1 ratio of required_reagents consumed.
-	var/result_amount = 0
-	/// priority - higher is checked first when reacting.
-	var/priority = 0
-	/// required container typepath of holder my_atom
-	var/required_container
+	//* guidebook *//
 
-	//* identity
+	/// guidebook flags
+	var/reaction_guidebook_flags = NONE
+	/// guidebook category
+	var/reaction_guidebook_category = "Unsorted"
+
+	//* identity *//
+
 	/// name; defaults to reagent produced's name.
 	/// if this is defaulted, it also defaults display name to that reagent if unset.
 	var/name
@@ -33,11 +31,26 @@
 	/// display description; overrides desc when player facing if set
 	var/display_description
 
-	//* guidebook
-	/// guidebook flags
-	var/reaction_guidebook_flags = NONE
-	/// guidebook category
-	var/reaction_guidebook_category = "Unsorted"
+	//* reaction *//
+
+	/// required reagents as ratios. path or id is supported, prefer paths for compile time checking.
+	var/list/required_reagents = list()
+
+	/// result reagent path or id. prefer path for compile time checking.
+	var/result
+	/// how much of the result is made per 1 ratio of required_reagents consumed.
+	var/result_amount = 0
+
+	/// priority - higher is checked first when reacting.
+	var/priority = 0
+	
+	/// required container typepath of holder my_atom
+	var/required_container
+
+	/// temperature minimum, kelvin
+	var/temperature_low 
+	/// temperature maximum, kelvin
+	var/temperature_high
 
 	//? legacy / unsorted
 	var/list/catalysts = list()

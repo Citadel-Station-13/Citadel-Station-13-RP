@@ -1,15 +1,31 @@
 /datum/reagent_holder
-	//? core
+	//* core *//
 	/// reagent holder flags - see [code/__DEFINES/reagents/flags.dm]
 	var/reagent_holder_flags = NONE
 
-	//* Reagents
+	//* Reagents - Core *//
+
 	/// volumes; id = volume
 	var/list/reagent_volumes = list()
 	/// datas; id = list(...)
-	var/list/reagent_datas = list()
+	/// 
+	/// lazy-list, because only some reagents have data.
+	var/list/reagent_datas
+	
+	//* Reagents - Metabolism *//
+	
+	/// id = metabolism datum
+	/// 
+	/// lazy-list, because only mobs have this.
+	var/list/reagent_metabolism
 
-	//* Volume
+	//* Temperature *//
+
+	/// Current temperature in Kelvin
+	var/temperature = T20C
+
+	//* Volume *//
+
 	/// updated by add/remove procs, as well as update_total().
 	var/total_volume = 0
 	/// updated by add/remove procs, as well as update_total().
@@ -24,7 +40,11 @@
 
 //* Reactions *//
 
-/datum/reagent_holder/proc/
+/datum/reagent_holder/proc/consider_reactions()
+	#warn impl
+
+/datum/reagent_holder/proc/handle_reactions()
+	#warn impl
 
 //* Updates *//
 
