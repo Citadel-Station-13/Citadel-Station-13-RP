@@ -6,6 +6,7 @@
 	kitchen_tag = "chili"
 	chems = list("capsaicin" = list(3,5), "nutriment" = list(1,25))
 	mutants = list("icechili")
+	food_info = list(list(0, 1, "chili"), list(15 SECONDS, 1.2, "cooked chili peppers"), list(32 SECONDS, 1, "mushy chili peppers"), list(40 SECONDS, 0.9, "burnt chili peppers"))
 
 /datum/seed/chili/New()
 	..()
@@ -27,6 +28,7 @@
 	kitchen_tag = "icechili"
 	mutants = null
 	chems = list("frostoil" = list(3,5), "nutriment" = list(1,50))
+	food_info = list(list(0, 1, "ice pepper"), list(30 SECONDS, 1.2, "cooked ice peppers"), list(60 SECONDS, 1, "melting ice peppers"), list(75 SECONDS, 0.9, "burnt ice peppers"))
 
 /datum/seed/chili/ice/New()
 	..()
@@ -42,6 +44,7 @@
 	kitchen_tag = "berries"
 	mutants = list("glowberries","poisonberries")
 	chems = list("nutriment" = list(1,10), "berryjuice" = list(10,10))
+	food_info = list(list(0, 1, "fresh berries"), list(20 SECONDS, 1.2, "stewed berries"), list(30 SECONDS, 1, "overcooked berry mush"), list(40 SECONDS, 0.9, "carbon with a hint of berry"))
 
 /datum/seed/berry/New()
 	..()
@@ -63,6 +66,7 @@
 	display_name = "glowberry bush"
 	mutants = null
 	chems = list("nutriment" = list(1,10), MAT_URANIUM = list(3,5))
+	food_info = list(list(0, 1, "glowberries"), list(20 SECONDS, 1.2, "stewed glowberries"), list(30 SECONDS, 1, "overcooked glowing mush"), list(40 SECONDS, 0.9, "radioactive charcoal"))
 
 /datum/seed/berry/glow/New()
 	..()
@@ -83,6 +87,7 @@
 	display_name = "poison berry bush"
 	mutants = list("deathberries")
 	chems = list("nutriment" = list(1), "toxin" = list(3,5), "poisonberryjuice" = list(10,5))
+	food_info = list(list(0, 1, "spicy berries"), list(20 SECONDS, 1.2, "stewed spicy berries"), list(30 SECONDS, 1, "overcooked spicy-sweet mush"), list(40 SECONDS, 0.9, "spicy charcoal"))
 
 /datum/seed/berry/poison/New()
 	..()
@@ -96,6 +101,7 @@
 	display_name = "death berry bush"
 	mutants = null
 	chems = list("nutriment" = list(1), "toxin" = list(3,3), "lexorin" = list(1,5))
+	food_info = list(list(0, 1, "death and berries"), list(20 SECONDS, 1.2, "death and stewed berries"), list(30 SECONDS, 1, "overcooked deadly mush"), list(40 SECONDS, 0.9, "deadly charcoal"))
 
 /datum/seed/berry/poison/death/New()
 	..()
@@ -112,6 +118,8 @@
 	mutants = list("deathnettle")
 	chems = list("nutriment" = list(1,50), "sacid" = list(0,1))
 	kitchen_tag = "nettle"
+	food_info = list(list(0, 1, "peppery spinach"), list(15 SECONDS, 1.2, "cooked peppery spinach"), list(25 SECONDS, 1, "wilting, mushy spinach"), list(30 SECONDS, 0.9, "unpalatable wilted spinach"))
+
 
 /datum/seed/nettle/New()
 	..()
@@ -132,6 +140,7 @@
 	kitchen_tag = "deathnettle"
 	mutants = null
 	chems = list("nutriment" = list(1,50), "pacid" = list(0,1))
+	food_info = list(list(0, 1, "extra-spicy spinach"), list(30 SECONDS, 1.2, "cooked extra-spicy spinach"), list(60 SECONDS, 1, "extra-spicy mushy spinach"), list(90 SECONDS, 0.9, "extra-spicy wilted spinach"))
 
 /datum/seed/nettle/death/New()
 	..()
@@ -148,6 +157,7 @@
 	mutants = list("bluetomato","bloodtomato")
 	chems = list("nutriment" = list(1,10), "tomatojuice" = list(10,10))
 	kitchen_tag = "tomato"
+	food_info = list(list(0, 1, "ripe tomato"), list(15 SECONDS, 1.2, "soft cooked tomato"), list(25 SECONDS, 1, "overcooked tomato"), list(30 SECONDS, 0.9, "dry, overcooked tomato"))
 
 /datum/seed/tomato/New()
 	..()

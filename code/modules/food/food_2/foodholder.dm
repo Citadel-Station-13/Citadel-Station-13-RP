@@ -5,10 +5,12 @@
 	icon_state = "ovendish"
 	atom_flags = OPENCONTAINER
 
-	var/food_name_override 
+	var/food_name_override
 
 	//is this it? yeah, it it is
-
+/obj/item/reagent_containers/food_holder/Initialize(mapload)
+	. = ..()
+	reagents.reagent_holder_flags |= TRANSPARENT
 /obj/item/reagent_containers/food_holder/examine(mob/user, dist) //todo: show food inside
 	. = ..()
 	. += SPAN_NOTICE("<b>Alt-click</b> to remove an ingredient from this.")
@@ -26,7 +28,6 @@
 			if(BURNT)
 				cooked_span = "tajaran_signlang"
 		. += "<span class='notice'>[icon2html(thing = examine_ingredient, target = user)] The [examine_ingredient.name], which looks </span><span class='[cooked_span]'>[examine_ingredient.cookstage2text()]</span><span class='notice'> and has been cooked for about [examine_ingredient.accumulated_time_cooked / 10] seconds.</span>"
-	check_recipe_completion(user)
 
 /obj/item/reagent_containers/food_holder/proc/tick_heat(var/time_cooked, var/heat_level, var/cook_method)
 	for(var/obj/item/reagent_containers/food/snacks/ingredient/cooking_ingredient in contents)
@@ -123,37 +124,54 @@
 					*/
 
 
-/obj/item/reagent_containers/food_holder/proc/check_recipe_completion(mob/user)
+/obj/item/reagent_containers/food_holder/proc/check_recipe_completion()
 	for(var/obj/item/reagent_containers/food/snacks/ingredient/tally_ingredient in contents)
 		if((tally_ingredient.cookstage == RAW) || (tally_ingredient.cookstage == BURNT))
-			to_chat(user, "not cooked ingredient")
+			to_chat(world, "not cooked ingredient")
 			return FALSE
+	to_chat(world, "making subtypes")
 	var/list/list_recipes = subtypesof(/datum/cooking_recipe)
+	if(islist(list_recipes))
+		to_chat(world, "subtypes made")
 	for(var/i in list_recipes)
-		var/datum/cooking_recipe/check_recipe = i
-		to_chat(user, "checking recipe for [check_recipe.result]")
-		for(var/obj/item/reagent_containers/food/snacks/ingredient/check_ingredient in contents)
-			to_chat(user, "checking ingredient [check_ingredient] for recipe [check_recipe.result]")
-			if(check_recipe.recipe_items)
-				if((!is_type_in_list(check_ingredient, check_recipe.recipe_items)) && check_recipe.recipe_items)
-					to_chat(user, "wrong ingredient")
-					return FALSE //wrong stuff
-				if(check_recipe.recipe_items[check_ingredient] > check_ingredient.serving_amount)
-					to_chat(user, "not enough ingredient")
-					return FALSE //not enough stuff
+		to_chat(world, "looping start for [i]")
+		var/datum/cooking_recipe/check_recipe = new i
+		to_chat(world, "checking recipe for [check_recipe.result]")
+		if(LAZYLEN(check_recipe.recipe_items))
+			if(!check_ingredient_for_recipe(check_recipe))
+				to_chat(world, "ingred check failed")
+				continue
+
+		to_chat(world, "finished ingred check and passed")
 		if(check_recipe.recipe_reagents)
-			for(var/check_reagent in check_recipe.recipe_reagents)
-				var/available_reagent_amount = reagents.get_reagent_amount(check_reagent)
-				if(available_reagent_amount >= reagents[check_reagent])
-					to_chat(user, "not enough reagent")
-					return FALSE
-		to_chat(user, "making final thing") 
+			to_chat(world, "requires reagents, checking reagent presence")
+			if(!check_reagent_for_recipe(check_recipe))
+				to_chat(world, "reagent check failed")
+				continue
+		to_chat(world, "making final thing")
 		reagents.clear_reagents()
 		for(var/obj/item/I in contents)
 			qdel(I)
 		for(var/j=0,j<check_recipe.result_quantity,j++)
 			new check_recipe.result(get_turf(src))
-		
+		qdel(i)
 
-		
+/obj/item/reagent_containers/food_holder/proc/check_ingredient_for_recipe(var/datum/cooking_recipe/R)
+	for(var/obj/item/reagent_containers/food/snacks/ingredient/check_ingredient in contents)
+		to_chat(world, "checking ingredient [check_ingredient] for recipe [R.result]")
+		if((!is_type_in_list(check_ingredient, R.recipe_items)))
+			to_chat(world, "wrong ingredient ([is_type_in_list(check_ingredient, R.recipe_items)])")
+			return FALSE //wrong stuff
+		if(R.recipe_items[check_ingredient] > check_ingredient.serving_amount)
+			to_chat(world, "not enough ingredient ([R.recipe_items[check_ingredient]] > [check_ingredient.serving_amount])")
+			return FALSE
+	return TRUE
 
+/obj/item/reagent_containers/food_holder/proc/check_reagent_for_recipe(var/datum/cooking_recipe/R)
+	for(var/check_reagent in check_recipe.recipe_reagents)
+		var/available_reagent_amount = reagents.get_reagent_amount(check_reagent)
+		to_chat(world, "reagent [check_reagent] has amount [available_reagent_amount.] we need [check_recipe.recipe_reagents[check_reagent]]")
+		if(available_reagent_amount < check_recipe.recipe_reagents[check_reagent])
+			to_chat(world, "not enough reagent")
+			return FALSE
+	return TRUE

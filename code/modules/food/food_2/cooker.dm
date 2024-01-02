@@ -62,14 +62,10 @@
 	active_power_usage = initial(active_power_usage) - ((scan_rating + cap_rating) * 5)
 
 /obj/machinery/cooking/process(delta_time)
-	visible_message("[src] processes silently...")
 	if(cooking_power > 0)
-		visible_message("[src] processes loudly...")
 		for(var/obj/item/reagent_containers/food_holder/FH in food_containers)
-			visible_message("[src] processes a food holder [FH]...")
 			FH.tick_heat(1 SECOND, cooking_power, cooker_type)
 		for(var/obj/item/reagent_containers/food/snacks/ingredient/I in food_containers)
-			visible_message("[src] processes a lone ingredient [I]...")
 			I.process_cooked(1 SECOND, cooking_power, cooker_type)
 
 /obj/item/circuitboard/machine/cooker
@@ -131,7 +127,6 @@
 			removables[FH.name] = FH
 		counter++
 	var/remove_item = removables[1]
-	to_chat(user, "You attempt remove [remove_item] from [src]")
 	if(LAZYLEN(food_containers ) > 1)
 		remove_item = input(user, "What to remove?", "Remove from cooker", null) as null|anything in removables
 	if(remove_item)

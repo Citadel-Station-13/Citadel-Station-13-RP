@@ -1,5 +1,5 @@
 //Grown foods.
-/obj/item/reagent_containers/food/snacks/grown
+/obj/item/reagent_containers/food/snacks/ingredient/grown
 
 	name = "fruit"
 	icon = 'icons/obj/hydroponics_products.dmi'
@@ -60,6 +60,8 @@
 	if(seed.get_trait(TRAIT_STINGS))
 		damage_force = 1
 	catalogue_data = seed.catalog_data_grown
+	if(islist(food_info))
+		cookstage_information = food_info
 
 /obj/item/reagent_containers/food/snacks/grown/update_desc()
 	. = ..()

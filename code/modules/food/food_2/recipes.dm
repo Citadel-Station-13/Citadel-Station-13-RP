@@ -16,3 +16,8 @@
 
 	result = /obj/item/reagent_containers/food/snacks/wishsoup // example: = /obj/item/reagent_containers/food/snacks/donut/normal
 
+/datum/cooking_recipe/ultrameat
+
+	recipe_items = list(/obj/item/reagent_containers/food/snacks/ingredient = 1) // example: = list(/obj/item/reagent_containers/food/snacks/ingredient/meat = 1, /obj/item/reagent_containers/food/snacks/ingredient/sludge = 1) // place /foo/bar before /foo
+
+	result = /obj/item/reagent_containers/food/snacks/meatpie // example: = /obj/item/reagent_containers/food/snacks/donut/normal

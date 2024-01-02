@@ -50,9 +50,12 @@
 	var/amount = input("How much to split?", "Split ingredient") as null|num
 	amount = round(amount) //0.2 > 1
 	if(amount && amount < serving_amount)
+		var/final_ratio = amount/serving_amount
 		serving_amount -= amount
 		var/obj/item/reagent_containers/food/snacks/ingredient/split_ingredient = new type(src)
 		split_ingredient.accumulated_time_cooked = accumulated_time_cooked
+		split_ingredient.reagents.clear_reagents()
+		split_ingredient.reagents.trans_to_holder(reagents, reagents.total_volume * final_ratio, 1, TRUE)
 		split_ingredient.serving_amount = amount
 		user.put_in_hands_or_drop(split_ingredient)
 		to_chat(user, SPAN_NOTICE("You split off [src]."))

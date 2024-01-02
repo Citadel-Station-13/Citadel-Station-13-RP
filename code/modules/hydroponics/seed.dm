@@ -18,6 +18,7 @@
 	var/list/chems                 // Chemicals that plant produces in products/injects into victim.
 	var/list/consume_gasses        // The plant will absorb these gasses during its life.
 	var/list/exude_gasses          // The plant will exude these gasses during its life.
+	var/list/food_info             // Used for plants that are grown and edible to get their data for newcooking. see cookstage_information on /obj/item/reagent_containers/food/snacks/ingredient to understand the format
 	var/kitchen_tag                // Used by the reagent grinder.
 	var/trash_type                 // Garbage item produced when eaten.
 	var/splat_type = /obj/effect/debris/cleanable/fruit_smudge // Graffiti decal.
