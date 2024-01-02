@@ -18,8 +18,6 @@
 #define ATOM_BROKEN			(1<<6)
 /// Used for items if they don't want to get a blood overlay.
 #define NOBLOODY            (1<<7) // TODO: item flag
-/// Reagents don't react inside this container.
-#define NOREACT             (1<<8) // TODO: reagent holder flag
 /// Doesn't Conduct electricity. (metal etc.)
 #define NOCONDUCT           (1<<9) // TODO: item flag
 /// Is an open container for chemistry purposes.
@@ -58,7 +56,6 @@ DEFINE_BITFIELD(atom_flags, list(
 	BITFIELD(ATOM_NONWORLD),
 	BITFIELD(ATOM_BROKEN),
 	BITFIELD(NOBLOODY),
-	BITFIELD(NOREACT),
 	BITFIELD(NOCONDUCT),
 	BITFIELD(OPENCONTAINER),
 	BITFIELD(PHORONGUARD),

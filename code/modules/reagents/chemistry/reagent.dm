@@ -12,12 +12,21 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	abstract_type = /datum/reagent
 
 	//* Core
+	
 	/// id - must be unique and in CamelCase.
 	var/id
 	/// reagent flags - see [code/__DEFINES/reagents/flags.dm]
 	var/reagent_flags = NONE
 
+	//* Guidebook
+
+	/// guidebook flags
+	var/reagent_guidebook_flags = NONE
+	/// guidebook category
+	var/reagent_guidebook_category = "Unsorted"
+
 	//* Identity
+
 	/// our name - visible from guidebooks and to admins
 	var/name = "Reagent"
 	/// our description - visible from guidebooks and to admins
@@ -31,11 +40,10 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	/// overrides desc in guidebook
 	var/display_description
 
-	//* Guidebook
-	/// guidebook flags
-	var/reagent_guidebook_flags = NONE
-	/// guidebook category
-	var/reagent_guidebook_category = "Unsorted"
+	//* Properties
+
+	/// specific heat in J*K/u (so joules needed to change 1 degree Kelvin per unit)
+	var/specific_heat = 1.5
 
 	//? legacy / unsorted
 	var/taste_description = "bitterness"

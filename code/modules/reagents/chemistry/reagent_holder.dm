@@ -1,5 +1,8 @@
 /datum/reagent_holder
 	//* core *//
+	
+	/// what atom we're attached to, if any
+	var/atom/attached
 	/// reagent holder flags - see [code/__DEFINES/reagents/flags.dm]
 	var/reagent_holder_flags = NONE
 
@@ -34,9 +37,31 @@
 	///? legacy / unsorted
 	var/list/datum/reagent/reagent_list = list()
 
-	var/atom/my_atom = null
 	// todo: remove / refactor this var into reagent_holder_flags with proper defines, this was never ported properly.
 	var/reagents_holder_flags
+
+//* Init *//
+
+/datum/reagent_holder/New(volume = 100, atom/parent, flags)
+	src.reagent_holder_flags = flags
+	src.attached = parent
+	src.maximum_volume = volume
+
+//* Add / Remove *//
+
+#warn audit for data being list
+/datum/reagent_holder/proc/add_reagent(datum/reagent/reagentlike, amount, list/data, temperature, defer_reactions)
+	#warn impl
+	
+/datum/reagent_holder/proc/remove_reagent(datum/reagent/reagentlike, amount, defer_reactions)
+	#warn impl
+
+/datum/reagent_holder/proc/remove_any(amount)
+	#warn impl
+
+//* Get *//
+
+#warn make those
 
 //* Reactions *//
 
@@ -45,6 +70,10 @@
 
 /datum/reagent_holder/proc/handle_reactions()
 	#warn impl
+
+//* Transfer *//
+
+#warn /transfer_to_holder post ice crema
 
 //* Updates *//
 
@@ -55,25 +84,9 @@
 	total_volume = 0
 	#warn impl
 
+#warn below
+
 //! Legacy Below
-
-/datum/reagent_holder/New(max = 100, atom/A = null, new_flags = NONE)
-	..()
-	maximum_volume = max
-	my_atom = A
-
-	//I dislike having these here but map-objects are initialised before world/New() is called. >_>
-	if(!SSchemistry.reagent_lookup)
-		//Chemical Reagents - Initialises all /datum/reagent into a list indexed by reagent id
-		var/paths = typesof(/datum/reagent) - /datum/reagent
-		SSchemistry.reagent_lookup = list()
-		for(var/path in paths)
-			var/datum/reagent/D = new path()
-			if(!D.name)
-				continue
-			SSchemistry.reagent_lookup[D.id] = D
-
-	reagents_holder_flags = new_flags
 
 /datum/reagent_holder/Destroy()
 	STOP_PROCESSING(SSchemistry, src)
