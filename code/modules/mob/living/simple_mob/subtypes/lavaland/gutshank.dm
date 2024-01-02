@@ -71,7 +71,7 @@
 	say_list_type = /datum/say_list/gutshank
 	ai_holder_type = /datum/ai_holder/simple_mob/melee
 
-	var/datum/reagents/shank_gland = null
+	var/datum/reagent_holder/shank_gland = null
 	var/growing = 0
 	var/amount_grown = 1
 	var/list/grow_as = list(/mob/living/simple_mob/animal/shank)

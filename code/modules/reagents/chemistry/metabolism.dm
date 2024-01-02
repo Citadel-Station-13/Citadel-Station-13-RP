@@ -1,9 +1,9 @@
-/datum/reagents/metabolism
+/datum/reagent_holder/metabolism
 	var/metabolism_class //REAGENT_APPLY_TOUCH, REAGENT_APPLY_INGEST, or REAGENT_APPLY_INJECT
 	var/metabolism_speed = 1	// Multiplicative, 1 is full speed, 0.5 is half, etc.
 	var/mob/living/carbon/parent
 
-/datum/reagents/metabolism/New(var/max = 100, mob/living/carbon/parent_mob, var/met_class = null)
+/datum/reagent_holder/metabolism/New(var/max = 100, mob/living/carbon/parent_mob, var/met_class = null)
 	..(max, parent_mob)
 
 	if(met_class)
@@ -11,7 +11,7 @@
 	if(istype(parent_mob))
 		parent = parent_mob
 
-/datum/reagents/metabolism/proc/metabolize(speed_mult = 1, force_allow_dead)
+/datum/reagent_holder/metabolism/proc/metabolize(speed_mult = 1, force_allow_dead)
 
 	var/metabolism_type = 0 //non-human mobs
 	if(ishuman(parent))
@@ -23,12 +23,12 @@
 	update_total()
 
 // "Specialized" metabolism datums
-/datum/reagents/metabolism/bloodstream
+/datum/reagent_holder/metabolism/bloodstream
 	metabolism_class = REAGENT_APPLY_INJECT
 
-/datum/reagents/metabolism/ingested
+/datum/reagent_holder/metabolism/ingested
 	metabolism_class = REAGENT_APPLY_INGEST
 	metabolism_speed = 0.5
 
-/datum/reagents/metabolism/touch
+/datum/reagent_holder/metabolism/touch
 	metabolism_class = REAGENT_APPLY_TOUCH

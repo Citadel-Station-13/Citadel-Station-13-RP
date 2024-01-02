@@ -11,7 +11,7 @@ var/const/BLOOD_VOLUME_SURVIVE = 40
 var/const/CE_STABLE_THRESHOLD = 0.5
 */
 
-/mob/living/carbon/human/var/datum/reagents/vessel // Container for blood and BLOOD ONLY. Do not transfer other chems here.
+/mob/living/carbon/human/var/datum/reagent_holder/vessel // Container for blood and BLOOD ONLY. Do not transfer other chems here.
 /mob/living/carbon/human/var/var/pale = 0          // Should affect how mob sprite is drawn, but currently doesn't.
 
 //Initializes blood vessels
@@ -23,7 +23,7 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 	if(species.species_flags & NO_BLOOD)
 		return
 
-	vessel = new/datum/reagents(species.blood_volume)
+	vessel = new/datum/reagent_holder(species.blood_volume)
 	vessel.my_atom = src
 
 	if(!should_have_organ(O_HEART)) //We want the var for safety but we can do without the actual blood.

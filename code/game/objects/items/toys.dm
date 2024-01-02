@@ -424,7 +424,7 @@
 
 /obj/item/toy/waterflower/Initialize(mapload)
 	. = ..()
-	var/datum/reagents/R = create_reagents(10)
+	var/datum/reagent_holder/R = create_reagents(10)
 	R.add_reagent("water", 10)
 
 /obj/item/toy/waterflower/afterattack(atom/target, mob/user, clickchain_flags, list/params)

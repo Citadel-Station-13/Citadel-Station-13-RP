@@ -27,7 +27,7 @@
  *
  *
  *  Functions you do not need to call directly but could:
- *  /datum/recipe/proc/check_reagents(var/datum/reagents/avail_reagents)
+ *  /datum/recipe/proc/check_reagents(var/datum/reagent_holder/avail_reagents)
  *  /datum/recipe/proc/check_items(var/obj/container as obj)
  *
  * */
@@ -76,7 +76,7 @@
 	//This is a bitfield, more than one type can be used
 	//Grill is presently unused and not listed
 
-/datum/recipe/proc/check_reagents(var/datum/reagents/avail_reagents)
+/datum/recipe/proc/check_reagents(var/datum/reagent_holder/avail_reagents)
 	if (!reagents || !reagents.len)
 		return 1
 

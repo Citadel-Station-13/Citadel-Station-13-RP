@@ -4,7 +4,7 @@
  * * All signals send the source datum of the signal as the first argument
  */
 
-/// From base of atom/expose_reagents(): (/list, /datum/reagents, methods, volume_modifier, show_message)
+/// From base of atom/expose_reagents(): (/list, /datum/reagent_holder, methods, volume_modifier, show_message)
 ////#define COMSIG_ATOM_EXPOSE_REAGENTS "atom_expose_reagents"
 	///? Prevents the atom from being exposed to reagents if returned on [COMSIG_ATOM_EXPOSE_REAGENTS]
 	////#define COMPONENT_NO_EXPOSE_REAGENTS (1<<0)
@@ -25,25 +25,25 @@
 /// From base of [/datum/component/multiple_lives/proc/respawn]: (mob/respawned_mob, gibbed, lives_left)
 ////#define COMSIG_ON_MULTIPLE_LIVES_RESPAWN "on_multiple_lives_respawn"
 
-/// From base of [/datum/reagents/proc/add_reagent] - Sent before the reagent is added: (reagenttype, amount, reagtemp, data, no_react)
+/// From base of [/datum/reagent_holder/proc/add_reagent] - Sent before the reagent is added: (reagenttype, amount, reagtemp, data, no_react)
 ////#define COMSIG_REAGENTS_PRE_ADD_REAGENT "reagents_pre_add_reagent"
 	///? Prevents the reagent from being added.
 	////#define COMPONENT_CANCEL_REAGENT_ADD (1<<0)
-/// From base of [/datum/reagents/proc/add_reagent]: (/datum/reagent, amount, reagtemp, data, no_react)
+/// From base of [/datum/reagent_holder/proc/add_reagent]: (/datum/reagent, amount, reagtemp, data, no_react)
 ////#define COMSIG_REAGENTS_NEW_REAGENT "reagents_new_reagent"
-/// From base of [/datum/reagents/proc/add_reagent]: (/datum/reagent, amount, reagtemp, data, no_react)
+/// From base of [/datum/reagent_holder/proc/add_reagent]: (/datum/reagent, amount, reagtemp, data, no_react)
 ////#define COMSIG_REAGENTS_ADD_REAGENT "reagents_add_reagent"
-/// From base of [/datum/reagents/proc/del_reagent]: (/datum/reagent)
+/// From base of [/datum/reagent_holder/proc/del_reagent]: (/datum/reagent)
 ////#define COMSIG_REAGENTS_DEL_REAGENT "reagents_del_reagent"
-/// From base of [/datum/reagents/proc/remove_reagent]: (/datum/reagent, amount)
+/// From base of [/datum/reagent_holder/proc/remove_reagent]: (/datum/reagent, amount)
 ////#define COMSIG_REAGENTS_REM_REAGENT "reagents_rem_reagent"
-/// From base of [/datum/reagents/proc/clear_reagents]: ()
+/// From base of [/datum/reagent_holder/proc/clear_reagents]: ()
 ////#define COMSIG_REAGENTS_CLEAR_REAGENTS "reagents_clear_reagents"
-/// From base of [/datum/reagents/proc/set_temperature]: (new_temp, old_temp)
+/// From base of [/datum/reagent_holder/proc/set_temperature]: (new_temp, old_temp)
 ////#define COMSIG_REAGENTS_TEMP_CHANGE "reagents_temp_change"
-/// From base of [/datum/reagents/proc/handle_reactions]: (num_reactions)
+/// From base of [/datum/reagent_holder/proc/handle_reactions]: (num_reactions)
 ////#define COMSIG_REAGENTS_REACTED "reagents_reacted"
-/// From base of [/datum/reagents/proc/process]: (num_reactions)
+/// From base of [/datum/reagent_holder/proc/process]: (num_reactions)
 ////#define COMSIG_REAGENTS_REACTION_STEP "reagents_time_step"
 /// From base of [/atom/proc/expose_reagents]: (/atom, /list, methods, volume_modifier, show_message)
 ////#define COMSIG_REAGENTS_EXPOSE_ATOM "reagents_expose_atom"

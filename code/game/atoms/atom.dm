@@ -117,7 +117,7 @@
 
 	//? Chemistry
 	// todo: properly finalize the semantics of this variable and what it's for.
-	var/datum/reagents/reagents = null
+	var/datum/reagent_holder/reagents = null
 
 	//? Detective Work
 	// todo: rework a lot of this, especially flurescent

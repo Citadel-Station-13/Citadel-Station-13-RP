@@ -277,7 +277,7 @@
 			. = -1
 	return .
 
-/datum/particle_smasher_recipe/proc/check_reagents(var/datum/reagents/avail_reagents)
+/datum/particle_smasher_recipe/proc/check_reagents(var/datum/reagent_holder/avail_reagents)
 	. = 1
 	for (var/r_r in reagents)
 		var/aval_r_amnt = avail_reagents.get_reagent_amount(r_r)

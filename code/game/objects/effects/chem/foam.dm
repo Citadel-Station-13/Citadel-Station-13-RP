@@ -97,7 +97,7 @@
 	/// 0 = foam, 1 = metalfoam, 2 = ironfoam.
 	var/metal = 0
 
-/datum/effect_system/foam_spread/set_up(amt=5, loca, var/datum/reagents/carry = null, var/metalfoam = 0)
+/datum/effect_system/foam_spread/set_up(amt=5, loca, var/datum/reagent_holder/carry = null, var/metalfoam = 0)
 	amount = round(sqrt(amt / 3), 1)
 	if(istype(loca, /turf/))
 		location = loca

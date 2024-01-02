@@ -442,7 +442,7 @@
 	var/cook_path = output_options[CI.combine_target]
 
 	var/list/words = list()
-	var/datum/reagents/buffer = new /datum/reagents(1000)
+	var/datum/reagent_holder/buffer = new /datum/reagent_holder(1000)
 	var/totalcolour
 
 	for (var/obj/item/I in CI.container)

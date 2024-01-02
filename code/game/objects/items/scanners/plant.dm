@@ -52,7 +52,7 @@
 		return
 
 	var/datum/seed/grown_seed
-	var/datum/reagents/grown_reagents
+	var/datum/reagent_holder/grown_reagents
 	if(istype(target,/obj/structure/table))
 		return ..()
 	else if(istype(target,/obj/item/reagent_containers/food/snacks/grown))

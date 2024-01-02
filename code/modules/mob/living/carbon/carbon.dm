@@ -1,9 +1,9 @@
 /mob/living/carbon/Initialize(mapload)
 	. = ..()
 	//setup reagent holders
-	bloodstr = new/datum/reagents/metabolism/bloodstream(500, src)
-	ingested = new/datum/reagents/metabolism/ingested(500, src)
-	touching = new/datum/reagents/metabolism/touch(500, src)
+	bloodstr = new/datum/reagent_holder/metabolism/bloodstream(500, src)
+	ingested = new/datum/reagent_holder/metabolism/ingested(500, src)
+	touching = new/datum/reagent_holder/metabolism/touch(500, src)
 	reagents = bloodstr
 	if (!default_language && species_language)
 		default_language = SScharacters.resolve_language_name(species_language)

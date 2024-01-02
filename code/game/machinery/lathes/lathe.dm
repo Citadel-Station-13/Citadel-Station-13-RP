@@ -62,7 +62,7 @@
 	/// material container capacity - list with ids for specific, null for infinite, just a number for combined.
 	var/materials_max = SHEET_MATERIAL_AMOUNT * 100
 	/// reagents storage datum
-	var/datum/reagents/stored_reagents
+	var/datum/reagent_holder/stored_reagents
 	/// has reagents? if above 0, we make reagents datum.
 	var/reagents_max = 0
 	/// stored items

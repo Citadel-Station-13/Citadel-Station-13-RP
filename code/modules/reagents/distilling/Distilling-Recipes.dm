@@ -26,7 +26,7 @@
 	var/list/temp_range = list(T0C, T20C)
 	var/temp_shift = 0 // How much the temperature changes when the reaction occurs.
 
-/datum/chemical_reaction/distilling/can_happen(var/datum/reagents/holder)
+/datum/chemical_reaction/distilling/can_happen(var/datum/reagent_holder/holder)
 	//check that all the required reagents are present
 	if(!holder.has_all_reagents(required_reagents))
 		return 0

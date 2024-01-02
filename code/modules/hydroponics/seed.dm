@@ -89,7 +89,7 @@
 	if(!T)
 		return
 
-	var/datum/reagents/R = new/datum/reagents(100)
+	var/datum/reagent_holder/R = new/datum/reagent_holder(100)
 	if(chems && chems.len)
 		for(var/rid in chems)
 			var/injecting = min(5,max(1,get_trait(TRAIT_POTENCY)/3))
@@ -195,7 +195,7 @@
 				body_coverage &= ~(clothes.body_cover_flags)
 			if(!body_coverage)
 				continue
-			var/datum/reagents/R = M.reagents
+			var/datum/reagent_holder/R = M.reagents
 			var/mob/living/carbon/human/H = M
 			if(istype(H))
 				R = H.touching

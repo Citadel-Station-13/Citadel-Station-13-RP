@@ -91,7 +91,7 @@
 		return
 
 	. += attached_victim ? "beakeractive" : "beakeridle"
-	var/datum/reagents/target_reagents = get_reagent_holder()
+	var/datum/reagent_holder/target_reagents = get_reagent_holder()
 	if(!target_reagents)
 		return
 
@@ -187,7 +187,7 @@
 		detach_iv()
 		return PROCESS_KILL
 
-	var/datum/reagents/target_reagents = get_reagent_holder()
+	var/datum/reagent_holder/target_reagents = get_reagent_holder()
 	if(target_reagents)
 		// Give blood
 		if(injection_mode == IV_INJECTING)
@@ -229,7 +229,7 @@
 		SPAN_WARNING("[usr] attaches [src] to [target]."),
 		SPAN_NOTICE("You attach [src] to [target]."),
 	)
-	// var/datum/reagents/container = get_reagent_holder()
+	// var/datum/reagent_holder/container = get_reagent_holder()
 	// log_combat(usr, target, "attached_victim", src, "containing: ([container.get_reagent_log_string()])")
 	add_fingerprint(usr)
 	attached_victim = target

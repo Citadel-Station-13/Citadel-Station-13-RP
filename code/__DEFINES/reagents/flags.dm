@@ -1,4 +1,4 @@
-//? flags for /datum/reagents/var/reagent_holder_flags
+//? flags for /datum/reagent_holder/var/reagent_holder_flags
 
 // none yet
 

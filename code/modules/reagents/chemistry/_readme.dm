@@ -271,13 +271,13 @@ About Recipes:
 
 	Procs:
 
-		can_happen(var/datum/reagents/holder)
+		can_happen(var/datum/reagent_holder/holder)
 			Customizable. If it returns 0, reaction will not happen. Defaults to always returning 1. Used by slime core reactions.
 
 		on_reaction(datum/reagents/holder, created_volume)
 			Called when reaction happens. Used by explosives.
 
-		send_data(var/datum/reagents/T)
+		send_data(var/datum/reagent_holder/T)
 			Sets resulting reagent's data. Used by blood paint.
 
 About the Tools:

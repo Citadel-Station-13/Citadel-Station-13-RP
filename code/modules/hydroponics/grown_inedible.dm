@@ -10,7 +10,7 @@
 
 /obj/item/grown/Initialize(mapload, planttype)
 	. = ..()
-	var/datum/reagents/R = new/datum/reagents(50)
+	var/datum/reagent_holder/R = new/datum/reagent_holder(50)
 	reagents = R
 	R.my_atom = src
 

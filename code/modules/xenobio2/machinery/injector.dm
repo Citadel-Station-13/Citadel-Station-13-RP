@@ -21,7 +21,7 @@
 
 /obj/machinery/xenobio2/manualinjector/Initialize(mapload)
 	. = ..()
-	var/datum/reagents/R = new/datum/reagents(1000)
+	var/datum/reagent_holder/R = new/datum/reagent_holder(1000)
 	reagents = R
 	R.my_atom = src
 	beaker = new /obj/item/reagent_containers/glass/beaker(src)

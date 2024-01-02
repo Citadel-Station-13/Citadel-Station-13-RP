@@ -79,7 +79,7 @@
 	say_list_type = /datum/say_list/goliath
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/goliath
 
-	var/datum/reagents/goliath_sac = null
+	var/datum/reagent_holder/goliath_sac = null
 	var/pre_attack = 0
 	var/tentacle_warning = 0.5 SECONDS
 	var/pre_attack_icon = "goliath2"
