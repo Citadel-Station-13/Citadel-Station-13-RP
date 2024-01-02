@@ -1,3 +1,5 @@
+//* Stuff in here is mostly free. *//
+
 /datum/reagent/aluminum
 	name = "Aluminum"
 	id = "aluminum"
@@ -212,6 +214,14 @@
 	taste_description = "salty metal"
 	reagent_state = REAGENT_SOLID
 	color = "#808080"
+
+/datum/reagent/sulfur
+	name = "Sulfur"
+	id = "sulfur"
+	description = "A chemical element with a pungent smell."
+	taste_description = "old eggs"
+	reagent_state = REAGENT_SOLID
+	color = "#BF8C00"
 
 /datum/reagent/tungsten
 	name = "Tungsten"

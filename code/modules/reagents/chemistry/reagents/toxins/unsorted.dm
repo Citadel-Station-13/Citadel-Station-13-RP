@@ -118,6 +118,7 @@
 	strength = 5
 
 /datum/reagent/toxin/phoron
+	// todo: reagent traits, this shouldn't be a toxin subtype.
 	name = "Phoron"
 	id = "phoron"
 	description = "Phoron in its liquid form."

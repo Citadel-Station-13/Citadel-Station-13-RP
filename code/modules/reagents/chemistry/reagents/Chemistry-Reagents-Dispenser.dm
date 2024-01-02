@@ -280,12 +280,3 @@
 			if(prob(5))
 				to_chat(M, "<span class='danger'>You feel an imbalance of energy.</span>")
 			M.make_jittery(4)
-
-/datum/reagent/sulfur
-	name = "Sulfur"
-	id = "sulfur"
-	description = "A chemical element with a pungent smell."
-	taste_description = "old eggs"
-	reagent_state = REAGENT_SOLID
-	color = "#BF8C00"
-

@@ -1,0 +1,182 @@
+//* star-trek inspired medicines, also known as: "unsorted, but also kinda sorted because it's star trek" *//
+
+/datum/reagent/inaprovaline
+	name = "Inaprovaline"
+	id = "inaprovaline"
+	description = "Inaprovaline is a synaptic stimulant and cardiostimulant. Commonly used to stabilize patients."
+	taste_description = "bitterness"
+	reagent_state = REAGENT_LIQUID
+	color = "#00BFFF"
+	overdose = REAGENTS_OVERDOSE * 2
+	metabolism = REM * 0.5
+	scannable = 1
+
+/datum/reagent/inaprovaline/affect_blood(mob/living/carbon/M, alien, removed)
+	if(alien != IS_DIONA)
+		M.add_chemical_effect(CE_STABLE, 15)//Reduces bleeding rate, and allowes the patient to breath even when in shock
+		M.ceiling_chemical_effect(CE_PAINKILLER, 10)
+
+/datum/reagent/bicaridine
+	name = "Bicaridine"
+	id = "bicaridine"
+	description = "Bicaridine is an analgesic medication and can be used to treat blunt trauma."
+	taste_description = "bitterness"
+	taste_mult = 3
+	reagent_state = REAGENT_LIQUID
+	color = "#BF0000"
+	overdose = REAGENTS_OVERDOSE
+	scannable = 1
+
+/datum/reagent/bicaridine/affect_blood(mob/living/carbon/M, alien, removed)
+	var/chem_effective = 1
+	if(alien == IS_SLIME)
+		chem_effective = 0.75
+	if(alien != IS_DIONA)
+		M.heal_organ_damage(4 * removed * chem_effective, 0) //The first Parameter of the function is brute, the second burn damage
+
+/datum/reagent/bicaridine/overdose(mob/living/carbon/M, alien, removed)
+	..()
+	var/wound_heal = 1.5 * removed//Overdose enhances the healing effects
+	M.eye_blurry = min(M.eye_blurry + wound_heal, 250)
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		for(var/obj/item/organ/external/O in H.bad_external_organs)//for-loop that covers all injured external organs
+			for(var/datum/wound/W as anything in O.wounds)//for-loop that covers all wounds in the organ we are currently looking at.
+				if(W.bleeding() || W.internal)//Checks if the wound is bleeding or internal
+					W.damage = max(W.damage - wound_heal, 0)//reduces the damage, and sets it to 0 if its lower than 0
+					if(W.damage <= 0)//If the wound is healed,
+						O.cure_exact_wound(W)
+						continue
+
+/datum/reagent/kelotane
+	name = "Kelotane"
+	id = "kelotane"
+	description = "Kelotane is a drug used to treat burns."
+	taste_description = "bitterness"
+	reagent_state = REAGENT_LIQUID
+	color = "#FFA800"
+	overdose = REAGENTS_OVERDOSE
+	scannable = 1
+
+/datum/reagent/kelotane/affect_blood(mob/living/carbon/M, alien, removed)
+	var/chem_effective = 1
+	if(alien == IS_SLIME)
+		chem_effective = 0.5
+		M.adjustBruteLoss(2 * removed) //Mends burns, but has negative effects with a Promethean's skeletal structure.
+	if(alien != IS_DIONA)
+		M.heal_organ_damage(0, 4 * removed * chem_effective)
+/datum/reagent/dermaline
+	name = "Dermaline"
+	id = "dermaline"
+	description = "Dermaline is the next step in burn medication. Works twice as good as kelotane and enables the body to restore even the direst heat-damaged tissue."
+	taste_description = "bitterness"
+	taste_mult = 1.5
+	reagent_state = REAGENT_LIQUID
+	color = "#FF8000"
+	overdose = REAGENTS_OVERDOSE * 0.5
+	scannable = 1
+
+/datum/reagent/dermaline/affect_blood(mob/living/carbon/M, alien, removed)
+	var/chem_effective = 1
+	if(alien == IS_SLIME)
+		chem_effective = 0.75
+	if(alien != IS_DIONA)
+		M.heal_organ_damage(0, 8 * removed * chem_effective)
+
+/datum/reagent/dylovene
+	name = "Dylovene"
+	id = "anti_toxin"
+	description = "Dylovene is a broad-spectrum antitoxin."
+	taste_description = "a roll of gauze"
+	reagent_state = REAGENT_LIQUID
+	color = "#00A000"
+	scannable = 1
+
+/datum/reagent/dylovene/affect_blood(mob/living/carbon/M, alien, removed)
+	var/chem_effective = 1
+	if(alien == IS_SLIME)
+		chem_effective = 0.66
+		if(dose >= 15)
+			M.druggy = max(M.druggy, 5)
+	if(alien != IS_DIONA)
+		M.drowsyness = max(0, M.drowsyness - 6 * removed * chem_effective)//reduces drowsyness to zero
+		M.hallucination = max(0, M.hallucination - 9 * removed * chem_effective)//reduces hallucination to 0
+		M.adjustToxLoss(-4 * removed * chem_effective)//Removes toxin damage
+		if(prob(10))
+			M.remove_a_modifier_of_type(/datum/modifier/poisoned)//Removes the poisoned effect, which is super rare of its own
+
+/datum/reagent/dexalin
+	name = "Dexalin"
+	id = "dexalin"
+	description = "Dexalin is used in the treatment of oxygen deprivation."
+	taste_description = "bitterness"
+	reagent_state = REAGENT_LIQUID
+	color = "#0080FF"
+	overdose = REAGENTS_OVERDOSE
+	scannable = 1
+	metabolism = REM * 0.25
+	
+/datum/reagent/dexalin/affect_blood(mob/living/carbon/M, alien, removed)
+	if(alien == IS_VOX)
+		M.adjustToxLoss(removed * 24) //Vox breath phoron, oxygen is rather deadly to them
+	if(alien == IS_ALRAUNE)
+		M.adjustToxLoss(removed * 10) //cit change: oxygen is waste for plants
+	else if(alien == IS_SLIME && dose >= 15)
+		M.ceiling_chemical_effect(CE_PAINKILLER, 15)
+		if(prob(15))
+			to_chat(M, "<span class='notice'>You have a moment of clarity as you collapse.</span>")
+			M.adjustBrainLoss(-20 * removed) //Deals braindamage to promethians
+			M.afflict_paralyze(20 * 6)
+	else if(alien != IS_DIONA)
+		M.adjustOxyLoss(-60 * removed) //Heals alot of oxyloss damage/but
+		//keep in mind that Dexaline has a metabolism rate of 0.25*REM meaning only 0.25 units are removed every tick(if your metabolism takes usuall 1u per tick)
+
+	holder.remove_reagent("lexorin", 8 * removed)
+	
+/datum/reagent/dexalinp
+	name = "Dexalin Plus"
+	id = "dexalinp"
+	description = "Dexalin Plus is used in the treatment of oxygen deprivation. It is highly effective."
+	taste_description = "bitterness"
+	reagent_state = REAGENT_LIQUID
+	color = "#0040FF"
+	overdose = REAGENTS_OVERDOSE * 0.5
+	scannable = 1
+
+/datum/reagent/dexalinp/affect_blood(mob/living/carbon/M, alien, removed)
+	if(alien == IS_VOX)
+		M.adjustToxLoss(removed * 9)//Again, vox dont like O2
+	if(alien == IS_ALRAUNE)
+		M.adjustToxLoss(removed * 5) //cit change: oxygen is waste for plants
+	else if(alien == IS_SLIME && dose >= 10)
+		M.ceiling_chemical_effect(CE_PAINKILLER, 25)
+		if(prob(25))
+			to_chat(M, "<span class='notice'>You have a moment of clarity, as you feel your tubes lose pressure rapidly.</span>")
+			M.adjustBrainLoss(-8 * removed)//deals less braindamage than Dex
+			M.afflict_paralyze(20 * 3)
+	else if(alien != IS_DIONA)
+		M.adjustOxyLoss(-150 * removed)//Heals more oxyloss than Dex and has no metabolism reduction
+
+	holder.remove_reagent("lexorin", 3 * removed)
+
+/datum/reagent/tricordrazine
+	name = "Tricordrazine"
+	id = "tricordrazine"
+	description = "Tricordrazine is a highly potent stimulant, originally derived from cordrazine. Can be used to treat a wide range of injuries."
+	taste_description = "bitterness"
+	reagent_state = REAGENT_LIQUID
+	color = "#8040FF"
+	scannable = 1
+
+/datum/reagent/tricordrazine/affect_blood(mob/living/carbon/M, alien, removed)
+	if(alien != IS_DIONA)//Heals everyone besides diona on all 4 base damage types.
+		var/chem_effective = 1
+		if(alien == IS_SLIME)
+			chem_effective = 0.5
+		M.adjustOxyLoss(-3 * removed * chem_effective)
+		M.heal_organ_damage(1.5 * removed, 1.5 * removed * chem_effective)
+		M.adjustToxLoss(-1.5 * removed * chem_effective)
+
+/datum/reagent/tricordrazine/affect_touch(mob/living/carbon/M, alien, removed)
+	if(alien != IS_DIONA)
+		affect_blood(M, alien, removed * 0.4)
