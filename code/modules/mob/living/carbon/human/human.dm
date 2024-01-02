@@ -1154,6 +1154,11 @@
 			var/datum/mob_descriptor/descriptor = species.descriptors[desctype]
 			descriptors[desctype] = descriptor.default_value
 
+	if(ispath(species.custom_ability_handler, /datum/ability_handler))
+		ab_handler = new species.custom_ability_handler()
+	else
+		ab_handler = new /datum/ability_handler()
+
 	// dumb shit transformation shit here
 	if(example)
 		if(!(example == src))
@@ -1640,3 +1645,8 @@
 		return
 	// groan
 	. += ((size_multiplier * icon_scale_x) - 1) * ((dir & EAST)? -16 : 16)
+
+/mob/living/carbon/human/ClickOn(var/atom/A)
+	if(ab_handler)
+		ab_handler.process_click(src, A)
+	else ..()

@@ -98,6 +98,7 @@
 		/datum/ability/species/xenochimera/dissonant_shriek,
 		/datum/ability/species/sonar,
 		/datum/ability/species/toggle_flight,
+		/datum/ability/species/xenochimera/boom,
 	)
 
 	inherent_verbs = list( //Xenochimera get all the special verbs since they can't select traits.
@@ -731,7 +732,7 @@
 	name = "Dissonant Shriek"
 	desc = "We shift our vocal cords to release a high-frequency sound that overloads nearby electronics."
 	action_state = "ling_resonant_shriek"
-	var/range = 8
+	range = 8
 	//Slightly more potent than an EMP grenade
 	var/emp_heavy = 3
 	var/emp_med = 6

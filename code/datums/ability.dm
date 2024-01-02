@@ -42,7 +42,12 @@
 	/// currently hidden?
 	var/hidden = FALSE
 	/// targeted?
+	/// targeted abilities only work with ABILITY_INTERACT_TOGGLE
 	var/targeted = FALSE
+	/// target type? Can be anything (atoms), mobs or turfs
+	var/targeting_type = ABILITY_TARGET_ALL
+	/// range?
+	var/range
 
 	//? ui
 	/// tgui id
@@ -150,6 +155,11 @@
 			return
 		if(isnull(toggling))
 			toggling = !enabled
+		if(targeted)
+			if(ishuman(user) && toggling == TRUE)
+				var/mob/living/carbon/human/H = user
+				if(H.ab_handler)
+					H.ab_handler.process_ability(src)
 	if(!check_trigger(user, toggling, TRUE))
 		return
 	if(windup)
@@ -304,6 +314,18 @@
 	hidden = FALSE
 	if(always_bind)
 		quickbind()
+
+/datum/ability/proc/target_check(mob/user, atom/target)
+	if(range)
+		if(get_dist(get_turf(user),get_turf(target)) <= range)
+		else return FALSE
+	target_trigger(user, target)
+	return TRUE
+
+
+/datum/ability/proc/target_trigger(mob/user, atom/target)
+	//target-related code goes here
+	disable()
 
 /**
  * static data for tgui panel
