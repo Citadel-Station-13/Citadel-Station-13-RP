@@ -1648,5 +1648,6 @@
 
 /mob/living/carbon/human/ClickOn(var/atom/A)
 	if(ab_handler)
-		ab_handler.process_click(src, A)
-	else ..()
+		if(ab_handler.process_click(src, A))
+			return
+	..()

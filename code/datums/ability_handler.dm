@@ -22,4 +22,5 @@
 		if(istype(A,target_type) && !istype(A,/atom/movable))
 			if(current.check_trigger(user, A))
 				current = null
-		else return
+				return TRUE
+	return FALSE
