@@ -8,6 +8,39 @@
 	under_state = "desert"
 	var/delta_sum = 0
 	var/float_delay = 10
+	var/moving_dir = SOUTH
+
+/turf/simulated/floor/water/river/update_icon()
+	switch(moving_dir)
+		if(NORTH)
+			water_state = initial(water_state) + "_north"
+		if(SOUTH)
+			water_state = initial(water_state) + "_south"
+		if(EAST)
+			water_state = initial(water_state) + "_east"
+		if(WEST)
+			water_state = initial(water_state) + "_west"
+		else
+			message_admins("[src.type] ([src.x];[src.y];[src.z]) without a properly set moving dir, defaulting to north.")
+			moving_dir = NORTH
+			water_state = initial(water_state) + "_north"
+	. = ..()
+
+/turf/simulated/floor/water/river/south
+	dir = SOUTH
+	moving_dir = SOUTH
+
+/turf/simulated/floor/water/river/north
+	dir = NORTH
+	moving_dir = NORTH
+
+/turf/simulated/floor/water/river/east
+	dir = EAST
+	moving_dir = EAST
+
+/turf/simulated/floor/water/river/west
+	dir = WEST
+	moving_dir = WEST
 
 /turf/simulated/floor/water/river/deep
 	name = "deep river"
@@ -17,39 +50,67 @@
 	slowdown = 8
 	depth = 2
 
+/turf/simulated/floor/water/river/deep/south
+	dir = SOUTH
+	moving_dir = SOUTH
+
+/turf/simulated/floor/water/river/deep/north
+	dir = NORTH
+	moving_dir = NORTH
+
+/turf/simulated/floor/water/river/deep/east
+	dir = EAST
+	moving_dir = EAST
+
+/turf/simulated/floor/water/river/deep/west
+	dir = WEST
+	moving_dir = WEST
+
 /turf/simulated/floor/water/river/Initialize(mapload)
+	. = ..()
+
+
+/turf/simulated/floor/water/river/Entered(atom/movable/AM, atom/oldloc)
 	. = ..()
 	START_PROCESSING(SSobj, src)
 
+/turf/simulated/floor/water/river/Exited(atom/movable/AM, atom/newloc)
+	. = ..()
+	STOP_PROCESSING(SSobj, src)
+
 /turf/simulated/floor/water/river/process(delta_time)
+	if(!LAZYLEN(contents))
+		STOP_PROCESSING(SSobj, src)//Failsafe, no need to process if we dont have any contents
 	delta_sum += delta_time
 	if(delta_sum > float_delay)
-		convey(contents)
+		addtimer(CALLBACK(src, PROC_REF(convey), src.contents), 1)
 		delta_sum = 0
 		float_delay = rand(5, 20)
 
 /turf/simulated/floor/water/river/proc/convey(list/affecting)
-	var/turf/T = get_step(src, dir)
+	var/turf/T = get_step(src, moving_dir)
 	if(!T)
 		return
-	affecting.len = max(min(affecting.len, 150 - T.contents.len), 0)
-	if(!affecting.len)
-		return
-	var/items_moved = 0
+	var/list/to_move
+	LAZYINITLIST(to_move)
 	for(var/atom/movable/A in affecting)
-		if(!A.anchored)
-			if(A.loc == src.loc) // prevents the object from being affected if it's not currently here.
-				step(A,dir)
-				++items_moved
-		if(items_moved >= 50)
-			break
+		if(istype(A, /atom/movable/lighting_overlay))
+			continue
+		if(!(A.anchored || (A.atom_flags & ATOM_ABSTRACT)))
+			if(A.loc == src) // prevents the object from being affected if it's not currently here.
+				step(A,moving_dir)
+
 
 /obj/effect/floor_decal/river_beach_edge
 	name = "beach"
 	icon = 'icons/turf/river.dmi'
 	icon_state = "shore_overlay"
+	layer = ABOVE_TURF_LAYER //So it showes above the water layer of rivers
 
 /obj/effect/floor_decal/river_beach_corner_edge
 	name = "beach corner"
 	icon = 'icons/turf/river.dmi'
 	icon_state = "shore_corner_overlay"
+	layer = ABOVE_TURF_LAYER //So it showes above the water layer of rivers
+
+
