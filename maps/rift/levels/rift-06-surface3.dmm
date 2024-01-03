@@ -22348,7 +22348,7 @@
 	},
 /obj/effect/floor_decal/borderfloor,
 /obj/structure/closet/medical_wall{
-	pixel_y = -32
+	pixel_y = -24
 	},
 /obj/item/storage/firstaid/toxin,
 /obj/structure/cable{
