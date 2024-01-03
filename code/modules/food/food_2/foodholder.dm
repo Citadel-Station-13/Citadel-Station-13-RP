@@ -111,36 +111,21 @@
 		return "[ingredients_names] stew"
 	return "[ingredients_names] melange"
 
-/*
-
-					*/
 
 
 /obj/item/reagent_containers/food_holder/proc/check_recipe_completion()
 	for(var/obj/item/reagent_containers/food/snacks/ingredient/tally_ingredient in contents)
 		if((tally_ingredient.cookstage == RAW) || (tally_ingredient.cookstage == BURNT))
-			to_chat(world, "not cooked ingredient")
 			return FALSE
-	to_chat(world, "making subtypes")
 	var/list/list_recipes = subtypesof(/datum/cooking_recipe)
-	if(islist(list_recipes))
-		to_chat(world, "subtypes made")
 	for(var/i in list_recipes)
-		to_chat(world, "looping start for [i]")
 		var/datum/cooking_recipe/check_recipe = new i
-		to_chat(world, "checking recipe for [check_recipe.result]")
 		if(LAZYLEN(check_recipe.recipe_items))
 			if(!check_ingredient_for_recipe(check_recipe))
-				to_chat(world, "ingred check failed")
 				continue
-
-		to_chat(world, "finished ingred check and passed")
 		if(check_recipe.recipe_reagents)
-			to_chat(world, "requires reagents, checking reagent presence")
 			if(!check_reagent_for_recipe(check_recipe))
-				to_chat(world, "reagent check failed")
 				continue
-		to_chat(world, "making final thing")
 		reagents.clear_reagents()
 		for(var/obj/item/I in contents)
 			qdel(I)
