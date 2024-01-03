@@ -57,7 +57,7 @@
  * - A - atom that we landed on
  * - TT - thrownthing datum
  */
-/atom/proc/throw_land(atom/A, datum/thrownthing/TT)
+/atom/movable/proc/throw_land(atom/A, datum/thrownthing/TT)
 	return NONE
 
 /**
