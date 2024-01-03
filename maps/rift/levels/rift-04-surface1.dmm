@@ -7722,20 +7722,10 @@
 /turf/simulated/floor/plating,
 /area/maintenance/tool_storage)
 "fbH" = (
-/obj/machinery/door/blast/shutters{
-	density = 0;
-	dir = 2;
-	icon_state = "shutter0";
-	id = "cargo_line_shutter";
-	name = "Cargo Line shutter";
-	opacity = 0
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/beastybrown,
-/turf/simulated/floor/plating,
+/turf/simulated/wall/prepainted/cargo,
 /area/quartermaster/foyer)
 "fcq" = (
 /obj/structure/sink/puddle,
@@ -36485,18 +36475,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_south_airlock)
 "wzP" = (
-/obj/machinery/door/blast/shutters{
-	density = 0;
-	dir = 2;
-	icon_state = "shutter0";
-	id = "cargo_line_shutter";
-	name = "Cargo Line shutter";
-	opacity = 0
-	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/structure/disposalpipe/segment,
-/obj/effect/paint/beastybrown,
-/turf/simulated/floor/plating,
+/turf/simulated/wall/prepainted/cargo,
 /area/quartermaster/delivery)
 "wAc" = (
 /obj/effect/floor_decal/spline/plain{

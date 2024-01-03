@@ -14422,6 +14422,11 @@
 	},
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
+"jiA" = (
+/turf/simulated/wall/prepainted{
+	can_open = 1
+	},
+/area/maintenance/security/upper)
 "jjr" = (
 /obj/structure/closet/wardrobe/suit,
 /obj/effect/floor_decal/corner/lightgrey{
@@ -59654,7 +59659,7 @@ iLp
 iLp
 iLp
 kcn
-kcn
+jiA
 nLl
 nLl
 nLl
