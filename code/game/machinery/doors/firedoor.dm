@@ -567,4 +567,5 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 	desc = "Emergency air-tight shutter, capable of sealing off breached areas. This one has a resilient glass window, allowing you to see the danger."
 	icon_state = "open_lowprofile"
 	low_profile = TRUE
+	autoset_dir = FALSE
 	glass = 1
