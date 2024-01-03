@@ -18672,12 +18672,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
 /obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -24
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
@@ -19613,6 +19613,11 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration/courser_dock)
+"ebj" = (
+/turf/simulated/wall/prepainted{
+	can_open = 1
+	},
+/area/maintenance/station/exploration)
 "ebz" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
@@ -22894,6 +22899,11 @@
 /obj/effect/paint_stripe/violet,
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/cargo)
+"mIv" = (
+/turf/simulated/wall/prepainted{
+	can_open = 1
+	},
+/area/maintenance/bar/lower)
 "mID" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -42353,8 +42363,8 @@ tCt
 aWg
 jpv
 aWg
-bis
-cnu
+vMY
+mIv
 use
 aKd
 cIq
@@ -42547,7 +42557,7 @@ bnc
 aWg
 jpv
 aWg
-vMY
+bis
 cnu
 cnu
 cnu
@@ -48973,7 +48983,7 @@ jmj
 aKt
 pxw
 pxw
-pxw
+ebj
 pxw
 pxw
 agh

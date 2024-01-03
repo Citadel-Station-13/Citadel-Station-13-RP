@@ -24479,6 +24479,7 @@
 "pmJ" = (
 /obj/structure/table/hardwoodtable,
 /obj/item/stamp/denied,
+/obj/random/coin,
 /turf/simulated/floor/carpet/bcarpet,
 /area/maintenance/maint_bar)
 "pmR" = (
@@ -25330,6 +25331,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
+"pMC" = (
+/obj/structure/symbol/sa,
+/turf/simulated/wall/prepainted{
+	can_open = 1
+	},
+/area/maintenance/library)
 "pMK" = (
 /obj/structure/catwalk,
 /obj/structure/cable{
@@ -37516,6 +37523,7 @@
 /obj/structure/table/woodentable,
 /obj/random/maintenance/clean,
 /obj/random/maintenance/clean,
+/obj/random/coin,
 /turf/simulated/floor/wood/broken,
 /area/maintenance/library)
 "xft" = (
@@ -65944,7 +65952,7 @@ oZF
 snT
 snT
 snT
-snT
+pMC
 snT
 snT
 hgE
