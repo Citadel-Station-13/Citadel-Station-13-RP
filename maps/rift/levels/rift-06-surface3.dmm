@@ -1615,20 +1615,10 @@
 /turf/simulated/floor/tiled/steel_grid/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "afg" = (
-/obj/effect/floor_decal/spline/plain{
-	dir = 8
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/lime/border{
-	dir = 8
-	},
-/obj/structure/disposalpipe/segment,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/tiled/steel,
-/area/hydroponics)
+/obj/machinery/power/terminal,
+/obj/structure/cable,
+/turf/simulated/floor/plating,
+/area/maintenance/substation/exploration)
 "afh" = (
 /obj/structure/curtain/open,
 /turf/simulated/floor/plating,
@@ -3067,11 +3057,12 @@
 /turf/simulated/floor/carpet/blue,
 /area/crew_quarters/heads/hop)
 "aje" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/steel,
-/area/hydroponics)
+/obj/structure/table/rack/steel,
+/obj/random/maintenance/medical,
+/obj/random/maintenance/clean,
+/obj/random/maintenance/clean,
+/turf/simulated/floor/plating,
+/area/maintenance/bar/lower)
 "ajf" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -14986,12 +14977,11 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/meeting_room)
 "aPF" = (
-/obj/structure/reagent_dispensers/fueltank,
-/obj/machinery/light/small{
-	dir = 1
+/obj/structure/cable{
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/bar/lower)
+/area/maintenance/substation/exploration)
 "aPJ" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/blue/border,
@@ -18813,6 +18803,21 @@
 /obj/structure/sign/warning/falling,
 /turf/simulated/wall/r_wall/prepainted,
 /area/rift/surfacebase/outside/outside3)
+"bGi" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/computer/timeclock/premade/south,
+/obj/effect/floor_decal/corner/lime/border,
+/turf/simulated/floor/tiled/steel,
+/area/hallway/primary/surfacethree)
 "bHN" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -19131,6 +19136,10 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
+"cBP" = (
+/obj/structure/closet/crate,
+/turf/simulated/floor/plating,
+/area/maintenance/bar/lower)
 "cCj" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
 	dir = 4
@@ -19162,6 +19171,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge/bridge_hallway)
+"cGC" = (
+/obj/random/toolbox,
+/obj/structure/table/rack/steel,
+/obj/random/maintenance/engineering,
+/turf/simulated/floor/plating,
+/area/maintenance/bar/lower)
 "cIq" = (
 /turf/simulated/wall/prepainted/civilian,
 /area/hydroponics)
@@ -19526,6 +19541,12 @@
 	},
 /turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/outside3)
+"dSX" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/lime/border,
+/obj/machinery/beehive,
+/turf/simulated/floor/tiled/steel,
+/area/hydroponics)
 "dUn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/catwalk,
@@ -19741,6 +19762,16 @@
 	},
 /turf/simulated/open,
 /area/rnd/telescience_lab/chamber)
+"evB" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock/engineering{
+	name = "Science Substation";
+	req_one_access = list(11,24,47)
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/substation/exploration)
 "evR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -20485,10 +20516,6 @@
 /obj/effect/paint/commandblue,
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hop)
-"fTX" = (
-/obj/structure/closet/crate,
-/turf/simulated/floor/plating,
-/area/maintenance/bar/lower)
 "fUe" = (
 /obj/machinery/light,
 /obj/effect/floor_decal/borderfloor,
@@ -21353,21 +21380,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/exploration)
-"irm" = (
-/obj/effect/floor_decal/borderfloor,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/machinery/computer/timeclock/premade/south,
-/obj/effect/floor_decal/corner/lime/border,
-/turf/simulated/floor/tiled/steel,
-/area/hallway/primary/surfacethree)
 "ivw" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8
@@ -21877,12 +21889,17 @@
 /turf/simulated/wall/prepainted,
 /area/crew_quarters/locker/laundry_arrival)
 "jJw" = (
-/obj/structure/table/rack/steel,
-/obj/random/maintenance/medical,
-/obj/random/maintenance/clean,
-/obj/random/maintenance/clean,
-/turf/simulated/floor/plating,
-/area/maintenance/bar/lower)
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/lime/border{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel,
+/area/hydroponics)
 "jLf" = (
 /obj/machinery/door/airlock/glass_external,
 /obj/map_helper/airlock/door/ext_door,
@@ -23052,19 +23069,13 @@
 /obj/structure/sign/warning/docking_area,
 /turf/simulated/wall/r_wall/prepainted/exploration,
 /area/exploration/excursion_dock)
-"ncZ" = (
-/obj/structure/catwalk,
-/obj/structure/cable/green{
-	icon_state = "4-8"
+"ndT" = (
+/obj/structure/reagent_dispensers/fueltank,
+/obj/machinery/light/small{
+	dir = 1
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
-"ndT" = (
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/lime/border,
-/obj/machinery/beehive,
-/turf/simulated/floor/tiled/steel,
-/area/hydroponics)
 "neB" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -23250,12 +23261,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/telescience_lab/chamber)
-"nCC" = (
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/substation/exploration)
 "nGT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/floor_decal/borderfloorblack/corner{
@@ -23599,12 +23604,6 @@
 /obj/machinery/light/small,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
-"oQM" = (
-/obj/random/toolbox,
-/obj/structure/table/rack/steel,
-/obj/random/maintenance/engineering,
-/turf/simulated/floor/plating,
-/area/maintenance/bar/lower)
 "oQY" = (
 /obj/machinery/door/firedoor/glass{
 	dir = 1
@@ -23666,6 +23665,13 @@
 	},
 /turf/simulated/open,
 /area/maintenance/research/xenobio)
+"oVL" = (
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/bar/lower)
 "oWm" = (
 /obj/machinery/atmospherics/component/binary/pump/aux{
 	name = "Refill Pump"
@@ -24187,16 +24193,6 @@
 /obj/structure/foamedmetal,
 /turf/simulated/wall/prepainted,
 /area/rift/surfacebase/outside/outside3)
-"qvK" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/machinery/door/airlock/engineering{
-	name = "Science Substation";
-	req_one_access = list(11,24,47)
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/substation/exploration)
 "qvL" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -26062,11 +26058,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
-"vND" = (
-/obj/machinery/power/terminal,
-/obj/structure/cable,
-/turf/simulated/floor/plating,
-/area/maintenance/substation/exploration)
 "vOW" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -26570,6 +26561,21 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/barrestroom)
+"xsA" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/lime/border{
+	dir = 8
+	},
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/tiled/steel,
+/area/hydroponics)
 "xtN" = (
 /obj/machinery/light/small/emergency,
 /obj/structure/closet/firecloset,
@@ -41438,9 +41444,9 @@ aYc
 aWg
 aaQ
 aWg
-irm
+bGi
 cIq
-ndT
+dSX
 arJ
 ayg
 aCG
@@ -41829,7 +41835,7 @@ aFX
 vyL
 eeN
 axj
-afg
+xsA
 afz
 afz
 nfJ
@@ -42022,7 +42028,7 @@ jpv
 aWg
 vzZ
 kaE
-aje
+jJw
 aRD
 aYo
 aDP
@@ -42802,7 +42808,7 @@ qcL
 arS
 alk
 apF
-vND
+afg
 aFj
 alk
 azw
@@ -42995,11 +43001,11 @@ jyZ
 xuc
 xuc
 aEW
-nCC
+aPF
 aqW
 aws
 alk
-aPF
+ndT
 aUi
 akk
 aUi
@@ -43191,9 +43197,9 @@ aTv
 alk
 alk
 alk
-qvK
+evB
 alk
-oQM
+cGC
 aUi
 aUi
 aUi
@@ -43581,10 +43587,10 @@ aUi
 aUi
 aUi
 arS
-fTX
-jJw
+cBP
+aje
 aUi
-ncZ
+oVL
 aCQ
 ung
 ung
