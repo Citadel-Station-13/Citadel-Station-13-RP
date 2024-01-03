@@ -7,6 +7,8 @@
 
 	var/food_name_override
 
+	var/last_cooking_method
+
 	//is this it? yeah, it it is
 /obj/item/reagent_containers/food_holder/Initialize(mapload)
 	. = ..()
@@ -30,6 +32,7 @@
 		. += "<span class='notice'>[icon2html(thing = examine_ingredient, target = user)] The [examine_ingredient.name], which looks </span><span class='[cooked_span]'>[examine_ingredient.cookstage2text()]</span><span class='notice'> and has been cooked for about [examine_ingredient.accumulated_time_cooked / 10] seconds.</span>"
 
 /obj/item/reagent_containers/food_holder/proc/tick_heat(var/time_cooked, var/heat_level, var/cook_method)
+	last_cooking_method = cook_method
 	for(var/obj/item/reagent_containers/food/snacks/ingredient/cooking_ingredient in contents)
 		cooking_ingredient.process_cooked(time_cooked, heat_level, cook_method) //handles all the cooking stuff actually
 
@@ -120,6 +123,8 @@
 	var/list/list_recipes = subtypesof(/datum/cooking_recipe)
 	for(var/i in list_recipes)
 		var/datum/cooking_recipe/check_recipe = new i
+		if(last_cooking_method != check_recipe.required_method)
+			continue
 		if(LAZYLEN(check_recipe.recipe_items))
 			if(!check_ingredient_for_recipe(check_recipe))
 				continue

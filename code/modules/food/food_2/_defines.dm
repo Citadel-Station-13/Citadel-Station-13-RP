@@ -14,5 +14,6 @@
 #define METHOD_OVEN "oven"
 #define METHOD_GRILL "grill"
 #define METHOD_STOVE "stove"
+#define METHOD_DEEPFRY "deep fryer"
 
 #define INGREDIENT_COOKTIME_MAX_SEPERATION 5 SECONDS
