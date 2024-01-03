@@ -5983,7 +5983,7 @@
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside/dorms)
 "HI" = (
-/obj/machinery/icecream_vat,
+/obj/structure/icecream_cart,
 /obj/machinery/light/spot{
 	dir = 8;
 	nightshift_allowed = 0
@@ -8010,7 +8010,7 @@
 /turf/simulated/floor/outdoors/grass,
 /area/class_m/outside)
 "Sl" = (
-/obj/machinery/icecream_vat,
+/obj/structure/icecream_cart,
 /turf/simulated/floor/tiled/freezer,
 /area/class_m/inside/main)
 "Sn" = (
