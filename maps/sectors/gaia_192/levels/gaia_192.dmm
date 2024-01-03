@@ -146,7 +146,7 @@
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/structure/flora/ausbushes/stalkybush,
-/turf/simulated/floor/water/classm,
+/turf/simulated/floor/water/river/south/classm,
 /area/class_m/outside)
 "aV" = (
 /obj/structure/fence,
@@ -161,6 +161,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/class_m/outside)
+"aX" = (
+/obj/structure/flora/ausbushes/sparsegrass,
+/turf/simulated/floor/water/river/deep/south/classm,
+/area/class_m/outside/beach)
 "aZ" = (
 /obj/structure/table/hardwoodtable,
 /turf/simulated/floor/concrete/rng/classm/outdoors,
@@ -490,13 +494,14 @@
 /turf/simulated/floor/concrete/tile/indoors,
 /area/class_m/inside/hotspringcaves)
 "cI" = (
-/obj/structure/catwalk,
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/water/beach{
+/obj/effect/floor_decal/river_beach_edge{
 	dir = 10
 	},
+/obj/structure/catwalk,
+/turf/simulated/floor/water/river/south/classm,
 /area/class_m/outside)
 "cJ" = (
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -543,6 +548,13 @@
 	name = "Medical"
 	},
 /turf/simulated/floor/tiled/white,
+/area/class_m/outside)
+"cP" = (
+/obj/effect/floor_decal/river_beach_corner_edge{
+	dir = 1
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor/water/river/south/classm,
 /area/class_m/outside)
 "cR" = (
 /obj/effect/floor_decal/corner/blue/border,
@@ -605,9 +617,19 @@
 	},
 /turf/simulated/floor/tiled/monowhite,
 /area/class_m/inside/garage)
+"dq" = (
+/obj/effect/floor_decal/river_beach_edge,
+/turf/simulated/floor/water/river/south/classm,
+/area/class_m/outside)
 "dw" = (
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/concrete/rng/classm/outdoors,
+/area/class_m/outside)
+"dy" = (
+/obj/effect/floor_decal/river_beach_corner_edge{
+	dir = 4
+	},
+/turf/simulated/floor/water/river/south/classm,
 /area/class_m/outside)
 "dA" = (
 /obj/structure/flora/ausbushes/sparsegrass,
@@ -735,7 +757,7 @@
 /area/class_m/outside)
 "es" = (
 /obj/structure/flora/ausbushes/fullgrass,
-/turf/simulated/floor/water/classm,
+/turf/simulated/floor/water/river/south/classm,
 /area/class_m/outside/beach)
 "ew" = (
 /mob/living/simple_mob/animal/passive/fish/javelin,
@@ -769,9 +791,10 @@
 	dir = 4
 	},
 /obj/structure/flora/ausbushes/sparsegrass,
-/turf/simulated/floor/water/beach{
+/obj/effect/floor_decal/river_beach_edge{
 	dir = 8
 	},
+/turf/simulated/floor/water/river/south/classm,
 /area/class_m/outside)
 "eK" = (
 /obj/effect/mist,
@@ -894,6 +917,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/class_m/inside/bathroom)
+"fg" = (
+/obj/structure/flora/ausbushes/sparsegrass,
+/turf/simulated/floor/water/river/deep/west/classm,
+/area/class_m/outside)
 "fi" = (
 /turf/simulated/floor/water/beach/corner,
 /area/class_m/outside/beachmiddle)
@@ -984,6 +1011,10 @@
 /mob/living/simple_mob/animal/passive/fish/salmon,
 /turf/simulated/floor/water/deep/classm,
 /area/class_m/outside)
+"fN" = (
+/obj/structure/flora/ausbushes/reedbush,
+/turf/simulated/floor/water/river/deep/south/classm,
+/area/class_m/outside)
 "fO" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 5
@@ -1022,7 +1053,7 @@
 /area/class_m/outside/island2)
 "ge" = (
 /obj/structure/catwalk,
-/turf/simulated/floor/water/classm,
+/turf/simulated/floor/water/river/south/classm,
 /area/class_m/outside)
 "gi" = (
 /obj/structure/table/marble,
@@ -1212,6 +1243,9 @@
 /obj/structure/fence,
 /turf/simulated/floor/outdoors/dirt/classm/outdoors,
 /area/class_m/outside)
+"hr" = (
+/turf/simulated/floor/water/river/deep/south/classm,
+/area/class_m/outside/beachmiddle)
 "hs" = (
 /turf/simulated/floor/water/beach{
 	dir = 1
@@ -1270,6 +1304,12 @@
 	},
 /turf/simulated/floor/outdoors/grass/classm,
 /area/class_m/outside)
+"hM" = (
+/obj/effect/floor_decal/river_beach_edge{
+	dir = 5
+	},
+/turf/simulated/floor/water/river/south/classm,
+/area/class_m/outside)
 "hQ" = (
 /obj/structure/catwalk,
 /obj/structure/railing{
@@ -1298,9 +1338,9 @@
 /area/class_m/outside/island2)
 "ia" = (
 /obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/catwalk,
 /obj/structure/railing,
-/turf/simulated/floor/water/classm,
+/obj/structure/catwalk,
+/turf/simulated/floor/water/river/south/classm,
 /area/class_m/outside)
 "ic" = (
 /obj/machinery/vending/wallmed1{
@@ -1337,9 +1377,10 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 6
 	},
-/turf/simulated/floor/water/beach{
+/obj/effect/floor_decal/river_beach_edge{
 	dir = 4
 	},
+/turf/simulated/floor/water/river/south/classm,
 /area/class_m/outside)
 "ii" = (
 /obj/structure/railing/grey,
@@ -1360,13 +1401,14 @@
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside/sauna)
 "il" = (
-/obj/structure/catwalk,
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/water/beach{
+/obj/effect/floor_decal/river_beach_edge{
 	dir = 4
 	},
+/obj/structure/catwalk,
+/turf/simulated/floor/water/river/south/classm,
 /area/class_m/outside)
 "im" = (
 /obj/machinery/holoposter{
@@ -1385,9 +1427,10 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 6
 	},
-/turf/simulated/floor/water/beach{
+/obj/effect/floor_decal/river_beach_edge{
 	dir = 10
 	},
+/turf/simulated/floor/water/river/south/classm,
 /area/class_m/outside)
 "iq" = (
 /obj/structure/table/bench/wooden,
@@ -1466,9 +1509,10 @@
 /turf/simulated/floor/outdoors/grass/classm,
 /area/class_m/outside/beachmiddle)
 "iO" = (
-/turf/simulated/floor/water/beach/corner{
+/obj/effect/floor_decal/river_beach_corner_edge{
 	dir = 4
 	},
+/turf/simulated/floor/water/river/south/classm,
 /area/class_m/outside/beachmiddle)
 "iP" = (
 /obj/structure/flora/tree/palm,
@@ -1488,8 +1532,12 @@
 /area/class_m/outside/beachmiddle)
 "iS" = (
 /obj/structure/flora/ausbushes/stalkybush,
-/turf/simulated/floor/water/classm,
+/turf/simulated/floor/water/river/south/classm,
 /area/class_m/outside/beach)
+"iT" = (
+/obj/structure/flora/ausbushes/reedbush,
+/turf/simulated/floor/water/river/south/classm,
+/area/class_m/outside)
 "iW" = (
 /turf/simulated/floor/water/beach/corner{
 	dir = 4
@@ -1675,11 +1723,12 @@
 /turf/simulated/floor/tiled/white,
 /area/class_m/outside)
 "jI" = (
-/obj/structure/catwalk,
 /obj/structure/railing,
-/turf/simulated/floor/water/beach{
+/obj/effect/floor_decal/river_beach_edge{
 	dir = 5
 	},
+/obj/structure/catwalk,
+/turf/simulated/floor/water/river/south/classm,
 /area/class_m/outside)
 "jJ" = (
 /obj/structure/table/woodentable,
@@ -1731,6 +1780,13 @@
 /mob/living/simple_mob/animal/passive/bird/ringneck_dove,
 /turf/simulated/floor/outdoors/grass,
 /area/class_m/outside)
+"jS" = (
+/obj/effect/floor_decal/river_beach_edge{
+	dir = 10
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor/water/river/south/classm,
+/area/class_m/outside)
 "jV" = (
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 5
@@ -1747,9 +1803,9 @@
 /turf/simulated/floor/wood/classm/outdoors,
 /area/class_m/outside/docks)
 "jY" = (
-/obj/structure/catwalk,
 /obj/structure/railing,
-/turf/simulated/floor/water/classm,
+/obj/structure/catwalk,
+/turf/simulated/floor/water/river/south/classm,
 /area/class_m/outside)
 "jZ" = (
 /turf/simulated/floor/tiled/white,
@@ -1782,7 +1838,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 6
 	},
-/turf/simulated/floor/water/classm,
+/turf/simulated/floor/water/river/deep/south/classm,
 /area/class_m/outside)
 "kj" = (
 /obj/structure/flora/ausbushes/ywflowers,
@@ -1809,7 +1865,7 @@
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/structure/flora/ausbushes/fernybush,
 /obj/structure/flora/ausbushes/stalkybush,
-/turf/simulated/floor/water/classm,
+/turf/simulated/floor/water/river/deep/south/classm,
 /area/class_m/outside)
 "kr" = (
 /obj/machinery/button/remote/airlock{
@@ -2010,10 +2066,11 @@
 /turf/simulated/floor/water/deep/classm,
 /area/class_m/outside)
 "le" = (
-/obj/structure/catwalk,
-/turf/simulated/floor/water/beach{
+/obj/effect/floor_decal/river_beach_edge{
 	dir = 8
 	},
+/obj/structure/catwalk,
+/turf/simulated/floor/water/river/south/classm,
 /area/class_m/outside)
 "lf" = (
 /obj/machinery/door/window/northright{
@@ -2092,7 +2149,7 @@
 /area/class_m/outside)
 "lq" = (
 /obj/structure/flora/ausbushes/stalkybush,
-/turf/simulated/floor/water/deep/classm,
+/turf/simulated/floor/water/river/deep/south/classm,
 /area/class_m/outside/beachmiddle)
 "lt" = (
 /obj/effect/floor_decal/corner/blue/border,
@@ -2111,6 +2168,12 @@
 	},
 /turf/simulated/floor/concrete/rng/classm/outdoors,
 /area/class_m/outside/beachmiddle)
+"ly" = (
+/obj/effect/floor_decal/river_beach_edge{
+	dir = 1
+	},
+/turf/simulated/floor/water/river/south/classm,
+/area/class_m/outside)
 "lz" = (
 /turf/simulated/floor/water/beach{
 	dir = 10
@@ -2230,7 +2293,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/water/classm,
+/turf/simulated/floor/water/river/south/classm,
 /area/class_m/outside)
 "mm" = (
 /obj/structure/flora/ausbushes/fernybush,
@@ -2655,9 +2718,10 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/water/beach{
+/obj/effect/floor_decal/river_beach_edge{
 	dir = 5
 	},
+/turf/simulated/floor/water/river/south/classm,
 /area/class_m/outside)
 "oI" = (
 /obj/item/stack/material/log{
@@ -2682,6 +2746,10 @@
 /obj/structure/salvageable/server,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/class_m/inside)
+"oM" = (
+/obj/effect/floor_decal/river_beach_edge,
+/turf/simulated/floor/water/river/west/classm,
+/area/class_m/outside)
 "oO" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/rddouble,
@@ -2726,6 +2794,15 @@
 /obj/structure/flora/ausbushes/brflowers,
 /turf/simulated/floor/outdoors/grass/classm,
 /area/class_m/outside/beachmiddle)
+"pa" = (
+/obj/effect/floor_decal/river_beach_corner_edge{
+	dir = 4
+	},
+/obj/effect/floor_decal/river_beach_corner_edge{
+	dir = 4
+	},
+/turf/simulated/floor/water/river/south/classm,
+/area/class_m/outside/beachmiddle)
 "pd" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/wood/classm,
@@ -2736,7 +2813,7 @@
 /area/class_m/outside)
 "pg" = (
 /mob/living/simple_mob/animal/passive/fish/trout,
-/turf/simulated/floor/water/classm,
+/turf/simulated/floor/water/river/deep/south/classm,
 /area/class_m/outside)
 "pk" = (
 /obj/structure/flora/tree/palm,
@@ -2792,6 +2869,19 @@
 "py" = (
 /obj/structure/railing/grey,
 /turf/simulated/floor/concrete/rng/classm/outdoors,
+/area/class_m/outside)
+"pz" = (
+/obj/structure/catwalk,
+/obj/effect/floor_decal/river_beach_edge{
+	dir = 8
+	},
+/turf/simulated/floor/water/river/south/classm,
+/area/class_m/outside)
+"pB" = (
+/obj/effect/floor_decal/river_beach_edge{
+	dir = 6
+	},
+/turf/simulated/floor/water/river/south/classm,
 /area/class_m/outside)
 "pE" = (
 /obj/structure/railing/grey{
@@ -2866,6 +2956,10 @@
 /obj/effect/mist,
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside/sauna2)
+"pW" = (
+/obj/structure/flora/ausbushes,
+/turf/simulated/floor/water/river/deep/south/classm,
+/area/class_m/outside)
 "pX" = (
 /obj/structure/bed/chair/comfy/beige{
 	dir = 4
@@ -2899,9 +2993,10 @@
 /area/class_m/outside/docks)
 "qi" = (
 /obj/structure/flora/ausbushes/sparsegrass,
-/turf/simulated/floor/water/beach{
+/obj/effect/floor_decal/river_beach_edge{
 	dir = 6
 	},
+/turf/simulated/floor/water/river/south/classm,
 /area/class_m/outside)
 "qj" = (
 /obj/structure/flora/ausbushes/genericbush,
@@ -2965,9 +3060,10 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/water/beach/corner{
+/obj/effect/floor_decal/river_beach_corner_edge{
 	dir = 1
 	},
+/turf/simulated/floor/water/river/south/classm,
 /area/class_m/outside)
 "qy" = (
 /obj/vehicle/ridden/gokart/random{
@@ -3461,9 +3557,10 @@
 /area/class_m/outside/beach)
 "sY" = (
 /obj/structure/catwalk,
-/turf/simulated/floor/water/beach{
+/obj/effect/floor_decal/river_beach_edge{
 	dir = 4
 	},
+/turf/simulated/floor/water/river/south/classm,
 /area/class_m/outside)
 "sZ" = (
 /obj/machinery/light/flamp/noshade{
@@ -3497,7 +3594,7 @@
 /area/class_m/outside)
 "tm" = (
 /obj/structure/flora/ausbushes/sparsegrass,
-/turf/simulated/floor/water/deep/classm,
+/turf/simulated/floor/water/river/deep/south/classm,
 /area/class_m/outside)
 "tn" = (
 /obj/structure/table/rack,
@@ -3562,9 +3659,10 @@
 	dir = 1;
 	nightshift_allowed = 0
 	},
-/turf/simulated/floor/water/beach/corner{
-	dir = 1
+/obj/effect/floor_decal/river_beach_edge{
+	dir = 8
 	},
+/turf/simulated/floor/water/river/south/classm,
 /area/class_m/outside)
 "ty" = (
 /obj/machinery/light/flamp/noshade{
@@ -3587,9 +3685,10 @@
 /area/class_m/inside)
 "tE" = (
 /obj/structure/flora/ausbushes/reedbush,
-/turf/simulated/floor/water/beach{
+/obj/effect/floor_decal/river_beach_edge{
 	dir = 4
 	},
+/turf/simulated/floor/water/river/south/classm,
 /area/class_m/outside)
 "tF" = (
 /turf/simulated/floor/outdoors/grass/classm,
@@ -3604,7 +3703,7 @@
 /area/class_m/inside/dorms)
 "tJ" = (
 /obj/structure/flora/ausbushes/fullgrass,
-/turf/simulated/floor/water/deep/classm,
+/turf/simulated/floor/water/river/deep/south/classm,
 /area/class_m/outside/beachmiddle)
 "tL" = (
 /obj/effect/map_effect/interval/effect_emitter/steam,
@@ -3714,7 +3813,7 @@
 /area/class_m/outside)
 "ui" = (
 /obj/structure/catwalk,
-/turf/simulated/floor/water/deep/classm,
+/turf/simulated/floor/water/river/deep/south/classm,
 /area/class_m/outside)
 "uq" = (
 /obj/structure/closet/crate/trashcart,
@@ -3775,6 +3874,12 @@
 "uP" = (
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/class_m/outside)
+"uQ" = (
+/obj/effect/floor_decal/river_beach_edge{
+	dir = 8
+	},
+/turf/simulated/floor/water/river/south/classm,
+/area/class_m/outside)
 "uR" = (
 /obj/structure/railing{
 	dir = 1
@@ -3809,6 +3914,10 @@
 "vd" = (
 /turf/simulated/floor/carpet/purcarpet,
 /area/class_m/inside/dorms)
+"ve" = (
+/mob/living/simple_mob/animal/passive/fish/salmon,
+/turf/simulated/floor/water/river/south/classm,
+/area/class_m/outside)
 "vg" = (
 /obj/structure/catwalk,
 /obj/structure/railing,
@@ -3935,9 +4044,9 @@
 /turf/simulated/floor/outdoors/grass/classm,
 /area/class_m/outside)
 "vU" = (
-/obj/structure/catwalk,
 /obj/structure/railing,
-/turf/simulated/floor/water/deep/classm,
+/obj/structure/catwalk,
+/turf/simulated/floor/water/river/deep/south/classm,
 /area/class_m/outside)
 "vX" = (
 /obj/machinery/light/flamp/noshade{
@@ -4000,7 +4109,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/water/classm,
+/turf/simulated/floor/water/river/south/classm,
 /area/class_m/outside)
 "wo" = (
 /obj/effect/floor_decal/spline/plain{
@@ -4124,6 +4233,10 @@
 	dir = 4
 	},
 /area/class_m/inside)
+"wR" = (
+/obj/effect/floor_decal/river_beach_corner_edge,
+/turf/simulated/floor/water/river/south/classm,
+/area/class_m/outside/beach)
 "wT" = (
 /obj/structure/table/bench/marble,
 /obj/effect/mist,
@@ -4195,7 +4308,7 @@
 /area/class_m/inside/garage)
 "xp" = (
 /obj/structure/flora/ausbushes/fullgrass,
-/turf/simulated/floor/water/deep/classm,
+/turf/simulated/floor/water/river/deep/south/classm,
 /area/class_m/outside/beach)
 "xr" = (
 /obj/machinery/light{
@@ -4320,6 +4433,10 @@
 /obj/machinery/bodyscanner,
 /turf/simulated/floor/tiled/white,
 /area/class_m/outside)
+"yd" = (
+/obj/structure/flora/ausbushes/stalkybush,
+/turf/simulated/floor/water/river/west/classm,
+/area/class_m/outside)
 "ye" = (
 /obj/structure/fence{
 	name = "vollyball net";
@@ -4336,8 +4453,12 @@
 /area/class_m/outside/beachmiddle)
 "ym" = (
 /obj/structure/flora/ausbushes/sparsegrass,
-/turf/simulated/floor/water/deep/classm,
+/turf/simulated/floor/water/river/deep/south/classm,
 /area/class_m/outside/beachmiddle)
+"yn" = (
+/obj/structure/flora/ausbushes/fullgrass,
+/turf/simulated/floor/water/river/south/classm,
+/area/class_m/outside)
 "yr" = (
 /obj/machinery/status_display{
 	pixel_y = 32
@@ -4369,9 +4490,10 @@
 /area/class_m/inside/cabin)
 "yv" = (
 /obj/structure/catwalk,
-/turf/simulated/floor/water/beach/corner{
+/obj/effect/floor_decal/river_beach_corner_edge{
 	dir = 1
 	},
+/turf/simulated/floor/water/river/south/classm,
 /area/class_m/outside)
 "yw" = (
 /obj/structure/railing/grey{
@@ -4610,13 +4732,14 @@
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside)
 "zE" = (
-/obj/structure/catwalk,
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/water/beach/corner{
+/obj/effect/floor_decal/river_beach_corner_edge{
 	dir = 1
 	},
+/obj/structure/catwalk,
+/turf/simulated/floor/water/river/south/classm,
 /area/class_m/outside)
 "zG" = (
 /obj/structure/bed/chair/sofa/black/corner{
@@ -4684,11 +4807,11 @@
 /turf/simulated/wall/classm,
 /area/class_m/inside/bathroom)
 "zU" = (
-/obj/structure/catwalk,
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/water/deep/classm,
+/obj/structure/catwalk,
+/turf/simulated/floor/water/river/deep/south/classm,
 /area/class_m/outside)
 "zV" = (
 /obj/structure/flora/ausbushes/fullgrass,
@@ -4791,6 +4914,13 @@
 /obj/structure/flora/ausbushes/genericbush,
 /turf/simulated/floor/outdoors/grass/classm,
 /area/class_m/outside/beachmiddle)
+"Ay" = (
+/obj/machinery/light/spot{
+	dir = 1;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/water/river/deep/south/classm,
+/area/class_m/outside)
 "Az" = (
 /obj/machinery/vending/fishing,
 /obj/effect/floor_decal/spline/plain{
@@ -4816,7 +4946,7 @@
 "AE" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /obj/structure/catwalk,
-/turf/simulated/floor/water/classm,
+/turf/simulated/floor/water/river/south/classm,
 /area/class_m/outside)
 "AG" = (
 /obj/machinery/light/flamp/noshade{
@@ -4884,7 +5014,7 @@
 /obj/machinery/light/spot{
 	nightshift_allowed = 0
 	},
-/turf/simulated/floor/water/deep/classm,
+/turf/simulated/floor/water/river/deep/south/classm,
 /area/class_m/outside)
 "Bb" = (
 /obj/structure/table/marble,
@@ -4920,6 +5050,16 @@
 "Bi" = (
 /turf/simulated/floor/water/beach,
 /area/class_m/outside/beachmiddle)
+"Bk" = (
+/obj/structure/catwalk,
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/water/river/south/classm,
+/area/class_m/outside)
 "Bm" = (
 /obj/structure/railing/grey{
 	dir = 4
@@ -4951,6 +5091,10 @@
 	dir = 4
 	},
 /turf/simulated/floor/water/deep/classm,
+/area/class_m/outside)
+"Br" = (
+/obj/effect/floor_decal/river_beach_corner_edge,
+/turf/simulated/floor/water/river/west/classm,
 /area/class_m/outside)
 "Bu" = (
 /obj/structure/flora/ausbushes/fernybush,
@@ -5002,6 +5146,10 @@
 /obj/structure/flora/ausbushes/leafybush,
 /turf/simulated/floor/outdoors/grass/classm,
 /area/class_m/outside)
+"BF" = (
+/obj/structure/flora/ausbushes/reedbush,
+/turf/simulated/floor/water/river/deep/west/classm,
+/area/class_m/outside)
 "BG" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/outdoors/beach/sand/desert/classm{
@@ -5024,6 +5172,9 @@
 "BK" = (
 /mob/living/simple_mob/animal/passive/fish/salmon,
 /turf/simulated/floor/water/classm,
+/area/class_m/outside)
+"BL" = (
+/turf/simulated/floor/water/river/deep/west/classm,
 /area/class_m/outside)
 "BM" = (
 /turf/simulated/floor/concrete/tile/classm/outdoors,
@@ -5108,9 +5259,10 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 9
 	},
-/turf/simulated/floor/water/beach/corner{
+/obj/effect/floor_decal/river_beach_corner_edge{
 	dir = 1
 	},
+/turf/simulated/floor/water/river/south/classm,
 /area/class_m/outside)
 "Cm" = (
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -5150,9 +5302,10 @@
 /obj/machinery/light/flamp/noshade{
 	nightshift_allowed = 0
 	},
-/turf/simulated/floor/water/beach/corner{
+/obj/effect/floor_decal/river_beach_corner_edge{
 	dir = 4
 	},
+/turf/simulated/floor/water/river/south/classm,
 /area/class_m/outside)
 "Cx" = (
 /obj/machinery/light/spot{
@@ -5222,6 +5375,7 @@
 /obj/machinery/light/flamp/noshade{
 	nightshift_allowed = 0
 	},
+/obj/structure/catwalk,
 /turf/simulated/floor/water/classm,
 /area/class_m/outside)
 "CV" = (
@@ -5244,9 +5398,10 @@
 /area/class_m/outside)
 "CZ" = (
 /obj/structure/flora/ausbushes/stalkybush,
-/turf/simulated/floor/water/beach{
+/obj/effect/floor_decal/river_beach_edge{
 	dir = 9
 	},
+/turf/simulated/floor/water/river/west/classm,
 /area/class_m/outside)
 "Da" = (
 /obj/structure/flora/ausbushes/sparsegrass,
@@ -5311,6 +5466,12 @@
 	},
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside/main)
+"Dy" = (
+/obj/effect/floor_decal/river_beach_edge{
+	dir = 8
+	},
+/turf/simulated/floor/water/river/south/classm,
+/area/class_m/outside/beachmiddle)
 "Dz" = (
 /obj/structure/flora/ausbushes/genericbush,
 /obj/structure/railing/grey{
@@ -5323,9 +5484,10 @@
 	dir = 4
 	},
 /obj/structure/flora/ausbushes/sparsegrass,
-/turf/simulated/floor/water/beach{
+/obj/effect/floor_decal/river_beach_edge{
 	dir = 4
 	},
+/turf/simulated/floor/water/river/south/classm,
 /area/class_m/outside)
 "DC" = (
 /obj/machinery/door/airlock{
@@ -5486,11 +5648,12 @@
 /turf/simulated/floor/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "Ew" = (
-/obj/structure/catwalk,
 /obj/structure/railing,
-/turf/simulated/floor/water/beach/corner{
+/obj/effect/floor_decal/river_beach_corner_edge{
 	dir = 8
 	},
+/obj/structure/catwalk,
+/turf/simulated/floor/water/river/south/classm,
 /area/class_m/outside)
 "Ey" = (
 /turf/simulated/floor/tiled/classm,
@@ -5504,7 +5667,13 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/water/classm,
+/turf/simulated/floor/water/river/south/classm,
+/area/class_m/outside)
+"EA" = (
+/obj/effect/floor_decal/river_beach_edge{
+	dir = 9
+	},
+/turf/simulated/floor/water/river/south/classm,
 /area/class_m/outside)
 "EE" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -5562,7 +5731,7 @@
 /area/class_m/inside)
 "EU" = (
 /obj/structure/flora/ausbushes/reedbush,
-/turf/simulated/floor/water/classm,
+/turf/simulated/floor/water/river/south/classm,
 /area/class_m/outside/beach)
 "EW" = (
 /obj/effect/floor_decal/spline/plain{
@@ -5573,7 +5742,7 @@
 	dir = 1;
 	nightshift_allowed = 0
 	},
-/turf/simulated/floor/water/deep/classm,
+/turf/simulated/floor/water/river/deep/south/classm,
 /area/class_m/outside)
 "EX" = (
 /obj/machinery/vending/wallmed1{
@@ -5600,6 +5769,12 @@
 	},
 /turf/simulated/floor/tiled/classm/outdoors,
 /area/class_m/outside/beachmiddle)
+"Fj" = (
+/obj/effect/floor_decal/river_beach_edge{
+	dir = 6
+	},
+/turf/simulated/floor/water/river/south/classm,
+/area/class_m/outside/beach)
 "Fk" = (
 /obj/machinery/appliance/cooker/oven,
 /obj/machinery/light/spot{
@@ -5610,7 +5785,7 @@
 /area/class_m/inside/main)
 "Fs" = (
 /obj/structure/flora/ausbushes/sparsegrass,
-/turf/simulated/floor/water/classm,
+/turf/simulated/floor/water/river/south/classm,
 /area/class_m/outside/beach)
 "Fx" = (
 /obj/item/stool/padded,
@@ -5618,6 +5793,10 @@
 	icon_state = "concrete19"
 	},
 /area/class_m/outside/beachmiddle)
+"Fy" = (
+/obj/structure/flora/ausbushes/sparsegrass,
+/turf/simulated/floor/water/river/west/classm,
+/area/class_m/outside)
 "Fz" = (
 /obj/vehicle/ridden/gokart/random{
 	dir = 8
@@ -5648,6 +5827,9 @@
 	},
 /turf/simulated/floor/tiled/monotile/classm,
 /area/class_m/inside/main)
+"FI" = (
+/turf/simulated/floor/water/river/deep/south/classm,
+/area/class_m/outside/beach)
 "FJ" = (
 /obj/machinery/light_switch{
 	dir = 4;
@@ -5731,9 +5913,10 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/water/beach{
+/obj/effect/floor_decal/river_beach_edge{
 	dir = 4
 	},
+/turf/simulated/floor/water/river/south/classm,
 /area/class_m/outside)
 "Gl" = (
 /obj/machinery/vending/fishing,
@@ -5999,7 +6182,7 @@
 "HN" = (
 /obj/structure/flora/ausbushes/reedbush,
 /obj/structure/catwalk,
-/turf/simulated/floor/water/classm,
+/turf/simulated/floor/water/river/south/classm,
 /area/class_m/outside)
 "HQ" = (
 /obj/structure/railing{
@@ -6140,7 +6323,7 @@
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/structure/flora/ausbushes/stalkybush,
 /obj/structure/flora/ausbushes/reedbush,
-/turf/simulated/floor/water/classm,
+/turf/simulated/floor/water/river/south/classm,
 /area/class_m/outside)
 "IG" = (
 /obj/structure/bed/chair/comfy/black{
@@ -6229,8 +6412,14 @@
 /area/class_m/inside/dorms)
 "Je" = (
 /obj/structure/flora/ausbushes/reedbush,
-/turf/simulated/floor/water/deep/classm,
+/turf/simulated/floor/water/river/deep/south/classm,
 /area/class_m/outside/beachmiddle)
+"Jg" = (
+/obj/effect/floor_decal/river_beach_edge{
+	dir = 10
+	},
+/turf/simulated/floor/water/river/south/classm,
+/area/class_m/outside)
 "Ji" = (
 /obj/structure/table/bench/marble,
 /obj/effect/mist,
@@ -6352,6 +6541,12 @@
 	name = "beach"
 	},
 /area/class_m/outside/beachmiddle)
+"JU" = (
+/obj/effect/floor_decal/river_beach_corner_edge{
+	dir = 1
+	},
+/turf/simulated/floor/water/river/south/classm,
+/area/class_m/outside)
 "JV" = (
 /obj/structure/catwalk,
 /obj/structure/railing,
@@ -6478,11 +6673,12 @@
 /turf/simulated/floor/tiled/white,
 /area/class_m/outside)
 "Kz" = (
-/obj/structure/catwalk,
 /obj/structure/railing,
-/turf/simulated/floor/water/beach{
+/obj/effect/floor_decal/river_beach_edge{
 	dir = 8
 	},
+/obj/structure/catwalk,
+/turf/simulated/floor/water/river/south/classm,
 /area/class_m/outside)
 "KC" = (
 /obj/machinery/door/airlock{
@@ -6493,9 +6689,10 @@
 /area/class_m/inside/dorms)
 "KE" = (
 /obj/structure/catwalk,
-/turf/simulated/floor/water/beach/corner{
+/obj/effect/floor_decal/river_beach_corner_edge{
 	dir = 8
 	},
+/turf/simulated/floor/water/river/south/classm,
 /area/class_m/outside)
 "KF" = (
 /obj/machinery/door/airlock{
@@ -6758,6 +6955,9 @@
 	},
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside/main)
+"LT" = (
+/turf/simulated/floor/water/river/south/classm,
+/area/class_m/outside)
 "LU" = (
 /obj/machinery/light/flamp/noshade{
 	nightshift_allowed = 0
@@ -6796,9 +6996,10 @@
 /turf/simulated/floor/tiled/classm/outdoors,
 /area/class_m/outside)
 "Ma" = (
-/turf/simulated/floor/water/beach{
+/obj/effect/floor_decal/river_beach_edge{
 	dir = 4
 	},
+/turf/simulated/floor/water/river/south/classm,
 /area/class_m/outside/beach)
 "Mc" = (
 /obj/structure/flora/rock,
@@ -6812,7 +7013,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/water/classm,
+/turf/simulated/floor/water/river/deep/south/classm,
 /area/class_m/outside)
 "Mg" = (
 /obj/structure/flora/ausbushes/fernybush,
@@ -6894,6 +7095,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/class_m/inside/bathroom)
+"MJ" = (
+/obj/effect/floor_decal/river_beach_corner_edge{
+	dir = 4
+	},
+/turf/simulated/floor/water/river/west/classm,
+/area/class_m/outside)
 "MQ" = (
 /mob/living/simple_mob/animal/passive/fish/solarfish,
 /turf/simulated/floor/water/classm,
@@ -6929,11 +7136,11 @@
 /turf/simulated/floor/tiled/freezer,
 /area/class_m/inside/main)
 "MX" = (
-/obj/structure/catwalk,
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/water/classm,
+/obj/structure/catwalk,
+/turf/simulated/floor/water/river/south/classm,
 /area/class_m/outside)
 "Na" = (
 /obj/structure/flora/tree/jungle,
@@ -7041,6 +7248,10 @@
 "NJ" = (
 /turf/simulated/floor/concrete/classm/outdoors,
 /area/class_m/outside/beachmiddle)
+"NL" = (
+/obj/structure/flora/ausbushes/fernybush,
+/turf/simulated/floor/water/river/south/classm,
+/area/class_m/outside)
 "NM" = (
 /obj/machinery/computer/security/telescreen{
 	pixel_y = 45
@@ -7492,6 +7703,9 @@
 /obj/structure/flora/ausbushes/ywflowers,
 /turf/simulated/floor/outdoors/grass,
 /area/class_m/outside)
+"OR" = (
+/turf/simulated/floor/water/river/south/classm,
+/area/class_m/outside/beach)
 "OU" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /mob/living/simple_mob/animal/passive/bird/european_robin,
@@ -7628,9 +7842,18 @@
 	},
 /turf/simulated/floor/concrete/tile/classm/outdoors,
 /area/class_m/outside)
+"PM" = (
+/obj/effect/floor_decal/river_beach_corner_edge{
+	dir = 8
+	},
+/turf/simulated/floor/water/river/south/classm,
+/area/class_m/outside)
 "PN" = (
 /turf/simulated/floor/water/deep/classm,
 /area/class_m/outside/docks)
+"PP" = (
+/turf/simulated/floor/water/river/deep/south/classm,
+/area/class_m/outside)
 "PQ" = (
 /obj/structure/bed/chair{
 	dir = 4;
@@ -7652,6 +7875,12 @@
 "PU" = (
 /obj/structure/railing,
 /turf/simulated/floor/tiled/classm/outdoors,
+/area/class_m/outside)
+"PV" = (
+/obj/effect/floor_decal/river_beach_edge{
+	dir = 6
+	},
+/turf/simulated/floor/water/river/west/classm,
 /area/class_m/outside)
 "PZ" = (
 /obj/effect/overlay/coconut,
@@ -7691,9 +7920,10 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/water/beach{
+/obj/effect/floor_decal/river_beach_edge{
 	dir = 10
 	},
+/turf/simulated/floor/water/river/south/classm,
 /area/class_m/outside)
 "Qp" = (
 /turf/simulated/floor/concrete/tile/classm/outdoors{
@@ -7787,9 +8017,10 @@
 /area/class_m/inside/main)
 "QX" = (
 /obj/structure/flora/ausbushes/sparsegrass,
-/turf/simulated/floor/water/beach{
+/obj/effect/floor_decal/river_beach_edge{
 	dir = 9
 	},
+/turf/simulated/floor/water/river/south/classm,
 /area/class_m/outside)
 "Rb" = (
 /obj/machinery/appliance/mixer/candy,
@@ -7827,7 +8058,7 @@
 "Rh" = (
 /obj/structure/flora/ausbushes/stalkybush,
 /obj/structure/catwalk,
-/turf/simulated/floor/water/classm,
+/turf/simulated/floor/water/river/south/classm,
 /area/class_m/outside)
 "Rm" = (
 /obj/structure/table/marble,
@@ -7958,6 +8189,15 @@
 	},
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside/sauna)
+"RX" = (
+/obj/machinery/light/flamp/noshade{
+	nightshift_allowed = 0
+	},
+/obj/effect/floor_decal/river_beach_corner_edge{
+	dir = 4
+	},
+/turf/simulated/floor/water/river/west/classm,
+/area/class_m/outside)
 "RY" = (
 /obj/structure/flora/tree/jungle,
 /turf/simulated/floor/outdoors/grass,
@@ -7983,9 +8223,10 @@
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside/main)
 "Se" = (
-/turf/simulated/floor/water/beach{
+/obj/effect/floor_decal/river_beach_edge{
 	dir = 9
 	},
+/turf/simulated/floor/water/river/south/classm,
 /area/class_m/outside/beachmiddle)
 "Sg" = (
 /turf/simulated/floor/concrete/tile/classm/outdoors{
@@ -8052,6 +8293,13 @@
 /obj/structure/flora/ausbushes/lavendergrass,
 /turf/simulated/floor/outdoors/grass/classm,
 /area/class_m/outside)
+"Sy" = (
+/obj/effect/floor_decal/river_beach_edge{
+	dir = 4
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor/water/river/south/classm,
+/area/class_m/outside)
 "Sz" = (
 /obj/machinery/shower{
 	dir = 1
@@ -8065,6 +8313,9 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/class_m/inside/bathroom)
+"SD" = (
+/turf/simulated/floor/water/river/west/classm,
+/area/class_m/outside)
 "SE" = (
 /obj/structure/flora/rock,
 /turf/simulated/floor/outdoors/beach/sand/desert/classm{
@@ -8182,6 +8433,10 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/class_m/inside/main)
+"Tj" = (
+/obj/structure/flora/ausbushes/reedbush,
+/turf/simulated/floor/water/river/west/classm,
+/area/class_m/outside)
 "Tl" = (
 /turf/simulated/floor/water/beach,
 /area/class_m/outside)
@@ -8242,6 +8497,10 @@
 	dir = 1
 	},
 /area/class_m/outside/island2)
+"TB" = (
+/obj/structure/flora/ausbushes/stalkybush,
+/turf/simulated/floor/water/river/deep/west/classm,
+/area/class_m/outside)
 "TC" = (
 /obj/machinery/chem_master/condimaster,
 /turf/simulated/floor/tiled/freezer,
@@ -8690,16 +8949,22 @@
 	},
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside/main)
+"WD" = (
+/obj/effect/floor_decal/river_beach_edge{
+	dir = 9
+	},
+/turf/simulated/floor/water/river/west/classm,
+/area/class_m/outside)
 "WE" = (
 /turf/simulated/floor/concrete/indoors,
 /area/class_m/inside/hotspringcaves)
 "WJ" = (
 /obj/structure/flora/ausbushes/stalkybush,
-/obj/structure/catwalk,
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/water/classm,
+/obj/structure/catwalk,
+/turf/simulated/floor/water/river/south/classm,
 /area/class_m/outside)
 "WN" = (
 /turf/simulated/floor/concrete/rng/classm/outdoors,
@@ -8736,9 +9001,14 @@
 /area/class_m/outside)
 "WU" = (
 /obj/structure/catwalk,
-/turf/simulated/floor/water/beach{
+/obj/effect/floor_decal/river_beach_edge{
 	dir = 5
 	},
+/turf/simulated/floor/water/river/south/classm,
+/area/class_m/outside)
+"WZ" = (
+/obj/structure/flora/ausbushes/stalkybush,
+/turf/simulated/floor/water/river/south/classm,
 /area/class_m/outside)
 "Xa" = (
 /obj/structure/fence/corner{
@@ -8751,6 +9021,10 @@
 /obj/structure/flora/ausbushes/brflowers,
 /turf/simulated/floor/outdoors/grass/classm,
 /area/class_m/outside)
+"Xc" = (
+/obj/structure/flora/ausbushes/sparsegrass,
+/turf/simulated/floor/water/river/south/classm,
+/area/class_m/outside)
 "Xd" = (
 /obj/structure/fence/door,
 /turf/simulated/floor/concrete/tile/classm/outdoors,
@@ -8762,7 +9036,13 @@
 /area/class_m/outside/beachmiddle)
 "Xh" = (
 /obj/structure/flora/ausbushes/stalkybush,
-/turf/simulated/floor/water/deep/classm,
+/turf/simulated/floor/water/river/deep/south/classm,
+/area/class_m/outside)
+"Xi" = (
+/obj/effect/floor_decal/river_beach_edge{
+	dir = 4
+	},
+/turf/simulated/floor/water/river/south/classm,
 /area/class_m/outside)
 "Xm" = (
 /obj/machinery/light/flamp/noshade{
@@ -8793,7 +9073,7 @@
 "Xs" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/structure/flora/ausbushes/stalkybush,
-/turf/simulated/floor/water/classm,
+/turf/simulated/floor/water/river/south/classm,
 /area/class_m/outside)
 "Xt" = (
 /turf/simulated/floor/water/beach{
@@ -8879,7 +9159,8 @@
 /obj/machinery/light/flamp/noshade{
 	nightshift_allowed = 0
 	},
-/turf/simulated/floor/water/classm,
+/obj/structure/catwalk,
+/turf/simulated/floor/water/river/south/classm,
 /area/class_m/outside)
 "Yb" = (
 /obj/structure/fence,
@@ -8949,9 +9230,10 @@
 /area/class_m/outside)
 "Yy" = (
 /obj/structure/catwalk,
-/turf/simulated/floor/water/beach{
+/obj/effect/floor_decal/river_beach_edge{
 	dir = 10
 	},
+/turf/simulated/floor/water/river/south/classm,
 /area/class_m/outside)
 "YE" = (
 /obj/machinery/door/airlock/glass{
@@ -9016,6 +9298,10 @@
 	},
 /turf/simulated/floor/concrete/rng/classm/outdoors,
 /area/class_m/outside)
+"YS" = (
+/obj/effect/floor_decal/river_beach_corner_edge,
+/turf/simulated/floor/water/river/south/classm,
+/area/class_m/outside)
 "YT" = (
 /obj/structure/table/marble,
 /turf/simulated/floor/wood/classm,
@@ -9051,7 +9337,7 @@
 /area/class_m/outside/island)
 "Zb" = (
 /obj/structure/flora/ausbushes,
-/turf/simulated/floor/water/classm,
+/turf/simulated/floor/water/river/south/classm,
 /area/class_m/outside)
 "Zc" = (
 /obj/structure/window/reinforced/full,
@@ -9119,6 +9405,9 @@
 	},
 /turf/simulated/floor/outdoors/grass,
 /area/class_m/outside)
+"ZC" = (
+/turf/simulated/floor/water/river/south/classm,
+/area/class_m/outside/beachmiddle)
 "ZI" = (
 /turf/simulated/floor/outdoors/beach/sand/desert/classm{
 	name = "beach"
@@ -9175,6 +9464,12 @@
 /obj/structure/railing,
 /mob/living/simple_mob/animal/passive/fish/koi,
 /turf/simulated/floor/water/deep/classm,
+/area/class_m/outside)
+"ZX" = (
+/obj/effect/floor_decal/river_beach_edge{
+	dir = 1
+	},
+/turf/simulated/floor/water/river/west/classm,
 /area/class_m/outside)
 
 (1,1,1) = {"
@@ -16875,7 +17170,7 @@ nB
 nB
 nB
 nB
-Od
+wR
 Ma
 ka
 Sa
@@ -17066,11 +17361,11 @@ nB
 nB
 nB
 nB
-Od
+wR
 Ma
 Ma
-ka
-Sa
+Fj
+OR
 Sa
 Sa
 Sa
@@ -17258,13 +17553,13 @@ Lp
 nB
 qY
 nB
-Od
+wR
 Ma
-ka
-Sa
-Sa
+Fj
+OR
+OR
 EU
-Sa
+OR
 Sa
 Bg
 Bg
@@ -17451,14 +17746,14 @@ Lp
 Lp
 nB
 nB
-Od
-ka
-Sa
+wR
+Fj
+OR
 iS
-Sa
+OR
 Fs
-Bg
-Bg
+FI
+FI
 Bg
 Bg
 Bg
@@ -17644,15 +17939,15 @@ Lp
 Lp
 Lp
 nB
-Od
-ka
-Sa
-Sa
-Sa
-Bg
-Bg
-Bg
-LE
+wR
+Fj
+OR
+OR
+OR
+FI
+FI
+FI
+aX
 Bg
 Bg
 Bg
@@ -17837,16 +18132,16 @@ Lp
 Lp
 QL
 Lp
-Od
-ka
+wR
+Fj
 iS
-Sa
-Bg
-Bg
-Bg
-Bg
-Bg
-Bg
+OR
+FI
+FI
+FI
+FI
+FI
+FI
 Bg
 Bg
 Bg
@@ -18030,17 +18325,17 @@ Lp
 Lp
 Lp
 Lp
-SQ
-ka
-Sa
+YS
+Fj
+OR
 Fs
-Bg
-Bg
-Bg
+FI
+FI
+FI
 xp
-Bg
-Bg
-Bg
+FI
+FI
+FI
 Bg
 LE
 Bg
@@ -18223,18 +18518,18 @@ Lp
 Lp
 oJ
 Lp
-SQ
-xT
+YS
+pB
 es
-Sa
-Bg
-Bg
-Bg
-Bg
-dO
-dO
-dO
-dO
+OR
+FI
+FI
+FI
+FI
+hr
+hr
+hr
+hr
 dO
 dO
 dO
@@ -18417,18 +18712,18 @@ Lp
 Lp
 Lp
 Lp
-Tl
-hi
-Sa
-Bg
-LE
-Bg
-dO
-dO
+dq
+iT
+OR
+FI
+aX
+FI
+hr
+hr
 lq
-dO
+hr
 tJ
-dO
+hr
 dO
 dO
 dO
@@ -18610,19 +18905,19 @@ Lp
 Lp
 Lp
 Lp
-SQ
-xT
-VF
-Bg
-Bg
-dO
-dO
+YS
+pB
+LT
+FI
+FI
+hr
+hr
 ym
 Je
-dO
-gG
-gG
-gG
+ZC
+ZC
+ZC
+ZC
 gG
 gG
 gG
@@ -18803,20 +19098,20 @@ Lp
 Lp
 oJ
 Lp
-SQ
-xT
-dD
-Xw
-Bg
-dO
-dO
-dO
-dO
-dO
-gG
-gG
+YS
+pB
+Xc
+PP
+FI
+hr
+hr
+hr
+hr
+hr
+ZC
+ZC
 Se
-Hs
+Dy
 Hs
 Hs
 Pi
@@ -18996,19 +19291,19 @@ Lp
 Lp
 Lp
 Lp
-SQ
-xT
-VF
-Xw
-Xw
-dO
-dO
-dO
-dO
-gG
-gG
+YS
+pB
+LT
+PP
+PP
+hr
+hr
+hr
+hr
+ZC
+ZC
 Se
-Hs
+Dy
 iO
 jC
 jC
@@ -19076,14 +19371,14 @@ gp
 Lp
 sk
 Lp
-SQ
-Sp
-Sp
-Sp
-Sp
-Sp
-Sp
-vZ
+YS
+Xi
+Xi
+Xi
+Xi
+Xi
+Xi
+PM
 Lp
 QL
 Lp
@@ -19151,17 +19446,17 @@ Lp
 Lp
 Lp
 Lp
-SQ
-Sp
-Sp
-Sp
-Sp
-Sp
-Sp
+YS
+Xi
+Xi
+Xi
+Xi
+Xi
+Xi
 il
-sY
-sY
-sY
+Sy
+Sy
+Sy
 Ew
 fZ
 hQ
@@ -19188,20 +19483,20 @@ Lp
 Gq
 QL
 Lp
-SQ
-Sp
-xT
-VF
-Xw
-Xw
-Xw
-dO
-dO
+YS
+Xi
+pB
+LT
+PP
+PP
+PP
+hr
+hr
 lq
-gG
+ZC
 Se
-Hs
-iO
+Dy
+pa
 jC
 jC
 jC
@@ -19267,19 +19562,19 @@ Bg
 "}
 (53,1,1) = {"
 gp
-SQ
-Sp
-Sp
-xT
-LO
-VF
-VF
-VF
-VF
-VF
-Xt
-Sp
-vZ
+YS
+Xi
+Xi
+pB
+NL
+LT
+LT
+LT
+LT
+LT
+hM
+Xi
+PM
 Lp
 cx
 rj
@@ -19343,15 +19638,15 @@ Lp
 oJ
 QL
 Lp
-SQ
-Sp
-xT
-VF
-VF
-VF
-dD
-VF
-VF
+YS
+Xi
+pB
+LT
+LT
+LT
+Xc
+LT
+LT
 WJ
 ge
 AE
@@ -19381,17 +19676,17 @@ Lp
 Lp
 Lp
 Lp
-SQ
-xT
-VF
-Ve
-Xw
-Xw
-Xw
+YS
+pB
+LT
+WZ
+PP
+PP
+PP
 tm
-dO
-dO
-gG
+hr
+hr
+ZC
 Se
 iO
 jC
@@ -19462,18 +19757,18 @@ Bg
 (54,1,1) = {"
 DA
 qi
-LO
-VF
-Ve
-VF
-VF
-VF
+NL
+LT
+WZ
+PP
+PP
+PP
 pg
-VF
-VF
-VF
-Ve
-Xt
+PP
+LT
+LT
+WZ
+hM
 ig
 Gk
 KE
@@ -19536,28 +19831,28 @@ Lp
 Lp
 Lp
 Lp
-SQ
-xT
-VF
-dD
-VF
-VF
-hi
-VF
-Xw
-Xw
-zU
-ui
-ui
+YS
+pB
+LT
+tm
+PP
+PP
+fN
+PP
+PP
+PP
+MX
+ge
+ge
 Rh
 jY
-VF
+LT
 hQ
 XG
 gj
-Sp
-Sp
-vZ
+Xi
+Xi
+PM
 Lp
 Lp
 Lp
@@ -19572,19 +19867,19 @@ Lp
 Lp
 Lp
 Lp
-SQ
-Sp
-Sp
-xT
-fU
-VF
-Xw
-Xw
-Xw
-Xw
-Xw
-gG
-gG
+YS
+Xi
+Xi
+pB
+yn
+LT
+PP
+PP
+PP
+PP
+PP
+ZC
+ZC
 Se
 iO
 jC
@@ -19656,19 +19951,19 @@ Bg
 (55,1,1) = {"
 aU
 Xs
-VF
-VF
-VF
-VF
-VF
-VF
-Ve
-VF
-VF
-VF
-VF
+PP
+PP
+PP
+PP
+PP
+PP
+Xh
+PP
+LT
+PP
+PP
 XZ
-Me
+Bk
 ge
 WU
 sY
@@ -19729,55 +20024,55 @@ Lp
 Lp
 Lp
 Lp
-SQ
-xT
-VF
-VF
-VF
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
+YS
+pB
+LT
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
 zU
 ui
 ui
 ui
 vU
-VF
+LT
 hQ
 XG
 gj
-VF
-VF
-Xt
-Sp
-Sp
-Sp
-vZ
+LT
+LT
+hM
+Xi
+Xi
+Xi
+PM
 Lp
 Lp
 Lp
 Lp
 Gq
 Lp
-SQ
-Sp
-Sp
-Sp
-xT
-VF
-VF
-dD
+YS
+Xi
+Xi
+Xi
+pB
+LT
+LT
+Xc
 Xh
-Xw
+PP
 tm
-Xw
-Xw
-Xw
-VF
-gG
+PP
+PP
+PP
+LT
+ZC
 Se
 iO
 jC
@@ -19849,17 +20144,17 @@ Bg
 "}
 (56,1,1) = {"
 kp
-Zb
-VF
-fU
-VF
-hi
-VF
-VF
-VF
-VF
-VF
-VF
+pW
+LT
+yn
+LT
+iT
+LT
+LT
+LT
+LT
+LT
+LT
 kh
 Me
 ge
@@ -19921,56 +20216,56 @@ Lp
 Lp
 Lp
 Lp
-SQ
-Sp
-xT
-dD
-VF
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
+YS
+Xi
+pB
+Xc
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
 zU
 ui
 ui
 ui
 vU
-Xw
+PP
 hQ
 XG
 gj
-VF
-VF
-VF
-dD
-VF
-VF
-Xt
-Sp
-Sp
-Sp
-Sp
-Sp
-Sp
-xT
-dD
-VF
-VF
-VF
-hi
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-VF
-hi
+LT
+LT
+LT
+Xc
+LT
+LT
+hM
+Xi
+Xi
+Xi
+Xi
+Xi
+Xi
+pB
+Xc
+LT
+LT
+LT
+iT
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+LT
+iT
 Se
 iO
 jC
@@ -20043,21 +20338,21 @@ Bg
 "}
 (57,1,1) = {"
 aU
-hi
-Ve
-VF
+iT
+WZ
+LT
 Zb
-Jp
-Xp
-Xp
-Xp
-Xp
-Xp
+EA
+uQ
+uQ
+uQ
+uQ
+uQ
 ip
 Ez
-ge
-ge
-ge
+ui
+ui
+ui
 ge
 ge
 ge
@@ -20114,19 +20409,19 @@ Lp
 Lp
 oJ
 Lp
-SQ
-xT
-VF
-VF
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
+YS
+pB
+LT
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
 AY
 zU
 ui
@@ -20137,34 +20432,34 @@ EW
 hQ
 XG
 gj
-jE
-Xw
-VF
-VF
-VF
-dD
-VF
-hi
-VF
-VF
-VF
-Ve
-VF
-VF
-VF
-Xw
+Ay
+PP
+PP
+LT
+LT
+Xc
+LT
+iT
+LT
+LT
+LT
+WZ
+LT
+LT
+LT
+PP
 Xh
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-dD
-VF
-Ve
-Jp
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+Xc
+LT
+WZ
+EA
 iO
 jC
 jC
@@ -20238,10 +20533,10 @@ Bg
 (58,1,1) = {"
 IF
 QX
-Xp
-Xp
-Xp
-vk
+uQ
+uQ
+uQ
+dy
 Lp
 SE
 Lp
@@ -20251,7 +20546,7 @@ qw
 Yy
 Rh
 ge
-ge
+ui
 ge
 ge
 ge
@@ -20306,59 +20601,59 @@ Lp
 Lp
 Lp
 Lp
-SQ
-Sp
-xT
-VF
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-VF
-VF
-VF
-dD
+YS
+Xi
+pB
+LT
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+Xc
 MX
 ge
-ui
+ge
 ui
 vU
-Xw
+PP
 hQ
 XG
 gj
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-VF
-VF
-Ve
-VF
-VF
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+LT
+WZ
+LT
+LT
 tm
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
 tm
-VF
-VF
-Jp
-Xp
-Xp
-vk
+LT
+LT
+EA
+uQ
+uQ
+dy
 jC
 jC
 jC
@@ -20431,7 +20726,7 @@ Bg
 "}
 (59,1,1) = {"
 eJ
-vk
+dy
 Lp
 SE
 Lp
@@ -20443,8 +20738,8 @@ cx
 Cv
 Vz
 yv
-le
-Yy
+pz
+ge
 ge
 ge
 ge
@@ -20499,57 +20794,57 @@ tF
 Lp
 Lp
 Lp
-SQ
-xT
-VF
-dD
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-VF
-VF
-Ve
-VF
-VF
-Jp
-Xp
+Br
+pB
+LT
+tm
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+Xh
+LT
+LT
+EA
+uQ
 cI
 HN
 ge
 ge
 ia
-Xw
+LT
 hQ
 XG
 gj
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
 tm
-Xw
-Ve
-hi
-VF
-Jp
-Xp
-vk
+PP
+WZ
+iT
+LT
+EA
+uQ
+dy
 Lp
 Lp
 Lp
@@ -20693,55 +20988,55 @@ Lp
 Lp
 Lp
 Lp
-Tl
-hi
-VF
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-VF
-dD
-VF
-Jp
-Xp
-Xp
-vk
+oM
+Tj
+BL
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+Xc
+LT
+EA
+uQ
+uQ
+dy
 Lp
 zE
 le
 le
-Yy
+jS
 jY
-VF
+LT
 hQ
 XG
 gj
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
+PP
+PP
+PP
+PP
+PP
+PP
 tm
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-VF
-VF
-VF
-dD
-Jp
-Xp
-Xp
-vk
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+LT
+LT
+LT
+Xc
+EA
+uQ
+uQ
+dy
 Lp
 Lp
 Lp
@@ -20886,20 +21181,20 @@ Lp
 Lp
 Lp
 Lp
-SQ
-xT
-VF
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-VF
-Ve
-Jp
-Xp
-vk
+Br
+PV
+BL
+BL
+PP
+PP
+PP
+PP
+PP
+LT
+WZ
+EA
+uQ
+dy
 Lp
 Lp
 Lp
@@ -20907,32 +21202,32 @@ Lp
 nn
 Vz
 Vz
-yv
+cP
 Kz
-Xp
+uQ
 hQ
 XG
 gj
-VF
-dD
-hi
-VF
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-VF
-VF
-VF
-Ve
-Jp
-Xp
-vk
+LT
+Xc
+iT
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+LT
+LT
+LT
+WZ
+EA
+uQ
+dy
 Lp
 Lp
 Lp
@@ -21079,19 +21374,19 @@ tF
 Gq
 Lp
 Lp
-SQ
-xT
-VF
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-VF
-Jp
-Xp
-vk
+Br
+PV
+BL
+BL
+BL
+PP
+PP
+PP
+PP
+LT
+EA
+uQ
+dy
 Lp
 Lp
 Lp
@@ -21107,24 +21402,24 @@ Lp
 hQ
 XG
 gj
-RE
-Ve
-VF
-VF
-VF
-VF
-Xw
+LT
+WZ
+LT
+LT
+LT
+LT
+PP
 Xh
-Xw
-VF
-Ve
-hi
-VF
-Jp
-Xp
-Xp
-Xp
-vk
+PP
+LT
+WZ
+iT
+LT
+EA
+uQ
+uQ
+uQ
+dy
 Lp
 Gq
 Lp
@@ -21273,17 +21568,17 @@ Lp
 Lp
 Lp
 Lp
-Tl
-Ve
-VF
-Xw
-Xw
-Xw
-Xw
-VF
-VF
-Jp
-vk
+oM
+TB
+BL
+BL
+BL
+PP
+PP
+PP
+LT
+EA
+dy
 Lp
 Lp
 Lp
@@ -21302,19 +21597,19 @@ hQ
 XG
 gj
 tx
-Xp
-Xp
-RE
-dD
-VF
-VF
-VF
-VF
-dD
-Jp
-Xp
-Xp
-vk
+uQ
+uQ
+Jg
+Xc
+LT
+LT
+LT
+LT
+Xc
+EA
+uQ
+uQ
+dy
 Lp
 Lp
 Lp
@@ -21466,17 +21761,17 @@ Lp
 Lp
 Lp
 Lp
-SQ
-xT
-VF
-Xw
-Xw
-Xw
-Xw
-VF
-dD
-Jp
-vk
+Br
+PV
+BL
+BL
+BL
+BL
+BL
+PP
+Xc
+EA
+dy
 Lp
 Lp
 Lp
@@ -21498,14 +21793,14 @@ OD
 Lp
 Lp
 Lp
-pJ
-Xp
-Xp
-Xp
-Xp
-Xp
-Xp
-vk
+JU
+uQ
+uQ
+uQ
+uQ
+uQ
+uQ
+dy
 Lp
 Lp
 QL
@@ -21660,16 +21955,16 @@ Lp
 Lp
 oJ
 Lp
-Tl
-dD
-VF
-Xw
-Xw
-Xw
-VF
-VF
-Jp
-vk
+oM
+fg
+BL
+BL
+BL
+BL
+BL
+LT
+EA
+dy
 Gq
 Lp
 Lp
@@ -21853,16 +22148,16 @@ Lp
 Lp
 Lp
 Lp
-SQ
-xT
-VF
-Xw
-Xw
-Xw
-Xw
-VF
-hi
-hs
+Br
+PV
+BL
+BL
+BL
+BL
+BL
+BL
+iT
+ly
 Lp
 Lp
 Lp
@@ -22046,17 +22341,17 @@ Lp
 Lp
 Lp
 Lp
-SQ
-xT
-VF
-Xw
-Xw
-Xw
-Xw
-VF
-VF
-Jp
-vk
+Br
+PV
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+EA
+dy
 Lp
 Lp
 Lp
@@ -22239,17 +22534,17 @@ tF
 Lp
 Lp
 Lp
-SQ
-xT
-VF
-hi
-Xw
-Xw
-Xw
-VF
-VF
+Br
+PV
+BL
+BF
+BL
+BL
+BL
+BL
+BL
 CZ
-vk
+MJ
 Lp
 Lp
 Lp
@@ -22433,16 +22728,16 @@ Lp
 Lp
 Lp
 Lp
-Tl
-VF
-VF
-Xw
-Xw
-Xw
-VF
-VF
-Jp
-vk
+oM
+SD
+BL
+BL
+BL
+BL
+BL
+BL
+WD
+MJ
 Lp
 Lp
 Lp
@@ -22627,15 +22922,15 @@ Lp
 Lp
 Lp
 Lp
-Tl
-VF
-Xw
-Xw
-Xw
-Xw
-VF
-Jp
-vk
+oM
+SD
+BL
+BL
+BL
+BL
+BL
+WD
+MJ
 Lp
 Lp
 QL
@@ -22820,15 +23115,15 @@ Lp
 Lp
 Lp
 Lp
-SQ
-xT
-Ve
-Xw
-Xw
-Xw
-VF
+Br
+PV
+TB
+BL
+BL
+BL
+BL
 CZ
-vk
+MJ
 Lp
 Lp
 Lp
@@ -23013,15 +23308,15 @@ lS
 Lp
 Lp
 Lp
-SQ
-xT
-VF
-Xw
-Xw
-Xw
-Xw
-dD
-hs
+Br
+PV
+BL
+BL
+BL
+BL
+BL
+Fy
+ZX
 Lp
 Lp
 Lp
@@ -23207,15 +23502,15 @@ Lp
 Lp
 Gq
 Lp
-Tl
-VF
-VF
-Xw
-Xw
-Xw
-Xw
-Jp
-vk
+oM
+SD
+BL
+BL
+BL
+BL
+BL
+WD
+MJ
 Gq
 Lp
 Lp
@@ -23401,14 +23696,14 @@ Lp
 Lp
 Lp
 Lp
-Tl
-VF
-Xw
-Xw
-Xw
-Xw
-VF
-hs
+oM
+SD
+BL
+BL
+BL
+BL
+SD
+ZX
 Lp
 Lp
 Lp
@@ -23594,15 +23889,15 @@ Lp
 Lp
 Lp
 Lp
-SQ
-xT
-hi
-Xw
-Xw
-Xw
-Xw
-Jp
-vk
+Br
+PV
+BF
+BL
+BL
+BL
+BL
+WD
+MJ
 Lp
 Lp
 Lp
@@ -23787,15 +24082,15 @@ Lp
 Lp
 Lp
 QL
-SQ
-xT
-VF
-Xw
-Xw
-Xw
-Xw
-VF
-hs
+Br
+PV
+BL
+BL
+BL
+BL
+BL
+SD
+ZX
 Lp
 Lp
 Lp
@@ -23981,15 +24276,15 @@ Lp
 Lp
 Lp
 Lp
-Tl
-dD
-VF
-Xw
-Xw
-Xw
-VF
-Jp
-vk
+oM
+Fy
+BL
+BL
+BL
+BL
+BL
+WD
+MJ
 Lp
 Lp
 Lp
@@ -24174,15 +24469,15 @@ Lp
 Gq
 Lp
 Lp
-SQ
-xT
-VF
-Xw
-Xw
-Xw
-Xw
-dD
-hs
+Br
+PV
+BL
+BL
+BL
+BL
+BL
+Fy
+ZX
 Lp
 Lp
 Lp
@@ -24368,15 +24663,15 @@ Lp
 Lp
 Lp
 Lp
-Tl
-VF
-Ve
-Xw
-Xw
-Xw
-Xw
-Ve
-hs
+oM
+SD
+TB
+BL
+BL
+BL
+BL
+yd
+ZX
 Lp
 Lp
 Lp
@@ -24561,16 +24856,16 @@ Lp
 Lp
 Lp
 Lp
-SQ
-xT
-VF
-Xw
-Xw
-Xw
-Xw
-VF
-VF
-hs
+Br
+PV
+BL
+BL
+BL
+BL
+BL
+BL
+SD
+ZX
 Lp
 Lp
 Gq
@@ -24754,17 +25049,17 @@ Lp
 Lp
 Lp
 Lp
-SQ
-xT
-VF
-VF
-Xw
-Xw
-Xw
-Xh
-VF
-Jp
-vk
+Br
+PV
+BL
+BL
+BL
+BL
+BL
+TB
+BL
+WD
+MJ
 Lp
 Lp
 Lp
@@ -24948,16 +25243,16 @@ Lp
 Lp
 Lp
 Lp
-Tl
-VF
-VF
-Xw
-Xw
-Xw
-Xw
-VF
-VF
-hs
+oM
+SD
+BL
+BL
+BL
+BL
+BL
+BL
+SD
+ZX
 Lp
 Lp
 Lp
@@ -25141,17 +25436,17 @@ Lp
 Lp
 Gq
 Lp
-SQ
-xT
-hi
-VF
-Xw
-Xw
-Xw
-Xw
-VF
-Jp
-vk
+Br
+PV
+BF
+BL
+BL
+BL
+BL
+BL
+BL
+WD
+MJ
 Lp
 Lp
 Lp
@@ -25334,17 +25629,17 @@ Wb
 Wb
 Lp
 Lp
-SQ
-xT
-dD
-VF
-Xw
-Xw
-Xw
-Xw
-VF
-hi
-hs
+Br
+PV
+fg
+BL
+BL
+BL
+BL
+BL
+BL
+Tj
+ZX
 Lp
 Lp
 QL
@@ -25528,17 +25823,17 @@ WN
 WN
 eq
 qp
-Tl
-VF
-VF
-Xw
-Xw
-Xw
-Xw
-Xw
-VF
-dD
-hs
+oM
+SD
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+Fy
+ZX
 Lp
 Lp
 Lp
@@ -25722,17 +26017,17 @@ WN
 WN
 WN
 eq
-xT
-VF
-Xw
-Xw
-Xw
-Xw
-Xw
-VF
-VF
-Jp
-vk
+PV
+SD
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+WD
+MJ
 Lp
 Lp
 Lp
@@ -25917,15 +26212,15 @@ WN
 WN
 WN
 eq
-VF
-Xw
-Xw
-Xw
-Xw
-Xw
-Ve
-VF
-hs
+BL
+BL
+BL
+BL
+BL
+BL
+TB
+SD
+ZX
 Lp
 Gq
 Lp
@@ -26112,14 +26407,14 @@ WN
 WN
 WN
 eq
-Xw
-Xw
-Xw
-Xw
-Xw
-VF
-VF
-hs
+BL
+BL
+BL
+BL
+BL
+BL
+SD
+ZX
 Lp
 Lp
 Lp
@@ -26307,13 +26602,13 @@ WN
 WN
 WN
 eq
-Xw
-Xw
-Xw
-VF
-VF
-Jp
-vk
+BL
+BL
+BL
+BL
+BL
+WD
+MJ
 Lp
 Lp
 Lp
@@ -26502,11 +26797,11 @@ WN
 WN
 WN
 eq
-Xw
-Xw
-VF
-VF
-hs
+BL
+BL
+BL
+SD
+ZX
 Lp
 Lp
 Lp
@@ -26688,8 +26983,8 @@ Lp
 Lp
 Lp
 Lp
-SQ
-xT
+YS
+pB
 Re
 WN
 WN
@@ -26697,10 +26992,10 @@ WN
 WN
 WN
 eq
-VF
-hi
-Jp
-vk
+BL
+BF
+WD
+MJ
 Lp
 Lp
 Lp
@@ -26881,10 +27176,10 @@ Lp
 Lp
 Gq
 Lp
-SQ
-xT
-Ve
-VF
+YS
+pB
+WZ
+LT
 Re
 WN
 WN
@@ -26892,8 +27187,8 @@ WN
 WN
 WN
 eq
-VF
-hs
+SD
+ZX
 Lp
 Lp
 Lp
@@ -27074,12 +27369,12 @@ Lp
 Lp
 Lp
 Lp
-SQ
-xT
-dD
-VF
-VF
-Xw
+YS
+pB
+Xc
+LT
+LT
+PP
 Re
 WN
 WN
@@ -27087,7 +27382,7 @@ WN
 WN
 WN
 eq
-Cw
+RX
 Lp
 Lp
 Lp
@@ -27268,13 +27563,13 @@ Lp
 Lp
 Lp
 Lp
-Tl
-VF
-VF
-VF
-Xw
-Xw
-Xw
+dq
+LT
+LT
+LT
+PP
+PP
+PP
 Re
 WN
 WN
@@ -27461,15 +27756,15 @@ Lp
 Lp
 Lp
 Lp
-SQ
-xT
-dD
-VF
-Xw
-Xw
-Xw
-Xw
-Xw
+YS
+pB
+Xc
+LT
+PP
+PP
+PP
+PP
+PP
 Re
 WN
 WN
@@ -27653,18 +27948,18 @@ Lp
 Gq
 Lp
 Lp
-SQ
-Sp
-xT
-VF
-hi
-Xw
-Xw
-Xw
-Xw
-Xw
-VF
-dD
+YS
+Xi
+pB
+LT
+iT
+PP
+PP
+PP
+PP
+PP
+LT
+Xc
 Re
 WN
 WN
@@ -27846,20 +28141,20 @@ Lp
 Lp
 Lp
 Lp
-SQ
-xT
-dD
-hi
-VF
-VF
-Xw
-Xw
-Xw
-Xw
-Xw
-VF
-VF
-VF
+YS
+pB
+Xc
+iT
+LT
+LT
+PP
+PP
+PP
+PP
+PP
+LT
+LT
+LT
 Re
 WN
 WN
@@ -28040,20 +28335,20 @@ Lp
 Lp
 Lp
 Lp
-Tl
-VF
-VF
-Ve
-VF
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-VF
-VF
-Jp
+dq
+LT
+LT
+WZ
+LT
+PP
+PP
+PP
+PP
+PP
+PP
+LT
+LT
+EA
 Cw
 Re
 WN
@@ -28234,20 +28529,20 @@ Lp
 Lp
 Lp
 Lp
-Tl
-Ve
-VF
-VF
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-VF
-hi
-Jp
-vk
+dq
+WZ
+LT
+LT
+PP
+PP
+PP
+PP
+PP
+PP
+LT
+iT
+EA
+dy
 sk
 Lp
 Wb
@@ -28427,20 +28722,20 @@ Lp
 Lp
 Lp
 Lp
-SQ
-xT
-VF
-VF
-VF
-Xw
-Xw
-Xw
-Xw
-Xw
-VF
-VF
-Jp
-vk
+YS
+pB
+LT
+LT
+LT
+PP
+PP
+PP
+PP
+PP
+LT
+LT
+EA
+dy
 Lp
 Lp
 Lp
@@ -28620,20 +28915,20 @@ Lp
 Lp
 Lp
 Gq
-SQ
-xT
-hi
-VF
-VF
-Xw
-Xw
-Xw
-Xw
-Xw
-VF
-Ve
-Jp
-vk
+YS
+pB
+iT
+LT
+LT
+PP
+PP
+PP
+PP
+PP
+LT
+WZ
+EA
+dy
 Lp
 Lp
 Lp
@@ -28812,21 +29107,21 @@ Lp
 Lp
 Lp
 Lp
-SQ
-Sp
-xT
-dD
-VF
-VF
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-dD
-VF
-hs
+YS
+Xi
+pB
+Xc
+LT
+LT
+PP
+PP
+PP
+PP
+PP
+PP
+Xc
+LT
+ly
 Lp
 Lp
 Lp
@@ -29000,27 +29295,27 @@ Xw
 Xw
 VF
 VF
-Xt
-Sp
-Sp
-Sp
-Sp
-Sp
-xT
-dD
-VF
-hi
-VF
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-VF
-VF
-Jp
-vk
+hM
+Xi
+Xi
+Xi
+Xi
+Xi
+pB
+Xc
+LT
+iT
+LT
+PP
+PP
+PP
+PP
+PP
+PP
+LT
+LT
+EA
+dy
 Lp
 Lp
 Lp
@@ -29193,27 +29488,27 @@ Xw
 Xw
 Xw
 Xw
-VF
-Ve
-VF
-VF
-VF
-hi
-dD
-Ve
-VF
-VF
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-VF
-VF
-Jp
-vk
+LT
+WZ
+LT
+LT
+LT
+iT
+Xc
+WZ
+LT
+LT
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+LT
+LT
+EA
+dy
 Lp
 Lp
 Lp
@@ -29387,26 +29682,26 @@ VF
 Xw
 Xw
 Xw
-Xw
-Xw
-VF
-fU
-VF
-VF
-VF
-VF
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-VF
-Ve
-Jp
-vk
+BL
+PP
+LT
+yn
+LT
+LT
+LT
+LT
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+LT
+WZ
+EA
+dy
 Lp
 Lp
 Lp
@@ -29580,26 +29875,26 @@ dD
 VF
 VF
 Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-dD
-VF
-Jp
-vk
+BL
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+Xc
+LT
+EA
+dy
 Lp
 Gq
 Lp
@@ -29772,27 +30067,27 @@ Lp
 pJ
 RE
 LO
-VF
-BK
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-VF
-VF
-Jp
-vk
+LT
+ve
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+LT
+LT
+EA
+dy
 Lp
 Lp
 Lp
@@ -29964,28 +30259,28 @@ Lp
 Gq
 Lp
 Lp
-Tl
-VF
-VF
-VF
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-VF
-Ve
-VF
-Jp
-vk
+dq
+LT
+LT
+LT
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+LT
+WZ
+LT
+EA
+dy
 Lp
 Lp
 Lp
@@ -30158,27 +30453,27 @@ Lp
 Lp
 Lp
 Lp
-pJ
-RE
-VF
-fU
-VF
-VF
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-VF
-VF
-VF
-VF
-Jp
-vk
+JU
+Jg
+LT
+yn
+LT
+LT
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+LT
+LT
+LT
+LT
+EA
+dy
 Lp
 Lp
 Lp
@@ -30353,25 +30648,25 @@ Lp
 Lp
 Lp
 Lp
-pJ
-RE
-VF
-VF
-VF
-VF
-VF
-Xw
-Xw
-Xw
-Xw
-Xw
-Xw
-VF
-dD
-hi
-Jp
-Xp
-vk
+JU
+Jg
+LT
+LT
+LT
+LT
+LT
+PP
+PP
+PP
+PP
+PP
+PP
+LT
+Xc
+iT
+EA
+uQ
+dy
 Lp
 Lp
 Lp
@@ -30548,22 +30843,22 @@ Lp
 Lp
 Lp
 Gq
-pJ
-Xp
-RE
-hi
-VF
-dD
-VF
-VF
-VF
-VF
-VF
-Ve
-VF
-Jp
-Xp
-vk
+JU
+uQ
+Jg
+iT
+LT
+Xc
+LT
+LT
+LT
+LT
+LT
+WZ
+LT
+EA
+uQ
+dy
 Lp
 Lp
 Lp
@@ -30744,18 +31039,18 @@ Lp
 Lp
 Lp
 Lp
-pJ
-Xp
-RE
-VF
-VF
-fU
-VF
-Ve
-hi
-Jp
-Xp
-vk
+JU
+uQ
+Jg
+LT
+LT
+yn
+LT
+WZ
+iT
+EA
+uQ
+dy
 Lp
 Gq
 Lp
@@ -30940,14 +31235,14 @@ Lp
 Lp
 QL
 Lp
-pJ
-Xp
-Xp
-Xp
-Xp
-Xp
-Xp
-vk
+JU
+uQ
+uQ
+uQ
+uQ
+uQ
+uQ
+dy
 Lp
 Lp
 QL

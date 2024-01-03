@@ -81,6 +81,8 @@
 /turf/simulated/floor/water/river/process(delta_time)
 	if(!LAZYLEN(contents))
 		STOP_PROCESSING(SSobj, src)//Failsafe, no need to process if we dont have any contents
+	if(locate(/obj/structure/catwalk) in loc)
+		return//Stop floating stuff down stream when there is a catwalk
 	delta_sum += delta_time
 	if(delta_sum > float_delay)
 		addtimer(CALLBACK(src, PROC_REF(convey), src.contents), 1)
