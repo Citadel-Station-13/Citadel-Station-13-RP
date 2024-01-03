@@ -116,6 +116,9 @@
 	piece_lookup[piece.lookup_id] = piece
 	piece_items += piece.parent
 
+/obj/item/rig/proc/remove_piece(datum/component/rig_piece/piece)
+	#warn impl
+
 /obj/item/rig/proc/legacy_sync_piece(datum/component/rig_piece/piece, sealed)
 	var/obj/item/physical = piece.parent
 	if(piece.rig_piece_flags & RIG_PIECE_APPLY_ARMOR)

@@ -21,7 +21,7 @@
  */
 /obj/item/rig/proc/is_in_right_slot()
 	var/datum/inventory_slot_meta/wslot = wearer_required_slot_id
-	return worn_slot == ispath(wslot)? initial(wslot.id) : wslot
+	return worn_slot == (ispath(wslot)? initial(wslot.id) : wslot)
 
 /**
  * blocking proc
@@ -52,6 +52,7 @@
 	activation_mutex = TRUE
 	activation_state = RIG_ACTIVATION_ACTIVATING
 	push_ui_data(list("activation" = RIG_ACTIVATION_ACTIVATING))
+	maint_panel?.push_ui_data(list("activation" = RIG_ACTIVATION_ACTIVATING))
 
 	if(!instant)
 		wearer.visible_message(
@@ -96,6 +97,7 @@
 	activation_mutex = TRUE
 	activation_state = RIG_ACTIVATION_DEACTIVATING
 	push_ui_data(list("activation" = RIG_ACTIVATION_DEACTIVATING))
+	maint_panel?.push_ui_data(list("activation" = RIG_ACTIVATION_DEACTIVATING))
 
 	if(!instant)
 		// wearer is not necessarily there for deactivation
@@ -132,17 +134,19 @@
 
 	ADD_TRAIT(src, TRAIT_ITEM_NODROP, RIG_TRAIT)
 
-	activation_state = RIG_ACTIVATION_ONLINE
-	push_ui_data(list("activation" = RIG_ACTIVATION_ONLINE))
+	if(activation_state != RIG_ACTIVATION_ONLINE)
+		activation_state = RIG_ACTIVATION_ONLINE
+		push_ui_data(list("activation" = RIG_ACTIVATION_ONLINE))
+		maint_panel?.push_ui_data(list("activation" = RIG_ACTIVATION_ONLINE))
 
-	if(was_instant)
-		wearer.visible_message(
-			SPAN_NOTICE("[src] latches itself around [wearer], its seals and mechanisms locking snugly around their body.")
-		)
-	else
-		wearer.visible_message(
-			SPAN_NOTICE("[src] finishes adjusting its seals around [wearer], snugly latching itself around their body")
-		)
+		if(was_instant)
+			wearer.visible_message(
+				SPAN_NOTICE("[src] latches itself around [wearer], its seals and mechanisms locking snugly around their body.")
+			)
+		else
+			wearer.visible_message(
+				SPAN_NOTICE("[src] finishes adjusting its seals around [wearer], snugly latching itself around their body")
+			)
 
 	#warn update wearer/etc data
 
@@ -173,13 +177,15 @@
 
 	REMOVE_TRAIT(src, TRAIT_ITEM_NODROP, RIG_TRAIT)
 
-	activation_state = RIG_ACTIVATION_OFFLINE
-	push_ui_data(list("activation" = RIG_ACTIVATION_OFFLINE))
+	if(activation_state != RIG_ACTIVATION_OFFLINE)
+		activation_state = RIG_ACTIVATION_OFFLINE
+		push_ui_data(list("activation" = RIG_ACTIVATION_OFFLINE))
+		maint_panel?.push_ui_data(list("activation" = RIG_ACTIVATION_OFFLINE))
 
-	// wearer is not always there for deactivation
-	wearer?.visible_message(
-		SPAN_NOTICE("[src] completely detaches from [wearer], its lights and panels going dim.")
-	)
+		// wearer is not always there for deactivation
+		wearer?.visible_message(
+			SPAN_NOTICE("[src] completely detaches from [wearer], its lights and panels going dim.")
+		)
 
 	#warn update wearer/etc data
 

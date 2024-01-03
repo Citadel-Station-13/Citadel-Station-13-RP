@@ -120,6 +120,7 @@
 	seal_mutex = TRUE
 	sealed = RIG_PIECE_SEALING
 	push_piece_data(list("sealed" = RIG_PIECE_SEALING))
+	#warn maint panel
 
 	var/delay = instant? 0 : controller.seal_delay
 	var/start_time = world.time
@@ -149,6 +150,7 @@
 	seal_mutex = TRUE
 	sealed = RIG_PIECE_UNSEALING
 	push_piece_data(list("sealed" = RIG_PIECE_UNSEALING))
+	#warn maint panel
 
 	var/delay = instant? 0 : controller.seal_delay
 	var/start_time = world.time
@@ -176,6 +178,7 @@
 	physical.worn_state = state_worn_sealed
 	physical.icon_state = state_sealed
 	controller.legacy_sync_piece(src, TRUE)
+	#warn maint panel
 	update_piece_data()
 
 	if(!is_deployed())
@@ -202,6 +205,7 @@
 	physical.worn_state = state_worn_unsealed
 	physical.icon_state = state_unsealed
 	controller.legacy_sync_piece(src, FALSE)
+	#warn maint panel
 	update_piece_data()
 
 	REMOVE_TRAIT(src, TRAIT_ITEM_NODROP, RIG_TRAIT)
@@ -227,6 +231,7 @@
 		return
 	// todo: some kind of visual feedback to people around them?
 	#warn impl - audio only
+	#warn maint panel
 	update_piece_data()
 
 /datum/component/rig_piece/proc/retract(inv_op_flags, subtle, silent)
@@ -252,6 +257,7 @@
 			return
 	// todo: some kind of visual feedback to people around them?
 	#warn impl - audio only
+	#warn maint panel
 	update_piece_data()
 
 /datum/component/rig_piece/proc/is_deployed()

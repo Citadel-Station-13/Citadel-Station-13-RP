@@ -16,7 +16,7 @@
 	bullet_tier = BULLET_TIER_LOW
 	bullet_soak = 0
 	bullet_deflect = 0
-	laser = 0.35
+	laser = 0.3
 	laser_tier = LASER_TIER_MEDIUM
 	laser_soak = 5
 	laser_deflect = 0

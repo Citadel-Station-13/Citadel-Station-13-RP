@@ -57,6 +57,20 @@
 	/// panel datum to host our maint tgui
 	/// lazy-init'd
 	var/datum/rig_maint_panel/maint_panel
+	/// is the panel open?
+	var/maint_panel_open = FALSE
+	/// is the panel locked?
+	var/maint_panel_locked = FALSE
+	/// is the panel broken?
+	var/maint_panel_broken = FALSE
+	/// points of health left on the panel
+	var/maint_panel_integrity = 100
+	/// points of health normally on the panel
+	var/maint_panel_integrity_max = 100
+	/// armor on panel - lazy-grabbed
+	var/datum/armor/maint_panel_armor
+	/// armor type on panel
+	var/maint_panel_armor_type = /datum/armor/object/light
 
 	//* Modules
 	//  todo: unfinished
@@ -133,6 +147,24 @@
 	QDEL_NULL(maint_panel)
 	return ..()
 
+/obj/item/rig/examine(mob/user, dist)
+	. = ..()
+	. += SPAN_NOTICE("<b>Alt-Click</b> while holding this or nearby to access the back panel.")
+
+/obj/item/rig/context_query(datum/event_args/actor/e_args)
+	. = ..()
+	var/image/back_image = image(src)
+	.["panel"] = ATOM_CONTEXT_TUPLE("back panel", back_image, 1, MOBILITY_CAN_USE)
+
+/obj/item/rig/context_act(datum/event_args/actor/e_args, key)
+	switch(key)
+		if("panel")
+			var/datum/rig_maint_panel/panel = request_maint()
+			// todo: performer vs initiator
+			panel.ui_interact(e_args.performer)
+			return TRUE
+	return ..()
+
 /obj/item/rig/unequipped()
 	. = ..()
 	// todo: should we optimize this?
@@ -155,6 +187,7 @@
 
 /obj/item/rig/proc/wipe_everything()
 	hard_reset()
+	#warn use remove piece properly
 	#warn impl
 
 /obj/item/rig/get_encumbrance()
@@ -178,10 +211,44 @@
 	. = ..()
 	ui_interact(user)
 
-//* Console
+//* Console *//
 
 /obj/item/rig/proc/request_console()
 	RETURN_TYPE(/datum/rig_console)
 	if(isnull(console))
 		console = new(src)
 	return console
+
+//* Inventory *//
+
+/obj/item/rig/strip_menu_options(mob/user)
+	. = ..()
+	.["maint"] = "Access Panel"
+
+/obj/item/rig/strip_menu_act(mob/user, action)
+	. = ..()
+	if(.)
+		return
+	if(action == "maint")
+		var/datum/rig_maint_panel/panel = request_maint()
+		panel.ui_interact(user)
+		return TRUE
+
+//* Maintenance *//
+
+/obj/item/rig/proc/request_maint()
+	RETURN_TYPE(/datum/rig_maint_panel)
+	if(isnull(maint_panel))
+		maint_panel = new(src)
+	return maint_panel
+
+/obj/item/rig/proc/assert_maint_panel_armor()
+	#warn impl
+
+/obj/item/rig/proc/repair_maint_panel(datum/event_args/actor/actor, obj/item/tool)
+
+/obj/item/rig/proc/attack_maint_panel(datum/event_args/actor/actor, obj/item/tool, damage_multiplier = 1)
+
+/obj/item/rig/proc/cut_maint_panel(datum/event_args/actor/actor, obj/item/tool)
+
+#warn handling for armor etc etc

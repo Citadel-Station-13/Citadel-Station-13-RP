@@ -59,8 +59,7 @@
  */
 /datum/rig_console/proc/process_command(mob/user, list/fragments)
 	RETURN_TYPE(/list)
-	var/command = fragments[1]
-	switch(command)
+	switch(fragments[1])
 		if("help")
 			var/list/built = list(
 				"-- Valid commands --",

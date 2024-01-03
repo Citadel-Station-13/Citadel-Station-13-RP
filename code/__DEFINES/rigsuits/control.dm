@@ -19,7 +19,7 @@
 #define RIG_CONTROL_VIEW_PIECES (1<<8)
 /// modify permissions
 #define RIG_CONTROL_PERMISSIONS (1<<9)
-/// use + modify maintenance panel
+/// use + lock/unlock +  modify maintenance panel
 #define RIG_CONTROL_MAINTENANCE (1<<10)
 /// use internal console
 #define RIG_CONTROL_CONSOLE (1<<11)
