@@ -25,18 +25,12 @@
 "bo" = (
 /turf/simulated/wall/r_wall/prepainted/cargo,
 /area/outpost/mining_main/secondary_gear_storage)
-"bz" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/outpost/mining_main/secondary_gear_storage)
 "bC" = (
-/obj/machinery/door/airlock/glass/mining,
+/obj/spawner/window/low_wall/borosillicate/full,
 /obj/machinery/door/firedoor/glass{
 	dir = 4
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/plating,
 /area/outpost/mining_main/secondary_gear_storage)
 "bE" = (
 /obj/machinery/door/firedoor/glass{
@@ -405,12 +399,6 @@
 /obj/structure/table/woodentable,
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/secondary_gear_storage)
-"jk" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/outpost/mining_main/secondary_gear_storage)
 "jz" = (
 /obj/structure/railing,
 /turf/simulated/floor/outdoors/grass/sif/virgo3b,
@@ -567,20 +555,12 @@
 /obj/spawner/window/low_wall/borosillicate/full,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/airlock)
-"nP" = (
-/obj/machinery/door/firedoor/glass,
-/obj/spawner/window/low_wall/borosillicate/full,
-/turf/simulated/floor/plating,
-/area/outpost/mining_main/secondary_gear_storage)
 "nR" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/cyan,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/maintenance)
 "nS" = (
 /obj/structure/reagent_dispensers/fueltank,
-/obj/machinery/camera/network/mining{
-	dir = 4
-	},
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/brown/border,
 /turf/simulated/floor/tiled,
@@ -591,12 +571,6 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/outpost/mining_main/airlock)
-"oF" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 5
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/outpost/mining_main/secondary_gear_storage)
 "oN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -832,6 +806,9 @@
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/brown/border,
 /obj/machinery/light,
+/obj/machinery/camera/network/mining{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/secondary_gear_storage)
 "uP" = (
@@ -903,12 +880,6 @@
 /obj/structure/cable,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/maintenance)
-"wP" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 6
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/outpost/mining_main/secondary_gear_storage)
 "wV" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -1185,6 +1156,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 8
 	},
+/obj/item/multitool,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/outpost/mining_main/drill_equipment)
 "Df" = (
@@ -1387,27 +1359,21 @@
 /obj/machinery/atmospherics/pipe/simple/visible/cyan,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/maintenance)
-"IK" = (
-/obj/machinery/hyperpad/centre{
-	map_pad_id = "lavaland_station";
-	map_pad_link_id = "lavaland_away";
-	newcolor = "#fcba03"
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/outpost/mining_main/secondary_gear_storage)
 "IS" = (
 /obj/machinery/telecomms/relay/preset/mining,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/maintenance)
-"Jc" = (
-/obj/effect/floor_decal/industrial/warning,
-/turf/simulated/floor/tiled/monotile,
-/area/outpost/mining_main/secondary_gear_storage)
 "Jz" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 9
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
 	},
-/turf/simulated/floor/tiled/monotile,
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 8
+	},
+/obj/machinery/camera/network/mining{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
 /area/outpost/mining_main/secondary_gear_storage)
 "JW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
@@ -1508,18 +1474,6 @@
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/maintenance)
-"La" = (
-/obj/machinery/camera/network/mining{
-	dir = 4
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/brown/border{
-	dir = 8
-	},
-/turf/simulated/floor/tiled,
-/area/outpost/mining_main/secondary_gear_storage)
 "Lm" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
@@ -1642,12 +1596,6 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/outpost/mining_main/drill_equipment)
-"Rh" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 10
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/outpost/mining_main/secondary_gear_storage)
 "RF" = (
 /obj/structure/cable/green{
 	icon_state = "0-8"
@@ -1931,12 +1879,6 @@
 	},
 /turf/simulated/floor/bluegrid,
 /area/outpost/mining_main/airlock)
-"WA" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/outpost/mining_main/secondary_gear_storage)
 "WD" = (
 /obj/structure/railing{
 	dir = 4
@@ -13295,10 +13237,10 @@ xE
 jJ
 jJ
 jJ
-YL
-YL
-YL
-bo
+OH
+OH
+OH
+OH
 OH
 OH
 OH
@@ -13489,10 +13431,10 @@ Xe
 zi
 Vg
 vw
-Jz
-WA
-Rh
-nP
+OH
+OH
+OH
+OH
 OH
 OH
 OH
@@ -13683,10 +13625,10 @@ rG
 rn
 pW
 vw
-bz
-IK
-Jc
-nP
+OH
+OH
+OH
+OH
 OH
 HX
 KJ
@@ -13877,10 +13819,10 @@ rG
 rn
 AF
 vw
-oF
-jk
-wP
-nP
+OH
+OH
+OH
+OH
 OH
 HX
 iT
@@ -14071,9 +14013,9 @@ rG
 rn
 LA
 vw
-OQ
 bC
-OQ
+bC
+bC
 bo
 bo
 HX
@@ -14266,9 +14208,9 @@ Qe
 hF
 vw
 Dv
-Ud
-La
 df
+df
+Jz
 bm
 FZ
 Wb
