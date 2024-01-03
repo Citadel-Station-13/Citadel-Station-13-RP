@@ -415,7 +415,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/fitness)
 "bh" = (
-/obj/machinery/icecream_vat,
+/obj/structure/icecream_cart,
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/freezer)
 "bi" = (

@@ -374,7 +374,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/class_m/inside)
 "iO" = (
-/obj/machinery/icecream_vat,
+/obj/structure/icecream_cart,
 /obj/machinery/light{
 	dir = 8
 	},
@@ -730,7 +730,7 @@
 /turf/simulated/floor/outdoors/dirt/classm,
 /area/class_m/outside)
 "qX" = (
-/obj/machinery/icecream_vat,
+/obj/structure/icecream_cart,
 /turf/simulated/floor/tiled/freezer,
 /area/class_m/inside)
 "qY" = (
