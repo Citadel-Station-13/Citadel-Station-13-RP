@@ -136,6 +136,8 @@
 		++seal_operation
 		seal_mutex = FALSE
 
+	return sealed == RIG_PIECE_SEALED
+
 /datum/component/rig_piece/proc/unseal_sync(instant, silent, subtle)
 	if(sealed == RIG_PIECE_UNSEALED)
 		return TRUE
@@ -166,6 +168,8 @@
 		++seal_operation
 		seal_mutex = FALSE
 
+	return sealed == RIG_PIECE_UNSEALED
+
 /**
  * @params
  * * silent - suppress sound
@@ -178,6 +182,7 @@
 	physical.worn_state = state_worn_sealed
 	physical.icon_state = state_sealed
 	controller.legacy_sync_piece(src, TRUE)
+	sealed = RIG_PIECE_SEALED
 	#warn maint panel
 	update_piece_data()
 
@@ -192,6 +197,8 @@
 			range = MESSAGE_RANGE_INVENTORY_SOFT,
 		)
 
+	return TRUE
+
 /**
  * @params
  * * actor - (optional) actor data for this action
@@ -205,6 +212,7 @@
 	physical.worn_state = state_worn_unsealed
 	physical.icon_state = state_unsealed
 	controller.legacy_sync_piece(src, FALSE)
+	sealed = RIG_PIECE_UNSEALED
 	#warn maint panel
 	update_piece_data()
 
@@ -215,6 +223,8 @@
 			SPAN_NOTICE("[physical] unlatches from [controller.wearer]."),
 			range = MESSAGE_RANGE_INVENTORY_SOFT,
 		)
+
+	return TRUE
 
 /datum/component/rig_piece/proc/deploy(mob/onto, inv_op_flags, subtle, silent)
 	if(isnull(onto))
@@ -333,4 +343,10 @@
 
 /obj/item/clothing/gloves/rig
 
+/obj/item/clothing/gloves/rig/equip_worn_over_check(mob/M, slot, mob/user, obj/item/I, flags)
+	return !istype(I, /obj/item/clothing/gloves/rig)
+
 /obj/item/clothing/shoes/rig
+
+/obj/item/clothing/shoes/rig/equip_worn_over_check(mob/M, slot, mob/user, obj/item/I, flags)
+	return !istype(I, /obj/item/clothing/shoes/rig)

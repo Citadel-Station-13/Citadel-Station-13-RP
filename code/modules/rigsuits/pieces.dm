@@ -75,6 +75,8 @@
 /obj/item/rig/proc/undeploy_suit_async(instant_unseal, force, subtle, silent)
 	for(var/id in piece_lookup)
 		var/datum/component/rig_piece/piece = piece_lookup[id]
+		if(!piece.is_deployed())
+			continue
 		INVOKE_ASYNC(src, PROC_REF(undeploy_piece_sync), piece, instant_unseal, force, subtle, silent)
 	return TRUE
 
@@ -91,6 +93,8 @@
 	. = TRUE
 	for(var/id in piece_lookup)
 		var/datum/component/rig_piece/piece = piece_lookup[id]
+		if(!piece.is_deployed())
+			continue
 		INVOKE_ASYNC(src, PROC_REF(undeploy_piece_sync), piece, instant_unseal, force, subtle, silent)
 		//* warning: shitcode ahead
 		//* this relies on the fact byond is single-threaded
@@ -99,7 +103,10 @@
 		if(!piece.seal_mutex && (piece.sealed != RIG_PIECE_UNSEALED))
 			// failed instantly
 			. = FALSE
-		collected[piece] = piece.seal_operation
+		else
+			collected[piece] = piece.seal_operation
+	if(!.)
+		return
 	for(var/datum/component/rig_piece/piece as anything in collected)
 		. = . && piece.block_on_unsealing(collected[piece])
 

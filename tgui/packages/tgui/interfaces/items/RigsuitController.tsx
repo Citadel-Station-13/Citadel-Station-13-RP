@@ -7,7 +7,6 @@ import { BooleanLike } from "common/react";
 import { InfernoNode } from "inferno";
 import { getModuleData, useBackend, useLocalState } from "../../backend";
 import { Button, Flex, Icon, LabeledList, NoticeBox, Section, Stack, Tabs } from "../../components";
-import { ButtonProps } from "../../components/Button";
 import { Window } from "../../layouts";
 import { RigActivationStatus, RigControlFlags, RigModuleReflist, RigPieceReflist, RigPieceSealStatus, RigUIZoneSelection } from "./RigsuitCommon";
 import { RigsuitPieceData } from "./RigsuitPiece";
@@ -161,15 +160,42 @@ export const RigsuitController = (props, context) => {
                   </Tabs.Tab>
                   {rig.pieceRefs.map((ref) => {
                     let pieceData = getModuleData<RigsuitPieceData>(context, ref);
-                    let pieceSealButtonProps: ButtonProps = {};
+                    let pieceSealButton: InfernoNode | undefined;
                     switch (pieceData.sealed) {
                       case RigPieceSealStatus.Sealed:
+                        pieceSealButton = (
+                          <Button.Confirm
+                            selected
+                            icon="lock"
+                            confirmColor="average"
+                            confirmContent={null}
+                            confirmIcon="unlock"
+                            onClick={() => act('seal', { piece: pieceData.id, on: false })} />
+                        );
                         break;
                       case RigPieceSealStatus.Unsealed:
+                        pieceSealButton = (
+                          <Button
+                            icon="unlock"
+                            color="transparent"
+                            onClick={() => act('seal', { piece: pieceData.id, on: true })} />
+                        );
                         break;
                       case RigPieceSealStatus.Sealing:
+                        pieceSealButton = (
+                          <Button
+                            color="average"
+                            icon="lock"
+                            onClick={() => act('seal', { piece: pieceData.id, on: false })} />
+                        );
                         break;
                       case RigPieceSealStatus.Unsealing:
+                        pieceSealButton = (
+                          <Button
+                            icon="unlock"
+                            color="average"
+                            onClick={() => act('seal', { piece: pieceData.id, on: true })} />
+                        );
                         break;
                     }
                     return (
@@ -187,20 +213,23 @@ export const RigsuitController = (props, context) => {
                           <Stack.Item>
                             <Flex direction="column" fill justify="space-around">
                               <Flex.Item>
-                                <Button.Confirm
-                                  color="transparent"
-                                  icon={0? "lock" : "unlock"}
-                                  confirmColor="average"
-                                  confirmContent={null}
-                                  confirmIcon={0? "lock": "unlock"} />
+                                {pieceSealButton}
                               </Flex.Item>
                               <Flex.Item>
-                                <Button.Confirm
-                                  color="transparent"
-                                  icon={0? "circle" : "circle-o"}
-                                  confirmColor="average"
-                                  confirmContent={null}
-                                  confirmIcon={0? "circle": "circle-o"} />
+                                {pieceData.deployed? (
+                                  <Button.Confirm
+                                    selected
+                                    icon="circle"
+                                    confirmColor="red"
+                                    confirmContent={null}
+                                    confirmIcon="circle-o"
+                                    onClick={() => act('deploy', { piece: pieceData.id, on: false })} />
+                                ) : (
+                                  <Button
+                                    color="transparent"
+                                    icon="circle-o"
+                                    onClick={() => act('deploy', { piece: pieceData.id, on: true })} />
+                                )}
                               </Flex.Item>
                             </Flex>
                           </Stack.Item>
