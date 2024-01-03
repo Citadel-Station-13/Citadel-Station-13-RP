@@ -2,11 +2,16 @@
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
 /datum/reagent_metabolism
+	//* Area
+	#warn impl
+
 	//* Normal
 	/// world.time added at first
 	var/added_time
 	/// cycles this has been in someone
 	var/cycles = 0
+
+	#warn overdose cycles, etc
 
 	//* Volume
 	/// highest amount that was ever in them so far

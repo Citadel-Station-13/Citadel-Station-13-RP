@@ -36,8 +36,6 @@
 	if(alien != IS_DIONA)
 		M.add_chemical_effect(CE_ANTACID, 3)//Antipuke effect
 
-
-
 /datum/reagent/carthatoline
 	name = "Carthatoline"
 	id = "carthatoline"

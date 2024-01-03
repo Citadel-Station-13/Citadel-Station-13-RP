@@ -10,6 +10,9 @@
 	/// body_cover_flags that count as covering us
 	var/body_part_flags = NONE
 
+	//* Reagents
+	#warn impl
+
 	//? Wounds
 	/// Wound datum list.
 	var/list/wounds

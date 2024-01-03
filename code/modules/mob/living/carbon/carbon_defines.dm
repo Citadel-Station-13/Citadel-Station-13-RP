@@ -25,9 +25,10 @@
 	//Active emote/pose
 	var/pose = null
 	var/list/chem_effects = list()
+	
+	#warn uhh
 	var/datum/reagent_holder/metabolism/bloodstream/bloodstr = null
 	var/datum/reagent_holder/metabolism/ingested/ingested = null
-	var/datum/reagent_holder/metabolism/touch/touching = null
 
 	var/pulse = PULSE_NORM	//current pulse level
 

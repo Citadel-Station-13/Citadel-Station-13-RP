@@ -43,7 +43,6 @@
 	vision_innate = /datum/vision/baseline/species_tier_2
 
 	flash_mod  = 1.2
-	chemOD_mod = 0.9
 
 	bloodloss_rate = 1.5
 

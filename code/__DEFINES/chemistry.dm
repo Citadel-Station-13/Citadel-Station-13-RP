@@ -3,14 +3,26 @@
 
 //* These are flags for combined checks, but are often passed as an one-bit-value enum to procs.
 /// Splashed, touched, sprayed, etc
-#define REAGENT_APPLY_TOUCH (1<<0)
+#define REAGENT_APPLY_SKIN (1<<0)
+/// Patches, etc. Implied to be partially hypodermic, and at least apply more effectively.
+#define REAGENT_APPLY_PATCH (1<<1)
 /// Eaten, drunk, etc
-#define REAGENT_APPLY_INGEST (1<<1)
+#define REAGENT_APPLY_INGEST (1<<2)
 /// Injected into bloodstream or equivalent
-#define REAGENT_APPLY_INJECT (1<<2)
+#define REAGENT_APPLY_INJECT (1<<3)
 /// Inhaled or immersed in gas
 //  todo: this is currently unimplemented.
-#define REAGENT_APPLY_VAPOR (1<<3)
+#define REAGENT_APPLY_INHALE (1<<4)
+
+//* Metabolism *//
+
+#warn REM?
+
+//* Mobs *//
+
+//* Reagent biologies - replaces IS_XYZ's. One's species ID is automatically added to reagent biologies.
+/// format a species ID to be a reagent biology
+#define REAGENT_BIOLOGY_SPECIES(ID) ("s-" + ID)
 
 //* Simulation *//
 
@@ -57,23 +69,6 @@
 #define IS_MOTH		17
 #define IS_NARAMADI 18
 
-/// Inaprovaline
-#define CE_STABLE "stable"
-/// Antibiotics
-#define CE_ANTIBIOTIC "antibiotic"
-/// Iron/nutriment
-#define CE_BLOODRESTORE "bloodrestore"
-#define CE_PAINKILLER "painkiller"
-/// Liver filtering
-#define CE_ALCOHOL "alcohol"
-/// Liver damage
-#define CE_ALCOHOL_TOXIC "alcotoxic"
-/// Hyperzine
-#define CE_SPEEDBOOST "gofast"
-/// Slowdown
-#define CE_SLOWDOWN "goslow"
-/// Don't puke.
-#define CE_ANTACID "nopuke"
 #define REAGENTS_PER_SHEET 20
 
 // Attached to CE_ANTIBIOTIC

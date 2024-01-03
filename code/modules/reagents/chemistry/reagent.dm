@@ -40,6 +40,11 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	/// overrides desc in guidebook
 	var/display_description
 
+	//* Metabolism
+	
+	/// tox damage per unit metabolised when overdosing
+	var/overdose_standard_scaling = 2
+
 	//* Properties
 
 	/// specific heat in J*K/u (so joules needed to change 1 degree Kelvin per unit)
@@ -63,8 +68,6 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/max_dose = 0
 	///Amount at which overdose starts
 	var/overdose = 0
-	///Modifier to overdose damage
-	var/overdose_mod = 2
 	/// Can the chemical OD when processing on touch?
 	var/can_overdose_touch = FALSE
 	/// Shows up on health analyzers.
@@ -262,14 +265,6 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 				return
 		M.nutrition += removed * blood_content //We should always be able to process real blood.
 
-/datum/reagent/proc/overdose(var/mob/living/carbon/M, var/alien, var/removed) // Overdose effect.
-	if(alien == IS_DIONA)
-		return
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		overdose_mod *= H.species.chemOD_mod
-	M.adjustToxLoss(removed * overdose_mod)
-
 /datum/reagent/proc/initialize_data(newdata) // Called when the reagent is created.
 	if(!isnull(newdata))
 		data = newdata
@@ -364,7 +359,37 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 // todo: implement this proc, replace touch_turf/reaction_turf and similar with it.
 // /datum/reagent/proc/apply_to_turf(turf/target, amount, list/data)
 
-//* Mixing
+//* Metabolism *//
+
+/**
+ * Called when we start metabolizing in a mob. (first add)
+ */
+/datum/reagent/proc/on_metabolize_start(mob/living/carbon/entity, application, datum/reagent_metabolism/metabolism)
+	return
+	#warn hook
+
+/**
+ * Called when we stop metabolizing in a mob. (on remove)
+ */
+/datum/reagent/proc/on_metabolize_end(mob/living/carbon/entity, application, datum/reagent_metabolism/metabolism)
+	return
+	#warn hook
+
+/**
+ * Called on overdose ticks during mob metabolism.
+ * 
+ * @params
+ * * entity - the victim
+ * * speed - multiplier to amount being processed
+ * * application - the REAGENT_APPLY_* flags
+ * * metabolism - the /datum/reagent_metabolism data; the overdose_cycles will be incremented automatically.
+ */
+/datum/reagent/proc/on_overdose_tick(mob/living/carbon/entity, removed, application, datum/reagent_metabolism/metabolism)
+	// default overdose effects
+	if(overdose_standard_scaling)
+		entity.adjustToxLoss(removed * overdose_standard_scaling)
+
+//* Mixing *//
 
 /**
  * called when a new reagent is being mixed with this one to mix our data lists.

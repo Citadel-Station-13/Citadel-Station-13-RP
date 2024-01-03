@@ -257,8 +257,6 @@
 	var/flash_burn = 0
 	/// Stun from sounds, I.E. flashbangs.
 	var/sound_mod = 1
-	/// Damage modifier for overdose
-	var/chemOD_mod = 1
 	/// The lower, the thicker the skin and better the insulation.
 	var/siemens_coefficient = 1
 	var/virus_immune
