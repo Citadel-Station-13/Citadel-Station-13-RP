@@ -154,7 +154,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/maintenance/security/upper)
+/area/maintenance/dormitory)
 "ajc" = (
 /obj/structure/closet,
 /obj/random/maintenance/medical,
@@ -485,7 +485,7 @@
 "atb" = (
 /obj/structure/closet/largecardboard,
 /turf/simulated/floor/plating,
-/area/maintenance/security/upper)
+/area/maintenance/dormitory)
 "atc" = (
 /obj/structure/flora/pottedplant/stoutbush,
 /obj/effect/floor_decal/borderfloor{
@@ -3223,7 +3223,7 @@
 	name = "Priapic Monument"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/maintenance/security/upper)
+/area/maintenance/dormitory)
 "bXk" = (
 /obj/structure/bed/chair/wood{
 	dir = 8
@@ -3779,7 +3779,7 @@
 "cqn" = (
 /obj/fiftyspawner/steel,
 /turf/simulated/floor/tiled/techfloor,
-/area/maintenance/security/upper)
+/area/maintenance/dormitory)
 "cqp" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
@@ -6049,7 +6049,7 @@
 /obj/effect/floor_decal/rust,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/maintenance/security/upper)
+/area/maintenance/dormitory)
 "dMA" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
@@ -6794,7 +6794,7 @@
 "eoA" = (
 /obj/structure/closet/firecloset,
 /turf/simulated/floor/plating,
-/area/maintenance/security/upper)
+/area/maintenance/dormitory)
 "epm" = (
 /obj/effect/debris/cleanable/cobweb2,
 /obj/machinery/door/airlock/engineering{
@@ -9890,8 +9890,9 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/dormitory)
 "gsd" = (
-/turf/simulated/floor/tiled/techfloor,
-/area/maintenance/security/upper)
+/obj/structure/closet/emcloset,
+/turf/simulated/floor/plating,
+/area/maintenance/dormitory)
 "gsD" = (
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/paleblue/border,
@@ -12387,7 +12388,7 @@
 /obj/effect/floor_decal/rust,
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/plating,
-/area/maintenance/security/upper)
+/area/maintenance/dormitory)
 "hRp" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -13896,7 +13897,7 @@
 "iRU" = (
 /obj/structure/closet/crate,
 /turf/simulated/floor/plating,
-/area/maintenance/security/upper)
+/area/maintenance/dormitory)
 "iSd" = (
 /obj/structure/catwalk,
 /obj/machinery/door/airlock/maintenance/common,
@@ -14685,7 +14686,7 @@
 /obj/item/stack/cable_coil,
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/maintenance/security/upper)
+/area/maintenance/dormitory)
 "jsh" = (
 /obj/machinery/power/smes/buildable{
 	RCon_tag = "Substation - Research Main";
@@ -16225,7 +16226,7 @@
 /obj/effect/floor_decal/rust,
 /obj/item/tool/wrench,
 /turf/simulated/floor/tiled/techfloor,
-/area/maintenance/security/upper)
+/area/maintenance/dormitory)
 "ksE" = (
 /obj/structure/curtain/open/bed{
 	name = "brown curtain";
@@ -16520,7 +16521,7 @@
 "kyH" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/techfloor,
-/area/maintenance/security/upper)
+/area/maintenance/dormitory)
 "kzc" = (
 /obj/structure/closet,
 /obj/random/tool,
@@ -18213,10 +18214,6 @@
 /obj/item/bedsheet/greendouble,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_6)
-"lAK" = (
-/obj/machinery/door/airlock/maintenance/common,
-/turf/simulated/floor/plating,
-/area/maintenance/security/upper)
 "lAW" = (
 /obj/machinery/door/firedoor/glass,
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
@@ -18497,7 +18494,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/security/upper)
+/area/maintenance/dormitory)
 "lHO" = (
 /obj/effect/floor_decal/spline/plain,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -18600,7 +18597,7 @@
 "lKJ" = (
 /obj/machinery/space_heater,
 /turf/simulated/floor/tiled/techfloor,
-/area/maintenance/security/upper)
+/area/maintenance/dormitory)
 "lLc" = (
 /obj/structure/table/standard,
 /obj/effect/floor_decal/corner/paleblue{
@@ -20014,7 +20011,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/security/upper)
+/area/maintenance/dormitory)
 "mAG" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
@@ -20052,7 +20049,7 @@
 	},
 /obj/structure/closet/firecloset,
 /turf/simulated/floor/plating,
-/area/maintenance/security/upper)
+/area/maintenance/dormitory)
 "mCa" = (
 /obj/structure/table/standard,
 /obj/structure/closet/secure_closet/medical_wall{
@@ -24542,11 +24539,9 @@
 /turf/simulated/floor/reinforced,
 /area/security/hammerhead_bay)
 "pqG" = (
-/obj/structure/bed/chair/wood{
-	dir = 4
-	},
-/turf/simulated/floor/wood,
-/area/crew_quarters/coffee_shop)
+/obj/structure/girder,
+/turf/simulated/floor/plating,
+/area/maintenance/dormitory)
 "pqQ" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
@@ -25368,7 +25363,7 @@
 "pWS" = (
 /obj/structure/closet/largecardboard,
 /turf/simulated/floor/tiled/techfloor,
-/area/maintenance/security/upper)
+/area/maintenance/dormitory)
 "pXN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -26134,7 +26129,7 @@
 "qvW" = (
 /obj/structure/girder/displaced,
 /turf/simulated/floor/plating,
-/area/maintenance/security/upper)
+/area/maintenance/dormitory)
 "qwz" = (
 /obj/spawner/window/low_wall/full/nogrille/firelocks,
 /turf/simulated/floor/plating,
@@ -34421,7 +34416,7 @@
 /obj/effect/floor_decal/rust,
 /obj/item/tool/screwdriver,
 /turf/simulated/floor/tiled/techfloor,
-/area/maintenance/security/upper)
+/area/maintenance/dormitory)
 "vVs" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -34641,7 +34636,7 @@
 "wdP" = (
 /obj/item/clothing/head/sombrero,
 /turf/simulated/floor/tiled/techfloor,
-/area/maintenance/security/upper)
+/area/maintenance/dormitory)
 "wdQ" = (
 /obj/structure/grille,
 /obj/effect/overlay/snow/floor,
@@ -36233,7 +36228,7 @@
 /obj/item/pickaxe,
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/maintenance/security/upper)
+/area/maintenance/dormitory)
 "xnI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -48642,7 +48637,7 @@ piR
 piR
 nxY
 nxY
-nxY
+jFC
 jFC
 jFC
 jFC
@@ -48835,8 +48830,8 @@ nCx
 rnE
 fHU
 neF
-pqG
-tnj
+nxY
+nxY
 hJs
 hJs
 hJs
@@ -64325,9 +64320,9 @@ pBj
 pBj
 pBj
 pBj
-kcn
-vBG
-vBG
+fzX
+uLR
+uLR
 kRV
 hHV
 ajn
@@ -64519,9 +64514,9 @@ pBj
 pBj
 pBj
 pBj
-kcn
-vBG
-vBG
+fzX
+uLR
+uLR
 kRV
 kRV
 kRV
@@ -64713,14 +64708,14 @@ pBj
 pBj
 pBj
 pBj
-kcn
-vBG
-vBG
-kcn
-vBG
-vBG
-vBG
-vBG
+fzX
+uLR
+uLR
+fzX
+uLR
+uLR
+uLR
+uLR
 gYM
 qwz
 mhd
@@ -64907,14 +64902,14 @@ pBj
 pBj
 pBj
 pBj
-kcn
-vBG
-vBG
-kcn
-pCP
-vBG
-vBG
-vBG
+fzX
+uLR
+uLR
+fzX
+cmA
+uLR
+uLR
+uLR
 gYM
 oQY
 lrw
@@ -65101,14 +65096,14 @@ pBj
 pBj
 pBj
 pBj
-kcn
-vBG
-vBG
-gIF
-vBG
-vBG
-vBG
-vBG
+fzX
+uLR
+uLR
+pqG
+uLR
+uLR
+uLR
+uLR
 gYM
 djA
 dOd
@@ -65295,14 +65290,14 @@ pBj
 pBj
 pBj
 pBj
-kcn
-vBG
-vBG
-kcn
-vBG
-vBG
-pCP
-pCP
+fzX
+uLR
+uLR
+fzX
+uLR
+uLR
+cmA
+cmA
 gYM
 djA
 dOd
@@ -65315,7 +65310,7 @@ gYM
 ahQ
 kyH
 krG
-lMt
+gvY
 bXh
 lKJ
 npm
@@ -65489,14 +65484,14 @@ pBj
 pBj
 pBj
 pBj
-kcn
-pCP
-vBG
+fzX
+cmA
+uLR
 qvW
-vBG
-vBG
-pCP
-vBG
+uLR
+uLR
+cmA
+uLR
 gYM
 bJz
 dOd
@@ -65508,9 +65503,9 @@ dOd
 gYM
 cqn
 vVr
-pCP
+cmA
 xnw
-gsd
+nso
 npm
 npm
 req
@@ -65683,14 +65678,14 @@ pBj
 pBj
 pBj
 pBj
-kcn
-pCP
-vBG
-kcn
-vBG
-vBG
-vBG
-vBG
+fzX
+cmA
+uLR
+fzX
+uLR
+uLR
+uLR
+uLR
 gYM
 lzB
 dOd
@@ -65701,8 +65696,8 @@ mbB
 bBN
 gYM
 wdP
-gIF
-gIF
+pqG
+pqG
 jse
 pWS
 npm
@@ -65877,28 +65872,28 @@ pBj
 pBj
 pBj
 pBj
-kcn
-pCP
-pCP
-kcn
-gIF
-gIF
-kcn
-kcn
-kcn
-kcn
+fzX
+cmA
+cmA
+fzX
+pqG
+pqG
+fzX
+fzX
+fzX
+fzX
 hQA
-kcn
-kcn
-kcn
-kcn
-kcn
-kcn
-pCP
-pCP
-pCP
-lMt
-pCP
+fzX
+fzX
+fzX
+fzX
+fzX
+fzX
+cmA
+cmA
+cmA
+gvY
+cmA
 npm
 npm
 req
@@ -66071,29 +66066,29 @@ pBj
 pBj
 pBj
 pBj
-kcn
-pCP
-pCP
-pCP
-vBG
-vBG
-pCP
-vBG
-gIF
-vBG
-lMt
-vBG
-vBG
-kBE
-osF
+fzX
+cmA
+cmA
+cmA
+uLR
+uLR
+cmA
+uLR
+pqG
+uLR
+gvY
+uLR
+uLR
+mNx
+gsd
 eoA
-kcn
-pCP
+fzX
+cmA
 dLN
-pCP
-lMt
-pCP
-vBG
+cmA
+gvY
+cmA
+uLR
 npm
 npm
 aoU
@@ -66106,12 +66101,12 @@ npm
 gMa
 npm
 npm
-pCP
-pCP
-vBG
-lMt
-kBE
-kcn
+cmA
+cmA
+uLR
+gvY
+mNx
+fzX
 pBj
 pBj
 pBj
@@ -66265,47 +66260,47 @@ pBj
 pBj
 pBj
 pBj
-kcn
-pCP
-pCP
-pCP
-vBG
-vBG
-vBG
-vBG
-kcn
-pCP
-lMt
-lMt
+fzX
+cmA
+cmA
+cmA
+uLR
+uLR
+uLR
+uLR
+fzX
+cmA
+gvY
+gvY
 lGh
-lMt
-lMt
-lMt
-lAK
-lMt
-lMt
-lMt
-lMt
-vBG
-vBG
+gvY
+gvY
+gvY
+lIT
+gvY
+gvY
+gvY
+gvY
+uLR
+uLR
 atb
 npm
 fOh
 npm
-vjN
-vBG
+eAc
+uLR
 iRU
 mzV
 npm
 npm
 npm
-pCP
-vBG
-vBG
-vBG
-lMt
-kBE
-kcn
+cmA
+uLR
+uLR
+uLR
+gvY
+mNx
+fzX
 pBj
 pBj
 pBj
@@ -66459,47 +66454,47 @@ pBj
 pBj
 pBj
 pBj
-kcn
-kcn
-kcn
-kcn
-kcn
-kcn
-kcn
-kcn
-kcn
-kcn
-kcn
-kcn
-kcn
-kcn
-kcn
-kcn
-kcn
-fzS
-fzS
-pCP
-lMt
-lMt
-lMt
-lMt
-lMt
-lMt
-lMt
-lMt
-lMt
-lMt
-lMt
-lMt
-lMt
-lMt
-lMt
-lMt
-lMt
-lMt
-lMt
-vBG
-kcn
+fzX
+fzX
+fzX
+fzX
+fzX
+fzX
+fzX
+fzX
+fzX
+fzX
+fzX
+fzX
+fzX
+fzX
+fzX
+fzX
+fzX
+hXa
+hXa
+cmA
+gvY
+gvY
+gvY
+gvY
+gvY
+gvY
+gvY
+gvY
+gvY
+gvY
+gvY
+gvY
+gvY
+gvY
+gvY
+gvY
+gvY
+gvY
+gvY
+uLR
+fzX
 pBj
 pBj
 pBj
@@ -66669,31 +66664,31 @@ pBj
 pBj
 pBj
 pBj
-kcn
-kcn
-kcn
-vBG
-cyk
-vBG
-vBG
-pCP
-pCP
-pCP
-pCP
-vBG
-cyk
-vBG
-vBG
-vBG
-vBG
-vBG
-pCP
-pCP
-vBG
+fzX
+fzX
+fzX
+uLR
+lxr
+uLR
+uLR
+cmA
+cmA
+cmA
+cmA
+uLR
+lxr
+uLR
+uLR
+uLR
+uLR
+uLR
+cmA
+cmA
+uLR
 mBU
-osF
-vBG
-kcn
+gsd
+uLR
+fzX
 pBj
 pBj
 pBj
@@ -66865,29 +66860,29 @@ pBj
 pBj
 pBj
 pBj
-kcn
-kcn
-kcn
-kcn
-kcn
-kcn
-kcn
-kcn
-kcn
-kcn
-kcn
-kcn
-kcn
-kcn
-kcn
-kcn
-kcn
-kcn
-kcn
-kcn
-kcn
-kcn
-kcn
+fzX
+fzX
+fzX
+fzX
+fzX
+fzX
+fzX
+fzX
+fzX
+fzX
+fzX
+fzX
+fzX
+fzX
+fzX
+fzX
+fzX
+fzX
+fzX
+fzX
+fzX
+fzX
+fzX
 pBj
 pBj
 pBj
