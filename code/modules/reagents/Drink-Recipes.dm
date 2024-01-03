@@ -191,7 +191,7 @@
 /datum/chemical_reaction/drinks/kahlua
 	name = "Kahlua"
 	id = "kahlua"
-	result = "kahlua"
+	result = /datum/reagent/ethanol/coffee/kahlua
 	required_reagents = list("coffee" = 5, "sugar" = 5)
 	catalysts = list("enzyme" = 5)
 	result_amount = 5

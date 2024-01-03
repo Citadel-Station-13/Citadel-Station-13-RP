@@ -49,8 +49,8 @@
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/mining_ship/general)
 "ah" = (
-/obj/structure/closet/crate,
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/structure/closet/crate,
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/belter)
 "ai" = (
@@ -415,7 +415,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/fitness)
 "bh" = (
-/obj/machinery/icecream_vat,
+/obj/structure/icecream_cart,
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/freezer)
 "bi" = (
@@ -1116,6 +1116,7 @@
 /obj/item/pickaxe/silver,
 /obj/item/clothing/head/helmet/space/void/mining,
 /obj/item/clothing/suit/space/void/mining,
+/obj/item/tank/emergency/oxygen/double,
 /obj/item/tank/emergency/oxygen/double,
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/belter)
@@ -3863,6 +3864,11 @@
 /obj/machinery/computer/shuttle_control/belter{
 	dir = 4
 	},
+/obj/item/gps/internal/base{
+	desc = "A tracking beacon embedded in the belter shuttle systems, to help miners find where they left their shuttle.";
+	gps_tag = "BELTER";
+	name = "belter beacon"
+	},
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/belter)
 "ls" = (
@@ -6092,6 +6098,9 @@
 "sm" = (
 /obj/structure/bed/chair/shuttle,
 /obj/structure/closet/walllocker/emerglocker/north,
+/obj/structure/panic_button{
+	pixel_x = 32
+	},
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/mining_ship/general)
 "sn" = (
@@ -7261,7 +7270,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled/steel/airless,
+/turf/simulated/floor/tiled/steel,
 /area/shuttle/mining_ship/general)
 "vx" = (
 /obj/machinery/light/small{
@@ -8140,6 +8149,9 @@
 /obj/item/stack/flag/green,
 /obj/item/stack/flag/yellow,
 /obj/item/stack/flag/red,
+/obj/item/binoculars{
+	pixel_y = 6
+	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/refinery)
 "xW" = (
@@ -15216,6 +15228,7 @@
 /area/crew_quarters/bar)
 "TB" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/structure/table/steel_reinforced,
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/belter)
 "TC" = (
@@ -15910,6 +15923,8 @@
 /area/shuttle/mining_ship/general)
 "Vz" = (
 /obj/machinery/light,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/structure/table/steel_reinforced,
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/belter)
 "VA" = (
@@ -16754,6 +16769,7 @@
 /obj/item/pickaxe/silver,
 /obj/item/clothing/head/helmet/space/void/mining,
 /obj/item/clothing/suit/space/void/mining,
+/obj/item/tank/emergency/oxygen/double,
 /obj/item/tank/emergency/oxygen/double,
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/mining_ship/general)
