@@ -51,8 +51,8 @@
 
 	activation_mutex = TRUE
 	activation_state = RIG_ACTIVATION_ACTIVATING
-	push_ui_data(list("activation" = RIG_ACTIVATION_ACTIVATING))
-	maint_panel?.push_ui_data(list("activation" = RIG_ACTIVATION_ACTIVATING))
+	push_ui_data(data = ("activation" = RIG_ACTIVATION_ACTIVATING))
+	maint_panel?.push_ui_data(data = ("activation" = RIG_ACTIVATION_ACTIVATING))
 
 	if(!instant)
 		wearer.visible_message(
@@ -96,8 +96,8 @@
 
 	activation_mutex = TRUE
 	activation_state = RIG_ACTIVATION_DEACTIVATING
-	push_ui_data(list("activation" = RIG_ACTIVATION_DEACTIVATING))
-	maint_panel?.push_ui_data(list("activation" = RIG_ACTIVATION_DEACTIVATING))
+	push_ui_data(data = ("activation" = RIG_ACTIVATION_DEACTIVATING))
+	maint_panel?.push_ui_data(data = ("activation" = RIG_ACTIVATION_DEACTIVATING))
 
 	if(!instant)
 		// wearer is not necessarily there for deactivation
@@ -136,8 +136,8 @@
 
 	if(activation_state != RIG_ACTIVATION_ONLINE)
 		activation_state = RIG_ACTIVATION_ONLINE
-		push_ui_data(list("activation" = RIG_ACTIVATION_ONLINE))
-		maint_panel?.push_ui_data(list("activation" = RIG_ACTIVATION_ONLINE))
+		push_ui_data(data = ("activation" = RIG_ACTIVATION_ONLINE))
+		maint_panel?.push_ui_data(data = ("activation" = RIG_ACTIVATION_ONLINE))
 
 		if(was_instant)
 			wearer.visible_message(
@@ -179,8 +179,8 @@
 
 	if(activation_state != RIG_ACTIVATION_OFFLINE)
 		activation_state = RIG_ACTIVATION_OFFLINE
-		push_ui_data(list("activation" = RIG_ACTIVATION_OFFLINE))
-		maint_panel?.push_ui_data(list("activation" = RIG_ACTIVATION_OFFLINE))
+		push_ui_data(data = ("activation" = RIG_ACTIVATION_OFFLINE))
+		maint_panel?.push_ui_data(data = ("activation" = RIG_ACTIVATION_OFFLINE))
 
 		// wearer is not always there for deactivation
 		wearer?.visible_message(

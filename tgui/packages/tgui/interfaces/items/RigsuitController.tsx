@@ -32,50 +32,13 @@ export const RigsuitController = (props, context) => {
   const { data, act } = useBackend<RigsuitControllerData>(context);
   const rig = data;
 
-  let rigActivationButton: InfernoNode | null = null;
-
-  switch (rig.activation) {
-    case RigActivationStatus.Activating:
-      rigActivationButton = (
-        <Button
-          color="average"
-          icon="lock"
-          onClick={() => act('activation', { on: false })} />
-      );
-      break;
-    case RigActivationStatus.Deactivating:
-      rigActivationButton = (
-        <Button
-          color="average"
-          icon="unlock"
-          onClick={() => act('activation', { on: true })} />
-      );
-      break;
-    case RigActivationStatus.Offline:
-      rigActivationButton = (
-        <Button
-          color="bad"
-          icon="unlock"
-          onClick={() => act('activation', { on: true })} />
-      );
-      break;
-    case RigActivationStatus.Online:
-      rigActivationButton = (
-        <Button.Confirm
-          color="good"
-          icon="lock"
-          confirmColor="bad"
-          confirmContent={null}
-          confirmIcon="unlock"
-          onClick={() => act('activation', { on: false })} />
-      );
-      break;
-  }
-
   return (
     <Window width={450} height={800} title={`${rig.theme} hardsuit controller`}>
       <Window.Content>
         <Stack fill vertical>
+          <Stack.Item>
+            {rig.activation}
+          </Stack.Item>
           <Stack.Item maxHeight="40%">
             <Stack fill>
               {suitSection === "All" && (
@@ -152,7 +115,7 @@ export const RigsuitController = (props, context) => {
                       <Stack.Item>
                         <Flex height="100%" direction="column" justify="space-around">
                           <Flex.Item>
-                            {rigActivationButton}
+                            <RigActivationButton activation={rig.activation} />
                           </Flex.Item>
                         </Flex>
                       </Stack.Item>
@@ -263,5 +226,49 @@ export const RigsuitController = (props, context) => {
         </Stack>
       </Window.Content>
     </Window>
+  );
+};
+
+interface RigActivationButtonProps {
+  readonly activation: RigActivationStatus;
+}
+
+const RigActivationButton = (props: RigActivationButtonProps, context) => {
+  const { act } = useBackend(context);
+  switch (props.activation) {
+    case RigActivationStatus.Activating:
+      return (
+        <Button
+          color="average"
+          icon="lock"
+          onClick={() => act('activation', { on: false })} />
+      );
+    case RigActivationStatus.Deactivating:
+      return (
+        <Button
+          color="average"
+          icon="unlock"
+          onClick={() => act('activation', { on: true })} />
+      );
+    case RigActivationStatus.Offline:
+      return (
+        <Button
+          color="bad"
+          icon="unlock"
+          onClick={() => act('activation', { on: true })} />
+      );
+    case RigActivationStatus.Online:
+      return (
+        <Button.Confirm
+          color="good"
+          icon="lock"
+          confirmColor="average"
+          confirmContent={null}
+          confirmIcon="unlock"
+          onClick={() => act('activation', { on: false })} />
+      );
+  }
+  return (
+    <Button color="bad" content="?" />
   );
 };

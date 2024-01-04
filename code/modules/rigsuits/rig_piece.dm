@@ -259,7 +259,7 @@
 			unseal()
 
 	var/mob/wearing = I.worn_mob()
-	if(!isnull(wearing))
+	if(isnull(wearing))
 		I.forceMove(controller)
 	else
 		. = wearing.transfer_item_to_loc(I, controller, inv_op_flags, wearing)
