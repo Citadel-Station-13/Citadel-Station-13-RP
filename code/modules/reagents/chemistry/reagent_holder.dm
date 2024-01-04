@@ -237,6 +237,9 @@
 			update_total()
 
 /datum/reagent_holder/proc/remove_reagent(id, amount, safety = 0)
+	if(ispath(id))
+		var/datum/reagent/path = id
+		id = initial(path.id)
 	if(!isnum(amount))
 		return 0
 	for(var/datum/reagent/current in reagent_list)
@@ -261,6 +264,9 @@
 			return 0
 
 /datum/reagent_holder/proc/has_reagent(id, amount = 0)
+	if(ispath(id))
+		var/datum/reagent/path = id
+		id = initial(path.id)
 	for(var/datum/reagent/current in reagent_list)
 		if(current.id == id)
 			if(current.volume >= amount)
@@ -314,6 +320,9 @@
 			return current
 
 /datum/reagent_holder/proc/get_reagent_amount(id)
+	if(ispath(id))
+		var/datum/reagent/path = id
+		id = initial(path.id)
 	for(var/datum/reagent/current in reagent_list)
 		if(current.id == id)
 			return current.volume
@@ -594,13 +603,87 @@
 			do_happen = TRUE
 	return do_happen
 
-//? Queries - Whole
+//? Queries
 
 /**
  * returns volume remaining
  */
 /datum/reagent_holder/proc/available_volume()
 	return maximum_volume - total_volume
+
+/**
+ * returns lowest multiple of what we have compared to reagents list.
+ *
+ * both typepaths and ids are acceptable.
+ */
+/datum/reagents/proc/has_multiple(list/reagents, multiplier = 1)
+	. = INFINITY
+	// *sigh*
+	var/list/legacy_translating = list()
+	for(var/datum/reagent/R in reagent_list)
+		legacy_translating[R.id] = R.volume
+	for(var/datum/reagent/reagent as anything in reagents)
+		. = min(., legacy_translating[ispath(reagent)? initial(reagent.id) : reagent] / reagents[reagent])
+		if(!.)
+			return
+
+//? Transfers
+
+/**
+ * @params
+ * * target - target holder
+ * * reagents - list of paths or ids to filter by
+ * * amount - limit of how much
+ * * copy - do not remove the reagent from source
+ * * multiplier - magically multiply the transferred reagent volumes by this much; does not affect return value.
+ * * defer_reactions - should we + the recipient handle reactions?
+ *
+ * @return reagents transferred
+ */
+/datum/reagents/proc/transfer_to_holder(datum/reagents/target, list/reagents, amount = INFINITY, copy, multiplier = 1, defer_reactions)
+	. = 0
+	if(!total_volume)
+		return
+	if(!reagents)
+		var/ratio = min(1, (target.maximum_volume - target.total_volume) / total_volume)
+		. = total_volume * ratio
+		if(!copy)
+			for(var/datum/reagent/R as anything in reagent_list)
+				var/transferred = R.volume * ratio
+				target.add_reagent(R.id, transferred * multiplier, R.get_data(), safety = TRUE)
+				remove_reagent(R.id, transferred, safety = TRUE)
+		else
+			for(var/datum/reagent/R as anything in reagent_list)
+				var/transferred = R.volume * ratio
+				target.add_reagent(R.id, transferred * multiplier, R.get_data(), safety = TRUE)
+	else
+		var/total_transferable = 0
+		var/list/reagents_transferring = list()
+		// preprocess
+		for(var/i in 1 to length(reagents))
+			reagents[i] = SSchemistry.fetch_reagent(reagents[i])
+		// filter & gather
+		for(var/datum/reagent/R as anything in reagent_list)
+			if(!(R.id in reagents))
+				continue
+			total_transferable += R.volume
+			reagents_transferring += R
+		var/ratio = min(1, (target.maximum_volume - target.total_volume) / total_transferable)
+		. = total_transferable * ratio
+		if(!copy)
+			for(var/datum/reagent/R as anything in reagents_transferring)
+				var/transferred = R.volume * ratio
+				target.add_reagent(R.id, transferred * multiplier, R.get_data(), safety = TRUE)
+				remove_reagent(R.id, transferred, safety = TRUE)
+		else
+			for(var/datum/reagent/R as anything in reagents_transferring)
+				var/transferred = R.volume * ratio
+				target.add_reagent(R.id, transferred * multiplier, R.get_data(), safety = TRUE)
+
+	if(!defer_reactions)
+		if(!copy)
+			handle_reactions()
+		target.handle_reactions()
 
 //? UI
 

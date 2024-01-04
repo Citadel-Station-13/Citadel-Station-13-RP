@@ -6070,7 +6070,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/machinery/icecream_vat,
+/obj/structure/icecream_cart,
 /turf/simulated/floor/tiled/freezer,
 /area/tradeport)
 "ww" = (
