@@ -1,20 +1,27 @@
 import { Input, Section, Stack } from "../../components";
+import { SectionProps } from "../../components/Section";
 
 export interface RigsuitConsoleData {
   lines: string[];
 }
 
-interface RigsuitConsoleProps {
-  readonly data: RigsuitConsoleData;
-  readonly inputLine: (raw: string) => void;
+interface RigsuitConsoleProps extends SectionProps {
+  readonly consoleHistory: RigsuitConsoleData;
+  readonly consoleInput?: (raw: string) => void;
 }
 
 export const RigsuitConsole = (props: RigsuitConsoleProps, context) => {
   return (
-    <Section fill>
+    <Section fill {...props} className="Rigsuit__Console">
       <Stack vertical fill>
         <Stack.Item grow={1}>
-          Test
+          <Stack vertical fill className="Rigsuit__Console-container">
+            {props.consoleHistory.lines.map((line) => (
+              <Stack.Item key={line}>
+                {line}
+              </Stack.Item>
+            ))}
+          </Stack>
         </Stack.Item>
         <Stack.Item>
           <Input />

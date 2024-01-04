@@ -26,6 +26,7 @@
 		assembled_ids += id
 	.["pieceIDs"] = assembled_ids
 	.["console"] = host.request_console().tgui_console_data()
+	.["theme"] = host.theme_name
 	#warn piece IDs updates
 	#warn console update
 

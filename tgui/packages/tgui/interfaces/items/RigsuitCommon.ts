@@ -45,7 +45,7 @@ export type RigModuleReflist = RigModuleReference[];
 
 export type RigModuleID = string;
 
-export const RigUIZoneSelection:
+export const RigModuleZoneSelection:
   {
     name: string;
     icon: string;
@@ -80,6 +80,49 @@ export const RigUIZoneSelection:
       name: "Misc",
       icon: "tg-s1-cube",
       key: "misc",
+    },
+  ];
+
+export const RigHardwareZoneSelection:
+  {
+    name: string;
+    icon: string;
+    key: string;
+  }[] = [
+    {
+      name: "Components",
+      icon: "tg-s1-stack",
+      key: "all",
+    },
+    {
+      name: "Controller",
+      icon: "tg-s1-cube",
+      key: "misc",
+    },
+    {
+      name: "Head",
+      icon: "tg-s1-space-helmet",
+      key: "head",
+    },
+    {
+      name: "Torso",
+      icon: "tg-s1-chestplate",
+      key: "torso",
+    },
+    {
+      name: "Left Arm",
+      icon: "tg-s1-glove-left",
+      key: "arms",
+    },
+    {
+      name: "Right Arm",
+      icon: "tg-s1-glove-right",
+      key: "arms",
+    },
+    {
+      name: "Legs",
+      icon: "tg-s1-boots",
+      key: "legs",
     },
   ];
 

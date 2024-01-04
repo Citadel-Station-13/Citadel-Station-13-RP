@@ -1,0 +1,19 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2024 Citadel Station developers.          *//
+
+@use 'sass:color';
+@use 'sass:meta';
+
+@use '../base.scss' with (
+  $color-fg: #ffffff,
+  $color-bg: #252525,
+);
+
+.Rigsuit__Console {
+
+}
+
+.Rigsuit__Console-container {
+  background-color: $color-bg;
+  color: $color-fg;
+}

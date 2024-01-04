@@ -48,5 +48,5 @@
 /**
  * @return list(output, admin log text)
  */
-/obj/item/rig_module/proc/console_process(mob/user, command, list/arguments)
+/obj/item/rig_module/proc/console_process(mob/user, effective_control_flags, username, command, list/arguments)
 	return list("unknown command", "<invalid>")

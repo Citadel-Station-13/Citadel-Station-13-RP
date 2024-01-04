@@ -7,7 +7,7 @@
 		"deactivate" = "Disengage the hardsuit's systems and unbinds it from its wearer",
 	)
 
-/obj/item/rig/proc/console_process(mob/user, command, list/arguments)
+/obj/item/rig/proc/console_process(mob/user, effective_control_flags, username, command, list/arguments)
 	switch(command)
 		if("activate")
 			#warn impl

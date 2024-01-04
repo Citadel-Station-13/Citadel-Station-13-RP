@@ -36,9 +36,6 @@ export const RigsuitController = (props, context) => {
     <Window width={450} height={800} title={`${rig.theme} hardsuit controller`}>
       <Window.Content>
         <Stack fill vertical>
-          <Stack.Item>
-            {rig.activation}
-          </Stack.Item>
           <Stack.Item maxHeight="40%">
             <Stack fill>
               {suitSection === "All" && (

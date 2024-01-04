@@ -80,7 +80,7 @@
 	SIGNAL_HANDLER
 	if(flags & INV_OP_SHOULD_NOT_INTERCEPT)
 		return
-	retract(INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT)
+	retract(INV_OP_FORCE)
 	return COMPONENT_ITEM_INV_OP_RELOCATE | COMPONENT_ITEM_INV_OP_SUPPRESS_SOUND
 
 /datum/component/rig_piece/proc/tgui_piece_data()
@@ -233,7 +233,7 @@
 	if(I.loc == onto)
 		return TRUE
 	else if(I.loc != controller)
-		retract(INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT, TRUE, TRUE)
+		retract(INV_OP_FORCE, TRUE, TRUE)
 	if(isnull(inventory_slot))
 		return FALSE
 	. = onto.equip_to_slot_if_possible(I, inventory_slot, inv_op_flags, onto)
@@ -262,7 +262,7 @@
 	if(isnull(wearing))
 		I.forceMove(controller)
 	else
-		. = wearing.transfer_item_to_loc(I, controller, inv_op_flags, wearing)
+		. = wearing.transfer_item_to_loc(I, controller, inv_op_flags | INV_OP_SHOULD_NOT_INTERCEPT, wearing)
 		if(!.)
 			return
 	// todo: some kind of visual feedback to people around them?
@@ -323,7 +323,7 @@
 /**
  * @return list(output, admin log text)
  */
-/datum/component/rig_piece/proc/console_process(mob/user, command, list/arguments)
+/datum/component/rig_piece/proc/console_process(mob/user, effective_control_flags, username, command, list/arguments)
 	switch(command)
 		if("deploy")
 			#warn impl
