@@ -77,7 +77,9 @@ GLOBAL_LIST_INIT(wallframe_typecache, typecacheof(list(
 		var/obj/structure/wall_frame/neighbor = locate() in step_turf
 		if(neighbor)
 			continue
-		if(!can_area_smooth(step_turf))
+		var/can_area_smooth
+		CAN_AREAS_SMOOTH(src, step_turf, can_area_smooth)
+		if(isnull(can_area_smooth))
 			continue
 		for(var/atom/movable/movable_thing as anything in step_turf)
 			if(GLOB.wallframe_typecache[movable_thing.type])
