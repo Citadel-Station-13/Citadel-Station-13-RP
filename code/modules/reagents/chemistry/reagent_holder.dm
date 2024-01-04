@@ -6,6 +6,17 @@
 	/// reagent holder flags - see [code/__DEFINES/reagents/flags.dm]
 	var/reagent_holder_flags = NONE
 
+	//* Reactions *//
+	
+	/// ongoing reactions
+	var/list/datum/chemical_reaction/ongoing_reactions
+	/// assoc list [key] = [value]: if any reagent id in this list is fully removed,
+	/// reactions needs to be reconsidered
+	var/list/reaction_removal_sensitive
+	/// assoc list [key] = [value]: if any reagent id is this list is added for the first time,
+	/// reactions needs to be reconsidered
+	var/list/reaction_add_sensitive
+
 	//* Reagents - Core *//
 
 	/// volumes; id = volume
@@ -34,18 +45,19 @@
 	/// updated by add/remove procs, as well as update_total().
 	var/maximum_volume = 100
 
-	///? legacy / unsorted
-	var/list/datum/reagent/reagent_list = list()
-
-	// todo: remove / refactor this var into reagent_holder_flags with proper defines, this was never ported properly.
-	var/reagents_holder_flags
-
 //* Init *//
 
 /datum/reagent_holder/New(volume = 100, atom/parent, flags)
 	src.reagent_holder_flags = flags
 	src.attached = parent
 	src.maximum_volume = volume
+
+/datum/reagent_holder/Destroy()
+	if(length(ongoing_reactions))
+		stop_reactions()
+	reagent_volumes = null
+	reagent_datas = null
+	return ..()
 
 //* Add / Remove *//
 
@@ -58,6 +70,11 @@
 
 /datum/reagent_holder/proc/remove_any(amount)
 	#warn impl
+
+//* Check *//
+
+/datum/reagent_holder/proc/is_full()
+	return total_volume >= maximum_volume
 
 //* Color *//
 
@@ -88,6 +105,21 @@
 
 //* Get *//
 
+/datum/reagent_holder/proc/maximum_reagent_id()
+	var/highest = 0
+	for(var/id in reagent_volumes)
+		if(reagent_volumes[id] > highest)
+			highest = reagent_volumes[id]
+			. = id
+
+/datum/reagent_holder/proc/maximum_reagent_datum()
+	var/highest = 0
+	for(var/id in reagent_volumes)
+		if(reagent_volumes[id] > highest)
+			highest = reagent_volumes[id]
+			. = id
+	return SSchemistry.fetch_reagent(.)
+
 #warn make those
 
 //* Reactions *//
@@ -96,6 +128,9 @@
 	#warn impl
 
 /datum/reagent_holder/proc/handle_reactions()
+	#warn impl
+
+/datum/reagent_holder/proc/stop_reactions()
 	#warn impl
 
 //* Transfer *//
@@ -109,20 +144,18 @@
  */
 /datum/reagent_holder/proc/update_total()
 	total_volume = 0
-	#warn impl
+	var/quantize_fucked_shit_up = FALSE
+	for(var/id in reagent_volumes)
+		if(id < REAGENT_ACCURACY)
+			remove_reagent(id, defer_reactions = TRUE)
+			quantize_fucked_shit_up = TRUE
+		total_volume += reagent_volumes[id]
+	if(quantize_fucked_shit_up)
+		consider_reactions()
 
 #warn below
 
 //! Legacy Below
-
-/datum/reagent_holder/Destroy()
-	STOP_PROCESSING(SSchemistry, src)
-	for(var/datum/reagent/R in reagent_list)
-		qdel(R)
-	reagent_list = null
-	if(my_atom && my_atom.reagents == src)
-		my_atom.reagents = null
-	return ..()
 
 // Used in attack logs for reagents in pills and such
 /datum/reagent_holder/proc/log_list()
@@ -137,46 +170,6 @@
 	return english_list(data)
 
 /* Internal procs */
-
-/datum/reagent_holder/proc/get_master_reagent() // Returns reference to the reagent with the biggest volume.
-	var/the_reagent = null
-	var/the_volume = 0
-
-	for(var/datum/reagent/A in reagent_list)
-		if(A.volume > the_volume)
-			the_volume = A.volume
-			the_reagent = A
-
-	return the_reagent
-
-/datum/reagent_holder/proc/get_master_reagent_name() // Returns the name of the reagent with the biggest volume.
-	var/the_name = null
-	var/the_volume = 0
-	for(var/datum/reagent/A in reagent_list)
-		if(A.volume > the_volume)
-			the_volume = A.volume
-			the_name = A.name
-
-	return the_name
-
-/datum/reagent_holder/proc/get_master_reagent_id() // Returns the id of the reagent with the biggest volume.
-	var/the_id = null
-	var/the_volume = 0
-	for(var/datum/reagent/A in reagent_list)
-		if(A.volume > the_volume)
-			the_volume = A.volume
-			the_id = A.id
-
-	return the_id
-
-/datum/reagent_holder/proc/update_total() // Updates volume.
-	total_volume = 0
-	for(var/datum/reagent/R in reagent_list)
-		if(R.volume < MINIMUM_CHEMICAL_VOLUME)
-			del_reagent(R.id)
-		else
-			total_volume += R.volume
-	return
 
 /datum/reagent_holder/proc/handle_reactions()
 	set waitfor = FALSE		// shitcode. reagents shouldn't ever sleep but hey :^)
@@ -205,11 +198,6 @@
 		var/datum/chemical_reaction/C = i
 		C.post_reaction(src)
 	update_total()
-
-/datum/reagent_holder/proc/holder_full()
-	if(total_volume >= maximum_volume)
-		return TRUE
-	return FALSE
 
 /* Holder-to-chemical */
 
@@ -340,26 +328,6 @@
 	for(var/datum/reagent/current in reagent_list)
 		del_reagent(current.id)
 	return
-
-/datum/reagent_holder/proc/get_reagent(id)
-	for(var/datum/reagent/current in reagent_list)
-		if(current.id == id)
-			return current
-
-/datum/reagent_holder/proc/get_reagent_amount(id)
-	if(ispath(id))
-		var/datum/reagent/path = id
-		id = initial(path.id)
-	for(var/datum/reagent/current in reagent_list)
-		if(current.id == id)
-			return current.volume
-	return 0
-
-/datum/reagent_holder/proc/get_data(id)
-	for(var/datum/reagent/current in reagent_list)
-		if(current.id == id)
-			return current.get_data()
-	return 0
 
 /datum/reagent_holder/proc/get_reagents()
 	. = list()
@@ -603,18 +571,6 @@
 	if (total_volume <= 0)
 		qdel(src)
 
-/datum/reagent_holder/proc/conditional_update_move(atom/A, Running = 0)
-	var/list/cached_reagents = reagent_list
-	for(var/datum/reagent/R in cached_reagents)
-		R.on_move (A, Running)
-	update_total()
-
-/datum/reagent_holder/proc/conditional_update(atom/A)
-	var/list/cached_reagents = reagent_list
-	for(var/datum/reagent/R in cached_reagents)
-		R.on_update (A)
-	update_total()
-
 // I wrote this while :headempty: and I'm not sure if it's correct. @Zandario
 /datum/reagent_holder/proc/can_reactions_happen()
 	var/do_happen = FALSE
@@ -711,6 +667,8 @@
 		if(!copy)
 			handle_reactions()
 		target.handle_reactions()
+
+#warn above
 
 //* UI *//
 

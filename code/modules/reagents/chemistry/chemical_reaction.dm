@@ -56,25 +56,34 @@
 	/// temperature maximum, kelvin
 	var/temperature_high
 
+	/// deciseconds to react half of the remaining amount.
+	/// used in some bullshit complex math to determine actual reaction rate
+	/// 0 for instant
+	var/reaction_half_life = 0
+
+	/// moderators: reagent ids to number to determine how much it speeds reaction
+	///
+	/// number is multiplied to half life to get actual speed
+	/// * > 1 will slow reaction
+	/// * < 0, but not 0 will speed reaction
+	/// * 0 will make reaction instant
+	/// * INFINITY will completely inhibit the reaction.
+	var/list/moderators
+	/// catalysts: reagent ids
+	///
+	/// these are required reagents to perform the reaction
+	var/list/catalysts
+	
+	/// equilibrium point; less than 1, reaction will be inhibited if ratio of product to reactant is above that
+	/// 0.5 = we stop when product == reactant volume
+	/// 0.8 = we stop when product == 4 times reactant volume
+	/// 0.9 = we stop when product == 9 times reactant volume
+	var/equilibrium = 1
+
 	//? legacy / unsorted
-	var/list/catalysts = list()
-	var/list/inhibitors = list()
-
-	//how far the reaction proceeds each time it is processed. Used with either REACTION_RATE or HALF_LIFE macros.
-	var/reaction_rate = HALF_LIFE(0)
-
-	//if less than 1, the reaction will be inhibited if the ratio of products/reagents is too high.
-	//0.5 = 50% yield -> reaction will only proceed halfway until products are removed.
-	var/yield = 1.0
-
-	//If limits on reaction rate would leave less than this amount of any reagent (adjusted by the reaction ratios),
-	//the reaction goes to completion. This is to prevent reactions from going on forever with tiny reagent amounts.
-	var/min_reaction = 2
 
 	var/mix_message = "The solution begins to bubble."
 	var/reaction_sound = 'sound/effects/bubbles.ogg'
-
-	var/log_is_important = 0 // If this reaction should be considered important for logging. Important recipes message admins when mixed, non-important ones just log to file.
 
 /datum/chemical_reaction/New()
 	resolve_paths()

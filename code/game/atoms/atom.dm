@@ -327,7 +327,7 @@
 			var/datum/atom_hud/alternate_appearance/selected_alternate_appearance = alternate_appearances[current_alternate_appearance]
 			selected_alternate_appearance.remove_from_hud(src)
 
-	if(reagents)
+	if(!isnull(reagents))
 		QDEL_NULL(reagents)
 
 	orbiters = null // The component is attached to us normaly and will be deleted elsewhere
