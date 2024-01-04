@@ -113,7 +113,7 @@
 		if(91 to INFINITY)
 			filling_overlay.icon_state = "reagent100"
 
-	filling_overlay.color = mix_color_from_reagents(target_reagents.reagent_list)
+	filling_overlay.color = target_reagents.get_color()
 	. += filling_overlay
 
 /obj/machinery/iv_drip/OnMouseDropLegacy(mob/living/target)

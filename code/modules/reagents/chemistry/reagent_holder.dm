@@ -59,6 +59,33 @@
 /datum/reagent_holder/proc/remove_any(amount)
 	#warn impl
 
+//* Color *//
+
+/datum/reagent_holder/proc/get_color()
+	// todo: cache this shit
+	if(!reagent_list || !reagent_list.len)
+		return "#ffffffff"
+	if(reagent_list.len == 1) // It's pretty common and saves a lot of work
+		var/datum/reagent/R = reagent_list[1]
+		return R.color
+
+	var/list/colors = list(0, 0, 0, 0)
+	var/tot_w = 0
+	for(var/datum/reagent/R in reagent_list)
+		var/hex = uppertext(R.color)
+		if(length(hex) == 7)
+			hex += "FF"
+		if(length(hex) != 9) // PANIC PANIC PANIC
+			warning("Reagent [R.id] has an incorrect color set ([R.color])")
+			hex = "#FFFFFFFF"
+		colors[1] += hex2num(copytext(hex, 2, 4)) * R.volume * R.color_weight
+		colors[2] += hex2num(copytext(hex, 4, 6)) * R.volume * R.color_weight
+		colors[3] += hex2num(copytext(hex, 6, 8)) * R.volume * R.color_weight
+		colors[4] += hex2num(copytext(hex, 8, 10)) * R.volume * R.color_weight
+		tot_w += R.volume * R.color_weight
+
+	return rgb(colors[1] / tot_w, colors[2] / tot_w, colors[3] / tot_w, colors[4] / tot_w)
+
 //* Get *//
 
 #warn make those
@@ -685,7 +712,7 @@
 			handle_reactions()
 		target.handle_reactions()
 
-//? UI
+//* UI *//
 
 /**
  * data list for ReagentContents in /tgui/interfaces/common/Reagents.tsx
@@ -700,4 +727,42 @@
 		)
 	return built
 
+/**
+ * Metabolizing holders. Handles reagent metabolism for /mob/living/carbon mobs.
+ */
+/datum/reagent_holder/metabolism
+	/// REAGENT_APPLY_X that this stands for
+	var/application
+	/// base metabolism multiplier
+	var/metabolism_multiplier = 1
 
+/datum/reagent_holder/metabolism/proc/metabolize(speed_mult = 1, force_allow_dead)
+	#warn rewrite
+
+	var/metabolism_type = 0 //non-human mobs
+	if(ishuman(parent))
+		var/mob/living/carbon/human/H = parent
+		metabolism_type = H.species.reagent_tag
+
+	for(var/datum/reagent/current in reagent_list)
+		current.on_mob_life(parent, metabolism_type, src, speed_mult, force_allow_dead)
+	update_total()
+
+/**
+ * A carbon mob's bloodstream. It only has one of these, but in the future this is tied to the presence of a bloodstream.
+ */
+/datum/reagent_holder/metabolism/bloodstream
+	application = REAGENT_APPLY_INJECT
+
+/**
+ * A carbon mob's stomach contents. It currently has one of these, but in the future this is tied to stomach organs.
+ */
+/datum/reagent_holder/metabolism/ingested
+	application = REAGENT_APPLY_INGEST
+	metabolism_multiplier = 0.5
+
+/**
+ * A carbon mob external organ's skin holder. Pretty much only used for hypodermic patch medications.
+ */
+/datum/reagent_holder/metabolism/dermal
+	application = REAGENT_APPLY_PATCH

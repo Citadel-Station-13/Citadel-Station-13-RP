@@ -11,6 +11,15 @@
 	/// cycles this has been in someone
 	var/cycles = 0
 
+	//* Overdosing
+	/// currently overdosing
+	var/overdosing = FALSE
+	/// cycles we've been overdosing
+	var/cycles_overdosing = 0
+	/// time we last started overdosing
+	var/last_overdose_start
+	/// time we last stopped overdosing
+	var/last_overdose_end
 	#warn overdose cycles, etc
 
 	//* Volume

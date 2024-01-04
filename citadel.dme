@@ -4314,7 +4314,6 @@
 #include "code\modules\reagents\chemistry\colors.dm"
 #include "code\modules\reagents\chemistry\helpers.dm"
 #include "code\modules\reagents\chemistry\machinery.dm"
-#include "code\modules\reagents\chemistry\metabolism.dm"
 #include "code\modules\reagents\chemistry\reagent.dm"
 #include "code\modules\reagents\chemistry\reagent_effect.dm"
 #include "code\modules\reagents\chemistry\reagent_holder.dm"

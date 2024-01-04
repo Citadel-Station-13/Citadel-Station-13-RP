@@ -49,12 +49,12 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	//* Metabolism
 	
 	/// multiplier to units metabolized, base.
-	var/base_metabolism_multiplier = 1
+	var/metabolism_multiplier = 1
 
 	/// amount at which overdose begins; null for none.
 	var/overdose_threshold
-	/// multiplier to units while overdosing; defaults to base.
-	var/overdose_metabolism_multiplier 
+	/// multiplier to units while overdosing; compounded with base
+	var/overdose_metabolism_multiplier  = 1
 	/// tox damage per unit metabolised when overdosing
 	var/overdose_toxin_scaling = 2
 
@@ -62,6 +62,14 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 
 	/// specific heat in J*K/u (so joules needed to change 1 degree Kelvin per unit)
 	var/specific_heat = 1.5
+
+	//* Ticking
+	
+	#warn handle this
+	/// Ticks in non-biological biologies
+	var/tick_non_biological = FALSE
+	/// Needs to on_dead_tick()
+	var/tick_while_dead = FALSE
 
 	//? legacy / unsorted
 	var/taste_description = "bitterness"
@@ -233,24 +241,73 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 				return
 		M.nutrition += removed * blood_content //We should always be able to process real blood.
 
-/* DEPRECATED - TODO: REMOVE EVERYWHERE */
+//* Application *//
 
-/datum/reagent/proc/reaction_turf(var/turf/target, amt)
-	touch_turf(target, amt)
-
-/datum/reagent/proc/reaction_obj(var/obj/target, amt)
-	touch_obj(target, amt)
-
-/datum/reagent/proc/reaction_mob(var/mob/target, amt)
-	touch_mob(target, amt)
-
-/datum/reagent/proc/on_move(mob/M)
+/**
+ * called on splash or foam
+ * 
+ * @params
+ * * target - what we were splashed into
+ * * volume - amount
+ * * data - data list
+ */
+/datum/reagent/proc/touch_expose_object(obj/target, volume, list/data)
 	return
 
-/datum/reagent/proc/on_update(atom/A)
+/**
+ * called on splash or foam; for foam, this is called repeatedly.
+ * 
+ * @params
+ * * target - what we were splashed into
+ * * volume - amount
+ * * data - data list
+ * * organ_tag - the string tag of what organ this is localized on, if any; used for target splashing. if null, we can assume global.
+ */
+/datum/reagent/proc/touch_expose_mob(mob/target, volume, list/data, organ_tag)
 	return
 
-//* Guidebook
+/**
+ * called on initial application of smoke onto an object
+ * 
+ * @params
+ * * target - what we were splashed into
+ * * volume - amount
+ * * data - data list
+ */
+/datum/reagent/proc/vapor_expose_object(obj/target, volume, list/data)
+	return
+
+/**
+ * called per tick while we're being inhaled or a mob is being exposed to us
+ * 
+ * * WARNING * - this proc is called regardless of actual coverage. if you are doing skin burn effects,
+ * make absolute sure you manually check for exposed areas!
+ * 
+ * @params
+ * * target - what we were splashed into
+ * * volume - amount
+ * * data - data list
+ * * inhaled - are we being inhaled? someone in a smoke cloud is exposed even if not inhaled, but inhales it if they're not on internals.
+ */
+/datum/reagent/proc/vapor_expose_mob(mob/target, volume, list/data, inhaled)
+	return
+
+/**
+ * Called when something is trying to inject / add us into a metabolized holder
+ * 
+ * @params
+ * * entity - the victim
+ * * application - the REAGENT_APPLY_* flags
+ * * organ_tag - the string tag of what organ this is localized in, if any; mostly used for touch/skin/surface.
+ * * volume - amount to add
+ * * data - data list
+ * 
+ * @return units to add into the holder normally.
+ */
+/datum/reagent/proc/applying_to_metabolism(mob/living/carbon/entity, application, organ_tag, volume, list/data)
+	return volume
+
+//* Guidebook *//
 
 /**
  * Guidebook Data for TGUIGuidebookReagent
@@ -267,50 +324,6 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 		"alcoholStrength" = null,
 	)
 
-//* Holder - Application
-
-/**
- * called when we first get applied to a mob
- *
- * @params
- * * target - target mob
- * * holder - the holder on the target mob
- * * method - an enum of how we're applied from [code/__DEFINES/chemistry.dm]
- * * amount - how much is being applied
- * * data - data. not necessarily a list, but casted as one. this is before mix_data is called.
- *
- * @return amount to inject into the mob side holder. defaults to amount. this can be overriden by the mob / transfer procs.
- */
-// todo: implement this proc, replace reaction mob and similar with it.
-// /datum/reagent/proc/apply_to_mob(mob/target, datum/reagent_holder/holder, amount, list/data)
-// 	return amount
-
-/**
- * called when we first get sprayed/splashed on a non-mob
- *
- * not called if we're transferred into a holder on the obj
- *
- * @params
- * * target - the target.
- * * amount - how much is being applied
- * * data - data. not necessarily a list, but casted as one. this is before mix_data is caled.
- */
-// todo: implement this proc, replace touch_obj/reaction_obj and similar with it.
-// /datum/reagent/proc/apply_to_obj(obj/target, amount, list/data)
-
-/**
- * called when we first get sprayed/splashed on a turf
- *
- * not called if we're transferred into a holder on the turf, somehow
- *
- * @params
- * * target - the target.
- * * amount - how much is being applied
- * * data - data. not necessarily a list, but casted as one. this is before mix_data is caled.
- */
-// todo: implement this proc, replace touch_turf/reaction_turf and similar with it.
-// /datum/reagent/proc/apply_to_turf(turf/target, amount, list/data)
-
 //* Metabolism *//
 
 /**
@@ -322,7 +335,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
  * * metabolism - the /datum/reagent_metabolism data; the overdose_cycles will be incremented automatically.
  * * organ_tag - the string tag of what organ this is localized in, if any; mostly used for touch/skin/surface.
  */
-/datum/reagent/proc/on_metabolize_start(mob/living/carbon/entity, application, datum/reagent_metabolism/metabolism, organ_tag)
+/datum/reagent/proc/on_metabolize_add(mob/living/carbon/entity, application, datum/reagent_metabolism/metabolism, organ_tag)
 	return
 	#warn hook
 
@@ -335,7 +348,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
  * * metabolism - the /datum/reagent_metabolism data; the overdose_cycles will be incremented automatically.
  * * organ_tag - the string tag of what organ this is localized in, if any; mostly used for touch/skin/surface.
  */
-/datum/reagent/proc/on_metabolize_end(mob/living/carbon/entity, application, datum/reagent_metabolism/metabolism, organ_tag)
+/datum/reagent/proc/on_metabolize_remove(mob/living/carbon/entity, application, datum/reagent_metabolism/metabolism, organ_tag)
 	return
 	#warn hook
 
@@ -349,24 +362,11 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
  * * organ_tag - the string tag of what organ this is localized in, if any; mostly used for touch/skin/surface.
  * * removed - amount of volume being processed
  */
-/datum/reagent/proc/on_metabolism_tick(mob/living/carbon/entity, application, datum/reagent_metabolism/metabolism, organ_tag, removed)
-	return
-	#warn hook
-
-/**
- * Called on overdose ticks during mob metabolism.
- * 
- * @params
- * * entity - the victim
- * * application - the REAGENT_APPLY_* flags
- * * metabolism - the /datum/reagent_metabolism data; the overdose_cycles will be incremented automatically.
- * * organ_tag - the string tag of what organ this is localized in, if any; mostly used for touch/skin/surface.
- * * removed - amount of volume being processed
- */
-/datum/reagent/proc/on_overdose_tick(mob/living/carbon/entity, application, datum/reagent_metabolism/metabolism, organ_tag, removed)
-	// default overdose effects
-	if(overdose_standard_scaling)
-		entity.adjustToxLoss(removed * overdose_standard_scaling)
+/datum/reagent/proc/on_metabolize_tick(mob/living/carbon/entity, application, datum/reagent_metabolism/metabolism, organ_tag, removed)	
+	if(metabolism.overdosing)
+		// default overdose effects
+		if(overdose_standard_scaling)
+			entity.adjustToxLoss(removed * overdose_standard_scaling)
 	#warn hook
 
 //* Mixing *//
