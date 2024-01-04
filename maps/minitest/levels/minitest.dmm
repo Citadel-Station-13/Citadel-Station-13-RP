@@ -531,12 +531,6 @@
 	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
-"bk" = (
-/obj/effect/floor_decal/river_beach_edge{
-	dir = 8
-	},
-/turf/simulated/floor/water/river,
-/area/bridge)
 "bl" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/black,
 /obj/structure/cable{
@@ -3042,18 +3036,6 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/main)
-"mk" = (
-/obj/effect/floor_decal/river_beach_edge{
-	dir = 4
-	},
-/turf/simulated/floor/water/river,
-/area/bridge)
-"nG" = (
-/obj/effect/floor_decal/river_beach_corner_edge{
-	dir = 4
-	},
-/turf/simulated/floor/water/river,
-/area/bridge)
 "nY" = (
 /turf/space/basic,
 /area/space)
@@ -3076,10 +3058,6 @@
 "oO" = (
 /turf/simulated/floor/tiled/steel_grid/lythios43c,
 /area/space)
-"px" = (
-/obj/effect/floor_decal/river_beach_corner_edge,
-/turf/simulated/floor/water/river,
-/area/bridge)
 "pG" = (
 /turf/simulated/wall/prepainted,
 /area/rift/surfaceeva/airlock/main)
@@ -3196,12 +3174,6 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/main)
-"up" = (
-/obj/effect/floor_decal/river_beach_corner_edge{
-	dir = 8
-	},
-/turf/simulated/floor/water/river,
-/area/bridge)
 "vl" = (
 /obj/machinery/access_button/airlock_exterior{
 	master_tag = "civ_airlock";
@@ -3422,12 +3394,6 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/storage/surface_eva/external)
-"Lu" = (
-/obj/effect/floor_decal/river_beach_corner_edge{
-	dir = 1
-	},
-/turf/simulated/floor/water/river,
-/area/bridge)
 "LJ" = (
 /obj/machinery/computer/shuttle_control/web{
 	my_doors = list("webdemo_docker_hatch"="Hatch");
@@ -5088,19 +5054,19 @@ aa
 aa
 fY
 gf
-px
-mk
-mk
-mk
-mk
-mk
-mk
-mk
-mk
-mk
-mk
-mk
-up
+gf
+gf
+gf
+gf
+gf
+gf
+gf
+gf
+gf
+gf
+gf
+gf
+gf
 gE
 fY
 aa
@@ -5190,19 +5156,19 @@ Pg
 aa
 fY
 gf
-Lu
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-bk
-nG
+gf
+gf
+gf
+gf
+gf
+gf
+gf
+gf
+gf
+gf
+gf
+gf
+gf
 gf
 fY
 aa

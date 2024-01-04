@@ -66,10 +66,6 @@
 	dir = WEST
 	moving_dir = WEST
 
-/turf/simulated/floor/water/river/Initialize(mapload)
-	. = ..()
-
-
 /turf/simulated/floor/water/river/Entered(atom/movable/AM, atom/oldloc)
 	. = ..()
 	START_PROCESSING(SSobj, src)
@@ -81,7 +77,11 @@
 /turf/simulated/floor/water/river/process(delta_time)
 	if(!LAZYLEN(contents))
 		STOP_PROCESSING(SSobj, src)//Failsafe, no need to process if we dont have any contents
-	if(locate(/obj/structure/catwalk) in loc)
+		return
+	if(!((locate(/obj/item) in contents) ||	(locate(/obj/vehicle) in contents) || (locate(/mob/living) in contents)))
+		STOP_PROCESSING(SSobj, src)
+		return
+	if(locate(/obj/structure/catwalk) in contents)
 		return//Stop floating stuff down stream when there is a catwalk
 	delta_sum += delta_time
 	if(delta_sum > float_delay)
