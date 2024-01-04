@@ -140,6 +140,7 @@
 	name = "Colorblindness (Monochromancy)"
 	desc = "You simply can't see colors at all, period. You are 100% colorblind."
 	cost = -1
+	custom_only = FALSE
 
 /datum/trait/negative/colorblind/mono/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..(S,H)
@@ -181,6 +182,7 @@
 	name = "Blind"
 	desc = "You're blind. Permanently."
 	cost = -3
+	custom_only = FALSE
 	traits = list(
 		TRAIT_BLIND
 	)
@@ -193,6 +195,7 @@
 	name = "Deaf"
 	desc = "You're deaf. Permanently."
 	cost = -2
+	custom_only = FALSE
 	traits = list(
 		TRAIT_DEAF
 	)
@@ -209,6 +212,7 @@
 	name = "Mute"
 	desc = "You're mute. Permanently."
 	cost = 0			// TTS bypasses this instantly, no powergaming mute ass explo characters
+	custom_only = FALSE
 	traits = list(
 		TRAIT_MUTE
 	)

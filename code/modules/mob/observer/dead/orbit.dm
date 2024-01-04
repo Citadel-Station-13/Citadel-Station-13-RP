@@ -52,11 +52,17 @@
 		serialized["ref"] = REF(name)
 
 		var/mob/M = name
+
+		if(M == user)
+			continue//Should only really happen with observers, but just to be sure
+
 		if(!istype(M))
 			misc += list(serialized)
 			continue
 
 		if(isobserver(M))
+			if(M.invisibility >= INVISIBILITY_MAXIMUM)
+				continue
 			ghosts += list(serialized)
 		else if(issimple(M))
 			simplemobs += list(serialized)

@@ -601,13 +601,13 @@ var/global/list/remainless_species = list(SPECIES_ID_PROMETHEAN,
 		var/cost = instance.cost
 		traits_costs[path] = cost
 		all_traits[path] = instance
+		if(!instance.custom_only && instance.cost <= 0)
+			everyone_traits[path] = instance
 		switch(cost)
 			if(-INFINITY to -0.1)
 				negative_traits[path] = instance
 			if(0)
 				neutral_traits[path] = instance
-				if(!(instance.custom_only))
-					everyone_traits[path] = instance
 			if(0.1 to INFINITY)
 				positive_traits[path] = instance
 

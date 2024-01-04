@@ -697,7 +697,9 @@
 /turf/simulated/floor/tiled/old_tile/white,
 /area/tether_away/beach/bunker/kitchen)
 "es" = (
-/obj/machinery/mining/drill,
+/obj/machinery/mining/drill{
+	drill_id = 112
+	},
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
