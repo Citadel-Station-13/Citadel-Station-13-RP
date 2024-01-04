@@ -1,0 +1,24 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
+#define CREATE_WALL_MOUNTING_TYPES(TYPE, SHIFT) \
+##TYPE/north{ \
+	dir = NORTH; \
+	pixel_y = SHIFT; \
+} \
+##TYPE/south{ \
+	dir = SOUTH; \
+	pixel_y = -SHIFT; \
+} \
+##TYPE/east{ \
+	dir = EAST; \
+	pixel_x = SHIFT; \
+} \
+##TYPE/west{ \
+	dir = WEST; \
+	pixel_x = -SHIFT; \
+} \
+##TYPE/auto/Initialize(){ \
+	auto_orient_wall_mount_single_preinit(); \
+	return ..(); \
+}

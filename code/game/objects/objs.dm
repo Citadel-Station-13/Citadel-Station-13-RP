@@ -514,7 +514,7 @@
 	if(obj_cell_slot?.receive_emp)
 		obj_cell_slot?.cell?.emp_act(severity)
 
-//? Hiding / Underfloor
+//* Hiding / Underfloor *//
 
 /obj/proc/is_hidden_underfloor()
 	return FALSE
@@ -554,7 +554,17 @@
 
 //* Orientation *//
 
+/obj/proc/auto_orient_wallmount_single()
+	for(var/dir in GLOB.cardinal)
+		if(get_step(dir)?.get_wallmount_anchor())
+			setDir(dir)
+			return
 
+/obj/proc/auto_orient_wallmount_single_preinit()
+	for(var/dir in GLOB.cardinal)
+		if(get_step(dir)?.get_wallmount_anchor())
+			src.dir = dir
+			return
 
 //* Resists *//
 
