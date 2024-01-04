@@ -495,6 +495,13 @@
 	set name = "Emit Sparks"
 	spark_system.start()
 
+/mob/living/silicon/robot/verb/toggle_cover()
+	set category = "Robot Commands"
+	set name = "Toggle Cover"
+	locked = !locked
+	to_chat(src, "You [ locked ? "lock" : "unlock"] your interface.")
+	updateicon()
+
 // this function returns the robots jetpack, if one is installed
 /mob/living/silicon/robot/proc/installed_jetpack()
 	if(module)
