@@ -25,19 +25,22 @@
 			moving_dir = NORTH
 			water_state = initial(water_state) + "_north"
 	. = ..()
-
+CREATE_STANDARD_TURFS(/turf/simulated/floor/water/river/south)
 /turf/simulated/floor/water/river/south
 	dir = SOUTH
 	moving_dir = SOUTH
 
+CREATE_STANDARD_TURFS(/turf/simulated/floor/water/river/north)
 /turf/simulated/floor/water/river/north
 	dir = NORTH
 	moving_dir = NORTH
 
+CREATE_STANDARD_TURFS(/turf/simulated/floor/water/river/east)
 /turf/simulated/floor/water/river/east
 	dir = EAST
 	moving_dir = EAST
 
+CREATE_STANDARD_TURFS(/turf/simulated/floor/water/river/west)
 /turf/simulated/floor/water/river/west
 	dir = WEST
 	moving_dir = WEST
@@ -45,23 +48,28 @@
 /turf/simulated/floor/water/river/deep
 	name = "deep river"
 	desc = "A deep moving body of water. Walking through this is gonna be a pain."
+	icon_state = "seadeep"
 	water_state = "riverdeep"
 	under_state = "abyss"
 	slowdown = 8
 	depth = 2
 
+CREATE_STANDARD_TURFS(/turf/simulated/floor/water/river/deep/south)
 /turf/simulated/floor/water/river/deep/south
 	dir = SOUTH
 	moving_dir = SOUTH
 
+CREATE_STANDARD_TURFS(/turf/simulated/floor/water/river/deep/north)
 /turf/simulated/floor/water/river/deep/north
 	dir = NORTH
 	moving_dir = NORTH
 
+CREATE_STANDARD_TURFS(/turf/simulated/floor/water/river/deep/east)
 /turf/simulated/floor/water/river/deep/east
 	dir = EAST
 	moving_dir = EAST
 
+CREATE_STANDARD_TURFS(/turf/simulated/floor/water/river/deep/west)
 /turf/simulated/floor/water/river/deep/west
 	dir = WEST
 	moving_dir = WEST

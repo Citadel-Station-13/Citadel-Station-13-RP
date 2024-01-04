@@ -72,14 +72,7 @@ GAIA_TURF_CREATE(/turf/simulated/mineral)
 GAIA_TURF_CREATE(/turf/simulated/mineral/ignore_mapgen)
 GAIA_TURF_CREATE(/turf/simulated/mineral/floor)
 GAIA_TURF_CREATE(/turf/simulated/mineral/floor/ignore_mapgen)
-GAIA_TURF_CREATE(/turf/simulated/floor/water/river/south)
-GAIA_TURF_CREATE(/turf/simulated/floor/water/river/north)
-GAIA_TURF_CREATE(/turf/simulated/floor/water/river/west)
-GAIA_TURF_CREATE(/turf/simulated/floor/water/river/east)
-GAIA_TURF_CREATE(/turf/simulated/floor/water/river/deep/south)
-GAIA_TURF_CREATE(/turf/simulated/floor/water/river/deep/north)
-GAIA_TURF_CREATE(/turf/simulated/floor/water/river/deep/west)
-GAIA_TURF_CREATE(/turf/simulated/floor/water/river/deep/east)
+
 //Exterior Turfs for weather effects.
 /turf/simulated/floor/tiled/classm/outdoors
 	outdoors = TRUE
