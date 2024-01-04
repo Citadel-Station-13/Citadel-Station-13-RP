@@ -7,7 +7,7 @@
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
 	color = "#00BFFF"
-	overdose = REAGENTS_OVERDOSE * 2
+	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 2
 	metabolism = REM * 0.5
 	scannable = 1
 
@@ -24,7 +24,7 @@
 	taste_mult = 3
 	reagent_state = REAGENT_LIQUID
 	color = "#BF0000"
-	overdose = REAGENTS_OVERDOSE
+	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 	scannable = 1
 
 /datum/reagent/bicaridine/affect_blood(mob/living/carbon/M, alien, removed)
@@ -55,7 +55,7 @@
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
 	color = "#FFA800"
-	overdose = REAGENTS_OVERDOSE
+	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 	scannable = 1
 
 /datum/reagent/kelotane/affect_blood(mob/living/carbon/M, alien, removed)
@@ -73,7 +73,7 @@
 	taste_mult = 1.5
 	reagent_state = REAGENT_LIQUID
 	color = "#FF8000"
-	overdose = REAGENTS_OVERDOSE * 0.5
+	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 0.5
 	scannable = 1
 
 /datum/reagent/dermaline/affect_blood(mob/living/carbon/M, alien, removed)
@@ -112,7 +112,7 @@
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
 	color = "#0080FF"
-	overdose = REAGENTS_OVERDOSE
+	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 	scannable = 1
 	metabolism = REM * 0.25
 	
@@ -140,7 +140,7 @@
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
 	color = "#0040FF"
-	overdose = REAGENTS_OVERDOSE * 0.5
+	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 0.5
 	scannable = 1
 
 /datum/reagent/dexalinp/affect_blood(mob/living/carbon/M, alien, removed)

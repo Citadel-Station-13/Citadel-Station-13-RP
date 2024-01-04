@@ -388,7 +388,7 @@
 	taste_description = "mothballs"
 	reagent_state = REAGENT_LIQUID
 	color = "#BBEDA4"
-	overdose = REAGENTS_OVERDOSE
+	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
 /datum/reagent/lipozine/affect_blood(mob/living/carbon/M, alien, removed)
 	M.nutrition = max(M.nutrition - 10 * removed, 0)
@@ -405,7 +405,7 @@
 	taste_description = "salt"
 	reagent_state = REAGENT_SOLID
 	color = "#FFFFFF"
-	overdose = REAGENTS_OVERDOSE
+	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 	ingest_met = REM
 
 /datum/reagent/sodiumchloride/affect_blood(mob/living/carbon/M, alien, removed)
@@ -435,7 +435,7 @@
 	taste_mult = 0.7
 	reagent_state = REAGENT_LIQUID
 	color = "#365E30"
-	overdose = REAGENTS_OVERDOSE
+	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
 /datum/reagent/frostoil
 	name = "Frost Oil"
@@ -1247,7 +1247,7 @@
 	adj_drowsy = -3
 	adj_sleepy = -2
 	adj_temp = 25
-	overdose = 45
+	overdose_threshold = 45
 
 	cup_icon_state = "cup_coffee"
 	cup_name = "Cup of Coffee"
@@ -2395,7 +2395,7 @@
 // i hate you, whoever made this, go make reagent traits you utter AAAAA
 /datum/reagent/ethanol/coffee
 	id = "coffee_alcohol"
-	overdose = 45
+	overdose_threshold = 45
 
 /datum/reagent/ethanol/coffee/affect_ingest(mob/living/carbon/M, alien, removed)
 	if(alien == IS_DIONA)

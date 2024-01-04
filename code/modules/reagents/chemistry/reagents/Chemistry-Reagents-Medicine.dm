@@ -7,7 +7,7 @@
 	taste_mult = 3
 	reagent_state = REAGENT_SOLID
 	color = "#964e06"
-	overdose = REAGENTS_OVERDOSE * 0.5
+	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 0.5
 	scannable = 1
 
 /datum/reagent/vermicetol/affect_blood(mob/living/carbon/M, alien, removed)
@@ -24,7 +24,7 @@
 	taste_description = "chalk"
 	reagent_state = REAGENT_SOLID
 	color = "#eae6e3"
-	overdose = REAGENTS_OVERDOSE * 0.8
+	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 0.8
 	metabolism = REM * 0.4
 	scannable = 1
 
@@ -70,7 +70,7 @@
 	taste_description = "the sweet highs of life"
 	reagent_state = REAGENT_LIQUID
 	color = "#ffb500"
-	overdose = REAGENTS_OVERDOSE * 0.50
+	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 0.50
 
 
 /datum/reagent/earthsblood/affect_blood(mob/living/carbon/M, alien, removed)
@@ -101,7 +101,7 @@
 	color = "#800080"
 	metabolism = 0.1 //Lasts up to 200 seconds if you give 20u which is OD.
 	mrate_static = TRUE
-	overdose = 20 //High OD. This is to make numbing bites have somewhat of a downside if you get bit too much. Have to go to medical for dialysis.
+	overdose_threshold = 20 //High OD. This is to make numbing bites have somewhat of a downside if you get bit too much. Have to go to medical for dialysis.
 	scannable = 0 //Let's not have medical mechs able to make an extremely strong organic painkiller
 
 /datum/reagent/numbing_enzyme/affect_blood(mob/living/carbon/M, alien, removed)
@@ -145,7 +145,7 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#99CCFF"
 	metabolism = REM * 0.05
-	overdose = REAGENTS_OVERDOSE
+	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 	scannable = 1
 
 /datum/reagent/synaptizine/affect_blood(mob/living/carbon/M, alien, removed)
@@ -175,7 +175,7 @@
 	metabolism = REM * 0.25 // see "long lasting"
 	reagent_state = REAGENT_LIQUID
 	color = "#FF3300"
-	overdose = REAGENTS_OVERDOSE * 0.5
+	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 0.5
 
 /datum/reagent/hyperzine/affect_blood(mob/living/carbon/M, alien, removed)
 	if(alien == IS_TAJARA)
@@ -197,7 +197,7 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#FFFF66"
 	metabolism = REM * 0.25
-	overdose = REAGENTS_OVERDOSE
+	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 	scannable = 1
 
 /datum/reagent/alkysine/affect_blood(mob/living/carbon/M, alien, removed)
@@ -220,7 +220,7 @@
 	taste_description = "dull toxin"
 	reagent_state = REAGENT_LIQUID
 	color = "#C8A5DC"
-	overdose = REAGENTS_OVERDOSE
+	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 	scannable = 1
 
 /datum/reagent/imidazoline/affect_blood(mob/living/carbon/M, alien, removed)
@@ -244,7 +244,7 @@
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
 	color = "#561EC3"
-	overdose = 10
+	overdose_threshold = 10
 	scannable = 1
 
 /datum/reagent/peridaxon/affect_blood(mob/living/carbon/M, alien, removed)
@@ -271,7 +271,7 @@
 	taste_description = "bitterness and iron"
 	reagent_state = REAGENT_LIQUID
 	color = "#664B9B"
-	overdose = 10
+	overdose_threshold = 10
 	scannable = 1
 
 /datum/reagent/nanoperidaxon/affect_blood(mob/living/carbon/M, alien, removed)
@@ -296,7 +296,7 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#C9BCE3"
 	metabolism = REM * 0.5
-	overdose = REAGENTS_OVERDOSE * 0.5
+	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 0.5
 	scannable = 1
 
 /datum/reagent/osteodaxon/affect_blood(mob/living/carbon/M, alien, removed)
@@ -318,7 +318,7 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#4246C7"
 	metabolism = REM * 0.5
-	overdose = REAGENTS_OVERDOSE * 0.5
+	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 0.5
 	scannable = 1
 	var/repair_strength = 3
 
@@ -350,7 +350,7 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#4444FF"
 	metabolism = REM * 1.5
-	overdose = 10
+	overdose_threshold = 10
 	scannable = 1
 
 /datum/reagent/respirodaxon/affect_blood(mob/living/carbon/M, alien, removed)
@@ -381,7 +381,7 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#8B4513"
 	metabolism = REM * 1.5
-	overdose = 10
+	overdose_threshold = 10
 	scannable = 1
 
 /datum/reagent/gastirodaxon/affect_blood(mob/living/carbon/M, alien, removed)
@@ -412,7 +412,7 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#D2691E"
 	metabolism = REM * 1.5
-	overdose = 10
+	overdose_threshold = 10
 	scannable = 1
 
 /datum/reagent/hepanephrodaxon/affect_blood(mob/living/carbon/M, alien, removed)
@@ -445,7 +445,7 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#FF4444"
 	metabolism = REM * 1.5
-	overdose = 10
+	overdose_threshold = 10
 	scannable = 1
 
 /datum/reagent/cordradaxon/affect_blood(mob/living/carbon/M, alien, removed)
@@ -472,7 +472,7 @@
 	taste_description = "flesh"
 	reagent_state = REAGENT_SOLID
 	color = "#7B4D4F"
-	overdose = 20
+	overdose_threshold = 20
 	scannable = 1
 
 /datum/reagent/immunosuprizine/affect_blood(mob/living/carbon/M, alien, removed)
@@ -529,7 +529,7 @@
 	reagent_state = REAGENT_SOLID
 	color = "#84B2B0"
 	metabolism = REM * 0.75
-	overdose = 20
+	overdose_threshold = 20
 	scannable = 1
 
 /datum/reagent/skrellimmuno/affect_blood(mob/living/carbon/M, alien, removed)
@@ -573,7 +573,7 @@
 	taste_description = "acid"
 	reagent_state = REAGENT_SOLID
 	color = "#004000"
-	overdose = REAGENTS_OVERDOSE
+	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
 /datum/reagent/ryetalyn/affect_blood(mob/living/carbon/M, alien, removed)
 	var/needs_update = M.mutations.len > 0
@@ -620,7 +620,7 @@
 	taste_description = "bitterness"
 	reagent_state = REAGENT_SOLID
 	color = "#605048"
-	overdose = REAGENTS_OVERDOSE
+	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
 /datum/reagent/ethylredoxrazine/affect_blood(mob/living/carbon/M, alien, removed)
 	if(alien == IS_DIONA)
@@ -644,7 +644,7 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#408000"
 	metabolism = REM * 0.25
-	overdose = REAGENTS_OVERDOSE
+	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 	scannable = 1
 
 /datum/reagent/hyronalin/affect_blood(mob/living/carbon/M, alien, removed)
@@ -660,7 +660,7 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#008000"
 	metabolism = REM * 0.25
-	overdose = REAGENTS_OVERDOSE
+	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 	scannable = 1
 
 /datum/reagent/arithrazine/affect_blood(mob/living/carbon/M, alien, removed)
@@ -680,7 +680,7 @@
 	color = "#C1C1C1"
 	metabolism = REM * 0.25
 	mrate_static = TRUE
-	overdose = REAGENTS_OVERDOSE
+	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 	scannable = 1
 	data = 0
 
@@ -708,7 +708,7 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#FFB0B0"
 	mrate_static = TRUE
-	overdose = 10
+	overdose_threshold = 10
 	scannable = 1
 	data = 0
 
@@ -776,7 +776,7 @@
 	color = "#C1C1C8"
 	metabolism = REM * 0.4
 	mrate_static = TRUE
-	overdose = REAGENTS_OVERDOSE
+	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 	scannable = 1
 	data = 0
 	can_overdose_touch = TRUE
@@ -867,7 +867,7 @@
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
 	color = "#C8A5DC"
-	overdose = REAGENTS_OVERDOSE
+	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 	scannable = 1
 
 /datum/reagent/leporazine/affect_blood(mob/living/carbon/M, alien, removed)
@@ -885,7 +885,7 @@
 	taste_description = "bitterness"
 	reagent_state = REAGENT_SOLID
 	color = "#669900"
-	overdose = REAGENTS_OVERDOSE
+	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 	scannable = 1
 
 /datum/reagent/rezadone/affect_blood(mob/living/carbon/M, alien, removed)
@@ -1065,7 +1065,7 @@
 	description = "A foul-smelling green liquid, for inducing muscle contractions to expel accidentally ingested things."
 	reagent_state = REAGENT_LIQUID
 	color = "#0E900E"
-	overdose = REAGENTS_OVERDOSE
+	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
 /datum/reagent/ickypak/affect_blood(mob/living/carbon/M, alien, removed)
 	M.make_dizzy(1)
@@ -1088,7 +1088,7 @@
 	description = "A frothy pink liquid, for causing cellular-level hetrogenous structure separation."
 	reagent_state = REAGENT_LIQUID
 	color = "#EF77E5"
-	overdose = REAGENTS_OVERDOSE
+	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
 /datum/reagent/unsorbitol/affect_blood(mob/living/carbon/M, alien, removed)
 	M.make_dizzy(1)
@@ -1190,7 +1190,7 @@
 	mrate_static = TRUE
 	color = "#52ca22"
 	scannable = 1
-	overdose = 16
+	overdose_threshold = 16
 
 /datum/reagent/neuratrextate/affect_ingest(mob/living/carbon/M)
 	remove_self(30)

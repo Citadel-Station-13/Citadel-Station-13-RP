@@ -7,7 +7,7 @@
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
 	color = "#C8A5DC"
-	overdose = 60
+	overdose_threshold = 60
 	scannable = 1
 	metabolism = 0.02
 	mrate_static = TRUE
@@ -31,7 +31,7 @@
 	taste_description = "sourness"
 	reagent_state = REAGENT_LIQUID
 	color = "#CB68FC"
-	overdose = 30
+	overdose_threshold = 30
 	scannable = 1
 	metabolism = 0.02
 	mrate_static = TRUE
@@ -54,7 +54,7 @@
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
 	color = "#800080"
-	overdose = 20
+	overdose_threshold = 20
 	scannable = 1
 	metabolism = 0.02
 	mrate_static = TRUE

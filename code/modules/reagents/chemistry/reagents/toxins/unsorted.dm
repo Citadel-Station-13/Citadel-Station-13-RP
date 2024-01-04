@@ -223,7 +223,7 @@
 	taste_mult = 1.8
 	color = "#d0583a"
 	metabolism = REM * 3
-	overdose = 10
+	overdose_threshold = 10
 	strength = 3
 
 /datum/reagent/toxin/stimm/affect_blood(mob/living/carbon/M, alien, removed)
@@ -245,7 +245,7 @@
 	reagent_state = REAGENT_SOLID
 	color = "#FFFFFF"
 	strength = 0
-	overdose = REAGENTS_OVERDOSE
+	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 	filtered_organs = list(O_SPLEEN, O_KIDNEYS)
 
 /datum/reagent/toxin/potassium_chloride/affect_blood(mob/living/carbon/M, alien, removed)
@@ -271,7 +271,7 @@
 	reagent_state = REAGENT_SOLID
 	color = "#FFFFFF"
 	strength = 10
-	overdose = 20
+	overdose_threshold = 20
 	filtered_organs = list(O_SPLEEN, O_KIDNEYS)
 
 /datum/reagent/toxin/potassium_chlorophoride/affect_blood(mob/living/carbon/M, alien, removed)
@@ -432,7 +432,7 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#C6E2FF"
 	strength = 2
-	overdose = 20
+	overdose_threshold = 20
 
 /datum/reagent/toxin/sifslurry/affect_blood(mob/living/carbon/M, alien, removed)
 	if(alien == IS_DIONA) // Symbiotic bacteria.
@@ -536,7 +536,7 @@
 	taste_description = "acid"
 	reagent_state = REAGENT_LIQUID
 	color = "#C8A5DC"
-	overdose = REAGENTS_OVERDOSE
+	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
 /datum/reagent/lexorin/affect_blood(mob/living/carbon/M, alien, removed)
 	if(alien == IS_DIONA)
@@ -716,7 +716,7 @@
 	color = "#009CA8"
 	metabolism = REM * 0.5
 	ingest_met = REM * 1.5
-	overdose = REAGENTS_OVERDOSE
+	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
 /datum/reagent/soporific/affect_blood(mob/living/carbon/M, alien, removed)
 	if(alien == IS_DIONA)
@@ -764,7 +764,7 @@
 	color = "#000067"
 	metabolism = REM * 0.5
 	ingest_met = REM * 1.5
-	overdose = REAGENTS_OVERDOSE * 0.5
+	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 0.5
 	overdose_mod = 5	//For that good, lethal feeling
 
 /datum/reagent/chloralhydrate/affect_blood(mob/living/carbon/M, alien, removed)
@@ -828,7 +828,7 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#60A584"
 	metabolism = REM * 0.5
-	overdose = REAGENTS_OVERDOSE
+	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
 /datum/reagent/space_drugs/affect_blood(mob/living/carbon/M, alien, removed)
 	if(alien == IS_DIONA)
@@ -855,7 +855,7 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#202040"
 	metabolism = REM * 0.25
-	overdose = REAGENTS_OVERDOSE
+	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
 /datum/reagent/serotrotium/affect_blood(mob/living/carbon/M, alien, removed)
 	if(alien == IS_DIONA)
@@ -888,7 +888,7 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#000055"
 	metabolism = REM * 0.5
-	overdose = REAGENTS_OVERDOSE
+	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
 /datum/reagent/cryptobiolin/affect_blood(mob/living/carbon/M, alien, removed)
 	if(alien == IS_DIONA)
@@ -911,7 +911,7 @@
 	taste_description = "numbness"
 	reagent_state = REAGENT_LIQUID
 	color = "#C8A5DC"
-	overdose = REAGENTS_OVERDOSE
+	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 	filtered_organs = list(O_SPLEEN)
 
 /datum/reagent/impedrezene/affect_blood(mob/living/carbon/M, alien, removed)
@@ -933,7 +933,7 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#B31008"
 	metabolism = REM * 0.25
-	overdose = REAGENTS_OVERDOSE
+	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
 /datum/reagent/mindbreaker/affect_blood(mob/living/carbon/M, alien, removed)
 	if(alien == IS_DIONA)
@@ -955,7 +955,7 @@
 	description = "A strong psycotropic derived from certain species of mushroom."
 	taste_description = "mushroom"
 	color = "#E700E7"
-	overdose = REAGENTS_OVERDOSE
+	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 	metabolism = REM * 0.5
 
 /datum/reagent/psilocybin/affect_blood(mob/living/carbon/M, alien, removed)
@@ -1010,7 +1010,7 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#db2ed8"
 	metabolism = REM * 0.5
-	overdose = REAGENTS_OVERDOSE
+	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
 /datum/reagent/talum_quem/affect_blood(mob/living/carbon/M, alien, removed)
 	if(alien == IS_DIONA)

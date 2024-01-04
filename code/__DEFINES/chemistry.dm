@@ -16,7 +16,10 @@
 
 //* Metabolism *//
 
-#warn REM?
+#define REAGENT_METABOLISM_NORMAL 0.2
+#define REAGENT_METABOLISM_OVERDOSE 0.2
+
+#define REAGENTS_OVERDOSE_MEDICINE 30
 
 //* Mobs *//
 
@@ -38,8 +41,6 @@
 #define DEFAULT_HUNGER_FACTOR 0.03
 /// Factor of how fast mob hydration decreases
 #define DEFAULT_THIRST_FACTOR 0.03
-/// Means 'Reagent Effect Multiplier'. This is how many units of reagent are consumed per tick
-#define REM 0.2
 
 #define MINIMUM_CHEMICAL_VOLUME 0.01
 
@@ -47,27 +48,6 @@
 #define REAGENT_SOLID 1
 #define REAGENT_LIQUID 2
 #define REAGENT_GAS 3
-
-#define REAGENTS_OVERDOSE 30
-
-// Some on_mob_life() procs check for alien races.
-// TODO: better way? flags? we won't possibly need more than 24 right...?
-#define IS_DIONA   1
-#define IS_VOX     2
-#define IS_SKRELL  3
-#define IS_UNATHI  4
-#define IS_TAJARA  5
-#define IS_XENOS   6
-#define IS_TESHARI 7
-#define IS_SLIME   8
-#define IS_ZADDAT  9
-#define IS_CHIMERA 12
-#define IS_SHADEKIN 13
-#define IS_ALRAUNE 14
-#define IS_APIDAEN 15
-#define IS_XENOHYBRID 16
-#define IS_MOTH		17
-#define IS_NARAMADI 18
 
 #define REAGENTS_PER_SHEET 20
 

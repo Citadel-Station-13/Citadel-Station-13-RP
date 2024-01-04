@@ -18,6 +18,12 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	/// reagent flags - see [code/__DEFINES/reagents/flags.dm]
 	var/reagent_flags = NONE
 
+	//* Economy *//
+	/// Raw intrinsic worth of this reagent
+	var/worth = 0
+	/// economic category of the reagent
+	var/economic_category_reagent = ECONOMIC_CATEGORY_REAGENT_DEFAULT
+
 	//* Guidebook
 
 	/// guidebook flags
@@ -42,8 +48,15 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 
 	//* Metabolism
 	
+	/// multiplier to units metabolized, base.
+	var/base_metabolism_multiplier = 1
+
+	/// amount at which overdose begins; null for none.
+	var/overdose_threshold
+	/// multiplier to units while overdosing; defaults to base.
+	var/overdose_metabolism_multiplier 
 	/// tox damage per unit metabolised when overdosing
-	var/overdose_standard_scaling = 2
+	var/overdose_toxin_scaling = 2
 
 	//* Properties
 
@@ -55,23 +68,12 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	/// How this taste compares to others. Higher values means it is more noticable
 	var/taste_mult = 1
 	var/reagent_state = REAGENT_SOLID
-	var/metabolism = REM // This would be 0.2 normally
 	/// Used for vampric-Digestion
 	var/blood_content = 0
 	/// Organs that will slow the processing of this chemical.
 	var/list/filtered_organs = list()
 	///If the reagent should always process at the same speed, regardless of species, make this TRUE
 	var/mrate_static = FALSE
-	var/ingest_met = 0
-	var/touch_met = 0
-	var/dose = 0
-	var/max_dose = 0
-	///Amount at which overdose starts
-	var/overdose = 0
-	/// Can the chemical OD when processing on touch?
-	var/can_overdose_touch = FALSE
-	/// Shows up on health analyzers.
-	var/scannable = 0
 	/// Does this chem process inside a corpse?
 	var/affects_dead = 0
 	/// Does this chem process inside a Synth?
@@ -89,12 +91,6 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/glass_desc = "It's a glass of... what, exactly?"
 	var/list/glass_special = null // null equivalent to list()
 
-	//? Economy
-	/// Raw intrinsic worth of this reagent
-	var/worth = 0
-	/// economic category of the reagent
-	var/economic_category_reagent = ECONOMIC_CATEGORY_REAGENT_DEFAULT
-
 	//? wiki markup generation additional
 	//  todo: combine with guidebook 
 	/// override "name"
@@ -105,22 +101,6 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/wiki_category = "Miscellaneous"
 	/// forced sort ordering in its category - falls back to name otherwise.
 	var/wiki_sort = 0
-
-/datum/reagent/proc/remove_self(var/amount) // Shortcut
-	if(holder)
-		holder.remove_reagent(id, amount)
-
-/// This doesn't apply to skin contact - this is for, e.g. extinguishers and sprays. The difference is that reagent is not directly on the mob's skin - it might just be on their clothing.
-/datum/reagent/proc/touch_mob(mob/M, amount)
-	return
-
-/// Acid melting, cleaner cleaning, etc
-/datum/reagent/proc/touch_obj(obj/O, amount)
-	return
-
-/// Cleaner cleaning, lube lubbing, etc, all go here
-/datum/reagent/proc/touch_turf(turf/T, amount)
-	return
 
 /// Currently, on_mob_life is called on carbons. Any interaction with non-carbon mobs (lube) will need to be done in touch_mob.
 /datum/reagent/proc/on_mob_life(var/mob/living/carbon/M, var/alien, var/datum/reagent_holder/metabolism/location, speed_mult = 1, force_allow_dead)
@@ -239,18 +219,6 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	remove_self(removed)
 	return
 
-// todo: on_mob_life with method of REAGENT_APPLY_INJECT, or tick_mob_blood
-/datum/reagent/proc/affect_blood(mob/living/carbon/M, alien, removed)
-	return
-
-// todo: on_mob_life with method of REAGENT_APPLY_INGEST, or tick_mob_ingest
-/datum/reagent/proc/affect_ingest(mob/living/carbon/M, alien, removed)
-	M.bloodstr.add_reagent(id, removed)
-	return
-
-// todo: on_mob_life with method of REAGENT_APPLY_TOUCH, or tick_mob_touch
-/datum/reagent/proc/affect_touch(mob/living/carbon/M, alien, removed)
-	return
 
 // todo: fourth apply method of REAGENT_APPLY_VAPOR implementation?
 
@@ -264,22 +232,6 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 					M.last_blood_warn = world.time //If we're drinking fake blood, make sure we're warned appropriately.
 				return
 		M.nutrition += removed * blood_content //We should always be able to process real blood.
-
-/datum/reagent/proc/initialize_data(newdata) // Called when the reagent is created.
-	if(!isnull(newdata))
-		data = newdata
-	return
-
-/datum/reagent/proc/get_data() // Just in case you have a reagent that handles data differently.
-	if(data && istype(data, /list))
-		return data.Copy()
-	else if(data)
-		return data
-	return null
-
-/datum/reagent/Destroy() // This should only be called by the holder, so it's already handled clearing its references
-	holder = null
-	. = ..()
 
 /* DEPRECATED - TODO: REMOVE EVERYWHERE */
 
@@ -363,15 +315,41 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 
 /**
  * Called when we start metabolizing in a mob. (first add)
+ * 
+ * @params
+ * * entity - the victim
+ * * application - the REAGENT_APPLY_* flags
+ * * metabolism - the /datum/reagent_metabolism data; the overdose_cycles will be incremented automatically.
+ * * organ_tag - the string tag of what organ this is localized in, if any; mostly used for touch/skin/surface.
  */
-/datum/reagent/proc/on_metabolize_start(mob/living/carbon/entity, application, datum/reagent_metabolism/metabolism)
+/datum/reagent/proc/on_metabolize_start(mob/living/carbon/entity, application, datum/reagent_metabolism/metabolism, organ_tag)
 	return
 	#warn hook
 
 /**
  * Called when we stop metabolizing in a mob. (on remove)
+ * 
+ * @params
+ * * entity - the victim
+ * * application - the REAGENT_APPLY_* flags
+ * * metabolism - the /datum/reagent_metabolism data; the overdose_cycles will be incremented automatically.
+ * * organ_tag - the string tag of what organ this is localized in, if any; mostly used for touch/skin/surface.
  */
-/datum/reagent/proc/on_metabolize_end(mob/living/carbon/entity, application, datum/reagent_metabolism/metabolism)
+/datum/reagent/proc/on_metabolize_end(mob/living/carbon/entity, application, datum/reagent_metabolism/metabolism, organ_tag)
+	return
+	#warn hook
+
+/**
+ * Called on life ticks during mob metabolism. Overdose is also called while overdosing.
+ * 
+ * @params
+ * * entity - the victim
+ * * application - the REAGENT_APPLY_* flags
+ * * metabolism - the /datum/reagent_metabolism data; the overdose_cycles will be incremented automatically.
+ * * organ_tag - the string tag of what organ this is localized in, if any; mostly used for touch/skin/surface.
+ * * removed - amount of volume being processed
+ */
+/datum/reagent/proc/on_metabolism_tick(mob/living/carbon/entity, application, datum/reagent_metabolism/metabolism, organ_tag, removed)
 	return
 	#warn hook
 
@@ -380,14 +358,16 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
  * 
  * @params
  * * entity - the victim
- * * speed - multiplier to amount being processed
  * * application - the REAGENT_APPLY_* flags
  * * metabolism - the /datum/reagent_metabolism data; the overdose_cycles will be incremented automatically.
+ * * organ_tag - the string tag of what organ this is localized in, if any; mostly used for touch/skin/surface.
+ * * removed - amount of volume being processed
  */
-/datum/reagent/proc/on_overdose_tick(mob/living/carbon/entity, removed, application, datum/reagent_metabolism/metabolism)
+/datum/reagent/proc/on_overdose_tick(mob/living/carbon/entity, application, datum/reagent_metabolism/metabolism, organ_tag, removed)
 	// default overdose effects
 	if(overdose_standard_scaling)
 		entity.adjustToxLoss(removed * overdose_standard_scaling)
+	#warn hook
 
 //* Mixing *//
 

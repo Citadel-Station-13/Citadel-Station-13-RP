@@ -5,7 +5,7 @@
 	taste_description = "powdered wax"
 	reagent_state = REAGENT_LIQUID
 	color = "#888888"
-	overdose = 5
+	overdose_threshold = 5
 
 /datum/reagent/crayon_dust/red
 	name = "Red crayon dust"
@@ -54,7 +54,7 @@
 	taste_description = "extremely bitter"
 	reagent_state = REAGENT_LIQUID
 	color = "#888888"
-	overdose = 5
+	overdose_threshold = 5
 
 /datum/reagent/marker_ink/black
 	name = "Black marker ink"
@@ -108,7 +108,7 @@
 	taste_description = "powdered chalk"
 	reagent_state = REAGENT_LIQUID
 	color = "#FFFFFF"
-	overdose = 5
+	overdose_threshold = 5
 
 /datum/reagent/chalk_dust/red
 	name = "red chalk dust"
@@ -132,7 +132,7 @@
 	taste_description = "chalk"
 	reagent_state = REAGENT_LIQUID
 	color = "#808080"
-	overdose = REAGENTS_OVERDOSE * 0.5
+	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 0.5
 	color_weight = 20
 
 /datum/reagent/paint/touch_turf(turf/T)

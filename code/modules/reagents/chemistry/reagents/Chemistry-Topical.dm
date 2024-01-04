@@ -10,7 +10,7 @@
 
 	metabolism = REM / 2//The skin is not directly connected to any filter organs so reagents are removed much slower
 
-	overdose = REAGENTS_OVERDOSE //Usually we want topicals to overdose just as other chems do.
+	overdose = REAGENTS_OVERDOSE_MEDICINE //Usually we want topicals to overdose just as other chems do.
 	overdose_mod = 0.5 // deals little damage on overdose, because the chem should only be applied via touch.
 	can_overdose_touch = TRUE // They should only be applied on touch
 
@@ -97,7 +97,7 @@
 	id = "neurolaze"
 	description = "Superficial painkiller, do not inject or ingest"
 	metabolism = REM * 2 //Nervocells absorb this chem super fast so much faster metabolism...
-	overdose = REAGENTS_OVERDOSE * 0.5
+	overdose = REAGENTS_OVERDOSE_MEDICINE * 0.5
 
 	color = "#000000"
 
