@@ -30,7 +30,6 @@
 	id = "round_end_belt"
 
 
-/obj/machinery/conveyor/on
 
 	// create a conveyor
 /obj/machinery/conveyor/Initialize(mapload, newdir, on = 0)
