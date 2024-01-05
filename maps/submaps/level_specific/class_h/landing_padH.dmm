@@ -10,12 +10,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/class_h/POIs/landing_pad)
-"ac" = (
-/obj/effect/floor_decal/techfloor/orange{
-	dir = 5
-	},
-/turf/simulated/floor/tiled/external,
-/area/class_h/POIs/landing_pad)
 "ad" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/door/airlock/glass_external/public,
@@ -61,22 +55,10 @@
 	},
 /turf/simulated/floor/tiled/kafel_full,
 /area/class_h/POIs/landing_pad)
-"aj" = (
-/obj/effect/floor_decal/techfloor/orange{
-	dir = 6
-	},
-/turf/simulated/floor/tiled/external,
-/area/class_h/POIs/landing_pad)
 "ak" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/closet/toolcloset,
 /turf/simulated/floor/plating,
-/area/class_h/POIs/landing_pad)
-"al" = (
-/obj/effect/floor_decal/techfloor/orange{
-	dir = 9
-	},
-/turf/simulated/floor/tiled/external,
 /area/class_h/POIs/landing_pad)
 "am" = (
 /obj/effect/wingrille_spawn/reinforced,
@@ -95,20 +77,6 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/outdoors,
-/area/class_h/POIs/landing_pad)
-"aq" = (
-/obj/effect/floor_decal/techfloor/orange{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/external,
-/area/class_h/POIs/landing_pad)
-"ar" = (
-/turf/simulated/floor/tiled/external,
-/area/class_h/POIs/landing_pad)
-"as" = (
-/obj/effect/debris/cleanable/dirt,
-/obj/machinery/door/airlock/multi_tile,
-/turf/simulated/floor/wood,
 /area/class_h/POIs/landing_pad)
 "at" = (
 /obj/effect/debris/cleanable/dirt,
@@ -133,11 +101,6 @@
 /obj/item/ammo_magazine/clip/c762,
 /obj/item/ammo_magazine/clip/c762,
 /turf/simulated/floor/wood,
-/area/class_h/POIs/landing_pad)
-"av" = (
-/obj/effect/debris/cleanable/dirt,
-/obj/machinery/door/airlock/multi_tile,
-/turf/simulated/floor/tiled/kafel_full,
 /area/class_h/POIs/landing_pad)
 "aw" = (
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
@@ -184,12 +147,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/class_h/POIs/landing_pad)
-"aE" = (
-/obj/effect/floor_decal/techfloor/orange{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/external,
-/area/class_h/POIs/landing_pad)
 "aF" = (
 /obj/effect/wingrille_spawn/reinforced,
 /turf/simulated/wall,
@@ -205,12 +162,6 @@
 /obj/item/storage/box/donkpockets,
 /obj/item/storage/box/donkpockets,
 /obj/item/storage/box/donkpockets,
-/obj/item/reagent_containers/food/snacks/liquidvitamin,
-/obj/item/reagent_containers/food/snacks/liquidvitamin,
-/obj/item/reagent_containers/food/snacks/liquidvitamin,
-/obj/item/reagent_containers/food/snacks/liquidprotein,
-/obj/item/reagent_containers/food/snacks/liquidprotein,
-/obj/item/reagent_containers/food/snacks/liquidprotein,
 /obj/item/reagent_containers/food/snacks/liquidfood,
 /obj/item/reagent_containers/food/snacks/liquidfood,
 /obj/item/reagent_containers/food/snacks/liquidfood,
@@ -244,12 +195,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled,
 /area/class_h/POIs/landing_pad)
-"aM" = (
-/obj/effect/floor_decal/techfloor/orange{
-	dir = 10
-	},
-/turf/simulated/floor/tiled/external,
-/area/class_h/POIs/landing_pad)
 "aN" = (
 /obj/machinery/door/airlock/glass_external/public,
 /turf/simulated/floor/tiled,
@@ -268,10 +213,6 @@
 /obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled,
 /area/class_h/POIs/landing_pad)
-"aR" = (
-/obj/effect/floor_decal/techfloor/orange,
-/turf/simulated/floor/tiled/external,
-/area/class_h/POIs/landing_pad)
 "aS" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/atmospherics/pipe/simple/hidden,
@@ -284,12 +225,6 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/class_h/POIs/landing_pad)
-"aU" = (
-/obj/effect/floor_decal/techfloor/orange{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/external,
 /area/class_h/POIs/landing_pad)
 "aV" = (
 /obj/machinery/light/spot{

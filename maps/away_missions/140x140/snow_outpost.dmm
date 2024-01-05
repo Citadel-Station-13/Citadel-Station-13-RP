@@ -587,10 +587,6 @@
 "ce" = (
 /turf/simulated/wall/sandstone,
 /area/awaymission/snow_outpost/dark)
-"cf" = (
-/obj/item/ore/diamond,
-/turf/simulated/floor/snow/snow2,
-/area/awaymission/snow_outpost/dark)
 "ch" = (
 /turf/simulated/floor/tiled/kafel_full/yellow,
 /area/awaymission/snow_outpost/dark)
@@ -626,10 +622,6 @@
 "cr" = (
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/awaymission/snow_outpost/outside)
-"cs" = (
-/obj/item/ore,
-/turf/simulated/floor/snow/snow2,
-/area/awaymission/snow_outpost/dark)
 "ct" = (
 /obj/effect/floor_decal/asteroid,
 /turf/simulated/floor/snow/snow2,
@@ -762,29 +754,6 @@
 /area/awaymission/snow_outpost/powered)
 "da" = (
 /obj/structure/old_roboprinter,
-/turf/simulated/floor/snow/snow2,
-/area/awaymission/snow_outpost/dark)
-"db" = (
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/turf/simulated/floor/snow/snow2,
-/area/awaymission/snow_outpost/dark)
-"dc" = (
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
 /turf/simulated/floor/snow/snow2,
 /area/awaymission/snow_outpost/dark)
 "dd" = (
@@ -1709,11 +1678,6 @@
 /obj/tether_away_spawner/aerostat_inside,
 /turf/simulated/floor/snow/snow2,
 /area/awaymission/snow_outpost/dark)
-"fW" = (
-/obj/item/ore/gold,
-/obj/tether_away_spawner/aerostat_inside,
-/turf/simulated/floor/snow/snow2,
-/area/awaymission/snow_outpost/dark)
 "fX" = (
 /obj/structure/flora/tree/pine,
 /turf/simulated/floor/snow/snow2,
@@ -2184,10 +2148,6 @@
 	},
 /turf/simulated/floor/carpet,
 /area/awaymission/snow_outpost/dark)
-"hH" = (
-/mob/living/simple_mob/mechanical/hivebot/ranged_damage/strong/guard,
-/turf/simulated/floor,
-/area/awaymission/snow_outpost/dark)
 "hI" = (
 /obj/structure/girder,
 /turf/simulated/floor,
@@ -2356,12 +2316,6 @@
 "il" = (
 /obj/structure/shuttle/engine/propulsion/burst,
 /turf/simulated/shuttle/wall,
-/area/awaymission/snow_outpost/outside)
-"im" = (
-/obj/structure/door_assembly/door_assembly_ext{
-	anchored = 1
-	},
-/turf/simulated/floor/water,
 /area/awaymission/snow_outpost/outside)
 "in" = (
 /turf/unsimulated/mineral,
@@ -2705,10 +2659,6 @@
 /turf/simulated/floor/outdoors/dirt{
 	outdoors = 0
 	},
-/area/awaymission/snow_outpost/dark)
-"CY" = (
-/obj/item/ore,
-/turf/simulated/floor/plating/outdoors,
 /area/awaymission/snow_outpost/dark)
 "Dp" = (
 /obj/structure/ghost_pod/manual/lost_drone/dogborg,
@@ -3453,7 +3403,7 @@ ig
 ii
 ij
 ik
-im
+id
 ar
 ar
 id
@@ -3823,7 +3773,7 @@ Lh
 Lh
 Lh
 Lh
-fW
+fV
 fV
 fV
 fV
@@ -3965,7 +3915,7 @@ Lh
 Lh
 Lh
 Lh
-db
+Lq
 Lq
 Lq
 Lq
@@ -4107,7 +4057,7 @@ Lh
 Lh
 Lh
 Lh
-dc
+Lq
 Lq
 Lq
 Lq
@@ -4987,7 +4937,7 @@ ch
 ce
 jo
 Lq
-cs
+Lq
 Lq
 Lq
 Lq
@@ -5547,7 +5497,7 @@ Lh
 Lh
 Lh
 IK
-CY
+wV
 wV
 ch
 ch
@@ -5694,7 +5644,7 @@ ch
 ch
 ch
 ch
-CY
+wV
 Lq
 Lq
 Lq
@@ -5837,7 +5787,7 @@ ch
 wV
 wV
 ce
-cs
+Lq
 Lq
 ct
 Lq
@@ -9942,7 +9892,7 @@ ab
 ab
 cd
 VF
-cf
+Lq
 VF
 VF
 Lq
@@ -10368,7 +10318,7 @@ cd
 ab
 cd
 VF
-cf
+Lq
 Lq
 Lq
 Lq
@@ -10511,7 +10461,7 @@ ab
 cd
 Lh
 VF
-cf
+Lq
 Lq
 Lq
 VF
@@ -20619,7 +20569,7 @@ cv
 ht
 hB
 ki
-hH
+ki
 ki
 cv
 Lh

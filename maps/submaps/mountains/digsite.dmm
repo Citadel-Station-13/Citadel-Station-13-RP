@@ -21,10 +21,6 @@
 "g" = (
 /turf/simulated/floor/plating/outdoors,
 /area/submap/cave/digsite)
-"h" = (
-/obj/item/ore,
-/turf/simulated/floor/plating/outdoors,
-/area/submap/cave/digsite)
 "i" = (
 /obj/structure/bed/alien,
 /turf/simulated/floor/tiled/kafel_full/yellow,
@@ -52,10 +48,6 @@
 /area/submap/cave/digsite)
 "o" = (
 /obj/structure/closet/crate/secure/loot,
-/turf/simulated/mineral/floor/ignore_mapgen,
-/area/submap/cave/digsite)
-"p" = (
-/obj/item/ore,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/digsite)
 "q" = (
@@ -340,7 +332,7 @@ f
 c
 e
 e
-p
+e
 e
 e
 e
@@ -420,7 +412,7 @@ a
 a
 b
 d
-h
+g
 g
 f
 f
@@ -447,7 +439,7 @@ f
 f
 f
 f
-h
+g
 e
 e
 e
@@ -470,7 +462,7 @@ f
 g
 g
 c
-p
+e
 e
 q
 e

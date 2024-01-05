@@ -71,10 +71,6 @@
 /obj/item/clothing/head/welding/engie,
 /turf/simulated/floor/plating/outdoors,
 /area/submap/construction1)
-"t" = (
-/obj/structure/door_assembly/door_assembly_mai,
-/turf/simulated/floor/plating/outdoors,
-/area/submap/construction1)
 "u" = (
 /obj/item/storage/toolbox/electrical,
 /turf/simulated/floor/plating/outdoors,
@@ -223,7 +219,7 @@ h
 l
 o
 l
-t
+g
 l
 l
 z

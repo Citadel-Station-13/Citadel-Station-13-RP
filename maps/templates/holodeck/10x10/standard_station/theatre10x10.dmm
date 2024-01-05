@@ -34,7 +34,7 @@
 /area/template_noop)
 "n" = (
 /obj/landmark/costume,
-/obj/structure/table/rack/holorack,
+/obj/structure/table/rack,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/template_noop)
 "o" = (
@@ -72,7 +72,6 @@
 /turf/simulated/floor/holofloor/carpet,
 /area/template_noop)
 "x" = (
-/obj/structure/table/rack/holorack,
 /obj/item/clothing/under/dress/dress_saloon,
 /obj/item/clothing/head/pin/flower,
 /turf/simulated/floor/holofloor/tiled/dark,
