@@ -87,14 +87,6 @@
 "vd" = (
 /turf/simulated/wall/sandstone/classh,
 /area/tether_away/beach/desert/explored)
-"vn" = (
-/obj/effect/map_effect/portal/master/side_b{
-	dir = 1;
-	name = "V4_desert_to_beach";
-	portal_id = "V4_desert_step"
-	},
-/turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/explored)
 "vr" = (
 /obj/random/humanoidremains,
 /obj/effect/debris/cleanable/blood,
@@ -110,32 +102,6 @@
 "wH" = (
 /obj/machinery/light/small/flicker{
 	dir = 4
-	},
-/turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/explored)
-"xw" = (
-/obj/effect/map_effect/portal/master/side_a{
-	dir = 8;
-	name = "desert to caves";
-	portal_id = "V4_cave_desert_step"
-	},
-/turf/simulated/mineral/floor/cave{
-	name = "dirt";
-	outdoors = 1
-	},
-/area/tether_away/beach/desert/explored)
-"yc" = (
-/obj/effect/map_effect/portal/line/side_a{
-	dir = 8
-	},
-/turf/simulated/mineral/floor/cave{
-	name = "dirt";
-	outdoors = 1
-	},
-/area/tether_away/beach/desert/explored)
-"yj" = (
-/obj/effect/map_effect/portal/line/side_b{
-	dir = 1
 	},
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/tether_away/beach/desert/explored)
@@ -168,12 +134,6 @@
 	name = "dirt";
 	outdoors = 1
 	},
-/area/tether_away/beach/desert/explored)
-"Df" = (
-/obj/effect/map_effect/portal/line/side_b{
-	dir = 1
-	},
-/turf/simulated/floor/outdoors/beach/sand/desert,
 /area/tether_away/beach/desert/explored)
 "Eh" = (
 /obj/structure/simple_door/wood,
@@ -18780,7 +18740,7 @@ FM
 kK
 kK
 kK
-vn
+kK
 wg
 "}
 (131,1,1) = {"
@@ -18922,7 +18882,7 @@ kK
 kK
 kK
 kK
-yj
+kK
 wg
 "}
 (132,1,1) = {"
@@ -19064,7 +19024,7 @@ kK
 kK
 FM
 kK
-yj
+kK
 wg
 "}
 (133,1,1) = {"
@@ -19206,7 +19166,7 @@ kK
 kK
 FM
 FM
-yj
+kK
 wg
 "}
 (134,1,1) = {"
@@ -19348,7 +19308,7 @@ kK
 kK
 kK
 kK
-yj
+kK
 wg
 "}
 (135,1,1) = {"
@@ -19490,7 +19450,7 @@ kK
 kK
 kK
 kK
-Df
+FM
 wg
 "}
 (136,1,1) = {"
@@ -19632,7 +19592,7 @@ XZ
 XZ
 XZ
 kK
-yj
+kK
 wg
 "}
 (137,1,1) = {"
@@ -19924,11 +19884,11 @@ gz
 XZ
 XZ
 gz
-yc
-yc
-yc
-yc
-xw
+Js
+Js
+Js
+Js
+Js
 gz
 XZ
 XZ
