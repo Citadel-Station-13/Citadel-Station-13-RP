@@ -127,6 +127,8 @@
 
 	ASSERT(!isnull(wearer))
 
+	interrupt_if_deactivating()
+
 	. = TRUE
 
 	set_weight(online_weight)
@@ -164,6 +166,8 @@
 /obj/item/rig/proc/deactivate(undeploy, silent, subtle, force, was_instant)
 	set_weight(offline_weight)
 	set_encumbrance(offline_encumbrance)
+
+	interrupt_if_activating()
 
 	// todo: for now, undeploy/unseal is just instant, instead of being done before the main shutdown sequence
 	if(undeploy)

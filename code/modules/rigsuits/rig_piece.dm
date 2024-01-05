@@ -181,6 +181,7 @@
 	var/obj/item/physical = parent
 	physical.worn_state = state_worn_sealed
 	physical.icon_state = state_sealed
+	physical.update_worn_icon()
 	controller.legacy_sync_piece(src, TRUE)
 	sealed = RIG_PIECE_SEALED
 	#warn maint panel
@@ -211,6 +212,7 @@
 	var/obj/item/physical = parent
 	physical.worn_state = state_worn_unsealed
 	physical.icon_state = state_unsealed
+	physical.update_worn_icon()
 	controller.legacy_sync_piece(src, FALSE)
 	sealed = RIG_PIECE_UNSEALED
 	#warn maint panel

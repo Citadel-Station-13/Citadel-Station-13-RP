@@ -4,16 +4,11 @@
 @use 'sass:color';
 @use 'sass:meta';
 
-@use '../base.scss' with (
-  $color-fg: #ffffff,
-  $color-bg: #252525,
-);
-
 .Rigsuit__Console {
 
 }
 
 .Rigsuit__Console-container {
-  background-color: $color-bg;
-  color: $color-fg;
+  background-color: #252525;
+  color: #ffffff;
 }

@@ -47,6 +47,8 @@
  * @return TRUE/FALSE success/failure
  */
 /obj/item/rig/proc/seal_piece_sync(datum/component/rig_piece/piece, instant, subtle, silent)
+	if(activation_state != RIG_ACTIVATION_ONLINE)
+		return FALSE
 	return piece.seal_sync(instant, subtle, silent)
 
 /**
