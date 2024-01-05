@@ -69,6 +69,8 @@
 	var/button_toggled
 	/// are button updates managed? if so, we don't auto update.
 	var/button_managed = FALSE
+	/// is the button visible
+	var/button_visibility = TRUE
 
 /datum/action/New(datum/target)
 	if(!target_compatible(target))

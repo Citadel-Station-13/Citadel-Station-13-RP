@@ -173,7 +173,7 @@
 	closed = TRUE
 	return ..()
 
-/datum/tgui_dynamic_input/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/datum/tgui_dynamic_input/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["query"] = query.get_query()
 	.["title"] = title
@@ -202,7 +202,7 @@
 				finish(null)
 			return TRUE
 
-/datum/tgui_dynamic_input/ui_state(mob/user, datum/tgui_module/module)
+/datum/tgui_dynamic_input/ui_state()
 	return GLOB.always_state
 
 /datum/tgui_dynamic_input/proc/block_on_finished()

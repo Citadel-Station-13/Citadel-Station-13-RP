@@ -156,7 +156,7 @@ GLOBAL_LIST_INIT(orion_events, generate_orion_events())
 		get_asset_datum(/datum/asset/spritesheet/moods),
 	)
 
-/obj/machinery/computer/arcade/orion_trail/ui_data(mob/user)
+/obj/machinery/computer/arcade/orion_trail/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 	data["gamestatus"] = gameStatus
 
@@ -178,7 +178,7 @@ GLOBAL_LIST_INIT(orion_events, generate_orion_events())
 
 	return data
 
-/obj/machinery/computer/arcade/orion_trail/ui_static_data(mob/user)
+/obj/machinery/computer/arcade/orion_trail/ui_static_data(mob/user, datum/tgui/ui)
 	var/list/static_data = list()
 	static_data["gamename"] = name
 	static_data["emagged"] = obj_flags & OBJ_EMAGGED
@@ -186,7 +186,7 @@ GLOBAL_LIST_INIT(orion_events, generate_orion_events())
 	static_data["settlermoods"] = settlermoods
 	return static_data
 
-/obj/machinery/computer/arcade/orion_trail/ui_act(action, list/params)
+/obj/machinery/computer/arcade/orion_trail/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return

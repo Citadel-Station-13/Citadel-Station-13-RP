@@ -48,7 +48,7 @@
 
 /datum/prototype/struct/alt_title/surgeon
 	title = "Surgeon"
-	title_blurb = "A Surgeon specializes in providing surgical aid to injured patients, up to and including amputation and limb reattachement. They are expected \
+	title_blurb = "A Surgeon specializes in providing surgical aid to injured patients, up to and including amputation and limb reattachment. They are expected \
 					to know the ins and outs of anesthesia and surgery."
 	title_outfit = /datum/outfit/job/station/medical_doctor/surgeon
 
@@ -74,8 +74,8 @@
 
 /datum/prototype/struct/alt_title/doctor/resident
 	title = "Medical Resident"
-	title_blurb = "A Medical Resident is someone who has a medical dregree but is still in their resdiency, training under the supervision of more experienced doctors."
-	
+	title_blurb = "A Medical Resident is someone who has a medical degree but is still in their residency, training under the supervision of more experienced doctors."
+
 /datum/prototype/struct/alt_title/doctor/intern
 	title = "Medical Intern"
 	title_blurb = "A Medical Intern is someone just learning the ropes of the medical field, learning from and answering to other medbay staff."

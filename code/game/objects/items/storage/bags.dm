@@ -125,7 +125,7 @@
 	can_hold = list(/obj/item/stack/ore)
 	var/stored_ore = list()
 	var/total_ore = 0 //current ore stored
-	var/max_ore = 200 //how much ore it can hold
+	var/max_ore = 300 //how much ore it can hold
 	var/last_update = 0
 
 /obj/item/storage/bag/ore/update_w_class()
@@ -209,7 +209,7 @@
 
 /obj/item/storage/bag/ore/proc/take(obj/item/stack/ore/O)
 	if(!istype(O))
-		return
+		return FALSE
 	var/overflow = max((total_ore + O.amount) - max_ore, 0)
 	var/store_amount = O.amount - overflow
 
@@ -222,8 +222,10 @@
 	if(overflow)
 		O.use(store_amount)
 		O.forceMove(drop_location())
+		return FALSE
 	else
 		qdel(O)
+		return TRUE
 
 /obj/item/storage/bag/ore/proc/deposit(atom/newloc, amount = 50)
 	if(isOreEmpty())
@@ -268,6 +270,14 @@
 	desc = "This hide bag can be used to store and transport ores."
 	icon = 'icons/obj/lavaland.dmi'
 	icon_state = "golisatchel"
+
+//Bluespace.
+/obj/item/storage/bag/ore/bluespace
+	name = "mining satchel of holding"
+	desc = "This advanced spacious storage efficiently stores and transports ores using bluespace technology. It's like having an ore box latched onto your pocket!"
+	icon_state = "satchel_bspace"
+	max_ore = SHORT_REAL_LIMIT //if someone manages to reach 16+ million ores in a single 5 hour round, they'd have to be something else.
+
 
 // -----------------------------
 //          Plant bag

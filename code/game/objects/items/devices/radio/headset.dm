@@ -70,7 +70,7 @@
 		return ..(freq, level)
 	return -1
 
-/obj/item/radio/headset/ui_state(mob/user, datum/tgui_module/module)
+/obj/item/radio/headset/ui_state()
 	return GLOB.inventory_state
 
 /obj/item/radio/headset/syndicate

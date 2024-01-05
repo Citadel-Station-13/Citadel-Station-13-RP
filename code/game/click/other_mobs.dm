@@ -66,7 +66,7 @@
 	// 	return FALSE
 	return TRUE
 
-/atom/ui_status(mob/user)
+/atom/ui_status(mob/user, datum/ui_state/state)
 	. = ..()
 	if(!can_interact(user) && !IsAdminGhost(user))
 		. = min(., UI_UPDATE)

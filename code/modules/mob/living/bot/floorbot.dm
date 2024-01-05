@@ -65,7 +65,7 @@
 		ui = new(user, src, "Floorbot", name)
 		ui.open()
 
-/mob/living/bot/floorbot/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/mob/living/bot/floorbot/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	data["on"] = on
@@ -74,7 +74,7 @@
 
 	data["amount"] = amount
 
-	data["possible_bmode"] = list("NORTH", "EAST", "SOUTH", "WEST")
+	data["possible_bmode"] = list("OFF","NORTH", "EAST", "SOUTH", "WEST")
 
 	data["improvefloors"] = null
 	data["eattiles"] = null
@@ -85,7 +85,7 @@
 		data["improvefloors"] = improvefloors
 		data["eattiles"] = eattiles
 		data["maketiles"] = maketiles
-		data["bmode"] = dir2text(targetdirection)
+		data["bmode"] = targetdirection ? dir2text(targetdirection) : "OFF"
 
 	return data
 
@@ -132,7 +132,10 @@
 			. = TRUE
 
 		if("bridgemode")
-			targetdirection = text2dir(params["dir"])
+			if(params["dir"] != "OFF")
+				targetdirection = text2dir(params["dir"])
+			else
+				targetdirection = null
 			. = TRUE
 
 /mob/living/bot/floorbot/handleRegular()
@@ -429,7 +432,7 @@
 	switch(build_step)
 		if(ASSEMBLY_FIRST_STEP)
 			if(isprox(W))
-				if(!user.attempt_insert_item_for_installation(W, src))
+				if(!user.attempt_consume_item_for_construction(W))
 					return
 				to_chat(user, SPAN_NOTICE("You add the proximity sensor to [src]."))
 				name = "incomplete floorbot assembly"

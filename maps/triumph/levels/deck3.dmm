@@ -4292,7 +4292,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/firedoor/multi_tile,
 /obj/structure/curtain/open/shower/medical,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 8
@@ -4300,6 +4299,7 @@
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 8
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
 "dHN" = (
@@ -7710,6 +7710,7 @@
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
 "guJ" = (
@@ -9646,7 +9647,7 @@
 	icon_state = "0-4"
 	},
 /obj/structure/bed/chair{
-	dir = 1
+	dir = 4
 	},
 /obj/machinery/light{
 	dir = 8;
@@ -9869,6 +9870,9 @@
 	},
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 1
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
@@ -21007,7 +21011,6 @@
 /turf/simulated/floor/carpet/tealcarpet,
 /area/medical/patient_c)
 "qZM" = (
-/obj/machinery/computer/ship/sensors,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 9
 	},
@@ -22355,10 +22358,12 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "skW" = (
-/obj/machinery/door/firedoor/multi_tile,
 /obj/structure/curtain/open/shower/medical,
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/blue/border,
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
 "slc" = (
@@ -24190,6 +24195,9 @@
 	},
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 1
+	},
+/obj/structure/panic_button{
+	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
@@ -27600,6 +27608,9 @@
 	},
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/blue/border,
+/obj/machinery/computer/ship/sensors{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/cockpit)
 "wCL" = (

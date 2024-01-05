@@ -1,24 +1,6 @@
 
 // see code/datums/recipe.dm
 
-
-/* No telebacon. just no...
-/datum/recipe/telebacon
-	items = list(
-		/obj/item/reagent_containers/food/snacks/meat,
-		/obj/item/assembly/signaler
-	)
-	result = /obj/item/reagent_containers/food/snacks/telebacon
-
-I said no!
-/datum/recipe/syntitelebacon
-	items = list(
-		/obj/item/reagent_containers/food/snacks/meat/syntiflesh,
-		/obj/item/assembly/signaler
-	)
-	result = /obj/item/reagent_containers/food/snacks/telebacon
-*/
-
 /datum/recipe/friedegg
 	reagents = list("sodiumchloride" = 1, "blackpepper" = 1)
 	items = list(
@@ -678,7 +660,7 @@ I said no!
 /datum/recipe/icecreamsandwich
 	reagents = list("milk" = 5, "ice" = 5)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/icecream
+		/obj/item/reagent_containers/food/snacks/ice_cream,
 	)
 	result = /obj/item/reagent_containers/food/snacks/icecreamsandwich
 
@@ -1367,7 +1349,7 @@ I said no!
 	result = /obj/item/reagent_containers/food/snacks/crayonburger_rbw
 
 /datum/recipe/rkibble
-	reagents = list("milk" = 5, "cooking_oil" = 10)
+	reagents = list("milk" = 5, "tallow" = 10)
 	items = list(
 		/obj/item/robot_parts/head,
 		/obj/item/stack/rods
@@ -1540,8 +1522,8 @@ I said no!
 	reagents = list("milk" = 5, "ice" = 5)
 	items = list(
 		/obj/item/reagent_containers/food/snacks/chocolatebar,
-		/obj/item/reagent_containers/food/snacks/icecream,
-		/obj/item/reagent_containers/food/snacks/icecream
+		/obj/item/reagent_containers/food/snacks/ice_cream,
+		/obj/item/reagent_containers/food/snacks/ice_cream,
 	)
 	result = /obj/item/reagent_containers/food/snacks/bananasplit
 
