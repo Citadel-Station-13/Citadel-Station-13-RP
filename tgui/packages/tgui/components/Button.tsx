@@ -33,6 +33,7 @@ export type ButtonProps = BoxProps & {
   readonly content?: any;
   readonly onClick?: any;
   readonly verticalAlignContent?: 'top' | 'middle' | 'bottom';
+  readonly flashing?: BooleanLike;
 }
 
 export const Button = (props: ButtonProps) => {
@@ -77,13 +78,14 @@ export const Button = (props: ButtonProps) => {
   if (Byond.IS_LTE_IE8) {
     rest.unselectable = true;
   }
+  let buttonColor = props.color || 'default';
   let buttonContent = (
     <div
       className={classes([
         'Button',
         fluid && 'Button--fluid',
         disabled && 'Button--disabled',
-        selected && 'Button--selected',
+        selected && (buttonColor === 'default') && !props.flashing && 'Button--selected',
         hasContent && 'Button--hasContent',
         ellipsis && 'Button--ellipsis',
         circular && 'Button--circular',
@@ -92,9 +94,7 @@ export const Button = (props: ButtonProps) => {
         verticalAlignContent && "Button--flex",
         (verticalAlignContent && fluid) && "Button--flex--fluid",
         verticalAlignContent && 'Button--verticalAlignContent--' + verticalAlignContent,
-        (color && typeof color === 'string')
-          ? 'Button--color--' + color
-          : 'Button--color--default',
+        (props.flashing? `Button--flash--${buttonColor}` : `Button--color--${buttonColor}`),
         className,
         computeBoxClassName(rest),
       ])}

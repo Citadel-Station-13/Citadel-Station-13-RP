@@ -112,12 +112,12 @@ export const RigHardwareZoneSelection:
     {
       name: "Left Arm",
       icon: "tg-s1-glove-left",
-      key: "arms",
+      key: "left",
     },
     {
       name: "Right Arm",
       icon: "tg-s1-glove-right",
-      key: "arms",
+      key: "right",
     },
     {
       name: "Legs",

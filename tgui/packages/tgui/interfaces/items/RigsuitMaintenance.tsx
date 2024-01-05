@@ -5,12 +5,11 @@
 
 import { BooleanLike } from "common/react";
 import { InfernoNode } from "inferno";
-import { getModuleData, useBackend, useLocalState } from "../../backend";
-import { Button, Flex, Icon, NoticeBox, Section, Stack, Tabs } from "../../components";
+import { useBackend, useLocalState } from "../../backend";
+import { Icon, NoticeBox, Section, Stack, Tabs, Tooltip } from "../../components";
 import { Window } from "../../layouts";
 import { RigActivationStatus, RigPieceID, RigPieceSealStatus, RigHardwareZoneSelection } from "./RigsuitCommon";
 import { RigsuitConsole, RigsuitConsoleData } from "./RigsuitConsole";
-import { RigsuitPieceData } from "./RigsuitPiece";
 
 interface RigsuitMaintenanceData {
   console: RigsuitConsoleData;
@@ -48,14 +47,16 @@ export const RigsuitMaintenance = (props, context) => {
       <Window.Content>
         <Stack fill>
           <Stack.Item grow={1}>
-            <Section title="Modules" fill>
+            <Section fill>
               <Stack vertical fill>
                 <Stack.Item>
                   <Tabs fluid>
                     {RigHardwareZoneSelection.map((zone) => (
                       <Tabs.Tab onClick={() => setModuleSection(zone.key)}
                         selected={moduleSection === zone.key} key={zone.key}>
-                        <Icon name={zone.icon} size={2.5} />
+                        <Tooltip content={zone.name}>
+                          <Icon name={zone.icon} size={2.5} />
+                        </Tooltip>
                       </Tabs.Tab>
                     ))}
                   </Tabs>
@@ -72,7 +73,7 @@ export const RigsuitMaintenance = (props, context) => {
                 <RigsuitConsole consoleData={data.console}
                   consoleInput={(raw) => act('consoleInput', { command: raw })} />
               </Stack.Item>
-              <Stack.Item>
+              {/* <Stack.Item>
                 <Tabs fluid>
                   <Tabs.Tab
                     color="transparent"
@@ -174,8 +175,10 @@ export const RigsuitMaintenance = (props, context) => {
                 </Tabs>
               </Stack.Item>
               <Stack.Item grow={1}>
-                <NoticeBox warning>OS-WIP-FRAGMENT-102</NoticeBox>
-              </Stack.Item>
+                <Section fill>
+                  <NoticeBox warning>OS-WIP-FRAGMENT-102</NoticeBox>
+                </Section>
+              </Stack.Item> */}
             </Stack>
           </Stack.Item>
         </Stack>
@@ -183,7 +186,7 @@ export const RigsuitMaintenance = (props, context) => {
     );
   }
   return (
-    <Window title={`${data.theme} controller internals`} width={600} height={800}>
+    <Window title={`${data.theme} controller internals`} width={700} height={600}>
       {rendered}
     </Window>
   );

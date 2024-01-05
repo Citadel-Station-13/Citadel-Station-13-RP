@@ -4,9 +4,8 @@
  */
 
 import { BooleanLike } from "common/react";
-import { InfernoNode } from "inferno";
 import { getModuleData, useBackend, useLocalState } from "../../backend";
-import { Button, Flex, Icon, LabeledList, NoticeBox, Section, Stack, Tabs } from "../../components";
+import { Button, Flex, Icon, LabeledList, NoticeBox, Section, Stack, Tabs, Tooltip } from "../../components";
 import { Window } from "../../layouts";
 import { RigActivationStatus, RigControlFlags, RigModuleReflist, RigModuleZoneSelection, RigPieceReflist, RigPieceSealStatus } from "./RigsuitCommon";
 import { RigsuitPieceData } from "./RigsuitPiece";
@@ -120,44 +119,6 @@ export const RigsuitController = (props, context) => {
                   </Tabs.Tab>
                   {rig.pieceRefs.map((ref) => {
                     let pieceData = getModuleData<RigsuitPieceData>(context, ref);
-                    let pieceSealButton: InfernoNode | undefined;
-                    switch (pieceData.sealed) {
-                      case RigPieceSealStatus.Sealed:
-                        pieceSealButton = (
-                          <Button.Confirm
-                            selected
-                            icon="lock"
-                            confirmColor="average"
-                            confirmContent={null}
-                            confirmIcon="unlock"
-                            onClick={() => act('seal', { piece: pieceData.id, on: false })} />
-                        );
-                        break;
-                      case RigPieceSealStatus.Unsealed:
-                        pieceSealButton = (
-                          <Button
-                            icon="unlock"
-                            color="transparent"
-                            onClick={() => act('seal', { piece: pieceData.id, on: true })} />
-                        );
-                        break;
-                      case RigPieceSealStatus.Sealing:
-                        pieceSealButton = (
-                          <Button
-                            color="average"
-                            icon="lock"
-                            onClick={() => act('seal', { piece: pieceData.id, on: false })} />
-                        );
-                        break;
-                      case RigPieceSealStatus.Unsealing:
-                        pieceSealButton = (
-                          <Button
-                            icon="unlock"
-                            color="average"
-                            onClick={() => act('seal', { piece: pieceData.id, on: true })} />
-                        );
-                        break;
-                    }
                     return (
                       <Tabs.Tab
                         key={ref}
@@ -173,14 +134,15 @@ export const RigsuitController = (props, context) => {
                           <Stack.Item>
                             <Flex direction="column" fill justify="space-around">
                               <Flex.Item>
-                                {pieceSealButton}
+                                <RigPieceSealButton id={pieceData.id}
+                                  sealed={pieceData.sealed} />
                               </Flex.Item>
                               <Flex.Item>
                                 {pieceData.deployed? (
                                   <Button.Confirm
                                     selected
                                     icon="circle"
-                                    confirmColor="red"
+                                    confirmColor="yellow"
                                     confirmContent={null}
                                     confirmIcon="circle-o"
                                     onClick={() => act('deploy', { piece: pieceData.id, on: false })} />
@@ -209,7 +171,9 @@ export const RigsuitController = (props, context) => {
                     {RigModuleZoneSelection.map((zone) => (
                       <Tabs.Tab onClick={() => setModuleSection(zone.key)}
                         selected={moduleSection === zone.key} key={zone.key}>
-                        <Icon name={zone.icon} size={2.5} />
+                        <Tooltip content={zone.name}>
+                          <Icon name={zone.icon} size={2.5} />
+                        </Tooltip>
                       </Tabs.Tab>
                     ))}
                   </Tabs>
@@ -236,6 +200,7 @@ const RigActivationButton = (props: RigActivationButtonProps, context) => {
     case RigActivationStatus.Activating:
       return (
         <Button
+          flashing
           color="average"
           icon="lock"
           onClick={() => act('activation', { on: false })} />
@@ -243,6 +208,7 @@ const RigActivationButton = (props: RigActivationButtonProps, context) => {
     case RigActivationStatus.Deactivating:
       return (
         <Button
+          flashing
           color="average"
           icon="unlock"
           onClick={() => act('activation', { on: true })} />
@@ -263,6 +229,54 @@ const RigActivationButton = (props: RigActivationButtonProps, context) => {
           confirmContent={null}
           confirmIcon="unlock"
           onClick={() => act('activation', { on: false })} />
+      );
+  }
+  return (
+    <Button color="bad" content="?" />
+  );
+};
+
+interface RigPieceSealButtonProps {
+  readonly sealed: RigPieceSealStatus;
+  readonly id: string;
+}
+
+const RigPieceSealButton = (props: RigPieceSealButtonProps, context) => {
+  const { act } = useBackend(context);
+
+  switch (props.sealed) {
+    case RigPieceSealStatus.Sealed:
+      return (
+        <Button.Confirm
+          selected
+          icon="lock"
+          confirmColor="average"
+          confirmContent={null}
+          confirmIcon="unlock"
+          onClick={() => act('seal', { piece: props.id, on: false })} />
+      );
+    case RigPieceSealStatus.Unsealed:
+      return (
+        <Button
+          icon="unlock"
+          color="transparent"
+          onClick={() => act('seal', { piece: props.id, on: true })} />
+      );
+    case RigPieceSealStatus.Sealing:
+      return (
+        <Button
+          flashing
+          color="average"
+          icon="lock"
+          onClick={() => act('seal', { piece: props.id, on: false })} />
+      );
+    case RigPieceSealStatus.Unsealing:
+      return (
+        <Button
+          flashing
+          icon="unlock"
+          color="average"
+          onClick={() => act('seal', { piece: props.id, on: true })} />
       );
   }
   return (

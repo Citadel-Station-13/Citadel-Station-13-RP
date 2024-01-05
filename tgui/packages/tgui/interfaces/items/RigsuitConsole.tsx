@@ -8,23 +8,33 @@ export interface RigsuitConsoleData {
 interface RigsuitConsoleProps extends SectionProps {
   readonly consoleData: RigsuitConsoleData;
   readonly consoleInput?: (raw: string) => void;
+  readonly consoleLines?: number;
 }
 
 export const RigsuitConsole = (props: RigsuitConsoleProps, context) => {
+  let lines = props.consoleLines || 10;
   return (
-    <Section fill {...props} className="Rigsuit__Console">
-      <Stack vertical fill>
-        <Stack.Item grow={1}>
-          <Stack vertical fill className="Rigsuit__Console-container" overflowY="scroll">
-            {props.consoleHistory.lines.map((line) => (
+    <Section {...props}>
+      <Stack vertical>
+        <Stack.Item>
+          <div style={{ height: `10em` }} className="Rigsuit__Console-container">
+            Test
+          </div>
+        </Stack.Item>
+        {/* <Stack.Item grow={1}>
+          <Stack vertical fill
+            height={`${lines}em`}
+            className="Rigsuit__Console-container" overflowY="scroll">
+            {props.consoleData.lines.map((line) => (
               <Stack.Item key={line}>
                 {line}
               </Stack.Item>
             ))}
           </Stack>
-        </Stack.Item>
+        </Stack.Item> */}
         <Stack.Item>
-          <Input placeholder="help" onEnter={(e, val) => props.consoleInput?.(val)} />
+          <Input placeholder="help" onEnter={(e, val) => props.consoleInput?.(val)}
+            fluid />
         </Stack.Item>
       </Stack>
     </Section>
