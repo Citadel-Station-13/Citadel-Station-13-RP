@@ -18,7 +18,21 @@
  */
 
 
-/// Test if thing (an atom) can smooth with an adjacent turf. This is a macro because it is a very very hot proc.
+/**
+ * Stole this from @DaedalusDock - @Zandario
+ * Checks if `thing` (an atom) can smooth with `turf`, based on the [/area/var/area_limited_icon_smoothing] variable of their areas.
+ *
+ * * If `thing` doesn't have an area (E.g. the edge of the z level), return `FALSE`.
+ * * If one area has `area_limited_icon_smoothing` set, and the other area's type doesn't match it, return `FALSE`.
+ * * Else, return `TRUE`.
+ *
+ * Arguments:
+ * * thing - The source atom we're smoothing.
+ * * turf  - The target turf we're trying to smooth with.
+ * * val   - The variable to set to `TRUE` depending on if the two can smooth.
+ *
+ *? This is a macro because it is a very very hot proc.
+ */
 #define CAN_AREAS_SMOOTH(thing, turf, val) \
 	do{ \
 		if(isnull(turf)) { \
@@ -68,28 +82,6 @@
 #define ASSERT_SORTED_SMOOTHING_GROUPS(smoothing_group_variable) \
 	var/list/unwrapped = UNWRAP_SMOOTHING_GROUPS(smoothing_group_variable, unwrapped); \
 	assert_sorted(unwrapped, "[#smoothing_group_variable] ([type])"); \
-
-/**
- * Stole this from @DaedalusDock - @Zandario
- * Checks if `src` can smooth with `target`, based on the [/area/var/area_limited_icon_smoothing] variable of their areas.
- *
- * * If `target` doesn't have an area (E.g. the edge of the z level), return `FALSE`.
- * * If one area has `area_limited_icon_smoothing` set, and the other area's type doesn't match it, return `FALSE`.
- * * Else, return `TRUE`.
- *
- * Arguments:
- * * target - The atom we're trying to smooth with.
- */
-/atom/proc/can_area_smooth(atom/target)
-	var/area/target_area = get_area(target)
-	var/area/source_area = get_area(src)
-	if(!target_area)
-		return FALSE
-	if(target_area.area_limited_icon_smoothing && !istype(source_area, target_area.area_limited_icon_smoothing))
-		return FALSE
-	if(source_area.area_limited_icon_smoothing && !istype(target_area, source_area.area_limited_icon_smoothing))
-		return FALSE
-	return TRUE
 
 /**
  * Scans all adjacent turfs to find targets to smooth with.
