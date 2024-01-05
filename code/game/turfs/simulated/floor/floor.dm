@@ -231,3 +231,4 @@
 		cut_overlay(GLOB.no_ceiling_image, TRUE)
 
 CREATE_STANDARD_TURFS(/turf/simulated/floor)
+ 
