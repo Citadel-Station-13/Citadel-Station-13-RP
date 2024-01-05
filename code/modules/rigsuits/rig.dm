@@ -242,6 +242,10 @@
 		maint_panel = new(src)
 	return maint_panel
 
+/obj/item/rig/proc/is_maint_panel_locked()
+	// todo: better access locking? maybe. for now, it's always unlocked if not being worn.
+	return maint_panel_locked && (activation_state == RIG_ACTIVATION_ONLINE)
+
 /obj/item/rig/proc/assert_maint_panel_armor()
 	#warn impl
 

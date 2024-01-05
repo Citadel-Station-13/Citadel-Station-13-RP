@@ -8,7 +8,7 @@ import { InfernoNode } from "inferno";
 import { getModuleData, useBackend, useLocalState } from "../../backend";
 import { Button, Flex, Icon, LabeledList, NoticeBox, Section, Stack, Tabs } from "../../components";
 import { Window } from "../../layouts";
-import { RigActivationStatus, RigControlFlags, RigModuleReflist, RigPieceReflist, RigPieceSealStatus, RigUIZoneSelection } from "./RigsuitCommon";
+import { RigActivationStatus, RigControlFlags, RigModuleReflist, RigModuleZoneSelection, RigPieceReflist, RigPieceSealStatus } from "./RigsuitCommon";
 import { RigsuitPieceData } from "./RigsuitPiece";
 
 export interface RigsuitControllerData {
@@ -27,7 +27,7 @@ export interface RigControllerProps {
 export const RigsuitController = (props, context) => {
   const [systemTab, setSystemTab] = useLocalState<number>(context, 'rigsuitSystemTab', 1);
   const [suitSection, setSuitSection] = useLocalState<string>(context, "rigsuitSectionTab", "All");
-  const [moduleSection, setModuleSection] = useLocalState<string>(context, "rigsuitModuleTab", RigUIZoneSelection[0].key);
+  const [moduleSection, setModuleSection] = useLocalState<string>(context, "rigsuitModuleTab", RigModuleZoneSelection[0].key);
 
   const { data, act } = useBackend<RigsuitControllerData>(context);
   const rig = data;
@@ -206,7 +206,7 @@ export const RigsuitController = (props, context) => {
               <Stack vertical fill>
                 <Stack.Item>
                   <Tabs fluid>
-                    {RigUIZoneSelection.map((zone) => (
+                    {RigModuleZoneSelection.map((zone) => (
                       <Tabs.Tab onClick={() => setModuleSection(zone.key)}
                         selected={moduleSection === zone.key} key={zone.key}>
                         <Icon name={zone.icon} size={2.5} />

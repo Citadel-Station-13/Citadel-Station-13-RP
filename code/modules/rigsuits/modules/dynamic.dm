@@ -106,7 +106,8 @@
 		"confirmIcon" = confirm_icon,
 	)
 	if(section_remaining)
-		schema[schema.len]["actions"].Add(action)
+		var/list/actions = schema[schema.len]["actions"]
+		actions.Add(action)
 		--section_remaining
 	else
 		schema[++schema.len] = action

@@ -6,7 +6,7 @@ export interface RigsuitConsoleData {
 }
 
 interface RigsuitConsoleProps extends SectionProps {
-  readonly consoleHistory: RigsuitConsoleData;
+  readonly consoleData: RigsuitConsoleData;
   readonly consoleInput?: (raw: string) => void;
 }
 
@@ -15,7 +15,7 @@ export const RigsuitConsole = (props: RigsuitConsoleProps, context) => {
     <Section fill {...props} className="Rigsuit__Console">
       <Stack vertical fill>
         <Stack.Item grow={1}>
-          <Stack vertical fill className="Rigsuit__Console-container">
+          <Stack vertical fill className="Rigsuit__Console-container" overflowY="scroll">
             {props.consoleHistory.lines.map((line) => (
               <Stack.Item key={line}>
                 {line}
@@ -24,7 +24,7 @@ export const RigsuitConsole = (props: RigsuitConsoleProps, context) => {
           </Stack>
         </Stack.Item>
         <Stack.Item>
-          <Input />
+          <Input placeholder="help" onEnter={(e, val) => props.consoleInput?.(val)} />
         </Stack.Item>
       </Stack>
     </Section>

@@ -17,7 +17,7 @@ export type BoxProps = ComponentProps & {
   position?: string | BooleanLike;
   overflow?: string | BooleanLike;
   overflowX?: string | BooleanLike;
-  overflowY?: string | BooleanLike;
+  overflowY?: string| BooleanLike;
   top?: string | BooleanLike;
   bottom?: string | BooleanLike;
   left?: string | BooleanLike;

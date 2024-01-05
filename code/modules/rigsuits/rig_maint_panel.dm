@@ -27,6 +27,8 @@
 	.["pieceIDs"] = assembled_ids
 	.["console"] = host.request_console().tgui_console_data()
 	.["theme"] = host.theme_name
+	// todo: b64 is shit
+	.["sprite64"] = host.cached_tgui_icon_b64 || (host.cached_tgui_icon_b64 = icon2base64(icon(host.icon, host.icon_state, SOUTH, 1, FALSE)))
 	#warn piece IDs updates
 	#warn console update
 
@@ -54,16 +56,24 @@
 		return
 	switch(action)
 		if("smashPanel")
-			#warn impl
+			// todo: clickcd rewrite
+			if(usr.next_click > world.time)
+				return FALSE
+			host.attack_maint_panel(new /datum/event_args/actor(usr), usr.get_active_held_item())
+			return TRUE
 		if("fixPanel")
-			#warn impl
+			host.repair_maint_panel(new /datum/event_args/actor(usr), usr.get_active_held_item())
+			return FALSE
 		if("openPanel")
 			#warn impl
 		if("cutPanel")
-			#warn impl
+			host.cut_maint_panel(new /datum/event_args/actor(usr), usr.get_active_held_item())
+			return FALSE
 		if("consoleInput")
 			var/raw = params["command"]
-			#warn impl
+			var/datum/rig_console/console = host.request_console()
+			console.input_command(usr, raw, effective_control_flags = RIG_CONTROL_FLAGS_MAINT_PANEL, username = "root")
+			return FALSE
 		if("forceUnseal")
 			var/piece = params["piece"]
 			#warn impl

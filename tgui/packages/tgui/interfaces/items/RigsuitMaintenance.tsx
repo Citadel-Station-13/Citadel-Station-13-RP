@@ -5,11 +5,12 @@
 
 import { BooleanLike } from "common/react";
 import { InfernoNode } from "inferno";
-import { useBackend, useLocalState } from "../../backend";
-import { Icon, NoticeBox, Section, Stack, Tabs } from "../../components";
+import { getModuleData, useBackend, useLocalState } from "../../backend";
+import { Button, Flex, Icon, NoticeBox, Section, Stack, Tabs } from "../../components";
 import { Window } from "../../layouts";
 import { RigActivationStatus, RigPieceID, RigPieceSealStatus, RigHardwareZoneSelection } from "./RigsuitCommon";
-import { RigsuitConsoleData } from "./RigsuitConsole";
+import { RigsuitConsole, RigsuitConsoleData } from "./RigsuitConsole";
+import { RigsuitPieceData } from "./RigsuitPiece";
 
 interface RigsuitMaintenanceData {
   console: RigsuitConsoleData;
@@ -20,6 +21,7 @@ interface RigsuitMaintenanceData {
   panelBroken: BooleanLike;
   panelIntegrityRatio: number;
   theme: string;
+  sprite64: string;
 }
 
 interface RigsuitMaintenancePiece {
@@ -30,6 +32,8 @@ interface RigsuitMaintenancePiece {
 
 export const RigsuitMaintenance = (props, context) => {
   const { act, data } = useBackend<RigsuitMaintenanceData>(context);
+  const [systemTab, setSystemTab] = useLocalState<number>(context, 'rigsuitSystemTab', 1);
+  const [suitSection, setSuitSection] = useLocalState<string>(context, "rigsuitSectionTab", "All");
   const [moduleSection, setModuleSection] = useLocalState<string>(context, "rigsuitModuleTab", RigHardwareZoneSelection[0].key);
   let rendered: InfernoNode;
   if (!data.panelOpen && false) {
@@ -57,7 +61,7 @@ export const RigsuitMaintenance = (props, context) => {
                   </Tabs>
                 </Stack.Item>
                 <Stack.Item grow={1}>
-                  <NoticeBox warning>OS-WIP-FRAGMENT-7</NoticeBox>
+                  <NoticeBox warning>OS-WIP-FRAGMENT-101</NoticeBox>
                 </Stack.Item>
               </Stack>
             </Section>
@@ -65,19 +69,112 @@ export const RigsuitMaintenance = (props, context) => {
           <Stack.Item grow={1}>
             <Stack vertical fill>
               <Stack.Item>
-                <Section title="Console" fill>
-                  test
-                </Section>
+                <RigsuitConsole consoleData={data.console}
+                  consoleInput={(raw) => act('consoleInput', { command: raw })} />
               </Stack.Item>
               <Stack.Item>
-                <Section title="Controller">
-                  test
-                </Section>
+                <Tabs fluid>
+                  <Tabs.Tab
+                    color="transparent"
+                    onClick={() => setSuitSection('All')}
+                    selected={suitSection === "All"}>
+                    <Stack>
+                      <Stack.Item>
+                        <img src={`data:image/png;base64, ${data.sprite64}`}
+                          style={{ transform: `scale(1.75)`, "margin": "0.25em 0.125em" }} />
+                      </Stack.Item>
+                      <Stack.Item>
+                        <Flex height="100%" direction="column" justify="space-around">
+                          <Flex.Item>
+                            Test
+                          </Flex.Item>
+                        </Flex>
+                      </Stack.Item>
+                    </Stack>
+                  </Tabs.Tab>
+                  {data.pieceIDs.map((ref) => {
+                    let pieceData = getModuleData<RigsuitPieceData>(context, ref);
+                    let pieceSealButton: InfernoNode | undefined;
+                    switch (pieceData.sealed) {
+                      case RigPieceSealStatus.Sealed:
+                        pieceSealButton = (
+                          <Button.Confirm
+                            selected
+                            icon="lock"
+                            confirmColor="average"
+                            confirmContent={null}
+                            confirmIcon="unlock"
+                            onClick={() => act('seal', { piece: pieceData.id, on: false })} />
+                        );
+                        break;
+                      case RigPieceSealStatus.Unsealed:
+                        pieceSealButton = (
+                          <Button
+                            icon="unlock"
+                            color="transparent"
+                            onClick={() => act('seal', { piece: pieceData.id, on: true })} />
+                        );
+                        break;
+                      case RigPieceSealStatus.Sealing:
+                        pieceSealButton = (
+                          <Button
+                            color="average"
+                            icon="lock"
+                            onClick={() => act('seal', { piece: pieceData.id, on: false })} />
+                        );
+                        break;
+                      case RigPieceSealStatus.Unsealing:
+                        pieceSealButton = (
+                          <Button
+                            icon="unlock"
+                            color="average"
+                            onClick={() => act('seal', { piece: pieceData.id, on: true })} />
+                        );
+                        break;
+                    }
+                    return (
+                      <Tabs.Tab
+                        key={ref}
+                        color="transparent"
+                        onClick={() => setSuitSection(ref)}
+                        selected={suitSection === ref}
+                        innerStyle={{ height: "100%", width: "100%" }}>
+                        <Stack>
+                          <Stack.Item align="center" justify="space-around">
+                            <img src={`data:image/png;base64, ${pieceData.sprite64}`}
+                              style={{ transform: `scale(1.75)`, "margin": "0.25em 0.125em" }} />
+                          </Stack.Item>
+                          <Stack.Item>
+                            <Flex direction="column" fill justify="space-around">
+                              <Flex.Item>
+                                {pieceSealButton}
+                              </Flex.Item>
+                              <Flex.Item>
+                                {pieceData.deployed? (
+                                  <Button.Confirm
+                                    selected
+                                    icon="circle"
+                                    confirmColor="red"
+                                    confirmContent={null}
+                                    confirmIcon="circle-o"
+                                    onClick={() => act('deploy', { piece: pieceData.id, on: false })} />
+                                ) : (
+                                  <Button
+                                    color="transparent"
+                                    icon="circle-o"
+                                    onClick={() => act('deploy', { piece: pieceData.id, on: true })} />
+                                )}
+                              </Flex.Item>
+                            </Flex>
+                          </Stack.Item>
+                        </Stack>
+                      </Tabs.Tab>
+                    );
+                  })}
+                </Tabs>
               </Stack.Item>
               <Stack.Item grow={1}>
-                <Section title="Pieces" fill>
-                  test
-                </Section>
+                <NoticeBox warning>OS-WIP-FRAGMENT-102</NoticeBox>
               </Stack.Item>
             </Stack>
           </Stack.Item>
