@@ -1,7 +1,7 @@
 @font-face {
     font-family: "tgfont";
-    src: url("./tgfont.woff2?a7899dc071d28b8635633cf7ae9af52b") format("woff2"),
-url("./tgfont.eot?a7899dc071d28b8635633cf7ae9af52b#iefix") format("embedded-opentype");
+    src: url("./tgfont.woff2?0aae4a9273063ed9348b1c17407151fd") format("woff2"),
+url("./tgfont.eot?0aae4a9273063ed9348b1c17407151fd#iefix") format("embedded-opentype");
 }
 
 i[class^="tg-"]:before, i[class*=" tg-"]:before {
@@ -48,21 +48,48 @@ i[class^="tg-"]:before, i[class*=" tg-"]:before {
 .tg-s1-cube:before {
     content: "\f10b";
 }
-.tg-s1-gloves:before {
+.tg-s1-glove-left:before {
     content: "\f10c";
 }
-.tg-s1-space-helmet:before {
+.tg-s1-glove-right:before {
     content: "\f10d";
 }
-.tg-s1-stack:before {
+.tg-s1-gloves:before {
     content: "\f10e";
 }
-.tg-sound-minus:before {
+.tg-s1-space-helmet:before {
     content: "\f10f";
 }
-.tg-sound-plus:before {
+.tg-s1-stack:before {
     content: "\f110";
 }
-.tg-syndicate-logo:before {
+.tg-sound-minus:before {
     content: "\f111";
+}
+.tg-sound-plus:before {
+    content: "\f112";
+}
+.tg-syndicate-logo:before {
+    content: "\f113";
+}
+.tg-t-cable:before {
+    content: "\f114";
+}
+.tg-t-crowbar:before {
+    content: "\f115";
+}
+.tg-t-multitool:before {
+    content: "\f116";
+}
+.tg-t-screwdriver:before {
+    content: "\f117";
+}
+.tg-t-welder:before {
+    content: "\f118";
+}
+.tg-t-wirecutters:before {
+    content: "\f119";
+}
+.tg-t-wrench:before {
+    content: "\f11a";
 }
