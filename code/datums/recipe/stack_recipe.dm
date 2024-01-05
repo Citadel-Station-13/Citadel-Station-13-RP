@@ -48,11 +48,16 @@
 	var/exclusitivity
 	/// max amount to allow crafting at once. null for 1 non stack, infinity stack
 	var/max_amount
+	/// we're a border object
+	var/on_border = FALSE
 	// todo: material constraints
 
 /datum/stack_recipe/New()
 	if(ispath(result_type, /obj/item/stack))
 		result_is_stack = TRUE
+
+	var/atom/casted = result_type
+	on_border = !!(initial(casted.atom_flags) & ATOM_BORDER)
 
 /**
  * attepmt to craft
@@ -91,6 +96,9 @@
 		if(initial(casted_result.density))
 			for(var/atom/movable/AM as anything in where)
 				if(AM == user)
+					continue
+				// border only collides with other border objs in the same dir
+				if((AM.atom_flags & ATOM_BORDER) && (!on_border || (AM.dir != use_dir)))
 					continue
 				if(AM.density)
 					if(!silent)
