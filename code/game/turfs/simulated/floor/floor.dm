@@ -40,6 +40,8 @@
 	var/singleton/flooring/flooring
 	var/mineral = MAT_STEEL
 
+CREATE_STANDARD_TURFS(/turf/simulated/floor)
+
 /turf/simulated/floor/is_plating()
 	return !flooring
 
@@ -230,5 +232,4 @@
 	else
 		cut_overlay(GLOB.no_ceiling_image, TRUE)
 
-CREATE_STANDARD_TURFS(/turf/simulated/floor)
- 
+
