@@ -120,11 +120,11 @@ export const DecalPainter = (props, context) => {
 };
 
 type IconButtonParams = {
-  decal: string;
-  dir: number;
-  color: string;
-  label: string;
-  selected: boolean;
+  readonly decal: string;
+  readonly dir: number;
+  readonly color: string;
+  readonly label: string;
+  readonly selected: boolean;
 };
 
 const IconButton = (props: IconButtonParams, context) => {

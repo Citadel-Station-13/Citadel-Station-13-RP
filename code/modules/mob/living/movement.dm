@@ -44,27 +44,6 @@
 		return FALSE
 	return ..()
 
-/mob/living/CanAllowThrough(atom/movable/mover, turf/target)
-	if(ismob(mover))
-		var/mob/M = mover
-		if(buckled && M.buckled == buckled)
-			// riding same thing, don't block each other
-			return TRUE
-	// can't throw blob stuff through blob stuff
-	if(istype(mover, /obj/structure/blob) && faction == "blob" && !mover.throwing) //Blobs should ignore things on their faction.
-		return TRUE
-	return ..()
-
-/mob/living/CanPassThrough(atom/blocker, turf/target, blocker_opinion)
-	. = ..()
-	if(isobj(blocker))
-		var/obj/O = blocker
-		if(O.depth_projected)
-			// FINE ILL USE UNLINT INSTEAD OF REMOVE PURITY
-			UNLINT(depth_staged = max(depth_staged, O.depth_level))
-		if(!(O.obj_flags & OBJ_IGNORE_MOB_DEPTH) && O.depth_level <= depth_current)
-			return TRUE
-
 /mob/living/can_cross_under(atom/movable/mover)
 	if(isliving(mover))
 		var/mob/living/L = mover
@@ -398,3 +377,47 @@
 	pixel_y += .
 	for(var/mob/living/L in buckled_mobs)
 		L.change_depth(new_depth)
+
+//? passthrough / allowthrough
+
+/mob/living/CanAllowThrough(atom/movable/mover, turf/target)
+	if(ismob(mover))
+		var/mob/M = mover
+		if(buckled && M.buckled == buckled)
+			// riding same thing, don't block each other
+			return TRUE
+	// can't throw blob stuff through blob stuff
+	if(istype(mover, /obj/structure/blob) && faction == "blob" && !mover.throwing) //Blobs should ignore things on their faction.
+		return TRUE
+	return ..()
+
+/mob/living/CanPassThrough(atom/blocker, turf/target, blocker_opinion)
+	. = ..()
+	if(isobj(blocker))
+		var/obj/O = blocker
+		if(O.depth_projected)
+			// FINE ILL USE UNLINT INSTEAD OF REMOVE PURITY
+			UNLINT(depth_staged = max(depth_staged, O.depth_level))
+		if(!(O.obj_flags & OBJ_IGNORE_MOB_DEPTH) && O.depth_level <= depth_current)
+			return TRUE
+
+/mob/living/can_pathfinding_enter(atom/movable/actor, dir, datum/pathfinding/search)
+	// mobs are ignored by pathfinding for now
+	// in the future we'll need a way for mobs to not collide into
+	// each other during cooperative AI actions
+	// or even for say, mulebots moving around humans when blocked.
+	return TRUE
+
+/mob/living/can_pathfinding_exit(atom/movable/actor, dir, datum/pathfinding/search)
+	// mobs are ignored by pathfinding for now
+	// in the future we'll need a way for mobs to not collide into
+	// each other during cooperative AI actions
+	// or even for say, mulebots moving around humans when blocked.
+	return TRUE
+
+/mob/living/can_pathfinding_pass(atom/movable/actor, dir, datum/pathfinding/search)
+	// mobs are ignored by pathfinding for now
+	// in the future we'll need a way for mobs to not collide into
+	// each other during cooperative AI actions
+	// or even for say, mulebots moving around humans when blocked.
+	return TRUE

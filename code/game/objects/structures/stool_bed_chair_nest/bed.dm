@@ -22,7 +22,7 @@
 	var/datum/material/material
 	var/datum/material/padding_material
 	var/base_icon = "bed"
-	var/applies_material_colour = 1
+	var/material_color = 1
 	var/can_buckle = TRUE
 
 /obj/structure/bed/Initialize(mapload, new_material, new_padding_material)
@@ -38,9 +38,6 @@
 		padding_material = get_material_by_name(new_padding_material)
 	update_icon()
 
-/obj/structure/bed/get_material()
-	return material
-
 // Reuse the cache/code from stools, todo maybe unify.
 /obj/structure/bed/update_icon()
 	// Prep icon.
@@ -51,7 +48,7 @@
 	var/cache_key = "[base_icon]-[material.name]"
 	if(isnull(stool_cache[cache_key]))
 		var/image/I = image(icon, base_icon)
-		if(applies_material_colour)
+		if(material_color)
 			I.color = material.icon_colour
 		stool_cache[cache_key] = I
 	overlays_to_add += stool_cache[cache_key]
@@ -74,25 +71,13 @@
 
 	add_overlay(overlays_to_add)
 
-/obj/structure/bed/legacy_ex_act(severity)
-	switch(severity)
-		if(1.0)
-			qdel(src)
-			return
-		if(2.0)
-			if (prob(50))
-				qdel(src)
-				return
-		if(3.0)
-			if (prob(5))
-				qdel(src)
-				return
-
 /obj/structure/bed/attackby(obj/item/W as obj, mob/user as mob)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
 	if(W.is_wrench())
 		playsound(src, W.tool_sound, 50, 1)
-		dismantle()
-		qdel(src)
+		deconstruct(ATOM_DECONSTRUCT_DISASSEMBLED)
+		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 	else if(istype(W,/obj/item/stack))
 		if(padding_material)
 			to_chat(user, "\The [src] is already padded.")
@@ -103,8 +88,7 @@
 			padding_type = "carpet"
 		else if(istype(W, /obj/item/stack/material))
 			var/obj/item/stack/material/M = W
-			if(M.material && (M.material.flags & MATERIAL_PADDING))
-				padding_type = "[M.material.name]"
+			padding_type = "[M.material.name]"
 		if(!padding_type)
 			to_chat(user, "You cannot pad \the [src] with that.")
 			return
@@ -150,10 +134,10 @@
 	padding_material = get_material_by_name(padding_type)
 	update_icon()
 
-/obj/structure/bed/proc/dismantle()
-	material.place_sheet(get_turf(src))
-	if(padding_material)
-		padding_material.place_sheet(get_turf(src))
+/obj/structure/bed/drop_products(method, atom/where)
+	. = ..()
+	material?.place_sheet(where)
+	padding_material?.place_sheet(where)
 
 /obj/structure/bed/psych
 	name = "psychiatrist's couch"
@@ -178,23 +162,21 @@
 /obj/structure/bed/double/padded/Initialize(mapload)
 	. = ..(mapload, "wood", "cotton")
 
-/obj/structure/bed/double/padded/get_centering_pixel_y_offset(dir, atom/aligning)
-	if(!aligning)
+/obj/structure/bed/double/padded/get_buckled_y_offset(atom/buckled)
+	if(isnull(buckled))
 		return ..()
-	if(!has_buckled_mobs())
-		return ..()
-	var/index = buckled_mobs.Find(aligning)
+	var/index = buckled_mobs?.Find(buckled)
 	if(!index)
 		return ..()
 	switch(index)
 		if(1)
-			return -6
+			return 0
 		if(2)
-			return 6
+			return 12
 		if(3)
-			return 3
+			return 6
 		else
-			return rand(-6, 6)
+			return rand(0, 12)
 
 /*
  * Roller beds

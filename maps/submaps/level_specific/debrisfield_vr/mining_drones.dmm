@@ -115,7 +115,7 @@
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/submap/debrisfield_vr/mining_outpost)
 "u" = (
-/obj/item/ore,
+/obj/item/stack/ore,
 /obj/effect/floor_decal/asteroid,
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/submap/debrisfield_vr/mining_outpost)
@@ -163,11 +163,7 @@
 /turf/simulated/floor/tiled/airless,
 /area/submap/debrisfield_vr/mining_outpost)
 "E" = (
-/obj/machinery/door/airlock/external/glass{
-	density = 0;
-	health = 0;
-	icon_state = "door_open"
-	},
+/obj/machinery/door/airlock/external/glass,
 /turf/simulated/floor/airless,
 /area/submap/debrisfield_vr/mining_outpost)
 "F" = (

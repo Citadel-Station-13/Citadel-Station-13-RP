@@ -74,7 +74,7 @@
 
 
 	// Tgui Topic middleware
-	if(tgui_Topic(href_list))
+	if(tgui_topic(href_list))
 		if(CONFIG_GET(flag/emergency_tgui_logging))
 			log_href("[src] (usr:[usr]\[[COORD(usr)]\]) : [hsrc ? "[hsrc] " : ""][href]")
 		return
@@ -186,7 +186,7 @@
 
 	//* Resolve storage datums
 	// resolve persistent data
-	persistent = resolve_client_data(ckey)
+	persistent = resolve_client_data(ckey, key)
 	//* Resolve database data
 	player = new(key)
 	player.log_connect()
@@ -359,6 +359,8 @@
 	return ..()
 
 /client/Destroy()
+	// get rid of context menus
+	QDEL_NULL(context_menu)
 	// Unregister globals
 	GLOB.clients -= src
 	GLOB.directory -= ckey

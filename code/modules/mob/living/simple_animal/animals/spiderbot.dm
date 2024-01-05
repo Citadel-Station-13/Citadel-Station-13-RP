@@ -28,8 +28,8 @@
 	response_disarm = "shoos"
 	response_harm   = "stomps on"
 
-	melee_damage_lower = 1
-	melee_damage_upper = 3
+	legacy_melee_damage_lower = 1
+	legacy_melee_damage_upper = 3
 	attacktext = list("shocked")
 
 	min_oxy = 0
@@ -150,7 +150,7 @@
 			return 0
 
 	else
-		O.melee_attack_chain(src, user, user.zone_sel.selecting)
+		O.melee_interaction_chain(src, user, user.zone_sel.selecting)
 
 /mob/living/simple_mob/spiderbot/emag_act(var/remaining_charges, var/mob/user)
 	if (emagged)

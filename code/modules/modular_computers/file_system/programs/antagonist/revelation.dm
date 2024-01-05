@@ -37,7 +37,7 @@
 	if(computer.tesla_link && prob(50))
 		qdel(computer.tesla_link)
 
-/datum/computer_file/program/revelation/ui_act(action, params)
+/datum/computer_file/program/revelation/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return
 	switch(action)
@@ -59,7 +59,7 @@
 	temp.armed = armed
 	return temp
 
-/datum/computer_file/program/revelation/ui_data(mob/user)
+/datum/computer_file/program/revelation/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = get_header_data()
 
 	data["armed"] = armed

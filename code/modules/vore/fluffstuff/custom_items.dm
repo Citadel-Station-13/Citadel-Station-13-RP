@@ -86,7 +86,7 @@
 	damage_force = 15
 	sharp = 1
 	edge = 1
-	hitsound = 'sound/weapons/bladeslice.ogg'
+	attack_sound = 'sound/weapons/bladeslice.ogg'
 
 
 /obj/item/sword/fluff/joanaria/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
@@ -411,127 +411,6 @@
 	icon_state = "amp"
 	body_cover_flags = 0
 
-//Lots of people are using this now.
-/obj/item/clothing/accessory/collar/vmcrystal
-	name = "life crystal"
-	desc = "A small crystal with four little dots in it. It feels slightly warm to the touch. \
-	Read manual before use! Can be worn, held, or attached to uniform. NOTE: Device contains antimatter."
-	w_class = ITEMSIZE_SMALL
-
-	icon = 'icons/vore/custom_items_vr.dmi'
-	icon_override = 'icons/vore/custom_items_vr.dmi'
-
-	icon_state = "khlife"
-	item_state = "khlife_overlay"
-	overlay_state = "khlife_overlay"
-
-	slot_flags = SLOT_TIE
-
-	var/mob/owner = null
-	var/client/owner_c = null //They'll be dead when we message them probably.
-	var/state = 0 //0 - New, 1 - Paired, 2 - Breaking, 3 - Broken (same as iconstates)
-
-/obj/item/clothing/accessory/collar/vmcrystal/Initialize(mapload)
-	. = ..()
-	update_state(0)
-
-/obj/item/clothing/accessory/collar/vmcrystal/Destroy() //Waitwaitwait
-	if(state == 1)
-		process() //Nownownow
-	return ..() //Okfine
-
-/obj/item/clothing/accessory/collar/vmcrystal/process(delta_time)
-	check_owner()
-	if((state > 1) || !owner)
-		STOP_PROCESSING(SSobj, src)
-
-/obj/item/clothing/accessory/collar/vmcrystal/attack_self(mob/user)
-	. = ..()
-	if(.)
-		return
-	if(state > 0) //Can't re-pair, one time only, for security reasons.
-		to_chat(user, "<span class='notice'>The [name] doesn't do anything.</span>")
-		return 0
-
-	owner = user	//We're paired to this guy
-	owner_c = user.client	//This is his client
-	update_state(1)
-	to_chat(user, "<span class='notice'>The [name] glows pleasantly blue.</span>")
-	START_PROCESSING(SSobj, src)
-
-/obj/item/clothing/accessory/collar/vmcrystal/proc/check_owner()
-	//He's dead, jim
-	if((state == 1) && owner && (owner.stat == DEAD))
-		update_state(2)
-		audible_message("<span class='warning'>The [name] begins flashing red.</span>")
-		sleep(30)
-		visible_message("<span class='warning'>The [name] shatters into dust!</span>")
-		if(owner_c)
-			to_chat(owner_c, "<span class='notice'>The HAVENS system is notified of your demise via \the [name].</span>")
-		update_state(3)
-		name = "broken [initial(name)]"
-		desc = "This seems like a necklace, but the actual pendant is missing."
-
-/obj/item/clothing/accessory/collar/vmcrystal/proc/update_state(var/tostate)
-	state = tostate
-	icon_state = "[initial(icon_state)][tostate]"
-	update_icon()
-/*
-/obj/item/paper/vmcrystal_manual
-	name = "VM-LC91-1 manual"
-	info = {"<h4>VM-LC91-1 Life Crystal</h4>
-	<h5>Usage</h5>
-	<ol>
-		<li>Hold new crystal in hand.</li>
-		<li>Make fist with that hand.</li>
-		<li>Wait 1 second.</li>
-	</ol>
-	<br />
-	<h5>Purpose</h5>
-	<p>The VeyMed Life Crystal is a small device typically worn around the neck for the purpose of reporting your status to the HAVENS (VeyMed's High-AVailability ENgram Storage) system, so that appropriate measures can be taken in the case of your body's demise. The whole device is housed inside a pleasing-to-the-eye elongated diamond.</p>
-	<p>Upon your body's desmise, the crystal will send a transmission to HAVENS. Depending on your membership level, the appropriate actions can be taken to ensure that you are back up and enjoying existence as soon as possible.</p>
-
-	<p>Nanotrasen has negotiated a <i>FREE</i> Star membership for you in the HAVENS system, though an upgrade can be obtained depending on your citizenship and reputation level.</p>
-
-	As a reminder, the membership levels in HAVENS are:
-	<ul>
-		<li><b>HAVENS Star:</b> Upon reciving a signal from a transmitter indicating body demise, HAVENS will attempt to contact the owner for 48 hours, before starting the process of resleeving the owner into a new body they selected when registering their HAVENS membership.</li>
-		<li><b>HAVENS Nebula:</b> After the contact period from the Star service has expired, an agent will be alotted a HAVENS spacecraft, and will attempt to locate your remains, and any belongings you had, for up to one week. If possible, any more recent memory recordings or mindstates will be recovered before your resleeving. (Great for explorers! Don't miss out on anything you discovered!)</li>
-		<li><b>HAVENS Galaxy:</b> Upon reciving the signal from the Star service, a HAVENS High-Threat Response Team will be alotted a HAVENS FTL-capable Interdictor-class spacecraft and dispatched to your last known position to locate and recover your remains, plus any belongings. You will be resleeved on-site to continue where you left off.</li>
-	</ul>
-	<br />
-	<h5>Technical</h5>
-	<p>The Life Crystal is a small 5cm long diamond containing four main components which are visible inside the translucent gem.</p>
-
-	From tip to top, they are:
-	<ol>
-		<li><b>Qubit Bucket:</b> This small cube contains 200 bits worth of quantum-entangled bits for transmitting to HAVENS. QE transmission technologies cannot be jammed or interfered with, and are effectively instant over any distance.
-		<li><b>Antimatter Bottle:</b> This tiny antimatter vessel is required to power the transmitter for the time it takes to transmit the signal to HAVENS. The inside of the crystal is thick enough to block any alpha or beta particles emitted when this antimatter contacts matter, however the crystal will be destroyed when activated.
-		<li><b>Decay Reactor:</b> This long-term microreactor will last for around one month and provide sufficient power to power all but the transmitter. This power is required for containing the antimatter bottle.
-		<li><b>Sensor Suite:</b> The sensor that tracks the owner's life-state, such that it can be transmitted back to HAVENS when necessary.
-	</ol>
-	<p>The diamond itself is coated in a layer of graphene, to give it a pleasant rainbow finish. This also serves as a conductor that, if broken, will discharge the antimatter bottle immediately as it is unsafe to do so any point after the crystal is broken via physical means.</p>
-	<br />
-	<h5>Special Notes</h5>
-	<i>\[AM WARNING\]</i>
-	<p>This device contains antimatter. Please consult all local regulations when travelling to ensure compliance with local laws.</p>"}
-*/
-/obj/item/storage/box/vmcrystal
-	name = "life crystal case"
-	icon = 'icons/vore/custom_items_vr.dmi'
-	icon_state = "khlifebox"
-	desc = "This case can only hold the VM-LC91-1 and a manual."
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syringe_kit", SLOT_ID_LEFT_HAND = "syringe_kit")
-	storage_slots = 2
-	can_hold = list(/obj/item/clothing/accessory/collar/vmcrystal)
-	max_storage_space = ITEMSIZE_COST_SMALL * 2
-	w_class = ITEMSIZE_SMALL
-
-/obj/item/storage/box/vmcrystal/Initialize(mapload)
-	. = ..()
-//	new /obj/item/paper/vmcrystal_manual(src)
-	new /obj/item/clothing/accessory/collar/vmcrystal(src)
-
 /obj/item/cane/fluff
 	name = "cane"
 	desc = "A cane used by a true gentlemen. Or a clown."
@@ -542,7 +421,7 @@
 	damage_force = 5.0
 	throw_force = 7.0
 	w_class = ITEMSIZE_SMALL
-	materials = list(MAT_STEEL = 50)
+	materials_base = list(MAT_STEEL = 50)
 	attack_verb = list("bludgeoned", "whacked", "disciplined", "thrashed")
 
 /obj/item/cane/fluff/tasald
@@ -561,9 +440,9 @@
     damage_force = 1.0
     throw_force = 2.0
     w_class = ITEMSIZE_SMALL
-    materials = list(MAT_STEEL = 50)
+    materials_base = list(MAT_STEEL = 50)
     attack_verb = list("sparkled", "whacked", "twinkled", "radiated", "dazzled", "zapped")
-    hitsound = 'sound/weapons/sparkle.ogg'
+    attack_sound = 'sound/weapons/sparkle.ogg'
     var/last_use = 0
     var/cooldown = 30
 
@@ -797,7 +676,7 @@
 	desc = "Seems absurd, doesn't it? Yet, here we are. Generally considered dangerous contraband unless the user has permission from Central Command."
 	icon = 'icons/obj/device_alt.dmi'
 	icon_state = "hand_tele"
-	item_flags = ITEM_NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_MAGNET = 5, TECH_BLUESPACE = 5, TECH_ILLEGAL = 7)
 
@@ -1093,7 +972,7 @@
 	icon = 'icons/obj/device_alt.dmi'
 	icon_state = "motion2"
 	w_class = ITEMSIZE_TINY
-	item_flags = ITEM_NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 
 	var/tele_name
 	var/obj/item/perfect_tele/tele_hand
@@ -1277,7 +1156,7 @@
 		to_chat(user,"<span class='warning'>You are unable to inject other people.</span>")
 
 //For 2 handed fluff weapons.
-/obj/item/material/twohanded/fluff //Twohanded fluff items.
+/obj/item/fluff //Twohanded fluff items.
 	name = "fluff."
 	desc = "This object is so fluffy. Just from the sight of it, you know that either something went wrong or someone spawned the incorrect item."
 	icon = 'icons/vore/custom_items_vr.dmi'
@@ -1286,23 +1165,17 @@
 				SLOT_ID_RIGHT_HAND = 'icons/vore/custom_items_right_hand_vr.dmi',
 				)
 
-/obj/item/material/twohanded/fluff/Initialize(mapload, material_key)
-	..(mapload," ") //See materials_vr_dmi for more information as to why this is a blank space.
-
 //General use.
-/obj/item/material/twohanded/fluff/riding_crop
+/obj/item/fluff/riding_crop
 	name = "riding crop"
 	desc = "A steel rod, a little over a foot long with a widened grip and a thick, leather patch at the end. Made to smack naughty submissives."
-	//force_wielded = 0.05 //Stings, but does jack shit for damage, provided you don't hit someone 100 times. 1 damage with hardness of 60.
-	force_divisor = 0.05 //Required in order for the X attacks Y message to pop up.
-	unwielded_force_divisor = 1 // One here, too.
-	applies_material_colour = 0
-	unbreakable = 1
-	base_icon = "riding_crop"
+	damage_force = 1
+	// todo: proper dualwielding system for this
+	// base_icon = "riding_crop"
 	icon_state = "riding_crop0"
 	attack_verb = list("cropped","spanked","swatted","smacked","peppered")
 //1R1S: Malady Blanche
-/obj/item/material/twohanded/fluff/riding_crop/malady
+/obj/item/fluff/riding_crop/malady
 	name = "Malady's riding crop"
 	desc = "An infernum made riding crop with Malady Blanche engraved in the shaft. It's a little worn from how many butts it has spanked."
 
@@ -1603,21 +1476,21 @@
 */
 
 //InterroLouis - Kai Highlands
-/obj/item/borg/upgrade/modkit/chassis_mod/kai
+/obj/item/ka_modkit/chassis_mod/kai
 	name = "kai chassis"
 	desc = "Makes your KA green. All the fun of having a more powerful KA without actually having a more powerful KA."
 	cost = 0
-	denied_type = /obj/item/borg/upgrade/modkit/chassis_mod
+	denied_type = /obj/item/ka_modkit/chassis_mod
 	chassis_icon = "kineticgun_K"
 	chassis_name = "Kai-netic Accelerator"
 	var/chassis_desc = "A self recharging, ranged mining tool that does increased damage in low temperature. Capable of holding up to six slots worth of mod kits. It seems to have been painted an ugly green, and has a small image of a bird scratched crudely into the stock."
 	var/chassis_icon_file = 'icons/vore/custom_guns_vr.dmi'
 
-/obj/item/borg/upgrade/modkit/chassis_mod/kai/install(obj/item/gun/energy/kinetic_accelerator/KA, mob/user)
+/obj/item/ka_modkit/chassis_mod/kai/install(obj/item/gun/energy/kinetic_accelerator/KA, mob/user)
 	KA.desc = chassis_desc
 	KA.icon = chassis_icon_file
 	..()
-/obj/item/borg/upgrade/modkit/chassis_mod/kai/uninstall(obj/item/gun/energy/kinetic_accelerator/KA)
+/obj/item/ka_modkit/chassis_mod/kai/uninstall(obj/item/gun/energy/kinetic_accelerator/KA)
 	KA.desc = initial(KA.desc)
 	KA.icon = initial(KA.icon)
 	..()

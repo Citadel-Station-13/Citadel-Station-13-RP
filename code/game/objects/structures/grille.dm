@@ -12,45 +12,30 @@
 	layer = GRILLE_LAYER
 	explosion_resistance = 1
 	color = COLOR_GRAY
+	armor_type = /datum/armor/none
 
 	plane = OBJ_PLANE
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_GRILLE)
 	canSmoothWith = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS + SMOOTH_GROUP_AIRLOCK + SMOOTH_GROUP_GRILLE + SMOOTH_GROUP_WINDOW_FULLTILE + SMOOTH_GROUP_WALLS )
 
-	var/health = 10
+	integrity = 100
+	integrity_max = 100
+	integrity_failure = 40
+
+	hit_sound_brute = 'sound/effects/grillehit.ogg'
+
 	var/destroyed = 0
 
-
-/obj/structure/grille/legacy_ex_act(severity)
-	qdel(src)
+/obj/structure/grille/update_icon_state()
+	if(atom_flags & ATOM_BROKEN)
+		icon_state = "brokengrille"
+	return ..()
 
 /obj/structure/grille/Bumped(atom/user)
-	if(ismob(user)) shock(user, 70)
-
-/obj/structure/grille/attack_hand(mob/user, list/params)
-
-	user.setClickCooldown(user.get_attack_speed())
-	playsound(loc, 'sound/effects/grillehit.ogg', 80, 1)
-	user.do_attack_animation(src)
-
-	var/damage_dealt = 1
-	var/attack_message = "kicks"
-	if(istype(user,/mob/living/carbon/human))
-		var/mob/living/carbon/human/H = user
-		if(H.species.can_shred(H))
-			attack_message = "mangles"
-			damage_dealt = 5
-
-	if(shock(user, 70))
-		return
-
-	if(MUTATION_HULK in user.mutations)
-		damage_dealt += 5
-	else
-		damage_dealt += 1
-
-	attack_generic(user,damage_dealt,attack_message)
+	. = ..()
+	if(ismob(user))
+		shock(user, 70)
 
 /obj/structure/grille/CanAllowThrough(atom/movable/mover, turf/target)
 	if(istype(mover, /obj/projectile) && prob(30))
@@ -58,8 +43,6 @@
 	return ..()
 
 /obj/structure/grille/bullet_act(var/obj/projectile/Proj)
-	if(!Proj)	return
-
 	//Flimsy grilles aren't so great at stopping projectiles. However they can absorb some of the impact
 	var/damage = Proj.get_structure_damage()
 	var/passthrough = 0
@@ -88,8 +71,7 @@
 		. = PROJECTILE_CONTINUE
 		damage = between(0, (damage - Proj.damage)*(Proj.damage_type == BRUTE? 0.4 : 1), 10) //if the bullet passes through then the grille avoids most of the damage
 
-	src.health -= damage*0.2
-	spawn(0) healthcheck() //spawn to make sure we return properly if the grille is deleted
+	inflict_atom_damage(damage, Proj.damage_tier, Proj.damage_flag, Proj.damage_mode, ATTACK_TYPE_PROJECTILE, Proj)
 
 /obj/structure/grille/attackby(obj/item/W as obj, mob/user as mob)
 	if(!istype(W))
@@ -135,43 +117,39 @@
 				var/obj/structure/window/WD = new wtype(loc, 1)
 				to_chat(user, "<span class='notice'>You place the [WD] on [src].</span>")
 				WD.update_appearance()
-		return
-//window placing end
+	return ..()
 
-	else if((W.atom_flags & NOCONDUCT) || !shock(user, 70))
-		user.setClickCooldown(user.get_attack_speed(W))
-		user.do_attack_animation(src)
-		playsound(loc, 'sound/effects/grillehit.ogg', 80, 1)
-		switch(W.damtype)
-			if("fire")
-				health -= W.damage_force
-			if("brute")
-				health -= W.damage_force * 0.1
-	healthcheck()
-	..()
-	return
+/obj/structure/grille/unarmed_act(mob/attacker, datum/unarmed_attack/style, target_zone, mult)
+	if(shock(attacker, 70))
+		return FALSE
+	return ..()
 
-/obj/structure/grille/proc/healthcheck()
-	if(health <= 0)
-		if(!destroyed)
-			density = 0
-			destroyed = 1
-			update_icon()
-			new /obj/item/stack/rods(get_turf(src))
+/obj/structure/grille/melee_act(mob/user, obj/item/weapon, target_zone, mult)
+	if(shock(user, 70, weapon))
+		return FALSE
+	return ..()
 
-		else
-			if(health <= -6)
-				new /obj/item/stack/rods(get_turf(src))
-				qdel(src)
-				return
-	return
+/obj/structure/grille/drop_products(method, atom/where)
+	. = ..()
+	drop_product(method, new /obj/item/stack/rods(null, method == ATOM_DECONSTRUCT_DISASSEMBLED? 2 : 1) , drop_location())
+
+/obj/structure/grille/atom_break()
+	smoothing_flags = NONE
+	. = ..()
+	update_icon()
+
+/obj/structure/grille/atom_fix()
+	smoothing_flags = initial(smoothing_flags)
+	. = ..()
+	update_icon()
 
 // shock user with probability prb (if all connections & power are working)
 // returns 1 if shocked, 0 otherwise
 
-/obj/structure/grille/proc/shock(mob/user as mob, prb)
-
-	if(!anchored || destroyed)		// anchored/destroyed grilles are never connected
+/obj/structure/grille/proc/shock(mob/user as mob, prb, obj/item/tool)
+	if(tool?.atom_flags & NOCONDUCT)
+		return 0
+	if(!anchored || (atom_flags & ATOM_BROKEN))		// anchored/destroyed grilles are never connected
 		return 0
 	if(!prob(prb))
 		return 0
@@ -195,16 +173,8 @@
 /obj/structure/grille/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 	if(!destroyed)
 		if(exposed_temperature > T0C + 1500)
-			health -= 1
-			healthcheck()
+			inflict_atom_damage(1, flag = ARMOR_FIRE)
 	..()
-
-/obj/structure/grille/attack_generic(var/mob/user, var/damage, var/attack_verb)
-	visible_message("<span class='danger'>[user] [attack_verb] the [src]!</span>")
-	user.do_attack_animation(src)
-	health -= damage
-	spawn(1) healthcheck()
-	return 1
 
 /obj/structure/grille/proc/is_on_frame()
 	if(locate(/obj/structure/wall_frame) in loc)
@@ -220,36 +190,6 @@
 	if(do_after(user, 1 SECOND, ST) && ST.use(2))
 		var/obj/structure/grille/F = new(loc)
 		user.visible_message(SPAN_NOTICE("\The [user] finishes building \a [F]."))
-
-// Used in mapping to avoid
-/obj/structure/grille/broken
-	destroyed = TRUE
-	density = FALSE
-	icon_state = "grille-b"
-
-/obj/structure/grille/broken/New()
-	..()
-	health = rand(-5, -1) //In the destroyed but not utterly threshold.
-	healthcheck() //Send this to healthcheck just in case we want to do something else with it.
-
-/obj/structure/grille/cult
-	name = "cult grille"
-	desc = "A matrice built out of an unknown material, with some sort of force field blocking air around it."
-	icon_state = "grillecult"
-	health = 40 // Make it strong enough to avoid people breaking in too easily.
-	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED // Make sure air doesn't drain.
-
-/obj/structure/grille/broken/cult
-	icon_state = "grillecult-b"
-
-/obj/structure/grille/rustic
-	name = "rustic grille"
-	desc = "A lattice of metal, arranged in an old, rustic fashion."
-	icon_state = "grillerustic"
-
-/obj/structure/grille/broken/rustic
-	icon_state = "grillerustic-b"
-
 
 /obj/structure/grille/rcd_values(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
 	switch(passed_mode)
@@ -284,7 +224,30 @@
 			return TRUE
 	return FALSE
 
-/obj/structure/grille/take_damage(var/damage)
-	health -= damage
-	spawn(1) healthcheck()
-	return 1
+// Used in mapping to avoid
+/obj/structure/grille/broken
+	density = FALSE
+	icon_state = "grille-b"
+
+/obj/structure/grille/broken/Initialize()
+	. = ..()
+	set_integrity(integrity_failure)
+
+/obj/structure/grille/cult
+	name = "cult grille"
+	desc = "A matrice built out of an unknown material, with some sort of force field blocking air around it."
+	icon_state = "grillecult"
+	integrity = 40
+	integrity_max = 40
+	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED // Make sure air doesn't drain.
+
+/obj/structure/grille/broken/cult
+	icon_state = "grillecult-b"
+
+/obj/structure/grille/rustic
+	name = "rustic grille"
+	desc = "A lattice of metal, arranged in an old, rustic fashion."
+	icon_state = "grillerustic"
+
+/obj/structure/grille/broken/rustic
+	icon_state = "grillerustic-b"

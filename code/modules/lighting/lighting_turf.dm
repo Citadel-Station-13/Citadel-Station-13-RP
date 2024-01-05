@@ -18,6 +18,8 @@
 	var/tmp/has_opaque_atom = FALSE
 	/// If this is TRUE, an above turf's ambient light is affecting this turf.
 	var/tmp/ambient_has_indirect = FALSE
+	/// we don't use fullbright overlay when dark - this is only here for stuff like level borders which are 'abstract' turfs
+	var/tmp/lighting_disable_fullbright = FALSE
 
 	//! Record-keeping, do not touch -- that means you, admins.
 	var/tmp/ambient_active = FALSE	//! Do we have non-zero ambient light? Use [TURF_IS_AMBIENT_LIT] instead of reading this directly.
@@ -40,6 +42,15 @@
 			datum_flags |= DF_VAR_EDITED
 			return TRUE
 
+		if(NAMEOF(src, dynamic_lighting))
+			. = ..()
+			if(!.)
+				return
+			if(!dynamic_lighting && !isnull(lighting_overlay))
+				lighting_clear_overlay()
+			else if(dynamic_lighting && isnull(lighting_overlay))
+				lighting_build_overlay()
+			return
 	return ..()
 
 /turf/proc/set_ambient_light(color, multiplier)
@@ -167,6 +178,8 @@
 		if (lighting_overlay.loc != src)
 			stack_trace("Lighting overlay variable on turf [log_info_line(src)] is insane, lighting overlay actually located on [log_info_line(lighting_overlay.loc)]!")
 
+		if(!lighting_disable_fullbright)
+			add_overlay(/obj/effect/fullbright, TRUE)
 		qdel(lighting_overlay, TRUE)
 		lighting_overlay = null
 
@@ -182,6 +195,7 @@
 		if (!lighting_corners_initialised || !corners)
 			generate_missing_corners()
 
+		cut_overlay(/obj/effect/fullbright, FALSE)
 		new /atom/movable/lighting_overlay(src, now)
 
 		for (var/datum/lighting_corner/C in corners)

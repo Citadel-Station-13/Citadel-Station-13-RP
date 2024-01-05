@@ -24,7 +24,7 @@
 		LANGUAGE_ID_ZADDAT,
 		LANGUAGE_ID_UNATHI
 	)
-	assisted_langs   = list(LANGUAGE_EAL, LANGUAGE_TERMINUS, LANGUAGE_SKRELLIANFAR, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX, LANGUAGE_SOL_COMMON, LANGUAGE_AKHANI, LANGUAGE_SIIK, LANGUAGE_GUTTER) //limited vocal range; can talk Unathi and magical Galcom but not much else
+	assisted_langs   = list(LANGUAGE_EAL, LANGUAGE_TERMINUS, LANGUAGE_SKRELLIANFAR, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX, LANGUAGE_SOL_COMMON, LANGUAGE_AKHANI, LANGUAGE_SIIK, LANGUAGE_GUTTER, LANGUAGE_PROMETHEAN) //limited vocal range; can talk Unathi and magical Galcom but not much else
 
 
 	health_hud_intensity = 2.5
@@ -107,7 +107,13 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/zaddat/(H), SLOT_ID_MASK) // mask has to come first or Shroud helmet will get in the way
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/space/void/zaddat/(H), SLOT_ID_SUIT)
 
-	var/obj/item/storage/toolbox/lunchbox/survival/zaddat/L = new(H)
+	var/obj/item/storage/toolbox/lunchbox/survival/L = new(H)
+	new /obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose(L)
+	new /obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose(L)
+	new /obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose(L)
+	new /obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose(L)
+	new /obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose(L)
+	new /obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose(L)
 
 	if(H.backbag == 1)
 		H.put_in_hands_or_del(L)

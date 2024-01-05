@@ -2,7 +2,7 @@
 	name = "helmet"
 	desc = "Standard headgear. Protects well enough against a wide range of attacks."
 	icon_state = "helmet"
-	clothing_flags = CLOTHING_THICK_MATERIAL
+	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT
 	valid_accessory_slots = ACCESSORY_SLOT_HELM_C|ACCESSORY_SLOT_HELM_R
 	restricted_accessory_slots = ACCESSORY_SLOT_HELM_C|ACCESSORY_SLOT_HELM_R
 	armor_type = /datum/armor/station/medium
@@ -16,6 +16,9 @@
 	ear_protection = 1
 	drop_sound = 'sound/items/drop/helm.ogg'
 	pickup_sound = 'sound/items/pickup/helm.ogg'
+	encumbrance = ITEM_ENCUMBRANCE_ARMOR_MEDIUM_HELMET
+	weight = ITEM_WEIGHT_ARMOR_MEDIUM_HELMET
+	material_factoring = 0.0002
 
 /obj/item/clothing/head/helmet/ntsec
 	name = "corpsec helmet"
@@ -130,6 +133,8 @@
 	cold_protection = HEAD
 	min_cold_protection_temperature = SPACE_HELMET_MIN_COLD_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0.5
+	encumbrance = ITEM_ENCUMBRANCE_ARMOR_HEAVY_HELMET
+	weight = ITEM_WEIGHT_ARMOR_HEAVY_HELMET
 
 /obj/item/clothing/head/helmet/alien
 	name = "alien helmet"
@@ -386,6 +391,14 @@
 /obj/item/clothing/head/helmet/kettle/eyes
 	icon_state = "kettle_eyes"
 
+//Dredd
+/obj/item/clothing/head/helmet/aquiline
+	name = "aquiline enforcer helmet"
+	desc = "Prior to the Final War, issues with law enforcement on Old Earth became so bad that in many countries the police became little more than roving executioners. This striking helmet was designed to help law enforcement officers easily identify themselves in crowds."
+	icon = 'icons/clothing/uniform/costume/aquiline.dmi'
+	icon_state = "dreddhelm"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
 //More Warhammer Fun
 /obj/item/clothing/head/helmet/utilitarian
 	name = "utilitarian military helmet"
@@ -394,6 +407,14 @@
 	icon_state = "tauhelm"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndicate-helm-green", SLOT_ID_LEFT_HAND = "syndicate-helm-green")
 	armor_type = /datum/armor/general/utilitarian_military
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/head/helmet/baroque
+	name = "baroque military helmet"
+	desc = "This sturdy helmet's ornate design belies its technological sophistication."
+	icon = 'icons/clothing/suit/armor/baroque.dmi'
+	icon_state = "sisterhelm"
+	armor_type = /datum/armor/general/baroque_military
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/head/helmet/duraskull

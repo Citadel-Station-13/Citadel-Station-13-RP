@@ -81,7 +81,7 @@
 	damage_force = 15
 	throw_force = 15
 	attack_verb = list("stabbed", "chopped", "cut")
-	hitsound = 'sound/weapons/bladeslice.ogg'
+	attack_sound = 'sound/weapons/bladeslice.ogg'
 	can_hold = list(
 		/obj/item/pen/crayon/chalk,
 		/obj/item/reagent_containers/pill,
@@ -90,6 +90,9 @@
 		/obj/item/flame/lighter
 		)
 	starts_with = list(/obj/item/pen/crayon/chalk, /obj/item/reagent_containers/pill/nutriment, /obj/item/gps/survival)
+
+/obj/item/storage/box/survival_knife/attack_self(mob/user)
+	return
 
 /obj/item/storage/box/papersack
 	name = "paper sack"

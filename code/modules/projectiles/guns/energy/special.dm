@@ -423,24 +423,25 @@
 
 /obj/item/gun/energy/ermitter
 	name = "Ermitter rifle"
-	desc = "A industrial energy projector turned into a crude, portable weapon. The Tyrmalin answer to armored hardsuits used by pirates, what it lacks in precision, it makes up for in firepower."
+	desc = "A industrial energy projector turned into a crude, portable weapon - the Tyrmalin answer to armored hardsuits used by pirates. What it lacks in precision, it makes up for in firepower. The 'Ermitter' rifle cell receptacle has been heavily modified."
 	icon_state = "ermitter_gun"
 	item_state = "pulse"
 	projectile_type = /obj/projectile/beam/emitter
 	fire_delay = 10
 	charge_cost = 900
 	cell_type = /obj/item/cell
+	accept_cell_type = /obj/item/cell
 	slot_flags = SLOT_BELT|SLOT_BACK
 	w_class = ITEMSIZE_LARGE
 	heavy = TRUE
 	damage_force = 10
 	origin_tech = list(TECH_COMBAT = 3, TECH_ENGINEERING = 3, TECH_MAGNET = 2)
-	materials = list(MAT_STEEL = 2000, MAT_GLASS = 1000)
+	materials_base = list(MAT_STEEL = 2000, MAT_GLASS = 1000)
 	one_handed_penalty = 50
 
 /obj/item/gun/energy/ionrifle/pistol/tyrmalin
 	name = "botbuster pistol"
-	desc = "These jury-rigged pistols are sometimes fielded by Tyrmalin facing sythetic pirates or faulty machinery. Capable of discharging a single ionized bolt before needing to recharge, they're often treated as holdout or ambush weapons."
+	desc = "These jury-rigged pistols are sometimes fielded by Tyrmalin facing synthetic pirates or malfunctioning machinery. Capable of discharging a single ionized bolt before needing to recharge, they're often treated as holdout or ambush weapons."
 	icon_state = "botbuster"
 	charge_cost = 1300
 	projectile_type = /obj/projectile/ion/pistol
@@ -476,7 +477,7 @@
 	heavy = TRUE
 	damage_force = 10
 	origin_tech = list(TECH_COMBAT = 6, TECH_ENGINEERING = 5, TECH_MAGNET = 5)
-	materials = list(MAT_STEEL = 10000, MAT_GLASS = 2000)
+	materials_base = list(MAT_STEEL = 10000, MAT_GLASS = 2000)
 	one_handed_penalty = 50
 	var/overheating = 0
 
@@ -519,7 +520,7 @@
 	heavy = FALSE
 	damage_force = 5
 	origin_tech = list(TECH_COMBAT = 6, TECH_ENGINEERING = 5, TECH_MAGNET = 5)
-	materials = list(MAT_STEEL = 8000, MAT_GLASS = 2000)
+	materials_base = list(MAT_STEEL = 8000, MAT_GLASS = 2000)
 	one_handed_penalty = 10
 
 /obj/item/gun/energy/plasma/pistol/update_icon()

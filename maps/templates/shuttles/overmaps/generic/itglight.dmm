@@ -3250,9 +3250,9 @@
 	name = "captain's coat"
 	},
 /obj/item/clothing/suit/storage/vest/oricon,
-/obj/item/reagent_containers/food/snacks/candy/proteinbar,
-/obj/item/reagent_containers/food/snacks/candy/proteinbar,
-/obj/item/reagent_containers/food/snacks/candy/proteinbar,
+/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,
+/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,
+/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,
 /obj/item/gun/energy/taser,
 /obj/item/clothing/accessory/holster/hip,
 /turf/simulated/floor/carpet/sblucarpet,

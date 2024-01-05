@@ -101,7 +101,7 @@
 		ui.set_autoupdate(FALSE)
 
 
-/obj/machinery/computer/secure_data/ui_data(mob/user)
+/obj/machinery/computer/secure_data/ui_data(mob/user, datum/tgui/ui)
 	var/data[0]
 	data["temp"] = temp
 	data["scan"] = scan ? scan.name : null
@@ -185,7 +185,7 @@
 	data["modal"] = ui_modal_data(src)
 	return data
 
-/obj/machinery/computer/secure_data/ui_act(action, params)
+/obj/machinery/computer/secure_data/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

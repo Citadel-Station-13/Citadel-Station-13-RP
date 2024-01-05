@@ -28,8 +28,8 @@
 	health = 200
 	movement_sound = 'sound/effects/houndstep.ogg'
 
-	melee_damage_lower = 5
-	melee_damage_upper = 10 //makes it so 4 max dmg hits don't instakill you.
+	legacy_melee_damage_lower = 5
+	legacy_melee_damage_upper = 10 //makes it so 4 max dmg hits don't instakill you.
 	grab_resist = 100
 	taser_kill = 0 //This Mechanical Dog should probably not be harmed by tasers
 
@@ -114,7 +114,7 @@
 	reload_max = 6
 	reload_time = 15
 
-	projectiletype = /obj/projectile/bullet/rifle/a545
+	projectiletype = /obj/projectile/bullet/rifle/a556
 	projectilesound = 'sound/weapons/Gunshot_light.ogg'
 
 
@@ -132,8 +132,8 @@
 	icon_dead = "fencerboi-dead"
 	icon_rest = "fencerboi_rest"
 
-	melee_damage_lower = 30
-	melee_damage_upper = 30
+	legacy_melee_damage_lower = 30
+	legacy_melee_damage_upper = 30
 	attack_armor_pen = 50
 	attack_sharp = 1
 	attack_edge = 1
@@ -191,7 +191,7 @@
 
 /mob/living/simple_mob/vore/aggressive/corrupthound/Logout()
 	. = ..()
-	DelComponent(/datum/component/riding_filter/mob/animal, exact = TRUE)
+	DelComponent(/datum/component/riding_filter, /datum/component/riding_filter/mob/animal)
 
 /mob/living/simple_mob/vore/aggressive/corrupthound/MouseDroppedOnLegacy(mob/living/M, mob/living/user)
 	return

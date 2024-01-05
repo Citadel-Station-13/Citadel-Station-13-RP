@@ -86,17 +86,21 @@
 		ui = new(user, src, tgui_interface)
 		ui.open()
 
-/obj/machinery/portable_atmospherics/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/portable_atmospherics/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["controlFlags"] = atmos_portable_ui_flags
 	.["useCharge"] = FALSE
 	.["flowMax"] = flow_maximum
 
-/obj/machinery/portable_atmospherics/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/portable_atmospherics/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["flow"] = flow_current
+	.["flowSetting"] = flow_setting
 	.["on"] = on
 	.["tank"] = holding?.tgui_tank_data()
+	.["pressure"] = air_contents.return_pressure()
+	.["temperature"] = air_contents.temperature
+	.["portConnected"] = !!connected_port
 
 /obj/machinery/portable_atmospherics/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
@@ -119,10 +123,17 @@
 		if("eject")
 			if(isnull(holding))
 				return TRUE
+			on_eject(holding, usr)
 			usr.action_feedback(SPAN_NOTICE("You remove [holding] from [src]."), src)
 			usr.grab_item_from_interacted_with(holding, src)
 			holding = null
 			return TRUE
+
+/**
+ * Called on tank ejection
+ */
+/obj/machinery/portable_atmospherics/proc/on_eject(obj/item/tank/tank, mob/user)
+	return TRUE
 
 /obj/machinery/portable_atmospherics/proc/set_on(enabled)
 	on = enabled

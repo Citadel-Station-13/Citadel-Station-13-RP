@@ -182,7 +182,7 @@
 				return TRUE
 			return TRUE
 
-/datum/computer_file/program/wordprocessor/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/datum/computer_file/program/wordprocessor/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = get_header_data()
 
 	var/obj/item/computer_hardware/hard_drive/HDD = computer.hard_drive

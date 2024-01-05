@@ -388,10 +388,9 @@
 /datum/reagent/toxin/plantbgone/touch_obj(obj/O, volume)
 	if(istype(O, /obj/effect/plant))
 		qdel(O)
-	else if(istype(O, /obj/effect/alien/weeds/))
-		var/obj/effect/alien/weeds/alien_weeds = O
-		alien_weeds.health -= rand(15, 35)
-		alien_weeds.healthcheck()
+	else if(istype(O, /obj/structure/alien/weeds/))
+		var/obj/structure/alien/weeds/alien_weeds = O
+		alien_weeds.damage_integrity(15, 35)
 
 /datum/reagent/toxin/plantbgone/affect_blood(mob/living/carbon/M, alien, removed)
 	if(alien == IS_ALRAUNE)
@@ -473,6 +472,17 @@
 	color = "#664330"
 	power = 2
 	meltdose = 30
+
+//Solid Chlorine is alkaline, but gaseous Chlorine is acidic.
+/datum/reagent/acid/chlorine_gas
+	name = "Chlorine gas"
+	id = "chlorinegas"
+	description = "A pungent yellow-green acidic gas."
+	taste_description = "bleach"
+	reagent_state = REAGENT_GAS
+	color = "#c5f72d"
+	power = 5
+	meltdose = 10
 
 /datum/reagent/thermite/venom
 	name = "Pyrotoxin"

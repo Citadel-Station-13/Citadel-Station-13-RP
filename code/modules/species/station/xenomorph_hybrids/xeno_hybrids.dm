@@ -1,9 +1,14 @@
+/datum/physiology_modifier/intrinsic/species/xenohybrid
+	carry_strength_add = CARRY_STRENGTH_ADD_XENOHYBRID
+	carry_strength_factor = CARRY_FACTOR_MOD_XENOHYBRID
+
 /datum/species/xenohybrid
 	name = SPECIES_XENOHYBRID
 	name_plural = "Xenomorph Hybrids"
 	uid = SPECIES_ID_XENOHYBRID
 	id = SPECIES_ID_XENOHYBRID
 	default_bodytype = BODYTYPE_XENOHYBRID
+	mob_physiology_modifier = /datum/physiology_modifier/intrinsic/species/xenohybrid
 
 	icobase = 'icons/mob/species/xenohybrid/body.dmi'
 	deform  = 'icons/mob/species/xenohybrid/deformed_body.dmi'
@@ -121,7 +126,7 @@
 			H.active_regen = FALSE
 		healing_factor *= 4
 	var/turf/T = get_turf(H)
-	if(/obj/effect/alien/weeds in T.contents)
+	if(/obj/structure/alien/weeds in T.contents)
 		healing_factor *= 1.1
 	if(/obj/structure/bed/hybrid_nest in T.contents)
 		healing_factor *= 1.2

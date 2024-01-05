@@ -4,11 +4,11 @@
 	icon = 'icons/obj/doors/windoor.dmi'
 	icon_state = "left"
 	pass_flags_self = ATOM_PASS_GLASS
+	armor_type = /datum/armor/door/windoor
 	var/base_state = "left"
-	min_force = 4
-	hitsound = 'sound/effects/Glasshit.ogg'
-	maxhealth = 150 //If you change this, consiter changing ../door/window/brigdoor/ health at the bottom of this .dm file
-	health = 150
+	hit_sound_brute = 'sound/effects/Glasshit.ogg'
+	integrity = 140
+	integrity_max = 140
 	visible = 0.0
 	use_power = USE_POWER_OFF
 	atom_flags = ATOM_BORDER
@@ -92,10 +92,14 @@
 		return ATMOS_PASS_NOT_BLOCKED
 	return density? ATMOS_PASS_AIR_BLOCKED : ATMOS_PASS_ZONE_BLOCKED
 
-//used in the AStar algorithm to determinate if the turf the door is on is passable
-// todo: astar sucks
-/obj/machinery/door/window/CanAStarPass(obj/item/card/id/ID, to_dir)
-	return ..() || (check_access(ID) && inoperable()) || (dir != to_dir)
+/obj/machinery/door/window/can_pathfinding_enter(atom/movable/actor, dir, datum/pathfinding/search)
+	return (src.dir != dir) || ..() || (has_access(req_access, req_one_access, search.ss13_with_access) && !inoperable())
+
+/obj/machinery/door/window/can_pathfinding_exit(atom/movable/actor, dir, datum/pathfinding/search)
+	return (src.dir != dir)  || ..() || (has_access(req_access, req_one_access, search.ss13_with_access) && !inoperable())
+
+/obj/machinery/door/window/can_pathfinding_pass(atom/movable/actor, datum/pathfinding/search)
+	return ..() || (has_access(req_access, req_one_access, search.ss13_with_access) && !inoperable())
 
 /obj/machinery/door/window/CheckExit(atom/movable/AM, atom/newLoc)
 	if(!(get_dir(src, newLoc) & dir))
@@ -138,27 +142,13 @@
 	operating = FALSE
 	return TRUE
 
-/obj/machinery/door/window/take_damage(var/damage)
-	src.health = max(0, src.health - damage)
-	if (src.health <= 0)
-		shatter()
-		return
-
 /obj/machinery/door/window/attack_ai(mob/user as mob)
 	return src.attack_hand(user)
 
 /obj/machinery/door/window/attack_hand(mob/user, list/params)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
 	src.add_fingerprint(user)
-
-	if(istype(user,/mob/living/carbon/human))
-		var/mob/living/carbon/human/H = user
-		if(H.species.can_shred(H))
-			playsound(src.loc, 'sound/effects/Glasshit.ogg', 75, 1)
-			visible_message("<span class='danger'>[user] smashes against the [src.name].</span>", 1)
-			user.do_attack_animation(src)
-			user.setClickCooldown(user.get_attack_speed())
-			take_damage(25)
-			return
 
 	if (src.allowed(user))
 		if (src.density)
@@ -179,7 +169,9 @@
 		open()
 		return 1
 
-/obj/machinery/door/window/attackby(obj/item/I as obj, mob/user as mob)
+/obj/machinery/door/window/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
 
 	//If it's in the process of opening/closing, ignore the click
 	if (src.operating == 1)
@@ -189,12 +181,12 @@
 		// Fixing.
 		if(istype(I, /obj/item/weldingtool) && user.a_intent == INTENT_HELP)
 			var/obj/item/weldingtool/WT = I
-			if(health < maxhealth)
+			if(integrity < integrity_max)
 				if(WT.remove_fuel(1 ,user))
 					to_chat(user, "<span class='notice'>You begin repairing [src]...</span>")
 					playsound(src, WT.tool_sound, 50, 1)
 					if(do_after(user, 40 * WT.tool_speed, target = src))
-						health = maxhealth
+						set_integrity(integrity_max)
 						update_icon()
 						to_chat(user, "<span class='notice'>You repair [src].</span>")
 			else
@@ -247,17 +239,6 @@
 				qdel(src)
 				return
 
-		//If it's a weapon, smash windoor. Unless it's an id card, agent card, ect.. then ignore it (Cards really shouldnt damage a door anyway)
-		if(src.density && istype(I, /obj/item) && !istype(I, /obj/item/card))
-			user.setClickCooldown(user.get_attack_speed(I))
-			var/aforce = I.damage_force
-			playsound(src.loc, 'sound/effects/Glasshit.ogg', 75, 1)
-			visible_message("<span class='danger'>[src] was hit by [I].</span>")
-			if(I.damtype == BRUTE || I.damtype == BURN)
-				take_damage(aforce)
-			return
-
-
 	src.add_fingerprint(user, 0, I)
 
 	if (src.allowed(user))
@@ -277,9 +258,10 @@
 	icon_state = "leftsecure"
 	base_state = "leftsecure"
 	req_access = list(ACCESS_SECURITY_EQUIPMENT)
+	armor_type = /datum/armor/door/windoor/reinforced
+	integrity = 280
+	integrity_max = 280
 	var/id = null
-	maxhealth = 300
-	health = 300.0 //Stronger doors for prison (regular window door health is 150)
 
 /obj/machinery/door/window/brigdoor/shatter()
 	new /obj/item/stack/rods(src.loc, 2)

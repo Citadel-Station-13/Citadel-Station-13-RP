@@ -2453,9 +2453,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/main_map/maintenance/deck_four/forward/starboard)
 "pY" = (
-/obj/machinery/porta_turret/stationary{
-	health = 200
-	},
+/obj/machinery/porta_turret/stationary,
 /obj/machinery/light{
 	dir = 8
 	},
@@ -3210,7 +3208,9 @@
 /turf/simulated/floor/plating,
 /area/space)
 "tY" = (
-/obj/machinery/mining/drill,
+/obj/machinery/mining/drill{
+	drill_id = 2
+	},
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_four/aft/port)
 "ub" = (
@@ -3465,8 +3465,7 @@
 /area/main_map/maintenance/deck_four/starboard)
 "vx" = (
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -4077,9 +4076,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/trash_pit)
 "zu" = (
-/obj/machinery/porta_turret/stationary{
-	health = 200
-	},
+/obj/machinery/porta_turret/stationary,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -7025,9 +7022,7 @@
 /turf/simulated/floor/plating,
 /area/library/study)
 "RO" = (
-/obj/machinery/porta_turret/stationary{
-	health = 200
-	},
+/obj/machinery/porta_turret/stationary,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/gateway)
 "RP" = (
@@ -7674,8 +7669,7 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced,
 /turf/simulated/floor/plating,
@@ -7931,7 +7925,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/main_map/maintenance/deck_four/aft/port)
 "Xa" = (
-/obj/structure/closet/crate/nanotrasen,
+/obj/structure/closet/crate/corporate/nanotrasen,
 /turf/simulated/floor/reinforced,
 /area/main_map/maintenance/deck_four/aft/starboard)
 "Xd" = (
@@ -8173,9 +8167,11 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research/testingrange)
 "Yw" = (
-/obj/landmark/map_data/euthenia,
-/turf/space,
-/area/space)
+/obj/machinery/mining/drill{
+	drill_id = 1
+	},
+/turf/simulated/floor/plating,
+/area/main_map/maintenance/deck_four/aft/port)
 "Yx" = (
 /obj/structure/closet/emcloset,
 /turf/simulated/floor/plating,
@@ -8820,7 +8816,7 @@ Za
 Za
 Za
 Za
-Yw
+Za
 Za
 "}
 (3,1,1) = {"
@@ -20529,7 +20525,7 @@ Dc
 ZI
 py
 Xu
-tY
+Yw
 tY
 Dc
 Dc

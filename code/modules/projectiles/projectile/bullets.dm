@@ -50,10 +50,10 @@
 	var/chance = damage
 	if(istype(A, /turf/simulated/wall))
 		var/turf/simulated/wall/W = A
-		chance = round(damage/W.material.integrity*180)
+		chance = round(damage/W.material_outer.density*1.8)
 	else if(istype(A, /obj/machinery/door))
 		var/obj/machinery/door/D = A
-		chance = round(damage/D.maxhealth*180)
+		chance = round(damage/D.integrity_max*180)
 		if(D.glass) chance *= 2
 	else if(istype(A, /obj/structure/girder))
 		chance = 100
@@ -308,25 +308,25 @@
 	SA_vulnerability = MOB_CLASS_DEMONIC
 	holy = TRUE
 
-/obj/projectile/bullet/rifle/a545
+/obj/projectile/bullet/rifle/a556
 	fire_sound = 'sound/weapons/weaponsounds_rifleshot.ogg'
 	damage = 25
 
-/obj/projectile/bullet/rifle/a545/ap
+/obj/projectile/bullet/rifle/a556/ap
 	damage = 20
 	armor_penetration = 50 // At 40 or more armor, this will do more damage than standard rounds.
 
-/obj/projectile/bullet/rifle/a545/hp
+/obj/projectile/bullet/rifle/a556/hp
 	damage = 35
 	armor_penetration = -50
 	penetrating = 0
 
-/obj/projectile/bullet/rifle/a545/hunter
+/obj/projectile/bullet/rifle/a556/hunter
 	damage = 15
 	SA_bonus_damage = 35 // 50 total on animals.
 	SA_vulnerability = MOB_CLASS_ANIMAL
 
-/obj/projectile/bullet/rifle/a145 // 14.5×114mm is bigger than a .50 BMG round.
+/obj/projectile/bullet/rifle/a127 // 14.5×114mm is bigger than a .50 BMG round.
 	fire_sound = 'sound/weapons/Gunshot_cannon.ogg' // This is literally an anti-tank rifle caliber. It better sound like a fucking cannon.
 	damage = 80
 	stun = 3
@@ -483,11 +483,14 @@
 	icon_state = "fireball"
 	damage = 10
 	embed_chance = 0
-	incendiary = 2
+	//incendiary = 2 //The Trail of Fire doesn't work.
 	flammability = 4
 	agony = 30
 	range = 4
 	vacuum_traversal = 0
+
+/obj/projectile/bullet/incendiary/flamethrower/weak
+	flammability = 2
 
 /obj/projectile/bullet/incendiary/flamethrower/large
 	damage = 15

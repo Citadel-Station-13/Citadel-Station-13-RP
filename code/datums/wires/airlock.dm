@@ -15,7 +15,7 @@
 		if(A.isElectrified())
 			if(A.shock(user, 100))
 				return FALSE
-	if(A.p_open)
+	if(A.panel_open)
 		return TRUE
 	return FALSE
 

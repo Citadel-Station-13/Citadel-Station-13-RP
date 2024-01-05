@@ -250,7 +250,7 @@
 	visible_message(SPAN_NOTICE("[nickname] gracefully settles onto the ground."))
 
 //////////////// Helpers
-/obj/item/uav/get_cell()
+/obj/item/uav/get_cell(inducer)
 	return cell
 
 /obj/item/uav/relaymove(var/mob/user, direction, signal = 1)
@@ -323,7 +323,7 @@
 		var/rendered = "<i><span class='game say'>UAV received, <span class='message'>[msg]</span></span></i>"
 		master.show_message(rendered, type)
 
-/obj/item/uav/take_damage(var/damage)
+/obj/item/uav/take_damage_legacy(var/damage)
 	health -= damage
 	CheckHealth()
 	return

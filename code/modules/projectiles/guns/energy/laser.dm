@@ -10,7 +10,7 @@
 	w_class = ITEMSIZE_LARGE
 	damage_force = 10
 	origin_tech = list(TECH_COMBAT = 3, TECH_MAGNET = 2)
-	materials = list(MAT_STEEL = 2000)
+	materials_base = list(MAT_STEEL = 2000)
 	projectile_type = /obj/projectile/beam/midlaser
 	heavy = TRUE
 	one_handed_penalty = 30
@@ -242,7 +242,7 @@
 	item_state = "laser"
 	desc = "Based off an ancient model of laser gun, the NT-Tagger will make you the terror of the next workplace lasertag tournament."
 	origin_tech = list(TECH_COMBAT = 1, TECH_MAGNET = 2)
-	materials = list(MAT_STEEL = 2000)
+	materials_base = list(MAT_STEEL = 2000)
 	projectile_type = /obj/projectile/beam/lasertag/blue
 	cell_type = /obj/item/cell/device/weapon/recharge
 	battery_lock = 1
@@ -304,6 +304,21 @@
 	charge_cost = 1500 //You got 1 shot...
 	projectile_type = /obj/projectile/beam/heavylaser //But it hurts a lot
 	cell_type = /obj/item/cell/device/weapon
+	unstable = 1
+
+/obj/item/gun/energy/zip/consume_next_projectile(mob/user as mob)
+	. = ..()
+	if(.)
+		if(unstable)
+			if(prob(10))
+				to_chat(user, "<span class='danger'>The cell overcooks and ruptures!</span>")
+				spawn(rand(2 SECONDS,5 SECONDS))
+					if(src)
+						visible_message("<span class='critical'>\The [src] detonates!</span>")
+						explosion(get_turf(src), -1, 0, 2, 3)
+						qdel(chambered)
+						qdel(src)
+				return ..()
 
 //NT SpecOps Laser Rifle
 /obj/item/gun/energy/combat
@@ -316,7 +331,7 @@
 	w_class = ITEMSIZE_LARGE
 	damage_force = 10
 	origin_tech = list(TECH_COMBAT = 5, TECH_MAGNET = 2)
-	materials = list(MAT_STEEL = 2000, "plastic" = 1000)
+	materials_base = list(MAT_STEEL = 2000, "plastic" = 1000)
 	projectile_type = /obj/projectile/beam/midlaser
 	heavy = FALSE
 	one_handed_penalty = 25

@@ -8,6 +8,8 @@
 	icon_state = "generic"
 	anchored = TRUE
 	density = TRUE
+	// todo: temporary, as this is unbuildable
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 
 //! ## Icons
 	/// Icon_state when vending.
@@ -734,44 +736,44 @@
 	product_ads = "The healthiest!;Award-winning chocolate bars!;Mmm! So good!;Oh my god it's so juicy!;Have a snack.;Snacks are good for you!;Have some more Getmore!;Best quality snacks straight from mars.;We love chocolate!;Try our new jerky!"
 	icon_state = "snack"
 	products = list(
-		/obj/item/reagent_containers/food/snacks/candy = 6,
+		/obj/item/reagent_containers/food/snacks/wrapped/candy = 6,
 		/obj/item/reagent_containers/food/drinks/dry_ramen = 6,
-		/obj/item/reagent_containers/food/snacks/chips =6,
-		/obj/item/reagent_containers/food/snacks/sosjerky = 6,
-		/obj/item/reagent_containers/food/snacks/no_raisin = 6,
-		/obj/item/reagent_containers/food/snacks/spacetwinkie = 6,
-		/obj/item/reagent_containers/food/snacks/cheesiehonkers = 6,
+		/obj/item/reagent_containers/food/snacks/bagged/chips =6,
+		/obj/item/reagent_containers/food/snacks/bagged/sosjerky = 6,
+		/obj/item/reagent_containers/food/snacks/boxed/no_raisin = 6,
+		/obj/item/reagent_containers/food/snacks/wrapped/spacetwinkie = 6,
+		/obj/item/reagent_containers/food/snacks/bagged/cheesiehonkers = 6,
+		/obj/item/reagent_containers/food/snacks/bagged/hotcheesiehonkers = 3,
 		/obj/item/reagent_containers/food/snacks/tastybread = 6,
-		/obj/item/reagent_containers/food/snacks/skrellsnacks = 3,
+		/obj/item/reagent_containers/food/snacks/wrapped/skrellsnacks = 3,
 		/obj/item/reagent_containers/food/snacks/baschbeans = 6,
 		/obj/item/reagent_containers/food/snacks/creamcorn = 6,
 		/obj/item/reagent_containers/hard_candy/lollipop = 6,
-		/obj/item/reagent_containers/food/snacks/spunow = 6,
-		/obj/item/reagent_containers/food/snacks/glad2nut = 6,
-		/obj/item/reagent_containers/food/snacks/natkat = 6,
-		/obj/item/reagent_containers/food/snacks/hotcheesiehonkers = 3,
+		/obj/item/reagent_containers/food/snacks/wrapped/spunow = 6,
+		/obj/item/reagent_containers/food/snacks/wrapped/glad2nut = 6,
+		/obj/item/reagent_containers/food/snacks/wrapped/natkat = 6
 	)
 	contraband = list(
 		/obj/item/reagent_containers/food/snacks/syndicake = 6,
-		/obj/item/reagent_containers/food/snacks/unajerky = 6,
+		/obj/item/reagent_containers/food/snacks/boxed/unajerky = 6,
 	)
 	prices = list(
-		/obj/item/reagent_containers/food/snacks/candy = 2,
+		/obj/item/reagent_containers/food/snacks/wrapped/candy = 2,
 		/obj/item/reagent_containers/food/drinks/dry_ramen = 5,
-		/obj/item/reagent_containers/food/snacks/chips = 3,
-		/obj/item/reagent_containers/food/snacks/sosjerky = 3,
-		/obj/item/reagent_containers/food/snacks/no_raisin = 2,
-		/obj/item/reagent_containers/food/snacks/spacetwinkie = 2,
-		/obj/item/reagent_containers/food/snacks/cheesiehonkers = 3,
+		/obj/item/reagent_containers/food/snacks/bagged/chips = 3,
+		/obj/item/reagent_containers/food/snacks/bagged/sosjerky = 3,
+		/obj/item/reagent_containers/food/snacks/boxed/no_raisin = 2,
+		/obj/item/reagent_containers/food/snacks/wrapped/spacetwinkie = 2,
+		/obj/item/reagent_containers/food/snacks/bagged/cheesiehonkers = 3,
+		/obj/item/reagent_containers/food/snacks/bagged/hotcheesiehonkers = 6,
 		/obj/item/reagent_containers/food/snacks/tastybread = 3,
-		/obj/item/reagent_containers/food/snacks/skrellsnacks = 4,
+		/obj/item/reagent_containers/food/snacks/wrapped/skrellsnacks = 4,
 		/obj/item/reagent_containers/food/snacks/baschbeans = 6,
 		/obj/item/reagent_containers/food/snacks/creamcorn = 6,
 		/obj/item/reagent_containers/hard_candy/lollipop = 2,
-		/obj/item/reagent_containers/food/snacks/spunow = 4,
-		/obj/item/reagent_containers/food/snacks/glad2nut = 4,
-		/obj/item/reagent_containers/food/snacks/natkat = 4,
-		/obj/item/reagent_containers/food/snacks/hotcheesiehonkers = 6
+		/obj/item/reagent_containers/food/snacks/wrapped/spunow = 4,
+		/obj/item/reagent_containers/food/snacks/wrapped/glad2nut = 4,
+		/obj/item/reagent_containers/food/snacks/wrapped/natkat = 4
 	)
 
 /obj/machinery/vending/cola
@@ -788,8 +790,10 @@
 		/obj/item/reagent_containers/food/drinks/bottle/small/sassafras = 10,
 		/obj/item/reagent_containers/food/drinks/bottle/small/sarsaparilla = 10,
 		/obj/item/reagent_containers/food/drinks/cans/gingerale = 10,
-		/obj/item/reagent_containers/food/drinks/cans/nicola = 10,
-		/obj/item/reagent_containers/food/drinks/cans/nicola_sakura = 10,
+		/obj/item/reagent_containers/food/drinks/cans/kyocola = 10,
+		/obj/item/reagent_containers/food/drinks/cans/kyocola_fire = 10,
+		/obj/item/reagent_containers/food/drinks/cans/kyocola_sakura = 10,
+		/obj/item/reagent_containers/food/drinks/cans/kyocola_blue = 10,
 		/obj/item/reagent_containers/food/drinks/cans/crystalgibb = 10,
 		/obj/item/reagent_containers/food/drinks/cans/dr_gibb = 10,
 		/obj/item/reagent_containers/food/drinks/cans/dr_gibb_cherry = 10,
@@ -833,8 +837,10 @@
 		/obj/item/reagent_containers/food/drinks/bludbox = 25,
 		/obj/item/reagent_containers/food/drinks/bludboxlight = 35,
 		/obj/item/reagent_containers/food/drinks/cans/coconutwater = 6,
-		/obj/item/reagent_containers/food/drinks/cans/nicola = 2,
-		/obj/item/reagent_containers/food/drinks/cans/nicola_sakura = 2,
+		/obj/item/reagent_containers/food/drinks/cans/kyocola = 2,
+		/obj/item/reagent_containers/food/drinks/cans/kyocola_fire = 2,
+		/obj/item/reagent_containers/food/drinks/cans/kyocola_sakura = 2,
+		/obj/item/reagent_containers/food/drinks/cans/kyocola_blue = 2,
 		/obj/item/reagent_containers/food/drinks/cans/dr_gibb_cherry = 2,
 		/obj/item/reagent_containers/food/drinks/cans/cola_cherry = 2,
 		/obj/item/reagent_containers/food/drinks/cans/cola_coffee = 2,
@@ -851,9 +857,9 @@
 		/obj/item/reagent_containers/food/drinks/smallchocmilk = 8,
 		/obj/item/reagent_containers/food/drinks/glass2/fitnessflask/proteinshake = 8,
 		/obj/item/reagent_containers/food/drinks/glass2/fitnessflask = 8,
-		/obj/item/reagent_containers/food/snacks/candy/proteinbar = 8,
-		/obj/item/reagent_containers/food/snacks/liquidfood = 10,
-		/obj/item/reagent_containers/food/snacks/liquidprotein = 10,
+		/obj/item/reagent_containers/food/snacks/wrapped/proteinbar = 8,
+		/obj/item/reagent_containers/food/snacks/liquid = 10,
+		/obj/item/reagent_containers/food/snacks/liquid/protein = 10,
 		/obj/item/reagent_containers/pill/diet = 8,
 		/obj/item/towel/random = 8,
 		/obj/item/reagent_containers/food/snacks/brainsnax = 5,
@@ -864,15 +870,72 @@
 		/obj/item/reagent_containers/food/drinks/smallchocmilk = 3,
 		/obj/item/reagent_containers/food/drinks/glass2/fitnessflask/proteinshake = 15,
 		/obj/item/reagent_containers/food/drinks/glass2/fitnessflask = 5,
-		/obj/item/reagent_containers/food/snacks/candy/proteinbar = 10,
-		/obj/item/reagent_containers/food/snacks/liquidfood = 15,
-		/obj/item/reagent_containers/food/snacks/liquidprotein = 15,
+		/obj/item/reagent_containers/food/snacks/wrapped/proteinbar = 10,
+		/obj/item/reagent_containers/food/snacks/liquid = 15,
+		/obj/item/reagent_containers/food/snacks/liquid/protein = 15,
 		/obj/item/reagent_containers/pill/diet = 10,
 		/obj/item/towel/random = 15,
 		/obj/item/reagent_containers/food/snacks/brainsnax = 10,
 	)
 	contraband = list(
 		/obj/item/reagent_containers/syringe/steroid = 4
+	)
+/obj/machinery/vending/weeb
+	name = "Nippon-Tan!"
+	desc = "A vendor full of asian snackfood variety!"
+	icon_state = "weeb"
+	icon_vend = "weeb-vend"
+	products = list(
+		/obj/item/reagent_containers/food/snacks/riceball = 10,
+		/obj/item/reagent_containers/food/snacks/hanamidango = 10,
+		/obj/item/reagent_containers/food/snacks/gomadango = 10,
+		/obj/item/reagent_containers/food/snacks/mochi = 10,
+		/obj/item/reagent_containers/food/snacks/dorayaki = 10,
+		/obj/item/reagent_containers/food/snacks/chocobanana = 10,
+		/obj/item/storage/box/pocky = 10,
+		/obj/item/storage/box/gondola = 10,
+		/obj/item/reagent_containers/food/snacks/bagged/wpeas = 10,
+		/obj/item/reagent_containers/food/drinks/cans/ochamidori = 10,
+		/obj/item/reagent_containers/food/drinks/cans/ramune = 10,
+		/obj/item/reagent_containers/food/drinks/cans/kyocola = 10,
+		/obj/item/reagent_containers/food/drinks/cans/kyocola_fire = 10,
+		/obj/item/reagent_containers/food/drinks/cans/kyocola_sakura = 10,
+		/obj/item/reagent_containers/food/drinks/cans/kyocola_blue = 10,
+		/obj/item/clothing/under/kimono = 5,
+		/obj/item/clothing/under/kimono/yellow = 5,
+		/obj/item/clothing/under/kimono/blue = 5,
+		/obj/item/clothing/under/bsing = 5,
+		/obj/item/clothing/shoes/boots/bsing = 5,
+		/obj/item/clothing/under/ysing = 5,
+		/obj/item/clothing/shoes/boots/ysing = 5,
+		/obj/item/storage/daki = 10,
+		/obj/item/toy/katana = 10
+	)
+	prices = list(
+		/obj/item/reagent_containers/food/snacks/riceball = 5,
+		/obj/item/reagent_containers/food/snacks/hanamidango = 5,
+		/obj/item/reagent_containers/food/snacks/gomadango = 5,
+		/obj/item/reagent_containers/food/snacks/mochi = 5,
+		/obj/item/reagent_containers/food/snacks/dorayaki = 5,
+		/obj/item/reagent_containers/food/snacks/chocobanana = 5,
+		/obj/item/storage/box/pocky = 5,
+		/obj/item/storage/box/gondola = 5,
+		/obj/item/reagent_containers/food/snacks/bagged/wpeas = 5,
+		/obj/item/reagent_containers/food/drinks/cans/ochamidori = 8,
+		/obj/item/reagent_containers/food/drinks/cans/ramune = 10,
+		/obj/item/reagent_containers/food/drinks/cans/kyocola = 2,
+		/obj/item/reagent_containers/food/drinks/cans/kyocola_fire = 2,
+		/obj/item/reagent_containers/food/drinks/cans/kyocola_sakura = 2,
+		/obj/item/reagent_containers/food/drinks/cans/kyocola_blue = 2,
+		/obj/item/clothing/under/kimono = 10,
+		/obj/item/clothing/under/kimono/yellow = 10,
+		/obj/item/clothing/under/kimono/blue = 10,
+		/obj/item/clothing/under/bsing = 10,
+		/obj/item/clothing/shoes/boots/bsing = 10,
+		/obj/item/clothing/under/ysing = 10,
+		/obj/item/clothing/shoes/boots/ysing = 10,
+		/obj/item/storage/daki = 50,
+		/obj/item/toy/katana = 15
 	)
 
 /obj/machinery/vending/cart
@@ -2089,6 +2152,10 @@
 		/obj/item/clothing/under/redcoatformal = 2,
 		/obj/item/clothing/under/leotardcolor = 5,
 		/obj/item/clothing/under/leotard = 5,
+		/obj/item/clothing/under/bunnysuit_f = 5,
+		/obj/item/clothing/under/bunnysuit_m = 5,
+		/obj/item/clothing/under/tabard_w = 5,
+		/obj/item/clothing/under/tabard_b = 5,
 		/obj/item/clothing/under/toga = 5,
 		/obj/item/clothing/under/countess = 5,
 		/obj/item/clothing/under/baroness = 5,
@@ -2136,6 +2203,7 @@
 		/obj/item/flashlight = 5,
 		/obj/item/laser_pointer = 3,
 		/obj/item/clothing/glasses/omnihud = 10,
+		/obj/item/device/walkpod = 5,
 	)
 	premium = list(
 		/obj/item/perfect_tele/one_beacon = 1,
@@ -2146,6 +2214,7 @@
 	prices = list(
 		/obj/item/modular_computer/tablet/preset/custom_loadout/cheap = 300,
 		/obj/item/laser_pointer = 100,
+		/obj/item/device/walkpod = 300,
 	)
 	price_default = 25
 
@@ -2420,6 +2489,7 @@
 		/obj/item/clothing/suit/banana = 3,
 		/obj/item/clothing/suit/assassin = 3,
 		/obj/item/clothing/head/bard = 3,
+		/obj/item/clothing/head/helmet/aquiline = 3,
 		/obj/item/clothing/under/aquiline_enforcer = 3,
 		/obj/item/clothing/under/yoko = 3,
 		/obj/item/clothing/under/kamina = 3,

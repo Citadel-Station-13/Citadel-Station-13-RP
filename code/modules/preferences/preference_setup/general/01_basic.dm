@@ -72,6 +72,8 @@
 	character.gender = pref.biological_gender
 	character.identifying_gender = pref.identifying_gender
 	character.age = pref.age
+	character.headshot_url = pref.headshot_url
+	character.fullref_url = pref.full_ref_url
 	return TRUE
 
 /datum/category_item/player_setup_item/general/basic/content(datum/preferences/prefs, mob/user, data)
@@ -131,9 +133,9 @@
 		return PREFERENCES_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["id_gender"])
-		var/new_gender = tgui_input_list(user, "Choose your character's pronouns:", "Character Preference", all_genders_define_list, pref.identifying_gender)
+		var/new_gender = tgui_input_list(user, "Choose your character's pronouns:", "Character Preference", GLOB.gender_select_list, pref.identifying_gender)
 		if(new_gender && CanUseTopic(user))
-			pref.identifying_gender = new_gender
+			pref.identifying_gender = GLOB.gender_select_list[new_gender]
 		return PREFERENCES_REFRESH
 
 	else if(href_list["age"])

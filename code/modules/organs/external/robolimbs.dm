@@ -156,6 +156,12 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	icon = 'icons/mob/cyberlimbs/unbranded/unbranded_teshari.dmi'
 	unavailable_to_build = TRUE
 
+/datum/robolimb/unbranded_digitigrade
+	company = "Unbranded - Generic Digitigrade"
+	desc = "A digitigrade robotic leg of a fairly generic design."
+	icon = 'icons/mob/cyberlimbs/unbranded/unbranded_digitigrade.dmi'
+	parts = list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)
+
 /datum/robolimb/nanotrasen
 	company = "NanoTrasen"
 	desc = "A simple but efficient robotic limb, created by NanoTrasen."
@@ -497,6 +503,14 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	company = "Replikant"
 	desc = "An advanced biomechanical prosthetic with pegs for feet."
 	icon = 'icons/mob/cyberlimbs/replikant/replikant.dmi'
+	lifelike = 1
+	modular_bodyparts = MODULAR_BODYPART_PROSTHETIC
+	parts = list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)
+
+/datum/robolimb/replika2
+	company = "Replikant - 2nd Gen"
+	desc = "Modern, second-generation biomechanical prosthetics with pegs for feet."
+	icon = 'icons/mob/cyberlimbs/replikant/replikant2.dmi'
 	lifelike = 1
 	modular_bodyparts = MODULAR_BODYPART_PROSTHETIC
 	parts = list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)

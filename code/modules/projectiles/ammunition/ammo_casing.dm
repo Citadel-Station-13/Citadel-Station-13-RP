@@ -4,7 +4,7 @@
 	icon = 'icons/obj/ammo.dmi'
 	icon_state = "s-casing"
 	slot_flags = SLOT_BELT | SLOT_EARS
-	item_flags = ITEM_EASY_LATHE_DECONSTRUCT
+	item_flags = ITEM_EASY_LATHE_DECONSTRUCT | ITEM_ENCUMBERS_WHILE_HELD
 	throw_force = 1
 	w_class = ITEMSIZE_TINY
 	preserve_item = 1
@@ -48,21 +48,23 @@
 	setDir(pick(GLOB.cardinal)) //spin spent casings
 	update_icon()
 
-/obj/item/ammo_casing/screwdriver_act(obj/item/I, mob/user, flags, hint)
+/obj/item/ammo_casing/screwdriver_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
 	. = TRUE
 	if(!stored)
-		user.action_feedback(SPAN_WARNING("There is no bullet in [src] to inscribe."), src)
+		e_args.chat_feedback(SPAN_WARNING("There is no bullet in [src] to inscribe."), src)
 		return
-	var/label_text = input(user, "Inscribe some text into [initial(stored.name)]", "Inscription", stored.name)
+	var/label_text = input(e_args.initiator, "Inscribe some text into [initial(stored.name)]", "Inscription", stored.name)
+	if(!e_args.performer.Adjacent(src))
+		return
 	label_text = sanitize(label_text, MAX_NAME_LEN, extra = FALSE)
 	if(!label_text)
-		user.action_feedback(SPAN_NOTICE("You scratch the inscription off of [initial(stored.name)]."), src)
+		e_args.chat_feedback(SPAN_NOTICE("You scratch the inscription off of [initial(stored.name)]."), src)
 		stored.name = initial(stored.name)
 		return
-	user.action_feedback(SPAN_NOTICE("You inscribe [label_text] into \the [initial(stored.name)]."), src)
+	e_args.chat_feedback(SPAN_NOTICE("You inscribe [label_text] into \the [initial(stored.name)]."), src)
 	stored.name = "[initial(stored.name)] (\"[label_text]\")"
 
-/obj/item/ammo_casing/dynamic_tool_functions(obj/item/I, mob/user)
+/obj/item/ammo_casing/dynamic_tool_query(obj/item/I, datum/event_args/actor/clickchain/e_args, list/hint_images = list())
 	. = list(
 		TOOL_SCREWDRIVER = list(
 			"etch"

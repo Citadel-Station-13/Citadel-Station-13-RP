@@ -22,7 +22,7 @@ type HotkeysHelpData = {
 };
 
 type KeyBindingBoxProps = {
-  keycode: string,
+  readonly keycode: string,
 }
 
 type ModkeyProps = {
@@ -119,6 +119,7 @@ export const HotkeysHelp = (_, context) => {
                           </Box>
                         </Tooltip>
                       ) : (
+                    // eslint-disable-next-line react/jsx-key
                         <Box p={1} m={1} inline className="HotkeysHelp__pill">
                           {binding.name}
                         </Box>

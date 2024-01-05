@@ -22,6 +22,7 @@ SUBSYSTEM_DEF(air)
 	/// scrubber defaults
 	var/list/scrubber_defaults = list(
 		SCRUBBER_DEFAULT_STATION = list(/datum/gas/carbon_dioxide, /datum/gas/phoron),
+		SCRUBBER_DEFAULT_ATLAS_VIROLOGY = list(/datum/gas/carbon_dioxide, /datum/gas/phoron, /datum/gas/chlorine),
 	)
 
 	var/cost_turfs = 0
@@ -357,9 +358,9 @@ SUBSYSTEM_DEF(air)
 		gas_string = A.initial_gas_mix
 	// 2. check if it's special and should look up the level's defaults
 	switch(gas_string)
-		if(ATMOSPHERE_USE_INDOORS)
-			gas_string = SSmapping.lookup_outdoors_air(turf_context.z)
 		if(ATMOSPHERE_USE_OUTDOORS)
+			gas_string = SSmapping.lookup_outdoors_air(turf_context.z)
+		if(ATMOSPHERE_USE_INDOORS)
 			gas_string = SSmapping.lookup_indoors_air(turf_context.z)
 	// 3: process atmosphere
 	if(generated_atmospheres[gas_string])

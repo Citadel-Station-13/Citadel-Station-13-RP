@@ -342,8 +342,6 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	render_key = "head"
 	id = SLOT_ID_HEAD
 	sort_order = 10000
-	display_name = "back"
-	display_preposition = "on"
 	display_name = "head"
 	display_preposition = "on"
 	hud_position = ui_head

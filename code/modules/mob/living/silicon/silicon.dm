@@ -63,6 +63,11 @@
 	init_id()
 	init_subsystems()
 
+	for(var/datum/language/L as anything in SScharacters.all_languages())
+		if(L.translation_class & TRANSLATION_CLASS_LEVEL_1)
+			add_language(L)
+	add_language(LANGUAGE_EAL)
+
 /mob/living/silicon/Destroy()
 	silicon_mob_list -= src
 	for(var/datum/alarm_handler/AH in SSalarms.all_handlers)

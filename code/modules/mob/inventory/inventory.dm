@@ -203,7 +203,8 @@
 
 	if(!(flags & INV_OP_FORCE) && HAS_TRAIT(I, TRAIT_ITEM_NODROP))
 		if(!(flags & INV_OP_SUPPRESS_WARNING))
-			to_chat(user, SPAN_WARNING("[I] is stuck to your hand!"))
+			var/datum/inventory_slot_meta/slot_meta = resolve_inventory_slot_meta(slot)
+			to_chat(user, SPAN_WARNING("[I] is stubbornly stuck [slot_meta.display_preposition] your [slot_meta.display_name]!"))
 		return FALSE
 
 	var/blocked_by
@@ -271,7 +272,7 @@
 	if(!inventory_slot_bodypart_check(I, slot, user, flags) && !(flags & INV_OP_FORCE))
 		return FALSE
 
-	var/conflict_result = inventory_slot_conflict_check(I, slot)
+	var/conflict_result = inventory_slot_conflict_check(I, slot, flags)
 	var/obj/item/to_wear_over
 
 	if((flags & INV_OP_IS_FINAL_CHECK) && conflict_result && (slot != SLOT_ID_HANDS))
@@ -390,14 +391,20 @@
 		affected = list(affected)
 	for(var/obj/item/I as anything in affected)
 		if(!inventory_slot_bodypart_check(I, I.worn_slot, null, INV_OP_SILENT))
-			drop_item_to_ground(I)
+			drop_item_to_ground(I, INV_OP_SILENT)
 
 /**
  * checks for slot conflict
  */
-/mob/proc/inventory_slot_conflict_check(obj/item/I, slot)
-	if(_item_by_slot(slot))
-		return CAN_EQUIP_SLOT_CONFLICT_HARD
+/mob/proc/inventory_slot_conflict_check(obj/item/I, slot, flags)
+	var/obj/item/conflicting = _item_by_slot(slot)
+	if(conflicting)
+		if((flags & (INV_OP_CAN_DISPLACE | INV_OP_IS_FINAL_CHECK)) == (INV_OP_CAN_DISPLACE | INV_OP_IS_FINAL_CHECK))
+			drop_item_to_ground(conflicting, INV_OP_FORCE)
+			if(_item_by_slot(slot))
+				return CAN_EQUIP_SLOT_CONFLICT_HARD
+		else
+			return CAN_EQUIP_SLOT_CONFLICT_HARD
 	switch(slot)
 		if(SLOT_ID_LEFT_EAR, SLOT_ID_RIGHT_EAR)
 			if(I.slot_flags & SLOT_TWOEARS)
@@ -444,6 +451,11 @@
 	if(slot_meta.inventory_slot_flags & INV_SLOT_IS_ABSTRACT)
 		// if it's abstract, we go there directly - do not use can_equip as that will just guess.
 		return handle_abstract_slot_insertion(I, slot, flags)
+
+	// slots must have IDs.
+	ASSERT(!isnull(slot_meta.id))
+	// convert to ID after abstract slot checks
+	slot = slot_meta.id
 
 	var/old_slot = slot_by_item(I)
 

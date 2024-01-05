@@ -1,6 +1,10 @@
 #define DAM_SCALE_FACTOR 0.01
 #define METAL_PER_TICK 100
 
+/datum/physiology_modifier/intrinsic/species/protean
+	carry_strength_add = CARRY_STRENGTH_ADD_PROTEAN
+	carry_strength_factor = CARRY_FACTOR_MOD_PROTEAN
+
 /datum/species/protean
 	uid = SPECIES_ID_PROTEAN
 	name = SPECIES_PROTEAN
@@ -13,6 +17,7 @@
 	death_message = "rapidly loses cohesion, dissolving into a cloud of gray dust..."
 	knockout_message = "collapses inwards, forming a disordered puddle of gray goo."
 	remains_type = /obj/effect/debris/cleanable/ash
+	mob_physiology_modifier = /datum/physiology_modifier/intrinsic/species/protean
 
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch, /datum/unarmed_attack/bite) // Regular human attack verbs are enough.
 
@@ -112,6 +117,7 @@
 		/mob/living/proc/glow_color,
 		/mob/living/carbon/human/proc/lick_wounds,
 		/mob/living/carbon/human/proc/rig_transform,
+		/mob/living/carbon/human/proc/rig_self,
 		/mob/living/proc/usehardsuit) //prots get all the special verbs since they can't select traits.
 
 	species_statpanel = TRUE
@@ -338,6 +344,27 @@
 			prig.forceMove(get_turf(src))
 			src.forceMove(prig)
 			return
+
+/mob/living/carbon/human/proc/rig_self()
+	set name = "Deploy Nanosuit To Self"
+	set desc = "Deploy a light nanocluster RIGsuit around yourself."
+	set category = "Abilities"
+
+	if(istype(back, /obj/item/hardsuit/protean))
+		var/obj/item/hardsuit/protean/suit = back
+		if(suit.myprotean == src)
+			suit.reset()
+			suit.forceMove(src)
+			to_chat(src, SPAN_WARNING("You retract your nanosuit."))
+			return
+
+	for(var/obj/item/hardsuit/protean/suit in contents)
+		force_equip_to_slot(suit, /datum/inventory_slot_meta/inventory/back)
+		to_chat(src, SPAN_WARNING("You deploy your nanosuit."))
+		suit.toggle_seals(src, TRUE)
+		return
+
+	to_chat(src, SPAN_WARNING("You don't have a nanocluster RIG. Somehow."))
 
 #undef DAM_SCALE_FACTOR
 #undef METAL_PER_TICK

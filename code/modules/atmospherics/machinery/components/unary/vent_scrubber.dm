@@ -47,7 +47,7 @@
 	/// additional power when expanded
 	var/expanded_power = 7500
 	/// additional volume when expanded
-	var/expanded_scrub = 1250
+	var/expanded_scrub = 2500
 	/// mole boost
 	var/scrub_boost = 50
 
@@ -318,11 +318,11 @@
 			scrub_groups ^= target
 			return TRUE
 
-/obj/machinery/atmospherics/component/unary/vent_scrubber/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/atmospherics/component/unary/vent_scrubber/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["state"] = ui_scrubber_data()
 
-/obj/machinery/atmospherics/component/unary/vent_scrubber/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/atmospherics/component/unary/vent_scrubber/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["gasContext"] = global.gas_data.tgui_gas_context()
 	.["name"] = name

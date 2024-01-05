@@ -21,6 +21,7 @@
 	return mixcolor
 
 /datum/reagents/proc/get_color()
+	// todo: cache this shit
 	if(!reagent_list || !reagent_list.len)
 		return "#ffffffff"
 	if(reagent_list.len == 1) // It's pretty common and saves a lot of work

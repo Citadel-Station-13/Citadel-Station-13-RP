@@ -17,8 +17,8 @@
 
 	step_in = 2 //Fast
 
-	health = 400
-	maxhealth = 400
+	integrity = 400
+	integrity_max = 400
 
 	infra_luminosity = 6
 
@@ -181,7 +181,7 @@
 		stop_hover()
 	else if(moved && gravity && !ground_capable)
 		occupant_message("Collision alert! Vehicle not rated for use in gravity!")
-		take_damage(NOGRAV_FIGHTER_DAMAGE, "brute")
+		take_damage_legacy(NOGRAV_FIGHTER_DAMAGE, "brute")
 		playsound(src, 'sound/effects/grillehit.ogg', 50, 1)
 
 /obj/mecha/combat/fighter/get_step_delay()
@@ -241,7 +241,7 @@
 	if(istype(obstacle, /obj) || istype(obstacle, /turf))
 		TIMER_COOLDOWN_START(src, "fighter_collision", 5 SECONDS)
 		occupant_message("<B><FONT COLOR=red SIZE=+1>Collision Alert!</B></FONT>")
-		take_damage(20, "brute")
+		take_damage_legacy(20, "brute")
 		playsound(src, 'sound/effects/grillehit.ogg', 50, 1)
 
 ////////////// Gunpod //////////////
@@ -387,8 +387,8 @@
 
 	step_in = 3 //slightly slower than a baron (this shit doesnt actually work atm, likely due to the whole equipment weight nonsense)
 
-	health = 800
-	maxhealth = 800 //double baron HP, only room for one defensive upgrade. No specials(cloaking, speed, ect) or universals.
+	integrity = 800
+	integrity_max = 800 //double baron HP, only room for one defensive upgrade. No specials(cloaking, speed, ect) or universals.
 
 	max_hull_equip = 1
 	max_weapon_equip = 4
@@ -516,8 +516,8 @@
 
 	ground_capable = FALSE
 
-	health = 500
-	maxhealth = 500
+	integrity = 500
+	integrity_max = 500
 
 /obj/mecha/combat/fighter/allure/loaded/Initialize(mapload) //Loaded version with guns
 	. = ..()
@@ -604,8 +604,8 @@
 	icon_state = "cludge"
 	initial_icon = "cludge"
 
-	health = 100
-	maxhealth = 100
+	integrity = 100
+	integrity_max = 100
 
 	max_hull_equip = 0
 	max_weapon_equip = 0

@@ -255,3 +255,94 @@
 
 /mob/living/has_free_hand()
 	return !l_hand || !r_hand
+
+//* carry weight
+
+// don't call this you shouldn't need to
+/mob/living/update_carry_slowdown()
+	recalculate_carry()
+
+/mob/living/proc/recalculate_carry(update = TRUE)
+	var/tally_weight = 0
+	var/tally_encumbrance = 0
+	var/flat_encumbrance = 0
+	for(var/obj/item/I as anything in get_equipped_items())
+		tally_weight += (I.weight_registered = I.get_weight())
+		if(I.is_held())
+			if(!(I.item_flags & ITEM_ENCUMBERS_WHILE_HELD))
+				I.encumbrance_registered = null
+				continue
+		else
+			if(I.item_flags & ITEM_ENCUMBERS_ONLY_HELD)
+				I.encumbrance_registered = null
+				continue
+		var/encumbrance = I.get_encumbrance()
+		tally_encumbrance += encumbrance
+		I.encumbrance_registered = encumbrance
+		flat_encumbrance = max(flat_encumbrance, I.get_flat_encumbrance())
+	cached_carry_weight = tally_weight
+	cached_carry_encumbrance = tally_encumbrance
+	cached_carry_flat_encumbrance = flat_encumbrance
+	if(update)
+		update_carry()
+
+/mob/living/proc/adjust_current_carry_weight(amount)
+	if(!amount)
+		return
+	cached_carry_weight += amount
+	update_carry()
+
+/mob/living/proc/adjust_current_carry_encumbrance(amount)
+	if(!amount)
+		return
+	cached_carry_encumbrance += amount
+	update_carry()
+
+/**
+ * @return penalty as speed multiplier from 0 to 1
+ */
+/mob/living/proc/carry_weight_to_penalty(amount)
+	return 1
+
+/**
+ * @return penalty as speed multiplier from 0 to 1
+ */
+/mob/living/proc/carry_encumbrance_to_penalty(amount)
+	return 1
+
+/mob/living/proc/update_carry()
+	var/weight_penalty = carry_weight_to_penalty(cached_carry_weight)
+	var/encumbrance_penalty = carry_encumbrance_to_penalty(cached_carry_encumbrance)
+	var/flat_encumbrance_penalty = carry_encumbrance_to_penalty(cached_carry_flat_encumbrance)
+	var/penalty = min(weight_penalty, encumbrance_penalty, flat_encumbrance_penalty)
+	switch(round(min(weight_penalty, encumbrance_penalty) * 100))
+		if(85 to 99)
+			throw_alert("encumbered", /atom/movable/screen/alert/encumbered/minor)
+		if(65 to 84)
+			throw_alert("encumbered", /atom/movable/screen/alert/encumbered/moderate)
+		if(36 to 64)
+			throw_alert("encumbered", /atom/movable/screen/alert/encumbered/severe)
+		if(0 to 35)
+			throw_alert("encumbered", /atom/movable/screen/alert/encumbered/extreme)
+		else
+			clear_alert("encumbered")
+	/// do not slow down below 10% of base
+	penalty = max(penalty, 0.1)
+	if(penalty)
+		add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/mob_inventory_carry, params = list(MOVESPEED_PARAM_MULTIPLY_SPEED = penalty))
+	else
+		remove_movespeed_modifier(/datum/movespeed_modifier/mob_inventory_carry)
+
+//* hard movespeed slowdown
+
+/mob/living/update_item_slowdown()
+	var/tally = get_item_slowdown()
+	if(tally)
+		add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/mob_item_slowdown, params = list(MOVESPEED_PARAM_DELAY_MOD = tally))
+	else
+		remove_movespeed_modifier(/datum/movespeed_modifier/mob_item_slowdown)
+
+/mob/living/proc/get_item_slowdown()
+	. = 0
+	for(var/obj/item/I as anything in get_equipped_items())
+		. += I.slowdown

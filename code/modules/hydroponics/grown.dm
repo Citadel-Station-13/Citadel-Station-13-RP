@@ -88,9 +88,9 @@
 			descriptors |= "radioactive"
 		if(reagents.has_reagent("amatoxin") || reagents.has_reagent("toxin"))
 			descriptors |= "poisonous"
-		if(reagents.has_reagent("psilocybin") || reagents.has_reagent("space_drugs"))
+		if(reagents.has_reagent("psilocybin") || reagents.has_reagent("space_drugs")|| reagents.has_reagent("earthsblood"))
 			descriptors |= "hallucinogenic"
-		if(reagents.has_reagent("bicaridine"))
+		if(reagents.has_reagent("bicaridine")  || reagents.has_reagent("earthsblood"))
 			descriptors |= "medicinal"
 		if(reagents.has_reagent("gold"))
 			descriptors |= "shiny"
@@ -180,7 +180,7 @@
 				var/obj/item/cell/potato/pocell = new /obj/item/cell/potato(get_turf(user))
 				if(src.loc == user && istype(user,/mob/living/carbon/human))
 					user.put_in_hands(pocell)
-				pocell.maxcharge = src.potency * 10
+				pocell.maxcharge = src.potency * 200 //fellas, have you ever actually tried to reach 200 potency? Let them have this if they can manage it.
 				pocell.charge = pocell.maxcharge
 				qdel(src)
 				return
@@ -191,7 +191,7 @@
 				qdel(src)
 				return
 			else if(seed.chems)
-				if(W.sharp && W.edge && !isnull(seed.chems["woodpulp"]))
+				if(((W.sharp && W.edge) || CHECK_MULTIPLE_BITFIELDS(W.damage_mode, DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE)) && !isnull(seed.chems["woodpulp"]))
 					user.show_message("<span class='notice'>You make planks out of \the [src]!</span>", 1)
 					playsound(loc, 'sound/effects/woodcutting.ogg', 50, 1)
 					var/flesh_colour = seed.get_trait(TRAIT_FLESH_COLOUR)

@@ -22,8 +22,10 @@
 	/// delay add if person is resisting. null to disallow inject.
 	var/resist_add_time = 2 SECONDS
 	/// delay add to injection port items (like hardsuits). null to disallow inject. overriden by thick_add_time.
+	//  todo: this is not actually overridden by thick_add_time, fix that; both should be considered at once and the lower should be taken.
 	var/port_add_time = 1 SECONDS
 	/// delay add to thickmaterial suits. null to disallow inject. overrides port_add_time.
+	//  todo: this is not actually overridden by port_add_time, fix that; both should be considered at once and the lower should be taken.
 	var/thick_add_time = null
 	/// injection amount
 	var/inject_amount = 5
@@ -74,6 +76,9 @@
 /obj/item/hypospray/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 	if(istype(I, /obj/item/reagent_containers/glass/hypovial))
 		var/obj/item/reagent_containers/glass/hypovial/vial = I
+		if(istype(vial, /obj/item/reagent_containers/glass/hypovial/large) && !allow_large)
+			user.action_feedback(SPAN_WARNING("[vial] requires an advanced hypospray to use!"), src)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
 		if(!user.transfer_item_to_loc(vial, src))
 			user.action_feedback(SPAN_WARNING("[vial] is stuck to your hand!"), src)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
@@ -158,27 +163,27 @@
 		block_flags |= (I.clothing_flags & (CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT))
 	// got all coverage, proceed.
 	var/delay = injection_time
-	if(block_flags & CLOTHING_THICK_MATERIAL)
+	if(block_flags & CLOTHING_INJECTION_PORT)
+		if(isnull(port_add_time))
+			user.action_feedback(SPAN_WARNING("[src] is not compatible with injection ports!"), src)
+			return FALSE
+		delay += port_add_time
+		// todo: 'friendly name' so limbs can stay concealed of their true names while under clothing?
+		inject_message = SPAN_NOTICE("[user] starts to search for an injection port on [target]'s [limb.name].")
+	else if(block_flags & CLOTHING_THICK_MATERIAL)
 		if(isnull(thick_add_time))
 			user.action_feedback(SPAN_WARNING("[src] can't [inject_verb] through something that thick!"), src)
 			return FALSE
 		delay += thick_add_time
 		// todo: 'friendly name' so limbs can stay concealed of their true names while under clothing?
 		inject_message = SPAN_WARNING("[user] starts to dig [src] up against [target]'s [limb]!")
-	else if(block_flags & CLOTHING_INJECTION_PORT)
-		if(isnull(thick_add_time))
-			user.action_feedback(SPAN_WARNING("[src] is not compatible with injection ports!"), src)
-			return FALSE
-		delay += port_add_time
-		// todo: 'friendly name' so limbs can stay concealed of their true names while under clothing?
-		inject_message = SPAN_NOTICE("[user] starts to search for an injection port on [target]'s [limb].")
 	if(target.a_intent != INTENT_HELP)
 		if(isnull(resist_add_time))
 			user.action_feedback(SPAN_WARNING("[src] is not capable of aligning while [target] is resisting! (Non-help intent)"), src)
 			return FALSE
 		delay += resist_add_time
 		// todo: 'friendly name' so limbs can stay concealed of their true names while under clothing?
-		inject_message = SPAN_WARNING("[user] starts to intrusively align [src] up against [target]'s [limb]!")
+		inject_message = SPAN_WARNING("[user] starts to intrusively align [src] up against [target]'s [limb.name]!")
 	if(!silent)
 		user.visible_action_feedback(
 			target = target,

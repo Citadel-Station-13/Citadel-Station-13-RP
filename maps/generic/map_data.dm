@@ -1,26 +1,6 @@
 // These specify how many z levels are in a map. Consoladating them here for map compiling ease - Bloop
 
-// Tether
-/obj/landmark/map_data/virgo3b
-	height = 6
-
 /obj/overmap/entity/visitable/sector/virgo3b // Just a placeholder for when the map isnt loaded
-
-// Triumph
-/obj/landmark/map_data/triumph
-	height = 4
-
-// Lythios
-/obj/landmark/map_data/lythios43c
-	height = 6
-
-/obj/landmark/map_data/west_plains
-	height = 4
-
-/** Euthenia */
-
-/obj/landmark/map_data/euthenia
-	height = 5
 
 // See beach.dm for more details on this. Placeholder for now to stop compiling issues -Bloop
 /obj/away_mission_init/beachcave

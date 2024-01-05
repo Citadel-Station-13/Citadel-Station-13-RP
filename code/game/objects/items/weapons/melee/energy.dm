@@ -145,7 +145,7 @@
 			return
 	return ..()
 
-/obj/item/melee/energy/get_cell()
+/obj/item/melee/energy/get_cell(inducer)
 	return bcell
 
 /obj/item/melee/energy/update_icon()
@@ -634,7 +634,7 @@
 	attack_verb = list("attacked", "diced", "cleaved", "torn", "cut", "slashed")
 	armor_penetration = 50
 	var/base_state = "hfmachete"
-	hitsound = "machete_hit_sound" // dont mind the meaty hit sounds if you hit something that isnt meaty
+	attack_sound = "machete_hit_sound" // dont mind the meaty hit sounds if you hit something that isnt meaty
 	can_cleave = TRUE
 	embed_chance = 0 // let's not
 
@@ -642,9 +642,6 @@
 	icon_state = "[base_state][active]"
 
 /obj/item/melee/energy/hfmachete/attack_self(mob/user)
-	. = ..()
-	if(.)
-		return
 	toggleActive(user)
 	add_fingerprint(user)
 

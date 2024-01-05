@@ -121,7 +121,7 @@
 	if(istype(T) && !T.Adjacent(get_turf(src)))
 		return 0
 
-	device.melee_attack_chain(target, holder.wearer)
+	device.melee_interaction_chain(target, holder.wearer)
 	return 1
 
 /obj/item/hardsuit_module/chem_dispenser
@@ -647,7 +647,7 @@
 
 	to_chat(H, "<font color=#4F49AF><b>You activate the suit's sprint mode.</b></font>")
 
-	holder.slowdown -= sprint_speed
+	holder.set_slowdown(holder.slowdown - sprint_speed)
 	holder.sprint_slowdown_modifier = -sprint_speed
 
 /obj/item/hardsuit_module/sprinter/deactivate()
@@ -659,7 +659,7 @@
 
 	to_chat(H, "<span class='danger'>Your hardsuit returns to normal speed.</span>")
 
-	holder.slowdown += sprint_speed
+	holder.set_slowdown(holder.slowdown + sprint_speed)
 	holder.sprint_slowdown_modifier = 0
 
 /obj/item/hardsuit_module/device/hand_defib

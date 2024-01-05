@@ -11,7 +11,7 @@
 	slot_flags = SLOT_BACK
 	w_class = ITEMSIZE_HUGE
 
-	materials = list(MAT_STEEL = 10000, MAT_GLASS = 2500)
+	materials_base = list(MAT_STEEL = 10000, MAT_GLASS = 2500)
 
 	var/code = 2
 

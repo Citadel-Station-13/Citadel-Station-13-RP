@@ -360,6 +360,9 @@ SUBSYSTEM_DEF(tgui)
 		// Inform the UIs of their new owner.
 		ui.user = target
 		target.tgui_open_uis.Add(ui)
+		source.on_ui_transfer(source, target, ui)
+		for(var/datum/module in ui.modules_processed)
+			module.on_ui_transfer(source, target, ui, TRUE)
 	// Clear the old list.
 	source.tgui_open_uis.Cut()
 	return TRUE

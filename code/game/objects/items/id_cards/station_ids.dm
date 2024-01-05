@@ -40,10 +40,16 @@
 
 /obj/item/card/id/Initialize(mapload)
 	. = ..()
-	var/datum/role/job/J = SSjob.get_job(rank)
-	if(J)
-		access = J.get_access()
-		job_access_type = J
+	var/datum/role/job/getting_from
+	if(ispath(job_access_type))
+		job_access_type = SSjob.job_by_type(job_access_type)
+	if(istype(job_access_type))
+		getting_from = job_access_type
+	else
+		getting_from = SSjob.get_job(rank)
+	if(!isnull(getting_from))
+		access = getting_from.get_access()
+		job_access_type = getting_from
 
 /obj/item/card/id/examine(mob/user, dist)
 	var/list/result = dat()
@@ -208,15 +214,15 @@
 	preserve_item = 1
 
 /obj/item/card/id/gold/captain
-	name = "\improper Facility Director's ID"
-	assignment = "Facility Director"
-	rank = "Facility Director"
+	name = "\improper Captain's ID"
+	assignment = "Captain"
+	rank = "Captain"
 	job_access_type = /datum/role/job/station/captain
 
 /obj/item/card/id/gold/captain/spare
-	name = "\improper Facility Director's spare ID"
+	name = "\improper Captain's Spare ID"
 	desc = "The spare ID of the High Lord himself."
-	registered_name = "Facility Director"
+	registered_name = "Captain"
 	icon_state = "gold-id-alternate"
 	job_access_type = /datum/role/job/station/captain
 
@@ -577,9 +583,9 @@
 	name = "identity chit"
 	desc = "A mass-market access chit used in many non-Corporate environments as a form of identification."
 	icon_state = "chit"
-	primary_color = rgb(142,94,0)
-	secondary_color = rgb(191,159,95)
-	access = list(160, 13)
+	//primary_color = rgb(142,94,0)
+	//secondary_color = rgb(191,159,95)
+	job_access_type = /datum/role/job/trader
 	var/random_color = TRUE
 
 /obj/item/card/id/external/merchant/Initialize(mapload)
@@ -607,6 +613,7 @@
 	icon_state = "pirate"
 	primary_color = rgb(17, 1, 1)
 	secondary_color = rgb(149, 152, 153)
+	job_access_type = null
 	access = list(168)
 
 /obj/item/card/id/medical/sar
