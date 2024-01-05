@@ -332,7 +332,7 @@
 		to_chat(src, "<span class='info'>You have unread updates in the changelog.</span>")
 		winset(src, "infowindow.changelog", "background-color=#eaeaea;font-style=bold")
 		if(config_legacy.aggressive_changelog)
-			INVOKE_ASYNC(src, PROC_REF(changelog))
+			changelog_async()
 
 	// ensure asset cache is there
 	INVOKE_ASYNC(src, PROC_REF(warn_if_no_asset_cache_browser))
