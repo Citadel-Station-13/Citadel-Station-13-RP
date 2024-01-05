@@ -1,4 +1,8 @@
 /client/proc/age_verification()
+	set waitfor = FALSE
+	age_verification_impl()
+
+/client/proc/age_verification_impl()
 	if(!SSdbcore.Connect())
 		return TRUE
 	if(!player.block_on_available(10 SECONDS))
