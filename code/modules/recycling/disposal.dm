@@ -493,6 +493,38 @@
 	else
 		return ..(mover, target)
 
+
+
+/obj/machinery/disposal/wall
+	name = "inset disposal unit"
+	icon_state = "wall"
+
+	density = FALSE
+
+/obj/machinery/disposal/wall/Initialize()
+	. = ..()
+
+	spawn(1 SECOND)	// Fixfix for weird interaction with buildmode or other late-spawning.
+		update()
+
+/obj/machinery/disposal/wall/update()
+	..()
+
+	switch(dir)
+		if(1)
+			pixel_x = 0
+			pixel_y = -32
+		if(2)
+			pixel_x = 0
+			pixel_y = 32
+		if(4)
+			pixel_x = -32
+			pixel_y = 0
+		if(8)
+			pixel_x = 32
+			pixel_y = 0
+
+
 // virtual disposal object
 // travels through pipes in lieu of actual items
 // contents will be items flushed by the disposal
