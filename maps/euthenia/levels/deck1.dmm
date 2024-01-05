@@ -2530,7 +2530,7 @@
 /obj/fiftyspawner/glass,
 /obj/fiftyspawner/glass,
 /turf/simulated/floor/airless/ceiling,
-/area/maintenance/solars)
+/area/space)
 "cAw" = (
 /turf/simulated/shuttle/wall/voidcraft/blue,
 /area/medical/medbay_emt_bay)
@@ -3543,7 +3543,7 @@
 "dVR" = (
 /obj/structure/closet/crate/solar,
 /turf/simulated/floor/airless/ceiling,
-/area/maintenance/solars)
+/area/space)
 "dXV" = (
 /obj/structure/cable/green{
 	icon_state = "1-4"
@@ -3677,6 +3677,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay)
+"ege" = (
+/obj/machinery/recharge_station,
+/turf/simulated/floor/plating,
+/area/main_map/maintenance/deck_one/aft/port)
 "egH" = (
 /obj/machinery/light{
 	dir = 8
@@ -7841,7 +7845,7 @@
 "iDV" = (
 /obj/structure/sign/deck1,
 /turf/simulated/wall,
-/area/maintenance/solars)
+/area/space)
 "iEd" = (
 /obj/machinery/vending/security,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -10498,7 +10502,7 @@
 	pixel_y = -26
 	},
 /turf/simulated/floor/airless,
-/area/maintenance/solars)
+/area/space)
 "lPc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
@@ -11546,7 +11550,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/airless,
-/area/maintenance/solars)
+/area/space)
 "nal" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -12304,7 +12308,7 @@
 "nTJ" = (
 /obj/structure/closet/crate/solar,
 /turf/simulated/floor/airless,
-/area/maintenance/solars)
+/area/space)
 "nUD" = (
 /turf/simulated/wall/prepainted/civilian,
 /area/crew_quarters/sleep/Dorm_7)
@@ -12731,7 +12735,7 @@
 /area/maintenance/solars)
 "osx" = (
 /turf/simulated/floor/airless,
-/area/maintenance/solars)
+/area/space)
 "osD" = (
 /obj/structure/table/steel,
 /obj/fiftyspawner/glass,
@@ -14321,9 +14325,6 @@
 "qnA" = (
 /turf/simulated/wall,
 /area/quartermaster/delivery)
-"qof" = (
-/turf/simulated/floor/airless/ceiling,
-/area/maintenance/solars)
 "qot" = (
 /turf/simulated/wall/r_wall/prepainted/security,
 /area/security/armoury)
@@ -14683,7 +14684,7 @@
 /obj/structure/table/steel,
 /obj/item/tool/wrench,
 /turf/simulated/floor/airless/ceiling,
-/area/maintenance/solars)
+/area/space)
 "qNT" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
@@ -15558,7 +15559,7 @@
 "rWs" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/airless,
-/area/maintenance/solars)
+/area/space)
 "rWu" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
@@ -15844,9 +15845,8 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/machinery/recharge_station,
 /turf/simulated/floor/airless/ceiling,
-/area/maintenance/solars)
+/area/space)
 "ssY" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 6
@@ -32426,7 +32426,7 @@ uYz
 uYz
 uYz
 wyy
-uYz
+ege
 kyq
 kyq
 kyq
@@ -32626,9 +32626,9 @@ uYz
 uYz
 pwO
 oPU
-fsW
-edq
-edq
+aBR
+nxk
+nxk
 iDV
 nae
 osx
@@ -32820,10 +32820,10 @@ uYz
 ueD
 xTE
 ueD
-fsW
+aBR
 ssy
 dVR
-edq
+nxk
 nTJ
 osx
 osx
@@ -33014,10 +33014,10 @@ iAC
 ueD
 uYz
 kTu
-fsW
-qof
-qof
-qof
+aBR
+byk
+byk
+byk
 osx
 osx
 lOT
@@ -33208,10 +33208,10 @@ ltc
 ueD
 uYz
 tzX
-fsW
+aBR
 qMK
 cAp
-edq
+nxk
 nTJ
 osx
 nTJ
