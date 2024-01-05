@@ -165,7 +165,7 @@
 		otherwise_self = SPAN_NOTICE("You start slicing [src] apart."),
 	)
 	log_construction(e_args, src, "started deconstructing")
-	if(!use_welder(I, e_args, flags, 7 SECONDS, 3))
+	if(!use_welder(I, e_args, flags, 7 SECONDS))
 		return TRUE
 	e_args.visible_feedback(
 		target = src,
