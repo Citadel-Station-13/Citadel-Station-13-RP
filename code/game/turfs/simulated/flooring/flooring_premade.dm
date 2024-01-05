@@ -292,6 +292,8 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/tiled/monotile)
 	icon_state = "reinforced"
 	initial_flooring = /singleton/flooring/reinforced
 
+CREATE_STANDARD_TURFS(/turf/simulated/floor/reinforced)
+
 /turf/simulated/floor/reinforced/airless
 	initial_gas_mix = GAS_STRING_VACUUM
 

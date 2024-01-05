@@ -31,6 +31,8 @@
 //A variant that will can be hidden underneath tiles similiar to pipes and such
 /obj/structure/transit_tube/hidden
 	level = 1
+	plane = TURF_PLANE
+	layer = BELOW_TURF_LAYER
 
 // A place where tube pods stop, and people can get in or out.
 // Mappers: use "Generate Instances from Directions" for this
