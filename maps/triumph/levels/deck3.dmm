@@ -9647,7 +9647,7 @@
 	icon_state = "0-4"
 	},
 /obj/structure/bed/chair{
-	dir = 1
+	dir = 4
 	},
 /obj/machinery/light{
 	dir = 8;
@@ -21011,7 +21011,6 @@
 /turf/simulated/floor/carpet/tealcarpet,
 /area/medical/patient_c)
 "qZM" = (
-/obj/machinery/computer/ship/sensors,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 9
 	},
@@ -24196,6 +24195,9 @@
 	},
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 1
+	},
+/obj/structure/panic_button{
+	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
@@ -27606,6 +27608,9 @@
 	},
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/blue/border,
+/obj/machinery/computer/ship/sensors{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/cockpit)
 "wCL" = (

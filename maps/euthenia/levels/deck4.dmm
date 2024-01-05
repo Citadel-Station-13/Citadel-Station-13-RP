@@ -3208,7 +3208,9 @@
 /turf/simulated/floor/plating,
 /area/space)
 "tY" = (
-/obj/machinery/mining/drill,
+/obj/machinery/mining/drill{
+	drill_id = 2
+	},
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_four/aft/port)
 "ub" = (
@@ -8165,8 +8167,11 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research/testingrange)
 "Yw" = (
-/turf/space,
-/area/space)
+/obj/machinery/mining/drill{
+	drill_id = 1
+	},
+/turf/simulated/floor/plating,
+/area/main_map/maintenance/deck_four/aft/port)
 "Yx" = (
 /obj/structure/closet/emcloset,
 /turf/simulated/floor/plating,
@@ -8811,7 +8816,7 @@ Za
 Za
 Za
 Za
-Yw
+Za
 Za
 "}
 (3,1,1) = {"
@@ -20520,7 +20525,7 @@ Dc
 ZI
 py
 Xu
-tY
+Yw
 tY
 Dc
 Dc
