@@ -24,6 +24,11 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	/// economic category of the reagent
 	var/economic_category_reagent = ECONOMIC_CATEGORY_REAGENT_DEFAULT
 
+	//* Effects
+	
+	/// effects, set to path = value to init
+	var/list/datum/reagent_effect/effects
+
 	//* Guidebook
 
 	/// guidebook flags
@@ -109,6 +114,9 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/wiki_category = "Miscellaneous"
 	/// forced sort ordering in its category - falls back to name otherwise.
 	var/wiki_sort = 0
+
+/datum/reagent/New()
+	#warn init effects
 
 /// Currently, on_mob_life is called on carbons. Any interaction with non-carbon mobs (lube) will need to be done in touch_mob.
 /datum/reagent/proc/on_mob_life(var/mob/living/carbon/M, var/alien, var/datum/reagent_holder/metabolism/location, speed_mult = 1, force_allow_dead)
@@ -244,15 +252,32 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 //* Application *//
 
 /**
- * called on splash or foam
+ * called on splash, foam, vapor, etc
  * 
  * @params
  * * target - what we were splashed into
  * * volume - amount
  * * data - data list
+ * * vapor - vapor application?
+ * 
+ * @return amount consumed
  */
-/datum/reagent/proc/touch_expose_object(obj/target, volume, list/data)
-	return
+/datum/reagent/proc/contact_expose_turf(turf/target, volume, list/data, vapor)
+	return 0
+
+/**
+ * called on splash, foam, vapor, etc
+ * 
+ * @params
+ * * target - what we were splashed into
+ * * volume - amount
+ * * data - data list
+ * * vapor - vapor application?
+ * 
+ * @return amount consumed
+ */
+/datum/reagent/proc/contact_expose_obj(obj/target, volume, list/data, vapor)
+	return 0
 
 /**
  * called on splash or foam; for foam, this is called repeatedly.
@@ -262,20 +287,11 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
  * * volume - amount
  * * data - data list
  * * organ_tag - the string tag of what organ this is localized on, if any; used for target splashing. if null, we can assume global.
+ * 
+ * @return amount consumed
  */
 /datum/reagent/proc/touch_expose_mob(mob/target, volume, list/data, organ_tag)
-	return
-
-/**
- * called on initial application of smoke onto an object
- * 
- * @params
- * * target - what we were splashed into
- * * volume - amount
- * * data - data list
- */
-/datum/reagent/proc/vapor_expose_object(obj/target, volume, list/data)
-	return
+	return 0
 
 /**
  * called per tick while we're being inhaled or a mob is being exposed to us
@@ -288,6 +304,8 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
  * * volume - amount
  * * data - data list
  * * inhaled - are we being inhaled? someone in a smoke cloud is exposed even if not inhaled, but inhales it if they're not on internals.
+ * 
+ * @return amount consumed
  */
 /datum/reagent/proc/vapor_expose_mob(mob/target, volume, list/data, inhaled)
 	return
@@ -385,3 +403,17 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
  */
 /datum/reagent/proc/mix_data(datum/reagent_holder/holder, list/current_data, current_amount, list/new_data, new_amount)
 	return
+
+#warn LINTER FODDER
+/datum/reagent/proc/affect_blood()
+	SHOULD_NOT_OVERRIDE(TRUE)
+/datum/reagent/proc/affect_touch()
+	SHOULD_NOT_OVERRIDE(TRUE)
+/datum/reagent/proc/affect_ingest()
+	SHOULD_NOT_OVERRIDE(TRUE)
+/datum/reagent/proc/touch_turf()
+	SHOULD_NOT_OVERRIDE(TRUE)
+/datum/reagent/proc/touch_obj()
+	SHOULD_NOT_OVERRIDE(TRUE)
+/datum/reagent/proc/touch_mob()
+	SHOULD_NOT_OVERRIDE(TRUE)

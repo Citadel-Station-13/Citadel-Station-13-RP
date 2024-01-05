@@ -7,18 +7,20 @@
 	color = "#673910"
 	touch_met = 50
 
-/datum/reagent/thermite/touch_turf(turf/T)
-	if(volume >= 5)
-		if(istype(T, /turf/simulated/wall))
-			var/turf/simulated/wall/W = T
-			W.thermite = 1
-			W.add_overlay(image('icons/effects/effects.dmi', icon_state = "#673910"))
-			remove_self(5)
-	return
+/datum/reagent/thermite/touch_expose_mob(mob/target, volume, list/data, organ_tag)
+	. = ..()
+	target.adjust_fire_stacks(volume / 5)
 
-/datum/reagent/thermite/touch_mob(mob/living/L, amount)
-	if(istype(L))
-		L.adjust_fire_stacks(amount / 5)
+/datum/reagent/thermite/contact_expose_object(obj/target, volume, list/data, vapor)
+	. = ..()
+	if(istype(target, /turf/simulated/wall))
+		// todo: refactor thermite
+		var/turf/simulated/wall/W = target
+		W.thermite = 1
+		W.add_overlay(image('icons/effects/effects.dmi', icon_state = "#673910"))
+		. += 5
 
-/datum/reagent/thermite/affect_blood(mob/living/carbon/M, alien, removed)
-	M.adjustFireLoss(3 * removed)
+/datum/reagent/thermite/on_metabolize_tick(mob/living/carbon/entity, application, datum/reagent_metabolism/metabolism, organ_tag, removed)
+	. = ..()
+	if(application == REAGENT_APPLY_INJECT)
+		entity.adjustFireLoss(3 * removed)
