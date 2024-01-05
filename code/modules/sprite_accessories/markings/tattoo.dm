@@ -289,14 +289,14 @@
 
 /datum/sprite_accessory/marking/tatoo/cheshire
 	name = "Tattoo (Cheshire, Right Head)"
-	id = "marking_tattoo_toshi_r"
-	icon_state = "tat_toshi_r"
+	id = "marking_tattoo_cheshire_r"
+	icon_state = "tat_cheshire_r"
 	body_parts = list(BP_HEAD)
 
 /datum/sprite_accessory/marking/tatoo/cheshire/left
 	name = "Tattoo (Cheshire, Left Head)"
-	id = "marking_tattoo_toshi_l"
-	icon_state = "tat_toshi_l"
+	id = "marking_tattoo_cheshire_l"
+	icon_state = "tat_cheshire_l"
 	body_parts = list(BP_HEAD)
 
 /datum/sprite_accessory/marking/tatoo/bindi
@@ -355,8 +355,8 @@
 
 /datum/sprite_accessory/marking/tatoo/belly
 	name = "Tattoo (Belly, Torso)"
-	id = "marking_tattoo_heart_back"
-	icon_state = "tat_heartback"
+	id = "marking_tattoo_belly"
+	icon_state = "tat_belly"
 	body_parts = list(BP_TORSO)
 
 /datum/sprite_accessory/marking/tatoo/neck
