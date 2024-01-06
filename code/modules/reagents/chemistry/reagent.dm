@@ -17,8 +17,6 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/id
 	/// reagent flags - see [code/__DEFINES/reagents/flags.dm]
 	var/reagent_flags = NONE
-	/// reagent categorization flags - see [code/__DEFINES/reagents/flags.dm]
-	var/reagent_category_flags = NONE
 
 	//* Application
 
@@ -59,6 +57,8 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	/// defaults to [desc]
 	/// overrides desc in guidebook
 	var/display_description
+	/// how hard it is to detect this reagent
+	var/scan_difficulty = REAGENT_SCAN_DIFFICULTY_ANALYZER
 
 	//* Metabolism
 	
@@ -395,7 +395,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 //* Data *//
 
 /**
- * Called when we're being added to something for the first time
+ * Called when we're being added to something for the first time, and force_data isn't set on add_reagent
  *
  * @params
  * * holder - (optional) the holder we're going in, if any.
@@ -522,9 +522,9 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
  *
  * @params
  * * holder - (optional) the holder we're mixing in, if any.
- * * current_data - our current data. not necessarily a list, only typecasted to one.
+ * * current_data - our current data.
  * * current_amount - our current amount
- * * new_data - new inbound data. not necessarily a list, only typedcasted to one.
+ * * new_data - (optional) new inbound data. this is null if force_data is not specified on add_reagent, and it isn't a holder to holder transfer!
  * * new_amount - the amount that's coming in, not what we will be at after mixing.
  */
 /datum/reagent/proc/mix_data(datum/reagent_holder/holder, list/current_data, current_amount, list/new_data, new_amount)

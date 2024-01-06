@@ -13,14 +13,6 @@
 
 // todo: define bitfield
 
-//? flags for /datum/reagent/var/reagent_category_flags
-
-#define REAGENT_CATEGORY_MEDICINE (1<<0)
-#define REAGENT_CATEGORY_TOXIN (1<<1)
-
-
-// todo: define bitfield
-
 //? flags for /datum/reagent/var/reagent_guidebook_flags
 
 /// doesn't show in guidebook reagent list

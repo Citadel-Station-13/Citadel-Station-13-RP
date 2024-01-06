@@ -277,6 +277,7 @@
 #include "code\__DEFINES\radiation\simulation.dm"
 #include "code\__DEFINES\reagents\chemistry.dm"
 #include "code\__DEFINES\reagents\flags.dm"
+#include "code\__DEFINES\reagents\reagents.dm"
 #include "code\__DEFINES\rendering\alert.dm"
 #include "code\__DEFINES\rendering\ao.dm"
 #include "code\__DEFINES\rendering\atom_huds.dm"

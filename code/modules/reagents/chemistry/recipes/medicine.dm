@@ -34,7 +34,7 @@
 /datum/chemical_reaction/peridaxon
 	name = "Peridaxon"
 	id = "peridaxon"
-	result = /datum/reagent/medicine/peridaxon
+	result = /datum/reagent/peridaxon
 	required_reagents = list(
 		/datum/reagent/bicaridine = 2,
 		/datum/reagent/clonexadone = 2,

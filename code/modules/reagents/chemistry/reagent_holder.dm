@@ -62,11 +62,42 @@
 //* Add / Remove *//
 
 /**
+ * please do not specify force_data unless you know what you are doing.
+ * 
  * @return amount added
  */
-/datum/reagent_holder/proc/add_reagent(datum/reagent/reagentlike, amount, list/data, temperature, defer_recalc)
-	#warn impl
+/datum/reagent_holder/proc/add_reagent(datum/reagent/reagentlike, amount, temperature, defer_recalc, list/force_data)
 	#warn audit data?
+	// we only care about id
+	if(ispath(reagentlike))
+		reagentlike = initial(reagentlike.id)
+	else if(!istext(reagentlike))
+		reagentlike = reagentlike.id
+		
+	var/datum/reagent/resolved = SSchemistry.fetch_reagent(reagentlike)
+	var/id = resolved.id
+
+	amount = min(amount, maximum_volume - total_volume)
+	
+	if(amount <= 0)
+		return 0
+	
+	var/existing_amount = reagent_volumes[id]
+
+	if(existing_amount)
+		LAZYSET(reagent_datas, id, resolved.mix_data(src, reagent_datas[id], existing_amount, force_data, amount))
+		reagent_volumes[id] += amount
+	else
+		if(isnull(force_data))
+			force_data = resolved.init_data(src, amount)
+		LAZYSET(reagent_datas, id, force_data)
+		reagent_volumes[id] = amount
+	
+	if(!defer_recalc)
+		update_total()
+		consider_reactions()
+	
+	attached?.on_reagent_change()
 	
 /**
  * @return amount removed
@@ -74,18 +105,22 @@
 /datum/reagent_holder/proc/remove_reagent(datum/reagent/reagentlike, amount, defer_recalc)
 	#warn impl
 
+	attached?.on_reagent_change()
+
 /datum/reagent_holder/proc/remove_any(amount)
 	if(amount >= total_volume)
 		for(var/id in reagent_volumes)
-			remove_reagent(id, defer_reactions = TRUE)
+			remove_reagent(id, defer_recalc = TRUE)
 		. = total_volume
 		update_total()
+		attached?.on_reagent_change()
 		return
 	var/ratio = amount / total_volume
 	for(var/id in reagent_volumes)
 		remove_reagent(id, reagent_volumes[id] * ratio, defer_recalc = TRUE)
 	update_total()
 	consider_reactions()
+	attached?.on_reagent_change()
 	return amount
 
 /datum/reagent_holder/proc/isolate_reagent(datum/reagent/reagentlike)
@@ -104,6 +139,7 @@
 	if(.)
 		update_total()
 		consider_reactions()
+		attached?.on_reagent_change()
 
 /datum/reagent_holder/proc/clear()
 	return remove_any(total_volume)
@@ -131,7 +167,7 @@
 	. = INFINITY
 	for(var/i in 1 to length(reagents))
 		var/datum/reagent/reagentlike = reagents[i]
-		var/amount = reagents[amount]
+		var/amount = reagents[reagentlike]
 		if(ispath(reagentlike))
 			reagentlike = initial(reagentlike.id)
 		else if(!istext(reagentlike))
@@ -146,7 +182,7 @@
 /datum/reagent_holder/proc/has_all_reagents(list/reagents)
 	for(var/i in 1 to length(reagents))
 		var/datum/reagent/reagentlike = reagents[i]
-		var/amount = reagents[amount]
+		var/amount = reagents[reagentlike]
 		if(ispath(reagentlike))
 			reagentlike = initial(reagentlike.id)
 		else if(!istext(reagentlike))
@@ -163,7 +199,7 @@
 /datum/reagent_holder/proc/has_any_reagent(list/reagents)
 	for(var/i in 1 to length(reagents))
 		var/datum/reagent/reagentlike = reagents[i]
-		var/amount = reagents[amount]
+		var/amount = reagents[reagentlike]
 		if(ispath(reagentlike))
 			reagentlike = initial(reagentlike.id)
 		else if(!istext(reagentlike))
@@ -316,49 +352,6 @@
 	update_total()
 
 /* Holder-to-chemical */
-
-/datum/reagent_holder/proc/add_reagent(id, amount, data = null, safety = 0)
-	if(ispath(id))
-		var/datum/reagent/accessing = id
-		id = initial(accessing.id)
-
-	if(!isnum(amount) || amount <= 0)
-		return 0
-
-	update_total()
-	amount = min(amount, available_volume())
-
-	for(var/datum/reagent/current in reagent_list)
-		if(current.id == id)
-			if(current.id == "blood")
-				if(data && !isnull(data["species"]) && !isnull(current.data["species"]) && data["species"] != current.data["species"])	// Species bloodtypes are already incompatible, this just stops it from mixing into the one already in a container.
-					continue
-
-			current.volume += amount
-			if(!isnull(data)) // For all we know, it could be zero or empty string and meaningful
-				current.mix_data(src, current.data, current.volume, data, amount)
-			update_total()
-			if(!safety)
-				handle_reactions()
-			if(my_atom)
-				my_atom.on_reagent_change()
-			return 1
-	var/datum/reagent/D = SSchemistry.reagent_lookup[id]
-	if(D)
-		var/datum/reagent/R = new D.type()
-		reagent_list += R
-		R.holder = src
-		R.volume = amount
-		R.initialize_data(data)
-		update_total()
-		if(!safety)
-			handle_reactions()
-		if(my_atom)
-			my_atom.on_reagent_change()
-		return 1
-	else
-		stack_trace("[my_atom] attempted to add a reagent called '[id]' which doesn't exist. ([usr])")
-	return 0
 
 /datum/reagent_holder/proc/remove_reagent(id, amount, safety = 0)
 	if(ispath(id))
