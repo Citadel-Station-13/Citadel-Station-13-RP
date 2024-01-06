@@ -17,6 +17,8 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/id
 	/// reagent flags - see [code/__DEFINES/reagents/flags.dm]
 	var/reagent_flags = NONE
+	/// reagent categorization flags - see [code/__DEFINES/reagents/flags.dm]
+	var/reagent_category_flags = NONE
 
 	//* Application
 

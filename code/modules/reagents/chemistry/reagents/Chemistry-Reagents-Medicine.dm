@@ -1,3 +1,8 @@
+/datum/reagent/medicine
+	abstract_type = /datum/reagent/medicine
+	bloodstream_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
+	reagent_category_flags = REAGENT_CATEGORY_MEDICINE
+
 /* General medicine */
 /datum/reagent/vermicetol//Moved from Chemistry-Reagents-Medicine_vr.dm
 	name = "Vermicetol"
@@ -237,7 +242,7 @@
 			if(E.damage <= 5 && E.organ_tag == O_EYES)
 				H.sdisabilities &= ~SDISABILITY_NERVOUS
 
-/datum/reagent/peridaxon
+/datum/reagent/medicine/peridaxon
 	name = "Peridaxon"
 	id = "peridaxon"
 	description = "Used to encourage recovery of internal organs and nervous systems. Medicate cautiously."
@@ -247,7 +252,7 @@
 	overdose_threshold = 10
 	scannable = 1
 
-/datum/reagent/peridaxon/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/medicine/peridaxon/affect_blood(mob/living/carbon/M, alien, removed)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		for(var/obj/item/organ/I in H.internal_organs)
@@ -289,7 +294,7 @@
 			if(prob(33))
 				H.Confuse(10)
 
-/datum/reagent/osteodaxon
+/datum/reagent/medicine/osteodaxon
 	name = "Osteodaxon"
 	id = "osteodaxon"
 	description = "An experimental drug used to heal bone fractures."
@@ -299,7 +304,7 @@
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 0.5
 	scannable = 1
 
-/datum/reagent/osteodaxon/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/medicine/osteodaxon/affect_blood(mob/living/carbon/M, alien, removed)
 	if(alien == IS_DIONA)
 		return
 	M.heal_organ_damage(3 * removed, 0)	//Gives the bones a chance to set properly even without other meds
@@ -311,7 +316,7 @@
 				H.custom_pain("You feel a terrible agony tear through your bones!",60)
 				H.adjust_paralyzed(20 * 1)		//Bones being regrown will knock you over
 
-/datum/reagent/myelamine
+/datum/reagent/medicine/myelamine
 	name = "Myelamine"
 	id = "myelamine"
 	description = "Used to rapidly clot internal hemorrhages by increasing the effectiveness of platelets."
@@ -322,7 +327,7 @@
 	scannable = 1
 	var/repair_strength = 3
 
-/datum/reagent/myelamine/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/medicine/myelamine/affect_blood(mob/living/carbon/M, alien, removed)
 	if(alien == IS_DIONA)
 		return
 	M.eye_blurry += min(M.eye_blurry + (repair_strength * removed), 250)

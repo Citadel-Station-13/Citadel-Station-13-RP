@@ -37,8 +37,6 @@
 /// Don't puke.
 #define CHEMICAL_EFFECT_ANTACID "nopuke"
 
-#warn add some
-
 //* Metabolism *//
 
 #define REAGENT_METABOLISM_NORMAL 0.2

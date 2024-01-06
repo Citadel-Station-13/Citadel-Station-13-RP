@@ -61,7 +61,7 @@
 	start_reagent = /datum/reagent/tricordrazine
 
 /obj/item/reagent_containers/glass/hypovial/peridaxon
-	start_reagent = /datum/reagent/peridaxon
+	start_reagent = /datum/reagent/medicine/peridaxon
 
 /obj/item/reagent_containers/glass/hypovial/tramadol
 	start_reagent = /datum/reagent/tramadol
@@ -102,7 +102,7 @@
 	start_reagent = /datum/reagent/tricordrazine
 
 /obj/item/reagent_containers/glass/hypovial/large/peridaxon
-	start_reagent = /datum/reagent/peridaxon
+	start_reagent = /datum/reagent/medicine/peridaxon
 
 /obj/item/reagent_containers/glass/hypovial/large/tramadol
 	start_reagent = /datum/reagent/tramadol
