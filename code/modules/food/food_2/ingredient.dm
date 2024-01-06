@@ -25,6 +25,11 @@
 
 	//should be everything for now
 
+/obj/item/reagent_containers/food/snacks/ingredient/Initialize(mapload)
+	. = ..()
+	var/datum/reagent/nutriment/our_nutrient = reagents.get_reagent("nutriment")
+	our_nutrient.data = list()
+	our_nutrient.data[cookstage_information[RAW][COOKINFO_TASTE]] = serving_amount
 
 /obj/item/reagent_containers/food/snacks/ingredient/examine(mob/user, dist)
 	. = ..()
@@ -53,6 +58,7 @@
 		var/final_ratio = amount/serving_amount
 		serving_amount -= amount
 		var/obj/item/reagent_containers/food/snacks/ingredient/split_ingredient = new type(src)
+		split_ingredient.cookstage = cookstage
 		split_ingredient.accumulated_time_cooked = accumulated_time_cooked
 		split_ingredient.reagents.clear_reagents() //so we aren't making it taste raw on init
 		split_ingredient.reagents.trans_to_holder(reagents, reagents.total_volume * final_ratio, 1, TRUE)
@@ -61,6 +67,16 @@
 		to_chat(user, SPAN_NOTICE("You split off [src]."))
 	else
 		to_chat(user, SPAN_WARNING("There's not enough serves in the [src]!"))
+
+/obj/item/reagent_containers/food/snacks/ingredient/initialize_slice(obj/item/reagent_containers/food/snacks/slice, reagents_per_slice)
+	reagents.trans_to_obj(slice, reagents_per_slice)
+	if(name != initial(name))
+		slice.name = "slice of [name]"
+	if(desc != initial(desc))
+		slice.desc = "[desc]"
+	var/obj/item/reagent_containers/food/snacks/ingredient/slice_ingredient = slice
+	slice_ingredient.cookstage = cookstage
+	slice_ingredient.accumulated_time_cooked = min(slice_ingredient.cookstage_information[cookstage][COOKINFO_TIME], accumulated_time_cooked)
 
 
 /obj/item/reagent_containers/food/snacks/ingredient/proc/process_cooked(var/time_cooked, var/heat_level, var/cook_method)
@@ -82,7 +98,6 @@
 		our_nutrient.data[cookstage_information[cookstage][COOKINFO_TASTE]] = serving_amount
 		if(istype(loc, /obj/item/reagent_containers/food_holder))
 			var/turf/T = get_turf(src)
-			T.visible_message("The [src] is checking recipe completion in [loc]")
 			var/obj/item/reagent_containers/food_holder/FH = loc
 			FH.check_recipe_completion()
 		on_cooked(cookstage, cook_method)
@@ -138,7 +153,7 @@
 	if(serving_amount <= 0)
 		qdel(src)
 
-/obj/item/reagent_containers/food/snacks/ingredient/plant
+/obj/item/reagent_containers/food/snacks/ingredient/plant //for testing, delete before merge
 	name = "plant based generic ingredient"
 	desc = "This is a generic ingredient. It's so perfectly generic you're having a hard time even looking at it."
 	icon_state = "loadedbakedpotato"
@@ -148,3 +163,34 @@
 	//these are defines, so to get the taste of a raw slab of meat you would do cookstage_information[RAW][COOKINFO_TASTE]
 	cookstage_information = list(list(0, 0.5, "raw vegetable"), list(4 SECONDS, 1.2, "cooked vegetable"), list(16 SECONDS, 0.9, "mushy vegetable"), list(20 SECONDS, 0.1, "charcoal vegetable"))
 	//how much cooking time (effective) have we accumulated
+
+/obj/item/reagent_containers/food/snacks/ingredient/transformable
+	name = "transforming generic ingredient"
+	var/list/transform_list = list(METHOD_STOVE = /obj/item/reagent_containers/food/snacks/ingredient, METHOD_OVEN = /obj/item/reagent_containers/food/snacks/ingredient) //example
+	var/obj/item/reagent_containers/food/snacks/fallback_create = /obj/item/reagent_containers/food/snacks/ingredient
+
+
+/obj/item/reagent_containers/food/snacks/ingredient/transformable/on_cooked(reached_stage, cook_method)
+	if(reached_stage == COOKED)
+		var/obj/item/reagent_containers/food/snacks/create_item
+		if(cook_method in transform_list)
+			create_item = transform_list[cook_method]
+		else 
+			create_item = fallback_create
+		create_item = new(loc)
+		reagents.del_reagent("nutriment") //remove nutrient so we dont get weird tastes
+		create_item.reagents.trans_to_holder(reagents, reagents.total_volume, 1, TRUE)
+		if(istype(create_item, /obj/item/reagent_containers/food/snacks/ingredient))
+			var/obj/item/reagent_containers/food/snacks/ingredient/create_ingredient = create_item
+			create_ingredient.accumulated_time_cooked = accumulated_time_cooked
+			create_ingredient.cookstage = cookstage
+			var/datum/reagent/nutriment/our_nutrient = create_ingredient.reagents.get_reagent("nutriment")
+			our_nutrient.data = list()
+			our_nutrient.data[create_ingredient.cookstage_information[cookstage][COOKINFO_TASTE]] = serving_amount
+		qdel(src)
+	return
+
+
+/obj/item/reagent_containers/food/snacks/ingredient/slice
+	slice_path = null //not further sliceable
+	bitesize = 2 //smol

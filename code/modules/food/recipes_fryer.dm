@@ -1,6 +1,6 @@
 
 
-/*
+
 /datum/recipe/fries
 	appliance = FRYER
 	items = list(

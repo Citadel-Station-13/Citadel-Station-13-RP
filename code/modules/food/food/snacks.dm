@@ -40,13 +40,24 @@
 		M.visible_message("<span class='notice'>[M] finishes eating \the [src].</span>","<span class='notice'>You finish eating \the [src].</span>")
 		M.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 		if(trash)
-			if(ispath(trash,/obj/item))
-				var/obj/item/TrashItem = new trash(M)
-				if(!M.put_in_hands(TrashItem))
-					TrashItem.forceMove(M.drop_location())
-			else if(istype(trash,/obj/item))
-				M.put_in_hands(trash)
+			var/obj/item/TrashItem = generate_trash(src)
+			if(!M.put_in_hands(TrashItem))
+				TrashItem.forceMove(M.drop_location())
 		qdel(src)
+
+
+/obj/item/reagent_containers/food/snacks/proc/generate_trash(atom/location)
+	if(trash)
+		if(ispath(trash, /obj/item))
+			. = new trash(location)
+			trash = null
+			return
+		else if(isitem(trash))
+			var/obj/item/trash_item = trash
+			trash_item.forceMove(location)
+			. = trash
+			trash = null
+			return
 
 /obj/item/reagent_containers/food/snacks/attack_self(mob/user)
 	. = ..()
@@ -211,7 +222,7 @@
 				qdel(src)
 			return
 
-	if (is_sliceable())
+	if(slices_num && slice_path && slices_num > 0)
 		//these are used to allow hiding edge items in food that is not on a table/tray
 		var/can_slice_here = isturf(loc) && ((locate(/obj/structure/table) in loc) || (locate(/obj/machinery/optable) in loc) || (locate(/obj/item/tray) in loc))
 		var/hide_item = !has_edge(W) || !can_slice_here
@@ -245,8 +256,20 @@
 			qdel(src)
 			return
 
-/obj/item/reagent_containers/food/snacks/proc/is_sliceable()
-	return (slices_num && slice_path && slices_num > 0)
+	if(istype(W,/obj/item/material/kitchen/rollingpin))
+		try_flatten(user)
+		return
+
+/obj/item/reagent_containers/food/snacks/proc/try_flatten(mob/user)
+	return
+
+
+/obj/item/reagent_containers/food/snacks/proc/initialize_slice(obj/item/reagent_containers/food/snacks/slice, reagents_per_slice)
+	reagents.trans_to_obj(slice, reagents_per_slice)
+	if(name != initial(name))
+		slice.name = "slice of [name]"
+	if(desc != initial(desc))
+		slice.desc = "[desc]"
 
 /obj/item/reagent_containers/food/snacks/Destroy()
 	if(contents)
@@ -269,6 +292,17 @@
 			user.custom_emote(1,"[pick("burps", "cries for more", "burps twice", "looks at the area where the food was")]")
 			qdel(src)
 	On_Consume(user)
+
+/obj/item/reagent_containers/food/snacks/proc/update_snack_overlays(obj/item/reagent_containers/food/snacks/S)
+	cut_overlays()
+	var/mutable_appearance/filling = mutable_appearance(icon, "[initial(icon_state)]_filling")
+	if(S.filling_color == "#FFFFFF")
+		filling.color = pick("#FF0000","#0000FF","#008000","#FFFF00")
+	else
+		filling.color = S.filling_color
+
+	add_overlay(filling)
+
 
 //////////////////////////////////////////////////
 ////////////////////////////////////////////Snacks
