@@ -150,8 +150,6 @@
 		var/obj/item/book/affectedbook = O
 		affectedbook.dat = null
 		to_chat(usr, "<span class='notice'>The solution dissolves the ink on the book.</span>")
-	return
-
 
 /datum/reagent/acid
 	name = "Sulphuric acid"

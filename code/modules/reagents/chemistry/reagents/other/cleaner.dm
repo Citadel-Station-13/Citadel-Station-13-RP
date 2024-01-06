@@ -5,7 +5,6 @@
 	taste_description = "sourness"
 	reagent_state = REAGENT_LIQUID
 	color = "#A5F0EE"
-	touch_met = 50
 
 /datum/reagent/space_cleaner/contact_expose_obj(obj/target, volume, list/data, vapor)
 	. = ..()

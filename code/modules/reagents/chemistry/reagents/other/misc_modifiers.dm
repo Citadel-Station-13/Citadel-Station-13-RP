@@ -28,7 +28,6 @@
 	description = "An incredibly strange liquid that rapidly absorbs thermal energy from materials it contacts."
 	taste_description = "siberian hellscape"
 	color = "#4CDBDB"
-	metabolism = REM * 0.5
 
 	modifier_to_add = /datum/modifier/cryogelled
 	modifier_duration = 3 SECONDS
@@ -48,8 +47,8 @@
 	var/mob/living/M = target
 	if(isliving(M))
 		var/mob/living/L = M
-		for(var/I = 1 to rand(1, round(amount + 1)))
-			L.add_modifier(modifier_to_add, amount * rand(modifier_duration / 2, modifier_duration * 2))
+		for(var/I = 1 to rand(1, round(volume + 1)))
+			L.add_modifier(modifier_to_add, volume * rand(modifier_duration / 2, modifier_duration * 2))
 
 /datum/reagent/modapplying/cryofluid/contact_expose_turf(turf/target, volume, list/data, vapor)
 	. = ..()
