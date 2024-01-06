@@ -19,6 +19,24 @@
 //* Legacy chemical effect defines, they get flagged on a mob as necessary during metabolism, and is reset every tick
 //* We prefer reagent effect datums over this.
 
+/// Inaprovaline
+#define CE_STABLE "stable"
+/// Antibiotics
+#define CE_ANTIBIOTIC "antibiotic"
+/// Iron/nutriment
+#define CE_BLOODRESTORE "bloodrestore"
+#define CE_PAINKILLER "painkiller"
+/// Liver filtering
+#define CE_ALCOHOL "alcohol"
+/// Liver damage
+#define CE_ALCOHOL_TOXIC "alcotoxic"
+/// Hyperzine
+#define CE_SPEEDBOOST "gofast"
+/// Slowdown
+#define CE_SLOWDOWN "goslow"
+/// Don't puke.
+#define CE_ANTACID "nopuke"
+
 #warn add some
 
 //* Metabolism *//

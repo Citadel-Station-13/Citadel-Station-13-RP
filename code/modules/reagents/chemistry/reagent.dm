@@ -18,6 +18,17 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	/// reagent flags - see [code/__DEFINES/reagents/flags.dm]
 	var/reagent_flags = NONE
 
+	//* Application
+
+	/// default % of volume that gets absorbed into dermal on splash *or* vapor application
+	/// 0 to 1
+	var/default_dermal_absorption = 0
+	// todo: default_dermal_biologies
+	/// default % of volume that gets absorbed into bloodstream on inhale
+	/// 0 to 1
+	var/default_inhale_absorption = 1
+	// todo: default_inhale_biologies
+
 	//* Economy *//
 	
 	/// Raw intrinsic worth of this reagent
@@ -50,7 +61,21 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	//* Metabolism
 	
 	/// multiplier to units metabolized, base.
-	var/metabolism_multiplier = 1
+	var/bloodstream_metabolism_multiplier = 1
+	/// multiplier to units metabolized, base.
+	var/ingested_metabolism_multiplier = 1
+	/// multiplier to units metabolized, base.
+	var/dermal_metabolism_multiplier = 1
+	
+	/// relative ease of reagent being absorbed into bloodstream from ingested
+	var/ingested_absorption_multiplier = 1
+	/// relative ease of reagent being absorbed into bloodstream from dermal
+	var/dermal_absorption_multiplier = 1
+	
+	/// relative multiplier for how well this chemical is destroyed / eliminated without absorption in ingested
+	var/ingested_elimination_multiplier = 1
+	/// relative multiplier for how well this chemical is destroyed / eliminated without absorption in dermal layers
+	var/dermal_elimination_multiplier = 1
 
 	/// amount at which overdose begins; null for none.
 	/// 
@@ -442,6 +467,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 			entity.adjustToxLoss(removed * overdose_toxin_scaling)
 	#warn rework above
 	#warn hook
+	return removed
 
 /**
  * Called on life ticks during mob metabolism.
