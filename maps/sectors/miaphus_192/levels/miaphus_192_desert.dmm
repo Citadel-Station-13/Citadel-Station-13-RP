@@ -3,12 +3,6 @@
 /obj/random/outcrop,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/tether_away/beach/desert/explored)
-"dd" = (
-/obj/machinery/light/small/flicker{
-	dir = 4
-	},
-/turf/simulated/floor/outdoors/beach/sand/desert,
-/area/tether_away/beach/desert/explored)
 "ej" = (
 /obj/random/trash,
 /turf/simulated/floor/outdoors/beach/sand/desert,
@@ -36156,7 +36150,7 @@ II
 Dc
 kK
 kK
-dd
+CM
 Nx
 Nx
 Nx
