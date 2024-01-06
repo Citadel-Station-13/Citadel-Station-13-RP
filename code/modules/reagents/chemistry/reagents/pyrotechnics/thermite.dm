@@ -21,7 +21,6 @@
 		W.add_overlay(image('icons/effects/effects.dmi', icon_state = "#673910"))
 		. += 5
 
-/datum/reagent/thermite/on_metabolize_tick(mob/living/carbon/entity, application, datum/reagent_metabolism/metabolism, organ_tag, list/data, removed)
+/datum/reagent/thermite/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	if(application == REAGENT_APPLY_INJECT)
-		entity.adjustFireLoss(3 * removed)
+	entity.adjustFireLoss(3 * removed)

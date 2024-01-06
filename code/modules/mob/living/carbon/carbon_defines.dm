@@ -24,7 +24,6 @@
 	var/datum/surgery_status/op_stage = new/datum/surgery_status
 	//Active emote/pose
 	var/pose = null
-	var/list/chem_effects = list()
 	
 	#warn uhh
 	var/datum/reagent_holder/metabolism/bloodstream/bloodstr = null
@@ -39,8 +38,16 @@
 	var/last_taste_time = 0
 	var/last_taste_text = ""
 
-	//* Reagent
+	//* Reagent Metabolism
 
 	/// reagent biologies we count as
 	var/list/reagent_biologies = list()
-	#warn add/remove proc
+	/// this tick's overall CHEMICAL_EFFECT defines
+	/// this is mostly a legacy system we still keep around,
+	/// as sometimes snowflake flags are useful
+	var/list/reagent_cycle_effects
+	/// our bloodstream metabolism holder
+	var/datum/reagent_holder/metabolism/bloodstream/reagents_bloodstream
+	/// for now, this is on /carbon, later, it should be an organ
+	/// oh and funny shit should happen if you eat stuff without a stomach :^)
+	var/datum/reagent_holder/metabolism/ingested/reagents_ingested

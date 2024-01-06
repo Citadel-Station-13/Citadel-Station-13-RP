@@ -25,17 +25,6 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	/// economic category of the reagent
 	var/economic_category_reagent = ECONOMIC_CATEGORY_REAGENT_DEFAULT
 
-	//* Effects
-
-	/// path = number, converted to instance on init. number multiplied by amount removed.
-	///
-	/// only applied while in bloodstream
-	var/list/datum/reagent_effect/effects
-	/// path = number, converted to instance on init. number multiplied by amount removed.
-	///
-	/// only applied while in bloodstream
-	var/list/datum/reagent_effect/effects_overdose
-	
 	//* Guidebook
 
 	/// guidebook flags
@@ -66,17 +55,47 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	/// amount at which overdose begins; null for none.
 	/// 
 	/// only applies to bloodstream
-	var/overdose_threshold
+	var/bloodstream_overdose_threshold
 	/// multiplier to units while overdosing; compounded with base
 	/// 
 	/// only applies to bloodstream
-	var/overdose_metabolism_multiplier = 1
+	var/bloodstream_overdose_metabolism_multiplier = 1
 	/// tox damage per unit metabolised when overdosing
 	/// this is on top of any reagent effects, as this is the standard toxins damage
 	/// this will be replaced someday.
 	/// 
 	/// only applies to bloodstream
-	var/overdose_toxin_scaling = 2
+	var/bloodstream_overdose_toxin_scaling = 2
+
+	/// amount at which overdose begins; null for none.
+	/// 
+	/// only applies to ingested
+	var/ingested_overdose_threshold
+	/// multiplier to units while overdosing; compounded with base
+	/// 
+	/// only applies to ingested
+	var/ingested_overdose_metabolism_multiplier = 1
+	/// tox damage per unit metabolised when overdosing
+	/// this is on top of any reagent effects, as this is the standard toxins damage
+	/// this will be replaced someday.
+	/// 
+	/// only applies to ingested
+	var/ingested_overdose_toxin_scaling = 2
+
+	/// amount at which overdose begins; null for none.
+	/// 
+	/// only applies to dermal
+	var/dermal_overdose_threshold
+	/// multiplier to units while overdosing; compounded with base
+	/// 
+	/// only applies to dermal
+	var/dermal_overdose_metabolism_multiplier = 1
+	/// tox damage per unit metabolised when overdosing
+	/// this is on top of any reagent effects, as this is the standard toxins damage
+	/// this will be replaced someday.
+	/// 
+	/// only applies to dermal
+	var/dermal_overdose_toxin_scaling = 2
 
 	//* Properties
 
@@ -269,6 +288,9 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 /**
  * called on splash, foam, vapor, etc
  * 
+ * This is generally only called once on entry/expose, and only re-called if an object leaves and re-enters.
+ * Please ensure all ticked effects & callers handle this accordingly.
+ * 
  * @params
  * * target - what we were splashed into
  * * volume - amount
@@ -282,6 +304,9 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 
 /**
  * called on splash, foam, vapor, etc
+ * 
+ * This is generally only called once on entry/expose, and only re-called if an object leaves and re-enters.
+ * Please ensure all ticked effects & callers handle this accordingly.
  * 
  * @params
  * * target - what we were splashed into
@@ -323,7 +348,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
  * @return amount consumed
  */
 /datum/reagent/proc/vapor_expose_mob(mob/target, volume, list/data, inhaled)
-	return
+	return 0
 
 /**
  * Called when something is trying to inject / add us into a metabolized holder
@@ -421,7 +446,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 /**
  * Called on life ticks during mob metabolism.
  * 
- * This is usually used for ingestion into stomachs
+ * This is usually used for ingestion into stomachs, but can technically be adapted otherwise.
  * 
  * @params
  * * entity - the victim
@@ -432,7 +457,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
  * 
  * @return amount actually used
  */
-/datum/reagent/proc/on_metabolize_internal(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed, obj/item/organ/internal/container)	
+/datum/reagent/proc/on_metabolize_ingested(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed, obj/item/organ/internal/container)	
 	if(metabolism.overdosing)
 		// default overdose effects
 		if(overdose_toxin_scaling)

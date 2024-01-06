@@ -8,16 +8,6 @@
 	if (!default_language && species_language)
 		default_language = SScharacters.resolve_language_name(species_language)
 
-/mob/living/carbon/BiologicalLife(seconds, times_fired)
-	if((. = ..()))
-		return
-
-	handle_viruses()
-
-	// Increase germ_level regularly
-	if(germ_level < GERM_LEVEL_AMBIENT && prob(30))	//if you're just standing there, you shouldn't get more germs beyond an ambient level
-		germ_level++
-
 /mob/living/carbon/Destroy()
 	qdel(ingested)
 	qdel(touching)
