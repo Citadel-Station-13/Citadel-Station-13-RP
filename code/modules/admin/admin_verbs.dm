@@ -1120,6 +1120,8 @@ var/list/admin_verbs_event_manager = list(
 	var/list/client/eligible = GLOB.clients.Copy()
 	for(var/i in eligible)
 		var/client/C = i
+		if(!C.initialized)
+			eligible -= C
 		if(!isliving(C.mob))
 			eligible -= C
 	for(var/role in GLOB.event_role_list)

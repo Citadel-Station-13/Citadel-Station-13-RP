@@ -35,6 +35,8 @@ SUBSYSTEM_DEF(throwing)
 
 	currentrun = null
 
+// todo: the landing stack kinda sucks ass and needs to be unit tested and rewritten
+
 /datum/thrownthing
 	//! important stuff
 	/// thing we threw
@@ -349,6 +351,10 @@ SUBSYSTEM_DEF(throwing)
 	// hit our target if we haven't already
 	if(!impacted[target] && (target in get_turf(A)))
 		impact(target, TRUE)
+
+	// we got terminated already
+	if(finished)
+		return
 
 	// land
 	thrownthing._throw_finalize(A, src)

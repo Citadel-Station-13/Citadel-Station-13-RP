@@ -243,7 +243,6 @@
 	var/turf/T = src.loc
 
 	src.loc = null
-
 	src.loc = T
 
 /// See inventory_sizes.dm for the defines.
