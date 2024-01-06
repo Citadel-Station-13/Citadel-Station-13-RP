@@ -3,6 +3,16 @@
 /obj/random/outcrop,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/tether_away/beach/desert/explored)
+"dd" = (
+/obj/machinery/light/small/flicker{
+	dir = 4
+	},
+/turf/simulated/floor/outdoors/beach/sand/desert,
+/area/tether_away/beach/desert/explored)
+"ej" = (
+/obj/random/trash,
+/turf/simulated/floor/outdoors/beach/sand/desert,
+/area/tether_away/beach/desert/explored)
 "eI" = (
 /turf/simulated/floor/water/shoreline{
 	dir = 8
@@ -208,10 +218,7 @@
 /area/tether_away/beach/desert/unexplored)
 "Kt" = (
 /obj/item/bone/skull/tajaran,
-/turf/simulated/floor/plating/external,
-/area/tether_away/beach/desert/explored)
-"LF" = (
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/tether_away/beach/desert/explored)
 "Mc" = (
 /obj/machinery/light/small/flicker{
@@ -229,12 +236,12 @@
 /area/tether_away/beach/desert/explored)
 "Mv" = (
 /obj/random/trash,
-/turf/simulated/floor/plating/external,
+/turf/simulated/mineral/ignore_mapgen,
 /area/tether_away/beach/desert/explored)
 "Nx" = (
 /obj/random/humanoidremains,
 /obj/effect/debris/cleanable/blood,
-/turf/simulated/floor/tiled/external,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/tether_away/beach/desert/explored)
 "NW" = (
 /obj/machinery/light/small,
@@ -248,15 +255,7 @@
 	pixel_x = 5;
 	pixel_y = 7
 	},
-/turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/explored)
-"OI" = (
-/turf/simulated/floor/tiled/external,
-/area/tether_away/beach/desert/explored)
-"OO" = (
-/obj/random/humanoidremains,
-/obj/effect/debris/cleanable/blood,
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/outdoors/beach/sand/desert,
 /area/tether_away/beach/desert/explored)
 "Rb" = (
 /obj/item/ammo_casing/spent{
@@ -272,12 +271,6 @@
 "Rm" = (
 /obj/structure/sign/graffiti/pisoff,
 /turf/simulated/wall/sandstone/classh,
-/area/tether_away/beach/desert/explored)
-"SE" = (
-/obj/machinery/light/small/flicker{
-	dir = 4
-	},
-/turf/simulated/floor/plating/external,
 /area/tether_away/beach/desert/explored)
 "XZ" = (
 /turf/simulated/mineral/ignore_mapgen/classh,
@@ -35389,12 +35382,12 @@ XZ
 XZ
 Dc
 kK
-kK
+CM
 CM
 CM
 kK
 Js
-kK
+lf
 lf
 lf
 XZ
@@ -35587,10 +35580,10 @@ Ov
 Rb
 Rm
 CM
-CM
 kK
-kK
-kK
+lf
+lf
+lf
 XZ
 gz
 "}
@@ -35777,14 +35770,14 @@ kK
 kK
 Kt
 kK
-LF
+CM
 kK
 kK
 kK
 kK
-kK
-kK
-kK
+lf
+lf
+lf
 XZ
 gz
 "}
@@ -35969,16 +35962,16 @@ Ev
 Dc
 kK
 kK
-LF
-Mv
-OI
-LF
-kK
-kK
-kK
-kK
+CM
+ej
 CM
 kK
+kK
+kK
+kK
+lf
+lf
+lf
 XZ
 gz
 "}
@@ -36163,16 +36156,16 @@ II
 Dc
 kK
 kK
+dd
+Nx
+Nx
+Nx
 Mc
-Nx
-OO
-Nx
-SE
 Mv
-kK
-kK
-CM
-CM
+lf
+lf
+lf
+lf
 XZ
 gz
 "}
@@ -36347,14 +36340,6 @@ XZ
 XZ
 XZ
 XZ
-XZ
-kK
-Dc
-Dc
-Dc
-Dc
-Dc
-Dc
 kK
 kK
 Dc
@@ -36362,11 +36347,19 @@ Dc
 Dc
 Dc
 Dc
+Dc
 kK
 kK
+CM
 kK
-kK
-kK
+Dc
+Dc
+Dc
+lf
+lf
+lf
+lf
+lf
 XZ
 gz
 "}
@@ -36541,26 +36534,26 @@ XZ
 XZ
 XZ
 XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
 kK
 kK
 kK
 kK
-XZ
-XZ
-XZ
-XZ
-XZ
 kK
 kK
 kK
 kK
+CM
+CM
+kK
+kK
+XZ
+XZ
+XZ
+lf
+lf
+lf
+lf
+lf
 XZ
 gz
 "}
@@ -36736,25 +36729,25 @@ XZ
 XZ
 XZ
 XZ
-XZ
-XZ
-XZ
-XZ
-XZ
 kK
 kK
 kK
 kK
 kK
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
 kK
 kK
+CM
 kK
+kK
+XZ
+XZ
+XZ
+XZ
+XZ
+lf
+lf
+lf
+lf
 XZ
 gz
 "}
@@ -36931,13 +36924,13 @@ XZ
 XZ
 XZ
 XZ
-XZ
-XZ
-XZ
-XZ
 kK
 kK
 kK
+kK
+kK
+kK
+CM
 kK
 kK
 XZ
@@ -37128,10 +37121,10 @@ XZ
 XZ
 XZ
 XZ
-XZ
 kK
 kK
 kK
+CM
 kK
 kK
 XZ
