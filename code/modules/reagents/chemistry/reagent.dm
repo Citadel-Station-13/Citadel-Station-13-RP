@@ -19,16 +19,23 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/reagent_flags = NONE
 
 	//* Economy *//
+	
 	/// Raw intrinsic worth of this reagent
 	var/worth = 0
 	/// economic category of the reagent
 	var/economic_category_reagent = ECONOMIC_CATEGORY_REAGENT_DEFAULT
 
 	//* Effects
-	
-	/// effects, set to path = value to init
-	var/list/datum/reagent_effect/effects
 
+	/// path = number, converted to instance on init. number multiplied by amount removed.
+	///
+	/// only applied while in bloodstream
+	var/list/datum/reagent_effect/effects
+	/// path = number, converted to instance on init. number multiplied by amount removed.
+	///
+	/// only applied while in bloodstream
+	var/list/datum/reagent_effect/effects_overdose
+	
 	//* Guidebook
 
 	/// guidebook flags
@@ -57,10 +64,18 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/metabolism_multiplier = 1
 
 	/// amount at which overdose begins; null for none.
+	/// 
+	/// only applies to bloodstream
 	var/overdose_threshold
 	/// multiplier to units while overdosing; compounded with base
-	var/overdose_metabolism_multiplier  = 1
+	/// 
+	/// only applies to bloodstream
+	var/overdose_metabolism_multiplier = 1
 	/// tox damage per unit metabolised when overdosing
+	/// this is on top of any reagent effects, as this is the standard toxins damage
+	/// this will be replaced someday.
+	/// 
+	/// only applies to bloodstream
 	var/overdose_toxin_scaling = 2
 
 	//* Properties
@@ -294,7 +309,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	return 0
 
 /**
- * called per tick while we're being inhaled or a mob is being exposed to us
+ * called per tick while we're being inhaled or a mob is being exposed to us in a gas cloud
  * 
  * * WARNING * - this proc is called regardless of actual coverage. if you are doing skin burn effects,
  * make absolute sure you manually check for exposed areas!
@@ -323,7 +338,19 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
  * @return units to add into the holder normally.
  */
 /datum/reagent/proc/applying_to_metabolism(mob/living/carbon/entity, application, organ_tag, volume, list/data)
-	return volume
+	return volume 
+
+//* Data *//
+
+/**
+ * Called when we're being added to something for the first time
+ *
+ * @params
+ * * holder - (optional) the holder we're going in, if any.
+ * * amount - our amount
+ */
+/datum/reagent/proc/init_data(datum/reagent_holder/holder, amount)
+	return list()
 
 //* Guidebook *//
 
@@ -373,27 +400,68 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	#warn hook
 
 /**
- * Called on life ticks during mob metabolism. Overdose is also called while overdosing.
+ * Called on life ticks during mob metabolism.
  * 
  * @params
  * * entity - the victim
- * * application - the REAGENT_APPLY_* flags
  * * metabolism - the /datum/reagent_metabolism data; the overdose_cycles will be incremented automatically.
- * * organ_tag - the string tag of what organ this is localized in, if any; mostly used for touch/skin/surface.
  * * removed - amount of volume being processed
  * * data - data list
  * 
  * @return amount actually used
  */
-/datum/reagent/proc/on_metabolize_tick(mob/living/carbon/entity, application, datum/reagent_metabolism/metabolism, organ_tag, list/data, removed)	
+/datum/reagent/proc/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)	
 	if(metabolism.overdosing)
 		// default overdose effects
 		if(overdose_toxin_scaling)
 			entity.adjustToxLoss(removed * overdose_toxin_scaling)
+	#warn rework above
+	#warn hook
+
+/**
+ * Called on life ticks during mob metabolism.
+ * 
+ * This is usually used for ingestion into stomachs
+ * 
+ * @params
+ * * entity - the victim
+ * * metabolism - the /datum/reagent_metabolism data; the overdose_cycles will be incremented automatically.
+ * * removed - amount of volume being processed
+ * * data - data list
+ * * container - the internal organ this is inside
+ * 
+ * @return amount actually used
+ */
+/datum/reagent/proc/on_metabolize_internal(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed, obj/item/organ/internal/container)	
+	if(metabolism.overdosing)
+		// default overdose effects
+		if(overdose_toxin_scaling)
+			entity.adjustToxLoss(removed * overdose_toxin_scaling)
+	#warn rework above
+	#warn hook
+
+/**
+ * Called on life ticks during mob metabolism.
+ * 
+ * @params
+ * * entity - the victim
+ * * metabolism - the /datum/reagent_metabolism data; the overdose_cycles will be incremented automatically.
+ * * removed - amount of volume being processed
+ * * data - data list
+ * * bodypart - the external organ this is inside
+ * 
+ * @return amount actually used
+ */
+/datum/reagent/proc/on_metabolize_dermal(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed, obj/item/organ/external/bodypart)
+	if(metabolism.overdosing)
+		// default overdose effects
+		if(overdose_toxin_scaling)
+			entity.adjustToxLoss(removed * overdose_toxin_scaling)
+	#warn rework above
 	#warn hook
 
 //* Mixing *//
-
+ 
 /**
  * called when a new reagent is being mixed with this one to mix our data lists.
  *

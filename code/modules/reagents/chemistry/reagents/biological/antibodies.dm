@@ -1,5 +1,4 @@
 /datum/reagent/antibodies
-	data = list("antibodies"=list())
 	name = "Antibodies"
 	taste_description = "slime"
 	id = "antibodies"

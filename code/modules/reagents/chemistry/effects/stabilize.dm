@@ -1,4 +1,4 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
-/datum/chemical_effect/stabilize
+/datum/reagent_effect/stabilize

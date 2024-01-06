@@ -47,11 +47,15 @@
 
 	/// print speed - multiplier. affects power cost.
 	var/speed_multiplier = 1
+	/// higher is better
 	/// power efficiency - multiplier. affects power cost.
+	/// lower is better
 	var/power_multiplier = 1
 	/// material efficiency - multiplier.
+	/// lower is better
 	var/efficiency_multiplier = 1
 	/// material storage - multiplier
+	/// lower is better
 	var/storage_multiplier
 
 	/// what kind of lathe is this
@@ -90,6 +94,7 @@
 	/// can recycle
 	var/recycle = TRUE
 	/// recycle efficiency
+	/// higher is better; this should never be above 1.
 	var/recycle_efficiency = 0.8
 
 	/// designs held - set to instance to instantiate.
@@ -288,11 +293,11 @@
 		for(var/key in instance.material_costs)
 			var/id = material_parts[key]
 			materials[id] += instance.material_costs[key]
-		. = stored_materials.has_multiple(materials, efficiency_multiplier)
+		. = stored_materials.has_multiple(materials) / efficiency_multiplier
 	if(!.)
 		return
 	if(length(instance.reagents))
-		. = min(., stored_reagents?.has_multiple(instance.reagents, efficiency_multiplier))
+		. = min(., stored_reagents?.has_multiple(instance.reagents) / efficiency_multiplier)
 	if(!.)
 		return
 	// ingredients? return 1 at most.

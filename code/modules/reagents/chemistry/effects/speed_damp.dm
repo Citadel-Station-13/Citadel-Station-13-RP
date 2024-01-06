@@ -1,4 +1,4 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
-/datum/chemical_effect/speed_damp
+/datum/reagent_effect/speed_damp

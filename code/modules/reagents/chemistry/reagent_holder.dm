@@ -61,20 +61,115 @@
 
 //* Add / Remove *//
 
-#warn audit for data being list
-/datum/reagent_holder/proc/add_reagent(datum/reagent/reagentlike, amount, list/data, temperature, defer_reactions)
+/**
+ * @return amount added
+ */
+/datum/reagent_holder/proc/add_reagent(datum/reagent/reagentlike, amount, list/data, temperature, defer_recalc)
 	#warn impl
+	#warn audit data?
 	
-/datum/reagent_holder/proc/remove_reagent(datum/reagent/reagentlike, amount, defer_reactions)
+/**
+ * @return amount removed
+ */
+/datum/reagent_holder/proc/remove_reagent(datum/reagent/reagentlike, amount, defer_recalc)
 	#warn impl
 
 /datum/reagent_holder/proc/remove_any(amount)
-	#warn impl
+	if(amount >= total_volume)
+		for(var/id in reagent_volumes)
+			remove_reagent(id, defer_reactions = TRUE)
+		. = total_volume
+		update_total()
+		return
+	var/ratio = amount / total_volume
+	for(var/id in reagent_volumes)
+		remove_reagent(id, reagent_volumes[id] * ratio, defer_recalc = TRUE)
+	update_total()
+	consider_reactions()
+	return amount
+
+/datum/reagent_holder/proc/isolate_reagent(datum/reagent/reagentlike)
+	// we only care about id
+	if(ispath(reagentlike))
+		reagentlike = initial(reagentlike.id)
+	else if(!istext(reagentlike))
+		reagentlike = reagentlike.id
+	
+	. = 0
+
+	for(var/id in reagent_volumes)
+		if(id != reagentlike)
+			. += remove_reagent(id, defer_recalc = TRUE)
+	
+	if(.)
+		update_total()
+		consider_reactions()
+
+/datum/reagent_holder/proc/clear()
+	return remove_any(total_volume)
 
 //* Check *//
 
 /datum/reagent_holder/proc/is_full()
 	return total_volume >= maximum_volume
+
+/datum/reagent_holder/proc/has_reagent(datum/reagent/reagentlike, amount)
+	// we only care about id
+	if(ispath(reagentlike))
+		reagentlike = initial(reagentlike.id)
+	else if(!istext(reagentlike))
+		reagentlike = reagentlike.id
+	
+	return reagent_volumes[reagentlike] >= amount
+
+/**
+ * returns lowest multiple of what we have compared to reagents list.
+ *
+ * both typepaths and ids are acceptable.
+ */
+/datum/reagent_holder/proc/has_multiple(list/reagents)
+	. = INFINITY
+	for(var/i in 1 to length(reagents))
+		var/datum/reagent/reagentlike = reagents[i]
+		var/amount = reagents[amount]
+		if(ispath(reagentlike))
+			reagentlike = initial(reagentlike.id)
+		else if(!istext(reagentlike))
+			reagentlike = reagentlike.id
+		. = min(., reagent_volumes[i] / amount)
+
+/**
+ * input can be associated to an amount.
+ * 
+ * @return TRUE / FALSE
+ */
+/datum/reagent_holder/proc/has_all_reagents(list/reagents)
+	for(var/i in 1 to length(reagents))
+		var/datum/reagent/reagentlike = reagents[i]
+		var/amount = reagents[amount]
+		if(ispath(reagentlike))
+			reagentlike = initial(reagentlike.id)
+		else if(!istext(reagentlike))
+			reagentlike = reagentlike.id
+		if(reagent_volumes[reagentlike] < amount)
+			return FALSE
+	return TRUE
+
+/**
+ * input can be associated to an amount.
+ * 
+ * @return first valid id will be returned, or null on fail.
+ */
+/datum/reagent_holder/proc/has_any_reagent(list/reagents)
+	for(var/i in 1 to length(reagents))
+		var/datum/reagent/reagentlike = reagents[i]
+		var/amount = reagents[amount]
+		if(ispath(reagentlike))
+			reagentlike = initial(reagentlike.id)
+		else if(!istext(reagentlike))
+			reagentlike = reagentlike.id
+		if(reagent_volumes[reagentlike] >= amount)
+			return reagentlike
 
 //* Color *//
 
@@ -120,6 +215,12 @@
 			. = id
 	return SSchemistry.fetch_reagent(.)
 
+/**
+ * returns volume remaining
+ */
+/datum/reagent_holder/proc/available_volume()
+	return maximum_volume - total_volume
+
 #warn make those
 
 //* Reactions *//
@@ -136,6 +237,21 @@
 //* Transfer *//
 
 #warn /transfer_to_holder post ice crema
+
+//* UI *//
+
+/**
+ * data list for ReagentContents in /tgui/interfaces/common/Reagents.tsx
+ */
+/datum/reagent_holder/proc/tgui_reagent_contents()
+	var/list/built = list()
+	for(var/datum/reagent/R as anything in reagent_list)
+		built[++built.len] = list(
+			"name" = R.name,
+			"amount" = R.volume,
+			"id" = R.id,
+		)
+	return built
 
 //* Updates *//
 
@@ -244,13 +360,6 @@
 		stack_trace("[my_atom] attempted to add a reagent called '[id]' which doesn't exist. ([usr])")
 	return 0
 
-/datum/reagent_holder/proc/isolate_reagent(reagent)
-	for(var/A in reagent_list)
-		var/datum/reagent/R = A
-		if(R.id != reagent)
-			del_reagent(R.id)
-			update_total()
-
 /datum/reagent_holder/proc/remove_reagent(id, amount, safety = 0)
 	if(ispath(id))
 		var/datum/reagent/path = id
@@ -278,57 +387,6 @@
 				my_atom.on_reagent_change()
 			return 0
 
-/datum/reagent_holder/proc/has_reagent(id, amount = 0)
-	if(ispath(id))
-		var/datum/reagent/path = id
-		id = initial(path.id)
-	for(var/datum/reagent/current in reagent_list)
-		if(current.id == id)
-			if(current.volume >= amount)
-				return 1
-			else
-				return 0
-	return 0
-
-/datum/reagent_holder/proc/has_any_reagent(list/check_reagents)
-	for(var/datum/reagent/current in reagent_list)
-		if(current.id in check_reagents)
-			if(current.volume >= check_reagents[current.id])
-				return 1
-			else
-				return 0
-	return 0
-
-/datum/reagent_holder/proc/has_all_reagents(list/check_reagents, multiplier = 1)
-	//this only works if check_reagents has no duplicate entries... hopefully okay since it expects an associative list
-	var/missing = check_reagents.len
-	for(var/datum/reagent/current in reagent_list)
-		if(current.id in check_reagents)
-			if(current.volume >= check_reagents[current.id] * multiplier)
-				missing--
-	return !missing
-
-/**
- * returns lowest multiple of what we have compared to reagents list.
- *
- * both typepaths and ids are acceptable.
- */
-/datum/reagent_holder/proc/has_multiple(list/reagents, multiplier = 1)
-	. = INFINITY
-	// *sigh*
-	var/list/legacy_translating = list()
-	for(var/datum/reagent/R in reagent_list)
-		legacy_translating[R.id] = R.volume
-	for(var/datum/reagent/reagent as anything in reagents)
-		. = min(., legacy_translating[ispath(reagent)? initial(reagent.id) : reagent] / reagents[reagent])
-		if(!.)
-			return
-
-/datum/reagent_holder/proc/clear_reagents()
-	for(var/datum/reagent/current in reagent_list)
-		del_reagent(current.id)
-	return
-
 /datum/reagent_holder/proc/get_reagents()
 	. = list()
 	for(var/datum/reagent/current in reagent_list)
@@ -336,22 +394,6 @@
 	return english_list(., "EMPTY", "", ", ", ", ")
 
 /* Holder-to-holder and similar procs */
-
-/datum/reagent_holder/proc/remove_any(amount = 1) // Removes up to [amount] of reagents from [src]. Returns actual amount removed.
-	amount = min(amount, total_volume)
-
-	if(!amount)
-		return
-
-	var/part = amount / total_volume
-
-	for(var/datum/reagent/current in reagent_list)
-		var/amount_to_remove = current.volume * part
-		remove_reagent(current.id, amount_to_remove, 1)
-
-	update_total()
-	handle_reactions()
-	return amount
 
 /datum/reagent_holder/proc/trans_to_holder(datum/reagent_holder/target, amount = 1, multiplier = 1, copy = 0) // Transfers [amount] reagents from [src] to [target], multiplying them by [multiplier]. Returns actual amount removed from [src] (not amount transferred to [target]).
 	if(!target || !istype(target))
@@ -586,30 +628,6 @@
 			do_happen = TRUE
 	return do_happen
 
-//? Queries
-
-/**
- * returns volume remaining
- */
-/datum/reagent_holder/proc/available_volume()
-	return maximum_volume - total_volume
-
-/**
- * returns lowest multiple of what we have compared to reagents list.
- *
- * both typepaths and ids are acceptable.
- */
-/datum/reagents/proc/has_multiple(list/reagents, multiplier = 1)
-	. = INFINITY
-	// *sigh*
-	var/list/legacy_translating = list()
-	for(var/datum/reagent/R in reagent_list)
-		legacy_translating[R.id] = R.volume
-	for(var/datum/reagent/reagent as anything in reagents)
-		. = min(., legacy_translating[ispath(reagent)? initial(reagent.id) : reagent] / reagents[reagent])
-		if(!.)
-			return
-
 //? Transfers
 
 /**
@@ -669,21 +687,6 @@
 		target.handle_reactions()
 
 #warn above
-
-//* UI *//
-
-/**
- * data list for ReagentContents in /tgui/interfaces/common/Reagents.tsx
- */
-/datum/reagent_holder/proc/tgui_reagent_contents()
-	var/list/built = list()
-	for(var/datum/reagent/R as anything in reagent_list)
-		built[++built.len] = list(
-			"name" = R.name,
-			"amount" = R.volume,
-			"id" = R.id,
-		)
-	return built
 
 /**
  * Metabolizing holders. Handles reagent metabolism for /mob/living/carbon mobs.

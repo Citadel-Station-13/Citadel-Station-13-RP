@@ -228,9 +228,10 @@
 
 	return reaction_progress
 
-//called when a reaction processes
+
 /datum/chemical_reaction/proc/on_reaction(datum/reagent_holder/holder, created_volume)
-	return
+	SHOULD_NOT_OVERRIDE(TRUE)
+	#warn linter fodder
 
 //called after processing reactions, if they occurred
 /datum/chemical_reaction/proc/post_reaction(datum/reagent_holder/holder)
@@ -266,3 +267,32 @@
 		// todo: why is this the case?
 		"alcoholStrength" = null,
 	)
+
+//* Reaction Processing
+
+
+/**
+ * called on instant reaction process
+ */
+/datum/chemical_reaction/proc/on_instant_reaction(datum/reagent_holder/holder, created_volume)
+	return
+
+/**
+ * called on start of a ticked reaction
+ * 
+ * @params return FALSE to abort
+ */
+/datum/chemical_reaction/proc/on_reaction_start(datum/reagent_holder/holder)
+	return TRUE
+
+/**
+ * called per tick of a ticked reaction
+ */
+/datum/chemical_reaction/proc/on_reaction_tick(datum/reagent_holder/holder, created_volume)
+	return
+
+/**
+ * called at end of a ticked reaction
+ */
+/datum/chemical_reaction/proc/on_reaction_end(datum/reagent_holder/holder)
+	return

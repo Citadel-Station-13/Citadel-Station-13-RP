@@ -14,6 +14,13 @@
 //  todo: this is currently unimplemented.
 #define REAGENT_APPLY_INHALE (1<<4)
 
+//* Effects *//
+
+//* Legacy chemical effect defines, they get flagged on a mob as necessary during metabolism, and is reset every tick
+//* We prefer reagent effect datums over this.
+
+#warn add some
+
 //* Metabolism *//
 
 #define REAGENT_METABOLISM_NORMAL 0.2
