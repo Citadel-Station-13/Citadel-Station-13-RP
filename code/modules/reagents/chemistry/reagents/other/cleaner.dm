@@ -61,7 +61,7 @@
 	. = ..()
 	target.clean_radiation(RAD_CONTAMINATION_CLEANSE_POWER * (volume / 10), RAD_CONTAMINATION_CLEANSE_FACTOR ** (1 / (volume / 10)))
 
-/datum/reagent/space_cleaner/on_metabolize_tick(mob/living/carbon/entity, application, datum/reagent_metabolism/metabolism, organ_tag, removed)
+/datum/reagent/space_cleaner/on_metabolize_tick(mob/living/carbon/entity, application, datum/reagent_metabolism/metabolism, organ_tag, list/data, removed)
 	. = ..()
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		entity.adjustToxLoss(6 * removed)

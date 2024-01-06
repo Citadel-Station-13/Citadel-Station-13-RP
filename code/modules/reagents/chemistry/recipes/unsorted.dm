@@ -17,7 +17,9 @@
 	id = "bicaridine"
 	result = "bicaridine"
 	required_reagents = list("inaprovaline" = 1, MAT_CARBON = 1)
-	inhibitors = list("sugar" = 1) // Messes up with inaprovaline
+	moderators = list(
+		/datum/reagent/sugar = INFINITY,
+	)
 	result_amount = 2
 
 /datum/chemical_reaction/vermicetol
@@ -52,7 +54,9 @@
 	result = "dexalin"
 	required_reagents = list("oxygen" = 2, MAT_PHORON = 0.1)
 	catalysts = list(MAT_PHORON = 1)
-	inhibitors = list("water" = 1) // Messes with cryox
+	moderators = list(
+		/datum/reagent/water = INFINITY,
+	)
 	result_amount = 1
 
 
@@ -125,7 +129,9 @@
 	priority = 100
 	required_reagents = list("bicaridine" = 2, MAT_PHORON = 0.1, "carpotoxin" = 1)
 	catalysts = list(MAT_PHORON = 5)
-	inhibitors = list("clonexadone" = 1) // Messes with cryox
+	moderators = list(
+		/datum/reagent/clonexadone = INFINITY,
+	)
 	result_amount = 2
 
 /datum/chemical_reaction/respirodaxon
@@ -147,7 +153,9 @@
 	priority = 100
 	required_reagents = list("carthatoline" = 1, "biomass" = 2, "tungsten" = 2)
 	catalysts = list(MAT_PHORON = 5)
-	inhibitors = list("lithium" = 1)
+	moderators = list(
+		/datum/reagent/lithium = INFINITY,
+	)
 	result_amount = 3
 
 /datum/chemical_reaction/hepanephrodaxon
@@ -158,7 +166,9 @@
 	priority = 100
 	required_reagents = list("carthatoline" = 2, "biomass" = 2, "lithium" = 1)
 	catalysts = list(MAT_PHORON = 5)
-	inhibitors = list("tungsten" = 1)
+	moderators = list(
+		/datum/reagent/tungsten = INFINITY,
+	)
 	result_amount = 2
 
 /datum/chemical_reaction/cordradaxon
@@ -169,7 +179,9 @@
 	priority = 100
 	required_reagents = list("potassium_chlorophoride" = 1, "biomass" = 2, "bicaridine" = 2)
 	catalysts = list(MAT_PHORON = 5)
-	inhibitors = list("clonexadone" = 1)
+	moderators = list(
+		/datum/reagent/clonexadone = INFINITY,
+	)
 	result_amount = 2
 
 //Psych Drugs and hallucination Treatment
@@ -354,7 +366,9 @@
 	id = "stoxin"
 	result = "stoxin"
 	required_reagents = list("chloralhydrate" = 1, "sugar" = 4)
-	inhibitors = list("phosphorus") // Messes with the smoke
+	moderators = list(
+		/datum/reagent/phosphorus = INFINITY,
+	)
 	result_amount = 5
 
 /datum/chemical_reaction/chloralhydrate

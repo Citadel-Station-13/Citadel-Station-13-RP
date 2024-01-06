@@ -352,8 +352,9 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
  * * application - the REAGENT_APPLY_* flags
  * * metabolism - the /datum/reagent_metabolism data; the overdose_cycles will be incremented automatically.
  * * organ_tag - the string tag of what organ this is localized in, if any; mostly used for touch/skin/surface.
+ * * data - data list
  */
-/datum/reagent/proc/on_metabolize_add(mob/living/carbon/entity, application, datum/reagent_metabolism/metabolism, organ_tag)
+/datum/reagent/proc/on_metabolize_add(mob/living/carbon/entity, application, datum/reagent_metabolism/metabolism, organ_tag, list/data)
 	return
 	#warn hook
 
@@ -365,8 +366,9 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
  * * application - the REAGENT_APPLY_* flags
  * * metabolism - the /datum/reagent_metabolism data; the overdose_cycles will be incremented automatically.
  * * organ_tag - the string tag of what organ this is localized in, if any; mostly used for touch/skin/surface.
+ * * data - data list
  */
-/datum/reagent/proc/on_metabolize_remove(mob/living/carbon/entity, application, datum/reagent_metabolism/metabolism, organ_tag)
+/datum/reagent/proc/on_metabolize_remove(mob/living/carbon/entity, application, datum/reagent_metabolism/metabolism, organ_tag, list/data)
 	return
 	#warn hook
 
@@ -379,12 +381,15 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
  * * metabolism - the /datum/reagent_metabolism data; the overdose_cycles will be incremented automatically.
  * * organ_tag - the string tag of what organ this is localized in, if any; mostly used for touch/skin/surface.
  * * removed - amount of volume being processed
+ * * data - data list
+ * 
+ * @return amount actually used
  */
-/datum/reagent/proc/on_metabolize_tick(mob/living/carbon/entity, application, datum/reagent_metabolism/metabolism, organ_tag, removed)	
+/datum/reagent/proc/on_metabolize_tick(mob/living/carbon/entity, application, datum/reagent_metabolism/metabolism, organ_tag, list/data, removed)	
 	if(metabolism.overdosing)
 		// default overdose effects
-		if(overdose_standard_scaling)
-			entity.adjustToxLoss(removed * overdose_standard_scaling)
+		if(overdose_toxin_scaling)
+			entity.adjustToxLoss(removed * overdose_toxin_scaling)
 	#warn hook
 
 //* Mixing *//
