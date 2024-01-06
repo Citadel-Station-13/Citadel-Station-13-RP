@@ -5,13 +5,14 @@
 	taste_description = "sweet tasting metal"
 	reagent_state = REAGENT_SOLID
 	color = "#673910"
-	touch_met = 50
 
 /datum/reagent/thermite/touch_expose_mob(mob/target, volume, list/data, organ_tag)
 	. = ..()
-	target.adjust_fire_stacks(volume / 5)
+	if(isliving(target))
+		var/mob/living/L = target
+		L.adjust_fire_stacks(volume / 5)
 
-/datum/reagent/thermite/contact_expose_object(obj/target, volume, list/data, vapor)
+/datum/reagent/thermite/contact_expose_obj(obj/target, volume, list/data, vapor)
 	. = ..()
 	if(istype(target, /turf/simulated/wall))
 		// todo: refactor thermite

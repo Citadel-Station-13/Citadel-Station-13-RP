@@ -9,7 +9,6 @@
 	taste_description = "metal"
 	reagent_state = REAGENT_LIQUID
 	color = "#ff5555"
-	metabolism = REM
 
 	var/modifier_to_add = /datum/modifier/berserk
 	var/modifier_duration = 2 SECONDS	// How long, per unit dose, will this last?
