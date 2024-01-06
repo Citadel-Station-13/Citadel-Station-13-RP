@@ -1984,6 +1984,7 @@
 #include "code\game\turfs\simulated\floor_types\lava.dm"
 #include "code\game\turfs\simulated\floor_types\outdoors.dm"
 #include "code\game\turfs\simulated\floor_types\outdoors_attackby.dm"
+#include "code\game\turfs\simulated\floor_types\river.dm"
 #include "code\game\turfs\simulated\floor_types\sky.dm"
 #include "code\game\turfs\simulated\floor_types\snow.dm"
 #include "code\game\turfs\simulated\floor_types\water.dm"
