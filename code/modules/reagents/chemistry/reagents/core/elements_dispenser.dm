@@ -28,17 +28,18 @@
 	color = "#1C1300"
 	ingest_met = REM * 5
 
-/datum/reagent/carbon/affect_ingest(mob/living/carbon/M, alien, removed)
-	if(alien == IS_DIONA)
+/datum/reagent/carbon/on_metabolize_ingested(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed, obj/item/organ/internal/container)
+	. = ..()
+	
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-	if(M.ingested && M.ingested.reagent_list.len > 1) // Need to have at least 2 reagents - cabon and something to remove
-		var/effect = 1 / (M.ingested.reagent_list.len - 1)
-		for(var/datum/reagent/R in M.ingested.reagent_list)
-			if(R == src)
-				continue
-			M.ingested.remove_reagent(R.id, removed * effect)
+	entity.ingested.remove_any(removed * 2)
+	return 0
 
-/datum/reagent/carbon/touch_turf(turf/T)
+/datum/reagent/carbon/contact_expose_turf(turf/target, volume, list/data, vapor)
+	. = ..()
+	
+	var/turf/T = target
 	if(!istype(T, /turf/space))
 		var/obj/effect/debris/cleanable/dirt/dirtoverlay = locate(/obj/effect/debris/cleanable/dirt, T)
 		if (!dirtoverlay)
@@ -55,11 +56,17 @@
 	reagent_state = REAGENT_GAS
 	color = "#d1db77"
 
-/datum/reagent/chlorine/affect_blood(mob/living/carbon/M, alien, removed)
-	M.take_organ_damage(1*REM, 0)
+/datum/reagent/chlorine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	entity.take_organ_damage(removed, 0)
 
-/datum/reagent/chlorine/affect_touch(mob/living/carbon/M, alien, removed)
-	M.take_organ_damage(1*REM, 0)
+/datum/reagent/chlorine/touch_expose_mob(mob/target, volume, list/data, organ_tag)
+	. = ..()
+	
+	var/mob/living/carbon/M = target
+	if(!istype(M))
+		return
+	M.take_organ_damage(volume, 0)
 
 /datum/reagent/copper
 	name = "Copper"
@@ -76,10 +83,15 @@
 	reagent_state = REAGENT_GAS
 	color = "#808080"
 
-/datum/reagent/fluorine/affect_blood(mob/living/carbon/M, alien, removed)
-	M.adjustToxLoss(removed)
+/datum/reagent/fluorine/touch_expose_mob(mob/target, volume, list/data, organ_tag)
+	. = ..()
+	
+	target.adjustToxLoss(removed)
 
-/datum/reagent/fluorine/affect_touch(mob/living/carbon/M, alien, removed)
+/datum/reagent/fluorine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
+	var/mob/living/carbon/M = entity
 	M.adjustToxLoss(removed)
 
 /datum/reagent/hydrogen
@@ -98,9 +110,13 @@
 	reagent_state = REAGENT_SOLID
 	color = "#353535"
 
-/datum/reagent/iron/affect_ingest(mob/living/carbon/M, alien, removed)
-	if(alien != IS_DIONA)
-		M.add_chemical_effect(CHEMICAL_EFFECT_BLOODRESTORE, 8 * removed)
+/datum/reagent/iron/on_metabolize_ingested(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed, obj/item/organ/internal/container)
+	. = ..()
+	
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
+		return
+
+	entity.add_reagent_cycle_effect(CHEMICAL_EFFECT_BLOODRESTORE, 8 * removed)
 
 /datum/reagent/lithium
 	name = "Lithium"
@@ -110,12 +126,17 @@
 	reagent_state = REAGENT_SOLID
 	color = "#808080"
 
-/datum/reagent/lithium/affect_blood(mob/living/carbon/M, alien, removed)
-	if(alien != IS_DIONA)
-		if(CHECK_MOBILITY(M, MOBILITY_CAN_MOVE) && istype(M.loc, /turf/space))
-			step(M, pick(GLOB.cardinal))
-		if(prob(5))
-			M.emote(pick("twitch", "drool", "moan"))
+/datum/reagent/lithium/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
+		return
+		
+	var/mob/living/carbon/M = entity
+	if(CHECK_MOBILITY(M, MOBILITY_CAN_MOVE) && istype(M.loc, /turf/space))
+		step(M, pick(GLOB.cardinal))
+	if(prob(5))
+		M.emote(pick("twitch", "drool", "moan"))
 
 /datum/reagent/mercury
 	name = "Mercury"
@@ -125,13 +146,18 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#484848"
 
-/datum/reagent/mercury/affect_blood(mob/living/carbon/M, alien, removed)
-	if(alien != IS_DIONA)
-		if(CHECK_MOBILITY(M, MOBILITY_CAN_MOVE) && istype(M.loc, /turf/space))
-			step(M, pick(GLOB.cardinal))
-		if(prob(5))
-			M.emote(pick("twitch", "drool", "moan"))
-		M.adjustBrainLoss(0.1)
+/datum/reagent/mercury/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
+		return
+		
+	var/mob/living/carbon/M = entity
+	if(CHECK_MOBILITY(M, MOBILITY_CAN_MOVE) && istype(M.loc, /turf/space))
+		step(M, pick(GLOB.cardinal))
+	if(prob(5))
+		M.emote(pick("twitch", "drool", "moan"))
+	M.adjustBrainLoss(0.1)
 
 /datum/reagent/nitrogen
 	name = "Nitrogen"
@@ -149,9 +175,14 @@
 	reagent_state = REAGENT_GAS
 	color = "#808080"
 
-/datum/reagent/oxygen/affect_blood(mob/living/carbon/M, alien, removed)
-	if(alien == IS_VOX)
-		M.adjustToxLoss(removed * 3)
+/datum/reagent/oxygen/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
+	if(!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_VOX)])
+		return
+		
+	var/mob/living/carbon/M = entity
+	M.adjustToxLoss(removed * 3)
 
 /datum/reagent/phosphorus
 	name = "Phosphorus"
@@ -161,9 +192,14 @@
 	reagent_state = REAGENT_SOLID
 	color = "#832828"
 
-/datum/reagent/phosphorus/affect_blood(mob/living/carbon/M, alien, removed)
-	if(alien == IS_ALRAUNE)
-		M.nutrition += removed * 2 //cit change - phosphorus is good for plants
+/datum/reagent/phosphorus/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
+	if(!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_ALRAUNE)] && !entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
+		return
+		
+	var/mob/living/carbon/M = entity
+	M.nutrition += removed * 2 //cit change - phosphorus is good for plants
 
 /datum/reagent/potassium
 	name = "Potassium"
@@ -181,9 +217,10 @@
 	reagent_state = REAGENT_SOLID
 	color = "#C7C7C7"
 
-/datum/reagent/radium/affect_blood(mob/living/carbon/M, alien, removed)
-	if(issmall(M))
-		removed *= 2
+/datum/reagent/radium/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
+	var/mob/living/carbon/M = entity
 	M.afflict_radiation(RAD_MOB_AFFLICT_STRENGTH_RADIUM(removed))
 	if(M.virus2.len)
 		for(var/ID in M.virus2)
@@ -191,7 +228,10 @@
 			if(prob(5))
 				M.antibodies |= V.antigen
 
-/datum/reagent/radium/touch_turf(turf/T)
+/datum/reagent/radium/contact_expose_turf(turf/target, volume, list/data, vapor)
+	. = ..()
+	
+	var/turf/T = target
 	if(volume >= 3)
 		if(!istype(T, /turf/space))
 			var/obj/effect/debris/cleanable/greenglow/glow = locate(/obj/effect/debris/cleanable/greenglow, T)

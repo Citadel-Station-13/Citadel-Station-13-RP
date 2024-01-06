@@ -24,13 +24,15 @@
 	reagent_state = REAGENT_SOLID
 	color = "#B8B8C0"
 
-/datum/reagent/uranium/affect_touch(mob/living/carbon/M, alien, removed)
-	affect_ingest(M, alien, removed)
+/datum/reagent/uranium/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
+	entity.afflict_radiation(removed * 10)
 
-/datum/reagent/uranium/affect_blood(mob/living/carbon/M, alien, removed)
-	M.apply_effect(5 * removed, IRRADIATE, 0)
-
-/datum/reagent/uranium/touch_turf(turf/T)
+/datum/reagent/uranium/contact_expose_turf(turf/target, volume, list/data, vapor)
+	. = ..()
+	
+	var/turf/T = target
 	if(volume >= 3)
 		if(!istype(T, /turf/space))
 			var/obj/effect/debris/cleanable/greenglow/glow = locate(/obj/effect/debris/cleanable/greenglow, T)

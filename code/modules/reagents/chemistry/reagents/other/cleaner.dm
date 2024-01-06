@@ -7,8 +7,9 @@
 	color = "#A5F0EE"
 	touch_met = 50
 
-/datum/reagent/space_cleaner/contact_expose_object(obj/target, volume, list/data, vapor)
+/datum/reagent/space_cleaner/contact_expose_obj(obj/target, volume, list/data, vapor)
 	. = ..()
+	
 	target.clean_blood()
 	target.clean_radiation(RAD_CONTAMINATION_CLEANSE_POWER * (volume / 10), RAD_CONTAMINATION_CLEANSE_FACTOR ** (1 / (volume / 10)))
 
@@ -38,7 +39,7 @@
 				M.update_inv_wear_mask(0)
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
-			if(alien == IS_SLIME)
+			if(M.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 				M.adjustToxLoss(rand(5, 10))
 			if(H.head)
 				if(H.head.clean_blood())
@@ -61,8 +62,9 @@
 	. = ..()
 	target.clean_radiation(RAD_CONTAMINATION_CLEANSE_POWER * (volume / 10), RAD_CONTAMINATION_CLEANSE_FACTOR ** (1 / (volume / 10)))
 
-/datum/reagent/space_cleaner/on_metabolize_tick(mob/living/carbon/entity, application, datum/reagent_metabolism/metabolism, organ_tag, list/data, removed)
+/datum/reagent/space_cleaner/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
+	
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		entity.adjustToxLoss(6 * removed)
 	else

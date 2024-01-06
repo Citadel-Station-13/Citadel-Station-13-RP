@@ -5,7 +5,10 @@
 	taste_description = "powdered wax"
 	reagent_state = REAGENT_LIQUID
 	color = "#888888"
-	overdose_threshold = 5
+	bloodstream_overdose_threshold = 5
+	dermal_overdose_threshold = 10
+	dermal_overdose_metabolism_multiplier = 2
+	dermal_overdose_toxin_scaling = 0.5
 
 /datum/reagent/crayon_dust/red
 	name = "Red crayon dust"
@@ -54,7 +57,10 @@
 	taste_description = "extremely bitter"
 	reagent_state = REAGENT_LIQUID
 	color = "#888888"
-	overdose_threshold = 5
+	bloodstream_overdose_threshold = 5
+	dermal_overdose_threshold = 10
+	dermal_overdose_metabolism_multiplier = 2
+	dermal_overdose_toxin_scaling = 0.5
 
 /datum/reagent/marker_ink/black
 	name = "Black marker ink"
@@ -108,7 +114,10 @@
 	taste_description = "powdered chalk"
 	reagent_state = REAGENT_LIQUID
 	color = "#FFFFFF"
-	overdose_threshold = 5
+	bloodstream_overdose_threshold = 5
+	dermal_overdose_threshold = 10
+	dermal_overdose_metabolism_multiplier = 2
+	dermal_overdose_toxin_scaling = 0.5
 
 /datum/reagent/chalk_dust/red
 	name = "red chalk dust"
@@ -132,50 +141,33 @@
 	taste_description = "chalk"
 	reagent_state = REAGENT_LIQUID
 	color = "#808080"
-	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 0.5
+	bloodstream_overdose_threshold = 5
+	dermal_overdose_threshold = 10
+	dermal_overdose_metabolism_multiplier = 2
+	dermal_overdose_toxin_scaling = 0.5
 	color_weight = 20
 
-/datum/reagent/paint/touch_turf(turf/T)
+/datum/reagent/paint/contact_expose_turf(turf/target, volume, list/data, vapor)
+	. = ..()
+	
+	var/turf/T = target
 	if(istype(T) && !istype(T, /turf/space))
 		T.color = color
 
-/datum/reagent/paint/touch_obj(obj/O)
+/datum/reagent/paint/contact_expose_obj(obj/target, volume, list/data, vapor)
+	. = ..()
+	
+	var/obj/O = target
 	if(istype(O))
 		O.color = color
 
-/datum/reagent/paint/touch_mob(mob/M)
-	if(istype(M) && !istype(M, /mob/observer)) //painting ghosts: not allowed
-		M.color = color //maybe someday change this to paint only clothes and exposed body parts for human mobs.
+/datum/reagent/paint/init_data(datum/reagent_holder/holder, amount)
+	return list("color" = "#ffffff")
 
-/datum/reagent/paint/get_data()
-	return color
+/datum/reagent/paint/mix_data(datum/reagent_holder/holder, list/current_data, current_amount, list/new_data, new_amount)
+	var/existing = current_data["color"]
+	var/incoming = new_data?["color"] || "#ffffff"
 
-/datum/reagent/paint/initialize_data(newdata)
-	color = newdata
-	return
-
-/datum/reagent/paint/mix_data(newdata, newamount)
-	var/list/colors = list(0, 0, 0, 0)
-	var/tot_w = 0
-
-	var/hex1 = uppertext(color)
-	var/hex2 = uppertext(newdata)
-	if(length(hex1) == 7)
-		hex1 += "FF"
-	if(length(hex2) == 7)
-		hex2 += "FF"
-	if(length(hex1) != 9 || length(hex2) != 9)
-		return
-	colors[1] += hex2num(copytext(hex1, 2, 4)) * volume
-	colors[2] += hex2num(copytext(hex1, 4, 6)) * volume
-	colors[3] += hex2num(copytext(hex1, 6, 8)) * volume
-	colors[4] += hex2num(copytext(hex1, 8, 10)) * volume
-	tot_w += volume
-	colors[1] += hex2num(copytext(hex2, 2, 4)) * newamount
-	colors[2] += hex2num(copytext(hex2, 4, 6)) * newamount
-	colors[3] += hex2num(copytext(hex2, 6, 8)) * newamount
-	colors[4] += hex2num(copytext(hex2, 8, 10)) * newamount
-	tot_w += newamount
-
-	color = rgb(colors[1] / tot_w, colors[2] / tot_w, colors[3] / tot_w, colors[4] / tot_w)
-	return
+	return list(
+		"color" = BlendRGB(existing, incoming, new_amount / (current_amount + new_amount)),
+	)

@@ -6,16 +6,17 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#C8A5DC"
 	affects_dead = 1 //This can even heal dead people.
-	metabolism = 0.1
 	mrate_static = TRUE //Just in case
+
+	dermal_absorption_multiplier = 1
 
 	glass_name = "liquid gold"
 	glass_desc = "It's magic. We don't have to explain it."
 
-/datum/reagent/adminordrazine/affect_touch(mob/living/carbon/M, alien, removed)
-	affect_blood(M, alien, removed)
-
-/datum/reagent/adminordrazine/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/adminordrazine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
+	var/mob/living/carbon/M = entity
 	M.setCloneLoss(0)
 	M.setOxyLoss(0)
 	M.radiation = 0
