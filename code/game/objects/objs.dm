@@ -552,7 +552,7 @@
 		else
 			. += SPAN_BOLDWARNING("It's falling apart!")
 
-//* Resists
+//* Resists *//
 
 /**
  * called when something tries to resist out from inside us.

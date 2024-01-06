@@ -7,7 +7,10 @@
 	description = "A ubiquitous chemical substance that is composed of hydrogen and oxygen."
 	reagent_state = REAGENT_LIQUID
 	color = "#0064C877"
-	metabolism = REM * 10
+	bloodstream_metabolism_multiplier = 10
+	ingested_absorption_multiplier = 5
+	ingested_elimination_multiplier = 5
+	dermal_elimination_multiplier = 2
 
 	glass_name = "water"
 	glass_desc = "The father of all refreshments."
@@ -15,10 +18,13 @@
 	cup_name = "water"
 	cup_desc = "The father of all refreshments."
 
-/datum/reagent/water/touch_turf(turf/simulated/T)
-	if(!istype(T))
+/datum/reagent/water/contact_expose_turf(turf/target, volume, list/data, vapor)
+	. = ..()
+	
+	// legacy code
+	if(!istype(target, /turf/simulated))
 		return
-
+	var/turf/simulated/T = target
 	var/datum/gas_mixture/environment = T.return_air()
 	var/min_temperature = T0C + 100 // 100C, the boiling point of water
 
@@ -39,7 +45,9 @@
 	else if(volume >= 10)
 		T.wet_floor(1)
 
-/datum/reagent/water/touch_obj(obj/O, amount)
+/datum/reagent/water/contact_expose_obj(obj/target, volume, list/data, vapor)
+	. = ..()
+	
 	if(istype(O, /obj/item/reagent_containers/food/snacks/monkeycube))
 		var/obj/item/reagent_containers/food/snacks/monkeycube/cube = O
 		if(!cube.wrapped)
@@ -49,7 +57,11 @@
 	var/effective = amount || 10
 	O.clean_radiation(RAD_CONTAMINATION_CLEANSE_POWER * (effective / 10), RAD_CONTAMINATION_CLEANSE_FACTOR ** (1 / (effective / 10)))
 
-/datum/reagent/water/touch_mob(mob/living/L, amount)
+/datum/reagent/water/touch_expose_mob(mob/target, volume, list/data, organ_tag)
+	. = ..()
+	if(!isliving(target))
+		return
+	var/mob/living/L = target
 	if(istype(L))
 		// First, kill slimes.
 		if(istype(L, /mob/living/simple_mob/slime))
@@ -64,16 +76,13 @@
 		if(amount > needed)
 			L.ExtinguishMob()
 		L.adjust_fire_stacks(-(amount / 5))
-		remove_self(needed)
+		. += needed
 	var/effective = amount || 10
 	L.clean_radiation(RAD_CONTAMINATION_CLEANSE_POWER * (effective / 10), RAD_CONTAMINATION_CLEANSE_FACTOR ** (1 / (effective / 10)))
 
-/datum/reagent/water/affect_ingest(mob/living/carbon/M, alien, removed)
-	//if(alien == IS_SLIME)
-	//	M.adjustToxLoss(6 * removed)
-	//else
-	M.adjust_hydration(removed * 10)
-	..()
+/datum/reagent/water/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	entity.adjust_hydration(removed * 10)
 
 /datum/reagent/fuel
 	name = "Welding fuel"
@@ -86,15 +95,17 @@
 	glass_name = "welder fuel"
 	glass_desc = "Unless you are an industrial tool, this is probably not safe for consumption."
 
-/datum/reagent/fuel/touch_turf(turf/T, amount)
-	new /obj/effect/debris/cleanable/liquid_fuel(T, amount, FALSE)
-	remove_self(amount)
-	return
+/datum/reagent/fuel/contact_expose_turf(turf/target, volume, list/data, vapor)
+	. = ..()
+	new /obj/effect/debris/cleanable/liquid_fuel(T, volume, FALSE)
+	. += volume
 
-/datum/reagent/fuel/affect_blood(mob/living/carbon/M, alien, removed)
-	if(issmall(M)) removed *= 2
-	M.adjustToxLoss(4 * removed)
+/datum/reagent/fuel/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	entity.adjustToxLoss(4 * removed)
 
-/datum/reagent/fuel/touch_mob(mob/living/L, amount)
+/datum/reagent/fuel/touch_expose_mob(mob/target, volume, list/data, organ_tag)
+	. = ..()
+	var/mob/living/L = target
 	if(istype(L))
 		L.adjust_fire_stacks(amount / 10) // Splashing people with welding fuel to make them easy to ignite!
