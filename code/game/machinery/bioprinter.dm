@@ -208,7 +208,7 @@
 /obj/machinery/organ_printer/proc/get_biomass_volume()
 	var/biomass_count = 0
 	if(container && container.reagents)
-		for(var/datum/reagent/R in container.reagents.reagent_list)
+		for(var/datum/reagent/R in container.reagents.lazy_expensive_dangerous_reagent_list())
 			if(R.id == "biomass")
 				biomass_count += R.volume
 
@@ -299,7 +299,7 @@
 	// DNA sample from syringe.
 	if(istype(W,/obj/item/reagent_containers/syringe))	//TODO: Make this actually empty the syringe
 		var/obj/item/reagent_containers/syringe/S = W
-		var/datum/reagent/blood/injected = locate() in S.reagents.reagent_list //Grab some blood
+		var/datum/reagent/blood/injected = locate() in S.reagents.lazy_expensive_dangerous_reagent_list() //Grab some blood
 		if(injected && injected.data)
 			loaded_dna = injected.data
 			S.reagents.remove_reagent("blood", injected.volume)

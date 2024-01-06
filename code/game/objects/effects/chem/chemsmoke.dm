@@ -79,8 +79,8 @@
 	var/whereLink = "<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>[where]</a>"
 
 	if(show_log)
-		if(carry.my_atom.fingerprintslast)
-			var/mob/M = get_mob_by_key(carry.my_atom.fingerprintslast)
+		if(carry.attached.fingerprintslast)
+			var/mob/M = get_mob_by_key(carry.attached.fingerprintslast)
 			var/more = ""
 			if(M)
 				more = "(<A HREF='?_src_=holder;adminmoreinfo=\ref[M]'>?</a>)"
@@ -99,7 +99,7 @@
 	if(!location)
 		return
 
-	if(chemholder.reagents.reagent_list.len) //reagent application - only run if there are extra reagents in the smoke
+	if(!chemholder.reagents.is_empty()) //reagent application - only run if there are extra reagents in the smoke
 		for(var/turf/T in wallList)
 			chemholder.reagents.touch_turf(T)
 		for(var/turf/T in targetTurfs)

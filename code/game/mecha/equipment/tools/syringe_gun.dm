@@ -133,7 +133,7 @@
 	if(top_filter.get("purge_reagent"))
 		var/reagent = top_filter.get("purge_reagent")
 		if(reagent)
-			reagents.del_reagent(reagent)
+			reagents.remove_reagent(reagent)
 		return
 	if(top_filter.get("purge_all"))
 		reagents.clear_reagents()

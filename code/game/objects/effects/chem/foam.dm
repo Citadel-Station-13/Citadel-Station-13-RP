@@ -69,8 +69,8 @@
 		if(!metal)
 			F.create_reagents(10)
 			if(reagents)
-				for(var/datum/reagent/R in reagents.reagent_list)
-					F.reagents.add_reagent(R.id, 1, safety = 1) //added safety check since reagents in the foam have already had a chance to react
+				for(var/datum/reagent/R in reagents.lazy_expensive_dangerous_reagent_list())
+					F.reagents.add_reagent(R.id, 1, defer_reactions = TRUE) //added safety check since reagents in the foam have already had a chance to react
 
 /obj/effect/foam/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume) // foam disolves when heated, except metal foams
 	if(!metal && prob(max(0, exposed_temperature - 475)))
@@ -110,7 +110,7 @@
 	// bit of a hack here. Foam carries along any reagent also present in the glass it is mixed with (defaults to water if none is present). Rather than actually transfer the reagents, this makes a list of the reagent ids and spawns 1 unit of that reagent when the foam disolves.
 
 	if(carry && !metal)
-		for(var/datum/reagent/R in carry.reagent_list)
+		for(var/datum/reagent/R in carry.lazy_expensive_dangerous_reagent_list())
 			carried_reagents += R.id
 
 /datum/effect_system/foam_spread/start()
@@ -128,9 +128,9 @@
 
 			if(carried_reagents)
 				for(var/id in carried_reagents)
-					F.reagents.add_reagent(id, 1, safety = 1) //makes a safety call because all reagents should have already reacted anyway
+					F.reagents.add_reagent(id, 1, defer_reactions = TRUE) //makes a safety call because all reagents should have already reacted anyway
 			else
-				F.reagents.add_reagent("water", 1, safety = 1)
+				F.reagents.add_reagent("water", 1, defer_reactions = TRUE)
 
 // wall formed by metal foams, dense and opaque, but easy to break
 

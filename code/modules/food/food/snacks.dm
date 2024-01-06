@@ -990,7 +990,7 @@
 		spawn(4200)
 			src.warm = 0
 			for(var/reagent in heated_reagents)
-				src.reagents.del_reagent(reagent)
+				src.reagents.remove_reagent(reagent)
 			src.name = initial(name)
 	return
 

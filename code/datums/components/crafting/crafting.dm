@@ -147,7 +147,7 @@
 			if(istype(I, /obj/item/reagent_containers))
 				var/obj/item/reagent_containers/RC = I
 				if(RC.is_open_container())
-					for(var/datum/reagent/A in RC.reagents.reagent_list)
+					for(var/datum/reagent/A in RC.reagents.lazy_expensive_dangerous_reagent_list())
 						.["other"][A.type] += A.volume
 			.["other"][I.type] += 1
 

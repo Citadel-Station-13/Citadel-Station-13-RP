@@ -525,7 +525,7 @@
 	for(var/turf/simulated/floor/target_tile in range(0,location))
 		target_tile.assume_gas(GAS_ID_VOLATILE_FUEL, created_volume, 400+T0C)
 		spawn (0) target_tile.hotspot_expose(700, 400)
-	holder.del_reagent("napalm")
+	holder.remove_reagent("napalm")
 	return
 
 /datum/chemical_reaction/chemsmoke

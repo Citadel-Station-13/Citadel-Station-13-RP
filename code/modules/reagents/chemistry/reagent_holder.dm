@@ -64,9 +64,11 @@
 /**
  * please do not specify force_data unless you know what you are doing.
  * 
+ * defer_recalc implies defer_reactions.
+ * 
  * @return amount added
  */
-/datum/reagent_holder/proc/add_reagent(datum/reagent/reagentlike, amount, temperature, defer_recalc, list/force_data)
+/datum/reagent_holder/proc/add_reagent(datum/reagent/reagentlike, amount, temperature, defer_reactions, defer_recalc, list/force_data)
 	#warn audit data?
 	// we only care about id
 	if(ispath(reagentlike))
@@ -84,6 +86,8 @@
 	
 	var/existing_amount = reagent_volumes[id]
 
+	#warn temperature
+
 	if(existing_amount)
 		LAZYSET(reagent_datas, id, resolved.mix_data(src, reagent_datas[id], existing_amount, force_data, amount))
 		reagent_volumes[id] += amount
@@ -95,14 +99,17 @@
 	
 	if(!defer_recalc)
 		update_total()
-		consider_reactions()
+		if(!defer_reactions)
+			consider_reactions()
 	
 	attached?.on_reagent_change()
 	
 /**
+ * defer_recalc implies defer_reactions
+ * 
  * @return amount removed
  */
-/datum/reagent_holder/proc/remove_reagent(datum/reagent/reagentlike, amount, defer_recalc)
+/datum/reagent_holder/proc/remove_reagent(datum/reagent/reagentlike, amount, defer_reactions, defer_recalc)
 	#warn impl
 
 	attached?.on_reagent_change()
@@ -148,6 +155,9 @@
 
 /datum/reagent_holder/proc/is_full()
 	return total_volume >= maximum_volume
+
+/datum/reagent_holder/proc/is_empty()
+	return !length(reagent_volumes)
 
 /datum/reagent_holder/proc/has_reagent(datum/reagent/reagentlike, amount)
 	// we only care about id
@@ -211,25 +221,27 @@
 
 /datum/reagent_holder/proc/get_color()
 	// todo: cache this shit
-	if(!reagent_list || !reagent_list.len)
+	if(is_empty())
 		return "#ffffffff"
-	if(reagent_list.len == 1) // It's pretty common and saves a lot of work
-		var/datum/reagent/R = reagent_list[1]
+	if(length(reagent_volumes) == 1) // It's pretty common and saves a lot of work
+		var/datum/reagent/R = SSchemistry.fetch_reagent(reagent_volumes[1])
 		return R.color
 
 	var/list/colors = list(0, 0, 0, 0)
 	var/tot_w = 0
-	for(var/datum/reagent/R in reagent_list)
+	for(var/id in reagent_volumes)
+		var/datum/reagent/R = SSchemistry.fetch_reagent(id)
+		var/volume = reagent_volumes[id]
 		var/hex = uppertext(R.color)
 		if(length(hex) == 7)
 			hex += "FF"
 		if(length(hex) != 9) // PANIC PANIC PANIC
 			warning("Reagent [R.id] has an incorrect color set ([R.color])")
 			hex = "#FFFFFFFF"
-		colors[1] += hex2num(copytext(hex, 2, 4)) * R.volume * R.color_weight
-		colors[2] += hex2num(copytext(hex, 4, 6)) * R.volume * R.color_weight
-		colors[3] += hex2num(copytext(hex, 6, 8)) * R.volume * R.color_weight
-		colors[4] += hex2num(copytext(hex, 8, 10)) * R.volume * R.color_weight
+		colors[1] += hex2num(copytext(hex, 2, 4)) * volume * R.color_weight
+		colors[2] += hex2num(copytext(hex, 4, 6)) * volume * R.color_weight
+		colors[3] += hex2num(copytext(hex, 6, 8)) * volume * R.color_weight
+		colors[4] += hex2num(copytext(hex, 8, 10)) * volume * R.color_weight
 		tot_w += R.volume * R.color_weight
 
 	return rgb(colors[1] / tot_w, colors[2] / tot_w, colors[3] / tot_w, colors[4] / tot_w)
@@ -251,13 +263,30 @@
 			. = id
 	return SSchemistry.fetch_reagent(.)
 
+/datum/reagent_holder/proc/get_reagent_amount(datum/reagent/reagentlike)
+	if(ispath(reagentlike))
+		reagentlike = initial(reagentlike.id)
+	else if(!istext(reagentlike))
+		reagentlike = reagentlike.id
+	return reagent_volumes[reagentlike]
+
+/**
+ * @return list(reagent datum instance = volume)
+ * 
+ * returned instances **ARE IMMUTABLE.**
+ */
+/datum/reagent_holder/proc/lazy_expensive_dangerous_reagent_list()
+	var/list/built = list()
+	for(var/id in reagent_volumes)
+		var/datum/reagent/resolved = SSchemistry.fetch_reagent(id)
+		built[resolved] = reagent_volumes[id]
+	return built
+
 /**
  * returns volume remaining
  */
 /datum/reagent_holder/proc/available_volume()
 	return maximum_volume - total_volume
-
-#warn make those
 
 //* Reactions *//
 
@@ -370,15 +399,6 @@
 			return 1
 	return 0
 
-/datum/reagent_holder/proc/del_reagent(id)
-	for(var/datum/reagent/current in reagent_list)
-		if (current.id == id)
-			reagent_list -= current
-			qdel(current)
-			update_total()
-			if(my_atom)
-				my_atom.on_reagent_change()
-			return 0
 
 /datum/reagent_holder/proc/get_reagents()
 	. = list()

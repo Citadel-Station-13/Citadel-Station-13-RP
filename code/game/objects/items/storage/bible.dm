@@ -26,7 +26,7 @@
 		if(target.reagents && target.reagents.has_reagent("water")) //blesses all the water in the holder
 			to_chat(user, "<span class='notice'>You bless [target].</span>")
 			var/water2holy = target.reagents.get_reagent_amount("water")
-			target.reagents.del_reagent("water")
+			target.reagents.remove_reagent("water")
 			target.reagents.add_reagent("holywater",water2holy)
 
 /obj/item/storage/bible/attackby(obj/item/W as obj, mob/user as mob)
