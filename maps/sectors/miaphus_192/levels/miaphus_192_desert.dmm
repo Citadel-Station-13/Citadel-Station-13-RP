@@ -12,7 +12,7 @@
 /turf/simulated/floor/water,
 /area/tether_away/beach/desert/explored)
 "gz" = (
-/turf/unsimulated/mineral,
+/turf/unsimulated/mineral/outdoors,
 /area/tether_away/beach/desert/explored)
 "hw" = (
 /turf/simulated/floor/water/shoreline/corner,
@@ -37,15 +37,6 @@
 /turf/simulated/mineral/ignore_mapgen,
 /area/tether_away/beach/desert/explored)
 "lX" = (
-/turf/simulated/mineral/floor/cave{
-	name = "dirt";
-	outdoors = 1
-	},
-/area/tether_away/beach/desert/explored)
-"mV" = (
-/obj/effect/map_effect/portal/line/side_a{
-	dir = 8
-	},
 /turf/simulated/mineral/floor/cave{
 	name = "dirt";
 	outdoors = 1
@@ -119,9 +110,6 @@
 	outdoors = 1
 	},
 /area/tether_away/beach/desert/explored)
-"wg" = (
-/turf/unsimulated/wall/planetary/desert/standard_temp,
-/area/tether_away/beach/desert/explored)
 "wH" = (
 /obj/item/pickaxe,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
@@ -158,17 +146,6 @@
 /obj/item/ammo_casing/spent{
 	pixel_x = 5;
 	pixel_y = 7
-	},
-/turf/simulated/mineral/floor/cave{
-	name = "dirt";
-	outdoors = 1
-	},
-/area/tether_away/beach/desert/explored)
-"zQ" = (
-/obj/effect/map_effect/portal/master/side_a{
-	dir = 8;
-	name = "desert to caves";
-	portal_id = "V4_cave_desert_step"
 	},
 /turf/simulated/mineral/floor/cave{
 	name = "dirt";
@@ -231,10 +208,10 @@
 /area/tether_away/beach/desert/unexplored)
 "Kt" = (
 /obj/item/bone/skull/tajaran,
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/plating/external,
 /area/tether_away/beach/desert/explored)
 "LF" = (
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/plating/external,
 /area/tether_away/beach/desert/explored)
 "Mc" = (
 /obj/machinery/light/small/flicker{
@@ -252,12 +229,12 @@
 /area/tether_away/beach/desert/explored)
 "Mv" = (
 /obj/random/trash,
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/plating/external,
 /area/tether_away/beach/desert/explored)
 "Nx" = (
 /obj/random/humanoidremains,
 /obj/effect/debris/cleanable/blood,
-/turf/simulated/floor/tiled/outdoors,
+/turf/simulated/floor/tiled/external,
 /area/tether_away/beach/desert/explored)
 "NW" = (
 /obj/machinery/light/small,
@@ -274,12 +251,12 @@
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/tether_away/beach/desert/explored)
 "OI" = (
-/turf/simulated/floor/tiled/outdoors,
+/turf/simulated/floor/tiled/external,
 /area/tether_away/beach/desert/explored)
 "OO" = (
 /obj/random/humanoidremains,
 /obj/effect/debris/cleanable/blood,
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/plating/external,
 /area/tether_away/beach/desert/explored)
 "Rb" = (
 /obj/item/ammo_casing/spent{
@@ -300,210 +277,193 @@
 /obj/machinery/light/small/flicker{
 	dir = 4
 	},
-/turf/simulated/floor/plating/outdoors,
-/area/tether_away/beach/desert/explored)
-"ST" = (
-/obj/effect/map_effect/portal/master/side_b{
-	dir = 1;
-	name = "V4_desert_to_beach";
-	portal_id = "V4_desert_step"
-	},
-/turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/explored)
-"UP" = (
-/obj/effect/map_effect/portal/line/side_b{
-	dir = 1
-	},
-/turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/explored)
-"WT" = (
-/obj/effect/map_effect/portal/line/side_b{
-	dir = 1
-	},
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/floor/plating/external,
 /area/tether_away/beach/desert/explored)
 "XZ" = (
 /turf/simulated/mineral/ignore_mapgen/classh,
 /area/tether_away/beach/desert/explored)
+"Zs" = (
+/turf/level_border,
+/area/tether_away/beach/desert/explored)
 
 (1,1,1) = {"
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
-wg
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
+gz
 gz
 gz
 gz
@@ -521,7 +481,7 @@ gz
 gz
 "}
 (2,1,1) = {"
-wg
+gz
 kK
 kK
 kK
@@ -715,7 +675,7 @@ XZ
 gz
 "}
 (3,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -909,7 +869,7 @@ XZ
 gz
 "}
 (4,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -1103,7 +1063,7 @@ XZ
 gz
 "}
 (5,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -1297,7 +1257,7 @@ XZ
 gz
 "}
 (6,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -1491,7 +1451,7 @@ XZ
 gz
 "}
 (7,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -1685,7 +1645,7 @@ XZ
 gz
 "}
 (8,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -1879,7 +1839,7 @@ XZ
 gz
 "}
 (9,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -2073,7 +2033,7 @@ XZ
 gz
 "}
 (10,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -2267,7 +2227,7 @@ XZ
 gz
 "}
 (11,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -2461,7 +2421,7 @@ XZ
 gz
 "}
 (12,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -2655,7 +2615,7 @@ XZ
 gz
 "}
 (13,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -2849,7 +2809,7 @@ XZ
 gz
 "}
 (14,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -3043,7 +3003,7 @@ XZ
 gz
 "}
 (15,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -3237,7 +3197,7 @@ XZ
 gz
 "}
 (16,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -3431,7 +3391,7 @@ XZ
 gz
 "}
 (17,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -3625,7 +3585,7 @@ XZ
 gz
 "}
 (18,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -3819,7 +3779,7 @@ XZ
 gz
 "}
 (19,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -4013,7 +3973,7 @@ XZ
 gz
 "}
 (20,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -4207,7 +4167,7 @@ XZ
 gz
 "}
 (21,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -4401,7 +4361,7 @@ XZ
 gz
 "}
 (22,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -4595,7 +4555,7 @@ XZ
 gz
 "}
 (23,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -4789,7 +4749,7 @@ XZ
 gz
 "}
 (24,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -4983,7 +4943,7 @@ XZ
 gz
 "}
 (25,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -5177,7 +5137,7 @@ XZ
 gz
 "}
 (26,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -5371,7 +5331,7 @@ XZ
 gz
 "}
 (27,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -5565,7 +5525,7 @@ XZ
 gz
 "}
 (28,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -5759,7 +5719,7 @@ XZ
 gz
 "}
 (29,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -5953,7 +5913,7 @@ XZ
 gz
 "}
 (30,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -6147,7 +6107,7 @@ XZ
 gz
 "}
 (31,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -6341,7 +6301,7 @@ XZ
 gz
 "}
 (32,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -6535,7 +6495,7 @@ XZ
 gz
 "}
 (33,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -6729,7 +6689,7 @@ XZ
 gz
 "}
 (34,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -6923,7 +6883,7 @@ XZ
 gz
 "}
 (35,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -7117,7 +7077,7 @@ XZ
 gz
 "}
 (36,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -7311,7 +7271,7 @@ XZ
 gz
 "}
 (37,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -7505,7 +7465,7 @@ XZ
 gz
 "}
 (38,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -7699,7 +7659,7 @@ XZ
 gz
 "}
 (39,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -7893,7 +7853,7 @@ XZ
 gz
 "}
 (40,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -8087,7 +8047,7 @@ XZ
 gz
 "}
 (41,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -8281,7 +8241,7 @@ XZ
 gz
 "}
 (42,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -8475,7 +8435,7 @@ XZ
 gz
 "}
 (43,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -8669,7 +8629,7 @@ XZ
 gz
 "}
 (44,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -8863,7 +8823,7 @@ XZ
 gz
 "}
 (45,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -9057,7 +9017,7 @@ XZ
 gz
 "}
 (46,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -9251,7 +9211,7 @@ XZ
 gz
 "}
 (47,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -9445,7 +9405,7 @@ XZ
 gz
 "}
 (48,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -9639,7 +9599,7 @@ XZ
 gz
 "}
 (49,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -9833,7 +9793,7 @@ XZ
 gz
 "}
 (50,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -10027,7 +9987,7 @@ XZ
 gz
 "}
 (51,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -10221,7 +10181,7 @@ XZ
 gz
 "}
 (52,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -10415,7 +10375,7 @@ XZ
 gz
 "}
 (53,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -10609,7 +10569,7 @@ XZ
 gz
 "}
 (54,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -10803,7 +10763,7 @@ XZ
 gz
 "}
 (55,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -10997,7 +10957,7 @@ XZ
 gz
 "}
 (56,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -11191,7 +11151,7 @@ XZ
 gz
 "}
 (57,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -11385,7 +11345,7 @@ XZ
 gz
 "}
 (58,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -11579,7 +11539,7 @@ XZ
 gz
 "}
 (59,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -11773,7 +11733,7 @@ XZ
 gz
 "}
 (60,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -11967,7 +11927,7 @@ XZ
 gz
 "}
 (61,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -12161,7 +12121,7 @@ XZ
 gz
 "}
 (62,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -12355,7 +12315,7 @@ XZ
 gz
 "}
 (63,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -12549,7 +12509,7 @@ XZ
 gz
 "}
 (64,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -12743,7 +12703,7 @@ XZ
 gz
 "}
 (65,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -12937,7 +12897,7 @@ XZ
 gz
 "}
 (66,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -13131,7 +13091,7 @@ XZ
 gz
 "}
 (67,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -13325,7 +13285,7 @@ XZ
 gz
 "}
 (68,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -13519,7 +13479,7 @@ XZ
 gz
 "}
 (69,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -13713,7 +13673,7 @@ XZ
 gz
 "}
 (70,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -13907,7 +13867,7 @@ XZ
 gz
 "}
 (71,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -14101,7 +14061,7 @@ XZ
 gz
 "}
 (72,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -14295,7 +14255,7 @@ XZ
 gz
 "}
 (73,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -14489,7 +14449,7 @@ XZ
 gz
 "}
 (74,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -14683,7 +14643,7 @@ XZ
 gz
 "}
 (75,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -14877,7 +14837,7 @@ XZ
 gz
 "}
 (76,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -15071,7 +15031,7 @@ XZ
 gz
 "}
 (77,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -15265,7 +15225,7 @@ XZ
 gz
 "}
 (78,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -15459,7 +15419,7 @@ XZ
 gz
 "}
 (79,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -15653,7 +15613,7 @@ XZ
 gz
 "}
 (80,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -15847,7 +15807,7 @@ XZ
 gz
 "}
 (81,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -16041,7 +16001,7 @@ XZ
 gz
 "}
 (82,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -16235,7 +16195,7 @@ XZ
 gz
 "}
 (83,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -16429,7 +16389,7 @@ XZ
 gz
 "}
 (84,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -16623,7 +16583,7 @@ XZ
 gz
 "}
 (85,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -16817,7 +16777,7 @@ XZ
 gz
 "}
 (86,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -17011,7 +16971,7 @@ XZ
 gz
 "}
 (87,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -17205,7 +17165,7 @@ XZ
 gz
 "}
 (88,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -17399,7 +17359,7 @@ XZ
 gz
 "}
 (89,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -17593,7 +17553,7 @@ XZ
 gz
 "}
 (90,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -17787,7 +17747,7 @@ XZ
 gz
 "}
 (91,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -17981,7 +17941,7 @@ XZ
 gz
 "}
 (92,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -18175,7 +18135,7 @@ XZ
 gz
 "}
 (93,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -18369,7 +18329,7 @@ XZ
 gz
 "}
 (94,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -18563,7 +18523,7 @@ XZ
 gz
 "}
 (95,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -18757,7 +18717,7 @@ XZ
 gz
 "}
 (96,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -18951,7 +18911,7 @@ XZ
 gz
 "}
 (97,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -19145,7 +19105,7 @@ XZ
 gz
 "}
 (98,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -19339,7 +19299,7 @@ XZ
 gz
 "}
 (99,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -19533,7 +19493,7 @@ XZ
 gz
 "}
 (100,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -19727,7 +19687,7 @@ XZ
 gz
 "}
 (101,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -19921,7 +19881,7 @@ XZ
 gz
 "}
 (102,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -20115,7 +20075,7 @@ XZ
 gz
 "}
 (103,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -20309,7 +20269,7 @@ XZ
 gz
 "}
 (104,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -20503,7 +20463,7 @@ XZ
 gz
 "}
 (105,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -20697,7 +20657,7 @@ XZ
 gz
 "}
 (106,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -20891,7 +20851,7 @@ XZ
 gz
 "}
 (107,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -21085,7 +21045,7 @@ XZ
 gz
 "}
 (108,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -21279,7 +21239,7 @@ XZ
 gz
 "}
 (109,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -21473,7 +21433,7 @@ XZ
 gz
 "}
 (110,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -21667,7 +21627,7 @@ XZ
 gz
 "}
 (111,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -21861,7 +21821,7 @@ XZ
 gz
 "}
 (112,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -22055,7 +22015,7 @@ XZ
 gz
 "}
 (113,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -22249,7 +22209,7 @@ XZ
 gz
 "}
 (114,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -22443,7 +22403,7 @@ XZ
 gz
 "}
 (115,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -22637,7 +22597,7 @@ XZ
 gz
 "}
 (116,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -22831,7 +22791,7 @@ XZ
 gz
 "}
 (117,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -23025,7 +22985,7 @@ XZ
 gz
 "}
 (118,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -23219,7 +23179,7 @@ XZ
 gz
 "}
 (119,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -23413,7 +23373,7 @@ XZ
 gz
 "}
 (120,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -23607,7 +23567,7 @@ XZ
 gz
 "}
 (121,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -23801,7 +23761,7 @@ XZ
 gz
 "}
 (122,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -23995,7 +23955,7 @@ XZ
 gz
 "}
 (123,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -24189,7 +24149,7 @@ XZ
 gz
 "}
 (124,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -24383,7 +24343,7 @@ XZ
 gz
 "}
 (125,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -24577,7 +24537,7 @@ XZ
 gz
 "}
 (126,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -24771,7 +24731,7 @@ XZ
 gz
 "}
 (127,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -24965,7 +24925,7 @@ XZ
 gz
 "}
 (128,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -25159,7 +25119,7 @@ XZ
 gz
 "}
 (129,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -25353,7 +25313,7 @@ XZ
 gz
 "}
 (130,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -25547,7 +25507,7 @@ XZ
 gz
 "}
 (131,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -25741,7 +25701,7 @@ XZ
 gz
 "}
 (132,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -25935,7 +25895,7 @@ XZ
 gz
 "}
 (133,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -26129,7 +26089,7 @@ XZ
 gz
 "}
 (134,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -26323,7 +26283,7 @@ XZ
 gz
 "}
 (135,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -26517,7 +26477,7 @@ XZ
 gz
 "}
 (136,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -26711,7 +26671,7 @@ XZ
 gz
 "}
 (137,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -26905,7 +26865,7 @@ XZ
 gz
 "}
 (138,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -27099,7 +27059,7 @@ XZ
 gz
 "}
 (139,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -27293,7 +27253,7 @@ XZ
 gz
 "}
 (140,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -27487,7 +27447,7 @@ XZ
 gz
 "}
 (141,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -27681,7 +27641,7 @@ XZ
 gz
 "}
 (142,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -27875,7 +27835,7 @@ XZ
 gz
 "}
 (143,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -28069,7 +28029,7 @@ XZ
 gz
 "}
 (144,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -28263,7 +28223,7 @@ XZ
 gz
 "}
 (145,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -28457,7 +28417,7 @@ XZ
 gz
 "}
 (146,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -28651,7 +28611,7 @@ XZ
 gz
 "}
 (147,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -28845,7 +28805,7 @@ XZ
 gz
 "}
 (148,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -29039,7 +28999,7 @@ XZ
 gz
 "}
 (149,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -29233,7 +29193,7 @@ XZ
 gz
 "}
 (150,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -29427,7 +29387,7 @@ XZ
 gz
 "}
 (151,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -29621,7 +29581,7 @@ XZ
 gz
 "}
 (152,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -29815,7 +29775,7 @@ XZ
 gz
 "}
 (153,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -30009,7 +29969,7 @@ XZ
 gz
 "}
 (154,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -30203,7 +30163,7 @@ XZ
 gz
 "}
 (155,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -30397,7 +30357,7 @@ XZ
 gz
 "}
 (156,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -30591,7 +30551,7 @@ XZ
 gz
 "}
 (157,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -30785,7 +30745,7 @@ XZ
 gz
 "}
 (158,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -30979,7 +30939,7 @@ XZ
 gz
 "}
 (159,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -31173,7 +31133,7 @@ XZ
 gz
 "}
 (160,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -31367,7 +31327,7 @@ XZ
 gz
 "}
 (161,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -31561,7 +31521,7 @@ XZ
 gz
 "}
 (162,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -31755,7 +31715,7 @@ XZ
 gz
 "}
 (163,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -31949,7 +31909,7 @@ XZ
 gz
 "}
 (164,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -32143,7 +32103,7 @@ XZ
 gz
 "}
 (165,1,1) = {"
-wg
+gz
 kK
 JW
 JW
@@ -35437,7 +35397,7 @@ Js
 kK
 lf
 lf
-gz
+XZ
 gz
 "}
 (182,1,1) = {"
@@ -35631,8 +35591,8 @@ CM
 kK
 kK
 kK
-ST
-wg
+XZ
+gz
 "}
 (183,1,1) = {"
 gz
@@ -35825,8 +35785,8 @@ kK
 kK
 kK
 kK
-UP
-wg
+XZ
+gz
 "}
 (184,1,1) = {"
 gz
@@ -36019,8 +35979,8 @@ kK
 kK
 CM
 kK
-UP
-wg
+XZ
+gz
 "}
 (185,1,1) = {"
 gz
@@ -36213,8 +36173,8 @@ kK
 kK
 CM
 CM
-UP
-wg
+XZ
+gz
 "}
 (186,1,1) = {"
 gz
@@ -36395,20 +36355,20 @@ Dc
 Dc
 Dc
 Dc
+kK
+kK
+Dc
+Dc
+Dc
+Dc
+Dc
+kK
+kK
+kK
+kK
+kK
 XZ
-XZ
-Dc
-Dc
-Dc
-Dc
-Dc
-kK
-kK
-kK
-kK
-kK
-UP
-wg
+gz
 "}
 (187,1,1) = {"
 gz
@@ -36588,10 +36548,10 @@ XZ
 XZ
 XZ
 XZ
-XZ
-XZ
-XZ
-XZ
+kK
+kK
+kK
+kK
 XZ
 XZ
 XZ
@@ -36601,8 +36561,8 @@ kK
 kK
 kK
 kK
-WT
-wg
+XZ
+gz
 "}
 (188,1,1) = {"
 XZ
@@ -36781,11 +36741,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
-XZ
-XZ
-XZ
-XZ
+kK
+kK
+kK
+kK
+kK
 XZ
 XZ
 XZ
@@ -36795,8 +36755,8 @@ XZ
 kK
 kK
 kK
-UP
-wg
+XZ
+gz
 "}
 (189,1,1) = {"
 gz
@@ -36855,7 +36815,7 @@ gz
 XZ
 XZ
 XZ
-lX
+XZ
 lX
 lX
 vr
@@ -36975,6 +36935,11 @@ XZ
 XZ
 XZ
 XZ
+kK
+kK
+kK
+kK
+kK
 XZ
 XZ
 XZ
@@ -36985,11 +36950,6 @@ XZ
 XZ
 XZ
 XZ
-XZ
-XZ
-XZ
-XZ
-gz
 gz
 "}
 (190,1,1) = {"
@@ -37049,11 +37009,12 @@ gz
 XZ
 XZ
 XZ
-lX
+XZ
 of
 lX
 lX
 wb
+lX
 XZ
 XZ
 XZ
@@ -37168,12 +37129,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
-XZ
-XZ
-XZ
-XZ
-XZ
+kK
+kK
+kK
+kK
+kK
 XZ
 XZ
 XZ
@@ -37243,14 +37203,13 @@ gz
 XZ
 XZ
 gz
-mV
-mV
-mV
-mV
-zQ
-gz
 XZ
 XZ
+lX
+lX
+lX
+lX
+lX
 XZ
 XZ
 XZ
@@ -37364,10 +37323,11 @@ XZ
 XZ
 XZ
 XZ
-XZ
-XZ
-XZ
-XZ
+kK
+kK
+kK
+kK
+kK
 XZ
 XZ
 XZ
@@ -37439,6 +37399,11 @@ gz
 gz
 gz
 gz
+Zs
+Zs
+Zs
+Zs
+Zs
 gz
 gz
 gz
@@ -37552,16 +37517,11 @@ gz
 gz
 gz
 gz
-gz
-gz
-gz
-gz
-gz
-gz
-gz
-gz
-gz
-gz
+Zs
+Zs
+Zs
+Zs
+Zs
 gz
 gz
 gz
