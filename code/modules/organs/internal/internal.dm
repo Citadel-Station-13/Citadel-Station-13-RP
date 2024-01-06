@@ -58,7 +58,7 @@
 	. = ..() //Should be an interger value for infection level
 	if(!.) return
 
-	var/antibiotics = owner.chem_effects[CE_ANTIBIOTIC]
+	var/antibiotics = owner.chem_effects[CHEMICAL_EFFECT_ANTIBIOTIC]
 
 	if(. >= 2 && antibiotics < ANTIBIO_NORM) //INFECTION_LEVEL_TWO
 		if (prob(3))

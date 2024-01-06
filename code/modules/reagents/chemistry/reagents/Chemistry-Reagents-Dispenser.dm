@@ -47,10 +47,10 @@
 		strength_mod *=5 //cit change - alcohol ain't good for plants
 
 	var/effective_dose = dose * strength_mod * (1 + volume/60) //drinking a LOT will make you go down faster
-	M.add_chemical_effect(CE_ALCOHOL, 1)
+	M.add_chemical_effect(CHEMICAL_EFFECT_ALCOHOL, 1)
 	if(HAS_TRAIT(M, TRAIT_ALCOHOL_INTOLERANT))
 		if(prob(effective_dose/10))
-			M.add_chemical_effect(CE_ALCOHOL_TOXIC, 1)
+			M.add_chemical_effect(CHEMICAL_EFFECT_ALCOHOL_TOXIC, 1)
 		M.adjustToxLoss(effective_dose/10)
 		return 0
 	if(effective_dose >= strength) // Early warning
@@ -64,7 +64,7 @@
 	if(effective_dose >= strength * 5) // Drowsyness - periodically falling asleep
 		M.drowsyness = max(M.drowsyness, 60)
 	if(effective_dose >= strength * 6) // Toxic dose
-		M.add_chemical_effect(CE_ALCOHOL_TOXIC, toxicity*3)
+		M.add_chemical_effect(CHEMICAL_EFFECT_ALCOHOL_TOXIC, toxicity*3)
 	if(effective_dose >= strength * 7) // Pass out
 		M.afflict_unconscious(20 * 60)
 		M.afflict_sleeping(20 * 90)
@@ -103,10 +103,10 @@
 	var/effective_dose = strength_mod * dose // this was being recalculated a bunch before--why?
 	if(HAS_TRAIT(M, TRAIT_ALCOHOL_INTOLERANT))
 		if(prob(effective_dose/10))
-			M.add_chemical_effect(CE_ALCOHOL_TOXIC, 1)
+			M.add_chemical_effect(CHEMICAL_EFFECT_ALCOHOL_TOXIC, 1)
 		M.adjustToxLoss(effective_dose/10)
 		return 0
-	M.add_chemical_effect(CE_ALCOHOL, 1)
+	M.add_chemical_effect(CHEMICAL_EFFECT_ALCOHOL, 1)
 	if(effective_dose >= strength) // Early warning
 		M.make_dizzy(6) // It is decreased at the speed of 3 per tick
 	if(effective_dose >= strength * 2) // Slurring
@@ -118,7 +118,7 @@
 	if(effective_dose >= strength * 5) // Drowsyness - periodically falling asleep
 		M.drowsyness = max(M.drowsyness, 20)
 	if(effective_dose >= strength * 6) // Toxic dose
-		M.add_chemical_effect(CE_ALCOHOL_TOXIC, toxicity)
+		M.add_chemical_effect(CHEMICAL_EFFECT_ALCOHOL_TOXIC, toxicity)
 	if(effective_dose >= strength * 7) // Pass out
 		M.afflict_unconscious(20 * 20)
 		M.afflict_sleeping(20 * 30)

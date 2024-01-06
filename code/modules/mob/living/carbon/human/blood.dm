@@ -8,7 +8,7 @@ var/const/BLOOD_VOLUME_SAFE =    85
 var/const/BLOOD_VOLUME_OKAY =    75
 var/const/BLOOD_VOLUME_BAD =     60
 var/const/BLOOD_VOLUME_SURVIVE = 40
-var/const/CE_STABLE_THRESHOLD = 0.5
+var/const/CHEMICAL_EFFECT_STABLE_THRESHOLD = 0.5
 */
 
 /mob/living/carbon/human/var/datum/reagent_holder/vessel // Container for blood and BLOOD ONLY. Do not transfer other chems here.
@@ -72,8 +72,8 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 							break
 
 				B.volume += 0.1 // regenerate blood VERY slowly
-				if(CE_BLOODRESTORE in chem_effects)
-					B.volume += chem_effects[CE_BLOODRESTORE]
+				if(CHEMICAL_EFFECT_BLOODRESTORE in chem_effects)
+					B.volume += chem_effects[CHEMICAL_EFFECT_BLOODRESTORE]
 
 		// Damaged heart virtually reduces the blood volume, as the blood isn't
 		// being pumped properly anymore.
@@ -93,13 +93,13 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 		var/dmg_coef = 1				//Lower means less damage taken
 		var/threshold_coef = 1			//Lower means the damage caps off lower
 
-		if((CE_STABLE in chem_effects) || stabilization)
+		if((CHEMICAL_EFFECT_STABLE in chem_effects) || stabilization)
 			dmg_coef *= 0.5
 			threshold_coef *= 0.75
 
 //	These are Bay bits, do some sort of calculation.
-//			dmg_coef = min(1, 10/chem_effects[CE_STABLE]) //TODO: add effect for increased damage
-//			threshold_coef = min(dmg_coef / CE_STABLE_THRESHOLD, 1)
+//			dmg_coef = min(1, 10/chem_effects[CHEMICAL_EFFECT_STABLE]) //TODO: add effect for increased damage
+//			threshold_coef = min(dmg_coef / CHEMICAL_EFFECT_STABLE_THRESHOLD, 1)
 
 		if(blood_volume_raw >= species.blood_volume*species.blood_level_safe)
 			if(pale)
@@ -182,7 +182,7 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 						blood_loss_divisor = max(blood_loss_divisor + 5, 1)
 					else if((temp.organ_tag == BP_L_HAND) || (temp.organ_tag == BP_R_HAND) || (temp.organ_tag == BP_L_FOOT) || (temp.organ_tag == BP_R_FOOT))
 						blood_loss_divisor = max(blood_loss_divisor + 10, 1)
-					if(CE_STABLE in chem_effects)	//Inaprov slows bloodloss
+					if(CHEMICAL_EFFECT_STABLE in chem_effects)	//Inaprov slows bloodloss
 						blood_loss_divisor = max(blood_loss_divisor + 10, 1)
 					if(temp.applied_pressure)
 						if(ishuman(temp.applied_pressure))

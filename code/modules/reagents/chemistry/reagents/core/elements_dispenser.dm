@@ -100,7 +100,7 @@
 
 /datum/reagent/iron/affect_ingest(mob/living/carbon/M, alien, removed)
 	if(alien != IS_DIONA)
-		M.add_chemical_effect(CE_BLOODRESTORE, 8 * removed)
+		M.add_chemical_effect(CHEMICAL_EFFECT_BLOODRESTORE, 8 * removed)
 
 /datum/reagent/lithium
 	name = "Lithium"

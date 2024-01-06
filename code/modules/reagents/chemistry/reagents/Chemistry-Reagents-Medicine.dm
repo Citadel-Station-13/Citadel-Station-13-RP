@@ -34,7 +34,7 @@
 
 /datum/reagent/calciumcarbonate/affect_ingest(mob/living/carbon/M, alien, removed)
 	if(alien != IS_DIONA)
-		M.add_chemical_effect(CE_ANTACID, 3)//Antipuke effect
+		M.add_chemical_effect(CHEMICAL_EFFECT_ANTACID, 3)//Antipuke effect
 
 /datum/reagent/carthatoline
 	name = "Carthatoline"
@@ -87,7 +87,7 @@
 	M.adjustCloneLoss(-2 * removed * chem_effective)
 	M.druggy = max(M.druggy, 40)
 	M.adjustBrainLoss(1 * removed) //your life for your mind. The Earthmother's Tithe.
-	M.ceiling_chemical_effect(CE_PAINKILLER, 120 * chem_effective) //It's just a burning memory. The pain, I mean.
+	M.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 120 * chem_effective) //It's just a burning memory. The pain, I mean.
 
 
 /* Painkillers */
@@ -105,7 +105,7 @@
 	scannable = 0 //Let's not have medical mechs able to make an extremely strong organic painkiller
 
 /datum/reagent/numbing_enzyme/affect_blood(mob/living/carbon/M, alien, removed)
-	M.ceiling_chemical_effect(CE_PAINKILLER, 200)//Similar to Oxycodone
+	M.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 200)//Similar to Oxycodone
 	if(prob(0.01)) //1 in 10000 chance per tick. Extremely rare.
 		to_chat(M,"<span class='warning'>Your body feels numb as a light, tingly sensation spreads throughout it, like some odd warmth.</span>")
 	//Not noted here, but a movement debuff of 1.5 is handed out in human_movement.dm when numbing_enzyme is in a person's bloodstream!
@@ -165,7 +165,7 @@
 	holder.remove_reagent("mindbreaker", 5)
 	M.hallucination = max(0, M.hallucination - 10)//Primary use
 	M.adjustToxLoss(5 * removed * chem_effective) // It used to be incredibly deadly due to an oversight. Not anymore!
-	M.ceiling_chemical_effect(CE_PAINKILLER, 20 * chem_effective)
+	M.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 20 * chem_effective)
 
 /datum/reagent/hyperzine
 	name = "Hyperzine"
@@ -187,7 +187,7 @@
 	..()
 	if(prob(5))
 		M.emote(pick("twitch", "blink_r", "shiver"))
-	M.add_chemical_effect(CE_SPEEDBOOST, 1)
+	M.add_chemical_effect(CHEMICAL_EFFECT_SPEEDBOOST, 1)
 
 /datum/reagent/alkysine
 	name = "Alkysine"
@@ -211,7 +211,7 @@
 		if(dose >= 10 && M.is_unconscious())
 			M.adjust_unconscious(20 * 1) //Messing with the core with a simple chemical probably isn't the best idea.
 	M.adjustBrainLoss(-8 * removed * chem_effective) //the Brain damage heal
-	M.ceiling_chemical_effect(CE_PAINKILLER, 10 * chem_effective)
+	M.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 10 * chem_effective)
 
 /datum/reagent/imidazoline
 	name = "Imidazoline"
@@ -260,7 +260,7 @@
 				H.eye_blurry = min(M.eye_blurry + 10, 100) //Eyes need to reset, or something
 				H.sdisabilities &= ~SDISABILITY_NERVOUS
 		if(alien == IS_SLIME)
-			H.ceiling_chemical_effect(CE_PAINKILLER, 20)
+			H.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 20)
 			if(prob(33))
 				H.Confuse(10)
 
@@ -285,7 +285,7 @@
 				H.eye_blurry = min(M.eye_blurry + 10, 100) //Eyes need to reset, or something
 				H.sdisabilities &= ~SDISABILITY_NERVOUS
 		if(alien == IS_SLIME)
-			H.ceiling_chemical_effect(CE_PAINKILLER, 20)
+			H.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 20)
 			if(prob(33))
 				H.Confuse(10)
 
@@ -695,7 +695,7 @@
 			if(world.time > data + delay)
 				data = world.time
 				to_chat(M, "<span class='warning'>Your senses feel unfocused, and divided.</span>")
-	M.add_chemical_effect(CE_ANTIBIOTIC, dose >= overdose ? ANTIBIO_OD : ANTIBIO_NORM)
+	M.add_chemical_effect(CHEMICAL_EFFECT_ANTIBIOTIC, dose >= overdose ? ANTIBIO_OD : ANTIBIO_NORM)
 
 /datum/reagent/spaceacillin/affect_touch(mob/living/carbon/M, alien, removed)
 	affect_blood(M, alien, removed * 0.8) // Not 100% as effective as injections, though still useful.
@@ -714,7 +714,7 @@
 
 /datum/reagent/corophizine/affect_blood(mob/living/carbon/M, alien, removed)
 	..()
-	M.add_chemical_effect(CE_ANTIBIOTIC, ANTIBIO_SUPER)
+	M.add_chemical_effect(CHEMICAL_EFFECT_ANTIBIOTIC, ANTIBIO_SUPER)
 
 	var/mob/living/carbon/human/H = M
 
@@ -782,7 +782,7 @@
 	can_overdose_touch = TRUE
 
 /datum/reagent/spacomycaze/affect_blood(mob/living/carbon/M, alien, removed)
-	M.ceiling_chemical_effect(CE_PAINKILLER, 10)
+	M.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 10)
 	M.adjustToxLoss(3 * removed)
 
 /datum/reagent/spacomycaze/affect_ingest(mob/living/carbon/M, alien, removed)
@@ -800,8 +800,8 @@
 				data = world.time
 				to_chat(M, "<span class='warning'>Your skin itches.</span>")
 
-	M.add_chemical_effect(CE_ANTIBIOTIC, dose >= overdose ? ANTIBIO_OD : ANTIBIO_NORM)
-	M.ceiling_chemical_effect(CE_PAINKILLER, 20) // 5 less than paracetamol.
+	M.add_chemical_effect(CHEMICAL_EFFECT_ANTIBIOTIC, dose >= overdose ? ANTIBIO_OD : ANTIBIO_NORM)
+	M.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 20) // 5 less than paracetamol.
 
 /datum/reagent/spacomycaze/touch_obj(obj/O)
 	if(istype(O, /obj/item/stack/medical/crude_pack) && round(volume) >= 1)

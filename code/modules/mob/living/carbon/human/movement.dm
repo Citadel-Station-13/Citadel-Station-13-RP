@@ -28,7 +28,7 @@
 		tally += health_deficiency * (100 / 35)
 
 	if(can_feel_pain())
-		if(!(CE_SPEEDBOOST in chem_effects)) //Hyperzine stops pain slowdown
+		if(!(CHEMICAL_EFFECT_SPEEDBOOST in chem_effects)) //Hyperzine stops pain slowdown
 			if(halloss >= 10)
 				tally += (halloss / 45) //halloss shouldn't slow you down if you can't even feel it
 
@@ -84,13 +84,13 @@
 	var/turf/T = get_turf(src)
 	tally += calculate_turf_slowdown(T, direct)
 
-	if(CE_SPEEDBOOST in chem_effects)
+	if(CHEMICAL_EFFECT_SPEEDBOOST in chem_effects)
 		tally -= 0.5
 
-	if(CE_SLOWDOWN in chem_effects)
+	if(CHEMICAL_EFFECT_SLOWDOWN in chem_effects)
 		if (tally >= 0 )
 			tally = (tally + tally/4) //Add a quarter of penalties on top.
-		tally += chem_effects[CE_SLOWDOWN]
+		tally += chem_effects[CHEMICAL_EFFECT_SLOWDOWN]
 
 	. = max(HUMAN_LOWEST_SLOWDOWN, tally + . + config_legacy.human_delay)	// Minimum return should be the same as force_max_speed
 

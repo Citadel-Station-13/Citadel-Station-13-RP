@@ -13,8 +13,8 @@
 
 /datum/reagent/inaprovaline/affect_blood(mob/living/carbon/M, alien, removed)
 	if(alien != IS_DIONA)
-		M.add_chemical_effect(CE_STABLE, 15)//Reduces bleeding rate, and allowes the patient to breath even when in shock
-		M.ceiling_chemical_effect(CE_PAINKILLER, 10)
+		M.add_chemical_effect(CHEMICAL_EFFECT_STABLE, 15)//Reduces bleeding rate, and allowes the patient to breath even when in shock
+		M.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 10)
 
 /datum/reagent/bicaridine
 	name = "Bicaridine"
@@ -122,7 +122,7 @@
 	if(alien == IS_ALRAUNE)
 		M.adjustToxLoss(removed * 10) //cit change: oxygen is waste for plants
 	else if(alien == IS_SLIME && dose >= 15)
-		M.ceiling_chemical_effect(CE_PAINKILLER, 15)
+		M.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 15)
 		if(prob(15))
 			to_chat(M, "<span class='notice'>You have a moment of clarity as you collapse.</span>")
 			M.adjustBrainLoss(-20 * removed) //Deals braindamage to promethians
@@ -149,7 +149,7 @@
 	if(alien == IS_ALRAUNE)
 		M.adjustToxLoss(removed * 5) //cit change: oxygen is waste for plants
 	else if(alien == IS_SLIME && dose >= 10)
-		M.ceiling_chemical_effect(CE_PAINKILLER, 25)
+		M.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 25)
 		if(prob(25))
 			to_chat(M, "<span class='notice'>You have a moment of clarity, as you feel your tubes lose pressure rapidly.</span>")
 			M.adjustBrainLoss(-8 * removed)//deals less braindamage than Dex

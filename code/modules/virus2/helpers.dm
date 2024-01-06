@@ -81,7 +81,7 @@
 	var/list/antibodies_in_common = M.antibodies & disease.antigen
 	if(antibodies_in_common.len)
 		return
-	if(M.chem_effects[CE_ANTIBIOTIC])
+	if(M.chem_effects[CHEMICAL_EFFECT_ANTIBIOTIC])
 		if(prob(disease.resistance))
 			var/datum/disease2/disease/D = disease.getcopy()
 			D.minormutate()

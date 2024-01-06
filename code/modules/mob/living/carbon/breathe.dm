@@ -16,7 +16,7 @@
 
 	//First, check if we can breathe at all
 	// cpr completely nullifies brainstem requirement
-	if(health < config_legacy.health_threshold_crit && !(CE_STABLE in chem_effects) && !stabilization) //crit aka circulatory shock
+	if(health < config_legacy.health_threshold_crit && !(CHEMICAL_EFFECT_STABLE in chem_effects) && !stabilization) //crit aka circulatory shock
 		AdjustLosebreath(1)
 
 	if(losebreath>0) //Suffocating so do not take a breath

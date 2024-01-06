@@ -91,14 +91,14 @@
 			majormutate()
 
 	//Space antibiotics have a good chance to stop disease completely
-	if(mob.chem_effects[CE_ANTIBIOTIC])
+	if(mob.chem_effects[CHEMICAL_EFFECT_ANTIBIOTIC])
 		if(stage == 1 && prob(70-resistance))
 			src.cure(mob)
 		else
 			resistance += rand(1,9)
 
 	// Corophazine can treat higher stages
-	var/antibiotics = mob.chem_effects[CE_ANTIBIOTIC]
+	var/antibiotics = mob.chem_effects[CHEMICAL_EFFECT_ANTIBIOTIC]
 	if(antibiotics == ANTIBIO_SUPER)
 		if(prob(70))
 			src.cure(mob)

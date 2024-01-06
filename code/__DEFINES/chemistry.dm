@@ -20,22 +20,22 @@
 //* We prefer reagent effect datums over this.
 
 /// Inaprovaline
-#define CE_STABLE "stable"
+#define CHEMICAL_EFFECT_STABLE "stable"
 /// Antibiotics
-#define CE_ANTIBIOTIC "antibiotic"
+#define CHEMICAL_EFFECT_ANTIBIOTIC "antibiotic"
 /// Iron/nutriment
-#define CE_BLOODRESTORE "bloodrestore"
-#define CE_PAINKILLER "painkiller"
+#define CHEMICAL_EFFECT_BLOODRESTORE "bloodrestore"
+#define CHEMICAL_EFFECT_PAINKILLER "painkiller"
 /// Liver filtering
-#define CE_ALCOHOL "alcohol"
+#define CHEMICAL_EFFECT_ALCOHOL "alcohol"
 /// Liver damage
-#define CE_ALCOHOL_TOXIC "alcotoxic"
+#define CHEMICAL_EFFECT_ALCOHOL_TOXIC "alcotoxic"
 /// Hyperzine
-#define CE_SPEEDBOOST "gofast"
+#define CHEMICAL_EFFECT_SPEEDBOOST "gofast"
 /// Slowdown
-#define CE_SLOWDOWN "goslow"
+#define CHEMICAL_EFFECT_SLOWDOWN "goslow"
 /// Don't puke.
-#define CE_ANTACID "nopuke"
+#define CHEMICAL_EFFECT_ANTACID "nopuke"
 
 #warn add some
 
@@ -76,7 +76,7 @@
 
 #define REAGENTS_PER_SHEET 20
 
-// Attached to CE_ANTIBIOTIC
+// Attached to CHEMICAL_EFFECT_ANTIBIOTIC
 #define ANTIBIO_NORM	1
 #define ANTIBIO_OD		2
 #define ANTIBIO_SUPER	3

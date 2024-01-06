@@ -540,7 +540,7 @@
 //Germs
 /obj/item/organ/proc/handle_antibiotics()
 	if(istype(owner))
-		var/antibiotics = owner.chem_effects[CE_ANTIBIOTIC] || 0
+		var/antibiotics = owner.chem_effects[CHEMICAL_EFFECT_ANTIBIOTIC] || 0
 
 		if (!germ_level || antibiotics < ANTIBIO_NORM)
 			return
@@ -568,7 +568,7 @@
 		germ_level = 0
 		return 0
 
-	var/antibiotics = iscarbon(owner) ? owner.chem_effects[CE_ANTIBIOTIC] || 0 : 0
+	var/antibiotics = iscarbon(owner) ? owner.chem_effects[CHEMICAL_EFFECT_ANTIBIOTIC] || 0 : 0
 
 	var/infection_damage = 0
 
