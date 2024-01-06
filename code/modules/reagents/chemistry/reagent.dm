@@ -380,6 +380,8 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 /**
  * Called when something is trying to inject / add us into a metabolized holder
  * 
+ * This is before the data mixes with the existing data.
+ * 
  * @params
  * * entity - the victim
  * * application - the REAGENT_APPLY_* flags

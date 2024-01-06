@@ -6,7 +6,12 @@
 	color = "#0050F0"
 	mrate_static = TRUE
 
-/datum/reagent/antibodies/affect_blood(mob/living/carbon/M, alien, removed)
-	if(src.data)
-		M.antibodies |= src.data["antibodies"]
-	..()
+/datum/reagent/antibodies/mix_data(datum/reagent_holder/holder, list/current_data, current_amount, list/new_data, new_amount)
+	var/list/antibodies = current_data["antibodies"] | (new_data?["antibodies"] || list())
+	return list(
+		"antibodies" = antibodies,
+	)
+
+/datum/reagent/antibodies/applying_to_metabolism(mob/living/carbon/entity, application, organ_tag, volume, list/data)
+	. = ..()
+	entity.antibodies |= data["antibodies"]

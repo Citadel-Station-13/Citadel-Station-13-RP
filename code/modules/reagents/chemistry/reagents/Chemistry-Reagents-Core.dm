@@ -48,13 +48,14 @@
 /datum/reagent/water/contact_expose_obj(obj/target, volume, list/data, vapor)
 	. = ..()
 	
+	var/obj/O = target
 	if(istype(O, /obj/item/reagent_containers/food/snacks/monkeycube))
 		var/obj/item/reagent_containers/food/snacks/monkeycube/cube = O
 		if(!cube.wrapped)
 			cube.Expand()
 	else
-		O.water_act(amount / 5)
-	var/effective = amount || 10
+		O.water_act(volume / 5)
+	var/effective = volume || 10
 	O.clean_radiation(RAD_CONTAMINATION_CLEANSE_POWER * (effective / 10), RAD_CONTAMINATION_CLEANSE_FACTOR ** (1 / (effective / 10)))
 
 /datum/reagent/water/touch_expose_mob(mob/target, volume, list/data, organ_tag)
@@ -66,18 +67,18 @@
 		// First, kill slimes.
 		if(istype(L, /mob/living/simple_mob/slime))
 			var/mob/living/simple_mob/slime/S = L
-			var/amt = 15 * amount * (1-S.water_resist)
+			var/amt = 15 * volume * (1-S.water_resist)
 			if(amt>0)
 				S.adjustToxLoss(amt)
 				S.visible_message("<span class='warning'>[S]'s flesh sizzles where the water touches it!</span>", "<span class='danger'>Your flesh burns in the water!</span>")
 
 		// Then extinguish people on fire.
 		var/needed = L.fire_stacks * 5
-		if(amount > needed)
+		if(volume > needed)
 			L.ExtinguishMob()
-		L.adjust_fire_stacks(-(amount / 5))
+		L.adjust_fire_stacks(-(volume / 5))
 		. += needed
-	var/effective = amount || 10
+	var/effective = volume || 10
 	L.clean_radiation(RAD_CONTAMINATION_CLEANSE_POWER * (effective / 10), RAD_CONTAMINATION_CLEANSE_FACTOR ** (1 / (effective / 10)))
 
 /datum/reagent/water/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
@@ -97,7 +98,7 @@
 
 /datum/reagent/fuel/contact_expose_turf(turf/target, volume, list/data, vapor)
 	. = ..()
-	new /obj/effect/debris/cleanable/liquid_fuel(T, volume, FALSE)
+	new /obj/effect/debris/cleanable/liquid_fuel(target, volume, FALSE)
 	. += volume
 
 /datum/reagent/fuel/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
@@ -108,4 +109,4 @@
 	. = ..()
 	var/mob/living/L = target
 	if(istype(L))
-		L.adjust_fire_stacks(amount / 10) // Splashing people with welding fuel to make them easy to ignite!
+		L.adjust_fire_stacks(volume / 10) // Splashing people with welding fuel to make them easy to ignite!
