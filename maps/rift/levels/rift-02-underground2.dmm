@@ -1164,7 +1164,7 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "dY" = (
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -3849,7 +3849,7 @@
 /turf/simulated/mineral/icerock/lythios43c,
 /area/engineering/engine_room)
 "lT" = (
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -5832,7 +5832,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -8461,7 +8461,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/power/apc/direction_bump/west,
+/obj/machinery/power/apc/west,
 /obj/structure/cable/green,
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -13545,7 +13545,7 @@
 	desc = "A large cabinet with drawers. They seem to be ominously empty.";
 	name = "Classified Science Records"
 	},
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
