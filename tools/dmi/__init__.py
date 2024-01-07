@@ -174,6 +174,16 @@ class Dmi:
         if palette:
             output = output.convert('P')
         output.save(filename, 'png', optimize=True, pnginfo=pnginfo)
+    
+    def swap_ns(self):
+        for i in range(0, len(self.states)):
+            state = self.states[i]
+            state.swap_ns()
+
+    def swap_ew(self):
+        for i in range(0, len(self.states)):
+            state = self.states[i]
+            state.swap_ew()
 
 
 class State:
@@ -216,7 +226,28 @@ class State:
 
     def get_frame(self, *args, **kwargs):
         return self.frames[self._frame_index(*args, **kwargs)]
-
+    
+    def swap_ns(self):
+        for i in range(0, self.framecount):
+            # south
+            f1 = (i * self.dirs) + 1
+            # north
+            f2 = (i * self.dirs) + 2
+            # swap
+            buffer = self.frames[f1]
+            self.frames[f1] = self.frames[f2]
+            self.frames[f2] = buffer
+    
+    def swap_ew(self):
+        for i in range(0, self.framecount):
+            # east
+            f1 = (i * self.dirs) + 3
+            # west
+            f2 = (i * self.dirs) + 4
+            # swap
+            buffer = self.frames[f1]
+            self.frames[f1] = self.frames[f2]
+            self.frames[f2] = buffer
 
 def escape(text):
     text = text.replace('\\', '\\\\')
