@@ -17,7 +17,7 @@ export const RigsuitConsole = (props: RigsuitConsoleProps, context) => {
     <Section {...props}>
       <Stack vertical>
         <Stack.Item>
-          <div style={{ height: `10em` }} className="Rigsuit__Console-container">
+          <div style={{ height: `${lines+1}em` }} className="Rigsuit__Console-container">
             Test
           </div>
         </Stack.Item>
