@@ -314,7 +314,7 @@
 /turf/simulated/floor/plating,
 /area/killhouse/two)
 "fQ" = (
-/obj/item/radio/intercom/north{
+/obj/item/radio/intercom/south{
 	pixel_y = 24
 	},
 /obj/structure/table/standard,
@@ -2676,7 +2676,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 5
 	},
-/obj/item/radio/intercom/east{
+/obj/item/radio/intercom/west{
 	pixel_x = 22
 	},
 /obj/structure/closet/crate/bin{
@@ -2916,7 +2916,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 6
 	},
-/obj/item/radio/intercom/east{
+/obj/item/radio/intercom/west{
 	pixel_x = 22
 	},
 /obj/structure/closet/crate/bin{

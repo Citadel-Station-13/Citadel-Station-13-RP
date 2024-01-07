@@ -249,7 +249,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "lY" = (
-/obj/item/radio/intercom/north{
+/obj/item/radio/intercom/south{
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -305,7 +305,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 4
 	},
-/obj/item/radio/intercom/north{
+/obj/item/radio/intercom/south{
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},

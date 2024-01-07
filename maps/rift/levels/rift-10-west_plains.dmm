@@ -1325,7 +1325,7 @@
 /obj/effect/floor_decal/corner/purple{
 	dir = 5
 	},
-/obj/item/radio/intercom/north{
+/obj/item/radio/intercom/south{
 	pixel_y = 24;
 	req_access = list()
 	},
@@ -3347,7 +3347,7 @@
 /obj/item/clothing/gloves/sterile/latex,
 /obj/item/clothing/glasses/science,
 /obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/item/radio/intercom/north{
+/obj/item/radio/intercom/south{
 	pixel_y = 24;
 	req_access = list()
 	},
@@ -3882,7 +3882,7 @@
 /obj/structure/table/rack,
 /obj/item/suit_cooling_unit,
 /obj/item/suit_cooling_unit,
-/obj/item/radio/intercom/north{
+/obj/item/radio/intercom/south{
 	pixel_y = 24;
 	req_access = list()
 	},
@@ -4016,7 +4016,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/item/radio/intercom/north{
+/obj/item/radio/intercom/south{
 	pixel_y = 24;
 	req_access = list()
 	},
@@ -7321,7 +7321,7 @@
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 4
 	},
-/obj/item/radio/intercom/east{
+/obj/item/radio/intercom/west{
 	pixel_x = 24
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7{
@@ -8574,7 +8574,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
 "NW" = (
-/obj/item/radio/intercom/north{
+/obj/item/radio/intercom/south{
 	pixel_y = 24;
 	req_access = list()
 	},
@@ -9997,7 +9997,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
-/obj/item/radio/intercom/north{
+/obj/item/radio/intercom/south{
 	pixel_y = 24;
 	req_access = list()
 	},
@@ -10952,7 +10952,7 @@
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/facility/exterior)
 "Zo" = (
-/obj/item/radio/intercom/east{
+/obj/item/radio/intercom/west{
 	pixel_x = 24
 	},
 /obj/effect/floor_decal/borderfloor{
