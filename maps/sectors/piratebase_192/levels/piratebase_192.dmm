@@ -1705,7 +1705,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/alarms_hidden/east_mount{
+/obj/machinery/power/apc/alarms_hidden/__west_mount{
 	req_access = list(168)
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
@@ -2684,7 +2684,7 @@
 /turf/simulated/floor/tiled/steel_dirty/silver,
 /area/piratebase/brig)
 "yK" = (
-/obj/machinery/power/apc/alarms_hidden/east_mount{
+/obj/machinery/power/apc/alarms_hidden/__west_mount{
 	req_access = list(168)
 	},
 /obj/structure/cable/yellow{
@@ -2839,7 +2839,7 @@
 /turf/simulated/floor/reinforced,
 /area/piratebase/vault)
 "zV" = (
-/obj/machinery/power/apc/alarms_hidden/east_mount{
+/obj/machinery/power/apc/alarms_hidden/__west_mount{
 	req_access = list(168)
 	},
 /obj/structure/cable/yellow,
@@ -4005,7 +4005,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/alarms_hidden/east_mount{
+/obj/machinery/power/apc/alarms_hidden/__west_mount{
 	req_access = list(168)
 	},
 /obj/item/radio/intercom/raider{

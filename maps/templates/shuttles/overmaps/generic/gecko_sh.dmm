@@ -6,7 +6,7 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/alarms_hidden/north_mount,
+/obj/machinery/power/apc/alarms_hidden/__south_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/gecko_sh_engineering)
 "aF" = (
@@ -273,7 +273,7 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/alarms_hidden/east_mount,
+/obj/machinery/power/apc/alarms_hidden/__west_mount,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/gecko_sh_cockpit)
 "eP" = (
@@ -1220,7 +1220,7 @@
 	icon_state = "0-8"
 	},
 /obj/structure/railing/grey,
-/obj/machinery/power/apc/alarms_hidden/east_mount,
+/obj/machinery/power/apc/alarms_hidden/__west_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/gecko_sh)
 "zM" = (

@@ -43,7 +43,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/aux{
 	dir = 1
 	},
-/obj/machinery/power/apc/alarms_hidden/north_mount,
+/obj/machinery/power/apc/alarms_hidden/__south_mount,
 /turf/simulated/floor,
 /area/mercbase/airlock)
 "ag" = (
@@ -276,7 +276,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/alarms_hidden/north_mount,
+/obj/machinery/power/apc/alarms_hidden/__south_mount,
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/power)
 "fM" = (
@@ -531,7 +531,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/alarms_hidden/west_mount,
+/obj/machinery/power/apc/alarms_hidden/__east_mount,
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/command)
 "gT" = (
@@ -579,7 +579,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/alarms_hidden/west_mount,
+/obj/machinery/power/apc/alarms_hidden/__east_mount,
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/medicalOR)
 "ha" = (
@@ -858,7 +858,7 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/alarms_hidden/north_mount,
+/obj/machinery/power/apc/alarms_hidden/__south_mount,
 /obj/structure/closet/hydrant{
 	pixel_x = -32
 	},
@@ -965,7 +965,7 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/alarms_hidden/north_mount,
+/obj/machinery/power/apc/alarms_hidden/__south_mount,
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/eqroom)
 "hV" = (
@@ -1173,7 +1173,7 @@
 /area/mercbase/medicalstorage)
 "is" = (
 /obj/structure/cable,
-/obj/machinery/power/apc/alarms_hidden/south_mount,
+/obj/machinery/power/apc/alarms_hidden/__north_mount,
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/barracks)
 "iw" = (
@@ -1436,14 +1436,14 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/alarms_hidden/north_mount,
+/obj/machinery/power/apc/alarms_hidden/__south_mount,
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/medicalstorage)
 "jk" = (
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/alarms_hidden/north_mount,
+/obj/machinery/power/apc/alarms_hidden/__south_mount,
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/hall)
 "jl" = (
@@ -1477,7 +1477,7 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/alarms_hidden/north_mount,
+/obj/machinery/power/apc/alarms_hidden/__south_mount,
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/engineering)
 "jo" = (
@@ -1677,7 +1677,7 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/alarms_hidden/north_mount,
+/obj/machinery/power/apc/alarms_hidden/__south_mount,
 /turf/simulated/floor,
 /area/mercbase/atmos)
 "jN" = (
@@ -1833,14 +1833,14 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/alarms_hidden/north_mount,
+/obj/machinery/power/apc/alarms_hidden/__south_mount,
 /turf/simulated/floor/plating,
 /area/mercbase/airlock)
 "kh" = (
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/alarms_hidden/north_mount,
+/obj/machinery/power/apc/alarms_hidden/__south_mount,
 /turf/simulated/floor,
 /area/mercbase/fuel)
 "ki" = (
@@ -2506,7 +2506,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/alarms_hidden/west_mount,
+/obj/machinery/power/apc/alarms_hidden/__east_mount,
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/dock)
 "mu" = (
@@ -2572,7 +2572,7 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/alarms_hidden/north_mount,
+/obj/machinery/power/apc/alarms_hidden/__south_mount,
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/roid)
 "mD" = (
