@@ -197,7 +197,6 @@
 "aK" = (
 /obj/machinery/power/apc/north_mount{
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 28
 	},
 /turf/simulated/floor/bluegrid{
@@ -309,7 +308,6 @@
 "bg" = (
 /obj/machinery/power/apc/north_mount{
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 28
 	},
 /turf/simulated/floor/tiled/white,

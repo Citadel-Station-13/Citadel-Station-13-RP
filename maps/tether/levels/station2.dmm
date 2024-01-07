@@ -12180,7 +12180,6 @@
 	},
 /obj/machinery/power/apc{
 	name = "south bump";
-	pixel_y = -28;
 	req_access = list(67)
 	},
 /obj/structure/cable/green,
@@ -13316,7 +13315,6 @@
 /obj/machinery/power/apc{
 	alarms_hidden = 1;
 	name = "south bump";
-	pixel_y = -28;
 	req_access = list();
 	req_one_access = list(11,67)
 	},
@@ -13415,7 +13413,6 @@
 	},
 /obj/machinery/power/apc/east_mount{
 	name = "east bump";
-	pixel_x = 24;
 	req_access = list();
 	req_one_access = list(11,67)
 	},

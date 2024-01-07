@@ -2532,7 +2532,6 @@
 	chargelevel = 0;
 	chargemode = 0;
 	name = "west bump";
-	pixel_x = -28;
 	start_charge = 0
 	},
 /obj/structure/table/standard,

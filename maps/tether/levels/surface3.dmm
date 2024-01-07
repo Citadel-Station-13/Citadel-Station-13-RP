@@ -19115,7 +19115,6 @@
 	},
 /obj/machinery/power/apc{
 	name = "south bump";
-	pixel_y = -28;
 	req_access = list(67)
 	},
 /obj/effect/floor_decal/borderfloorwhite,
@@ -33645,7 +33644,6 @@
 "tLK" = (
 /obj/machinery/power/apc{
 	name = "south bump";
-	pixel_y = -28;
 	req_access = list();
 	req_one_access = list(11,67)
 	},
@@ -36375,7 +36373,6 @@
 	},
 /obj/machinery/power/apc/west_mount{
 	name = "west bump";
-	pixel_x = -28;
 	req_access = list();
 	req_one_access = list(11,67)
 	},

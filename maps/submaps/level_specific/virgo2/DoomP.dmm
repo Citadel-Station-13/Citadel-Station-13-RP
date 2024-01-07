@@ -136,7 +136,6 @@
 "aG" = (
 /obj/machinery/power/apc/north_mount{
 	name = "PAPC";
-	pixel_x = 0;
 	pixel_y = 24
 	},
 /obj/structure/cable/green{

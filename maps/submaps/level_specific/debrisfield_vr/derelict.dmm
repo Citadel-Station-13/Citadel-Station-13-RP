@@ -906,7 +906,6 @@
 /obj/machinery/power/apc/north_mount{
 	alarms_hidden = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 24
 	},
 /turf/simulated/floor/greengrid,

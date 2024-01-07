@@ -20535,7 +20535,6 @@
 "oTC" = (
 /obj/machinery/power/apc{
 	name = "south bump";
-	pixel_y = -28;
 	req_access = list(67)
 	},
 /obj/structure/cable/green,

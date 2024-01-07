@@ -182,7 +182,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/power/apc/east_mount{
 	name = "east bump";
-	pixel_x = 24;
 	start_charge = 0
 	},
 /obj/structure/cable{
@@ -934,7 +933,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/power/apc/north_mount{
 	name = "north bump";
-	pixel_y = 24;
 	start_charge = 0
 	},
 /obj/structure/cable{

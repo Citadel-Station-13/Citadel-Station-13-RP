@@ -2291,7 +2291,6 @@
 /obj/machinery/power/apc/north_mount{
 	alarms_hidden = 1;
 	name = "north bump";
-	pixel_y = 28;
 	req_access = list();
 	req_one_access = list(11,67)
 	},
@@ -6831,7 +6830,6 @@
 /obj/machinery/power/apc/north_mount{
 	alarms_hidden = 1;
 	name = "north bump";
-	pixel_y = 28;
 	req_access = list();
 	req_one_access = list(11,67)
 	},
@@ -9840,7 +9838,6 @@
 /obj/machinery/power/apc/north_mount{
 	alarms_hidden = 1;
 	name = "north bump";
-	pixel_y = 28;
 	req_access = list();
 	req_one_access = list(11,67)
 	},
@@ -10783,7 +10780,6 @@
 /obj/machinery/power/apc/north_mount{
 	alarms_hidden = 1;
 	name = "north bump";
-	pixel_y = 28;
 	req_access = list();
 	req_one_access = list(11,67)
 	},
@@ -13965,7 +13961,6 @@
 /obj/machinery/power/apc/north_mount{
 	alarms_hidden = 1;
 	name = "north bump";
-	pixel_y = 28;
 	req_access = list();
 	req_one_access = list(11,67)
 	},

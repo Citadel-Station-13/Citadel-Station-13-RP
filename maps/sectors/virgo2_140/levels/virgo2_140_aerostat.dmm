@@ -299,7 +299,6 @@
 	alarms_hidden = 1;
 	cell_type = /obj/item/cell/high/empty;
 	name = "east bump";
-	pixel_x = 28;
 	req_access = list()
 	},
 /turf/simulated/floor/bluegrid/virgo2,

@@ -3280,7 +3280,6 @@
 /obj/machinery/power/apc/north_mount{
 	alarms_hidden = 1;
 	name = "north bump";
-	pixel_y = 28;
 	req_access = list();
 	req_one_access = list(11,67)
 	},
@@ -7181,7 +7180,6 @@
 /obj/machinery/holoplant,
 /obj/machinery/power/apc/east_mount{
 	name = "east bump";
-	pixel_x = 24;
 	req_access = list();
 	req_one_access = list(11,67)
 	},
@@ -14549,7 +14547,6 @@
 /obj/machinery/power/apc/west_mount{
 	cell_type = /obj/item/cell/super;
 	name = "west bump";
-	pixel_x = -28;
 	req_access = list();
 	req_one_access = list(11,67)
 	},
@@ -16335,7 +16332,6 @@
 /obj/machinery/power/apc/north_mount{
 	alarms_hidden = 1;
 	name = "north bump";
-	pixel_y = 28;
 	req_access = list();
 	req_one_access = list(11,67)
 	},
@@ -19817,7 +19813,6 @@
 	},
 /obj/machinery/power/apc/east_mount{
 	name = "east bump";
-	pixel_x = 24;
 	req_access = list();
 	req_one_access = list(11,67)
 	},
@@ -25315,7 +25310,6 @@
 /obj/machinery/power/apc/west_mount{
 	cell_type = /obj/item/cell/super;
 	name = "west bump";
-	pixel_x = -30;
 	req_access = list();
 	req_one_access = list(11,67)
 	},
@@ -25450,7 +25444,6 @@
 /obj/machinery/power/apc{
 	alarms_hidden = 1;
 	name = "south bump";
-	pixel_y = -28;
 	req_access = list();
 	req_one_access = list(11,67)
 	},

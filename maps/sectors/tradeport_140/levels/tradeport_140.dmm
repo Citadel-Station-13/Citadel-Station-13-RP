@@ -2349,7 +2349,6 @@
 /obj/machinery/power/apc/alarms_hidden{
 	cell_type = /obj/item/cell/super;
 	name = "south bump";
-	pixel_y = -28;
 	req_access = list(160)
 	},
 /turf/simulated/floor,
@@ -4977,7 +4976,6 @@
 /obj/machinery/power/apc/alarms_hidden{
 	cell_type = /obj/item/cell/super;
 	name = "south bump";
-	pixel_y = -28;
 	req_access = list(160)
 	},
 /turf/simulated/floor/tiled/old_tile/blue,
@@ -8265,7 +8263,6 @@
 	dir = 4
 	},
 /obj/machinery/power/apc/alarms_hidden{
-	pixel_y = -28;
 	req_access = list(160)
 	},
 /obj/structure/cable/yellow{
@@ -8395,7 +8392,6 @@
 /area/shuttle/trade_ship/general)
 "Fw" = (
 /obj/machinery/power/apc/alarms_hidden{
-	pixel_y = -28;
 	req_access = list(160)
 	},
 /obj/structure/cable/green{
@@ -10962,7 +10958,6 @@
 /area/tradeport/safari)
 "PQ" = (
 /obj/machinery/power/apc/alarms_hidden{
-	pixel_y = -28;
 	req_access = list(160)
 	},
 /obj/structure/cable/green{
@@ -13460,7 +13455,6 @@
 /obj/machinery/power/apc/alarms_hidden{
 	cell_type = /obj/item/cell/super;
 	name = "south bump";
-	pixel_y = -28;
 	req_access = list(160)
 	},
 /obj/structure/cable/yellow,
