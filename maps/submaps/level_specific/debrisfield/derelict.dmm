@@ -369,7 +369,7 @@
 /area/debrisfield/derelict)
 "bJ" = (
 /obj/structure/cable,
-/obj/machinery/power/apc/north{
+/obj/machinery/power/apc/north_mount{
 	alarms_hidden = 1;
 	name = "south bump";
 	pixel_y = -24
@@ -549,7 +549,7 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/west{
+/obj/machinery/power/apc/west_mount{
 	alarms_hidden = 1;
 	name = "east bump";
 	pixel_x = 28
@@ -607,7 +607,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/south{
+/obj/machinery/power/apc/south_mount{
 	alarms_hidden = 1;
 	name = "north bump";
 	pixel_y = 24
@@ -636,7 +636,7 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/west{
+/obj/machinery/power/apc/west_mount{
 	alarms_hidden = 1;
 	name = "east bump";
 	pixel_x = 28

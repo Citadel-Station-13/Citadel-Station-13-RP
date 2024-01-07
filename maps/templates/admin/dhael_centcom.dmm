@@ -2397,7 +2397,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	name = "Station Intercom (General)";
 	pixel_y = 27
 	},
@@ -2707,7 +2707,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "gL" = (
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	broadcasting = 1;
 	frequency = 1443;
 	listening = 0;
@@ -3585,7 +3585,7 @@
 	pixel_y = -2
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	name = "Station Intercom (General)";
 	pixel_y = 21
 	},
@@ -5041,7 +5041,7 @@
 /obj/structure/table/standard,
 /obj/machinery/recharger,
 /obj/item/reagent_containers/spray/cleaner,
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	name = "Station Intercom (General)";
 	pixel_y = 27
 	},
@@ -7205,7 +7205,7 @@
 /obj/effect/floor_decal/corner/blue/bordercorner2{
 	dir = 1
 	},
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	frequency = 1475;
 	name = "Station Intercom (Security)";
 	pixel_y = 27
@@ -11526,7 +11526,7 @@
 	},
 /area/centcom/security)
 "JV" = (
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	frequency = 1475;
 	name = "Station Intercom (Security)";
 	pixel_y = 27
@@ -11865,7 +11865,7 @@
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 9
 	},
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	frequency = 1475;
 	name = "Station Intercom (Security)";
 	pixel_y = 27
@@ -12174,7 +12174,7 @@
 /obj/effect/floor_decal/corner/blue/bordercorner2{
 	dir = 1
 	},
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	frequency = 1475;
 	name = "Station Intercom (Security)";
 	pixel_y = 27
@@ -14470,7 +14470,7 @@
 	},
 /area/centcom/security)
 "WY" = (
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	frequency = 1475;
 	name = "Station Intercom (Security)";
 	pixel_y = 27
@@ -14546,7 +14546,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	frequency = 1475;
 	name = "Station Intercom (Security)";
 	pixel_y = 27

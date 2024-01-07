@@ -582,7 +582,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/gecko_sh)
 "lV" = (
-/obj/machinery/fire_alarm/west,
+/obj/machinery/fire_alarm/west_mount,
 /obj/structure/closet/crate{
 	dir = 1
 	},
@@ -666,7 +666,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/obj/machinery/fire_alarm/north{
+/obj/machinery/fire_alarm/north_mount{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1522,7 +1522,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/fire_alarm/north{
+/obj/machinery/fire_alarm/north_mount{
 	pixel_y = -26
 	},
 /obj/structure/handrail{
@@ -1959,7 +1959,7 @@
 /area/shuttle/gecko_sh_engineering)
 "NM" = (
 /obj/structure/handrail,
-/obj/machinery/fire_alarm/west,
+/obj/machinery/fire_alarm/west_mount,
 /turf/simulated/floor/plating,
 /area/shuttle/gecko_sh_engineering)
 "NN" = (
@@ -2092,7 +2092,7 @@
 /area/shuttle/gecko_sh)
 "PW" = (
 /obj/structure/handrail,
-/obj/machinery/fire_alarm/west,
+/obj/machinery/fire_alarm/west_mount,
 /turf/simulated/floor/plating,
 /area/shuttle/gecko_sh_engineering)
 "Ql" = (
@@ -2284,7 +2284,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/gecko_sh)
 "Tw" = (
-/obj/machinery/fire_alarm/west,
+/obj/machinery/fire_alarm/west_mount,
 /obj/structure/bed/pod,
 /obj/item/bedsheet/blue,
 /turf/simulated/floor/tiled/techfloor,

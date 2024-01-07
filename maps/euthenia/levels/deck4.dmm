@@ -428,7 +428,7 @@
 /obj/structure/bed/chair/comfy/brown{
 	dir = 1
 	},
-/obj/item/radio/intercom/west{
+/obj/item/radio/intercom/west_mount{
 	pixel_x = -24
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -684,7 +684,7 @@
 /area/rnd/research/testingrange)
 "cX" = (
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/machinery/power/apc/north,
+/obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/maintenance/deck_four/forward)
 "cY" = (
@@ -955,7 +955,7 @@
 /area/rnd/research)
 "dR" = (
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/machinery/power/apc/east,
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -1151,7 +1151,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/north,
+/obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/anomaly_lab/containment_two)
 "eC" = (
@@ -2038,7 +2038,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/obj/machinery/fire_alarm/north{
+/obj/machinery/fire_alarm/north_mount{
 	pixel_y = -24
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -2177,7 +2177,7 @@
 	desc = "A large cabinet with drawers. They seem to be ominously empty.";
 	name = "Classified Science Records"
 	},
-/obj/machinery/power/apc/north,
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -2708,7 +2708,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/gravity_gen)
 "kn" = (
-/obj/machinery/power/apc/south,
+/obj/machinery/power/apc/south_mount,
 /obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_four/forward/port)
@@ -2841,7 +2841,7 @@
 /area/engineering/gravity_gen)
 "kK" = (
 /obj/landmark/spawnpoint/job/chaplain,
-/obj/item/radio/intercom/west{
+/obj/item/radio/intercom/west_mount{
 	broadcasting = 1;
 	frequency = 1473;
 	name = "Confession Intercom";
@@ -3015,7 +3015,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/fire_alarm/north{
+/obj/machinery/fire_alarm/north_mount{
 	pixel_y = -24
 	},
 /obj/structure/cable/green{
@@ -3218,7 +3218,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green,
-/obj/machinery/power/apc/west,
+/obj/machinery/power/apc/west_mount,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/gravity_gen)
 "mi" = (
@@ -3483,7 +3483,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/obj/machinery/power/apc/south,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -4559,7 +4559,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/north,
+/obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_four/forward)
 "rt" = (
@@ -5109,7 +5109,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/east,
+/obj/machinery/power/apc/east_mount,
 /turf/simulated/floor/tiled/monotile,
 /area/exploration/explorer_prep)
 "tH" = (
@@ -5266,7 +5266,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/fire_alarm/north{
+/obj/machinery/fire_alarm/north_mount{
 	pixel_y = -24
 	},
 /obj/structure/cable/green{
@@ -5841,7 +5841,7 @@
 /area/main_map/maintenance/deck_four/forward)
 "wr" = (
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/machinery/power/apc/west,
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green,
 /turf/simulated/floor/wood,
 /area/tether/exploration/pathfinder_office)
@@ -6166,7 +6166,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/maintenance/deck_four/aft/starboard)
 "xB" = (
-/obj/machinery/fire_alarm/west,
+/obj/machinery/fire_alarm/west_mount,
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
@@ -6258,7 +6258,7 @@
 /turf/simulated/floor/reinforced/overhang,
 /area/main_map/maintenance/deck_four/forward/port)
 "ya" = (
-/obj/machinery/power/apc/south,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -6533,7 +6533,7 @@
 /area/gateway)
 "za" = (
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/machinery/power/apc/north,
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -7262,7 +7262,7 @@
 /obj/machinery/atmospherics/mains_pipe/simple/hidden{
 	dir = 4
 	},
-/obj/machinery/power/apc/south,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -7411,7 +7411,7 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 1
 	},
-/obj/machinery/power/apc/south{
+/obj/machinery/power/apc/south_mount{
 	name = "north bump";
 	pixel_y = 28
 	},
@@ -7556,7 +7556,7 @@
 /area/main_map/maintenance/deck_four/starboard)
 "CF" = (
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/machinery/power/apc/south,
+/obj/machinery/power/apc/south_mount,
 /turf/simulated/floor/tiled,
 /area/main_map/maintenance/deck_four)
 "CG" = (
@@ -7576,7 +7576,7 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 1
 	},
-/obj/machinery/power/apc/north,
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -8212,7 +8212,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/north,
+/obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/anomaly_lab/containment_one)
 "ER" = (
@@ -8678,7 +8678,7 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 5
 	},
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -8936,7 +8936,7 @@
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/main_map/maintenance/deck_four/starboard)
 "HX" = (
-/obj/machinery/power/apc/north,
+/obj/machinery/power/apc/north_mount,
 /obj/map_helper/network_builder/power_cable/green/auto,
 /obj/structure/cable/green{
 	icon_state = "0-4"
@@ -9083,7 +9083,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/east,
+/obj/machinery/power/apc/east_mount,
 /turf/simulated/floor/tiled,
 /area/engineering/aft_hallway)
 "IF" = (
@@ -9395,7 +9395,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/cable/green,
-/obj/machinery/power/apc/east,
+/obj/machinery/power/apc/east_mount,
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/miningdock)
 "JD" = (
@@ -9981,7 +9981,7 @@
 /obj/item/clothing/mask/breath,
 /obj/item/clothing/suit/bio_suit/anomaly,
 /obj/item/clothing/head/bio_hood/anomaly,
-/obj/item/radio/intercom/west{
+/obj/item/radio/intercom/west_mount{
 	pixel_x = 24
 	},
 /turf/simulated/floor/tiled,
@@ -10283,7 +10283,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/miningdock)
 "Ne" = (
-/obj/machinery/power/apc/north,
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -11027,7 +11027,7 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "PS" = (
-/obj/machinery/power/apc/north,
+/obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/carpet/bcarpet,
 /area/library/study)
 "PU" = (
@@ -11238,7 +11238,7 @@
 	dir = 8
 	},
 /obj/landmark/spawnpoint/job/pathfinder,
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	pixel_y = 24
 	},
 /turf/simulated/floor/wood,
@@ -12234,7 +12234,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/gateway)
 "Uf" = (
-/obj/machinery/power/apc/north,
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -12824,7 +12824,7 @@
 /area/main_map/maintenance/deck_four/aft)
 "WI" = (
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/machinery/power/apc/north,
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -12846,7 +12846,7 @@
 /turf/simulated/floor/wood,
 /area/main_map/maintenance/deck_four/forward)
 "WM" = (
-/obj/item/radio/intercom/west{
+/obj/item/radio/intercom/west_mount{
 	broadcasting = 1;
 	frequency = 1473;
 	name = "Confession Intercom";
@@ -13235,7 +13235,7 @@
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_four/aft/starboard)
 "Yk" = (
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	pixel_y = 24
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -13267,7 +13267,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/west,
+/obj/machinery/power/apc/west_mount,
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/telescience_lab/foyer)
 "Yp" = (
@@ -13319,7 +13319,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/north,
+/obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/tiled,
 /area/rnd/research/testingrange)
 "Yw" = (

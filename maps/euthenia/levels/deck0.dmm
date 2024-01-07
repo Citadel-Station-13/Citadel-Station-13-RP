@@ -388,7 +388,7 @@
 /area/main_map/hallway/deck0)
 "ok" = (
 /obj/structure/table/reinforced,
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},

@@ -70,7 +70,7 @@
 /obj/machinery/status_display{
 	pixel_y = -32
 	},
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	name = "Station Intercom (General)";
 	pixel_y = 21
 	},

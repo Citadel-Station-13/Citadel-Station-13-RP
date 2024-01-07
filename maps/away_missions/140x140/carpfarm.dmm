@@ -126,7 +126,7 @@
 "az" = (
 /obj/item/storage/toolbox/electrical,
 /obj/structure/cable,
-/obj/machinery/power/apc/east{
+/obj/machinery/power/apc/east_mount{
 	alarms_hidden = 1;
 	name = "west bump";
 	pixel_x = -24

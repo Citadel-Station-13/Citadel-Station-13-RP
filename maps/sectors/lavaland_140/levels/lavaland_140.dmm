@@ -307,7 +307,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
-/obj/machinery/fire_alarm/east,
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/wood,
 /area/lavaland/central/base/common)
 "hi" = (
@@ -409,7 +409,7 @@
 	pixel_y = -23;
 	req_one_access = list(48)
 	},
-/obj/machinery/fire_alarm/east,
+/obj/machinery/fire_alarm/east_mount,
 /obj/structure/ore_box,
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
@@ -521,7 +521,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/machinery/fire_alarm/north{
+/obj/machinery/fire_alarm/north_mount{
 	pixel_y = -24
 	},
 /turf/simulated/floor/plating,
@@ -568,7 +568,7 @@
 /area/lavaland/central/base/common)
 "nr" = (
 /obj/effect/debris/cleanable/dirt,
-/obj/machinery/fire_alarm/south{
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled,
@@ -669,7 +669,7 @@
 "oM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/fire_alarm/east,
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "pf" = (
@@ -800,7 +800,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
-/obj/machinery/fire_alarm/south{
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled,
@@ -843,7 +843,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/fire_alarm/north{
+/obj/machinery/fire_alarm/north_mount{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled,
@@ -956,7 +956,7 @@
 /area/lavaland/central/explored)
 "sN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/fire_alarm/east,
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "sP" = (
@@ -2247,7 +2247,7 @@
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "SN" = (
-/obj/machinery/power/apc/north{
+/obj/machinery/power/apc/north_mount{
 	cell_type = /obj/item/cell/infinite;
 	name = "south bump";
 	pixel_y = -28

@@ -8,7 +8,7 @@
 	},
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/red/border,
-/obj/machinery/fire_alarm/south{
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -3834,7 +3834,7 @@
 /turf/simulated/wall/rpshull,
 /area/ship/expe/medicalchem)
 "iP" = (
-/obj/machinery/fire_alarm/south{
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = 28
 	},
 /obj/effect/floor_decal/borderfloorwhite{
@@ -6381,7 +6381,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medicalmain)
 "nY" = (
-/obj/machinery/power/apc/east{
+/obj/machinery/power/apc/east_mount{
 	name = "west bump";
 	pixel_x = -24
 	},
@@ -7685,7 +7685,7 @@
 /area/ship/expe/smstorage)
 "qD" = (
 /obj/machinery/power/emitter,
-/obj/machinery/power/apc/south{
+/obj/machinery/power/apc/south_mount{
 	name = "north bump";
 	pixel_y = 32
 	},
@@ -8501,7 +8501,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medical)
 "sz" = (
-/obj/machinery/fire_alarm/south{
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = 31
 	},
 /obj/structure/bed/chair,

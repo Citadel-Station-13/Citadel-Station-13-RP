@@ -391,7 +391,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/north{
+/obj/machinery/power/apc/north_mount{
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
@@ -511,7 +511,7 @@
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 8
 	},
-/obj/machinery/fire_alarm/east,
+/obj/machinery/fire_alarm/east_mount,
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 5
 	},
@@ -1322,7 +1322,7 @@
 /obj/effect/floor_decal/corner/purple{
 	dir = 5
 	},
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	pixel_y = 24;
 	req_access = list()
 	},
@@ -1417,7 +1417,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab/airlock)
 "gG" = (
-/obj/machinery/fire_alarm/west,
+/obj/machinery/fire_alarm/west_mount,
 /obj/effect/floor_decal/steeldecal/steel_decals5,
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 1
@@ -1647,7 +1647,7 @@
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/surfacebase/outside/west)
 "hz" = (
-/obj/machinery/fire_alarm/north{
+/obj/machinery/fire_alarm/north_mount{
 	pixel_y = -26
 	},
 /obj/effect/floor_decal/borderfloor,
@@ -2202,7 +2202,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/south{
+/obj/machinery/power/apc/south_mount{
 	name = "north bump";
 	pixel_y = 28
 	},
@@ -2220,7 +2220,7 @@
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/surfacebase/outside/west)
 "jZ" = (
-/obj/machinery/fire_alarm/west,
+/obj/machinery/fire_alarm/west_mount,
 /turf/simulated/floor,
 /area/rnd/outpost/anomaly_lab/storage)
 "ka" = (
@@ -2431,7 +2431,7 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost/airlock/one)
 "kX" = (
-/obj/machinery/power/apc/west{
+/obj/machinery/power/apc/west_mount{
 	name = "east bump";
 	pixel_x = 28
 	},
@@ -2490,7 +2490,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/surface)
 "lq" = (
-/obj/machinery/fire_alarm/north{
+/obj/machinery/fire_alarm/north_mount{
 	pixel_y = -26
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -3009,7 +3009,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
 "nK" = (
-/obj/machinery/power/apc/west{
+/obj/machinery/power/apc/west_mount{
 	name = "east bump";
 	pixel_x = 24
 	},
@@ -3098,7 +3098,7 @@
 /area/outpost/mining_main/outpost/airlock/one)
 "ok" = (
 /obj/structure/closet/firecloset,
-/obj/machinery/fire_alarm/north{
+/obj/machinery/fire_alarm/north_mount{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled,
@@ -3242,7 +3242,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/west{
+/obj/machinery/power/apc/west_mount{
 	name = "east bump";
 	pixel_x = 28
 	},
@@ -3331,7 +3331,7 @@
 /obj/item/clothing/gloves/sterile/latex,
 /obj/item/clothing/glasses/science,
 /obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	pixel_y = 24;
 	req_access = list()
 	},
@@ -3507,7 +3507,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/south{
+/obj/machinery/power/apc/south_mount{
 	name = "north bump";
 	pixel_y = 28
 	},
@@ -3623,7 +3623,7 @@
 /obj/machinery/atmospherics/portables_connector{
 	dir = 8
 	},
-/obj/machinery/power/apc/west{
+/obj/machinery/power/apc/west_mount{
 	name = "east bump";
 	pixel_x = 24
 	},
@@ -3864,7 +3864,7 @@
 /obj/structure/table/rack,
 /obj/item/suit_cooling_unit,
 /obj/item/suit_cooling_unit,
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	pixel_y = 24;
 	req_access = list()
 	},
@@ -3966,7 +3966,7 @@
 /turf/simulated/floor/plating/lythios43c,
 /area/rift/facility/exterior)
 "st" = (
-/obj/machinery/power/apc/east{
+/obj/machinery/power/apc/east_mount{
 	name = "west bump";
 	pixel_x = -28
 	},
@@ -3997,7 +3997,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	pixel_y = 24;
 	req_access = list()
 	},
@@ -4759,7 +4759,7 @@
 /turf/simulated/floor/lythios43c,
 /area/rift/facility/interior/surface)
 "vL" = (
-/obj/machinery/power/apc/north{
+/obj/machinery/power/apc/north_mount{
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
@@ -5040,7 +5040,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/rift/surfacebase/outside/west)
 "wV" = (
-/obj/machinery/power/apc/west{
+/obj/machinery/power/apc/west_mount{
 	name = "east bump";
 	pixel_x = 24
 	},
@@ -5337,7 +5337,7 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
 "yg" = (
-/obj/machinery/fire_alarm/east,
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rnd/outpost/storage)
 "yh" = (
@@ -5511,7 +5511,7 @@
 	dir = 4;
 	pixel_x = -22
 	},
-/obj/machinery/fire_alarm/south{
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = 25
 	},
 /turf/simulated/floor/wood,
@@ -5862,7 +5862,7 @@
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
 "AG" = (
-/obj/machinery/fire_alarm/south{
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = 25
 	},
 /turf/simulated/floor/tiled,
@@ -6052,7 +6052,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/construction/solars)
 "BS" = (
-/obj/machinery/fire_alarm/north{
+/obj/machinery/fire_alarm/north_mount{
 	pixel_y = -24
 	},
 /obj/effect/floor_decal/borderfloor,
@@ -6467,7 +6467,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/south{
+/obj/machinery/power/apc/south_mount{
 	name = "north bump";
 	pixel_y = 28
 	},
@@ -6614,7 +6614,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
 "EV" = (
-/obj/machinery/power/apc/west{
+/obj/machinery/power/apc/west_mount{
 	name = "east bump";
 	pixel_x = 28
 	},
@@ -6718,7 +6718,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/north{
+/obj/machinery/power/apc/north_mount{
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
@@ -7236,7 +7236,7 @@
 /turf/simulated/floor,
 /area/rnd/outpost/anomaly_lab/storage)
 "HG" = (
-/obj/machinery/power/apc/west{
+/obj/machinery/power/apc/west_mount{
 	name = "east bump";
 	pixel_x = 24
 	},
@@ -7294,7 +7294,7 @@
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 4
 	},
-/obj/item/radio/intercom/west{
+/obj/item/radio/intercom/west_mount{
 	pixel_x = 24
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7{
@@ -7613,7 +7613,7 @@
 /obj/item/clothing/head/helmet/space/anomaly,
 /obj/item/clothing/mask/breath,
 /obj/item/storage/belt/archaeology,
-/obj/machinery/fire_alarm/north{
+/obj/machinery/fire_alarm/north_mount{
 	pixel_y = -26
 	},
 /obj/item/melee/umbrella/random,
@@ -7881,7 +7881,7 @@
 	},
 /obj/structure/table/standard,
 /obj/item/storage/toolbox/emergency,
-/obj/item/radio/intercom/west{
+/obj/item/radio/intercom/west_mount{
 	pixel_x = 24
 	},
 /turf/simulated/floor/tiled,
@@ -8363,7 +8363,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 10
 	},
-/obj/machinery/fire_alarm/west,
+/obj/machinery/fire_alarm/west_mount,
 /obj/machinery/atmospherics/portables_connector{
 	dir = 1
 	},
@@ -8543,7 +8543,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
 "NW" = (
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	pixel_y = 24;
 	req_access = list()
 	},
@@ -9407,7 +9407,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/item/radio/intercom/west{
+/obj/item/radio/intercom/west_mount{
 	pixel_x = -24
 	},
 /obj/machinery/door/firedoor{
@@ -9467,7 +9467,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 9
 	},
-/obj/machinery/fire_alarm/north{
+/obj/machinery/fire_alarm/north_mount{
 	pixel_y = -26
 	},
 /obj/effect/floor_decal/corner/purple{
@@ -9487,7 +9487,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
-/obj/machinery/power/apc/south{
+/obj/machinery/power/apc/south_mount{
 	name = "north bump";
 	pixel_y = 28
 	},
@@ -9835,7 +9835,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/exterior/checkpoint/south)
 "TU" = (
-/obj/machinery/power/apc/south{
+/obj/machinery/power/apc/south_mount{
 	name = "north bump";
 	pixel_y = 28
 	},
@@ -9963,7 +9963,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	pixel_y = 24;
 	req_access = list()
 	},
@@ -10391,7 +10391,7 @@
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
 "WS" = (
-/obj/machinery/fire_alarm/west,
+/obj/machinery/fire_alarm/west_mount,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
@@ -10809,7 +10809,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/obj/machinery/fire_alarm/south{
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = 25
 	},
 /turf/simulated/floor/wood,
@@ -10886,7 +10886,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/obj/machinery/power/apc/north,
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -10915,7 +10915,7 @@
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/facility/exterior)
 "Zo" = (
-/obj/item/radio/intercom/west{
+/obj/item/radio/intercom/west_mount{
 	pixel_x = 24
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -11006,7 +11006,7 @@
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/exterior/mineshaft)
 "ZN" = (
-/obj/machinery/power/apc/east{
+/obj/machinery/power/apc/east_mount{
 	name = "west bump";
 	pixel_x = -28
 	},

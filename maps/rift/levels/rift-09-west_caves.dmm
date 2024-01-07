@@ -172,7 +172,7 @@
 /obj/structure/cable/white{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/south{
+/obj/machinery/power/apc/south_mount{
 	name = "north bump";
 	pixel_y = 28
 	},
@@ -266,7 +266,7 @@
 /turf/simulated/open/lythios43c,
 /area/rift/facility/interior/medical)
 "dg" = (
-/obj/machinery/power/apc/north,
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -647,7 +647,7 @@
 /turf/simulated/floor/tiled/steel/lythios43c,
 /area/rift/facility/interior/medical)
 "ho" = (
-/obj/machinery/power/apc/east,
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -1699,7 +1699,7 @@
 /obj/effect/floor_decal/corner/yellow/border{
 	dir = 8
 	},
-/obj/item/radio/intercom/west{
+/obj/item/radio/intercom/west_mount{
 	pixel_x = -24;
 	pixel_y = -5
 	},
@@ -3401,7 +3401,7 @@
 "NE" = (
 /obj/machinery/space_heater,
 /obj/structure/railing,
-/obj/machinery/power/apc/north,
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-6"
 	},
@@ -3924,7 +3924,7 @@
 /turf/simulated/wall,
 /area/rift/facility/interior/medical)
 "Tg" = (
-/obj/machinery/power/apc/south,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance)
@@ -4032,7 +4032,7 @@
 /area/rift/surfacebase/outside/west_caves)
 "UH" = (
 /obj/structure/cable/green,
-/obj/machinery/power/apc/south,
+/obj/machinery/power/apc/south_mount,
 /turf/simulated/floor/tiled/white,
 /area/outpost/mining_main/outpost/washrooms)
 "UN" = (
@@ -4486,7 +4486,7 @@
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 8
 	},
-/obj/machinery/power/apc/west,
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -4520,7 +4520,7 @@
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
 "YZ" = (
-/obj/machinery/power/apc/south,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green,
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/outpost/storage)

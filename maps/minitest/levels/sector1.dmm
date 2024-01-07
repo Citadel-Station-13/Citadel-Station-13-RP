@@ -128,7 +128,7 @@
 "av" = (
 /obj/item/storage/toolbox/electrical,
 /obj/structure/cable,
-/obj/machinery/power/apc/east{
+/obj/machinery/power/apc/east_mount{
 	name = "west bump";
 	pixel_x = -24
 	},

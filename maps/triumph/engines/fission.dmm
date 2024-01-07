@@ -202,7 +202,7 @@
 /area/engineering/engine_room)
 "hS" = (
 /obj/machinery/light,
-/obj/machinery/fire_alarm/north{
+/obj/machinery/fire_alarm/north_mount{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -248,7 +248,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "lY" = (
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -304,7 +304,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 4
 	},
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -337,7 +337,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},
-/obj/machinery/fire_alarm/east,
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/engine_room)
 "qX" = (
@@ -395,7 +395,7 @@
 /obj/structure/closet/radiation,
 /obj/item/clothing/glasses/meson,
 /obj/item/clothing/glasses/meson,
-/obj/machinery/fire_alarm/east,
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/engine_room)
 "vw" = (
@@ -872,7 +872,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/engine_room)
 "Ny" = (
-/obj/machinery/fire_alarm/north{
+/obj/machinery/fire_alarm/north_mount{
 	pixel_y = -24
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{

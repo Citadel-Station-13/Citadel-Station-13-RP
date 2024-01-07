@@ -2286,7 +2286,7 @@
 /obj/structure/closet/crate/bin{
 	anchored = 1
 	},
-/obj/machinery/fire_alarm/east,
+/obj/machinery/fire_alarm/east_mount,
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
 	},
@@ -3143,7 +3143,7 @@
 /obj/structure/closet/crate/bin{
 	anchored = 1
 	},
-/obj/machinery/fire_alarm/east,
+/obj/machinery/fire_alarm/east_mount,
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
 	},
@@ -3532,7 +3532,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/machinery/fire_alarm/east,
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/shuttle/floor/white,
 /area/tradeport/commons)
 "mw" = (
@@ -6792,7 +6792,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
 	},
-/obj/machinery/fire_alarm/east,
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/commons)
 "yJ" = (
@@ -7314,7 +7314,7 @@
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/tradeport/pads)
 "AG" = (
-/obj/machinery/fire_alarm/east,
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/shuttle/floor/white,
 /area/tradeport/commons)
 "AI" = (
@@ -8545,7 +8545,7 @@
 "EX" = (
 /obj/machinery/light,
 /obj/structure/flora/pottedplant/drooping,
-/obj/machinery/fire_alarm/east,
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/wood,
 /area/tradeport/cafeteria)
 "Fb" = (
@@ -9588,7 +9588,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/fire_alarm/east,
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/carpet/blue,
 /area/tradeport/commons)
 "IX" = (

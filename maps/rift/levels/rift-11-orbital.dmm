@@ -8406,7 +8406,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/specops/general)
 "Ky" = (
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	frequency = 1443;
 	name = "Spec Ops Intercom";
 	pixel_y = -28

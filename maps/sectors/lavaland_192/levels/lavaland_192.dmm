@@ -577,7 +577,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/machinery/fire_alarm/north{
+/obj/machinery/fire_alarm/north_mount{
 	pixel_y = -24
 	},
 /turf/simulated/floor/plating,
@@ -1193,7 +1193,7 @@
 "vz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/fire_alarm/east,
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "vA" = (
@@ -1208,7 +1208,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
-/obj/machinery/fire_alarm/east,
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/wood,
 /area/lavaland/central/base/common)
 "vK" = (
@@ -1253,7 +1253,7 @@
 /area/lavaland/central/base/common)
 "wE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/fire_alarm/east,
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "wN" = (
@@ -1332,7 +1332,7 @@
 	pixel_y = -23;
 	req_one_access = list(48)
 	},
-/obj/machinery/fire_alarm/east,
+/obj/machinery/fire_alarm/east_mount,
 /obj/structure/ore_box,
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
@@ -1384,7 +1384,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
-/obj/machinery/fire_alarm/south{
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled,
@@ -1646,7 +1646,7 @@
 /area/lavaland/central/base/common)
 "GT" = (
 /obj/effect/debris/cleanable/dirt,
-/obj/machinery/fire_alarm/south{
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled,
@@ -2458,7 +2458,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/fire_alarm/north{
+/obj/machinery/fire_alarm/north_mount{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled,

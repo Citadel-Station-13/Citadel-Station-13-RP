@@ -602,7 +602,7 @@
 /obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 26
 	},
-/obj/machinery/fire_alarm/west,
+/obj/machinery/fire_alarm/west_mount,
 /turf/simulated/floor/tiled,
 /area/shuttle/curabitur/curashuttle/med)
 "bj" = (

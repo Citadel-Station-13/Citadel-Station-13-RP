@@ -134,7 +134,7 @@
 /turf/simulated/floor/plating,
 /area/submap/virgo2/DoomP)
 "aG" = (
-/obj/machinery/power/apc/south{
+/obj/machinery/power/apc/south_mount{
 	name = "PAPC";
 	pixel_x = 0;
 	pixel_y = 24

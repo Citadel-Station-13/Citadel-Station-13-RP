@@ -59,7 +59,7 @@
 /turf/simulated/floor/tiled/old_tile/white,
 /area/awaymission/snow_outpost/powered)
 "am" = (
-/obj/machinery/power/apc/west{
+/obj/machinery/power/apc/west_mount{
 	name = "east bump";
 	pixel_x = 24
 	},
@@ -195,7 +195,7 @@
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
 "aK" = (
-/obj/machinery/power/apc/south{
+/obj/machinery/power/apc/south_mount{
 	name = "north bump";
 	pixel_x = 0;
 	pixel_y = 28
@@ -312,7 +312,7 @@
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
 "bg" = (
-/obj/machinery/power/apc/south{
+/obj/machinery/power/apc/south_mount{
 	name = "north bump";
 	pixel_x = 0;
 	pixel_y = 28
@@ -324,7 +324,7 @@
 /turf/simulated/floor/plating/external,
 /area/awaymission/snow_outpost/dark)
 "bi" = (
-/obj/machinery/power/apc/west{
+/obj/machinery/power/apc/west_mount{
 	name = "east bump";
 	pixel_x = 24
 	},
@@ -512,7 +512,7 @@
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
 "bM" = (
-/obj/machinery/power/apc/west{
+/obj/machinery/power/apc/west_mount{
 	name = "east bump";
 	pixel_x = 24
 	},
@@ -1552,7 +1552,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/snow_outpost/outside/nospawn)
 "fo" = (
-/obj/machinery/power/apc/east{
+/obj/machinery/power/apc/east_mount{
 	name = "BSD APC";
 	pixel_x = -24
 	},
@@ -2402,7 +2402,7 @@
 	dir = 1
 	},
 /obj/structure/closet/walllocker/emerglocker/east,
-/obj/item/radio/intercom/west{
+/obj/item/radio/intercom/west_mount{
 	name = "Station Intercom (General)";
 	pixel_x = -28
 	},

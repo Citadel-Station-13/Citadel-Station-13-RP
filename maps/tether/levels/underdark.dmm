@@ -117,7 +117,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-10"
 	},
-/obj/machinery/power/apc/south{
+/obj/machinery/power/apc/south_mount{
 	alarms_hidden = 1;
 	name = "north bump";
 	pixel_y = 24

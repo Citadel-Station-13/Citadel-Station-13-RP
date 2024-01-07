@@ -31,7 +31,7 @@
 /area/submap/Epod1)
 "i" = (
 /obj/structure/bed/chair,
-/obj/item/radio/intercom/west{
+/obj/item/radio/intercom/west_mount{
 	name = "Station Intercom (General)";
 	pixel_x = -28
 	},

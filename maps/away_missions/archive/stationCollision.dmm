@@ -800,7 +800,7 @@
 "dE" = (
 /obj/structure/window/reinforced,
 /obj/structure/cable,
-/obj/machinery/power/apc/east{
+/obj/machinery/power/apc/east_mount{
 	cell_type = 7500;
 	name = "Research APC";
 	pixel_x = -28
@@ -1064,7 +1064,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/northblock)
 "eN" = (
-/obj/machinery/power/apc/west{
+/obj/machinery/power/apc/west_mount{
 	cell_type = 5000;
 	name = "North Block APC";
 	pixel_x = 28
@@ -1596,7 +1596,7 @@
 /area/awaymission/midblock)
 "gG" = (
 /obj/item/ammo_casing/a12g/pellet,
-/obj/machinery/power/apc/east{
+/obj/machinery/power/apc/east_mount{
 	cell_type = 5000;
 	name = "Mid Block APC";
 	pixel_x = -28
@@ -2026,7 +2026,7 @@
 /turf/simulated/floor,
 /area/awaymission/arrivalblock)
 "ib" = (
-/obj/machinery/power/apc/east{
+/obj/machinery/power/apc/east_mount{
 	cell_type = 7500;
 	name = "Arrivals Block APC";
 	pixel_x = -28
@@ -2623,7 +2623,7 @@
 /area/awaymission/southblock)
 "kf" = (
 /obj/machinery/light/small,
-/obj/machinery/power/apc/north{
+/obj/machinery/power/apc/north_mount{
 	cell_type = 5000;
 	name = "South Block APC";
 	pixel_y = -30
@@ -3213,7 +3213,7 @@
 /turf/simulated/floor,
 /area/awaymission/gateroom)
 "mo" = (
-/obj/machinery/power/apc/west{
+/obj/machinery/power/apc/west_mount{
 	name = "Gateroom APC";
 	pixel_x = 28
 	},

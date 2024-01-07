@@ -781,7 +781,7 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/secondary_gear_storage)
 "tE" = (
-/obj/machinery/power/apc/south{
+/obj/machinery/power/apc/south_mount{
 	name = "north bump";
 	pixel_y = 24
 	},
@@ -1167,7 +1167,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
-/obj/machinery/power/apc/south{
+/obj/machinery/power/apc/south_mount{
 	name = "north bump";
 	pixel_y = 24
 	},
@@ -1318,7 +1318,7 @@
 /obj/machinery/status_display{
 	pixel_x = -32
 	},
-/obj/machinery/power/apc/south{
+/obj/machinery/power/apc/south_mount{
 	name = "north bump";
 	pixel_y = 24
 	},
@@ -1412,7 +1412,7 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 1
 	},
-/obj/machinery/fire_alarm/west,
+/obj/machinery/fire_alarm/west_mount,
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},
@@ -1446,7 +1446,7 @@
 /obj/effect/floor_decal/corner/brown/bordercorner2{
 	dir = 4
 	},
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	pixel_y = 24;
 	req_access = list()
 	},
@@ -1473,7 +1473,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/machinery/fire_alarm/west,
+/obj/machinery/fire_alarm/west_mount,
 /turf/simulated/floor/wood,
 /area/outpost/mining_main/dorms)
 "LA" = (
@@ -1497,7 +1497,7 @@
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/maintenance)
 "MT" = (
-/obj/machinery/power/apc/south{
+/obj/machinery/power/apc/south_mount{
 	name = "north bump";
 	pixel_y = 24
 	},
@@ -1630,7 +1630,7 @@
 /turf/simulated/floor/outdoors/grass/sif/virgo3b,
 /area/mine/explored)
 "SM" = (
-/obj/machinery/power/apc/south{
+/obj/machinery/power/apc/south_mount{
 	name = "north bump";
 	pixel_y = 24
 	},
@@ -1744,7 +1744,7 @@
 /obj/effect/floor_decal/corner/brown/bordercorner2{
 	dir = 8
 	},
-/obj/machinery/fire_alarm/east,
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/break_room)
 "Uz" = (

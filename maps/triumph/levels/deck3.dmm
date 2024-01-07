@@ -165,7 +165,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
 "afR" = (
-/obj/item/radio/intercom/west{
+/obj/item/radio/intercom/west_mount{
 	pixel_x = -28;
 	req_access = list()
 	},
@@ -552,7 +552,7 @@
 	dir = 4
 	},
 /obj/machinery/meter,
-/obj/item/radio/intercom/west{
+/obj/item/radio/intercom/west_mount{
 	pixel_x = 24
 	},
 /turf/simulated/floor/tiled,
@@ -673,7 +673,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/recoveryrestroom)
 "aEn" = (
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -839,7 +839,7 @@
 /area/triumph/station/stairs_three)
 "aHX" = (
 /obj/effect/floor_decal/techfloor,
-/obj/machinery/fire_alarm/north{
+/obj/machinery/fire_alarm/north_mount{
 	pixel_y = -24
 	},
 /obj/structure/flora/pottedplant/stoutbush,
@@ -1130,7 +1130,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
 "aWr" = (
-/obj/machinery/fire_alarm/east,
+/obj/machinery/fire_alarm/east_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
@@ -2100,7 +2100,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
-/obj/machinery/power/apc/west{
+/obj/machinery/power/apc/west_mount{
 	name = "east bump";
 	pixel_x = 24
 	},
@@ -2314,7 +2314,7 @@
 /turf/simulated/floor/tiled,
 /area/medical/medbay3)
 "bYR" = (
-/obj/machinery/fire_alarm/north{
+/obj/machinery/fire_alarm/north_mount{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled,
@@ -2985,7 +2985,7 @@
 /area/maintenance/fpmaint2)
 "cDC" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
-/obj/machinery/fire_alarm/west,
+/obj/machinery/fire_alarm/west_mount,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medical_restroom)
 "cEs" = (
@@ -3037,7 +3037,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/power/apc/south{
+/obj/machinery/power/apc/south_mount{
 	name = "north bump";
 	pixel_y = 28
 	},
@@ -3072,7 +3072,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/machinery/fire_alarm/west,
+/obj/machinery/fire_alarm/west_mount,
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_c)
 "cGb" = (
@@ -3096,7 +3096,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/east{
+/obj/machinery/power/apc/east_mount{
 	name = "west bump";
 	pixel_x = -28
 	},
@@ -3224,7 +3224,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/machinery/fire_alarm/west,
+/obj/machinery/fire_alarm/west_mount,
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_b)
 "cMb" = (
@@ -3296,7 +3296,7 @@
 /area/medical/reception)
 "cOG" = (
 /obj/machinery/camera/network/research,
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -3339,7 +3339,7 @@
 "cRH" = (
 /obj/structure/table/standard,
 /obj/item/flashlight/lamp,
-/obj/machinery/power/apc/south{
+/obj/machinery/power/apc/south_mount{
 	name = "north bump";
 	pixel_y = 28
 	},
@@ -3411,7 +3411,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/research)
 "cTS" = (
-/obj/machinery/power/apc/west{
+/obj/machinery/power/apc/west_mount{
 	name = "east bump";
 	pixel_x = 24
 	},
@@ -4508,7 +4508,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/south{
+/obj/machinery/power/apc/south_mount{
 	name = "north bump";
 	pixel_y = 24
 	},
@@ -4863,7 +4863,7 @@
 /obj/item/material/knife/machete,
 /obj/item/clothing/accessory/holster/machete,
 /obj/item/clothing/accessory/permit/gun/paramedic,
-/obj/machinery/fire_alarm/north{
+/obj/machinery/fire_alarm/north_mount{
 	pixel_y = -24
 	},
 /obj/item/bodybag/cryobag,
@@ -4941,7 +4941,7 @@
 /obj/structure/table/steel_reinforced,
 /obj/item/storage/box/traumainjectors,
 /obj/effect/floor_decal/industrial/outline/blue,
-/obj/item/radio/intercom/west{
+/obj/item/radio/intercom/west_mount{
 	pixel_x = 24
 	},
 /obj/machinery/light{
@@ -5052,7 +5052,7 @@
 /area/medical/patient_d)
 "ehC" = (
 /obj/machinery/camera/network/medbay,
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	pixel_y = 24;
 	req_access = list()
 	},
@@ -5377,7 +5377,7 @@
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 1
 	},
-/obj/machinery/power/apc/south{
+/obj/machinery/power/apc/south_mount{
 	name = "north bump";
 	pixel_y = 28
 	},
@@ -5584,7 +5584,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/port)
 "eNW" = (
-/obj/machinery/power/apc/north{
+/obj/machinery/power/apc/north_mount{
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
@@ -5695,7 +5695,7 @@
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 4
 	},
-/obj/machinery/power/apc/west{
+/obj/machinery/power/apc/west_mount{
 	name = "east bump";
 	pixel_x = 24
 	},
@@ -5885,7 +5885,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/obj/machinery/fire_alarm/north{
+/obj/machinery/fire_alarm/north_mount{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled,
@@ -5973,7 +5973,7 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
 	},
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -6133,7 +6133,7 @@
 /turf/simulated/floor/airless,
 /area/rnd/xenobiology/xenoflora_storage)
 "fij" = (
-/obj/item/radio/intercom/west{
+/obj/item/radio/intercom/west_mount{
 	pixel_x = 24
 	},
 /turf/simulated/floor/plating,
@@ -6352,7 +6352,7 @@
 	dir = 4;
 	network = list("Xenobiology")
 	},
-/obj/item/radio/intercom/west{
+/obj/item/radio/intercom/west_mount{
 	pixel_x = -28;
 	req_access = list()
 	},
@@ -6385,7 +6385,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "fti" = (
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	name = "Station Intercom (General)";
 	pixel_y = 21
 	},
@@ -6408,7 +6408,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/item/radio/intercom/west{
+/obj/item/radio/intercom/west_mount{
 	pixel_x = -28;
 	req_access = list()
 	},
@@ -6849,7 +6849,7 @@
 /turf/simulated/floor/tiled,
 /area/medical/surgeryprep)
 "fNb" = (
-/obj/machinery/fire_alarm/north{
+/obj/machinery/fire_alarm/north_mount{
 	pixel_y = -24
 	},
 /obj/effect/floor_decal/borderfloorwhite,
@@ -7001,7 +7001,7 @@
 /turf/simulated/floor/tiled,
 /area/medical/virology)
 "fRL" = (
-/obj/machinery/fire_alarm/east,
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/carpet/blue,
 /area/crew_quarters/medbreak/surgery)
 "fRR" = (
@@ -7124,7 +7124,7 @@
 /turf/simulated/floor/tiled,
 /area/medical/medbay_primary_storage)
 "fUM" = (
-/obj/item/radio/intercom/west{
+/obj/item/radio/intercom/west_mount{
 	pixel_x = 24
 	},
 /obj/structure/toilet{
@@ -7642,7 +7642,7 @@
 /turf/simulated/floor/plating,
 /area/rnd/rdoffice)
 "guA" = (
-/obj/machinery/fire_alarm/north{
+/obj/machinery/fire_alarm/north_mount{
 	pixel_y = -24
 	},
 /obj/effect/floor_decal/borderfloorwhite,
@@ -7796,7 +7796,7 @@
 	color = "#0098c8";
 	dir = 1
 	},
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -7976,7 +7976,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/xenobiology/xenoflora_storage)
 "gIR" = (
-/obj/item/radio/intercom/west{
+/obj/item/radio/intercom/west_mount{
 	pixel_x = 24
 	},
 /obj/effect/floor_decal/borderfloorwhite{
@@ -7989,7 +7989,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
 "gJS" = (
-/obj/machinery/power/apc/south{
+/obj/machinery/power/apc/south_mount{
 	name = "north bump";
 	pixel_y = 24
 	},
@@ -8020,7 +8020,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
-/obj/item/radio/intercom/west{
+/obj/item/radio/intercom/west_mount{
 	pixel_x = -28;
 	req_access = list()
 	},
@@ -8050,7 +8050,7 @@
 /obj/effect/floor_decal/corner/lightorange/border{
 	dir = 8
 	},
-/obj/machinery/power/apc/east{
+/obj/machinery/power/apc/east_mount{
 	name = "west bump";
 	pixel_x = -28
 	},
@@ -8229,7 +8229,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/ward)
 "gXK" = (
-/obj/machinery/fire_alarm/north{
+/obj/machinery/fire_alarm/north_mount{
 	pixel_y = -24
 	},
 /obj/effect/floor_decal/borderfloorwhite{
@@ -8641,7 +8641,7 @@
 	},
 /obj/structure/bed/chair/office/dark,
 /obj/effect/floor_decal/corner/blue/diagonal,
-/obj/machinery/power/apc/south{
+/obj/machinery/power/apc/south_mount{
 	name = "north bump";
 	pixel_y = 28
 	},
@@ -9226,7 +9226,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
-/obj/machinery/fire_alarm/north{
+/obj/machinery/fire_alarm/north_mount{
 	pixel_y = -24
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -9295,7 +9295,7 @@
 /obj/item/clothing/mask/surgical,
 /obj/item/storage/secure/briefcase/ml3m_pack_cmo,
 /obj/item/clothing/accessory/poncho/roles/cloak/cmo,
-/obj/machinery/fire_alarm/east,
+/obj/machinery/fire_alarm/east_mount,
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},
@@ -9526,7 +9526,7 @@
 /obj/item/storage/firstaid/surgery,
 /obj/item/robotanalyzer,
 /obj/item/robotanalyzer,
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -9974,7 +9974,7 @@
 /area/rnd/research/testingrange)
 "iny" = (
 /obj/structure/loot_pile/maint/trash,
-/obj/machinery/fire_alarm/north{
+/obj/machinery/fire_alarm/north_mount{
 	pixel_y = -24
 	},
 /turf/simulated/floor/plating,
@@ -10100,7 +10100,7 @@
 /area/rnd/rdoffice)
 "iry" = (
 /obj/structure/cable/green,
-/obj/machinery/power/apc/east{
+/obj/machinery/power/apc/east_mount{
 	name = "west bump";
 	pixel_x = -28
 	},
@@ -10172,7 +10172,7 @@
 /turf/simulated/floor/tiled,
 /area/medical/surgery2)
 "iuJ" = (
-/obj/machinery/fire_alarm/north{
+/obj/machinery/fire_alarm/north_mount{
 	pixel_y = -24
 	},
 /obj/structure/closet/coffin,
@@ -10199,7 +10199,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -10208,7 +10208,7 @@
 "ivK" = (
 /obj/structure/table/standard,
 /obj/item/flashlight/lamp,
-/obj/machinery/power/apc/south{
+/obj/machinery/power/apc/south_mount{
 	name = "north bump";
 	pixel_y = 28
 	},
@@ -10367,7 +10367,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -10412,7 +10412,7 @@
 "iDi" = (
 /obj/random/maintenance/clean,
 /obj/structure/closet,
-/obj/item/radio/intercom/west{
+/obj/item/radio/intercom/west_mount{
 	pixel_x = 24
 	},
 /turf/simulated/floor/plating,
@@ -10467,7 +10467,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
 "iEo" = (
-/obj/machinery/fire_alarm/east,
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/open,
 /area/holodeck_control)
 "iEr" = (
@@ -10482,7 +10482,7 @@
 	network = list("Psychiatric")
 	},
 /obj/structure/table/steel_reinforced,
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	pixel_y = 24;
 	req_access = list()
 	},
@@ -10579,7 +10579,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/east{
+/obj/machinery/power/apc/east_mount{
 	name = "west bump";
 	pixel_x = -28
 	},
@@ -11011,7 +11011,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/item/radio/intercom/west{
+/obj/item/radio/intercom/west_mount{
 	pixel_x = 24
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -11178,7 +11178,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
-/obj/machinery/fire_alarm/north{
+/obj/machinery/fire_alarm/north_mount{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/white,
@@ -11268,7 +11268,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 8
 	},
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -11502,7 +11502,7 @@
 /area/holodeck_control)
 "jvO" = (
 /obj/structure/cable/green,
-/obj/machinery/power/apc/west{
+/obj/machinery/power/apc/west_mount{
 	name = "east bump";
 	pixel_x = 24
 	},
@@ -11810,7 +11810,7 @@
 /obj/machinery/atmospherics/pipe/manifold/visible/red{
 	dir = 4
 	},
-/obj/machinery/fire_alarm/west,
+/obj/machinery/fire_alarm/west_mount,
 /turf/simulated/floor/tiled,
 /area/rnd/test_area)
 "jFt" = (
@@ -11979,7 +11979,7 @@
 "jMZ" = (
 /obj/structure/table/reinforced,
 /obj/structure/flora/pottedplant/mysterious,
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	name = "Station Intercom (General)";
 	pixel_y = 21
 	},
@@ -12413,7 +12413,7 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/washing_machine,
-/obj/machinery/power/apc/south{
+/obj/machinery/power/apc/south_mount{
 	name = "north bump";
 	pixel_y = 28
 	},
@@ -12604,7 +12604,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	pixel_y = 24;
 	req_access = list()
 	},
@@ -12901,7 +12901,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/workshop)
 "kFN" = (
-/obj/machinery/power/apc/south{
+/obj/machinery/power/apc/south_mount{
 	name = "north bump";
 	pixel_y = 28
 	},
@@ -12955,7 +12955,7 @@
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 10
 	},
-/obj/machinery/power/apc/east{
+/obj/machinery/power/apc/east_mount{
 	name = "west bump";
 	pixel_x = -28
 	},
@@ -13380,7 +13380,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "laO" = (
-/obj/item/radio/intercom/west{
+/obj/item/radio/intercom/west_mount{
 	pixel_x = 24
 	},
 /obj/machinery/door/firedoor/glass,
@@ -13522,7 +13522,7 @@
 	icon_state = "0-8"
 	},
 /obj/structure/catwalk,
-/obj/machinery/power/apc/south{
+/obj/machinery/power/apc/south_mount{
 	name = "north bump";
 	pixel_y = 28
 	},
@@ -13636,7 +13636,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/south{
+/obj/machinery/power/apc/south_mount{
 	name = "north bump";
 	pixel_y = 28
 	},
@@ -13716,7 +13716,7 @@
 /obj/effect/floor_decal/corner/blue/full{
 	dir = 4
 	},
-/obj/machinery/fire_alarm/north{
+/obj/machinery/fire_alarm/north_mount{
 	pixel_y = -24
 	},
 /obj/machinery/camera/network/medbay{
@@ -13763,7 +13763,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
 "lsR" = (
-/obj/machinery/fire_alarm/north{
+/obj/machinery/fire_alarm/north_mount{
 	pixel_y = -24
 	},
 /obj/effect/floor_decal/corner/blue/diagonal,
@@ -14092,7 +14092,7 @@
 /area/rnd/research_foyer_auxiliary)
 "lFV" = (
 /obj/machinery/camera/network/civilian,
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	name = "Station Intercom (General)";
 	pixel_y = 21
 	},
@@ -14139,7 +14139,7 @@
 /turf/simulated/wall/prepainted/medical,
 /area/maintenance/medbay/fore)
 "lHG" = (
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -14239,7 +14239,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/south{
+/obj/machinery/power/apc/south_mount{
 	name = "north bump";
 	pixel_y = 28
 	},
@@ -14444,7 +14444,7 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
 	},
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -14521,7 +14521,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay3)
 "lZl" = (
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -14732,7 +14732,7 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
 	},
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -14751,7 +14751,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/port)
 "mmM" = (
-/obj/item/radio/intercom/west{
+/obj/item/radio/intercom/west_mount{
 	pixel_x = 24
 	},
 /turf/simulated/floor/tiled,
@@ -15186,7 +15186,7 @@
 	dir = 1
 	},
 /obj/structure/catwalk,
-/obj/machinery/fire_alarm/west,
+/obj/machinery/fire_alarm/west_mount,
 /turf/simulated/floor/plating,
 /area/maintenance/medbay/aft)
 "mHV" = (
@@ -15248,7 +15248,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/medbay/fore)
 "mLf" = (
-/obj/machinery/power/apc/east{
+/obj/machinery/power/apc/east_mount{
 	name = "west bump";
 	pixel_x = -28
 	},
@@ -15428,7 +15428,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/south{
+/obj/machinery/power/apc/south_mount{
 	name = "north bump";
 	pixel_y = 28
 	},
@@ -15446,7 +15446,7 @@
 /area/triumph/station/stairs_three)
 "mSK" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	name = "Station Intercom (General)";
 	pixel_y = 21
 	},
@@ -15624,7 +15624,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/fire_alarm/north{
+/obj/machinery/fire_alarm/north_mount{
 	pixel_y = -24
 	},
 /obj/effect/floor_decal/borderfloorwhite,
@@ -15969,7 +15969,7 @@
 /area/medical/medbay3)
 "npO" = (
 /obj/machinery/camera/network/civilian,
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -16387,7 +16387,7 @@
 /obj/effect/floor_decal/corner/green/border{
 	dir = 8
 	},
-/obj/machinery/power/apc/east{
+/obj/machinery/power/apc/east_mount{
 	name = "west bump";
 	pixel_x = -28
 	},
@@ -16641,7 +16641,7 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 8
 	},
-/obj/item/radio/intercom/west{
+/obj/item/radio/intercom/west_mount{
 	pixel_x = -28;
 	req_access = list()
 	},
@@ -16678,7 +16678,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/research)
 "nTO" = (
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	name = "Station Intercom (General)";
 	pixel_y = 21
 	},
@@ -16706,7 +16706,7 @@
 /turf/simulated/floor/wood,
 /area/hallway/primary/port)
 "nUC" = (
-/obj/machinery/fire_alarm/north{
+/obj/machinery/fire_alarm/north_mount{
 	pixel_y = -24
 	},
 /obj/effect/floor_decal/borderfloorwhite,
@@ -16829,7 +16829,7 @@
 /turf/simulated/floor/tiled,
 /area/medical/virology)
 "oaU" = (
-/obj/item/radio/intercom/west{
+/obj/item/radio/intercom/west_mount{
 	pixel_x = -28;
 	req_access = list()
 	},
@@ -16875,7 +16875,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/south{
+/obj/machinery/power/apc/south_mount{
 	name = "north bump";
 	pixel_y = 28
 	},
@@ -16885,7 +16885,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/east{
+/obj/machinery/power/apc/east_mount{
 	name = "west bump";
 	pixel_x = -28
 	},
@@ -16970,7 +16970,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/south{
+/obj/machinery/power/apc/south_mount{
 	name = "north bump";
 	pixel_y = 24
 	},
@@ -17150,7 +17150,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
-/obj/machinery/power/apc/west{
+/obj/machinery/power/apc/west_mount{
 	name = "east bump";
 	pixel_x = 24
 	},
@@ -17213,7 +17213,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	name = "Station Intercom (General)";
 	pixel_y = 21
 	},
@@ -17257,7 +17257,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
 "osS" = (
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	name = "Station Intercom (General)";
 	pixel_y = 21
 	},
@@ -17387,7 +17387,7 @@
 /area/medical/medbay3)
 "owP" = (
 /obj/machinery/camera/network/medbay,
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	pixel_y = 24;
 	req_access = list()
 	},
@@ -17405,7 +17405,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/west{
+/obj/machinery/power/apc/west_mount{
 	name = "east bump";
 	pixel_x = 28
 	},
@@ -17749,7 +17749,7 @@
 /area/medical/surgeryprep)
 "oMP" = (
 /obj/machinery/atmospherics/portables_connector,
-/obj/machinery/power/apc/north{
+/obj/machinery/power/apc/north_mount{
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
@@ -17927,7 +17927,7 @@
 /area/rnd/misc_lab)
 "oSV" = (
 /obj/structure/reagent_dispensers/watertank,
-/obj/machinery/fire_alarm/west,
+/obj/machinery/fire_alarm/west_mount,
 /turf/simulated/floor/plating,
 /area/maintenance/research)
 "oTe" = (
@@ -17977,7 +17977,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
 	},
-/obj/machinery/power/apc/south{
+/obj/machinery/power/apc/south_mount{
 	name = "north bump";
 	pixel_y = 28
 	},
@@ -18029,7 +18029,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/starboard)
 "oXx" = (
-/obj/machinery/fire_alarm/west,
+/obj/machinery/fire_alarm/west_mount,
 /obj/structure/loot_pile/maint/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/research)
@@ -18172,7 +18172,7 @@
 	dir = 1
 	},
 /obj/structure/table/steel,
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -18204,7 +18204,7 @@
 	dir = 8;
 	light_range = 12
 	},
-/obj/machinery/fire_alarm/east,
+/obj/machinery/fire_alarm/east_mount,
 /obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/holodeck_control)
@@ -18239,7 +18239,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
-/obj/machinery/power/apc/east{
+/obj/machinery/power/apc/east_mount{
 	name = "west bump";
 	pixel_x = -28
 	},
@@ -18348,7 +18348,7 @@
 /obj/machinery/camera/network/medbay,
 /obj/effect/floor_decal/industrial/outline/blue,
 /obj/structure/bed/chair/wheelchair,
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	pixel_y = 24;
 	req_access = list()
 	},
@@ -18404,7 +18404,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	pixel_y = 24;
 	req_access = list()
 	},
@@ -18529,7 +18529,7 @@
 /obj/structure/bed/chair/comfy/brown{
 	dir = 4
 	},
-/obj/item/radio/intercom/west{
+/obj/item/radio/intercom/west_mount{
 	pixel_x = -28;
 	req_access = list()
 	},
@@ -19080,7 +19080,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_d)
 "pLn" = (
-/obj/machinery/power/apc/south{
+/obj/machinery/power/apc/south_mount{
 	name = "north bump";
 	pixel_y = 24
 	},
@@ -19474,7 +19474,7 @@
 /area/medical/ward)
 "pXJ" = (
 /obj/machinery/camera/network/civilian,
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	name = "Station Intercom (General)";
 	pixel_y = 21
 	},
@@ -19610,7 +19610,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/port)
 "qaw" = (
-/obj/machinery/fire_alarm/north{
+/obj/machinery/fire_alarm/north_mount{
 	pixel_y = -24
 	},
 /obj/structure/bed/padded,
@@ -19955,7 +19955,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -19994,7 +19994,7 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 4
 	},
-/obj/item/radio/intercom/west{
+/obj/item/radio/intercom/west_mount{
 	pixel_x = 24
 	},
 /turf/simulated/floor/tiled,
@@ -20053,7 +20053,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/east{
+/obj/machinery/power/apc/east_mount{
 	name = "west bump";
 	pixel_x = -28
 	},
@@ -20085,7 +20085,7 @@
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/item/radio/intercom/west{
+/obj/item/radio/intercom/west_mount{
 	pixel_x = -28;
 	req_access = list()
 	},
@@ -20439,7 +20439,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
-/obj/machinery/power/apc/west{
+/obj/machinery/power/apc/west_mount{
 	name = "east bump";
 	pixel_x = 28
 	},
@@ -20708,7 +20708,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "qSB" = (
-/obj/machinery/fire_alarm/west,
+/obj/machinery/fire_alarm/west_mount,
 /obj/machinery/disease2/diseaseanalyser,
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -20804,7 +20804,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "qXw" = (
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	pixel_y = 24;
 	req_access = list()
 	},
@@ -20886,7 +20886,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/machinery/fire_alarm/north{
+/obj/machinery/fire_alarm/north_mount{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled,
@@ -20901,7 +20901,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/fpmaint2)
 "rbh" = (
-/obj/item/radio/intercom/west{
+/obj/item/radio/intercom/west_mount{
 	pixel_x = -28;
 	req_access = list()
 	},
@@ -20980,7 +20980,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab/containment_two)
 "rdw" = (
-/obj/machinery/power/apc/south{
+/obj/machinery/power/apc/south_mount{
 	name = "north bump";
 	pixel_y = 28
 	},
@@ -21189,7 +21189,7 @@
 /area/medical/virologyisolation)
 "rnw" = (
 /obj/structure/closet/l3closet/virology,
-/obj/machinery/fire_alarm/north{
+/obj/machinery/fire_alarm/north_mount{
 	pixel_y = -24
 	},
 /obj/effect/floor_decal/borderfloorwhite{
@@ -21217,7 +21217,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/port)
 "rqj" = (
-/obj/machinery/power/apc/west{
+/obj/machinery/power/apc/west_mount{
 	name = "east bump";
 	pixel_x = 24
 	},
@@ -21460,7 +21460,7 @@
 /turf/simulated/floor/tiled,
 /area/medical/medbay_emt_bay)
 "rAp" = (
-/obj/machinery/fire_alarm/north{
+/obj/machinery/fire_alarm/north_mount{
 	pixel_y = -24
 	},
 /obj/random/trash,
@@ -21720,7 +21720,7 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
 	},
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	pixel_y = 24;
 	req_access = list()
 	},
@@ -21782,7 +21782,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/machinery/fire_alarm/north{
+/obj/machinery/fire_alarm/north_mount{
 	pixel_y = -24
 	},
 /obj/effect/floor_decal/borderfloorwhite,
@@ -22037,7 +22037,7 @@
 /area/hallway/primary/aft)
 "rZm" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/fire_alarm/north{
+/obj/machinery/fire_alarm/north_mount{
 	pixel_y = -24
 	},
 /obj/machinery/light,
@@ -22134,7 +22134,7 @@
 	dir = 8;
 	light_range = 12
 	},
-/obj/item/radio/intercom/west{
+/obj/item/radio/intercom/west_mount{
 	pixel_x = -28;
 	req_access = list()
 	},
@@ -22202,7 +22202,7 @@
 /turf/simulated/floor/carpet/tealcarpet,
 /area/medical/patient_d)
 "skH" = (
-/obj/machinery/fire_alarm/north{
+/obj/machinery/fire_alarm/north_mount{
 	pixel_y = -24
 	},
 /obj/structure/bed/chair/wheelchair,
@@ -22274,7 +22274,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "smf" = (
-/obj/machinery/fire_alarm/east,
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab)
 "snu" = (
@@ -22734,7 +22734,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "sHa" = (
-/obj/machinery/fire_alarm/north{
+/obj/machinery/fire_alarm/north_mount{
 	pixel_y = -24
 	},
 /obj/structure/reagent_dispensers/watertank,
@@ -22863,7 +22863,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "sLb" = (
-/obj/machinery/fire_alarm/north{
+/obj/machinery/fire_alarm/north_mount{
 	pixel_y = -24
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -22992,7 +22992,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/item/radio/intercom/west{
+/obj/item/radio/intercom/west_mount{
 	pixel_x = -28;
 	req_access = list()
 	},
@@ -23266,7 +23266,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/east{
+/obj/machinery/power/apc/east_mount{
 	name = "west bump";
 	pixel_x = -28
 	},
@@ -23323,7 +23323,7 @@
 /obj/item/clothing/mask/gas,
 /obj/item/clothing/suit/storage/hooded/wintercoat/science,
 /obj/item/tank/emergency/oxygen/engi,
-/obj/item/radio/intercom/west{
+/obj/item/radio/intercom/west_mount{
 	pixel_x = 24
 	},
 /turf/simulated/floor/tiled,
@@ -23946,10 +23946,10 @@
 "tIc" = (
 /obj/machinery/papershredder,
 /obj/effect/floor_decal/corner/blue/full,
-/obj/machinery/fire_alarm/north{
+/obj/machinery/fire_alarm/north_mount{
 	pixel_y = -24
 	},
-/obj/machinery/power/apc/east{
+/obj/machinery/power/apc/east_mount{
 	name = "west bump";
 	pixel_x = -28
 	},
@@ -24078,7 +24078,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -24203,7 +24203,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
 "tPb" = (
-/obj/machinery/fire_alarm/north{
+/obj/machinery/fire_alarm/north_mount{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled,
@@ -24253,7 +24253,7 @@
 	icon_state = "1-4"
 	},
 /obj/structure/cable/green,
-/obj/machinery/power/apc/north{
+/obj/machinery/power/apc/north_mount{
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
@@ -24391,7 +24391,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/power/apc/south{
+/obj/machinery/power/apc/south_mount{
 	name = "north bump";
 	pixel_y = 24
 	},
@@ -24897,7 +24897,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/machinery/fire_alarm/west,
+/obj/machinery/fire_alarm/west_mount,
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_a)
 "uuj" = (
@@ -25052,7 +25052,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
 "uzF" = (
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -25625,7 +25625,7 @@
 /turf/simulated/floor/tiled,
 /area/medical/medbay_primary_storage)
 "vcY" = (
-/obj/machinery/fire_alarm/north{
+/obj/machinery/fire_alarm/north_mount{
 	pixel_y = -24
 	},
 /obj/random/trash_pile,
@@ -25719,7 +25719,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/medical/morgue)
 "vha" = (
-/obj/machinery/fire_alarm/east,
+/obj/machinery/fire_alarm/east_mount,
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
@@ -25900,7 +25900,7 @@
 /obj/item/storage/firstaid/toxin{
 	pixel_y = 8
 	},
-/obj/machinery/fire_alarm/north{
+/obj/machinery/fire_alarm/north_mount{
 	pixel_y = -24
 	},
 /obj/effect/floor_decal/industrial/outline/blue,
@@ -25947,7 +25947,7 @@
 /obj/effect/floor_decal/industrial/loading{
 	dir = 4
 	},
-/obj/machinery/fire_alarm/north{
+/obj/machinery/fire_alarm/north_mount{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled,
@@ -26133,7 +26133,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/east{
+/obj/machinery/power/apc/east_mount{
 	name = "west bump";
 	pixel_x = -28
 	},
@@ -26540,7 +26540,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/south{
+/obj/machinery/power/apc/south_mount{
 	name = "north bump";
 	pixel_y = 28
 	},
@@ -26654,7 +26654,7 @@
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
 "vVP" = (
-/obj/machinery/power/apc/south{
+/obj/machinery/power/apc/south_mount{
 	name = "north bump";
 	pixel_y = 28
 	},
@@ -26717,7 +26717,7 @@
 /obj/machinery/camera/network/medbay{
 	dir = 8
 	},
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -26730,7 +26730,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medical_restroom)
 "vYZ" = (
-/obj/machinery/power/apc/west{
+/obj/machinery/power/apc/west_mount{
 	name = "east bump";
 	pixel_x = 24
 	},
@@ -26776,7 +26776,7 @@
 /area/maintenance/substation/research)
 "wap" = (
 /obj/structure/cable/green,
-/obj/machinery/power/apc/east{
+/obj/machinery/power/apc/east_mount{
 	name = "west bump";
 	pixel_x = -28
 	},
@@ -27022,7 +27022,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
-/obj/item/radio/intercom/west{
+/obj/item/radio/intercom/west_mount{
 	pixel_x = 24
 	},
 /turf/simulated/floor/tiled,
@@ -27178,7 +27178,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay3)
 "woC" = (
-/obj/machinery/power/apc/west{
+/obj/machinery/power/apc/west_mount{
 	name = "east bump";
 	pixel_x = 24
 	},
@@ -27290,7 +27290,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/south{
+/obj/machinery/power/apc/south_mount{
 	name = "north bump";
 	pixel_y = 24
 	},
@@ -27383,7 +27383,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/machinery/fire_alarm/north{
+/obj/machinery/fire_alarm/north_mount{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled,
@@ -27671,7 +27671,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/machinery/fire_alarm/west,
+/obj/machinery/fire_alarm/west_mount,
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_d)
 "wLf" = (
@@ -28065,7 +28065,7 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
 	},
-/obj/item/radio/intercom/south{
+/obj/item/radio/intercom/south_mount{
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -28335,7 +28335,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
 "xrB" = (
-/obj/machinery/fire_alarm/west,
+/obj/machinery/fire_alarm/west_mount,
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
@@ -28481,7 +28481,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
-/obj/machinery/power/apc/west{
+/obj/machinery/power/apc/west_mount{
 	name = "east bump";
 	pixel_x = 24
 	},
@@ -28536,7 +28536,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/misc_lab)
 "xyo" = (
-/obj/item/radio/intercom/west{
+/obj/item/radio/intercom/west_mount{
 	pixel_x = -28;
 	req_access = list()
 	},
@@ -28920,7 +28920,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/research)
 "xOU" = (
-/obj/machinery/fire_alarm/west,
+/obj/machinery/fire_alarm/west_mount,
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
 "xOV" = (
@@ -29086,7 +29086,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/xenobiology/xenoflora_storage)
 "xUB" = (
-/obj/machinery/fire_alarm/north{
+/obj/machinery/fire_alarm/north_mount{
 	pixel_y = -24
 	},
 /obj/machinery/portable_atmospherics/powered/pump,
@@ -29195,7 +29195,7 @@
 /area/maintenance/research)
 "xZy" = (
 /obj/structure/cable/green,
-/obj/machinery/power/apc/west{
+/obj/machinery/power/apc/west_mount{
 	name = "east bump";
 	pixel_x = 24
 	},
@@ -29232,7 +29232,7 @@
 /obj/structure/bed/chair/comfy/brown{
 	dir = 4
 	},
-/obj/item/radio/intercom/west{
+/obj/item/radio/intercom/west_mount{
 	pixel_x = -28;
 	req_access = list()
 	},
@@ -29258,7 +29258,7 @@
 /area/medical/sleeper)
 "ygh" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/fire_alarm/north{
+/obj/machinery/fire_alarm/north_mount{
 	pixel_y = -24
 	},
 /obj/machinery/light,
