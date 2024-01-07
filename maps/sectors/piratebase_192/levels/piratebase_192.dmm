@@ -2925,9 +2925,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/alarms_hidden{
-	name = "south bump";
-	pixel_y = -28;
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	req_access = list(168)
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
@@ -4087,9 +4085,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/obj/machinery/power/apc/alarms_hidden{
-	name = "south bump";
-	pixel_y = -28;
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	req_access = list(168)
 	},
 /turf/simulated/floor/reinforced,

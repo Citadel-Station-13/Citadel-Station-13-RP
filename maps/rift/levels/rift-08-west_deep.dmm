@@ -5348,10 +5348,7 @@
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance)
 "WM" = (
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/substation)

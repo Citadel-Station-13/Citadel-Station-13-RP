@@ -3042,10 +3042,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 8
 	},
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
@@ -7505,10 +7502,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/random/maintenance/medical,
 /obj/random/maintenance/medical,
 /obj/random/maintenance/clean,
@@ -16448,10 +16442,7 @@
 /turf/simulated/wall,
 /area/crew_quarters/bar)
 "jBg" = (
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/orange,
 /turf/simulated/floor/tiled,
 /area/teleporter/departing)
@@ -41856,10 +41847,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/south_mount,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/north_stairs_three)
 "yeu" = (

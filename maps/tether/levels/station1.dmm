@@ -661,10 +661,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
 "bo" = (
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/blue/border,
@@ -14835,10 +14832,7 @@
 /obj/structure/bed/chair/office/light{
 	dir = 8
 	},
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/pink{
 	icon_state = "0-8"
 	},

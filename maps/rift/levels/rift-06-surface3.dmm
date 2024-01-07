@@ -13678,10 +13678,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/teleporter)
 "aMh" = (
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/cyan,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
@@ -17380,10 +17377,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/exploration)
 "aWB" = (
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/machinery/light,
 /obj/structure/cable/cyan{
 	icon_state = "0-8"

@@ -3391,9 +3391,7 @@
 	dir = 8
 	},
 /obj/structure/cable/yellow,
-/obj/machinery/power/apc/alarms_hidden{
-	name = "south bump";
-	pixel_y = -28;
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	req_access = list(160)
 	},
 /obj/effect/floor_decal/rust,
@@ -5455,9 +5453,7 @@
 /turf/simulated/floor/tiled/old_tile/red,
 /area/tradeport)
 "uf" = (
-/obj/machinery/power/apc/alarms_hidden{
-	name = "south bump";
-	pixel_y = -28;
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	req_access = list(160)
 	},
 /obj/structure/cable/yellow,
@@ -7246,9 +7242,7 @@
 /obj/structure/table/standard,
 /obj/machinery/recharger,
 /obj/structure/cable/yellow,
-/obj/machinery/power/apc/alarms_hidden{
-	name = "south bump";
-	pixel_y = -28;
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	req_access = list(160)
 	},
 /obj/effect/floor_decal/corner/blue/border,
@@ -7444,9 +7438,7 @@
 /turf/simulated/floor/tiled/freezer,
 /area/tradeport)
 "Ba" = (
-/obj/machinery/power/apc/alarms_hidden{
-	name = "south bump";
-	pixel_y = -28;
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	req_access = list(160)
 	},
 /obj/structure/cable/yellow,
@@ -10206,9 +10198,7 @@
 	dir = 8
 	},
 /obj/structure/cable/yellow,
-/obj/machinery/power/apc/alarms_hidden{
-	name = "south bump";
-	pixel_y = -28;
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	req_access = list(160)
 	},
 /turf/simulated/floor/tiled/neutral,
@@ -10317,9 +10307,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "LI" = (
-/obj/machinery/power/apc/alarms_hidden{
-	name = "south bump";
-	pixel_y = -28;
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	req_access = list(160)
 	},
 /obj/structure/cable/yellow,
@@ -11182,9 +11170,7 @@
 /turf/simulated/floor/tiled/old_cargo/beige,
 /area/tradeport/atmospherics)
 "OG" = (
-/obj/machinery/power/apc/alarms_hidden{
-	name = "south bump";
-	pixel_y = -28;
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	req_access = list(160)
 	},
 /obj/structure/cable/yellow,
@@ -12089,9 +12075,7 @@
 /turf/simulated/floor/outdoors/dirtlight,
 /area/tradeport/cyndishow)
 "RG" = (
-/obj/machinery/power/apc/alarms_hidden{
-	name = "south bump";
-	pixel_y = -28;
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	req_access = list(160)
 	},
 /obj/structure/cable/yellow,
@@ -13546,9 +13530,7 @@
 /turf/simulated/floor/tiled/old_tile/red,
 /area/tradeport)
 "Xd" = (
-/obj/machinery/power/apc/alarms_hidden{
-	name = "south bump";
-	pixel_y = -28;
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	req_access = list(160)
 	},
 /obj/structure/cable/yellow,
@@ -13990,9 +13972,7 @@
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/tradeport)
 "YF" = (
-/obj/machinery/power/apc/alarms_hidden{
-	name = "south bump";
-	pixel_y = -28;
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	req_access = list(160)
 	},
 /obj/structure/cable/yellow,

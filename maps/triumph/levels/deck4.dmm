@@ -3169,10 +3169,7 @@
 	},
 /obj/machinery/iv_drip,
 /obj/structure/cable/green,
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/south_mount,
 /turf/simulated/floor/tiled/white,
 /area/exploration/medical)
 "cgB" = (
@@ -4852,10 +4849,7 @@
 /turf/simulated/floor/tiled,
 /area/exploration/pathfinder_office)
 "dnt" = (
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green,
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/security/range)
@@ -8549,10 +8543,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green,
 /turf/simulated/floor/tiled/monotile,
 /area/security/forensics)
@@ -9983,10 +9974,7 @@
 "gPm" = (
 /obj/landmark/spawnpoint/job/clown,
 /obj/structure/cable/green,
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/south_mount,
 /turf/simulated/floor/wood,
 /area/crew_quarters/clownoffice)
 "gPM" = (
@@ -11290,10 +11278,7 @@
 /area/security/evidence_storage)
 "hHM" = (
 /obj/structure/closet/wardrobe/red,
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green,
 /obj/effect/floor_decal/corner/red{
 	dir = 10
@@ -11685,10 +11670,7 @@
 /area/crew_quarters/sleep/CMO_quarters)
 "hVl" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -14913,10 +14895,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/civilian_hallway_mid)
 "kaw" = (
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green,
 /obj/effect/floor_decal/corner/red{
 	dir = 10
@@ -16458,10 +16437,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
 "kYv" = (
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green,
 /obj/structure/cable/green{
 	icon_state = "1-4"
@@ -16800,10 +16776,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "lqD" = (
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/machinery/light,
 /obj/structure/cable/cyan{
 	icon_state = "0-8"
@@ -26240,10 +26213,7 @@
 /obj/structure/closet{
 	name = "Evidence Closet"
 	},
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green,
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/security/evidence_storage)
@@ -26401,10 +26371,7 @@
 /turf/simulated/floor/tiled,
 /area/hydroponics/garden)
 "sgq" = (
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -26859,10 +26826,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -29861,10 +29825,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/prison/cell_block)
 "uDg" = (
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green,
 /turf/simulated/floor/tiled/dark,
 /area/security/hanger)
@@ -32081,10 +32042,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
 "whp" = (
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/security)
@@ -33736,10 +33694,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/security/starboard)
 "xmL" = (
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/cyan,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4

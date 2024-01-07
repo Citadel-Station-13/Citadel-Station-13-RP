@@ -6807,10 +6807,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "dCa" = (
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 10
 	},
@@ -11432,10 +11429,7 @@
 	dir = 1
 	},
 /obj/structure/cable,
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/south_mount,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/vacant_site)
 "fWF" = (
@@ -20283,10 +20277,7 @@
 	pixel_x = 12;
 	pixel_y = -24
 	},
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/south_mount,
 /turf/simulated/floor/tiled,
 /area/storage/primary)
 "kMt" = (
@@ -30277,10 +30268,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether/surfacebase/cargostore/warehouse)
 "qjR" = (
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable,
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
@@ -31481,10 +31469,7 @@
 /turf/simulated/floor/wood,
 /area/vacant/vacant_bar)
 "qPj" = (
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/yellow{
 	icon_state = "0-8"
 	},
@@ -33462,10 +33447,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -36919,10 +36901,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/research)
 "tNc" = (
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
@@ -38703,10 +38682,7 @@
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/outside/outside1)
 "uOh" = (
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},

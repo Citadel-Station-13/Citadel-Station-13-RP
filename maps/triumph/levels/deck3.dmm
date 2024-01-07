@@ -381,10 +381,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/table/woodentable,
 /obj/item/toy/plushie/kitten,
 /turf/simulated/floor/wood,
@@ -5284,10 +5281,7 @@
 	},
 /obj/structure/table/steel_reinforced,
 /obj/item/hand_labeler,
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/south_mount,
 /turf/simulated/floor/tiled,
 /area/medical/medbay_emt_bay)
 "eyb" = (
@@ -14000,10 +13994,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
 "lzH" = (
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green,
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab)
@@ -16152,10 +16143,7 @@
 /area/medical/resleeving)
 "nvp" = (
 /obj/effect/floor_decal/techfloor,
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -19055,10 +19043,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/starboard)
 "pHm" = (
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green,
 /turf/simulated/floor/tiled/techfloor,
 /area/medical/morgue)
@@ -24918,10 +24903,7 @@
 /obj/structure/table/standard,
 /obj/item/soap/nanotrasen,
 /obj/structure/cable/green,
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/south_mount,
 /turf/simulated/floor/tiled,
 /area/holodeck_control)
 "uon" = (
