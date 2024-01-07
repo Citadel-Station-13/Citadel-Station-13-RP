@@ -63,10 +63,13 @@
 
 /obj/machinery/cooking/process(delta_time)
 	if(cooking_power > 0)
-		for(var/obj/item/reagent_containers/food_holder/FH in food_containers)
-			FH.tick_heat(1 SECOND, cooking_power, cooker_type)
-		for(var/obj/item/reagent_containers/food/snacks/ingredient/I in food_containers)
-			I.process_cooked(1 SECOND, cooking_power, cooker_type)
+		for(var/obj/item/I in food_containers)
+			if(istype(I, /obj/item/reagent_containers/food_holder))
+				var/obj/item/reagent_containers/food_holder/FH = I
+				FH.tick_heat(1 SECONDS, cooking_power, cooker_type)
+			else if(istype(I, /obj/item/reagent_containers/food/snacks/ingredient))
+				var/obj/item/reagent_containers/food/snacks/ingredient/cooking_thingy = I
+				cooking_thingy.process_cooked(1 SECONDS, cooking_power, cooker_type)
 
 /obj/item/circuitboard/machine/cooker
 	name = "kitchen appliance circuitry"

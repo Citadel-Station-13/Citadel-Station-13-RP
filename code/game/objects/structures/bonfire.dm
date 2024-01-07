@@ -240,7 +240,15 @@
 		if(!consume_fuel(DEFAULTPICK(contents, null)))
 			extinguish()
 			return
-	if(!grill)
+	if(grill)
+		for(var/obj/item/I in get_turf(src))
+			if(istype(I, /obj/item/reagent_containers/food_holder))
+				var/obj/item/reagent_containers/food_holder/FH = I
+				FH.tick_heat(2 SECONDS, HEAT_MID, METHOD_GRILL)
+			if(istype(I, /obj/item/reagent_containers/food/snacks/ingredient))
+				var/obj/item/reagent_containers/food/snacks/ingredient/cooking_thingy = I
+				cooking_thingy.process_cooked(2 SECONDS, HEAT_MID, METHOD_GRILL)
+	else
 		burn()
 
 	if(burning)
