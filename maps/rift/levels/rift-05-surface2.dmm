@@ -185,7 +185,7 @@
 	},
 /obj/effect/floor_decal/industrial/warning,
 /obj/structure/railing,
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	pixel_y = 24
 	},
 /obj/structure/cable{
@@ -3645,7 +3645,7 @@
 	dir = 8;
 	pixel_x = -24
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	pixel_y = 24
 	},
 /turf/simulated/floor/wood,
@@ -4005,7 +4005,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 9
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	pixel_y = 24
 	},
 /obj/machinery/holoposter{
@@ -5765,7 +5765,7 @@
 	dir = 8;
 	pixel_x = -24
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	pixel_y = 24
 	},
 /turf/simulated/floor/wood,
@@ -14754,7 +14754,7 @@
 /obj/effect/floor_decal/corner/purple/bordercorner2{
 	dir = 1
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	pixel_y = 24
 	},
 /obj/machinery/light{
@@ -14991,7 +14991,7 @@
 /area/maintenance/asmaint2)
 "jEp" = (
 /obj/machinery/processor,
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
@@ -15474,7 +15474,7 @@
 	dir = 9
 	},
 /obj/effect/mist,
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	pixel_y = 24
 	},
 /turf/simulated/floor/water/pool,
@@ -17582,7 +17582,7 @@
 /obj/structure/bed/chair/comfy/black{
 	dir = 8
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	pixel_y = 24
 	},
 /turf/simulated/floor/wood,
@@ -19224,7 +19224,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	pixel_y = 24
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -19502,7 +19502,7 @@
 /obj/structure/bed/chair/comfy/black{
 	dir = 8
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	pixel_y = 24
 	},
 /turf/simulated/floor/wood,
@@ -28383,7 +28383,7 @@
 /obj/structure/bed/chair/comfy/black{
 	dir = 8
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	pixel_y = 24
 	},
 /turf/simulated/floor/wood,
@@ -31636,7 +31636,7 @@
 /obj/structure/table/rack/shelf,
 /obj/random/maintenance/security,
 /obj/random/contraband,
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	pixel_y = 24
 	},
 /obj/random/maintenance/research,
@@ -34432,7 +34432,7 @@
 	dir = 8;
 	pixel_x = -24
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	pixel_y = 24
 	},
 /turf/simulated/floor/wood,
@@ -36872,7 +36872,7 @@
 	department = "Reading Room"
 	},
 /obj/structure/table/glass,
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -37637,7 +37637,7 @@
 /turf/simulated/open,
 /area/rift/trade_shop/loading)
 "ycW" = (
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	pixel_y = 24
 	},
 /obj/structure/railing{

@@ -9381,7 +9381,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled,
@@ -11926,7 +11926,7 @@
 	icon_state = "0-2"
 	},
 /obj/structure/flora/pottedplant/smalltree,
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
@@ -15375,7 +15375,7 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/warehouse)
 "Uc" = (
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	pixel_y = 24
 	},
 /obj/landmark{
@@ -16134,7 +16134,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	pixel_y = 24
 	},
 /turf/simulated/floor/wood,
@@ -17319,7 +17319,7 @@
 	icon_state = "0-2"
 	},
 /obj/structure/flora/pottedplant/smalltree,
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26

@@ -5534,7 +5534,7 @@
 	dir = 4;
 	pixel_x = -22
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	pixel_y = 25
 	},
 /turf/simulated/floor/wood,
@@ -5885,7 +5885,7 @@
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
 "AG" = (
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	pixel_y = 25
 	},
 /turf/simulated/floor/tiled,
@@ -10846,7 +10846,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	pixel_y = 25
 	},
 /turf/simulated/floor/wood,

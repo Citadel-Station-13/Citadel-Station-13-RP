@@ -863,7 +863,7 @@
 /turf/simulated/floor/plating,
 /area/space)
 "aEw" = (
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
@@ -4798,7 +4798,7 @@
 /obj/effect/floor_decal/corner/yellow{
 	dir = 5
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
@@ -11652,7 +11652,7 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/engineering/atmos/storage)
 "iUn" = (
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/white,

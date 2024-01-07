@@ -3882,7 +3882,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 4
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled,
@@ -4792,7 +4792,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	pixel_y = 24
 	},
 /obj/effect/floor_decal/borderfloorblack{
@@ -13447,7 +13447,7 @@
 /obj/effect/floor_decal/corner/mauve/bordercorner2{
 	dir = 1
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	pixel_y = 24
 	},
 /obj/machinery/door/firedoor/glass,
@@ -13842,7 +13842,7 @@
 	},
 /obj/effect/floor_decal/industrial/warning,
 /obj/structure/railing,
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/techfloor,

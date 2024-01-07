@@ -575,7 +575,7 @@
 /area/lavaland/central/base/common)
 "nr" = (
 /obj/effect/debris/cleanable/dirt,
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled,
@@ -810,7 +810,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled,

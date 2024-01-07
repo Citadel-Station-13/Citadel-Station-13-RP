@@ -3068,7 +3068,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/library)
 "cdH" = (
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	pixel_y = 24
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -3770,7 +3770,7 @@
 /turf/simulated/floor/wood,
 /area/rift/surfacebase/outside/outside1)
 "cAs" = (
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	pixel_y = 24
 	},
 /obj/machinery/light{
@@ -5346,7 +5346,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	pixel_y = 24
 	},
 /obj/machinery/door/firedoor/glass{
@@ -7413,7 +7413,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	pixel_y = 24
 	},
 /obj/machinery/disposal,
@@ -9479,7 +9479,7 @@
 /obj/effect/floor_decal/corner/beige/border{
 	dir = 1
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/white,
@@ -9497,7 +9497,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	pixel_y = 24
 	},
 /obj/structure/disposalpipe/segment{
@@ -9807,7 +9807,7 @@
 	dir = 4
 	},
 /obj/random/trash_pile,
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	pixel_y = 24
 	},
 /turf/simulated/floor/plating,
@@ -11610,7 +11610,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/office)
 "hCl" = (
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	pixel_y = 24
 	},
 /obj/structure/catwalk,
@@ -12096,7 +12096,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "hPI" = (
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	pixel_y = 24
 	},
 /obj/machinery/holopad,
@@ -12502,7 +12502,7 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 5
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/steel,
@@ -12949,7 +12949,7 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 1
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/steel,
@@ -18237,7 +18237,7 @@
 /obj/item/virusdish/random,
 /obj/item/virusdish/random,
 /obj/item/virusdish/random,
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -18596,7 +18596,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/steel,
@@ -19066,7 +19066,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	pixel_y = 24
 	},
 /obj/machinery/light{
@@ -21786,7 +21786,7 @@
 /area/maintenance/maint_bar)
 "nLc" = (
 /obj/structure/bed/chair,
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	pixel_y = 24
 	},
 /obj/effect/floor_decal/borderfloorwhite{
@@ -22072,7 +22072,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	pixel_y = 24
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
@@ -28574,7 +28574,7 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	pixel_y = 24
 	},
 /obj/item/paper{
@@ -29111,7 +29111,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	pixel_y = 24
 	},
 /obj/machinery/space_heater,
@@ -29371,7 +29371,7 @@
 	},
 /obj/effect/floor_decal/industrial/warning,
 /obj/structure/railing,
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	pixel_y = 24
 	},
 /obj/structure/ladder{
@@ -31993,7 +31993,7 @@
 /area/maintenance/cargo)
 "tMq" = (
 /obj/structure/bed/chair,
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	pixel_y = 24
 	},
 /obj/effect/floor_decal/borderfloorwhite{
@@ -32797,7 +32797,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/steel,
@@ -36833,7 +36833,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26

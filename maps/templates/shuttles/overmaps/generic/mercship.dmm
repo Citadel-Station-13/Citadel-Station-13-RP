@@ -33,7 +33,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/firealarm/alarms_hidden/south{
 	pixel_y = 23
 	},
 /turf/simulated/floor/plating,
@@ -519,7 +519,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/firealarm/alarms_hidden/south{
 	pixel_y = 23
 	},
 /turf/simulated/floor/tiled/dark,
@@ -602,7 +602,7 @@
 /obj/machinery/button/remote/blast_door{
 	id = "mercblast"
 	},
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/firealarm/alarms_hidden/south{
 	pixel_y = 23
 	},
 /turf/simulated/floor/tiled/dark,
@@ -2088,7 +2088,7 @@
 	},
 /obj/fiftyspawner/uranium,
 /obj/fiftyspawner/uranium,
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/firealarm/alarms_hidden/south{
 	pixel_y = 23
 	},
 /turf/simulated/floor/tiled/dark,
@@ -3228,7 +3228,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/firealarm/alarms_hidden/south{
 	pixel_y = 23
 	},
 /turf/simulated/floor/tiled/dark,
@@ -3424,7 +3424,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/firealarm/alarms_hidden/south{
 	pixel_y = 23
 	},
 /turf/simulated/floor/tiled/dark,

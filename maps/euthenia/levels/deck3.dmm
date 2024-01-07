@@ -1272,7 +1272,7 @@
 /turf/simulated/floor/tiled,
 /area/medical/virologyaccess)
 "boD" = (
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -1363,7 +1363,7 @@
 /area/medical/resleeving)
 "bwF" = (
 /obj/machinery/recharge_station,
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -14849,7 +14849,7 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 8
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -21889,7 +21889,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/tcommsat/entrance)
 "xet" = (
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_y = 26
 	},

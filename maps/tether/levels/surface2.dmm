@@ -3018,7 +3018,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 9
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -4932,7 +4932,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -6440,7 +6440,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -7897,7 +7897,7 @@
 	dir = 4;
 	pixel_x = 11
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -11576,7 +11576,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/bridge_hallway)
 "inb" = (
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -11603,7 +11603,7 @@
 "inS" = (
 /obj/structure/bed/padded,
 /obj/effect/floor_decal/techfloor,
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -14823,7 +14823,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/atmos)
 "kEk" = (
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -17013,7 +17013,7 @@
 /area/tether/surfacebase/medical/centralhall)
 "mmt" = (
 /obj/structure/catwalk,
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -17422,7 +17422,7 @@
 	dir = 1
 	},
 /obj/structure/closet/secure_closet/atmos_personal,
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -19201,7 +19201,7 @@
 /area/tether/surfacebase/medical/uppersouthstairwell)
 "nOL" = (
 /obj/machinery/processor,
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
@@ -20267,7 +20267,7 @@
 /obj/machinery/light_switch{
 	pixel_y = 25
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	pixel_x = 5;
 	pixel_y = 37
 	},
@@ -22355,7 +22355,7 @@
 /obj/effect/floor_decal/corner/yellow/border{
 	dir = 1
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -24637,7 +24637,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/server)
 "rWT" = (
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -25128,7 +25128,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -26173,7 +26173,7 @@
 /area/tether/surfacebase/public_garden_two)
 "sVB" = (
 /obj/structure/catwalk,
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -27135,7 +27135,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -28458,7 +28458,7 @@
 /obj/item/storage/briefcase/inflatable{
 	pixel_x = -3
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -30961,7 +30961,7 @@
 	req_access = list(61);
 	req_one_access = list(12)
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_y = 26
 	},

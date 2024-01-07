@@ -869,7 +869,7 @@
 "atH" = (
 /obj/structure/table/bench/steel,
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -1968,7 +1968,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/lower/third_south)
 "aYv" = (
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -2747,7 +2747,7 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/hop)
 "bsL" = (
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	pixel_y = 26
 	},
 /obj/structure/disposalpipe/segment{
@@ -2943,7 +2943,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
 "bxG" = (
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
@@ -3353,7 +3353,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -3727,7 +3727,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/dark,
@@ -3990,7 +3990,7 @@
 /area/hallway/lower/third_south)
 "ccd" = (
 /obj/machinery/media/jukebox,
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -6225,7 +6225,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/upperhall)
 "dwU" = (
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -6812,7 +6812,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7,
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -7032,7 +7032,7 @@
 /area/tether/surfacebase/public_garden_three)
 "dUV" = (
 /obj/structure/table/standard,
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
@@ -9811,7 +9811,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -9870,7 +9870,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 1
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
@@ -11549,7 +11549,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -12913,7 +12913,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -14538,7 +14538,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/shuttle_pad)
 "ixH" = (
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -15073,7 +15073,7 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/pool)
 "iOe" = (
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
@@ -15678,7 +15678,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/vacant/vacant_shop)
 "jeM" = (
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -16099,7 +16099,7 @@
 /turf/simulated/floor/carpet/sblucarpet,
 /area/crew_quarters/bar)
 "jrG" = (
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -20493,7 +20493,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -23619,7 +23619,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/barrestroom)
 "nPA" = (
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -23656,7 +23656,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
@@ -26554,7 +26554,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	pixel_y = 26
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -26693,7 +26693,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "pwx" = (
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -27489,7 +27489,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/port)
 "pVi" = (
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -28855,7 +28855,7 @@
 /area/crew_quarters/pool)
 "qKA" = (
 /obj/machinery/photocopier,
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	pixel_x = -30
 	},
 /turf/simulated/floor/tiled,
@@ -32228,7 +32228,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/botanystorage)
 "sKc" = (
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
@@ -34844,7 +34844,7 @@
 /turf/simulated/wall/prepainted/command,
 /area/crew_quarters/captain)
 "uim" = (
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -39750,7 +39750,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 4
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -40986,7 +40986,7 @@
 	pixel_x = 28
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -41060,7 +41060,7 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 1
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -41290,7 +41290,7 @@
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/barbackmaintenance)
 "xLS" = (
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/south{
 	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
