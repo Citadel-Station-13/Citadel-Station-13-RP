@@ -117,8 +117,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/submap/Lab1)
 "u" = (
-/obj/machinery/power/apc{
-	dir = 2;
+/obj/machinery/power/apc/north{
 	cell_type = /obj/item/cell/hyper;
 	dir = 8;
 	name = "Unknown APC";

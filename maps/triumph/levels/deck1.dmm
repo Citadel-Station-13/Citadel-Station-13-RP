@@ -3152,8 +3152,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/storage)
 "ks" = (
-/obj/machinery/power/apc{
-	dir = 2;
+/obj/machinery/power/apc/north{
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
@@ -3522,8 +3521,7 @@
 /area/storage/tech)
 "lP" = (
 /obj/structure/cable/green,
-/obj/machinery/power/apc{
-	dir = 2;
+/obj/machinery/power/apc/north{
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
@@ -3566,8 +3564,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/engi_engine)
 "lT" = (
-/obj/machinery/power/apc{
-	dir = 2;
+/obj/machinery/power/apc/north{
 	cell_type = /obj/item/cell/super;
 	dir = 1;
 	name = "north bump";
@@ -3870,8 +3867,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc{
-	dir = 4;
+/obj/machinery/power/apc/west{
 	name = "east bump";
 	pixel_x = 28
 	},
@@ -4267,8 +4263,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/break_room)
 "oE" = (
-/obj/machinery/power/apc{
-	dir = 2;
+/obj/machinery/power/apc/north{
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
@@ -4538,8 +4533,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/debris/cleanable/dirt,
-/obj/machinery/power/apc{
-	dir = 8;
+/obj/machinery/power/apc/east{
 	name = "west bump";
 	pixel_x = -28
 	},
@@ -4549,8 +4543,7 @@
 /turf/simulated/floor/plating,
 /area/storage/tech)
 "py" = (
-/obj/machinery/power/apc{
-	dir = 8;
+/obj/machinery/power/apc/east{
 	name = "west bump";
 	pixel_x = -28
 	},
@@ -5116,8 +5109,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
-/obj/machinery/power/apc{
-	dir = 2;
+/obj/machinery/power/apc/north{
 	cell_type = /obj/item/cell/super;
 	dir = 1;
 	name = "north bump";
@@ -6410,8 +6402,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc{
-	dir = 2;
+/obj/machinery/power/apc/north{
 	cell_type = /obj/item/cell/super;
 	name = "south bump";
 	pixel_y = -32
@@ -6597,8 +6588,7 @@
 /area/engineering/engine_smes)
 "wf" = (
 /obj/structure/closet/secure_closet/atmos_personal,
-/obj/machinery/power/apc{
-	dir = 8;
+/obj/machinery/power/apc/east{
 	name = "west bump";
 	pixel_x = -28
 	},
@@ -6940,8 +6930,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/portnacelle)
 "xj" = (
-/obj/machinery/power/apc{
-	dir = 2;
+/obj/machinery/power/apc/north{
 	cell_type = /obj/item/cell/super;
 	dir = 1;
 	name = "north bump";
@@ -8054,8 +8043,7 @@
 /obj/machinery/air_alarm{
 	pixel_y = 22
 	},
-/obj/machinery/power/apc{
-	dir = 2;
+/obj/machinery/power/apc/north{
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
@@ -11538,8 +11526,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/storage)
 "MV" = (
-/obj/machinery/power/apc{
-	dir = 8;
+/obj/machinery/power/apc/east{
 	name = "west bump";
 	pixel_x = -28
 	},
@@ -11845,8 +11832,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 6
 	},
-/obj/machinery/power/apc{
-	dir = 2;
+/obj/machinery/power/apc/north{
 	cell_type = /obj/item/cell/super;
 	dir = 1;
 	name = "north bump";
@@ -11993,8 +11979,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/storage)
 "Ov" = (
-/obj/machinery/power/apc{
-	dir = 4;
+/obj/machinery/power/apc/west{
 	name = "east bump";
 	pixel_x = 28
 	},
@@ -12272,8 +12257,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc{
-	dir = 2;
+/obj/machinery/power/apc/north{
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
@@ -12492,8 +12476,7 @@
 /turf/space,
 /area/space)
 "Qh" = (
-/obj/machinery/power/apc{
-	dir = 2;
+/obj/machinery/power/apc/north{
 	cell_type = /obj/item/cell/super;
 	dir = 1;
 	name = "north bump";
@@ -13110,8 +13093,7 @@
 	},
 /area/tcommsat/chamber)
 "Sj" = (
-/obj/machinery/power/apc{
-	dir = 2;
+/obj/machinery/power/apc/north{
 	cell_type = /obj/item/cell/super;
 	dir = 4;
 	name = "east bump";
@@ -13777,8 +13759,7 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 6
 	},
-/obj/machinery/power/apc{
-	dir = 4;
+/obj/machinery/power/apc/west{
 	name = "east bump";
 	pixel_x = 28
 	},
@@ -14244,8 +14225,7 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc{
-	dir = 2;
+/obj/machinery/power/apc/north{
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
@@ -14374,8 +14354,7 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc{
-	dir = 2;
+/obj/machinery/power/apc/north{
 	cell_type = /obj/item/cell/super;
 	dir = 1;
 	name = "north bump";
@@ -15139,8 +15118,7 @@
 	},
 /obj/structure/reagent_dispensers/watertank,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/power/apc{
-	dir = 8;
+/obj/machinery/power/apc/east{
 	name = "west bump";
 	pixel_x = -28
 	},

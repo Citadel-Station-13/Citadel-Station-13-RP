@@ -170,8 +170,7 @@
 "B" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/radio,
-/obj/machinery/power/apc{
-	dir = 2;
+/obj/machinery/power/apc/north{
 	cell_type = /obj/item/cell/hyper;
 	dir = 4;
 	environ = 1;

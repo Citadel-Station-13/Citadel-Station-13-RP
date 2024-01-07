@@ -152,8 +152,7 @@
 /turf/simulated/floor/plating,
 /area/submap/DoomP)
 "aG" = (
-/obj/machinery/power/apc{
-	dir = 1;
+/obj/machinery/power/apc/south{
 	name = "PAPC";
 	pixel_y = 24
 	},

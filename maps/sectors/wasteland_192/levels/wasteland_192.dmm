@@ -357,8 +357,7 @@
 /obj/structure/cable/orange{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc{
-	dir = 1;
+/obj/machinery/power/apc/south{
 	name = "north bump";
 	pixel_y = 28
 	},
@@ -451,8 +450,7 @@
 /obj/structure/cable/orange{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc{
-	dir = 1;
+/obj/machinery/power/apc/south{
 	name = "north bump";
 	pixel_y = 28
 	},
@@ -506,8 +504,7 @@
 /obj/structure/cable/orange{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc{
-	dir = 1;
+/obj/machinery/power/apc/south{
 	name = "north bump";
 	pixel_y = 28
 	},
@@ -964,8 +961,7 @@
 /obj/structure/cable/orange{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc{
-	dir = 1;
+/obj/machinery/power/apc/south{
 	name = "north bump";
 	pixel_y = 28
 	},
@@ -1291,8 +1287,7 @@
 /obj/structure/cable/orange{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc{
-	dir = 4;
+/obj/machinery/power/apc/west{
 	name = "east bump";
 	pixel_x = 28
 	},
@@ -1493,8 +1488,7 @@
 /turf/simulated/floor/classd/indoors,
 /area/class_d/wildcat_mining_base/refueling_outbuilding)
 "SU" = (
-/obj/machinery/power/apc{
-	dir = 4;
+/obj/machinery/power/apc/west{
 	name = "east bump";
 	pixel_x = 28
 	},
@@ -1604,8 +1598,7 @@
 /turf/simulated/floor/classd,
 /area/class_d/wildcat_mining_base/exterior_workshop)
 "WE" = (
-/obj/machinery/power/apc{
-	dir = 1;
+/obj/machinery/power/apc/south{
 	name = "north bump";
 	pixel_y = 28
 	},

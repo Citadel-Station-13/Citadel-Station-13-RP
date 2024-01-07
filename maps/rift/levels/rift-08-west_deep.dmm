@@ -209,8 +209,7 @@
 /area/outpost/mining_main/refinery)
 "bR" = (
 /obj/effect/floor_decal/industrial/warning,
-/obj/machinery/power/apc{
-	dir = 8;
+/obj/machinery/power/apc/east{
 	name = "west bump";
 	pixel_x = -28
 	},
@@ -1748,8 +1747,7 @@
 /obj/effect/floor_decal/corner/white/full{
 	dir = 4
 	},
-/obj/machinery/power/apc/alarms_hidden{
-	dir = 2;
+/obj/machinery/power/apc/alarms_hidden/north{
 	cell_type = null;
 	chargelevel = 0;
 	dir = 1
@@ -2748,8 +2746,7 @@
 /area/outpost/mining_main/outpost/airlock/three)
 "yG" = (
 /obj/structure/bed/chair,
-/obj/machinery/power/apc/alarms_hidden{
-	dir = 2;
+/obj/machinery/power/apc/alarms_hidden/north{
 	cell_type = null;
 	chargelevel = 0;
 	dir = 1
@@ -4239,8 +4236,7 @@
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance/south)
 "Mc" = (
-/obj/machinery/power/apc/alarms_hidden{
-	dir = 2;
+/obj/machinery/power/apc/alarms_hidden/north{
 	cell_type = null;
 	chargelevel = 0;
 	dir = 1
@@ -5090,8 +5086,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/prison)
 "UD" = (
-/obj/machinery/power/apc/alarms_hidden{
-	dir = 2;
+/obj/machinery/power/apc/alarms_hidden/north{
 	cell_type = null;
 	chargelevel = 0;
 	dir = 1

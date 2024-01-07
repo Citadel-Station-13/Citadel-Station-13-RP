@@ -49,8 +49,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/blue_fo)
 "aj" = (
-/obj/machinery/power/apc{
-	dir = 1;
+/obj/machinery/power/apc/south{
 	name = "north bump";
 	pixel_y = 24
 	},

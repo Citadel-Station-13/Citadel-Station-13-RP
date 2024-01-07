@@ -889,8 +889,7 @@
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "de" = (
-/obj/machinery/power/apc{
-	dir = 2;
+/obj/machinery/power/apc/north{
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "Unknown APC";

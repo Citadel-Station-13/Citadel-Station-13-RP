@@ -7411,8 +7411,7 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 1
 	},
-/obj/machinery/power/apc{
-	dir = 1;
+/obj/machinery/power/apc/south{
 	name = "north bump";
 	pixel_y = 28
 	},

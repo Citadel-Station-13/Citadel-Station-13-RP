@@ -483,8 +483,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc{
-	dir = 1;
+/obj/machinery/power/apc/south{
 	name = "north bump";
 	pixel_y = 24
 	},
@@ -849,8 +848,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc{
-	dir = 8;
+/obj/machinery/power/apc/east{
 	name = "west bump";
 	pixel_x = -24
 	},
@@ -1064,8 +1062,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
-/obj/machinery/power/apc{
-	dir = 4;
+/obj/machinery/power/apc/west{
 	pixel_x = 24
 	},
 /obj/structure/cable/green{
@@ -1506,8 +1503,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/power/apc{
-	dir = 1;
+/obj/machinery/power/apc/south{
 	pixel_y = 24
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -2215,8 +2211,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/visible/supply,
 /obj/structure/cable/green,
-/obj/machinery/power/apc{
-	dir = 8;
+/obj/machinery/power/apc/east{
 	name = "west bump";
 	pixel_x = -24
 	},
@@ -5429,8 +5424,7 @@
 	dir = 4
 	},
 /obj/machinery/light/small,
-/obj/machinery/power/apc{
-	dir = 8;
+/obj/machinery/power/apc/east{
 	name = "west bump";
 	pixel_x = -28
 	},
@@ -5830,8 +5824,7 @@
 /area/engineering/atmos)
 "tm" = (
 /obj/structure/grille,
-/obj/machinery/power/apc{
-	dir = 4;
+/obj/machinery/power/apc/west{
 	alarms_hidden = 1;
 	name = "east bump";
 	pixel_x = 24
@@ -5842,8 +5835,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/machinery/power/apc{
-	dir = 4;
+/obj/machinery/power/apc/west{
 	pixel_x = 24
 	},
 /obj/structure/railing{
@@ -6286,8 +6278,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "uV" = (
-/obj/machinery/power/apc{
-	dir = 2;
+/obj/machinery/power/apc/north{
 	cell_type = /obj/item/cell/super;
 	dir = 1;
 	name = "north bump";
@@ -7319,8 +7310,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "yf" = (
-/obj/machinery/power/apc{
-	dir = 4;
+/obj/machinery/power/apc/west{
 	name = "east bump";
 	pixel_x = 24
 	},
@@ -7512,8 +7502,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc{
-	dir = 8;
+/obj/machinery/power/apc/east{
 	name = "west bump";
 	pixel_x = -24
 	},
@@ -8204,8 +8193,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/blue{
 	dir = 8
 	},
-/obj/machinery/power/apc{
-	dir = 1;
+/obj/machinery/power/apc/south{
 	name = "north bump";
 	pixel_y = 24
 	},
@@ -8572,8 +8560,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "CU" = (
-/obj/machinery/power/apc{
-	dir = 1;
+/obj/machinery/power/apc/south{
 	name = "north bump";
 	pixel_y = 24
 	},
@@ -8589,8 +8576,7 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 8
 	},
-/obj/machinery/power/apc{
-	dir = 8;
+/obj/machinery/power/apc/east{
 	name = "west bump";
 	pixel_x = -24
 	},
@@ -8913,8 +8899,7 @@
 /turf/simulated/floor/reinforced/carbon_dioxide,
 /area/engineering/atmos)
 "Ep" = (
-/obj/machinery/power/apc{
-	dir = 8;
+/obj/machinery/power/apc/east{
 	name = "west bump";
 	pixel_x = -24
 	},
@@ -9794,8 +9779,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc{
-	dir = 4;
+/obj/machinery/power/apc/west{
 	pixel_x = 24
 	},
 /turf/simulated/floor/crystal,
@@ -10471,8 +10455,7 @@
 /area/maintenance/engineering/upper)
 "JC" = (
 /obj/effect/floor_decal/rust,
-/obj/machinery/power/apc{
-	dir = 4;
+/obj/machinery/power/apc/west{
 	name = "east bump";
 	pixel_x = 24
 	},
@@ -10754,8 +10737,7 @@
 /turf/simulated/floor/concrete/rng/indoors,
 /area/rift/station/fighter_bay/transport_tunnel_garage)
 "KG" = (
-/obj/machinery/power/apc{
-	dir = 8;
+/obj/machinery/power/apc/east{
 	name = "west bump";
 	pixel_x = -28
 	},
@@ -11882,8 +11864,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/marker_beacon/red,
-/obj/machinery/power/apc{
-	dir = 4;
+/obj/machinery/power/apc/west{
 	name = "east bump";
 	pixel_x = 24
 	},
@@ -12625,8 +12606,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc{
-	dir = 4;
+/obj/machinery/power/apc/west{
 	name = "east bump";
 	pixel_x = 24
 	},
@@ -12647,8 +12627,7 @@
 /obj/machinery/atmospherics/pipe/manifold/visible/black{
 	dir = 1
 	},
-/obj/machinery/power/apc{
-	dir = 1;
+/obj/machinery/power/apc/south{
 	name = "north bump";
 	pixel_y = 24
 	},
@@ -13571,8 +13550,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "UZ" = (
-/obj/machinery/power/apc{
-	dir = 1;
+/obj/machinery/power/apc/south{
 	name = "north bump";
 	pixel_y = 24
 	},
@@ -14107,8 +14085,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/engineering/atmos)
 "WO" = (
-/obj/machinery/power/apc{
-	dir = 4;
+/obj/machinery/power/apc/west{
 	pixel_x = 24
 	},
 /obj/structure/cable/green{
@@ -14440,8 +14417,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc{
-	dir = 1;
+/obj/machinery/power/apc/south{
 	name = "north bump";
 	pixel_y = 24
 	},

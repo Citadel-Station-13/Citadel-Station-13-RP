@@ -13196,8 +13196,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/brig)
 "nYi" = (
-/obj/machinery/power/apc{
-	dir = 8;
+/obj/machinery/power/apc/east{
 	name = "west bump";
 	pixel_x = -28
 	},

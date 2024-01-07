@@ -68,8 +68,7 @@
 	dir = 8;
 	pixel_x = -32
 	},
-/obj/machinery/power/apc{
-	dir = 1;
+/obj/machinery/power/apc/south{
 	name = "north bump";
 	pixel_y = 24;
 	start_charge = 0
@@ -410,8 +409,7 @@
 /obj/structure/bed/chair/bay/comfy{
 	dir = 4
 	},
-/obj/machinery/power/apc{
-	dir = 8;
+/obj/machinery/power/apc/east{
 	name = "west bump";
 	pixel_x = -28;
 	start_charge = 0
@@ -1082,8 +1080,7 @@
 	dir = 8;
 	pixel_x = -32
 	},
-/obj/machinery/power/apc{
-	dir = 1;
+/obj/machinery/power/apc/south{
 	name = "north bump";
 	pixel_y = 24;
 	start_charge = 0
@@ -1754,8 +1751,7 @@
 /obj/structure/handrail{
 	dir = 8
 	},
-/obj/machinery/power/apc{
-	dir = 4;
+/obj/machinery/power/apc/west{
 	name = "east bump";
 	pixel_x = 24;
 	start_charge = 0
@@ -1908,8 +1904,7 @@
 /obj/structure/railing/grey{
 	dir = 8
 	},
-/obj/machinery/power/apc{
-	dir = 4;
+/obj/machinery/power/apc/west{
 	name = "east bump";
 	pixel_x = 24;
 	start_charge = 0

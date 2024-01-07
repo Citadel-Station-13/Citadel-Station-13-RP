@@ -154,8 +154,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "ay" = (
-/obj/machinery/power/apc{
-	dir = 4;
+/obj/machinery/power/apc/west{
 	name = "east bump";
 	pixel_x = 24
 	},
@@ -486,8 +485,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc{
-	dir = 1;
+/obj/machinery/power/apc/south{
 	name = "north bump";
 	pixel_y = 24
 	},
@@ -914,8 +912,7 @@
 "cj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/power/apc{
-	dir = 8;
+/obj/machinery/power/apc/east{
 	name = "west bump";
 	pixel_x = -32
 	},
@@ -1499,8 +1496,7 @@
 /turf/simulated/floor/tiled,
 /area/medical/medbay)
 "dG" = (
-/obj/machinery/power/apc{
-	dir = 4;
+/obj/machinery/power/apc/west{
 	name = "east bump";
 	pixel_x = 24
 	},
@@ -1548,8 +1544,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/civilian_hallway_aft)
 "dL" = (
-/obj/machinery/power/apc{
-	dir = 1;
+/obj/machinery/power/apc/south{
 	name = "north bump";
 	pixel_y = 32
 	},
@@ -2097,8 +2092,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/civilian_hallway_fore)
 "fe" = (
-/obj/machinery/power/apc{
-	dir = 4;
+/obj/machinery/power/apc/west{
 	name = "east bump";
 	pixel_x = 32
 	},
@@ -2212,8 +2206,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/fore)
 "fq" = (
-/obj/machinery/power/apc{
-	dir = 1;
+/obj/machinery/power/apc/south{
 	name = "north bump";
 	pixel_y = 32
 	},
@@ -2372,8 +2365,7 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/cafeteria)
 "fJ" = (
-/obj/machinery/power/apc{
-	dir = 1;
+/obj/machinery/power/apc/south{
 	name = "north bump";
 	pixel_y = 32
 	},
@@ -2556,8 +2548,7 @@
 /turf/simulated/floor/tiled,
 /area/bridge)
 "gj" = (
-/obj/machinery/power/apc{
-	dir = 1;
+/obj/machinery/power/apc/south{
 	name = "north bump";
 	pixel_y = 32
 	},
@@ -3357,8 +3348,7 @@
 	frequency = 1379;
 	scrub_id = "civ_airlock_scrubber"
 	},
-/obj/machinery/power/apc{
-	dir = 1;
+/obj/machinery/power/apc/south{
 	name = "north bump";
 	pixel_y = 28
 	},

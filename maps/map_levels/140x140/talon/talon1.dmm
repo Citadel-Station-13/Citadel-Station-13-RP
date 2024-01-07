@@ -497,8 +497,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/talon{
-	dir = 1;
+/obj/machinery/power/apc/talon/south{
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/eris/white/orangecorner,
@@ -658,8 +657,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/talon{
-	dir = 1;
+/obj/machinery/power/apc/talon/south{
 	pixel_y = 24
 	},
 /obj/machinery/light_switch{
@@ -724,8 +722,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/talon{
-	dir = 8;
+/obj/machinery/power/apc/talon/east{
 	pixel_x = -24
 	},
 /turf/simulated/floor/tiled/eris/steel,
@@ -976,8 +973,7 @@
 	dir = 1;
 	icon_state = "4-8"
 	},
-/obj/machinery/power/apc/talon{
-	dir = 1;
+/obj/machinery/power/apc/talon/south{
 	pixel_y = 24
 	},
 /obj/structure/cable/green{
@@ -1771,8 +1767,7 @@
 /area/talon/deckone/brig)
 "pN" = (
 /obj/structure/cable/green,
-/obj/machinery/power/apc/talon{
-	dir = 4;
+/obj/machinery/power/apc/talon/west{
 	pixel_x = 24;
 	req_access = list(301)
 	},
@@ -2507,8 +2502,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/talon{
-	dir = 1;
+/obj/machinery/power/apc/talon/south{
 	pixel_y = 24
 	},
 /turf/simulated/floor/plating,
@@ -2563,8 +2557,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/talon{
-	dir = 1;
+/obj/machinery/power/apc/talon/south{
 	pixel_y = 24
 	},
 /obj/machinery/light_switch{
@@ -2847,8 +2840,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/talon{
-	dir = 1;
+/obj/machinery/power/apc/talon/south{
 	pixel_y = 24
 	},
 /obj/machinery/light_switch{
@@ -3858,8 +3850,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
-/obj/machinery/power/apc/talon{
-	dir = 1;
+/obj/machinery/power/apc/talon/south{
 	pixel_y = 24
 	},
 /obj/machinery/light_switch{
@@ -3913,8 +3904,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/talon{
-	dir = 1;
+/obj/machinery/power/apc/talon/south{
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/eris/dark/orangecorner,
@@ -4343,8 +4333,7 @@
 /area/talon/deckone/port_engine)
 "IU" = (
 /obj/structure/catwalk,
-/obj/machinery/power/apc/talon{
-	dir = 1;
+/obj/machinery/power/apc/talon/south{
 	pixel_y = 24
 	},
 /obj/structure/cable/green{
@@ -4388,8 +4377,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/talon{
-	dir = 1;
+/obj/machinery/power/apc/talon/south{
 	pixel_y = 24
 	},
 /obj/structure/disposalpipe/segment{
@@ -4507,8 +4495,7 @@
 	pixel_y = -25
 	},
 /obj/machinery/recharger,
-/obj/machinery/power/apc/talon{
-	dir = 8;
+/obj/machinery/power/apc/talon/east{
 	pixel_x = -24
 	},
 /turf/simulated/floor/tiled/eris/white/bluecorner,
@@ -4812,8 +4799,7 @@
 /turf/simulated/floor/tiled/eris/dark/orangecorner,
 /area/talon/deckone/brig)
 "Nf" = (
-/obj/machinery/power/apc/talon{
-	dir = 1;
+/obj/machinery/power/apc/talon/south{
 	pixel_y = 24
 	},
 /obj/machinery/light_switch{
@@ -5366,8 +5352,7 @@
 /area/talon/deckone/port_solar)
 "St" = (
 /obj/structure/catwalk,
-/obj/machinery/power/apc/talon{
-	dir = 1;
+/obj/machinery/power/apc/talon/south{
 	pixel_y = 24
 	},
 /obj/structure/cable/green{
@@ -5524,8 +5509,7 @@
 /turf/simulated/floor/tiled/eris/white/danger,
 /area/talon/deckone/armory)
 "TG" = (
-/obj/machinery/power/apc/talon{
-	dir = 4;
+/obj/machinery/power/apc/talon/west{
 	pixel_x = 24
 	},
 /obj/structure/cable/green,
@@ -5746,8 +5730,7 @@
 /obj/structure/mopbucket,
 /obj/item/mop,
 /obj/item/reagent_containers/glass/bucket,
-/obj/machinery/power/apc/talon{
-	dir = 1;
+/obj/machinery/power/apc/talon/south{
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/eris/dark/brown_platform,
@@ -5776,8 +5759,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/talon{
-	dir = 4;
+/obj/machinery/power/apc/talon/west{
 	pixel_x = 24
 	},
 /turf/simulated/floor/tiled/eris/white/orangecorner,
