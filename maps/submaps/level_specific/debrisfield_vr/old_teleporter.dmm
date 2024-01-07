@@ -18,7 +18,7 @@
 /turf/simulated/floor/airless,
 /area/submap/debrisfield_vr/old_tele)
 "f" = (
-/obj/machinery/apc/north_mount{
+/obj/machinery/power/apc/north_mount{
 	cell_type = null;
 	coverlocked = 0;
 	locked = 0;
