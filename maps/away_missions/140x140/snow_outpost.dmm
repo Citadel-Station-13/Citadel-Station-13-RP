@@ -59,8 +59,7 @@
 /turf/simulated/floor/tiled/old_tile/white,
 /area/awaymission/snow_outpost/powered)
 "am" = (
-/obj/machinery/power/apc{
-	dir = 4;
+/obj/machinery/air_alarm/east_mount{
 	name = "east bump";
 	pixel_x = 24
 	},
@@ -196,8 +195,7 @@
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
 "aK" = (
-/obj/machinery/power/apc{
-	dir = 1;
+/obj/machinery/air_alarm/north_mount{
 	name = "north bump";
 	pixel_x = 0;
 	pixel_y = 28
@@ -314,8 +312,7 @@
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
 "bg" = (
-/obj/machinery/power/apc{
-	dir = 1;
+/obj/machinery/air_alarm/north_mount{
 	name = "north bump";
 	pixel_x = 0;
 	pixel_y = 28
@@ -327,8 +324,7 @@
 /turf/simulated/floor/plating/external,
 /area/awaymission/snow_outpost/dark)
 "bi" = (
-/obj/machinery/power/apc{
-	dir = 4;
+/obj/machinery/air_alarm/east_mount{
 	name = "east bump";
 	pixel_x = 24
 	},
@@ -516,8 +512,7 @@
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
 "bM" = (
-/obj/machinery/power/apc{
-	dir = 4;
+/obj/machinery/air_alarm/east_mount{
 	name = "east bump";
 	pixel_x = 24
 	},
@@ -1557,8 +1552,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/snow_outpost/outside/nospawn)
 "fo" = (
-/obj/machinery/power/apc{
-	dir = 8;
+/obj/machinery/air_alarm/west_mount{
 	name = "BSD APC";
 	pixel_x = -24
 	},

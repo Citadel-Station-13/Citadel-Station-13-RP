@@ -419,8 +419,7 @@
 	},
 /obj/structure/flora/pottedplant/unusual,
 /obj/structure/cable,
-/obj/machinery/power/apc{
-	dir = 8;
+/obj/machinery/air_alarm/west_mount{
 	name = "west bump";
 	pixel_x = -28
 	},

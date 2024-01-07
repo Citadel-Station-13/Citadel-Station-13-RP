@@ -1260,8 +1260,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc{
-	dir = 1;
+/obj/machinery/air_alarm/north_mount{
 	name = "north bump";
 	pixel_y = 24
 	},
@@ -1859,8 +1858,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc{
-	dir = 1;
+/obj/machinery/air_alarm/north_mount{
 	name = "north bump";
 	pixel_y = 24
 	},
@@ -2306,9 +2304,8 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc{
+/obj/machinery/air_alarm/north_mount{
 	alarms_hidden = 1;
-	dir = 1;
 	name = "north bump";
 	pixel_y = 28;
 	req_access = list();
@@ -2406,8 +2403,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc{
-	dir = 1;
+/obj/machinery/air_alarm/north_mount{
 	name = "north bump";
 	pixel_y = 24
 	},
@@ -3056,8 +3052,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/machinery/power/apc/super{
-	dir = 1;
+/obj/machinery/air_alarm/super/north_mount{
 	name = "north bump";
 	pixel_y = 24
 	},
@@ -3970,8 +3965,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/power/apc{
-	dir = 1;
+/obj/machinery/air_alarm/north_mount{
 	pixel_y = 24
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -4485,8 +4479,7 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/power/apc{
-	dir = 4;
+/obj/machinery/air_alarm/east_mount{
 	name = "east bump";
 	pixel_x = 28
 	},
@@ -4827,8 +4820,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
 /obj/structure/catwalk,
 /obj/structure/cable/green,
-/obj/machinery/power/apc{
-	dir = 8;
+/obj/machinery/air_alarm/west_mount{
 	name = "west bump";
 	pixel_x = -24
 	},
@@ -5688,8 +5680,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/public_bunker)
 "rd" = (
-/obj/machinery/power/apc{
-	dir = 4;
+/obj/machinery/air_alarm/east_mount{
 	pixel_x = 24
 	},
 /obj/structure/catwalk,
@@ -5705,8 +5696,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc{
-	dir = 8;
+/obj/machinery/air_alarm/west_mount{
 	name = "west bump";
 	pixel_x = -24
 	},
@@ -6883,9 +6873,8 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/hallway)
 "vL" = (
-/obj/machinery/power/apc{
+/obj/machinery/air_alarm/north_mount{
 	alarms_hidden = 1;
-	dir = 1;
 	name = "north bump";
 	pixel_y = 28;
 	req_access = list();
@@ -7208,8 +7197,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
-/obj/machinery/power/apc{
-	dir = 1;
+/obj/machinery/air_alarm/north_mount{
 	name = "north bump";
 	pixel_y = 24
 	},
@@ -7475,8 +7463,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
 "xF" = (
-/obj/machinery/power/apc{
-	dir = 4;
+/obj/machinery/air_alarm/east_mount{
 	name = "east bump";
 	pixel_x = 24
 	},
@@ -8101,8 +8088,7 @@
 /area/engineering/atmos/hallway)
 "Ah" = (
 /obj/machinery/portable_atmospherics/canister/phoron,
-/obj/machinery/power/apc{
-	dir = 8;
+/obj/machinery/air_alarm/west_mount{
 	name = "west bump";
 	pixel_x = -24
 	},
@@ -8897,8 +8883,7 @@
 /turf/simulated/floor/carpet,
 /area/engineering/break_room)
 "Dh" = (
-/obj/machinery/power/apc{
-	dir = 8;
+/obj/machinery/air_alarm/west_mount{
 	name = "west bump";
 	pixel_x = -24
 	},
@@ -9300,8 +9285,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/power/apc{
-	dir = 1;
+/obj/machinery/air_alarm/north_mount{
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled,
@@ -9368,8 +9352,7 @@
 /turf/simulated/wall/prepainted,
 /area/quartermaster/miningdock)
 "ER" = (
-/obj/machinery/power/apc{
-	dir = 8;
+/obj/machinery/air_alarm/west_mount{
 	name = "west bump";
 	pixel_x = -24
 	},
@@ -9910,9 +9893,8 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc{
+/obj/machinery/air_alarm/north_mount{
 	alarms_hidden = 1;
-	dir = 1;
 	name = "north bump";
 	pixel_y = 28;
 	req_access = list();
@@ -10378,8 +10360,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/chapel/main)
 "IR" = (
-/obj/machinery/power/apc{
-	dir = 1;
+/obj/machinery/air_alarm/north_mount{
 	name = "north bump";
 	pixel_y = 24
 	},
@@ -10497,8 +10478,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc{
-	dir = 8;
+/obj/machinery/air_alarm/west_mount{
 	name = "west bump";
 	pixel_x = -24
 	},
@@ -10862,9 +10842,8 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "KP" = (
-/obj/machinery/power/apc{
+/obj/machinery/air_alarm/north_mount{
 	alarms_hidden = 1;
-	dir = 1;
 	name = "north bump";
 	pixel_y = 28;
 	req_access = list();
@@ -11881,8 +11860,7 @@
 "Of" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/portable_atmospherics/canister/phoron,
-/obj/machinery/power/apc{
-	dir = 4;
+/obj/machinery/air_alarm/east_mount{
 	name = "east bump";
 	pixel_x = 28
 	},
@@ -11916,8 +11894,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/chapel/chapel_morgue)
 "Ol" = (
-/obj/machinery/power/apc{
-	dir = 1;
+/obj/machinery/air_alarm/north_mount{
 	name = "north bump";
 	pixel_y = 24
 	},
@@ -12017,8 +11994,7 @@
 /obj/machinery/computer/security/engineering{
 	dir = 4
 	},
-/obj/machinery/power/apc{
-	dir = 8;
+/obj/machinery/air_alarm/west_mount{
 	name = "west bump";
 	pixel_x = -24
 	},
@@ -12440,8 +12416,7 @@
 	},
 /obj/structure/table/reinforced,
 /obj/item/storage/toolbox/electrical,
-/obj/machinery/power/apc{
-	dir = 1;
+/obj/machinery/air_alarm/north_mount{
 	name = "north bump";
 	pixel_y = 24
 	},
@@ -12509,8 +12484,7 @@
 /turf/simulated/floor/wood,
 /area/engineering/break_room)
 "QC" = (
-/obj/machinery/power/apc{
-	dir = 8;
+/obj/machinery/air_alarm/west_mount{
 	name = "west bump";
 	pixel_x = -24
 	},
@@ -12919,8 +12893,7 @@
 /area/chapel/chapel_morgue)
 "Sm" = (
 /obj/landmark/spawnpoint/job/shaft_miner,
-/obj/machinery/power/apc{
-	dir = 1;
+/obj/machinery/air_alarm/north_mount{
 	pixel_y = 24
 	},
 /obj/structure/cable/green{
@@ -14073,9 +14046,8 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/hallway)
 "Wg" = (
-/obj/machinery/power/apc{
+/obj/machinery/air_alarm/north_mount{
 	alarms_hidden = 1;
-	dir = 1;
 	name = "north bump";
 	pixel_y = 28;
 	req_access = list();
@@ -14115,8 +14087,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc{
-	dir = 1;
+/obj/machinery/air_alarm/north_mount{
 	name = "north bump";
 	pixel_y = 24
 	},
@@ -14696,8 +14667,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/power/apc{
-	dir = 1;
+/obj/machinery/air_alarm/north_mount{
 	pixel_y = 24
 	},
 /obj/structure/cable/green{

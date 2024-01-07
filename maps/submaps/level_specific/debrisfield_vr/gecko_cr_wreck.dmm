@@ -180,8 +180,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/power/apc{
-	dir = 4;
+/obj/machinery/air_alarm/east_mount{
 	name = "east bump";
 	pixel_x = 24;
 	start_charge = 0
@@ -939,8 +938,7 @@
 /area/shuttle/gecko_cr_engineering_wreck)
 "sV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/power/apc{
-	dir = 1;
+/obj/machinery/air_alarm/north_mount{
 	name = "north bump";
 	pixel_y = 24;
 	start_charge = 0

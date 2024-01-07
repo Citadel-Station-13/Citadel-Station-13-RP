@@ -3879,8 +3879,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc{
-	dir = 4;
+/obj/machinery/air_alarm/east_mount{
 	name = "east bump";
 	pixel_x = 28
 	},
@@ -4549,8 +4548,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/debris/cleanable/dirt,
-/obj/machinery/power/apc{
-	dir = 8;
+/obj/machinery/air_alarm/west_mount{
 	name = "west bump";
 	pixel_x = -28
 	},
@@ -4560,8 +4558,7 @@
 /turf/simulated/floor/plating,
 /area/storage/tech)
 "py" = (
-/obj/machinery/power/apc{
-	dir = 8;
+/obj/machinery/air_alarm/west_mount{
 	name = "west bump";
 	pixel_x = -28
 	},
@@ -6608,8 +6605,7 @@
 /area/engineering/engine_smes)
 "wf" = (
 /obj/structure/closet/secure_closet/atmos_personal,
-/obj/machinery/power/apc{
-	dir = 8;
+/obj/machinery/air_alarm/west_mount{
 	name = "west bump";
 	pixel_x = -28
 	},
@@ -11564,8 +11560,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/storage)
 "MV" = (
-/obj/machinery/power/apc{
-	dir = 8;
+/obj/machinery/air_alarm/west_mount{
 	name = "west bump";
 	pixel_x = -28
 	},
@@ -12019,8 +12014,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/storage)
 "Ov" = (
-/obj/machinery/power/apc{
-	dir = 4;
+/obj/machinery/air_alarm/east_mount{
 	name = "east bump";
 	pixel_x = 28
 	},
@@ -13807,8 +13801,7 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 6
 	},
-/obj/machinery/power/apc{
-	dir = 4;
+/obj/machinery/air_alarm/east_mount{
 	name = "east bump";
 	pixel_x = 28
 	},
@@ -15174,8 +15167,7 @@
 	},
 /obj/structure/reagent_dispensers/watertank,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/power/apc{
-	dir = 8;
+/obj/machinery/air_alarm/west_mount{
 	name = "west bump";
 	pixel_x = -28
 	},
