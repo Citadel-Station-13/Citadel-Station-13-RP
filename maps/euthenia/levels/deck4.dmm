@@ -2844,8 +2844,8 @@
 "kK" = (
 /obj/landmark/spawnpoint/job/chaplain,
 /obj/item/radio/intercom{
-	broadcasting = 1;
 	dir = 4;
+	broadcasting = 1;
 	frequency = 1473;
 	name = "Confession Intercom";
 	pixel_x = 24
@@ -12859,8 +12859,8 @@
 /area/main_map/maintenance/deck_four/forward)
 "WM" = (
 /obj/item/radio/intercom{
-	broadcasting = 1;
 	dir = 8;
+	broadcasting = 1;
 	frequency = 1473;
 	name = "Confession Intercom";
 	pixel_x = -24

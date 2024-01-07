@@ -2019,7 +2019,9 @@
 "bbh" = (
 /obj/structure/table/glass,
 /obj/random/medical/lite,
-/obj/item/radio/intercom/department/medbay,
+/obj/item/radio/intercom/department/medbay{
+	dir = 2
+	},
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/first_aid_west)
 "bbo" = (

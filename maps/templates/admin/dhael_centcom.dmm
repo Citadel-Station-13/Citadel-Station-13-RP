@@ -2709,8 +2709,8 @@
 /area/centcom/control)
 "gL" = (
 /obj/item/radio/intercom{
-	broadcasting = 1;
 	dir = 1;
+	broadcasting = 1;
 	frequency = 1443;
 	listening = 0;
 	name = "Spec Ops Intercom";

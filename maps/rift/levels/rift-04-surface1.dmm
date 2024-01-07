@@ -2233,7 +2233,9 @@
 /turf/simulated/floor/plating,
 /area/maintenance/starboard)
 "bAb" = (
-/obj/item/radio/intercom,
+/obj/item/radio/intercom{
+	dir = 2
+	},
 /turf/simulated/wall/prepainted/science,
 /area/rnd/outpost/xenobiology/outpost_decon)
 "bAl" = (
@@ -19867,7 +19869,9 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenobiology/outpost_hallway)
 "mDS" = (
-/obj/item/radio/intercom,
+/obj/item/radio/intercom{
+	dir = 2
+	},
 /turf/simulated/wall/prepainted/science,
 /area/rnd/outpost/xenobiology/outpost_autopsy)
 "mEt" = (

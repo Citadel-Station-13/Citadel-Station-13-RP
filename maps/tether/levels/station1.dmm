@@ -20024,7 +20024,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/secondary)
 "OL" = (
-/obj/item/radio/intercom/department/medbay,
+/obj/item/radio/intercom/department/medbay{
+	dir = 2
+	},
 /turf/simulated/wall/rshull,
 /area/shuttle/medivac/general)
 "OM" = (

@@ -10699,6 +10699,7 @@
 /area/tether/surfacebase/outside/outside2)
 "hGT" = (
 /obj/item/radio/intercom{
+	dir = 2;
 	broadcasting = 1;
 	frequency = 1473;
 	name = "Confession Intercom";

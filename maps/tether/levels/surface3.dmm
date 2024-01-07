@@ -15566,7 +15566,9 @@
 /turf/simulated/floor/tiled/monotile,
 /area/tether/surfacebase/shuttle_pad)
 "jbl" = (
-/obj/item/radio/intercom,
+/obj/item/radio/intercom{
+	dir = 2
+	},
 /turf/simulated/wall/prepainted/science,
 /area/rnd/outpost/xenobiology/outpost_autopsy)
 "jbw" = (
@@ -16457,7 +16459,9 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/iaa)
 "jAF" = (
-/obj/item/radio/intercom,
+/obj/item/radio/intercom{
+	dir = 2
+	},
 /turf/simulated/wall/prepainted/science,
 /area/rnd/outpost/xenobiology/outpost_decon)
 "jAH" = (
