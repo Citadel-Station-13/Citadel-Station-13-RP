@@ -2,83 +2,83 @@
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
 #define CREATE_WALL_MOUNTING_TYPES(TYPE) \
-##TYPE/north{ \
-	dir = NORTH; \
-} \
-##TYPE/south{ \
+##TYPE/north_mount{ \
 	dir = SOUTH; \
 } \
-##TYPE/east{ \
-	dir = EAST; \
+##TYPE/south_mount{ \
+	dir = NORTH; \
 } \
-##TYPE/west{ \
+##TYPE/east_mount{ \
 	dir = WEST; \
 } \
-##TYPE/auto/Initialize(){ \
+##TYPE/west_mount{ \
+	dir = EAST; \
+} \
+##TYPE/auto_mount/Initialize(){ \
 	auto_orient_wallmount_single_preinit(); \
 	return ..(); \
 }
 
 #define CREATE_WALL_MOUNTING_TYPES_AUTOSPRITE(TYPE, AUTOSPRITE) \
-##TYPE/north{ \
-	dir = NORTH; \
-} \
-##TYPE/south{ \
+##TYPE/north_mount{ \
 	dir = SOUTH; \
 } \
-##TYPE/east{ \
-	dir = EAST; \
+##TYPE/south_mount{ \
+	dir = NORTH; \
 } \
-##TYPE/west{ \
+##TYPE/east_mount{ \
 	dir = WEST; \
 } \
-##TYPE/auto { icon_state = AUTOSPRITE } \
-##TYPE/auto/Initialize(){ \
+##TYPE/west_mount{ \
+	dir = EAST; \
+} \
+##TYPE/auto_mount { icon_state = AUTOSPRITE } \
+##TYPE/auto_mount/Initialize(){ \
 	auto_orient_wallmount_single_preinit(); \
 	return ..(); \
 }
 
 #define CREATE_WALL_MOUNTING_TYPES_SHIFTED(TYPE, SHIFT) \
-##TYPE/north{ \
-	dir = NORTH; \
+##TYPE/north_mount{ \
+	dir = SOUTH; \
 	pixel_y = SHIFT; \
 } \
-##TYPE/south{ \
-	dir = SOUTH; \
+##TYPE/south_mount{ \
+	dir = NORTH; \
 	pixel_y = -SHIFT; \
 } \
-##TYPE/east{ \
-	dir = EAST; \
+##TYPE/east_mount{ \
+	dir = WEST; \
 	pixel_x = SHIFT; \
 } \
-##TYPE/west{ \
-	dir = WEST; \
+##TYPE/west_mount{ \
+	dir = EAST; \
 	pixel_x = -SHIFT; \
 } \
-##TYPE/auto/Initialize(){ \
+##TYPE/auto_mount/Initialize(){ \
 	auto_orient_wallmount_single_preinit(); \
 	return ..(); \
 }
 
 #define CREATE_WALL_MOUNTING_TYPES_SHIFTED_AUTOSPRITE(TYPE, SHIFT, AUTOSPRITE) \
-##TYPE/north{ \
-	dir = NORTH; \
+##TYPE/north_mount{ \
+	dir = SOUTH; \
 	pixel_y = SHIFT; \
 } \
-##TYPE/south{ \
-	dir = SOUTH; \
+##TYPE/south_mount{ \
+	dir = NORTH; \
 	pixel_y = -SHIFT; \
 } \
-##TYPE/east{ \
-	dir = EAST; \
+##TYPE/east_mount{ \
+	dir = WEST; \
 	pixel_x = SHIFT; \
 } \
-##TYPE/west{ \
-	dir = WEST; \
+##TYPE/west_mount{ \
+	dir = EAST; \
 	pixel_x = -SHIFT; \
 } \
-##TYPE/auto { icon_state = AUTOSPRITE } \
-##TYPE/auto/Initialize(){ \
+##TYPE/auto_mount { icon_state = AUTOSPRITE } \
+##TYPE/auto_mount/Initialize(){ \
 	auto_orient_wallmount_single_preinit(); \
 	return ..(); \
 }
