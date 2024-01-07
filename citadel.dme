@@ -240,6 +240,7 @@
 #include "code\__DEFINES\misc\message_ranges.dm"
 #include "code\__DEFINES\misc\nightshift.dm"
 #include "code\__DEFINES\mobs\actions.dm"
+#include "code\__DEFINES\mobs\biology.dm"
 #include "code\__DEFINES\mobs\characteristics.dm"
 #include "code\__DEFINES\mobs\grab.dm"
 #include "code\__DEFINES\mobs\health.dm"

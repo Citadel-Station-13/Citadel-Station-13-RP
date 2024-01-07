@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 /**
  * physiology holder
  *
@@ -102,6 +105,12 @@
 		to_chat(usr, SPAN_NOTICE("Committing change to [var_name] on [ownership] ([REF(ownership)]) to physiology modifiers automatically."))
 
 /**
+ * limb physiology holder
+ */
+/datum/local_physiology
+	#warn impl all
+
+/**
  * physiology modifier
  */
 /datum/physiology_modifier
@@ -146,7 +155,7 @@
 	if(isnum(data["carry_weight_factor"]))
 		carry_weight_factor = data["carry_weight_factor"]
 	if(isnum(data["carry_weight_bias"]))
-		carry_weight_bias = data["carry_Weight_bias"]
+		carry_weight_bias = data["carry_weight_bias"]
 
 /**
  * subtype for hardcoded physiology modifiers
@@ -232,35 +241,12 @@ GLOBAL_LIST_EMPTY(cached_physiology_modifiers)
 	if(href_list[VV_HK_ADD_PHYSIOLOGY_MODIFIER])
 		// todo: this should be able to be done globally via admin panel and then added to mobs
 
-		var/datum/tgui_dynamic_query/query = new
-		query.string("name", "Name", "Name your modifier.", 64, FALSE, "Custom Modifier")
-		query.number("carry_strength_add", "Carry Strength - Add", "Modify the person's base carry strength. Higher is better.", default = 0)
-		query.number("carry_strength_factor", "Carry Factor - Multiply", "Multiply the person's carry weight/encumbrance to slowdown effect when carrying over their limit. Lower is better.", default = 1)
-		query.number("carry_strength_bias", "Carry Bias - Multiply", "Multiply the person's carry weight/encumbrance to slowdown bias when carrying over their limit. Lower is better.", default = 1)
-		query.number("carry_weight_add", "Carry Weight - Add", "Modify the person's base carry weight. Higher is better. This only applies to weight, not encumbrance.", default = 0)
-		query.number("carry_weight_factor", "Carry Weight - Multiply", "Multiply the person's weight to slowdown effect when carrying over their limit. Lower is better. This only applies to weight, not encumbrance.", default = 1)
-		query.number("carry_weight_bias", "Carry Weight - Bias", "Multiply the person's weight to slowdown calculation bias; lower is better.", default = 1)
-
-		var/list/choices = tgui_dynamic_input(usr, "Add a physiology modifier", "Add Physiology Modifier", query)
-
-		if(isnull(choices))
+		var/datum/physiology_modifier/modifier = ask_admin_for_a_physiology_modifier(usr)
+		
+		if(isnull(modifier))
 			return
 		if(QDELETED(src))
 			return
-
-		var/datum/physiology_modifier/modifier = new
-
-		// we manually deserialize because we might have custom datatypes
-		// in the future that won't be serialized by the ui necessarily in the same way
-		// we would serialize it via json.
-
-		modifier.name = choices["name"]
-		modifier.carry_strength_add = choices["carry_strength_add"]
-		modifier.carry_strength_factor = choices["carry_strength_factor"]
-		modifier.carry_strength_bias = choices["carry_strength_bias"]
-		modifier.carry_weight_add = choices["carry_weight_add"]
-		modifier.carry_weight_factor = choices["carry_weight_factor"]
-		modifier.carry_weight_bias = choices["carry_weight_bias"]
 
 		log_admin("[key_name(usr)] --> [key_name(src)] - added physiology modifier [json_encode(modifier.serialize())]")
 		add_physiology_modifier(modifier)
@@ -287,3 +273,37 @@ GLOBAL_LIST_EMPTY(cached_physiology_modifiers)
 	var/datum/physiology_modifier/varedit/new_holder = new
 	add_physiology_modifier(new_holder)
 	return new_holder
+
+#warn port all this shit to /obj/item/organ/external
+
+// todo: you can tell from the proc name that this needs to be kicked somewhere eles later.
+/proc/ask_admin_for_a_physiology_modifier(mob/user)
+	var/datum/tgui_dynamic_query/query = new
+	query.string("name", "Name", "Name your modifier.", 64, FALSE, "Custom Modifier")
+	query.number("carry_strength_add", "Carry Strength - Add", "Modify the person's base carry strength. Higher is better.", default = 0)
+	query.number("carry_strength_factor", "Carry Factor - Multiply", "Multiply the person's carry weight/encumbrance to slowdown effect when carrying over their limit. Lower is better.", default = 1)
+	query.number("carry_strength_bias", "Carry Bias - Multiply", "Multiply the person's carry weight/encumbrance to slowdown bias when carrying over their limit. Lower is better.", default = 1)
+	query.number("carry_weight_add", "Carry Weight - Add", "Modify the person's base carry weight. Higher is better. This only applies to weight, not encumbrance.", default = 0)
+	query.number("carry_weight_factor", "Carry Weight - Multiply", "Multiply the person's weight to slowdown effect when carrying over their limit. Lower is better. This only applies to weight, not encumbrance.", default = 1)
+	query.number("carry_weight_bias", "Carry Weight - Bias", "Multiply the person's weight to slowdown calculation bias; lower is better.", default = 1)
+
+	var/list/choices = tgui_dynamic_input(user, "Add a physiology modifier", "Add Physiology Modifier", query)
+
+	if(isnull(choices))
+		return
+
+	var/datum/physiology_modifier/modifier = new
+
+	// we manually deserialize because we might have custom datatypes
+	// in the future that won't be serialized by the ui necessarily in the same way
+	// we would serialize it via json.
+
+	modifier.name = choices["name"]
+	modifier.carry_strength_add = choices["carry_strength_add"]
+	modifier.carry_strength_factor = choices["carry_strength_factor"]
+	modifier.carry_strength_bias = choices["carry_strength_bias"]
+	modifier.carry_weight_add = choices["carry_weight_add"]
+	modifier.carry_weight_factor = choices["carry_weight_factor"]
+	modifier.carry_weight_bias = choices["carry_weight_bias"]
+
+	return modifier

@@ -6,11 +6,18 @@
 	organ_tag = "limb"
 	decays = FALSE
 
-	//? Coverage
+	//* Coverage *//
 	/// body_cover_flags that count as covering us
 	var/body_part_flags = NONE
+	
+	//* Physiology *//
+	/// local physiology holder
+	var/datum/local_physiology/physiology
+	/// local-ized physiology modifiers - these are always on us, even when we are mob-less
+	var/list/datum/physiology_modifier/physiology_modifiers
+	#warn hook both
 
-	//? Wounds
+	//* Wounds *//
 	/// Wound datum list.
 	var/list/wounds
 	/// Number of wounds we have - some wounds like bruises will collate into one datum representing all of them.
@@ -1439,3 +1446,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 		for(var/obj/item/I in L.implants)
 			if(!istype(I,/obj/item/implant) && !istype(I,/obj/item/nif))
 				return TRUE
+
+//* Physiology *//.
+
+#warn go grab shit from physiology.dm
