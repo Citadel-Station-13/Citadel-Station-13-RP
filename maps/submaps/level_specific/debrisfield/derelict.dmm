@@ -370,8 +370,7 @@
 "bJ" = (
 /obj/structure/cable,
 /obj/machinery/power/apc{
-	alarms_hidden = 1;
-	pixel_y = -24
+	alarms_hidden = 1
 	},
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/debrisfield/derelict)
@@ -549,8 +548,7 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/power/apc/east_mount{
-	alarms_hidden = 1;
-	pixel_x = 28
+	alarms_hidden = 1
 	},
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/debrisfield/derelict)
@@ -606,8 +604,7 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/power/apc/north_mount{
-	alarms_hidden = 1;
-	pixel_y = 24
+	alarms_hidden = 1
 	},
 /turf/simulated/floor/greengrid/airless,
 /area/debrisfield/derelict)
@@ -634,8 +631,7 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/power/apc/east_mount{
-	alarms_hidden = 1;
-	pixel_x = 28
+	alarms_hidden = 1
 	},
 /turf/simulated/floor/plating/external,
 /area/debrisfield/derelict)

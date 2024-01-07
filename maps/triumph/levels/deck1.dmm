@@ -3146,8 +3146,7 @@
 /area/engineering/atmos/storage)
 "ks" = (
 /obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_x = -30
+	cell_type = /obj/item/cell/super
 	},
 /obj/structure/cable,
 /turf/simulated/floor/plating,
@@ -3514,8 +3513,7 @@
 "lP" = (
 /obj/structure/cable/green,
 /obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_x = -30
+	cell_type = /obj/item/cell/super
 	},
 /obj/structure/table/rack{
 	dir = 8;
@@ -3555,8 +3553,7 @@
 /area/maintenance/engi_engine)
 "lT" = (
 /obj/machinery/power/apc/north_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_y = 24
+	cell_type = /obj/item/cell/super
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
@@ -4251,8 +4248,7 @@
 /area/engineering/break_room)
 "oE" = (
 /obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_x = -30
+	cell_type = /obj/item/cell/super
 	},
 /obj/structure/cable/green,
 /obj/effect/floor_decal/techfloor/orange{
@@ -5091,8 +5087,7 @@
 	dir = 4
 	},
 /obj/machinery/power/apc/north_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_y = 24
+	cell_type = /obj/item/cell/super
 	},
 /obj/structure/cable/green{
 	icon_state = "0-2"
@@ -6382,8 +6377,7 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/power/apc{
-	cell_type = /obj/item/cell/super;
-	pixel_y = -32
+	cell_type = /obj/item/cell/super
 	},
 /obj/machinery/computer/general_air_control/large_tank_control{
 	frequency = 2346;
@@ -6907,8 +6901,7 @@
 /area/engineering/portnacelle)
 "xj" = (
 /obj/machinery/power/apc/north_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_y = 24
+	cell_type = /obj/item/cell/super
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -8010,8 +8003,7 @@
 	pixel_y = 22
 	},
 /obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_x = -30
+	cell_type = /obj/item/cell/super
 	},
 /obj/structure/cable{
 	icon_state = "0-4"
@@ -11794,8 +11786,7 @@
 	dir = 6
 	},
 /obj/machinery/power/apc/north_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_y = 24
+	cell_type = /obj/item/cell/super
 	},
 /obj/structure/cable/green{
 	icon_state = "0-4"
@@ -12214,8 +12205,7 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_x = -30
+	cell_type = /obj/item/cell/super
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
@@ -12432,8 +12422,7 @@
 /area/space)
 "Qh" = (
 /obj/machinery/power/apc/north_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_y = 24
+	cell_type = /obj/item/cell/super
 	},
 /obj/structure/cable/green{
 	icon_state = "0-4"
@@ -13042,8 +13031,7 @@
 /area/tcommsat/chamber)
 "Sj" = (
 /obj/machinery/power/apc/east_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_x = 24
+	cell_type = /obj/item/cell/super
 	},
 /obj/structure/cable/green{
 	icon_state = "0-8"
@@ -14171,8 +14159,7 @@
 	icon_state = "0-2"
 	},
 /obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_x = -30
+	cell_type = /obj/item/cell/super
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/workshop)
@@ -14299,8 +14286,7 @@
 	icon_state = "0-2"
 	},
 /obj/machinery/power/apc/north_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_y = 28
+	cell_type = /obj/item/cell/super
 	},
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 9

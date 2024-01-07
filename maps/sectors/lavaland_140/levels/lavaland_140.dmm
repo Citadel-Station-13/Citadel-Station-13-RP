@@ -2241,8 +2241,7 @@
 /area/lavaland/central/base/common)
 "SN" = (
 /obj/machinery/power/apc{
-	cell_type = /obj/item/cell/infinite;
-	pixel_y = -28
+	cell_type = /obj/item/cell/infinite
 	},
 /turf/simulated/floor/tiled/dark/lavaland,
 /area/lavaland/central/transit)

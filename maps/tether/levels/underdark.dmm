@@ -118,8 +118,7 @@
 	icon_state = "0-10"
 	},
 /obj/machinery/power/apc/north_mount{
-	alarms_hidden = 1;
-	pixel_y = 24
+	alarms_hidden = 1
 	},
 /turf/simulated/floor/outdoors/dirt/virgo3b,
 /area/mine/explored/underdark)

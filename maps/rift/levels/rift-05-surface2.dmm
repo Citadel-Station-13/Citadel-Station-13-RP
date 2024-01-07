@@ -21993,8 +21993,7 @@
 /area/medical/sleeper)
 "nUi" = (
 /obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_x = -28
+	cell_type = /obj/item/cell/super
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 1
@@ -26077,8 +26076,7 @@
 /area/hallway/primary/surfacetwo)
 "qCM" = (
 /obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_x = -30
+	cell_type = /obj/item/cell/super
 	},
 /obj/structure/cable/green{
 	icon_state = "0-2"

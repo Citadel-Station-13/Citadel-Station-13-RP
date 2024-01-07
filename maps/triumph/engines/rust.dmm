@@ -483,7 +483,7 @@
 	dir = 4;
 	icon_state = "pdoor1";
 	id = "EngineVent";
-	name = "Reactor Vent";
+	name = "Reactor Vent"
 	},
 /turf/simulated/floor/reinforced,
 /area/engineering/engine_room)

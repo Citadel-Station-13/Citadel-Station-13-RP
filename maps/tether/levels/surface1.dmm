@@ -5774,8 +5774,7 @@
 /area/tether/surfacebase/surface_one_hall)
 "cZI" = (
 /obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_x = -28
+	cell_type = /obj/item/cell/super
 	},
 /obj/structure/cable/green{
 	icon_state = "0-4"
@@ -10629,8 +10628,7 @@
 	icon_state = "0-2"
 	},
 /obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_x = -28
+	cell_type = /obj/item/cell/super
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
@@ -17721,8 +17719,7 @@
 /obj/machinery/portable_atmospherics/canister/nitrogen,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_x = -24
+	cell_type = /obj/item/cell/super
 	},
 /obj/structure/cable/cyan{
 	icon_state = "0-4"
@@ -20638,8 +20635,7 @@
 	dir = 5
 	},
 /obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_x = -24
+	cell_type = /obj/item/cell/super
 	},
 /obj/structure/cable/green{
 	icon_state = "0-4"
@@ -22183,8 +22179,7 @@
 "lRY" = (
 /obj/effect/floor_decal/industrial/warning/dust,
 /obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_x = -30
+	cell_type = /obj/item/cell/super
 	},
 /obj/structure/cable/green{
 	icon_state = "0-4"
@@ -24169,8 +24164,7 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_x = -28
+	cell_type = /obj/item/cell/super
 	},
 /obj/structure/extinguisher_cabinet{
 	dir = 1;
@@ -35058,8 +35052,7 @@
 	dir = 4
 	},
 /obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_x = -24
+	cell_type = /obj/item/cell/super
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/cable/green{
@@ -36350,8 +36343,7 @@
 	dir = 4
 	},
 /obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_x = -30
+	cell_type = /obj/item/cell/super
 	},
 /obj/structure/cable{
 	icon_state = "0-4"
@@ -43457,8 +43449,7 @@
 	dir = 10
 	},
 /obj/machinery/power/apc/north_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_y = 24
+	cell_type = /obj/item/cell/super
 	},
 /obj/structure/cable/green{
 	icon_state = "0-2"

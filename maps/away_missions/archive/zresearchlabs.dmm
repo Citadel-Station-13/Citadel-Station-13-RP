@@ -1074,8 +1074,7 @@
 /area/awaymission/labs/researchdivision)
 "dH" = (
 /obj/machinery/power/apc/east_mount{
-	name = "Worn-out APC";
-	pixel_x = 24
+	name = "Worn-out APC"
 	},
 /obj/structure/cable{
 	icon_state = "0-2"
@@ -1677,8 +1676,7 @@
 /area/awaymission/labs/gateway)
 "ft" = (
 /obj/machinery/power/apc/east_mount{
-	name = "Worn-out APC";
-	pixel_x = 24
+	name = "Worn-out APC"
 	},
 /obj/structure/cable{
 	icon_state = "0-4"
@@ -1751,8 +1749,7 @@
 	equipment = 0;
 	lighting = 0;
 	locked = 0;
-	name = "Worn-out APC";
-	pixel_x = -24
+	name = "Worn-out APC"
 	},
 /obj/structure/closet/crate/secure/weapon,
 /obj/structure/cable{
@@ -1906,8 +1903,7 @@
 	equipment = 0;
 	lighting = 0;
 	locked = 0;
-	name = "Worn-out APC";
-	pixel_x = -24
+	name = "Worn-out APC"
 	},
 /obj/structure/cable{
 	icon_state = "0-4"
@@ -2015,8 +2011,7 @@
 	equipment = 0;
 	lighting = 0;
 	locked = 0;
-	name = "Worn-out APC";
-	pixel_x = -24
+	name = "Worn-out APC"
 	},
 /obj/structure/cable{
 	icon_state = "0-2"
@@ -2782,8 +2777,7 @@
 "im" = (
 /obj/machinery/power/apc{
 	dir = 0;
-	name = "Worn-out APC";
-	pixel_y = -24
+	name = "Worn-out APC"
 	},
 /obj/structure/cable{
 	icon_state = "0-4"
@@ -3153,8 +3147,7 @@
 	equipment = 0;
 	lighting = 0;
 	locked = 0;
-	name = "Worn-out APC";
-	pixel_x = -24
+	name = "Worn-out APC"
 	},
 /obj/structure/cable{
 	icon_state = "0-4"
@@ -3658,8 +3651,7 @@
 	equipment = 0;
 	lighting = 0;
 	locked = 0;
-	name = "Worn-out APC";
-	pixel_x = -24
+	name = "Worn-out APC"
 	},
 /obj/structure/cable{
 	icon_state = "0-2"
@@ -4092,8 +4084,7 @@
 	dir = 1
 	},
 /obj/machinery/power/apc/east_mount{
-	name = "Worn-out APC";
-	pixel_x = 24
+	name = "Worn-out APC"
 	},
 /obj/structure/cable,
 /obj/machinery/power/terminal{
@@ -4460,8 +4451,7 @@
 "mI" = (
 /obj/machinery/power/apc/north_mount{
 	cell_type = 5000;
-	name = "Virology APC";
-	pixel_y = 24
+	name = "Virology APC"
 	},
 /obj/structure/cable{
 	icon_state = "0-4"
@@ -4951,8 +4941,7 @@
 /area/awaymission/labs/cave)
 "oc" = (
 /obj/machinery/power/apc/east_mount{
-	name = "Worn-out APC";
-	pixel_x = 24
+	name = "Worn-out APC"
 	},
 /obj/structure/cable{
 	icon_state = "0-8"
@@ -5246,8 +5235,7 @@
 "oS" = (
 /obj/machinery/power/apc{
 	dir = 0;
-	name = "Worn-out APC";
-	pixel_y = -24
+	name = "Worn-out APC"
 	},
 /obj/structure/cable{
 	icon_state = "0-8"
@@ -5263,8 +5251,7 @@
 	equipment = 0;
 	lighting = 0;
 	locked = 0;
-	name = "Worn-out APC";
-	pixel_x = -24
+	name = "Worn-out APC"
 	},
 /obj/structure/cable{
 	icon_state = "0-4"
@@ -5409,8 +5396,7 @@
 /area/awaymission/labs/civilian)
 "po" = (
 /obj/machinery/power/apc/east_mount{
-	name = "Worn-out APC";
-	pixel_x = 24
+	name = "Worn-out APC"
 	},
 /obj/structure/cable{
 	icon_state = "0-8"
@@ -5711,8 +5697,7 @@
 /area/awaymission/labs/command)
 "qm" = (
 /obj/machinery/power/apc/east_mount{
-	name = "Worn-out APC";
-	pixel_x = 24
+	name = "Worn-out APC"
 	},
 /obj/structure/cable{
 	icon_state = "0-8"
@@ -5847,8 +5832,7 @@
 /area/awaymission/labs/command)
 "qJ" = (
 /obj/machinery/power/apc/east_mount{
-	name = "Worn-out APC";
-	pixel_x = 24
+	name = "Worn-out APC"
 	},
 /obj/structure/cable{
 	icon_state = "0-8"
@@ -6030,8 +6014,7 @@
 "rk" = (
 /obj/machinery/power/apc{
 	dir = 0;
-	name = "Worn-out APC";
-	pixel_y = -24
+	name = "Worn-out APC"
 	},
 /obj/structure/cable{
 	icon_state = "0-4"
@@ -6378,8 +6361,7 @@
 /area/awaymission/labs/civilian)
 "sq" = (
 /obj/machinery/power/apc/east_mount{
-	name = "Worn-out APC";
-	pixel_x = 24
+	name = "Worn-out APC"
 	},
 /obj/structure/cable{
 	icon_state = "0-8"
@@ -6965,8 +6947,7 @@
 "ug" = (
 /obj/machinery/power/apc/north_mount{
 	cell_type = 5000;
-	name = "Virology APC";
-	pixel_y = 24
+	name = "Virology APC"
 	},
 /obj/structure/cable,
 /turf/simulated/floor{
@@ -7048,8 +7029,7 @@
 /obj/machinery/light,
 /obj/machinery/power/apc{
 	dir = 0;
-	name = "Worn-out APC";
-	pixel_y = -24
+	name = "Worn-out APC"
 	},
 /obj/structure/cable,
 /turf/simulated/floor{

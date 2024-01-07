@@ -555,8 +555,7 @@
 /area/submap/Blackshuttledown)
 "bH" = (
 /obj/machinery/power/apc/west_mount{
-	name = "BSD APC";
-	pixel_x = -24
+	name = "BSD APC"
 	},
 /turf/simulated/floor/tiled/yellow,
 /area/submap/Blackshuttledown)

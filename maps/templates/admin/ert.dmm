@@ -592,8 +592,7 @@
 /obj/machinery/meter,
 /obj/machinery/power/apc/hyper{
 	alarms_hidden = 1;
-	name = "VB APC - South";
-	pixel_y = -24
+	name = "VB APC - South"
 	},
 /obj/structure/cable/yellow,
 /obj/machinery/light/small{
@@ -4317,8 +4316,7 @@
 "GT" = (
 /obj/machinery/power/apc/hyper{
 	alarms_hidden = 1;
-	name = "VB APC - South";
-	pixel_y = -24
+	name = "VB APC - South"
 	},
 /obj/structure/cable/yellow,
 /turf/simulated/floor/tiled/white,
@@ -5807,8 +5805,7 @@
 /obj/item/t_scanner/advanced,
 /obj/machinery/power/apc/hyper{
 	alarms_hidden = 1;
-	name = "VB APC - South";
-	pixel_y = -24
+	name = "VB APC - South"
 	},
 /obj/structure/cable/yellow,
 /turf/simulated/floor/tiled/techfloor,

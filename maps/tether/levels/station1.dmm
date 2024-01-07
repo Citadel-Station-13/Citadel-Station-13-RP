@@ -12790,8 +12790,7 @@
 /area/ai_cyborg_station)
 "Ar" = (
 /obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_x = -30
+	cell_type = /obj/item/cell/super
 	},
 /obj/structure/cable{
 	icon_state = "0-4"
@@ -13165,8 +13164,7 @@
 /area/constructionsite)
 "Bh" = (
 /obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_x = -28
+	cell_type = /obj/item/cell/super
 	},
 /obj/structure/cable/green{
 	icon_state = "0-4"
@@ -20514,8 +20512,7 @@
 "Qj" = (
 /obj/structure/cable/green,
 /obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_x = -28
+	cell_type = /obj/item/cell/super
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5

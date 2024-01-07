@@ -153,8 +153,7 @@
 /area/submap/DoomP)
 "aG" = (
 /obj/machinery/power/apc/north_mount{
-	name = "PAPC";
-	pixel_y = 24
+	name = "PAPC"
 	},
 /obj/structure/cable/green{
 	icon_state = "0-8"

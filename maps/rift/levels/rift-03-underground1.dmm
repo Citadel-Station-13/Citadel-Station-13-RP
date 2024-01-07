@@ -5811,8 +5811,7 @@
 "tm" = (
 /obj/structure/grille,
 /obj/machinery/power/apc/east_mount{
-	alarms_hidden = 1;
-	pixel_x = 24
+	alarms_hidden = 1
 	},
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/underground/under1)
@@ -6262,8 +6261,7 @@
 /area/engineering/atmos)
 "uV" = (
 /obj/machinery/power/apc/north_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_y = 24
+	cell_type = /obj/item/cell/super
 	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1

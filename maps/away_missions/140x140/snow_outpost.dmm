@@ -864,8 +864,7 @@
 /area/awaymission/snow_outpost/powered)
 "dl" = (
 /obj/machinery/power/apc{
-	operating = 0;
-	pixel_x = 31
+	operating = 0
 	},
 /turf/simulated/floor,
 /area/awaymission/snow_outpost/powered)
@@ -1526,8 +1525,7 @@
 /area/awaymission/snow_outpost/outside/nospawn)
 "fo" = (
 /obj/machinery/power/apc/west_mount{
-	name = "BSD APC";
-	pixel_x = -24
+	name = "BSD APC"
 	},
 /turf/simulated/floor/tiled/yellow,
 /area/awaymission/snow_outpost/powered)

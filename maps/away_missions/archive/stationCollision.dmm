@@ -802,8 +802,7 @@
 /obj/structure/cable,
 /obj/machinery/power/apc/west_mount{
 	cell_type = 7500;
-	name = "Research APC";
-	pixel_x = -28
+	name = "Research APC"
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/research)
@@ -1066,8 +1065,7 @@
 "eN" = (
 /obj/machinery/power/apc/east_mount{
 	cell_type = 5000;
-	name = "North Block APC";
-	pixel_x = 28
+	name = "North Block APC"
 	},
 /obj/structure/cable,
 /turf/simulated/floor/airless,
@@ -1598,8 +1596,7 @@
 /obj/item/ammo_casing/a12g/pellet,
 /obj/machinery/power/apc/west_mount{
 	cell_type = 5000;
-	name = "Mid Block APC";
-	pixel_x = -28
+	name = "Mid Block APC"
 	},
 /obj/structure/cable{
 	icon_state = "0-4"
@@ -2028,8 +2025,7 @@
 "ib" = (
 /obj/machinery/power/apc/west_mount{
 	cell_type = 7500;
-	name = "Arrivals Block APC";
-	pixel_x = -28
+	name = "Arrivals Block APC"
 	},
 /obj/structure/cable{
 	icon_state = "0-4"
@@ -2625,8 +2621,7 @@
 /obj/machinery/light/small,
 /obj/machinery/power/apc{
 	cell_type = 5000;
-	name = "South Block APC";
-	pixel_y = -30
+	name = "South Block APC"
 	},
 /obj/structure/cable,
 /turf/simulated/floor,
@@ -3214,8 +3209,7 @@
 /area/awaymission/gateroom)
 "mo" = (
 /obj/machinery/power/apc/east_mount{
-	name = "Gateroom APC";
-	pixel_x = 28
+	name = "Gateroom APC"
 	},
 /obj/structure/cable{
 	icon_state = "0-8"

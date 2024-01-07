@@ -6703,8 +6703,7 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_x = -24
+	cell_type = /obj/item/cell/super
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/tcomfoyer)
@@ -8225,8 +8224,7 @@
 	dir = 4
 	},
 /obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_x = -28
+	cell_type = /obj/item/cell/super
 	},
 /obj/structure/cable/green{
 	icon_state = "0-4"
@@ -10298,8 +10296,7 @@
 	dir = 4
 	},
 /obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_x = -28
+	cell_type = /obj/item/cell/super
 	},
 /obj/structure/cable/green{
 	icon_state = "0-4"
@@ -23278,8 +23275,7 @@
 	dir = 8
 	},
 /obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_x = -30
+	cell_type = /obj/item/cell/super
 	},
 /obj/structure/cable/cyan{
 	icon_state = "0-4"
@@ -28008,8 +28004,7 @@
 	dir = 4
 	},
 /obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_x = -28
+	cell_type = /obj/item/cell/super
 	},
 /obj/structure/cable/green{
 	icon_state = "0-4"

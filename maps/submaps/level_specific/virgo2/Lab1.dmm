@@ -120,8 +120,7 @@
 /obj/machinery/power/apc/west_mount{
 	cell_type = /obj/item/cell/hyper;
 	name = "Unknown APC";
-	operating = 0;
-	pixel_x = -24
+	operating = 0
 	},
 /obj/structure/cable{
 	icon_state = "0-4"

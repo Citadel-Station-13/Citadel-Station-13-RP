@@ -37,8 +37,7 @@
 /area/lavaland/east/ashlander_village)
 "az" = (
 /obj/machinery/power/apc/north_mount{
-	cell_type = /obj/item/cell/infinite;
-	pixel_y = 28
+	cell_type = /obj/item/cell/infinite
 	},
 /turf/simulated/floor/tiled/dark/lavaland,
 /area/lavaland/east/transit)

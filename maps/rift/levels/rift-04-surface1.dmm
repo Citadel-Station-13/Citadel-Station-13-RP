@@ -7084,8 +7084,7 @@
 /area/maintenance/engineering/pumpstation)
 "eDQ" = (
 /obj/machinery/power/apc/east_mount{
-	alarms_hidden = 1;
-	pixel_x = 24
+	alarms_hidden = 1
 	},
 /obj/structure/cable/green{
 	icon_state = "0-8"
@@ -8694,8 +8693,7 @@
 /obj/structure/table/woodentable,
 /obj/machinery/recharger,
 /obj/machinery/power/apc/north_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_y = 24
+	cell_type = /obj/item/cell/super
 	},
 /obj/structure/cable/green{
 	icon_state = "0-2"
@@ -38290,8 +38288,7 @@
 /area/maintenance/evahallway)
 "xQG" = (
 /obj/machinery/power/apc/north_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_y = 24
+	cell_type = /obj/item/cell/super
 	},
 /obj/structure/cable/green{
 	icon_state = "0-8"

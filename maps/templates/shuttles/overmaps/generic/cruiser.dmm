@@ -2410,8 +2410,7 @@
 /area/mothership/vault)
 "fA" = (
 /obj/machinery/power/apc/north_mount{
-	alarms_hidden = 1;
-	pixel_y = 28
+	alarms_hidden = 1
 	},
 /obj/structure/cable/cyan{
 	icon_state = "0-2"
@@ -2904,8 +2903,7 @@
 /area/mothership/treatment)
 "gL" = (
 /obj/machinery/power/apc/north_mount{
-	alarms_hidden = 1;
-	pixel_y = 28
+	alarms_hidden = 1
 	},
 /obj/structure/cable/cyan{
 	icon_state = "0-8"

@@ -5318,8 +5318,7 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_x = -28
+	cell_type = /obj/item/cell/super
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 8
@@ -8970,8 +8969,7 @@
 	icon_state = "0-2"
 	},
 /obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_x = -30
+	cell_type = /obj/item/cell/super
 	},
 /obj/structure/catwalk,
 /obj/random/trash,
@@ -10682,8 +10680,7 @@
 /area/exploration)
 "hoa" = (
 /obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_x = -30
+	cell_type = /obj/item/cell/super
 	},
 /obj/structure/cable{
 	icon_state = "0-4"
@@ -14130,8 +14127,7 @@
 /area/shuttle/excursion/general)
 "jJL" = (
 /obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_x = -28
+	cell_type = /obj/item/cell/super
 	},
 /obj/structure/cable/green{
 	icon_state = "0-4"
@@ -21442,8 +21438,7 @@
 	icon_state = "0-2"
 	},
 /obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_x = -30
+	cell_type = /obj/item/cell/super
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -22154,8 +22149,7 @@
 /area/bridge/office)
 "pqr" = (
 /obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_x = -28
+	cell_type = /obj/item/cell/super
 	},
 /obj/structure/cable/green{
 	icon_state = "0-2"
@@ -22538,8 +22532,7 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_x = -30
+	cell_type = /obj/item/cell/super
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -24902,8 +24895,7 @@
 /area/library/study)
 "roT" = (
 /obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_x = -28
+	cell_type = /obj/item/cell/super
 	},
 /obj/structure/cable/green,
 /turf/simulated/floor/tiled,
@@ -30353,8 +30345,7 @@
 /area/exploration/showers)
 "vjT" = (
 /obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_x = -28
+	cell_type = /obj/item/cell/super
 	},
 /obj/structure/cable/green{
 	icon_state = "0-2"
@@ -31106,8 +31097,7 @@
 "vNY" = (
 /obj/structure/cable/green,
 /obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_x = -30
+	cell_type = /obj/item/cell/super
 	},
 /turf/simulated/floor/wood,
 /area/library)

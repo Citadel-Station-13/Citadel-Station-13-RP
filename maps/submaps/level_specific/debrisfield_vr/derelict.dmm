@@ -83,8 +83,7 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/power/apc/south_mount{
-	alarms_hidden = 1;
-	pixel_y = -24
+	alarms_hidden = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/debrisfield_vr/derelict/bridge)
@@ -668,8 +667,7 @@
 "cs" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/south_mount{
-	alarms_hidden = 1;
-	pixel_y = -24
+	alarms_hidden = 1
 	},
 /turf/simulated/floor/tiled/dark,
 /area/submap/debrisfield_vr/derelict/interior)
@@ -821,8 +819,7 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/power/apc/east_mount{
-	alarms_hidden = 1;
-	pixel_x = 28
+	alarms_hidden = 1
 	},
 /turf/simulated/floor/tiled/dark,
 /area/submap/debrisfield_vr/derelict/ai_access_port)
@@ -846,8 +843,7 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/power/apc/east_mount{
-	alarms_hidden = 1;
-	pixel_x = 28
+	alarms_hidden = 1
 	},
 /turf/simulated/floor/plating,
 /area/submap/debrisfield_vr/derelict/ai_access_starboard)
@@ -900,8 +896,7 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/power/apc/north_mount{
-	alarms_hidden = 1;
-	pixel_y = 24
+	alarms_hidden = 1
 	},
 /turf/simulated/floor/greengrid,
 /area/submap/debrisfield_vr/derelict/ai_chamber)

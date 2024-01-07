@@ -2573,8 +2573,7 @@
 /area/rnd/outpost/xenobiology/outpost_main)
 "bpc" = (
 /obj/machinery/power/apc/north_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_y = 24
+	cell_type = /obj/item/cell/super
 	},
 /obj/structure/cable/green{
 	icon_state = "0-2"
@@ -12345,8 +12344,7 @@
 /obj/item/packageWrap,
 /obj/item/hand_labeler,
 /obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_x = -24
+	cell_type = /obj/item/cell/super
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
@@ -13825,8 +13823,7 @@
 /area/hydroponics)
 "iku" = (
 /obj/machinery/power/apc/north_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_y = 24
+	cell_type = /obj/item/cell/super
 	},
 /obj/structure/cable/green{
 	icon_state = "0-2"
@@ -14060,8 +14057,7 @@
 /area/rnd/research/researchdivision)
 "iqT" = (
 /obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_x = -30
+	cell_type = /obj/item/cell/super
 	},
 /obj/structure/cable/green{
 	icon_state = "0-2"
@@ -16473,8 +16469,7 @@
 	},
 /obj/landmark/spawnpoint/job/librarian,
 /obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_x = -30
+	cell_type = /obj/item/cell/super
 	},
 /obj/structure/cable/green{
 	icon_state = "0-4"
@@ -19837,8 +19832,7 @@
 /area/rnd/outpost/xenobiology/outpost_stairs)
 "lUN" = (
 /obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_x = -30
+	cell_type = /obj/item/cell/super
 	},
 /obj/structure/cable/green,
 /turf/simulated/floor/wood,
@@ -25516,8 +25510,7 @@
 /area/rnd/robotics)
 "pbg" = (
 /obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_x = -28
+	cell_type = /obj/item/cell/super
 	},
 /obj/structure/cable/orange{
 	icon_state = "0-4"
@@ -26135,8 +26128,7 @@
 	dir = 4
 	},
 /obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_x = -30
+	cell_type = /obj/item/cell/super
 	},
 /obj/structure/cable/green{
 	icon_state = "0-2"
@@ -27652,8 +27644,7 @@
 /area/rnd/outpost/xenobiology/outpost_hallway)
 "qix" = (
 /obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_x = -30
+	cell_type = /obj/item/cell/super
 	},
 /obj/structure/cable/green{
 	icon_state = "0-4"
@@ -36348,8 +36339,7 @@
 /area/library)
 "vmd" = (
 /obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_x = -30
+	cell_type = /obj/item/cell/super
 	},
 /obj/structure/cable/green{
 	icon_state = "0-4"
@@ -37925,8 +37915,7 @@
 /area/crew_quarters/bar)
 "wdG" = (
 /obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_x = -30
+	cell_type = /obj/item/cell/super
 	},
 /obj/structure/cable{
 	icon_state = "0-4"

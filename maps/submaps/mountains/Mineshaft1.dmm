@@ -121,8 +121,7 @@
 /area/submap/cave/AMine1)
 "y" = (
 /obj/machinery/power/apc{
-	operating = 0;
-	pixel_x = 31
+	operating = 0
 	},
 /turf/simulated/floor,
 /area/submap/cave/AMine1)

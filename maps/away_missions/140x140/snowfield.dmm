@@ -112,8 +112,7 @@
 /obj/machinery/power/apc/west_mount{
 	alarms_hidden = 1;
 	name = "west bump-derelict";
-	operating = 0;
-	pixel_x = -24
+	operating = 0
 	},
 /obj/structure/cable{
 	icon_state = "0-4"

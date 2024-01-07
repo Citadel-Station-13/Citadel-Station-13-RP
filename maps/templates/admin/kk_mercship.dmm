@@ -3431,8 +3431,7 @@
 "rl" = (
 /obj/machinery/power/apc/hyper{
 	alarms_hidden = 1;
-	name = "Merc APC - South";
-	pixel_y = -24
+	name = "Merc APC - South"
 	},
 /obj/effect/floor_decal/techfloor,
 /obj/structure/cable/orange{
@@ -4218,8 +4217,7 @@
 "vw" = (
 /obj/machinery/power/apc/hyper{
 	alarms_hidden = 1;
-	name = "Merc APC - South";
-	pixel_y = -24
+	name = "Merc APC - South"
 	},
 /obj/structure/cable/orange,
 /obj/machinery/light/small{
@@ -5695,8 +5693,7 @@
 "Cn" = (
 /obj/machinery/power/apc/hyper{
 	alarms_hidden = 1;
-	name = "Merc APC - South";
-	pixel_y = -24
+	name = "Merc APC - South"
 	},
 /obj/structure/cable/orange,
 /obj/machinery/light/small{
@@ -6375,8 +6372,7 @@
 	},
 /obj/machinery/power/apc/hyper{
 	alarms_hidden = 1;
-	name = "Merc APC - South";
-	pixel_y = -24
+	name = "Merc APC - South"
 	},
 /obj/structure/cable/orange{
 	icon_state = "0-8"
@@ -6647,8 +6643,7 @@
 /obj/effect/floor_decal/techfloor,
 /obj/machinery/power/apc/hyper{
 	alarms_hidden = 1;
-	name = "Merc APC - South";
-	pixel_y = -24
+	name = "Merc APC - South"
 	},
 /obj/structure/cable/orange,
 /turf/simulated/floor/tiled/techfloor,
@@ -7419,8 +7414,7 @@
 /obj/effect/floor_decal/techfloor,
 /obj/machinery/power/apc/hyper{
 	alarms_hidden = 1;
-	name = "Merc APC - South";
-	pixel_y = -24
+	name = "Merc APC - South"
 	},
 /obj/structure/cable/orange{
 	icon_state = "0-4"
@@ -9485,8 +9479,7 @@
 "Ww" = (
 /obj/machinery/power/apc/hyper{
 	alarms_hidden = 1;
-	name = "Merc APC - South";
-	pixel_y = -24
+	name = "Merc APC - South"
 	},
 /obj/structure/cable/orange,
 /turf/simulated/floor/wood,

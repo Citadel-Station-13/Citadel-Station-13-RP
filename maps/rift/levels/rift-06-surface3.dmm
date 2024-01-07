@@ -2405,8 +2405,7 @@
 /area/shuttle/excursion/cockpit)
 "ahF" = (
 /obj/machinery/power/apc/east_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_x = 24
+	cell_type = /obj/item/cell/super
 	},
 /obj/structure/cable/green{
 	icon_state = "2-8"
@@ -8383,8 +8382,7 @@
 	},
 /obj/structure/table/reinforced,
 /obj/machinery/power/apc/north_mount{
-	cell_type = /obj/item/cell/super;
-	pixel_y = 24
+	cell_type = /obj/item/cell/super
 	},
 /obj/structure/cable/green{
 	icon_state = "0-2"

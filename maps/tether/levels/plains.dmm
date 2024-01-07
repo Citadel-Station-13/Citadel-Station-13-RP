@@ -109,8 +109,7 @@
 "G" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/power/apc/east_mount{
-	alarms_hidden = 1;
-	pixel_x = 24
+	alarms_hidden = 1
 	},
 /obj/structure/cable/green{
 	icon_state = "0-2"
