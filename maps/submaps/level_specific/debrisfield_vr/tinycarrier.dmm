@@ -1020,7 +1020,7 @@
 /area/submap/debrisfield_vr/tinyshuttle/engine)
 "bS" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/fuel,
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -24
 	},
@@ -1042,7 +1042,7 @@
 /turf/simulated/shuttle/plating/airless/carry,
 /area/submap/debrisfield_vr/tinyshuttle/engine)
 "bV" = (
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 24
 	},

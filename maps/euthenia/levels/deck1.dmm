@@ -7871,7 +7871,7 @@
 /obj/effect/floor_decal/corner/pink/border{
 	dir = 10
 	},
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 8;
 	pixel_x = -24
 	},
@@ -8508,7 +8508,7 @@
 /area/security/warden)
 "jAs" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 1;
 	pixel_y = -24
 	},
@@ -9003,7 +9003,7 @@
 /obj/machinery/recharger/wallcharger{
 	pixel_x = -22
 	},
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 1;
 	pixel_y = -25
 	},
@@ -10818,7 +10818,7 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/chemistry)
 "mnb" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 1;
 	pixel_y = -24
 	},
@@ -13934,7 +13934,7 @@
 /obj/structure/table/reinforced,
 /obj/item/book/manual/legal/sop_vol2,
 /obj/item/book/manual/legal/sop_vol1,
-/obj/machinery/firealarm/south{
+/obj/machinery/fire_alarm/south{
 	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
@@ -15283,7 +15283,7 @@
 	},
 /obj/item/storage/firstaid/adv,
 /obj/structure/table/steel_reinforced,
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 4;
 	pixel_x = 24
 	},
@@ -16171,7 +16171,7 @@
 /obj/machinery/computer/secure_data{
 	dir = 4
 	},
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 8;
 	pixel_x = -26
 	},
@@ -18164,7 +18164,7 @@
 /area/main_map/maintenance/deck_one/port)
 "uQj" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 1;
 	pixel_y = -24
 	},
@@ -18333,7 +18333,7 @@
 /area/crew_quarters/bar_backroom)
 "vbU" = (
 /obj/structure/closet/secure_closet/security,
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 8;
 	pixel_x = -26
 	},
@@ -19034,7 +19034,7 @@
 /obj/effect/floor_decal/corner/red{
 	dir = 6
 	},
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 1;
 	pixel_y = -24
 	},
@@ -19415,7 +19415,7 @@
 /obj/effect/floor_decal/corner/blue{
 	dir = 6
 	},
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 4;
 	layer = 3.3;
 	pixel_x = 26
@@ -20551,7 +20551,7 @@
 /obj/effect/floor_decal/corner/pink/border{
 	dir = 6
 	},
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 4;
 	pixel_x = 24
 	},
@@ -20852,7 +20852,7 @@
 /turf/simulated/floor/tiled/red,
 /area/tether/surfacebase/security/hallway)
 "xMN" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 1;
 	pixel_y = -24
 	},
@@ -21029,7 +21029,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/firealarm/south{
+/obj/machinery/fire_alarm/south{
 	pixel_y = 24
 	},
 /obj/machinery/disposal,
