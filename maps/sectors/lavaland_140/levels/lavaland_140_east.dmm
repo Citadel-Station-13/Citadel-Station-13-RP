@@ -36,9 +36,8 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/ashlander_village)
 "az" = (
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/north_mount{
 	cell_type = /obj/item/cell/infinite;
-	dir = 1;
 	name = "north bump";
 	pixel_y = 28
 	},
@@ -2528,11 +2527,10 @@
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/ashlander_village)
 "YY" = (
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/west_mount{
 	cell_type = /obj/item/cell/high/empty;
 	chargelevel = 0;
 	chargemode = 0;
-	dir = 8;
 	name = "west bump";
 	pixel_x = -28;
 	start_charge = 0

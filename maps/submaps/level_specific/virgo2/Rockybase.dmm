@@ -651,9 +651,8 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/west_mount{
 	cell_type = /obj/item/cell/super;
-	dir = 8;
 	name = "Unknown APC";
 	pixel_x = -24
 	},

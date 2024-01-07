@@ -164,9 +164,8 @@
 /turf/simulated/floor/plating,
 /area/maintenance/tether_midpoint)
 "sx" = (
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/west_mount{
 	cell_type = /obj/item/cell/super;
-	dir = 8;
 	name = "west bump";
 	pixel_x = -24
 	},

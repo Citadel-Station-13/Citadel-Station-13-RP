@@ -5796,9 +5796,8 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_one_hall)
 "cZI" = (
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/west_mount{
 	cell_type = /obj/item/cell/super;
-	dir = 8;
 	name = "west bump";
 	pixel_x = -28
 	},
@@ -10659,9 +10658,8 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/west_mount{
 	cell_type = /obj/item/cell/super;
-	dir = 8;
 	name = "west bump";
 	pixel_x = -28
 	},
@@ -17789,9 +17787,8 @@
 "jrU" = (
 /obj/machinery/portable_atmospherics/canister/nitrogen,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/west_mount{
 	cell_type = /obj/item/cell/super;
-	dir = 8;
 	name = "west bump";
 	pixel_x = -24
 	},
@@ -20716,9 +20713,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/west_mount{
 	cell_type = /obj/item/cell/super;
-	dir = 8;
 	name = "west bump";
 	pixel_x = -24
 	},
@@ -22263,9 +22259,8 @@
 /area/tether/surfacebase/security/brig)
 "lRY" = (
 /obj/effect/floor_decal/industrial/warning/dust,
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/west_mount{
 	cell_type = /obj/item/cell/super;
-	dir = 8;
 	name = "west bump";
 	pixel_x = -30
 	},
@@ -24260,9 +24255,8 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/west_mount{
 	cell_type = /obj/item/cell/super;
-	dir = 8;
 	name = "west bump";
 	pixel_x = -28
 	},
@@ -35211,9 +35205,8 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/west_mount{
 	cell_type = /obj/item/cell/super;
-	dir = 8;
 	name = "west bump";
 	pixel_x = -24
 	},
@@ -36511,9 +36504,8 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/west_mount{
 	cell_type = /obj/item/cell/super;
-	dir = 8;
 	name = "west bump";
 	pixel_x = -30
 	},
@@ -43668,9 +43660,8 @@
 /obj/effect/floor_decal/corner/brown/bordercorner2{
 	dir = 10
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/north_mount{
 	cell_type = /obj/item/cell/super;
-	dir = 1;
 	name = "north bump";
 	pixel_y = 24
 	},

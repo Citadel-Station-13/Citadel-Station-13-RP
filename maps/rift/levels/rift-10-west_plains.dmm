@@ -391,9 +391,8 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/west_mount{
 	cell_type = /obj/item/cell/super;
-	dir = 8;
 	name = "west bump";
 	pixel_x = -28
 	},
@@ -4755,9 +4754,8 @@
 /turf/simulated/floor/lythios43c,
 /area/rift/facility/interior/surface)
 "vL" = (
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/west_mount{
 	cell_type = /obj/item/cell/super;
-	dir = 8;
 	name = "west bump";
 	pixel_x = -28
 	},
@@ -6709,9 +6707,8 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/west_mount{
 	cell_type = /obj/item/cell/super;
-	dir = 8;
 	name = "west bump";
 	pixel_x = -28
 	},

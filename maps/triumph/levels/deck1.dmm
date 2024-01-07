@@ -3151,9 +3151,8 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/storage)
 "ks" = (
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/west_mount{
 	cell_type = /obj/item/cell/super;
-	dir = 8;
 	name = "west bump";
 	pixel_x = -30
 	},
@@ -3521,9 +3520,8 @@
 /area/storage/tech)
 "lP" = (
 /obj/structure/cable/green,
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/west_mount{
 	cell_type = /obj/item/cell/super;
-	dir = 8;
 	name = "west bump";
 	pixel_x = -30
 	},
@@ -3564,9 +3562,8 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/engi_engine)
 "lT" = (
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/north_mount{
 	cell_type = /obj/item/cell/super;
-	dir = 1;
 	name = "north bump";
 	pixel_y = 24
 	},
@@ -4265,9 +4262,8 @@
 /turf/simulated/floor/tiled,
 /area/engineering/break_room)
 "oE" = (
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/west_mount{
 	cell_type = /obj/item/cell/super;
-	dir = 8;
 	name = "west bump";
 	pixel_x = -30
 	},
@@ -5113,9 +5109,8 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/north_mount{
 	cell_type = /obj/item/cell/super;
-	dir = 1;
 	name = "north bump";
 	pixel_y = 24
 	},
@@ -6935,9 +6930,8 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/portnacelle)
 "xj" = (
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/north_mount{
 	cell_type = /obj/item/cell/super;
-	dir = 1;
 	name = "north bump";
 	pixel_y = 24
 	},
@@ -8043,9 +8037,8 @@
 /obj/machinery/air_alarm{
 	pixel_y = 22
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/west_mount{
 	cell_type = /obj/item/cell/super;
-	dir = 8;
 	name = "west bump";
 	pixel_x = -30
 	},
@@ -11835,9 +11828,8 @@
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 6
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/north_mount{
 	cell_type = /obj/item/cell/super;
-	dir = 1;
 	name = "north bump";
 	pixel_y = 24
 	},
@@ -12260,9 +12252,8 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/west_mount{
 	cell_type = /obj/item/cell/super;
-	dir = 8;
 	name = "west bump";
 	pixel_x = -30
 	},
@@ -12480,9 +12471,8 @@
 /turf/space,
 /area/space)
 "Qh" = (
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/north_mount{
 	cell_type = /obj/item/cell/super;
-	dir = 1;
 	name = "north bump";
 	pixel_y = 24
 	},
@@ -13092,9 +13082,8 @@
 	},
 /area/tcommsat/chamber)
 "Sj" = (
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/east_mount{
 	cell_type = /obj/item/cell/super;
-	dir = 4;
 	name = "east bump";
 	pixel_x = 24
 	},
@@ -14229,9 +14218,8 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/west_mount{
 	cell_type = /obj/item/cell/super;
-	dir = 8;
 	name = "west bump";
 	pixel_x = -30
 	},
@@ -14359,9 +14347,8 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/north_mount{
 	cell_type = /obj/item/cell/super;
-	dir = 1;
 	name = "north bump";
 	pixel_y = 28
 	},

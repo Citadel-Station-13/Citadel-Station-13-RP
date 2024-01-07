@@ -5335,9 +5335,8 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/west_mount{
 	cell_type = /obj/item/cell/super;
-	dir = 8;
 	name = "west bump";
 	pixel_x = -28
 	},
@@ -9007,9 +9006,8 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/west_mount{
 	cell_type = /obj/item/cell/super;
-	dir = 8;
 	name = "west bump";
 	pixel_x = -30
 	},
@@ -10730,9 +10728,8 @@
 /turf/simulated/floor/tiled,
 /area/exploration)
 "hoa" = (
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/west_mount{
 	cell_type = /obj/item/cell/super;
-	dir = 8;
 	name = "west bump";
 	pixel_x = -30
 	},
@@ -14192,9 +14189,8 @@
 /turf/simulated/shuttle/wall/voidcraft/blue,
 /area/shuttle/excursion/general)
 "jJL" = (
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/west_mount{
 	cell_type = /obj/item/cell/super;
-	dir = 8;
 	name = "west bump";
 	pixel_x = -28
 	},
@@ -21548,9 +21544,8 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/west_mount{
 	cell_type = /obj/item/cell/super;
-	dir = 8;
 	name = "west bump";
 	pixel_x = -30
 	},
@@ -22265,9 +22260,8 @@
 /turf/simulated/floor/carpet,
 /area/bridge/office)
 "pqr" = (
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/west_mount{
 	cell_type = /obj/item/cell/super;
-	dir = 8;
 	name = "west bump";
 	pixel_x = -28
 	},
@@ -22657,9 +22651,8 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/west_mount{
 	cell_type = /obj/item/cell/super;
-	dir = 8;
 	name = "west bump";
 	pixel_x = -30
 	},
@@ -25026,9 +25019,8 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/library/study)
 "roT" = (
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/west_mount{
 	cell_type = /obj/item/cell/super;
-	dir = 8;
 	name = "west bump";
 	pixel_x = -28
 	},
@@ -30497,9 +30489,8 @@
 /turf/simulated/floor/tiled,
 /area/exploration/showers)
 "vjT" = (
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/west_mount{
 	cell_type = /obj/item/cell/super;
-	dir = 8;
 	name = "west bump";
 	pixel_x = -28
 	},
@@ -31261,9 +31252,8 @@
 /area/maintenance/substation/exploration)
 "vNY" = (
 /obj/structure/cable/green,
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/west_mount{
 	cell_type = /obj/item/cell/super;
-	dir = 8;
 	name = "west bump";
 	pixel_x = -30
 	},

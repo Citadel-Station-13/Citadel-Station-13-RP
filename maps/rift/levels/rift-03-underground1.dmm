@@ -6280,9 +6280,8 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "uV" = (
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/north_mount{
 	cell_type = /obj/item/cell/super;
-	dir = 1;
 	name = "north bump";
 	pixel_y = 24
 	},

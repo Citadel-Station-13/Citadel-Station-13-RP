@@ -5568,9 +5568,8 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/port)
 "eNW" = (
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/west_mount{
 	cell_type = /obj/item/cell/super;
-	dir = 8;
 	name = "west bump";
 	pixel_x = -30
 	},
@@ -17725,9 +17724,8 @@
 /area/medical/surgeryprep)
 "oMP" = (
 /obj/machinery/atmospherics/portables_connector,
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/west_mount{
 	cell_type = /obj/item/cell/super;
-	dir = 8;
 	name = "west bump";
 	pixel_x = -30
 	},
@@ -24226,9 +24224,8 @@
 	icon_state = "1-4"
 	},
 /obj/structure/cable/green,
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/west_mount{
 	cell_type = /obj/item/cell/super;
-	dir = 8;
 	name = "west bump";
 	pixel_x = -30
 	},

@@ -223,9 +223,8 @@
 "aK" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/radio,
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/east_mount{
 	cell_type = /obj/item/cell/hyper;
-	dir = 4;
 	environ = 1;
 	equipment = 1;
 	lighting = 1;

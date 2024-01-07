@@ -2416,9 +2416,8 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/cockpit)
 "ahF" = (
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/east_mount{
 	cell_type = /obj/item/cell/super;
-	dir = 4;
 	name = "east bump";
 	pixel_x = 24
 	},
@@ -8423,9 +8422,8 @@
 	pixel_x = 32
 	},
 /obj/structure/table/reinforced,
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/north_mount{
 	cell_type = /obj/item/cell/super;
-	dir = 1;
 	name = "north bump";
 	pixel_y = 24
 	},
