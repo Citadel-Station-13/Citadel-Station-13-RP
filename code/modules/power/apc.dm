@@ -261,8 +261,8 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 28)
 
 	base_pixel_x = 0
 	base_pixel_y = 0
-	var/turf/T = get_step(get_turf(src), dir)
-	if(istype(T) && T.density)
+	var/turf/T = get_step(src, turn(dir, 180))
+	if(T.get_wallmount_anchor())
 		switch(dir)
 			if(SOUTH)
 				base_pixel_y = -28
