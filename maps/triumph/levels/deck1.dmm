@@ -1772,10 +1772,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/storage)
 "fQ" = (
@@ -2118,10 +2115,7 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
 "gR" = (
@@ -9615,10 +9609,7 @@
 /obj/item/hardsuit/ce/equipped{
 	req_access = list(56)
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/chief)
 "Gy" = (
@@ -13648,10 +13639,7 @@
 /turf/space,
 /area/space)
 "Ua" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "Ub" = (
@@ -14899,10 +14887,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/tiled/white,
 /area/engineering/foyer_mezzenine)
 "Yh" = (
@@ -15540,10 +15525,7 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/engineering/hallway/lower)
 "ZY" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
 	},

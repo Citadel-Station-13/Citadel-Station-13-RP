@@ -676,10 +676,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /obj/structure/sign/directions/medical{
 	dir = 1;
 	pixel_x = -32;
@@ -3286,10 +3283,7 @@
 /obj/machinery/camera/network/civilian{
 	dir = 4
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
 "jx" = (
@@ -3472,10 +3466,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled,
 /area/rnd/secure_storage/upper)
@@ -4290,10 +4281,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled,
 /area/rnd/secure_storage/upper)
@@ -4567,10 +4555,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/underone)
 "ok" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/tiled/kafel_full/blue,
 /area/crew_quarters/pool)
 "ol" = (
@@ -5401,10 +5386,7 @@
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/underground/under1)
 "rw" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "rx" = (
@@ -6719,10 +6701,7 @@
 /turf/simulated/floor/plating,
 /area/rift/surfacebase/underground/under1)
 "ws" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/concrete/rng/indoors,
 /area/rift/station/fighter_bay/transport_tunnel_garage)
 "wt" = (
@@ -13744,10 +13723,7 @@
 /obj/machinery/light/spot{
 	dir = 8
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /obj/machinery/computer/general_air_control/large_tank_control{
 	dir = 4;
 	input_tag = "o2_in";

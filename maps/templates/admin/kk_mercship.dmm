@@ -279,10 +279,7 @@
 	name = "Syndicate-Spawn"
 	},
 /obj/item/bedsheet/hos,
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 8;
-	pixel_x = -26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/east,
 /turf/simulated/floor/wood,
 /area/ship/manta/barracks/bed_2)
 "bm" = (
@@ -2333,10 +2330,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 8;
-	pixel_x = -26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/east,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_st)
 "lA" = (
@@ -2592,10 +2586,7 @@
 /turf/simulated/floor/plating,
 /area/ship/manta/engine)
 "mN" = (
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 8;
-	pixel_x = -26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/east,
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 4
 	},
@@ -4926,10 +4917,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 8;
-	pixel_x = -26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/east,
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
@@ -8813,10 +8801,7 @@
 	name = "Syndicate-Spawn"
 	},
 /obj/item/bedsheet/hos,
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 8;
-	pixel_x = -26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/east,
 /turf/simulated/floor/wood,
 /area/ship/manta/barracks/bed_1)
 "SX" = (

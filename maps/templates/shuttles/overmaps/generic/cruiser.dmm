@@ -1899,10 +1899,7 @@
 "er" = (
 /obj/item/bedsheet/captaindouble,
 /obj/structure/bed/double/padded,
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /obj/machinery/button/remote/airlock{
 	id = "ship-dorm1-door";
 	name = "Dorm 1 Lock";
@@ -2473,10 +2470,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
 "fC" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
@@ -3349,10 +3343,7 @@
 "hH" = (
 /obj/item/bedsheet/captaindouble,
 /obj/structure/bed/double/padded,
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /obj/machinery/button/remote/airlock{
 	id = "ship-dorm3-door";
 	name = "Dorm 3 Lock";
@@ -4830,10 +4821,7 @@
 "kU" = (
 /obj/item/bedsheet/captaindouble,
 /obj/structure/bed/double/padded,
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /obj/machinery/button/remote/airlock{
 	id = "ship-dorm5-door";
 	name = "Dorm 5 Lock";
@@ -8415,10 +8403,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
 "tA" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
 "tG" = (
@@ -9140,10 +9125,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
 "RS" = (
@@ -9254,10 +9236,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
 "Tg" = (

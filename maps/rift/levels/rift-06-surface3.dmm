@@ -2755,10 +2755,7 @@
 /obj/item/folder/blue,
 /obj/item/clothing/glasses/omnihud,
 /obj/item/pen,
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/carpet/blue,
 /area/crew_quarters/heads/hop)
 "aiE" = (
@@ -3614,10 +3611,7 @@
 /obj/effect/floor_decal/corner/grey{
 	dir = 10
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
 "akC" = (
@@ -6278,10 +6272,7 @@
 /turf/simulated/floor/grass,
 /area/hydroponics)
 "arK" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
 "arL" = (
@@ -6784,10 +6775,7 @@
 /obj/effect/floor_decal/corner/grey{
 	dir = 10
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
 "atk" = (
@@ -12776,10 +12764,7 @@
 /obj/effect/floor_decal/corner/lime/bordercorner2{
 	dir = 8
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /obj/structure/disposalpipe/trunk{
 	dir = 1
 	},
@@ -13601,10 +13586,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -17879,10 +17861,7 @@
 /obj/effect/floor_decal/corner/beige/bordercorner2{
 	dir = 10
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/tiled/steel,
 /area/exploration/excursion_dock)
 "aXW" = (
@@ -19801,10 +19780,7 @@
 /obj/effect/floor_decal/borderfloorblack/corner2{
 	dir = 8
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -28
-	},
+/obj/machinery/fire_alarm/east,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -25399,10 +25375,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals9,
 /obj/effect/floor_decal/industrial/outline,
 /obj/machinery/portable_atmospherics/canister/oxygen,
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/tiled,
 /area/exploration/explorer_prep)
 "uCG" = (

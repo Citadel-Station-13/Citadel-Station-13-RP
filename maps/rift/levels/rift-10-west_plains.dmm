@@ -511,10 +511,7 @@
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 8
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -26
-	},
+/obj/machinery/fire_alarm/east,
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 5
 	},
@@ -5348,10 +5345,7 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
 "yg" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -26
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rnd/outpost/storage)
 "yh" = (

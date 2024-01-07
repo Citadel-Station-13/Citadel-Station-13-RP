@@ -2049,10 +2049,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
 "bbY" = (
@@ -3531,10 +3528,7 @@
 /turf/simulated/wall/prepainted,
 /area/tether/surfacebase/lowernortheva/external)
 "bSA" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/gas_storage)
 "bSD" = (
@@ -3736,10 +3730,7 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 8
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -26
-	},
+/obj/machinery/fire_alarm/east,
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 5
 	},
@@ -6030,10 +6021,7 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/showers)
 "die" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},
@@ -10556,10 +10544,7 @@
 /obj/structure/dispenser{
 	phorontanks = 0
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 6
 	},
@@ -18283,10 +18268,7 @@
 /area/rnd/external)
 "jGl" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/medical/mentalhealth)
 "jGy" = (
@@ -19220,10 +19202,7 @@
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 8
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -26
-	},
+/obj/machinery/fire_alarm/east,
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 5
 	},
@@ -19881,10 +19860,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/first_aid_west)
 "kBO" = (
@@ -20086,10 +20062,7 @@
 	pixel_x = 4;
 	pixel_y = -28
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
@@ -23380,10 +23353,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/cargostore)
 "muZ" = (
@@ -25930,10 +25900,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/cargostore)
 "nMi" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /obj/machinery/camera/network/civilian{
 	dir = 1
 	},
@@ -31522,10 +31489,7 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
 "qQj" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 8
 	},
@@ -32866,10 +32830,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
 "rEm" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/processing)
 "rEv" = (
@@ -34693,10 +34654,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plating,
@@ -37501,10 +37459,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_one_hall)
 "ucc" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/wall/prepainted,
 /area/maintenance/substation/surfaceservicesubstation)
 "ucg" = (
@@ -42742,10 +42697,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining_eva)
 "wRB" = (
@@ -44721,10 +44673,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/outpost/testing_lab)
 "xYZ" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -26
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rnd/outpost/storage)
 "xZj" = (

@@ -6987,10 +6987,7 @@
 /obj/item/hardsuit/ce/equipped{
 	req_access = list(56)
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/chief)
 "htN" = (
@@ -14386,10 +14383,7 @@
 /turf/simulated/floor/tiled,
 /area/medical/medbay_primary_storage)
 "pet" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/wood,
 /area/tether/exploration/pilot_office)
 "pfh" = (

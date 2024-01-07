@@ -593,10 +593,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/shuttle/gecko_cr_wreck)
 "lV" = (
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = -27
-	},
+/obj/machinery/fire_alarm/west,
 /obj/structure/closet/crate{
 	dir = 1
 	},

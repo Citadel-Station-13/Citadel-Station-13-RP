@@ -6078,10 +6078,7 @@
 /turf/simulated/floor/tiled/white,
 /area/shuttle/medivac/general)
 "ml" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -26
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/tiled,
 /area/hallway/station/docks)
 "mm" = (
@@ -9692,10 +9689,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/docks)
 "tH" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -26
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/wood,
 /area/bridge/meeting_room)
 "tI" = (
@@ -11228,10 +11222,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/exploration)
 "xa" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/shield_gen)
 "xb" = (
@@ -11667,10 +11658,7 @@
 /obj/effect/floor_decal/corner/yellow/border{
 	dir = 8
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -16290,10 +16278,7 @@
 	dir = 8
 	},
 /obj/structure/bed/chair/office/light,
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/tiled,
 /area/tether/exploration/staircase)
 "GZ" = (
@@ -19090,10 +19075,7 @@
 /turf/simulated/floor/tiled,
 /area/security/checkpoint/science)
 "MJ" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor,
 /area/constructionsite)
 "MK" = (
@@ -23702,10 +23684,7 @@
 /turf/simulated/floor,
 /area/engineering/engine_gas)
 "VY" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},
@@ -24827,10 +24806,7 @@
 /obj/effect/floor_decal/corner/yellow/border{
 	dir = 8
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/tiled,
 /area/engineering/gravity_lobby)
 "Yk" = (

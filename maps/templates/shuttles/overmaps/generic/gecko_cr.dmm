@@ -578,10 +578,7 @@
 /turf/simulated/floor/reinforced,
 /area/shuttle/gecko_cr)
 "lV" = (
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = -27
-	},
+/obj/machinery/fire_alarm/west,
 /obj/structure/closet/crate{
 	dir = 1
 	},
@@ -2104,10 +2101,7 @@
 /area/shuttle/gecko_cr_engineering)
 "NM" = (
 /obj/structure/handrail,
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = -27
-	},
+/obj/machinery/fire_alarm/west,
 /turf/simulated/floor/plating,
 /area/shuttle/gecko_cr_engineering)
 "NN" = (

@@ -1,10 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
 /obj/item/material/shard/shrapnel,
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 4;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/alarms_hidden/west,
 /turf/simulated/floor/airless,
 /area/tether_away/debrisfield_vr/shuttle_buffer)
 "b" = (

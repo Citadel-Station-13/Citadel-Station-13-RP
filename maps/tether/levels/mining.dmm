@@ -1749,10 +1749,7 @@
 /obj/effect/floor_decal/corner/brown/bordercorner2{
 	dir = 8
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -26
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/break_room)
 "Uz" = (

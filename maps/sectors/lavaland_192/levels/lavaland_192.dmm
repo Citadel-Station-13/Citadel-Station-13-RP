@@ -1193,10 +1193,7 @@
 "vz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -26
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "vA" = (
@@ -1211,10 +1208,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -26
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/wood,
 /area/lavaland/central/base/common)
 "vK" = (
@@ -1259,10 +1253,7 @@
 /area/lavaland/central/base/common)
 "wE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -26
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "wN" = (
@@ -1341,10 +1332,7 @@
 	pixel_y = -23;
 	req_one_access = list(48)
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -26
-	},
+/obj/machinery/fire_alarm/east,
 /obj/structure/ore_box,
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)

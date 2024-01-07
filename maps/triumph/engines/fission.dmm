@@ -337,10 +337,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -26
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/engine_room)
 "qX" = (
@@ -398,10 +395,7 @@
 /obj/structure/closet/radiation,
 /obj/item/clothing/glasses/meson,
 /obj/item/clothing/glasses/meson,
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -26
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/engine_room)
 "vw" = (

@@ -5776,10 +5776,7 @@
 /obj/effect/floor_decal/corner/yellow/border{
 	dir = 8
 	},
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 8;
-	pixel_x = -26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/east,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/engineeringequipment)
 "mN" = (
@@ -6340,10 +6337,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 8
 	},
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 8;
-	pixel_x = -26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/east,
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medicalmain)
 "nT" = (
@@ -7007,10 +7001,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 8
 	},
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 8;
-	pixel_x = -26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/east,
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medicaleq)
 "pj" = (
@@ -8971,10 +8962,7 @@
 	},
 /obj/structure/table/reinforced,
 /obj/item/storage/firstaid/surgery,
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 8;
-	pixel_x = -26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/east,
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medicalsur)
 "tJ" = (

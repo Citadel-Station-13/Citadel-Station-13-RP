@@ -1055,10 +1055,7 @@
 "mw" = (
 /obj/item/bedsheet,
 /obj/structure/bed/padded,
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/alarms_hidden/east,
 /obj/landmark/spawnpoint/job/talon_guard,
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/sec_room)
@@ -2821,10 +2818,7 @@
 "Gy" = (
 /obj/item/bedsheet,
 /obj/structure/bed/padded,
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/alarms_hidden/east,
 /obj/landmark/spawnpoint/job/talon_pilot,
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/pilot_room)

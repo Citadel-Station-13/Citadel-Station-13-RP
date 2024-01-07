@@ -2106,10 +2106,7 @@
 	name = "Talon Starboard SMES Connection";
 	name_tag = "TLN-SBD-SMES"
 	},
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/alarms_hidden/east,
 /turf/simulated/floor/tiled/eris/dark/cyancorner,
 /area/talon/deckone/starboard_solar)
 "sk" = (
@@ -2890,10 +2887,7 @@
 /turf/space,
 /area/space)
 "yl" = (
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 8;
-	pixel_x = -29
-	},
+/obj/machinery/fire_alarm/alarms_hidden/east,
 /obj/machinery/atmospherics/portables_connector{
 	dir = 4;
 	name = "Air Input"
@@ -5590,10 +5584,7 @@
 /turf/simulated/floor/tiled/eris/dark/brown_perforated,
 /area/talon/deckone/port_engine)
 "Up" = (
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/alarms_hidden/east,
 /turf/simulated/floor/tiled/eris/dark/cyancorner,
 /area/talon/deckone/bridge)
 "Uq" = (

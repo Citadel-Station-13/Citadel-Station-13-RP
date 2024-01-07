@@ -705,10 +705,7 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 4
 	},
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 4;
-	pixel_x = -26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/west,
 /obj/structure/railing/grey,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/mackerel_hc_skel)

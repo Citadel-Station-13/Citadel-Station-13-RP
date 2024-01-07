@@ -245,10 +245,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 8;
-	pixel_x = -26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/east,
 /turf/simulated/floor/carpet/bcarpet,
 /area/shuttle/curabitur/curashuttle/cockpit)
 "aF" = (

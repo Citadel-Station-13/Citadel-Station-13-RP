@@ -1238,10 +1238,7 @@
 "es" = (
 /obj/machinery/light,
 /obj/structure/flora/pottedplant/drooping,
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/wood,
 /area/tradeport/cafeteria)
 "et" = (
@@ -2119,14 +2116,8 @@
 /turf/simulated/floor/airless,
 /area/space)
 "ie" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
+/obj/machinery/fire_alarm/east,
 /turf/simulated/wall,
 /area/tradeport/commons)
 "if" = (
@@ -5138,10 +5129,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/shuttle/floor/white,
 /area/tradeport/commons)
 "ta" = (
@@ -5606,10 +5594,7 @@
 /obj/structure/closet/crate/bin{
 	anchored = 1
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
 	},
@@ -7583,10 +7568,7 @@
 /turf/simulated/floor/reinforced,
 /area/tradeport/pads)
 "BZ" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/shuttle/floor/white,
 /area/tradeport/commons)
 "Ca" = (
@@ -9095,10 +9077,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/carpet/blue,
 /area/tradeport/commons)
 "IG" = (
@@ -11534,10 +11513,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/commons)
 "RJ" = (
@@ -12992,10 +12968,7 @@
 /area/tradeport/atmospherics)
 "Xo" = (
 /obj/effect/floor_decal/spline/fancy/wood,
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/commons)
 "Xt" = (

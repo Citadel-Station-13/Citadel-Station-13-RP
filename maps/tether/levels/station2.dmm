@@ -4249,10 +4249,7 @@
 /obj/machinery/light_switch{
 	pixel_y = -28
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/wood,
 /area/quartermaster/qm)
 "iF" = (
@@ -5282,10 +5279,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 5
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -26
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/tiled,
 /area/tether/station/stairs_two)
 "kH" = (
@@ -10619,10 +10613,7 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 8
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /obj/machinery/vending/fitness,
 /turf/simulated/floor/tiled,
 /area/quartermaster/foyer)
@@ -11794,10 +11785,7 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 8
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -26
-	},
+/obj/machinery/fire_alarm/east,
 /obj/effect/floor_decal/borderfloor/corner2{
 	dir = 8
 	},
@@ -13433,10 +13421,7 @@
 /area/ai_monitored/storage/eva)
 "AS" = (
 /obj/structure/closet/emcloset,
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock/refinery)
 "AT" = (
@@ -16980,10 +16965,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 6
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -26
-	},
+/obj/machinery/fire_alarm/east,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
@@ -18156,10 +18138,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -26
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/tiled/techfloor,
 /area/quartermaster/belterdock)
 "KD" = (
@@ -19470,10 +19449,7 @@
 	dir = 8
 	},
 /obj/structure/dispenser/oxygen,
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -26
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/tiled,
 /area/ai_monitored/storage/eva)
 "Nl" = (
@@ -21000,10 +20976,7 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 8
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/tiled,
 /area/quartermaster/storage)
 "Qx" = (
@@ -23419,10 +23392,7 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 8
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -26
-	},
+/obj/machinery/fire_alarm/east,
 /obj/effect/floor_decal/borderfloor/corner2{
 	dir = 10
 	},
@@ -24409,10 +24379,7 @@
 	pixel_y = -26;
 	req_access = list(13)
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -26
-	},
+/obj/machinery/fire_alarm/east,
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
 	},
@@ -25250,10 +25217,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 9
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/wood,
 /area/tether/exploration/pathfinder_office)
 "Za" = (

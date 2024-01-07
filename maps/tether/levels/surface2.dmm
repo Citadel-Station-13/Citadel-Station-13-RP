@@ -4298,10 +4298,7 @@
 	dir = 4
 	},
 /obj/structure/closet/secure_closet/security,
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /obj/item/holowarrant,
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/outfitting)
@@ -5472,10 +5469,7 @@
 /area/tcomfoyer)
 "dYM" = (
 /obj/effect/floor_decal/corner/paleblue/diagonal,
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/breakroom)
 "dZc" = (
@@ -7226,10 +7220,7 @@
 /area/tether/surfacebase/public_garden_two)
 "fjg" = (
 /obj/structure/table/glass,
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /obj/item/paper_bin,
 /obj/item/pen,
 /obj/effect/floor_decal/borderfloorwhite{
@@ -9227,10 +9218,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/dark,
@@ -12238,10 +12226,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/armory)
 "iFL" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
@@ -12950,10 +12935,7 @@
 	dir = 5
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /obj/machinery/light_switch{
 	pixel_x = 25;
 	pixel_y = 25
@@ -13746,10 +13728,7 @@
 /area/tether/surfacebase/outside/outside2)
 "jKw" = (
 /obj/structure/table/glass,
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /obj/item/paper_bin,
 /obj/item/pen,
 /obj/effect/floor_decal/borderfloorwhite{
@@ -16817,10 +16796,7 @@
 /area/chapel/main)
 "mgB" = (
 /obj/machinery/photocopier,
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/medical/cmo)
 "mgD" = (
@@ -17459,10 +17435,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/south)
 "mGd" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "mHR" = (
@@ -18117,10 +18090,7 @@
 /obj/machinery/computer/drone_control{
 	dir = 4
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/drone_fabrication)
 "neA" = (
@@ -21949,10 +21919,7 @@
 /obj/effect/floor_decal/corner/paleblue/bordercorner2{
 	dir = 8
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/centralhall)
 "pVt" = (
@@ -22954,10 +22921,7 @@
 /turf/simulated/wall/prepainted/civilian,
 /area/tether/surfacebase/southhall)
 "qIF" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},
@@ -25134,10 +25098,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/carpet,
 /area/tether/surfacebase/security/detective/officea)
 "sqk" = (
@@ -26867,10 +26828,7 @@
 /area/maintenance/lower/south)
 "tCY" = (
 /obj/structure/table/glass,
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /obj/item/paper_bin,
 /obj/item/pen,
 /obj/effect/floor_decal/borderfloorwhite{
@@ -27044,10 +27002,7 @@
 /obj/effect/floor_decal/corner/mauve/bordercorner2{
 	dir = 8
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /obj/structure/cable/green{
 	icon_state = "2-4"
 	},
@@ -27948,11 +27903,7 @@
 /area/maintenance/asmaint2)
 "uDh" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24;
-	pixel_y = -8
-	},
+/obj/machinery/fire_alarm/east,
 /obj/item/clothing/accessory/armor/helmcover/nt{
 	pixel_x = -4;
 	pixel_y = -6
@@ -32234,10 +32185,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/tiled,
 /area/rnd/staircase/secondfloor)
 "xJt" = (

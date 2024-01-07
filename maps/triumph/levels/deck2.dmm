@@ -135,10 +135,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /obj/effect/floor_decal/steeldecal/steel_decals_central6,
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
@@ -3571,10 +3568,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
 "kE" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -26
-	},
+/obj/machinery/fire_alarm/east,
 /obj/structure/table/standard,
 /obj/machinery/photocopier/faxmachine{
 	department = "Quartermaster-Office"
@@ -4109,10 +4103,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_7)
 "mt" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/wood,
 /area/quartermaster/foyer)
 "mu" = (
@@ -4690,10 +4681,7 @@
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/refinery)
 "om" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/wood,
 /area/crew_quarters/fitness)
 "on" = (
@@ -5917,10 +5905,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
@@ -6712,10 +6697,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
 "ud" = (
@@ -6736,10 +6718,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/barrestroom)
 "uf" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /obj/structure/undies_wardrobe,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_9)
@@ -6848,10 +6827,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/Dorm_1)
 "uu" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /obj/structure/closet/wardrobe,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_6)
@@ -8092,10 +8068,7 @@
 /area/maintenance/dormitory)
 "xQ" = (
 /obj/structure/table/glass,
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -26
-	},
+/obj/machinery/fire_alarm/east,
 /obj/machinery/light{
 	dir = 8
 	},
@@ -8295,10 +8268,7 @@
 "yt" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -26
-	},
+/obj/machinery/fire_alarm/east,
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
@@ -8336,10 +8306,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
 "yy" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -26
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "yz" = (
@@ -8836,10 +8803,7 @@
 /turf/simulated/floor/carpet/sblucarpet,
 /area/crew_quarters/sleep/Dorm_2)
 "zP" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_y = -37
 	},
@@ -9716,10 +9680,7 @@
 	dir = 4;
 	pixel_y = 33
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/toilet)
 "CL" = (
@@ -9762,10 +9723,7 @@
 /obj/effect/floor_decal/corner/lime/border{
 	dir = 8
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/tiled,
 /area/hydroponics)
 "CU" = (
@@ -9968,10 +9926,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -26
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/civilian)
 "DC" = (
@@ -10062,10 +10017,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/triumph/surfacebase/mining_main/refinery)
 "DR" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/plating,
 /area/vacant/vacant_office)
 "DS" = (
@@ -10085,10 +10037,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/fitness)
 "DV" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /obj/structure/closet/wardrobe,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_3)
@@ -10253,10 +10202,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_4)
 "Eu" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/tiled,
 /area/station/stairs_two)
 "Ev" = (
@@ -10410,10 +10356,7 @@
 /turf/simulated/floor/carpet/turcarpet,
 /area/crew_quarters/recreation_area_hallway)
 "EV" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -26
-	},
+/obj/machinery/fire_alarm/east,
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
@@ -10860,10 +10803,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_10)
 "Gu" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /obj/structure/reagent_dispensers/beerkeg,
 /turf/simulated/floor/wood,
 /area/triumph/surfacebase/bar_backroom)
@@ -14593,10 +14533,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/starboard)
 "RP" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /obj/structure/table/woodentable,
 /obj/structure/flora/pottedplant/largebush,
 /turf/simulated/floor/wood,
@@ -15990,10 +15927,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10,
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -26
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/showers)
 "VQ" = (
@@ -16291,10 +16225,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/fitness)
 "WJ" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_8)
 "WK" = (
@@ -16365,10 +16296,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/showers)
 "WX" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -26
-	},
+/obj/machinery/fire_alarm/east,
 /obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
@@ -16609,10 +16537,7 @@
 /area/crew_quarters/sleep/Dorm_7)
 "XM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -26
-	},
+/obj/machinery/fire_alarm/east,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
@@ -16783,10 +16708,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_4)
 "Yt" = (

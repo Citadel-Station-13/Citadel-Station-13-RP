@@ -690,10 +690,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/medical/mentalhealth)
 "azs" = (
@@ -2620,10 +2617,7 @@
 /obj/structure/bed/chair/wood{
 	dir = 4
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -5263,10 +5257,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/evahallway)
 "dxC" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/wood,
 /area/crew_quarters/game_room)
 "dyA" = (
@@ -9548,10 +9539,7 @@
 /obj/structure/closet/medical_wall{
 	pixel_y = 35
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /obj/item/storage/firstaid/regular,
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/xenobiology/outpost_first_aid)
@@ -20042,10 +20030,7 @@
 	dir = 8;
 	light_range = 12
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/tiled/white,
 /area/medical/psych)
 "mLf" = (
@@ -23320,10 +23305,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/security_cell_hallway)
 "oHy" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /obj/structure/disposalpipe/segment{
 	dir = 4;
 	icon_state = "pipe-c"
@@ -25846,10 +25828,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -26142,10 +26121,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenobiology/outpost_hallway)
 "qpF" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},
@@ -31308,10 +31284,7 @@
 /obj/machinery/portable_atmospherics/canister/nitrogen{
 	anchored = 1
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/server)
 "tvz" = (
@@ -31725,10 +31698,7 @@
 /area/maintenance/starboard)
 "tGL" = (
 /obj/structure/table/glass,
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
@@ -33467,10 +33437,7 @@
 	dir = 8
 	},
 /obj/structure/disposalpipe/trunk,
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -26
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/tiled/steel,
 /area/rnd/xenobiology/xenoflora)
 "uCg" = (
@@ -35500,10 +35467,7 @@
 /obj/effect/floor_decal/corner/green/bordercorner2{
 	dir = 9
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/secure_closet/personal/patient,
 /turf/simulated/floor/tiled/white,
@@ -36613,10 +36577,7 @@
 /obj/effect/floor_decal/corner/pink/border{
 	dir = 10
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/tiled/white,
 /area/security/forensics)
 "wFV" = (
@@ -38935,10 +38896,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/starboard)
 "yaV" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
 	},
@@ -38980,10 +38938,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/tiled,
 /area/medical/virologyaccess)
 "yda" = (
@@ -39080,10 +39035,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/tether/station/public_meeting_room)
 "yhe" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/wood,
 /area/library)
 "yhD" = (

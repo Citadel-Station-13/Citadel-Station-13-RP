@@ -2817,10 +2817,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/space)
 "bWx" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},
@@ -7480,10 +7477,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "fvY" = (
@@ -13524,10 +13518,7 @@
 /area/engineering/atmos/gas_storage)
 "knr" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red,
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/plating,
 /area/space)
 "knD" = (
@@ -25577,10 +25568,7 @@
 /area/main_map/maintenance/deck_two/forward/starboard)
 "trr" = (
 /obj/structure/kitchenspike,
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/freezer)
 "trt" = (
@@ -26771,10 +26759,7 @@
 /obj/effect/floor_decal/corner/mauve/bordercorner2{
 	dir = 1
 	},
-/obj/machinery/fire_alarm{
-	dir = 2;
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/south,
 /obj/machinery/door/firedoor/glass{
 	dir = 1
 	},
@@ -30780,10 +30765,7 @@
 /obj/item/clothing/mask/surgical,
 /obj/item/storage/secure/briefcase/ml3m_pack_cmo,
 /obj/item/clothing/accessory/poncho/roles/cloak/cmo,
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/fire_alarm/east,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
