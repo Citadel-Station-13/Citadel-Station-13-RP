@@ -135,7 +135,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 8;
 	pixel_x = -24
 	},
@@ -484,7 +484,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/civilian)
 "bp" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -835,7 +835,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 4;
 	pixel_x = 24
 	},
@@ -1343,7 +1343,7 @@
 	name = "sink";
 	pixel_x = 13
 	},
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 4;
 	pixel_x = 25
 	},
@@ -1600,7 +1600,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 1;
 	pixel_y = -24
 	},
@@ -2094,7 +2094,7 @@
 "fX" = (
 /obj/structure/table/reinforced,
 /obj/machinery/cell_charger,
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 1;
 	pixel_y = -24
 	},
@@ -2259,7 +2259,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/triumph/surfacebase/mining_main/refinery)
 "gu" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 1;
 	pixel_y = -24
 	},
@@ -2924,7 +2924,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/starboard)
 "iF" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 1;
 	pixel_y = -24
 	},
@@ -3579,14 +3579,14 @@
 	dir = 1;
 	icon_state = "pipe-c"
 	},
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 1;
 	pixel_y = -25
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
 "kE" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 8;
 	pixel_x = -26
 	},
@@ -3984,7 +3984,7 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/kitchen)
 "lQ" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	layer = 3.3;
 	pixel_y = 17
 	},
@@ -4124,7 +4124,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_7)
 "mt" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 8;
 	pixel_x = -24
 	},
@@ -4526,7 +4526,7 @@
 /obj/structure/bed/chair/comfy/teal{
 	dir = 8
 	},
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
@@ -4632,7 +4632,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
 "og" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 1;
 	pixel_y = -24
 	},
@@ -4708,7 +4708,7 @@
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/refinery)
 "om" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 8;
 	pixel_x = -24
 	},
@@ -4761,7 +4761,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/vacant/vacant_shop)
 "ox" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 1;
 	pixel_y = -25
 	},
@@ -5937,7 +5937,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 8;
 	pixel_x = -24
 	},
@@ -6591,7 +6591,7 @@
 /obj/machinery/portable_atmospherics/hydroponics,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lime/border,
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 1;
 	pixel_y = -25
 	},
@@ -6733,7 +6733,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 8;
 	pixel_x = -24
 	},
@@ -6757,7 +6757,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/barrestroom)
 "uf" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 8;
 	pixel_x = -24
 	},
@@ -6869,7 +6869,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/Dorm_1)
 "uu" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 8;
 	pixel_x = -24
 	},
@@ -6887,7 +6887,7 @@
 /turf/simulated/wall/r_wall/prepainted/civilian,
 /area/triumph/surfacebase/bar_backroom)
 "uz" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 1;
 	pixel_y = -25
 	},
@@ -6941,7 +6941,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_4)
 "uJ" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 1;
 	pixel_y = -24
 	},
@@ -8063,7 +8063,7 @@
 /area/crew_quarters/freezer)
 "xI" = (
 /obj/landmark/spawnpoint/latejoin/station/cryogenics,
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 1;
 	pixel_y = -24
 	},
@@ -8117,7 +8117,7 @@
 /area/maintenance/dormitory)
 "xQ" = (
 /obj/structure/table/glass,
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 8;
 	pixel_x = -26
 	},
@@ -8321,7 +8321,7 @@
 "yt" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 8;
 	pixel_x = -26
 	},

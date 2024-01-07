@@ -393,7 +393,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 1;
 	pixel_y = -24
 	},
@@ -417,7 +417,7 @@
 /obj/item/storage/firstaid/toxin{
 	pixel_y = 8
 	},
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 1;
 	pixel_y = -24
 	},
@@ -891,7 +891,7 @@
 /obj/effect/floor_decal/industrial/loading{
 	dir = 4
 	},
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 1;
 	pixel_y = -24
 	},
@@ -1147,7 +1147,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/quartermaster/warehouse)
 "boD" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -1246,7 +1246,7 @@
 /area/medical/resleeving)
 "bwF" = (
 /obj/machinery/recharge_station,
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -2426,7 +2426,7 @@
 /turf/simulated/floor/tiled,
 /area/main_map/hallway/deck3)
 "cSm" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 1;
 	pixel_y = -24
 	},
@@ -12957,7 +12957,7 @@
 /turf/simulated/floor/tiled,
 /area/medical/medbay_primary_storage)
 "pet" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 8;
 	pixel_x = -24
 	},
@@ -13348,7 +13348,7 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 8
 	},
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -15931,7 +15931,7 @@
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/hydroponics/garden)
 "sLm" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 4;
 	pixel_x = 24
 	},
@@ -19812,7 +19812,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/tcommsat/entrance)
 "xet" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	layer = 3.3;
 	pixel_y = 26
 	},

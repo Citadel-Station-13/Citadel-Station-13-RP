@@ -2105,7 +2105,7 @@
 /area/killhouse/two)
 "Nu" = (
 /obj/effect/floor_decal/industrial/outline/blue,
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 4;
 	pixel_x = 24
 	},

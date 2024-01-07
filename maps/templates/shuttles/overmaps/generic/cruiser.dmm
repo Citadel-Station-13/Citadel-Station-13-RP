@@ -134,7 +134,7 @@
 /turf/simulated/floor/wood,
 /area/mothership/breakroom)
 "ap" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
@@ -487,7 +487,7 @@
 /area/mothership/hydroponics)
 "bn" = (
 /obj/machinery/portable_atmospherics/hydroponics,
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
@@ -603,7 +603,7 @@
 	},
 /obj/item/material/knife/butch,
 /obj/item/material/kitchen/rollingpin,
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
@@ -902,7 +902,7 @@
 /area/mothership/hydroponics)
 "ci" = (
 /obj/machinery/light,
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 1;
 	pixel_y = -25
 	},
@@ -1061,7 +1061,7 @@
 /obj/item/radio/off,
 /obj/item/radio/off,
 /obj/item/radio/off,
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
@@ -1297,7 +1297,7 @@
 /obj/item/tank/oxygen,
 /obj/item/clothing/shoes/magboots,
 /obj/item/clothing/mask/breath,
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 1;
 	pixel_y = -25
 	},
@@ -1370,7 +1370,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "2-4"
 	},
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
@@ -1494,7 +1494,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "2-8"
 	},
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
@@ -1793,7 +1793,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/teleporter)
 "eg" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
@@ -1891,7 +1891,7 @@
 /turf/simulated/floor/tiled/white,
 /area/mothership/surgery)
 "eq" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 4;
 	pixel_x = 26
 	},
@@ -1904,7 +1904,7 @@
 "er" = (
 /obj/item/bedsheet/captaindouble,
 /obj/structure/bed/double/padded,
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 8;
 	pixel_x = -24
 	},
@@ -2079,7 +2079,7 @@
 "eF" = (
 /obj/item/bedsheet/captaindouble,
 /obj/structure/bed/double/padded,
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 4;
 	pixel_x = 26
 	},
@@ -2130,7 +2130,7 @@
 /obj/item/clothing/suit/armor/pcarrier/blue/sol,
 /obj/item/clothing/suit/armor/pcarrier/blue/sol,
 /obj/item/clothing/suit/armor/pcarrier/blue/sol,
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 4;
 	pixel_x = 26
 	},
@@ -2484,7 +2484,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
 "fC" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 8;
 	pixel_x = -24
 	},
@@ -2714,7 +2714,7 @@
 "gc" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/storage/box/gloves,
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 1;
 	pixel_y = -25
 	},
@@ -2790,7 +2790,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/vault)
 "gk" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 1;
 	pixel_y = -25
 	},
@@ -2944,7 +2944,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
 	},
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
@@ -3362,7 +3362,7 @@
 "hH" = (
 /obj/item/bedsheet/captaindouble,
 /obj/structure/bed/double/padded,
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 8;
 	pixel_x = -24
 	},
@@ -3478,7 +3478,7 @@
 "hP" = (
 /obj/item/bedsheet/captaindouble,
 /obj/structure/bed/double/padded,
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 4;
 	pixel_x = 26
 	},
@@ -3662,7 +3662,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/processing)
 "ip" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 4;
 	pixel_x = 26
 	},
@@ -4363,7 +4363,7 @@
 	icon_state = "1-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 4;
 	pixel_x = 26
 	},
@@ -4375,7 +4375,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/warden)
 "jT" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
@@ -4852,7 +4852,7 @@
 "kU" = (
 /obj/item/bedsheet/captaindouble,
 /obj/structure/bed/double/padded,
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 8;
 	pixel_x = -24
 	},
@@ -4970,7 +4970,7 @@
 "lc" = (
 /obj/item/bedsheet/captaindouble,
 /obj/structure/bed/double/padded,
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 4;
 	pixel_x = 26
 	},
@@ -6345,7 +6345,7 @@
 /area/mothership/rnd)
 "nS" = (
 /obj/structure/closet/wardrobe/robotics_black,
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 1;
 	pixel_y = -25
 	},
@@ -6427,7 +6427,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
 	},
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 1;
 	pixel_y = -25
 	},
@@ -6516,7 +6516,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/bridge)
 "oi" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 1;
 	pixel_y = -25
 	},
@@ -6788,7 +6788,7 @@
 /area/mothership/robotics)
 "oO" = (
 /obj/machinery/mech_recharger,
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 1;
 	pixel_y = -25
 	},
@@ -6929,7 +6929,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 1;
 	pixel_y = -24
 	},
@@ -7008,7 +7008,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/telecomms1)
 "pu" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
@@ -7225,7 +7225,7 @@
 /turf/simulated/floor/greengrid,
 /area/mothership/telecomms2)
 "pR" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
@@ -7577,7 +7577,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 4;
 	pixel_x = 26
 	},
@@ -7610,7 +7610,7 @@
 /obj/machinery/cryopod{
 	dir = 4
 	},
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 1;
 	pixel_y = -25
 	},
@@ -8439,7 +8439,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/mothership/telecomms2)
 "tl" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 4;
 	pixel_x = 26
 	},
@@ -8452,7 +8452,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
 "tA" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 8;
 	pixel_x = -24
 	},
@@ -8582,7 +8582,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
@@ -9132,7 +9132,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
 	},
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
@@ -9177,7 +9177,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 8;
 	pixel_x = -24
 	},
@@ -9291,7 +9291,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
 	},
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 8;
 	pixel_x = -24
 	},
@@ -9452,7 +9452,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26

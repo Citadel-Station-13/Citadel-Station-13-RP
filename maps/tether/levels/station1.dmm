@@ -1254,7 +1254,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -1878,7 +1878,7 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/chief)
 "dF" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 1;
 	pixel_y = -24
 	},
@@ -2607,7 +2607,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
 "fa" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 4;
 	layer = 3.3;
 	pixel_x = 26
@@ -3012,7 +3012,7 @@
 /turf/simulated/floor/wood,
 /area/hallway/station/atrium)
 "fR" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 1;
 	pixel_y = -24
 	},
@@ -3128,7 +3128,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 1
 	},
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -3494,7 +3494,7 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 5
 	},
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -3679,7 +3679,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 4
 	},
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -4070,7 +4070,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -4594,7 +4594,7 @@
 /obj/random/tech_supply,
 /obj/random/tech_supply,
 /obj/random/tech_supply,
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 4;
 	layer = 3.3;
 	pixel_x = 26
@@ -6082,7 +6082,7 @@
 /turf/simulated/floor/tiled/white,
 /area/shuttle/medivac/general)
 "ml" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 8;
 	pixel_x = -26
 	},
@@ -6588,7 +6588,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/station/stairs_one)
 "nn" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 4;
 	layer = 3.3;
 	pixel_x = 26
@@ -8824,7 +8824,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 4
 	},
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -9698,7 +9698,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/docks)
 "tH" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 8;
 	pixel_x = -26
 	},
@@ -10797,7 +10797,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 8
 	},
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 1;
 	pixel_y = -24
 	},
@@ -11107,7 +11107,7 @@
 /obj/fiftyspawner/steel,
 /obj/fiftyspawner/steel,
 /obj/fiftyspawner/steel,
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 1;
 	pixel_y = -24
 	},
@@ -11236,7 +11236,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/exploration)
 "xa" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 8;
 	pixel_x = -24
 	},
@@ -11675,7 +11675,7 @@
 /obj/effect/floor_decal/corner/yellow/border{
 	dir = 8
 	},
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 8;
 	pixel_x = -24
 	},
@@ -12392,7 +12392,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 1;
 	pixel_y = -24
 	},
@@ -12597,7 +12597,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 6
 	},
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 1;
 	pixel_y = -24
 	},
@@ -12993,7 +12993,7 @@
 /area/maintenance/station/spacecommandmaint)
 "AC" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -16113,7 +16113,7 @@
 /obj/effect/floor_decal/corner/red/bordercorner2{
 	dir = 10
 	},
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -16302,7 +16302,7 @@
 	dir = 8
 	},
 /obj/structure/bed/chair/office/light,
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 8;
 	pixel_x = -24
 	},
@@ -16899,7 +16899,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 4;
 	layer = 3.3;
 	pixel_x = 26
@@ -17112,7 +17112,7 @@
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/bridge/secondary/teleporter)
 "II" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 4;
 	layer = 3.3;
 	pixel_x = 26
@@ -18306,7 +18306,7 @@
 /area/maintenance/substation/civilian)
 "KT" = (
 /obj/structure/table/reinforced,
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 1;
 	pixel_y = -24
 	},
@@ -19086,7 +19086,7 @@
 /turf/simulated/wall/prepainted,
 /area/vacant/vacant_restaurant_lower)
 "MG" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 4;
 	layer = 3.3;
 	pixel_x = 26
@@ -19105,7 +19105,7 @@
 /turf/simulated/floor/tiled,
 /area/security/checkpoint/science)
 "MJ" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 8;
 	pixel_x = -24
 	},
@@ -19216,7 +19216,7 @@
 /obj/item/storage/briefcase/inflatable{
 	pixel_x = -3
 	},
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -19868,7 +19868,7 @@
 /turf/simulated/floor/tiled/white,
 /area/shuttle/medivac/general)
 "Ow" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 4;
 	layer = 3.3;
 	pixel_x = 26
@@ -19892,7 +19892,7 @@
 /obj/machinery/atmospherics/component/binary/pump{
 	dir = 1
 	},
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 4;
 	layer = 3.3;
 	pixel_x = 26
@@ -19912,7 +19912,7 @@
 	},
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /obj/effect/floor_decal/industrial/outline/blue,
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	pixel_y = 25
 	},
 /turf/simulated/floor/tiled,
@@ -20663,7 +20663,7 @@
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 1
 	},
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	pixel_y = 25
 	},
 /turf/simulated/floor/tiled,
@@ -20790,7 +20790,7 @@
 /obj/effect/floor_decal/corner/red/bordercorner2{
 	dir = 4
 	},
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -21410,7 +21410,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 5
 	},
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 4;
 	layer = 3.3;
 	pixel_x = 26
@@ -21865,7 +21865,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -22085,7 +22085,7 @@
 /turf/space,
 /area/space)
 "SU" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 1;
 	pixel_y = -24
 	},
@@ -22530,7 +22530,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 10
 	},
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 4;
 	layer = 3.3;
 	pixel_x = 26
@@ -22722,7 +22722,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 4;
 	layer = 3.3;
 	pixel_x = 26
@@ -22897,7 +22897,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -23135,7 +23135,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 4;
 	layer = 3.3;
 	pixel_x = 26
@@ -23721,7 +23721,7 @@
 /turf/simulated/floor,
 /area/engineering/engine_gas)
 "VY" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 8;
 	pixel_x = -24
 	},
@@ -24143,7 +24143,7 @@
 /area/bridge/secondary)
 "WO" = (
 /obj/structure/flora/pottedplant,
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -24846,7 +24846,7 @@
 /obj/effect/floor_decal/corner/yellow/border{
 	dir = 8
 	},
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 8;
 	pixel_x = -24
 	},
@@ -25075,7 +25075,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 4;
 	layer = 3.3;
 	pixel_x = 26

@@ -1,3 +1,4 @@
+CREATE_WALL_MOUNTING_TYPES(/obj/item/radio/intercom, 28)
 /obj/item/radio/intercom
 	name = "station intercom (General)"
 	desc = "Talk through this."

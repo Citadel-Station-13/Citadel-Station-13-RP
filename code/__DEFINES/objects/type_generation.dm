@@ -22,3 +22,26 @@
 	auto_orient_wall_mount_single_preinit(); \
 	return ..(); \
 }
+
+#define CREATE_WALL_MOUNTING_TYPES_AUTOSPRITE(TYPE, SHIFT, AUTOSPRITE) \
+##TYPE/north{ \
+	dir = NORTH; \
+	pixel_y = SHIFT; \
+} \
+##TYPE/south{ \
+	dir = SOUTH; \
+	pixel_y = -SHIFT; \
+} \
+##TYPE/east{ \
+	dir = EAST; \
+	pixel_x = SHIFT; \
+} \
+##TYPE/west{ \
+	dir = WEST; \
+	pixel_x = -SHIFT; \
+} \
+##TYPE/auto { icon_state = AUTOSPRITE } \
+##TYPE/auto/Initialize(){ \
+	auto_orient_wall_mount_single_preinit(); \
+	return ..(); \
+}

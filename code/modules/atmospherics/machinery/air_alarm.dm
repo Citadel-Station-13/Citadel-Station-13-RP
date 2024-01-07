@@ -11,6 +11,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 /area
 	var/obj/machinery/air_alarm/master_air_alarm
 
+CREATE_WALL_MOUNTING_TYPES(/obj/machinery/air_alarm, 26)
 /obj/machinery/air_alarm
 	name = "alarm"
 	desc = "Used to control various station atmospheric systems. The light indicates the current air status of the area."

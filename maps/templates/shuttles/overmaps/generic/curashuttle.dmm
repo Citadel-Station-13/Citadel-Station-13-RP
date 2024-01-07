@@ -245,7 +245,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = -26
 	},
@@ -605,7 +605,7 @@
 /obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 26
 	},
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 4;
 	pixel_x = 26
 	},
@@ -1071,7 +1071,7 @@
 /obj/item/surgical/bone_clamp,
 /obj/item/surgical/bone_clamp,
 /obj/item/surgical/scalpel/ripper,
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	pixel_y = 24
 	},
 /obj/machinery/atmospherics/pipe/vent,

@@ -735,7 +735,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 8;
 	pixel_x = -24
 	},

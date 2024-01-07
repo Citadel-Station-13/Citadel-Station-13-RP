@@ -506,7 +506,7 @@
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
 "Rd" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	layer = 3.3;
 	pixel_y = 26
 	},
