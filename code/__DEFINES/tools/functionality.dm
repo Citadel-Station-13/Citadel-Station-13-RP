@@ -48,6 +48,10 @@ GLOBAL_REAL_VAR(_dyntool_image_states) = list(
 #define TOOL_USAGE_BUILDING_FRAMEWORK (1<<4)
 /// making tables, detailed furnishings, etc
 #define TOOL_USAGE_BUILDING_FURNISHINGS (1<<5)
+//doing weird stuff that is possibly dangerous and definitely not regulation
+#define TOOL_USAGE_INADVISABLE (1<<6)
+//doing cooking
+#define TOOL_USAGE_COOKING (1<<7)
 
 //? tool_locked var
 

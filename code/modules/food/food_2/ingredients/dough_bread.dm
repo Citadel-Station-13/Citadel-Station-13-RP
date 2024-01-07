@@ -4,6 +4,7 @@
 	icon = 'icons/obj/food_ingredients.dmi'
 	cookstage_information = list(list(0, 0.5, "raw dough"), list(60 SECONDS, 1, "bread"), list(80 SECONDS, 0.9, "weird dough"), list(100 SECONDS, 0.1, "weird dough")) //overcooked and burnt wont ever appear
 	icon_state = "dough"
+	nutriment_amt = 3
 	transform_list = list(METHOD_OVEN = /obj/item/reagent_containers/food/snacks/ingredient/bread, METHOD_DEEPFRY = /obj/item/reagent_containers/food/snacks/ingredient/frieddoughball) //example
 	fallback_create = /obj/item/reagent_containers/food/snacks/ingredient/bread/damper
 	var/obj/item/reagent_containers/food/snacks/ingredient/flatten_type = /obj/item/reagent_containers/food/snacks/ingredient/transformable/dough/flat
@@ -25,6 +26,7 @@
 	cookstage_information = list(list(0, 0.5, "raw dough"), list(40 SECONDS, 1, "bread"), list(60 SECONDS, 0.9, "weird dough"), list(100 SECONDS, 0.1, "weird dough"))
 	slice_path = /obj/item/reagent_containers/food/snacks/ingredient/transformable/dough/slice
 	slices_num = 3
+	nutriment_amt = 3
 	transform_list = list(METHOD_OVEN = /obj/item/reagent_containers/food/snacks/ingredient/flatbread)
 	fallback_create = /obj/item/reagent_containers/food/snacks/ingredient/flatbread
 	flatten_type = null
@@ -35,6 +37,7 @@
 	icon_state = "doughslice"
 	cookstage_information = list(list(0, 0.5, "raw dough"), list(30 SECONDS, 1, "bread"), list(80 SECONDS, 0.9, "weird dough"), list(100 SECONDS, 0.1, "weird dough")) //only thing that matters here is cooktime
 	slice_path = /obj/item/reagent_containers/food/snacks/spagetti
+	nutriment_amt = 1
 	slices_num = 1
 	bitesize = 2
 	transform_list = null

@@ -37,6 +37,7 @@
 	. += cooking_information(TRUE)
 
 
+
 /obj/item/reagent_containers/food/snacks/ingredient/attackby(obj/item/I, mob/user)
 	if(I.type != type)
 		return ..()
@@ -53,7 +54,7 @@
 		to_chat(user, SPAN_WARNING("There's not enough of [src] to split off!"))
 		return
 	var/amount = input("How much to split?", "Split ingredient") as null|num
-	amount = round(amount) //0.2 > 1
+	amount = round(amount) //0.6 >> 1
 	if(amount && amount < serving_amount)
 		var/final_ratio = amount/serving_amount
 		serving_amount -= amount
@@ -77,6 +78,18 @@
 	var/obj/item/reagent_containers/food/snacks/ingredient/slice_ingredient = slice
 	slice_ingredient.cookstage = cookstage
 	slice_ingredient.accumulated_time_cooked = min(slice_ingredient.cookstage_information[cookstage][COOKINFO_TIME], accumulated_time_cooked)
+
+
+/obj/item/reagent_containers/food/snacks/ingredient/welder_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
+	while(use_welder(I, e_args, flags, 1 SECONDS, 0.25, TOOL_USAGE_INADVISABLE | TOOL_USAGE_COOKING))
+		e_args.visible_feedback(
+		target = src,
+		range = MESSAGE_RANGE_CONSTRUCTION,
+		visible = SPAN_NOTICE("[e_args.performer] starts heating [src] with [I]."),
+		audible = SPAN_WARNING("You hear the sound of a welding torch being used on something organic."),
+		otherwise_self = SPAN_NOTICE("You cook [src] with [I]."),
+		)
+		process_cooked(1 SECOND, pick(HEAT_HIGH, HEAT_MID), METHOD_BLOWTORCH)
 
 
 /obj/item/reagent_containers/food/snacks/ingredient/proc/process_cooked(var/time_cooked, var/heat_level, var/cook_method)

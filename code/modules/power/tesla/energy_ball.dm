@@ -76,6 +76,39 @@
 	if(orbiting_balls.len)
 		. += "The amount of orbiting mini-balls is [orbiting_balls.len]."
 
+
+/obj/singularity/energy_ball/attackby(obj/item/W as obj, mob/living/user as mob)
+	if(QDELETED(W))
+		return
+
+	if(istype(W, /obj/item/reagent_containers/food/snacks/ingredient))
+		var/obj/item/reagent_containers/food/snacks/ingredient/superfood = W
+		user.visible_message("<span class=\"warning\">\The [user] holds up [W] to \the [src]!</span>",\
+		"<span class=\"danger\">You hold up [W] to \the [src]!",\
+		"<span class=\"warning\">Everything suddenly goes quiet.</span>")
+		while(do_after(user, 1 SECOND))
+			var/cooktime = 0 SECOND
+			switch(orbiting_balls.len)
+				if(-INFINITY to 0)
+					cooktime += 1 SECOND
+				if(1 to 2)
+					cooktime += 2 SECOND
+				if(3 to 5)
+					cooktime += 4 SECOND
+				if(5 to 7)
+					cooktime += 8 SECOND
+				if(7 to INFINITY)
+					cooktime += 10 SECOND
+			superfood.process_cooked(cooktime, HEAT_HIGH, METHOD_ENERGETIC_ANOMALY)
+		return //we dont eat it if we cook it
+	
+	user.visible_message("<span class=\"warning\">\The [user] touches \a [W] to \the [src]!/span>",\
+		"<span class=\"danger\">You touch \the [W] to \the [src]!\"</span>\n<span class=\"notice\">\The [W] flashes into dust as you flinch away from \the [src].</span>",\
+		"<span class=\"warning\">A loud electrical noise fills the room.</span>")
+	qdel(src)
+	new /obj/effect/debris/cleanable/ash(get_turf(user))
+
+
 /obj/singularity/energy_ball/proc/move_the_basket_ball(move_amount, time)
 	//we face the last thing we zapped, so this lets us favor that direction a bit
 	var/move_bias = dir

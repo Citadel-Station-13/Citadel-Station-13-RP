@@ -468,6 +468,22 @@
 	if(QDELETED(W))
 		return
 
+	if(istype(W, /obj/item/reagent_containers/food/snacks/ingredient) && prob(95))
+		var/obj/item/reagent_containers/food/snacks/ingredient/superfood = W
+		user.visible_message("<span class=\"warning\">\The [user] holds up [W] to \the [src] as the noise in the room dulls...</span>",\
+		"<span class=\"danger\">You hold up [W] to \the [src] when everything suddenly goes quiet.",\
+		"<span class=\"warning\">Everything suddenly goes quiet.</span>")
+		while(do_after(user, 1 SECOND))
+			var/cooktime = 1 SECOND
+			if(power > ENERGY_NITROGEN)
+				cooktime += 1 SECOND
+			if(power > ENERGY_PHORON)
+				cooktime += 3 SECOND
+			superfood.process_cooked(1 SECOND, HEAT_HIGH, METHOD_ENERGETIC_ANOMALY)
+		return //we dont eat it if we cook it
+		
+
+
 	user.visible_message("<span class=\"warning\">\The [user] touches \a [W] to \the [src] as a silence fills the room...</span>",\
 		"<span class=\"danger\">You touch \the [W] to \the [src] when everything suddenly goes silent.\"</span>\n<span class=\"notice\">\The [W] flashes into dust as you flinch away from \the [src].</span>",\
 		"<span class=\"warning\">Everything suddenly goes silent.</span>")

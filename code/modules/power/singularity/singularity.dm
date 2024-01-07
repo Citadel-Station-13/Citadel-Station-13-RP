@@ -88,6 +88,20 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 /obj/singularity/attack_ai() //To prevent ais from gibbing themselves when they click on one.
 	return
 
+/obj/singularity/attackby(obj/item/W as obj, mob/living/user as mob)
+	if(QDELETED(W))
+		return
+
+	if(istype(W, /obj/item/reagent_containers/food/snacks/ingredient) && prob(75))
+		var/obj/item/reagent_containers/food/snacks/ingredient/superfood = W
+		user.visible_message("<span class=\"warning\">\The [user] holds up [W] to \the [src]...</span>")
+		while(do_after(user, 1 SECOND))
+			superfood.process_cooked(1, HEAT_LOW, METHOD_ENERGETIC_ANOMALY) //it's hawking radiation what do you expect
+		return //we dont eat it if we cook it
+	
+	visible_message("<span class=\"warning\">\The [src] sucks up [W] from [user]'s hands!/span>")
+	consume(W)
+
 /obj/singularity/proc/admin_investigate_setup()
 	last_warning = world.time
 	var/count = locate(/obj/machinery/containment_field) in orange(30, src)
