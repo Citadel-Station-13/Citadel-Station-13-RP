@@ -1,7 +1,7 @@
 /*
 FIRE ALARM
 */
-CREATE_WALL_MOUNTING_TYPES(/obj/machinery/fire_alarm, 21)
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/fire_alarm, 21)
 /obj/machinery/fire_alarm
 	name = "fire alarm"
 	desc = "<i>\"Pull this in case of emergency\"</i>. Thus, keep pulling it forever."

@@ -1,7 +1,44 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
-#define CREATE_WALL_MOUNTING_TYPES(TYPE, SHIFT) \
+#define CREATE_WALL_MOUNTING_TYPES(TYPE) \
+##TYPE/north{ \
+	dir = NORTH; \
+} \
+##TYPE/south{ \
+	dir = SOUTH; \
+} \
+##TYPE/east{ \
+	dir = EAST; \
+} \
+##TYPE/west{ \
+	dir = WEST; \
+} \
+##TYPE/auto/Initialize(){ \
+	auto_orient_wallmount_single_preinit(); \
+	return ..(); \
+}
+
+#define CREATE_WALL_MOUNTING_TYPES_AUTOSPRITE(TYPE, AUTOSPRITE) \
+##TYPE/north{ \
+	dir = NORTH; \
+} \
+##TYPE/south{ \
+	dir = SOUTH; \
+} \
+##TYPE/east{ \
+	dir = EAST; \
+} \
+##TYPE/west{ \
+	dir = WEST; \
+} \
+##TYPE/auto { icon_state = AUTOSPRITE } \
+##TYPE/auto/Initialize(){ \
+	auto_orient_wallmount_single_preinit(); \
+	return ..(); \
+}
+
+#define CREATE_WALL_MOUNTING_TYPES_SHIFTED(TYPE, SHIFT) \
 ##TYPE/north{ \
 	dir = NORTH; \
 	pixel_y = SHIFT; \
@@ -19,11 +56,11 @@
 	pixel_x = -SHIFT; \
 } \
 ##TYPE/auto/Initialize(){ \
-	auto_orient_wall_mount_single_preinit(); \
+	auto_orient_wallmount_single_preinit(); \
 	return ..(); \
 }
 
-#define CREATE_WALL_MOUNTING_TYPES_AUTOSPRITE(TYPE, SHIFT, AUTOSPRITE) \
+#define CREATE_WALL_MOUNTING_TYPES_SHIFTED_AUTOSPRITE(TYPE, SHIFT, AUTOSPRITE) \
 ##TYPE/north{ \
 	dir = NORTH; \
 	pixel_y = SHIFT; \
@@ -42,6 +79,6 @@
 } \
 ##TYPE/auto { icon_state = AUTOSPRITE } \
 ##TYPE/auto/Initialize(){ \
-	auto_orient_wall_mount_single_preinit(); \
+	auto_orient_wallmount_single_preinit(); \
 	return ..(); \
 }

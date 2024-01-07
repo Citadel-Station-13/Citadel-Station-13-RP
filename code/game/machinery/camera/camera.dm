@@ -1,7 +1,8 @@
+CREATE_WALL_MOUNTING_TYPES(/obj/machinery/camera)
 /obj/machinery/camera
 	name = "security camera"
 	desc = "It's used to monitor rooms."
-	icon = 'icons/obj/monitors.dmi'
+	icon = 'icons/obj/machinery/security_camera.dmi'
 	icon_state = "camera"
 	use_power = USE_POWER_ACTIVE
 	idle_power_usage = 5
