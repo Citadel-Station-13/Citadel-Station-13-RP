@@ -768,6 +768,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/air_alarm, 26)
 #undef TEST_TLV_VALUES
 #undef DECLARE_TLV_VALUES
 
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/air_alarm/alarms_hidden, 26)
 /obj/machinery/air_alarm/alarms_hidden
 	alarms_hidden = TRUE
 
@@ -781,6 +782,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/air_alarm, 26)
 	pixel_x = (dir & 3) ? 0 : (dir == 4 ? -21 : 21)
 	pixel_y = (dir & 3) ? (dir == 1 ? -18 : 20) : 0
 
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/air_alarm/freezer, 26)
 /obj/machinery/air_alarm/freezer
 	target_temperature = T0C - 13.15 // Chilly freezer room
 
@@ -789,13 +791,16 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/air_alarm, 26)
 		tlv_temperature = list(T0C - 40, T0C - 20, T0C + 40, T0C + 60)
 	return ..()
 
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/air_alarm/monitor, 26)
 /obj/machinery/air_alarm/monitor
 	report_danger_level = 0
 	breach_detection = 0
 
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/air_alarm/nobreach, 26)
 /obj/machinery/air_alarm/nobreach
 	breach_detection = 0
 
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/air_alarm/server, 26)
 /obj/machinery/air_alarm/server/Initialize(mapload)
 	. = ..()
 	req_access = list(ACCESS_SCIENCE_RD, ACCESS_ENGINEERING_ATMOS, ACCESS_ENGINEERING_ENGINE)
