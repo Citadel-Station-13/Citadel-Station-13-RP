@@ -2449,7 +2449,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/vault)
 "fA" = (
-/obj/machinery/air_alarm/north_mount{
+/obj/machinery/power/apc/north_mount{
 	alarms_hidden = 1;
 	name = "north bump";
 	pixel_y = 28
@@ -2951,7 +2951,7 @@
 /turf/simulated/floor/tiled/white,
 /area/mothership/treatment)
 "gL" = (
-/obj/machinery/air_alarm/north_mount{
+/obj/machinery/power/apc/north_mount{
 	alarms_hidden = 1;
 	name = "north bump";
 	pixel_y = 28

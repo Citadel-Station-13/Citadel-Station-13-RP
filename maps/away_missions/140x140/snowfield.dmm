@@ -109,7 +109,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/snowfield/base)
 "ar" = (
-/obj/machinery/air_alarm/west_mount{
+/obj/machinery/power/apc/west_mount{
 	alarms_hidden = 1;
 	name = "west bump-derelict";
 	operating = 0;

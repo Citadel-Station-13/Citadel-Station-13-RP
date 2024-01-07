@@ -246,7 +246,7 @@
 /obj/effect/floor_decal/borderfloorblack/corner2{
 	dir = 5
 	},
-/obj/machinery/air_alarm/east_mount{
+/obj/machinery/power/apc/east_mount{
 	name = "east bump";
 	pixel_x = 24
 	},
@@ -818,7 +818,7 @@
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "acI" = (
-/obj/machinery/air_alarm/north_mount{
+/obj/machinery/power/apc/north_mount{
 	name = "north bump";
 	pixel_y = 24
 	},
@@ -1682,7 +1682,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "afv" = (
-/obj/machinery/air_alarm/west_mount{
+/obj/machinery/power/apc/west_mount{
 	name = "west bump";
 	pixel_x = -24
 	},
@@ -2318,7 +2318,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/exploration/explorer_prep)
 "ahr" = (
-/obj/machinery/air_alarm/east_mount{
+/obj/machinery/power/apc/east_mount{
 	name = "east bump";
 	pixel_x = 24
 	},
@@ -2674,7 +2674,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/obj/machinery/air_alarm/east_mount{
+/obj/machinery/power/apc/east_mount{
 	name = "east bump";
 	pixel_x = 24
 	},
@@ -2854,7 +2854,7 @@
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_y = 24
 	},
-/obj/machinery/air_alarm/west_mount{
+/obj/machinery/power/apc/west_mount{
 	name = "west bump";
 	pixel_x = -24
 	},
@@ -3339,7 +3339,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/station/exploration)
 "ajX" = (
-/obj/machinery/air_alarm/east_mount{
+/obj/machinery/power/apc/east_mount{
 	name = "east bump";
 	pixel_x = 24
 	},
@@ -3413,7 +3413,7 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 9
 	},
-/obj/machinery/air_alarm/west_mount{
+/obj/machinery/power/apc/west_mount{
 	name = "west bump";
 	pixel_x = -24
 	},
@@ -3743,7 +3743,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
 "akU" = (
-/obj/machinery/air_alarm/west_mount{
+/obj/machinery/power/apc/west_mount{
 	name = "west bump";
 	pixel_x = -24
 	},
@@ -4679,7 +4679,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
 	},
-/obj/machinery/air_alarm/west_mount{
+/obj/machinery/power/apc/west_mount{
 	name = "west bump";
 	pixel_x = -24
 	},
@@ -5907,7 +5907,7 @@
 	pixel_y = 30
 	},
 /obj/structure/bed/chair/shuttle,
-/obj/machinery/air_alarm/east_mount{
+/obj/machinery/power/apc/east_mount{
 	name = "east bump";
 	pixel_x = 24
 	},
@@ -6077,7 +6077,7 @@
 /turf/simulated/shuttle/wall/voidcraft/green,
 /area/shuttle/civvie/general)
 "arm" = (
-/obj/machinery/air_alarm/west_mount{
+/obj/machinery/power/apc/west_mount{
 	name = "west bump";
 	pixel_x = -24
 	},
@@ -7049,7 +7049,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/machinery/air_alarm/east_mount{
+/obj/machinery/power/apc/east_mount{
 	name = "east bump";
 	pixel_x = 24
 	},
@@ -10043,7 +10043,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "2-8"
 	},
-/obj/machinery/air_alarm/east_mount{
+/obj/machinery/power/apc/east_mount{
 	name = "east bump";
 	pixel_x = 24
 	},
@@ -10745,7 +10745,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 6
 	},
-/obj/machinery/air_alarm/east_mount{
+/obj/machinery/power/apc/east_mount{
 	name = "east bump";
 	pixel_x = 24
 	},
@@ -11981,7 +11981,7 @@
 /obj/effect/floor_decal/corner/beige/border{
 	dir = 8
 	},
-/obj/machinery/air_alarm/west_mount{
+/obj/machinery/power/apc/west_mount{
 	name = "west bump";
 	pixel_x = -24
 	},
@@ -12191,7 +12191,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
 "aIf" = (
-/obj/machinery/air_alarm/north_mount{
+/obj/machinery/power/apc/north_mount{
 	name = "north bump";
 	pixel_y = 24
 	},
@@ -12695,7 +12695,7 @@
 /turf/simulated/floor/carpet/blue,
 /area/crew_quarters/captain)
 "aJr" = (
-/obj/machinery/air_alarm/east_mount{
+/obj/machinery/power/apc/east_mount{
 	name = "east bump";
 	pixel_x = 24
 	},
@@ -13539,7 +13539,7 @@
 /turf/simulated/floor/carpet/purcarpet,
 /area/exploration/meeting)
 "aLJ" = (
-/obj/machinery/air_alarm/east_mount{
+/obj/machinery/power/apc/east_mount{
 	name = "east bump";
 	pixel_x = 24
 	},
@@ -16425,7 +16425,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/excursion/cargo)
 "aTL" = (
-/obj/machinery/air_alarm/east_mount{
+/obj/machinery/power/apc/east_mount{
 	name = "east bump";
 	pixel_x = 24
 	},
@@ -17461,7 +17461,7 @@
 /obj/effect/floor_decal/borderfloorblack/corner2{
 	dir = 10
 	},
-/obj/machinery/air_alarm/west_mount{
+/obj/machinery/power/apc/west_mount{
 	name = "west bump";
 	pixel_x = -24
 	},
@@ -18109,7 +18109,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
 "aYG" = (
-/obj/machinery/air_alarm/north_mount{
+/obj/machinery/power/apc/north_mount{
 	name = "north bump";
 	pixel_y = 24
 	},
@@ -18487,7 +18487,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
 	},
-/obj/machinery/air_alarm/east_mount{
+/obj/machinery/power/apc/east_mount{
 	name = "east bump";
 	pixel_x = 24
 	},
@@ -19046,7 +19046,7 @@
 	on = 1;
 	scrub_id = "civ_airlock_two_scrubber"
 	},
-/obj/machinery/air_alarm/east_mount{
+/obj/machinery/power/apc/east_mount{
 	name = "east bump";
 	pixel_x = 24
 	},
@@ -19825,7 +19825,7 @@
 /area/crew_quarters/heads/blueshield)
 "eEi" = (
 /obj/structure/catwalk,
-/obj/machinery/air_alarm/north_mount{
+/obj/machinery/power/apc/north_mount{
 	name = "north bump";
 	pixel_y = 24
 	},
@@ -23823,7 +23823,7 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 8
 	},
-/obj/machinery/air_alarm/west_mount{
+/obj/machinery/power/apc/west_mount{
 	name = "west bump";
 	pixel_x = -24
 	},
@@ -24635,7 +24635,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/machinery/air_alarm/west_mount{
+/obj/machinery/power/apc/west_mount{
 	name = "west bump";
 	pixel_x = -24
 	},
@@ -25310,7 +25310,7 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 9
 	},
-/obj/machinery/air_alarm/west_mount{
+/obj/machinery/power/apc/west_mount{
 	name = "west bump";
 	pixel_x = -24
 	},
@@ -25712,7 +25712,7 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 4
 	},
-/obj/machinery/air_alarm/east_mount{
+/obj/machinery/power/apc/east_mount{
 	name = "east bump";
 	pixel_x = 24
 	},
@@ -26392,7 +26392,7 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 1
 	},
-/obj/machinery/air_alarm/north_mount{
+/obj/machinery/power/apc/north_mount{
 	name = "north bump";
 	pixel_y = 24
 	},
@@ -26429,7 +26429,7 @@
 	dir = 9
 	},
 /obj/machinery/light/small,
-/obj/machinery/air_alarm/east_mount{
+/obj/machinery/power/apc/east_mount{
 	name = "east bump";
 	pixel_x = 24
 	},

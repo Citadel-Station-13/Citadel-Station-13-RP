@@ -781,7 +781,7 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/secondary_gear_storage)
 "tE" = (
-/obj/machinery/air_alarm/north_mount{
+/obj/machinery/power/apc/north_mount{
 	name = "north bump";
 	pixel_y = 24
 	},
@@ -1167,7 +1167,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
-/obj/machinery/air_alarm/north_mount{
+/obj/machinery/power/apc/north_mount{
 	name = "north bump";
 	pixel_y = 24
 	},
@@ -1318,7 +1318,7 @@
 /obj/machinery/status_display{
 	pixel_x = -32
 	},
-/obj/machinery/air_alarm/north_mount{
+/obj/machinery/power/apc/north_mount{
 	name = "north bump";
 	pixel_y = 24
 	},
@@ -1504,7 +1504,7 @@
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/maintenance)
 "MT" = (
-/obj/machinery/air_alarm/north_mount{
+/obj/machinery/power/apc/north_mount{
 	name = "north bump";
 	pixel_y = 24
 	},
@@ -1637,7 +1637,7 @@
 /turf/simulated/floor/outdoors/grass/sif/virgo3b,
 /area/mine/explored)
 "SM" = (
-/obj/machinery/air_alarm/north_mount{
+/obj/machinery/power/apc/north_mount{
 	name = "north bump";
 	pixel_y = 24
 	},

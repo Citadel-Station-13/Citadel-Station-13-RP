@@ -209,7 +209,7 @@
 /area/outpost/mining_main/refinery)
 "bR" = (
 /obj/effect/floor_decal/industrial/warning,
-/obj/machinery/air_alarm/west_mount{
+/obj/machinery/power/apc/west_mount{
 	name = "west bump";
 	pixel_x = -28
 	},

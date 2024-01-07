@@ -653,7 +653,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
-/obj/machinery/air_alarm/east_mount{
+/obj/machinery/power/apc/east_mount{
 	name = "east bump";
 	pixel_x = 24
 	},

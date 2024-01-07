@@ -13207,7 +13207,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/brig)
 "nYi" = (
-/obj/machinery/air_alarm/west_mount{
+/obj/machinery/power/apc/west_mount{
 	name = "west bump";
 	pixel_x = -28
 	},

@@ -290,7 +290,7 @@
 /turf/simulated/floor/tiled,
 /area/submap/debrisfield_vr/tinyshuttle/crew)
 "aG" = (
-/obj/machinery/air_alarm/north_mount{
+/obj/machinery/power/apc/north_mount{
 	name = "north bump";
 	pixel_y = 24
 	},
@@ -504,7 +504,7 @@
 /turf/simulated/floor/tiled/airless,
 /area/submap/debrisfield_vr/tinyshuttle/bridge)
 "aZ" = (
-/obj/machinery/air_alarm/east_mount{
+/obj/machinery/power/apc/east_mount{
 	name = "east bump";
 	pixel_x = 28
 	},
@@ -911,7 +911,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/submap/debrisfield_vr/tinyshuttle/hangar)
 "bI" = (
-/obj/machinery/air_alarm/east_mount{
+/obj/machinery/power/apc/east_mount{
 	name = "east bump";
 	pixel_x = 28
 	},
@@ -952,7 +952,7 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/submap/debrisfield_vr/tinyshuttle/engine)
 "bM" = (
-/obj/machinery/air_alarm/east_mount{
+/obj/machinery/power/apc/east_mount{
 	name = "east bump";
 	pixel_x = 28
 	},

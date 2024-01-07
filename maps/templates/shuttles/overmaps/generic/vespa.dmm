@@ -6405,7 +6405,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medicalmain)
 "nY" = (
-/obj/machinery/air_alarm/west_mount{
+/obj/machinery/power/apc/west_mount{
 	name = "west bump";
 	pixel_x = -24
 	},
@@ -7718,7 +7718,7 @@
 /area/ship/expe/smstorage)
 "qD" = (
 /obj/machinery/power/emitter,
-/obj/machinery/air_alarm/north_mount{
+/obj/machinery/power/apc/north_mount{
 	name = "north bump";
 	pixel_y = 32
 	},

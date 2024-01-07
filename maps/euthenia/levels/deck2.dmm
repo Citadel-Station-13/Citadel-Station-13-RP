@@ -19872,7 +19872,7 @@
 /turf/simulated/floor/wood,
 /area/rift/station/fighter_bay)
 "oUw" = (
-/obj/machinery/air_alarm/east_mount{
+/obj/machinery/power/apc/east_mount{
 	pixel_x = 24
 	},
 /obj/structure/cable/green{
@@ -19980,7 +19980,7 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 8
 	},
-/obj/machinery/air_alarm/west_mount{
+/obj/machinery/power/apc/west_mount{
 	name = "west bump";
 	pixel_x = -24
 	},
@@ -23448,7 +23448,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/marker_beacon/red,
-/obj/machinery/air_alarm/east_mount{
+/obj/machinery/power/apc/east_mount{
 	name = "east bump";
 	pixel_x = 24
 	},

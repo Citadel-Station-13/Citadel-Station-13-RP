@@ -41,7 +41,7 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/machinery/air_alarm/north_mount{
+/obj/machinery/power/apc/north_mount{
 	environ = 0;
 	locked = 0;
 	req_access = ""
@@ -999,7 +999,7 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/machinery/air_alarm/north_mount{
+/obj/machinery/power/apc/north_mount{
 	locked = 0;
 	req_access = ""
 	},
@@ -1663,7 +1663,7 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/machinery/air_alarm/north_mount{
+/obj/machinery/power/apc/north_mount{
 	locked = 0;
 	req_access = ""
 	},
@@ -2462,7 +2462,7 @@
 /turf/simulated/floor/carpet,
 /area/awaymission/academy/academygate)
 "jW" = (
-/obj/machinery/air_alarm/north_mount{
+/obj/machinery/power/apc/north_mount{
 	locked = 0;
 	req_access = ""
 	},

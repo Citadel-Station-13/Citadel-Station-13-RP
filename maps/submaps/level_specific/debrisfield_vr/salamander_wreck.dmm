@@ -68,7 +68,7 @@
 	dir = 8;
 	pixel_x = -32
 	},
-/obj/machinery/air_alarm/north_mount{
+/obj/machinery/power/apc/north_mount{
 	name = "north bump";
 	pixel_y = 24;
 	start_charge = 0
@@ -409,7 +409,7 @@
 /obj/structure/bed/chair/bay/comfy{
 	dir = 4
 	},
-/obj/machinery/air_alarm/west_mount{
+/obj/machinery/power/apc/west_mount{
 	name = "west bump";
 	pixel_x = -28;
 	start_charge = 0
@@ -1080,7 +1080,7 @@
 	dir = 8;
 	pixel_x = -32
 	},
-/obj/machinery/air_alarm/north_mount{
+/obj/machinery/power/apc/north_mount{
 	name = "north bump";
 	pixel_y = 24;
 	start_charge = 0
@@ -1751,7 +1751,7 @@
 /obj/structure/handrail{
 	dir = 8
 	},
-/obj/machinery/air_alarm/east_mount{
+/obj/machinery/power/apc/east_mount{
 	name = "east bump";
 	pixel_x = 24;
 	start_charge = 0
@@ -1904,7 +1904,7 @@
 /obj/structure/railing/grey{
 	dir = 8
 	},
-/obj/machinery/air_alarm/east_mount{
+/obj/machinery/power/apc/east_mount{
 	name = "east bump";
 	pixel_x = 24;
 	start_charge = 0
