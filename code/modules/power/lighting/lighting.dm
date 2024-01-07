@@ -296,6 +296,10 @@ var/global/list/light_type_cache = list()
 	var/brightness_power_ns
 	var/brightness_color_ns
 
+	#ifdef IN_MAP_EDITOR // So its actually visible in the mapping editor
+	icon_state = "tube_map"
+	#endif
+
 /obj/machinery/light/flicker
 	auto_flicker = TRUE
 
@@ -419,6 +423,8 @@ var/global/list/light_type_cache = list()
 	light_type = /obj/item/light/tube/large
 	shows_alerts = FALSE
 
+/obj/machinery/light/spot/no_nightshift
+	nightshift_allowed = FALSE
 /obj/machinery/light/spot/flicker
 	auto_flicker = TRUE
 
