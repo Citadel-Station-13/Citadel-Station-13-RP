@@ -8,7 +8,7 @@
 	},
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/red/border,
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -16,7 +16,7 @@
 "ac" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/red/border,
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -26
 	},
@@ -534,7 +534,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	pixel_y = 23
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1493,7 +1493,7 @@
 /turf/simulated/wall/rpshull,
 /area/ship/expe/corridor1)
 "em" = (
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -26
 	},
@@ -1513,7 +1513,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin1)
 "ep" = (
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -26
 	},
@@ -1532,7 +1532,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin2)
 "es" = (
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -26
 	},
@@ -1552,7 +1552,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin3)
 "ev" = (
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -26
 	},
@@ -1571,7 +1571,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin4)
 "ey" = (
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -26
 	},
@@ -1591,7 +1591,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin5)
 "eB" = (
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -26
 	},
@@ -1610,7 +1610,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin6)
 "eE" = (
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -26
 	},
@@ -1630,7 +1630,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin7)
 "eH" = (
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -26
 	},
@@ -1649,7 +1649,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin8)
 "eK" = (
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -26
 	},
@@ -2456,7 +2456,7 @@
 	icon_state = "1-4"
 	},
 /obj/effect/floor_decal/techfloor,
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -26
 	},
@@ -2756,7 +2756,7 @@
 /area/ship/expe/corridor3)
 "gW" = (
 /obj/effect/floor_decal/techfloor,
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -26
 	},
@@ -3312,7 +3312,7 @@
 	},
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/yellow/border,
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -26
 	},
@@ -3847,7 +3847,7 @@
 /turf/simulated/wall/rpshull,
 /area/ship/expe/medicalchem)
 "iP" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	pixel_y = 28
 	},
 /obj/effect/floor_decal/borderfloorwhite{
@@ -5776,7 +5776,7 @@
 "mL" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/yellow/border,
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -26
 	},
@@ -5790,7 +5790,7 @@
 /obj/effect/floor_decal/corner/yellow/border{
 	dir = 8
 	},
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = -26
 	},
@@ -6190,7 +6190,7 @@
 	icon_state = "1-4"
 	},
 /obj/effect/floor_decal/techfloor,
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -26
 	},
@@ -6233,7 +6233,7 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 4
 	},
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = 26
 	},
@@ -6358,7 +6358,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 8
 	},
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = -26
 	},
@@ -7024,7 +7024,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 8
 	},
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = -26
 	},
@@ -7429,7 +7429,7 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 4
 	},
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = 26
 	},
@@ -7455,7 +7455,7 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 6
 	},
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = 26
 	},
@@ -8534,7 +8534,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medical)
 "sz" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	pixel_y = 31
 	},
 /obj/structure/bed/chair,
@@ -8728,7 +8728,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 1
 	},
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	pixel_y = 23
 	},
 /turf/simulated/floor/tiled/white,
@@ -8993,7 +8993,7 @@
 	},
 /obj/structure/table/reinforced,
 /obj/item/storage/firstaid/surgery,
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = -26
 	},
@@ -9658,7 +9658,7 @@
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/techfloor,
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -26
 	},
@@ -10302,7 +10302,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	pixel_y = 23
 	},
 /turf/simulated/floor/tiled/techfloor,

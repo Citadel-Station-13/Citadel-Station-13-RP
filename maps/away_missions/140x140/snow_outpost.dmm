@@ -263,7 +263,7 @@
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
 "aX" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 2;
 	layer = 3.3;
 	pixel_x = 0;
@@ -483,7 +483,7 @@
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
 "bJ" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	dir = 2;
 	layer = 3.3;
 	pixel_x = 0;

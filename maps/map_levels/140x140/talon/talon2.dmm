@@ -682,7 +682,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -24
 	},
@@ -1054,7 +1054,7 @@
 "mw" = (
 /obj/item/bedsheet,
 /obj/structure/bed/padded,
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = -24
 	},
@@ -1318,7 +1318,7 @@
 "pp" = (
 /obj/item/bedsheet,
 /obj/structure/bed/padded,
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = 26
 	},
@@ -1360,7 +1360,7 @@
 /turf/simulated/open,
 /area/talon/maintenance/decktwo_aft)
 "pC" = (
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -30
 	},
@@ -2189,7 +2189,7 @@
 /turf/simulated/floor/wood,
 /area/talon/decktwo/med_room)
 "zT" = (
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -30
 	},
@@ -2594,7 +2594,7 @@
 /turf/simulated/floor/hull/airless,
 /area/talon/maintenance/decktwo_solars)
 "Eb" = (
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -30
 	},
@@ -2819,7 +2819,7 @@
 "Gy" = (
 /obj/item/bedsheet,
 /obj/structure/bed/padded,
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = -24
 	},
@@ -2994,7 +2994,7 @@
 "Ja" = (
 /obj/item/bedsheet,
 /obj/structure/bed/padded,
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = 26
 	},
@@ -3248,7 +3248,7 @@
 /turf/simulated/floor/hull/airless,
 /area/talon/maintenance/decktwo_solars)
 "LU" = (
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -30
 	},

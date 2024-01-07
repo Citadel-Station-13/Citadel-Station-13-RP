@@ -47,7 +47,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -166,7 +166,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -278,7 +278,7 @@
 	name = "Syndicate-Spawn"
 	},
 /obj/item/bedsheet/hos,
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = -26
 	},
@@ -1255,7 +1255,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = 26
 	},
@@ -1517,7 +1517,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/recreation)
 "hH" = (
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = 26
 	},
@@ -2334,7 +2334,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = -26
 	},
@@ -2539,7 +2539,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = 26
 	},
@@ -2595,7 +2595,7 @@
 /turf/simulated/floor/plating,
 /area/ship/manta/engine)
 "mN" = (
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = -26
 	},
@@ -3144,7 +3144,7 @@
 /area/ship/manta/hallways_star)
 "pt" = (
 /obj/structure/catwalk,
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -26
 	},
@@ -3378,7 +3378,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_aft)
 "qK" = (
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /obj/effect/floor_decal/techfloor{
@@ -3395,7 +3395,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = 26
 	},
@@ -3533,7 +3533,7 @@
 /area/ship/manta/hallways_aft)
 "rE" = (
 /obj/effect/floor_decal/techfloor,
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -26
 	},
@@ -3827,7 +3827,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /obj/machinery/light{
@@ -3944,7 +3944,7 @@
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -26
 	},
@@ -4140,7 +4140,7 @@
 	dir = 4;
 	pixel_x = -26
 	},
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /obj/machinery/light{
@@ -4230,7 +4230,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 5
 	},
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /obj/machinery/light{
@@ -4461,7 +4461,7 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "plant-20"
 	},
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -26
 	},
@@ -4932,7 +4932,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = -26
 	},
@@ -5940,7 +5940,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 9
 	},
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /obj/machinery/light{
@@ -6079,7 +6079,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = 26
 	},
@@ -7390,7 +7390,7 @@
 	dir = 4;
 	pixel_x = -26
 	},
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -26
 	},
@@ -8046,7 +8046,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 6
 	},
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = 26
 	},
@@ -8413,7 +8413,7 @@
 /area/ship/manta/teleporter)
 "QE" = (
 /obj/structure/catwalk,
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -26
 	},
@@ -8824,7 +8824,7 @@
 	name = "Syndicate-Spawn"
 	},
 /obj/item/bedsheet/hos,
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = -26
 	},
@@ -9234,7 +9234,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
-/obj/machinery/firealarm/alarms_hidden{
+/obj/machinery/fire_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = 26
 	},
