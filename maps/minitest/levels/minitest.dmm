@@ -22,7 +22,7 @@
 /obj/machinery/camera/network/telecom{
 	c_tag = "Telecoms Main Computer Room"
 	},
-/obj/machinery/fire_alarm/south_mount{
+/obj/machinery/firealarm{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -50,7 +50,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
 "ai" = (
-/obj/item/radio/intercom/west_mount{
+/obj/item/radio/intercom{
+	dir = 8;
 	name = "Station Intercom (General)";
 	pixel_x = -28
 	},
@@ -154,7 +155,8 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "ay" = (
-/obj/machinery/power/apc/west_mount{
+/obj/machinery/power/apc{
+	dir = 4;
 	name = "east bump";
 	pixel_x = 24
 	},
@@ -485,7 +487,8 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/south_mount{
+/obj/machinery/power/apc{
+	dir = 1;
 	name = "north bump";
 	pixel_y = 24
 	},
@@ -912,7 +915,8 @@
 "cj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/power/apc/east_mount{
+/obj/machinery/power/apc{
+	dir = 8;
 	name = "west bump";
 	pixel_x = -32
 	},
@@ -1496,7 +1500,8 @@
 /turf/simulated/floor/tiled,
 /area/medical/medbay)
 "dG" = (
-/obj/machinery/power/apc/west_mount{
+/obj/machinery/power/apc{
+	dir = 4;
 	name = "east bump";
 	pixel_x = 24
 	},
@@ -1544,7 +1549,8 @@
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/civilian_hallway_aft)
 "dL" = (
-/obj/machinery/power/apc/south_mount{
+/obj/machinery/power/apc{
+	dir = 1;
 	name = "north bump";
 	pixel_y = 32
 	},
@@ -2092,7 +2098,8 @@
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/civilian_hallway_fore)
 "fe" = (
-/obj/machinery/power/apc/west_mount{
+/obj/machinery/power/apc{
+	dir = 4;
 	name = "east bump";
 	pixel_x = 32
 	},
@@ -2206,7 +2213,8 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/fore)
 "fq" = (
-/obj/machinery/power/apc/south_mount{
+/obj/machinery/power/apc{
+	dir = 1;
 	name = "north bump";
 	pixel_y = 32
 	},
@@ -2365,7 +2373,8 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/cafeteria)
 "fJ" = (
-/obj/machinery/power/apc/south_mount{
+/obj/machinery/power/apc{
+	dir = 1;
 	name = "north bump";
 	pixel_y = 32
 	},
@@ -2541,14 +2550,15 @@
 /turf/simulated/floor/tiled,
 /area/bridge)
 "gi" = (
-/obj/machinery/fire_alarm/south_mount{
+/obj/machinery/firealarm{
 	layer = 3.3;
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled,
 /area/bridge)
 "gj" = (
-/obj/machinery/power/apc/south_mount{
+/obj/machinery/power/apc{
+	dir = 1;
 	name = "north bump";
 	pixel_y = 32
 	},
@@ -3102,7 +3112,7 @@
 /area/storage/surface_eva/external)
 "sq" = (
 /obj/structure/railing,
-/obj/machinery/power/apc/west_mount,
+/obj/machinery/power/apc/direction_bump/west,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -3348,7 +3358,8 @@
 	frequency = 1379;
 	scrub_id = "civ_airlock_scrubber"
 	},
-/obj/machinery/power/apc/south_mount{
+/obj/machinery/power/apc{
+	dir = 1;
 	name = "north bump";
 	pixel_y = 28
 	},

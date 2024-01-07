@@ -109,8 +109,9 @@
 /turf/simulated/floor/plating,
 /area/awaymission/snowfield/base)
 "ar" = (
-/obj/machinery/power/apc/east_mount{
+/obj/machinery/power/apc{
 	alarms_hidden = 1;
+	dir = 8;
 	name = "west bump-derelict";
 	operating = 0;
 	pixel_x = -24
@@ -393,7 +394,8 @@
 /area/awaymission/snowfield/base)
 "bh" = (
 /obj/effect/floor_decal/corner/green/full,
-/obj/item/radio/intercom/west_mount{
+/obj/item/radio/intercom{
+	dir = 8;
 	name = "Station Intercom (General)";
 	pixel_x = -21
 	},

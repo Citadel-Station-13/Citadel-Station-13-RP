@@ -225,7 +225,8 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/east_mount{
+/obj/machinery/power/apc{
+	dir = 8;
 	name = "west bump";
 	pixel_x = -28
 	},
@@ -406,7 +407,8 @@
 /turf/simulated/floor/tiled,
 /area/engineering/engine_room)
 "aO" = (
-/obj/machinery/power/apc/west_mount{
+/obj/machinery/power/apc{
+	dir = 4;
 	name = "east bump";
 	pixel_x = 28
 	},
@@ -666,7 +668,8 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/west_mount{
+/obj/machinery/power/apc{
+	dir = 4;
 	name = "east bump";
 	pixel_x = 28
 	},

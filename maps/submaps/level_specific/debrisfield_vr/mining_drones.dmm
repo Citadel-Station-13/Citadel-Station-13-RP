@@ -72,7 +72,8 @@
 /turf/simulated/floor/airless,
 /area/submap/debrisfield_vr/mining_outpost)
 "o" = (
-/obj/machinery/power/apc/alarms_hidden/south_mount{
+/obj/machinery/power/apc/alarms_hidden{
+	dir = 1;
 	pixel_y = 24
 	},
 /obj/structure/cable{

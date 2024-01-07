@@ -418,7 +418,8 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/alarms_hidden/south_mount{
+/obj/machinery/power/apc/alarms_hidden{
+	dir = 1;
 	name = "north bump";
 	pixel_y = 24;
 	req_access = list(168)
@@ -993,7 +994,8 @@
 /obj/structure/cable/yellow{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/alarms_hidden/south_mount{
+/obj/machinery/power/apc/alarms_hidden{
+	dir = 1;
 	name = "north bump";
 	pixel_y = 28;
 	req_access = list(168)
@@ -1580,7 +1582,8 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/alarms_hidden/south_mount{
+/obj/machinery/power/apc/alarms_hidden{
+	dir = 1;
 	name = "north bump";
 	pixel_y = 24;
 	req_access = list(168)
@@ -1702,7 +1705,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/alarms_hidden/east_mount{
+/obj/machinery/power/apc/alarms_hidden/east_bump{
 	req_access = list(168)
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
@@ -2681,7 +2684,7 @@
 /turf/simulated/floor/tiled/steel_dirty/silver,
 /area/piratebase/brig)
 "yK" = (
-/obj/machinery/power/apc/alarms_hidden/east_mount{
+/obj/machinery/power/apc/alarms_hidden/east_bump{
 	req_access = list(168)
 	},
 /obj/structure/cable/yellow{
@@ -2836,7 +2839,7 @@
 /turf/simulated/floor/reinforced,
 /area/piratebase/vault)
 "zV" = (
-/obj/machinery/power/apc/alarms_hidden/east_mount{
+/obj/machinery/power/apc/alarms_hidden/east_bump{
 	req_access = list(168)
 	},
 /obj/structure/cable/yellow,
@@ -4002,7 +4005,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/alarms_hidden/east_mount{
+/obj/machinery/power/apc/alarms_hidden/east_bump{
 	req_access = list(168)
 	},
 /obj/item/radio/intercom/raider{
@@ -4211,7 +4214,8 @@
 /obj/structure/cable/yellow{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/alarms_hidden/south_mount{
+/obj/machinery/power/apc/alarms_hidden{
+	dir = 1;
 	name = "north bump";
 	pixel_y = 28;
 	req_access = list(168)
@@ -4547,7 +4551,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/power/apc/alarms_hidden/south_mount{
+/obj/machinery/power/apc/alarms_hidden{
+	dir = 1;
 	name = "north bump";
 	pixel_y = 28;
 	req_access = list(168)
@@ -5145,7 +5150,8 @@
 /obj/structure/cable/yellow{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/alarms_hidden/south_mount{
+/obj/machinery/power/apc/alarms_hidden{
+	dir = 1;
 	name = "north bump";
 	pixel_y = 28;
 	req_access = list(168)
@@ -5384,7 +5390,8 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/alarms_hidden/south_mount{
+/obj/machinery/power/apc/alarms_hidden{
+	dir = 1;
 	name = "north bump";
 	pixel_y = 24;
 	req_access = list(168)
@@ -5662,7 +5669,8 @@
 /obj/structure/cable/yellow{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/alarms_hidden/south_mount{
+/obj/machinery/power/apc/alarms_hidden{
+	dir = 1;
 	name = "north bump";
 	pixel_y = 28;
 	req_access = list(168)

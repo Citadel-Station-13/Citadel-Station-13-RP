@@ -164,7 +164,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/tether_midpoint)
 "sx" = (
-/obj/machinery/power/apc/north_mount{
+/obj/machinery/power/apc{
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
@@ -419,7 +419,8 @@
 	},
 /obj/structure/flora/pottedplant/unusual,
 /obj/structure/cable,
-/obj/machinery/power/apc/east_mount{
+/obj/machinery/power/apc{
+	dir = 8;
 	name = "west bump";
 	pixel_x = -28
 	},
@@ -505,7 +506,7 @@
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
 "Rd" = (
-/obj/machinery/fire_alarm{
+/obj/machinery/firealarm{
 	layer = 3.3;
 	pixel_y = 26
 	},

@@ -542,7 +542,8 @@
 /turf/simulated/floor/plating,
 /area/submap/Blackshuttledown)
 "bH" = (
-/obj/machinery/power/apc/east_mount{
+/obj/machinery/power/apc{
+	dir = 8;
 	name = "BSD APC";
 	pixel_x = -24
 	},

@@ -256,7 +256,8 @@
 /obj/structure/cable/orange{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/south_mount{
+/obj/machinery/power/apc{
+	dir = 1;
 	name = "north bump";
 	pixel_y = 28
 	},
@@ -296,7 +297,8 @@
 /turf/simulated/floor/classd,
 /area/class_d/wildcat_mining_base/exterior_power)
 "lx" = (
-/obj/machinery/power/apc/west_mount{
+/obj/machinery/power/apc{
+	dir = 4;
 	name = "east bump";
 	pixel_x = 28
 	},
@@ -342,7 +344,8 @@
 /obj/structure/cable/orange{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/west_mount{
+/obj/machinery/power/apc{
+	dir = 4;
 	name = "east bump";
 	pixel_x = 28
 	},
@@ -433,7 +436,8 @@
 /obj/structure/cable/orange{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/south_mount{
+/obj/machinery/power/apc{
+	dir = 1;
 	name = "north bump";
 	pixel_y = 28
 	},
@@ -513,7 +517,8 @@
 /turf/simulated/floor/classd,
 /area/class_d/wildcat_mining_base/refueling_outbuilding)
 "qj" = (
-/obj/machinery/power/apc/south_mount{
+/obj/machinery/power/apc{
+	dir = 1;
 	name = "north bump";
 	pixel_y = 28
 	},
@@ -634,7 +639,8 @@
 /obj/structure/cable/orange{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/south_mount{
+/obj/machinery/power/apc{
+	dir = 1;
 	name = "north bump";
 	pixel_y = 28
 	},
@@ -1427,7 +1433,8 @@
 /obj/structure/cable/orange{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/south_mount{
+/obj/machinery/power/apc{
+	dir = 1;
 	name = "north bump";
 	pixel_y = 28
 	},

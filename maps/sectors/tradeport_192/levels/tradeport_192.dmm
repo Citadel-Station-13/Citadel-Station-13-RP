@@ -2058,7 +2058,7 @@
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/tradeport/commhall)
 "hr" = (
-/obj/machinery/power/apc/alarms_hidden/north_mount{
+/obj/machinery/power/apc/alarms_hidden{
 	cell_type = /obj/item/cell/super;
 	name = "south bump";
 	pixel_y = -28;
@@ -2286,7 +2286,10 @@
 /obj/structure/closet/crate/bin{
 	anchored = 1
 	},
-/obj/machinery/fire_alarm/east_mount,
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -26
+	},
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
 	},
@@ -3143,7 +3146,10 @@
 /obj/structure/closet/crate/bin{
 	anchored = 1
 	},
-/obj/machinery/fire_alarm/east_mount,
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -24
+	},
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
 	},
@@ -3532,7 +3538,10 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/machinery/fire_alarm/east_mount,
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -26
+	},
 /turf/simulated/shuttle/floor/white,
 /area/tradeport/commons)
 "mw" = (
@@ -6792,7 +6801,10 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
 	},
-/obj/machinery/fire_alarm/east_mount,
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -24
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/commons)
 "yJ" = (
@@ -6968,7 +6980,8 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 9
 	},
-/obj/machinery/power/apc/alarms_hidden/south_mount{
+/obj/machinery/power/apc/alarms_hidden{
+	dir = 1;
 	name = "north bump";
 	pixel_y = 28;
 	req_access = list(160)
@@ -7314,7 +7327,10 @@
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/tradeport/pads)
 "AG" = (
-/obj/machinery/fire_alarm/east_mount,
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -26
+	},
 /turf/simulated/shuttle/floor/white,
 /area/tradeport/commons)
 "AI" = (
@@ -7955,7 +7971,8 @@
 /turf/simulated/floor,
 /area/tradeport/pads)
 "CK" = (
-/obj/machinery/power/apc/alarms_hidden/south_mount{
+/obj/machinery/power/apc/alarms_hidden{
+	dir = 1;
 	name = "north bump";
 	pixel_y = 28;
 	req_access = list(160)
@@ -8545,7 +8562,10 @@
 "EX" = (
 /obj/machinery/light,
 /obj/structure/flora/pottedplant/drooping,
-/obj/machinery/fire_alarm/east_mount,
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -26
+	},
 /turf/simulated/floor/wood,
 /area/tradeport/cafeteria)
 "Fb" = (
@@ -9588,7 +9608,10 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/fire_alarm/east_mount,
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -26
+	},
 /turf/simulated/floor/carpet/blue,
 /area/tradeport/commons)
 "IX" = (
@@ -9688,7 +9711,7 @@
 /obj/machinery/vending/nifsoft_shop{
 	dir = 8
 	},
-/obj/machinery/power/apc/alarms_hidden/north_mount{
+/obj/machinery/power/apc/alarms_hidden{
 	cell_type = /obj/item/cell/super;
 	name = "south bump";
 	pixel_y = -28;
@@ -13878,7 +13901,7 @@
 "Yu" = (
 /obj/structure/cable/yellow,
 /obj/structure/catwalk,
-/obj/machinery/power/apc/alarms_hidden/north_mount{
+/obj/machinery/power/apc/alarms_hidden{
 	cell_type = /obj/item/cell/super;
 	name = "south bump";
 	pixel_y = -28;

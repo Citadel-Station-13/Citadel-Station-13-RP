@@ -490,7 +490,7 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/alarms_hidden/south_mount,
+/obj/machinery/power/apc/alarms_hidden/south_bump,
 /turf/simulated/floor/tiled{
 	icon_state = "monotile"
 	},
@@ -700,7 +700,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/alarms_hidden/north_mount,
+/obj/machinery/power/apc/alarms_hidden/north_bump,
 /turf/simulated/floor/plating,
 /area/shuttle/generic_shuttle/eng)
 "bz" = (

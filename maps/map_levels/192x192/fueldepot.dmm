@@ -414,7 +414,8 @@
 	dir = 6
 	},
 /obj/structure/catwalk,
-/obj/machinery/power/apc/alarms_hidden/east_mount{
+/obj/machinery/power/apc/alarms_hidden{
+	dir = 8;
 	pixel_x = -24
 	},
 /turf/simulated/floor/airless,

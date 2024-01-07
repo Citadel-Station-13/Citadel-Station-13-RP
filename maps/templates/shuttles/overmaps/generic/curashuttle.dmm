@@ -122,7 +122,7 @@
 	name = "curabitur fax machine";
 	pixel_y = 6
 	},
-/obj/machinery/power/apc/alarms_hidden/east_mount,
+/obj/machinery/power/apc/alarms_hidden/east_bump,
 /turf/simulated/floor/carpet/bcarpet,
 /area/shuttle/curabitur/curashuttle/cockpit)
 "aq" = (
@@ -245,7 +245,10 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/fire_alarm/alarms_hidden/east_mount,
+/obj/machinery/firealarm/alarms_hidden{
+	dir = 8;
+	pixel_x = -26
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/shuttle/curabitur/curashuttle/cockpit)
 "aF" = (
@@ -602,7 +605,10 @@
 /obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 26
 	},
-/obj/machinery/fire_alarm/west_mount,
+/obj/machinery/firealarm{
+	dir = 4;
+	pixel_x = 26
+	},
 /turf/simulated/floor/tiled,
 /area/shuttle/curabitur/curashuttle/med)
 "bj" = (
@@ -740,7 +746,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/alarms_hidden/west_mount,
+/obj/machinery/power/apc/alarms_hidden/west_bump,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/curabitur/curashuttle/med)
 "bC" = (
@@ -987,7 +993,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 4
 	},
-/obj/machinery/power/apc/alarms_hidden/north_mount,
+/obj/machinery/power/apc/alarms_hidden/north_bump,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/curabitur/curashuttle/eng)
 "bU" = (
@@ -1065,7 +1071,7 @@
 /obj/item/surgical/bone_clamp,
 /obj/item/surgical/bone_clamp,
 /obj/item/surgical/scalpel/ripper,
-/obj/machinery/fire_alarm{
+/obj/machinery/firealarm{
 	pixel_y = 24
 	},
 /obj/machinery/atmospherics/pipe/vent,
@@ -1259,7 +1265,7 @@
 /obj/structure/handrail{
 	dir = 1
 	},
-/obj/machinery/power/apc/alarms_hidden/south_mount,
+/obj/machinery/power/apc/alarms_hidden/south_bump,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/curabitur/curashuttle/hangar)
 "cB" = (

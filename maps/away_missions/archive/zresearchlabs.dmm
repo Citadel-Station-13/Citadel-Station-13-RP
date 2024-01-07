@@ -1073,7 +1073,8 @@
 	},
 /area/awaymission/labs/researchdivision)
 "dH" = (
-/obj/machinery/power/apc/west_mount{
+/obj/machinery/power/apc{
+	dir = 4;
 	name = "Worn-out APC";
 	pixel_x = 24
 	},
@@ -1676,7 +1677,8 @@
 /turf/simulated/floor,
 /area/awaymission/labs/gateway)
 "ft" = (
-/obj/machinery/power/apc/west_mount{
+/obj/machinery/power/apc{
+	dir = 4;
 	name = "Worn-out APC";
 	pixel_x = 24
 	},
@@ -1746,7 +1748,8 @@
 	},
 /area/awaymission/labs/militarydivision)
 "fD" = (
-/obj/machinery/power/apc/east_mount{
+/obj/machinery/power/apc{
+	dir = 8;
 	environ = 0;
 	equipment = 0;
 	lighting = 0;
@@ -1901,7 +1904,8 @@
 	},
 /area/awaymission/labs/militarydivision)
 "fW" = (
-/obj/machinery/power/apc/east_mount{
+/obj/machinery/power/apc{
+	dir = 8;
 	environ = 0;
 	equipment = 0;
 	lighting = 0;
@@ -2010,7 +2014,8 @@
 	},
 /area/awaymission/labs/militarydivision)
 "gj" = (
-/obj/machinery/power/apc/east_mount{
+/obj/machinery/power/apc{
+	dir = 8;
 	environ = 0;
 	equipment = 0;
 	lighting = 0;
@@ -3148,7 +3153,8 @@
 	},
 /area/awaymission/labs/militarydivision)
 "jm" = (
-/obj/machinery/power/apc/east_mount{
+/obj/machinery/power/apc{
+	dir = 8;
 	environ = 0;
 	equipment = 0;
 	lighting = 0;
@@ -3653,7 +3659,8 @@
 	},
 /area/awaymission/desert)
 "kK" = (
-/obj/machinery/power/apc/east_mount{
+/obj/machinery/power/apc{
+	dir = 8;
 	environ = 0;
 	equipment = 0;
 	lighting = 0;
@@ -4091,7 +4098,8 @@
 	c_tag = "Aft Port Solar Control";
 	dir = 1
 	},
-/obj/machinery/power/apc/west_mount{
+/obj/machinery/power/apc{
+	dir = 4;
 	name = "Worn-out APC";
 	pixel_x = 24
 	},
@@ -4458,8 +4466,9 @@
 /turf/simulated/floor,
 /area/awaymission/labs/cargo)
 "mI" = (
-/obj/machinery/power/apc/south_mount{
+/obj/machinery/power/apc{
 	cell_type = 5000;
+	dir = 1;
 	name = "Virology APC";
 	pixel_y = 24
 	},
@@ -4950,7 +4959,8 @@
 /turf/simulated/floor,
 /area/awaymission/labs/cave)
 "oc" = (
-/obj/machinery/power/apc/west_mount{
+/obj/machinery/power/apc{
+	dir = 4;
 	name = "Worn-out APC";
 	pixel_x = 24
 	},
@@ -5257,8 +5267,9 @@
 	},
 /area/awaymission/labs/civilian)
 "oT" = (
-/obj/machinery/power/apc/east_mount{
+/obj/machinery/power/apc{
 	cell_type = 5000;
+	dir = 8;
 	environ = 0;
 	equipment = 0;
 	lighting = 0;
@@ -5408,7 +5419,8 @@
 /turf/simulated/floor,
 /area/awaymission/labs/civilian)
 "po" = (
-/obj/machinery/power/apc/west_mount{
+/obj/machinery/power/apc{
+	dir = 4;
 	name = "Worn-out APC";
 	pixel_x = 24
 	},
@@ -5710,7 +5722,8 @@
 	},
 /area/awaymission/labs/command)
 "qm" = (
-/obj/machinery/power/apc/west_mount{
+/obj/machinery/power/apc{
+	dir = 4;
 	name = "Worn-out APC";
 	pixel_x = 24
 	},
@@ -5846,7 +5859,8 @@
 	},
 /area/awaymission/labs/command)
 "qJ" = (
-/obj/machinery/power/apc/west_mount{
+/obj/machinery/power/apc{
+	dir = 4;
 	name = "Worn-out APC";
 	pixel_x = 24
 	},
@@ -6377,7 +6391,8 @@
 /turf/simulated/floor,
 /area/awaymission/labs/civilian)
 "sq" = (
-/obj/machinery/power/apc/west_mount{
+/obj/machinery/power/apc{
+	dir = 4;
 	name = "Worn-out APC";
 	pixel_x = 24
 	},
@@ -6963,8 +6978,9 @@
 	},
 /area/awaymission/labs/security)
 "ug" = (
-/obj/machinery/power/apc/south_mount{
+/obj/machinery/power/apc{
 	cell_type = 5000;
+	dir = 1;
 	name = "Virology APC";
 	pixel_y = 24
 	},

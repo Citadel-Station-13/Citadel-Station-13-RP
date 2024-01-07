@@ -33,7 +33,8 @@
 /turf/simulated/floor,
 /area/awaymission/example)
 "ag" = (
-/obj/machinery/power/apc/south_mount{
+/obj/machinery/power/apc{
+	dir = 1;
 	pixel_y = 24
 	},
 /obj/structure/cable{

@@ -307,7 +307,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
-/obj/machinery/fire_alarm/east_mount,
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -26
+	},
 /turf/simulated/floor/wood,
 /area/lavaland/central/base/common)
 "hi" = (
@@ -409,7 +412,10 @@
 	pixel_y = -23;
 	req_one_access = list(48)
 	},
-/obj/machinery/fire_alarm/east_mount,
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -26
+	},
 /obj/structure/ore_box,
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
@@ -419,7 +425,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/fire_alarm{
+/obj/machinery/firealarm{
 	dir = 4;
 	layer = 3.3;
 	pixel_x = 26
@@ -521,7 +527,8 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/machinery/fire_alarm/north_mount{
+/obj/machinery/firealarm{
+	dir = 1;
 	pixel_y = -24
 	},
 /turf/simulated/floor/plating,
@@ -568,7 +575,7 @@
 /area/lavaland/central/base/common)
 "nr" = (
 /obj/effect/debris/cleanable/dirt,
-/obj/machinery/fire_alarm/south_mount{
+/obj/machinery/firealarm{
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled,
@@ -669,7 +676,10 @@
 "oM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/fire_alarm/east_mount,
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -26
+	},
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "pf" = (
@@ -800,7 +810,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
-/obj/machinery/fire_alarm/south_mount{
+/obj/machinery/firealarm{
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled,
@@ -843,7 +853,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/fire_alarm/north_mount{
+/obj/machinery/firealarm{
+	dir = 1;
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled,
@@ -904,7 +915,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
-/obj/machinery/fire_alarm{
+/obj/machinery/firealarm{
 	dir = 4;
 	layer = 3.3;
 	pixel_x = 26
@@ -956,7 +967,10 @@
 /area/lavaland/central/explored)
 "sN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/fire_alarm/east_mount,
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -26
+	},
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "sP" = (
@@ -2247,7 +2261,7 @@
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "SN" = (
-/obj/machinery/power/apc/north_mount{
+/obj/machinery/power/apc{
 	cell_type = /obj/item/cell/infinite;
 	name = "south bump";
 	pixel_y = -28

@@ -82,8 +82,9 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/north_mount{
+/obj/machinery/power/apc{
 	alarms_hidden = 1;
+	dir = 2;
 	name = "south bump";
 	pixel_y = -24
 	},
@@ -668,8 +669,9 @@
 /area/submap/debrisfield_vr/derelict/interior)
 "cs" = (
 /obj/structure/cable,
-/obj/machinery/power/apc/north_mount{
+/obj/machinery/power/apc{
 	alarms_hidden = 1;
+	dir = 2;
 	name = "south bump";
 	pixel_y = -24
 	},
@@ -822,8 +824,9 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/west_mount{
+/obj/machinery/power/apc{
 	alarms_hidden = 1;
+	dir = 4;
 	name = "east bump";
 	pixel_x = 28
 	},
@@ -848,8 +851,9 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/west_mount{
+/obj/machinery/power/apc{
 	alarms_hidden = 1;
+	dir = 4;
 	name = "east bump";
 	pixel_x = 28
 	},
@@ -903,8 +907,9 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/south_mount{
+/obj/machinery/power/apc{
 	alarms_hidden = 1;
+	dir = 1;
 	name = "north bump";
 	pixel_x = 0;
 	pixel_y = 24

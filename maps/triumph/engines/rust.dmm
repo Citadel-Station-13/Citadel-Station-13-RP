@@ -585,7 +585,8 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "nf" = (
-/obj/item/radio/intercom/south_mount{
+/obj/item/radio/intercom{
+	dir = 1;
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -666,7 +667,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 4
 	},
-/obj/machinery/fire_alarm{
+/obj/machinery/firealarm{
 	pixel_y = 24
 	},
 /turf/simulated/floor/plating,
@@ -779,7 +780,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/fire_alarm/north_mount{
+/obj/machinery/firealarm{
+	dir = 1;
 	pixel_y = -24
 	},
 /obj/effect/floor_decal/industrial/warning{
@@ -963,7 +965,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/item/radio/intercom/north_mount{
+/obj/item/radio/intercom{
+	dir = 2;
 	pixel_y = -24
 	},
 /obj/effect/floor_decal/industrial/warning{
@@ -1016,7 +1019,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/obj/machinery/fire_alarm{
+/obj/machinery/firealarm{
 	dir = 4;
 	layer = 3.3;
 	pixel_x = 26

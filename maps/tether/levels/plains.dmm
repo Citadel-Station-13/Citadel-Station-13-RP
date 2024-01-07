@@ -108,8 +108,9 @@
 /area/tether/outpost/exploration_shed)
 "G" = (
 /obj/effect/floor_decal/rust,
-/obj/machinery/power/apc/west_mount{
+/obj/machinery/power/apc{
 	alarms_hidden = 1;
+	dir = 4;
 	name = "east bump";
 	pixel_x = 24
 	},

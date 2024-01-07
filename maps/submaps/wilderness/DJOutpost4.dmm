@@ -223,7 +223,7 @@
 "aK" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/radio,
-/obj/machinery/power/apc/north_mount{
+/obj/machinery/power/apc{
 	cell_type = /obj/item/cell/hyper;
 	dir = 4;
 	environ = 1;

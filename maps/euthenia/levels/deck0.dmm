@@ -388,7 +388,8 @@
 /area/main_map/hallway/deck0)
 "ok" = (
 /obj/structure/table/reinforced,
-/obj/item/radio/intercom/south_mount{
+/obj/item/radio/intercom{
+	dir = 1;
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -1301,7 +1302,7 @@
 "Xt" = (
 /obj/structure/closet/emcloset,
 /obj/structure/cable,
-/obj/machinery/power/apc/critical/west_mount,
+/obj/machinery/power/apc/critical/west_bump,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/space)
 "Xv" = (

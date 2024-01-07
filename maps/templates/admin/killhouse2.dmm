@@ -314,7 +314,8 @@
 /turf/simulated/floor/plating,
 /area/killhouse/two)
 "fQ" = (
-/obj/item/radio/intercom/south_mount{
+/obj/item/radio/intercom{
+	dir = 1;
 	pixel_y = 24
 	},
 /obj/structure/table/standard,
@@ -1722,8 +1723,7 @@
 /turf/simulated/floor/tiled/white,
 /area/killhouse/two)
 "Ev" = (
-/obj/machinery/power/apc/hyper/east_mount{
-	dir = 2;
+/obj/machinery/power/apc/hyper/east_bump{
 	cell_type = /obj/item/cell/infinite
 	},
 /turf/simulated/floor/outdoors/snow/lythios43c,
@@ -2105,7 +2105,10 @@
 /area/killhouse/two)
 "Nu" = (
 /obj/effect/floor_decal/industrial/outline/blue,
-/obj/machinery/fire_alarm/west_mount,
+/obj/machinery/firealarm{
+	dir = 4;
+	pixel_x = 24
+	},
 /obj/structure/filingcabinet/medical,
 /obj/effect/floor_decal/corner/paleblue/diagonal,
 /turf/simulated/floor/tiled/white,
@@ -2674,7 +2677,8 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 5
 	},
-/obj/item/radio/intercom/west_mount{
+/obj/item/radio/intercom{
+	dir = 4;
 	pixel_x = 22
 	},
 /obj/structure/closet/crate/bin{
@@ -2717,8 +2721,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/killhouse/two)
 "Wi" = (
-/obj/machinery/power/apc/hyper/south_mount{
-	dir = 2;
+/obj/machinery/power/apc/hyper/south_bump{
 	cell_type = /obj/item/cell/infinite
 	},
 /turf/simulated/floor/concrete/rng/lythios43c/outdoors,
@@ -2915,7 +2918,8 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 6
 	},
-/obj/item/radio/intercom/west_mount{
+/obj/item/radio/intercom{
+	dir = 4;
 	pixel_x = 22
 	},
 /obj/structure/closet/crate/bin{

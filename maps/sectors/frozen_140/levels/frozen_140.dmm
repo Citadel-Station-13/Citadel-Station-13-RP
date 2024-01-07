@@ -807,7 +807,8 @@
 /area/class_p/facility)
 "Lq" = (
 /obj/structure/cable,
-/obj/machinery/power/apc/alarms_hidden/west_mount{
+/obj/machinery/power/apc/alarms_hidden{
+	dir = 4;
 	pixel_x = 32;
 	req_access = null;
 	start_charge = 0

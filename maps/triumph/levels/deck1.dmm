@@ -1346,7 +1346,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 8
 	},
-/obj/machinery/fire_alarm/north_mount{
+/obj/machinery/firealarm{
+	dir = 1;
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -1657,7 +1658,8 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 5
 	},
-/obj/item/radio/intercom/south_mount{
+/obj/item/radio/intercom{
+	dir = 1;
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -1738,7 +1740,8 @@
 /obj/machinery/atmospherics/portables_connector{
 	dir = 4
 	},
-/obj/machinery/fire_alarm/north_mount{
+/obj/machinery/firealarm{
+	dir = 1;
 	pixel_y = -24
 	},
 /obj/effect/floor_decal/industrial/outline/red,
@@ -1772,7 +1775,10 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
-/obj/machinery/fire_alarm/east_mount,
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -24
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/storage)
 "fQ" = (
@@ -2115,7 +2121,10 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
 	},
-/obj/machinery/fire_alarm/east_mount,
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -24
+	},
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
 "gR" = (
@@ -2438,7 +2447,8 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/obj/machinery/fire_alarm/north_mount{
+/obj/machinery/firealarm{
+	dir = 1;
 	pixel_y = -24
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -3152,7 +3162,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/storage)
 "ks" = (
-/obj/machinery/power/apc/north_mount{
+/obj/machinery/power/apc{
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
@@ -3401,7 +3411,8 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/drone_fabrication)
 "lr" = (
-/obj/item/radio/intercom/south_mount{
+/obj/item/radio/intercom{
+	dir = 1;
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -3521,7 +3532,7 @@
 /area/storage/tech)
 "lP" = (
 /obj/structure/cable/green,
-/obj/machinery/power/apc/north_mount{
+/obj/machinery/power/apc{
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
@@ -3564,7 +3575,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/engi_engine)
 "lT" = (
-/obj/machinery/power/apc/north_mount{
+/obj/machinery/power/apc{
 	cell_type = /obj/item/cell/super;
 	dir = 1;
 	name = "north bump";
@@ -3641,7 +3652,8 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
 	},
-/obj/item/radio/intercom/south_mount{
+/obj/item/radio/intercom{
+	dir = 1;
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -3867,7 +3879,8 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/west_mount{
+/obj/machinery/power/apc{
+	dir = 4;
 	name = "east bump";
 	pixel_x = 28
 	},
@@ -4200,7 +4213,8 @@
 /area/space)
 "ol" = (
 /obj/structure/closet/firecloset,
-/obj/item/radio/intercom/south_mount{
+/obj/item/radio/intercom{
+	dir = 1;
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -4263,7 +4277,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/break_room)
 "oE" = (
-/obj/machinery/power/apc/north_mount{
+/obj/machinery/power/apc{
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
@@ -4412,7 +4426,8 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "pc" = (
-/obj/machinery/fire_alarm/north_mount{
+/obj/machinery/firealarm{
+	dir = 1;
 	pixel_y = -24
 	},
 /turf/simulated/floor/plating,
@@ -4493,7 +4508,8 @@
 /turf/simulated/floor/tiled,
 /area/engineering/hallway/lower)
 "ps" = (
-/obj/machinery/fire_alarm/north_mount{
+/obj/machinery/firealarm{
+	dir = 1;
 	pixel_y = -24
 	},
 /obj/effect/floor_decal/techfloor/orange,
@@ -4533,7 +4549,8 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/debris/cleanable/dirt,
-/obj/machinery/power/apc/east_mount{
+/obj/machinery/power/apc{
+	dir = 8;
 	name = "west bump";
 	pixel_x = -28
 	},
@@ -4543,7 +4560,8 @@
 /turf/simulated/floor/plating,
 /area/storage/tech)
 "py" = (
-/obj/machinery/power/apc/east_mount{
+/obj/machinery/power/apc{
+	dir = 8;
 	name = "west bump";
 	pixel_x = -28
 	},
@@ -4864,7 +4882,8 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/monitoring)
 "qC" = (
-/obj/item/radio/intercom/west_mount{
+/obj/item/radio/intercom{
+	dir = 4;
 	name = "Station Intercom (General)";
 	pixel_x = 23
 	},
@@ -5025,7 +5044,8 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
 	},
-/obj/item/radio/intercom/south_mount{
+/obj/item/radio/intercom{
+	dir = 1;
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -5109,7 +5129,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
-/obj/machinery/power/apc/north_mount{
+/obj/machinery/power/apc{
 	cell_type = /obj/item/cell/super;
 	dir = 1;
 	name = "north bump";
@@ -6402,7 +6422,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/north_mount{
+/obj/machinery/power/apc{
 	cell_type = /obj/item/cell/super;
 	name = "south bump";
 	pixel_y = -32
@@ -6588,7 +6608,8 @@
 /area/engineering/engine_smes)
 "wf" = (
 /obj/structure/closet/secure_closet/atmos_personal,
-/obj/machinery/power/apc/east_mount{
+/obj/machinery/power/apc{
+	dir = 8;
 	name = "west bump";
 	pixel_x = -28
 	},
@@ -6652,7 +6673,8 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
 	},
-/obj/item/radio/intercom/south_mount{
+/obj/item/radio/intercom{
+	dir = 1;
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -6662,7 +6684,8 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/machinery/fire_alarm/north_mount{
+/obj/machinery/firealarm{
+	dir = 1;
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/white,
@@ -6930,7 +6953,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/portnacelle)
 "xj" = (
-/obj/machinery/power/apc/north_mount{
+/obj/machinery/power/apc{
 	cell_type = /obj/item/cell/super;
 	dir = 1;
 	name = "north bump";
@@ -7227,7 +7250,8 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
 	},
-/obj/item/radio/intercom/south_mount{
+/obj/item/radio/intercom{
+	dir = 1;
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -7327,7 +7351,8 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/techfloor/orange,
-/obj/machinery/fire_alarm/north_mount{
+/obj/machinery/firealarm{
+	dir = 1;
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled,
@@ -7551,7 +7576,8 @@
 /turf/simulated/wall/prepainted/engineering,
 /area/maintenance/trash_pit)
 "zy" = (
-/obj/machinery/fire_alarm/north_mount{
+/obj/machinery/firealarm{
+	dir = 1;
 	pixel_y = -24
 	},
 /obj/structure/table/bench/wooden,
@@ -8043,7 +8069,7 @@
 /obj/machinery/air_alarm{
 	pixel_y = 22
 	},
-/obj/machinery/power/apc/north_mount{
+/obj/machinery/power/apc{
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
@@ -8258,7 +8284,8 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/fire_alarm/north_mount{
+/obj/machinery/firealarm{
+	dir = 1;
 	pixel_y = -24
 	},
 /obj/effect/floor_decal/techfloor/orange{
@@ -8446,7 +8473,8 @@
 /area/engineering/atmos/monitoring)
 "Cy" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/obj/item/radio/intercom/south_mount{
+/obj/item/radio/intercom{
+	dir = 1;
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -8646,13 +8674,15 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/fire_alarm/north_mount{
+/obj/machinery/firealarm{
+	dir = 1;
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/shunt)
 "Dm" = (
-/obj/machinery/fire_alarm/north_mount{
+/obj/machinery/firealarm{
+	dir = 1;
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -8746,7 +8776,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/fire_alarm/north_mount{
+/obj/machinery/firealarm{
+	dir = 1;
 	pixel_y = -24
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
@@ -8869,7 +8900,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/tcommsat/computer)
 "DU" = (
-/obj/machinery/fire_alarm{
+/obj/machinery/firealarm{
 	pixel_y = 24
 	},
 /obj/machinery/atmospherics/portables_connector{
@@ -9210,7 +9241,8 @@
 /area/engineering/atmos/gas_storage)
 "Ff" = (
 /obj/landmark/spawnpoint/job/atmospheric_technician,
-/obj/item/radio/intercom/south_mount{
+/obj/item/radio/intercom{
+	dir = 1;
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -9605,7 +9637,10 @@
 /obj/item/hardsuit/ce/equipped{
 	req_access = list(56)
 	},
-/obj/machinery/fire_alarm/east_mount,
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -24
+	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/chief)
 "Gy" = (
@@ -9711,7 +9746,8 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
 "GP" = (
-/obj/machinery/fire_alarm/north_mount{
+/obj/machinery/firealarm{
+	dir = 1;
 	pixel_y = -24
 	},
 /obj/structure/ladder/up,
@@ -11015,7 +11051,8 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/monitoring)
 "Ll" = (
-/obj/machinery/fire_alarm/north_mount{
+/obj/machinery/firealarm{
+	dir = 1;
 	pixel_y = -24
 	},
 /obj/machinery/computer/ship/navigation/telescreen{
@@ -11067,7 +11104,8 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/item/radio/intercom/south_mount{
+/obj/item/radio/intercom{
+	dir = 1;
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -11526,7 +11564,8 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/storage)
 "MV" = (
-/obj/machinery/power/apc/east_mount{
+/obj/machinery/power/apc{
+	dir = 8;
 	name = "west bump";
 	pixel_x = -28
 	},
@@ -11777,7 +11816,8 @@
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/techfloor/orange,
-/obj/machinery/fire_alarm/north_mount{
+/obj/machinery/firealarm{
+	dir = 1;
 	pixel_y = -24
 	},
 /obj/machinery/light,
@@ -11832,7 +11872,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 6
 	},
-/obj/machinery/power/apc/north_mount{
+/obj/machinery/power/apc{
 	cell_type = /obj/item/cell/super;
 	dir = 1;
 	name = "north bump";
@@ -11979,7 +12019,8 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/storage)
 "Ov" = (
-/obj/machinery/power/apc/west_mount{
+/obj/machinery/power/apc{
+	dir = 4;
 	name = "east bump";
 	pixel_x = 28
 	},
@@ -12257,7 +12298,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/north_mount{
+/obj/machinery/power/apc{
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
@@ -12276,7 +12317,8 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
 "Pm" = (
-/obj/item/radio/intercom/south_mount{
+/obj/item/radio/intercom{
+	dir = 1;
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -12476,7 +12518,7 @@
 /turf/space,
 /area/space)
 "Qh" = (
-/obj/machinery/power/apc/north_mount{
+/obj/machinery/power/apc{
 	cell_type = /obj/item/cell/super;
 	dir = 1;
 	name = "north bump";
@@ -12538,7 +12580,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/portnacelle)
 "Qp" = (
-/obj/machinery/fire_alarm{
+/obj/machinery/firealarm{
 	pixel_y = 24
 	},
 /obj/effect/floor_decal/techfloor/orange{
@@ -12658,7 +12700,7 @@
 /turf/simulated/floor/tiled/hydro,
 /area/engineering/atmos)
 "QM" = (
-/obj/machinery/fire_alarm{
+/obj/machinery/firealarm{
 	dir = 4;
 	layer = 3.3;
 	pixel_x = 26
@@ -13027,7 +13069,8 @@
 /obj/machinery/camera/network/engineering{
 	dir = 4
 	},
-/obj/item/radio/intercom/west_mount{
+/obj/item/radio/intercom{
+	dir = 8;
 	name = "Station Intercom (General)";
 	pixel_x = -26
 	},
@@ -13093,7 +13136,7 @@
 	},
 /area/tcommsat/chamber)
 "Sj" = (
-/obj/machinery/power/apc/north_mount{
+/obj/machinery/power/apc{
 	cell_type = /obj/item/cell/super;
 	dir = 4;
 	name = "east bump";
@@ -13439,7 +13482,8 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
 	},
-/obj/item/radio/intercom/south_mount{
+/obj/item/radio/intercom{
+	dir = 1;
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -13538,7 +13582,8 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/portnacelle)
 "TL" = (
-/obj/item/radio/intercom/south_mount{
+/obj/item/radio/intercom{
+	dir = 1;
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -13633,7 +13678,10 @@
 /turf/space,
 /area/space)
 "Ua" = (
-/obj/machinery/fire_alarm/east_mount,
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -24
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "Ub" = (
@@ -13759,7 +13807,8 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 6
 	},
-/obj/machinery/power/apc/west_mount{
+/obj/machinery/power/apc{
+	dir = 4;
 	name = "east bump";
 	pixel_x = 28
 	},
@@ -13815,7 +13864,8 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/monitoring)
 "UC" = (
-/obj/item/radio/intercom/south_mount{
+/obj/item/radio/intercom{
+	dir = 1;
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -13991,7 +14041,8 @@
 /turf/simulated/wall/prepainted/engineering,
 /area/engineering/engine_monitoring)
 "Vi" = (
-/obj/machinery/fire_alarm/north_mount{
+/obj/machinery/firealarm{
+	dir = 1;
 	pixel_y = -24
 	},
 /obj/effect/floor_decal/techfloor/orange{
@@ -14225,7 +14276,7 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/north_mount{
+/obj/machinery/power/apc{
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
@@ -14245,7 +14296,8 @@
 /area/engineering/shunt)
 "Wb" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/obj/item/radio/intercom/south_mount{
+/obj/item/radio/intercom{
+	dir = 1;
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -14354,7 +14406,7 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/north_mount{
+/obj/machinery/power/apc{
 	cell_type = /obj/item/cell/super;
 	dir = 1;
 	name = "north bump";
@@ -14702,7 +14754,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/fire_alarm/north_mount{
+/obj/machinery/firealarm{
+	dir = 1;
 	pixel_y = -24
 	},
 /obj/effect/floor_decal/techfloor/orange,
@@ -14880,7 +14933,10 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/machinery/fire_alarm/east_mount,
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -24
+	},
 /turf/simulated/floor/tiled/white,
 /area/engineering/foyer_mezzenine)
 "Yh" = (
@@ -15118,7 +15174,8 @@
 	},
 /obj/structure/reagent_dispensers/watertank,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/power/apc/east_mount{
+/obj/machinery/power/apc{
+	dir = 8;
 	name = "west bump";
 	pixel_x = -28
 	},
@@ -15422,7 +15479,8 @@
 "ZK" = (
 /obj/structure/table/reinforced,
 /obj/item/flashlight/lamp,
-/obj/item/radio/intercom/south_mount{
+/obj/item/radio/intercom{
+	dir = 1;
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -15517,7 +15575,10 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/engineering/hallway/lower)
 "ZY" = (
-/obj/machinery/fire_alarm/east_mount,
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -24
+	},
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
 	},

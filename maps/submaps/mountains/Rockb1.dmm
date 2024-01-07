@@ -144,7 +144,8 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/west_mount{
+/obj/machinery/power/apc{
+	dir = 4;
 	name = "east bump";
 	operating = 0;
 	pixel_x = 24

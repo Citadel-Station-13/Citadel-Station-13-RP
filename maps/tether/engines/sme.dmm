@@ -208,7 +208,8 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/west_mount{
+/obj/machinery/power/apc{
+	dir = 4;
 	name = "east bump";
 	pixel_x = 28
 	},
@@ -1120,7 +1121,7 @@
 /obj/machinery/camera/network/engine{
 	dir = 8
 	},
-/obj/machinery/fire_alarm{
+/obj/machinery/firealarm{
 	dir = 4;
 	layer = 3.3;
 	pixel_x = 26
@@ -1382,7 +1383,8 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/west_mount{
+/obj/machinery/power/apc{
+	dir = 4;
 	name = "east bump";
 	pixel_x = 28
 	},
@@ -1394,7 +1396,8 @@
 "ds" = (
 /obj/effect/floor_decal/industrial/outline/blue,
 /obj/machinery/portable_atmospherics/canister/phoron,
-/obj/machinery/fire_alarm/north_mount{
+/obj/machinery/firealarm{
+	dir = 1;
 	pixel_y = -24
 	},
 /turf/simulated/floor,

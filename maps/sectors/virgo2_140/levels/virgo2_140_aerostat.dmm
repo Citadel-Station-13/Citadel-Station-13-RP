@@ -295,7 +295,7 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/north_mount{
+/obj/machinery/power/apc{
 	alarms_hidden = 1;
 	cell_type = /obj/item/cell/high/empty;
 	dir = 4;
