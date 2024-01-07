@@ -152,7 +152,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/locker)
 "ahw" = (
-/obj/machinery/power/apc/__east_mount,
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -1804,7 +1804,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/lightgrey/border,
-/obj/machinery/power/apc/__north_mount,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -8707,7 +8707,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/lightgrey/border,
-/obj/machinery/power/apc/__north_mount,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -13536,7 +13536,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/red)
 "iIa" = (
-/obj/machinery/power/apc/__east_mount,
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -14059,7 +14059,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery_hallway)
 "iZe" = (
-/obj/machinery/power/apc/__south_mount,
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -14630,7 +14630,7 @@
 "jqL" = (
 /obj/effect/floor_decal/industrial/outline/blue,
 /obj/machinery/portable_atmospherics/canister/oxygen,
-/obj/machinery/power/apc/__north_mount,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -15553,7 +15553,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
 "jYp" = (
-/obj/machinery/power/apc/__south_mount,
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -15663,7 +15663,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/power/apc/__north_mount,
+/obj/machinery/power/apc/south_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
@@ -18811,7 +18811,7 @@
 /turf/simulated/floor,
 /area/maintenance/substation/cafeteria_dock)
 "lQX" = (
-/obj/machinery/power/apc/__north_mount,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -19422,7 +19422,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "mka" = (
-/obj/machinery/power/apc/__west_mount,
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -19661,7 +19661,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/rnd/research)
 "mqr" = (
-/obj/machinery/power/apc/__east_mount,
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green,
 /turf/simulated/floor/plating,
 /area/maintenance/research/rnd)
@@ -30243,7 +30243,7 @@
 /turf/simulated/floor/wood,
 /area/security/breakroom)
 "tlq" = (
-/obj/machinery/power/apc/__south_mount,
+/obj/machinery/power/apc/north_mount,
 /obj/structure/catwalk,
 /obj/structure/cable{
 	icon_state = "0-4"
@@ -31235,7 +31235,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/machinery/power/apc/__south_mount,
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -32188,7 +32188,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/obj/machinery/power/apc/__north_mount,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -33953,7 +33953,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/hammerhead/general)
 "vEJ" = (
-/obj/machinery/power/apc/__south_mount,
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -36300,7 +36300,7 @@
 /obj/effect/floor_decal/corner/paleblue/bordercorner2{
 	dir = 6
 	},
-/obj/machinery/power/apc/__west_mount,
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -36698,7 +36698,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/medsec_maintenance)
 "xFv" = (
-/obj/machinery/power/apc/__north_mount,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -37679,7 +37679,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/brig)
 "yfc" = (
-/obj/machinery/power/apc/__north_mount,
+/obj/machinery/power/apc/south_mount,
 /obj/effect/floor_decal/rust,
 /obj/structure/cable/green{
 	icon_state = "4-8"

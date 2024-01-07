@@ -1034,7 +1034,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/alarms_hidden/__east_mount,
+/obj/machinery/power/apc/alarms_hidden/west_mount,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/tabiranth)
 "aY" = (

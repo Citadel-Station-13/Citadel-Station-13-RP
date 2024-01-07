@@ -676,7 +676,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-5"
 	},
-/obj/machinery/power/apc/__north_mount,
+/obj/machinery/power/apc/south_mount,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance/south)
 "hc" = (
@@ -1404,7 +1404,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/janitorial)
 "mF" = (
-/obj/machinery/power/apc/__north_mount,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -3502,7 +3502,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/__north_mount,
+/obj/machinery/power/apc/south_mount,
 /turf/simulated/floor/tiled/monotile,
 /area/gateway)
 "EQ" = (
@@ -3942,7 +3942,7 @@
 	dir = 8
 	},
 /obj/structure/cable/green,
-/obj/machinery/power/apc/__north_mount,
+/obj/machinery/power/apc/south_mount,
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/outpost/near_gateway)
 "Jl" = (
@@ -4145,7 +4145,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-6"
 	},
-/obj/machinery/power/apc/__south_mount,
+/obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance/north)
 "La" = (
@@ -4259,7 +4259,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 5
 	},
-/obj/machinery/power/apc/__south_mount,
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -4358,7 +4358,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
 	},
-/obj/machinery/power/apc/__north_mount,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -4613,7 +4613,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-6"
 	},
-/obj/machinery/power/apc/__east_mount,
+/obj/machinery/power/apc/west_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/quartermaster/belterdock)
 "Pz" = (
