@@ -1,5 +1,3 @@
-GLOBAL_LIST_EMPTY(cached_previews)
-
 /datum/description_profile
 	var/datum/weakref/host
 
