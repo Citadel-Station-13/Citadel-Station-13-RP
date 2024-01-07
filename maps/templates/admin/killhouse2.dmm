@@ -1722,7 +1722,7 @@
 /turf/simulated/floor/tiled/white,
 /area/killhouse/two)
 "Ev" = (
-/obj/machinery/power/apc/hyper/east{
+/obj/machinery/power/apc/hyper/east_mount{
 	dir = 2;
 	cell_type = /obj/item/cell/infinite
 	},
@@ -2717,7 +2717,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/killhouse/two)
 "Wi" = (
-/obj/machinery/power/apc/hyper/south{
+/obj/machinery/power/apc/hyper/south_mount{
 	dir = 2;
 	cell_type = /obj/item/cell/infinite
 	},

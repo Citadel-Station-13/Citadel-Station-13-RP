@@ -2314,7 +2314,7 @@
 /turf/simulated/shuttle/plating,
 /area/shuttle/trade_ship/general)
 "iU" = (
-/obj/machinery/power/apc/alarms_hidden/south{
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	name = "north bump";
 	pixel_y = 28;
 	req_access = list(160)
@@ -2340,7 +2340,7 @@
 "iW" = (
 /obj/structure/cable/yellow,
 /obj/structure/catwalk,
-/obj/machinery/power/apc/alarms_hidden/north{
+/obj/machinery/power/apc/alarms_hidden/north_mount{
 	cell_type = /obj/item/cell/super;
 	name = "south bump";
 	pixel_y = -28;
@@ -4973,7 +4973,7 @@
 /obj/machinery/vending/nifsoft_shop{
 	dir = 8
 	},
-/obj/machinery/power/apc/alarms_hidden/north{
+/obj/machinery/power/apc/alarms_hidden/north_mount{
 	cell_type = /obj/item/cell/super;
 	name = "south bump";
 	pixel_y = -28;
@@ -13459,7 +13459,7 @@
 /turf/simulated/floor/wood,
 /area/tradeport/cyndishow)
 "Zg" = (
-/obj/machinery/power/apc/alarms_hidden/north{
+/obj/machinery/power/apc/alarms_hidden/north_mount{
 	cell_type = /obj/item/cell/super;
 	name = "south bump";
 	pixel_y = -28;

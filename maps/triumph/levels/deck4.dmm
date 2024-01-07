@@ -11942,7 +11942,7 @@
 	dir = 8;
 	pixel_x = 24
 	},
-/obj/machinery/camera/network/northern_star{
+/obj/machinery/camera/network/north_mountern_star{
 	dir = 8
 	},
 /obj/effect/floor_decal/borderfloor{

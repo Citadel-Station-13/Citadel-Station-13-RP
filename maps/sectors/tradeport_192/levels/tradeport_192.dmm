@@ -2058,7 +2058,7 @@
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/tradeport/commhall)
 "hr" = (
-/obj/machinery/power/apc/alarms_hidden/north{
+/obj/machinery/power/apc/alarms_hidden/north_mount{
 	cell_type = /obj/item/cell/super;
 	name = "south bump";
 	pixel_y = -28;
@@ -6968,7 +6968,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 9
 	},
-/obj/machinery/power/apc/alarms_hidden/south{
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	name = "north bump";
 	pixel_y = 28;
 	req_access = list(160)
@@ -7955,7 +7955,7 @@
 /turf/simulated/floor,
 /area/tradeport/pads)
 "CK" = (
-/obj/machinery/power/apc/alarms_hidden/south{
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	name = "north bump";
 	pixel_y = 28;
 	req_access = list(160)
@@ -9688,7 +9688,7 @@
 /obj/machinery/vending/nifsoft_shop{
 	dir = 8
 	},
-/obj/machinery/power/apc/alarms_hidden/north{
+/obj/machinery/power/apc/alarms_hidden/north_mount{
 	cell_type = /obj/item/cell/super;
 	name = "south bump";
 	pixel_y = -28;
@@ -13878,7 +13878,7 @@
 "Yu" = (
 /obj/structure/cable/yellow,
 /obj/structure/catwalk,
-/obj/machinery/power/apc/alarms_hidden/north{
+/obj/machinery/power/apc/alarms_hidden/north_mount{
 	cell_type = /obj/item/cell/super;
 	name = "south bump";
 	pixel_y = -28;

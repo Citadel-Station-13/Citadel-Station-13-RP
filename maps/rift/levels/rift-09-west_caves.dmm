@@ -2226,7 +2226,7 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost)
 "As" = (
-/obj/machinery/power/apc/alarms_hidden/north{
+/obj/machinery/power/apc/alarms_hidden/north_mount{
 	cell_type = null;
 	chargelevel = 0;
 	dir = 1
@@ -3777,7 +3777,7 @@
 /turf/simulated/floor/outdoors/snow/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
 "RG" = (
-/obj/machinery/power/apc/alarms_hidden/north{
+/obj/machinery/power/apc/alarms_hidden/north_mount{
 	cell_type = null;
 	chargelevel = 0;
 	dir = 1

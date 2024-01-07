@@ -1016,7 +1016,7 @@
 /area/submap/debrisfield_vr/tinyshuttle/engine)
 "bS" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/fuel,
-/obj/machinery/fire_alarm/alarms_hidden/north{
+/obj/machinery/fire_alarm/alarms_hidden/north_mount{
 	pixel_y = -24
 	},
 /obj/effect/debris/cleanable/liquid_fuel,
@@ -1037,7 +1037,7 @@
 /turf/simulated/shuttle/plating/airless/carry,
 /area/submap/debrisfield_vr/tinyshuttle/engine)
 "bV" = (
-/obj/machinery/fire_alarm/alarms_hidden/west,
+/obj/machinery/fire_alarm/alarms_hidden/west_mount,
 /turf/simulated/floor/reinforced/airless,
 /area/submap/debrisfield_vr/tinyshuttle/hangar)
 "bW" = (

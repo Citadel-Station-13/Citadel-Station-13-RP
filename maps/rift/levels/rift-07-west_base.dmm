@@ -683,7 +683,7 @@
 "Jt" = (
 /obj/structure/bed,
 /obj/item/bedsheet,
-/obj/machinery/power/apc/alarms_hidden/north{
+/obj/machinery/power/apc/alarms_hidden/north_mount{
 	cell_type = null;
 	chargelevel = 0;
 	dir = 1

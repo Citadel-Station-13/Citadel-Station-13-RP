@@ -869,7 +869,7 @@
 /area/class_p/unexplored)
 "Sj" = (
 /obj/structure/cable,
-/obj/machinery/power/apc/alarms_hidden/west{
+/obj/machinery/power/apc/alarms_hidden/west_mount{
 	pixel_x = 32;
 	req_access = null;
 	start_charge = 0

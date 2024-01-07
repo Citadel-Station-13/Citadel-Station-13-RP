@@ -4877,7 +4877,7 @@
 /obj/structure/cable/orange{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/super/south,
+/obj/machinery/power/apc/super/south_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/main_map/maintenance/deck_four/aft/port)
 "sD" = (
@@ -8997,7 +8997,7 @@
 /area/main_map/maintenance/deck_four/aft)
 "Ik" = (
 /obj/structure/cable/green,
-/obj/machinery/power/apc/critical/west,
+/obj/machinery/power/apc/critical/west_mount,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
@@ -9007,7 +9007,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
-/obj/machinery/power/apc/high/east,
+/obj/machinery/power/apc/high/east_mount,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/gravity_gen)
 "Io" = (

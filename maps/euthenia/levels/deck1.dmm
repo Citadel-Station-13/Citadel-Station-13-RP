@@ -916,7 +916,7 @@
 	pixel_y = -26;
 	specialfunctions = 4
 	},
-/obj/machinery/power/apc/critical/west,
+/obj/machinery/power/apc/critical/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -2074,7 +2074,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay)
 "chW" = (
-/obj/machinery/power/apc/critical/west,
+/obj/machinery/power/apc/critical/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -3949,7 +3949,7 @@
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_one/aft/starboard)
 "epA" = (
-/obj/machinery/power/apc/critical/east,
+/obj/machinery/power/apc/critical/east_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -4631,7 +4631,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/power/apc/critical/west,
+/obj/machinery/power/apc/critical/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -6643,7 +6643,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/critical/north,
+/obj/machinery/power/apc/critical/north_mount,
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/Hangar_bay/deck1/a)
 "hlh" = (
@@ -11820,7 +11820,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
 "nsF" = (
-/obj/machinery/power/apc/critical/west,
+/obj/machinery/power/apc/critical/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -11870,7 +11870,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/crew_quarters/bar)
 "nvx" = (
-/obj/machinery/power/apc/critical/west,
+/obj/machinery/power/apc/critical/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -12348,7 +12348,7 @@
 	dir = 5
 	},
 /obj/machinery/holoplant,
-/obj/machinery/power/apc/high/north,
+/obj/machinery/power/apc/high/north_mount,
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -12892,7 +12892,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/main_map/hallway/deck1/fore)
 "oHh" = (
-/obj/machinery/power/apc/critical/east,
+/obj/machinery/power/apc/critical/east_mount,
 /obj/structure/cable/green,
 /turf/simulated/floor/tiled,
 /area/main_map/Hangar_bay/deck1)
@@ -13244,7 +13244,7 @@
 /turf/simulated/floor/tiled,
 /area/main_map/hallway/deck1/fore)
 "pat" = (
-/obj/machinery/power/apc/critical/west,
+/obj/machinery/power/apc/critical/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -14985,7 +14985,7 @@
 /turf/simulated/floor/airless,
 /area/space)
 "riy" = (
-/obj/machinery/power/apc/critical/west,
+/obj/machinery/power/apc/critical/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -16636,7 +16636,7 @@
 /turf/simulated/floor/wood,
 /area/bridge/hallway)
 "toK" = (
-/obj/machinery/power/apc/critical/west,
+/obj/machinery/power/apc/critical/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -17813,7 +17813,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/briefingroom)
 "utn" = (
-/obj/machinery/power/apc/critical/south,
+/obj/machinery/power/apc/critical/south_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -18369,7 +18369,7 @@
 	},
 /area/holodeck_control)
 "vfz" = (
-/obj/machinery/power/apc/critical/west,
+/obj/machinery/power/apc/critical/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},

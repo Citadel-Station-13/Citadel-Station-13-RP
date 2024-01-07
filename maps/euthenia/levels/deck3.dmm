@@ -11090,7 +11090,7 @@
 	icon_state = "1-4"
 	},
 /obj/structure/cable,
-/obj/machinery/power/apc/critical/west,
+/obj/machinery/power/apc/critical/west_mount,
 /turf/simulated/floor/plating,
 /area/ai_upload)
 "lOD" = (
@@ -14259,7 +14259,7 @@
 	layer = 2.6
 	},
 /obj/item/storage/toolbox/electrical,
-/obj/machinery/power/apc/critical/west,
+/obj/machinery/power/apc/critical/west_mount,
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/entrance)
 "oYW" = (
@@ -15343,7 +15343,7 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/critical/east,
+/obj/machinery/power/apc/critical/east_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/techfloor,

@@ -5,7 +5,7 @@
 /turf/simulated/floor/wood,
 /area/killhouse/one)
 "au" = (
-/obj/machinery/power/apc/hyper/west{
+/obj/machinery/power/apc/hyper/west_mount{
 	dir = 2;
 	cell_type = /obj/item/cell/infinite
 	},
@@ -824,7 +824,7 @@
 /area/killhouse/one)
 "MR" = (
 /obj/structure/trash_pile,
-/obj/machinery/power/apc/hyper/east{
+/obj/machinery/power/apc/hyper/east_mount{
 	dir = 2;
 	cell_type = /obj/item/cell/infinite
 	},

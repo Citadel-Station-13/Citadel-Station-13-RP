@@ -489,7 +489,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/critical/east,
+/obj/machinery/power/apc/critical/east_mount,
 /obj/machinery/light/no_nightshift,
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/bunker)
@@ -4289,7 +4289,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/high/east,
+/obj/machinery/power/apc/high/east_mount,
 /obj/effect/floor_decal/industrial/warning/corner,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -8293,7 +8293,7 @@
 /area/rift/station/fighter_bay/hangar)
 "gcG" = (
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/machinery/power/apc/high/east,
+/obj/machinery/power/apc/high/east_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/atmos/processing)
 "gda" = (
@@ -10043,7 +10043,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/super/critical/north,
+/obj/machinery/power/apc/super/critical/north_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/space)
 "hDF" = (
@@ -10263,7 +10263,7 @@
 /area/main_map/hallway/deck2)
 "hPe" = (
 /obj/structure/cable/green,
-/obj/machinery/power/apc/high/south,
+/obj/machinery/power/apc/high/south_mount,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/station/fighter_bay/hangar)
 "hPh" = (
@@ -13440,7 +13440,7 @@
 /area/rnd/rdoffice)
 "kkh" = (
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/machinery/power/apc/high/north,
+/obj/machinery/power/apc/high/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -22212,7 +22212,7 @@
 /area/main_map/maintenance/deck_two/forward/starboard)
 "qLV" = (
 /obj/structure/cable/cyan,
-/obj/machinery/power/apc/critical/south,
+/obj/machinery/power/apc/critical/south_mount,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/engine_smes)
 "qLW" = (
@@ -22921,7 +22921,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/critical/east,
+/obj/machinery/power/apc/critical/east_mount,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/shield_gen)
 "rpp" = (
@@ -23281,7 +23281,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/obj/machinery/power/apc/high/south,
+/obj/machinery/power/apc/high/south_mount,
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
@@ -23550,7 +23550,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
-/obj/machinery/power/apc/critical/north,
+/obj/machinery/power/apc/critical/north_mount,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/gas_storage)
 "rOV" = (
@@ -30674,7 +30674,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/high/east,
+/obj/machinery/power/apc/high/east_mount,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/upper)
 "xdU" = (
@@ -32123,7 +32123,7 @@
 /area/main_map/maintenance/atmospheric_substation/ai)
 "yhd" = (
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/machinery/power/apc/high/north,
+/obj/machinery/power/apc/high/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
