@@ -3613,7 +3613,7 @@
 /area/gateway)
 "FP" = (
 /obj/effect/mist,
-/turf/simulated/floor/water,
+/turf/unsimulated/floor/lava/geothermal,
 /area/space)
 "FW" = (
 /obj/machinery/door/firedoor{
@@ -4669,6 +4669,13 @@
 /obj/machinery/light/small,
 /turf/simulated/floor/outdoors/snow/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_deep)
+"Qw" = (
+/obj/structure/sign/warning/lava{
+	name = "\improper SUPERHEATED GAS";
+	pixel_x = -32
+	},
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/rift/surfacebase/outside/west_deep/submap_seedzone)
 "Qz" = (
 /obj/structure/inflatable,
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
@@ -30641,7 +30648,7 @@ WW
 WW
 WW
 WW
-Wv
+Qw
 Wv
 WW
 Vs
