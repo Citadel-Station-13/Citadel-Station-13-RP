@@ -20434,7 +20434,7 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/breakroom)
 "oTC" = (
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/south_mount{
 	req_access = list(67)
 	},
 /obj/structure/cable/green,

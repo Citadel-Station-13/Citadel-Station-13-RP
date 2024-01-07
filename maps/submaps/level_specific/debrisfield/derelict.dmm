@@ -369,7 +369,7 @@
 /area/debrisfield/derelict)
 "bJ" = (
 /obj/structure/cable,
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/south_mount{
 	alarms_hidden = 1
 	},
 /turf/simulated/floor/tiled/asteroid_steel/airless,

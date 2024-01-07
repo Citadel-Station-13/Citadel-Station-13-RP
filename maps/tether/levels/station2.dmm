@@ -12115,7 +12115,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/south_mount{
 	req_access = list(67)
 	},
 /obj/structure/cable/green,
@@ -13242,7 +13242,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/visitorhallway/lounge)
 "AL" = (
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/south_mount{
 	alarms_hidden = 1;
 	req_access = list();
 	req_one_access = list(11,67)

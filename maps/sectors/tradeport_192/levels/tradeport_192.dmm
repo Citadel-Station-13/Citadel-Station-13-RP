@@ -2058,7 +2058,7 @@
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/tradeport/commhall)
 "hr" = (
-/obj/machinery/power/apc/alarms_hidden{
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	cell_type = /obj/item/cell/super;
 	req_access = list(160)
 	},
@@ -3394,7 +3394,7 @@
 /turf/simulated/floor/plating,
 /area/tradeport/atmospherics)
 "lX" = (
-/obj/machinery/power/apc/alarms_hidden{
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	req_access = list(160)
 	},
 /obj/structure/cable/green{
@@ -7663,7 +7663,7 @@
 /turf/simulated/wall/r_wall,
 /area/tradeport/pads)
 "BK" = (
-/obj/machinery/power/apc/alarms_hidden{
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	req_access = list(160)
 	},
 /obj/structure/cable/green{
@@ -9689,7 +9689,7 @@
 /obj/machinery/vending/nifsoft_shop{
 	dir = 8
 	},
-/obj/machinery/power/apc/alarms_hidden{
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	cell_type = /obj/item/cell/super;
 	req_access = list(160)
 	},
@@ -9778,7 +9778,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/power/apc/alarms_hidden{
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	req_access = list(160)
 	},
 /obj/structure/cable/yellow{
@@ -13865,7 +13865,7 @@
 "Yu" = (
 /obj/structure/cable/yellow,
 /obj/structure/catwalk,
-/obj/machinery/power/apc/alarms_hidden{
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	cell_type = /obj/item/cell/super;
 	req_access = list(160)
 	},

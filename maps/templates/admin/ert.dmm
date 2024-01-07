@@ -590,7 +590,7 @@
 	dir = 4
 	},
 /obj/machinery/meter,
-/obj/machinery/power/apc/hyper{
+/obj/machinery/power/apc/hyper/south_mount{
 	alarms_hidden = 1;
 	name = "VB APC - South"
 	},
@@ -4314,7 +4314,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/eng_storage)
 "GT" = (
-/obj/machinery/power/apc/hyper{
+/obj/machinery/power/apc/hyper/south_mount{
 	alarms_hidden = 1;
 	name = "VB APC - South"
 	},
@@ -5803,7 +5803,7 @@
 /obj/item/smes_coil,
 /obj/item/t_scanner/advanced,
 /obj/item/t_scanner/advanced,
-/obj/machinery/power/apc/hyper{
+/obj/machinery/power/apc/hyper/south_mount{
 	alarms_hidden = 1;
 	name = "VB APC - South"
 	},

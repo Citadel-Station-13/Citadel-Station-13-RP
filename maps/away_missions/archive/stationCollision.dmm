@@ -2619,7 +2619,7 @@
 /area/awaymission/southblock)
 "kf" = (
 /obj/machinery/light/small,
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/south_mount{
 	cell_type = 5000;
 	name = "South Block APC"
 	},

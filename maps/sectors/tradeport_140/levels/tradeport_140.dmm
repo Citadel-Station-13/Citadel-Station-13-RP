@@ -2346,7 +2346,7 @@
 "iW" = (
 /obj/structure/cable/yellow,
 /obj/structure/catwalk,
-/obj/machinery/power/apc/alarms_hidden{
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	cell_type = /obj/item/cell/super;
 	req_access = list(160)
 	},
@@ -4972,7 +4972,7 @@
 /obj/machinery/vending/nifsoft_shop{
 	dir = 8
 	},
-/obj/machinery/power/apc/alarms_hidden{
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	cell_type = /obj/item/cell/super;
 	req_access = list(160)
 	},
@@ -8260,7 +8260,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/power/apc/alarms_hidden{
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	req_access = list(160)
 	},
 /obj/structure/cable/yellow{
@@ -8389,7 +8389,7 @@
 /turf/simulated/floor/wood,
 /area/shuttle/trade_ship/general)
 "Fw" = (
-/obj/machinery/power/apc/alarms_hidden{
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	req_access = list(160)
 	},
 /obj/structure/cable/green{
@@ -10955,7 +10955,7 @@
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/tradeport/safari)
 "PQ" = (
-/obj/machinery/power/apc/alarms_hidden{
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	req_access = list(160)
 	},
 /obj/structure/cable/green{
@@ -13450,7 +13450,7 @@
 /turf/simulated/floor/wood,
 /area/tradeport/cyndishow)
 "Zg" = (
-/obj/machinery/power/apc/alarms_hidden{
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	cell_type = /obj/item/cell/super;
 	req_access = list(160)
 	},

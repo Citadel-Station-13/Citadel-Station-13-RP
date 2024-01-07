@@ -19037,7 +19037,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/south_mount{
 	req_access = list(67)
 	},
 /obj/effect/floor_decal/borderfloorwhite,
@@ -33488,7 +33488,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/tether)
 "tLK" = (
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/south_mount{
 	req_access = list();
 	req_one_access = list(11,67)
 	},

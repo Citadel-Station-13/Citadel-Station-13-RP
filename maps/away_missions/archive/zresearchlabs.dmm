@@ -2775,7 +2775,7 @@
 /turf/simulated/floor,
 /area/awaymission/labs/researchdivision)
 "im" = (
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/south_mount{
 	dir = 0;
 	name = "Worn-out APC"
 	},
@@ -5233,7 +5233,7 @@
 	},
 /area/awaymission/labs/civilian)
 "oS" = (
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/south_mount{
 	dir = 0;
 	name = "Worn-out APC"
 	},
@@ -6012,7 +6012,7 @@
 	},
 /area/awaymission/labs/civilian)
 "rk" = (
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/south_mount{
 	dir = 0;
 	name = "Worn-out APC"
 	},
@@ -7027,7 +7027,7 @@
 "ur" = (
 /obj/structure/table/standard,
 /obj/machinery/light,
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/south_mount{
 	dir = 0;
 	name = "Worn-out APC"
 	},

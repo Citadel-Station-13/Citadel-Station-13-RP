@@ -2240,7 +2240,7 @@
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "SN" = (
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/south_mount{
 	cell_type = /obj/item/cell/infinite
 	},
 /turf/simulated/floor/tiled/dark/lavaland,

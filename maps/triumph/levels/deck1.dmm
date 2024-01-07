@@ -6376,7 +6376,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/south_mount{
 	cell_type = /obj/item/cell/super
 	},
 /obj/machinery/computer/general_air_control/large_tank_control{

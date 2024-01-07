@@ -863,7 +863,7 @@
 /turf/simulated/floor,
 /area/awaymission/snow_outpost/powered)
 "dl" = (
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/south_mount{
 	operating = 0
 	},
 /turf/simulated/floor,

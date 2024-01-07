@@ -3429,7 +3429,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/manta/med)
 "rl" = (
-/obj/machinery/power/apc/hyper{
+/obj/machinery/power/apc/hyper/south_mount{
 	alarms_hidden = 1;
 	name = "Merc APC - South"
 	},
@@ -4215,7 +4215,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/recreation)
 "vw" = (
-/obj/machinery/power/apc/hyper{
+/obj/machinery/power/apc/hyper/south_mount{
 	alarms_hidden = 1;
 	name = "Merc APC - South"
 	},
@@ -5691,7 +5691,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/mech_bay)
 "Cn" = (
-/obj/machinery/power/apc/hyper{
+/obj/machinery/power/apc/hyper/south_mount{
 	alarms_hidden = 1;
 	name = "Merc APC - South"
 	},
@@ -6370,7 +6370,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 6
 	},
-/obj/machinery/power/apc/hyper{
+/obj/machinery/power/apc/hyper/south_mount{
 	alarms_hidden = 1;
 	name = "Merc APC - South"
 	},
@@ -6641,7 +6641,7 @@
 /obj/structure/table/rack,
 /obj/item/mecha_parts/mecha_equipment/shocker,
 /obj/effect/floor_decal/techfloor,
-/obj/machinery/power/apc/hyper{
+/obj/machinery/power/apc/hyper/south_mount{
 	alarms_hidden = 1;
 	name = "Merc APC - South"
 	},
@@ -7412,7 +7412,7 @@
 /area/ship/manta/dock_star)
 "LC" = (
 /obj/effect/floor_decal/techfloor,
-/obj/machinery/power/apc/hyper{
+/obj/machinery/power/apc/hyper/south_mount{
 	alarms_hidden = 1;
 	name = "Merc APC - South"
 	},
@@ -9477,7 +9477,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hangar)
 "Ww" = (
-/obj/machinery/power/apc/hyper{
+/obj/machinery/power/apc/hyper/south_mount{
 	alarms_hidden = 1;
 	name = "Merc APC - South"
 	},

@@ -155,7 +155,7 @@
 	dir = 8;
 	pixel_x = -32
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/south_mount{
 	start_charge = 0
 	},
 /turf/simulated/floor/tiled/techfloor{
@@ -1279,7 +1279,7 @@
 	dir = 8;
 	pixel_x = -32
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/south_mount{
 	start_charge = 0
 	},
 /turf/simulated/floor/tiled/techfloor{

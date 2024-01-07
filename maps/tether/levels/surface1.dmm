@@ -32256,7 +32256,7 @@
 /obj/effect/floor_decal/corner/paleblue/bordercorner2{
 	dir = 6
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/south_mount{
 	req_access = list(67)
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
