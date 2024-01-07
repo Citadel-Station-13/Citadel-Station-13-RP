@@ -95,7 +95,7 @@
 				input = sanitizeSafe(input(usr, "How would you like to name the camera?", "Set Camera Name", camera_name ? camera_name : temptag), MAX_NAME_LEN)
 
 				state = 4
-				var/obj/machinery/camera/auto/C = new(src.loc)
+				var/obj/machinery/camera/auto_mount/C = new(src.loc)
 				forceMove(C)
 				C.assembly = src
 				C.replace_networks(uniqueList(tempnetwork))
