@@ -384,8 +384,7 @@
 /turf/simulated/floor/reinforced,
 /area/shuttle/mackerel_hc_skel)
 "ut" = (
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/north{
 	pixel_y = -26
 	},
 /obj/machinery/light,

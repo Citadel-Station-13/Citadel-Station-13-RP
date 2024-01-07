@@ -723,8 +723,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -26
 	},
 /obj/machinery/light/flicker,
@@ -2446,10 +2445,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/shuttle/gecko_cr_wreck)
 "Tw" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = 27
-	},
+/obj/machinery/fire_alarm/west,
 /obj/structure/bed/pod,
 /obj/item/bedsheet/blue,
 /turf/simulated/floor/tiled/techfloor,
@@ -2612,8 +2608,7 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 8
 	},
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -26
 	},
 /obj/structure/handrail{

@@ -296,8 +296,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/dock_port)
 "cY" = (
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/north{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1342,8 +1341,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/hallways_aft)
 "lR" = (
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/north{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -1578,8 +1576,7 @@
 /obj/item/gun/energy/xray,
 /obj/item/gun/energy/xray,
 /obj/machinery/light,
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/north{
 	pixel_y = -26
 	},
 /obj/effect/floor_decal/industrial/outline/grey,
@@ -2846,8 +2843,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/hallways)
 "vv" = (
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/north{
 	pixel_y = -26
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -3947,8 +3943,7 @@
 /obj/item/hardsuit/ert/security,
 /obj/item/hardsuit/ert/security,
 /obj/item/hardsuit/ert/security,
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/north{
 	pixel_y = -26
 	},
 /obj/effect/floor_decal/industrial/outline/grey,
@@ -4039,8 +4034,7 @@
 "EB" = (
 /obj/effect/floor_decal/corner/white,
 /obj/machinery/portable_atmospherics/canister/air,
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/north{
 	pixel_y = -26
 	},
 /obj/machinery/light_switch{
@@ -4555,8 +4549,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/north{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -4632,8 +4625,7 @@
 /obj/item/pen{
 	pixel_y = 4
 	},
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/north{
 	pixel_y = -26
 	},
 /obj/item/toy/figure/ert,
@@ -6282,8 +6274,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/teleporter)
 "Ul" = (
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/north{
 	pixel_y = -26
 	},
 /obj/item/modular_computer/console/preset/medical{
@@ -6808,8 +6799,7 @@
 /area/ship/ert/med)
 "ZU" = (
 /obj/machinery/light,
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/north{
 	pixel_y = -26
 	},
 /obj/machinery/power/port_gen/pacman/mrs,

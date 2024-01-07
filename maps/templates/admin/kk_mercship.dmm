@@ -1258,10 +1258,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/west,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -1520,10 +1517,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/recreation)
 "hH" = (
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/west,
 /turf/simulated/floor/wood,
 /area/ship/manta/commander)
 "hL" = (
@@ -2545,10 +2539,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/west,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/manta_ship_boat)
 "my" = (
@@ -3152,8 +3143,7 @@
 /area/ship/manta/hallways_star)
 "pt" = (
 /obj/structure/catwalk,
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/north{
 	pixel_y = -26
 	},
 /turf/simulated/floor/plating,
@@ -3404,10 +3394,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/west,
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
@@ -3542,8 +3529,7 @@
 /area/ship/manta/hallways_aft)
 "rE" = (
 /obj/effect/floor_decal/techfloor,
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/north{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/white,
@@ -3953,8 +3939,7 @@
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/north{
 	pixel_y = -26
 	},
 /obj/effect/floor_decal/techfloor,
@@ -4470,8 +4455,7 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "plant-20"
 	},
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/north{
 	pixel_y = -26
 	},
 /obj/effect/floor_decal/techfloor{
@@ -6090,10 +6074,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/west,
 /obj/item/cell/device/weapon,
 /obj/item/cell/device/weapon,
 /obj/item/cell/device/weapon,
@@ -7401,8 +7382,7 @@
 	dir = 4;
 	pixel_x = -26
 	},
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/north{
 	pixel_y = -26
 	},
 /obj/machinery/light,
@@ -8057,10 +8037,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 6
 	},
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/west,
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/holding)
@@ -8426,8 +8403,7 @@
 /area/ship/manta/teleporter)
 "QE" = (
 /obj/structure/catwalk,
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/north{
 	pixel_y = -26
 	},
 /turf/simulated/floor/plating,
@@ -9248,10 +9224,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/west,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/recreation)
 "UR" = (

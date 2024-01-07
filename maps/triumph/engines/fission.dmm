@@ -202,8 +202,7 @@
 /area/engineering/engine_room)
 "hS" = (
 /obj/machinery/light,
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -879,8 +878,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/engine_room)
 "Ny" = (
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{

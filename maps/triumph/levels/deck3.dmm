@@ -839,8 +839,7 @@
 /area/triumph/station/stairs_three)
 "aHX" = (
 /obj/effect/floor_decal/techfloor,
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /obj/structure/flora/pottedplant/stoutbush,
@@ -2319,8 +2318,7 @@
 /turf/simulated/floor/tiled,
 /area/medical/medbay3)
 "bYR" = (
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled,
@@ -2991,10 +2989,7 @@
 /area/maintenance/fpmaint2)
 "cDC" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/west,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medical_restroom)
 "cEs" = (
@@ -3082,10 +3077,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/west,
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_c)
 "cGb" = (
@@ -3238,10 +3230,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/west,
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_b)
 "cMb" = (
@@ -4883,8 +4872,7 @@
 /obj/item/material/knife/machete,
 /obj/item/clothing/accessory/holster/machete,
 /obj/item/clothing/accessory/permit/gun/paramedic,
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /obj/item/bodybag/cryobag,
@@ -5908,8 +5896,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled,
@@ -6873,8 +6860,7 @@
 /turf/simulated/floor/tiled,
 /area/medical/surgeryprep)
 "fNb" = (
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /obj/effect/floor_decal/borderfloorwhite,
@@ -7670,8 +7656,7 @@
 /turf/simulated/floor/plating,
 /area/rnd/rdoffice)
 "guA" = (
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /obj/effect/floor_decal/borderfloorwhite,
@@ -8260,8 +8245,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/ward)
 "gXK" = (
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /obj/effect/floor_decal/borderfloorwhite{
@@ -9259,8 +9243,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -10011,8 +9994,7 @@
 /area/rnd/research/testingrange)
 "iny" = (
 /obj/structure/loot_pile/maint/trash,
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /turf/simulated/floor/plating,
@@ -10211,8 +10193,7 @@
 /turf/simulated/floor/tiled,
 /area/medical/surgery2)
 "iuJ" = (
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /obj/structure/closet/coffin,
@@ -11223,8 +11204,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/white,
@@ -11857,10 +11837,7 @@
 /obj/machinery/atmospherics/pipe/manifold/visible/red{
 	dir = 4
 	},
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/west,
 /turf/simulated/floor/tiled,
 /area/rnd/test_area)
 "jFt" = (
@@ -13771,8 +13748,7 @@
 /obj/effect/floor_decal/corner/blue/full{
 	dir = 4
 	},
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /obj/machinery/camera/network/medbay{
@@ -13819,8 +13795,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
 "lsR" = (
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /obj/effect/floor_decal/corner/blue/diagonal,
@@ -15244,10 +15219,7 @@
 	dir = 1
 	},
 /obj/structure/catwalk,
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/west,
 /turf/simulated/floor/plating,
 /area/maintenance/medbay/aft)
 "mHV" = (
@@ -15687,8 +15659,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /obj/effect/floor_decal/borderfloorwhite,
@@ -16771,8 +16742,7 @@
 /turf/simulated/floor/wood,
 /area/hallway/primary/port)
 "nUC" = (
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /obj/effect/floor_decal/borderfloorwhite,
@@ -17998,10 +17968,7 @@
 /area/rnd/misc_lab)
 "oSV" = (
 /obj/structure/reagent_dispensers/watertank,
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/west,
 /turf/simulated/floor/plating,
 /area/maintenance/research)
 "oTe" = (
@@ -18104,10 +18071,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/starboard)
 "oXx" = (
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/west,
 /obj/structure/loot_pile/maint/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/research)
@@ -19693,8 +19657,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/port)
 "qaw" = (
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /obj/structure/bed/padded,
@@ -20794,10 +20757,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "qSB" = (
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/west,
 /obj/machinery/disease2/diseaseanalyser,
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -20975,8 +20935,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled,
@@ -21280,8 +21239,7 @@
 /area/medical/virologyisolation)
 "rnw" = (
 /obj/structure/closet/l3closet/virology,
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /obj/effect/floor_decal/borderfloorwhite{
@@ -21553,8 +21511,7 @@
 /turf/simulated/floor/tiled,
 /area/medical/medbay_emt_bay)
 "rAp" = (
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /obj/random/trash,
@@ -21876,8 +21833,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /obj/effect/floor_decal/borderfloorwhite,
@@ -22132,8 +22088,7 @@
 /area/hallway/primary/aft)
 "rZm" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /obj/machinery/light,
@@ -22298,8 +22253,7 @@
 /turf/simulated/floor/carpet/tealcarpet,
 /area/medical/patient_d)
 "skH" = (
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /obj/structure/bed/chair/wheelchair,
@@ -22834,8 +22788,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "sHa" = (
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /obj/structure/reagent_dispensers/watertank,
@@ -22964,8 +22917,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "sLb" = (
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -24049,8 +24001,7 @@
 "tIc" = (
 /obj/machinery/papershredder,
 /obj/effect/floor_decal/corner/blue/full,
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /obj/machinery/power/apc{
@@ -24308,8 +24259,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
 "tPb" = (
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled,
@@ -25004,10 +24954,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/west,
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_a)
 "uuj" = (
@@ -25735,8 +25682,7 @@
 /turf/simulated/floor/tiled,
 /area/medical/medbay_primary_storage)
 "vcY" = (
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /obj/random/trash_pile,
@@ -26014,8 +25960,7 @@
 /obj/item/storage/firstaid/toxin{
 	pixel_y = 8
 	},
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /obj/effect/floor_decal/industrial/outline/blue,
@@ -26062,8 +26007,7 @@
 /obj/effect/floor_decal/industrial/loading{
 	dir = 4
 	},
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled,
@@ -27506,8 +27450,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled,
@@ -27795,10 +27738,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/west,
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_d)
 "wLf" = (
@@ -28462,10 +28402,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
 "xrB" = (
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/west,
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
@@ -29051,10 +28988,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/research)
 "xOU" = (
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/west,
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
 "xOV" = (
@@ -29220,8 +29154,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/xenobiology/xenoflora_storage)
 "xUB" = (
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /obj/machinery/portable_atmospherics/powered/pump,
@@ -29394,8 +29327,7 @@
 /area/medical/sleeper)
 "ygh" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /obj/machinery/light,

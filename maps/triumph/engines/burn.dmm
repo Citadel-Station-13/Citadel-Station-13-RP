@@ -279,8 +279,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -549,8 +548,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/techmaint,

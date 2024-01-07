@@ -437,8 +437,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled,
@@ -461,8 +460,7 @@
 /obj/item/storage/firstaid/toxin{
 	pixel_y = 8
 	},
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /obj/effect/floor_decal/industrial/outline/blue,
@@ -1016,8 +1014,7 @@
 /obj/effect/floor_decal/industrial/loading{
 	dir = 4
 	},
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/black,
@@ -2650,8 +2647,7 @@
 /turf/simulated/floor/tiled,
 /area/main_map/hallway/deck3)
 "cSm" = (
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /obj/structure/reagent_dispensers/watertank,
@@ -17676,10 +17672,7 @@
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/hydroponics/garden)
 "sLm" = (
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/west,
 /obj/machinery/disease2/diseaseanalyser,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/green/border,

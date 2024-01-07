@@ -5178,10 +5178,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/hos)
 "dtN" = (
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/west,
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/security/security_processing)
 "dtZ" = (
@@ -5383,10 +5380,7 @@
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/sauna)
 "dBP" = (
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/west,
 /turf/simulated/floor/plating,
 /area/maintenance/central)
 "dCl" = (
@@ -6842,10 +6836,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/west,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/civilian_hallway_mid)
 "eFy" = (
@@ -8400,8 +8391,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /obj/effect/floor_decal/borderfloorblack,
@@ -8427,10 +8417,7 @@
 /area/lawoffice)
 "fLQ" = (
 /obj/structure/closet/secure_closet/detective,
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/west,
 /turf/simulated/floor/lino,
 /area/security/detectives_office)
 "fLR" = (
@@ -14168,10 +14155,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/west,
 /turf/simulated/floor/carpet/blucarpet,
 /area/lawoffice)
 "jDE" = (
@@ -14486,8 +14470,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/security/starboard)
 "jNp" = (
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -15827,10 +15810,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
 "kGi" = (
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/west,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/CMO_quarters)
 "kGu" = (
@@ -16384,8 +16364,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5,
 /obj/item/clothing/under/swimsuit/stripper/cowbikini,
 /obj/item/reagent_containers/food/drinks/cans/waterbottle,
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -25
 	},
 /turf/simulated/floor/tiled,
@@ -16532,8 +16511,7 @@
 /turf/simulated/floor/airless/ceiling,
 /area/space)
 "lcP" = (
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /obj/structure/filingcabinet/chestdrawer,
@@ -18713,8 +18691,7 @@
 /turf/simulated/wall/r_wall/prepainted/security,
 /area/security/brig)
 "mMS" = (
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /obj/effect/floor_decal/borderfloorblack,
@@ -22600,8 +22577,7 @@
 /area/security/brig)
 "pwQ" = (
 /obj/machinery/photocopier,
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /obj/effect/floor_decal/corner/purple/full,
@@ -22752,8 +22728,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
 "pAb" = (
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /turf/simulated/floor/wood,
@@ -22939,10 +22914,7 @@
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/general)
 "pEM" = (
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/west,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
 	},
@@ -24813,10 +24785,7 @@
 /area/hallway/secondary/civilian_hallway_mid)
 "qZu" = (
 /obj/machinery/light/small,
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/west,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/CE_quarters)
 "qZD" = (
@@ -26436,8 +26405,7 @@
 /turf/simulated/floor/tiled,
 /area/exploration/pathfinder_office)
 "shJ" = (
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /obj/machinery/light/small,
@@ -26779,8 +26747,7 @@
 /area/hallway/secondary/docking_hallway)
 "sve" = (
 /obj/structure/table/bench/wooden,
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -25
 	},
 /obj/effect/mist,
@@ -26836,10 +26803,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/west,
 /obj/effect/floor_decal/corner/red/border{
 	dir = 4
 	},
@@ -28224,10 +28188,7 @@
 /turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hos)
 "tCF" = (
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/west,
 /obj/structure/closet/firecloset,
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
@@ -31185,8 +31146,7 @@
 /area/exploration/excursion_dock)
 "vEi" = (
 /obj/effect/floor_decal/techfloor/orange,
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/dark,
@@ -33279,8 +33239,7 @@
 /area/gateway)
 "xch" = (
 /obj/machinery/light,
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /obj/structure/bed/chair{

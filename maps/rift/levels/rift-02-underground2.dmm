@@ -322,8 +322,7 @@
 /area/maintenance/lower/atmos)
 "aX" = (
 /obj/structure/catwalk,
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -1574,10 +1573,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/public_bunker)
 "eX" = (
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/west,
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
@@ -3263,10 +3259,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/undertwo)
 "jX" = (
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/west,
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
@@ -5190,10 +5183,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/west,
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 8
 	},
@@ -5965,10 +5955,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/hallway)
 "rX" = (
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/west,
 /obj/machinery/power/sensor{
 	name = "Powernet Sensor - Master Grid";
 	name_tag = "Master"
@@ -7028,8 +7015,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/chapel/chapel_morgue)
 "wn" = (
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /obj/machinery/light,
@@ -9033,8 +9019,7 @@
 	pixel_y = 5
 	},
 /obj/item/storage/toolbox/electrical,
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled,
@@ -9999,8 +9984,7 @@
 /area/engineering/foyer)
 "Hr" = (
 /obj/effect/floor_decal/borderfloor,
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /obj/machinery/light,
@@ -11729,10 +11713,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/west,
 /turf/simulated/floor/wood,
 /area/chapel/observation)
 "NJ" = (
@@ -14804,10 +14785,7 @@
 /area/maintenance/lower/mining)
 "Zf" = (
 /obj/structure/catwalk,
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/west,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor,

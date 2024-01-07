@@ -3175,10 +3175,7 @@
 /turf/simulated/floor/water/deep/indoors,
 /area/rift/station/public_garden)
 "cfP" = (
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/west,
 /turf/simulated/floor/plating,
 /area/maintenance/tool_storage)
 "cgz" = (
@@ -4231,10 +4228,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva)
 "cQP" = (
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/west,
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},
@@ -6470,10 +6464,7 @@
 /turf/simulated/floor/plating,
 /area/medical/virologypurge)
 "egb" = (
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/west,
 /obj/structure/disposalpipe/segment,
 /obj/structure/catwalk,
 /obj/structure/cable{
@@ -6902,8 +6893,7 @@
 /area/engineering/engine_eva)
 "evh" = (
 /obj/machinery/light,
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /obj/effect/floor_decal/borderfloor,
@@ -7923,10 +7913,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/west,
 /turf/simulated/floor,
 /area/maintenance/starboard)
 "flr" = (
@@ -8363,8 +8350,7 @@
 /obj/effect/floor_decal/corner/brown/bordercorner2{
 	dir = 6
 	},
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/steel,
@@ -10344,8 +10330,7 @@
 	pixel_y = 11
 	},
 /obj/item/storage/box/syringes,
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/steel,
@@ -10568,8 +10553,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfaceone)
 "gXw" = (
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /obj/machinery/disposal,
@@ -12472,8 +12456,7 @@
 /obj/effect/floor_decal/corner/brown/bordercorner2{
 	dir = 8
 	},
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/steel,
@@ -13926,10 +13909,7 @@
 /turf/simulated/floor/plating,
 /area/medical/virologytransitwest)
 "iSw" = (
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/west,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
@@ -15255,10 +15235,7 @@
 /turf/simulated/floor/plating,
 /area/storage/tools)
 "jLP" = (
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/west,
 /obj/structure/railing{
 	dir = 8
 	},
@@ -16180,8 +16157,7 @@
 "koz" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/brown/border,
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /obj/structure/cable/green{
@@ -16834,8 +16810,7 @@
 /obj/item/multitool,
 /obj/item/clothing/gloves/fyellow,
 /obj/item/flashlight,
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -17043,8 +17018,7 @@
 /area/tether/surfacebase/entertainment)
 "kNL" = (
 /obj/machinery/light/small,
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /turf/simulated/floor/lino,
@@ -21346,8 +21320,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_wing)
 "nye" = (
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /obj/machinery/holopad,
@@ -23623,10 +23596,7 @@
 /obj/effect/floor_decal/corner/beige/bordercorner2{
 	dir = 6
 	},
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/west,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/white,
 /area/medical/psych)
@@ -25062,10 +25032,7 @@
 /obj/item/clothing/suit/space/anomaly,
 /obj/item/clothing/mask/breath,
 /obj/item/clothing/head/helmet/space/anomaly,
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/west,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/xenoarch_storage)
 "pFz" = (
@@ -25124,8 +25091,7 @@
 /area/rnd/outpost/xenobiology/outpost_main)
 "pHw" = (
 /obj/structure/closet/crate/bin,
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
@@ -25895,8 +25861,7 @@
 /area/rift/surfacebase/outside/outside1)
 "qiM" = (
 /obj/machinery/light/small,
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -28963,8 +28928,7 @@
 /obj/effect/floor_decal/corner/purple/bordercorner2{
 	dir = 9
 	},
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /obj/machinery/camera/network/research{
@@ -29140,10 +29104,7 @@
 /obj/effect/floor_decal/corner/pink/border{
 	dir = 6
 	},
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/west,
 /turf/simulated/floor/tiled/white,
 /area/security/forensics)
 "sjh" = (
@@ -30909,10 +30870,7 @@
 /obj/effect/floor_decal/corner/pink/border{
 	dir = 4
 	},
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/west,
 /turf/simulated/floor/tiled/white,
 /area/medical/exam_room)
 "thE" = (
@@ -30961,8 +30919,7 @@
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 10
 	},
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /obj/item/paper_bin{
@@ -31136,8 +31093,7 @@
 "tnt" = (
 /obj/structure/table/standard,
 /obj/item/tape_recorder,
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /obj/machinery/light,
@@ -32448,10 +32404,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 4
 	},
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/west,
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay_emt_bay)
 "uaE" = (
@@ -33386,10 +33339,7 @@
 "uzb" = (
 /obj/effect/floor_decal/industrial/warning/corner,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/west,
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
@@ -35839,8 +35789,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/steel,
@@ -38239,10 +38188,7 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 4
 	},
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/west,
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/foyer)

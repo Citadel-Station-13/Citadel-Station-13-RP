@@ -5547,8 +5547,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 8
 	},
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -25
 	},
 /turf/simulated/floor/tiled,
@@ -5849,8 +5848,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 8
 	},
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled,
@@ -6133,8 +6131,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled,
@@ -6643,10 +6640,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/station/stairs_two)
 "nr" = (
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/west,
 /turf/simulated/floor,
 /area/maintenance/station/eng_upper)
 "ns" = (
@@ -7225,8 +7219,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/general)
 "oB" = (
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -25
 	},
 /turf/simulated/floor/wood,
@@ -7443,10 +7436,7 @@
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
 "oU" = (
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/west,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
@@ -8802,10 +8792,7 @@
 	dir = 1
 	},
 /obj/structure/flora/pottedplant/tropical,
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/west,
 /turf/simulated/floor/tiled,
 /area/quartermaster/foyer)
 "rG" = (
@@ -11179,8 +11166,7 @@
 	sort_tag = "Sorting Office"
 	},
 /obj/machinery/light/small,
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/dark,
@@ -11743,8 +11729,7 @@
 /turf/simulated/floor,
 /area/maintenance/station/eng_upper)
 "xo" = (
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /turf/simulated/floor/wood,
@@ -13715,8 +13700,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/exploration)
 "Bs" = (
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /obj/machinery/door/firedoor/glass,
@@ -15466,8 +15450,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 1
 	},
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled,
@@ -16214,8 +16197,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/cargo)
 "Gw" = (
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -25
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -20604,10 +20586,7 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock/gear)
 "Py" = (
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/west,
 /obj/structure/bed/chair/comfy/black,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/spacedorm1)
@@ -22541,8 +22520,7 @@
 "TG" = (
 /obj/structure/closet/wardrobe/xenos,
 /obj/machinery/light,
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /obj/effect/floor_decal/corner/lime{

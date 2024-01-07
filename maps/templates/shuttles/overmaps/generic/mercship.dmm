@@ -1302,8 +1302,7 @@
 /area/ship/mercenary/hangar)
 "cL" = (
 /obj/effect/floor_decal/borderfloorblack,
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/north{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/dark,
@@ -2646,8 +2645,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/north{
 	pixel_y = -26
 	},
 /turf/simulated/floor/plating,
@@ -2692,8 +2690,7 @@
 	dir = 9
 	},
 /obj/machinery/meter,
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/north{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/dark,
@@ -3352,8 +3349,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/borderfloorblack,
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/north{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/dark,
@@ -3374,8 +3370,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/borderfloorblack,
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/north{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/white,
@@ -3459,8 +3454,7 @@
 	dir = 5
 	},
 /obj/effect/floor_decal/borderfloorblack,
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/north{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/white,
@@ -3615,8 +3609,7 @@
 /area/ship/mercenary/engineering)
 "hp" = (
 /obj/effect/floor_decal/borderfloorblack,
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/north{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/dark,
@@ -3743,8 +3736,7 @@
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/borderfloorblack,
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/north{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/dark,

@@ -1420,10 +1420,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab/airlock)
 "gG" = (
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/west,
 /obj/effect/floor_decal/steeldecal/steel_decals5,
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 1
@@ -1653,8 +1650,7 @@
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/surfacebase/outside/west)
 "hz" = (
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -26
 	},
 /obj/effect/floor_decal/borderfloor,
@@ -2228,10 +2224,7 @@
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/surfacebase/outside/west)
 "jZ" = (
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/west,
 /turf/simulated/floor,
 /area/rnd/outpost/anomaly_lab/storage)
 "ka" = (
@@ -2502,8 +2495,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/surface)
 "lq" = (
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -26
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -3112,8 +3104,7 @@
 /area/outpost/mining_main/outpost/airlock/one)
 "ok" = (
 /obj/structure/closet/firecloset,
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled,
@@ -6075,8 +6066,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/construction/solars)
 "BS" = (
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /obj/effect/floor_decal/borderfloor,
@@ -7640,8 +7630,7 @@
 /obj/item/clothing/head/helmet/space/anomaly,
 /obj/item/clothing/mask/breath,
 /obj/item/storage/belt/archaeology,
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -26
 	},
 /obj/item/melee/umbrella/random,
@@ -8391,10 +8380,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 10
 	},
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/west,
 /obj/machinery/atmospherics/portables_connector{
 	dir = 1
 	},
@@ -9498,8 +9484,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 9
 	},
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -26
 	},
 /obj/effect/floor_decal/corner/purple{
@@ -10425,10 +10410,7 @@
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
 "WS" = (
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/west,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},

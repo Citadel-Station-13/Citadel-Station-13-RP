@@ -260,8 +260,7 @@
 /area/maintenance/engineering/upper)
 "aM" = (
 /obj/structure/catwalk,
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /obj/structure/cable/green{
@@ -654,10 +653,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/west,
 /obj/structure/sign/directions/cargo{
 	dir = 1;
 	pixel_x = 32;
@@ -1208,10 +1204,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/upper)
 "cN" = (
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/west,
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
@@ -3197,10 +3190,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/west,
 /turf/simulated/floor/tiled,
 /area/rnd/secure_storage/upper)
 "jg" = (
@@ -3376,8 +3366,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/pumpstation)
 "jJ" = (
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /turf/simulated/floor/concrete/rng/indoors,
@@ -6286,15 +6275,11 @@
 	},
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/west,
 /turf/simulated/floor/plating,
 /area/rift/station/fighter_bay/hangar)
 "uQ" = (
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -9763,8 +9748,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/spline/plain,
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -26
 	},
 /turf/simulated/floor/wood,
@@ -10067,8 +10051,7 @@
 /area/maintenance/engineering)
 "Ib" = (
 /obj/effect/floor_decal/borderfloor,
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/steel,

@@ -5364,10 +5364,7 @@
 /turf/simulated/mineral/icerock/lythios43c,
 /area/rift/surfacebase/outside/west_deep/submap_seedzone)
 "WX" = (
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/west,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},

@@ -1203,8 +1203,7 @@
 /area/engineering/atmos)
 "aNs" = (
 /obj/effect/floor_decal/spline/fancy/wood,
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -25
 	},
 /turf/simulated/floor/wood,
@@ -1933,10 +1932,7 @@
 /area/main_map/maintenance/deck_two)
 "bmr" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/west,
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_b)
 "bnA" = (
@@ -1990,10 +1986,7 @@
 /turf/simulated/wall/r_wall,
 /area/main_map/maintenance/deck_two/forward/starboard)
 "bpe" = (
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/west,
 /turf/simulated/floor/tiled,
 /area/main_map/hallway/deck2/stairs)
 "bpg" = (
@@ -2561,10 +2554,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/west,
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_d)
 "bJL" = (
@@ -2869,8 +2859,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -6384,10 +6373,7 @@
 /obj/effect/floor_decal/corner/paleblue/full{
 	dir = 4
 	},
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/west,
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay2)
 "eDY" = (
@@ -8165,8 +8151,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -25
 	},
 /obj/structure/catwalk,
@@ -8585,8 +8570,7 @@
 /turf/simulated/floor/reinforced/carbon_dioxide,
 /area/engineering/atmos/gas_storage)
 "goM" = (
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /turf/simulated/floor/wood,
@@ -11549,8 +11533,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/main_map/maintenance/deck_two/forward/starboard)
 "iRV" = (
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /obj/machinery/computer/ship/navigation/telescreen{
@@ -15325,8 +15308,7 @@
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/atmospheric_substation/command)
 "lGM" = (
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -24
 	},
 /obj/item/reagent_containers/food/drinks/metaglass,
@@ -16375,10 +16357,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/west,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
@@ -17591,10 +17570,7 @@
 /turf/simulated/floor/reinforced,
 /area/main_map/maintenance/panic_bunker/two)
 "noC" = (
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/west,
 /turf/simulated/floor/tiled/monotile,
 /area/crew_quarters/recreation_area_hallway)
 "noG" = (
@@ -18111,10 +18087,7 @@
 /area/main_map/maintenance/deck_two/forward/starboard)
 "nJy" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/west,
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_a)
 "nJI" = (
@@ -19860,8 +19833,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/spline/plain,
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -26
 	},
 /turf/simulated/floor/wood,
@@ -20346,10 +20318,7 @@
 	},
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
-/obj/machinery/fire_alarm{
-	dir = 8;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/west,
 /turf/simulated/floor/plating,
 /area/rift/station/fighter_bay/hangar)
 "pmc" = (
@@ -26333,8 +26302,7 @@
 /turf/simulated/wall/prepainted/engineering,
 /area/engineering/hallway)
 "tTX" = (
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -25
 	},
 /turf/simulated/floor/wood,
@@ -26405,10 +26373,7 @@
 /area/space)
 "tWn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/west,
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_c)
 "tWA" = (
@@ -26658,8 +26623,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/showers)
 "ulZ" = (
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -25
 	},
 /turf/simulated/floor/plating,
@@ -28225,8 +28189,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 4
 	},
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -31283,8 +31246,7 @@
 "xws" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /obj/effect/floor_decal/corner/lime/border,
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -25
 	},
 /turf/simulated/floor/tiled,
@@ -31317,8 +31279,7 @@
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 10
 	},
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/north{
 	pixel_y = -25
 	},
 /turf/simulated/floor/tiled/white,
