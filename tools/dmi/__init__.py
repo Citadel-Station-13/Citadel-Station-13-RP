@@ -229,10 +229,12 @@ class State:
     
     def swap_ns(self):
         for i in range(0, self.framecount):
+            if len(self.frames) <= i * self.dirs + 1:
+                continue
             # south
-            f1 = (i * self.dirs) + 1
+            f1 = (i * self.dirs) + 0
             # north
-            f2 = (i * self.dirs) + 2
+            f2 = (i * self.dirs) + 1
             # swap
             buffer = self.frames[f1]
             self.frames[f1] = self.frames[f2]
@@ -240,10 +242,12 @@ class State:
     
     def swap_ew(self):
         for i in range(0, self.framecount):
+            if len(self.frames) <= i * self.dirs + 3:
+                continue
             # east
-            f1 = (i * self.dirs) + 3
+            f1 = (i * self.dirs) + 2
             # west
-            f2 = (i * self.dirs) + 4
+            f2 = (i * self.dirs) + 3
             # swap
             buffer = self.frames[f1]
             self.frames[f1] = self.frames[f2]
