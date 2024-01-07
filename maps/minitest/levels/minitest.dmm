@@ -22,9 +22,7 @@
 /obj/machinery/camera/network/telecom{
 	c_tag = "Telecoms Main Computer Room"
 	},
-/obj/machinery/fire_alarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
 "af" = (
@@ -2541,9 +2539,7 @@
 /turf/simulated/floor/tiled,
 /area/bridge)
 "gi" = (
-/obj/machinery/fire_alarm{
-	pixel_y = 32
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/tiled,
 /area/bridge)
 "gj" = (

@@ -254,9 +254,7 @@
 /turf/simulated/floor/plating,
 /area/mercbase/panels)
 "de" = (
-/obj/machinery/fire_alarm{
-	pixel_y = 32
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/dock)
 "dD" = (
@@ -2199,9 +2197,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/fire_alarm{
-	pixel_y = 32
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor,
 /area/mercbase/fuel)
 "kY" = (
@@ -2220,9 +2216,7 @@
 /turf/simulated/floor,
 /area/mercbase/atmos)
 "lB" = (
-/obj/machinery/fire_alarm{
-	pixel_y = 32
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/structure/closet/secure_closet/chemical{
 	req_access = list(150)
 	},
@@ -2445,9 +2439,7 @@
 /area/mercbase/medical)
 "lZ" = (
 /obj/structure/bed/padded,
-/obj/machinery/fire_alarm{
-	pixel_y = 32
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/barracks)
 "ma" = (
@@ -2876,53 +2868,37 @@
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/roid)
 "nq" = (
-/obj/machinery/fire_alarm{
-	pixel_y = 32
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/medical)
 "nr" = (
 /obj/machinery/optable,
-/obj/machinery/fire_alarm{
-	pixel_y = 32
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/medicalOR)
 "ns" = (
-/obj/machinery/fire_alarm{
-	pixel_y = 32
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/power)
 "nt" = (
-/obj/machinery/fire_alarm{
-	pixel_y = 32
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/solar)
 "nu" = (
-/obj/machinery/fire_alarm{
-	pixel_y = 32
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/engineering)
 "nv" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
-/obj/machinery/fire_alarm{
-	pixel_y = 32
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/hall)
 "nw" = (
-/obj/machinery/fire_alarm{
-	pixel_y = 32
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor,
 /area/mercbase/atmos)
 "nx" = (
-/obj/machinery/fire_alarm{
-	pixel_y = 32
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/roid)
 "ny" = (
@@ -3269,9 +3245,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/roid)
 "oJ" = (
-/obj/machinery/fire_alarm{
-	pixel_y = 32
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/command)
 "oK" = (

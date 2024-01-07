@@ -47,9 +47,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/machinery/fire_alarm/alarms_hidden{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/south_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_st)
 "ak" = (
@@ -166,9 +164,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/machinery/fire_alarm/alarms_hidden{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/south_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_port)
 "aS" = (
@@ -3378,9 +3374,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_aft)
 "qK" = (
-/obj/machinery/fire_alarm/alarms_hidden{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/south_mount,
 /obj/effect/floor_decal/techfloor{
 	dir = 9
 	},
@@ -3827,9 +3821,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/machinery/fire_alarm/alarms_hidden{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/south_mount,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -4140,9 +4132,7 @@
 	dir = 4;
 	pixel_x = -26
 	},
-/obj/machinery/fire_alarm/alarms_hidden{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/south_mount,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -4230,9 +4220,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 5
 	},
-/obj/machinery/fire_alarm/alarms_hidden{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/south_mount,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -5940,9 +5928,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 9
 	},
-/obj/machinery/fire_alarm/alarms_hidden{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/south_mount,
 /obj/machinery/light{
 	dir = 8
 	},

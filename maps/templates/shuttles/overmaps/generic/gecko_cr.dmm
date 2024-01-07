@@ -715,9 +715,7 @@
 /area/shuttle/gecko_cr_cockpit)
 "pf" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
-/obj/machinery/fire_alarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -876,9 +874,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/machinery/fire_alarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/gecko_cr_engineering)
@@ -1051,9 +1047,7 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 4
 	},
-/obj/machinery/fire_alarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/structure/railing/grey{
 	dir = 4
@@ -1245,9 +1239,7 @@
 /area/shuttle/gecko_cr)
 "yR" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
-/obj/machinery/fire_alarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/reinforced,
 /area/shuttle/gecko_cr)
 "yX" = (
@@ -2490,9 +2482,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
-/obj/machinery/fire_alarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/gecko_cr_engineering)

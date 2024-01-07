@@ -85,9 +85,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/outpost/mining_main/airlock)
 "dl" = (
-/obj/machinery/fire_alarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
@@ -1847,9 +1845,7 @@
 /obj/machinery/atmospherics/pipe/manifold/visible/cyan{
 	dir = 1
 	},
-/obj/machinery/fire_alarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/maintenance)
 "Wc" = (

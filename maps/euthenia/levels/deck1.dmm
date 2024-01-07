@@ -13941,10 +13941,7 @@
 /obj/structure/table/reinforced,
 /obj/item/book/manual/legal/sop_vol2,
 /obj/item/book/manual/legal/sop_vol1,
-/obj/machinery/fire_alarm{
-	pixel_x = 4;
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/bunker)
 "pQm" = (
@@ -21038,9 +21035,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/fire_alarm{
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
 /turf/simulated/floor/lino,

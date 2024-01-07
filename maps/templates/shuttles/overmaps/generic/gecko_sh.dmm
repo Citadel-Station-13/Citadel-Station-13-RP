@@ -792,9 +792,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/machinery/fire_alarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/gecko_sh_engineering)
@@ -1007,9 +1005,7 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 4
 	},
-/obj/machinery/fire_alarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/structure/window/basic{
 	dir = 4
@@ -2281,9 +2277,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
-/obj/machinery/fire_alarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/gecko_sh_engineering)
@@ -2536,9 +2530,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/gecko_sh)
 "XX" = (
-/obj/machinery/fire_alarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/gecko_sh)
 "Yd" = (

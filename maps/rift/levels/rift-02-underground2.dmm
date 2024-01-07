@@ -1048,9 +1048,7 @@
 /area/engineering/engine_room)
 "dD" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/fire_alarm{
-	pixel_y = 25
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -2769,9 +2767,7 @@
 /area/crew_quarters/public_bunker)
 "iZ" = (
 /obj/structure/closet/secure_closet/atmos_personal,
-/obj/machinery/fire_alarm{
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/atmos/locker_room)
 "jc" = (
@@ -3062,9 +3058,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/obj/machinery/fire_alarm{
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
@@ -4853,9 +4847,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 5
 	},
-/obj/machinery/fire_alarm{
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/cryo)
 "oy" = (
@@ -6245,9 +6237,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/engine_room)
 "tf" = (
-/obj/machinery/fire_alarm{
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/effect/floor_decal/techfloor{
 	dir = 9
 	},
@@ -7733,9 +7723,7 @@
 /area/rift/surfacebase/underground/under2)
 "yJ" = (
 /obj/machinery/power/emitter,
-/obj/machinery/fire_alarm{
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/plating,
 /area/engineering/storage)
 "yL" = (
@@ -8949,9 +8937,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/machinery/fire_alarm{
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/structure/bed/padded,
 /obj/item/bedsheet,
 /turf/simulated/floor/tiled/techfloor,
@@ -8999,9 +8985,7 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "Dv" = (
-/obj/machinery/fire_alarm{
-	pixel_y = 25
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/machinery/camera/network/engine,
 /turf/simulated/floor,
 /area/engineering/engine_room)
@@ -10052,9 +10036,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/fire_alarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -10624,9 +10606,7 @@
 /turf/simulated/floor/plating,
 /area/quartermaster/miningdock)
 "JY" = (
-/obj/machinery/fire_alarm{
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
@@ -11909,9 +11889,7 @@
 	},
 /obj/effect/floor_decal/industrial/warning,
 /obj/structure/railing,
-/obj/machinery/fire_alarm{
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/rift/turbolift/maint)
 "Or" = (
@@ -11969,9 +11947,7 @@
 /area/engineering/storage)
 "Oy" = (
 /obj/structure/closet/secure_closet/engineering_personal,
-/obj/machinery/fire_alarm{
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/machinery/camera/network/engineering,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/locker_room)
@@ -12941,9 +12917,7 @@
 /area/engineering/engine_room)
 "Sw" = (
 /obj/structure/bed/chair/bay/chair/padded/yellow,
-/obj/machinery/fire_alarm{
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/foyer)
 "Sy" = (
@@ -14147,9 +14121,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/machinery/fire_alarm{
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/structure/bed/padded,
 /obj/item/bedsheet,
 /turf/simulated/floor/tiled/techfloor,
@@ -14637,9 +14609,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
 "YG" = (
-/obj/machinery/fire_alarm{
-	pixel_y = 25
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
@@ -14928,9 +14898,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/machinery/fire_alarm{
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/structure/toilet,
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/public_bunker)

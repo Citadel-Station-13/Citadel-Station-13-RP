@@ -3877,9 +3877,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 4
 	},
-/obj/machinery/fire_alarm{
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "lF" = (
@@ -4787,9 +4785,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/obj/machinery/fire_alarm{
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
@@ -13427,9 +13423,7 @@
 /obj/effect/floor_decal/corner/mauve/bordercorner2{
 	dir = 1
 	},
-/obj/machinery/fire_alarm{
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
@@ -13821,9 +13815,7 @@
 	},
 /obj/effect/floor_decal/industrial/warning,
 /obj/structure/railing,
-/obj/machinery/fire_alarm{
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/rift/turbolift/maint)
 "VT" = (

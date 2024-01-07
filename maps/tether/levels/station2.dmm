@@ -1689,9 +1689,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/excursion/cargo)
 "du" = (
-/obj/machinery/fire_alarm{
-	pixel_y = 25
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/machinery/recharge_station,
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock/surface_mining_outpost_shuttle_hangar)
@@ -4839,9 +4837,7 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 1
 	},
-/obj/machinery/fire_alarm{
-	pixel_y = 25
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/item/gun/energy/kinetic_accelerator,
 /turf/simulated/floor/tiled,
@@ -9617,9 +9613,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7,
-/obj/machinery/fire_alarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -18989,9 +18983,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/station/cargo)
 "Mk" = (
-/obj/machinery/fire_alarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/carpet/bcarpet,
 /area/tether/station/public_meeting_room)
 "Ml" = (
@@ -20747,9 +20739,7 @@
 	dir = 8;
 	pixel_x = -4
 	},
-/obj/machinery/fire_alarm{
-	pixel_y = 25
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/tiled/dark,
 /area/tether/exploration/pilot_office)
 "PQ" = (
@@ -24328,9 +24318,7 @@
 /turf/simulated/floor,
 /area/maintenance/station/eng_upper)
 "Xd" = (
-/obj/machinery/fire_alarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
 "Xe" = (

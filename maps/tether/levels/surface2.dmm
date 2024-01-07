@@ -3015,9 +3015,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 9
 	},
-/obj/machinery/fire_alarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/north)
 "chh" = (
@@ -4930,9 +4928,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/fire_alarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/reading_room)
 "dEE" = (
@@ -6431,9 +6427,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/fire_alarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
 "eFC" = (
@@ -7886,9 +7880,7 @@
 	dir = 4;
 	pixel_x = 11
 	},
-/obj/machinery/fire_alarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/structure/mirror{
 	pixel_x = 29
 	},
@@ -11556,9 +11548,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/bridge_hallway)
 "inb" = (
-/obj/machinery/fire_alarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
 	},
@@ -14803,9 +14793,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/atmos)
 "kEk" = (
-/obj/machinery/fire_alarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
 "kEq" = (
@@ -16986,9 +16974,7 @@
 /area/tether/surfacebase/medical/centralhall)
 "mmt" = (
 /obj/structure/catwalk,
-/obj/machinery/fire_alarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -17393,9 +17379,7 @@
 	dir = 1
 	},
 /obj/structure/closet/secure_closet/atmos_personal,
-/obj/machinery/fire_alarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -19166,10 +19150,7 @@
 /area/tether/surfacebase/medical/uppersouthstairwell)
 "nOL" = (
 /obj/machinery/processor,
-/obj/machinery/fire_alarm{
-	pixel_x = 4;
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "nOX" = (
@@ -20227,10 +20208,7 @@
 /obj/machinery/light_switch{
 	pixel_y = 25
 	},
-/obj/machinery/fire_alarm{
-	pixel_x = 5;
-	pixel_y = 37
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/machinery/button/remote/blast_door{
 	id = "armoryaccess";
 	name = "Armory Access";
@@ -22313,9 +22291,7 @@
 /obj/effect/floor_decal/corner/yellow/border{
 	dir = 1
 	},
-/obj/machinery/fire_alarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
 	},
@@ -24589,9 +24565,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/server)
 "rWT" = (
-/obj/machinery/fire_alarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/structure/cable/pink{
 	icon_state = "2-8"
 	},
@@ -25079,9 +25053,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/machinery/fire_alarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
 	dir = 4
 	},
@@ -26120,9 +26092,7 @@
 /area/tether/surfacebase/public_garden_two)
 "sVB" = (
 /obj/structure/catwalk,
-/obj/machinery/fire_alarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/south)
 "sVL" = (
@@ -27080,9 +27050,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
-/obj/machinery/fire_alarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -28400,9 +28368,7 @@
 /obj/item/storage/briefcase/inflatable{
 	pixel_x = -3
 	},
-/obj/machinery/fire_alarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/tiled,
 /area/engineering/lower/atmos_eva)
 "uQP" = (
@@ -30892,9 +30858,7 @@
 	req_access = list(61);
 	req_one_access = list(12)
 	},
-/obj/machinery/fire_alarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/tiled,
 /area/tcommsat/entrance)
 "wHK" = (

@@ -7430,9 +7430,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/outline,
-/obj/machinery/fire_alarm{
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/tiled/steel,
 /area/exploration/explorer_prep)
 "auU" = (
@@ -15848,9 +15846,7 @@
 /area/bridge/bridge_hallway)
 "aSj" = (
 /obj/effect/floor_decal/spline/plain,
-/obj/machinery/fire_alarm{
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/wood,
 /area/exploration/meeting)
 "aSk" = (
@@ -18450,9 +18446,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
-/obj/machinery/fire_alarm{
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
@@ -20800,9 +20794,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
-/obj/machinery/fire_alarm{
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
@@ -21509,9 +21501,7 @@
 /area/crew_quarters/bar)
 "jew" = (
 /obj/structure/table/bench/standard,
-/obj/machinery/fire_alarm{
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/tiled/steel,
 /area/exploration/courser_dock)
 "jil" = (
@@ -22131,9 +22121,7 @@
 	},
 /obj/effect/floor_decal/industrial/warning,
 /obj/structure/railing,
-/obj/machinery/fire_alarm{
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/structure/ladder{
 	pixel_y = 10
 	},
@@ -23362,9 +23350,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway2)
 "orx" = (
-/obj/machinery/fire_alarm{
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/exploration/courser_dock)
 "oti" = (
@@ -26644,9 +26630,7 @@
 /area/crew_quarters/bar)
 "xHc" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
-/obj/machinery/fire_alarm{
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
@@ -26901,9 +26885,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/bar)
 "yku" = (
-/obj/machinery/fire_alarm{
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},

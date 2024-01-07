@@ -5526,9 +5526,7 @@
 	dir = 4;
 	pixel_x = -22
 	},
-/obj/machinery/fire_alarm{
-	pixel_y = 25
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/wood,
 /area/rnd/outpost/breakroom)
 "yZ" = (
@@ -5877,9 +5875,7 @@
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
 "AG" = (
-/obj/machinery/fire_alarm{
-	pixel_y = 25
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/breakroom)
 "AL" = (
@@ -10836,9 +10832,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/obj/machinery/fire_alarm{
-	pixel_y = 25
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/wood,
 /area/rnd/outpost/breakroom)
 "YM" = (

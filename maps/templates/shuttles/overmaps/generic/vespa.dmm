@@ -534,9 +534,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/machinery/fire_alarm/alarms_hidden{
-	pixel_y = 23
-	},
+/obj/machinery/fire_alarm/alarms_hidden/south_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/seccells)
 "bE" = (
@@ -3847,9 +3845,7 @@
 /turf/simulated/wall/rpshull,
 /area/ship/expe/medicalchem)
 "iP" = (
-/obj/machinery/fire_alarm{
-	pixel_y = 28
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 9
 	},
@@ -8533,9 +8529,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medical)
 "sz" = (
-/obj/machinery/fire_alarm{
-	pixel_y = 31
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/structure/bed/chair,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
@@ -8727,9 +8721,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 1
 	},
-/obj/machinery/fire_alarm/alarms_hidden{
-	pixel_y = 23
-	},
+/obj/machinery/fire_alarm/alarms_hidden/south_mount,
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medical1)
 "sN" = (
@@ -10300,9 +10292,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/machinery/fire_alarm/alarms_hidden{
-	pixel_y = 23
-	},
+/obj/machinery/fire_alarm/alarms_hidden/south_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor2)
 "wT" = (

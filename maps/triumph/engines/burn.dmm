@@ -1,9 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "as" = (
 /obj/effect/floor_decal/industrial/warning,
-/obj/machinery/fire_alarm{
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "ay" = (

@@ -3211,9 +3211,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer_auxiliary)
 "cKJ" = (
-/obj/machinery/fire_alarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/tiled,
 /area/medical/medbay_emt_bay)
 "cLl" = (
@@ -3526,9 +3524,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
 "cZD" = (
-/obj/machinery/fire_alarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/wood,
 /area/triumph/station/stairs_three)
 "cZK" = (
@@ -4075,9 +4071,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
 "dzs" = (
-/obj/machinery/fire_alarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/machinery/light_switch{
 	pixel_x = 25
 	},
@@ -7096,10 +7090,7 @@
 /area/rnd/reception_desk)
 "fTU" = (
 /obj/machinery/computer/rdconsole/core,
-/obj/machinery/fire_alarm{
-	pixel_x = 4;
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
@@ -13462,9 +13453,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
 "lcw" = (
-/obj/machinery/fire_alarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/machinery/camera/network/civilian,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -15118,9 +15107,7 @@
 /turf/space,
 /area/space)
 "mDv" = (
-/obj/machinery/fire_alarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
@@ -15488,9 +15475,7 @@
 /turf/simulated/floor/tiled,
 /area/teleporter/departing)
 "mSd" = (
-/obj/machinery/fire_alarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
 "mSK" = (
@@ -16081,9 +16066,7 @@
 /area/triumph/station/stairs_three)
 "nrD" = (
 /obj/machinery/camera/network/civilian,
-/obj/machinery/fire_alarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
 "nsd" = (
@@ -19960,10 +19943,7 @@
 /turf/simulated/wall/prepainted/science,
 /area/rnd/research_foyer_auxiliary)
 "qqe" = (
-/obj/machinery/fire_alarm{
-	pixel_x = 4;
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/structure/closet/emcloset,
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab)
@@ -24079,9 +24059,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
 "tJE" = (
-/obj/machinery/fire_alarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
@@ -24188,10 +24166,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/rnd/test_area)
 "tNv" = (
-/obj/machinery/fire_alarm{
-	pixel_x = 4;
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
@@ -25062,10 +25037,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/medbay/aft)
 "uxB" = (
-/obj/machinery/fire_alarm{
-	pixel_x = 4;
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/effect/floor_decal/techfloor{
 	dir = 9
 	},
@@ -25796,9 +25768,7 @@
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
 "vgT" = (
-/obj/machinery/fire_alarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/machinery/light/small{
 	dir = 1
 	},

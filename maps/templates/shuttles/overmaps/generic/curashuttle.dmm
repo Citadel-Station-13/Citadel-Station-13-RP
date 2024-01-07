@@ -1071,9 +1071,7 @@
 /obj/item/surgical/bone_clamp,
 /obj/item/surgical/bone_clamp,
 /obj/item/surgical/scalpel/ripper,
-/obj/machinery/fire_alarm{
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/machinery/atmospherics/pipe/vent,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/curabitur/curashuttle/eng)

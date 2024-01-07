@@ -1273,9 +1273,7 @@
 /turf/simulated/floor/tiled,
 /area/medical/virologyaccess)
 "boD" = (
-/obj/machinery/fire_alarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
@@ -1363,9 +1361,7 @@
 /area/medical/resleeving)
 "bwF" = (
 /obj/machinery/recharge_station,
-/obj/machinery/fire_alarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/machinery/light/no_nightshift{
 	dir = 8
 	},
@@ -14852,9 +14848,7 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 8
 	},
-/obj/machinery/fire_alarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
@@ -21889,9 +21883,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/tcommsat/entrance)
 "xet" = (
-/obj/machinery/fire_alarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/medical/morgue)
 "xez" = (

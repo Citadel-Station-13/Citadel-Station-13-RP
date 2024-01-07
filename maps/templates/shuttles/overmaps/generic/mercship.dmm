@@ -33,9 +33,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
-/obj/machinery/fire_alarm/alarms_hidden{
-	pixel_y = 23
-	},
+/obj/machinery/fire_alarm/alarms_hidden/south_mount,
 /turf/simulated/floor/plating,
 /area/ship/mercenary/engine1)
 "ag" = (
@@ -519,9 +517,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
-/obj/machinery/fire_alarm/alarms_hidden{
-	pixel_y = 23
-	},
+/obj/machinery/fire_alarm/alarms_hidden/south_mount,
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/barracks)
 "bm" = (
@@ -602,9 +598,7 @@
 /obj/machinery/button/remote/blast_door{
 	id = "mercblast"
 	},
-/obj/machinery/fire_alarm/alarms_hidden{
-	pixel_y = 23
-	},
+/obj/machinery/fire_alarm/alarms_hidden/south_mount,
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/bridge)
 "bv" = (
@@ -2088,9 +2082,7 @@
 	},
 /obj/fiftyspawner/uranium,
 /obj/fiftyspawner/uranium,
-/obj/machinery/fire_alarm/alarms_hidden{
-	pixel_y = 23
-	},
+/obj/machinery/fire_alarm/alarms_hidden/south_mount,
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/engineeringcntrl)
 "ep" = (
@@ -3228,9 +3220,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
-/obj/machinery/fire_alarm/alarms_hidden{
-	pixel_y = 23
-	},
+/obj/machinery/fire_alarm/alarms_hidden/south_mount,
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/hall2)
 "gC" = (
@@ -3424,9 +3414,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
-/obj/machinery/fire_alarm/alarms_hidden{
-	pixel_y = 23
-	},
+/obj/machinery/fire_alarm/alarms_hidden/south_mount,
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/engineering)
 "gW" = (

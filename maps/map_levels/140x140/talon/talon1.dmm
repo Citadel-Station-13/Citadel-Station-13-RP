@@ -3524,10 +3524,7 @@
 /turf/simulated/wall,
 /area/talon/deckone/bridge_hallway)
 "CR" = (
-/obj/machinery/fire_alarm/alarms_hidden{
-	pixel_x = 4;
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/south_mount,
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
 /turf/simulated/floor/tiled/eris/steel,
@@ -4168,9 +4165,7 @@
 /area/talon/deckone/armory)
 "Hp" = (
 /obj/structure/closet/crate/solar,
-/obj/machinery/fire_alarm/alarms_hidden{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/south_mount,
 /turf/simulated/floor/tiled/eris/dark/brown_platform,
 /area/talon/deckone/starboard_eng_store)
 "Hr" = (

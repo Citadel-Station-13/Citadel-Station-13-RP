@@ -3065,9 +3065,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/library)
 "cdH" = (
-/obj/machinery/fire_alarm{
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
@@ -3766,9 +3764,7 @@
 /turf/simulated/floor/wood,
 /area/rift/surfacebase/outside/outside1)
 "cAs" = (
-/obj/machinery/fire_alarm{
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -5340,9 +5336,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
-/obj/machinery/fire_alarm{
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/machinery/door/firedoor/glass{
 	dir = 4
 	},
@@ -7403,9 +7397,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/fire_alarm{
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
 /turf/simulated/floor/lino,
@@ -9466,9 +9458,7 @@
 /obj/effect/floor_decal/corner/beige/border{
 	dir = 1
 	},
-/obj/machinery/fire_alarm{
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/tiled/white,
 /area/medical/psych)
 "gri" = (
@@ -9484,9 +9474,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/fire_alarm{
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/structure/disposalpipe/segment{
 	dir = 2;
 	icon_state = "pipe-c"
@@ -9794,9 +9782,7 @@
 	dir = 4
 	},
 /obj/random/trash_pile,
-/obj/machinery/fire_alarm{
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/plating,
 /area/maintenance/library)
 "gCZ" = (
@@ -11596,9 +11582,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/office)
 "hCl" = (
-/obj/machinery/fire_alarm{
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/structure/catwalk,
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -12081,9 +12065,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "hPI" = (
-/obj/machinery/fire_alarm{
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/machinery/holopad,
 /turf/simulated/floor/wood,
 /area/lawoffice)
@@ -12487,9 +12469,7 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 5
 	},
-/obj/machinery/fire_alarm{
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/tiled/steel,
 /area/rnd/testingroom)
 "iaF" = (
@@ -12935,9 +12915,7 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 1
 	},
-/obj/machinery/fire_alarm{
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/tiled/steel,
 /area/tether/station/public_meeting_room)
 "iqR" = (
@@ -18217,9 +18195,7 @@
 /obj/item/virusdish/random,
 /obj/item/virusdish/random,
 /obj/item/virusdish/random,
-/obj/machinery/fire_alarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/tiled,
 /area/medical/virology)
 "lGw" = (
@@ -18575,9 +18551,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/fire_alarm{
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/hallway)
 "lRL" = (
@@ -19043,9 +19017,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
-/obj/machinery/fire_alarm{
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -21757,9 +21729,7 @@
 /area/maintenance/maint_bar)
 "nLc" = (
 /obj/structure/bed/chair,
-/obj/machinery/fire_alarm{
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
 	},
@@ -22043,9 +22013,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
-/obj/machinery/fire_alarm{
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/effect/floor_decal/steeldecal/steel_decals5,
 /obj/machinery/door/firedoor/glass{
 	dir = 4
@@ -28539,9 +28507,7 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
 	},
-/obj/machinery/fire_alarm{
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/item/paper{
 	info = "Use of this facility is strictly limited to scientific endeavors only. Chemicals produced here are not covered for adverse affects and reactions like Chemistry.";
 	name = "note from CentCom about the chemlab";
@@ -29076,9 +29042,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/machinery/fire_alarm{
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/machinery/space_heater,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/plating,
@@ -29336,9 +29300,7 @@
 	},
 /obj/effect/floor_decal/industrial/warning,
 /obj/structure/railing,
-/obj/machinery/fire_alarm{
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/structure/ladder{
 	pixel_y = 10
 	},
@@ -31958,9 +31920,7 @@
 /area/maintenance/cargo)
 "tMq" = (
 /obj/structure/bed/chair,
-/obj/machinery/fire_alarm{
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
 	},
@@ -32761,9 +32721,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/obj/machinery/fire_alarm{
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/tiled/steel,
 /area/security/security_cell_hallway)
 "ulQ" = (
@@ -36795,10 +36753,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/fire_alarm{
-	pixel_x = 4;
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/south_mount,
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},

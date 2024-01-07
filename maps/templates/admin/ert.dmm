@@ -492,9 +492,7 @@
 /obj/item/clothing/glasses/night,
 /obj/item/clothing/glasses/night,
 /obj/item/clothing/glasses/night,
-/obj/machinery/fire_alarm/alarms_hidden{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/south_mount,
 /obj/effect/floor_decal/industrial/outline/grey,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/barracks)
@@ -610,9 +608,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/fire_alarm/alarms_hidden{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/south_mount,
 /obj/machinery/light_switch{
 	dir = 4;
 	pixel_x = -23
@@ -836,9 +832,7 @@
 /obj/item/mecha_parts/mecha_equipment/anticcw_armor_booster,
 /obj/item/mecha_parts/mecha_equipment/antiproj_armor_booster,
 /obj/item/mecha_parts/mecha_equipment/antiproj_armor_booster,
-/obj/machinery/fire_alarm/alarms_hidden{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/south_mount,
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/mech_bay)
@@ -1801,9 +1795,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/engine)
 "op" = (
-/obj/machinery/fire_alarm/alarms_hidden{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/south_mount,
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 6
 	},
@@ -2453,9 +2445,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/barracks)
 "sw" = (
-/obj/machinery/fire_alarm/alarms_hidden{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/south_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/teleporter)
 "sz" = (
@@ -2726,9 +2716,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/bridge)
 "uu" = (
-/obj/machinery/fire_alarm/alarms_hidden{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/south_mount,
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/dock_star)
 "ux" = (
@@ -3211,9 +3199,7 @@
 /obj/effect/floor_decal/corner/yellow{
 	dir = 8
 	},
-/obj/machinery/fire_alarm/alarms_hidden{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/south_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/med)
 "yv" = (
@@ -3240,9 +3226,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/machinery/fire_alarm/alarms_hidden{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/south_mount,
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/hangar)
 "yC" = (
@@ -3318,9 +3302,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/fire_alarm/alarms_hidden{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/south_mount,
 /turf/simulated/floor/tiled/white,
 /area/ship/ert/med_surg)
 "zc" = (
@@ -3437,9 +3419,7 @@
 /turf/simulated/floor/wood,
 /area/ship/ert/commander)
 "Ai" = (
-/obj/machinery/fire_alarm/alarms_hidden{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/south_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
@@ -3463,9 +3443,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/bridge)
 "Aq" = (
-/obj/machinery/fire_alarm/alarms_hidden{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/south_mount,
 /obj/item/modular_computer/console/preset/security,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/bridge)
@@ -5086,9 +5064,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/fire_alarm/alarms_hidden{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/south_mount,
 /obj/item/gun/energy/laser,
 /obj/item/gun/energy/laser,
 /obj/effect/floor_decal/industrial/outline/grey,
@@ -6617,9 +6593,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/obj/machinery/fire_alarm/alarms_hidden{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/south_mount,
 /obj/structure/cable/yellow{
 	icon_state = "2-8"
 	},
