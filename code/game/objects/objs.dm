@@ -559,7 +559,7 @@
  */
 /obj/proc/auto_orient_wallmount_single()
 	for(var/dir in GLOB.cardinal)
-		if(get_step(dir)?.get_wallmount_anchor())
+		if(get_step(src, dir)?.get_wallmount_anchor())
 			setDir(turn(dir, 180))
 			return
 
@@ -570,7 +570,7 @@
  */
 /obj/proc/auto_orient_wallmount_single_preinit()
 	for(var/dir in GLOB.cardinal)
-		if(get_step(dir)?.get_wallmount_anchor())
+		if(get_step(src, dir)?.get_wallmount_anchor())
 			src.dir = turn(dir, 180)
 			return
 
