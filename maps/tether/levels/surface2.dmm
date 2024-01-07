@@ -3016,7 +3016,6 @@
 	dir = 9
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -4932,7 +4931,6 @@
 	dir = 4
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /turf/simulated/floor/wood,
@@ -6434,7 +6432,6 @@
 	dir = 1
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/dark,
@@ -6964,7 +6961,6 @@
 "fay" = (
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /obj/structure/cable/green{
@@ -7553,7 +7549,6 @@
 /obj/effect/floor_decal/rust,
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /obj/random/maintenance/research,
@@ -7892,7 +7887,6 @@
 	pixel_x = 11
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /obj/structure/mirror{
@@ -11563,7 +11557,6 @@
 /area/bridge/bridge_hallway)
 "inb" = (
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -14811,7 +14804,6 @@
 /area/maintenance/lower/atmos)
 "kEk" = (
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /turf/simulated/floor/wood,
@@ -15260,7 +15252,6 @@
 "kVQ" = (
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /turf/simulated/floor/reinforced,
@@ -16907,7 +16898,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "janitor_blast";
-	layer = 3.3;
 	name = "Janitorial Shutters"
 	},
 /obj/machinery/door/firedoor/border_only,
@@ -16997,7 +16987,6 @@
 "mmt" = (
 /obj/structure/catwalk,
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /obj/structure/disposalpipe/segment{
@@ -17405,7 +17394,6 @@
 	},
 /obj/structure/closet/secure_closet/atmos_personal,
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /obj/machinery/light{
@@ -18218,7 +18206,6 @@
 	},
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /turf/simulated/floor/tiled/white,
@@ -19180,7 +19167,6 @@
 "nOL" = (
 /obj/machinery/processor,
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},
@@ -19210,7 +19196,6 @@
 "nPL" = (
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /obj/structure/disposalpipe/trunk{
@@ -22329,7 +22314,6 @@
 	dir = 1
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -23668,7 +23652,6 @@
 	dir = 8
 	},
 /obj/machinery/newscaster{
-	layer = 3.3;
 	pixel_x = -27
 	},
 /obj/structure/bed/chair{
@@ -24607,7 +24590,6 @@
 /area/server)
 "rWT" = (
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /obj/structure/cable/pink{
@@ -25098,7 +25080,6 @@
 	dir = 1
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
@@ -26140,7 +26121,6 @@
 "sVB" = (
 /obj/structure/catwalk,
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /turf/simulated/floor/plating,
@@ -27101,7 +27081,6 @@
 	dir = 1
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /obj/structure/cable{
@@ -27330,7 +27309,6 @@
 	department = "CMO's Office"
 	},
 /obj/machinery/newscaster{
-	layer = 3.3;
 	pixel_x = -27
 	},
 /obj/machinery/status_display{
@@ -28423,7 +28401,6 @@
 	pixel_x = -3
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled,
@@ -30182,7 +30159,6 @@
 "wgc" = (
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /turf/simulated/floor/tiled/white,
@@ -30917,7 +30893,6 @@
 	req_one_access = list(12)
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled,

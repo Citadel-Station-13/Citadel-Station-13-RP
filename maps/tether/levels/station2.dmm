@@ -5594,7 +5594,6 @@
 /obj/structure/table/wooden_reinforced,
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /obj/item/flame/candle/candelabra/everburn,
@@ -6703,7 +6702,6 @@
 	},
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /turf/simulated/floor/tiled/dark,
@@ -9620,7 +9618,6 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7,
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /obj/structure/cable/green{
@@ -10576,7 +10573,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "GateShut";
-	layer = 3.3;
 	name = "Gateway Shutter"
 	},
 /obj/machinery/door/firedoor/glass,
@@ -10821,7 +10817,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "PubPrepFront";
-	layer = 3.3;
 	name = "Gateway Prep Shutter"
 	},
 /obj/structure/cable/green{
@@ -12707,7 +12702,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 4;
 	id = "PubPrep";
-	layer = 3.3;
 	name = "Gateway Access Shutters"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -13715,7 +13709,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 4;
 	id = "PubPrep";
-	layer = 3.3;
 	name = "Gateway Access Shutters"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -15213,7 +15206,6 @@
 "Er" = (
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /turf/simulated/floor/tiled/dark,
@@ -16243,7 +16235,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "PubPrepFront";
-	layer = 3.3;
 	name = "Gateway Prep Shutter"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -16431,7 +16422,6 @@
 /obj/machinery/button/remote/blast_door{
 	desc = "A remote control-switch for shutters.";
 	id = "chapel_obs";
-	layer = 3.3;
 	name = "Chapel Observation Shutters";
 	pixel_x = -26;
 	pixel_y = 25;
@@ -17120,7 +17110,6 @@
 /obj/structure/closet/coffin,
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /turf/simulated/floor/tiled/dark,
@@ -17751,7 +17740,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "PubPrepFront";
-	layer = 3.3;
 	name = "Gateway Prep Shutter"
 	},
 /obj/machinery/door/firedoor/glass,
@@ -19002,7 +18990,6 @@
 /area/maintenance/station/cargo)
 "Mk" = (
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -19411,7 +19398,6 @@
 "Nc" = (
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /turf/simulated/floor/wood,
@@ -20112,7 +20098,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "PubPrepFront";
-	layer = 3.3;
 	name = "Gateway Prep Shutter"
 	},
 /obj/machinery/door/firedoor/glass,
@@ -22287,7 +22272,6 @@
 /obj/machinery/button/remote/blast_door{
 	desc = "A remote control-switch for shutters.";
 	id = "chapel_obs";
-	layer = 3.3;
 	name = "Chapel Observation Shutters";
 	pixel_x = -26;
 	pixel_y = -25;
@@ -23280,7 +23264,6 @@
 /area/tether/exploration)
 "Vk" = (
 /obj/machinery/vending/wallmed1{
-	layer = 3.3;
 	name = "Emergency NanoMed";
 	pixel_x = 28
 	},
@@ -23767,7 +23750,6 @@
 	pixel_y = 30
 	},
 /obj/machinery/newscaster{
-	layer = 3.3;
 	pixel_x = -27
 	},
 /obj/effect/floor_decal/industrial/hatch/yellow,
@@ -24207,7 +24189,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 4;
 	id = "PubPrep";
-	layer = 3.3;
 	name = "Gateway Access Shutters"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -24348,7 +24329,6 @@
 /area/maintenance/station/eng_upper)
 "Xd" = (
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/dark,

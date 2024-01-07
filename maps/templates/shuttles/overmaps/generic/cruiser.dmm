@@ -135,7 +135,6 @@
 /area/mothership/breakroom)
 "ap" = (
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},
@@ -488,7 +487,6 @@
 "bn" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},
@@ -604,7 +602,6 @@
 /obj/item/material/knife/butch,
 /obj/item/material/kitchen/rollingpin,
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},
@@ -1062,7 +1059,6 @@
 /obj/item/radio/off,
 /obj/item/radio/off,
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},
@@ -1371,7 +1367,6 @@
 	icon_state = "2-4"
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},
@@ -1495,7 +1490,6 @@
 	icon_state = "2-8"
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},
@@ -1794,7 +1788,6 @@
 /area/mothership/teleporter)
 "eg" = (
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},
@@ -2944,7 +2937,6 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},
@@ -4374,7 +4366,6 @@
 /area/mothership/warden)
 "jT" = (
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},
@@ -7007,7 +6998,6 @@
 /area/mothership/telecomms1)
 "pu" = (
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},
@@ -7224,7 +7214,6 @@
 /area/mothership/telecomms2)
 "pR" = (
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},
@@ -8581,7 +8570,6 @@
 	dir = 1
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},
@@ -9131,7 +9119,6 @@
 	dir = 1
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},
@@ -9451,7 +9438,6 @@
 	dir = 4
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},

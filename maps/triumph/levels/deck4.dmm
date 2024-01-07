@@ -995,7 +995,6 @@
 	dir = 4
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},
@@ -2519,7 +2518,6 @@
 /obj/machinery/camera/network/exploration,
 /obj/structure/table/bench/steel,
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},
@@ -2799,7 +2797,6 @@
 "bSR" = (
 /obj/structure/flora/pottedplant/minitree,
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},
@@ -4599,7 +4596,6 @@
 	dir = 1
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},
@@ -5205,7 +5201,6 @@
 /obj/machinery/camera/network/command,
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},
@@ -6907,7 +6902,6 @@
 	dir = 1
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},
@@ -7013,7 +7007,6 @@
 	},
 /obj/structure/flora/ausbushes/ppflowers,
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},
@@ -7021,7 +7014,6 @@
 /area/hydroponics/garden)
 "eKd" = (
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},
@@ -7113,7 +7105,6 @@
 /area/crew_quarters/sleep/CMO_quarters)
 "eNI" = (
 /obj/machinery/newscaster{
-	layer = 3.3;
 	pixel_x = -27
 	},
 /obj/machinery/light{
@@ -7595,7 +7586,6 @@
 	dir = 1
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},
@@ -7943,7 +7933,6 @@
 	},
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /obj/machinery/light{
@@ -8570,7 +8559,6 @@
 	},
 /obj/item/hand_labeler,
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/old_cargo/gray,
@@ -10400,7 +10388,6 @@
 	dir = 4
 	},
 /obj/machinery/newscaster{
-	layer = 3.3;
 	pixel_x = -27
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -10787,7 +10774,6 @@
 /obj/item/pen,
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /turf/simulated/floor/tiled/old_cargo/gray,
@@ -10935,7 +10921,6 @@
 /area/chapel/main)
 "hsu" = (
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /obj/structure/table/bench/wooden,
@@ -11934,7 +11919,6 @@
 /area/chapel/main)
 "ifq" = (
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},
@@ -13109,7 +13093,6 @@
 /obj/machinery/camera/network/security,
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /turf/simulated/floor/tiled/dark,
@@ -13843,7 +13826,6 @@
 	},
 /obj/structure/flora/ausbushes/ppflowers,
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},
@@ -14122,7 +14104,6 @@
 /area/crew_quarters/heads/hop)
 "jBQ" = (
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},
@@ -14309,7 +14290,6 @@
 /area/bridge/hallway)
 "jJV" = (
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},
@@ -17331,7 +17311,6 @@
 /area/maintenance/central)
 "lOs" = (
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},
@@ -17653,7 +17632,6 @@
 /area/crew_quarters/lounge)
 "maJ" = (
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /obj/machinery/light{
@@ -18952,7 +18930,6 @@
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /obj/structure/table/rack/shelf/steel,
@@ -19305,7 +19282,6 @@
 	},
 /obj/machinery/recharge_station,
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},
@@ -19607,7 +19583,6 @@
 /area/bridge)
 "nzw" = (
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},
@@ -20719,7 +20694,6 @@
 /area/exploration/pathfinder_office)
 "ogK" = (
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},
@@ -21449,7 +21423,6 @@
 /area/ai/foyer)
 "oKo" = (
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},
@@ -22166,7 +22139,6 @@
 /obj/structure/table/reinforced,
 /obj/item/clipboard,
 /obj/machinery/newscaster{
-	layer = 3.3;
 	pixel_x = 27
 	},
 /obj/item/storage/briefcase{
@@ -22451,7 +22423,6 @@
 /area/teleporter)
 "prS" = (
 /obj/machinery/newscaster{
-	layer = 3.3;
 	pixel_x = -27
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -23335,7 +23306,6 @@
 /area/exploration/explorer_prep)
 "pWm" = (
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},
@@ -23420,7 +23390,6 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/old_cargo/white,
@@ -23912,7 +23881,6 @@
 	},
 /obj/machinery/button/windowtint{
 	id = "hop_bedroom";
-	layer = 3.3;
 	pixel_y = 25
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -24411,7 +24379,6 @@
 	},
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /turf/simulated/floor/tiled,
@@ -24441,7 +24408,6 @@
 	dir = 1
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},
@@ -25136,7 +25102,6 @@
 /area/maintenance/security/starboard)
 "rlK" = (
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},
@@ -26591,7 +26556,6 @@
 /area/triumph/surfacebase/sauna)
 "snu" = (
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},
@@ -27631,7 +27595,6 @@
 /area/hallway/secondary/civilian_hallway_mid)
 "thX" = (
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},
@@ -28309,7 +28272,6 @@
 /area/security/warden)
 "tFw" = (
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},
@@ -29438,7 +29400,6 @@
 	},
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /turf/simulated/floor/tiled/dark,
@@ -29694,14 +29655,12 @@
 /obj/machinery/button/remote/blast_door{
 	desc = "A remote control-switch for shutters.";
 	id = "hop_office_desk";
-	layer = 3.3;
 	name = "Desk Privacy Shutter";
 	pixel_x = -25;
 	pixel_y = -25
 	},
 /obj/machinery/button/windowtint{
 	id = "hop_office";
-	layer = 3.3;
 	pixel_x = -24;
 	pixel_y = 25
 	},
@@ -30185,7 +30144,6 @@
 /area/maintenance/security/starboard)
 "uPB" = (
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -32136,7 +32094,6 @@
 	dir = 1
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/old_tile/gray,
@@ -32750,7 +32707,6 @@
 /obj/structure/table/reinforced,
 /obj/item/clipboard,
 /obj/machinery/newscaster{
-	layer = 3.3;
 	pixel_x = -27
 	},
 /obj/item/storage/briefcase{
@@ -33076,7 +33032,6 @@
 /area/prison/cell_block)
 "wWR" = (
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},
@@ -33734,7 +33689,6 @@
 	dir = 5
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},
@@ -33893,7 +33847,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/newscaster{
-	layer = 3.3;
 	pixel_x = -27
 	},
 /turf/simulated/floor/wood,
@@ -33976,7 +33929,6 @@
 /area/maintenance/security/starboard)
 "xwo" = (
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},

@@ -252,7 +252,6 @@
 /obj/machinery/door/blast/regular{
 	dir = 4;
 	id = "SupermatterPort";
-	layer = 3.3;
 	name = "Reactor Blast Door"
 	},
 /turf/simulated/floor,
@@ -474,7 +473,6 @@
 /obj/machinery/door/blast/regular{
 	dir = 4;
 	id = "SupermatterPort";
-	layer = 3.3;
 	name = "Reactor Blast Door"
 	},
 /turf/simulated/floor,
@@ -525,7 +523,6 @@
 /obj/machinery/door/blast/regular{
 	dir = 2;
 	id = "SupermatterPort";
-	layer = 3.3;
 	name = "Reactor Blast Door"
 	},
 /turf/simulated/floor,
@@ -544,7 +541,6 @@
 /obj/machinery/door/blast/regular{
 	dir = 2;
 	id = "SupermatterPort";
-	layer = 3.3;
 	name = "Reactor Blast Door"
 	},
 /turf/simulated/floor,
@@ -1122,7 +1118,6 @@
 	},
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /turf/simulated/floor,
@@ -1187,7 +1182,6 @@
 /obj/machinery/door/blast/regular{
 	dir = 4;
 	id = "EngineEmitterPortWest";
-	layer = 3.3;
 	name = "Engine Gas Storage"
 	},
 /obj/machinery/door/firedoor/glass,
@@ -1432,7 +1426,6 @@
 /obj/machinery/door/blast/regular{
 	dir = 4;
 	id = "EngineEmitterPortWest2";
-	layer = 3.3;
 	name = "Engine Gas Storage"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -1447,7 +1440,6 @@
 /obj/machinery/door/blast/regular{
 	dir = 4;
 	id = "EngineEmitterPortWest2";
-	layer = 3.3;
 	name = "Engine Gas Storage"
 	},
 /obj/machinery/button/remote/blast_door{

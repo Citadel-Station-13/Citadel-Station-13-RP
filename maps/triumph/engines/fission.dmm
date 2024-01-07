@@ -185,7 +185,6 @@
 	},
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -294,7 +293,6 @@
 /obj/machinery/door/blast/regular{
 	dir = 2;
 	id = "SupermatterPort";
-	layer = 3.3;
 	name = "Reactor Blast Door"
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/red{
@@ -327,7 +325,6 @@
 /obj/machinery/door/blast/regular{
 	dir = 2;
 	id = "SupermatterVent";
-	layer = 3.3;
 	name = "Reactor Blast Door"
 	},
 /turf/simulated/floor/reinforced,
@@ -459,7 +456,6 @@
 /obj/machinery/door/blast/regular{
 	dir = 2;
 	id = "SupermatterPort";
-	layer = 3.3;
 	name = "Reactor Blast Door"
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/black{
@@ -555,7 +551,6 @@
 /obj/machinery/door/blast/regular{
 	dir = 2;
 	id = "SupermatterPort";
-	layer = 3.3;
 	name = "Reactor Blast Door"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -753,7 +748,6 @@
 /obj/machinery/door/blast/regular{
 	dir = 2;
 	id = "SupermatterPort";
-	layer = 3.3;
 	name = "Reactor Blast Door"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -933,7 +927,6 @@
 /obj/machinery/door/blast/regular{
 	dir = 2;
 	id = "SupermatterPort";
-	layer = 3.3;
 	name = "Reactor Blast Door"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -989,7 +982,6 @@
 /obj/machinery/door/blast/regular{
 	dir = 2;
 	id = "SupermatterVent";
-	layer = 3.3;
 	name = "Reactor Blast Door"
 	},
 /turf/simulated/floor/reinforced,

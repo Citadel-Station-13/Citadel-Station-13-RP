@@ -7831,7 +7831,6 @@
 "Ci" = (
 /obj/machinery/conveyor_switch/oneway{
 	id = "spine_outbound";
-	layer = 3.3;
 	name = "outbound conveyor";
 	pixel_y = 8
 	},
@@ -13289,7 +13288,6 @@
 "Wf" = (
 /obj/machinery/conveyor_switch/oneway{
 	id = "spine_inbound";
-	layer = 3.3;
 	name = "inbound conveyor";
 	pixel_y = 8
 	},

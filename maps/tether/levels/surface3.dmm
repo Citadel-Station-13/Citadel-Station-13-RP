@@ -313,7 +313,6 @@
 	},
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /obj/item/reagent_containers/spray/cleaner{
@@ -329,7 +328,6 @@
 /obj/structure/flora/pottedplant/unusual,
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /obj/machinery/camera/network/research{
@@ -869,7 +867,6 @@
 /obj/structure/table/bench/steel,
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -1029,7 +1026,6 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/blast/shutters{
 	id = "kitchen2";
-	layer = 3.3;
 	name = "Kitchen Shutters"
 	},
 /obj/effect/floor_decal/spline/plain{
@@ -1968,7 +1964,6 @@
 /area/hallway/lower/third_south)
 "aYv" = (
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -2721,14 +2716,12 @@
 	},
 /obj/machinery/button/windowtint{
 	id = "hop_office";
-	layer = 3.3;
 	pixel_x = 22;
 	pixel_y = -25
 	},
 /obj/machinery/button/remote/blast_door{
 	desc = "A remote control-switch for shutters.";
 	id = "hop_office_desk";
-	layer = 3.3;
 	name = "Desk Privacy Shutter";
 	pixel_x = 6;
 	pixel_y = -29
@@ -2739,7 +2732,6 @@
 /obj/machinery/button/remote/blast_door{
 	desc = "A remote control-switch for shutters.";
 	id = "hop_line";
-	layer = 3.3;
 	name = "Line Shutters";
 	pixel_x = -6;
 	pixel_y = -29
@@ -2944,7 +2936,6 @@
 /area/rnd/research/researchdivision)
 "bxG" = (
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},
@@ -3350,7 +3341,6 @@
 	dir = 4
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /turf/simulated/floor/wood,
@@ -3625,7 +3615,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "Druma";
-	layer = 3.3;
 	name = "Entertainment Shutters"
 	},
 /obj/effect/paint_stripe/bottlegreen,
@@ -3989,7 +3978,6 @@
 "ccd" = (
 /obj/machinery/media/jukebox,
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /obj/effect/floor_decal/techfloor{
@@ -4488,7 +4476,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 4;
 	id = "Druma";
-	layer = 3.3;
 	name = "Entertainment Shutters"
 	},
 /turf/simulated/floor/plating,
@@ -4867,7 +4854,6 @@
 "cBK" = (
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /obj/structure/closet/l3closet/scientist,
@@ -6227,7 +6213,6 @@
 /area/tether/surfacebase/security/upperhall)
 "dwU" = (
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/freezer/cold,
@@ -6816,7 +6801,6 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7,
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled,
@@ -7037,7 +7021,6 @@
 "dUV" = (
 /obj/structure/table/standard,
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},
@@ -7130,7 +7113,6 @@
 "dXS" = (
 /obj/machinery/button/windowtint{
 	id = "draama";
-	layer = 3.3;
 	name = "Mystery Window Tint Control";
 	pixel_x = 3;
 	pixel_y = -29;
@@ -7323,7 +7305,6 @@
 /obj/structure/flora/ausbushes/ywflowers,
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /obj/structure/extinguisher_cabinet{
@@ -7914,7 +7895,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "kitchen";
-	layer = 3.3;
 	name = "Kitchen Shutters"
 	},
 /obj/item/reagent_containers/food/condiment/small/saltshaker{
@@ -9105,7 +9085,6 @@
 	},
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /obj/structure/cable/green{
@@ -9591,7 +9570,6 @@
 /obj/item/toy/plushie/purple_fox,
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /obj/machinery/recharger/wallcharger{
@@ -9809,7 +9787,6 @@
 	dir = 1
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/freezer,
@@ -9868,7 +9845,6 @@
 	dir = 1
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},
@@ -9980,7 +9956,6 @@
 	pixel_y = -5
 	},
 /obj/machinery/newscaster{
-	layer = 3.3;
 	pixel_x = -27
 	},
 /obj/effect/floor_decal/spline/plain{
@@ -10997,7 +10972,6 @@
 "gmU" = (
 /obj/structure/table/reinforced,
 /obj/machinery/newscaster{
-	layer = 3.3;
 	pixel_x = -27
 	},
 /obj/item/paper_bin,
@@ -11546,7 +11520,6 @@
 	dir = 8
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /obj/machinery/lathe/autolathe,
@@ -12401,7 +12374,6 @@
 /obj/random/soap,
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /turf/simulated/floor/tiled/white,
@@ -12905,7 +12877,6 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/white,
@@ -13974,7 +13945,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 8;
 	id = "bar";
-	layer = 3.3;
 	name = "Bar Shutters"
 	},
 /obj/effect/floor_decal/spline/plain{
@@ -14530,7 +14500,6 @@
 /area/tether/surfacebase/shuttle_pad)
 "ixH" = (
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /obj/structure/disposalpipe/segment{
@@ -15065,7 +15034,6 @@
 /area/crew_quarters/pool)
 "iOe" = (
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},
@@ -15145,7 +15113,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 8;
 	id = "kitchen";
-	layer = 3.3;
 	name = "Kitchen Shutters"
 	},
 /obj/machinery/door/firedoor/glass,
@@ -15670,7 +15637,6 @@
 /area/vacant/vacant_shop)
 "jeM" = (
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /obj/machinery/vending/loadout/accessory,
@@ -15710,7 +15676,6 @@
 	},
 /obj/machinery/door/blast/shutters{
 	id = "kitchen2";
-	layer = 3.3;
 	name = "Kitchen Shutters"
 	},
 /turf/simulated/floor/tiled/white,
@@ -16092,7 +16057,6 @@
 /area/crew_quarters/bar)
 "jrG" = (
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -16117,7 +16081,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "kitchen";
-	layer = 3.3;
 	name = "Kitchen Shutters"
 	},
 /obj/machinery/door/firedoor/glass,
@@ -16809,7 +16772,6 @@
 	},
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 23;
 	pixel_y = 13
 	},
@@ -17366,7 +17328,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "kitchen";
-	layer = 3.3;
 	name = "Kitchen Shutters"
 	},
 /obj/machinery/door/firedoor/glass,
@@ -20482,7 +20443,6 @@
 	dir = 1
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -20872,7 +20832,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "bar";
-	layer = 3.3;
 	name = "Bar Shutters"
 	},
 /obj/effect/floor_decal/spline/plain,
@@ -21896,7 +21855,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 8;
 	id = "bar";
-	layer = 3.3;
 	name = "Bar Shutters"
 	},
 /obj/effect/floor_decal/spline/plain{
@@ -23605,7 +23563,6 @@
 /area/crew_quarters/barrestroom)
 "nPA" = (
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /obj/effect/floor_decal/industrial/warning{
@@ -23642,7 +23599,6 @@
 	dir = 4
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},
@@ -24309,7 +24265,6 @@
 	},
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -26060,7 +26015,6 @@
 	},
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /obj/structure/sink{
@@ -26681,7 +26635,6 @@
 /area/crew_quarters/bar)
 "pwx" = (
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -27478,7 +27431,6 @@
 /area/hallway/primary/port)
 "pVi" = (
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled,
@@ -28054,7 +28006,6 @@
 /obj/machinery/camera/network/civilian,
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /turf/simulated/floor/tiled,
@@ -28136,7 +28087,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 8;
 	id = "bar";
-	layer = 3.3;
 	name = "Bar Shutters"
 	},
 /obj/effect/floor_decal/spline/plain{
@@ -32211,7 +32161,6 @@
 /area/tether/surfacebase/botanystorage)
 "sKc" = (
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},
@@ -34826,7 +34775,6 @@
 /area/crew_quarters/captain)
 "uim" = (
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -36220,7 +36168,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 8;
 	id = "bar";
-	layer = 3.3;
 	name = "Bar Shutters"
 	},
 /obj/effect/floor_decal/spline/plain{
@@ -36674,7 +36621,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "kitchen";
-	layer = 3.3;
 	name = "Kitchen Shutters"
 	},
 /obj/machinery/door/firedoor/glass,
@@ -38663,7 +38609,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 4;
 	id = "Druma";
-	layer = 3.3;
 	name = "Entertainment Shutters"
 	},
 /obj/effect/paint_stripe/bottlegreen,
@@ -38900,7 +38845,6 @@
 	pixel_y = -5
 	},
 /obj/machinery/newscaster{
-	layer = 3.3;
 	pixel_x = 27
 	},
 /turf/simulated/floor/tiled/dark,
@@ -38991,7 +38935,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "kitchen";
-	layer = 3.3;
 	name = "Kitchen Shutters"
 	},
 /obj/machinery/door/firedoor/glass,
@@ -39535,7 +39478,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 8;
 	id = "bar";
-	layer = 3.3;
 	name = "Bar Shutters"
 	},
 /obj/effect/floor_decal/spline/plain{
@@ -39730,7 +39672,6 @@
 	dir = 4
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
@@ -40247,7 +40188,6 @@
 	},
 /obj/machinery/door/blast/shutters{
 	id = "kitchen2";
-	layer = 3.3;
 	name = "Kitchen Shutters"
 	},
 /obj/structure/cable/green{
@@ -40965,7 +40905,6 @@
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled,
@@ -41039,7 +40978,6 @@
 	dir = 1
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled,
@@ -41268,7 +41206,6 @@
 /area/tether/surfacebase/barbackmaintenance)
 "xLS" = (
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},

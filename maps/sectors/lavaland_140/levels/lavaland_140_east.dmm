@@ -345,7 +345,6 @@
 "gK" = (
 /obj/machinery/mineral/processing_unit_console{
 	density = 0;
-	layer = 3.3;
 	pixel_y = -32
 	},
 /turf/simulated/floor/tiled/lavaland,

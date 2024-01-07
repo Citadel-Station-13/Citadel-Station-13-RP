@@ -355,7 +355,6 @@
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
 	frequency = 1380;
 	id_tag = "belter_docking";
-	layer = 3.3;
 	name = "Belting Dock Controller";
 	pixel_x = 24;
 	pixel_y = 30;
@@ -485,7 +484,6 @@
 /area/maintenance/substation/civilian)
 "bp" = (
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /obj/machinery/camera/network/civilian,
@@ -1121,7 +1119,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 4;
 	id = "bar";
-	layer = 3.3;
 	name = "Bar Shutters"
 	},
 /obj/machinery/door/firedoor{
@@ -3197,7 +3194,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 8;
 	id = "kitchen-c";
-	layer = 3.3;
 	name = "Kitchen Service Shutters"
 	},
 /obj/machinery/door/firedoor{
@@ -3968,7 +3964,6 @@
 /area/crew_quarters/kitchen)
 "lQ" = (
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 17
 	},
 /obj/machinery/light{
@@ -4273,7 +4268,6 @@
 /area/crew_quarters/freezer)
 "mX" = (
 /obj/machinery/newscaster{
-	layer = 3.3;
 	pixel_x = -27
 	},
 /obj/machinery/holopad,
@@ -4510,7 +4504,6 @@
 	dir = 8
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},
@@ -5156,7 +5149,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 8;
 	id = "kitchen";
-	layer = 3.3;
 	name = "Kitchen Service Shutters"
 	},
 /obj/machinery/door/firedoor{
@@ -5420,7 +5412,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "kitchen-c";
-	layer = 3.3;
 	name = "Kitchen Service Shutters"
 	},
 /obj/machinery/door/firedoor,
@@ -5689,7 +5680,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 4;
 	id = "bar";
-	layer = 3.3;
 	name = "Bar Shutters"
 	},
 /obj/machinery/recharger,
@@ -6658,7 +6648,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 8;
 	id = "kitchen";
-	layer = 3.3;
 	name = "Kitchen Service Shutters"
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -7769,7 +7758,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 4;
 	id = "bar";
-	layer = 3.3;
 	name = "Bar Shutters"
 	},
 /obj/machinery/door/firedoor{
@@ -9897,7 +9885,6 @@
 	dir = 4
 	},
 /obj/machinery/newscaster{
-	layer = 3.3;
 	pixel_x = -27
 	},
 /turf/simulated/floor/tiled,
@@ -11453,7 +11440,6 @@
 /area/maintenance/dormitory)
 "Im" = (
 /obj/machinery/newscaster{
-	layer = 3.3;
 	pixel_x = -27
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -11901,7 +11887,6 @@
 	},
 /obj/structure/flora/pottedplant/smalltree,
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},
@@ -13453,7 +13438,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 4;
 	id = "bar";
-	layer = 3.3;
 	name = "Bar Shutters"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -15503,7 +15487,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 4;
 	id = "bar";
-	layer = 3.3;
 	name = "Bar Shutters"
 	},
 /obj/machinery/light{
@@ -16459,7 +16442,6 @@
 "Xi" = (
 /obj/machinery/conveyor_switch/oneway{
 	id = "mining_interior";
-	layer = 3.3;
 	name = "refining conveyor";
 	pixel_y = 14
 	},
@@ -16660,7 +16642,6 @@
 "XQ" = (
 /obj/machinery/mineral/processing_unit_console{
 	density = 0;
-	layer = 3.3;
 	pixel_y = 30
 	},
 /turf/simulated/floor/tiled,
@@ -17293,7 +17274,6 @@
 	},
 /obj/structure/flora/pottedplant/smalltree,
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},

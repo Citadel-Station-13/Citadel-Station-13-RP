@@ -167,7 +167,6 @@
 /area/antag/antag_base)
 "ar" = (
 /obj/machinery/newscaster{
-	layer = 3.3;
 	pixel_y = 32
 	},
 /turf/unsimulated/floor{

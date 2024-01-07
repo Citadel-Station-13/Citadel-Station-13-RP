@@ -2636,7 +2636,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "kitchenC";
-	layer = 3.3;
 	name = "Kitchen Shutters"
 	},
 /turf/unsimulated/floor/steel,
@@ -3344,7 +3343,6 @@
 /obj/machinery/door/blast/regular{
 	dir = 8;
 	id = "ArmouryC2";
-	layer = 3.3;
 	name = "Armoury"
 	},
 /turf/unsimulated/floor/steel,
@@ -8956,7 +8954,6 @@
 /obj/machinery/door/blast/regular{
 	dir = 8;
 	id = "ArmouryC4";
-	layer = 3.3;
 	name = "Armoury"
 	},
 /turf/unsimulated/floor{
@@ -14683,7 +14680,6 @@
 /area/centcom/evac)
 "Yc" = (
 /obj/machinery/newscaster{
-	layer = 3.3;
 	pixel_x = 28
 	},
 /obj/effect/floor_decal/borderfloorblack{

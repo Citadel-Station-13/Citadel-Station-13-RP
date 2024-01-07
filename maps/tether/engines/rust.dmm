@@ -960,7 +960,6 @@
 	},
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /turf/simulated/floor,
@@ -1020,7 +1019,6 @@
 "cO" = (
 /obj/machinery/door/blast/regular{
 	id = "EngineEmitterPortWest";
-	layer = 3.3;
 	name = "Engine Gas Storage"
 	},
 /obj/machinery/door/firedoor/glass,
@@ -1274,7 +1272,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/blast/regular{
 	id = "EngineEmitterPortWest";
-	layer = 3.3;
 	name = "Engine Gas Storage"
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -1286,7 +1283,6 @@
 	},
 /obj/machinery/door/blast/regular{
 	id = "EngineEmitterPortWest";
-	layer = 3.3;
 	name = "Engine Gas Storage"
 	},
 /obj/machinery/button/remote/blast_door{
@@ -1348,7 +1344,6 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/blast/regular{
 	id = "EngineEmitterPortWest";
-	layer = 3.3;
 	name = "Engine Gas Storage"
 	},
 /turf/simulated/floor,

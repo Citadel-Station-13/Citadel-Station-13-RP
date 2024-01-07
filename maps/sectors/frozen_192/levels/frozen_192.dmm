@@ -563,7 +563,6 @@
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
 	frequency = 1380;
 	id_tag = "frozen";
-	layer = 3.3;
 	name = "Frozen Dock Controller";
 	pixel_y = 30
 	},

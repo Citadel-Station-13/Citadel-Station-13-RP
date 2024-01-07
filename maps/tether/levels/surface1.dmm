@@ -945,7 +945,6 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7,
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled,
@@ -1667,7 +1666,6 @@
 	dir = 8
 	},
 /obj/machinery/newscaster{
-	layer = 3.3;
 	pixel_y = -32
 	},
 /turf/simulated/floor/tiled,
@@ -4198,7 +4196,6 @@
 	dir = 4
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled,
@@ -4748,7 +4745,6 @@
 	},
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /obj/structure/disposalpipe/segment,
@@ -5477,7 +5473,6 @@
 /area/tether/surfacebase/funny/clownoffice)
 "cRX" = (
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/steel_dirty,
@@ -6961,7 +6956,6 @@
 	pixel_y = -1
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -7021,7 +7015,6 @@
 	},
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /turf/simulated/floor/tiled,
@@ -9855,7 +9848,6 @@
 /area/crew_quarters/sleep/maintDorm1)
 "fmo" = (
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /obj/structure/disposalpipe/segment{
@@ -13087,7 +13079,6 @@
 	dir = 4
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /obj/effect/floor_decal/corner/brown/border{
@@ -16480,7 +16471,6 @@
 	dir = 1
 	},
 /obj/machinery/newscaster{
-	layer = 3.3;
 	pixel_x = 28
 	},
 /obj/structure/bed/roller,
@@ -18116,7 +18106,6 @@
 	},
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /obj/effect/floor_decal/corner/purple{
@@ -18331,7 +18320,6 @@
 "jGz" = (
 /obj/structure/catwalk,
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -19773,7 +19761,6 @@
 	dir = 1
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7{
@@ -21510,7 +21497,6 @@
 /area/tether/surfacebase/surface_one_hall)
 "lqW" = (
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled,
@@ -22989,7 +22975,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "surfcargooffice";
-	layer = 3.3;
 	name = "Cargo Office Shutters"
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
@@ -24498,7 +24483,6 @@
 "mWc" = (
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /obj/machinery/camera/network/civilian,
@@ -24591,7 +24575,6 @@
 	dir = 5
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /obj/effect/floor_decal/borderfloor/corner2{
@@ -29483,7 +29466,6 @@
 	dir = 9
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -29663,7 +29645,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 8;
 	id = "surfcargooffice";
-	layer = 3.3;
 	name = "Cargo Office Shutters"
 	},
 /turf/simulated/floor/tiled,
@@ -35447,7 +35428,6 @@
 	dir = 1
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /obj/effect/floor_decal/corner/lightgrey/border{
@@ -37294,7 +37274,6 @@
 	dir = 4
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /obj/structure/cable/orange{
@@ -38274,7 +38253,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "surfcargooffice";
-	layer = 3.3;
 	name = "Cargo Office Shutters"
 	},
 /obj/structure/disposalpipe/segment,
@@ -40584,7 +40562,6 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /obj/structure/disposalpipe/segment{

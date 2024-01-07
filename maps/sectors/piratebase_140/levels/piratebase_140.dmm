@@ -18,7 +18,6 @@
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
 	frequency = 1380;
 	id_tag = "pirate_docker";
-	layer = 3.3;
 	name = "Belting Dock Controller";
 	pixel_y = 30;
 	req_one_access = null

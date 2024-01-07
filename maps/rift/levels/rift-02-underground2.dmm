@@ -290,7 +290,6 @@
 	},
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /turf/simulated/floor/tiled,
@@ -1507,7 +1506,6 @@
 /obj/machinery/door/blast/regular{
 	dir = 4;
 	id = "SupermatterPort";
-	layer = 3.3;
 	name = "Reactor Blast Door"
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/red{
@@ -2433,7 +2431,6 @@
 	},
 /obj/machinery/button/windowtint{
 	id = "ce_office";
-	layer = 3.3;
 	pixel_x = 26;
 	pixel_y = 9
 	},
@@ -2574,7 +2571,6 @@
 /obj/machinery/door/blast/regular{
 	dir = 4;
 	id = "SupermatterPort";
-	layer = 3.3;
 	name = "Reactor Blast Door"
 	},
 /obj/effect/paint/sun,
@@ -2606,7 +2602,6 @@
 /obj/machinery/door/blast/regular{
 	dir = 4;
 	id = "EngineEmitterPortWest";
-	layer = 3.3;
 	name = "Engine Gas Storage"
 	},
 /obj/structure/catwalk,
@@ -2657,7 +2652,6 @@
 "iD" = (
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -3988,7 +3982,6 @@
 /obj/machinery/door/blast/regular{
 	dir = 4;
 	id = "EngineEmitterPortWest";
-	layer = 3.3;
 	name = "Engine Gas Storage"
 	},
 /obj/machinery/button/remote/blast_door{
@@ -10060,7 +10053,6 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -11133,7 +11125,6 @@
 	},
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -13576,7 +13567,6 @@
 "Uz" = (
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /turf/simulated/floor/tiled/white,
@@ -14498,7 +14488,6 @@
 /obj/machinery/portable_atmospherics/canister/air/airlock,
 /obj/machinery/airlock_sensor/airlock_exterior{
 	id_tag = "eng_al_ext_snsr";
-	layer = 3.3;
 	master_tag = "engine_room_airlock";
 	pixel_x = -22;
 	req_access = list(10)

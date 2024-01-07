@@ -13718,7 +13718,6 @@
 "iMW" = (
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /obj/structure/disposalpipe/trunk{
@@ -14985,7 +14984,6 @@
 "jEp" = (
 /obj/machinery/processor,
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},
@@ -20862,7 +20860,6 @@
 	},
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -36850,7 +36847,6 @@
 	},
 /obj/structure/table/glass,
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /turf/simulated/floor/wood,
@@ -37360,7 +37356,6 @@
 	},
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -37781,7 +37776,6 @@
 "yhs" = (
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /turf/simulated/floor/reinforced,

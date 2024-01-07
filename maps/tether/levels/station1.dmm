@@ -1251,7 +1251,6 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /obj/structure/cable/green{
@@ -2603,7 +2602,6 @@
 "fa" = (
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /turf/simulated/floor/tiled,
@@ -3121,7 +3119,6 @@
 	dir = 1
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled,
@@ -3486,7 +3483,6 @@
 	dir = 5
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled,
@@ -3671,7 +3667,6 @@
 	dir = 4
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /obj/machinery/door/airlock/glass,
@@ -4060,7 +4055,6 @@
 	dir = 1
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /turf/simulated/floor/wood,
@@ -4489,7 +4483,6 @@
 "jg" = (
 /obj/machinery/light,
 /obj/machinery/newscaster{
-	layer = 3.3;
 	pixel_y = -32
 	},
 /obj/effect/floor_decal/borderfloor,
@@ -4583,7 +4576,6 @@
 /obj/random/tech_supply,
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /obj/random/tech_supply,
@@ -6575,7 +6567,6 @@
 "nn" = (
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -8632,7 +8623,6 @@
 /obj/structure/table/reinforced,
 /obj/item/folder/white,
 /obj/machinery/newscaster{
-	layer = 3.3;
 	pixel_x = 28
 	},
 /turf/simulated/floor/tiled/dark,
@@ -8807,7 +8797,6 @@
 	dir = 4
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /obj/structure/cable/green{
@@ -10665,7 +10654,6 @@
 	dir = 8
 	},
 /obj/machinery/newscaster{
-	layer = 3.3;
 	pixel_y = -32
 	},
 /obj/machinery/light,
@@ -12972,7 +12960,6 @@
 "AC" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /obj/vehicle_old/train/trolley,
@@ -14295,7 +14282,6 @@
 /obj/landmark/spawnpoint/job/chief_engineer,
 /obj/machinery/button/windowtint{
 	id = "ce_office";
-	layer = 3.3;
 	pixel_x = 26;
 	pixel_y = 29
 	},
@@ -16082,7 +16068,6 @@
 	dir = 10
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
@@ -16867,7 +16852,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -17080,7 +17064,6 @@
 "II" = (
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /turf/simulated/floor/wood/broken,
@@ -18275,7 +18258,6 @@
 	pixel_y = -24
 	},
 /obj/machinery/newscaster{
-	layer = 3.3;
 	pixel_x = -27
 	},
 /obj/random/tech_supply,
@@ -19050,7 +19032,6 @@
 "MG" = (
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /obj/random/junk,
@@ -19179,7 +19160,6 @@
 	pixel_x = -3
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled,
@@ -19830,7 +19810,6 @@
 "Ow" = (
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /obj/effect/floor_decal/industrial/warning,
@@ -19854,7 +19833,6 @@
 	},
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /turf/simulated/floor/tiled,
@@ -20749,7 +20727,6 @@
 	dir = 4
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
@@ -21370,7 +21347,6 @@
 	},
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /obj/structure/reagent_dispensers/water_cooler/full{
@@ -21822,7 +21798,6 @@
 	dir = 1
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /turf/simulated/floor/carpet,
@@ -22488,7 +22463,6 @@
 	},
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /turf/simulated/floor/tiled,
@@ -22680,7 +22654,6 @@
 	},
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -22854,7 +22827,6 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -23093,7 +23065,6 @@
 	},
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /obj/machinery/photocopier/faxmachine{
@@ -24100,7 +24071,6 @@
 "WO" = (
 /obj/structure/flora/pottedplant,
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled,
@@ -24810,7 +24780,6 @@
 "Yk" = (
 /obj/machinery/airlock_sensor/airlock_exterior{
 	id_tag = "eng_al_ext_snsr";
-	layer = 3.3;
 	master_tag = "engine_room_airlock";
 	pixel_x = -22;
 	req_access = list(10)
@@ -25032,7 +25001,6 @@
 	},
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /turf/simulated/floor/tiled/white,

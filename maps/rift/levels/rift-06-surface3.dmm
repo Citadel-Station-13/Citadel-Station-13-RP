@@ -2134,14 +2134,12 @@
 /obj/machinery/computer/card,
 /obj/machinery/button/windowtint{
 	id = "hop_office";
-	layer = 3.3;
 	pixel_x = 8;
 	pixel_y = 26
 	},
 /obj/machinery/button/remote/blast_door{
 	desc = "A remote control-switch for shutters.";
 	id = "hop_office_shutters";
-	layer = 3.3;
 	name = "Office Shutters";
 	pixel_x = -8;
 	pixel_y = 26
@@ -11343,7 +11341,6 @@
 	},
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /turf/simulated/floor/tiled/steel,
@@ -13247,7 +13244,6 @@
 /area/shuttle/excursion/cargo)
 "aKM" = (
 /obj/machinery/vending/wallmed1{
-	layer = 3.3;
 	name = "Emergency NanoMed";
 	pixel_y = -28
 	},

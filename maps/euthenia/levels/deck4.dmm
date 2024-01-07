@@ -2194,7 +2194,6 @@
 "iE" = (
 /obj/machinery/mineral/processing_unit_console{
 	density = 0;
-	layer = 3.3;
 	pixel_y = 30
 	},
 /obj/machinery/conveyor_switch/oneway{
@@ -3764,7 +3763,6 @@
 "oy" = (
 /obj/machinery/mineral/processing_unit_console{
 	density = 0;
-	layer = 3.3;
 	pixel_y = 30
 	},
 /obj/effect/floor_decal/industrial/warning{
@@ -6115,7 +6113,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 4;
 	id = "PubPrep";
-	layer = 3.3;
 	name = "Gateway Access Shutters"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -6524,7 +6521,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 4;
 	id = "PubPrep";
-	layer = 3.3;
 	name = "Gateway Access Shutters"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{

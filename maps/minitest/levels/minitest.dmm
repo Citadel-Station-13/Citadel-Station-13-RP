@@ -23,7 +23,6 @@
 	c_tag = "Telecoms Main Computer Room"
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/dark,
@@ -2543,7 +2542,6 @@
 /area/bridge)
 "gi" = (
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled,

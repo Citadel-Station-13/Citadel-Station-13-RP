@@ -1274,7 +1274,6 @@
 /area/medical/virologyaccess)
 "boD" = (
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /obj/effect/floor_decal/industrial/warning{
@@ -1365,7 +1364,6 @@
 "bwF" = (
 /obj/machinery/recharge_station,
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /obj/machinery/light/no_nightshift{
@@ -10083,7 +10081,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 8;
 	id = "kitchen";
-	layer = 3.3;
 	name = "Kitchen Service Shutters"
 	},
 /obj/machinery/door/firedoor{
@@ -14856,7 +14853,6 @@
 	dir = 8
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -16607,7 +16603,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 4;
 	id = "Druma";
-	layer = 3.3;
 	name = "Entertainment Shutters"
 	},
 /turf/simulated/floor/plating,
@@ -19803,7 +19798,6 @@
 "uPq" = (
 /obj/machinery/button/windowtint{
 	id = "draama";
-	layer = 3.3;
 	name = "Mystery Window Tint Control";
 	pixel_x = -24;
 	range = 10
@@ -19952,7 +19946,6 @@
 	},
 /obj/machinery/door/blast/shutters{
 	id = "Druma";
-	layer = 3.3;
 	name = "Entertainment Shutters"
 	},
 /turf/simulated/floor/plating,
@@ -21897,7 +21890,6 @@
 /area/tcommsat/entrance)
 "xet" = (
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/techfloor,

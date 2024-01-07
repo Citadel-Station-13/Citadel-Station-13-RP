@@ -9926,7 +9926,6 @@
 /area/centcom/specops)
 "ZN" = (
 /obj/machinery/vending/wallmed1{
-	layer = 3.3;
 	name = "Emergency NanoMed";
 	pixel_y = 30
 	},

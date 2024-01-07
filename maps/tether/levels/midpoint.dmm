@@ -506,7 +506,6 @@
 /area/tether/midpoint)
 "Rd" = (
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /obj/structure/disposalpipe/segment{

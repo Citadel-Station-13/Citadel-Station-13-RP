@@ -600,7 +600,6 @@
 /area/crew_quarters/bar)
 "azB" = (
 /obj/machinery/newscaster{
-	layer = 3.3;
 	pixel_x = -27
 	},
 /turf/simulated/floor/carpet/oracarpet,
@@ -667,7 +666,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 8;
 	id = "kitchen-c";
-	layer = 3.3;
 	name = "Kitchen Service Shutters"
 	},
 /turf/simulated/floor/plating,
@@ -958,7 +956,6 @@
 /area/crew_quarters/captain)
 "aWt" = (
 /obj/machinery/newscaster{
-	layer = 3.3;
 	pixel_x = 27
 	},
 /turf/simulated/floor/carpet/purcarpet,
@@ -7651,7 +7648,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "kitchen-c";
-	layer = 3.3;
 	name = "Kitchen Service Shutters"
 	},
 /obj/machinery/door/firedoor{
@@ -8196,7 +8192,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "bar";
-	layer = 3.3;
 	name = "Bar Shutters"
 	},
 /obj/machinery/door/firedoor{
@@ -10091,7 +10086,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 4;
 	id = "kitchen-c";
-	layer = 3.3;
 	name = "Kitchen Service Shutters"
 	},
 /turf/simulated/floor/plating,
@@ -11202,7 +11196,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "kitchen-c";
-	layer = 3.3;
 	name = "Kitchen Service Shutters"
 	},
 /obj/machinery/door/firedoor{
@@ -13949,7 +13942,6 @@
 /obj/item/book/manual/legal/sop_vol2,
 /obj/item/book/manual/legal/sop_vol1,
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},
@@ -15231,7 +15223,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "bar";
-	layer = 3.3;
 	name = "Bar Shutters"
 	},
 /obj/machinery/door/firedoor{
@@ -19435,7 +19426,6 @@
 	},
 /obj/machinery/fire_alarm{
 	dir = 4;
-	layer = 3.3;
 	pixel_x = 26
 	},
 /obj/map_helper/network_builder/power_cable/green/auto,

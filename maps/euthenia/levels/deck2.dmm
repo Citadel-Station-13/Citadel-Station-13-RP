@@ -864,7 +864,6 @@
 /area/space)
 "aEw" = (
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},
@@ -1437,7 +1436,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 4;
 	id = "hanger1b";
-	layer = 3.3;
 	name = "Hanger 1 B Shutters"
 	},
 /turf/simulated/floor/reinforced,
@@ -2505,7 +2503,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "hanger1a";
-	layer = 3.3;
 	name = "Hanger 1 A Shutters"
 	},
 /obj/machinery/door/firedoor/glass,
@@ -3150,7 +3147,6 @@
 /obj/machinery/button/remote/blast_door{
 	desc = "A remote control-switch for shutters.";
 	id = "hop_office_desk";
-	layer = 3.3;
 	name = "Desk Privacy Shutter";
 	pixel_x = 6;
 	pixel_y = -29
@@ -4800,7 +4796,6 @@
 	dir = 5
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},
@@ -6734,7 +6729,6 @@
 /obj/machinery/honey_extractor,
 /obj/structure/railing,
 /obj/machinery/newscaster{
-	layer = 3.3;
 	pixel_x = -27
 	},
 /obj/structure/window/reinforced,
@@ -7200,7 +7194,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 4;
 	id = "hanger1a";
-	layer = 3.3;
 	name = "Hanger 1 A Shutters"
 	},
 /obj/machinery/door/firedoor/glass{
@@ -27564,7 +27557,6 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/blast/shutters{
 	id = "hanger1b";
-	layer = 3.3;
 	name = "Hanger 1 B Shutters"
 	},
 /turf/simulated/floor/reinforced,

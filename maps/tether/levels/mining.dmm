@@ -86,7 +86,6 @@
 /area/outpost/mining_main/airlock)
 "dl" = (
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -1849,7 +1848,6 @@
 	dir = 1
 	},
 /obj/machinery/fire_alarm{
-	layer = 3.3;
 	pixel_y = 26
 	},
 /turf/simulated/floor/plating,
