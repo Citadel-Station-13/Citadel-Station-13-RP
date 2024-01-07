@@ -265,13 +265,13 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 28)
 	if(T.get_wallmount_anchor())
 		switch(dir)
 			if(SOUTH)
-				base_pixel_y = -28
-			if(NORTH)
 				base_pixel_y = 28
+			if(NORTH)
+				base_pixel_y = -28
 			if(EAST)
-				base_pixel_x = 28
-			if(WEST)
 				base_pixel_x = -28
+			if(WEST)
+				base_pixel_x = 28
 	reset_pixel_offsets()
 
 	if(terminal)
