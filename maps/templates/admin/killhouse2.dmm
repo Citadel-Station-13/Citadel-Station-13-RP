@@ -1723,6 +1723,7 @@
 /area/killhouse/two)
 "Ev" = (
 /obj/machinery/power/apc/hyper/east{
+	dir = 2;
 	cell_type = /obj/item/cell/infinite
 	},
 /turf/simulated/floor/outdoors/snow/lythios43c,
@@ -2717,6 +2718,7 @@
 /area/killhouse/two)
 "Wi" = (
 /obj/machinery/power/apc/hyper/south{
+	dir = 2;
 	cell_type = /obj/item/cell/infinite
 	},
 /turf/simulated/floor/concrete/rng/lythios43c/outdoors,

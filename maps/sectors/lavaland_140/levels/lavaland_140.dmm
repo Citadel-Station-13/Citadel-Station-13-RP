@@ -2248,6 +2248,7 @@
 /area/lavaland/central/base/common)
 "SN" = (
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/infinite;
 	name = "south bump";
 	pixel_y = -28

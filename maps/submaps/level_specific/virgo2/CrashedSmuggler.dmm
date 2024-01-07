@@ -18,6 +18,7 @@
 /area/submap/virgo2/CrashedSmuggler/ship)
 "cc" = (
 /obj/machinery/power/apc/alarms_hidden{
+	dir = 2;
 	cell_type = /obj/item/cell/high/empty;
 	pixel_x = 28
 	},

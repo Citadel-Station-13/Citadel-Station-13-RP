@@ -4467,8 +4467,8 @@
 /area/awaymission/labs/cargo)
 "mI" = (
 /obj/machinery/power/apc{
-	cell_type = 5000;
 	dir = 1;
+	cell_type = 5000;
 	name = "Virology APC";
 	pixel_y = 24
 	},
@@ -5268,8 +5268,8 @@
 /area/awaymission/labs/civilian)
 "oT" = (
 /obj/machinery/power/apc{
-	cell_type = 5000;
 	dir = 8;
+	cell_type = 5000;
 	environ = 0;
 	equipment = 0;
 	lighting = 0;
@@ -6979,8 +6979,8 @@
 /area/awaymission/labs/security)
 "ug" = (
 /obj/machinery/power/apc{
-	cell_type = 5000;
 	dir = 1;
+	cell_type = 5000;
 	name = "Virology APC";
 	pixel_y = 24
 	},

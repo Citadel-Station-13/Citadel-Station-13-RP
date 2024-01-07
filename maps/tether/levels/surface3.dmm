@@ -2597,6 +2597,7 @@
 /area/rnd/outpost/xenobiology/outpost_main)
 "bpc" = (
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/super;
 	dir = 1;
 	name = "north bump";
@@ -12491,6 +12492,7 @@
 /obj/item/packageWrap,
 /obj/item/hand_labeler,
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
@@ -13970,6 +13972,7 @@
 /area/hydroponics)
 "iku" = (
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/super;
 	dir = 1;
 	name = "north bump";
@@ -14209,6 +14212,7 @@
 /area/rnd/research/researchdivision)
 "iqT" = (
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
@@ -16645,6 +16649,7 @@
 	},
 /obj/landmark/spawnpoint/job/librarian,
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
@@ -20030,6 +20035,7 @@
 /area/rnd/outpost/xenobiology/outpost_stairs)
 "lUN" = (
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
@@ -25751,6 +25757,7 @@
 /area/rnd/robotics)
 "pbg" = (
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
@@ -26379,6 +26386,7 @@
 	dir = 4
 	},
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
@@ -27903,6 +27911,7 @@
 /area/rnd/outpost/xenobiology/outpost_hallway)
 "qix" = (
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
@@ -36659,6 +36668,7 @@
 /area/library)
 "vmd" = (
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
@@ -38252,6 +38262,7 @@
 /area/crew_quarters/bar)
 "wdG" = (
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";

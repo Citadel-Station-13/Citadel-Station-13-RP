@@ -1749,6 +1749,7 @@
 	dir = 4
 	},
 /obj/machinery/power/apc/alarms_hidden{
+	dir = 2;
 	cell_type = null;
 	chargelevel = 0;
 	dir = 1
@@ -2748,6 +2749,7 @@
 "yG" = (
 /obj/structure/bed/chair,
 /obj/machinery/power/apc/alarms_hidden{
+	dir = 2;
 	cell_type = null;
 	chargelevel = 0;
 	dir = 1
@@ -4238,6 +4240,7 @@
 /area/outpost/mining_main/outpost/maintenance/south)
 "Mc" = (
 /obj/machinery/power/apc/alarms_hidden{
+	dir = 2;
 	cell_type = null;
 	chargelevel = 0;
 	dir = 1
@@ -5088,6 +5091,7 @@
 /area/rift/facility/interior/prison)
 "UD" = (
 /obj/machinery/power/apc/alarms_hidden{
+	dir = 2;
 	cell_type = null;
 	chargelevel = 0;
 	dir = 1

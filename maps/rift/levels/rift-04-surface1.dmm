@@ -7139,8 +7139,8 @@
 /area/maintenance/engineering/pumpstation)
 "eDQ" = (
 /obj/machinery/power/apc{
-	alarms_hidden = 1;
 	dir = 4;
+	alarms_hidden = 1;
 	name = "east bump";
 	pixel_x = 24
 	},
@@ -8768,6 +8768,7 @@
 /obj/structure/table/woodentable,
 /obj/machinery/recharger,
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/super;
 	dir = 1;
 	name = "north bump";
@@ -38591,6 +38592,7 @@
 /area/maintenance/evahallway)
 "xQG" = (
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/super;
 	dir = 1;
 	name = "north bump";

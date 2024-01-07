@@ -296,6 +296,7 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/power/apc{
+	dir = 2;
 	alarms_hidden = 1;
 	cell_type = /obj/item/cell/high/empty;
 	dir = 4;

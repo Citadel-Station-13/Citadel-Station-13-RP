@@ -890,6 +890,7 @@
 /area/submap/Rockybase)
 "de" = (
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "Unknown APC";

@@ -2436,8 +2436,8 @@
 /area/mothership/vault)
 "fA" = (
 /obj/machinery/power/apc{
-	alarms_hidden = 1;
 	dir = 1;
+	alarms_hidden = 1;
 	name = "north bump";
 	pixel_y = 28
 	},
@@ -2934,8 +2934,8 @@
 /area/mothership/treatment)
 "gL" = (
 /obj/machinery/power/apc{
-	alarms_hidden = 1;
 	dir = 1;
+	alarms_hidden = 1;
 	name = "north bump";
 	pixel_y = 28
 	},

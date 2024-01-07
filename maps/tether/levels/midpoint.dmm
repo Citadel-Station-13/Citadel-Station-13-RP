@@ -165,6 +165,7 @@
 /area/maintenance/tether_midpoint)
 "sx" = (
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";

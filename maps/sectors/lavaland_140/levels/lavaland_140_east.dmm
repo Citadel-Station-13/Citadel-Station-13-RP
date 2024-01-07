@@ -37,6 +37,7 @@
 /area/lavaland/east/ashlander_village)
 "az" = (
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/infinite;
 	dir = 1;
 	name = "north bump";
@@ -2530,6 +2531,7 @@
 /area/lavaland/east/ashlander_village)
 "YY" = (
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/high/empty;
 	chargelevel = 0;
 	chargemode = 0;

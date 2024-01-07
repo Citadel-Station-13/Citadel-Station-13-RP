@@ -57,8 +57,8 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/power/apc/hyper{
-	alarms_hidden = 1;
 	dir = 8;
+	alarms_hidden = 1;
 	name = "Merc APC - West";
 	pixel_x = -24
 	},
@@ -586,8 +586,8 @@
 	icon_state = "0-2"
 	},
 /obj/machinery/power/apc/hyper{
-	alarms_hidden = 1;
 	dir = 1;
+	alarms_hidden = 1;
 	name = "Merc APC - North";
 	pixel_y = 24
 	},
@@ -634,8 +634,8 @@
 	dir = 1
 	},
 /obj/machinery/power/apc/hyper{
-	alarms_hidden = 1;
 	dir = 1;
+	alarms_hidden = 1;
 	name = "Merc APC - North";
 	pixel_y = 24
 	},
@@ -1811,8 +1811,8 @@
 /area/ship/manta/bridge)
 "iQ" = (
 /obj/machinery/power/apc/hyper{
-	alarms_hidden = 1;
 	dir = 4;
+	alarms_hidden = 1;
 	name = "Merc APC - East";
 	pixel_x = 24
 	},
@@ -1895,8 +1895,8 @@
 /area/shuttle/manta_ship_boat)
 "jg" = (
 /obj/machinery/power/apc/hyper{
-	alarms_hidden = 1;
 	dir = 1;
+	alarms_hidden = 1;
 	name = "Merc APC - North";
 	pixel_y = 24
 	},
@@ -2437,8 +2437,8 @@
 	},
 /obj/item/bedsheet/hos,
 /obj/machinery/power/apc/hyper{
-	alarms_hidden = 1;
 	dir = 4;
+	alarms_hidden = 1;
 	name = "Merc APC - East";
 	pixel_x = 24
 	},
@@ -2687,8 +2687,8 @@
 	dir = 8
 	},
 /obj/machinery/power/apc/hyper{
-	alarms_hidden = 1;
 	dir = 4;
+	alarms_hidden = 1;
 	name = "Merc APC - East";
 	pixel_x = 24
 	},
@@ -2960,8 +2960,8 @@
 /area/ship/manta/radiator_port)
 "ov" = (
 /obj/machinery/power/apc/hyper{
-	alarms_hidden = 1;
 	dir = 4;
+	alarms_hidden = 1;
 	name = "Merc APC - East";
 	pixel_x = 24
 	},
@@ -3215,8 +3215,8 @@
 	dir = 10
 	},
 /obj/machinery/power/apc/hyper{
-	alarms_hidden = 1;
 	dir = 4;
+	alarms_hidden = 1;
 	name = "Merc APC - East";
 	pixel_x = 24
 	},
@@ -3439,6 +3439,7 @@
 /area/ship/manta/med)
 "rl" = (
 /obj/machinery/power/apc/hyper{
+	dir = 2;
 	alarms_hidden = 1;
 	name = "Merc APC - South";
 	pixel_y = -24
@@ -4232,6 +4233,7 @@
 /area/ship/manta/recreation)
 "vw" = (
 /obj/machinery/power/apc/hyper{
+	dir = 2;
 	alarms_hidden = 1;
 	name = "Merc APC - South";
 	pixel_y = -24
@@ -4730,8 +4732,8 @@
 /area/ship/manta/engine)
 "xv" = (
 /obj/machinery/power/apc/hyper{
-	alarms_hidden = 1;
 	dir = 8;
+	alarms_hidden = 1;
 	name = "Merc APC - West";
 	pixel_x = -24
 	},
@@ -5564,8 +5566,8 @@
 /area/ship/manta/recreation)
 "Bk" = (
 /obj/machinery/power/apc/hyper{
-	alarms_hidden = 1;
 	dir = 8;
+	alarms_hidden = 1;
 	name = "Merc APC - West";
 	pixel_x = -24
 	},
@@ -5709,6 +5711,7 @@
 /area/ship/manta/mech_bay)
 "Cn" = (
 /obj/machinery/power/apc/hyper{
+	dir = 2;
 	alarms_hidden = 1;
 	name = "Merc APC - South";
 	pixel_y = -24
@@ -6391,6 +6394,7 @@
 	dir = 6
 	},
 /obj/machinery/power/apc/hyper{
+	dir = 2;
 	alarms_hidden = 1;
 	name = "Merc APC - South";
 	pixel_y = -24
@@ -6663,6 +6667,7 @@
 /obj/item/mecha_parts/mecha_equipment/shocker,
 /obj/effect/floor_decal/techfloor,
 /obj/machinery/power/apc/hyper{
+	dir = 2;
 	alarms_hidden = 1;
 	name = "Merc APC - South";
 	pixel_y = -24
@@ -7435,6 +7440,7 @@
 "LC" = (
 /obj/effect/floor_decal/techfloor,
 /obj/machinery/power/apc/hyper{
+	dir = 2;
 	alarms_hidden = 1;
 	name = "Merc APC - South";
 	pixel_y = -24
@@ -8300,8 +8306,8 @@
 	dir = 1
 	},
 /obj/machinery/power/apc/hyper{
-	alarms_hidden = 1;
 	dir = 1;
+	alarms_hidden = 1;
 	name = "Merc APC - North";
 	pixel_y = 24
 	},
@@ -8320,8 +8326,8 @@
 	dir = 4
 	},
 /obj/machinery/power/apc/hyper{
-	alarms_hidden = 1;
 	dir = 8;
+	alarms_hidden = 1;
 	name = "Merc APC - West";
 	pixel_x = -24
 	},
@@ -8811,8 +8817,8 @@
 	},
 /obj/item/bedsheet/hos,
 /obj/machinery/power/apc/hyper{
-	alarms_hidden = 1;
 	dir = 4;
+	alarms_hidden = 1;
 	name = "Merc APC - East";
 	pixel_x = 24
 	},
@@ -9502,6 +9508,7 @@
 /area/ship/manta/hangar)
 "Ww" = (
 /obj/machinery/power/apc/hyper{
+	dir = 2;
 	alarms_hidden = 1;
 	name = "Merc APC - South";
 	pixel_y = -24
@@ -9945,8 +9952,8 @@
 	dir = 8
 	},
 /obj/machinery/power/apc/hyper{
-	alarms_hidden = 1;
 	dir = 1;
+	alarms_hidden = 1;
 	name = "Merc APC - North";
 	pixel_y = 24
 	},
@@ -10136,8 +10143,8 @@
 	pixel_y = 8
 	},
 /obj/machinery/power/apc/hyper{
-	alarms_hidden = 1;
 	dir = 4;
+	alarms_hidden = 1;
 	name = "Merc APC - East";
 	pixel_x = 24
 	},

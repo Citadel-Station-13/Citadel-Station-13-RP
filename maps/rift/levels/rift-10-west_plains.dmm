@@ -392,6 +392,7 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
@@ -1103,6 +1104,7 @@
 /area/rift/surfacebase/outside/west)
 "fj" = (
 /obj/machinery/power/apc/alarms_hidden{
+	dir = 2;
 	cell_type = null;
 	chargelevel = 0;
 	dir = 1
@@ -4596,6 +4598,7 @@
 /area/rift/exterior/mineshaft)
 "uU" = (
 /obj/machinery/power/apc/alarms_hidden{
+	dir = 2;
 	cell_type = null;
 	chargelevel = 0;
 	dir = 1
@@ -4767,6 +4770,7 @@
 /area/rift/facility/interior/surface)
 "vL" = (
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
@@ -6490,6 +6494,7 @@
 /area/rnd/outpost/anomaly_lab/airlock)
 "DU" = (
 /obj/machinery/power/apc/alarms_hidden{
+	dir = 2;
 	cell_type = null;
 	chargelevel = 0;
 	dir = 1
@@ -6729,6 +6734,7 @@
 	icon_state = "0-2"
 	},
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";

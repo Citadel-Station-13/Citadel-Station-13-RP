@@ -2228,6 +2228,7 @@
 /area/outpost/mining_main/outpost)
 "As" = (
 /obj/machinery/power/apc/alarms_hidden{
+	dir = 2;
 	cell_type = null;
 	chargelevel = 0;
 	dir = 1
@@ -3779,6 +3780,7 @@
 /area/rift/surfacebase/outside/west_caves)
 "RG" = (
 /obj/machinery/power/apc/alarms_hidden{
+	dir = 2;
 	cell_type = null;
 	chargelevel = 0;
 	dir = 1

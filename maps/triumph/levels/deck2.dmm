@@ -64,6 +64,7 @@
 /area/vacant/vacant_shop)
 "aj" = (
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
@@ -1311,6 +1312,7 @@
 	dir = 8
 	},
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
@@ -1778,6 +1780,7 @@
 /area/crew_quarters/showers)
 "ff" = (
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/super;
 	dir = 1;
 	name = "north bump";
@@ -2740,6 +2743,7 @@
 /area/crew_quarters/bar)
 "ik" = (
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
@@ -3765,6 +3769,7 @@
 /area/crew_quarters/bar)
 "lg" = (
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
@@ -5875,6 +5880,7 @@
 /area/hallway/primary/port)
 "rI" = (
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
@@ -7544,6 +7550,7 @@
 /area/quartermaster/qm)
 "wx" = (
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
@@ -7613,6 +7620,7 @@
 /area/crew_quarters/lounge/kitchen_freezer)
 "wD" = (
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
@@ -10706,6 +10714,7 @@
 /area/maintenance/bar/lower)
 "Gf" = (
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
@@ -11831,6 +11840,7 @@
 /area/crew_quarters/bar)
 "JF" = (
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
@@ -12089,6 +12099,7 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
@@ -13939,6 +13950,7 @@
 /area/crew_quarters/bar)
 "PT" = (
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
@@ -14692,6 +14704,7 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/crate,
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
@@ -15383,6 +15396,7 @@
 /area/crew_quarters/sleep/Dorm_2)
 "Up" = (
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
@@ -17193,6 +17207,7 @@
 /area/maintenance/dormitory)
 "ZR" = (
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";

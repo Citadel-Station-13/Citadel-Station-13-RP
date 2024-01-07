@@ -3153,6 +3153,7 @@
 /area/engineering/atmos/storage)
 "ks" = (
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
@@ -3522,6 +3523,7 @@
 "lP" = (
 /obj/structure/cable/green,
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
@@ -3565,6 +3567,7 @@
 /area/maintenance/engi_engine)
 "lT" = (
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/super;
 	dir = 1;
 	name = "north bump";
@@ -4265,6 +4268,7 @@
 /area/engineering/break_room)
 "oE" = (
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
@@ -5113,6 +5117,7 @@
 	dir = 4
 	},
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/super;
 	dir = 1;
 	name = "north bump";
@@ -6406,6 +6411,7 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/super;
 	name = "south bump";
 	pixel_y = -32
@@ -6935,6 +6941,7 @@
 /area/engineering/portnacelle)
 "xj" = (
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/super;
 	dir = 1;
 	name = "north bump";
@@ -8048,6 +8055,7 @@
 	pixel_y = 22
 	},
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
@@ -11838,6 +11846,7 @@
 	dir = 6
 	},
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/super;
 	dir = 1;
 	name = "north bump";
@@ -12264,6 +12273,7 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
@@ -12483,6 +12493,7 @@
 /area/space)
 "Qh" = (
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/super;
 	dir = 1;
 	name = "north bump";
@@ -13100,6 +13111,7 @@
 /area/tcommsat/chamber)
 "Sj" = (
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/super;
 	dir = 4;
 	name = "east bump";
@@ -14233,6 +14245,7 @@
 	icon_state = "0-2"
 	},
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
@@ -14362,6 +14375,7 @@
 	icon_state = "0-2"
 	},
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/super;
 	dir = 1;
 	name = "north bump";

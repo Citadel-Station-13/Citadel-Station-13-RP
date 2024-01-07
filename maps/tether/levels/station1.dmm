@@ -3295,8 +3295,8 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/power/apc{
-	alarms_hidden = 1;
 	dir = 1;
+	alarms_hidden = 1;
 	name = "north bump";
 	pixel_y = 28;
 	req_access = list();
@@ -12897,6 +12897,7 @@
 /area/ai_cyborg_station)
 "Ar" = (
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
@@ -13277,6 +13278,7 @@
 /area/constructionsite)
 "Bh" = (
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
@@ -14600,6 +14602,7 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
@@ -16392,8 +16395,8 @@
 	dir = 8
 	},
 /obj/machinery/power/apc{
-	alarms_hidden = 1;
 	dir = 1;
+	alarms_hidden = 1;
 	name = "north bump";
 	pixel_y = 28;
 	req_access = list();
@@ -20730,6 +20733,7 @@
 "Qj" = (
 /obj/structure/cable/green,
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
@@ -25437,6 +25441,7 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
@@ -25573,6 +25578,7 @@
 /area/hallway/station/docks)
 "ZN" = (
 /obj/machinery/power/apc{
+	dir = 2;
 	alarms_hidden = 1;
 	name = "south bump";
 	pixel_y = -28;

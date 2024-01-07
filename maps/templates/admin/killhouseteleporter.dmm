@@ -125,6 +125,7 @@
 	icon_state = "warning"
 	},
 /obj/machinery/power/apc/hyper{
+	dir = 2;
 	cell_type = /obj/item/cell/infinite
 	},
 /turf/simulated/floor/reinforced,

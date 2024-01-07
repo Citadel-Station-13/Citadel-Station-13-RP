@@ -118,6 +118,7 @@
 /area/submap/virgo2/Lab1)
 "u" = (
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/hyper;
 	dir = 8;
 	name = "Unknown APC";

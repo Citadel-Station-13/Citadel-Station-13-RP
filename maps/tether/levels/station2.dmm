@@ -13337,6 +13337,7 @@
 /area/tether/station/visitorhallway/lounge)
 "AL" = (
 /obj/machinery/power/apc{
+	dir = 2;
 	alarms_hidden = 1;
 	name = "south bump";
 	pixel_y = -28;

@@ -109,8 +109,8 @@
 "G" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/power/apc{
-	alarms_hidden = 1;
 	dir = 4;
+	alarms_hidden = 1;
 	name = "east bump";
 	pixel_x = 24
 	},

@@ -5831,8 +5831,8 @@
 "tm" = (
 /obj/structure/grille,
 /obj/machinery/power/apc{
-	alarms_hidden = 1;
 	dir = 4;
+	alarms_hidden = 1;
 	name = "east bump";
 	pixel_x = 24
 	},
@@ -6287,6 +6287,7 @@
 /area/engineering/atmos)
 "uV" = (
 /obj/machinery/power/apc{
+	dir = 2;
 	cell_type = /obj/item/cell/super;
 	dir = 1;
 	name = "north bump";

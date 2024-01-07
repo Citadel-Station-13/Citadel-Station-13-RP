@@ -370,6 +370,7 @@
 "bJ" = (
 /obj/structure/cable,
 /obj/machinery/power/apc{
+	dir = 2;
 	alarms_hidden = 1;
 	name = "south bump";
 	pixel_y = -24
@@ -550,8 +551,8 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/power/apc{
-	alarms_hidden = 1;
 	dir = 4;
+	alarms_hidden = 1;
 	name = "east bump";
 	pixel_x = 28
 	},
@@ -609,8 +610,8 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/power/apc{
-	alarms_hidden = 1;
 	dir = 1;
+	alarms_hidden = 1;
 	name = "north bump";
 	pixel_y = 24
 	},
@@ -639,8 +640,8 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/power/apc{
-	alarms_hidden = 1;
 	dir = 4;
+	alarms_hidden = 1;
 	name = "east bump";
 	pixel_x = 28
 	},

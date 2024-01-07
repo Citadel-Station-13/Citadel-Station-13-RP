@@ -2295,8 +2295,8 @@
 	icon_state = "0-2"
 	},
 /obj/machinery/power/apc{
-	alarms_hidden = 1;
 	dir = 1;
+	alarms_hidden = 1;
 	name = "north bump";
 	pixel_y = 28;
 	req_access = list();
@@ -6859,8 +6859,8 @@
 /area/engineering/hallway)
 "vL" = (
 /obj/machinery/power/apc{
-	alarms_hidden = 1;
 	dir = 1;
+	alarms_hidden = 1;
 	name = "north bump";
 	pixel_y = 28;
 	req_access = list();
@@ -9882,8 +9882,8 @@
 	icon_state = "0-2"
 	},
 /obj/machinery/power/apc{
-	alarms_hidden = 1;
 	dir = 1;
+	alarms_hidden = 1;
 	name = "north bump";
 	pixel_y = 28;
 	req_access = list();
@@ -10832,8 +10832,8 @@
 /area/engineering/engine_room)
 "KP" = (
 /obj/machinery/power/apc{
-	alarms_hidden = 1;
 	dir = 1;
+	alarms_hidden = 1;
 	name = "north bump";
 	pixel_y = 28;
 	req_access = list();
@@ -14033,8 +14033,8 @@
 /area/engineering/hallway)
 "Wg" = (
 /obj/machinery/power/apc{
-	alarms_hidden = 1;
 	dir = 1;
+	alarms_hidden = 1;
 	name = "north bump";
 	pixel_y = 28;
 	req_access = list();
