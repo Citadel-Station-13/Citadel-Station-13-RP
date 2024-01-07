@@ -128,7 +128,6 @@
 /obj/structure/cable,
 /obj/machinery/power/apc/west_mount{
 	alarms_hidden = 1;
-	name = "west bump";
 	pixel_x = -24
 	},
 /obj/effect/floor_decal/industrial/warning{

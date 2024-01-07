@@ -7410,7 +7410,6 @@
 	dir = 1
 	},
 /obj/machinery/power/apc/north_mount{
-	name = "north bump";
 	pixel_y = 28
 	},
 /obj/structure/closet/crate/bin{

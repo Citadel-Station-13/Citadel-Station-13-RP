@@ -19935,7 +19935,6 @@
 	dir = 8
 	},
 /obj/machinery/power/apc/west_mount{
-	name = "west bump";
 	pixel_x = -24
 	},
 /obj/structure/cable/green{
@@ -23400,7 +23399,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/marker_beacon/red,
 /obj/machinery/power/apc/east_mount{
-	name = "east bump";
 	pixel_x = 24
 	},
 /obj/structure/cable/green{

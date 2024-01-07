@@ -166,7 +166,6 @@
 "sx" = (
 /obj/machinery/power/apc/west_mount{
 	cell_type = /obj/item/cell/super;
-	name = "west bump";
 	pixel_x = -24
 	},
 /obj/structure/cable,
@@ -419,7 +418,6 @@
 /obj/structure/flora/pottedplant/unusual,
 /obj/structure/cable,
 /obj/machinery/power/apc/west_mount{
-	name = "west bump";
 	pixel_x = -28
 	},
 /turf/simulated/floor/wood,

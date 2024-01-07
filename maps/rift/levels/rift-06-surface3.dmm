@@ -247,7 +247,6 @@
 	dir = 5
 	},
 /obj/machinery/power/apc/east_mount{
-	name = "east bump";
 	pixel_x = 24
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -816,7 +815,6 @@
 /area/rift/surfacebase/outside/outside3)
 "acI" = (
 /obj/machinery/power/apc/north_mount{
-	name = "north bump";
 	pixel_y = 24
 	},
 /obj/structure/cable/green{
@@ -1674,7 +1672,6 @@
 /area/bridge)
 "afv" = (
 /obj/machinery/power/apc/west_mount{
-	name = "west bump";
 	pixel_x = -24
 	},
 /obj/structure/cable/green{
@@ -2304,7 +2301,6 @@
 /area/exploration/explorer_prep)
 "ahr" = (
 /obj/machinery/power/apc/east_mount{
-	name = "east bump";
 	pixel_x = 24
 	},
 /obj/effect/floor_decal/borderfloorblack{
@@ -2418,7 +2414,6 @@
 "ahF" = (
 /obj/machinery/power/apc/east_mount{
 	cell_type = /obj/item/cell/super;
-	name = "east bump";
 	pixel_x = 24
 	},
 /obj/structure/cable/green{
@@ -2656,7 +2651,6 @@
 	dir = 1
 	},
 /obj/machinery/power/apc/east_mount{
-	name = "east bump";
 	pixel_x = 24
 	},
 /obj/structure/cable/green,
@@ -2835,7 +2829,6 @@
 	pixel_y = 24
 	},
 /obj/machinery/power/apc/west_mount{
-	name = "west bump";
 	pixel_x = -24
 	},
 /obj/structure/cable/cyan{
@@ -3320,7 +3313,6 @@
 /area/maintenance/station/exploration)
 "ajX" = (
 /obj/machinery/power/apc/east_mount{
-	name = "east bump";
 	pixel_x = 24
 	},
 /obj/structure/cable/green{
@@ -3394,7 +3386,6 @@
 	dir = 9
 	},
 /obj/machinery/power/apc/west_mount{
-	name = "west bump";
 	pixel_x = -24
 	},
 /obj/structure/cable/green{
@@ -3723,7 +3714,6 @@
 /area/maintenance/bar/lower)
 "akU" = (
 /obj/machinery/power/apc/west_mount{
-	name = "west bump";
 	pixel_x = -24
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -4653,7 +4643,6 @@
 	dir = 8
 	},
 /obj/machinery/power/apc/west_mount{
-	name = "west bump";
 	pixel_x = -24
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -5881,7 +5870,6 @@
 	},
 /obj/structure/bed/chair/shuttle,
 /obj/machinery/power/apc/east_mount{
-	name = "east bump";
 	pixel_x = 24
 	},
 /obj/structure/cable/cyan{
@@ -6051,7 +6039,6 @@
 /area/shuttle/civvie/general)
 "arm" = (
 /obj/machinery/power/apc/west_mount{
-	name = "west bump";
 	pixel_x = -24
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -7020,7 +7007,6 @@
 	dir = 8
 	},
 /obj/machinery/power/apc/east_mount{
-	name = "east bump";
 	pixel_x = 24
 	},
 /obj/effect/floor_decal/techfloor{
@@ -8424,7 +8410,6 @@
 /obj/structure/table/reinforced,
 /obj/machinery/power/apc/north_mount{
 	cell_type = /obj/item/cell/super;
-	name = "north bump";
 	pixel_y = 24
 	},
 /obj/structure/cable/green{
@@ -8470,7 +8455,6 @@
 	},
 /obj/machinery/portable_atmospherics/canister/phoron,
 /obj/machinery/power/apc/high{
-	name = "west bump";
 	pixel_x = -24
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -9999,7 +9983,6 @@
 	icon_state = "2-8"
 	},
 /obj/machinery/power/apc/east_mount{
-	name = "east bump";
 	pixel_x = 24
 	},
 /obj/structure/cable/cyan{
@@ -10700,7 +10683,6 @@
 	dir = 6
 	},
 /obj/machinery/power/apc/east_mount{
-	name = "east bump";
 	pixel_x = 24
 	},
 /obj/structure/cable/green{
@@ -11932,7 +11914,6 @@
 	dir = 8
 	},
 /obj/machinery/power/apc/west_mount{
-	name = "west bump";
 	pixel_x = -24
 	},
 /obj/structure/cable/green{
@@ -12141,7 +12122,6 @@
 /area/security/nuke_storage)
 "aIf" = (
 /obj/machinery/power/apc/north_mount{
-	name = "north bump";
 	pixel_y = 24
 	},
 /obj/effect/floor_decal/borderfloorblack{
@@ -12644,7 +12624,6 @@
 /area/crew_quarters/captain)
 "aJr" = (
 /obj/machinery/power/apc/east_mount{
-	name = "east bump";
 	pixel_x = 24
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -13486,7 +13465,6 @@
 /area/exploration/meeting)
 "aLJ" = (
 /obj/machinery/power/apc/east_mount{
-	name = "east bump";
 	pixel_x = 24
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -16363,7 +16341,6 @@
 /area/shuttle/excursion/cargo)
 "aTL" = (
 /obj/machinery/power/apc/east_mount{
-	name = "east bump";
 	pixel_x = 24
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -17395,7 +17372,6 @@
 	dir = 10
 	},
 /obj/machinery/power/apc/west_mount{
-	name = "west bump";
 	pixel_x = -24
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -18042,7 +18018,6 @@
 /area/maintenance/bar/lower)
 "aYG" = (
 /obj/machinery/power/apc/north_mount{
-	name = "north bump";
 	pixel_y = 24
 	},
 /obj/structure/cable/green{
@@ -18418,7 +18393,6 @@
 	dir = 4
 	},
 /obj/machinery/power/apc/east_mount{
-	name = "east bump";
 	pixel_x = 24
 	},
 /obj/structure/cable/green{
@@ -18977,7 +18951,6 @@
 	scrub_id = "civ_airlock_two_scrubber"
 	},
 /obj/machinery/power/apc/east_mount{
-	name = "east bump";
 	pixel_x = 24
 	},
 /obj/structure/railing{
@@ -19755,7 +19728,6 @@
 "eEi" = (
 /obj/structure/catwalk,
 /obj/machinery/power/apc/north_mount{
-	name = "north bump";
 	pixel_y = 24
 	},
 /obj/structure/cable/green{
@@ -23742,7 +23714,6 @@
 	dir = 8
 	},
 /obj/machinery/power/apc/west_mount{
-	name = "west bump";
 	pixel_x = -24
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -24554,7 +24525,6 @@
 	dir = 4
 	},
 /obj/machinery/power/apc/west_mount{
-	name = "west bump";
 	pixel_x = -24
 	},
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock{
@@ -25229,7 +25199,6 @@
 	dir = 9
 	},
 /obj/machinery/power/apc/west_mount{
-	name = "west bump";
 	pixel_x = -24
 	},
 /obj/structure/table/standard,
@@ -25630,7 +25599,6 @@
 	dir = 4
 	},
 /obj/machinery/power/apc/east_mount{
-	name = "east bump";
 	pixel_x = 24
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -26310,7 +26278,6 @@
 	dir = 1
 	},
 /obj/machinery/power/apc/north_mount{
-	name = "north bump";
 	pixel_y = 24
 	},
 /obj/structure/cable/green{
@@ -26347,7 +26314,6 @@
 	},
 /obj/machinery/light/small,
 /obj/machinery/power/apc/east_mount{
-	name = "east bump";
 	pixel_x = 24
 	},
 /obj/structure/cable/green{

@@ -209,7 +209,6 @@
 	icon_state = "0-2"
 	},
 /obj/machinery/power/apc/east_mount{
-	name = "east bump";
 	pixel_x = 28
 	},
 /turf/simulated/floor,
@@ -1374,7 +1373,6 @@
 	icon_state = "0-2"
 	},
 /obj/machinery/power/apc/east_mount{
-	name = "east bump";
 	pixel_x = 28
 	},
 /obj/structure/closet/radiation,

@@ -50,7 +50,6 @@
 /area/shuttle/blue_fo)
 "aj" = (
 /obj/machinery/power/apc/north_mount{
-	name = "north bump";
 	pixel_y = 24
 	},
 /obj/structure/cable{

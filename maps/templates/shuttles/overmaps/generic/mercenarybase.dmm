@@ -2228,7 +2228,6 @@
 /area/mercbase/medicalstorage)
 "lC" = (
 /obj/machinery/power/apc{
-	name = "south bump";
 	pixel_y = -32
 	},
 /obj/machinery/power/terminal,

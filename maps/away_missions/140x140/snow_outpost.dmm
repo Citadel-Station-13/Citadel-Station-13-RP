@@ -60,7 +60,6 @@
 /area/awaymission/snow_outpost/powered)
 "am" = (
 /obj/machinery/power/apc/east_mount{
-	name = "east bump";
 	pixel_x = 24
 	},
 /obj/machinery/washing_machine,
@@ -196,7 +195,6 @@
 /area/awaymission/snow_outpost/powered)
 "aK" = (
 /obj/machinery/power/apc/north_mount{
-	name = "north bump";
 	pixel_y = 28
 	},
 /turf/simulated/floor/bluegrid{
@@ -307,7 +305,6 @@
 /area/awaymission/snow_outpost/powered)
 "bg" = (
 /obj/machinery/power/apc/north_mount{
-	name = "north bump";
 	pixel_y = 28
 	},
 /turf/simulated/floor/tiled/white,
@@ -318,7 +315,6 @@
 /area/awaymission/snow_outpost/dark)
 "bi" = (
 /obj/machinery/power/apc/east_mount{
-	name = "east bump";
 	pixel_x = 24
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
@@ -501,7 +497,6 @@
 /area/awaymission/snow_outpost/powered)
 "bM" = (
 /obj/machinery/power/apc/east_mount{
-	name = "east bump";
 	pixel_x = 24
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber{

@@ -779,7 +779,6 @@
 /area/outpost/mining_main/secondary_gear_storage)
 "tE" = (
 /obj/machinery/power/apc/north_mount{
-	name = "north bump";
 	pixel_y = 24
 	},
 /obj/structure/cable/green{
@@ -1165,7 +1164,6 @@
 	dir = 6
 	},
 /obj/machinery/power/apc/north_mount{
-	name = "north bump";
 	pixel_y = 24
 	},
 /obj/machinery/light_switch{
@@ -1316,7 +1314,6 @@
 	pixel_x = -32
 	},
 /obj/machinery/power/apc/north_mount{
-	name = "north bump";
 	pixel_y = 24
 	},
 /obj/structure/cable/green{
@@ -1496,7 +1493,6 @@
 /area/outpost/mining_main/maintenance)
 "MT" = (
 /obj/machinery/power/apc/north_mount{
-	name = "north bump";
 	pixel_y = 24
 	},
 /obj/structure/cable/green{
@@ -1590,7 +1586,6 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/power/apc{
-	name = "south bump";
 	pixel_y = -32
 	},
 /obj/effect/floor_decal/industrial/warning/dust,
@@ -1629,7 +1624,6 @@
 /area/mine/explored)
 "SM" = (
 /obj/machinery/power/apc/north_mount{
-	name = "north bump";
 	pixel_y = 24
 	},
 /obj/machinery/light_switch{
@@ -1672,7 +1666,6 @@
 /area/outpost/mining_main/maintenance)
 "SR" = (
 /obj/machinery/power/apc{
-	name = "south bump";
 	pixel_y = -32
 	},
 /obj/machinery/light_switch{

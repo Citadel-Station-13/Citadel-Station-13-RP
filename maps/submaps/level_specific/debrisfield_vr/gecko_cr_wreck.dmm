@@ -181,7 +181,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/power/apc/east_mount{
-	name = "east bump";
 	start_charge = 0
 	},
 /obj/structure/cable{
@@ -932,7 +931,6 @@
 "sV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/power/apc/north_mount{
-	name = "north bump";
 	start_charge = 0
 	},
 /obj/structure/cable{

@@ -69,7 +69,6 @@
 	pixel_x = -32
 	},
 /obj/machinery/power/apc/north_mount{
-	name = "north bump";
 	start_charge = 0
 	},
 /obj/structure/bed/chair/bay/chair{
@@ -157,7 +156,6 @@
 	pixel_x = -32
 	},
 /obj/machinery/power/apc{
-	name = "south bump";
 	start_charge = 0
 	},
 /turf/simulated/floor/tiled/techfloor{
@@ -408,7 +406,6 @@
 	dir = 4
 	},
 /obj/machinery/power/apc/west_mount{
-	name = "west bump";
 	start_charge = 0
 	},
 /turf/simulated/floor/tiled/techmaint/airless,
@@ -1078,7 +1075,6 @@
 	pixel_x = -32
 	},
 /obj/machinery/power/apc/north_mount{
-	name = "north bump";
 	start_charge = 0
 	},
 /obj/structure/bed/chair/bay/chair{
@@ -1284,7 +1280,6 @@
 	pixel_x = -32
 	},
 /obj/machinery/power/apc{
-	name = "south bump";
 	start_charge = 0
 	},
 /turf/simulated/floor/tiled/techfloor{
@@ -1747,7 +1742,6 @@
 	dir = 8
 	},
 /obj/machinery/power/apc/east_mount{
-	name = "east bump";
 	start_charge = 0
 	},
 /turf/simulated/floor/tiled/techfloor{
@@ -1899,7 +1893,6 @@
 	dir = 8
 	},
 /obj/machinery/power/apc/east_mount{
-	name = "east bump";
 	start_charge = 0
 	},
 /turf/simulated/floor/tiled/techfloor{

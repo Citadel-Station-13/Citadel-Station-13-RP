@@ -110,7 +110,6 @@
 /obj/effect/floor_decal/rust,
 /obj/machinery/power/apc/east_mount{
 	alarms_hidden = 1;
-	name = "east bump";
 	pixel_x = 24
 	},
 /obj/structure/cable/green{

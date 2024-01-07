@@ -84,7 +84,6 @@
 	},
 /obj/machinery/power/apc/south_mount{
 	alarms_hidden = 1;
-	name = "south bump";
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -670,7 +669,6 @@
 /obj/structure/cable,
 /obj/machinery/power/apc/south_mount{
 	alarms_hidden = 1;
-	name = "south bump";
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/dark,
@@ -824,7 +822,6 @@
 	},
 /obj/machinery/power/apc/east_mount{
 	alarms_hidden = 1;
-	name = "east bump";
 	pixel_x = 28
 	},
 /turf/simulated/floor/tiled/dark,
@@ -850,7 +847,6 @@
 	},
 /obj/machinery/power/apc/east_mount{
 	alarms_hidden = 1;
-	name = "east bump";
 	pixel_x = 28
 	},
 /turf/simulated/floor/plating,
@@ -905,7 +901,6 @@
 	},
 /obj/machinery/power/apc/north_mount{
 	alarms_hidden = 1;
-	name = "north bump";
 	pixel_y = 24
 	},
 /turf/simulated/floor/greengrid,

@@ -291,7 +291,6 @@
 /area/submap/debrisfield_vr/tinyshuttle/crew)
 "aG" = (
 /obj/machinery/power/apc/north_mount{
-	name = "north bump";
 	pixel_y = 24
 	},
 /obj/structure/cable/green{
@@ -505,7 +504,6 @@
 /area/submap/debrisfield_vr/tinyshuttle/bridge)
 "aZ" = (
 /obj/machinery/power/apc/east_mount{
-	name = "east bump";
 	pixel_x = 28
 	},
 /obj/structure/cable/green,
@@ -912,7 +910,6 @@
 /area/submap/debrisfield_vr/tinyshuttle/hangar)
 "bI" = (
 /obj/machinery/power/apc/east_mount{
-	name = "east bump";
 	pixel_x = 28
 	},
 /obj/structure/cable/green,
@@ -953,7 +950,6 @@
 /area/submap/debrisfield_vr/tinyshuttle/engine)
 "bM" = (
 /obj/machinery/power/apc/east_mount{
-	name = "east bump";
 	pixel_x = 28
 	},
 /obj/structure/cable/green{

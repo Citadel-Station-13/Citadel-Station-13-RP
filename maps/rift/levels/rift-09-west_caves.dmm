@@ -173,7 +173,6 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/power/apc/north_mount{
-	name = "north bump";
 	pixel_y = 28
 	},
 /turf/simulated/floor/lythios43c/indoors,

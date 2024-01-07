@@ -129,7 +129,6 @@
 /obj/item/storage/toolbox/electrical,
 /obj/structure/cable,
 /obj/machinery/power/apc/west_mount{
-	name = "west bump";
 	pixel_x = -24
 	},
 /obj/effect/floor_decal/industrial/warning{

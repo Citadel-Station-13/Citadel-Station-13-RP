@@ -2729,7 +2729,6 @@
 /area/ship/expe/corridor3)
 "gU" = (
 /obj/machinery/power/apc{
-	name = "south bump";
 	pixel_y = -32
 	},
 /obj/machinery/power/terminal,
@@ -6381,7 +6380,6 @@
 /area/ship/expe/medicalmain)
 "nY" = (
 /obj/machinery/power/apc/west_mount{
-	name = "west bump";
 	pixel_x = -24
 	},
 /obj/machinery/power/terminal{
@@ -7687,7 +7685,6 @@
 "qD" = (
 /obj/machinery/power/emitter,
 /obj/machinery/power/apc/north_mount{
-	name = "north bump";
 	pixel_y = 32
 	},
 /obj/machinery/power/terminal{
@@ -9451,7 +9448,6 @@
 /area/ship/expe/medical)
 "uP" = (
 /obj/machinery/power/apc{
-	name = "south bump";
 	pixel_y = -32
 	},
 /obj/machinery/power/terminal,

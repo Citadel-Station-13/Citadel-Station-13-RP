@@ -2348,7 +2348,6 @@
 /obj/structure/catwalk,
 /obj/machinery/power/apc/alarms_hidden{
 	cell_type = /obj/item/cell/super;
-	name = "south bump";
 	req_access = list(160)
 	},
 /turf/simulated/floor,
@@ -4975,7 +4974,6 @@
 	},
 /obj/machinery/power/apc/alarms_hidden{
 	cell_type = /obj/item/cell/super;
-	name = "south bump";
 	req_access = list(160)
 	},
 /turf/simulated/floor/tiled/old_tile/blue,
@@ -13454,7 +13452,6 @@
 "Zg" = (
 /obj/machinery/power/apc/alarms_hidden{
 	cell_type = /obj/item/cell/super;
-	name = "south bump";
 	req_access = list(160)
 	},
 /obj/structure/cable/yellow,
