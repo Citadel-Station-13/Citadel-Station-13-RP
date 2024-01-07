@@ -946,7 +946,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/high/south_bump,
+/obj/machinery/power/apc/high/south,
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "sx" = (

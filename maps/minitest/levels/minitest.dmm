@@ -3112,7 +3112,7 @@
 /area/storage/surface_eva/external)
 "sq" = (
 /obj/structure/railing,
-/obj/machinery/power/apc/direction_bump/west,
+/obj/machinery/power/apc/west,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},

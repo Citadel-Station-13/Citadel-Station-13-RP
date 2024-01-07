@@ -16,6 +16,8 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/item/radio/intercom, 28)
 	var/wiresexposed = 0
 	var/overlay_color = PIPE_COLOR_GREEN
 
+#warn dir shit
+
 /obj/item/radio/intercom/update_icon(updates)
 	cut_overlays()
 	if(!on)

@@ -194,7 +194,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
-/obj/machinery/power/apc/direction_bump/west,
+/obj/machinery/power/apc/west,
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_d)
 "ahy" = (
@@ -256,7 +256,7 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north,
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/atmospheric_substation/command)
 "aks" = (
@@ -304,7 +304,7 @@
 /obj/structure/reagent_dispensers/watertank,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/effect/floor_decal/rust,
-/obj/machinery/power/apc/direction_bump/west,
+/obj/machinery/power/apc/west,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/storage)
 "aln" = (
@@ -326,7 +326,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/direction_bump/south,
+/obj/machinery/power/apc/south,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /turf/simulated/floor/plating,
@@ -420,7 +420,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/critical/east_bump,
+/obj/machinery/power/apc/critical/east,
 /obj/machinery/light/no_nightshift,
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/bunker)
@@ -647,7 +647,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/direction_bump/east,
+/obj/machinery/power/apc/east,
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/atmospheric_substation/research)
 "azx" = (
@@ -750,7 +750,7 @@
 /area/quartermaster/qm)
 "aDY" = (
 /obj/structure/cable,
-/obj/machinery/power/apc/direction_bump/east,
+/obj/machinery/power/apc/east,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
@@ -835,7 +835,7 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north,
 /turf/simulated/floor/tiled,
 /area/main_map/hallway/deck2/starboard_fore)
 "aIF" = (
@@ -886,7 +886,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/cable/green,
-/obj/machinery/power/apc/direction_bump/west,
+/obj/machinery/power/apc/west,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/research)
 "aJB" = (
@@ -1711,7 +1711,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/direction_bump/west,
+/obj/machinery/power/apc/west,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/security)
 "bnI" = (
@@ -2328,7 +2328,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -2356,7 +2356,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/direction_bump/west,
+/obj/machinery/power/apc/west,
 /turf/simulated/floor/tiled/techfloor,
 /area/server)
 "bPl" = (
@@ -2962,7 +2962,7 @@
 /area/medical/medbay2)
 "coG" = (
 /obj/structure/cable/green,
-/obj/machinery/power/apc/direction_bump/east,
+/obj/machinery/power/apc/east,
 /turf/simulated/floor/wood,
 /area/bridge/meeting_room)
 "coN" = (
@@ -3411,7 +3411,7 @@
 /area/rnd/robotics)
 "cJY" = (
 /obj/structure/cable/green,
-/obj/machinery/power/apc/direction_bump/east,
+/obj/machinery/power/apc/east,
 /turf/simulated/floor/tiled/monotile,
 /area/security/observation)
 "cKi" = (
@@ -3844,7 +3844,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/high/east_bump,
+/obj/machinery/power/apc/high/east,
 /obj/effect/floor_decal/industrial/warning/corner,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -4595,7 +4595,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 5
 	},
-/obj/machinery/power/apc/direction_bump/east,
+/obj/machinery/power/apc/east,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "dHJ" = (
@@ -4818,7 +4818,7 @@
 /area/main_map/maintenance/deck_two)
 "dPv" = (
 /obj/structure/cable/green,
-/obj/machinery/power/apc/direction_bump/south,
+/obj/machinery/power/apc/south,
 /turf/simulated/floor/wood,
 /area/medical/patient_wing)
 "dPw" = (
@@ -4945,7 +4945,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay/maintenance)
 "dUY" = (
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -5047,7 +5047,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/direction_bump/west,
+/obj/machinery/power/apc/west,
 /obj/structure/table/standard,
 /obj/machinery/photocopier/faxmachine{
 	department = "Quartermaster-Office"
@@ -5277,7 +5277,7 @@
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 10
 	},
-/obj/machinery/power/apc/direction_bump/west,
+/obj/machinery/power/apc/west,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/cmo)
 "egw" = (
@@ -6809,7 +6809,7 @@
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},
-/obj/machinery/power/apc/direction_bump/east,
+/obj/machinery/power/apc/east,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -7587,7 +7587,7 @@
 /area/rift/station/fighter_bay/hangar)
 "gcG" = (
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/machinery/power/apc/high/east_bump,
+/obj/machinery/power/apc/high/east,
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/atmos/processing)
 "gdv" = (
@@ -9794,7 +9794,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/direction_bump/east,
+/obj/machinery/power/apc/east,
 /turf/simulated/floor/tiled,
 /area/quartermaster/hallway)
 "hZB" = (
@@ -10347,7 +10347,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
@@ -11764,7 +11764,7 @@
 /area/engineering/hallway)
 "jLH" = (
 /obj/structure/cable,
-/obj/machinery/power/apc/direction_bump/east,
+/obj/machinery/power/apc/east,
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
 "jLZ" = (
@@ -12577,7 +12577,7 @@
 "kra" = (
 /obj/structure/table/bench/wooden,
 /obj/structure/cable/green,
-/obj/machinery/power/apc/direction_bump/east,
+/obj/machinery/power/apc/east,
 /turf/simulated/floor/wood,
 /area/crew_quarters/showers)
 "krf" = (
@@ -12588,7 +12588,7 @@
 	dir = 5
 	},
 /obj/structure/cable,
-/obj/machinery/power/apc/direction_bump/west,
+/obj/machinery/power/apc/west,
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/atmospheric_substation/research)
 "krg" = (
@@ -14251,7 +14251,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/direction_bump/east,
+/obj/machinery/power/apc/east,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/service)
 "lKT" = (
@@ -14686,7 +14686,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/direction_bump/west,
+/obj/machinery/power/apc/west,
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/freezer)
 "maT" = (
@@ -14908,7 +14908,7 @@
 /area/engineering/hallway)
 "mlH" = (
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/machinery/power/apc/high/north_bump,
+/obj/machinery/power/apc/high/north,
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/Hangar_bay/deck2/b)
 "mlQ" = (
@@ -14964,7 +14964,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/direction_bump/east,
+/obj/machinery/power/apc/east,
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/atmos/storage)
 "mow" = (
@@ -15235,7 +15235,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/maintenance/deck_two/forward/port)
 "mwL" = (
-/obj/machinery/power/apc/direction_bump/west,
+/obj/machinery/power/apc/west,
 /obj/structure/cable,
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/atmospheric_substation/medical)
@@ -15369,7 +15369,7 @@
 /area/main_map/hallway/deck2)
 "mGy" = (
 /obj/structure/cable,
-/obj/machinery/power/apc/direction_bump/east,
+/obj/machinery/power/apc/east,
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/atmospheric_substation/cargo)
 "mGY" = (
@@ -15393,7 +15393,7 @@
 /area/engineering/atmos)
 "mHn" = (
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/machinery/power/apc/high/north_bump,
+/obj/machinery/power/apc/high/north,
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/Hangar_bay/deck2/a)
 "mIl" = (
@@ -15517,7 +15517,7 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 4
 	},
-/obj/machinery/power/apc/direction_bump/east,
+/obj/machinery/power/apc/east,
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
@@ -15539,7 +15539,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/direction_bump/west,
+/obj/machinery/power/apc/west,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/flight_deck)
 "mPs" = (
@@ -15668,7 +15668,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/direction_bump/east,
+/obj/machinery/power/apc/east,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/robotics)
 "mWn" = (
@@ -15939,7 +15939,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/pool/changing_room)
 "ndO" = (
@@ -16211,7 +16211,7 @@
 /area/engineering/atmos/storage)
 "nnq" = (
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/machinery/power/apc/direction_bump/south,
+/obj/machinery/power/apc/south,
 /turf/simulated/floor/tiled/monotile,
 /area/space)
 "nnx" = (
@@ -16588,7 +16588,7 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north,
 /turf/simulated/floor/reinforced,
 /area/main_map/maintenance/panic_bunker/two)
 "nEQ" = (
@@ -17883,7 +17883,7 @@
 	pixel_x = 24;
 	pixel_y = 24
 	},
-/obj/machinery/power/apc/direction_bump/east,
+/obj/machinery/power/apc/east,
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_c)
 "oJP" = (
@@ -18297,7 +18297,7 @@
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},
-/obj/machinery/power/apc/direction_bump/east,
+/obj/machinery/power/apc/east,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -18751,7 +18751,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
 "ppT" = (
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north,
 /obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/Hangar_bay/deck2)
@@ -18793,7 +18793,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/hallway)
 "puw" = (
@@ -19561,7 +19561,7 @@
 	icon_state = "1-4"
 	},
 /obj/structure/cable/green,
-/obj/machinery/power/apc/direction_bump/west,
+/obj/machinery/power/apc/west,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical)
 "qbf" = (
@@ -20083,7 +20083,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/robotics/mechbay)
 "qAa" = (
@@ -20408,7 +20408,7 @@
 /area/main_map/maintenance/deck_two/forward/starboard)
 "qLV" = (
 /obj/structure/cable/cyan,
-/obj/machinery/power/apc/critical/south_bump,
+/obj/machinery/power/apc/critical/south,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/engine_smes)
 "qMd" = (
@@ -21053,7 +21053,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north,
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_two/port)
 "rnN" = (
@@ -21100,7 +21100,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/critical/east_bump,
+/obj/machinery/power/apc/critical/east,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/shield_gen)
 "rpp" = (
@@ -21424,7 +21424,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/direction_bump/south,
+/obj/machinery/power/apc/south,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar_backroom)
 "rCj" = (
@@ -21468,7 +21468,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/obj/machinery/power/apc/high/south_bump,
+/obj/machinery/power/apc/high/south,
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
@@ -21754,7 +21754,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
-/obj/machinery/power/apc/critical/north_bump,
+/obj/machinery/power/apc/critical/north,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/gas_storage)
 "rPD" = (
@@ -22152,7 +22152,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/direction_bump/west,
+/obj/machinery/power/apc/west,
 /turf/simulated/floor/plating,
 /area/security/brig)
 "slU" = (
@@ -22700,7 +22700,7 @@
 	pixel_x = 24;
 	pixel_y = 24
 	},
-/obj/machinery/power/apc/direction_bump/east,
+/obj/machinery/power/apc/east,
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_a)
 "sKO" = (
@@ -23464,7 +23464,7 @@
 	icon_state = "1-8"
 	},
 /obj/structure/cable/green,
-/obj/machinery/power/apc/direction_bump/south,
+/obj/machinery/power/apc/south,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
@@ -23550,7 +23550,7 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north,
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
@@ -24239,7 +24239,7 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/direction_bump/east,
+/obj/machinery/power/apc/east,
 /turf/simulated/floor/reinforced,
 /area/main_map/maintenance/panic_bunker)
 "tVp" = (
@@ -24366,7 +24366,7 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north,
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/maintenance/atmospheric_substation/security)
 "uad" = (
@@ -25619,7 +25619,7 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
 	},
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -25995,7 +25995,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
-/obj/machinery/power/apc/direction_bump/west,
+/obj/machinery/power/apc/west,
 /turf/simulated/floor/tiled,
 /area/hydroponics)
 "vtG" = (
@@ -26063,7 +26063,7 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 4
 	},
-/obj/machinery/power/apc/direction_bump/east,
+/obj/machinery/power/apc/east,
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/foyer)
 "vwk" = (
@@ -26097,7 +26097,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/high/east_bump,
+/obj/machinery/power/apc/high/east,
 /turf/simulated/floor/plating,
 /area/space)
 "vwz" = (
@@ -27259,7 +27259,7 @@
 	layer = 2.6
 	},
 /obj/item/storage/toolbox/mechanical,
-/obj/machinery/power/apc/direction_bump/east,
+/obj/machinery/power/apc/east,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/engineering)
 "woS" = (
@@ -27537,7 +27537,7 @@
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/bridge/bunker)
 "wxo" = (
-/obj/machinery/power/apc/direction_bump/south,
+/obj/machinery/power/apc/south,
 /obj/structure/cable/green{
 	icon_state = "0-5"
 	},
@@ -27672,7 +27672,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/rdoffice)
 "wEL" = (
-/obj/machinery/power/apc/direction_bump/south,
+/obj/machinery/power/apc/south,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -28300,7 +28300,7 @@
 	pixel_x = 24;
 	pixel_y = 24
 	},
-/obj/machinery/power/apc/direction_bump/east,
+/obj/machinery/power/apc/east,
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_b)
 "xbe" = (
@@ -29155,7 +29155,7 @@
 	dir = 1
 	},
 /obj/structure/cable/green,
-/obj/machinery/power/apc/direction_bump/west,
+/obj/machinery/power/apc/west,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/fitness)
 "xMe" = (
@@ -29244,7 +29244,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/super/critical/north_bump,
+/obj/machinery/power/apc/super/critical/north,
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/engine_gas)
 "xPj" = (

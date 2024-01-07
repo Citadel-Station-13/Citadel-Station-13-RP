@@ -26,6 +26,8 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/fire_alarm, 21)
 	/// If the alarms from this machine are visible on consoles.
 	var/alarms_hidden = FALSE
 
+#warn dir shit
+
 /obj/machinery/fire_alarm/alarms_hidden
 	alarms_hidden = TRUE
 

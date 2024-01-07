@@ -621,7 +621,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/anomaly_lab/containment_two)
 "eC" = (
@@ -1330,7 +1330,7 @@
 	desc = "A large cabinet with drawers. They seem to be ominously empty.";
 	name = "Classified Science Records"
 	},
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -2863,7 +2863,7 @@
 /obj/structure/cable/orange{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/super/south_bump,
+/obj/machinery/power/apc/super/south,
 /turf/simulated/floor/tiled/techfloor,
 /area/main_map/maintenance/deck_four/aft/port)
 "sD" = (
@@ -3864,7 +3864,7 @@
 /turf/simulated/floor/plating,
 /area/space)
 "ya" = (
-/obj/machinery/power/apc/direction_bump/south,
+/obj/machinery/power/apc/south,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -4596,7 +4596,7 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 1
 	},
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -4968,7 +4968,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/anomaly_lab/containment_one)
 "ER" = (
@@ -5490,7 +5490,7 @@
 /area/rnd/anomaly_lab)
 "Ik" = (
 /obj/structure/cable/green,
-/obj/machinery/power/apc/critical/west_bump,
+/obj/machinery/power/apc/critical/west,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
@@ -5703,7 +5703,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/direction_bump/south,
+/obj/machinery/power/apc/south,
 /turf/simulated/floor/tiled/monotile,
 /area/gateway)
 "JQ" = (
@@ -6238,7 +6238,7 @@
 /turf/simulated/floor/plating,
 /area/space)
 "Ne" = (
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -6754,7 +6754,7 @@
 /turf/simulated/floor/wood,
 /area/main_map/maintenance/deck_four/forward)
 "PS" = (
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north,
 /turf/simulated/floor/carpet/bcarpet,
 /area/library/study)
 "PY" = (
@@ -7463,7 +7463,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ai)
 "Uf" = (
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -8163,7 +8163,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north,
 /turf/simulated/floor/tiled,
 /area/rnd/research/testingrange)
 "Yw" = (

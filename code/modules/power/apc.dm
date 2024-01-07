@@ -50,189 +50,41 @@ GLOBAL_LIST_EMPTY(apcs)
 #define NIGHTSHIFT_ALWAYS 3
 
 //NOTE: STUFF STOLEN FROM AIRLOCK.DM thx
-
-/obj/machinery/power/apc/direction_bump  //For the love of god there's so many fucking var edits of the APC, use these instead pleaaaaase -Bloop
-
-/obj/machinery/power/apc/direction_bump/east
-	name = "east bump"
-	dir = 4
-	pixel_x = 28
-
-/obj/machinery/power/apc/direction_bump/west
-	name = "west bump"
-	dir = 8
-	pixel_x = -28
-
-/obj/machinery/power/apc/direction_bump/north
-	name = "north bump"
-	dir = 1
-	pixel_y = 28
-
-/obj/machinery/power/apc/direction_bump/south
-	name = "south bump"
-	pixel_y = -28
-
 //Critical//
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/critical, 28)
 /obj/machinery/power/apc/critical
 	is_critical = 1
 
-/obj/machinery/power/apc/critical/east_bump
-	name = "east bump"
-	dir = 4
-	pixel_x = 28
-
-/obj/machinery/power/apc/critical/west_bump
-	name = "west bump"
-	dir = 8
-	pixel_x = -28
-
-/obj/machinery/power/apc/critical/north_bump
-	name = "north bump"
-	dir = 1
-	pixel_y = 28
-
-/obj/machinery/power/apc/critical/south_bump
-	name = "south bump"
-	pixel_y = -28
-
 /// High capacity cell APCs
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/high, 28)
 /obj/machinery/power/apc/high
 	cell_type = /obj/item/cell/high
 
-/obj/machinery/power/apc/high/east_bump
-	name = "east bump"
-	dir = 4
-	pixel_x = 28
-/obj/machinery/power/apc/high/west_bump
-	name = "west bump"
-	dir = 8
-	pixel_x = -28
-
-/obj/machinery/power/apc/high/north_bump
-	name = "north bump"
-	dir = 1
-	pixel_y = 28
-
-/obj/machinery/power/apc/high/south_bump
-	name = "south bump"
-	pixel_y = -28
-
 /// Super capacity cell APCS
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/super, 28)
 /obj/machinery/power/apc/super
 	cell_type = /obj/item/cell/super
 
-/obj/machinery/power/apc/super/east_bump
-	name = "east bump"
-	dir = 4
-	pixel_x = 28
-/obj/machinery/power/apc/super/west_bump
-	name = "west bump"
-	dir = 8
-	pixel_x = -28
-
-/obj/machinery/power/apc/super/north_bump
-	name = "north bump"
-	dir = 1
-	pixel_y = 28
-
-/obj/machinery/power/apc/super/south_bump
-	name = "south bump"
-	pixel_y = -28
-
-
 /// Critical APCs with super cells
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/super/critical, 28)
 /obj/machinery/power/apc/super/critical
 	is_critical = 1
 
-/obj/machinery/power/apc/super/critical/east_bump
-	name = "east bump"
-	dir = 4
-	pixel_x = 28
-/obj/machinery/power/apc/super/critical/west_bump
-	name = "west bump"
-	dir = 8
-	pixel_x = -28
-
-/obj/machinery/power/apc/super/critical/north_bump
-	name = "north bump"
-	dir = 1
-	pixel_y = 28
-
-/obj/machinery/power/apc/super/critical/south_bump
-	name = "south bump"
-	pixel_y = -28
-
 /// APCS with hyper cells. How lewd
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/hyper, 28)
 /obj/machinery/power/apc/hyper
 	cell_type = /obj/item/cell/hyper
 
-/obj/machinery/power/apc/hyper/east_bump
-	name = "east bump"
-	dir = 4
-	pixel_x = 28
-/obj/machinery/power/apc/hyper/west_bump
-	name = "west bump"
-	dir = 8
-	pixel_x = -28
-
-/obj/machinery/power/apc/hyper/north_bump
-	name = "north bump"
-	dir = 1
-	pixel_y = 28
-
-/obj/machinery/power/apc/hyper/south_bump
-	name = "south bump"
-	pixel_y = -28
-
-
 /// APCs with alarms hidden. Use these for POI's and offmap stuff so engineers dont get notified that shitty_ruins4 is running out of power -Bloop
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/alarms_hidden, 28)
 /obj/machinery/power/apc/alarms_hidden
 	alarms_hidden = TRUE
 
-/obj/machinery/power/apc/alarms_hidden/east_bump
-	name = "east bump"
-	dir = 4
-	pixel_x = 28
-
-/obj/machinery/power/apc/alarms_hidden/west_bump
-	name = "west bump"
-	dir = 8
-	pixel_x = -28
-
-/obj/machinery/power/apc/alarms_hidden/north_bump
-	name = "north bump"
-	dir = 1
-	pixel_y = 28
-
-/obj/machinery/power/apc/alarms_hidden/south_bump
-	name = "south bump"
-	pixel_y = -28
-
 /// APCS with hidden alarms and no power cells
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/alarms_hidden/no_cell, 28)
 /obj/machinery/power/apc/alarms_hidden/no_cell
 	cell_type = null
 	chargelevel = 0
-
-/obj/machinery/power/apc/alarms_hidden/no_cell/east_bump
-	name = "east bump"
-	dir = 4
-	pixel_x = 28
-
-/obj/machinery/power/apc/alarms_hidden/no_cell/west_bump
-	name = "west bump"
-	dir = 8
-	pixel_x = -28
-
-/obj/machinery/power/apc/alarms_hidden/no_cell/north_bump
-	name = "north bump"
-	dir = 1
-	pixel_y = 28
-
-/obj/machinery/power/apc/alarms_hidden/no_cell/south_bump
-	name = "south bump"
-	pixel_y = -28
-
-
 
 /**
  * APCs
@@ -255,6 +107,7 @@ GLOBAL_LIST_EMPTY(apcs)
  *
  * ~silicons
  */
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 28)
 /obj/machinery/power/apc
 	name = "area power controller"
 	desc = "A control terminal for the area electrical systems."
@@ -322,6 +175,8 @@ GLOBAL_LIST_EMPTY(apcs)
 
 	/// tracks how behind we arre in charging TODO: literally rewrite apcs entirely to use a proper accumulator-cell system with an internal buffer, ffs
 	var/lazy_draw_accumulator = 0
+
+#warn dir shit
 
 /obj/machinery/power/apc/updateDialog()
 	if (machine_stat & (BROKEN|MAINT))
