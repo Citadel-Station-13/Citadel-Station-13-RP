@@ -22841,7 +22841,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
-/obj/machinery/air_alarm/super/east_mount{
+/obj/machinery/apc/super/east_mount{
 	name = "east bump";
 	pixel_x = 24
 	},
