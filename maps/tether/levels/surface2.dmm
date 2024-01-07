@@ -24350,7 +24350,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/air_alarm/high/west_mount{
+/obj/machinery/power/apc/high/west_mount{
 	pixel_x = -28
 	},
 /turf/simulated/floor/tiled/techfloor,

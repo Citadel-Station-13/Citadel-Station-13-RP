@@ -2736,7 +2736,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 10
 	},
-/obj/machinery/air_alarm/high/east_mount{
+/obj/machinery/power/apc/high/east_mount{
 	pixel_x = 28
 	},
 /turf/simulated/floor/tiled,
@@ -9606,7 +9606,7 @@
 /turf/simulated/floor/maglev/virgo3b,
 /area/tether/surfacebase/outside/outside1)
 "fjm" = (
-/obj/machinery/air_alarm/high/east_mount{
+/obj/machinery/power/apc/high/east_mount{
 	pixel_x = 28
 	},
 /obj/structure/cable/green{

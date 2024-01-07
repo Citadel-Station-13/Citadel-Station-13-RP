@@ -1047,7 +1047,7 @@
 /area/submap/HeadscientistHQ)
 "VI" = (
 /obj/effect/floor_decal/borderfloorblack,
-/obj/machinery/air_alarm/alarms_hidden/east_mount{
+/obj/machinery/power/apc/east_mount{
 	pixel_y = -32;
 	req_access = null;
 	start_charge = 0
