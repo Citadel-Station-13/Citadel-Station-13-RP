@@ -2,7 +2,7 @@ CREATE_WALL_MOUNTING_TYPES(/obj/machinery/camera)
 /obj/machinery/camera
 	name = "security camera"
 	desc = "It's used to monitor rooms."
-	icon = 'icons/obj/machinery/security_camera.dmi'
+	icon = 'icons/machinery/security_camera.dmi'
 	icon_state = "camera"
 	use_power = USE_POWER_ACTIVE
 	idle_power_usage = 5
@@ -40,8 +40,6 @@ CREATE_WALL_MOUNTING_TYPES(/obj/machinery/camera)
 	var/client_huds = list()
 
 	var/list/camera_computers_using_this = list()
-
-#warn dir shit
 
 /obj/machinery/camera/Initialize(mapload)
 	if (dir == NORTH)

@@ -176,8 +176,6 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 28)
 	/// tracks how behind we arre in charging TODO: literally rewrite apcs entirely to use a proper accumulator-cell system with an internal buffer, ffs
 	var/lazy_draw_accumulator = 0
 
-#warn dir shit
-
 /obj/machinery/power/apc/updateDialog()
 	if (machine_stat & (BROKEN|MAINT))
 		return
@@ -220,8 +218,6 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 28)
 	if (building)
 		setDir(ndir)
 
-	pixel_x = (src.dir & 3)? 0 : (src.dir == 4 ? 24 : -24)
-	pixel_y = (src.dir & 3)? (src.dir ==1 ? 24 : -24) : 0
 	if(!building)
 		autobuild()
 	else
@@ -261,14 +257,27 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 28)
 
 // APCs are pixel-shifted, so they need to be updated.
 /obj/machinery/power/apc/setDir(new_dir)
-	..()
-	pixel_x = (src.dir & 3)? 0 : (src.dir == 4 ? 24 : -24)
-	pixel_y = (src.dir & 3)? (src.dir ==1 ? 24 : -24) : 0
+	. = ..()
+
+	base_pixel_x = 0
+	base_pixel_y = 0
+	var/turf/T = get_step(get_turf(src), dir)
+	if(istype(T) && T.density)
+		switch(dir)
+			if(SOUTH)
+				base_pixel_y = -28
+			if(NORTH)
+				base_pixel_y = 28
+			if(EAST)
+				base_pixel_x = 28
+			if(WEST)
+				base_pixel_x = -28
+	reset_pixel_offsets()
+
 	if(terminal)
 		terminal.disconnect_from_network()
 		terminal.setDir(src.dir) // Terminal has same dir as master
 		terminal.connect_to_network() // Refresh the network the terminal is connected to.
-	return
 
 /obj/machinery/power/apc/proc/energy_fail(var/duration)
 	failure_timer = max(failure_timer, round(duration))
@@ -422,24 +431,6 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 28)
 			set_light(l_range = 2, l_power = 0.5, l_color = color)
 		else
 			set_light(0)
-
-/obj/machinery/power/apc/setDir(new_dir)
-	. = ..()
-	base_pixel_x = 0
-	base_pixel_y = 0
-	var/turf/T = get_step(get_turf(src), dir)
-	if(istype(T) && T.density)
-		switch(dir)
-			if(SOUTH)
-				base_pixel_y = -22
-			if(NORTH)
-				base_pixel_y = 22
-			if(EAST)
-				base_pixel_x = 22
-			if(WEST)
-				base_pixel_x = -22
-	reset_pixel_offsets()
-
 
 /obj/machinery/power/apc/proc/check_updates()
 

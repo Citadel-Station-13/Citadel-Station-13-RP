@@ -554,16 +554,24 @@
 
 //* Orientation *//
 
+/**
+ * Standard wallmount orientation: face away
+ */
 /obj/proc/auto_orient_wallmount_single()
 	for(var/dir in GLOB.cardinal)
 		if(get_step(dir)?.get_wallmount_anchor())
-			setDir(dir)
+			setDir(turn(dir, 180))
 			return
 
+/**
+ * Standard wallmount orientation: face away
+ * 
+ * Directly sets dir without setDir()
+ */
 /obj/proc/auto_orient_wallmount_single_preinit()
 	for(var/dir in GLOB.cardinal)
 		if(get_step(dir)?.get_wallmount_anchor())
-			src.dir = dir
+			src.dir = turn(dir, 180)
 			return
 
 //* Resists *//

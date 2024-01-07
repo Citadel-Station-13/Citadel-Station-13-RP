@@ -26,8 +26,6 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/fire_alarm, 21)
 	/// If the alarms from this machine are visible on consoles.
 	var/alarms_hidden = FALSE
 
-#warn dir shit
-
 /obj/machinery/fire_alarm/alarms_hidden
 	alarms_hidden = TRUE
 
@@ -51,9 +49,9 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/fire_alarm, 21)
 		if(SOUTH)
 			base_pixel_y = 21
 		if(WEST)
-			base_pixel_x = -21
-		if(EAST)
 			base_pixel_x = 21
+		if(EAST)
+			base_pixel_x = -21
 	reset_pixel_offsets()
 
 /obj/machinery/fire_alarm/update_icon()
