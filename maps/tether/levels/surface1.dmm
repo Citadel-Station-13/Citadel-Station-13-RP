@@ -8150,10 +8150,7 @@
 	pixel_x = -2;
 	pixel_y = -1
 	},
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -24
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/machinery/light_switch{
 	pixel_x = 12;
 	pixel_y = -24
@@ -16424,10 +16421,7 @@
 	pixel_x = 28
 	},
 /obj/structure/bed/roller,
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -24
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/first_aid_west)
@@ -18805,10 +18799,7 @@
 /turf/simulated/wall/prepainted/engineering/atmos,
 /area/crew_quarters/sleep/Dorm_3)
 "jVN" = (
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -24
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green,
 /obj/structure/bed/chair/wood{
 	dir = 4
@@ -21186,10 +21177,7 @@
 "ljC" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/red/border,
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -24
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/orange,
 /turf/simulated/floor/tiled,
 /area/security/checkpoint)
@@ -29764,10 +29752,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
 "pYd" = (
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -24
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green,
 /obj/machinery/light_switch{
 	dir = 8;

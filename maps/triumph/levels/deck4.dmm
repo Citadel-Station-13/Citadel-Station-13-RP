@@ -149,10 +149,7 @@
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/general)
 "ahv" = (
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -24
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -15063,10 +15060,7 @@
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "kiD" = (
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -24
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/table/rack,
@@ -35011,10 +35005,7 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -24
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/catwalk,
 /obj/structure/cable{
 	icon_state = "4-8"

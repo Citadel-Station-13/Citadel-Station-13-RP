@@ -2344,10 +2344,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
 "ahw" = (
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -24
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 24
@@ -4211,10 +4208,7 @@
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c,
 /area/shuttle/emt/cockpit)
 "ami" = (
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -24
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
@@ -7330,10 +7324,7 @@
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 5
 	},
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -24
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/cyan,
 /obj/item/storage/toolbox/mechanical,
 /turf/simulated/floor/tiled/white,
@@ -8129,10 +8120,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "awB" = (
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -24
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/landmark/free_ai_shell,
 /obj/effect/floor_decal/techfloor{
 	dir = 6
@@ -9201,10 +9189,7 @@
 /turf/simulated/floor/carpet/purcarpet,
 /area/exploration/meeting)
 "azq" = (
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -24
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/cyan{
 	icon_state = "0-8"
 	},
@@ -22299,10 +22284,7 @@
 /turf/simulated/wall/rshull,
 /area/shuttle/excursion/cargo)
 "lzf" = (
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -24
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 10
 	},

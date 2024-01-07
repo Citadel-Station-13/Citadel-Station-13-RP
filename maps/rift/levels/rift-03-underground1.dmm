@@ -141,10 +141,7 @@
 /area/engineering/atmos)
 "aw" = (
 /obj/structure/cable/green,
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -24
-	},
+/obj/machinery/power/apc/south_mount,
 /turf/simulated/floor/plating,
 /area/maintenance/public_bunker)
 "ax" = (
@@ -276,10 +273,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -24
-	},
+/obj/machinery/power/apc/south_mount,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/upper)
 "aO" = (

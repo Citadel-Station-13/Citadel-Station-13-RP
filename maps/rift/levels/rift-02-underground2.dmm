@@ -353,10 +353,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -24
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -8181,10 +8178,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/quartermaster/miningdock)
 "AO" = (
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -24
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},

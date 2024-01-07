@@ -2085,10 +2085,7 @@
 "en" = (
 /obj/structure/closet/wardrobe/black,
 /obj/structure/cable/green,
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -24
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/effect/floor_decal/corner/lime{
 	dir = 10
 	},
@@ -7601,10 +7598,7 @@
 	dir = 4
 	},
 /obj/structure/cable/green,
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -24
-	},
+/obj/machinery/power/apc/south_mount,
 /turf/simulated/floor/wood,
 /area/tether/station/visitorhallway/lounge)
 "pr" = (
