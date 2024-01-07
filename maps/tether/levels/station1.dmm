@@ -1250,7 +1250,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/fire_alarm/south_mount,
+/obj/machinery/fire_alarm/north_mount,
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},
@@ -1871,8 +1871,7 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/chief)
 "dF" = (
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /obj/machinery/shield_gen/external,
@@ -2598,10 +2597,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
 "fa" = (
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/tiled,
 /area/hallway/station/docks)
 "fb" = (
@@ -3000,8 +2996,7 @@
 /turf/simulated/floor/wood,
 /area/hallway/station/atrium)
 "fR" = (
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /obj/machinery/air_alarm{
@@ -3116,7 +3111,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 1
 	},
-/obj/machinery/fire_alarm/south_mount,
+/obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
 "gf" = (
@@ -3478,7 +3473,7 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 5
 	},
-/obj/machinery/fire_alarm/south_mount,
+/obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled,
 /area/security/customs)
 "gZ" = (
@@ -3660,7 +3655,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 4
 	},
-/obj/machinery/fire_alarm/south_mount,
+/obj/machinery/fire_alarm/north_mount,
 /obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled,
 /area/hallway/station/atrium)
@@ -4046,7 +4041,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/fire_alarm/south_mount,
+/obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/wood,
 /area/engineering/break_room)
 "ih" = (
@@ -4564,10 +4559,7 @@
 /obj/random/tech_supply,
 /obj/random/tech_supply,
 /obj/random/tech_supply,
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/east_mount,
 /obj/random/tech_supply,
 /obj/random/tech_supply,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -6050,8 +6042,7 @@
 /turf/simulated/floor/tiled/white,
 /area/shuttle/medivac/general)
 "ml" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -26
 	},
 /turf/simulated/floor/tiled,
@@ -6555,10 +6546,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/station/stairs_one)
 "nn" = (
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/east_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 1
 	},
@@ -8786,7 +8774,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 4
 	},
-/obj/machinery/fire_alarm/south_mount,
+/obj/machinery/fire_alarm/north_mount,
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -9657,8 +9645,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/docks)
 "tH" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -26
 	},
 /turf/simulated/floor/wood,
@@ -10755,8 +10742,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 8
 	},
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled,
@@ -11065,8 +11051,7 @@
 /obj/fiftyspawner/steel,
 /obj/fiftyspawner/steel,
 /obj/fiftyspawner/steel,
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled,
@@ -11194,8 +11179,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/exploration)
 "xa" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -24
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -11631,8 +11615,7 @@
 /obj/effect/floor_decal/corner/yellow/border{
 	dir = 8
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -24
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -12347,8 +12330,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled,
@@ -12552,8 +12534,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 6
 	},
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /obj/landmark/spawnpoint/latejoin/station/cyborg,
@@ -12947,7 +12928,7 @@
 /area/maintenance/station/spacecommandmaint)
 "AC" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/fire_alarm/south_mount,
+/obj/machinery/fire_alarm/north_mount,
 /obj/vehicle_old/train/trolley,
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/hallway)
@@ -16053,7 +16034,7 @@
 /obj/effect/floor_decal/corner/red/bordercorner2{
 	dir = 10
 	},
-/obj/machinery/fire_alarm/south_mount,
+/obj/machinery/fire_alarm/north_mount,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
 /area/security/customs)
@@ -16239,8 +16220,7 @@
 	dir = 8
 	},
 /obj/structure/bed/chair/office/light,
-/obj/machinery/fire_alarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -24
 	},
 /turf/simulated/floor/tiled,
@@ -16834,10 +16814,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/east_mount,
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
@@ -17046,10 +17023,7 @@
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/bridge/secondary/teleporter)
 "II" = (
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/wood/broken,
 /area/maintenance/abandonedlibraryconference)
 "IJ" = (
@@ -18237,8 +18211,7 @@
 /area/maintenance/substation/civilian)
 "KT" = (
 /obj/structure/table/reinforced,
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /obj/machinery/newscaster{
@@ -19014,10 +18987,7 @@
 /turf/simulated/wall/prepainted,
 /area/vacant/vacant_restaurant_lower)
 "MG" = (
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/east_mount,
 /obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/abandonedlibrary)
@@ -19032,8 +19002,7 @@
 /turf/simulated/floor/tiled,
 /area/security/checkpoint/science)
 "MJ" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -24
 	},
 /turf/simulated/floor,
@@ -19143,7 +19112,7 @@
 /obj/item/storage/briefcase/inflatable{
 	pixel_x = -3
 	},
-/obj/machinery/fire_alarm/south_mount,
+/obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
 "MY" = (
@@ -19790,10 +19759,7 @@
 /turf/simulated/floor/tiled/white,
 /area/shuttle/medivac/general)
 "Ow" = (
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/east_mount,
 /obj/effect/floor_decal/industrial/warning,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
@@ -19813,10 +19779,7 @@
 /obj/machinery/atmospherics/component/binary/pump{
 	dir = 1
 	},
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/backup)
 "OA" = (
@@ -19832,7 +19795,7 @@
 	},
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /obj/effect/floor_decal/industrial/outline/blue,
-/obj/machinery/fire_alarm/south_mount,
+/obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled,
 /area/tether/exploration/equipment)
 "OD" = (
@@ -20579,7 +20542,7 @@
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 1
 	},
-/obj/machinery/fire_alarm/south_mount,
+/obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled,
 /area/tether/exploration/hallway)
 "PU" = (
@@ -20704,7 +20667,7 @@
 /obj/effect/floor_decal/corner/red/bordercorner2{
 	dir = 4
 	},
-/obj/machinery/fire_alarm/south_mount,
+/obj/machinery/fire_alarm/north_mount,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/machinery/camera/network/tether{
 	dir = 8
@@ -21321,10 +21284,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 5
 	},
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/east_mount,
 /obj/structure/reagent_dispensers/water_cooler/full{
 	dir = 8
 	},
@@ -21773,7 +21733,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/fire_alarm/south_mount,
+/obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/carpet,
 /area/engineering/foyer)
 "Sy" = (
@@ -21990,8 +21950,7 @@
 /turf/space,
 /area/space)
 "SU" = (
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/white,
@@ -22435,10 +22394,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 10
 	},
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
 "TD" = (
@@ -22626,10 +22582,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/east_mount,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
@@ -22800,7 +22753,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/fire_alarm/south_mount,
+/obj/machinery/fire_alarm/north_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -23035,10 +22988,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/east_mount,
 /obj/machinery/photocopier/faxmachine{
 	department = "Chief Engineer's Office"
 	},
@@ -23620,8 +23570,7 @@
 /turf/simulated/floor,
 /area/engineering/engine_gas)
 "VY" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -24
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -24042,7 +23991,7 @@
 /area/bridge/secondary)
 "WO" = (
 /obj/structure/flora/pottedplant,
-/obj/machinery/fire_alarm/south_mount,
+/obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled,
 /area/hallway/station/docks)
 "WP" = (
@@ -24741,8 +24690,7 @@
 /obj/effect/floor_decal/corner/yellow/border{
 	dir = 8
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -24
 	},
 /turf/simulated/floor/tiled,
@@ -24969,10 +24917,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/engi_wash)
 "YK" = (

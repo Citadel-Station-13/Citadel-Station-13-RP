@@ -16,8 +16,7 @@
 "ac" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/red/border,
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -534,7 +533,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/machinery/fire_alarm/alarms_hidden/south_mount,
+/obj/machinery/fire_alarm/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/seccells)
 "bE" = (
@@ -1491,8 +1490,7 @@
 /turf/simulated/wall/rpshull,
 /area/ship/expe/corridor1)
 "em" = (
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1511,8 +1509,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin1)
 "ep" = (
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1530,8 +1527,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin2)
 "es" = (
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1550,8 +1546,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin3)
 "ev" = (
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1569,8 +1564,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin4)
 "ey" = (
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1589,8 +1583,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin5)
 "eB" = (
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1608,8 +1601,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin6)
 "eE" = (
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1628,8 +1620,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin7)
 "eH" = (
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1647,8 +1638,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin8)
 "eK" = (
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -2454,8 +2444,7 @@
 	icon_state = "1-4"
 	},
 /obj/effect/floor_decal/techfloor,
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -2754,8 +2743,7 @@
 /area/ship/expe/corridor3)
 "gW" = (
 /obj/effect/floor_decal/techfloor,
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -3310,8 +3298,7 @@
 	},
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/yellow/border,
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -3845,7 +3832,7 @@
 /turf/simulated/wall/rpshull,
 /area/ship/expe/medicalchem)
 "iP" = (
-/obj/machinery/fire_alarm/south_mount,
+/obj/machinery/fire_alarm/north_mount,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 9
 	},
@@ -5771,8 +5758,7 @@
 "mL" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/yellow/border,
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -5785,8 +5771,7 @@
 /obj/effect/floor_decal/corner/yellow/border{
 	dir = 8
 	},
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 8;
+/obj/machinery/fire_alarm/alarms_hidden/west_mount{
 	pixel_x = -26
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -6185,8 +6170,7 @@
 	icon_state = "1-4"
 	},
 /obj/effect/floor_decal/techfloor,
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -6228,10 +6212,7 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 4
 	},
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/sechall)
 "nG" = (
@@ -6353,8 +6334,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 8
 	},
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 8;
+/obj/machinery/fire_alarm/alarms_hidden/west_mount{
 	pixel_x = -26
 	},
 /turf/simulated/floor/tiled/white,
@@ -7019,8 +6999,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 8
 	},
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 8;
+/obj/machinery/fire_alarm/alarms_hidden/west_mount{
 	pixel_x = -26
 	},
 /turf/simulated/floor/tiled/white,
@@ -7424,10 +7403,7 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 4
 	},
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/seclobby)
 "pZ" = (
@@ -7450,10 +7426,7 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 6
 	},
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/seclobby2)
 "qb" = (
@@ -8529,7 +8502,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medical)
 "sz" = (
-/obj/machinery/fire_alarm/south_mount,
+/obj/machinery/fire_alarm/north_mount,
 /obj/structure/bed/chair,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
@@ -8721,7 +8694,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 1
 	},
-/obj/machinery/fire_alarm/alarms_hidden/south_mount,
+/obj/machinery/fire_alarm/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medical1)
 "sN" = (
@@ -8984,8 +8957,7 @@
 	},
 /obj/structure/table/reinforced,
 /obj/item/storage/firstaid/surgery,
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 8;
+/obj/machinery/fire_alarm/alarms_hidden/west_mount{
 	pixel_x = -26
 	},
 /turf/simulated/floor/tiled/white,
@@ -9648,8 +9620,7 @@
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/techfloor,
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -10292,7 +10263,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/machinery/fire_alarm/alarms_hidden/south_mount,
+/obj/machinery/fire_alarm/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor2)
 "wT" = (

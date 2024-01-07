@@ -505,7 +505,7 @@
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
 "Rd" = (
-/obj/machinery/fire_alarm/south_mount,
+/obj/machinery/fire_alarm/north_mount,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},

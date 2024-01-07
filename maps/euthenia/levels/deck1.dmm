@@ -7877,8 +7877,7 @@
 /obj/effect/floor_decal/corner/pink/border{
 	dir = 10
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -24
 	},
 /turf/simulated/floor/tiled/white,
@@ -8514,8 +8513,7 @@
 /area/security/warden)
 "jAs" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -9009,8 +9007,7 @@
 /obj/machinery/recharger/wallcharger{
 	pixel_x = -22
 	},
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -25
 	},
 /obj/map_helper/network_builder/power_cable/green/auto,
@@ -10824,8 +10821,7 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/chemistry)
 "mnb" = (
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /obj/structure/table/glass,
@@ -13941,7 +13937,7 @@
 /obj/structure/table/reinforced,
 /obj/item/book/manual/legal/sop_vol2,
 /obj/item/book/manual/legal/sop_vol1,
-/obj/machinery/fire_alarm/south_mount,
+/obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/bunker)
 "pQm" = (
@@ -15285,10 +15281,7 @@
 	},
 /obj/item/storage/firstaid/adv,
 /obj/structure/table/steel_reinforced,
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/tiled,
 /area/medical/medbay_emt_bay)
 "rBZ" = (
@@ -16173,8 +16166,7 @@
 /obj/machinery/computer/secure_data{
 	dir = 4
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -26
 	},
 /turf/simulated/floor/tiled/dark,
@@ -18168,8 +18160,7 @@
 /area/main_map/maintenance/deck_one/port)
 "uQj" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /obj/item/defib_kit/loaded,
@@ -18337,8 +18328,7 @@
 /area/crew_quarters/bar_backroom)
 "vbU" = (
 /obj/structure/closet/secure_closet/security,
-/obj/machinery/fire_alarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -26
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -19039,8 +19029,7 @@
 /obj/effect/floor_decal/corner/red{
 	dir = 6
 	},
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled,
@@ -19421,10 +19410,7 @@
 /obj/effect/floor_decal/corner/blue{
 	dir = 6
 	},
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/east_mount,
 /obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
@@ -20556,10 +20542,7 @@
 /obj/effect/floor_decal/corner/pink/border{
 	dir = 6
 	},
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/tiled/white,
 /area/security/forensics)
 "xvp" = (
@@ -20858,8 +20841,7 @@
 /turf/simulated/floor/tiled/red,
 /area/tether/surfacebase/security/hallway)
 "xMN" = (
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /turf/simulated/floor/crystal,
@@ -21035,7 +21017,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/fire_alarm/south_mount,
+/obj/machinery/fire_alarm/north_mount,
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
 /turf/simulated/floor/lino,

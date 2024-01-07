@@ -134,7 +134,7 @@
 /turf/simulated/floor/wood,
 /area/mothership/breakroom)
 "ap" = (
-/obj/machinery/fire_alarm/south_mount,
+/obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/wood,
 /area/mothership/breakroom)
 "aq" = (
@@ -483,7 +483,7 @@
 /area/mothership/hydroponics)
 "bn" = (
 /obj/machinery/portable_atmospherics/hydroponics,
-/obj/machinery/fire_alarm/south_mount,
+/obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/hydroponics)
 "bo" = (
@@ -595,7 +595,7 @@
 	},
 /obj/item/material/knife/butch,
 /obj/item/material/kitchen/rollingpin,
-/obj/machinery/fire_alarm/south_mount,
+/obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled/white,
 /area/mothership/kitchen)
 "bB" = (
@@ -890,8 +890,7 @@
 /area/mothership/hydroponics)
 "ci" = (
 /obj/machinery/light,
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -25
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -1049,7 +1048,7 @@
 /obj/item/radio/off,
 /obj/item/radio/off,
 /obj/item/radio/off,
-/obj/machinery/fire_alarm/south_mount,
+/obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/eva)
 "cH" = (
@@ -1281,8 +1280,7 @@
 /obj/item/tank/oxygen,
 /obj/item/clothing/shoes/magboots,
 /obj/item/clothing/mask/breath,
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -25
 	},
 /obj/structure/table/rack/shelf/steel,
@@ -1354,7 +1352,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "2-4"
 	},
-/obj/machinery/fire_alarm/south_mount,
+/obj/machinery/fire_alarm/north_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
@@ -1474,7 +1472,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "2-8"
 	},
-/obj/machinery/fire_alarm/south_mount,
+/obj/machinery/fire_alarm/north_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
@@ -1769,7 +1767,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/teleporter)
 "eg" = (
-/obj/machinery/fire_alarm/south_mount,
+/obj/machinery/fire_alarm/north_mount,
 /obj/structure/cable/cyan{
 	icon_state = "2-8"
 	},
@@ -1863,10 +1861,7 @@
 /turf/simulated/floor/tiled/white,
 /area/mothership/surgery)
 "eq" = (
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/east_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
@@ -1876,8 +1871,7 @@
 "er" = (
 /obj/item/bedsheet/captaindouble,
 /obj/structure/bed/double/padded,
-/obj/machinery/fire_alarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -24
 	},
 /obj/machinery/button/remote/airlock{
@@ -2051,10 +2045,7 @@
 "eF" = (
 /obj/item/bedsheet/captaindouble,
 /obj/structure/bed/double/padded,
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/east_mount,
 /obj/machinery/button/remote/airlock{
 	id = "ship-dorm2-door";
 	name = "Dorm 2 Lock";
@@ -2102,10 +2093,7 @@
 /obj/item/clothing/suit/armor/pcarrier/blue/sol,
 /obj/item/clothing/suit/armor/pcarrier/blue/sol,
 /obj/item/clothing/suit/armor/pcarrier/blue/sol,
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/east_mount,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
@@ -2455,8 +2443,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
 "fC" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -24
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -2685,8 +2672,7 @@
 "gc" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/storage/box/gloves,
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -25
 	},
 /turf/simulated/floor/tiled/white,
@@ -2761,8 +2747,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/vault)
 "gk" = (
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -25
 	},
 /obj/structure/cable,
@@ -2915,7 +2900,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
 	},
-/obj/machinery/fire_alarm/south_mount,
+/obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled/white,
 /area/mothership/treatment)
 "gL" = (
@@ -3328,8 +3313,7 @@
 "hH" = (
 /obj/item/bedsheet/captaindouble,
 /obj/structure/bed/double/padded,
-/obj/machinery/fire_alarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -24
 	},
 /obj/machinery/button/remote/airlock{
@@ -3444,10 +3428,7 @@
 "hP" = (
 /obj/item/bedsheet/captaindouble,
 /obj/structure/bed/double/padded,
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/east_mount,
 /obj/machinery/button/remote/airlock{
 	id = "ship-dorm4-door";
 	name = "Dorm 4 Lock";
@@ -3628,10 +3609,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/processing)
 "ip" = (
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/processing)
 "iq" = (
@@ -4329,10 +4307,7 @@
 	icon_state = "1-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/east_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/sechallway)
@@ -4341,7 +4316,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/warden)
 "jT" = (
-/obj/machinery/fire_alarm/south_mount,
+/obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/warden)
 "jU" = (
@@ -4814,8 +4789,7 @@
 "kU" = (
 /obj/item/bedsheet/captaindouble,
 /obj/structure/bed/double/padded,
-/obj/machinery/fire_alarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -24
 	},
 /obj/machinery/button/remote/airlock{
@@ -4932,10 +4906,7 @@
 "lc" = (
 /obj/item/bedsheet/captaindouble,
 /obj/structure/bed/double/padded,
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/east_mount,
 /obj/machinery/button/remote/airlock{
 	id = "ship-dorm6-door";
 	name = "Dorm 6 Lock";
@@ -6307,8 +6278,7 @@
 /area/mothership/rnd)
 "nS" = (
 /obj/structure/closet/wardrobe/robotics_black,
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -25
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -6389,8 +6359,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
 	},
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -25
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -6478,8 +6447,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/bridge)
 "oi" = (
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -25
 	},
 /obj/structure/bed/chair/bay/shuttle{
@@ -6750,8 +6718,7 @@
 /area/mothership/robotics)
 "oO" = (
 /obj/machinery/mech_recharger,
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -25
 	},
 /turf/simulated/floor/bluegrid,
@@ -6891,8 +6858,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /obj/structure/closet/secure_closet/personal,
@@ -6970,7 +6936,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/telecomms1)
 "pu" = (
-/obj/machinery/fire_alarm/south_mount,
+/obj/machinery/fire_alarm/north_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
 	},
@@ -7183,7 +7149,7 @@
 /turf/simulated/floor/greengrid,
 /area/mothership/telecomms2)
 "pR" = (
-/obj/machinery/fire_alarm/south_mount,
+/obj/machinery/fire_alarm/north_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
@@ -7531,10 +7497,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/east_mount,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -7564,8 +7527,7 @@
 /obj/machinery/cryopod{
 	dir = 4
 	},
-/obj/machinery/fire_alarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -25
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -8393,10 +8355,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/mothership/telecomms2)
 "tl" = (
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
 "ts" = (
@@ -8406,8 +8365,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
 "tA" = (
-/obj/machinery/fire_alarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -24
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -8536,7 +8494,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
-/obj/machinery/fire_alarm/south_mount,
+/obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
 "xS" = (
@@ -9082,7 +9040,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
 	},
-/obj/machinery/fire_alarm/south_mount,
+/obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
 "QI" = (
@@ -9123,8 +9081,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -24
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -9237,8 +9194,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
 	},
-/obj/machinery/fire_alarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -24
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -9398,7 +9354,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/obj/machinery/fire_alarm/south_mount,
+/obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
 "ZS" = (

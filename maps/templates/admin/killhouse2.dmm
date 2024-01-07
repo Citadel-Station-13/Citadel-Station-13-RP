@@ -2105,10 +2105,7 @@
 /area/killhouse/two)
 "Nu" = (
 /obj/effect/floor_decal/industrial/outline/blue,
-/obj/machinery/fire_alarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/east_mount,
 /obj/structure/filingcabinet/medical,
 /obj/effect/floor_decal/corner/paleblue/diagonal,
 /turf/simulated/floor/tiled/white,

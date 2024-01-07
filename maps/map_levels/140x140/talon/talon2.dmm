@@ -682,8 +682,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/eris/dark/violetcorener,
@@ -1054,8 +1053,7 @@
 "mw" = (
 /obj/item/bedsheet,
 /obj/structure/bed/padded,
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 8;
+/obj/machinery/fire_alarm/alarms_hidden/west_mount{
 	pixel_x = -24
 	},
 /obj/landmark/spawnpoint/job/talon_guard,
@@ -1318,10 +1316,7 @@
 "pp" = (
 /obj/item/bedsheet,
 /obj/structure/bed/padded,
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/east_mount,
 /obj/landmark/spawnpoint/job/talon_engineer,
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/eng_room)
@@ -1360,8 +1355,7 @@
 /turf/simulated/open,
 /area/talon/maintenance/decktwo_aft)
 "pC" = (
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -30
 	},
 /turf/simulated/floor/wood,
@@ -2189,8 +2183,7 @@
 /turf/simulated/floor/wood,
 /area/talon/decktwo/med_room)
 "zT" = (
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -30
 	},
 /turf/simulated/floor/wood,
@@ -2594,8 +2587,7 @@
 /turf/simulated/floor/hull/airless,
 /area/talon/maintenance/decktwo_solars)
 "Eb" = (
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -30
 	},
 /obj/machinery/light,
@@ -2819,8 +2811,7 @@
 "Gy" = (
 /obj/item/bedsheet,
 /obj/structure/bed/padded,
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 8;
+/obj/machinery/fire_alarm/alarms_hidden/west_mount{
 	pixel_x = -24
 	},
 /obj/landmark/spawnpoint/job/talon_pilot,
@@ -2994,10 +2985,7 @@
 "Ja" = (
 /obj/item/bedsheet,
 /obj/structure/bed/padded,
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/east_mount,
 /obj/landmark/spawnpoint/job/talon_doctor,
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/med_room)
@@ -3248,8 +3236,7 @@
 /turf/simulated/floor/hull/airless,
 /area/talon/maintenance/decktwo_solars)
 "LU" = (
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -30
 	},
 /turf/simulated/floor/tiled/eris/steel,

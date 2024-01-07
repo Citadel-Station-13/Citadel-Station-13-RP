@@ -1,7 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -25
 	},
 /obj/machinery/lathe/autolathe,
@@ -242,10 +241,7 @@
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/deckone/central_hallway)
 "ct" = (
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/east_mount,
 /obj/structure/handrail{
 	dir = 8
 	},
@@ -384,8 +380,7 @@
 /turf/simulated/floor/hull/airless,
 /area/talon/maintenance/deckone_port)
 "dx" = (
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -24
 	},
 /obj/machinery/portable_atmospherics/canister/carbon_dioxide,
@@ -655,10 +650,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 4;
-	pixel_x = 29
-	},
+/obj/machinery/fire_alarm/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/eris/dark/brown_perforated,
 /area/talon/deckone/starboard_eng)
 "ge" = (
@@ -1315,10 +1307,7 @@
 /turf/simulated/wall/rshull,
 /area/talon/maintenance/deckone_port)
 "lr" = (
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 4;
-	pixel_x = 29
-	},
+/obj/machinery/fire_alarm/alarms_hidden/east_mount,
 /obj/effect/floor_decal/industrial/outline/blue,
 /obj/machinery/atmospherics/portables_connector{
 	dir = 8;
@@ -2112,8 +2101,7 @@
 	name = "Talon Starboard SMES Connection";
 	name_tag = "TLN-SBD-SMES"
 	},
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 8;
+/obj/machinery/fire_alarm/alarms_hidden/west_mount{
 	pixel_x = -24
 	},
 /turf/simulated/floor/tiled/eris/dark/cyancorner,
@@ -2893,8 +2881,7 @@
 /turf/space,
 /area/space)
 "yl" = (
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 8;
+/obj/machinery/fire_alarm/alarms_hidden/west_mount{
 	pixel_x = -29
 	},
 /obj/machinery/atmospherics/portables_connector{
@@ -2944,8 +2931,7 @@
 /turf/simulated/floor/tiled/eris/dark/cyancorner,
 /area/talon/deckone/starboard_solar)
 "yR" = (
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/eris/dark/brown_platform,
@@ -3350,10 +3336,7 @@
 	name = "Talon Port SMES Connection";
 	name_tag = "TLN-PRT-SMES"
 	},
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/eris/dark/cyancorner,
 /area/talon/deckone/port_solar)
 "BU" = (
@@ -3524,7 +3507,7 @@
 /turf/simulated/wall,
 /area/talon/deckone/bridge_hallway)
 "CR" = (
-/obj/machinery/fire_alarm/alarms_hidden/south_mount,
+/obj/machinery/fire_alarm/alarms_hidden/north_mount,
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
 /turf/simulated/floor/tiled/eris/steel,
@@ -4165,7 +4148,7 @@
 /area/talon/deckone/armory)
 "Hp" = (
 /obj/structure/closet/crate/solar,
-/obj/machinery/fire_alarm/alarms_hidden/south_mount,
+/obj/machinery/fire_alarm/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/eris/dark/brown_platform,
 /area/talon/deckone/starboard_eng_store)
 "Hr" = (
@@ -4505,8 +4488,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -25
 	},
 /obj/machinery/recharger,
@@ -4653,8 +4635,7 @@
 /turf/simulated/floor/plating,
 /area/talon/maintenance/deckone_starboard)
 "Ls" = (
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/eris/white/orangecorner,
@@ -5584,8 +5565,7 @@
 /turf/simulated/floor/tiled/eris/dark/brown_perforated,
 /area/talon/deckone/port_engine)
 "Up" = (
-/obj/machinery/fire_alarm/alarms_hidden{
-	dir = 8;
+/obj/machinery/fire_alarm/alarms_hidden/west_mount{
 	pixel_x = -24
 	},
 /turf/simulated/floor/tiled/eris/dark/cyancorner,
