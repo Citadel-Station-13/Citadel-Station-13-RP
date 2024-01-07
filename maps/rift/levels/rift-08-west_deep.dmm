@@ -1745,10 +1745,9 @@
 /obj/effect/floor_decal/corner/white/full{
 	dir = 4
 	},
-/obj/machinery/power/apc/alarms_hidden{
+/obj/machinery/power/apc/alarms_hidden/north_mount{
 	cell_type = null;
 	chargelevel = 0;
-	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rift/facility/interior/temple)
@@ -2744,10 +2743,9 @@
 /area/outpost/mining_main/outpost/airlock/three)
 "yG" = (
 /obj/structure/bed/chair,
-/obj/machinery/power/apc/alarms_hidden{
+/obj/machinery/power/apc/alarms_hidden/north_mount{
 	cell_type = null;
 	chargelevel = 0;
-	dir = 1
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -4234,10 +4232,9 @@
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance/south)
 "Mc" = (
-/obj/machinery/power/apc/alarms_hidden{
+/obj/machinery/power/apc/alarms_hidden/north_mount{
 	cell_type = null;
 	chargelevel = 0;
-	dir = 1
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -5082,10 +5079,9 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/prison)
 "UD" = (
-/obj/machinery/power/apc/alarms_hidden{
+/obj/machinery/power/apc/alarms_hidden/north_mount{
 	cell_type = null;
 	chargelevel = 0;
-	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/janitorial)
