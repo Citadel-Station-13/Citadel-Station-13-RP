@@ -15657,7 +15657,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-4"
 	},
-/obj/machinery/apc/super/north_mount{
+/obj/machinery/power/apc/super/north_mount{
 	pixel_y = 28
 	},
 /turf/simulated/floor/tiled,
@@ -34489,7 +34489,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tether/surfacebase/tram)
 "syr" = (
-/obj/machinery/apc/super/east_mount{
+/obj/machinery/power/apc/super/east_mount{
 	name = "east bump";
 	pixel_x = 24
 	},
@@ -39184,7 +39184,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/apc/super/north_mount{
+/obj/machinery/power/apc/super/north_mount{
 	pixel_y = 28
 	},
 /obj/machinery/button/remote/blast_door{

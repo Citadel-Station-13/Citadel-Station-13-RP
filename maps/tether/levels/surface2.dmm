@@ -14093,7 +14093,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/apc/super/critical/north_mount{
+/obj/machinery/power/apc/super/critical/north_mount{
 	name = "north bump";
 	pixel_y = 24
 	},
@@ -25853,7 +25853,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/apc/super/north_mount{
+/obj/machinery/power/apc/super/north_mount{
 	pixel_y = 24
 	},
 /obj/machinery/button/remote/airlock{

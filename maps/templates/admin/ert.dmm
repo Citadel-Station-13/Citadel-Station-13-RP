@@ -281,7 +281,7 @@
 	dir = 4
 	},
 /obj/machinery/meter,
-/obj/machinery/apc/hyper/north_mount{
+/obj/machinery/power/apc/hyper/north_mount{
 	alarms_hidden = 1;
 	name = "VB APC - North";
 	pixel_y = 24
@@ -774,7 +774,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/atmos)
 "gR" = (
-/obj/machinery/apc/hyper/east_mount{
+/obj/machinery/power/apc/hyper/east_mount{
 	alarms_hidden = 1;
 	name = "VB APC - East";
 	pixel_x = 24
@@ -788,7 +788,7 @@
 /obj/structure/table/rack/steel,
 /obj/item/mecha_parts/mecha_equipment/shocker,
 /obj/item/mecha_parts/mecha_equipment/shocker,
-/obj/machinery/apc/hyper/north_mount{
+/obj/machinery/power/apc/hyper/north_mount{
 	alarms_hidden = 1;
 	name = "VB APC - North";
 	pixel_y = 24
@@ -1876,7 +1876,7 @@
 /obj/item/clothing/accessory/storage/black_vest,
 /obj/item/clothing/accessory/storage/black_vest,
 /obj/item/clothing/accessory/storage/black_vest,
-/obj/machinery/apc/hyper/east_mount{
+/obj/machinery/power/apc/hyper/east_mount{
 	alarms_hidden = 1;
 	name = "VB APC - East";
 	pixel_x = 24
@@ -3027,7 +3027,7 @@
 /obj/item/gun/energy/ionrifle/pistol,
 /obj/item/gun/energy/ionrifle,
 /obj/item/gun/energy/ionrifle,
-/obj/machinery/apc/hyper/east_mount{
+/obj/machinery/power/apc/hyper/east_mount{
 	alarms_hidden = 1;
 	name = "VB APC - East";
 	pixel_x = 24
@@ -3387,7 +3387,7 @@
 /turf/simulated/floor/wood,
 /area/ship/ert/commander)
 "Af" = (
-/obj/machinery/apc/hyper/east_mount{
+/obj/machinery/power/apc/hyper/east_mount{
 	alarms_hidden = 1;
 	name = "VB APC - East";
 	pixel_x = 24
@@ -3421,7 +3421,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/hallways_aft)
 "An" = (
-/obj/machinery/apc/hyper/east_mount{
+/obj/machinery/power/apc/hyper/east_mount{
 	alarms_hidden = 1;
 	name = "VB APC - East";
 	pixel_x = 24
@@ -3664,7 +3664,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/ship/ert/eng_storage)
 "Cn" = (
-/obj/machinery/apc/hyper/east_mount{
+/obj/machinery/power/apc/hyper/east_mount{
 	alarms_hidden = 1;
 	name = "VB APC - East";
 	pixel_x = 24
@@ -3885,7 +3885,7 @@
 /obj/item/extinguisher/mini,
 /obj/item/extinguisher/mini,
 /obj/item/extinguisher/mini,
-/obj/machinery/apc/hyper/north_mount{
+/obj/machinery/power/apc/hyper/north_mount{
 	alarms_hidden = 1;
 	name = "VB APC - North";
 	pixel_y = 24
@@ -4086,7 +4086,7 @@
 /obj/structure/table/rack/steel,
 /obj/item/storage/box/frags,
 /obj/item/storage/box/frags,
-/obj/machinery/apc/hyper/east_mount{
+/obj/machinery/power/apc/hyper/east_mount{
 	alarms_hidden = 1;
 	name = "VB APC - East";
 	pixel_x = 24
@@ -4521,7 +4521,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/atmos)
 "Ip" = (
-/obj/machinery/apc/hyper/east_mount{
+/obj/machinery/power/apc/hyper/east_mount{
 	alarms_hidden = 1;
 	name = "VB APC - East";
 	pixel_x = 24
@@ -5169,7 +5169,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
-/obj/machinery/apc/hyper/east_mount{
+/obj/machinery/power/apc/hyper/east_mount{
 	alarms_hidden = 1;
 	name = "VB APC - East";
 	pixel_x = 24
@@ -5755,7 +5755,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/teleporter)
 "Qc" = (
-/obj/machinery/apc/hyper/west_mount{
+/obj/machinery/power/apc/hyper/west_mount{
 	alarms_hidden = 1;
 	name = "VB APC - West";
 	pixel_x = -24
@@ -6072,7 +6072,7 @@
 /area/ship/ert/dock_star)
 "SA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/apc/hyper/east_mount{
+/obj/machinery/power/apc/hyper/east_mount{
 	alarms_hidden = 1;
 	name = "VB APC - East";
 	pixel_x = 24
@@ -6604,7 +6604,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/ship/ert/barracks)
 "Yq" = (
-/obj/machinery/apc/hyper/east_mount{
+/obj/machinery/power/apc/hyper/east_mount{
 	alarms_hidden = 1;
 	name = "VB APC - East";
 	pixel_x = 24
