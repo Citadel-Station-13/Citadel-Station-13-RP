@@ -1249,9 +1249,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/rift/turbolift/maint)
 "ek" = (
@@ -1842,9 +1840,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
@@ -2383,9 +2379,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/machinery/door/firedoor/glass{
 	dir = 1
 	},
@@ -3926,9 +3920,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
@@ -4026,9 +4018,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
-/obj/machinery/power/apc/high{
-	pixel_x = -24
-	},
+/obj/machinery/power/apc/high,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -4438,9 +4428,7 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -4778,9 +4766,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
 /obj/structure/catwalk,
 /obj/structure/cable/green,
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -24
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/pumpstation)
@@ -5632,9 +5618,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/public_bunker)
 "rd" = (
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 24
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/catwalk,
 /obj/structure/cable/green{
 	icon_state = "0-2"
@@ -5648,9 +5632,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -24
-	},
+/obj/machinery/power/apc/west_mount,
 /turf/simulated/floor/plating,
 /area/maintenance/atmos)
 "rg" = (
@@ -7140,9 +7122,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -7405,9 +7385,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
 "xF" = (
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 24
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -8027,9 +8005,7 @@
 /area/engineering/atmos/hallway)
 "Ah" = (
 /obj/machinery/portable_atmospherics/canister/phoron,
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -24
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/structure/cable/cyan{
 	icon_state = "0-2"
@@ -8818,9 +8794,7 @@
 /turf/simulated/floor/carpet,
 /area/engineering/break_room)
 "Dh" = (
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -24
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -9214,9 +9188,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock/refinery)
 "EJ" = (
@@ -9281,9 +9253,7 @@
 /turf/simulated/wall/prepainted,
 /area/quartermaster/miningdock)
 "ER" = (
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -24
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -10282,9 +10252,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/chapel/main)
 "IR" = (
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -10399,9 +10367,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -24
-	},
+/obj/machinery/power/apc/west_mount,
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
 "Jt" = (
@@ -11069,9 +11035,7 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/miningdock)
 "LP" = (
-/obj/machinery/power/apc{
-	pixel_y = -26
-	},
+/obj/machinery/power/apc,
 /obj/structure/cable/cyan{
 	icon_state = "0-8"
 	},
@@ -11766,9 +11730,7 @@
 "Of" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/portable_atmospherics/canister/phoron,
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green,
 /turf/simulated/floor/plating,
 /area/engineering/storage)
@@ -11799,9 +11761,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/chapel/chapel_morgue)
 "Ol" = (
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -11894,9 +11854,7 @@
 /obj/machinery/computer/security/engineering{
 	dir = 4
 	},
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -24
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -12312,9 +12270,7 @@
 	},
 /obj/structure/table/reinforced,
 /obj/item/storage/toolbox/electrical,
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -12379,9 +12335,7 @@
 /turf/simulated/floor/wood,
 /area/engineering/break_room)
 "QC" = (
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -24
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -12787,9 +12741,7 @@
 /area/chapel/chapel_morgue)
 "Sm" = (
 /obj/landmark/spawnpoint/job/shaft_miner,
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -13973,9 +13925,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/tiled,
 /area/engineering/workshop)
 "Wm" = (
@@ -14546,9 +14496,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},

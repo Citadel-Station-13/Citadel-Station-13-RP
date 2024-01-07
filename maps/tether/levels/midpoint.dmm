@@ -417,9 +417,7 @@
 	},
 /obj/structure/flora/pottedplant/unusual,
 /obj/structure/cable,
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -28
-	},
+/obj/machinery/power/apc/west_mount,
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
 "Ke" = (

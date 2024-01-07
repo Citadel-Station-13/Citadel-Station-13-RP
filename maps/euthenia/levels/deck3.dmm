@@ -13195,9 +13195,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/brig)
 "nYi" = (
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -28
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green,
 /obj/structure/closet/crate/bin{
 	anchored = 1

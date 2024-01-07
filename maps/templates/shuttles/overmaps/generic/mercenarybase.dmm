@@ -2227,9 +2227,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/medicalstorage)
 "lC" = (
-/obj/machinery/power/apc{
-	pixel_y = -32
-	},
+/obj/machinery/power/apc,
 /obj/machinery/power/terminal,
 /obj/structure/cable,
 /obj/structure/table/reinforced,

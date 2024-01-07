@@ -208,9 +208,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "aL" = (
@@ -1372,9 +1370,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/closet/radiation,
 /obj/item/clothing/glasses/meson,
 /obj/item/clothing/glasses/meson,

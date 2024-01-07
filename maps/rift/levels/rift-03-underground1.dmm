@@ -477,9 +477,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/rift/turbolift/maint)
 "bp" = (
@@ -843,9 +841,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -24
-	},
+/obj/machinery/power/apc/west_mount,
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/stairs_two)
 "bY" = (
@@ -1056,9 +1052,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 24
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -1497,9 +1491,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
@@ -2205,9 +2197,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/visible/supply,
 /obj/structure/cable/green,
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -24
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -5423,9 +5413,7 @@
 	dir = 4
 	},
 /obj/machinery/light/small,
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -28
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/engineering)
@@ -5832,9 +5820,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 24
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/railing{
 	dir = 1
 	},
@@ -7307,9 +7293,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "yf" = (
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 24
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -7498,9 +7482,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -24
-	},
+/obj/machinery/power/apc/west_mount,
 /turf/simulated/floor/concrete/rng/indoors,
 /area/rift/station/fighter_bay/transport_tunnel_garage)
 "yT" = (
@@ -8188,9 +8170,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/blue{
 	dir = 8
 	},
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -8554,9 +8534,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "CU" = (
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -8569,9 +8547,7 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 8
 	},
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -24
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -8891,9 +8867,7 @@
 /turf/simulated/floor/reinforced/carbon_dioxide,
 /area/engineering/atmos)
 "Ep" = (
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -24
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -9770,9 +9744,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 24
-	},
+/obj/machinery/power/apc/east_mount,
 /turf/simulated/floor/crystal,
 /area/rift/station/adherent_maintenance)
 "Hn" = (
@@ -10446,9 +10418,7 @@
 /area/maintenance/engineering/upper)
 "JC" = (
 /obj/effect/floor_decal/rust,
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 24
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -10727,9 +10697,7 @@
 /turf/simulated/floor/concrete/rng/indoors,
 /area/rift/station/fighter_bay/transport_tunnel_garage)
 "KG" = (
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -28
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -11853,9 +11821,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/marker_beacon/red,
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 24
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -12594,9 +12560,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 24
-	},
+/obj/machinery/power/apc/east_mount,
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/chamber)
 "Rf" = (
@@ -12614,9 +12578,7 @@
 /obj/machinery/atmospherics/pipe/manifold/visible/black{
 	dir = 1
 	},
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/machinery/meter,
 /obj/structure/cable/green{
 	icon_state = "0-4"
@@ -13534,9 +13496,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "UZ" = (
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -14068,9 +14028,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/engineering/atmos)
 "WO" = (
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 24
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -14400,9 +14358,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "2-4"
 	},

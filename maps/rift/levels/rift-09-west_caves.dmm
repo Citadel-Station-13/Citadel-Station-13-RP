@@ -172,9 +172,7 @@
 /obj/structure/cable/white{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 28
-	},
+/obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/geothermal)
 "co" = (

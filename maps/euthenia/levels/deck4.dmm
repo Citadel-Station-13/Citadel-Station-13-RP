@@ -7409,9 +7409,7 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 1
 	},
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 28
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/closet/crate/bin{
 	anchored = 1
 	},

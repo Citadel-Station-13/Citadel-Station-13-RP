@@ -407,9 +407,7 @@
 	dir = 4;
 	pixel_x = -24
 	},
-/obj/machinery/power/apc/talon{
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/talon,
 /turf/simulated/floor/tiled/eris/dark/cyancorner,
 /area/talon/deckone/starboard_solar)
 "dO" = (
@@ -2584,9 +2582,7 @@
 /obj/structure/table/standard,
 /obj/item/paper_bin,
 /obj/item/pen,
-/obj/machinery/power/apc/talon{
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/talon,
 /turf/simulated/floor/tiled/eris/steel/cargo,
 /area/talon/deckone/workroom)
 "wG" = (
@@ -4597,9 +4593,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/power/apc/talon{
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/talon,
 /turf/simulated/floor/tiled/eris/dark/cyancorner,
 /area/talon/deckone/bridge)
 "KW" = (
@@ -5342,9 +5336,7 @@
 	dir = 8;
 	pixel_x = 24
 	},
-/obj/machinery/power/apc/talon{
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/talon,
 /turf/simulated/floor/tiled/eris/dark/cyancorner,
 /area/talon/deckone/port_solar)
 "St" = (

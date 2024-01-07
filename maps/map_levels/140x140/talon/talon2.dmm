@@ -1839,9 +1839,7 @@
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/eng_room)
 "vP" = (
-/obj/machinery/power/apc/talon{
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/talon,
 /obj/machinery/light_switch{
 	dir = 1;
 	on = 0;
@@ -2490,9 +2488,7 @@
 /turf/simulated/open,
 /area/talon/maintenance/decktwo_starboard)
 "DF" = (
-/obj/machinery/power/apc/talon{
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/talon,
 /obj/machinery/light,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9

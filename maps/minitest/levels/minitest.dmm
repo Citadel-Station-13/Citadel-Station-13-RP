@@ -152,9 +152,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "ay" = (
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 24
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
@@ -482,9 +480,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
 	initial_gas_mix = "n2=100;TEMP=80"
@@ -626,9 +622,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc{
-	pixel_y = -32
-	},
+/obj/machinery/power/apc,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "bx" = (
@@ -907,9 +901,7 @@
 "cj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -32
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
@@ -1490,9 +1482,7 @@
 /turf/simulated/floor/tiled,
 /area/medical/medbay)
 "dG" = (
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 24
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
@@ -1537,9 +1527,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/civilian_hallway_aft)
 "dL" = (
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 32
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
@@ -1709,9 +1697,7 @@
 /turf/simulated/floor/tiled,
 /area/medical/medbay2)
 "ef" = (
-/obj/machinery/power/apc{
-	pixel_y = -32
-	},
+/obj/machinery/power/apc,
 /obj/structure/cable,
 /turf/simulated/floor/tiled,
 /area/medical/medbay2)
@@ -1995,9 +1981,7 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/bar)
 "eT" = (
-/obj/machinery/power/apc{
-	pixel_y = -32
-	},
+/obj/machinery/power/apc,
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
@@ -2082,9 +2066,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/civilian_hallway_fore)
 "fe" = (
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 32
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
@@ -2195,9 +2177,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/fore)
 "fq" = (
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 32
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
@@ -2353,9 +2333,7 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/cafeteria)
 "fJ" = (
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 32
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
@@ -2532,9 +2510,7 @@
 /turf/simulated/floor/tiled,
 /area/bridge)
 "gj" = (
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 32
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
@@ -3331,9 +3307,7 @@
 	frequency = 1379;
 	scrub_id = "civ_airlock_scrubber"
 	},
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 28
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable{
 	icon_state = "0-2"
 	},

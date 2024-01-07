@@ -776,9 +776,7 @@
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 10
 	},
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -878,9 +876,7 @@
 /obj/structure/bed/chair/comfy/black{
 	dir = 8
 	},
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -1437,9 +1433,7 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 8
 	},
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -24
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
@@ -2132,9 +2126,7 @@
 	alpha = 255;
 	dir = 4
 	},
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 24
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/machinery/camera/network/security{
 	dir = 8
 	},
@@ -2467,9 +2459,7 @@
 "buN" = (
 /obj/structure/table/steel,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -24
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/machinery/recharger{
 	pixel_x = -5;
 	pixel_y = 3
@@ -2726,9 +2716,7 @@
 /area/rnd/research)
 "bEr" = (
 /obj/effect/floor_decal/industrial/outline/red,
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 24
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/sign/department/armory{
 	pixel_y = 32
 	},
@@ -4017,9 +4005,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 9
 	},
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -24
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/item/mirrortool,
 /obj/structure/table/standard,
 /obj/item/paper{
@@ -4735,9 +4721,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/lobby)
 "dbd" = (
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 24
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green,
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
@@ -4919,9 +4903,7 @@
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 8
 	},
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 24
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/orange{
 	icon_state = "0-8"
 	},
@@ -6843,9 +6825,7 @@
 /obj/structure/bed/chair/comfy/black{
 	dir = 4
 	},
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -7340,9 +7320,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 1
 	},
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -7806,9 +7784,7 @@
 /obj/machinery/camera/network/security{
 	dir = 4
 	},
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -24
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
@@ -8044,9 +8020,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
 	},
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -24
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -8183,9 +8157,7 @@
 	},
 /obj/item/gun/energy/ionrifle,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -8296,9 +8268,7 @@
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/purple/border,
 /obj/fiftyspawner/cardboard,
-/obj/machinery/power/apc{
-	pixel_y = -24
-	},
+/obj/machinery/power/apc,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -9352,9 +9322,7 @@
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 10
 	},
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -10143,9 +10111,7 @@
 /turf/simulated/floor/outdoors/snow/noblend/indoors/lythios43c,
 /area/rift/surfacebase/outside/outside2)
 "gzu" = (
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -24
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green,
 /turf/simulated/floor/wood,
@@ -10812,9 +10778,7 @@
 /area/rnd/workshop)
 "gYu" = (
 /obj/structure/bed/chair/comfy/brown,
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/landmark/spawnpoint/job/medical_doctor,
 /obj/structure/cable/green{
 	icon_state = "0-2"
@@ -11501,9 +11465,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -13140,9 +13102,7 @@
 /obj/machinery/light,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/purple/border,
-/obj/machinery/power/apc{
-	pixel_y = -24
-	},
+/obj/machinery/power/apc,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -13223,9 +13183,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -24
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/effect/mist,
 /obj/structure/cable/green{
 	icon_state = "0-2"
@@ -13426,9 +13384,7 @@
 /obj/effect/floor_decal/corner/red{
 	dir = 6
 	},
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -24
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -13476,9 +13432,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/rift/stairwell/primary/surfacetwo)
 "iIr" = (
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -15347,9 +15301,7 @@
 "jTV" = (
 /obj/machinery/light,
 /obj/effect/floor_decal/borderfloor,
-/obj/machinery/power/apc{
-	pixel_y = -24
-	},
+/obj/machinery/power/apc,
 /obj/effect/floor_decal/corner/purple/border,
 /obj/structure/cable/green{
 	icon_state = "0-8"
@@ -15604,9 +15556,7 @@
 /obj/structure/bed/chair/comfy/black{
 	dir = 4
 	},
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -15747,9 +15697,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/rust,
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -24
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -16513,9 +16461,7 @@
 	dir = 8
 	},
 /obj/machinery/photocopier,
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 24
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/effect/floor_decal/corner/red/border{
 	dir = 4
 	},
@@ -16547,9 +16493,7 @@
 /area/maintenance/security/upper)
 "kCx" = (
 /obj/structure/cable/orange,
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -24
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/machinery/meter{
 	pixel_x = 16
 	},
@@ -17940,9 +17884,7 @@
 /obj/effect/floor_decal/borderfloorblack/cee{
 	dir = 1
 	},
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 24
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -18255,9 +18197,7 @@
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 8
 	},
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -24
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/effect/floor_decal/corner/lightorange/border{
 	dir = 8
 	},
@@ -18870,9 +18810,7 @@
 /obj/structure/sign/department/morgue{
 	pixel_y = -32
 	},
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -24
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -20415,9 +20353,7 @@
 /obj/structure/bed/chair/comfy/black{
 	dir = 8
 	},
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -21498,9 +21434,7 @@
 "nzw" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lightgrey/border,
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -24
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -21928,9 +21862,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -24
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
@@ -23885,9 +23817,7 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 8
 	},
-/obj/machinery/power/apc{
-	pixel_y = -24
-	},
+/obj/machinery/power/apc,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
@@ -24717,9 +24647,7 @@
 /obj/effect/floor_decal/corner/paleblue/bordercorner2{
 	dir = 5
 	},
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 24
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -24897,9 +24825,7 @@
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 5
 	},
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -26323,9 +26249,7 @@
 /area/shuttle/hammerhead/cockpit)
 "qJo" = (
 /obj/structure/table/steel,
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -24
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255;
 	dir = 4
@@ -26545,9 +26469,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/evidence_storage)
 "qQk" = (
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -24
@@ -26670,9 +26592,7 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 10
 	},
-/obj/machinery/power/apc{
-	pixel_y = -24
-	},
+/obj/machinery/power/apc,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -27179,9 +27099,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 10
 	},
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 24
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -27684,9 +27602,7 @@
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 10
 	},
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/item/reagent_containers/spray/cleaner{
 	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
 	name = "Surgery Cleaner";
@@ -29650,9 +29566,7 @@
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "sSX" = (
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -24
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green,
 /turf/simulated/floor/plating,
 /area/maintenance/medbay)
@@ -30369,9 +30283,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -24
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -31397,9 +31309,7 @@
 /obj/structure/bed/chair/comfy/black{
 	dir = 4
 	},
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -31870,9 +31780,7 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 1
 	},
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -31883,9 +31791,7 @@
 /obj/effect/floor_decal/corner/green/diagonal{
 	dir = 4
 	},
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/machinery/fire_alarm/west_mount{
 	pixel_x = -24
 	},
@@ -33820,9 +33726,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/maintenance/dormitory)
 "vGZ" = (
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
 	dir = 4
 	},
@@ -34325,9 +34229,7 @@
 /obj/structure/bed/chair/comfy/black{
 	dir = 8
 	},
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -34476,9 +34378,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
@@ -34600,9 +34500,7 @@
 /obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 24
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green,
 /turf/simulated/floor/tiled/red,
 /area/security/evidence_storage)
@@ -34646,9 +34544,7 @@
 	dir = 4;
 	pixel_x = -24
 	},
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},

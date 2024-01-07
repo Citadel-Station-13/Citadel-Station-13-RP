@@ -290,9 +290,7 @@
 /turf/simulated/floor/tiled,
 /area/submap/debrisfield_vr/tinyshuttle/crew)
 "aG" = (
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -503,9 +501,7 @@
 /turf/simulated/floor/tiled/airless,
 /area/submap/debrisfield_vr/tinyshuttle/bridge)
 "aZ" = (
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green,
 /obj/effect/debris/cleanable/dirt,
 /obj/machinery/light_switch{
@@ -909,9 +905,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/submap/debrisfield_vr/tinyshuttle/hangar)
 "bI" = (
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green,
 /turf/simulated/floor/reinforced/airless,
 /area/submap/debrisfield_vr/tinyshuttle/hangar)
@@ -949,9 +943,7 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/submap/debrisfield_vr/tinyshuttle/engine)
 "bM" = (
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},

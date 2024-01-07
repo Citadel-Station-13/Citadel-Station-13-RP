@@ -306,9 +306,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
-/obj/machinery/power/apc{
-	pixel_y = -32
-	},
+/obj/machinery/power/apc,
 /obj/structure/cable/cyan{
 	icon_state = "0-8"
 	},
@@ -2748,9 +2746,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
 "jf" = (
-/obj/machinery/power/apc{
-	pixel_y = -32
-	},
+/obj/machinery/power/apc,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -3860,9 +3856,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/table/rack{
 	dir = 8;
 	layer = 2.6
@@ -4524,18 +4518,14 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/debris/cleanable/dirt,
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -28
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/plating,
 /area/storage/tech)
 "py" = (
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -28
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green,
 /obj/structure/closet/crate/bin{
 	anchored = 1
@@ -6576,9 +6566,7 @@
 /area/engineering/engine_smes)
 "wf" = (
 /obj/structure/closet/secure_closet/atmos_personal,
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -28
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -7444,9 +7432,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/workshop)
 "ze" = (
-/obj/machinery/power/apc{
-	pixel_y = -32
-	},
+/obj/machinery/power/apc,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -9724,9 +9710,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/machinery/power/apc{
-	pixel_y = -32
-	},
+/obj/machinery/power/apc,
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
 	},
@@ -11506,9 +11490,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/storage)
 "MV" = (
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -28
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -11956,9 +11938,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/storage)
 "Ov" = (
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 4
 	},
@@ -13625,9 +13605,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/tcommsat/computer)
 "Ud" = (
-/obj/machinery/power/apc{
-	pixel_y = -32
-	},
+/obj/machinery/power/apc,
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
@@ -13728,9 +13706,7 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 6
 	},
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -15086,9 +15062,7 @@
 	},
 /obj/structure/reagent_dispensers/watertank,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -28
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/storage)

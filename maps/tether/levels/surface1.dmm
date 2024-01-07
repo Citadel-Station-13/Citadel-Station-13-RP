@@ -305,9 +305,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/research)
 "ajN" = (
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 28
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -644,9 +642,7 @@
 /turf/simulated/floor/virgo3b,
 /area/tether/outpost/solars_shed)
 "arB" = (
-/obj/machinery/power/apc{
-	pixel_y = -32
-	},
+/obj/machinery/power/apc,
 /obj/structure/cable/orange{
 	icon_state = "0-8"
 	},
@@ -1227,9 +1223,7 @@
 /obj/effect/floor_decal/corner/blue/border,
 /obj/machinery/light,
 /obj/structure/cable/orange,
-/obj/machinery/power/apc{
-	pixel_y = -32
-	},
+/obj/machinery/power/apc,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/showers)
 "aFW" = (
@@ -1698,9 +1692,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 28
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 10
 	},
@@ -2772,9 +2764,7 @@
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
@@ -3310,9 +3300,7 @@
 /obj/structure/cable/orange{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc{
-	pixel_y = -32
-	},
+/obj/machinery/power/apc,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
@@ -3470,9 +3458,7 @@
 /area/engineering/atmos/processing)
 "bRr" = (
 /obj/effect/floor_decal/rust,
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -25
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
@@ -4920,9 +4906,7 @@
 	dir = 8;
 	pixel_x = 24
 	},
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 28
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/structure/cable/orange{
 	icon_state = "0-2"
@@ -6343,9 +6327,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "dqu" = (
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -28
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green,
 /obj/effect/floor_decal/borderfloor{
 	dir = 10
@@ -6741,9 +6723,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/lowernorthhall)
 "dBK" = (
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -28
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/orange{
 	icon_state = "0-4"
 	},
@@ -10768,9 +10748,7 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/sleep/Dorm_2)
 "fKN" = (
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -28
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/orange{
 	icon_state = "0-4"
 	},
@@ -10868,9 +10846,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/research)
 "fNI" = (
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 24
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -11176,9 +11152,7 @@
 	pixel_y = 4
 	},
 /obj/item/storage/box/masks,
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 24
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -11548,9 +11522,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/virology)
 "gdI" = (
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 28
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -11866,9 +11838,7 @@
 /obj/structure/cable/orange{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc{
-	pixel_y = -32
-	},
+/obj/machinery/power/apc,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
@@ -12717,9 +12687,7 @@
 	},
 /area/hallway/lower/first_west)
 "gFJ" = (
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -12968,9 +12936,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/atmos/processing)
 "gLq" = (
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 24
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -13140,9 +13106,7 @@
 	dir = 8;
 	pixel_x = 24
 	},
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 28
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/structure/cable/orange{
 	icon_state = "0-2"
@@ -13639,9 +13603,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 28
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -13870,9 +13832,7 @@
 	dir = 8;
 	pixel_x = 24
 	},
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 28
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/structure/cable/orange{
 	icon_state = "0-2"
@@ -15017,9 +14977,7 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 28
-	},
+/obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/surfacebase/emergency_storage/atrium)
 "hRB" = (
@@ -16981,9 +16939,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/vacant_site)
 "iUX" = (
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
@@ -19745,9 +19701,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rnd/outpost/storage)
 "kAK" = (
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -20278,9 +20232,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 10
 	},
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/orange{
 	icon_state = "0-8"
 	},
@@ -20517,9 +20469,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/processing)
 "kUp" = (
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 25
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -22694,9 +22644,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/surface_atmos)
 "mcI" = (
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -28
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
@@ -23673,9 +23621,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_one_hall)
 "mEc" = (
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -28
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -23840,9 +23786,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenoarch_storage)
 "mHj" = (
@@ -24364,9 +24308,7 @@
 "mWv" = (
 /obj/structure/table/woodentable,
 /obj/item/toy/plushie/therapy/blue,
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -24520,9 +24462,7 @@
 /turf/simulated/floor/virgo3b,
 /area/tether/surfacebase/outside/outside1)
 "mZa" = (
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -24868,9 +24808,7 @@
 	frequency = 1379;
 	scrub_id = "civ_airlock_scrubber"
 	},
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 28
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
@@ -25031,9 +24969,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/hardstorage)
 "npe" = (
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -28
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/orange{
 	icon_state = "0-4"
 	},
@@ -25661,9 +25597,7 @@
 	dir = 1
 	},
 /obj/structure/cable,
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/mining_eva)
 "nIE" = (
@@ -25728,9 +25662,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/lower/first_west)
 "nJE" = (
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -26234,9 +26166,7 @@
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/outpost/solars_outside)
 "nZU" = (
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -28
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -26780,9 +26710,7 @@
 /turf/simulated/wall,
 /area/storage/surface_eva)
 "orl" = (
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -29722,9 +29650,7 @@
 	dir = 8;
 	pixel_x = 24
 	},
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 28
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/structure/cable/orange{
 	icon_state = "0-2"
@@ -29821,9 +29747,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 28
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/effect/floor_decal/borderfloor{
 	dir = 5
 	},
@@ -30372,9 +30296,7 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 4
 	},
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/orange{
 	icon_state = "0-8"
 	},
@@ -30528,9 +30450,7 @@
 /turf/simulated/wall/prepainted,
 /area/tether/surfacebase/surface_one_hall)
 "qvz" = (
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/effect/floor_decal/borderfloor{
 	dir = 6
 	},
@@ -31429,9 +31349,7 @@
 /obj/structure/cable/orange{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc{
-	pixel_y = -32
-	},
+/obj/machinery/power/apc,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
@@ -31643,9 +31561,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/brig)
 "qYz" = (
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -28
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -31685,9 +31601,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 8
 	},
-/obj/machinery/power/apc/high{
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/high,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_one_hall)
 "qZv" = (
@@ -32025,9 +31939,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/brig)
 "rfS" = (
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -32561,9 +32473,7 @@
 /area/maintenance/lower/xenoflora)
 "rzQ" = (
 /obj/structure/cable/orange,
-/obj/machinery/power/apc/high{
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/high,
 /obj/machinery/light,
 /obj/structure/bed/chair/wood{
 	dir = 8
@@ -32781,9 +32691,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 1
 	},
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -34421,9 +34329,7 @@
 /obj/structure/table/standard,
 /obj/item/hand_labeler,
 /obj/item/hand_labeler,
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -34707,9 +34613,7 @@
 /obj/structure/cable/orange{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc{
-	pixel_y = -32
-	},
+/obj/machinery/power/apc,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
@@ -35270,9 +35174,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 10
 	},
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
@@ -35454,9 +35356,7 @@
 /obj/structure/cable/orange{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "sYF" = (
@@ -36526,9 +36426,7 @@
 "tJv" = (
 /obj/structure/table/standard,
 /obj/random/medical,
-/obj/machinery/power/apc{
-	pixel_y = -32
-	},
+/obj/machinery/power/apc,
 /obj/structure/cable/green,
 /turf/simulated/floor/tiled/white,
 /area/medical/virologyaccess)
@@ -36623,9 +36521,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 28
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -36791,9 +36687,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
 "tOT" = (
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/yellow{
 	icon_state = "0-2"
 	},
@@ -36926,9 +36820,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/testing_lab)
 "tTW" = (
-/obj/machinery/power/apc{
-	pixel_y = -32
-	},
+/obj/machinery/power/apc,
 /obj/structure/cable/green,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -38432,9 +38324,7 @@
 /turf/simulated/floor/plating,
 /area/vacant/vacant_bar)
 "uNx" = (
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 24
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -38847,9 +38737,7 @@
 /turf/simulated/floor,
 /area/maintenance/substation/surfaceservicesubstation)
 "vbj" = (
-/obj/machinery/power/apc{
-	pixel_y = -32
-	},
+/obj/machinery/power/apc,
 /obj/machinery/light_switch{
 	dir = 1;
 	pixel_x = -13;
@@ -38965,9 +38853,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 28
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
 	frequency = 1452;
@@ -39742,9 +39628,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 28
-	},
+/obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rnd/outpost/storage)
 "vyN" = (
@@ -40049,9 +39933,7 @@
 /obj/machinery/air_alarm{
 	pixel_y = 22
 	},
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -28
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
@@ -40585,9 +40467,7 @@
 /obj/machinery/atmospherics/portables_connector{
 	dir = 8
 	},
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 24
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green,
 /obj/effect/floor_decal/corner/purple/full{
 	dir = 4
@@ -40655,9 +40535,7 @@
 "vSa" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/grey/border,
-/obj/machinery/power/apc{
-	pixel_y = -32
-	},
+/obj/machinery/power/apc,
 /obj/structure/cable/orange{
 	icon_state = "0-8"
 	},
@@ -41582,9 +41460,7 @@
 /obj/machinery/air_alarm{
 	pixel_y = 22
 	},
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -28
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -41740,9 +41616,7 @@
 /turf/simulated/mineral,
 /area/storage/surface_eva/external)
 "wuD" = (
-/obj/machinery/power/apc{
-	pixel_y = -32
-	},
+/obj/machinery/power/apc,
 /obj/structure/cable/green,
 /obj/effect/floor_decal/corner/lightorange{
 	dir = 6
@@ -42404,9 +42278,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -28
-	},
+/obj/machinery/power/apc/west_mount,
 /turf/simulated/floor/carpet/bcarpet,
 /area/tether/surfacebase/funny/mimeoffice)
 "wOX" = (
@@ -42522,9 +42394,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/vacant_site)
 "wSe" = (
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -42631,9 +42501,7 @@
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/outpost/solars_outside)
 "wUj" = (
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 28
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -43612,9 +43480,7 @@
 /obj/item/clothing/suit/space/anomaly,
 /obj/item/clothing/head/helmet/space/anomaly,
 /obj/item/clothing/mask/breath,
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -44293,9 +44159,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/maintDorm3)
 "xPh" = (
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
@@ -44496,9 +44360,7 @@
 /obj/structure/cable/orange{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -28
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/table/bench/padded,
 /turf/simulated/floor/wood,
 /area/vacant/vacant_bar)

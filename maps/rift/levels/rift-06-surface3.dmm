@@ -246,9 +246,7 @@
 /obj/effect/floor_decal/borderfloorblack/corner2{
 	dir = 5
 	},
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 24
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
@@ -814,9 +812,7 @@
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "acI" = (
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -1671,9 +1667,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "afv" = (
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -24
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -2300,9 +2294,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/exploration/explorer_prep)
 "ahr" = (
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 24
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
 	},
@@ -2650,9 +2642,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 24
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green,
 /turf/simulated/floor/wood,
 /area/exploration/meeting)
@@ -2828,9 +2818,7 @@
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_y = 24
 	},
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -24
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/cyan{
 	icon_state = "0-4"
 	},
@@ -3312,9 +3300,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/station/exploration)
 "ajX" = (
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 24
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -3385,9 +3371,7 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 9
 	},
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -24
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -3713,9 +3697,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
 "akU" = (
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -24
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},
@@ -4642,9 +4624,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
 	},
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -24
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
@@ -5869,9 +5849,7 @@
 	pixel_y = 30
 	},
 /obj/structure/bed/chair/shuttle,
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 24
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/cyan{
 	icon_state = "0-2"
 	},
@@ -6038,9 +6016,7 @@
 /turf/simulated/shuttle/wall/voidcraft/green,
 /area/shuttle/civvie/general)
 "arm" = (
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -24
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},
@@ -7006,9 +6982,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 24
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/effect/floor_decal/techfloor{
 	dir = 5
 	},
@@ -8454,9 +8428,7 @@
 	dir = 4
 	},
 /obj/machinery/portable_atmospherics/canister/phoron,
-/obj/machinery/power/apc/high{
-	pixel_x = -24
-	},
+/obj/machinery/power/apc/high,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/excursion/cargo)
 "axq" = (
@@ -9982,9 +9954,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "2-8"
 	},
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 24
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/cyan{
 	icon_state = "0-2"
 	},
@@ -10682,9 +10652,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 6
 	},
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 24
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -11913,9 +11881,7 @@
 /obj/effect/floor_decal/corner/beige/border{
 	dir = 8
 	},
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -24
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -12121,9 +12087,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
 "aIf" = (
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 9
 	},
@@ -12623,9 +12587,7 @@
 /turf/simulated/floor/carpet/blue,
 /area/crew_quarters/captain)
 "aJr" = (
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 24
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -13464,9 +13426,7 @@
 /turf/simulated/floor/carpet/purcarpet,
 /area/exploration/meeting)
 "aLJ" = (
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 24
-	},
+/obj/machinery/power/apc/east_mount,
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/surfaceeva/aa/cliff_south)
 "aLL" = (
@@ -16340,9 +16300,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/excursion/cargo)
 "aTL" = (
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 24
-	},
+/obj/machinery/power/apc/east_mount,
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/surfaceeva/aa/cliff_north)
 "aTN" = (
@@ -17371,9 +17329,7 @@
 /obj/effect/floor_decal/borderfloorblack/corner2{
 	dir = 10
 	},
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -24
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
@@ -18017,9 +17973,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
 "aYG" = (
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -18392,9 +18346,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
 	},
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 24
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -18950,9 +18902,7 @@
 	on = 1;
 	scrub_id = "civ_airlock_two_scrubber"
 	},
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 24
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/railing{
 	dir = 8
 	},
@@ -19727,9 +19677,7 @@
 /area/crew_quarters/heads/blueshield)
 "eEi" = (
 /obj/structure/catwalk,
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -23713,9 +23661,7 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 8
 	},
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -24
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
@@ -24524,9 +24470,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -24
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock{
 	frequency = 1379;
 	scrub_id = "civ_airlock_scrubber"
@@ -25198,9 +25142,7 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 9
 	},
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -24
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/table/standard,
 /obj/item/storage/laundry_basket,
 /obj/structure/cable/green,
@@ -25598,9 +25540,7 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 4
 	},
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 24
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
 	icon_state = "0-8"
@@ -26277,9 +26217,7 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 1
 	},
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -26313,9 +26251,7 @@
 	dir = 9
 	},
 /obj/machinery/light/small,
-/obj/machinery/power/apc/east_mount{
-	pixel_x = 24
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},

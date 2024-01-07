@@ -778,9 +778,7 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/secondary_gear_storage)
 "tE" = (
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -1163,9 +1161,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/machinery/light_switch{
 	dir = 1;
 	pixel_x = 12;
@@ -1313,9 +1309,7 @@
 /obj/machinery/status_display{
 	pixel_x = -32
 	},
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -1492,9 +1486,7 @@
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/maintenance)
 "MT" = (
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -1585,9 +1577,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc{
-	pixel_y = -32
-	},
+/obj/machinery/power/apc,
 /obj/effect/floor_decal/industrial/warning/dust,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/outpost/mining_main/drill_equipment)
@@ -1623,9 +1613,7 @@
 /turf/simulated/floor/outdoors/grass/sif/virgo3b,
 /area/mine/explored)
 "SM" = (
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/machinery/light_switch{
 	dir = 1;
 	pixel_x = 12;
@@ -1665,9 +1653,7 @@
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/maintenance)
 "SR" = (
-/obj/machinery/power/apc{
-	pixel_y = -32
-	},
+/obj/machinery/power/apc,
 /obj/machinery/light_switch{
 	dir = 1;
 	pixel_x = 10;

@@ -2728,9 +2728,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor3)
 "gU" = (
-/obj/machinery/power/apc{
-	pixel_y = -32
-	},
+/obj/machinery/power/apc,
 /obj/machinery/power/terminal,
 /obj/structure/cable,
 /obj/effect/floor_decal/techfloor,
@@ -6379,9 +6377,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medicalmain)
 "nY" = (
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -24
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/machinery/power/terminal{
 	dir = 8
 	},
@@ -7684,9 +7680,7 @@
 /area/ship/expe/smstorage)
 "qD" = (
 /obj/machinery/power/emitter,
-/obj/machinery/power/apc/north_mount{
-	pixel_y = 32
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/machinery/power/terminal{
 	dir = 1
 	},
@@ -9447,9 +9441,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medical)
 "uP" = (
-/obj/machinery/power/apc{
-	pixel_y = -32
-	},
+/obj/machinery/power/apc,
 /obj/machinery/power/terminal,
 /obj/structure/cable,
 /obj/structure/bed/chair{

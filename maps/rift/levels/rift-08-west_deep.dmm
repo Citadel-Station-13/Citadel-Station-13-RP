@@ -209,9 +209,7 @@
 /area/outpost/mining_main/refinery)
 "bR" = (
 /obj/effect/floor_decal/industrial/warning,
-/obj/machinery/power/apc/west_mount{
-	pixel_x = -28
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
