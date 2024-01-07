@@ -138,8 +138,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7,
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	pixel_y = 24
 	},
 /obj/effect/floor_decal/corner/brown/border{
@@ -2392,8 +2391,7 @@
 /obj/item/shovel,
 /obj/item/shovel,
 /obj/item/soap,
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/dark,
@@ -3229,8 +3227,7 @@
 /obj/effect/floor_decal/corner/purple{
 	dir = 5
 	},
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	pixel_y = 24;
 	req_access = list()
 	},
@@ -4098,8 +4095,7 @@
 /area/tether/surfacebase/surface_one_hall)
 "cjh" = (
 /obj/structure/table/woodentable,
-/obj/item/radio/intercom{
-	dir = 4;
+/obj/item/radio/intercom/east{
 	pixel_x = 24
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -6092,8 +6088,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/surfacebase/public_garden_one)
 "djI" = (
-/obj/item/radio/intercom{
-	dir = 4;
+/obj/item/radio/intercom/east{
 	pixel_x = 24
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -6764,8 +6759,7 @@
 	desc = "A large cabinet with hard copy medical records.";
 	name = "Medical Records"
 	},
-/obj/item/radio/intercom{
-	dir = 4;
+/obj/item/radio/intercom/east{
 	pixel_x = 24
 	},
 /obj/item/radio/intercom/department/medbay{
@@ -6839,8 +6833,7 @@
 "dCc" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/pipedispenser,
-/obj/item/radio/intercom{
-	dir = 8;
+/obj/item/radio/intercom/west{
 	pixel_x = -24
 	},
 /turf/simulated/floor/tiled,
@@ -9363,8 +9356,7 @@
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 4
 	},
-/obj/item/radio/intercom{
-	dir = 4;
+/obj/item/radio/intercom/east{
 	pixel_x = 24
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7{
@@ -11503,8 +11495,7 @@
 /obj/effect/floor_decal/corner/red/bordercorner2{
 	dir = 8
 	},
-/obj/item/radio/intercom{
-	dir = 8;
+/obj/item/radio/intercom/west{
 	pixel_x = -24
 	},
 /obj/structure/bed/chair/office/dark,
@@ -12250,8 +12241,7 @@
 /area/tether/surfacebase/security/gasstorage)
 "grN" = (
 /obj/machinery/holopad,
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled,
@@ -16941,8 +16931,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/item/radio/intercom{
-	dir = 8;
+/obj/item/radio/intercom/west{
 	pixel_x = -24
 	},
 /obj/machinery/door/firedoor{
@@ -17295,8 +17284,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 9
 	},
-/obj/item/radio/intercom{
-	dir = 4;
+/obj/item/radio/intercom/east{
 	pixel_x = 24
 	},
 /turf/simulated/floor/tiled,
@@ -18426,8 +18414,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/item/radio/intercom{
-	dir = 8;
+/obj/item/radio/intercom/west{
 	pixel_x = -24
 	},
 /obj/structure/disposalpipe/segment,
@@ -18834,8 +18821,7 @@
 /turf/simulated/floor/tiled,
 /area/security/checkpoint)
 "jTF" = (
-/obj/item/radio/intercom{
-	dir = 8;
+/obj/item/radio/intercom/west{
 	pixel_x = -24
 	},
 /obj/structure/cable{
@@ -19417,8 +19403,7 @@
 	},
 /obj/structure/table/standard,
 /obj/item/storage/toolbox/emergency,
-/obj/item/radio/intercom{
-	dir = 8;
+/obj/item/radio/intercom/west{
 	pixel_x = 24
 	},
 /turf/simulated/floor/tiled,
@@ -19477,8 +19462,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7,
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled,
@@ -21039,8 +21023,7 @@
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/engineering/atmos_intake)
 "ldw" = (
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	pixel_y = 24;
 	req_access = list()
 	},
@@ -21313,8 +21296,7 @@
 /area/security/checkpoint)
 "lkv" = (
 /obj/machinery/disease2/diseaseanalyser,
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	name = "Station Intercom (General)";
 	pixel_y = 24
 	},
@@ -22943,8 +22925,7 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 9
 	},
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	pixel_y = 24
 	},
 /obj/effect/floor_decal/borderfloor/corner2{
@@ -29963,8 +29944,7 @@
 /obj/item/clothing/suit/space/void/medical/emt,
 /obj/item/clothing/mask/breath,
 /obj/item/clothing/head/helmet/space/void/medical/emt,
-/obj/item/radio/intercom{
-	dir = 8;
+/obj/item/radio/intercom/west{
 	pixel_x = -24
 	},
 /obj/effect/floor_decal/corner/paleblue{
@@ -31044,8 +31024,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	pixel_y = 24;
 	req_access = list()
 	},
@@ -31508,8 +31487,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 6
 	},
-/obj/item/radio/intercom{
-	dir = 8;
+/obj/item/radio/intercom/west{
 	pixel_x = -24
 	},
 /turf/simulated/floor/tiled,
@@ -31532,8 +31510,7 @@
 /turf/simulated/floor/virgo3b,
 /area/tether/outpost/solars_shed)
 "qPk" = (
-/obj/item/radio/intercom{
-	dir = 8;
+/obj/item/radio/intercom/west{
 	pixel_x = -24
 	},
 /obj/structure/table/bench/steel,
@@ -35486,8 +35463,7 @@
 /obj/item/clothing/gloves/sterile/latex,
 /obj/item/clothing/glasses/science,
 /obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	pixel_y = 24;
 	req_access = list()
 	},
@@ -37508,8 +37484,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	pixel_y = 24;
 	req_access = list()
 	},
@@ -38773,8 +38748,7 @@
 "uOz" = (
 /obj/machinery/door/window/northright,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/radio/intercom{
-	dir = 4;
+/obj/item/radio/intercom/east{
 	pixel_x = 24
 	},
 /turf/simulated/floor/tiled/dark,
@@ -41043,8 +41017,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
 "vUe" = (
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled,
@@ -42129,8 +42102,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 4
 	},
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled,
@@ -42941,8 +42913,7 @@
 /obj/structure/table/rack,
 /obj/item/suit_cooling_unit,
 /obj/item/suit_cooling_unit,
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	pixel_y = 24;
 	req_access = list()
 	},

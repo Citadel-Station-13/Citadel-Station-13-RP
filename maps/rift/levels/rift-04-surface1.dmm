@@ -1189,8 +1189,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_eva)
 "aTU" = (
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	name = "Station Intercom (General)";
 	pixel_y = 24
 	},
@@ -2233,9 +2232,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/starboard)
 "bAb" = (
-/obj/item/radio/intercom{
-	dir = 2
-	},
+/obj/item/radio/intercom/south,
 /turf/simulated/wall/prepainted/science,
 /area/rnd/outpost/xenobiology/outpost_decon)
 "bAl" = (
@@ -6051,8 +6048,7 @@
 "dUX" = (
 /obj/structure/bed,
 /obj/effect/floor_decal/rust,
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	pixel_y = 24
 	},
 /obj/machinery/light/small{
@@ -6657,8 +6653,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/security_cell_hallway)
 "emq" = (
-/obj/item/radio/intercom{
-	dir = 4;
+/obj/item/radio/intercom/east{
 	pixel_x = 24
 	},
 /turf/simulated/floor/tiled/dark,
@@ -8759,8 +8754,7 @@
 	pixel_x = 5;
 	pixel_y = 5
 	},
-/obj/item/radio/intercom{
-	dir = 8;
+/obj/item/radio/intercom/west{
 	pixel_x = -24
 	},
 /turf/simulated/floor/carpet,
@@ -9707,8 +9701,7 @@
 	desc = " ";
 	pixel_y = 24
 	},
-/obj/item/radio/intercom{
-	dir = 4;
+/obj/item/radio/intercom/east{
 	pixel_x = 24
 	},
 /obj/effect/floor_decal/borderfloorwhite{
@@ -11156,8 +11149,7 @@
 	req_access = list();
 	req_one_access = list(30,35,47,77)
 	},
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	name = "Station Intercom (General)";
 	pixel_y = 24
 	},
@@ -12451,8 +12443,7 @@
 	},
 /obj/effect/floor_decal/borderfloorwhite/corner2,
 /obj/effect/floor_decal/corner/green/bordercorner2,
-/obj/item/radio/intercom{
-	dir = 4;
+/obj/item/radio/intercom/east{
 	pixel_x = 24
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -12921,8 +12912,7 @@
 /obj/effect/floor_decal/corner/pink/border{
 	dir = 5
 	},
-/obj/item/radio/intercom{
-	dir = 4;
+/obj/item/radio/intercom/east{
 	pixel_x = 24
 	},
 /turf/simulated/floor/tiled/white,
@@ -14208,8 +14198,7 @@
 /obj/effect/floor_decal/corner/green/bordercorner2{
 	dir = 9
 	},
-/obj/item/radio/intercom{
-	dir = 8;
+/obj/item/radio/intercom/west{
 	pixel_x = -24
 	},
 /turf/simulated/floor/tiled,
@@ -14587,8 +14576,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/maint_bar)
 "jmJ" = (
-/obj/item/radio/intercom{
-	dir = 4;
+/obj/item/radio/intercom/east{
 	pixel_x = 24
 	},
 /turf/simulated/floor/tiled,
@@ -16396,8 +16384,7 @@
 	pixel_y = 4
 	},
 /obj/item/storage/box/masks,
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	pixel_y = 24
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume,
@@ -17852,8 +17839,7 @@
 /turf/simulated/floor/plating,
 /area/rift/surfaceeva/airlock/main)
 "lqT" = (
-/obj/item/radio/intercom{
-	dir = 8;
+/obj/item/radio/intercom/west{
 	pixel_x = 10
 	},
 /turf/simulated/wall/prepainted/science,
@@ -19760,8 +19746,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	pixel_y = 24
 	},
 /turf/simulated/floor/carpet/sblucarpet,
@@ -19869,9 +19854,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenobiology/outpost_hallway)
 "mDS" = (
-/obj/item/radio/intercom{
-	dir = 2
-	},
+/obj/item/radio/intercom/south,
 /turf/simulated/wall/prepainted/science,
 /area/rnd/outpost/xenobiology/outpost_autopsy)
 "mEt" = (
@@ -20183,8 +20166,7 @@
 	pixel_x = 5;
 	pixel_y = 5
 	},
-/obj/item/radio/intercom{
-	dir = 4;
+/obj/item/radio/intercom/east{
 	pixel_x = 24
 	},
 /turf/simulated/floor/carpet,
@@ -22206,8 +22188,7 @@
 /obj/effect/floor_decal/corner/pink/border{
 	dir = 9
 	},
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/white,
@@ -23187,8 +23168,7 @@
 	pixel_x = -2;
 	pixel_y = -5
 	},
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	pixel_y = 24
 	},
 /turf/simulated/floor/carpet/blucarpet,
@@ -24168,8 +24148,7 @@
 	desc = " ";
 	pixel_y = 24
 	},
-/obj/item/radio/intercom{
-	dir = 4;
+/obj/item/radio/intercom/east{
 	pixel_x = 24
 	},
 /obj/effect/floor_decal/borderfloorwhite{
@@ -25202,8 +25181,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/foyer)
 "pIz" = (
-/obj/item/radio/intercom{
-	dir = 8;
+/obj/item/radio/intercom/west{
 	name = "Station Intercom (General)";
 	pixel_x = -24
 	},
@@ -27881,8 +27859,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/medical/psych/psych_1)
 "ruY" = (
-/obj/item/radio/intercom{
-	dir = 4;
+/obj/item/radio/intercom/east{
 	pixel_x = 24
 	},
 /obj/structure/flora/pottedplant/unusual,
@@ -28437,8 +28414,7 @@
 /area/library)
 "rKC" = (
 /obj/machinery/photocopier,
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	pixel_y = 24
 	},
 /turf/simulated/floor/carpet,
@@ -30692,8 +30668,7 @@
 /obj/effect/floor_decal/corner/pink/border{
 	dir = 9
 	},
-/obj/item/radio/intercom{
-	dir = 8;
+/obj/item/radio/intercom/west{
 	pixel_x = -24
 	},
 /turf/simulated/floor/tiled/white,
@@ -33314,8 +33289,7 @@
 	dir = 1;
 	pixel_y = 22
 	},
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	pixel_y = 34
 	},
 /turf/simulated/floor/tiled/dark,
@@ -34965,8 +34939,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	name = "Station Intercom (General)";
 	pixel_y = 21
 	},
@@ -35827,8 +35800,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "wgx" = (
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	pixel_y = 24
 	},
 /obj/machinery/power/apc{
@@ -36395,8 +36367,7 @@
 /obj/effect/floor_decal/borderfloorwhite/corner2,
 /obj/effect/floor_decal/corner/green/bordercorner2,
 /obj/machinery/light,
-/obj/item/radio/intercom{
-	dir = 4;
+/obj/item/radio/intercom/east{
 	pixel_x = 24
 	},
 /turf/simulated/floor/tiled/white,
@@ -36468,8 +36439,7 @@
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/entertainment)
 "wyt" = (
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	pixel_y = 24
 	},
 /obj/machinery/shower{

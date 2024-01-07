@@ -3219,8 +3219,7 @@
 /area/class_m/outside)
 "rl" = (
 /obj/item/stool/padded,
-/obj/item/radio/intercom{
-	dir = 4;
+/obj/item/radio/intercom/east{
 	pixel_x = 22
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -4549,8 +4548,7 @@
 /turf/simulated/floor/tiled/classm/outdoors,
 /area/class_m/outside)
 "yF" = (
-/obj/item/radio/intercom{
-	dir = 8;
+/obj/item/radio/intercom/west{
 	name = "Station Intercom (General)";
 	pixel_x = -24
 	},
@@ -4725,8 +4723,7 @@
 /turf/simulated/floor/water/beach,
 /area/class_m/outside/island)
 "zC" = (
-/obj/item/radio/intercom{
-	dir = 4;
+/obj/item/radio/intercom/east{
 	pixel_x = 22
 	},
 /turf/simulated/floor/wood/classm,
@@ -5189,8 +5186,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/class_m/inside/main)
 "BR" = (
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	name = "Station Intercom (General)";
 	pixel_y = 24
 	},
@@ -6357,8 +6353,7 @@
 	dir = 1
 	},
 /obj/structure/bed/chair/bay/comfy/black,
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/steel_dirty,
@@ -6876,8 +6871,7 @@
 /obj/item/stool/padded,
 /obj/item/stool/padded,
 /obj/item/stool/padded,
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	name = "Station Intercom (General)";
 	pixel_y = 24
 	},
@@ -9255,8 +9249,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/steel_dirty,

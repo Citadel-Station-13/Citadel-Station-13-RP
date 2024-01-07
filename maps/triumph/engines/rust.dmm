@@ -585,8 +585,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "nf" = (
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -965,8 +964,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/item/radio/intercom{
-	dir = 2;
+/obj/item/radio/intercom/south{
 	pixel_y = -24
 	},
 /obj/effect/floor_decal/industrial/warning{

@@ -1658,8 +1658,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 5
 	},
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -3411,8 +3410,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/drone_fabrication)
 "lr" = (
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -3652,8 +3650,7 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
 	},
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -4213,8 +4210,7 @@
 /area/space)
 "ol" = (
 /obj/structure/closet/firecloset,
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -4882,8 +4878,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/monitoring)
 "qC" = (
-/obj/item/radio/intercom{
-	dir = 4;
+/obj/item/radio/intercom/east{
 	name = "Station Intercom (General)";
 	pixel_x = 23
 	},
@@ -5044,8 +5039,7 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
 	},
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -6673,8 +6667,7 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
 	},
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -7250,8 +7243,7 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
 	},
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -8473,8 +8465,7 @@
 /area/engineering/atmos/monitoring)
 "Cy" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -9241,8 +9232,7 @@
 /area/engineering/atmos/gas_storage)
 "Ff" = (
 /obj/landmark/spawnpoint/job/atmospheric_technician,
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -11104,8 +11094,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -12317,8 +12306,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
 "Pm" = (
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -13069,8 +13057,7 @@
 /obj/machinery/camera/network/engineering{
 	dir = 4
 	},
-/obj/item/radio/intercom{
-	dir = 8;
+/obj/item/radio/intercom/west{
 	name = "Station Intercom (General)";
 	pixel_x = -26
 	},
@@ -13482,8 +13469,7 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
 	},
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -13582,8 +13568,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/portnacelle)
 "TL" = (
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -13864,8 +13849,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/monitoring)
 "UC" = (
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -14296,8 +14280,7 @@
 /area/engineering/shunt)
 "Wb" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -15479,8 +15462,7 @@
 "ZK" = (
 /obj/structure/table/reinforced,
 /obj/item/flashlight/lamp,
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},

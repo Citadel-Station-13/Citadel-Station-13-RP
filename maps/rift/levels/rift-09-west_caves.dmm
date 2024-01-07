@@ -1700,8 +1700,7 @@
 /obj/effect/floor_decal/corner/yellow/border{
 	dir = 8
 	},
-/obj/item/radio/intercom{
-	dir = 8;
+/obj/item/radio/intercom/west{
 	pixel_x = -24;
 	pixel_y = -5
 	},

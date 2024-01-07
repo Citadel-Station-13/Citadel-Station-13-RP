@@ -394,8 +394,7 @@
 /area/awaymission/snowfield/base)
 "bh" = (
 /obj/effect/floor_decal/corner/green/full,
-/obj/item/radio/intercom{
-	dir = 8;
+/obj/item/radio/intercom/west{
 	name = "Station Intercom (General)";
 	pixel_x = -21
 	},

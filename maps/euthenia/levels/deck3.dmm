@@ -42,8 +42,7 @@
 	dir = 1
 	},
 /obj/structure/table/steel,
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -2832,8 +2831,7 @@
 /obj/machinery/camera/network/medbay{
 	dir = 8
 	},
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -8809,8 +8807,7 @@
 /area/main_map/maintenance/engineering/deck2/power_line)
 "jgu" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -9627,8 +9624,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 10
 	},
-/obj/item/radio/intercom{
-	dir = 8;
+/obj/item/radio/intercom/west{
 	frequency = 1532;
 	name = "Stagehand Mic";
 	pixel_x = -24
@@ -13728,8 +13724,7 @@
 "ouR" = (
 /obj/structure/table/reinforced,
 /obj/item/flashlight/lamp,
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -13922,14 +13917,12 @@
 	dir = 4;
 	pixel_x = 32
 	},
-/obj/item/radio/intercom{
-	dir = 8;
+/obj/item/radio/intercom/west{
 	broadcasting = 1;
 	name = "Common Channel";
 	pixel_x = -21
 	},
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	name = "Station Intercom (General)";
 	pixel_y = 21
 	},
@@ -21496,8 +21489,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
 "wFO" = (
-/obj/item/radio/intercom{
-	dir = 4;
+/obj/item/radio/intercom/east{
 	name = "Station Intercom (General)";
 	pixel_x = 23
 	},

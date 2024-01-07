@@ -2203,8 +2203,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
-/obj/item/radio/intercom{
-	dir = 8;
+/obj/item/radio/intercom/west{
 	pixel_x = -24
 	},
 /obj/item/clothing/glasses/hud/security,
@@ -2322,8 +2321,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/rnd)
 "bKV" = (
-/obj/item/radio/intercom{
-	dir = 8;
+/obj/item/radio/intercom/west{
 	pixel_x = -24
 	},
 /obj/effect/floor_decal/borderfloorwhite{
@@ -3445,8 +3443,7 @@
 /area/engineering/lower/lobby)
 "ctt" = (
 /obj/structure/bed/chair,
-/obj/item/radio/intercom{
-	dir = 4;
+/obj/item/radio/intercom/east{
 	pixel_x = 24
 	},
 /obj/effect/floor_decal/borderfloorwhite{
@@ -3691,8 +3688,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/east_stairs_two)
 "cDL" = (
-/obj/item/radio/intercom{
-	dir = 4;
+/obj/item/radio/intercom/east{
 	pixel_x = 24
 	},
 /obj/effect/floor_decal/corner/paleblue/diagonal,
@@ -3965,8 +3961,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled,
@@ -4226,8 +4221,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	name = "Station Intercom (General)";
 	pixel_y = 21
 	},
@@ -6496,8 +6490,7 @@
 /area/maintenance/lower/south)
 "eIW" = (
 /obj/machinery/chem_master,
-/obj/item/radio/intercom{
-	dir = 8;
+/obj/item/radio/intercom/west{
 	pixel_x = -24
 	},
 /turf/simulated/floor/tiled/white,
@@ -7533,8 +7526,7 @@
 /obj/machinery/camera/network/tcomms{
 	dir = 4
 	},
-/obj/item/radio/intercom{
-	dir = 8;
+/obj/item/radio/intercom/west{
 	pixel_x = -24
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -8462,8 +8454,7 @@
 /obj/structure/table/standard{
 	name = "plastic table frame"
 	},
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	pixel_y = 24
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -10698,8 +10689,7 @@
 /turf/simulated/open/virgo3b,
 /area/tether/surfacebase/outside/outside2)
 "hGT" = (
-/obj/item/radio/intercom{
-	dir = 2;
+/obj/item/radio/intercom/south{
 	broadcasting = 1;
 	frequency = 1473;
 	name = "Confession Intercom";
@@ -10903,8 +10893,7 @@
 /obj/machinery/computer/prisoner{
 	dir = 4
 	},
-/obj/item/radio/intercom{
-	dir = 8;
+/obj/item/radio/intercom/west{
 	pixel_x = -24
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -11823,8 +11812,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/rnd/lockers)
 "itT" = (
-/obj/item/radio/intercom{
-	dir = 4;
+/obj/item/radio/intercom/east{
 	pixel_x = 24
 	},
 /turf/simulated/floor/wood,
@@ -11976,8 +11964,7 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	name = "Station Intercom (General)";
 	pixel_x = -28
 	},
@@ -13581,8 +13568,7 @@
 /area/maintenance/lower/south)
 "jBO" = (
 /obj/structure/bed/chair,
-/obj/item/radio/intercom{
-	dir = 4;
+/obj/item/radio/intercom/east{
 	pixel_x = 24
 	},
 /obj/effect/floor_decal/borderfloorwhite{
@@ -14198,8 +14184,7 @@
 /obj/item/modular_computer/console/preset/command{
 	dir = 8
 	},
-/obj/item/radio/intercom{
-	dir = 4;
+/obj/item/radio/intercom/east{
 	pixel_x = 24
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -17369,8 +17354,7 @@
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/outside/outside2)
 "mBi" = (
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	name = "Station Intercom (General)";
 	pixel_y = 21
 	},
@@ -18651,8 +18635,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
-/obj/item/radio/intercom{
-	dir = 8;
+/obj/item/radio/intercom/west{
 	pixel_x = -24
 	},
 /obj/structure/table/steel,
@@ -19053,8 +19036,7 @@
 /area/tether/surfacebase/surface_two_hall)
 "nLi" = (
 /obj/structure/bed/chair,
-/obj/item/radio/intercom{
-	dir = 4;
+/obj/item/radio/intercom/east{
 	pixel_x = 24
 	},
 /obj/effect/floor_decal/borderfloorwhite{
@@ -22902,8 +22884,7 @@
 /obj/structure/table/standard{
 	name = "plastic table frame"
 	},
-/obj/item/radio/intercom{
-	dir = 8;
+/obj/item/radio/intercom/west{
 	pixel_x = -24
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -23444,8 +23425,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/warden)
 "rbp" = (
-/obj/item/radio/intercom{
-	dir = 8;
+/obj/item/radio/intercom/west{
 	pixel_x = -24
 	},
 /turf/simulated/floor/bluegrid{
@@ -32721,8 +32701,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/server)
 "xVS" = (
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	pixel_y = 24
 	},
 /obj/effect/floor_decal/borderfloorwhite{

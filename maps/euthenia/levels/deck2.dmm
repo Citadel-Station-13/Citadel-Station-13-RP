@@ -1090,8 +1090,7 @@
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_two/starboard)
 "aKv" = (
-/obj/item/radio/intercom{
-	dir = 4;
+/obj/item/radio/intercom/east{
 	name = "Station Intercom (General)";
 	pixel_x = 23
 	},
@@ -9043,8 +9042,7 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
 	},
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -9464,8 +9462,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/item/radio/intercom{
-	dir = 4;
+/obj/item/radio/intercom/east{
 	pixel_x = 24
 	},
 /obj/effect/floor_decal/industrial/warning{
@@ -16202,8 +16199,7 @@
 /obj/machinery/recharger,
 /obj/random/tech_supply,
 /obj/random/tech_supply,
-/obj/item/radio/intercom{
-	dir = 8;
+/obj/item/radio/intercom/west{
 	pixel_x = -24
 	},
 /turf/simulated/floor/tiled,
@@ -17958,8 +17954,7 @@
 /obj/machinery/newscaster{
 	pixel_y = 32
 	},
-/obj/item/radio/intercom{
-	dir = 4;
+/obj/item/radio/intercom/east{
 	name = "Station Intercom (General)";
 	pixel_x = 23
 	},
@@ -25654,8 +25649,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/Hangar_bay/deck2)
 "tsZ" = (
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -27616,8 +27610,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rift/station/fighter_bay/hangar)
 "uXn" = (
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	name = "Station Intercom (General)";
 	pixel_y = 21
 	},

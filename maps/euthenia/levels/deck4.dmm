@@ -428,8 +428,7 @@
 /obj/structure/bed/chair/comfy/brown{
 	dir = 1
 	},
-/obj/item/radio/intercom{
-	dir = 8;
+/obj/item/radio/intercom/west{
 	pixel_x = -24
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -2843,8 +2842,7 @@
 /area/engineering/gravity_gen)
 "kK" = (
 /obj/landmark/spawnpoint/job/chaplain,
-/obj/item/radio/intercom{
-	dir = 4;
+/obj/item/radio/intercom/east{
 	broadcasting = 1;
 	frequency = 1473;
 	name = "Confession Intercom";
@@ -8687,8 +8685,7 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 5
 	},
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
@@ -9991,8 +9988,7 @@
 /obj/item/clothing/mask/breath,
 /obj/item/clothing/suit/bio_suit/anomaly,
 /obj/item/clothing/head/bio_hood/anomaly,
-/obj/item/radio/intercom{
-	dir = 4;
+/obj/item/radio/intercom/east{
 	pixel_x = 24
 	},
 /turf/simulated/floor/tiled,
@@ -11249,8 +11245,7 @@
 	dir = 8
 	},
 /obj/landmark/spawnpoint/job/pathfinder,
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	pixel_y = 24
 	},
 /turf/simulated/floor/wood,
@@ -12858,8 +12853,7 @@
 /turf/simulated/floor/wood,
 /area/main_map/maintenance/deck_four/forward)
 "WM" = (
-/obj/item/radio/intercom{
-	dir = 8;
+/obj/item/radio/intercom/west{
 	broadcasting = 1;
 	frequency = 1473;
 	name = "Confession Intercom";
@@ -13248,8 +13242,7 @@
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_four/aft/starboard)
 "Yk" = (
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	pixel_y = 24
 	},
 /obj/effect/floor_decal/borderfloor{

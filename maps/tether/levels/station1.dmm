@@ -50,8 +50,7 @@
 /obj/structure/flora/ausbushes/sparsegrass{
 	pixel_x = -2
 	},
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	pixel_y = 24
 	},
 /turf/simulated/floor/outdoors/grass/heavy/interior,
@@ -5856,8 +5855,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 6
 	},
-/obj/item/radio/intercom{
-	dir = 4;
+/obj/item/radio/intercom/east{
 	pixel_x = 24
 	},
 /obj/structure/disposalpipe/segment,
@@ -7727,8 +7725,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/exploration/hallway)
 "pE" = (
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	pixel_y = 24
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -8426,8 +8423,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 10
 	},
-/obj/item/radio/intercom{
-	dir = 4;
+/obj/item/radio/intercom/east{
 	pixel_x = 24
 	},
 /turf/simulated/floor/tiled,
@@ -15492,8 +15488,7 @@
 /turf/simulated/floor/bluegrid,
 /area/ai_upload)
 "Ft" = (
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	pixel_y = 24
 	},
 /obj/machinery/computer/communications,
@@ -15939,8 +15934,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
 "Gh" = (
-/obj/item/radio/intercom{
-	dir = 8;
+/obj/item/radio/intercom/west{
 	pixel_x = -24
 	},
 /turf/simulated/floor/wood,
@@ -17892,8 +17886,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/supply{
 	dir = 4
 	},
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	pixel_y = 24
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
@@ -18505,8 +18498,7 @@
 	dir = 1;
 	pixel_y = -22
 	},
-/obj/item/radio/intercom{
-	dir = 4;
+/obj/item/radio/intercom/east{
 	pixel_x = 24
 	},
 /obj/machinery/vending/cola{
@@ -19828,8 +19820,7 @@
 /obj/machinery/camera/network/tether{
 	dir = 9
 	},
-/obj/item/radio/intercom{
-	dir = 4;
+/obj/item/radio/intercom/east{
 	pixel_x = 24
 	},
 /obj/item/storage/box/cups,
@@ -20034,8 +20025,7 @@
 	dir = 1
 	},
 /obj/structure/table/reinforced,
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	pixel_y = 24
 	},
 /obj/item/gps/engineering{
@@ -22048,8 +22038,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 4
 	},
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled,
@@ -22163,8 +22152,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 1
 	},
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled,
@@ -23445,8 +23433,7 @@
 /area/shuttle/securiship/engines)
 "Vs" = (
 /obj/structure/table/reinforced,
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	pixel_y = 24
 	},
 /obj/item/radio/off{
@@ -25672,8 +25659,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/item/radio/intercom{
-	dir = 4;
+/obj/item/radio/intercom/east{
 	pixel_x = 24
 	},
 /turf/simulated/floor/tiled,

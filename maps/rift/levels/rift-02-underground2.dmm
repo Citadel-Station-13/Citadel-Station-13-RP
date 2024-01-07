@@ -1769,8 +1769,7 @@
 	dir = 4
 	},
 /obj/structure/table/reinforced,
-/obj/item/radio/intercom{
-	dir = 4;
+/obj/item/radio/intercom/east{
 	pixel_x = 24
 	},
 /obj/item/gps/engineering{
@@ -2148,8 +2147,7 @@
 	},
 /obj/item/roller,
 /obj/structure/table/rack/shelf,
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	name = "Station Intercom (General)";
 	pixel_y = 24
 	},
@@ -2773,8 +2771,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	name = "Station Intercom (General)";
 	pixel_y = 24
 	},
@@ -9108,8 +9105,7 @@
 	pixel_y = 6
 	},
 /obj/item/folder/yellow,
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	pixel_x = 30;
 	pixel_y = 3
 	},
@@ -9415,8 +9411,7 @@
 	dir = 8;
 	pixel_x = -24
 	},
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	name = "Station Intercom (General)";
 	pixel_y = 24
 	},
@@ -10018,8 +10013,7 @@
 /obj/effect/floor_decal/borderfloor/corner2{
 	dir = 9
 	},
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	pixel_x = -28
 	},
 /obj/structure/closet/crate,
@@ -13966,8 +13960,7 @@
 /area/chapel/main)
 "VM" = (
 /obj/structure/closet/wardrobe/chaplain_black,
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	name = "Station Intercom (General)";
 	pixel_y = 24
 	},

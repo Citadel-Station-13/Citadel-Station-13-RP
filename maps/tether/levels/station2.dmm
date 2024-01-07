@@ -161,8 +161,7 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 8
 	},
-/obj/item/radio/intercom{
-	dir = 8;
+/obj/item/radio/intercom/west{
 	pixel_x = -24;
 	pixel_y = -5
 	},
@@ -819,8 +818,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/item/radio/intercom{
-	dir = 8;
+/obj/item/radio/intercom/west{
 	pixel_x = -24
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -3218,8 +3216,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/outline,
-/obj/item/radio/intercom{
-	dir = 4;
+/obj/item/radio/intercom/east{
 	pixel_x = 24
 	},
 /turf/simulated/floor/tiled,
@@ -4459,8 +4456,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 10
 	},
-/obj/item/radio/intercom{
-	dir = 4;
+/obj/item/radio/intercom/east{
 	pixel_x = 24
 	},
 /turf/simulated/floor/tiled,
@@ -5412,8 +5408,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/obj/item/radio/intercom{
-	dir = 4;
+/obj/item/radio/intercom/east{
 	broadcasting = 1;
 	frequency = 1473;
 	name = "Confession Intercom";
@@ -7688,8 +7683,7 @@
 /obj/structure/bed/chair/office/light{
 	dir = 8
 	},
-/obj/item/radio/intercom{
-	dir = 4;
+/obj/item/radio/intercom/east{
 	pixel_x = 24
 	},
 /obj/machinery/light{
@@ -10922,14 +10916,12 @@
 	dir = 4;
 	pixel_x = 32
 	},
-/obj/item/radio/intercom{
-	dir = 8;
+/obj/item/radio/intercom/west{
 	broadcasting = 1;
 	name = "Common Channel";
 	pixel_x = -21
 	},
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	name = "Station Intercom (General)";
 	pixel_y = 21
 	},
@@ -12596,8 +12588,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/item/radio/intercom{
-	dir = 8;
+/obj/item/radio/intercom/west{
 	pixel_x = -24
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -12615,8 +12606,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/port)
 "za" = (
-/obj/item/radio/intercom{
-	dir = 8;
+/obj/item/radio/intercom/west{
 	pixel_x = -24
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -12914,8 +12904,7 @@
 /area/ai)
 "zF" = (
 /obj/structure/bed/chair/shuttle,
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	pixel_y = 24
 	},
 /turf/simulated/shuttle/floor/voidcraft/light,
@@ -13945,8 +13934,7 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 1
 	},
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled,
@@ -14515,8 +14503,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 5
 	},
-/obj/item/radio/intercom{
-	dir = 8;
+/obj/item/radio/intercom/west{
 	pixel_x = -24
 	},
 /turf/simulated/floor/tiled,
@@ -15264,8 +15251,7 @@
 	dir = 1
 	},
 /obj/structure/bed/chair,
-/obj/item/radio/intercom{
-	dir = 4;
+/obj/item/radio/intercom/east{
 	broadcasting = 1;
 	frequency = 1473;
 	name = "Confession Intercom";
@@ -16416,8 +16402,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -20486,8 +20471,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	pixel_y = 24
 	},
 /obj/machinery/suit_storage_unit/mining,
@@ -22699,8 +22683,7 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/foyer)
 "TY" = (
-/obj/item/radio/intercom{
-	dir = 8;
+/obj/item/radio/intercom/west{
 	pixel_x = -24;
 	pixel_y = -5
 	},
@@ -22950,8 +22933,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/item/radio/intercom{
-	dir = 8;
+/obj/item/radio/intercom/west{
 	pixel_x = -24
 	},
 /obj/effect/floor_decal/borderfloorwhite,
@@ -25593,8 +25575,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/port)
 "ZC" = (
-/obj/item/radio/intercom{
-	dir = 8;
+/obj/item/radio/intercom/west{
 	pixel_x = -24;
 	pixel_y = -5
 	},
@@ -25654,8 +25635,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	pixel_y = 24
 	},
 /obj/effect/floor_decal/spline/fancy/wood{

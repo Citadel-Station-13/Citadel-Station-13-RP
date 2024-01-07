@@ -628,8 +628,7 @@
 /obj/structure/bed/chair/bay/chair/padded/brown{
 	dir = 8
 	},
-/obj/item/radio/intercom{
-	dir = 4;
+/obj/item/radio/intercom/east{
 	pixel_x = 25
 	},
 /turf/simulated/floor/tiled/eris/steel/brown_platform,
@@ -857,8 +856,7 @@
 /area/itglight/cockpit)
 "fc" = (
 /obj/machinery/chem_master,
-/obj/item/radio/intercom{
-	dir = 8;
+/obj/item/radio/intercom/west{
 	pixel_x = -25
 	},
 /turf/simulated/floor/tiled/eris/white/cargo,
@@ -1053,8 +1051,7 @@
 /area/itglight/captain)
 "gS" = (
 /obj/structure/bed/chair/sofa/brown/right,
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	pixel_y = 25
 	},
 /turf/simulated/floor/wood,
@@ -1462,8 +1459,7 @@
 /obj/item/clothing/suit/armor/vest,
 /obj/item/clothing/suit/armor/vest,
 /obj/item/clothing/suit/armor/vest,
-/obj/item/radio/intercom{
-	dir = 8;
+/obj/item/radio/intercom/west{
 	pixel_x = -25
 	},
 /turf/simulated/floor/tiled/eris/steel/gray_platform,
@@ -1523,8 +1519,7 @@
 /area/itglight/kitchen)
 "jG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/item/radio/intercom{
-	dir = 8;
+/obj/item/radio/intercom/west{
 	pixel_x = -25
 	},
 /turf/simulated/floor/tiled/eris/steel/brown_platform,
@@ -1578,8 +1573,7 @@
 /area/itglight/cockpit)
 "ko" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/item/radio/intercom{
-	dir = 4;
+/obj/item/radio/intercom/east{
 	pixel_x = 25
 	},
 /turf/simulated/floor/tiled/eris/steel/brown_platform,
@@ -3022,8 +3016,7 @@
 /turf/simulated/floor/tiled/eris/steel/gray_platform,
 /area/itglight/starboardcargo)
 "ww" = (
-/obj/item/radio/intercom{
-	dir = 4;
+/obj/item/radio/intercom/east{
 	pixel_x = 25
 	},
 /turf/simulated/floor/tiled/eris/steel/gray_platform,
@@ -3057,8 +3050,7 @@
 /obj/structure/cable/pink{
 	icon_state = "2-8"
 	},
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	pixel_y = 25
 	},
 /turf/simulated/floor/tiled/eris/steel/brown_platform,
@@ -3214,8 +3206,7 @@
 /obj/structure/handrail{
 	dir = 1
 	},
-/obj/item/radio/intercom{
-	dir = 4;
+/obj/item/radio/intercom/east{
 	pixel_x = 25
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -3931,8 +3922,7 @@
 /area/itglight/portdocking)
 "Ct" = (
 /obj/item/stool,
-/obj/item/radio/intercom{
-	dir = 1;
+/obj/item/radio/intercom/north{
 	pixel_y = 25
 	},
 /turf/simulated/floor/tiled/eris/cafe,

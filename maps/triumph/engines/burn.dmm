@@ -96,8 +96,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/item/radio/intercom{
-	dir = 2;
+/obj/item/radio/intercom/south{
 	pixel_y = -24
 	},
 /obj/effect/floor_decal/industrial/warning{
