@@ -51,37 +51,37 @@ GLOBAL_LIST_EMPTY(apcs)
 
 //NOTE: STUFF STOLEN FROM AIRLOCK.DM thx
 //Critical//
-CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/critical, 28)
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/critical, 22)
 /obj/machinery/power/apc/critical
 	is_critical = 1
 
 /// High capacity cell APCs
-CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/high, 28)
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/high, 22)
 /obj/machinery/power/apc/high
 	cell_type = /obj/item/cell/high
 
 /// Super capacity cell APCS
-CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/super, 28)
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/super, 22)
 /obj/machinery/power/apc/super
 	cell_type = /obj/item/cell/super
 
 /// Critical APCs with super cells
-CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/super/critical, 28)
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/super/critical, 22)
 /obj/machinery/power/apc/super/critical
 	is_critical = 1
 
 /// APCS with hyper cells. How lewd
-CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/hyper, 28)
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/hyper, 22)
 /obj/machinery/power/apc/hyper
 	cell_type = /obj/item/cell/hyper
 
 /// APCs with alarms hidden. Use these for POI's and offmap stuff so engineers dont get notified that shitty_ruins4 is running out of power -Bloop
-CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/alarms_hidden, 28)
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/alarms_hidden, 22)
 /obj/machinery/power/apc/alarms_hidden
 	alarms_hidden = TRUE
 
 /// APCS with hidden alarms and no power cells
-CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/alarms_hidden/no_cell, 28)
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/alarms_hidden/no_cell, 22)
 /obj/machinery/power/apc/alarms_hidden/no_cell
 	cell_type = null
 	chargelevel = 0
@@ -107,7 +107,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/alarms_hidden/no_cel
  *
  * ~silicons
  */
-CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 28)
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 22)
 /obj/machinery/power/apc
 	name = "area power controller"
 	desc = "A control terminal for the area electrical systems."
@@ -265,18 +265,18 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 28)
 	if(T.get_wallmount_anchor())
 		switch(dir)
 			if(SOUTH)
-				base_pixel_y = 28
+				base_pixel_y = 22
 			if(NORTH)
-				base_pixel_y = -28
+				base_pixel_y = -22
 			if(EAST)
-				base_pixel_x = -28
+				base_pixel_x = -22
 			if(WEST)
-				base_pixel_x = 28
+				base_pixel_x = 22
 	reset_pixel_offsets()
 
 	if(terminal)
 		terminal.disconnect_from_network()
-		terminal.setDir(src.dir) // Terminal has same dir as master
+		terminal.setDir(turn(src.dir, 180)) // Terminal has same dir as master
 		terminal.connect_to_network() // Refresh the network the terminal is connected to.
 
 /obj/machinery/power/apc/proc/energy_fail(var/duration)
@@ -286,7 +286,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 28)
 	// create a terminal object at the same position as original turf loc
 	// wires will attach to this
 	terminal = new/obj/machinery/power/terminal(src.loc)
-	terminal.setDir(dir)
+	terminal.setDir(turn(dir, 180))
 	terminal.master = src
 
 /obj/machinery/power/apc/proc/autobuild()
