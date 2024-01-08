@@ -655,7 +655,7 @@
 		else
 			temp_adj /= (BODYTEMP_HEAT_DIVISOR * 5)	//don't raise temperature as much as if we were directly exposed
 
-		var/density = breath.total_moles / (MOLES_CELLSTANDARD * BREATH_PERCENTAGE)
+		var/density = breath.total_moles / (CELL_MOLES * BREATH_PERCENTAGE)
 		temp_adj *= density
 
 		if (temp_adj > BODYTEMP_HEATING_MAX) temp_adj = BODYTEMP_HEATING_MAX
@@ -678,12 +678,16 @@
  */
 /mob/living/carbon/human/handle_environment(datum/gas_mixture/environment, dt)
 
+	// legacy: species special processes
 	//Stuff like the xenomorph's plasma regen happens here.
 	// todo: why the shit is this here
 	species.handle_environment_special(src, environment, dt)
 
+	// legacy: incorporeal (shadekin) check
 	if(is_incorporeal())
 		return
+	
+	#warn below
 
 	if(isSynthetic()) // synth specific temperature values in the absence of a synthetic species
 		var/mob/living/carbon/human/H = src
@@ -729,14 +733,16 @@
 	#warn audit affecting
 	var/affecting_pressure = calculate_affecting_pressure(absolute_pressure)
 
-	#warn below
-
-
+	// legacy: contamination
 	//Check for contaminants before anything else because we don't want to skip it.
 	for(var/g in environment.gas)
 		if(global.gas_data.flags[g] & GAS_FLAG_CONTAMINANT && environment.gas[g] > 1)
 			pl_effects()
 			break
+	
+	if(istype(loc, /turf/space))
+		// in spcae, we use blackbody radiation
+	#warn below
 
 	if(istype(loc, /turf/space)) // No FBPs overheating on space turfs inside mechs or people.
 		//Don't bother if the temperature drop is less than 0.1 anyways. Hopefully BYOND is smart enough to turn this constant expression into a constant
@@ -772,7 +778,7 @@
 				temp_adj = (1-thermal_protection) * ((loc_temp - bodytemperature) / BODYTEMP_HEAT_DIVISOR)
 
 		//Use heat transfer as proportional to the gas density. However, we only care about the relative density vs standard 101 kPa/20 C air. Therefore we can use mole ratios
-		var/density = environment.total_moles / MOLES_CELLSTANDARD
+		var/density = environment.total_moles / CELL_MOLES
 		bodytemperature += between(BODYTEMP_COOLING_MAX, temp_adj*density, BODYTEMP_HEATING_MAX)
 
 	// +/- 50 degrees from 310.15K is the 'safe' zone, where no damage is dealt.
