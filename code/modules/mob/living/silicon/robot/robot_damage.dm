@@ -110,7 +110,7 @@
 
 		parts -= picked
 
-/mob/living/silicon/robot/take_overall_damage(brute, burn, damage_mode, weapon_descriptor, defer_updates)(brute, burn, damage_mode, weapon_descriptor)
+/mob/living/silicon/robot/take_overall_damage(brute, burn, damage_mode, weapon_descriptor, defer_updates)
 	if(status_flags & STATUS_GODMODE)	return	//godmode
 	var/list/datum/robot_component/parts = get_damageable_components()
 

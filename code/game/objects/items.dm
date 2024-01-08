@@ -27,7 +27,7 @@
 	var/heat_protection_cover = NONE
 	/// Flags which determine which body parts are protected from cold. Use the HEAD, UPPER_TORSO, LOWER_TORSO, etc. flags. See setup.dm
 	/// These flags are listed in [code/__DEFINES/inventory/item_flags.dm].
-	var/cold_protection = NONE
+	var/cold_protection_cover = NONE
 	/// This is used to determine on which slots an item can fit, for inventory slots that use flags to determine this.
 	/// These flags are listed in [code/__DEFINES/inventory/slots.dm].
 	var/slot_flags = NONE

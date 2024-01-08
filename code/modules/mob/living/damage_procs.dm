@@ -114,7 +114,7 @@
  * * burn - burn damage to take
  * * damage_mode - DAMAGE_MODE_* flags for the form of this damage
  * * weapon_descriptor - a string describing how it happened ("flash burns", "multiple precision cuts", etc)
- * 
+ *
  * @return amount taken
  */
 /mob/living/proc/take_random_targeted_damage(brute, burn, damage_mode, weapon_descriptor)
@@ -128,7 +128,7 @@
  * * body_zone - body zone define (BP_*)
  * * weapon_descriptor - a string describing how it happened ("flash burns", "multiple precision cuts", etc)
  * * defer_updates - update health / perform damage checks?
- * 
+ *
  * @return amount taken
  */
 /mob/living/proc/take_targeted_damage(brute, burn, damage_mode, body_zone, weapon_descriptor, defer_updates)
@@ -141,10 +141,10 @@
  * * damage_mode - DAMAG_EMODE_* flags for the form of this damage
  * * weapon descriptor - a string describing how it happened ("flash burns", "multiple precision cuts", etc)
  * * defer_updates - update health / perform damage checks?
- * 
+ *
  * @return amount taken
  */
-/mob/living/proc/take_overall_damage(brute, burn, damage_mode, weapon_descriptor, defer_updates)(brute, burn, damage_mode, weapon_descriptor, defer_updates)
+/mob/living/proc/take_overall_damage(brute, burn, damage_mode, weapon_descriptor, defer_updates)
 	if(status_flags & STATUS_GODMODE)
 		return 0
 	// todo: don't update health immediately
