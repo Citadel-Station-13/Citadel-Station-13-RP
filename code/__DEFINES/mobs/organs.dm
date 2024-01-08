@@ -157,6 +157,8 @@
 		BP_R_LEG, \
 		BP_TORSO)
 
+GLOBAL_LIST_INIT(body_zones, BP_ALL_STANDARD)
+
 
 //* ADHERENT EXTERNAL ORGANS *//
 #define O_COOLING_FINS "cooling fins"
