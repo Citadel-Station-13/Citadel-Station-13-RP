@@ -320,10 +320,10 @@
 					occupant.emote("scream")
 				if(issuperUV)
 					var/burndamage = rand(28,35)
-					occupant.take_organ_damage(0,burndamage)
+					occupant.take_random_targeted_damage(brute = 0, brute = burndamage)
 				else
 					var/burndamage = rand(6,10)
-					occupant.take_organ_damage(0,burndamage)
+					occupant.take_random_targeted_damage(brute = 0, brute = burndamage)
 		if(i==3) //End of the cycle
 			if(!issuperUV)
 				if(helmet_stored)

@@ -233,7 +233,7 @@
 		M.emote(pick("twitch", "blink_r", "shiver"))
 	if(prob(15))
 		M.visible_message("[M] shudders violently.", "You shudder uncontrollably, it hurts.")
-		M.take_organ_damage(6 * removed, 0)
+		M.take_random_targeted_damage(brute = 6 * removed, brute = 0)
 	M.add_chemical_effect(CE_SPEEDBOOST, 1)
 
 /datum/reagent/toxin/potassium_chloride
@@ -552,7 +552,7 @@
 		if(M.losebreath < 10)
 			M.AdjustLosebreath(1)
 	else
-		M.take_organ_damage(3 * removed, 0)
+		M.take_random_targeted_damage(brute = 3 * removed, brute = 0)
 		if(M.losebreath < 15)
 			M.AdjustLosebreath(1)
 

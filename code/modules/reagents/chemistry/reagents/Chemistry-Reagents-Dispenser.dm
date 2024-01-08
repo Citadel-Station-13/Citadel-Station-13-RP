@@ -167,7 +167,7 @@
 
 /datum/reagent/acid/affect_blood(mob/living/carbon/M, alien, removed)
 	if(issmall(M)) removed *= 2
-	M.take_organ_damage(0, removed * power * 2)
+	M.take_random_targeted_damage(brute = 0, brute = removed * power * 2)
 
 /datum/reagent/acid/affect_touch(mob/living/carbon/M, alien, removed) // This is the most interesting
 	if(ishuman(M))

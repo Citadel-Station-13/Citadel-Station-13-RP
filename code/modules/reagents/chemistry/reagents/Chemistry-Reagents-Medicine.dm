@@ -1097,7 +1097,7 @@
 	M.cure_radiation(RAD_MOB_CURE_STRENGTH_ARITHRAZINE(removed))
 	M.adjustToxLoss(-10 * removed)
 	if(prob(60))
-		M.take_organ_damage(4 * removed, 0)
+		M.take_random_targeted_damage(brute = 4 * removed, brute = 0)
 
 /datum/reagent/spaceacillin
 	name = "Spaceacillin"
