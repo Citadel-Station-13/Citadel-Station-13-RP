@@ -106,7 +106,8 @@
 	return 1
 
 // todo: refactor above
-//? Raw "damage"
+
+//* Raw Damage *//
 
 /**
  * @params

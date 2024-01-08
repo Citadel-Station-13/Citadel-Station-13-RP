@@ -77,6 +77,7 @@
 //////////////////////////////////
 
 // Bitflags defining which status effects could be or are inflicted on a mob.
+// todo :this is all terrible tbh
 #define STATUS_CAN_STUN      (1<<0) //! Can Stun()
 #define STATUS_CAN_KNOCKDOWN (1<<1) //! Can Knockdown()
 #define STATUS_CAN_ROOT      (1<<2) //! Can Root()
@@ -86,6 +87,7 @@
 
 #define STATUS_LEAPING       (1<<20) //! Is leaping (??? legacy)
 #define STATUS_HIDING        (1<<21) //! Is hiding  (??? legacy)
+// todo: this should be a trait with a mob_flags flag to go with it for quick access
 #define STATUS_GODMODE       (1<<22) //! Godmode    (??? legacy)
 #define STATUS_FAKEDEATH     (1<<23) //! In fakedeath - SLATED FOR REMOVAL, THIS SHOULD BE TRAIT
 
