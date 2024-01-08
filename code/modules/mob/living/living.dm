@@ -462,13 +462,6 @@ default behaviour is:
 	adjustFireLoss(-burn)
 	src.update_health()
 
-// damage MANY external organs, in random order
-/mob/living/proc/take_overall_damage(brute, burn, damage_mode, weapon_descriptor, defer_updates)
-	if(status_flags & STATUS_GODMODE)	return 0	//godmode
-	adjustBruteLoss(brute)
-	adjustFireLoss(burn)
-	src.update_health()
-
 /mob/living/proc/restore_all_organs()
 	return
 

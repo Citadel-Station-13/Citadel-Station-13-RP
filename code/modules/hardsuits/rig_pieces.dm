@@ -8,8 +8,8 @@
 	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT | ALLOW_SURVIVALFOOD | CLOTHING_IGNORE_BELTLINK | CLOTHING_IGNORE_DELIMB | ALLOWINTERNALS
 	inv_hide_flags      = HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
 	body_cover_flags = HEAD|FACE|EYES
-	heat_protection    = HEAD|FACE|EYES
-	cold_protection    = HEAD|FACE|EYES
+	heat_protection_cover    = HEAD|FACE|EYES
+	cold_protection_cover    = HEAD|FACE|EYES
 	brightness_on = 4
 
 	max_pressure_protection = null
@@ -51,8 +51,8 @@
 	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT | CLOTHING_IGNORE_BELTLINK | CLOTHING_IGNORE_DELIMB
 	atom_flags = PHORONGUARD
 	body_cover_flags = HANDS
-	heat_protection    = HANDS
-	cold_protection    = HANDS
+	heat_protection_cover    = HANDS
+	cold_protection_cover    = HANDS
 
 	weight = 0
 	encumbrance = 0
@@ -89,8 +89,8 @@
 	atom_flags = PHORONGUARD
 	clothing_flags = CLOTHING_IGNORE_BELTLINK | CLOTHING_IGNORE_DELIMB
 	body_cover_flags = FEET
-	cold_protection    = FEET
-	heat_protection    = FEET
+	cold_protection_cover    = FEET
+	heat_protection_cover    = FEET
 
 	icon_base = null
 	damage_force = 5 // if you're kicking someone with something meant to keep you locked on a hunk of metal...
@@ -132,10 +132,10 @@
 	//Flags
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	clothing_flags     = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT | CLOTHING_IGNORE_BELTLINK | CLOTHING_IGNORE_DELIMB
-	cold_protection    = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	cold_protection_cover    = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	atom_flags              = PHORONGUARD
 	inv_hide_flags          = HIDEJUMPSUIT|HIDETAIL
-	heat_protection    = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	heat_protection_cover    = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 
 	weight = 0
 	encumbrance = 0
@@ -232,8 +232,8 @@
 	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT | ALLOWINTERNALS | CLOTHING_IGNORE_BELTLINK | CLOTHING_IGNORE_DELIMB
 	atom_flags = PHORONGUARD
 	body_cover_flags = HEAD|FACE|EYES
-	heat_protection    = HEAD|FACE|EYES
-	cold_protection    = HEAD|FACE|EYES
+	heat_protection_cover    = HEAD|FACE|EYES
+	cold_protection_cover    = HEAD|FACE|EYES
 
 /obj/item/clothing/suit/lightrig
 	name = "suit"
@@ -242,8 +242,8 @@
 	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT | CLOTHING_IGNORE_BELTLINK | CLOTHING_IGNORE_DELIMB
 	atom_flags = PHORONGUARD
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
-	heat_protection    = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
-	cold_protection    = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	heat_protection_cover    = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	cold_protection_cover    = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 
 /obj/item/clothing/shoes/lightrig
 	name = "boots"
@@ -251,8 +251,8 @@
 	clothing_flags = CLOTHING_IGNORE_BELTLINK | CLOTHING_IGNORE_DELIMB
 	species_restricted = null
 	body_cover_flags = FEET
-	cold_protection    = FEET
-	heat_protection    = FEET
+	cold_protection_cover    = FEET
+	heat_protection_cover    = FEET
 
 /obj/item/clothing/gloves/gauntlets/lightrig
 	name = "gloves"
@@ -260,5 +260,5 @@
 	atom_flags = PHORONGUARD
 	species_restricted = null
 	body_cover_flags = HANDS
-	heat_protection    = HANDS
-	cold_protection    = HANDS
+	heat_protection_cover    = HANDS
+	cold_protection_cover    = HANDS

@@ -686,7 +686,7 @@
 	// legacy: incorporeal (shadekin) check
 	if(is_incorporeal())
 		return
-	
+
 	#warn below
 
 	if(isSynthetic()) // synth specific temperature values in the absence of a synthetic species
@@ -728,7 +728,7 @@
 					last_synthcooling_message = world.time + 60 SECONDS
 
 	#warn above
-	
+
 	var/absolute_pressure = isnull(environment)? 0 : environment.return_pressure()
 	#warn audit affecting
 	var/affecting_pressure = calculate_affecting_pressure(absolute_pressure)
@@ -739,9 +739,9 @@
 		if(global.gas_data.flags[g] & GAS_FLAG_CONTAMINANT && environment.gas[g] > 1)
 			pl_effects()
 			break
-		
-	
-	
+
+
+
 	// we simulate in space, or in somewhere with a gasmixture. otherwise, we don't care.
 	if(istype(loc, /turf/space))
 		// in space, we use blackbody radiation
@@ -751,12 +751,14 @@
 		var/environment_temperature = environment.temperature
 		var/difference = environment_temperature - bodytemperature
 		// relative density multiplier
-		var/density_multiplier = environment.total_moles / CLEL_MOLES
-		
+		var/density_multiplier = environment.total_moles / CELL_MOLES
+
 		var/thermal_insulation
-		
+
+		#warn this too actually
+
 		var/temperature_change = difference / MOB_BODYTEMP_ENVIRONMENT_EQUALIZATION_DIVISOR
-		
+
 		if(difference < 0)
 			// we are being cooled
 			thermal_insulation = get_cold_protection(environment_temperature)
@@ -769,7 +771,7 @@
 			if(thermal_insulation < 1)
 				// we aren't entirely shielded
 				adjust_bodytemperature()
-			
+
 	#warn below
 
 	if(istype(loc, /turf/space)) // No FBPs overheating on space turfs inside mechs or people.
@@ -794,7 +796,7 @@
 		//Use heat transfer as proportional to the gas density. However, we only care about the relative density vs standard 101 kPa/20 C air. Therefore we can use mole ratios
 		var/density = environment.total_moles / CELL_MOLES
 		bodytemperature += between(BODYTEMP_COOLING_MAX, temp_adj*density, BODYTEMP_HEATING_MAX)
-	
+
 	#warn above
 
 	// legacy: godmode check
@@ -802,7 +804,7 @@
 		fire_alert = 0
 		pressure_alert = 0
 		return
-	
+
 	// todo: completely rework eveyrthing about this to be surface vs deep burns
 
 	// +/- 50 degrees from 310.15K is the 'safe' zone, where no damage is dealt.
@@ -900,14 +902,14 @@
 
 /**
  * metabolism for body temperature
- * 
+ *
  * should only be called while alive
- * 
+ *
  * @params
  * * dt - seconds for this cycle
  */
 /mob/living/carbon/human/proc/stabilize_body_temperature(dt)
-	
+
 	var/buffer = bodytemperature
 
 	// legacy: species passive gain
@@ -931,7 +933,7 @@
 		if(buffer < species.cold_level_1)
 			adjust_nutrition(-2)
 			#warn ugh
-	
+
 	set_bodytemperature(buffer)
 
 	var/body_temperature_difference = species.body_temperature - bodytemperature
