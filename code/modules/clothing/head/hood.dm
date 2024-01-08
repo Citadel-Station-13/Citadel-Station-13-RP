@@ -3,7 +3,7 @@
 	desc = "A generic hood."
 	icon_state = "generic_hood"
 	body_cover_flags = HEAD
-	cold_protection = HEAD
+	cold_protection_cover = HEAD
 	inv_hide_flags = HIDEEARS | BLOCKHAIR
 
 // Winter coats
@@ -190,7 +190,7 @@
 	icon_state = "golhood"
 	desc = "A protective & concealing hood."
 	armor_type = /datum/armor/lavaland/goliath
-	heat_protection = HEAD
+	heat_protection_cover = HEAD
 	max_heat_protection_temperature = FIRE_HELMET_MAX_HEAT_PROTECTION_TEMPERATURE
 
 /obj/item/clothing/head/hood/drake
@@ -198,7 +198,7 @@
 	icon_state = "dragon"
 	desc = "The skull of a dragon."
 	armor_type = /datum/armor/lavaland/drake
-	heat_protection = HEAD
+	heat_protection_cover = HEAD
 	max_heat_protection_temperature = FIRE_HELMET_MAX_HEAT_PROTECTION_TEMPERATURE
 
 //Vainglorious
