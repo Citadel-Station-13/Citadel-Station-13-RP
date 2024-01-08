@@ -219,8 +219,8 @@
 	else
 		src.icon_state = initial(icon_state)
 		to_chat(user, "You untie the bandana and spread it out.")
-		slot_flags = "[initial(slot_flags)]"
-		body_cover_flags = "[initial(body_cover_flags)]"
+		slot_flags = initial(slot_flags)
+		body_cover_flags = initial(body_cover_flags)
 	update_worn_icon()	//so our mob-overlays update
 
 /*
