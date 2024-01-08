@@ -204,7 +204,6 @@
 	reagent_state = REAGENT_SOLID
 	color = "#333333"
 	metabolism = REM * 3 // Broken nanomachines go a bit slower.
-	scannable = 1
 
 /datum/reagent/defective_nanites/affect_blood(mob/living/carbon/M, alien, removed)
 	M.take_organ_damage(2 * removed, 2 * removed)

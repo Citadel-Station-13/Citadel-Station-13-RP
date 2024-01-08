@@ -26,7 +26,6 @@
 	taste_mult = 1.5
 	reagent_state = REAGENT_SOLID
 	color = "#1C1300"
-	ingest_met = REM * 5
 
 /datum/reagent/carbon/on_metabolize_ingested(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed, obj/item/organ/internal/container)
 	. = ..()
@@ -85,8 +84,10 @@
 
 /datum/reagent/fluorine/touch_expose_mob(mob/target, volume, list/data, organ_tag)
 	. = ..()
-	
-	target.adjustToxLoss(removed)
+	if(!isliving(target))
+		return
+	var/mob/living/L = target
+	L.adjustToxLoss(volume)
 
 /datum/reagent/fluorine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()

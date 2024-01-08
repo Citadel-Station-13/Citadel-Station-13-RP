@@ -299,6 +299,13 @@
 /datum/reagent_holder/proc/stop_reactions()
 	#warn impl
 
+//* Set *//
+
+/datum/reagent_holder/proc/set_temperature(temperature, defer_reactions)
+	src.temperature = temperature
+	if(!defer_reactions)
+		consider_reactions()
+
 //* Transfer *//
 
 #warn /transfer_to_holder post ice crema

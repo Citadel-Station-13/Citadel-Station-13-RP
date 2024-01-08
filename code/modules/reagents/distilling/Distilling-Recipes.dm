@@ -1,11 +1,4 @@
 /datum/chemical_reaction/distilling
-//	name = null
-//	id = null
-//	result = null
-//	required_reagents = list()
-//	catalysts = list()
-//	inhibitors = list()
-//	result_amount = 0
 
 	//how far the reaction proceeds each time it is processed. Used with either REACTION_RATE or HALF_LIFE macros.
 	reaction_rate = HALF_LIFE(6)
@@ -20,8 +13,6 @@
 
 	mix_message = "The solution churns."
 	reaction_sound = 'sound/effects/slosh.ogg'
-
-//	log_is_important = 0 // If this reaction should be considered important for logging. Important recipes message admins when mixed, non-important ones just log to file.
 
 	var/list/temp_range = list(T0C, T20C)
 	var/temp_shift = 0 // How much the temperature changes when the reaction occurs.

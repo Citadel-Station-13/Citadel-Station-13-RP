@@ -9,7 +9,6 @@
 	color = "#00BFFF"
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 2
 	metabolism = REM * 0.5
-	scannable = 1
 
 /datum/reagent/inaprovaline/affect_blood(mob/living/carbon/M, alien, removed)
 	if(alien != IS_DIONA)
@@ -25,7 +24,6 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#BF0000"
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
-	scannable = 1
 
 /datum/reagent/bicaridine/affect_blood(mob/living/carbon/M, alien, removed)
 	var/chem_effective = 1
@@ -56,7 +54,6 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#FFA800"
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
-	scannable = 1
 
 /datum/reagent/kelotane/affect_blood(mob/living/carbon/M, alien, removed)
 	var/chem_effective = 1
@@ -74,7 +71,6 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#FF8000"
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 0.5
-	scannable = 1
 
 /datum/reagent/dermaline/affect_blood(mob/living/carbon/M, alien, removed)
 	var/chem_effective = 1
@@ -90,7 +86,6 @@
 	taste_description = "a roll of gauze"
 	reagent_state = REAGENT_LIQUID
 	color = "#00A000"
-	scannable = 1
 
 /datum/reagent/dylovene/affect_blood(mob/living/carbon/M, alien, removed)
 	var/chem_effective = 1
@@ -113,7 +108,6 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#0080FF"
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
-	scannable = 1
 	metabolism = REM * 0.25
 	
 /datum/reagent/dexalin/affect_blood(mob/living/carbon/M, alien, removed)
@@ -141,7 +135,6 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#0040FF"
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 0.5
-	scannable = 1
 
 /datum/reagent/dexalinp/affect_blood(mob/living/carbon/M, alien, removed)
 	if(alien == IS_VOX)
@@ -166,7 +159,6 @@
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
 	color = "#8040FF"
-	scannable = 1
 
 /datum/reagent/tricordrazine/affect_blood(mob/living/carbon/M, alien, removed)
 	if(alien != IS_DIONA)//Heals everyone besides diona on all 4 base damage types.

@@ -7,15 +7,19 @@
 	taste_mult = 3
 	reagent_state = REAGENT_SOLID
 	color = "#964e06"
-	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 0.5
-	scannable = 1
+	bloodstream_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 0.5
 
-/datum/reagent/vermicetol/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/vermicetol/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
+		return
+		
 	var/chem_effective = 1
-	if(alien == IS_SLIME)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		chem_effective = 0.75
-	if(alien != IS_DIONA)
-		M.heal_organ_damage(8 * removed * chem_effective, 0)
+	
+	entity.heal_organ_damage(8 * removed * chem_effective)
 
 /datum/reagent/calciumcarbonate
 	name = "calcium carbonate"
@@ -26,7 +30,6 @@
 	color = "#eae6e3"
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 0.8
 	metabolism = REM * 0.4
-	scannable = 1
 
 /datum/reagent/calciumcarbonate/affect_blood(mob/living/carbon/M, alien, removed) // Why would you inject this.
 	if(alien != IS_DIONA)
@@ -42,7 +45,6 @@
 	description = "Carthatoline is strong evacuant used to treat severe poisoning."
 	reagent_state = REAGENT_LIQUID
 	color = "#225722"
-	scannable = 1
 
 /datum/reagent/carthatoline/affect_blood(mob/living/carbon/M, alien, removed)
 	if(alien == IS_DIONA)
@@ -146,7 +148,6 @@
 	color = "#99CCFF"
 	metabolism = REM * 0.05
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
-	scannable = 1
 
 /datum/reagent/synaptizine/affect_blood(mob/living/carbon/M, alien, removed)
 	var/chem_effective = 1
@@ -198,7 +199,6 @@
 	color = "#FFFF66"
 	metabolism = REM * 0.25
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
-	scannable = 1
 
 /datum/reagent/alkysine/affect_blood(mob/living/carbon/M, alien, removed)
 	if(alien == IS_DIONA)
@@ -221,7 +221,6 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#C8A5DC"
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
-	scannable = 1
 
 /datum/reagent/imidazoline/affect_blood(mob/living/carbon/M, alien, removed)
 	M.eye_blurry = max(M.eye_blurry - 5, 0)
@@ -245,7 +244,6 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#561EC3"
 	overdose_threshold = 10
-	scannable = 1
 
 /datum/reagent/peridaxon/affect_blood(mob/living/carbon/M, alien, removed)
 	if(ishuman(M))
@@ -272,7 +270,6 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#664B9B"
 	overdose_threshold = 10
-	scannable = 1
 
 /datum/reagent/nanoperidaxon/affect_blood(mob/living/carbon/M, alien, removed)
 	if(ishuman(M))
@@ -297,7 +294,6 @@
 	color = "#C9BCE3"
 	metabolism = REM * 0.5
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 0.5
-	scannable = 1
 
 /datum/reagent/osteodaxon/affect_blood(mob/living/carbon/M, alien, removed)
 	if(alien == IS_DIONA)
@@ -319,7 +315,6 @@
 	color = "#4246C7"
 	metabolism = REM * 0.5
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 0.5
-	scannable = 1
 	var/repair_strength = 3
 
 /datum/reagent/myelamine/affect_blood(mob/living/carbon/M, alien, removed)
@@ -351,7 +346,6 @@
 	color = "#4444FF"
 	metabolism = REM * 1.5
 	overdose_threshold = 10
-	scannable = 1
 
 /datum/reagent/respirodaxon/affect_blood(mob/living/carbon/M, alien, removed)
 	var/repair_strength = 1
@@ -382,7 +376,6 @@
 	color = "#8B4513"
 	metabolism = REM * 1.5
 	overdose_threshold = 10
-	scannable = 1
 
 /datum/reagent/gastirodaxon/affect_blood(mob/living/carbon/M, alien, removed)
 	var/repair_strength = 1
@@ -413,7 +406,6 @@
 	color = "#D2691E"
 	metabolism = REM * 1.5
 	overdose_threshold = 10
-	scannable = 1
 
 /datum/reagent/hepanephrodaxon/affect_blood(mob/living/carbon/M, alien, removed)
 	var/repair_strength = 1
@@ -446,7 +438,6 @@
 	color = "#FF4444"
 	metabolism = REM * 1.5
 	overdose_threshold = 10
-	scannable = 1
 
 /datum/reagent/cordradaxon/affect_blood(mob/living/carbon/M, alien, removed)
 	var/repair_strength = 1
@@ -473,7 +464,6 @@
 	reagent_state = REAGENT_SOLID
 	color = "#7B4D4F"
 	overdose_threshold = 20
-	scannable = 1
 
 /datum/reagent/immunosuprizine/affect_blood(mob/living/carbon/M, alien, removed)
 	var/strength_mod = 1
@@ -530,7 +520,6 @@
 	color = "#84B2B0"
 	metabolism = REM * 0.75
 	overdose_threshold = 20
-	scannable = 1
 
 /datum/reagent/skrellimmuno/affect_blood(mob/living/carbon/M, alien, removed)
 	var/strength_mod = 0.5
@@ -645,7 +634,6 @@
 	color = "#408000"
 	metabolism = REM * 0.25
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
-	scannable = 1
 
 /datum/reagent/hyronalin/affect_blood(mob/living/carbon/M, alien, removed)
 	if(alien == IS_DIONA)
@@ -661,7 +649,6 @@
 	color = "#008000"
 	metabolism = REM * 0.25
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
-	scannable = 1
 
 /datum/reagent/arithrazine/affect_blood(mob/living/carbon/M, alien, removed)
 	if(alien == IS_DIONA)
@@ -681,7 +668,6 @@
 	metabolism = REM * 0.25
 	mrate_static = TRUE
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
-	scannable = 1
 	data = 0
 
 /datum/reagent/spaceacillin/affect_blood(mob/living/carbon/M, alien, removed)
@@ -709,7 +695,6 @@
 	color = "#FFB0B0"
 	mrate_static = TRUE
 	overdose_threshold = 10
-	scannable = 1
 	data = 0
 
 /datum/reagent/corophizine/affect_blood(mob/living/carbon/M, alien, removed)
@@ -777,7 +762,6 @@
 	metabolism = REM * 0.4
 	mrate_static = TRUE
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
-	scannable = 1
 	data = 0
 	can_overdose_touch = TRUE
 
@@ -868,7 +852,6 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#C8A5DC"
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
-	scannable = 1
 
 /datum/reagent/leporazine/affect_blood(mob/living/carbon/M, alien, removed)
 	if(alien == IS_DIONA)
@@ -886,7 +869,6 @@
 	reagent_state = REAGENT_SOLID
 	color = "#669900"
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
-	scannable = 1
 
 /datum/reagent/rezadone/affect_blood(mob/living/carbon/M, alien, removed)
 	if(alien == IS_DIONA)
@@ -1120,7 +1102,6 @@
 	taste_description = "metallic"
 	reagent_state = REAGENT_LIQUID
 	color = "#333333"
-	scannable = 1
 
 /datum/reagent/nif_repair_nanites/affect_blood(mob/living/carbon/M, alien, removed)
 	if(ishuman(M))
@@ -1189,7 +1170,6 @@
 	metabolism = REM * 0.016
 	mrate_static = TRUE
 	color = "#52ca22"
-	scannable = 1
 	overdose_threshold = 16
 
 /datum/reagent/neuratrextate/affect_ingest(mob/living/carbon/M)

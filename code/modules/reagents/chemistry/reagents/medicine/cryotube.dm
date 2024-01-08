@@ -9,7 +9,6 @@
 	color = "#8080FF"
 	metabolism = REM * 0.5
 	mrate_static = TRUE
-	scannable = 1
 
 /datum/reagent/cryoxadone/affect_blood(mob/living/carbon/M, alien, removed)
 	if(M.bodytemperature < 170)
@@ -34,7 +33,6 @@
 	color = "#80BFFF"
 	metabolism = REM * 0.5
 	mrate_static = TRUE
-	scannable = 1
 
 /datum/reagent/clonexadone/affect_blood(mob/living/carbon/M, alien, removed)
 	if(M.bodytemperature < 170)
@@ -60,7 +58,6 @@
 	color = "#94B21C"
 	metabolism = REM * 0.5
 	mrate_static = TRUE
-	scannable = 1
 
 /datum/reagent/necroxadone/on_mob_life(mob/living/carbon/M, alien, datum/reagent_holder/metabolism/location)
 	if(M.stat == DEAD && M.has_modifier_of_type(/datum/modifier/bloodpump_corpse))

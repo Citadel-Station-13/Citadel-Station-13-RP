@@ -8,7 +8,6 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#C8A5DC"
 	overdose_threshold = 60
-	scannable = 1
 	metabolism = 0.02
 	mrate_static = TRUE
 
@@ -32,7 +31,6 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#CB68FC"
 	overdose_threshold = 30
-	scannable = 1
 	metabolism = 0.02
 	mrate_static = TRUE
 
@@ -55,7 +53,6 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#800080"
 	overdose_threshold = 20
-	scannable = 1
 	metabolism = 0.02
 	mrate_static = TRUE
 

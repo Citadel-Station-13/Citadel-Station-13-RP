@@ -142,7 +142,9 @@
 	priority = 100
 	required_reagents = list("dexalinp" = 2, "biomass" = 2, MAT_PHORON = 1)
 	catalysts = list(MAT_PHORON = 5)
-	inhibitors = list("dexalin" = 1)
+	moderators = list(
+		/datum/reagent/dexalin = INFINITY,
+	)
 	result_amount = 2
 
 /datum/chemical_reaction/gastirodaxon
