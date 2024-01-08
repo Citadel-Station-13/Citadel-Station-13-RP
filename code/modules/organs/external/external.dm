@@ -1447,6 +1447,10 @@ Note that amputating the affected organ does in fact remove the infection from t
 			if(!istype(I,/obj/item/implant) && !istype(I,/obj/item/nif))
 				return TRUE
 
-//* Physiology *//.
+//* Environmentals *//
+
+// todo: limb specific
+
+//* Physiology *//
 
 #warn go grab shit from physiology.dm

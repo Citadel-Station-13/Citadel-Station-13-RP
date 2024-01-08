@@ -132,7 +132,7 @@
 
 	var/has_feral_abilities = FALSE
 
-/datum/species/shapeshifter/xenochimera/handle_environment_special(mob/living/carbon/human/H)
+/datum/species/shapeshifter/xenochimera/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
 	//If they're KO'd/dead, they're probably not thinking a lot about much of anything.
 	if(!H.stat)
 		handle_feralness(H)

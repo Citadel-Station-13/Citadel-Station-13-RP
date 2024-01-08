@@ -146,7 +146,7 @@
 /datum/species/shadekin/get_random_name()
 	return "shadekin"
 
-/datum/species/shadekin/handle_environment_special(mob/living/carbon/human/H)
+/datum/species/shadekin/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
 	handle_shade(H)
 
 /datum/species/shadekin/can_breathe_water()

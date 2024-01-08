@@ -671,11 +671,16 @@
 	breath.update_values()
 	return 1
 
-/mob/living/carbon/human/handle_environment(datum/gas_mixture/environment)
-	if(!environment)
-		return
+/**
+ * @params
+ * * environment - the gas mixture we're in
+ * * dt - seconds to simulate
+ */
+/mob/living/carbon/human/handle_environment(datum/gas_mixture/environment, dt)
+
 	//Stuff like the xenomorph's plasma regen happens here.
-	species.handle_environment_special(src)
+	// todo: why the shit is this here
+	species.handle_environment_special(src, environment, dt)
 
 	if(is_incorporeal())
 		return
@@ -718,9 +723,14 @@
 						src.nutrition -= 50
 					last_synthcooling_message = world.time + 60 SECONDS
 
-	//Moved pressure calculations here for use in skip-processing check.
-	var/pressure = environment.return_pressure()
-	var/adjusted_pressure = calculate_affecting_pressure(pressure)
+	#warn above
+	
+	var/absolute_pressure = environment.return_pressure()
+	#warn audit affecting
+	var/affecting_pressure = calculate_affecting_pressure(absolute_pressure)
+
+	#warn below
+
 
 	//Check for contaminants before anything else because we don't want to skip it.
 	for(var/g in environment.gas)
@@ -896,19 +906,13 @@
 		if(nutrition >= 2) //If we are very, very cold we'll use up quite a bit of nutriment to heat us up.
 			nutrition -= 2
 		var/recovery_amt = max((body_temperature_difference / BODYTEMP_AUTORECOVERY_DIVISOR), BODYTEMP_AUTORECOVERY_MINIMUM)
-		//to_chat(world, "Cold. Difference = [body_temperature_difference]. Recovering [recovery_amt]")
-//				log_debug(SPAN_DEBUG("Cold. Difference = [body_temperature_difference]. Recovering [recovery_amt]"))
 		bodytemperature += recovery_amt
 	else if(species.cold_level_1 <= bodytemperature && bodytemperature <= species.heat_level_1)
 		var/recovery_amt = body_temperature_difference / BODYTEMP_AUTORECOVERY_DIVISOR
-		//to_chat(world, "Norm. Difference = [body_temperature_difference]. Recovering [recovery_amt]")
-//				log_debug(SPAN_DEBUG("Norm. Difference = [body_temperature_difference]. Recovering [recovery_amt]"))
 		bodytemperature += recovery_amt
 	else if(bodytemperature > species.heat_level_1) //360.15 is 310.15 + 50, the temperature where you start to feel effects.
 		adjust_hydration(-(10 * DEFAULT_THIRST_FACTOR)) //Sweating
 		var/recovery_amt = min((body_temperature_difference / BODYTEMP_AUTORECOVERY_DIVISOR), -BODYTEMP_AUTORECOVERY_MINIMUM)	//We're dealing with negative numbers
-		//to_chat(world, "Hot. Difference = [body_temperature_difference]. Recovering [recovery_amt]")
-//				log_debug(SPAN_DEBUG("Hot. Difference = [body_temperature_difference]. Recovering [recovery_amt]"))
 		bodytemperature += recovery_amt
 
 	//This proc returns a number made up of the flags for body parts which you are protected on. (such as HEAD, UPPER_TORSO, LOWER_TORSO, etc. See setup.dm for the full list)

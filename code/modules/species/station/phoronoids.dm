@@ -79,7 +79,7 @@
 
 	body_temperature = T20C
 
-/datum/species/phoronoid/handle_environment_special(mob/living/carbon/human/H)
+/datum/species/phoronoid/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
 	var/turf/T = H.loc
 	if(!T)
 		return

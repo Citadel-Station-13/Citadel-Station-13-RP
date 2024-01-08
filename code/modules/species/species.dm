@@ -776,7 +776,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	return
 
 // Only used for alien plasma weeds atm, but could be used for Dionaea later.
-/datum/species/proc/handle_environment_special(var/mob/living/carbon/human/H)
+/datum/species/proc/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
 	return
 
 // Used to update alien icons for aliens.

@@ -139,7 +139,7 @@
 /datum/species/crew_shadekin/can_breathe_water()
 	return TRUE	//they dont quite breathe
 
-/datum/species/crew_shadekin/handle_environment_special(mob/living/carbon/human/H)
+/datum/species/crew_shadekin/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
 	handle_shade(H)
 
 /datum/species/crew_shadekin/add_inherent_verbs(mob/living/carbon/human/H)

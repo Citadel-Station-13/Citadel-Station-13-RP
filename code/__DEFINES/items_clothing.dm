@@ -1,6 +1,4 @@
-
-/// For how bright candles are.
-#define CANDLE_LUM 3
+// todo: this all should go somewhere else.
 
 // Bitflags for the percentual amount of protection a piece of clothing which covers the body part offers.
 // Used with human/proc/get_heat_protection() and human/proc/get_cold_protection().
