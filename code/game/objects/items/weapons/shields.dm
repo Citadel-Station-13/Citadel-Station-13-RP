@@ -331,7 +331,7 @@
 	if ((MUTATION_CLUMSY in user.mutations) && prob(50))
 		to_chat(user, "<span class='warning'>You beat yourself in the head with [src].</span>")
 		var/mob/living/carbon/human/H = ishuman(user)? user : null
-		H?.take_organ_damage(5)
+		H?.take_random_targeted_damage(brute = 5)
 	active = !active
 	if (active)
 		damage_force = 10

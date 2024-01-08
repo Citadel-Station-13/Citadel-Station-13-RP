@@ -434,7 +434,7 @@ var/list/sacrificed = list()
 				L.ajourn=0
 				return
 			else
-				L.take_organ_damage(3, 0)
+				L.take_random_targeted_damage(brute = 3, brute = 0)
 			sleep(100)
 	return fizzle()
 
@@ -488,7 +488,7 @@ var/list/sacrificed = list()
 	log_and_message_admins("used a manifest rune.")
 	var/mob/living/user = usr
 	while(this_rune && user && user.stat==CONSCIOUS && user.client && user.loc==this_rune.loc)
-		user.take_organ_damage(1, 0)
+		user.take_random_targeted_damage(brute = 1)
 		sleep(30)
 	if(D)
 		D.visible_message("<span class='danger'>[D] slowly dissipates into dust and bones.</span>", \
@@ -793,7 +793,7 @@ var/list/sacrificed = list()
 	usr.say("Khari[pick("'","`")]d! Eske'te tannin!")
 	src.density = !src.density
 	var/mob/living/user = usr
-	user.take_organ_damage(2, 0)
+	user.take_random_targeted_damage(brute = 2)
 	if(src.density)
 		to_chat(usr, "<span class='danger'>Your blood flows into the rune, and you feel that the very space over the rune thickens.</span>")
 	else

@@ -250,7 +250,7 @@
 				range = MESSAGE_RANGE_COMBAT_LOUD,
 				visible = SPAN_DANGER("[clickchain.performer] shoves [affecting] against \the [target]!")
 			)
-			affecting.take_organ_damage(10)
+			affecting.take_random_targeted_damage(brute = 10)
 			affecting.afflict_knockdown(0.5 SECONDS)
 			qdel(src)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
@@ -260,7 +260,7 @@
 				range = MESSAGE_RANGE_COMBAT_LOUD,
 				visible = SPAN_DANGER("[clickchain.performer] slams [affecting] against \the [target]!")
 			)
-			affecting.take_organ_damage(20)
+			affecting.take_random_targeted_damage(brute = 20)
 			affecting.afflict_paralyze(1 SECONDS)
 			affecting.afflict_knockdown(2 SECONDS)
 			qdel(src)
@@ -271,7 +271,7 @@
 				range = MESSAGE_RANGE_COMBAT_LOUD,
 				visible = SPAN_DANGER("[clickchain.performer] smashes [affecting] against \the [target]!")
 			)
-			affecting.take_organ_damage(30)
+			affecting.take_random_targeted_damage(brute = 30)
 			affecting.afflict_paralyze(3 SECONDS)
 			affecting.afflict_knockdown(4.5 SECONDS)
 			qdel(src)

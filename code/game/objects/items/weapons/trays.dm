@@ -38,7 +38,7 @@
 	if((MUTATION_CLUMSY in L.mutations) && prob(50))              //What if he's a clown?
 		to_chat(victim, "<span class='warning'>You accidentally slam yourself with the [src]!</span>")
 		L.afflict_paralyze(20 * 1)
-		L.take_organ_damage(2)
+		L.take_random_targeted_damage(brute = 2)
 		if(prob(50))
 			playsound(victim, 'sound/items/trayhit1.ogg', 50, 1)
 			return
@@ -60,9 +60,9 @@
 
 		if(prob(15))
 			victim.afflict_paralyze(20 * 3)
-			victim.take_organ_damage(3)
+			victim.take_random_targeted_damage(brute = 3)
 		else
-			victim.take_organ_damage(5)
+			victim.take_random_targeted_damage(brute = 5)
 		if(prob(50))
 			playsound(victim, 'sound/items/trayhit1.ogg', 50, 1)
 			for(var/mob/O in viewers(victim, null))
@@ -106,10 +106,10 @@
 				O.show_message(SPAN_DANGER("[L] slams [victim] with the tray!"), SAYCODE_TYPE_VISIBLE)
 		if(prob(10))
 			victim.afflict_stun(20 * rand(1,3))
-			victim.take_organ_damage(3)
+			victim.take_random_targeted_damage(brute = 3)
 			return
 		else
-			victim.take_organ_damage(5)
+			victim.take_random_targeted_damage(brute = 5)
 			return
 
 	else //No eye or head protection, tough luck!
@@ -130,10 +130,10 @@
 				O.show_message(SPAN_DANGER("[L] slams [victim] in the face with the tray!"), SAYCODE_TYPE_VISIBLE)
 		if(prob(30))
 			victim.afflict_stun(20 * rand(2,4))
-			victim.take_organ_damage(4)
+			victim.take_random_targeted_damage(brute = 4)
 			return
 		else
-			victim.take_organ_damage(8)
+			victim.take_random_targeted_damage(brute = 8)
 			if(prob(30))
 				victim.afflict_paralyze(20 * 2)
 				return

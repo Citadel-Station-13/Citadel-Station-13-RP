@@ -632,7 +632,7 @@
 		if(affecting.take_damage(7))
 			M:UpdateDamageIcon()
 	else
-		M.take_organ_damage(7)
+		M.take_random_targeted_damage(brute = 7)
 	M.eye_blurry += rand(3,4)
 	return
 
