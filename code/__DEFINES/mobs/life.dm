@@ -1,4 +1,7 @@
-//* Medical system defines go in here
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
+//* This file is called 'life', but realistically is the resting place of all things metabolism, health, and related. *//
 
 //?  Health - Core
 /** Round damage values to this value
@@ -8,6 +11,10 @@
 #define DAMAGE_TIER_PRECISION		0.01
 #define ARMOR_PRECISION				0.001
 #define ARMOR_TIER_PRECISION		0.01
+
+//* Health - Environmental Interactions *//
+
+
 
 //?  CPR
 /// how long CPR suppresses brain decay

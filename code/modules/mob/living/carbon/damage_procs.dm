@@ -20,5 +20,5 @@
  * * damage_mode - DAMAG_EMODE_* flags for the form of this damage
  * * weapon descriptor - a string describing how it happened ("flash burns", "multiple precision cuts", etc)
  */
-/mob/living/carbon/take_overall_damage(brute, burn, damage_mode, weapon_descriptor)
+/mob/living/carbon/take_overall_damage(brute, burn, damage_mode, weapon_descriptor, defer_updates)(brute, burn, damage_mode, weapon_descriptor)
 	#warn impl

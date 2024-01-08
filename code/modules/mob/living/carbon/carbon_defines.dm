@@ -1,3 +1,15 @@
+/**
+ * The root type of complex mobs.
+ * 
+ * These mobs have:
+ * * organ / bodypart simulation
+ * * reagent metabolism
+ * * species
+ * * virus simulation
+ * * and more.
+ * 
+ * todo: this should be carbon.dm at some point
+ */
 /mob/living/carbon
 	gender = MALE
 	throw_force = 10

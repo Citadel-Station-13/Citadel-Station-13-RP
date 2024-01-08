@@ -729,19 +729,47 @@
 
 	#warn above
 	
-	var/absolute_pressure = environment.return_pressure()
+	var/absolute_pressure = isnull(environment)? 0 : environment.return_pressure()
 	#warn audit affecting
 	var/affecting_pressure = calculate_affecting_pressure(absolute_pressure)
 
 	// legacy: contamination
 	//Check for contaminants before anything else because we don't want to skip it.
-	for(var/g in environment.gas)
+	for(var/g in environment?.gas)
 		if(global.gas_data.flags[g] & GAS_FLAG_CONTAMINANT && environment.gas[g] > 1)
 			pl_effects()
 			break
+		
 	
+	
+	// we simulate in space, or in somewhere with a gasmixture. otherwise, we don't care.
 	if(istype(loc, /turf/space))
-		// in spcae, we use blackbody radiation
+		// in space, we use blackbody radiation
+		#warn impl
+	else if(!isnull(environment))
+		// otherwise, we use environment temperature
+		var/environment_temperature = environment.temperature
+		var/difference = environment_temperature - bodytemperature
+		// relative density multiplier
+		var/density_multiplier = environment.total_moles / CLEL_MOLES
+		
+		var/thermal_insulation
+		
+		var/temperature_change = difference / MOB_BODYTEMP_ENVIRONMENT_EQUALIZATION_DIVISOR
+		
+		if(difference < 0)
+			// we are being cooled
+			thermal_insulation = get_cold_protection(environment_temperature)
+			if(thermal_insulation < 1)
+				// we aren't entirely shielded
+				adjust_bodytemperature()
+		else
+			// we are getting heated
+			thermal_insulation = get_heat_protection(environment_temperature)
+			if(thermal_insulation < 1)
+				// we aren't entirely shielded
+				adjust_bodytemperature()
+			
 	#warn below
 
 	if(istype(loc, /turf/space)) // No FBPs overheating on space turfs inside mechs or people.
@@ -752,20 +780,6 @@
 			var/temperature_loss = heat_loss/HUMAN_HEAT_CAPACITY
 			bodytemperature -= temperature_loss
 	else
-		var/loc_temp = T0C
-		if(istype(loc, /obj/mecha))
-			var/obj/mecha/M = loc
-			loc_temp =  M.return_temperature()
-		else if(istype(loc, /obj/machinery/atmospherics/component/unary/cryo_cell))
-			var/obj/machinery/atmospherics/component/unary/cryo_cell/CC = loc
-			loc_temp = CC.air_contents.temperature
-		else
-			loc_temp = environment.temperature
-
-		if(adjusted_pressure < species.warning_high_pressure && adjusted_pressure > species.warning_low_pressure && abs(loc_temp - bodytemperature) < 20 && bodytemperature < species.heat_level_1 && bodytemperature > species.cold_level_1)
-			pressure_alert = 0
-			return // Temperatures are within normal ranges, fuck all this processing. ~Ccomp
-
 		//Body temperature adjusts depending on surrounding atmosphere based on your thermal protection (convection)
 		var/temp_adj = 0
 		if(loc_temp < bodytemperature)			//Place is colder than we are
@@ -780,13 +794,21 @@
 		//Use heat transfer as proportional to the gas density. However, we only care about the relative density vs standard 101 kPa/20 C air. Therefore we can use mole ratios
 		var/density = environment.total_moles / CELL_MOLES
 		bodytemperature += between(BODYTEMP_COOLING_MAX, temp_adj*density, BODYTEMP_HEATING_MAX)
+	
+	#warn above
+
+	// legacy: godmode check
+	if(status_flags & STATUS_GODMODE)
+		fire_alert = 0
+		pressure_alert = 0
+		return
+	
+	// todo: completely rework eveyrthing about this to be surface vs deep burns
 
 	// +/- 50 degrees from 310.15K is the 'safe' zone, where no damage is dealt.
 	if(bodytemperature >= species.heat_level_1)
 		//Body temperature is too hot.
 		fire_alert = max(fire_alert, 1)
-		if(status_flags & STATUS_GODMODE)
-			return 1	//godmode
 
 		var/burn_dam = 0
 
@@ -803,16 +825,12 @@
 				else
 					burn_dam = HEAT_DAMAGE_LEVEL_1
 
-		take_overall_damage(burn=burn_dam, used_weapon = "High Body Temperature")
+		take_overall_damage(burn = burn_dam, damage_mode = DAMAGE_MODE_GRADUAL, weapon_descriptor = "internal burns")
 		fire_alert = max(fire_alert, 2)
 
 	else if(bodytemperature <= species.cold_level_1 && !IS_DEAD(src)) // dead check is temporary bandaid for health rework
 		//Body temperature is too cold.
 		fire_alert = max(fire_alert, 1)
-
-		if(status_flags & STATUS_GODMODE)
-			return 1	//godmode
-
 
 		if(!istype(loc, /obj/machinery/atmospherics/component/unary/cryo_cell))
 			var/cold_dam = 0
@@ -825,17 +843,12 @@
 				else
 					cold_dam = COLD_DAMAGE_LEVEL_1
 
-			take_overall_damage(burn=cold_dam, used_weapon = "Low Body Temperature")
+			take_overall_damage(burn = cold_dam, damage_mode = DAMAGE_MODE_GRADUAL, weapon_descriptor = "frostbite")
 			fire_alert = max(fire_alert, 1)
-
-	// Account for massive pressure differences.  Done by Polymorph
-	// Made it possible to actually have something that can protect against high pressure... Done by Errorage. Polymorph now has an axe sticking from his head for his previous hardcoded nonsense!
-	if(status_flags & STATUS_GODMODE)
-		return 1	//godmode
 
 	if(adjusted_pressure >= species.hazard_high_pressure)
 		var/pressure_damage = min( ( (adjusted_pressure / species.hazard_high_pressure) -1 )*PRESSURE_DAMAGE_COEFFICIENT , MAX_HIGH_PRESSURE_DAMAGE)
-		take_overall_damage(brute=pressure_damage, used_weapon = "High Pressure")
+		take_overall_damage(brute = pressure_damage, damage_mode = DAMAGE_MODE_GRADUAL, weapon_descriptor = "barotrauma")
 		pressure_alert = 2
 	else if(adjusted_pressure >= species.warning_high_pressure)
 		pressure_alert = 1
@@ -846,7 +859,7 @@
 	else
 		if( !(MUTATION_COLD_RESIST in mutations))
 			if(!isSynthetic() || !nif || !nif.flag_check(NIF_O_PRESSURESEAL,NIF_FLAGS_OTHER)) // NIF pressure seals
-				take_overall_damage(brute=LOW_PRESSURE_DAMAGE, used_weapon = "Low Pressure")
+				take_overall_damage(brute = LOW_PRESSURE_DAMAGE, damage_mode = DAMAGE_MODE_GRADUAL, weapon_descriptor = "barotrauma")
 			if(getOxyLoss() < 55) 		// 12 OxyLoss per 4 ticks when wearing internals;    unconsciousness in 16 ticks, roughly half a minute
 				var/pressure_dam = 3	// 16 OxyLoss per 4 ticks when no internals present; unconsciousness in 13 ticks, roughly twenty seconds
 										// (Extra 1 oxyloss from failed breath)

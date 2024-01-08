@@ -15,6 +15,8 @@
 #define THERMAL_PROTECTION_HAND_LEFT   0.025
 #define THERMAL_PROTECTION_HAND_RIGHT  0.025
 
+/// when being temperature-modified by environment, 
+
 // Pressure limits.
 /// This determines at what pressure the ultra-high pressure red icon is displayed. (This one is set as a constant)
 #define  HAZARD_HIGH_PRESSURE 550
@@ -38,10 +40,12 @@
 #define BODYTEMP_COOLING_MAX           -30
 /// The maximum number of degrees that your body can heat up in 1 tick,   when in a hot  area.
 #define BODYTEMP_HEATING_MAX            30
+
 /// The limit the human body can take before it starts taking damage from heat.
-#define BODYTEMP_HEAT_DAMAGE_LIMIT 360.15
+#define LEGACY_BODYTEMP_HEAT_DAMAGE_THRESHOLD 360.15
 /// The limit the human body can take before it starts taking damage from coldness.
-#define BODYTEMP_COLD_DAMAGE_LIMIT 260.15
+#define LEGACY_BODYTEMP_COLD_DAMAGE_THRESHOLD 260.15
+
 /// What min_cold_protection_temperature is set to for space-helmet quality headwear. MUST NOT BE 0.
 #define SPACE_HELMET_MIN_COLD_PROTECTION_TEMPERATURE 2.0
 /// What min_cold_protection_temperature is set to for space-suit quality jumpsuits or suits. MUST NOT BE 0.

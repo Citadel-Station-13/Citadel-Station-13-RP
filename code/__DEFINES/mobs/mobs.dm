@@ -1,4 +1,6 @@
 
+// todo: if i haven't bad touched something in here, i probably need to & will ~silicons
+
 // These are used as the layers for the icons, as well as indexes in a list that holds onto them.
 // Technically the layers used are all -100+layer to make them FLOAT_LAYER overlays.
 //! Human Overlays Indexes/////////
