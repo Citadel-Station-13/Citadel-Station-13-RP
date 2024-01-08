@@ -1,24 +1,43 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
-/**
- * @params
- * * brute - brute damage to take
- * * burn - burn damage to take
- * * damage_mode - DAMAGE_MODE_* flags for the form of this damage
- * * body_zone - body zone define (BP_*)
- * * weapon_descriptor - a string describing how it happened ("flash burns", "multiple precision cuts", etc)
- */
-/mob/living/carbon/take_targeted_damage(brute, burn, damage_mode, body_zone, weapon_descriptor)
+//* Raw Damage *//
 
-	#warn impl
+/mob/living/carbon/take_random_targeted_damage(brute, burn, damage_mode, weapon_descriptor, defer_updates)
+	if(status_flags & STATUS_GODMODE)
+		return 0
+	var/list/obj/item/organ/external/targets = get_damageable_external_organs()
+	if(!length(targets))
+		return 0
+	var/obj/item/organ/external/target = pick(targets)
+	return take_targeted_damage(brute, burn, damage_mod, target.organ_tag, weapon_descriptor, defer_updates)
 
-/**
- * @params
- * * brute - brute damage to take
- * * burn - burn damage to take
- * * damage_mode - DAMAG_EMODE_* flags for the form of this damage
- * * weapon descriptor - a string describing how it happened ("flash burns", "multiple precision cuts", etc)
- */
+/mob/living/carbon/take_targeted_damage(brute, burn, damage_mode, body_zone, weapon_descriptor, defer_updates)
+	if(status_flags & STATUS_GODMODE)
+		return 0
+
+	var/obj/item/organ/external/bodypart = get_bodypart_for_zone(body_zone)
+	if(isnull(bodypart))
+		return 0
+
+	. = bodypart.inflict_bodypart_damage(brute, burn, damage_mode, weapon_descriptor, defer_updates)
+
+	if(!defer_updates && .)
+		update_health()
+		UpdateDamageIcon()
+
 /mob/living/carbon/take_overall_damage(brute, burn, damage_mode, weapon_descriptor, defer_updates)
-	#warn impl
+	if(status_flags & STATUS_GODMODE)
+		return 0
+
+	. = 0
+
+	var/list/obj/item/organ/external/targets = get_damageable_external_organs()
+	var/divisor = 1 / length(targets)
+
+	for(var/obj/item/organ/external/external/target as anything in targets)
+		. += target.inflict_bodypart_damage(brute / divisor, burn / divisor, damage_mode, weapon_descriptor, TRUE)
+
+	if(!defer_updates & .)
+		update_health()
+		UpdateDamageIcon()

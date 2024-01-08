@@ -318,7 +318,7 @@
 /mob/living/carbon/human/proc/get_damageable_organs()
 	var/list/obj/item/organ/external/parts = list()
 	for(var/obj/item/organ/external/O in organs)
-		if(O.is_damageable())
+		if(O.is_damageable(TRUE))
 			parts += O
 	return parts
 

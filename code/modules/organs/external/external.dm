@@ -9,7 +9,7 @@
 	//* Coverage *//
 	/// body_cover_flags that count as covering us
 	var/body_part_flags = NONE
-	
+
 	//* Physiology *//
 	/// local physiology holder
 	var/datum/local_physiology/physiology
@@ -311,9 +311,32 @@
 			   DAMAGE PROCS
 ****************************************************/
 
-/obj/item/organ/external/proc/is_damageable(var/additional_damage = 0)
-	//Continued damage to vital organs can kill you, and robot organs don't count towards total damage so no need to cap them.
-	return (vital || (robotic >= ORGAN_ROBOT) || brute_dam + burn_dam + additional_damage < max_damage)
+/obj/item/organ/external/proc/is_damageable(check_damage_cap)
+	// todo: rework
+	if(check_damage_cap)
+		//Continued damage to vital organs can kill you, and robot organs don't count towards total damage so no need to cap them.
+		// todo: this is absolutely fucking stupid, rework asap.
+		if(vital || (robotic >= ORGAN_ROBOT) || brute_dam + burn_dam < max_damage)
+			return TRUE
+		return FALSE
+	return TRUE
+
+/**
+ * process incoming damage
+ *
+ * @params
+ * * brute - brute damage to take
+ * * burn - burn damage to take
+ * * damage_mode - DAMAG_EMODE_* flags for the form of this damage
+ * * weapon descriptor - a string describing how it happened ("flash burns", "multiple precision cuts", etc)
+ * * defer_updates - update health / perform damage checks?
+ */
+/obj/item/organ/external/proc/inflict_bodypart_damage(brute, burn, damage_mode, weapon_descriptor, defer_updates)
+	// todo: get rid of this shit, should be physiology
+	brute = round(brute * brute_mod, 0.1)
+	burn = round(burn * burn_mod, 0.1)
+
+	#warn impl
 
 /obj/item/organ/external/take_damage(brute, burn, sharp, edge, used_weapon = null, list/forbidden_limbs = list(), permutation = 0)
 	brute = round(brute * brute_mod, 0.1)
@@ -344,7 +367,7 @@
 	// push them faster into paincrit though, as the additional damage is converted into shock.
 	var/brute_overflow = 0
 	var/burn_overflow = 0
-	if(is_damageable(brute + burn) || !config_legacy.limbs_can_break)
+	if(is_damageable(TRUE) || !config_legacy.limbs_can_break)
 		if(brute)
 			if(can_cut)
 				if(sharp && !edge)
