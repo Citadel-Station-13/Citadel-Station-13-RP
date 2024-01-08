@@ -74,6 +74,7 @@
 		add_verb(src, /mob/living/simple_mob/protean_blob/proc/rig_transform)
 		add_verb(src, /mob/living/simple_mob/protean_blob/proc/leap_attack)
 		add_verb(src, /mob/living/simple_mob/protean_blob/proc/chameleon_apperance)
+		add_verb(src, /mob/living/simple_mob/protean_blob/proc/chameleon_color)
 		add_verb(src, /mob/living/proc/usehardsuit)
 		INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, update_health))
 	else
@@ -632,6 +633,7 @@
 	
 	switch(input(src,"What type of clothing would you like to mimic or reset appearance?","Mimic Clothes") as null|anything in list("under", "suit", "hat", "gloves", "shoes", "back", "mask", "glasses", "belt", "ears", "headsets", "reset"))
 		if("reset")
+			H.color = initial(H.color)
 			H.sync(src)
 			return
 		if("under")
@@ -663,18 +665,33 @@
 	if(!ispath(chosen_list[picked]))
 		return
 
-	var/color_in = input("Pick a color for the clothing. Cancelling sets it to default.","Color", H.color) as null|color
-
-
 	H.disguise(chosen_list[picked])
-	if(color_in)
-		H.color = color_in
 	H.update_worn_icon()	//so our overlays update.
 	
 	if (ismob(H.loc))
 		var/mob/M = H.loc
 		M.update_inv_belt() //so our overlays
 		M.update_inv_back()
+
+/mob/living/simple_mob/protean_blob/proc/chameleon_color()
+	set name = "Chameleon Color"
+	set desc = "Allows a protean blob to change or reset its color when worn."
+	set category = "Abilities"
+
+	if(!istype(loc, /obj/item/holder))
+		to_chat(src, "<span class='notice'>You can't do that while not being held or worn.</span>")
+		return
+
+	var/obj/item/holder/H = loc
+	var/color_in = input("Pick a color. Cancelling sets it to default.","Color", H.color) as null|color
+	
+	if(color_in)
+		H.color = color_in
+	else
+		H.color = initial(H.color)
+	H.update_worn_icon()	//so our overlays update.
+
+
 /mob/living/simple_mob/protean_blob/make_perspective()
 	. = ..()
 	self_perspective.set_plane_visible(/atom/movable/screen/plane_master/augmented, INNATE_TRAIT)

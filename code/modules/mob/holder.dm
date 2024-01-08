@@ -157,7 +157,7 @@
 
 /obj/item/holder/protoblob
 	clothing_flags = ALLOWINTERNALS
-	slot_flags = SLOT_HEAD | SLOT_OCLOTHING | SLOT_HOLSTER | SLOT_ICLOTHING | SLOT_ID | SLOT_MASK | SLOT_GLOVES | SLOT_BACK | SLOT_BELT | SLOT_FEET | SLOT_EARS
+	slot_flags = SLOT_HEAD | SLOT_OCLOTHING | SLOT_HOLSTER | SLOT_ICLOTHING | SLOT_ID | SLOT_MASK | SLOT_GLOVES | SLOT_BACK | SLOT_BELT | SLOT_FEET | SLOT_EARS | SLOT_EYES
 	w_class = ITEMSIZE_TINY
 	allowed = list(/obj/item/gun,/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/melee/baton)
 
