@@ -163,6 +163,7 @@
 
 
 
+
 //Roach Types
 /obj/item/holder/roach
 	w_class = ITEMSIZE_TINY
