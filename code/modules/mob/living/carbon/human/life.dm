@@ -89,7 +89,7 @@
 
 	//No need to update all of these procs if the guy is dead.
 	if(stat != DEAD && !stasis)
-		stabilize_body_temperature() //Body temperature adjusts itself (self-regulation)
+		stabilize_body_temperature(seconds) //Body temperature adjusts itself (self-regulation)
 		weightgain()
 		process_weaver_silk()
 		handle_shock()
@@ -879,28 +879,43 @@
 	return temp_change
 */
 
-/mob/living/carbon/human/proc/stabilize_body_temperature()
-	// We produce heat naturally.
-	if (species.passive_temp_gain)
-		bodytemperature += species.passive_temp_gain
-	if (species.body_temperature == null)
-		return //this species doesn't have metabolic thermoregulation
+/**
+ * metabolism for body temperature
+ * 
+ * should only be called while alive
+ * 
+ * @params
+ * * dt - seconds for this cycle
+ */
+/mob/living/carbon/human/proc/stabilize_body_temperature(dt)
+	
+	var/buffer = bodytemperature
 
-	// FBPs will overheat when alive, prosthetic limbs are fine.
-	if(stat != DEAD && robobody_count)
-		if(!nif || !nif.flag_check(NIF_O_HEATSINKS,NIF_FLAGS_OTHER)) // NIF heatsinks prevent the base heat increase per tick if installed.
-			bodytemperature += round(robobody_count*1.15)
+	// legacy: species passive gain
+	// todo: shouldn't exist probably
+	buffer += species.passive_temp_gain * dt
+	// legacy: robot limbs gain heat
+	// todo: rewrite
+	if(robobody_count)
+		if(!nif?.flag_check(NIF_O_HEATSINKS, NIF_FLAGS_OTHER))
+			buffer += round(robobody_count* 1.15) * dt
 		var/obj/item/organ/internal/robotic/heatsink/HS = internal_organs_by_name[O_HEATSINK]
 		if(!HS || HS.is_broken()) // However, NIF Heatsinks will not compensate for a core FBP component (your heatsink) being lost.
-			bodytemperature += round(robobody_count*0.5)
+			buffer += round(robobody_count * 0.5) * dt
+
+	// legacy: thermal regulation
+	// todo: rework
+	if(species.body_temperature != null)
+		// species has metabolic thermoregulation
+		var/difference = species.body_temperature - bodytemperature
+
+		if(buffer < species.cold_level_1)
+			adjust_nutrition(-2)
+			#warn ugh
+	
+	set_bodytemperature(buffer)
 
 	var/body_temperature_difference = species.body_temperature - bodytemperature
-
-	if (abs(body_temperature_difference) < 0.5)
-		return //fuck this precision
-
-	if (on_fire)
-		return //too busy for pesky metabolic regulation
 
 	if(bodytemperature < species.cold_level_1) //260.15 is 310.15 - 50, the temperature where you start to feel effects.
 		if(nutrition >= 2) //If we are very, very cold we'll use up quite a bit of nutriment to heat us up.
