@@ -4,7 +4,8 @@
 //* Raw Damage *//
 
 /mob/living/carbon/human/take_targeted_damage(brute, burn, damage_mode, body_zone, weapon_descriptor)
-
+	if(status_flags & STATUS_GODMODE)
+		return 0
 
 #warn get rid of all this crap
 /*

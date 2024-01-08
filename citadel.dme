@@ -3421,6 +3421,7 @@
 #include "code\modules\mob\living\say.dm"
 #include "code\modules\mob\living\status_procs.dm"
 #include "code\modules\mob\living\throwing.dm"
+#include "code\modules\mob\living\vv.dm"
 #include "code\modules\mob\living\bot\assembly.dm"
 #include "code\modules\mob\living\bot\bot.dm"
 #include "code\modules\mob\living\bot\cleanbot.dm"
