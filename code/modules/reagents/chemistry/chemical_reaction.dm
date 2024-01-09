@@ -60,6 +60,8 @@
 	/// used in some bullshit complex math to determine actual reaction rate
 	/// 0 for instant
 	var/reaction_half_life = 0
+	/// when leftover volume is under this for reaction, don't care about half life and finish the rest
+	var/reaction_completion_threshold = 0.2
 
 	/// moderators: reagent ids to number to determine how much it speeds reaction
 	///

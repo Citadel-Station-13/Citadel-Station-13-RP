@@ -14,10 +14,9 @@
 	required_reagents = list("sterilizine" = 1, "foaming_agent" = 1)
 	result_amount = 1
 
-	reaction_rate = HALF_LIFE(10)
+	reaction_half_life = 10 SECONDS
 
 	temp_range = list(T0C + 100, T0C + 120)
-
 
 /datum/chemical_reaction/topical/bicarilaze
     name = "Bicarilaze"

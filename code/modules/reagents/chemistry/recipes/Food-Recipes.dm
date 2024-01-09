@@ -124,7 +124,10 @@
 	id = "dough"
 	result = null
 	required_reagents = list("egg" = 3, "flour" = 10)
-	inhibitors = list("water" = 1, "beer" = 1) //To prevent it messing with batter recipes
+	moderators = list(
+		/datum/reagent/water = 1,
+		/datum/reagent/ethanol/beer = 1,
+	)
 	result_amount = 1
 
 /datum/chemical_reaction/food/dough/on_reaction(datum/reagent_holder/holder, created_volume, instant)
