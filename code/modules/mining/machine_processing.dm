@@ -34,7 +34,6 @@
 	if(..())
 		return
 	interact(user)
-	playsound(src, "keyboard", clickvol, TRUE)
 
 /obj/machinery/mineral/processing_unit_console/attackby(var/obj/item/I, var/mob/user)
 	if(istype(I, /obj/item/card/id))
@@ -110,7 +109,7 @@
 		if("eject_id")
 			if(istype(inserted_id))
 				usr.grab_item_from_interacted_with(inserted_id, src)
-				playsound(src, 'sound/machines/terminal_eject.ogg', clickvol, TRUE)
+				playsound(src, 'sound/machines/terminal_eject.ogg', clickvol, 0)
 				inserted_id = null
 				return TRUE
 		if("claim_points")
@@ -124,7 +123,7 @@
 			if(istype(I))
 				if(!usr.attempt_insert_item_for_installation(I, src))
 					return
-				playsound(src, 'sound/machines/terminal_insert_disc.ogg', clickvol, TRUE)
+				playsound(src, 'sound/machines/terminal_insert_disc.ogg', clickvol, 0)
 				inserted_id = I
 				return TRUE
 			else
