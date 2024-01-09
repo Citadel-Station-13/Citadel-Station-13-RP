@@ -12,7 +12,9 @@
 
 	//* bounding box
 	/// allow docking inside bounding box as long as a shuttle fits, even if the dock doesn't align
-	var/undocked_landing_allowed = TRUE
+	var/centered_landing_allowed = TRUE
+	/// only allow landing inside bounding box, centered, if not manually landing; used for landing pads
+	var/centered_landing_only = TRUE
 	/// counted as a 'beacon' for default positionings of shuttle dockers
 	var/manual_docking_beacon = TRUE
 	/// protect our bounding box from manual landing
@@ -181,6 +183,12 @@
 	if(valid)
 		return SHUTTLE_DOCKING_AUTHORZATION_VALID
 	return docking_code_required? SHUTTLE_DOCKING_AUTHORZATION_BLOCKED : SHUTTLE_DOCKING_AUTHORZATION_INVALID
+
+/**
+ * literally just a landing pad
+ */
+/obj/shuttle_dock/landing_pad
+	centered_landing_only = TRUE
 
 /**
  * ephemeral docks

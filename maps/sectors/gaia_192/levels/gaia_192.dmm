@@ -688,6 +688,10 @@
 	},
 /turf/simulated/floor/tiled/classm/outdoors,
 /area/class_m/outside)
+"ea" = (
+/obj/shuttle_dock_corner/top_left,
+/turf/simulated/floor/concrete/rng/classm/outdoors,
+/area/class_m/outside)
 "eb" = (
 /obj/structure/curtain/open/ashlander,
 /obj/effect/mist,
@@ -1508,6 +1512,10 @@
 	},
 /turf/simulated/floor/tiled/monotile/classm,
 /area/class_m/inside/garage)
+"jd" = (
+/obj/shuttle_dock_corner/top_right,
+/turf/simulated/floor/concrete/tile/classm/outdoors,
+/area/class_m/outside)
 "jf" = (
 /obj/structure/table/marble,
 /obj/item/reagent_containers/glass/rag{
@@ -2501,6 +2509,10 @@
 /obj/item/reagent_containers/glass/bucket/wood,
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside/sauna2)
+"nS" = (
+/obj/shuttle_dock/landing_pad,
+/turf/simulated/floor/concrete/rng/classm/outdoors,
+/area/class_m/outside)
 "nU" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/structure/flora/tree/jungle,
@@ -4166,10 +4178,8 @@
 /turf/simulated/floor/outdoors/grass/classm,
 /area/class_m/outside)
 "xj" = (
-/obj/effect/shuttle_landmark/automatic{
-	docking_controller = "gaia_1"
-	},
-/turf/simulated/floor/concrete/rng/classm/outdoors,
+/obj/shuttle_dock_corner/bottom_right,
+/turf/simulated/floor/concrete/tile/classm/outdoors,
 /area/class_m/outside)
 "xl" = (
 /obj/machinery/light/flamp/noshade{
@@ -4667,6 +4677,10 @@
 /obj/effect/floor_decal/corner_steel_grid/full,
 /turf/simulated/floor/tiled/monotile/classm,
 /area/class_m/inside/main)
+"zP" = (
+/obj/shuttle_dock_corner/bottom_left,
+/turf/simulated/floor/concrete/tile/classm/outdoors,
+/area/class_m/outside)
 "zQ" = (
 /obj/machinery/light/spot{
 	dir = 1;
@@ -5995,6 +6009,10 @@
 /obj/structure/table/standard,
 /obj/machinery/recharger,
 /turf/simulated/floor/tiled/white,
+/area/class_m/outside)
+"HL" = (
+/obj/shuttle_dock_corner/top_left,
+/turf/simulated/floor/concrete/tile/classm/outdoors,
 /area/class_m/outside)
 "HN" = (
 /obj/structure/flora/ausbushes/reedbush,
@@ -8417,6 +8435,10 @@
 	},
 /obj/structure/table/glass,
 /turf/simulated/floor/tiled/classm/outdoors,
+/area/class_m/outside)
+"UI" = (
+/obj/shuttle_dock_corner/top_right,
+/turf/simulated/floor/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "UJ" = (
 /obj/machinery/door/blast/shutters{
@@ -38412,6 +38434,7 @@ ra
 tF
 gp
 Lp
+HL
 Wb
 Wb
 Wb
@@ -38437,8 +38460,7 @@ Wb
 Wb
 Wb
 Wb
-Wb
-Wb
+zP
 Lp
 gp
 nB
@@ -40171,7 +40193,7 @@ WN
 WN
 WN
 WN
-WN
+nS
 WN
 WN
 WN
@@ -40559,7 +40581,7 @@ WN
 WN
 WN
 WN
-xj
+WN
 WN
 WN
 WN
@@ -42292,6 +42314,7 @@ oT
 oT
 Xd
 Wb
+UI
 WN
 WN
 WN
@@ -42317,8 +42340,7 @@ WN
 WN
 WN
 WN
-WN
-Wb
+xj
 Lp
 gp
 PZ
@@ -42680,6 +42702,7 @@ oT
 XA
 Xd
 Wb
+ea
 WN
 WN
 WN
@@ -42705,8 +42728,7 @@ WN
 WN
 WN
 WN
-WN
-Wb
+zP
 Lp
 gp
 nB
@@ -43857,7 +43879,7 @@ WN
 WN
 WN
 WN
-xj
+WN
 WN
 WN
 WN
@@ -44439,7 +44461,7 @@ WN
 WN
 WN
 WN
-WN
+nS
 WN
 WN
 WN
@@ -45978,6 +46000,7 @@ Lp
 Lp
 gp
 Lp
+jd
 Wb
 Wb
 Wb
@@ -46003,8 +46026,7 @@ Wb
 Wb
 Wb
 Wb
-Wb
-Wb
+xj
 Lp
 gp
 nB
