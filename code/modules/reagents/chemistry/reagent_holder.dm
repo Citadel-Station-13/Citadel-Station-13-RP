@@ -303,9 +303,9 @@
 	#warn impl
 
 /**
- * returns a whole number, leftovers get added to reaction id
+ * returns a whole number (integer), leftovers get added to reaction id
  */
-/datum/reagent_holder/proc/lazy_reaction_number_collation(datum/chemical_reaction/reaction, amount)
+/datum/reagent_holder/proc/lazy_reaction_integer_collation(datum/chemical_reaction/reaction, amount)
 	LAZYINITLIST(reaction_blackboard)
 	var/total = reaction_blackboard[reaction.id] + amount
 	reaction_blackboard[reaction.id] = total % 1

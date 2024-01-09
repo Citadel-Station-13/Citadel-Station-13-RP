@@ -12,10 +12,11 @@
 	result_amount = 1
 
 /datum/chemical_reaction/food/tofu/on_reaction(datum/reagent_holder/holder, created_volume, instant)
-	var/location = get_turf(holder.my_atom)
-	for(var/i = 1, i <= created_volume, i++)
-		new /obj/item/reagent_containers/food/snacks/tofu(location)
-	return
+	var/atom/where = holder.attached?.drop_location()
+	if(isnull(where))
+		return
+	for(var/i in 1 to holder.lazy_reaction_integer_collation(src, created_volume))
+		new /obj/item/reagent_containers/food/snacks/tofu(where)
 
 /datum/chemical_reaction/food/soysauce
 	name = "Soy Sauce"
@@ -33,10 +34,11 @@
 	result_amount = 1
 
 /datum/chemical_reaction/food/chocolate_bar/on_reaction(datum/reagent_holder/holder, created_volume, instant)
-	var/location = get_turf(holder.my_atom)
-	for(var/i = 1, i <= created_volume, i++)
-		new /obj/item/reagent_containers/food/snacks/chocolatebar(location)
-	return
+	var/atom/where = holder.attached?.drop_location()
+	if(isnull(where))
+		return
+	for(var/i in 1 to holder.lazy_reaction_integer_collation(src, created_volume))
+		new /obj/item/reagent_containers/food/snacks/chocolatebar(where)
 
 /datum/chemical_reaction/food/chocolate_bar2
 	name = "Chocolate Bar"
@@ -46,10 +48,11 @@
 	result_amount = 1
 
 /datum/chemical_reaction/food/chocolate_bar2/on_reaction(datum/reagent_holder/holder, created_volume, instant)
-	var/location = get_turf(holder.my_atom)
-	for(var/i = 1, i <= created_volume, i++)
-		new /obj/item/reagent_containers/food/snacks/chocolatebar(location)
-	return
+	var/atom/where = holder.attached?.drop_location()
+	if(isnull(where))
+		return
+	for(var/i in 1 to holder.lazy_reaction_integer_collation(src, created_volume))
+		new /obj/item/reagent_containers/food/snacks/chocolatebar(where)
 
 /datum/chemical_reaction/food/ketchup
 	name = "Ketchup"
@@ -82,10 +85,11 @@
 	result_amount = 1
 
 /datum/chemical_reaction/food/cheesewheel/on_reaction(datum/reagent_holder/holder, created_volume, instant)
-	var/location = get_turf(holder.my_atom)
-	for(var/i = 1, i <= created_volume, i++)
-		new /obj/item/reagent_containers/food/snacks/sliceable/cheesewheel(location)
-	return
+	var/atom/where = holder.attached?.drop_location()
+	if(isnull(where))
+		return
+	for(var/i in 1 to holder.lazy_reaction_integer_collation(src, created_volume))
+		new /obj/item/reagent_containers/food/snacks/sliceable/cheesewheel(where)
 
 /datum/chemical_reaction/food/bluecheesewheel
 	name = "Blue Cheese wheel"
@@ -95,10 +99,11 @@
 	result_amount = 1
 
 /datum/chemical_reaction/food/bluecheesewheel/on_reaction(datum/reagent_holder/holder, created_volume, instant)
-	var/location = get_turf(holder.my_atom)
-	for(var/i = 1, i <= created_volume, i++)
-		new /obj/item/reagent_containers/food/snacks/sliceable/bluecheesewheel(location)
-	return
+	var/atom/where = holder.attached?.drop_location()
+	if(isnull(where))
+		return
+	for(var/i in 1 to holder.lazy_reaction_integer_collation(src, created_volume))
+		new /obj/item/reagent_containers/food/snacks/sliceable/bluecheesewheel(where)
 
 /datum/chemical_reaction/food/meatball
 	name = "Meatball"
@@ -108,10 +113,11 @@
 	result_amount = 3
 
 /datum/chemical_reaction/food/meatball/on_reaction(datum/reagent_holder/holder, created_volume, instant)
-	var/location = get_turf(holder.my_atom)
-	for(var/i = 1, i <= created_volume, i++)
-		new /obj/item/reagent_containers/food/snacks/meatball(location)
-	return
+	var/atom/where = holder.attached?.drop_location()
+	if(isnull(where))
+		return
+	for(var/i in 1 to holder.lazy_reaction_integer_collation(src, created_volume))
+		new /obj/item/reagent_containers/food/snacks/meatball(where)
 
 /datum/chemical_reaction/food/dough
 	name = "Dough"
@@ -122,10 +128,11 @@
 	result_amount = 1
 
 /datum/chemical_reaction/food/dough/on_reaction(datum/reagent_holder/holder, created_volume, instant)
-	var/location = get_turf(holder.my_atom)
-	for(var/i = 1, i <= created_volume, i++)
-		new /obj/item/reagent_containers/food/snacks/dough(location)
-	return
+	var/atom/where = holder.attached?.drop_location()
+	if(isnull(where))
+		return
+	for(var/i in 1 to holder.lazy_reaction_integer_collation(src, created_volume))
+		new /obj/item/reagent_containers/food/snacks/dough(where)
 
 
 /datum/chemical_reaction/food/syntiflesh
@@ -136,10 +143,11 @@
 	result_amount = 1
 
 /datum/chemical_reaction/food/syntiflesh/on_reaction(datum/reagent_holder/holder, created_volume, instant)
-	var/location = get_turf(holder.my_atom)
-	for(var/i = 1, i <= created_volume, i++)
-		new /obj/item/reagent_containers/food/snacks/meat/syntiflesh(location)
-	return
+	var/atom/where = holder.attached?.drop_location()
+	if(isnull(where))
+		return
+	for(var/i in 1 to holder.lazy_reaction_integer_collation(src, created_volume))
+		new /obj/item/reagent_containers/food/snacks/meat/syntiflesh(where)
 
 /datum/chemical_reaction/hot_ramen
 	name = "Hot Ramen"
@@ -184,10 +192,11 @@
 	result_amount = 1
 
 /datum/chemical_reaction/food/butter/on_reaction(datum/reagent_holder/holder, created_volume, instant)
-	var/location = get_turf(holder.my_atom)
-	for(var/i = 1, i <= created_volume, i++)
-		new /obj/item/reagent_containers/food/snacks/spreads/butter(location)
-	return
+	var/atom/where = holder.attached?.drop_location()
+	if(isnull(where))
+		return
+	for(var/i in 1 to holder.lazy_reaction_integer_collation(src, created_volume))
+		new /obj/item/reagent_containers/food/snacks/spreads/butter(where)
 
 /datum/chemical_reaction/food/tallow
 	name = "Tallow"
@@ -213,7 +222,8 @@
 	result_amount = 1
 
 /datum/chemical_reaction/food/meatsicle/on_reaction(datum/reagent_holder/holder, created_volume, instant)
-	var/location = get_turf(holder.my_atom)
-	for(var/i = 1, i <= created_volume, i++)
-		new /obj/item/reagent_containers/food/snacks/meatsicle(location)
-	return
+	var/atom/where = holder.attached?.drop_location()
+	if(isnull(where))
+		return
+	for(var/i in 1 to holder.lazy_reaction_integer_collation(src, created_volume))
+		new /obj/item/reagent_containers/food/snacks/meatsicle(where)
