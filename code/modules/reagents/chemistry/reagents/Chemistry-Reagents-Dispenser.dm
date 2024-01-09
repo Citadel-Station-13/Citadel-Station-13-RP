@@ -33,17 +33,17 @@
 	
 	if(issmall(M)) removed *= 2
 	var/strength_mod = 3 //Alcohol is 3x stronger when injected into the veins.
-	if(alien == IS_SKRELL)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_SKRELL)])
 		strength_mod *= 5
-	if(alien == IS_TAJARA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_TAJARAN)])
 		strength_mod *= 1.25
-	if(alien == IS_UNATHI)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_UNATHI)])
 		strength_mod *= 0.75
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		strength_mod = 0
-	if(alien == IS_SLIME)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		strength_mod *= 2
-	if(alien == IS_ALRAUNE)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_ALRAUNE)])
 		if(prob(5))
 			to_chat(M, "<span class='danger'>You feel your leaves start to wilt.</span>")
 		strength_mod *=5 //cit change - alcohol ain't good for plants
@@ -88,15 +88,15 @@
 	M.adjust_nutrition(nutriment_factor * removed)
 	M.adjust_hydration(hydration_factor * removed)
 	var/strength_mod = 1
-	if(alien == IS_SKRELL)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_SKRELL)])
 		strength_mod *= 5
-	if(alien == IS_TAJARA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_TAJARAN)])
 		strength_mod *= 1.25
-	if(alien == IS_UNATHI)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_UNATHI)])
 		strength_mod *= 0.75
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		strength_mod = 0
-	if(alien == IS_SLIME)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		strength_mod *= 2
 	var/is_vampire = M.species.is_vampire
 	if(is_vampire)
@@ -265,7 +265,7 @@
 	if(issmall(M))
 		effective_dose *= 2
 
-	if(alien == IS_UNATHI)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_UNATHI)])
 		if(effective_dose < 2)
 			if(effective_dose == metabolism * 2 || prob(5))
 				M.emote("yawn")
@@ -279,7 +279,7 @@
 			M.afflict_sleeping(20 * 20)
 			M.drowsyness = max(M.drowsyness, 60)
 
-	if(alien == IS_ALRAUNE) //cit change - too much sugar isn't good for plants
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_ALRAUNE)]) //cit change - too much sugar isn't good for plants
 		if(effective_dose < 2)
 			if(prob(5))
 				to_chat(M, "<span class='danger'>You feel an imbalance of energy.</span>")

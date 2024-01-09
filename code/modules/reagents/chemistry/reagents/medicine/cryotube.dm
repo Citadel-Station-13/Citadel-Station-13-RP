@@ -15,7 +15,7 @@
 	
 	if(M.bodytemperature < 170)
 		var/chem_effective = 1
-		if(alien == IS_SLIME)
+		if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 			chem_effective = 0.25
 			to_chat(M, "<span class='danger'>It's cold. Something causes your cellular mass to harden occasionally, resulting in vibration.</span>")
 			M.afflict_paralyze(20 * 10)
@@ -41,7 +41,7 @@
 	
 	if(M.bodytemperature < 170)
 		var/chem_effective = 1
-		if(alien == IS_SLIME)
+		if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 			if(prob(10))
 				to_chat(M, "<span class='danger'>It's so cold. Something causes your cellular mass to harden sporadically, resulting in seizure-like twitching.</span>")
 			chem_effective = 0.5
@@ -76,7 +76,7 @@
 	
 	if(M.bodytemperature < 170 || (M.stat == DEAD && M.has_modifier_of_type(/datum/modifier/bloodpump_corpse)))
 		var/chem_effective = 1
-		if(alien == IS_SLIME)
+		if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 			if(prob(10))
 				to_chat(M, "<span class='danger'>It's so cold. Something causes your cellular mass to harden sporadically, resulting in seizure-like twitching.</span>")
 			chem_effective = 0.5

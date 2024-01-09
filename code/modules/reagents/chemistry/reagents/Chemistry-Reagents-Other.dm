@@ -18,7 +18,7 @@
 /datum/reagent/adrenaline/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	M.set_unconscious(0)
 	M.set_paralyzed(0)
@@ -58,7 +58,7 @@
 /datum/reagent/ammonia/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_ALRAUNE)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_ALRAUNE)])
 		M.nutrition += removed * 2 //cit change: fertilizer is waste for plants
 		return
 
@@ -73,7 +73,7 @@
 /datum/reagent/diethylamine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_ALRAUNE)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_ALRAUNE)])
 		M.nutrition += removed * 5 //cit change: fertilizer is waste for plants
 		return
 

@@ -86,11 +86,11 @@
 	. = ..()
 	
 	var/chem_effective = 1
-	if(alien == IS_ALRAUNE)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_ALRAUNE)])
 		chem_effective = 1.1 //Plant to Plant Restoration
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		chem_effective = 1.1
-	if(alien == IS_SLIME)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		chem_effective = 0.7 //It just goes right through them ... right onto the floor
 	M.heal_organ_damage (4 * removed * chem_effective, 4 * removed * chem_effective)
 	M.adjustOxyLoss(-10 * removed * chem_effective)
@@ -164,9 +164,9 @@
 	. = ..()
 	
 	var/chem_effective = 1
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-	if(alien == IS_SLIME)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		if(dose >= 5) //Not effective in small doses, though it causes toxloss at higher ones, it will make the regeneration for brute and burn more 'efficient' at the cost of more nutrition.
 			M.nutrition -= removed * 2
 			M.adjustBruteLoss(-2 * removed)
@@ -194,9 +194,9 @@
 /datum/reagent/hyperzine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_TAJARA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_TAJARAN)])
 		removed *= 1.25
-	if(alien == IS_SLIME)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		M.make_jittery(4) //Hyperactive fluid pumping results in unstable 'skeleton', resulting in vibration.
 		if(dose >= 5)
 			M.nutrition = (M.nutrition - (removed * 2)) //Sadly this movement starts burning food in higher doses.
@@ -218,10 +218,10 @@
 /datum/reagent/alkysine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	var/chem_effective = 1
-	if(alien == IS_SLIME)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		chem_effective = 0.25
 		if(M.brainloss >= 10)
 			M.afflict_paralyze(20 * 5)
@@ -278,7 +278,7 @@
 			if(I.damage <= 5 && I.organ_tag == O_EYES)
 				H.eye_blurry = min(M.eye_blurry + 10, 100) //Eyes need to reset, or something
 				H.sdisabilities &= ~SDISABILITY_NERVOUS
-		if(alien == IS_SLIME)
+		if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 			H.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 20)
 			if(prob(33))
 				H.Confuse(10)
@@ -304,7 +304,7 @@
 			if(I.damage <= 5 && I.organ_tag == O_EYES)
 				H.eye_blurry = min(M.eye_blurry + 10, 100) //Eyes need to reset, or something
 				H.sdisabilities &= ~SDISABILITY_NERVOUS
-		if(alien == IS_SLIME)
+		if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 			H.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 20)
 			if(prob(33))
 				H.Confuse(10)
@@ -321,7 +321,7 @@
 /datum/reagent/osteodaxon/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	M.heal_organ_damage(3 * removed, 0)	//Gives the bones a chance to set properly even without other meds
 	if(ishuman(M))
@@ -345,7 +345,7 @@
 /datum/reagent/myelamine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	M.eye_blurry += min(M.eye_blurry + (repair_strength * removed), 250)
 	if(ishuman(M))
@@ -378,7 +378,7 @@
 	. = ..()
 	
 	var/repair_strength = 1
-	if(alien == IS_SLIME)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		repair_strength = 0.6
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
@@ -410,7 +410,7 @@
 	. = ..()
 	
 	var/repair_strength = 1
-	if(alien == IS_SLIME)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		repair_strength = 0.6
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
@@ -442,7 +442,7 @@
 	. = ..()
 	
 	var/repair_strength = 1
-	if(alien == IS_SLIME)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		repair_strength = 0.4
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
@@ -476,7 +476,7 @@
 	. = ..()
 	
 	var/repair_strength = 1
-	if(alien == IS_SLIME)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		repair_strength = 0.6
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
@@ -505,19 +505,19 @@
 	
 	var/strength_mod = 1
 
-	if(alien == IS_DIONA)	// It's a tree.
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])	// It's a tree.
 		strength_mod = 0.25
 
-	if(alien == IS_SLIME)	// Diffculty bonding with internal cellular structure.
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])	// Diffculty bonding with internal cellular structure.
 		strength_mod = 0.75
 
-	if(alien == IS_SKRELL)	// Natural inclination toward toxins.
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_SKRELL)])	// Natural inclination toward toxins.
 		strength_mod = 1.5
 
-	if(alien == IS_UNATHI)	// Natural regeneration, robust biology.
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_UNATHI)])	// Natural regeneration, robust biology.
 		strength_mod = 1.75
 
-	if(alien == IS_TAJARA)	// Highest metabolism.
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_TAJARAN)])	// Highest metabolism.
 		strength_mod = 2
 
 	if(ishuman(M))
@@ -563,7 +563,7 @@
 	
 	var/strength_mod = 0.5
 
-	if(alien == IS_SKRELL)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_SKRELL)])
 		strength_mod = 1
 
 	if(ishuman(M))
@@ -613,7 +613,7 @@
 	M.sdisabilities = 0
 
 	var/mob/living/carbon/human/H = M
-	if(alien == IS_SLIME && istype(H)) //Shifts them toward white, faster than Rezadone does toward grey.
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)] && istype(H)) //Shifts them toward white, faster than Rezadone does toward grey.
 		if(prob(50))
 			if(H.r_skin)
 				H.r_skin = round((H.r_skin + 510)/3)
@@ -655,7 +655,7 @@
 /datum/reagent/ethylredoxrazine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	M.dizziness = 0
 	M.drowsyness = 0
@@ -681,7 +681,7 @@
 /datum/reagent/hyronalin/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	M.cure_radiation(RAD_MOB_CURE_STRENGTH_HYRONALIN(removed))
 
@@ -698,7 +698,7 @@
 /datum/reagent/arithrazine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	M.cure_radiation(RAD_MOB_CURE_STRENGTH_ARITHRAZINE(removed))
 	M.adjustToxLoss(-10 * removed)
@@ -720,7 +720,7 @@
 /datum/reagent/spaceacillin/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_SLIME)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		if(volume <= 0.1 && data != -1)
 			data = -1
 			to_chat(M, "<span class='notice'>You regain focus...</span>")
@@ -825,7 +825,7 @@
 
 /datum/reagent/spacomycaze/affect_touch(mob/living/carbon/M, alien, removed)
 	..()
-	if(alien == IS_SLIME)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		if(volume <= 0.1 && data != -1)
 			data = -1
 			to_chat(M, "<span class='notice'>The itching fades...</span>")
@@ -862,7 +862,7 @@
 /datum/reagent/sterilizine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_SLIME)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		M.adjustFireLoss(removed)
 		M.adjustToxLoss(2 * removed)
 	return
@@ -872,7 +872,7 @@
 	for(var/obj/item/I in M.contents)
 		I.was_bloodied = null
 	M.was_bloodied = null
-	if(alien == IS_SLIME)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		M.adjustFireLoss(removed)
 		M.adjustToxLoss(2 * removed)
 
@@ -909,7 +909,7 @@
 /datum/reagent/leporazine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	if(M.bodytemperature > 310)
 		M.bodytemperature = max(310, M.bodytemperature - (40 * TEMPERATURE_DAMAGE_COEFFICIENT))
@@ -928,10 +928,10 @@
 /datum/reagent/rezadone/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	var/mob/living/carbon/human/H = M
-	if(alien == IS_SLIME && istype(H))
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)] && istype(H))
 		if(prob(50))
 			if(H.r_skin)
 				H.r_skin = round((H.r_skin + 50)/2)
@@ -980,7 +980,7 @@
 /datum/reagent/methylphenidate/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	if(volume <= 0.1 && data != -1)
 		data = -1
@@ -1005,7 +1005,7 @@
 /datum/reagent/citalopram/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	if(volume <= 0.1 && data != -1)
 		data = -1
@@ -1030,7 +1030,7 @@
 /datum/reagent/paroxetine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	if(volume <= 0.1 && data != -1)
 		data = -1
@@ -1055,7 +1055,7 @@
 /datum/reagent/adranol/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	if(M.confused)
 		M.Confuse(-8*removed)
@@ -1079,7 +1079,7 @@
 /datum/reagent/qerr_quem/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	if(volume <= 0.1 && data != -1)
 		data = -1

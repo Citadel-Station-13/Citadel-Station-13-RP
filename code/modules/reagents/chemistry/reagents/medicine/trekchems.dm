@@ -31,7 +31,7 @@
 	. = ..()
 	
 	var/chem_effective = 1
-	if(alien == IS_SLIME)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		chem_effective = 0.75
 	if(alien != IS_DIONA)
 		M.heal_organ_damage(4 * removed * chem_effective, 0) //The first Parameter of the function is brute, the second burn damage
@@ -63,7 +63,7 @@
 	. = ..()
 	
 	var/chem_effective = 1
-	if(alien == IS_SLIME)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		chem_effective = 0.5
 		M.adjustBruteLoss(2 * removed) //Mends burns, but has negative effects with a Promethean's skeletal structure.
 	if(alien != IS_DIONA)
@@ -82,7 +82,7 @@
 	. = ..()
 	
 	var/chem_effective = 1
-	if(alien == IS_SLIME)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		chem_effective = 0.75
 	if(alien != IS_DIONA)
 		M.heal_organ_damage(0, 8 * removed * chem_effective)
@@ -99,7 +99,7 @@
 	. = ..()
 	
 	var/chem_effective = 1
-	if(alien == IS_SLIME)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		chem_effective = 0.66
 		if(dose >= 15)
 			M.druggy = max(M.druggy, 5)
@@ -123,11 +123,11 @@
 /datum/reagent/dexalin/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_VOX)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_VOX)])
 		M.adjustToxLoss(removed * 24) //Vox breath phoron, oxygen is rather deadly to them
-	if(alien == IS_ALRAUNE)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_ALRAUNE)])
 		M.adjustToxLoss(removed * 10) //cit change: oxygen is waste for plants
-	else if(alien == IS_SLIME && dose >= 15)
+	else if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)] && dose >= 15)
 		M.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 15)
 		if(prob(15))
 			to_chat(M, "<span class='notice'>You have a moment of clarity as you collapse.</span>")
@@ -151,11 +151,11 @@
 /datum/reagent/dexalinp/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_VOX)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_VOX)])
 		M.adjustToxLoss(removed * 9)//Again, vox dont like O2
-	if(alien == IS_ALRAUNE)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_ALRAUNE)])
 		M.adjustToxLoss(removed * 5) //cit change: oxygen is waste for plants
-	else if(alien == IS_SLIME && dose >= 10)
+	else if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)] && dose >= 10)
 		M.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 25)
 		if(prob(25))
 			to_chat(M, "<span class='notice'>You have a moment of clarity, as you feel your tubes lose pressure rapidly.</span>")
@@ -179,7 +179,7 @@
 	
 	if(alien != IS_DIONA)//Heals everyone besides diona on all 4 base damage types.
 		var/chem_effective = 1
-		if(alien == IS_SLIME)
+		if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 			chem_effective = 0.5
 		M.adjustOxyLoss(-3 * removed * chem_effective)
 		M.heal_organ_damage(1.5 * removed, 1.5 * removed * chem_effective)

@@ -56,7 +56,7 @@
 /datum/reagent/epinephrine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	M.add_chemical_effect(CHEMICAL_EFFECT_SPEEDBOOST, 3)
 	M.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 60)

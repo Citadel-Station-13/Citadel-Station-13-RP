@@ -44,7 +44,7 @@
 	if(issmall(M)) effective_dose *= 2
 
 	// Treat it like nutriment for the jello, but not equivalent.
-	if(alien == IS_SLIME)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		/// Unless it's Promethean goo, then refill this one's goo.
 		if(data["species"] == M.species.name)
 			M.inject_blood(src, volume * volume_mod)
@@ -79,7 +79,7 @@
 		var/mob/living/carbon/human/H = M
 		if(H.isSynthetic())
 			return
-	if(alien == IS_SLIME)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		affect_ingest(M, alien, removed)
 		return
 	if(data && data["virus2"])
@@ -95,7 +95,7 @@
 /datum/reagent/blood/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_SLIME) //They don't have blood, so it seems weird that they would instantly 'process' the chemical like another species does.
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)]) //They don't have blood, so it seems weird that they would instantly 'process' the chemical like another species does.
 		affect_ingest(M, alien, removed)
 		return
 

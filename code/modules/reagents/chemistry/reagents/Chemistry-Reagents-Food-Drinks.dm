@@ -116,7 +116,7 @@
 	if(issmall(M))
 		effective_dose *= 2
 
-	if(alien == IS_UNATHI)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_UNATHI)])
 		if(effective_dose < 2)
 			if(effective_dose == metabolism * 2 || prob(5))
 				M.emote("yawn")
@@ -408,7 +408,7 @@
 /datum/reagent/sodiumchloride/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_SLIME)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		M.adjustFireLoss(removed)
 
 /datum/reagent/sodiumchloride/affect_ingest(mob/living/carbon/M, alien, removed)
@@ -448,7 +448,7 @@
 /datum/reagent/frostoil/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	M.bodytemperature = max(M.bodytemperature - 10 * TEMPERATURE_DAMAGE_COEFFICIENT, 215)
 	if(prob(1))
@@ -476,18 +476,18 @@
 /datum/reagent/capsaicin/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	M.adjustToxLoss(0.5 * removed)
 
 /datum/reagent/capsaicin/affect_ingest(mob/living/carbon/M, alien, removed)
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-	if(alien == IS_NARAMADI)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_NARAMADI)])
 		return
-	if(alien == IS_UNATHI)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_UNATHI)])
 		return
-	if(alien == IS_ALRAUNE) //cit change: it wouldn't affect plants that much.
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_ALRAUNE)]) //cit change: it wouldn't affect plants that much.
 		M.bodytemperature += rand(10, 25)
 		return
 	if(ishuman(M))
@@ -514,9 +514,9 @@
 	color = "#B31008"
 
 /datum/reagent/hexaisin/affect_ingest(mob/living/carbon/M, alien, removed)
-	if(alien == IS_UNATHI)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_UNATHI)])
 		return
-	if(alien == IS_NARAMADI)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_NARAMADI)])
 		return
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
@@ -544,7 +544,7 @@
 /datum/reagent/condensedcapsaicin/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	M.adjustToxLoss(0.5 * removed)
 
@@ -564,10 +564,10 @@
 
 	var/effective_strength = 5
 
-	if(alien == IS_SKRELL)	//Larger eyes means bigger targets.
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_SKRELL)])	//Larger eyes means bigger targets.
 		effective_strength = 8
 
-	if(alien == IS_ALRAUNE) //cit change: plants find the base form tasty, still mildly inconvenient to be affected by this.
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_ALRAUNE)]) //cit change: plants find the base form tasty, still mildly inconvenient to be affected by this.
 		effective_strength = 4
 
 	if(istype(M, /mob/living/carbon/human))
@@ -596,7 +596,7 @@
 				eyes_covered = 1
 				if(!safe_thing)
 					safe_thing = H.glasses
-		if(alien == IS_SLIME)
+		if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 			for(var/obj/item/clothing/C in H.get_equipped_items())
 				if(C.body_cover_flags & HEAD)
 					head_covered = 1
@@ -639,7 +639,7 @@
 		M.afflict_paralyze(20 * 5)
 		if(alien != IS_SLIME)
 			return
-	if(alien == IS_SLIME)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		if(!head_covered)
 			if(prob(33))
 				to_chat(M, "<span class='warning'>The exposed flesh on your head burns!</span>")
@@ -670,9 +670,9 @@
 			M.apply_effect(effective_strength / 2, AGONY, 0)
 
 /datum/reagent/condensedcapsaicin/affect_ingest(mob/living/carbon/M, alien, removed)
-	if(alien == IS_NARAMADI) //Moghes species with exception of Zaddat (for obvious reasons) are immune to taste and ingested effects of Capsaisin and Condensed variants.
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_NARAMADI)]) //Moghes species with exception of Zaddat (for obvious reasons) are immune to taste and ingested effects of Capsaisin and Condensed variants.
 		return
-	if(alien == IS_UNATHI) //If you want to know why, look at Hexaisin. They are still affected by pepperspray, but not drinking it.
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_UNATHI)]) //If you want to know why, look at Hexaisin. They are still affected by pepperspray, but not drinking it.
 		return
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
@@ -707,7 +707,7 @@
 	. = ..()
 	
 	var/strength_mod = 1
-	if(alien == IS_SLIME && water_based)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)] && water_based)
 		strength_mod = 3
 	M.adjustToxLoss(removed * strength_mod) // Probably not a good idea; not very deadly though
 	return
@@ -793,7 +793,7 @@
 	if(issmall(M))
 		effective_dose *= 2
 
-	if(alien == IS_UNATHI)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_UNATHI)])
 		if(effective_dose < 2)
 			if(effective_dose == metabolism * 2 || prob(5))
 				M.emote("yawn")
@@ -842,7 +842,7 @@
 
 /datum/reagent/drink/juice/lime/affect_ingest(mob/living/carbon/M, alien, removed)
 	..()
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	M.adjustToxLoss(-0.5 * removed)
 
@@ -858,7 +858,7 @@
 
 /datum/reagent/drink/juice/orange/affect_ingest(mob/living/carbon/M, alien, removed)
 	..()
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	M.adjustOxyLoss(-2 * removed)
 
@@ -896,7 +896,7 @@
 
 /datum/reagent/drink/juice/tomato/affect_ingest(mob/living/carbon/M, alien, removed)
 	..()
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	M.heal_organ_damage(0, 0.5 * removed)
 
@@ -954,14 +954,14 @@
 
 /datum/reagent/drink/milk/chocolate/affect_ingest(mob/living/carbon/M, alien, removed)
 	..()
-	if(alien == IS_ALRAUNE) //cit change: choccy is full of natural easily digestible plant fats
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_ALRAUNE)]) //cit change: choccy is full of natural easily digestible plant fats
 		M.nutrition += removed * 5
 
 /datum/reagent/drink/milk/affect_ingest(mob/living/carbon/M, alien, removed)
 	..()
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-	if(alien == IS_ALRAUNE) //cit change: milk good for plant.
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_ALRAUNE)]) //cit change: milk good for plant.
 		M.nutrition += removed * 3
 	M.heal_organ_damage(0.5 * removed, 0)
 	holder.remove_reagent("capsaicin", 10 * removed)
@@ -1038,7 +1038,7 @@
 
 /datum/reagent/drink/tea/affect_ingest(mob/living/carbon/M, alien, removed)
 	..()
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	M.adjustToxLoss(-0.5 * removed)
 
@@ -1060,7 +1060,7 @@
 
 /datum/reagent/drink/tea/icetea/affect_ingest(mob/living/carbon/M, alien, removed)
 	..()
-	if(alien == IS_SLIME)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		if(M.bodytemperature > T0C)
 			M.bodytemperature -= 0.5
 		if(M.bodytemperature < T0C)
@@ -1069,7 +1069,7 @@
 /datum/reagent/drink/tea/icetea/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_SLIME)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		if(M.bodytemperature > T0C)
 			M.bodytemperature -= 0.5
 		if(M.bodytemperature < T0C)
@@ -1156,9 +1156,9 @@
 
 /datum/reagent/drink/tea/icetea/milktea/affect_ingest(mob/living/carbon/M, alien, removed)	//Milk tea and its variants inherit the properties of both iced tea and milk.
 	..()
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-	if(alien == IS_ALRAUNE) //cit change: milk good for plant.
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_ALRAUNE)]) //cit change: milk good for plant.
 		M.nutrition += removed * 3
 	M.heal_organ_damage(0.5 * removed, 0)
 	holder.remove_reagent("capsaicin", 10 * removed)
@@ -1265,7 +1265,7 @@
 
 
 /datum/reagent/drink/coffee/affect_ingest(mob/living/carbon/M, alien, removed)
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	..()
 	if(adj_temp > 0)
@@ -1277,7 +1277,7 @@
 	..()
 
 /datum/reagent/drink/coffee/overdose(mob/living/carbon/M, alien)
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	M.make_jittery(5)
 
@@ -1294,7 +1294,7 @@
 
 /datum/reagent/drink/coffee/icecoffee/affect_ingest(mob/living/carbon/M, alien, removed)
 	..()
-	if(alien == IS_SLIME)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		if(M.bodytemperature > T0C)
 			M.bodytemperature -= 0.5
 		if(M.bodytemperature < T0C)
@@ -1303,7 +1303,7 @@
 /datum/reagent/drink/coffee/icecoffee/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_SLIME)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		if(M.bodytemperature > T0C)
 			M.bodytemperature -= 0.5
 		if(M.bodytemperature < T0C)
@@ -1367,7 +1367,7 @@
 
 /datum/reagent/drink/hot_coco/affect_ingest(mob/living/carbon/M, alien, removed)
 	..()
-	if(alien == IS_ALRAUNE) //cit change: choccy is full of natural easily digestible plant fats
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_ALRAUNE)]) //cit change: choccy is full of natural easily digestible plant fats
 		M.nutrition += removed * 5
 
 /datum/reagent/drink/soda/sodawater
@@ -1524,7 +1524,7 @@
 	if(issmall(M))
 		effective_dose *= 2
 
-	if(alien == IS_UNATHI)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_UNATHI)])
 		if(effective_dose < 2)
 			if(effective_dose == metabolism * 2 || prob(5))
 				M.emote("yawn")
@@ -1559,7 +1559,7 @@
 	glass_desc = "A refreshing chocolate milkshake, just like mom used to make."
 
 /datum/reagent/drink/milkshake/chocoshake/affect_ingest(mob/living/carbon/M, alien, removed)
-	if(alien == IS_ALRAUNE) //cit change: it wouldn't affect plants that much.
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_ALRAUNE)]) //cit change: it wouldn't affect plants that much.
 		M.nutrition += removed * 5
 
 /datum/reagent/drink/milkshake/berryshake
@@ -1898,7 +1898,7 @@
 
 /datum/reagent/drink/doctor_delight/affect_ingest(mob/living/carbon/M, alien, removed)
 	..()
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	M.adjustOxyLoss(-4 * removed)
 	M.heal_organ_damage(2 * removed, 2 * removed)
@@ -1948,7 +1948,7 @@
 
 /datum/reagent/drink/hell_ramen/affect_ingest(mob/living/carbon/M, alien, removed)
 	..()
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	M.bodytemperature += 10 * TEMPERATURE_DAMAGE_COEFFICIENT
 
@@ -1979,7 +1979,7 @@
 /datum/reagent/drink/ice/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_SLIME)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		if(M.bodytemperature > T0C)
 			M.bodytemperature -= rand(1,3)
 		if(M.bodytemperature < T0C)
@@ -1987,7 +1987,7 @@
 
 /datum/reagent/drink/ice/affect_ingest(mob/living/carbon/M, alien, removed)
 	..()
-	if(alien == IS_SLIME)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		if(M.bodytemperature > T0C)
 			M.bodytemperature -= rand(1,3)
 		if(M.bodytemperature < T0C)
@@ -2093,13 +2093,13 @@
 /datum/reagent/drink/nuclearwaste/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	M.bloodstr.add_reagent("radium", 0.3)
 
 /datum/reagent/drink/nuclearwaste/affect_ingest(mob/living/carbon/M, alien, removed)
 	..()
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	M.ingested.add_reagent("radium", 0.25)
 
@@ -2411,7 +2411,7 @@
 	overdose_threshold = 45
 
 /datum/reagent/ethanol/coffee/affect_ingest(mob/living/carbon/M, alien, removed)
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	. = ..() // the rest is coffee stuff, ugh, go make reagent traits etc
 	M.dizziness = max(0, M.dizziness - 5)
@@ -2421,7 +2421,7 @@
 		M.bodytemperature = max(310, M.bodytemperature - (5 * TEMPERATURE_DAMAGE_COEFFICIENT))
 
 /datum/reagent/ethanol/coffee/overdose(mob/living/carbon/M, alien)
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	M.make_jittery(5)
 
@@ -2521,7 +2521,7 @@
 
 /datum/reagent/ethanol/thirteenloko/affect_ingest(mob/living/carbon/M, alien, removed)
 	. = ..()
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	M.drowsyness = max(0, M.drowsyness - 7)
 	if (M.bodytemperature > 310)
@@ -3415,14 +3415,14 @@
 
 /datum/reagent/ethanol/unathiliquor/affect_ingest(mob/living/carbon/M, alien, removed)
 	..()
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-	if(alien == IS_UNATHI)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_UNATHI)])
 		return
-	if(alien == IS_NARAMADI)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_NARAMADI)])
 		return
 	var/drug_strength = 10
-	if(alien == IS_SKRELL)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_SKRELL)])
 		drug_strength = drug_strength * 0.8
 
 	M.druggy = max(M.druggy, drug_strength)
@@ -3633,7 +3633,7 @@
 
 /datum/reagent/ethanol/soemmerfire/affect_ingest(mob/living/carbon/M, alien, removed)
 	..()
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	M.bodytemperature += 10 * TEMPERATURE_DAMAGE_COEFFICIENT
 
@@ -3694,9 +3694,9 @@
 
 /datum/reagent/ethanol/voxdelight/affect_ingest(mob/living/carbon/M, alien, removed)
 	..()
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-	if(alien == IS_VOX)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_VOX)])
 		M.adjustToxLoss(-0.5 * removed)
 		return
 	else
@@ -3759,7 +3759,7 @@
 
 /datum/reagent/ethanol/slimeshot/affect_ingest(mob/living/carbon/M, alien, removed)
 	..()
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	M.reagents.add_reagent("slimejelly", 0.25)
 
@@ -4334,7 +4334,7 @@
 //This functions the same as Doctor's Delight, except it gets you drunk too.
 /datum/reagent/ethanol/royaljelly/affect_ingest(mob/living/carbon/M, alien, removed)
 	. = ..()
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	M.adjustOxyLoss(-4 * removed)
 	M.heal_organ_damage(2 * removed, 2 * removed)
@@ -4714,10 +4714,10 @@
 /datum/reagent/ethanol/monstertamer/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_SKRELL)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_SKRELL)])
 		M.adjustToxLoss(removed)  //Equivalent to half as much protein, since it's half protein.
 	if(!M.species.is_vampire)
-		if(alien == IS_SLIME || alien == IS_CHIMERA) //slimes and chimera can get nutrition from injected nutriment and protein
+		if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)] || alien == IS_CHIMERA) //slimes and chimera can get nutrition from injected nutriment and protein
 			M.nutrition += (alt_nutriment_factor * removed)
 
 /datum/reagent/ethanol/galacticpanic
@@ -4824,14 +4824,14 @@
 	
 	. = ..()
 
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 
 	var/threshold = 1
-	if(alien == IS_SKRELL)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_SKRELL)])
 		threshold = 1.2
 
-	if(alien == IS_SLIME)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		threshold = 0.8
 
 	M.druggy = max(M.druggy, 30)
@@ -4995,13 +4995,13 @@
 	. = ..()
 	
 	. = ..()
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	M.bloodstr.add_reagent("radium", 0.3)
 
 /datum/reagent/ethanol/desiretodie/affect_ingest(mob/living/carbon/M, alien, removed)
 	. = ..()
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	M.ingested.add_reagent("radium", 0.25)
 

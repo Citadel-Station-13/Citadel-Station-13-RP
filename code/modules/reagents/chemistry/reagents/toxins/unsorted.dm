@@ -18,7 +18,7 @@
 	
 	if(strength && alien != IS_DIONA)
 		if(issmall(M)) removed *= 2 // Small bodymass, more effect from lower volume.
-		if(alien == IS_SLIME)
+		if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 			removed *= 0.25 // Results in half the standard tox as normal. Prometheans are 'Small' for flaps.
 			if(dose >= 10)
 				M.nutrition += strength * removed //Body has to deal with the massive influx of toxins, rather than try using them to repair.
@@ -107,7 +107,7 @@
 /datum/reagent/toxin/hydrophoron/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_SLIME)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		M.adjust_fire_stacks(removed * 10)
 		if(prob(10))
 			to_chat(M, "<span class='critical'>You feel something boiling within you!</span>")
@@ -140,7 +140,7 @@
 /datum/reagent/toxin/phoron/affect_touch(mob/living/carbon/M, alien, removed)
 	..()
 	M.adjust_fire_stacks(removed / 5)
-	if(alien == IS_VOX || alien == IS_XENOHYBRID)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_VOX)] || alien == IS_XENOHYBRID)
 		return
 	M.take_organ_damage(0, removed * 0.1) //being splashed directly with phoron causes minor chemical burns
 	if(prob(50))
@@ -149,12 +149,12 @@
 /datum/reagent/toxin/phoron/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_VOX)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_VOX)])
 		M.adjustOxyLoss(-100 * removed) //5 oxyloss healed per tick.
 		return //You're wasting plasma (a semi-limited chemical) to save someone, so it might as well be somewhat strong.
-	if(alien == IS_XENOHYBRID)//They have an organ that uses phoron
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_XENOHYBRID)])//They have an organ that uses phoron
 		return
-	if(alien == IS_SLIME)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		M.adjust_fire_stacks(removed * 3) //Not quite 'converting' it. It's like mixing fuel into a jelly. You get explosive, or at least combustible, jelly.
 	..()
 
@@ -237,7 +237,7 @@
 /datum/reagent/toxin/stimm/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_TAJARA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_TAJARAN)])
 		removed *= 1.25
 	..()
 	if(prob(15))
@@ -261,7 +261,7 @@
 /datum/reagent/toxin/potassium_chloride/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_SLIME)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		M.adjustFireLoss(removed * 2)
 
 /datum/reagent/toxin/potassium_chloride/overdose(mob/living/carbon/M, alien)
@@ -295,7 +295,7 @@
 				H.losebreath = max(10, M.losebreath-10)
 			H.adjustOxyLoss(2)
 			H.afflict_paralyze(20 * 10)
-	if(alien == IS_SLIME)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		M.adjustFireLoss(removed * 3)
 
 /datum/reagent/toxin/zombiepowder
@@ -312,7 +312,7 @@
 /datum/reagent/toxin/zombiepowder/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	M.status_flags |= STATUS_FAKEDEATH
 	M.adjustOxyLoss(3 * removed)
@@ -338,7 +338,7 @@
 
 /datum/reagent/toxin/lichpowder/affect_touch(mob/living/carbon/M, alien, removed)
 	..()
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	M.status_flags |= STATUS_FAKEDEATH
 	M.adjustOxyLoss(1 * removed)
@@ -368,7 +368,7 @@
 /datum/reagent/toxin/fertilizer/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_ALRAUNE) //cit change: fertilizer is full of natural easily digestible plant fats
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_ALRAUNE)]) //cit change: fertilizer is full of natural easily digestible plant fats
 		M.nutrition += removed * 5
 		return
 
@@ -411,11 +411,11 @@
 /datum/reagent/toxin/plantbgone/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_ALRAUNE)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_ALRAUNE)])
 		M.adjustToxLoss(50 * removed)
 
 /datum/reagent/toxin/plantbgone/affect_touch(mob/living/carbon/M, alien, removed)
-	if(alien == IS_ALRAUNE)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_ALRAUNE)])
 		M.adjustToxLoss(50 * removed)
 
 /datum/reagent/toxin/pestbgone
@@ -436,11 +436,11 @@
 /datum/reagent/toxin/pestbgone/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_APIDAEN)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_APIDAEN)])
 		M.adjustToxLoss(50 * removed)
 
 /datum/reagent/toxin/pestbgone/affect_touch(mob/living/carbon/M, alien, removed)
-	if(alien == IS_APIDAEN)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_APIDAEN)])
 		M.adjustToxLoss(50 * removed)
 
 /datum/reagent/toxin/sifslurry
@@ -456,7 +456,7 @@
 /datum/reagent/toxin/sifslurry/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_DIONA) // Symbiotic bacteria.
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)]) // Symbiotic bacteria.
 		M.nutrition += strength * removed
 		return
 	else
@@ -464,7 +464,7 @@
 	..()
 
 /datum/reagent/toxin/sifslurry/overdose(mob/living/carbon/M, alien, removed) // Overdose effect.
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
@@ -521,7 +521,7 @@
 	M.adjustFireLoss(3 * removed)
 	if(M.fire_stacks <= 1.5)
 		M.adjust_fire_stacks(0.15)
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	if(prob(10))
 		to_chat(M,"<span class='warning'>Your veins feel like they're on fire!</span>")
@@ -541,7 +541,7 @@
 /datum/reagent/condensedcapsaicin/venom/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	if(prob(50))
 		M.adjustToxLoss(0.5 * removed)
@@ -566,16 +566,16 @@
 /datum/reagent/lexorin/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-	if(alien == IS_SLIME)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		M.apply_effect(5, AGONY, 0)
 		M.adjustToxLoss(3 * removed)
 		if(prob(10))
 			to_chat(M, "<span class='warning'>Your cellular mass hardens for a moment.</span>")
 			M.afflict_stun(20 * 6)
 		return
-	if(alien == IS_SKRELL)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_SKRELL)])
 		M.take_organ_damage(2.4 * removed, 0)
 		if(M.losebreath < 10)
 			M.AdjustLosebreath(1)
@@ -608,7 +608,7 @@
 
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		if(alien == IS_SLIME && prob(25))
+		if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)] && prob(25))
 			var/color_shift = rand(-100, 100)
 			spawn(1)
 				if(prob(33))
@@ -633,7 +633,7 @@
 					if(H.b_facial)
 						H.b_facial = max(0, min(255, H.b_facial + color_shift))
 						return
-		if(alien == IS_CHIMERA && prob(33))
+		if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_CHIMERA)] && prob(33))
 			var/color_shift = rand(-100, 100)
 			spawn(1)
 				if(prob(45))
@@ -690,9 +690,9 @@
 /datum/reagent/slimejelly/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-	if(alien == IS_SLIME) //Partially made of the stuff. Why would it hurt them?
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)]) //Partially made of the stuff. Why would it hurt them?
 		if(prob(75))
 			M.heal_overall_damage(25 * removed, 25 * removed)
 			M.adjustToxLoss(rand(-30, -10) * removed)
@@ -752,14 +752,14 @@
 /datum/reagent/soporific/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 
 	var/threshold = 1
-	if(alien == IS_SKRELL)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_SKRELL)])
 		threshold = 1.2
 
-	if(alien == IS_SLIME)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		threshold = 6	//Evens to 3 due to the fact they are considered 'small' for flaps.
 
 	var/effective_dose = dose
@@ -776,7 +776,7 @@
 			M.afflict_paralyze(20 * 2)
 		M.drowsyness = max(M.drowsyness, 20)
 	else
-		if(alien == IS_SLIME) //They don't have eyes, and they don't really 'sleep'. Fumble their general senses.
+		if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)]) //They don't have eyes, and they don't really 'sleep'. Fumble their general senses.
 			M.eye_blurry = max(M.eye_blurry, 30)
 
 			if(prob(20))
@@ -803,14 +803,14 @@
 /datum/reagent/chloralhydrate/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 
 	var/threshold = 1
-	if(alien == IS_SKRELL)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_SKRELL)])
 		threshold = 1.2
 
-	if(alien == IS_SLIME)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		threshold = 6	//Evens to 3 due to the fact they are considered 'small' for flaps.
 
 	var/effective_dose = dose
@@ -824,7 +824,7 @@
 		M.afflict_paralyze(20 * 30)
 		M.eye_blurry = max(M.eye_blurry, 10)
 	else
-		if(alien == IS_SLIME)
+		if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 			if(prob(30))
 				M.ear_deaf = max(M.ear_deaf, 4)
 			M.eye_blurry = max(M.eye_blurry, 60)
@@ -868,14 +868,14 @@
 /datum/reagent/space_drugs/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 
 	var/drug_strength = 15
-	if(alien == IS_SKRELL)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_SKRELL)])
 		drug_strength = drug_strength * 0.8
 
-	if(alien == IS_SLIME)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		drug_strength = drug_strength * 1.2
 
 	M.druggy = max(M.druggy, drug_strength)
@@ -897,7 +897,7 @@
 /datum/reagent/serotrotium/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	if(prob(7))
 		M.emote(pick("twitch", "drool", "moan", "gasp"))
@@ -913,7 +913,7 @@
 /datum/reagent/serotrotium/venom/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	if(prob(30))
 		if(prob(25))
@@ -934,14 +934,14 @@
 /datum/reagent/cryptobiolin/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	var/drug_strength = 4
 
-	if(alien == IS_SKRELL)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_SKRELL)])
 		drug_strength = drug_strength * 0.8
 
-	if(alien == IS_SLIME)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		drug_strength = drug_strength * 1.2
 
 	M.make_dizzy(drug_strength)
@@ -960,7 +960,7 @@
 /datum/reagent/impedrezene/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	M.jitteriness = max(M.jitteriness - 5, 0)
 	if(prob(80))
@@ -983,15 +983,15 @@
 /datum/reagent/mindbreaker/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 
 	var/drug_strength = 100
 
-	if(alien == IS_SKRELL)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_SKRELL)])
 		drug_strength *= 0.8
 
-	if(alien == IS_SLIME)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		drug_strength *= 1.2
 
 	M.hallucination = max(M.hallucination, drug_strength)
@@ -1008,14 +1008,14 @@
 /datum/reagent/psilocybin/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 
 	var/threshold = 1
-	if(alien == IS_SKRELL)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_SKRELL)])
 		threshold = 1.2
 
-	if(alien == IS_SLIME)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		threshold = 0.8
 
 	M.druggy = max(M.druggy, 30)
@@ -1064,11 +1064,11 @@
 /datum/reagent/talum_quem/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 
 	var/drug_strength = 29
-	if(alien == IS_SKRELL)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_SKRELL)])
 		drug_strength = drug_strength * 0.8
 	else
 		M.adjustToxLoss(10 * removed) //Given incorporations of other toxins with similiar damage, this seems right.
