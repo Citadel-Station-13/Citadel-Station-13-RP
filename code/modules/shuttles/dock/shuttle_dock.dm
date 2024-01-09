@@ -7,7 +7,8 @@
 /obj/shuttle_dock
 	name = "shuttle dock"
 	desc = "A docking port for a shuttle."
-	#warn icon/etc
+	icon = 'icons/modules/shuttles/shuttle_anchor.dmi'
+	icon_state = "dock"
 
 	//* bounding box
 	/// allow docking inside bounding box as long as a shuttle fits, even if the dock doesn't align
