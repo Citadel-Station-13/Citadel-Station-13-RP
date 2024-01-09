@@ -720,7 +720,9 @@
 	id = "mintapplesparkle"
 	result = "mintapplesparkle"
 	required_reagents = list("appleade" = 2, "mint" = 1)
-	inhibitors = list("sodawater" = 1)
+	moderators = list(
+		/datum/reagent/drink/soda/sodawater = INFINITY,
+	)
 	result_amount = 3
 
 /datum/chemical_reaction/drinks/berrycordial
@@ -735,7 +737,9 @@
 	id = "tropicalfizz"
 	result = "tropicalfizz"
 	required_reagents = list("sodawater" = 6, "berryjuice" = 1, "mint" = 1, "limejuice" = 1, "lemonjuice" = 1, "pineapplejuice" = 1)
-	inhibitors = list("sugar" = 1)
+	moderators = list(
+		/datum/reagent/sugar = INFINITY,
+	)
 	result_amount = 8
 
 /datum/chemical_reaction/drinks/melonspritzer
@@ -750,14 +754,19 @@
 	id = "fauxfizz"
 	result = "fauxfizz"
 	required_reagents = list("sodawater" = 2, "berryjuice" = 1, "applejuice" = 1, "limejuice" = 1, "honey" = 1)
-	inhibitors = list("sugar" = 1)
+	moderators = list(
+		/datum/reagent/sugar = INFINITY,
+	)
 	result_amount = 6
 
 /datum/chemical_reaction/drinks/firepunch
 	name = "Fire Punch"
 	id = "firepunch"
 	result = "firepunch"
-	required_reagents = list("sugar" = 2, "rum" = 1)
+	required_reagents = list(
+		/datum/reagent/sugar = 2,
+		/datum/reagent/ethanol/rum = 1,
+	)
 	result_amount = 3
 
 /datum/chemical_reaction/drinks/kiraspecial

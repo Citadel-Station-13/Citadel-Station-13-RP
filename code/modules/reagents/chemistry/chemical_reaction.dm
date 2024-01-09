@@ -270,13 +270,6 @@
 
 //* Reaction Processing
 
-
-/**
- * called on instant reaction process
- */
-/datum/chemical_reaction/proc/on_instant_reaction(datum/reagent_holder/holder, created_volume)
-	return
-
 /**
  * called on start of a ticked reaction
  * 
@@ -286,9 +279,14 @@
 	return TRUE
 
 /**
- * called per tick of a ticked reaction
+ * called per tick of a ticked, or instant reaction
+ * 
+ * @params
+ * * holder - the reagent holder we're reacting in 
+ * * created_volume - how much units of result is made
+ * * instant - is this an instant reaction or is this a tick of a ticked reaction?
  */
-/datum/chemical_reaction/proc/on_reaction_tick(datum/reagent_holder/holder, created_volume)
+/datum/chemical_reaction/proc/on_reaction(datum/reagent_holder/holder, created_volume, instant)
 	return
 
 /**

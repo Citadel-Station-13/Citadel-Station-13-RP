@@ -16,6 +16,9 @@
 	/// assoc list [key] = [value]: if any reagent id is this list is added for the first time,
 	/// reactions needs to be reconsidered
 	var/list/reaction_add_sensitive
+	/// scratch list for reactions ; when doing stuff, make sure to key it by reaction id.
+	/// reactions automatically remove their id from this list when finishing.
+	var/list/reaction_blackboard
 
 	//* Reagents - Core *//
 
@@ -298,6 +301,15 @@
 
 /datum/reagent_holder/proc/stop_reactions()
 	#warn impl
+
+/**
+ * returns a whole number, leftovers get added to reaction id
+ */
+/datum/reagent_holder/proc/lazy_reaction_number_collation(datum/chemical_reaction/reaction, amount)
+	LAZYINITLIST(reaction_blackboard)
+	var/total = reaction_blackboard[reaction.id] + amount
+	reaction_blackboard[reaction.id] = total % 1
+	return round(total)
 
 //* Set *//
 
