@@ -41,7 +41,7 @@
 /datum/reagent/nutriment/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(!injectable && alien != IS_SLIME && alien != IS_CHIMERA)
+	if(!injectable && !entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)] && !entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_XENOCHIMERA)])
 		M.adjustToxLoss(0.1 * removed)
 		return
 	affect_ingest(M, alien, removed)
@@ -616,7 +616,7 @@
 					break
 	if(eyes_covered && mouth_covered)
 		to_chat(M, "<span class='warning'>Your [safe_thing] protects you from the pepperspray!</span>")
-		if(alien != IS_SLIME)
+		if(!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 			return
 	else if(eyes_covered)
 		to_chat(M, "<span class='warning'>Your [safe_thing] protects you from most of the pepperspray!</span>")
@@ -624,12 +624,12 @@
 		M.Blind(effective_strength)
 		M.afflict_stun(20 * 5)
 		M.afflict_paralyze(20 * 5)
-		if(alien != IS_SLIME)
+		if(!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 			return
 	else if(mouth_covered) // Mouth cover is better than eye cover
 		to_chat(M, "<span class='warning'>Your [safe_thing] protects your face from the pepperspray!</span>")
 		M.eye_blurry = max(M.eye_blurry, effective_strength)
-		if(alien != IS_SLIME)
+		if(!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 			return
 	else// Oh dear :D
 		to_chat(M, "<span class='warning'>You're sprayed directly in the eyes with pepperspray!</span>")
@@ -637,7 +637,7 @@
 		M.Blind(effective_strength * 2)
 		M.afflict_stun(20 * 5)
 		M.afflict_paralyze(20 * 5)
-		if(alien != IS_SLIME)
+		if(!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 			return
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		if(!head_covered)

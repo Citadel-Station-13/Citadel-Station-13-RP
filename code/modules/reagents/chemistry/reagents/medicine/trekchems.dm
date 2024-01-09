@@ -13,9 +13,9 @@
 /datum/reagent/inaprovaline/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien != IS_DIONA)
-		M.add_chemical_effect(CHEMICAL_EFFECT_STABLE, 15)//Reduces bleeding rate, and allowes the patient to breath even when in shock
-		M.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 10)
+	if(!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
+		entity.add_chemical_effect(CHEMICAL_EFFECT_STABLE, 15)//Reduces bleeding rate, and allowes the patient to breath even when in shock
+		entity.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 10)
 
 /datum/reagent/bicaridine
 	name = "Bicaridine"
@@ -33,8 +33,8 @@
 	var/chem_effective = 1
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		chem_effective = 0.75
-	if(alien != IS_DIONA)
-		M.heal_organ_damage(4 * removed * chem_effective, 0) //The first Parameter of the function is brute, the second burn damage
+	if(!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
+		entity.heal_organ_damage(4 * removed * chem_effective, 0) //The first Parameter of the function is brute, the second burn damage
 
 /datum/reagent/bicaridine/overdose(mob/living/carbon/M, alien, removed)
 	..()
@@ -65,9 +65,9 @@
 	var/chem_effective = 1
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		chem_effective = 0.5
-		M.adjustBruteLoss(2 * removed) //Mends burns, but has negative effects with a Promethean's skeletal structure.
-	if(alien != IS_DIONA)
-		M.heal_organ_damage(0, 4 * removed * chem_effective)
+		entity.adjustBruteLoss(2 * removed) //Mends burns, but has negative effects with a Promethean's skeletal structure.
+	if(!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
+		entity.heal_organ_damage(0, 4 * removed * chem_effective)
 /datum/reagent/dermaline
 	name = "Dermaline"
 	id = "dermaline"
@@ -84,8 +84,8 @@
 	var/chem_effective = 1
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		chem_effective = 0.75
-	if(alien != IS_DIONA)
-		M.heal_organ_damage(0, 8 * removed * chem_effective)
+	if(!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
+		entity.heal_organ_damage(0, 8 * removed * chem_effective)
 
 /datum/reagent/dylovene
 	name = "Dylovene"
@@ -102,13 +102,13 @@
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		chem_effective = 0.66
 		if(dose >= 15)
-			M.druggy = max(M.druggy, 5)
-	if(alien != IS_DIONA)
-		M.drowsyness = max(0, M.drowsyness - 6 * removed * chem_effective)//reduces drowsyness to zero
-		M.hallucination = max(0, M.hallucination - 9 * removed * chem_effective)//reduces hallucination to 0
-		M.adjustToxLoss(-4 * removed * chem_effective)//Removes toxin damage
+			entity.druggy = max(entity.druggy, 5)
+	if(!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
+		entity.drowsyness = max(0, entity.drowsyness - 6 * removed * chem_effective)//reduces drowsyness to zero
+		entity.hallucination = max(0, entity.hallucination - 9 * removed * chem_effective)//reduces hallucination to 0
+		entity.adjustToxLoss(-4 * removed * chem_effective)//Removes toxin damage
 		if(prob(10))
-			M.remove_a_modifier_of_type(/datum/modifier/poisoned)//Removes the poisoned effect, which is super rare of its own
+			entity.remove_a_modifier_of_type(/datum/modifier/poisoned)//Removes the poisoned effect, which is super rare of its own
 
 /datum/reagent/dexalin
 	name = "Dexalin"
@@ -124,17 +124,17 @@
 	. = ..()
 	
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_VOX)])
-		M.adjustToxLoss(removed * 24) //Vox breath phoron, oxygen is rather deadly to them
+		entity.adjustToxLoss(removed * 24) //Vox breath phoron, oxygen is rather deadly to them
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_ALRAUNE)])
-		M.adjustToxLoss(removed * 10) //cit change: oxygen is waste for plants
+		entity.adjustToxLoss(removed * 10) //cit change: oxygen is waste for plants
 	else if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)] && dose >= 15)
-		M.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 15)
+		entity.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 15)
 		if(prob(15))
-			to_chat(M, "<span class='notice'>You have a moment of clarity as you collapse.</span>")
-			M.adjustBrainLoss(-20 * removed) //Deals braindamage to promethians
-			M.afflict_paralyze(20 * 6)
-	else if(alien != IS_DIONA)
-		M.adjustOxyLoss(-60 * removed) //Heals alot of oxyloss damage/but
+			to_chat(entity, "<span class='notice'>You have a moment of clarity as you collapse.</span>")
+			entity.adjustBrainLoss(-20 * removed) //Deals braindamage to promethians
+			entity.afflict_paralyze(20 * 6)
+	else if(!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
+		entity.adjustOxyLoss(-60 * removed) //Heals alot of oxyloss damage/but
 		//keep in mind that Dexaline has a metabolism rate of 0.25*REM meaning only 0.25 units are removed every tick(if your metabolism takes usuall 1u per tick)
 
 	holder.remove_reagent("lexorin", 8 * removed)
@@ -152,17 +152,17 @@
 	. = ..()
 	
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_VOX)])
-		M.adjustToxLoss(removed * 9)//Again, vox dont like O2
+		entity.adjustToxLoss(removed * 9)//Again, vox dont like O2
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_ALRAUNE)])
-		M.adjustToxLoss(removed * 5) //cit change: oxygen is waste for plants
+		entity.adjustToxLoss(removed * 5) //cit change: oxygen is waste for plants
 	else if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)] && dose >= 10)
-		M.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 25)
+		entity.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 25)
 		if(prob(25))
-			to_chat(M, "<span class='notice'>You have a moment of clarity, as you feel your tubes lose pressure rapidly.</span>")
-			M.adjustBrainLoss(-8 * removed)//deals less braindamage than Dex
-			M.afflict_paralyze(20 * 3)
-	else if(alien != IS_DIONA)
-		M.adjustOxyLoss(-150 * removed)//Heals more oxyloss than Dex and has no metabolism reduction
+			to_chat(entity, "<span class='notice'>You have a moment of clarity, as you feel your tubes lose pressure rapidly.</span>")
+			entity.adjustBrainLoss(-8 * removed)//deals less braindamage than Dex
+			entity.afflict_paralyze(20 * 3)
+	else if(!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
+		entity.adjustOxyLoss(-150 * removed)//Heals more oxyloss than Dex and has no metabolism reduction
 
 	holder.remove_reagent("lexorin", 3 * removed)
 
@@ -177,14 +177,14 @@
 /datum/reagent/tricordrazine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien != IS_DIONA)//Heals everyone besides diona on all 4 base damage types.
+	if(!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])//Heals everyone besides diona on all 4 base damage types.
 		var/chem_effective = 1
 		if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 			chem_effective = 0.5
-		M.adjustOxyLoss(-3 * removed * chem_effective)
-		M.heal_organ_damage(1.5 * removed, 1.5 * removed * chem_effective)
-		M.adjustToxLoss(-1.5 * removed * chem_effective)
+		entity.adjustOxyLoss(-3 * removed * chem_effective)
+		entity.heal_organ_damage(1.5 * removed, 1.5 * removed * chem_effective)
+		entity.adjustToxLoss(-1.5 * removed * chem_effective)
 
 /datum/reagent/tricordrazine/affect_touch(mob/living/carbon/M, alien, removed)
-	if(alien != IS_DIONA)
+	if(!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		affect_blood(M, alien, removed * 0.4)

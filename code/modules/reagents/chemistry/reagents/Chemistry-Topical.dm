@@ -22,11 +22,11 @@
 /datum/reagent/topical/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien != IS_DIONA)
+	if(!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		M.adjustToxLoss(toxicity * removed)//if injected cause toxin damage
 
 /datum/reagent/topical/affect_ingest(mob/living/carbon/M, alien, removed)
-	if(alien != IS_DIONA)
+	if(!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		if(prob(10) && toxicity)//If ingested, either throw up
 			M.vomit(1)
 		else//or half the reagent passes through into blood(rest is filtered off) and alittle bit affects the inner skin
@@ -45,7 +45,7 @@
 	toxicity = 3
 
 /datum/reagent/topical/bicarilaze/affect_touch(mob/living/carbon/M, alien, removed)
-	if(alien != IS_DIONA)
+	if(!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		M.heal_organ_damage(6*removed,0)//Heal brute damage
 
 /datum/reagent/topical/kelotalaze
@@ -57,7 +57,7 @@
 	toxicity = 2
 
 /datum/reagent/topical/kelotalaze/affect_touch(mob/living/carbon/M, alien, removed)
-	if(alien != IS_DIONA)
+	if(!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		M.heal_organ_damage(0,6*removed)//Heal burns
 
 /datum/reagent/topical/tricoralaze
@@ -68,7 +68,7 @@
 	toxicity = 0
 
 /datum/reagent/topical/tricoralaze/affect_touch(mob/living/carbon/M, alien, removed)
-	if(alien != IS_DIONA)
+	if(!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		M.heal_organ_damage(3*removed,3*removed)//Heal both damage
 
 /datum/reagent/topical/inaprovalaze
@@ -79,7 +79,7 @@
 	toxicity = 0
 
 /datum/reagent/topical/inaprovalaze/affect_touch(mob/living/carbon/M, alien, removed)
-	if(alien != IS_DIONA)
+	if(!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		M.add_chemical_effect(CHEMICAL_EFFECT_STABLE, 20)//Reduces bleeding rate, and allowes the patient to breath even when in shock
 		M.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 40)
 		if(ishuman(M))
@@ -106,7 +106,7 @@
 	toxicity = 5
 
 /datum/reagent/topical/neurolaze/affect_touch(mob/living/carbon/M, alien, removed)
-	if(alien != IS_DIONA)
+	if(!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		M.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 100)//Half oxycodone
 		M.make_jittery(50*removed)//Your nerves are itching
 		M.make_dizzy(80*removed)//Screenshake.
@@ -120,17 +120,17 @@
 /datum/reagent/topical/neurolaze/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien != IS_DIONA)
+	if(!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		M.apply_damage(5 * removed, HALLOSS)//holodeck boxing glove damage
 		M.make_jittery(200)
 
 /datum/reagent/topical/neurolaze/affect_ingest(mob/living/carbon/M, alien, removed)
-	if(alien != IS_DIONA)
+	if(!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		M.vomit()
 		holder.remove_reagent("neurolaze", 10 * removed)//purges itself...
 
 /datum/reagent/topical/neurolaze/overdose(mob/living/carbon/M, alien)
-	if(alien != IS_DIONA)
+	if(!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		M.adjustBrainLoss(0.1)//deals braindamage on overdose
 
 /datum/reagent/topical/sterilaze
@@ -155,7 +155,7 @@
 	toxicity = 1
 
 /datum/reagent/topical/cleansalaze/affect_touch(mob/living/carbon/M, alien, removed)
-	if(alien != IS_DIONA)
+	if(!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		M.cure_radiation(RAD_MOB_CURE_STRENGTH_CLEANSALAZE(removed))
 
 /datum/reagent/topical/lotion//Because chemistry should have some recreational uses
@@ -166,7 +166,7 @@
 	toxicity = 0
 
 /datum/reagent/topical/lotion/affect_touch(mob/living/carbon/M, alien, removed)
-	if (alien != IS_DIONA)
+	if (!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		M.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 5)//Not really usefull but I guess a lotion would help alittle with pain
 		if(world.time > (data + (5*60*10)))
 			data = world.time

@@ -522,7 +522,7 @@
 
 	if(ishuman(entity))
 		var/mob/living/carbon/human/H = entity
-		if(alien != IS_DIONA)
+		if(!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 			H.adjustToxLoss((30 / strength_mod) * removed)
 
 		var/list/organtotal = list()
@@ -568,7 +568,7 @@
 
 	if(ishuman(entity))
 		var/mob/living/carbon/human/H = entity
-		if(alien != IS_SKRELL)
+		if(!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_SKRELL)])
 			H.adjustToxLoss(20 * removed)
 
 		var/list/organtotal = list()

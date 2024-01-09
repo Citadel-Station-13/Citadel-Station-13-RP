@@ -16,7 +16,7 @@
 /datum/reagent/toxin/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(strength && alien != IS_DIONA)
+	if(strength && !entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		if(issmall(entity)) removed *= 2 // Small bodymass, more effect from lower volume.
 		if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 			removed *= 0.25 // Results in half the standard tox as normal. Prometheans are 'Small' for flaps.
@@ -69,7 +69,7 @@
 /datum/reagent/toxin/neurotoxic_protein/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(alien != IS_DIONA)
+	if(!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		if(CHECK_MOBILITY(entity, MOBILITY_CAN_MOVE) && istype(entity.loc, /turf/space))
 			step(entity, pick(GLOB.cardinal))
 		if(prob(5))

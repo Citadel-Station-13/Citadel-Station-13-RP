@@ -17,7 +17,7 @@
 	var/chem_effective = 1
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		chem_effective = 0.75
-	M.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 25 * chem_effective)//kinda weak painkilling, for non life threatening injuries
+	entity.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 25 * chem_effective)//kinda weak painkilling, for non life threatening injuries
 
 /datum/reagent/paracetamol/overdose(mob/living/carbon/M, alien)
 	..()
@@ -42,8 +42,8 @@
 	var/chem_effective = 1
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		chem_effective = 0.8
-		M.add_chemical_effect(CHEMICAL_EFFECT_SLOWDOWN, 1)
-	M.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 80 * chem_effective)//more potent painkilling, for close to fatal injuries
+		entity.add_chemical_effect(CHEMICAL_EFFECT_SLOWDOWN, 1)
+	entity.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 80 * chem_effective)//more potent painkilling, for close to fatal injuries
 
 /datum/reagent/tramadol/overdose(mob/living/carbon/M, alien)
 	..()
@@ -66,10 +66,10 @@
 	var/chem_effective = 1
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		chem_effective = 0.75
-		M.stuttering = min(50, max(0, M.stuttering + 5)) //If you can't feel yourself, and your main mode of speech is resonation, there's a problem.
-	M.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 200 * chem_effective)//Bad boy painkiller, for you and the fact that she left you
-	M.add_chemical_effect(CHEMICAL_EFFECT_SLOWDOWN, 1)
-	M.eye_blurry = min(M.eye_blurry + 10, 250 * chem_effective)
+		entity.stuttering = min(50, max(0, entity.stuttering + 5)) //If you can't feel yourself, and your main mode of speech is resonation, there's a problem.
+	entity.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 200 * chem_effective)//Bad boy painkiller, for you and the fact that she left you
+	entity.add_chemical_effect(CHEMICAL_EFFECT_SLOWDOWN, 1)
+	entity.eye_blurry = min(entity.eye_blurry + 10, 250 * chem_effective)
 
 /datum/reagent/oxycodone/overdose(mob/living/carbon/M, alien)
 	..()
