@@ -28,16 +28,21 @@
 	taste_description = "chalk"
 	reagent_state = REAGENT_SOLID
 	color = "#eae6e3"
-	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 0.8
-	metabolism = REM * 0.4
+	ingested_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 0.8
+	ingested_metabolism_multiplier = 0.4
+	ingested_absorption_multiplier = 0
 
-/datum/reagent/calciumcarbonate/affect_blood(mob/living/carbon/M, alien, removed) // Why would you inject this.
-	if(alien != IS_DIONA)
-		M.adjustToxLoss(3 * removed)
+/datum/reagent/calciumcarbonate/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
+		return
+	entity.adjustToxLoss(3 * removed)
 
-/datum/reagent/calciumcarbonate/affect_ingest(mob/living/carbon/M, alien, removed)
-	if(alien != IS_DIONA)
-		M.add_chemical_effect(CHEMICAL_EFFECT_ANTACID, 3)//Antipuke effect
+/datum/reagent/calciumcarbonate/on_metabolize_ingested(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed, obj/item/organ/internal/container)
+	. = ..()
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
+		return
+	entity.add_chemical_effect(CHEMICAL_EFFECT_ANTACID, 3)//Antipuke effect
 
 /datum/reagent/carthatoline
 	name = "Carthatoline"
@@ -46,9 +51,11 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#225722"
 
-/datum/reagent/carthatoline/affect_blood(mob/living/carbon/M, alien, removed)
-	if(alien == IS_DIONA)
+/datum/reagent/carthatoline/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
+	var/mob/living/carbon/M = entity
 	if(M.getToxLoss() && prob(10))//if the patient has toxin damage 10% chance to cause vomiting
 		M.vomit(1)
 	M.adjustToxLoss(-8 * removed)
@@ -62,7 +69,7 @@
 				return
 			if(L.damage > 0)
 				L.heal_damage_i(2 * removed, can_revive = TRUE)
-		if(alien == IS_SLIME)
+		if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 			H.druggy = max(M.druggy, 5)
 
 /datum/reagent/earthsblood
