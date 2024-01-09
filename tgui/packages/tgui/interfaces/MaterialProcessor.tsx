@@ -22,7 +22,7 @@ const COLOR_PROCESSING = {
 type OreData =
 {
   name: string,
-  display_name: string,
+  displayName: string,
   processing: number,
   amount: number,
   ref: string,
@@ -112,35 +112,35 @@ export const MaterialProcessor = (props, context) => {
           <LabeledList>
             {ores.map(ore => (
               <LabeledList.Item
-                label={capitalize(ore.display_name)}
+                label={capitalize(ore.displayName)}
                 key={ore.ref}
                 color={COLOR_PROCESSING[ore.processing]}
                 buttons={
                   <Fragment>
                     <Button
                       icon="layer-group"
-                      tooltip={"Alloy " + ore.display_name}
+                      tooltip={"Alloy " + ore.displayName}
                       tooltipPosition="top"
                       selected={ore.processing === MaterialProcessorMode.Alloy}
                       onClick={() => act("change_mode", { ore: ore.name, mode: MaterialProcessorMode.Alloy })}
                     />
                     <Button
                       icon="fire"
-                      tooltip={"Smelt " + ore.display_name}
+                      tooltip={"Smelt " + ore.displayName}
                       tooltipPosition="top"
                       selected={ore.processing === MaterialProcessorMode.Smelt}
                       onClick={() => act("change_mode", { ore: ore.name, mode: MaterialProcessorMode.Smelt })}
                     />
                     <Button
                       icon="stamp"
-                      tooltip={"Compress " + ore.display_name}
+                      tooltip={"Compress " + ore.displayName}
                       tooltipPosition="top"
                       selected={ore.processing === MaterialProcessorMode.Compress}
                       onClick={() => act("change_mode", { ore: ore.name, mode: MaterialProcessorMode.Compress })}
                     />
                     <Button
                       icon="ban"
-                      tooltip={"No processing " + ore.display_name}
+                      tooltip={"No processing " + ore.displayName}
                       tooltipPosition="top"
                       selected={ore.processing === MaterialProcessorMode.None}
                       onClick={() => act("change_mode", { ore: ore.name, mode: MaterialProcessorMode.None })}

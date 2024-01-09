@@ -34,7 +34,7 @@
 	if(..())
 		return
 	interact(user)
-	playsound(src, "keyboard", clickvol, 1, 0)
+	playsound(src, "keyboard", clickvol, TRUE)
 
 /obj/machinery/mineral/processing_unit_console/attackby(var/obj/item/I, var/mob/user)
 	if(istype(I, /obj/item/card/id))
