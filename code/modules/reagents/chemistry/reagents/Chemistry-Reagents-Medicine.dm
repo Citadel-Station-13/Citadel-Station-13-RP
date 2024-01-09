@@ -92,13 +92,13 @@
 		chem_effective = 1.1
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		chem_effective = 0.7 //It just goes right through them ... right onto the floor
-	M.heal_organ_damage (4 * removed * chem_effective, 4 * removed * chem_effective)
-	M.adjustOxyLoss(-10 * removed * chem_effective)
-	M.adjustToxLoss(-4 * removed * chem_effective)
-	M.adjustCloneLoss(-2 * removed * chem_effective)
-	M.druggy = max(M.druggy, 40)
-	M.adjustBrainLoss(1 * removed) //your life for your mind. The Earthmother's Tithe.
-	M.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 120 * chem_effective) //It's just a burning memory. The pain, I mean.
+	entity.heal_organ_damage (4 * removed * chem_effective, 4 * removed * chem_effective)
+	entity.adjustOxyLoss(-10 * removed * chem_effective)
+	entity.adjustToxLoss(-4 * removed * chem_effective)
+	entity.adjustCloneLoss(-2 * removed * chem_effective)
+	entity.druggy = max(entity.druggy, 40)
+	entity.adjustBrainLoss(1 * removed) //your life for your mind. The Earthmother's Tithe.
+	entity.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 120 * chem_effective) //It's just a burning memory. The pain, I mean.
 
 
 /* Painkillers */
@@ -118,9 +118,9 @@
 /datum/reagent/numbing_enzyme/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	M.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 200)//Similar to Oxycodone
+	entity.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 200)//Similar to Oxycodone
 	if(prob(0.01)) //1 in 10000 chance per tick. Extremely rare.
-		to_chat(M,"<span class='warning'>Your body feels numb as a light, tingly sensation spreads throughout it, like some odd warmth.</span>")
+		to_chat(entity,"<span class='warning'>Your body feels numb as a light, tingly sensation spreads throughout it, like some odd warmth.</span>")
 	//Not noted here, but a movement debuff of 1.5 is handed out in human_movement.dm when numbing_enzyme is in a person's bloodstream!
 
 /datum/reagent/numbing_enzyme/overdose(mob/living/carbon/M, alien)
@@ -168,18 +168,18 @@
 		return
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		if(dose >= 5) //Not effective in small doses, though it causes toxloss at higher ones, it will make the regeneration for brute and burn more 'efficient' at the cost of more nutrition.
-			M.nutrition -= removed * 2
-			M.adjustBruteLoss(-2 * removed)
-			M.adjustFireLoss(-1 * removed)
+			entity.nutrition -= removed * 2
+			entity.adjustBruteLoss(-2 * removed)
+			entity.adjustFireLoss(-1 * removed)
 		chem_effective = 0.5
-	M.drowsyness = max(M.drowsyness - 5, 0)
-	M.adjust_unconscious(20 * -1)
-	M.adjust_stunned(20 * -1)
-	M.adjust_paralyzed(20 * -1)
+	entity.drowsyness = max(entity.drowsyness - 5, 0)
+	entity.adjust_unconscious(20 * -1)
+	entity.adjust_stunned(20 * -1)
+	entity.adjust_paralyzed(20 * -1)
 	holder.remove_reagent("mindbreaker", 5)
-	M.hallucination = max(0, M.hallucination - 10)//Primary use
-	M.adjustToxLoss(5 * removed * chem_effective) // It used to be incredibly deadly due to an oversight. Not anymore!
-	M.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 20 * chem_effective)
+	entity.hallucination = max(0, entity.hallucination - 10)//Primary use
+	entity.adjustToxLoss(5 * removed * chem_effective) // It used to be incredibly deadly due to an oversight. Not anymore!
+	entity.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 20 * chem_effective)
 
 /datum/reagent/hyperzine
 	name = "Hyperzine"
@@ -197,13 +197,13 @@
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_TAJARAN)])
 		removed *= 1.25
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
-		M.make_jittery(4) //Hyperactive fluid pumping results in unstable 'skeleton', resulting in vibration.
+		entity.make_jittery(4) //Hyperactive fluid pumping results in unstable 'skeleton', resulting in vibration.
 		if(dose >= 5)
-			M.nutrition = (M.nutrition - (removed * 2)) //Sadly this movement starts burning food in higher doses.
+			entity.nutrition = (entity.nutrition - (removed * 2)) //Sadly this movement starts burning food in higher doses.
 	..()
 	if(prob(5))
-		M.emote(pick("twitch", "blink_r", "shiver"))
-	M.add_chemical_effect(CHEMICAL_EFFECT_SPEEDBOOST, 1)
+		entity.emote(pick("twitch", "blink_r", "shiver"))
+	entity.add_chemical_effect(CHEMICAL_EFFECT_SPEEDBOOST, 1)
 
 /datum/reagent/alkysine
 	name = "Alkysine"
@@ -223,12 +223,12 @@
 	var/chem_effective = 1
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		chem_effective = 0.25
-		if(M.brainloss >= 10)
-			M.afflict_paralyze(20 * 5)
-		if(dose >= 10 && M.is_unconscious())
-			M.adjust_unconscious(20 * 1) //Messing with the core with a simple chemical probably isn't the best idea.
-	M.adjustBrainLoss(-8 * removed * chem_effective) //the Brain damage heal
-	M.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 10 * chem_effective)
+		if(entity.brainloss >= 10)
+			entity.afflict_paralyze(20 * 5)
+		if(dose >= 10 && entity.is_unconscious())
+			entity.adjust_unconscious(20 * 1) //Messing with the core with a simple chemical probably isn't the best idea.
+	entity.adjustBrainLoss(-8 * removed * chem_effective) //the Brain damage heal
+	entity.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 10 * chem_effective)
 
 /datum/reagent/imidazoline
 	name = "Imidazoline"
@@ -242,10 +242,10 @@
 /datum/reagent/imidazoline/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	M.eye_blurry = max(M.eye_blurry - 5, 0)
-	M.AdjustBlinded(-5)
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
+	entity.eye_blurry = max(entity.eye_blurry - 5, 0)
+	entity.AdjustBlinded(-5)
+	if(ishuman(entity))
+		var/mob/living/carbon/human/H = entity
 		var/obj/item/organ/internal/eyes/E = H.internal_organs_by_name[O_EYES]
 		if(istype(E))
 			if(E.robotic >= ORGAN_ROBOT)
@@ -267,8 +267,8 @@
 /datum/reagent/peridaxon/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
+	if(ishuman(entity))
+		var/mob/living/carbon/human/H = entity
 		for(var/obj/item/organ/I in H.internal_organs)
 			if(I.robotic >= ORGAN_ROBOT)
 				continue
@@ -276,7 +276,7 @@
 				I.heal_damage_i(removed, can_revive = TRUE)
 				H.Confuse(5)
 			if(I.damage <= 5 && I.organ_tag == O_EYES)
-				H.eye_blurry = min(M.eye_blurry + 10, 100) //Eyes need to reset, or something
+				H.eye_blurry = min(entity.eye_blurry + 10, 100) //Eyes need to reset, or something
 				H.sdisabilities &= ~SDISABILITY_NERVOUS
 		if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 			H.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 20)
@@ -295,14 +295,14 @@
 /datum/reagent/nanoperidaxon/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
+	if(ishuman(entity))
+		var/mob/living/carbon/human/H = entity
 		for(var/obj/item/organ/I in H.internal_organs)
 			if(I.damage > 0)
 				I.heal_damage_i(removed, can_revive = TRUE)
 				H.Confuse(5)
 			if(I.damage <= 5 && I.organ_tag == O_EYES)
-				H.eye_blurry = min(M.eye_blurry + 10, 100) //Eyes need to reset, or something
+				H.eye_blurry = min(entity.eye_blurry + 10, 100) //Eyes need to reset, or something
 				H.sdisabilities &= ~SDISABILITY_NERVOUS
 		if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 			H.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 20)
@@ -323,9 +323,9 @@
 	
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-	M.heal_organ_damage(3 * removed, 0)	//Gives the bones a chance to set properly even without other meds
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
+	entity.heal_organ_damage(3 * removed, 0)	//Gives the bones a chance to set properly even without other meds
+	if(ishuman(entity))
+		var/mob/living/carbon/human/H = entity
 		for(var/obj/item/organ/external/O in H.bad_external_organs)
 			if(O.status & ORGAN_BROKEN)
 				O.mend_fracture()		//Only works if the bone won't rebreak, as usual
@@ -347,9 +347,9 @@
 	
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-	M.eye_blurry += min(M.eye_blurry + (repair_strength * removed), 250)
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
+	entity.eye_blurry += min(entity.eye_blurry + (repair_strength * removed), 250)
+	if(ishuman(entity))
+		var/mob/living/carbon/human/H = entity
 		var/wound_heal = removed * repair_strength
 		for(var/obj/item/organ/external/O in H.bad_external_organs)
 			for(var/datum/wound/W as anything in O.wounds)
@@ -380,15 +380,15 @@
 	var/repair_strength = 1
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		repair_strength = 0.6
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
+	if(ishuman(entity))
+		var/mob/living/carbon/human/H = entity
 		for(var/obj/item/organ/I in H.internal_organs)
 			if(I.robotic >= ORGAN_ROBOT || !(I.organ_tag in list(O_LUNGS, O_VOICE, O_GBLADDER)))
 				continue
 			if(I.damage > 0)
 				I.heal_damage_i(4 * removed * repair_strength, can_revive = TRUE)
 				H.Confuse(2)
-		if(M.reagents.has_reagent("gastirodaxon") || M.reagents.has_reagent("peridaxon"))
+		if(entity.reagents.has_reagent("gastirodaxon") || entity.reagents.has_reagent("peridaxon"))
 			if(H.losebreath >= 15 && prob(H.losebreath))
 				H.afflict_stun(20 * 2)
 			else
@@ -412,15 +412,15 @@
 	var/repair_strength = 1
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		repair_strength = 0.6
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
+	if(ishuman(entity))
+		var/mob/living/carbon/human/H = entity
 		for(var/obj/item/organ/I in H.internal_organs)
 			if(I.robotic >= ORGAN_ROBOT || !(I.organ_tag in list(O_APPENDIX, O_STOMACH, O_INTESTINE, O_NUTRIENT, O_PLASMA, O_POLYP)))
 				continue
 			if(I.damage > 0)
 				I.heal_damage_i(4 * removed * repair_strength, can_revive = TRUE)
 				H.Confuse(2)
-		if(M.reagents.has_reagent("hepanephrodaxon") || M.reagents.has_reagent("peridaxon"))
+		if(entity.reagents.has_reagent("hepanephrodaxon") || entity.reagents.has_reagent("peridaxon"))
 			if(prob(10))
 				H.vomit(1)
 			else if(H.nutrition > 30)
@@ -444,15 +444,15 @@
 	var/repair_strength = 1
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		repair_strength = 0.4
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
+	if(ishuman(entity))
+		var/mob/living/carbon/human/H = entity
 		for(var/obj/item/organ/I in H.internal_organs)
 			if(I.robotic >= ORGAN_ROBOT || !(I.organ_tag in list(O_LIVER, O_KIDNEYS, O_APPENDIX, O_ACID, O_HIVE)))
 				continue
 			if(I.damage > 0)
 				I.heal_damage_i(4 * removed * repair_strength, can_revive = TRUE)
 				H.Confuse(2)
-		if(M.reagents.has_reagent("cordradaxon") || M.reagents.has_reagent("peridaxon"))
+		if(entity.reagents.has_reagent("cordradaxon") || entity.reagents.has_reagent("peridaxon"))
 			if(prob(5))
 				H.vomit(1)
 			else if(prob(5))
@@ -478,15 +478,15 @@
 	var/repair_strength = 1
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		repair_strength = 0.6
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
+	if(ishuman(entity))
+		var/mob/living/carbon/human/H = entity
 		for(var/obj/item/organ/I in H.internal_organs)
 			if(I.robotic >= ORGAN_ROBOT || !(I.organ_tag in list(O_HEART, O_SPLEEN, O_RESPONSE, O_ANCHOR, O_EGG)))
 				continue
 			if(I.damage > 0)
 				I.heal_damage_i(4 * removed * repair_strength, can_revive = TRUE)
 				H.Confuse(2)
-		if(M.reagents.has_reagent("respirodaxon") || M.reagents.has_reagent("peridaxon"))
+		if(entity.reagents.has_reagent("respirodaxon") || entity.reagents.has_reagent("peridaxon"))
 			H.losebreath = clamp(H.losebreath + 1, 0, 10)
 		else
 			H.adjustOxyLoss(-30 * removed) // Deals with blood oxygenation.
@@ -520,8 +520,8 @@
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_TAJARAN)])	// Highest metabolism.
 		strength_mod = 2
 
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
+	if(ishuman(entity))
+		var/mob/living/carbon/human/H = entity
 		if(alien != IS_DIONA)
 			H.adjustToxLoss((30 / strength_mod) * removed)
 
@@ -566,8 +566,8 @@
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_SKRELL)])
 		strength_mod = 1
 
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
+	if(ishuman(entity))
+		var/mob/living/carbon/human/H = entity
 		if(alien != IS_SKRELL)
 			H.adjustToxLoss(20 * removed)
 
@@ -606,13 +606,13 @@
 /datum/reagent/ryetalyn/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	var/needs_update = M.mutations.len > 0
+	var/needs_update = entity.mutations.len > 0
 
-	M.mutations = list()
-	M.disabilities = 0
-	M.sdisabilities = 0
+	entity.mutations = list()
+	entity.disabilities = 0
+	entity.sdisabilities = 0
 
-	var/mob/living/carbon/human/H = M
+	var/mob/living/carbon/human/H = entity
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)] && istype(H)) //Shifts them toward white, faster than Rezadone does toward grey.
 		if(prob(50))
 			if(H.r_skin)
@@ -640,7 +640,7 @@
 			H.adjustToxLoss(6 * removed)
 
 	// Might need to update appearance for hulk etc.
-	if(needs_update && ishuman(M))
+	if(needs_update && ishuman(entity))
 		H.update_mutations()
 
 /datum/reagent/ethylredoxrazine
@@ -657,15 +657,15 @@
 	
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-	M.dizziness = 0
-	M.drowsyness = 0
-	M.stuttering = 0
-	M.SetConfused(0)
-	if(M.ingested)
-		for(var/datum/reagent/ethanol/R in M.ingested.reagent_list)
+	entity.dizziness = 0
+	entity.drowsyness = 0
+	entity.stuttering = 0
+	entity.SetConfused(0)
+	if(entity.ingested)
+		for(var/datum/reagent/ethanol/R in entity.ingested.reagent_list)
 			R.remove_self(removed * 30)
-	if(M.bloodstr)
-		for(var/datum/reagent/ethanol/R in M.bloodstr.reagent_list)
+	if(entity.bloodstr)
+		for(var/datum/reagent/ethanol/R in entity.bloodstr.reagent_list)
 			R.remove_self(removed * 20)
 
 /datum/reagent/hyronalin
@@ -683,7 +683,7 @@
 	
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-	M.cure_radiation(RAD_MOB_CURE_STRENGTH_HYRONALIN(removed))
+	entity.cure_radiation(RAD_MOB_CURE_STRENGTH_HYRONALIN(removed))
 
 /datum/reagent/arithrazine
 	name = "Arithrazine"
@@ -700,10 +700,10 @@
 	
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-	M.cure_radiation(RAD_MOB_CURE_STRENGTH_ARITHRAZINE(removed))
-	M.adjustToxLoss(-10 * removed)
+	entity.cure_radiation(RAD_MOB_CURE_STRENGTH_ARITHRAZINE(removed))
+	entity.adjustToxLoss(-10 * removed)
 	if(prob(60))
-		M.take_organ_damage(4 * removed, 0)
+		entity.take_organ_damage(4 * removed, 0)
 
 /datum/reagent/spaceacillin
 	name = "Spaceacillin"
@@ -723,13 +723,13 @@
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		if(volume <= 0.1 && data != -1)
 			data = -1
-			to_chat(M, "<span class='notice'>You regain focus...</span>")
+			to_chat(entity, "<span class='notice'>You regain focus...</span>")
 		else
 			var/delay = (5 MINUTES)
 			if(world.time > data + delay)
 				data = world.time
-				to_chat(M, "<span class='warning'>Your senses feel unfocused, and divided.</span>")
-	M.add_chemical_effect(CHEMICAL_EFFECT_ANTIBIOTIC, dose >= overdose ? ANTIBIO_OD : ANTIBIO_NORM)
+				to_chat(entity, "<span class='warning'>Your senses feel unfocused, and divided.</span>")
+	entity.add_chemical_effect(CHEMICAL_EFFECT_ANTIBIOTIC, dose >= overdose ? ANTIBIO_OD : ANTIBIO_NORM)
 
 /datum/reagent/spaceacillin/affect_touch(mob/living/carbon/M, alien, removed)
 	affect_blood(M, alien, removed * 0.8) // Not 100% as effective as injections, though still useful.
@@ -748,56 +748,56 @@
 /datum/reagent/corophizine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	M.add_chemical_effect(CHEMICAL_EFFECT_ANTIBIOTIC, ANTIBIO_SUPER)
+	entity.add_chemical_effect(CHEMICAL_EFFECT_ANTIBIOTIC, ANTIBIO_SUPER)
 
-	var/mob/living/carbon/human/H = M
+	var/mob/living/carbon/human/H = entity
 
-	if(ishuman(M) && alien == IS_SLIME) //Everything about them is treated like a targetted organism. Widespread bodily function begins to fail.
+	if(ishuman(entity) && alien == IS_SLIME) //Everything about them is treated like a targetted organism. Widespread bodily function begins to fail.
 		if(volume <= 0.1 && data != -1)
 			data = -1
-			to_chat(M, "<span class='notice'>Your body ceases its revolt.</span>")
+			to_chat(entity, "<span class='notice'>Your body ceases its revolt.</span>")
 		else
 			var/delay = (3 MINUTES)
 			if(world.time > data + delay)
 				data = world.time
-				to_chat(M, "<span class='critical'>It feels like your body is revolting!</span>")
-		M.Confuse(7)
-		M.adjustFireLoss(removed * 2)
-		M.adjustToxLoss(removed * 2)
-		if(dose >= 5 && M.toxloss >= 10) //It all starts going wrong.
-			M.adjustBruteLoss(removed * 3)
-			M.eye_blurry = min(20, max(0, M.eye_blurry + 10))
+				to_chat(entity, "<span class='critical'>It feels like your body is revolting!</span>")
+		entity.Confuse(7)
+		entity.adjustFireLoss(removed * 2)
+		entity.adjustToxLoss(removed * 2)
+		if(dose >= 5 && entity.toxloss >= 10) //It all starts going wrong.
+			entity.adjustBruteLoss(removed * 3)
+			entity.eye_blurry = min(20, max(0, entity.eye_blurry + 10))
 			if(prob(25))
 				if(prob(25))
-					to_chat(M, "<span class='danger'>Your pneumatic fluids seize for a moment.</span>")
-				M.afflict_stun(20 * 2)
+					to_chat(entity, "<span class='danger'>Your pneumatic fluids seize for a moment.</span>")
+				entity.afflict_stun(20 * 2)
 				spawn(30)
-					M.afflict_paralyze(20 * 2)
-		if(dose >= 10 || M.toxloss >= 25) //Internal skeletal tubes are rupturing, allowing the chemical to breach them.
-			M.adjustToxLoss(removed * 4)
-			M.make_jittery(5)
-		if(dose >= 20 || M.toxloss >= 60) //Core disentigration, cellular mass begins treating itself as an enemy, while maintaining regeneration. Slime-cancer.
-			M.adjustBrainLoss(2 * removed)
-			M.nutrition = max(H.nutrition - 20, 0)
-		if(M.bruteloss >= 60 && M.toxloss >= 60 && M.brainloss >= 30) //Total Structural Failure. Limbs start splattering.
+					entity.afflict_paralyze(20 * 2)
+		if(dose >= 10 || entity.toxloss >= 25) //Internal skeletal tubes are rupturing, allowing the chemical to breach them.
+			entity.adjustToxLoss(removed * 4)
+			entity.make_jittery(5)
+		if(dose >= 20 || entity.toxloss >= 60) //Core disentigration, cellular mass begins treating itself as an enemy, while maintaining regeneration. Slime-cancer.
+			entity.adjustBrainLoss(2 * removed)
+			entity.nutrition = max(H.nutrition - 20, 0)
+		if(entity.bruteloss >= 60 && entity.toxloss >= 60 && entity.brainloss >= 30) //Total Structural Failure. Limbs start splattering.
 			var/obj/item/organ/external/O = pick(H.organs)
 			if(prob(20) && !istype(O, /obj/item/organ/external/chest/unbreakable/slime) && !istype(O, /obj/item/organ/external/groin/unbreakable/slime))
-				to_chat(M, "<span class='critical'>You feel your [O] begin to dissolve, before it sloughs from your body.</span>")
+				to_chat(entity, "<span class='critical'>You feel your [O] begin to dissolve, before it sloughs from your body.</span>")
 				O.droplimb() //Splat.
 		return
 
 	//Based roughly on Levofloxacin's rather severe side-effects
 	if(prob(20))
-		M.Confuse(5)
+		entity.Confuse(5)
 	if(prob(20))
-		M.afflict_paralyze(20 * 5)
+		entity.afflict_paralyze(20 * 5)
 	if(prob(20))
-		M.make_dizzy(5)
+		entity.make_dizzy(5)
 	if(prob(20))
-		M.hallucination = max(M.hallucination, 10)
+		entity.hallucination = max(entity.hallucination, 10)
 
 	//One of the levofloxacin side effects is 'spontaneous tendon rupture', which I'll immitate here. 1:1000 chance, so, pretty darn rare.
-	if(ishuman(M) && rand(1,10000) == 1)
+	if(ishuman(entity) && rand(1,10000) == 1)
 		var/obj/item/organ/external/eo = pick(H.organs) //Misleading variable name, 'organs' is only external organs
 		eo.fracture()
 
@@ -817,8 +817,8 @@
 /datum/reagent/spacomycaze/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	M.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 10)
-	M.adjustToxLoss(3 * removed)
+	entity.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 10)
+	entity.adjustToxLoss(3 * removed)
 
 /datum/reagent/spacomycaze/affect_ingest(mob/living/carbon/M, alien, removed)
 	affect_blood(M, alien, removed * 0.8)
@@ -863,8 +863,8 @@
 	. = ..()
 	
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
-		M.adjustFireLoss(removed)
-		M.adjustToxLoss(2 * removed)
+		entity.adjustFireLoss(removed)
+		entity.adjustToxLoss(2 * removed)
 	return
 
 /datum/reagent/sterilizine/affect_touch(mob/living/carbon/M, alien, removed)
@@ -911,10 +911,10 @@
 	
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-	if(M.bodytemperature > 310)
-		M.bodytemperature = max(310, M.bodytemperature - (40 * TEMPERATURE_DAMAGE_COEFFICIENT))
-	else if(M.bodytemperature < 311)
-		M.bodytemperature = min(310, M.bodytemperature + (40 * TEMPERATURE_DAMAGE_COEFFICIENT))
+	if(entity.bodytemperature > 310)
+		entity.bodytemperature = max(310, entity.bodytemperature - (40 * TEMPERATURE_DAMAGE_COEFFICIENT))
+	else if(entity.bodytemperature < 311)
+		entity.bodytemperature = min(310, entity.bodytemperature + (40 * TEMPERATURE_DAMAGE_COEFFICIENT))
 
 /datum/reagent/rezadone
 	name = "Rezadone"
@@ -930,7 +930,7 @@
 	
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-	var/mob/living/carbon/human/H = M
+	var/mob/living/carbon/human/H = entity
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)] && istype(H))
 		if(prob(50))
 			if(H.r_skin)
@@ -953,13 +953,13 @@
 				H.b_hair = round((H.b_hair + 50)/2)
 			if(H.b_facial)
 				H.b_facial = round((H.b_facial + 50)/2)
-	M.adjustCloneLoss(-20 * removed)
-	M.adjustOxyLoss(-2 * removed)
-	M.heal_organ_damage(20 * removed, 20 * removed)
-	M.adjustToxLoss(-20 * removed)
+	entity.adjustCloneLoss(-20 * removed)
+	entity.adjustOxyLoss(-2 * removed)
+	entity.heal_organ_damage(20 * removed, 20 * removed)
+	entity.adjustToxLoss(-20 * removed)
 	if(dose > 10)
-		M.make_dizzy(5)
-		M.make_jittery(5)
+		entity.make_dizzy(5)
+		entity.make_jittery(5)
 
 /* Antidepressants */
 
@@ -984,11 +984,11 @@
 		return
 	if(volume <= 0.1 && data != -1)
 		data = -1
-		to_chat(M, "<span class='warning'>You lose focus...</span>")
+		to_chat(entity, "<span class='warning'>You lose focus...</span>")
 	else
 		if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY)
 			data = world.time
-			to_chat(M, "<span class='notice'>Your mind feels focused and undivided.</span>")
+			to_chat(entity, "<span class='notice'>Your mind feels focused and undivided.</span>")
 
 /datum/reagent/citalopram
 	name = "Citalopram"
@@ -1009,11 +1009,11 @@
 		return
 	if(volume <= 0.1 && data != -1)
 		data = -1
-		to_chat(M, "<span class='warning'>Your mind feels a little less stable...</span>")
+		to_chat(entity, "<span class='warning'>Your mind feels a little less stable...</span>")
 	else
 		if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY)
 			data = world.time
-			to_chat(M, "<span class='notice'>Your mind feels stable... a little stable.</span>")
+			to_chat(entity, "<span class='notice'>Your mind feels stable... a little stable.</span>")
 
 /datum/reagent/paroxetine
 	name = "Paroxetine"
@@ -1034,15 +1034,15 @@
 		return
 	if(volume <= 0.1 && data != -1)
 		data = -1
-		to_chat(M, "<span class='warning'>Your mind feels much less stable...</span>")
+		to_chat(entity, "<span class='warning'>Your mind feels much less stable...</span>")
 	else
 		if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY)
 			data = world.time
 			if(prob(90))
-				to_chat(M, "<span class='notice'>Your mind feels much more stable.</span>")
+				to_chat(entity, "<span class='notice'>Your mind feels much more stable.</span>")
 			else
-				to_chat(M, "<span class='warning'>Your mind breaks apart...</span>")
-				M.hallucination += 200
+				to_chat(entity, "<span class='warning'>Your mind breaks apart...</span>")
+				entity.hallucination += 200
 
 /datum/reagent/adranol//Moved from Chemistry-Reagents-Medicine_vr.dm
 	name = "Adranol"
@@ -1057,12 +1057,12 @@
 	
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-	if(M.confused)
-		M.Confuse(-8*removed)
-	if(M.eye_blurry)
-		M.eye_blurry = max(M.eye_blurry - 8*removed, 0)
-	if(M.jitteriness)
-		M.make_jittery(-8 * removed)
+	if(entity.confused)
+		entity.Confuse(-8*removed)
+	if(entity.eye_blurry)
+		entity.eye_blurry = max(entity.eye_blurry - 8*removed, 0)
+	if(entity.jitteriness)
+		entity.make_jittery(-8 * removed)
 
 /datum/reagent/qerr_quem
 	name = "Qerr-quem"
@@ -1083,11 +1083,11 @@
 		return
 	if(volume <= 0.1 && data != -1)
 		data = -1
-		to_chat(M, "<span class='warning'>You feel antsy, your concentration wavers...</span>")
+		to_chat(entity, "<span class='warning'>You feel antsy, your concentration wavers...</span>")
 	else
 		if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY)
 			data = world.time
-			to_chat(M, "<span class='notice'>You feel invigorated and calm.</span>")
+			to_chat(entity, "<span class='notice'>You feel invigorated and calm.</span>")
 
 // This exists to cut the number of chemicals a merc borg has to juggle on their hypo.
 /datum/reagent/healing_nanites
@@ -1104,10 +1104,10 @@
 /datum/reagent/healing_nanites/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	M.heal_organ_damage(2 * removed, 2 * removed)
-	M.adjustOxyLoss(-4 * removed)
-	M.adjustToxLoss(-2 * removed)
-	M.adjustCloneLoss(-2 * removed)
+	entity.heal_organ_damage(2 * removed, 2 * removed)
+	entity.adjustOxyLoss(-4 * removed)
+	entity.adjustToxLoss(-2 * removed)
+	entity.adjustCloneLoss(-2 * removed)
 
 ////////////////////////// Anti-Noms Drugs //////////////////////////
 /datum/reagent/ickypak
@@ -1121,10 +1121,10 @@
 /datum/reagent/ickypak/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	M.make_dizzy(1)
-	M.adjustHalLoss(2)
+	entity.make_dizzy(1)
+	entity.adjustHalLoss(2)
 
-	for(var/belly in M.vore_organs)
+	for(var/belly in entity.vore_organs)
 		var/obj/belly/B = belly
 		for(var/atom/movable/A in B)
 			if(isliving(A))
@@ -1132,7 +1132,7 @@
 				if(P.absorbed)
 					continue
 			if(prob(5))
-				playsound(M, 'sound/effects/splat.ogg', 50, 1)
+				playsound(entity, 'sound/effects/splat.ogg', 50, 1)
 				B.release_specific_contents(A)
 
 /datum/reagent/unsorbitol
@@ -1146,13 +1146,13 @@
 /datum/reagent/unsorbitol/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	M.make_dizzy(1)
-	M.adjustHalLoss(1)
-	if(!M.confused) M.confused = 1
-	M.confused = max(M.confused, 20)
-	M.hallucination += 15
+	entity.make_dizzy(1)
+	entity.adjustHalLoss(1)
+	if(!entity.confused) entity.confused = 1
+	entity.confused = max(entity.confused, 20)
+	entity.hallucination += 15
 
-	for(var/belly in M.vore_organs)
+	for(var/belly in entity.vore_organs)
 		var/obj/belly/B = belly
 
 		if(B.digest_mode == DM_ABSORB) //Turn off absorbing on bellies
@@ -1163,9 +1163,9 @@
 				continue
 
 			else if(prob(1))
-				playsound(M, 'sound/vore/schlorp.ogg', 50, 1)
+				playsound(entity, 'sound/vore/schlorp.ogg', 50, 1)
 				P.absorbed = 0
-				M.visible_message("<font color='green'><b>Something spills into [M]'s [lowertext(B.name)]!</b></font>")
+				entity.visible_message("<font color='green'><b>Something spills into [entity]'s [lowertext(B.name)]!</b></font>")
 
 //Nif repair juice
 /datum/reagent/nif_repair_nanites
@@ -1179,8 +1179,8 @@
 /datum/reagent/nif_repair_nanites/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
+	if(ishuman(entity))
+		var/mob/living/carbon/human/H = entity
 		if(H.nif)
 			var/obj/item/nif/nif = H.nif //L o c a l
 			if(nif.stat == NIF_TEMPFAIL)

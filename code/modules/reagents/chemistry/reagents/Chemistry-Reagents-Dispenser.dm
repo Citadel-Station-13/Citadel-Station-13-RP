@@ -31,7 +31,7 @@
 /datum/reagent/ethanol/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(issmall(M)) removed *= 2
+	if(issmall(entity)) removed *= 2
 	var/strength_mod = 3 //Alcohol is 3x stronger when injected into the veins.
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_SKRELL)])
 		strength_mod *= 5
@@ -45,42 +45,42 @@
 		strength_mod *= 2
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_ALRAUNE)])
 		if(prob(5))
-			to_chat(M, "<span class='danger'>You feel your leaves start to wilt.</span>")
+			to_chat(entity, "<span class='danger'>You feel your leaves start to wilt.</span>")
 		strength_mod *=5 //cit change - alcohol ain't good for plants
 
 	var/effective_dose = dose * strength_mod * (1 + volume/60) //drinking a LOT will make you go down faster
-	M.add_chemical_effect(CHEMICAL_EFFECT_ALCOHOL, 1)
-	if(HAS_TRAIT(M, TRAIT_ALCOHOL_INTOLERANT))
+	entity.add_chemical_effect(CHEMICAL_EFFECT_ALCOHOL, 1)
+	if(HAS_TRAIT(entity, TRAIT_ALCOHOL_INTOLERANT))
 		if(prob(effective_dose/10))
-			M.add_chemical_effect(CHEMICAL_EFFECT_ALCOHOL_TOXIC, 1)
-		M.adjustToxLoss(effective_dose/10)
+			entity.add_chemical_effect(CHEMICAL_EFFECT_ALCOHOL_TOXIC, 1)
+		entity.adjustToxLoss(effective_dose/10)
 		return 0
 	if(effective_dose >= strength) // Early warning
-		M.make_dizzy(18) // It is decreased at the speed of 3 per tick
+		entity.make_dizzy(18) // It is decreased at the speed of 3 per tick
 	if(effective_dose >= strength * 2) // Slurring
-		M.slurring = max(M.slurring, 90)
+		entity.slurring = max(entity.slurring, 90)
 	if(effective_dose >= strength * 3) // Confusion - walking in random directions
-		M.Confuse(60)
+		entity.Confuse(60)
 	if(effective_dose >= strength * 4) // Blurry vision
-		M.eye_blurry = max(M.eye_blurry, 30)
+		entity.eye_blurry = max(entity.eye_blurry, 30)
 	if(effective_dose >= strength * 5) // Drowsyness - periodically falling asleep
-		M.drowsyness = max(M.drowsyness, 60)
+		entity.drowsyness = max(entity.drowsyness, 60)
 	if(effective_dose >= strength * 6) // Toxic dose
-		M.add_chemical_effect(CHEMICAL_EFFECT_ALCOHOL_TOXIC, toxicity*3)
+		entity.add_chemical_effect(CHEMICAL_EFFECT_ALCOHOL_TOXIC, toxicity*3)
 	if(effective_dose >= strength * 7) // Pass out
-		M.afflict_unconscious(20 * 60)
-		M.afflict_sleeping(20 * 90)
+		entity.afflict_unconscious(20 * 60)
+		entity.afflict_sleeping(20 * 90)
 
 	if(druggy != 0)
-		M.druggy = max(M.druggy, druggy*3)
+		entity.druggy = max(entity.druggy, druggy*3)
 
-	if(adj_temp > 0 && M.bodytemperature < targ_temp) // 310 is the normal bodytemp. 310.055
-		M.bodytemperature = min(targ_temp, M.bodytemperature + (adj_temp * TEMPERATURE_DAMAGE_COEFFICIENT))
-	if(adj_temp < 0 && M.bodytemperature > targ_temp)
-		M.bodytemperature = min(targ_temp, M.bodytemperature - (adj_temp * TEMPERATURE_DAMAGE_COEFFICIENT))
+	if(adj_temp > 0 && entity.bodytemperature < targ_temp) // 310 is the normal bodytemp. 310.055
+		entity.bodytemperature = min(targ_temp, entity.bodytemperature + (adj_temp * TEMPERATURE_DAMAGE_COEFFICIENT))
+	if(adj_temp < 0 && entity.bodytemperature > targ_temp)
+		entity.bodytemperature = min(targ_temp, entity.bodytemperature - (adj_temp * TEMPERATURE_DAMAGE_COEFFICIENT))
 
 	if(halluci)
-		M.hallucination = max(M.hallucination, halluci*3)
+		entity.hallucination = max(entity.hallucination, halluci*3)
 	return effective_dose
 
 /datum/reagent/ethanol/affect_ingest(mob/living/carbon/M, alien, removed)
@@ -168,8 +168,8 @@
 /datum/reagent/acid/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(issmall(M)) removed *= 2
-	M.take_organ_damage(0, removed * power * 2)
+	if(issmall(entity)) removed *= 2
+	entity.take_organ_damage(0, removed * power * 2)
 
 /datum/reagent/acid/affect_touch(mob/living/carbon/M, alien, removed) // This is the most interesting
 	if(ishuman(M))
@@ -259,28 +259,28 @@
 /datum/reagent/sugar/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	M.nutrition += removed * 3
+	entity.nutrition += removed * 3
 
 	var/effective_dose = dose
-	if(issmall(M))
+	if(issmall(entity))
 		effective_dose *= 2
 
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_UNATHI)])
 		if(effective_dose < 2)
 			if(effective_dose == metabolism * 2 || prob(5))
-				M.emote("yawn")
+				entity.emote("yawn")
 		else if(effective_dose < 5)
-			M.eye_blurry = max(M.eye_blurry, 10)
+			entity.eye_blurry = max(entity.eye_blurry, 10)
 		else if(effective_dose < 20)
 			if(prob(50))
-				M.afflict_paralyze(20 * 2)
-			M.drowsyness = max(M.drowsyness, 20)
+				entity.afflict_paralyze(20 * 2)
+			entity.drowsyness = max(entity.drowsyness, 20)
 		else
-			M.afflict_sleeping(20 * 20)
-			M.drowsyness = max(M.drowsyness, 60)
+			entity.afflict_sleeping(20 * 20)
+			entity.drowsyness = max(entity.drowsyness, 60)
 
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_ALRAUNE)]) //cit change - too much sugar isn't good for plants
 		if(effective_dose < 2)
 			if(prob(5))
-				to_chat(M, "<span class='danger'>You feel an imbalance of energy.</span>")
-			M.make_jittery(4)
+				to_chat(entity, "<span class='danger'>You feel an imbalance of energy.</span>")
+			entity.make_jittery(4)

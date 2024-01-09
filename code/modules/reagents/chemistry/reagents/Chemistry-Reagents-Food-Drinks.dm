@@ -450,9 +450,9 @@
 	
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-	M.bodytemperature = max(M.bodytemperature - 10 * TEMPERATURE_DAMAGE_COEFFICIENT, 215)
+	entity.bodytemperature = max(entity.bodytemperature - 10 * TEMPERATURE_DAMAGE_COEFFICIENT, 215)
 	if(prob(1))
-		M.emote("shiver")
+		entity.emote("shiver")
 	holder.remove_reagent("capsaicin", 5)
 
 /datum/reagent/frostoil/cryotoxin //A longer lasting version of frost oil.
@@ -478,7 +478,7 @@
 	
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-	M.adjustToxLoss(0.5 * removed)
+	entity.adjustToxLoss(0.5 * removed)
 
 /datum/reagent/capsaicin/affect_ingest(mob/living/carbon/M, alien, removed)
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
@@ -4715,10 +4715,10 @@
 	. = ..()
 	
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_SKRELL)])
-		M.adjustToxLoss(removed)  //Equivalent to half as much protein, since it's half protein.
-	if(!M.species.is_vampire)
+		entity.adjustToxLoss(removed)  //Equivalent to half as much protein, since it's half protein.
+	if(!entity.species.is_vampire)
 		if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)] || alien == IS_CHIMERA) //slimes and chimera can get nutrition from injected nutriment and protein
-			M.nutrition += (alt_nutriment_factor * removed)
+			entity.nutrition += (alt_nutriment_factor * removed)
 
 /datum/reagent/ethanol/galacticpanic
 	name = "Galactic Panic Attack"
@@ -4834,29 +4834,29 @@
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		threshold = 0.8
 
-	M.druggy = max(M.druggy, 30)
+	entity.druggy = max(entity.druggy, 30)
 
 	var/effective_dose = dose
-	if(issmall(M)) effective_dose *= 2
+	if(issmall(entity)) effective_dose *= 2
 	if(effective_dose < 1 * threshold)
-		M.apply_effect(3, STUTTER)
-		M.make_dizzy(5)
+		entity.apply_effect(3, STUTTER)
+		entity.make_dizzy(5)
 		if(prob(5))
-			M.emote(pick("twitch", "giggle"))
+			entity.emote(pick("twitch", "giggle"))
 	else if(effective_dose < 2 * threshold)
-		M.apply_effect(3, STUTTER)
-		M.make_jittery(5)
-		M.make_dizzy(5)
-		M.druggy = max(M.druggy, 35)
+		entity.apply_effect(3, STUTTER)
+		entity.make_jittery(5)
+		entity.make_dizzy(5)
+		entity.druggy = max(entity.druggy, 35)
 		if(prob(10))
-			M.emote(pick("twitch", "giggle"))
+			entity.emote(pick("twitch", "giggle"))
 	else
-		M.apply_effect(3, STUTTER)
-		M.make_jittery(10)
-		M.make_dizzy(10)
-		M.druggy = max(M.druggy, 40)
+		entity.apply_effect(3, STUTTER)
+		entity.make_jittery(10)
+		entity.make_dizzy(10)
+		entity.druggy = max(entity.druggy, 40)
 		if(prob(15))
-			M.emote(pick("twitch", "giggle"))
+			entity.emote(pick("twitch", "giggle"))
 
 
 /datum/reagent/ethanol/honeyshot
@@ -4997,7 +4997,7 @@
 	. = ..()
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-	M.bloodstr.add_reagent("radium", 0.3)
+	entity.bloodstr.add_reagent("radium", 0.3)
 
 /datum/reagent/ethanol/desiretodie/affect_ingest(mob/living/carbon/M, alien, removed)
 	. = ..()

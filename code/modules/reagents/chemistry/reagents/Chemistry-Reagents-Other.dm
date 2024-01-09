@@ -20,9 +20,9 @@
 	
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-	M.set_unconscious(0)
-	M.set_paralyzed(0)
-	M.adjustToxLoss(rand(3))
+	entity.set_unconscious(0)
+	entity.set_paralyzed(0)
+	entity.adjustToxLoss(rand(3))
 
 /datum/reagent/water/holywater
 	name = "Holy Water"
@@ -59,7 +59,7 @@
 	. = ..()
 	
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_ALRAUNE)])
-		M.nutrition += removed * 2 //cit change: fertilizer is waste for plants
+		entity.nutrition += removed * 2 //cit change: fertilizer is waste for plants
 		return
 
 /datum/reagent/diethylamine
@@ -74,7 +74,7 @@
 	. = ..()
 	
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_ALRAUNE)])
-		M.nutrition += removed * 5 //cit change: fertilizer is waste for plants
+		entity.nutrition += removed * 5 //cit change: fertilizer is waste for plants
 		return
 
 /datum/reagent/fluorosurfactant // Foam precursor
@@ -151,8 +151,8 @@
 /datum/reagent/coolant/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(M.isSynthetic() && ishuman(M))
-		var/mob/living/carbon/human/H = M
+	if(entity.isSynthetic() && ishuman(entity))
+		var/mob/living/carbon/human/H = entity
 
 		var/datum/reagent/blood/coolant = H.get_blood(H.vessel)
 
@@ -216,10 +216,10 @@
 /datum/reagent/defective_nanites/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	M.take_organ_damage(2 * removed, 2 * removed)
-	M.adjustOxyLoss(4 * removed)
-	M.adjustToxLoss(2 * removed)
-	M.adjustCloneLoss(2 * removed)
+	entity.take_organ_damage(2 * removed, 2 * removed)
+	entity.adjustOxyLoss(4 * removed)
+	entity.adjustToxLoss(2 * removed)
+	entity.adjustCloneLoss(2 * removed)
 
 /datum/reagent/fishbait
 	name = "Fish Bait"
