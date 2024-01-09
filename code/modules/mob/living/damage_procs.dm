@@ -135,7 +135,8 @@
 /mob/living/proc/take_targeted_damage(brute, burn, damage_mode, body_zone, weapon_descriptor, defer_updates)
 	if(status_flags & STATUS_GODMODE)
 		return 0
-	#warn impl
+	// todo: don't update health immediately
+	. = adjustBruteLoss(brute) + adjustFireLoss(burn)
 
 /**
  * @params
@@ -152,7 +153,6 @@
 		return 0
 	// todo: don't update health immediately
 	. = adjustBruteLoss(brute) + adjustFireLoss(burn)
-	#warn audit calls
 
 //? Afflictions
 /**

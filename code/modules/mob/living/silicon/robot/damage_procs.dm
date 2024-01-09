@@ -1,7 +1,13 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
+//* Robots - Component Damage *//
+
+/mob/living/silicon/robot/proc/
+
 //* Raw Damage *//
+
+#warn literally just purge the below
 
 /mob/living/silicon/robot/take_organ_damage(var/brute = 0, var/burn = 0, var/sharp = 0, var/edge = 0, var/emp = 0)
 	#warn refactor

@@ -14,7 +14,16 @@
 
 //* Health - Environmental Interactions *//
 
-
+/// % of temperature recovered when going towards favorable
+#define MOB_BODYTEMP_EQUALIZATION_FAVORABLE_RATIO (1 / 5)
+/// % of temperature gained/lost when going away from favorable
+#define MOB_BODYTEMP_EQUALIZATION_UNFAVORABLE_RATIO (1 / 6)
+/// minimum stabilization when far from 'livable' tempreatures, but environment is closer to livable temperature
+#define MOB_BODYTEMP_EQUALIZATION_MIN_FAVORABLE 10
+/// minimum temperature change when environment is further from livable temperature / is going ot harm us from its temperature
+#define MOB_BODYTEMP_EQUALIZATION_MIN_UNFAVORABLE 2
+/// maximum temperature change when environment is further from livable temperature / is going to harm us from its temperature
+#define MOB_BODYTEMP_EQUALIZATION_MAX_UNFAVORABLE 50
 
 //?  CPR
 /// how long CPR suppresses brain decay

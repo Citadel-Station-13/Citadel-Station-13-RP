@@ -329,14 +329,146 @@
  * * burn - burn damage to take
  * * damage_mode - DAMAG_EMODE_* flags for the form of this damage
  * * weapon descriptor - a string describing how it happened ("flash burns", "multiple precision cuts", etc)
- * * defer_updates - update health / perform damage checks?
+ * * defer_host_updates - update health / perform damage checks? this is only for owner updates, not self updates!!
  */
-/obj/item/organ/external/proc/inflict_bodypart_damage(brute, burn, damage_mode, weapon_descriptor, defer_updates)
+/obj/item/organ/external/proc/inflict_bodypart_damage(brute, burn, damage_mode, weapon_descriptor, defer_host_updates)
 	// todo: get rid of this shit, should be physiology
+	// legacy: brute/burnmod
 	brute = round(brute * brute_mod, 0.1)
 	burn = round(burn * burn_mod, 0.1)
 
-	#warn impl
+	if(!brute && !burn)
+		return 0
+
+	// todo: lol this is shit
+	// legacy: organ damage on high damage
+	if(internal_organs && (brute_dam >= max_damage || (((sharp && brute >= 5) || brute >= 10) && prob(5))))
+		// Damage an internal organ
+		if(internal_organs && internal_organs.len)
+			var/obj/item/organ/I = pick(internal_organs)
+			brute *= 0.5
+			I.take_damage(brute)
+
+	// todo: lol this is shit
+	// legacy: jostle if broken
+	if(is_broken() && brute && !(damage_mode & DAMAGE_MODE_GRADUAL))
+		jostle_bone(brute)
+		if(organ_can_feel_pain() && IS_CONSCIOUS(owner) && prob(40))
+			owner.emote("scream")	//getting hit on broken hand hurts
+
+	// todo: optimization
+	// legacy: autopsy data
+	if(weapon_descriptor)
+		add_autopsy_data(weapon_descriptor, brute + burn)
+
+
+
+
+	#warn below
+
+	var/can_cut = (sharp) && (robotic < ORGAN_ROBOT)
+
+	// If the limbs can break, make sure we don't exceed the maximum damage a limb can take before breaking
+	// Non-vital organs are limited to max_damage. You can't kill someone by bludeonging their arm all the way to 200 -- you can
+	// push them faster into paincrit though, as the additional damage is converted into shock.
+	var/brute_overflow = 0
+	var/burn_overflow = 0
+	if(is_damageable(TRUE) || !config_legacy.limbs_can_break)
+		if(brute)
+			if(can_cut)
+				if(sharp && !edge)
+					create_wound( PIERCE, brute )
+				else
+					create_wound( CUT, brute )
+			else
+				create_wound( BRUISE, brute )
+		if(burn)
+			create_wound( BURN, burn )
+	else
+		//If we can't inflict the full amount of damage, spread the damage in other ways
+		//How much damage can we actually cause?
+		var/can_inflict = max_damage * config_legacy.organ_health_multiplier - (brute_dam + burn_dam)
+		var/spillover = 0
+		if(can_inflict >= 0)
+			if (brute > 0)
+				//Inflict all burte damage we can
+				if(can_cut)
+					if(sharp && !edge)
+						create_wound( PIERCE, min(brute,can_inflict) )
+					else
+						create_wound( CUT, min(brute,can_inflict) )
+				else
+					create_wound( BRUISE, min(brute,can_inflict) )
+				//How much more damage can we inflict
+				brute_overflow = max(0, brute - can_inflict)
+				//How much brute damage is left to inflict
+				spillover += max(0, brute - can_inflict)
+
+			can_inflict = max_damage * config_legacy.organ_health_multiplier - (brute_dam + burn_dam) //Refresh the can_inflict var, so burn doesn't overload the limb if it is set to take both.
+
+			if (burn > 0 && can_inflict)
+				//Inflict all burn damage we can
+				create_wound(BURN, min(burn,can_inflict))
+				//How much burn damage is left to inflict
+				burn_overflow = max(0, burn - can_inflict)
+				spillover += burn_overflow
+
+		//If there is pain to dispense.
+		if(spillover)
+			owner.shock_stage += spillover * config_legacy.organ_damage_spillover_multiplier
+
+	// sync the organ's damage with its wounds
+	src.update_damages()
+
+	//If limb took enough damage, try to cut or tear it off
+	if(owner && loc == owner && !is_stump())
+		if(!cannot_amputate && config_legacy.limbs_can_break && (brute_dam + burn_dam) >= (max_damage * config_legacy.organ_health_multiplier))
+			//organs can come off in three cases
+			//1. If the damage source is edge_eligible and the brute damage dealt exceeds the edge threshold, then the organ is cut off.
+			//2. If the damage amount dealt exceeds the disintegrate threshold, the organ is completely obliterated.
+			//3. If the organ has already reached or would be put over it's max damage amount (currently redundant),
+			//   and the brute damage dealt exceeds the tearoff threshold, the organ is torn off.
+
+			//Check edge eligibility
+			var/edge_eligible = 0
+			if(edge)
+				if(istype(used_weapon,/obj/item))
+					var/obj/item/W = used_weapon
+					if(W.w_class >= w_class)
+						edge_eligible = 1
+				else
+					edge_eligible = 1
+
+			if(nonsolid && damage >= max_damage)
+				droplimb(TRUE, DROPLIMB_EDGE)
+			else if (robotic >= ORGAN_NANOFORM && damage >= max_damage)
+				droplimb(TRUE, DROPLIMB_BURN)
+			else if(edge_eligible && brute >= max_damage / DROPLIMB_THRESHOLD_EDGE && prob(brute))
+				droplimb(0, DROPLIMB_EDGE)
+			else if((burn >= max_damage / DROPLIMB_THRESHOLD_DESTROY) && prob(burn*0.33))
+				droplimb(0, DROPLIMB_BURN)
+			else if((brute >= max_damage / DROPLIMB_THRESHOLD_DESTROY && prob(brute)))
+				droplimb(0, DROPLIMB_BLUNT)
+			else if(brute >= max_damage / DROPLIMB_THRESHOLD_TEAROFF && prob(brute*0.33))
+				droplimb(0, DROPLIMB_EDGE)
+			else if(spread_dam && owner && parent && (brute_overflow || burn_overflow) && (brute_overflow >= 5 || burn_overflow >= 5) && !permutation) //No infinite damage loops.
+				var/brute_third = brute_overflow * 0.33
+				var/burn_third = burn_overflow * 0.33
+				if(children && children.len)
+					var/brute_on_children = brute_third / children.len
+					var/burn_on_children = burn_third / children.len
+					spawn()
+						for(var/obj/item/organ/external/C in children)
+							if(!C.is_stump())
+								C.take_damage(brute_on_children, burn_on_children, 0, 0, null, forbidden_limbs, 1) //Splits the damage to each individual 'child', incase multiple exist.
+				parent.take_damage(brute_third, burn_third, 0, 0, null, forbidden_limbs, 1)
+
+	#warn above
+
+	if(!defer_host_updates)
+		owner?.update_health()
+
+	update_icon()
 
 /obj/item/organ/external/take_damage(brute, burn, sharp, edge, used_weapon = null, list/forbidden_limbs = list(), permutation = 0)
 	brute = round(brute * brute_mod, 0.1)

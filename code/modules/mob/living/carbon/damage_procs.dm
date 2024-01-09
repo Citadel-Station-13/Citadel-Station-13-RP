@@ -10,7 +10,7 @@
 	if(!length(targets))
 		return 0
 	var/obj/item/organ/external/target = pick(targets)
-	return take_targeted_damage(brute, burn, damage_mod, target.organ_tag, weapon_descriptor, defer_updates)
+	return take_targeted_damage(brute, burn, damage_mode, target.organ_tag, weapon_descriptor, defer_updates)
 
 /mob/living/carbon/take_targeted_damage(brute, burn, damage_mode, body_zone, weapon_descriptor, defer_updates)
 	if(status_flags & STATUS_GODMODE)
@@ -20,7 +20,7 @@
 	if(isnull(bodypart))
 		return 0
 
-	. = bodypart.inflict_bodypart_damage(brute, burn, damage_mode, weapon_descriptor, defer_updates)
+	. = bodypart.inflict_bodypart_damage(brute, burn, damage_mode, weapon_descriptor, TRUE)
 
 	if(!defer_updates && .)
 		update_health()
@@ -35,9 +35,9 @@
 	var/list/obj/item/organ/external/targets = get_damageable_external_organs()
 	var/divisor = 1 / length(targets)
 
-	for(var/obj/item/organ/external/external/target as anything in targets)
+	for(var/obj/item/organ/external/target as anything in targets)
 		. += target.inflict_bodypart_damage(brute / divisor, burn / divisor, damage_mode, weapon_descriptor, TRUE)
 
-	if(!defer_updates & .)
+	if(!defer_updates && .)
 		update_health()
 		UpdateDamageIcon()
