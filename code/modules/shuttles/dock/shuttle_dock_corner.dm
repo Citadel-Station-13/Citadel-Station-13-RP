@@ -11,7 +11,8 @@ GLOBAL_LIST_EMPTY(uninitialized_shuttle_dock_bounds)
 /obj/shuttle_dock_corner
 	name = "dock corner"
 	desc = "Why do you see this? Report it."
-	#warn sprite
+	icon = 'icons/modules/shuttles/bounding_3x3.dmi'
+	icon_state = "corner"
 
 	/// constructed
 	var/constructed = FALSE
@@ -83,9 +84,17 @@ GLOBAL_LIST_EMPTY(uninitialized_shuttle_dock_bounds)
 			return
 
 /obj/shuttle_dock_corner/bottom_left
+	dir = SOUTH
 
 /obj/shuttle_dock_corner/bottom_right
+	dir = EAST
+	pixel_x = -64
 
 /obj/shuttle_dock_corner/top_left
+	dir = WEST
+	pixel_y = -64
 
 /obj/shuttle_dock_corner/top_right
+	dir = NORTH
+	pixel_x = -64
+	pixel_y = -64
