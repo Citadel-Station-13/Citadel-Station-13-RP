@@ -82,7 +82,6 @@
 	blood_color = "#f24b2e"
 	base_color  = "#066000"
 
-	reagent_tag = IS_UNATHI
 
 	move_trail = /obj/effect/debris/cleanable/blood/tracks/claw
 

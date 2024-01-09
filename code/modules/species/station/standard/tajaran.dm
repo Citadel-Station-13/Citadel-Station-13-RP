@@ -84,7 +84,6 @@
 	flesh_color = "#AFA59E"
 	base_color  = "#333333"
 
-	reagent_tag = IS_TAJARA
 
 	move_trail = /obj/effect/debris/cleanable/blood/tracks/paw
 

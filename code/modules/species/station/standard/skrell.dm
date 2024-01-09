@@ -72,7 +72,6 @@
 	breath_heat_level_2 = 500
 	breath_heat_level_3 = 1350
 
-	reagent_tag = null
 
 	has_limbs = list(
 		BP_TORSO  = list("path" = /obj/item/organ/external/chest),

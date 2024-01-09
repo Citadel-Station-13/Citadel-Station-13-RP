@@ -106,7 +106,6 @@
 		)
 	vision_organ = O_BRAIN//Neomorphs have no (visible) Eyes, seeing without them should be possible.
 
-	reagent_tag = IS_XENOHYBRID
 
 	var/heal_rate = 0.5 //Lets just create a set number
 

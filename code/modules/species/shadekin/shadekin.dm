@@ -61,7 +61,6 @@
 	species_flags = NO_SCAN | NO_MINOR_CUT | NO_INFECT | CONTAMINATION_IMMUNE
 	species_spawn_flags = SPECIES_SPAWN_RESTRICTED | SPECIES_SPAWN_CHARACTER
 
-	reagent_tag = IS_SHADEKIN // for shadekin-unique chem interactions
 
 	color_mult  = 1
 	flesh_color = "#FFC896"

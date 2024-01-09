@@ -95,7 +95,6 @@
 	blood_color = "#edf4d0" //sap!
 	base_color  = "#1a5600"
 
-	reagent_tag = IS_ALRAUNE
 
 	has_limbs = list( //cit change - unbreakable, can survive decapitation, but damage spreads to nearby neighbors when at max dmg.
 		BP_TORSO  = list("path" = /obj/item/organ/external/chest/unbreakable/plant),

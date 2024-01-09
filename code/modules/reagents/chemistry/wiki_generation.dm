@@ -26,7 +26,8 @@
 				// todo: flag check
 				continue
 			// todo: recipes :agony:
-			var/overdose_text = R.overdose? "Overdose: [R.overdose]u" : "None"
+			var/overall_overdose = min(R.bloodstream_overdose_threshold, R.ingested_overdose_threshold, R.dermal_overdose_threshold)
+			var/overdose_text = overall_overdose? "Overdose: [overall_overdose]u" : "None"
 			var/recipes_text = "WIP"
 			sub_built += {"
 				|-

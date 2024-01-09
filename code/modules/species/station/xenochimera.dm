@@ -54,7 +54,6 @@
 	base_color 	= "#333333"
 	blood_color = "#14AD8B"
 
-	reagent_tag = IS_CHIMERA
 
 	valid_transform_species = list(
 		SPECIES_HUMAN, SPECIES_UNATHI, SPECIES_UNATHI_DIGI, SPECIES_TAJ, SPECIES_SKRELL,

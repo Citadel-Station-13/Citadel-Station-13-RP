@@ -30,7 +30,6 @@ var/datum/species/shapeshifter/promethean/prometheans
 	remains_type = /obj/effect/debris/cleanable/ash
 
 	hunger_factor = 0.07 //As of writing, original was 0.1 - Slows hunger rate (some more)
-	reagent_tag = IS_SLIME
 	mob_size   = MOB_MEDIUM
 	bump_flag  = SLIME
 	push_flags = ~HEAVY
