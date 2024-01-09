@@ -1,2 +1,0 @@
-
-#define SHUTTLE_TRANSIT_BORDER 10

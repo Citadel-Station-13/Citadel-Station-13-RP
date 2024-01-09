@@ -11,6 +11,10 @@
 	/// our host shuttle
 	var/datum/shuttle/shuttle
 
+	//* Docking
+	/// stored docking codes
+	var/list/docking_codes
+
 	//* Transit
 	/// Shuttle is in transit
 	var/in_transit = FALSE
@@ -37,7 +41,8 @@
 	#warn impl
 
 /datum/shuttle_controller/proc/tgui_push(list/data)
-	#warn impl
+	// todo: this is just a wrapper so we can change it later if need be
+	return push_ui_data(data = data)
 
 //* Docking API - use this API always, do not manually control the shuttle.
 
@@ -48,6 +53,9 @@
  * * immediate - blow past all docking procedures, do not block on anything IC fluff or otherwise
  */
 /datum/shuttle_controller/proc/move_to_dock(obj/shuttle_dock/dock, force = FALSE, immediate = FALSE)
+	#warn impl
+
+/datum/shuttle_controller/proc/has_codes_for(obj/shuttle_dock/dock)
 	#warn impl
 
 //* Transit

@@ -57,6 +57,12 @@
 	/// this is tiles like walls that are still considered airtight / sealed
 	var/dock_margin = 0
 
+	//* docking (control)
+	/// docking code, if any
+	var/docking_code
+	/// requires docking code to dock
+	var/docking_code_required = FALSE
+
 	//* docking (registration)
 	/// dock id - must be unique per map instance
 	/// the maploader will handle ID scrambling to ensure it is unique globally, across rounds.
@@ -168,6 +174,12 @@
 	unregister_dock()
 	. = ..()
 	register_dock()
+
+/obj/shuttle_dock/proc/shuttle_docking_authorization(datum/shuttle/shuttle)
+	var/valid = shuttle.has_codes_for(src)
+	if(valid)
+		return SHUTTLE_DOCKING_AUTHORZATION_VALID
+	return docking_code_required? SHUTTLE_DOCKING_AUTHORZATION_BLOCKED : SHUTTLE_DOCKING_AUTHORZATION_INVALID
 
 /**
  * ephemeral docks
