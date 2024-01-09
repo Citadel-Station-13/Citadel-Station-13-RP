@@ -429,7 +429,7 @@
 	desc = "A tutorial in mummification is carved into the staff. You could probably craft the wraps if you had some cloth."
 	icon_state = "pharaoh_sceptre"
 	item_state = "pharaoh_sceptre"
-	attack_verb = list("bashes", "smacks", "whacks")
+	attack_verb = list("bashed", "smacked", "whacked")
 
 /obj/item/nullrod/rosary
 	icon_state = "rosary"

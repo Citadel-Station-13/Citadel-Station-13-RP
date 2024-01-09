@@ -2016,7 +2016,6 @@
 #include "code\game\turfs\unsimulated\walls.dm"
 #include "code\game\verbs\advanced_who.dm"
 #include "code\game\verbs\character_directory.dm"
-#include "code\game\verbs\character_profile_verbs.dm"
 #include "code\game\verbs\ignore.dm"
 #include "code\game\verbs\suicide.dm"
 #include "code\game\verbs\who.dm"
