@@ -17,16 +17,16 @@
 	. = ..()
 	
 	if(strength && alien != IS_DIONA)
-		if(issmall(M)) removed *= 2 // Small bodymass, more effect from lower volume.
+		if(issmall(entity)) removed *= 2 // Small bodymass, more effect from lower volume.
 		if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 			removed *= 0.25 // Results in half the standard tox as normal. Prometheans are 'Small' for flaps.
 			if(dose >= 10)
-				M.nutrition += strength * removed //Body has to deal with the massive influx of toxins, rather than try using them to repair.
+				entity.nutrition += strength * removed //Body has to deal with the massive influx of toxins, rather than try using them to repair.
 			else
-				M.heal_organ_damage((10/strength) * removed, (10/strength) * removed) //Doses of toxins below 10 units, and 10 strength, are capable of providing useful compounds for repair.
-		M.adjustToxLoss(strength * removed)
+				entity.heal_organ_damage((10/strength) * removed, (10/strength) * removed) //Doses of toxins below 10 units, and 10 strength, are capable of providing useful compounds for repair.
+		entity.adjustToxLoss(strength * removed)
 
-/datum/reagent/toxin/affect_touch(mob/living/carbon/M, alien, removed)
+/datum/reagent/toxin/affect_touch(mob/living/carbon/entity, alien, removed)
 	affect_blood(M, alien, removed * 0.2)
 
 /datum/reagent/toxin/plasticide
@@ -70,12 +70,12 @@
 	. = ..()
 	
 	if(alien != IS_DIONA)
-		if(CHECK_MOBILITY(M, MOBILITY_CAN_MOVE) && istype(M.loc, /turf/space))
-			step(M, pick(GLOB.cardinal))
+		if(CHECK_MOBILITY(entity, MOBILITY_CAN_MOVE) && istype(entity.loc, /turf/space))
+			step(entity, pick(GLOB.cardinal))
 		if(prob(5))
-			M.emote(pick("twitch", "drool", "moan"))
+			entity.emote(pick("twitch", "drool", "moan"))
 		if(prob(20))
-			M.adjustBrainLoss(0.1)
+			entity.adjustBrainLoss(0.1)
 
 //R-UST port
 // Produced during deuterium synthesis. Super poisonous, SUPER flammable (doesn't need oxygen to burn).
@@ -108,11 +108,11 @@
 	. = ..()
 	
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
-		M.adjust_fire_stacks(removed * 10)
+		entity.adjust_fire_stacks(removed * 10)
 		if(prob(10))
-			to_chat(M, "<span class='critical'>You feel something boiling within you!</span>")
+			to_chat(entity, "<span class='critical'>You feel something boiling within you!</span>")
 			spawn(rand(30, 60))
-				M.IgniteMob()
+				entity.IgniteMob()
 
 /datum/reagent/toxin/spidertoxin
 	name = "Spidertoxin"
@@ -150,12 +150,12 @@
 	. = ..()
 	
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_VOX)])
-		M.adjustOxyLoss(-100 * removed) //5 oxyloss healed per tick.
+		entity.adjustOxyLoss(-100 * removed) //5 oxyloss healed per tick.
 		return //You're wasting plasma (a semi-limited chemical) to save someone, so it might as well be somewhat strong.
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_XENOHYBRID)])//They have an organ that uses phoron
 		return
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
-		M.adjust_fire_stacks(removed * 3) //Not quite 'converting' it. It's like mixing fuel into a jelly. You get explosive, or at least combustible, jelly.
+		entity.adjust_fire_stacks(removed * 3) //Not quite 'converting' it. It's like mixing fuel into a jelly. You get explosive, or at least combustible, jelly.
 	..()
 
 /datum/reagent/toxin/phoron/touch_turf(turf/simulated/T, amount)
@@ -178,8 +178,8 @@
 /datum/reagent/toxin/cyanide/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	M.adjustOxyLoss(20 * removed)
-	M.afflict_sleeping(20 * 1)
+	entity.adjustOxyLoss(20 * removed)
+	entity.afflict_sleeping(20 * 1)
 
 /datum/reagent/toxin/mold
 	name = "Mold"
@@ -217,7 +217,7 @@
 	. = ..()
 	
 	if(prob(5))
-		M.vomit()
+		entity.vomit()
 
 /datum/reagent/toxin/expired_medicine/affect_ingest(mob/living/carbon/M, alien, removed)
 	affect_blood(M, alien, removed * 0.66)
@@ -241,11 +241,11 @@
 		removed *= 1.25
 	..()
 	if(prob(15))
-		M.emote(pick("twitch", "blink_r", "shiver"))
+		entity.emote(pick("twitch", "blink_r", "shiver"))
 	if(prob(15))
-		M.visible_message("[M] shudders violently.", "You shudder uncontrollably, it hurts.")
-		M.take_organ_damage(6 * removed, 0)
-	M.add_chemical_effect(CHEMICAL_EFFECT_SPEEDBOOST, 1)
+		entity.visible_message("[entity] shudders violently.", "You shudder uncontrollably, it hurts.")
+		entity.take_organ_damage(6 * removed, 0)
+	entity.add_chemical_effect(CHEMICAL_EFFECT_SPEEDBOOST, 1)
 
 /datum/reagent/toxin/potassium_chloride
 	name = "Potassium Chloride"
@@ -288,15 +288,15 @@
 /datum/reagent/toxin/potassium_chlorophoride/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
+	if(ishuman(entity))
+		var/mob/living/carbon/human/H = entity
 		if(H.stat != 1)
 			if(H.losebreath >= 10)
-				H.losebreath = max(10, M.losebreath-10)
+				H.losebreath = max(10, entity.losebreath-10)
 			H.adjustOxyLoss(2)
 			H.afflict_paralyze(20 * 10)
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
-		M.adjustFireLoss(removed * 3)
+		entity.adjustFireLoss(removed * 3)
 
 /datum/reagent/toxin/zombiepowder
 	name = "Zombie Powder"
@@ -314,11 +314,11 @@
 	
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-	M.status_flags |= STATUS_FAKEDEATH
-	M.adjustOxyLoss(3 * removed)
-	M.afflict_paralyze(20 * 10)
-	M.silent = max(M.silent, 10)
-	M.tod = stationtime2text()
+	entity.status_flags |= STATUS_FAKEDEATH
+	entity.adjustOxyLoss(3 * removed)
+	entity.afflict_paralyze(20 * 10)
+	entity.silent = max(entity.silent, 10)
+	entity.tod = stationtime2text()
 
 /datum/reagent/toxin/zombiepowder/Destroy()
 	if(holder && holder.my_atom && ismob(holder.my_atom))
@@ -369,7 +369,7 @@
 	. = ..()
 	
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_ALRAUNE)]) //cit change: fertilizer is full of natural easily digestible plant fats
-		M.nutrition += removed * 5
+		entity.nutrition += removed * 5
 		return
 
 /datum/reagent/toxin/fertilizer/eznutrient
@@ -412,7 +412,7 @@
 	. = ..()
 	
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_ALRAUNE)])
-		M.adjustToxLoss(50 * removed)
+		entity.adjustToxLoss(50 * removed)
 
 /datum/reagent/toxin/plantbgone/affect_touch(mob/living/carbon/M, alien, removed)
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_ALRAUNE)])
@@ -437,7 +437,7 @@
 	. = ..()
 	
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_APIDAEN)])
-		M.adjustToxLoss(50 * removed)
+		entity.adjustToxLoss(50 * removed)
 
 /datum/reagent/toxin/pestbgone/affect_touch(mob/living/carbon/M, alien, removed)
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_APIDAEN)])
@@ -457,10 +457,10 @@
 	. = ..()
 	
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)]) // Symbiotic bacteria.
-		M.nutrition += strength * removed
+		entity.nutrition += strength * removed
 		return
 	else
-		M.add_modifier(/datum/modifier/slow_pulse, 30 SECONDS)
+		entity.add_modifier(/datum/modifier/slow_pulse, 30 SECONDS)
 	..()
 
 /datum/reagent/toxin/sifslurry/overdose(mob/living/carbon/M, alien, removed) // Overdose effect.
@@ -518,17 +518,17 @@
 /datum/reagent/thermite/venom/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	M.adjustFireLoss(3 * removed)
-	if(M.fire_stacks <= 1.5)
-		M.adjust_fire_stacks(0.15)
+	entity.adjustFireLoss(3 * removed)
+	if(entity.fire_stacks <= 1.5)
+		entity.adjust_fire_stacks(0.15)
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	if(prob(10))
-		to_chat(M,"<span class='warning'>Your veins feel like they're on fire!</span>")
-		M.adjust_fire_stacks(0.1)
+		to_chat(entity,"<span class='warning'>Your veins feel like they're on fire!</span>")
+		entity.adjust_fire_stacks(0.1)
 	else if(prob(5))
-		M.IgniteMob()
-		to_chat(M,"<span class='critical'>Some of your veins rupture, the exposed blood igniting!</span>")
+		entity.IgniteMob()
+		to_chat(entity,"<span class='critical'>Some of your veins rupture, the exposed blood igniting!</span>")
 
 /datum/reagent/condensedcapsaicin/venom
 	name = "Irritant toxin"
@@ -544,15 +544,15 @@
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	if(prob(50))
-		M.adjustToxLoss(0.5 * removed)
+		entity.adjustToxLoss(0.5 * removed)
 	if(prob(50))
-		M.apply_effect(4, AGONY, 0)
+		entity.apply_effect(4, AGONY, 0)
 		if(prob(20))
-			to_chat(M,"<span class='danger'>You feel like your insides are burning!</span>")
+			to_chat(entity,"<span class='danger'>You feel like your insides are burning!</span>")
 		else if(prob(20))
-			M.visible_message("<span class='warning'>[M] [pick("dry heaves!","coughs!","splutters!","rubs at their eyes!")]</span>")
+			entity.visible_message("<span class='warning'>[entity] [pick("dry heaves!","coughs!","splutters!","rubs at their eyes!")]</span>")
 	else
-		M.eye_blurry = max(M.eye_blurry, 10)
+		entity.eye_blurry = max(entity.eye_blurry, 10)
 
 /datum/reagent/lexorin
 	name = "Lexorin"
@@ -569,20 +569,20 @@
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
-		M.apply_effect(5, AGONY, 0)
-		M.adjustToxLoss(3 * removed)
+		entity.apply_effect(5, AGONY, 0)
+		entity.adjustToxLoss(3 * removed)
 		if(prob(10))
-			to_chat(M, "<span class='warning'>Your cellular mass hardens for a moment.</span>")
-			M.afflict_stun(20 * 6)
+			to_chat(entity, "<span class='warning'>Your cellular mass hardens for a moment.</span>")
+			entity.afflict_stun(20 * 6)
 		return
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_SKRELL)])
-		M.take_organ_damage(2.4 * removed, 0)
-		if(M.losebreath < 10)
-			M.AdjustLosebreath(1)
+		entity.take_organ_damage(2.4 * removed, 0)
+		if(entity.losebreath < 10)
+			entity.AdjustLosebreath(1)
 	else
-		M.take_organ_damage(3 * removed, 0)
-		if(M.losebreath < 15)
-			M.AdjustLosebreath(1)
+		entity.take_organ_damage(3 * removed, 0)
+		if(entity.losebreath < 15)
+			entity.AdjustLosebreath(1)
 
 /datum/reagent/mutagen
 	name = "Unstable mutagen"
@@ -601,13 +601,14 @@
 	if(prob(67))
 		affect_blood(M, alien, removed)
 
-/datum/reagent/mutagen/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/mutagen/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
 
-	if(M.isSynthetic())
+	if(entity.isSynthetic())
 		return
 
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
+	if(ishuman(entity))
+		var/mob/living/carbon/human/H = entity
 		if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)] && prob(25))
 			var/color_shift = rand(-100, 100)
 			spawn(1)
@@ -664,19 +665,19 @@
 //The issue was, it was removed (.2) multiplied by .1, which resulted in a .02% chance per tick to have a mutation occur. Or more accurately, 5000 injected for a single mutation.
 //To honor their original idea, let's keep it as 10/20/30 as they wanted... For the most part.
 
-	if(M.dna)
+	if(entity.dna)
 		if(prob(removed * 10)) // Removed is .2 per tick. Multiplying it by 10 makes it a 2% chance per tick. 10 units has 50 ticks, so 10 units injected should give a single good/bad mutation.
-			randmuti(M)
+			randmuti(entity)
 			if(prob(98))
-				randmutb(M)
+				randmutb(entity)
 			else
-				randmutg(M)
-			domutcheck(M, null)
-			M.UpdateAppearance()
+				randmutg(entity)
+			domutcheck(entity, null)
+			entity.UpdateAppearance()
 		if(prob(removed * 40)) //Additionally, let's make it so there's an 8% chance per tick for a random cosmetic/not guranteed good/bad mutation.
-			randmuti(M)//This should equate to 4 random cosmetic mutations per 10 injected/20 ingested/30 touching units
-			to_chat(M, "<span class='warning'>You feel odd!</span>")
-	M.afflict_radiation(RAD_MOB_AFFLICT_STRENGTH_MUTAGEN(removed))
+			randmuti(entity)//This should equate to 4 random cosmetic mutations per 10 injected/20 ingested/30 touching units
+			to_chat(entity, "<span class='warning'>You feel odd!</span>")
+	entity.afflict_radiation(RAD_MOB_AFFLICT_STRENGTH_MUTAGEN(removed))
 
 /datum/reagent/slimejelly
 	name = "Slime Jelly"
@@ -694,16 +695,16 @@
 		return
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)]) //Partially made of the stuff. Why would it hurt them?
 		if(prob(75))
-			M.heal_overall_damage(25 * removed, 25 * removed)
-			M.adjustToxLoss(rand(-30, -10) * removed)
-			M.druggy = max(M.druggy, 10)
-			M.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 60)
+			entity.heal_overall_damage(25 * removed, 25 * removed)
+			entity.adjustToxLoss(rand(-30, -10) * removed)
+			entity.druggy = max(entity.druggy, 10)
+			entity.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 60)
 	else
 		if(prob(10))
-			to_chat(M, "<span class='danger'>Your insides are burning!</span>")
-			M.adjustToxLoss(rand(100, 300) * removed)
+			to_chat(entity, "<span class='danger'>Your insides are burning!</span>")
+			entity.adjustToxLoss(rand(100, 300) * removed)
 		else if(prob(40))
-			M.heal_organ_damage(25 * removed, 0)
+			entity.heal_organ_damage(25 * removed, 0)
 
 /datum/reagent/advmutationtoxin
 	name = "Advanced Mutation Toxin"
@@ -715,10 +716,10 @@
 /datum/reagent/advmutationtoxin/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
+	if(ishuman(entity))
+		var/mob/living/carbon/human/H = entity
 		if(H.species.get_species_id() != SPECIES_ID_PROMETHEAN)
-			to_chat(M, "<span class='danger'>Your flesh rapidly mutates!</span>")
+			to_chat(entity, "<span class='danger'>Your flesh rapidly mutates!</span>")
 
 			var/list/backup_implants = list()
 			for(var/obj/item/organ/I in H.organs)
@@ -763,30 +764,30 @@
 		threshold = 6	//Evens to 3 due to the fact they are considered 'small' for flaps.
 
 	var/effective_dose = dose
-	if(issmall(M))
+	if(issmall(entity))
 		effective_dose *= 2
 
 	if(effective_dose < 1 * threshold)
 		if(effective_dose == metabolism * 2 || prob(5))
-			M.emote("yawn")
+			entity.emote("yawn")
 	else if(effective_dose < 1.5 * threshold)
-		M.eye_blurry = max(M.eye_blurry, 10)
+		entity.eye_blurry = max(entity.eye_blurry, 10)
 	else if(effective_dose < 5 * threshold)
 		if(prob(50))
-			M.afflict_paralyze(20 * 2)
-		M.drowsyness = max(M.drowsyness, 20)
+			entity.afflict_paralyze(20 * 2)
+		entity.drowsyness = max(entity.drowsyness, 20)
 	else
 		if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)]) //They don't have eyes, and they don't really 'sleep'. Fumble their general senses.
-			M.eye_blurry = max(M.eye_blurry, 30)
+			entity.eye_blurry = max(entity.eye_blurry, 30)
 
 			if(prob(20))
-				M.ear_deaf = max(M.ear_deaf, 4)
-				M.Confuse(2)
+				entity.ear_deaf = max(entity.ear_deaf, 4)
+				entity.Confuse(2)
 			else
-				M.afflict_paralyze(20 * 2)
+				entity.afflict_paralyze(20 * 2)
 		else
-			M.afflict_sleeping(20 * 20)
-		M.drowsyness = max(M.drowsyness, 60)
+			entity.afflict_sleeping(20 * 20)
+		entity.drowsyness = max(entity.drowsyness, 60)
 
 /datum/reagent/chloralhydrate
 	name = "Chloral Hydrate"
@@ -814,27 +815,27 @@
 		threshold = 6	//Evens to 3 due to the fact they are considered 'small' for flaps.
 
 	var/effective_dose = dose
-	if(issmall(M))
+	if(issmall(entity))
 		effective_dose *= 2
 
 	if(effective_dose == metabolism)
-		M.Confuse(2)
-		M.drowsyness += 2
+		entity.Confuse(2)
+		entity.drowsyness += 2
 	else if(effective_dose < 2 * threshold)
-		M.afflict_paralyze(20 * 30)
-		M.eye_blurry = max(M.eye_blurry, 10)
+		entity.afflict_paralyze(20 * 30)
+		entity.eye_blurry = max(entity.eye_blurry, 10)
 	else
 		if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 			if(prob(30))
-				M.ear_deaf = max(M.ear_deaf, 4)
-			M.eye_blurry = max(M.eye_blurry, 60)
-			M.afflict_paralyze(20 * 30)
-			M.Confuse(40)
+				entity.ear_deaf = max(entity.ear_deaf, 4)
+			entity.eye_blurry = max(entity.eye_blurry, 60)
+			entity.afflict_paralyze(20 * 30)
+			entity.Confuse(40)
 		else
-			M.afflict_sleeping(20 * 30)
+			entity.afflict_sleeping(20 * 30)
 
 	if(effective_dose > 1 * threshold)
-		M.adjustToxLoss(removed)
+		entity.adjustToxLoss(removed)
 
 /datum/reagent/chloralhydrate/overdose(mob/living/carbon/M, alien, removed)
 	..()
@@ -878,11 +879,11 @@
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		drug_strength = drug_strength * 1.2
 
-	M.druggy = max(M.druggy, drug_strength)
-	if(prob(10) && isturf(M.loc) && !istype(M.loc, /turf/space) && CHECK_MOBILITY(M, MOBILITY_CAN_MOVE))
-		step(M, pick(GLOB.cardinal))
+	entity.druggy = max(entity.druggy, drug_strength)
+	if(prob(10) && isturf(entity.loc) && !istype(entity.loc, /turf/space) && CHECK_MOBILITY(entity, MOBILITY_CAN_MOVE))
+		step(entity, pick(GLOB.cardinal))
 	if(prob(7))
-		M.emote(pick("twitch", "drool", "moan", "giggle"))
+		entity.emote(pick("twitch", "drool", "moan", "giggle"))
 
 /datum/reagent/serotrotium
 	name = "Serotrotium"
@@ -900,7 +901,7 @@
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	if(prob(7))
-		M.emote(pick("twitch", "drool", "moan", "gasp"))
+		entity.emote(pick("twitch", "drool", "moan", "gasp"))
 	return
 
 /datum/reagent/serotrotium/venom
@@ -917,7 +918,7 @@
 		return
 	if(prob(30))
 		if(prob(25))
-			M.emote(pick("shiver", "blink_r"))
+			entity.emote(pick("shiver", "blink_r"))
 		M.adjustBrainLoss(0.2 * removed)
 	return ..()
 
@@ -944,8 +945,8 @@
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		drug_strength = drug_strength * 1.2
 
-	M.make_dizzy(drug_strength)
-	M.Confuse(drug_strength * 5)
+	entity.make_dizzy(drug_strength)
+	entity.Confuse(drug_strength * 5)
 
 /datum/reagent/impedrezene
 	name = "Impedrezene"
@@ -962,13 +963,13 @@
 	
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-	M.jitteriness = max(M.jitteriness - 5, 0)
+	entity.jitteriness = max(entity.jitteriness - 5, 0)
 	if(prob(80))
-		M.adjustBrainLoss(0.1 * removed)
+		entity.adjustBrainLoss(0.1 * removed)
 	if(prob(50))
-		M.drowsyness = max(M.drowsyness, 3)
+		entity.drowsyness = max(entity.drowsyness, 3)
 	if(prob(10))
-		M.emote("drool")
+		entity.emote("drool")
 
 /datum/reagent/mindbreaker
 	name = "Mindbreaker Toxin"
@@ -994,7 +995,7 @@
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		drug_strength *= 1.2
 
-	M.hallucination = max(M.hallucination, drug_strength)
+	entity.hallucination = max(entity.hallucination, drug_strength)
 
 /datum/reagent/psilocybin
 	name = "Psilocybin"
@@ -1018,29 +1019,29 @@
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		threshold = 0.8
 
-	M.druggy = max(M.druggy, 30)
+	entity.druggy = max(entity.druggy, 30)
 
 	var/effective_dose = dose
-	if(issmall(M)) effective_dose *= 2
+	if(issmall(entity)) effective_dose *= 2
 	if(effective_dose < 1 * threshold)
-		M.apply_effect(3, STUTTER)
-		M.make_dizzy(5)
+		entity.apply_effect(3, STUTTER)
+		entity.make_dizzy(5)
 		if(prob(5))
-			M.emote(pick("twitch", "giggle"))
+			entity.emote(pick("twitch", "giggle"))
 	else if(effective_dose < 2 * threshold)
-		M.apply_effect(3, STUTTER)
-		M.make_jittery(5)
-		M.make_dizzy(5)
-		M.druggy = max(M.druggy, 35)
+		entity.apply_effect(3, STUTTER)
+		entity.make_jittery(5)
+		entity.make_dizzy(5)
+		entity.druggy = max(entity.druggy, 35)
 		if(prob(10))
-			M.emote(pick("twitch", "giggle"))
+			entity.emote(pick("twitch", "giggle"))
 	else
-		M.apply_effect(3, STUTTER)
-		M.make_jittery(10)
-		M.make_dizzy(10)
-		M.druggy = max(M.druggy, 40)
+		entity.apply_effect(3, STUTTER)
+		entity.make_jittery(10)
+		entity.make_dizzy(10)
+		entity.druggy = max(entity.druggy, 40)
 		if(prob(15))
-			M.emote(pick("twitch", "giggle"))
+			entity.emote(pick("twitch", "giggle"))
 
 /datum/reagent/nicotine
 	name = "Nicotine"
@@ -1071,13 +1072,13 @@
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_SKRELL)])
 		drug_strength = drug_strength * 0.8
 	else
-		M.adjustToxLoss(10 * removed) //Given incorporations of other toxins with similiar damage, this seems right.
+		entity.adjustToxLoss(10 * removed) //Given incorporations of other toxins with similiar damage, this seems right.
 
-	M.druggy = max(M.druggy, drug_strength)
-	if(prob(10) && isturf(M.loc) && !istype(M.loc, /turf/space) && CHECK_MOBILITY(M, MOBILITY_CAN_MOVE))
-		step(M, pick(GLOB.cardinal))
+	entity.druggy = max(entity.druggy, drug_strength)
+	if(prob(10) && isturf(entity.loc) && !istype(entity.loc, /turf/space) && CHECK_MOBILITY(entity, MOBILITY_CAN_MOVE))
+		step(entity, pick(GLOB.cardinal))
 	if(prob(7))
-		M.emote(pick("twitch", "drool", "moan", "giggle"))
+		entity.emote(pick("twitch", "drool", "moan", "giggle"))
 
 /* Transformations */
 
@@ -1092,26 +1093,26 @@
 /datum/reagent/slimetoxin/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(M.isSynthetic())
+	if(entity.isSynthetic())
 		return
 
-	var/mob/living/carbon/human/H = M
+	var/mob/living/carbon/human/H = entity
 	if(istype(H) && (H.species.species_flags & NO_SCAN))
 		return
 
-	if(M.dna)
+	if(entity.dna)
 		if(prob(removed * 10))
-			randmuti(M)
+			randmuti(entity)
 			if(prob(98))
-				randmutb(M)
+				randmutb(entity)
 			else
-				randmutg(M)
-			domutcheck(M, null)
-			M.UpdateAppearance()
+				randmutg(entity)
+			domutcheck(entity, null)
+			entity.UpdateAppearance()
 		if(prob(removed * 40))
-			randmuti(M)
-			to_chat(M, "<span class='warning'>You feel odd!</span>")
-	M.afflict_radiation(RAD_MOB_AFFLICT_STRENGTH_SLIMETOXIN(removed))
+			randmuti(entity)
+			to_chat(entity, "<span class='warning'>You feel odd!</span>")
+	entity.afflict_radiation(RAD_MOB_AFFLICT_STRENGTH_SLIMETOXIN(removed))
 
 /datum/reagent/aslimetoxin
 	name = "Docility Toxin"
@@ -1124,26 +1125,26 @@
 /datum/reagent/aslimetoxin/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	
-	if(M.isSynthetic())
+	if(entity.isSynthetic())
 		return
 
-	var/mob/living/carbon/human/H = M
+	var/mob/living/carbon/human/H = entity
 	if(istype(H) && (H.species.species_flags & NO_SCAN))
 		return
 
-	if(M.dna)
+	if(entity.dna)
 		if(prob(removed * 10))
-			randmuti(M)
+			randmuti(entity)
 			if(prob(98))
-				randmutb(M)
+				randmutb(entity)
 			else
-				randmutg(M)
-			domutcheck(M, null)
-			M.UpdateAppearance()
+				randmutg(entity)
+			domutcheck(entity, null)
+			entity.UpdateAppearance()
 		if(prob(removed * 40))
-			randmuti(M)
-			to_chat(M, "<span class='warning'>You feel odd!</span>")
-	M.afflict_radiation(RAD_MOB_AFFLICT_STRENGTH_ASLIMETOXIN(removed))
+			randmuti(entity)
+			to_chat(entity, "<span class='warning'>You feel odd!</span>")
+	entity.afflict_radiation(RAD_MOB_AFFLICT_STRENGTH_ASLIMETOXIN(removed))
 
 /*
  * Hostile nanomachines.
