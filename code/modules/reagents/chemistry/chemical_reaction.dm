@@ -228,11 +228,6 @@
 
 	return reaction_progress
 
-
-/datum/chemical_reaction/proc/on_reaction(datum/reagent_holder/holder, created_volume)
-	SHOULD_NOT_OVERRIDE(TRUE)
-	#warn linter fodder
-
 //called after processing reactions, if they occurred
 /datum/chemical_reaction/proc/post_reaction(datum/reagent_holder/holder)
 	var/atom/container = holder.my_atom
