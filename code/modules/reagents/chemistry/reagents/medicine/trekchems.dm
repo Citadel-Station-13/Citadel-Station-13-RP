@@ -10,7 +10,9 @@
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 2
 	bloodstream_metabolism_multiplier = 0.5
 
-/datum/reagent/inaprovaline/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/inaprovaline/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	if(alien != IS_DIONA)
 		M.add_chemical_effect(CHEMICAL_EFFECT_STABLE, 15)//Reduces bleeding rate, and allowes the patient to breath even when in shock
 		M.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 10)
@@ -25,7 +27,9 @@
 	color = "#BF0000"
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
-/datum/reagent/bicaridine/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/bicaridine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	var/chem_effective = 1
 	if(alien == IS_SLIME)
 		chem_effective = 0.75
@@ -55,7 +59,9 @@
 	color = "#FFA800"
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
-/datum/reagent/kelotane/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/kelotane/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	var/chem_effective = 1
 	if(alien == IS_SLIME)
 		chem_effective = 0.5
@@ -72,7 +78,9 @@
 	color = "#FF8000"
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 0.5
 
-/datum/reagent/dermaline/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/dermaline/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	var/chem_effective = 1
 	if(alien == IS_SLIME)
 		chem_effective = 0.75
@@ -87,7 +95,9 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#00A000"
 
-/datum/reagent/dylovene/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/dylovene/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	var/chem_effective = 1
 	if(alien == IS_SLIME)
 		chem_effective = 0.66
@@ -110,7 +120,9 @@
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 	bloodstream_metabolism_multiplier = 0.25
 	
-/datum/reagent/dexalin/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/dexalin/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	if(alien == IS_VOX)
 		M.adjustToxLoss(removed * 24) //Vox breath phoron, oxygen is rather deadly to them
 	if(alien == IS_ALRAUNE)
@@ -136,7 +148,9 @@
 	color = "#0040FF"
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 0.5
 
-/datum/reagent/dexalinp/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/dexalinp/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	if(alien == IS_VOX)
 		M.adjustToxLoss(removed * 9)//Again, vox dont like O2
 	if(alien == IS_ALRAUNE)
@@ -160,7 +174,9 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#8040FF"
 
-/datum/reagent/tricordrazine/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/tricordrazine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	if(alien != IS_DIONA)//Heals everyone besides diona on all 4 base damage types.
 		var/chem_effective = 1
 		if(alien == IS_SLIME)

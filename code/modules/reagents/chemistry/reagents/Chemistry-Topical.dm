@@ -19,7 +19,9 @@
 
 	var/toxicity = 1//factor of toxin damage dealt by improper application
 
-/datum/reagent/topical/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/topical/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	if(alien != IS_DIONA)
 		M.adjustToxLoss(toxicity * removed)//if injected cause toxin damage
 
@@ -115,7 +117,9 @@
 			data = world.time
 			to_chat(M, "<span class='warning'>You feel like all your nerves are itching.</span>")
 
-/datum/reagent/topical/neurolaze/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/topical/neurolaze/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	if(alien != IS_DIONA)
 		M.apply_damage(5 * removed, HALLOSS)//holodeck boxing glove damage
 		M.make_jittery(200)

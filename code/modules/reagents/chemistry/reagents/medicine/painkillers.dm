@@ -11,7 +11,9 @@
 	metabolism = 0.02
 	mrate_static = TRUE
 
-/datum/reagent/paracetamol/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/paracetamol/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	var/chem_effective = 1
 	if(alien == IS_SLIME)
 		chem_effective = 0.75
@@ -34,7 +36,9 @@
 	metabolism = 0.02
 	mrate_static = TRUE
 
-/datum/reagent/tramadol/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/tramadol/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	var/chem_effective = 1
 	if(alien == IS_SLIME)
 		chem_effective = 0.8
@@ -56,7 +60,9 @@
 	metabolism = 0.02
 	mrate_static = TRUE
 
-/datum/reagent/oxycodone/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/oxycodone/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	var/chem_effective = 1
 	if(alien == IS_SLIME)
 		chem_effective = 0.75

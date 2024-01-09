@@ -53,7 +53,9 @@
 	bloodstream_metabolism_multiplier = 2
 	overdose = 5 //This is intentionally low, as we want the ling to take some tox damage, to discourage spamming the ability.
 
-/datum/reagent/epinephrine/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/epinephrine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	if(alien == IS_DIONA)
 		return
 	M.add_chemical_effect(CHEMICAL_EFFECT_SPEEDBOOST, 3)

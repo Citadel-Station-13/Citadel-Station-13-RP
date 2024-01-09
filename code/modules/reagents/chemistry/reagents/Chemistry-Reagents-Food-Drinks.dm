@@ -38,7 +38,9 @@
 			if(data[taste]/totalFlavor < 0.1)
 				data -= taste
 
-/datum/reagent/nutriment/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/nutriment/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	if(!injectable && alien != IS_SLIME && alien != IS_CHIMERA)
 		M.adjustToxLoss(0.1 * removed)
 		return
@@ -79,7 +81,9 @@
 		else
 			..()
 
-/datum/reagent/nutriment/protein/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/nutriment/protein/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	if(alien && alien == IS_SKRELL)
 		M.adjustToxLoss(2 * removed)
 		return
@@ -381,7 +385,9 @@
 	color = "#BBEDA4"
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
-/datum/reagent/lipozine/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/lipozine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	M.nutrition = max(M.nutrition - 10 * removed, 0)
 	M.overeatduration = 0
 	if(M.nutrition < 0)
@@ -399,8 +405,9 @@
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 	ingest_met = REM
 
-/datum/reagent/sodiumchloride/affect_blood(mob/living/carbon/M, alien, removed)
-	..()
+/datum/reagent/sodiumchloride/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	if(alien == IS_SLIME)
 		M.adjustFireLoss(removed)
 
@@ -438,7 +445,9 @@
 	ingest_met = REM
 	color = "#B31008"
 
-/datum/reagent/frostoil/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/frostoil/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	if(alien == IS_DIONA)
 		return
 	M.bodytemperature = max(M.bodytemperature - 10 * TEMPERATURE_DAMAGE_COEFFICIENT, 215)
@@ -464,7 +473,9 @@
 	ingest_met = REM
 	color = "#B31008"
 
-/datum/reagent/capsaicin/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/capsaicin/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	if(alien == IS_DIONA)
 		return
 	M.adjustToxLoss(0.5 * removed)
@@ -530,7 +541,9 @@
 	ingest_met = REM
 	color = "#B31008"
 
-/datum/reagent/condensedcapsaicin/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/condensedcapsaicin/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	if(alien == IS_DIONA)
 		return
 	M.adjustToxLoss(0.5 * removed)
@@ -690,7 +703,9 @@
 	var/adj_temp = 0
 	var/water_based = TRUE
 
-/datum/reagent/drink/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	var/strength_mod = 1
 	if(alien == IS_SLIME && water_based)
 		strength_mod = 3
@@ -1051,8 +1066,9 @@
 		if(M.bodytemperature < T0C)
 			M.bodytemperature += 0.5
 
-/datum/reagent/drink/tea/icetea/affect_blood(mob/living/carbon/M, alien, removed)
-	..()
+/datum/reagent/drink/tea/icetea/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	if(alien == IS_SLIME)
 		if(M.bodytemperature > T0C)
 			M.bodytemperature -= 0.5
@@ -1255,7 +1271,9 @@
 	if(adj_temp > 0)
 		holder.remove_reagent("frostoil", 10 * removed)
 
-/datum/reagent/drink/coffee/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/coffee/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	..()
 
 /datum/reagent/drink/coffee/overdose(mob/living/carbon/M, alien)
@@ -1282,8 +1300,9 @@
 		if(M.bodytemperature < T0C)
 			M.bodytemperature += 0.5
 
-/datum/reagent/drink/coffee/icecoffee/affect_blood(mob/living/carbon/M, alien, removed)
-	..()
+/datum/reagent/drink/coffee/icecoffee/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	if(alien == IS_SLIME)
 		if(M.bodytemperature > T0C)
 			M.bodytemperature -= 0.5
@@ -1957,8 +1976,9 @@
 	glass_desc = "Generally, you're supposed to put something else in there too..."
 	glass_icon = DRINK_ICON_NOISY
 
-/datum/reagent/drink/ice/affect_blood(mob/living/carbon/M, alien, removed)
-	..()
+/datum/reagent/drink/ice/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	if(alien == IS_SLIME)
 		if(M.bodytemperature > T0C)
 			M.bodytemperature -= rand(1,3)
@@ -2070,8 +2090,9 @@
 	glass_icon = DRINK_ICON_NOISY
 	glass_special = list(DRINK_FIZZ)
 
-/datum/reagent/drink/nuclearwaste/affect_blood(mob/living/carbon/M, alien, removed)
-	..()
+/datum/reagent/drink/nuclearwaste/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	if(alien == IS_DIONA)
 		return
 	M.bloodstr.add_reagent("radium", 0.3)
@@ -2095,8 +2116,9 @@
 	glass_icon = DRINK_ICON_NOISY
 	glass_special = list(DRINK_FIZZ)
 
-/datum/reagent/drink/sodaoil/affect_blood(mob/living/carbon/M, alien, removed)
-	..()
+/datum/reagent/drink/sodaoil/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	if(M.bloodstr) // If, for some reason, they are injected, dilute them as well.
 		for(var/datum/reagent/R in M.ingested.reagent_list)
 			if(istype(R, /datum/reagent/drink))
@@ -4689,8 +4711,9 @@
 				to_chat(H, "<span class='info'>Your mind starts to clear, soothed into a state of clarity as your senses return.</span>")
 				log_and_message_admins("is no longer feral.", H)
 
-/datum/reagent/ethanol/monstertamer/affect_blood(mob/living/carbon/M, alien, removed)
-	..()
+/datum/reagent/ethanol/monstertamer/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	if(alien == IS_SKRELL)
 		M.adjustToxLoss(removed)  //Equivalent to half as much protein, since it's half protein.
 	if(!M.species.is_vampire)
@@ -4796,7 +4819,9 @@
 	glass_name = "Dumb Shroom Juice"
 	glass_desc = "Touch fuzzy, get dizzy."
 
-/datum/reagent/drink/shroomjuice/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/shroomjuice/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	. = ..()
 
 	if(alien == IS_DIONA)
@@ -4966,7 +4991,9 @@
 	glass_name = "A Desire to Die"
 	glass_desc = "Deathbell and nuclear waste. The bane of your liver."
 
-/datum/reagent/ethanol/desiretodie/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/ethanol/desiretodie/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	. = ..()
 	if(alien == IS_DIONA)
 		return

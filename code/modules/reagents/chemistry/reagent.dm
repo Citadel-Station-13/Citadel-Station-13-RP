@@ -533,7 +533,9 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	return
 
 #warn LINTER FODDER
-/datum/reagent/proc/affect_blood()
+/datum/reagent/proc/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	SHOULD_NOT_OVERRIDE(TRUE)
 /datum/reagent/proc/affect_touch()
 	SHOULD_NOT_OVERRIDE(TRUE)

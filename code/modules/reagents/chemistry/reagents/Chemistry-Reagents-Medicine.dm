@@ -82,7 +82,9 @@
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 0.50
 
 
-/datum/reagent/earthsblood/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/earthsblood/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	var/chem_effective = 1
 	if(alien == IS_ALRAUNE)
 		chem_effective = 1.1 //Plant to Plant Restoration
@@ -113,7 +115,9 @@
 	overdose_threshold = 20 //High OD. This is to make numbing bites have somewhat of a downside if you get bit too much. Have to go to medical for dialysis.
 	scannable = 0 //Let's not have medical mechs able to make an extremely strong organic painkiller
 
-/datum/reagent/numbing_enzyme/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/numbing_enzyme/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	M.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 200)//Similar to Oxycodone
 	if(prob(0.01)) //1 in 10000 chance per tick. Extremely rare.
 		to_chat(M,"<span class='warning'>Your body feels numb as a light, tingly sensation spreads throughout it, like some odd warmth.</span>")
@@ -156,7 +160,9 @@
 	bloodstream_metabolism_multiplier = 0.05
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
-/datum/reagent/synaptizine/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/synaptizine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	var/chem_effective = 1
 	if(alien == IS_DIONA)
 		return
@@ -185,7 +191,9 @@
 	color = "#FF3300"
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 0.5
 
-/datum/reagent/hyperzine/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/hyperzine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	if(alien == IS_TAJARA)
 		removed *= 1.25
 	if(alien == IS_SLIME)
@@ -207,7 +215,9 @@
 	bloodstream_metabolism_multiplier = 0.25
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
-/datum/reagent/alkysine/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/alkysine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	if(alien == IS_DIONA)
 		return
 	var/chem_effective = 1
@@ -229,7 +239,9 @@
 	color = "#C8A5DC"
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
-/datum/reagent/imidazoline/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/imidazoline/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	M.eye_blurry = max(M.eye_blurry - 5, 0)
 	M.AdjustBlinded(-5)
 	if(ishuman(M))
@@ -252,7 +264,9 @@
 	color = "#561EC3"
 	overdose_threshold = 10
 
-/datum/reagent/peridaxon/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/peridaxon/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		for(var/obj/item/organ/I in H.internal_organs)
@@ -278,7 +292,9 @@
 	color = "#664B9B"
 	overdose_threshold = 10
 
-/datum/reagent/nanoperidaxon/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/nanoperidaxon/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		for(var/obj/item/organ/I in H.internal_organs)
@@ -302,7 +318,9 @@
 	bloodstream_metabolism_multiplier = 0.5
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 0.5
 
-/datum/reagent/osteodaxon/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/osteodaxon/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	if(alien == IS_DIONA)
 		return
 	M.heal_organ_damage(3 * removed, 0)	//Gives the bones a chance to set properly even without other meds
@@ -324,7 +342,9 @@
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 0.5
 	var/repair_strength = 3
 
-/datum/reagent/myelamine/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/myelamine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	if(alien == IS_DIONA)
 		return
 	M.eye_blurry += min(M.eye_blurry + (repair_strength * removed), 250)
@@ -354,7 +374,9 @@
 	bloodstream_metabolism_multiplier = 1.5
 	overdose_threshold = 10
 
-/datum/reagent/respirodaxon/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/respirodaxon/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	var/repair_strength = 1
 	if(alien == IS_SLIME)
 		repair_strength = 0.6
@@ -384,7 +406,9 @@
 	bloodstream_metabolism_multiplier = 1.5
 	overdose_threshold = 10
 
-/datum/reagent/gastirodaxon/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/gastirodaxon/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	var/repair_strength = 1
 	if(alien == IS_SLIME)
 		repair_strength = 0.6
@@ -414,7 +438,9 @@
 	bloodstream_metabolism_multiplier = 1.5
 	overdose_threshold = 10
 
-/datum/reagent/hepanephrodaxon/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/hepanephrodaxon/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	var/repair_strength = 1
 	if(alien == IS_SLIME)
 		repair_strength = 0.4
@@ -446,7 +472,9 @@
 	bloodstream_metabolism_multiplier = 1.5
 	overdose_threshold = 10
 
-/datum/reagent/cordradaxon/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/cordradaxon/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	var/repair_strength = 1
 	if(alien == IS_SLIME)
 		repair_strength = 0.6
@@ -472,7 +500,9 @@
 	color = "#7B4D4F"
 	overdose_threshold = 20
 
-/datum/reagent/immunosuprizine/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/immunosuprizine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	var/strength_mod = 1
 
 	if(alien == IS_DIONA)	// It's a tree.
@@ -528,7 +558,9 @@
 	bloodstream_metabolism_multiplier = 0.75
 	overdose_threshold = 20
 
-/datum/reagent/skrellimmuno/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/skrellimmuno/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	var/strength_mod = 0.5
 
 	if(alien == IS_SKRELL)
@@ -571,7 +603,9 @@
 	color = "#004000"
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
-/datum/reagent/ryetalyn/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/ryetalyn/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	var/needs_update = M.mutations.len > 0
 
 	M.mutations = list()
@@ -618,7 +652,9 @@
 	color = "#605048"
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
-/datum/reagent/ethylredoxrazine/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/ethylredoxrazine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	if(alien == IS_DIONA)
 		return
 	M.dizziness = 0
@@ -642,7 +678,9 @@
 	bloodstream_metabolism_multiplier = 0.25
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
-/datum/reagent/hyronalin/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/hyronalin/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	if(alien == IS_DIONA)
 		return
 	M.cure_radiation(RAD_MOB_CURE_STRENGTH_HYRONALIN(removed))
@@ -657,7 +695,9 @@
 	bloodstream_metabolism_multiplier = 0.25
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
-/datum/reagent/arithrazine/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/arithrazine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	if(alien == IS_DIONA)
 		return
 	M.cure_radiation(RAD_MOB_CURE_STRENGTH_ARITHRAZINE(removed))
@@ -677,8 +717,9 @@
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 	data = 0
 
-/datum/reagent/spaceacillin/affect_blood(mob/living/carbon/M, alien, removed)
-	..()
+/datum/reagent/spaceacillin/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	if(alien == IS_SLIME)
 		if(volume <= 0.1 && data != -1)
 			data = -1
@@ -704,8 +745,9 @@
 	overdose_threshold = 10
 	data = 0
 
-/datum/reagent/corophizine/affect_blood(mob/living/carbon/M, alien, removed)
-	..()
+/datum/reagent/corophizine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	M.add_chemical_effect(CHEMICAL_EFFECT_ANTIBIOTIC, ANTIBIO_SUPER)
 
 	var/mob/living/carbon/human/H = M
@@ -772,7 +814,9 @@
 	data = 0
 	can_overdose_touch = TRUE
 
-/datum/reagent/spacomycaze/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/spacomycaze/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	M.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 10)
 	M.adjustToxLoss(3 * removed)
 
@@ -815,7 +859,9 @@
 	color = "#C8A5DC"
 	touch_met = 5
 
-/datum/reagent/sterilizine/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/sterilizine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	if(alien == IS_SLIME)
 		M.adjustFireLoss(removed)
 		M.adjustToxLoss(2 * removed)
@@ -860,7 +906,9 @@
 	color = "#C8A5DC"
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
-/datum/reagent/leporazine/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/leporazine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	if(alien == IS_DIONA)
 		return
 	if(M.bodytemperature > 310)
@@ -877,7 +925,9 @@
 	color = "#669900"
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
-/datum/reagent/rezadone/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/rezadone/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	if(alien == IS_DIONA)
 		return
 	var/mob/living/carbon/human/H = M
@@ -927,7 +977,9 @@
 	mrate_static = TRUE
 	data = 0
 
-/datum/reagent/methylphenidate/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/methylphenidate/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	if(alien == IS_DIONA)
 		return
 	if(volume <= 0.1 && data != -1)
@@ -950,7 +1002,9 @@
 	mrate_static = TRUE
 	data = 0
 
-/datum/reagent/citalopram/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/citalopram/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	if(alien == IS_DIONA)
 		return
 	if(volume <= 0.1 && data != -1)
@@ -973,7 +1027,9 @@
 	mrate_static = TRUE
 	data = 0
 
-/datum/reagent/paroxetine/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/paroxetine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	if(alien == IS_DIONA)
 		return
 	if(volume <= 0.1 && data != -1)
@@ -996,7 +1052,9 @@
 	reagent_state = REAGENT_SOLID
 	color = "#d5e2e5"
 
-/datum/reagent/adranol/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/adranol/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	if(alien == IS_DIONA)
 		return
 	if(M.confused)
@@ -1018,7 +1076,9 @@
 	mrate_static = TRUE
 	data = 0
 
-/datum/reagent/qerr_quem/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/qerr_quem/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	if(alien == IS_DIONA)
 		return
 	if(volume <= 0.1 && data != -1)
@@ -1041,7 +1101,9 @@
 	scannable = TRUE
 	affects_robots = TRUE
 
-/datum/reagent/healing_nanites/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/healing_nanites/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	M.heal_organ_damage(2 * removed, 2 * removed)
 	M.adjustOxyLoss(-4 * removed)
 	M.adjustToxLoss(-2 * removed)
@@ -1056,7 +1118,9 @@
 	color = "#0E900E"
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
-/datum/reagent/ickypak/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/ickypak/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	M.make_dizzy(1)
 	M.adjustHalLoss(2)
 
@@ -1079,7 +1143,9 @@
 	color = "#EF77E5"
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
-/datum/reagent/unsorbitol/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/unsorbitol/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	M.make_dizzy(1)
 	M.adjustHalLoss(1)
 	if(!M.confused) M.confused = 1
@@ -1110,7 +1176,9 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#333333"
 
-/datum/reagent/nif_repair_nanites/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/nif_repair_nanites/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(H.nif)

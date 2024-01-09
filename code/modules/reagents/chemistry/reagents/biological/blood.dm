@@ -92,7 +92,9 @@
 	if(data && data["antibodies"])
 		M.antibodies |= data["antibodies"]
 
-/datum/reagent/blood/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/blood/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	if(alien == IS_SLIME) //They don't have blood, so it seems weird that they would instantly 'process' the chemical like another species does.
 		affect_ingest(M, alien, removed)
 		return

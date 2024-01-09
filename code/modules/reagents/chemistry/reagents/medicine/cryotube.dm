@@ -10,7 +10,9 @@
 	bloodstream_metabolism_multiplier = 0.5
 	mrate_static = TRUE
 
-/datum/reagent/cryoxadone/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/cryoxadone/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	if(M.bodytemperature < 170)
 		var/chem_effective = 1
 		if(alien == IS_SLIME)
@@ -34,7 +36,9 @@
 	bloodstream_metabolism_multiplier = 0.5
 	mrate_static = TRUE
 
-/datum/reagent/clonexadone/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/clonexadone/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	if(M.bodytemperature < 170)
 		var/chem_effective = 1
 		if(alien == IS_SLIME)
@@ -67,7 +71,9 @@
 
 	. = ..(M, alien, location)
 
-/datum/reagent/necroxadone/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/necroxadone/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	if(M.bodytemperature < 170 || (M.stat == DEAD && M.has_modifier_of_type(/datum/modifier/bloodpump_corpse)))
 		var/chem_effective = 1
 		if(alien == IS_SLIME)

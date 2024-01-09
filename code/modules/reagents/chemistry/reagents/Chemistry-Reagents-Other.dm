@@ -15,7 +15,9 @@
 	color = "#C8A5DC"
 	mrate_static = TRUE
 
-/datum/reagent/adrenaline/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/adrenaline/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	if(alien == IS_DIONA)
 		return
 	M.set_unconscious(0)
@@ -53,7 +55,9 @@
 	reagent_state = REAGENT_GAS
 	color = "#404030"
 
-/datum/reagent/ammonia/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/ammonia/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	if(alien == IS_ALRAUNE)
 		M.nutrition += removed * 2 //cit change: fertilizer is waste for plants
 		return
@@ -66,7 +70,9 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#604030"
 
-/datum/reagent/diethylamine/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/diethylamine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	if(alien == IS_ALRAUNE)
 		M.nutrition += removed * 5 //cit change: fertilizer is waste for plants
 		return
@@ -142,7 +148,9 @@
 	color = "#C8A5DC"
 	affects_robots = TRUE
 
-/datum/reagent/coolant/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/coolant/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	if(M.isSynthetic() && ishuman(M))
 		var/mob/living/carbon/human/H = M
 
@@ -205,7 +213,9 @@
 	color = "#333333"
 	bloodstream_metabolism_multiplier = 3 // Broken nanomachines go a bit slower.
 
-/datum/reagent/defective_nanites/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/defective_nanites/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	M.take_organ_damage(2 * removed, 2 * removed)
 	M.adjustOxyLoss(4 * removed)
 	M.adjustToxLoss(2 * removed)

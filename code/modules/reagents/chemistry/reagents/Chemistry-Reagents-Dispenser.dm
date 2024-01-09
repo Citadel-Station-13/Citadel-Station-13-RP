@@ -28,7 +28,9 @@
 	if(istype(L))
 		L.adjust_fire_stacks(amount / 15)
 
-/datum/reagent/ethanol/affect_blood(mob/living/carbon/M, alien, removed) //This used to do just toxin. That's boring. Let's make this FUN.
+/datum/reagent/ethanol/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	if(issmall(M)) removed *= 2
 	var/strength_mod = 3 //Alcohol is 3x stronger when injected into the veins.
 	if(alien == IS_SKRELL)
@@ -163,7 +165,9 @@
 	var/power = 5
 	var/meltdose = 10 // How much is needed to melt
 
-/datum/reagent/acid/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/acid/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	if(issmall(M)) removed *= 2
 	M.take_organ_damage(0, removed * power * 2)
 
@@ -252,7 +256,9 @@
 	glass_desc = "The organic compound commonly known as table sugar and sometimes called saccharose. This white, odorless, crystalline powder has a pleasing, sweet taste."
 	glass_icon = DRINK_ICON_NOISY
 
-/datum/reagent/sugar/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/sugar/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	M.nutrition += removed * 3
 
 	var/effective_dose = dose
