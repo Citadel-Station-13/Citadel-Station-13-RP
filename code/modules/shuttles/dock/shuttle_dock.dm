@@ -188,6 +188,7 @@
  * literally just a landing pad
  */
 /obj/shuttle_dock/landing_pad
+	icon_state = "dock_center"
 	centered_landing_only = TRUE
 
 /**
