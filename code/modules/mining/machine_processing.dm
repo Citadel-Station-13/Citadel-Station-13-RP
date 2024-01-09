@@ -10,7 +10,6 @@
 	icon_state = "console"
 	density = TRUE
 	anchored = TRUE
-	clicksound = "keyboard"
 
 	var/obj/item/card/id/inserted_id	// Inserted ID card, for points
 
@@ -35,6 +34,7 @@
 	if(..())
 		return
 	interact(user)
+	playsound(src, "keyboard", clickvol, 1, 0)
 
 /obj/machinery/mineral/processing_unit_console/attackby(var/obj/item/I, var/mob/user)
 	if(istype(I, /obj/item/card/id))
@@ -43,7 +43,7 @@
 		if(!inserted_id)
 			if(!user.attempt_insert_item_for_installation(I, src))
 				return
-			playsound(src, 'sound/machines/button.ogg', clickvol, TRUE)
+			playsound(src, 'sound/machines/terminal_insert_disc.ogg', clickvol, TRUE)
 			inserted_id = I
 			interact(user)
 		return
@@ -63,7 +63,7 @@
 		var/datum/ore/O = GLOB.ore_data[orename]
 		ores.Add(list(list(
 			"name" = O.name,
-			"display_name" = O.display_name,
+			"displayName" = O.display_name,
 			"processing" = machine.ores_processing[O.name],
 			"amount" = machine.ores_stored[O.name],
 			"ref" = REF(O)
@@ -72,13 +72,13 @@
 	data["ores"] = ores
 	data["on"] = machine.active
 	data["fast"] = machine.speed_process
-	data["unclaimed_points"] = machine.points
+	data["unclaimedPoints"] = machine.points
 	if(inserted_id)
-		data["id_name"] = inserted_id.registered_name
-		data["id_points"] = inserted_id.mining_points
+		data["idName"] = inserted_id.registered_name
+		data["idPoints"] = inserted_id.mining_points
 	else
-		data["id_name"] = ""
-		data["id_points"] = 0
+		data["idName"] = ""
+		data["idPoints"] = 0
 	return data
 
 /obj/machinery/mineral/processing_unit_console/ui_act(action, list/params, datum/tgui/ui)
@@ -96,29 +96,37 @@
 	switch(action)
 		if("change_mode")
 			machine.ores_processing[params["ore"]] = params["mode"]
+			return TRUE
 
 		if("toggle_power")
 			machine.active = !machine.active
+			playsound(src.loc, 'sound/machines/terminal_prompt_confirm.ogg', clickvol, 0)
+			return TRUE
 
 		if("toggle_speed")
 			machine.toggle_speed()
+			return TRUE
 
 		if("eject_id")
 			if(istype(inserted_id))
 				usr.grab_item_from_interacted_with(inserted_id, src)
-				playsound(src, 'sound/machines/button2.ogg', clickvol, TRUE)
+				playsound(src, 'sound/machines/terminal_eject.ogg', clickvol, TRUE)
 				inserted_id = null
+				return TRUE
 		if("claim_points")
 			if(istype(inserted_id))
 				inserted_id.mining_points += machine.points
 				machine.points = 0
+				playsound(src.loc, 'sound/machines/ping.ogg', clickvol, 0)
+				return TRUE
 		if("insert_id")
 			var/obj/item/card/id/I = usr.get_active_held_item()
 			if(istype(I))
 				if(!usr.attempt_insert_item_for_installation(I, src))
 					return
-				playsound(src, 'sound/machines/button.ogg', clickvol, TRUE)
+				playsound(src, 'sound/machines/terminal_insert_disc.ogg', clickvol, TRUE)
 				inserted_id = I
+				return TRUE
 			else
 				to_chat(usr, "<span class='warning'>No valid ID.</span>")
 

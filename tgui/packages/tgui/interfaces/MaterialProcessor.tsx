@@ -5,15 +5,18 @@ import { useBackend } from "../backend";
 import { Button, LabeledList, Section, AnimatedNumber } from "../components";
 import { Window } from '../layouts';
 
-const PROCESS_NONE = 0;
-const PROCESS_SMELT = 1;
-const PROCESS_COMPRESS = 2;
-const PROCESS_ALLOY = 3;
+enum MaterialProcessorMode {
+  None = 0,
+  Smelt = 1,
+  Compress = 2,
+  Alloy = 3,
+}
+
 const COLOR_PROCESSING = {
-  [PROCESS_NONE]: false,
-  [PROCESS_SMELT]: "orange",
-  [PROCESS_COMPRESS]: "blue",
-  [PROCESS_ALLOY]: "purple",
+  [MaterialProcessorMode.None]: false,
+  [MaterialProcessorMode.Smelt]: "orange",
+  [MaterialProcessorMode.Compress]: "blue",
+  [MaterialProcessorMode.Alloy]: "purple",
 };
 
 type OreData =
@@ -30,9 +33,9 @@ type MaterialProcessorData =
   on: BooleanLike,
   fast: BooleanLike,
   ores: OreData[],
-  unclaimed_points: number,
-  id_name: string,
-  id_points: number,
+  unclaimedPoints: number,
+  idName: string,
+  idPoints: number,
 }
 
 export const MaterialProcessor = (props, context) => {
@@ -41,9 +44,9 @@ export const MaterialProcessor = (props, context) => {
     on,
     fast,
     ores,
-    unclaimed_points,
-    id_name,
-    id_points,
+    unclaimedPoints,
+    idName,
+    idPoints,
   } = data;
 
   return (
@@ -59,22 +62,22 @@ export const MaterialProcessor = (props, context) => {
               <Button
                 content="Claim Points"
                 icon="coins"
-                disabled={!(id_name && unclaimed_points > 0)}
+                disabled={!(idName && unclaimedPoints > 0)}
                 onClick={() => act("claim_points", {})}
               />
             }>
-              <AnimatedNumber value={unclaimed_points} />
+              <AnimatedNumber value={unclaimedPoints} />
 
             </LabeledList.Item>
-            {id_name && (
-              <LabeledList.Item label={id_name + "'s Points"} buttons={
+            {idName && (
+              <LabeledList.Item label={idName + "'s Points"} buttons={
                 <Button
                   content="Eject ID"
                   icon="eject"
                   onClick={() => act("eject_id", {})}
                 />
               }>
-                <AnimatedNumber value={id_points} />
+                <AnimatedNumber value={idPoints} />
               </LabeledList.Item>
             ) || (
               <LabeledList.Item label="ID" buttons={
@@ -118,29 +121,29 @@ export const MaterialProcessor = (props, context) => {
                       icon="layer-group"
                       tooltip={"Alloy " + ore.display_name}
                       tooltipPosition="top"
-                      selected={ore.processing === PROCESS_ALLOY}
-                      onClick={() => act("change_mode", { ore: ore.name, mode: PROCESS_ALLOY })}
+                      selected={ore.processing === MaterialProcessorMode.Alloy}
+                      onClick={() => act("change_mode", { ore: ore.name, mode: MaterialProcessorMode.Alloy })}
                     />
                     <Button
                       icon="fire"
                       tooltip={"Smelt " + ore.display_name}
                       tooltipPosition="top"
-                      selected={ore.processing === PROCESS_SMELT}
-                      onClick={() => act("change_mode", { ore: ore.name, mode: PROCESS_SMELT })}
+                      selected={ore.processing === MaterialProcessorMode.Smelt}
+                      onClick={() => act("change_mode", { ore: ore.name, mode: MaterialProcessorMode.Smelt })}
                     />
                     <Button
                       icon="stamp"
                       tooltip={"Compress " + ore.display_name}
                       tooltipPosition="top"
-                      selected={ore.processing === PROCESS_COMPRESS}
-                      onClick={() => act("change_mode", { ore: ore.name, mode: PROCESS_COMPRESS })}
+                      selected={ore.processing === MaterialProcessorMode.Compress}
+                      onClick={() => act("change_mode", { ore: ore.name, mode: MaterialProcessorMode.Compress })}
                     />
                     <Button
                       icon="ban"
                       tooltip={"No processing " + ore.display_name}
                       tooltipPosition="top"
-                      selected={ore.processing === PROCESS_NONE}
-                      onClick={() => act("change_mode", { ore: ore.name, mode: PROCESS_NONE })}
+                      selected={ore.processing === MaterialProcessorMode.None}
+                      onClick={() => act("change_mode", { ore: ore.name, mode: MaterialProcessorMode.None })}
                     />
                   </Fragment>
                 }>
