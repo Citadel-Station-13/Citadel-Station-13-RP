@@ -152,7 +152,7 @@
 				// todo: remove this shit
 				if(QDELETED(src))
 					return
-				loc = exit_vent
+				forceMove(exit_vent)
 				var/travel_time = round(get_dist(loc, exit_vent.loc) / 2)
 				spawn(travel_time)
 					// todo: remove this shit
@@ -160,7 +160,7 @@
 						return
 
 					if(!exit_vent || exit_vent.welded)
-						loc = entry_vent
+						forceMove(entry_vent)
 						entry_vent = null
 						return
 
@@ -172,10 +172,10 @@
 						return
 
 					if(!exit_vent || exit_vent.welded)
-						loc = entry_vent
+						forceMove(entry_vent)
 						entry_vent = null
 						return
-					loc = exit_vent.loc
+					forceMove(exit_vent)
 					entry_vent = null
 					var/area/new_area = get_area(loc)
 					if(new_area)

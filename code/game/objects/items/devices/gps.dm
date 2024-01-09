@@ -412,7 +412,7 @@
 			if(!tag_as)
 				return FALSE
 			var/turf/T = get_turf(src)
-			add_waypoint(tag_as, text2num(params["x"]) || T.x, text2num(params["y"]) || T.y, params["level_id"] || SSmapping.level_id(T.z))
+			add_waypoint(tag_as, text2num(params["x"]) || T.x, text2num(params["y"]) || T.y, params["level_id"] || SSmapping.fluff_level_id(T.z))
 			return FALSE // add waypoint pushes data already
 		if("del_waypoint")
 			//* RAW LOCATE IN HREF WARNING: RECEIVING PROC WILL SANITY CHECK.

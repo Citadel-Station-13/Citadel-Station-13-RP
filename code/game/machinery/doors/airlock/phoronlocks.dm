@@ -75,7 +75,7 @@
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock		//Special scrubber with bonus inbuilt heater
 	active_power_usage = 2000
 	efficiency_multiplier = 4
-	var/target_temp = T20C + 2
+	var/target_temp = T20C
 	var/heating_power = 150000
 
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock/heater //Variant for use on rift

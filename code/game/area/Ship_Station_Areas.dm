@@ -17,6 +17,69 @@
 /area/main_map/hanger_cafe
 	name = "Fuel Cafe"
 
+
+/**
+ * Turbolifts
+ * Medical
+ */
+
+/area/turbolift/medical/EutheniaDeck3
+	name = "Medical (Deck 3)"
+	lift_floor_label = "Medical Deck 3"
+	lift_floor_name = "Pyscology, Resleaving, Morgue, Storage"
+	lift_announce_str = "Arriving at Medical Deck 3."
+
+/area/turbolift/medical/EutheniaDeck2
+	name = "Medical (Deck 2)"
+	lift_floor_label = "Medical Deck 2"
+	lift_floor_name = "Recovery, Virology, CMO Office"
+	lift_announce_str = "Arriving at Medical Deck 2."
+
+/area/turbolift/medical/EutheniaDeck1
+	name = "Medical (Deck 1)"
+	lift_floor_label = "Medical Deck 1"
+	lift_floor_name = "Treatement, Surgery, Chemistry, Paramedic Office"
+	lift_announce_str = "Arriving at Medical Deck 1."
+
+/area/turbolift/medical/EutheniaDeck0
+	name = "Medical (Flight Deck)"
+	lift_floor_label = "Medical Flight Deck"
+	lift_floor_name = "Medical Emergency Dock, MedEvac Shuttle"
+	lift_announce_str = "Arriving at Medical Flight Deck."
+/**
+ * Cargo
+ */
+
+/area/turbolift/cargo/EutheniaDeck4
+	name = "Cargo (Deck 4)"
+	lift_floor_label = "Cargo Deck 4"
+	lift_floor_name = "Mining Operations"
+	lift_announce_str = "Arriving at Cargo Deck 4."
+/area/turbolift/cargo/EutheniaDeck3
+	name = "Cargo (Deck 3)"
+	lift_floor_label = "Cargo Deck 3"
+	lift_floor_name = "Warehouse, Supply Shuttle Dock"
+	lift_announce_str = "Arriving at Cargo Deck 3."
+
+/area/turbolift/cargo/EutheniaDeck2
+	name = "Cargo (Deck 2)"
+	lift_floor_label = "Cargo Deck 2"
+	lift_floor_name = "Front Desk, QM Office"
+	lift_announce_str = "Arriving at Cargo Deck 2."
+
+/area/turbolift/cargo/EutheniaDeck1
+	name = "Cargo (Deck 1)"
+	lift_floor_label = "Cargo Deck 1"
+	lift_floor_name = "Mail and Packages"
+	lift_announce_str = "Arriving at Cargo Deck 1."
+
+/area/turbolift/cargo/EutheniaDeck0
+	name = "Cargo (Flight Deck)"
+	lift_floor_label = "Cargo Flight Deck"
+	lift_floor_name = "Salvage Operations"
+	lift_announce_str = "Arriving at Cargo Flight Deck."
+
+
 /**
  * Hallways
  */
@@ -157,6 +220,48 @@
 /area/main_map/maintenance/engineering/deck4
 
 /area/main_map/maintenance/engineering/deck4/secondary
+
+/**
+ *! Flight Deck Maint Areas
+ */
+
+/area/main_map/maintenance/deck_zero
+	name = "\improper Flight Deck Maintenance"
+	icon_state = "maintcentral"
+
+/area/main_map/maintenance/deck_zero/port
+	name = "\improper Flight Deck Port Maintenance"
+	icon_state = "pmaint"
+
+/area/main_map/maintenance/deck_zero/starboard
+	name = "\improper Flight Deck Starboard Maintenance"
+	icon_state = "smaint"
+
+/area/main_map/maintenance/deck_zero/forward
+	name = "\improper Flight Deck Forward Maintenance"
+	icon_state = "fmaint"
+
+/area/main_map/maintenance/deck_zero/forward/port
+	name = "\improper Flight Deck Forward Port Maintenance"
+	icon_state = "fpmaint"
+
+/area/main_map/maintenance/deck_zero/forward/starboard
+	name = "\improper Flight Deck Forward Starboard Maintenance"
+	icon_state = "fsmaint"
+
+/area/main_map/maintenance/deck_zero/aft
+	name = "\improper Flight Deck Aft Maintenance"
+	icon_state = "amaint"
+
+/area/main_map/maintenance/deck_zero/aft/port
+	name = "\improper Flight Deck Aft Port Maintenance"
+	icon_state = "apmaint"
+
+/area/main_map/maintenance/deck_zero/aft/starboard
+	name = "\improper Flight Deck Aft Starboard Maintenance"
+	icon_state = "asmaint"
+
+
 /**
  *! Deck One Maint Areas
  */
