@@ -8,7 +8,7 @@
 	taste_mult = 1.2
 	reagent_state = REAGENT_LIQUID
 	color = "#CF3600"
-	metabolism = REM * 0.25 // 0.05 by default. Hopefully enough to get some help, or die horribly, whatever floats your boat
+	bloodstream_metabolism_multiplier = 0.25 // 0.05 by default. Hopefully enough to get some help, or die horribly, whatever floats your boat
 	filtered_organs = list(O_LIVER, O_KIDNEYS)
 	var/strength = 4 // How much damage it deals per unit
 	var/skin_danger = 0.2 // The multiplier for how effective the toxin is when making skin contact.
@@ -167,7 +167,7 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#CF3600"
 	strength = 20
-	metabolism = REM * 2
+	bloodstream_metabolism_multiplier = 2
 
 /datum/reagent/toxin/cyanide/affect_blood(mob/living/carbon/M, alien, removed)
 	..()
@@ -222,7 +222,7 @@
 	taste_description = "sweetness"
 	taste_mult = 1.8
 	color = "#d0583a"
-	metabolism = REM * 3
+	bloodstream_metabolism_multiplier = 3
 	overdose_threshold = 10
 	strength = 3
 
@@ -319,7 +319,7 @@
 	description = "A stablized nerve agent that puts the subject into a strange state of un-death."
 	reagent_state = REAGENT_SOLID
 	color = "#666666"
-	metabolism = REM * 0.75
+	bloodstream_metabolism_multiplier = 0.75
 	strength = 2
 	mrate_static = TRUE
 
@@ -714,7 +714,7 @@
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
 	color = "#009CA8"
-	metabolism = REM * 0.5
+	bloodstream_metabolism_multiplier = 0.5
 	ingest_met = REM * 1.5
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
@@ -762,7 +762,7 @@
 	taste_description = "bitterness"
 	reagent_state = REAGENT_SOLID
 	color = "#000067"
-	metabolism = REM * 0.5
+	bloodstream_metabolism_multiplier = 0.5
 	ingest_met = REM * 1.5
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 0.5
 	overdose_mod = 5	//For that good, lethal feeling
@@ -827,7 +827,7 @@
 	taste_mult = 0.4
 	reagent_state = REAGENT_LIQUID
 	color = "#60A584"
-	metabolism = REM * 0.5
+	bloodstream_metabolism_multiplier = 0.5
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
 /datum/reagent/space_drugs/affect_blood(mob/living/carbon/M, alien, removed)
@@ -854,7 +854,7 @@
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
 	color = "#202040"
-	metabolism = REM * 0.25
+	bloodstream_metabolism_multiplier = 0.25
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
 /datum/reagent/serotrotium/affect_blood(mob/living/carbon/M, alien, removed)
@@ -887,7 +887,7 @@
 	taste_description = "sourness"
 	reagent_state = REAGENT_LIQUID
 	color = "#000055"
-	metabolism = REM * 0.5
+	bloodstream_metabolism_multiplier = 0.5
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
 /datum/reagent/cryptobiolin/affect_blood(mob/living/carbon/M, alien, removed)
@@ -932,7 +932,7 @@
 	taste_description = "sourness"
 	reagent_state = REAGENT_LIQUID
 	color = "#B31008"
-	metabolism = REM * 0.25
+	bloodstream_metabolism_multiplier = 0.25
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
 /datum/reagent/mindbreaker/affect_blood(mob/living/carbon/M, alien, removed)
@@ -956,7 +956,7 @@
 	taste_description = "mushroom"
 	color = "#E700E7"
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
-	metabolism = REM * 0.5
+	bloodstream_metabolism_multiplier = 0.5
 
 /datum/reagent/psilocybin/affect_blood(mob/living/carbon/M, alien, removed)
 	if(alien == IS_DIONA)
@@ -1009,7 +1009,7 @@
 	taste_mult = 1.6
 	reagent_state = REAGENT_LIQUID
 	color = "#db2ed8"
-	metabolism = REM * 0.5
+	bloodstream_metabolism_multiplier = 0.5
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
 /datum/reagent/talum_quem/affect_blood(mob/living/carbon/M, alien, removed)
@@ -1102,12 +1102,14 @@
 	taste_description = "metal"
 	reagent_state = REAGENT_SOLID
 	color = "#555555"
-	metabolism = REM * 4 // Nanomachines. Fast.
+	bloodstream_metabolism_multiplier = 4
 	affects_robots = TRUE
 
-/datum/reagent/shredding_nanites/affect_blood(mob/living/carbon/M, alien, removed)
-	M.adjustBruteLoss(4 * removed)
-	M.adjustOxyLoss(4 * removed)
+/datum/reagent/shredding_nanites/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
+	entity.adjustBruteLoss(4 * removed)
+	entity.adjustOxyLoss(4 * removed)
 
 /datum/reagent/irradiated_nanites
 	name = "Restorative Nanites"
@@ -1116,16 +1118,18 @@
 	taste_description = "metal"
 	reagent_state = REAGENT_SOLID
 	color = "#555555"
-	metabolism = REM * 4
+	bloodstream_metabolism_multiplier = 4
 	affects_robots = TRUE
 
-/datum/reagent/irradiated_nanites/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/irradiated_nanites/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
 	// todo: this should be more brutal on people around the person without being too brutal on the person
 	// new radiation just kind of scales pretty badly
 	/// rads to everyone around you
-	radiation_pulse(M, RAD_INTENSITY_CHEM_IRRADIATED_NANITES)
+	radiation_pulse(entity, RAD_INTENSITY_CHEM_IRRADIATED_NANITES)
 	/// radiate the person a bit just in case they're armored
-	M.rad_act(RAD_INTENSITY_CHEM_IRRADIATED_NANITES_SELF)
+	entity.rad_act(RAD_INTENSITY_CHEM_IRRADIATED_NANITES_SELF)
 
 /datum/reagent/neurophage_nanites
 	name = "Restorative Nanites"
@@ -1134,13 +1138,14 @@
 	taste_description = "metal"
 	reagent_state = REAGENT_SOLID
 	color = "#555555"
-	metabolism = REM * 4
+	bloodstream_metabolism_multiplier = 4
 	filtered_organs = list(O_SPLEEN)
 	affects_robots = TRUE
 
-/datum/reagent/neurophage_nanites/affect_blood(mob/living/carbon/M, alien, removed)
-	M.adjustBrainLoss(2 * removed)	// Their job is to give you a bad time.
-	M.adjustBruteLoss(2 * removed)
+/datum/reagent/neurophage_nanites/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	
+	entity.take_overall_damage(2 * removed)
 
 //Special toxins for solargrubs
 //Moved from Chemistry-Reagents-Vore_vr.dm
@@ -1150,9 +1155,11 @@
 	description = "A liquid that quickly dissapates to deliver a painful shock."
 	reagent_state = REAGENT_LIQUID
 	color = "#E4EC2F"
-	metabolism = 2.50
-	var/power = 9
+	bloodstream_metabolism_multiplier = 10
 	affects_robots = TRUE
 
-/datum/reagent/grubshock/affect_blood(mob/living/carbon/M, alien, removed)
-	M.take_organ_damage(0, removed * power * 0.2)
+	var/power = 9
+
+/datum/reagent/grubshock/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	entity.take_organ_damage(burn = removed * power * 0.2)

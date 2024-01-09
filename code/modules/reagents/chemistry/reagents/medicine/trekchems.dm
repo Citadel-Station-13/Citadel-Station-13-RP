@@ -8,7 +8,7 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#00BFFF"
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 2
-	metabolism = REM * 0.5
+	bloodstream_metabolism_multiplier = 0.5
 
 /datum/reagent/inaprovaline/affect_blood(mob/living/carbon/M, alien, removed)
 	if(alien != IS_DIONA)
@@ -108,7 +108,7 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#0080FF"
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
-	metabolism = REM * 0.25
+	bloodstream_metabolism_multiplier = 0.25
 	
 /datum/reagent/dexalin/affect_blood(mob/living/carbon/M, alien, removed)
 	if(alien == IS_VOX)

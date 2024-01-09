@@ -6,7 +6,7 @@
 	description = "All the vitamins, minerals, and carbohydrates the body needs in pure form."
 	taste_mult = 4
 	reagent_state = REAGENT_SOLID
-	metabolism = REM * 4
+	bloodstream_metabolism_multiplier = 4
 	ingest_met = REM * 4
 	var/nutriment_factor = 30 // Per unit
 	var/hydration_factor = 0 //Per unit
@@ -452,7 +452,7 @@
 	description = "Lowers the body's internal temperature."
 	reagent_state = REAGENT_LIQUID
 	color = "#B31008"
-	metabolism = REM * 0.5
+	bloodstream_metabolism_multiplier = 0.5
 
 /datum/reagent/capsaicin
 	name = "Capsaicin Oil"
@@ -4657,7 +4657,7 @@
 	taste_description = "the gross yet satisfying combination of chewing on a raw steak while downing a shot of whiskey"
 	strength = 50
 	color = "#d3785d"
-	metabolism = REM * 2.5 // about right for mixing nutriment and ethanol.
+	bloodstream_metabolism_multiplier = 2.5 // about right for mixing nutriment and ethanol.
 	var/alt_nutriment_factor = 5 //half as much as protein since it's half protein.
 	//using a new variable instead of nutriment_factor so we can call ..() without that adding nutrition for us without taking factors for protein into account
 

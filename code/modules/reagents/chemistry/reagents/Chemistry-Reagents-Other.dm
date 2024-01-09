@@ -203,7 +203,7 @@
 	taste_description = "metal"
 	reagent_state = REAGENT_SOLID
 	color = "#333333"
-	metabolism = REM * 3 // Broken nanomachines go a bit slower.
+	bloodstream_metabolism_multiplier = 3 // Broken nanomachines go a bit slower.
 
 /datum/reagent/defective_nanites/affect_blood(mob/living/carbon/M, alien, removed)
 	M.take_organ_damage(2 * removed, 2 * removed)

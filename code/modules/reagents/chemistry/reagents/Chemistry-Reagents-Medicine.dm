@@ -153,7 +153,7 @@
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
 	color = "#99CCFF"
-	metabolism = REM * 0.05
+	bloodstream_metabolism_multiplier = 0.05
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
 /datum/reagent/synaptizine/affect_blood(mob/living/carbon/M, alien, removed)
@@ -180,7 +180,7 @@
 	id = "hyperzine"
 	description = "Hyperzine is a highly effective, long lasting, muscle stimulant."
 	taste_description = "bitterness"
-	metabolism = REM * 0.25 // see "long lasting"
+	bloodstream_metabolism_multiplier = 0.25 // see "long lasting"
 	reagent_state = REAGENT_LIQUID
 	color = "#FF3300"
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 0.5
@@ -204,7 +204,7 @@
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
 	color = "#FFFF66"
-	metabolism = REM * 0.25
+	bloodstream_metabolism_multiplier = 0.25
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
 /datum/reagent/alkysine/affect_blood(mob/living/carbon/M, alien, removed)
@@ -299,7 +299,7 @@
 	description = "An experimental drug used to heal bone fractures."
 	reagent_state = REAGENT_LIQUID
 	color = "#C9BCE3"
-	metabolism = REM * 0.5
+	bloodstream_metabolism_multiplier = 0.5
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 0.5
 
 /datum/reagent/osteodaxon/affect_blood(mob/living/carbon/M, alien, removed)
@@ -320,7 +320,7 @@
 	description = "Used to rapidly clot internal hemorrhages by increasing the effectiveness of platelets."
 	reagent_state = REAGENT_LIQUID
 	color = "#4246C7"
-	metabolism = REM * 0.5
+	bloodstream_metabolism_multiplier = 0.5
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 0.5
 	var/repair_strength = 3
 
@@ -351,7 +351,7 @@
 	taste_description = "metallic"
 	reagent_state = REAGENT_LIQUID
 	color = "#4444FF"
-	metabolism = REM * 1.5
+	bloodstream_metabolism_multiplier = 1.5
 	overdose_threshold = 10
 
 /datum/reagent/respirodaxon/affect_blood(mob/living/carbon/M, alien, removed)
@@ -381,7 +381,7 @@
 	taste_description = "chalk"
 	reagent_state = REAGENT_LIQUID
 	color = "#8B4513"
-	metabolism = REM * 1.5
+	bloodstream_metabolism_multiplier = 1.5
 	overdose_threshold = 10
 
 /datum/reagent/gastirodaxon/affect_blood(mob/living/carbon/M, alien, removed)
@@ -411,7 +411,7 @@
 	taste_description = "glue"
 	reagent_state = REAGENT_LIQUID
 	color = "#D2691E"
-	metabolism = REM * 1.5
+	bloodstream_metabolism_multiplier = 1.5
 	overdose_threshold = 10
 
 /datum/reagent/hepanephrodaxon/affect_blood(mob/living/carbon/M, alien, removed)
@@ -443,7 +443,7 @@
 	taste_description = "rust"
 	reagent_state = REAGENT_LIQUID
 	color = "#FF4444"
-	metabolism = REM * 1.5
+	bloodstream_metabolism_multiplier = 1.5
 	overdose_threshold = 10
 
 /datum/reagent/cordradaxon/affect_blood(mob/living/carbon/M, alien, removed)
@@ -525,7 +525,7 @@
 	taste_description = "mordant"
 	reagent_state = REAGENT_SOLID
 	color = "#84B2B0"
-	metabolism = REM * 0.75
+	bloodstream_metabolism_multiplier = 0.75
 	overdose_threshold = 20
 
 /datum/reagent/skrellimmuno/affect_blood(mob/living/carbon/M, alien, removed)
@@ -639,7 +639,7 @@
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
 	color = "#408000"
-	metabolism = REM * 0.25
+	bloodstream_metabolism_multiplier = 0.25
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
 /datum/reagent/hyronalin/affect_blood(mob/living/carbon/M, alien, removed)
@@ -654,7 +654,7 @@
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
 	color = "#008000"
-	metabolism = REM * 0.25
+	bloodstream_metabolism_multiplier = 0.25
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
 /datum/reagent/arithrazine/affect_blood(mob/living/carbon/M, alien, removed)
@@ -672,7 +672,7 @@
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
 	color = "#C1C1C1"
-	metabolism = REM * 0.25
+	bloodstream_metabolism_multiplier = 0.25
 	mrate_static = TRUE
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 	data = 0
@@ -766,7 +766,7 @@
 	taste_description = "oil"
 	reagent_state = REAGENT_SOLID
 	color = "#C1C1C8"
-	metabolism = REM * 0.4
+	bloodstream_metabolism_multiplier = 0.4
 	mrate_static = TRUE
 	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 	data = 0
@@ -1037,7 +1037,7 @@
 	taste_description = "metal"
 	reagent_state = REAGENT_SOLID
 	color = "#555555"
-	metabolism = REM * 4 // Nanomachines gotta go fast.
+	bloodstream_metabolism_multiplier = 4 // Nanomachines gotta go fast.
 	scannable = TRUE
 	affects_robots = TRUE
 
@@ -1174,7 +1174,7 @@
 	taste_description = "sour metal"
 	taste_mult = 2
 	reagent_state = REAGENT_LIQUID
-	metabolism = REM * 0.016
+	bloodstream_metabolism_multiplier = 0.016
 	mrate_static = TRUE
 	color = "#52ca22"
 	overdose_threshold = 16

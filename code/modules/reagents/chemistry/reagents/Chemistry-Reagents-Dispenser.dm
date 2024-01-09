@@ -158,7 +158,7 @@
 	taste_description = "acid"
 	reagent_state = REAGENT_LIQUID
 	color = "#DB5008"
-	metabolism = REM * 2
+	bloodstream_metabolism_multiplier = 2
 	touch_met = 50 // It's acid!
 	var/power = 5
 	var/meltdose = 10 // How much is needed to melt

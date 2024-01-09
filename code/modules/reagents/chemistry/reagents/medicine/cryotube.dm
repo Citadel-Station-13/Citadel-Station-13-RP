@@ -7,7 +7,7 @@
 	taste_description = "overripe bananas"
 	reagent_state = REAGENT_LIQUID
 	color = "#8080FF"
-	metabolism = REM * 0.5
+	bloodstream_metabolism_multiplier = 0.5
 	mrate_static = TRUE
 
 /datum/reagent/cryoxadone/affect_blood(mob/living/carbon/M, alien, removed)
@@ -31,7 +31,7 @@
 	taste_description = "rotten bananas"
 	reagent_state = REAGENT_LIQUID
 	color = "#80BFFF"
-	metabolism = REM * 0.5
+	bloodstream_metabolism_multiplier = 0.5
 	mrate_static = TRUE
 
 /datum/reagent/clonexadone/affect_blood(mob/living/carbon/M, alien, removed)
@@ -56,7 +56,7 @@
 	taste_description = "meat"
 	reagent_state = REAGENT_LIQUID
 	color = "#94B21C"
-	metabolism = REM * 0.5
+	bloodstream_metabolism_multiplier = 0.5
 	mrate_static = TRUE
 
 /datum/reagent/necroxadone/on_mob_life(mob/living/carbon/M, alien, datum/reagent_holder/metabolism/location)

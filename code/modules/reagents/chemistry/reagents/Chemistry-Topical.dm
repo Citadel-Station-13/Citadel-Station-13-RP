@@ -96,7 +96,7 @@
 	name = "Neurolaze"
 	id = "neurolaze"
 	description = "Superficial painkiller, do not inject or ingest"
-	metabolism = REM * 2 //Nervocells absorb this chem super fast so much faster metabolism...
+	bloodstream_metabolism_multiplier = 2 //Nervocells absorb this chem super fast so much faster metabolism...
 	overdose = REAGENTS_OVERDOSE_MEDICINE * 0.5
 
 	color = "#000000"
