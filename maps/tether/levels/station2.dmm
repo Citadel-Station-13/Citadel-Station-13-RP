@@ -169,7 +169,7 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/storage)
 "as" = (
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
@@ -644,7 +644,7 @@
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/yellow/border,
 /obj/structure/cable/green,
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /turf/simulated/floor/tiled,
 /area/engineering/locker_room)
 "bs" = (
@@ -7242,7 +7242,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/quartermaster/foyer)
 "oJ" = (
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lightgrey/border,
 /obj/effect/floor_decal/steeldecal/steel_decals7{
@@ -9600,7 +9600,7 @@
 "tq" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/brown/border,
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green,
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock/gear)
@@ -10901,7 +10901,7 @@
 "vP" = (
 /obj/effect/floor_decal/industrial/warning/corner,
 /obj/effect/floor_decal/industrial/warning,
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green,
 /turf/simulated/floor/tiled,
 /area/ai_monitored/storage/eva)

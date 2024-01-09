@@ -14322,7 +14322,7 @@
 	icon_state = "1-4"
 	},
 /obj/structure/cable/green,
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_upload)
 "jOl" = (
@@ -30881,7 +30881,7 @@
 /turf/simulated/floor/carpet,
 /area/security/brig)
 "vGH" = (
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4

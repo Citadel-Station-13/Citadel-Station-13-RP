@@ -11035,7 +11035,7 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/miningdock)
 "LP" = (
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/cyan{
 	icon_state = "0-8"
 	},

@@ -2728,7 +2728,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor3)
 "gU" = (
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/machinery/power/terminal,
 /obj/structure/cable,
 /obj/effect/floor_decal/techfloor,
@@ -9441,7 +9441,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medical)
 "uP" = (
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/machinery/power/terminal,
 /obj/structure/cable,
 /obj/structure/bed/chair{

@@ -6659,7 +6659,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/effect/floor_decal/techfloor{
 	dir = 10
 	},
@@ -7803,7 +7803,7 @@
 /obj/machinery/light{
 	color = "#0098c8"
 	},
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /turf/simulated/floor/tiled,
 /area/medical/virologyaccess)
 "gCw" = (
@@ -8838,7 +8838,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
 "hwg" = (
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
@@ -9527,7 +9527,7 @@
 /turf/simulated/floor/tiled,
 /area/medical/virology)
 "hWK" = (
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -10781,7 +10781,7 @@
 	pixel_y = 6
 	},
 /obj/item/toy/plushie/kitten,
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /turf/simulated/floor/wood,
 /area/medical/psych/psych_2)
 "iVb" = (
@@ -11629,7 +11629,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "jBH" = (
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -22666,7 +22666,7 @@
 	dir = 1
 	},
 /obj/machinery/light,
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -22816,7 +22816,7 @@
 /turf/simulated/floor/plating,
 /area/rnd/xenobiology)
 "sQh" = (
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/effect/floor_decal/techfloor,
 /obj/structure/cable/green,
 /turf/simulated/floor/tiled/techfloor,
@@ -24483,7 +24483,7 @@
 	pixel_y = 16
 	},
 /obj/structure/cable/green,
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/effect/floor_decal/industrial/outline/blue,
 /obj/effect/floor_decal/corner/blue{
 	dir = 5
@@ -27116,7 +27116,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/research)
 "wwu" = (
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -27627,7 +27627,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "wQy" = (
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)

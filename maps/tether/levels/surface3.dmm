@@ -9,7 +9,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/mauve/border,
 /obj/effect/floor_decal/borderfloor/corner2{
@@ -22014,7 +22014,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
@@ -25529,7 +25529,7 @@
 /area/tether/surfacebase/outside/outside3)
 "pcg" = (
 /obj/structure/cable/green,
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "pcu" = (
@@ -40857,7 +40857,7 @@
 /area/rnd/robotics)
 "xOd" = (
 /obj/structure/table/reinforced,
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/hop)

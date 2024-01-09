@@ -10400,7 +10400,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -10935,7 +10935,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 4
 	},
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/backup)
@@ -12512,7 +12512,7 @@
 /area/maintenance/station/eng_lower)
 "zN" = (
 /obj/structure/cable/green,
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /turf/simulated/floor,
 /area/maintenance/substation/engineering)
 "zO" = (
@@ -12680,7 +12680,7 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 4
 	},
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green,
 /obj/machinery/air_alarm{
 	dir = 8;
@@ -17193,7 +17193,7 @@
 /turf/simulated/floor/tiled,
 /area/bridge/secondary)
 "Jk" = (
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -19961,7 +19961,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -22581,7 +22581,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/gravity_gen)
 "Ul" = (
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green,
 /obj/structure/table/reinforced,
 /obj/machinery/microwave,

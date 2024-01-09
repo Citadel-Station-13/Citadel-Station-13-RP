@@ -1577,7 +1577,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/effect/floor_decal/industrial/warning/dust,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/outpost/mining_main/drill_equipment)
@@ -1653,7 +1653,7 @@
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/maintenance)
 "SR" = (
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/machinery/light_switch{
 	dir = 1;
 	pixel_x = 10;

@@ -7379,7 +7379,7 @@
 /area/crew_quarters/recreation_area_hallway)
 "wj" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -15357,7 +15357,7 @@
 /turf/simulated/floor/wood,
 /area/vacant/vacant_shop)
 "UE" = (
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},

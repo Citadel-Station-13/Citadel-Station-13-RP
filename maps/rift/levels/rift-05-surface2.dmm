@@ -8268,7 +8268,7 @@
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/purple/border,
 /obj/fiftyspawner/cardboard,
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -13102,7 +13102,7 @@
 /obj/machinery/light,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/purple/border,
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -15301,7 +15301,7 @@
 "jTV" = (
 /obj/machinery/light,
 /obj/effect/floor_decal/borderfloor,
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/effect/floor_decal/corner/purple/border,
 /obj/structure/cable/green{
 	icon_state = "0-8"
@@ -23816,7 +23816,7 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 8
 	},
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
@@ -26590,7 +26590,7 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 10
 	},
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},

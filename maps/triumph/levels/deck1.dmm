@@ -306,7 +306,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/cyan{
 	icon_state = "0-8"
 	},
@@ -2746,7 +2746,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
 "jf" = (
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -7425,7 +7425,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/workshop)
 "ze" = (
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -9702,7 +9702,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
 	},
@@ -13593,7 +13593,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/tcommsat/computer)
 "Ud" = (
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable{
 	icon_state = "0-8"
 	},

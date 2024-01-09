@@ -36360,7 +36360,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/hallway)
 "wGO" = (
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},

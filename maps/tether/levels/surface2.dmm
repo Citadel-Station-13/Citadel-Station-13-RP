@@ -335,7 +335,7 @@
 	},
 /obj/effect/floor_decal/borderfloor/corner2,
 /obj/effect/floor_decal/corner/mauve/bordercorner2,
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -14340,7 +14340,7 @@
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
 "kpA" = (
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/pink{
 	icon_state = "0-8"
 	},
@@ -21221,7 +21221,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
 "pAd" = (
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/cyan,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/power/thermoregulator,

@@ -642,7 +642,7 @@
 /turf/simulated/floor/virgo3b,
 /area/tether/outpost/solars_shed)
 "arB" = (
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/orange{
 	icon_state = "0-8"
 	},
@@ -1223,7 +1223,7 @@
 /obj/effect/floor_decal/corner/blue/border,
 /obj/machinery/light,
 /obj/structure/cable/orange,
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/showers)
 "aFW" = (
@@ -3300,7 +3300,7 @@
 /obj/structure/cable/orange{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
@@ -11836,7 +11836,7 @@
 /obj/structure/cable/orange{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
@@ -31343,7 +31343,7 @@
 /obj/structure/cable/orange{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
@@ -34607,7 +34607,7 @@
 /obj/structure/cable/orange{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
@@ -36418,7 +36418,7 @@
 "tJv" = (
 /obj/structure/table/standard,
 /obj/random/medical,
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green,
 /turf/simulated/floor/tiled/white,
 /area/medical/virologyaccess)
@@ -36812,7 +36812,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/testing_lab)
 "tTW" = (
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -38729,7 +38729,7 @@
 /turf/simulated/floor,
 /area/maintenance/substation/surfaceservicesubstation)
 "vbj" = (
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/machinery/light_switch{
 	dir = 1;
 	pixel_x = -13;
@@ -40527,7 +40527,7 @@
 "vSa" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/grey/border,
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/orange{
 	icon_state = "0-8"
 	},
@@ -41608,7 +41608,7 @@
 /turf/simulated/mineral,
 /area/storage/surface_eva/external)
 "wuD" = (
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green,
 /obj/effect/floor_decal/corner/lightorange{
 	dir = 6

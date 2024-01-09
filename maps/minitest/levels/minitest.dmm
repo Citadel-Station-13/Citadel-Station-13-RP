@@ -622,7 +622,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "bx" = (
@@ -1697,7 +1697,7 @@
 /turf/simulated/floor/tiled,
 /area/medical/medbay2)
 "ef" = (
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable,
 /turf/simulated/floor/tiled,
 /area/medical/medbay2)
@@ -1981,7 +1981,7 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/bar)
 "eT" = (
-/obj/machinery/power/apc,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
