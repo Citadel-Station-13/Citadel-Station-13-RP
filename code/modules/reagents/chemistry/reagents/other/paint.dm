@@ -161,8 +161,8 @@
 	if(istype(O))
 		O.color = color
 
-/datum/reagent/paint/init_data(datum/reagent_holder/holder, amount)
-	return list("color" = "#ffffff")
+/datum/reagent/paint/init_data(datum/reagent_holder/holder, amount, list/given_data)
+	return list("color" = given_data?["color"] || "#ffffff")
 
 /datum/reagent/paint/mix_data(datum/reagent_holder/holder, list/current_data, current_amount, list/new_data, new_amount)
 	var/existing = current_data["color"]

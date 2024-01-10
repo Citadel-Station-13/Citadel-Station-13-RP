@@ -371,7 +371,7 @@
 			/obj/item/storage/belt/detective,
 			/obj/item/clothing/gloves/black,
 			/obj/item/tape_recorder,
-			/obj/item/mass_spectrometer,
+			// /obj/item/mass_spectrometer,
 			/obj/item/camera_film = 2,
 			/obj/item/storage/photo_album,
 			/obj/item/reagent_scanner,
@@ -387,7 +387,7 @@
 /datum/supply_pack/security/detectivescan
 	name = "Forensic - Scanning Equipment"
 	contains = list(
-			/obj/item/mass_spectrometer,
+			// /obj/item/mass_spectrometer,
 			/obj/item/reagent_scanner,
 			/obj/item/storage/briefcase/crimekit,
 			/obj/item/detective_scanner

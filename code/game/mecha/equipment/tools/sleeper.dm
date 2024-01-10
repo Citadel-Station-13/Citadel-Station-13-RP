@@ -165,21 +165,19 @@
 				"}
 
 /obj/item/mecha_parts/mecha_equipment/tool/sleeper/proc/get_occupant_reagents()
-	if(occupant.reagents)
-		for(var/datum/reagent/R in occupant.reagents.reagent_list)
-			if(R.volume > 0)
-				. += "[R]: [round(R.volume,0.01)]<br />"
+	if(occupant.reagents_bloodstream)
+		for(var/id in occupant.reagents_bloodstream.reagent_volumes)
+			var/datum/reagent/R = SSchemistry.fetch_reagent(id)
+			. += "[R.display_name || R.name]: [round(occupant.reagents_bloodstream.reagent_volumes[id],0.01)]<br />"
 	return . || "None"
 
 /obj/item/mecha_parts/mecha_equipment/tool/sleeper/proc/get_available_reagents()
 	var/output
 	var/obj/item/mecha_parts/mecha_equipment/tool/syringe_gun/SG = locate(/obj/item/mecha_parts/mecha_equipment/tool/syringe_gun) in chassis
-	if(SG && SG.reagents && islist(SG.reagents.reagent_list))
-		for(var/datum/reagent/R in SG.reagents.reagent_list)
-			if(R.volume > 0)
-				output += "<a href=\"?src=\ref[src];inject=\ref[R];source=\ref[SG]\">Inject [R.name]</a><br />"
+	for(var/id in SG.reagents?.reagent_volumes)
+		var/datum/reagent/R = SSchemistry.fetch_reagent(id)
+		output += "<a href=\"?src=\ref[src];inject=\ref[R];source=\ref[SG]\">Inject [R.display_name ||R.name]</a><br />"
 	return output
-
 
 /obj/item/mecha_parts/mecha_equipment/tool/sleeper/proc/inject_reagent(var/datum/reagent/R,var/obj/item/mecha_parts/mecha_equipment/tool/syringe_gun/SG)
 	if(!R || !occupant || !SG || !(SG in chassis.equipment))

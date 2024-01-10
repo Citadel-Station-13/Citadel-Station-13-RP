@@ -400,8 +400,8 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
  * * holder - (optional) the holder we're going in, if any.
  * * amount - our amount
  */
-/datum/reagent/proc/init_data(datum/reagent_holder/holder, amount)
-	return list()
+/datum/reagent/proc/init_data(datum/reagent_holder/holder, amount, list/given_data)
+	return
 
 //* Guidebook *//
 
@@ -530,10 +530,6 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	return
 
 #warn LINTER FODDER
-/datum/reagent/proc/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
-	. = ..()
-	
-	SHOULD_NOT_OVERRIDE(TRUE)
 /datum/reagent/proc/affect_touch()
 	SHOULD_NOT_OVERRIDE(TRUE)
 /datum/reagent/proc/affect_ingest()

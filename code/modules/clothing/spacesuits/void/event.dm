@@ -102,7 +102,7 @@
 			/obj/item/storage/firstaid,
 			/obj/item/healthanalyzer,
 			/obj/item/robotanalyzer,
-			/obj/item/mass_spectrometer,
+			// /obj/item/mass_spectrometer,
 			/obj/item/geiger_counter,
 			/obj/item/stack/medical,
 			/obj/item/gps,

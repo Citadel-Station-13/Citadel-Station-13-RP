@@ -14,7 +14,8 @@
 	traumatic_shock = 0
 	// clear reagents
 	// todo: only bad reagents
-	bloodstr.clear()
-	ingested.clear()
-	touching.clear()
+	reagents_bloodstream.clear()
+	reagents_ingested.clear()
 	// todo: organs
+	for(var/obj/item/organ/external/ext in organs)
+		ext.reagents_dermal.clear()

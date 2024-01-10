@@ -40,7 +40,7 @@
 /obj/structure/bookcase/manuals/xenoarchaeology/Initialize(mapload)
 	. = ..()
 	new /obj/item/book/manual/excavation(src)
-	new /obj/item/book/manual/mass_spectrometry(src)
+	// new /obj/item/book/manual/mass_spectrometry(src)
 	new /obj/item/book/manual/materials_chemistry_analysis(src)
 	new /obj/item/book/manual/anomaly_testing(src)
 	new /obj/item/book/manual/anomaly_spectroscopy(src)

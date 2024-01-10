@@ -95,8 +95,7 @@
 		LAZYSET(reagent_datas, id, resolved.mix_data(src, reagent_datas[id], existing_amount, force_data, amount))
 		reagent_volumes[id] += amount
 	else
-		if(isnull(force_data))
-			force_data = resolved.init_data(src, amount)
+		force_data = resolved.init_data(src, amount, force_data)
 		LAZYSET(reagent_datas, id, force_data)
 		reagent_volumes[id] = amount
 	

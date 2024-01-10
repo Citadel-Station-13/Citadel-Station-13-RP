@@ -27,10 +27,10 @@
 			return
 
 		var/dat = ""
-		if(target.reagents.reagent_list.len > 0)
+		if(target.reagents.reagent_volumes.len > 0)
 			var/one_percent = target.reagents.total_volume / 100
-			for (var/datum/reagent/R in target.reagents.reagent_list)
-				dat += "\n \t " + SPAN_NOTICE("[R][details ? ": [R.volume / one_percent]%" : ""]")
+			for (var/datum/reagent/R in target.reagents.lazy_expensive_dangerous_reagent_list())
+				dat += "\n \t " + SPAN_NOTICE("[R.display_name || R.name][details ? ": [target.reagents.reagent_volumes[R.id] / one_percent]%" : ""]")
 		if(dat)
 			to_chat(user, SPAN_NOTICE("Chemicals found: [dat]"))
 		else

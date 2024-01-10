@@ -7,17 +7,17 @@
 
 // Biotech of various types
 
-/datum/design/science/biotech/mass_spectrometer
-	desc = "A device for analyzing chemicals in blood."
-	id = "mass_spectrometer"
-	req_tech = list(TECH_BIO = 2, TECH_MAGNET = 2)
-	build_path = /obj/item/mass_spectrometer
+// /datum/design/science/biotech/mass_spectrometer
+// 	desc = "A device for analyzing chemicals in blood."
+// 	id = "mass_spectrometer"
+// 	req_tech = list(TECH_BIO = 2, TECH_MAGNET = 2)
+// 	build_path = /obj/item/mass_spectrometer
 
-/datum/design/science/biotech/adv_mass_spectrometer
-	desc = "A device for analyzing chemicals in blood and their quantities."
-	id = "adv_mass_spectrometer"
-	req_tech = list(TECH_BIO = 2, TECH_MAGNET = 4)
-	build_path = /obj/item/mass_spectrometer/adv
+// /datum/design/science/biotech/adv_mass_spectrometer
+// 	desc = "A device for analyzing chemicals in blood and their quantities."
+// 	id = "adv_mass_spectrometer"
+// 	req_tech = list(TECH_BIO = 2, TECH_MAGNET = 4)
+// 	build_path = /obj/item/mass_spectrometer/adv
 
 /datum/design/science/biotech/reagent_scanner
 	desc = "A device for identifying chemicals."

@@ -11,6 +11,8 @@
 	var/body_part_flags = NONE
 
 	//* Reagents
+	var/datum/reagent_holder/reagents_dermal
+	#warn hook
 	#warn impl
 
 	//? Wounds

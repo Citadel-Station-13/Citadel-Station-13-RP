@@ -90,11 +90,11 @@
 	user.visible_message("<span class='notice'>[user] runs the scanner over \the [target].</span>")
 
 	last_reagents = list()
-	if(grown_reagents && grown_reagents.reagent_list && grown_reagents.reagent_list.len)
-		for(var/datum/reagent/R in grown_reagents.reagent_list)
+	if(grown_reagents?.reagent_volumes.len)
+		for(var/datum/reagent/R in grown_reagents.lazy_expensive_dangerous_reagent_list())
 			last_reagents.Add(list(list(
 				"name" = R.name,
-				"volume" = grown_reagents.get_reagent_amount(R.id),
+				"volume" = grown_reagents.reagent_volumes[R.id],
 			)))
 
 	ui_interact(user)
