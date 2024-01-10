@@ -143,9 +143,6 @@
 
 	//Cold/pressure effects when not regenerating
 	else
-		var/pressure2 = H.loc.return_pressure()
-		var/adjusted_pressure2 = H.calculate_affecting_pressure(pressure2)
-
 		//Cold hurts and gives them pain messages, eventually weakening and paralysing, but doesn't damage or trigger feral.
 		//NB: 'body_temperature' used here is the 'setpoint' species var
 		var/temp_diff = body_temperature - H.bodytemperature

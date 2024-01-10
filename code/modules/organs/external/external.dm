@@ -1290,9 +1290,9 @@ Note that amputating the affected organ does in fact remove the infection from t
 		if(!physiology.revert(modifier))
 			// todo: optimize?
 			rebuild_physiology()
-			for(var/datum/physiology_modifier/modifier as anything in owner.physiology_modifiers)
+			for(var/datum/physiology_modifier/rebuilding as anything in owner.physiology_modifiers)
 				// todo: check biology
-				physiology.apply(modifier)
+				physiology.apply(rebuilding)
 
 	..()
 

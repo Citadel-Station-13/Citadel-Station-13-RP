@@ -18,9 +18,9 @@
 		if(!bodypart.physiology.revert(modifier))
 			// todo: optimize?
 			bodypart.rebuild_physiology()
-			for(var/datum/physiology_modifier/modifier as anything in physiology_modifiers)
+			for(var/datum/physiology_modifier/rebuilding as anything in physiology_modifiers)
 				// todo: check biology
-				bodypart.physiology.apply(modifier)
+				bodypart.physiology.apply(rebuilding)
 
 /mob/living/carbon/rebuild_physiology()
 	. = ..()

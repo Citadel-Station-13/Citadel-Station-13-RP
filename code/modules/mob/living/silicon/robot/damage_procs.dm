@@ -1,6 +1,6 @@
 //* Raw Damage *//
 
-/mob/living/silicon/robot/take_organ_damage(var/brute = 0, var/burn = 0, var/sharp = 0, var/edge = 0, var/emp = 0)
+/mob/living/silicon/robot/take_targeted_damage(brute, burn, damage_mode, body_zone, weapon_descriptor, defer_updates)
 	var/list/components = get_damageable_components()
 	if(!components.len)
 		return
