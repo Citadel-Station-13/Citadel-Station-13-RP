@@ -230,14 +230,15 @@ GLOBAL_LIST_EMPTY(cached_physiology_modifiers)
 		remove_physiology_modifier(removing)
 		return TRUE
 
-/mob/proc/get_varedit_physiology_modifier()
-	RETURN_TYPE(/datum/physiology_modifier)
-	. = locate(/datum/physiology_modifier/varedit) in physiology_modifiers
-	if(!isnull(.))
-		return
-	var/datum/physiology_modifier/varedit/new_holder = new
-	add_physiology_modifier(new_holder)
-	return new_holder
+// i'm not going to fucking support vv without automated backreferences and macros, holy shit.
+// /mob/proc/get_varedit_physiology_modifier()
+// 	RETURN_TYPE(/datum/physiology_modifier)
+// 	. = locate(/datum/physiology_modifier/varedit) in physiology_modifiers
+// 	if(!isnull(.))
+// 		return
+// 	var/datum/physiology_modifier/varedit/new_holder = new
+// 	add_physiology_modifier(new_holder)
+// 	return new_holder
 
 #warn port all this shit to /obj/item/organ/external
 

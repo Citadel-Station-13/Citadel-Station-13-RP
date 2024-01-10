@@ -431,14 +431,17 @@
 		//   and the brute damage dealt exceeds the tearoff threshold, the organ is torn off.
 
 		//Check edge eligibility
-		var/edge_eligible = 0
-		if(edge)
-			if(istype(used_weapon,/obj/item))
-				var/obj/item/W = used_weapon
-				if(W.w_class >= w_class)
-					edge_eligible = 1
-			else
-				edge_eligible = 1
+		//! edge eligibility disabled; organs should optimally not reqiure the item reference and should instead
+		//! get descriptors (damage, damage mode, etc) of the inbound attack.
+		var/edge_eligible = edge
+		// var/edge_eligible = 0
+		// if(edge)
+		// 	if(istype(used_weapon,/obj/item))
+		// 		var/obj/item/W = used_weapon
+		// 		if(W.w_class >= w_class)
+		// 			edge_eligible = 1
+		// 	else
+		// 		edge_eligible = 1
 
 		if(nonsolid && damage >= max_damage)
 			droplimb(TRUE, DROPLIMB_EDGE)
@@ -452,17 +455,18 @@
 			droplimb(0, DROPLIMB_BLUNT)
 		else if(brute >= max_damage / DROPLIMB_THRESHOLD_TEAROFF && prob(brute*0.33))
 			droplimb(0, DROPLIMB_EDGE)
-		else if(spread_dam && owner && parent && (brute_overflow || burn_overflow) && (brute_overflow >= 5 || burn_overflow >= 5) && !permutation) //No infinite damage loops.
-			var/brute_third = brute_overflow * 0.33
-			var/burn_third = burn_overflow * 0.33
-			if(children && children.len)
-				var/brute_on_children = brute_third / children.len
-				var/burn_on_children = burn_third / children.len
-				spawn()
-					for(var/obj/item/organ/external/C in children)
-						if(!C.is_stump())
-							C.take_damage(brute_on_children, burn_on_children, 0, 0, null, forbidden_limbs, 1) //Splits the damage to each individual 'child', incase multiple exist.
-			parent.take_damage(brute_third, burn_third, 0, 0, null, forbidden_limbs, 1)
+		//! damage spreading disabled; the attacking weapon should handle this if necessary.
+		// else if(spread_dam && owner && parent && (brute_overflow || burn_overflow) && (brute_overflow >= 5 || burn_overflow >= 5) && !permutation) //No infinite damage loops.
+		// 	var/brute_third = brute_overflow * 0.33
+		// 	var/burn_third = burn_overflow * 0.33
+		// 	if(children && children.len)
+		// 		var/brute_on_children = brute_third / children.len
+		// 		var/burn_on_children = burn_third / children.len
+		// 		spawn()
+		// 			for(var/obj/item/organ/external/C in children)
+		// 				if(!C.is_stump())
+		// 					C.take_damage(brute_on_children, burn_on_children, 0, 0, null, forbidden_limbs, 1) //Splits the damage to each individual 'child', incase multiple exist.
+		// 	parent.take_damage(brute_third, burn_third, 0, 0, null, forbidden_limbs, 1)
 
 	//! LEGACY ABOVE
 
@@ -844,7 +848,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 		status |= ORGAN_BLEEDING
 
 	//Bone fractures
-	if(config_legacy.bones_can_break && brute_dam > min_broken_damage && !(robotic >= ORGAN_ROBOT))
+	if(brute_dam > min_broken_damage && !(robotic >= ORGAN_ROBOT))
 		src.fracture()
 
 	update_health()
