@@ -12,7 +12,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	abstract_type = /datum/reagent
 
 	//* Core
-	
+
 	/// id - must be unique and in CamelCase.
 	var/id
 	/// reagent flags - see [code/__DEFINES/reagents/flags.dm]
@@ -30,7 +30,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	// todo: default_inhale_biologies
 
 	//* Economy *//
-	
+
 	/// Raw intrinsic worth of this reagent
 	var/worth = 0
 	/// economic category of the reagent
@@ -61,66 +61,66 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/scan_difficulty = REAGENT_SCAN_DIFFICULTY_ANALYZER
 
 	//* Metabolism
-	
+
 	/// multiplier to units metabolized, base.
 	var/bloodstream_metabolism_multiplier = 1
 	/// multiplier to units metabolized, base.
 	var/ingested_metabolism_multiplier = 1
 	/// multiplier to units metabolized, base.
 	var/dermal_metabolism_multiplier = 1
-	
+
 	/// relative ease of reagent being absorbed into bloodstream from ingested
 	var/ingested_absorption_multiplier = 1
 	/// relative ease of reagent being absorbed into bloodstream from dermal
 	var/dermal_absorption_multiplier = 1
-	
+
 	/// relative multiplier for how well this chemical is destroyed / eliminated without absorption in ingested
 	var/ingested_elimination_multiplier = 1
 	/// relative multiplier for how well this chemical is destroyed / eliminated without absorption in dermal layers
 	var/dermal_elimination_multiplier = 1
 
 	/// amount at which overdose begins; null for none.
-	/// 
+	///
 	/// only applies to bloodstream
 	var/bloodstream_overdose_threshold
 	/// multiplier to units while overdosing; compounded with base
-	/// 
+	///
 	/// only applies to bloodstream
 	var/bloodstream_overdose_metabolism_multiplier = 1
 	/// tox damage per unit metabolised when overdosing
 	/// this is on top of any reagent effects, as this is the standard toxins damage
 	/// this will be replaced someday.
-	/// 
+	///
 	/// only applies to bloodstream
 	var/bloodstream_overdose_toxin_scaling = 2
 
 	/// amount at which overdose begins; null for none.
-	/// 
+	///
 	/// only applies to ingested
 	var/ingested_overdose_threshold
 	/// multiplier to units while overdosing; compounded with base
-	/// 
+	///
 	/// only applies to ingested
 	var/ingested_overdose_metabolism_multiplier = 1
 	/// tox damage per unit metabolised when overdosing
 	/// this is on top of any reagent effects, as this is the standard toxins damage
 	/// this will be replaced someday.
-	/// 
+	///
 	/// only applies to ingested
 	var/ingested_overdose_toxin_scaling = 2
 
 	/// amount at which overdose begins; null for none.
-	/// 
+	///
 	/// only applies to dermal
 	var/dermal_overdose_threshold
 	/// multiplier to units while overdosing; compounded with base
-	/// 
+	///
 	/// only applies to dermal
 	var/dermal_overdose_metabolism_multiplier = 1
 	/// tox damage per unit metabolised when overdosing
 	/// this is on top of any reagent effects, as this is the standard toxins damage
 	/// this will be replaced someday.
-	/// 
+	///
 	/// only applies to dermal
 	var/dermal_overdose_toxin_scaling = 2
 
@@ -130,7 +130,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/specific_heat = 1.5
 
 	//* Ticking
-	
+
 	#warn handle this
 	/// Ticks in non-biological biologies
 	var/tick_non_biological = FALSE
@@ -166,7 +166,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/list/glass_special = null // null equivalent to list()
 
 	//? wiki markup generation additional
-	//  todo: combine with guidebook 
+	//  todo: combine with guidebook
 	/// override "name"
 	var/wiki_name
 	/// override "desc"
@@ -311,16 +311,16 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 
 /**
  * called on splash, foam, vapor, etc
- * 
+ *
  * This is generally only called once on entry/expose, and only re-called if an object leaves and re-enters.
  * Please ensure all ticked effects & callers handle this accordingly.
- * 
+ *
  * @params
  * * target - what we were splashed into
  * * volume - amount
  * * data - data list
  * * vapor - vapor application?
- * 
+ *
  * @return amount consumed
  */
 /datum/reagent/proc/contact_expose_turf(turf/target, volume, list/data, vapor)
@@ -328,16 +328,16 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 
 /**
  * called on splash, foam, vapor, etc
- * 
+ *
  * This is generally only called once on entry/expose, and only re-called if an object leaves and re-enters.
  * Please ensure all ticked effects & callers handle this accordingly.
- * 
+ *
  * @params
  * * target - what we were splashed into
  * * volume - amount
  * * data - data list
  * * vapor - vapor application?
- * 
+ *
  * @return amount consumed
  */
 /datum/reagent/proc/contact_expose_obj(obj/target, volume, list/data, vapor)
@@ -345,13 +345,13 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 
 /**
  * called on splash or foam; for foam, this is called repeatedly.
- * 
+ *
  * @params
  * * target - what we were splashed into
  * * volume - amount
  * * data - data list
  * * organ_tag - the string tag of what organ this is localized on, if any; used for target splashing. if null, we can assume global.
- * 
+ *
  * @return amount consumed
  */
 /datum/reagent/proc/touch_expose_mob(mob/target, volume, list/data, organ_tag)
@@ -359,16 +359,16 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 
 /**
  * called per tick while we're being inhaled or a mob is being exposed to us in a gas cloud
- * 
+ *
  * * WARNING * - this proc is called regardless of actual coverage. if you are doing skin burn effects,
  * make absolute sure you manually check for exposed areas!
- * 
+ *
  * @params
  * * target - what we were splashed into
  * * volume - amount
  * * data - data list
  * * inhaled - are we being inhaled? someone in a smoke cloud is exposed even if not inhaled, but inhales it if they're not on internals.
- * 
+ *
  * @return amount consumed
  */
 /datum/reagent/proc/vapor_expose_mob(mob/target, volume, list/data, inhaled)
@@ -376,20 +376,20 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 
 /**
  * Called when something is trying to inject / add us into a metabolized holder
- * 
+ *
  * This is before the data mixes with the existing data.
- * 
+ *
  * @params
  * * entity - the victim
  * * application - the REAGENT_APPLY_* flags
  * * organ_tag - the string tag of what organ this is localized in, if any; mostly used for touch/skin/surface.
  * * volume - amount to add
  * * data - data list
- * 
+ *
  * @return units to add into the holder normally.
  */
 /datum/reagent/proc/applying_to_metabolism(mob/living/carbon/entity, application, organ_tag, volume, list/data)
-	return volume 
+	return volume
 
 //* Data *//
 
@@ -399,8 +399,28 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
  * @params
  * * holder - (optional) the holder we're going in, if any.
  * * amount - our amount
+ * * given_data - the data given by add_reagent. Do not modify this list.
+ *
+ * @return null, or a list. The list must not be given_data.
  */
 /datum/reagent/proc/init_data(datum/reagent_holder/holder, amount, list/given_data)
+	return
+
+/**
+ * called when a new reagent is being mixed with this one to mix our data lists.
+ *
+ * this may not be called if the data is the exact same!
+ *
+ * @params
+ * * holder - (optional) the holder we're mixing in, if any.
+ * * current_data - our current data. this is allowed to be modified.
+ * * current_amount - our current amount
+ * * new_data - (optional) new inbound data. this is null if force_data is not specified on add_reagent, and it isn't a holder to holder transfer! do not modify this list, it is read-only.
+ * * new_amount - the amount that's coming in, not what we will be at after mixing.
+ *
+ * @return new data list.
+ */
+/datum/reagent/proc/mix_data(datum/reagent_holder/holder, list/current_data, current_amount, list/new_data, new_amount)
 	return
 
 //* Guidebook *//
@@ -424,7 +444,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 
 /**
  * Called when we start metabolizing in a mob. (first add)
- * 
+ *
  * @params
  * * entity - the victim
  * * application - the REAGENT_APPLY_* flags
@@ -438,7 +458,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 
 /**
  * Called when we stop metabolizing in a mob. (on remove)
- * 
+ *
  * @params
  * * entity - the victim
  * * application - the REAGENT_APPLY_* flags
@@ -452,16 +472,16 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 
 /**
  * Called on life ticks during mob metabolism.
- * 
+ *
  * @params
  * * entity - the victim
  * * metabolism - the /datum/reagent_metabolism data; the overdose_cycles will be incremented automatically.
  * * removed - amount of volume being processed
  * * data - data list
- * 
+ *
  * @return amount actually used
  */
-/datum/reagent/proc/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)	
+/datum/reagent/proc/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	if(metabolism.overdosing)
 		// default overdose effects
 		if(overdose_toxin_scaling)
@@ -472,19 +492,19 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 
 /**
  * Called on life ticks during mob metabolism.
- * 
+ *
  * This is usually used for ingestion into stomachs, but can technically be adapted otherwise.
- * 
+ *
  * @params
  * * entity - the victim
  * * metabolism - the /datum/reagent_metabolism data; the overdose_cycles will be incremented automatically.
  * * removed - amount of volume being processed
  * * data - data list
  * * container - the internal organ this is inside
- * 
+ *
  * @return amount actually used
  */
-/datum/reagent/proc/on_metabolize_ingested(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed, obj/item/organ/internal/container)	
+/datum/reagent/proc/on_metabolize_ingested(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed, obj/item/organ/internal/container)
 	if(metabolism.overdosing)
 		// default overdose effects
 		if(overdose_toxin_scaling)
@@ -494,14 +514,14 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 
 /**
  * Called on life ticks during mob metabolism.
- * 
+ *
  * @params
  * * entity - the victim
  * * metabolism - the /datum/reagent_metabolism data; the overdose_cycles will be incremented automatically.
  * * removed - amount of volume being processed
  * * data - data list
  * * bodypart - the external organ this is inside
- * 
+ *
  * @return amount actually used
  */
 /datum/reagent/proc/on_metabolize_dermal(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed, obj/item/organ/external/bodypart)
@@ -511,23 +531,6 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 			entity.adjustToxLoss(removed * overdose_toxin_scaling)
 	#warn rework above
 	#warn hook
-
-//* Mixing *//
- 
-/**
- * called when a new reagent is being mixed with this one to mix our data lists.
- *
- * this may not be called if the data is the exact same!
- *
- * @params
- * * holder - (optional) the holder we're mixing in, if any.
- * * current_data - our current data.
- * * current_amount - our current amount
- * * new_data - (optional) new inbound data. this is null if force_data is not specified on add_reagent, and it isn't a holder to holder transfer!
- * * new_amount - the amount that's coming in, not what we will be at after mixing.
- */
-/datum/reagent/proc/mix_data(datum/reagent_holder/holder, list/current_data, current_amount, list/new_data, new_amount)
-	return
 
 #warn LINTER FODDER
 /datum/reagent/proc/affect_touch()

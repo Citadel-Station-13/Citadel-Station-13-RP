@@ -1,5 +1,4 @@
 /datum/reagent/blood
-	data = new/list("donor" = null, "viruses" = null, "species" = SPECIES_HUMAN, "blood_DNA" = null, "blood_type" = null, "blood_colour" = "#A10808", "resistances" = null, "trace_chem" = null, "antibodies" = list())
 	name = "Blood"
 	id = "blood"
 	taste_description = "iron"
@@ -15,10 +14,27 @@
 	glass_name = "tomato juice"
 	glass_desc = "Are you sure this is tomato juice?"
 
+/datum/reagent/blood/mix_data(datum/reagent_holder/holder, list/current_data, current_amount, list/new_data, new_amount)
+	. = ..()
+
+/datum/reagent/blood/init_data(datum/reagent_holder/holder, amount, list/given_data)
+	. = list(
+		"blood_DNA",
+		"blood_type",
+		"blood_color" = "#A10808",
+		"virus2",
+		"antibodies",
+		"species" = SPECIES_HUMAN,
+		"donor",
+	)
+	if(!isnull(given_data))
+		. |= given_data
+
+
 /datum/reagent/blood/initialize_data(newdata)
 	..()
-	if(data && data["blood_colour"])
-		color = data["blood_colour"]
+	if(data && data["blood_color"])
+		color = data["blood_color"]
 	return
 
 /datum/reagent/blood/get_data() // Just in case you have a reagent that handles data differently.
@@ -94,7 +110,7 @@
 
 /datum/reagent/blood/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)]) //They don't have blood, so it seems weird that they would instantly 'process' the chemical like another species does.
 		affect_ingest(M, alien, removed)
 		return
