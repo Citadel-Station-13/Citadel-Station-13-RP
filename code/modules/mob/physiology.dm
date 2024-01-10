@@ -7,12 +7,6 @@
  * todo: on biologies update, we might need to lazy-cache this, and have different physiologies for each biology.
  */
 /datum/global_physiology
-	// back-reference to mob, for vv purposes.
-	var/mob/ownership
-
-	// todo: /datum/global_physiology should hold global body physiology, limbs should hold modifiers/whatever themselves.
-	//       this way biologies can be supported as efficiently as possible.
-
 	/// carry baseline modify
 	var/carry_strength = CARRY_STRENGTH_BASELINE
 	/// carry penalty modifier
@@ -26,10 +20,6 @@
 	/// carry weight bias - multipled to carry_bias for carry weight only, not encumbrance
 	var/carry_weight_bias = 1
 
-/datum/global_physiology/Destroy()
-	ownership = null
-	return ..()
-
 /datum/global_physiology/proc/reset()
 	carry_strength = initial(carry_strength)
 	carry_factor = initial(carry_factor)
@@ -37,6 +27,7 @@
 	carry_weight_factor = initial(carry_weight_factor)
 	carry_bias = initial(carry_bias)
 	carry_weight_bias = initial(carry_weight_bias)
+	return TRUE
 
 /datum/global_physiology/proc/apply(datum/physiology_modifier/modifier)
 	if(!isnull(modifier.carry_strength_add))
@@ -70,45 +61,16 @@
 	if(!isnull(modifier.carry_weight_bias))
 		carry_weight_bias /= modifier.carry_weight_bias
 
-/datum/global_physiology/vv_edit_var(var_name, var_value, mass_edit, raw_edit)
-	// we automatically hook varedits and change the admin varedit holder so rebuilds take it into account
-	// this is not necessarily the best of ideas,
-	// because things like multiplicative factors don't scale as admins usually would expect
-	// but having this is better than not having it, as otherwise things would silently be wiped.
-	if(raw_edit)
-		return ..()
-	if(isnull(ownership))
-		return ..()
-	var/datum/physiology_modifier/varedit/varedit_modifier = ownership.get_varedit_physiology_modifier()
-	switch(var_name)
-		if(NAMEOF(src, carry_strength))
-			if(!isnum(var_value))
-				if(!mass_edit)
-					to_chat(usr, SPAN_WARNING("Invalid value [var_value] for [var_name] physiology edit rejected."))
-				return FALSE
-			. = ..()
-			if(!.)
-				return
-			varedit_modifier.carry_strength_add = var_value - carry_strength
-		if(NAMEOF(src, carry_factor))
-			if(!isnum(var_value))
-				if(!mass_edit)
-					to_chat(usr, SPAN_WARNING("Invalid value [var_value] for [var_name] physiology edit rejected."))
-				return FALSE
-			. = ..()
-			if(!.)
-				return
-			varedit_modifier.carry_strength_factor = var_value / carry_factor
-		else
-			return ..()
-	if(!mass_edit)
-		to_chat(usr, SPAN_NOTICE("Committing change to [var_name] on [ownership] ([REF(ownership)]) to physiology modifiers automatically."))
-
 /datum/local_physiology
-	// back-reference to limb, for vv purposes
-	var/obj/item/organ/external/ownership
 
-	#warn impl all
+/datum/local_physiology/proc/reset()
+	return TRUE
+
+/datum/local_physiology/proc/apply(datum/physiology_modifier/modifier)
+	return TRUE
+
+/datum/local_physiology/proc/revert(datum/physiology_modifier/modifier)
+	return TRUE
 
 /**
  * physiology modifier
@@ -227,7 +189,6 @@ GLOBAL_LIST_EMPTY(cached_physiology_modifiers)
  */
 /mob/proc/rebuild_physiology()
 	physiology = new
-	physiology.ownership = src
 	for(var/datum/physiology_modifier/modifier as anything in physiology_modifiers)
 		if(!istype(modifier))
 			physiology_modifiers -= modifier

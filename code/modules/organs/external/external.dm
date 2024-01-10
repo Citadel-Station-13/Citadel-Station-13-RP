@@ -1489,7 +1489,32 @@ Note that amputating the affected organ does in fact remove the infection from t
 //* Physiology *//
 
 /obj/item/organ/external/proc/rebuild_physiology()
-	#warn impl
+	physiology = new
+	for(var/datum/physiology_modifier/modifier as anything in physiology_modifiers)
+		if(!istype(modifier))
+			physiology_modifiers -= modifier
+			continue
+		physiology.apply(modifier)
 
+/obj/item/organ/external/proc/init_local_physiology()
+
+/obj/item/organ/external/proc/add_local_physiology_modifier(datum/physiology_modifier/modifier)
+
+/obj/item/organ/external/proc/remove_local_physiology_modifier(datum/physiology_modifier/modifier)
+
+/obj/item/organ/external/vv_get_dropdown()
+	. = ..()
+
+/obj/item/organ/external/vv_do_topic(list/href_list)
+	. = ..()
+
+/obj/item/organ/external/proc/get_varedit_physiology_modifier()
+	RETURN_TYPE(/datum/physiology_modifier)
+	. = locate(/datum/physiology_modifier/varedit) in physiology_modifiers
+	if(!isnull(.))
+		return
+	var/datum/physiology_modifier/varedit/new_holder = new
+	add_physiology_modifier(new_holder)
+	return new_holder
 
 #warn go grab shit from physiology.dm
