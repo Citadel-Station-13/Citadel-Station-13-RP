@@ -1,7 +1,6 @@
 //* Raw Damage *//
 
 /mob/living/silicon/robot/take_organ_damage(var/brute = 0, var/burn = 0, var/sharp = 0, var/edge = 0, var/emp = 0)
-	#warn refactor
 	var/list/components = get_damageable_components()
 	if(!components.len)
 		return
@@ -34,7 +33,8 @@
 	C.take_damage_legacy(brute,burn)
 
 /mob/living/silicon/robot/take_overall_damage(brute, burn, damage_mode, weapon_descriptor, defer_updates)
-	if(status_flags & STATUS_GODMODE)	return	//godmode
+	if(status_flags & STATUS_GODMODE)
+		return	//godmode
 	var/list/datum/robot_component/parts = get_damageable_components()
 
 	 //Combat shielding absorbs a percentage of damage directly into the cell.

@@ -3447,6 +3447,7 @@
 #include "code\modules\mob\living\carbon\inventory.dm"
 #include "code\modules\mob\living\carbon\organs.dm"
 #include "code\modules\mob\living\carbon\perspective.dm"
+#include "code\modules\mob\living\carbon\physiology.dm"
 #include "code\modules\mob\living\carbon\resist.dm"
 #include "code\modules\mob\living\carbon\shock.dm"
 #include "code\modules\mob\living\carbon\taste.dm"

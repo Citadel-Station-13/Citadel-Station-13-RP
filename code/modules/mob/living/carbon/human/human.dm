@@ -168,14 +168,12 @@
 	take_blast.inflict_bodypart_damage(
 		brute = b_loss * 0.9,
 		burn = f_loss * 0.9,
-		weapon_descriptor = "concussive force","
+		weapon_descriptor = "concussive force",
 	)
 
 	// distribute the remaining 10% on all limbs equally
 	b_loss *= 0.1
 	f_loss *= 0.1
-
-	var/weapon_message = "Explosive Blast"
 
 	for(var/obj/item/organ/external/temp in organs)
 		switch(temp.organ_tag)
@@ -183,19 +181,19 @@
 				temp.inflict_bodypart_damage(
 					brute = b_loss * 0.2,
 					burn = f_loss * 0.2,
-					weapon_descriptor = "concussive force","
+					weapon_descriptor = "concussive force",
 				)
 			if(BP_TORSO)
 				temp.inflict_bodypart_damage(
 					brute = b_loss * 0.4,
 					burn = f_loss * 0.4,
-					weapon_descriptor = "concussive force","
+					weapon_descriptor = "concussive force",
 				)
 			else
 				temp.inflict_bodypart_damage(
 					brute = b_loss * 0.05,
 					burn = f_loss * 0.05,
-					weapon_descriptor = "concussive force","
+					weapon_descriptor = "concussive force",
 				)
 
 /mob/living/carbon/human/proc/implant_loyalty(override = FALSE) // Won't override by default.

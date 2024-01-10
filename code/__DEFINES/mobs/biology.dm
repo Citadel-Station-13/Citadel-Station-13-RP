@@ -9,7 +9,7 @@
 #define BIOLOGY_TYPE_SYNTH (1<<1)
 /// promethean / slime
 #define BIOLOGY_TYPE_SLIME (1<<2)
-/// chimeric 
+/// chimeric
 #define BIOLOGY_TYPE_CHIMERA (1<<3)
 /// protean
 #define BIOLOGY_TYPE_NANITES (1<<4)
@@ -17,5 +17,6 @@
 #define BIOLOGY_TYPE_PLANT (1<<5)
 
 #define BIOLOGY_TYPES_FLESHY (BIOLOGY_TYPE_HUMAN | BIOLOGY_TYPE_CHIMERA | BIOLOGY_TYPE_PLANT | BIOLOGY_TYPE_SLIME)
+#define BIOLOGY_TYPES_ALL
 
 // todo: define bitfield (when do i rework define bitfield)

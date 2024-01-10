@@ -1488,4 +1488,8 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 //* Physiology *//
 
+/obj/item/organ/external/proc/rebuild_physiology()
+	#warn impl
+
+
 #warn go grab shit from physiology.dm

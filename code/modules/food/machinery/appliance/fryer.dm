@@ -190,7 +190,7 @@
 		else
 			victim.take_targeted_damage(
 				burn = damage,
-				body_zone = user.zone_sel.selectng,
+				body_zone = user.zone_sel.selecting,
 			)
 
 

@@ -104,10 +104,10 @@
 	if(!mass_edit)
 		to_chat(usr, SPAN_NOTICE("Committing change to [var_name] on [ownership] ([REF(ownership)]) to physiology modifiers automatically."))
 
-/**
- * limb physiology holder
- */
 /datum/local_physiology
+	// back-reference to limb, for vv purposes
+	var/obj/item/organ/external/ownership
+
 	#warn impl all
 
 /**
@@ -120,10 +120,12 @@
 	var/name = "Some Modifier"
 	/// is this a globally cached modifier?
 	var/is_globally_cached = FALSE
+	/// biologies this applies to, for limb-specific modifiers
+	var/biology_types = BIOLOGY_TYPES_ALL
 
-	// todo: on biologies update, we need to specify what biologies this applies to
+	//* -- global modifiers -- *//
 
-	//? global modifiers
+	//* carry strength / weight *//
 	var/carry_strength_add = 0
 	var/carry_strength_factor = 1
 	var/carry_strength_bias = 1
@@ -203,6 +205,7 @@ GLOBAL_LIST_EMPTY(cached_physiology_modifiers)
 	ASSERT(!(modifier in physiology_modifiers))
 	LAZYADD(physiology_modifiers, modifier)
 	physiology.apply(modifier)
+	return TRUE
 
 /**
  * removes a modifier from physiology
@@ -217,6 +220,7 @@ GLOBAL_LIST_EMPTY(cached_physiology_modifiers)
 	if(!physiology.revert(modifier))
 		// todo: optimize with reset().
 		rebuild_physiology()
+	return TRUE
 
 /**
  * completely rebuilds physiology from our modifiers
@@ -242,7 +246,7 @@ GLOBAL_LIST_EMPTY(cached_physiology_modifiers)
 		// todo: this should be able to be done globally via admin panel and then added to mobs
 
 		var/datum/physiology_modifier/modifier = ask_admin_for_a_physiology_modifier(usr)
-		
+
 		if(isnull(modifier))
 			return
 		if(QDELETED(src))
