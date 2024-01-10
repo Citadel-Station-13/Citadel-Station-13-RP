@@ -14,3 +14,4 @@
 #define DAMAGE_MODE_SHRED (1<<4)      //! messy, shredded wounds instead of a clean cut / pierce. strong.
 #define DAMAGE_MODE_GRADUAL (1<<5)    //! disallow bone breaks, ablation, etc; used for gradual sources like depressurization
 #define DAMAGE_MODE_INTERNAL (1<<6)   //! coming from internal; used to flag that something isn't coming through the skin. certain defenses don't work if this is set.
+#define DAMAGE_MODE_REDIRECT (1<<7)   //! if zone doesn't exist / etc, allow redirection

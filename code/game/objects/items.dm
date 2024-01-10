@@ -629,8 +629,9 @@
 				if(M.stat != 2)
 					to_chat(M, "<span class='warning'>You go blind!</span>")
 		var/obj/item/organ/external/affecting = H.get_organ(BP_HEAD)
-		if(affecting.take_damage(7))
-			M:UpdateDamageIcon()
+		affecting.inflict_bodypart_damage(
+			brute = 7,
+		)
 	else
 		M.take_random_targeted_damage(brute = 7)
 	M.eye_blurry += rand(3,4)

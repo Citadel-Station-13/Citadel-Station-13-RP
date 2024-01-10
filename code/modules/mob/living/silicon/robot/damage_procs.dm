@@ -1,13 +1,4 @@
-//* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
-
-//* Robots - Component Damage *//
-
-/mob/living/silicon/robot/proc/
-
 //* Raw Damage *//
-
-#warn literally just purge the below
 
 /mob/living/silicon/robot/take_organ_damage(var/brute = 0, var/burn = 0, var/sharp = 0, var/edge = 0, var/emp = 0)
 	#warn refactor
@@ -36,11 +27,11 @@
 	if(!emp)
 		var/datum/robot_component/armour/A = get_armour()
 		if(A)
-			A.take_damage_legacy(brute,burn,sharp,edge)
+			A.take_damage_legacy(brute,burn)
 			return
 
 	var/datum/robot_component/C = pick(components)
-	C.take_damage_legacy(brute,burn,sharp,edge)
+	C.take_damage_legacy(brute,burn)
 
 /mob/living/silicon/robot/take_overall_damage(brute, burn, damage_mode, weapon_descriptor, defer_updates)
 	if(status_flags & STATUS_GODMODE)	return	//godmode
@@ -66,7 +57,7 @@
 
 	var/datum/robot_component/armour/A = get_armour()
 	if(A)
-		A.take_damage_legacy(brute,burn,sharp)
+		A.take_damage_legacy(brute,burn)
 		return
 
 	while(parts.len && (brute>0 || burn>0) )

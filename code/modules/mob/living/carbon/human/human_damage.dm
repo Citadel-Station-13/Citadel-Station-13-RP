@@ -157,50 +157,6 @@
 		heal_overall_damage(0, -amount, include_robo)
 	update_hud_med_all()
 
-/mob/living/carbon/human/proc/adjustBruteLossByPart(var/amount, var/organ_name, var/obj/damage_source = null)
-	amount = amount*species.brute_mod
-	if (organ_name in organs_by_name)
-		var/obj/item/organ/external/O = get_organ(organ_name)
-
-		if(amount > 0)
-			for(var/datum/modifier/M in modifiers)
-				if(!isnull(M.incoming_damage_percent))
-					amount *= M.incoming_damage_percent
-				if(!isnull(M.incoming_brute_damage_percent))
-					amount *= M.incoming_brute_damage_percent
-			if(nif && nif.flag_check(NIF_C_BRUTEARMOR,NIF_FLAGS_COMBAT)){amount *= 0.7} //NIF mod for damage resistance for this type of damage
-			O.take_damage(amount, 0, sharp=is_sharp(damage_source), edge=has_edge(damage_source), used_weapon=damage_source)
-		else
-			for(var/datum/modifier/M in modifiers)
-				if(!isnull(M.incoming_healing_percent))
-					amount *= M.incoming_healing_percent
-			//if you don't want to heal robot organs, they you will have to check that yourself before using this proc.
-			O.heal_damage(-amount, 0, internal=0, robo_repair=(O.robotic >= ORGAN_ROBOT))
-
-	update_hud_med_all()
-
-/mob/living/carbon/human/proc/adjustFireLossByPart(var/amount, var/organ_name, var/obj/damage_source = null)
-	amount = amount*species.burn_mod
-	if (organ_name in organs_by_name)
-		var/obj/item/organ/external/O = get_organ(organ_name)
-
-		if(amount > 0)
-			for(var/datum/modifier/M in modifiers)
-				if(!isnull(M.incoming_damage_percent))
-					amount *= M.incoming_damage_percent
-				if(!isnull(M.incoming_fire_damage_percent))
-					amount *= M.incoming_fire_damage_percent
-			if(nif && nif.flag_check(NIF_C_BURNARMOR,NIF_FLAGS_COMBAT)){amount *= 0.7} // NIF mod for damage resistance for this type of damage
-			O.take_damage(0, amount, sharp=is_sharp(damage_source), edge=has_edge(damage_source), used_weapon=damage_source)
-		else
-			for(var/datum/modifier/M in modifiers)
-				if(!isnull(M.incoming_healing_percent))
-					amount *= M.incoming_healing_percent
-			//if you don't want to heal robot organs, they you will have to check that yourself before using this proc.
-			O.heal_damage(0, -amount, internal=0, robo_repair=(O.robotic >= ORGAN_ROBOT))
-
-	update_hud_med_all()
-
 /mob/living/carbon/human/proc/Stasis(amount)
 	if((species.species_flags & NO_SCAN) || isSynthetic())
 		in_stasis = 0

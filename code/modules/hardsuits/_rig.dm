@@ -289,7 +289,11 @@
 		toggle_piece("chest", M, ONLY_DEPLOY)
 		toggle_piece("boots", M, ONLY_DEPLOY)
 		if(suit_is_deployed())
-			M.adjustBruteLossByPart(70, BP_TORSO)
+			M.take_targeted_damage(
+				brute = 70,
+				damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE | DAMAGE_MODE_SHRED,
+				body_zone = BP_TORSO,
+			)
 			for(var/harm = 8; harm > 0; harm--)
 				M.adjustBruteLoss(10)
 			playsound(src.loc, 'sound/weapons/gunshot_generic_rifle.ogg', 40, 1)

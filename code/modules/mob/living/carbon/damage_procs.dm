@@ -18,6 +18,9 @@
 
 	var/obj/item/organ/external/bodypart = get_bodypart_for_zone(body_zone)
 	if(isnull(bodypart))
+		if(damage_mode & DAMAGE_MODE_REDIRECT)
+			// todo: maybe don't random lmfao
+			return take_random_targeted_damage(brute, burn, damage_mode & ~(DAMAGE_MODE_REDIRECT), weapon_descriptor, defer_updates)
 		return 0
 
 	. = bodypart.inflict_bodypart_damage(brute, burn, damage_mode, weapon_descriptor, TRUE)
