@@ -879,7 +879,11 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 
 		affected.implants -= selection
 		H.shock_stage+=20
-		affected.take_damage((selection.w_class * 3), 0, 0, 1, "Embedded object extraction")
+		affected.inflict_bodypart_damage(
+			brute = selection.w_class * 3,
+			damage_mode = DAMAGE_MODE_EDGE,
+			weapon_descriptor = "object removal",
+		)
 
 		if(prob(selection.w_class * 5) && (affected.robotic < ORGAN_ROBOT)) //I'M SO ANEMIC I COULD JUST -DIE-.
 			affected.create_specific_wound(/datum/wound/internal_bleeding, min(selection.w_class * 5, 15))

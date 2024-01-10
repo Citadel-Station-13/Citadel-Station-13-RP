@@ -112,9 +112,9 @@ default behaviour is:
 		var/divided_damage = (burn_amount)/(H.organs.len)
 		var/extradam = 0	//added to when organ is at max dam
 		for(var/obj/item/organ/external/affecting in H.organs)
-			if(!affecting)	continue
-			if(affecting.take_damage(0, divided_damage+extradam))	//TODO: fix the extradam stuff. Or, ebtter yet...rewrite this entire proc ~Carn
-				H.UpdateDamageIcon()
+			affecting.inflict_bodypart_damage(
+				burn = divided_damage + extradam,
+			)
 		H.update_health()
 		return 1
 	else if(istype(src, /mob/living/silicon/ai))

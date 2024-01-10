@@ -220,8 +220,9 @@
 			var/mob/living/carbon/human/H = M
 			var/obj/item/organ/external/affecting = H.get_organ(BP_HEAD)
 			if(affecting)
-				if(affecting.take_damage(0, removed * power * 0.1))
-					H.UpdateDamageIcon()
+				affecting.inflict_bodypart_damage(
+					burn = removed * power * 0.1,
+				)
 				if(prob(100 * removed / meltdose)) // Applies disfigurement
 					if (affecting.organ_can_feel_pain())
 						H.emote("scream")

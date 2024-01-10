@@ -257,10 +257,11 @@
 			return
 
 		user.visible_message("<span class='danger'>[user] stabs [target] in \the [hit_area] with [src.name]!</span>")
-
-		if(affecting.take_damage(3))
-			H.UpdateDamageIcon()
-
+		affecting.inflict_bodypart_damage(
+			brute = 3,
+			damage_mode = DAMAGE_MODE_SHARP,
+			weapon_descriptor = "a needle",
+		)
 	else
 		user.visible_message("<span class='danger'>[user] stabs [target] with [src.name]!</span>")
 		target.take_random_targeted_damage(brute = 3)// 7 is the same as crowbar punch

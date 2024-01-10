@@ -333,19 +333,6 @@
 /obj/item/organ/proc/digitize()
 	robotize()
 
-/obj/item/organ/emp_act(severity)
-	if(!(robotic >= ORGAN_ASSISTED))
-		return
-	switch (severity)
-		if (1)
-			take_damage(rand(3, 7))
-		if (2)
-			take_damage(rand(2, 6))
-		if (3)
-			take_damage(rand(1, 4))
-		if (4)
-			take_damage(rand(0, 2))
-
 /obj/item/organ/proc/removed(var/mob/living/user)
 	if(owner)
 		owner.internal_organs_by_name[organ_tag] = null
