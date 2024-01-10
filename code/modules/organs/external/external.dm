@@ -15,7 +15,6 @@
 	var/datum/local_physiology/physiology
 	/// local-ized physiology modifiers - these are always on us, even when we are mob-less
 	var/list/datum/physiology_modifier/physiology_modifiers
-	#warn hook both
 
 	//* Wounds *//
 	/// Wound datum list.
@@ -141,6 +140,7 @@
 	var/syringe_infection_queued
 
 /obj/item/organ/external/Initialize(mapload)
+	init_local_physiology()
 	. = ..(mapload, FALSE)
 	if(istype(owner))
 		replaced(owner)
@@ -295,6 +295,12 @@
 /obj/item/organ/external/replaced(var/mob/living/carbon/human/target)
 	owner = target
 	forceMove(owner)
+
+	// todo: removed() is not necessarily reliable.
+	for(var/datum/physiology_modifier/modifier as anything in owner.physiology_modifiers)
+		// todo: check biology
+		physiology.apply(modifier)
+
 	if(istype(owner))
 		owner.organs_by_name[organ_tag] = src
 		owner.organs |= src
@@ -1278,6 +1284,16 @@ Note that amputating the affected organ does in fact remove the infection from t
 	var/is_robotic = robotic >= ORGAN_ROBOT
 	var/mob/living/carbon/human/victim = owner
 
+	// todo: removed() is not necessarily reliable.
+	for(var/datum/physiology_modifier/modifier as anything in owner.physiology_modifiers)
+		// todo: check biology
+		if(!physiology.revert(modifier))
+			// todo: optimize?
+			rebuild_physiology()
+			for(var/datum/physiology_modifier/modifier as anything in owner.physiology_modifiers)
+				// todo: check biology
+				physiology.apply(modifier)
+
 	..()
 
 	victim.bad_external_organs -= src
@@ -1498,18 +1514,63 @@ Note that amputating the affected organ does in fact remove the infection from t
 		physiology.apply(modifier)
 
 /obj/item/organ/external/proc/init_local_physiology()
+	for(var/i in 1 to length(physiology_modifiers))
+		if(ispath(physiology_modifiers[i]))
+			physiology_modifiers[i] = cached_physiology_modifier(physiology_modifiers[i])
+	rebuild_physiology()
 
 /obj/item/organ/external/proc/add_local_physiology_modifier(datum/physiology_modifier/modifier)
+	if(ispath(modifier))
+		modifier = cached_physiology_modifier(modifier)
+	ASSERT(!(modifier in physiology_modifiers))
+	LAZYADD(physiology_modifiers, modifier)
+	physiology.apply(modifier)
+	return TRUE
 
 /obj/item/organ/external/proc/remove_local_physiology_modifier(datum/physiology_modifier/modifier)
+	if(ispath(modifier))
+		modifier = cached_physiology_modifier(modifier)
+	ASSERT(modifier in physiology_modifiers)
+	LAZYREMOVE(physiology_modifiers, modifier)
+	if(!physiology.revert(modifier))
+		// todo: optimize with reset().
+		rebuild_physiology()
+	return TRUE
 
 /obj/item/organ/external/vv_get_dropdown()
 	. = ..()
+	VV_DROPDOWN_OPTION(null, "-----")
+	VV_DROPDOWN_OPTION(VV_HK_ADD_PHYSIOLOGY_MODIFIER, "Add Physiology Modifier")
+	VV_DROPDOWN_OPTION(VV_HK_REMOVE_PHYSIOLOGY_MODIFIER, "Remove Physiology Modifier")
 
 /obj/item/organ/external/vv_do_topic(list/href_list)
 	. = ..()
+	if(href_list[VV_HK_ADD_PHYSIOLOGY_MODIFIER])
+		// todo: this should be able to be done globally via admin panel and then added to mobs
 
-#warn go grab shit from physiology.dm
+		var/datum/physiology_modifier/modifier = ask_admin_for_a_physiology_modifier(usr)
+
+		if(isnull(modifier))
+			return
+		if(QDELETED(src))
+			return
+
+		log_admin("[key_name(usr)] --> organ [ref(src)] - added physiology modifier [json_encode(modifier.serialize())]")
+		add_local_physiology_modifier(modifier)
+		return TRUE
+
+	if(href_list[VV_HK_REMOVE_PHYSIOLOGY_MODIFIER])
+		var/list/assembled = list()
+		var/i = 0
+		for(var/datum/physiology_modifier/modifier as anything in physiology_modifiers)
+			assembled["[modifier.name] (#[++i])"] = modifier
+		var/picked = input(usr, "Which modifier to remove? Please do not do this unless you know what you are doing.", "Remove Physiology Modifier") as null|anything in assembled
+		var/datum/physiology_modifier/removing = assembled[picked]
+		if(!(removing in physiology_modifiers))
+			return TRUE
+		log_admin("[key_name(usr)] --> organ [ref(src)] - removed physiology modifier [json_encode(removing.serialize())]")
+		remove_local_physiology_modifier(removing)
+		return TRUE
 
 // i'm not going to fucking support vv without automated backreferences and macros, holy shit.
 // /obj/item/organ/external/proc/get_varedit_physiology_modifier()

@@ -240,8 +240,6 @@ GLOBAL_LIST_EMPTY(cached_physiology_modifiers)
 // 	add_physiology_modifier(new_holder)
 // 	return new_holder
 
-#warn port all this shit to /obj/item/organ/external
-
 // todo: you can tell from the proc name that this needs to be kicked somewhere eles later.
 /proc/ask_admin_for_a_physiology_modifier(mob/user)
 	var/datum/tgui_dynamic_query/query = new
