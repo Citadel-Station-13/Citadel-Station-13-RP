@@ -17,6 +17,6 @@
 #define BIOLOGY_TYPE_PLANT (1<<5)
 
 #define BIOLOGY_TYPES_FLESHY (BIOLOGY_TYPE_HUMAN | BIOLOGY_TYPE_CHIMERA | BIOLOGY_TYPE_PLANT | BIOLOGY_TYPE_SLIME)
-#define BIOLOGY_TYPES_ALL
+#define BIOLOGY_TYPES_ALL (ALL)
 
 // todo: define bitfield (when do i rework define bitfield)
