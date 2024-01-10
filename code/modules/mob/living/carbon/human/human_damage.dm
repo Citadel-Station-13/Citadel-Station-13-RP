@@ -8,10 +8,16 @@
 	var/total_burn  = 0
 	var/total_brute = 0
 	for(var/obj/item/organ/external/O in organs)	//hardcoded to streamline things a bit
-		if((O.robotic >= ORGAN_ROBOT) && !O.vital)
-			continue //*non-vital* robot limbs don't count towards shock and crit
-		total_brute += O.brute_dam
-		total_burn  += O.burn_dam
+		if(!O.vital)
+			if(O.robotic >= ORGAN_ROBOT)
+				continue //*non-vital* robot limbs don't count towards shock and crit
+			else
+				// todo: pending med rework, we count non vital organic limbs for less damage, but not less for shock!
+				total_brute += O.brute_dam * 0.75
+				total_burn += O.burn_dam * 0.75
+		else
+			total_brute += O.brute_dam
+			total_burn  += O.burn_dam
 
 	var/old = health
 	health = getMaxHealth() - getOxyLoss() - getToxLoss() - getCloneLoss() - total_burn - total_brute

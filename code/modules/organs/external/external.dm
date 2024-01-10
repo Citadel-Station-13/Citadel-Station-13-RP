@@ -10,6 +10,11 @@
 	/// body_cover_flags that count as covering us
 	var/body_part_flags = NONE
 
+	//* Damage
+	/// https://www.desmos.com/calculator/eyn1lj5gq7
+	/// intensifier value used for inverse-damage softcap
+	var/damage_softcap_intensifier = 0
+
 	//* Physiology *//
 	/// local physiology holder
 	var/datum/local_physiology/physiology
@@ -381,11 +386,9 @@
 	// If the limbs can break, make sure we don't exceed the maximum damage a limb can take before breaking
 	// Non-vital organs are limited to max_damage. You can't kill someone by bludeonging their arm all the way to 200 -- you can
 	// push them faster into paincrit though, as the additional damage is converted into shock.
-	#warn redo math
-	var/brute_overflow = 0
-	var/burn_overflow = 0
-	if(is_damageable(TRUE))
-		if(brute)
+	if(brute)
+		var/can_inflict_brute = max_damage - brute_dam
+		if(can_inflict_brute >= brute)
 			if(can_cut)
 				if(sharp && !edge)
 					create_wound( PIERCE, brute )
@@ -393,43 +396,33 @@
 					create_wound( CUT, brute )
 			else
 				create_wound( BRUISE, brute )
-		if(burn)
-			create_wound( BURN, burn )
-	else
-		//If we can't inflict the full amount of damage, spread the damage in other ways
-		//How much damage can we actually cause?
-		var/can_inflict = max_damage - (brute_dam + burn_dam)
-		var/spillover = 0
-		if(can_inflict >= 0)
-			if (brute > 0)
-				//Inflict all burte damage we can
-				if(can_cut)
-					if(sharp && !edge)
-						create_wound( PIERCE, min(brute,can_inflict) )
-					else
-						create_wound( CUT, min(brute,can_inflict) )
+		else
+			var/overflow_brute = brute - can_inflict_brute
+			// keep allowing it, but, diminishing returns
+			can_inflict_brute = brute * (1 / ((brute_dam + damgae_softcap_intensifier) / (damgae_softcap_intensifier + max_damage)))
+			if(can_cut)
+				if(sharp && !edge)
+					create_wound( PIERCE, can_inflict_brute )
 				else
-					create_wound( BRUISE, min(brute,can_inflict) )
-				//How much more damage can we inflict
-				brute_overflow = max(0, brute - can_inflict)
-				//How much brute damage is left to inflict
-				spillover += max(0, brute - can_inflict)
-
-			can_inflict = max_damage - (brute_dam + burn_dam) //Refresh the can_inflict var, so burn doesn't overload the limb if it is set to take both.
-
-			if (burn > 0 && can_inflict)
-				//Inflict all burn damage we can
-				create_wound(BURN, min(burn,can_inflict))
-				//How much burn damage is left to inflict
-				burn_overflow = max(0, burn - can_inflict)
-				spillover += burn_overflow
-
-		//If there is pain to dispense.
-		if(spillover)
-			owner.shock_stage += spillover * 0.5
+					create_wound( CUT, can_inflict_brute )
+			else
+				create_wound( BRUISE, can_inflict_brute )
+			// rest goes into shock
+			owner.shock_stage += overflow_brute * 0.33
+	if(burn)
+		var/can_inflict_burn = max_damage - burn_dam
+		if(can_inflict_burn >= burn)
+			create_wound( BURN, burn )
+		else
+			var/overflow_burn = burn - can_inflict_burn
+			// keep allowing it, but, diminishing returns
+			can_inflict_burn = burn * (1 / ((burn_dam + damgae_softcap_intensifier) / (damgae_softcap_intensifier + max_damage)))
+			create_wound( BURN, can_inflict_burn )
+			// rest goes into shock
+			owner.shock_stage += overflow_burn * 0.33
 
 	// sync the organ's damage with its wounds
-	src.update_damages()
+	update_damages()
 
 	//If limb took enough damage, try to cut or tear it off
 	if(!(damage_mode & DAMAGE_MODE_GRADUAL) && !is_stump() && !cannot_amputate && (brute_dam + burn_dam) >= (max_damage))
