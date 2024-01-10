@@ -441,7 +441,7 @@
 		if(L.stat != DEAD)
 			e.amount *= 0.5
 	else
-		holder.clear_reagents() //No more powergaming by creating a tiny amount of this
+		holder.clear() //No more powergaming by creating a tiny amount of this
 	e.start()
 	return
 
@@ -488,7 +488,7 @@
 	// 200 created volume = 8 heavy range & 14 light range. 4 tiles larger than traitor EMP grenades.
 	empulse(location, round(created_volume / 24), round(created_volume / 20), round(created_volume / 18), round(created_volume / 14), 1)
 	if(!isliving(holder.my_atom)) //No more powergaming by creating a tiny amount of this
-		holder.clear_reagents()
+		holder.clear()
 	return
 
 /datum/chemical_reaction/nitroglycerin
@@ -508,7 +508,7 @@
 		if(L.stat!=DEAD)
 			e.amount *= 0.5
 	else
-		holder.clear_reagents() //No more powergaming by creating a tiny amount of this
+		holder.clear() //No more powergaming by creating a tiny amount of this
 	e.start()
 
 	return
@@ -544,7 +544,7 @@
 	spawn(0)
 		S.start()
 	if(!isliving(holder.my_atom)) //No more powergaming by creating a tiny amount of this
-		holder.clear_reagents()
+		holder.clear()
 	return
 
 /datum/chemical_reaction/foam
@@ -565,7 +565,7 @@
 	s.set_up(created_volume, location, holder, 0)
 	s.start()
 	if(!isliving(holder.my_atom)) //No more powergaming by creating a tiny amount of this
-		holder.clear_reagents()
+		holder.clear()
 	return
 
 /datum/chemical_reaction/metalfoam

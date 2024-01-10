@@ -283,7 +283,7 @@
 		if(water_added > 0)
 			toxins -= round(water_added/4)
 
-	temp_chem_holder.reagents.clear_reagents()
+	temp_chem_holder.reagents.clear()
 	check_health()
 
 //Harvests the product of a plant.

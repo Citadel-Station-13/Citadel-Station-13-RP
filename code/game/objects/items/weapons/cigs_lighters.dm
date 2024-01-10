@@ -208,7 +208,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			M.update_inv_l_hand(0)
 			M.update_inv_r_hand(1)
 			smoketime = 0
-			reagents.clear_reagents()
+			reagents.clear()
 			name = "empty [initial(name)]"
 
 /obj/item/clothing/mask/smokable/proc/quench()

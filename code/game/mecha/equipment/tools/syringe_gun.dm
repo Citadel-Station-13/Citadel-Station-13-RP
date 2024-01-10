@@ -136,7 +136,7 @@
 			reagents.remove_reagent(reagent)
 		return
 	if(top_filter.get("purge_all"))
-		reagents.clear_reagents()
+		reagents.clear()
 		return
 	return
 

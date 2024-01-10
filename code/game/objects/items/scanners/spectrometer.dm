@@ -41,7 +41,7 @@
 		var/list/blood_traces = list()
 		for(var/datum/reagent/R in reagents.reagent_list)
 			if(R.id != "blood")
-				reagents.clear_reagents()
+				reagents.clear()
 				to_chat(user, "<span class='warning'>The sample was contaminated! Please insert another sample</span>")
 				return
 			else
@@ -54,7 +54,7 @@
 			else
 				dat += "[R] "
 		to_chat(user, "[dat]")
-		reagents.clear_reagents()
+		reagents.clear()
 	return
 
 /obj/item/mass_spectrometer/adv

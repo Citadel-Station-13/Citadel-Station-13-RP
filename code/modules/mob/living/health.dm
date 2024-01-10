@@ -66,7 +66,7 @@
 	fire_stacks = 0
 	// clear reagents
 	// todo: only bad reagents
-	reagents?.clear_reagents()
+	reagents?.clear()
 	//! WARNING: LEGACY CODE
 	sdisabilities = 0 // ???
 	disabilities = 0 // ???

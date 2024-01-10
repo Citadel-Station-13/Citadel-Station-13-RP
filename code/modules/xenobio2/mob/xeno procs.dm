@@ -80,7 +80,7 @@ Divergence proc, used in mutation to make unique datums.
 			if(reagent_response["mut"])
 				mut_level += reagent_response["mut"] * reagent_total
 
-		temp_chem_holder.reagents.clear_reagents()
+		temp_chem_holder.reagents.clear()
 
 		return 1 //Everything worked out okay.
 

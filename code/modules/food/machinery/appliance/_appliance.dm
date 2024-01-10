@@ -297,17 +297,18 @@
 	for (var/obj/item/J in CI.container)
 		oilwork(J, CI)
 
-	for (var/r in CI.container.reagents.reagent_list)
-		var/datum/reagent/R = r
+	for (var/r in CI.container.reagents.reagent_volumes)
+		var/datum/reagent/R = SSchemistry.fetch_reagent(r)
+		var/volume = CI.container.reagents.reagent_volumes
 		if (istype(R, /datum/reagent/nutriment))
-			CI.max_cookwork += R.volume *2//Added reagents contribute less than those in food items due to granular form
+			CI.max_cookwork += volume *2//Added reagents contribute less than those in food items due to granular form
 
 			//Nonfat reagents will soak oil
 			if (!istype(R, /datum/reagent/nutriment/triglyceride))
-				CI.max_oil += R.volume * 0.25
+				CI.max_oil += volume * 0.25
 		else
-			CI.max_cookwork += R.volume
-			CI.max_oil += R.volume * 0.10
+			CI.max_cookwork += volume
+			CI.max_oil += volume * 0.10
 
 	//Rescaling cooking work to avoid insanely long times for large things
 	var/buffer = CI.max_cookwork
@@ -327,17 +328,18 @@
 	var/work = 0
 	if (istype(S))
 		if (S.reagents)
-			for (var/r in S.reagents.reagent_list)
-				var/datum/reagent/R = r
+			for (var/r in S.reagents.reagent_volumes)
+				var/volume = S.reagents.reagent_volumes[r]
+				var/datum/reagent/R = SSchemistry.fetch_reagent(r)
 				if (istype(R, /datum/reagent/nutriment))
-					work += R.volume *3//Core nutrients contribute much more than peripheral chemicals
+					work += volume *3//Core nutrients contribute much more than peripheral chemicals
 
 					//Nonfat reagents will soak oil
 					if (!istype(R, /datum/reagent/nutriment/triglyceride))
-						CI.max_oil += R.volume * 0.35
+						CI.max_oil += volume * 0.35
 				else
-					work += R.volume
-					CI.max_oil += R.volume * 0.15
+					work += volume
+					CI.max_oil += volume * 0.15
 
 
 	else if(istype(I, /obj/item/holder))

@@ -16,7 +16,7 @@
 	var/survivalfood = FALSE
 	var/nutriment_amt = 0
 	var/list/nutriment_desc = list("food" = 1)
-	var/datum/reagent/nutriment/coating/coating = null
+	var/coating_id
 	var/sealed = FALSE
 	var/custom_open_sound
 	var/open_message = "You peel open the can! It looks ready to eat!"
@@ -165,7 +165,8 @@
 
 /obj/item/reagent_containers/food/snacks/examine(mob/user, dist)
 	. = ..()
-	if (coating) // BEGIN CITADEL CHANGE
+	if (coating_id) // BEGIN CITADEL CHANGE
+		var/datum/reagent/coating = SSchemistry.fetch_reagent(coating_id)
 		. += "<span class='notice'>It's coated in [coating.name]!</span>"
 	if (bitecount==0)
 		return
@@ -3962,29 +3963,29 @@ END CITADEL CHANGE */
 //Code for dipping food in batter
 /obj/item/reagent_containers/food/snacks/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(target.is_open_container() && target.reagents && !(istype(target, /obj/item/reagent_containers/food)))
-		for (var/r in target.reagents.reagent_list)
-
-			var/datum/reagent/R = r
+		for (var/r in target.reagents.reagent_volumes)
+			var/datum/reagent/R = SSchemistry.fetch_reagent(r)
 			if (istype(R, /datum/reagent/nutriment/coating))
-				if (apply_coating(R, user))
+				if (apply_coating(target.reagents, R, user))
 					return 1
 
 	return ..()
 
 //This proc handles drawing coatings out of a container when this food is dipped into it
-/obj/item/reagent_containers/food/snacks/proc/apply_coating(var/datum/reagent/nutriment/coating/C, var/mob/user)
+/obj/item/reagent_containers/food/snacks/proc/apply_coating(datum/reagnet_holder/holder, datum/reagent/nutriment/coating/C, var/mob/user)
 	if (coating)
 		to_chat(user, "The [src] is already coated in [coating.name]!")
 		return 0
 
 	//Calculate the reagents of the coating needed
 	var/req = 0
-	for (var/r in reagents.reagent_list)
-		var/datum/reagent/R = r
+	for (var/r in reagents.reagent_volumes)
+		var/datum/reagent/R = SSchemistry.fetch_reagent(r)
+		var/volume = reagents.reagent_volumes[r]
 		if (istype(R, /datum/reagent/nutriment))
-			req += R.volume * 0.2
+			req += volume * 0.2
 		else
-			req += R.volume * 0.1
+			req += volume * 0.1
 
 	req += w_class*0.5
 
@@ -3992,7 +3993,7 @@ END CITADEL CHANGE */
 		//the food has no reagents left, its probably getting deleted soon
 		return 0
 
-	if (C.volume < req)
+	if (holder.reagent_volumes[C.id] < req)
 		to_chat(user, SPAN_WARNING( "There's not enough [C.name] to coat the [src]!"))
 		return 0
 
@@ -4004,14 +4005,9 @@ END CITADEL CHANGE */
 		reagents.maximum_volume += extra
 
 	//Suck the coating out of the holder
-	C.holder.trans_to_holder(reagents, req)
+	holder.transfer_to_holder(reagents, list(C.id), volume = req)
 
-	//We're done with C now, repurpose the var to hold a reference to our local instance of it
-	C = reagents.get_reagent(id)
-	if (!C)
-		return
-
-	coating = C
+	coating_id = C.id
 	//Now we have to do the witchcraft with masking images
 	//var/icon/I = new /icon(icon, icon_state)
 
@@ -4700,7 +4696,7 @@ END CITADEL CHANGE */
 		if (W.reagents)
 			//Reagents of reuslt objects will be the sum total of both.  Except in special cases where nonfood items are used
 			//Eg robot head
-			result.reagents.clear_reagents()
+			result.reagents.clear()
 			W.reagents.trans_to(result, W.reagents.total_volume)
 			reagents.trans_to(result, reagents.total_volume)
 
@@ -4794,7 +4790,7 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/chipplate/attack_hand(mob/user, list/params)
 	// todo: sigh, no ..(); shift over to on_attack_hand
 	var/obj/item/reagent_containers/food/snacks/returningitem = new vendingobject(loc)
-	returningitem.reagents.clear_reagents()
+	returningitem.reagents.clear()
 	reagents.trans_to_holder(returningitem.reagents, bitesize)
 	returningitem.bitesize = bitesize/2
 	user.put_in_hands(returningitem)
@@ -4843,7 +4839,7 @@ END CITADEL CHANGE */
 	else if (istype(item,/obj/item/reagent_containers/food/snacks/chip) && (item.icon_state == "chip" || item.icon_state == "chip_half"))
 		returningitem = new chiptrans(src)
 	if(returningitem)
-		returningitem.reagents.clear_reagents() //Clear the new chip
+		returningitem.reagents.clear() //Clear the new chip
 		var/memed = 0
 		item.reagents.trans_to_holder(returningitem.reagents, item.reagents.total_volume) //Old chip to new chip
 		if(item.icon_state == "chip_half")

@@ -48,7 +48,7 @@
 				for(var/datum/reagent/R in reagents.reagent_list)
 					var/total_reagent = reagents.get_reagent_amount(R.id)
 					G.reagents.add_reagent(R.id, total_reagent)
-				reagents.clear_reagents()
+				reagents.clear()
 				bottle = 0
 				update_icon()
 		else

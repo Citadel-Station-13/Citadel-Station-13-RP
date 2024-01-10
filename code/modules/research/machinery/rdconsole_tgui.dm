@@ -541,7 +541,7 @@
 		if("disposeallI") //Causes the circuit imprinter to dispose of all it's reagents.
 			if(!linked_imprinter)
 				return
-			linked_imprinter.reagents.clear_reagents()
+			linked_imprinter.reagents.clear()
 			return TRUE
 
 		if("removeI")
@@ -565,7 +565,7 @@
 		if("disposeallP") //Causes the protolathe to dispose of all it's reagents.
 			if(!linked_lathe)
 				return
-			linked_lathe.reagents.clear_reagents()
+			linked_lathe.reagents.clear()
 			return TRUE
 
 		if("removeP")

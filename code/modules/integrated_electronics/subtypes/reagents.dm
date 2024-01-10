@@ -47,7 +47,7 @@
 	spawn(0)
 		for(var/i = 1 to 8)
 			smoke_system.start()
-		reagents.clear_reagents()
+		reagents.clear()
 	activate_pin(2)
 
 /obj/item/integrated_circuit/reagent/injector

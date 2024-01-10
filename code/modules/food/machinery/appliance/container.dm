@@ -93,7 +93,7 @@
 		qdel(a)
 
 	if (reagents)
-		reagents.clear_reagents()
+		reagents.clear()
 
 /obj/item/reagent_containers/cooking_container/proc/label(var/number, var/CT = null)
 	//This returns something like "Fryer basket 1 - empty"

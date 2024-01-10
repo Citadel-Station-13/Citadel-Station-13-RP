@@ -156,11 +156,11 @@
 		return 1 //-1 value doesnt care
 
 	var/obj/item/reagent_containers/food/snacks/S = O
-	if (!S.coating)
+	if (!S.coating_id)
 		if (!coating)
 			return 1
 		return 0
-	else if (S.coating.type == coating)
+	else if (SSchemistry.fetch_reagent(S.coating_id)?.type == coating)
 		return 1
 
 	return 0

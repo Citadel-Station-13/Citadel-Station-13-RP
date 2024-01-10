@@ -14,7 +14,7 @@
 	traumatic_shock = 0
 	// clear reagents
 	// todo: only bad reagents
-	bloodstr.clear_reagents()
-	ingested.clear_reagents()
-	touching.clear_reagents()
+	bloodstr.clear()
+	ingested.clear()
+	touching.clear()
 	// todo: organs

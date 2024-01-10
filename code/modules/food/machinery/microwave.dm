@@ -370,7 +370,7 @@
 		A.forceMove(loc)
 	if (src.reagents.total_volume)
 		src.dirty++
-	src.reagents.clear_reagents()
+	src.reagents.clear()
 	if (message)
 		to_chat(usr, "<span class='notice'>You dispose of the microwave contents.</span>")
 	src.updateUsrDialog()
@@ -409,7 +409,7 @@
 			if (id)
 				amount+=O.reagents.get_reagent_amount(id)
 		qdel(O)
-	src.reagents.clear_reagents()
+	src.reagents.clear()
 	ffuu.reagents.add_reagent("carbon", amount)
 	ffuu.reagents.add_reagent("toxin", amount/10)
 	return ffuu
