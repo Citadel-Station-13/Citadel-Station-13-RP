@@ -377,18 +377,21 @@
 
 /obj/item/organ/proc/replaced(var/mob/living/carbon/human/target,var/obj/item/organ/external/affected)
 
-	if(!istype(target)) return
+	if(!istype(target))
+		return
 
-	var/datum/reagent/blood/transplant_blood = locate(/datum/reagent/blood) in reagents.reagent_list
+	var/datum/reagent/casted_type = /datum/reagent/blood
+	var/list/transplant_blood_data = reagents.reagent_datas[initial(casted_type.id)]
+
 	transplant_data = list()
 	if(!transplant_blood)
-		transplant_data["species"] =    target?.species.name
+		transplant_data["species_id"] =    target?.species.id
 		transplant_data["blood_type"] = target?.dna.b_type
 		transplant_data["blood_DNA"] =  target?.dna.unique_enzymes
 	else
-		transplant_data["species"] =    transplant_blood?.data["species"]
-		transplant_data["blood_type"] = transplant_blood?.data["blood_type"]
-		transplant_data["blood_DNA"] =  transplant_blood?.data["blood_DNA"]
+		transplant_data["species_id"] =    transplant_blood_data["species_id"]
+		transplant_data["blood_type"] = transplant_blood_data["blood_type"]
+		transplant_data["blood_DNA"] =  transplant_blood_data["blood_DNA"]
 
 	owner = target
 	loc = owner
@@ -623,7 +626,7 @@
 	// immunosuppressant that changes transplant data to make it match.
 	if(dna && can_reject)
 		if(!rejecting)
-			if(blood_incompatible(dna.b_type, owner.dna.b_type, species.name, owner.species.name)) // Process species by name.
+			if(blood_incompatible_legacy(dna.b_type, owner.dna.b_type, species.name, owner.species.name)) // Process species by name.
 				rejecting = 1
 		else
 			rejecting++ //Rejection severity increases over time.

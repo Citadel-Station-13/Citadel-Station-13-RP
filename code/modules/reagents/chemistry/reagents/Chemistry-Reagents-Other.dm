@@ -17,7 +17,7 @@
 
 /datum/reagent/adrenaline/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	entity.set_unconscious(0)
@@ -57,7 +57,7 @@
 
 /datum/reagent/ammonia/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_ALRAUNE)])
 		entity.nutrition += removed * 2 //cit change: fertilizer is waste for plants
 		return
@@ -72,7 +72,7 @@
 
 /datum/reagent/diethylamine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_ALRAUNE)])
 		entity.nutrition += removed * 5 //cit change: fertilizer is waste for plants
 		return
@@ -150,7 +150,7 @@
 
 /datum/reagent/coolant/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.isSynthetic() && ishuman(entity))
 		var/mob/living/carbon/human/H = entity
 
@@ -215,7 +215,7 @@
 
 /datum/reagent/defective_nanites/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	entity.take_organ_damage(2 * removed, 2 * removed)
 	entity.adjustOxyLoss(4 * removed)
 	entity.adjustToxLoss(2 * removed)

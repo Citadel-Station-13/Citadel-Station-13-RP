@@ -220,7 +220,7 @@
 		visible_message(SPAN_INFO("\The [src] displays a warning: 'Not enough biomass. [biomass] stored and [biomass_needed] needed.'"))
 		return FALSE
 
-	if(!loaded_dna || !loaded_dna["donor"])
+	if(!loaded_dna || !locate(loaded_dna["donor_ref"]))
 		visible_message(SPAN_INFO("\The [src] displays a warning: 'No DNA saved. Insert a blood sample.'"))
 		return FALSE
 	return TRUE
@@ -229,7 +229,7 @@
 	var/new_organ = choice
 	var/obj/item/organ/O = new new_organ(get_turf(src))
 	O.status |= ORGAN_CUT_AWAY
-	var/mob/living/carbon/human/C = loaded_dna["donor"]
+	var/mob/living/carbon/human/C = locate(loaded_dna["donor_ref"])
 	O.set_dna(C.dna)
 	O.species = C.species
 

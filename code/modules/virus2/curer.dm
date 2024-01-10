@@ -22,7 +22,7 @@
 			return
 		var/obj/item/reagent_containers/glass/beaker/product = new(src.loc)
 
-		var/list/data = list("donor"=null,"blood_DNA"=null,"blood_type"=null,"virus2"=list(),"antibodies"=list())
+		var/list/data = list("virus2"=list())
 		data["virus2"] |= I:virus2
 		product.reagents.add_reagent("blood",30,data)
 

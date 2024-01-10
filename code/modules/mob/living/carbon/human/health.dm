@@ -11,8 +11,7 @@
 	if(!.)
 		return
 	// blood
-	restore_blood()
-	fixblood()
+	assert_blood(TRUE)
 
 	// todo: this obviously doesn't respect reset_to_slot.
 	if(fix_missing || reset_to_slot)

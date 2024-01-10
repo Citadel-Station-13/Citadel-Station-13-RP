@@ -7,52 +7,37 @@
 	bloodstream_metabolism_multiplier = 5
 	mrate_static = TRUE
 	affects_dead = 1 //so you can pump blood into someone before defibbing them
-	color = "#C80000"
-	var/volume_mod = 1	// So if you add different subtypes of blood, you can affect how much vessel blood each unit of reagent adds
+	color = "#A10808"
 	blood_content = 4 //How effective this is for vampires.
 
 	glass_name = "tomato juice"
 	glass_desc = "Are you sure this is tomato juice?"
 
+	var/default_type = "O-"
+
 /datum/reagent/blood/mix_data(datum/reagent_holder/holder, list/current_data, current_amount, list/new_data, new_amount)
-	. = ..()
+	// kinda tragic, but, until rework, this is what we're stuck with
+	// just merge-replace.
+	// not like we can do otherwise anyways while still being memory-efficient
+	// sucks lol.
+	#warn deep merge virus2, antibodies list
+	return current_data | new_data
 
 /datum/reagent/blood/init_data(datum/reagent_holder/holder, amount, list/given_data)
 	. = list(
-		"blood_DNA",
-		"blood_type",
+		"blood_type" = default_type,
 		"blood_color" = "#A10808",
-		"virus2",
-		"antibodies",
-		"species" = SPECIES_HUMAN,
-		"donor",
+		"species_id" = SPECIES_ID_HUMAN,
+		"blood_name" = "blood",
 	)
+	#warn deep merge virus2, antibodies list
 	if(!isnull(given_data))
 		. |= given_data
 
+/datum/reagent/blood/contact_expose_turf(turf/target, volume, list/data, vapor)
+	blood_splatter(T, data, TRUE)
 
-/datum/reagent/blood/initialize_data(newdata)
-	..()
-	if(data && data["blood_color"])
-		color = data["blood_color"]
-	return
-
-/datum/reagent/blood/get_data() // Just in case you have a reagent that handles data differently.
-	var/t = data.Copy()
-	if(t["virus2"])
-		var/list/v = t["virus2"]
-		t["virus2"] = v.Copy()
-	return t
-
-/datum/reagent/blood/touch_turf(turf/simulated/T)
-	if(!istype(T) || volume < 3)
-		return
-	if(!data["donor"] || istype(data["donor"], /mob/living/carbon/human))
-		blood_splatter(T, src, 1)
-	else if(istype(data["donor"], /mob/living/carbon/alien))
-		var/obj/effect/debris/cleanable/blood/B = blood_splatter(T, src, 1)
-		if(B)
-			B.blood_DNA["UNKNOWN DNA STRUCTURE"] = "X*"
+#warn impl
 
 /datum/reagent/blood/affect_ingest(mob/living/carbon/M, alien, removed)
 
@@ -123,37 +108,24 @@
 
 		var/datum/reagent/blood/recipient = H.get_blood(H.vessel)
 
-		if(recipient && blood_incompatible(data["blood_type"], recipient.data["blood_type"], data["species"], recipient.data["species"]))
-			H.inject_blood(src, removed * volume_mod)
+		if(recipient && blood_incompatible_legacy(data["blood_type"], recipient.data["blood_type"], data["species"], recipient.data["species"]))
+			H.inject_blood(data, removed * volume_mod)
 
 			if(!H.isSynthetic() && data["species"] == "synthetic") // Remember not to inject oil into your veins, it's bad for you.
 				H.reagents.add_reagent("toxin", removed * 1.5)
 
 			return
 
-	M.inject_blood(src, volume * volume_mod)
+	M.inject_blood(data, volume * volume_mod)
 	remove_self(volume)
 
 /datum/reagent/blood/synthblood
 	name = "Synthetic blood"
 	id = "synthblood"
 	color = "#999966"
-	volume_mod = 2
-
-/datum/reagent/blood/synthblood/initialize_data(newdata)
-	..()
-	if(data && !data["blood_type"])
-		data["blood_type"] = "O-"
-	return
-
+	default_type = "O-"
 /datum/reagent/blood/bludbloodlight
 	name = "Synthetic blood"
 	id = "bludbloodlight"
 	color = "#999966"
-	volume_mod = 2
-
-/datum/reagent/blood/bludbloodlight/initialize_data(newdata)
-	..()
-	if(data && !data["blood_type"])
-		data["blood_type"] = "AB+"
-	return
+	default_type = "AB+"

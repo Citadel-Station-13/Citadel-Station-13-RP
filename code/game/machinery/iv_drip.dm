@@ -214,7 +214,9 @@
 				visible_message(SPAN_HEAR("[src] beeps loudly."))
 				playsound(loc, 'sound/machines/twobeep_high.ogg', 50, TRUE)
 			var/atom/movable/target = reagent_container
-			attached_victim.inject_blood(target, amount)
+			if(ishuman(attached_victim))
+				var/mob/living/carbon/human/victim = attached_victim
+				victim.transfer_blood_to_holder(target_reagents, amount = amount)
 			update_appearance()
 
 /// Called when an IV is attached.

@@ -141,8 +141,8 @@
 				var/power = fuel[I]
 				if(I == "blood")
 					var/list/data = reagents.get_data(I)
-					if(data && istype(data["donor"], /mob/living/carbon/human))
-						var/mob/living/carbon/human/H = data["donor"]
+					if(data && istype(locate(data["donor_ref"]), /mob/living/carbon/human))
+						var/mob/living/carbon/human/H = locate(data["donor_ref"])
 						if(H.mind && H.mind.ckey)
 							power *= 10
 				if(reagents.remove_reagent(I, 1))
