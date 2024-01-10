@@ -148,7 +148,7 @@
 				var/obj/item/reagent_containers/RC = I
 				if(RC.is_open_container())
 					for(var/datum/reagent/A in RC.reagents.lazy_expensive_dangerous_reagent_list())
-						.["other"][A.type] += A.volume
+						.["other"][A.type] += RC.reagents.reagent_volumes[A.id]
 			.["other"][I.type] += 1
 
 /datum/component/personal_crafting/proc/check_tools(atom/a, datum/crafting_recipe/R, list/contents)
@@ -225,102 +225,75 @@
 */
 
 /datum/component/personal_crafting/proc/del_reqs(datum/crafting_recipe/R, atom/a)
-	var/list/surroundings
-	var/list/Deletion = list()
-	. = list()
-	var/data
-	var/amt
-	main_loop:
-		for(var/A in R.reqs)
-			amt = R.reqs[A]
-			surroundings = get_environment(a, R.blacklist)
-			surroundings -= Deletion
-			if(ispath(A, /datum/reagent))
-				var/datum/reagent/RG = new A
-				var/datum/reagent/RGNT
-				while(amt > 0)
-					var/obj/item/reagent_containers/RC = locate() in surroundings
-					RG = RC.reagents.get_reagent(RG.id)
-					if(RG)
-						if(!locate(RG.type) in Deletion)
-							Deletion += new RG.type()
-						if(RG.volume > amt)
-							RG.volume -= amt
-							data = RG.data
-							RC.reagents.conditional_update(RC)
-							RG = locate(RG.type) in Deletion
-							RG.volume = amt
-							RG.data += data
-							continue main_loop
-						else
-							surroundings -= RC
-							amt -= RG.volume
-							RC.reagents.reagent_list -= RG
-							RC.reagents.conditional_update(RC)
-							RGNT = locate(RG.type) in Deletion
-							RGNT.volume += RG.volume
-							RGNT.data += RG.data
-							qdel(RG)
-						RC.on_reagent_change()
-					else
-						surroundings -= RC
-			else if(ispath(A, /obj/item/stack))
-				var/obj/item/stack/S
-				var/obj/item/stack/SD
-				while(amt > 0)
-					S = locate(A) in surroundings
-					if(S.amount >= amt)
-						if(!locate(S.type) in Deletion)
-							SD = new S.type()
-							Deletion += SD
-						S.use(amt)
-						SD = locate(S.type) in Deletion
-						SD.amount += amt
-						continue main_loop
-					else
-						amt -= S.amount
-						if(!locate(S.type) in Deletion)
-							Deletion += S
-						else
-							data = S.amount
-							S = locate(S.type) in Deletion
-							S.add(data)
-						surroundings -= S
-			else
-				var/atom/movable/I
-				while(amt > 0)
-					I = locate(A) in surroundings
-					Deletion += I
-					surroundings -= I
-					amt--
-	var/list/partlist = list(R.parts.len)
-	for(var/M in R.parts)
-		partlist[M] = R.parts[M]
-	for(var/A in R.parts)
-		if(istype(A, /datum/reagent))
-			var/datum/reagent/RG = locate(A) in Deletion
-			if(RG.volume > partlist[A])
-				RG.volume = partlist[A]
-			. += RG
-			Deletion -= RG
-			continue
-		else if(istype(A, /obj/item/stack))
-			var/obj/item/stack/ST = locate(A) in Deletion
-			if(ST.amount > partlist[A])
-				ST.amount = partlist[A]
-			. += ST
-			Deletion -= ST
-			continue
+	var/list/returning = list()
+	var/list/surroundings = get_environment(a, R.blacklist)
+	var/list/deleting = list()
+	var/list/reagents_needed = list()
+	
+	// first get non-reagent requirements
+	for(var/thing in R.reqs)
+		var/amount = R.reqs[thing]
+		if(ispath(thing, /datum/reagnet))
+			var/datum/reagent/casted_reagent = thing
+			reagents_needed[casted_reagent.id] = reagents_needed[casted_reagent.id] + amount
+		else if(ispath(thing, /obj/item/stack))
+			while(amount)
+				var/obj/item/stack/located = locate(thing) in surroundings
+				if(isnull(located))
+					break
+				var/able_to_get = min(located.amount, amount)
+				if(able_to_get == located.amount)
+					surroundings -= located
+				amount -= able_to_get
+				deleting[located] = able_to_get
+		else if(ispath(thing, /atom/movable))
+			while(amount)
+				var/atom/movable/located = locate(thing) in surroundings
+				if(isnull(located))
+					break
+				deleting += thing
+				surroundings -= thing
+				--amount
+	
+	// then drain reagents from everything around
+	for(var/obj/item/reagent_containers/container in surroundings)
+		for(var/id in reagents_needed)
+			if(container.reagents?.reagent_volumes[id])
+				reagents_needed[id] -= container.reagents.remove_reagent(id, reagents_needed[id])
+				if(!reagents_needed[id])
+					reagents_needed -= id
+	
+	// then grab parts
+	for(var/thing in R.parts)
+		var/amount = R.parts[thing]
+		if(ispath(thing, /obj/item/stack))
+			while(amount)
+				var/obj/item/stack/located = locate(thing) in surroundings
+				if(isnull(located))
+					break
+				var/obj/item/stack/split = located.split(amount)
+				if(located.amount == 0)
+					surroundings -= located
+				amount -= split.amount
+				returning += split
+		else if(ispath(thing, /atom/movable))
+			while(amount)
+				var/atom/movable/located = locate(thing) in surroundings
+				if(isnull(located))
+					break
+				returning += located
+				surroundings -= located
+
+	// finally, delete everything
+	for(var/atom/movable/thing as anything in deleting)
+		if(istype(thing, /obj/item/stack))
+			var/amount = deleting[thing]
+			var/obj/item/stack/stack = thing
+			stack.use(amount)
 		else
-			while(partlist[A] > 0)
-				var/atom/movable/AM = locate(A) in Deletion
-				. += AM
-				Deletion -= AM
-				partlist[A] -= 1
-	while(Deletion.len)
-		var/DL = Deletion[Deletion.len]
-		Deletion.Cut(Deletion.len)
-		qdel(DL)
+			qdel(thing)
+		
+	return returning
 
 /datum/component/personal_crafting/proc/component_ui_interact(source, location, control, params, user)
 	// SIGNAL_HANDLER

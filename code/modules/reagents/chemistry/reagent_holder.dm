@@ -673,7 +673,7 @@
  *
  * @return reagents transferred
  */
-/datum/reagents/proc/transfer_to_holder(datum/reagents/target, list/reagents, amount = INFINITY, copy, multiplier = 1, defer_reactions)
+/datum/reagent_holder/proc/transfer_to_holder(datum/reagents/target, list/reagents, amount = INFINITY, copy, multiplier = 1, defer_reactions)
 	. = 0
 	if(!total_volume)
 		return

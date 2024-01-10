@@ -48,7 +48,6 @@
 	reqs = list(/obj/item/handcuffs/cable = 1,
 				/obj/item/material/shard = 1,
 				/obj/item/stack/rods = 1)
-	parts = list(/obj/item/material/shard = 1)
 	time = 40
 	category = CAT_WEAPONRY
 	subcategory = CAT_MELEE
@@ -304,8 +303,6 @@
 	result = /obj/item/material/twohanded/spear
 	reqs = list(/obj/item/material/twohanded/spear = 1,
 				/obj/item/grenade = 1)
-	parts = list(/obj/item/material/twohanded/spear = 1,
-				/obj/item/grenade = 1)
 	time = 15
 	category = CAT_WEAPONRY
 	subcategory = CAT_MELEE
@@ -379,8 +376,6 @@
 	reqs = list(/obj/item/weldingtool = 1,
 				/obj/item/assembly/igniter = 1,
 				/obj/item/stack/rods = 1)
-	parts = list(/obj/item/assembly/igniter = 1,
-				/obj/item/weldingtool = 1)
 	tools = list(TOOL_SCREWDRIVER)
 	time = 10
 	category = CAT_WEAPONRY
