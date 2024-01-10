@@ -349,6 +349,10 @@
 	if(!brute && !burn)
 		return 0
 
+	// todo: this is awful
+	var/sharp = damage_mode & DAMAGE_MODE_SHARP
+	var/edge = damage_mode & DAMAGE_MODE_EDGE
+
 	// todo: lol this is shit
 	// legacy: organ damage on high damage
 	if(internal_organs && (brute_dam >= max_damage || (((sharp && brute >= 5) || brute >= 10) && prob(5))))
@@ -373,12 +377,11 @@
 	//! LEGACY BELOW
 
 	var/can_cut = (sharp) && (robotic < ORGAN_ROBOT)
-	var/sharp = damage_mode & DAMAGE_MODE_SHARP
-	var/edge = damage_mode & DAMAGE_MODE_EDGE
 
 	// If the limbs can break, make sure we don't exceed the maximum damage a limb can take before breaking
 	// Non-vital organs are limited to max_damage. You can't kill someone by bludeonging their arm all the way to 200 -- you can
 	// push them faster into paincrit though, as the additional damage is converted into shock.
+	#warn redo math
 	var/brute_overflow = 0
 	var/burn_overflow = 0
 	if(is_damageable(TRUE))

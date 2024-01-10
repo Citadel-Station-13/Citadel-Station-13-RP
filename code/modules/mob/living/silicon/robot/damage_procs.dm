@@ -23,7 +23,7 @@
 				burn -= absorb_burn
 				to_chat(src, "<font color='red'>Your shield absorbs some of the impact!</font>")
 
-	if(!emp)
+	if(!(damage_mode & DAMAGE_MODE_INTERNAL))
 		var/datum/robot_component/armour/A = get_armour()
 		if(A)
 			A.take_damage_legacy(brute,burn)
