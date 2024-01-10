@@ -158,8 +158,7 @@
 		if(targeted)
 			if(ishuman(user) && toggling == TRUE)
 				var/mob/living/carbon/human/H = user
-				if(H.ab_handler)
-					H.ab_handler.process_ability(src)
+				H.ab_handler?.process_ability(src)
 	if(!check_trigger(user, toggling, TRUE))
 		return
 	if(windup)
@@ -322,7 +321,8 @@
 /datum/ability/proc/target_check(mob/user, atom/target)
 	if(range)
 		if(get_dist(get_turf(user),get_turf(target)) <= range)
-		else return FALSE
+		else
+			return FALSE
 	if(check_trigger(user))
 		target_trigger(user,target)
 		return TRUE

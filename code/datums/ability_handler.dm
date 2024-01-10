@@ -20,9 +20,12 @@
 ///Is called by a click if there's an ability in 'current'
 /datum/ability_handler/proc/process_click(mob/user, atom/A)
 	if(current)
-		if(istype(A,target_type) && !istype(A,/atom/movable))
-			if(current.target_check(user, A))
-				current = null
-				user.client?.mouse_pointer_icon = initial(user.client.mouse_pointer_icon)
-				return TRUE
+		if(target_type && !istype(A, target_type))
+			return FALSE
+		if(A.atom_flags & ATOM_ABSTRACT)
+			return FALSE
+		if(current.target_check(user, A))
+			current = null
+			user.client?.mouse_pointer_icon = initial(user.client.mouse_pointer_icon)
+			return TRUE
 	return FALSE
