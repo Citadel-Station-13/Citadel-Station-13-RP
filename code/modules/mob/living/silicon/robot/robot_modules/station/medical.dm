@@ -93,7 +93,7 @@
 
 	var/obj/item/reagent_containers/syringe/S = locate() in src.modules
 	if(S.mode == 2)
-		S.reagents.clear_reagents()
+		S.reagents.clear()
 		S.mode = initial(S.mode)
 		S.desc = initial(S.desc)
 		S.update_icon()

@@ -178,7 +178,7 @@
 		for (var/obj/O in (container.contents-result_obj))
 			O.reagents.trans_to_obj(result_obj, O.reagents.total_volume)
 			qdel(O)
-	container.reagents.clear_reagents()
+	container.reagents.clear()
 	return result_obj
 
 // food-related

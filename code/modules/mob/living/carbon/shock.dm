@@ -15,7 +15,7 @@
 	1.2	* src.getShockBruteLoss() + 		\
 	1.7	* src.getCloneLoss() + 		\
 	2	* src.halloss + 			\
-	-1	* src.chem_effects[CHEMICAL_EFFECT_PAINKILLER]
+	-1	* src.reagent_cycle_effects[CHEMICAL_EFFECT_PAINKILLER]
 
 	if(src.slurring)
 		src.traumatic_shock -= 20

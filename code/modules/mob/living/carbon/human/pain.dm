@@ -12,7 +12,7 @@
 // power decides how much painkillers will stop the message
 // force means it ignores anti-spam timer
 /mob/living/carbon/custom_pain(message, power, force)
-	if(!message || stat || !can_feel_pain() || chem_effects[CHEMICAL_EFFECT_PAINKILLER] > power)
+	if(!message || stat || !can_feel_pain() || reagent_cycle_effects[CHEMICAL_EFFECT_PAINKILLER] > power)
 		return 0
 	message = "<span class='danger'>[message]</span>"
 	if(power >= 50)
@@ -44,7 +44,7 @@
 		if(dam > maxdam && (maxdam == 0 || prob(70)) )
 			damaged_organ = E
 			maxdam = dam
-	if(damaged_organ && chem_effects[CHEMICAL_EFFECT_PAINKILLER] < maxdam)
+	if(damaged_organ && reagent_cycle_effects[CHEMICAL_EFFECT_PAINKILLER] < maxdam)
 		if(maxdam > 10 && is_unconscious())
 			adjust_unconscious(20 * -round(maxdam/10))
 		if(maxdam > 50 && prob(maxdam / 5))

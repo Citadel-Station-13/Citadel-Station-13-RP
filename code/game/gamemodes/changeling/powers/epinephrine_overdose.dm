@@ -58,11 +58,9 @@
 	
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-	M.add_chemical_effect(CHEMICAL_EFFECT_SPEEDBOOST, 3)
-	M.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 60)
-	M.adjustHalLoss(-30)
-	M.adjust_unconscious(20 * -2)
-	M.adjust_stunned(20 * -2)
-	M.adjust_paralyzed(20 * -2)
-	..()
-	return
+	entity.add_chemical_effect(CHEMICAL_EFFECT_SPEEDBOOST, 3)
+	entity.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 60)
+	entity.adjustHalLoss(-30)
+	entity.adjust_unconscious(20 * -2)
+	entity.adjust_stunned(20 * -2)
+	entity.adjust_paralyzed(20 * -2)

@@ -865,8 +865,7 @@
 		if(istype(A, /datum/reagent))
 			if(!reagents)
 				reagents = new()
-			reagents.reagent_list.Add(A)
-			reagents.conditional_update()
+			reagents.add_reagent(A, parts_list[A])
 		else if(ismovable(A))
 			var/atom/movable/M = A
 			M.forceMove(src)

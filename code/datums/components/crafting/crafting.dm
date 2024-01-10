@@ -233,7 +233,7 @@
 	// first get non-reagent requirements
 	for(var/thing in R.reqs)
 		var/amount = R.reqs[thing]
-		if(ispath(thing, /datum/reagnet))
+		if(ispath(thing, /datum/reagent))
 			var/datum/reagent/casted_reagent = thing
 			reagents_needed[casted_reagent.id] = reagents_needed[casted_reagent.id] + amount
 		else if(ispath(thing, /obj/item/stack))

@@ -24,10 +24,6 @@
 	var/datum/surgery_status/op_stage = new/datum/surgery_status
 	//Active emote/pose
 	var/pose = null
-	
-	#warn uhh
-	var/datum/reagent_holder/metabolism/bloodstream/bloodstr = null
-	var/datum/reagent_holder/metabolism/ingested/ingested = null
 
 	var/pulse = PULSE_NORM	//current pulse level
 

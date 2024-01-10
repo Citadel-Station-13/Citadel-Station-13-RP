@@ -18,7 +18,7 @@
  * You should never mix this with the other ways of compounding, for the same effect.
  */
 /mob/living/carbon/proc/max_reagent_cycle_effect(effect, magnitude)
-	reagent_cycle_effects[effect] = max(reagent_cycle_effects[effects], magnitude)
+	reagent_cycle_effects[effect] = max(reagent_cycle_effects[effect], magnitude)
 
 /**
  * Compounds CHEMICAL_EFFECT_* for this cycle via max(). 
@@ -26,7 +26,7 @@
  * You should never mix this with the other ways of compounding, for the same effect.
  */
 /mob/living/carbon/proc/multiply_reagent_cycle_effect(effect, magnitude)
-	reagent_cycle_effects[effect] = (reagent_cycle_effects[effects] || 1) * magnitude
+	reagent_cycle_effects[effect] = (reagent_cycle_effects[effect] || 1) * magnitude
 
 /**
  * Clear cycle effects to start a new cycle.

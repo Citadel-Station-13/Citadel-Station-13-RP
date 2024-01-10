@@ -25,8 +25,8 @@
 	C.radiation = 0
 	C.sdisabilities = 0
 	C.disabilities = 0
-	C.reagents.clear_reagents()
-	C.ingested.clear_reagents()
+	C.reagents_bloodstream.clear()
+	C.reagents_ingested.clear()
 
 
 	var/heal_amount = 5

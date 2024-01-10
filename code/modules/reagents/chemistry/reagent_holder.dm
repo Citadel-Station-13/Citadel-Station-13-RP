@@ -117,6 +117,9 @@
 
 	attached?.on_reagent_change()
 
+/**
+ * Remove this amount of volume from the holder, equally from all reagents in holder.
+ */
 /datum/reagent_holder/proc/remove_any(amount)
 	if(amount >= total_volume)
 		for(var/id in reagent_volumes)
@@ -133,6 +136,9 @@
 	attached?.on_reagent_change()
 	return amount
 
+/**
+ * Clear all reagents that aren't the given reagent.
+ */
 /datum/reagent_holder/proc/isolate_reagent(datum/reagent/reagentlike)
 	// we only care about id
 	if(ispath(reagentlike))
@@ -151,6 +157,9 @@
 		consider_reactions()
 		attached?.on_reagent_change()
 
+/**
+ * Clear all reagents.
+ */
 /datum/reagent_holder/proc/clear()
 	return remove_any(total_volume)
 
