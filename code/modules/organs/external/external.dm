@@ -424,8 +424,13 @@
 	// sync the organ's damage with its wounds
 	update_damages()
 
+	// break it if needed
+	// todo: shit code lmao
+	if(brute_dam > min_broken_damage && prob((brute * ((min_broken_damage - brute_dam) / min_broken_damage)) * 1.5))
+		fracture()
+
 	//If limb took enough damage, try to cut or tear it off
-	if(!(damage_mode & DAMAGE_MODE_GRADUAL) && !is_stump() && !cannot_amputate && (brute_dam + burn_dam) >= (max_damage))
+	if(!(damage_mode & DAMAGE_MODE_GRADUAL) && !is_stump() && !cannot_amputate && ((brute_dam > max_damage) || (burn_dam > max_damage)))
 		//organs can come off in three cases
 		//1. If the damage source is edge_eligible and the brute damage dealt exceeds the edge threshold, then the organ is cut off.
 		//2. If the damage amount dealt exceeds the disintegrate threshold, the organ is completely obliterated.
@@ -848,10 +853,6 @@ Note that amputating the affected organ does in fact remove the infection from t
 	//things tend to bleed if they are CUT OPEN
 	if (open && !clamped && (H && H.should_have_organ(O_HEART)))
 		status |= ORGAN_BLEEDING
-
-	//Bone fractures
-	if(brute_dam > min_broken_damage && !(robotic >= ORGAN_ROBOT))
-		src.fracture()
 
 	update_health()
 
