@@ -389,8 +389,10 @@ This function restores all organs.
 				if(!isnull(M.incoming_brute_damage_percent))
 					damage *= M.incoming_brute_damage_percent
 
-			if(organ.take_damage(damage, 0, sharp, edge, used_weapon))
-				UpdateDamageIcon()
+			organ.inflict_bodypart_damage(
+				brute = damage,
+				damage_mode = (edge? DAMAGE_MODE_EDGE : NONE) | (sharp? DAMAGE_MODE_SHARP : NONE),
+				weapon_descriptor = used_weapon),
 		if(BURN)
 			damageoverlaytemp = 20
 			damage = damage*species.burn_mod
@@ -401,8 +403,10 @@ This function restores all organs.
 				if(!isnull(M.incoming_brute_damage_percent))
 					damage *= M.incoming_fire_damage_percent
 
-			if(organ.take_damage(0, damage, sharp, edge, used_weapon))
-				UpdateDamageIcon()
+			organ.inflict_bodypart_damage(
+				burn = damage,
+				damage_mode = (edge? DAMAGE_MODE_EDGE : NONE) | (sharp? DAMAGE_MODE_SHARP : NONE),
+				weapon_descriptor = used_weapon),
 
 	// Will set our damageoverlay icon to the next level, which will then be set back to the normal level the next mob.Life().
 	update_health()
