@@ -1302,7 +1302,7 @@
 "Xt" = (
 /obj/structure/closet/emcloset,
 /obj/structure/cable,
-/obj/machinery/power/apc/critical/west_bump,
+/obj/machinery/power/apc/critical/west_mount,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/space)
 "Xv" = (

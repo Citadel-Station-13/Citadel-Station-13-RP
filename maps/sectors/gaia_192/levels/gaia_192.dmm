@@ -6896,7 +6896,6 @@
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
 	frequency = 1380;
 	id_tag = "gaia_1";
-	layer = 3.3;
 	name = "Gaia Dock Controller";
 	pixel_y = 30
 	},

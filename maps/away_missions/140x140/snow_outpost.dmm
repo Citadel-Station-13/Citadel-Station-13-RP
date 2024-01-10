@@ -59,11 +59,7 @@
 /turf/simulated/floor/tiled/old_tile/white,
 /area/awaymission/snow_outpost/powered)
 "am" = (
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 24
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/machinery/washing_machine,
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
@@ -196,12 +192,7 @@
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
 "aK" = (
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_x = 0;
-	pixel_y = 28
-	},
+/obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
 	temperature = 80
@@ -265,12 +256,7 @@
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
 "aX" = (
-/obj/machinery/firealarm{
-	dir = 2;
-	layer = 3.3;
-	pixel_x = 0;
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/north_mount,
 /mob/living/simple_mob/humanoid/merc/ranged/ionrifle,
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
@@ -314,12 +300,7 @@
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
 "bg" = (
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_x = 0;
-	pixel_y = 28
-	},
+/obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
 "bh" = (
@@ -327,11 +308,7 @@
 /turf/simulated/floor/plating/external,
 /area/awaymission/snow_outpost/dark)
 "bi" = (
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 24
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	icon_state = "intact";
 	dir = 10
@@ -487,12 +464,7 @@
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
 "bJ" = (
-/obj/machinery/firealarm{
-	dir = 2;
-	layer = 3.3;
-	pixel_x = 0;
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/north_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4;
 	icon_state = "intact"
@@ -516,11 +488,7 @@
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
 "bM" = (
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 24
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/machinery/atmospherics/component/unary/vent_scrubber{
 	dir = 8
 	},
@@ -895,9 +863,8 @@
 /turf/simulated/floor,
 /area/awaymission/snow_outpost/powered)
 "dl" = (
-/obj/machinery/power/apc{
-	operating = 0;
-	pixel_x = 31
+/obj/machinery/power/apc/south_mount{
+	operating = 0
 	},
 /turf/simulated/floor,
 /area/awaymission/snow_outpost/powered)
@@ -1557,10 +1524,8 @@
 /turf/simulated/floor/plating,
 /area/awaymission/snow_outpost/outside/nospawn)
 "fo" = (
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "BSD APC";
-	pixel_x = -24
+/obj/machinery/power/apc/west_mount{
+	name = "BSD APC"
 	},
 /turf/simulated/floor/tiled/yellow,
 /area/awaymission/snow_outpost/powered)
@@ -2392,7 +2357,6 @@
 	pixel_y = 0
 	},
 /obj/machinery/vending/wallmed1{
-	layer = 3.3;
 	name = "Emergency NanoMed";
 	pixel_x = 28;
 	pixel_y = 0

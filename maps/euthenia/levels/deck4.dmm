@@ -685,7 +685,7 @@
 /area/rnd/research/testingrange)
 "cX" = (
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/maintenance/deck_four/forward)
 "cY" = (
@@ -956,7 +956,7 @@
 /area/rnd/research)
 "dR" = (
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/machinery/power/apc/direction_bump/east,
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -1152,7 +1152,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/anomaly_lab/containment_two)
 "eC" = (
@@ -2039,8 +2039,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -2179,7 +2178,7 @@
 	desc = "A large cabinet with drawers. They seem to be ominously empty.";
 	name = "Classified Science Records"
 	},
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -2194,7 +2193,6 @@
 "iE" = (
 /obj/machinery/mineral/processing_unit_console{
 	density = 0;
-	layer = 3.3;
 	pixel_y = 30
 	},
 /obj/machinery/conveyor_switch/oneway{
@@ -2710,7 +2708,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/gravity_gen)
 "kn" = (
-/obj/machinery/power/apc/direction_bump/south,
+/obj/machinery/power/apc/south_mount,
 /obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_four/forward/port)
@@ -3018,8 +3016,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /obj/structure/cable/green{
@@ -3222,7 +3219,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green,
-/obj/machinery/power/apc/direction_bump/west,
+/obj/machinery/power/apc/west_mount,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/gravity_gen)
 "mi" = (
@@ -3487,7 +3484,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/obj/machinery/power/apc/direction_bump/south,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -3764,7 +3761,6 @@
 "oy" = (
 /obj/machinery/mineral/processing_unit_console{
 	density = 0;
-	layer = 3.3;
 	pixel_y = 30
 	},
 /obj/effect/floor_decal/industrial/warning{
@@ -4563,7 +4559,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_four/forward)
 "rt" = (
@@ -4881,7 +4877,7 @@
 /obj/structure/cable/orange{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/super/south_bump,
+/obj/machinery/power/apc/super/south_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/main_map/maintenance/deck_four/aft/port)
 "sD" = (
@@ -5113,7 +5109,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/direction_bump/east,
+/obj/machinery/power/apc/east_mount,
 /turf/simulated/floor/tiled/monotile,
 /area/exploration/explorer_prep)
 "tH" = (
@@ -5270,8 +5266,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /obj/structure/cable/green{
@@ -5846,7 +5841,7 @@
 /area/main_map/maintenance/deck_four/forward)
 "wr" = (
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/machinery/power/apc/direction_bump/west,
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green,
 /turf/simulated/floor/wood,
 /area/tether/exploration/pathfinder_office)
@@ -6115,7 +6110,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 4;
 	id = "PubPrep";
-	layer = 3.3;
 	name = "Gateway Access Shutters"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -6171,10 +6165,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/maintenance/deck_four/aft/starboard)
 "xB" = (
-/obj/machinery/firealarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/east_mount,
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
@@ -6266,7 +6257,7 @@
 /turf/simulated/floor/reinforced/overhang,
 /area/main_map/maintenance/deck_four/forward/port)
 "ya" = (
-/obj/machinery/power/apc/direction_bump/south,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -6524,7 +6515,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 4;
 	id = "PubPrep";
-	layer = 3.3;
 	name = "Gateway Access Shutters"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -6541,7 +6531,7 @@
 /area/gateway)
 "za" = (
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -7270,7 +7260,7 @@
 /obj/machinery/atmospherics/mains_pipe/simple/hidden{
 	dir = 4
 	},
-/obj/machinery/power/apc/direction_bump/south,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -7419,11 +7409,7 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 1
 	},
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 28
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/closet/crate/bin{
 	anchored = 1
 	},
@@ -7565,7 +7551,7 @@
 /area/main_map/maintenance/deck_four/starboard)
 "CF" = (
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/machinery/power/apc/direction_bump/south,
+/obj/machinery/power/apc/south_mount,
 /turf/simulated/floor/tiled,
 /area/main_map/maintenance/deck_four)
 "CG" = (
@@ -7585,7 +7571,7 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 1
 	},
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -8221,7 +8207,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/anomaly_lab/containment_one)
 "ER" = (
@@ -8946,7 +8932,7 @@
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/main_map/maintenance/deck_four/starboard)
 "HX" = (
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north_mount,
 /obj/map_helper/network_builder/power_cable/green/auto,
 /obj/structure/cable/green{
 	icon_state = "0-4"
@@ -9007,7 +8993,7 @@
 /area/main_map/maintenance/deck_four/aft)
 "Ik" = (
 /obj/structure/cable/green,
-/obj/machinery/power/apc/critical/west_bump,
+/obj/machinery/power/apc/critical/west_mount,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
@@ -9017,7 +9003,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
-/obj/machinery/power/apc/high/east_bump,
+/obj/machinery/power/apc/high/east_mount,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/gravity_gen)
 "Io" = (
@@ -9093,7 +9079,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/direction_bump/east,
+/obj/machinery/power/apc/east_mount,
 /turf/simulated/floor/tiled,
 /area/engineering/aft_hallway)
 "IF" = (
@@ -9405,7 +9391,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/cable/green,
-/obj/machinery/power/apc/direction_bump/east,
+/obj/machinery/power/apc/east_mount,
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/miningdock)
 "JD" = (
@@ -10294,7 +10280,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/miningdock)
 "Ne" = (
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -11038,7 +11024,7 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "PS" = (
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/carpet/bcarpet,
 /area/library/study)
 "PU" = (
@@ -12246,7 +12232,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/gateway)
 "Uf" = (
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -12836,7 +12822,7 @@
 /area/main_map/maintenance/deck_four/aft)
 "WI" = (
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -13281,7 +13267,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/direction_bump/west,
+/obj/machinery/power/apc/west_mount,
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/telescience_lab/foyer)
 "Yp" = (
@@ -13333,7 +13319,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/tiled,
 /area/rnd/research/testingrange)
 "Yw" = (
