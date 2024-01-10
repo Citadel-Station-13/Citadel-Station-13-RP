@@ -283,7 +283,7 @@ var/list/sacrificed = list()
 			for(var/obj/item/organ/E in H.bad_external_organs)
 				var/obj/item/organ/external/affected = E
 				// fix bones
-				if((affected.damage < affected.min_broken_damage * config_legacy.organ_health_multiplier) && (affected.status & ORGAN_BROKEN))
+				if((affected.damage < affected.min_broken_damage) && (affected.status & ORGAN_BROKEN))
 					affected.status &= ~ORGAN_BROKEN
 				// fix IB
 				affected.cure_specific_wound(/datum/wound/internal_bleeding, all = TRUE)

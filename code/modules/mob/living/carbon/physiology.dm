@@ -30,5 +30,3 @@
 		for(var/datum/physiology_modifier/modifier as anything in physiology_modifiers)
 			// todo: check biology
 			bodypart.physiology.apply(modifier)
-
-#warn impl all

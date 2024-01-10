@@ -51,6 +51,7 @@
 	/// Damage before becoming broken
 	var/min_broken_damage = 30
 	/// Damage cap
+	/// For external organs / bodyparts, this is actually both brute and burn separate, so, you can have for 50 max damage 50 brute and 50 burn.
 	var/max_damage
 	/// Can this organ reject?
 	var/can_reject = TRUE
