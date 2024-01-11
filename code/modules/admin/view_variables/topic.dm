@@ -497,8 +497,8 @@
 			return
 
 		switch(Text)
-			if("brute")	amount > 0? L.take_overall_damage(brute = amount) : L.heal_overall_damage(brute = amount)
-			if("fire")	amount > 0? L.take_overall_damage(burn = amount) : L.heal_overall_damage(burn = amount)
+			if("brute")	amount > 0? L.take_overall_damage(brute = amount) : L.heal_overall_damage(brute = -amount)
+			if("fire")	amount > 0? L.take_overall_damage(burn = amount) : L.heal_overall_damage(burn = -amount)
 			if("toxin")	L.adjustToxLoss(amount)
 			if("oxygen")L.adjustOxyLoss(amount)
 			if("brain")	L.adjustBrainLoss(amount)

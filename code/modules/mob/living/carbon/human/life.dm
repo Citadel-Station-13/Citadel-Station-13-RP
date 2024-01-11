@@ -717,15 +717,14 @@
 				)
 			if(bodytemperature > species.heat_discomfort_level && !(H.species.get_species_id() == SPECIES_ID_PROTEAN))
 				if(world.time >= last_synthcooling_message || last_synthcooling_message == 0)
+					last_synthcooling_message = world.time + 60 SECONDS
 					if(src.nutrition <= 25) // do they have enough energy for this?
 						to_chat(src, "<font color='red' face='fixedsys'>Warning: Temperature at critically high levels.</font>")
 						to_chat(src, "<font color='red' face='fixedsys'>Warning: Power critical. Unable to deploy cooling systems.</font>")
-						return
 					else
 						to_chat(src, "<font color='red' face='fixedsys'>Warning: Temperature at critically high levels.</font>")
 						add_modifier(/datum/modifier/synthcooling, 15 SECONDS) // enable cooling systems at cost of energy
 						adjust_nutrition(-25)
-					last_synthcooling_message = world.time + 60 SECONDS
 
 	var/absolute_pressure = isnull(environment)? 0 : environment.return_pressure()
 	var/affecting_pressure = calculate_affecting_pressure(absolute_pressure)
@@ -756,7 +755,7 @@
 		var/thermal_insulation
 
 		var/nominal = species.body_temperature || T20C
-		var/to_nominal = nominal - environment_temperature
+		var/to_nominal = nominal - bodytemperature
 		var/is_stabilizing = (to_nominal > 0? 1 : -1) == (difference > 0? 1 : -1)
 
 		var/adjust = is_stabilizing? \
@@ -865,8 +864,6 @@
 		else
 			pressure_alert = -1
 
-	return
-
 /*
 /mob/living/carbon/human/proc/adjust_body_temperature(current, loc_temp, boost)
 	var/temperature = current
@@ -895,6 +892,10 @@
  * * dt - seconds for this cycle
  */
 /mob/living/carbon/human/proc/stabilize_body_temperature(dt)
+	if(isnull(loc))
+		// okay we should probably like
+		// not.
+		return
 
 	var/buffer = bodytemperature
 
