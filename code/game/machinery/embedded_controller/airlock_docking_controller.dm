@@ -84,28 +84,26 @@
 
 //tell the docking port to start getting ready for docking - e.g. pressurize
 /datum/computer/file/embedded_program/docking/airlock/prepare_for_docking()
-	airlock_program.begin_dock_cycle()
+	return 0
 
 //are we ready for docking?
 /datum/computer/file/embedded_program/docking/airlock/ready_for_docking()
-	return !airlock_program || airlock_program.done_cycling()
+	return 0
 
 //we are docked, open the doors or whatever.
 /datum/computer/file/embedded_program/docking/airlock/finish_docking()
 	airlock_program.enable_mech_regulation()
 	airlock_program.open_doors()
 
+// TODO IMPLEMENT THESE procs that return 0
+
 //tell the docking port to start getting ready for undocking - e.g. close those doors.
 /datum/computer/file/embedded_program/docking/airlock/prepare_for_undocking()
-	airlock_program.stop_cycling()
-	airlock_program.close_doors()
-	airlock_program.disable_mech_regulation()
+	return 0
 
 //are we ready for undocking?
 /datum/computer/file/embedded_program/docking/airlock/ready_for_undocking()
-	var/ext_closed = airlock_program.check_exterior_door_secured()
-	var/int_closed = airlock_program.check_interior_door_secured()
-	return (ext_closed || int_closed)
+	return 0
 
 ///////////////////////////////////////////////////////////////////////////////
 //An airlock controller to be used by the airlock-based docking port controller.
@@ -127,10 +125,6 @@
 /datum/computer/file/embedded_program/airlock/docking/proc/open_doors()
 	toggleDoor(memory["interior_status"], tag_interior_door, memory["secure"], "open")
 	toggleDoor(memory["exterior_status"], tag_exterior_door, memory["secure"], "open")
-
-/datum/computer/file/embedded_program/airlock/docking/cycleDoors(var/target)
-	if (master_prog.undocked() || master_prog.override_enabled)	//only allow the port to be used as an airlock if nothing is docked here or the override is enabled
-		..(target)
 
 /*** DEBUG VERBS ***
 
