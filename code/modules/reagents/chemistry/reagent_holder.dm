@@ -1,13 +1,13 @@
 /datum/reagent_holder
 	//* core *//
-	
+
 	/// what atom we're attached to, if any
 	var/atom/attached
 	/// reagent holder flags - see [code/__DEFINES/reagents/flags.dm]
 	var/reagent_holder_flags = NONE
 
 	//* Reactions *//
-	
+
 	/// ongoing reactions
 	var/list/datum/chemical_reaction/ongoing_reactions
 	/// assoc list [key] = [value]: if any reagent id in this list is fully removed,
@@ -25,14 +25,14 @@
 	/// volumes; id = volume
 	var/list/reagent_volumes = list()
 	/// datas; id = list(...)
-	/// 
+	///
 	/// lazy-list, because only some reagents have data.
 	var/list/reagent_datas
-	
+
 	//* Reagents - Metabolism *//
-	
+
 	/// id = metabolism datum
-	/// 
+	///
 	/// lazy-list, because only mobs have this.
 	var/list/reagent_metabolism
 
@@ -66,9 +66,9 @@
 
 /**
  * please do not specify force_data unless you know what you are doing.
- * 
+ *
  * defer_recalc implies defer_reactions.
- * 
+ *
  * @return amount added
  */
 /datum/reagent_holder/proc/add_reagent(datum/reagent/reagentlike, amount, temperature, defer_reactions, defer_recalc, list/force_data)
@@ -78,15 +78,15 @@
 		reagentlike = initial(reagentlike.id)
 	else if(!istext(reagentlike))
 		reagentlike = reagentlike.id
-		
+
 	var/datum/reagent/resolved = SSchemistry.fetch_reagent(reagentlike)
 	var/id = resolved.id
 
 	amount = min(amount, maximum_volume - total_volume)
-	
+
 	if(amount <= 0)
 		return 0
-	
+
 	var/existing_amount = reagent_volumes[id]
 
 	#warn temperature
@@ -98,17 +98,17 @@
 		force_data = resolved.init_data(src, amount, force_data)
 		LAZYSET(reagent_datas, id, force_data)
 		reagent_volumes[id] = amount
-	
+
 	if(!defer_recalc)
 		update_total()
 		if(!defer_reactions)
 			consider_reactions()
-	
+
 	attached?.on_reagent_change()
-	
+
 /**
  * defer_recalc implies defer_reactions
- * 
+ *
  * @return amount removed
  */
 /datum/reagent_holder/proc/remove_reagent(datum/reagent/reagentlike, amount, defer_reactions, defer_recalc)
@@ -144,13 +144,13 @@
 		reagentlike = initial(reagentlike.id)
 	else if(!istext(reagentlike))
 		reagentlike = reagentlike.id
-	
+
 	. = 0
 
 	for(var/id in reagent_volumes)
 		if(id != reagentlike)
 			. += remove_reagent(id, defer_recalc = TRUE)
-	
+
 	if(.)
 		update_total()
 		consider_reactions()
@@ -176,7 +176,7 @@
 		reagentlike = initial(reagentlike.id)
 	else if(!istext(reagentlike))
 		reagentlike = reagentlike.id
-	
+
 	return reagent_volumes[reagentlike] >= amount
 
 /**
@@ -197,7 +197,7 @@
 
 /**
  * input can be associated to an amount.
- * 
+ *
  * @return TRUE / FALSE
  */
 /datum/reagent_holder/proc/has_all_reagents(list/reagents)
@@ -214,7 +214,7 @@
 
 /**
  * input can be associated to an amount.
- * 
+ *
  * @return first valid id will be returned, or null on fail.
  */
 /datum/reagent_holder/proc/has_any_reagent(list/reagents)
@@ -257,6 +257,24 @@
 
 	return rgb(colors[1] / tot_w, colors[2] / tot_w, colors[3] / tot_w, colors[4] / tot_w)
 
+//* Data *//
+
+/**
+ * direct list set. do not use on reference types.
+ */
+/datum/reagent_holder/proc/set_reagent_data_key_value(datum/reagent/reagentlike, key. value)
+	if(ispath(reagentlike))
+		reagentlike = initial(reagentlike.id)
+	else if(!istext(reagentlike))
+		reagentlike = reagentlike.id
+	ASSERT(reagent_volumes[reagentlike])
+	if(isnull(reagent_datas[reagentlike]))
+		reagent_datas[reagentlike] = list(
+			(key) = value,
+		)
+	else
+		reagent_datas[reagentlike][key] = value
+
 //* Get *//
 
 /datum/reagent_holder/proc/maximum_reagent_id()
@@ -283,7 +301,7 @@
 
 /**
  * @return list(reagent datum instance = volume)
- * 
+ *
  * returned instances **ARE IMMUTABLE.**
  */
 /datum/reagent_holder/proc/lazy_expensive_dangerous_reagent_list()

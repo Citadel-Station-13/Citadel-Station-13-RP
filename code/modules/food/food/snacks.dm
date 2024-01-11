@@ -4032,7 +4032,7 @@ END CITADEL CHANGE */
 
 //Called by cooking machines. This is mainly intended to set properties on the food that differ between raw/cooked
 /obj/item/reagent_containers/food/snacks/proc/cook()
-	if (coating)
+	if (coating_id)
 		var/list/temp = overlays.Copy()
 		for (var/i in temp)
 			if (istype(i, /image))
@@ -4047,6 +4047,7 @@ END CITADEL CHANGE */
 		if (!flat_icon)
 			flat_icon = get_flat_icon(src)
 		var/icon/I = flat_icon
+		var/datum/reagent/coating = SSchemistry.fetch_reagent(coating_id)
 		color = "#FFFFFF" //Some fruits use the color var
 		I.Blend(new /icon('icons/obj/food_custom.dmi', rgb(255,255,255)),ICON_ADD)
 		I.Blend(new /icon('icons/obj/food_custom.dmi', coating.icon_cooked),ICON_MULTIPLY)
