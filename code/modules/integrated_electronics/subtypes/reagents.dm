@@ -106,6 +106,7 @@
 			push_data()
 
 /obj/item/integrated_circuit/reagent/injector/proc/inject()
+	#warn reagents_bloodstream
 	set waitfor = FALSE // Don't sleep in a proc that is called by a processor without this set, otherwise it'll delay the entire thing
 	var/atom/movable/AM = get_pin_data_as_type(IC_INPUT, 1, /atom/movable)
 	var/atom/movable/acting_object = get_object()

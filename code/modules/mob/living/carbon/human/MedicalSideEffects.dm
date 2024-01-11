@@ -10,10 +10,10 @@
 
 /datum/medical_effect/proc/manifest(mob/living/carbon/human/H)
 	for(var/R in cures)
-		if(H.reagents.has_reagent(R))
+		if(H.reagents_bloodstream.has_reagent(R))
 			return 0
 	for(var/R in triggers)
-		if(H.reagents.get_reagent_amount(R) >= triggers[R])
+		if(H.reagents_bloodstream.get_reagent_amount(R) >= triggers[R])
 			return 1
 	return 0
 
@@ -22,7 +22,7 @@
 
 /datum/medical_effect/proc/cure(mob/living/carbon/human/H)
 	for(var/R in cures)
-		if(H.reagents.has_reagent(R))
+		if(H.reagents_bloodstream.has_reagent(R))
 			if (cure_message)
 				to_chat(H, "<font color=#4F49AF>[cure_message]</font>")
 			return 1

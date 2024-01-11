@@ -159,7 +159,7 @@
 			return
 
 		if(weedlevel > 0)
-			nymph.reagents.add_reagent("glucose", weedlevel)
+			nymph.reagents_bloodstream.add_reagent("glucose", weedlevel)
 			weedlevel = 0
 			nymph.visible_message("<font color=#4F49AF><b>[nymph]</b> begins rooting through [src], ripping out weeds and eating them noisily.</font>","<font color=#4F49AF>You begin rooting through [src], ripping out weeds and eating them noisily.</font>")
 		else if(nymph.nutrition > 100 && nutrilevel < 10)
@@ -238,7 +238,8 @@
 //Process reagents being input into the tray.
 /obj/machinery/portable_atmospherics/hydroponics/proc/process_reagents()
 
-	if(!reagents) return
+	if(!reagents)
+		return
 
 	if(reagents.total_volume <= 0)
 		return

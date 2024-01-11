@@ -283,28 +283,28 @@
 	..()
 
 /proc/blood_incompatible_legacy(donor_bloodtype, receiver_bloodtype, donor_species_id, receiver_species_id)
-	if(!donor || !receiver)
-		return 0
+	if(!donor_bloodtype || !receiver_bloodtype)
+		return FALSE
+	if(donor_species_id && receiver_species_id && (donor_species_id != receiver_species_id))
+		return TRUE
 
-	if(donor_species && receiver_species)
-		if(donor_species != receiver_species)
-			return 1
+	var/donor_antigen = copytext(donor_bloodtype, 1, length(donor_bloodtype))
+	var/receiver_antigen = copytext(receiver_bloodtype, 1, length(receiver_bloodtype))
+	var/donor_rh = donor_bloodtype[length(donor_bloodtype)] == "+"
+	var/receiver_rh = receiver_bloodtype[length(receiver_bloodtype)] == "+"
 
-	var/donor_antigen = copytext(donor,1,length(donor))
-	var/receiver_antigen = copytext(receiver,1,length(receiver))
-	var/donor_rh = (findtext(donor,"+")>0)
-	var/receiver_rh = (findtext(receiver,"+")>0)
+	if(donor_rh && !receiver_rh)
+		return TRUE
 
-	if(donor_rh && !receiver_rh) return 1
 	switch(receiver_antigen)
 		if("A")
-			if(donor_antigen != "A" && donor_antigen != "O") return 1
+			return donor_antigen != "A" && donor_antigen != "O"
+		if("AB")
 		if("B")
-			if(donor_antigen != "B" && donor_antigen != "O") return 1
+			return donor_antigen != "B" && donor_antigen != "O"
 		if("O")
-			if(donor_antigen != "O") return 1
-		//AB is a universal receiver.
-	return 0
+			return donor_antigen != "O"
+	return FALSE
 
 /proc/blood_splatter(target, source, large)
 	var/turf/where = get_turf(target)

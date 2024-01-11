@@ -1,16 +1,14 @@
 /mob/living/carbon/Initialize(mapload)
 	. = ..()
 	//setup reagent holders
-	bloodstr = new/datum/reagent_holder/metabolism/bloodstream(500, src)
-	ingested = new/datum/reagent_holder/metabolism/ingested(500, src)
-	touching = new/datum/reagent_holder/metabolism/touch(500, src)
-	reagents = bloodstr
+	reagents_bloodstream = new /datum/reagent_holder/metabolism/bloodstream(500, src)
+	reagents_ingested = new /datum/reagent_holder/metabolism/ingested(500, src)
 	if (!default_language && species_language)
 		default_language = SScharacters.resolve_language_name(species_language)
 
 /mob/living/carbon/Destroy()
-	qdel(ingested)
-	qdel(touching)
+	QDEL_NULL(reagents_bloodstream)
+	QDEL_NULL(reagents_ingested)
 	// We don't qdel(bloodstr) because it's the same as qdel(reagents)
 	for(var/guts in internal_organs)
 		qdel(guts)
@@ -250,18 +248,6 @@
 	playsound(src.loc, 'sound/misc/slip.ogg', 50, 1, -3)
 	afflict_paralyze(20 * FLOOR(stun_duration/2, 1))
 	return 1
-
-/mob/living/carbon/proc/add_chemical_effect(var/effect, var/magnitude = 1)
-	if(effect in chem_effects)
-		chem_effects[effect] += magnitude
-	else
-		chem_effects[effect] = magnitude
-
-/mob/living/carbon/proc/ceiling_chemical_effect(var/effect, var/magnitude = 1)
-	if(effect in chem_effects)
-		chem_effects[effect] = max(magnitude, chem_effects[effect])
-	else
-		chem_effects[effect] = magnitude
 
 /mob/living/carbon/get_default_language()
 	if(default_language)

@@ -13,6 +13,10 @@
 	glass_name = "tomato juice"
 	glass_desc = "Are you sure this is tomato juice?"
 
+	ingested_overdose_threshold = 5
+	ingested_overdose_metabolism_multiplier = 2
+	ingested_overdose_toxin_scaling = 0.25
+
 	var/default_type = "O-"
 
 /datum/reagent/blood/mix_data(datum/reagent_holder/holder, list/current_data, current_amount, list/new_data, new_amount)
@@ -35,38 +39,29 @@
 		. |= given_data
 
 /datum/reagent/blood/contact_expose_turf(turf/target, volume, list/data, vapor)
-	blood_splatter(T, data, TRUE)
+	blood_splatter(target, data, TRUE)
 
-#warn impl
-
-/datum/reagent/blood/affect_ingest(mob/living/carbon/M, alien, removed)
-
-	var/effective_dose = dose
-	if(issmall(M)) effective_dose *= 2
+/datum/reagent/blood/on_metabolize_ingested(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed, obj/item/organ/internal/container)
+	. = ..()
 
 	// Treat it like nutriment for the jello, but not equivalent.
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		/// Unless it's Promethean goo, then refill this one's goo.
-		if(data["species"] == M.species.name)
-			M.inject_blood(src, volume * volume_mod)
-			remove_self(volume)
-			return
+		if(data["species_id"] == entity.species.id)
+			// shitcode, but only blood does this, generally
+			entity.inject_blood(data, entity.reagents_ingested.reagent_volumes[id])
+			return entity.reagents_ingested.reagent_volumes[id]
 
-		M.heal_organ_damage(0.2 * removed * volume_mod, 0)	// More 'effective' blood means more usable material.
-		M.nutrition += 20 * removed * volume_mod
-		M.add_chemical_effect(CHEMICAL_EFFECT_BLOODRESTORE, 4 * removed)
-		M.adjustToxLoss(removed / 2) // Still has some water in the form of plasma.
+		entity.heal_organ_damage(0.2 * removed, 0.2 * removed)
+		entity.adjust_nutrition(20 * removed)
+		entity.add_reagent_cycle_effect(CHEMICAL_EFFECT_BLOODRESTORE, 4 * removed)
+		entity.adjustToxLoss(removed / 2)
 		return
 
+	#warn below
 	var/is_vampire = M.species.is_vampire
 	if(is_vampire)
 		handle_vampire(M, alien, removed, is_vampire)
-	if(effective_dose > 5)
-		if(!is_vampire)
-			M.adjustToxLoss(removed)
-	if(effective_dose > 15)
-		if(!is_vampire)
-			M.adjustToxLoss(removed)
 	if(data && data["virus2"])
 		var/list/vlist = data["virus2"]
 		if(vlist.len)

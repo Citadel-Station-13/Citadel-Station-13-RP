@@ -118,17 +118,17 @@
 
 	if(iscarbon(M))
 		var/mob/living/carbon/C = M
-		if(C.reagents.total_volume)
+		if(C.reagents_bloodstream.total_volume)
 			var/unknown = 0
 			var/reagentdata[0]
 			var/unknownreagents[0]
-			for(var/A in C.reagents.reagent_list)
+			for(var/A in C.reagents_bloodstream.reagent_list)
 				var/datum/reagent/R = A
 				if(R.scannable)
-					reagentdata["[R.id]"] = SPAN_NOTICE("\n[round(C.reagents.get_reagent_amount(R.id), 1)]u [R.name]")
+					reagentdata["[R.id]"] = SPAN_NOTICE("\n[round(C.reagents_bloodstream.get_reagent_amount(R.id), 1)]u [R.name]")
 				else
 					unknown++
-					unknownreagents["[R.id]"] =  SPAN_NOTICE("\n[round(C.reagents.get_reagent_amount(R.id), 1)]u [R.name]")
+					unknownreagents["[R.id]"] =  SPAN_NOTICE("\n[round(C.reagents_bloodstream.get_reagent_amount(R.id), 1)]u [R.name]")
 			if(reagentdata.len)
 				dat += SPAN_NOTICE("\nBeneficial reagents detected in subject's blood:")
 				for(var/d in reagentdata)
