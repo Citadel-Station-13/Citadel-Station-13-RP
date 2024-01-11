@@ -72,7 +72,7 @@
 	if(hyposound)
 		playsound(src, hyposound, 25)
 
-	if(H.reagents)
+	if(H.reagents_bloodstream)
 		var/contained = reagentlist()
 		var/trans = reagents.trans_to_mob(H, amount_per_transfer_from_this, REAGENT_APPLY_INJECT)
 		add_attack_logs(user,H,"Injected with [src.name] containing [contained], trasferred [trans] units")

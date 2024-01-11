@@ -104,7 +104,7 @@
 					if(istype(T, /mob/living/carbon/human))
 						var/mob/living/carbon/human/H = T
 						if(H.species && !H.should_have_organ(O_HEART))
-							H.reagents.trans_to_obj(src, amount)
+							H.reagents_bloodstream.trans_to_obj(src, amount)
 						else
 							if(ismob(H) && H != user)
 								if(!do_mob(user, target, time))

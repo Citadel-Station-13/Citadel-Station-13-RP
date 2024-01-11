@@ -79,7 +79,7 @@
 			to_chat(user, "<span class='warning'>Disable the cryogenic freezing first!</span>")
 			return
 		grown_seed = H.seed
-		grown_reagents = H.reagents
+		grown_reagents = H.reagents_bloodstream
 
 	if(!grown_seed)
 		to_chat(user, "<span class='danger'>[src] can tell you nothing about \the [target].</span>")

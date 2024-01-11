@@ -107,7 +107,7 @@
 			H.inject_blood(data, removed * volume_mod)
 
 			if(!H.isSynthetic() && data["species"] == "synthetic") // Remember not to inject oil into your veins, it's bad for you.
-				H.reagents.add_reagent("toxin", removed * 1.5)
+				H.reagents_bloodstream.add_reagent("toxin", removed * 1.5)
 
 			return
 

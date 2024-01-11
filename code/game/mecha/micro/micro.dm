@@ -55,11 +55,11 @@
 						if("fire")
 							update |= temp.take_damage(0, rand(force/2, force))
 						if("tox")
-							if(H.reagents)
-								if(H.reagents.get_reagent_amount("carpotoxin") + force < force*2)
-									H.reagents.add_reagent("carpotoxin", force)
-								if(H.reagents.get_reagent_amount("cryptobiolin") + force < force*2)
-									H.reagents.add_reagent("cryptobiolin", force)
+							if(H.reagents_bloodstream)
+								if(H.reagents_bloodstream.get_reagent_amount("carpotoxin") + force < force*2)
+									H.reagents_bloodstream.add_reagent("carpotoxin", force)
+								if(H.reagents_bloodstream.get_reagent_amount("cryptobiolin") + force < force*2)
+									H.reagents_bloodstream.add_reagent("cryptobiolin", force)
 						else
 							return
 					if(update)	H.UpdateDamageIcon()

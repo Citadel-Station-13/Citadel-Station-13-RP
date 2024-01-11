@@ -48,7 +48,7 @@
 	H.emote("me", 1, "starts turning very red..")
 
 /datum/genetics/side_effect/genetic_burn/finish(mob/living/carbon/human/H)
-	if(!H.reagents.has_reagent("dexalin"))
+	if(!H.reagents_bloodstream.has_reagent("dexalin"))
 		for(var/organ_name in BP_ALL)
 			var/obj/item/organ/external/E = H.get_organ(organ_name)
 			E.take_damage(0, 5, 0)
@@ -64,7 +64,7 @@
 		H.emote("me", 1, "'s limbs start shivering uncontrollably.")
 
 /datum/genetics/side_effect/bone_snap/finish(mob/living/carbon/human/H)
-	if(!H.reagents.has_reagent("bicaridine"))
+	if(!H.reagents_bloodstream.has_reagent("bicaridine"))
 		var/organ_name = pick(BP_ALL)
 		var/obj/item/organ/external/E = H.get_organ(organ_name)
 		E.take_damage(20, 0, 0)
@@ -81,7 +81,7 @@
 		H.emote("me", 1, "has drool running down from [H.gender == MALE ? "his" : H.gender == FEMALE ? "her" : "their"] mouth.")
 
 /datum/genetics/side_effect/monkey/finish(mob/living/carbon/human/H)
-		if(!H.reagents.has_reagent("anti_toxin"))
+		if(!H.reagents_bloodstream.has_reagent("anti_toxin"))
 			H.monkeyize()**/
 
 /datum/genetics/side_effect/confuse
@@ -96,5 +96,5 @@
 	H.emote("me", 1, "has drool running down from [T.his] mouth.")
 
 /datum/genetics/side_effect/confuse/finish(mob/living/carbon/human/H)
-	if(!H.reagents.has_reagent("anti_toxin"))
+	if(!H.reagents_bloodstream.has_reagent("anti_toxin"))
 		H.Confuse(100)

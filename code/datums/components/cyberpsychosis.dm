@@ -53,9 +53,9 @@ Initial Design Goals (X = Complete, / = WIP):
 
 /datum/component/cyberpsychosis/proc/update_medication()
 	var/mob/living/carbon/human/H = parent
-	if(!medicated && H.reagents.has_reagent("neuratrextate", 1))
+	if(!medicated && H.reagents_bloodstream.has_reagent("neuratrextate", 1))
 		medicated = 1
-	if(medicated && !H.reagents.has_reagent("neuratrextate", 1))
+	if(medicated && !H.reagents_bloodstream.has_reagent("neuratrextate", 1))
 		medicated = 0
 
 //Dynamically changing the Capacity of a cyberware user isn't really working out.

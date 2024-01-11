@@ -302,8 +302,8 @@
 			occupantData["blood"] = bloodData
 
 			var/reagentData[0]
-			if(!H.reagents.is_empty())
-				for(var/datum/reagent/R in H.reagents.lazy_expensive_dangerous_reagent_list())
+			if(!H.reagents_bloodstream.is_empty())
+				for(var/datum/reagent/R in H.reagents_bloodstream.lazy_expensive_dangerous_reagent_list())
 					reagentData[++reagentData.len] = list("name" = R.name, "amount" = R.volume)
 			else
 				reagentData = null

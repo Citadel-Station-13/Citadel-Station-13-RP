@@ -204,7 +204,7 @@
 	if(!syringe)
 		return
 
-	if(H.reagents)
+	if(H.reagents_bloodstream)
 		syringe.reagents.trans_to_mob(H, 30, REAGENT_APPLY_INJECT)
 
 /obj/structure/closet/body_bag/cryobag/examine(mob/user, dist)

@@ -65,7 +65,7 @@
 
 		if(reagents.total_volume)
 			to_chat(H, "<span class='danger'>You feel a prick as you slip on \the [src].</span>")
-			if(H.reagents)
+			if(H.reagents_bloodstream)
 				var/contained = reagents.get_reagents()
 				var/trans = reagents.trans_to_mob(H, 15, REAGENT_APPLY_INJECT)
 				add_attack_logs(usr, H, "Injected with [name] containing [contained] transferred [trans] units")

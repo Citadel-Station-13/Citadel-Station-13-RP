@@ -14,11 +14,11 @@
 
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-		
+
 	var/chem_effective = 1
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		chem_effective = 0.75
-	
+
 	entity.heal_organ_damage(8 * removed * chem_effective)
 
 /datum/reagent/calciumcarbonate
@@ -84,7 +84,7 @@
 
 /datum/reagent/earthsblood/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	var/chem_effective = 1
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_ALRAUNE)])
 		chem_effective = 1.1 //Plant to Plant Restoration
@@ -117,7 +117,7 @@
 
 /datum/reagent/numbing_enzyme/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	entity.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 200)//Similar to Oxycodone
 	if(prob(0.01)) //1 in 10000 chance per tick. Extremely rare.
 		to_chat(entity,"<span class='warning'>Your body feels numb as a light, tingly sensation spreads throughout it, like some odd warmth.</span>")
@@ -162,7 +162,7 @@
 
 /datum/reagent/synaptizine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	var/chem_effective = 1
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
@@ -193,7 +193,7 @@
 
 /datum/reagent/hyperzine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_TAJARAN)])
 		removed *= 1.25
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
@@ -217,7 +217,7 @@
 
 /datum/reagent/alkysine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	var/chem_effective = 1
@@ -241,7 +241,7 @@
 
 /datum/reagent/imidazoline/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	entity.eye_blurry = max(entity.eye_blurry - 5, 0)
 	entity.AdjustBlinded(-5)
 	if(ishuman(entity))
@@ -266,7 +266,7 @@
 
 /datum/reagent/peridaxon/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(ishuman(entity))
 		var/mob/living/carbon/human/H = entity
 		for(var/obj/item/organ/I in H.internal_organs)
@@ -294,7 +294,7 @@
 
 /datum/reagent/nanoperidaxon/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(ishuman(entity))
 		var/mob/living/carbon/human/H = entity
 		for(var/obj/item/organ/I in H.internal_organs)
@@ -320,7 +320,7 @@
 
 /datum/reagent/osteodaxon/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	entity.heal_organ_damage(3 * removed, 0)	//Gives the bones a chance to set properly even without other meds
@@ -344,7 +344,7 @@
 
 /datum/reagent/myelamine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	entity.eye_blurry += min(entity.eye_blurry + (repair_strength * removed), 250)
@@ -376,7 +376,7 @@
 
 /datum/reagent/respirodaxon/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	var/repair_strength = 1
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		repair_strength = 0.6
@@ -408,7 +408,7 @@
 
 /datum/reagent/gastirodaxon/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	var/repair_strength = 1
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		repair_strength = 0.6
@@ -440,7 +440,7 @@
 
 /datum/reagent/hepanephrodaxon/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	var/repair_strength = 1
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		repair_strength = 0.4
@@ -474,7 +474,7 @@
 
 /datum/reagent/cordradaxon/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	var/repair_strength = 1
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		repair_strength = 0.6
@@ -502,7 +502,7 @@
 
 /datum/reagent/immunosuprizine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	var/strength_mod = 1
 
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])	// It's a tree.
@@ -539,7 +539,7 @@
 					I.rejecting = 0
 					I.can_reject = FALSE
 
-		if(H.reagents.has_reagent("spaceacillin") || H.reagents.has_reagent("corophizine"))	// Chemicals that increase your immune system's aggressiveness make this chemical's job harder.
+		if(H.reagents_bloodstream.has_reagent("spaceacillin") || H.reagents_bloodstream.has_reagent("corophizine"))	// Chemicals that increase your immune system's aggressiveness make this chemical's job harder.
 			for(var/obj/item/organ/I in organtotal)
 				if(I.transplant_data)
 					var/rejectmem = I.can_reject
@@ -560,7 +560,7 @@
 
 /datum/reagent/skrellimmuno/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	var/strength_mod = 0.5
 
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_SKRELL)])
@@ -585,7 +585,7 @@
 					I.rejecting = 0
 					I.can_reject = FALSE
 
-		if(H.reagents.has_reagent("spaceacillin") || H.reagents.has_reagent("corophizine"))
+		if(H.reagents_bloodstream.has_reagent("spaceacillin") || H.reagents_bloodstream.has_reagent("corophizine"))
 			for(var/obj/item/organ/I in organtotal)
 				if(I.transplant_data)
 					var/rejectmem = I.can_reject
@@ -605,7 +605,7 @@
 
 /datum/reagent/ryetalyn/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	var/needs_update = entity.mutations.len > 0
 
 	entity.mutations = list()
@@ -654,7 +654,7 @@
 
 /datum/reagent/ethylredoxrazine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	entity.dizziness = 0
@@ -680,7 +680,7 @@
 
 /datum/reagent/hyronalin/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	entity.cure_radiation(RAD_MOB_CURE_STRENGTH_HYRONALIN(removed))
@@ -697,7 +697,7 @@
 
 /datum/reagent/arithrazine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	entity.cure_radiation(RAD_MOB_CURE_STRENGTH_ARITHRAZINE(removed))
@@ -719,7 +719,7 @@
 
 /datum/reagent/spaceacillin/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		if(volume <= 0.1 && data != -1)
 			data = -1
@@ -747,7 +747,7 @@
 
 /datum/reagent/corophizine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	entity.add_chemical_effect(CHEMICAL_EFFECT_ANTIBIOTIC, ANTIBIO_SUPER)
 
 	var/mob/living/carbon/human/H = entity
@@ -816,7 +816,7 @@
 
 /datum/reagent/spacomycaze/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	entity.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 10)
 	entity.adjustToxLoss(3 * removed)
 
@@ -861,7 +861,7 @@
 
 /datum/reagent/sterilizine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		entity.adjustFireLoss(removed)
 		entity.adjustToxLoss(2 * removed)
@@ -908,7 +908,7 @@
 
 /datum/reagent/leporazine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	if(entity.bodytemperature > 310)
@@ -927,7 +927,7 @@
 
 /datum/reagent/rezadone/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	var/mob/living/carbon/human/H = entity
@@ -979,7 +979,7 @@
 
 /datum/reagent/methylphenidate/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	if(volume <= 0.1 && data != -1)
@@ -1004,7 +1004,7 @@
 
 /datum/reagent/citalopram/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	if(volume <= 0.1 && data != -1)
@@ -1029,7 +1029,7 @@
 
 /datum/reagent/paroxetine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	if(volume <= 0.1 && data != -1)
@@ -1054,7 +1054,7 @@
 
 /datum/reagent/adranol/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	if(entity.confused)
@@ -1078,7 +1078,7 @@
 
 /datum/reagent/qerr_quem/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	if(volume <= 0.1 && data != -1)
@@ -1103,7 +1103,7 @@
 
 /datum/reagent/healing_nanites/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	entity.heal_organ_damage(2 * removed, 2 * removed)
 	entity.adjustOxyLoss(-4 * removed)
 	entity.adjustToxLoss(-2 * removed)
@@ -1120,7 +1120,7 @@
 
 /datum/reagent/ickypak/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	entity.make_dizzy(1)
 	entity.adjustHalLoss(2)
 
@@ -1145,7 +1145,7 @@
 
 /datum/reagent/unsorbitol/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	entity.make_dizzy(1)
 	entity.adjustHalLoss(1)
 	if(!entity.confused) entity.confused = 1
@@ -1178,7 +1178,7 @@
 
 /datum/reagent/nif_repair_nanites/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(ishuman(entity))
 		var/mob/living/carbon/human/H = entity
 		if(H.nif)
