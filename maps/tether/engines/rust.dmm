@@ -369,11 +369,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "bj" = (
@@ -959,11 +955,7 @@
 /obj/machinery/camera/network/engine{
 	dir = 8
 	},
-/obj/machinery/firealarm{
-	dir = 4;
-	layer = 3.3;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "cG" = (
@@ -1021,7 +1013,6 @@
 "cO" = (
 /obj/machinery/door/blast/regular{
 	id = "EngineEmitterPortWest";
-	layer = 3.3;
 	name = "Engine Gas Storage"
 	},
 /obj/machinery/door/firedoor/glass,
@@ -1224,11 +1215,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/closet/radiation,
 /obj/item/clothing/glasses/meson,
 /obj/item/clothing/glasses/meson,
@@ -1237,8 +1224,7 @@
 "dp" = (
 /obj/effect/floor_decal/industrial/outline/blue,
 /obj/machinery/portable_atmospherics/canister/phoron,
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /turf/simulated/floor,
@@ -1276,7 +1262,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/blast/regular{
 	id = "EngineEmitterPortWest";
-	layer = 3.3;
 	name = "Engine Gas Storage"
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -1288,7 +1273,6 @@
 	},
 /obj/machinery/door/blast/regular{
 	id = "EngineEmitterPortWest";
-	layer = 3.3;
 	name = "Engine Gas Storage"
 	},
 /obj/machinery/button/remote/blast_door{
@@ -1350,7 +1334,6 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/blast/regular{
 	id = "EngineEmitterPortWest";
-	layer = 3.3;
 	name = "Engine Gas Storage"
 	},
 /turf/simulated/floor,

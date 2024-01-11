@@ -970,7 +970,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 						if("2")		// Eject pAI device
 							var/turf/T = get_turf_or_move(src.loc)
 							if(T)
-								pai.loc = T
+								pai.forceMove(T)
 								pai = null
 
 		else
@@ -1084,7 +1084,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 				M.put_in_hands(O)
 				to_chat(usr, "<span class='notice'>You remove \the [O] from \the [src].</span>")
 				return
-		O.loc = get_turf(src)
+		O.forceMove(get_turf(src))
 	else
 		to_chat(usr, "<span class='notice'>This PDA does not have a pen in it.</span>")
 

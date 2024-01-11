@@ -17,9 +17,8 @@
 /turf/simulated/floor/plating/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "cc" = (
-/obj/machinery/power/apc/alarms_hidden{
-	cell_type = /obj/item/cell/high/empty;
-	pixel_x = 28
+/obj/machinery/power/apc/alarms_hidden/south_mount{
+	cell_type = /obj/item/cell/high/empty
 	},
 /obj/structure/cable/cyan{
 	dir = 4

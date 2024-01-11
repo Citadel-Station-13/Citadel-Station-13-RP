@@ -1,3 +1,12 @@
+
+/**
+ * Linter check, do not call.
+ */
+/proc/lint__check_mob_logout_doesnt_sleep()
+	SHOULD_NOT_SLEEP(TRUE)
+	var/mob/M
+	M.Logout()
+
 /mob/Logout()
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_MOB_CLIENT_LOGOUT, client)

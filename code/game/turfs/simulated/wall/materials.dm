@@ -52,25 +52,33 @@
 /turf/simulated/wall/proc/update_materials()
 	if(material_reinf)
 		construction_stage = 6
-		name = "reinforced [material_outer.display_name] wall"
-		desc = "It seems to be a section of hull reinforced with [material_reinf.display_name] and plated with [material_outer.display_name]."
-	else if(material_outer)
-		construction_stage = null
-		name = "[material_outer.display_name] wall"
-		desc = "It seems to be a section of hull plated with [material_outer.display_name]."
 	else
 		construction_stage = null
-		name = "wall"
-		desc = "It seems to be a section of hull."
 
-	var/integrity_factor = (isnull(material_outer)? 1 : material_outer.relative_integrity) * 0.75
-	integrity_factor += (isnull(material_girder)? 1 : material_girder.relative_integrity) * 0.25
-	integrity_factor += (isnull(material_reinf)? 0 : material_reinf.relative_integrity) * 0.5
+
+	if(!isnull(material_reinf))
+		icon = material_reinf.icon_reinf
+	else if(!isnull(material_outer))
+		icon = material_outer.icon_base
+	else
+		icon = 'icons/turf/walls/solid_wall.dmi'
+
+	stripe_icon = material_outer.wall_stripe_icon
+	material_color = material_outer.icon_colour
+
+
+	var/integrity_factor = (material_outer ? material_outer.relative_integrity : 1) * 0.75
+	integrity_factor += (material_girder ? material_girder.relative_integrity : 1) * 0.25
+	integrity_factor += (material_reinf ? material_reinf.relative_integrity : 0) * 0.5
+
 
 	set_multiplied_integrity(integrity_factor, FALSE)
 
-	var/datum/armor/grabbed = SSmaterials.wall_materials_armor(list((material_girder) = MATERIAL_SIGNIFICANCE_WALL_GIRDER, (material_reinf) = MATERIAL_SIGNIFICANCE_WALL_REINF, (material_outer) = MATERIAL_SIGNIFICANCE_WALL))
-	set_armor(grabbed)
+	set_armor(SSmaterials.wall_materials_armor(list(
+		(material_girder) = MATERIAL_SIGNIFICANCE_WALL_GIRDER,
+		(material_reinf) = MATERIAL_SIGNIFICANCE_WALL_REINF,
+		(material_outer) = MATERIAL_SIGNIFICANCE_WALL)
+	))
 
 	rad_insulation = 1 / ((material_girder?.density * 0.1 + material_outer?.density * 1.2 + material_reinf?.density * 0.5) / 8 * 1.7)
 

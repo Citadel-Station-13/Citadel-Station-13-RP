@@ -1967,6 +1967,9 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Engineering Atmos EVA"
 	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
+/area/engineering/atmos/workshop
+	name = "\improper Atmospherics Workshop"
+
 /area/engineering/drone_fabrication
 	name = "\improper Engineering Drone Fabrication"
 	icon_state = "drone_fab"
@@ -2702,6 +2705,8 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/quartermaster/garage
 	name = "\improper Cargo Garage"
 
+/area/quartermaster/cargo_shelter_dock
+	name = "\improper Cargo Shuttle Dock"
 // SCIENCE
 
 /area/rnd

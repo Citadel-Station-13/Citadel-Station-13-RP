@@ -321,7 +321,7 @@
 		e_args.performer.put_in_hands_or_drop(obj_cell_slot.remove_cell(e_args.performer))
 		return TRUE
 
-//? Cells / Inducers
+//* Cells / Inducers *//
 
 /**
  * get cell slot
@@ -338,7 +338,7 @@
 	if(!isnull(obj_cell_slot?.cell) && !obj_cell_slot.primary && obj_cell_slot.receive_inducer)
 		things_to_induce += obj_cell_slot.cell
 
-//? Climbing
+//* Climbing *//
 
 /obj/MouseDroppedOn(atom/dropping, mob/user, proximity, params)
 	if(drag_drop_climb_interaction(user, dropping))
@@ -470,7 +470,7 @@
 			H.update_health()
 	*/
 
-//? Context
+//* Context *//
 
 /obj/context_query(datum/event_args/actor/e_args)
 	. = ..()
@@ -507,14 +507,14 @@
 		return TRUE
 	return ..()
 
-//? EMP
+//* EMP *//
 
 /obj/emp_act(severity)
 	. = ..()
 	if(obj_cell_slot?.receive_emp)
 		obj_cell_slot?.cell?.emp_act(severity)
 
-//? Hiding / Underfloor
+//* Hiding / Underfloor *//
 
 /obj/proc/is_hidden_underfloor()
 	return FALSE
@@ -522,7 +522,7 @@
 /obj/proc/should_hide_underfloor()
 	return FALSE
 
-//* Examine
+//* Examine *//
 
 /obj/examine(mob/user, dist)
 	. = ..()
@@ -552,7 +552,29 @@
 		else
 			. += SPAN_BOLDWARNING("It's falling apart!")
 
-//* Resists
+//* Orientation *//
+
+/**
+ * Standard wallmount orientation: face away
+ */
+/obj/proc/auto_orient_wallmount_single()
+	for(var/dir in GLOB.cardinal)
+		if(get_step(src, dir)?.get_wallmount_anchor())
+			setDir(turn(dir, 180))
+			return
+
+/**
+ * Standard wallmount orientation: face away
+ * 
+ * Directly sets dir without setDir()
+ */
+/obj/proc/auto_orient_wallmount_single_preinit()
+	for(var/dir in GLOB.cardinal)
+		if(get_step(src, dir)?.get_wallmount_anchor())
+			src.dir = turn(dir, 180)
+			return
+
+//* Resists *//
 
 /**
  * called when something tries to resist out from inside us.
@@ -625,7 +647,7 @@
 	animate(src, transform=turn(matrix(), 8*shake_dir), pixel_x=init_px + 2*shake_dir, time=1)
 	animate(transform=null, pixel_x=init_px, time=6, easing=ELASTIC_EASING)
 
-//? Tool System
+//* Tool System *//
 
 /obj/dynamic_tool_query(obj/item/I, datum/event_args/actor/clickchain/e_args, list/hint_images = list())
 	if(isnull(obj_cell_slot) || !obj_cell_slot.remove_tool_behavior || !obj_cell_slot.interaction_active(e_args.performer))

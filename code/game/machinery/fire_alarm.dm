@@ -1,7 +1,8 @@
 /*
 FIRE ALARM
 */
-/obj/machinery/firealarm
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/fire_alarm, 21)
+/obj/machinery/fire_alarm
 	name = "fire alarm"
 	desc = "<i>\"Pull this in case of emergency\"</i>. Thus, keep pulling it forever."
 	icon = 'icons/obj/firealarm.dmi'
@@ -25,36 +26,21 @@ FIRE ALARM
 	/// If the alarms from this machine are visible on consoles.
 	var/alarms_hidden = FALSE
 
-/obj/machinery/firealarm/alarms_hidden
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/fire_alarm/alarms_hidden, 21)
+/obj/machinery/fire_alarm/alarms_hidden
 	alarms_hidden = TRUE
 
-/obj/machinery/firealarm/preloading_dir(datum/map_preloader/preloader)
+/obj/machinery/fire_alarm/preloading_dir(datum/map_preloader/preloader)
 	dir = turn(dir, -preloader.turn_angle)
 	return FALSE
 
-/obj/machinery/firealarm/north
-	dir = NORTH
-	pixel_y = -21
-
-/obj/machinery/firealarm/south
-	dir = SOUTH
-	pixel_y = 21
-
-/obj/machinery/firealarm/east
-	dir = EAST
-	pixel_x = 21
-
-/obj/machinery/firealarm/west
-	dir = WEST
-	pixel_x = -21
-
-/obj/machinery/firealarm/Initialize(mapload)
+/obj/machinery/fire_alarm/Initialize(mapload)
 	. = ..()
 	if(z in (LEGACY_MAP_DATUM).contact_levels)
 		set_security_level(GLOB.security_level ? get_security_level() : "green")
 	setDir(dir)
 
-/obj/machinery/firealarm/setDir(ndir)
+/obj/machinery/fire_alarm/setDir(ndir)
 	. = ..()
 	base_pixel_x = 0
 	base_pixel_y = 0
@@ -64,12 +50,12 @@ FIRE ALARM
 		if(SOUTH)
 			base_pixel_y = 21
 		if(WEST)
-			base_pixel_x = -21
-		if(EAST)
 			base_pixel_x = 21
+		if(EAST)
+			base_pixel_x = -21
 	reset_pixel_offsets()
 
-/obj/machinery/firealarm/update_icon()
+/obj/machinery/fire_alarm/update_icon()
 	cut_overlays()
 	add_overlay("casing")
 
@@ -130,24 +116,24 @@ FIRE ALARM
 					add_overlay(alarm_img2)
 					set_light(l_range = 4, l_power = 0.9, l_color = "#FF6633")
 
-/obj/machinery/firealarm/fire_act(datum/gas_mixture/air, temperature, volume)
+/obj/machinery/fire_alarm/fire_act(datum/gas_mixture/air, temperature, volume)
 	if(detecting)
 		if(temperature > T0C + 200)
 			alarm()			// added check of detector status here
 	return
 
-/obj/machinery/firealarm/attack_ai(mob/user)
+/obj/machinery/fire_alarm/attack_ai(mob/user)
 	return attack_hand(user)
 
-/obj/machinery/firealarm/bullet_act()
+/obj/machinery/fire_alarm/bullet_act()
 	return alarm()
 
-/obj/machinery/firealarm/emp_act(severity)
+/obj/machinery/fire_alarm/emp_act(severity)
 	if(prob(50 / severity))
 		alarm(rand(30 / severity, 60 / severity))
 	..()
 
-/obj/machinery/firealarm/attackby(obj/item/W, mob/user)
+/obj/machinery/fire_alarm/attackby(obj/item/W, mob/user)
 	add_fingerprint(user)
 
 	if(alarm_deconstruction_screwdriver(user, W))
@@ -171,7 +157,7 @@ FIRE ALARM
 	alarm()
 	return
 
-/obj/machinery/firealarm/process()//Note: this processing was mostly phased out due to other code, and only runs when needed
+/obj/machinery/fire_alarm/process()//Note: this processing was mostly phased out due to other code, and only runs when needed
 	if(machine_stat & (NOPOWER|BROKEN))
 		return
 
@@ -191,12 +177,12 @@ FIRE ALARM
 
 	return
 
-/obj/machinery/firealarm/power_change()
+/obj/machinery/fire_alarm/power_change()
 	..()
 	spawn(rand(0,15))
 		update_icon()
 
-/obj/machinery/firealarm/attack_hand(mob/user, list/params)
+/obj/machinery/fire_alarm/attack_hand(mob/user, list/params)
 	if(user.stat || machine_stat & (NOPOWER | BROKEN))
 		return
 
@@ -237,7 +223,7 @@ FIRE ALARM
 		onclose(user, "firealarm")
 	return
 
-/obj/machinery/firealarm/Topic(href, href_list)
+/obj/machinery/fire_alarm/Topic(href, href_list)
 	..()
 	if(usr.stat || machine_stat & (BROKEN | NOPOWER))
 		return
@@ -265,26 +251,26 @@ FIRE ALARM
 		return
 	return
 
-/obj/machinery/firealarm/proc/reset()
+/obj/machinery/fire_alarm/proc/reset()
 	if(!(working))
 		return
 	var/area/area = get_area(src)
-	for(var/obj/machinery/firealarm/FA in area)
+	for(var/obj/machinery/fire_alarm/FA in area)
 		fire_alarm.clearAlarm(src.loc, FA)
 	update_icon()
 	return
 
-/obj/machinery/firealarm/proc/alarm(var/duration = 0)
+/obj/machinery/fire_alarm/proc/alarm(var/duration = 0)
 	if(!(working))
 		return
 	var/area/area = get_area(src)
-	for(var/obj/machinery/firealarm/FA in area)
+	for(var/obj/machinery/fire_alarm/FA in area)
 		fire_alarm.triggerAlarm(loc, FA, duration, hidden = alarms_hidden)
 	update_icon()
 	playsound(src.loc, 'sound/machines/airalarm.ogg', 25, 0, 4)
 	return
 
-/obj/machinery/firealarm/proc/set_security_level(var/newlevel)
+/obj/machinery/fire_alarm/proc/set_security_level(var/newlevel)
 	if(seclevel != newlevel)
 		seclevel = newlevel
 		update_icon()

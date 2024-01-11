@@ -18,7 +18,6 @@
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
 	frequency = 1380;
 	id_tag = "pirate_docker";
-	layer = 3.3;
 	name = "Belting Dock Controller";
 	pixel_y = 30;
 	req_one_access = null
@@ -896,11 +895,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/reinforced,
 /area/shuttle/pirate/deck)
 "Pr" = (

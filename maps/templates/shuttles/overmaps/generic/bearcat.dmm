@@ -114,7 +114,7 @@
 /obj/machinery/light_switch{
 	pixel_x = 28
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/bearcat/comms)
 "at" = (
@@ -131,7 +131,7 @@
 /obj/machinery/light_switch{
 	pixel_x = 28
 	},
-/obj/machinery/power/apc/alarms_hidden/west_bump,
+/obj/machinery/power/apc/alarms_hidden/west_mount,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/bearcat/command)
 "av" = (
@@ -327,8 +327,7 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/alarms_hidden{
-	dir = 4
+/obj/machinery/power/apc/alarms_hidden/east_mount{
 	},
 /turf/simulated/floor/wood,
 /area/shuttle/bearcat/command_captain)
@@ -543,7 +542,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/bearcat/dock_port)
 "bx" = (
@@ -580,7 +579,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/power/apc/alarms_hidden/west_bump,
+/obj/machinery/power/apc/alarms_hidden/west_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/bearcat/dock_starboard)
 "bB" = (
@@ -737,7 +736,7 @@
 /obj/machinery/light_switch{
 	pixel_x = 28
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/bearcat/dock_central)
 "bZ" = (
@@ -880,7 +879,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/bearcat/crew_saloon)
 "cr" = (
@@ -1074,7 +1073,7 @@
 /obj/structure/handrail{
 	dir = 1
 	},
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/bearcat/crew_toilets)
 "cQ" = (
@@ -1216,7 +1215,7 @@
 /obj/structure/handrail{
 	dir = 4
 	},
-/obj/machinery/power/apc/alarms_hidden/west_bump,
+/obj/machinery/power/apc/alarms_hidden/west_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/bearcat/crew_dorms)
 "dh" = (
@@ -1332,7 +1331,7 @@
 /obj/structure/handrail{
 	dir = 4
 	},
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/bearcat/crew_corridors)
 "dy" = (
@@ -1356,7 +1355,7 @@
 /obj/structure/handrail{
 	dir = 8
 	},
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/bearcat/crew_kitchen)
 "dC" = (
@@ -1588,7 +1587,7 @@
 /obj/item/storage/box/syringes,
 /obj/structure/cable,
 /obj/item/storage/firstaid,
-/obj/machinery/power/apc/alarms_hidden/west_bump,
+/obj/machinery/power/apc/alarms_hidden/west_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/bearcat/crew_medbay)
 "ed" = (
@@ -1634,7 +1633,7 @@
 	dir = 4
 	},
 /obj/structure/cable,
-/obj/machinery/power/apc/alarms_hidden/south_bump,
+/obj/machinery/power/apc/alarms_hidden/south_mount,
 /turf/simulated/floor/plating,
 /area/shuttle/bearcat/maintenance_engine)
 "ej" = (
@@ -1707,7 +1706,7 @@
 /obj/structure/handrail{
 	dir = 8
 	},
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/bearcat/cargo)
 "ev" = (
@@ -1879,7 +1878,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/bearcat/unused1)
 "eU" = (
@@ -2227,7 +2226,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/bearcat/unused2)
 "fH" = (
@@ -2316,7 +2315,7 @@
 /area/shuttle/bearcat/unused2)
 "fS" = (
 /obj/structure/cable,
-/obj/machinery/power/apc/alarms_hidden/south_bump,
+/obj/machinery/power/apc/alarms_hidden/south_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/bearcat/crew_wash)
 "fT" = (
@@ -2412,7 +2411,7 @@
 	icon_state = "0-4"
 	},
 /obj/structure/disposalpipe/segment,
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/bearcat/maintenance_enginecontrol)
 "gf" = (
@@ -2735,7 +2734,7 @@
 /obj/structure/handrail{
 	dir = 8
 	},
-/obj/machinery/power/apc/alarms_hidden/south_bump,
+/obj/machinery/power/apc/alarms_hidden/south_mount,
 /turf/simulated/floor/plating,
 /area/shuttle/bearcat/maintenance_atmos)
 "gP" = (
@@ -2822,7 +2821,7 @@
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
-/obj/machinery/power/apc/alarms_hidden/south_bump,
+/obj/machinery/power/apc/alarms_hidden/south_mount,
 /obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -26
@@ -3037,7 +3036,7 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/plating,
 /area/shuttle/bearcat/maintenance_engine_pod_starboard)
 "kD" = (
@@ -3188,7 +3187,7 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/plating,
 /area/shuttle/bearcat/maintenance_engine_pod_port)
 "FG" = (
