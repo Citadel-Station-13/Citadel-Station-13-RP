@@ -236,7 +236,7 @@
 				signalScrubber(tag_scrubber, 1) // Start cleaning
 				signalPump(tag_airpump, 1, 1, memory["target_pressure"]) // And pressurizng to offset losses
 				memory["processing"] = TRUE
-			else if(memory["chamber_sensor_temperature"] < memory["target_temperature"])
+			else if(memory["chamber_sensor_temperature"] < memory["target_temperature"] - 0.1)
 				signalScrubber(tag_scrubber, 1)//the scrubbers also work as heats because fuck making sense
 				memory["processing"] = TRUE
 			else if(memory["chamber_sensor_pressure"] < memory["internal_sensor_pressure"] - 0.1)
