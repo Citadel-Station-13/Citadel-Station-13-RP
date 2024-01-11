@@ -140,19 +140,19 @@
 						dat += unknownreagents[d]
 				else
 					dat += SPAN_WARNING("\nWarning: Unknown substance[(unknown>1)?"s":""] detected in subject's blood.")
-		if(C.ingested && C.ingested.total_volume)
+		if(C.reagents_ingested && C.reagents_ingested.total_volume)
 			var/unknown = 0
 			var/stomachreagentdata[0]
 			var/stomachunknownreagents[0]
-			for(var/B in C.ingested.reagent_list)
+			for(var/B in C.reagents_ingested.reagent_list)
 				var/datum/reagent/T = B
 				if(T.scannable)
-					stomachreagentdata["[T.id]"] = SPAN_NOTICE("\n[round(C.ingested.get_reagent_amount(T.id), 1)]u [T.name]")
+					stomachreagentdata["[T.id]"] = SPAN_NOTICE("\n[round(C.reagents_ingested.get_reagent_amount(T.id), 1)]u [T.name]")
 					if (advscan == 0 || showadvscan == 0)
 						dat += SPAN_NOTICE("\n[T.name] found in subject's stomach.")
 				else
 					++unknown
-					stomachunknownreagents["[T.id]"] = SPAN_NOTICE("\n[round(C.ingested.get_reagent_amount(T.id), 1)]u [T.name]")
+					stomachunknownreagents["[T.id]"] = SPAN_NOTICE("\n[round(C.reagents_ingested.get_reagent_amount(T.id), 1)]u [T.name]")
 			if(advscan >= 1 && showadvscan == 1)
 				dat += SPAN_NOTICE("\nBeneficial reagents detected in subject's stomach:")
 				for(var/d in stomachreagentdata)
@@ -176,7 +176,7 @@
 						dat += SPAN_NOTICE("\n[T.name] found in subject's dermis.")
 				else
 					++unknown
-					touchunknownreagents["[T.id]"] = SPAN_NOTICE("\n[round(C.ingested.get_reagent_amount(T.id), 1)]u [T.name]")
+					touchunknownreagents["[T.id]"] = SPAN_NOTICE("\n[round(C.reagents_ingested.get_reagent_amount(T.id), 1)]u [T.name]")
 			if(advscan >= 1 && showadvscan == 1)
 				dat += SPAN_NOTICE("\nBeneficial reagents detected in subject's dermis:")
 				for(var/d in touchreagentdata)

@@ -304,16 +304,16 @@
 			var/reagentData[0]
 			if(!H.reagents_bloodstream.is_empty())
 				for(var/datum/reagent/R in H.reagents_bloodstream.lazy_expensive_dangerous_reagent_list())
-					reagentData[++reagentData.len] = list("name" = R.name, "amount" = R.volume)
+					reagentData[++reagentData.len] = list("name" = R.name, "amount" = H.reagents_bloodstream.reagent_volumes[R.id])
 			else
 				reagentData = null
 
 			occupantData["reagents"] = reagentData
 
 			var/ingestedData[0]
-			if(H.ingested.reagent_list.len >= 1)
-				for(var/datum/reagent/R in H.ingested.reagent_list)
-					ingestedData[++ingestedData.len] = list("name" = R.name, "amount" = R.volume)
+			if(H.reagents_ingested.reagent_list.len >= 1)
+				for(var/datum/reagent/R in H.reagents_ingested.reagent_list)
+					ingestedData[++ingestedData.len] = list("name" = R.name, "amount" =  H.reagents_ingested.reagent_volumes[R.id])
 			else
 				ingestedData = null
 
@@ -493,8 +493,8 @@
 				for(var/datum/reagent/R in occupant.reagents.lazy_expensive_dangerous_reagent_list())
 					dat += "Reagent: [R.name], Amount: [R.volume]<br>"
 
-			if(occupant.ingested)
-				for(var/datum/reagent/R in occupant.ingested.lazy_expensive_dangerous_reagent_list())
+			if(occupant.reagents_ingested)
+				for(var/datum/reagent/R in occupant.reagents_ingested.lazy_expensive_dangerous_reagent_list())
 					dat += "Stomach: [R.name], Amount: [R.volume]<br>"
 
 			dat += "<hr><table border='1'>"

@@ -19,7 +19,6 @@
 	icon_state = "base"
 	base_icon_state = "base"
 	panel_icon_state = "panel"
-	atom_flags = OPENCONTAINER
 	use_power = USE_POWER_IDLE
 	idle_power_usage = POWER_USAGE_LATHE_IDLE
 	active_power_usage = POWER_USAGE_LATHE_ACTIVE_SCALE(1)
@@ -256,7 +255,7 @@
 		stored_materials.set_multiplied_capacity(materials_max, storage_multiplier)
 	if(isnull(stored_reagents))
 		if(reagents_max != 0)
-			stored_reagents = new(reagents_max, src)
+			stored_reagents = new(reagents_max, src, REAGENT_HOLDER_CONSIDERED_OPEN | REAGENT_HOLDER_SYRINGE_DRAWABLE | REAGENT_HOLDER_SYRINGE_INJECTABLE | REAGENT_HOLDER_EXAMINE_OVERALL_VOLUME | REAGENT_HOLDER_TRANSPARENT_ANALYSIS)
 	else
 		stored_reagents.maximum_volume = reagents_max
 

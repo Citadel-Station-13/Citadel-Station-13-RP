@@ -301,7 +301,7 @@
 	. += "[src] is [injection_mode ? "injecting" : "taking blood"]."
 
 	if(reagent_container)
-		if(reagent_container.reagents && reagent_container.reagents.reagent_list.len)
+		if(length(reagent_container.reagents?.reagent_volumes))
 			. += SPAN_NOTICE("Attached is \a [reagent_container] with [reagent_container.reagents.total_volume] units of liquid.")
 		else
 			. += SPAN_NOTICE("Attached is an empty [reagent_container.name].")

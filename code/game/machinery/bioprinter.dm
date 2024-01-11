@@ -206,12 +206,8 @@
 
 /// Checks for reagents, then reports how much biomass it has in it.
 /obj/machinery/organ_printer/proc/get_biomass_volume()
-	var/biomass_count = 0
-	if(container && container.reagents)
-		for(var/datum/reagent/R in container.reagents.lazy_expensive_dangerous_reagent_list())
-			if(R.id == "biomass")
-				biomass_count += R.volume
-
+	var/datum/reagent/casted = /datum/reagent/nutriment/biomass
+	var/biomass_count = container?.reagents?.reagent_volumes[initial(casted.id)] || 0
 	return biomass_count
 
 /obj/machinery/organ_printer/proc/can_print(choice, biomass_needed = 0)

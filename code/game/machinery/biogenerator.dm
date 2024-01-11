@@ -56,9 +56,7 @@
 
 /obj/machinery/biogenerator/Initialize(mapload, newdir)
 	. = ..()
-	var/datum/reagent_holder/R = new/datum/reagent_holder(1000)
-	reagents = R
-	R.my_atom = src
+	create_reagents(1000, src)
 
 	beaker = new /obj/item/reagent_containers/glass/bottle(src)
 

@@ -661,8 +661,8 @@
 	entity.drowsyness = 0
 	entity.stuttering = 0
 	entity.SetConfused(0)
-	if(entity.ingested)
-		for(var/datum/reagent/ethanol/R in entity.ingested.reagent_list)
+	if(entity.reagents_ingested)
+		for(var/datum/reagent/ethanol/R in entity.reagents_ingested.reagent_list)
 			R.remove_self(removed * 30)
 	if(entity.bloodstr)
 		for(var/datum/reagent/ethanol/R in entity.bloodstr.reagent_list)

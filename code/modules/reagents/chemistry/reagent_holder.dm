@@ -610,7 +610,7 @@
 			var/datum/reagent_holder/R = C.reagents
 			return trans_to_holder(R, amount, multiplier, copy)
 		if(type == REAGENT_APPLY_INGEST)
-			var/datum/reagent_holder/R = C.ingested
+			var/datum/reagent_holder/R = C.reagents_ingested
 			return C.ingest(src, R, amount, multiplier, copy)
 		if(type == REAGENT_APPLY_TOUCH)
 			var/datum/reagent_holder/R = C.touching

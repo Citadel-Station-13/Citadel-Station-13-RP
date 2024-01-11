@@ -29,15 +29,15 @@
 
 /datum/reagent/carbon/on_metabolize_ingested(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed, obj/item/organ/internal/container)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-	entity.ingested.remove_any(removed * 2)
+	entity.reagents_ingested.remove_any(removed * 2)
 	return 0
 
 /datum/reagent/carbon/contact_expose_turf(turf/target, volume, list/data, vapor)
 	. = ..()
-	
+
 	var/turf/T = target
 	if(!istype(T, /turf/space))
 		var/obj/effect/debris/cleanable/dirt/dirtoverlay = locate(/obj/effect/debris/cleanable/dirt, T)
@@ -61,7 +61,7 @@
 
 /datum/reagent/chlorine/touch_expose_mob(mob/target, volume, list/data, organ_tag)
 	. = ..()
-	
+
 	var/mob/living/carbon/M = target
 	if(!istype(M))
 		return
@@ -91,7 +91,7 @@
 
 /datum/reagent/fluorine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	var/mob/living/carbon/M = entity
 	M.adjustToxLoss(removed)
 
@@ -113,7 +113,7 @@
 
 /datum/reagent/iron/on_metabolize_ingested(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed, obj/item/organ/internal/container)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 
@@ -129,10 +129,10 @@
 
 /datum/reagent/lithium/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-		
+
 	var/mob/living/carbon/M = entity
 	if(CHECK_MOBILITY(M, MOBILITY_CAN_MOVE) && istype(M.loc, /turf/space))
 		step(M, pick(GLOB.cardinal))
@@ -149,10 +149,10 @@
 
 /datum/reagent/mercury/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-		
+
 	var/mob/living/carbon/M = entity
 	if(CHECK_MOBILITY(M, MOBILITY_CAN_MOVE) && istype(M.loc, /turf/space))
 		step(M, pick(GLOB.cardinal))
@@ -178,10 +178,10 @@
 
 /datum/reagent/oxygen/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_VOX)])
 		return
-		
+
 	var/mob/living/carbon/M = entity
 	M.adjustToxLoss(removed * 3)
 
@@ -195,10 +195,10 @@
 
 /datum/reagent/phosphorus/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_ALRAUNE)] && !entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-		
+
 	var/mob/living/carbon/M = entity
 	M.nutrition += removed * 2 //cit change - phosphorus is good for plants
 
@@ -220,7 +220,7 @@
 
 /datum/reagent/radium/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	var/mob/living/carbon/M = entity
 	M.afflict_radiation(RAD_MOB_AFFLICT_STRENGTH_RADIUM(removed))
 	if(M.virus2.len)
@@ -231,7 +231,7 @@
 
 /datum/reagent/radium/contact_expose_turf(turf/target, volume, list/data, vapor)
 	. = ..()
-	
+
 	var/turf/T = target
 	if(volume >= 3)
 		if(!istype(T, /turf/space))

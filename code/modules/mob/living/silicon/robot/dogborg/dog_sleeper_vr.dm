@@ -567,7 +567,7 @@
 							T.transfer_item_to_loc(I, src, INV_OP_FORCE)
 					if(ishuman(T))
 						var/mob/living/carbon/human/Prey = T
-						volume = (Prey.bloodstr.total_volume + Prey.ingested.total_volume + Prey.touching.total_volume + Prey.weight) * Prey.size_multiplier
+						volume = (Prey.bloodstr.total_volume + Prey.reagents_ingested.total_volume + Prey.touching.total_volume + Prey.weight) * Prey.size_multiplier
 						water.add_charge(volume)
 					if(T.reagents)
 						volume = T.reagents.total_volume

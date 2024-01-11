@@ -40,7 +40,7 @@
 
 /datum/reagent/nutriment/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(!injectable && !entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)] && !entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_XENOCHIMERA)])
 		M.adjustToxLoss(0.1 * removed)
 		return
@@ -83,7 +83,7 @@
 
 /datum/reagent/nutriment/protein/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(alien && alien == IS_SKRELL)
 		M.adjustToxLoss(2 * removed)
 		return
@@ -387,7 +387,7 @@
 
 /datum/reagent/lipozine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	M.nutrition = max(M.nutrition - 10 * removed, 0)
 	M.overeatduration = 0
 	if(M.nutrition < 0)
@@ -407,7 +407,7 @@
 
 /datum/reagent/sodiumchloride/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		M.adjustFireLoss(removed)
 
@@ -447,7 +447,7 @@
 
 /datum/reagent/frostoil/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	entity.bodytemperature = max(entity.bodytemperature - 10 * TEMPERATURE_DAMAGE_COEFFICIENT, 215)
@@ -475,7 +475,7 @@
 
 /datum/reagent/capsaicin/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	entity.adjustToxLoss(0.5 * removed)
@@ -543,7 +543,7 @@
 
 /datum/reagent/condensedcapsaicin/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	M.adjustToxLoss(0.5 * removed)
@@ -705,7 +705,7 @@
 
 /datum/reagent/drink/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	var/strength_mod = 1
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)] && water_based)
 		strength_mod = 3
@@ -1068,7 +1068,7 @@
 
 /datum/reagent/drink/tea/icetea/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		if(M.bodytemperature > T0C)
 			M.bodytemperature -= 0.5
@@ -1273,7 +1273,7 @@
 
 /datum/reagent/drink/coffee/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	..()
 
 /datum/reagent/drink/coffee/overdose(mob/living/carbon/M, alien)
@@ -1302,7 +1302,7 @@
 
 /datum/reagent/drink/coffee/icecoffee/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		if(M.bodytemperature > T0C)
 			M.bodytemperature -= 0.5
@@ -1978,7 +1978,7 @@
 
 /datum/reagent/drink/ice/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		if(M.bodytemperature > T0C)
 			M.bodytemperature -= rand(1,3)
@@ -2092,7 +2092,7 @@
 
 /datum/reagent/drink/nuclearwaste/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	M.bloodstr.add_reagent("radium", 0.3)
@@ -2101,7 +2101,7 @@
 	..()
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-	M.ingested.add_reagent("radium", 0.25)
+	M.reagents_ingested.add_reagent("radium", 0.25)
 
 /datum/reagent/drink/sodaoil //Mixed with normal drinks to make a 'potable' version for Prometheans if mixed 1-1. Dilution is key.
 	name = "Soda Oil"
@@ -2118,9 +2118,9 @@
 
 /datum/reagent/drink/sodaoil/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(M.bloodstr) // If, for some reason, they are injected, dilute them as well.
-		for(var/datum/reagent/R in M.ingested.reagent_list)
+		for(var/datum/reagent/R in M.reagents_ingested.reagent_list)
 			if(istype(R, /datum/reagent/drink))
 				var/datum/reagent/drink/D = R
 				if(D.water_based)
@@ -2128,8 +2128,8 @@
 
 /datum/reagent/drink/sodaoil/affect_ingest(mob/living/carbon/M, alien, removed)
 	..()
-	if(M.ingested) // Find how many drinks are causing tox, and negate them.
-		for(var/datum/reagent/R in M.ingested.reagent_list)
+	if(M.reagents_ingested) // Find how many drinks are causing tox, and negate them.
+		for(var/datum/reagent/R in M.reagents_ingested.reagent_list)
 			if(istype(R, /datum/reagent/drink))
 				var/datum/reagent/drink/D = R
 				if(D.water_based)
@@ -4556,7 +4556,7 @@
 
 /datum/reagent/nutriment/triglyceride/oil/contact_expose_turf(turf/target, volume, list/data, vapor)
 	. = ..()
-	
+
 	var/turf/simulated/T = target
 	if(!istype(T))
 		return
@@ -4615,7 +4615,7 @@
 
 /datum/reagent/nutriment/protein/cheese/on_metabolize_ingested(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed, obj/item/organ/internal/container)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_NARAMADI)])
 		if(prob(5))
 			to_chat(M, SPAN_WARNING("You feel nauseous!"))
@@ -4713,7 +4713,7 @@
 
 /datum/reagent/ethanol/monstertamer/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_SKRELL)])
 		entity.adjustToxLoss(removed)  //Equivalent to half as much protein, since it's half protein.
 	if(!entity.species.is_vampire)
@@ -4821,7 +4821,7 @@
 
 /datum/reagent/drink/shroomjuice/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	. = ..()
 
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
@@ -4993,7 +4993,7 @@
 
 /datum/reagent/ethanol/desiretodie/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	. = ..()
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
@@ -5003,7 +5003,7 @@
 	. = ..()
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-	M.ingested.add_reagent("radium", 0.25)
+	M.reagents_ingested.add_reagent("radium", 0.25)
 
 /datum/reagent/drink/raspberrybeesknees
 	name = "Raspberry Bee's Knees"
