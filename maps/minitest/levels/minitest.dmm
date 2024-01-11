@@ -3092,6 +3092,20 @@
 	},
 /turf/simulated/shuttle/floor/voidcraft/light,
 /area/shuttle/overmapdemo)
+"qR" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
+	dir = 4;
+	frequency = 1379;
+	id_tag = "eva_port_pump"
+	},
+/obj/machinery/airlock_sensor{
+	pixel_y = -28
+	},
+/obj/machinery/camera/network/command,
+/obj/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/sensor/chamber_sensor,
+/turf/simulated/floor/tiled,
+/area/ai_monitored/storage/eva)
 "rJ" = (
 /obj/machinery/atmospherics/pipe/tank/air,
 /turf/simulated/floor/tiled,
@@ -3189,6 +3203,17 @@
 /obj/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/steel_grid,
 /area/storage/surface_eva/external)
+"vm" = (
+/obj/machinery/embedded_controller/radio/airlock/airlock_controller{
+	id_tag = "eva_port_airlock";
+	pixel_y = 28
+	},
+/obj/machinery/light/small,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/ai_monitored/storage/eva)
 "vo" = (
 /obj/machinery/door/airlock/glass_external{
 	frequency = 1379;
@@ -3212,6 +3237,17 @@
 /obj/machinery/space_heater,
 /turf/simulated/floor/plating,
 /area/rift/surfaceeva/airlock/main)
+"wN" = (
+/obj/machinery/access_button{
+	command = "cycle_interior";
+	frequency = 1379;
+	master_tag = "eva_port_airlock";
+	name = "interior access button";
+	pixel_y = -10;
+	req_one_access = list(18)
+	},
+/turf/simulated/wall/prepainted/command,
+/area/ai_monitored/storage/eva)
 "wQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -3220,6 +3256,29 @@
 	},
 /turf/simulated/floor/tiled,
 /area/medical/medbay)
+"xb" = (
+/obj/machinery/door/airlock/glass_external,
+/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/machinery/access_button{
+	command = "cycle_exterior";
+	frequency = 1379;
+	master_tag = "eva_port_airlock";
+	name = "exterior access button";
+	pixel_x = 4;
+	pixel_y = -26;
+	req_access = list(18)
+	},
+/obj/map_helper/airlock/door/ext_door,
+/turf/simulated/floor/tiled/dark,
+/area/ai_monitored/storage/eva)
+"xP" = (
+/obj/machinery/light{
+	dir = 8;
+	icon_state = "tube1"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled,
+/area/bridge)
 "yj" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -3238,6 +3297,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/rift/surfaceeva/airlock/main)
+"yO" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 9
+	},
+/obj/machinery/meter,
+/turf/simulated/floor/tiled,
+/area/bridge)
 "zf" = (
 /obj/effect/wingrille_spawn/reinforced,
 /turf/simulated/shuttle/floor/voidcraft/external/light,
@@ -3344,6 +3410,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/storage/surface_eva/external)
+"FZ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled,
+/area/bridge)
 "Gz" = (
 /turf/simulated/shuttle/wall/voidcraft/green,
 /area/shuttle/overmapdemo)
@@ -3483,6 +3553,22 @@
 /obj/machinery/air_alarm,
 /turf/simulated/floor/tiled,
 /area/medical/medbay)
+"Rs" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/machinery/door/airlock/glass_external,
+/obj/structure/sign/securearea{
+	desc = "A warning sign which reads 'EXTERNAL AIRLOCK'";
+	icon_state = "space";
+	layer = 4;
+	name = "EXTERNAL AIRLOCK";
+	pixel_y = -32
+	},
+/obj/map_helper/airlock/door/int_door,
+/turf/simulated/floor/tiled/dark,
+/area/ai_monitored/storage/eva)
 "Rw" = (
 /obj/structure/railing,
 /obj/structure/cable{
@@ -3572,6 +3658,10 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/main)
+"TX" = (
+/obj/machinery/atmospherics/pipe/tank/air,
+/turf/simulated/floor/tiled,
+/area/bridge)
 "Ud" = (
 /obj/structure/railing{
 	dir = 1
@@ -3598,6 +3688,9 @@
 	},
 /turf/simulated/floor/tiled,
 /area/medical/medbay)
+"Vk" = (
+/turf/simulated/wall/prepainted/command,
+/area/ai_monitored/storage/eva)
 "VE" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -4138,9 +4231,9 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
+nY
+nY
+nY
 aa
 aa
 aa
@@ -4240,9 +4333,9 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
+nY
+nY
+nY
 aa
 aa
 aa
@@ -4342,9 +4435,9 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
+nY
+nY
+nY
 aa
 aa
 aa
@@ -4444,9 +4537,9 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
+nY
+nY
+nY
 aa
 aa
 aa
@@ -4545,10 +4638,10 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
+Vk
+xb
+Vk
+nY
 aa
 aa
 aa
@@ -4644,13 +4737,13 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+nY
+nY
+nY
+Vk
+qR
+Vk
+nY
 aa
 aa
 aa
@@ -4749,9 +4842,9 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
+Vk
+vm
+Vk
 aa
 aa
 aa
@@ -4851,9 +4944,9 @@ aa
 fX
 ge
 ge
-ge
-ge
-ge
+wN
+Rs
+Vk
 ge
 ge
 ge
@@ -4951,10 +5044,10 @@ aa
 aa
 aa
 fY
-gf
-go
-gf
-gf
+TX
+xP
+FZ
+yO
 go
 gf
 gf
