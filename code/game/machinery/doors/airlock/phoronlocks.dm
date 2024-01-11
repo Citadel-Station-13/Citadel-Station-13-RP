@@ -135,41 +135,6 @@
 #define STATE_CYCLING_OUT 4 //Matching outdoors pressure
 #define STATE_SEALING 5 //Closing both doors
 
-/datum/computer/file/embedded_program/airlock/phoron/proc/stop_everything()
-	signalScrubber(tag_scrubber, 0)//Turn off scrubbers
-	signalPump(tag_airpump, 0, 1, memory["target_pressure"])//Stop the pumps
-	state = STATE_UNDEFINED
-	memory["processing"] = FALSE
-
-/datum/computer/file/embedded_program/airlock/phoron/receive_user_command(command)
-	switch(command)
-		if("cycle_ext")
-			state = STATE_CYCLING_OUT
-			memory["processing"] = TRUE
-		if("cycle_int")
-			state = STATE_CYCLING_IN
-			memory["processing"] = TRUE
-		if("secure")
-			state = STATE_SEALING
-			memory["processing"] = TRUE
-		if("force_ext")
-			state = STATE_UNDEFINED
-			memory["processing"] = FALSE
-			if(memory["exterior_status"]["state"] == "open")
-				toggleDoor(memory["exterior_status"],tag_exterior_door, 1, "close")
-			else if(memory["exterior_status"]["state"] == "closed")
-				toggleDoor(memory["exterior_status"],tag_exterior_door, 1, "open")
-		if("force_int")
-			state = STATE_UNDEFINED
-			memory["processing"] = FALSE
-			if(memory["interior_status"]["state"] == "open")
-				toggleDoor(memory["interior_status"],tag_interior_door, 1, "close")
-			else if(memory["interior_status"]["state"] == "closed")
-				toggleDoor(memory["interior_status"],tag_interior_door, 1, "open")
-		if("abort")
-			stop_everything()
-
-
 /datum/computer/file/embedded_program/airlock/phoron
 	var/tag_scrubber
 
@@ -236,7 +201,7 @@
 				signalScrubber(tag_scrubber, 1) // Start cleaning
 				signalPump(tag_airpump, 1, 1, memory["target_pressure"]) // And pressurizng to offset losses
 				memory["processing"] = TRUE
-			else if(memory["chamber_sensor_temperature"] < memory["target_temperature"])
+			else if(memory["chamber_sensor_temperature"] < memory["target_temperature"] - 0.1)
 				signalScrubber(tag_scrubber, 1)//the scrubbers also work as heats because fuck making sense
 				memory["processing"] = TRUE
 			else if(memory["chamber_sensor_pressure"] < memory["internal_sensor_pressure"] - 0.1)
@@ -274,14 +239,9 @@
 				memory["processing"] = FALSE
 	return 1
 
-/datum/computer/file/embedded_program/airlock/phoron/proc/signalScrubber(var/tag, var/power)
-	var/datum/signal/signal = new
-	signal.data = list(
-		"tag" = tag,
-		"sigtype" = "command",
-		"power" = "[power]",
-	)
-	post_signal(signal)
+/datum/computer/file/embedded_program/airlock/phoron/stop_everything()
+	. = ..()
+	signalScrubber(tag_scrubber, 0)//Turn off scrubbers
 
 //Stable states
 #undef STATE_UNDEFINED
