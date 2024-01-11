@@ -426,7 +426,7 @@
 
 	// break it if needed
 	// todo: shit code lmao
-	if(brute_dam > min_broken_damage && prob((brute * ((min_broken_damage - brute_dam) / min_broken_damage)) * 1.5))
+	if(brute_dam > min_broken_damage && prob((brute * ((brute_dam - min_broken_damage) / min_broken_damage)) * 1.5))
 		fracture()
 
 	//If limb took enough damage, try to cut or tear it off

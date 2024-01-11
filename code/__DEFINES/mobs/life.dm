@@ -15,7 +15,7 @@
 //* Health - Environmental Interactions *//
 
 /// % of temperature recovered when going towards favorable
-#define MOB_BODYTEMP_EQUALIZATION_FAVORABLE_RATIO (1 / 5)
+#define MOB_BODYTEMP_EQUALIZATION_FAVORABLE_RATIO (1 / 6)
 /// % of temperature gained/lost when going away from favorable
 #define MOB_BODYTEMP_EQUALIZATION_UNFAVORABLE_RATIO (1 / 6)
 /// minimum stabilization when far from 'livable' tempreatures, but environment is closer to livable temperature

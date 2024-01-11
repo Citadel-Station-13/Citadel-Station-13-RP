@@ -777,13 +777,13 @@
 			thermal_insulation = get_cold_protection(environment_temperature)
 			if(thermal_insulation < 1)
 				// we aren't entirely shielded
-				adjust_bodytemperature(adjust * thermal_insulation)
+				adjust_bodytemperature(adjust * (1 - thermal_insulation))
 		else
 			// we are getting heated
 			thermal_insulation = get_heat_protection(environment_temperature)
 			if(thermal_insulation < 1)
 				// we aren't entirely shielded
-				adjust_bodytemperature(adjust * thermal_insulation)
+				adjust_bodytemperature(adjust * (1 - thermal_insulation))
 
 	// legacy: godmode check
 	if(status_flags & STATUS_GODMODE)
