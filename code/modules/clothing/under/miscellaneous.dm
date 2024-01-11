@@ -395,6 +395,13 @@
 	desc = "You must be a bit risque teasing all of them in a maid uniform!"
 	icon_state = "sexymaid"
 
+/obj/item/clothing/under/dress/maid/neko
+	name = "neko maid uniform"
+	desc = "A tailored maid uniform that takes many cues from Old Earth Bavarian commonwear. It seems airy and breathable."
+	icon = 'icons/clothing/uniform/misc/neko.dmi'
+	icon_state = "neko"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
 /obj/item/clothing/under/dress/dress_fire
 	name = "flame dress"
 	desc = "A small black dress with blue flames print on it."

@@ -172,11 +172,7 @@
 /obj/structure/cable/white{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 28
-	},
+/obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/geothermal)
 "co" = (
@@ -267,7 +263,7 @@
 /turf/simulated/open/lythios43c,
 /area/rift/facility/interior/medical)
 "dg" = (
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -648,7 +644,7 @@
 /turf/simulated/floor/tiled/steel/lythios43c,
 /area/rift/facility/interior/medical)
 "ho" = (
-/obj/machinery/power/apc/direction_bump/east,
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -1414,8 +1410,7 @@
 /area/rift/facility/interior/workroom)
 "qF" = (
 /obj/random/obstruction,
-/obj/machinery/power/apc/alarms_hidden{
-	dir = 1
+/obj/machinery/power/apc/alarms_hidden/north_mount{
 	},
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
@@ -2149,10 +2144,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -2228,10 +2220,9 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost)
 "As" = (
-/obj/machinery/power/apc/alarms_hidden{
+/obj/machinery/power/apc/alarms_hidden/north_mount{
 	cell_type = null;
 	chargelevel = 0;
-	dir = 1
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -3403,7 +3394,7 @@
 "NE" = (
 /obj/machinery/space_heater,
 /obj/structure/railing,
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-6"
 	},
@@ -3779,10 +3770,9 @@
 /turf/simulated/floor/outdoors/snow/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
 "RG" = (
-/obj/machinery/power/apc/alarms_hidden{
+/obj/machinery/power/apc/alarms_hidden/north_mount{
 	cell_type = null;
 	chargelevel = 0;
-	dir = 1
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
@@ -3926,7 +3916,7 @@
 /turf/simulated/wall,
 /area/rift/facility/interior/medical)
 "Tg" = (
-/obj/machinery/power/apc/direction_bump/south,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance)
@@ -4034,7 +4024,7 @@
 /area/rift/surfacebase/outside/west_caves)
 "UH" = (
 /obj/structure/cable/green,
-/obj/machinery/power/apc/direction_bump/south,
+/obj/machinery/power/apc/south_mount,
 /turf/simulated/floor/tiled/white,
 /area/outpost/mining_main/outpost/washrooms)
 "UN" = (
@@ -4488,7 +4478,7 @@
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 8
 	},
-/obj/machinery/power/apc/direction_bump/west,
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -4522,7 +4512,7 @@
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
 "YZ" = (
-/obj/machinery/power/apc/direction_bump/south,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green,
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/outpost/storage)

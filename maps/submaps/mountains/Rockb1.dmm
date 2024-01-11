@@ -144,11 +144,8 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	operating = 0;
-	pixel_x = 24
+/obj/machinery/power/apc/east_mount{
+	operating = 0
 	},
 /turf/simulated/floor/tiled,
 /area/submap/Rockb1)

@@ -23,9 +23,7 @@
 "aP" = (
 /obj/item/toy/figure/clown,
 /obj/structure/table/bananium_reinforced,
-/obj/machinery/power/apc/alarms_hidden{
-	pixel_y = 28
-	},
+/obj/machinery/power/apc/alarms_hidden,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -250,9 +248,7 @@
 /area/submap/debrisfiled_vr/clownshuttle/engine)
 "nK" = (
 /mob/living/simple_mob/humanoid/clown/commando/ranged/space,
-/obj/machinery/power/apc/alarms_hidden{
-	pixel_x = -28
-	},
+/obj/machinery/power/apc/alarms_hidden,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -420,9 +416,7 @@
 /turf/simulated/shuttle/floor/yellow/airless,
 /area/submap/debrisfiled_vr/clownshuttle/cargo)
 "ve" = (
-/obj/machinery/power/apc/alarms_hidden{
-	pixel_y = 28
-	},
+/obj/machinery/power/apc/alarms_hidden,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -828,9 +822,7 @@
 	pixel_x = 28
 	},
 /obj/structure/table/bananium_reinforced,
-/obj/machinery/power/apc/alarms_hidden{
-	pixel_y = 28
-	},
+/obj/machinery/power/apc/alarms_hidden,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -906,9 +898,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/alarms_hidden{
-	pixel_y = 28
-	},
+/obj/machinery/power/apc/alarms_hidden,
 /obj/structure/table/bananium_reinforced,
 /turf/simulated/shuttle/floor/yellow/airless,
 /area/submap/debrisfiled_vr/clownshuttle/engine)

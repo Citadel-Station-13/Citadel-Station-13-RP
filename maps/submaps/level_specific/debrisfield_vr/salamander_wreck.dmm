@@ -68,10 +68,7 @@
 	dir = 8;
 	pixel_x = -32
 	},
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24;
+/obj/machinery/power/apc/north_mount{
 	start_charge = 0
 	},
 /obj/structure/bed/chair/bay/chair{
@@ -158,9 +155,7 @@
 	dir = 8;
 	pixel_x = -32
 	},
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -24;
+/obj/machinery/power/apc/south_mount{
 	start_charge = 0
 	},
 /turf/simulated/floor/tiled/techfloor{
@@ -410,10 +405,7 @@
 /obj/structure/bed/chair/bay/comfy{
 	dir = 4
 	},
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump";
-	pixel_x = -28;
+/obj/machinery/power/apc/west_mount{
 	start_charge = 0
 	},
 /turf/simulated/floor/tiled/techmaint/airless,
@@ -1082,10 +1074,7 @@
 	dir = 8;
 	pixel_x = -32
 	},
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24;
+/obj/machinery/power/apc/north_mount{
 	start_charge = 0
 	},
 /obj/structure/bed/chair/bay/chair{
@@ -1290,9 +1279,7 @@
 	dir = 8;
 	pixel_x = -32
 	},
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -24;
+/obj/machinery/power/apc/south_mount{
 	start_charge = 0
 	},
 /turf/simulated/floor/tiled/techfloor{
@@ -1754,10 +1741,7 @@
 /obj/structure/handrail{
 	dir = 8
 	},
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 24;
+/obj/machinery/power/apc/east_mount{
 	start_charge = 0
 	},
 /turf/simulated/floor/tiled/techfloor{
@@ -1908,10 +1892,7 @@
 /obj/structure/railing/grey{
 	dir = 8
 	},
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 24;
+/obj/machinery/power/apc/east_mount{
 	start_charge = 0
 	},
 /turf/simulated/floor/tiled/techfloor{
