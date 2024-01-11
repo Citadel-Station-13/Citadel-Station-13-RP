@@ -38,7 +38,7 @@
 	if(user == myprotean)
 		return TRUE
 	return ..()
-	
+
 /obj/item/clothing/head/helmet/space/hardsuit/protean
 	name = "mass"
 	desc = "A helmet-shaped clump of nanomachines."
