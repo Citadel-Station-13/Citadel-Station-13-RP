@@ -396,7 +396,7 @@
 					create_wound( CUT, brute )
 			else
 				create_wound( BRUISE, brute )
-		else
+		else if(!(damage_mode & DAMAGE_MODE_NO_OVERFLOW))
 			var/overflow_brute = brute - can_inflict_brute
 			// keep allowing it, but, diminishing returns
 			var/damage_anyways_brute = brute * min(1, 1 / ((brute_dam + damage_softcap_intensifier) / (damage_softcap_intensifier + max_damage)))
@@ -413,7 +413,7 @@
 		var/can_inflict_burn = max(0, max_damage - burn_dam)
 		if(can_inflict_burn >= burn)
 			create_wound( BURN, burn )
-		else
+		else if(!(damage_mode & DAMAGE_MODE_NO_OVERFLOW))
 			var/overflow_burn = burn - can_inflict_burn
 			// keep allowing it, but, diminishing returns
 			var/damage_anyways_burn = burn * min(1, 1 / ((burn_dam + damage_softcap_intensifier) / (damage_softcap_intensifier + max_damage)))
