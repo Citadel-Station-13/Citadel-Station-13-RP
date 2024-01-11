@@ -39,7 +39,7 @@
 	var/divisor = 1 / length(targets)
 
 	for(var/obj/item/organ/external/target as anything in targets)
-		. += target.inflict_bodypart_damage(brute / divisor, burn / divisor, damage_mode, weapon_descriptor, TRUE)
+		. += target.inflict_bodypart_damage(brute * divisor, burn * divisor, damage_mode, weapon_descriptor, TRUE)
 
 	if(!defer_updates && .)
 		update_health()

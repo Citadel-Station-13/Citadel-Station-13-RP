@@ -387,7 +387,7 @@
 	// Non-vital organs are limited to max_damage. You can't kill someone by bludeonging their arm all the way to 200 -- you can
 	// push them faster into paincrit though, as the additional damage is converted into shock.
 	if(brute)
-		var/can_inflict_brute = max_damage - brute_dam
+		var/can_inflict_brute = max(0, max_damage - brute_dam)
 		if(can_inflict_brute >= brute)
 			if(can_cut)
 				if(sharp && !edge)
@@ -399,25 +399,25 @@
 		else
 			var/overflow_brute = brute - can_inflict_brute
 			// keep allowing it, but, diminishing returns
-			can_inflict_brute = brute * (1 / ((brute_dam + damage_softcap_intensifier) / (damage_softcap_intensifier + max_damage)))
+			var/damage_anyways_brute = brute * (1 / ((brute_dam + damage_softcap_intensifier) / (damage_softcap_intensifier + max_damage)))
 			if(can_cut)
 				if(sharp && !edge)
-					create_wound( PIERCE, can_inflict_brute )
+					create_wound( PIERCE, damage_anyways_brute )
 				else
-					create_wound( CUT, can_inflict_brute )
+					create_wound( CUT, damage_anyways_brute )
 			else
-				create_wound( BRUISE, can_inflict_brute )
+				create_wound( BRUISE, damage_anyways_brute )
 			// rest goes into shock
 			owner.shock_stage += overflow_brute * 0.33
 	if(burn)
-		var/can_inflict_burn = max_damage - burn_dam
+		var/can_inflict_burn = max(0, max_damage - burn_dam)
 		if(can_inflict_burn >= burn)
 			create_wound( BURN, burn )
 		else
 			var/overflow_burn = burn - can_inflict_burn
 			// keep allowing it, but, diminishing returns
-			can_inflict_burn = burn * (1 / ((burn_dam + damage_softcap_intensifier) / (damage_softcap_intensifier + max_damage)))
-			create_wound( BURN, can_inflict_burn )
+			var/damage_anyways_burn = burn * (1 / ((burn_dam + damage_softcap_intensifier) / (damage_softcap_intensifier + max_damage)))
+			create_wound( BURN, damage_anyways_burn )
 			// rest goes into shock
 			owner.shock_stage += overflow_burn * 0.33
 
