@@ -39,8 +39,7 @@
 
 /mob/living/simple_mob/animal/passive/cow/Initialize(mapload)
 	. = ..()
-	udder = new(50)
-	udder.my_atom = src
+	udder = new(50, src)
 
 /mob/living/simple_mob/animal/passive/cow/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	var/obj/item/reagent_containers/glass/G = O

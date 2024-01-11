@@ -106,24 +106,6 @@ var/list/cheartstopper = list("potassium_chloride")                       // Thi
 #define SYRINGE_BROKEN 2
 #define SYRINGE_CAPPED 3
 
-//reagents_holder_flags defines
-///Makes it possible to add reagents through droppers and syringes.
-#define INJECTABLE (1<<0)
-///Makes it possible to remove reagents through syringes.
-#define DRAWABLE (1<<1)
-
-///Makes it possible to add reagents through any reagent container.
-#define REFILLABLE (1<<2)
-///Makes it possible to remove reagents through any reagent container.
-#define DRAINABLE (1<<3)
-
-///Used on containers which you want to be able to see the reagents off.
-#define TRANSPARENT (1<<4)
-///For non-transparent containers that still have the general amount of reagents in them visible.
-#define AMOUNT_VISIBLE (1<<5)
-///Applied to a reagent holder, the contents will not react with each other.
-#define NO_REACT (1<<6)
-
 //! Used by chem master
 #define CONDIMASTER_STYLE_AUTO "auto"
 #define CONDIMASTER_STYLE_FALLBACK "_"

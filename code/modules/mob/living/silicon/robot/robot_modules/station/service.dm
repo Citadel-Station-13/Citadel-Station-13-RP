@@ -129,11 +129,8 @@
 	src.modules += new /obj/item/tray/robotray(src)
 	src.modules += new /obj/item/reagent_containers/borghypo/service(src)
 	src.emag = new /obj/item/reagent_containers/food/drinks/bottle/small/beer(src)
-
-	var/datum/reagent_holder/R = new/datum/reagent_holder(50)
-	src.emag.reagents = R
-	R.my_atom = src.emag
-	R.add_reagent("beer2", 50)
+	src.emag.reagents = new /datum/reagent_holder(50, src.emag)
+	src.emag.reagents.add_reagent(/datum/reagent/chloralhydrate/beer2, 50)
 	src.emag.name = "Mickey Finn's Special Brew"
 
 /obj/item/robot_module/robot/clerical/butler/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)

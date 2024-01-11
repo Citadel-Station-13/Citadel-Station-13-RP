@@ -30,8 +30,7 @@
 
 /obj/machinery/microwave/Initialize(mapload)
 	. = ..()
-	reagents = new/datum/reagent_holder(100)
-	reagents.my_atom = src
+	reagents = new/datum/reagent_holder(100, src)
 	if (!available_recipes)
 		available_recipes = new
 		for (var/type in (typesof(/datum/recipe)-/datum/recipe))
@@ -211,15 +210,15 @@
 				else
 					dat += {"<B>[capitalize(O)]:</B> [N] [items_measures_p[O]]<BR>"}
 
-		for (var/datum/reagent/R in reagents.reagent_list)
+		for (var/datum/reagent/R in reagents.lazy_expensive_dangerous_reagent_list())
 			var/display_name = R.name
 			if (R.id == "capsaicin")
 				display_name = "Hotsauce"
 			if (R.id == "frostoil")
 				display_name = "Coldsauce"
-			dat += {"<B>[display_name]:</B> [R.volume] unit\s<BR>"}
+			dat += {"<B>[display_name]:</B> [reagents.reagent_volumes[R.id]] unit\s<BR>"}
 
-		if (items_counts.len==0 && reagents.reagent_list.len==0)
+		if (items_counts.len==0 && reagents.reagent_volumes.len==0)
 			dat = {"<B>The microwave is empty</B><BR>"}
 		else
 			dat = {"<b>Ingredients:</b><br>[dat]"}

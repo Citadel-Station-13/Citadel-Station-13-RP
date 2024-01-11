@@ -299,10 +299,9 @@
 	// DNA sample from syringe.
 	if(istype(W,/obj/item/reagent_containers/syringe))	//TODO: Make this actually empty the syringe
 		var/obj/item/reagent_containers/syringe/S = W
-		var/datum/reagent/blood/injected = locate() in S.reagents.lazy_expensive_dangerous_reagent_list() //Grab some blood
-		if(injected && injected.data)
-			loaded_dna = injected.data
-			S.reagents.remove_reagent("blood", injected.volume)
+		if(S.reagents.get_reagent_amount(/datum/reagent/blood))
+			loaded_dna = S.reagents.get_reagent_shallow_data(/datum/reagent/blood)
+			S.reagents.remove_reagent(/datum/reagent/blood)
 			to_chat(user, SPAN_INFO("You scan the blood sample into the bioprinter."))
 		return
 	else if(istype(W,/obj/item/reagent_containers/glass))

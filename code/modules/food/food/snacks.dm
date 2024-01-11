@@ -3972,8 +3972,9 @@ END CITADEL CHANGE */
 	return ..()
 
 //This proc handles drawing coatings out of a container when this food is dipped into it
-/obj/item/reagent_containers/food/snacks/proc/apply_coating(datum/reagnet_holder/holder, datum/reagent/nutriment/coating/C, var/mob/user)
-	if (coating)
+/obj/item/reagent_containers/food/snacks/proc/apply_coating(datum/reagent_holder/holder, datum/reagent/nutriment/coating/C, var/mob/user)
+	if (coating_id)
+		var/datum/reagent/coating = SSchemistry.fetch_reagent(coating_id)
 		to_chat(user, "The [src] is already coated in [coating.name]!")
 		return 0
 
@@ -4047,7 +4048,7 @@ END CITADEL CHANGE */
 		if (!flat_icon)
 			flat_icon = get_flat_icon(src)
 		var/icon/I = flat_icon
-		var/datum/reagent/coating = SSchemistry.fetch_reagent(coating_id)
+		var/datum/reagent/nutriment/coating/coating = SSchemistry.fetch_reagent(coating_id)
 		color = "#FFFFFF" //Some fruits use the color var
 		I.Blend(new /icon('icons/obj/food_custom.dmi', rgb(255,255,255)),ICON_ADD)
 		I.Blend(new /icon('icons/obj/food_custom.dmi', coating.icon_cooked),ICON_MULTIPLY)
@@ -4060,12 +4061,11 @@ END CITADEL CHANGE */
 		if (do_coating_prefix == 1)
 			name = "[coating.coated_adj] [name]"
 
-	for (var/r in reagents.reagent_list)
-		var/datum/reagent/R = r
+	for (var/r in reagents.reagent_volumes)
+		var/datum/reagent/R = SSchemistry.fetch_reagent(r)
 		if (istype(R, /datum/reagent/nutriment/coating))
 			var/datum/reagent/nutriment/coating/C = R
-			C.data["cooked"] = 1
-			C.name = C.cooked_name
+			reagents.set_reagent_data_key_value(r, "cooked", TRUE)
 
 /obj/item/reagent_containers/food/snacks/proc/on_consume(var/mob/eater, var/mob/feeder = null)
 	if(!reagents.total_volume)

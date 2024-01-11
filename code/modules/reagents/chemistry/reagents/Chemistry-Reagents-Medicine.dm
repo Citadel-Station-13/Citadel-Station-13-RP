@@ -110,15 +110,15 @@
 	taste_description = "sourness"
 	reagent_state = REAGENT_LIQUID
 	color = "#800080"
-	metabolism = 0.1 //Lasts up to 200 seconds if you give 20u which is OD.
+	bloodstream_metabolism_multiplier = 0.5
 	mrate_static = TRUE
-	overdose_threshold = 20 //High OD. This is to make numbing bites have somewhat of a downside if you get bit too much. Have to go to medical for dialysis.
-	scannable = 0 //Let's not have medical mechs able to make an extremely strong organic painkiller
+	bloodstream_overdose_threshold = 20
+	reagent_flags = REAGENT_NO_SYNTH
 
 /datum/reagent/numbing_enzyme/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 
-	entity.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 200)//Similar to Oxycodone
+	entity.max_reagent_cycle_effect(CHEMICAL_EFFECT_PAINKILLER, 200)//Similar to Oxycodone
 	if(prob(0.01)) //1 in 10000 chance per tick. Extremely rare.
 		to_chat(entity,"<span class='warning'>Your body feels numb as a light, tingly sensation spreads throughout it, like some odd warmth.</span>")
 	//Not noted here, but a movement debuff of 1.5 is handed out in human_movement.dm when numbing_enzyme is in a person's bloodstream!

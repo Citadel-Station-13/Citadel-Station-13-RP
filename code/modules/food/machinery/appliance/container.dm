@@ -7,7 +7,7 @@
 	var/shortname
 	var/max_space = 20//Maximum sum of w-classes of foods in this container at once
 	var/max_reagents = 80//Maximum units of reagents
-	atom_flags = OPENCONTAINER | NOREACT
+	atom_flags = OPENCONTAINER
 	var/list/insertable = list(
 		/obj/item/reagent_containers/food/snacks,
 		/obj/item/holder,

@@ -602,7 +602,7 @@
 
 
 /obj/machinery/appliance/proc/change_product_appearance(var/obj/item/reagent_containers/food/snacks/product, var/datum/cooking_item/CI)
-	if (!product.coating) //Coatings change colour through a new sprite
+	if (!product.coating_id) //Coatings change colour through a new sprite
 		product.color = food_color
 	product.filling_color = food_color
 

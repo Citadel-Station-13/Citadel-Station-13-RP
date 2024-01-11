@@ -83,8 +83,7 @@
 /mob/living/simple_mob/animal/gutshank/Initialize(mapload)
 	. = ..()
 	START_PROCESSING(SSobj, src)
-	shank_gland = new(50)
-	shank_gland.my_atom = src
+	shank_gland = new(50, src)
 
 /mob/living/simple_mob/animal/gutshank/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	var/obj/item/reagent_containers/glass/G = O

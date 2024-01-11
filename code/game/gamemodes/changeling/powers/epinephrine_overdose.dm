@@ -51,15 +51,15 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#C8A5DC"
 	bloodstream_metabolism_multiplier = 2
-	overdose = 5 //This is intentionally low, as we want the ling to take some tox damage, to discourage spamming the ability.
+	bloodstream_overdose_threshold = 5 //This is intentionally low, as we want the ling to take some tox damage, to discourage spamming the ability.
 
 /datum/reagent/epinephrine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-	entity.add_chemical_effect(CHEMICAL_EFFECT_SPEEDBOOST, 3)
-	entity.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 60)
+	entity.add_reagent_cycle_effect(CHEMICAL_EFFECT_SPEEDBOOST, 3)
+	entity.max_reagent_cycle_effect(CHEMICAL_EFFECT_PAINKILLER, 60)
 	entity.adjustHalLoss(-30)
 	entity.adjust_unconscious(20 * -2)
 	entity.adjust_stunned(20 * -2)

@@ -460,6 +460,13 @@
 			materials_list += "[current_material.name]"
 		. += "<u>It is made out of [english_list(materials_list)]</u>."
 */
+
+	if(reagents?.reagent_holder_flags & REAGENT_HOLDER_FLAGS_ANY_EXAMINE)
+		. += "Its reagents contain:"
+		if(reagents.total_volume)
+			#warn impl
+		else
+			. += SPAN_NOTICE("&bull; Nothing.")
 	if(reagents)
 		if(reagents.reagents_holder_flags & TRANSPARENT)
 			. += "It contains:"
@@ -479,8 +486,6 @@
 					. += "[total_volume] units of various reagents"
 				if(has_alcohol)
 					. += "It smells of alcohol."
-			else
-				. += "Nothing."
 		else if(reagents.reagents_holder_flags & AMOUNT_VISIBLE)
 			if(reagents.total_volume)
 				. += SPAN_NOTICE("It has [reagents.total_volume] unit\s left.")

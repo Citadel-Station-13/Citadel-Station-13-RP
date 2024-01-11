@@ -137,8 +137,7 @@
 	if(prob(1))
 		new /mob/living/simple_mob/animal/goliath/ancient(loc)
 		return INITIALIZE_HINT_QDEL
-	goliath_sac = new(50)
-	goliath_sac.my_atom = src
+	goliath_sac = new(50, src)
 
 /mob/living/simple_mob/animal/goliath/attackby(obj/item/O, mob/user)
 	. = ..()

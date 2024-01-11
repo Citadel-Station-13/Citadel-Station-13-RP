@@ -52,8 +52,7 @@
 
 /mob/living/simple_mob/animal/icegoat/Initialize(mapload)
 	. = ..()
-	udder = new(50)
-	udder.my_atom = src
+	udder = new(50, src)
 
 /mob/living/simple_mob/animal/icegoat/BiologicalLife(seconds, times_fired)
 	if((. = ..()))

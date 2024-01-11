@@ -262,7 +262,7 @@
 /**
  * direct list set. do not use on reference types.
  */
-/datum/reagent_holder/proc/set_reagent_data_key_value(datum/reagent/reagentlike, key. value)
+/datum/reagent_holder/proc/set_reagent_data_key_value(datum/reagent/reagentlike, key, value)
 	if(ispath(reagentlike))
 		reagentlike = initial(reagentlike.id)
 	else if(!istext(reagentlike))
@@ -274,6 +274,23 @@
 		)
 	else
 		reagent_datas[reagentlike][key] = value
+
+/**
+ * get a shallow copy of a reagent's data
+ *
+ * * You must not use this on a reagent that requires 2-deep data, like on the 'blood' reagent. Doing so will cause severe issues.
+ * * You can edit the returned list.
+ *
+ * @return list or null
+ */
+/datum/reagent_holder/proc/get_reagent_shallow_data(datum/reagent/reagentlike)
+	if(ispath(reagentlike))
+		reagentlike = initial(reagentlike.id)
+	else if(!istext(reagentlike))
+		reagentlike = reagentlike.id
+	ASSERT(reagent_volumes[reagentlike])
+	var/list/L =  reagent_datas[reagentlike]
+	return isnull(L)? null : L.Copy()
 
 //* Get *//
 
@@ -342,6 +359,15 @@
 /datum/reagent_holder/proc/set_temperature(temperature, defer_reactions)
 	src.temperature = temperature
 	if(!defer_reactions)
+		consider_reactions()
+
+/datum/reagent_holder/proc/set_no_reacting(truthy)
+	var/existing = reagent_holder_flags
+	if(truthy)
+		reagent_holder_flags |= REAGENT_HOLDER_NO_REACT
+	else
+		reagent_holder_flags &= REAGENT_HOLDER_NO_REACT
+	if(existing != reagent_holder_flags)
 		consider_reactions()
 
 //* Transfer *//
