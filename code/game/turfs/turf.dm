@@ -588,7 +588,7 @@
 		return
 	color = other.color
 
-//? Depth
+//* Depth *//
 
 /**
  * gets overall depth level for stuff standing on us
@@ -600,20 +600,39 @@
 			continue
 		. = max(., O.depth_level)
 
-//? Multiz
+//* Multiz *//
 
 /turf/proc/update_multiz()
 	return
 
-//? Sector API
+//* Orientation *//
+
+/**
+ * Are we a valid anchor or orientation source for a wall-mounted object?
+ *
+ * If so, return the anchor object.
+ */
+/turf/proc/get_wallmount_anchor()
+	RETURN_TYPE(/atom)
+	// are we valid
+	if(GLOB.wallframe_typecache[type])
+		return src
+	// are our contents valid
+	for(var/obj/O in contents)
+		if(GLOB.wallframe_typecache[O.type])
+			return O
+
+//* Sector API *//
 
 /**
  * called by planet / weather to update temperature during weather changes
+ *
+ * todo: this is bad lol this either needs more specifications/documentation or a redesign
  */
 /turf/proc/sector_set_temperature(temperature)
 	return
 
-//? Radiation
+//* Radiation *//
 
 /turf/proc/update_rad_insulation()
 	rad_insulation_contents = 1

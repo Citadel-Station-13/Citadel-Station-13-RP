@@ -2679,7 +2679,6 @@
 /obj/machinery/door/blast/regular{
 	dir = 8;
 	id = "ArmouryC2";
-	layer = 3.3;
 	name = "Armoury"
 	},
 /turf/unsimulated/floor/steel,
@@ -4187,7 +4186,6 @@
 /area/centcom/restaurant)
 "nm" = (
 /obj/machinery/vending/wallmed1{
-	layer = 3.3;
 	name = "Emergency NanoMed";
 	pixel_y = 30
 	},
@@ -4304,7 +4302,6 @@
 /obj/machinery/door/blast/regular{
 	dir = 8;
 	id = "ArmouryC4";
-	layer = 3.3;
 	name = "Armoury"
 	},
 /turf/unsimulated/floor{
@@ -4361,7 +4358,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "kitchenC";
-	layer = 3.3;
 	name = "Kitchen Shutters"
 	},
 /turf/unsimulated/floor/steel,
@@ -7180,7 +7176,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/specops/general)
 "wQ" = (
@@ -8870,7 +8866,7 @@
 /area/centcom/control)
 "CB" = (
 /obj/structure/cable/green,
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
 	},
@@ -11332,7 +11328,6 @@
 /area/centcom/living)
 "KF" = (
 /obj/machinery/newscaster{
-	layer = 3.3;
 	pixel_x = 28
 	},
 /obj/effect/floor_decal/borderfloorblack{
@@ -13647,7 +13642,7 @@
 	pixel_y = -28
 	},
 /obj/structure/cable/green,
-/obj/machinery/power/apc/alarms_hidden/west_bump,
+/obj/machinery/power/apc/alarms_hidden/west_mount,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/specops/cockpit)
 "RN" = (
@@ -15761,7 +15756,7 @@
 /area/centcom/evac)
 "YL" = (
 /obj/structure/cable,
-/obj/machinery/power/apc/alarms_hidden/south_bump,
+/obj/machinery/power/apc/alarms_hidden/south_mount,
 /turf/simulated/floor/plating,
 /area/centcom/specops/dock)
 "YM" = (

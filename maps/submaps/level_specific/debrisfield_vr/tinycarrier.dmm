@@ -290,11 +290,7 @@
 /turf/simulated/floor/tiled,
 /area/submap/debrisfield_vr/tinyshuttle/crew)
 "aG" = (
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -505,11 +501,7 @@
 /turf/simulated/floor/tiled/airless,
 /area/submap/debrisfield_vr/tinyshuttle/bridge)
 "aZ" = (
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green,
 /obj/effect/debris/cleanable/dirt,
 /obj/machinery/light_switch{
@@ -913,11 +905,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/submap/debrisfield_vr/tinyshuttle/hangar)
 "bI" = (
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green,
 /turf/simulated/floor/reinforced/airless,
 /area/submap/debrisfield_vr/tinyshuttle/hangar)
@@ -955,11 +943,7 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/submap/debrisfield_vr/tinyshuttle/engine)
 "bM" = (
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
@@ -1020,8 +1004,7 @@
 /area/submap/debrisfield_vr/tinyshuttle/engine)
 "bS" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/fuel,
-/obj/machinery/firealarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -24
 	},
 /obj/effect/debris/cleanable/liquid_fuel,
@@ -1042,10 +1025,7 @@
 /turf/simulated/shuttle/plating/airless/carry,
 /area/submap/debrisfield_vr/tinyshuttle/engine)
 "bV" = (
-/obj/machinery/firealarm/alarms_hidden{
-	dir = 8;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/alarms_hidden/west_mount,
 /turf/simulated/floor/reinforced/airless,
 /area/submap/debrisfield_vr/tinyshuttle/hangar)
 "bW" = (

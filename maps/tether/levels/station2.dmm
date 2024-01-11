@@ -169,10 +169,7 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/storage)
 "as" = (
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -32
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
@@ -457,11 +454,7 @@
 /area/quartermaster/belterdock)
 "aX" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump";
-	pixel_x = -28
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -651,10 +644,7 @@
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/yellow/border,
 /obj/structure/cable/green,
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -32
-	},
+/obj/machinery/power/apc/south_mount,
 /turf/simulated/floor/tiled,
 /area/engineering/locker_room)
 "bs" = (
@@ -1319,11 +1309,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/tether/exploration)
 "cH" = (
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -1691,9 +1677,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/excursion/cargo)
 "du" = (
-/obj/machinery/firealarm{
-	pixel_y = 25
-	},
+/obj/machinery/fire_alarm/north_mount,
 /obj/machinery/recharge_station,
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock/surface_mining_outpost_shuttle_hangar)
@@ -2089,10 +2073,7 @@
 "en" = (
 /obj/structure/closet/wardrobe/black,
 /obj/structure/cable/green,
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -24
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/effect/floor_decal/corner/lime{
 	dir = 10
 	},
@@ -4252,8 +4233,7 @@
 /obj/machinery/light_switch{
 	pixel_y = -28
 	},
-/obj/machinery/firealarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -24
 	},
 /turf/simulated/floor/wood,
@@ -4368,11 +4348,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump";
-	pixel_x = -28
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor,
 /area/storage/tech)
@@ -4479,11 +4455,7 @@
 /turf/simulated/floor,
 /area/maintenance/station/eng_upper)
 "iZ" = (
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump";
-	pixel_x = -28
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -4843,9 +4815,7 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 1
 	},
-/obj/machinery/firealarm{
-	pixel_y = 25
-	},
+/obj/machinery/fire_alarm/north_mount,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/item/gun/energy/kinetic_accelerator,
 /turf/simulated/floor/tiled,
@@ -5286,8 +5256,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 5
 	},
-/obj/machinery/firealarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -26
 	},
 /turf/simulated/floor/tiled,
@@ -5552,8 +5521,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 8
 	},
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -25
 	},
 /turf/simulated/floor/tiled,
@@ -5596,11 +5564,7 @@
 	dir = 10
 	},
 /obj/structure/table/wooden_reinforced,
-/obj/machinery/firealarm{
-	dir = 4;
-	layer = 3.3;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/east_mount,
 /obj/item/flame/candle/candelabra/everburn,
 /turf/simulated/floor/tiled,
 /area/hallway/station/port)
@@ -5854,8 +5818,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 8
 	},
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled,
@@ -6138,8 +6101,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled,
@@ -6237,11 +6199,7 @@
 	dir = 8
 	},
 /obj/structure/flora/pottedplant/shoot,
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -6574,22 +6532,14 @@
 /turf/simulated/floor/plating,
 /area/vacant/vacant_restaurant_upper)
 "nk" = (
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 24
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/burial)
 "nl" = (
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -6648,10 +6598,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/station/stairs_two)
 "nr" = (
-/obj/machinery/firealarm{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor,
 /area/maintenance/station/eng_upper)
 "ns" = (
@@ -6708,11 +6655,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
-/obj/machinery/firealarm{
-	dir = 4;
-	layer = 3.3;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/burial)
 "ny" = (
@@ -7230,8 +7173,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/general)
 "oB" = (
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -25
 	},
 /turf/simulated/floor/wood,
@@ -7258,11 +7200,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/tether/exploration/pilot_office)
 "oF" = (
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 28
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -7304,10 +7242,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/quartermaster/foyer)
 "oJ" = (
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -32
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lightgrey/border,
 /obj/effect/floor_decal/steeldecal/steel_decals7{
@@ -7383,11 +7318,7 @@
 /area/storage/tech)
 "oP" = (
 /obj/structure/cable,
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
@@ -7448,10 +7379,7 @@
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
 "oU" = (
-/obj/machinery/firealarm{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/east_mount,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
@@ -7634,10 +7562,7 @@
 	dir = 4
 	},
 /obj/structure/cable/green,
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -24
-	},
+/obj/machinery/power/apc/south_mount,
 /turf/simulated/floor/wood,
 /area/tether/station/visitorhallway/lounge)
 "pr" = (
@@ -7881,11 +7806,7 @@
 /turf/simulated/shuttle/floor,
 /area/shuttle/large_escape_pod1)
 "pS" = (
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -7977,11 +7898,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/station/visitorhallway/lounge)
 "pZ" = (
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/cyan{
 	icon_state = "0-2"
 	},
@@ -8808,10 +8725,7 @@
 	dir = 1
 	},
 /obj/structure/flora/pottedplant/tropical,
-/obj/machinery/firealarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/tiled,
 /area/quartermaster/foyer)
 "rG" = (
@@ -9582,11 +9496,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 28
-	},
+/obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/bluegrid,
 /area/ai_core_foyer)
 "tg" = (
@@ -9631,10 +9541,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7,
-/obj/machinery/firealarm{
-	layer = 3.3;
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/north_mount,
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -9693,10 +9600,7 @@
 "tq" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/brown/border,
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -32
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green,
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock/gear)
@@ -9894,11 +9798,7 @@
 /turf/simulated/floor,
 /area/maintenance/station/cargo)
 "tL" = (
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 24
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
@@ -10589,7 +10489,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "GateShut";
-	layer = 3.3;
 	name = "Gateway Shutter"
 	},
 /obj/machinery/door/firedoor/glass,
@@ -10638,8 +10537,7 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 8
 	},
-/obj/machinery/firealarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -24
 	},
 /obj/machinery/vending/fitness,
@@ -10834,7 +10732,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "PubPrepFront";
-	layer = 3.3;
 	name = "Gateway Prep Shutter"
 	},
 /obj/structure/cable/green{
@@ -11004,10 +10901,7 @@
 "vP" = (
 /obj/effect/floor_decal/industrial/warning/corner,
 /obj/effect/floor_decal/industrial/warning,
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -32
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green,
 /turf/simulated/floor/tiled,
 /area/ai_monitored/storage/eva)
@@ -11116,11 +11010,7 @@
 	dir = 1
 	},
 /obj/structure/cable/cyan,
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -11187,8 +11077,7 @@
 	sort_tag = "Sorting Office"
 	},
 /obj/machinery/light/small,
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/dark,
@@ -11441,11 +11330,7 @@
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/ai_core_foyer)
 "wH" = (
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 28
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -11706,11 +11591,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump";
-	pixel_x = -28
-	},
+/obj/machinery/power/apc/west_mount,
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
 "xj" = (
@@ -11751,8 +11632,7 @@
 /turf/simulated/floor,
 /area/maintenance/station/eng_upper)
 "xo" = (
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /turf/simulated/floor/wood,
@@ -11817,8 +11697,7 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 8
 	},
-/obj/machinery/firealarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -26
 	},
 /obj/effect/floor_decal/borderfloor/corner2{
@@ -12236,9 +12115,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
 	},
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28;
+/obj/machinery/power/apc/south_mount{
 	req_access = list(67)
 	},
 /obj/structure/cable/green,
@@ -12421,11 +12298,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/excursion/cargo)
 "yG" = (
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable,
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -12724,7 +12597,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 4;
 	id = "PubPrep";
-	layer = 3.3;
 	name = "Gateway Access Shutters"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -12905,11 +12777,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /turf/simulated/floor/bluegrid,
 /area/ai)
 "zF" = (
@@ -13374,10 +13242,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/visitorhallway/lounge)
 "AL" = (
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/south_mount{
 	alarms_hidden = 1;
-	name = "south bump";
-	pixel_y = -28;
 	req_access = list();
 	req_one_access = list(11,67)
 	},
@@ -13459,8 +13325,7 @@
 /area/ai_monitored/storage/eva)
 "AS" = (
 /obj/structure/closet/emcloset,
-/obj/machinery/firealarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -24
 	},
 /turf/simulated/floor/tiled,
@@ -13475,10 +13340,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 24;
+/obj/machinery/power/apc/east_mount{
 	req_access = list();
 	req_one_access = list(11,67)
 	},
@@ -13726,15 +13588,13 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/exploration)
 "Bs" = (
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/blast/shutters{
 	dir = 4;
 	id = "PubPrep";
-	layer = 3.3;
 	name = "Gateway Access Shutters"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -15230,11 +15090,7 @@
 /turf/simulated/floor/bluegrid,
 /area/ai)
 "Er" = (
-/obj/machinery/firealarm{
-	dir = 4;
-	layer = 3.3;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
 "Es" = (
@@ -15331,11 +15187,7 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/foyer)
 "Ey" = (
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 28
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
@@ -15461,11 +15313,7 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 5
 	},
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -15480,8 +15328,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 1
 	},
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled,
@@ -16228,8 +16075,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/cargo)
 "Gw" = (
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -25
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -16264,7 +16110,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "PubPrepFront";
-	layer = 3.3;
 	name = "Gateway Prep Shutter"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -16452,7 +16297,6 @@
 /obj/machinery/button/remote/blast_door{
 	desc = "A remote control-switch for shutters.";
 	id = "chapel_obs";
-	layer = 3.3;
 	name = "Chapel Observation Shutters";
 	pixel_x = -26;
 	pixel_y = 25;
@@ -16765,11 +16609,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/excursion/general)
 "Hz" = (
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -17013,8 +16853,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 6
 	},
-/obj/machinery/firealarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -26
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -17140,11 +16979,7 @@
 /area/tether/exploration)
 "Iq" = (
 /obj/structure/closet/coffin,
-/obj/machinery/firealarm{
-	dir = 4;
-	layer = 3.3;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/burial)
 "Ir" = (
@@ -17584,11 +17419,7 @@
 /turf/simulated/floor/wood,
 /area/hallway/station/port)
 "Jt" = (
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump";
-	pixel_x = -28
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
@@ -17774,7 +17605,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "PubPrepFront";
-	layer = 3.3;
 	name = "Gateway Prep Shutter"
 	},
 /obj/machinery/door/firedoor/glass,
@@ -18189,8 +18019,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/firealarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -26
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -19024,10 +18853,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/station/cargo)
 "Mk" = (
-/obj/machinery/firealarm{
-	layer = 3.3;
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/carpet/bcarpet,
 /area/tether/station/public_meeting_room)
 "Ml" = (
@@ -19432,11 +19258,7 @@
 /turf/simulated/floor/plating,
 /area/vacant/vacant_restaurant_upper)
 "Nc" = (
-/obj/machinery/firealarm{
-	dir = 4;
-	layer = 3.3;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/wood,
 /area/tether/station/burial)
 "Nd" = (
@@ -19503,8 +19325,7 @@
 	dir = 8
 	},
 /obj/structure/dispenser/oxygen,
-/obj/machinery/firealarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -26
 	},
 /turf/simulated/floor/tiled,
@@ -20135,7 +19956,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "PubPrepFront";
-	layer = 3.3;
 	name = "Gateway Prep Shutter"
 	},
 /obj/machinery/door/firedoor/glass,
@@ -20426,11 +20246,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},
@@ -20620,10 +20436,7 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock/gear)
 "Py" = (
-/obj/machinery/firealarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/east_mount,
 /obj/structure/bed/chair/comfy/black,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/spacedorm1)
@@ -20786,9 +20599,7 @@
 	dir = 8;
 	pixel_x = -4
 	},
-/obj/machinery/firealarm{
-	pixel_y = 25
-	},
+/obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled/dark,
 /area/tether/exploration/pilot_office)
 "PQ" = (
@@ -20824,11 +20635,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump";
-	pixel_x = -28
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
@@ -21037,8 +20844,7 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 8
 	},
-/obj/machinery/firealarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -24
 	},
 /turf/simulated/floor/tiled,
@@ -21155,11 +20961,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/cargo)
 "QI" = (
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -21696,11 +21498,7 @@
 /turf/simulated/floor/bluegrid,
 /area/ai_core_foyer)
 "RO" = (
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -21822,11 +21620,7 @@
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/crate/internals,
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump";
-	pixel_x = -28
-	},
+/obj/machinery/power/apc/west_mount,
 /turf/simulated/floor/tiled/dark,
 /area/quartermaster/warehouse)
 "Sd" = (
@@ -22315,7 +22109,6 @@
 /obj/machinery/button/remote/blast_door{
 	desc = "A remote control-switch for shutters.";
 	id = "chapel_obs";
-	layer = 3.3;
 	name = "Chapel Observation Shutters";
 	pixel_x = -26;
 	pixel_y = -25;
@@ -22557,8 +22350,7 @@
 "TG" = (
 /obj/structure/closet/wardrobe/xenos,
 /obj/machinery/light,
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /obj/effect/floor_decal/corner/lime{
@@ -23254,11 +23046,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 4
 	},
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -23309,7 +23097,6 @@
 /area/tether/exploration)
 "Vk" = (
 /obj/machinery/vending/wallmed1{
-	layer = 3.3;
 	name = "Emergency NanoMed";
 	pixel_x = 28
 	},
@@ -23459,8 +23246,7 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 8
 	},
-/obj/machinery/firealarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -26
 	},
 /obj/effect/floor_decal/borderfloor/corner2{
@@ -23796,7 +23582,6 @@
 	pixel_y = 30
 	},
 /obj/machinery/newscaster{
-	layer = 3.3;
 	pixel_x = -27
 	},
 /obj/effect/floor_decal/industrial/hatch/yellow,
@@ -23867,11 +23652,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/starboard)
 "Wj" = (
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
@@ -24007,11 +23788,7 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock/gear)
 "Wy" = (
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 28
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
@@ -24238,7 +24015,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 4;
 	id = "PubPrep";
-	layer = 3.3;
 	name = "Gateway Access Shutters"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -24276,11 +24052,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/effect/floor_decal/steeldecal/steel_decals3,
 /turf/simulated/floor/tiled{
 	icon_state = "monotile"
@@ -24379,10 +24151,7 @@
 /turf/simulated/floor,
 /area/maintenance/station/eng_upper)
 "Xd" = (
-/obj/machinery/firealarm{
-	layer = 3.3;
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
 "Xe" = (
@@ -24449,8 +24218,7 @@
 	pixel_y = -26;
 	req_access = list(13)
 	},
-/obj/machinery/firealarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -26
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -25290,8 +25058,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 9
 	},
-/obj/machinery/firealarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -24
 	},
 /turf/simulated/floor/wood,
@@ -25337,11 +25104,7 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/foyer)
 "Zd" = (
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump";
-	pixel_x = -28
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -25391,11 +25154,7 @@
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
 "Zj" = (
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/machinery/light_switch{
 	pixel_x = 11;
 	pixel_y = 24

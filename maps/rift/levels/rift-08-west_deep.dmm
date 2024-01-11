@@ -209,11 +209,7 @@
 /area/outpost/mining_main/refinery)
 "bR" = (
 /obj/effect/floor_decal/industrial/warning,
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump";
-	pixel_x = -28
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -677,7 +673,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-5"
 	},
-/obj/machinery/power/apc/direction_bump/south,
+/obj/machinery/power/apc/south_mount,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance/south)
 "hc" = (
@@ -723,8 +719,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/firealarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -24
 	},
 /turf/simulated/floor/wood,
@@ -1238,7 +1233,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "PubPrepFront";
-	layer = 3.3;
 	name = "Gateway Prep Shutter"
 	},
 /turf/simulated/floor/tiled,
@@ -1405,7 +1399,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/janitorial)
 "mF" = (
-/obj/machinery/power/apc/direction_bump/south,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -1751,10 +1745,9 @@
 /obj/effect/floor_decal/corner/white/full{
 	dir = 4
 	},
-/obj/machinery/power/apc/alarms_hidden{
+/obj/machinery/power/apc/alarms_hidden/north_mount{
 	cell_type = null;
 	chargelevel = 0;
-	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rift/facility/interior/temple)
@@ -2750,10 +2743,9 @@
 /area/outpost/mining_main/outpost/airlock/three)
 "yG" = (
 /obj/structure/bed/chair,
-/obj/machinery/power/apc/alarms_hidden{
+/obj/machinery/power/apc/alarms_hidden/north_mount{
 	cell_type = null;
 	chargelevel = 0;
-	dir = 1
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -3503,7 +3495,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/direction_bump/south,
+/obj/machinery/power/apc/south_mount,
 /turf/simulated/floor/tiled/monotile,
 /area/gateway)
 "EQ" = (
@@ -3613,7 +3605,7 @@
 /area/gateway)
 "FP" = (
 /obj/effect/mist,
-/turf/simulated/floor/water,
+/turf/unsimulated/floor/lava/geothermal,
 /area/space)
 "FW" = (
 /obj/machinery/door/firedoor{
@@ -3943,7 +3935,7 @@
 	dir = 8
 	},
 /obj/structure/cable/green,
-/obj/machinery/power/apc/direction_bump/south,
+/obj/machinery/power/apc/south_mount,
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/outpost/near_gateway)
 "Jl" = (
@@ -4146,7 +4138,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-6"
 	},
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance/north)
 "La" = (
@@ -4240,10 +4232,9 @@
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance/south)
 "Mc" = (
-/obj/machinery/power/apc/alarms_hidden{
+/obj/machinery/power/apc/alarms_hidden/north_mount{
 	cell_type = null;
 	chargelevel = 0;
-	dir = 1
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -4260,7 +4251,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 5
 	},
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -4359,7 +4350,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
 	},
-/obj/machinery/power/apc/direction_bump/south,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -4614,7 +4605,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-6"
 	},
-/obj/machinery/power/apc/direction_bump/west,
+/obj/machinery/power/apc/west_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/quartermaster/belterdock)
 "Pz" = (
@@ -4669,6 +4660,13 @@
 /obj/machinery/light/small,
 /turf/simulated/floor/outdoors/snow/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_deep)
+"Qw" = (
+/obj/structure/sign/warning/lava{
+	name = "\improper SUPERHEATED GAS";
+	pixel_x = -32
+	},
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/rift/surfacebase/outside/west_deep/submap_seedzone)
 "Qz" = (
 /obj/structure/inflatable,
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
@@ -4741,7 +4739,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 4;
 	id = "PubPrep";
-	layer = 3.3;
 	name = "Gateway Access Shutters"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -4764,7 +4761,6 @@
 	pixel_y = 30
 	},
 /obj/machinery/newscaster{
-	layer = 3.3;
 	pixel_x = -27
 	},
 /obj/effect/floor_decal/industrial/hatch/yellow,
@@ -5090,10 +5086,9 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/prison)
 "UD" = (
-/obj/machinery/power/apc/alarms_hidden{
+/obj/machinery/power/apc/alarms_hidden/north_mount{
 	cell_type = null;
 	chargelevel = 0;
-	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/janitorial)
@@ -5280,7 +5275,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "PubPrepFront";
-	layer = 3.3;
 	name = "Gateway Prep Shutter"
 	},
 /obj/machinery/door/firedoor/glass,
@@ -5349,10 +5343,7 @@
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance)
 "WM" = (
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/substation)
@@ -5364,10 +5355,7 @@
 /turf/simulated/mineral/icerock/lythios43c,
 /area/rift/surfacebase/outside/west_deep/submap_seedzone)
 "WX" = (
-/obj/machinery/firealarm{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/east_mount,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
@@ -5508,7 +5496,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 4;
 	id = "PubPrep";
-	layer = 3.3;
 	name = "Gateway Access Shutters"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -30641,7 +30628,7 @@ WW
 WW
 WW
 WW
-Wv
+Qw
 Wv
 WW
 Vs

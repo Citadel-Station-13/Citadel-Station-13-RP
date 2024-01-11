@@ -15,54 +15,42 @@
  *
  * For turfs, what appears under the diagonal corners depends on the turf that was in the same position previously: if you make a wall on
  * a plating floor, you will see plating under the diagonal wall corner, if it was space, you will see space.
- *
- * If you wish to map a diagonal wall corner with a fixed underlay, you must configure the turf's 'fixed_underlay' list var, like so:
- * 	fixed_underlay = list("icon"='icon_file.dmi', "icon_state"="iconstatename")
- * A non null 'fixed_underlay' list var will skip copying the previous turf appearance and always use the list. If the list is
- * not set properly, the underlay will default to regular floor plating.
- *
- * To see an example of a diagonal wall, see '/turf/closed/wall/mineral/titanium' and its subtypes.
  */
 
-#define SET_ADJ_IN_DIR(source, junction, direction, direction_flag) \
-	do { \
-		var/turf/neighbor = get_step(source, direction); \
-		if(!neighbor) { \
-			if(source.smoothing_flags & SMOOTH_BORDER) { \
-				junction |= direction_flag; \
-			}; \
+
+/**
+ * Stole this from @DaedalusDock - @Zandario
+ * Checks if `thing` (an atom) can smooth with `turf`, based on the [/area/var/area_limited_icon_smoothing] variable of their areas.
+ *
+ * * If `thing` doesn't have an area (E.g. the edge of the z level), return `FALSE`.
+ * * If one area has `area_limited_icon_smoothing` set, and the other area's type doesn't match it, return `FALSE`.
+ * * Else, return `TRUE`.
+ *
+ * Arguments:
+ * * thing - The source atom we're smoothing.
+ * * turf  - The target turf we're trying to smooth with.
+ * * val   - The variable to set to `TRUE` depending on if the two can smooth.
+ *
+ *? This is a macro because it is a very very hot proc.
+ */
+#define CAN_AREAS_SMOOTH(thing, turf, val) \
+	do{ \
+		if(isnull(turf)) { \
+			break; \
 		}; \
-		else { \
-			if(source.can_area_smooth(neighbor)) { \
-				if(!isnull(neighbor.smoothing_groups)) { \
-					for(var/target in source.canSmoothWith) { \
-						if(!(source.canSmoothWith[target] & neighbor.smoothing_groups[target])) { \
-							continue; \
-						}; \
-						junction |= direction_flag; \
-						break; \
-					}; \
-				}; \
-				if(!(junction & direction_flag) && source.smoothing_flags & SMOOTH_OBJ) { \
-					for(var/obj/thing in neighbor) { \
-						if(!thing.anchored || isnull(thing.smoothing_groups)) { \
-							continue; \
-						}; \
-						for(var/target in source.canSmoothWith) { \
-							if(!(source.canSmoothWith[target] & thing.smoothing_groups[target])) { \
-								continue; \
-							}; \
-							junction |= direction_flag; \
-							break; \
-						}; \
-						if(junction & direction_flag) { \
-							break; \
-						}; \
-					}; \
-				}; \
-			}; \
+		var/area/source_area = get_step(thing, 0)?.loc; \
+		var/area/target_area = turf:loc; \
+		if(isnull(target_area)) { \
+			break; \
+		};\
+		if(target_area.area_limited_icon_smoothing && !istype(source_area, target_area.area_limited_icon_smoothing)) { \
+			break; \
 		}; \
-	} while(FALSE)
+		if(source_area.area_limited_icon_smoothing && !istype(target_area, source_area.area_limited_icon_smoothing)) { \
+			break; \
+		}; \
+		val = TRUE; \
+	}while(FALSE)
 
 /**
  * Performs the work to set smoothing_groups and canSmoothWith.
@@ -94,28 +82,6 @@
 #define ASSERT_SORTED_SMOOTHING_GROUPS(smoothing_group_variable) \
 	var/list/unwrapped = UNWRAP_SMOOTHING_GROUPS(smoothing_group_variable, unwrapped); \
 	assert_sorted(unwrapped, "[#smoothing_group_variable] ([type])"); \
-
-/**
- * Stole this from @DaedalusDock - @Zandario
- * Checks if `src` can smooth with `target`, based on the [/area/var/area_limited_icon_smoothing] variable of their areas.
- *
- * * If `target` doesn't have an area (E.g. the edge of the z level), return `FALSE`.
- * * If one area has `area_limited_icon_smoothing` set, and the other area's type doesn't match it, return `FALSE`.
- * * Else, return `TRUE`.
- *
- * Arguments:
- * * target - The atom we're trying to smooth with.
- */
-/atom/proc/can_area_smooth(atom/target)
-	var/area/target_area = get_area(target)
-	var/area/source_area = get_area(src)
-	if(!target_area)
-		return FALSE
-	if(target_area.area_limited_icon_smoothing && !istype(source_area, target_area.area_limited_icon_smoothing))
-		return FALSE
-	if(source_area.area_limited_icon_smoothing && !istype(target_area, source_area.area_limited_icon_smoothing))
-		return FALSE
-	return TRUE
 
 /**
  * Scans all adjacent turfs to find targets to smooth with.
@@ -327,7 +293,9 @@
 	if(!target_turf)
 		return NULLTURF_BORDER
 
-	if(!can_area_smooth(target_turf))
+	var/can_area_smooth
+	CAN_AREAS_SMOOTH(src, target_turf, can_area_smooth)
+	if(isnull(can_area_smooth))
 		return NO_ADJ_FOUND
 
 	if(isnull(canSmoothWith)) //special case in which it will only smooth with itself
@@ -358,12 +326,55 @@
  * Basic smoothing proc. The atom checks for adjacent directions to smooth with and changes the icon_state based on that.
  *
  * Returns the previous smoothing_junction state so the previous state can be compared with the new one after the proc ends, and see the changes, if any.
+ *
 */
 /atom/proc/bitmask_smooth()
 	var/new_junction = NONE
+	// cache for sanic speed
+	var/canSmoothWith = src.canSmoothWith
+
+	var/smooth_border = (smoothing_flags & SMOOTH_BORDER)
+	var/smooth_obj = (smoothing_flags & SMOOTH_OBJ)
+
+	#define SET_ADJ_IN_DIR(direction, direction_flag) \
+		set_adj_in_dir: { \
+			do { \
+				var/turf/neighbor = get_step(src, direction); \
+				var/can_area_smooth; \
+					CAN_AREAS_SMOOTH(src, neighbor, can_area_smooth); \
+					if(neighbor && can_area_smooth) { \
+						var/neighbor_smoothing_groups = neighbor.smoothing_groups; \
+						if(neighbor_smoothing_groups) { \
+							for(var/target in canSmoothWith) { \
+								if(canSmoothWith[target] & neighbor_smoothing_groups[target]) { \
+									new_junction |= direction_flag; \
+									break set_adj_in_dir; \
+								}; \
+							}; \
+						}; \
+						if(smooth_obj) { \
+							for(var/atom/movable/thing as anything in neighbor) { \
+								var/thing_smoothing_groups = thing.smoothing_groups; \
+								if(!thing.anchored || isnull(thing_smoothing_groups)) { \
+									continue; \
+								}; \
+								for(var/target in canSmoothWith) { \
+									if(canSmoothWith[target] & thing_smoothing_groups[target]) { \
+										new_junction |= direction_flag; \
+										break set_adj_in_dir; \
+									}; \
+								}; \
+							}; \
+						}; \
+					} else if (smooth_border) { \
+						new_junction |= direction_flag; \
+					}; \
+			} while(FALSE) \
+		}
+
 
 	for(var/direction in GLOB.cardinal) //Cardinal case first.
-		SET_ADJ_IN_DIR(src, new_junction, direction, direction)
+		SET_ADJ_IN_DIR(direction, direction)
 
 	if(!(new_junction & (NORTH|SOUTH)) || !(new_junction & (EAST|WEST)))
 		set_smoothed_icon_state(new_junction)
@@ -371,20 +382,20 @@
 
 	if(new_junction & NORTH_JUNCTION)
 		if(new_junction & WEST_JUNCTION)
-			SET_ADJ_IN_DIR(src, new_junction, NORTHWEST, NORTHWEST_JUNCTION)
+			SET_ADJ_IN_DIR(NORTHWEST, NORTHWEST_JUNCTION)
 
 		if(new_junction & EAST_JUNCTION)
-			SET_ADJ_IN_DIR(src, new_junction, NORTHEAST, NORTHEAST_JUNCTION)
+			SET_ADJ_IN_DIR(NORTHEAST, NORTHEAST_JUNCTION)
 
 	if(new_junction & SOUTH_JUNCTION)
 		if(new_junction & WEST_JUNCTION)
-			SET_ADJ_IN_DIR(src, new_junction, SOUTHWEST, SOUTHWEST_JUNCTION)
+			SET_ADJ_IN_DIR(SOUTHWEST, SOUTHWEST_JUNCTION)
 
 		if(new_junction & EAST_JUNCTION)
-			SET_ADJ_IN_DIR(src, new_junction, SOUTHEAST, SOUTHEAST_JUNCTION)
+			SET_ADJ_IN_DIR(SOUTHEAST, SOUTHEAST_JUNCTION)
 
 	set_smoothed_icon_state(new_junction)
-
+#undef SET_ADJ_IN_DIR
 
 /**
  * Changes the icon state based on the new junction bitmask. Returns the old junction value.
@@ -547,5 +558,3 @@
 	underlay_appearance.icon_state = icon_state
 	underlay_appearance.dir = adjacency_dir
 	return TRUE
-
-#undef SET_ADJ_IN_DIR

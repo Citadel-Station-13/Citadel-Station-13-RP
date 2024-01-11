@@ -27,6 +27,8 @@ const MATERIAL_KEYS = {
   "lead": "stack-adamantine",
   "platinum": "stack-adamantine",
   "plastic": "stack-plastic",
+  "bananium": "stack-bananium",
+  "silencium": "stack-silencium",
 };
 
 const COLOR_NONE = 0;
