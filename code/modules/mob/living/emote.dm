@@ -27,6 +27,7 @@
 		return // Custom Emote Handler
 	switch(act)
 
+
 		if ("airguitar")
 			if (!src.restrained())
 				message = "is strumming the air and headbanging like a safari chimp."
@@ -322,6 +323,13 @@
 				return //Can't faint while asleep
 			afflict_sleeping(20 * 10) //Short-short nap
 			m_type = 1
+
+		if("flip")
+			if(!CHECK_ALL_MOBILITY(src, MOBILITY_CAN_MOVE | MOBILITY_CAN_USE))
+				to_chat(src, "<span class='warning'>You can't *flip in your current state!</span>")
+			else
+				src.SpinAnimation(7,1)
+				m_type = 1
 
 		if("cough", "coughs")
 			if HAS_TRAIT_FROM(src, TRAIT_MUTE, MIME_TRAIT)
@@ -774,17 +782,8 @@
 
 		if("aslap", "aslaps")
 			m_type = 1
-			var/mob/living/carbon/human/H = src
-			var/obj/item/organ/external/L = H.get_organ("l_hand")
-			var/obj/item/organ/external/R = H.get_organ("r_hand")
-			var/left_hand_good = 0
-			var/right_hand_good = 0
-			if(L && (!(L.status & ORGAN_DESTROYED)) && (!(L.splinted)) && (!(L.status & ORGAN_BROKEN)))
-				left_hand_good = 1
-			if(R && (!(R.status & ORGAN_DESTROYED)) && (!(R.splinted)) && (!(R.status & ORGAN_BROKEN)))
-				right_hand_good = 1
 
-			if(!left_hand_good && !right_hand_good)
+			if(!CHECK_ALL_MOBILITY(src, MOBILITY_CAN_USE))
 				to_chat(usr, "You need at least one hand in good working order to slap someone.")
 				return
 			if(!restrained())
@@ -848,22 +847,13 @@
 
 		if("snap", "snaps")
 			m_type = 2
-			var/mob/living/carbon/human/H = src
-			var/obj/item/organ/external/L = H.get_organ("l_hand")
-			var/obj/item/organ/external/R = H.get_organ("r_hand")
-			var/left_hand_good = 0
-			var/right_hand_good = 0
-			if(L && (!(L.status & ORGAN_DESTROYED)) && (!(L.splinted)) && (!(L.status & ORGAN_BROKEN)))
-				left_hand_good = 1
-			if(R && (!(R.status & ORGAN_DESTROYED)) && (!(R.splinted)) && (!(R.status & ORGAN_BROKEN)))
-				right_hand_good = 1
-
-			if(!left_hand_good && !right_hand_good)
+	
+			if(!CHECK_ALL_MOBILITY(src, MOBILITY_CAN_USE))
 				to_chat(usr, "You need at least one hand in good working order to snap your fingers.")
 				return
-
-			message = "snaps [T.his] fingers."
-			playsound(loc, 'sound/effects/fingersnap.ogg', 50, 1, -3)
+			if(!restrained())
+				message = "snaps [T.his] fingers."
+				playsound(loc, 'sound/effects/fingersnap.ogg', 50, 1, -3)
 
 		if("vomit")
 			if(isSynthetic())
