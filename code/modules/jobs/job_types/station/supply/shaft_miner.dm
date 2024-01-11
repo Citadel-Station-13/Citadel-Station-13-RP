@@ -26,7 +26,8 @@
 	desc = "A Shaft Miner mines and processes minerals to be delivered to departments that need them."
 	alt_titles = list(
 		"Drill Technician" = /datum/prototype/struct/alt_title/miner/drill_tech,
-		"Belt Miner" = /datum/prototype/struct/alt_title/miner/belt
+		"Belt Miner" = /datum/prototype/struct/alt_title/miner/belt,
+		"Salvage Technician" = /datum/prototype/struct/alt_title/salvage
 		)
 
 /datum/prototype/struct/alt_title/miner
@@ -38,6 +39,10 @@
 
 /datum/prototype/struct/alt_title/miner/belt
 	title = "Belt Miner"
+
+/datum/prototype/struct/alt_title/salvage
+	title = "Salvage Technician"
+	title_blurb = "A Salvage Technician specialized in traveling to wrecks and stripping them of useful items and materials."
 
 /datum/outfit/job/station/shaft_miner
 	name = OUTFIT_JOB_NAME("Shaft Miner")

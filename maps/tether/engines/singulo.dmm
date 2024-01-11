@@ -224,11 +224,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump";
-	pixel_x = -28
-	},
+/obj/machinery/power/apc/west_mount,
 /turf/simulated/floor,
 /area/engineering/engine_gas)
 "az" = (
@@ -300,8 +296,7 @@
 /obj/structure/window/reinforced/full,
 /obj/machinery/door/firedoor/glass,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
@@ -324,7 +319,6 @@
 	dir = 2;
 	icon_state = "pdoor0";
 	id = "SupermatterPort";
-	layer = 3.3;
 	name = "Reactor Blast Door";
 	opacity = 0
 	},
@@ -400,11 +394,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/engine_room)
 "aO" = (
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/cyan{
 	icon_state = "0-2"
 	},
@@ -450,7 +440,6 @@
 	dir = 2;
 	icon_state = "pdoor0";
 	id = "SupermatterPort";
-	layer = 3.3;
 	name = "Reactor Blast Door";
 	opacity = 0
 	},
@@ -553,7 +542,6 @@
 	dir = 2;
 	icon_state = "pdoor0";
 	id = "SupermatterPort";
-	layer = 3.3;
 	name = "Reactor Blast Door";
 	opacity = 0
 	},
@@ -624,8 +612,7 @@
 /obj/structure/window/reinforced/full,
 /obj/machinery/door/firedoor/glass,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 1
@@ -703,8 +690,7 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -753,11 +739,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/machinery/light_switch{
 	pixel_y = 24
 	},
@@ -967,8 +949,7 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -1045,8 +1026,7 @@
 /obj/structure/window/reinforced/full,
 /obj/machinery/door/firedoor/glass,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced,
 /turf/simulated/floor,
@@ -1137,7 +1117,6 @@
 	dir = 2;
 	icon_state = "pdoor0";
 	id = "SupermatterPort";
-	layer = 3.3;
 	name = "Reactor Blast Door";
 	opacity = 0
 	},
@@ -1443,7 +1422,6 @@
 	dir = 2;
 	icon_state = "pdoor0";
 	id = "SupermatterPort";
-	layer = 3.3;
 	name = "Reactor Blast Door";
 	opacity = 0
 	},

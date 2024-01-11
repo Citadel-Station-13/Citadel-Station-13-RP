@@ -46,7 +46,7 @@ var/list/gurgled_overlays = list(
 /obj/item/proc/can_gurgle()
 	if(atom_flags & PHORONGUARD)
 		return FALSE
-	else if(unacidable)
+	else if(integrity_flags & INTEGRITY_ACIDPROOF)
 		return FALSE
 	else
 		return TRUE

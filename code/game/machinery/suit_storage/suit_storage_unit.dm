@@ -87,7 +87,7 @@
 		return 0
 	ui_interact(user)
 
-/obj/machinery/suit_storage_unit/ui_state(mob/user, datum/tgui_module/module)
+/obj/machinery/suit_storage_unit/ui_state()
 	return GLOB.notcontained_state
 
 /obj/machinery/suit_storage_unit/ui_interact(mob/user, datum/tgui/ui)
@@ -96,7 +96,7 @@
 		ui = new(user, src, "SuitStorageUnit", name)
 		ui.open()
 
-/obj/machinery/suit_storage_unit/ui_data()
+/obj/machinery/suit_storage_unit/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 
 	data["broken"] = isbroken
@@ -130,7 +130,7 @@
 		data["occupied"] = FALSE
 	return data
 
-/obj/machinery/suit_storage_unit/ui_act(action, params) //I fucking HATE this proc
+/obj/machinery/suit_storage_unit/ui_act(action, list/params, datum/tgui/ui)
 	if(..() || isUV || isbroken)
 		return TRUE
 

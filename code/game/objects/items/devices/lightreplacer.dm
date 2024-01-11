@@ -18,7 +18,7 @@
 // It can be manually refilled or by clicking on a storage item containing lights.
 // If it's part of a robot module, it will charge when the Robot is inside a Recharge Station.
 //
-// EMAGGED FEATURES
+// OBJ_EMAGGED FEATURES
 //
 // NOTICE: The Cyborg cannot use the emagged Light Replacer and the light's explosion was nerfed. It cannot create holes in the station anymore.
 //
@@ -69,17 +69,18 @@
 	. += "It has [uses] lights remaining."
 
 /obj/item/lightreplacer/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/stack/material) && W.get_material_name() == "glass")
-		var/obj/item/stack/G = W
-		if(uses >= max_uses)
-			to_chat(user, "<span class='warning'>[src.name] is full.</span>")
-			return
-		else if(G.use(1))
-			add_uses(16) //Autolathe converts 1 sheet into 16 lights.
-			to_chat(user, "<span class='notice'>You insert a piece of glass into \the [src.name]. You have [uses] light\s remaining.</span>")
-			return
-		else
-			to_chat(user, "<span class='warning'>You need one sheet of glass to replace lights.</span>")
+	if(istype(W, /obj/item/stack/material))
+		var/obj/item/stack/material/G = W
+		if(G.material.type == /datum/material/glass)
+			if(uses >= max_uses)
+				to_chat(user, "<span class='warning'>[src.name] is full.</span>")
+				return
+			else if(G.use(1))
+				add_uses(16) //Autolathe converts 1 sheet into 16 lights.
+				to_chat(user, "<span class='notice'>You insert a piece of glass into \the [src.name]. You have [uses] light\s remaining.</span>")
+				return
+			else
+				to_chat(user, "<span class='warning'>You need one sheet of glass to replace lights.</span>")
 
 	if(istype(W, /obj/item/light))
 		var/obj/item/light/L = W

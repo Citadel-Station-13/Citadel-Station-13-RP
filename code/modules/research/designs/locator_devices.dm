@@ -1,7 +1,7 @@
 /datum/design/science/gps
 	abstract_type = /datum/design/science/gps
 	req_tech = list(TECH_MATERIAL = 2, TECH_DATA = 2, TECH_BLUESPACE = 2)
-	materials = list(MAT_STEEL = 500)
+	materials_base = list(MAT_STEEL = 500)
 
 /datum/design/science/gps/generate_name(template)
 	return "Triangulating device design ([..()])"
@@ -57,12 +57,12 @@
 	desc = "Used to scan and locate signals on a particular frequency."
 	id = "beacon_locator"
 	req_tech = list(TECH_MAGNET = 3, TECH_ENGINEERING = 2, TECH_BLUESPACE = 3)
-	materials = list(MAT_STEEL = 1000, MAT_GLASS = 500)
+	materials_base = list(MAT_STEEL = 1000, MAT_GLASS = 500)
 	build_path = /obj/item/beacon_locator
 
 /datum/design/science/locator/beacon
 	design_name = "Bluespace tracking beacon"
 	id = "beacon"
 	req_tech = list(TECH_BLUESPACE = 1)
-	materials = list (MAT_STEEL = 20, MAT_GLASS = 10)
+	materials_base = list (MAT_STEEL = 20, MAT_GLASS = 10)
 	build_path = /obj/item/radio/beacon

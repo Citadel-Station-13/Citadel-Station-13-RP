@@ -8,10 +8,8 @@
 	glass = 1
 	autoset_dir = FALSE
 	icon = 'icons/obj/doors/elevator/door.dmi'
-	fill_file = 'icons/obj/doors/elevator/fill_steel.dmi'
-	glass_file = 'icons/obj/doors/elevator/fill_glass.dmi'
+	fill_file = 'icons/obj/doors/elevator/fill_glass.dmi'
 	bolts_file = 'icons/obj/doors/elevator/lights_bolts.dmi'
-	deny_file = 'icons/obj/doors/elevator/lights_deny.dmi'
 	lights_file = 'icons/obj/doors/elevator/lights_green.dmi'
 
 	var/datum/turbolift/lift

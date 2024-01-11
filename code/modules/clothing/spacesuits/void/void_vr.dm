@@ -115,7 +115,8 @@
 	icon_state = "autoloksuit"
 	item_state = "autoloksuit"
 	armor_type = /datum/armor/autolok/space
-	slowdown = 0.5
+	encumbrance = ITEM_ENCUMBRANCE_VOIDSUIT_LIGHT
+	weight = ITEM_WEIGHT_VOIDSUIT_LIGHT
 	siemens_coefficient = 1
 	species_restricted = list("exclude",SPECIES_DIONA,SPECIES_VOX) //this thing can autoadapt
 	breach_threshold = 6 //this thing is basically tissue paper

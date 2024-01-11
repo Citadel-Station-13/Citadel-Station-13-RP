@@ -1,4 +1,6 @@
-//Some defines to generalise colours used in lighting.
+//* Some defines to generalise colours used in lighting.
+//* This file also contains powers/ranges, because power really does matter for lighting.
+
 //! ## GENERAL COLORS
 //? Important note on colors. Colors can end up significantly different from the basic html picture, especially when saturated!
 #define LIGHT_COLOR_WHITE       "#FFFFFF" // rgb(255, 255, 255) Pure white.
@@ -34,4 +36,13 @@
 #define LIGHT_COLOR_INCANDESCENT_TUBE       "#E0EFF0" // rgb(224, 239, 240) Slightly blueish white.
 #define LIGHT_COLOR_INCANDESCENT_BULB       "#FFFEB8" // rgb(255, 254, 184) Slightly yellowish white.
 #define LIGHT_COLOR_INCANDESCENT_FLASHLIGHT "#FFCC66" // rgb(255, 204, 102) Slightly yellowish white.
-#define LIGHT_COLOR_NIGHTSHIFT              "#616191" // rgb(97, 97, 145) Dark blue.
+
+/// Nightshift Light Color
+/// Used on full-strength light tubes.
+#define LIGHT_COLOR_NIGHTSHIFT              "#c7c7ff"
+/// Nightshift Light Power
+/// Used on full-strength light tubes.
+#define LIGHT_POWER_NIGHTSHIFT                0.435
+/// Nightshift Light Range
+/// Used on full-strength light tubes.
+#define LIGHT_RANGE_NIGHTSHIFT                7

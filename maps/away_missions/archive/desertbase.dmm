@@ -8,7 +8,8 @@
 "ac" = (
 /obj/structure/grille{
 	desc = "A sturdy lattice of metal rods, with screws to secure it to the ground.";
-	health = 300;
+	integrity = 300;
+	integrity_max = 300;
 	name = "fence"
 	},
 /turf/simulated/floor/light,

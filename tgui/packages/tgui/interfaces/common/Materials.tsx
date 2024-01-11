@@ -43,7 +43,7 @@ export interface DetailedMaterial extends Material {
 }
 
 interface MaterialStorageProps extends MaterialRenderProps {
-  eject: (string, number) => void; // called with (id, sheets).
+  readonly eject: (string, number) => void; // called with (id, sheets).
 }
 
 export const MaterialStorage = (props: MaterialStorageProps, context) => {
@@ -55,7 +55,7 @@ export const MaterialStorage = (props: MaterialStorageProps, context) => {
         return (
           <>
             {props.materialButtons}
-            <NumberInput width={3} value={ejectAmt} onChange={(e, v) => setEjectAmt(v)} />
+            <NumberInput width={3} value={ejectAmt} minValue={1} onChange={(e, v) => setEjectAmt(v)} />
             <Button
               icon="eject"
               onClick={() => props.eject(id, ejectAmt)} />
@@ -67,14 +67,14 @@ export const MaterialStorage = (props: MaterialStorageProps, context) => {
 };
 
 interface MaterialRenderProps extends SectionProps {
-  horizontal?: BooleanLike;
-  materialContext: MaterialsContext;
+  readonly horizontal?: BooleanLike;
+  readonly materialContext: MaterialsContext;
   // id to number
-  materialList: Record<string, number>;
+  readonly materialList: Record<string, number>;
   // id map to an element to render below/to the side respectively for vertical/horizontal
-  materialButtons?: (id) => InfernoNode;
+  readonly materialButtons?: (id) => InfernoNode;
   // icon scale factor
-  materialScale?: number;
+  readonly materialScale?: number;
 }
 
 export const MaterialRender = (props: MaterialRenderProps, context) => {
@@ -100,13 +100,14 @@ export const MaterialRender = (props: MaterialRenderProps, context) => {
               <Stack.Item key={id}>
                 <Stack vertical align="center">
                   <Stack.Item>
-                    <Sprite
-                      sheet={MATERIAL_SPRITESHEET_NAME}
-                      sizeKey={MATERIAL_SPRITESHEET_SIZEKEY}
-                      style={{ transform: `scale(${scale})` }}
-                      prefix="stack"
-                      sprite={props.materialContext.materials[id].iconKey} />
-                    <Tooltip position="bottom" content={`${toTitleCase(props.materialContext.materials[id].name)}`} />
+                    <Tooltip position="bottom" content={`${toTitleCase(props.materialContext.materials[id].name)}`}>
+                      <Sprite
+                        sheet={MATERIAL_SPRITESHEET_NAME}
+                        sizeKey={MATERIAL_SPRITESHEET_SIZEKEY}
+                        style={{ transform: `scale(${scale})` }}
+                        prefix="stack"
+                        sprite={props.materialContext.materials[id].iconKey} />
+                    </Tooltip>
                   </Stack.Item>
                   <Stack.Item>
                     {renderMaterialAmount(amt)}

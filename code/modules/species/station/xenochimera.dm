@@ -1,3 +1,7 @@
+/datum/physiology_modifier/intrinsic/species/xenochimera
+	carry_strength_add = CARRY_STRENGTH_ADD_XENOCHIMERA
+	carry_strength_factor = CARRY_FACTOR_MOD_XENOCHIMERA
+
 /datum/species/shapeshifter/xenochimera //Scree's race.
 	uid = SPECIES_ID_XENOCHIMERA
 	id = SPECIES_ID_XENOCHIMERA
@@ -5,6 +9,7 @@
 	name_plural = "Xenochimeras"
 	base_species = SPECIES_XENOCHIMERA
 	category = "Special"
+	mob_physiology_modifier = /datum/physiology_modifier/intrinsic/species/xenochimera
 
 	selects_bodytype = TRUE
 
@@ -104,6 +109,7 @@
 		/mob/living/carbon/human/proc/hide_horns,
 		/mob/living/carbon/human/proc/hide_wings,
 		/mob/living/carbon/human/proc/hide_tail,
+		/mob/living/proc/set_size,
 		/mob/living/proc/shred_limb,
 		/mob/living/proc/eat_trash,
 		/mob/living/proc/glow_toggle,
@@ -790,6 +796,12 @@
 	nutrition_cost_proportional = 1
 	nutrition_enforced = FALSE
 
+/datum/ability/species/xenochimera/hatch/check_trigger(mob/user, toggling, feedback)
+	if(!..())
+		return FALSE
+	else
+		return alert("Are you sure you want to use Hatch Stasis? This takes ten minutes and cannot be cancelled!", "Confirm Hatch", "Yes", "No") == "Yes"
+
 /datum/ability/species/xenochimera/hatch/on_trigger()
 	. = ..()
 	if(ishuman(owner))
@@ -876,9 +888,16 @@
 	var/target = null
 	var/text = null
 
-	for(var/datum/mind/possible_target in SSticker.minds)	//not us, on the station and not a synthetic
-		if (istype(possible_target.current, /mob/living) && possible_target != owner.mind && isStationLevel(get_z(possible_target.current)) && !possible_target.current.isSynthetic())
-			LAZYADD(targets,possible_target.current)
+//If the target is not a synth, not us, and a valid mob
+	for(var/datum/mind/possible_target in SSticker.minds)
+		if (istype(possible_target.current, /mob/living))
+			if(possible_target != owner.mind)
+				if(!possible_target.current.isSynthetic())
+					if(isStationLevel(get_z(owner)))									//If we're on station, go through the station
+						if(isStationLevel(get_z(possible_target.current)))
+							LAZYADD(targets,possible_target.current)
+					else if (get_z(owner) == get_z(possible_target.current))			//Otherwise, go through the z level we're on
+						LAZYADD(targets,possible_target.current)
 
 	target = input("Select a creature!", "Speak to creature", null, null) as null|anything in targets
 	if(!target)

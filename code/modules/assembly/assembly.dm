@@ -11,7 +11,7 @@
 	icon = 'icons/obj/assemblies/new_assemblies.dmi'
 	icon_state = ""
 	w_class = ITEMSIZE_SMALL
-	materials = list(MAT_STEEL = 100)
+	materials_base = list(MAT_STEEL = 100)
 	throw_force = 2
 	throw_speed = 3
 	throw_range = 10
@@ -107,7 +107,7 @@
 	ui_interact(user)
 	return TRUE
 
-/obj/item/device/assembly/ui_state(mob/user, datum/tgui_module/module)
+/obj/item/device/assembly/ui_state()
 	return GLOB.deep_inventory_state
 
 /obj/item/device/assembly/ui_interact(mob/user, datum/tgui/ui)

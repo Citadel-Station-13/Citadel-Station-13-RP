@@ -204,7 +204,7 @@
 	var/cleaned = 0
 	for(var/turf/T as anything in cleaning)
 		for(var/atom/movable/AM as anything in T)
-			if(!(AM.atom_flags & ATOM_ABSTRACT))
+			if(AM.atom_flags & (ATOM_ABSTRACT | ATOM_NONWORLD))
 				continue
 			qdel(AM)
 			++cleaned

@@ -32,7 +32,7 @@ LINEN BINS
 	add_fingerprint(user)
 
 /obj/item/bedsheet/attackby(obj/item/I, mob/user)
-	if(is_sharp(I))
+	if(is_sharp(I) || I.tool_check(TOOL_WIRECUTTER))
 		user.visible_message("<span class='notice'>\The [user] begins cutting up [src] with [I].</span>", "<span class='notice'>You begin cutting up [src] with [I].</span>")
 		if(do_after(user, 50))
 			to_chat(user, "<span class='notice'>You cut [src] into pieces!</span>")

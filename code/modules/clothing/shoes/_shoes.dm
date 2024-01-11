@@ -25,7 +25,6 @@
 	var/step_volume_mod = 1	//How quiet or loud footsteps in this shoe are
 
 	permeability_coefficient = 0.50
-	slowdown = SHOES_SLOWDOWN
 	damage_force = 2
 	var/overshoes = 0
 	species_restricted = list("exclude",SPECIES_TESHARI, SPECIES_VOX)
@@ -79,6 +78,7 @@
 	 istype(I, /obj/item/material/kitchen/utensil) || \
 	 istype(I, /obj/item/storage/box/survival_knife) ||\
 	 istype(I, /obj/item/material/knife/stiletto) ||\
+	 istype(I, /obj/item/gps/dataknife) ||\
 	 istype(I, /obj/item/material/knife/tacknife)))
 		if(holding)
 			to_chat(user, "<span class='warning'>\The [src] is already holding \a [holding].</span>")

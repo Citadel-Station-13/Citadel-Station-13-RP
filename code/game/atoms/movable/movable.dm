@@ -203,21 +203,6 @@
 		if(mover.loc in locs)
 			. = TRUE
 
-//Overlays
-/atom/movable/overlay
-	var/atom/master = null
-	anchored = TRUE
-
-/atom/movable/overlay/attackby(a, b)
-	if (src.master)
-		return src.master.attackby(a, b)
-	return
-
-/atom/movable/overlay/attack_hand(a, b, c)
-	if (src.master)
-		return src.master.attack_hand(a, b, c)
-	return
-
 /atom/movable/proc/touch_map_edge()
 	if(z in (LEGACY_MAP_DATUM).sealed_levels)
 		return
@@ -481,13 +466,19 @@
 	update_emissive_layers()
 
 //? Pixel Offsets
-/atom/movable/get_centering_pixel_x_offset(dir, atom/aligning)
+/atom/movable/get_centering_pixel_x_offset(dir)
 	. = ..()
 	. *= icon_scale_x
 
-/atom/movable/get_centering_pixel_y_offset(dir, atom/aligning)
+/atom/movable/get_centering_pixel_y_offset(dir)
 	. = ..()
 	. *= icon_scale_y
+
+/atom/movable/proc/get_buckled_x_offset(atom/buckled)
+	return buckle_pixel_x
+
+/atom/movable/proc/get_buckled_y_offset(atom/buckled)
+	return buckle_pixel_y
 
 //? Emissives
 /atom/movable/proc/update_emissive_layers()

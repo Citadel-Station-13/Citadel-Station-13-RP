@@ -33,7 +33,7 @@
 			if(ishuman(user))
 				user.put_in_hands(I)
 			else
-				I.loc = get_turf(src)
+				I.forceMove(get_turf(src))
 			to_chat(user, "<span class='notice'>You find \an [I] in the cistern.</span>")
 			w_items -= I.w_class
 			return
@@ -554,13 +554,13 @@
 	var/plunge_mod = 1 //time*plunge_mod = total time we take to plunge an object
 	var/reinforced = FALSE //whether we do heavy duty stuff like geysers
 
-/obj/item/plunger/pre_attack(atom/target, mob/user, clickchain_flags, list/params)
-	if(!isobj(target))
-		return ..()
-	var/obj/O = target
-	if(O.plunger_act(src, user, reinforced))
-		return CLICKCHAIN_DO_NOT_PROPAGATE
-	return ..()
+// /obj/item/plunger/pre_attack(atom/target, mob/user, clickchain_flags, list/params)
+// 	if(!isobj(target))
+// 		return ..()
+// 	var/obj/O = target
+// 	if(O.plunger_act(src, user, reinforced))
+// 		return CLICKCHAIN_DO_NOT_PROPAGATE
+// 	return ..()
 
 /obj/item/plunger/throw_impact(atom/hit_atom, mob/living/carbon/human/target, target_zone)
 	. = ..()

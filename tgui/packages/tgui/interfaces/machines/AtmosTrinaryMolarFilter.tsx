@@ -8,12 +8,12 @@ import { Section, SectionProps } from "../../components/Section";
 import { AtmosComponent, AtmosComponentData } from "../common/AtmosMachine";
 
 interface AtmosTrinaryMolarFilterControlProps extends SectionProps {
-  invert: BooleanLike;
-  lower: number;
-  upper: number;
-  setLower: (mass: number) => void;
-  setUpper: (mass: number) => void;
-  toggleInvert: (on: boolean) => void;
+  readonly invert: BooleanLike;
+  readonly lower: number;
+  readonly upper: number;
+  readonly setLower: (mass: number) => void;
+  readonly setUpper: (mass: number) => void;
+  readonly toggleInvert: (on: boolean) => void;
 }
 
 export const AtmosTrinaryMolarFilterControl = (props: AtmosTrinaryMolarFilterControlProps, context) => {

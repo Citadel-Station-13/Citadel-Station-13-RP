@@ -158,12 +158,12 @@
 
 /datum/loadout_entry/donator/carcharodon
 	name = "Carcharodon Suit"
-	path = /obj/item/clothing/under/carcharodon
+	path = /obj/item/clothing/under/donator/carcharodon
 	ckeywhitelist = list("desucake")
 
 /datum/loadout_entry/donator/mantleofheaven
 	name = "Mantle of the Heavens"
-	path = /obj/item/clothing/under/mantleofheaven
+	path = /obj/item/clothing/under/donator/mantleofheaven
 	ckeywhitelist = list("hjorthorn")
 
 /datum/loadout_entry/donator/kepytw
@@ -275,3 +275,8 @@
 	name = "Noah's Cloak"
 	path = /obj/item/clothing/suit/storage/hooded/donatornoahcloak
 	ckeywhitelist = list("rainbyplays")
+
+/datum/loadout_entry/donator/kenjyu
+	name = "Kenjyu Kimono"
+	path = /obj/item/clothing/under/donator/kenjyu
+	ckeywhitelist = list("grapepantasoda")

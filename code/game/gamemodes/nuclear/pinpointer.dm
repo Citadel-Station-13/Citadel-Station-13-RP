@@ -7,7 +7,7 @@
 	item_state = "electronic"
 	throw_speed = 4
 	throw_range = 20
-	materials = list(MAT_STEEL = 500)
+	materials_base = list(MAT_STEEL = 500)
 	preserve_item = 1
 	var/obj/item/disk/nuclear/the_disk = null
 	var/active = 0

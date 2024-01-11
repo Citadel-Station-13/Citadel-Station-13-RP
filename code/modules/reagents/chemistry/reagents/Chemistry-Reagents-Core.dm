@@ -169,6 +169,9 @@
 	glass_name = "water"
 	glass_desc = "The father of all refreshments."
 
+	cup_name = "water"
+	cup_desc = "The father of all refreshments."
+
 /datum/reagent/water/touch_turf(turf/simulated/T)
 	if(!istype(T))
 		return
@@ -208,8 +211,10 @@
 		// First, kill slimes.
 		if(istype(L, /mob/living/simple_mob/slime))
 			var/mob/living/simple_mob/slime/S = L
-			S.adjustToxLoss(15 * amount)
-			S.visible_message("<span class='warning'>[S]'s flesh sizzles where the water touches it!</span>", "<span class='danger'>Your flesh burns in the water!</span>")
+			var/amt = 15 * amount * (1-S.water_resist)
+			if(amt>0)
+				S.adjustToxLoss(amt)
+				S.visible_message("<span class='warning'>[S]'s flesh sizzles where the water touches it!</span>", "<span class='danger'>Your flesh burns in the water!</span>")
 
 		// Then extinguish people on fire.
 		var/needed = L.fire_stacks * 5

@@ -7,17 +7,7 @@
 	icon_state = "bodybag_folded"
 	item_state = "bodybag_cryo_folded"
 	origin_tech = list(TECH_ENGINEERING = 3)
-
-/obj/item/bodybag/cryobag/robobag/attack_self(mob/user)
-	. = ..()
-	if(.)
-		return
-	var/obj/structure/closet/body_bag/cryobag/robobag/R = new /obj/structure/closet/body_bag/cryobag/robobag(user.loc)
-	R.add_fingerprint(user)
-	if(syringe)
-		R.syringe = syringe
-		syringe = null
-	qdel(src)
+	bag_type = /obj/structure/closet/body_bag/cryobag/robobag
 
 /obj/structure/closet/body_bag/cryobag/robobag
 	name = "synthmorph bag"
@@ -76,10 +66,7 @@
 	if(ishuman(AM))
 		var/mob/living/carbon/human/H = AM
 		if(H.isSynthetic())
-			if(H.getToxLoss() == 0)	// We don't exactly care about the bag being 'used' when containing a synth, unless it's got work.
-				used = FALSE
-			else
-				H.add_modifier(/datum/modifier/fbp_debug/robobag)
+			H.add_modifier(/datum/modifier/fbp_debug/robobag)
 
 /obj/structure/closet/body_bag/cryobag/robobag/attackby(obj/item/W, mob/user)
 	if(opened)
@@ -88,7 +75,7 @@
 		if(istype(W,/obj/item/robotanalyzer))
 			var/obj/item/robotanalyzer/analyzer = W
 			for(var/mob/living/L in contents)
-				analyzer.melee_attack_chain(L,user)
+				analyzer.melee_interaction_chain(L,user)
 
 		else if(istype(W, /obj/item/clothing/accessory/badge))
 			if(corptag)

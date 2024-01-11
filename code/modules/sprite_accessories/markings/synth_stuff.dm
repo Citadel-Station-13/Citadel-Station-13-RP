@@ -16,6 +16,13 @@
 	color_blend_mode = ICON_MULTIPLY
 	body_parts = list(BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_L_HAND,BP_R_HAND,BP_TORSO)
 
+/datum/sprite_accessory/marking/synth/spirit_lights_torso
+	name = "Ward - Spirit FBP Lights (torso)"
+	id = "marking_synth_spirit_torso"
+	icon_state = "lights"
+	color_blend_mode = ICON_MULTIPLY
+	body_parts = list(BP_TORSO)
+
 /datum/sprite_accessory/marking/synth/spirit_lights_head
 	name = "Ward - Spirit FBP Lights (head)"
 	id = "marking_synth_spirit_head"
@@ -36,6 +43,13 @@
 	icon_state = "panels"
 	color_blend_mode = ICON_MULTIPLY
 	body_parts = list(BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_L_HAND,BP_R_HAND,BP_GROIN,BP_TORSO)
+
+/datum/sprite_accessory/marking/synth/spirit_panels_torso
+	name = "Ward - Spirit FBP Panels (torso)"
+	id = "marking_synth_spirit_panel_torso"
+	icon_state = "panels"
+	color_blend_mode = ICON_MULTIPLY
+	body_parts = list(BP_GROIN,BP_TORSO)
 
 /datum/sprite_accessory/marking/synth/spirit_panels_feet
 	name = "Ward - Spirit FBP Panels (feet)"
@@ -156,3 +170,47 @@
 	icon_state = "synthliz_eyes"
 	color_blend_mode = ICON_MULTIPLY
 	body_parts = list(BP_HEAD)
+
+// Replika
+
+/datum/sprite_accessory/marking/synth/replika_r_thigh
+	name = "Replikant Stripe - Right Thigh"
+	id = "marking_replika_r_thigh"
+	icon_state = "replika"
+	color_blend_mode = ICON_MULTIPLY
+	body_parts = list(BP_R_LEG)
+
+/datum/sprite_accessory/marking/synth/replika_r_knee
+	name = "Replikant Stripe - Right Knee"
+	id = "marking_replika_r_knee"
+	icon_state = "replika"
+	color_blend_mode = ICON_MULTIPLY
+	body_parts = list(BP_R_FOOT)
+
+/datum/sprite_accessory/marking/synth/replika_l_thigh
+	name = "Replikant Stripe - Left Thigh"
+	id = "marking_replika_l_thigh"
+	icon_state = "replika"
+	color_blend_mode = ICON_MULTIPLY
+	body_parts = list(BP_L_LEG)
+
+/datum/sprite_accessory/marking/synth/replika_l_knee
+	name = "Replikant Stripe - Left Knee"
+	id = "marking_replika_l_knee"
+	icon_state = "replika"
+	color_blend_mode = ICON_MULTIPLY
+	body_parts = list(BP_L_FOOT)
+
+/datum/sprite_accessory/marking/synth/replika_panels_body
+	name = "Replikant Paneling - SynthFlesh (body)"
+	id = "marking_replika_panel_body"
+	icon_state = "replika"
+	color_blend_mode = ICON_MULTIPLY
+	body_parts = list(BP_TORSO)
+
+/datum/sprite_accessory/marking/synth/replika_panels_groin
+	name = "Replikant Paneling - SynthFlesh (groin)"
+	id = "marking_replika_panel_groin"
+	icon_state = "replika"
+	color_blend_mode = ICON_MULTIPLY
+	body_parts = list(BP_GROIN)

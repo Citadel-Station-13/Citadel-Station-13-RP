@@ -36,8 +36,8 @@
 	response_disarm = "gently pushes aside"
 	response_harm   = "kicks"
 
-	melee_damage_lower = 5
-	melee_damage_upper = 10
+	legacy_melee_damage_lower = 5
+	legacy_melee_damage_upper = 10
 	attacktext = list("kicked","impales","gores")
 
 	say_list_type = /datum/say_list/goat
@@ -131,8 +131,8 @@
 	response_disarm = "gently pushes aside"
 	response_harm   = "kicks"
 
-	melee_damage_lower = 1
-	melee_damage_upper = 5
+	legacy_melee_damage_lower = 1
+	legacy_melee_damage_upper = 5
 	attacktext = list("angrily nudges")
 
 	meat_amount = 4
@@ -193,8 +193,8 @@
 	maxHealth = 50
 	health = 50
 
-	melee_damage_lower = 1
-	melee_damage_upper = 3
+	legacy_melee_damage_lower = 1
+	legacy_melee_damage_upper = 3
 
 	movement_cooldown = 8
 

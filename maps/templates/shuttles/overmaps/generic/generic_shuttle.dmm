@@ -330,8 +330,7 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/generic_shuttle/gen)
@@ -491,7 +490,7 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/alarms_hidden/south_bump,
+/obj/machinery/power/apc/alarms_hidden/south_mount,
 /turf/simulated/floor/tiled{
 	icon_state = "monotile"
 	},
@@ -701,7 +700,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/plating,
 /area/shuttle/generic_shuttle/eng)
 "bz" = (

@@ -26,5 +26,4 @@
 
 /datum/event/canister_leak/proc/break_canister(var/obj/machinery/portable_atmospherics/canister/C)
 	log_debug(SPAN_DEBUGWARNING("canister_leak event: Canister [C] ([C.x],[C.y],[C.z]) destroyed."))
-	C.health = 0
-	C.healthcheck()
+	C.atom_break()

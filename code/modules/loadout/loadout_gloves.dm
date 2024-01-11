@@ -136,3 +136,11 @@
 /datum/loadout_entry/gloves/utility_fur_gloves
 	name = "Utility Fur Gloves"
 	path = /obj/item/clothing/gloves/utility_fur_gloves
+
+/datum/loadout_entry/gloves/armsock_alt
+	name = "Fingerless Sleeves (Simple)"
+	path = /obj/item/clothing/gloves/armsocks
+
+/datum/loadout_entry/gloves/ante_gloves
+	name = "Antediluvian Gloves"
+	path = /obj/item/clothing/gloves/ante_gloves

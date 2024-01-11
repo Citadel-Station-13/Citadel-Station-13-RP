@@ -26,16 +26,16 @@ export type ObjectiveUiButton = {
 }
 
 type ObjectiveMenuProps = {
-  activeObjectives: Objective[];
-  potentialObjectives: Objective[];
-  maximumActiveObjectives: number;
-  maximumPotentialObjectives: number;
+  readonly activeObjectives: Objective[];
+  readonly potentialObjectives: Objective[];
+  readonly maximumActiveObjectives: number;
+  readonly maximumPotentialObjectives: number;
 
-  handleStartObjective: (objective: Objective) => void;
-  handleObjectiveAction: (objective: Objective, action: string) => void;
-  handleObjectiveCompleted: (objective: Objective) => void;
-  handleObjectiveAbort: (objective: Objective) => void;
-  handleRequestObjectives: () => void;
+  readonly handleStartObjective: (objective: Objective) => void;
+  readonly handleObjectiveAction: (objective: Objective, action: string) => void;
+  readonly handleObjectiveCompleted: (objective: Objective) => void;
+  readonly handleObjectiveAbort: (objective: Objective) => void;
+  readonly handleRequestObjectives: () => void;
 }
 
 type ObjectiveMenuState = {
@@ -348,21 +348,21 @@ const ObjectiveFunction = (
 };
 
 type ObjectiveElementProps = {
-  name: string;
-  reputation: Rank;
-  description: string;
-  telecrystalReward: number;
-  progressionReward: number;
-  uiButtons?: JSX.Element;
-  objectiveState: ObjectiveState;
-  originalProgression: number;
-  telecrystalPenalty: number;
-  grow: boolean;
-  finalObjective: BooleanLike;
-  canAbort: BooleanLike;
+  readonly name: string;
+  readonly reputation: Rank;
+  readonly description: string;
+  readonly telecrystalReward: number;
+  readonly progressionReward: number;
+  readonly uiButtons?: JSX.Element;
+  readonly objectiveState: ObjectiveState;
+  readonly originalProgression: number;
+  readonly telecrystalPenalty: number;
+  readonly grow: boolean;
+  readonly finalObjective: BooleanLike;
+  readonly canAbort: BooleanLike;
 
-  handleCompletion: (event: MouseEvent) => void;
-  handleAbort: (event: MouseEvent) => void;
+  readonly handleCompletion: (event: MouseEvent) => void;
+  readonly handleAbort: (event: MouseEvent) => void;
 }
 
 const ObjectiveElement = (props: ObjectiveElementProps, context) => {

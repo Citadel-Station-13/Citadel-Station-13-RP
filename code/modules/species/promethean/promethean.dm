@@ -21,6 +21,7 @@ var/datum/species/shapeshifter/promethean/prometheans
 	catalogue_data = list(/datum/category_item/catalogue/fauna/promethean)
 
 	max_additional_languages = 4
+	intrinsic_languages = LANGUAGE_ID_PROMETHEAN
 	assisted_langs   = list(LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX) // Prometheans are weird, let's just assume they can use basically any language.
 
 	show_ssd = "totally quiescent"
@@ -167,7 +168,7 @@ var/datum/species/shapeshifter/promethean/prometheans
 	))	//Only pick the empty types
 
 	var/obj/item/storage/toolbox/lunchbox/L = new boxtype(get_turf(H))
-	new /obj/item/reagent_containers/food/snacks/candy/proteinbar(L)
+	new /obj/item/reagent_containers/food/snacks/wrapped/proteinbar(L)
 	new /obj/item/tool/prybar/red(L)
 	if(H.backbag == 1)
 		H.equip_to_slot_or_del(L, /datum/inventory_slot_meta/abstract/hand/right)

@@ -203,7 +203,6 @@
 /obj/item/clothing/shoes/boots/swat/para
 	name = "PARA boots"
 	desc = "PMD issued gloves, stamped with protective seals and spells."
-	icon_state = "para_ert_boots"
 	action_button_name = "Enable Boot Sigils"
 
 	var/blessed = FALSE
@@ -240,6 +239,16 @@
 	desc = "These boots seem to have been designed for a cloven foot. They're honestly pretty uncomfortable to wear."
 	icon = 'icons/clothing/suit/armor/utilitarian.dmi'
 	icon_state = "tauboots"
+	siemens_coefficient = 0.7
+	drop_sound = 'sound/items/drop/boots.ogg'
+	pickup_sound = 'sound/items/pickup/boots.ogg'
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/shoes/boots/baroque
+	name = "baroque military boots"
+	desc = "Small icons of religious significance have been carved into the soles, spreading holiness wherever the wearer treads."
+	icon = 'icons/clothing/suit/armor/baroque.dmi'
+	icon_state = "sisterboots"
 	siemens_coefficient = 0.7
 	drop_sound = 'sound/items/drop/boots.ogg'
 	pickup_sound = 'sound/items/pickup/boots.ogg'

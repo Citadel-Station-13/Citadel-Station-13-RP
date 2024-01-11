@@ -1,5 +1,3 @@
-GLOBAL_LIST_EMPTY(cached_previews)
-
 /datum/description_profile
 	var/datum/weakref/host
 
@@ -14,7 +12,7 @@ GLOBAL_LIST_EMPTY(cached_previews)
 /datum/description_profile/ui_state()
 	return GLOB.always_state
 
-/datum/description_profile/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/datum/description_profile/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	var/data[0]
 	var/mob/living/carbon/human/H = host.resolve()

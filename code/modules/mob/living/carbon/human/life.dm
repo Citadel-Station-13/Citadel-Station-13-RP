@@ -424,10 +424,19 @@
 		else
 			adjustOxyLoss(HUMAN_CRIT_MAX_OXYLOSS)
 
+		// todo: this is technically not physics-ally accurate
+		// basically, people's lungs rupture when breathing null gasmixes even in atmos
+		// this mechanic shouldn't be for that as we don't exactly need to simulate vacuum pumps killing people or something
+		// so we just add a quick and dirty check for environment
 		if(breath && should_have_organ(O_LUNGS))
-			var/obj/item/organ/internal/lungs/L = internal_organs_by_name[O_LUNGS]
-			if(!L.is_bruised() && prob(8))
-				rupture_lung()
+			var/turf/our_location = get_turf(src)
+			//* returned air is immutable - do not edit *//
+			var/datum/gas_mixture/our_location_air = our_location.return_air_immutable()
+			var/external_vacuum = our_location_air.return_pressure() < 5
+			if(external_vacuum)
+				var/obj/item/organ/internal/lungs/L = internal_organs_by_name[O_LUNGS]
+				if(!L.is_bruised() && prob(8))
+					rupture_lung()
 
 		oxygen_alert = max(oxygen_alert, 1)
 
@@ -646,8 +655,8 @@
 		else
 			temp_adj /= (BODYTEMP_HEAT_DIVISOR * 5)	//don't raise temperature as much as if we were directly exposed
 
-		var/relative_density = breath.total_moles / (MOLES_CELLSTANDARD * BREATH_PERCENTAGE)
-		temp_adj *= relative_density
+		var/density = breath.total_moles / (MOLES_CELLSTANDARD * BREATH_PERCENTAGE)
+		temp_adj *= density
 
 		if (temp_adj > BODYTEMP_HEATING_MAX) temp_adj = BODYTEMP_HEATING_MAX
 		if (temp_adj < BODYTEMP_COOLING_MAX) temp_adj = BODYTEMP_COOLING_MAX
@@ -753,8 +762,8 @@
 				temp_adj = (1-thermal_protection) * ((loc_temp - bodytemperature) / BODYTEMP_HEAT_DIVISOR)
 
 		//Use heat transfer as proportional to the gas density. However, we only care about the relative density vs standard 101 kPa/20 C air. Therefore we can use mole ratios
-		var/relative_density = environment.total_moles / MOLES_CELLSTANDARD
-		bodytemperature += between(BODYTEMP_COOLING_MAX, temp_adj*relative_density, BODYTEMP_HEATING_MAX)
+		var/density = environment.total_moles / MOLES_CELLSTANDARD
+		bodytemperature += between(BODYTEMP_COOLING_MAX, temp_adj*density, BODYTEMP_HEATING_MAX)
 
 	// +/- 50 degrees from 310.15K is the 'safe' zone, where no damage is dealt.
 	if(bodytemperature >= species.heat_level_1)

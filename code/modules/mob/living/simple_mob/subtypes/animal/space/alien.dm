@@ -58,8 +58,8 @@
 	randomized = TRUE
 
 	harm_intent_damage = 5
-	melee_damage_lower = 25
-	melee_damage_upper = 25
+	legacy_melee_damage_lower = 25
+	legacy_melee_damage_upper = 25
 	attack_sharp = TRUE
 	attack_edge = TRUE
 	taser_kill = 0
@@ -90,8 +90,8 @@
 	icon_rest = "aliend_sleep"
 	maxHealth = 300
 	health = 300
-	melee_damage_lower = 15
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 15
+	legacy_melee_damage_upper = 15
 	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/drone)
 
 /datum/category_item/catalogue/fauna/feral_alien/sentinel
@@ -112,8 +112,8 @@
 	icon_dead = "aliens_l"
 	icon_rest = "aliens_sleep"
 	health = 220
-	melee_damage_lower = 15
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 15
+	legacy_melee_damage_upper = 15
 	projectiletype = /obj/projectile/energy/neurotoxin
 	projectilesound = 'sound/weapons/pierce.ogg'
 	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/sentinel)
@@ -173,8 +173,8 @@
 	icon_rest = "alienq_sleep"
 	health = 750
 	maxHealth = 750
-	melee_damage_lower = 15
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 15
+	legacy_melee_damage_upper = 15
 	projectiletype = /obj/projectile/energy/neurotoxin/toxic
 	projectilesound = 'sound/weapons/pierce.ogg'
 	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/queen)
@@ -234,8 +234,8 @@
 	health = 1200
 	meat_amount = 10
 	hide_amount = 10
-	melee_damage_lower = 20
-	melee_damage_upper = 25
+	legacy_melee_damage_lower = 20
+	legacy_melee_damage_upper = 25
 	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/queen/empress/mother)
 
 	base_pixel_x = -32

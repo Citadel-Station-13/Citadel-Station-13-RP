@@ -208,7 +208,7 @@ const SignalLostModal = (props, context) => {
 };
 
 const DroneSelectionSection = (props: {
-  all_drones: Array<DroneBasicData>,
+  readonly all_drones: Array<DroneBasicData>,
 }, context) => {
   const { act } = useBackend<ExodroneConsoleData>(context);
   const { all_drones } = props;
@@ -305,8 +305,8 @@ const ToolSelectionModal = (props, context) => {
 };
 
 const EquipmentBox = (props: {
-  cargo: CargoData,
-  drone: DroneData,
+  readonly cargo: CargoData,
+  readonly drone: DroneData,
 }, context) => {
   const { act, data } = useBackend<ExodroneConsoleData>(context);
   const { all_tools = {} } = data;
@@ -389,7 +389,7 @@ const EquipmentBox = (props: {
 };
 
 const EquipmentGrid = (props: {
-  drone: ActiveDrone & DroneData,
+  readonly drone: ActiveDrone & DroneData,
 }, context) => {
   const { act } = useBackend<ExodroneConsoleData>(context);
   const {
@@ -455,8 +455,8 @@ const EquipmentGrid = (props: {
 };
 
 const DroneStatus = (props: {
-  drone_integrity: number,
-  drone_max_integrity: number,
+  readonly drone_integrity: number,
+  readonly drone_max_integrity: number,
 }, context) => {
   const {
     drone_integrity,
@@ -506,8 +506,8 @@ const NoSiteDimmer = () => {
 };
 
 const TravelTargetSelectionScreen = (props: {
-  drone: (DroneExploration | DroneIdle | DroneTravel) & DroneData,
-  showCancelButton?: boolean,
+  readonly drone: (DroneExploration | DroneIdle | DroneTravel) & DroneData,
+  readonly showCancelButton?: boolean,
 }, context) => {
   // List of sites and eta travel times to each
   const { act, data } = useBackend<ExodroneConsoleData>(context);
@@ -635,7 +635,7 @@ const TravelTargetSelectionScreen = (props: {
 };
 
 const TravelDimmer = (props: {
-  drone: DroneTravel,
+  readonly drone: DroneTravel,
 }, context) => {
   const { travel_time_left } = props.drone;
   return (
@@ -659,7 +659,7 @@ const TravelDimmer = (props: {
 };
 
 const TimeoutScreen = (props: {
-  drone: DroneBusy,
+  readonly drone: DroneBusy,
 }) => {
   const {
     wait_time_left,
@@ -687,7 +687,7 @@ const TimeoutScreen = (props: {
 };
 
 const ExplorationScreen = (props: {
-  drone: DroneExploration & DroneData,
+  readonly drone: DroneExploration & DroneData,
 }, context) => {
   const { act } = useBackend(context);
   const { drone } = props;
@@ -747,8 +747,8 @@ const ExplorationScreen = (props: {
 };
 
 const EventScreen = (props: {
-  drone: DroneData,
-  event: FullEventData,
+  readonly drone: DroneData,
+  readonly event: FullEventData,
 }, context) => {
   const { act } = useBackend(context);
   const { drone, event } = props;
@@ -807,10 +807,10 @@ const EventScreen = (props: {
 };
 
 export const AdventureScreen = (props: {
-  adventure_data: AdventureData,
-  drone_integrity: number,
-  drone_max_integrity: number,
-  hide_status?: boolean,
+  readonly adventure_data: AdventureData,
+  readonly drone_integrity: number,
+  readonly drone_max_integrity: number,
+  readonly hide_status?: boolean,
 }, context) => {
   const { act } = useBackend(context);
   const {
@@ -864,7 +864,7 @@ export const AdventureScreen = (props: {
 };
 
 const DroneScreen = (props: {
-  drone: ActiveDrone & DroneData,
+  readonly drone: ActiveDrone & DroneData,
 }) => {
   const { drone } = props;
 

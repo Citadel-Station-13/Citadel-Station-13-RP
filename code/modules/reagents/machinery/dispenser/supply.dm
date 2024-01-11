@@ -28,6 +28,16 @@
 	container_name = "soda dispenser crate"
 	group = "Reagents"
 
+/datum/supply_pack/coffee_dispenser
+	name = "Coffee dispenser"
+	contains = list(
+			/obj/machinery/chemical_dispenser/catering/bar_coffee/unanchored
+		)
+	cost = 20
+	container_type = /obj/structure/largecrate
+	container_name = "coffee dispenser crate"
+	group = "Reagents"
+
 /datum/supply_pack/reagent_synth_chemistry
 	name = "Reagent Synthesis Module - Chemistry"
 	contains = list(

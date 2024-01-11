@@ -7,9 +7,11 @@
 	desc = "A nuclear rod."
 	icon = 'icons/obj/machines/power/fission.dmi'
 	icon_state = "rod"
+	worn_render_flags = WORN_RENDER_INHAND_NO_RENDER | WORN_RENDER_SLOT_NO_RENDER
 	var/gasefficiency = 0.05
 	var/insertion = 0
 	integrity = 100
+	integrity_max = 100
 	var/life = 100
 	var/lifespan = 3600
 	var/reflective = 1
@@ -103,7 +105,7 @@
 	else if(life > 0)
 		if(decay_heat > 0 || apply_heat)
 			life = max(0, life - ((1 / lifespan) * applied_insertion * 100))
-		if(life == 0 && health > 0)
+		if(life == 0 && integrity > 0)
 			name = "depleted [name]"
 		else if(decay_heat > 0)
 			return ((decay_heat * (mass / molar_mass)) / lifespan) * (min(life, 100) / 100) * applied_insertion

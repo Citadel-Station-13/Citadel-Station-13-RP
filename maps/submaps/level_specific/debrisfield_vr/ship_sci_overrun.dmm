@@ -284,7 +284,7 @@
 /turf/simulated/floor/airless,
 /area/submap/debrisfield_vr/sci_overrun)
 "bb" = (
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /turf/simulated/floor/tiled/white/airless,
 /area/submap/debrisfield_vr/sci_overrun)
 "bc" = (

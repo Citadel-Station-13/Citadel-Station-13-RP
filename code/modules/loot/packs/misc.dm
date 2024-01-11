@@ -24,7 +24,7 @@
 
 /datum/prototype/struct/loot_pack/misc/clown/draw(amount)
 	return list(
-		/obj/item/ore/vaudium = isnull(amount)? rand(15, 25) : amount,
+		/obj/item/stack/ore/vaudium = isnull(amount)? rand(15, 25) : amount,
 	)
 
 /datum/prototype/struct/loot_pack/misc/clown/is_deterministic()
