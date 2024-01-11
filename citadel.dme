@@ -3403,6 +3403,7 @@
 #include "code\modules\mob\living\death.dm"
 #include "code\modules\mob\living\default_language.dm"
 #include "code\modules\mob\living\defense.dm"
+#include "code\modules\mob\living\emote.dm"
 #include "code\modules\mob\living\health.dm"
 #include "code\modules\mob\living\inventory.dm"
 #include "code\modules\mob\living\life.dm"

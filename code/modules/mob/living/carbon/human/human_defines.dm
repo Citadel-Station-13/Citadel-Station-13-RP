@@ -31,7 +31,6 @@
 	var/active_regen = FALSE
 	var/active_regen_delay = 300
 	/// Throws byond:tm: errors if placed in human/emote, but not here.
-	var/spam_flag = FALSE
 
 	hud_possible = list(
 		LIFE_HUD,
