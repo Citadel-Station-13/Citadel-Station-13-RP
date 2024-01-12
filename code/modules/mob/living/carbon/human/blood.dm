@@ -244,22 +244,17 @@
 
 //Transfers blood from container ot vessels
 /mob/living/carbon/proc/inject_blood(list/blood_data, amount)
-	#warn impl
-
-/mob/living/carbon/proc/inject_blood(var/datum/reagent/blood/injected, var/amount)
-	if (!injected || !istype(injected))
-		return
 	var/list/sniffles = virus_copylist(blood_data["virus2"])
 	for(var/ID in sniffles)
 		var/datum/disease2/disease/sniffle = sniffles[ID]
 		infect_virus2(src,sniffle,1)
 	if (blood_data["antibodies"] && prob(5))
 		antibodies |= blood_data["antibodies"]
-	var/list/chems = list()
-	chems = params2list(blood_data["trace_chem"])
-	for(var/C in chems)
-		src.reagents.add_reagent(C, (text2num(chems[C]) / species.blood_volume) * amount)//adds trace chemicals to owner's blood
-	reagents.update_total()
+	// var/list/chems = list()
+	// chems = params2list(blood_data["trace_chem"])
+	// for(var/C in chems)
+		// src.reagents.add_reagent(C, (text2num(chems[C]) / species.blood_volume) * amount)//adds trace chemicals to owner's blood
+	// reagents.update_total()
 
 /mob/living/carbon/human/inject_blood(list/blood_data, amount)
 	#warn impl
@@ -311,8 +306,6 @@
 	var/turf/where = get_turf(target)
 	if(isnull(where))
 		return
-
-	#warn if source is list, it's data list
 
 	// We're not going to splatter at all because we're in something and that's silly.
 	if(istype(source,/atom/movable))
