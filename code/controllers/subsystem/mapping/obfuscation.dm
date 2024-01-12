@@ -13,18 +13,39 @@
  * * By default, /datum/map (not /datum/map_level), /datum/map_template, /datum/shuttle_template are the three things that form new mangling boundaries/contexts.
  */
 /datum/controller/subsystem/mapping
-	/// "secret" key
-	var/obfuscation_secret
-	/// subtly obfuscated id lookup
-	var/list/obfuscation_cache
+	/// round ID prepend, used to ensure global-ness
+	var/static/round_global_descriptor
+	/// round-local hash storage for specific map ids
+	var/static/round_local_mangling_cache = list()
+	/// round-local hash storage for specific map ids, reverse lookup
+	var/static/round_local_mangling_reverse_cache = list()
 
-/datum/controller/subsystem/mapping/PreInit(recovering)
-	. = ..()
-	if(!obfuscation_secret)
-		obfuscation_secret = md5(GUID())
-	obfuscation_cache = recovering? ((istype(SSmapping) && SSmapping.obfuscation_cache) || list()) : list()
+/**
+ * Called at init first thing to setup mangling data
+ */
+/datum/controller/subsystem/mapping/proc/init_obfuscation_data()
+	// use either round ID or realtime
+	// no chance of collisions
+	round_global_descriptor = GLOB.round_id ? "[GLOB.round_id]" : "T[num2text(world.realtime, 16)]"
 
-#warn above
+/**
+ * Get a short hash for a map specific ID.
+ * This operates off the fact that we won't possibly have more than a few thousand maps loaded, as otherwise collisions get bad.
+ * The hash is 5 digit hex just in case.
+ */
+/datum/controller/subsystem/mapping/proc/hash_for_mangling_id(id)
+	if(isnull(round_local_mangling_cache[id]))
+		// generate hash
+		var/increment = 0
+		var/final
+		do
+			final = "[id][increment++]"
+			// 5 characters
+			final = copytext(md5(final), 1, 6)
+		while(round_local_mangling_reverse_cache[final])
+		round_local_mangling_cache[id] = final
+		round_local_mangling_reverse_cache[final] = id
+	return round_local_mangling_cache[id]
 
 /**
  * This must be called in **preloading_instance()**, not Initialize(), unlike what usual ss13 init logic says.
@@ -37,10 +58,12 @@
  *
  * @params
  * * id - original id
- * * with_hash - hash provided to preloading_instance()
+ * * with_mangling_id - mangling id provided to preloading_instance()
  */
-/datum/controller/subsystem/mapping/proc/mangled_round_local_id(id, with_hash)
-	#warn impl
+/datum/controller/subsystem/mapping/proc/mangled_round_local_id(id, with_mangling_id)
+	if(!id)
+		return id
+	return "[hash_for_mangling_id(with_mangling_id)]-[id]"
 
 /**
  * This must be called in **preloading_instance()**, not Initialize(), unlike what usual ss13 init logic says.
@@ -53,10 +76,12 @@
  *
  * @params
  * * id - original id
- * * with_hash - hash provided to preloading_instance()
+ * * with_mangling_id - mangling id provided to preloading_instance()
  */
-/datum/controller/subsystem/mapping/proc/mangled_persistent_id(id, with_hash)
-	#warn impl
+/datum/controller/subsystem/mapping/proc/mangled_persistent_id(id, with_mangling_id)
+	if(!id)
+		return id
+	return "[round_global_descriptor]-[hash_for_mangling_id(with_mangling_id)]-[id]"
 
 /**
  * Call this after mangling. This does not mangle by itself.
@@ -64,9 +89,20 @@
  * * This is not globally (cross-round) unique.
  * * This does not generate human-readable IDs
  * * This generates IDs that may be player accessible.
+ * * Better results are obtained by calling this in preloading_instance(), but it is not mandatory.
+ *
+ * @params
+ * * id - original id
+ * * key - provide a custom key to provide separation from other ids, if needed.
+ * * with_mangling_id - provide the mangling id if being called in preloading_instance()
  */
-/datum/controller/subsystem/mapping/proc/obfuscated_round_local_id(id)
-	#warn impl
+/datum/controller/subsystem/mapping/proc/obfuscated_round_local_id(id, key, with_mangling_id)
+	if(!id)
+		return id
+	// todo: optimize; md5 is a bit long.
+	// todo: collision checks.
+	#warn redo
+	return md5(id)
 
 /**
  * Call this after mangling. This does not mangle by itself.
@@ -74,18 +110,35 @@
  * * This will be globally (cross-round) unique.
  * * This does not generate human-readable IDs
  * * This generates IDs that may be player accessible.
+ * * Better results are obtained by calling this in preloading_instance(), but it is not mandatory.
+ *
+ * @params
+ * * id - original id
+ * * key - provide a custom key to provide separation from other ids, if needed.
+ * * with_mangling_id - provide the mangling id if being called in preloading_instance()
  */
-/datum/controller/subsystem/mapping/proc/obfuscated_persistent_id(id)
-	#warn impl
+/datum/controller/subsystem/mapping/proc/obfuscated_persistent_id(id, key, with_mangling_id)
+	if(!id)
+		return id
+	// todo: optimize; md5 is a bit long.
+	// todo: collision checks.
+	#warn redo
+	return "[round_global_descriptor]-[md5(id)]"
 
 /**
- * Call this after mangling. This does not mangle by itself.
- *
  * * This is not globally (cross-round) unique.
  * * This generates human-readable IDs
  * * This generates IDs that may be player accessible.
+ * * Better results are obtained by calling this in preloading_instance(), but it is not mandatory.
+ *
+ * @params
+ * * id - original id
+ * * key - provide a custom key to provide separation from other ids, if needed.
+ * * with_mangling_id - provide the mangling id if being called in preloading_instance()
  */
-/datum/controller/subsystem/mapping/proc/random_round_local_id(id)
+/datum/controller/subsystem/mapping/proc/random_round_local_id(id, key, with_mangling_id)
+	if(!id)
+		return id
 	#warn impl
 
 /**
@@ -94,37 +147,14 @@
  * * This will be globally (cross-round) unique.
  * * This generates human-readable IDs
  * * This generates IDs that may be player accessible.
+ * * Better results are obtained by calling this in preloading_instance(), but it is not mandatory.
+ *
+ * @params
+ * * id - original id
+ * * key - provide a custom key to provide separation from other ids, if needed.
+ * * with_mangling_id - provide the mangling id if being called in preloading_instance()
  */
-/datum/controller/subsystem/mapping/proc/random_persistent_id(id)
+/datum/controller/subsystem/mapping/proc/random_persistent_id(id, key, with_mangling_id)
+	if(!id)
+		return id
 	#warn impl
-
-
-#warn below
-
-/**
- * Generates an obfuscated but constant ID for an original ID for cases where you don't want players codediving for an ID.
- * This is slightly more expensive but is unique for an id/idtype combo, meaning it's safe to reveal - use in cases where you want to allow a player to reverse engineer,
- * but want them to find out ICly rather than codedive for an ID
- *
- * Both original and id_type are CASE INSENSITIVE.
- */
-/datum/controller/subsystem/mapping/proc/get_obfuscated_id__(original, id_type = "$any")
-	if(!original)
-		return	// no.
-	return md5("[obfuscation_secret]%[lowertext(original)]%[lowertext(id_type)]")
-
-/**
- * more expensive obfuscation: just 4 random hexadecimals at the end.
- * each given id should output the same resulting id.
- * do not abuse this, we do cache this in memory.
- *
- * use in cases where you want a player-readable id that can be recovered
- */
-/datum/controller/subsystem/mapping/proc/subtly_obfuscated_id__(original, id_type = "$any")
-	if(isnull(obfuscation_cache[id_type]?[original]))
-		LAZYINITLIST(obfuscation_cache[id_type])
-		obfuscation_cache[id_type][original] = "[original]_[num2text(rand(0, (16 ** 4) - 1), 4, 16)]"
-	return obfuscation_cache[id_type][original]
-
-#warn entirely rework this to allow for map-template and map-instance specific's.
-#warn shuttles must always have full isolation.

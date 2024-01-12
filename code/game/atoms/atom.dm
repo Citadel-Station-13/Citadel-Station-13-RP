@@ -240,7 +240,7 @@
  *
  * Called by the maploader.
  */
-/atom/proc/preloading_instance(with_hash)
+/atom/proc/preloading_instance(with_id)
 	return
 
 /**

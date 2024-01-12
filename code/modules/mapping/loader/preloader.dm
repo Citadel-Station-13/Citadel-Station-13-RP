@@ -2,7 +2,7 @@
 GLOBAL_REAL_VAR(use_preloader) = FALSE
 GLOBAL_REAL(preloader, /datum/map_preloader) = new
 /// the ID passed to preloading_instance() during load
-GLOBAL_REAL_VAR(preloader_mangling_hash)
+GLOBAL_REAL_VAR(preloader_mangling_id)
 
 /// Preloader datum
 /datum/map_preloader
@@ -90,7 +90,7 @@ GLOBAL_REAL_VAR(preloader_mangling_hash)
 		what.pixel_y = py
 
 	// handle mangling
-	what.preloading_instance(global.preloader_mangling_hash)
+	what.preloading_instance(global.preloader_mangling_id)
 
 // todo: /area/ignore
 /area/template_noop
