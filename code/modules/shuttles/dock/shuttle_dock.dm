@@ -140,8 +140,19 @@
 		CRASH("mismatch: some, but not all bounds were null. why?")
 	if(!any_null)
 		return TRUE
+	var/target_x = x
+	var/target_y = y
+	switch(dir)
+		if(NORTH)
+			target_y++
+		if(SOUTH)
+			target_y--
+		if(EAST)
+			target_x++
+		if(WEST)
+			target_x--
 	for(var/datum/bounds2/bounds in GLOB.uninitialized_shuttle_dock_bounds)
-		if(bounds.contains_xy(x, y))
+		if(bounds.contains_xy(target_x, target_y))
 			switch(dir)
 				if(NORTH)
 					size_x = bounds.x_high - bounds.x_low + 1
