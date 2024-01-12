@@ -19,6 +19,11 @@ SUBSYSTEM_DEF(grids)
  *
  * x2 must be the high value
  * y2 must be the high value
+ *
+ * We always sweep left to right, top to bottom, from the relative perspective of
+ * looking towards the front of the shuttle's direction from the back.
+ *
+ * e.g. when NORTH, it's left to right, one line at a time from front to back.
  */
 /datum/controller/subsystem/grids/proc/get_ordered_turfs(x1, x2, y1, y2, z, dir)
 	ASSERT(x2 >= x1)
@@ -59,11 +64,30 @@ SUBSYSTEM_DEF(grids)
 			CRASH("non-cardinal")
 
 /**
+ * Taking ordered 'from' and 'to' lists, nulls out any entries that shouldn't be moved.
+ *
+ * * turfs can contain nulls
+ * * input turf lists are edited
+ * * area_cache must have truthy associations.
+ * * the same index in from_turfs that are nulled are nulled in to_turfs
+ */
+/datum/controller/subsystem/grids/proc/inplace_translation_filter_via_areas(list/area/area_cache, list/turf/from_turfs, list/turf/to_turfs)
+	for(var/i in 1 to length(from_turfs))
+		var/turf/T = from_turfs[i]
+		if(area_cache[T.loc])
+			continue
+		from_turfs[i] = null
+		to_turfs[i] = null
+
+/**
  * performs turf translation
  *
  * baseturf boundary is important if you do not want things being ripped out of the ground.
  * without boundary set, turfs will be completely scraped down to their bottom baseturfs,
  * and destination turfs will have their baseturf stacks trampled by this.
+ *
+ * * from_turfs and to_turfs can have nulls, as long as they're in the same order.
+ * * said null behavior is intentional, so that shuttles can easily perform turf filtering.
  *
  * @params
  * * from_turfs - get_ordered_turfs return list
