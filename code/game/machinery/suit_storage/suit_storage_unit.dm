@@ -369,10 +369,10 @@
 		spawn(50)
 			if(occupant)
 				if(issuperUV)
-					occupant.take_random_targeted_damage(brute = 0, brute = 40)
+					occupant.take_random_targeted_damage(brute = 0, burn = 40)
 					to_chat(user, "Test. You gave him 40 damage")
 				else
-					occupant.take_random_targeted_damage(brute = 0, brute = 8)
+					occupant.take_random_targeted_damage(brute = 0, burn = 8)
 					to_chat(user, "Test. You gave him 8 damage")
 	return*/
 

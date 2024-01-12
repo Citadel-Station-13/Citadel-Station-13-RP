@@ -434,7 +434,7 @@ var/list/sacrificed = list()
 				L.ajourn=0
 				return
 			else
-				L.take_random_targeted_damage(brute = 3, brute = 0)
+				L.take_random_targeted_damage(brute = 3, burn = 0)
 			sleep(100)
 	return fizzle()
 
