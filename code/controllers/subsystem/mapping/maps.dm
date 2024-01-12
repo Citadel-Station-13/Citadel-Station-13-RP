@@ -164,6 +164,7 @@
 	var/list/area_cache = instance.bundle_area_cache? list() : null
 
 	for(var/datum/map_level/level as anything in instance.levels)
+		#warn mangling hash
 		var/list/bounds = _load_level(level, FALSE, instance.center, instance.crop, generation_callbacks, instance.orientation, area_cache)
 		if(isnull(bounds))
 			STACK_TRACE("unable to load level [level] ([level.id])")

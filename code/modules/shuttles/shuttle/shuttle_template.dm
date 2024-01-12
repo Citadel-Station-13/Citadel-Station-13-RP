@@ -39,8 +39,10 @@
 	/// if set to false, this is absolute-ly unable to land on a planet
 	var/allow_atmospheric_landing = TRUE
 
-	/// our map template
-	var/datum/map_template/shuttle/map_template
+	/// should we keep parsed map once first loaded?
+	var/cache_parsed_map = FALSE
+	/// our parsed map
+	var/datum/dmm_parsed/parsed_map
 
 #warn impl all
 

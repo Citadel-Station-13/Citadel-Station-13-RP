@@ -167,6 +167,7 @@
 		annihilate_bounds(real_turf, width, height)
 
 	var/datum/dmm_parsed/parsed = parsed()
+	#warn mangling hash
 	var/list/loaded_bounds = parsed.load(ll_x, ll_y, ll_z, orientation = orientation)
 
 	if(isnull(loaded_bounds))
