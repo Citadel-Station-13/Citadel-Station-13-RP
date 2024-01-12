@@ -292,6 +292,21 @@
 	var/list/L =  reagent_datas[reagentlike]
 	return isnull(L)? null : L.Copy()
 
+/**
+ * get a refernece of a reagent's data list
+ *
+ * * You can not edit the returned list, hence readonly. Do not violate this under **any** circumstances.
+ *
+ * @return list or null
+ */
+/datum/reagent_holder/proc/get_reagent_data_readonly(datum/reagent/reagentlike)
+	if(ispath(reagentlike))
+		reagentlike = initial(reagentlike.id)
+	else if(!istext(reagentlike))
+		reagentlike = reagentlike.id
+	ASSERT(reagent_volumes[reagentlike])
+	return reagent_datas[reagentlike]
+
 //* Get *//
 
 /datum/reagent_holder/proc/maximum_reagent_id()

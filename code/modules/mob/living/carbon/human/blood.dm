@@ -57,22 +57,23 @@
 
 	if(stat != DEAD && bodytemperature >= 170)	//Dead or cryosleep people do not pump the blood.
 
-		var/blood_volume_raw = vessel.get_reagent_amount("blood")
+		var/blood_volume_raw = vessel.get_reagent_amount(/datum/reagent/blood)
 		var/blood_volume = round((blood_volume_raw/species.blood_volume)*100) // Percentage.
 
 		//Blood regeneration if there is some space
 		if(blood_volume_raw < species.blood_volume)
-			var/datum/reagent/blood/B = locate() in vessel.reagent_list //Grab some blood
-			if(B) // Make sure there's some blood at all
-				if(B.data["donor"] != src) //If it's not theirs, then we look for theirs
-					for(var/datum/reagent/blood/D in vessel.reagent_list)
-						if(D.data["donor"] == src)
-							B = D
-							break
+			// todo: ughh
+			// var/datum/reagent/blood/B = locate() in vessel.reagent_list //Grab some blood
+			// if(B) // Make sure there's some blood at all
+			// 	if(B.data["donor"] != src) //If it's not theirs, then we look for theirs
+			// 		for(var/datum/reagent/blood/D in vessel.reagent_list)
+			// 			if(D.data["donor"] == src)
+			// 				B = D
+			// 				break
 
-				B.volume += 0.1 // regenerate blood VERY slowly
-				if(CHEMICAL_EFFECT_BLOODRESTORE in chem_effects)
-					B.volume += chem_effects[CHEMICAL_EFFECT_BLOODRESTORE]
+			// 	B.volume += 0.1 // regenerate blood VERY slowly
+			// 	B.volume += reagent_cycle_effects[CHEMICAL_EFFECT_BLOODRESTORE]
+			vessel.add_reagent(/datum/reagent/blood, amount = 0.1 + reagent_cycle_effects[CHEMICAL_EFFECT_BLOODRESTORE])
 
 		// Damaged heart virtually reduces the blood volume, as the blood isn't
 		// being pumped properly anymore.
@@ -92,7 +93,7 @@
 		var/dmg_coef = 1				//Lower means less damage taken
 		var/threshold_coef = 1			//Lower means the damage caps off lower
 
-		if((CHEMICAL_EFFECT_STABLE in chem_effects) || stabilization)
+		if((CHEMICAL_EFFECT_STABLE in reagent_cycle_effects) || stabilization)
 			dmg_coef *= 0.5
 			threshold_coef *= 0.75
 
@@ -181,7 +182,7 @@
 						blood_loss_divisor = max(blood_loss_divisor + 5, 1)
 					else if((temp.organ_tag == BP_L_HAND) || (temp.organ_tag == BP_R_HAND) || (temp.organ_tag == BP_L_FOOT) || (temp.organ_tag == BP_R_FOOT))
 						blood_loss_divisor = max(blood_loss_divisor + 10, 1)
-					if(CHEMICAL_EFFECT_STABLE in chem_effects)	//Inaprov slows bloodloss
+					if(CHEMICAL_EFFECT_STABLE in reagent_cycle_effects)	//Inaprov slows bloodloss
 						blood_loss_divisor = max(blood_loss_divisor + 10, 1)
 					if(temp.applied_pressure)
 						if(ishuman(temp.applied_pressure))
@@ -318,6 +319,12 @@
 		var/atom/movable/A = source
 		if(!isturf(A.loc))
 			return
+	var/list/blood_data
+	if(ishuman(source))
+		var/mob/living/carbon/human/casted = source
+		blood_data = casted.vessel.get_reagent_data_readonly()
+	else if(islist(source))
+		blood_data = source
 
 	var/obj/effect/debris/cleanable/blood/B
 	var/decal_type = /obj/effect/debris/cleanable/blood/splatter
@@ -327,7 +334,6 @@
 	if(istype(source,/mob/living/carbon/human))
 		var/mob/living/carbon/human/M = source
 		if(M.isSynthetic()) synth = 1
-		source = M.get_blood(M.vessel)
 
 	// Are we dripping or splattering?
 	var/list/drips = list()
@@ -353,25 +359,25 @@
 		return B
 
 	// Update appearance.
-	if(source.data["blood_color"])
-		B.basecolor = source.data["blood_color"]
+	if(blood_data["blood_color"])
+		B.basecolor = blood_data["blood_color"]
 		B.synthblood = synth
 		B.update_icon()
 
-	if(source.data["blood_name"])
-		B.name = source.data["blood_name"]
+	if(blood_data["blood_name"])
+		B.name = blood_data["blood_name"]
 
 	// Update blood information.
-	if(source.data["blood_DNA"])
+	if(blood_data["blood_DNA"])
 		B.blood_DNA = list()
-		if(source.data["blood_type"])
-			B.blood_DNA[source.data["blood_DNA"]] = source.data["blood_type"]
+		if(blood_data["blood_type"])
+			B.blood_DNA[blood_data["blood_DNA"]] = blood_data["blood_type"]
 		else
-			B.blood_DNA[source.data["blood_DNA"]] = "O+"
+			B.blood_DNA[blood_data["blood_DNA"]] = "O+"
 
 	// Update virus information.
-	if(source.data["virus2"])
-		B.virus2 = virus_copylist(source.data["virus2"])
+	if(blood_data["virus2"])
+		B.virus2 = virus_copylist(blood_data["virus2"])
 
 	B.fluorescent  = 0
 	B.invisibility = 0
