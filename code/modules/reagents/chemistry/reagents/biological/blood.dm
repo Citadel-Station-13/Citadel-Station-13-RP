@@ -107,8 +107,9 @@
 	// . = INFINITY
 
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)]) //They don't have blood, so it seems weird that they would instantly 'process' the chemical like another species does.
-		// todo: shitcode, we shouldn't call other procs from this.
-		return on_metabolize_ingested(entity, metabolism, data, removed)
+		// todo: potentially shitcode
+		entity.reagents_bloodstream.transfer_to_holder(entity.reagents_ingested, list(id))
+		return 0
 
 	if(entity.isSynthetic())
 		return
