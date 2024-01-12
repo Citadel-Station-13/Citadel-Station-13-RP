@@ -39,7 +39,13 @@
 	/// if set to false, this is absolute-ly unable to land on a planet
 	var/allow_atmospheric_landing = TRUE
 
+	/// our map template
+	var/datum/map_template/shuttle/map_template
+
 #warn impl all
+
+/datum/shuttle_template/New(map_resource, use_dir)
+	#warn uhh
 
 /datum/map_template/shuttle
 	abstract_type = /datum/map_template/shuttle

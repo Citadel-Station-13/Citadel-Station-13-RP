@@ -25,7 +25,15 @@ SUBSYSTEM_DEF(shuttle)
 	/// Web maps by path
 	var/static/list/shuttle_web_type_registry = list()
 
+	//* Templates
+	/// templates by path
+	var/list/datum/shuttle_template/templates_by_path = list()
+	/// templates by id; hardcoded templates still register in here.
+	var/list/datum/shuttle_template/templates_by_id = list()
+
 	//* legacy below
+
+	#warn below
 
 	/// Whether ships can move on the overmap; used for adminbus.
 	var/static/overmap_halted = FALSE
@@ -77,6 +85,8 @@ SUBSYSTEM_DEF(shuttle)
 	var/list/unary_engines = list()
 	var/list/ion_engines = list()
 
+#warn above
+
 /datum/controller/subsystem/shuttle/on_max_z_changed(old_z_count, new_z_count)
 	. = ..()
 	docks_by_level.len = new_z_count
@@ -84,6 +94,23 @@ SUBSYSTEM_DEF(shuttle)
 		if(!isnull(docks_by_level[i]))
 			continue
 		docks_by_level[i] = list()
+
+/datum/controller/subsystem/shuttle/proc/fetch_template(datum/shuttle_template/templatelike)
+	if(ispath(templatelike, /datum/shuttle_template))
+		if(isnull(templates_by_path[templatelike]))
+			templates_by_path[templatelike] = load_shuttle_template(new templatelike)
+		return templates_by_path[templatelike]
+	else if(istext(templatelike))
+		return templates_by_id[templatelike]
+	else if(istype(templatelike))
+		return templatelike
+	CRASH("what?")
+
+/datum/controller/subsystem/shuttle/proc/load_shuttle_template(datum/shuttle_template/template)
+	templates_by_id[template.id] = template
+	return template
+
+#warn below
 
 /datum/controller/subsystem/shuttle/Initialize(timeofday)
 	last_landmark_registration_time = world.time

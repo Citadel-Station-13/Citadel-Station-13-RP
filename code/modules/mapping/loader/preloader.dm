@@ -1,6 +1,8 @@
 // global datum that will preload variables on atoms instanciation
 GLOBAL_REAL_VAR(use_preloader) = FALSE
 GLOBAL_REAL(preloader, /datum/map_preloader) = new
+/// the ID passed to preloading_instance() during load
+GLOBAL_REAL_VAR(preloader_mangling_hash)
 
 /// Preloader datum
 /datum/map_preloader
@@ -86,6 +88,9 @@ GLOBAL_REAL(preloader, /datum/map_preloader) = new
 			py = opx
 		what.pixel_x = px
 		what.pixel_y = py
+
+	// handle mangling
+	what.preloading_instance(global.preloader_mangling_hash)
 
 // todo: /area/ignore
 /area/template_noop

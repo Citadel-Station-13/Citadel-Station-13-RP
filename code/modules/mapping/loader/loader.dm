@@ -264,10 +264,11 @@
  * * no_changeturf - do not call [turf/AfterChange] when loading turfs.
  * * place_on_top - use PlaceOnTop instead of ChangeTurf
  * * area_cache - override area cache and provide your own, used to make sure multiple loadings share the same areas if two areas are the same type.
+ * * mangling_hash - value to push to global.preloader_mangling_hash, used by atoms to change their binding IDs within a map.
  *
  * @return bounds list of load, or null if failed.
  */
-/datum/dmm_parsed/proc/load(x, y, z, x_lower = -INFINITY, x_upper = INFINITY, y_lower = -INFINITY, y_upper = INFINITY, z_lower = -INFINITY, z_upper = INFINITY, no_changeturf, place_on_top, orientation = SOUTH, list/area_cache)
+/datum/dmm_parsed/proc/load(x, y, z, x_lower = -INFINITY, x_upper = INFINITY, y_lower = -INFINITY, y_upper = INFINITY, z_lower = -INFINITY, z_upper = INFINITY, no_changeturf, place_on_top, orientation = SOUTH, list/area_cache, mangling_hash = "default")
 
 	var/static/loading = FALSE
 	UNTIL(!loading)
@@ -281,7 +282,7 @@
 
 // todo: verify that when rotating, things load in the same way when cropped e.g. aligned to lower left
 //       as opposed to rotating to somewhere else
-/datum/dmm_parsed/proc/_load_impl(x, y, z, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, no_changeturf, place_on_top, orientation = SOUTH, list/area_cache = list())
+/datum/dmm_parsed/proc/_load_impl(x, y, z, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, no_changeturf, place_on_top, orientation = SOUTH, list/area_cache = list(), mangling_hash)
 	var/list/model_cache = build_cache(no_changeturf)
 	var/space_key = model_cache[SPACE_KEY]
 

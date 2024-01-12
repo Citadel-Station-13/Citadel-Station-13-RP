@@ -208,6 +208,7 @@
 	/// Default sound played on a burn type impact. This is usually null for default.
 	var/hit_sound_burn
 
+//* Initialization / Destruction *//
 
 /**
  * Called when an atom is created in byond (built in engine proc)
@@ -233,6 +234,22 @@
 		if(SSatoms.InitAtom(src, args))
 			//we were deleted
 			return
+
+/**
+ * Pre-initialize mangling of string IDs.
+ *
+ * Called by the maploader.
+ */
+/atom/proc/preloading_instance(with_hash)
+	return
+
+/**
+ * hook for abstract direction sets from the maploader
+ *
+ * return FALSE to override maploader automatic rotation
+ */
+/atom/proc/preloading_dir(datum/map_preloader/preloader)
+	return TRUE
 
 /**
  * The primary method that objects are setup in SS13 with
@@ -342,6 +359,8 @@
 		SSicon_smooth.remove_from_queues(src)
 
 	return ..()
+
+//* Misc / Legacy *//
 
 /atom/proc/reveal_blood()
 	return

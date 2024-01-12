@@ -37,6 +37,10 @@
 	var/offset_y
 	#warn impl
 
+	//* docking (backend)
+	/// base area to leave behind when something takes off; null for zlevel default
+	var/base_area
+
 	//* docking (alignment)
 	/// how wide this dock's non-airtight region is.
 	///
