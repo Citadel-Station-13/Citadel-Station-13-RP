@@ -87,8 +87,8 @@
 	if(iscarbon(target))
 		var/mob/living/carbon/C = target
 		if(C.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
-			affect_ingest(C, alien, removed)
-			return
+			// todo: shitcode, we shouldn't call other procs from this.
+			return on_metabolize_ingested(entity, metabolism, data, removed)
 	if(data && data["virus2"])
 		var/list/vlist = data["virus2"]
 		if(vlist.len)
@@ -99,31 +99,23 @@
 
 /datum/reagent/blood/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
+	// todo: this is shitcode, as we don't want to have to backreference the holder on purpose
+	. = entity.reagents_bloodstream.get_reagent_amount(src)
+	// todo: this might be worse
+	// DO NOT UNCOMMENT THIS LINE BEFORE CHANGING THAT LAST LINE THAT USES '.'!!!
+	// . = INFINITY
 
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)]) //They don't have blood, so it seems weird that they would instantly 'process' the chemical like another species does.
+		// todo: shitcode, we shouldn't call other procs from this.
 		return on_metabolize_ingested(entity, metabolism, data, removed)
 
 	if(entity.isSynthetic())
 		return
 
-	if(ishuman(entity))
-		var/mob/living/carbon/human/H = entity
-
-		var/datum/reagent/blood/recipient = H.get_blood(H.vessel)
-
-		if(recipient && blood_incompatible_legacy(data["blood_type"], recipient.data["blood_type"], data["species"], recipient.data["species"]))
-			H.inject_blood(data, removed * volume_mod)
-
-			if(!H.isSynthetic() && data["species"] == "synthetic") // Remember not to inject oil into your veins, it's bad for you.
-				H.reagents_bloodstream.add_reagent("toxin", removed * 1.5)
-
-			return
-
 	if(data && data["antibodies"])
 		entity.antibodies |= data["antibodies"]
 
-	entity.inject_blood(data, volume * volume_mod)
-	remove_self(volume)
+	entity.inject_blood(data, .)
 
 /datum/reagent/blood/synthblood
 	name = "Synthetic blood"
