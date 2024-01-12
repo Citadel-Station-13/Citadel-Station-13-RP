@@ -205,6 +205,9 @@
 		return
 	blood_splatter(loc, src)
 
+/**
+ * todo: extraneous reagents too.
+ */
 /mob/living/carbon/human/proc/remove_blood(amt)
 	if(!should_have_organ(O_HEART)) //TODO: Make drips come from the reagents instead.
 		return 0
@@ -257,18 +260,15 @@
 	// reagents.update_total()
 
 /mob/living/carbon/human/inject_blood(list/blood_data, amount)
-	#warn impl
-
 	if(!should_have_organ(O_HEART))
-		reagents.add_reagent("blood", amount, injected.data)
+		reagents.add_reagent("blood", amount, data = blood_data)
 		reagents.update_total()
 		return
 
-	var/datum/reagent/blood/our = get_blood(vessel)
-
-	if (!injected || !our)
+	var/list/our_data = vessel.reagent_datas["blood"]
+	if(!our_data || !blood_data)
 		return
-	if(blood_incompatible_legacy(blood_data["blood_type"],our.data["blood_type"],blood_data["species_id"],our.data["species_id"]) )
+	if(blood_incompatible_legacy(blood_data["blood_type"],our_data["blood_type"],blood_data["species_id"],our_data["species_id"]) )
 		reagents.add_reagent(
 			/datum/reagent/toxin,
 			amount * 0.5,

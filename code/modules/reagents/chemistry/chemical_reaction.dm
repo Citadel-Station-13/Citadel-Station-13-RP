@@ -5,7 +5,7 @@
 	abstract_type = /datum/chemical_reaction
 
 	//* core *//
-	
+
 	/// id - must be unique and in CamelCase.
 	var/id
 	/// reagent reaction flags - see [code/__DEFINES/reagents/flags.dm]
@@ -47,12 +47,12 @@
 
 	/// priority - higher is checked first when reacting.
 	var/priority = 0
-	
+
 	/// required container typepath of holder my_atom
 	var/required_container
 
 	/// temperature minimum, kelvin
-	var/temperature_low 
+	var/temperature_low
 	/// temperature maximum, kelvin
 	var/temperature_high
 
@@ -75,7 +75,7 @@
 	///
 	/// these are required reagents to perform the reaction
 	var/list/catalysts
-	
+
 	/// equilibrium point; less than 1, reaction will be inhibited if ratio of product to reactant is above that
 	/// 0.5 = we stop when product == reactant volume
 	/// 0.8 = we stop when product == 4 times reactant volume
@@ -140,7 +140,7 @@
 	// check container
 	if(!isnull(required_container) && !istype(holder.my_atom, required_container))
 		return FALSE
-	
+
 	var/maximum_ratio = INFINITY
 	if(require_whole_numbers)
 		for(var/id in required_reagents)
@@ -154,7 +154,7 @@
 			if(holder.reagent_volumes[id])
 				continue
 			return FALSE
-	
+
 	#warn check rest
 
 #warn below
@@ -224,7 +224,7 @@
 	//add the product
 	var/amt_produced = result_amount * reaction_progress
 	if(result)
-		holder.add_reagent(result, amt_produced, data, safety = 1)
+		holder.add_reagent(result, amt_produced, data = data, safety = 1)
 
 	on_reaction(holder, amt_produced)
 
@@ -269,7 +269,7 @@
 
 /**
  * called on start of a ticked reaction
- * 
+ *
  * @params return FALSE to abort
  */
 /datum/chemical_reaction/proc/on_reaction_start(datum/reagent_holder/holder)
@@ -277,9 +277,9 @@
 
 /**
  * called per tick of a ticked, or instant reaction
- * 
+ *
  * @params
- * * holder - the reagent holder we're reacting in 
+ * * holder - the reagent holder we're reacting in
  * * created_volume - how much units of result is made
  * * instant - is this an instant reaction or is this a tick of a ticked reaction?
  */

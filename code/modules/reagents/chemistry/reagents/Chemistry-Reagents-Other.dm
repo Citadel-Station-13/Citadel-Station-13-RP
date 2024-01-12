@@ -157,7 +157,7 @@
 		var/datum/reagent/blood/coolant = H.get_blood(H.vessel)
 
 		if(coolant)
-			H.vessel.add_reagent("blood", removed, coolant.data)
+			H.vessel.add_reagent("blood", removed, data = coolant.data)
 
 		else
 			H.vessel.add_reagent("blood", removed)

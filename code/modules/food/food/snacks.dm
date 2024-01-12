@@ -33,7 +33,7 @@
 /obj/item/reagent_containers/food/snacks/Initialize(mapload)
 	. = ..()
 	if(nutriment_amt)
-		reagents.add_reagent("nutriment",nutriment_amt,nutriment_desc)
+		reagents.add_reagent("nutriment",nutriment_amt,data = nutriment_desc)
 
 	//Placeholder for effect that trigger on eating that aren't tied to reagents.
 /obj/item/reagent_containers/food/snacks/proc/On_Consume(mob/M)
@@ -1810,7 +1810,7 @@
 	bitesize = 5
 	if(prob(25))
 		src.desc = "A wish come true!"
-		reagents.add_reagent("nutriment", 8, list("something good" = 8))
+		reagents.add_reagent("nutriment", 8, data = list("something good" = 8))
 
 /obj/item/reagent_containers/food/snacks/hotchili // Buff 6 >> 10
 	name = "Hot Chili"

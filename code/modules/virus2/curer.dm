@@ -24,7 +24,7 @@
 
 		var/list/data = list("virus2"=list())
 		data["virus2"] |= I:virus2
-		product.reagents.add_reagent("blood",30,data)
+		product.reagents.add_reagent("blood",30,data = data)
 
 		virusing = 1
 		spawn(1200) virusing = 0
@@ -98,6 +98,6 @@
 
 	var/list/data = list()
 	data["antibodies"] = B.data["antibodies"]
-	product.reagents.add_reagent("antibodies",30,data)
+	product.reagents.add_reagent("antibodies",30,data = data)
 
 	state("\The [src.name] buzzes", "blue")
