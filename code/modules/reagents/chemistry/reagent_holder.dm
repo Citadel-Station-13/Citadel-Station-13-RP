@@ -40,6 +40,8 @@
 
 	/// Current temperature in Kelvin
 	var/temperature = T20C
+	/// Current total heat capacity
+	var/heat_capacity = 0
 
 	//* Volume *//
 
@@ -72,7 +74,6 @@
  * @return amount added
  */
 /datum/reagent_holder/proc/add_reagent(datum/reagent/reagentlike, amount, temperature, defer_reactions, defer_recalc, list/data)
-	#warn audit data?
 	// we only care about id
 	if(ispath(reagentlike))
 		reagentlike = initial(reagentlike.id)
@@ -87,9 +88,12 @@
 	if(amount <= 0)
 		return 0
 
-	var/existing_amount = reagent_volumes[id]
+	var/inbound_capacity = resolved.specific_heat * amount
+	var/overall_energy = (src.temperature * src.heat_capacity) + (temperature * inbound_capacity)
+	src.heat_capacity += inbound_capacity
+	src.temperature = overall_energy / src.heat_capacity
 
-	#warn temperature
+	var/existing_amount = reagent_volumes[id]
 
 	if(existing_amount)
 		LAZYSET(reagent_datas, id, resolved.mix_data(src, reagent_datas[id], existing_amount, data, amount))
@@ -112,7 +116,32 @@
  * @return amount removed
  */
 /datum/reagent_holder/proc/remove_reagent(datum/reagent/reagentlike, amount, defer_reactions, defer_recalc)
-	#warn impl
+	// we only care about id
+	if(ispath(reagentlike))
+		reagentlike = initial(reagentlike.id)
+	else if(!istext(reagentlike))
+		reagentlike = reagentlike.id
+
+	var/datum/reagent/resolved = SSchemistry.fetch_reagent(reagentlike)
+	var/id = resolved.id
+
+	amount = min(amount, reagent_volumes[id])
+
+	if(amount <= 0)
+		return 0
+
+	src.heat_capacity -= resolved.specific_heat * amount
+
+	reagent_volumes[id] -= amount
+	if(!reagent_volumes[id])
+		reagent_volumes -= id
+		reagent_datas?.Remove(id)
+		reagent_metabolism?.Remove(id)
+
+	if(!defer_recalc)
+		update_total()
+		if(!defer_reactions)
+			consider_reactions()
 
 	attached?.on_reagent_change()
 
@@ -253,7 +282,7 @@
 		colors[2] += hex2num(copytext(hex, 4, 6)) * volume * R.color_weight
 		colors[3] += hex2num(copytext(hex, 6, 8)) * volume * R.color_weight
 		colors[4] += hex2num(copytext(hex, 8, 10)) * volume * R.color_weight
-		tot_w += R.volume * R.color_weight
+		tot_w += volume * R.color_weight
 
 	return rgb(colors[1] / tot_w, colors[2] / tot_w, colors[3] / tot_w, colors[4] / tot_w)
 
@@ -419,6 +448,15 @@
 		total_volume += reagent_volumes[id]
 	if(quantize_fucked_shit_up)
 		consider_reactions()
+
+/**
+ * completely rebuild cached data
+ */
+/datum/reagent_holder/proc/rebuild_everything()
+	heat_capacity = 0
+	for(var/id in reagent_volumes)
+		var/datum/reagent/reagent = SSchemistry.fetch_reagent(id)
+		heat_capacity += reagent.specific_heat * reagent_volumes[id]
 
 #warn below
 
