@@ -1117,7 +1117,7 @@
 		//Brain damage from Oxyloss
 		if(should_have_organ(O_BRAIN))
 			var/brainOxPercent = 0.015		//Default 1.5% of your current oxyloss is applied as brain damage, 50 oxyloss is 1 brain damage
-			if(CHEMICAL_EFFECT_STABLE in chem_effects)
+			if(CHEMICAL_EFFECT_STABLE in reagent_cycle_effects)
 				brainOxPercent = 0.008		//Halved in effect
 			if(oxyloss >= (getMaxHealth() * 0.3) && prob(5)) // If oxyloss exceeds 30% of your max health, you can take brain damage.
 				adjustBrainLoss(brainOxPercent * oxyloss)
@@ -1303,7 +1303,7 @@
 			clear_fullscreen("brute")
 
 		if(healths)
-			if (chem_effects[CHEMICAL_EFFECT_PAINKILLER] > 100)
+			if (reagent_cycle_effects[CHEMICAL_EFFECT_PAINKILLER] > 100)
 				healths.icon_state = "health_numb"
 			else
 				// Generate a by-limb health display.

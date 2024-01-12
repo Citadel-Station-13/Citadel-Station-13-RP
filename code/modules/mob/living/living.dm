@@ -554,8 +554,8 @@ default behaviour is:
 
 				if(ishuman(src))
 					var/mob/living/carbon/human/Hu = src
-					if(CHEMICAL_EFFECT_ANTACID in Hu.chem_effects)
-						if(prob(min(90, Hu.chem_effects[CHEMICAL_EFFECT_ANTACID] * 15)))
+					if(CHEMICAL_EFFECT_ANTACID in Hu.reagent_cycle_effects)
+						if(prob(min(90, Hu.reagent_cycle_effects[CHEMICAL_EFFECT_ANTACID] * 15)))
 							spawn(rand(30 SECONDS, 2 MINUTES))
 								lastpuke = FALSE
 							return
