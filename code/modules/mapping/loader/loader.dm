@@ -275,6 +275,7 @@
 	loading = TRUE
 	Master.StartLoadingMap()
 	global.preloader.loading_orientation = orientation
+	global.preloader.
 	. = _load_impl(arglist(args))
 	global.preloader.loading_orientation = null
 	Master.StopLoadingMap()

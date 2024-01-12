@@ -376,10 +376,6 @@
 /atom/proc/is_open_container()
 	return atom_flags & OPENCONTAINER
 
-///Is this atom within 1 tile of another atom
-/atom/proc/HasProximity(atom/movable/proximity_check_mob as mob|obj)
-	return
-
 ///Return true if we're inside the passed in atom
 /atom/proc/in_contents_of(container)//can take class or object instance as argument
 	if(ispath(container))

@@ -1,17 +1,17 @@
-/obj/effect/plant/HasProximity(var/atom/movable/AM)
+// /obj/effect/plant/HasProximity(var/atom/movable/AM)
 
-	if(!is_mature() || seed.get_trait(TRAIT_SPREAD) != 2)
-		return
+// 	if(!is_mature() || seed.get_trait(TRAIT_SPREAD) != 2)
+// 		return
 
-	var/mob/living/M = AM
-	if(!istype(M))
-		return
+// 	var/mob/living/M = AM
+// 	if(!istype(M))
+// 		return
 
-	if(!has_buckled_mobs() && !M.buckled && !M.anchored && (issmall(M) || prob(round(seed.get_trait(TRAIT_POTENCY)/3))))
-		//wait a tick for the Entered() proc that called HasProximity() to finish (and thus the moving animation),
-		//so we don't appear to teleport from two tiles away when moving into a turf adjacent to vines.
-		spawn(1)
-			entangle(M)
+// 	if(!has_buckled_mobs() && !M.buckled && !M.anchored && (issmall(M) || prob(round(seed.get_trait(TRAIT_POTENCY)/3))))
+// 		//wait a tick for the Entered() proc that called HasProximity() to finish (and thus the moving animation),
+// 		//so we don't appear to teleport from two tiles away when moving into a turf adjacent to vines.
+// 		spawn(1)
+// 			entangle(M)
 
 
 /obj/effect/plant/proc/attack_mob(mob/living/M,base_damage)
