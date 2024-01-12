@@ -56,8 +56,6 @@
 
 /obj/machinery/biogenerator/Initialize(mapload, newdir)
 	. = ..()
-	create_reagents(1000, src)
-
 	beaker = new /obj/item/reagent_containers/glass/bottle(src)
 
 	item_list = list()

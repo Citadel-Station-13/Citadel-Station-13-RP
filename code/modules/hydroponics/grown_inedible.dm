@@ -10,7 +10,7 @@
 
 /obj/item/grown/Initialize(mapload, planttype)
 	. = ..()
-	create_reagents(50, src)
+	create_reagents(50)
 
 	//Handle some post-spawn var stuff.
 	if(planttype)

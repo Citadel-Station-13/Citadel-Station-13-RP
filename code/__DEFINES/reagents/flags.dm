@@ -6,6 +6,7 @@
 /// stasis all reactions
 #define REAGENT_HOLDER_NO_REACT (1<<0)
 /// when we are the primary reagents container of an object, we are considered 'open' (e.g. we can be poured out and others can be poured in)
+/// implies SYRINGE_INJECTABLE | SYRINGE_DRAWABLE
 // todo: should this really be a flag?
 // todo: god, i hate /atom/var/reagents
 #define REAGENT_HOLDER_CONSIDERED_OPEN (1<<1)
@@ -21,7 +22,6 @@
 #define REAGENT_HOLDER_SYRINGE_INJECTABLE (1<<6)
 /// when we are the primary reagent container of an object, allow syringe drawing
 #define REAGENT_HOLDER_SYRINGE_DRAWABLE (1<<7)
-
 
 #define REAGENT_HOLDER_FLAGS_ANY_EXAMINE (REAGENT_HOLDER_TRANSPARENT_ANALYSIS | REAGENT_HOLDER_EXAMINE_REAGENTS \
 	REAGENT_HOLDER_EXAMINE_EXACT_VOLUMES | REAGENT_HOLDER_EXAMINE_OVERALL_VOLUME)
