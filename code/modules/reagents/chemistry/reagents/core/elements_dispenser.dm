@@ -35,7 +35,7 @@
 	entity.reagents_ingested.remove_any(removed * 2)
 	return 0
 
-/datum/reagent/carbon/contact_expose_turf(turf/target, volume, list/data, vapor)
+/datum/reagent/carbon/contact_expose_turf(turf/target, volume, temperature, list/data, vapor)
 	. = ..()
 
 	var/turf/T = target
@@ -59,7 +59,7 @@
 	. = ..()
 	entity.take_organ_damage(removed, 0)
 
-/datum/reagent/chlorine/touch_expose_mob(mob/target, volume, list/data, organ_tag)
+/datum/reagent/chlorine/touch_expose_mob(mob/target, volume, temperature, list/data, organ_tag)
 	. = ..()
 
 	var/mob/living/carbon/M = target
@@ -82,7 +82,7 @@
 	reagent_state = REAGENT_GAS
 	color = "#808080"
 
-/datum/reagent/fluorine/touch_expose_mob(mob/target, volume, list/data, organ_tag)
+/datum/reagent/fluorine/touch_expose_mob(mob/target, volume, temperature, list/data, organ_tag)
 	. = ..()
 	if(!isliving(target))
 		return
@@ -229,7 +229,7 @@
 			if(prob(5))
 				M.antibodies |= V.antigen
 
-/datum/reagent/radium/contact_expose_turf(turf/target, volume, list/data, vapor)
+/datum/reagent/radium/contact_expose_turf(turf/target, volume, temperature, list/data, vapor)
 	. = ..()
 
 	var/turf/T = target

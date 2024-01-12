@@ -147,16 +147,16 @@
 	dermal_overdose_toxin_scaling = 0.5
 	color_weight = 20
 
-/datum/reagent/paint/contact_expose_turf(turf/target, volume, list/data, vapor)
+/datum/reagent/paint/contact_expose_turf(turf/target, volume, temperature, list/data, vapor)
 	. = ..()
-	
+
 	var/turf/T = target
 	if(istype(T) && !istype(T, /turf/space))
 		T.color = color
 
 /datum/reagent/paint/contact_expose_obj(obj/target, volume, list/data, vapor)
 	. = ..()
-	
+
 	var/obj/O = target
 	if(istype(O))
 		O.color = color

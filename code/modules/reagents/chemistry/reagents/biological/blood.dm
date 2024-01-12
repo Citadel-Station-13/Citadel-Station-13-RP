@@ -48,7 +48,7 @@
 			copying = .["antibodies"]
 			.["antibodies"] = copying.Copy()
 
-/datum/reagent/blood/contact_expose_turf(turf/target, volume, list/data, vapor)
+/datum/reagent/blood/contact_expose_turf(turf/target, volume, temperature, list/data, vapor)
 	blood_splatter(target, data, TRUE)
 
 /datum/reagent/blood/on_metabolize_ingested(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed, obj/item/organ/internal/container)
@@ -78,7 +78,7 @@
 				if(V.spreadtype == "Contact")
 					infect_virus2(entity, V.getcopy())
 
-/datum/reagent/blood/touch_expose_mob(mob/target, volume, list/data, organ_tag)
+/datum/reagent/blood/touch_expose_mob(mob/target, volume, temperature, list/data, organ_tag)
 	. = ..()
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = target

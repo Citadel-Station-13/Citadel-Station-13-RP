@@ -26,12 +26,12 @@
 
 /datum/reagent/uranium/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	entity.afflict_radiation(removed * 10)
 
-/datum/reagent/uranium/contact_expose_turf(turf/target, volume, list/data, vapor)
+/datum/reagent/uranium/contact_expose_turf(turf/target, volume, temperature, list/data, vapor)
 	. = ..()
-	
+
 	var/turf/T = target
 	if(volume >= 3)
 		if(!istype(T, /turf/space))

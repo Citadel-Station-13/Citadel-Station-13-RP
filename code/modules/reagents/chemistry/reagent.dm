@@ -318,12 +318,13 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
  * @params
  * * target - what we were splashed into
  * * volume - amount
+ * * temperature - reagent temperature
  * * data - data list
  * * vapor - vapor application?
  *
  * @return amount consumed
  */
-/datum/reagent/proc/contact_expose_turf(turf/target, volume, list/data, vapor)
+/datum/reagent/proc/contact_expose_turf(turf/target, volume, temperature, list/data, vapor)
 	return 0
 
 /**
@@ -335,6 +336,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
  * @params
  * * target - what we were splashed into
  * * volume - amount
+ * * temperature - reagent temperature
  * * data - data list
  * * vapor - vapor application?
  *
@@ -349,12 +351,13 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
  * @params
  * * target - what we were splashed into
  * * volume - amount
+ * * temperature - reagent temperature
  * * data - data list
  * * organ_tag - the string tag of what organ this is localized on, if any; used for target splashing. if null, we can assume global.
  *
  * @return amount consumed
  */
-/datum/reagent/proc/touch_expose_mob(mob/target, volume, list/data, organ_tag)
+/datum/reagent/proc/touch_expose_mob(mob/target, volume, temperature, list/data, organ_tag)
 	return 0
 
 /**
@@ -366,12 +369,13 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
  * @params
  * * target - what we were splashed into
  * * volume - amount
+ * * temperature - reagent temperature
  * * data - data list
  * * inhaled - are we being inhaled? someone in a smoke cloud is exposed even if not inhaled, but inhales it if they're not on internals.
  *
  * @return amount consumed
  */
-/datum/reagent/proc/vapor_expose_mob(mob/target, volume, list/data, inhaled)
+/datum/reagent/proc/vapor_expose_mob(mob/target, volume, temperature, list/data, inhaled)
 	return 0
 
 /**

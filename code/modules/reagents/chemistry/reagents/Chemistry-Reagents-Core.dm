@@ -18,9 +18,9 @@
 	cup_name = "water"
 	cup_desc = "The father of all refreshments."
 
-/datum/reagent/water/contact_expose_turf(turf/target, volume, list/data, vapor)
+/datum/reagent/water/contact_expose_turf(turf/target, volume, temperature, list/data, vapor)
 	. = ..()
-	
+
 	// legacy code
 	if(!istype(target, /turf/simulated))
 		return
@@ -47,7 +47,7 @@
 
 /datum/reagent/water/contact_expose_obj(obj/target, volume, list/data, vapor)
 	. = ..()
-	
+
 	var/obj/O = target
 	if(istype(O, /obj/item/reagent_containers/food/snacks/monkeycube))
 		var/obj/item/reagent_containers/food/snacks/monkeycube/cube = O
@@ -58,7 +58,7 @@
 	var/effective = volume || 10
 	O.clean_radiation(RAD_CONTAMINATION_CLEANSE_POWER * (effective / 10), RAD_CONTAMINATION_CLEANSE_FACTOR ** (1 / (effective / 10)))
 
-/datum/reagent/water/touch_expose_mob(mob/target, volume, list/data, organ_tag)
+/datum/reagent/water/touch_expose_mob(mob/target, volume, temperature, list/data, organ_tag)
 	. = ..()
 	if(!isliving(target))
 		return
@@ -96,7 +96,7 @@
 	glass_name = "welder fuel"
 	glass_desc = "Unless you are an industrial tool, this is probably not safe for consumption."
 
-/datum/reagent/fuel/contact_expose_turf(turf/target, volume, list/data, vapor)
+/datum/reagent/fuel/contact_expose_turf(turf/target, volume, temperature, list/data, vapor)
 	. = ..()
 	new /obj/effect/debris/cleanable/liquid_fuel(target, volume, FALSE)
 	. += volume
@@ -105,7 +105,7 @@
 	. = ..()
 	entity.adjustToxLoss(4 * removed)
 
-/datum/reagent/fuel/touch_expose_mob(mob/target, volume, list/data, organ_tag)
+/datum/reagent/fuel/touch_expose_mob(mob/target, volume, temperature, list/data, organ_tag)
 	. = ..()
 	var/mob/living/L = target
 	if(istype(L))

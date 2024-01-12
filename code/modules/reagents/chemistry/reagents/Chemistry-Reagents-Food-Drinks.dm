@@ -4552,7 +4552,7 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#c79705"
 
-/datum/reagent/nutriment/triglyceride/oil/contact_expose_turf(turf/target, volume, list/data, vapor)
+/datum/reagent/nutriment/triglyceride/oil/contact_expose_turf(turf/target, volume, temperature, list/data, vapor)
 	. = ..()
 
 	var/turf/simulated/T = target

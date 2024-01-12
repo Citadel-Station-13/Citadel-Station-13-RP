@@ -6,7 +6,7 @@
 	reagent_state = REAGENT_SOLID
 	color = "#673910"
 
-/datum/reagent/thermite/touch_expose_mob(mob/target, volume, list/data, organ_tag)
+/datum/reagent/thermite/touch_expose_mob(mob/target, volume, temperature, list/data, organ_tag)
 	. = ..()
 	if(isliving(target))
 		var/mob/living/L = target

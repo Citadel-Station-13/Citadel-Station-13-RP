@@ -8,11 +8,11 @@
 
 /datum/reagent/space_cleaner/contact_expose_obj(obj/target, volume, list/data, vapor)
 	. = ..()
-	
+
 	target.clean_blood()
 	target.clean_radiation(RAD_CONTAMINATION_CLEANSE_POWER * (volume / 10), RAD_CONTAMINATION_CLEANSE_FACTOR ** (1 / (volume / 10)))
 
-/datum/reagent/space_cleaner/contact_expose_turf(turf/target, volume, list/data, vapor)
+/datum/reagent/space_cleaner/contact_expose_turf(turf/target, volume, temperature, list/data, vapor)
 	. = ..()
 	if(volume >= 1)
 		if(istype(target, /turf/simulated))
@@ -23,10 +23,10 @@
 		for(var/mob/living/simple_mob/slime/M in target)
 			M.adjustToxLoss(rand(5, 10))
 
-/datum/reagent/space_cleaner/touch_expose_mob(mob/target, volume, list/data, organ_tag)
+/datum/reagent/space_cleaner/touch_expose_mob(mob/target, volume, temperature, list/data, organ_tag)
 	. = ..()
 	target.clean_radiation(RAD_CONTAMINATION_CLEANSE_POWER * (volume / 10), RAD_CONTAMINATION_CLEANSE_FACTOR ** (1 / (volume / 10)))
-	
+
 	if(iscarbon(target))
 		var/mob/living/carbon/M = target
 		if(M.r_hand)
@@ -57,13 +57,13 @@
 				return
 		M.clean_blood()
 
-/datum/reagent/space_cleaner/vapor_expose_mob(mob/target, volume, list/data, inhaled)
+/datum/reagent/space_cleaner/vapor_expose_mob(mob/target, volume, temperature, list/data, inhaled)
 	. = ..()
 	target.clean_radiation(RAD_CONTAMINATION_CLEANSE_POWER * (volume / 10), RAD_CONTAMINATION_CLEANSE_FACTOR ** (1 / (volume / 10)))
 
 /datum/reagent/space_cleaner/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		entity.adjustToxLoss(6 * removed)
 	else
