@@ -9,6 +9,8 @@
 
 	var/last_cooking_method
 
+	var/overlay_icon
+
 	//is this it? yeah, it it is
 /obj/item/reagent_containers/food_holder/Initialize(mapload)
 	. = ..()

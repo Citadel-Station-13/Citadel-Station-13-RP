@@ -1,10 +1,10 @@
 // Base type for cooking machines
 // Contributes to a food's cooking timer. That's basically it.
 /obj/machinery/cooking
-	name = "generic food cooking machine"
-	desc = "A food cooking machine that cooks food. Generically. You shouldn't be seeing this!"
+	name = "stove"
+	desc = "A stove, for cooking food."
 	icon = 'icons/obj/cooking_machines.dmi'
-	icon_state = "grill_off"
+	icon_state = "stove"
 
 	density = 1
 	anchored = 1
@@ -16,15 +16,14 @@
 
 	speed_process = PROCESS_ON_SSPROCESSING
 
+
 	var/cooker_type = METHOD_OVEN
 	var/cooking_power = 0
 
-	var/max_contents = 2			// Maximum number of things this appliance can simultaneously cook
-	var/on_icon						// Icon state used when cooking.
-	var/off_icon					// Icon state used when not cooking.
+	var/max_contents = 4			// Maximum number of things this appliance can simultaneously cook
+	var/list/food_containers //what food (/obj/item/reagent_containers/food_holder = 1, /reagent_containers/snacks/ingredient = 2) we are cooking, and their positions inside the thing
+	var/list/visible_position_xy = list(1 = list("-32", "32"), 2 = list("-32", "-32"), 3 = list("32", "32"), 4 = list("32", -"32"))//for mapping a pixel_x, pixel_y to abstract ''position
 
-
-	var/list/food_containers //what food (/obj/item/reagent_containers/food_holder, /reagent_containers/snacks/ingredient) we are cooking
 
 /obj/machinery/cooking/examine(mob/user, dist)
 	. = ..()
@@ -93,17 +92,24 @@
 	if(default_deconstruction_crowbar(user, I))
 		return
 
+	if(food_containers.len >= max_contents)
+		return //no inserties if full
 	if(istype(I, /obj/item/reagent_containers/food_holder) || istype(I, /obj/item/reagent_containers/food/snacks/ingredient))
 		//From here we can start cooking food
 		insert_item(I, user)
-		update_icon()
+		
+/obj/machinery/cooking/update_icon()
+
 
 /obj/machinery/cooking/proc/insert_item(obj/item/I, mob/user)
 	if(!user.attempt_insert_item_for_installation(I, src))
 		return
-	food_containers += I
+	var/list/used = list("1","2","3","4") //this feels so bad but i literally cannot think of a better way
+		for(var/t in food_containers)
+			used -= food_containers[t]
+	food_containers[I] = pick(used) //random position :D
 	user.visible_message("<span class='notice'>[user] puts [I] into [src].</span>", "<span class='notice'>You put [I] into [src].</span>")
-
+	update_icon()
 
 /obj/machinery/cooking/attack_hand(mob/user, list/params)
 	if(!isliving(user))
@@ -183,3 +189,7 @@
 
 	playsound(src, 'sound/machines/click.ogg', 40, 1)
 	update_icon()
+
+
+
+
