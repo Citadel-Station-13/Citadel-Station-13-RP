@@ -15,10 +15,7 @@
 
 /obj/item/chainsaw/Initialize(mapload)
 	. = ..()
-	var/datum/reagent_holder/R = new/datum/reagent_holder(max_fuel)
-	reagents = R
-	R.my_atom = src
-	R.add_reagent("fuel", max_fuel)
+	create_reagents(max_fuel, REAGENT_HOLDER_CONSIDERED_OPEN | REAGENT_HOLDER_EXAMINE_OVERALL_VOLUME | REAGENT_HOLDER_TRANSPARENT_ANALYSIS)
 	START_PROCESSING(SSobj, src)
 
 /obj/item/chainsaw/Destroy()

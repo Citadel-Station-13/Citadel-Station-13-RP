@@ -7,6 +7,8 @@
 #define REAGENT_HOLDER_NO_REACT (1<<0)
 /// when we are the primary reagents container of an object, we are considered 'open' (e.g. we can be poured out and others can be poured in)
 /// implies SYRINGE_INJECTABLE | SYRINGE_DRAWABLE
+/// implies EXAMINE_OVERALL_VOLUME
+/// implies TRANSPARENT_ANALYSIS
 // todo: should this really be a flag?
 // todo: god, i hate /atom/var/reagents
 #define REAGENT_HOLDER_CONSIDERED_OPEN (1<<1)

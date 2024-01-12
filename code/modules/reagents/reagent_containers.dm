@@ -16,6 +16,8 @@
 	var/volume = 30
 	/// automatically rename to [[start_reagent]]
 	var/start_rename = FALSE
+	/// our holder's flags
+	var/reagent_holder_flags = NONE
 
 	var/amount_per_transfer_from_this = 5
 	var/possible_transfer_amounts = list(5,10,15,25,30)
@@ -24,7 +26,7 @@
 	. = ..()
 	if(!possible_transfer_amounts)
 		remove_obj_verb(src, /obj/item/reagent_containers/verb/set_APTFT)
-	create_reagents(volume)
+	create_reagents(volume, reagent_holder_flags)
 	if(!isnull(start_with))
 		for(var/id in start_with)
 			reagents.add_reagent(id, start_with[id])

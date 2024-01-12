@@ -95,8 +95,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/clothing/mask/smokable/Initialize(mapload)
 	. = ..()
-	atom_flags |= NOREACT // so it doesn't react until you light it
-	create_reagents(chem_volume) // making the cigarrete a chemical holder with a maximum volume of 15
+	create_reagents(chem_volume, REAGENT_HOLDER_NO_REACT | REAGENT_HOLDER_SYRINGE_INJECTABLE | REAGENT_HOLDER_SYRINGE_DRAWABLE) // making the cigarrete a chemical holder with a maximum volume of 15
 	if(smoketime && !max_smoketime)
 		max_smoketime = smoketime
 
@@ -108,9 +107,9 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		if(ishuman(loc))
 			var/mob/living/carbon/human/C = loc
 			if (src == C.wear_mask && C.check_has_mouth()) // if it's in the human/monkey mouth, transfer reagents to the mob
-				reagents.trans_to_mob(C, REM, REAGENT_APPLY_INGEST, 0.2) // Most of it is not inhaled... balance reasons.
+				reagents.trans_to_mob(C, REAGENT_METABOLISM_NORMAL, REAGENT_APPLY_INGEST, 0.2) // Most of it is not inhaled... balance reasons.
 		else // else just remove some of the reagents
-			reagents.remove_any(REM)
+			reagents.remove_any(REAGENT_METABOLISM_NORMAL)
 
 /obj/item/clothing/mask/smokable/process(delta_time)
 	var/turf/location = get_turf(src)
@@ -173,8 +172,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			e.start()
 			qdel(src)
 			return
-		atom_flags &= ~NOREACT // allowing reagents to react after being lit
-		reagents.handle_reactions()
+		reagents.set_no_reacting(FALSE)
 		var/turf/T = get_turf(src)
 		T.visible_message(flavor_text)
 		update_icon()

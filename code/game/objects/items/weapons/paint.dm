@@ -15,7 +15,7 @@ var/global/list/cached_icons = list()
 	possible_transfer_amounts = list(10,20,30,60)
 	volume = 60
 	integrity_flags = INTEGRITY_ACIDPROOF
-	atom_flags = OPENCONTAINER
+	reagent_holder_flags = REAGENT_HOLDER_CONSIDERED_OPEN
 	var/paint_type = "red"
 
 /obj/item/reagent_containers/glass/paint/afterattack(atom/target, mob/user, clickchain_flags, list/params)
