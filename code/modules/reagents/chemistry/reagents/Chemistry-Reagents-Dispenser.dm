@@ -30,7 +30,7 @@
 
 /datum/reagent/ethanol/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(issmall(entity)) removed *= 2
 	var/strength_mod = 3 //Alcohol is 3x stronger when injected into the veins.
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_SKRELL)])
@@ -98,9 +98,7 @@
 		strength_mod = 0
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		strength_mod *= 2
-	var/is_vampire = M.species.is_vampire
-	if(is_vampire)
-		handle_vampire(M, alien, removed, is_vampire)
+	handle_vampire(M, removed)
 
 	var/effective_dose = strength_mod * dose // this was being recalculated a bunch before--why?
 	if(HAS_TRAIT(M, TRAIT_ALCOHOL_INTOLERANT))
@@ -167,7 +165,7 @@
 
 /datum/reagent/acid/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(issmall(entity)) removed *= 2
 	entity.take_organ_damage(0, removed * power * 2)
 
@@ -258,7 +256,7 @@
 
 /datum/reagent/sugar/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	entity.nutrition += removed * 3
 
 	var/effective_dose = dose

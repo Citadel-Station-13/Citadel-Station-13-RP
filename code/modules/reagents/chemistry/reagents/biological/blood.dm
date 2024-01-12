@@ -24,8 +24,11 @@
 	// just merge-replace.
 	// not like we can do otherwise anyways while still being memory-efficient
 	// sucks lol.
-	#warn deep merge virus2, antibodies list
-	return current_data | new_data
+	// todo: this is shit but we need to ensure no shallow copying happens for the snowflake list data entries
+	return current_data | new_data | list(
+		"virus2" = merge_lazy_assoc_list(current_data["virus2"], new_data["virus2"]),
+		"antibodies" = merge_lazy_assoc_list(current_data["antibodies"], new_data["antibodies"]),
+	)
 
 /datum/reagent/blood/init_data(datum/reagent_holder/holder, amount, list/given_data)
 	. = list(
@@ -34,9 +37,16 @@
 		"species_id" = SPECIES_ID_HUMAN,
 		"blood_name" = "blood",
 	)
-	#warn deep merge virus2, antibodies list
+	// todo: this is shit but we need to ensure no shallow copying happens for the snowflake list data entries
 	if(!isnull(given_data))
 		. |= given_data
+		var/list/copying = .["virus2"]
+		if(!isnull(.["virus2"]))
+			copying = .["virus2"]
+			.["virus2"] = copying.Copy()
+		if(!isnull(.["antibodies"]))
+			copying = .["antibodies"]
+			.["antibodies"] = copying.Copy()
 
 /datum/reagent/blood/contact_expose_turf(turf/target, volume, list/data, vapor)
 	blood_splatter(target, data, TRUE)
@@ -58,48 +68,46 @@
 		entity.adjustToxLoss(removed / 2)
 		return
 
-	#warn below
-	var/is_vampire = M.species.is_vampire
-	if(is_vampire)
-		handle_vampire(M, alien, removed, is_vampire)
+	handle_vampire(entity, removed)
+
 	if(data && data["virus2"])
 		var/list/vlist = data["virus2"]
 		if(vlist.len)
 			for(var/ID in vlist)
 				var/datum/disease2/disease/V = vlist[ID]
 				if(V.spreadtype == "Contact")
-					infect_virus2(M, V.getcopy())
+					infect_virus2(entity, V.getcopy())
 
-/datum/reagent/blood/affect_touch(mob/living/carbon/M, alien, removed)
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
+/datum/reagent/blood/touch_expose_mob(mob/target, volume, list/data, organ_tag)
+	. = ..()
+	if(ishuman(target))
+		var/mob/living/carbon/human/H = target
 		if(H.isSynthetic())
 			return
-	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
-		affect_ingest(M, alien, removed)
-		return
+	if(iscarbon(target))
+		var/mob/living/carbon/C = target
+		if(C.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
+			affect_ingest(C, alien, removed)
+			return
 	if(data && data["virus2"])
 		var/list/vlist = data["virus2"]
 		if(vlist.len)
 			for(var/ID in vlist)
 				var/datum/disease2/disease/V = vlist[ID]
 				if(V.spreadtype == "Contact")
-					infect_virus2(M, V.getcopy())
-	if(data && data["antibodies"])
-		M.antibodies |= data["antibodies"]
+					infect_virus2(target, V.getcopy())
 
 /datum/reagent/blood/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)]) //They don't have blood, so it seems weird that they would instantly 'process' the chemical like another species does.
-		affect_ingest(M, alien, removed)
+		return on_metabolize_ingested(entity, metabolism, data, removed)
+
+	if(entity.isSynthetic())
 		return
 
-	if(M.isSynthetic())
-		return
-
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
+	if(ishuman(entity))
+		var/mob/living/carbon/human/H = entity
 
 		var/datum/reagent/blood/recipient = H.get_blood(H.vessel)
 
@@ -111,7 +119,10 @@
 
 			return
 
-	M.inject_blood(data, volume * volume_mod)
+	if(data && data["antibodies"])
+		entity.antibodies |= data["antibodies"]
+
+	entity.inject_blood(data, volume * volume_mod)
 	remove_self(volume)
 
 /datum/reagent/blood/synthblood

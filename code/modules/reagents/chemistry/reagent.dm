@@ -143,6 +143,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/taste_mult = 1
 	var/reagent_state = REAGENT_SOLID
 	/// Used for vampric-Digestion
+	//  todo: KILL THIS SHIT WITH FIRE
 	var/blood_content = 0
 	/// Organs that will slow the processing of this chemical.
 	var/list/filtered_organs = list()
@@ -294,9 +295,8 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	return
 
 
-// todo: fourth apply method of REAGENT_APPLY_VAPOR implementation?
-
-/datum/reagent/proc/handle_vampire(var/mob/living/carbon/M, var/alien, var/removed, var/is_vampire)
+// todo: FUCKING BURN THIS PROC WITH FIRE
+/datum/reagent/proc/handle_vampire(var/mob/living/carbon/M, var/removed)
 	if(blood_content > 0 && is_vampire)
 		#define blud_warn_timer 3000
 		if(blood_content < 4) //Are we drinking real blood or something else?

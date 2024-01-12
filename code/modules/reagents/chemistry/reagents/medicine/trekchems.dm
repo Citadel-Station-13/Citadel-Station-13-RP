@@ -7,12 +7,12 @@
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
 	color = "#00BFFF"
-	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 2
+	bloodstream_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 2
 	bloodstream_metabolism_multiplier = 0.5
 
 /datum/reagent/inaprovaline/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		entity.add_chemical_effect(CHEMICAL_EFFECT_STABLE, 15)//Reduces bleeding rate, and allowes the patient to breath even when in shock
 		entity.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 10)
@@ -25,11 +25,11 @@
 	taste_mult = 3
 	reagent_state = REAGENT_LIQUID
 	color = "#BF0000"
-	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
+	bloodstream_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
 /datum/reagent/bicaridine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	var/chem_effective = 1
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		chem_effective = 0.75
@@ -57,11 +57,11 @@
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
 	color = "#FFA800"
-	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
+	bloodstream_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
 /datum/reagent/kelotane/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	var/chem_effective = 1
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		chem_effective = 0.5
@@ -76,11 +76,11 @@
 	taste_mult = 1.5
 	reagent_state = REAGENT_LIQUID
 	color = "#FF8000"
-	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 0.5
+	bloodstream_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 0.5
 
 /datum/reagent/dermaline/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	var/chem_effective = 1
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		chem_effective = 0.75
@@ -97,7 +97,7 @@
 
 /datum/reagent/dylovene/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	var/chem_effective = 1
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		chem_effective = 0.66
@@ -117,12 +117,12 @@
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
 	color = "#0080FF"
-	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
+	bloodstream_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 	bloodstream_metabolism_multiplier = 0.25
-	
+
 /datum/reagent/dexalin/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_VOX)])
 		entity.adjustToxLoss(removed * 24) //Vox breath phoron, oxygen is rather deadly to them
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_ALRAUNE)])
@@ -138,7 +138,7 @@
 		//keep in mind that Dexaline has a metabolism rate of 0.25*REM meaning only 0.25 units are removed every tick(if your metabolism takes usuall 1u per tick)
 
 	holder.remove_reagent("lexorin", 8 * removed)
-	
+
 /datum/reagent/dexalinp
 	name = "Dexalin Plus"
 	id = "dexalinp"
@@ -146,11 +146,11 @@
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
 	color = "#0040FF"
-	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 0.5
+	bloodstream_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 0.5
 
 /datum/reagent/dexalinp/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_VOX)])
 		entity.adjustToxLoss(removed * 9)//Again, vox dont like O2
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_ALRAUNE)])
@@ -176,7 +176,7 @@
 
 /datum/reagent/tricordrazine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])//Heals everyone besides diona on all 4 base damage types.
 		var/chem_effective = 1
 		if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])

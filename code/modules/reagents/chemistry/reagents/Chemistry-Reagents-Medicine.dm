@@ -79,7 +79,7 @@
 	taste_description = "the sweet highs of life"
 	reagent_state = REAGENT_LIQUID
 	color = "#ffb500"
-	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 0.50
+	bloodstream_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 0.50
 
 
 /datum/reagent/earthsblood/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
@@ -158,7 +158,7 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#99CCFF"
 	bloodstream_metabolism_multiplier = 0.05
-	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
+	bloodstream_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
 /datum/reagent/synaptizine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
@@ -189,7 +189,7 @@
 	bloodstream_metabolism_multiplier = 0.25 // see "long lasting"
 	reagent_state = REAGENT_LIQUID
 	color = "#FF3300"
-	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 0.5
+	bloodstream_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 0.5
 
 /datum/reagent/hyperzine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
@@ -213,7 +213,7 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#FFFF66"
 	bloodstream_metabolism_multiplier = 0.25
-	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
+	bloodstream_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
 /datum/reagent/alkysine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
@@ -237,7 +237,7 @@
 	taste_description = "dull toxin"
 	reagent_state = REAGENT_LIQUID
 	color = "#C8A5DC"
-	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
+	bloodstream_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
 /datum/reagent/imidazoline/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
@@ -262,7 +262,7 @@
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
 	color = "#561EC3"
-	overdose_threshold = 10
+	bloodstream_overdose_threshold = 10
 
 /datum/reagent/peridaxon/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
@@ -290,7 +290,7 @@
 	taste_description = "bitterness and iron"
 	reagent_state = REAGENT_LIQUID
 	color = "#664B9B"
-	overdose_threshold = 10
+	bloodstream_overdose_threshold = 10
 
 /datum/reagent/nanoperidaxon/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
@@ -316,7 +316,7 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#C9BCE3"
 	bloodstream_metabolism_multiplier = 0.5
-	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 0.5
+	bloodstream_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 0.5
 
 /datum/reagent/osteodaxon/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
@@ -339,7 +339,7 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#4246C7"
 	bloodstream_metabolism_multiplier = 0.5
-	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 0.5
+	bloodstream_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 0.5
 	var/repair_strength = 3
 
 /datum/reagent/myelamine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
@@ -372,7 +372,7 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#4444FF"
 	bloodstream_metabolism_multiplier = 1.5
-	overdose_threshold = 10
+	bloodstream_overdose_threshold = 10
 
 /datum/reagent/respirodaxon/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
@@ -404,7 +404,7 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#8B4513"
 	bloodstream_metabolism_multiplier = 1.5
-	overdose_threshold = 10
+	bloodstream_overdose_threshold = 10
 
 /datum/reagent/gastirodaxon/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
@@ -436,7 +436,7 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#D2691E"
 	bloodstream_metabolism_multiplier = 1.5
-	overdose_threshold = 10
+	bloodstream_overdose_threshold = 10
 
 /datum/reagent/hepanephrodaxon/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
@@ -470,7 +470,7 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#FF4444"
 	bloodstream_metabolism_multiplier = 1.5
-	overdose_threshold = 10
+	bloodstream_overdose_threshold = 10
 
 /datum/reagent/cordradaxon/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
@@ -498,7 +498,7 @@
 	taste_description = "flesh"
 	reagent_state = REAGENT_SOLID
 	color = "#7B4D4F"
-	overdose_threshold = 20
+	bloodstream_overdose_threshold = 20
 
 /datum/reagent/immunosuprizine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
@@ -556,7 +556,7 @@
 	reagent_state = REAGENT_SOLID
 	color = "#84B2B0"
 	bloodstream_metabolism_multiplier = 0.75
-	overdose_threshold = 20
+	bloodstream_overdose_threshold = 20
 
 /datum/reagent/skrellimmuno/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
@@ -601,7 +601,7 @@
 	taste_description = "acid"
 	reagent_state = REAGENT_SOLID
 	color = "#004000"
-	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
+	bloodstream_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
 /datum/reagent/ryetalyn/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
@@ -650,7 +650,7 @@
 	taste_description = "bitterness"
 	reagent_state = REAGENT_SOLID
 	color = "#605048"
-	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
+	bloodstream_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
 /datum/reagent/ethylredoxrazine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
@@ -676,7 +676,7 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#408000"
 	bloodstream_metabolism_multiplier = 0.25
-	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
+	bloodstream_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
 /datum/reagent/hyronalin/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
@@ -693,7 +693,7 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#008000"
 	bloodstream_metabolism_multiplier = 0.25
-	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
+	bloodstream_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
 /datum/reagent/arithrazine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
@@ -714,7 +714,7 @@
 	color = "#C1C1C1"
 	bloodstream_metabolism_multiplier = 0.25
 	mrate_static = TRUE
-	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
+	bloodstream_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 	data = 0
 
 /datum/reagent/spaceacillin/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
@@ -742,7 +742,7 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#FFB0B0"
 	mrate_static = TRUE
-	overdose_threshold = 10
+	bloodstream_overdose_threshold = 10
 	data = 0
 
 /datum/reagent/corophizine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
@@ -810,7 +810,7 @@
 	color = "#C1C1C8"
 	bloodstream_metabolism_multiplier = 0.4
 	mrate_static = TRUE
-	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
+	bloodstream_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 	data = 0
 	can_overdose_touch = TRUE
 
@@ -904,7 +904,7 @@
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
 	color = "#C8A5DC"
-	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
+	bloodstream_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
 /datum/reagent/leporazine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
@@ -923,7 +923,7 @@
 	taste_description = "bitterness"
 	reagent_state = REAGENT_SOLID
 	color = "#669900"
-	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
+	bloodstream_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
 /datum/reagent/rezadone/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
@@ -1116,7 +1116,7 @@
 	description = "A foul-smelling green liquid, for inducing muscle contractions to expel accidentally ingested things."
 	reagent_state = REAGENT_LIQUID
 	color = "#0E900E"
-	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
+	bloodstream_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
 /datum/reagent/ickypak/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
@@ -1141,7 +1141,7 @@
 	description = "A frothy pink liquid, for causing cellular-level hetrogenous structure separation."
 	reagent_state = REAGENT_LIQUID
 	color = "#EF77E5"
-	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
+	bloodstream_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
 /datum/reagent/unsorbitol/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
@@ -1245,7 +1245,7 @@
 	bloodstream_metabolism_multiplier = 0.016
 	mrate_static = TRUE
 	color = "#52ca22"
-	overdose_threshold = 16
+	bloodstream_overdose_threshold = 16
 
 /datum/reagent/neuratrextate/affect_ingest(mob/living/carbon/M)
 	remove_self(30)

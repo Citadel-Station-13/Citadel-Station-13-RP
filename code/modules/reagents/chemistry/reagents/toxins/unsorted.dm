@@ -15,7 +15,7 @@
 
 /datum/reagent/toxin/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(strength && !entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		if(issmall(entity)) removed *= 2 // Small bodymass, more effect from lower volume.
 		if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
@@ -68,7 +68,7 @@
 
 /datum/reagent/toxin/neurotoxic_protein/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		if(CHECK_MOBILITY(entity, MOBILITY_CAN_MOVE) && istype(entity.loc, /turf/space))
 			step(entity, pick(GLOB.cardinal))
@@ -106,7 +106,7 @@
 
 /datum/reagent/toxin/hydrophoron/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		entity.adjust_fire_stacks(removed * 10)
 		if(prob(10))
@@ -148,7 +148,7 @@
 
 /datum/reagent/toxin/phoron/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_VOX)])
 		entity.adjustOxyLoss(-100 * removed) //5 oxyloss healed per tick.
 		return //You're wasting plasma (a semi-limited chemical) to save someone, so it might as well be somewhat strong.
@@ -177,7 +177,7 @@
 
 /datum/reagent/toxin/cyanide/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	entity.adjustOxyLoss(20 * removed)
 	entity.afflict_sleeping(20 * 1)
 
@@ -215,7 +215,7 @@
 
 /datum/reagent/toxin/expired_medicine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(prob(5))
 		entity.vomit()
 
@@ -231,12 +231,12 @@
 	taste_mult = 1.8
 	color = "#d0583a"
 	bloodstream_metabolism_multiplier = 3
-	overdose_threshold = 10
+	bloodstream_overdose_threshold = 10
 	strength = 3
 
 /datum/reagent/toxin/stimm/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_TAJARAN)])
 		removed *= 1.25
 	..()
@@ -255,12 +255,12 @@
 	reagent_state = REAGENT_SOLID
 	color = "#FFFFFF"
 	strength = 0
-	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
+	bloodstream_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 	filtered_organs = list(O_SPLEEN, O_KIDNEYS)
 
 /datum/reagent/toxin/potassium_chloride/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		M.adjustFireLoss(removed * 2)
 
@@ -282,12 +282,12 @@
 	reagent_state = REAGENT_SOLID
 	color = "#FFFFFF"
 	strength = 10
-	overdose_threshold = 20
+	bloodstream_overdose_threshold = 20
 	filtered_organs = list(O_SPLEEN, O_KIDNEYS)
 
 /datum/reagent/toxin/potassium_chlorophoride/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(ishuman(entity))
 		var/mob/living/carbon/human/H = entity
 		if(H.stat != 1)
@@ -311,7 +311,7 @@
 
 /datum/reagent/toxin/zombiepowder/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	entity.status_flags |= STATUS_FAKEDEATH
@@ -367,7 +367,7 @@
 
 /datum/reagent/toxin/fertilizer/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_ALRAUNE)]) //cit change: fertilizer is full of natural easily digestible plant fats
 		entity.nutrition += removed * 5
 		return
@@ -410,7 +410,7 @@
 
 /datum/reagent/toxin/plantbgone/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_ALRAUNE)])
 		entity.adjustToxLoss(50 * removed)
 
@@ -435,7 +435,7 @@
 
 /datum/reagent/toxin/pestbgone/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_APIDAEN)])
 		entity.adjustToxLoss(50 * removed)
 
@@ -451,11 +451,11 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#C6E2FF"
 	strength = 2
-	overdose_threshold = 20
+	bloodstream_overdose_threshold = 20
 
 /datum/reagent/toxin/sifslurry/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)]) // Symbiotic bacteria.
 		entity.nutrition += strength * removed
 		return
@@ -517,7 +517,7 @@
 
 /datum/reagent/thermite/venom/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	entity.adjustFireLoss(3 * removed)
 	if(entity.fire_stacks <= 1.5)
 		entity.adjust_fire_stacks(0.15)
@@ -540,7 +540,7 @@
 
 /datum/reagent/condensedcapsaicin/venom/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	if(prob(50))
@@ -561,11 +561,11 @@
 	taste_description = "acid"
 	reagent_state = REAGENT_LIQUID
 	color = "#C8A5DC"
-	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
+	bloodstream_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
 /datum/reagent/lexorin/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
@@ -690,7 +690,7 @@
 
 /datum/reagent/slimejelly/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)]) //Partially made of the stuff. Why would it hurt them?
@@ -715,7 +715,7 @@
 
 /datum/reagent/advmutationtoxin/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(ishuman(entity))
 		var/mob/living/carbon/human/H = entity
 		if(H.species.get_species_id() != SPECIES_ID_PROMETHEAN)
@@ -748,11 +748,11 @@
 	color = "#009CA8"
 	bloodstream_metabolism_multiplier = 0.5
 	ingest_met = REM * 1.5
-	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
+	bloodstream_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
 /datum/reagent/soporific/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 
@@ -798,12 +798,12 @@
 	color = "#000067"
 	bloodstream_metabolism_multiplier = 0.5
 	ingest_met = REM * 1.5
-	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 0.5
+	bloodstream_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 0.5
 	overdose_mod = 5	//For that good, lethal feeling
 
 /datum/reagent/chloralhydrate/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 
@@ -864,11 +864,11 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#60A584"
 	bloodstream_metabolism_multiplier = 0.5
-	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
+	bloodstream_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
 /datum/reagent/space_drugs/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 
@@ -893,11 +893,11 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#202040"
 	bloodstream_metabolism_multiplier = 0.25
-	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
+	bloodstream_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
 /datum/reagent/serotrotium/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	if(prob(7))
@@ -913,7 +913,7 @@
 
 /datum/reagent/serotrotium/venom/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	if(prob(30))
@@ -930,11 +930,11 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#000055"
 	bloodstream_metabolism_multiplier = 0.5
-	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
+	bloodstream_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
 /datum/reagent/cryptobiolin/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	var/drug_strength = 4
@@ -955,12 +955,12 @@
 	taste_description = "numbness"
 	reagent_state = REAGENT_LIQUID
 	color = "#C8A5DC"
-	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
+	bloodstream_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 	filtered_organs = list(O_SPLEEN)
 
 /datum/reagent/impedrezene/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	entity.jitteriness = max(entity.jitteriness - 5, 0)
@@ -979,11 +979,11 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#B31008"
 	bloodstream_metabolism_multiplier = 0.25
-	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
+	bloodstream_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
 /datum/reagent/mindbreaker/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 
@@ -1003,12 +1003,12 @@
 	description = "A strong psycotropic derived from certain species of mushroom."
 	taste_description = "mushroom"
 	color = "#E700E7"
-	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
+	bloodstream_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 	bloodstream_metabolism_multiplier = 0.5
 
 /datum/reagent/psilocybin/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 
@@ -1060,11 +1060,11 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#db2ed8"
 	bloodstream_metabolism_multiplier = 0.5
-	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
+	bloodstream_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
 /datum/reagent/talum_quem/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 
@@ -1092,7 +1092,7 @@
 
 /datum/reagent/slimetoxin/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.isSynthetic())
 		return
 
@@ -1124,7 +1124,7 @@
 
 /datum/reagent/aslimetoxin/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	if(entity.isSynthetic())
 		return
 
@@ -1163,7 +1163,7 @@
 
 /datum/reagent/shredding_nanites/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	entity.adjustBruteLoss(4 * removed)
 	entity.adjustOxyLoss(4 * removed)
 
@@ -1179,7 +1179,7 @@
 
 /datum/reagent/irradiated_nanites/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	// todo: this should be more brutal on people around the person without being too brutal on the person
 	// new radiation just kind of scales pretty badly
 	/// rads to everyone around you
@@ -1200,7 +1200,7 @@
 
 /datum/reagent/neurophage_nanites/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	entity.take_overall_damage(2 * removed)
 
 //Special toxins for solargrubs

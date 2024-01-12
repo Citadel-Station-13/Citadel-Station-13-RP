@@ -383,7 +383,7 @@
 	taste_description = "mothballs"
 	reagent_state = REAGENT_LIQUID
 	color = "#BBEDA4"
-	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
+	bloodstream_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
 /datum/reagent/lipozine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
@@ -402,7 +402,7 @@
 	taste_description = "salt"
 	reagent_state = REAGENT_SOLID
 	color = "#FFFFFF"
-	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
+	bloodstream_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 	ingest_met = REM
 
 /datum/reagent/sodiumchloride/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
@@ -433,7 +433,7 @@
 	taste_mult = 0.7
 	reagent_state = REAGENT_LIQUID
 	color = "#365E30"
-	overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
+	bloodstream_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
 /datum/reagent/frostoil
 	name = "Frost Oil"
@@ -723,9 +723,7 @@
 		M.bodytemperature = min(310, M.bodytemperature + (adj_temp * TEMPERATURE_DAMAGE_COEFFICIENT))
 	if(adj_temp < 0 && M.bodytemperature > 310)
 		M.bodytemperature = min(310, M.bodytemperature - (adj_temp * TEMPERATURE_DAMAGE_COEFFICIENT))
-	var/is_vampire = M.species.is_vampire
-	if(is_vampire)
-		handle_vampire(M, alien, removed, is_vampire)
+	handle_vampire(M, removed)
 
 /datum/reagent/drink/overdose(mob/living/carbon/M, alien) //Add special interactions here in the future if desired.
 	..()
@@ -1254,7 +1252,7 @@
 	adj_drowsy = -3
 	adj_sleepy = -2
 	adj_temp = 25
-	overdose_threshold = 45
+	bloodstream_overdose_threshold = 45
 
 	cup_icon_state = "cup_coffee"
 	cup_name = "Cup of Coffee"
@@ -2408,7 +2406,7 @@
 // i hate you, whoever made this, go make reagent traits you utter AAAAA
 /datum/reagent/ethanol/coffee
 	id = "coffee_alcohol"
-	overdose_threshold = 45
+	bloodstream_overdose_threshold = 45
 
 /datum/reagent/ethanol/coffee/affect_ingest(mob/living/carbon/M, alien, removed)
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])

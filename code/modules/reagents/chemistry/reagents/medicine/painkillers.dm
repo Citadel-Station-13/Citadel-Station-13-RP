@@ -7,13 +7,13 @@
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
 	color = "#C8A5DC"
-	overdose_threshold = 60
+	bloodstream_overdose_threshold = 60
 	metabolism = 0.02
 	mrate_static = TRUE
 
 /datum/reagent/paracetamol/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	var/chem_effective = 1
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		chem_effective = 0.75
@@ -32,13 +32,13 @@
 	taste_description = "sourness"
 	reagent_state = REAGENT_LIQUID
 	color = "#CB68FC"
-	overdose_threshold = 30
+	bloodstream_overdose_threshold = 30
 	metabolism = 0.02
 	mrate_static = TRUE
 
 /datum/reagent/tramadol/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	var/chem_effective = 1
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		chem_effective = 0.8
@@ -56,13 +56,13 @@
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
 	color = "#800080"
-	overdose_threshold = 20
+	bloodstream_overdose_threshold = 20
 	metabolism = 0.02
 	mrate_static = TRUE
 
 /datum/reagent/oxycodone/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	var/chem_effective = 1
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		chem_effective = 0.75
