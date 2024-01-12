@@ -103,6 +103,8 @@
 		LAZYSET(reagent_datas, id, data)
 		reagent_volumes[id] = amount
 
+	#warn sensitive add reaction triggers
+
 	if(!defer_recalc)
 		update_total()
 		if(!defer_reactions)
@@ -137,6 +139,8 @@
 		reagent_volumes -= id
 		reagent_datas?.Remove(id)
 		reagent_metabolism?.Remove(id)
+
+	#warn sensitive remove reaction triggers
 
 	if(!defer_recalc)
 		update_total()
@@ -387,6 +391,7 @@
 	#warn impl
 
 /datum/reagent_holder/proc/stop_reactions()
+
 	#warn impl
 
 /**

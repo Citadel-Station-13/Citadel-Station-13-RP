@@ -110,14 +110,14 @@
 		var/id = initial(path.id)
 		catalysts[i] = id
 		catalysts[id] = amt
-	for(var/i in 1 to length(inhibitors))
-		var/datum/reagent/path = inhibitors[i]
+	for(var/i in 1 to length(moderators))
+		var/datum/reagent/path = moderators[i]
 		if(!ispath(path))
 			continue
-		var/amt = inhibitors[path]
+		var/amt = moderators[path]
 		var/id = initial(path.id)
-		inhibitors[i] = id
-		inhibitors[id] = amt
+		moderators[i] = id
+		moderators[id] = amt
 	if(ispath(result, /datum/reagent))
 		var/datum/reagent/result_initial = result
 		result = initial(result_initial.id)
@@ -272,7 +272,7 @@
  *
  * @params return FALSE to abort
  */
-/datum/chemical_reaction/proc/on_reaction_start(datum/reagent_holder/holder)
+/datum/chemical_reaction/proc/on_reaction_start(datum/reagent_holder/holder, instant)
 	return TRUE
 
 /**
@@ -289,5 +289,5 @@
 /**
  * called at end of a ticked reaction
  */
-/datum/chemical_reaction/proc/on_reaction_end(datum/reagent_holder/holder)
+/datum/chemical_reaction/proc/on_reaction_end(datum/reagent_holder/holder, instant)
 	return
