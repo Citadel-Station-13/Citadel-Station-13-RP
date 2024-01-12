@@ -88,7 +88,8 @@
 		var/mob/living/carbon/C = target
 		if(C.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 			// todo: shitcode, we shouldn't call other procs from this.
-			return on_metabolize_ingested(entity, metabolism, data, removed)
+			C.reagents_ingested.add_reagent(src, volume)
+			return volume
 	if(data && data["virus2"])
 		var/list/vlist = data["virus2"]
 		if(vlist.len)
