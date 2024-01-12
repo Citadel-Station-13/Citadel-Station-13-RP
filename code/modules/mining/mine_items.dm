@@ -148,10 +148,8 @@
 
 /obj/item/pickaxe/tyrmalin/Initialize(mapload)
 	. = ..()
-	var/datum/reagent_holder/R = new/datum/reagent_holder(max_fuel)
-	reagents = R
-	R.my_atom = src
-	R.add_reagent("fuel", max_fuel)
+	create_reagents(max_fuel, src)
+	reagents.add_reagent(/datum/reagent/fuel, max_fuel)
 	START_PROCESSING(SSobj, src)
 
 /obj/item/pickaxe/tyrmalin/Destroy()

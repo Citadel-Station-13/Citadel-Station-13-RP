@@ -1,13 +1,14 @@
 /obj/item/integrated_circuit/reagent
 	category_text = "Reagent"
 	cooldown_per_use = 10
-	var/volume = 0
 	origin_tech = list(TECH_ENGINEERING = 2, TECH_DATA = 2, TECH_BIO = 2)
+	var/reagent_holder_volume = 60
+	var/reagent_holder_flags = NONE
 
 /obj/item/integrated_circuit/reagent/Initialize(mapload)
 	. = ..()
-	if(volume)
-		create_reagents(volume)
+	if(reagent_holder_volume)
+		create_reagents(reagent_holder_volume, src, reagent_holder_flags)
 		push_vol()
 
 /obj/item/integrated_circuit/reagent/proc/push_vol()
@@ -20,7 +21,6 @@
 	icon_state = "smoke"
 	extended_desc = "This smoke generator creates clouds of smoke on command.  It can also hold liquids inside, which will go \
 	into the smoke clouds when activated.  The reagents are consumed when smoke is made."
-	atom_flags = OPENCONTAINER
 	complexity = 20
 	cooldown_per_use = 30 SECONDS
 	inputs = list()
@@ -28,7 +28,8 @@
 	activators = list("create smoke" = IC_PINTYPE_PULSE_IN,"on smoked" = IC_PINTYPE_PULSE_OUT)
 	spawn_flags = IC_SPAWN_RESEARCH
 	origin_tech = list(TECH_ENGINEERING = 3, TECH_DATA = 3, TECH_BIO = 3)
-	volume = 100
+	reagent_holder_volume = 100
+	reagent_holder_flags = REAGENT_HOLDER_CONSIDERED_OPEN
 	power_draw_per_use = 20
 
 /obj/item/integrated_circuit/reagent/smoke/on_reagent_change()
@@ -56,8 +57,8 @@
 	icon_state = "injector"
 	extended_desc = "This autoinjector can push up to 30 units of reagents into another container or someone else outside of the machine.  The target \
 	must be adjacent to the machine, and if it is a person, they cannot be wearing thick clothing.  A negative quantity inverts the injector, sucking out reagents instead."
-	atom_flags = OPENCONTAINER
-	volume = 30
+	reagent_holder_volume = 30
+	reagent_holder_flags = REAGENT_HOLDER_CONSIDERED_OPEN
 	complexity = 20
 	cooldown_per_use = 6 SECONDS
 	inputs = list("target" = IC_PINTYPE_REF, "injection amount" = IC_PINTYPE_NUMBER)
@@ -77,10 +78,6 @@
 	var/direction_mode = SYRINGE_INJECT
 	var/transfer_amount = 10
 	var/busy = FALSE
-
-/obj/item/integrated_circuit/reagent/injector/Initialize(mapload)
-	. = ..()
-	reagents.reagents_holder_flags |= OPENCONTAINER
 
 /obj/item/integrated_circuit/reagent/injector/on_reagent_change(changetype)
 	push_vol()
@@ -199,7 +196,6 @@
 	extended_desc = "This is a pump, which will move liquids from the source ref to the target ref.  The third pin determines \
 	how much liquid is moved per pulse, between 0 and 50.  The pump can move reagents to any open container inside the machine, or \
 	outside the machine if it is next to the machine.  Note that this cannot be used on entities."
-	atom_flags = OPENCONTAINER
 	complexity = 8
 	inputs = list("source" = IC_PINTYPE_REF, "target" = IC_PINTYPE_REF, "injection amount" = IC_PINTYPE_NUMBER)
 	inputs_default = list("3" = 5)
@@ -210,6 +206,7 @@
 	var/transfer_amount = 10
 	var/direc = 1
 	power_draw_per_use = 10
+	reagent_holder_volume = 0
 
 /obj/item/integrated_circuit/reagent/pump/on_data_written()
 	var/new_amount = get_pin_data(IC_INPUT, 3)
@@ -350,15 +347,14 @@
 	desc = "Stores liquid inside, and away from electrical components.  Can store up to 60u."
 	icon_state = "reagent_storage"
 	extended_desc = "This is effectively an internal beaker."
-	atom_flags = OPENCONTAINER
 	complexity = 4
 	inputs = list()
 	outputs = list("volume used" = IC_PINTYPE_NUMBER,"self reference" = IC_PINTYPE_REF)
 	activators = list()
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 	origin_tech = list(TECH_ENGINEERING = 2, TECH_DATA = 2, TECH_BIO = 2)
-	volume = 60
-
+	reagent_holder_volume = 60
+	reagent_holder_flags = REAGENT_HOLDER_CONSIDERED_OPEN
 
 /obj/item/integrated_circuit/reagent/storage/interact(mob/user)
 	set_pin_data(IC_OUTPUT, 2, WEAKREF(src))
@@ -374,10 +370,10 @@
 	desc = "Stores liquid inside, and away from electrical components.  Can store up to 60u.  This will also suppress reactions."
 	icon_state = "reagent_storage_cryo"
 	extended_desc = "This is effectively an internal cryo beaker."
-	atom_flags = OPENCONTAINER | NOREACT
 	complexity = 8
 	spawn_flags = IC_SPAWN_RESEARCH
 	origin_tech = list(TECH_MATERIAL = 4, TECH_ENGINEERING = 2, TECH_DATA = 2, TECH_BIO = 2)
+	reagent_holder_flags = REAGENT_HOLDER_CONSIDERED_OPEN | REAGENT_HOLDER_CONSIDERED_NO_REACT
 
 /obj/item/integrated_circuit/reagent/storage/heater
 	name = "chemical heater"
@@ -413,10 +409,10 @@
 	desc = "Stores liquid inside, and away from electrical components.  Can store up to 180u."
 	icon_state = "reagent_storage_big"
 	extended_desc = "This is effectively an internal beaker."
-	atom_flags = OPENCONTAINER
 	complexity = 16
-	volume = 180
+	reagent_holder_volume = 180
 	spawn_flags = IC_SPAWN_RESEARCH
+	reagent_holder_flags = REAGENT_HOLDER_CONSIDERED_OPEN
 	origin_tech = list(TECH_MATERIAL = 3, TECH_ENGINEERING = 2, TECH_DATA = 2, TECH_BIO = 2)
 
 /obj/item/integrated_circuit/reagent/funnel
@@ -458,7 +454,6 @@
 	desc = "A length of flexible piping that can be used to connect one container to another."
 	extended_desc = "Use these to supply your fuel cell with never-ending phoron! Beware of leaks."
 	icon_state = "reagent_funnel"
-	atom_flags = OPENCONTAINER
 	inputs = list(
 		"toggle cap"		= IC_PINTYPE_BOOLEAN,
 		"source vol"		= IC_PINTYPE_NUMBER,
@@ -469,7 +464,8 @@
 		)
 	power_draw_per_use = 0
 	complexity = 1
-	volume = 5
+	reagent_holder_volume = 5
+	reagent_holder_flags = REAGENT_HOLDER_CONSIDERED_OPEN
 	next_use = null
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
@@ -508,12 +504,11 @@
 		"on fail" = IC_PINTYPE_PULSE_OUT,
 		"push ref" = IC_PINTYPE_PULSE_IN
 		)
-	atom_flags = OPENCONTAINER
-	volume = 100
+	reagent_holder_volume = 100
+	reagent_holder_flags = REAGENT_HOLDER_CONSIDERED_OPEN
 	power_draw_per_use = 150
 	complexity = 16
 	spawn_flags = IC_SPAWN_RESEARCH
-
 
 /obj/item/integrated_circuit/reagent/storage/grinder/do_work(ord)
 	switch(ord)
@@ -547,7 +542,6 @@
 	desc = "Stores liquid inside, and away from electrical components.  Can store up to 60u.  On pulse this beaker will send list of contained reagents."
 	icon_state = "reagent_scan"
 	extended_desc = "Mostly useful for reagent filter."
-	atom_flags = OPENCONTAINER
 	complexity = 8
 	outputs = list("volume used" = IC_PINTYPE_NUMBER,"self reference" = IC_PINTYPE_REF,"list of reagents" = IC_PINTYPE_LIST)
 	activators = list("scan" = IC_PINTYPE_PULSE_IN)
@@ -561,7 +555,6 @@
 	set_pin_data(IC_OUTPUT, 3, cont)
 	push_data()
 
-
 /obj/item/integrated_circuit/reagent/filter
 	name = "reagent filter"
 	desc = "Filtering liquids by list of desired or unwanted reagents."
@@ -570,7 +563,6 @@
 	It will move all reagents, except list, given in fourth pin if amount value is positive.\
 	Or it will move only desired reagents if amount is negative, The third pin determines \
 	how much reagent is moved per pulse, between 0 and 50.  Amount is given for each separate reagent."
-	atom_flags = OPENCONTAINER
 	complexity = 8
 	inputs = list("source" = IC_PINTYPE_REF, "target" = IC_PINTYPE_REF, "injection amount" = IC_PINTYPE_NUMBER, "list of reagents" = IC_PINTYPE_LIST)
 	inputs_default = list("3" = 5)
@@ -625,8 +617,8 @@
 	icon_state = "injector"
 	extended_desc = "This circuit can hold up to 30 units of any given chemicals.  On each use, it sprays these reagents like a fire extinguisher."
 
-	volume = 30
-	atom_flags = OPENCONTAINER
+	reagent_holder_volume = 30
+	reagent_holder_flags = REAGENT_HOLDER_CONSIDERED_OPEN
 
 	complexity = 20
 	cooldown_per_use = 6 SECONDS
