@@ -568,7 +568,7 @@
 		return
 
 	visible_message("<span class='warning'>[src] coils itself up like a spring, preparing to leap at [target]!</span>")
-	if(do_after(src, 7.5 SECONDS, target)) //7.5 seconds.
+	if(do_after(src, 1 SECOND, target)) //1 second
 		if(buckled || pinned.len)
 			return
 
