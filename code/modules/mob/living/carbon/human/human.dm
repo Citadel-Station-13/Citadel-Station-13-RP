@@ -1647,7 +1647,6 @@
 	. += ((size_multiplier * icon_scale_x) - 1) * ((dir & EAST)? -16 : 16)
 
 /mob/living/carbon/human/ClickOn(var/atom/A)
-	if(ab_handler)
-		if(ab_handler.process_click(src, A))
-			return
+	if(ab_handler?.process_click(src, A))
+		return
 	..()

@@ -320,8 +320,7 @@
  */
 /datum/ability/proc/target_check(mob/user, atom/target)
 	if(range)
-		if(get_dist(get_turf(user),get_turf(target)) <= range)
-		else
+		if(get_dist(get_turf(user),get_turf(target)) > range)
 			return FALSE
 	if(check_trigger(user))
 		target_trigger(user,target)
