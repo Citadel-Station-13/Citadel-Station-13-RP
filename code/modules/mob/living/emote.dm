@@ -785,7 +785,7 @@
 
 			if(!CHECK_ALL_MOBILITY(src, MOBILITY_CAN_USE))
 				to_chat(usr, "You need at least one hand in good working order to slap someone.")
-				return
+				return TRUE
 			if(!restrained())
 				var/M = null
 				if(param)
@@ -850,7 +850,7 @@
 	
 			if(!CHECK_ALL_MOBILITY(src, MOBILITY_CAN_USE))
 				to_chat(usr, "You need at least one hand in good working order to snap your fingers.")
-				return
+				return TRUE
 			if(!restrained())
 				message = "snaps [T.his] fingers."
 				playsound(loc, 'sound/effects/fingersnap.ogg', 50, 1, -3)
@@ -858,9 +858,9 @@
 		if("vomit")
 			if(isSynthetic())
 				to_chat(src, "<span class='warning'>You are unable to vomit.</span>")
-				return
+				return TRUE
 			vomit()
-			return
+			return TRUE
 
 		if("whistle", "whistles")
 			if(!muzzled)
@@ -880,7 +880,7 @@
 			var/usage = "To use this emote specify what die you want to roll in the first line. Prefix it with a \"D\". You may add a bonus to your roll, simply add a \"+\" and your number after your chosen die. If you want to incorporate a difficulty check, add a \"-DC\". You may use a bonus, a difficulty check or both.<br>Here is an example: roll-D20+5-DC15. This will roll a twenty-sided die, add five and compare it against a difficulty check of 15."
 			if(!param)
 				to_chat(src, usage)
-				return
+				return TRUE
 
 			var/t1 = findtext(param, "+", 1, null)
 			var/t2 = findtext(param, "-", 1, null)
@@ -918,7 +918,7 @@
 
 			else if (!message)
 				to_chat(src, usage)
-				return
+				return TRUE
 
 		if ("help")
 			to_chat(src, "nyaha, awoo, bark, blink, blink_r, blush, bow-(none)/mob, burp, chirp, choke, chuckle, clap, collapse, cough, cry, custom, deathgasp, drool, eyebrow, fastsway/qwag, \
@@ -929,7 +929,8 @@
 
 		else
 			to_chat(src, "<font color=#4F49AF>Unusable emote '[act]'. Say *help for a list.</font>")
-			return
+			return FALSE
 
 	if (message)
 		custom_emote(m_type,message)
+		return TRUE
