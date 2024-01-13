@@ -273,7 +273,7 @@
 					shutdown, startup, warn, ye, yes. Vox: shriekshort, shriekloud")
 
 		else
-			..()
+			..(act, param)
 
 	if (message)
 		custom_emote(m_type,message)
