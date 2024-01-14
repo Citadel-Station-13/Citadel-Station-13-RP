@@ -56,10 +56,7 @@
 /obj/machinery/appliance/cooker/fryer/update_cooking_power()
 	..()//In addition to parent temperature calculation
 	//Fryer efficiency also drops when oil levels arent optimal
-	var/oil_level = 0
-	var/datum/reagent/nutriment/triglyceride/oil/OL = oil.get_master_reagent()
-	if (OL && istype(OL))
-		oil_level = OL.volume
+	var/oil_level = oil.total_volume
 
 	var/oil_efficiency = 0
 	if (oil_level)
@@ -154,9 +151,6 @@
 	var/damage = rand(7,13)
 	//Though this damage seems reduced, some hot oil is transferred to the victim and will burn them for a while after
 
-	var/datum/reagent/nutriment/triglyceride/oil/OL = oil.get_master_reagent()
-	damage *= OL.heatdamage(victim)
-
 	var/obj/item/organ/external/E
 	var/nopain
 	if(ishuman(victim) && user.zone_sel.selecting != "groin" && user.zone_sel.selecting != "chest")
@@ -195,6 +189,7 @@
 		msg_admin_attack("[key_name_admin(user)] [cook_type] \the [victim] ([victim.ckey]) in \a [src]. (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>)")
 
 	//Coat the victim in some oil
+	#warn what the shit this isn't proper splashing
 	oil.trans_to(victim, 40)
 
 /obj/machinery/appliance/cooker/fryer/attackby(var/obj/item/I, var/mob/user)
@@ -209,14 +204,7 @@
 	//Possibly in future allow pouring non-oil reagents in, in  order to sabotage it and poison food.
 	//That would really require coding some sort of filter or better replacement mechanism first
 	//So for now, restrict to oil only
-			var/amount = 0
-			for (var/datum/reagent/R in I.reagents.reagent_list)
-				if (istype(R, /datum/reagent/nutriment/triglyceride/oil))
-					var/delta = oil.available_volume()
-					delta = min(delta, R.volume)
-					oil.add_reagent(R.id, delta)
-					I.reagents.remove_reagent(R.id, delta)
-					amount += delta
+			var/amount = I.reagents.transfer_to_holder(oil, list(/datum/reagent/nutriment/triglyceride/oil), oil.available_volume())
 			if (amount > 0)
 				user.visible_message("[user] pours some oil into \the [src].", SPAN_NOTICE("You pour [amount]u of oil into \the [src]."), "<span class='notice'>You hear something viscous being poured into a metal container.</span>")
 				return 1

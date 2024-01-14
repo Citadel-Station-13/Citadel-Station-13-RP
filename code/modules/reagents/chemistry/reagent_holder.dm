@@ -436,6 +436,13 @@
 	if(existing != reagent_holder_flags)
 		consider_reactions()
 
+/datum/reagent_holder/proc/set_considered_open(truthy)
+	var/existing = reagent_holder_flags
+	if(truthy)
+		reagent_holder_flags |= REAGENT_HOLDER_CONSIDERED_OPEN
+	else
+		reagent_holder_flags &= REAGENT_HOLDER_CONSIDERED_OPEN
+
 //* Transfer *//
 
 #warn /transfer_to_holder post ice crema
