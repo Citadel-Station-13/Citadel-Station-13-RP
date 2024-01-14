@@ -125,6 +125,14 @@
 /obj/item/clothing/head/hood/winter/durathread
 	icon_state = "winterhood_durathread"
 
+/obj/item/clothing/head/hood/aureate
+	name = "aureate hood"
+	desc = "A detached, ornamental hood with gold embellishments. Seems to be made out of insulated fiber."
+	icon = 'icons/clothing/head/aureate.dmi'
+	icon_state = "aureate_hood"
+	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
 //Hazardous Softsuit Hoods
 /obj/item/clothing/head/hood/explorer
 	name = "explorer hood"

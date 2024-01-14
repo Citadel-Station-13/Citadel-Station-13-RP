@@ -341,6 +341,11 @@
 	name = "Audacious Wide Brimmed Hat"
 	path = /obj/item/clothing/head/bard
 
+/datum/loadout_entry/head/aureate_hood
+	name = "Aureate Hood"
+	path = /obj/item/clothing/head/hood/aureate
+
+
 //Tajaran head wears
 
 /datum/loadout_entry/head/furhat
