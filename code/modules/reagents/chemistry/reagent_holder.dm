@@ -10,12 +10,6 @@
 
 	/// ongoing reactions
 	var/list/datum/chemical_reaction/ongoing_reactions
-	/// assoc list [key] = [value]: if any reagent id in this list is fully removed,
-	/// reactions needs to be reconsidered
-	var/list/reaction_removal_sensitive
-	/// assoc list [key] = [value]: if any reagent id is this list is added for the first time,
-	/// reactions needs to be reconsidered
-	var/list/reaction_add_sensitive
 	/// scratch list for reactions ; when doing stuff, make sure to key it by reaction id.
 	/// reactions automatically remove their id from this list when finishing.
 	var/list/reaction_blackboard
@@ -103,8 +97,6 @@
 		LAZYSET(reagent_datas, id, data)
 		reagent_volumes[id] = amount
 
-	#warn sensitive add reaction triggers
-
 	if(!defer_recalc)
 		update_total()
 		if(!defer_reactions)
@@ -139,8 +131,6 @@
 		reagent_volumes -= id
 		reagent_datas?.Remove(id)
 		reagent_metabolism?.Remove(id)
-
-	#warn sensitive remove reaction triggers
 
 	if(!defer_recalc)
 		update_total()
@@ -384,16 +374,42 @@
 
 //* Reactions *//
 
-/datum/reagent_holder/proc/consider_reactions()
-
-	#warn impl
+/datum/reagent_holder/proc/consider_reactions(ignore_no_react)
+	// check noreact
+	if((reagent_holder_flags & REAGENT_HOLDER_NO_REACT) && !ignore_no_react)
+		return
+	// continually react all instant reactions while tallying potential long reactions
+	var/continue_instantly_reacting = FALSE
+	var/instantly_reacted = FALSE
+	var/list/datum/chemical_reaction/potential_long_reactions = list()
+	do
+		// first, round up potential reactions
+		var/list/datum/chemical_reaction/checking_reactions = list()
+		for(var/id in reagent_volumes)
+			if(isnull(SSchemistry.chemical_reactions_by_reagent[id]))
+				continue
+			checking_reactions |= SSchemistry.chemical_reactions_by_reagent[id]
+		// then, filter by possible reactions, and process any instant ones, adding any long ones to the long list
+		for(var/datum/chemical_reaction/reaction as anything in checking_reactions)
+			#warn impl
+	while(continue_instantly_reacting)
+	// after all instant reactions are done, check long reactions
+	var/requires_processing = FALSE
+	for(var/datum/chemical_reaction/reaction as anything in potential_long_reactions)
+		#warn check long reactions for continued validity, and start
+	// lastly, update
+	if(instantly_reacted)
+		update_total()
+	// and start processing if needed
+	if(requires_processing)
+		START_PROCESSING(SSchemistry, src)
 
 /datum/reagent_holder/proc/handle_reactions()
 	#warn impl
 
 /datum/reagent_holder/proc/stop_reactions()
-
-	#warn impl
+	ongoing_reactions = null
+	STOP_PROCESSING(SSchemistry, src)
 
 /**
  * returns a whole number (integer), leftovers get added to reaction id
@@ -431,10 +447,12 @@
  */
 /datum/reagent_holder/proc/tgui_reagent_contents()
 	var/list/built = list()
-	for(var/datum/reagent/R as anything in reagent_list)
+	for(var/id in reagent_volumes)
+		var/datum/reagent/R = SSchemistry.fetch_reagent(id)
+		var/volume = reagent_volumes[id]
 		built[++built.len] = list(
 			"name" = R.name,
-			"amount" = R.volume,
+			"amount" = volume,
 			"id" = R.id,
 		)
 	return built
@@ -479,55 +497,6 @@
 		data += "[R.type] [R.volume]u)"
 		//Using IDs because SOME chemicals (I'm looking at you, chlorhydrate-beer) have the same names as other chemicals.
 	return english_list(data)
-
-/* Internal procs */
-
-/datum/reagent_holder/proc/handle_reactions()
-	set waitfor = FALSE		// shitcode. reagents shouldn't ever sleep but hey :^)
-	if(QDELETED(my_atom))
-		return FALSE
-	if(my_atom.atom_flags & NOREACT)
-		return FALSE
-	var/reaction_occurred
-	var/list/eligible_reactions = list()
-	var/list/effect_reactions = list()
-	do
-		reaction_occurred = FALSE
-		for(var/i in reagent_list)
-			var/datum/reagent/R = i
-			if(SSchemistry.chemical_reactions_by_reagent[R.id])
-				eligible_reactions |= SSchemistry.chemical_reactions_by_reagent[R.id]
-
-		for(var/i in eligible_reactions)
-			var/datum/chemical_reaction/C = i
-			if(C.can_happen(src) && C.process(src))
-				effect_reactions |= C
-				reaction_occurred = TRUE
-		eligible_reactions.len = 0
-	while(reaction_occurred)
-	for(var/i in effect_reactions)
-		var/datum/chemical_reaction/C = i
-		C.post_reaction(src)
-	update_total()
-
-/* Holder-to-chemical */
-
-/datum/reagent_holder/proc/remove_reagent(id, amount, safety = 0)
-	if(ispath(id))
-		var/datum/reagent/path = id
-		id = initial(path.id)
-	if(!isnum(amount))
-		return 0
-	for(var/datum/reagent/current in reagent_list)
-		if(current.id == id)
-			current.volume -= amount // It can go negative, but it doesn't matter
-			update_total() // Because this proc will delete it then
-			if(!safety)
-				handle_reactions()
-			if(my_atom)
-				my_atom.on_reagent_change()
-			return 1
-	return 0
 
 
 /datum/reagent_holder/proc/get_reagents()
@@ -703,9 +672,6 @@
 
 /* Atom reagent creation - use it all the time */
 
-/atom/proc/create_reagents(max_vol)
-	reagents = new /datum/reagent_holder(max_vol, src)
-	return reagents
 
 //Spreads the contents of this reagent holder all over the vicinity of the target turf.
 /datum/reagent_holder/proc/splash_area(turf/epicentre, range = 3, portion = 1.0, multiplier = 1, copy = 0)
@@ -756,22 +722,10 @@
 	if (total_volume <= 0)
 		qdel(src)
 
-// I wrote this while :headempty: and I'm not sure if it's correct. @Zandario
-/datum/reagent_holder/proc/can_reactions_happen()
-	var/do_happen = FALSE
-	var/list/eligible_reactions = list()
-	for(var/i in reagent_list)
-		var/datum/reagent/R = i
-		if(SSchemistry.chemical_reactions_by_reagent[R.id])
-			eligible_reactions |= SSchemistry.chemical_reactions_by_reagent[R.id]
 
-	for(var/i in eligible_reactions)
-		var/datum/chemical_reaction/C = i
-		if(C.can_happen(src))
-			do_happen = TRUE
-	return do_happen
+#warn above
 
-//? Transfers
+//* Transfers *//
 
 /**
  * @params
@@ -784,7 +738,7 @@
  *
  * @return reagents transferred
  */
-/datum/reagent_holder/proc/transfer_to_holder(datum/reagents/target, list/reagents, amount = INFINITY, copy, multiplier = 1, defer_reactions)
+/datum/reagent_holder/proc/transfer_to_holder(datum/reagent_holder/target, list/reagents, amount = INFINITY, copy, multiplier = 1, defer_reactions)
 	. = 0
 	if(!total_volume)
 		return
@@ -792,44 +746,64 @@
 		var/ratio = min(1, (target.maximum_volume - target.total_volume) / total_volume)
 		. = total_volume * ratio
 		if(!copy)
-			for(var/datum/reagent/R as anything in reagent_list)
-				var/transferred = R.volume * ratio
-				target.add_reagent(R.id, transferred * multiplier, R.get_data(), safety = TRUE)
-				remove_reagent(R.id, transferred, safety = TRUE)
+			for(var/id in reagent_volumes)
+				var/transferred = reagent_volumes[id] * ratio
+				target.add_reagent(id, transferred * multiplier, temperature, data = reagent_datas[id], defer_recalc = TRUE)
+				remove_reagent(R.id, transferred, defer_recalc = TRUE)
 		else
-			for(var/datum/reagent/R as anything in reagent_list)
-				var/transferred = R.volume * ratio
-				target.add_reagent(R.id, transferred * multiplier, R.get_data(), safety = TRUE)
+			for(var/id in reagent_volumes)
+				var/transferred = reagent_volumes[id] * ratio
+				target.add_reagent(id, transferred * multiplier, temperature, data = reagent_datas[id], defer_recalc = TRUE)
 	else
 		var/total_transferable = 0
 		var/list/reagents_transferring = list()
 		// preprocess
 		for(var/i in 1 to length(reagents))
-			reagents[i] = SSchemistry.fetch_reagent(reagents[i])
+			if(istext(reagents[i]))
+			else if(ispath(reagents[i], /datum/reagent))
+				var/datum/reagent/casted = reagents[i]
+				reagents[i] = initial(casted.id)
+			else if(istype(reagents[i], /datum/reagent))
+				var/datum/reagent/casted = reagents[i]
+				reagents[i] = casted.id
+			else
+				CRASH("what?")
 		// filter & gather
-		for(var/datum/reagent/R as anything in reagent_list)
+		for(var/id in reagent_volumes)
 			if(!(R.id in reagents))
 				continue
-			total_transferable += R.volume
-			reagents_transferring += R
+			total_transferable += reagent_volumes[id]
+			reagents_transferring += id
 		var/ratio = min(1, (target.maximum_volume - target.total_volume) / total_transferable)
 		. = total_transferable * ratio
 		if(!copy)
-			for(var/datum/reagent/R as anything in reagents_transferring)
-				var/transferred = R.volume * ratio
-				target.add_reagent(R.id, transferred * multiplier, R.get_data(), safety = TRUE)
-				remove_reagent(R.id, transferred, safety = TRUE)
+			for(var/id in reagents_transferring)
+				var/transferred = reagent_volumes[id] * ratio
+				target.add_reagent(id, transferred * multiplier, temperature, data = reagent_datas[id], defer_recalc = TRUE)
+				remove_reagent(R.id, transferred, defer_recalc = TRUE)
 		else
-			for(var/datum/reagent/R as anything in reagents_transferring)
-				var/transferred = R.volume * ratio
-				target.add_reagent(R.id, transferred * multiplier, R.get_data(), safety = TRUE)
+			for(var/id in reagents_transferring)
+				var/transferred = reagent_volumes[id] * ratio
+				target.add_reagent(id, transferred * multiplier, temperature, data = reagent_datas[id], defer_recalc = TRUE)
 
 	if(!defer_reactions)
 		if(!copy)
-			handle_reactions()
-		target.handle_reactions()
+			update_total()
+			consider_reactions()
+		target.update_total()
+		target.consider_reactions()
+	else
+		if(!copy)
+			update_total()
+		target.update_total()
 
-#warn above
+//* Atom API *//
+
+/atom/proc/create_reagents(max_vol, flags)
+	reagents = new /datum/reagent_holder(max_vol, src, flags)
+	return reagents
+
+//* Metabolizing Holders *//
 
 /**
  * Metabolizing holders. Handles reagent metabolism for /mob/living/carbon mobs.
