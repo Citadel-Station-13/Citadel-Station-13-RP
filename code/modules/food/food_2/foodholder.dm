@@ -1,8 +1,8 @@
 /obj/item/reagent_containers/glass/food_holder
 	name = "cooking pot"
 	desc = "A debug cooking container. For making sphagetti, and other various copypasta-based dishes."
-	icon = 'icons/obj/cooking_machines.dmi'
-	icon_state = "ovendish"
+	icon = 'icons/obj/food_ingredients/cooking_machines.dmi'
+	icon_state = "pot"
 	atom_flags = OPENCONTAINER
 
 	var/food_name_override
@@ -11,10 +11,12 @@
 
 	var/cooker_overlay = "pot"
 
+
 	//is this it? yeah, it it is
 /obj/item/reagent_containers/glass/food_holder/Initialize(mapload)
 	. = ..()
 	reagents.reagent_holder_flags |= TRANSPARENT
+
 /obj/item/reagent_containers/glass/food_holder/examine(mob/user, dist) //todo: show food inside
 	. = ..()
 	. += SPAN_NOTICE("<b>Alt-click</b> to remove an ingredient from this.")
@@ -32,6 +34,27 @@
 			if(BURNT)
 				cooked_span = "tajaran_signlang"
 		. += "<span class='notice'>[icon2html(thing = examine_ingredient, target = user)] The [examine_ingredient.name], which looks </span><span class='[cooked_span]'>[examine_ingredient.cookstage2text()]</span><span class='notice'> and has been cooked for about [examine_ingredient.accumulated_time_cooked / 10] seconds.</span>"
+
+
+/obj/item/reagent_containers/glass/food_holder/update_icon()
+	var/mutable_appearance/filling_overlay = mutable_appearance(icon, "[icon_state]_filling_overlay")
+	if(LAZYLEN(contents) || reagents.total_volume)
+		filling_overlay.color = tally_color()
+		add_overlay(filling_overlay)
+
+
+/obj/item/reagent_containers/glass/proc/tally_color()
+	var/newcolor
+	var/filling_color
+
+	for(var/obj/item/reagent_containers/food/snacks/ingredient/color_tally in contents)
+		newcolor = color_tally.filling_color != "#FFFFFF" ? color_tally.filling_color : AverageColor(get_flat_icon(color_tally, color_tally.dir, 0), 1, 1)
+		if(!filling_color)
+			var/filling_color = newcolor
+		filling_color = BlendRGB(filling_color, newcolor, 1/contents.len)
+
+	filling_color = BlendRGB(filling_color, reagents.get_color(), 0.6)
+	return filling_color
 
 /obj/item/reagent_containers/glass/food_holder/proc/tick_heat(var/time_cooked, var/heat_level, var/cook_method)
 	last_cooking_method = cook_method

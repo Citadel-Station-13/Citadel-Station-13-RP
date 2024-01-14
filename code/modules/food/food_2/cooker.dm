@@ -123,7 +123,7 @@
 			cooktop_overlay.pixel_y = py
 			filling_overlay.pixel_x = px
 			filling_overlay.pixel_y = py
-			filling_overlay.color = FH.reagents.get_color() //TODO: tally_colour()
+			filling_overlay.color = FH.tally_color()
 
 			switch(FH.cooker_overlay)
 				if("skillet")
