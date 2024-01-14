@@ -138,3 +138,19 @@
 	icon = 'icons/obj/food_ingredients.dmi'
 	icon_state = "flatbread"
 	filling_color = "#c7d232"
+
+
+/obj/item/reagent_containers/food/snacks/ingredient/frieddoughball
+	name = "fried doughball"
+
+/obj/item/reagent_containers/food/snacks/ingredient/hushpuppy
+	name = "hush puppy"
+
+/obj/item/reagent_containers/food/snacks/ingredient/bun
+	name = "bun"
+
+/obj/item/reagent_containers/food/snacks/ingredient/bread/pone
+	name = "corn pone"
+
+/obj/item/reagent_containers/food/snacks/ingredient/bread/damper
+	name = "damper"

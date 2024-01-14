@@ -15,7 +15,7 @@
 
 /obj/item/reagent_containers/food/snacks/customizable
 	w_class = WEIGHT_CLASS_SMALL
-	icon = 'icons/obj/food_cooking/custom_food.dmi'
+	icon = 'icons/obj/food_ingredients/custom_food.dmi'
 	var/ingMax = 32
 	var/list/ingredients = list()
 	var/ingredients_placement = INGREDIENTS_FILL

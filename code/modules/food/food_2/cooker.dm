@@ -3,7 +3,7 @@
 /obj/machinery/cooking
 	name = "stove"
 	desc = "A stove, for cooking food."
-	icon = 'icons/obj/cooking_machines.dmi'
+	icon = 'icons/obj/food_ingredients/cooking_machines.dmi'
 	icon_state = "stove"
 
 	density = 1
@@ -17,12 +17,12 @@
 	speed_process = PROCESS_ON_SSPROCESSING
 
 
-	var/cooker_type = METHOD_OVEN
+	var/cooker_type = METHOD_STOVE
 	var/cooking_power = 0
 
 	var/max_contents = 4			// Maximum number of things this appliance can simultaneously cook
-	var/list/food_containers //what food (/obj/item/reagent_containers/food_holder = 1, /reagent_containers/snacks/ingredient = 2) we are cooking, and their positions inside the thing
-	var/list/visible_position_xy = list(1 = list("-32", "32"), 2 = list("-32", "-32"), 3 = list("32", "32"), 4 = list("32", -"32"))//for mapping a pixel_x, pixel_y to abstract ''position
+	var/list/food_containers //what food (/obj/item/reagent_containers/glass/food_holder = 1, /reagent_containers/snacks/ingredient = 2) we are cooking, and their positions inside the thing
+	var/list/visible_position_xy = list(list("-7", "6"), list("7", "6"),list("-7", "-3"), list("7", "-3"))//for mapping a pixel_x, pixel_y to abstract ''position
 
 
 /obj/machinery/cooking/examine(mob/user, dist)
@@ -62,9 +62,9 @@
 
 /obj/machinery/cooking/process(delta_time)
 	if(cooking_power > 0)
-		for(var/obj/item/I in food_containers)
-			if(istype(I, /obj/item/reagent_containers/food_holder))
-				var/obj/item/reagent_containers/food_holder/FH = I
+		for(var/I in food_containers)
+			if(istype(I, /obj/item/reagent_containers/glass/food_holder))
+				var/obj/item/reagent_containers/glass/food_holder/FH = I
 				FH.tick_heat(1 SECONDS, cooking_power, cooker_type)
 			else if(istype(I, /obj/item/reagent_containers/food/snacks/ingredient))
 				var/obj/item/reagent_containers/food/snacks/ingredient/cooking_thingy = I
@@ -94,20 +94,80 @@
 
 	if(food_containers.len >= max_contents)
 		return //no inserties if full
-	if(istype(I, /obj/item/reagent_containers/food_holder) || istype(I, /obj/item/reagent_containers/food/snacks/ingredient))
+	if(istype(I, /obj/item/reagent_containers/glass/food_holder) || istype(I, /obj/item/reagent_containers/food/snacks/ingredient))
 		//From here we can start cooking food
 		insert_item(I, user)
 		
 /obj/machinery/cooking/update_icon()
+	var/fire_color = COLOR_YELLOW
+	cut_overlays()
+	switch(cooking_power)
+		if(0)
+			fire_color = null
+		if(HEAT_LOW)
+			fire_color = COLOR_RED
+		if(HEAT_HIGH)
+			fire_color = COLOR_CYAN
+	for(var/I in food_containers)
+		var/mutable_appearance/cooktop_overlay
+		var/mutable_appearance/fire_overlay
+		if(istype(I, /obj/item/reagent_containers/glass/food_holder))
+			var/obj/item/reagent_containers/glass/food_holder/FH = I
+
+			cooktop_overlay = mutable_appearance(icon, "[FH.cooker_overlay]")
+			var/mutable_appearance/filling_overlay = mutable_appearance(icon, "filling_overlay")
+
+			var/px = visible_position_xy[food_containers[I]][1] //get 'location' from food containers, get pixel_x (first item of list) from visible_position_xy
+			var/py = visible_position_xy[food_containers[I]][2]
+			cooktop_overlay.pixel_x = px
+			cooktop_overlay.pixel_y = py
+			filling_overlay.pixel_x = px
+			filling_overlay.pixel_y = py
+			filling_overlay.color = FH.reagents.get_color() //TODO: tally_colour()
+
+			switch(FH.cooker_overlay)
+				if("skillet")
+					filling_overlay.pixel_y -= 3
+				if("pan")
+					filling_overlay.pixel_y -= 2
+
+			if(fire_color)
+				fire_overlay = mutable_appearance(icon, "stove_flame")
+				fire_overlay.pixel_x = px
+				fire_overlay.pixel_y = py
+				fire_overlay.color = fire_color
+				add_overlay(fire_overlay)
+				
+			add_overlay(cooktop_overlay)
+			add_overlay(filling_overlay)
+
+
+		else if(istype(I, /obj/item/reagent_containers/food/snacks/ingredient))
+			var/obj/item/reagent_containers/food/snacks/ingredient/cooking_thingy = I
+
+			cooktop_overlay = mutable_appearance(icon, "[cooking_thingy.cooker_overlay]_stove")
+
+			var/px = visible_position_xy[food_containers[I]][1] //get 'location' from food containers, get pixel_x (first item of list) from visible_position_xy
+			var/py = visible_position_xy[food_containers[I]][2]
+			cooktop_overlay.pixel_x = px
+			cooktop_overlay.pixel_y = py
+
+			if(fire_color)
+				fire_overlay = mutable_appearance(icon, "[icon_state]_flame")
+				fire_overlay.pixel_x = px
+				fire_overlay.pixel_y = py
+				fire_overlay.color = fire_color
+				add_overlay(fire_overlay)
+			add_overlay(cooktop_overlay)
 
 
 /obj/machinery/cooking/proc/insert_item(obj/item/I, mob/user)
 	if(!user.attempt_insert_item_for_installation(I, src))
 		return
-	var/list/used = list("1","2","3","4") //this feels so bad but i literally cannot think of a better way
-		for(var/t in food_containers)
-			used -= food_containers[t]
-	food_containers[I] = pick(used) //random position :D
+	var/list/used_list = list(1,2,3,4) //this feels so bad but i literally cannot think of a better way
+	for(var/t in food_containers)
+		used_list -= food_containers[t]
+	food_containers[I] = pick(used_list) //random position :D
 	user.visible_message("<span class='notice'>[user] puts [I] into [src].</span>", "<span class='notice'>You put [I] into [src].</span>")
 	update_icon()
 
@@ -129,7 +189,7 @@
 			removables["[I.name] \[[I.cookstage2text()]\]"] = I
 		counter++
 	counter = 0
-	for(var/obj/item/reagent_containers/food_holder/FH in food_containers)
+	for(var/obj/item/reagent_containers/glass/food_holder/FH in food_containers)
 		if(counter)
 			removables["[FH.name] ([counter])"] = FH
 		else
@@ -143,6 +203,7 @@
 		user.put_in_hands_or_drop(removables[remove_item])
 		return TRUE
 	return FALSE
+	update_icon()
 
 /obj/machinery/cooking/proc/has_space()
 	if (food_containers.len >= max_contents)
@@ -160,7 +221,6 @@
 			use_power = FALSE
 			user.visible_message("[user] turns [src] off.", "You turn off [src].")
 			cooking_power = 0
-			icon_state = "grill_off"
 		if("low")
 			if(machine_stat & POWEROFF)
 				machine_stat &= ~POWEROFF
@@ -168,7 +228,6 @@
 				user.visible_message("[user] turns [src] on.", "You turn on [src].")
 			user.visible_message("[user] turns [src] to low power.", "You turn [src] to low power.")
 			cooking_power = HEAT_LOW
-			icon_state = "grill_on"
 		if("medium")
 			if(machine_stat & POWEROFF)
 				machine_stat &= ~POWEROFF
@@ -176,7 +235,6 @@
 				user.visible_message("[user] turns [src] on.", "You turn on [src].")
 			user.visible_message("[user] turns [src] to low power.", "You turn [src] to medium power.")
 			cooking_power = HEAT_MID
-			icon_state = "grill_on"
 		if("high")
 			if(machine_stat & POWEROFF)
 				machine_stat &= ~POWEROFF
@@ -184,7 +242,6 @@
 				user.visible_message("[user] turns [src] on.", "You turn on [src].")
 			user.visible_message("[user] turns [src] to low power.", "You turn [src] to high power.")
 			cooking_power = HEAT_HIGH
-			icon_state = "grill_on"
 		
 
 	playsound(src, 'sound/machines/click.ogg', 40, 1)

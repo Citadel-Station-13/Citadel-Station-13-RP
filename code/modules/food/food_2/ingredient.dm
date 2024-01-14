@@ -23,6 +23,8 @@
 	//how many servings it will give when added to stuff
 	var/serving_amount = 1
 
+	var/cooker_overlay = "meat" //what overlay we use for the cooker
+
 	//should be everything for now
 
 /obj/item/reagent_containers/food/snacks/ingredient/Initialize(mapload)
@@ -109,9 +111,8 @@
 		var/datum/reagent/nutriment/our_nutrient = reagents.get_reagent("nutriment")
 		our_nutrient.data = list()
 		our_nutrient.data[cookstage_information[cookstage][COOKINFO_TASTE]] = serving_amount
-		if(istype(loc, /obj/item/reagent_containers/food_holder))
-			var/turf/T = get_turf(src)
-			var/obj/item/reagent_containers/food_holder/FH = loc
+		if(istype(loc, /obj/item/reagent_containers/glass/food_holder))
+			var/obj/item/reagent_containers/glass/food_holder/FH = loc
 			FH.check_recipe_completion()
 		on_cooked(cookstage, cook_method)
 

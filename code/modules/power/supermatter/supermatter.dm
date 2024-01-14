@@ -475,9 +475,9 @@
 		"<span class=\"warning\">Everything suddenly goes quiet.</span>")
 		while(do_after(user, 1 SECOND))
 			var/cooktime = 1 SECOND
-			if(power > ENERGY_NITROGEN)
+			if(power > 115)
 				cooktime += 1 SECOND
-			if(power > ENERGY_PHORON)
+			if(power > 300)
 				cooktime += 3 SECOND
 			superfood.process_cooked(1 SECOND, HEAT_HIGH, METHOD_ENERGETIC_ANOMALY)
 		return //we dont eat it if we cook it

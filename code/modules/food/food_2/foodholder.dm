@@ -1,4 +1,4 @@
-/obj/item/reagent_containers/food_holder
+/obj/item/reagent_containers/glass/food_holder
 	name = "cooking pot"
 	desc = "A debug cooking container. For making sphagetti, and other various copypasta-based dishes."
 	icon = 'icons/obj/cooking_machines.dmi'
@@ -9,13 +9,13 @@
 
 	var/last_cooking_method
 
-	var/overlay_icon
+	var/cooker_overlay
 
 	//is this it? yeah, it it is
-/obj/item/reagent_containers/food_holder/Initialize(mapload)
+/obj/item/reagent_containers/glass/food_holder/Initialize(mapload)
 	. = ..()
 	reagents.reagent_holder_flags |= TRANSPARENT
-/obj/item/reagent_containers/food_holder/examine(mob/user, dist) //todo: show food inside
+/obj/item/reagent_containers/glass/food_holder/examine(mob/user, dist) //todo: show food inside
 	. = ..()
 	. += SPAN_NOTICE("<b>Alt-click</b> to remove an ingredient from this.")
 	. += SPAN_NOTICE("<b>Alt-click</b> in grab intent to retrieve a serving of food.")
@@ -33,13 +33,13 @@
 				cooked_span = "tajaran_signlang"
 		. += "<span class='notice'>[icon2html(thing = examine_ingredient, target = user)] The [examine_ingredient.name], which looks </span><span class='[cooked_span]'>[examine_ingredient.cookstage2text()]</span><span class='notice'> and has been cooked for about [examine_ingredient.accumulated_time_cooked / 10] seconds.</span>"
 
-/obj/item/reagent_containers/food_holder/proc/tick_heat(var/time_cooked, var/heat_level, var/cook_method)
+/obj/item/reagent_containers/glass/food_holder/proc/tick_heat(var/time_cooked, var/heat_level, var/cook_method)
 	last_cooking_method = cook_method
 	for(var/obj/item/reagent_containers/food/snacks/ingredient/cooking_ingredient in contents)
 		cooking_ingredient.process_cooked(time_cooked, heat_level, cook_method) //handles all the cooking stuff actually
 
 
-/obj/item/reagent_containers/food_holder/attackby(obj/item/I, mob/user)
+/obj/item/reagent_containers/glass/food_holder/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/reagent_containers/food/snacks/ingredient))
 		for(var/obj/item/reagent_containers/food/snacks/ingredient/compare_ingredient in contents)
 			if(compare_ingredient.type == I.type)
@@ -52,7 +52,7 @@
 		generate_serving(I, user)
 	return ..()
 
-/obj/item/reagent_containers/food_holder/AltClick(mob/living/user)
+/obj/item/reagent_containers/glass/food_holder/AltClick(mob/living/user)
 	if(user.a_intent == INTENT_GRAB)
 		generate_serving(null, user)
 		return
@@ -74,7 +74,7 @@
 		return TRUE
 	return FALSE
 
-/obj/item/reagent_containers/food_holder/proc/try_merge(obj/item/reagent_containers/food/snacks/ingredient/I, obj/item/reagent_containers/food/snacks/ingredient/compare_ingredient, mob/user)
+/obj/item/reagent_containers/glass/food_holder/proc/try_merge(obj/item/reagent_containers/food/snacks/ingredient/I, obj/item/reagent_containers/food/snacks/ingredient/compare_ingredient, mob/user)
 	if(!istype(I))
 		return
 	if(((compare_ingredient.accumulated_time_cooked - INGREDIENT_COOKTIME_MAX_SEPERATION) < I.accumulated_time_cooked && I.accumulated_time_cooked < (compare_ingredient.accumulated_time_cooked + INGREDIENT_COOKTIME_MAX_SEPERATION)) 	&& (compare_ingredient.cookstage = I.cookstage))
@@ -82,7 +82,7 @@
 			compare_ingredient.merge_ingredient(I)
 
 
-/obj/item/reagent_containers/food_holder/proc/generate_serving(var/obj/item/food_serving/FS, mob/user)
+/obj/item/reagent_containers/glass/food_holder/proc/generate_serving(var/obj/item/food_serving/FS, mob/user)
 	if(!istype(FS))
 		return
 	var/obj/item/reagent_containers/food/snacks/food_serving/generated_serving = new /obj/item/reagent_containers/food/snacks/food_serving(null)
@@ -103,7 +103,7 @@
 	user.put_in_hands_or_drop(generated_serving)
 
 
-/obj/item/reagent_containers/food_holder/proc/generate_food_name()
+/obj/item/reagent_containers/glass/food_holder/proc/generate_food_name()
 	if(food_name_override)
 		return food_name_override
 	var/list/ingredients_names = list()
@@ -118,7 +118,7 @@
 
 
 
-/obj/item/reagent_containers/food_holder/proc/check_recipe_completion()
+/obj/item/reagent_containers/glass/food_holder/proc/check_recipe_completion()
 	for(var/obj/item/reagent_containers/food/snacks/ingredient/tally_ingredient in contents)
 		if((tally_ingredient.cookstage == RAW) || (tally_ingredient.cookstage == BURNT))
 			return FALSE
@@ -141,7 +141,7 @@
 		qdel(i)
 		return
 
-/obj/item/reagent_containers/food_holder/proc/check_ingredient_for_recipe(var/datum/cooking_recipe/R)
+/obj/item/reagent_containers/glass/food_holder/proc/check_ingredient_for_recipe(var/datum/cooking_recipe/R)
 	for(var/obj/item/reagent_containers/food/snacks/ingredient/check_ingredient in contents)
 		to_chat(world, "checking ingredient [check_ingredient] for recipe [R]")
 		if(R.recipe_fruit)
@@ -163,7 +163,7 @@
 			return FALSE
 	return TRUE	
 
-/obj/item/reagent_containers/food_holder/proc/check_reagent_for_recipe(var/datum/cooking_recipe/R)
+/obj/item/reagent_containers/glass/food_holder/proc/check_reagent_for_recipe(var/datum/cooking_recipe/R)
 	for(var/check_reagent in R.recipe_reagents)
 		var/available_reagent_amount = reagents.get_reagent_amount(check_reagent)
 		to_chat(world, "reagent [check_reagent] has amount [available_reagent_amount] we need [R.recipe_reagents[check_reagent]]")
