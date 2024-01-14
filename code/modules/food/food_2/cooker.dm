@@ -22,7 +22,7 @@
 
 	var/max_contents = 4			// Maximum number of things this appliance can simultaneously cook
 	var/list/food_containers //what food (/obj/item/reagent_containers/glass/food_holder = 1, /reagent_containers/snacks/ingredient = 2) we are cooking, and their positions inside the thing
-	var/list/visible_position_xy = list(list("-7", "6"), list("7", "6"),list("-7", "-3"), list("7", "-3"))//for mapping a pixel_x, pixel_y to abstract ''position
+	var/list/visible_position_xy = list(list(-7, 6), list(7, 6),list(-7, -3), list(7, -3))//for mapping a pixel_x, pixel_y to abstract ''position
 
 
 /obj/machinery/cooking/examine(mob/user, dist)
@@ -201,9 +201,9 @@
 	if(remove_item)
 		food_containers -= removables[remove_item]
 		user.put_in_hands_or_drop(removables[remove_item])
+		update_icon()
 		return TRUE
 	return FALSE
-	update_icon()
 
 /obj/machinery/cooking/proc/has_space()
 	if (food_containers.len >= max_contents)

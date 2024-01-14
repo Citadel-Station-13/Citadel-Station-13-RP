@@ -9,7 +9,7 @@
 
 	var/last_cooking_method
 
-	var/cooker_overlay
+	var/cooker_overlay = "pot"
 
 	//is this it? yeah, it it is
 /obj/item/reagent_containers/glass/food_holder/Initialize(mapload)
