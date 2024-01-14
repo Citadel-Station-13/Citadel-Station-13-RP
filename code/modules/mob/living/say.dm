@@ -249,6 +249,13 @@ var/list/channel_to_radio_key = new
 		verb = speaking.speech_verb
 		w_not_heard = "[speaking.speech_verb] something [w_adverb]"
 
+	var/list/message_args = list("message" = message, "whispering" = whispering, "cancelled" = FALSE)
+
+	SEND_SIGNAL(src, COMSIG_MOB_SAY, message_args)
+
+	if(message_args["cancelled"])
+		return
+
 	//For speech disorders (hulk, slurring, stuttering)
 	if(!(speaking && (speaking.language_flags & LANGUAGE_NO_STUTTER || speaking.language_flags & LANGUAGE_SIGNLANG)))
 		var/list/message_data = list(message, verb, whispering)

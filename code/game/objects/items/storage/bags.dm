@@ -125,7 +125,7 @@
 	can_hold = list(/obj/item/stack/ore)
 	var/stored_ore = list()
 	var/total_ore = 0 //current ore stored
-	var/max_ore = 200 //how much ore it can hold
+	var/max_ore = 300 //how much ore it can hold
 	var/last_update = 0
 
 /obj/item/storage/bag/ore/update_w_class()
@@ -209,7 +209,7 @@
 
 /obj/item/storage/bag/ore/proc/take(obj/item/stack/ore/O)
 	if(!istype(O))
-		return
+		return FALSE
 	var/overflow = max((total_ore + O.amount) - max_ore, 0)
 	var/store_amount = O.amount - overflow
 
@@ -222,8 +222,10 @@
 	if(overflow)
 		O.use(store_amount)
 		O.forceMove(drop_location())
+		return FALSE
 	else
 		qdel(O)
+		return TRUE
 
 /obj/item/storage/bag/ore/proc/deposit(atom/newloc, amount = 50)
 	if(isOreEmpty())

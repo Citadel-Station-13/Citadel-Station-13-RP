@@ -329,6 +329,8 @@
 				else if(!E.density)
 					spawn(0)
 						E.close()
+		for(var/obj/machinery/floor_inflatables/i in all_doors)
+			i.trigger()
 
 /// Open all firedoors in the area
 /area/proc/firedoors_open()

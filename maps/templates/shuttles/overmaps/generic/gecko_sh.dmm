@@ -6,7 +6,7 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/gecko_sh_engineering)
 "aF" = (
@@ -273,7 +273,7 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/gecko_sh_cockpit)
 "eP" = (
@@ -582,8 +582,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/gecko_sh)
 "lV" = (
-/obj/machinery/firealarm{
-	dir = 4;
+/obj/machinery/fire_alarm/east_mount{
 	pixel_x = -27
 	},
 /obj/structure/closet/crate{
@@ -669,8 +668,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -792,9 +790,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/machinery/firealarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/north_mount,
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/gecko_sh_engineering)
@@ -1007,9 +1003,7 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 4
 	},
-/obj/machinery/firealarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/north_mount,
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/structure/window/basic{
 	dir = 4
@@ -1220,7 +1214,7 @@
 	icon_state = "0-8"
 	},
 /obj/structure/railing/grey,
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/gecko_sh)
 "zM" = (
@@ -1526,8 +1520,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -26
 	},
 /obj/structure/handrail{
@@ -1964,8 +1957,7 @@
 /area/shuttle/gecko_sh_engineering)
 "NM" = (
 /obj/structure/handrail,
-/obj/machinery/firealarm{
-	dir = 4;
+/obj/machinery/fire_alarm/east_mount{
 	pixel_x = -27
 	},
 /turf/simulated/floor/plating,
@@ -2100,10 +2092,7 @@
 /area/shuttle/gecko_sh)
 "PW" = (
 /obj/structure/handrail,
-/obj/machinery/firealarm{
-	dir = 8;
-	pixel_x = 27
-	},
+/obj/machinery/fire_alarm/west_mount,
 /turf/simulated/floor/plating,
 /area/shuttle/gecko_sh_engineering)
 "Ql" = (
@@ -2281,9 +2270,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
-/obj/machinery/firealarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/north_mount,
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/gecko_sh_engineering)
@@ -2295,10 +2282,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/gecko_sh)
 "Tw" = (
-/obj/machinery/firealarm{
-	dir = 8;
-	pixel_x = 27
-	},
+/obj/machinery/fire_alarm/west_mount,
 /obj/structure/bed/pod,
 /obj/item/bedsheet/blue,
 /turf/simulated/floor/tiled/techfloor,
@@ -2536,9 +2520,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/gecko_sh)
 "XX" = (
-/obj/machinery/firealarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/gecko_sh)
 "Yd" = (

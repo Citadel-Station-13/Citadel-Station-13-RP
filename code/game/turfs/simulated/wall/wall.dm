@@ -48,39 +48,40 @@
 	var/active
 	var/can_open = FALSE
 
+	/// The base material of the wall.
 	var/datum/material/material_outer = /datum/material/steel
+	/// The reinforcement material of the wall.
 	var/datum/material/material_reinf
+	/// The material of the girders that are produced when the wall is dismantled.
 	var/datum/material/material_girder = /datum/material/steel
 
 	var/last_state
 	var/construction_stage
+
+	/// The material color of the wall.
+	VAR_PROTECTED/material_color
 	/// Paint color of which the wall has been painted with.
-	var/paint_color
+	VAR_PROTECTED/paint_color
 	/// Paint color of which the stripe has been painted with. Will not overlay a stripe if no paint is applied
-	var/stripe_color
-	var/stripe_icon
-	var/cache_key
-	var/shiny_wall
+	VAR_PROTECTED/stripe_color
+
+	/// This is set by materials, do not touch!
+	VAR_PRIVATE/stripe_icon
+	/// This is set by update_overlays(), do not touch!
+	VAR_PRIVATE/cache_key
+
+	var/shiny_wall //? Not even used rn?
 	var/shiny_stripe
 
 /turf/simulated/wall/Initialize(mapload)
-	. = ..()
 	// Remove the color that was set for mapping clarity.
+	//? This is before the ..() as it does stuff if there is a color.
 	color = null
-	// init materials
-	init_materials()
 
-	if(smoothing_flags & SMOOTH_DIAGONAL_CORNERS && fixed_underlay) //Set underlays for the diagonal walls.
-		var/mutable_appearance/underlay_appearance = mutable_appearance(layer = TURF_LAYER, plane = TURF_PLANE)
-		if(fixed_underlay["space"])
-			underlay_appearance.icon = 'icons/turf/space.dmi'
-			underlay_appearance.icon_state = "space"
-			underlay_appearance.plane = SPACE_PLANE
-		else
-			underlay_appearance.icon = fixed_underlay["icon"]
-			underlay_appearance.icon_state = fixed_underlay["icon_state"]
-		fixed_underlay = string_assoc_list(fixed_underlay)
-		underlays += underlay_appearance
+	. = ..()
+
+	// Init materials
+	init_materials()
 
 /turf/simulated/wall/Destroy()
 	clear_plants()

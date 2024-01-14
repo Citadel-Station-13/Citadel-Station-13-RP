@@ -118,6 +118,8 @@
 	/// Can be anchored / unanchored by players without deconstructing by default with a wrench. null for off, number for time needed.
 	//  todo: proc for allow / disallow, refactor, unify with can_be_unanchored
 	var/default_unanchor
+	/// default deconstruct requires panel open
+	var/default_deconstruct_requires_panel_open = TRUE
 	/// tool used for deconstruction
 	var/tool_deconstruct = TOOL_CROWBAR
 	/// tool used for panel open

@@ -89,6 +89,11 @@
 		to_chat(src, "<span class='danger'>The Github URL is not set in the server configuration.</span>")
 	return
 
+/client/proc/changelog_async()
+	set waitfor = FALSE
+
+	changelog()
+
 /client/verb/changelog()
 	set name = "Changelog"
 	set category = "OOC"

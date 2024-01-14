@@ -889,11 +889,9 @@
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "de" = (
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/west_mount{
 	cell_type = /obj/item/cell/super;
-	dir = 8;
-	name = "Unknown APC";
-	pixel_x = -24
+	name = "Unknown APC"
 	},
 /obj/structure/cable/green{
 	icon_state = "0-4"

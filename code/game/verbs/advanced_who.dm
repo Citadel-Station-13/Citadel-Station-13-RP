@@ -1,3 +1,5 @@
+// todo: combine with advanced who wtf is this shit
+// todo: /client/proc/who_query(client/asker, admin_rights, ...) be used for building the string?
 
 /client/verb/who_advanced()
 	set name = "Advanced Who"
@@ -10,6 +12,10 @@
 	if(holder && (R_ADMIN & holder.rights || R_MOD & holder.rights))
 		for(var/client/C in GLOB.clients)
 			var/entry = "\t[C.key]"
+			if(!C.initialized)
+				entry += " - <b><font color='red'>Uninitialized</font></b>"
+				Lines += entry
+				continue
 			if(C.holder && C.holder.fakekey)
 				entry += " <i>(as [C.holder.fakekey])</i>"
 			entry += " - Playing as [C.mob.real_name]"
@@ -54,6 +60,10 @@
 	else
 		for(var/client/C in GLOB.clients)
 			var/entry = "\t"
+			if(!C.initialized)
+				entry += "[C.ckey] - <b><font color='red'>Uninitialized</font></b>"
+				Lines += entry
+				continue
 			if(C.holder && C.holder.fakekey)
 				entry += "[C.holder.fakekey]"
 			else

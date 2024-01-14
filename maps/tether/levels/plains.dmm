@@ -62,10 +62,6 @@
 /obj/machinery/power/port_gen/pacman,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/outpost/exploration_shed)
-"p" = (
-/obj/effect/floor_decal/rust,
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
-/area/tether/outpost/exploration_shed)
 "r" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
@@ -93,6 +89,7 @@
 /area/tether/outpost/exploration_shed)
 "B" = (
 /obj/effect/floor_decal/rust,
+/obj/effect/step_trigger/teleporter/from_plains,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/outpost/exploration_shed)
 "D" = (
@@ -111,11 +108,8 @@
 /area/tether/outpost/exploration_shed)
 "G" = (
 /obj/effect/floor_decal/rust,
-/obj/machinery/power/apc{
-	alarms_hidden = 1;
-	dir = 4;
-	name = "east bump";
-	pixel_x = 24
+/obj/machinery/power/apc/east_mount{
+	alarms_hidden = 1
 	},
 /obj/structure/cable/green{
 	icon_state = "0-2"
@@ -22851,11 +22845,11 @@ u
 b
 "}
 (118,1,1) = {"
+B
 O
-p
 E
-p
-p
+O
+O
 F
 t
 d
@@ -23046,10 +23040,10 @@ b
 "}
 (119,1,1) = {"
 B
-p
-p
-p
-p
+O
+O
+O
+O
 Y
 t
 d
@@ -23240,12 +23234,12 @@ b
 "}
 (120,1,1) = {"
 B
-p
-p
-p
-p
+O
+O
+O
+O
 j
-p
+O
 d
 d
 d
@@ -23434,12 +23428,12 @@ b
 "}
 (121,1,1) = {"
 B
-p
-p
-p
-p
+O
+O
+O
+O
 k
-p
+O
 d
 d
 w
@@ -23628,9 +23622,9 @@ b
 "}
 (122,1,1) = {"
 B
-p
-p
-p
+O
+O
+O
 M
 F
 l
@@ -23822,12 +23816,12 @@ b
 "}
 (123,1,1) = {"
 B
-p
-p
-p
-p
+O
+O
+O
+O
 j
-p
+O
 d
 w
 w
@@ -24016,12 +24010,12 @@ b
 "}
 (124,1,1) = {"
 B
-p
-p
-p
-p
+O
+O
+O
+O
 k
-p
+O
 d
 d
 w
@@ -24210,10 +24204,10 @@ b
 "}
 (125,1,1) = {"
 B
-p
-p
-p
-p
+O
+O
+O
+O
 Y
 t
 d
@@ -24404,7 +24398,7 @@ b
 "}
 (126,1,1) = {"
 B
-p
+O
 m
 G
 o
