@@ -340,7 +340,7 @@
 /obj/item/clothing/suit/storage/aureate
 	name = "aureate kimono"
 	desc = "An embellished spin on an ancient, traditional garb. It comes with various insignias."
-	icon = 'icons/clothing/suit/misc/aureate_kimono.dmi'
+	icon = 'icons/clothing/suit/coats/aureate_kimono.dmi'
 	icon_state = "aureate_kimono"
 	body_cover_flags = UPPER_TORSO|ARM_RIGHT|LOWER_TORSO
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
