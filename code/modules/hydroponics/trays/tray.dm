@@ -5,7 +5,6 @@
 	density = TRUE
 	pass_flags_self = ATOM_PASS_TABLE | ATOM_PASS_OVERHEAD_THROW
 	anchored = TRUE
-	atom_flags = OPENCONTAINER
 	volume = 100
 
 	var/mechanical = 1         // Set to 0 to stop it from drawing the alert lights.
@@ -130,6 +129,23 @@
 		"mutagen" = 15
 		)
 
+/obj/machinery/portable_atmospherics/hydroponics/Initialize(mapload)
+	. = ..()
+	temp_chem_holder = new()
+	temp_chem_holder.create_reagents(10)
+	create_reagents(200, REAGENT_HOLDER_CONSIDERED_OPEN)
+	if(mechanical)
+		connect()
+	update_icon()
+	return INITIALIZE_HINT_LATELOAD
+
+// Give the seeds time to initialize itself
+/obj/machinery/portable_atmospherics/hydroponics/LateInitialize()
+	. = ..()
+	var/obj/item/seeds/S = locate() in loc
+	if(S)
+		plant_seeds(S)
+
 /obj/machinery/portable_atmospherics/hydroponics/AltClick()
 	if(mechanical && !usr.incapacitated() && Adjacent(usr))
 		close_lid(usr)
@@ -169,23 +185,6 @@
 		else
 			nymph.visible_message("<font color=#4F49AF><b>[nymph]</b> rolls around in [src] for a bit.</font>","<font color=#4F49AF>You roll around in [src] for a bit.</font>")
 		return
-
-/obj/machinery/portable_atmospherics/hydroponics/Initialize(mapload)
-	. = ..()
-	temp_chem_holder = new()
-	temp_chem_holder.create_reagents(10)
-	create_reagents(200)
-	if(mechanical)
-		connect()
-	update_icon()
-	return INITIALIZE_HINT_LATELOAD
-
-// Give the seeds time to initialize itself
-/obj/machinery/portable_atmospherics/hydroponics/LateInitialize()
-	. = ..()
-	var/obj/item/seeds/S = locate() in loc
-	if(S)
-		plant_seeds(S)
 
 /obj/machinery/portable_atmospherics/hydroponics/proc/plant_seeds(var/obj/item/seeds/S)
 	lastproduce = 0
@@ -246,7 +245,7 @@
 
 	reagents.trans_to_obj(temp_chem_holder, min(reagents.total_volume,rand(1,3)))
 
-	for(var/datum/reagent/R in temp_chem_holder.reagents.reagent_list)
+	for(var/datum/reagent/R in temp_chem_holder.reagents.lazy_expensive_dangerous_reagent_list())
 
 		var/reagent_total = temp_chem_holder.reagents.get_reagent_amount(R.id)
 
