@@ -182,7 +182,7 @@
 /obj/item/mecha_parts/mecha_equipment/tool/sleeper/proc/inject_reagent(var/datum/reagent/R,var/obj/item/mecha_parts/mecha_equipment/tool/syringe_gun/SG)
 	if(!R || !occupant || !SG || !(SG in chassis.equipment))
 		return 0
-	var/to_inject = min(R.volume, inject_amount)
+	var/to_inject = min(SG.reagents.reagent_volumes[R.id], inject_amount)
 	if(to_inject && occupant.reagents.get_reagent_amount(R.id) + to_inject > inject_amount*4)
 		occupant_message("Sleeper safeties prohibit you from injecting more than [inject_amount*4] units of [R.name].")
 	else

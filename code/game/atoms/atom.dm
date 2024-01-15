@@ -355,7 +355,8 @@
 
 /// Convenience proc to see if a container is open for chemistry handling.
 /atom/proc/is_open_container()
-	return atom_flags & OPENCONTAINER
+	// todo: oh hell this is awful
+	return reagents?.reagent_holder_flags & REAGENT_HOLDER_CONSIDERED_OPEN
 
 ///Is this atom within 1 tile of another atom
 /atom/proc/HasProximity(atom/movable/proximity_check_mob as mob|obj)

@@ -52,12 +52,11 @@
 //Reagent Rings
 
 /obj/item/clothing/gloves/ring/reagent
-	atom_flags = OPENCONTAINER
 	origin_tech = list(TECH_MATERIAL = 2, TECH_ILLEGAL = 4)
 
 /obj/item/clothing/gloves/ring/reagent/Initialize(mapload)
 	. = ..()
-	create_reagents(15)
+	create_reagents(15, REAGENT_HOLDER_CONSIDERED_OPEN)
 
 /obj/item/clothing/gloves/ring/reagent/equipped(var/mob/living/carbon/human/H)
 	..()
