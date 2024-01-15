@@ -485,7 +485,7 @@
 	else
 		playsound(src, drop_sound, 30, preference = /datum/client_preference/drop_sounds)
 
-/obj/item/throw_landed(atom/movable/AM, datum/thrownthing/TT)
+/obj/item/throw_land(atom/A, datum/thrownthing/TT)
 	. = ..()
 	if(TT.throw_flags & THROW_AT_IS_NEAT)
 		return
