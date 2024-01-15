@@ -1,7 +1,7 @@
 /obj/item/reagent_containers/glass/food_holder
 	name = "cooking pot"
-	desc = "A debug cooking container. For making sphagetti, and other various copypasta-based dishes."
-	icon = 'icons/obj/food_ingredients/cooking_machines.dmi'
+	desc = "A cooking pot, for making various types of dishes."
+	icon = 'icons/obj/food_ingredients/cooking_container.dmi'
 	icon_state = "pot"
 	atom_flags = OPENCONTAINER
 
@@ -45,16 +45,18 @@
 
 /obj/item/reagent_containers/glass/proc/tally_color()
 	var/newcolor
-	var/filling_color
+	var/overlay_color
 
 	for(var/obj/item/reagent_containers/food/snacks/ingredient/color_tally in contents)
 		newcolor = color_tally.filling_color != "#FFFFFF" ? color_tally.filling_color : AverageColor(get_flat_icon(color_tally, color_tally.dir, 0), 1, 1)
-		if(!filling_color)
-			var/filling_color = newcolor
-		filling_color = BlendRGB(filling_color, newcolor, 1/contents.len)
+		if(!overlay_color)
+			overlay_color = newcolor
+		overlay_color = BlendRGB(overlay_color, newcolor, 1/contents.len)
 
-	filling_color = BlendRGB(filling_color, reagents.get_color(), 0.6)
-	return filling_color
+	if(!overlay_color)
+		overlay_color = reagents.get_color()
+	overlay_color = BlendRGB(overlay_color, reagents.get_color(), 0.6)
+	return overlay_color
 
 /obj/item/reagent_containers/glass/food_holder/proc/tick_heat(var/time_cooked, var/heat_level, var/cook_method)
 	last_cooking_method = cook_method

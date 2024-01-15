@@ -180,6 +180,8 @@
 		return ..() //if there's nothing to remove, we act as normal
 
 /obj/machinery/cooking/proc/eject_item(mob/user)
+	if(!LAZYLEN(contents))
+		return
 	var/list/removables = list()
 	var/counter = 0
 	for(var/obj/item/reagent_containers/food/snacks/ingredient/I in food_containers)
