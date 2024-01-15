@@ -21,7 +21,7 @@
 /// minimum stabilization when far from 'livable' tempreatures, but environment is closer to livable temperature
 #define MOB_BODYTEMP_EQUALIZATION_MIN_FAVORABLE 10
 /// minimum temperature change when environment is further from livable temperature / is going ot harm us from its temperature
-#define MOB_BODYTEMP_EQUALIZATION_MIN_UNFAVORABLE 2
+#define MOB_BODYTEMP_EQUALIZATION_MIN_UNFAVORABLE 1
 /// maximum temperature change when environment is further from livable temperature / is going to harm us from its temperature
 #define MOB_BODYTEMP_EQUALIZATION_MAX_UNFAVORABLE 50
 

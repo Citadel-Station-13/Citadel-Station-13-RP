@@ -752,6 +752,8 @@
 		// relative density multiplier
 		var/density_multiplier = environment.total_moles / CELL_MOLES
 
+		density_multiplier = density_multiplier > 1? sqrt(density_multiplier) : density_multiplier
+
 		var/thermal_insulation
 
 		var/nominal = species.body_temperature || T20C
@@ -760,12 +762,12 @@
 
 		var/adjust = is_stabilizing? \
 			max( \
-				difference * MOB_BODYTEMP_EQUALIZATION_FAVORABLE_RATIO * sqrt(density_multiplier), \
+				difference * MOB_BODYTEMP_EQUALIZATION_FAVORABLE_RATIO * density_multiplier, \
 				min(difference, MOB_BODYTEMP_EQUALIZATION_MIN_FAVORABLE) \
 			) : \
 			clamp( \
-				difference * MOB_BODYTEMP_EQUALIZATION_UNFAVORABLE_RATIO * sqrt(density_multiplier), \
-				min(difference, MOB_BODYTEMP_EQUALIZATION_MIN_FAVORABLE), \
+				difference * MOB_BODYTEMP_EQUALIZATION_UNFAVORABLE_RATIO * density_multiplier, \
+				min(difference, MOB_BODYTEMP_EQUALIZATION_MIN_UNFAVORABLE), \
 				MOB_BODYTEMP_EQUALIZATION_MAX_UNFAVORABLE \
 			)
 
