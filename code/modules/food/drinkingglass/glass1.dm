@@ -18,8 +18,8 @@
 	/*else if(reagents.reagent_list.len == 1)
 		for(var/datum/reagent/R in reagents.reagent_list)
 			switch(R.id)*/
-	if (reagents.reagent_list.len > 0)
-		var/datum/reagent/R = reagents.get_master_reagent()
+	if (!reagents.is_empty())
+		var/datum/reagent/R = reagents.dominant_reagent_datum()
 
 		if(R.glass_icon_state)
 			icon_state = R.glass_icon_state

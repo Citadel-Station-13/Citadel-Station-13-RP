@@ -332,14 +332,17 @@
 
 //* Get *//
 
-/datum/reagent_holder/proc/maximum_reagent_id()
+/datum/reagent_holder/proc/dominant_reagent_id()
 	var/highest = 0
 	for(var/id in reagent_volumes)
 		if(reagent_volumes[id] > highest)
 			highest = reagent_volumes[id]
 			. = id
 
-/datum/reagent_holder/proc/maximum_reagent_datum()
+/**
+ * Do not modify the returned datum.
+ */
+/datum/reagent_holder/proc/dominant_reagent_datum()
 	var/highest = 0
 	for(var/id in reagent_volumes)
 		if(reagent_volumes[id] > highest)
