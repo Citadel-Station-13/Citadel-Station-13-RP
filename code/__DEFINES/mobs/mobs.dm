@@ -77,7 +77,7 @@
 //////////////////////////////////
 
 // Bitflags defining which status effects could be or are inflicted on a mob.
-// todo :this is all terrible tbh
+// todo: this is all terrible tbh
 #define STATUS_CAN_STUN      (1<<0) //! Can Stun()
 #define STATUS_CAN_KNOCKDOWN (1<<1) //! Can Knockdown()
 #define STATUS_CAN_ROOT      (1<<2) //! Can Root()
