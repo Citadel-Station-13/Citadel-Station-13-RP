@@ -1,16 +1,5 @@
 //Handles the control of airlocks
 
-#define STATE_UNDEFINED -1 //Manual overrides
-#define STATE_CLOSED 0 //Both doors closed
-#define STATE_OPEN_IN 1 //Interior doors open, exterior closed
-#define STATE_OPEN_OUT 2 //Exterior doors open, interior closed
-#define STATE_BYPASS 3
-
-#define STATE_CYCLING_IN 4 //Matching indoors pressure and composition
-#define STATE_CYCLING_OUT 5 //Matching outdoors pressure
-#define STATE_SEALING 6 //Closing both doors
-#define STATE_BYPASSING 7 //Unlocking both doors
-
 /// Never try to pump to pure vacuum, its not happening.
 #define MIN_TARGET_PRESSURE (ONE_ATMOSPHERE * 0.01)
 
@@ -154,7 +143,7 @@
 		if(STATE_CYCLING_IN)
 			if(memory["exterior_status"]["state"] == "open")
 				toggleDoor(memory["exterior_status"],tag_exterior_door, 1, "close")
-			else if(memory["chamber_sensor_pressure"] < memory["internal_sensor_pressure"])
+			else if(fuzzy_smaller_check(memory["chamber_sensor_pressure"], memory["internal_sensor_pressure"]))
 				signalPump(tag_airpump, 1, 1, memory["target_pressure"]+0.1)
 				memory["processing"] = TRUE
 			else
@@ -165,7 +154,7 @@
 		if(STATE_CYCLING_OUT)
 			if(memory["interior_status"]["state"] == "open")
 				toggleDoor(memory["interior_status"],tag_interior_door, 1, "close")
-			else if((memory["chamber_sensor_pressure"] > MIN_TARGET_PRESSURE))
+			else if(fuzzy_smaller_check(MIN_TARGET_PRESSURE, memory["chamber_sensor_pressure"]))
 				signalPump(tag_airpump, 1, 0, MIN_TARGET_PRESSURE) // siphon air out to avoid being pulled from your feet
 				memory["processing"] = TRUE
 			else if(memory["interior_status"]["state"] == "open") //double check
@@ -249,6 +238,8 @@
 /datum/computer/file/embedded_program/airlock/proc/delta_check(var/to_check, var/target_value, var/delta)
 	return (abs(to_check - target_value) <= delta)
 
+/datum/computer/file/embedded_program/airlock/proc/fuzzy_smaller_check(var/to_check, var/target_value, var/fuzz = 0.1)
+	return (to_check < (target_value - fuzz))
 /*----------------------------------------------------------
 toggleDoor()
 
@@ -301,13 +292,3 @@ send an additional command to open the door again.
 
 	if(doorCommand)
 		signalDoor(doorTag, doorCommand)
-
-#undef STATE_UNDEFINED
-#undef STATE_OPEN_OUT
-#undef STATE_OPEN_IN
-#undef STATE_CLOSED
-#undef STATE_BYPASS
-
-#undef STATE_CYCLING_IN
-#undef STATE_CYCLING_OUT
-#undef STATE_SEALING

@@ -124,17 +124,6 @@
 
 //Handles the control of airlocks
 
-//Stable states
-#define STATE_UNDEFINED -1 //Manual overrides
-#define STATE_CLOSED 0 //Both doors closed
-#define STATE_OPEN_IN 1 //Interior doors open, exterior closed
-#define STATE_OPEN_OUT 2 //Exterior doors open, interior closed
-
-//Transitional states
-#define STATE_CYCLING_IN 3 //Matching indoors pressure and composition
-#define STATE_CYCLING_OUT 4 //Matching outdoors pressure
-#define STATE_SEALING 5 //Closing both doors
-
 /datum/computer/file/embedded_program/airlock/phoron
 	var/tag_scrubber
 
@@ -197,14 +186,14 @@
 		if(STATE_CYCLING_IN)//Now the changing states:
 			if(memory["exterior_status"]["state"] == "open")
 				toggleDoor(memory["exterior_status"],tag_exterior_door, 1, "close")
-			else if(memory["chamber_sensor_phoron"] > memory["target_phoron"])
+			else if(fuzzy_smaller_check(memory["target_phoron"], memory["chamber_sensor_phoron"], 0))//target phoron is already 0.1
 				signalScrubber(tag_scrubber, 1) // Start cleaning
 				signalPump(tag_airpump, 1, 1, memory["target_pressure"]) // And pressurizng to offset losses
 				memory["processing"] = TRUE
-			else if(memory["chamber_sensor_temperature"] < memory["target_temperature"] - 0.1)
+			else if(fuzzy_smaller_check(memory["chamber_sensor_temperature"], memory["target_temperature"]))
 				signalScrubber(tag_scrubber, 1)//the scrubbers also work as heats because fuck making sense
 				memory["processing"] = TRUE
-			else if(memory["chamber_sensor_pressure"] < memory["internal_sensor_pressure"] - 0.1)
+			else if(fuzzy_smaller_check(memory["chamber_sensor_pressure"], memory["internal_sensor_pressure"]))
 				signalScrubber(tag_scrubber, 0) // stop cleaning
 				signalPump(tag_airpump, 1, 1, memory["target_pressure"]) // continue pressurizng to offset losses
 				memory["processing"] = TRUE
@@ -242,15 +231,4 @@
 /datum/computer/file/embedded_program/airlock/phoron/stop_everything()
 	. = ..()
 	signalScrubber(tag_scrubber, 0)//Turn off scrubbers
-
-//Stable states
-#undef STATE_UNDEFINED
-#undef STATE_CLOSED
-#undef STATE_OPEN_IN
-#undef STATE_OPEN_OUT
-
-//Transitional states
-#undef STATE_CYCLING_IN
-#undef STATE_CYCLING_OUT
-#undef STATE_SEALING
 

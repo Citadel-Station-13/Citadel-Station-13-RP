@@ -15,6 +15,12 @@
 	tag_secure = 1
 	valid_actions = list("cycle_ext", "cycle_int", "force_ext", "force_int", "abort", "toggle_override")
 
+/obj/machinery/embedded_controller/radio/airlock/docking_port/process()
+	airlock_program?.process()
+	docking_program?.process()
+
+	update_icon()
+
 /obj/machinery/embedded_controller/radio/airlock/docking_port/Initialize(mapload)
 	. = ..()
 	airlock_program = new/datum/computer/file/embedded_program/airlock/docking(src)
@@ -84,11 +90,11 @@
 
 //tell the docking port to start getting ready for docking - e.g. pressurize
 /datum/computer/file/embedded_program/docking/airlock/prepare_for_docking()
-	return 0
+	airlock_program.state = STATE_CYCLING_IN
 
 //are we ready for docking?
 /datum/computer/file/embedded_program/docking/airlock/ready_for_docking()
-	return 0
+	return airlock_program.state == STATE_OPEN_IN
 
 //we are docked, open the doors or whatever.
 /datum/computer/file/embedded_program/docking/airlock/finish_docking()
@@ -99,11 +105,11 @@
 
 //tell the docking port to start getting ready for undocking - e.g. close those doors.
 /datum/computer/file/embedded_program/docking/airlock/prepare_for_undocking()
-	return 0
+	airlock_program.state = STATE_SEALING
 
 //are we ready for undocking?
 /datum/computer/file/embedded_program/docking/airlock/ready_for_undocking()
-	return 0
+	return airlock_program.state == STATE_CLOSED
 
 ///////////////////////////////////////////////////////////////////////////////
 //An airlock controller to be used by the airlock-based docking port controller.
