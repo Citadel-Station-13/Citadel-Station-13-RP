@@ -1,6 +1,9 @@
 /obj/item/clothing/under/color/black
 	name = "black jumpsuit"
+	icon = 'icons/clothing/uniform/misc/colored.dmi'
 	icon_state = "black"
+	worn_bodytypes = list(BODYTYPE_DEFAULT, BODYTYPE_WEREBEAST)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/under/color/blackf
 	name = "feminine black jumpsuit"
@@ -14,6 +17,7 @@
 	icon_state = "blackjumpskirt"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "black", SLOT_ID_LEFT_HAND = "black")
 
+
 /obj/item/clothing/under/color/blue
 	name = "blue jumpsuit"
 	icon_state = "blue"
@@ -24,13 +28,19 @@
 
 /obj/item/clothing/under/color/grey
 	name = "grey jumpsuit"
+	icon = 'icons/clothing/uniform/misc/colored.dmi'
 	icon_state = "grey"
+	worn_bodytypes = list(BODYTYPE_DEFAULT, BODYTYPE_WEREBEAST)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 //TFF 5/8/19 - add a non perma-set orange jumpsuit, splits prison into its own obj with override var settings.
 //TFF 5/9/19 - add a different icon_state to both jumpsuits, orange and prison. Refactors orange and prison jumpsuit slightly.
 /obj/item/clothing/under/color/orange
 	name = "orange jumpsuit"
+	icon = 'icons/clothing/uniform/misc/colored.dmi'
 	icon_state = "orange"
+	worn_bodytypes = list(BODYTYPE_DEFAULT, BODYTYPE_WEREBEAST)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/under/color/prison
 	name = "prison jumpsuit"
@@ -54,11 +64,17 @@
 
 /obj/item/clothing/under/color/white
 	name = "white jumpsuit"
+	icon = 'icons/clothing/uniform/misc/colored.dmi'
 	icon_state = "white"
+	worn_bodytypes = list(BODYTYPE_DEFAULT, BODYTYPE_WEREBEAST)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/under/color/yellow
 	name = "yellow jumpsuit"
+	icon = 'icons/clothing/uniform/misc/colored.dmi'
 	icon_state = "yellow"
+	worn_bodytypes = list(BODYTYPE_DEFAULT, BODYTYPE_WEREBEAST)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/under/psyche
 	name = "psychedelic jumpsuit"

@@ -1,20 +1,26 @@
 /obj/item/clothing/gloves/yellow
 	desc = "These gloves will protect the wearer from electric shock."
 	name = "insulated gloves"
+	icon = 'icons/clothing/gloves/yellowgloves.dmi'
 	icon_state = "yellow"
 	siemens_coefficient = 0
 	permeability_coefficient = 0.05
 	drop_sound = 'sound/items/drop/rubber.ogg'
 	pickup_sound = 'sound/items/pickup/rubber.ogg'
+	worn_bodytypes = list(BODYTYPE_DEFAULT, BODYTYPE_WEREBEAST)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/gloves/fyellow //Cheap Chinese Crap
 	desc = "These gloves are cheap copies of proper insulated gloves. No way this can end badly."
 	name = "budget insulated gloves"
+	icon = 'icons/clothing/gloves/yellowgloves.dmi'
 	icon_state = "yellow"
 	siemens_coefficient = 1			//Set to a default of 1, gets overridden in initialize()
 	permeability_coefficient = 0.05
 	drop_sound = 'sound/items/drop/rubber.ogg'
 	pickup_sound = 'sound/items/pickup/rubber.ogg'
+	worn_bodytypes = list(BODYTYPE_DEFAULT, BODYTYPE_WEREBEAST)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/gloves/fyellow/Initialize(mapload)
 	. = ..()
@@ -25,8 +31,11 @@
 /obj/item/clothing/gloves/black
 	desc = "These work gloves are thick and fire-resistant."
 	name = "black gloves"
+	icon = 'icons/clothing/gloves/blackgloves.dmi'
 	icon_state = "black"
 	permeability_coefficient = 0.05
+	worn_bodytypes = list(BODYTYPE_DEFAULT, BODYTYPE_WEREBEAST)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 	cold_protection = HANDS
 	min_cold_protection_temperature = GLOVES_MIN_COLD_PROTECTION_TEMPERATURE
@@ -92,5 +101,8 @@
 /obj/item/clothing/gloves/fingerless
 	desc = "A pair of gloves that don't actually cover the fingers."
 	name = "fingerless gloves"
+	icon = 'icons/clothing/gloves/fingerlessgloves.dmi'
 	icon_state = "fingerlessgloves"
 	fingerprint_chance = 100
+	worn_bodytypes = list(BODYTYPE_DEFAULT, BODYTYPE_WEREBEAST)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL

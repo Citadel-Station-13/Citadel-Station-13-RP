@@ -57,6 +57,7 @@
 /obj/item/clothing/gloves/sterile
 	name = "sterile gloves"
 	desc = "Sterile gloves."
+	icon = 'icons/clothing/gloves/latexgloves.dmi'
 	icon_state = "latex"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "white", SLOT_ID_LEFT_HAND = "white")
 	siemens_coefficient = 1.0 //thin latex gloves, much more conductive than fabric gloves (basically a capacitor for AC)
@@ -65,6 +66,8 @@
 	fingerprint_chance = 25
 	drop_sound = 'sound/items/drop/rubber.ogg'
 	pickup_sound = 'sound/items/pickup/rubber.ogg'
+	worn_bodytypes = list(BODYTYPE_DEFAULT, BODYTYPE_WEREBEAST)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 //	var/balloonPath = /obj/item/latexballon
 
 //TODO: Make inflating gloves a thing
@@ -79,8 +82,11 @@
 /obj/item/clothing/gloves/sterile/nitrile
 	name = "nitrile gloves"
 	desc = "Sterile nitrile gloves"
+	icon = 'icons/clothing/gloves/nitrilegloves.dmi'
 	icon_state = "nitrile"
 	item_state = "nitrile"
+	worn_bodytypes = list(BODYTYPE_DEFAULT, BODYTYPE_WEREBEAST)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/gloves/botanic_leather
 	desc = "These leather work gloves protect against thorns, barbs, prickles, spikes and other harmful objects of floral origin."

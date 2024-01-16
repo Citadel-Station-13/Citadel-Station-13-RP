@@ -733,70 +733,96 @@
 /obj/item/clothing/suit/storage/miljacket
 	name = "military jacket"
 	desc = "A canvas jacket styled after classical American military garb. Feels sturdy, yet comfortable."
+	icon = 'icons/clothing/suit/jackets/militaryjacket_nobadge.dmi'
 	icon_state = "militaryjacket_nobadge"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "suit_olive", SLOT_ID_LEFT_HAND = "suit_olive")
 	inv_hide_flags = HIDEHOLSTER
+	worn_bodytypes = list(BODYTYPE_DEFAULT, BODYTYPE_WEREBEAST)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/suit/storage/miljacket/tan
 	name = "tan military jacket"
 	desc = "A canvas jacket styled after classical American military garb. Feels sturdy, yet comfortable. Now in sandy tans for desert fans."
+	icon = 'icons/clothing/suit/jackets/militaryjacket_tan.dmi'
 	icon_state = "militaryjacket_tan"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "suit_orange", SLOT_ID_LEFT_HAND = "suit_orange")
 	inv_hide_flags = HIDEHOLSTER
+	worn_bodytypes = list(BODYTYPE_DEFAULT, BODYTYPE_WEREBEAST)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/suit/storage/miljacket/grey
 	name = "grey military jacket"
 	desc = "A canvas jacket styled after classical American military garb. Feels sturdy, yet comfortable. This one's in urban grey."
+	icon = 'icons/clothing/suit/jackets/militaryjacket_grey.dmi'
 	icon_state = "militaryjacket_grey"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "suit_grey", SLOT_ID_LEFT_HAND = "suit_grey")
 	inv_hide_flags = HIDEHOLSTER
+	worn_bodytypes = list(BODYTYPE_DEFAULT, BODYTYPE_WEREBEAST)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/suit/storage/miljacket/navy
 	name = "navy military jacket"
 	desc = "A canvas jacket styled after classical American military garb. Feels sturdy, yet comfortable. Dark navy, this one is."
+	icon = 'icons/clothing/suit/jackets/militaryjacket_navy.dmi'
 	icon_state = "militaryjacket_navy"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "suit_navy", SLOT_ID_LEFT_HAND = "suit_navy")
 	inv_hide_flags = HIDEHOLSTER
+	worn_bodytypes = list(BODYTYPE_DEFAULT, BODYTYPE_WEREBEAST)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/suit/storage/miljacket/black
 	name = "black military jacket"
 	desc = "A canvas jacket styled after classical American military garb. Feels sturdy, yet comfortable. Now in tactical black."
+	icon = 'icons/clothing/suit/jackets/militaryjacket_black.dmi'
 	icon_state = "militaryjacket_black"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "suit_black", SLOT_ID_LEFT_HAND = "suit_black")
 	inv_hide_flags = HIDEHOLSTER
+	worn_bodytypes = list(BODYTYPE_DEFAULT, BODYTYPE_WEREBEAST)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/suit/storage/miljacket/alt
 	name = "military jacket, alternate"
 	desc = "A canvas jacket styled after classical American military garb. Feels sturdy, yet comfortable. This one has a badge on the front."
+	icon = 'icons/clothing/suit/jackets/militaryjacket_badge.dmi'
 	icon_state = "militaryjacket_badge"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "suit_olive", SLOT_ID_LEFT_HAND = "suit_olive")
 	inv_hide_flags = HIDEHOLSTER
+	worn_bodytypes = list(BODYTYPE_DEFAULT, BODYTYPE_WEREBEAST)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/suit/storage/miljacket/green
 	name = "dark green military jacket"
 	desc = "A dark green canvas jacket. Feels sturdy, yet comfortable."
+	icon = 'icons/clothing/suit/jackets/militaryjacket_green.dmi'
 	icon_state = "militaryjacket_green"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "suit_olive", SLOT_ID_LEFT_HAND = "suit_olive")
 	inv_hide_flags = HIDEHOLSTER
+	worn_bodytypes = list(BODYTYPE_DEFAULT, BODYTYPE_WEREBEAST)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/suit/storage/miljacket/white
 	name = "white military jacket"
 	desc = "A white canvas jacket. Don't wear this for walks in the snow, it won't keep you warm."
+	icon = 'icons/clothing/suit/jackets/militaryjacket_white.dmi'
 	icon_state = "militaryjacket_white"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "med_dep_jacket", SLOT_ID_LEFT_HAND = "med_dep_jacket")
 	inv_hide_flags = HIDEHOLSTER
+	worn_bodytypes = list(BODYTYPE_DEFAULT, BODYTYPE_WEREBEAST)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/suit/storage/toggle/bomber
 	name = "bomber jacket"
 	desc = "A thick, well-worn WW2 leather bomber jacket."
+	icon = 'icons/clothing/suit/jackets/bomber.dmi'
 	icon_state = "bomber"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "brown_jacket", SLOT_ID_LEFT_HAND = "brown_jacket")
-	allowed = list (/obj/item/gun/ballistic/sec/flash, /obj/item/pen, /obj/item/paper, /obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes, /obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask)
 	body_cover_flags = UPPER_TORSO|ARMS
 	inv_hide_flags = HIDEHOLSTER
 	cold_protection = UPPER_TORSO|ARMS
 	min_cold_protection_temperature = T0C - 20
 	siemens_coefficient = 0.7
+	worn_bodytypes = list(BODYTYPE_DEFAULT, BODYTYPE_WEREBEAST)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
 
 /obj/item/clothing/suit/storage/bomber/alt
 	name = "bomber jacket"
@@ -997,6 +1023,7 @@
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes, /obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask)
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "suit_black", SLOT_ID_LEFT_HAND = "suit_black")
 	inv_hide_flags = HIDETIE|HIDEHOLSTER
+	worn_bodytypes = list(BODYTYPE_DEFAULT, BODYTYPE_WEREBEAST)
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/suit/varsity/red

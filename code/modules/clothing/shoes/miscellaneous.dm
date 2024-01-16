@@ -20,6 +20,7 @@
 /obj/item/clothing/shoes/galoshes
 	desc = "Rubber boots"
 	name = "galoshes"
+	icon = 'icons/clothing/shoes/boots/galoshes.dmi'
 	icon_state = "galoshes"
 	permeability_coefficient = 0.05
 	siemens_coefficient = 0 //They're thick rubber boots! Of course they won't conduct electricity!
@@ -29,6 +30,8 @@
 	species_restricted = null
 	drop_sound = 'sound/items/drop/rubber.ogg'
 	pickup_sound = 'sound/items/pickup/rubber.ogg'
+	worn_bodytypes = list(BODYTYPE_DEFAULT, BODYTYPE_WEREBEAST)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/shoes/dress
 	name = "dress shoes"
@@ -64,12 +67,15 @@
 /obj/item/clothing/shoes/clown_shoes
 	desc = "The prankster's standard-issue clowning shoes. Damn they're huge!"
 	name = "clown shoes"
+	icon = 'icons/clothing/shoes/clownshoes.dmi'
 	icon_state = "clown"
 	encumbrance = ITEM_ENCUMBRANCE_SHOES_CLOWN
 	flat_encumbrance = ITEM_FLAT_ENCUMBRANCE_SHOES_CLOWN
 	damage_force = 0
 	var/footstep = 1	//used for squeeks whilst walking
 	species_restricted = null
+	worn_bodytypes = list(BODYTYPE_DEFAULT, BODYTYPE_WEREBEAST)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/shoes/clown_shoes/handle_movement(var/turf/walking, var/running)
 	if(running)

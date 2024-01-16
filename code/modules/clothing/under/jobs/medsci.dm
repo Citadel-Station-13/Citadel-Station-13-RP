@@ -198,9 +198,12 @@
 /obj/item/clothing/under/rank/nursesuit
 	desc = "It's a jumpsuit commonly worn by nursing staff in the medical department."
 	name = "nurse's suit"
+	icon = 'icons/clothing/uniform/job/medical.dmi'
 	icon_state = "nursesuit"
 	permeability_coefficient = 0.50
 	armor_type = /datum/armor/medical/jumpsuit
+	worn_bodytypes = list(BODYTYPE_DEFAULT, BODYTYPE_WEREBEAST)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
@@ -212,6 +215,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "nursesuit", SLOT_ID_LEFT_HAND = "nursesuit")
 	permeability_coefficient = 0.50
 	armor_type = /datum/armor/medical/jumpsuit
+
 
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL

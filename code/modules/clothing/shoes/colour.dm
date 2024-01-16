@@ -1,12 +1,18 @@
 /obj/item/clothing/shoes/black
 	name = "black shoes"
+	icon = 'icons/clothing/shoes/black.dmi'
 	icon_state = "black"
 	desc = "A pair of black shoes."
+	worn_bodytypes = list(BODYTYPE_DEFAULT, BODYTYPE_WEREBEAST)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/shoes/brown
 	name = "brown shoes"
+	icon = 'icons/clothing/shoes/brown.dmi'
 	desc = "A pair of brown shoes."
 	icon_state = "brown"
+	worn_bodytypes = list(BODYTYPE_DEFAULT, BODYTYPE_WEREBEAST)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/shoes/blue
 	name = "blue shoes"

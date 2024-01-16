@@ -27,7 +27,10 @@
 
 /obj/item/clothing/under/shorts/white
 	name = "white shorts"
+	icon = 'icons/clothing/uniform/shorts/whiteshorts.dmi'
 	icon_state = "whiteshorts"
+	worn_bodytypes = list(BODYTYPE_DEFAULT, BODYTYPE_WEREBEAST)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/under/shorts/white/female
 	name = "white short shorts"
@@ -123,7 +126,11 @@
 /obj/item/clothing/under/skirt/swept
 	name = "swept skirt"
 	desc = "A skirt that is swept to one side."
+	icon = 'icons/clothing/uniform/misc/sweptskirt.dmi'
 	icon_state = "skirt_swept"
+	worn_bodytypes = list(BODYTYPE_DEFAULT, BODYTYPE_WEREBEAST)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
 
 /obj/item/clothing/under/skirt/loincloth
 	name = "loincloth"

@@ -98,8 +98,12 @@
 /obj/item/clothing/under/rank/clown
 	name = "clown suit"
 	desc = "<i><font face='comic sans ms'>Honk!</i></font>"
+	icon = 'icons/clothing/uniform/costume/clown.dmi'
 	icon_state = "clown"
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	worn_bodytypes = list(BODYTYPE_DEFAULT, BODYTYPE_WEREBEAST)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
 
 /obj/item/clothing/under/rank/head_of_personnel
 	desc = "It's a jumpsuit worn by someone who works in the position of \"Head of Personnel\"."
@@ -144,8 +148,11 @@
 /obj/item/clothing/under/rank/janitor
 	desc = "It's the official uniform of the station's janitor. It has minor protection from biohazards."
 	name = "janitor's jumpsuit"
+	icon = 'icons/clothing/uniform/job/service.dmi'
 	icon_state = "janitor"
 	armor_type = /datum/armor/civilian/jumpsuit/janitor
+	worn_bodytypes = list(BODYTYPE_DEFAULT, BODYTYPE_WEREBEAST)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/under/rank/janitor_fem
 	name = "janitor's jumpsuit"
@@ -218,8 +225,11 @@
 /obj/item/clothing/under/lawyer/oldman
 	name = "Old Man's Suit"
 	desc = "A classic suit for the older gentleman, with built in back support."
+	icon = 'icons/clothing/uniform/misc/oldman.dmi'
 	icon_state = "oldman"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "johnny", SLOT_ID_LEFT_HAND = "johnny")
+	worn_bodytypes = list(BODYTYPE_DEFAULT, BODYTYPE_WEREBEAST)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/under/oldwoman
 	name = "Old Woman's Attire"

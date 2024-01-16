@@ -46,8 +46,12 @@
 /obj/item/clothing/under/rank/engineer
 	desc = "It's an orange high visibility jumpsuit worn by engineers. It has minor radiation shielding."
 	name = "engineer's jumpsuit"
+	icon = 'icons/clothing/uniform/job/engineering.dmi'
 	icon_state = "engine"
 	armor_type = /datum/armor/engineering/jumpsuit
+	worn_bodytypes = list(BODYTYPE_DEFAULT, BODYTYPE_WEREBEAST)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
 
 /obj/item/clothing/under/rank/engineer/jeans
 	name = "engineer's jumpjeans"
@@ -82,7 +86,10 @@
 /obj/item/clothing/under/rank/roboticist
 	desc = "It's a slimming black jumpsuit with reinforced seams; great for industrial work."
 	name = "roboticist's jumpsuit"
+	icon = 'icons/clothing/uniform/job/science.dmi'
 	icon_state = "robotics"
+	worn_bodytypes = list(BODYTYPE_DEFAULT, BODYTYPE_WEREBEAST)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/under/rank/roboticist/alt
 	desc = "It's a slimming black jumpsuit with reinforced seams and a gold trim; great for industrial work."

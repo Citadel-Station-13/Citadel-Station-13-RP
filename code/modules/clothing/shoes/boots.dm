@@ -25,18 +25,24 @@
 /obj/item/clothing/shoes/boots/jackboots
 	name = "jackboots"
 	desc = "Standard-issue Security combat boots for combat scenarios or combat situations. All combat, all the time."
+	icon = 'icons/clothing/shoes/boots/jackboots.dmi'
 	icon_state = "jackboots"
 	siemens_coefficient = 0.7
 	drop_sound = 'sound/items/drop/boots.ogg'
 	pickup_sound = 'sound/items/pickup/boots.ogg'
+	worn_bodytypes = list(BODYTYPE_DEFAULT, BODYTYPE_WEREBEAST)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 
 /obj/item/clothing/shoes/boots/jackboots/toeless
 	name = "toe-less jackboots"
 	desc = "Modified pair of jackboots, particularly friendly to those species whose toes hold claws."
+	icon = 'icons/clothing/shoes/boots/toelessjackboots.dmi'
 	icon_state = "digiboots"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "jackboots", SLOT_ID_LEFT_HAND = "jackboots")
 	species_restricted = null
+	worn_bodytypes = list(BODYTYPE_DEFAULT, BODYTYPE_WEREBEAST)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/shoes/boots/jackboots/knee
 	name = "knee-length jackboots"
@@ -168,14 +174,18 @@
 /obj/item/clothing/shoes/boots/swat
 	name = "\improper SWAT shoes"
 	desc = "When you want to turn up the heat."
+	icon = 'icons/clothing/shoes/boots/swatboots.dmi'
 	icon_state = "swat"
 	armor_type = /datum/armor/shoes/boots/swat
 	clothing_flags = NOSLIP
 	siemens_coefficient = 0.6
+	worn_bodytypes = list(BODYTYPE_DEFAULT, BODYTYPE_WEREBEAST)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/shoes/boots/combat //Basically SWAT shoes combined with galoshes.
 	name = "combat boots"
 	desc = "When you REALLY want to turn up the heat"
+	icon = 'icons/clothing/shoes/boots/swatboots.dmi'
 	icon_state = "swat"
 	damage_force = 5
 	armor_type = /datum/armor/shoes/boots/swat
@@ -186,6 +196,8 @@
 	min_cold_protection_temperature = SHOE_MIN_COLD_PROTECTION_TEMPERATURE
 	heat_protection = FEET
 	max_heat_protection_temperature = SHOE_MAX_HEAT_PROTECTION_TEMPERATURE
+	worn_bodytypes = list(BODYTYPE_DEFAULT, BODYTYPE_WEREBEAST)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 //Stolen from CM, refurbished to be less terrible.
 /obj/item/clothing/shoes/boots/marine

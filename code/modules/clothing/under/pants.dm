@@ -34,7 +34,11 @@
 /obj/item/clothing/under/pants/blackjeans
 	name = "black jeans"
 	desc = "Only for those who can pull it off."
+	icon = 'icons/clothing/uniform/pants/jeansblack.dmi'
 	icon_state = "jeansblack"
+	worn_bodytypes = list(BODYTYPE_DEFAULT, BODYTYPE_WEREBEAST)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
 
 /obj/item/clothing/under/pants/blackjeans/ripped
 	name = "ripped black jeans"
@@ -59,7 +63,10 @@
 /obj/item/clothing/under/pants/white
 	name = "white pants"
 	desc = "Plain white pants. Boring."
+	icon = 'icons/clothing/uniform/pants/whitepants.dmi'
 	icon_state = "whitepants"
+	worn_bodytypes = list(BODYTYPE_DEFAULT, BODYTYPE_WEREBEAST)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/under/pants/red
 	name = "red pants"
@@ -120,8 +127,11 @@
 /obj/item/clothing/under/pants/yogapants
 	name = "yoga pants"
 	desc = "A pair of tight-fitting yoga pants for those lazy days."
+	icon = 'icons/clothing/uniform/pants/yogapants.dmi'
 	icon_state = "yogapants"
 	addblends = "yogapants_a"
+	worn_bodytypes = list(BODYTYPE_DEFAULT, BODYTYPE_WEREBEAST)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /*
  * Baggy Pants

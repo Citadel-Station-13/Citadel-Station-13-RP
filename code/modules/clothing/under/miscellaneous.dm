@@ -952,8 +952,11 @@
 /obj/item/clothing/under/brandjumpsuit/hephaestus
 	name = "\improper Hephaestus jumpsuit"
 	desc = "A jumpsuit belonging to Hephaestus Industries, a Trans-Stellar best known for its arms production."
+	icon = 'icons/clothing/uniform/misc/heph.dmi'
 	icon_state = "heph"
 	snowflake_worn_state = "heph"
+	worn_bodytypes = list(BODYTYPE_DEFAULT, BODYTYPE_WEREBEAST)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/under/brandjumpsuit/hephaestus_fem
 	name = "\improper Hephaestus jumpsuit (female)"

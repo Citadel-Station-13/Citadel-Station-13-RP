@@ -174,12 +174,15 @@
 /obj/item/clothing/suit/storage/hazardvest
 	name = "hazard vest"
 	desc = "A high-visibility vest used in work zones."
+	icon = 'icons/clothing/suit/misc/hazard.dmi'
 	icon_state = "hazard"
 	blood_overlay_type = "armor"
 	allowed = list (/obj/item/atmos_analyzer, /obj/item/flashlight, /obj/item/multitool, /obj/item/pipe_painter, /obj/item/radio, /obj/item/t_scanner,
 	/obj/item/tool/crowbar, /obj/item/tool/screwdriver, /obj/item/weldingtool, /obj/item/tool/wirecutters, /obj/item/tool/wrench, /obj/item/tank/emergency/oxygen,
 	/obj/item/clothing/mask/gas, /obj/item/barrier_tape_roll/engineering)
 	body_cover_flags = UPPER_TORSO
+	worn_bodytypes = list(BODYTYPE_DEFAULT, BODYTYPE_WEREBEAST)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 //Lawyer
 /obj/item/clothing/suit/storage/toggle/lawyer/bluejacket
