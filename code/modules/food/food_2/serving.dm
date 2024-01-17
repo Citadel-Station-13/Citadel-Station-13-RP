@@ -6,6 +6,8 @@
 	var/serving_type = "bowl"
 	var/trash_type
 
+	var/dirty = FALSE //are we dirty
+
 
 /obj/item/reagent_containers/food/snacks/food_serving
 	name = "generic serving of food"
@@ -24,3 +26,4 @@
 	var/do_coating_prefix = 1 //If 0, we wont do "battered thing" or similar prefixes. Mainly for recipes that include batter but have a special name
 	*/
 
+#warn do sprites here. dont bother stealing from aurora

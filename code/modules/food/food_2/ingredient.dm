@@ -25,6 +25,9 @@
 
 	var/cooker_overlay = "meat" //what overlay we use for the cooker
 
+
+	var/extra_serving_overlay_threshold = 2 //for every extra_serving_overlay_threshold above 1, we gain a overlay
+	var/max_servings = 10 //max amount of servings we can have
 	//should be everything for now
 
 /obj/item/reagent_containers/food/snacks/ingredient/Initialize(mapload)
@@ -47,6 +50,9 @@
 	if((((accumulated_time_cooked - INGREDIENT_COOKTIME_MAX_SEPERATION) < add_ingredient.accumulated_time_cooked) && (add_ingredient.accumulated_time_cooked < (accumulated_time_cooked + INGREDIENT_COOKTIME_MAX_SEPERATION))) && (add_ingredient.cookstage = cookstage))
 		to_chat(user, SPAN_NOTICE("You combine [I] into [src]."))
 		merge_ingredient(I)
+
+/obj/item/reagent_containers/food/snacks/ingredient/afterattack(obj/item/I, mob/user)
+	#warn finish this
 	
 
 /obj/item/reagent_containers/food/snacks/ingredient/AltClick(mob/user)
