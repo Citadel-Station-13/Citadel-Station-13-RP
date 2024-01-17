@@ -51,6 +51,7 @@
 	/// Damage before becoming broken
 	var/min_broken_damage = 30
 	/// Damage cap
+	/// For external organs / bodyparts, this is actually both brute and burn separate, so, you can have for 50 max damage 50 brute and 50 burn.
 	var/max_damage
 	/// Can this organ reject?
 	var/can_reject = TRUE
@@ -332,19 +333,6 @@
 ///Used to make the circuit-brain. On this level in the event more circuit-organs are added/tweaks are wanted.
 /obj/item/organ/proc/digitize()
 	robotize()
-
-/obj/item/organ/emp_act(severity)
-	if(!(robotic >= ORGAN_ASSISTED))
-		return
-	switch (severity)
-		if (1)
-			take_damage(rand(3, 7))
-		if (2)
-			take_damage(rand(2, 6))
-		if (3)
-			take_damage(rand(1, 4))
-		if (4)
-			take_damage(rand(0, 2))
 
 /obj/item/organ/proc/removed(var/mob/living/user)
 	if(owner)

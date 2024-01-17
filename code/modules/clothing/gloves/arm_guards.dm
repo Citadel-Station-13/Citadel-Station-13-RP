@@ -68,7 +68,7 @@
 	siemens_coefficient = 0.6
 	armor_type = /datum/armor/station/tactical
 	min_cold_protection_temperature = T0C - 20
-	cold_protection = ARMS
+	cold_protection_cover = ARMS
 
 /obj/item/clothing/gloves/arm_guard/combat/imperial
 	name = "imperial gauntlets"

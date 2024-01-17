@@ -1887,7 +1887,10 @@
 		var/mob/living/carbon/human/H = M
 		H.visible_message("<span class='warning'>A screeching creature bursts out of [M]'s chest!</span>")
 		var/obj/item/organ/external/organ = H.get_organ(BP_TORSO)
-		organ.take_damage(50, 0, 0, "Animal escaping the ribcage")
+		organ?.inflict_bodypart_damage(
+			brute = 50,
+			weapon_descriptor = "bursting",
+		)
 	Expand()
 
 /obj/item/reagent_containers/food/snacks/monkeycube/on_reagent_change()

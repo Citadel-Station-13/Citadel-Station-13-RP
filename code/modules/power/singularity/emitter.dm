@@ -8,6 +8,7 @@
 	anchored = 0
 	density = 1
 	req_access = list(ACCESS_ENGINEERING_ENGINE)
+	armor_type = /datum/armor/object/medium
 	var/id = null
 
 	use_power = USE_POWER_OFF	//uses powernet power, not APC power
@@ -26,9 +27,6 @@
 
 	var/burst_delay = 2
 	var/initial_fire_delay = 100
-
-	integrity = 80
-
 
 /obj/machinery/power/emitter/verb/rotate_clockwise()
 	set name = "Rotate Emitter Clockwise"
@@ -220,7 +218,7 @@
 		if(do_after(user, 30))
 			if(P.use(amt))
 				to_chat(user, "<span class='notice'>You have repaired \the [src].</span>")
-				integrity = initial(integrity)
+				set_integrity(integrity_max)
 				return
 			else
 				to_chat(user, "<span class='warning'>You don't have enough sheets to repair this! You need at least [amt] sheets.</span>")
@@ -245,37 +243,6 @@
 		emagged = 1
 		user.visible_message("[user.name] emags [src].","<span class='warning'>You short out the lock.</span>")
 		return 1
-
-/obj/machinery/power/emitter/bullet_act(var/obj/projectile/P)
-	if(!P || !P.damage || P.get_structure_damage() <= 0 )
-		return
-
-	adjust_integrity_emitter(-P.get_structure_damage())
-
-/obj/machinery/power/emitter/blob_act()
-	adjust_integrity_emitter(-1000) // This kills the emitter.
-
-/obj/machinery/power/emitter/proc/adjust_integrity_emitter(amount)
-	integrity = clamp( integrity + amount, 0,  initial(integrity))
-	if(integrity == 0)
-		if(powernet && avail(active_power_usage * 0.001)) // If it's powered, it goes boom if killed.
-			visible_message(src, "<span class='danger'>\The [src] explodes violently!</span>", "<span class='danger'>You hear an explosion!</span>")
-			explosion(get_turf(src), 1, 2, 4)
-		else
-			src.visible_message("<span class='danger'>\The [src] crumples apart!</span>", "<span class='warning'>You hear metal collapsing.</span>")
-		if(src)
-			qdel(src)
-
-/obj/machinery/power/emitter/examine(mob/user, dist)
-	. = ..()
-	var/integrity_percentage = round((integrity / initial(integrity)) * 100)
-	switch(integrity_percentage)
-		if(0 to 30)
-			. += "<span class='danger'>\The [src] is close to falling apart!</span>"
-		if(31 to 70)
-			. += "<span class='danger'>\The [src] is damaged.</span>"
-		if(77 to 99)
-			. += "<span class='warning'>\The [src] is slightly damaged.</span>"
 
 //R-UST port
 /obj/machinery/power/emitter/proc/get_initial_fire_delay()

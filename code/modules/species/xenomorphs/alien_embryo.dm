@@ -58,7 +58,7 @@
 			if(prob(2))
 				to_chat(affected_mob, "<span class='danger'> Your muscles ache.</span>")
 				if(prob(20))
-					affected_mob.take_organ_damage(1)
+					affected_mob.take_random_targeted_damage(brute = 1)
 			if(prob(2))
 				to_chat(affected_mob, "<span class='danger'>Your stomach hurts.</span>")
 				if(prob(20))
