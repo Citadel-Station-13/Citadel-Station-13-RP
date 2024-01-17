@@ -153,12 +153,3 @@ SUBSYSTEM_DEF(shuttle)
 /datum/controller/subsystem/shuttle/proc/hook_up_shuttle_objects(shuttles_list)
 	for(var/datum/shuttle/S in shuttles_list)
 		S.populate_shuttle_objects()
-
-// Admin command to halt/resume overmap
-/datum/controller/subsystem/shuttle/proc/toggle_overmap(new_setting)
-	if(overmap_halted == new_setting)
-		return
-	overmap_halted = !overmap_halted
-	for(var/ship in ships)
-		var/obj/overmap/entity/visitable/ship/ship_effect = ship
-		overmap_halted ? ship_effect.halt() : ship_effect.unhalt()
