@@ -101,11 +101,12 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#009CA8"
 
-/datum/reagent/lube/touch_turf(turf/simulated/T)
-	if(!istype(T))
+/datum/reagent/lube/contact_expose_turf(turf/target, volume, temperature, list/data, vapor)
+	. = ..()
+	if(volume < 1)
 		return
 	if(volume >= 1)
-		T.wet_floor(2)
+		target.wet_floor(2)
 
 /datum/reagent/silicate
 	name = "Silicate"
@@ -115,12 +116,14 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#C7FFFF"
 
-/datum/reagent/silicate/touch_obj(obj/O)
+/datum/reagent/silicate/contact_expose_obj(obj/target, volume, list/data, vapor)
+	. = ..()
+	// todo: legacy code
+	var/obj/O = target
 	if(istype(O, /obj/structure/window))
 		var/obj/structure/window/W = O
 		W.apply_silicate(volume)
-		remove_self(volume)
-	return
+		return volume
 
 /datum/reagent/glycerol
 	name = "Glycerol"
@@ -151,20 +154,21 @@
 /datum/reagent/coolant/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 
-	if(entity.isSynthetic() && ishuman(entity))
-		var/mob/living/carbon/human/H = entity
+	// todo: uhh
+	// if(entity.isSynthetic() && ishuman(entity))
+	// 	var/mob/living/carbon/human/H = entity
 
-		var/datum/reagent/blood/coolant = H.get_blood(H.vessel)
+	// 	var/datum/reagent/blood/coolant = H.get_blood(H.vessel)
 
-		if(coolant)
-			H.vessel.add_reagent("blood", removed, data = coolant.data)
+	// 	if(coolant)
+	// 		H.vessel.add_reagent("blood", removed, data = coolant.data)
 
-		else
-			H.vessel.add_reagent("blood", removed)
-			H.fixblood()
+	// 	else
+	// 		H.vessel.add_reagent("blood", removed)
+	// 		H.fixblood()
 
-	else
-		..()
+	// else
+	// 	..()
 
 /datum/reagent/ultraglue
 	name = "Ultra Glue"
@@ -189,11 +193,13 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#F2F3F4"
 
-/datum/reagent/luminol/touch_obj(obj/O)
-	O.reveal_blood()
+/datum/reagent/luminol/contact_expose_obj(obj/target, volume, list/data, vapor)
+	. = ..()
+	target.reveal_blood()
 
-/datum/reagent/luminol/touch_mob(mob/living/L)
-	L.reveal_blood()
+/datum/reagent/luminol/contact_expose_turf(turf/target, volume, temperature, list/data, vapor)
+	. = ..()
+	target.reveal_blood()
 
 /datum/reagent/nutriment/biomass
 	name = "Biomass"

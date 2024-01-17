@@ -8,33 +8,23 @@
 	taste_description = "Sourness"
 	taste_mult = 2
 
-	metabolism = REM / 2//The skin is not directly connected to any filter organs so reagents are removed much slower
+	dermal_absorption_multiplier = 0
+	dermal_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
+	dermal_overdose_toxin_scaling = 0.5
 
-	overdose = REAGENTS_OVERDOSE_MEDICINE //Usually we want topicals to overdose just as other chems do.
-	overdose_mod = 0.5 // deals little damage on overdose, because the chem should only be applied via touch.
-	can_overdose_touch = TRUE // They should only be applied on touch
+	bloodstream_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
+	bloodstream_overdose_toxin_scaling = 1
 
 	color = "#AAAAFF"//light blue
 	color_weight = 1
 
-	var/toxicity = 1//factor of toxin damage dealt by improper application
+	var/bloodstream_toxicity = 1//factor of toxin damage dealt by improper application
 
 /datum/reagent/topical/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
-	if(!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
-		M.adjustToxLoss(toxicity * removed)//if injected cause toxin damage
 
-/datum/reagent/topical/affect_ingest(mob/living/carbon/M, alien, removed)
 	if(!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
-		if(prob(10) && toxicity)//If ingested, either throw up
-			M.vomit(1)
-		else//or half the reagent passes through into blood(rest is filtered off) and alittle bit affects the inner skin
-			affect_blood(M, alien, removed/2)
-			affect_touch(M, alien, removed/10)
-
-/datum/reagent/topical/affect_touch(mob/living/carbon/M, alien, removed)
-	M.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 1)//just so there is something here...
+		entity.adjustToxLoss(bloodstream_toxicity * removed)//if injected cause toxin damage
 
 /datum/reagent/topical/bicarilaze
 	name = "Bicarilaze"
@@ -42,11 +32,12 @@
 	description = "A gel meant to be applied to the skin to heal bruises."
 	color = "#FF2223"
 
-	toxicity = 3
+	bloodstream_toxicity = 3
 
-/datum/reagent/topical/bicarilaze/affect_touch(mob/living/carbon/M, alien, removed)
+/datum/reagent/topical/bicarilaze/on_metabolize_dermal(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed, obj/item/organ/external/bodypart)
+	. = ..()
 	if(!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
-		M.heal_organ_damage(6*removed,0)//Heal brute damage
+		entity.heal_organ_damage(6*removed,0)//Heal brute damage
 
 /datum/reagent/topical/kelotalaze
 	name = "Kelotalaze"
@@ -54,34 +45,37 @@
 	description = "A gel meant to be applied to the skin to heal burns."
 	color = "#FFFF00"
 
-	toxicity = 2
+	bloodstream_toxicity = 2
 
-/datum/reagent/topical/kelotalaze/affect_touch(mob/living/carbon/M, alien, removed)
+/datum/reagent/topical/kelotalaze/on_metabolize_dermal(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed, obj/item/organ/external/bodypart)
+	. = ..()
 	if(!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
-		M.heal_organ_damage(0,6*removed)//Heal burns
+		entity.heal_organ_damage(0,6*removed)//Heal burns
 
 /datum/reagent/topical/tricoralaze
 	name = "Tricoralaze"
 	id = "tricoralaze"
 	description =  "A gel meant to heal both bruises and burns"
 
-	toxicity = 0
+	bloodstream_toxicity = 0
 
-/datum/reagent/topical/tricoralaze/affect_touch(mob/living/carbon/M, alien, removed)
+/datum/reagent/topical/tricoralaze/on_metabolize_dermal(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed, obj/item/organ/external/bodypart)
+	. = ..()
 	if(!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
-		M.heal_organ_damage(3*removed,3*removed)//Heal both damage
+		entity.heal_organ_damage(3*removed,3*removed)//Heal both damage
 
 /datum/reagent/topical/inaprovalaze
 	name = "Inaprovalaze"
 	id = "inaprovalaze"
 	description = "A gel that stabalises the patient"
 
-	toxicity = 0
+	bloodstream_toxicity = 0
 
-/datum/reagent/topical/inaprovalaze/affect_touch(mob/living/carbon/M, alien, removed)
+/datum/reagent/topical/inaprovalaze/on_metabolize_dermal(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed, obj/item/organ/external/bodypart)
+	. = ..()
 	if(!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
-		M.add_chemical_effect(CHEMICAL_EFFECT_STABLE, 20)//Reduces bleeding rate, and allowes the patient to breath even when in shock
-		M.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 40)
+		entity.add_chemical_effect(CHEMICAL_EFFECT_STABLE, 20)//Reduces bleeding rate, and allowes the patient to breath even when in shock
+		entity.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 40)
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
 			for(var/obj/item/organ/external/O in H.bad_external_organs)
@@ -103,44 +97,43 @@
 
 	color = "#000000"
 
-	toxicity = 5
+	bloodstream_toxicity = 5
 
-/datum/reagent/topical/neurolaze/affect_touch(mob/living/carbon/M, alien, removed)
+/datum/reagent/topical/neurolaze/on_metabolize_dermal(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed, obj/item/organ/external/bodypart)
+	. = ..()
 	if(!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
-		M.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 100)//Half oxycodone
-		M.make_jittery(50*removed)//Your nerves are itching
-		M.make_dizzy(80*removed)//Screenshake.
-		M.add_chemical_effect(CHEMICAL_EFFECT_SPEEDBOOST, 1)
+		entity.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 100)//Half oxycodone
+		entity.make_jittery(50*removed)//Your nerves are itching
+		entity.make_dizzy(80*removed)//Screenshake.
+		entity.add_chemical_effect(CHEMICAL_EFFECT_SPEEDBOOST, 1)
 		if(prob(5))// Speed boost and emotes
-			M.emote(pick("twitch", "blink_r", "shiver"))
+			entity.emote(pick("twitch", "blink_r", "shiver"))
 		if(world.time > (data + (60*10)))
 			data = world.time
 			to_chat(M, "<span class='warning'>You feel like all your nerves are itching.</span>")
 
 /datum/reagent/topical/neurolaze/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
-	if(!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
-		M.apply_damage(5 * removed, HALLOSS)//holodeck boxing glove damage
-		M.make_jittery(200)
 
-/datum/reagent/topical/neurolaze/affect_ingest(mob/living/carbon/M, alien, removed)
 	if(!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
-		M.vomit()
+		entity.apply_damage(5 * removed, HALLOSS)//holodeck boxing glove damage
+		entity.make_jittery(200)
+
+/datum/reagent/topical/neurolaze/on_metabolize_dermal(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed, obj/item/organ/external/bodypart)
+	. = ..()
+	if(!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
+		entity.vomit()
 		holder.remove_reagent("neurolaze", 10 * removed)//purges itself...
-
-/datum/reagent/topical/neurolaze/overdose(mob/living/carbon/M, alien)
-	if(!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
-		M.adjustBrainLoss(0.1)//deals braindamage on overdose
 
 /datum/reagent/topical/sterilaze
 	name = "Sterilaze"
 	id = "sterilaze"
 	description = "A gel meant for sterilizing patients wounds."
 
-	toxicity = 3
+	bloodstream_toxicity = 3
 
-/datum/reagent/topical/sterilaze/affect_touch(mob/living/carbon/M, alien, removed)
+/datum/reagent/topical/sterilaze/on_metabolize_dermal(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed, obj/item/organ/external/bodypart)
+	. = ..()
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		for(var/obj/item/organ/external/O in H.bad_external_organs)
@@ -152,22 +145,24 @@
 	id = "cleansalaze"
 	description = "This gel purges radioactive contaminates from the skin"
 
-	toxicity = 1
+	bloodstream_toxicity = 1
 
-/datum/reagent/topical/cleansalaze/affect_touch(mob/living/carbon/M, alien, removed)
+/datum/reagent/topical/cleansalaze/on_metabolize_dermal(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed, obj/item/organ/external/bodypart)
+	. = ..()
 	if(!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
-		M.cure_radiation(RAD_MOB_CURE_STRENGTH_CLEANSALAZE(removed))
+		entity.cure_radiation(RAD_MOB_CURE_STRENGTH_CLEANSALAZE(removed))
 
 /datum/reagent/topical/lotion//Because chemistry should have some recreational uses
 	name = "Lotion"
 	id = "lotion"
 	description = "A Lotion to treat your skin and relax alittle."
 
-	toxicity = 0
+	bloodstream_toxicity = 0
 
-/datum/reagent/topical/lotion/affect_touch(mob/living/carbon/M, alien, removed)
+/datum/reagent/topical/lotion/on_metabolize_dermal(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed, obj/item/organ/external/bodypart)
+	. = ..()
 	if (!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
-		M.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 5)//Not really usefull but I guess a lotion would help alittle with pain
+		entity.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 5)//Not really usefull but I guess a lotion would help alittle with pain
 		if(world.time > (data + (5*60*10)))
 			data = world.time
 			to_chat(M, "<span class='notice'>Your skin feels refreshed and sooth.</span>")

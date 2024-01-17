@@ -132,10 +132,21 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	//* Ticking
 
 	#warn handle this
-	/// Ticks in non-biological biologies
-	var/tick_non_biological = FALSE
-	/// Needs to on_dead_tick()
-	var/tick_while_dead = FALSE
+	/// Tick metabolism in non-biological biologies
+	//  todo: legacy, removing later
+	var/metabolize_non_biological = FALSE
+	/// Tick metabolism in dead people
+	//  todo: legacy, removing later
+	var/metabolize_while_dead = FALSE
+	/// biology types where metabolism procs are called
+	///
+	/// if something isn't this biology type, the chem will be handled normally via metabolic elimination, just
+	/// without the proc calls; furthermore, we cannot overdose, be poisoned by, or otherwise be affected by
+	/// this reagent.
+	///
+	/// this does not affect contact_expose_* or other 'instant apply' procs.
+	var/metabolize_biology_types
+	#warn sane default but at the same time should we even have a default?
 
 	//? legacy / unsorted
 	var/taste_description = "bitterness"
@@ -149,10 +160,6 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/list/filtered_organs = list()
 	///If the reagent should always process at the same speed, regardless of species, make this TRUE
 	var/mrate_static = FALSE
-	/// Does this chem process inside a corpse?
-	var/affects_dead = 0
-	/// Does this chem process inside a Synth?
-	var/affects_robots = 0
 	var/cup_icon_state = null
 	var/cup_name = null
 	var/cup_desc = null
