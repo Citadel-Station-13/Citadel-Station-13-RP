@@ -400,40 +400,6 @@
 	density = TRUE
 	anchored = TRUE
 
-//An object for creating a shuttle destination to dynamically loaded maps
-/obj/shuttle_connector
-	name = "shuttle connector"
-	var/shuttle_name					//Text name of the shuttle to connect to
-	var/list/destinations				//Make sure this STARTS with a destination that builds a route to one that always exists as an anchor.
-
-/obj/shuttle_connector/Initialize(mapload)
-	. = ..()
-	GLOB.shuttle_added.register_global(src, PROC_REF(setup_routes))
-
-/obj/shuttle_connector/Destroy()
-	GLOB.shuttle_added.unregister_global(src, PROC_REF(setup_routes))
-	. = ..()
-
-// This is called whenever a shuttle is initialized.  If its our shuttle, do our thing!
-/obj/shuttle_connector/proc/setup_routes(var/new_shuttle)
-	var/datum/shuttle/autodock/web_shuttle/ES = SSshuttle.shuttles[shuttle_name]
-	if(ES != new_shuttle)
-		return // Its not our shuttle! Ignore!
-	if(destinations && istype(ES))
-		var/datum/shuttle_web_master/WM = ES.web_master
-
-		for(var/new_dest in destinations)
-			var/datum/shuttle_destination/D = new new_dest(WM)
-			WM.destinations += D
-
-			for(var/type_to_link in D.routes_to_make)
-				var/travel_delay = D.routes_to_make[type_to_link]
-				D.link_destinations(WM.get_destination_by_type(type_to_link), D.preferred_interim_tag, travel_delay)
-	else
-		warning("[log_info_line()]'s shuttle [global.log_info_line(ES)] initialized but destinations:[destinations]")
-
-	qdel(src)
-
 //A sensor for detecting air outside shuttles! Handy, that.
 /obj/machinery/shuttle_sensor
 	name = "environment sensor"
