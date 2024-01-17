@@ -23,7 +23,9 @@ SUBSYSTEM_DEF(shuttle)
 
 	//* Controllers & Maps
 	/// Web maps by path
-	var/static/list/shuttle_web_type_registry = list()
+	var/static/list/shuttle_web_map_type_registry = list()
+	/// Web nodes by path
+	var/static/list/shuttle_web_node_type_registry = list()
 
 	//* Templates
 	/// templates by path
@@ -95,6 +97,8 @@ SUBSYSTEM_DEF(shuttle)
 			continue
 		docks_by_level[i] = list()
 
+//* Shuttle Templates
+
 /datum/controller/subsystem/shuttle/proc/fetch_template(datum/shuttle_template/templatelike)
 	if(ispath(templatelike, /datum/shuttle_template))
 		if(isnull(templates_by_path[templatelike]))
@@ -109,6 +113,21 @@ SUBSYSTEM_DEF(shuttle)
 /datum/controller/subsystem/shuttle/proc/load_shuttle_template(datum/shuttle_template/template)
 	templates_by_id[template.id] = template
 	return template
+
+//* Shuttle Webs
+
+/datum/controller/subsystem/shuttle/proc/fetch_or_load_shuttle_web_node_type(type)
+	if(isnull(shuttle_web_node_type_registry[type]))
+		var/datum/shuttle_web_node/node = new type
+		shuttle_web_node_type_registry[type] = node
+		node.initialize()
+	return shuttle_web_node_type_registry[type]
+
+/datum/controller/subsystem/shuttle/proc/fetch_or_load_shuttle_web_map_type(type)
+	if(isnull(shuttle_web_map_type_registry[type]))
+		var/datum/shuttle_web_map/map = new type
+		shuttle_web_map_type_registry[type] = map
+	return shuttle_web_map_type_registry[type]
 
 #warn below
 

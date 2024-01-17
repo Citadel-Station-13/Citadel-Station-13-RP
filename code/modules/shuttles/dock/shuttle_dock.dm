@@ -82,6 +82,10 @@
 	var/registered = FALSE
 	/// registered shuttle hooks
 	var/list/datum/shuttle_hook/hooks
+	/// shuttle web node to initialize on, if applicable; this must be a typepath.
+	var/web_node_type
+	/// the shuttle web node we belong to, if any
+	var/datum/shuttle_web_node/web_node
 
 	//* identity
 	/// display name - visible to everyone at all times; if null, we use name.
