@@ -2757,7 +2757,7 @@
 	pixel_x = 22
 	},
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1380;
 	master_tag = "talon_port";
 	name = "interior access button";
@@ -3512,7 +3512,7 @@
 /obj/machinery/door/airlock/glass_external,
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1380;
 	master_tag = "talon_port";
 	name = "exterior access button";

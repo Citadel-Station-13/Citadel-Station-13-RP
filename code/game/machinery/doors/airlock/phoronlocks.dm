@@ -19,10 +19,10 @@
 	name = "phoronlock sensor"
 
 /obj/machinery/airlock_sensor/phoron/airlock_interior
-	command = "cycle_interior"
+	command = "cycle_int"
 
 /obj/machinery/airlock_sensor/phoron/airlock_exterior
-	command = "cycle_exterior"
+	command = "cycle_ext"
 
 
 // Radio remote control

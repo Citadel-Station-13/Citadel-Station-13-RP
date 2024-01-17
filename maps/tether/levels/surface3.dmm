@@ -3409,7 +3409,7 @@
 	req_one_access = list(47,55)
 	},
 /obj/machinery/access_button/airlock_interior{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1382;
 	master_tag = "xenobiology_airlock_control";
 	name = "Xenobiology Access Control";
@@ -6728,7 +6728,7 @@
 	req_one_access = list(47,55)
 	},
 /obj/machinery/access_button/airlock_interior{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1382;
 	master_tag = "xenobiology_airlock_control";
 	name = "Xenobiology Access Control";
@@ -24133,7 +24133,7 @@
 	dir = 4
 	},
 /obj/machinery/access_button/airlock_interior{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1392;
 	master_tag = "xenobiology_north_airlock_control";
 	name = "Xenobiology Access Control";
@@ -27955,7 +27955,7 @@
 	name = "Xenobiology North Airlock"
 	},
 /obj/machinery/access_button/airlock_interior{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1392;
 	master_tag = "xenobiology_north_airlock_control";
 	name = "Xenobiology Access Control";

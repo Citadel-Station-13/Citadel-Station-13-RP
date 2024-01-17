@@ -1085,7 +1085,7 @@
 /area/itglight/captain)
 "hc" = (
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1380;
 	master_tag = "itglight_dock_1";
 	name = "port exterior access button";
@@ -1093,7 +1093,7 @@
 	pixel_y = 65
 	},
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1380;
 	master_tag = "itglight_dock_2";
 	name = "starboard exterior access button";
@@ -3361,7 +3361,7 @@
 	dir = 4
 	},
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1380;
 	master_tag = "itglight_port";
 	name = "interior access button";
@@ -3919,7 +3919,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1380;
 	master_tag = "itglight_dock_1";
 	name = "exterior access button";
@@ -4039,7 +4039,7 @@
 	},
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1380;
 	master_tag = "itglight_dock_1";
 	name = "interior access button";
@@ -4273,7 +4273,7 @@
 	id_tag = "itglight_dock_2_inner"
 	},
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1380;
 	master_tag = "itglight_dock_2";
 	name = "interior access button";
@@ -4351,7 +4351,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1380;
 	master_tag = "itglight_dock_2";
 	name = "exterior access button";
@@ -4580,7 +4580,7 @@
 	},
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1380;
 	master_tag = "itglight_starboard";
 	name = "interior access button";
@@ -5046,7 +5046,7 @@
 	},
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1380;
 	master_tag = "itglight_starboard";
 	name = "exterior access button";
@@ -6958,7 +6958,7 @@
 	},
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1380;
 	master_tag = "itglight_port";
 	name = "exterior access button";

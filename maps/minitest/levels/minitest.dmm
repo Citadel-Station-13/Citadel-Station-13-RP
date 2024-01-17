@@ -3188,7 +3188,7 @@
 /area/rift/surfaceeva/airlock/main)
 "wN" = (
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1379;
 	master_tag = "eva_port_airlock";
 	name = "interior access button";
@@ -3209,7 +3209,7 @@
 /obj/machinery/door/airlock/glass_external,
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1379;
 	master_tag = "eva_port_airlock";
 	name = "exterior access button";

@@ -725,7 +725,7 @@
 	dir = 4
 	},
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1380;
 	master_tag = "dock_d2r";
 	name = "interior access button";
@@ -1885,7 +1885,7 @@
 /obj/machinery/door/airlock/glass_external,
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1379;
 	master_tag = "eva_port_airlock";
 	name = "exterior access button";
@@ -2573,7 +2573,7 @@
 /area/maintenance/station/eng_upper)
 "fi" = (
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1380;
 	master_tag = "dock_cshutt";
 	name = "interior access button";
@@ -8177,7 +8177,7 @@
 /area/tether/station/stairs_two)
 "qC" = (
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1380;
 	master_tag = "dock_d2b";
 	name = "interior access button";
@@ -14686,7 +14686,7 @@
 	dir = 1
 	},
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1379;
 	master_tag = "belter_access_airlock";
 	name = "exterior access button";
@@ -16242,7 +16242,7 @@
 /area/tether/exploration)
 "GN" = (
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1379;
 	master_tag = "eva_port_airlock";
 	name = "interior access button";
@@ -16747,7 +16747,7 @@
 /area/shuttle/large_escape_pod1)
 "HQ" = (
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1380;
 	master_tag = "dock_cshutt";
 	name = "exterior access button";
@@ -16796,7 +16796,7 @@
 /area/tether/station/visitorhallway/office)
 "HV" = (
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1380;
 	master_tag = "dock_d2b";
 	name = "exterior access button";
@@ -19378,7 +19378,7 @@
 	dir = 8
 	},
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1379;
 	master_tag = "belter_access_airlock";
 	name = "interior access button";
@@ -19735,7 +19735,7 @@
 /area/gateway/prep_room)
 "Oa" = (
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1380;
 	master_tag = "dock_d2a";
 	name = "interior access button";
@@ -19874,7 +19874,7 @@
 /area/shuttle/excursion/general)
 "On" = (
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1380;
 	master_tag = "dock_d2l";
 	name = "exterior access button";
@@ -21822,7 +21822,7 @@
 /area/vacant/vacant_restaurant_upper)
 "SF" = (
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1380;
 	master_tag = "dock_d2r";
 	name = "exterior access button";
@@ -21843,7 +21843,7 @@
 /area/tether/station/public_meeting_room)
 "SH" = (
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1380;
 	master_tag = "dock_d2a";
 	name = "exterior access button";
@@ -24210,7 +24210,7 @@
 /area/hallway/station/port)
 "Xk" = (
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1380;
 	master_tag = "dock_d2l";
 	name = "interior access button";

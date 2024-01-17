@@ -155,7 +155,7 @@ Any frequency works, it's self-setting, but it seems like people have decided 13
 	name = "exterior sensor"
 	icon_state = "sensout"
 	tag_addon = "_exterior_sensor"
-	command = "cycle_exterior"
+	command = "cycle_ext"
 
 /obj/map_helper/airlock/sensor/chamber_sensor
 	name = "chamber sensor"
@@ -167,7 +167,7 @@ Any frequency works, it's self-setting, but it seems like people have decided 13
 	name = "interior sensor"
 	icon_state = "sensin"
 	tag_addon = "_interior_sensor"
-	command = "cycle_interior"
+	command = "cycle_int"
 
 /*
 	Buttons
