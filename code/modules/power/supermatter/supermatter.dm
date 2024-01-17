@@ -481,7 +481,19 @@
 				cooktime += 3 SECOND
 			superfood.process_cooked(1 SECOND, HEAT_HIGH, METHOD_ENERGETIC_ANOMALY)
 		return //we dont eat it if we cook it
-		
+
+	if(istype(W, /obj/item/reagent_containers/glass/food_holder) && prob(95))
+		var/obj/item/reagent_containers/glass/food_holder/superpot = W
+		user.visible_message("<span class=\"warning\">\The [user] holds up [superpot] to \the [src] as the noise in the room dulls...</span>",\
+		"<span class=\"danger\">You hold up [superpot] to \the [src] when everything suddenly goes quiet.",\
+		"<span class=\"warning\">Everything suddenly goes quiet.</span>")
+		while(do_after(user, 1 SECOND))
+			var/cooktime = 1 SECOND
+			if(power > 115)
+				cooktime += 1 SECOND
+			if(power > 300)
+				cooktime += 3 SECOND
+			superpot.tick_heat(cooktime, HEAT_HIGH, METHOD_ENERGETIC_ANOMALY)
 
 
 	user.visible_message("<span class=\"warning\">\The [user] touches \a [W] to \the [src] as a silence fills the room...</span>",\

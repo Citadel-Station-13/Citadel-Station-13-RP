@@ -3995,80 +3995,7 @@ END CITADEL CHANGE */
 	. = ..()
 	bitesize = 3
 
-//Code for dipping food in batter
-/obj/item/reagent_containers/food/snacks/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(target.is_open_container() && target.reagents && !(istype(target, /obj/item/reagent_containers/food)))
-		for (var/r in target.reagents.reagent_list)
-
-			var/datum/reagent/R = r
-			if (istype(R, /datum/reagent/nutriment/coating))
-				if (apply_coating(R, user))
-					return 1
-
-	return ..()
-
-//This proc handles drawing coatings out of a container when this food is dipped into it
-/obj/item/reagent_containers/food/snacks/proc/apply_coating(var/datum/reagent/nutriment/coating/C, var/mob/user)
-	if (coating)
-		to_chat(user, "The [src] is already coated in [coating.name]!")
-		return 0
-
-	//Calculate the reagents of the coating needed
-	var/req = 0
-	for (var/r in reagents.reagent_list)
-		var/datum/reagent/R = r
-		if (istype(R, /datum/reagent/nutriment))
-			req += R.volume * 0.2
-		else
-			req += R.volume * 0.1
-
-	req += w_class*0.5
-
-	if (!req)
-		//the food has no reagents left, its probably getting deleted soon
-		return 0
-
-	if (C.volume < req)
-		to_chat(user, SPAN_WARNING( "There's not enough [C.name] to coat the [src]!"))
-		return 0
-
-	var/id = C.id
-
-	//First make sure there's space for our batter
-	if (reagents.available_volume() < req+5)
-		var/extra = req+5 - reagents.available_volume()
-		reagents.maximum_volume += extra
-
-	//Suck the coating out of the holder
-	C.holder.trans_to_holder(reagents, req)
-
-	//We're done with C now, repurpose the var to hold a reference to our local instance of it
-	C = reagents.get_reagent(id)
-	if (!C)
-		return
-
-	coating = C
-	//Now we have to do the witchcraft with masking images
-	//var/icon/I = new /icon(icon, icon_state)
-
-	if (!flat_icon)
-		flat_icon = get_flat_icon(src)
-	var/icon/I = flat_icon
-	color = "#FFFFFF" //Some fruits use the color var. Reset this so it doesnt tint the batter
-	I.Blend(new /icon('icons/obj/food_custom.dmi', rgb(255,255,255)),ICON_ADD)
-	I.Blend(new /icon('icons/obj/food_custom.dmi', coating.icon_raw),ICON_MULTIPLY)
-
-	var/image/coating_image = image(I)
-	coating_image.alpha = 200
-	coating_image.blend_mode = BLEND_OVERLAY
-	coating_image.tag = "coating"
-	add_overlay(coating_image)
-
-	if (user)
-		user.visible_message(SPAN_NOTICE("[user] dips \the [src] into \the [coating.name]"), SPAN_NOTICE("You dip \the [src] into \the [coating.name]"))
-
-	return 1
-
+#warn TODO kill coatings
 
 //Called by cooking machines. This is mainly intended to set properties on the food that differ between raw/cooked
 /obj/item/reagent_containers/food/snacks/proc/cook()
@@ -6824,7 +6751,7 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/wrapped/candy // Buff 4 >> 8
 	name = "candy"
 	desc = "Nougat, love it or hate it."
-	icon_state = "candy"	
+	icon_state = "candy"
 	trash = /obj/item/trash/candy
 	filling_color = "#7D5F46"
 	nutriment_amt = 3

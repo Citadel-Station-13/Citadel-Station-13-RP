@@ -112,19 +112,43 @@
 		return
 	var/obj/item/reagent_containers/food/snacks/food_serving/generated_serving = new /obj/item/reagent_containers/food/snacks/food_serving(null)
 	var/list/tally_flavours = list()
+	var/list/fancy_overlay_to_add = list()
+	var/food_color
 	var/serving_thing_name = "handful"
+
+	var/fs_icon = FS ? FS.icon : 'icons/obj/food_ingredients/custom_food.dmi'
+	var/fs_iconstate = FS ? FS.icon_state : "handful"
 
 	for(var/obj/item/reagent_containers/food/snacks/ingredient/tally_ingredient in contents)
 		tally_flavours[tally_ingredient.cookstage_information[tally_ingredient.cookstage][COOKINFO_TASTE]] = tally_ingredient.serving_amount //the more it is the stronger it'll taste
 		var/total_volume_transferred = (1 / tally_ingredient.serving_amount)
 		tally_ingredient.reagents.trans_to_holder(generated_serving.reagents, total_volume_transferred, tally_ingredient.cookstage_information[tally_ingredient.cookstage][COOKINFO_NUTRIMULT])
 		tally_ingredient.consume_serving()
+
+		var/ingredient_fillcolor = tally_ingredient.filling_color != "#FFFFFF" ? tally_ingredient.filling_color : AverageColor(get_flat_icon(tally_ingredient, tally_ingredient.dir, 0), 1, 1)
+		if(tally_ingredient.finished_overlay)
+			var/mutable_appearance/filling_overlay = mutable_appearance(fs_icon, "[fs_iconstate]_filling_[tally_ingredient.finished_overlay]")
+			filling_overlay.color = ingredient_fillcolor
+			fancy_overlay_to_add += filling_overlay
+		if(food_color)
+			food_color = BlendRGB(food_color, ingredient_fillcolor, 0.5)
+		else
+			food_color = ingredient_fillcolor
+
+		var/mutable_appearance/mixed_stuff_overlay = mutable_appearance(fs_icon, "[fs_iconstate]_filling")
+		mixed_stuff_overlay.color = food_color
+		fancy_overlay_to_add += mixed_stuff_overlay
+
 	if(FS)
 		serving_thing_name = FS.serving_type
 		generated_serving.trash = FS
 		FS.forceMove(generated_serving)
+
 	generated_serving.name = "a [serving_thing_name] of "
 	generated_serving.name += generate_food_name()
+	generated_serving.icon = fs_icon
+	generated_serving.icon_state = fs_iconstate
+	generated_serving.add_overlay(fancy_overlay_to_add)
 	user.put_in_hands_or_drop(generated_serving)
 
 
@@ -179,14 +203,14 @@
 				if(R.recipe_fruit[fruit.seed.kitchen_tag] > fruit.serving_amount)
 					to_chat(world, "not enough fruit ([R.recipe_fruit[fruit.seed.kitchen_tag]] > [fruit.serving_amount])")
 					return FALSE
-					
+
 		if(!(is_exact_type_in_list(check_ingredient, R.recipe_items)))
 			to_chat(world, "wrong ingredient ([is_type_in_list(check_ingredient, R.recipe_items)])")
 			return FALSE //wrong stuff
 		if(R.recipe_items[check_ingredient] > check_ingredient.serving_amount)
 			to_chat(world, "not enough ingredient ([R.recipe_items[check_ingredient]] > [check_ingredient.serving_amount])")
 			return FALSE
-	return TRUE	
+	return TRUE
 
 /obj/item/reagent_containers/glass/food_holder/proc/check_reagent_for_recipe(var/datum/cooking_recipe/R)
 	for(var/check_reagent in R.recipe_reagents)

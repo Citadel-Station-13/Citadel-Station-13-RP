@@ -24,9 +24,9 @@
 	var/serving_amount = 1
 
 	var/cooker_overlay = "meat" //what overlay we use for the cooker
+	var/finished_overlay //what overlay we use for the finished item, if null we dont do anything special
 
-
-	var/extra_serving_overlay_threshold = 2 //for every extra_serving_overlay_threshold above 1, we gain a overlay
+	var/extra_serving_overlay_threshold = 2 //for every extra_serving_overlay_threshold we gain a overlay
 	var/max_servings = 10 //max amount of servings we can have
 	//should be everything for now
 
@@ -41,19 +41,59 @@
 	. += SPAN_NOTICE("<b>Alt-click</b> to split off servings.")
 	. += cooking_information(TRUE)
 
-
+/obj/item/reagent_containers/food/snacks/ingredient/update_icon()
+	cut_overlays()
+	var/overlay_amount = FLOOR(serving_amount/extra_serving_overlay_threshold, 1)
+	if(overlay_amount > 1)
+		for(var/i, i<=overlay_amount, i++)
+			var/mutable_appearance/stuff_overlay = mutable_appearance(icon, icon_state)
+			stuff_overlay.color = color
+			stuff_overlay.pixel_x = pick(rand(-12,-6), rand(6,12))
+			stuff_overlay.pixel_y = pick(rand(-12,-6), rand(6,12))
+			add_overlay(stuff_overlay)
 
 /obj/item/reagent_containers/food/snacks/ingredient/attackby(obj/item/I, mob/user)
 	if(I.type != type)
 		return ..()
 	var/obj/item/reagent_containers/food/snacks/ingredient/add_ingredient = I
 	if((((accumulated_time_cooked - INGREDIENT_COOKTIME_MAX_SEPERATION) < add_ingredient.accumulated_time_cooked) && (add_ingredient.accumulated_time_cooked < (accumulated_time_cooked + INGREDIENT_COOKTIME_MAX_SEPERATION))) && (add_ingredient.cookstage = cookstage))
-		to_chat(user, SPAN_NOTICE("You combine [I] into [src]."))
-		merge_ingredient(I)
+		if((add_ingredient.serving_amount + serving_amount) < max_servings)
+			to_chat(user, SPAN_NOTICE("You combine [I] into [src]."))
+			merge_ingredient(I)
+			return
+		to_chat(user, SPAN_NOTICE("There's too much to combine!"))
+	else
+		to_chat(user, SPAN_NOTICE("You can't mix raw and cooked ingredients."))
 
-/obj/item/reagent_containers/food/snacks/ingredient/afterattack(obj/item/I, mob/user)
-	#warn finish this
-	
+/obj/item/reagent_containers/food/snacks/ingredient/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(istype(target, /obj/singularity/energy_ball)) //snowflaked for sing/tesla
+		var/obj/singularity/energy_ball/tesla_ball = target
+		user.visible_message("<span class=\"warning\">\The [user] holds up [src] to \the [tesla_ball]!</span>",\
+		"<span class=\"danger\">You hold up [src] to \the [tesla_ball]!",\
+		"<span class=\"warning\">Everything suddenly goes quiet.</span>")
+		while(do_after(user, 1 SECOND))
+			var/cooktime = 0 SECOND
+			switch(tesla_ball.orbiting_balls.len)
+				if(-INFINITY to 0)
+					cooktime += 1 SECOND
+				if(1 to 2)
+					cooktime += 2 SECOND
+				if(3 to 5)
+					cooktime += 4 SECOND
+				if(5 to 7)
+					cooktime += 8 SECOND
+				if(7 to INFINITY)
+					cooktime += 10 SECOND
+			process_cooked(cooktime, HEAT_HIGH, METHOD_ENERGETIC_ANOMALY)
+
+	else if(istype(target, /obj/singularity))
+		var/obj/singularity/mr_singulo = target
+		user.visible_message("<span class=\"warning\">\The [user] holds up [src] to \the [mr_singulo]...</span>")
+		while(do_after(user, 1 SECOND))
+			process_cooked(1, HEAT_LOW, METHOD_ENERGETIC_ANOMALY) //it's hawking radiation what do you expect
+		return
+
+
 
 /obj/item/reagent_containers/food/snacks/ingredient/AltClick(mob/user)
 	if(!isliving(user))
@@ -66,12 +106,14 @@
 	if(amount && amount < serving_amount)
 		var/final_ratio = amount/serving_amount
 		serving_amount -= amount
+		update_icon()
 		var/obj/item/reagent_containers/food/snacks/ingredient/split_ingredient = new type(src)
 		split_ingredient.cookstage = cookstage
 		split_ingredient.accumulated_time_cooked = accumulated_time_cooked
 		split_ingredient.reagents.clear_reagents() //so we aren't making it taste raw on init
 		split_ingredient.reagents.trans_to_holder(reagents, reagents.total_volume * final_ratio, 1, TRUE)
 		split_ingredient.serving_amount = amount
+		split_ingredient.update_icon()
 		user.put_in_hands_or_drop(split_ingredient)
 		to_chat(user, SPAN_NOTICE("You split off [src]."))
 	else
@@ -166,10 +208,12 @@
 	I.reagents.trans_to_holder(reagents, I.reagents.total_volume, 1, TRUE)
 	accumulated_time_cooked = (accumulated_time_cooked + I.accumulated_time_cooked) / 2
 	serving_amount += I.serving_amount
+	update_icon()
 	qdel(I)
 
 /obj/item/reagent_containers/food/snacks/ingredient/proc/consume_serving(var/remove_amount = 1)
 	serving_amount -= remove_amount
+	update_icon()
 	if(serving_amount <= 0)
 		qdel(src)
 
@@ -195,7 +239,7 @@
 		var/obj/item/reagent_containers/food/snacks/create_item
 		if(cook_method in transform_list)
 			create_item = transform_list[cook_method]
-		else 
+		else
 			create_item = fallback_create
 		create_item = new(loc)
 		reagents.del_reagent("nutriment") //remove nutrient so we dont get weird tastes
