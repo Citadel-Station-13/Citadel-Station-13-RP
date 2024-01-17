@@ -39,8 +39,6 @@
 	if(src.name in SSshuttle.shuttles)
 		CRASH(SPAN_DEBUGERROR("A shuttle with the name '[name]' is already defined."))
 	SSshuttle.shuttles[src.name] = src
-	if(flags & SHUTTLE_FLAGS_PROCESS)
-		SSshuttle.process_shuttles += src
 	if(flags & SHUTTLE_FLAGS_SUPPLY)
 		if(SSsupply.shuttle)
 			CRASH(SPAN_DEBUGERROR("A supply shuttle is already defined."))

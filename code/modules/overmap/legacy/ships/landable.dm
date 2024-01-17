@@ -181,7 +181,7 @@
 	var/obj/overmap/entity/visitable/target = get_overmap_sector(get_z(into))
 	var/datum/shuttle/shuttle_datum = SSshuttle.shuttles[shuttle]
 	if(into.landmark_tag == shuttle_datum.motherdock) // If our motherdock is a landable ship, it won't be found properly here so we need to find it manually.
-		for(var/obj/overmap/entity/visitable/ship/landable/landable in SSshuttle.ships)
+		for(var/obj/overmap/entity/visitable/ship/landable/landable in SSovermaps.ships)
 			if(landable.shuttle == shuttle_datum.mothershuttle)
 				target = landable
 				break

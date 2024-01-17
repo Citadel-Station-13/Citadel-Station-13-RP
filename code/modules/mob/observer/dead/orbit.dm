@@ -24,7 +24,7 @@
 			var/ref = params["ref"]
 			var/atom/movable/poi = locate(ref) in GLOB.mob_list
 			if (poi == null)
-				poi = locate(ref) in SSshuttle.ships
+				poi = locate(ref) in SSovermaps.ships
 			if (poi == null)
 				. = TRUE
 				return
@@ -73,7 +73,7 @@
 		else if(istype(M, /mob/living/silicon/pai))
 			players += list(serialized)
 
-	for(var/obj/overmap/entity/visitable/ship/shuttle in SSshuttle.ships)
+	for(var/obj/overmap/entity/visitable/ship/shuttle in SSovermaps.ships)
 		if(istype(shuttle))
 			var/list/serialized = list()
 			serialized["name"] = shuttle.name

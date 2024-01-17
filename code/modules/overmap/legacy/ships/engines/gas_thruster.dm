@@ -85,18 +85,18 @@
 	. = ..()
 	controller = new(src)
 	update_nearby_tiles()
-	SSshuttle.unary_engines += src
+	SSovermaps.unary_engines += src
 	if(SSshuttle.initialized)
 		link_to_ship()
 
 /obj/machinery/atmospherics/component/unary/engine/Destroy()
 	QDEL_NULL(controller)
-	SSshuttle.unary_engines -= src
+	SSovermaps.unary_engines -= src
 	update_nearby_tiles()
 	. = ..()
 
 /obj/machinery/atmospherics/component/unary/engine/proc/link_to_ship()
-	for(var/ship in SSshuttle.ships)
+	for(var/ship in SSovermaps.ships)
 		var/obj/overmap/entity/visitable/ship/S = ship
 		if(S.check_ownership(src))
 			S.engines |= controller

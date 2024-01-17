@@ -56,17 +56,17 @@
 /obj/machinery/ion_engine/Initialize(mapload)
 	. = ..()
 	controller = new(src)
-	SSshuttle.ion_engines += src
+	SSovermaps.ion_engines += src
 	if(SSshuttle.initialized)
 		link_to_ship()
 
 /obj/machinery/ion_engine/Destroy()
 	QDEL_NULL(controller)
-	SSshuttle.ion_engines -= src
+	SSovermaps.ion_engines -= src
 	. = ..()
 
 /obj/machinery/ion_engine/proc/link_to_ship()
-	for(var/ship in SSshuttle.ships)
+	for(var/ship in SSovermaps.ships)
 		var/obj/overmap/entity/visitable/ship/S = ship
 		if(S.check_ownership(src))
 			S.engines |= controller

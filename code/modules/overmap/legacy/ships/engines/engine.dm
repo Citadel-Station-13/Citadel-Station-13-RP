@@ -39,7 +39,7 @@ var/list/ship_engines = list()
 
 /datum/ship_engine/Destroy()
 	ship_engines -= src
-	for(var/obj/overmap/entity/visitable/ship/S in SSshuttle.ships)
+	for(var/obj/overmap/entity/visitable/ship/S in SSovermaps.ships)
 		S.engines -= src
 	holder = null
 	. = ..()
