@@ -54,6 +54,14 @@
 	/// if set, we generate a ceiling above the shuttle of this type, on the bottom of the turf stack.
 	var/ceiling_type = /turf/simulated/shuttle_ceiling
 
+	//* Transit
+	/// Shuttle is in transit
+	var/in_transit = FALSE
+	/// Current transit reservation
+	var/datum/turf_reservation/in_transit_reservation
+	/// Current transit dock
+	var/obj/shuttle_dock/ephemeral/transit/in_transit_dock
+
 	//* legacy stuff
 	// todo: this should be a default, and engine/takeoff type (?) can override
 	var/legacy_sound_takeoff = 'sound/effects/shuttles/shuttle_takeoff.ogg'
@@ -62,8 +70,23 @@
 
 #warn impl all
 
+//* Previews *//
+
+/**
+ * Get preview outline for docking and others.
+ */
 /datum/shuttle/proc/get_preview(regenerate)
 	if(!isnull(preview_overlay) && !regenerate)
 		return preview_overlay
 	preview_overlay = new /mutable_appearance
+	#warn impl
+
+//* Transit
+
+/**
+ * @params
+ * * force - hard force, ram everything out of the way on the destination side if needed
+ * * immediate - blow past all docking procedures, do not block on anything IC fluff or otherwise
+ */
+/datum/shuttle/proc/move_to_transit(force = FALSE, immediate = FALSE)
 	#warn impl

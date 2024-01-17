@@ -15,14 +15,6 @@
 	/// stored docking codes
 	var/list/docking_codes
 
-	//* Transit
-	/// Shuttle is in transit
-	var/in_transit = FALSE
-	/// Current transit reservation
-	var/datum/turf_reservation/in_transit_reservation
-	/// Current transit dock
-	var/obj/shuttle_dock/ephemeral/transit/in_transit_dock
-
 	//* UI
 	/// tgui module name
 	var/tgui_module
@@ -56,14 +48,4 @@
 	#warn impl
 
 /datum/shuttle_controller/proc/has_codes_for(obj/shuttle_dock/dock)
-	#warn impl
-
-//* Transit
-
-/**
- * @params
- * * force - hard force, ram everything out of the way on the destination side if needed
- * * immediate - blow past all docking procedures, do not block on anything IC fluff or otherwise
- */
-/datum/shuttle_controller/proc/move_to_transit(force = FALSE, immediate = FALSE)
 	#warn impl
