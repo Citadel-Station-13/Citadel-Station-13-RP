@@ -47,11 +47,10 @@
 		return
 	if(is_open_container())
 		to_chat(user, SPAN_NOTICE("You put the cap on \the [src]."))
-		atom_flags ^= OPENCONTAINER
+		reagents.set_considered_open(FALSE)
 	else
 		to_chat(user, SPAN_NOTICE("You put the cap off of \the [src]."))
-		atom_flags |= OPENCONTAINER
-
+		reagents.set_considered_open(TRUE)
 
 /obj/item/reagent_containers/cartridge/dispenser/large
 	name = "large dispenser cartridge"
