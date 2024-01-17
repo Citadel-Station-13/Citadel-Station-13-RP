@@ -28,9 +28,9 @@
 	icon_state = "black"
 	permeability_coefficient = 0.05
 
-	cold_protection = HANDS
+	cold_protection_cover = HANDS
 	min_cold_protection_temperature = GLOVES_MIN_COLD_PROTECTION_TEMPERATURE
-	heat_protection = HANDS
+	heat_protection_cover = HANDS
 	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROTECTION_TEMPERATURE
 
 /obj/item/clothing/gloves/orange
@@ -84,9 +84,9 @@
 	icon_state = "evening_gloves"
 	addblends = "evening_gloves_a"
 
-	cold_protection = HANDS
+	cold_protection_cover = HANDS
 	min_cold_protection_temperature = GLOVES_MIN_COLD_PROTECTION_TEMPERATURE
-	heat_protection = HANDS
+	heat_protection_cover = HANDS
 	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROTECTION_TEMPERATURE
 
 /obj/item/clothing/gloves/fingerless

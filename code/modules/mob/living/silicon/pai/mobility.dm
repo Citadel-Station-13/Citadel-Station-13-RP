@@ -71,7 +71,9 @@
 			var/mob/living/carbon/human/H = holder
 			for(var/obj/item/organ/external/affecting in H.organs)
 				if(shell in affecting.implants)
-					affecting.take_damage(rand(30,50))
+					affecting.inflict_bodypart_damage(
+						brute = rand(30, 50),
+					)
 					affecting.implants -= shell
 					H.visible_message("<span class='danger'>\The [src] explodes out of \the [H]'s [affecting.name] in shower of gore!</span>")
 					break

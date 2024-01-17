@@ -61,7 +61,7 @@
 	inv_hide_flags = HIDEFACE
 	body_cover_flags = HEAD
 	armor_type = /datum/armor/cult/robes
-	cold_protection = HEAD
+	cold_protection_cover = HEAD
 	min_cold_protection_temperature = SPACE_HELMET_MIN_COLD_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL

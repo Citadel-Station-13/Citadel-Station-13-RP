@@ -162,27 +162,39 @@
 			if (prob(50) && !shielded)
 				afflict_unconscious(20 * 10)
 
-	var/update = 0
 
 	// focus most of the blast on one organ
 	var/obj/item/organ/external/take_blast = pick(organs)
-	update |= take_blast.take_damage(b_loss * 0.9, f_loss * 0.9, used_weapon = "Explosive blast")
+	take_blast.inflict_bodypart_damage(
+		brute = b_loss * 0.9,
+		burn = f_loss * 0.9,
+		weapon_descriptor = "concussive force",
+	)
 
 	// distribute the remaining 10% on all limbs equally
 	b_loss *= 0.1
 	f_loss *= 0.1
 
-	var/weapon_message = "Explosive Blast"
-
 	for(var/obj/item/organ/external/temp in organs)
 		switch(temp.organ_tag)
 			if(BP_HEAD)
-				update |= temp.take_damage(b_loss * 0.2, f_loss * 0.2, used_weapon = weapon_message)
+				temp.inflict_bodypart_damage(
+					brute = b_loss * 0.2,
+					burn = f_loss * 0.2,
+					weapon_descriptor = "concussive force",
+				)
 			if(BP_TORSO)
-				update |= temp.take_damage(b_loss * 0.4, f_loss * 0.4, used_weapon = weapon_message)
+				temp.inflict_bodypart_damage(
+					brute = b_loss * 0.4,
+					burn = f_loss * 0.4,
+					weapon_descriptor = "concussive force",
+				)
 			else
-				update |= temp.take_damage(b_loss * 0.05, f_loss * 0.05, used_weapon = weapon_message)
-	if(update)	UpdateDamageIcon()
+				temp.inflict_bodypart_damage(
+					brute = b_loss * 0.05,
+					burn = f_loss * 0.05,
+					weapon_descriptor = "concussive force",
+				)
 
 /mob/living/carbon/human/proc/implant_loyalty(override = FALSE) // Won't override by default.
 	if(!config_legacy.use_loyalty_implants && !override) return // Nuh-uh.
@@ -1025,10 +1037,14 @@
 			"<span class='warning'>Your movement jostles [O] in your [organ.name] painfully.</span>")
 		custom_pain(msg, 40)
 	if(istype(O, /obj/item/melee/spike))
-		organ.take_damage(rand(3,9), 0, 0) // it has spikes on it it's going to stab you
+		organ.inflict_bodypart_damage(
+			brute = rand(3, 9),
+		)
 		to_chat(src, "<span class='danger'>The edges of [O] in your [organ.name] are not doing you any favors.</span>")
 		afflict_paralyze(20 * 2) // having a very jagged stick jammed into your bits is Bad for your health
-	organ.take_damage(rand(1,3), 0, 0)
+	organ.inflict_bodypart_damage(
+		brute = rand(1, 3),
+	)
 	if(!(organ.robotic >= ORGAN_ROBOT) && (should_have_organ(O_HEART))) //There is no blood in protheses.
 		organ.status |= ORGAN_BLEEDING
 

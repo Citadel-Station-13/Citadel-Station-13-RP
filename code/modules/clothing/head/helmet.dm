@@ -7,9 +7,9 @@
 	restricted_accessory_slots = ACCESSORY_SLOT_HELM_C|ACCESSORY_SLOT_HELM_R
 	armor_type = /datum/armor/station/medium
 	inv_hide_flags = HIDEEARS|BLOCKHEADHAIR
-	cold_protection = HEAD
+	cold_protection_cover = HEAD
 	min_cold_protection_temperature = HELMET_MIN_COLD_PROTECTION_TEMPERATURE
-	heat_protection = HEAD
+	heat_protection_cover = HEAD
 	max_heat_protection_temperature = HELMET_MAX_HEAT_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0.7
 	w_class = ITEMSIZE_NORMAL
@@ -122,7 +122,7 @@
 	light_overlay = "helmet_light_dual_green"
 	action_button_name = "Toggle Head-light"
 	min_cold_protection_temperature = T0C - 20
-	cold_protection = HEAD
+	cold_protection_cover = HEAD
 
 /obj/item/clothing/head/helmet/swat
 	name = "\improper SWAT helmet"
@@ -130,7 +130,7 @@
 	icon_state = "swat"
 	armor_type = /datum/armor/centcom/deathsquad
 	inv_hide_flags = HIDEEARS|HIDEEYES|BLOCKHEADHAIR
-	cold_protection = HEAD
+	cold_protection_cover = HEAD
 	min_cold_protection_temperature = SPACE_HELMET_MIN_COLD_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0.5
 	encumbrance = ITEM_ENCUMBRANCE_ARMOR_HEAVY_HELMET
@@ -153,7 +153,7 @@
 	desc = "<i>'Let the battle commence!'</i>"
 	icon_state = "thunderdome"
 	armor_type = /datum/armor/thunderdome
-	cold_protection = HEAD
+	cold_protection_cover = HEAD
 	min_cold_protection_temperature = SPACE_HELMET_MIN_COLD_PROTECTION_TEMPERATURE
 	siemens_coefficient = 1
 
@@ -205,7 +205,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "head_m", SLOT_ID_LEFT_HAND = "head_m")
 	armor_type = /datum/armor/head/augment_helmet
 	inv_hide_flags = HIDEEARS|HIDEEYES|BLOCKHEADHAIR
-	cold_protection = HEAD
+	cold_protection_cover = HEAD
 	min_cold_protection_temperature = SPACE_HELMET_MIN_COLD_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0.5
 	valid_accessory_slots = null

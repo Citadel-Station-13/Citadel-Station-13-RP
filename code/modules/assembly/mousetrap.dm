@@ -35,10 +35,9 @@
 				if(!H.gloves)
 					affecting = H.get_organ(type)
 					H.afflict_stun(20 * 3)
-		if(affecting)
-			if(affecting.take_damage(1, 0))
-				H.UpdateDamageIcon()
-			H.update_health()
+		affecting?.inflict_bodypart_damage(
+			brute = 1,
+		)
 	else if(ismouse(target))
 		var/mob/living/simple_mob/animal/passive/mouse/M = target
 		visible_message("<font color='red'><b>SPLAT!</b></font>")

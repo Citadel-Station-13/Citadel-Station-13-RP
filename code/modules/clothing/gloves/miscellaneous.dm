@@ -18,9 +18,9 @@
 	item_state = "black"
 	permeability_coefficient = 0.05
 
-	cold_protection = HANDS
+	cold_protection_cover = HANDS
 	min_cold_protection_temperature = GLOVES_MIN_COLD_PROTECTION_TEMPERATURE
-	heat_protection = HANDS
+	heat_protection_cover = HANDS
 	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROTECTION_TEMPERATURE
 
 /obj/item/clothing/gloves/swat
@@ -30,9 +30,9 @@
 	item_state = "swat"
 	siemens_coefficient = 0.50
 	permeability_coefficient = 0.05
-	cold_protection = HANDS
+	cold_protection_cover = HANDS
 	min_cold_protection_temperature = GLOVES_MIN_COLD_PROTECTION_TEMPERATURE
-	heat_protection = HANDS
+	heat_protection_cover = HANDS
 	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROTECTION_TEMPERATURE
 
 /obj/item/clothing/gloves/combat //Combined effect of SWAT gloves and insulated gloves
@@ -42,9 +42,9 @@
 	item_state = "swat"
 	siemens_coefficient = 0
 	permeability_coefficient = 0.05
-	cold_protection = HANDS
+	cold_protection_cover = HANDS
 	min_cold_protection_temperature = GLOVES_MIN_COLD_PROTECTION_TEMPERATURE
-	heat_protection = HANDS
+	heat_protection_cover = HANDS
 	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROTECTION_TEMPERATURE
 	armor_type = /datum/armor/gloves/combat
 
@@ -122,9 +122,9 @@
 	drop_sound = 'sound/items/drop/metalboots.ogg'
 	pickup_sound = 'sound/items/pickup/toolbox.ogg'
 
-	cold_protection = HANDS
+	cold_protection_cover = HANDS
 	min_cold_protection_temperature = GLOVES_MIN_COLD_PROTECTION_TEMPERATURE
-	heat_protection = HANDS
+	heat_protection_cover = HANDS
 	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROTECTION_TEMPERATURE
 
 /obj/item/clothing/gloves/knuckledusters
@@ -218,7 +218,7 @@
 	desc = "A series of armwraps. Makes you pretty keen to start punching people."
 	icon_state = "armwraps"
 	body_cover_flags = ARMS
-	cold_protection = ARMS
+	cold_protection_cover = ARMS
 	strip_delay = 300 //you can't just yank them off
 	obj_flags = UNIQUE_RENAME
 	/// did you ever get around to wearing these or no
@@ -447,7 +447,7 @@
 	item_state = "mauler_gauntlets"
 	transfer_prints = FALSE
 	body_cover_flags = ARMS|HANDS
-	cold_protection = ARMS|HANDS
+	cold_protection_cover = ARMS|HANDS
 	min_cold_protection_temperature = GLOVES_MIN_TEMP_PROTECT
 	max_heat_protection_temperature = GLOVES_MAX_TEMP_PROTECT
 	armor = list("melee" = 30, "bullet" = 30, "laser" = 10, "energy" = 10, "bomb" = 55, "bio" = 15, "rad" = 15, "fire" = 80, "acid" = 50)
@@ -490,7 +490,7 @@
 	icon_state = "tackle"
 	item_state = "tackle"
 	transfer_prints = TRUE
-	cold_protection = HANDS
+	cold_protection_cover = HANDS
 	min_cold_protection_temperature = GLOVES_MIN_TEMP_PROTECT
 	resistance_flags = NONE
 	//custom_premium_price = PRICE_EXPENSIVE
@@ -549,9 +549,9 @@
 	tackle_range = 5
 	skill_mod = 3
 
-	cold_protection = HANDS
+	cold_protection_cover = HANDS
 	min_cold_protection_temperature = GLOVES_MIN_TEMP_PROTECT
-	heat_protection = HANDS
+	heat_protection_cover = HANDS
 	max_heat_protection_temperature = GLOVES_MAX_TEMP_PROTECT
 	resistance_flags = NONE
 	strip_mod = 1.2 // because apparently black gloves had this
@@ -634,8 +634,8 @@
 	desc = "For when you're expecting to get slapped on the wrist. Offers modest protection to your arms."
 	icon_state = "bracers"
 	body_cover_flags = ARMS
-	cold_protection = HANDS
-	heat_protection = HANDS
+	cold_protection_cover = HANDS
+	heat_protection_cover = HANDS
 	armor_type = /datum/armor/general/bone
 
 /obj/item/clothing/gloves/hasie
@@ -648,7 +648,7 @@
 	name = "Utility Fur Gloves"
 	desc = "Warm fur gloves to match the Utility Fur coat."
 	icon_state = "furug"
-	cold_protection = HANDS
+	cold_protection_cover = HANDS
 	min_cold_protection_temperature = GLOVES_MIN_COLD_PROTECTION_TEMPERATURE
 
 /obj/item/clothing/gloves/darkcleric

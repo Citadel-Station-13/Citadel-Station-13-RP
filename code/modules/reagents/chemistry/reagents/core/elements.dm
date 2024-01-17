@@ -54,10 +54,10 @@
 	color = "#d1db77"
 
 /datum/reagent/chlorine/affect_blood(mob/living/carbon/M, alien, removed)
-	M.take_organ_damage(1*REM, 0)
+	M.take_random_targeted_damage(brute = 1*REM, brute = 0)
 
 /datum/reagent/chlorine/affect_touch(mob/living/carbon/M, alien, removed)
-	M.take_organ_damage(1*REM, 0)
+	M.take_random_targeted_damage(brute = 1*REM, brute = 0)
 
 /datum/reagent/copper
 	name = "Copper"

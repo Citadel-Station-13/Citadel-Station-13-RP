@@ -28,7 +28,7 @@
 			var/mob/living/carbon/human/H = user
 			H.apply_damage(2*damage_force, BRUTE, BP_HEAD)
 		else
-			L.take_organ_damage(2*damage_force)
+			L.take_random_targeted_damage(brute = 2*damage_force)
 		return
 	return ..()
 
@@ -106,7 +106,7 @@
 				H.apply_damage(2*damage_force, BRUTE, BP_HEAD)
 			else if(isliving(user))
 				var/mob/living/L = user
-				L.take_organ_damage(2*damage_force)
+				L.take_random_targeted_damage(brute = 2*damage_force)
 			return
 		var/old_damtype = damtype
 		var/old_attack_verb = attack_verb

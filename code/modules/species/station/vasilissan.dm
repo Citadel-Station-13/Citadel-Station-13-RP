@@ -82,7 +82,7 @@
 		/datum/unarmed_attack/bite/sharp/numbing,
 	)
 
-/datum/species/vasilissan/handle_environment_special(mob/living/carbon/human/H)
+/datum/species/vasilissan/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
 	if(H.stat == DEAD) // If they're dead they won't need anything.
 		return
 
