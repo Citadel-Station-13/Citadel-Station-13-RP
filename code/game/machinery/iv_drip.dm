@@ -182,7 +182,11 @@
 		to_chat(attached_victim, SPAN_USERDANGER("The IV drip needle is ripped out of you, leaving an open bleeding wound!"))
 		var/list/arm_zones = shuffle(list(BP_R_ARM, BP_L_ARM))
 		var/obj/item/organ/external/chosen_limb = attached_victim.get_organ(arm_zones[1]) || attached_victim.get_organ(arm_zones[2]) || attached_victim.get_organ(BP_TORSO)
-		chosen_limb.take_damage(3)
+		chosen_limb.inflict_bodypart_damage(
+			brute = 3,
+			damage_mode = DAMAGE_MODE_SHARP,
+			weapon_descriptor = "a needle",
+		)
 		chosen_limb.create_wound(CUT, 5)
 		detach_iv()
 		return PROCESS_KILL

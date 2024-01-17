@@ -3485,16 +3485,16 @@
 /area/awaymission/labs/solars)
 "kp" = (
 /obj/item/clothing/suit/space/void/security{
-	cold_protection = 1;
+	cold_protection_cover = 1;
 	desc = "A suit specially designed for Sogun anatomy, as well as operation in high-temperature environments. Has sunray shielding.";
-	heat_protection = 3000;
+	heat_protection_cover = 3000;
 	icon_state = "rig-soghun";
 	item_state = "rig-soghun";
 	name = "Soghun Hardsuit"
 	},
 /obj/item/clothing/head/helmet/space/void/security{
 	desc = "A special helmet designed for the Soghun anatomy, as well as work in a hazardous, high-temperature environment. Has sunray shielding.";
-	heat_protection = 3000;
+	heat_protection_cover = 3000;
 	name = "Soghun Suit Helmet"
 	},
 /obj/item/clothing/mask/breath,
@@ -4555,16 +4555,16 @@
 /area/awaymission/labs/civilian)
 "mW" = (
 /obj/item/clothing/suit/space/void/security{
-	cold_protection = 1;
+	cold_protection_cover = 1;
 	desc = "A suit specially designed for Sogun anatomy, as well as operation in high-temperature environments. Has sunray shielding.";
-	heat_protection = 3000;
+	heat_protection_cover = 3000;
 	icon_state = "rig-soghun";
 	item_state = "rig-soghun";
 	name = "Soghun Hardsuit"
 	},
 /obj/item/clothing/head/helmet/space/void/security{
 	desc = "A special helmet designed for the Soghun anatomy, as well as work in a hazardous, high-temperature environment. Has sunray shielding.";
-	heat_protection = 3000;
+	heat_protection_cover = 3000;
 	name = "Soghun Suit Helmet"
 	},
 /obj/item/clothing/mask/breath,
@@ -4761,16 +4761,16 @@
 /area/awaymission/labs/cave)
 "nC" = (
 /obj/item/clothing/suit/space/void/security{
-	cold_protection = 1;
+	cold_protection_cover = 1;
 	desc = "A suit specially designed for Sogun anatomy, as well as operation in high-temperature environments. Has sunray shielding.";
-	heat_protection = 3000;
+	heat_protection_cover = 3000;
 	icon_state = "rig-soghun";
 	item_state = "rig-soghun";
 	name = "Soghun Hardsuit"
 	},
 /obj/item/clothing/head/helmet/space/void/security{
 	desc = "A special helmet designed for the Soghun anatomy, as well as work in a hazardous, high-temperature environment. Has sunray shielding.";
-	heat_protection = 3000;
+	heat_protection_cover = 3000;
 	name = "Soghun Suit Helmet"
 	},
 /obj/item/clothing/mask/breath,

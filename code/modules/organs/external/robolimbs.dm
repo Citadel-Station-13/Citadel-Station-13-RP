@@ -44,7 +44,16 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	uwu=cyber_uwu;\
 	question=cyber_question;\
 	lowpower=cyber_lowpower;\
-	idle=cyber_idle"
+	idle=cyber_idle;\
+	catface=cyber_catface;\
+	eyes_normal=cyber_eyes_normal;\
+	eyes_happy=cyber_eyes_happy;\
+	eyes_sad=cyber_eyes_sad;\
+	eyes_big=cyber_eyes_big;\
+	confounded=cyber_confounded;\
+	eyes_confounded=cyber_eyes_confounded;\
+	halffrown=cyber_halffrown;\
+	angry=cyber_angry"
 
 /proc/populate_robolimb_list()
 	GLOB.basic_robolimb = new()
@@ -491,6 +500,10 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	unavailable_to_build = TRUE
 	parts = list(BP_HEAD)
 	monitor_styles = cyberbeast_monitor_styles
+
+/datum/robolimb/cyber_beast/flat
+	company = "Cyber Tech (Flat)"
+	icon = 'icons/mob/cyberlimbs/c-tech/c_beast_flat.dmi'
 
 /datum/robolimb/wooden
 	company = "Morgan Trading Co"

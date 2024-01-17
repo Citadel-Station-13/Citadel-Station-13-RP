@@ -133,11 +133,11 @@
 				if(affecting)
 					if(affecting.robotic >= ORGAN_ROBOT)
 						return
-					if(affecting.take_damage(damage_force, 0))
-						H.UpdateDamageIcon()
-					H.update_health()
+					affecting.inflict_bodypart_damage(
+						brute = damage_force,
+					)
 					if(affecting.organ_can_feel_pain())
-						H.afflict_paralyze(20 * 3)
+						H.afflict_paralyze(20 * 2)
 					return
 				check -= picked
 			return

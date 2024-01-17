@@ -3,7 +3,7 @@
 	desc = "A Hegemony-designed utilitarian environment suit helmet, still common among the Spacer Zaddat."
 	icon_state = "zaddat_hegemony"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndicate", SLOT_ID_LEFT_HAND = "syndicate")
-	heat_protection = HEAD
+	heat_protection_cover = HEAD
 	body_cover_flags = HEAD|FACE|EYES
 	armor_type = /datum/armor/zaddat
 	siemens_coefficient = 1

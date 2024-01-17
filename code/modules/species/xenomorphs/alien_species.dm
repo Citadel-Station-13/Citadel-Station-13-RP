@@ -113,19 +113,15 @@
 
 	..()
 
-/datum/species/xenos/handle_environment_special(var/mob/living/carbon/human/H)
+/datum/species/xenos/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
+	if(!environment)
+		return
 
-	var/turf/T = H.loc
-	if(!T) return
-	var/datum/gas_mixture/environment = T.return_air()
-	if(!environment) return
-
-	if(environment.gas[GAS_ID_PHORON] > 0 || locate(/obj/structure/alien/weeds) in T)
+	if(environment.gas[GAS_ID_PHORON] > 0 || locate(/obj/structure/alien/weeds) in get_turf(H))
 		if(!regenerate(H))
 			var/obj/item/organ/internal/xenos/plasmavessel/P = H.internal_organs_by_name[O_PLASMA]
 			P.stored_plasma += weeds_plasma_rate
 			P.stored_plasma = min(max(P.stored_plasma,0),P.max_plasma)
-	..()
 
 /datum/species/xenos/proc/regenerate(var/mob/living/carbon/human/H)
 	var/heal_rate = weeds_heal_rate

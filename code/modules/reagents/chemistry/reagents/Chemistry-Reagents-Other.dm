@@ -495,7 +495,7 @@
 	scannable = 1
 
 /datum/reagent/defective_nanites/affect_blood(mob/living/carbon/M, alien, removed)
-	M.take_organ_damage(2 * removed, 2 * removed)
+	M.take_random_targeted_damage(brute = 2 * removed, brute = 2 * removed)
 	M.adjustOxyLoss(4 * removed)
 	M.adjustToxLoss(2 * removed)
 	M.adjustCloneLoss(2 * removed)

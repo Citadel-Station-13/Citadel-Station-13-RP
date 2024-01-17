@@ -151,6 +151,8 @@
 	item_flags |= ITEM_IN_INVENTORY
 	// TODO: THIS IS SHITCODE, MOVE TO EVENT DRIVEN.
 	user.handle_actions()
+	// todo: should this be here
+	transform = null
 	if(isturf(oldLoc) && !(flags & (INV_OP_SILENT | INV_OP_DIRECTLY_EQUIPPING)))
 		playsound(src, pickup_sound, 20, ignore_walls = FALSE)
 
