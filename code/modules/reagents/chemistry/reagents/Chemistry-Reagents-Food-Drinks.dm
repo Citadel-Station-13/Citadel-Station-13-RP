@@ -7,7 +7,7 @@
 	taste_mult = 4
 	reagent_state = REAGENT_SOLID
 	bloodstream_metabolism_multiplier = 4
-	ingest_met = REM * 4
+	ingested_metabolism_multiplier = 4
 	var/nutriment_factor = 30 // Per unit
 	var/hydration_factor = 0 //Per unit
 	var/injectable = 0

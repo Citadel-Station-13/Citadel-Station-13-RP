@@ -5,7 +5,7 @@
 /// Splashed, touched, sprayed, etc
 #define REAGENT_APPLY_SKIN (1<<0)
 /// Patches, etc. Implied to be partially hypodermic, and at least apply more effectively.
-#define REAGENT_APPLY_PATCH (1<<1)
+#define REAGENT_APPLY_DERMAL (1<<1)
 /// Eaten, drunk, etc
 #define REAGENT_APPLY_INGEST (1<<2)
 /// Injected into bloodstream or equivalent

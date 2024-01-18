@@ -11,6 +11,9 @@
 	dermal_absorption_multiplier = 0
 	dermal_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 	dermal_overdose_toxin_scaling = 0.5
+	dermal_metabolism_multiplier = 1
+
+	ingested_metabolism_multiplier = 0
 
 	bloodstream_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 	bloodstream_overdose_toxin_scaling = 1

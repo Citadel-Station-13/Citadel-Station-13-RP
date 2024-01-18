@@ -10,6 +10,8 @@
 	var/added_time
 	/// cycles this has been in someone
 	var/cycles = 0
+	/// current effective dose, usually just the amount in someone
+	var/dose
 
 	//* Overdosing
 	/// currently overdosing

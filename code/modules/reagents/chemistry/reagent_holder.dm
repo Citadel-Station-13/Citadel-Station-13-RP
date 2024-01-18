@@ -853,4 +853,4 @@
  * A carbon mob external organ's skin holder. Pretty much only used for hypodermic patch medications.
  */
 /datum/reagent_holder/metabolism/dermal
-	application = REAGENT_APPLY_PATCH
+	application = REAGENT_APPLY_DERMAL

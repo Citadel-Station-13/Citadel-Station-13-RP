@@ -65,9 +65,13 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	/// multiplier to units metabolized, base.
 	var/bloodstream_metabolism_multiplier = 1
 	/// multiplier to units metabolized, base.
-	var/ingested_metabolism_multiplier = 1
+	///
+	/// you must set this for metabolism; by default, chemicals just get absorbed into blood and eliminated over time.
+	var/ingested_metabolism_multiplier = 0
 	/// multiplier to units metabolized, base.
-	var/dermal_metabolism_multiplier = 1
+	///
+	/// you must set this for metabolism; by default, chemicals just get absorbed into blood and eliminated over time.
+	var/dermal_metabolism_multiplier = 0
 
 	/// relative ease of reagent being absorbed into bloodstream from ingested
 	var/ingested_absorption_multiplier = 1

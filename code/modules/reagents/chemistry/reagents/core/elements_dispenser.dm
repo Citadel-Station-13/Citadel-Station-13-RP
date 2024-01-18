@@ -26,6 +26,7 @@
 	taste_mult = 1.5
 	reagent_state = REAGENT_SOLID
 	color = "#1C1300"
+	ingested_metabolism_multiplier = 1
 
 /datum/reagent/carbon/on_metabolize_ingested(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed, obj/item/organ/internal/container)
 	. = ..()
@@ -110,6 +111,7 @@
 	taste_description = "metal"
 	reagent_state = REAGENT_SOLID
 	color = "#353535"
+	ingested_metabolism_multiplier = 1
 
 /datum/reagent/iron/on_metabolize_ingested(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed, obj/item/organ/internal/container)
 	. = ..()

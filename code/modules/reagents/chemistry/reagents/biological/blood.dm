@@ -5,8 +5,8 @@
 	taste_mult = 1.3
 	reagent_state = REAGENT_LIQUID
 	bloodstream_metabolism_multiplier = 5
-	mrate_static = TRUE
-	affects_dead = 1 //so you can pump blood into someone before defibbing them
+	ingested_metabolism_multiplier = 1
+	metabolize_while_dead = TRUE
 	color = "#A10808"
 	blood_content = 4 //How effective this is for vampires.
 
