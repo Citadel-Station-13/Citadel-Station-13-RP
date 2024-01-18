@@ -147,6 +147,9 @@
 	/// force world to be bigger height
 	var/world_height
 
+	/// possible ending typepaths, if none, we default to /datum/map_finale/end_the_shift
+	var/list/datum/map_finale/finales
+
 	//! legacy below
 
 	var/full_name = "Unnamed Map"

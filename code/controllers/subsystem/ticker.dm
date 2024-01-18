@@ -4,6 +4,16 @@ SUBSYSTEM_DEF(ticker)
 	init_order = INIT_ORDER_TICKER
 	runlevels = RUNLEVEL_LOBBY | RUNLEVEL_SETUP | RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 
+	//* Finales
+	/// registered map finales
+	//  todo: no static, have Recover() behavior
+	var/static/list/datum/map_finale/map_finales = list()
+	/// active map finales
+	//  todo: no static, have Recover() behavior
+	var/static/list/datum/map_finale/called_finales = list()
+
+	//* Legacy
+
 	/// Current state of the game
 	var/static/current_state = GAME_STATE_INIT
 
@@ -78,6 +88,18 @@ SUBSYSTEM_DEF(ticker)
 
 	return ..()
 
+//* legacy above
+
+//* Finales
+
+/datum/controller/subsystem/ticker/proc/register_finale(datum/map_finale/instance)
+	#warn impl
+
+/datum/controller/subsystem/ticker/proc/unregister_finale(datum/map_finale/instance)
+	#warn impl
+
+//* legacy below
+
 /datum/controller/subsystem/ticker/fire()
 	switch(current_state)
 		if(GAME_STATE_INIT)
@@ -120,6 +142,16 @@ SUBSYSTEM_DEF(ticker)
 
 				SSdbcore.SetRoundEnd()
 				SSpersistence.SavePersistence()
+
+	// prep
+	var/dt = SUBSYSTEM_FIRE_COMPUTE_DT
+	// process finales
+	for(var/datum/map_finale/finale in map_finales)
+		if(!finale.requires_constant_ticking)
+			continue
+		finale.idle_tick(dt)
+	for(var/datum/map_finale/finale in called_finales)
+		finale.active_tick(dt)
 
 
 /datum/controller/subsystem/ticker/proc/on_mc_init_finish()
