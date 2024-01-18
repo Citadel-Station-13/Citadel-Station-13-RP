@@ -161,9 +161,6 @@
 	w_class = ITEMSIZE_TINY
 	allowed = list(/obj/item/gun,/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/melee/baton)
 
-
-
-
 //Roach Types
 /obj/item/holder/roach
 	w_class = ITEMSIZE_TINY
