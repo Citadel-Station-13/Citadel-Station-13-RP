@@ -117,7 +117,7 @@
 		get_asset_datum(/datum/asset/spritesheet/pipes),
 	)
 
-/obj/item/pipe_dispenser/ui_state(mob/user, datum/tgui_module/module)
+/obj/item/pipe_dispenser/ui_state()
 	return GLOB.inventory_state
 
 /obj/item/pipe_dispenser/ui_interact(mob/user, datum/tgui/ui)
@@ -127,11 +127,11 @@
 		ui = new(user, src, "RapidPipeDispenser", name)
 		ui.open()
 
-/obj/item/pipe_dispenser/ui_static_data(mob/user)
+/obj/item/pipe_dispenser/ui_static_data(mob/user, datum/tgui/ui)
 	var/list/data = list("paint_colors" = GLOB.pipe_paint_colors)
 	return data
 
-/obj/item/pipe_dispenser/ui_data(mob/user)
+/obj/item/pipe_dispenser/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list(
 		"category" = category,
 		"piping_layer" = piping_layer,
@@ -165,7 +165,7 @@
 	data["init_directions"] = init_directions
 	return data
 
-/obj/item/pipe_dispenser/ui_act(action, params)
+/obj/item/pipe_dispenser/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return

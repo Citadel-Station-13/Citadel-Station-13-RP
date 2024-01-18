@@ -210,7 +210,7 @@
 	var/obj/item/organ/external/E = H.get_organ(BP_TORSO)
 	return E.brute_dam + E.burn_dam
 
-/datum/species/protean/handle_environment_special(var/mob/living/carbon/human/H)
+/datum/species/protean/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
 	if((getActualDamage(H) > damage_to_blob) && isturf(H.loc)) //So, only if we're not a blob (we're in nullspace) or in someone (or a locker, really, but whatever).
 		H.nano_intoblob()
 		return ..() //Any instakill shot runtimes since there are no organs after this. No point to not skip these checks, going to nullspace anyway.

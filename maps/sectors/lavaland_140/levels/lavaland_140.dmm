@@ -56,6 +56,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
+"bT" = (
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/central/base/common)
 "ch" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -69,6 +75,10 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/outdoors/lava/lavaland,
 /area/lavaland/central/explored)
+"cl" = (
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/wood,
+/area/lavaland/central/base/common)
 "cF" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 4
@@ -297,8 +307,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
-/obj/machinery/firealarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -26
 	},
 /turf/simulated/floor/wood,
@@ -402,8 +411,7 @@
 	pixel_y = -23;
 	req_one_access = list(48)
 	},
-/obj/machinery/firealarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -26
 	},
 /obj/structure/ore_box,
@@ -415,11 +423,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/firealarm{
-	dir = 4;
-	layer = 3.3;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "km" = (
@@ -517,8 +521,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /turf/simulated/floor/plating,
@@ -565,9 +568,7 @@
 /area/lavaland/central/base/common)
 "nr" = (
 /obj/effect/debris/cleanable/dirt,
-/obj/machinery/firealarm{
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "nx" = (
@@ -666,8 +667,7 @@
 "oM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/firealarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -26
 	},
 /turf/simulated/floor/tiled,
@@ -800,9 +800,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
-/obj/machinery/firealarm{
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "qw" = (
@@ -843,8 +841,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled,
@@ -905,11 +902,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
-/obj/machinery/firealarm{
-	dir = 4;
-	layer = 3.3;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/tiled/old_tile,
 /area/lavaland/central/base/common)
 "rR" = (
@@ -932,6 +925,12 @@
 	},
 /turf/simulated/floor/outdoors/lava/lavaland,
 /area/lavaland/central/explored)
+"sc" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled,
+/area/lavaland/central/base/common)
 "so" = (
 /obj/machinery/atmospherics/portables_connector{
 	dir = 1
@@ -951,8 +950,7 @@
 /area/lavaland/central/explored)
 "sN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/firealarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -26
 	},
 /turf/simulated/floor/tiled,
@@ -1066,10 +1064,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
@@ -1082,6 +1077,18 @@
 	dir = 4
 	},
 /turf/simulated/floor/carpet/blucarpet,
+/area/lavaland/central/base/common)
+"vS" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
 /area/lavaland/central/base/common)
 "vW" = (
 /obj/structure/table/standard,
@@ -1555,10 +1562,6 @@
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/central/unexplored)
 "FF" = (
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 1;
-	req_one_access = list(48)
-	},
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 4;
 	name = "Dorms";
@@ -1569,6 +1572,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
@@ -1654,14 +1660,13 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/lavaland/central/base/common)
 "GT" = (
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 1;
-	req_one_access = list(48)
-	},
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 4;
 	name = "Lounge";
 	req_access = list(1,5,31,38,47,48)
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/wood,
 /area/lavaland/central/base/common)
@@ -1968,13 +1973,11 @@
 /turf/simulated/floor/wood,
 /area/lavaland/central/base/common)
 "NN" = (
-/obj/machinery/door/firedoor/multi_tile{
-	req_one_access = list(48)
-	},
 /obj/machinery/door/airlock/multi_tile/glass{
 	name = "Lounge";
 	req_one_access = list(1,5,31,38,47,48)
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/wood,
 /area/lavaland/central/base/common)
 "NV" = (
@@ -2056,13 +2059,11 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/lavaland/central/base/common)
 "Pk" = (
-/obj/machinery/door/firedoor/multi_tile{
-	req_one_access = list(48)
-	},
 /obj/machinery/door/airlock/multi_tile/glass{
 	name = "Logistics";
 	req_one_access = list(1,5,31,38,47,48)
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "Pr" = (
@@ -2239,10 +2240,8 @@
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "SN" = (
-/obj/machinery/power/apc{
-	cell_type = /obj/item/cell/infinite;
-	name = "south bump";
-	pixel_y = -28
+/obj/machinery/power/apc/south_mount{
+	cell_type = /obj/item/cell/infinite
 	},
 /turf/simulated/floor/tiled/dark/lavaland,
 /area/lavaland/central/transit)
@@ -8090,7 +8089,7 @@ XQ
 HB
 HB
 HB
-HB
+cl
 AJ
 Bs
 ew
@@ -8370,7 +8369,7 @@ vA
 AO
 AO
 AO
-wN
+vS
 GT
 db
 db
@@ -8946,7 +8945,7 @@ Zw
 AA
 Wh
 AO
-ew
+bT
 FF
 AO
 AO
@@ -9366,7 +9365,7 @@ EX
 db
 Jl
 nE
-nE
+sc
 nE
 pn
 nE

@@ -219,7 +219,7 @@
 		else if(dead_fish > 0)
 			to_chat(user, SPAN_WARNING("The fish are all dead!"))
 
-/obj/structure/aquarium/ui_data(mob/user)
+/obj/structure/aquarium/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["fluid_type"] = fluid_type
 	.["temperature"] = fluid_temp
@@ -229,7 +229,7 @@
 		content_data += list(list("name"=fish.name,"ref"=ref(fish)))
 	.["contents"] = content_data
 
-/obj/structure/aquarium/ui_static_data(mob/user)
+/obj/structure/aquarium/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	//I guess these should depend on the fluid so lava critters can get high or stuff below water freezing point but let's keep it simple for now.
 	.["minTemperature"] = min_fluid_temp

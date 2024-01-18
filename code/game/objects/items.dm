@@ -22,6 +22,12 @@
 	/// flags for the bodyparts this item covers when worn.
 	/// These flags are listed in [code/__DEFINES/inventory/item_flags.dm].
 	var/body_cover_flags = NONE
+	/// Flags which determine which body parts are protected from heat. Use the HEAD, UPPER_TORSO, LOWER_TORSO, etc. flags. See setup.dm
+	/// These flags are listed in [code/__DEFINES/inventory/item_flags.dm].
+	var/heat_protection_cover = NONE
+	/// Flags which determine which body parts are protected from cold. Use the HEAD, UPPER_TORSO, LOWER_TORSO, etc. flags. See setup.dm
+	/// These flags are listed in [code/__DEFINES/inventory/item_flags.dm].
+	var/cold_protection_cover = NONE
 	/// This is used to determine on which slots an item can fit, for inventory slots that use flags to determine this.
 	/// These flags are listed in [code/__DEFINES/inventory/slots.dm].
 	var/slot_flags = NONE
@@ -86,10 +92,6 @@
 	 */
 	var/list/attack_verb = "attacked"
 
-	/// Flags which determine which body parts are protected from heat. Use the HEAD, UPPER_TORSO, LOWER_TORSO, etc. flags. See setup.dm
-	var/heat_protection = 0
-	/// Flags which determine which body parts are protected from cold. Use the HEAD, UPPER_TORSO, LOWER_TORSO, etc. flags. See setup.dm
-	var/cold_protection = 0
 	/// Set this variable to determine up to which temperature (IN KELVIN) the item protects against heat damage. Keep at null to disable protection. Only protects areas set by heat_protection flags.
 	var/max_heat_protection_temperature
 	/// Set this variable to determine down to which temperature (IN KELVIN) the item protects against cold damage. 0 is NOT an acceptable number due to if(varname) tests!! Keep at null to disable protection. Only protects areas set by cold_protection flags.
@@ -243,7 +245,6 @@
 	var/turf/T = src.loc
 
 	src.loc = null
-
 	src.loc = T
 
 /// See inventory_sizes.dm for the defines.
@@ -486,7 +487,7 @@
 	else
 		playsound(src, drop_sound, 30, preference = /datum/client_preference/drop_sounds)
 
-/obj/item/throw_landed(atom/movable/AM, datum/thrownthing/TT)
+/obj/item/throw_land(atom/A, datum/thrownthing/TT)
 	. = ..()
 	if(TT.throw_flags & THROW_AT_IS_NEAT)
 		return
@@ -628,10 +629,11 @@
 				if(M.stat != 2)
 					to_chat(M, "<span class='warning'>You go blind!</span>")
 		var/obj/item/organ/external/affecting = H.get_organ(BP_HEAD)
-		if(affecting.take_damage(7))
-			M:UpdateDamageIcon()
+		affecting.inflict_bodypart_damage(
+			brute = 7,
+		)
 	else
-		M.take_organ_damage(7)
+		M.take_random_targeted_damage(brute = 7)
 	M.eye_blurry += rand(3,4)
 	return
 

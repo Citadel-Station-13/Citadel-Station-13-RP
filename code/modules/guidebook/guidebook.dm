@@ -12,14 +12,14 @@ GLOBAL_DATUM_INIT(guidebook, /datum/guidebook, new)
 	/// open instances mapped to list of ids
 	var/list/opened = list()
 
-/datum/guidebook/ui_state(mob/user, datum/tgui_module/module)
+/datum/guidebook/ui_state()
 	return GLOB.always_state
 
-/datum/guidebook/ui_close(mob/user, datum/tgui_module/module)
+/datum/guidebook/on_ui_close(mob/user, datum/tgui/ui, embedded)
 	opened -= user
 	return ..()
 
-/datum/guidebook/on_ui_transfer(mob/old_mob, mob/new_mob, datum/tgui/ui)
+/datum/guidebook/on_ui_transfer(mob/old_mob, mob/new_mob, datum/tgui/ui, embedded)
 	opened[new_mob] = opened[old_mob]
 	opened -= old_mob
 	return ..()

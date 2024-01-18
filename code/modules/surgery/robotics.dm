@@ -294,7 +294,7 @@
 	target.adjustToxLoss(5)
 	affected.create_wound(CUT, 5)
 
-	for(var/obj/item/organ/I in affected.internal_organs)
+	for(var/obj/item/organ/internal/I in affected.internal_organs)
 		if(I)
 			I.take_damage(rand(3,5),0)
 

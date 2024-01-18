@@ -344,11 +344,11 @@
 /obj/item/gps/proc/push_waypoint_data()
 	push_ui_data(data = list("waypoints" = ui_waypoint_data()))
 
-/obj/item/gps/ui_static_data(mob/user)
+/obj/item/gps/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["waypoints"] = ui_waypoint_data()
 
-/obj/item/gps/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/item/gps/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 
 	.["on"] = !!on
@@ -412,7 +412,7 @@
 			if(!tag_as)
 				return FALSE
 			var/turf/T = get_turf(src)
-			add_waypoint(tag_as, text2num(params["x"]) || T.x, text2num(params["y"]) || T.y, params["level_id"] || SSmapping.level_id(T.z))
+			add_waypoint(tag_as, text2num(params["x"]) || T.x, text2num(params["y"]) || T.y, params["level_id"] || SSmapping.fluff_level_id(T.z))
 			return FALSE // add waypoint pushes data already
 		if("del_waypoint")
 			//* RAW LOCATE IN HREF WARNING: RECEIVING PROC WILL SANITY CHECK.

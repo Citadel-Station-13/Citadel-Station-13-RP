@@ -47,18 +47,15 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/machinery/firealarm/alarms_hidden{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_st)
 "ak" = (
 /obj/structure/cable/orange{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/hyper{
+/obj/machinery/power/apc/hyper/west_mount{
 	alarms_hidden = 1;
-	dir = 8;
 	name = "Merc APC - West";
 	pixel_x = -24
 	},
@@ -125,13 +122,13 @@
 	id = "Merc_Rear_Blast";
 	name = "Blast Shield"
 	},
-/obj/machinery/door/firedoor/multi_tile,
 /obj/machinery/door/airlock/multi_tile/metal{
 	req_one_access = list(150)
 	},
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/engineering)
 "aE" = (
@@ -167,9 +164,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/machinery/firealarm/alarms_hidden{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_port)
 "aS" = (
@@ -279,8 +274,7 @@
 	name = "Syndicate-Spawn"
 	},
 /obj/item/bedsheet/hos,
-/obj/machinery/firealarm/alarms_hidden{
-	dir = 8;
+/obj/machinery/fire_alarm/alarms_hidden/west_mount{
 	pixel_x = -26
 	},
 /turf/simulated/floor/wood,
@@ -588,9 +582,8 @@
 /obj/structure/cable/orange{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/hyper{
+/obj/machinery/power/apc/hyper/north_mount{
 	alarms_hidden = 1;
-	dir = 1;
 	name = "Merc APC - North";
 	pixel_y = 24
 	},
@@ -636,9 +629,8 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/machinery/power/apc/hyper{
+/obj/machinery/power/apc/hyper/north_mount{
 	alarms_hidden = 1;
-	dir = 1;
 	name = "Merc APC - North";
 	pixel_y = 24
 	},
@@ -1258,10 +1250,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
-/obj/machinery/firealarm/alarms_hidden{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/east_mount,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -1520,10 +1509,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/recreation)
 "hH" = (
-/obj/machinery/firealarm/alarms_hidden{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/east_mount,
 /turf/simulated/floor/wood,
 /area/ship/manta/commander)
 "hL" = (
@@ -1819,9 +1805,8 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/bridge)
 "iQ" = (
-/obj/machinery/power/apc/hyper{
+/obj/machinery/power/apc/hyper/east_mount{
 	alarms_hidden = 1;
-	dir = 4;
 	name = "Merc APC - East";
 	pixel_x = 24
 	},
@@ -1903,9 +1888,8 @@
 /turf/simulated/wall/rshull,
 /area/shuttle/manta_ship_boat)
 "jg" = (
-/obj/machinery/power/apc/hyper{
+/obj/machinery/power/apc/hyper/north_mount{
 	alarms_hidden = 1;
-	dir = 1;
 	name = "Merc APC - North";
 	pixel_y = 24
 	},
@@ -2158,6 +2142,13 @@
 /obj/machinery/appliance/cooker/grill,
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/recreation)
+"kA" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled/techfloor,
+/area/ship/manta/engineering)
 "kF" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/storage/firstaid/surgery,
@@ -2332,8 +2323,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
-/obj/machinery/firealarm/alarms_hidden{
-	dir = 8;
+/obj/machinery/fire_alarm/alarms_hidden/west_mount{
 	pixel_x = -26
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -2380,7 +2370,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_aft)
 "lM" = (
-/obj/machinery/door/firedoor/multi_tile,
 /obj/machinery/door/airlock/multi_tile/glass{
 	req_one_access = list(150)
 	},
@@ -2390,6 +2379,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/bridge)
 "lO" = (
@@ -2441,9 +2431,8 @@
 	name = "Syndicate-Spawn"
 	},
 /obj/item/bedsheet/hos,
-/obj/machinery/power/apc/hyper{
+/obj/machinery/power/apc/hyper/east_mount{
 	alarms_hidden = 1;
-	dir = 4;
 	name = "Merc APC - East";
 	pixel_x = 24
 	},
@@ -2538,10 +2527,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/machinery/firealarm/alarms_hidden{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/manta_ship_boat)
 "my" = (
@@ -2594,8 +2580,7 @@
 /turf/simulated/floor/plating,
 /area/ship/manta/engine)
 "mN" = (
-/obj/machinery/firealarm/alarms_hidden{
-	dir = 8;
+/obj/machinery/fire_alarm/alarms_hidden/west_mount{
 	pixel_x = -26
 	},
 /obj/structure/bed/chair/bay/shuttle{
@@ -2697,9 +2682,8 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/machinery/power/apc/hyper{
+/obj/machinery/power/apc/hyper/east_mount{
 	alarms_hidden = 1;
-	dir = 4;
 	name = "Merc APC - East";
 	pixel_x = 24
 	},
@@ -2915,6 +2899,15 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_aft)
+"oj" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/ship/manta/armoury_st)
 "om" = (
 /obj/structure/cable/orange{
 	icon_state = "2-4"
@@ -2961,9 +2954,8 @@
 /turf/simulated/floor/plating,
 /area/ship/manta/radiator_port)
 "ov" = (
-/obj/machinery/power/apc/hyper{
+/obj/machinery/power/apc/hyper/east_mount{
 	alarms_hidden = 1;
-	dir = 4;
 	name = "Merc APC - East";
 	pixel_x = 24
 	},
@@ -3136,8 +3128,7 @@
 /area/ship/manta/hallways_star)
 "pt" = (
 /obj/structure/catwalk,
-/obj/machinery/firealarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -26
 	},
 /turf/simulated/floor/plating,
@@ -3217,9 +3208,8 @@
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 10
 	},
-/obj/machinery/power/apc/hyper{
+/obj/machinery/power/apc/hyper/east_mount{
 	alarms_hidden = 1;
-	dir = 4;
 	name = "Merc APC - East";
 	pixel_x = 24
 	},
@@ -3371,9 +3361,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_aft)
 "qK" = (
-/obj/machinery/firealarm/alarms_hidden{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/north_mount,
 /obj/effect/floor_decal/techfloor{
 	dir = 9
 	},
@@ -3388,10 +3376,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
-/obj/machinery/firealarm/alarms_hidden{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/east_mount,
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
@@ -3444,10 +3429,9 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/manta/med)
 "rl" = (
-/obj/machinery/power/apc/hyper{
+/obj/machinery/power/apc/hyper/south_mount{
 	alarms_hidden = 1;
-	name = "Merc APC - South";
-	pixel_y = -24
+	name = "Merc APC - South"
 	},
 /obj/effect/floor_decal/techfloor,
 /obj/structure/cable/orange{
@@ -3526,8 +3510,7 @@
 /area/ship/manta/hallways_aft)
 "rE" = (
 /obj/effect/floor_decal/techfloor,
-/obj/machinery/firealarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/white,
@@ -3706,13 +3689,13 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_st)
 "sz" = (
-/obj/machinery/door/firedoor/multi_tile,
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
 	req_one_access = list(150)
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/white,
 /area/ship/manta/med)
 "sG" = (
@@ -3721,6 +3704,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/white,
 /area/ship/manta/med)
 "sM" = (
@@ -3766,6 +3750,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/white,
 /area/ship/manta/med)
 "th" = (
@@ -3818,9 +3803,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/machinery/firealarm/alarms_hidden{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/north_mount,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -3873,6 +3856,9 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hangar)
 "tL" = (
@@ -3890,6 +3876,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/recreation)
 "tQ" = (
@@ -3924,14 +3911,14 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/dock_port)
 "uc" = (
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
-/obj/machinery/firealarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -26
 	},
 /obj/effect/floor_decal/techfloor,
@@ -4126,9 +4113,7 @@
 	dir = 4;
 	pixel_x = -26
 	},
-/obj/machinery/firealarm/alarms_hidden{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/north_mount,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -4216,9 +4201,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 5
 	},
-/obj/machinery/firealarm/alarms_hidden{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/north_mount,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -4232,10 +4215,9 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/recreation)
 "vw" = (
-/obj/machinery/power/apc/hyper{
+/obj/machinery/power/apc/hyper/south_mount{
 	alarms_hidden = 1;
-	name = "Merc APC - South";
-	pixel_y = -24
+	name = "Merc APC - South"
 	},
 /obj/structure/cable/orange,
 /obj/machinery/light/small{
@@ -4399,9 +4381,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_port)
 "wc" = (
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 1
-	},
 /obj/effect/floor_decal/techfloor,
 /obj/machinery/door/airlock/multi_tile/metal{
 	dir = 4;
@@ -4415,6 +4394,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_st)
@@ -4447,8 +4429,7 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "plant-20"
 	},
-/obj/machinery/firealarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -26
 	},
 /obj/effect/floor_decal/techfloor{
@@ -4589,9 +4570,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_st)
 "wQ" = (
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 1
-	},
 /obj/effect/floor_decal/techfloor,
 /obj/machinery/door/airlock/multi_tile/metal{
 	dir = 4;
@@ -4599,6 +4577,9 @@
 	},
 /obj/structure/cable/orange{
 	icon_state = "4-8"
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hangar)
@@ -4731,9 +4712,8 @@
 /turf/simulated/floor/plating,
 /area/ship/manta/engine)
 "xv" = (
-/obj/machinery/power/apc/hyper{
+/obj/machinery/power/apc/hyper/west_mount{
 	alarms_hidden = 1;
-	dir = 8;
 	name = "Merc APC - West";
 	pixel_x = -24
 	},
@@ -4776,9 +4756,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hangar)
 "xG" = (
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 1
-	},
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 4;
 	req_one_access = list(150)
@@ -4786,6 +4763,9 @@
 /obj/effect/floor_decal/techfloor,
 /obj/structure/cable/orange{
 	icon_state = "4-8"
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hangar)
@@ -4919,8 +4899,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
-/obj/machinery/firealarm/alarms_hidden{
-	dir = 8;
+/obj/machinery/fire_alarm/alarms_hidden/west_mount{
 	pixel_x = -26
 	},
 /obj/effect/floor_decal/techfloor{
@@ -5166,6 +5145,12 @@
 	closed_layer = 4;
 	id = "Manta_Wargear";
 	layer = 4
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/mech_bay)
@@ -5548,13 +5533,13 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/holding)
 "AX" = (
-/obj/machinery/door/firedoor/multi_tile,
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
 	req_one_access = list(150)
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/barracks)
 "Bi" = (
@@ -5562,9 +5547,8 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/recreation)
 "Bk" = (
-/obj/machinery/power/apc/hyper{
+/obj/machinery/power/apc/hyper/west_mount{
 	alarms_hidden = 1;
-	dir = 8;
 	name = "Merc APC - West";
 	pixel_x = -24
 	},
@@ -5608,6 +5592,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/barracks)
 "BJ" = (
@@ -5706,10 +5691,9 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/mech_bay)
 "Cn" = (
-/obj/machinery/power/apc/hyper{
+/obj/machinery/power/apc/hyper/south_mount{
 	alarms_hidden = 1;
-	name = "Merc APC - South";
-	pixel_y = -24
+	name = "Merc APC - South"
 	},
 /obj/structure/cable/orange,
 /obj/machinery/light/small{
@@ -5788,9 +5772,6 @@
 /turf/space,
 /area/ship/manta/radiator_star)
 "CF" = (
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 1
-	},
 /obj/machinery/door/airlock/multi_tile/metal{
 	dir = 4;
 	name = "Mech Bay";
@@ -5810,6 +5791,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/mech_bay)
@@ -5921,9 +5905,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 9
 	},
-/obj/machinery/firealarm/alarms_hidden{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/north_mount,
 /obj/machinery/light{
 	dir = 8
 	},
@@ -6060,10 +6042,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
-/obj/machinery/firealarm/alarms_hidden{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/east_mount,
 /obj/item/cell/device/weapon,
 /obj/item/cell/device/weapon,
 /obj/item/cell/device/weapon,
@@ -6292,6 +6271,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 1
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/dock_star)
 "EY" = (
@@ -6390,10 +6370,9 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 6
 	},
-/obj/machinery/power/apc/hyper{
+/obj/machinery/power/apc/hyper/south_mount{
 	alarms_hidden = 1;
-	name = "Merc APC - South";
-	pixel_y = -24
+	name = "Merc APC - South"
 	},
 /obj/structure/cable/orange{
 	icon_state = "0-8"
@@ -6662,10 +6641,9 @@
 /obj/structure/table/rack,
 /obj/item/mecha_parts/mecha_equipment/shocker,
 /obj/effect/floor_decal/techfloor,
-/obj/machinery/power/apc/hyper{
+/obj/machinery/power/apc/hyper/south_mount{
 	alarms_hidden = 1;
-	name = "Merc APC - South";
-	pixel_y = -24
+	name = "Merc APC - South"
 	},
 /obj/structure/cable/orange,
 /turf/simulated/floor/tiled/techfloor,
@@ -7282,6 +7260,9 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/recreation)
 "KI" = (
@@ -7367,8 +7348,7 @@
 	dir = 4;
 	pixel_x = -26
 	},
-/obj/machinery/firealarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -26
 	},
 /obj/machinery/light,
@@ -7432,10 +7412,9 @@
 /area/ship/manta/dock_star)
 "LC" = (
 /obj/effect/floor_decal/techfloor,
-/obj/machinery/power/apc/hyper{
+/obj/machinery/power/apc/hyper/south_mount{
 	alarms_hidden = 1;
-	name = "Merc APC - South";
-	pixel_y = -24
+	name = "Merc APC - South"
 	},
 /obj/structure/cable/orange{
 	icon_state = "0-4"
@@ -7525,10 +7504,10 @@
 /obj/machinery/door/airlock/multi_tile/metal{
 	req_one_access = list(150)
 	},
-/obj/machinery/door/firedoor/multi_tile,
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/dock_star)
 "LZ" = (
@@ -7868,6 +7847,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/engineering)
 "NK" = (
@@ -8022,10 +8002,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 6
 	},
-/obj/machinery/firealarm/alarms_hidden{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/east_mount,
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/holding)
@@ -8299,9 +8276,8 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/machinery/power/apc/hyper{
+/obj/machinery/power/apc/hyper/north_mount{
 	alarms_hidden = 1;
-	dir = 1;
 	name = "Merc APC - North";
 	pixel_y = 24
 	},
@@ -8319,9 +8295,8 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/machinery/power/apc/hyper{
+/obj/machinery/power/apc/hyper/west_mount{
 	alarms_hidden = 1;
-	dir = 8;
 	name = "Merc APC - West";
 	pixel_x = -24
 	},
@@ -8391,8 +8366,7 @@
 /area/ship/manta/teleporter)
 "QE" = (
 /obj/structure/catwalk,
-/obj/machinery/firealarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -26
 	},
 /turf/simulated/floor/plating,
@@ -8414,13 +8388,10 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_aft)
 "QJ" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 8
-	},
-/obj/machinery/door/firedoor/multi_tile,
 /obj/machinery/door/airlock/multi_tile/glass{
 	req_one_access = list(150)
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/recreation)
 "QO" = (
@@ -8608,10 +8579,10 @@
 /obj/machinery/door/airlock/multi_tile/glass{
 	req_one_access = list(150)
 	},
-/obj/machinery/door/firedoor/multi_tile,
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_st)
 "RU" = (
@@ -8664,6 +8635,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_st)
 "Se" = (
@@ -8720,7 +8692,6 @@
 /obj/machinery/door/airlock/multi_tile/glass{
 	req_one_access = list(150)
 	},
-/obj/machinery/door/firedoor/multi_tile,
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
@@ -8729,12 +8700,14 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_st)
 "St" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_st)
 "SF" = (
@@ -8803,8 +8776,7 @@
 	name = "Syndicate-Spawn"
 	},
 /obj/item/bedsheet/hos,
-/obj/machinery/firealarm/alarms_hidden{
-	dir = 8;
+/obj/machinery/fire_alarm/alarms_hidden/west_mount{
 	pixel_x = -26
 	},
 /turf/simulated/floor/wood,
@@ -8815,9 +8787,8 @@
 	name = "Syndicate-Spawn"
 	},
 /obj/item/bedsheet/hos,
-/obj/machinery/power/apc/hyper{
+/obj/machinery/power/apc/hyper/east_mount{
 	alarms_hidden = 1;
-	dir = 4;
 	name = "Merc APC - East";
 	pixel_x = 24
 	},
@@ -9163,7 +9134,6 @@
 /turf/simulated/floor/wood,
 /area/ship/manta/barracks/bed_2)
 "UF" = (
-/obj/machinery/door/firedoor/multi_tile,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/orange{
@@ -9175,6 +9145,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/bridge)
 "UH" = (
@@ -9214,10 +9185,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
-/obj/machinery/firealarm/alarms_hidden{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/recreation)
 "UR" = (
@@ -9509,10 +9477,9 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hangar)
 "Ww" = (
-/obj/machinery/power/apc/hyper{
+/obj/machinery/power/apc/hyper/south_mount{
 	alarms_hidden = 1;
-	name = "Merc APC - South";
-	pixel_y = -24
+	name = "Merc APC - South"
 	},
 /obj/structure/cable/orange,
 /turf/simulated/floor/wood,
@@ -9538,7 +9505,6 @@
 /turf/simulated/wall/rshull,
 /area/ship/manta/dock_port)
 "WN" = (
-/obj/machinery/door/firedoor/multi_tile,
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
@@ -9551,6 +9517,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/engineering)
 "WO" = (
@@ -9567,7 +9534,6 @@
 /obj/machinery/door/airlock/multi_tile/metal{
 	req_one_access = list(150)
 	},
-/obj/machinery/door/firedoor/multi_tile,
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
@@ -9575,6 +9541,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/dock_port)
 "WV" = (
@@ -9744,6 +9711,9 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/barracks)
 "XE" = (
@@ -9798,9 +9768,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/engineering)
 "XR" = (
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 1
-	},
 /obj/machinery/door/airlock/multi_tile/metal{
 	dir = 4;
 	name = "Brig";
@@ -9812,6 +9779,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/holding)
@@ -9827,6 +9797,9 @@
 	},
 /obj/structure/cable/orange{
 	icon_state = "4-8"
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/holding)
@@ -9844,9 +9817,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/bridge)
 "Yf" = (
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 1
-	},
 /obj/effect/floor_decal/techfloor,
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 4;
@@ -9857,6 +9827,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/barracks)
@@ -9884,9 +9857,6 @@
 /area/ship/manta/hangar)
 "Yl" = (
 /obj/effect/floor_decal/techfloor,
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 1
-	},
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 4;
 	req_one_access = list(150)
@@ -9897,8 +9867,18 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/recreation)
+"Ym" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled/techfloor,
+/area/ship/manta/bridge)
 "Yo" = (
 /obj/machinery/door/window/brigdoor/northleft{
 	req_access = list(150);
@@ -9939,9 +9919,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 8
 	},
-/obj/machinery/power/apc/hyper{
+/obj/machinery/power/apc/hyper/north_mount{
 	alarms_hidden = 1;
-	dir = 1;
 	name = "Merc APC - North";
 	pixel_y = 24
 	},
@@ -9960,6 +9939,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/bridge)
 "YF" = (
@@ -10129,9 +10109,8 @@
 	pixel_x = 12;
 	pixel_y = 8
 	},
-/obj/machinery/power/apc/hyper{
+/obj/machinery/power/apc/hyper/east_mount{
 	alarms_hidden = 1;
-	dir = 4;
 	name = "Merc APC - East";
 	pixel_x = 24
 	},
@@ -10215,7 +10194,6 @@
 /turf/simulated/floor/plating,
 /area/ship/manta/dock_star)
 "ZY" = (
-/obj/machinery/door/firedoor/multi_tile,
 /obj/machinery/door/airlock/multi_tile/glass{
 	req_one_access = list(150)
 	},
@@ -10227,6 +10205,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/bridge)
 
@@ -17950,7 +17929,7 @@ ZT
 ZT
 ZT
 ZT
-ic
+oj
 wc
 ZT
 ZT
@@ -19807,7 +19786,7 @@ ag
 ag
 aJ
 tm
-WV
+Ym
 wd
 dn
 er
@@ -20384,9 +20363,9 @@ gR
 zU
 Yd
 er
-WV
+Ym
 IG
-sg
+kA
 sg
 NM
 sg

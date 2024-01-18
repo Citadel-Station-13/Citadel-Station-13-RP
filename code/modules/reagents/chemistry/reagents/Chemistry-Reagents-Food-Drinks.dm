@@ -3175,9 +3175,9 @@
 		var/obj/item/organ/internal/heart/L = H.internal_organs_by_name[O_HEART]
 		if (L && istype(L))
 			if(. < 120)
-				L.take_damage(10 * removed, 0)
+				L.take_damage(10 * removed)
 			else
-				L.take_damage(100, 0)
+				L.take_damage(100)
 
 /datum/reagent/ethanol/red_mead
 	name = "Red Mead"
@@ -4591,7 +4591,7 @@
 /datum/reagent/nutriment/triglyceride/oil/affect_touch(mob/living/carbon/M, alien, removed)
 	var/dfactor = heatdamage(M)
 	if (dfactor)
-		M.take_organ_damage(0, removed * 1.5 * dfactor)
+		M.take_random_targeted_damage(brute = 0, brute = removed * 1.5 * dfactor)
 		data["temperature"] -= (6 * removed) / (1 + volume*0.1)//Cools off as it burns you
 		if (lastburnmessage+100 < world.time	)
 			to_chat(M, SPAN_DANGER("Searing hot oil burns you, wash it off quick!"))

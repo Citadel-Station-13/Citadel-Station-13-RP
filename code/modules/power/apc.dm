@@ -50,189 +50,41 @@ GLOBAL_LIST_EMPTY(apcs)
 #define NIGHTSHIFT_ALWAYS 3
 
 //NOTE: STUFF STOLEN FROM AIRLOCK.DM thx
-
-/obj/machinery/power/apc/direction_bump  //For the love of god there's so many fucking var edits of the APC, use these instead pleaaaaase -Bloop
-
-/obj/machinery/power/apc/direction_bump/east
-	name = "east bump"
-	dir = 4
-	pixel_x = 28
-
-/obj/machinery/power/apc/direction_bump/west
-	name = "west bump"
-	dir = 8
-	pixel_x = -28
-
-/obj/machinery/power/apc/direction_bump/north
-	name = "north bump"
-	dir = 1
-	pixel_y = 28
-
-/obj/machinery/power/apc/direction_bump/south
-	name = "south bump"
-	pixel_y = -28
-
 //Critical//
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/critical, 22)
 /obj/machinery/power/apc/critical
 	is_critical = 1
 
-/obj/machinery/power/apc/critical/east_bump
-	name = "east bump"
-	dir = 4
-	pixel_x = 28
-
-/obj/machinery/power/apc/critical/west_bump
-	name = "west bump"
-	dir = 8
-	pixel_x = -28
-
-/obj/machinery/power/apc/critical/north_bump
-	name = "north bump"
-	dir = 1
-	pixel_y = 28
-
-/obj/machinery/power/apc/critical/south_bump
-	name = "south bump"
-	pixel_y = -28
-
 /// High capacity cell APCs
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/high, 22)
 /obj/machinery/power/apc/high
 	cell_type = /obj/item/cell/high
 
-/obj/machinery/power/apc/high/east_bump
-	name = "east bump"
-	dir = 4
-	pixel_x = 28
-/obj/machinery/power/apc/high/west_bump
-	name = "west bump"
-	dir = 8
-	pixel_x = -28
-
-/obj/machinery/power/apc/high/north_bump
-	name = "north bump"
-	dir = 1
-	pixel_y = 28
-
-/obj/machinery/power/apc/high/south_bump
-	name = "south bump"
-	pixel_y = -28
-
 /// Super capacity cell APCS
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/super, 22)
 /obj/machinery/power/apc/super
 	cell_type = /obj/item/cell/super
 
-/obj/machinery/power/apc/super/east_bump
-	name = "east bump"
-	dir = 4
-	pixel_x = 28
-/obj/machinery/power/apc/super/west_bump
-	name = "west bump"
-	dir = 8
-	pixel_x = -28
-
-/obj/machinery/power/apc/super/north_bump
-	name = "north bump"
-	dir = 1
-	pixel_y = 28
-
-/obj/machinery/power/apc/super/south_bump
-	name = "south bump"
-	pixel_y = -28
-
-
 /// Critical APCs with super cells
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/super/critical, 22)
 /obj/machinery/power/apc/super/critical
 	is_critical = 1
 
-/obj/machinery/power/apc/super/critical/east_bump
-	name = "east bump"
-	dir = 4
-	pixel_x = 28
-/obj/machinery/power/apc/super/critical/west_bump
-	name = "west bump"
-	dir = 8
-	pixel_x = -28
-
-/obj/machinery/power/apc/super/critical/north_bump
-	name = "north bump"
-	dir = 1
-	pixel_y = 28
-
-/obj/machinery/power/apc/super/critical/south_bump
-	name = "south bump"
-	pixel_y = -28
-
 /// APCS with hyper cells. How lewd
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/hyper, 22)
 /obj/machinery/power/apc/hyper
 	cell_type = /obj/item/cell/hyper
 
-/obj/machinery/power/apc/hyper/east_bump
-	name = "east bump"
-	dir = 4
-	pixel_x = 28
-/obj/machinery/power/apc/hyper/west_bump
-	name = "west bump"
-	dir = 8
-	pixel_x = -28
-
-/obj/machinery/power/apc/hyper/north_bump
-	name = "north bump"
-	dir = 1
-	pixel_y = 28
-
-/obj/machinery/power/apc/hyper/south_bump
-	name = "south bump"
-	pixel_y = -28
-
-
 /// APCs with alarms hidden. Use these for POI's and offmap stuff so engineers dont get notified that shitty_ruins4 is running out of power -Bloop
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/alarms_hidden, 22)
 /obj/machinery/power/apc/alarms_hidden
 	alarms_hidden = TRUE
 
-/obj/machinery/power/apc/alarms_hidden/east_bump
-	name = "east bump"
-	dir = 4
-	pixel_x = 28
-
-/obj/machinery/power/apc/alarms_hidden/west_bump
-	name = "west bump"
-	dir = 8
-	pixel_x = -28
-
-/obj/machinery/power/apc/alarms_hidden/north_bump
-	name = "north bump"
-	dir = 1
-	pixel_y = 28
-
-/obj/machinery/power/apc/alarms_hidden/south_bump
-	name = "south bump"
-	pixel_y = -28
-
 /// APCS with hidden alarms and no power cells
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/alarms_hidden/no_cell, 22)
 /obj/machinery/power/apc/alarms_hidden/no_cell
 	cell_type = null
 	chargelevel = 0
-
-/obj/machinery/power/apc/alarms_hidden/no_cell/east_bump
-	name = "east bump"
-	dir = 4
-	pixel_x = 28
-
-/obj/machinery/power/apc/alarms_hidden/no_cell/west_bump
-	name = "west bump"
-	dir = 8
-	pixel_x = -28
-
-/obj/machinery/power/apc/alarms_hidden/no_cell/north_bump
-	name = "north bump"
-	dir = 1
-	pixel_y = 28
-
-/obj/machinery/power/apc/alarms_hidden/no_cell/south_bump
-	name = "south bump"
-	pixel_y = -28
-
-
 
 /**
  * APCs
@@ -255,6 +107,7 @@ GLOBAL_LIST_EMPTY(apcs)
  *
  * ~silicons
  */
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 22)
 /obj/machinery/power/apc
 	name = "area power controller"
 	desc = "A control terminal for the area electrical systems."
@@ -365,8 +218,6 @@ GLOBAL_LIST_EMPTY(apcs)
 	if (building)
 		setDir(ndir)
 
-	pixel_x = (src.dir & 3)? 0 : (src.dir == 4 ? 24 : -24)
-	pixel_y = (src.dir & 3)? (src.dir ==1 ? 24 : -24) : 0
 	if(!building)
 		autobuild()
 	else
@@ -406,14 +257,27 @@ GLOBAL_LIST_EMPTY(apcs)
 
 // APCs are pixel-shifted, so they need to be updated.
 /obj/machinery/power/apc/setDir(new_dir)
-	..()
-	pixel_x = (src.dir & 3)? 0 : (src.dir == 4 ? 24 : -24)
-	pixel_y = (src.dir & 3)? (src.dir ==1 ? 24 : -24) : 0
+	. = ..()
+
+	base_pixel_x = 0
+	base_pixel_y = 0
+	var/turf/T = get_step(src, turn(dir, 180))
+	if(T.get_wallmount_anchor())
+		switch(dir)
+			if(SOUTH)
+				base_pixel_y = 22
+			if(NORTH)
+				base_pixel_y = -22
+			if(EAST)
+				base_pixel_x = -22
+			if(WEST)
+				base_pixel_x = 22
+	reset_pixel_offsets()
+
 	if(terminal)
 		terminal.disconnect_from_network()
-		terminal.setDir(src.dir) // Terminal has same dir as master
+		terminal.setDir(turn(src.dir, 180)) // Terminal has same dir as master
 		terminal.connect_to_network() // Refresh the network the terminal is connected to.
-	return
 
 /obj/machinery/power/apc/proc/energy_fail(var/duration)
 	failure_timer = max(failure_timer, round(duration))
@@ -422,7 +286,7 @@ GLOBAL_LIST_EMPTY(apcs)
 	// create a terminal object at the same position as original turf loc
 	// wires will attach to this
 	terminal = new/obj/machinery/power/terminal(src.loc)
-	terminal.setDir(dir)
+	terminal.setDir(turn(dir, 180))
 	terminal.master = src
 
 /obj/machinery/power/apc/proc/autobuild()
@@ -567,24 +431,6 @@ GLOBAL_LIST_EMPTY(apcs)
 			set_light(l_range = 2, l_power = 0.5, l_color = color)
 		else
 			set_light(0)
-
-/obj/machinery/power/apc/setDir(new_dir)
-	. = ..()
-	base_pixel_x = 0
-	base_pixel_y = 0
-	var/turf/T = get_step(get_turf(src), dir)
-	if(istype(T) && T.density)
-		switch(dir)
-			if(SOUTH)
-				base_pixel_y = -22
-			if(NORTH)
-				base_pixel_y = 22
-			if(EAST)
-				base_pixel_x = 22
-			if(WEST)
-				base_pixel_x = -22
-	reset_pixel_offsets()
-
 
 /obj/machinery/power/apc/proc/check_updates()
 
@@ -1002,7 +848,7 @@ GLOBAL_LIST_EMPTY(apcs)
 		ui = new(user, src, "APC", name) // 510, 460
 		ui.open()
 
-/obj/machinery/power/apc/ui_data(mob/user)
+/obj/machinery/power/apc/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list(
 		"locked" = locked,
 		"normallyLocked" = locked,
@@ -1058,7 +904,7 @@ GLOBAL_LIST_EMPTY(apcs)
 
 	return data
 
-/obj/machinery/power/apc/ui_act(action, params)
+/obj/machinery/power/apc/ui_act(action, list/params, datum/tgui/ui)
 	if(..() || !can_use(usr, TRUE))
 		return TRUE
 

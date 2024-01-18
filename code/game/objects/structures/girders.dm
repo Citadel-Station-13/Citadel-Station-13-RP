@@ -253,7 +253,8 @@
 /obj/structure/girder/drop_products(method, atom/where)
 	. = ..()
 	material_structure.place_dismantled_product(where, 2)
-	material_reinforcing.place_dismantled_product(where, 1)
+	if(material_reinforcing)
+		material_reinforcing.place_dismantled_product(where, 1)
 
 /obj/structure/girder/rcd_values(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
 	var/turf/simulated/T = get_turf(src)

@@ -168,6 +168,9 @@
 		if(user && !silent)
 			to_chat(user, SPAN_WARNING("[src] failed to lock the tape for reading."))
 		return
+	if(!tape.reel || !length(tape.reel))
+		to_chat(user, SPAN_WARNING("[src] has nothing to play!"))
+		return
 	if(!silent)
 		audible_message("[SPAN_BOLD("[src]")]: Playback started.")
 	playing = TRUE

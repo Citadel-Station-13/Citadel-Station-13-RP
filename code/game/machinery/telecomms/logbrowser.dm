@@ -18,7 +18,7 @@
 
 	req_access = list(ACCESS_ENGINEERING_TELECOMMS)
 
-/obj/machinery/computer/telecomms/server/ui_data(mob/user)
+/obj/machinery/computer/telecomms/server/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 
 	data["universal_translate"] = universal_translate
@@ -73,7 +73,7 @@
 		ui = new(user, src, "TelecommsLogBrowser", name)
 		ui.open()
 
-/obj/machinery/computer/telecomms/server/ui_act(action, params)
+/obj/machinery/computer/telecomms/server/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

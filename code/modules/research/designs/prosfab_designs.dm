@@ -497,6 +497,14 @@
 	materials_base = list(MAT_STEEL = 60000, MAT_GLASS = 4500, MAT_GOLD = 1500, MAT_DIAMOND = 375)
 	build_path = /obj/item/borg/upgrade/tasercooler
 
+/datum/design/science/prosfab/robot_upgrade/bluespaceoresatchel
+	design_name = "Bluespace Ore Satchel Module"
+	desc = "Improves the ore satchels of mining units to hold a lot more ores."
+	id = "borg_bsorebag_module"
+	req_tech = list(TECH_BLUESPACE = 4, TECH_MATERIAL = 6, TECH_PHORON = 4)
+	materials_base = list(MAT_STEEL = 7500, MAT_GOLD = 1500, MAT_DIAMOND = 750, MAT_URANIUM = 150, MAT_PHORON = 1000)
+	build_path = /obj/item/borg/upgrade/bluespaceorebag
+
 /datum/design/science/prosfab/robot_upgrade/jetpack
 	design_name = "Jetpack Module"
 	desc = "A carbon dioxide jetpack suitable for low-gravity mining operations."

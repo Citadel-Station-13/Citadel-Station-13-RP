@@ -17,7 +17,7 @@
 	return NONE
 
 /atom/movable/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
-	if(!anchored && (TT?.force >= (move_resist * MOVE_FORCE_PUSH_RATIO)) && !(TT.throw_flags & THROW_AT_OVERHAND))
+	if(!anchored && (TT?.force >= (move_resist * MOVE_FORCE_PUSH_RATIO)) && !(TT.throw_flags & (THROW_AT_OVERHAND | THROW_AT_IS_NEAT)))
 		step(src, AM.dir)
 	return ..()
 
@@ -57,7 +57,7 @@
  * - A - atom that we landed on
  * - TT - thrownthing datum
  */
-/atom/proc/throw_land(atom/A, datum/thrownthing/TT)
+/atom/movable/proc/throw_land(atom/A, datum/thrownthing/TT)
 	return NONE
 
 /**

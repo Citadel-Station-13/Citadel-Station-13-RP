@@ -1,6 +1,8 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "ac" = (
-/obj/machinery/door/airlock/multi_tile/glass,
+/obj/machinery/door/airlock/multi_tile/glass{
+	dir = 4
+	},
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "ae" = (
@@ -2677,7 +2679,6 @@
 /obj/machinery/door/blast/regular{
 	dir = 8;
 	id = "ArmouryC2";
-	layer = 3.3;
 	name = "Armoury"
 	},
 /turf/unsimulated/floor/steel,
@@ -4185,7 +4186,6 @@
 /area/centcom/restaurant)
 "nm" = (
 /obj/machinery/vending/wallmed1{
-	layer = 3.3;
 	name = "Emergency NanoMed";
 	pixel_y = 30
 	},
@@ -4302,7 +4302,6 @@
 /obj/machinery/door/blast/regular{
 	dir = 8;
 	id = "ArmouryC4";
-	layer = 3.3;
 	name = "Armoury"
 	},
 /turf/unsimulated/floor{
@@ -4359,7 +4358,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "kitchenC";
-	layer = 3.3;
 	name = "Kitchen Shutters"
 	},
 /turf/unsimulated/floor/steel,
@@ -6792,6 +6790,12 @@
 	name = "plating"
 	},
 /area/centcom/terminal)
+"vO" = (
+/obj/machinery/door/firedoor/glass,
+/turf/unsimulated/floor/steel{
+	icon_state = "white"
+	},
+/area/centcom/medical)
 "vP" = (
 /turf/unsimulated/wall/planetary/virgo3b,
 /area/centcom/security)
@@ -7172,7 +7176,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/specops/general)
 "wQ" = (
@@ -7894,6 +7898,12 @@
 	icon_state = "dark"
 	},
 /area/centcom/control)
+"zm" = (
+/obj/spawner/window/low_wall/full/firelocks,
+/turf/unsimulated/floor{
+	name = "plating"
+	},
+/area/centcom/security)
 "zt" = (
 /obj/machinery/button/remote/blast_door{
 	id = "HEAVY";
@@ -8856,7 +8866,7 @@
 /area/centcom/control)
 "CB" = (
 /obj/structure/cable/green,
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
 	},
@@ -9370,6 +9380,8 @@
 	},
 /area/centcom/command)
 "Et" = (
+/obj/spawner/window/low_wall/full/firelocks,
+/obj/spawner/window/low_wall/full/firelocks,
 /turf/unsimulated/floor{
 	name = "plating"
 	},
@@ -10364,7 +10376,8 @@
 "HS" = (
 /obj/machinery/door/window/brigdoor{
 	req_access = list(63);
-	req_one_access = list(1)
+	req_one_access = list(1);
+	dir = 4
 	},
 /obj/machinery/button/remote/airlock{
 	id = "front";
@@ -11315,7 +11328,6 @@
 /area/centcom/living)
 "KF" = (
 /obj/machinery/newscaster{
-	layer = 3.3;
 	pixel_x = 28
 	},
 /obj/effect/floor_decal/borderfloorblack{
@@ -11717,6 +11729,9 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/blue/bordercorner2{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
 	dir = 8
 	},
 /turf/unsimulated/floor{
@@ -13328,7 +13343,8 @@
 /obj/structure/table/reinforced,
 /obj/machinery/door/window/brigdoor{
 	req_access = list(63);
-	req_one_access = list(1)
+	req_one_access = list(1);
+	dir = 4
 	},
 /turf/unsimulated/floor{
 	icon_state = "dark"
@@ -13626,7 +13642,7 @@
 	pixel_y = -28
 	},
 /obj/structure/cable/green,
-/obj/machinery/power/apc/alarms_hidden/west_bump,
+/obj/machinery/power/apc/alarms_hidden/west_mount,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/specops/cockpit)
 "RN" = (
@@ -14950,7 +14966,8 @@
 /obj/machinery/door/airlock/multi_tile/glass{
 	req_access = list(5)
 	},
-/obj/machinery/door/firedoor/multi_tile,
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/firedoor/glass,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -15739,7 +15756,7 @@
 /area/centcom/evac)
 "YL" = (
 /obj/structure/cable,
-/obj/machinery/power/apc/alarms_hidden/south_bump,
+/obj/machinery/power/apc/alarms_hidden/south_mount,
 /turf/simulated/floor/plating,
 /area/centcom/specops/dock)
 "YM" = (
@@ -38918,7 +38935,7 @@ dw
 gQ
 Ft
 dw
-dw
+vO
 dw
 dw
 dw
@@ -46696,7 +46713,7 @@ WK
 WK
 WK
 WK
-Et
+zm
 Et
 WK
 wp

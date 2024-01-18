@@ -15,7 +15,7 @@
 	var/datum/computer_file/data/email_message/current_message = null
 	var/error = ""
 
-/datum/computer_file/program/email_administration/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/datum/computer_file/program/email_administration/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = get_header_data()
 
 	data["error"] = error

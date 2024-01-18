@@ -133,7 +133,7 @@
 
 	return healing_factor // highest value is 6,336
 
-/datum/species/xenohybrid/handle_environment_special(mob/living/carbon/human/H)
+/datum/species/xenohybrid/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
 	var/heal_amount = heal_rate * handle_healing_conditions(H)
 
 	var/nutrition_debt = (H.getFireLoss() ? heal_rate : 0)//Heal rate and not heal_amount, since we want to reward taking the modifiers

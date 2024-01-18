@@ -118,7 +118,7 @@ GLOBAL_LIST_EMPTY(exonet_nodes)
 // Proc: ui_data()
 // Parameters: 1 (user - the person using the interface)
 // Description: Allows the user to turn the machine on or off, or open or close certain 'ports' for things like external PDA messages, newscasters, etc.
-/obj/machinery/exonet_node/ui_data(mob/user)
+/obj/machinery/exonet_node/ui_data(mob/user, datum/tgui/ui)
 	// this is the data which will be sent to the ui
 	var/list/data = list()
 
@@ -133,7 +133,7 @@ GLOBAL_LIST_EMPTY(exonet_nodes)
 // Proc: ui_act()
 // Parameters: 2 (standard ui_act arguments)
 // Description: Responds to button presses on the TGUI interface.
-/obj/machinery/exonet_node/ui_act(action, params)
+/obj/machinery/exonet_node/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

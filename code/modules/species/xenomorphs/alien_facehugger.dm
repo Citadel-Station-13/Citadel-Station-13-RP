@@ -133,7 +133,7 @@ var/const/MAX_ACTIVE_TIME = 400
 	if(stat != CONSCIOUS)
 		return
 	if(!sterile)
-		L.take_organ_damage(strength,0) //done here so that even borgs and humans in helmets take damage
+		L.take_random_targeted_damage(brute = strength, brute = 0) //done here so that even borgs and humans in helmets take damage
 
 	L.visible_message("<span class='danger'><b> [src] leaps at [L]'s face!</b></span>")
 
@@ -412,7 +412,7 @@ var/const/MAX_ACTIVE_TIME = 400
 
 	if(loc == L) return
 	if(stat != CONSCIOUS)	return
-	if(!sterile) L.take_organ_damage(strength,0) //done here so that even borgs and humans in helmets take damage
+	if(!sterile) L.take_random_targeted_damage(brute = strength, brute = 0) //done here so that even borgs and humans in helmets take damage
 
 	L.visible_message("<span class='danger'><b> [src] leaps at [L]'s face!</b></span>")
 

@@ -296,6 +296,10 @@ var/global/list/light_type_cache = list()
 	var/brightness_power_ns
 	var/brightness_color_ns
 
+	#ifdef IN_MAP_EDITOR // So its actually visible in the mapping editor
+	icon_state = "tube_map"
+	#endif
+
 /obj/machinery/light/flicker
 	auto_flicker = TRUE
 
@@ -419,6 +423,8 @@ var/global/list/light_type_cache = list()
 	light_type = /obj/item/light/tube/large
 	shows_alerts = FALSE
 
+/obj/machinery/light/spot/no_nightshift
+	nightshift_allowed = FALSE
 /obj/machinery/light/spot/flicker
 	auto_flicker = TRUE
 
@@ -560,9 +566,9 @@ var/global/list/light_type_cache = list()
 		needsound = FALSE // Don't play sound again until we've been turned off
 
 	if(on)
-		var/correct_range = nightshift_enabled ? brightness_range_ns : brightness_range
-		var/correct_power = nightshift_enabled ? brightness_power_ns : brightness_power
-		var/correct_color = nightshift_enabled ? brightness_color_ns : brightness_color
+		var/correct_range = nightshift_enabled ? (brightness_range_ns || brightness_range) : brightness_range
+		var/correct_power = nightshift_enabled ? (brightness_power_ns || brightness_power) : brightness_power
+		var/correct_color = nightshift_enabled ? (brightness_color_ns || brightness_color) : brightness_color
 		if(light_range != correct_range || light_power != correct_power || light_color != correct_color)
 			if(!auto_flicker)
 				switchcount++

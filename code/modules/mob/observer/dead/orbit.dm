@@ -6,7 +6,7 @@
 		qdel(src)
 	owner = new_owner
 
-/datum/orbit_menu/ui_state(mob/user)
+/datum/orbit_menu/ui_state()
 	return GLOB.observer_state
 
 /datum/orbit_menu/ui_interact(mob/user, datum/tgui/ui)
@@ -15,7 +15,7 @@
 		ui = new(user, src, "Orbit")
 		ui.open()
 
-/datum/orbit_menu/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/datum/orbit_menu/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return
@@ -35,7 +35,7 @@
 			update_static_data()
 			. = TRUE
 
-/datum/orbit_menu/ui_static_data(mob/user)
+/datum/orbit_menu/ui_static_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 
 	var/list/players = list()
@@ -52,11 +52,17 @@
 		serialized["ref"] = REF(name)
 
 		var/mob/M = name
+
+		if(M == user)
+			continue//Should only really happen with observers, but just to be sure
+
 		if(!istype(M))
 			misc += list(serialized)
 			continue
 
 		if(isobserver(M))
+			if(M.invisibility >= INVISIBILITY_MAXIMUM)
+				continue
 			ghosts += list(serialized)
 		else if(issimple(M))
 			simplemobs += list(serialized)

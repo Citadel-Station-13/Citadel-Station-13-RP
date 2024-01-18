@@ -2,10 +2,10 @@
 	name = "Appearance Editor (Vore)"
 	flags = APPEARANCE_ALL
 
-/datum/tgui_module_old/appearance_changer/vore/ui_state(mob/user, datum/tgui_module/module)
+/datum/tgui_module_old/appearance_changer/vore/ui_state()
 	return GLOB.tgui_conscious_state
 
-/datum/tgui_module_old/appearance_changer/vore/ui_status(mob/user, datum/ui_state/state, datum/tgui_module/module)
+/datum/tgui_module_old/appearance_changer/vore/ui_status(mob/user, datum/ui_state/state)
 	if(!isbelly(owner.loc))
 		return UI_CLOSE
 	return ..()
@@ -16,7 +16,7 @@
 	cam_background.fill_rect(1, 1, 1, 1)
 	local_skybox.cut_overlays()
 
-/datum/tgui_module_old/appearance_changer/vore/ui_close(mob/user, datum/tgui_module/module)
+/datum/tgui_module_old/appearance_changer/vore/on_ui_close(mob/user, datum/tgui/ui, embedded)
 	. = ..()
 	QDEL_IN(src, 1)
 

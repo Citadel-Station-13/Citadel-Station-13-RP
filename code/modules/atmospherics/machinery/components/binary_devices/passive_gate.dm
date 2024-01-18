@@ -186,7 +186,7 @@
 		ui.open()
 
 //This is the data which will be sent to the ui
-/obj/machinery/atmospherics/component/binary/passive_gate/ui_data(mob/user)
+/obj/machinery/atmospherics/component/binary/passive_gate/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 
 	data = list(
@@ -202,7 +202,7 @@
 
 	return data
 
-/obj/machinery/atmospherics/component/binary/passive_gate/ui_act(action, params)
+/obj/machinery/atmospherics/component/binary/passive_gate/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

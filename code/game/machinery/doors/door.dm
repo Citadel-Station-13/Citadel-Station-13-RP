@@ -27,10 +27,9 @@
 	var/closed_layer = DOOR_CLOSED_LAYER
 
 	var/visible = 1
-	var/p_open = 0//[bool]is the door open?
 	var/operating = 0//[bool]Is the door opening or closing?
 	var/autoclose = 0//[bool]should the door close automaticly
-	var/glass = 0
+	var/glass = 0 //[bool] is the door see-through?
 	var/normalspeed = 1
 	var/heat_resistance = 1000 // For glass airlocks/opacity firedoors
 	var/air_properties_vary_with_direction = 0
@@ -46,9 +45,7 @@
 	var/atom/movable/overlay/c_animation = null
 
 	var/reinforcing = 0
-	var/tintable = 0
-	var/icon_tinted
-	var/id_tint
+
 
 /obj/machinery/door/Initialize(mapload, newdir)
 	. = ..()
@@ -100,7 +97,7 @@
 
 /obj/machinery/door/Bumped(atom/AM)
 	. = ..()
-	if(p_open || operating)
+	if(panel_open || operating)
 		return
 	if(ismob(AM))
 		var/mob/M = AM
@@ -311,12 +308,12 @@
 /obj/machinery/door/proc/do_animate(animation)
 	switch(animation)
 		if(DOOR_ANIMATION_OPEN)
-			if(p_open)
+			if(panel_open)
 				flick("o_doorc0", src)
 			else
 				flick("doorc0", src)
 		if(DOOR_ANIMATION_CLOSE)
-			if(p_open)
+			if(panel_open)
 				flick("o_doorc1", src)
 			else
 				flick("doorc1", src)
@@ -368,8 +365,8 @@
 	update_nearby_tiles()
 	sleep(7)
 	update_icon()
-	if(visible && !glass)
-		set_opacity(1)	//caaaaarn!
+	set_opacity_on_close()
+
 	rad_insulation = initial(rad_insulation)
 	operating = 0
 
@@ -379,6 +376,10 @@
 		qdel(fire)
 
 	return 1
+
+/obj/machinery/door/proc/set_opacity_on_close()
+	if(visible && !glass)
+		set_opacity(1)
 
 /obj/machinery/door/proc/toggle_open(var/forced)
 	if(density)

@@ -1,4 +1,8 @@
 /client/proc/age_verification()
+	set waitfor = FALSE
+	age_verification_impl()
+
+/client/proc/age_verification_impl()
 	if(!SSdbcore.Connect())
 		return TRUE
 	if(!player.block_on_available(10 SECONDS))
@@ -40,7 +44,7 @@ GLOBAL_DATUM_INIT(age_verify_menu, /datum/age_verify_menu, new)
 		ui = new(user, src, "AgeVerifyMenu")
 		ui.open()
 
-/datum/age_verify_menu/ui_status(mob/user, datum/ui_state/state, datum/tgui_module/module)
+/datum/age_verify_menu/ui_status(mob/user, datum/ui_state/state)
 	return UI_INTERACTIVE
 
 /datum/age_verify_menu/ui_act(action, list/params, datum/tgui/ui)

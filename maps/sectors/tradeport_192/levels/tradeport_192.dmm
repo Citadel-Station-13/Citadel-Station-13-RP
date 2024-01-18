@@ -2058,10 +2058,8 @@
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/tradeport/commhall)
 "hr" = (
-/obj/machinery/power/apc/alarms_hidden{
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	cell_type = /obj/item/cell/super;
-	name = "south bump";
-	pixel_y = -28;
 	req_access = list(160)
 	},
 /obj/structure/cable/yellow,
@@ -2286,8 +2284,7 @@
 /obj/structure/closet/crate/bin{
 	anchored = 1
 	},
-/obj/machinery/firealarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -26
 	},
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -3143,15 +3140,16 @@
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/shuttle/trade_ship/general)
 "lg" = (
-/obj/machinery/firealarm{
-	dir = 8;
+/obj/structure/closet/crate/bin{
+	anchored = 1
+	},
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -24
 	},
-/obj/machinery/firealarm{
-	dir = 8;
-	pixel_x = -26
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 10
 	},
-/turf/simulated/wall,
+/turf/simulated/floor/carpet,
 /area/tradeport/commons)
 "lh" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -3389,17 +3387,14 @@
 	dir = 8
 	},
 /obj/structure/cable/yellow,
-/obj/machinery/power/apc/alarms_hidden{
-	name = "south bump";
-	pixel_y = -28;
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	req_access = list(160)
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/tradeport/atmospherics)
 "lX" = (
-/obj/machinery/power/apc/alarms_hidden{
-	pixel_y = -28;
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	req_access = list(160)
 	},
 /obj/structure/cable/green{
@@ -3536,8 +3531,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/machinery/firealarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -26
 	},
 /turf/simulated/shuttle/floor/white,
@@ -5453,9 +5447,7 @@
 /turf/simulated/floor/tiled/old_tile/red,
 /area/tradeport)
 "uf" = (
-/obj/machinery/power/apc/alarms_hidden{
-	name = "south bump";
-	pixel_y = -28;
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	req_access = list(160)
 	},
 /obj/structure/cable/yellow,
@@ -6674,7 +6666,7 @@
 	pixel_x = 34;
 	pixel_y = 3
 	},
-/obj/machinery/button/windowtint/doortint{
+/obj/machinery/button/windowtint/multitint{
 	id = "traderportdoor";
 	pixel_x = -8;
 	pixel_y = 23
@@ -6794,14 +6786,13 @@
 /area/shuttle/trade_ship/cockpit)
 "yI" = (
 /obj/item/stool/padded,
-/obj/machinery/firealarm{
-	dir = 8;
-	pixel_x = -26
-	},
 /obj/item/toy/plushie/squid/blue,
 /obj/landmark/spawnpoint/job/trader,
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
+	},
+/obj/machinery/fire_alarm/west_mount{
+	pixel_x = -24
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/commons)
@@ -6864,7 +6855,7 @@
 	pixel_x = 30;
 	req_access = list(160)
 	},
-/obj/machinery/button/windowtint/doortint{
+/obj/machinery/button/windowtint/multitint{
 	id = "traderstardoor";
 	pixel_x = -8;
 	pixel_y = -23
@@ -6978,8 +6969,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 9
 	},
-/obj/machinery/power/apc/alarms_hidden{
-	dir = 1;
+/obj/machinery/air_alarm/alarms_hidden/north_mount{
 	name = "north bump";
 	pixel_y = 28;
 	req_access = list(160)
@@ -7245,9 +7235,7 @@
 /obj/structure/table/standard,
 /obj/machinery/recharger,
 /obj/structure/cable/yellow,
-/obj/machinery/power/apc/alarms_hidden{
-	name = "south bump";
-	pixel_y = -28;
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	req_access = list(160)
 	},
 /obj/effect/floor_decal/corner/blue/border,
@@ -7325,8 +7313,7 @@
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/tradeport/pads)
 "AG" = (
-/obj/machinery/firealarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -26
 	},
 /turf/simulated/shuttle/floor/white,
@@ -7443,9 +7430,7 @@
 /turf/simulated/floor/tiled/freezer,
 /area/tradeport)
 "Ba" = (
-/obj/machinery/power/apc/alarms_hidden{
-	name = "south bump";
-	pixel_y = -28;
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	req_access = list(160)
 	},
 /obj/structure/cable/yellow,
@@ -7678,8 +7663,7 @@
 /turf/simulated/wall/r_wall,
 /area/tradeport/pads)
 "BK" = (
-/obj/machinery/power/apc/alarms_hidden{
-	pixel_y = -28;
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	req_access = list(160)
 	},
 /obj/structure/cable/green{
@@ -7838,7 +7822,6 @@
 "Ci" = (
 /obj/machinery/conveyor_switch/oneway{
 	id = "spine_outbound";
-	layer = 3.3;
 	name = "outbound conveyor";
 	pixel_y = 8
 	},
@@ -7969,8 +7952,7 @@
 /turf/simulated/floor,
 /area/tradeport/pads)
 "CK" = (
-/obj/machinery/power/apc/alarms_hidden{
-	dir = 1;
+/obj/machinery/air_alarm/alarms_hidden/north_mount{
 	name = "north bump";
 	pixel_y = 28;
 	req_access = list(160)
@@ -8560,8 +8542,7 @@
 "EX" = (
 /obj/machinery/light,
 /obj/structure/flora/pottedplant/drooping,
-/obj/machinery/firealarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -26
 	},
 /turf/simulated/floor/wood,
@@ -9606,8 +9587,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/firealarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -26
 	},
 /turf/simulated/floor/carpet/blue,
@@ -9709,10 +9689,8 @@
 /obj/machinery/vending/nifsoft_shop{
 	dir = 8
 	},
-/obj/machinery/power/apc/alarms_hidden{
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	cell_type = /obj/item/cell/super;
-	name = "south bump";
-	pixel_y = -28;
 	req_access = list(160)
 	},
 /turf/simulated/floor/tiled/old_tile/blue,
@@ -9800,8 +9778,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/power/apc/alarms_hidden{
-	pixel_y = -28;
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	req_access = list(160)
 	},
 /obj/structure/cable/yellow{
@@ -10206,9 +10183,7 @@
 	dir = 8
 	},
 /obj/structure/cable/yellow,
-/obj/machinery/power/apc/alarms_hidden{
-	name = "south bump";
-	pixel_y = -28;
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	req_access = list(160)
 	},
 /turf/simulated/floor/tiled/neutral,
@@ -10317,9 +10292,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "LI" = (
-/obj/machinery/power/apc/alarms_hidden{
-	name = "south bump";
-	pixel_y = -28;
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	req_access = list(160)
 	},
 /obj/structure/cable/yellow,
@@ -11182,9 +11155,7 @@
 /turf/simulated/floor/tiled/old_cargo/beige,
 /area/tradeport/atmospherics)
 "OG" = (
-/obj/machinery/power/apc/alarms_hidden{
-	name = "south bump";
-	pixel_y = -28;
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	req_access = list(160)
 	},
 /obj/structure/cable/yellow,
@@ -12089,9 +12060,7 @@
 /turf/simulated/floor/outdoors/dirtlight,
 /area/tradeport/cyndishow)
 "RG" = (
-/obj/machinery/power/apc/alarms_hidden{
-	name = "south bump";
-	pixel_y = -28;
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	req_access = list(160)
 	},
 /obj/structure/cable/yellow,
@@ -13305,7 +13274,6 @@
 "Wf" = (
 /obj/machinery/conveyor_switch/oneway{
 	id = "spine_inbound";
-	layer = 3.3;
 	name = "inbound conveyor";
 	pixel_y = 8
 	},
@@ -13321,7 +13289,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/machinery/icecream_vat,
+/obj/structure/icecream_cart,
 /turf/simulated/floor/tiled/freezer,
 /area/tradeport)
 "Wj" = (
@@ -13546,9 +13514,7 @@
 /turf/simulated/floor/tiled/old_tile/red,
 /area/tradeport)
 "Xd" = (
-/obj/machinery/power/apc/alarms_hidden{
-	name = "south bump";
-	pixel_y = -28;
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	req_access = list(160)
 	},
 /obj/structure/cable/yellow,
@@ -13899,10 +13865,8 @@
 "Yu" = (
 /obj/structure/cable/yellow,
 /obj/structure/catwalk,
-/obj/machinery/power/apc/alarms_hidden{
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	cell_type = /obj/item/cell/super;
-	name = "south bump";
-	pixel_y = -28;
 	req_access = list(160)
 	},
 /turf/simulated/floor,
@@ -13990,9 +13954,7 @@
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/tradeport)
 "YF" = (
-/obj/machinery/power/apc/alarms_hidden{
-	name = "south bump";
-	pixel_y = -28;
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	req_access = list(160)
 	},
 /obj/structure/cable/yellow,
@@ -42575,7 +42537,7 @@ PJ
 NQ
 nq
 tu
-lg
+tu
 cA
 tu
 tu
@@ -43945,7 +43907,7 @@ GO
 fE
 Rv
 Hq
-iq
+lg
 nq
 rf
 Ym
