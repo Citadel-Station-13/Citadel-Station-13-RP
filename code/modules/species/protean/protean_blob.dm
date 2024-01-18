@@ -611,7 +611,6 @@
 				targeted_area = SLOT_ID_GLASSES
 				target_displayname = "eyes"
 
-
 		if(target.equip_to_slot_if_possible(H, targeted_area, INV_OP_IGNORE_DELAY | INV_OP_SILENT))
 			visible_message("<span class='danger'>[src] leaps at [target]'s [target_displayname]!</span>")
 		else
@@ -671,7 +670,6 @@
 			chosen_list = GLOB.clothing_headsets
 			icon_file = 'icons/mob/clothing/ears.dmi'
 			
-	
 	var/picked = input(src,"What clothing would you like to mimic?","Mimic Clothes") as null|anything in chosen_list
 
 	if(!ispath(chosen_list[picked]))
@@ -688,8 +686,6 @@
 		M.update_inv_back()
 
 
-
-
 /mob/living/simple_mob/protean_blob/proc/chameleon_apperance_rig()
 	set name = "Chameleon Hardsuit Change"
 	set desc = "Allows a protean blob to change or reset its apperance when worn."
@@ -702,7 +698,6 @@
 	var/obj/item/hardsuit/protean/H = loc
 	var/chosen_list
 	var/obj/item/clothing/chosenpart
-
 
 	switch(input(src,"What type of clothing would you like to mimic or reset appearance?","Mimic Clothes") as null|anything in list("suit", "helmet", "gloves", "boots", "reset"))
 		if("reset")
@@ -736,7 +731,6 @@
 
 	chosenpart.disguise(chosen_list[picked])
 	chosenpart.update_worn_icon()
-
 
 
 /mob/living/simple_mob/protean_blob/proc/chameleon_color()
