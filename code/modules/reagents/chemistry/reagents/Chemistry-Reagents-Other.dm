@@ -35,16 +35,22 @@
 	glass_name = "holy water"
 	glass_desc = "An ashen-obsidian-water mix, this solution will alter certain sections of the brain's rationality."
 
-/datum/reagent/water/holywater/affect_ingest(mob/living/carbon/M, alien, removed)
-	..()
+/datum/reagent/water/holywater/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	// todo: legacy code
+	var/mob/living/carbon/human/M = entity
 	if(ishuman(M)) // Any location
 		if(M.mind && cult.is_antagonist(M.mind) && prob(10))
 			cult.remove_antagonist(M.mind)
 
-/datum/reagent/water/holywater/touch_turf(turf/T)
+/datum/reagent/water/holywater/contact_expose_turf(turf/target, volume, temperature, list/data, vapor)
+	. = ..()
+
+	var/turf/simulated/T = target
+	if(isnull(T))
+		return
 	if(volume >= 5)
 		T.holy = 1
-	return
 
 /datum/reagent/ammonia
 	name = "Ammonia"
@@ -106,7 +112,10 @@
 	if(volume < 1)
 		return
 	if(volume >= 1)
-		target.wet_floor(2)
+		var/turf/simulated/S = target
+		if(!istype(S))
+			return
+		S.wet_floor(2)
 
 /datum/reagent/silicate
 	name = "Silicate"
@@ -149,7 +158,7 @@
 	taste_mult = 1.1
 	reagent_state = REAGENT_LIQUID
 	color = "#C8A5DC"
-	affects_robots = TRUE
+	// affects_robots = TRUE
 
 /datum/reagent/coolant/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()

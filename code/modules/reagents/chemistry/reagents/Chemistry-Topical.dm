@@ -74,10 +74,10 @@
 /datum/reagent/topical/inaprovalaze/on_metabolize_dermal(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed, obj/item/organ/external/bodypart)
 	. = ..()
 	if(!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
-		entity.add_chemical_effect(CHEMICAL_EFFECT_STABLE, 20)//Reduces bleeding rate, and allowes the patient to breath even when in shock
-		entity.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 40)
-		if(ishuman(M))
-			var/mob/living/carbon/human/H = M
+		entity.add_reagent_cycle_effect(CHEMICAL_EFFECT_STABLE, 20)//Reduces bleeding rate, and allowes the patient to breath even when in shock
+		entity.max_reagent_cycle_effect(CHEMICAL_EFFECT_PAINKILLER, 40)
+		if(ishuman(entity))
+			var/mob/living/carbon/human/H = entity
 			for(var/obj/item/organ/external/O in H.bad_external_organs)
 				for(var/datum/wound/W as anything in O.wounds)
 					if(!W.bleeding())
@@ -92,25 +92,25 @@
 	name = "Neurolaze"
 	id = "neurolaze"
 	description = "Superficial painkiller, do not inject or ingest"
-	bloodstream_metabolism_multiplier = 2 //Nervocells absorb this chem super fast so much faster metabolism...
-	overdose = REAGENTS_OVERDOSE_MEDICINE * 0.5
+	dermal_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 0.5
 
 	color = "#000000"
 
 	bloodstream_toxicity = 5
+	ingested_elimination_multiplier = 4
 
 /datum/reagent/topical/neurolaze/on_metabolize_dermal(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed, obj/item/organ/external/bodypart)
 	. = ..()
 	if(!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
-		entity.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 100)//Half oxycodone
+		entity.max_reagent_cycle_effect(CHEMICAL_EFFECT_PAINKILLER, 100)//Half oxycodone
 		entity.make_jittery(50*removed)//Your nerves are itching
 		entity.make_dizzy(80*removed)//Screenshake.
-		entity.add_chemical_effect(CHEMICAL_EFFECT_SPEEDBOOST, 1)
+		entity.add_reagent_cycle_effect(CHEMICAL_EFFECT_SPEEDBOOST, 1)
 		if(prob(5))// Speed boost and emotes
 			entity.emote(pick("twitch", "blink_r", "shiver"))
 		if(world.time > (data + (60*10)))
 			data = world.time
-			to_chat(M, "<span class='warning'>You feel like all your nerves are itching.</span>")
+			to_chat(entity, "<span class='warning'>You feel like all your nerves are itching.</span>")
 
 /datum/reagent/topical/neurolaze/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
@@ -119,11 +119,10 @@
 		entity.apply_damage(5 * removed, HALLOSS)//holodeck boxing glove damage
 		entity.make_jittery(200)
 
-/datum/reagent/topical/neurolaze/on_metabolize_dermal(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed, obj/item/organ/external/bodypart)
+/datum/reagent/topical/neurolaze/on_metabolize_ingested(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed, obj/item/organ/internal/container)
 	. = ..()
 	if(!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		entity.vomit()
-		holder.remove_reagent("neurolaze", 10 * removed)//purges itself...
 
 /datum/reagent/topical/sterilaze
 	name = "Sterilaze"
@@ -134,8 +133,8 @@
 
 /datum/reagent/topical/sterilaze/on_metabolize_dermal(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed, obj/item/organ/external/bodypart)
 	. = ..()
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
+	if(ishuman(entity))
+		var/mob/living/carbon/human/H = entity
 		for(var/obj/item/organ/external/O in H.bad_external_organs)
 			for(var/datum/wound/W in O.wounds)
 				W.disinfected = 1
@@ -162,10 +161,10 @@
 /datum/reagent/topical/lotion/on_metabolize_dermal(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed, obj/item/organ/external/bodypart)
 	. = ..()
 	if (!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
-		entity.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 5)//Not really usefull but I guess a lotion would help alittle with pain
+		entity.max_reagent_cycle_effect(CHEMICAL_EFFECT_PAINKILLER, 5)//Not really usefull but I guess a lotion would help alittle with pain
 		if(world.time > (data + (5*60*10)))
 			data = world.time
-			to_chat(M, "<span class='notice'>Your skin feels refreshed and sooth.</span>")
+			to_chat(entity, "<span class='notice'>Your skin feels refreshed and sooth.</span>")
 
 //Remove before merge
 /obj/item/storage/box/touch_bottles
