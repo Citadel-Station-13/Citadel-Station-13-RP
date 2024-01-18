@@ -3099,6 +3099,7 @@
 #include "code\modules\lore_hardcoded\species\xenomorph_hybrid\origin.dm"
 #include "code\modules\lore_hardcoded\species\xenomorph_hybrid\religion.dm"
 #include "code\modules\mapping\map.dm"
+#include "code\modules\mapping\map_finale.dm"
 #include "code\modules\mapping\map_level.dm"
 #include "code\modules\mapping\map_template.dm"
 #include "code\modules\mapping\minimaps.dm"

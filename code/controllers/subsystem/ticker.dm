@@ -98,6 +98,19 @@ SUBSYSTEM_DEF(ticker)
 /datum/controller/subsystem/ticker/proc/unregister_finale(datum/map_finale/instance)
 	#warn impl
 
+/datum/controller/subsystem/ticker/proc/is_finale_called(datum/map_finale/instance_or_type)
+	if(ispath(instance_or_type))
+		instance_or_type = locate(instance_or_type) in map_finales
+	instance_or_type = (instance_or_type in map_finales)? instance_or_type : null
+	if(isnull(instance_or_type))
+		return FALSE
+	return instance_or_type.currently_called
+
+/datum/controller/subsystem/ticker/proc/fetch_finale_if_exists(datum/map_finale/instance_or_type)
+	if(ispath(instance_or_type))
+		return locate(instance_or_type) in map_finales
+	return (instance_or_type in map_finales)? instance_or_type : null
+
 //* legacy below
 
 /datum/controller/subsystem/ticker/fire()

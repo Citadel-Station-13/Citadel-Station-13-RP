@@ -23,22 +23,26 @@
 /**
  * called when being added to the ticker's registered finales
  */
-/datum/map_finale/proc/register()
+/datum/map_finale/proc/on_register()
+	return
 
 /**
  * called when being removed from the ticker's registered finales
  */
-/datum/map_finale/proc/unregister()
+/datum/map_finale/proc/on_unregister()
+	return
 
 /**
- *
+ * called when someone initiates this finale
  */
 /datum/map_finale/proc/on_call(datum/event_args/actor/actor, datum/via_source)
+	return
 
 /**
- *
+ * called when someone cancels this finale
  */
 /datum/map_finale/proc/on_recall(datum/event_args/actor/actor, datum/via_source)
+	return
 
 /**
  * called while called
@@ -46,7 +50,7 @@
  * @params
  * * dt - seconds
  */
-/datum/map_finale/proc/active_tick(dt)
+/datum/map_finale/proc/on_active_tick(dt)
 	return
 
 /**
@@ -57,36 +61,60 @@
  * @params
  * * dt - seconds
  */
-/datum/map_finale/proc/idle_tick(dt)
+/datum/map_finale/proc/on_idle_tick(dt)
 	return
 
 /**
- *
+ * Call this to end the round.
  */
-/datum/map_finale/proc/
+/datum/map_finale/proc/finish()
+	return
 
 /**
- *
+ * Stat entry to display
  */
-/datum/map_finale/proc/
+/datum/map_finale/proc/stat_entry()
+	return
+
+/**
+ * Automated one-phase finale
+ */
+/datum/map_finale/one_phase
+	#warn impl
 
 /**
  * Just end the round without doing anything
  */
-/datum/map_finale/end_the_shift
+/datum/map_finale/one_phase/end_the_shift
+	#warn impl
+
+/**
+ * Automated two-phase finale
+ */
+/datum/map_finale/two_phase
+	#warn impl
 
 /**
  * Evacuate via available shuttles and pods
  */
-/datum/map_finale/evacuation
+/datum/map_finale/two_phase/evacuation
+	#warn impl
 
 /**
  * Transfer via available shuttles
  */
-/datum/map_finale/crew_transfer
+/datum/map_finale/two_phase/crew_transfer
+	#warn impl
 
 /**
  * Initiate a FTL jump
  */
-/datum/map_finale/ftl_jump
-
+// /datum/map_finale/ftl_jump
+// todo.
+// tl;dr
+// 1. during call, charge FTL
+// 2. when FTL is charged, check that minimum time elapsed.
+// 3. when charged AND minimum time elapsed, do final charge
+// 4. after final charge, initiate ftl
+// 5. if ftl interrupted for any reason, immediately call /two_phase/evacuation
+// 6. try again while that goes on
