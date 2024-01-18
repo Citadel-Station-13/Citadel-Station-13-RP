@@ -6,7 +6,7 @@
 	desc = "A high explosive designed to be fired from a launcher."
 	icon_state = "rocketshell_alt"
 	projectile_type = /obj/projectile/bullet/srmrocket
-	caliber = "rocket"
+	regex_this_caliber = /datum/caliber/rocket
 	materials_base = list(MAT_STEEL = 10000)
 
 /obj/item/ammo_casing/rocket/weak

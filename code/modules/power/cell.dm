@@ -21,7 +21,7 @@
 	var/rigged = 0		// true if rigged to explode
 	var/minor_fault = 0 //If not 100% reliable, it will build up faults.
 	var/self_charging = FALSE // If true, the cell will recharge itself.
-	var/charge_amount = 25 // How much power to give, if self_recharge is true.  The number is in absolute cell charge, as it gets divided by CELLRATE later.
+	var/charge_amount = 25 // How much power to give, if self_charging is true.  The number is in absolute cell charge, as it gets divided by CELLRATE later.
 	var/last_use = 0 // A tracker for use in self-charging
 	var/charge_delay = 0 // How long it takes for the cell to start recharging after last use
 	var/rating = 1
@@ -37,11 +37,11 @@
 	if(isnull(charge))
 		charge = maxcharge
 	update_icon()
-	if(self_recharge)
+	if(self_charging)
 		START_PROCESSING(SSobj, src)
 
 /obj/item/cell/Destroy()
-	if(self_recharge)
+	if(self_charging)
 		STOP_PROCESSING(SSobj, src)
 	return ..()
 
@@ -52,7 +52,7 @@
 	return src
 
 /obj/item/cell/process(delta_time)
-	if(self_recharge)
+	if(self_charging)
 		if(world.time >= last_use + charge_delay)
 			give(charge_amount)
 	else
