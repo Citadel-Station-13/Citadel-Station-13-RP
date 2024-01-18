@@ -144,7 +144,7 @@
 
 /datum/supply_pack/munitions/mrifle
 	name = "Weapons - Magnetic Rifles"
-	contains = list(/obj/item/gun/projectile/magnetic/railgun/heater = 2)
+	contains = list(/obj/item/gun/projectile/magfed/railgun/heater = 2)
 	cost = 120
 	container_type = /obj/structure/closet/crate/secure/weapon
 	container_name = "Magnetic weapon crate"
@@ -152,7 +152,7 @@
 
 /datum/supply_pack/munitions/mpistol
 	name = "Weapons - Magnetic Pistols"
-	contains = list(/obj/item/gun/projectile/magnetic/railgun/heater/pistol = 2)
+	contains = list(/obj/item/gun/projectile/magfed/railgun/heater/pistol = 2)
 	cost = 200
 	container_type = /obj/structure/closet/crate/secure/weapon
 	container_name = "Magnetic weapon crate"
@@ -160,7 +160,7 @@
 
 /datum/supply_pack/munitions/mcarbine
 	name = "Weapons - Magnetic Carbines"
-	contains = list(/obj/item/gun/projectile/magnetic/railgun/flechette/sif = 2)
+	contains = list(/obj/item/gun/projectile/magfed/railgun/flechette/sif = 2)
 	cost = 130
 	container_type = /obj/structure/closet/crate/secure/weapon
 	container_name = "Magnetic weapon crate"

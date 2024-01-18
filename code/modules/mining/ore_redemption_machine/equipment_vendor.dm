@@ -57,7 +57,7 @@
 		new /datum/data/mining_equipment("Hardsuit - Maneuvering Jets",	/obj/item/hardsuit_module/maneuvering_jets,								1250),
 		new /datum/data/mining_equipment("Hardsuit - Intelligence Storage",	/obj/item/hardsuit_module/ai_container,								2500),
 		new /datum/data/mining_equipment("Hardsuit - Smoke Bomb Deployer",	/obj/item/hardsuit_module/grenade_launcher/smoke,					2000),
-		new /datum/data/mining_equipment("Industrial Equipment - Phoron Bore",	/obj/item/gun/projectile/magnetic/matfed,						3000),
+		new /datum/data/mining_equipment("Industrial Equipment - Phoron Bore",	/obj/item/gun/projectile/magfed/matfed,						3000),
 		new /datum/data/mining_equipment("Industrial Equipment - Sheet-Snatcher",/obj/item/storage/bag/sheetsnatcher,				500),
 		new /datum/data/mining_equipment("Repurposed Equipment - Mining Carbine",	/obj/item/gun/projectile/energy/gun/miningcarbine,						5000),
 		new /datum/data/mining_equipment("Digital Tablet - Standard",	/obj/item/modular_computer/tablet/preset/custom_loadout/standard,	500),

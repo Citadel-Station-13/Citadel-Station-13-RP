@@ -67,7 +67,7 @@
 	if(thing.is_screwdriver() && construction_stage >= 9)
 		user.visible_message("<span class='notice'>\The [user] secures \the [src] and finishes it off.</span>")
 		playsound(loc, 'sound/items/Screwdriver.ogg', 50, 1)
-		var/obj/item/gun/projectile/magnetic/coilgun = new(drop_location())
+		var/obj/item/gun/projectile/magfed/coilgun = new(drop_location())
 		var/put_in_hands
 		var/mob/M = loc
 		if(istype(M))

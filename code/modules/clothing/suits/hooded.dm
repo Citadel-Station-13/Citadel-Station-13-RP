@@ -474,7 +474,7 @@
 		/obj/item/kinetic_crusher,
 		/obj/item/resonator,
 		/obj/item/gun/projectile/energy/gun/miningcarbine,
-		/obj/item/gun/projectile/magnetic/matfed
+		/obj/item/gun/projectile/magfed/matfed
 		)
 
 // Eldritch suit

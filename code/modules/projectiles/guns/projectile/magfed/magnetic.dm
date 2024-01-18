@@ -1,4 +1,10 @@
-/obj/item/gun/projectile/magnetic
+/**
+ * Magnetic weapons that use arbitrary ammo.
+ *
+ * Looking for bullet casing/magazine-using magweapons?
+ * You're looking for /projectile/ballistic/magnetic, not /projectile/magnetic!
+ */
+/obj/item/gun/projectile/magfed
 	name = "improvised coilgun"
 	desc = "A coilgun hastily thrown together out of a basic frame and advanced power storage components. Is it safe for it to be duct-taped together like that?"
 	icon_state = "coilgun"
@@ -21,24 +27,24 @@
 	var/power_cost = 950                                       // Cost per fire, should consume almost an entire basic cell.
 	var/power_per_tick                                         // Capacitor charge per process(). Updated based on capacitor rating.
 
-/obj/item/gun/projectile/magnetic/Initialize(mapload)
+/obj/item/gun/projectile/magfed/Initialize(mapload)
 	START_PROCESSING(SSobj, src)
 	if(capacitor)
 		power_per_tick = (power_cost*0.15) * capacitor.rating
 	update_icon()
 	return ..()
 
-/obj/item/gun/projectile/magnetic/Destroy()
+/obj/item/gun/projectile/magfed/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	QDEL_NULL(cell)
 	QDEL_NULL(loaded)
 	QDEL_NULL(capacitor)
 	. = ..()
 
-/obj/item/gun/projectile/magnetic/get_cell(inducer)
+/obj/item/gun/projectile/magfed/get_cell(inducer)
 	return cell
 
-/obj/item/gun/projectile/magnetic/process(delta_time)
+/obj/item/gun/projectile/magfed/process(delta_time)
 	if(capacitor)
 		if(cell)
 			if(capacitor.charge < capacitor.max_charge && cell.checked_use(power_per_tick))
@@ -47,7 +53,7 @@
 			capacitor.use(capacitor.charge * 0.05)
 	update_icon()
 
-/obj/item/gun/projectile/magnetic/update_icon()
+/obj/item/gun/projectile/magfed/update_icon()
 	var/list/overlays_to_add = list()
 	cut_overlays()
 	if(removable_components)
@@ -67,11 +73,11 @@
 	add_overlay(overlays_to_add)
 	..()
 
-/obj/item/gun/projectile/magnetic/proc/show_ammo(var/mob/user)
+/obj/item/gun/projectile/magfed/proc/show_ammo(var/mob/user)
 	if(loaded)
 		to_chat(user, "<span class='notice'>It has \a [loaded] loaded.</span>")
 
-/obj/item/gun/projectile/magnetic/examine(var/mob/user)
+/obj/item/gun/projectile/magfed/examine(var/mob/user)
 	. = ..()
 	show_ammo(user)
 
@@ -88,7 +94,7 @@
 		else
 			. += "<span class='notice'>The capacitor charge indicator is <font color ='[COLOR_GREEN]'>green</font>.</span>"
 
-/obj/item/gun/projectile/magnetic/attackby(var/obj/item/thing, var/mob/user)
+/obj/item/gun/projectile/magfed/attackby(var/obj/item/thing, var/mob/user)
 
 	if(removable_components)
 		if(istype(thing, /obj/item/cell))
@@ -150,7 +156,7 @@
 		return
 	. = ..()
 
-/obj/item/gun/projectile/magnetic/attack_hand(mob/user, list/params)
+/obj/item/gun/projectile/magfed/attack_hand(mob/user, list/params)
 	if(user.get_inactive_held_item() == src)
 		var/obj/item/removing
 
@@ -170,14 +176,14 @@
 			return
 	. = ..()
 
-/obj/item/gun/projectile/magnetic/proc/check_ammo()
+/obj/item/gun/projectile/magfed/proc/check_ammo()
 	return loaded
 
-/obj/item/gun/projectile/magnetic/proc/use_ammo()
+/obj/item/gun/projectile/magfed/proc/use_ammo()
 	qdel(loaded)
 	loaded = null
 
-/obj/item/gun/projectile/magnetic/consume_next_projectile()
+/obj/item/gun/projectile/magfed/consume_next_projectile()
 
 	if(!check_ammo() || !capacitor || capacitor.charge < power_cost)
 		return
@@ -194,7 +200,7 @@
 
 	return new projectile_type(src)
 
-/obj/item/gun/projectile/magnetic/fuelrod
+/obj/item/gun/projectile/magfed/fuelrod
 	name = "Fuel-Rod Cannon"
 	desc = "A bulky weapon designed to fire reactor core fuel rods at absurd velocities... who thought this was a good idea?!"
 	description_antag = "This device is capable of firing reactor fuel assemblies, acquired from a R-UST fuel compressor and an appropriate fueltype. Be warned, Supermatter rods may have unforseen consequences."
@@ -213,7 +219,7 @@
 
 	power_cost = 500
 
-/obj/item/gun/projectile/magnetic/fuelrod/consume_next_projectile()
+/obj/item/gun/projectile/magfed/fuelrod/consume_next_projectile()
 	if(!check_ammo() || !capacitor || capacitor.charge < power_cost)
 		return
 
@@ -252,7 +258,7 @@
 
 	return new projectile_type(src)
 
-/obj/item/gun/projectile/magnetic/fuelrod/Initialize(mapload)
+/obj/item/gun/projectile/magfed/fuelrod/Initialize(mapload)
 	cell = new /obj/item/cell/high
 	capacitor = new /obj/item/stock_parts/capacitor
 	return ..()
