@@ -9,3 +9,5 @@
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_COMBAT = 5, TECH_PHORON = 4)
 	regex_this_firemodes = list(/datum/firemode/energy/phoron)
+
+#warn above

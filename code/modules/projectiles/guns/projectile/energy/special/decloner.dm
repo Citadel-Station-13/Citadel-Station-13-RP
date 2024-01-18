@@ -10,3 +10,5 @@
 	item_state = "decloner"
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 4, TECH_POWER = 3)
 	regex_this_firemodes = list(/datum/firemode/energy/decloner)
+
+#warn above
