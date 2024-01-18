@@ -154,7 +154,7 @@
 		SPAN_HEAR("You hear a wet slithering noise!"),
 	)
 
-/datum/species/diona/handle_environment_special(mob/living/carbon/human/H)
+/datum/species/diona/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
 	if(H.inStasisNow())
 		return
 

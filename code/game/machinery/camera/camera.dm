@@ -1,7 +1,8 @@
+CREATE_WALL_MOUNTING_TYPES(/obj/machinery/camera)
 /obj/machinery/camera
 	name = "security camera"
 	desc = "It's used to monitor rooms."
-	icon = 'icons/obj/monitors.dmi'
+	icon = 'icons/machinery/security_camera.dmi'
 	icon_state = "camera"
 	use_power = USE_POWER_ACTIVE
 	idle_power_usage = 5
@@ -264,23 +265,6 @@
 	else
 		icon_state = initial(icon_state)
 
-/obj/machinery/camera/setDir(ndir)
-	. = ..()
-	base_pixel_x = 0
-	base_pixel_y = 0
-	var/turf/T = get_step(get_turf(src), turn(src.dir, 180))
-	for(var/obj/O in T.contents)
-		if(O.density)
-			switch(dir)
-				if(SOUTH)
-					base_pixel_y = 21
-				if(WEST)
-					base_pixel_x = 10
-				if(EAST)
-					base_pixel_x = -10
-			break
-	reset_pixel_offsets()
-
 /obj/machinery/camera/proc/triggerCameraAlarm(duration = 0)
 	alarm_on = 1
 	camera_alarm.triggerAlarm(loc, src, duration)
@@ -311,24 +295,6 @@
 	else
 		see = hear(view_range, pos)
 	return see
-
-/atom/proc/auto_turn()
-	//Automatically turns based on nearby walls.
-	var/turf/simulated/wall/T = null
-	for(var/i = 1, i <= 8; i += i)
-		T = get_ranged_target_turf(src, i, 1)
-		if(istype(T))
-			//If someone knows a better way to do this, let me know. -Giacom
-			switch(i)
-				if(NORTH)
-					src.setDir(SOUTH)
-				if(SOUTH)
-					src.setDir(NORTH)
-				if(WEST)
-					src.setDir(EAST)
-				if(EAST)
-					src.setDir(WEST)
-			break
 
 //Return a working camera that can see a given mob
 //or null if none

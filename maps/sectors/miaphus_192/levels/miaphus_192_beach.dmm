@@ -697,7 +697,9 @@
 /turf/simulated/floor/tiled/old_tile/white,
 /area/tether_away/beach/bunker/kitchen)
 "es" = (
-/obj/machinery/mining/drill,
+/obj/machinery/mining/drill{
+	drill_id = 112
+	},
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
@@ -1191,7 +1193,7 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether_away/beach/bunker/bunk)
 "ik" = (
@@ -1252,7 +1254,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether_away/beach/bunker/engi)
 "iF" = (
@@ -1359,7 +1361,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/tether_away/beach/mineyard)
 "jD" = (
@@ -1548,8 +1550,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/alarms_hidden{
-	dir = 8;
+/obj/machinery/air_alarm/alarms_hidden/west_mount{
 	pixel_x = -27
 	},
 /turf/simulated/floor/wood/broken,
@@ -1579,8 +1580,7 @@
 	pixel_y = 20;
 	wall_mounted = 1
 	},
-/obj/machinery/power/apc/alarms_hidden{
-	dir = 8;
+/obj/machinery/air_alarm/alarms_hidden/west_mount{
 	pixel_x = -27
 	},
 /obj/structure/cable/cyan{
@@ -2536,7 +2536,7 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /mob/living/simple_mob/animal/roach/jaeger,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether_away/beach/bunker)
@@ -3641,7 +3641,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether_away/beach/aa)
 "Eq" = (
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /obj/structure/cable/cyan{
 	icon_state = "0-8"
 	},
@@ -3650,8 +3650,7 @@
 	},
 /area/tether_away/beach/resort/bunk)
 "Ew" = (
-/obj/machinery/power/apc/alarms_hidden{
-	dir = 4;
+/obj/machinery/air_alarm/alarms_hidden/east_mount{
 	pixel_x = 22
 	},
 /obj/structure/closet/cabinet{
@@ -3940,7 +3939,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether_away/beach/desalinator)
 "Ho" = (
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /obj/structure/cable/cyan{
 	icon_state = "0-2"
 	},
@@ -3995,7 +3994,7 @@
 /area/tether_away/beach/mineyard)
 "HH" = (
 /obj/structure/cable/cyan,
-/obj/machinery/power/apc/alarms_hidden/west_bump,
+/obj/machinery/power/apc/alarms_hidden/west_mount,
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
@@ -4061,8 +4060,7 @@
 	pixel_y = 20;
 	wall_mounted = 1
 	},
-/obj/machinery/power/apc/alarms_hidden{
-	dir = 4;
+/obj/machinery/air_alarm/alarms_hidden/east_mount{
 	pixel_x = 22
 	},
 /obj/structure/cable/cyan{
@@ -4142,7 +4140,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /obj/structure/flora/pottedplant/dead,
 /turf/simulated/floor/tiled/old_tile/white,
 /area/tether_away/beach/resort/lockermed)
@@ -4546,7 +4544,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/alarms_hidden/west_bump,
+/obj/machinery/power/apc/alarms_hidden/west_mount,
 /obj/structure/table/standard,
 /obj/item/storage/box/donkpockets{
 	pixel_x = 2;
@@ -4715,7 +4713,7 @@
 	},
 /area/tether_away/beach/station/tram)
 "OE" = (
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
@@ -5069,8 +5067,7 @@
 	pixel_y = 20;
 	wall_mounted = 1
 	},
-/obj/machinery/power/apc/alarms_hidden{
-	dir = 4;
+/obj/machinery/air_alarm/alarms_hidden/east_mount{
 	pixel_x = 22
 	},
 /obj/structure/cable/cyan{
@@ -5113,7 +5110,7 @@
 /area/tether_away/beach/desalinator)
 "Se" = (
 /obj/structure/cable,
-/obj/machinery/power/apc/alarms_hidden/south_bump,
+/obj/machinery/power/apc/alarms_hidden/south_mount,
 /turf/simulated/floor/tiled/old_tile/white,
 /area/tether_away/beach/bunker/restroom)
 "Sl" = (
@@ -5246,8 +5243,7 @@
 /turf/simulated/floor/tiled/old_tile/white,
 /area/tether_away/beach/bunker/restroom)
 "Tp" = (
-/obj/machinery/power/apc/alarms_hidden{
-	dir = 4;
+/obj/machinery/air_alarm/alarms_hidden/east_mount{
 	pixel_x = 22
 	},
 /obj/structure/cable,
@@ -5472,7 +5468,7 @@
 /area/tether_away/beach/jungle)
 "VU" = (
 /obj/structure/cable,
-/obj/machinery/power/apc/alarms_hidden/south_bump,
+/obj/machinery/power/apc/alarms_hidden/south_mount,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether_away/beach/bunker/janitor)
 "Wc" = (
@@ -5634,7 +5630,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /obj/structure/table/woodentable,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether_away/beach/bunker/mess)

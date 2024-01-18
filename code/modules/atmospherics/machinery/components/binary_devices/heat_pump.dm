@@ -196,7 +196,7 @@
 		ui = new(user, src, "heat_pump", name)
 		ui.open()
 
-/obj/machinery/atmospherics/component/binary/heat_pump/ui_data(mob/user)
+/obj/machinery/atmospherics/component/binary/heat_pump/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 	data["target_temp"] = target_temp
 	data["current_temp"] = air2.temperature
@@ -209,10 +209,10 @@
 
 	return data
 
-/obj/machinery/atmospherics/component/binary/heat_pump/ui_state(mob/user, datum/tgui_module/module)
+/obj/machinery/atmospherics/component/binary/heat_pump/ui_state()
 	return GLOB.physical_state
 
-/obj/machinery/atmospherics/component/binary/heat_pump/ui_act(action, params)
+/obj/machinery/atmospherics/component/binary/heat_pump/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 	switch(action)

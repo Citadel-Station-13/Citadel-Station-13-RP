@@ -95,7 +95,7 @@
 		ui = new(user, src, "TeleporterConsole", name) // 500, 800
 		ui.open()
 
-/obj/machinery/computer/teleporter/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/computer/teleporter/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 
 	data["disabled"] = is_disabled()

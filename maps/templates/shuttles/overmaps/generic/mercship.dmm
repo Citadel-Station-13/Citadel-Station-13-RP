@@ -33,9 +33,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
-/obj/machinery/firealarm/alarms_hidden{
-	pixel_y = 23
-	},
+/obj/machinery/fire_alarm/alarms_hidden/north_mount,
 /turf/simulated/floor/plating,
 /area/ship/mercenary/engine1)
 "ag" = (
@@ -167,7 +165,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 9
 	},
-/obj/machinery/power/apc/alarms_hidden/south_bump,
+/obj/machinery/power/apc/alarms_hidden/south_mount,
 /turf/simulated/floor/plating,
 /area/ship/mercenary/engine1)
 "aw" = (
@@ -307,7 +305,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor,
 /area/ship/mercenary/barracks)
 "aO" = (
@@ -419,7 +417,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/hangar)
 "bb" = (
@@ -519,9 +517,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
-/obj/machinery/firealarm/alarms_hidden{
-	pixel_y = 23
-	},
+/obj/machinery/fire_alarm/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/barracks)
 "bm" = (
@@ -602,9 +598,7 @@
 /obj/machinery/button/remote/blast_door{
 	id = "mercblast"
 	},
-/obj/machinery/firealarm/alarms_hidden{
-	pixel_y = 23
-	},
+/obj/machinery/fire_alarm/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/bridge)
 "bv" = (
@@ -853,7 +847,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/barracks)
 "bT" = (
@@ -1038,7 +1032,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/med1)
 "ck" = (
@@ -1084,7 +1078,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/engineeringcntrl)
 "cq" = (
@@ -1107,7 +1101,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
 	},
-/obj/machinery/power/apc/alarms_hidden/west_bump,
+/obj/machinery/power/apc/alarms_hidden/west_mount,
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/northairlock)
 "cs" = (
@@ -1302,8 +1296,7 @@
 /area/ship/mercenary/hangar)
 "cL" = (
 /obj/effect/floor_decal/borderfloorblack,
-/obj/machinery/firealarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/dark,
@@ -1450,7 +1443,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
 	},
-/obj/machinery/power/apc/alarms_hidden/west_bump,
+/obj/machinery/power/apc/alarms_hidden/west_mount,
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/hall1)
 "cY" = (
@@ -1484,7 +1477,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 9
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/bridge)
 "db" = (
@@ -1756,7 +1749,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
 	},
-/obj/machinery/power/apc/alarms_hidden/west_bump,
+/obj/machinery/power/apc/alarms_hidden/west_mount,
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/southairlock)
 "dC" = (
@@ -1811,7 +1804,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
 	},
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/air)
 "dI" = (
@@ -1856,7 +1849,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/med)
 "dM" = (
@@ -2012,7 +2005,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
 	},
-/obj/machinery/power/apc/alarms_hidden/west_bump,
+/obj/machinery/power/apc/alarms_hidden/west_mount,
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/engineering)
 "ef" = (
@@ -2088,9 +2081,7 @@
 	},
 /obj/fiftyspawner/uranium,
 /obj/fiftyspawner/uranium,
-/obj/machinery/firealarm/alarms_hidden{
-	pixel_y = 23
-	},
+/obj/machinery/fire_alarm/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/engineeringcntrl)
 "ep" = (
@@ -2236,7 +2227,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/hall2)
 "eK" = (
@@ -2542,7 +2533,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 10
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/plating,
 /area/ship/mercenary/engine)
 "fm" = (
@@ -2646,8 +2637,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
-/obj/machinery/firealarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -26
 	},
 /turf/simulated/floor/plating,
@@ -2692,8 +2682,7 @@
 	dir = 9
 	},
 /obj/machinery/meter,
-/obj/machinery/firealarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/dark,
@@ -2874,7 +2863,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/white,
 /area/ship/mercenary/fighter)
 "fU" = (
@@ -3041,7 +3030,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/white,
 /area/ship/mercenary/armoury)
 "gi" = (
@@ -3149,7 +3138,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/atmos)
 "gw" = (
@@ -3228,9 +3217,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
-/obj/machinery/firealarm/alarms_hidden{
-	pixel_y = 23
-	},
+/obj/machinery/fire_alarm/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/hall2)
 "gC" = (
@@ -3352,8 +3339,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/borderfloorblack,
-/obj/machinery/firealarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/dark,
@@ -3374,8 +3360,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/borderfloorblack,
-/obj/machinery/firealarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/white,
@@ -3424,9 +3409,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
-/obj/machinery/firealarm/alarms_hidden{
-	pixel_y = 23
-	},
+/obj/machinery/fire_alarm/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/engineering)
 "gW" = (
@@ -3459,8 +3442,7 @@
 	dir = 5
 	},
 /obj/effect/floor_decal/borderfloorblack,
-/obj/machinery/firealarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/white,
@@ -3615,8 +3597,7 @@
 /area/ship/mercenary/engineering)
 "hp" = (
 /obj/effect/floor_decal/borderfloorblack,
-/obj/machinery/firealarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/dark,
@@ -3743,8 +3724,7 @@
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/borderfloorblack,
-/obj/machinery/firealarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/dark,

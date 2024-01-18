@@ -160,7 +160,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 		ui = new(user, src, "Radio", name)
 		ui.open()
 
-/obj/item/radio/ui_data(mob/user)
+/obj/item/radio/ui_data(mob/user, datum/tgui/ui)
 	var/data[0]
 
 	data["rawfreq"] = frequency
@@ -187,7 +187,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 
 	return data
 
-/obj/item/radio/ui_act(action, params)
+/obj/item/radio/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -688,7 +688,7 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 			if(keyslot)
 				var/turf/T = get_turf(user)
 				if(T)
-					keyslot.loc = T
+					keyslot.forceMove(T)
 					keyslot = null
 
 			recalculateChannels()

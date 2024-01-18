@@ -92,10 +92,10 @@
 		ui = new(user, src, "Wires", "[proper_name] wires")
 		ui.open()
 
-/datum/wires/ui_state(mob/user, datum/tgui_module/module)
+/datum/wires/ui_state()
 	return GLOB.physical_state
 
-/datum/wires/ui_data(mob/user)
+/datum/wires/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 	var/list/replace_colors
 
@@ -150,7 +150,7 @@
 	data["status"] = status
 	return data
 
-/datum/wires/ui_act(action, list/params)
+/datum/wires/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return
 

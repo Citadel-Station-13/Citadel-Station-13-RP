@@ -23,7 +23,7 @@
 		ui = new(user, src, "OvermapEngines", "[linked.name] Engines Control") // 390, 530
 		ui.open()
 
-/obj/machinery/computer/ship/engines/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/computer/ship/engines/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 	data["global_state"] = linked.engines_state
 	data["global_limit"] = round(linked.thrust_limit*100)

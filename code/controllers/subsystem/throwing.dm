@@ -35,6 +35,8 @@ SUBSYSTEM_DEF(throwing)
 
 	currentrun = null
 
+// todo: the landing stack kinda sucks ass and needs to be unit tested and rewritten
+
 /datum/thrownthing
 	//! important stuff
 	/// thing we threw
@@ -197,7 +199,7 @@ SUBSYSTEM_DEF(throwing)
 		// if we have gravity we can end, else keep going
 		if(AM.has_gravity())
 			if(dist_travelled >= maxrange || AM.loc == target_turf)
-				terminate()
+				land()
 				return
 		else if(dist_travelled >= MAX_THROWING_DIST)
 			terminate()
@@ -340,6 +342,7 @@ SUBSYSTEM_DEF(throwing)
  * land on something and terminate the throw
  */
 /datum/thrownthing/proc/land(atom/A = get_turf(thrownthing))
+	// todo: need to rewrite to consider qdel's for object + us maybe?
 	// nothing to land on
 	if(!A)
 		terminate()
@@ -348,6 +351,10 @@ SUBSYSTEM_DEF(throwing)
 	// hit our target if we haven't already
 	if(!impacted[target] && (target in get_turf(A)))
 		impact(target, TRUE)
+
+	// we got terminated already
+	if(finished)
+		return
 
 	// land
 	thrownthing._throw_finalize(A, src)
@@ -361,6 +368,9 @@ SUBSYSTEM_DEF(throwing)
  * when called, immediately erases the throw from the atom and stops it.
  */
 /datum/thrownthing/proc/terminate(in_qdel)
+	// todo: shitcode, rewrite
+	if(QDELETED(src))
+		return
 	finished = TRUE
 	thrownthing.throwing = null
 	if(!QDELETED(thrownthing))

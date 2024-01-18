@@ -25,7 +25,7 @@
 	//dummy_terminals.Cut()
 	return ..()
 
-/obj/machinery/embedded_controller/radio/airlock/ui_status(mob/user, datum/ui_state/state, datum/tgui_module/module)
+/obj/machinery/embedded_controller/radio/airlock/ui_status(mob/user, datum/ui_state/state)
 	. = ..()
 	if(!allowed(user))
 		return min(UI_UPDATE, .)
@@ -34,7 +34,7 @@
 /obj/machinery/embedded_controller/radio/airlock/advanced_airlock_controller
 	name = "Advanced Airlock Controller"
 
-/obj/machinery/embedded_controller/radio/airlock/advanced_airlock_controller/ui_data(mob/user)
+/obj/machinery/embedded_controller/radio/airlock/advanced_airlock_controller/ui_data(mob/user, datum/tgui/ui)
 	. = list(
 		"chamber_pressure" = round(program.memory["chamber_sensor_pressure"]),
 		"external_pressure" = round(program.memory["external_sensor_pressure"]),
@@ -52,7 +52,7 @@
 	tag_secure = 1
 	valid_actions = list("cycle_ext", "cycle_int", "force_ext", "force_int", "abort")
 
-/obj/machinery/embedded_controller/radio/airlock/airlock_controller/ui_data(mob/user)
+/obj/machinery/embedded_controller/radio/airlock/airlock_controller/ui_data(mob/user, datum/tgui/ui)
 	. = list(
 		"chamber_pressure" = round(program.memory["chamber_sensor_pressure"]),
 		"exterior_status" = program.memory["exterior_status"],
@@ -80,7 +80,7 @@
 	else
 		icon_state = "access_control_off"
 
-/obj/machinery/embedded_controller/radio/airlock/access_controller/ui_data(mob/user)
+/obj/machinery/embedded_controller/radio/airlock/access_controller/ui_data(mob/user, datum/tgui/ui)
 	. = list(
 		"exterior_status" = program.memory["exterior_status"],
 		"interior_status" = program.memory["interior_status"],

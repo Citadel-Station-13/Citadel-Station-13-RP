@@ -496,7 +496,7 @@
 		ui = new(user, src, "ExosuitFabricator", name)
 		ui.open()
 
-/obj/machinery/mecha_part_fabricator/ui_static_data(mob/user)
+/obj/machinery/mecha_part_fabricator/ui_static_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 
 	var/list/final_sets = list()
@@ -533,7 +533,7 @@
 
 	return data
 
-/obj/machinery/mecha_part_fabricator/ui_data(mob/user)
+/obj/machinery/mecha_part_fabricator/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 
 	data["materials"] = output_available_resources()
@@ -559,7 +559,7 @@
 
 	return data
 
-/obj/machinery/mecha_part_fabricator/ui_act(action, var/list/params)
+/obj/machinery/mecha_part_fabricator/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

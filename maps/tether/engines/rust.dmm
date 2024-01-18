@@ -88,7 +88,7 @@
 	icon_state = "radiation";
 	name = "RADIOACTIVE AREA"
 	},
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall/r_wall/prepainted/engineering,
 /area/engineering/engine_room)
 "an" = (
 /turf/simulated/floor/reinforced,
@@ -104,9 +104,8 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "ar" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint_stripe/sun,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "as" = (
@@ -334,7 +333,7 @@
 /turf/simulated/floor/reinforced,
 /area/engineering/engine_room)
 "bc" = (
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall/r_wall/prepainted/engineering,
 /area/template_noop)
 "bd" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow,
@@ -370,11 +369,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "bj" = (
@@ -587,22 +582,19 @@
 /turf/space,
 /area/space)
 "bM" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
 	id = "EngineRadiatorViewport";
 	name = "Engine Radiator Viewport Shutter";
-	opacity = 0
+	opacity = 0;
+	dir = 4
 	},
-/obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 4
 	},
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint_stripe/sun,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "bN" = (
@@ -698,22 +690,19 @@
 /turf/space,
 /area/space)
 "bZ" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 8
+/obj/machinery/atmospherics/pipe/simple/visible/cyan{
+	dir = 4
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
 	id = "EngineRadiatorViewport";
 	name = "Engine Radiator Viewport Shutter";
-	opacity = 0
-	},
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/atmospherics/pipe/simple/visible/cyan{
+	opacity = 0;
 	dir = 4
 	},
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint_stripe/sun,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "ca" = (
@@ -789,19 +778,16 @@
 /turf/space,
 /area/space)
 "ck" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
 	id = "EngineRadiatorViewport";
 	name = "Engine Radiator Viewport Shutter";
-	opacity = 0
+	opacity = 0;
+	dir = 4
 	},
-/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint_stripe/sun,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "cl" = (
@@ -969,15 +955,11 @@
 /obj/machinery/camera/network/engine{
 	dir = 8
 	},
-/obj/machinery/firealarm{
-	dir = 4;
-	layer = 3.3;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "cG" = (
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall/r_wall/prepainted/engineering,
 /area/engineering/engine_gas)
 "cH" = (
 /turf/simulated/floor,
@@ -1030,9 +1012,7 @@
 /area/engineering/engine_room)
 "cO" = (
 /obj/machinery/door/blast/regular{
-	dir = 4;
 	id = "EngineEmitterPortWest";
-	layer = 3.3;
 	name = "Engine Gas Storage"
 	},
 /obj/machinery/door/firedoor/glass,
@@ -1198,7 +1178,7 @@
 	icon_state = "shock";
 	name = "HIGH VOLTAGE"
 	},
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall/r_wall/prepainted/engineering,
 /area/engineering/engine_room)
 "dk" = (
 /obj/effect/floor_decal/industrial/outline/blue,
@@ -1235,11 +1215,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/closet/radiation,
 /obj/item/clothing/glasses/meson,
 /obj/item/clothing/glasses/meson,
@@ -1248,8 +1224,7 @@
 "dp" = (
 /obj/effect/floor_decal/industrial/outline/blue,
 /obj/machinery/portable_atmospherics/canister/phoron,
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /turf/simulated/floor,
@@ -1271,13 +1246,6 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/button/remote/blast_door{
-	desc = "A remote control-switch for the engine control room blast doors.";
-	id = "EngineEmitterPortWest2";
-	name = "Engine Room Blast Doors";
-	pixel_x = 25;
-	req_one_access = list(11,24)
-	},
 /turf/simulated/floor,
 /area/engineering/engine_gas)
 "dt" = (
@@ -1286,18 +1254,16 @@
 	icon_state = "radiation";
 	name = "RADIOACTIVE AREA"
 	},
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall/r_wall/prepainted/engineering,
 /area/template_noop)
 "du" = (
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/blast/regular{
-	dir = 4;
-	id = "EngineEmitterPortWest2";
-	layer = 3.3;
-	name = "Engine Gas Storage"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/blast/regular{
+	id = "EngineEmitterPortWest";
+	name = "Engine Gas Storage"
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/template_noop)
 "dv" = (
@@ -1306,10 +1272,15 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/blast/regular{
-	dir = 4;
-	id = "EngineEmitterPortWest2";
-	layer = 3.3;
+	id = "EngineEmitterPortWest";
 	name = "Engine Gas Storage"
+	},
+/obj/machinery/button/remote/blast_door{
+	desc = "A remote control-switch for the engine control room blast doors.";
+	id = "EngineEmitterPortWest2";
+	name = "Engine Room Blast Doors";
+	pixel_x = 25;
+	req_one_access = list(11,24)
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/template_noop)
@@ -1359,6 +1330,17 @@
 /obj/machinery/power/smes/buildable/engine/rust,
 /turf/template_noop,
 /area/template_noop)
+"Cy" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/blast/regular{
+	id = "EngineEmitterPortWest";
+	name = "Engine Gas Storage"
+	},
+/turf/simulated/floor,
+/area/engineering/engine_gas)
+"YO" = (
+/turf/simulated/wall/r_wall/prepainted/engineering,
+/area/engineering/engine_room)
 
 (1,1,1) = {"
 aa
@@ -1684,20 +1666,20 @@ aa
 aa
 ai
 aj
-ak
-ak
-ak
-ak
-ak
-ak
-ak
-ak
-ak
-ak
-ak
-ak
-ak
-ak
+YO
+YO
+YO
+YO
+YO
+YO
+YO
+YO
+YO
+YO
+YO
+YO
+YO
+YO
 bM
 bZ
 ck
@@ -1716,7 +1698,7 @@ aa
 aa
 ai
 ab
-ak
+YO
 an
 an
 an
@@ -1748,7 +1730,7 @@ aa
 aa
 ai
 ab
-ak
+YO
 an
 an
 an
@@ -1780,7 +1762,7 @@ aa
 aa
 aj
 aj
-ak
+YO
 an
 an
 an
@@ -1799,7 +1781,7 @@ cc
 cn
 cy
 cJ
-cO
+Cy
 cH
 dg
 dm
@@ -1844,7 +1826,7 @@ aa
 aa
 aj
 aj
-ak
+YO
 an
 aA
 an
@@ -1876,7 +1858,7 @@ aa
 aa
 ai
 ab
-ak
+YO
 an
 aA
 an
@@ -1908,7 +1890,7 @@ aa
 aa
 ai
 ab
-ak
+YO
 an
 aA
 an
@@ -1929,7 +1911,7 @@ cA
 cL
 cP
 cY
-ak
+YO
 aa
 aa
 aa
@@ -1940,7 +1922,7 @@ aa
 aa
 ai
 aj
-ak
+YO
 ao
 ag
 ao
@@ -1961,7 +1943,7 @@ cB
 cM
 cQ
 cZ
-ak
+YO
 aa
 aa
 aa
@@ -1972,7 +1954,7 @@ aa
 aa
 aj
 ab
-ak
+YO
 aU
 aC
 aJ
@@ -1993,7 +1975,7 @@ bT
 ce
 cR
 da
-ak
+YO
 aa
 aa
 aa
@@ -2004,7 +1986,7 @@ aa
 aa
 ai
 ab
-ak
+YO
 af
 aD
 aK
@@ -2036,7 +2018,7 @@ aa
 aa
 ai
 aj
-ak
+YO
 ar
 aE
 ar
@@ -2057,7 +2039,7 @@ cC
 cg
 cs
 dc
-ak
+YO
 aa
 aa
 aa
@@ -2068,7 +2050,7 @@ aa
 aa
 ai
 ab
-ak
+YO
 as
 aq
 aL
@@ -2089,7 +2071,7 @@ cD
 ch
 ct
 dd
-ak
+YO
 aa
 aa
 aa
@@ -2100,7 +2082,7 @@ aa
 aa
 aj
 ab
-ak
+YO
 at
 aq
 aq
@@ -2121,7 +2103,7 @@ cE
 bk
 cS
 aq
-ak
+YO
 aa
 aa
 aa
@@ -2132,7 +2114,7 @@ aa
 aa
 ai
 ab
-ak
+YO
 au
 aq
 aM
@@ -2153,7 +2135,7 @@ cF
 cN
 cT
 de
-ak
+YO
 aa
 aa
 aa
@@ -2165,11 +2147,11 @@ aa
 ai
 aj
 am
-ak
-ak
-ak
-ak
-ak
+YO
+YO
+YO
+YO
+YO
 bc
 bc
 bc

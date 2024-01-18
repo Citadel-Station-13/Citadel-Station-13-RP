@@ -145,16 +145,10 @@
 	return FALSE //ok so tasers hurt protean blobs what the fuck
 
 /mob/living/simple_mob/protean_blob/adjustBruteLoss(var/amount,var/include_robo)
-	if(humanform)
-		humanform.adjustBruteLossByPart(amount, BP_TORSO)
-	else
-		..()
+	return humanform? humanform.take_targeted_damage(brute = amount, body_zone = BP_TORSO) : ..()
 
 /mob/living/simple_mob/protean_blob/adjustFireLoss(var/amount,var/include_robo)
-	if(humanform)
-		humanform.adjustFireLossByPart(amount, BP_TORSO)
-	else
-		..()
+	return humanform? humanform.take_targeted_damage(burn = amount, body_zone = BP_TORSO) : ..()
 
 // citadel hack - FUCK YOU DIE CORRECTLY THIS ENTIRE FETISH RACE IS A SORRY MISTAKE
 /mob/living/simple_mob/protean_blob/death(gibbed, deathmessage = "dissolves away, leaving only a few spare parts!")

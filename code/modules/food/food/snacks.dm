@@ -5,6 +5,7 @@
 	icon = 'icons/obj/food.dmi'
 	icon_state = null
 	atom_flags = OPENCONTAINER
+
 	var/bitesize = 1
 	var/bitecount = 0
 	var/trash = null
@@ -56,10 +57,7 @@
 		open(user)
 
 /obj/item/reagent_containers/food/snacks/proc/open(mob/user)
-	if(custom_open_sound)
-		playsound(loc,custom_open_sound, rand(10,50), 1)
-	else
-		playsound(loc,'sound/items/foodcanopen.ogg', rand(10,50), 1)
+	playsound(loc,custom_open_sound || 'sound/items/foodcanopen.ogg', rand(10,50), 1)
 
 	if(opened_icon)
 		icon_state = "[initial(icon_state)]-open"
@@ -152,7 +150,8 @@
 			user.visible_message("<span class='danger'>[user] feeds [M] [src].</span>")
 
 		if(reagents)								//Handle ingestion of the reagent.
-			playsound(M.loc,'sound/items/eatfood.ogg', rand(10,50), 1)
+			if(bite_sound)
+				playsound(M.loc,bite_sound, rand(10,50), 1)
 			if(reagents.total_volume)
 				if(reagents.total_volume > bitesize)
 					reagents.trans_to_mob(M, bitesize, CHEM_INGEST)
@@ -217,6 +216,9 @@
 		var/hide_item = !has_edge(W) || !can_slice_here
 
 		if (hide_item)
+			var/confirm=input(user, "Are you certain you want to insert \the [W] into [src]?","Hide item") as null|anything in list("Yes","No")
+			if(!confirm || confirm == "No")
+				return
 			if (W.w_class >= w_class || is_robot_module(W))
 				return
 			if(!user.attempt_insert_item_for_installation(W, src))
@@ -412,7 +414,7 @@
 	desc = "Freeze Dried peas covered in a very spicy substance!"
 	icon_state = "wasabi_peas"
 	nutriment_amt = 4
-	nutriment_desc = list("capsaicin" = 2, "protein" = 2)
+	nutriment_desc = list("wasabi" = 2, "protein" = 2)
 
 /obj/item/reagent_containers/food/snacks/bagged/wpeas/Initialize(mapload)
 	. = ..()
@@ -1885,7 +1887,10 @@
 		var/mob/living/carbon/human/H = M
 		H.visible_message("<span class='warning'>A screeching creature bursts out of [M]'s chest!</span>")
 		var/obj/item/organ/external/organ = H.get_organ(BP_TORSO)
-		organ.take_damage(50, 0, 0, "Animal escaping the ribcage")
+		organ?.inflict_bodypart_damage(
+			brute = 50,
+			weapon_descriptor = "bursting",
+		)
 	Expand()
 
 /obj/item/reagent_containers/food/snacks/monkeycube/on_reagent_change()

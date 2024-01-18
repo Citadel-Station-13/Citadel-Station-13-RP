@@ -432,7 +432,7 @@
  */
 /datum/tgui_module/card_mod/admin
 
-/datum/tgui_module/card_mod/admin/ui_state(mob/user, datum/tgui_module/module)
+/datum/tgui_module/card_mod/admin/ui_state()
 	return GLOB.admin_state
 
 

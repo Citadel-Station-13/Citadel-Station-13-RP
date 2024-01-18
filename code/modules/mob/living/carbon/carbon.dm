@@ -32,7 +32,7 @@
 	for(var/mob/M in src)
 		if(M in src.stomach_contents)
 			src.stomach_contents.Remove(M)
-		M.loc = src.loc
+		M.forceMove(loc)
 		for(var/mob/N in viewers(src, null))
 			if(N.client)
 				N.show_message("<font color='red'><B>[M] bursts out of [src]!</B></font>", 2)

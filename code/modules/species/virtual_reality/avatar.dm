@@ -44,7 +44,7 @@
 /datum/species/shapeshifter/promethean/avatar/handle_death(var/mob/living/carbon/human/H)
 	return
 
-/datum/species/shapeshifter/promethean/avatar/handle_environment_special(var/mob/living/carbon/human/H)
+/datum/species/shapeshifter/promethean/avatar/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
 	return
 
 /* NO. YOU CAN HAVE THIS BACK WHEN THIS DOESNT SWAP SPECIES TO CHANGE OPACITY
