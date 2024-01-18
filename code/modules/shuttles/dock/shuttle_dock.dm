@@ -197,11 +197,35 @@
 	. = ..()
 	register_dock()
 
+/**
+ * called after all hooks finish
+ */
+/obj/shuttle_dock/proc/on_shuttle_landed(datum/shuttle/shuttle)
+	return
+
+/**
+ * called after all hooks finish
+ */
+/obj/shuttle_dock/proc/on_shuttle_docked(datum/shuttle/shuttle)
+	return
+
+/**
+ * called after all hooks finish
+ */
+/obj/shuttle_dock/proc/on_shuttle_departed(datum/shuttle/shuttle)
+	return
+
+/**
+ * called after all hooks finish
+ */
+/obj/shuttle_dock/proc/on_shuttle_undocked(datum/shuttle/shuttle)
+	return
+
 /obj/shuttle_dock/proc/shuttle_docking_authorization(datum/shuttle/shuttle)
 	var/valid = shuttle.has_codes_for(src)
 	if(valid)
-		return SHUTTLE_DOCKING_AUTHORZATION_VALID
-	return docking_code_required? SHUTTLE_DOCKING_AUTHORZATION_BLOCKED : SHUTTLE_DOCKING_AUTHORZATION_INVALID
+		return SHUTTLE_DOCKING_AUTHORIZATION_VALID
+	return docking_code_required? SHUTTLE_DOCKING_AUTHORIZATION_BLOCKED : SHUTTLE_DOCKING_AUTHORIZATION_INVALID
 
 /**
  * literally just a landing pad
@@ -217,18 +241,15 @@
  */
 /obj/shuttle_dock/ephemeral
 
-#warn impl
+/obj/shuttle_dock/ephemeral/on_shuttle_departed(datum/shuttle/shuttle)
+	qdel(src)
 
 /**
  * manual dock
  */
 /obj/shuttle_dock/ephemeral/manual
 
-#warn impl
-
 /**
  * transit dock
  */
 /obj/shuttle_dock/ephemeral/transit
-
-#warn impl

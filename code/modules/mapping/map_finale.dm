@@ -20,6 +20,8 @@
 	/// last recall time
 	var/last_recall_time
 
+#warn comms console shit ugh (can call, can recall, messages, etc)
+
 /**
  * called when being added to the ticker's registered finales
  */
