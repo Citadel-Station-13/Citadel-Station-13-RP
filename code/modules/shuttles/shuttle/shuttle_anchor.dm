@@ -75,6 +75,8 @@
 /obj/shuttle_anchor
 	name = "Shuttle (uninitialized)"
 	desc = "Why do you see this?"
+	// by default this should be north.
+	dir = NORTH
 	#warn sprite
 	invisibility = INVISIBILITY_ABSTRACT
 

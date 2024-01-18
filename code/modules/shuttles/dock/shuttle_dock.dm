@@ -185,6 +185,9 @@
 			return TRUE
 	return FALSE
 
+/**
+ * always returns assuming NORTH orientation.
+ */
 /obj/shuttle_dock/proc/bounding_ordered_turfs()
 	ASSERT(isturf(loc))
 	#warn impl

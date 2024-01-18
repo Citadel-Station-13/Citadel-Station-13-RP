@@ -61,6 +61,9 @@
 	var/datum/shuttle_web_map/map
 	/// connected nodes
 	var/list/datum/shuttle_web_node/connections
+	/// available routes
+	var/list/datum/shuttle_web_route/routes
+	#warn hook routes
 	/// docking ports on this node
 	var/list/obj/shuttle_dock/docks
 	/// id - must be set, and must only be unique to the map
@@ -69,6 +72,7 @@
 	var/auto_join_map_type
 	/// automatically form bidirectional connections to these node types in the auto join'd web map type
 	/// only supports types, not ids, for now
+	/// associate to either a number for delay, or to a type of /datum/shuttle_web_route to make that type.
 	var/list/auto_connect_node_types
 
 /datum/shuttle_web_node/proc/initialize()
@@ -95,3 +99,12 @@
 /datum/shuttle_web_node/proc/connect(datum/shuttle_web_node/other)
 	other.connections |= src
 	connections |= other
+
+#warn incorporate routes
+
+/**
+ * a route for a shuttle web node
+ */
+/datum/shuttle_web_route
+	/// time to spend in transit
+	var/transit_time = 0

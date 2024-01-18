@@ -70,6 +70,21 @@
 
 #warn impl all
 
+/**
+ * Called after all areas are made and all turfs are there, etc etc
+ * Used to auto-register everything
+ */
+/datum/shuttle/proc/initialize(datum/turf_reservation/loading_reservation)
+	#warn impl
+
+//* Bounding Box *//
+
+/**
+ * returns with the current direction of the shuttle
+ */
+/datum/shuttle/proc/bounding_ordered_turfs()
+	return anchor.ordered_turfs_here()
+
 //* Previews *//
 
 /**
