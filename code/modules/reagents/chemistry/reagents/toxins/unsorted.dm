@@ -27,7 +27,7 @@
 		entity.adjustToxLoss(strength * removed)
 
 /datum/reagent/toxin/affect_touch(mob/living/carbon/entity, alien, removed)
-	affect_blood(M, alien, removed * 0.2)
+	affect_blood(entity, alien, removed * 0.2)
 
 /datum/reagent/toxin/plasticide
 	name = "Plasticide"
@@ -90,10 +90,10 @@
 	if(istype(L))
 		L.adjust_fire_stacks(amount / fire_mult)
 
-/datum/reagent/toxin/hydrophoron/affect_touch(mob/living/carbon/M, alien, removed)
-	M.take_organ_damage(0, removed * 0.1) //being splashed directly with hydrophoron causes minor chemical burns
+/datum/reagent/toxin/hydrophoron/affect_touch(mob/living/carbon/entity, alien, removed)
+	entity.take_organ_damage(0, removed * 0.1) //being splashed directly with hydrophoron causes minor chemical burns
 	if(prob(10 * fire_mult))
-		M.pl_effects()
+		entity.pl_effects()
 
 /datum/reagent/toxin/hydrophoron/touch_turf(turf/simulated/T)
 	if(!istype(T))
@@ -130,21 +130,24 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#9D14DB"
 	strength = 30
-	touch_met = 5
 	skin_danger = 1
 
-/datum/reagent/toxin/phoron/touch_mob(mob/living/L, amount)
+/datum/reagent/toxin/phoron/touch_expose_mob(mob/target, volume, temperature, list/data, organ_tag)
+	. = ..()
+
+	var/mob/living/L = target
 	if(istype(L))
 		L.adjust_fire_stacks(amount / 5)
 
-/datum/reagent/toxin/phoron/affect_touch(mob/living/carbon/M, alien, removed)
-	..()
-	M.adjust_fire_stacks(removed / 5)
+/datum/reagent/toxin/phoron/on_metabolize_dermal(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed, obj/item/organ/external/bodypart)
+	. = ..()
+
+	entity.adjust_fire_stacks(removed / 5)
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_VOX)] || alien == IS_XENOHYBRID)
 		return
-	M.take_organ_damage(0, removed * 0.1) //being splashed directly with phoron causes minor chemical burns
+	entity.take_organ_damage(0, removed * 0.1) //being splashed directly with phoron causes minor chemical burns
 	if(prob(50))
-		M.pl_effects()
+		entity.pl_effects()
 
 /datum/reagent/toxin/phoron/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
@@ -189,11 +192,11 @@
 	reagent_state = REAGENT_SOLID
 	strength = 5
 
-/datum/reagent/toxin/mold/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/toxin/mold/affect_ingest(mob/living/carbon/entity, alien, removed)
 	..()
-	M.adjustToxLoss(strength * removed)
+	entity.adjustToxLoss(strength * removed)
 	if(prob(5))
-		M.vomit()
+		entity.vomit()
 
 /datum/reagent/toxin/mold/miasma
 	name = "Miasma"
@@ -219,8 +222,8 @@
 	if(prob(5))
 		entity.vomit()
 
-/datum/reagent/toxin/expired_medicine/affect_ingest(mob/living/carbon/M, alien, removed)
-	affect_blood(M, alien, removed * 0.66)
+/datum/reagent/toxin/expired_medicine/affect_ingest(mob/living/carbon/entity, alien, removed)
+	affect_blood(entity, alien, removed * 0.66)
 
 
 /datum/reagent/toxin/stimm	//Homemade Hyperzine
@@ -262,12 +265,12 @@
 	. = ..()
 
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
-		M.adjustFireLoss(removed * 2)
+		entity.adjustFireLoss(removed * 2)
 
-/datum/reagent/toxin/potassium_chloride/overdose(mob/living/carbon/M, alien)
+/datum/reagent/toxin/potassium_chloride/overdose(mob/living/carbon/entity, alien)
 	..()
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
+	if(ishuman(entity))
+		var/mob/living/carbon/human/H = entity
 		if(H.stat != 1)
 			if(H.losebreath >= 10)
 				H.losebreath = max(10, H.losebreath - 10)
@@ -322,8 +325,8 @@
 
 /datum/reagent/toxin/zombiepowder/Destroy()
 	if(holder && holder.my_atom && ismob(holder.my_atom))
-		var/mob/M = holder.my_atom
-		M.status_flags &= ~STATUS_FAKEDEATH
+		var/mob/entity = holder.my_atom
+		entity.status_flags &= ~STATUS_FAKEDEATH
 	return ..()
 
 /datum/reagent/toxin/lichpowder
@@ -336,23 +339,23 @@
 	strength = 2
 	mrate_static = TRUE
 
-/datum/reagent/toxin/lichpowder/affect_touch(mob/living/carbon/M, alien, removed)
+/datum/reagent/toxin/lichpowder/affect_touch(mob/living/carbon/entity, alien, removed)
 	..()
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-	M.status_flags |= STATUS_FAKEDEATH
-	M.adjustOxyLoss(1 * removed)
-	M.silent = max(M.silent, 10)
-	M.tod = stationtime2text()
+	entity.status_flags |= STATUS_FAKEDEATH
+	entity.adjustOxyLoss(1 * removed)
+	entity.silent = max(entity.silent, 10)
+	entity.tod = stationtime2text()
 
 	if(prob(1))
-		M.visible_message("[M] wheezes.", "You wheeze sharply... it's cold.")
-		M.bodytemperature = max(M.bodytemperature - 10 * TEMPERATURE_DAMAGE_COEFFICIENT, T0C - 10)
+		entity.visible_message("[entity] wheezes.", "You wheeze sharply... it's cold.")
+		entity.bodytemperature = max(entity.bodytemperature - 10 * TEMPERATURE_DAMAGE_COEFFICIENT, T0C - 10)
 
 /datum/reagent/toxin/lichpowder/Destroy()
 	if(holder && holder.my_atom && ismob(holder.my_atom))
-		var/mob/M = holder.my_atom
-		M.status_flags &= ~STATUS_FAKEDEATH
+		var/mob/entity = holder.my_atom
+		entity.status_flags &= ~STATUS_FAKEDEATH
 	return ..()
 
 /datum/reagent/toxin/fertilizer //Reagents used for plant fertilizers.
@@ -414,9 +417,9 @@
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_ALRAUNE)])
 		entity.adjustToxLoss(50 * removed)
 
-/datum/reagent/toxin/plantbgone/affect_touch(mob/living/carbon/M, alien, removed)
+/datum/reagent/toxin/plantbgone/affect_touch(mob/living/carbon/entity, alien, removed)
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_ALRAUNE)])
-		M.adjustToxLoss(50 * removed)
+		entity.adjustToxLoss(50 * removed)
 
 /datum/reagent/toxin/pestbgone
 	name = "Pest-B-Gone"
@@ -439,9 +442,9 @@
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_APIDAEN)])
 		entity.adjustToxLoss(50 * removed)
 
-/datum/reagent/toxin/pestbgone/affect_touch(mob/living/carbon/M, alien, removed)
+/datum/reagent/toxin/pestbgone/affect_touch(mob/living/carbon/entity, alien, removed)
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_APIDAEN)])
-		M.adjustToxLoss(50 * removed)
+		entity.adjustToxLoss(50 * removed)
 
 /datum/reagent/toxin/sifslurry
 	name = "Sivian Sap"
@@ -463,17 +466,17 @@
 		entity.add_modifier(/datum/modifier/slow_pulse, 30 SECONDS)
 	..()
 
-/datum/reagent/toxin/sifslurry/overdose(mob/living/carbon/M, alien, removed) // Overdose effect.
+/datum/reagent/toxin/sifslurry/overdose(mob/living/carbon/entity, alien, removed) // Overdose effect.
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
+	if(ishuman(entity))
+		var/mob/living/carbon/human/H = entity
 		overdose_mod *= H.species.chemOD_mod
-	M.afflict_radiation(RAD_MOB_AFFLICT_STRENGTH_SIFSLURRY_OD(removed))
-	M.apply_effect(5 * removed, DROWSY, 0, 0)
+	entity.afflict_radiation(RAD_MOB_AFFLICT_STRENGTH_SIFSLURRY_OD(removed))
+	entity.apply_effect(5 * removed, DROWSY, 0, 0)
 
-/datum/reagent/toxin/sifslurry/affect_ingest(mob/living/carbon/M, alien, removed)
-	affect_blood(M, alien, removed * 0.7)
+/datum/reagent/toxin/sifslurry/affect_ingest(mob/living/carbon/entity, alien, removed)
+	affect_blood(entity, alien, removed * 0.7)
 
 /datum/reagent/acid/polyacid
 	name = "Polytrinic acid"
@@ -593,13 +596,13 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#13BC5E"
 
-/datum/reagent/mutagen/affect_touch(mob/living/carbon/M, alien, removed)
+/datum/reagent/mutagen/affect_touch(mob/living/carbon/entity, alien, removed)
 	if(prob(33))
-		affect_blood(M, alien, removed)
+		affect_blood(entity, alien, removed)
 
-/datum/reagent/mutagen/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/mutagen/affect_ingest(mob/living/carbon/entity, alien, removed)
 	if(prob(67))
-		affect_blood(M, alien, removed)
+		affect_blood(entity, alien, removed)
 
 /datum/reagent/mutagen/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
@@ -837,10 +840,10 @@
 	if(effective_dose > 1 * threshold)
 		entity.adjustToxLoss(removed)
 
-/datum/reagent/chloralhydrate/overdose(mob/living/carbon/M, alien, removed)
+/datum/reagent/chloralhydrate/overdose(mob/living/carbon/entity, alien, removed)
 	..()
-	M.SetLosebreath(10)
-	M.adjustOxyLoss(removed * overdose_mod)
+	entity.SetLosebreath(10)
+	entity.adjustOxyLoss(removed * overdose_mod)
 
 /datum/reagent/chloralhydrate/beer2 //disguised as normal beer for use by emagged brobots
 	name = "Beer"
@@ -919,7 +922,7 @@
 	if(prob(30))
 		if(prob(25))
 			entity.emote(pick("shiver", "blink_r"))
-		M.adjustBrainLoss(0.2 * removed)
+		entity.adjustBrainLoss(0.2 * removed)
 	return ..()
 
 /datum/reagent/cryptobiolin

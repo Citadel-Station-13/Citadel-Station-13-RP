@@ -5,7 +5,7 @@
 	taste_description = "bwoink"
 	reagent_state = REAGENT_LIQUID
 	color = "#C8A5DC"
-	affects_dead = 1 //This can even heal dead people.
+	metabolize_while_dead = TRUE
 	mrate_static = TRUE //Just in case
 
 	dermal_absorption_multiplier = 1
@@ -15,7 +15,7 @@
 
 /datum/reagent/adminordrazine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
+
 	var/mob/living/carbon/M = entity
 	M.setCloneLoss(0)
 	M.setOxyLoss(0)

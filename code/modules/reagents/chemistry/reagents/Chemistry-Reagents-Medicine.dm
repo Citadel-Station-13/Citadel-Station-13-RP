@@ -123,30 +123,30 @@
 		to_chat(entity,"<span class='warning'>Your body feels numb as a light, tingly sensation spreads throughout it, like some odd warmth.</span>")
 	//Not noted here, but a movement debuff of 1.5 is handed out in human_movement.dm when numbing_enzyme is in a person's bloodstream!
 
-/datum/reagent/numbing_enzyme/overdose(mob/living/carbon/M, alien)
-	//..() //Add this if you want it to do toxin damage. Personally, let's allow them to have the horrid effects below without toxin damage.
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		if(prob(1))
-			to_chat(H,"<span class='warning'>Your entire body feels numb and the sensation of pins and needles continually assaults you. You blink and the next thing you know, your legs give out momentarily!</span>")
-			H.adjust_paralyzed(20 * 5) //Fall onto the floor for a few moments.
-			H.Confuse(15) //Be unable to walk correctly for a bit longer.
-		if(prob(1))
-			if(H.losebreath <= 1 && H.oxyloss <= 20) //Let's not suffocate them to the point that they pass out.
-				to_chat(H,"<span class='warning'>You feel a sharp stabbing pain in your chest and quickly realize that your lungs have stopped functioning!</span>") //Let's scare them a bit.
-				H.losebreath = 10
-				H.adjustOxyLoss(5)
-		if(prob(2))
-			to_chat(H,"<span class='warning'>You feel a dull pain behind your eyes and at thee back of your head...</span>")
-			H.hallucination += 20 //It messes with your mind for some reason.
-			H.eye_blurry += 20 //Groggy vision for a small bit.
-		if(prob(3))
-			to_chat(H,"<span class='warning'>You shiver, your body continually being assaulted by the sensation of pins and needles.</span>")
-			H.emote("shiver")
-			H.make_jittery(10)
-		if(prob(3))
-			to_chat(H,"<span class='warning'>Your tongue feels numb and unresponsive.</span>")
-			H.stuttering += 20
+	if(metabolism.overdosing)
+		//..() //Add this if you want it to do toxin damage. Personally, let's allow them to have the horrid effects below without toxin damage.
+		if(ishuman(entity))
+			var/mob/living/carbon/human/H = entity
+			if(prob(1))
+				to_chat(H,"<span class='warning'>Your entire body feels numb and the sensation of pins and needles continually assaults you. You blink and the next thing you know, your legs give out momentarily!</span>")
+				H.adjust_paralyzed(20 * 5) //Fall onto the floor for a few moments.
+				H.Confuse(15) //Be unable to walk correctly for a bit longer.
+			if(prob(1))
+				if(H.losebreath <= 1 && H.oxyloss <= 20) //Let's not suffocate them to the point that they pass out.
+					to_chat(H,"<span class='warning'>You feel a sharp stabbing pain in your chest and quickly realize that your lungs have stopped functioning!</span>") //Let's scare them a bit.
+					H.losebreath = 10
+					H.adjustOxyLoss(5)
+			if(prob(2))
+				to_chat(H,"<span class='warning'>You feel a dull pain behind your eyes and at thee back of your head...</span>")
+				H.hallucination += 20 //It messes with your mind for some reason.
+				H.eye_blurry += 20 //Groggy vision for a small bit.
+			if(prob(3))
+				to_chat(H,"<span class='warning'>You shiver, your body continually being assaulted by the sensation of pins and needles.</span>")
+				H.emote("shiver")
+				H.make_jittery(10)
+			if(prob(3))
+				to_chat(H,"<span class='warning'>Your tongue feels numb and unresponsive.</span>")
+				H.stuttering += 20
 
 /* Other medicine */
 
@@ -661,12 +661,17 @@
 	entity.drowsyness = 0
 	entity.stuttering = 0
 	entity.SetConfused(0)
-	if(entity.reagents_ingested)
-		for(var/datum/reagent/ethanol/R in entity.reagents_ingested.reagent_list)
-			R.remove_self(removed * 30)
-	if(entity.bloodstr)
-		for(var/datum/reagent/ethanol/R in entity.bloodstr.reagent_list)
-			R.remove_self(removed * 20)
+	// todo: optimize
+	for(var/id in entity.reagents_ingested.reagent_volumes)
+		var/datum/reagent/resolved = SSchemistry.fetch_reagent(id)
+		if(!istype(resolved, /datum/reagent/ethanol))
+			continue
+		entity.reagents_bloodstream.remove_reagent(resolved, removed * 20)
+	for(var/id in entity.reagents_bloodstream.reagent_volumes)
+		var/datum/reagent/resolved = SSchemistry.fetch_reagent(id)
+		if(!istype(resolved, /datum/reagent/ethanol))
+			continue
+		entity.reagents_bloodstream.remove_reagent(resolved, removed * 20)
 
 /datum/reagent/hyronalin
 	name = "Hyronalin"
@@ -715,7 +720,8 @@
 	bloodstream_metabolism_multiplier = 0.25
 	mrate_static = TRUE
 	bloodstream_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
-	data = 0
+	dermal_absorption_multiplier = 3
+	dermal_elimination_multiplier = 0.25
 
 /datum/reagent/spaceacillin/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
@@ -730,9 +736,6 @@
 				data = world.time
 				to_chat(entity, "<span class='warning'>Your senses feel unfocused, and divided.</span>")
 	entity.add_reagent_cycle_effect(CHEMICAL_EFFECT_ANTIBIOTIC, metabolism.overdosing ? ANTIBIO_OD : ANTIBIO_NORM)
-
-/datum/reagent/spaceacillin/affect_touch(mob/living/carbon/M, alien, removed)
-	affect_blood(M, alien, removed * 0.8) // Not 100% as effective as injections, though still useful.
 
 /datum/reagent/corophizine
 	name = "Corophizine"
@@ -811,7 +814,7 @@
 	bloodstream_metabolism_multiplier = 0.4
 	mrate_static = TRUE
 	bloodstream_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
-	can_overdose_touch = TRUE
+	dermal_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 	ingested_metabolism_multiplier = 0
 
 /datum/reagent/spacomycaze/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
@@ -825,21 +828,21 @@
 
 	if(application == REAGENT_APPLY_DERMAL)
 		if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
-			to_Chat(entity, SPAN_WARNING("Your skin suddenly starts to itch."))
+			to_chat(entity, SPAN_WARNING("Your skin suddenly starts to itch."))
 
 /datum/reagent/spacomycaze/on_metabolize_dermal(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed, obj/item/organ/external/bodypart)
 	. = ..()
 
 	if(application == REAGENT_APPLY_DERMAL)
 		if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)] && prob(5))
-			to_Chat(entity, SPAN_WARNING("Your skin itches."))
+			to_chat(entity, SPAN_WARNING("Your skin itches."))
 
 /datum/reagent/spacomycaze/on_metabolize_remove(mob/living/carbon/entity, application, datum/reagent_metabolism/metabolism, organ_tag, list/data)
 	. = ..()
 
 	if(application == REAGENT_APPLY_DERMAL)
 		if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
-			to_Chat(entity, SPAN_NOTICE("The itching on your skin fades."))
+			to_chat(entity, SPAN_NOTICE("The itching on your skin fades."))
 
 /datum/reagent/spacomycaze/on_metabolize_dermal(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed, obj/item/organ/external/bodypart)
 	. = ..()
@@ -859,7 +862,7 @@
 		var/obj/item/stack/medical/M = C.upgrade_stack(to_produce)
 
 		if(M && M.amount)
-			holder.my_atom.visible_message("<span class='notice'>\The [packname] bubbles.</span>")
+			M.visible_message("<span class='notice'>\The [packname] bubbles.</span>")
 			. += to_produce
 
 /datum/reagent/sterilizine
@@ -878,14 +881,16 @@
 		entity.adjustFireLoss(removed)
 		entity.adjustToxLoss(2 * removed)
 
-/datum/reagent/sterilizine/affect_touch(mob/living/carbon/M, alien, removed)
-	M.germ_level -= min(removed*20, M.germ_level)
-	for(var/obj/item/I in M.contents)
+/datum/reagent/sterilizine/on_metabolize_dermal(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed, obj/item/organ/external/bodypart)
+	. = ..()
+
+	entity.germ_level -= min(removed*20, entity.germ_level)
+	for(var/obj/item/I in entity.contents)
 		I.was_bloodied = null
-	M.was_bloodied = null
+	entity.was_bloodied = null
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
-		M.adjustFireLoss(removed)
-		M.adjustToxLoss(2 * removed)
+		entity.adjustFireLoss(removed)
+		entity.adjustToxLoss(2 * removed)
 
 /datum/reagent/sterilizine/contact_expose_obj(obj/target, volume, list/data, vapor)
 	. = ..()
@@ -913,11 +918,11 @@
 	if(istype(L))
 		if(istype(L, /mob/living/simple_mob/slime))
 			var/mob/living/simple_mob/slime/S = L
-			var/amt = rand(15, 25) * amount * (1-S.water_resist)
+			var/amt = rand(15, 25) * volume * (1-S.water_resist)
 			if(amt>0)
-				S.adjustToxLoss(rand(15, 25) * amount)	// Does more damage than water.
+				S.adjustToxLoss(rand(15, 25) * volume)	// Does more damage than water.
 				S.visible_message("<span class='warning'>[S]'s flesh sizzles where the fluid touches it!</span>", "<span class='danger'>Your flesh burns in the fluid!</span>")
-		remove_self(amount)
+		remove_self(volume)
 
 /datum/reagent/leporazine
 	name = "Leporazine"
@@ -1263,16 +1268,16 @@
 /datum/reagent/firefighting_foam/touch_obj(obj/O, reac_volume)
 	O.water_act(reac_volume / 5)
 
-/datum/reagent/firefighting_foam/touch_mob(mob/living/M, reac_volume)
-	if(istype(M, /mob/living/simple_mob/slime)) //I'm sure foam is water-based!
-		var/mob/living/simple_mob/slime/S = M
+/datum/reagent/firefighting_foam/touch_mob(mob/living/entity, reac_volume)
+	if(istype(entity, /mob/living/simple_mob/slime)) //I'm sure foam is water-based!
+		var/mob/living/simple_mob/slime/S = entity
 		var/amt = 15 * reac_volume * (1-S.water_resist)
 		if(amt>0)
 			S.adjustToxLoss(amt)
 			S.visible_message("<span class='warning'>[S]'s flesh sizzles where the foam touches it!</span>", "<span class='danger'>Your flesh burns in the foam!</span>")
 
-	M.adjust_fire_stacks(-reac_volume)
-	M.ExtinguishMob()
+	entity.adjust_fire_stacks(-reac_volume)
+	entity.ExtinguishMob()
 
 //CRS (Cyberpsychosis) Medication
 /datum/reagent/neuratrextate
@@ -1291,11 +1296,11 @@
 
 /datum/reagent/neuratrextate/on_metabolize_ingested(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed, obj/item/organ/internal/container)
 	. = ..()
-	to_chat(M, "<span class='warning'>It feels like there's a pile of knives in your stomach!</span>")
-	M.druggy += 10
-	M.vomit()
+	to_chat(entity, "<span class='warning'>It feels like there's a pile of knives in your stomach!</span>")
+	entity.druggy += 10
+	entity.vomit()
 
-/datum/reagent/neuratrextate/overdose(mob/living/carbon/M)
+/datum/reagent/neuratrextate/overdose(mob/living/carbon/entity)
 	..()
-	M.druggy += 30
-	M.hallucination += 20
+	entity.druggy += 30
+	entity.hallucination += 20

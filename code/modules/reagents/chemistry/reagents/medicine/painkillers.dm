@@ -8,7 +8,6 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#C8A5DC"
 	bloodstream_overdose_threshold = 60
-	metabolism = 0.02
 	mrate_static = TRUE
 
 /datum/reagent/paracetamol/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
@@ -19,11 +18,10 @@
 		chem_effective = 0.75
 	entity.max_reagent_cycle_effect(CHEMICAL_EFFECT_PAINKILLER, 25 * chem_effective)//kinda weak painkilling, for non life threatening injuries
 
-/datum/reagent/paracetamol/overdose(mob/living/carbon/M, alien)
-	..()
-	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
-		M.add_reagent_cycle_effect(CHEMICAL_EFFECT_SLOWDOWN, 1)
-	M.hallucination = max(M.hallucination, 2)
+	if(metabolism.overdosing)
+		if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
+			entity.add_reagent_cycle_effect(CHEMICAL_EFFECT_SLOWDOWN, 1)
+		entity.hallucination = max(entity.hallucination, 2)
 
 /datum/reagent/tramadol
 	name = "Tramadol"
@@ -33,7 +31,6 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#CB68FC"
 	bloodstream_overdose_threshold = 30
-	metabolism = 0.02
 	mrate_static = TRUE
 
 /datum/reagent/tramadol/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
@@ -45,9 +42,8 @@
 		entity.add_reagent_cycle_effect(CHEMICAL_EFFECT_SLOWDOWN, 1)
 	entity.max_reagent_cycle_effect(CHEMICAL_EFFECT_PAINKILLER, 80 * chem_effective)//more potent painkilling, for close to fatal injuries
 
-/datum/reagent/tramadol/overdose(mob/living/carbon/M, alien)
-	..()
-	M.hallucination = max(M.hallucination, 2)
+	if(metabolism.overdosing)
+		entity.hallucination = max(entity.hallucination, 2)
 
 /datum/reagent/oxycodone
 	name = "Oxycodone"
@@ -57,7 +53,6 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#800080"
 	bloodstream_overdose_threshold = 20
-	metabolism = 0.02
 	mrate_static = TRUE
 
 /datum/reagent/oxycodone/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
@@ -71,7 +66,6 @@
 	entity.add_reagent_cycle_effect(CHEMICAL_EFFECT_SLOWDOWN, 1)
 	entity.eye_blurry = min(entity.eye_blurry + 10, 250 * chem_effective)
 
-/datum/reagent/oxycodone/overdose(mob/living/carbon/M, alien)
-	..()
-	M.druggy = max(M.druggy, 10)
-	M.hallucination = max(M.hallucination, 3)
+	if(metabolism.overdosing)
+		entity.druggy = max(entity.druggy, 10)
+		entity.hallucination = max(entity.hallucination, 3)

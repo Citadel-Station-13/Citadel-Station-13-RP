@@ -20,7 +20,7 @@
 
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-	M.add_modifier(modifier_to_add, removed * modifier_duration)
+	entity.add_modifier(modifier_to_add, removed * modifier_duration)
 
 /datum/reagent/modapplying/cryofluid
 	name = "cryogenic slurry"
@@ -54,11 +54,10 @@
 	. = ..()
 
 	var/turf/T = target
-	if(istype(T, /turf/simulated/floor/water) && prob(amount))
+	if(istype(T, /turf/simulated/floor/water) && prob(volume))
 		T.visible_message("<span class='danger'>\The [T] crackles loudly as the cryogenic fluid causes it to boil away, leaving behind a hard layer of ice.</span>")
 		T.ChangeTurf(/turf/simulated/floor/outdoors/ice, 1, 1, TRUE)
 	else
 		if(istype(T, /turf/simulated))
 			var/turf/simulated/S = T
 			S.freeze_floor()
-	return
