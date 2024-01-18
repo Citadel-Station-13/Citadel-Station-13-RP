@@ -228,13 +228,21 @@
 	color = "#333333"
 	bloodstream_metabolism_multiplier = 3 // Broken nanomachines go a bit slower.
 
+<<<<<<< HEAD
 /datum/reagent/defective_nanites/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 
-	entity.take_organ_damage(2 * removed, 2 * removed)
+	entity.take_random_targeted_damage(2 * removed, 2 * removed)
 	entity.adjustOxyLoss(4 * removed)
 	entity.adjustToxLoss(2 * removed)
 	entity.adjustCloneLoss(2 * removed)
+=======
+/datum/reagent/defective_nanites/affect_blood(mob/living/carbon/M, alien, removed)
+	M.take_random_targeted_damage(brute = 2 * removed, brute = 2 * removed)
+	M.adjustOxyLoss(4 * removed)
+	M.adjustToxLoss(2 * removed)
+	M.adjustCloneLoss(2 * removed)
+>>>>>>> citrp/master
 
 /datum/reagent/fishbait
 	name = "Fish Bait"

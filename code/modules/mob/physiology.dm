@@ -1,15 +1,12 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 /**
  * physiology holder
  *
  * todo: on biologies update, we might need to lazy-cache this, and have different physiologies for each biology.
  */
 /datum/global_physiology
-	// back-reference to mob, for vv purposes.
-	var/mob/ownership
-
-	// todo: /datum/global_physiology should hold global body physiology, limbs should hold modifiers/whatever themselves.
-	//       this way biologies can be supported as efficiently as possible.
-
 	/// carry baseline modify
 	var/carry_strength = CARRY_STRENGTH_BASELINE
 	/// carry penalty modifier
@@ -23,10 +20,6 @@
 	/// carry weight bias - multipled to carry_bias for carry weight only, not encumbrance
 	var/carry_weight_bias = 1
 
-/datum/global_physiology/Destroy()
-	ownership = null
-	return ..()
-
 /datum/global_physiology/proc/reset()
 	carry_strength = initial(carry_strength)
 	carry_factor = initial(carry_factor)
@@ -34,6 +27,7 @@
 	carry_weight_factor = initial(carry_weight_factor)
 	carry_bias = initial(carry_bias)
 	carry_weight_bias = initial(carry_weight_bias)
+	return TRUE
 
 /datum/global_physiology/proc/apply(datum/physiology_modifier/modifier)
 	if(!isnull(modifier.carry_strength_add))
@@ -67,39 +61,16 @@
 	if(!isnull(modifier.carry_weight_bias))
 		carry_weight_bias /= modifier.carry_weight_bias
 
-/datum/global_physiology/vv_edit_var(var_name, var_value, mass_edit, raw_edit)
-	// we automatically hook varedits and change the admin varedit holder so rebuilds take it into account
-	// this is not necessarily the best of ideas,
-	// because things like multiplicative factors don't scale as admins usually would expect
-	// but having this is better than not having it, as otherwise things would silently be wiped.
-	if(raw_edit)
-		return ..()
-	if(isnull(ownership))
-		return ..()
-	var/datum/physiology_modifier/varedit/varedit_modifier = ownership.get_varedit_physiology_modifier()
-	switch(var_name)
-		if(NAMEOF(src, carry_strength))
-			if(!isnum(var_value))
-				if(!mass_edit)
-					to_chat(usr, SPAN_WARNING("Invalid value [var_value] for [var_name] physiology edit rejected."))
-				return FALSE
-			. = ..()
-			if(!.)
-				return
-			varedit_modifier.carry_strength_add = var_value - carry_strength
-		if(NAMEOF(src, carry_factor))
-			if(!isnum(var_value))
-				if(!mass_edit)
-					to_chat(usr, SPAN_WARNING("Invalid value [var_value] for [var_name] physiology edit rejected."))
-				return FALSE
-			. = ..()
-			if(!.)
-				return
-			varedit_modifier.carry_strength_factor = var_value / carry_factor
-		else
-			return ..()
-	if(!mass_edit)
-		to_chat(usr, SPAN_NOTICE("Committing change to [var_name] on [ownership] ([REF(ownership)]) to physiology modifiers automatically."))
+/datum/local_physiology
+
+/datum/local_physiology/proc/reset()
+	return TRUE
+
+/datum/local_physiology/proc/apply(datum/physiology_modifier/modifier)
+	return TRUE
+
+/datum/local_physiology/proc/revert(datum/physiology_modifier/modifier)
+	return TRUE
 
 /**
  * physiology modifier
@@ -111,10 +82,12 @@
 	var/name = "Some Modifier"
 	/// is this a globally cached modifier?
 	var/is_globally_cached = FALSE
+	/// biologies this applies to, for limb-specific modifiers
+	var/biology_types = BIOLOGY_TYPES_ALL
 
-	// todo: on biologies update, we need to specify what biologies this applies to
+	//* -- global modifiers -- *//
 
-	//? global modifiers
+	//* carry strength / weight *//
 	var/carry_strength_add = 0
 	var/carry_strength_factor = 1
 	var/carry_strength_bias = 1
@@ -146,7 +119,7 @@
 	if(isnum(data["carry_weight_factor"]))
 		carry_weight_factor = data["carry_weight_factor"]
 	if(isnum(data["carry_weight_bias"]))
-		carry_weight_bias = data["carry_Weight_bias"]
+		carry_weight_bias = data["carry_weight_bias"]
 
 /**
  * subtype for hardcoded physiology modifiers
@@ -194,6 +167,7 @@ GLOBAL_LIST_EMPTY(cached_physiology_modifiers)
 	ASSERT(!(modifier in physiology_modifiers))
 	LAZYADD(physiology_modifiers, modifier)
 	physiology.apply(modifier)
+	return TRUE
 
 /**
  * removes a modifier from physiology
@@ -208,13 +182,13 @@ GLOBAL_LIST_EMPTY(cached_physiology_modifiers)
 	if(!physiology.revert(modifier))
 		// todo: optimize with reset().
 		rebuild_physiology()
+	return TRUE
 
 /**
  * completely rebuilds physiology from our modifiers
  */
 /mob/proc/rebuild_physiology()
 	physiology = new
-	physiology.ownership = src
 	for(var/datum/physiology_modifier/modifier as anything in physiology_modifiers)
 		if(!istype(modifier))
 			physiology_modifiers -= modifier
@@ -232,35 +206,12 @@ GLOBAL_LIST_EMPTY(cached_physiology_modifiers)
 	if(href_list[VV_HK_ADD_PHYSIOLOGY_MODIFIER])
 		// todo: this should be able to be done globally via admin panel and then added to mobs
 
-		var/datum/tgui_dynamic_query/query = new
-		query.string("name", "Name", "Name your modifier.", 64, FALSE, "Custom Modifier")
-		query.number("carry_strength_add", "Carry Strength - Add", "Modify the person's base carry strength. Higher is better.", default = 0)
-		query.number("carry_strength_factor", "Carry Factor - Multiply", "Multiply the person's carry weight/encumbrance to slowdown effect when carrying over their limit. Lower is better.", default = 1)
-		query.number("carry_strength_bias", "Carry Bias - Multiply", "Multiply the person's carry weight/encumbrance to slowdown bias when carrying over their limit. Lower is better.", default = 1)
-		query.number("carry_weight_add", "Carry Weight - Add", "Modify the person's base carry weight. Higher is better. This only applies to weight, not encumbrance.", default = 0)
-		query.number("carry_weight_factor", "Carry Weight - Multiply", "Multiply the person's weight to slowdown effect when carrying over their limit. Lower is better. This only applies to weight, not encumbrance.", default = 1)
-		query.number("carry_weight_bias", "Carry Weight - Bias", "Multiply the person's weight to slowdown calculation bias; lower is better.", default = 1)
+		var/datum/physiology_modifier/modifier = ask_admin_for_a_physiology_modifier(usr)
 
-		var/list/choices = tgui_dynamic_input(usr, "Add a physiology modifier", "Add Physiology Modifier", query)
-
-		if(isnull(choices))
+		if(isnull(modifier))
 			return
 		if(QDELETED(src))
 			return
-
-		var/datum/physiology_modifier/modifier = new
-
-		// we manually deserialize because we might have custom datatypes
-		// in the future that won't be serialized by the ui necessarily in the same way
-		// we would serialize it via json.
-
-		modifier.name = choices["name"]
-		modifier.carry_strength_add = choices["carry_strength_add"]
-		modifier.carry_strength_factor = choices["carry_strength_factor"]
-		modifier.carry_strength_bias = choices["carry_strength_bias"]
-		modifier.carry_weight_add = choices["carry_weight_add"]
-		modifier.carry_weight_factor = choices["carry_weight_factor"]
-		modifier.carry_weight_bias = choices["carry_weight_bias"]
 
 		log_admin("[key_name(usr)] --> [key_name(src)] - added physiology modifier [json_encode(modifier.serialize())]")
 		add_physiology_modifier(modifier)
@@ -279,11 +230,44 @@ GLOBAL_LIST_EMPTY(cached_physiology_modifiers)
 		remove_physiology_modifier(removing)
 		return TRUE
 
-/mob/proc/get_varedit_physiology_modifier()
-	RETURN_TYPE(/datum/physiology_modifier)
-	. = locate(/datum/physiology_modifier/varedit) in physiology_modifiers
-	if(!isnull(.))
+// i'm not going to fucking support vv without automated backreferences and macros, holy shit.
+// /mob/proc/get_varedit_physiology_modifier()
+// 	RETURN_TYPE(/datum/physiology_modifier)
+// 	. = locate(/datum/physiology_modifier/varedit) in physiology_modifiers
+// 	if(!isnull(.))
+// 		return
+// 	var/datum/physiology_modifier/varedit/new_holder = new
+// 	add_physiology_modifier(new_holder)
+// 	return new_holder
+
+// todo: you can tell from the proc name that this needs to be kicked somewhere eles later.
+/proc/ask_admin_for_a_physiology_modifier(mob/user)
+	var/datum/tgui_dynamic_query/query = new
+	query.string("name", "Name", "Name your modifier.", 64, FALSE, "Custom Modifier")
+	query.number("carry_strength_add", "Carry Strength - Add", "Modify the person's base carry strength. Higher is better.", default = 0)
+	query.number("carry_strength_factor", "Carry Factor - Multiply", "Multiply the person's carry weight/encumbrance to slowdown effect when carrying over their limit. Lower is better.", default = 1)
+	query.number("carry_strength_bias", "Carry Bias - Multiply", "Multiply the person's carry weight/encumbrance to slowdown bias when carrying over their limit. Lower is better.", default = 1)
+	query.number("carry_weight_add", "Carry Weight - Add", "Modify the person's base carry weight. Higher is better. This only applies to weight, not encumbrance.", default = 0)
+	query.number("carry_weight_factor", "Carry Weight - Multiply", "Multiply the person's weight to slowdown effect when carrying over their limit. Lower is better. This only applies to weight, not encumbrance.", default = 1)
+	query.number("carry_weight_bias", "Carry Weight - Bias", "Multiply the person's weight to slowdown calculation bias; lower is better.", default = 1)
+
+	var/list/choices = tgui_dynamic_input(user, "Add a physiology modifier", "Add Physiology Modifier", query)
+
+	if(isnull(choices))
 		return
-	var/datum/physiology_modifier/varedit/new_holder = new
-	add_physiology_modifier(new_holder)
-	return new_holder
+
+	var/datum/physiology_modifier/modifier = new
+
+	// we manually deserialize because we might have custom datatypes
+	// in the future that won't be serialized by the ui necessarily in the same way
+	// we would serialize it via json.
+
+	modifier.name = choices["name"]
+	modifier.carry_strength_add = choices["carry_strength_add"]
+	modifier.carry_strength_factor = choices["carry_strength_factor"]
+	modifier.carry_strength_bias = choices["carry_strength_bias"]
+	modifier.carry_weight_add = choices["carry_weight_add"]
+	modifier.carry_weight_factor = choices["carry_weight_factor"]
+	modifier.carry_weight_bias = choices["carry_weight_bias"]
+
+	return modifier

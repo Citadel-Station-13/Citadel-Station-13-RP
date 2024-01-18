@@ -58,7 +58,7 @@
 
 /datum/reagent/chlorine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	entity.take_organ_damage(removed, 0)
+	entity.take_random_targeted_damage(removed, 0)
 
 /datum/reagent/chlorine/touch_expose_mob(mob/target, volume, temperature, list/data, organ_tag)
 	. = ..()
@@ -66,7 +66,7 @@
 	var/mob/living/carbon/M = target
 	if(!istype(M))
 		return
-	M.take_organ_damage(volume, 0)
+	M.take_random_targeted_damage(volume, 0)
 
 /datum/reagent/copper
 	name = "Copper"

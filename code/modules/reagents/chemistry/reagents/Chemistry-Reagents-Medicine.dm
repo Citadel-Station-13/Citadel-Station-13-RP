@@ -708,7 +708,7 @@
 	entity.cure_radiation(RAD_MOB_CURE_STRENGTH_ARITHRAZINE(removed))
 	entity.adjustToxLoss(-10 * removed)
 	if(prob(60))
-		entity.take_organ_damage(4 * removed, 0)
+		entity.take_random_targeted_damage(4 * removed, 0)
 
 /datum/reagent/spaceacillin
 	name = "Spaceacillin"

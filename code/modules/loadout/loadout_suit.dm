@@ -608,6 +608,11 @@
 	name = "Cropped Sweater (Female)"
 	path = /obj/item/clothing/suit/cropped_sweater/female
 
+/datum/loadout_entry/suit/aureate_kimono
+	name = "Aureate Kimono"
+	path = /obj/item/clothing/suit/storage/aureate
+
+
 //Tajaran wears
 
 //Cloak no hoods

@@ -89,7 +89,7 @@
 
 	//No need to update all of these procs if the guy is dead.
 	if(stat != DEAD && !stasis)
-		stabilize_body_temperature() //Body temperature adjusts itself (self-regulation)
+		stabilize_body_temperature(seconds) //Body temperature adjusts itself (self-regulation)
 		weightgain()
 		process_weaver_silk()
 		handle_shock()
@@ -313,7 +313,7 @@
 				to_chat(src, SPAN_WARNING("Warning: Ionization detected in control routes. Radiological threat suspected."))
 #ifdef RAD_MOB_BURNS_SYNTHETICS
 		if(radiation >= RAD_MOB_BURN_THRESHOLD)
-			take_overall_damage(burn = RAD_MOB_BURN_DAMAGE_FOR(radiation, seconds), used_weapon = "Radiation Burns")
+			take_overall_damage(burn = RAD_MOB_BURN_DAMAGE_FOR(radiation, seconds), weapon_descriptor = "radiation burns")
 #endif
 		if(radiation >= RAD_MOB_TOXIN_THRESHOLD)
 			adjustToxLoss(RAD_MOB_SYNTH_INSTABILITY_FOR(radiation, seconds))
@@ -330,7 +330,7 @@
 			if(prob(RAD_MOB_WARNING_CHANCE(radiation, seconds)))
 				to_chat(src, SPAN_WARNING("You feel nauseous, and a hot presence burning through your flesh."))
 		if(radiation >= RAD_MOB_BURN_THRESHOLD)
-			take_overall_damage(burn = RAD_MOB_BURN_DAMAGE_FOR(radiation, seconds), used_weapon = "Radiation Burns")
+			take_overall_damage(burn = RAD_MOB_BURN_DAMAGE_FOR(radiation, seconds), weapon_descriptor = "radiation burns")
 		if(radiation >= RAD_MOB_TOXIN_THRESHOLD)
 			adjustToxLoss(RAD_MOB_TOXIN_DAMAGE_FOR(radiation, seconds))
 			// todo: autopsy data
@@ -655,7 +655,7 @@
 		else
 			temp_adj /= (BODYTEMP_HEAT_DIVISOR * 5)	//don't raise temperature as much as if we were directly exposed
 
-		var/density = breath.total_moles / (MOLES_CELLSTANDARD * BREATH_PERCENTAGE)
+		var/density = breath.total_moles / (CELL_MOLES * BREATH_PERCENTAGE)
 		temp_adj *= density
 
 		if (temp_adj > BODYTEMP_HEATING_MAX) temp_adj = BODYTEMP_HEATING_MAX
@@ -671,15 +671,24 @@
 	breath.update_values()
 	return 1
 
-/mob/living/carbon/human/handle_environment(datum/gas_mixture/environment)
-	if(!environment)
-		return
-	//Stuff like the xenomorph's plasma regen happens here.
-	species.handle_environment_special(src)
+/**
+ * @params
+ * * environment - the gas mixture we're in
+ * * dt - seconds to simulate
+ */
+/mob/living/carbon/human/handle_environment(datum/gas_mixture/environment, dt)
 
+	// legacy: species special processes
+	//Stuff like the xenomorph's plasma regen happens here.
+	// todo: why the shit is this here
+	species.handle_environment_special(src, environment, dt)
+
+	// legacy: incorporeal (shadekin) check
 	if(is_incorporeal())
 		return
 
+	// legacy: synth snowflake shit
+	// todo: kill this shit with fire
 	if(isSynthetic()) // synth specific temperature values in the absence of a synthetic species
 		var/mob/living/carbon/human/H = src
 		//! I hate this, fuck you. Don't override shit in human life(). @Zandario
@@ -708,69 +717,87 @@
 				)
 			if(bodytemperature > species.heat_discomfort_level && !(H.species.get_species_id() == SPECIES_ID_PROTEAN))
 				if(world.time >= last_synthcooling_message || last_synthcooling_message == 0)
-					if(src.nutrition <= 50) // do they have enough energy for this?
+					last_synthcooling_message = world.time + 60 SECONDS
+					if(src.nutrition <= 25) // do they have enough energy for this?
 						to_chat(src, "<font color='red' face='fixedsys'>Warning: Temperature at critically high levels.</font>")
 						to_chat(src, "<font color='red' face='fixedsys'>Warning: Power critical. Unable to deploy cooling systems.</font>")
-						return
 					else
 						to_chat(src, "<font color='red' face='fixedsys'>Warning: Temperature at critically high levels.</font>")
 						add_modifier(/datum/modifier/synthcooling, 15 SECONDS) // enable cooling systems at cost of energy
-						src.nutrition -= 50
-					last_synthcooling_message = world.time + 60 SECONDS
+						adjust_nutrition(-25)
 
-	//Moved pressure calculations here for use in skip-processing check.
-	var/pressure = environment.return_pressure()
-	var/adjusted_pressure = calculate_affecting_pressure(pressure)
+	var/absolute_pressure = isnull(environment)? 0 : environment.return_pressure()
+	var/affecting_pressure = calculate_affecting_pressure(absolute_pressure)
 
+	// legacy: contamination
 	//Check for contaminants before anything else because we don't want to skip it.
-	for(var/g in environment.gas)
+	for(var/g in environment?.gas)
 		if(global.gas_data.flags[g] & GAS_FLAG_CONTAMINANT && environment.gas[g] > 1)
 			pl_effects()
 			break
 
-	if(istype(loc, /turf/space)) // No FBPs overheating on space turfs inside mechs or people.
-		//Don't bother if the temperature drop is less than 0.1 anyways. Hopefully BYOND is smart enough to turn this constant expression into a constant
-		if(bodytemperature > (0.1 * HUMAN_HEAT_CAPACITY/(HUMAN_EXPOSED_SURFACE_AREA*STEFAN_BOLTZMANN_CONSTANT))**(1/4) + COSMIC_RADIATION_TEMPERATURE)
-			//Thermal radiation into space
-			var/heat_loss = HUMAN_EXPOSED_SURFACE_AREA * STEFAN_BOLTZMANN_CONSTANT * ((bodytemperature - COSMIC_RADIATION_TEMPERATURE)**4)
-			var/temperature_loss = heat_loss/HUMAN_HEAT_CAPACITY
-			bodytemperature -= temperature_loss
-	else
-		var/loc_temp = T0C
-		if(istype(loc, /obj/mecha))
-			var/obj/mecha/M = loc
-			loc_temp =  M.return_temperature()
-		else if(istype(loc, /obj/machinery/atmospherics/component/unary/cryo_cell))
-			var/obj/machinery/atmospherics/component/unary/cryo_cell/CC = loc
-			loc_temp = CC.air_contents.temperature
+	// legacy: bodytemperature equalizaiton
+	// todo: we should rework most of this
+	// we simulate in space, or in somewhere with a gasmixture. otherwise, we don't care.
+	if(istype(loc, /turf/space))
+		// in space, we use blackbody radiation
+		var/heat_loss = HUMAN_EXPOSED_SURFACE_AREA * STEFAN_BOLTZMANN_CONSTANT * ((bodytemperature - COSMIC_RADIATION_TEMPERATURE)**4)
+		var/temperature_loss = heat_loss/HUMAN_HEAT_CAPACITY
+		adjust_bodytemperature(-temperature_loss)
+	else if(!isnull(environment))
+		// todo: this shit is all suboptimal
+		// otherwise, we use environment temperature
+		var/environment_temperature = environment.temperature
+		var/difference = environment_temperature - bodytemperature
+		// relative density multiplier
+		var/density_multiplier = environment.total_moles / CELL_MOLES
+
+		density_multiplier = density_multiplier > 1? sqrt(density_multiplier) : density_multiplier
+
+		var/thermal_insulation
+
+		var/nominal = species.body_temperature || T20C
+		var/to_nominal = nominal - bodytemperature
+		var/is_stabilizing = (to_nominal > 0? 1 : -1) == (difference > 0? 1 : -1)
+
+		var/adjust = is_stabilizing? \
+			max( \
+				difference * MOB_BODYTEMP_EQUALIZATION_FAVORABLE_RATIO * density_multiplier, \
+				min(difference, MOB_BODYTEMP_EQUALIZATION_MIN_FAVORABLE) \
+			) : \
+			clamp( \
+				difference * MOB_BODYTEMP_EQUALIZATION_UNFAVORABLE_RATIO * density_multiplier, \
+				min(difference, MOB_BODYTEMP_EQUALIZATION_MIN_UNFAVORABLE), \
+				MOB_BODYTEMP_EQUALIZATION_MAX_UNFAVORABLE \
+			)
+
+		if(is_stabilizing)
+			adjust_bodytemperature(adjust)
+		else if(difference < 0)
+			// we are being cooled
+			thermal_insulation = get_cold_protection(environment_temperature)
+			if(thermal_insulation < 1)
+				// we aren't entirely shielded
+				adjust_bodytemperature(adjust * (1 - thermal_insulation))
 		else
-			loc_temp = environment.temperature
+			// we are getting heated
+			thermal_insulation = get_heat_protection(environment_temperature)
+			if(thermal_insulation < 1)
+				// we aren't entirely shielded
+				adjust_bodytemperature(adjust * (1 - thermal_insulation))
 
-		if(adjusted_pressure < species.warning_high_pressure && adjusted_pressure > species.warning_low_pressure && abs(loc_temp - bodytemperature) < 20 && bodytemperature < species.heat_level_1 && bodytemperature > species.cold_level_1)
-			pressure_alert = 0
-			return // Temperatures are within normal ranges, fuck all this processing. ~Ccomp
+	// legacy: godmode check
+	if(status_flags & STATUS_GODMODE)
+		fire_alert = 0
+		pressure_alert = 0
+		return
 
-		//Body temperature adjusts depending on surrounding atmosphere based on your thermal protection (convection)
-		var/temp_adj = 0
-		if(loc_temp < bodytemperature)			//Place is colder than we are
-			var/thermal_protection = get_cold_protection(loc_temp) //This returns a 0 - 1 value, which corresponds to the percentage of protection based on what you're wearing and what you're exposed to.
-			if(thermal_protection < 0.99)	//For some reason, < 1 returns false if the value is 1.
-				temp_adj = (1-thermal_protection) * ((loc_temp - bodytemperature) / BODYTEMP_COLD_DIVISOR)	//this will be negative
-		else if (loc_temp > bodytemperature)			//Place is hotter than we are
-			var/thermal_protection = get_heat_protection(loc_temp) //This returns a 0 - 1 value, which corresponds to the percentage of protection based on what you're wearing and what you're exposed to.
-			if(thermal_protection < 0.99)	//For some reason, < 1 returns false if the value is 1.
-				temp_adj = (1-thermal_protection) * ((loc_temp - bodytemperature) / BODYTEMP_HEAT_DIVISOR)
-
-		//Use heat transfer as proportional to the gas density. However, we only care about the relative density vs standard 101 kPa/20 C air. Therefore we can use mole ratios
-		var/density = environment.total_moles / MOLES_CELLSTANDARD
-		bodytemperature += between(BODYTEMP_COOLING_MAX, temp_adj*density, BODYTEMP_HEATING_MAX)
+	// todo: completely rework eveyrthing about this to be surface vs deep burns
 
 	// +/- 50 degrees from 310.15K is the 'safe' zone, where no damage is dealt.
 	if(bodytemperature >= species.heat_level_1)
 		//Body temperature is too hot.
 		fire_alert = max(fire_alert, 1)
-		if(status_flags & STATUS_GODMODE)
-			return 1	//godmode
 
 		var/burn_dam = 0
 
@@ -787,16 +814,12 @@
 				else
 					burn_dam = HEAT_DAMAGE_LEVEL_1
 
-		take_overall_damage(burn=burn_dam, used_weapon = "High Body Temperature")
+		take_overall_damage(burn = burn_dam, damage_mode = DAMAGE_MODE_GRADUAL, weapon_descriptor = "internal burns")
 		fire_alert = max(fire_alert, 2)
 
 	else if(bodytemperature <= species.cold_level_1 && !IS_DEAD(src)) // dead check is temporary bandaid for health rework
 		//Body temperature is too cold.
 		fire_alert = max(fire_alert, 1)
-
-		if(status_flags & STATUS_GODMODE)
-			return 1	//godmode
-
 
 		if(!istype(loc, /obj/machinery/atmospherics/component/unary/cryo_cell))
 			var/cold_dam = 0
@@ -809,33 +832,28 @@
 				else
 					cold_dam = COLD_DAMAGE_LEVEL_1
 
-			take_overall_damage(burn=cold_dam, used_weapon = "Low Body Temperature")
+			take_overall_damage(burn = cold_dam, damage_mode = DAMAGE_MODE_GRADUAL, weapon_descriptor = "frostbite")
 			fire_alert = max(fire_alert, 1)
 
-	// Account for massive pressure differences.  Done by Polymorph
-	// Made it possible to actually have something that can protect against high pressure... Done by Errorage. Polymorph now has an axe sticking from his head for his previous hardcoded nonsense!
-	if(status_flags & STATUS_GODMODE)
-		return 1	//godmode
-
-	if(adjusted_pressure >= species.hazard_high_pressure)
-		var/pressure_damage = min( ( (adjusted_pressure / species.hazard_high_pressure) -1 )*PRESSURE_DAMAGE_COEFFICIENT , MAX_HIGH_PRESSURE_DAMAGE)
-		take_overall_damage(brute=pressure_damage, used_weapon = "High Pressure")
+	if(affecting_pressure >= species.hazard_high_pressure)
+		var/pressure_damage = min( ( (affecting_pressure / species.hazard_high_pressure) -1 )*PRESSURE_DAMAGE_COEFFICIENT , MAX_HIGH_PRESSURE_DAMAGE)
+		take_overall_damage(brute = pressure_damage, damage_mode = DAMAGE_MODE_GRADUAL | DAMAGE_MODE_NO_OVERFLOW, weapon_descriptor = "barotrauma")
 		pressure_alert = 2
-	else if(adjusted_pressure >= species.warning_high_pressure)
+	else if(affecting_pressure >= species.warning_high_pressure)
 		pressure_alert = 1
-	else if(adjusted_pressure >= species.warning_low_pressure)
+	else if(affecting_pressure >= species.warning_low_pressure)
 		pressure_alert = 0
-	else if(adjusted_pressure >= species.hazard_low_pressure)
+	else if(affecting_pressure >= species.hazard_low_pressure)
 		pressure_alert = -1
 	else
 		if( !(MUTATION_COLD_RESIST in mutations))
 			if(!isSynthetic() || !nif || !nif.flag_check(NIF_O_PRESSURESEAL,NIF_FLAGS_OTHER)) // NIF pressure seals
-				take_overall_damage(brute=LOW_PRESSURE_DAMAGE, used_weapon = "Low Pressure")
+				take_overall_damage(brute = LOW_PRESSURE_DAMAGE, damage_mode = DAMAGE_MODE_GRADUAL | DAMAGE_MODE_NO_OVERFLOW, weapon_descriptor = "barotrauma")
 			if(getOxyLoss() < 55) 		// 12 OxyLoss per 4 ticks when wearing internals;    unconsciousness in 16 ticks, roughly half a minute
 				var/pressure_dam = 3	// 16 OxyLoss per 4 ticks when no internals present; unconsciousness in 13 ticks, roughly twenty seconds
 										// (Extra 1 oxyloss from failed breath)
 										// Being in higher pressure decreases the damage taken, down to a minimum of (species.hazard_low_pressure / ONE_ATMOSPHERE) at species.hazard_low_pressure
-				pressure_dam *= (ONE_ATMOSPHERE - adjusted_pressure) / ONE_ATMOSPHERE
+				pressure_dam *= (ONE_ATMOSPHERE - affecting_pressure) / ONE_ATMOSPHERE
 
 				if(wear_suit && wear_suit.min_pressure_protection && head && head.min_pressure_protection)
 					var/protection = max(wear_suit.min_pressure_protection, head.min_pressure_protection) // Take the weakest protection
@@ -847,8 +865,6 @@
 			pressure_alert = -2
 		else
 			pressure_alert = -1
-
-	return
 
 /*
 /mob/living/carbon/human/proc/adjust_body_temperature(current, loc_temp, boost)
@@ -869,47 +885,50 @@
 	return temp_change
 */
 
-/mob/living/carbon/human/proc/stabilize_body_temperature()
-	// We produce heat naturally.
-	if (species.passive_temp_gain)
-		bodytemperature += species.passive_temp_gain
-	if (species.body_temperature == null)
-		return //this species doesn't have metabolic thermoregulation
+/**
+ * metabolism for body temperature
+ *
+ * should only be called while alive
+ *
+ * @params
+ * * dt - seconds for this cycle
+ */
+/mob/living/carbon/human/proc/stabilize_body_temperature(dt)
+	if(isnull(loc))
+		// okay we should probably like
+		// not.
+		return
 
-	// FBPs will overheat when alive, prosthetic limbs are fine.
-	if(stat != DEAD && robobody_count)
-		if(!nif || !nif.flag_check(NIF_O_HEATSINKS,NIF_FLAGS_OTHER)) // NIF heatsinks prevent the base heat increase per tick if installed.
-			bodytemperature += round(robobody_count*1.15)
+	var/buffer = bodytemperature
+
+	// legacy: species passive gain
+	// todo: shouldn't exist probably
+	buffer += species.passive_temp_gain * dt
+	// legacy: robot limbs gain heat
+	// todo: rewrite
+	if(robobody_count)
+		if(!nif?.flag_check(NIF_O_HEATSINKS, NIF_FLAGS_OTHER))
+			buffer += round(robobody_count* 1.15) * dt
 		var/obj/item/organ/internal/robotic/heatsink/HS = internal_organs_by_name[O_HEATSINK]
 		if(!HS || HS.is_broken()) // However, NIF Heatsinks will not compensate for a core FBP component (your heatsink) being lost.
-			bodytemperature += round(robobody_count*0.5)
+			buffer += round(robobody_count * 0.5) * dt
 
-	var/body_temperature_difference = species.body_temperature - bodytemperature
+	// legacy: thermal regulation
+	// todo: rework
+	if(species.body_temperature != null)
+		// species has metabolic thermoregulation
+		var/difference = species.body_temperature - bodytemperature
 
-	if (abs(body_temperature_difference) < 0.5)
-		return //fuck this precision
+		if(buffer < species.cold_level_1)
+			adjust_nutrition(-2)
+			buffer += max((difference / BODYTEMP_AUTORECOVERY_DIVISOR), BODYTEMP_AUTORECOVERY_MINIMUM)
+		else if(buffer > species.heat_level_1)
+			adjust_hydration(-(10 * DEFAULT_THIRST_FACTOR))
+			buffer += min((difference / BODYTEMP_AUTORECOVERY_DIVISOR), -BODYTEMP_AUTORECOVERY_MINIMUM)
+		else
+			buffer += difference / BODYTEMP_AUTORECOVERY_DIVISOR
 
-	if (on_fire)
-		return //too busy for pesky metabolic regulation
-
-	if(bodytemperature < species.cold_level_1) //260.15 is 310.15 - 50, the temperature where you start to feel effects.
-		if(nutrition >= 2) //If we are very, very cold we'll use up quite a bit of nutriment to heat us up.
-			nutrition -= 2
-		var/recovery_amt = max((body_temperature_difference / BODYTEMP_AUTORECOVERY_DIVISOR), BODYTEMP_AUTORECOVERY_MINIMUM)
-		//to_chat(world, "Cold. Difference = [body_temperature_difference]. Recovering [recovery_amt]")
-//				log_debug(SPAN_DEBUG("Cold. Difference = [body_temperature_difference]. Recovering [recovery_amt]"))
-		bodytemperature += recovery_amt
-	else if(species.cold_level_1 <= bodytemperature && bodytemperature <= species.heat_level_1)
-		var/recovery_amt = body_temperature_difference / BODYTEMP_AUTORECOVERY_DIVISOR
-		//to_chat(world, "Norm. Difference = [body_temperature_difference]. Recovering [recovery_amt]")
-//				log_debug(SPAN_DEBUG("Norm. Difference = [body_temperature_difference]. Recovering [recovery_amt]"))
-		bodytemperature += recovery_amt
-	else if(bodytemperature > species.heat_level_1) //360.15 is 310.15 + 50, the temperature where you start to feel effects.
-		adjust_hydration(-(10 * DEFAULT_THIRST_FACTOR)) //Sweating
-		var/recovery_amt = min((body_temperature_difference / BODYTEMP_AUTORECOVERY_DIVISOR), -BODYTEMP_AUTORECOVERY_MINIMUM)	//We're dealing with negative numbers
-		//to_chat(world, "Hot. Difference = [body_temperature_difference]. Recovering [recovery_amt]")
-//				log_debug(SPAN_DEBUG("Hot. Difference = [body_temperature_difference]. Recovering [recovery_amt]"))
-		bodytemperature += recovery_amt
+	set_bodytemperature(buffer)
 
 	//This proc returns a number made up of the flags for body parts which you are protected on. (such as HEAD, UPPER_TORSO, LOWER_TORSO, etc. See setup.dm for the full list)
 /mob/living/carbon/human/proc/get_heat_protection_flags(temperature) //Temperature is the temperature you're being exposed to.
@@ -918,7 +937,7 @@
 	for(var/obj/item/clothing/C in list(head,wear_suit,w_uniform,shoes,gloves,wear_mask))
 		if(C)
 			if(C.max_heat_protection_temperature && C.max_heat_protection_temperature >= temperature)
-				. |= C.heat_protection
+				. |= C.heat_protection_cover
 
 //See proc/get_heat_protection_flags(temperature) for the description of this proc.
 /mob/living/carbon/human/proc/get_cold_protection_flags(temperature)
@@ -927,7 +946,7 @@
 	for(var/obj/item/clothing/C in list(head,wear_suit,w_uniform,shoes,gloves,wear_mask))
 		if(C)
 			if(C.min_cold_protection_temperature && C.min_cold_protection_temperature <= temperature)
-				. |= C.cold_protection
+				. |= C.cold_protection_cover
 
 /mob/living/carbon/human/get_heat_protection(temperature) //Temperature is the temperature you're being exposed to.
 	var/thermal_protection_flags = get_heat_protection_flags(temperature)
@@ -1019,7 +1038,7 @@
 						// This is hacky, I'm so sorry.
 						if(I != l_hand && I != r_hand)	//If the item isn't in your hands, you're probably wearing it. Full damage for you.
 							total_phoronloss += loss_per_part
-						else if((I == l_hand | I == r_hand) && !((src.wear_suit.body_cover_flags & HANDS) | src.gloves | (src.w_uniform.body_cover_flags & HANDS)))	//If the item is in your hands, but you're wearing protection, you might be alright.
+						else if((I == l_hand | I == r_hand) && !((src.wear_suit?.body_cover_flags & HANDS) | src.gloves | (src.w_uniform?.body_cover_flags & HANDS)))	//If the item is in your hands, but you're wearing protection, you might be alright.
 							//If you hold it in hand, and your hands arent covered by anything
 							total_phoronloss += loss_per_part
 			if(total_phoronloss)
@@ -1631,23 +1650,6 @@
 			playsound_local(src,pick(scarySounds),50, 1, -1)
 	*/
 
-/mob/living/carbon/human/handle_stomach()
-	spawn(0)
-		for(var/mob/living/M in stomach_contents)
-			if(M.loc != src)
-				stomach_contents.Remove(M)
-				continue
-			if(istype(M, /mob/living/carbon) && stat != 2)
-				if(M.stat == 2)
-					M.death(1)
-					stomach_contents.Remove(M)
-					qdel(M)
-					continue
-				if(SSair.current_cycle%3==1)
-					if(!(M.status_flags & STATUS_GODMODE))
-						M.adjustBruteLoss(5)
-					nutrition += 10
-
 /mob/living/carbon/human/proc/handle_changeling()
 	if(mind && mind.changeling)
 		mind.changeling.regenerate()
@@ -1695,8 +1697,10 @@
 
 /mob/living/carbon/human/handle_shock()
 	..()
-	if(status_flags & STATUS_GODMODE)	return 0	//godmode
-	if(!can_feel_pain()) return
+	if(status_flags & STATUS_GODMODE)
+		return 0	//godmode
+	if(!can_feel_pain())
+		return
 
 	if(health < config_legacy.health_threshold_softcrit)// health 0 makes you immediately collapse
 		shock_stage = max(shock_stage, 61)
@@ -1707,7 +1711,7 @@
 		shock_stage = max(shock_stage, 61)
 	else
 		shock_stage = min(shock_stage, 160)
-		shock_stage = max(shock_stage-1, 0)
+		shock_stage = max(shock_stage - (traumatic_shock? 1 : 2), 0)
 		return
 
 	if(stat)
@@ -1880,10 +1884,8 @@
 
 //Our call for the NIF to do whatever
 /mob/living/carbon/human/proc/handle_nif()
-	if(!nif) return
-
 	//Process regular life stuff
-	nif.on_life()
+	nif?.on_life()
 
 #undef HUMAN_MAX_OXYLOSS
 #undef HUMAN_CRIT_MAX_OXYLOSS

@@ -171,8 +171,7 @@
 
 /datum/reagent/acid/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-
-	entity.take_organ_damage(0, removed * power * 2)
+	entity.take_random_targeted_damage(brute = 0, brute = removed * power * 2)
 
 /datum/reagent/acid/touch_expose_mob(mob/target, volume, temperature, list/data, organ_tag)
 	. = ..()
@@ -222,20 +221,21 @@
 			return
 
 	if(volume < meltdose) // Not enough to melt anything
-		M.take_organ_damage(0, volume * power * 0.2) //burn damage, since it causes chemical burns. Acid doesn't make bones shatter, like brute trauma would.
+		M.take_random_targeted_damage(brute = 0, brute = volume * power * 0.2) //burn damage, since it causes chemical burns. Acid doesn't make bones shatter, like brute trauma would.
 		return
 	if(!M.unacidable && volume > 0)
 		if(istype(M, /mob/living/carbon/human) && volume >= meltdose)
 			var/mob/living/carbon/human/H = M
 			var/obj/item/organ/external/affecting = H.get_organ(BP_HEAD)
 			if(affecting)
-				if(affecting.take_damage(0, volume * power * 0.1))
-					H.UpdateDamageIcon()
+				affecting.inflict_bodypart_damage(
+					burn = volume * power * 0.1,
+				)
 				if(prob(100 * volume / meltdose)) // Applies disfigurement
 					if (affecting.organ_can_feel_pain())
 						H.emote("scream")
 		else
-			M.take_organ_damage(0, volume * power * 0.1) // Balance. The damage is instant, so it's weaker. 10 units -> 5 damage, double for pacid. 120 units beaker could deal 60, but a) it's burn, which is not as dangerous, b) it's a one-use weapon, c) missing with it will splash it over the ground and d) clothes give some protection, so not everything will hit
+			M.take_random_targeted_damage(brute = 0, brute = volume * power * 0.1) // Balance. The damage is instant, so it's weaker. 10 units -> 5 damage, double for pacid. 120 units beaker could deal 60, but a) it's burn, which is not as dangerous, b) it's a one-use weapon, c) missing with it will splash it over the ground and d) clothes give some protection, so not everything will hit
 
 /datum/reagent/acid/contact_expose_obj(obj/target, volume, list/data, vapor)
 	. = ..()

@@ -91,7 +91,7 @@
 		L.adjust_fire_stacks(amount / fire_mult)
 
 /datum/reagent/toxin/hydrophoron/affect_touch(mob/living/carbon/entity, alien, removed)
-	entity.take_organ_damage(0, removed * 0.1) //being splashed directly with hydrophoron causes minor chemical burns
+	entity.take_random_targeted_damage(0, removed * 0.1) //being splashed directly with hydrophoron causes minor chemical burns
 	if(prob(10 * fire_mult))
 		entity.pl_effects()
 
@@ -140,12 +140,12 @@
 		L.adjust_fire_stacks(amount / 5)
 
 /datum/reagent/toxin/phoron/on_metabolize_dermal(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed, obj/item/organ/external/bodypart)
-	. = ..()
 
+	. = ..()
 	entity.adjust_fire_stacks(removed / 5)
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_VOX)] || alien == IS_XENOHYBRID)
 		return
-	entity.take_organ_damage(0, removed * 0.1) //being splashed directly with phoron causes minor chemical burns
+	entity.take_random_targeted_damage(0, removed * 0.1) //being splashed directly with phoron causes minor chemical burns
 	if(prob(50))
 		entity.pl_effects()
 
@@ -247,7 +247,7 @@
 		entity.emote(pick("twitch", "blink_r", "shiver"))
 	if(prob(15))
 		entity.visible_message("[entity] shudders violently.", "You shudder uncontrollably, it hurts.")
-		entity.take_organ_damage(6 * removed, 0)
+		entity.take_random_targeted_damage(6 * removed, 0)
 	entity.add_reagent_cycle_effect(CHEMICAL_EFFECT_SPEEDBOOST, 1)
 
 /datum/reagent/toxin/potassium_chloride
@@ -579,11 +579,11 @@
 			entity.afflict_stun(20 * 6)
 		return
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_SKRELL)])
-		entity.take_organ_damage(2.4 * removed, 0)
+		entity.take_random_targeted_damage(2.4 * removed, 0)
 		if(entity.losebreath < 10)
 			entity.AdjustLosebreath(1)
 	else
-		entity.take_organ_damage(3 * removed, 0)
+		entity.take_random_targeted_damage(3 * removed, 0)
 		if(entity.losebreath < 15)
 			entity.AdjustLosebreath(1)
 
@@ -1217,8 +1217,13 @@
 	bloodstream_metabolism_multiplier = 10
 	affects_robots = TRUE
 
+<<<<<<< HEAD:code/modules/reagents/chemistry/reagents/toxins/unsorted.dm
 	var/power = 9
 
 /datum/reagent/grubshock/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 	entity.take_organ_damage(burn = removed * power * 0.2)
+=======
+/datum/reagent/grubshock/affect_blood(mob/living/carbon/M, alien, removed)
+	M.take_random_targeted_damage(brute = 0, brute = removed * power * 0.2)
+>>>>>>> citrp/master:code/modules/reagents/chemistry/reagents/Chemistry-Reagents-Toxins.dm

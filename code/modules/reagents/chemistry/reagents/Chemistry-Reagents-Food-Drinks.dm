@@ -3186,9 +3186,9 @@
 		var/obj/item/organ/internal/heart/L = H.internal_organs_by_name[O_HEART]
 		if (L && istype(L))
 			if(. < 120)
-				L.take_damage(10 * removed, 0)
+				L.take_damage(10 * removed)
 			else
-				L.take_damage(100, 0)
+				L.take_damage(100)
 
 /datum/reagent/ethanol/red_mead
 	name = "Red Mead"

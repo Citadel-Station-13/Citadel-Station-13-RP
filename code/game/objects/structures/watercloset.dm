@@ -351,7 +351,7 @@
 
 	var/temperature = temperature_settings[watertemp]
 	var/temp_adj = between(BODYTEMP_COOLING_MAX, temperature - M.bodytemperature, BODYTEMP_HEATING_MAX)
-	M.bodytemperature += temp_adj
+	M.adjust_bodytemperature(temp_adj)
 
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
