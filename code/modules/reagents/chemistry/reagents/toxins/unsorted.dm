@@ -1217,13 +1217,8 @@
 	bloodstream_metabolism_multiplier = 10
 	affects_robots = TRUE
 
-<<<<<<< HEAD:code/modules/reagents/chemistry/reagents/toxins/unsorted.dm
 	var/power = 9
 
 /datum/reagent/grubshock/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	entity.take_organ_damage(burn = removed * power * 0.2)
-=======
-/datum/reagent/grubshock/affect_blood(mob/living/carbon/M, alien, removed)
-	M.take_random_targeted_damage(brute = 0, brute = removed * power * 0.2)
->>>>>>> citrp/master:code/modules/reagents/chemistry/reagents/Chemistry-Reagents-Toxins.dm
+	entity.take_random_targeted_damage(burn = removed * power * 0.2)
