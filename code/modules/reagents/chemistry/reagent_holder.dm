@@ -343,6 +343,7 @@
  * Do not modify the returned datum.
  */
 /datum/reagent_holder/proc/dominant_reagent_datum()
+	RETURN_TYPE(/datum/reagent)
 	var/highest = 0
 	for(var/id in reagent_volumes)
 		if(reagent_volumes[id] > highest)

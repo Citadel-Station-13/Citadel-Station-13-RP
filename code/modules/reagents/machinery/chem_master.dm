@@ -11,7 +11,6 @@
 	circuit = /obj/item/circuitboard/chem_master
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 20
-	atom_flags = OPENCONTAINER
 	clicksound = "button"
 
 	/// Input reagents container.
@@ -243,10 +242,10 @@
 
 	var/beaker_contents[0]
 	if(beaker)
-		for(var/datum/reagent/R in beaker.reagents.reagent_list)
+		for(var/datum/reagent/R in beaker.reagents.lazy_expensive_dangerous_reagent_list())
 			beaker_contents.Add(list(list( //! list in a list because Byond merges the first list...
 				"name"        = R.name,
-				"volume"      = round(R.volume, 0.01),
+				"volume"      = round(beaker.reagents.get_reagent_amount(R), 0.01),
 				"description" = R.description,
 				"id"          = R.id,
 			)))
@@ -254,10 +253,10 @@
 
 	var/buffer_contents[0]
 	if(reagents.total_volume)
-		for(var/datum/reagent/R in reagents.reagent_list)
+		for(var/datum/reagent/R in reagents.lazy_expensive_dangerous_reagent_list())
 			buffer_contents.Add(list(list( //! ^
 				"name"        = R.name,
-				"volume"      = round(R.volume, 0.01),
+				"volume"      = round(beaker.reagents.get_reagent_amount(R), 0.01),
 				"description" = R.description,
 				"id"          = R.id,
 			)))
@@ -382,7 +381,7 @@
 				if (style && style["name"] && !style["generate_name"])
 					name_default = style["name"]
 				else
-					name_default = reagents.get_master_reagent_name()
+					name_default = reagents.dominant_reagent_datum()?.name
 				if (name_has_units)
 					name_default += " ([vol_each]u)"
 				name = tgui_input_text(usr,
@@ -485,6 +484,7 @@
 			return FALSE
 
 		if("analyze")
+			// todo: this does'nt fucking work lol
 			var/datum/reagent/analyzed_reagent = GLOB.name2reagent[params["id"]]
 			if(analyzed_reagent)
 				var/state = "Unknown"
@@ -494,14 +494,14 @@
 					state = "Liquid"
 				else if(initial(analyzed_reagent.reagent_state) == REAGENT_GAS)
 					state = "Gas"
-				var/metabolization_rate = initial(analyzed_reagent.metabolism)// * (60 / SSMOBS_DT)
+				var/metabolization_rate = initial(analyzed_reagent.bloodstream_metabolism_multiplier * REAGENT_METABOLISM_NORMAL)// * (60 / SSMOBS_DT)
 				analyze_vars = list(
 					"name" = initial(analyzed_reagent.name),
 					"state" = state,
 					"color" = initial(analyzed_reagent.color),
 					"description" = initial(analyzed_reagent.description),
 					"metaRate" = metabolization_rate,
-					"overD" = initial(analyzed_reagent.overdose),
+					"overD" = initial(analyzed_reagent.bloodstream_overdose_threshold),
 					// "pH" = initial(analyzed_reagent.ph),
 				)
 				screen = "analyze"
@@ -773,8 +773,10 @@
  */
 /obj/machinery/chem_master/proc/guess_condi_style(datum/reagent_holder/reagents)
 	var/list/styles = get_condi_styles()
-	if (reagents.reagent_list.len > 0)
-		var/main_reagent = reagents.get_master_reagent_id()
+	if (!reagents.is_empty())
+		var/main_reagent = reagents.dominant_reagent_id()
+		var/datum/reagent/resolved = SSchemistry.fetch_reagent(main_reagent)
+		main_reagent = "[resolved.type]"
 		if (main_reagent)
 			var/list/path = splittext("[main_reagent]", "/")
 			main_reagent = path[path.len]

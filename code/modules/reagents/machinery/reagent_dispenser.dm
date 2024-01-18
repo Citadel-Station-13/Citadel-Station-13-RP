@@ -16,28 +16,14 @@
 	var/amount_per_transfer_from_this = 10
 	var/possible_transfer_amounts = list(10,25,50,100)
 
-/obj/structure/reagent_dispensers/attackby(obj/item/W as obj, mob/user as mob)
-		return
-
-
 /obj/structure/reagent_dispensers/Initialize(mapload)
 	. = ..()
-	create_reagents(starting_capacity)
+	create_reagents(starting_capacity, REAGENT_HOLDER_EXAMINE_EXACT_VOLUMES | REAGENT_HOLDER_EXAMINE_REAGENTS | REAGENT_HOLDER_TRANSPARENT_ANALYSIS)
 	for(var/thing in starting_reagents)
 		reagents.add_reagent(thing, starting_reagents[thing])
 
 	if (!possible_transfer_amounts)
 		remove_obj_verb(src, /obj/structure/reagent_dispensers/verb/set_APTFT)
-
-/obj/structure/reagent_dispensers/examine(mob/user, dist)
-	. = ..()
-	if(get_dist(user, src) <= 2)
-		. += "<span class='notice'>It contains:</span>"
-		if(reagents && reagents.reagent_list.len)
-			for(var/datum/reagent/R in reagents.reagent_list)
-				. += "<span class='notice'>[R.volume] units of [R.name]</span>"
-		else
-			. += "<span class='notice'>Nothing.</span>"
 
 /obj/structure/reagent_dispensers/verb/set_APTFT() //set amount_per_transfer_from_this
 	set name = "Set transfer amount"
