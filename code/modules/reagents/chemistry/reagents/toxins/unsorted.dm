@@ -245,7 +245,7 @@
 	if(prob(15))
 		entity.visible_message("[entity] shudders violently.", "You shudder uncontrollably, it hurts.")
 		entity.take_organ_damage(6 * removed, 0)
-	entity.add_chemical_effect(CHEMICAL_EFFECT_SPEEDBOOST, 1)
+	entity.add_reagent_cycle_effect(CHEMICAL_EFFECT_SPEEDBOOST, 1)
 
 /datum/reagent/toxin/potassium_chloride
 	name = "Potassium Chloride"
@@ -698,7 +698,7 @@
 			entity.heal_overall_damage(25 * removed, 25 * removed)
 			entity.adjustToxLoss(rand(-30, -10) * removed)
 			entity.druggy = max(entity.druggy, 10)
-			entity.ceiling_chemical_effect(CHEMICAL_EFFECT_PAINKILLER, 60)
+			entity.max_reagent_cycle_effect(CHEMICAL_EFFECT_PAINKILLER, 60)
 	else
 		if(prob(10))
 			to_chat(entity, "<span class='danger'>Your insides are burning!</span>")

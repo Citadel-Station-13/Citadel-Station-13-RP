@@ -52,7 +52,7 @@
 	if(!M.species.is_vampire) // If this is set to 0, they don't get nutrition from food.
 		M.nutrition += nutriment_factor * removed // For hunger and fatness
 	M.adjust_hydration(hydration_factor * hyd_removed)
-	M.add_chemical_effect(CHEMICAL_EFFECT_BLOODRESTORE, 4 * removed)
+	M.add_reagent_cycle_effect(CHEMICAL_EFFECT_BLOODRESTORE, 4 * removed)
 
 /datum/reagent/nutriment/glucose
 	name = "Glucose"
@@ -1629,7 +1629,7 @@
 
 /datum/reagent/drink/soda/nuka_cola/affect_ingest(mob/living/carbon/M, alien, removed)
 	..()
-	M.add_chemical_effect(CHEMICAL_EFFECT_SPEEDBOOST, 1)
+	M.add_reagent_cycle_effect(CHEMICAL_EFFECT_SPEEDBOOST, 1)
 	M.make_jittery(20)
 	M.druggy = max(M.druggy, 30)
 	M.dizziness += 5
@@ -4529,7 +4529,7 @@
 
 /datum/reagent/nutriment/coating/beerbatter/affect_ingest(mob/living/carbon/M, alien, removed)
 	..()
-	M.add_chemical_effect(CHEMICAL_EFFECT_ALCOHOL, 0.02) //Very slightly alcoholic
+	M.add_reagent_cycle_effect(CHEMICAL_EFFECT_ALCOHOL, 0.02) //Very slightly alcoholic
 
 //=========================
 //Fats

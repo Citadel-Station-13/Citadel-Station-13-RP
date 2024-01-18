@@ -12,19 +12,19 @@
 
 /datum/reagent/cryoxadone/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
-	if(M.bodytemperature < 170)
+
+	if(entity.bodytemperature < 170)
 		var/chem_effective = 1
 		if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 			chem_effective = 0.25
-			to_chat(M, "<span class='danger'>It's cold. Something causes your cellular mass to harden occasionally, resulting in vibration.</span>")
-			M.afflict_paralyze(20 * 10)
-			M.silent = max(M.silent, 10)
-			M.make_jittery(4)
-		M.adjustCloneLoss(-10 * removed * chem_effective)//Clone damage, either occured during cloning or from xenobiology slimes.
-		M.adjustOxyLoss(-10 * removed * chem_effective)//Also heals the standard damages
-		M.heal_organ_damage(10 * removed, 10 * removed * chem_effective)
-		M.adjustToxLoss(-10 * removed * chem_effective)
+			to_chat(entity, "<span class='danger'>It's cold. Something causes your cellular mass to harden occasionally, resulting in vibration.</span>")
+			entity.afflict_paralyze(20 * 10)
+			entity.silent = max(entity.silent, 10)
+			entity.make_jittery(4)
+		entity.adjustCloneLoss(-10 * removed * chem_effective)//Clone damage, either occured during cloning or from xenobiology slimes.
+		entity.adjustOxyLoss(-10 * removed * chem_effective)//Also heals the standard damages
+		entity.heal_organ_damage(10 * removed, 10 * removed * chem_effective)
+		entity.adjustToxLoss(-10 * removed * chem_effective)
 
 /datum/reagent/clonexadone
 	name = "Clonexadone"
@@ -38,20 +38,20 @@
 
 /datum/reagent/clonexadone/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
-	if(M.bodytemperature < 170)
+
+	if(entity.bodytemperature < 170)
 		var/chem_effective = 1
 		if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 			if(prob(10))
-				to_chat(M, "<span class='danger'>It's so cold. Something causes your cellular mass to harden sporadically, resulting in seizure-like twitching.</span>")
+				to_chat(entity, "<span class='danger'>It's so cold. Something causes your cellular mass to harden sporadically, resulting in seizure-like twitching.</span>")
 			chem_effective = 0.5
-			M.afflict_paralyze(20 * 20)
-			M.silent = max(M.silent, 20)
-			M.make_jittery(4)
-		M.adjustCloneLoss(-30 * removed * chem_effective)//Better version of cryox, but they can work at the same time
-		M.adjustOxyLoss(-30 * removed * chem_effective)
-		M.heal_organ_damage(30 * removed, 30 * removed * chem_effective)
-		M.adjustToxLoss(-30 * removed * chem_effective)
+			entity.afflict_paralyze(20 * 20)
+			entity.silent = max(entity.silent, 20)
+			entity.make_jittery(4)
+		entity.adjustCloneLoss(-30 * removed * chem_effective)//Better version of cryox, but they can work at the same time
+		entity.adjustOxyLoss(-30 * removed * chem_effective)
+		entity.heal_organ_damage(30 * removed, 30 * removed * chem_effective)
+		entity.adjustToxLoss(-30 * removed * chem_effective)
 
 /datum/reagent/necroxadone
 	name = "Necroxadone"
@@ -61,29 +61,21 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#94B21C"
 	bloodstream_metabolism_multiplier = 0.5
-	mrate_static = TRUE
-
-/datum/reagent/necroxadone/on_mob_life(mob/living/carbon/M, alien, datum/reagent_holder/metabolism/location)
-	if(M.stat == DEAD && M.has_modifier_of_type(/datum/modifier/bloodpump_corpse))
-		affects_dead = TRUE
-	else
-		affects_dead = FALSE
-
-	. = ..(M, alien, location)
+	metabolize_while_dead = TRUE
 
 /datum/reagent/necroxadone/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	
-	if(M.bodytemperature < 170 || (M.stat == DEAD && M.has_modifier_of_type(/datum/modifier/bloodpump_corpse)))
+
+	if(entity.bodytemperature < 170 || (entity.stat == DEAD && entity.has_modifier_of_type(/datum/modifier/bloodpump_corpse)))
 		var/chem_effective = 1
 		if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 			if(prob(10))
-				to_chat(M, "<span class='danger'>It's so cold. Something causes your cellular mass to harden sporadically, resulting in seizure-like twitching.</span>")
+				to_chat(entity, "<span class='danger'>It's so cold. Something causes your cellular mass to harden sporadically, resulting in seizure-like twitching.</span>")
 			chem_effective = 0.5
-			M.afflict_paralyze(20 * 20)
-			M.silent = max(M.silent, 20)
-			M.make_jittery(4)
-		if(M.stat != DEAD)
-			M.adjustCloneLoss(-5 * removed * chem_effective)
-		M.adjustOxyLoss(-20 * removed * chem_effective)//dehusking for cool people
-		M.adjustToxLoss(-40 * removed * chem_effective)
+			entity.afflict_paralyze(20 * 20)
+			entity.silent = max(entity.silent, 20)
+			entity.make_jittery(4)
+		if(entity.stat != DEAD)
+			entity.adjustCloneLoss(-5 * removed * chem_effective)
+		entity.adjustOxyLoss(-20 * removed * chem_effective)//dehusking for cool people
+		entity.adjustToxLoss(-40 * removed * chem_effective)
