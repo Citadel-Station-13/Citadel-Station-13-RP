@@ -77,14 +77,7 @@
 			memory["pump_status"] = "off"
 
 	else if(receive_tag==id_tag)
-		switch(signal.data["command"])
-			if("cycle_ext")
-				receive_user_command("cycle_ext_door")
-			if("cycle_int")
-				receive_user_command("cycle_int_door")
-
-
-
+		receive_user_command(signal.data["command"])
 
 /datum/computer/file/embedded_program/airlock/receive_user_command(command)
 	. = TRUE
