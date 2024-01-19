@@ -119,7 +119,45 @@
  */
 /obj/shuttle_anchor/proc/ordered_turfs_at(turf/anchor, direction)
 	ASSERT(isturf(anchor))
-	#warn impl
+	var/x = anchor.x
+	var/y = anchor.y
+	switch(dir)
+		if(NORTH)
+			return SSgrids.get_ordered_turfs(
+				x - offset_x,
+				x + size_x - 1 - offset_x,
+				y - size_y + 1,
+				y - offset_y,
+				z,
+				NORTH,
+			)
+		if(SOUTH)
+			return SSgrids.get_ordered_turfs(
+				x - size_x + 1 + offset_x,
+				x + offset_x,
+				y - offset_y,
+				y + size_y - offset_y - 1,
+				z,
+				SOUTH,
+			)
+		if(EAST)
+			return SSgrids.get_ordered_turfs(
+				x - size_y + 1 + offset_y,
+				x + offset_y,
+				y - size_x + 1 + offset_x,
+				y + offset_x,
+				z,
+				EAST,
+			)
+		if(WEST)
+			return SSgrids.get_ordered_turfs(
+				x - offset_y,
+				x + size_y - 1 - offset_y,
+				y - offset_x,
+				y + size_x - 1 - offset_x,
+				z,
+				WESt,
+			)
 
 /obj/shuttle_anchor/forceMove()
 	CRASH("attempted to forcemove a shuttle anchor")

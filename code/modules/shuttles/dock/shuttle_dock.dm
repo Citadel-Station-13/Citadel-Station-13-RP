@@ -315,6 +315,22 @@
 		return SHUTTLE_DOCKING_AUTHORIZATION_VALID
 	return docking_code_required? SHUTTLE_DOCKING_AUTHORIZATION_BLOCKED : SHUTTLE_DOCKING_AUTHORIZATION_INVALID
 
+//* grid moves handling - we don't move as nested shuttle support isn't a thing yet *//
+
+/obj/shuttle_dockre/grid_move(grid_flags, turf/new_turf)
+	return
+
+/obj/shuttle_dockre/grid_after(grid_flags, rotation_angle, list/late_call_hooks)
+	return
+	
+/obj/shuttle_dockre/grid_collect(grid_flags, turf/new_turf, loc_opinion)
+	return
+
+/obj/shuttle_dockre/grid_finished(grid_flags, rotation_angle)
+	return
+
+#warn above should be also implemented on anchor, and port.
+
 /**
  * literally just a landing pad
  */

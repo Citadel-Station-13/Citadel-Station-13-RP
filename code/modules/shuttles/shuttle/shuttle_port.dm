@@ -76,7 +76,17 @@
  */
 /obj/shuttle_port/proc/ordered_turfs_at(turf/anchor, direction)
 	ASSERT(isturf(anchor))
-	return shuttle.anchor.ordered_turfs_at(anchor, direction)
+	ASSERT(isturf(loc))
+	var/dx = shuttle.anchor.x - src.y
+	var/dy = shuttle.anchor.y - src.y
+	return shuttle.anchor.ordered_turfs_at(
+		locate(
+			anchor.x + dx,
+			anchor.y + dy,
+			anchor.z,
+		),
+		direction,
+	)
 
 /obj/shuttle_port/north
 	dir = NORTH

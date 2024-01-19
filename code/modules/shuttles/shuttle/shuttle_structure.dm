@@ -25,12 +25,13 @@
 /obj/shuttle_structure/doMove(atom/destination)
 	return FALSE
 
-// grid moves don't affect us at all.
+// grid moves handling
 
 /obj/shuttle_structure/grid_move(grid_flags, turf/new_turf)
 	loc = new_turf
 
 /obj/shuttle_structure/grid_after(grid_flags, rotation_angle, list/late_call_hooks)
+	#warn rotate
 	return
 	
 /obj/shuttle_structure/grid_collect(grid_flags, turf/new_turf, loc_opinion)
@@ -38,3 +39,5 @@
 
 /obj/shuttle_structure/grid_finished(grid_flags, rotation_angle)
 	return
+
+#warn above should be also implemented on anchor, and port.
