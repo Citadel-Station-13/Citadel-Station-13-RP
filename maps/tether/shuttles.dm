@@ -60,41 +60,6 @@
 	docking_controller_tag = "mining_docking"
 	move_direction = NORTH
 
-/obj/machinery/computer/shuttle_control
-	name = "tether backup shuttle control console"
-	shuttle_tag = "Tether Backup"
-	req_one_access = list(ACCESS_COMMAND_BRIDGE,ACCESS_GENERAL_PILOT)
-
-/obj/machinery/computer/shuttle_control
-	name = "vessel control console"
-	shuttle_tag = "Mercenary"
-	req_one_access = list(ACCESS_FACTION_SYNDICATE)
-
-/obj/machinery/computer/shuttle_control
-	name = "vessel control console"
-	shuttle_tag = "Ninja"
-	//req_one_access = list()
-
-/obj/machinery/computer/shuttle_control
-	name = "vessel control console"
-	shuttle_tag = "Skipjack"
-	//req_one_access = list()
-
-/obj/machinery/computer/shuttle_control
-	name = "vessel control console"
-	shuttle_tag = "NDV Phantom"
-	req_one_access = list(ACCESS_CENTCOM_ERT)
-
-/obj/machinery/computer/shuttle_control
-	name = "vessel control console"
-	shuttle_tag = "Trade"
-	req_one_access = list(ACCESS_FACTION_TRADER)
-
-/obj/machinery/computer/shuttle_control
-	name = "surface mining outpost shuttle control console"
-	shuttle_tag = "Mining Outpost"
-	req_one_access = list(ACCESS_SUPPLY_MINE)
-
 // The 'shuttle' of the excursion shuttle
 /datum/shuttle/autodock/overmap/excursion/tether
 	name = "Excursion Shuttle"
@@ -113,12 +78,7 @@
 	vessel_mass = 8000
 	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Excursion Shuttle"
-
-/obj/machinery/computer/shuttle_control
-	name = "short jump console"
-	shuttle_tag = "Excursion Shuttle"
-	req_one_access = list(ACCESS_GENERAL_PILOT)
-
+	
 ////////////////////////////////////////
 ////////      Tour Bus     /////////////
 ////////////////////////////////////////
@@ -138,11 +98,6 @@
 	vessel_mass = 2000
 	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Tour Bus"
-
-/obj/machinery/computer/shuttle_control
-	name = "short jump console"
-	shuttle_tag = "Tour Bus"
-	req_one_access = list(ACCESS_GENERAL_PILOT)
 
 ////////////////////////////////////////
 ////////      Medivac      /////////////
@@ -165,10 +120,6 @@
 	shuttle = "Medivac Shuttle"
 	fore_dir = EAST
 
-/obj/machinery/computer/shuttle_control
-	name = "short jump console"
-	shuttle_tag = "Medivac Shuttle"
-
 /datum/shuttle/autodock/overmap/securiship
 	name = "Securiship Shuttle"
 	warmup_time = 0
@@ -186,7 +137,3 @@
 	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Securiship Shuttle"
 	fore_dir = EAST
-
-/obj/machinery/computer/shuttle_control
-	name = "short jump console"
-	shuttle_tag = "Securiship Shuttle"

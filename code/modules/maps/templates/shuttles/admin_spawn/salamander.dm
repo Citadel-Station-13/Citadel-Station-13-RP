@@ -113,18 +113,6 @@
 	requires_power = 1
 	has_gravity = 0
 
-// The shuttle's 'shuttle' computer
-/obj/machinery/computer/shuttle_control
-	name = "short jump console"
-	shuttle_tag = "Salamander"
-	req_one_access = list()
-
-// The shuttle's 'shuttle' computer
-/obj/machinery/computer/shuttle_control
-	name = "short jump console"
-	shuttle_tag = "Salamander Wreckage"
-	req_one_access = list()
-
 // The 'shuttle'
 /datum/shuttle/autodock/overmap/salamander
 	name = "Salamander"

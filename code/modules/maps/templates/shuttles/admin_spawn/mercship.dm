@@ -77,11 +77,6 @@
 	icon_state = "shuttle"
 	requires_power = 0
 
-// The shuttle's 'shuttle' computer
-/obj/machinery/computer/shuttle_control
-	name = "boat control console"
-	shuttle_tag = "Carrier's Ship's Boat"
-
 // A shuttle lateloader landmark
 /obj/effect/shuttle_landmark/shuttle_initializer/mercboat
 	name = "Carrier's Boat Bay"

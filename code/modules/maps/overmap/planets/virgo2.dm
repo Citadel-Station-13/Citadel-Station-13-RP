@@ -43,10 +43,6 @@
 
 // -- Objs -- //
 
-/obj/machinery/computer/shuttle_control
-	name = "aerostat ferry control console"
-	shuttle_tag = "Aerostat Ferry"
-
 /obj/tether_away_spawner/aerostat_inside
 	name = "Aerostat Indoors Spawner"
 	faction = "aerostat_inside"

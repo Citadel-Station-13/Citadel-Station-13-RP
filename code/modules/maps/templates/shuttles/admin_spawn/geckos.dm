@@ -73,22 +73,6 @@
 	requires_power = 1
 	has_gravity = 0
 
-// The shuttle's 'shuttle' computer
-/obj/machinery/computer/shuttle_control
-	name = "short jump console"
-	shuttle_tag = "Gecko Stationhopper"
-	req_one_access = list()
-
-/obj/machinery/computer/shuttle_control
-	name = "short jump console"
-	shuttle_tag = "Gecko Cargo Hauler"
-	req_one_access = list()
-
-/obj/machinery/computer/shuttle_control
-	name = "short jump console"
-	shuttle_tag = "Wrecked Gecko Cargo Hauler"
-	req_one_access = list()
-
 // The 'shuttle'
 /datum/shuttle/autodock/overmap/gecko_sh
 	name = "Gecko Stationhopper"

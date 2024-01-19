@@ -1,37 +1,3 @@
-////////////////////////////////////////
-// Triumph custom shuttle implemnetations
-////////////////////////////////////////
-
-/obj/machinery/computer/shuttle_control
-	name = "triumph backup shuttle control console"
-	shuttle_tag = "Triumph Backup"
-	req_one_access = list(ACCESS_COMMAND_BRIDGE,ACCESS_GENERAL_PILOT)
-
-/obj/machinery/computer/shuttle_control
-	name = "vessel control console"
-	shuttle_tag = "Mercenary"
-	req_one_access = list(ACCESS_FACTION_SYNDICATE)
-
-/obj/machinery/computer/shuttle_control
-	name = "vessel control console"
-	shuttle_tag = "Ninja"
-	//req_one_access = list()
-
-/obj/machinery/computer/shuttle_control
-	name = "vessel control console"
-	shuttle_tag = "Skipjack"
-	//req_one_access = list()
-
-/obj/machinery/computer/shuttle_control
-	name = "vessel control console"
-	shuttle_tag = "NDV Phantom"
-	req_one_access = list(ACCESS_CENTCOM_ERT)
-
-/obj/machinery/computer/shuttle_control
-	name = "vessel control console"
-	shuttle_tag = "Trade"
-	req_one_access = list(ACCESS_FACTION_TRADER)
-
 // EXCURSION SHUTTLE DATA
 
 /datum/shuttle/autodock/overmap/excursion/triumph
@@ -47,11 +13,6 @@
 /area/shuttle/excursion/triumph
 	name = "Excursion Shuttle"
 	icon_state = "shuttle"
-
-/obj/machinery/computer/shuttle_control
-	name = "short jump console"
-	shuttle_tag = "Excursion Shuttle"
-	req_one_access = list(ACCESS_GENERAL_PILOT)
 
 // COURSER SHUTTLE DATA
 
@@ -69,11 +30,6 @@
 	name = "Courser Scouting Vessel"
 	icon_state = "shuttle"
 
-/obj/machinery/computer/shuttle_control
-	name = "short jump console"
-	shuttle_tag = "Courser Scouting Vessel"
-	req_one_access = list(ACCESS_GENERAL_PILOT)
-
 // Public Civilian Shuttle
 
 /datum/shuttle/autodock/overmap/civvie/triumph
@@ -89,10 +45,6 @@
 /area/shuttle/civvie
 	name = "Civilian Transport"
 	icon_state = "shuttle"
-
-/obj/machinery/computer/shuttle_control
-	name = "civilian jump console"
-	shuttle_tag = "Civilian Transport"
 
 
 // Mining Shuttle
@@ -110,10 +62,6 @@
 	name = "Mining Shuttle"
 	icon_state = "shuttle"
 
-/obj/machinery/computer/shuttle_control
-	name = "mining jump console"
-	shuttle_tag = "Mining Shuttle"
-
 //EMT Shuttle
 /datum/shuttle/autodock/overmap/emt/triumph
 	name = "Dart EMT Shuttle"
@@ -127,10 +75,7 @@
 /area/shuttle/emt
 	name = "Dart EMT Shuttle"
 	icon_state = "shuttle"
-
-/obj/machinery/computer/shuttle_control
-	name = "EMT jump console"
-	shuttle_tag = "Dart EMT Shuttle"
+	
 
 //////////////////////////////////////////////////////////////
 // Escape shuttle and pods

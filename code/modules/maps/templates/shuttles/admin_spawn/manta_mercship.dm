@@ -157,11 +157,6 @@
 	name = "Near SAARE Cruiser (Starboard)"
 	landmark_tag = "manta_ship_near_star"
 
-// The shuttle's 'shuttle' computer
-/obj/machinery/computer/shuttle_control
-	name = "boat control console"
-	shuttle_tag = "Boarding Craft"
-
 // A shuttle lateloader landmark
 /obj/effect/shuttle_landmark/shuttle_initializer/manta_ship_boat
 	name = "Mercenary Cruiser's Bay"
@@ -170,12 +165,6 @@
 	landmark_tag = "omship_spawn_manta_lander"
 	docking_controller = "manta_boarding_shuttle_dock"
 	shuttle_type = /datum/shuttle/autodock/overmap/manta_ship_boat
-
-// The 'shuttle'
-/obj/machinery/computer/shuttle_control
-	name = "LC control console"
-	shuttle_tag = "Boarding Craft"
-	req_one_access = list(150)
 
 /datum/shuttle/autodock/overmap/manta_ship_boat
 	name = "Boarding Craft"

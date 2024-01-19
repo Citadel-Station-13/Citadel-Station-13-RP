@@ -138,11 +138,6 @@
 	name = "Near NRV Von Braun (Starboard)"
 	landmark_tag = "ert_ship_near_star"
 
-// The shuttle's 'shuttle' computer
-/obj/machinery/computer/shuttle_control
-	name = "boat control console"
-	shuttle_tag = "NRB Robineau"
-
 // A shuttle lateloader landmark
 /obj/effect/shuttle_landmark/shuttle_initializer/ert_ship_boat
 	name = "NRV Von Braun's Bay"

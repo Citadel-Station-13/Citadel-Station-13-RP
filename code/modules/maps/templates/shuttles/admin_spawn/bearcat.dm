@@ -62,12 +62,6 @@
 	vessel_size = SHIP_SIZE_LARGE
 	shuttle = "Bearcat"
 
-// The shuttle's 'shuttle' computer
-/obj/machinery/computer/shuttle_control
-	name = "short jump console"
-	shuttle_tag = "Bearcat"
-	req_one_access = list()
-
 // -- Objs -- //
 /obj/effect/shuttle_landmark/premade/bearcat/dock_w
 	name = "IRV Bearcat - Port Docking Ring"

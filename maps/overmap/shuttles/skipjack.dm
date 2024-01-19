@@ -40,8 +40,3 @@
 	vessel_mass = 4000
 	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Skipjack Shuttle"
-
-/obj/machinery/computer/shuttle_control
-	name = "short jump console"
-	shuttle_tag = "Skipjack Shuttle"
-

@@ -16,10 +16,6 @@
 	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Beruang Trade Ship"
 
-/obj/machinery/computer/shuttle_control
-	name = "short jump console"
-	shuttle_tag = "Beruang Trade Ship"
-
 /area/shuttle/trade_ship
 	requires_power = 1
 	icon_state = "shuttle2"
@@ -49,10 +45,6 @@
 	vessel_mass = 10000
 	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Beluga Passenger Liner"
-
-/obj/machinery/computer/shuttle_control
-	name = "short jump console"
-	shuttle_tag = "Beluga Passenger Liner"
 
 /area/shuttle/visitor_ship
 	requires_power = 1

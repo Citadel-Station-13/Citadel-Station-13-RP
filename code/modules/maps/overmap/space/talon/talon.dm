@@ -38,12 +38,6 @@
 	skybox_pixel_x = 270
 	skybox_pixel_y = 60
 
-// The shuttle's 'shuttle' computer
-/obj/machinery/computer/shuttle_control
-	name = "boat control console"
-	shuttle_tag = "Talon's boat"
-	req_one_access = list(ACCESS_FACTION_TALON)
-
 // A shuttle lateloader landmark
 /obj/effect/shuttle_landmark/shuttle_initializer/talonboat
 	name = "Talon's boat bay"
@@ -82,12 +76,6 @@
 	I.pixel_y = 200
 	return I
 */
-
-// The shuttle's 'shuttle' computer
-/obj/machinery/computer/shuttle_control
-	name = "lifeboat control console"
-	shuttle_tag = "Talon lifeboat"
-	req_one_access = list(ACCESS_FACTION_TALON)
 
 // A shuttle lateloader landmark
 /obj/effect/shuttle_landmark/shuttle_initializer/talon_lifeboat

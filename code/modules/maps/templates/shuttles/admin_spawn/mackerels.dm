@@ -74,32 +74,6 @@
 	requires_power = 1
 	has_gravity = 0
 
-// The shuttle's 'shuttle' computer
-/obj/machinery/computer/shuttle_control
-	name = "short jump console"
-	shuttle_tag = "Mackerel Stationhopper"
-	req_one_access = list()
-
-/obj/machinery/computer/shuttle_control
-	name = "short jump console"
-	shuttle_tag = "Mackerel Light Cargo"
-	req_one_access = list()
-
-/obj/machinery/computer/shuttle_control
-	name = "short jump console"
-	shuttle_tag = "Mackerel Light Cargo II"
-	req_one_access = list()
-
-/obj/machinery/computer/shuttle_control
-	name = "short jump console"
-	shuttle_tag = "Mackerel Heavy Cargo"
-	req_one_access = list()
-
-/obj/machinery/computer/shuttle_control_skel
-	name = "short jump console"
-	shuttle_tag = "Mackerel Heavy Cargo Spartan"
-	req_one_access = list()
-
 // The 'shuttle'
 /datum/shuttle/autodock/overmap/mackerel_sh
 	name = "Mackerel Stationhopper"

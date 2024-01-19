@@ -13,11 +13,6 @@
 	icon_state = "shuttle2"
 	requires_power = 1
 
-// The shuttle's 'shuttle' computer
-/obj/machinery/computer/shuttle_control
-	name = "short jump console"
-	shuttle_tag = "Escape Pod"
-
 // A shuttle lateloader landmark
 /obj/effect/shuttle_landmark/shuttle_initializer/escapepod
 	name = "Origin - Escape Pod"

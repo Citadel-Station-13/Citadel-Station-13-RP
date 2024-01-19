@@ -16,11 +16,6 @@
 	name = "\improper Cruise Shuttle - Private Quarters"
 	icon_state = "blue-red2"
 
-// The shuttle's 'shuttle' computer
-/obj/machinery/computer/shuttle_control
-	name = "short jump console"
-	shuttle_tag = "UKN Aerondight"
-
 // A shuttle lateloader landmark
 /obj/effect/shuttle_landmark/shuttle_initializer/cruise_ship
 	name = "Origin - Cruise Shuttle"
