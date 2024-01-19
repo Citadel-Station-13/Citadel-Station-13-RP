@@ -356,6 +356,8 @@ SUBSYSTEM_DEF(grids)
 	return
 
 #warn parse below
+#warn powenrets on cables
+#warn pipenets on atmos machinery
 
 /proc/translate_turfs(list/translation, area/base_area = null, turf/base_turf)
 	for(var/turf/source in translation)

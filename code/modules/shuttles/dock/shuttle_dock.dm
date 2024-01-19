@@ -3,6 +3,8 @@
 
 /**
  * Shuttle docking points.
+ * 
+ * When a shuttle docks, the shuttle aligns its docking port with our shuttle dock with some Magic Bullshit Math.
  */
 /obj/shuttle_dock
 	name = "shuttle dock"
@@ -178,15 +180,16 @@
 		return TRUE
 	var/target_x = x
 	var/target_y = y
-	switch(dir)
-		if(NORTH)
-			target_y++
-		if(SOUTH)
-			target_y--
-		if(EAST)
-			target_x++
-		if(WEST)
-			target_x--
+	// we are aligned so don't move forwards 1
+	// switch(dir)
+	// 	if(NORTH)
+	// 		target_y++
+	// 	if(SOUTH)
+	// 		target_y--
+	// 	if(EAST)
+	// 		target_x++
+	// 	if(WEST)
+	// 		target_x--
 	for(var/datum/bounds2/bounds in GLOB.uninitialized_shuttle_dock_bounds)
 		if(bounds.contains_xy(target_x, target_y))
 			switch(dir)

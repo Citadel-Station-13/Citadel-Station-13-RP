@@ -168,37 +168,6 @@
 		on_shuttle_arrival(start_location, destination)
 		make_sounds(HYPERSPACE_END)
 
-//////////////////////////////
-// Forward declarations of public procs.  They do nothing because this is not auto-dock.
-
-/datum/shuttle/proc/fuel_check()
-	return 1	// Fuel check should always pass in non-overmap shuttles (they have magic engines)
-
-/datum/shuttle/proc/cancel_launch(var/user)
-	// If we are past warming up its too late to cancel.
-	if (moving_status == SHUTTLE_WARMUP)
-		moving_status = SHUTTLE_IDLE
-
-/*
-	Docking stuff
-*/
-/datum/shuttle/proc/dock()
-	return
-
-/datum/shuttle/proc/undock()
-	return
-
-/datum/shuttle/proc/force_undock()
-	return
-
-// Check if we are docked (or never dock) and thus have properly arrived.
-/datum/shuttle/proc/check_docked()
-	return TRUE
-
-// Check if we are undocked and thus probably ready to depart.
-/datum/shuttle/proc/check_undocked()
-	return TRUE
-
 /*****************
 * Shuttle Moved Handling	* (Observer Pattern Implementation: Shuttle Moved)
 * Shuttle Pre Move Handling	* (Observer Pattern Implementation: Shuttle Pre Move)
@@ -242,22 +211,6 @@
 // A note to anyone overriding move in a subtype. perform_shuttle_move() must absolutely not, under any circumstances, fail to move the shuttle.
 // If you want to conditionally cancel shuttle launches, that logic must go in short_jump() or long_jump()
 /datum/shuttle/proc/perform_shuttle_move(var/obj/effect/shuttle_landmark/destination, var/list/turf_translation)
-	log_shuttle("perform_shuttle_move() current=[current_location] destination=[destination]")
-	//to_chat(world, "move_shuttle() called for [name] leaving [origin] en route to [destination].")
-
-	//to_chat(world, "area_coming_from: [origin]")
-	//to_chat(world, "destination: [destination]")
-	ASSERT(current_location != destination)
-
-	// If shuttle has no internal gravity, update our gravity with destination gravity
-	if((flags & SHUTTLE_FLAGS_ZERO_G))
-		var/new_grav = 1
-		if(destination.shuttle_landmark_flags & SLANDMARK_FLAG_ZERO_G)
-			var/area/new_area = get_area(destination)
-			new_grav = new_area.has_gravity
-		for(var/area/our_area in shuttle_area)
-			if(our_area.has_gravity != new_grav)
-				our_area.gravitychange(new_grav)
 
 	// TODO - Old code used to throw stuff out of the way instead of squashing.  Should we?
 
@@ -315,29 +268,7 @@
 					continue
 				TA.PlaceBelowLogicalBottom(ceiling_type, CHANGETURF_INHERIT_AIR | CHANGETURF_PRESERVE_OUTDOORS)
 
-	// Power-related checks. If shuttle contains power related machinery, update powernets.
-	// Note: Old way was to rebuild ALL powernets: if(powernets.len) SSmachines.makepowernets()
-	// New way only rebuilds the powernets we have to
-	var/list/cables = list()
-	for(var/datum/powernet/P in powernets)
-		cables |= P.cables
-		qdel(P)
-	SSmachines.setup_powernets_for_cables(cables)
 
-	// Adjust areas of mothershuttle so it doesn't try and bring us with it if it jumps while we aren't on it.
-	if(mothershuttle)
-		var/datum/shuttle/MS = SSshuttle.shuttles[mothershuttle]
-		if(MS)
-			if(current_location.landmark_tag == motherdock)
-				MS.shuttle_area |= shuttle_area	// We are now on mothershuttle! Bring us along!
-			else
-				MS.shuttle_area -= shuttle_area	// We have left mothershuttle! Don't bring us along!
-
-	return
-
-// Returns 1 if the shuttle has a valid arrive time
-/datum/shuttle/proc/has_arrive_time()
-	return (moving_status == SHUTTLE_INTRANSIT)
 
 /datum/shuttle/proc/make_sounds(var/sound_type)
 	var/sound_to_play = null
@@ -351,24 +282,6 @@
 	for(var/area/A in shuttle_area)
 		for(var/obj/machinery/door/E in A)	// Dumb, I know, but playing it on the engines doesn't do it justice
 			playsound(E, sound_to_play, 50, FALSE)
-
-/datum/shuttle/proc/message_passengers(var/message)
-	for(var/area/A in shuttle_area)
-		for(var/mob/M in A)
-			M.show_message(message, 2)
-
-/datum/shuttle/proc/find_children()
-	. = list()
-	for(var/shuttle_name in SSshuttle.shuttles)
-		var/datum/shuttle/shuttle = SSshuttle.shuttles[shuttle_name]
-		if(shuttle.mothershuttle == name)
-			. += shuttle
-
-// Returns the areas in shuttle_area that are not actually child shuttles.
-/datum/shuttle/proc/find_childfree_areas()
-	. = shuttle_area.Copy()
-	for(var/datum/shuttle/child in find_children())
-		. -= child.shuttle_area
 
 /datum/shuttle/proc/get_location_name()
 	if(moving_status == SHUTTLE_INTRANSIT)
