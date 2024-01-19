@@ -115,6 +115,12 @@
 	shuttle = null
 	return ..()
 
+/obj/shuttle_anchor/proc/overall_width(direction)
+	#warn impl
+
+/obj/shuttle_anchor/proc/overall_height(direction)
+	#warn impl
+
 /**
  * @return turfs in square box, unfiltered
  */

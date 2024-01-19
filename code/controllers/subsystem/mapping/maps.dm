@@ -183,10 +183,6 @@
 	rebuild_verticality()
 	rebuild_transitions()
 
-	// todo: legacy
-	for(var/path in instance.legacy_assert_shuttle_datums)
-		SSshuttle.legacy_shuttle_assert(path)
-
 	var/list/datum/map/recursing = list()
 
 	for(var/datum/map/path_or_id as anything in instance.dependencies)

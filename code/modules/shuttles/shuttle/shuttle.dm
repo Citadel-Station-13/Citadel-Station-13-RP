@@ -43,8 +43,24 @@
 	var/datum/event_args/shuttle/movement/currently_moving
 	/// the port we're using
 	var/obj/shuttle_port/docked_via_port
-	/// what are we are considered to be on top of
-	var/area/docked_underneath_area
+	
+	//* Movement - Ephemeral / In-Move
+	/// current direction of motion, used to calculate things like visuals and roadkill
+	var/translating_physics_direction
+	/// [x or y] cache (perpendicular to considered movement direction)
+	/// of 'first non shuttle turf'
+	/// used to cache calculations when ramming things out of our way
+	/// if lookup fails, associate to FALSE, not null
+	/// this is an indexed list, with 1 to n for n width shuttle from left to right
+	/// with the relative perpsective of its physics direction.
+	var/list/translating_pepsi_man_lookup_cache
+	/// [x or y] backup cache (perpendicular to considered movement direction)
+	/// of 'closest clear non shuttle turf'
+	/// used when we can't find a proper lookup because it's blocked and need somewhere
+	/// to kick people to anyways
+	/// this is an indexed list, with 1 to n for n width shuttle from left to right
+	/// with the relative perpsective of its physics direction.
+	var/list/translating_garbage_disposal_lookup_cache
 
 	//* Hooks
 	/// registered shuttle hooks
@@ -154,7 +170,10 @@
 	return anchor.aabb_ordered_turfs_here()
 
 /datum/shuttle/proc/aabb_ordered_turfs_at(turf/anchor, direction)
-	return anchor.aabb_ordered_turfs_at(anchor, direction)
+	return src.anchor.aabb_ordered_turfs_at(anchor, direction)
+
+/datum/shuttle/proc/shuttle_turfs()
+	return SSgrids.filter_ordered_turfs_via_area(areas, aabb_ordered_turfs_here())
 
 //* Docking - Control *//
 
@@ -187,6 +206,8 @@
 /**
  * immediate shuttle move to a turf
  * 
+ * all translations must use this.
+ * 
  * optionally, align a port with that turf instead of aligning our anchor to that turf
  * 
  * aligned = the port / anchor (if no port specified) is on the turf, and faces the same way,
@@ -194,13 +215,19 @@
  * ports should generally be centered.
  */
 /datum/shuttle/proc/unsafe_aligned_translation(turf/move_to, direction, obj/shuttle_port/align_with_port, list/use_before_turfs, list/use_after_turfs)
+	// todo: more physics directions
+	translating_physics_direction = direction
+	// set up translating process caches
+	var/overall_width = anchor.get_width(directio)
+	translating_pepsi_man_lookup_cache = new /list(overall_width)
+	translating_garbage_disposal_lookup_cache = new /list(overall_width)
 	if(isnull(use_before_turfs))
 		// assume both are empty
 		// get aabb boxes
 		use_before_turfs = aabb_ordered_turfs_here()
 		use_after_turfs = align_with_port? align_with_port.aabb_ordered_turfs_at(move_to, direction) : anchor.aabb_ordered_turfs_at(move_to, direction)
 		// filter for less work
-		SSgrids.filtered_ordered_turfs_in_place_via_area(areas, use_before_turfs, use_after_turfs)
+		SSgrids.null_filter_ordered_turfs_in_place_via_area(areas, use_before_turfs, use_after_turfs)
 	// prepped, move.
 	SSgrids.translate(
 		use_before_turfs,
@@ -214,6 +241,10 @@
 		null,
 		CALLBACK(src, PROC_REF(overlap_handler)),
 	)
+	// clear caches
+	translating_physics_direction = null
+	translating_pepsi_man_lookup_cache = null
+	translating_garbage_disposal_lookup_cache = null
 
 //* Docking - Bounding Checks *//
 

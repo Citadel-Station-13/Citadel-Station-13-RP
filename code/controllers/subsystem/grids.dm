@@ -71,7 +71,7 @@ SUBSYSTEM_DEF(grids)
  * * area_cache must have truthy associations.
  * * the same index in from_turfs that are nulled are nulled in to_turfs
  */
-/datum/controller/subsystem/grids/proc/filtered_ordered_turfs_in_place_via_area(list/area/area_cache, list/turf/from_turfs, list/turf/to_turfs)
+/datum/controller/subsystem/grids/proc/null_filter_ordered_turfs_in_place_via_area(list/area/area_cache, list/turf/from_turfs, list/turf/to_turfs)
 	ASSERT(length(from_turfs) == length(to_turfs))
 	for(var/i in 1 to length(from_turfs))
 		var/turf/T = from_turfs[i]
@@ -79,6 +79,22 @@ SUBSYSTEM_DEF(grids)
 			continue
 		from_turfs[i] = null
 		to_turfs[i] = null
+
+/**
+ * Taking ordered 'from' and 'to' lists, erases any entries that shouldn't be moved.
+ * preserves relative order
+ *
+ * * turfs can contain nulls
+ * * input turf lists are edited
+ * * area_cache must have truthy associations.
+ * * the same index in from_turfs that are nulled are nulled in to_turfs
+ */
+/datum/controller/subsystem/grids/proc/filter_ordered_turfs_via_area(list/area/area_cache, list/turf/ordered_turfs)
+	. = list()
+	for(var/turf/T in ordered_turfs)
+		if(!area_cache[T.loc])
+			continue
+		. += T
 
 /**
  * performs turf translation
@@ -275,6 +291,7 @@ SUBSYSTEM_DEF(grids)
 	if(isnull(leave_area))
 		leave_area = new /area/grid_orphaned
 	leave_area.contents += old_turfs
+	#warn use transfer helper instead
 
 /**
  * Called after everything is moved
@@ -360,19 +377,6 @@ SUBSYSTEM_DEF(grids)
 #warn parse below
 #warn powenrets on cables
 #warn pipenets on atmos machinery
-
-/proc/translate_turfs(list/translation, area/base_area = null, turf/base_turf)
-	for(var/turf/source in translation)
-
-		var/turf/target = translation[source]
-
-		if(target)
-			if(base_area)
-				ChangeArea(target, get_area(source))
-			var/leave_turf = base_turf ? base_turf : /turf/simulated/floor/plating
-			translate_turf(source, target, leave_turf)
-			if(base_area)
-				ChangeArea(source, base_area)
 
 	// Change the old turfs (Currently done by translate_turf for us)
 	// for(var/turf/source in translation)

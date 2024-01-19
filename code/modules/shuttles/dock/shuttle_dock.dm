@@ -81,7 +81,7 @@
 	var/dock_offset = 0
 	/// how many tiles of 'safety' extends to both sides of the width
 	/// this is tiles like walls that are still considered airtight / sealed
-	var/dock_margin = 0T
+	var/dock_margin = 0
 
 	//* docking (control)
 	/// docking code, if any

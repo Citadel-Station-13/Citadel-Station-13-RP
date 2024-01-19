@@ -3125,7 +3125,6 @@
 #include "code\modules\mapping\loader\loader.dm"
 #include "code\modules\mapping\loader\orientation.dm"
 #include "code\modules\mapping\loader\preloader.dm"
-#include "code\modules\mapping\loader\scan.dm"
 #include "code\modules\mapping\loader\verify.dm"
 #include "code\modules\mapping\loader\wrappers.dm"
 #include "code\modules\mapping\map_helpers\_map_helpers.dm"
