@@ -43,6 +43,8 @@
 	var/datum/event_args/shuttle/movement/currently_moving
 	/// the port we're using
 	var/obj/shuttle_port/docked_via_port
+	/// what are we are considered to be on top of
+	var/area/docked_underneath_area
 
 	//* Hooks
 	/// registered shuttle hooks
@@ -148,8 +150,11 @@
 /**
  * returns with the current direction of the shuttle
  */
-/datum/shuttle/proc/bounding_ordered_turfs()
-	return anchor.ordered_turfs_here()
+/datum/shuttle/proc/aabb_ordered_turfs_here()
+	return anchor.aabb_ordered_turfs_here()
+
+/datum/shuttle/proc/aabb_ordered_turfs_at(turf/anchor, direction)
+	return anchor.aabb_ordered_turfs_at(anchor, direction)
 
 //* Docking - Control *//
 
@@ -166,6 +171,17 @@
 
 #warn AAAAAAAAAAAAAAAAAAAAAAAAA
 
+//* Docking - Handling *//
+
+/**
+ * handles when an overlap occurs 
+ * 
+ * overlap always occurs on any turfs in the way
+ * overlap always occurs on any movables that are non abstract and considered a game object
+ */
+/datum/shuttle/proc/overlap_handler(atom/entity, turf/from_turf, turf/to_turf)
+	#warn impl
+
 //* Docking - Backend; Don't mess with these. *//
 
 /**
@@ -177,9 +193,27 @@
  * respecting all necessary offsets.
  * ports should generally be centered.
  */
-/datum/shuttle/proc/perform_aligned_translation(turf/move_to, direction, obj/shuttle_port/align_with_port, list/use_before_turfs, list/use_after_turfs)
-	
-	#warn impl
+/datum/shuttle/proc/unsafe_aligned_translation(turf/move_to, direction, obj/shuttle_port/align_with_port, list/use_before_turfs, list/use_after_turfs)
+	if(isnull(use_before_turfs))
+		// assume both are empty
+		// get aabb boxes
+		use_before_turfs = aabb_ordered_turfs_here()
+		use_after_turfs = align_with_port? align_with_port.aabb_ordered_turfs_at(move_to, direction) : anchor.aabb_ordered_turfs_at(move_to, direction)
+		// filter for less work
+		SSgrids.filtered_ordered_turfs_in_place_via_area(areas, use_before_turfs, use_after_turfs)
+	// prepped, move.
+	SSgrids.translate(
+		use_before_turfs,
+		use_after_turfs,
+		anchor.dir,
+		direction,
+		NONE,
+		/turf/baseturf_skipover/shuttle,
+		docked_underneath_area,
+		null,
+		null,
+		CALLBACK(src, PROC_REF(overlap_handler)),
+	)
 
 //* Docking - Bounding Checks *//
 

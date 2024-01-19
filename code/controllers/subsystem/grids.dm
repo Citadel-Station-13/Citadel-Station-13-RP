@@ -97,7 +97,7 @@ SUBSYSTEM_DEF(grids)
  * * to_dir - dir of to_turfs
  * * grid_flags - flags to pass during move to motion procs
  * * baseturf_boundary - if set, turfs move down to this baseturf boundary. if it's not there, the turf is automatically skipped.
- * * leave_area - the area instance to leave behind. if not set, this defaults to the base area of the zlevel.
+ * * leave_area - the area instance to leave behind. if not set, this defaults to world.area. this can be a typepath if the typepath is an unique area.
  * * emit_motion_flags - use this to extract ordered motion flags
  * * emit_moved_atoms - use this to extract what movables got moved
  * * overlap_handler - callback that's fired for things in the way with (thing, from_turf, to_turf); things: turfs, objs, mobs. ATOM_ABSTRACT and ATOM_NONWORLD are ignored.
@@ -108,7 +108,7 @@ SUBSYSTEM_DEF(grids)
 	. = do_translate(arglist(args))
 	translation_mutex = FALSE
 
-/datum/controller/subsystem/grids/proc/do_translate(list/from_turfs, list/to_turfs, from_dir, to_dir, grid_flags, baseturf_boundary, area/leave_area, list/emit_motion_flags = list(), list/emit_moved_atoms = list(), datum/callback/overlap_handler)
+/datum/controller/subsystem/grids/proc/do_translate(list/from_turfs, list/to_turfs, from_dir, to_dir, grid_flags, baseturf_boundary, area/leave_area, list/emit_motion_flags, list/emit_moved_atoms, datum/callback/overlap_handler)
 	PRIVATE_PROC(TRUE)
 	// While based on /tg/'s movement system, we do a few things differently.
 	// First, limitations:
@@ -266,12 +266,14 @@ SUBSYSTEM_DEF(grids)
  * Called when cleaning up after transfer
  */
 /area/proc/grid_clean(grid_flags, list/turf/old_turfs, list/turf/new_turfs, baseturf_boundary, area/leave_area)
-	contents -= old_turfs
+	// contents -= old_turfs
 	if(ispath(leave_area))
-		leave_area = cached_area_of_type(leave_area)
+		leave_area = unique_area_of_type(leave_area)
 	else if(istype(leave_area))
 	else
-		leave_area = cached_area_of_type(/area/space)
+		leave_area = unique_area_of_type(world.area)
+	if(isnull(leave_area))
+		leave_area = new /area/grid_orphaned
 	leave_area.contents += old_turfs
 
 /**
@@ -440,3 +442,14 @@ SUBSYSTEM_DEF(grids)
 		Origin.ScrapeAway()
 
 	return TRUE
+
+#warn above
+
+//* grid area left behind if a grid move is not given an area to leave
+
+/area/grid_orphaned
+	name = "orphaned grid area"
+	desc = "someone fucked up"
+	#warn sprite
+	plane = DEBUG_PLANE
+	layer = DEBUG_LAYER_AREA_OVERLAYS

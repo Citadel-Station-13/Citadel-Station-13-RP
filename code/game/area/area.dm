@@ -1,16 +1,26 @@
 /**
- * Gets a cached area of a given type
- *
- * This will work on non unique areas, and will not impact usual uniqueness checks,
- * e.g. using this won't make maploader use an area made in this way unless the area already was unique
+ * Gets a cached area of a given type, if it's unique
+ * If it's not unique, throw a runtime
  */
-/proc/cached_area_of_type(path)
+/proc/unique_area_of_type(path)
 	ASSERT(ispath(path, /area))
+	var/area/creating = path
+	ASSERT(creating.unique)
 	if(!isnull(GLOB.areas_by_type[path]))
 		return GLOB.areas_by_type[path]
-	var/area/creating = new path
+	creating = new path(null)
 	GLOB.areas_by_type[path] = creating
 	return creating
+
+/**
+ * Gets the global reference to an area, or a new copy, depending on if it's unique or not
+ */
+/proc/dynamic_area_of_type(path)
+	ASSERT(ispath(path, /area))
+	var/area/creating = path
+	if(!creating.unique)
+		return new path(null)
+	return unique_area_of_type(path)
 
 /**
  * # area
@@ -238,6 +248,7 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
+#warn refactor changearea
 /**
  * Changes the area of T to A. Do not do this manually.
  * Area is expected to be a non-null instance.

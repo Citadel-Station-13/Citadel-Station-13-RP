@@ -30,6 +30,9 @@
 	/// base turf typepath for this level
 	var/base_turf = /turf/space
 	/// base area typepath for this level
+	///
+	/// this should be an unique area, like /area/space
+	/// otherwise, stuff like grids will be mad at you and explode
 	var/base_area = /area/space
 	/// id of north zlevel - overrides linkage if set. can be set to path, autoconverts to id on new.
 	/// can also be set to instance - used for structs.

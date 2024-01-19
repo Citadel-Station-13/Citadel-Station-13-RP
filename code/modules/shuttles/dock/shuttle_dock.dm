@@ -33,6 +33,8 @@
 	/// shuttles are clear to land in our bounding box without the normal obstruction checks
 	/// this should usually be TRUE so people can't block off areas
 	var/trample_bounding_box = TRUE
+	/// set the bounding box's area to a given area
+	var/create_bounding_box_area = TRUE
 	/// see /obj/shuttle_anchor for how this works; it works the same as the shuttle variant
 	/// set to null for autodetect via /obj/shuttle_dock_corner
 	var/size_x
@@ -48,7 +50,15 @@
 
 	//* docking (backend)
 	/// base area to leave behind when something takes off; null for zlevel default
-	var/base_area
+	///
+	/// this should be an unique area, like /area/space
+	/// otherwise, stuff like grids will be mad at you and explode
+	/// 
+	/// alternatively, this should be an instance
+	/// if this is set to a path, it'll be created or grabbed (if unique)
+	/// 
+	/// if zlevel default isn't found, defaults to world.area
+	var/area/base_area
 
 	//* docking (alignment)
 	/// how wide this dock's non-airtight region is.
@@ -71,7 +81,7 @@
 	var/dock_offset = 0
 	/// how many tiles of 'safety' extends to both sides of the width
 	/// this is tiles like walls that are still considered airtight / sealed
-	var/dock_margin = 0
+	var/dock_margin = 0T
 
 	//* docking (control)
 	/// docking code, if any
@@ -127,7 +137,7 @@
 
 /obj/shuttle_dock/LateInitialize()
 	. = ..()
-	if(!init_bounds())
+	if(!detect_bounds())
 		stack_trace("shuttle dock at [COORD(src)] failed bounds init; something is seriously wrong!")
 		to_chat(
 			target = world,
@@ -141,6 +151,15 @@
 		to_chat(
 			target = world,
 			html = FORMAT_SERVER_FATAL("Shuttle dock at [COORD(src)] failed its bounds check. Please contact coders if you see this message."),
+			type = MESSAGE_TYPE_SERVER_FATAL,
+		)
+		qdel(src)
+		return
+	if(!init_bounds())
+		stack_trace("shuttle dock at [COORD(src)] failed bounds init; something is seriously wrong!")
+		to_chat(
+			target = world,
+			html = FORMAT_SERVER_FATAL("Shuttle dock at [COORD(src)] failed its bounds init. Please contact coders if you see this message."),
 			type = MESSAGE_TYPE_SERVER_FATAL,
 		)
 		qdel(src)
@@ -159,6 +178,17 @@
 
 /obj/shuttle_dock/Destroy()
 	unregister_dock()
+	// cleanup our area
+	if(create_bounding_box_area && base_area?.unique)
+		var/list/turfs = bounding_north_ordered_turfs()
+		for(var/turf/T in turfs)
+			if(T.loc == base_area)
+				continue
+			turfs -= T
+		var/area/world_base_area = unique_area_of_type(SSmapping.level_base_area(z))
+		world_base_area?.contents += turfs
+		#warn transfer area with some helper
+		qdel(base_area)
 	return ..()
 
 /obj/shuttle_dock/proc/register_dock()
@@ -171,6 +201,14 @@
 	#warn ensure not out of bounds/nullspace.
 
 /obj/shuttle_dock/proc/init_bounds()
+	var/list/turfs = bounding_north_ordered_turfs()
+	if(create_bounding_box_area)
+		var/area/area_instance = base_area_instance()
+		area_instance.contents += turfs
+		#warn transfer area with some helper
+	return TRUE
+
+/obj/shuttle_dock/proc/detect_bounds()
 	var/any_null = isnull(size_x) || isnull(size_y) || isnull(offset_x) || isnull(offset_y)
 	var/all_null = isnull(size_x) && isnull(size_y) && isnull(offset_x) && isnull(offset_y)
 	if(any_null != all_null)
@@ -263,6 +301,8 @@
 	return FALSE
 
 /obj/shuttle_dock/doMove(atom/destination)
+	if(create_bounding_box_area)
+		CRASH("we cannot move a shuttle dock if it creates its own area.")
 	unregister_dock()
 	. = ..()
 	if(!check_bounds())
@@ -300,6 +340,14 @@
 		return SHUTTLE_DOCKING_AUTHORIZATION_VALID
 	return docking_code_required? SHUTTLE_DOCKING_AUTHORIZATION_BLOCKED : SHUTTLE_DOCKING_AUTHORIZATION_INVALID
 
+/**
+ * get the area instance that should be left behind
+ */
+/obj/shuttle_dock/proc/base_area_instance()
+	if(!base_area)
+		base_area = dynamic_area_of_type(base_area || SSmapping.level_base_area(z)) 
+	return base_area
+
 //* grid moves handling - we don't move as nested shuttle support isn't a thing yet *//
 
 /obj/shuttle_dock/grid_move(grid_flags, turf/new_turf)
@@ -330,6 +378,7 @@
  * deletes when a shuttle leaves
  */
 /obj/shuttle_dock/ephemeral
+	create_bounding_box_area = FALSE
 
 /obj/shuttle_dock/ephemeral/on_shuttle_departed(datum/shuttle/shuttle)
 	qdel(src)
