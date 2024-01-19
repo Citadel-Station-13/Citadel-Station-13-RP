@@ -216,25 +216,25 @@
 /**
  * called after all hooks finish
  */
-/obj/shuttle_dock/proc/on_shuttle_landed(datum/shuttle/shuttle)
+/obj/shuttle_dock/proc/on_shuttle_landed(datum/shuttle/shuttle, datum/event_args/shuttle/movement/e_args)
 	return
 
 /**
  * called after all hooks finish
  */
-/obj/shuttle_dock/proc/on_shuttle_docked(datum/shuttle/shuttle)
+/obj/shuttle_dock/proc/on_shuttle_docked(datum/shuttle/shuttle, datum/event_args/shuttle/dock/e_args)
 	return
 
 /**
  * called after all hooks finish
  */
-/obj/shuttle_dock/proc/on_shuttle_departed(datum/shuttle/shuttle)
+/obj/shuttle_dock/proc/on_shuttle_departed(datum/shuttle/shuttle, datum/event_args/shuttle/movement/e_args)
 	return
 
 /**
  * called after all hooks finish
  */
-/obj/shuttle_dock/proc/on_shuttle_undocked(datum/shuttle/shuttle)
+/obj/shuttle_dock/proc/on_shuttle_undocked(datum/shuttle/shuttle, datum/event_args/shuttle/dock/e_args)
 	return
 
 /obj/shuttle_dock/proc/shuttle_docking_authorization(datum/shuttle/shuttle)

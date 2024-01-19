@@ -90,6 +90,12 @@
 //* Docking & Movement *//
 
 /**
+ * checks if have docking codes for a dock
+ */
+/datum/shuttle/proc/has_codes_for(obj/shuttle_dock/dock)
+	return controller?.has_codes_for(dock)
+
+/**
  * this only fails if we would interseect another shuttle. otherwise, this will trample anything in the way.
  *
  * @params
