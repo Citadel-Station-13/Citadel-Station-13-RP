@@ -14,7 +14,7 @@
 	requires_power = 1
 
 // The shuttle's 'shuttle' computer
-/obj/machinery/computer/shuttle_control/hybridshuttle
+/obj/machinery/computer/shuttle_control
 	name = "short jump console"
 	shuttle_tag = "XN-29 Prototype Shuttle"
 	req_one_access = list(ACCESS_GENERAL_PILOT)

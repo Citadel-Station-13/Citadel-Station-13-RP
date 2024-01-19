@@ -1050,7 +1050,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/salamander)
 "qh" = (
-/obj/machinery/computer/shuttle_control/salamander{
+/obj/machinery/computer/shuttle_control{
 	dir = 8;
 	req_one_access = list(160)
 	},

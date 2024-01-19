@@ -935,7 +935,7 @@
 /turf/simulated/shuttle/floor/darkred,
 /area/shuttle/skipjack)
 "cq" = (
-/obj/machinery/computer/shuttle_control/skipjack,
+/obj/machinery/computer/shuttle_control,
 /turf/simulated/shuttle/floor/darkred,
 /area/shuttle/skipjack)
 "cr" = (

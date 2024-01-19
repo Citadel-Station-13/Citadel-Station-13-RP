@@ -11402,7 +11402,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/specops/cockpit)
 "KO" = (
-/obj/machinery/computer/shuttle_control/specops{
+/obj/machinery/computer/shuttle_control{
 	dir = 8
 	},
 /obj/structure/table/steel_reinforced,

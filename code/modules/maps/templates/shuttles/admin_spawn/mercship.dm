@@ -78,7 +78,7 @@
 	requires_power = 0
 
 // The shuttle's 'shuttle' computer
-/obj/machinery/computer/shuttle_control/mercboat
+/obj/machinery/computer/shuttle_control
 	name = "boat control console"
 	shuttle_tag = "Carrier's Ship's Boat"
 

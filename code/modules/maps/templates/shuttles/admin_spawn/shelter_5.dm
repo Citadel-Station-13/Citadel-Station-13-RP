@@ -14,7 +14,7 @@
 	requires_power = 1
 
 // The shuttle's 'shuttle' computer
-/obj/machinery/computer/shuttle_control/escapepod
+/obj/machinery/computer/shuttle_control
 	name = "short jump console"
 	shuttle_tag = "Escape Pod"
 

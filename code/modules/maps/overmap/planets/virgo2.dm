@@ -43,7 +43,7 @@
 
 // -- Objs -- //
 
-/obj/machinery/computer/shuttle_control/aerostat_shuttle
+/obj/machinery/computer/shuttle_control
 	name = "aerostat ferry control console"
 	shuttle_tag = "Aerostat Ferry"
 

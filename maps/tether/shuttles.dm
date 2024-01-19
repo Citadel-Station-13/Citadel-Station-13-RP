@@ -70,17 +70,17 @@
 	shuttle_tag = "Mercenary"
 	req_one_access = list(ACCESS_FACTION_SYNDICATE)
 
-/obj/machinery/computer/shuttle_control/ninja
+/obj/machinery/computer/shuttle_control
 	name = "vessel control console"
 	shuttle_tag = "Ninja"
 	//req_one_access = list()
 
-/obj/machinery/computer/shuttle_control/skipjack
+/obj/machinery/computer/shuttle_control
 	name = "vessel control console"
 	shuttle_tag = "Skipjack"
 	//req_one_access = list()
 
-/obj/machinery/computer/shuttle_control/specops
+/obj/machinery/computer/shuttle_control
 	name = "vessel control console"
 	shuttle_tag = "NDV Phantom"
 	req_one_access = list(ACCESS_CENTCOM_ERT)
@@ -90,7 +90,7 @@
 	shuttle_tag = "Trade"
 	req_one_access = list(ACCESS_FACTION_TRADER)
 
-/obj/machinery/computer/shuttle_control/surface_mining_outpost
+/obj/machinery/computer/shuttle_control
 	name = "surface mining outpost shuttle control console"
 	shuttle_tag = "Mining Outpost"
 	req_one_access = list(ACCESS_SUPPLY_MINE)
@@ -139,7 +139,7 @@
 	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Tour Bus"
 
-/obj/machinery/computer/shuttle_control/tourbus
+/obj/machinery/computer/shuttle_control
 	name = "short jump console"
 	shuttle_tag = "Tour Bus"
 	req_one_access = list(ACCESS_GENERAL_PILOT)
@@ -165,7 +165,7 @@
 	shuttle = "Medivac Shuttle"
 	fore_dir = EAST
 
-/obj/machinery/computer/shuttle_control/medivac
+/obj/machinery/computer/shuttle_control
 	name = "short jump console"
 	shuttle_tag = "Medivac Shuttle"
 
@@ -187,6 +187,6 @@
 	shuttle = "Securiship Shuttle"
 	fore_dir = EAST
 
-/obj/machinery/computer/shuttle_control/securiship
+/obj/machinery/computer/shuttle_control
 	name = "short jump console"
 	shuttle_tag = "Securiship Shuttle"

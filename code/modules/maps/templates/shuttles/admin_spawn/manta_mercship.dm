@@ -158,7 +158,7 @@
 	landmark_tag = "manta_ship_near_star"
 
 // The shuttle's 'shuttle' computer
-/obj/machinery/computer/shuttle_control/manta_ship_boat
+/obj/machinery/computer/shuttle_control
 	name = "boat control console"
 	shuttle_tag = "Boarding Craft"
 
@@ -172,7 +172,7 @@
 	shuttle_type = /datum/shuttle/autodock/overmap/manta_ship_boat
 
 // The 'shuttle'
-/obj/machinery/computer/shuttle_control/manta_ship_boat
+/obj/machinery/computer/shuttle_control
 	name = "LC control console"
 	shuttle_tag = "Boarding Craft"
 	req_one_access = list(150)

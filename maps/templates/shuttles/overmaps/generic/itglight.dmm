@@ -1176,7 +1176,7 @@
 /turf/simulated/floor/tiled/eris/dark/gray_platform,
 /area/itglight/cockpit)
 "hC" = (
-/obj/machinery/computer/shuttle_control/itglightshuttle{
+/obj/machinery/computer/shuttle_control{
 	pixel_y = 4
 	},
 /turf/simulated/floor/tiled/eris/dark/gray_platform,
@@ -5095,7 +5095,7 @@
 /turf/simulated/floor/tiled/eris/steel/brown_platform,
 /area/itglight/common)
 "Jz" = (
-/obj/machinery/computer/shuttle_control/itglightshuttle,
+/obj/machinery/computer/shuttle_control,
 /turf/simulated/floor/tiled/monotile,
 /area/shuttle/itglightshuttle)
 "JB" = (

@@ -5389,7 +5389,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/briefingroom)
 "cXk" = (
-/obj/machinery/computer/shuttle_control/tourbus,
+/obj/machinery/computer/shuttle_control,
 /obj/machinery/light{
 	dir = 4
 	},

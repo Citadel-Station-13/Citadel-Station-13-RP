@@ -374,7 +374,7 @@
 	},
 /area/shuttle/generic_shuttle/gen)
 "aR" = (
-/obj/machinery/computer/shuttle_control/generic_shuttle{
+/obj/machinery/computer/shuttle_control{
 	req_one_access = list()
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{

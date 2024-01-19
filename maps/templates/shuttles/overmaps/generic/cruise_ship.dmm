@@ -32,7 +32,7 @@
 /turf/simulated/floor/wood,
 /area/shuttle/cruise_ship/bedroom)
 "dF" = (
-/obj/machinery/computer/shuttle_control/cruise_ship{
+/obj/machinery/computer/shuttle_control{
 	dir = 4
 	},
 /turf/simulated/floor/wood,

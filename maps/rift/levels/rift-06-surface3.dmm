@@ -4030,7 +4030,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/trade_shop/landing_pad)
 "alU" = (
-/obj/machinery/computer/shuttle_control/emt{
+/obj/machinery/computer/shuttle_control{
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/paleblue{
@@ -6613,7 +6613,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
 "asP" = (
-/obj/machinery/computer/shuttle_control/civvie,
+/obj/machinery/computer/shuttle_control,
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/cockpit)
 "asQ" = (

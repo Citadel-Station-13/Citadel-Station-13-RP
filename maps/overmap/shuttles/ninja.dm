@@ -46,6 +46,6 @@
 	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Ninja Shuttle"
 
-/obj/machinery/computer/shuttle_control/ninja
+/obj/machinery/computer/shuttle_control
 	name = "short jump console"
 	shuttle_tag = "Ninja Shuttle"

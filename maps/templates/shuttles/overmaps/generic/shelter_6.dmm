@@ -1587,7 +1587,7 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/shuttle/tabiranth)
 "bB" = (
-/obj/machinery/computer/shuttle_control/tabiranth{
+/obj/machinery/computer/shuttle_control{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,

@@ -9719,7 +9719,7 @@
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
 "XU" = (
-/obj/machinery/computer/shuttle_control/specops{
+/obj/machinery/computer/shuttle_control{
 	dir = 8
 	},
 /obj/structure/table/steel_reinforced,

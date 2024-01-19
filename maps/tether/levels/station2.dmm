@@ -6232,7 +6232,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
 "mB" = (
-/obj/machinery/computer/shuttle_control/surface_mining_outpost{
+/obj/machinery/computer/shuttle_control{
 	dir = 8
 	},
 /obj/machinery/light{
@@ -8052,7 +8052,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/station/visitorhallway/lounge)
 "qn" = (
-/obj/machinery/computer/shuttle_control/surface_mining_outpost{
+/obj/machinery/computer/shuttle_control{
 	dir = 8
 	},
 /turf/simulated/shuttle/floor/voidcraft,

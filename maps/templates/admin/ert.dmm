@@ -5853,7 +5853,7 @@
 /area/ship/ert/med)
 "QX" = (
 /obj/structure/window/reinforced,
-/obj/machinery/computer/shuttle_control/ert_ship_boat{
+/obj/machinery/computer/shuttle_control{
 	dir = 8
 	},
 /obj/structure/window/reinforced{

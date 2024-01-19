@@ -39,7 +39,7 @@
 	skybox_pixel_y = 60
 
 // The shuttle's 'shuttle' computer
-/obj/machinery/computer/shuttle_control/talonboat
+/obj/machinery/computer/shuttle_control
 	name = "boat control console"
 	shuttle_tag = "Talon's boat"
 	req_one_access = list(ACCESS_FACTION_TALON)
@@ -84,7 +84,7 @@
 */
 
 // The shuttle's 'shuttle' computer
-/obj/machinery/computer/shuttle_control/talon_lifeboat
+/obj/machinery/computer/shuttle_control
 	name = "lifeboat control console"
 	shuttle_tag = "Talon lifeboat"
 	req_one_access = list(ACCESS_FACTION_TALON)

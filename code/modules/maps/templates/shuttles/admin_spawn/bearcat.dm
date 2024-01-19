@@ -63,7 +63,7 @@
 	shuttle = "Bearcat"
 
 // The shuttle's 'shuttle' computer
-/obj/machinery/computer/shuttle_control/bearcat
+/obj/machinery/computer/shuttle_control
 	name = "short jump console"
 	shuttle_tag = "Bearcat"
 	req_one_access = list()

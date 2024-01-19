@@ -131,7 +131,7 @@
 	name = "Civilian Transport"
 	icon_state = "shuttle"
 
-/obj/machinery/computer/shuttle_control/civvie
+/obj/machinery/computer/shuttle_control
 	name = "civilian jump console"
 	shuttle_tag = "Civilian Transport"
 
@@ -158,7 +158,7 @@
 	name = "Dart EMT Shuttle"
 	icon_state = "shuttle"
 
-/obj/machinery/computer/shuttle_control/emt
+/obj/machinery/computer/shuttle_control
 	name = "EMT jump console"
 	shuttle_tag = "Dart EMT Shuttle"
 

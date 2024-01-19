@@ -15,7 +15,7 @@
 	requires_power = 1
 
 // The shuttle's 'shuttle' computer
-/obj/machinery/computer/shuttle_control/tabiranth
+/obj/machinery/computer/shuttle_control
 	name = "short jump console"
 	shuttle_tag = "NDV Tabiranth"
 	req_one_access = list(ACCESS_CENTCOM_GENERAL)

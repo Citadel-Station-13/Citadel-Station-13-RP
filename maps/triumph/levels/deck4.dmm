@@ -11136,7 +11136,7 @@
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "hHd" = (
-/obj/machinery/computer/shuttle_control/civvie{
+/obj/machinery/computer/shuttle_control{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/old_tile/green,

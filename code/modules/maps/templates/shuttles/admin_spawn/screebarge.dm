@@ -19,7 +19,7 @@
 	name = "\improper Battle Barge - Aft"
 
 // The shuttle's 'shuttle' computer
-/obj/machinery/computer/shuttle_control/screebarge
+/obj/machinery/computer/shuttle_control
 	name = "short jump console"
 	shuttle_tag = "XN-29 Prototype Shuttle"
 	req_one_access = list(ACCESS_GENERAL_PILOT)

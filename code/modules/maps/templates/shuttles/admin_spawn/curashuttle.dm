@@ -28,7 +28,7 @@
 	requires_power = 1
 
 // The shuttle's 'shuttle' computer
-/obj/machinery/computer/shuttle_control/curashuttle
+/obj/machinery/computer/shuttle_control
 	name = "short jump console"
 	shuttle_tag = "Cura"
 	req_one_access = list()

@@ -3040,7 +3040,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/bearcat/maintenance_engine_pod_starboard)
 "kD" = (
-/obj/machinery/computer/shuttle_control/bearcat,
+/obj/machinery/computer/shuttle_control,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/bearcat/command)
 "kF" = (

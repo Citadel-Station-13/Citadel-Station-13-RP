@@ -5654,7 +5654,7 @@
 /area/station/stairs_two)
 "rl" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/computer/shuttle_control/mining{
+/obj/machinery/computer/shuttle_control{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,

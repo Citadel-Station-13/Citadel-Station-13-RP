@@ -50,7 +50,7 @@
 	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Beluga Passenger Liner"
 
-/obj/machinery/computer/shuttle_control/visitor_ship
+/obj/machinery/computer/shuttle_control
 	name = "short jump console"
 	shuttle_tag = "Beluga Passenger Liner"
 

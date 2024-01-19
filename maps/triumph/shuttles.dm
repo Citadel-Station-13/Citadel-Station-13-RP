@@ -2,7 +2,7 @@
 // Triumph custom shuttle implemnetations
 ////////////////////////////////////////
 
-/obj/machinery/computer/shuttle_control/triumph_backup
+/obj/machinery/computer/shuttle_control
 	name = "triumph backup shuttle control console"
 	shuttle_tag = "Triumph Backup"
 	req_one_access = list(ACCESS_COMMAND_BRIDGE,ACCESS_GENERAL_PILOT)
@@ -12,17 +12,17 @@
 	shuttle_tag = "Mercenary"
 	req_one_access = list(ACCESS_FACTION_SYNDICATE)
 
-/obj/machinery/computer/shuttle_control/ninja
+/obj/machinery/computer/shuttle_control
 	name = "vessel control console"
 	shuttle_tag = "Ninja"
 	//req_one_access = list()
 
-/obj/machinery/computer/shuttle_control/skipjack
+/obj/machinery/computer/shuttle_control
 	name = "vessel control console"
 	shuttle_tag = "Skipjack"
 	//req_one_access = list()
 
-/obj/machinery/computer/shuttle_control/specops
+/obj/machinery/computer/shuttle_control
 	name = "vessel control console"
 	shuttle_tag = "NDV Phantom"
 	req_one_access = list(ACCESS_CENTCOM_ERT)
@@ -90,7 +90,7 @@
 	name = "Civilian Transport"
 	icon_state = "shuttle"
 
-/obj/machinery/computer/shuttle_control/civvie
+/obj/machinery/computer/shuttle_control
 	name = "civilian jump console"
 	shuttle_tag = "Civilian Transport"
 
@@ -110,7 +110,7 @@
 	name = "Mining Shuttle"
 	icon_state = "shuttle"
 
-/obj/machinery/computer/shuttle_control/mining
+/obj/machinery/computer/shuttle_control
 	name = "mining jump console"
 	shuttle_tag = "Mining Shuttle"
 
@@ -128,7 +128,7 @@
 	name = "Dart EMT Shuttle"
 	icon_state = "shuttle"
 
-/obj/machinery/computer/shuttle_control/emt
+/obj/machinery/computer/shuttle_control
 	name = "EMT jump console"
 	shuttle_tag = "Dart EMT Shuttle"
 
