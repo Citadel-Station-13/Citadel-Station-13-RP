@@ -76,9 +76,7 @@
  */
 /obj/shuttle_port/proc/ordered_turfs_at(turf/anchor, direction)
 	ASSERT(isturf(anchor))
-	#warn impl
-
-#warn impl all
+	return shuttle.anchor.ordered_turfs_at(anchor, direction)
 
 /obj/shuttle_port/north
 	dir = NORTH

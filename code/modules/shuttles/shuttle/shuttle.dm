@@ -28,7 +28,7 @@
 	/// our shuttle controller
 	var/datum/shuttle_controller/controller
 	/// our physical shuttle object
-	var/obj/shuttle_anchor/master/anchor
+	var/obj/shuttle_anchor/anchor
 	/// our physical shuttle port objects
 	var/list/obj/shuttle_port/ports
 	/// the areas in our shuttle
@@ -98,7 +98,11 @@
  *
  * @return TRUE / FALSE
  */
-/datum/shuttle/proc/immediate_move(obj/shuttle_dock/dock, obj/shuttle_port/with_port)
+/datum/shuttle/proc/immediate_physical_move(obj/shuttle_dock/dock, obj/shuttle_port/with_port)
+	PRIVATE_PROC(TRUE)
+	if(check_bounding(dock, with_port, TRUE) == SHUTTLE_DOCKING_BOUNDING_HARD_FAULT)
+		return FALSE
+
 	#warn impl
 
 /**
@@ -167,4 +171,4 @@
  * * immediate - blow past all docking procedures, do not block on anything IC fluff or otherwise
  */
 /datum/shuttle/proc/move_to_transit(force = FALSE, immediate = FALSE)
-	#warn impl
+	return SSshuttle.send_shuttle_to_transit(src, force, immediate)

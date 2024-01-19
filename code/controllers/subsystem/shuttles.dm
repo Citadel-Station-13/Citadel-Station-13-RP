@@ -38,8 +38,6 @@ SUBSYSTEM_DEF(shuttle)
 	/// Shuttles remaining to process this fire() tick
 	var/tmp/list/current_run
 
-
-
 #warn above
 
 /datum/controller/subsystem/shuttle/on_max_z_changed(old_z_count, new_z_count)
@@ -49,6 +47,14 @@ SUBSYSTEM_DEF(shuttle)
 		if(!isnull(docks_by_level[i]))
 			continue
 		docks_by_level[i] = list()
+
+//* Transit
+
+/**
+ * sets in_transit_reservation and in_transit_dock and in_transit for a shuttle
+ */
+/datum/controller/subsystem/shuttle/proc/send_shuttle_to_transit(datum/shuttle/shuttle, force = FALSE, immediate = FALSE)
+	#warn impl
 
 //* Shuttle Templates
 
