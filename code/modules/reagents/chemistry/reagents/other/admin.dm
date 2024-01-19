@@ -8,7 +8,7 @@
 	metabolize_while_dead = TRUE
 	mrate_static = TRUE //Just in case
 
-	dermal_absorption_multiplier = 1
+	dermal_distribution_multiplier = 1
 
 	glass_name = "liquid gold"
 	glass_desc = "It's magic. We don't have to explain it."

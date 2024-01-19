@@ -74,9 +74,9 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/dermal_metabolism_multiplier = 0
 
 	/// relative ease of reagent being absorbed into bloodstream from ingested
-	var/ingested_absorption_multiplier = 1
+	var/ingested_distribution_multiplier = 1
 	/// relative ease of reagent being absorbed into bloodstream from dermal
-	var/dermal_absorption_multiplier = 1
+	var/dermal_distribution_multiplier = 1
 
 	/// relative multiplier for how well this chemical is destroyed / eliminated without absorption in ingested
 	var/ingested_elimination_multiplier = 1

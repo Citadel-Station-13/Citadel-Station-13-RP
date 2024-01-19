@@ -165,7 +165,7 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#DB5008"
 	bloodstream_metabolism_multiplier = 2
-	dermal_absorption_multiplier = 0
+	dermal_distribution_multiplier = 0
 	var/power = 5
 	var/meltdose = 10 // How much is needed to melt
 

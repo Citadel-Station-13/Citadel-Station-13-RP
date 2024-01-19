@@ -30,7 +30,7 @@
 	color = "#eae6e3"
 	ingested_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 0.8
 	ingested_metabolism_multiplier = 0.4
-	ingested_absorption_multiplier = 0
+	ingested_distribution_multiplier = 0
 
 /datum/reagent/calciumcarbonate/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
@@ -720,21 +720,29 @@
 	bloodstream_metabolism_multiplier = 0.25
 	mrate_static = TRUE
 	bloodstream_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
-	dermal_absorption_multiplier = 3
+	dermal_distribution_multiplier = 3
 	dermal_elimination_multiplier = 0.25
+
+/datum/reagent/spaceacillin/on_metabolize_add(mob/living/carbon/entity, application, datum/reagent_metabolism/metabolism, organ_tag, list/data)
+	. = ..()
+
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
+		return
+
+	if(application == REAGENT_APPLY_INJECT)
+		to_chat(entity, SPAN_WARNING("Your senses feel unfocused, and divided."))
+
+/datum/reagent/spaceacillin/on_metabolize_remove(mob/living/carbon/entity, application, datum/reagent_metabolism/metabolism, organ_tag, list/data)
+	. = ..()
+
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
+		return
+
+	if(application == REAGENT_APPLY_INJECT)
+		to_chat(entity, SPAN_WARNING("You regain focus..."))
 
 /datum/reagent/spaceacillin/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-
-	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
-		if(volume <= 0.1 && data != -1)
-			data = -1
-			to_chat(entity, "<span class='notice'>You regain focus...</span>")
-		else
-			var/delay = (5 MINUTES)
-			if(world.time > data + delay)
-				data = world.time
-				to_chat(entity, "<span class='warning'>Your senses feel unfocused, and divided.</span>")
 	entity.add_reagent_cycle_effect(CHEMICAL_EFFECT_ANTIBIOTIC, metabolism.overdosing ? ANTIBIO_OD : ANTIBIO_NORM)
 
 /datum/reagent/corophizine
@@ -746,7 +754,24 @@
 	color = "#FFB0B0"
 	mrate_static = TRUE
 	bloodstream_overdose_threshold = 10
-	data = 0
+
+/datum/reagent/corophizine/on_metabolize_add(mob/living/carbon/entity, application, datum/reagent_metabolism/metabolism, organ_tag, list/data)
+	. = ..()
+
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
+		return
+
+	if(application == REAGENT_APPLY_INJECT)
+		to_chat(entity, SPAN_USERDANGER("It feels like your body is revolting!"))
+
+/datum/reagent/corophizine/on_metabolize_remove(mob/living/carbon/entity, application, datum/reagent_metabolism/metabolism, organ_tag, list/data)
+	. = ..()
+
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
+		return
+
+	if(application == REAGENT_APPLY_INJECT)
+		to_chat(entity, SPAN_WARNING("Your body ceases its revolt."))
 
 /datum/reagent/corophizine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
@@ -756,14 +781,8 @@
 	var/mob/living/carbon/human/H = entity
 
 	if(ishuman(entity) && entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)]) //Everything about them is treated like a targetted organism. Widespread bodily function begins to fail.
-		if(volume <= 0.1 && data != -1)
-			data = -1
-			to_chat(entity, "<span class='notice'>Your body ceases its revolt.</span>")
-		else
-			var/delay = (3 MINUTES)
-			if(world.time > data + delay)
-				data = world.time
-				to_chat(entity, "<span class='critical'>It feels like your body is revolting!</span>")
+		if(prob(removed * 10))
+			to_chat(entity, "<span class='critical'>It feels like your body is revolting!</span>")
 		entity.Confuse(7)
 		entity.adjustFireLoss(removed * 2)
 		entity.adjustToxLoss(removed * 2)
@@ -830,13 +849,6 @@
 		if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 			to_chat(entity, SPAN_WARNING("Your skin suddenly starts to itch."))
 
-/datum/reagent/spacomycaze/on_metabolize_dermal(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed, obj/item/organ/external/bodypart)
-	. = ..()
-
-	if(application == REAGENT_APPLY_DERMAL)
-		if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)] && prob(5))
-			to_chat(entity, SPAN_WARNING("Your skin itches."))
-
 /datum/reagent/spacomycaze/on_metabolize_remove(mob/living/carbon/entity, application, datum/reagent_metabolism/metabolism, organ_tag, list/data)
 	. = ..()
 
@@ -847,7 +859,10 @@
 /datum/reagent/spacomycaze/on_metabolize_dermal(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed, obj/item/organ/external/bodypart)
 	. = ..()
 
-	entity.add_reagent_cycle_effect(CHEMICAL_EFFECT_ANTIBIOTIC, metabolism.dose >= overdose ? ANTIBIO_OD : ANTIBIO_NORM)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)] && prob(5))
+		to_chat(entity, SPAN_WARNING("Your skin itches."))
+
+	entity.add_reagent_cycle_effect(CHEMICAL_EFFECT_ANTIBIOTIC, metabolism.dose >= dermal_overdose_metabolism_multiplier ? ANTIBIO_OD : ANTIBIO_NORM)
 	entity.max_reagent_cycle_effect(CHEMICAL_EFFECT_PAINKILLER, 20) // 5 less than paracetamol.
 
 /datum/reagent/spacomycaze/contact_expose_obj(obj/target, volume, list/data, vapor)
@@ -872,7 +887,8 @@
 	taste_description = "bitterness"
 	reagent_state = REAGENT_LIQUID
 	color = "#C8A5DC"
-	touch_met = 5
+	dermal_distribution_multiplier = 0
+	default_dermal_absorption = 0.1
 
 /datum/reagent/sterilizine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
@@ -922,7 +938,7 @@
 			if(amt>0)
 				S.adjustToxLoss(rand(15, 25) * volume)	// Does more damage than water.
 				S.visible_message("<span class='warning'>[S]'s flesh sizzles where the fluid touches it!</span>", "<span class='danger'>Your flesh burns in the fluid!</span>")
-		remove_self(volume)
+		return volume
 
 /datum/reagent/leporazine
 	name = "Leporazine"
@@ -1138,8 +1154,7 @@
 	reagent_state = REAGENT_SOLID
 	color = "#555555"
 	bloodstream_metabolism_multiplier = 4 // Nanomachines gotta go fast.
-	scannable = TRUE
-	affects_robots = TRUE
+	metabolize_non_biological = TRUE
 
 /datum/reagent/healing_nanites/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
@@ -1241,7 +1256,7 @@
 	var/turf/simulated/T = target
 	if(!istype(T))
 		return
-	if(reac_volume >= 1)
+	if(volume >= 1)
 		var/obj/effect/foam/firefighting/F = (locate(/obj/effect/foam/firefighting) in T)
 		if(!F)
 			F = new(T)
@@ -1265,18 +1280,26 @@
 		if(prob(5))
 			T.visible_message("<span class='warning'>The foam sizzles as it lands on \the [T]!</span>")
 
-/datum/reagent/firefighting_foam/touch_obj(obj/O, reac_volume)
+/datum/reagent/firefighting_foam/contact_expose_obj(obj/target, volume, list/data, vapor)
+	. = ..()
+
+	var/obj/O = target
 	O.water_act(reac_volume / 5)
 
-/datum/reagent/firefighting_foam/touch_mob(mob/living/entity, reac_volume)
+/datum/reagent/firefighting_foam/touch_expose_mob(mob/target, volume, temperature, list/data, organ_tag)
+	. = ..()
+
+	if(!isliving(target))
+		return
+	var/mob/living/entity = target
 	if(istype(entity, /mob/living/simple_mob/slime)) //I'm sure foam is water-based!
 		var/mob/living/simple_mob/slime/S = entity
-		var/amt = 15 * reac_volume * (1-S.water_resist)
+		var/amt = 15 * volume * (1-S.water_resist)
 		if(amt>0)
 			S.adjustToxLoss(amt)
 			S.visible_message("<span class='warning'>[S]'s flesh sizzles where the foam touches it!</span>", "<span class='danger'>Your flesh burns in the foam!</span>")
 
-	entity.adjust_fire_stacks(-reac_volume)
+	entity.adjust_fire_stacks(-volume)
 	entity.ExtinguishMob()
 
 //CRS (Cyberpsychosis) Medication
@@ -1289,7 +1312,7 @@
 	reagent_state = REAGENT_LIQUID
 	bloodstream_metabolism_multiplier = 0.016
 	ingested_elimination_multiplier = 10
-	ingested_absorption_multiplier = 10
+	ingested_distribution_multiplier = 10
 	mrate_static = TRUE
 	color = "#52ca22"
 	bloodstream_overdose_threshold = 16
@@ -1300,7 +1323,6 @@
 	entity.druggy += 10
 	entity.vomit()
 
-/datum/reagent/neuratrextate/overdose(mob/living/carbon/entity)
-	..()
-	entity.druggy += 30
-	entity.hallucination += 20
+	if(metabolism.overdosing)
+		entity.druggy += 30
+		entity.hallucination += 20

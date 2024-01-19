@@ -8,7 +8,7 @@
 	taste_description = "Sourness"
 	taste_mult = 2
 
-	dermal_absorption_multiplier = 0
+	dermal_distribution_multiplier = 0
 	dermal_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 	dermal_overdose_toxin_scaling = 0.5
 	dermal_metabolism_multiplier = 1

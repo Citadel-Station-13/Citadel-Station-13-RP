@@ -8,7 +8,7 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#0064C877"
 	bloodstream_metabolism_multiplier = 10
-	ingested_absorption_multiplier = 5
+	ingested_distribution_multiplier = 5
 	ingested_elimination_multiplier = 5
 	dermal_elimination_multiplier = 2
 

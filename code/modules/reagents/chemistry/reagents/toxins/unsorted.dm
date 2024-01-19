@@ -222,10 +222,6 @@
 	if(prob(5))
 		entity.vomit()
 
-/datum/reagent/toxin/expired_medicine/affect_ingest(mob/living/carbon/entity, alien, removed)
-	affect_blood(entity, alien, removed * 0.66)
-
-
 /datum/reagent/toxin/stimm	//Homemade Hyperzine
 	name = "Stimm"
 	id = "stimm"
@@ -267,15 +263,14 @@
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		entity.adjustFireLoss(removed * 2)
 
-/datum/reagent/toxin/potassium_chloride/overdose(mob/living/carbon/entity, alien)
-	..()
-	if(ishuman(entity))
-		var/mob/living/carbon/human/H = entity
-		if(H.stat != 1)
-			if(H.losebreath >= 10)
-				H.losebreath = max(10, H.losebreath - 10)
-			H.adjustOxyLoss(2)
-			H.afflict_paralyze(20 * 10)
+	if(metabolism.overdosing)
+		if(ishuman(entity))
+			var/mob/living/carbon/human/H = entity
+			if(H.stat != 1)
+				if(H.losebreath >= 10)
+					H.losebreath = max(10, H.losebreath - 10)
+				H.adjustOxyLoss(2)
+				H.afflict_paralyze(20 * 10)
 
 /datum/reagent/toxin/potassium_chlorophoride
 	name = "Potassium Chlorophoride"
@@ -317,17 +312,26 @@
 
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-	entity.status_flags |= STATUS_FAKEDEATH
 	entity.adjustOxyLoss(3 * removed)
 	entity.afflict_paralyze(20 * 10)
 	entity.silent = max(entity.silent, 10)
 	entity.tod = stationtime2text()
 
-/datum/reagent/toxin/zombiepowder/Destroy()
-	if(holder && holder.my_atom && ismob(holder.my_atom))
-		var/mob/entity = holder.my_atom
-		entity.status_flags &= ~STATUS_FAKEDEATH
-	return ..()
+/datum/reagent/toxin/zombiepowder/on_metabolize_add(mob/living/carbon/entity, application, datum/reagent_metabolism/metabolism, organ_tag, list/data)
+	. = ..()
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
+		return
+	if(application != REAGENT_APPLY_INJECT)
+		return
+	entity.status_flags |= STATUS_FAKEDEATH
+
+/datum/reagent/toxin/zombiepowder/on_metabolize_remove(mob/living/carbon/entity, application, datum/reagent_metabolism/metabolism, organ_tag, list/data)
+	. = ..()
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
+		return
+	if(application != REAGENT_APPLY_INJECT)
+		return
+	entity.status_flags &= ~STATUS_FAKEDEATH
 
 /datum/reagent/toxin/lichpowder
 	name = "Lich Powder"
@@ -596,14 +600,6 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#13BC5E"
 
-/datum/reagent/mutagen/affect_touch(mob/living/carbon/entity, alien, removed)
-	if(prob(33))
-		affect_blood(entity, alien, removed)
-
-/datum/reagent/mutagen/affect_ingest(mob/living/carbon/entity, alien, removed)
-	if(prob(67))
-		affect_blood(entity, alien, removed)
-
 /datum/reagent/mutagen/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 
@@ -750,7 +746,6 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#009CA8"
 	bloodstream_metabolism_multiplier = 0.5
-	ingest_met = REM * 1.5
 	bloodstream_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
 /datum/reagent/soporific/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
@@ -771,7 +766,7 @@
 		effective_dose *= 2
 
 	if(effective_dose < 1 * threshold)
-		if(effective_dose == metabolism * 2 || prob(5))
+		if(prob(5))
 			entity.emote("yawn")
 	else if(effective_dose < 1.5 * threshold)
 		entity.eye_blurry = max(entity.eye_blurry, 10)
@@ -800,7 +795,6 @@
 	reagent_state = REAGENT_SOLID
 	color = "#000067"
 	bloodstream_metabolism_multiplier = 0.5
-	ingest_met = REM * 1.5
 	bloodstream_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE * 0.5
 	overdose_mod = 5	//For that good, lethal feeling
 
