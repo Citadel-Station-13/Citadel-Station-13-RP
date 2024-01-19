@@ -32,7 +32,7 @@
 	/// our physical shuttle port objects
 	var/list/obj/shuttle_port/ports
 	/// the areas in our shuttle
-	var/list/areas
+	var/list/area/shuttle/areas
 
 	//* Docking
 	/// where we are docked, if any
@@ -75,8 +75,18 @@
 /**
  * Called after all areas are made and all turfs are there, etc etc
  * Used to auto-register everything
+ * 
+ * **Extremely dangerous proc. Don't call it unless you know what you're doing.**
  */
-/datum/shuttle/proc/construct_initial_(datum/turf_reservation/loading_reservation)
+/datum/shuttle/proc/do_bounds_init(datum/turf_reservation/from_reservation, datum/shuttle_template/from_template)
+	#warn impl
+
+/**
+ * Called after do_bounds_init
+ * 
+ * **Extremely dangerous proc. Don't call it unless you know what you're doing.**
+ */
+/datum/shuttle/proc/after_bounds_init(datum/turf_reservation/from_reservation, datum/shuttle_template/from_template)
 	#warn impl
 
 //* Bounding Box *//
