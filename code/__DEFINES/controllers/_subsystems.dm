@@ -152,7 +152,6 @@ DEFINE_BITFIELD(runlevels, list(
 // Any ../subsystem/.. without SS_TICKER or SS_BACKGROUND in subsystem_flags is here!
 
 #define FIRE_PRIORITY_PING         5
-#define FIRE_PRIORITY_SHUTTLES     5
 #define FIRE_PRIORITY_PLANTS       5
 #define FIRE_PRIORITY_NIGHTSHIFT   6
 #define FIRE_PRIORITY_VOTE         9
@@ -165,7 +164,9 @@ DEFINE_BITFIELD(runlevels, list(
 #define FIRE_PRIORITY_OBJ          40
 // DEFAULT PRIORITY IS HERE
 #define FIRE_PRIORITY_LIGHTING         50
-#define FIRE_PRIORITY_INSTRUMENTS      90
+#define FIRE_PRIORITY_INSTRUMENTS      80
+#define FIRE_PRIORITY_SHUTTLES         90
+#define FIRE_PRIORITY_OVERMAPS         90
 #define FIRE_PRIORITY_ASSET_LOADING    100
 #define FIRE_PRIORITY_MACHINES         100
 #define FIRE_PRIORITY_NANO             150
