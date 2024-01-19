@@ -604,7 +604,7 @@
 /area/tether/surfacebase/surface_one_hall)
 "aqB" = (
 /turf/simulated/wall/r_wall/prepainted,
-/area/turbolift/tether/elevator_two)
+/area/tether/elevator/two)
 "aqJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -7251,6 +7251,9 @@
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/public_garden_maintenance)
+"dNT" = (
+/turf/simulated/wall/r_wall/prepainted,
+/area/tether/surfacebase/surface_one_hall)
 "dOp" = (
 /obj/structure/disposalpipe/segment{
 	dir = 2;
@@ -31592,7 +31595,9 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 8
 	},
-/obj/machinery/power/apc/high,
+/obj/machinery/power/apc/high{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_one_hall)
 "qZv" = (
@@ -34877,7 +34882,7 @@
 "sMA" = (
 /obj/turbolift_map_holder/tether/two,
 /turf/simulated/floor/holofloor/tiled/dark,
-/area/turbolift/tether/elevator_two)
+/area/tether/elevator/two)
 "sML" = (
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 6
@@ -39301,7 +39306,7 @@
 /area/maintenance/lower/research)
 "vny" = (
 /turf/simulated/floor/holofloor/tiled/dark,
-/area/turbolift/tether/elevator_two)
+/area/tether/elevator/two)
 "vnS" = (
 /obj/machinery/atmospherics/component/binary/pump/on{
 	dir = 4;
@@ -39418,6 +39423,9 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/brig)
+"vrR" = (
+/turf/simulated/wall/r_wall/prepainted,
+/area/maintenance/lower/research)
 "vsp" = (
 /obj/machinery/atmospherics/component/binary/pump/on{
 	dir = 1;
@@ -68985,7 +68993,7 @@ rOS
 jEh
 hLB
 ucF
-rOS
+dNT
 vwP
 oDt
 oDt
@@ -69185,7 +69193,7 @@ vny
 vny
 aqB
 aqB
-bLp
+vrR
 fey
 bLp
 uCh
@@ -69573,7 +69581,7 @@ vny
 vny
 vny
 aqB
-bLp
+vrR
 azH
 bLp
 bLp

@@ -25,7 +25,7 @@
 /obj/machinery/air_alarm{
 	pixel_y = 26
 	},
-/turf/simulated/floor/holofloor/tiled/dark,
+/turf/simulated/floor/tiled/dark,
 /area/tether/midpoint)
 "aP" = (
 /obj/effect/blocker,
@@ -39,7 +39,7 @@
 /obj/effect/floor_decal/corner/green/border{
 	dir = 6
 	},
-/turf/simulated/floor/holofloor/tiled/dark,
+/turf/simulated/floor/tiled/dark,
 /area/tether/midpoint)
 "bq" = (
 /obj/structure/disposalpipe/segment{
@@ -48,6 +48,9 @@
 	},
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
+"bS" = (
+/turf/simulated/open,
+/area/tether/elevator)
 "bU" = (
 /obj/structure/cable{
 	icon_state = "2-8"
@@ -59,15 +62,6 @@
 	dir = 4
 	},
 /turf/simulated/floor/wood,
-/area/tether/midpoint)
-"cg" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/green/border{
-	dir = 4
-	},
-/turf/simulated/floor/holofloor/tiled/dark,
 /area/tether/midpoint)
 "dr" = (
 /obj/structure/disposalpipe/segment{
@@ -103,7 +97,7 @@
 	},
 /obj/effect/floor_decal/borderfloorblack/corner,
 /obj/effect/floor_decal/corner/green/bordercorner,
-/turf/simulated/floor/holofloor/tiled/dark,
+/turf/simulated/floor/tiled/dark,
 /area/tether/midpoint)
 "eB" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -113,11 +107,11 @@
 	dir = 1
 	},
 /obj/machinery/camera/network/civilian,
-/turf/simulated/floor/holofloor/tiled/dark,
+/turf/simulated/floor/tiled/dark,
 /area/tether/midpoint)
 "gm" = (
-/turf/simulated/floor/holofloor/tiled/dark,
-/area/turbolift/tether/elevator_two)
+/turf/simulated/open,
+/area/tether/elevator/two)
 "gH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable{
@@ -199,7 +193,7 @@
 /obj/effect/floor_decal/corner/green/border{
 	dir = 1
 	},
-/turf/simulated/floor/holofloor/tiled/dark,
+/turf/simulated/floor/tiled/dark,
 /area/tether/midpoint)
 "jC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -355,7 +349,7 @@
 /obj/effect/floor_decal/corner/green/border{
 	dir = 1
 	},
-/turf/simulated/floor/holofloor/tiled/dark,
+/turf/simulated/floor/tiled/dark,
 /area/tether/midpoint)
 "vu" = (
 /obj/structure/disposalpipe/segment,
@@ -394,7 +388,7 @@
 /obj/effect/floor_decal/corner/green/border{
 	dir = 1
 	},
-/turf/simulated/floor/holofloor/tiled/dark,
+/turf/simulated/floor/tiled/dark,
 /area/tether/midpoint)
 "yF" = (
 /obj/structure/disposalpipe/segment{
@@ -415,7 +409,7 @@
 /obj/effect/floor_decal/corner/green/border{
 	dir = 9
 	},
-/turf/simulated/floor/holofloor/tiled/dark,
+/turf/simulated/floor/tiled/dark,
 /area/tether/midpoint)
 "zk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -463,7 +457,7 @@
 /obj/machinery/camera/network/civilian{
 	dir = 9
 	},
-/turf/simulated/floor/holofloor/tiled/dark,
+/turf/simulated/floor/tiled/dark,
 /area/tether/midpoint)
 "AM" = (
 /obj/structure/table/woodentable,
@@ -505,6 +499,9 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/midpoint)
+"CE" = (
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/tether/elevator/two)
 "CI" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -597,7 +594,7 @@
 	},
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/green/border,
-/turf/simulated/floor/holofloor/tiled/dark,
+/turf/simulated/floor/tiled/dark,
 /area/tether/midpoint)
 "Hx" = (
 /obj/effect/floor_decal/borderfloorblack/corner{
@@ -606,7 +603,7 @@
 /obj/effect/floor_decal/corner/green/bordercorner{
 	dir = 8
 	},
-/turf/simulated/floor/holofloor/tiled/dark,
+/turf/simulated/floor/tiled/dark,
 /area/tether/midpoint)
 "Id" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -615,7 +612,7 @@
 /obj/effect/floor_decal/corner/green/border{
 	dir = 8
 	},
-/turf/simulated/floor/holofloor/tiled/dark,
+/turf/simulated/floor/tiled/dark,
 /area/tether/midpoint)
 "Io" = (
 /obj/structure/disposalpipe/trunk{
@@ -675,7 +672,7 @@
 /obj/effect/floor_decal/corner/green/border{
 	dir = 10
 	},
-/turf/simulated/floor/holofloor/tiled/dark,
+/turf/simulated/floor/tiled/dark,
 /area/tether/midpoint)
 "Kk" = (
 /obj/structure/table/gamblingtable,
@@ -735,7 +732,7 @@
 /obj/effect/floor_decal/corner/green/border{
 	dir = 8
 	},
-/turf/simulated/floor/holofloor/tiled/dark,
+/turf/simulated/floor/tiled/dark,
 /area/tether/midpoint)
 "PZ" = (
 /obj/machinery/vending/snack{
@@ -773,7 +770,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
-/turf/simulated/floor/holofloor/tiled/dark,
+/turf/simulated/floor/tiled/dark,
 /area/tether/midpoint)
 "Rk" = (
 /obj/machinery/door/firedoor/glass{
@@ -787,7 +784,7 @@
 /obj/effect/floor_decal/corner/green/border{
 	dir = 1
 	},
-/turf/simulated/floor/holofloor/tiled/dark,
+/turf/simulated/floor/tiled/dark,
 /area/tether/midpoint)
 "So" = (
 /obj/structure/cable{
@@ -816,7 +813,7 @@
 	},
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/green/border,
-/turf/simulated/floor/holofloor/tiled/dark,
+/turf/simulated/floor/tiled/dark,
 /area/tether/midpoint)
 "SE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -865,7 +862,7 @@
 /obj/effect/floor_decal/corner/green/border{
 	dir = 9
 	},
-/turf/simulated/floor/holofloor/tiled/dark,
+/turf/simulated/floor/tiled/dark,
 /area/tether/midpoint)
 "Vk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -879,7 +876,7 @@
 /obj/machinery/camera/network/civilian{
 	dir = 1
 	},
-/turf/simulated/floor/holofloor/tiled/dark,
+/turf/simulated/floor/tiled/dark,
 /area/tether/midpoint)
 "VM" = (
 /obj/machinery/light,
@@ -910,7 +907,7 @@
 /area/tether/midpoint)
 "XM" = (
 /turf/simulated/wall/r_wall/prepainted,
-/area/turbolift/tether/elevator_two)
+/area/tether/elevator/two)
 "XU" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
@@ -953,7 +950,7 @@
 /obj/effect/floor_decal/corner/green/bordercorner{
 	dir = 4
 	},
-/turf/simulated/floor/holofloor/tiled/dark,
+/turf/simulated/floor/tiled/dark,
 /area/tether/midpoint)
 "Yc" = (
 /obj/structure/disposalpipe/segment{
@@ -979,7 +976,7 @@
 /obj/effect/floor_decal/corner/green/bordercorner{
 	dir = 4
 	},
-/turf/simulated/floor/holofloor/tiled/dark,
+/turf/simulated/floor/tiled/dark,
 /area/tether/midpoint)
 "YS" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
@@ -995,7 +992,7 @@
 "YT" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/green/border,
-/turf/simulated/floor/holofloor/tiled/dark,
+/turf/simulated/floor/tiled/dark,
 /area/tether/midpoint)
 "YW" = (
 /obj/structure/bed/chair/comfy/black{
@@ -1010,7 +1007,7 @@
 /obj/effect/floor_decal/corner/green/border{
 	dir = 5
 	},
-/turf/simulated/floor/holofloor/tiled/dark,
+/turf/simulated/floor/tiled/dark,
 /area/tether/midpoint)
 "Zy" = (
 /obj/structure/disposalpipe/segment,
@@ -1044,7 +1041,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/green/bordercorner,
-/turf/simulated/floor/holofloor/tiled/dark,
+/turf/simulated/floor/tiled/dark,
 /area/tether/midpoint)
 
 (1,1,1) = {"
@@ -23615,10 +23612,10 @@ yi
 hi
 sg
 qm
-kY
-kY
-kY
-kY
+bS
+bS
+bS
+bS
 qm
 il
 hi
@@ -23809,10 +23806,10 @@ yi
 hi
 sg
 qm
-kY
-kY
-kY
-kY
+bS
+bS
+bS
+bS
 qm
 vA
 hi
@@ -24003,10 +24000,10 @@ yi
 hi
 sg
 qm
-kY
-kY
-kY
-kY
+bS
+bS
+bS
+bS
 qm
 vA
 hi
@@ -24197,10 +24194,10 @@ yi
 hi
 sg
 qm
-kY
-kY
-kY
-kY
+bS
+bS
+bS
+bS
 qm
 LL
 hi
@@ -25360,12 +25357,12 @@ yi
 ZM
 ak
 dz
-cg
-cg
-cg
-cg
+Wh
+Wh
+Wh
+Wh
 AL
-cg
+Wh
 YH
 YT
 ZM
@@ -25556,8 +25553,8 @@ uz
 Hu
 XM
 XM
-gm
-gm
+CE
+CE
 XM
 XM
 yx

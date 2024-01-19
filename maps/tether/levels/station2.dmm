@@ -11811,7 +11811,7 @@
 	dir = 4
 	},
 /turf/simulated/wall/r_wall/prepainted,
-/area/turbolift/tether/elevator_two)
+/area/tether/elevator/two)
 "xN" = (
 /obj/structure/bed/chair/sofa/brown/right{
 	dir = 8
@@ -14151,6 +14151,9 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/foyer_mezzenine)
+"Cz" = (
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/tether/elevator/two)
 "CA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -16946,7 +16949,7 @@
 /area/maintenance/station/cargo)
 "Is" = (
 /turf/simulated/wall/r_wall/prepainted,
-/area/turbolift/tether/elevator_two)
+/area/tether/elevator/two)
 "It" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -22338,6 +22341,9 @@
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock)
+"TA" = (
+/turf/simulated/open,
+/area/tether/elevator)
 "TB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -23113,8 +23119,8 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/starboard)
 "Vh" = (
-/turf/simulated/floor/holofloor/tiled/dark,
-/area/turbolift/tether/elevator_two)
+/turf/simulated/open,
+/area/tether/elevator/two)
 "Vi" = (
 /obj/structure/closet/secure_closet/atmos_personal,
 /obj/effect/floor_decal/borderfloor,
@@ -48213,10 +48219,10 @@ vj
 Gh
 uX
 Ji
-Hb
-Hb
-Hb
-Hb
+TA
+TA
+TA
+TA
 Ji
 Yl
 uX
@@ -48407,10 +48413,10 @@ Wj
 Mx
 uX
 Ji
-Hb
-Hb
-Hb
-Hb
+TA
+TA
+TA
+TA
 Ji
 Yl
 uX
@@ -48601,10 +48607,10 @@ gH
 Nt
 uX
 Ji
-Hb
-Hb
-Hb
-Hb
+TA
+TA
+TA
+TA
 Ji
 bk
 uX
@@ -48795,10 +48801,10 @@ bw
 qh
 uX
 Ji
-Hb
-Hb
-Hb
-Hb
+TA
+TA
+TA
+TA
 Ji
 dB
 uX
@@ -50154,8 +50160,8 @@ rn
 NC
 Is
 Is
-Vh
-Vh
+Cz
+Cz
 Is
 xM
 Qa

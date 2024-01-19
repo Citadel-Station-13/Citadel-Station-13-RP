@@ -9499,6 +9499,9 @@
 "ts" = (
 /turf/simulated/floor/wood/broken,
 /area/maintenance/station/eng_lower)
+"tt" = (
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/tether/elevator/two)
 "tu" = (
 /obj/structure/catwalk,
 /obj/structure/cable{
@@ -16551,8 +16554,8 @@
 /turf/simulated/floor/grass,
 /area/hallway/station/atrium)
 "HS" = (
-/turf/simulated/floor/holofloor/tiled/dark,
-/area/turbolift/tether/elevator_two)
+/turf/simulated/open,
+/area/tether/elevator/two)
 "HV" = (
 /turf/simulated/wall/prepainted/engineering,
 /area/engineering/hallway)
@@ -18514,7 +18517,7 @@
 /area/constructionsite)
 "LU" = (
 /turf/simulated/wall/r_wall/prepainted,
-/area/turbolift/tether/elevator_two)
+/area/tether/elevator/two)
 "LV" = (
 /obj/machinery/sleeper{
 	dir = 4
@@ -25135,6 +25138,9 @@
 	},
 /turf/simulated/floor,
 /area/constructionsite)
+"Zv" = (
+/turf/simulated/open,
+/area/tether/elevator)
 "Zw" = (
 /turf/simulated/mineral/vacuum,
 /area/mine/explored/upper_level)
@@ -47977,10 +47983,10 @@ qU
 Sa
 IW
 kX
-uW
-uW
-uW
-uW
+Zv
+Zv
+Zv
+Zv
 kX
 fz
 ek
@@ -48171,10 +48177,10 @@ mj
 yI
 IW
 kX
-uW
-uW
-uW
-uW
+Zv
+Zv
+Zv
+Zv
 kX
 fz
 sT
@@ -48365,10 +48371,10 @@ IW
 IW
 IW
 kX
-uW
-uW
-uW
-uW
+Zv
+Zv
+Zv
+Zv
 kX
 fz
 Tg
@@ -48559,10 +48565,10 @@ GX
 ym
 UX
 kX
-uW
-uW
-uW
-uW
+Zv
+Zv
+Zv
+Zv
 kX
 fz
 Cp
@@ -49918,8 +49924,8 @@ Ld
 UA
 LU
 LU
-HS
-HS
+tt
+tt
 LU
 LU
 Fo

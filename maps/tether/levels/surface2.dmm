@@ -1504,10 +1504,6 @@
 /obj/structure/loot_pile/maint/trash,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/south)
-"bfJ" = (
-/obj/structure/railing,
-/turf/space/basic,
-/area/tether/surfacebase/surface_two_hall)
 "bga" = (
 /obj/structure/disposalpipe/sortjunction{
 	dir = 4;
@@ -4377,7 +4373,7 @@
 /obj/structure/sign/warning/caution{
 	name = "\improper CAUTION - DANGEROUS EQUIPMENT AND DROPS"
 	},
-/turf/simulated/wall/prepainted/engineering/atmos,
+/turf/simulated/wall/r_wall/prepainted,
 /area/engineering/lower/lobby)
 "deB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -4780,7 +4776,7 @@
 /area/rnd/breakroom)
 "dwA" = (
 /turf/simulated/wall/r_wall/prepainted,
-/area/turbolift/tether/elevator_two)
+/area/tether/elevator/two)
 "dwC" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -7248,6 +7244,9 @@
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/south)
+"fsv" = (
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/tether/elevator/two)
 "fsz" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
@@ -7791,9 +7790,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_two)
-"fLS" = (
-/turf/space/basic,
-/area/tether/surfacebase/surface_two_hall)
 "fMt" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -16566,8 +16562,8 @@
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/atmos)
 "mek" = (
-/turf/simulated/floor/holofloor/tiled/dark,
-/area/turbolift/tether/elevator_two)
+/turf/simulated/open,
+/area/tether/elevator/two)
 "meI" = (
 /obj/machinery/air_alarm{
 	dir = 4;
@@ -24774,6 +24770,9 @@
 /obj/effect/paint_stripe/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
+"smB" = (
+/turf/simulated/open,
+/area/tether/elevator)
 "snb" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -55281,10 +55280,10 @@ eUG
 eUG
 tIz
 ltL
-qCo
-qCo
-qCo
-qCo
+smB
+smB
+smB
+smB
 ltL
 waY
 myN
@@ -55475,10 +55474,10 @@ eUG
 eUG
 tIz
 ltL
-qCo
-qCo
-qCo
-qCo
+smB
+smB
+smB
+smB
 ltL
 waY
 myN
@@ -55669,10 +55668,10 @@ eUG
 eUG
 tIz
 ltL
-qCo
-qCo
-qCo
-qCo
+smB
+smB
+smB
+smB
 ltL
 waY
 aGQ
@@ -55863,10 +55862,10 @@ eUG
 eUG
 tIz
 ltL
-qCo
-qCo
-qCo
-qCo
+smB
+smB
+smB
+smB
 ltL
 waY
 lzn
@@ -57026,7 +57025,7 @@ xbU
 osn
 nmC
 eBq
-xbU
+bXq
 xiw
 gnx
 gnx
@@ -57222,8 +57221,8 @@ ldD
 uQj
 dwA
 dwA
-mek
-mek
+fsv
+fsv
 dwA
 dwA
 dev
@@ -58763,12 +58762,12 @@ jSr
 jSr
 jSr
 jSr
-fLS
-fLS
-fLS
-fLS
-fLS
-bfJ
+jSr
+jSr
+jSr
+jSr
+jSr
+wnY
 gIz
 iqy
 iqy

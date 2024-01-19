@@ -1480,6 +1480,9 @@
 
 	requires_power = FALSE
 
+/area/tether/elevator/two
+	name = "\improper Tether Elevator Two"
+
 /area/tether/midpoint
 	name = "\improper Tether Midpoint"
 
