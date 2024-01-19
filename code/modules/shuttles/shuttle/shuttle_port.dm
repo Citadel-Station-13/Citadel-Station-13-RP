@@ -72,18 +72,18 @@
 /**
  * @return turfs in square box, unfiltered
  */
-/obj/shuttle_port/proc/ordered_turfs_here()
-	return shuttle.anchor.ordered_turfs_at(loc)
+/obj/shuttle_port/proc/aabb_ordered_turfs_here()
+	return shuttle.anchor.aabb_ordered_turfs_at(loc)
 
 /**
  * @return turfs in square box, unfiltered
  */
-/obj/shuttle_port/proc/ordered_turfs_at(turf/anchor, direction)
+/obj/shuttle_port/proc/aabb_ordered_turfs_at(turf/anchor, direction)
 	ASSERT(isturf(anchor))
 	ASSERT(isturf(loc))
 	var/dx = shuttle.anchor.x - src.y
 	var/dy = shuttle.anchor.y - src.y
-	return shuttle.anchor.ordered_turfs_at(
+	return shuttle.anchor.aabb_ordered_turfs_at(
 		locate(
 			anchor.x + dx,
 			anchor.y + dy,
@@ -91,12 +91,6 @@
 		),
 		direction,
 	)
-
-/obj/shuttle_port/proc/heuristic_turfs_here()
-	return shuttle.anchor.heuristic_turfs_at(loc)
-
-/obj/shuttle_port/proc/heuristic_turfs_at(turf/anchor, direction)
-	return shuttle.anchor.heuristic_turfs_at(anchor, direction)
 
 /obj/shuttle_port/north
 	dir = NORTH
@@ -111,23 +105,44 @@
 	dir = WEST
 
 /obj/shuttle_port/two_wide
+	abstract_type = /obj/shuttle_port/two_wide
 	icon = 'icons/modules/shuttles/shuttle_anchor_2x2.dmi'
 	icon_state = "dock"
 	port_width = 2
 
-/obj/shuttle_port/two_wide/north
+/obj/shuttle_port/two_wide/left_aligned
+
+/obj/shuttle_port/two_wide/left_aligned/north
 	dir = NORTH
 
-/obj/shuttle_port/two_wide/south
+/obj/shuttle_port/two_wide/left_aligned/south
 	dir = SOUTH
 	port_offset = 1
 
-/obj/shuttle_port/two_wide/east
+/obj/shuttle_port/two_wide/left_aligned/east
 	dir = EAST
 	port_offset = 1
 
-/obj/shuttle_port/two_wide/west
+/obj/shuttle_port/two_wide/left_aligned/west
 	dir = WEST
+	
+/obj/shuttle_port/two_wide/right_aligned
+
+/obj/shuttle_port/two_wide/right_aligned/north
+	dir = NORTH
+	port_offset = 1
+	pixel_x = -32
+
+/obj/shuttle_port/two_wide/right_aligned/south
+	dir = SOUTH
+
+/obj/shuttle_port/two_wide/right_aligned/east
+	dir = EAST
+
+/obj/shuttle_port/two_wide/right_aligned/west
+	dir = WEST
+	port_offset = 1
+	pixel_y = -32
 
 /obj/shuttle_port/three_wide
 	icon = 'icons/modules/shuttles/shuttle_anchor_3x3.dmi'
@@ -136,14 +151,20 @@
 
 /obj/shuttle_port/three_wide/north
 	dir = NORTH
+	port_offset = 1
+	pixel_x = -32
 
 /obj/shuttle_port/three_wide/south
 	dir = SOUTH
-	port_offset = 2
+	port_offset = 1
+	pixel_x = -32
 
 /obj/shuttle_port/three_wide/east
 	dir = EAST
-	port_offset = 2
+	port_offset = 1
+	pixel_y = -32
 
 /obj/shuttle_port/three_wide/west
 	dir = WEST
+	port_offset = 1
+	pixel_y = -32

@@ -100,14 +100,15 @@ SUBSYSTEM_DEF(grids)
  * * leave_area - the area instance to leave behind. if not set, this defaults to the base area of the zlevel.
  * * emit_motion_flags - use this to extract ordered motion flags
  * * emit_moved_atoms - use this to extract what movables got moved
+ * * overlap_handler - callback that's fired for things in the way with (thing, from_turf, to_turf); things: turfs, objs, mobs. ATOM_ABSTRACT and ATOM_NONWORLD are ignored.
  */
-/datum/controller/subsystem/grids/proc/translate(list/from_turfs, list/to_turfs, from_dir, to_dir, grid_flags, baseturf_boundary, area/leave_area, list/emit_motion_flags = list(), list/emit_moved_atoms = list())
+/datum/controller/subsystem/grids/proc/translate(list/from_turfs, list/to_turfs, from_dir, to_dir, grid_flags, baseturf_boundary, area/leave_area, list/emit_motion_flags = list(), list/emit_moved_atoms = list(), datum/callback/overlap_handler)
 	UNTIL(!translation_mutex)
 	translation_mutex = TRUE
 	. = do_translate(arglist(args))
 	translation_mutex = FALSE
 
-/datum/controller/subsystem/grids/proc/do_translate(list/from_turfs, list/to_turfs, from_dir, to_dir, grid_flags, baseturf_boundary, area/leave_area, list/emit_motion_flags = list(), list/emit_moved_atoms = list())
+/datum/controller/subsystem/grids/proc/do_translate(list/from_turfs, list/to_turfs, from_dir, to_dir, grid_flags, baseturf_boundary, area/leave_area, list/emit_motion_flags = list(), list/emit_moved_atoms = list(), datum/callback/overlap_handler)
 	PRIVATE_PROC(TRUE)
 	// While based on /tg/'s movement system, we do a few things differently.
 	// First, limitations:
@@ -146,7 +147,7 @@ SUBSYSTEM_DEF(grids)
 	/// calculate rotation angle
 	var/rotation_angle = rotation_angle(from_dir, to_dir)
 
-	CHECK_TICK
+	#warn call overlap handler as necessary
 
 	//* Collect
 	for(var/i in 1 to length(from_turfs))
@@ -174,12 +175,10 @@ SUBSYSTEM_DEF(grids)
 			else
 				source_turfs_by_area[source_area] += source
 				destination_turfs_by_area[source_area] += destination
-		CHECK_TICK
 
 	//* Transfer areas
 	for(var/area/A as anything in source_turfs_by_area)
 		A.grid_transfer(grid_flags, source_turfs_by_area[A], destination_turfs_by_area[A], baseturf_boundary)
-		CHECK_TICK
 
 	//* Transfer turfs
 	for(var/i in 1 to length(from_turfs))
@@ -190,9 +189,8 @@ SUBSYSTEM_DEF(grids)
 			continue
 		var/turf/destination = to_turfs[i]
 		source.grid_transfer(grid_flags, destination, baseturf_boundary)
-		CHECK_TICK
 
-	//* Move movables - NO CHECK TICK
+	//* Move movables
 	for(var/i in 1 to length(from_turfs))
 		var/turf/source = from_turfs[i]
 		if(isnull(source))
@@ -236,7 +234,6 @@ SUBSYSTEM_DEF(grids)
 	//* Cleanup areas
 	for(var/area/A as anything in source_turfs_by_area)
 		A.grid_clean(grid_flags, source_turfs_by_area[A], destination_turfs_by_area[A], baseturf_boundary, leave_area)
-		CHECK_TICK
 
 	//* Cleanup turfs
 	for(var/i in 1 to length(from_turfs))
@@ -246,7 +243,6 @@ SUBSYSTEM_DEF(grids)
 		if(!(ordered_motion_flags[i] & GRID_MOVE_TURF))
 			continue
 		source.grid_clean(grid_flags, baseturf_boundary)
-		CHECK_TICK
 
 	return TRUE
 

@@ -22,7 +22,7 @@
 	/// allow docking inside bounding box as long as a shuttle fits, even if the dock doesn't align
 	var/centered_landing_allowed = TRUE
 	/// only allow landing inside bounding box, centered, if not manually landing; used for landing pads
-	var/centered_landing_only = TRUE
+	var/centered_landing_only = FALSE
 	/// counted as a 'beacon' for default positionings of shuttle dockers
 	var/manual_docking_beacon = TRUE
 	/// protect our bounding box from manual landing
@@ -43,7 +43,6 @@
 	/// see /obj/shuttle_anchor for how this works; it works the same as the shuttle variant
 	/// set to null for autodetect via /obj/shuttle_dock_corner
 	var/offset_y
-	#warn impl
 
 	//* docking (backend)
 	/// base area to leave behind when something takes off; null for zlevel default
@@ -320,6 +319,7 @@
 /obj/shuttle_dock/landing_pad
 	icon_state = "dock_center"
 	centered_landing_only = TRUE
+	centered_landing_allowed = TRUE
 
 /**
  * ephemeral docks

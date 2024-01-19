@@ -79,7 +79,6 @@
 	dir = NORTH
 	icon = 'icons/modules/shuttles/shuttle_anchor.dmi'
 	icon_state = "main"
-	#warn sprite
 	plane = DEBUG_PLANE
 	layer = DEBUG_LAYER_SHUTTLE_MARKERS
 
@@ -119,13 +118,13 @@
 /**
  * @return turfs in square box, unfiltered
  */
-/obj/shuttle_anchor/proc/ordered_turfs_here()
-	return ordered_turfs_at(loc)
+/obj/shuttle_anchor/proc/aabb_ordered_turfs_here()
+	return aabb_ordered_turfs_at(loc)
 
 /**
  * @return turfs in square box, unfiltered
  */
-/obj/shuttle_anchor/proc/ordered_turfs_at(turf/anchor, direction = src.dir)
+/obj/shuttle_anchor/proc/aabb_ordered_turfs_at(turf/anchor, direction = src.dir)
 	ASSERT(isturf(anchor))
 	var/x = anchor.x
 	var/y = anchor.y
@@ -164,30 +163,10 @@
 				y - offset_x,
 				y + size_x - 1 - offset_x,
 				z,
-				WESt,
+				WEST,
 			)
 
-/obj/shuttle_anchor/proc/heuristic_turfs_here()
-	return ordered_turfs_at(loc)
-
-/obj/shuttle_anchor/proc/heuristic_turfs_at(turf/anchor, direction = src.dir)
-	ASSERT(isturf(anchor))
-	. = list()
-
-	var/x = anchor.x
-	var/y = anchor.y
-	var/z = anchor.z
-	var/turf/checking
-	
-	#define ADD_IF_THERE(WHAT) \
-	checking = ##WHAT; \
-	if(!isnull(checking)) { \
-		. += checking ; \
-	}
-	
-	ADD_IF_THERE(locate(x, y, z))
-	
-	// todo: more default heuristic spots
+// 	// todo: more default heuristic spots
 
 /obj/shuttle_anchor/forceMove()
 	CRASH("attempted to forcemove a shuttle anchor")

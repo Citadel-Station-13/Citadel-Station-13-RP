@@ -31,7 +31,7 @@
 	var/obj/shuttle_anchor/anchor
 	/// our physical shuttle port objects
 	var/list/obj/shuttle_port/ports
-	/// the areas in our shuttle
+	/// the areas in our shuttle, associated to a truthy value
 	var/list/area/shuttle/areas
 
 	//* Docking
@@ -123,7 +123,7 @@
 				ports += AM
 	// collect areas
 	for(var/area/scanning in area_cache)
-		areas += scanning
+		areas[scanning] = TRUE
 	// if we don't have an anchor, make one
 	if(isnull(anchor))
 		var/turf/center = from_reservation.get_approximately_center_turf()
@@ -161,25 +161,25 @@
 
 //* Docking - Action Helpers *//
 
-/**
- * this only fails if we would interseect another shuttle. otherwise, this will trample anything in the way.
- *
- * @params
- * * dock - dock to dock to
- * * port - port to align with dock; if null, we do a centered docking
- *
- * @return TRUE / FALSE
- */
-/datum/shuttle/proc/immediate_physical_move(obj/shuttle_dock/dock, obj/shuttle_port/with_port)
-	PRIVATE_PROC(TRUE)
-	if(check_bounding(dock, with_port, TRUE) == SHUTTLE_DOCKING_BOUNDING_HARD_FAULT)
-		return FALSE
-
-	#warn impl
 
 /datum/shuttle/proc/
 
 #warn AAAAAAAAAAAAAAAAAAAAAAAAA
+
+//* Docking - Backend; Don't mess with these. *//
+
+/**
+ * immediate shuttle move to a turf
+ * 
+ * optionally, align a port with that turf instead of aligning our anchor to that turf
+ * 
+ * aligned = the port / anchor (if no port specified) is on the turf, and faces the same way,
+ * respecting all necessary offsets.
+ * ports should generally be centered.
+ */
+/datum/shuttle/proc/perform_aligned_translation(turf/move_to, direction, obj/shuttle_port/align_with_port, list/use_before_turfs, list/use_after_turfs)
+	
+	#warn impl
 
 //* Docking - Bounding Checks *//
 
@@ -190,13 +190,13 @@
  * * dock - dock to dock to
  * * port - port to align with dock; if null, we do a centered docking
  * * hard_checks_only - only check hard faults, allow trampling anything else.
+ * * use_ordered_turfs - check these ordered turfs; you usually use this when about to translate.
  *
  * @return SHUTTLE_DOCKING_BOUNDING_X result define
  */
-/datum/shuttle/proc/check_bounding(obj/shuttle_dock/dock, obj/shuttle_port/with_port, hard_checks_only)
+/datum/shuttle/proc/check_bounding(obj/shuttle_dock/dock, obj/shuttle_port/with_port, hard_checks_only, list/use_ordered_turfs)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	var/list/ordered_turfs
-	var/list/heuristic_spots
 	#warn check for overlap with zlevel borders - the last 3 turfs should be reserved
 	#warn impl ordered turfs
 	if(!check_bounding_overlap(dock, with_port, ordered_turfs))
@@ -212,11 +212,8 @@
  *
  * @return FALSE if overlapping
  */
-/datum/shuttle/proc/check_bounding_overlap(obj/shuttle_dock/dock, obj/shuttle_port/with_port, list/ordered_turfs, list/heuristic_spots)
+/datum/shuttle/proc/check_bounding_overlap(obj/shuttle_dock/dock, obj/shuttle_port/with_port, list/ordered_turfs)
 	SHOULD_NOT_OVERRIDE(TRUE)
-	for(var/turf/T in heuristic_spots)
-		if(istype(T.loc, /area/shuttle))
-			return FALSE
 	for(var/turf/T in ordered_turfs)
 		if(istype(T.loc, /area/shuttle))
 			return FALSE
@@ -227,7 +224,7 @@
  *
  * @return FALSE if trampling sometihng we don't want to trample
  */
-/datum/shuttle/proc/check_bounding_trample(obj/shuttle_dock/dock, obj/shuttle_port/with_port, list/ordered_turfs, list/heuristic_spots)
+/datum/shuttle/proc/check_bounding_trample(obj/shuttle_dock/dock, obj/shuttle_port/with_port, list/ordered_turfs)
 	#warn impl
 
 //* Previews *//
