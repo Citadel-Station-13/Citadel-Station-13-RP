@@ -71,7 +71,8 @@ SUBSYSTEM_DEF(grids)
  * * area_cache must have truthy associations.
  * * the same index in from_turfs that are nulled are nulled in to_turfs
  */
-/datum/controller/subsystem/grids/proc/inplace_translation_filter_via_areas(list/area/area_cache, list/turf/from_turfs, list/turf/to_turfs)
+/datum/controller/subsystem/grids/proc/filtered_ordered_turfs_in_place_via_area(list/area/area_cache, list/turf/from_turfs, list/turf/to_turfs)
+	ASSERT(length(from_turfs) == length(to_turfs))
 	for(var/i in 1 to length(from_turfs))
 		var/turf/T = from_turfs[i]
 		if(area_cache[T.loc])

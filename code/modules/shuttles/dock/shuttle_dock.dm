@@ -135,6 +135,15 @@
 		)
 		qdel(src)
 		return
+	if(!check_bounds())
+		stack_trace("shuttle dock at [COORD(src)] failed bounds checking; something is seriously wrong!")
+		to_chat(
+			target = world,
+			html = FORMAT_SERVER_FATAL("Shuttle dock at [COORD(src)] failed its bounds check. Please contact coders if you see this message."),
+			type = MESSAGE_TYPE_SERVER_FATAL,
+		)
+		qdel(src)
+		return
 	if(!register_dock())
 		stack_trace("shuttle dock at [COORD(src)] failed registration; something is seriously wrong!")
 		to_chat(
@@ -156,6 +165,9 @@
 
 /obj/shuttle_dock/proc/unregister_dock()
 	return SSshuttle.unregister_dock(src)
+
+/obj/shuttle_dock/proc/check_bounds()
+	#warn ensure not out of bounds/nullspace.
 
 /obj/shuttle_dock/proc/init_bounds()
 	var/any_null = isnull(size_x) || isnull(size_y) || isnull(offset_x) || isnull(offset_y)
@@ -203,11 +215,64 @@
 	return FALSE
 
 /**
- * always returns assuming NORTH orientation.
+ * always returns assuming NORTH orientation
  */
-/obj/shuttle_dock/proc/bounding_ordered_turfs()
+/obj/shuttle_dock/proc/bounding_north_ordered_turfs()
 	ASSERT(isturf(loc))
-	#warn impl
+	switch(dir)
+		if(NORTH)
+			return SSgrids.get_ordered_turfs(
+				x - offset_x,
+				x + size_x - 1 - offset_x,
+				y - size_y + 1,
+				y - offset_y,
+				z,
+				NORTH,
+			)
+		if(SOUTH)
+			return SSgrids.get_ordered_turfs(
+				x - size_x + 1 + offset_x,
+				x + offset_x,
+				y - offset_y,
+				y + size_y - offset_y - 1,
+				z,
+				NORTH,
+			)
+		if(EAST)
+			return SSgrids.get_ordered_turfs(
+				x - size_y + 1 + offset_y,
+				x + offset_y,
+				y - size_x + 1 + offset_x,
+				y + offset_x,
+				z,
+				NORTH,
+			)
+		if(WEST)
+			return SSgrids.get_ordered_turfs(
+				x - offset_y,
+				x + size_y - 1 - offset_y,
+				y - offset_x,
+				y + size_x - 1 - offset_x,
+				z,
+				NORTH,
+			)
+
+/**
+ * heuristic spots to check for this dock
+ */
+/obj/shuttle_dock/proc/heuristic_turfs()
+	ASSERT(isturf(loc))
+	. = list()
+	
+	#define ADD_IF_THERE(WHAT) \
+	checking = ##WHAT; \
+	if(!isnull(checking)) { \
+		. += checking ; \
+	}
+	
+	ADD_IF_THERE(locate(x, y, z))
+	
+	// todo: more default heuristic spots
 
 /obj/shuttle_dock/Move(...)
 	return FALSE
@@ -215,6 +280,9 @@
 /obj/shuttle_dock/doMove(atom/destination)
 	unregister_dock()
 	. = ..()
+	if(!check_bounds())
+		stack_trace("shuttle dock got moved somewhere where its bounds fail checks.")
+		return
 	register_dock()
 
 /**
