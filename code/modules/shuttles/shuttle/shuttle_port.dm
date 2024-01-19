@@ -58,6 +58,10 @@
 	/// registered shuttle hooks
 	var/list/datum/shuttle_hook/hooks
 
+/obj/shuttle_port/proc/before_bounds_initializing(datum/shuttle/from_shuttle, datum/turf_reservation/from_reservation, datum/shuttle_template/from_template)
+	shuttle = from_shuttle
+	#warn impl
+
 /obj/shuttle_port/Destroy(force)
 	if(!force && !shuttle.being_deleted)
 		. = QDEL_HINT_LETMELIVE

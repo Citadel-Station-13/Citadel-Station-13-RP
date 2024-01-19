@@ -317,19 +317,19 @@
 
 //* grid moves handling - we don't move as nested shuttle support isn't a thing yet *//
 
-/obj/shuttle_dockre/grid_move(grid_flags, turf/new_turf)
+/obj/shuttle_dock/grid_move(grid_flags, turf/new_turf)
 	return
 
-/obj/shuttle_dockre/grid_after(grid_flags, rotation_angle, list/late_call_hooks)
+/obj/shuttle_dock/grid_after(grid_flags, rotation_angle, list/late_call_hooks)
 	return
 	
-/obj/shuttle_dockre/grid_collect(grid_flags, turf/new_turf, loc_opinion)
+/obj/shuttle_dock/grid_collect(grid_flags, turf/new_turf, loc_opinion)
 	return
 
-/obj/shuttle_dockre/grid_finished(grid_flags, rotation_angle)
+/obj/shuttle_dock/grid_finished(grid_flags, rotation_angle)
 	return
 
-#warn above should be also implemented on anchor, and port.
+#warn above should be also implemented on anchor, and port, they're moved via shuttle instead of this code.
 
 /**
  * literally just a landing pad

@@ -101,6 +101,14 @@
 	/// see main documentation
 	var/offset_y
 
+/obj/shuttle_anchor/proc/before_bounds_initializing(datum/shuttle/from_shuttle, datum/turf_reservation/from_reservation, datum/shuttle_template/from_template)
+	shuttle = from_shuttle
+	#warn impl
+
+/obj/shuttle_anchor/proc/calculate_bounds(bottomleft_x, bottomleft_y, topright_x, topright_y, initial_direction)
+	ASSERT(bottomleft_x && bottomleft_y && topright_x && topright_y && initial_direction)
+	#warn impl
+
 /obj/shuttle_anchor/Destroy(force)
 	if(!force && !shuttle.being_deleted)
 		. = QDEL_HINT_LETMELIVE

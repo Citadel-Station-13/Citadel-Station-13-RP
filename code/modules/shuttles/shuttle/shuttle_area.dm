@@ -11,6 +11,10 @@
 
 #warn impl all
 
+/area/shuttle/proc/before_bounds_initializing(datum/shuttle/from_shuttle, datum/turf_reservation/from_reservation, datum/shuttle_template/from_template)
+	shuttle = from_shuttle
+	#warn impl
+
 /**
  * autodetecting area
  */

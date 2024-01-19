@@ -37,11 +37,21 @@
 	release()
 	return ..()
 
+/datum/turf_reservation/proc/get_approximately_center_turf()
+	return locate(
+		bottom_left_coords[1] + floor(top_right_coords[1] - bottom_left_coords[1]),
+		bottom_left_coords[2] + floor(top_right_coords[2] - bottom_left_coords[2]),
+		bottom_left_coords[3],
+	)
+
 /datum/turf_reservation/proc/release()
 	SSmapping.reserve_turfs(reserved_turfs)
 	reserved_turfs = null
 	allocated = FALSE
 	SSmapping.reservations -= src
+
+/datum/turf_reservation/proc/get_unordered_turfs()
+	return reserved_turfs.Copy()
 
 /datum/turf_reservation/proc/reserve(width, height, z_override)
 	if(width > world.maxx || height > world.maxy || width < 1 || height < 1)
