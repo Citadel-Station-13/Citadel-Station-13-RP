@@ -5389,7 +5389,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/briefingroom)
 "cXk" = (
-/obj/machinery/computer/shuttle_control/explore/tourbus,
+/obj/machinery/computer/shuttle_control/tourbus,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -6077,7 +6077,7 @@
 /obj/effect/floor_decal/industrial/danger{
 	dir = 4
 	},
-/obj/machinery/computer/shuttle_control/tether_backup{
+/obj/machinery/computer/shuttle_control{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -18198,7 +18198,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_three_hall)
 "kWx" = (
-/obj/machinery/computer/shuttle_control/tether_backup{
+/obj/machinery/computer/shuttle_control{
 	req_one_access = list()
 	},
 /turf/simulated/shuttle/floor/black,

@@ -96,7 +96,7 @@
 /turf/simulated/wall/shull,
 /area/shuttle/curabitur/curashuttle/cockpit)
 "an" = (
-/obj/machinery/computer/shuttle_control/explore/curashuttle{
+/obj/machinery/computer/shuttle_control/curashuttle{
 	dir = 4
 	},
 /turf/simulated/floor/carpet/bcarpet,

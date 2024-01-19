@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aj" = (
-/obj/machinery/computer/shuttle_control/explore/excursion,
+/obj/machinery/computer/shuttle_control,
 /turf/simulated/shuttle/floor/red/airless,
 /area/submap/debrisfiled_vr/clownshuttle/cockpit)
 "al" = (

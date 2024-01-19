@@ -60,32 +60,32 @@
 	docking_controller_tag = "mining_docking"
 	move_direction = NORTH
 
-/obj/machinery/computer/shuttle_control/tether_backup
+/obj/machinery/computer/shuttle_control
 	name = "tether backup shuttle control console"
 	shuttle_tag = "Tether Backup"
 	req_one_access = list(ACCESS_COMMAND_BRIDGE,ACCESS_GENERAL_PILOT)
 
-/obj/machinery/computer/shuttle_control/multi/mercenary
+/obj/machinery/computer/shuttle_control
 	name = "vessel control console"
 	shuttle_tag = "Mercenary"
 	req_one_access = list(ACCESS_FACTION_SYNDICATE)
 
-/obj/machinery/computer/shuttle_control/multi/ninja
+/obj/machinery/computer/shuttle_control/ninja
 	name = "vessel control console"
 	shuttle_tag = "Ninja"
 	//req_one_access = list()
 
-/obj/machinery/computer/shuttle_control/multi/skipjack
+/obj/machinery/computer/shuttle_control/skipjack
 	name = "vessel control console"
 	shuttle_tag = "Skipjack"
 	//req_one_access = list()
 
-/obj/machinery/computer/shuttle_control/multi/specops
+/obj/machinery/computer/shuttle_control/specops
 	name = "vessel control console"
 	shuttle_tag = "NDV Phantom"
 	req_one_access = list(ACCESS_CENTCOM_ERT)
 
-/obj/machinery/computer/shuttle_control/multi/trade
+/obj/machinery/computer/shuttle_control
 	name = "vessel control console"
 	shuttle_tag = "Trade"
 	req_one_access = list(ACCESS_FACTION_TRADER)
@@ -114,7 +114,7 @@
 	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Excursion Shuttle"
 
-/obj/machinery/computer/shuttle_control/explore/excursion
+/obj/machinery/computer/shuttle_control
 	name = "short jump console"
 	shuttle_tag = "Excursion Shuttle"
 	req_one_access = list(ACCESS_GENERAL_PILOT)
@@ -139,7 +139,7 @@
 	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Tour Bus"
 
-/obj/machinery/computer/shuttle_control/explore/tourbus
+/obj/machinery/computer/shuttle_control/tourbus
 	name = "short jump console"
 	shuttle_tag = "Tour Bus"
 	req_one_access = list(ACCESS_GENERAL_PILOT)
@@ -165,7 +165,7 @@
 	shuttle = "Medivac Shuttle"
 	fore_dir = EAST
 
-/obj/machinery/computer/shuttle_control/explore/medivac
+/obj/machinery/computer/shuttle_control/medivac
 	name = "short jump console"
 	shuttle_tag = "Medivac Shuttle"
 
@@ -187,6 +187,6 @@
 	shuttle = "Securiship Shuttle"
 	fore_dir = EAST
 
-/obj/machinery/computer/shuttle_control/explore/securiship
+/obj/machinery/computer/shuttle_control/securiship
 	name = "short jump console"
 	shuttle_tag = "Securiship Shuttle"

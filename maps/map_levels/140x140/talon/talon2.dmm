@@ -1755,7 +1755,7 @@
 /turf/simulated/floor/reinforced,
 /area/talon/decktwo/vault)
 "ve" = (
-/obj/machinery/computer/shuttle_control/explore/talon_lifeboat{
+/obj/machinery/computer/shuttle_control/talon_lifeboat{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,

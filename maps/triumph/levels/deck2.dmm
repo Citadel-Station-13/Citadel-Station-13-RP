@@ -3786,7 +3786,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
 "lr" = (
-/obj/machinery/computer/shuttle_control/belter{
+/obj/machinery/computer/shuttle_control{
 	dir = 4
 	},
 /obj/item/gps/internal/base{
@@ -5654,7 +5654,7 @@
 /area/station/stairs_two)
 "rl" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/computer/shuttle_control/explore/mining{
+/obj/machinery/computer/shuttle_control/mining{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,

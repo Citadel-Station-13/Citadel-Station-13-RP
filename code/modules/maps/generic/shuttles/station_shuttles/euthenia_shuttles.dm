@@ -17,7 +17,7 @@
 	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Beruang Trade Ship"
 
-/obj/machinery/computer/shuttle_control/explore/trade
+/obj/machinery/computer/shuttle_control
 	name = "short jump console"
 	shuttle_tag = "Beruang Trade Ship"
 

@@ -8877,7 +8877,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/hallway)
 "geI" = (
-/obj/machinery/computer/shuttle_control/explore/excursion{
+/obj/machinery/computer/shuttle_control{
 	dir = 4;
 	req_one_access = null
 	},
@@ -10816,7 +10816,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/machinery/computer/shuttle_control/explore/courser,
+/obj/machinery/computer/shuttle_control,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/cockpit)
 "htY" = (
@@ -11136,7 +11136,7 @@
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "hHd" = (
-/obj/machinery/computer/shuttle_control/explore/civvie{
+/obj/machinery/computer/shuttle_control/civvie{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/old_tile/green,

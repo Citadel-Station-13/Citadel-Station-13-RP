@@ -17,7 +17,7 @@
 	icon_state = "blue-red2"
 
 // The shuttle's 'shuttle' computer
-/obj/machinery/computer/shuttle_control/explore/cruise_ship
+/obj/machinery/computer/shuttle_control/cruise_ship
 	name = "short jump console"
 	shuttle_tag = "UKN Aerondight"
 

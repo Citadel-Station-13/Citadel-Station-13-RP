@@ -1146,7 +1146,7 @@
 /area/security/security_lockerroom)
 "bkH" = (
 /obj/structure/table/reinforced,
-/obj/machinery/computer/shuttle_control/emergency,
+/obj/machinery/computer/shuttle_control,
 /turf/simulated/floor/tiled/steel_grid,
 /area/space)
 "bkY" = (
@@ -3420,7 +3420,7 @@
 /turf/simulated/floor/tiled,
 /area/medical/surgery2)
 "dOj" = (
-/obj/machinery/computer/shuttle_control/explore{
+/obj/machinery/computer/shuttle_control{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_grid,

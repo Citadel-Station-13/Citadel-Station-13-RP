@@ -15581,7 +15581,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/engineering_monitoring)
 "FR" = (
-/obj/machinery/computer/shuttle_control/explore/medivac{
+/obj/machinery/computer/shuttle_control/medivac{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
@@ -19885,7 +19885,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/abandonedlibrary)
 "OW" = (
-/obj/machinery/computer/shuttle_control/explore/securiship{
+/obj/machinery/computer/shuttle_control/securiship{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/eris/dark/techfloor,

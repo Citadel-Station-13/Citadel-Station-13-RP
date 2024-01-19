@@ -8728,7 +8728,7 @@
 /turf/simulated/floor/plating,
 /area/ship/manta/atmos)
 "SJ" = (
-/obj/machinery/computer/shuttle_control/explore/manta_ship_boat{
+/obj/machinery/computer/shuttle_control/manta_ship_boat{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,

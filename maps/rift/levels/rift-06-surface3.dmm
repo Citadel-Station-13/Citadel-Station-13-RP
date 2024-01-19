@@ -4030,7 +4030,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/trade_shop/landing_pad)
 "alU" = (
-/obj/machinery/computer/shuttle_control/explore/emt{
+/obj/machinery/computer/shuttle_control/emt{
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/paleblue{
@@ -6613,7 +6613,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
 "asP" = (
-/obj/machinery/computer/shuttle_control/explore/civvie,
+/obj/machinery/computer/shuttle_control/civvie,
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/cockpit)
 "asQ" = (
@@ -14069,7 +14069,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/machinery/computer/shuttle_control/explore/courser,
+/obj/machinery/computer/shuttle_control,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/cockpit)
 "aNI" = (
@@ -18332,7 +18332,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/bridge_hallway)
 "aZL" = (
-/obj/machinery/computer/shuttle_control/explore/excursion{
+/obj/machinery/computer/shuttle_control{
 	dir = 4;
 	req_one_access = null
 	},

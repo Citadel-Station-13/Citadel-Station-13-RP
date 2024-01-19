@@ -258,7 +258,7 @@
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/CrashedSmuggler)
 "xk" = (
-/obj/machinery/computer/shuttle_control/explore/excursion{
+/obj/machinery/computer/shuttle_control{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/virgo2,

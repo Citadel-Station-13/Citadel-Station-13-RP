@@ -114,13 +114,13 @@
 	has_gravity = 0
 
 // The shuttle's 'shuttle' computer
-/obj/machinery/computer/shuttle_control/explore/salamander
+/obj/machinery/computer/shuttle_control/salamander
 	name = "short jump console"
 	shuttle_tag = "Salamander"
 	req_one_access = list()
 
 // The shuttle's 'shuttle' computer
-/obj/machinery/computer/shuttle_control/explore/salamander_wreck
+/obj/machinery/computer/shuttle_control/salamander_wreck
 	name = "short jump console"
 	shuttle_tag = "Salamander Wreckage"
 	req_one_access = list()

@@ -7,27 +7,27 @@
 	shuttle_tag = "Triumph Backup"
 	req_one_access = list(ACCESS_COMMAND_BRIDGE,ACCESS_GENERAL_PILOT)
 
-/obj/machinery/computer/shuttle_control/multi/mercenary
+/obj/machinery/computer/shuttle_control
 	name = "vessel control console"
 	shuttle_tag = "Mercenary"
 	req_one_access = list(ACCESS_FACTION_SYNDICATE)
 
-/obj/machinery/computer/shuttle_control/multi/ninja
+/obj/machinery/computer/shuttle_control/ninja
 	name = "vessel control console"
 	shuttle_tag = "Ninja"
 	//req_one_access = list()
 
-/obj/machinery/computer/shuttle_control/multi/skipjack
+/obj/machinery/computer/shuttle_control/skipjack
 	name = "vessel control console"
 	shuttle_tag = "Skipjack"
 	//req_one_access = list()
 
-/obj/machinery/computer/shuttle_control/multi/specops
+/obj/machinery/computer/shuttle_control/specops
 	name = "vessel control console"
 	shuttle_tag = "NDV Phantom"
 	req_one_access = list(ACCESS_CENTCOM_ERT)
 
-/obj/machinery/computer/shuttle_control/multi/trade
+/obj/machinery/computer/shuttle_control
 	name = "vessel control console"
 	shuttle_tag = "Trade"
 	req_one_access = list(ACCESS_FACTION_TRADER)
@@ -48,7 +48,7 @@
 	name = "Excursion Shuttle"
 	icon_state = "shuttle"
 
-/obj/machinery/computer/shuttle_control/explore/excursion
+/obj/machinery/computer/shuttle_control
 	name = "short jump console"
 	shuttle_tag = "Excursion Shuttle"
 	req_one_access = list(ACCESS_GENERAL_PILOT)
@@ -69,7 +69,7 @@
 	name = "Courser Scouting Vessel"
 	icon_state = "shuttle"
 
-/obj/machinery/computer/shuttle_control/explore/courser
+/obj/machinery/computer/shuttle_control
 	name = "short jump console"
 	shuttle_tag = "Courser Scouting Vessel"
 	req_one_access = list(ACCESS_GENERAL_PILOT)
@@ -90,7 +90,7 @@
 	name = "Civilian Transport"
 	icon_state = "shuttle"
 
-/obj/machinery/computer/shuttle_control/explore/civvie
+/obj/machinery/computer/shuttle_control/civvie
 	name = "civilian jump console"
 	shuttle_tag = "Civilian Transport"
 
@@ -110,7 +110,7 @@
 	name = "Mining Shuttle"
 	icon_state = "shuttle"
 
-/obj/machinery/computer/shuttle_control/explore/mining
+/obj/machinery/computer/shuttle_control/mining
 	name = "mining jump console"
 	shuttle_tag = "Mining Shuttle"
 
@@ -128,7 +128,7 @@
 	name = "Dart EMT Shuttle"
 	icon_state = "shuttle"
 
-/obj/machinery/computer/shuttle_control/explore/emt
+/obj/machinery/computer/shuttle_control/emt
 	name = "EMT jump console"
 	shuttle_tag = "Dart EMT Shuttle"
 

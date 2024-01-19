@@ -602,7 +602,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/bridge)
 "bv" = (
-/obj/machinery/computer/shuttle_control/explore/mercboat,
+/obj/machinery/computer/shuttle_control/mercboat,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/mercboat)
 "bw" = (

@@ -1,11 +1,11 @@
 
-/obj/machinery/computer/shuttle_control/multi/mercenary
+/obj/machinery/computer/shuttle_control
 	name = "vessel control console"
 	shuttle_tag = "Mercenary"
 	req_one_access = list(ACCESS_FACTION_SYNDICATE)
 
 
-/obj/machinery/computer/shuttle_control/multi/trade
+/obj/machinery/computer/shuttle_control
 	name = "vessel control console"
 	shuttle_tag = "Trade"
 	req_one_access = list(ACCESS_FACTION_TRADER)
@@ -42,7 +42,7 @@
 	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Excursion Shuttle"
 
-/obj/machinery/computer/shuttle_control/explore/excursion
+/obj/machinery/computer/shuttle_control
 	name = "short jump console"
 	shuttle_tag = "Excursion Shuttle"
 	//req_one_access = list(ACCESS_GENERAL_PILOT)
@@ -71,7 +71,7 @@
 	name = "Courser Scouting Vessel"
 	icon_state = "shuttle"
 
-/obj/machinery/computer/shuttle_control/explore/courser
+/obj/machinery/computer/shuttle_control
 	name = "short jump console"
 	shuttle_tag = "Courser Scouting Vessel"
 	//req_one_access = list(ACCESS_GENERAL_PILOT)
@@ -102,7 +102,7 @@
 	name = "Hammerhead Patrol Barge"
 	icon_state = "shuttle"
 
-/obj/machinery/computer/shuttle_control/explore/hammerhead
+/obj/machinery/computer/shuttle_control
 	name = "short jump console"
 	shuttle_tag = "Hammerhead Patrol Barge"
 	//req_one_access = list(ACCESS_GENERAL_PILOT)
@@ -131,7 +131,7 @@
 	name = "Civilian Transport"
 	icon_state = "shuttle"
 
-/obj/machinery/computer/shuttle_control/explore/civvie
+/obj/machinery/computer/shuttle_control/civvie
 	name = "civilian jump console"
 	shuttle_tag = "Civilian Transport"
 
@@ -158,7 +158,7 @@
 	name = "Dart EMT Shuttle"
 	icon_state = "shuttle"
 
-/obj/machinery/computer/shuttle_control/explore/emt
+/obj/machinery/computer/shuttle_control/emt
 	name = "EMT jump console"
 	shuttle_tag = "Dart EMT Shuttle"
 

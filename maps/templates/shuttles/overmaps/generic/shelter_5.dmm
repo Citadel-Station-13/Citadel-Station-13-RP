@@ -94,7 +94,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/deployable/escapepod)
 "i" = (
-/obj/machinery/computer/shuttle_control/explore/escapepod{
+/obj/machinery/computer/shuttle_control/escapepod{
 	dir = 4
 	},
 /obj/effect/floor_decal/techfloor,

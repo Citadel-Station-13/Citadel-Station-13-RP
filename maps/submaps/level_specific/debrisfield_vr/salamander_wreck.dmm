@@ -1055,7 +1055,7 @@
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/shuttle/salamander_wreck)
 "qh" = (
-/obj/machinery/computer/shuttle_control/explore/salamander_wreck{
+/obj/machinery/computer/shuttle_control/salamander_wreck{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor{

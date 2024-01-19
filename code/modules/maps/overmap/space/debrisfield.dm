@@ -197,7 +197,7 @@
 		for(var/obj/machinery/air_alarm/AA in A)
 			AA.name = "[A.name] Air Alarm"
 
-/obj/machinery/computer/shuttle_control/explore/tinycarrier
+/obj/machinery/computer/shuttle_control/tinycarrier
 	shuttle_tag = "Debris Carrier"
 	req_one_access = list()
 

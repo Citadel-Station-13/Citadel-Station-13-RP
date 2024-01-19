@@ -75,27 +75,27 @@
 	has_gravity = 0
 
 // The shuttle's 'shuttle' computer
-/obj/machinery/computer/shuttle_control/explore/mackerel_sh
+/obj/machinery/computer/shuttle_control
 	name = "short jump console"
 	shuttle_tag = "Mackerel Stationhopper"
 	req_one_access = list()
 
-/obj/machinery/computer/shuttle_control/explore/mackerel_lc
+/obj/machinery/computer/shuttle_control
 	name = "short jump console"
 	shuttle_tag = "Mackerel Light Cargo"
 	req_one_access = list()
 
-/obj/machinery/computer/shuttle_control/explore/mackerel_lc_wreck
+/obj/machinery/computer/shuttle_control
 	name = "short jump console"
 	shuttle_tag = "Mackerel Light Cargo II"
 	req_one_access = list()
 
-/obj/machinery/computer/shuttle_control/explore/mackerel_hc
+/obj/machinery/computer/shuttle_control
 	name = "short jump console"
 	shuttle_tag = "Mackerel Heavy Cargo"
 	req_one_access = list()
 
-/obj/machinery/computer/shuttle_control/explore/mackerel_hc_skel
+/obj/machinery/computer/shuttle_control_skel
 	name = "short jump console"
 	shuttle_tag = "Mackerel Heavy Cargo Spartan"
 	req_one_access = list()

@@ -107,7 +107,7 @@
 	cached_skybox_image.add_overlay("glow")
 
 // The shuttle's 'shuttle' computer
-/obj/machinery/computer/shuttle_control/explore/itglightshuttle
+/obj/machinery/computer/shuttle_control/itglightshuttle
 	name = "shuttle control console"
 	shuttle_tag = "ITG Shuttlecraft"
 

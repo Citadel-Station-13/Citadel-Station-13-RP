@@ -5877,7 +5877,7 @@
 /turf/simulated/floor/plating,
 /area/tether/exploration/pilot_office)
 "lR" = (
-/obj/machinery/computer/shuttle_control/explore/excursion,
+/obj/machinery/computer/shuttle_control,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/excursion/cockpit)
 "lS" = (
@@ -11343,7 +11343,7 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/storage)
 "wI" = (
-/obj/machinery/computer/shuttle_control/tether_backup{
+/obj/machinery/computer/shuttle_control{
 	dir = 8
 	},
 /obj/structure/disposalpipe/segment{
@@ -14524,7 +14524,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/quartermaster/storage)
 "Dg" = (
-/obj/machinery/computer/shuttle_control/belter{
+/obj/machinery/computer/shuttle_control{
 	dir = 1
 	},
 /obj/item/gps/internal/base{
@@ -18913,7 +18913,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/atrium)
 "Ms" = (
-/obj/machinery/computer/shuttle_control/belter{
+/obj/machinery/computer/shuttle_control{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,

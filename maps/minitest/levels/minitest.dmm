@@ -2795,7 +2795,7 @@
 /turf/simulated/floor/tiled,
 /area/bridge)
 "hl" = (
-/obj/machinery/computer/shuttle_control/multi{
+/obj/machinery/computer/shuttle_control{
 	dir = 8;
 	name = "multi-demo shuttle control console";
 	shuttle_tag = "Multi-Demo"
@@ -2803,7 +2803,7 @@
 /turf/simulated/floor/tiled,
 /area/bridge)
 "hm" = (
-/obj/machinery/computer/shuttle_control/multi{
+/obj/machinery/computer/shuttle_control{
 	name = "multi-demo shuttle control console";
 	shuttle_tag = "Multi-Demo"
 	},
@@ -2880,7 +2880,7 @@
 	dir = 4;
 	icon_state = "tube1"
 	},
-/obj/machinery/computer/shuttle_control/web{
+/obj/machinery/computer/shuttle_control{
 	dir = 8;
 	name = "Web-Demo Remote Control";
 	shuttle_tag = "Web-Demo"
@@ -3035,7 +3035,7 @@
 /turf/simulated/shuttle/floor/voidcraft/light,
 /area/shuttle/overmapdemo)
 "qz" = (
-/obj/machinery/computer/shuttle_control/explore{
+/obj/machinery/computer/shuttle_control{
 	name = "Overmap-Demo Shuttle Control";
 	shuttle_tag = "Overmap-Demo"
 	},
@@ -3340,7 +3340,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/storage/surface_eva/external)
 "LJ" = (
-/obj/machinery/computer/shuttle_control/web{
+/obj/machinery/computer/shuttle_control{
 	my_doors = list("webdemo_docker_hatch"="Hatch");
 	name = "Web-Demo Console";
 	shuttle_tag = "Web-Demo"

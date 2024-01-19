@@ -4476,6 +4476,7 @@
 #include "code\modules\shuttles\shuttle_supply.dm"
 #include "code\modules\shuttles\dock\shuttle_dock.dm"
 #include "code\modules\shuttles\dock\shuttle_dock_corner.dm"
+#include "code\modules\shuttles\machinery\shuttle_control.dm"
 #include "code\modules\shuttles\shuttle\shuttle.dm"
 #include "code\modules\shuttles\shuttle\shuttle_anchor.dm"
 #include "code\modules\shuttles\shuttle\shuttle_area.dm"

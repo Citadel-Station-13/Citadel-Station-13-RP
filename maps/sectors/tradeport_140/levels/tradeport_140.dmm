@@ -3960,7 +3960,7 @@
 /turf/simulated/floor/plating,
 /area/tradeport/atmospherics)
 "oM" = (
-/obj/machinery/computer/shuttle_control/explore/trade{
+/obj/machinery/computer/shuttle_control{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,

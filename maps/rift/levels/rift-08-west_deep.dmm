@@ -1837,7 +1837,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/gateway)
 "pO" = (
-/obj/machinery/computer/shuttle_control/belter{
+/obj/machinery/computer/shuttle_control{
 	dir = 1
 	},
 /obj/item/gps/internal/base{
@@ -4471,7 +4471,7 @@
 /turf/simulated/shuttle/floor/voidcraft,
 /area/shuttle/belter)
 "Oe" = (
-/obj/machinery/computer/shuttle_control/belter{
+/obj/machinery/computer/shuttle_control{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,

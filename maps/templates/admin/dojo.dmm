@@ -447,7 +447,7 @@
 /turf/simulated/shuttle/floor/voidcraft/light,
 /area/shuttle/ninja)
 "bh" = (
-/obj/machinery/computer/shuttle_control/explore/ninja{
+/obj/machinery/computer/shuttle_control/ninja{
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/voidcraft/light,

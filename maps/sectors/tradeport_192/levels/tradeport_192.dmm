@@ -158,7 +158,7 @@
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/tradeport/commhall)
 "aG" = (
-/obj/machinery/computer/shuttle_control/explore/trade{
+/obj/machinery/computer/shuttle_control{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,

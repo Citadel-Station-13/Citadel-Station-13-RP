@@ -203,7 +203,7 @@
 /turf/simulated/floor/tiled/airless,
 /area/submap/debrisfield_vr/tinyshuttle/bridge)
 "ax" = (
-/obj/machinery/computer/shuttle_control/explore/tinycarrier,
+/obj/machinery/computer/shuttle_control/tinycarrier,
 /obj/effect/floor_decal/corner/blue{
 	dir = 5
 	},

@@ -520,7 +520,7 @@
 /turf/simulated/shuttle/plating,
 /area/shuttle/blue_fo)
 "by" = (
-/obj/machinery/computer/shuttle_control/explore/hybridshuttle,
+/obj/machinery/computer/shuttle_control/hybridshuttle,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/blue_fo)
 "bz" = (

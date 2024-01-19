@@ -2235,7 +2235,7 @@
 /area/shuttle/escape)
 "hb" = (
 /obj/structure/table/reinforced,
-/obj/machinery/computer/shuttle_control/emergency,
+/obj/machinery/computer/shuttle_control,
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "hc" = (
@@ -9719,7 +9719,7 @@
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
 "XU" = (
-/obj/machinery/computer/shuttle_control/explore/specops{
+/obj/machinery/computer/shuttle_control/specops{
 	dir = 8
 	},
 /obj/structure/table/steel_reinforced,

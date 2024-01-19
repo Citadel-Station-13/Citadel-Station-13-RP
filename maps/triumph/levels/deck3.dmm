@@ -26096,7 +26096,7 @@
 /turf/simulated/wall/prepainted/science,
 /area/rnd/xenobiology)
 "vFG" = (
-/obj/machinery/computer/shuttle_control/explore/emt{
+/obj/machinery/computer/shuttle_control/emt{
 	dir = 8
 	},
 /obj/effect/floor_decal/borderfloorwhite{
