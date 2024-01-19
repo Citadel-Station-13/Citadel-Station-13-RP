@@ -48,15 +48,15 @@ SUBSYSTEM_DEF(shuttle)
 			continue
 		docks_by_level[i] = list()
 
-//* Transit
+//* Docks - Registration *//
 
-/**
- * sets in_transit_reservation and in_transit_dock and in_transit for a shuttle
- */
-/datum/controller/subsystem/shuttle/proc/send_shuttle_to_transit(datum/shuttle/shuttle, force = FALSE, immediate = FALSE)
+/datum/controller/subsystem/shuttle/proc/register_dock(obj/shuttle_dock/dock)
 	#warn impl
 
-//* Shuttle Templates
+/datum/controller/subsystem/shuttle/proc/unregister_dock(obj/shuttle_dock/dock)
+	#warn impl
+//* Shuttle Templates *//
+
 
 /datum/controller/subsystem/shuttle/proc/fetch_template(datum/shuttle_template/templatelike)
 	if(ispath(templatelike, /datum/shuttle_template))
@@ -73,7 +73,7 @@ SUBSYSTEM_DEF(shuttle)
 	templates_by_id[template.id] = template
 	return template
 
-//* Shuttle Webs
+//* Shuttle Webs *//
 
 /datum/controller/subsystem/shuttle/proc/fetch_or_load_shuttle_web_node_type(type)
 	if(isnull(shuttle_web_node_type_registry[type]))
@@ -88,6 +88,14 @@ SUBSYSTEM_DEF(shuttle)
 		shuttle_web_map_type_registry[type] = map
 	return shuttle_web_map_type_registry[type]
 
+//* Transit *//
+
+/**
+ * sets in_transit_reservation and in_transit_dock and in_transit for a shuttle
+ */
+/datum/controller/subsystem/shuttle/proc/send_shuttle_to_transit(datum/shuttle/shuttle, force = FALSE, immediate = FALSE)
+	#warn impl
+	
 #warn below
 
 /datum/controller/subsystem/shuttle/fire(resumed = 0)

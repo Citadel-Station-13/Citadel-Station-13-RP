@@ -88,6 +88,10 @@
 	#warn vv hook
 	/// are we registered?
 	var/registered = FALSE
+	/// do we register by type?
+	/// 
+	/// if we want to reference this dock by type, we must set this to TRUe.
+	var/register_by_type = FALSE
 	/// registered shuttle hooks
 	var/list/datum/shuttle_hook/hooks
 	/// shuttle web node to initialize on, if applicable; this must be a typepath.
@@ -148,10 +152,10 @@
 	return ..()
 
 /obj/shuttle_dock/proc/register_dock()
-	#warn impl
+	return SSshuttle.register_dock(src)
 
 /obj/shuttle_dock/proc/unregister_dock()
-	#warn impl
+	return SSshuttle.unregister_dock(src)
 
 /obj/shuttle_dock/proc/init_bounds()
 	var/any_null = isnull(size_x) || isnull(size_y) || isnull(offset_x) || isnull(offset_y)
