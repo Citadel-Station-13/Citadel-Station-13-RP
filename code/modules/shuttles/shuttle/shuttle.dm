@@ -98,7 +98,7 @@
 		if(!area_cache[scanning.loc])
 			var/area/shuttle/initializing = scanning.loc
 			area_cache[scanning.loc] = initializing
-			initializing.bounds_initializing(src, from_reservation, from_template)
+			initializing.before_bounds_initializing(src, from_reservation, from_template)
 		bottomleft_x = min(bottomleft_x, scanning.x)
 		bottomleft_y = min(bottomleft_y, scanning.y)
 		topright_x = max(topright_x, scanning.x)
@@ -127,6 +127,10 @@
 		var/turf/center = from_reservation.get_approximately_center_turf()
 		anchor = new(center)
 	anchor.calculate_bounds(bottomleft_x, bottomleft_y, topright_x, topright_y, from_template.facing_dir)
+	for(var/obj/shuttle_port/port in ports)
+		port.before_bounds_initializing(src, from_reservation, from_template)
+	anchor.before_bounds_initializing(src, from_reservation, from_template)
+	#warn hook
 
 /**
  * Called after the bounds have initialized their atoms/areas
