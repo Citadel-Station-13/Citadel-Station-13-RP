@@ -162,9 +162,9 @@ SUBSYSTEM_DEF(ticker)
 	for(var/datum/map_finale/finale in map_finales)
 		if(!finale.requires_constant_ticking)
 			continue
-		finale.idle_tick(dt)
+		finale.on_idle_tick(dt)
 	for(var/datum/map_finale/finale in called_finales)
-		finale.active_tick(dt)
+		finale.on_active_tick(dt)
 
 
 /datum/controller/subsystem/ticker/proc/on_mc_init_finish()
