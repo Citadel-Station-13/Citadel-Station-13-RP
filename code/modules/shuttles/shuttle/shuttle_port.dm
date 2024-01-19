@@ -92,6 +92,12 @@
 		direction,
 	)
 
+/obj/shuttle_port/proc/heuristic_turfs_here()
+	return shuttle.anchor.heuristic_turfs_at(loc)
+
+/obj/shuttle_port/proc/heuristic_turfs_at(turf/anchor, direction)
+	return shuttle.anchor.heuristic_turfs_at(anchor, direction)
+
 /obj/shuttle_port/north
 	dir = NORTH
 

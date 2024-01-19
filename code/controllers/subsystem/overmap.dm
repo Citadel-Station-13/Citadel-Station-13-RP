@@ -27,7 +27,19 @@ SUBSYSTEM_DEF(overmaps)
 	if((LEGACY_MAP_DATUM).use_overmap)
 		GLOB.overmap_event_handler.create_events((LEGACY_MAP_DATUM).overmap_z, (LEGACY_MAP_DATUM).overmap_size, (LEGACY_MAP_DATUM).overmap_event_areas)
 	rebuild_helm_computers()
+	initialize_engines_legacy()
 	return ..()
+
+/datum/controller/subsystem/overmaps/proc/initialize_engines_legacy()
+	//! citadel edit - initialize overmaps shuttles here until we rewrite overmaps to not be a dumpster fire god damnit
+	for(var/obj/machinery/atmospherics/component/unary/engine/E in unary_engines)
+		if(E.linked)
+			continue
+		E.link_to_ship()
+	for(var/obj/machinery/ion_engine/E in ion_engines)
+		if(E.linked)
+			continue
+		E.link_to_ship()
 
 /datum/controller/subsystem/overmaps/proc/rebuild_helm_computers()
 	for(var/obj/machinery/computer/ship/helm/H in GLOB.machines)

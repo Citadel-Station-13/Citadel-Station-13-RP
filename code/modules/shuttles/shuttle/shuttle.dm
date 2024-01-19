@@ -72,6 +72,8 @@
 
 #warn impl all
 
+//* Initialization *//
+
 /**
  * Called after all areas are made and all turfs are there, 
  * but before atoms initialization.
@@ -149,13 +151,15 @@
 /datum/shuttle/proc/bounding_ordered_turfs()
 	return anchor.ordered_turfs_here()
 
-//* Docking & Movement *//
+//* Docking - Control *//
 
 /**
  * checks if have docking codes for a dock
  */
 /datum/shuttle/proc/has_codes_for(obj/shuttle_dock/dock)
 	return controller?.has_codes_for(dock)
+
+//* Docking - Action Helpers *//
 
 /**
  * this only fails if we would interseect another shuttle. otherwise, this will trample anything in the way.
@@ -173,6 +177,12 @@
 
 	#warn impl
 
+/datum/shuttle/proc/
+
+#warn AAAAAAAAAAAAAAAAAAAAAAAAA
+
+//* Docking - Bounding Checks *//
+
 /**
  * check bounding boxes
  *
@@ -187,7 +197,7 @@
 	SHOULD_NOT_OVERRIDE(TRUE)
 	var/list/ordered_turfs
 	var/list/heuristic_spots
-	#warn check for overlap with zlevel borders - the lsat 3 turfs should be reserved
+	#warn check for overlap with zlevel borders - the last 3 turfs should be reserved
 	#warn impl ordered turfs
 	if(!check_bounding_overlap(dock, with_port, ordered_turfs))
 		return SHUTTLE_DOCKING_BOUNDING_HARD_FAULT

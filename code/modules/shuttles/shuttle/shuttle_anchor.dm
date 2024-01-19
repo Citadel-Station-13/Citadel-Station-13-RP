@@ -125,7 +125,7 @@
 /**
  * @return turfs in square box, unfiltered
  */
-/obj/shuttle_anchor/proc/ordered_turfs_at(turf/anchor, direction)
+/obj/shuttle_anchor/proc/ordered_turfs_at(turf/anchor, direction = src.dir)
 	ASSERT(isturf(anchor))
 	var/x = anchor.x
 	var/y = anchor.y
@@ -166,6 +166,28 @@
 				z,
 				WESt,
 			)
+
+/obj/shuttle_anchor/proc/heuristic_turfs_here()
+	return ordered_turfs_at(loc)
+
+/obj/shuttle_anchor/proc/heuristic_turfs_at(turf/anchor, direction = src.dir)
+	ASSERT(isturf(anchor))
+	. = list()
+
+	var/x = anchor.x
+	var/y = anchor.y
+	var/z = anchor.z
+	var/turf/checking
+	
+	#define ADD_IF_THERE(WHAT) \
+	checking = ##WHAT; \
+	if(!isnull(checking)) { \
+		. += checking ; \
+	}
+	
+	ADD_IF_THERE(locate(x, y, z))
+	
+	// todo: more default heuristic spots
 
 /obj/shuttle_anchor/forceMove()
 	CRASH("attempted to forcemove a shuttle anchor")

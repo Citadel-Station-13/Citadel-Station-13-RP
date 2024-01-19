@@ -257,23 +257,6 @@
 				NORTH,
 			)
 
-/**
- * heuristic spots to check for this dock
- */
-/obj/shuttle_dock/proc/heuristic_turfs()
-	ASSERT(isturf(loc))
-	. = list()
-	
-	#define ADD_IF_THERE(WHAT) \
-	checking = ##WHAT; \
-	if(!isnull(checking)) { \
-		. += checking ; \
-	}
-	
-	ADD_IF_THERE(locate(x, y, z))
-	
-	// todo: more default heuristic spots
-
 /obj/shuttle_dock/Move(...)
 	return FALSE
 

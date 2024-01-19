@@ -343,7 +343,7 @@ SUBSYSTEM_DEF(grids)
  * Only called if moved
  */
 /atom/movable/proc/grid_move(grid_flags, turf/new_turf)
-	loc = new_turf
+	abstract_move(new_turf)
 
 /**
  * Called after everything settles, after area/turf moved
@@ -358,3 +358,87 @@ SUBSYSTEM_DEF(grids)
  */
 /atom/movable/proc/grid_finished(grid_flags, rotation_angle)
 	return
+
+#warn parse below
+
+/proc/translate_turfs(list/translation, area/base_area = null, turf/base_turf)
+	for(var/turf/source in translation)
+
+		var/turf/target = translation[source]
+
+		if(target)
+			if(base_area)
+				ChangeArea(target, get_area(source))
+			var/leave_turf = base_turf ? base_turf : /turf/simulated/floor/plating
+			translate_turf(source, target, leave_turf)
+			if(base_area)
+				ChangeArea(source, base_area)
+
+	// Change the old turfs (Currently done by translate_turf for us)
+	// for(var/turf/source in translation)
+	// 	source.ChangeTurf(base_turf ? base_turf : get_base_turf_by_area(source), 1, 1)
+
+/proc/translate_turf(turf/Origin, turf/Destination, turftoleave = null)
+
+	// You can stay, though.
+	if (istype(Origin, /turf/space))
+		log_debug(SPAN_DEBUGERROR("Tried to translate a space turf: src=[log_info_line(Origin)][ADMIN_JMP(Origin)] dst=[log_info_line(Destination)][ADMIN_JMP(Destination)]"))
+		return FALSE	// TODO - Is this really okay to do nothing?
+
+	var/turf/X	// New Destination Turf
+
+	var/old_dir1 = Origin.dir
+	var/old_icon_state1 = Origin.icon_state
+	var/old_icon1 = Origin.icon
+	var/old_underlays = Origin.underlays.Copy()
+	var/old_decals = Origin.decals ? Origin.decals.Copy() : null
+
+	X = Destination.PlaceOnTop(Origin.type)
+	X.setDir(old_dir1)
+	X.icon_state = old_icon_state1
+	X.icon = old_icon1
+	X.copy_overlays(Origin, TRUE)
+	X.underlays = old_underlays
+	X.decals = old_decals
+
+	/// Move the air from source to dest.
+	var/turf/simulated/ST = Origin
+	if (istype(ST))
+		var/turf/simulated/SX = X
+		if(!SX.air)
+			SX.make_air()
+		SX.air.copy_from(ST.copy_cell_volume())
+
+	var/z_level_change = FALSE
+	if (Origin.z != X.z)
+		z_level_change = TRUE
+
+	// Move the objects. Not forceMove because the object isn't "moving" really, it's supposed to be on the "same" turf.
+	for(var/obj/O in Origin)
+		if(O.atom_flags & ATOM_ABSTRACT)
+			continue
+		O.loc = X
+		O.update_light()
+		// The objects still need to know if their z-level changed.
+		if (z_level_change)
+			O.on_changed_z_level(Origin.z, X.z)
+
+	// Move the mobs unless it's an AI eye or other eye type.
+	for(var/mob/M in Origin)
+		if (M.atom_flags & ATOM_ABSTRACT)
+			continue
+		if (isEye(M))
+			// If we need to check for more mobs, I'll add a variable.
+			continue
+		M.loc = X
+
+		// Same goes for mobs.
+		if (z_level_change)
+			M.on_changed_z_level(Origin.z, X.z)
+
+	if (turftoleave)
+		Origin.ChangeTurf(turftoleave)
+	else
+		Origin.ScrapeAway()
+
+	return TRUE
