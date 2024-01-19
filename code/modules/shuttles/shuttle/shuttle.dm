@@ -61,6 +61,10 @@
 	/// this is an indexed list, with 1 to n for n width shuttle from left to right
 	/// with the relative perpsective of its physics direction.
 	var/list/translating_garbage_disposal_lookup_cache
+	/// queued throws
+	var/list/translating_needs_to_be_thrown_away
+	/// queued objs needing to be damaged
+	var/list/translating_needs_to_be_damaged
 
 	//* Hooks
 	/// registered shuttle hooks
@@ -221,6 +225,8 @@
 	var/overall_width = anchor.get_width(directio)
 	translating_pepsi_man_lookup_cache = new /list(overall_width)
 	translating_garbage_disposal_lookup_cache = new /list(overall_width)
+	translating_needs_to_be_thrown_away = list()
+	translating_needs_to_be_damaged = list()
 	if(isnull(use_before_turfs))
 		// assume both are empty
 		// get aabb boxes
@@ -228,6 +234,8 @@
 		use_after_turfs = align_with_port? align_with_port.aabb_ordered_turfs_at(move_to, direction) : anchor.aabb_ordered_turfs_at(move_to, direction)
 		// filter for less work
 		SSgrids.null_filter_ordered_turfs_in_place_via_area(areas, use_before_turfs, use_after_turfs)
+	#warn move anchor first
+	#warn move ports
 	// prepped, move.
 	SSgrids.translate(
 		use_before_turfs,
@@ -241,10 +249,13 @@
 		null,
 		CALLBACK(src, PROC_REF(overlap_handler)),
 	)
+	#warn throw shit and damage shit but also throw shit after damaging shit
 	// clear caches
 	translating_physics_direction = null
 	translating_pepsi_man_lookup_cache = null
 	translating_garbage_disposal_lookup_cache = null
+	translating_needs_to_be_thrown_away = null
+	translating_needs_to_be_damaged = null
 
 //* Docking - Bounding Checks *//
 

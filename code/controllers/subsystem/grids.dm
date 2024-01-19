@@ -374,6 +374,17 @@ SUBSYSTEM_DEF(grids)
 /atom/movable/proc/grid_finished(grid_flags, rotation_angle)
 	return
 
+/**
+ * called when we get overlapped by a grid
+ * 
+ * we can be overlapped if non-ABSTRACT.
+ * 
+ * @return TRUE to override overlap_handler callback.
+ */
+/atom/movable/proc/handle_grid_overlap(grid_flags)
+	return FALSE
+	#warn hook, and make sure power cables, air pipes, etc, delete on overlap.
+
 #warn parse below
 #warn powenrets on cables
 #warn pipenets on atmos machinery
