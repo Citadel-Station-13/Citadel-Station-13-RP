@@ -323,6 +323,13 @@
 #define ABOVE_LIGHTING_LAYER_MAIN 1
 
 /**
+ *! -- Debug Plane
+ *? For things like map landmarks
+ */
+#define DEBUG_PLANE 23
+#define DEBUG_LAYER_SHUTTLE_MARKERS 1
+
+/**
  *! -- Sonar Plane
  *? Used for renders for effects like sonar / sensory things
  */

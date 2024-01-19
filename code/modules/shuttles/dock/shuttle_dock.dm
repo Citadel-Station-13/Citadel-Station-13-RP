@@ -9,6 +9,14 @@
 	desc = "A docking port for a shuttle."
 	icon = 'icons/modules/shuttles/shuttle_anchor.dmi'
 	icon_state = "dock"
+	plane = DEBUG_PLANE
+	layer = DEBUG_LAYER_SHUTTLE_MARKERS
+
+#ifndef CF_SHUTTLE_VISUALIZE_BOUNDING_BOXES
+	invisibility = INVISIBILITY_ABSTRACT
+#else
+	invisibility = INVISIBILITY_NONE
+#endif
 
 	//* bounding box
 	/// allow docking inside bounding box as long as a shuttle fits, even if the dock doesn't align
@@ -50,7 +58,7 @@
 	/// ^XX
 	///
 	/// the shuttle will align itself, in both direction and location, by
-	/// placing itself so that the /obj/shuttle_anchor/port aligns to this /obj/shuttle_dock
+	/// placing itself so that the /obj/shuttle_port aligns to this /obj/shuttle_dock
 	var/dock_width = 1
 	/// offset the dock right in the width
 	///
@@ -99,6 +107,11 @@
 	/// starting shuttle template typepath or id
 	/// only loaded on mapload, not if it's persistence loaded or anything for now
 	var/starting_shuttle_template
+	/// in-progress dock/undock operation
+	var/datum/event_args/shuttle/dock/currently_docking
+	/// in-progress move operation
+	var/datum/event_args/shuttle/movement/currently_moving
+
 	#warn hook
 
 /obj/shuttle_dock/Initialize(mapload)

@@ -7,6 +7,21 @@
  * web shuttle controller
  */
 /datum/shuttle_controller/web
+	tgui_module = "TGUIShuttleWeb"
+	/// our host map; set to typepath to auto-init
+	var/datum/shuttle_web_map/map
+
+/datum/shuttle_controller/web/initialize(datum/shuttle/shuttle)
+	. = ..()
+	if(ispath(map) || istext(map))
+		map = SSshuttle.fetch_or_load_shuttle_web_map_type(map)
+
+/datum/shuttle_controller/web/tgui_data()
+	. = ..()
+
+/datum/shuttle_controller/web/tgui_static_data()
+	. = ..()
+
 
 #warn impl all
 
@@ -79,7 +94,7 @@
 	ASSERT(istext(id))
 	if(isnull(auto_join_map_type))
 		return
-	var/datum/shuttle_web_map/map = SSshuttle.fetch_or_load_shuttle_web_type(auto_join_map_type)
+	var/datum/shuttle_web_map/map = SSshuttle.fetch_or_load_shuttle_web_map_type(auto_join_map_type)
 	map.auto_register_node(src)
 
 /datum/shuttle_web_node/Destroy()

@@ -27,4 +27,10 @@
 /datum/shuttle_controller/ferry/proc/is_at_known_location()
 	return is_at_home() || is_at_away()
 
+/datum/shuttle_controller/ferry/tgui_static_data()
+	. = ..()
+
+/datum/shuttle_controller/ferry/tgui_data()
+	. = ..()
+
 #warn impl all

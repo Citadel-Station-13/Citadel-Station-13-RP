@@ -19,6 +19,9 @@
 	/// tgui module name
 	var/tgui_module
 
+/datum/shuttle_controller/proc/initialize(datum/shuttle/shuttle)
+	src.shuttle = shuttle
+	return TRUE
 
 /datum/shuttle_controller/proc/tgui_data()
 	return list()

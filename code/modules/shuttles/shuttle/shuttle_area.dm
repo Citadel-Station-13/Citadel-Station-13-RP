@@ -6,6 +6,8 @@
  */
 /area/shuttle
 	unique = FALSE
+	/// will be assigned the shuttle's ref post-init
+	var/datum/shuttle/shuttle
 
 #warn impl all
 

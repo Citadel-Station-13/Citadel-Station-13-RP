@@ -13,6 +13,14 @@ GLOBAL_LIST_EMPTY(uninitialized_shuttle_dock_bounds)
 	desc = "Why do you see this? Report it."
 	icon = 'icons/modules/shuttles/bounding_3x3.dmi'
 	icon_state = "corner"
+	plane = DEBUG_PLANE
+	layer = DEBUG_LAYER_SHUTTLE_MARKERS
+
+#ifndef CF_SHUTTLE_VISUALIZE_BOUNDING_BOXES
+	invisibility = INVISIBILITY_ABSTRACT
+#else
+	invisibility = INVISIBILITY_NONE
+#endif
 
 	/// constructed
 	var/constructed = FALSE
@@ -20,8 +28,10 @@ GLOBAL_LIST_EMPTY(uninitialized_shuttle_dock_bounds)
 /obj/shuttle_dock_corner/Initialize(mapload)
 	SHOULD_CALL_PARENT(FALSE)
 	construct()
-	#warn CF_SHUTTLE_VISUALIZE_BOUNDING_BOXES
+
+#ifndef CF_SHUTTLE_VISUALIZE_BOUNDING_BOXES
 	return INITIALIZE_HINT_QDEL
+#endif
 
 /obj/shuttle_dock_corner/proc/construct()
 	if(constructed)

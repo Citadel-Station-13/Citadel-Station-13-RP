@@ -32,7 +32,7 @@
 	/// shuttle ref
 	var/datum/shuttle/shuttle
 	/// shuttle port being used, if any
-	var/obj/shuttle_anchor/port/shuttle_port
+	var/obj/shuttle_port/shuttle_port
 	/// the dock in question, if any
 	var/obj/shuttle_dock/dock
 

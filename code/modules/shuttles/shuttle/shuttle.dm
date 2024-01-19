@@ -30,7 +30,7 @@
 	/// our physical shuttle object
 	var/obj/shuttle_anchor/master/anchor
 	/// our physical shuttle port objects
-	var/list/obj/shuttle_anchor/port/ports
+	var/list/obj/shuttle_port/ports
 	/// the areas in our shuttle
 	var/list/areas
 
@@ -41,6 +41,8 @@
 	var/datum/event_args/shuttle/dock/currently_docking
 	/// in-progress move operation
 	var/datum/event_args/shuttle/movement/currently_moving
+	/// the port we're using
+	var/obj/shuttle_port/docked_via_port
 
 	//* Hooks
 	/// registered shuttle hooks
@@ -84,6 +86,67 @@
  */
 /datum/shuttle/proc/bounding_ordered_turfs()
 	return anchor.ordered_turfs_here()
+
+//* Docking & Movement *//
+
+/**
+ * this only fails if we would interseect another shuttle. otherwise, this will trample anything in the way.
+ *
+ * @params
+ * * dock - dock to dock to
+ * * port - port to align with dock; if null, we do a centered docking
+ *
+ * @return TRUE / FALSE
+ */
+/datum/shuttle/proc/immediate_move(obj/shuttle_dock/dock, obj/shuttle_port/with_port)
+	#warn impl
+
+/**
+ * check bounding boxes
+ *
+ * @params
+ * * dock - dock to dock to
+ * * port - port to align with dock; if null, we do a centered docking
+ * * hard_checks_only - only check hard faults, allow trampling anything else.
+ *
+ * @return SHUTTLE_DOCKING_BOUNDING_X result define
+ */
+/datum/shuttle/proc/check_bounding(obj/shuttle_dock/dock, obj/shuttle_port/with_port, hard_checks_only)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	var/list/ordered_turfs
+	var/list/heuristic_spots
+	#warn check for overlap with zlevel borders - the lsat 3 turfs should be reserved
+	#warn impl ordered turfs
+	if(!check_bounding_overlap(dock, with_port, ordered_turfs))
+		return SHUTTLE_DOCKING_BOUNDING_HARD_FAULT
+	if(hard_checks_only)
+		return SHUTTLE_DOCKING_BOUNDING_CLEAR
+	if(!check_bounding_trample(dock, with_port, ordered_turfs))
+		return SHUTTLE_DOCKING_BOUNDING_SOFT_FAULT
+	return SHUTTLE_DOCKING_BOUNDING_CLEAR
+
+/**
+ * hard bounding check - do not override this.
+ *
+ * @return FALSE if overlapping
+ */
+/datum/shuttle/proc/check_bounding_overlap(obj/shuttle_dock/dock, obj/shuttle_port/with_port, list/ordered_turfs, list/heuristic_spots)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	for(var/turf/T in heuristic_turfs)
+		if(istype(T.loc, /area/shuttle))
+			return FALSE
+	for(var/turf/T in ordered_turfs)
+		if(istype(T.loc, /area/shuttle))
+			return FALSE
+	return TRUE
+
+/**
+ * soft bounding check - override this for your own checks.
+ *
+ * @return FALSE if trampling sometihng we don't want to trample
+ */
+/datum/shuttle/proc/check_bounding_trample(obj/shuttle_dock/dock, obj/shuttle_port/with_port, list/ordered_turfs, list/heuristic_spots)
+	#warn impl
 
 //* Previews *//
 
