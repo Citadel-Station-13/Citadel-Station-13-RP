@@ -77,6 +77,8 @@
 	desc = "Why do you see this?"
 	// by default this should be north.
 	dir = NORTH
+	icon = 'icons/modules/shuttles/shuttle_anchor.dmi'
+	icon_state = "main"
 	#warn sprite
 	plane = DEBUG_PLANE
 	layer = DEBUG_LAYER_SHUTTLE_MARKERS

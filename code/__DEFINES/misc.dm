@@ -17,6 +17,7 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define NOT_IMPLEMENTED	"NOT_IMPLEMENTED"
 
 // Invisibility constants. These should only be used for TRUE invisibility, AKA nothing living players touch
+#define INVISIBILITY_NONE			0
 #define INVISIBILITY_LIGHTING		20
 #define INVISIBILITY_LEVEL_ONE		35
 #define INVISIBILITY_LEVEL_TWO		45

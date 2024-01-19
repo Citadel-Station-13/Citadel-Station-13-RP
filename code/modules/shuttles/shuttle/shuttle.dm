@@ -132,7 +132,7 @@
  */
 /datum/shuttle/proc/check_bounding_overlap(obj/shuttle_dock/dock, obj/shuttle_port/with_port, list/ordered_turfs, list/heuristic_spots)
 	SHOULD_NOT_OVERRIDE(TRUE)
-	for(var/turf/T in heuristic_turfs)
+	for(var/turf/T in heuristic_spots)
 		if(istype(T.loc, /area/shuttle))
 			return FALSE
 	for(var/turf/T in ordered_turfs)

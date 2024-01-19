@@ -9,7 +9,8 @@
 	name = "docking port"
 	/// port desc - used in interfaces
 	desc = "A port that allows the shuttle to align to a dock."
-	#warn sprite
+	icon = 'icons/modules/shuttles/shuttle_anchor.dmi'
+	icon_state = "dock"
 	plane = DEBUG_PLANE
 	layer = DEBUG_LAYER_SHUTTLE_MARKERS
 
@@ -24,10 +25,16 @@
 
 	/// dock width - this is how wide the airlock/otherwise opening is.
 	///
-	/// the port is left-aligned to the width
+	/// the port is left-aligned to the width when looking north
 	/// so if it's width 3,
 	/// we have this:
 	/// ^XX
+	///
+	/// if the port is rotated, we are left-aligned to the *direction of the port*, e.g.
+	/// east, =
+	/// >
+	/// x
+	/// x
 	var/port_width = 1
 	/// offset the port right in the width
 	///
@@ -72,3 +79,53 @@
 	#warn impl
 
 #warn impl all
+
+/obj/shuttle_port/north
+	dir = NORTH
+
+/obj/shuttle_port/south
+	dir = SOUTH
+
+/obj/shuttle_port/east
+	dir = EAST
+
+/obj/shuttle_port/west
+	dir = WEST
+
+/obj/shuttle_port/two_wide
+	icon = 'icons/modules/shuttles/shuttle_anchor_2x2.dmi'
+	icon_state = "dock"
+	port_width = 2
+
+/obj/shuttle_port/two_wide/north
+	dir = NORTH
+
+/obj/shuttle_port/two_wide/south
+	dir = SOUTH
+	port_offset = 1
+
+/obj/shuttle_port/two_wide/east
+	dir = EAST
+	port_offset = 1
+
+/obj/shuttle_port/two_wide/west
+	dir = WEST
+
+/obj/shuttle_port/three_wide
+	icon = 'icons/modules/shuttles/shuttle_anchor_3x3.dmi'
+	icon_state = "dock"
+	port_width = 3
+
+/obj/shuttle_port/three_wide/north
+	dir = NORTH
+
+/obj/shuttle_port/three_wide/south
+	dir = SOUTH
+	port_offset = 2
+
+/obj/shuttle_port/three_wide/east
+	dir = EAST
+	port_offset = 2
+
+/obj/shuttle_port/three_wide/west
+	dir = WEST
