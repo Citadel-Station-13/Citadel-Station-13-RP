@@ -76,7 +76,7 @@
  * Called after all areas are made and all turfs are there, etc etc
  * Used to auto-register everything
  */
-/datum/shuttle/proc/initialize(datum/turf_reservation/loading_reservation)
+/datum/shuttle/proc/construct_initial_(datum/turf_reservation/loading_reservation)
 	#warn impl
 
 //* Bounding Box *//
