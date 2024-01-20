@@ -120,7 +120,7 @@
 	icon_state = "satchel"
 	slot_flags = SLOT_BELT | SLOT_POCKET
 	w_class = WEIGHT_CLASS_NORMAL
-	max_storage_space = DEFAULT_VOLUME_NORMAL * 25 //kinda irrelevant now :^)
+	max_storage_space = WEIGHT_VOLUME_NORMAL * 25 //kinda irrelevant now :^)
 	max_w_class = WEIGHT_CLASS_NORMAL
 	can_hold = list(/obj/item/stack/ore)
 	var/stored_ore = list()
@@ -287,7 +287,7 @@
 	name = "plant bag"
 	icon = 'icons/obj/hydroponics_machines.dmi'
 	icon_state = "plantbag"
-	max_storage_space = DEFAULT_VOLUME_NORMAL * 25
+	max_storage_space = WEIGHT_VOLUME_NORMAL * 25
 	max_w_class = WEIGHT_CLASS_NORMAL
 	w_class = WEIGHT_CLASS_SMALL
 	can_hold = list(/obj/item/reagent_containers/food/snacks/grown,/obj/item/seeds,/obj/item/grown)
@@ -295,7 +295,7 @@
 /obj/item/storage/bag/plants/large
 	name = "large plant bag"
 	w_class = WEIGHT_CLASS_SMALL
-	max_storage_space = DEFAULT_VOLUME_NORMAL * 45
+	max_storage_space = WEIGHT_VOLUME_NORMAL * 45
 
 /obj/item/storage/bag/plants/ashlander
 	name = "goliath hide plant bag"
@@ -444,7 +444,7 @@
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "cashbag"
 	desc = "A bag for carrying lots of cash. It's got a big dollar sign printed on the front."
-	max_storage_space = DEFAULT_VOLUME_NORMAL * 25
+	max_storage_space = WEIGHT_VOLUME_NORMAL * 25
 	max_w_class = WEIGHT_CLASS_NORMAL
 	w_class = WEIGHT_CLASS_SMALL
 	can_hold = list(/obj/item/coin,/obj/item/spacecash)
@@ -491,7 +491,7 @@
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "foodbag"
 	desc = "A bag for storing foods of all kinds."
-	max_storage_space = DEFAULT_VOLUME_NORMAL * 25
+	max_storage_space = WEIGHT_VOLUME_NORMAL * 25
 	max_w_class = WEIGHT_CLASS_NORMAL
 	w_class = WEIGHT_CLASS_SMALL
 	can_hold = list(/obj/item/reagent_containers/food/snacks,/obj/item/reagent_containers/food/condiment)
@@ -504,7 +504,7 @@
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "detbag"
 	desc = "A bag for storing investigation things. You know, securely."
-	max_storage_space = DEFAULT_VOLUME_NORMAL * 15
+	max_storage_space = WEIGHT_VOLUME_NORMAL * 15
 	max_w_class = WEIGHT_CLASS_NORMAL
 	w_class = WEIGHT_CLASS_SMALL
 	can_hold = list(/obj/item/forensics/swab,/obj/item/sample/print,/obj/item/sample/fibers,/obj/item/evidencebag)
@@ -514,7 +514,7 @@
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "foodbag"
 	desc = "A bag for storing things of all kinds."
-	max_storage_space = DEFAULT_VOLUME_NORMAL * 25
+	max_storage_space = WEIGHT_VOLUME_NORMAL * 25
 	max_w_class = WEIGHT_CLASS_NORMAL
 	w_class = WEIGHT_CLASS_SMALL
 	can_hold = list(/obj/item/reagent_containers/food/snacks,/obj/item/reagent_containers/food/condiment,

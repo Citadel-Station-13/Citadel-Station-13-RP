@@ -4,7 +4,7 @@
 	icon = 'icons/obj/clothing/belts.dmi'
 	icon_state = "utility"
 	storage_slots = 7
-	max_storage_space = DEFAULT_VOLUME_NORMAL * 7 //This should ensure belts always have enough room to store whatever.
+	max_storage_space = WEIGHT_VOLUME_NORMAL * 7 //This should ensure belts always have enough room to store whatever.
 	max_w_class = WEIGHT_CLASS_NORMAL
 	slot_flags = SLOT_BELT
 	attack_verb = list("whipped", "lashed", "disciplined")
@@ -241,7 +241,7 @@
 	desc = "A versatile bandolier fitted with eight pouches that can hold a wide variety of items such as tools, small melee weapons, batteries, ammunition, and more; ideal for any pathfinder who has too much stuff and not enough pockets."
 	icon_state = "bandolier"
 	storage_slots = 7
-	max_storage_space = DEFAULT_VOLUME_NORMAL * 7
+	max_storage_space = WEIGHT_VOLUME_NORMAL * 7
 	show_above_suit = 1
 	can_hold = list(
 		/obj/item/grenade,
@@ -385,7 +385,7 @@
 	icon_state = "swat"
 	storage_slots = 9
 	max_w_class = WEIGHT_CLASS_NORMAL
-	max_storage_space = DEFAULT_VOLUME_NORMAL * 7
+	max_storage_space = WEIGHT_VOLUME_NORMAL * 7
 
 /obj/item/storage/belt/security/tactical/bandolier
 	name = "combat belt"
@@ -398,7 +398,7 @@
 	icon_state = "bandolier"
 	storage_slots = 14
 	max_w_class = WEIGHT_CLASS_SMALL
-	max_storage_space = DEFAULT_VOLUME_SMALL * 14
+	max_storage_space = WEIGHT_VOLUME_SMALL * 14
 	can_hold = list(/obj/item/melee/spike)
 	starts_with = list(/obj/item/melee/spike = 14)
 
@@ -468,7 +468,7 @@
 	item_state = "fannypack_leather"
 	max_w_class = WEIGHT_CLASS_SMALL
 	storage_slots = null
-	max_storage_space = DEFAULT_VOLUME_NORMAL * 2
+	max_storage_space = WEIGHT_VOLUME_NORMAL * 2
 
 /obj/item/storage/belt/fannypack/black
  	name = "black fannypack"

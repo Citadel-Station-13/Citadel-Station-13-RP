@@ -15,7 +15,7 @@
 	var/list/cant_hold = new/list() //List of objects which this item can't store (in effect only if can_hold isn't set)
 	var/list/is_seeing = new/list() //List of mobs which are currently seeing the contents of this item's storage
 	var/max_w_class = WEIGHT_CLASS_SMALL //Max size of objects that this object can store (in effect only if can_hold isn't set)
-	var/max_storage_space = DEFAULT_VOLUME_SMALL * 4 //The sum of the storage costs of all the items in this storage item.
+	var/max_storage_space = WEIGHT_VOLUME_SMALL * 4 //The sum of the storage costs of all the items in this storage item.
 	var/storage_slots = null //The number of storage slots in this container.  If null, it uses the volume-based storage instead.
 	var/atom/movable/screen/storage/boxes = null
 	var/atom/movable/screen/storage/storage_start = null //storage UI

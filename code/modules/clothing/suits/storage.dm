@@ -6,7 +6,7 @@
 	. = ..()
 	pockets = new/obj/item/storage/internal(src, slots, WEIGHT_CLASS_SMALL)	// Fit only pocket sized items
 	pockets.max_w_class = WEIGHT_CLASS_SMALL				// Fit only pocket sized items
-	pockets.max_storage_space = DEFAULT_VOLUME_SMALL * 2
+	pockets.max_storage_space = WEIGHT_VOLUME_SMALL * 2
 
 /obj/item/clothing/suit/storage/Destroy()
 	QDEL_NULL(pockets)
@@ -91,7 +91,7 @@
 	. = ..()
 	pockets = new/obj/item/storage/internal(src)
 	pockets.max_w_class = WEIGHT_CLASS_SMALL
-	pockets.max_storage_space = DEFAULT_VOLUME_SMALL * 4
+	pockets.max_storage_space = WEIGHT_VOLUME_SMALL * 4
 
 /obj/item/clothing/suit/storage/vest
 	var/icon_badge

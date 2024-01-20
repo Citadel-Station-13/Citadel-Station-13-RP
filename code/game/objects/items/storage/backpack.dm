@@ -45,7 +45,7 @@
 	origin_tech = list(TECH_BLUESPACE = 4)
 	icon_state = "holdingpack"
 	max_w_class = WEIGHT_CLASS_BULKY
-	max_storage_space = DEFAULT_VOLUME_NORMAL * 14 // 56
+	max_storage_space = WEIGHT_VOLUME_NORMAL * 14 // 56
 	storage_cost = INVENTORY_STANDARD_SPACE + 1
 
 /obj/item/storage/backpack/holding/duffle
@@ -82,7 +82,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "giftbag", SLOT_ID_LEFT_HAND = "giftbag")
 	w_class = WEIGHT_CLASS_BULKY
 	max_w_class = WEIGHT_CLASS_NORMAL
-	max_storage_space = DEFAULT_VOLUME_NORMAL * 100 // can store a ton of shit!
+	max_storage_space = WEIGHT_VOLUME_NORMAL * 100 // can store a ton of shit!
 	item_state_slots = null
 
 /obj/item/storage/backpack/cultpack
@@ -512,7 +512,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "lgpurse", SLOT_ID_LEFT_HAND = "lgpurse")
 	w_class = WEIGHT_CLASS_BULKY
 	max_w_class = WEIGHT_CLASS_NORMAL
-	max_storage_space = DEFAULT_VOLUME_NORMAL * 5
+	max_storage_space = WEIGHT_VOLUME_NORMAL * 5
 
 //Parachutes
 /obj/item/storage/backpack/parachute
@@ -520,7 +520,7 @@
 	desc = "A specially made backpack, designed to help one survive jumping from incredible heights. It sacrifices some storage space for that added functionality."
 	icon_state = "parachute"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "backpack", SLOT_ID_LEFT_HAND = "backpack")
-	max_storage_space = DEFAULT_VOLUME_NORMAL * 5
+	max_storage_space = WEIGHT_VOLUME_NORMAL * 5
 
 /obj/item/storage/backpack/parachute/examine(mob/user, dist)
 	. = ..()

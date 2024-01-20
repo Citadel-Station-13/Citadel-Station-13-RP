@@ -404,7 +404,7 @@
 		/obj/item/reagent_containers/food/snacks/pockystick
 	)
 	w_class = WEIGHT_CLASS_TINY
-	max_storage_space = DEFAULT_VOLUME_TINY * 8
+	max_storage_space = WEIGHT_VOLUME_TINY * 8
 	can_hold = list(/obj/item/reagent_containers/food/snacks/pockystick)
 	foldable = null
 
@@ -449,7 +449,7 @@
 		/obj/item/reagent_containers/food/snacks/gondolas
 	)
 	w_class = WEIGHT_CLASS_TINY
-	max_storage_space = DEFAULT_VOLUME_TINY * 8
+	max_storage_space = WEIGHT_VOLUME_TINY * 8
 	can_hold = list(/obj/item/reagent_containers/food/snacks/gondolas)
 	foldable = null
 
@@ -5846,7 +5846,7 @@ END CITADEL CHANGE */
 	icon = 'icons/obj/food.dmi'
 	icon_state = "wings5"
 	var/startswith = 5
-	max_storage_space = DEFAULT_VOLUME_SMALL * 5
+	max_storage_space = WEIGHT_VOLUME_SMALL * 5
 	can_hold = list(/obj/item/reagent_containers/food/snacks/chickenwing)
 	foldable = null
 

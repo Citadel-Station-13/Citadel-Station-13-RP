@@ -153,7 +153,7 @@
 	throw_range = 4
 	max_w_class = WEIGHT_CLASS_NORMAL
 	w_class = WEIGHT_CLASS_BULKY
-	max_storage_space = DEFAULT_VOLUME_NORMAL * 4
+	max_storage_space = WEIGHT_VOLUME_NORMAL * 4
 
 /obj/item/storage/secure/briefcase/attack_hand(mob/user, list/params)
 	if ((src.loc == user) && (src.locked == 1))

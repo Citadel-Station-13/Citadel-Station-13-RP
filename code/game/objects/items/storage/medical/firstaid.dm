@@ -15,7 +15,7 @@
 	throw_speed = 2
 	throw_range = 8
 	slot_flags = SLOT_BELT
-	max_storage_space = DEFAULT_VOLUME_SMALL * 7 // 14
+	max_storage_space = WEIGHT_VOLUME_SMALL * 7 // 14
 	drop_sound = 'sound/items/drop/cardboardbox.ogg'
 	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
 
@@ -143,13 +143,13 @@
 	name = "clotting kit"
 	desc = "Contains chemicals to stop bleeding."
 	icon_state = "clottingkit"
-	max_storage_space = DEFAULT_VOLUME_SMALL * 7
+	max_storage_space = WEIGHT_VOLUME_SMALL * 7
 	starts_with = list(/obj/item/reagent_containers/hypospray/autoinjector/biginjector/clotting = 8)
 
 /obj/item/storage/firstaid/bonemed
 	name = "bone repair kit"
 	desc = "Contains chemicals to mend broken bones."
-	max_storage_space = DEFAULT_VOLUME_SMALL * 7
+	max_storage_space = WEIGHT_VOLUME_SMALL * 7
 	starts_with = list(/obj/item/reagent_containers/hypospray/autoinjector/biginjector/bonemed = 8)
 
 /*
@@ -169,7 +169,7 @@
 	allow_quick_empty = 1
 	use_to_pickup = 1
 	use_sound = null
-	max_storage_space = DEFAULT_VOLUME_TINY * 14
+	max_storage_space = WEIGHT_VOLUME_TINY * 14
 	max_w_class = WEIGHT_CLASS_TINY
 
 	var/label_text = ""

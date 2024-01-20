@@ -75,7 +75,7 @@
 	//* Storage
 	/// storage cost for volumetric storage
 	/// null to default to weight class
-	var/volume
+	var/weight_volume
 
 	//? unsorted / legacy
 	/// This saves our blood splatter overlay, which will be processed not to go over the edges of the sprite
@@ -1021,8 +1021,8 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 /obj/item/proc/get_weight_class()
 	return w_class
 
-/obj/item/proc/get_volume()
-	return isnull(volume)? global.w_class_to_volume[w_class || WEIGHT_CLASS_GIGANTIC] : volume
+/obj/item/proc/get_weight_volume()
+	return isnull(weight_volume)? global.w_class_to_volume[w_class || WEIGHT_CLASS_GIGANTIC] : weight_volume
 
 //* VV *//
 
