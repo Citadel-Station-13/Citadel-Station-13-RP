@@ -1007,7 +1007,7 @@
 /area/outpost/mining_main/secondary_gear_storage)
 "zb" = (
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1379;
 	master_tag = "mining_outpost_airlock";
 	name = "Mining Outpost Access Button";
@@ -1529,7 +1529,7 @@
 	dir = 4
 	},
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1379;
 	master_tag = "mining_outpost_airlock";
 	name = "Mining Outpost Access Button";
