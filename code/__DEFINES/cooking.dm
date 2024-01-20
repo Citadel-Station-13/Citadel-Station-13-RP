@@ -15,6 +15,7 @@
 #define METHOD_GRILL "grill"
 #define METHOD_STOVE "stove"
 #define METHOD_DEEPFRY "deep fryer"
+#define METHOD_MICROWAVE "microwave"
 #define METHOD_BLOWTORCH "blowtorch" //i know a welder isn't actually one but you actually use blowtorches in cooking
 #define METHOD_ENERGETIC_ANOMALY "energetic anomaly" //supermatter, tesla, etc
 

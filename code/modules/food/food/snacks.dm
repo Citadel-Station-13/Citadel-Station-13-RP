@@ -16,13 +16,10 @@
 	var/survivalfood = FALSE
 	var/nutriment_amt = 0
 	var/list/nutriment_desc = list("food" = 1)
-	var/datum/reagent/nutriment/coating/coating = null
 	var/sealed = FALSE
 	var/custom_open_sound
 	var/open_message = "You peel open the can! It looks ready to eat!"
 	var/opened_icon = 0
-	var/icon/flat_icon = null //Used to cache a flat icon generated from dipping in batter. This is used again to make the cooked-batter-overlay
-	var/do_coating_prefix = 1 //If 0, we wont do "battered thing" or similar prefixes. Mainly for recipes that include batter but have a special name
 	var/cooked_icon = null //Used for foods that are "cooked" without being made into a specific recipe or combination.
 	//Generally applied during modification cooking with oven/fryer
 	//Used to stop deepfried meat from looking like slightly tanned raw meat, and make it actually look cooked
@@ -176,8 +173,6 @@
 
 /obj/item/reagent_containers/food/snacks/examine(mob/user, dist)
 	. = ..()
-	if (coating) // BEGIN CITADEL CHANGE
-		. += "<span class='notice'>It's coated in [coating.name]!</span>"
 	if (bitecount==0)
 		return
 	else if (bitecount==1)
@@ -3999,6 +3994,7 @@ END CITADEL CHANGE */
 
 //Called by cooking machines. This is mainly intended to set properties on the food that differ between raw/cooked
 /obj/item/reagent_containers/food/snacks/proc/cook()
+/*
 	if (coating)
 		var/list/temp = overlays.Copy()
 		for (var/i in temp)
@@ -4025,7 +4021,7 @@ END CITADEL CHANGE */
 
 		if (do_coating_prefix == 1)
 			name = "[coating.coated_adj] [name]"
-
+*/
 	for (var/r in reagents.reagent_list)
 		var/datum/reagent/R = r
 		if (istype(R, /datum/reagent/nutriment/coating))
@@ -4085,7 +4081,7 @@ END CITADEL CHANGE */
 	desc = "A piece of mixed, long meat, battered and then deepfried."
 	icon_state = "batteredsausage"
 	filling_color = "#DB0000"
-	do_coating_prefix = 0
+
 
 /obj/item/reagent_containers/food/snacks/sausage/battered/Initialize(mapload)
 		. = ..()
@@ -4099,7 +4095,7 @@ END CITADEL CHANGE */
 	desc = "A battered, deep-fried chilli pepper."
 	icon_state = "popper"
 	filling_color = "#00AA00"
-	do_coating_prefix = 0
+
 	nutriment_amt = 2
 	nutriment_desc = list("chilli pepper" = 2)
 	bitesize = 1
@@ -4135,7 +4131,7 @@ END CITADEL CHANGE */
 	icon_state = "katsu"
 	trash = /obj/item/trash/plate
 	filling_color = "#E9ADFF"
-	do_coating_prefix = 0
+
 
 /obj/item/reagent_containers/food/snacks/chickenkatsu/Initialize(mapload)
 	. = ..()
@@ -4199,7 +4195,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/sliceable/pizza/crunch/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("batter", 6.5)
-	coating = reagents.get_reagent("batter")
 	reagents.add_reagent("cooking_oil", 4)
 	bitesize = 2
 
@@ -4215,7 +4210,7 @@ END CITADEL CHANGE */
 	desc = "Funnel cakes rule!"
 	icon_state = "funnelcake"
 	filling_color = "#Ef1479"
-	do_coating_prefix = 0
+
 
 /obj/item/reagent_containers/food/snacks/funnelcake/Initialize(mapload)
 	. = ..()

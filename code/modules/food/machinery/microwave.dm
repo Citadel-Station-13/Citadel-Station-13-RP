@@ -20,7 +20,7 @@
 	var/global/list/acceptable_items // List of the items you can put in
 	var/global/list/acceptable_reagents // List of the reagents you can put in
 	var/global/max_n_of_items = 20
-	var/appliancetype = MICROWAVE
+	var/appliancetype = METHOD_MICROWAVE
 
 // see code/modules/food/recipes_microwave.dm for recipes
 
@@ -36,7 +36,7 @@
 		available_recipes = new
 		for (var/type in (typesof(/datum/recipe)-/datum/recipe))
 			var/datum/recipe/test = new type
-			if ((test.appliance & appliancetype))
+			if((test.required_method == appliancetype))
 				available_recipes += test
 			else
 				qdel(test)

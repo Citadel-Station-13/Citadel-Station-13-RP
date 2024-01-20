@@ -239,6 +239,7 @@
 /area/lavaland/east/ashlander_village)
 "KA" = (
 /obj/machinery/appliance/cooker/grill/spit,
+#warn did you know warns can go in dmms. replace spits!!
 /turf/simulated/floor/outdoors/dirt/lavaland,
 /area/lavaland/east/ashlander_village)
 "LQ" = (

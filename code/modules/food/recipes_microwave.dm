@@ -249,7 +249,6 @@
 	result = /obj/item/reagent_containers/food/snacks/loadedbakedpotato
 
 /datum/recipe/microchips
-	appliance = MICROWAVE
 	items = list(
 		/obj/item/reagent_containers/food/snacks/rawsticks
 	)

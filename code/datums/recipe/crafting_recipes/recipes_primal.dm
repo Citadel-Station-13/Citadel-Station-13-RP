@@ -478,17 +478,6 @@
 	category = CAT_PRIMAL
 	always_available = FALSE
 
-/datum/crafting_recipe/cooking_spit
-	name = "Cooking Spit"
-	result = /obj/machinery/appliance/cooker/grill/spit
-	time = 200
-	reqs = list(/obj/item/stack/material/bone = 10,
-				/obj/item/stack/sinew = 10,
-				/obj/item/pen/charcoal = 5
-				)
-	category = CAT_PRIMAL
-	always_available = FALSE
-
 /datum/crafting_recipe/stone_dropper
 	name = "Stone Dropper"
 	result = /obj/item/reagent_containers/dropper/ashlander

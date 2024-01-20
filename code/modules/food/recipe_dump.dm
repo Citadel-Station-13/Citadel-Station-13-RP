@@ -32,7 +32,7 @@
 						"Reagents" = R.reagents,
 						"Fruit" = R.fruit,
 						"Ingredients" = R.items,
-						"Appliance" = R.appliance,
+						"Required method" = R.required_method,
 						"Image" = result_icon
 						)
 		qdel(res)

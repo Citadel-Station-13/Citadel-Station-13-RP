@@ -20,7 +20,7 @@
 /obj/item/reagent_containers/glass/food_holder/examine(mob/user, dist) //todo: show food inside
 	. = ..()
 	. += SPAN_NOTICE("<b>Alt-click</b> to remove an ingredient from this.")
-	. += SPAN_NOTICE("<b>Alt-click</b> in grab intent to retrieve a serving of food.")
+	. += SPAN_NOTICE("<b>Control-click</b> in grab intent to retrieve a serving of food.")
 	. += SPAN_NOTICE("It contains:")
 	for(var/obj/item/reagent_containers/food/snacks/ingredient/examine_ingredient in contents)
 		var/cooked_span = "userdanger"
@@ -77,10 +77,12 @@
 		generate_serving(I, user)
 	return ..()
 
-/obj/item/reagent_containers/glass/food_holder/AltClick(mob/living/user)
+/obj/item/reagent_containers/glass/food_holder/CtrlClick(mob/living/user)
 	if(user.a_intent == INTENT_GRAB)
 		generate_serving(null, user)
 		return
+
+/obj/item/reagent_containers/glass/food_holder/AltClick(mob/living/user)
 	var/list/removables = list()
 	var/counter = 0
 	for(var/obj/item/reagent_containers/food/snacks/ingredient/I in contents)

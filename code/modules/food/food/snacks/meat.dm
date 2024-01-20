@@ -15,7 +15,6 @@
 
 	if (!isnull(cooked_icon))
 		icon_state = cooked_icon
-		flat_icon = null //Force regenating the flat icon for coatings, since we've changed the icon of the thing being coated
 	..()
 
 	if (name == initial(name))

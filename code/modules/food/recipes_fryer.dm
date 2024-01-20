@@ -1,6 +1,6 @@
 
 
-
+/*
 /datum/recipe/fries
 	appliance = FRYER
 	items = list(
@@ -198,3 +198,4 @@
 		/obj/item/reagent_containers/food/snacks/dough
 	)
 	result = /obj/item/reagent_containers/food/snacks/churro
+*/

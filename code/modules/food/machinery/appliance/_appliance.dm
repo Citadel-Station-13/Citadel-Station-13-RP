@@ -1,5 +1,5 @@
 // This folder contains code that was originally ported from Apollo Station and then refactored/optimized/changed.
-
+/*
 // Tracks precooked food to stop deep fried baked grilled grilled grilled diona nymph cereal.
 /obj/item/reagent_containers/food/snacks
 	var/tmp/list/cooked
@@ -724,3 +724,4 @@
 							/obj/item/stock_parts/capacitor = 3,
 							/obj/item/stock_parts/scanning_module = 1,
 							/obj/item/stock_parts/matter_bin = 2)
+*/
