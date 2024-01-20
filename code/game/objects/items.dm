@@ -72,13 +72,17 @@
 	var/damage_mode = NONE
 	// todo: port over damtype
 
+	//* Storage
+	/// storage cost for volumetric storage
+	/// null to default to weight class
+	var/volume
+
 	//? unsorted / legacy
 	/// This saves our blood splatter overlay, which will be processed not to go over the edges of the sprite
 	var/image/blood_overlay = null
 	var/r_speed = 1.0
 	var/burn_point = null
 	var/burning = null
-	var/storage_cost = null
 	/// If it's an item we don't want to log attack_logs with, set this to TRUE
 	var/no_attack_log = FALSE
 	pass_flags = ATOM_PASS_TABLE
