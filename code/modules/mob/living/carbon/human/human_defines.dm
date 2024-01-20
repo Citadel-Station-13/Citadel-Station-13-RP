@@ -271,3 +271,5 @@
 	var/hiding_wings = FALSE
 	var/hiding_tail = FALSE
 	var/hiding_horns = FALSE
+
+	var/datum/ability_handler/ab_handler

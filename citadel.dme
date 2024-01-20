@@ -609,6 +609,7 @@
 #include "code\controllers\subsystem\sound\channel_manager.dm"
 #include "code\controllers\subsystem\sound\soundbyte_manager.dm"
 #include "code\datums\ability.dm"
+#include "code\datums\ability_handler.dm"
 #include "code\datums\access.dm"
 #include "code\datums\action.dm"
 #include "code\datums\ai_law_sets.dm"

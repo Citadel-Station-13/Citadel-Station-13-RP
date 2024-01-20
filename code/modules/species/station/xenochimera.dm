@@ -725,7 +725,7 @@
 	name = "Dissonant Shriek"
 	desc = "We shift our vocal cords to release a high-frequency sound that overloads nearby electronics."
 	action_state = "ling_resonant_shriek"
-	var/range = 8
+	range = 8
 	//Slightly more potent than an EMP grenade
 	var/emp_heavy = 3
 	var/emp_med = 6
