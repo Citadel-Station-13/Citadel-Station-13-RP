@@ -104,7 +104,7 @@
 	desc = "A box of crayons for all your rune drawing needs."
 	icon = 'icons/obj/crayons.dmi'
 	icon_state = "crayonbox"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	icon_type = "crayon"
 	can_hold = list(
 		/obj/item/pen/crayon
@@ -143,7 +143,7 @@
 	desc = "A very professional looking box of permanent markers."
 	icon = 'icons/obj/crayons.dmi'
 	icon_state = "markerbox"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	icon_type = "marker"
 	can_hold = list(
 		/obj/item/pen/crayon/marker
@@ -183,7 +183,7 @@
 	desc = "A box of chalk for all your ritual needs."
 	icon = 'icons/obj/crayons.dmi'
 	icon_state = "chalkbox"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	icon_type = "chalk"
 	can_hold = list(
 		/obj/item/pen/crayon/chalk
@@ -214,8 +214,8 @@
 	icon_state = "crackerbox"
 	icon_type = "cracker"
 	max_storage_space = ITEMSIZE_COST_TINY * 6
-	max_w_class = ITEMSIZE_TINY
-	w_class = ITEMSIZE_SMALL
+	max_w_class = WEIGHT_CLASS_TINY
+	w_class = WEIGHT_CLASS_SMALL
 	can_hold = list(/obj/item/reagent_containers/food/snacks/cracker)
 	starts_with = list(/obj/item/reagent_containers/food/snacks/cracker = 6)
 
@@ -228,7 +228,7 @@
 	icon = 'icons/obj/cigarettes.dmi'
 	icon_state = "cigpacket"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "cigpacket", SLOT_ID_LEFT_HAND = "cigpacket")
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	throw_force = 2
 	slot_flags = SLOT_BELT | SLOT_EARS
 	storage_slots = 6
@@ -340,7 +340,7 @@
 	desc = "A case for holding your cigars when you are not smoking them."
 	icon_state = "cigarcase"
 	icon = 'icons/obj/cigarettes.dmi'
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	throw_force = 2
 	slot_flags = SLOT_BELT
 	storage_slots = 7
@@ -369,7 +369,7 @@
 	desc = "A small cardboard pack containing several folded rolling papers."
 	icon_state = "paperbox"
 	icon = 'icons/obj/cigarettes.dmi'
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	throw_force = 2
 	slot_flags = SLOT_BELT
 	storage_slots = 14
@@ -381,7 +381,7 @@
 	desc = "A small cardboard pack containing a few tabacco-based blunt papers."
 	icon_state = "bluntbox"
 	icon = 'icons/obj/cigarettes.dmi'
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	throw_force = 2
 	slot_flags = SLOT_BELT
 	storage_slots = 7
@@ -407,7 +407,7 @@
 	icon = 'icons/obj/vialbox.dmi'
 	icon_state = "vialbox0"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syringe_kit", SLOT_ID_LEFT_HAND = "syringe_kit")
-	max_w_class = ITEMSIZE_SMALL
+	max_w_class = WEIGHT_CLASS_SMALL
 	can_hold = list(/obj/item/reagent_containers/glass/beaker/vial)
 	max_storage_space = ITEMSIZE_COST_SMALL * 6 //The sum of the w_classes of all the items in this storage item.
 	storage_slots = 6

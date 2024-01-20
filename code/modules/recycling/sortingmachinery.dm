@@ -228,7 +228,7 @@
 	name = "package wrapper"
 	icon = 'icons/obj/items.dmi'
 	icon_state = "deliveryPaper"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	var/amount = 25.0
 
 
@@ -325,7 +325,7 @@
 	icon_state = "dest_tagger"
 	var/currTag = 0
 
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	item_state = "electronic"
 	slot_flags = SLOT_BELT
 

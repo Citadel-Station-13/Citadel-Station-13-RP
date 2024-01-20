@@ -612,7 +612,7 @@
 	item_state = null
 	icon_override = null
 	slot_flags = SLOT_GLOVES | SLOT_TIE
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	slot = ACCESSORY_SLOT_ARMBAND
 
 //AegisOA:Xander Bevin
@@ -639,7 +639,7 @@
 	icon_override = 'icons/vore/custom_onmob_vr.dmi'
 	icon_state = "goldenstring"
 	item_state = "goldenstring"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	slot_flags = SLOT_TIE
 
 //Chaoko99: Aika Hisakawa

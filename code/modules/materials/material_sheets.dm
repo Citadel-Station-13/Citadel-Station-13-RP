@@ -4,7 +4,7 @@
 	abstract_type = /obj/item/stack/material
 	damage_force = 5
 	throw_force = 5
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	throw_speed = 3
 	throw_range = 3
 	max_amount = 50
@@ -364,7 +364,7 @@
 	no_variants = FALSE
 	color = "#824B28"
 	max_amount = 25
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 	description_info = "Use inhand to craft things, or use a sharp and edged object on this to convert it into two wooden planks."
 	var/plank_type = /obj/item/stack/material/wood
 	drop_sound = 'sound/items/drop/wooden.ogg'

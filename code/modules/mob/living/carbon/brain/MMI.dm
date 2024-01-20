@@ -13,7 +13,7 @@
 	desc = "The Warrior's bland acronym, MMI, obscures the true horror of this monstrosity."
 	icon = 'icons/obj/assemblies.dmi'
 	icon_state = "mmi_empty"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	can_speak = TRUE
 	origin_tech = list(TECH_BIO = 3)
 	catalogue_data = list(/datum/category_item/catalogue/fauna/brain/assisted)
@@ -302,7 +302,7 @@
 	catalogue_data = list(/datum/category_item/catalogue/technology/drone/drones)
 	icon = 'icons/obj/module.dmi'
 	icon_state = "mainboard"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	origin_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 3, TECH_DATA = 4)
 	ghost_query_type = /datum/ghost_query/drone_brain
 
@@ -333,7 +333,7 @@
 	catalogue_data = list(/datum/category_item/catalogue/technology/positronics)
 	icon = 'icons/obj/assemblies.dmi'
 	icon_state = "posibrain"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	origin_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 4, TECH_BLUESPACE = 2, TECH_DATA = 4)
 	ghost_query_type = /datum/ghost_query/posi_brain
 	catalogue_data = list(/datum/category_item/catalogue/fauna/brain/posibrain)
@@ -374,5 +374,5 @@
 	desc = "A sophisticated board which allows for an artificial intelligence to remotely control a synthetic chassis."
 	icon = 'icons/obj/module.dmi'
 	icon_state = "mainboard"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	origin_tech = list(TECH_ENGINEERING = 2, TECH_MATERIAL = 2, TECH_BLUESPACE = 2, TECH_DATA = 3)

@@ -3,7 +3,7 @@
 	name = "mecha life-support"
 	icon = 'icons/mecha/mech_component.dmi'
 	icon_state = "lifesupport"
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 	origin_tech = list(TECH_DATA = 2, TECH_ENGINEERING = 2)
 	materials_base = list(MAT_STEEL = 1000, MAT_GLASS = 1500)
 

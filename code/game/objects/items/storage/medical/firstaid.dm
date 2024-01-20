@@ -114,7 +114,7 @@
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "surgerykit"
 	item_state = "firstaid-surgery"
-	max_w_class = ITEMSIZE_NORMAL
+	max_w_class = WEIGHT_CLASS_NORMAL
 	max_storage_space = 25 //update this when necessary!
 
 	can_hold = list(
@@ -163,14 +163,14 @@
 	drop_sound = 'sound/items/drop/pillbottle.ogg'
 	pickup_sound = 'sound/items/pickup/pillbottle.ogg'
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "contsolid", SLOT_ID_LEFT_HAND = "contsolid")
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	can_hold = list(/obj/item/reagent_containers/pill,/obj/item/dice,/obj/item/paper)
 	allow_quick_gather = 1
 	allow_quick_empty = 1
 	use_to_pickup = 1
 	use_sound = null
 	max_storage_space = ITEMSIZE_COST_TINY * 14
-	max_w_class = ITEMSIZE_TINY
+	max_w_class = WEIGHT_CLASS_TINY
 
 	var/label_text = ""
 	var/labeled = 0

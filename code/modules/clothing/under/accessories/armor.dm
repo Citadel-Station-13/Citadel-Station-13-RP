@@ -8,7 +8,7 @@
 	icon_override = 'icons/mob/clothing/modular_armor.dmi'
 	icon = 'icons/obj/clothing/modular_armor.dmi'
 	icon_state = "pouches"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/clothing/accessory/armor/on_attached(var/obj/item/clothing/S, var/mob/user)
 	if(ishuman(user))
@@ -37,7 +37,7 @@
 	icon_override = 'icons/mob/clothing/modular_armor.dmi'
 	icon = 'icons/obj/clothing/modular_armor.dmi'
 	icon_state = "pouches"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	gender = PLURAL
 	slot = ACCESSORY_SLOT_ARMOR_S
 	slots = 2
@@ -335,7 +335,7 @@
 //	accessory_icons = list(slot_tie_str = 'icons/mob/clothing/modular_armor.dmi', SLOT_ID_SUIt = 'icons/mob/clothing/modular_armor.dmi')
 	icon_state = "solflag"
 	slot = ACCESSORY_SLOT_ARMOR_M
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 
 //Nanotrasen
 /obj/item/clothing/accessory/armor/tag/nts

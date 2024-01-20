@@ -186,7 +186,7 @@ GLOBAL_LIST_EMPTY(solars_list)
 	icon = 'icons/obj/power.dmi'
 	icon_state = "sp_base"
 	item_state = "camera"
-	w_class = ITEMSIZE_LARGE // Pretty big!
+	w_class = WEIGHT_CLASS_BULKY // Pretty big!
 	anchored = 0
 	var/tracker = 0
 	var/glass_type = null

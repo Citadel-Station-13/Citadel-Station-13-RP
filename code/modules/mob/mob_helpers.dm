@@ -16,7 +16,7 @@
 	return round(log(2, mob_size_A/mob_size_B), 1)
 
 /mob/proc/can_wield_item(obj/item/W)
-	if(W.w_class >= ITEMSIZE_LARGE && issmall(src))
+	if(W.w_class >= WEIGHT_CLASS_BULKY && issmall(src))
 		return FALSE //M is too small to wield this
 	return TRUE
 

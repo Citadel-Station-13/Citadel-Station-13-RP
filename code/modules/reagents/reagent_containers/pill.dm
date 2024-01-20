@@ -13,7 +13,7 @@
 	rad_flags = RAD_NO_CONTAMINATE
 
 	possible_transfer_amounts = null
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	slot_flags = SLOT_EARS
 	volume = 60
 

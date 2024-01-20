@@ -5,7 +5,7 @@
 	icon_state = "paper"
 	item_state = "paper"
 	throw_force = 0
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	throw_range = 2
 	throw_speed = 1
 	plane = MOB_PLANE

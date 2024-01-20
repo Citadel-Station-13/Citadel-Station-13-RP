@@ -265,7 +265,7 @@
 	var/const/muteness = 4 //?Carbon
 
 	/// Maximum w_class the mob can pull.
-	var/can_pull_size = ITEMSIZE_NO_CONTAINER
+	var/can_pull_size = WEIGHT_CLASS_HUGE
 	/// Whether or not the mob can pull other mobs.
 	var/can_pull_mobs = MOB_PULL_LARGER
 

@@ -5,7 +5,7 @@
 	var/label = null
 	var/labels_left = 30
 	var/mode = 0	//off or on.
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/hand_labeler/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)

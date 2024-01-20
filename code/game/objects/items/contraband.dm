@@ -47,7 +47,7 @@
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "deliverycrate5"
 	item_state = "table_parts"
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 
 /obj/item/stolenpackage/attack_self(mob/user)
 	. = ..()
@@ -175,7 +175,7 @@
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "deliverycrate5"
 	item_state = "table_parts"
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 
 /obj/item/stolenpackageplus/attack_self(mob/user)
 	. = ..()
@@ -240,7 +240,7 @@
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "deliverycrate5"
 	item_state = "table_parts"
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 
 /obj/item/mechasalvage/attack_self(mob/user)
 	. = ..()

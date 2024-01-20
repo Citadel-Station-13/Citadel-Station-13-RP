@@ -3,8 +3,8 @@
 	desc = "A locked box."
 	icon_state = "lockbox+l"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syringe_kit", SLOT_ID_LEFT_HAND = "syringe_kit")
-	w_class = ITEMSIZE_LARGE
-	max_w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_BULKY
+	max_w_class = WEIGHT_CLASS_NORMAL
 	max_storage_space = ITEMSIZE_COST_NORMAL * 4 //The sum of the w_classes of all the items in this storage item.
 	req_access = list(ACCESS_SECURITY_ARMORY)
 	preserve_item = 1

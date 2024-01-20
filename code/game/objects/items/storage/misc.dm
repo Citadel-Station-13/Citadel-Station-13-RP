@@ -183,7 +183,7 @@
 	name = "munition box (musket)"
 	desc = "A tanned leather pouch large enough to hold a few loose musket balls."
 	icon_state = "musket_box"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	max_storage_space = ITEMSIZE_COST_TINY * 6
 	can_hold = list(
 		/obj/item/ammo_casing/musket

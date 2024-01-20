@@ -5,8 +5,8 @@
 	damage_force = 8.0
 	throw_speed = 1
 	throw_range = 4
-	w_class = ITEMSIZE_LARGE
-	max_w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_BULKY
+	max_w_class = WEIGHT_CLASS_NORMAL
 	max_storage_space = ITEMSIZE_COST_NORMAL * 4
 	use_sound = 'sound/items/storage/briefcase.ogg'
 	drop_sound = 'sound/items/drop/backpack.ogg'
@@ -19,8 +19,8 @@
 	icon_state = "clutch"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "smpurse", SLOT_ID_LEFT_HAND = "smpurse")
 	damage_force = 0
-	w_class = ITEMSIZE_NORMAL
-	max_w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_NORMAL
+	max_w_class = WEIGHT_CLASS_SMALL
 	max_storage_space = ITEMSIZE_COST_SMALL * 4
 
 /obj/item/storage/briefcase/crafted

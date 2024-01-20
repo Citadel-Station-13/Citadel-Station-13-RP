@@ -1,7 +1,7 @@
 /obj/item
 	name = "item"
 	icon = 'icons/obj/items.dmi'
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	// todo: better way, for now, block all rad contamination to interior
 	rad_flags = RAD_BLOCK_CONTENTS
 	obj_flags = OBJ_IGNORE_MOB_DEPTH | OBJ_RANGE_TARGETABLE
@@ -309,15 +309,15 @@
 
 /proc/weightclass2text(w_class)
 	switch(w_class)
-		if(WEIGHT_CLASS_TINY, ITEMSIZE_TINY)
+		if(WEIGHT_CLASS_TINY, WEIGHT_CLASS_TINY)
 			. = "tiny"
-		if(WEIGHT_CLASS_SMALL, ITEMSIZE_SMALL)
+		if(WEIGHT_CLASS_SMALL, WEIGHT_CLASS_SMALL)
 			. = "small"
-		if(WEIGHT_CLASS_NORMAL, ITEMSIZE_NORMAL)
+		if(WEIGHT_CLASS_NORMAL, WEIGHT_CLASS_NORMAL)
 			. = "normal-sized"
-		if(WEIGHT_CLASS_BULKY, ITEMSIZE_LARGE)
+		if(WEIGHT_CLASS_BULKY, WEIGHT_CLASS_BULKY)
 			. = "bulky"
-		if(WEIGHT_CLASS_HUGE, ITEMSIZE_HUGE)
+		if(WEIGHT_CLASS_HUGE, WEIGHT_CLASS_HUGE)
 			. = "huge"
 		if(WEIGHT_CLASS_GIGANTIC)
 			. = "gigantic"

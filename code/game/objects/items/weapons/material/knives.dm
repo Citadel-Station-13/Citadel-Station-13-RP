@@ -4,7 +4,7 @@
 	icon_state = "butterflyknife"
 	item_state = null
 	attack_sound = null
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	attack_verb = list("patted", "tapped")
 	force_multiplier = 0.1
 	throw_force_multiplier = 1.5
@@ -19,7 +19,7 @@
 		attack_sound = 'sound/weapons/bladeslice.ogg'
 		force_multiplier = 1
 		icon_state += "_open"
-		w_class = ITEMSIZE_NORMAL
+		w_class = WEIGHT_CLASS_NORMAL
 	else
 		damage_mode = initial(damage_mode)
 		attack_sound = initial(attack_sound)

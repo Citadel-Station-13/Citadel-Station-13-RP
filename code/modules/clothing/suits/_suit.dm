@@ -10,7 +10,7 @@
 	slot_flags = SLOT_OCLOTHING
 	var/blood_overlay_type = "suit"
 	siemens_coefficient = 0.9
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	preserve_item = 1
 
 	var/taurized = FALSE //Easier than trying to 'compare icons' to see if it's a taur suit

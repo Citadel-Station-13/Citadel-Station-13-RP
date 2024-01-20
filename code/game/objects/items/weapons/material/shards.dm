@@ -3,7 +3,7 @@
 	icon = 'icons/obj/shards.dmi'
 	desc = "Made of nothing. How does this even exist?" // set based on material, if this desc is visible it's a bug (shards default to being made of glass)
 	icon_state = "large"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	material_significance = MATERIAL_SIGNIFICANCE_SHARD
 	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	item_state = "shard-glass"

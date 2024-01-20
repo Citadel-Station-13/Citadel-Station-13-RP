@@ -7,9 +7,9 @@
 	desc = "You wear this on your back and put items into it."
 	icon = 'icons/obj/clothing/backpack.dmi'
 	icon_state = "backpack"
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = SLOT_BACK
-	max_w_class = ITEMSIZE_LARGE
+	max_w_class = WEIGHT_CLASS_BULKY
 	weight = ITEM_WEIGHT_STORAGE_BACKPACK
 	encumbrance = ITEM_ENCUMBRANCE_STORAGE_BACKPACK
 	max_storage_space = INVENTORY_STANDARD_SPACE
@@ -44,7 +44,7 @@
 	desc = "A backpack that opens into a localized pocket of Blue Space."
 	origin_tech = list(TECH_BLUESPACE = 4)
 	icon_state = "holdingpack"
-	max_w_class = ITEMSIZE_LARGE
+	max_w_class = WEIGHT_CLASS_BULKY
 	max_storage_space = ITEMSIZE_COST_NORMAL * 14 // 56
 	storage_cost = INVENTORY_STANDARD_SPACE + 1
 
@@ -80,8 +80,8 @@
 	desc = "Space Santa uses this to deliver toys to all the nice children in space in Christmas! Wow, it's pretty big!"
 	icon_state = "giftbag0"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "giftbag", SLOT_ID_LEFT_HAND = "giftbag")
-	w_class = ITEMSIZE_LARGE
-	max_w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_BULKY
+	max_w_class = WEIGHT_CLASS_NORMAL
 	max_storage_space = ITEMSIZE_COST_NORMAL * 100 // can store a ton of shit!
 	item_state_slots = null
 
@@ -510,8 +510,8 @@
 	desc = "A small, fashionable bag typically worn over the shoulder."
 	icon_state = "purse"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "lgpurse", SLOT_ID_LEFT_HAND = "lgpurse")
-	w_class = ITEMSIZE_LARGE
-	max_w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_BULKY
+	max_w_class = WEIGHT_CLASS_NORMAL
 	max_storage_space = ITEMSIZE_COST_NORMAL * 5
 
 //Parachutes

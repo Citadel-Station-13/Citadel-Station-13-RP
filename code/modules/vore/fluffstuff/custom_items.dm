@@ -293,7 +293,7 @@
 	slot_flags = SLOT_BELT
 	damage_force = 10
 	throw_force = 3
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	damtype = HALLOSS
 	attack_verb = list("flogged", "whipped", "lashed", "disciplined", "chastised", "flayed")
 
@@ -420,7 +420,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "browncanemob_r", SLOT_ID_LEFT_HAND = "browncanemob_l")
 	damage_force = 5.0
 	throw_force = 7.0
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	materials_base = list(MAT_STEEL = 50)
 	attack_verb = list("bludgeoned", "whacked", "disciplined", "thrashed")
 
@@ -439,7 +439,7 @@
     item_state_slots = list(SLOT_ID_RIGHT_HAND = "alexiswandmob_r", SLOT_ID_LEFT_HAND = "alexiswandmob_l")
     damage_force = 1.0
     throw_force = 2.0
-    w_class = ITEMSIZE_SMALL
+    w_class = WEIGHT_CLASS_SMALL
     materials_base = list(MAT_STEEL = 50)
     attack_verb = list("sparkled", "whacked", "twinkled", "radiated", "dazzled", "zapped")
     attack_sound = 'sound/weapons/sparkle.ogg'
@@ -568,7 +568,7 @@
 	desc = "A tiny supplemental battery for powering something or someone synthetic."
 	icon = 'icons/vore/custom_items_vr.dmi'
 	icon_state = "dragor_dot"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/fluff/dragor_dot/attack_self(mob/user)
 	. = ..()
@@ -677,7 +677,7 @@
 	icon = 'icons/obj/device_alt.dmi'
 	icon_state = "hand_tele"
 	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_MAGNET = 5, TECH_BLUESPACE = 5, TECH_ILLEGAL = 7)
 
 	var/cell_type = /obj/item/cell/device/weapon
@@ -971,7 +971,7 @@
 	desc = "That's unusual."
 	icon = 'icons/obj/device_alt.dmi'
 	icon_state = "motion2"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 
 	var/tele_name
@@ -1265,7 +1265,7 @@
 	sharp = 0
 	edge = 0
 	throw_force = 7
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 	origin_tech = list(TECH_COMBAT = 2)
 	attack_verb = list("beaten")
 	lightcolor = "#CC33FF"
@@ -1343,8 +1343,8 @@
 
 	can_hold = list(/obj/item/melee/baton/fluff/stunstaff)
 
-	w_class = ITEMSIZE_HUGE
-	max_w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
+	max_w_class = WEIGHT_CLASS_HUGE
 	max_storage_space = 16
 
 /obj/item/storage/backpack/fluff/stunstaff/Initialize(mapload)
@@ -1425,12 +1425,12 @@
 	slot_flags = SLOT_BACK | SLOT_OCLOTHING
 	active_force = 15
 	active_throwforce = 7
-	active_w_class = ITEMSIZE_LARGE
+	active_w_class = WEIGHT_CLASS_BULKY
 	damage_force = 1
 	throw_force = 1
 	throw_speed = 1
 	throw_range = 5
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_MATERIAL = 2, TECH_COMBAT = 1)
 	item_icons = list(SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi', SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi', SLOT_ID_BACK = 'icons/vore/custom_items_vr.dmi', SLOT_ID_SUIT = 'icons/vore/custom_items_vr.dmi')
 	var/active_state = "wolfgirlsword"
@@ -1542,7 +1542,7 @@
     icon = 'icons/vore/custom_items_vr.dmi'
     icon_state = "jazzcamcorder"
     item_state = "jazzcamcorder"
-    w_class = ITEMSIZE_LARGE
+    w_class = WEIGHT_CLASS_BULKY
     slot_flags = SLOT_BELT
     var/obj/machinery/camera/network/thunder/camera
 

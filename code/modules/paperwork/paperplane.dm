@@ -7,7 +7,7 @@
 	throw_range = 7
 	throw_speed = 1
 	throw_force = 0
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 
 	var/obj/item/paper/internalPaper
 

@@ -23,9 +23,9 @@
 	var/l_hacking = 0
 	var/emagged = 0
 	var/open = 0
-	w_class = ITEMSIZE_NORMAL
-	max_w_class = ITEMSIZE_SMALL
-	max_storage_space = ITEMSIZE_SMALL * 7
+	w_class = WEIGHT_CLASS_NORMAL
+	max_w_class = WEIGHT_CLASS_SMALL
+	max_storage_space = WEIGHT_CLASS_SMALL * 7
 
 /obj/item/storage/secure/examine(mob/user, dist)
 	. = ..()
@@ -151,8 +151,8 @@
 	damage_force = 8.0
 	throw_speed = 1
 	throw_range = 4
-	max_w_class = ITEMSIZE_NORMAL
-	w_class = ITEMSIZE_LARGE
+	max_w_class = WEIGHT_CLASS_NORMAL
+	w_class = WEIGHT_CLASS_BULKY
 	max_storage_space = ITEMSIZE_COST_NORMAL * 4
 
 /obj/item/storage/secure/briefcase/attack_hand(mob/user, list/params)
@@ -172,7 +172,7 @@
 /obj/item/storage/secure/briefcase/portable
 	name = "Portable Secure Briefcase"
 	desc = "A not-so large briefcase with a digital locking system. Holds less, but fits into more."
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 
 	starts_with = list(
 		/obj/item/paper,
@@ -182,8 +182,8 @@
 
 /obj/item/storage/secure/briefcase/vicase
 	name = "VI's Secure Briefpack"
-	w_class = ITEMSIZE_LARGE
-	max_w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
+	max_w_class = WEIGHT_CLASS_BULKY
 	max_storage_space = INVENTORY_STANDARD_SPACE
 	slot_flags = SLOT_BACK
 	icon = 'icons/obj/clothing/backpack.dmi'
@@ -206,8 +206,8 @@
 	icon_locking = "safeb"
 	icon_sparking = "safespark"
 	damage_force = 8.0
-	w_class = ITEMSIZE_NO_CONTAINER
-	max_w_class = ITEMSIZE_LARGE // This was 8 previously...
+	w_class = WEIGHT_CLASS_HUGE
+	max_w_class = WEIGHT_CLASS_BULKY // This was 8 previously...
 	anchored = 1.0
 	density = 0
 	cant_hold = list(/obj/item/storage/secure/briefcase)

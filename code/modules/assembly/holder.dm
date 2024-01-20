@@ -4,7 +4,7 @@
 	icon_state = "holder"
 	item_state = "assembly"
 	throw_force = 5
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	throw_speed = 3
 	throw_range = 10
 

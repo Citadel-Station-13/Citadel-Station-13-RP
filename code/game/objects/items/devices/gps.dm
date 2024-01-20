@@ -22,7 +22,7 @@
 	desc = "Triangulates the approximate co-ordinates using a nearby satellite network."
 	icon = 'icons/obj/gps.dmi'
 	icon_state = "gps-gen"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	slot_flags = SLOT_BELT
 	origin_tech = list(TECH_MATERIAL = 2, TECH_BLUESPACE = 2, TECH_MAGNET = 1)
 	materials_base = list(MAT_STEEL = 500)
@@ -601,7 +601,7 @@
 	throw_force = 10
 	sharp = 1
 	edge = 1
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	origin_tech = list(TECH_COMBAT = 4, TECH_ILLEGAL = 4)
 	attack_verb = list("sliced", "chopped", "stabbed", "pierced")
 	tool_speed = 2 // Use a real axe if you want to chop logs.

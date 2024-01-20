@@ -8,13 +8,13 @@
 	name = "storage"
 	icon = 'icons/obj/storage.dmi'
 	inhand_default_type = INHAND_DEFAULT_ICON_STORAGE
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	show_messages = 1
 
 	var/list/can_hold = new/list() //List of objects which this item can store (if set, it can't store anything else)
 	var/list/cant_hold = new/list() //List of objects which this item can't store (in effect only if can_hold isn't set)
 	var/list/is_seeing = new/list() //List of mobs which are currently seeing the contents of this item's storage
-	var/max_w_class = ITEMSIZE_SMALL //Max size of objects that this object can store (in effect only if can_hold isn't set)
+	var/max_w_class = WEIGHT_CLASS_SMALL //Max size of objects that this object can store (in effect only if can_hold isn't set)
 	var/max_storage_space = ITEMSIZE_COST_SMALL * 4 //The sum of the storage costs of all the items in this storage item.
 	var/storage_slots = null //The number of storage slots in this container.  If null, it uses the volume-based storage instead.
 	var/atom/movable/screen/storage/boxes = null
@@ -695,15 +695,15 @@
 		return storage_cost
 	else
 		switch(w_class)
-			if(ITEMSIZE_TINY)
+			if(WEIGHT_CLASS_TINY)
 				return ITEMSIZE_COST_TINY
-			if(ITEMSIZE_SMALL)
+			if(WEIGHT_CLASS_SMALL)
 				return ITEMSIZE_COST_SMALL
-			if(ITEMSIZE_NORMAL)
+			if(WEIGHT_CLASS_NORMAL)
 				return ITEMSIZE_COST_NORMAL
-			if(ITEMSIZE_LARGE)
+			if(WEIGHT_CLASS_BULKY)
 				return ITEMSIZE_COST_LARGE
-			if(ITEMSIZE_HUGE)
+			if(WEIGHT_CLASS_HUGE)
 				return ITEMSIZE_COST_HUGE
 			else
 				return ITEMSIZE_COST_NO_CONTAINER

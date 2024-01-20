@@ -8,7 +8,7 @@ MRE Stuff
 	icon = 'icons/obj/food.dmi'
 	icon_state = "mre"
 	max_storage_space = ITEMSIZE_COST_SMALL * 7
-	max_w_class = ITEMSIZE_SMALL
+	max_w_class = WEIGHT_CLASS_SMALL
 	starts_with = list(
 	/obj/item/storage/single_use/mrebag,
 	/obj/item/storage/single_use/mrebag/side,
@@ -211,8 +211,8 @@ MRE Stuff
 	icon = 'icons/obj/food.dmi'
 	icon_state = "pouch_medium"
 	storage_slots = 1
-	w_class = ITEMSIZE_SMALL
-	max_w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
+	max_w_class = WEIGHT_CLASS_SMALL
 	starts_with = list(/obj/item/reagent_containers/food/snacks/slice/meatpizza/filled)
 
 

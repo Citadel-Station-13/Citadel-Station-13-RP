@@ -8,7 +8,7 @@
 	slot_flags = SLOT_ICLOTHING
 	armor_type = /datum/armor/none
 	equip_sound = 'sound/items/jumpsuit_equip.ogg'
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	show_messages = 1
 	blood_sprite_state = "uniformblood"
 

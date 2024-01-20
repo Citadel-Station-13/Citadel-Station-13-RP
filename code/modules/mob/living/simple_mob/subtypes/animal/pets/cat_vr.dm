@@ -36,7 +36,7 @@
 	desc = "A small, inquisitive feline, who constantly seems to investigate his surroundings."
 	gender = MALE
 	icon_state = "kitten"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 
 /mob/living/simple_mob/animal/passive/cat/tabiranth
 	name = "Spirit"

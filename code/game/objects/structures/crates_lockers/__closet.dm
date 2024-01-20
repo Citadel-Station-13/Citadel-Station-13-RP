@@ -4,7 +4,7 @@
 	icon = 'icons/obj/closets/bases/closet.dmi'
 	icon_state = "base"
 	density = 1
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 	layer = UNDER_JUNK_LAYER
 	armor_type = /datum/armor/object/medium
 

@@ -8,8 +8,8 @@
 	throw_force = 10
 	throw_speed = 1
 	throw_range = 7
-	w_class = ITEMSIZE_LARGE
-	max_w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_BULKY
+	max_w_class = WEIGHT_CLASS_NORMAL
 	max_storage_space = ITEMSIZE_COST_SMALL * 7 //enough to hold all starting contents
 	origin_tech = list(TECH_COMBAT = 1)
 	attack_verb = list("robusted")
@@ -106,8 +106,8 @@
 	icon_state = "lunchbox_rainbow"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "toolbox_pink", SLOT_ID_LEFT_HAND = "toolbox_pink")
 	desc = "A little lunchbox. This one is the colors of the rainbow!"
-	w_class = ITEMSIZE_NORMAL
-	max_w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_NORMAL
+	max_w_class = WEIGHT_CLASS_SMALL
 	var/filled = FALSE
 	attack_verb = list("lunched")
 

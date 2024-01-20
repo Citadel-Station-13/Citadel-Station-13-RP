@@ -9,7 +9,7 @@
 	item_state = "electropack"
 	frequency = 1449
 	slot_flags = SLOT_BACK
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 
 	materials_base = list(MAT_STEEL = 10000, MAT_GLASS = 2500)
 

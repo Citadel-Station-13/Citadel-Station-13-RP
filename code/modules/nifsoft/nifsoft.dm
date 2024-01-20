@@ -216,7 +216,7 @@
 		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand.dmi',
 		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand.dmi',
 		)
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	var/datum/nifsoft/stored = null
 
 /obj/item/disk/nifsoft/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)

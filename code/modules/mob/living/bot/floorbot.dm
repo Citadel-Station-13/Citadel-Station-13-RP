@@ -417,7 +417,7 @@
 	throw_force = 10
 	throw_speed = 2
 	throw_range = 5
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	created_name = "Floorbot"
 	var/toolbox = /obj/item/storage/toolbox
 

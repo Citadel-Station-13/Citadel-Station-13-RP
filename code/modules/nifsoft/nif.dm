@@ -30,7 +30,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 	icon = 'icons/obj/device_alt.dmi'
 	icon_state = "nif_0"
 
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 
 	/// For savefiles
 	var/id = NIF_ID_BASIC
