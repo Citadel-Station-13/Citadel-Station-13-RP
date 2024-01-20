@@ -12,7 +12,7 @@
 
 	w_class = WEIGHT_CLASS_HUGE
 	max_w_class = WEIGHT_CLASS_BULKY
-	max_storage_space = ITEMSIZE_COST_NORMAL * 8
+	max_storage_space = DEFAULT_VOLUME_NORMAL * 8
 	storage_slots = 20
 	use_to_pickup = 1
 	allow_quick_empty = 1

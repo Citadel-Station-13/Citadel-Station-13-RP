@@ -6,8 +6,8 @@
 	desc = "For use in emergency situations only."
 	icon = 'icons/obj/single_use/med_pouch.dmi'
 	storage_slots = 7
-	w_class = ITEM_SIZE_SMALL
-	max_w_class = ITEM_SIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
+	max_w_class = WEIGHT_CLASS_SMALL
 	icon_state = "pack0"
 	opened = FALSE
 	tear_sound = 'sound/effects/rip1.ogg'

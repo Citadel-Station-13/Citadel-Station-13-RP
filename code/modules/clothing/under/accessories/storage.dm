@@ -118,7 +118,7 @@
 
 /obj/item/clothing/accessory/storage/knifeharness/Initialize(mapload)
 	. = ..()
-	hold.max_storage_space = ITEMSIZE_COST_SMALL * 2
+	hold.max_storage_space = DEFAULT_VOLUME_SMALL * 2
 	hold.can_hold = list(/obj/item/material/knife/machete/hatchet/unathiknife,\
 	/obj/item/material/knife,\
 	/obj/item/material/knife/plastic)

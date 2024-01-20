@@ -209,7 +209,7 @@
 	name = "type-f electronic drone"
 	icon_state = "setup_drone_android"
 	desc = "It's a case, for building mobile electronics with.  This one has a hominoid design."
-	w_class = ITEMSIZE_COST_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 	max_components = IC_COMPONENTS_BASE * 5
 	max_complexity = IC_COMPLEXITY_BASE * 5
 

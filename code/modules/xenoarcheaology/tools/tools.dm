@@ -15,7 +15,7 @@
 	slot_flags = SLOT_BELT | SLOT_POCKET
 	w_class = WEIGHT_CLASS_NORMAL
 	storage_slots = 50
-	max_storage_space = ITEMSIZE_COST_NORMAL * 50
+	max_storage_space = DEFAULT_VOLUME_NORMAL * 50
 	max_w_class = WEIGHT_CLASS_NORMAL
 	can_hold = list(/obj/item/fossil)
 

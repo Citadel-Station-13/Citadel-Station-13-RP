@@ -135,7 +135,7 @@
 	icon_state = "ems"
 	max_w_class = WEIGHT_CLASS_NORMAL // Can hold normal sized items.
 	storage_slots = 14	// Twice the capacity of a typical belt.
-	max_storage_space = ITEMSIZE_COST_NORMAL * 14
+	max_storage_space = DEFAULT_VOLUME_NORMAL * 14
 
 /datum/technomancer/equipment/thermals
 	name = "Thermoncle"

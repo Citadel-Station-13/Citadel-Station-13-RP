@@ -47,7 +47,7 @@
 	icon_type = "egg"
 	name = "egg box"
 	storage_slots = 12
-	max_storage_space = 12 * ITEMSIZE_COST_SMALL
+	max_storage_space = 12 * DEFAULT_VOLUME_SMALL
 	can_hold = list(
 		/obj/item/reagent_containers/food/snacks/egg,
 		/obj/item/reagent_containers/food/snacks/boiledegg
@@ -67,7 +67,7 @@
 	item_state = "candlebox5"
 	throw_force = 2
 	slot_flags = SLOT_BELT
-	max_storage_space = ITEMSIZE_COST_SMALL * 5
+	max_storage_space = DEFAULT_VOLUME_SMALL * 5
 	starts_with = list(/obj/item/flame/candle = 5)
 
 /obj/item/storage/fancy/whitecandle_box
@@ -79,7 +79,7 @@
 	item_state = "whitecandlebox5"
 	throw_force = 2
 	slot_flags = SLOT_BELT
-	max_storage_space = ITEMSIZE_COST_SMALL * 5
+	max_storage_space = DEFAULT_VOLUME_SMALL * 5
 	starts_with = list(/obj/item/flame/candle/white = 5)
 
 /obj/item/storage/fancy/blackcandle_box
@@ -91,7 +91,7 @@
 	item_state = "blackcandlebox5"
 	throw_force = 2
 	slot_flags = SLOT_BELT
-	max_storage_space = ITEMSIZE_COST_SMALL * 5
+	max_storage_space = DEFAULT_VOLUME_SMALL * 5
 	starts_with = list(/obj/item/flame/candle/black = 5)
 
 
@@ -213,7 +213,7 @@
 	icon = 'icons/obj/food.dmi'
 	icon_state = "crackerbox"
 	icon_type = "cracker"
-	max_storage_space = ITEMSIZE_COST_TINY * 6
+	max_storage_space = DEFAULT_VOLUME_TINY * 6
 	max_w_class = WEIGHT_CLASS_TINY
 	w_class = WEIGHT_CLASS_SMALL
 	can_hold = list(/obj/item/reagent_containers/food/snacks/cracker)
@@ -409,7 +409,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syringe_kit", SLOT_ID_LEFT_HAND = "syringe_kit")
 	max_w_class = WEIGHT_CLASS_SMALL
 	can_hold = list(/obj/item/reagent_containers/glass/beaker/vial)
-	max_storage_space = ITEMSIZE_COST_SMALL * 6 //The sum of the w_classes of all the items in this storage item.
+	max_storage_space = DEFAULT_VOLUME_SMALL * 6 //The sum of the w_classes of all the items in this storage item.
 	storage_slots = 6
 	req_access = list(ACCESS_MEDICAL_VIROLOGY)
 
@@ -449,7 +449,7 @@
 	icon_type = "chocolate"
 
 	var/startswith = 6
-	max_storage_space = ITEMSIZE_COST_SMALL * 6
+	max_storage_space = DEFAULT_VOLUME_SMALL * 6
 	can_hold = list(
 		/obj/item/reagent_containers/food/snacks/chocolatepiece,
 		/obj/item/reagent_containers/food/snacks/chocolatepiece/white,

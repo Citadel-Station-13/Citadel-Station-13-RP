@@ -30,7 +30,7 @@
 	hypospray_path = /obj/item/hypospray/combat/loaded
 	vial_path = /obj/item/reagent_containers/glass/hypovial/large
 	max_storage_space = INVENTORY_BOX_SPACE * 2
-	storage_cost = ITEMSIZE_COST_NORMAL * 1.5
+	storage_cost = DEFAULT_VOLUME_NORMAL * 1.5
 
 /obj/item/storage/hypokit/combat/loaded/spawn_hypovials()
 	for(var/i in 1 to 2)
@@ -55,7 +55,7 @@
 	hypospray_path = /obj/item/hypospray/advanced/loaded
 	vial_path = /obj/item/reagent_containers/glass/hypovial/large
 	max_storage_space = INVENTORY_BOX_SPACE * 2
-	storage_cost = ITEMSIZE_COST_NORMAL * 1.5
+	storage_cost = DEFAULT_VOLUME_NORMAL * 1.5
 
 /obj/item/storage/hypokit/advanced/loaded/spawn_hypovials()
 	for(var/i in 1 to 2)

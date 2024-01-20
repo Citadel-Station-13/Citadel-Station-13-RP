@@ -24,7 +24,7 @@
 
 	var/obj/item/device/headpods/deployed_headpods
 
-	w_class = ITEMSIZE_COST_SMALL
+	w_class = DEFAULT_VOLUME_SMALL
 	slot_flags = SLOT_BELT
 
 /obj/item/device/walkpod/Destroy()

@@ -123,7 +123,7 @@
 	/obj/item/pickaxe/five_pick,
 	/obj/item/pickaxe/six_pick,
 	/obj/item/pickaxe/hand)
-	max_storage_space = ITEMSIZE_COST_SMALL * 9
+	max_storage_space = DEFAULT_VOLUME_SMALL * 9
 	max_w_class = WEIGHT_CLASS_SMALL
 	use_to_pickup = 1
 

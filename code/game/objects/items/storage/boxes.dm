@@ -475,7 +475,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syringe_kit", SLOT_ID_LEFT_HAND = "syringe_kit")
 	storage_slots = 24
 	can_hold = list(/obj/item/light/tube, /obj/item/light/bulb)
-	max_storage_space = ITEMSIZE_COST_SMALL * 24 //holds 24 items of w_class 2
+	max_storage_space = DEFAULT_VOLUME_SMALL * 24 //holds 24 items of w_class 2
 	use_to_pickup = 1 // for picking up broken bulbs, not that most people will try
 
 /obj/item/storage/box/lights/bulbs
@@ -593,7 +593,7 @@
 	foldable = null
 	max_w_class = WEIGHT_CLASS_NORMAL
 	can_hold = list(/obj/item/organ)
-	max_storage_space = ITEMSIZE_COST_NORMAL * 5 // Formally 21.  Odd numbers are bad.
+	max_storage_space = DEFAULT_VOLUME_NORMAL * 5 // Formally 21.  Odd numbers are bad.
 	use_to_pickup = 1 // for picking up broken bulbs, not that most people will try
 
 /obj/item/storage/box/freezer/Entered(var/atom/movable/AM)
