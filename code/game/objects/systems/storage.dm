@@ -43,7 +43,7 @@
 	/// if set, max combined weight class of all containing items we can hold
 	var/max_combined_weight_class
 
-	//* State
+	//* State Caches
 
 	/// cached combined w class
 	var/tmp/cached_combined_weight_class
@@ -58,6 +58,14 @@
 		insertion_blacklist_typecache = cached_typecacheof(insertion_blacklist_typecache)
 	if(!is_typelist(insertion_allow_typecache))
 		insertion_allow_typecache = cached_typecacheof(insertion_allow_typecache)
+	rebuild_caches()
+
+//* Caches *//
+
+/datum/object_system/storage/proc/rebuild_caches()
+	cached_combined_volume = 0
+	cached_combined_weight_class = 0
+	#warn impl
 
 //* Filters *//
 
@@ -71,5 +79,16 @@
 	return TRUE
 
 //* Limits *//
+
+/datum/object_system/storage/proc/check_insertion_limits(obj/item/candidate)
+	if(!isnull(max_items))
+		#warn impl
+	if(!isnull(max_combined_volume) && (cached_combined_volume + candidate.get_volume() > max_combined_volume))
+		return FALSE
+	if(!isnull(max_single_weight_class) && (candidate.get_weight_class() > max_single_weight_class))
+		return FALSE
+	if(!isnull(max_combined_weight_class) && (cached_combined_weight_clsas + candidate.get_weight_class() > max_combined_weight_class))
+		return FALSE
+	return TRUE
 
 #warn impl

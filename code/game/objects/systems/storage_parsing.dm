@@ -11,27 +11,12 @@
 // /mob/living/Move() in /modules/mob/living/living.dm - hiding storage boxes on mob movement
 
 /datum/component/storage
-	dupe_mode = COMPONENT_DUPE_UNIQUE
 	var/datum/component/storage/concrete/master		//If not null, all actions act on master and this is just an access point.
-
-	var/list/can_hold								//if this is set, only things in this typecache will fit.
-	var/list/can_hold_extra							//if this is set, it will also be able to hold these.
-	var/list/cant_hold								//if this is set, anything in this typecache will not be able to fit.
 
 	var/list/mob/is_using							//lazy list of mobs looking at the contents of this storage.
 
 	var/locked = FALSE								//when locked nothing can see inside or use it.
 
-	/// Storage flags, including what kinds of limiters we use for how many items we can hold
-	var/storage_flags = STORAGE_FLAGS_LEGACY_DEFAULT
-	/// Max w_class we can hold. Applies to [STORAGE_LIMIT_COMBINED_W_CLASS] and [STORAGE_LIMIT_VOLUME]
-	var/max_w_class = WEIGHT_CLASS_SMALL
-	/// Max combined w_class. Applies to [STORAGE_LIMIT_COMBINED_W_CLASS]
-	var/max_combined_w_class = WEIGHT_CLASS_SMALL * 7
-	/// Max items we can hold. Applies to [STORAGE_LIMIT_MAX_ITEMS]
-	var/max_items = 7
-	/// Max volume we can hold. Applies to [STORAGE_LIMIT_VOLUME]. Auto scaled on New() if unset.
-	var/max_volume
 
 	var/emp_shielded = FALSE
 
@@ -76,41 +61,6 @@
 	if(master)
 		change_master(master)
 
-	RegisterSignal(parent, COMSIG_CONTAINS_STORAGE, .proc/on_check)
-	RegisterSignal(parent, COMSIG_IS_STORAGE_LOCKED, .proc/check_locked)
-	RegisterSignal(parent, COMSIG_TRY_STORAGE_SHOW, .proc/signal_show_attempt)
-	RegisterSignal(parent, COMSIG_TRY_STORAGE_INSERT, .proc/signal_insertion_attempt)
-	RegisterSignal(parent, COMSIG_TRY_STORAGE_CAN_INSERT, .proc/signal_can_insert)
-	RegisterSignal(parent, COMSIG_TRY_STORAGE_TAKE_TYPE, .proc/signal_take_type)
-	RegisterSignal(parent, COMSIG_TRY_STORAGE_FILL_TYPE, .proc/signal_fill_type)
-	RegisterSignal(parent, COMSIG_TRY_STORAGE_SET_LOCKSTATE, .proc/set_locked)
-	RegisterSignal(parent, COMSIG_TRY_STORAGE_TAKE, .proc/signal_take_obj)
-	RegisterSignal(parent, COMSIG_TRY_STORAGE_QUICK_EMPTY, .proc/signal_quick_empty)
-	RegisterSignal(parent, COMSIG_TRY_STORAGE_HIDE_FROM, .proc/signal_hide_attempt)
-	RegisterSignal(parent, COMSIG_TRY_STORAGE_HIDE_ALL, .proc/close_all)
-	RegisterSignal(parent, COMSIG_TRY_STORAGE_RETURN_INVENTORY, .proc/signal_return_inv)
-
-	RegisterSignal(parent, COMSIG_PARENT_ATTACKBY, .proc/attackby)
-
-	RegisterSignal(parent, COMSIG_ATOM_ATTACK_HAND, .proc/on_attack_hand)
-	RegisterSignal(parent, COMSIG_ATOM_ATTACK_PAW, .proc/on_attack_hand)
-	RegisterSignal(parent, COMSIG_ATOM_EMP_ACT, .proc/emp_act)
-	RegisterSignal(parent, COMSIG_ATOM_ATTACK_GHOST, .proc/show_to_ghost)
-	RegisterSignal(parent, COMSIG_ATOM_ENTERED, .proc/refresh_mob_views)
-	RegisterSignal(parent, COMSIG_ATOM_EXITED, .proc/_remove_and_refresh)
-	RegisterSignal(parent, COMSIG_ATOM_CANREACH, .proc/canreach_react)
-
-	RegisterSignal(parent, COMSIG_ITEM_PRE_ATTACK, .proc/preattack_intercept)
-	RegisterSignal(parent, COMSIG_ITEM_ATTACK_SELF, .proc/attack_self)
-	RegisterSignal(parent, COMSIG_ITEM_PICKUP, .proc/signal_on_pickup)
-
-	RegisterSignal(parent, COMSIG_MOVABLE_POST_THROW, .proc/close_all)
-	RegisterSignal(parent, COMSIG_MOVABLE_MOVED, .proc/check_views)
-
-	RegisterSignal(parent, COMSIG_CLICK_ALT, .proc/on_alt_click)
-	RegisterSignal(parent, COMSIG_MOUSEDROP_ONTO, .proc/mousedrop_onto)
-	RegisterSignal(parent, COMSIG_MOUSEDROPPED_ONTO, .proc/mousedrop_receive)
-
 	update_actions()
 
 /datum/component/storage/Destroy()
@@ -124,9 +74,6 @@
 		var/list/objects = ui_by_mob[i]
 		QDEL_LIST(objects)
 	ui_by_mob.Cut()
-
-/datum/component/storage/PreTransfer()
-	update_actions()
 
 /datum/component/storage/proc/update_actions()
 	QDEL_NULL(modeswitch_action)

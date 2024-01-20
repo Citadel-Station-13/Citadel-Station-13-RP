@@ -95,9 +95,11 @@
 	/// volume when breaking out using resist process
 	var/breakout_volume = 100
 
-	//? Systems - naming convention is 'object_[system]'
+	//? Systems - naming convention is 'obj_[system]'
 	/// cell slot system
 	var/datum/object_system/cell_slot/obj_cell_slot
+	/// storage system
+	var/datum/object_system/storage/obj_storage
 
 	//? misc / legacy
 	/// Set when a player renames a renamable object.
@@ -175,6 +177,7 @@
 	SStgui.close_uis(src)
 	SSnanoui.close_uis(src)
 	QDEL_NULL(obj_cell_slot)
+	QDEL_NULL(obj_storage)
 	return ..()
 
 /obj/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
@@ -565,7 +568,7 @@
 
 /**
  * Standard wallmount orientation: face away
- * 
+ *
  * Directly sets dir without setDir()
  */
 /obj/proc/auto_orient_wallmount_single_preinit()

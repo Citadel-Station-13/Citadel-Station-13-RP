@@ -805,7 +805,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 // 	. = ..()
 // 	update_action_buttons()
 
-//* Armor
+//* Armor *//
 
 /**
  * called to be checked for mob armor
@@ -826,7 +826,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	damage = fetch_armor().resultant_damage(damage, tier, flag)
 	return args.Copy()
 
-//* Attack
+//* Attack *//
 
 /**
  * grabs an attack verb to use
@@ -876,7 +876,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 /obj/item/proc/is_shred(strict)
 	return (damage_mode & DAMAGE_MODE_SHRED)
 
-//* Interaction
+//* Interaction *//
 
 /**
  * Called when the item is in the active hand, and clicked; alternately, there is an 'activate held object' verb or you can hit pagedown.
@@ -928,7 +928,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 /obj/item/proc/attacksound_override(atom/target, attack_type)
 	return
 
-//* Carry Weight
+//* Carry Weight *//
 
 /obj/item/proc/get_weight()
 	return weight
@@ -1001,7 +1001,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 		return
 	S.stored_weight_changed(src, old_weight, new_weight)
 
-//* Materials
+//* Materials *//
 
 /obj/item/material_trait_brittle_shatter()
 	var/datum/material/material = get_primary_material()
@@ -1016,7 +1016,15 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	playsound(src, "shatter", 70, 1)
 	qdel(src)
 
-//? VV
+//* Storage *//
+
+/obj/item/proc/get_weight_class()
+	return w_class
+
+/obj/item/proc/get_volume()
+	return isnull(volume)? global.w_class_to_volume[w_class || WEIGHT_CLASS_GIGANTIC] : volume
+
+//* VV *//
 
 /obj/item/vv_edit_var(var_name, var_value, mass_edit, raw_edit)
 	switch(var_name)
