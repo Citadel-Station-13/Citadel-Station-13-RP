@@ -108,7 +108,6 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 	flesh_color = "#AFA59E"
 	base_color = "#333333"
 
-	reagent_tag = IS_MOTH
 
 	move_trail = /obj/effect/debris/cleanable/blood/tracks/claw
 

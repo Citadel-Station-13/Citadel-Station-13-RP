@@ -535,13 +535,13 @@
 		if("disposeI")  //Causes the circuit imprinter to dispose of a single reagent (all of it)
 			if(!linked_imprinter)
 				return
-			linked_imprinter.reagents.del_reagent(params["dispose"])
+			linked_imprinter.reagents.remove_reagent(params["dispose"])
 			return TRUE
 
 		if("disposeallI") //Causes the circuit imprinter to dispose of all it's reagents.
 			if(!linked_imprinter)
 				return
-			linked_imprinter.reagents.clear_reagents()
+			linked_imprinter.reagents.clear()
 			return TRUE
 
 		if("removeI")
@@ -559,13 +559,13 @@
 		if("disposeP")  //Causes the protolathe to dispose of a single reagent (all of it)
 			if(!linked_lathe)
 				return
-			linked_lathe.reagents.del_reagent(params["dispose"])
+			linked_lathe.reagents.remove_reagent(params["dispose"])
 			return TRUE
 
 		if("disposeallP") //Causes the protolathe to dispose of all it's reagents.
 			if(!linked_lathe)
 				return
-			linked_lathe.reagents.clear_reagents()
+			linked_lathe.reagents.clear()
 			return TRUE
 
 		if("removeP")

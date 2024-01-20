@@ -65,7 +65,6 @@
 	base_color  = "#2e3302"
 	meat_type   = /obj/item/reagent_containers/food/snacks/meat/vox
 
-	reagent_tag = IS_VOX
 
 	has_limbs = list(
 		BP_TORSO  = list("path" = /obj/item/organ/external/chest),

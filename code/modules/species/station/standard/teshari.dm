@@ -54,7 +54,6 @@
 	flesh_color = "#5F7BB0"
 	base_color  = "#001144"
 
-	reagent_tag = IS_TESHARI
 	meat_type   = /obj/item/reagent_containers/food/snacks/meat/chicken/teshari
 	move_trail = /obj/effect/debris/cleanable/blood/tracks/paw
 

@@ -184,7 +184,7 @@
 			log_admin("LOG: [user.name] ([user.ckey]) injected a power cell with phoron, rigging it to explode.")
 			message_admins("LOG: [user.name] ([user.ckey]) injected a power cell with phoron, rigging it to explode.")
 
-		S.reagents.clear_reagents()
+		S.reagents.clear()
 
 /obj/item/cell/proc/explode()
 	var/turf/T = get_turf(src.loc)

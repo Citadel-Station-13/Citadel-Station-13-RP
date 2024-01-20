@@ -41,10 +41,10 @@
 
 	var/modifier = 1 - 0.5 * is_bruised()
 
-	if(owner.bloodstr.has_reagent("phoron"))
+	if(owner.reagents_bloodstream.has_reagent("phoron"))
 		adjust_plasma(round(4 * modifier))
 
-	if(owner.ingested.has_reagent("phoron"))
+	if(owner.reagents_ingested.has_reagent("phoron"))
 		adjust_plasma(round(2 * modifier))
 
 	adjust_plasma(1)

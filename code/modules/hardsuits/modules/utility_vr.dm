@@ -161,7 +161,7 @@
 
 	to_chat(H,"<span class='notice'>You inject [target_mob == H ? "yourself" : target_mob] with [chems_to_use] unit\s of [charge.short_name].</span>")
 	to_chat(target_mob,"<span class='notice'>You feel a rushing in your veins as you're injected by \the [src].</span>")
-	target_mob.reagents.add_reagent(charge.display_name, chems_to_use)
+	target_mob.reagents_bloodstream.add_reagent(charge.display_name, chems_to_use)
 
 	charge.charges -= chems_to_use
 	if(charge.charges < 0) charge.charges = 0

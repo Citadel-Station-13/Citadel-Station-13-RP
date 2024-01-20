@@ -1,11 +1,4 @@
 /datum/chemical_reaction/distilling
-//	name = null
-//	id = null
-//	result = null
-//	required_reagents = list()
-//	catalysts = list()
-//	inhibitors = list()
-//	result_amount = 0
 
 	//how far the reaction proceeds each time it is processed. Used with either REACTION_RATE or HALF_LIFE macros.
 	reaction_rate = HALF_LIFE(6)
@@ -21,12 +14,10 @@
 	mix_message = "The solution churns."
 	reaction_sound = 'sound/effects/slosh.ogg'
 
-//	log_is_important = 0 // If this reaction should be considered important for logging. Important recipes message admins when mixed, non-important ones just log to file.
-
 	var/list/temp_range = list(T0C, T20C)
 	var/temp_shift = 0 // How much the temperature changes when the reaction occurs.
 
-/datum/chemical_reaction/distilling/can_happen(var/datum/reagents/holder)
+/datum/chemical_reaction/distilling/can_happen(var/datum/reagent_holder/holder)
 	//check that all the required reagents are present
 	if(!holder.has_all_reagents(required_reagents))
 		return 0
@@ -50,7 +41,7 @@
 
 	return 1
 
-/datum/chemical_reaction/distilling/on_reaction(datum/reagents/holder, created_volume)
+/datum/chemical_reaction/distilling/on_reaction(datum/reagent_holder/holder, created_volume, instant)
 	if(istype(holder.my_atom, /obj/item/reagent_containers/glass/distilling))
 		var/obj/item/reagent_containers/glass/distilling/D = holder.my_atom
 		var/obj/machinery/portable_atmospherics/powered/reagent_distillery/RD = D.Master
@@ -118,7 +109,7 @@
 	temp_range = list(T0C + 600, T0C + 700)
 	temp_shift = 4
 
-/datum/chemical_reaction/distilling/berserkjuice/on_reaction(datum/reagents/holder, created_volume)
+/datum/chemical_reaction/distilling/berserkjuice/on_reaction(datum/reagent_holder/holder, created_volume, instant)
 	..()
 
 	if(prob(1))
@@ -137,7 +128,7 @@
 	temp_range = list(0, 15)
 	temp_shift = 20
 
-/datum/chemical_reaction/distilling/cryogel/on_reaction(datum/reagents/holder, created_volume)
+/datum/chemical_reaction/distilling/cryogel/on_reaction(datum/reagent_holder/holder, created_volume, instant)
 	..()
 
 	if(prob(1))

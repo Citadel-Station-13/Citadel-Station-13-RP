@@ -23,7 +23,6 @@
 
 	amount_per_transfer_from_this = 5
 	possible_transfer_amounts = list(5,10,15,30)
-	atom_flags = OPENCONTAINER
 
 	materials_base = list(MAT_GLASS = 60)
 
@@ -67,6 +66,7 @@
 
 /obj/item/reagent_containers/food/drinks/glass2/Initialize(mapload)
 	. = ..()
+	reagents.set_considered_open(TRUE)
 	icon_state = base_icon
 
 /obj/item/reagent_containers/food/drinks/glass2/on_reagent_change()

@@ -44,7 +44,6 @@
 	toxins_mod    = 0 // blackmajor "encouraged" it
 	radiation_mod = 1
 	flash_mod     = 2
-	chemOD_mod    = 1 // turns out this is just damage
 
 	breath_type = GAS_ID_PHORON
 	poison_type = GAS_ID_OXYGEN

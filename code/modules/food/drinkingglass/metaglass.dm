@@ -11,7 +11,7 @@
 
 /obj/item/reagent_containers/food/drinks/metaglass/on_reagent_change()
 	if (reagents.reagent_list.len > 0)
-		var/datum/reagent/R = reagents.get_master_reagent()
+		var/datum/reagent/R = reagents.dominant_reagent_datum()
 
 		if(R.glass_icon_state)
 			icon_state = R.glass_icon_state

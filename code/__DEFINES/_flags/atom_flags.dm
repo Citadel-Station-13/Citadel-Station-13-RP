@@ -18,12 +18,8 @@
 #define ATOM_BROKEN			(1<<6)
 /// Used for items if they don't want to get a blood overlay.
 #define NOBLOODY            (1<<7) // TODO: item flag
-/// Reagents don't react inside this container.
-#define NOREACT             (1<<8) // TODO: reagent holder flag
 /// Doesn't Conduct electricity. (metal etc.)
 #define NOCONDUCT           (1<<9) // TODO: item flag
-/// Is an open container for chemistry purposes.
-#define OPENCONTAINER       (1<<10) // TODO: reagent holder flags
 /// Does not get contaminated by phoron.
 #define PHORONGUARD         (1<<11) // TODO: item flag
 /// Does not leave user's fingerprints/fibers when used on things?
@@ -43,9 +39,7 @@ DEFINE_BITFIELD(atom_flags, list(
 	BITFIELD(ATOM_NONWORLD),
 	BITFIELD(ATOM_BROKEN),
 	BITFIELD(NOBLOODY),
-	BITFIELD(NOREACT),
 	BITFIELD(NOCONDUCT),
-	BITFIELD(OPENCONTAINER),
 	BITFIELD(PHORONGUARD),
 	BITFIELD(NOPRINT),
 	BITFIELD(ATOM_MATERIALS_TICKING),

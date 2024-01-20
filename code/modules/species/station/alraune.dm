@@ -95,7 +95,6 @@
 	blood_color = "#edf4d0" //sap!
 	base_color  = "#1a5600"
 
-	reagent_tag = IS_ALRAUNE
 
 	has_limbs = list( //cit change - unbreakable, can survive decapitation, but damage spreads to nearby neighbors when at max dmg.
 		BP_TORSO  = list("path" = /obj/item/organ/external/chest/unbreakable/plant),
@@ -256,8 +255,8 @@
 	// Too much poison in the air.
 	if(toxins_pp > safe_toxins_max)
 		var/ratio = (poison/safe_toxins_max) * 10
-		if(H.reagents)
-			H.reagents.add_reagent("toxin", clamp(ratio, MIN_TOXIN_DAMAGE, MAX_TOXIN_DAMAGE))
+		if(H.reagents_bloodstream)
+			H.reagents_bloodstream.add_reagent("toxin", clamp(ratio, MIN_TOXIN_DAMAGE, MAX_TOXIN_DAMAGE))
 			breath.adjust_gas(poison_type, -poison/6, update = 0) //update after
 		H.phoron_alert = max(H.phoron_alert, 1)
 	else

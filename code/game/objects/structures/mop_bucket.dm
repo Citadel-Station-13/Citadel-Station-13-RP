@@ -8,14 +8,13 @@
 	depth_level = 8
 	w_class = ITEMSIZE_NORMAL
 	pressure_resistance = 5
-	atom_flags = OPENCONTAINER
 	var/amount_per_transfer_from_this = 5	//shit I dunno, adding this so syringes stop runtime erroring. --NeoFite
 
 GLOBAL_LIST_BOILERPLATE(all_mopbuckets, /obj/structure/mopbucket)
 
 /obj/structure/mopbucket/Initialize(mapload, ...)
 	. = ..()
-	create_reagents(300)
+	create_reagents(300, REAGENT_HOLDER_CONSIDERED_OPEN)
 
 /obj/structure/mopbucket/examine(mob/user, dist)
 	. = ..()

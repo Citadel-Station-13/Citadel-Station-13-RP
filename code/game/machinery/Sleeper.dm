@@ -245,20 +245,15 @@
 		if(filtering > 0)
 			if(beaker)
 				if(beaker.reagents.total_volume < beaker.reagents.maximum_volume)
-					var/pumped = 0
-					for(var/datum/reagent/x in occupant.reagents.reagent_list)
-						occupant.reagents.trans_to_obj(beaker, 3)
-						pumped++
-					if(ishuman(occupant))
-						occupant.vessel.trans_to_obj(beaker, pumped + 1)
+					var/pumped = occupant.reagents_ingested.transfer_to_holder(beaker.reagents, amount = 10)
+					occupant.vessel.transfer_to_holder(beaker.reagents, amount = pumped)
 			else
 				toggle_filter()
 
 		if(pumping > 0)
 			if(beaker)
 				if(beaker.reagents.total_volume < beaker.reagents.maximum_volume)
-					for(var/datum/reagent/x in occupant.ingested.reagent_list)
-						occupant.ingested.trans_to_obj(beaker, 3)
+					occupant.reagents_ingested.transfer_to_holder(beaker.reagents, amount = 10)
 			else
 				toggle_pump()
 
@@ -409,7 +404,7 @@
 
 	if(occupant && occupant.reagents)
 		if(occupant.reagents.get_reagent_amount(chemical) + amount <= 20)
-			use_power(amount * CHEM_SYNTH_ENERGY)
+			use_power(amount * 500)
 			occupant.reagents.add_reagent(chemical, amount)
 			to_chat(user, "Occupant now has [occupant.reagents.get_reagent_amount(chemical)] units of [available_chemicals[chemical]] in their bloodstream.")
 		else

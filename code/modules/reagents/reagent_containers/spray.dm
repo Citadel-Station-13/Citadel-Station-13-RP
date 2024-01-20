@@ -58,13 +58,13 @@
 		reagents.splash(A, amount_per_transfer_from_this)
 	else
 		spawn(0)
-			var/obj/effect/water/chempuff/D = new/obj/effect/water/chempuff(get_turf(src))
+			var/obj/effect/water/chempuff/D = new/obj/weffect/water/chempuff(get_turf(src))
 			var/turf/my_target = get_turf(A)
 			D.create_reagents(amount_per_transfer_from_this)
 			if(!src)
 				return
 			reagents.trans_to_obj(D, amount_per_transfer_from_this)
-			D.color = mix_color_from_reagents(D.reagents.reagent_list)
+			D.color = D.reagents.get_color()
 			D.set_up(my_target, spray_size, 10)
 	return
 

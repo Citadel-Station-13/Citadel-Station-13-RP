@@ -99,7 +99,6 @@
 	intrinsic_languages = LANGUAGE_ID_NEAERA
 	flesh_color = "#8CD7A3"
 	blood_color = "#1D2CBF"
-	reagent_tag = IS_SKRELL
 	tail = null
 
 /datum/species/monkey/unathi
@@ -116,7 +115,6 @@
 	intrinsic_languages = LANGUAGE_ID_STOK
 	flesh_color = "#34AF10"
 	base_color  = "#066000"
-	reagent_tag = IS_UNATHI
 
 /datum/species/monkey/shark
 	name = SPECIES_MONKEY_AKULA

@@ -52,7 +52,7 @@
 		return
 
 	var/datum/seed/grown_seed
-	var/datum/reagents/grown_reagents
+	var/datum/reagent_holder/grown_reagents
 	if(istype(target,/obj/structure/table))
 		return ..()
 	else if(istype(target,/obj/item/reagent_containers/food/snacks/grown))
@@ -79,7 +79,7 @@
 			to_chat(user, "<span class='warning'>Disable the cryogenic freezing first!</span>")
 			return
 		grown_seed = H.seed
-		grown_reagents = H.reagents
+		grown_reagents = H.reagents_bloodstream
 
 	if(!grown_seed)
 		to_chat(user, "<span class='danger'>[src] can tell you nothing about \the [target].</span>")
@@ -90,11 +90,11 @@
 	user.visible_message("<span class='notice'>[user] runs the scanner over \the [target].</span>")
 
 	last_reagents = list()
-	if(grown_reagents && grown_reagents.reagent_list && grown_reagents.reagent_list.len)
-		for(var/datum/reagent/R in grown_reagents.reagent_list)
+	if(grown_reagents?.reagent_volumes.len)
+		for(var/datum/reagent/R in grown_reagents.lazy_expensive_dangerous_reagent_list())
 			last_reagents.Add(list(list(
 				"name" = R.name,
-				"volume" = grown_reagents.get_reagent_amount(R.id),
+				"volume" = grown_reagents.reagent_volumes[R.id],
 			)))
 
 	ui_interact(user)

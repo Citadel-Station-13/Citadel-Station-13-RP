@@ -565,7 +565,7 @@
 
 /**
  * Standard wallmount orientation: face away
- * 
+ *
  * Directly sets dir without setDir()
  */
 /obj/proc/auto_orient_wallmount_single_preinit()

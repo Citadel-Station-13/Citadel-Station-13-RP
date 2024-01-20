@@ -166,7 +166,7 @@
 		C.set_paralyzed(0)
 		C.radiation = 0
 		C.heal_overall_damage(C.getBruteLoss(), C.getFireLoss())
-		C.reagents.clear_reagents()
+		C.reagents.clear()
 		to_chat(C, "<span class='notice'>You have regenerated.</span>")
 		C.visible_message("<span class='warning'>[usr] appears to wake from the dead, having healed all wounds.</span>")
 		C.update_canmove()

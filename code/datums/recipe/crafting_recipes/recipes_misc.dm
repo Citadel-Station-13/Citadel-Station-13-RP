@@ -625,7 +625,6 @@
 	time = 15
 	reqs = list(/obj/item/camera = 1,
 				/datum/reagent/water/holywater = 10)
-	parts = list(/obj/item/camera = 1)
 	subcategory = CAT_MISCELLANEOUS
 	category = CAT_MISCELLANEOUS
 

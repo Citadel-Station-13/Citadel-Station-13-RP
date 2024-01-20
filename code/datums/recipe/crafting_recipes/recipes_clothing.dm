@@ -85,8 +85,6 @@
 	result = /obj/item/clothing/glasses/sunglasses/sechud
 	time = 20
 	tools = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER)
-	parts = list(/obj/item/clothing/glasses/hud/security = 1,
-					/obj/item/clothing/glasses/sunglasses = 1)
 	reqs = list(/obj/item/clothing/glasses/hud/security = 1,
 				  /obj/item/clothing/glasses/sunglasses = 1,
 				  /obj/item/stack/cable_coil = 5)
@@ -105,8 +103,6 @@
 	result = /obj/item/clothing/glasses/sunglasses/medhud
 	time = 20
 	tools = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER)
-	parts = list(/obj/item/clothing/glasses/hud/health = 1,
-				/obj/item/clothing/glasses/sunglasses = 1)
 	reqs = list(/obj/item/clothing/glasses/hud/health = 1,
 				/obj/item/clothing/glasses/sunglasses = 1,
 				/obj/item/stack/cable_coil = 5)

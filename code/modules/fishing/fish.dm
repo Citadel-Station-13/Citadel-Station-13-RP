@@ -168,7 +168,7 @@
 /obj/item/fish/proc/is_food(obj/item/thing)
 	return istype(thing, /obj/item/fish_feed)
 
-/obj/item/fish/proc/on_feeding(datum/reagents/feed_reagents)
+/obj/item/fish/proc/on_feeding(datum/reagent_holder/feed_reagents)
 	if(isnull(feed_reagents))
 		return
 	if(feed_reagents.has_reagent(food))

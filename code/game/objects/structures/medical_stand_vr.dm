@@ -18,7 +18,7 @@
 	var/mob/living/carbon/attached
 	var/mode = 1 // 1 is injecting, 0 is taking blood.
 	var/obj/item/reagent_containers/beaker
-	var/list/transfer_amounts = list(REM, 1, 2)
+	var/list/transfer_amounts = list(REAGENT_METABOLISM_NORMAL, 1, 2)
 	var/transfer_amount = 1
 
 /obj/structure/medical_stand/Initialize(mapload)
@@ -56,7 +56,7 @@
 			overlays_to_add += "line_active"
 		else
 			overlays_to_add += "line"
-		var/datum/reagents/reagents = beaker.reagents
+		var/datum/reagent_holder/reagents = beaker.reagents
 		var/percent = round((reagents.total_volume / beaker.volume) * 100)
 		if(reagents.total_volume)
 			var/image/filling = image('icons/obj/medical_stand_vr.dmi', src, "reagent")
@@ -400,7 +400,7 @@
 	if(beaker)
 		if(mode) // Give blood
 			if(beaker.volume > 0)
-				beaker.reagents.trans_to_mob(attached, transfer_amount, CHEM_INJECT)
+				beaker.reagents.trans_to_mob(attached, transfer_amount, REAGENT_APPLY_INJECT)
 				update_icon()
 		else // Take blood
 			var/amount = beaker.reagents.maximum_volume - beaker.reagents.total_volume
@@ -426,12 +426,7 @@
 			if(H.vessel.get_reagent_amount("blood") < H.species.blood_volume*H.species.blood_level_safe)
 				visible_message("\The [src] beeps loudly.")
 
-			var/datum/reagent/B = H.take_blood(beaker,amount)
-			if (B)
-				beaker.reagents.reagent_list |= B
-				beaker.reagents.update_total()
-				beaker.on_reagent_change()
-				beaker.reagents.handle_reactions()
+			if(H.vessel.transfer_to_holder(beaker.reagents, amount))
 				update_icon()
 
 	if ((!valve_opened || tank.distribute_pressure == 0) && !breather && !attached)

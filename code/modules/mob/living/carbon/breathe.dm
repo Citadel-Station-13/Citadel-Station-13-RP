@@ -16,7 +16,7 @@
 
 	//First, check if we can breathe at all
 	// cpr completely nullifies brainstem requirement
-	if(health < config_legacy.health_threshold_crit && !(CE_STABLE in chem_effects) && !stabilization) //crit aka circulatory shock
+	if(health < config_legacy.health_threshold_crit && !(CHEMICAL_EFFECT_STABLE in reagent_cycle_effects) && !stabilization) //crit aka circulatory shock
 		AdjustLosebreath(1)
 
 	if(losebreath>0) //Suffocating so do not take a breath
@@ -86,7 +86,7 @@
 
 	for(var/obj/effect/particle_effect/smoke/chem/smoke in view(1, src))
 		if(smoke.reagents.total_volume)
-			smoke.reagents.trans_to_mob(src, 10, CHEM_INGEST, copy = 1)
+			smoke.reagents.trans_to_mob(src, 10, REAGENT_APPLY_INGEST, copy = 1)
 			//maybe check air pressure here or something to see if breathing in smoke is even possible.
 			// I dunno, maybe the reagents enter the blood stream through the lungs?
 			break // If they breathe in the nasty stuff once, no need to continue checking

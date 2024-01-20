@@ -16,7 +16,7 @@
 	var/survivalfood = FALSE
 	var/nutriment_amt = 0
 	var/list/nutriment_desc = list("food" = 1)
-	var/datum/reagent/nutriment/coating/coating = null
+	var/coating_id
 	var/sealed = FALSE
 	var/custom_open_sound
 	var/open_message = "You peel open the can! It looks ready to eat!"
@@ -33,7 +33,7 @@
 /obj/item/reagent_containers/food/snacks/Initialize(mapload)
 	. = ..()
 	if(nutriment_amt)
-		reagents.add_reagent("nutriment",nutriment_amt,nutriment_desc)
+		reagents.add_reagent("nutriment",nutriment_amt,data = nutriment_desc)
 
 	//Placeholder for effect that trigger on eating that aren't tied to reagents.
 /obj/item/reagent_containers/food/snacks/proc/On_Consume(mob/M)
@@ -154,9 +154,9 @@
 				playsound(M.loc,bite_sound, rand(10,50), 1)
 			if(reagents.total_volume)
 				if(reagents.total_volume > bitesize)
-					reagents.trans_to_mob(M, bitesize, CHEM_INGEST)
+					reagents.trans_to_mob(M, bitesize, REAGENT_APPLY_INGEST)
 				else
-					reagents.trans_to_mob(M, reagents.total_volume, CHEM_INGEST)
+					reagents.trans_to_mob(M, reagents.total_volume, REAGENT_APPLY_INGEST)
 				bitecount++
 				On_Consume(M)
 			return 1
@@ -165,7 +165,8 @@
 
 /obj/item/reagent_containers/food/snacks/examine(mob/user, dist)
 	. = ..()
-	if (coating) // BEGIN CITADEL CHANGE
+	if (coating_id) // BEGIN CITADEL CHANGE
+		var/datum/reagent/coating = SSchemistry.fetch_reagent(coating_id)
 		. += "<span class='notice'>It's coated in [coating.name]!</span>"
 	if (bitecount==0)
 		return
@@ -265,7 +266,7 @@
 	user.visible_message("<b>[user]</b> nibbles away at \the [src].","You nibble away at \the [src].")
 	bitecount++
 	if(reagents)
-		reagents.trans_to_mob(user, bitesize, CHEM_INGEST)
+		reagents.trans_to_mob(user, bitesize, REAGENT_APPLY_INGEST)
 	spawn(5)
 		if(!src && !user.client)
 			user.custom_emote(1,"[pick("burps", "cries for more", "burps twice", "looks at the area where the food was")]")
@@ -993,7 +994,7 @@
 		spawn(4200)
 			src.warm = 0
 			for(var/reagent in heated_reagents)
-				src.reagents.del_reagent(reagent)
+				src.reagents.remove_reagent(reagent)
 			src.name = initial(name)
 	return
 
@@ -1809,7 +1810,7 @@
 	bitesize = 5
 	if(prob(25))
 		src.desc = "A wish come true!"
-		reagents.add_reagent("nutriment", 8, list("something good" = 8))
+		reagents.add_reagent("nutriment", 8, data = list("something good" = 8))
 
 /obj/item/reagent_containers/food/snacks/hotchili // Buff 6 >> 10
 	name = "Hot Chili"
@@ -3965,29 +3966,30 @@ END CITADEL CHANGE */
 //Code for dipping food in batter
 /obj/item/reagent_containers/food/snacks/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(target.is_open_container() && target.reagents && !(istype(target, /obj/item/reagent_containers/food)))
-		for (var/r in target.reagents.reagent_list)
-
-			var/datum/reagent/R = r
+		for (var/r in target.reagents.reagent_volumes)
+			var/datum/reagent/R = SSchemistry.fetch_reagent(r)
 			if (istype(R, /datum/reagent/nutriment/coating))
-				if (apply_coating(R, user))
+				if (apply_coating(target.reagents, R, user))
 					return 1
 
 	return ..()
 
 //This proc handles drawing coatings out of a container when this food is dipped into it
-/obj/item/reagent_containers/food/snacks/proc/apply_coating(var/datum/reagent/nutriment/coating/C, var/mob/user)
-	if (coating)
+/obj/item/reagent_containers/food/snacks/proc/apply_coating(datum/reagent_holder/holder, datum/reagent/nutriment/coating/C, var/mob/user)
+	if (coating_id)
+		var/datum/reagent/coating = SSchemistry.fetch_reagent(coating_id)
 		to_chat(user, "The [src] is already coated in [coating.name]!")
 		return 0
 
 	//Calculate the reagents of the coating needed
 	var/req = 0
-	for (var/r in reagents.reagent_list)
-		var/datum/reagent/R = r
+	for (var/r in reagents.reagent_volumes)
+		var/datum/reagent/R = SSchemistry.fetch_reagent(r)
+		var/volume = reagents.reagent_volumes[r]
 		if (istype(R, /datum/reagent/nutriment))
-			req += R.volume * 0.2
+			req += volume * 0.2
 		else
-			req += R.volume * 0.1
+			req += volume * 0.1
 
 	req += w_class*0.5
 
@@ -3995,7 +3997,7 @@ END CITADEL CHANGE */
 		//the food has no reagents left, its probably getting deleted soon
 		return 0
 
-	if (C.volume < req)
+	if (holder.reagent_volumes[C.id] < req)
 		to_chat(user, SPAN_WARNING( "There's not enough [C.name] to coat the [src]!"))
 		return 0
 
@@ -4007,14 +4009,9 @@ END CITADEL CHANGE */
 		reagents.maximum_volume += extra
 
 	//Suck the coating out of the holder
-	C.holder.trans_to_holder(reagents, req)
+	holder.transfer_to_holder(reagents, list(C.id), volume = req)
 
-	//We're done with C now, repurpose the var to hold a reference to our local instance of it
-	C = reagents.get_reagent(id)
-	if (!C)
-		return
-
-	coating = C
+	coating_id = C.id
 	//Now we have to do the witchcraft with masking images
 	//var/icon/I = new /icon(icon, icon_state)
 
@@ -4039,7 +4036,7 @@ END CITADEL CHANGE */
 
 //Called by cooking machines. This is mainly intended to set properties on the food that differ between raw/cooked
 /obj/item/reagent_containers/food/snacks/proc/cook()
-	if (coating)
+	if (coating_id)
 		var/list/temp = overlays.Copy()
 		for (var/i in temp)
 			if (istype(i, /image))
@@ -4054,6 +4051,7 @@ END CITADEL CHANGE */
 		if (!flat_icon)
 			flat_icon = get_flat_icon(src)
 		var/icon/I = flat_icon
+		var/datum/reagent/nutriment/coating/coating = SSchemistry.fetch_reagent(coating_id)
 		color = "#FFFFFF" //Some fruits use the color var
 		I.Blend(new /icon('icons/obj/food_custom.dmi', rgb(255,255,255)),ICON_ADD)
 		I.Blend(new /icon('icons/obj/food_custom.dmi', coating.icon_cooked),ICON_MULTIPLY)
@@ -4066,12 +4064,11 @@ END CITADEL CHANGE */
 		if (do_coating_prefix == 1)
 			name = "[coating.coated_adj] [name]"
 
-	for (var/r in reagents.reagent_list)
-		var/datum/reagent/R = r
+	for (var/r in reagents.reagent_volumes)
+		var/datum/reagent/R = SSchemistry.fetch_reagent(r)
 		if (istype(R, /datum/reagent/nutriment/coating))
 			var/datum/reagent/nutriment/coating/C = R
-			C.data["cooked"] = 1
-			C.name = C.cooked_name
+			reagents.set_reagent_data_key_value(r, "cooked", TRUE)
 
 /obj/item/reagent_containers/food/snacks/proc/on_consume(var/mob/eater, var/mob/feeder = null)
 	if(!reagents.total_volume)
@@ -4703,7 +4700,7 @@ END CITADEL CHANGE */
 		if (W.reagents)
 			//Reagents of reuslt objects will be the sum total of both.  Except in special cases where nonfood items are used
 			//Eg robot head
-			result.reagents.clear_reagents()
+			result.reagents.clear()
 			W.reagents.trans_to(result, W.reagents.total_volume)
 			reagents.trans_to(result, reagents.total_volume)
 
@@ -4797,7 +4794,7 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/chipplate/attack_hand(mob/user, list/params)
 	// todo: sigh, no ..(); shift over to on_attack_hand
 	var/obj/item/reagent_containers/food/snacks/returningitem = new vendingobject(loc)
-	returningitem.reagents.clear_reagents()
+	returningitem.reagents.clear()
 	reagents.trans_to_holder(returningitem.reagents, bitesize)
 	returningitem.bitesize = bitesize/2
 	user.put_in_hands(returningitem)
@@ -4846,7 +4843,7 @@ END CITADEL CHANGE */
 	else if (istype(item,/obj/item/reagent_containers/food/snacks/chip) && (item.icon_state == "chip" || item.icon_state == "chip_half"))
 		returningitem = new chiptrans(src)
 	if(returningitem)
-		returningitem.reagents.clear_reagents() //Clear the new chip
+		returningitem.reagents.clear() //Clear the new chip
 		var/memed = 0
 		item.reagents.trans_to_holder(returningitem.reagents, item.reagents.total_volume) //Old chip to new chip
 		if(item.icon_state == "chip_half")

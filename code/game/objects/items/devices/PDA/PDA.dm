@@ -1414,11 +1414,12 @@ GLOBAL_LIST_EMPTY(PDAs)
 			if(!isobj(target))
 				return
 			if(!isnull(target.reagents))
-				if(target.reagents.reagent_list.len > 0)
-					var/reagents_length = target.reagents.reagent_list.len
+				if(target.reagents.reagent_volumes.len > 0)
+					var/reagents_length = target.reagents.reagent_volumes.len
 					to_chat(user, "<span class='notice'>[reagents_length] chemical agent[reagents_length > 1 ? "s" : ""] found.</span>")
-					for (var/re in target.reagents.reagent_list)
-						to_chat(user,"<span class='notice'>    [re]</span>")
+					for (var/re in target.reagents.reagent_volumes)
+						var/datum/reagent/reagent = SSchemistry.fetch_reagent(re)
+						to_chat(user,"<span class='notice'>    [reagent.display_name || name || "-- unloaded; contact coders --"]</span>")
 				else
 					to_chat(user,"<span class='notice'>No active chemical agents found in [target].</span>")
 			else

@@ -71,7 +71,7 @@
 	say_list_type = /datum/say_list/gutshank
 	ai_holder_type = /datum/ai_holder/simple_mob/melee
 
-	var/datum/reagents/shank_gland = null
+	var/datum/reagent_holder/shank_gland = null
 	var/growing = 0
 	var/amount_grown = 1
 	var/list/grow_as = list(/mob/living/simple_mob/animal/shank)
@@ -83,8 +83,7 @@
 /mob/living/simple_mob/animal/gutshank/Initialize(mapload)
 	. = ..()
 	START_PROCESSING(SSobj, src)
-	shank_gland = new(50)
-	shank_gland.my_atom = src
+	shank_gland = new(50, src)
 
 /mob/living/simple_mob/animal/gutshank/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	var/obj/item/reagent_containers/glass/G = O

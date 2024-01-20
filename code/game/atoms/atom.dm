@@ -117,7 +117,7 @@
 
 	//? Chemistry
 	// todo: properly finalize the semantics of this variable and what it's for.
-	var/datum/reagents/reagents = null
+	var/datum/reagent_holder/reagents = null
 
 	//? Detective Work
 	// todo: rework a lot of this, especially flurescent
@@ -327,7 +327,7 @@
 			var/datum/atom_hud/alternate_appearance/selected_alternate_appearance = alternate_appearances[current_alternate_appearance]
 			selected_alternate_appearance.remove_from_hud(src)
 
-	if(reagents)
+	if(!isnull(reagents))
 		QDEL_NULL(reagents)
 
 	orbiters = null // The component is attached to us normaly and will be deleted elsewhere
@@ -355,7 +355,8 @@
 
 /// Convenience proc to see if a container is open for chemistry handling.
 /atom/proc/is_open_container()
-	return atom_flags & OPENCONTAINER
+	// todo: oh hell this is awful
+	return reagents?.reagent_holder_flags & REAGENT_HOLDER_CONSIDERED_OPEN
 
 ///Is this atom within 1 tile of another atom
 /atom/proc/HasProximity(atom/movable/proximity_check_mob as mob|obj)
@@ -460,6 +461,13 @@
 			materials_list += "[current_material.name]"
 		. += "<u>It is made out of [english_list(materials_list)]</u>."
 */
+
+	if(reagents?.reagent_holder_flags & REAGENT_HOLDER_FLAGS_ANY_EXAMINE)
+		. += "Its reagents contain:"
+		if(reagents.total_volume)
+			#warn impl
+		else
+			. += SPAN_NOTICE("&bull; Nothing.")
 	if(reagents)
 		if(reagents.reagents_holder_flags & TRANSPARENT)
 			. += "It contains:"
@@ -479,8 +487,6 @@
 					. += "[total_volume] units of various reagents"
 				if(has_alcohol)
 					. += "It smells of alcohol."
-			else
-				. += "Nothing."
 		else if(reagents.reagents_holder_flags & AMOUNT_VISIBLE)
 			if(reagents.total_volume)
 				. += SPAN_NOTICE("It has [reagents.total_volume] unit\s left.")
@@ -865,8 +871,7 @@
 		if(istype(A, /datum/reagent))
 			if(!reagents)
 				reagents = new()
-			reagents.reagent_list.Add(A)
-			reagents.conditional_update()
+			reagents.add_reagent(A, parts_list[A])
 		else if(ismovable(A))
 			var/atom/movable/M = A
 			M.forceMove(src)

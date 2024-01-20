@@ -560,8 +560,8 @@
 	// Too much poison in the air.
 	if(toxins_pp > safe_toxins_max)
 		var/ratio = (poison/safe_toxins_max) * 10
-		if(reagents)
-			reagents.add_reagent("toxin", clamp(ratio, MIN_TOXIN_DAMAGE, MAX_TOXIN_DAMAGE))
+		if(reagents_bloodstream)
+			reagents_bloodstream.add_reagent("toxin", clamp(ratio, MIN_TOXIN_DAMAGE, MAX_TOXIN_DAMAGE))
 			breath.adjust_gas(poison_type, -poison/6, update = 0) //update after
 		phoron_alert = max(phoron_alert, 1)
 	else
@@ -601,10 +601,10 @@
 		// Little bit of sanity so we aren't trying to add 0.0000000001 units of CO2, and so we don't end up with 99999 units of CO2.
 		var/reagent_id = reagent_gas_data[GAS_REAGENT_LIST_ID]
 		var/reagent_amount = ((effective_moles - reagent_gas_data[GAS_REAGENT_LIST_THRESHOLD]) * reagent_gas_data[GAS_REAGENT_LIST_FACTOR] + reagent_gas_data[GAS_REAGENT_LIST_AMOUNT]) * gas_to_process_ratio
-		reagent_amount = min(reagent_amount, reagent_gas_data[GAS_REAGENT_LIST_MAX] - reagents.get_reagent_amount(reagent_id))
+		reagent_amount = min(reagent_amount, reagent_gas_data[GAS_REAGENT_LIST_MAX] - reagents_bloodstream.get_reagent_amount(reagent_id))
 		if(reagent_amount < 0.05)
 			continue
-		reagents.add_reagent(reagent_id, reagent_amount)
+		reagents_bloodstream.add_reagent(reagent_id, reagent_amount)
 		breath.adjust_gas(gasname, -breath.gas[gasname], update = 0) //update after
 
 	// Were we able to breathe?
@@ -1136,7 +1136,7 @@
 		//Brain damage from Oxyloss
 		if(should_have_organ(O_BRAIN))
 			var/brainOxPercent = 0.015		//Default 1.5% of your current oxyloss is applied as brain damage, 50 oxyloss is 1 brain damage
-			if(CE_STABLE in chem_effects)
+			if(CHEMICAL_EFFECT_STABLE in reagent_cycle_effects)
 				brainOxPercent = 0.008		//Halved in effect
 			if(oxyloss >= (getMaxHealth() * 0.3) && prob(5)) // If oxyloss exceeds 30% of your max health, you can take brain damage.
 				adjustBrainLoss(brainOxPercent * oxyloss)
@@ -1322,7 +1322,7 @@
 			clear_fullscreen("brute")
 
 		if(healths)
-			if (chem_effects[CE_PAINKILLER] > 100)
+			if (reagent_cycle_effects[CHEMICAL_EFFECT_PAINKILLER] > 100)
 				healths.icon_state = "health_numb"
 			else
 				// Generate a by-limb health display.
@@ -1813,7 +1813,7 @@
 	temp = max(0, temp + modifier_shift)	// No negative pulses.
 
 	if(Pump)
-		for(var/datum/reagent/R in reagents.reagent_list)
+		for(var/datum/reagent/R in reagents_bloodstream.reagent_list)
 			if(R.id in bradycardics)
 				if(temp <= Pump.standard_pulse_level + 3 && temp >= Pump.standard_pulse_level)
 					temp--
@@ -1827,7 +1827,7 @@
 					temp = PULSE_NONE
 		return temp * brain_modifier
 	//handles different chems' influence on pulse
-	for(var/datum/reagent/R in reagents.reagent_list)
+	for(var/datum/reagent/R in reagents_bloodstream.reagent_list)
 		if(R.id in bradycardics)
 			if(temp <= PULSE_THREADY && temp >= PULSE_NORM)
 				temp--

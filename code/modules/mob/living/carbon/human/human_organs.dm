@@ -57,7 +57,7 @@
 
 			if (!lying && !buckled && world.time - l_move_time < 15)
 			//Moving around with fractured ribs won't do you any good
-				if (prob(10) && !stat && can_feel_pain() && chem_effects[CE_PAINKILLER] < 50 && E.is_broken() && E.internal_organs.len)
+				if (prob(10) && !stat && can_feel_pain() && reagent_cycle_effects[CHEMICAL_EFFECT_PAINKILLER] < 50 && E.is_broken() && E.internal_organs.len)
 					custom_pain("Pain jolts through your broken [E.encased ? E.encased : E.name], staggering you!", 50)
 					drop_active_held_item()
 					afflict_stun(20 * 2)
@@ -185,7 +185,7 @@
 //Handles chem traces
 /mob/living/carbon/human/proc/handle_trace_chems()
 	//New are added for reagents to random organs.
-	for(var/datum/reagent/A in reagents.reagent_list)
+	for(var/datum/reagent/A in reagents_bloodstream.reagent_list)
 		var/obj/item/organ/O = pick(organs)
 		O.trace_chemicals[A.name] = 100
 
@@ -193,4 +193,4 @@
 	var/list/all_bits = internal_organs|organs
 	for(var/obj/item/organ/O in all_bits)
 		O.set_dna(dna)
-	fixblood()		// make sure we have the right DNA since blood is an ""organ"" (scientists say it is!!)
+	assert_blood()

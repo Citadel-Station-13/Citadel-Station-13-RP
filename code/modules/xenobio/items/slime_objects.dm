@@ -204,21 +204,21 @@
 	id = "slime_bleed_fixer"
 	description = "A slimy liquid which appears to rapidly clot internal hemorrhages by increasing the effectiveness of platelets at low quantities.  Toxic in high quantities."
 	taste_description = "slime"
-	overdose = 5
+	bloodstream_overdose_threshold = 5
 
 /datum/reagent/osteodaxon/slime
 	name = "Agent B"
 	id = "slime_bone_fixer"
 	description = "A slimy liquid which can be used to heal bone fractures at low quantities.  Toxic in high quantities."
 	taste_description = "slime"
-	overdose = 5
+	bloodstream_overdose_threshold = 5
 
 /datum/reagent/peridaxon/slime
 	name = "Agent C"
 	id = "slime_organ_fixer"
 	description = "A slimy liquid which is used to encourage recovery of internal organs and nervous systems in low quantities.  Toxic in high quantities."
 	taste_description = "slime"
-	overdose = 5
+	bloodstream_overdose_threshold = 5
 
 /datum/reagent/nutriment/glucose/slime
 	name = "Slime Goop"

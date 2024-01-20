@@ -215,7 +215,7 @@
 		/obj/item/camera_film,
 		/obj/item/camera,
 		/obj/item/autopsy_scanner,
-		/obj/item/mass_spectrometer,
+		// /obj/item/mass_spectrometer,
 		/obj/item/clothing/accessory/badge,
 		/obj/item/reagent_scanner,
 		/obj/item/reagent_containers/dropper,

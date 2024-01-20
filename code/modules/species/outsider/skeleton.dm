@@ -35,7 +35,6 @@
 	toxins_mod    = 0
 	radiation_mod = 0
 	flash_mod     = 0
-	chemOD_mod    = 0
 
 	siemens_coefficient = 0
 

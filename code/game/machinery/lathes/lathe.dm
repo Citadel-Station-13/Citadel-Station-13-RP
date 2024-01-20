@@ -19,7 +19,6 @@
 	icon_state = "base"
 	base_icon_state = "base"
 	panel_icon_state = "panel"
-	atom_flags = OPENCONTAINER
 	use_power = USE_POWER_IDLE
 	idle_power_usage = POWER_USAGE_LATHE_IDLE
 	active_power_usage = POWER_USAGE_LATHE_ACTIVE_SCALE(1)
@@ -47,11 +46,15 @@
 
 	/// print speed - multiplier. affects power cost.
 	var/speed_multiplier = 1
+	/// higher is better
 	/// power efficiency - multiplier. affects power cost.
+	/// lower is better
 	var/power_multiplier = 1
 	/// material efficiency - multiplier.
+	/// lower is better
 	var/efficiency_multiplier = 1
 	/// material storage - multiplier
+	/// lower is better
 	var/storage_multiplier
 
 	/// what kind of lathe is this
@@ -62,7 +65,7 @@
 	/// material container capacity - list with ids for specific, null for infinite, just a number for combined.
 	var/materials_max = SHEET_MATERIAL_AMOUNT * 100
 	/// reagents storage datum
-	var/datum/reagents/stored_reagents
+	var/datum/reagent_holder/stored_reagents
 	/// has reagents? if above 0, we make reagents datum.
 	var/reagents_max = 0
 	/// stored items
@@ -90,6 +93,7 @@
 	/// can recycle
 	var/recycle = TRUE
 	/// recycle efficiency
+	/// higher is better; this should never be above 1.
 	var/recycle_efficiency = 0.8
 
 	/// designs held - set to instance to instantiate.
@@ -251,7 +255,7 @@
 		stored_materials.set_multiplied_capacity(materials_max, storage_multiplier)
 	if(isnull(stored_reagents))
 		if(reagents_max != 0)
-			stored_reagents = new(reagents_max, src)
+			stored_reagents = new(reagents_max, src, REAGENT_HOLDER_CONSIDERED_OPEN | REAGENT_HOLDER_SYRINGE_DRAWABLE | REAGENT_HOLDER_SYRINGE_INJECTABLE | REAGENT_HOLDER_EXAMINE_OVERALL_VOLUME | REAGENT_HOLDER_TRANSPARENT_ANALYSIS)
 	else
 		stored_reagents.maximum_volume = reagents_max
 
@@ -288,11 +292,11 @@
 		for(var/key in instance.material_costs)
 			var/id = material_parts[key]
 			materials[id] += instance.material_costs[key]
-		. = stored_materials.has_multiple(materials, efficiency_multiplier)
+		. = stored_materials.has_multiple(materials) / efficiency_multiplier
 	if(!.)
 		return
 	if(length(instance.reagents))
-		. = min(., stored_reagents?.has_multiple(instance.reagents, efficiency_multiplier))
+		. = min(., stored_reagents?.has_multiple(instance.reagents) / efficiency_multiplier)
 	if(!.)
 		return
 	// ingredients? return 1 at most.

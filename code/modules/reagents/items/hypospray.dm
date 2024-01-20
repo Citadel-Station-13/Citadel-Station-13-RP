@@ -206,10 +206,10 @@
 	var/where_str
 	switch(mode)
 		if(HYPOSPRAY_MODE_INJECT)
-			loaded.reagents.trans_to_mob(target, inject_amount, CHEM_INJECT)
+			loaded.reagents.trans_to_mob(target, inject_amount, REAGENT_APPLY_INJECT)
 			where_str = "rushing into your veins"
 		if(HYPOSPRAY_MODE_SPRAY)
-			loaded.reagents.trans_to_mob(target, inject_amount, CHEM_TOUCH)
+			loaded.reagents.trans_to_mob(target, inject_amount, REAGENT_APPLY_TOUCH)
 			where_str = "on your skin"
 	playsound(src, 'sound/items/hypospray2.ogg', 50, TRUE, -1)
 	target.tactile_feedback(SPAN_WARNING("You feel a tiny prick, and a cool sensation [where_str]."))

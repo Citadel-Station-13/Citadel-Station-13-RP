@@ -1,24 +1,69 @@
-//* Reagent exposure methods.
-//* These are flags for combined checks, but are often passed as an one-bit-value enum to procs.
 
+//* Application *//
+
+//* These are flags for combined checks, but are often passed as an one-bit-value enum to procs.
 /// Splashed, touched, sprayed, etc
-#define CHEM_TOUCH (1<<0)
+#define REAGENT_APPLY_SKIN (1<<0)
+/// Patches, etc. Implied to be partially hypodermic, and at least apply more effectively.
+#define REAGENT_APPLY_DERMAL (1<<1)
 /// Eaten, drunk, etc
-#define CHEM_INGEST (1<<1)
+#define REAGENT_APPLY_INGEST (1<<2)
 /// Injected into bloodstream or equivalent
-#define CHEM_INJECT (1<<2)
+#define REAGENT_APPLY_INJECT (1<<3)
 /// Inhaled or immersed in gas
 //  todo: this is currently unimplemented.
-#define CHEM_VAPOR (1<<3)
+#define REAGENT_APPLY_INHALE (1<<4)
+
+//* Effects *//
+
+//* Legacy chemical effect defines, they get flagged on a mob as necessary during metabolism, and is reset every tick
+//* We prefer reagent effect datums over this.
+
+/// Inaprovaline
+#define CHEMICAL_EFFECT_STABLE "stable"
+/// Antibiotics
+#define CHEMICAL_EFFECT_ANTIBIOTIC "antibiotic"
+/// Iron/nutriment
+#define CHEMICAL_EFFECT_BLOODRESTORE "bloodrestore"
+#define CHEMICAL_EFFECT_PAINKILLER "painkiller"
+/// Liver filtering
+#define CHEMICAL_EFFECT_ALCOHOL "alcohol"
+/// Liver damage
+#define CHEMICAL_EFFECT_ALCOHOL_TOXIC "alcotoxic"
+/// Hyperzine
+#define CHEMICAL_EFFECT_SPEEDBOOST "gofast"
+/// Slowdown
+#define CHEMICAL_EFFECT_SLOWDOWN "goslow"
+/// Don't puke.
+#define CHEMICAL_EFFECT_ANTACID "nopuke"
+
+//* Metabolism *//
+
+#define REAGENT_METABOLISM_NORMAL 0.2
+#define REAGENT_METABOLISM_OVERDOSE 0.2
+
+#define REAGENTS_OVERDOSE_MEDICINE 30
+
+//* Mobs *//
+
+//* Reagent biologies - replaces IS_XYZ's. One's species ID is automatically added to reagent biologies.
+/// format a species ID to be a reagent biology
+#define REAGENT_BIOLOGY_SPECIES(ID) ("s-" + ID)
+
+//* Simulation *//
+
+/// accuracy
+#define REAGENT_ACCURACY 0.01
+/// quantize
+#define REAGENT_QUANTIZE(N) round(N, REAGENT_ACCURACY)
 
 //* Unsorted
 
+// todo: why is this in chemistry?
 /// Factor of how fast mob nutrition decreases
 #define DEFAULT_HUNGER_FACTOR 0.03
 /// Factor of how fast mob hydration decreases
 #define DEFAULT_THIRST_FACTOR 0.03
-/// Means 'Reagent Effect Multiplier'. This is how many units of reagent are consumed per tick
-#define REM 0.2
 
 #define MINIMUM_CHEMICAL_VOLUME 0.01
 
@@ -27,49 +72,9 @@
 #define REAGENT_LIQUID 2
 #define REAGENT_GAS 3
 
-#define REAGENTS_OVERDOSE 30
-
-/// How much energy does it take to synthesize 1 unit of chemical, in Joules.
-#define CHEM_SYNTH_ENERGY 500
-// Some on_mob_life() procs check for alien races.
-// TODO: better way? flags? we won't possibly need more than 24 right...?
-#define IS_DIONA   1
-#define IS_VOX     2
-#define IS_SKRELL  3
-#define IS_UNATHI  4
-#define IS_TAJARA  5
-#define IS_XENOS   6
-#define IS_TESHARI 7
-#define IS_SLIME   8
-#define IS_ZADDAT  9
-#define IS_CHIMERA 12
-#define IS_SHADEKIN 13
-#define IS_ALRAUNE 14
-#define IS_APIDAEN 15
-#define IS_XENOHYBRID 16
-#define IS_MOTH		17
-#define IS_NARAMADI 18
-
-/// Inaprovaline
-#define CE_STABLE "stable"
-/// Antibiotics
-#define CE_ANTIBIOTIC "antibiotic"
-/// Iron/nutriment
-#define CE_BLOODRESTORE "bloodrestore"
-#define CE_PAINKILLER "painkiller"
-/// Liver filtering
-#define CE_ALCOHOL "alcohol"
-/// Liver damage
-#define CE_ALCOHOL_TOXIC "alcotoxic"
-/// Hyperzine
-#define CE_SPEEDBOOST "gofast"
-/// Slowdown
-#define CE_SLOWDOWN "goslow"
-/// Don't puke.
-#define CE_ANTACID "nopuke"
 #define REAGENTS_PER_SHEET 20
 
-// Attached to CE_ANTIBIOTIC
+// Attached to CHEMICAL_EFFECT_ANTIBIOTIC
 #define ANTIBIO_NORM	1
 #define ANTIBIO_OD		2
 #define ANTIBIO_SUPER	3
@@ -100,24 +105,6 @@ var/list/cheartstopper = list("potassium_chloride")                       // Thi
 #define SYRINGE_INJECT 1
 #define SYRINGE_BROKEN 2
 #define SYRINGE_CAPPED 3
-
-//reagents_holder_flags defines
-///Makes it possible to add reagents through droppers and syringes.
-#define INJECTABLE (1<<0)
-///Makes it possible to remove reagents through syringes.
-#define DRAWABLE (1<<1)
-
-///Makes it possible to add reagents through any reagent container.
-#define REFILLABLE (1<<2)
-///Makes it possible to remove reagents through any reagent container.
-#define DRAINABLE (1<<3)
-
-///Used on containers which you want to be able to see the reagents off.
-#define TRANSPARENT (1<<4)
-///For non-transparent containers that still have the general amount of reagents in them visible.
-#define AMOUNT_VISIBLE (1<<5)
-///Applied to a reagent holder, the contents will not react with each other.
-#define NO_REACT (1<<6)
 
 //! Used by chem master
 #define CONDIMASTER_STYLE_AUTO "auto"
