@@ -324,8 +324,8 @@
 		for(var/mob/M in viewers(4, src))
 			if(M == src || M.is_blind())
 				continue
-			if(M.client && M.client.is_preference_enabled(/datum/client_preference/examine_look))
-				to_chat(M, SPAN_TINYNOTICE("<b>\The [src]</b> looks at \the [A]."))
+			// if(M.client && M.client.is_preference_enabled(/datum/client_preference/examine_look))
+			to_chat(M, SPAN_TINYNOTICE("<b>\The [src]</b> looks at \the [A]."))
 
 	do_examinate(A)
 

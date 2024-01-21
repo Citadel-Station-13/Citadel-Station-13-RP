@@ -12,12 +12,13 @@ var/global/floorIsLava = 0
 		confidential = TRUE)
 
 /proc/msg_admin_attack(var/text) //Toggleable Attack Messages
-	var/rendered = "<span class='log_message><span class='prefix'>ATTACK:</span> <span class='message'>[text]</span></span>"
-	for(var/client/C in GLOB.admins)
-		if((R_ADMIN|R_MOD) & C.holder.rights)
-			if(C.is_preference_enabled(/datum/client_preference/mod/show_attack_logs))
-				var/msg = rendered
-				to_chat(C, msg)
+	return
+	// var/rendered = "<span class='log_message><span class='prefix'>ATTACK:</span> <span class='message'>[text]</span></span>"
+	// for(var/client/C in GLOB.admins)
+	// 	if((R_ADMIN|R_MOD) & C.holder.rights)
+	// 		if(C.is_preference_enabled(/datum/client_preference/mod/show_attack_logs))
+	// 			var/msg = rendered
+	// 			to_chat(C, msg)
 
 /proc/admin_notice(var/message, var/rights)
 	for(var/mob/M in GLOB.mob_list)

@@ -1,3 +1,4 @@
+
 //Toggles for preferences, normal clients
 /client/verb/toggle_ghost_ears()
 	set name = "Show/Hide Ghost Ears"
@@ -309,34 +310,34 @@
 //Toggles for Staff
 //Developers
 
-/client/proc/toggle_debug_logs()
-	set name = "Toggle Debug Logs"
-	set category = "Preferences"
-	set desc = "Toggles debug logs."
+// /client/proc/toggle_debug_logs()
+// 	set name = "Toggle Debug Logs"
+// 	set category = "Preferences"
+// 	set desc = "Toggles debug logs."
 
-	var/pref_path = /datum/client_preference/debug/show_debug_logs
+// 	var/pref_path = /datum/client_preference/debug/show_debug_logs
 
-	if(check_rights(R_ADMIN|R_DEBUG))
-		toggle_preference(pref_path)
-		to_chat(src,"You will [ (is_preference_enabled(pref_path)) ? "now" : "no longer"] receive debug logs.")
-		SScharacters.queue_preferences_save(prefs)
+// 	if(check_rights(R_ADMIN|R_DEBUG))
+// 		toggle_preference(pref_path)
+// 		to_chat(src,"You will [ (is_preference_enabled(pref_path)) ? "now" : "no longer"] receive debug logs.")
+// 		SScharacters.queue_preferences_save(prefs)
 
-	feedback_add_details("admin_verb","TBeSpecial") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+// 	feedback_add_details("admin_verb","TBeSpecial") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-//Mods
-/client/proc/toggle_attack_logs()
-	set name = "Toggle Attack Logs"
-	set category = "Preferences"
-	set desc = "Toggles attack logs."
+// //Mods
+// /client/proc/toggle_attack_logs()
+// 	set name = "Toggle Attack Logs"
+// 	set category = "Preferences"
+// 	set desc = "Toggles attack logs."
 
-	var/pref_path = /datum/client_preference/mod/show_attack_logs
+// 	var/pref_path = /datum/client_preference/mod/show_attack_logs
 
-	if(check_rights(R_ADMIN|R_MOD))
-		toggle_preference(pref_path)
-		to_chat(src,"You will [ (is_preference_enabled(pref_path)) ? "now" : "no longer"] receive attack logs.")
-		SScharacters.queue_preferences_save(prefs)
+// 	if(check_rights(R_ADMIN|R_MOD))
+// 		toggle_preference(pref_path)
+// 		to_chat(src,"You will [ (is_preference_enabled(pref_path)) ? "now" : "no longer"] receive attack logs.")
+// 		SScharacters.queue_preferences_save(prefs)
 
-	feedback_add_details("admin_verb","TBeSpecial") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+// 	feedback_add_details("admin_verb","TBeSpecial") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /mob/living/carbon/human/verb/toggle_pain_msg()
 	set name = "Toggle Pain Messages"

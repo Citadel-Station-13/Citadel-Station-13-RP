@@ -133,6 +133,7 @@
 #include "code\__DEFINES\atmospherics\machinery\scrubber.dm"
 #include "code\__DEFINES\atmospherics\machinery\vent.dm"
 #include "code\__DEFINES\cargo\supply.dm"
+#include "code\__DEFINES\client\game_preferences.dm"
 #include "code\__DEFINES\client\player_flags.dm"
 #include "code\__DEFINES\client\playtime.dm"
 #include "code\__DEFINES\color\color.dm"

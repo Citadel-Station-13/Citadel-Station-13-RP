@@ -1,6 +1,8 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
+#warn global list
+
 /datum/game_preference_entry
 	var/name = "-- broken entry --"
 	var/description = "A preference entry."

@@ -321,41 +321,6 @@
 	return uppertext(copytext_char(t, 1, 2)) + copytext_char(t, 2)
 
 /**
- * Syntax is "stringtoreplace"="stringtoreplacewith".
- */
-/proc/autocorrect(input as text)
-	return input = replace_characters(input, list(
-		" i "      = " I ",
-		"i'm"      = "I'm",
-		"s's"      = "s'",
-		"isnt"     = "isn't",
-		"dont"     = "don't",
-		"shouldnt" = "shouldn't",
-		" ive "    = " I've ",
-		"whove"    = "who've",
-		"whod"     = "who’d",
-		"whats "    = "what’s ",
-		"whatd"    = "what’d",
-		"thats"    = "that’s",
-		"thatll"   = "that’ll",
-		"thatd"    = "that’d",
-		" nows "   = " now’s ",
-		"isnt"     = "isn’t",
-		" arent "  = " aren’t ",
-		"wasnt"    = "wasn’t",
-		"werent"   = "weren’t",
-		"havent"   = "haven’t",
-		"hasnt"    = "hasn’t",
-		"hadnt"    = "hadn’t",
-		"doesnt"   = "doesn’t",
-		"didnt"    = "didn’t",
-		"couldnt"  = "couldn’t",
-		"wouldnt"  = "wouldn’t",
-		"mustnt"   = "mustn’t",
-		"shouldnt" = "shouldn’t",
-	))
-
-/**
  * This proc strips html properly, remove < > and all text between
  * for complete text sanitizing should be used sanitize()
  */
