@@ -285,3 +285,47 @@ send an additional command to open the door again.
 
 	if(doorCommand)
 		signalDoor(doorTag, doorCommand)
+
+/datum/computer/file/embedded_program/airlock/access_controll/process()
+	switch(state)
+		if(STATE_OPEN_OUT)
+			return 1
+		if(STATE_OPEN_IN)
+			return 1
+		if(STATE_CLOSED)
+			return 1
+		if(STATE_BYPASS)
+			return 1
+		if(STATE_CYCLING_IN)
+			if(memory["exterior_status"]["state"] == "open")
+				toggleDoor(memory["exterior_status"],tag_exterior_door, 1, "close")
+			else
+				toggleDoor(memory["interior_status"],tag_interior_door, 1, "open")
+				state = STATE_OPEN_IN
+				memory["processing"] = FALSE
+		if(STATE_CYCLING_OUT)
+			if(memory["interior_status"]["state"] == "open")
+				toggleDoor(memory["interior_status"],tag_interior_door, 1, "close")
+			else
+				toggleDoor(memory["exterior_status"],tag_exterior_door, 1, "open")
+				signalPump(tag_airpump, 0, 1, memory["external_sensor_pressure"])//Turn the pump off
+				state = STATE_OPEN_OUT
+				memory["processing"] = FALSE
+		if(STATE_SEALING)
+			if(memory["interior_status"]["state"] == "open")
+				toggleDoor(memory["interior_status"],tag_interior_door, 1, "close")
+				memory["processing"] = TRUE
+			else if(memory["exterior_status"]["state"] == "open")
+				toggleDoor(memory["exterior_status"],tag_exterior_door, 1, "close")
+				memory["processing"] = TRUE
+			else
+				state = STATE_CLOSED
+				memory["processing"] = FALSE
+		if(STATE_BYPASSING)
+			signalDoor(tag_interior_door, "unlock")
+			signalDoor(tag_exterior_door, "unlock")
+			state = STATE_BYPASS
+
+		else
+			state = STATE_UNDEFINED
+	return 1
