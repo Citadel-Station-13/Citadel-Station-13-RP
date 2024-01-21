@@ -291,20 +291,6 @@ var/list/_client_preferences_by_type
 /datum/client_preference/debug/may_toggle(var/mob/preference_mob)
 	return check_rights(R_DEBUG|R_ADMIN, 0, preference_mob)
 
-/datum/client_preference/mod/show_attack_logs
-	description = "Attack Log Messages"
-	key = "CHAT_ATTACKLOGS"
-	enabled_description = "Show"
-	disabled_description = "Hide"
-	enabled_by_default = FALSE
-
-/datum/client_preference/debug/show_debug_logs
-	description = "Debug Log Messages"
-	key = "CHAT_DEBUGLOGS"
-	enabled_description = "Show"
-	disabled_description = "Hide"
-	enabled_by_default = FALSE
-
 /datum/client_preference/admin/show_chat_prayers
 	description = "Chat Prayers"
 	key = "CHAT_PRAYER"
@@ -345,18 +331,6 @@ var/list/_client_preferences_by_type
 	enabled_by_default = FALSE
 	enabled_description = "Obfuscate Ghost"
 	disabled_description = "Normal Ghost"
-
-/datum/client_preference/autocorrect
-	description = "Autocorrect"
-	key = "AUTOCORRECT"
-	enabled_description = "Enabled"
-	disabled_description = "Disabled"
-
-/datum/client_preference/examine_look
-	description = "Examine Messages"
-	key = "EXAMINE_LOOK"
-	enabled_description = "Show"
-	disabled_description = "Hide"
 
 /datum/client_preference/language_indicator
 	description = "Language Indicators"
