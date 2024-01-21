@@ -15,6 +15,8 @@ SUBSYSTEM_DEF(dbcore)
 
 	var/connection  // Arbitrary handle returned from rust_g.
 
+	var/was_ever_connected = FALSE
+
 /datum/controller/subsystem/dbcore/Initialize()
 	//We send warnings to the admins during subsystem init, as the clients will be New'd and messages
 	//will queue properly with goonchat
@@ -95,6 +97,10 @@ SUBSYSTEM_DEF(dbcore)
 	. = (result["status"] == "ok")
 	if (.)
 		connection = result["handle"]
+		if(was_ever_connected)
+			// we got re-connected.
+			world.on_sql_reconnect()
+		was_ever_connected = TRUE
 	else
 		connection = null
 		last_error = result["data"]
@@ -337,3 +343,9 @@ Delayed insert mode was removed in mysql 7 and only works with MyISAM type table
 	text = replacetext(text, ";", "")
 	text = replacetext(text, "&", "")
 	return text
+
+/**
+ * Override this proc when you need to hook into it.
+ */
+/world/proc/on_sql_reconnect()
+	return

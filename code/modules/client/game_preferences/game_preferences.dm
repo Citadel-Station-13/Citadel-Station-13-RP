@@ -1,7 +1,25 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
-#warn global list
+/// key value ckey = value
+GLOBAL_LIST_EMPTY(game_preferences)
+
+/proc/resolve_game_preferences(ckey)
+	if(!istype(GLOB.game_preferences[ckey]))
+		var/datum/game_preferences/initializing = new(ckey)
+		GLOB.game_preferences[ckey] = initializing
+		initializing.initialize()
+	return GLOB.game_preferences[ckey]
+
+#warn global list + how to grab them
+
+/world/on_sql_reconnect()
+	for(var/ckey in GLOB.game_preferences)
+		var/datum/game_preferences/preferences = GLOB.game_preferences[ckey]
+		if(!istype(preferences))
+			continue
+		preferences.oops_sql_came_back_perform_a_reload()
+	return ..()
 
 /**
  * Game preferences
@@ -24,6 +42,9 @@
 	/// - if sql wasn't originally loaded and sql comes back and a sql save exists, we are overwritten
 	/// - if a save doesn't exist, we are authoritative and are flushed to sql
 	var/authoritatively_loaded_by_sql
+	/// something fucky wucky happened and the next time sql comes back,
+	/// we need to flush data and assert authoritativeness
+	var/sql_state_desynced = FALSE
 	/// our player's ckey
 	var/ckey
 	/// our player's id
@@ -32,6 +53,9 @@
 	/// we will try to load a sql preferences of a given playerid
 	/// when we load from sql
 	var/authoritative_player_id
+
+/datum/game_preferences/New(ckey)
+	src.ckey = ckey
 
 //* Init *//
 
