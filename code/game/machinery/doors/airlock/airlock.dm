@@ -199,20 +199,18 @@ GLOBAL_REAL_VAR(airlock_typecache) = typecacheof(list(
 	if(panel_open)
 		panel_overlay = panel_file
 
-	cut_overlays()
-	// todo: micro-optimizations, right now we're just using listclearnulls on SSoverlays side ~silicons
-	add_overlay(list(
-		color_overlay,
-		filling_overlay,
-		stripe_overlay,
-		stripe_filling_overlay,
-		panel_overlay,
-		weld_overlay,
-		brace_overlay,
-		lights_overlay,
-		sparks_overlay,
-		damage_overlay,
-	))
+	overlays.Cut()
+
+	overlays += color_overlay
+	overlays += filling_overlay
+	overlays += stripe_overlay
+	overlays += stripe_filling_overlay
+	overlays += panel_overlay
+	overlays += weld_overlay
+	overlays += lights_overlay
+	overlays += brace_overlay
+	overlays += sparks_overlay
+	overlays += damage_overlay
 
 /obj/machinery/door/airlock/attack_generic(var/mob/living/user, var/damage)
 	// todo: refactor
