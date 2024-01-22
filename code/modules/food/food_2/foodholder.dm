@@ -22,7 +22,12 @@
 	. += SPAN_NOTICE("<b>Alt-click</b> to remove an ingredient from this.")
 	. += SPAN_NOTICE("<b>Control-click</b> in grab intent to retrieve a serving of food.")
 	. += SPAN_NOTICE("It contains:")
-	for(var/obj/item/reagent_containers/food/snacks/ingredient/examine_ingredient in contents)
+	for(var/obj/item/examine_item in contents)
+		if(!istype(examine_item, /obj/item/reagent_containers/food/snacks/ingredient))
+			. += "<span class='notice'>[icon2html(thing = examine_item, target = user)] The [examine_item].</span>"
+			continue
+		
+		var/obj/item/reagent_containers/food/snacks/ingredient/examine_ingredient = examine_item
 		var/cooked_span = "userdanger"
 		switch(examine_ingredient.cookstage)
 			if(RAW)
@@ -34,7 +39,6 @@
 			if(BURNT)
 				cooked_span = "tajaran_signlang"
 		. += "<span class='notice'>[icon2html(thing = examine_ingredient, target = user)] The [examine_ingredient.name], which looks </span><span class='[cooked_span]'>[examine_ingredient.cookstage2text()]</span><span class='notice'> and has been cooked for about [examine_ingredient.accumulated_time_cooked / 10] seconds.</span>"
-
 
 /obj/item/reagent_containers/glass/food_holder/update_icon()
 	var/mutable_appearance/filling_overlay = mutable_appearance(icon, "[icon_state]_filling_overlay")
@@ -85,7 +89,11 @@
 /obj/item/reagent_containers/glass/food_holder/AltClick(mob/living/user)
 	var/list/removables = list()
 	var/counter = 0
-	for(var/obj/item/reagent_containers/food/snacks/ingredient/I in contents)
+	for(var/obj/item/removeding in contents)
+		if(!istype(removeding, /obj/item/reagent_containers/food/snacks/ingredient))
+			user.put_in_hands_or_drop(removeding)
+			continue
+		var/obj/item/reagent_containers/food/snacks/ingredient/I = removeding
 		if(counter)
 			removables["[I.name] ([counter]) \[[I.cookstage2text()]\]"] = I
 			to_chat(user, "Option [I.name] ([counter]) \[[I.cookstage2text()]\] = [I]")
@@ -93,6 +101,8 @@
 			removables["[I.name] \[[I.cookstage2text()]\]"] = I
 			to_chat(user, "Option [I.name] \[[I.cookstage2text()]\] = [I]")
 		counter++
+	if(!LAZYLEN(removables))
+		return
 	var/remove_item = removables[1]
 	if(LAZYLEN(removables) > 1)
 		remove_item = input(user, "What to remove?", "Remove from container", null) as null|anything in removables
@@ -100,6 +110,7 @@
 		user.put_in_hands_or_drop(removables[remove_item])
 		return TRUE
 	return FALSE
+
 
 /obj/item/reagent_containers/glass/food_holder/proc/try_merge(obj/item/reagent_containers/food/snacks/ingredient/I, obj/item/reagent_containers/food/snacks/ingredient/compare_ingredient, mob/user)
 	if(!istype(I))

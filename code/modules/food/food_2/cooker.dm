@@ -25,17 +25,19 @@
 	var/list/visible_position_xy = list(list(-7, 6), list(7, 6),list(-7, -3), list(7, -3))//for mapping a pixel_x, pixel_y to abstract ''position
 
 
+// . += "<span class='notice'>[icon2html(thing = examine_ingredient, target = user)] The [examine_ingredient.name], which looks </span><span class='[cooked_span]'>[examine_ingredient.cookstage2text()]</span><span class='notice'> and has been cooked for about [examine_ingredient.accumulated_time_cooked / 10] seconds.</span>"
+#warn todo: show ingred
 /obj/machinery/cooking/examine(mob/user, dist)
 	. = ..()
 	switch(cooking_power)
 		if(0)
-			. += "<span class='notice'> [src] is off.</span>"
+			. += "<span class='notice'>[src] is off.</span>"
 		if(HEAT_LOW)
-			. += "<span class='notice'> [src] is on low heat.</span>"
+			. += "<span class='notice'>[src] is set to low heat.</span>"
 		if(HEAT_MID)
-			. += "<span class='notice'> [src] is medium heat.</span>"
+			. += "<span class='notice'>[src] is set to medium heat.</span>"
 		if(HEAT_HIGH)
-			. += "<span class='notice'> [src] is high heat.</span>"
+			. += "<span class='notice'>[src] is set to high heat.</span>"
 
 
 /obj/machinery/cooking/Initialize(mapload, newdir)
