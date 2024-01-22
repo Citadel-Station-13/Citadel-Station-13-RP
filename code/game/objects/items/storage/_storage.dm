@@ -55,6 +55,29 @@
 
 /obj/item/storage/Initialize(mapload)
 	. = ..()
+	
+	initialize_storage()
+	initialize_contents()
+
+/obj/item/storage/proc/initialize_contents()
+	#warn impl
+
+/obj/item/storage/proc/initialize_storage()
+	ASSERT(isnull(obj_storage))
+	obj_storage = new(src)
+	obj_storage.set_insertion_allow(insertion_allow)
+	obj_storage.set_insertion_whitelist(insertion_whitelist)
+	obj_storage.set_insertion_blacklist(insertion_blacklist)
+
+	obj_storage.max_single_weight_class = max_weight_class
+	obj_storage.max_combined_weight_class = max_combined_weight_class
+	obj_storage.max_combined_volume = max_combined_volume
+	obj_storage.max_items = max_item
+
+#warn below
+
+/obj/item/storage/Initialize(mapload)
+	. = ..()
 
 	if(allow_quick_empty)
 		add_obj_verb(src, /obj/item/storage/verb/quick_empty)

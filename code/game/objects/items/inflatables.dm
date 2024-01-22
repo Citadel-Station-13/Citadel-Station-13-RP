@@ -67,8 +67,8 @@
 	desc = "Contains inflatable walls and doors."
 	icon_state = "inf_box"
 	w_class = WEIGHT_CLASS_NORMAL
-	max_storage_space = WEIGHT_VOLUME_NORMAL * 7
-	can_hold = list(/obj/item/inflatable)
+	max_combined_volume = WEIGHT_VOLUME_NORMAL * 7
+	insertion_whitelist = list(/obj/item/inflatable)
 
 /obj/item/storage/briefcase/inflatable/PopulateContents()
 	. = ..()

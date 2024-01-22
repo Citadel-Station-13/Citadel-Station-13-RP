@@ -11,10 +11,10 @@
 	//* Access 
 
 	/// if set, limit allowable random access to first n items
-	var/limited_random_access_via_stack_amount
+	var/limited_random_access_stack_amount
 	/// if set, limit allowable random access goes from bottom up, not top down
 	/// * top down is from end of contents list, bottom up is from start of contents list
-	var/limited_random_access_via_stack_bottom_first = FALSE
+	var/limited_random_access_stack_bottom_first = FALSE
 	
 	//* Deconstruction & Integrity
 	
@@ -200,12 +200,21 @@
 	return TRUE
 
 /datum/object_system/storage/proc/set_insertion_whitelist(list/types)
+	if(isnull(types))
+		src.insertion_whitelist_typecache = null
+		return
 	src.insertion_whitelist_typecache = cached_typecacheof(types)
 
 /datum/object_system/storage/proc/set_insertion_blacklist(list/types)
+	if(isnull(types))
+		src.insertion_blacklist_typecache = null
+		return
 	src.insertion_blacklist_typecache = cached_typecacheof(types)
 
 /datum/object_system/storage/proc/set_insertion_allow(list/types)
+	if(isnull(types))
+		src.insertion_allow_typecache = null
+		return
 	src.insertion_allow_typecache = cached_typecacheof(types)
 
 //* Interaction *//
@@ -402,3 +411,12 @@
 /datum/object_system/storage/stack
 
 #warn scream
+
+
+//? Lazy wrappers for init
+
+/obj/proc/init_storage(path = /datum/object_system/storage)
+	RETURN_TYPE(/datum/object_system/storage)
+	ASSERT(isnull(obj_storage))
+	obj_storage = new path(src)
+	return obj_storage
