@@ -62,11 +62,11 @@
 	icon_state = "syringe_case"
 
 	w_class = WEIGHT_CLASS_SMALL
-	max_w_class = WEIGHT_CLASS_TINY
-	max_storage_space = WEIGHT_CLASS_TINY * 6 //Capable of holding six syringes
+	max_weight_class = WEIGHT_CLASS_TINY
+	max_combined_volume = WEIGHT_CLASS_TINY * 6 //Capable of holding six syringes
 
 	//Can hold syringes and autoinjectors, but also pills if you really wanted. Syringe-shaped objects like pens and cigarettes also fit, but why would you do that?
-	can_hold = list(/obj/item/reagent_containers/syringe, /obj/item/reagent_containers/hypospray/autoinjector,
+	insertion_whitelist = list(/obj/item/reagent_containers/syringe, /obj/item/reagent_containers/hypospray/autoinjector,
 					/obj/item/reagent_containers/pill, /obj/item/pen, /obj/item/flashlight/pen, /obj/item/clothing/mask/smokable/cigarette)
 
 	quickmode = 1 //Starts in quickdraw mode

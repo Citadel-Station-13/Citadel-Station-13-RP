@@ -11,9 +11,9 @@
 	desc = "The peak of thousands of years of laundry evolution."
 
 	w_class = WEIGHT_CLASS_HUGE
-	max_w_class = WEIGHT_CLASS_BULKY
-	max_storage_space = WEIGHT_VOLUME_NORMAL * 8
-	storage_slots = 20
+	max_weight_class = WEIGHT_CLASS_BULKY
+	max_combined_volume = WEIGHT_VOLUME_NORMAL * 8
+	max_items = 20
 	use_to_pickup = 1
 	allow_quick_empty = 1
 	allow_quick_gather = 1

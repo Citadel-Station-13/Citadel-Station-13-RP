@@ -46,9 +46,9 @@
 	icon_state = "eggbox"
 	icon_type = "egg"
 	name = "egg box"
-	storage_slots = 12
-	max_storage_space = 12 * WEIGHT_VOLUME_SMALL
-	can_hold = list(
+	max_items = 12
+	max_combined_volume = 12 * WEIGHT_VOLUME_SMALL
+	insertion_whitelist = list(
 		/obj/item/reagent_containers/food/snacks/egg,
 		/obj/item/reagent_containers/food/snacks/boiledegg
 		)
@@ -67,7 +67,7 @@
 	item_state = "candlebox5"
 	throw_force = 2
 	slot_flags = SLOT_BELT
-	max_storage_space = WEIGHT_VOLUME_SMALL * 5
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 5
 	starts_with = list(/obj/item/flame/candle = 5)
 
 /obj/item/storage/fancy/whitecandle_box
@@ -79,7 +79,7 @@
 	item_state = "whitecandlebox5"
 	throw_force = 2
 	slot_flags = SLOT_BELT
-	max_storage_space = WEIGHT_VOLUME_SMALL * 5
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 5
 	starts_with = list(/obj/item/flame/candle/white = 5)
 
 /obj/item/storage/fancy/blackcandle_box
@@ -91,7 +91,7 @@
 	item_state = "blackcandlebox5"
 	throw_force = 2
 	slot_flags = SLOT_BELT
-	max_storage_space = WEIGHT_VOLUME_SMALL * 5
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 5
 	starts_with = list(/obj/item/flame/candle/black = 5)
 
 
@@ -106,7 +106,7 @@
 	icon_state = "crayonbox"
 	w_class = WEIGHT_CLASS_SMALL
 	icon_type = "crayon"
-	can_hold = list(
+	insertion_whitelist = list(
 		/obj/item/pen/crayon
 	)
 	starts_with = list(
@@ -145,7 +145,7 @@
 	icon_state = "markerbox"
 	w_class = WEIGHT_CLASS_SMALL
 	icon_type = "marker"
-	can_hold = list(
+	insertion_whitelist = list(
 		/obj/item/pen/crayon/marker
 	)
 	starts_with = list(
@@ -185,7 +185,7 @@
 	icon_state = "chalkbox"
 	w_class = WEIGHT_CLASS_SMALL
 	icon_type = "chalk"
-	can_hold = list(
+	insertion_whitelist = list(
 		/obj/item/pen/crayon/chalk
 	)
 	starts_with = list(
@@ -213,10 +213,10 @@
 	icon = 'icons/obj/food.dmi'
 	icon_state = "crackerbox"
 	icon_type = "cracker"
-	max_storage_space = WEIGHT_VOLUME_TINY * 6
-	max_w_class = WEIGHT_CLASS_TINY
+	max_combined_volume = WEIGHT_VOLUME_TINY * 6
+	max_weight_class = WEIGHT_CLASS_TINY
 	w_class = WEIGHT_CLASS_SMALL
-	can_hold = list(/obj/item/reagent_containers/food/snacks/cracker)
+	insertion_whitelist = list(/obj/item/reagent_containers/food/snacks/cracker)
 	starts_with = list(/obj/item/reagent_containers/food/snacks/cracker = 6)
 
 ////////////
@@ -231,8 +231,8 @@
 	w_class = WEIGHT_CLASS_TINY
 	throw_force = 2
 	slot_flags = SLOT_BELT | SLOT_EARS
-	storage_slots = 6
-	can_hold = list(/obj/item/clothing/mask/smokable/cigarette, /obj/item/flame/lighter, /obj/item/cigbutt)
+	max_items = 6
+	insertion_whitelist = list(/obj/item/clothing/mask/smokable/cigarette, /obj/item/flame/lighter, /obj/item/cigbutt)
 	icon_type = "cigarette"
 	starts_with = list(/obj/item/clothing/mask/smokable/cigarette = 6)
 	var/brand = "\improper Trans-Stellar Duty-free"
@@ -240,7 +240,7 @@
 /obj/item/storage/fancy/cigarettes/Initialize(mapload)
 	. = ..()
 	atom_flags |= NOREACT
-	create_reagents(15 * storage_slots)//so people can inject cigarettes without opening a packet, now with being able to inject the whole one
+	create_reagents(15 * max_items)//so people can inject cigarettes without opening a packet, now with being able to inject the whole one
 	atom_flags |= OPENCONTAINER
 	if(brand)
 		for(var/obj/item/clothing/mask/smokable/cigarette/C in src)
@@ -343,15 +343,15 @@
 	w_class = WEIGHT_CLASS_TINY
 	throw_force = 2
 	slot_flags = SLOT_BELT
-	storage_slots = 7
-	can_hold = list(/obj/item/clothing/mask/smokable/cigarette/cigar, /obj/item/cigbutt/cigarbutt)
+	max_items = 7
+	insertion_whitelist = list(/obj/item/clothing/mask/smokable/cigarette/cigar, /obj/item/cigbutt/cigarbutt)
 	icon_type = "cigar"
 	starts_with = list(/obj/item/clothing/mask/smokable/cigarette/cigar = 7)
 
 /obj/item/storage/fancy/cigar/Initialize(mapload)
 	. = ..()
 	atom_flags |= NOREACT
-	create_reagents(15 * storage_slots)
+	create_reagents(15 * max_items)
 
 /obj/item/storage/fancy/cigar/update_icon()
 	icon_state = "[initial(icon_state)][contents.len]"
@@ -372,8 +372,8 @@
 	w_class = WEIGHT_CLASS_TINY
 	throw_force = 2
 	slot_flags = SLOT_BELT
-	storage_slots = 14
-	can_hold = list(/obj/item/rollingpaper)
+	max_items = 14
+	insertion_whitelist = list(/obj/item/rollingpaper)
 	starts_with = list(/obj/item/rollingpaper = 14)
 
 /obj/item/storage/rollingblunts
@@ -384,8 +384,8 @@
 	w_class = WEIGHT_CLASS_TINY
 	throw_force = 2
 	slot_flags = SLOT_BELT
-	storage_slots = 7
-	can_hold = list(/obj/item/rollingblunt)
+	max_items = 7
+	insertion_whitelist = list(/obj/item/rollingblunt)
 	starts_with = list(/obj/item/rollingblunt = 7)
 
 /*
@@ -397,8 +397,8 @@
 	icon_state = "vialbox6"
 	icon_type = "vial"
 	name = "vial storage box"
-	storage_slots = 6
-	can_hold = list(/obj/item/reagent_containers/glass/beaker/vial)
+	max_items = 6
+	insertion_whitelist = list(/obj/item/reagent_containers/glass/beaker/vial)
 	starts_with = list(/obj/item/reagent_containers/glass/beaker/vial = 6)
 
 /obj/item/storage/lockbox/vials
@@ -407,10 +407,10 @@
 	icon = 'icons/obj/vialbox.dmi'
 	icon_state = "vialbox0"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syringe_kit", SLOT_ID_LEFT_HAND = "syringe_kit")
-	max_w_class = WEIGHT_CLASS_SMALL
-	can_hold = list(/obj/item/reagent_containers/glass/beaker/vial)
-	max_storage_space = WEIGHT_VOLUME_SMALL * 6 //The sum of the w_classes of all the items in this storage item.
-	storage_slots = 6
+	max_weight_class = WEIGHT_CLASS_SMALL
+	insertion_whitelist = list(/obj/item/reagent_containers/glass/beaker/vial)
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 6 //The sum of the w_classes of all the items in this storage item.
+	max_items = 6
 	req_access = list(ACCESS_MEDICAL_VIROLOGY)
 
 /obj/item/storage/lockbox/vials/Initialize(mapload)
@@ -449,8 +449,8 @@
 	icon_type = "chocolate"
 
 	var/startswith = 6
-	max_storage_space = WEIGHT_VOLUME_SMALL * 6
-	can_hold = list(
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 6
+	insertion_whitelist = list(
 		/obj/item/reagent_containers/food/snacks/chocolatepiece,
 		/obj/item/reagent_containers/food/snacks/chocolatepiece/white,
 		/obj/item/reagent_containers/food/snacks/chocolatepiece/truffle

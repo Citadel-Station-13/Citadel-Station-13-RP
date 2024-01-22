@@ -10,21 +10,27 @@
 	inhand_default_type = INHAND_DEFAULT_ICON_STORAGE
 	w_class = WEIGHT_CLASS_NORMAL
 	show_messages = 1
+	
+	//* Directly passed to storage system. *//
 
-	var/list/can_hold = new/list() //List of objects which this item can store (if set, it can't store anything else)
-	var/list/cant_hold = new/list() //List of objects which this item can't store (in effect only if can_hold isn't set)
-	var/list/is_seeing = new/list() //List of mobs which are currently seeing the contents of this item's storage
-	var/max_w_class = WEIGHT_CLASS_SMALL //Max size of objects that this object can store (in effect only if can_hold isn't set)
-	var/max_storage_space = WEIGHT_VOLUME_SMALL * 4 //The sum of the storage costs of all the items in this storage item.
-	var/storage_slots = null //The number of storage slots in this container.  If null, it uses the volume-based storage instead.
-	var/atom/movable/screen/storage/boxes = null
-	var/atom/movable/screen/storage/storage_start = null //storage UI
-	var/atom/movable/screen/storage/storage_continue = null
-	var/atom/movable/screen/storage/storage_end = null
-	var/atom/movable/screen/storage/stored_start = null
-	var/atom/movable/screen/storage/stored_continue = null
-	var/atom/movable/screen/storage/stored_end = null
-	var/atom/movable/screen/close/closer = null
+	var/list/insertion_whitelist
+	var/list/insertion_blacklist
+	var/list/insertion_allow
+
+	var/max_weight_class = WEIGHT_CLASS_SMALL
+	var/max_combined_weight_class
+	var/max_combined_volume = WEIGHT_VOLUME_SMALL * 4
+	var/max_items
+
+	//* Initialization *//
+	
+	/// Cleared after Initialize().
+	/// List of types associated to amounts.
+	var/list/starts_with
+
+	#warn below
+
+
 	var/use_to_pickup	//Set this to make it possible to use this item in an inverse way, so you can have the item in your hand and click items on the floor to pick them up.
 	var/display_contents_with_number	//Set this to make the storage item group contents of the same type and display them as a number.
 	var/allow_quick_empty	//Set this variable to allow the object to have the 'empty' verb, which dumps all the contents on the floor.
@@ -32,11 +38,13 @@
 	var/collection_mode = 1;  //0 = pick one at a time, 1 = pick all on tile
 	var/use_sound = "rustle"	//sound played when used. null for no sound.
 
-	var/list/starts_with //Things to spawn on the box on spawn				//THIS IS A BANNED LIST. ALL NEW STORAGE MUST USE POPULATE_CONTENTS() TO MAKE THEIR ITEMS! - KEVINZ000
-
 	var/empty //Mapper override to spawn an empty version of a container that usually has stuff
 
 	var/last_message = 0
+
+	#warn above
+
+	//* Carry Weight *//
 
 	/// carry weight in us
 	var/weight_cached = 0
@@ -196,7 +204,7 @@
 	user.client.screen -= src.contents
 	user.client.screen += src.closer
 	user.client.screen += src.contents
-	if(storage_slots)
+	if(max_items)
 		user.client.screen += src.boxes
 	else
 		user.client.screen += src.storage_start
@@ -280,13 +288,13 @@
 
 /obj/item/storage/proc/space_orient_objs(list/obj/item/display_contents)
 
-	var/baseline_max_storage_space = INVENTORY_STANDARD_SPACE / 2 //should be equal to default backpack capacity // This is a lie.
+	var/baseline_max_combined_volume = INVENTORY_STANDARD_SPACE / 2 //should be equal to default backpack capacity // This is a lie.
 	// Above var is misleading, what it does upon changing is makes smaller inventory sizes have smaller space on the UI.
 	// It's cut in half because otherwise boxes of IDs and other tiny items are unbearably cluttered.
 
 	var/storage_cap_width = 2 //length of sprite for start and end of the box representing total storage space
 	var/stored_cap_width = 4 //length of sprite for start and end of the box representing the stored item
-	var/storage_width = min( round( 224 * max_storage_space/baseline_max_storage_space ,1) ,274) //length of sprite for the box representing total storage space
+	var/storage_width = min( round( 224 * max_combined_volume/baseline_max_combined_volume ,1) ,274) //length of sprite for the box representing total storage space
 
 	storage_start.cut_overlays()
 
@@ -303,7 +311,7 @@
 
 	for(var/obj/item/O in contents)
 		startpoint = endpoint + 1
-		endpoint += storage_width * O.get_storage_cost()/max_storage_space
+		endpoint += storage_width * O.get_storage_cost()/max_combined_volume
 
 		var/matrix/M_start = matrix()
 		var/matrix/M_continue = matrix()
@@ -365,11 +373,11 @@
 				adjusted_contents++
 				numbered_contents.Add( new/datum/numbered_display(I) )
 
-	if(storage_slots == null)
+	if(max_items == null)
 		src.space_orient_objs(numbered_contents)
 	else
 		var/row_num = 0
-		var/col_count = min(7,storage_slots) -1
+		var/col_count = min(7,max_items) -1
 		if (adjusted_contents > 7)
 			row_num = round((adjusted_contents-1) / 7) // 7 is the maximum allowed width.
 		src.slot_orient_objs(row_num, col_count, numbered_contents)
@@ -387,7 +395,7 @@
 	if(src.loc == W)
 		return 0 //Means the item is already in the storage item
 
-	if(storage_slots != null && contents.len >= storage_slots)
+	if(max_items != null && contents.len >= max_items)
 		if(!stop_messages)
 			to_chat(usr, "<span class='notice'>[src] is full, make some space.</span>")
 		return 0 //Storage item is full
@@ -399,17 +407,17 @@
 			to_chat(usr, "<span class='notice'>[src] cannot hold [W].</span>")
 		return 0
 
-	if(cant_hold.len && is_type_in_list(W, cant_hold))
+	if(insertion_blacklist.len && is_type_in_list(W, insertion_blacklist))
 		if(!stop_messages)
 			to_chat(usr, "<span class='notice'>[src] cannot hold [W].</span>")
 		return 0
 
-	if (max_w_class != null && W.w_class > max_w_class)
+	if (max_weight_class != null && W.w_class > max_weight_class)
 		if(!stop_messages)
 			to_chat(usr, "<span class='notice'>[W] is too long for \the [src].</span>")
 		return 0
 
-	if((storage_space_used() + W.get_storage_cost()) > max_storage_space) //Adds up the combined w_classes which will be in the storage item if the item is added to it.
+	if((storage_space_used() + W.get_storage_cost()) > max_combined_volume) //Adds up the combined w_classes which will be in the storage item if the item is added to it.
 		if(!stop_messages)
 			to_chat(usr, "<span class='notice'>[src] is too full, make some space.</span>")
 		return 0
@@ -579,7 +587,7 @@
 
 ///Prevents spawned containers from being too small for their contents.
 /obj/item/storage/proc/calibrate_size()
-	max_storage_space = max(storage_space_used(),max_storage_space)
+	max_combined_volume = max(storage_space_used(),max_combined_volume)
 
 /obj/item/storage/emp_act(severity)
 	if(!istype(src.loc, /mob/living))
@@ -640,15 +648,15 @@
 	return depth
 
 /obj/item/storage/proc/make_exact_fit()
-	storage_slots = contents.len
+	max_items = contents.len
 
 	can_hold.Cut()
-	max_w_class = 0
-	max_storage_space = 0
+	max_weight_class = 0
+	max_combined_volume = 0
 	for(var/obj/item/I in src)
 		can_hold[I.type]++
-		max_w_class = max(I.w_class, max_w_class)
-		max_storage_space += I.get_storage_cost()
+		max_weight_class = max(I.w_class, max_weight_class)
+		max_combined_volume += I.get_storage_cost()
 
 /*
  * Trinket Box - READDING SOON
@@ -659,8 +667,8 @@
 	icon = 'icons/obj/items.dmi'
 	icon_state = "trinketbox"
 	var/open = 0
-	storage_slots = 1
-	can_hold = list(
+	max_items = 1
+	insertion_whitelist = list(
 		/obj/item/clothing/gloves/ring,
 		/obj/item/coin,
 		/obj/item/clothing/accessory/medal

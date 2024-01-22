@@ -9,8 +9,8 @@
 	throw_speed = 1
 	throw_range = 7
 	w_class = WEIGHT_CLASS_BULKY
-	max_w_class = WEIGHT_CLASS_NORMAL
-	max_storage_space = WEIGHT_VOLUME_SMALL * 7 //enough to hold all starting contents
+	max_weight_class = WEIGHT_CLASS_NORMAL
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 7 //enough to hold all starting contents
 	origin_tech = list(TECH_COMBAT = 1)
 	attack_verb = list("robusted")
 	drop_sound = 'sound/items/drop/toolbox.ogg'
@@ -107,7 +107,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "toolbox_pink", SLOT_ID_LEFT_HAND = "toolbox_pink")
 	desc = "A little lunchbox. This one is the colors of the rainbow!"
 	w_class = WEIGHT_CLASS_NORMAL
-	max_w_class = WEIGHT_CLASS_SMALL
+	max_weight_class = WEIGHT_CLASS_SMALL
 	var/filled = FALSE
 	attack_verb = list("lunched")
 

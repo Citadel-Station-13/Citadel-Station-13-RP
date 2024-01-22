@@ -1,11 +1,11 @@
 /obj/item/storage/wallet
 	name = "wallet"
 	desc = "It can hold a few small and personal things."
-	storage_slots = 10
+	max_items = 10
 	icon = 'icons/obj/wallet.dmi'
 	icon_state = "wallet-orange"
 	w_class = WEIGHT_CLASS_SMALL
-	can_hold = list(
+	insertion_whitelist = list(
 		/obj/item/spacecash,
 		/obj/item/card,
 		/obj/item/clothing/mask/smokable/cigarette/,
@@ -38,7 +38,7 @@
 		/obj/item/clothing/accessory/badge,
 		/obj/item/makeover
 		)
-	cant_hold = list(/obj/item/tool/screwdriver/power)
+	insertion_blacklist = list(/obj/item/tool/screwdriver/power)
 	slot_flags = SLOT_ID
 
 	var/obj/item/card/id/front_id = null

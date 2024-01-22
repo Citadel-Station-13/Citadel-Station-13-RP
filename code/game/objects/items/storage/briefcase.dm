@@ -6,8 +6,8 @@
 	throw_speed = 1
 	throw_range = 4
 	w_class = WEIGHT_CLASS_BULKY
-	max_w_class = WEIGHT_CLASS_NORMAL
-	max_storage_space = WEIGHT_VOLUME_NORMAL * 4
+	max_weight_class = WEIGHT_CLASS_NORMAL
+	max_combined_volume = WEIGHT_VOLUME_NORMAL * 4
 	use_sound = 'sound/items/storage/briefcase.ogg'
 	drop_sound = 'sound/items/drop/backpack.ogg'
 	pickup_sound = 'sound/items/pickup/backpack.ogg'
@@ -20,8 +20,8 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "smpurse", SLOT_ID_LEFT_HAND = "smpurse")
 	damage_force = 0
 	w_class = WEIGHT_CLASS_NORMAL
-	max_w_class = WEIGHT_CLASS_SMALL
-	max_storage_space = WEIGHT_VOLUME_SMALL * 4
+	max_weight_class = WEIGHT_CLASS_SMALL
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 4
 
 /obj/item/storage/briefcase/crafted
 	desc = "Hand crafted suitcase made of leather and cloth."

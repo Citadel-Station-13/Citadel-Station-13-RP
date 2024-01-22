@@ -60,10 +60,10 @@
 	pickup_sound = 'sound/items/pickup/wrapper.ogg'
 
 	w_class = WEIGHT_CLASS_SMALL
-	max_w_class = WEIGHT_CLASS_NORMAL
-	max_storage_space = WEIGHT_CLASS_SMALL * 21
-	can_hold = list() // any
-	cant_hold = list(/obj/item/disk/nuclear)
+	max_weight_class = WEIGHT_CLASS_NORMAL
+	max_combined_volume = WEIGHT_CLASS_SMALL * 21
+	insertion_whitelist = list() // any
+	insertion_blacklist = list(/obj/item/disk/nuclear)
 
 /obj/item/storage/bag/trash/update_w_class()
 	..()
@@ -76,8 +76,8 @@
 
 /obj/item/storage/bag/trash/bluespace
 	name = "trash bag of holding"
-	max_w_class = WEIGHT_CLASS_HUGE
-	max_storage_space = WEIGHT_CLASS_SMALL * 56
+	max_weight_class = WEIGHT_CLASS_HUGE
+	max_combined_volume = WEIGHT_CLASS_SMALL * 56
 	desc = "The latest and greatest in custodial convenience, a trashbag that is capable of holding vast quantities of garbage."
 	icon_state = "bluetrashbag"
 
@@ -101,9 +101,9 @@
 	pickup_sound = 'sound/items/pickup/wrapper.ogg'
 
 	w_class = WEIGHT_CLASS_BULKY
-	max_w_class = WEIGHT_CLASS_SMALL
-	can_hold = list() // any
-	cant_hold = list(/obj/item/disk/nuclear)
+	max_weight_class = WEIGHT_CLASS_SMALL
+	insertion_whitelist = list() // any
+	insertion_blacklist = list(/obj/item/disk/nuclear)
 
 // -----------------------------
 //        Mining Satchel
@@ -120,9 +120,9 @@
 	icon_state = "satchel"
 	slot_flags = SLOT_BELT | SLOT_POCKET
 	w_class = WEIGHT_CLASS_NORMAL
-	max_storage_space = WEIGHT_VOLUME_NORMAL * 25 //kinda irrelevant now :^)
-	max_w_class = WEIGHT_CLASS_NORMAL
-	can_hold = list(/obj/item/stack/ore)
+	max_combined_volume = WEIGHT_VOLUME_NORMAL * 25 //kinda irrelevant now :^)
+	max_weight_class = WEIGHT_CLASS_NORMAL
+	insertion_whitelist = list(/obj/item/stack/ore)
 	var/stored_ore = list()
 	var/total_ore = 0 //current ore stored
 	var/max_ore = 300 //how much ore it can hold
@@ -141,7 +141,7 @@
 			if(world.time < last_message && !silent)
 				to_chat(user, "<span class='notice'>You put the contents you scooped up into [O].</span>")
 				last_message = world.time + 10
-		else if(total_ore >= max_ore || contents.len >= max_storage_space)
+		else if(total_ore >= max_ore || contents.len >= max_combined_volume)
 			failure = 1
 			break
 		else
@@ -287,15 +287,15 @@
 	name = "plant bag"
 	icon = 'icons/obj/hydroponics_machines.dmi'
 	icon_state = "plantbag"
-	max_storage_space = WEIGHT_VOLUME_NORMAL * 25
-	max_w_class = WEIGHT_CLASS_NORMAL
+	max_combined_volume = WEIGHT_VOLUME_NORMAL * 25
+	max_weight_class = WEIGHT_CLASS_NORMAL
 	w_class = WEIGHT_CLASS_SMALL
-	can_hold = list(/obj/item/reagent_containers/food/snacks/grown,/obj/item/seeds,/obj/item/grown)
+	insertion_whitelist = list(/obj/item/reagent_containers/food/snacks/grown,/obj/item/seeds,/obj/item/grown)
 
 /obj/item/storage/bag/plants/large
 	name = "large plant bag"
 	w_class = WEIGHT_CLASS_SMALL
-	max_storage_space = WEIGHT_VOLUME_NORMAL * 45
+	max_combined_volume = WEIGHT_VOLUME_NORMAL * 45
 
 /obj/item/storage/bag/plants/ashlander
 	name = "goliath hide plant bag"
@@ -316,7 +316,7 @@
 
 	var/capacity = 300; //the number of sheets it can carry.
 	w_class = WEIGHT_CLASS_NORMAL
-	storage_slots = 7
+	max_items = 7
 
 	allow_quick_empty = 1 // this function is superceded
 
@@ -386,7 +386,7 @@
 			numbered_contents.Add( D )
 
 	var/row_num = 0
-	var/col_count = min(7,storage_slots) -1
+	var/col_count = min(7,max_items) -1
 	if (adjusted_contents > 7)
 		row_num = round((adjusted_contents-1) / 7) // 7 is the maximum allowed width.
 	src.slot_orient_objs(row_num, col_count, numbered_contents)
@@ -444,10 +444,10 @@
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "cashbag"
 	desc = "A bag for carrying lots of cash. It's got a big dollar sign printed on the front."
-	max_storage_space = WEIGHT_VOLUME_NORMAL * 25
-	max_w_class = WEIGHT_CLASS_NORMAL
+	max_combined_volume = WEIGHT_VOLUME_NORMAL * 25
+	max_weight_class = WEIGHT_CLASS_NORMAL
 	w_class = WEIGHT_CLASS_SMALL
-	can_hold = list(/obj/item/coin,/obj/item/spacecash)
+	insertion_whitelist = list(/obj/item/coin,/obj/item/spacecash)
 
 	// -----------------------------
 	//           Chemistry Bag
@@ -457,9 +457,9 @@
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "chembag"
 	desc = "A bag for storing pills, patches, bottles, and hypovials."
-	max_storage_space = 200
+	max_combined_volume = 200
 	w_class = WEIGHT_CLASS_BULKY
-	can_hold = list(
+	insertion_whitelist = list(
 		/obj/item/reagent_containers/pill,
 		/obj/item/reagent_containers/glass/beaker,
 		/obj/item/reagent_containers/glass/bottle,
@@ -474,9 +474,9 @@
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "biobag"
 	desc = "A bag for storing slime extracts, slime potions, monkey cubes, and beakers."
-	max_storage_space = 200
+	max_combined_volume = 200
 	w_class = WEIGHT_CLASS_BULKY
-	can_hold = list(
+	insertion_whitelist = list(
 		/obj/item/reagent_containers/glass/beaker,
 		/obj/item/reagent_containers/food/snacks/monkeycube,
 		/obj/item/slime_extract,
@@ -491,10 +491,10 @@
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "foodbag"
 	desc = "A bag for storing foods of all kinds."
-	max_storage_space = WEIGHT_VOLUME_NORMAL * 25
-	max_w_class = WEIGHT_CLASS_NORMAL
+	max_combined_volume = WEIGHT_VOLUME_NORMAL * 25
+	max_weight_class = WEIGHT_CLASS_NORMAL
 	w_class = WEIGHT_CLASS_SMALL
-	can_hold = list(/obj/item/reagent_containers/food/snacks,/obj/item/reagent_containers/food/condiment)
+	insertion_whitelist = list(/obj/item/reagent_containers/food/snacks,/obj/item/reagent_containers/food/condiment)
 
 	// -----------------------------
 	//           Evidence Bag
@@ -504,19 +504,19 @@
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "detbag"
 	desc = "A bag for storing investigation things. You know, securely."
-	max_storage_space = WEIGHT_VOLUME_NORMAL * 15
-	max_w_class = WEIGHT_CLASS_NORMAL
+	max_combined_volume = WEIGHT_VOLUME_NORMAL * 15
+	max_weight_class = WEIGHT_CLASS_NORMAL
 	w_class = WEIGHT_CLASS_SMALL
-	can_hold = list(/obj/item/forensics/swab,/obj/item/sample/print,/obj/item/sample/fibers,/obj/item/evidencebag)
+	insertion_whitelist = list(/obj/item/forensics/swab,/obj/item/sample/print,/obj/item/sample/fibers,/obj/item/evidencebag)
 
 /obj/item/storage/bag/dogborg
 	name = "dog bag"
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "foodbag"
 	desc = "A bag for storing things of all kinds."
-	max_storage_space = WEIGHT_VOLUME_NORMAL * 25
-	max_w_class = WEIGHT_CLASS_NORMAL
+	max_combined_volume = WEIGHT_VOLUME_NORMAL * 25
+	max_weight_class = WEIGHT_CLASS_NORMAL
 	w_class = WEIGHT_CLASS_SMALL
-	can_hold = list(/obj/item/reagent_containers/food/snacks,/obj/item/reagent_containers/food/condiment,
+	insertion_whitelist = list(/obj/item/reagent_containers/food/snacks,/obj/item/reagent_containers/food/condiment,
 	/obj/item/reagent_containers/glass/beaker,/obj/item/reagent_containers/glass/bottle,/obj/item/coin,/obj/item/spacecash,
 	/obj/item/reagent_containers/food/snacks/grown,/obj/item/seeds,/obj/item/grown,/obj/item/reagent_containers/pill)
