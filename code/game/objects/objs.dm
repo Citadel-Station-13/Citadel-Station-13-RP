@@ -306,6 +306,9 @@
 		)
 		obj_cell_slot.insert_cell(I)
 		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+	var/datum/event_args/actor/actor = new(user)
+	if(!isnull(obj_storage) && I.allow_auto_storage_insert(actor, obj_storage) && obj_storage?.auto_handle_interacted_insertion(I, actor))
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 	return ..()
 
 /obj/on_attack_hand(datum/event_args/actor/clickchain/e_args)
@@ -516,6 +519,15 @@
 	. = ..()
 	if(obj_cell_slot?.receive_emp)
 		obj_cell_slot?.cell?.emp_act(severity)
+	if(obj_storage?.pass_emp_inside)
+		// ugh
+		if(obj_storage.pass_emp_weaken && severity < 4)
+			var/pass_severity = severity - 1
+			for(var/atom/movable/inside in obj_storage.contents())
+				inside.emp_act(pass_severity)
+		else
+			for(var/atom/movable/inside in obj_storage.contents())
+				inside.emp_act(severity)
 
 //* Hiding / Underfloor *//
 
@@ -554,6 +566,13 @@
 			. += SPAN_RED("It looks severely damaged.")
 		else
 			. += SPAN_BOLDWARNING("It's falling apart!")
+
+//* Movement *//
+
+/obj/Exited(atom/movable/AM, atom/newLoc)
+	. = ..()
+	if(isitem(AM))
+		obj_storage?.on_item_exited(AM)
 
 //* Orientation *//
 

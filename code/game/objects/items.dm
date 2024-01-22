@@ -509,10 +509,6 @@
 /obj/item/proc/on_enter_storage(obj/item/storage/S as obj)
 	SEND_SIGNAL(src, COMSIG_STORAGE_ENTERED, S)
 
-// called when "found" in pockets and storage items. Returns 1 if the search should end.
-/obj/item/proc/on_found(mob/finder as mob)
-	return
-
 /obj/item/verb/verb_pickup()
 	set src in oview(1)
 	set category = "Object"
@@ -1001,6 +997,15 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 		return
 	S.stored_weight_changed(src, old_weight, new_weight)
 
+//* Inventory *//
+
+/**
+ * Called when someone clisk us on a storage, before the storage handler's
+ * 'put item in' runs. Return FALSE to deny.
+ */
+/obj/item/proc/allow_auto_storage_insert(datum/event_args/actor/actor, datum/object_system/storage/storage)
+	return TRUE
+
 //* Materials *//
 
 /obj/item/material_trait_brittle_shatter()
@@ -1023,6 +1028,16 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 
 /obj/item/proc/get_weight_volume()
 	return isnull(weight_volume)? global.w_class_to_volume[w_class || WEIGHT_CLASS_GIGANTIC] : weight_volume
+
+#warn set_weight_class, set_weight_volume, audit sets
+
+/**
+ * called when someone is opening a storage with us in it
+ * 
+ * @return TRUE to stop the storage from opening
+ */
+/obj/item/proc/on_containing_storage_opening(datum/event_args/actor/actor, datum/object_system/storage/storage)
+	return FALSE
 
 //* VV *//
 

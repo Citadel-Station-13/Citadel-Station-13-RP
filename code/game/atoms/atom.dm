@@ -941,6 +941,14 @@
 /atom/proc/update_atom_colour()
 	CRASH("base proc hit")
 
+//* Deletions *//
+
+// /**
+//  * Called when something in our contents is being Destroy()'d, before they get moved.
+//  */
+// /atom/proc/handle_contents_del(atom/movable/deleting)
+// 	return
+
 //? Filters
 
 /atom/proc/add_filter(name, priority, list/params, update = TRUE)

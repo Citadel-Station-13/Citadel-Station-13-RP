@@ -11,6 +11,9 @@
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 
+/obj/item/hand_labeler/allow_auto_storage_insert(datum/event_args/actor/actor, datum/object_system/storage/storage)
+	return ..() && !mode
+
 /obj/item/hand_labeler/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return

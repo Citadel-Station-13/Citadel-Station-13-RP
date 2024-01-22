@@ -37,7 +37,6 @@
 			throw_force = 0
 			attack_sound = 'sound/weapons/bite.ogg'
 			attack_verb = list("chomped", "bit", "ripped", "mauled", "enforced")
-			w_class = WEIGHT_CLASS_NORMAL
 		else
 			name = "puppy jaws"
 			icon = 'icons/mob/dogborg_vr.dmi'
@@ -47,7 +46,6 @@
 			throw_force = 0
 			attack_sound = 'sound/weapons/bite.ogg'
 			attack_verb = list("nibbled", "bit", "gnawed", "chomped", "nommed")
-			w_class = WEIGHT_CLASS_NORMAL
 		update_icon()
 
 //Boop //Newer and better, can sniff reagents, tanks, and boop people!

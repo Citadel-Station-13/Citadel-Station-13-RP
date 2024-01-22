@@ -134,6 +134,7 @@
 	var/old = weight_cached
 	weight_cached += diff
 	propagate_weight(old, weight_cached)
+
 /obj/item/storage/proc/reset_weight_recursive()
 	do_reset_weight_recursive(200)
 
@@ -233,26 +234,6 @@
 	src.hide_from(user)
 	user.s_active = null
 	return
-
-/obj/item/storage/proc/close_all()
-	for(var/mob/M in can_see_contents())
-		close(M)
-		. = 1
-
-/obj/item/storage/proc/can_see_contents()
-	var/list/cansee = list()
-	for(var/mob/M in is_seeing)
-		if(M.s_active == src && M.client)
-			cansee |= M
-		else
-			is_seeing -= M
-	return cansee
-
-/// Adds up the combined w_classes.
-/obj/item/storage/proc/storage_space_used()
-	. = 0
-	for(var/obj/item/I in contents)
-		. += I.get_storage_cost()
 
 //This proc draws out the inventory and places the items on it. tx and ty are the upper left tile and mx, my are the bottm right.
 //The numbers are calculated from the bottom-left The bottom-left slot being 1,1.
@@ -513,37 +494,6 @@
 		if(I.item_flags & ITEM_IN_STORAGE)
 			remove_from_storage(I, null, FALSE)
 	return ..()
-
-//This proc is called when you want to place an item into the storage item.
-/obj/item/storage/attackby(obj/item/W as obj, mob/user as mob)
-	..()
-
-	if(isrobot(user))
-		return //Robots can't interact with storage items.
-
-	if(istype(W, /obj/item/lightreplacer))
-		var/obj/item/lightreplacer/LP = W
-		var/amt_inserted = 0
-		var/turf/T = get_turf(user)
-		for(var/obj/item/light/L in src.contents)
-			if(L.status == 0)
-				if(LP.uses < LP.max_uses)
-					LP.add_uses(1)
-					amt_inserted++
-					remove_from_storage(L, T)
-					qdel(L)
-		if(amt_inserted)
-			to_chat(user, "You inserted [amt_inserted] light\s into \the [LP.name]. You have [LP.uses] light\s remaining.")
-			return
-
-	if(!can_be_inserted(W))
-		return
-
-	if(!user.transfer_item_to_loc(W, src))
-		return
-
-	W.add_fingerprint(user)
-	return handle_item_insertion(W, user)
 
 /obj/item/storage/attack_hand(mob/user, list/params)
 	if(ishuman(user))

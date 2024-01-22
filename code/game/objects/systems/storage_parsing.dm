@@ -11,9 +11,6 @@
 // /mob/living/Move() in /modules/mob/living/living.dm - hiding storage boxes on mob movement
 
 /datum/component/storage
-	var/datum/component/storage/concrete/master		//If not null, all actions act on master and this is just an access point.
-
-	var/list/mob/is_using							//lazy list of mobs looking at the contents of this storage.
 
 	var/locked = FALSE								//when locked nothing can see inside or use it.
 
@@ -31,9 +28,6 @@
 	var/insert_preposition = "in"					//you put things "in" a bag, but "on" a tray.
 
 	var/display_numerical_stacking = FALSE			//stack things of the same type and show as a single object with a number.
-
-	/// Ui objects by person. mob = list(objects)
-	var/list/ui_by_mob = list()
 
 	var/allow_big_nesting = FALSE					//allow storage objects of the same or greater size.
 
@@ -87,38 +81,6 @@
 		if(!istype(M))
 			return
 		modeswitch_action.Grant(M)
-
-/datum/component/storage/proc/change_master(datum/component/storage/concrete/new_master)
-	if(new_master == src || (!isnull(new_master) && !istype(new_master)))
-		return FALSE
-	if(master)
-		master.on_slave_unlink(src)
-	master = new_master
-	if(master)
-		master.on_slave_link(src)
-	return TRUE
-
-/datum/component/storage/proc/master()
-	if(master == src)
-		return			//infinite loops yo.
-	return master
-
-/datum/component/storage/proc/real_location()
-	var/datum/component/storage/concrete/master = master()
-	return master? master.real_location() : null
-
-//What players can access
-//this proc can probably eat a refactor at some point.
-/datum/component/storage/proc/accessible_items(random_access = TRUE)
-	var/list/contents = contents()
-	if(contents)
-		if(limited_random_access && random_access)
-			if(limited_random_access_stack_position && (length(contents) > limited_random_access_stack_position))
-				if(limited_random_access_stack_bottom_up)
-					contents.Cut(1, limited_random_access_stack_position + 1)
-				else
-					contents.Cut(1, length(contents) - limited_random_access_stack_position + 1)
-	return contents
 
 /datum/component/storage/proc/canreach_react(datum/source, list/next)
 	var/datum/component/storage/concrete/master = master()
@@ -256,26 +218,11 @@
 	if(check_locked())
 		close_all()
 
-/datum/component/storage/proc/close(mob/M)
-	ui_hide(M)
-
-/datum/component/storage/proc/close_all()
-	. = FALSE
-	for(var/mob/M in can_see_contents())
-		close(M)
-		. = TRUE //returns TRUE if any mobs actually got a close(M) call
-
 /datum/component/storage/proc/check_views()
 	for(var/mob/M in can_see_contents())
 		if(!isobserver(M) && !M.CanReach(parent, view_only = TRUE))
 			close(M)
-
-/datum/component/storage/proc/emp_act(datum/source, severity)
-	if(emp_shielded)
-		return
-	var/datum/component/storage/concrete/master = master()
-	master.emp_act(source, severity)
-
+			
 //Resets something that is being removed from storage.
 /datum/component/storage/proc/_removal_reset(atom/movable/thing)
 	if(!istype(thing))
@@ -297,21 +244,6 @@
 	if(!istype(master))
 		return FALSE
 	return master.remove_from_storage(AM, new_location)
-
-/datum/component/storage/proc/refresh_mob_views()
-	var/list/seeing = can_see_contents()
-	for(var/i in seeing)
-		ui_show(i)
-	return TRUE
-
-/datum/component/storage/proc/can_see_contents()
-	var/list/cansee = list()
-	for(var/mob/M in is_using)
-		if(M.active_storage == src && M.client)
-			cansee |= M
-		else
-			LAZYREMOVE(is_using, M)
-	return cansee
 
 //Tries to dump content
 /datum/component/storage/proc/dump_content_at(atom/dest_object, mob/M)
@@ -343,26 +275,6 @@
 	handle_item_insertion(I, FALSE, M)
 	var/atom/A = parent
 	A.do_squish()
-
-/datum/component/storage/proc/return_inv(recursive)
-	var/list/ret = list()
-	ret |= contents()
-	if(recursive)
-		for(var/i in ret.Copy())
-			var/atom/A = i
-			SEND_SIGNAL(A, COMSIG_TRY_STORAGE_RETURN_INVENTORY, ret, TRUE)
-	return ret
-
-/datum/component/storage/proc/contents()			//ONLY USE IF YOU NEED TO COPY CONTENTS OF REAL LOCATION, COPYING IS NOT AS FAST AS DIRECT ACCESS!
-	var/atom/real_location = real_location()
-	return real_location.contents.Copy()
-
-//Abuses the fact that lists are just references, or something like that.
-/datum/component/storage/proc/signal_return_inv(datum/source, list/interface, recursive = TRUE)
-	if(!islist(interface))
-		return FALSE
-	interface |= return_inv(recursive)
-	return TRUE
 
 /datum/component/storage/proc/mousedrop_onto(datum/source, atom/over_object, mob/M)
 	SIGNAL_HANDLER
@@ -409,17 +321,7 @@
 		if(check_on_found(M))
 			return
 	ui_show(M)
-
-/**
- * Check if we should trigger on_found()
- * If this returns TRUE, it means an on_found() returned TRUE and immediately broke the chain.
- * In most contexts, this should mean to stop.
- */
-/datum/component/storage/proc/check_on_found(mob/user)
-	for(var/obj/item/I in contents())
-		if(I.on_found(user))
-			return TRUE
-
+w
 /datum/component/storage/proc/mousedrop_receive(datum/source, atom/movable/O, mob/M)
 	if(isitem(O))
 		var/obj/item/I = O
@@ -446,41 +348,6 @@
 		if(M && !stop_messages)
 			host.add_fingerprint(M)
 		return FALSE
-	if(!length(can_hold_extra) || !is_type_in_typecache(I, can_hold_extra))
-		if(length(can_hold) && !is_type_in_typecache(I, can_hold))
-			if(!stop_messages)
-				to_chat(M, "<span class='warning'>[host] cannot hold [I]!</span>")
-			return FALSE
-		if(is_type_in_typecache(I, cant_hold)) //Check for specific items which this container can't hold.
-			if(!stop_messages)
-				to_chat(M, "<span class='warning'>[host] cannot hold [I]!</span>")
-			return FALSE
-		if(storage_flags & STORAGE_LIMIT_MAX_W_CLASS && I.w_class > max_w_class)
-			if(!stop_messages)
-				to_chat(M, "<span class='warning'>[I] is too long for [host]!</span>")
-			return FALSE
-		// STORAGE LIMITS
-	if(storage_flags & STORAGE_LIMIT_MAX_ITEMS)
-		if(real_location.contents.len >= max_items)
-			if(!stop_messages)
-				to_chat(M, "<span class='warning'>[host] has too many things in it, make some space!</span>")
-			return FALSE //Storage item is full
-	if(storage_flags & STORAGE_LIMIT_COMBINED_W_CLASS)
-		var/sum_w_class = I.w_class
-		for(var/obj/item/_I in real_location)
-			sum_w_class += _I.w_class //Adds up the combined w_classes which will be in the storage item if the item is added to it.
-		if(sum_w_class > max_combined_w_class)
-			if(!stop_messages)
-				to_chat(M, "<span class='warning'>[I] won't fit in [host], make some space!</span>")
-			return FALSE
-	if(storage_flags & STORAGE_LIMIT_VOLUME)
-		var/sum_volume = I.get_w_volume()
-		for(var/obj/item/_I in real_location)
-			sum_volume += _I.get_w_volume()
-		if(sum_volume > get_max_volume())
-			if(!stop_messages)
-				to_chat(M, "<span class='warning'>[I] is too spacious to fit in [host], make some space!</span>")
-			return FALSE
 	/////////////////
 	if(isitem(host))
 		var/obj/item/IP = host
@@ -496,9 +363,6 @@
 	if(!istype(master))
 		return FALSE
 	return master.slave_can_insert_object(src, I, stop_messages, M)
-
-/datum/component/storage/proc/_insert_physical_item(obj/item/I, override = FALSE)
-	return FALSE
 
 //This proc handles items being inserted. It does not perform any checks of whether an item can or can't be inserted. That's done by can_be_inserted()
 //The stop_warning parameter will stop the insertion message from being displayed. It is intended for cases where you are inserting multiple items at once,
@@ -525,11 +389,6 @@
 			viewing.show_message("<span class='notice'>[M] puts [I] [insert_preposition]to [parent].</span>", MSG_VISUAL)
 		else if(I && I.w_class >= 3) //Otherwise they can only see large or normal items from a distance...
 			viewing.show_message("<span class='notice'>[M] puts [I] [insert_preposition]to [parent].</span>", MSG_VISUAL)
-
-/datum/component/storage/proc/update_icon()
-	if(isobj(parent))
-		var/obj/O = parent
-		O.update_icon()
 
 /datum/component/storage/proc/signal_insertion_attempt(datum/source, obj/item/I, mob/M, silent = FALSE, force = FALSE)
 	if((!force && !can_be_inserted(I, TRUE, M)) || (I == parent))
@@ -569,10 +428,6 @@
 		for(var/i in taking)
 			remove_from_storage(i, destination)
 	return TRUE
-
-/datum/component/storage/proc/remaining_space_items()
-	var/atom/real_location = real_location()
-	return max(0, max_items - real_location.contents.len)
 
 /datum/component/storage/proc/signal_fill_type(datum/source, type, amount = 20, force = FALSE)
 	var/atom/real_location = real_location()
@@ -627,12 +482,6 @@
 		return FALSE
 	return remove_from_storage(AM, new_loc)
 
-/datum/component/storage/proc/signal_quick_empty(datum/source, atom/loctarget)
-	return do_quick_empty(loctarget)
-
-/datum/component/storage/proc/signal_hide_attempt(datum/source, mob/target)
-	return ui_hide(target)
-
 /datum/component/storage/proc/on_alt_click(datum/source, mob/user)
 	if(!isliving(user) || !user.CanReach(parent))
 		return
@@ -673,24 +522,6 @@
 			to_chat(user, "[parent] now picks up all items in a tile at once.")
 		if(COLLECT_ONE)
 			to_chat(user, "[parent] now picks up one item at a time.")
-
-/**
-  * Gets our max volume
-  */
-/datum/component/storage/proc/get_max_volume()
-	return max_volume || AUTO_SCALE_STORAGE_VOLUME(max_w_class, max_combined_w_class)
-
-/obj/item/storage/on_object_saved(depth)
-	if(depth >= 10)
-		return ""
-	var/dat = ""
-	for(var/obj/item in contents)
-		var/metadata = generate_tgm_metadata(item)
-		dat += "[dat ? ",\n" : ""][item.type][metadata]"
-		//Save the contents of things inside the things inside us, EG saving the contents of bags inside lockers
-		var/custom_data = item.on_object_saved(depth++)
-		dat += "[custom_data ? ",\n[custom_data]" : ""]"
-	return dat
 
 /**
   * Generates a list of numbered_display datums for the numerical display system.
@@ -976,21 +807,10 @@
 
 /datum/component/storage/concrete
 	can_transfer = TRUE
-	var/drop_all_on_deconstruct = TRUE
-	var/drop_all_on_destroy = FALSE
-	var/drop_all_on_break = FALSE
-	var/unlock_on_break = FALSE
-	var/transfer_contents_on_component_transfer = FALSE
-	var/list/datum/component/storage/slaves = list()
-
-	var/list/_contents_limbo // Where objects go to live mid transfer
-	var/list/_user_limbo // The last users before the component started moving
-
+	
 /datum/component/storage/concrete/Initialize()
 	. = ..()
 	RegisterSignal(parent, COMSIG_ATOM_CONTENTS_DEL, .proc/on_contents_del)
-	RegisterSignal(parent, COMSIG_OBJ_DECONSTRUCT, .proc/on_deconstruct)
-	RegisterSignal(parent, COMSIG_OBJ_BREAK, .proc/on_break)
 
 /datum/component/storage/concrete/Destroy()
 	var/atom/real_location = real_location()
@@ -1004,12 +824,6 @@
 	QDEL_LIST(_contents_limbo)
 	_user_limbo = null
 	return ..()
-
-/datum/component/storage/concrete/master()
-	return src
-
-/datum/component/storage/concrete/real_location()
-	return parent
 
 /datum/component/storage/concrete/PreTransfer()
 	if(is_using)
@@ -1071,18 +885,6 @@
 	if(A in real_location)
 		usr = null
 		remove_from_storage(A, null)
-
-/datum/component/storage/concrete/proc/on_deconstruct(datum/source, disassembled)
-	SIGNAL_HANDLER
-	if(drop_all_on_deconstruct)
-		do_quick_empty()
-
-/datum/component/storage/concrete/proc/on_break(datum/source, damage_flag)
-	SIGNAL_HANDLER
-	if(drop_all_on_break)
-		do_quick_empty()
-	if(unlock_on_break)
-		set_locked(source, FALSE)
 
 /datum/component/storage/concrete/can_see_contents()
 	. = ..()
@@ -1285,100 +1087,6 @@
 		else
 			to_chat(user, "<span class='notice'>You discreetly slip [I] into [parent].</span>")
 
-/datum/component/storage/concrete/pockets
-	max_w_class = WEIGHT_CLASS_NORMAL
-
-/datum/component/storage/concrete/pockets/small
-	max_items = 1
-	attack_hand_interact = FALSE
-
-/datum/component/storage/concrete/pockets/small/collar
-	max_items = 1
-
-/datum/component/storage/concrete/pockets/small/collar/Initialize()
-	. = ..()
-	can_hold = typecacheof(list(
-	/obj/item/reagent_containers/food/snacks/cookie,
-	/obj/item/reagent_containers/food/snacks/sugarcookie))
-
-/datum/component/storage/concrete/pockets/small/collar/locked/Initialize()
-	. = ..()
-	can_hold = typecacheof(list(
-	/obj/item/reagent_containers/food/snacks/cookie,
-	/obj/item/reagent_containers/food/snacks/sugarcookie,
-	/obj/item/key/collar))
-
-/datum/component/storage/concrete/pockets/tiny
-	max_items = 1
-	max_w_class = WEIGHT_CLASS_TINY
-	attack_hand_interact = FALSE
-
-/datum/component/storage/concrete/pockets/small/detective
-	attack_hand_interact = TRUE // so the detectives would discover pockets in their hats
-
-/datum/component/storage/concrete/pockets/shoes
-	attack_hand_interact = FALSE
-	quickdraw = TRUE
-	silent = TRUE
-
-/datum/component/storage/concrete/pockets/shoes/Initialize()
-	. = ..()
-	cant_hold = typecacheof(list(/obj/item/screwdriver/power))
-	can_hold = typecacheof(list(
-		/obj/item/kitchen/knife, /obj/item/switchblade, /obj/item/pen, /obj/item/melee/cultblade/dagger,
-		/obj/item/scalpel, /obj/item/reagent_containers/syringe, /obj/item/dnainjector,
-		/obj/item/reagent_containers/hypospray/medipen, /obj/item/reagent_containers/dropper,
-		/obj/item/implanter, /obj/item/screwdriver, /obj/item/weldingtool/mini,
-		/obj/item/firing_pin, /obj/item/gun/ballistic/automatic/pistol, /obj/item/gun/ballistic/automatic/magrifle/pistol,
-		/obj/item/toy/plush/snakeplushie, /obj/item/gun/energy/e_gun/mini, /obj/item/gun/ballistic/derringer
-		))
-
-/datum/component/storage/concrete/pockets/shoes/clown/Initialize()
-	. = ..()
-	cant_hold = typecacheof(list(/obj/item/screwdriver/power))
-	can_hold = typecacheof(list(
-		/obj/item/kitchen/knife, /obj/item/switchblade, /obj/item/pen, /obj/item/melee/cultblade/dagger,
-		/obj/item/scalpel, /obj/item/reagent_containers/syringe, /obj/item/dnainjector,
-		/obj/item/reagent_containers/hypospray/medipen, /obj/item/reagent_containers/dropper,
-		/obj/item/implanter, /obj/item/screwdriver, /obj/item/weldingtool/mini,
-		/obj/item/firing_pin, /obj/item/bikehorn, /obj/item/gun/ballistic/automatic/pistol, /obj/item/gun/energy/e_gun/mini))
-
-/datum/component/storage/concrete/pockets/pocketprotector
-	max_items = 3
-	max_w_class = WEIGHT_CLASS_TINY
-	var/atom/original_parent
-
-/datum/component/storage/concrete/pockets/pocketprotector/Initialize()
-	original_parent = parent
-	. = ..()
-	can_hold = typecacheof(list( //Same items as a PDA
-		/obj/item/pen,
-		/obj/item/toy/crayon,
-		/obj/item/lipstick,
-		/obj/item/flashlight/pen,
-		/obj/item/clothing/mask/cigarette))
-
-/datum/component/storage/concrete/pockets/pocketprotector/real_location()
-	// if the component is reparented to a jumpsuit, the items still go in the protector
-	return original_parent
-
-/datum/component/storage/concrete/pockets/small/rushelmet
-	max_items = 1
-	quickdraw = TRUE
-
-/datum/component/storage/concrete/pockets/small/rushelmet/Initialize()
-	. = ..()
-	can_hold = typecacheof(list(/obj/item/reagent_containers/glass/bottle,
-								/obj/item/ammo_box/a762))
-
-/datum/component/storage/concrete/pockets/void_cloak
-	quickdraw = TRUE
-	max_items = 3
-
-/datum/component/storage/concrete/pockets/void_cloak/Initialize()
-	. = ..()
-	var/static/list/exception_cache = typecacheof(list(/obj/item/living_heart,/obj/item/forbidden_book))
-
 //Stack-only storage.
 /datum/component/storage/concrete/stack
 	display_numerical_stacking = TRUE
@@ -1395,9 +1103,6 @@
 		if(!istype(S))
 			continue
 		. += S.amount
-
-/datum/component/storage/concrete/stack/proc/remaining_space()
-	return max(0, max_combined_stack_amount - total_stack_amount())
 
 //emptying procs do not need modification as stacks automatically merge.
 
