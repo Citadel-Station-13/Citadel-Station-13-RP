@@ -9,7 +9,7 @@
 	icon_state = "backpack"
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = SLOT_BACK
-	max_weight_class = WEIGHT_CLASS_BULKY
+	max_single_weight_class = WEIGHT_CLASS_BULKY
 	weight = ITEM_WEIGHT_STORAGE_BACKPACK
 	encumbrance = ITEM_ENCUMBRANCE_STORAGE_BACKPACK
 	max_combined_volume = INVENTORY_STANDARD_SPACE
@@ -44,9 +44,9 @@
 	desc = "A backpack that opens into a localized pocket of Blue Space."
 	origin_tech = list(TECH_BLUESPACE = 4)
 	icon_state = "holdingpack"
-	max_weight_class = WEIGHT_CLASS_BULKY
+	max_single_weight_class = WEIGHT_CLASS_BULKY
 	max_combined_volume = WEIGHT_VOLUME_NORMAL * 14 // 56
-	storage_cost = INVENTORY_STANDARD_SPACE + 1
+	weight_volume = INVENTORY_STANDARD_SPACE + 1
 
 /obj/item/storage/backpack/holding/duffle
 	name = "dufflebag of holding"
@@ -81,7 +81,7 @@
 	icon_state = "giftbag0"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "giftbag", SLOT_ID_LEFT_HAND = "giftbag")
 	w_class = WEIGHT_CLASS_BULKY
-	max_weight_class = WEIGHT_CLASS_NORMAL
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
 	max_combined_volume = WEIGHT_VOLUME_NORMAL * 100 // can store a ton of shit!
 	item_state_slots = null
 
@@ -511,7 +511,7 @@
 	icon_state = "purse"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "lgpurse", SLOT_ID_LEFT_HAND = "lgpurse")
 	w_class = WEIGHT_CLASS_BULKY
-	max_weight_class = WEIGHT_CLASS_NORMAL
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
 	max_combined_volume = WEIGHT_VOLUME_NORMAL * 5
 
 //Parachutes

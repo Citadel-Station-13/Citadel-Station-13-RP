@@ -4,7 +4,7 @@
 	icon_state = "lockbox+l"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syringe_kit", SLOT_ID_LEFT_HAND = "syringe_kit")
 	w_class = WEIGHT_CLASS_BULKY
-	max_weight_class = WEIGHT_CLASS_NORMAL
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
 	max_combined_volume = WEIGHT_VOLUME_NORMAL * 4 //The sum of the w_classes of all the items in this storage item.
 	req_access = list(ACCESS_SECURITY_ARMORY)
 	preserve_item = 1

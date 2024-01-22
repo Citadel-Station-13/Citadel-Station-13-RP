@@ -5,7 +5,7 @@
 	icon_state = "utility"
 	max_items = 7
 	max_combined_volume = WEIGHT_VOLUME_NORMAL * 7 //This should ensure belts always have enough room to store whatever.
-	max_weight_class = WEIGHT_CLASS_NORMAL
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
 	slot_flags = SLOT_BELT
 	attack_verb = list("whipped", "lashed", "disciplined")
 	equip_sound = 'sound/items/toolbelt_equip.ogg'
@@ -159,7 +159,7 @@
 	name = "security belt"
 	desc = "Can hold security gear like handcuffs and flashes."
 	icon_state = "security"
-	max_weight_class = WEIGHT_CLASS_NORMAL
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
 	insertion_whitelist = list(
 		/obj/item/grenade,
 		/obj/item/reagent_containers/spray/pepper,
@@ -198,7 +198,7 @@
 	desc = "A belt for holding forensics equipment."
 	icon_state = "security"
 	max_items = 7
-	max_weight_class = WEIGHT_CLASS_NORMAL
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
 	insertion_whitelist = list(
 		/obj/item/tape_recorder,
 		/obj/item/barrier_tape_roll,
@@ -384,7 +384,7 @@
 	desc = "Can hold security gear like handcuffs and flashes, with more pouches for more storage."
 	icon_state = "swat"
 	max_items = 9
-	max_weight_class = WEIGHT_CLASS_NORMAL
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
 	max_combined_volume = WEIGHT_VOLUME_NORMAL * 7
 
 /obj/item/storage/belt/security/tactical/bandolier
@@ -397,7 +397,7 @@
 	desc = "A bandolier used to hold spikes, and only spikes."
 	icon_state = "bandolier"
 	max_items = 14
-	max_weight_class = WEIGHT_CLASS_SMALL
+	max_single_weight_class = WEIGHT_CLASS_SMALL
 	max_combined_volume = WEIGHT_VOLUME_SMALL * 14
 	insertion_whitelist = list(/obj/item/melee/spike)
 	starts_with = list(/obj/item/melee/spike = 14)
@@ -407,7 +407,7 @@
 	desc = "A belt used to hold most janitorial supplies."
 	icon_state = "janitor"
 	max_items = 7
-	max_weight_class = WEIGHT_CLASS_NORMAL
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
 	insertion_whitelist = list(
 		/obj/item/clothing/glasses,
 		/obj/item/flashlight,
@@ -466,7 +466,7 @@
 	desc = "A dorky fannypack for keeping small items in."
 	icon_state = "fannypack_leather"
 	item_state = "fannypack_leather"
-	max_weight_class = WEIGHT_CLASS_SMALL
+	max_single_weight_class = WEIGHT_CLASS_SMALL
 	max_items = null
 	max_combined_volume = WEIGHT_VOLUME_NORMAL * 2
 
@@ -549,7 +549,7 @@
 	desc = "Belts like these were popular on old Earth, but were largely supplanted by modular holsters. This gunbelt is too bulky to be comfortably anchored to clothes without support."
 	icon_state = "dual_holster"
 	max_items = 2
-	max_weight_class = WEIGHT_CLASS_NORMAL
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
 	insertion_whitelist = list(
 		/obj/item/gun/energy/alien,
 		/obj/item/gun/energy/captain,
@@ -592,7 +592,7 @@
 	desc = "A quiver made from the hide of some animal. Used to hold arrows."
 	icon_state = "quiver"
 	max_items = 15
-	max_weight_class = WEIGHT_CLASS_NORMAL
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
 	insertion_whitelist = list(
 		/obj/item/ammo_casing/arrow
 		)
@@ -602,7 +602,7 @@
 	desc = "A quiver made from the hide of some animal. Used to hold arrows."
 	icon_state = "quiver"
 	max_items = 15
-	max_weight_class = WEIGHT_CLASS_NORMAL
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
 	insertion_whitelist = list(
 		/obj/item/ammo_casing/arrow
 		)
@@ -615,7 +615,7 @@
 	desc = "A quiver made from the hide of some animal. Used to hold arrows."
 	icon_state = "quiver"
 	max_items = 15
-	max_weight_class = WEIGHT_CLASS_NORMAL
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
 	insertion_whitelist = list(
 		/obj/item/ammo_casing/arrow
 		)

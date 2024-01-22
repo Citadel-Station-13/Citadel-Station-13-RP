@@ -214,7 +214,7 @@
 	icon_state = "crackerbox"
 	icon_type = "cracker"
 	max_combined_volume = WEIGHT_VOLUME_TINY * 6
-	max_weight_class = WEIGHT_CLASS_TINY
+	max_single_weight_class = WEIGHT_CLASS_TINY
 	w_class = WEIGHT_CLASS_SMALL
 	insertion_whitelist = list(/obj/item/reagent_containers/food/snacks/cracker)
 	starts_with = list(/obj/item/reagent_containers/food/snacks/cracker = 6)
@@ -407,7 +407,7 @@
 	icon = 'icons/obj/vialbox.dmi'
 	icon_state = "vialbox0"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syringe_kit", SLOT_ID_LEFT_HAND = "syringe_kit")
-	max_weight_class = WEIGHT_CLASS_SMALL
+	max_single_weight_class = WEIGHT_CLASS_SMALL
 	insertion_whitelist = list(/obj/item/reagent_containers/glass/beaker/vial)
 	max_combined_volume = WEIGHT_VOLUME_SMALL * 6 //The sum of the w_classes of all the items in this storage item.
 	max_items = 6

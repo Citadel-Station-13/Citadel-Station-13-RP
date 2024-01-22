@@ -5,8 +5,8 @@
 	inhand_icon = 'icons/items/storage/firstaid.dmi'
 	icon_state = "normal"
 	slot_flags = SLOT_BELT
-	max_storage_space = INVENTORY_BOX_SPACE
-	can_hold = list(
+	max_combined_volume = INVENTORY_BOX_SPACE
+	insertion_whitelist = list(
 		/obj/item/reagent_containers/glass/hypovial,
 		/obj/item/hypospray,
 	)
@@ -29,8 +29,8 @@
 	icon_state = "tactical"
 	hypospray_path = /obj/item/hypospray/combat/loaded
 	vial_path = /obj/item/reagent_containers/glass/hypovial/large
-	max_storage_space = INVENTORY_BOX_SPACE * 2
-	storage_cost = WEIGHT_VOLUME_NORMAL * 1.5
+	max_combined_volume = INVENTORY_BOX_SPACE * 2
+	weight_volume = WEIGHT_VOLUME_NORMAL * 1.5
 
 /obj/item/storage/hypokit/combat/loaded/spawn_hypovials()
 	for(var/i in 1 to 2)
@@ -54,8 +54,8 @@
 	inhand_state = "normal"
 	hypospray_path = /obj/item/hypospray/advanced/loaded
 	vial_path = /obj/item/reagent_containers/glass/hypovial/large
-	max_storage_space = INVENTORY_BOX_SPACE * 2
-	storage_cost = WEIGHT_VOLUME_NORMAL * 1.5
+	max_combined_volume = INVENTORY_BOX_SPACE * 2
+	weight_volume = WEIGHT_VOLUME_NORMAL * 1.5
 
 /obj/item/storage/hypokit/advanced/loaded/spawn_hypovials()
 	for(var/i in 1 to 2)

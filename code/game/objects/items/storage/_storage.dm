@@ -17,7 +17,7 @@
 	var/list/insertion_blacklist
 	var/list/insertion_allow
 
-	var/max_weight_class = WEIGHT_CLASS_SMALL
+	var/max_single_weight_class = WEIGHT_CLASS_SMALL
 	var/max_combined_weight_class
 	var/max_combined_volume = WEIGHT_VOLUME_SMALL * 4
 	var/max_items
@@ -69,7 +69,7 @@
 	obj_storage.set_insertion_whitelist(insertion_whitelist)
 	obj_storage.set_insertion_blacklist(insertion_blacklist)
 
-	obj_storage.max_single_weight_class = max_weight_class
+	obj_storage.max_single_weight_class = max_single_weight_class
 	obj_storage.max_combined_weight_class = max_combined_weight_class
 	obj_storage.max_combined_volume = max_combined_volume
 	obj_storage.max_items = max_item
@@ -334,7 +334,7 @@
 
 	for(var/obj/item/O in contents)
 		startpoint = endpoint + 1
-		endpoint += storage_width * O.get_storage_cost()/max_combined_volume
+		endpoint += storage_width * O.get_weight_volume()/max_combined_volume
 
 		var/matrix/M_start = matrix()
 		var/matrix/M_continue = matrix()
@@ -423,7 +423,7 @@
 			to_chat(usr, "<span class='notice'>[src] is full, make some space.</span>")
 		return 0 //Storage item is full
 
-	if(can_hold.len && !is_type_in_list(W, can_hold))
+	if(insertion_whitelist.len && !is_type_in_list(W, insertion_whitelist))
 		if(!stop_messages)
 			if (istype(W, /obj/item/hand_labeler))
 				return 0
@@ -435,12 +435,12 @@
 			to_chat(usr, "<span class='notice'>[src] cannot hold [W].</span>")
 		return 0
 
-	if (max_weight_class != null && W.w_class > max_weight_class)
+	if (max_single_weight_class != null && W.w_class > max_single_weight_class)
 		if(!stop_messages)
 			to_chat(usr, "<span class='notice'>[W] is too long for \the [src].</span>")
 		return 0
 
-	if((storage_space_used() + W.get_storage_cost()) > max_combined_volume) //Adds up the combined w_classes which will be in the storage item if the item is added to it.
+	if((storage_space_used() + W.get_weight_volume()) > max_combined_volume) //Adds up the combined w_classes which will be in the storage item if the item is added to it.
 		if(!stop_messages)
 			to_chat(usr, "<span class='notice'>[src] is too full, make some space.</span>")
 		return 0
@@ -673,13 +673,13 @@
 /obj/item/storage/proc/make_exact_fit()
 	max_items = contents.len
 
-	can_hold.Cut()
-	max_weight_class = 0
+	insertion_whitelist.Cut()
+	max_single_weight_class = 0
 	max_combined_volume = 0
 	for(var/obj/item/I in src)
-		can_hold[I.type]++
-		max_weight_class = max(I.w_class, max_weight_class)
-		max_combined_volume += I.get_storage_cost()
+		insertion_whitelist[I.type]++
+		max_single_weight_class = max(I.w_class, max_single_weight_class)
+		max_combined_volume += I.get_weight_volume()
 
 /*
  * Trinket Box - READDING SOON

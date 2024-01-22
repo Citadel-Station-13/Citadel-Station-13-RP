@@ -60,7 +60,7 @@
 	pickup_sound = 'sound/items/pickup/wrapper.ogg'
 
 	w_class = WEIGHT_CLASS_SMALL
-	max_weight_class = WEIGHT_CLASS_NORMAL
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
 	max_combined_volume = WEIGHT_CLASS_SMALL * 21
 	insertion_whitelist = list() // any
 	insertion_blacklist = list(/obj/item/disk/nuclear)
@@ -76,7 +76,7 @@
 
 /obj/item/storage/bag/trash/bluespace
 	name = "trash bag of holding"
-	max_weight_class = WEIGHT_CLASS_HUGE
+	max_single_weight_class = WEIGHT_CLASS_HUGE
 	max_combined_volume = WEIGHT_CLASS_SMALL * 56
 	desc = "The latest and greatest in custodial convenience, a trashbag that is capable of holding vast quantities of garbage."
 	icon_state = "bluetrashbag"
@@ -101,7 +101,7 @@
 	pickup_sound = 'sound/items/pickup/wrapper.ogg'
 
 	w_class = WEIGHT_CLASS_BULKY
-	max_weight_class = WEIGHT_CLASS_SMALL
+	max_single_weight_class = WEIGHT_CLASS_SMALL
 	insertion_whitelist = list() // any
 	insertion_blacklist = list(/obj/item/disk/nuclear)
 
@@ -121,7 +121,7 @@
 	slot_flags = SLOT_BELT | SLOT_POCKET
 	w_class = WEIGHT_CLASS_NORMAL
 	max_combined_volume = WEIGHT_VOLUME_NORMAL * 25 //kinda irrelevant now :^)
-	max_weight_class = WEIGHT_CLASS_NORMAL
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
 	insertion_whitelist = list(/obj/item/stack/ore)
 	var/stored_ore = list()
 	var/total_ore = 0 //current ore stored
@@ -288,7 +288,7 @@
 	icon = 'icons/obj/hydroponics_machines.dmi'
 	icon_state = "plantbag"
 	max_combined_volume = WEIGHT_VOLUME_NORMAL * 25
-	max_weight_class = WEIGHT_CLASS_NORMAL
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
 	w_class = WEIGHT_CLASS_SMALL
 	insertion_whitelist = list(/obj/item/reagent_containers/food/snacks/grown,/obj/item/seeds,/obj/item/grown)
 
@@ -445,7 +445,7 @@
 	icon_state = "cashbag"
 	desc = "A bag for carrying lots of cash. It's got a big dollar sign printed on the front."
 	max_combined_volume = WEIGHT_VOLUME_NORMAL * 25
-	max_weight_class = WEIGHT_CLASS_NORMAL
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
 	w_class = WEIGHT_CLASS_SMALL
 	insertion_whitelist = list(/obj/item/coin,/obj/item/spacecash)
 
@@ -492,7 +492,7 @@
 	icon_state = "foodbag"
 	desc = "A bag for storing foods of all kinds."
 	max_combined_volume = WEIGHT_VOLUME_NORMAL * 25
-	max_weight_class = WEIGHT_CLASS_NORMAL
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
 	w_class = WEIGHT_CLASS_SMALL
 	insertion_whitelist = list(/obj/item/reagent_containers/food/snacks,/obj/item/reagent_containers/food/condiment)
 
@@ -505,7 +505,7 @@
 	icon_state = "detbag"
 	desc = "A bag for storing investigation things. You know, securely."
 	max_combined_volume = WEIGHT_VOLUME_NORMAL * 15
-	max_weight_class = WEIGHT_CLASS_NORMAL
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
 	w_class = WEIGHT_CLASS_SMALL
 	insertion_whitelist = list(/obj/item/forensics/swab,/obj/item/sample/print,/obj/item/sample/fibers,/obj/item/evidencebag)
 
@@ -515,7 +515,7 @@
 	icon_state = "foodbag"
 	desc = "A bag for storing things of all kinds."
 	max_combined_volume = WEIGHT_VOLUME_NORMAL * 25
-	max_weight_class = WEIGHT_CLASS_NORMAL
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
 	w_class = WEIGHT_CLASS_SMALL
 	insertion_whitelist = list(/obj/item/reagent_containers/food/snacks,/obj/item/reagent_containers/food/condiment,
 	/obj/item/reagent_containers/glass/beaker,/obj/item/reagent_containers/glass/bottle,/obj/item/coin,/obj/item/spacecash,
