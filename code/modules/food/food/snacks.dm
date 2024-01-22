@@ -3990,8 +3990,6 @@ END CITADEL CHANGE */
 	. = ..()
 	bitesize = 3
 
-#warn TODO kill coatings
-
 //Called by cooking machines. This is mainly intended to set properties on the food that differ between raw/cooked
 /obj/item/reagent_containers/food/snacks/proc/cook()
 /*

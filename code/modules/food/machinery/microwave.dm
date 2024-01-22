@@ -297,14 +297,9 @@
 		var/result = recipe.result
 		var/valid = 1
 		var/list/cooked_items = list()
-		var/obj/temp = new /obj(src) //To prevent infinite loops, all results will be moved into a temporary location so they're not considered as inputs for other recipes
+
 		while(valid)
-			var/list/things = list()
-			things.Add(recipe.make_food(src))
-			cooked_items += things
-			//Move cooked things to the buffer so they're not considered as ingredients
-			for (var/atom/movable/AM in things)
-				AM.forceMove(temp)
+			cooked_items.Add(recipe.make_food(src, null))
 
 			valid = 0
 			recipe = select_recipe(available_recipes,src)
@@ -315,8 +310,6 @@
 		for (var/r in cooked_items)
 			var/atom/movable/R = r
 			R.forceMove(src) //Move everything from the buffer back to the container
-
-		QDEL_NULL(temp)//Delete buffer object
 
 		//Any leftover reagents are divided amongst the foods
 		var/total = reagents.total_volume
@@ -336,7 +329,7 @@
 		if (machine_stat & (NOPOWER|BROKEN))
 			return 0
 		use_power(active_power_usage)
-		sleep(10)
+		sleep(1 SECOND)
 	return 1
 
 /obj/machinery/microwave/proc/has_extra_item()

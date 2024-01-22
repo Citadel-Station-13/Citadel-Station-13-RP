@@ -2674,7 +2674,6 @@
 #include "code\modules\food\food_2\culinary_construct.dm"
 #include "code\modules\food\food_2\foodholder.dm"
 #include "code\modules\food\food_2\ingredient.dm"
-#include "code\modules\food\food_2\recipes.dm"
 #include "code\modules\food\food_2\serving.dm"
 #include "code\modules\food\food_2\ingredients\dough_bread.dm"
 #include "code\modules\food\glass\bottle.dm"

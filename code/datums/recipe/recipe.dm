@@ -32,6 +32,17 @@
  *
  * */
 
+
+/// global slot meta cache - all ids must be string!
+/// initialized by SSearly_init
+GLOBAL_LIST_EMPTY(cooking_recipes)
+
+/proc/init_cooking_recipes_glob()
+	for(var/R in subtypesof(/datum/recipe))
+		GLOB.cooking_recipes += new R
+
+
+
 	///Reagents in the ingredients are discarded.
 #define RECIPE_REAGENT_REPLACE		0
 	//Only the reagents present in the result at compiletime are used
@@ -54,7 +65,7 @@
 
 
 
-	var/reagent_mix = RECIPE_REAGENT_MAX	//How to handle reagent differences between the ingredients and the results
+	var/reagent_mix = RECIPE_REAGENT_REPLACE	//How to handle reagent differences between the ingredients and the results
 
 	var/required_method = METHOD_MICROWAVE //Which method this recipe can be made in.
 	//List of defines are in _DEFINES/cooking.dm, but for reference:
@@ -66,8 +77,7 @@
 			#define METHOD_BLOWTORCH "blowtorch" //i know a welder isn't actually one but you actually use blowtorches in cooking
 			#define METHOD_ENERGETIC_ANOMALY "energetic anomaly" //supermatter, tesla, etc
 	*/
-	//This is a bitfield, more than one type can be used
-	//Grill is presently unused and not listed
+	//these are string defines, and hence only 1 can be used.
 
 /datum/recipe/proc/check_reagents(var/datum/reagents/avail_reagents)
 	if(!reagents || !reagents.len)
@@ -123,12 +133,16 @@
 				continue // Fruit is handled in check_fruit().
 			if((is_exact_type_in_list(O, checklist)))
 				if(istype(O, /obj/item/reagent_containers/food/snacks/ingredient))
-					var/obj/item/reagent_containers/food/snacks/ingredient/our_ingredient
-					checklist[our_ingredient] -= our_ingredient.serving_amount
+					var/obj/item/reagent_containers/food/snacks/ingredient/our_ingredient = O
+					checklist[our_ingredient.type] -= our_ingredient.serving_amount
+					if(checklist[our_ingredient.type] < 1)
+						checklist -= our_ingredient.type
 				else
-					checklist[O]--
+					checklist[O.type]--
+					if(checklist[O.type] < 1)
+						checklist -= O.type
 			else
-				return 0
+				. = 0
 
 		if(checklist.len)
 			. = -1
@@ -152,10 +166,11 @@
 
 // food-related
 //This proc is called under the assumption that the container has already been checked and found to contain the necessary ingredients
-/datum/recipe/proc/make_food(var/obj/container)
+/datum/recipe/proc/make_food(var/obj/container, var/obj/output)
 	if(!result)
 		return
-
+	if(!output)
+		output = container
 
 //We will subtract all the ingredients from the container, and transfer their reagents into a holder
 //We will not touch things which are not required for this recipe. They will be left behind for the caller
@@ -193,6 +208,7 @@
 				var/obj/item/reagent_containers/food/snacks/ingredient/IN = I
 				var/consume_amount = items[IN.type]
 				I.reagents.trans_to_holder(temp.reagents, I.reagents.total_volume * (consume_amount / IN.serving_amount))
+				IN.consume_serving(consume_amount)
 				continue
 			if(I.reagents)
 				I.reagents.trans_to_holder(temp.reagents,I.reagents.total_volume)
@@ -223,7 +239,7 @@
 	tempholder.create_reagents(100000000)
 	var/list/results = list()
 	while (tally < result_quantity)
-		var/obj/result_obj = new result(container)
+		var/obj/result_obj = new result(output)
 		results.Add(result_obj)
 
 		if(!result_obj.reagents)//This shouldn't happen
