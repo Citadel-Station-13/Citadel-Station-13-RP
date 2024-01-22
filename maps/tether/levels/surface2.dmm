@@ -28574,7 +28574,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/turf/simulated/wall/prepainted/medical,
+/turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/bathroom)
 "vkg" = (
 /obj/structure/cable/green{
@@ -30165,10 +30165,10 @@
 /area/maintenance/lower/south)
 "wtT" = (
 /obj/structure/table/woodentable,
-/obj/item/storage/box/cups,
 /obj/machinery/camera/network/command{
 	dir = 9
 	},
+/obj/item/storage/box/glasses,
 /turf/simulated/floor/wood,
 /area/bridge/meeting_room)
 "wuk" = (
