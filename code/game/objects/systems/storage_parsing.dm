@@ -1105,69 +1105,9 @@ w
 	plane = HUD_PLANE
 	insertion_click = TRUE
 
-/atom/movable/screen/storage/close
-	name = "close"
-	layer = ABOVE_HUD_LAYER
-	plane = ABOVE_HUD_PLANE
-	icon_state = "backpack_close"
-
-/atom/movable/screen/storage/close/Click()
-	var/datum/component/storage/S = master
-	S.close(usr)
-	return TRUE
-
-/atom/movable/screen/storage/left
-	icon_state = "storage_start"
-	insertion_click = TRUE
-
-/atom/movable/screen/storage/right
-	icon_state = "storage_end"
-	insertion_click = TRUE
-
-/atom/movable/screen/storage/continuous
-	icon_state = "storage_continue"
-	insertion_click = TRUE
 
 /atom/movable/screen/storage/volumetric_box
 	icon_state = "stored_continue"
-	layer = VOLUMETRIC_STORAGE_BOX_LAYER
-	plane = VOLUMETRIC_STORAGE_BOX_PLANE
-	var/obj/item/our_item
-
-/atom/movable/screen/storage/volumetric_box/Initialize(mapload, new_master, obj/item/our_item)
-	src.our_item = our_item
-	RegisterSignal(our_item, COMSIG_ITEM_MOUSE_ENTER, .proc/on_item_mouse_enter)
-	RegisterSignal(our_item, COMSIG_ITEM_MOUSE_EXIT, .proc/on_item_mouse_exit)
-	return ..()
-
-/atom/movable/screen/storage/volumetric_box/Destroy()
-	makeItemInactive()
-	our_item = null
-	return ..()
-
-/atom/movable/screen/storage/volumetric_box/Click(location, control, params)
-	return our_item.Click(location, control, params)
-
-/atom/movable/screen/storage/volumetric_box/MouseDrop(atom/over, src_location, over_location, src_control, over_control, params)
-	return our_item.MouseDrop(over, src_location, over_location, src_control, over_control, params)
-
-/atom/movable/screen/storage/volumetric_box/MouseExited(location, control, params)
-	makeItemInactive()
-
-/atom/movable/screen/storage/volumetric_box/MouseEntered(location, control, params)
-	makeItemActive()
-
-/atom/movable/screen/storage/volumetric_box/proc/on_item_mouse_enter()
-	makeItemActive()
-
-/atom/movable/screen/storage/volumetric_box/proc/on_item_mouse_exit()
-	makeItemInactive()
-
-/atom/movable/screen/storage/volumetric_box/proc/makeItemInactive()
-	return
-
-/atom/movable/screen/storage/volumetric_box/proc/makeItemActive()
-	return
 
 /atom/movable/screen/storage/volumetric_box/center
 	icon_state = "stored_continue"

@@ -1037,6 +1037,16 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	playsound(src, "shatter", 70, 1)
 	qdel(src)
 
+//* Mouse *//
+
+/obj/item/MouseEntered(location, control, params)
+	..()
+	SEND_SIGNAL(src, COMSIG_ITEM_MOUSE_ENTERED, usr)
+
+/obj/item/MouseExited(location, control, params)
+	..()
+	SEND_SIGNAL(src, COMSIG_ITEM_MOUSE_EXITED, usr)
+
 //* Storage *//
 
 /obj/item/proc/get_weight_class()

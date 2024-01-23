@@ -331,6 +331,7 @@
  */
 /datum/object_system/storage/proc/physically_insert_entity(obj/item/inserting)
 	inserting.forceMove(real_contents_loc())
+	inserting.vis_flags |= VIS_INHERIT_LAYER | VIS_INHERIT_PLANE
 
 /**
  * @return TRUE / FALSE
@@ -357,6 +358,7 @@
  */
 /datum/object_system/storage/proc/physically_remove_entity(obj/item/removing, atom/to_where)
 	removing.forceMove(to_where)
+	removing.vis_flags = (rmeoving.vis_flags & ~(VIS_INHERIT_LAYER | VIS_INHERIT_LAYER)) | (initial(removing.vis_flags) & (VIS_INHERIT_LAYER | VIS_INHERIT_PLANE))
 
 //* Limits *//
 
@@ -640,59 +642,111 @@
 
 #warn scream
 
+/*
+
+/**
+ *! -- Storage Plane
+ */
+#define STORAGE_PLANE 95
+#define STORAGE_LAYER_CONTAINER 1
+#define STORAGE_LAYER_ITEM_INACTIVE 1
+#define STORAGE_LAYER_ITEM_ACTIVE 1
+
+*/
 
 //? Storage Screens
 
 /atom/movable/screen/storage
+	name = "storage"
+	appearance_flags = APPEARANCE_UI | KEEP_TOGETHER
+	plane = STORAGE_PLANE
 	icon = 'icons/screen/hud/common/storage.dmi'
+	
+/atom/movable/screen/storage/closer
+	name = "close"
+	icon_state = "close"
+	layer = STORAGE_LAYER_CONTAINER
 
-	/// host storage datum
-	var/datum/object_system/storage/storage
-	
+/atom/movable/screen/storage/closer/Click()
+	usr.active_storage?.hide(usr)
+
 /atom/movable/screen/storage/item
+	layer = STORAGE_LAYER_ITEM_INACTIVE
 	var/obj/item/item
-	
+
 /atom/movable/screen/storage/item/New(newloc, obj/item/from_item)
 	item = from_item
 	bind(from_item)
 	return ..()
 
+/atom/mvoable/screen/storage/item/Destroy()
+	item = null
+	return ..()
+
+/atom/movable/screen/storage/item/MouseEntered(location, control, params)
+	. = ..()
+	layer = STORAGE_LAYER_ITEM_ACTIVE
+
+/atom/movable/screen/storage/item/MouseExited(location, control, params)
+	. = ..()
+	layer = STORAGE_LAYER_ITEM_INACTIVE
+	
+/atom/movable/screen/storage/item/proc/item_mouse_enter(mob/user)
+	layer = STORAGE_LAYER_ITEM_ACTIVE
+
+/atom/movable/screen/storage/item/proc/item_mouse_exit(mob/user)
+	layer = STORAGE_LAYER_ITEM_INACTIVE
+
+/atom/movable/screen/storage/item/MouseDrop(atom/over_object, src_location, over_location, src_control, over_control, params)
+	return item.MouesDrop(arglist(args))
+
+/atom/movable/screen/storage/item/Click(location, control, params)
+	return item.Click(arglist(args))
+
+/atom/movable/screen/storage/item/DblClick(location, control, params)
+	return item.DblClick(arglist(args))
+
 /atom/movable/screen/storage/item/proc/bind(obj/item/item)
-	#warn impl
+	vis_contents += item
+	name = item.name
+	desc = item.desc
+	RegisterSignal(item, COMSIG_ITEM_MOUSE_ENTERED, PROC_REF(item_mouse_enter))
+	RegisterSignal(item, COMSIG_ITEM_MOUSE_EXITED, PROC_REF(item_mouse_exit))
+
+/atom/movable/screen/storage/panel
+	layer = STORAGE_LAYER_CONTAINER
+
+/atom/movable/screen/storage/panel/Click()
+	var/obj/item/held = usr.get_active_held_item()
+	if(isnull(held))
+		return
+	usr.active_storage?.auto_handle_interacted_insertion(held)
 
 /atom/movable/screen/storage/item/slot
+	icon_state = "nothing"
+	mouse_opacity = MOUSE_OPACITY_OPAQUE
 
-/atom/movable/screen/storage/item/slot/bind(obj/item/item)
-	..()
+/atom/movable/screen/storage/panel/slot
 
-/atom/movable/screen/storage/item/slot/Click()
-	#warn impl
-
-/atom/movable/screen/storage/slot_panel
-
-/atom/movable/screen/storage/slot_panel/Click()
-	#warn impl
-
-/atom/movable/screen/storage/slot_panel/boxes
+/atom/movable/screen/storage/panel/slot/boxes
+	icon_state = "block"
 
 /atom/movable/screen/storage/item/volumetric
+	icon_state = "nothing"
 
-/atom/movable/screen/storage/item/volumetric/bind(obj/item/item)
-	..()
-
-/atom/movable/screen/storage/item/volumetric/Click()
+/atom/movable/screen/storage/item/volumetric/proc/fit_to_total_width(width)
 	#warn impl
 
-/atom/movable/screen/storage/volumetric_panel
+/atom/movable/screen/storage/panel/volumetric
 
-/atom/movable/screen/storage/volumetric_panel/Click()
-	#warn impl
+/atom/movable/screen/storage/panel/volumetric/left
+	icon_state = "storage_left"
 
-/atom/movable/screen/storage/volumetric_panel/left
+/atom/movable/screen/storage/panel/volumetric/middle
+	icon_state = "storage_middle"
 
-/atom/movable/screen/storage/volumetric_panel/middle
-
-/atom/movable/screen/storage/volumetric_panel/right
+/atom/movable/screen/storage/panel/volumetric/right
+	icon_state = "storage_right"
 
 //? Lazy wrappers for init
 
