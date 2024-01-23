@@ -4,7 +4,7 @@
 	desc = "A stainless steel-plated carrycase for all your forensic needs. Feels heavy."
 	icon = 'icons/obj/forensics.dmi'
 	icon_state = "det-case"
-	storage_slots = 14
+	max_items = 14
 	drop_sound = 'sound/items/drop/toolbox.ogg'
 	pickup_sound = 'sound/items/pickup/toolbox.ogg'
 	item_icons = list(

@@ -5,7 +5,7 @@
 	name = "emergency medical pouch"
 	desc = "For use in emergency situations only."
 	icon = 'icons/obj/single_use/med_pouch.dmi'
-	storage_slots = 7
+	max_items = 7
 	w_class = WEIGHT_CLASS_SMALL
 	max_single_weight_class = WEIGHT_CLASS_SMALL
 	icon_state = "pack0"

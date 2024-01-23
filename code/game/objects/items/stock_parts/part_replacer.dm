@@ -4,7 +4,7 @@
 	icon_state = "RPED"
 	w_class = WEIGHT_CLASS_HUGE
 	insertion_whitelist = list(/obj/item/stock_parts, /obj/item/cell/, /obj/item/reagent_containers/glass/beaker/)
-	storage_slots = 100
+	max_items = 100
 	use_to_pickup = 1
 	allow_quick_gather = 1
 	allow_quick_empty = 1
@@ -21,7 +21,7 @@
 /obj/item/storage/part_replacer/basic
 	name = "basic part exchanger"
 	desc = "A basic part exchanger. It can't seem to store much."
-	storage_slots = 35
+	max_items = 35
 	materials_base = list(
 		MAT_STEEL = 4000,
 		MAT_GLASS = 1500,
@@ -31,7 +31,7 @@
 	name = "advanced rapid part exchange device"
 	desc = "A special mechanical module made to store, sort, and apply standard machine parts.  This one has a greatly upgraded storage capacity"
 	icon_state = "RPED"
-	storage_slots = 200
+	max_items = 200
 	max_storage_space = 400
 	materials_base = list(
 		MAT_STEEL = 12000,
@@ -42,7 +42,7 @@
 	name = "discount bluespace rapid part exchange device"
 	desc = "A special mechanical module made to store, sort, and apply standard machine parts.  This one has a further increased storage capacity, \
 	and the ability to work on machines with closed maintenance panels."
-	storage_slots = 400
+	max_items = 400
 	max_storage_space = 800
 	panel_req = FALSE
 

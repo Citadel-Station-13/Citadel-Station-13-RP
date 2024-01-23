@@ -113,7 +113,7 @@
 	icon_state = "excavation"
 	desc = "A set of picks for excavation."
 	item_state = "syringe_kit"
-	storage_slots = 7
+	max_items = 7
 	w_class = WEIGHT_CLASS_SMALL
 	insertion_whitelist = list(/obj/item/pickaxe/brush,
 	/obj/item/pickaxe/one_pick,

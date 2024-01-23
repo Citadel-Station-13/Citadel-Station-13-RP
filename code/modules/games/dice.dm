@@ -143,7 +143,7 @@
 	icon = 'icons/obj/dice.dmi'
 	icon_state = "dicecup"
 	w_class = WEIGHT_CLASS_SMALL
-	storage_slots = 6
+	max_items = 6
 	insertion_whitelist = list(
 		/obj/item/dice,
 		)

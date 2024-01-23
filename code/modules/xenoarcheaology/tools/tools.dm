@@ -14,7 +14,7 @@
 	icon_state = "satchel"
 	slot_flags = SLOT_BELT | SLOT_POCKET
 	w_class = WEIGHT_CLASS_NORMAL
-	storage_slots = 50
+	max_items = 50
 	max_storage_space = WEIGHT_VOLUME_NORMAL * 50
 	max_w_class = WEIGHT_CLASS_NORMAL
 	insertion_whitelist = list(/obj/item/fossil)

@@ -145,7 +145,7 @@
 	icon_state = "khlifebox"
 	desc = "This case can only hold the VM-LC91-1 and a manual."
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syringe_kit", SLOT_ID_LEFT_HAND = "syringe_kit")
-	storage_slots = 2
+	max_items = 2
 	insertion_whitelist = list(/obj/item/clothing/accessory/collar/vmcrystal)
 	max_storage_space = WEIGHT_VOLUME_SMALL * 2
 	w_class = WEIGHT_CLASS_SMALL

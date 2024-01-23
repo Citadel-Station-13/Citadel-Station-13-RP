@@ -66,7 +66,7 @@
 	name = "box of cocktail garnishings"
 	var/extra_type = /obj/item/glass_extra
 	insertion_whitelist = list(/obj/item/glass_extra)
-	storage_slots = 14
+	max_items = 14
 
 /obj/item/storage/box/glass_extras/New()
 	..()

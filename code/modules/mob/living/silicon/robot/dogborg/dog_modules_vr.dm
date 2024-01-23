@@ -128,7 +128,7 @@
 	w_class = WEIGHT_CLASS_HUGE
 	max_w_class = WEIGHT_CLASS_SMALL
 	max_combined_w_class = WEIGHT_CLASS_SMALL
-	storage_slots = 1
+	max_items = 1
 	collection_mode = 0
 	can_hold = list() // any
 	cant_hold = list(/obj/item/disk/nuclear)

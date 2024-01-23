@@ -5,7 +5,7 @@
 	icon = 'icons/modules/fishing/storage.dmi'
 	icon_state = "case"
 
-	storage_slots = 1
+	max_items = 1
 	max_w_class = WEIGHT_CLASS_HUGE
 	insertion_whitelist = list(
 		/obj/item/fish,
