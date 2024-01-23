@@ -53,6 +53,8 @@
 	//* HUD
 	
 	/// active, opened storage
+	//  todo: doesn't clear from clients properly on logout, relies on login clearing screne.
+	//  todo: we'll eventually need a system to handle ckey transfers properly.
 	var/datum/object_system/storage/active_storage
 
 	//? Movespeed

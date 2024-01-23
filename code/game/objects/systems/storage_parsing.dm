@@ -165,16 +165,6 @@
 			continue
 		remove_from_storage(I, _target)
 	return TRUE
-
-/datum/component/storage/proc/set_locked(datum/source, new_state)
-	locked = new_state
-	if(check_locked())
-		close_all()
-
-/datum/component/storage/proc/check_views()
-	for(var/mob/M in can_see_contents())
-		if(!isobserver(M) && !M.CanReach(parent, view_only = TRUE))
-			close(M)
 			
 //Resets something that is being removed from storage.
 /datum/component/storage/proc/_removal_reset(atom/movable/thing)

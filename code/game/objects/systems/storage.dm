@@ -94,6 +94,9 @@
 	#warn impl
 	var/allow_open_via_clickdrag_to_self = TRUE
 
+	/// ghosts can always see inside
+	var/always_allow_observer_view = TRUE
+
 	//* Limits
 
 	/// if set, limit to a certain volume
@@ -207,7 +210,9 @@
 		. += inside
 
 /datum/object_system/storage/proc/accessible_by_mob(mob/user)
-	#warn impl
+	if(IsAdminGhost(user) || (isobserver(user) && always_allow_observer_view))
+		return TRUE
+	return user.CheapReachability(parent)
 
 //* Caches *//
 
@@ -457,6 +462,12 @@
  * @return TRUE if we did something (to interrupt clickchain)
  */
 /datum/object_system/storage/proc/auto_handle_open_interaction(datum/event_args/actor/actor, force)
+	if(is_locked(actor))
+		actor.chat_feedback(
+			msg = SPAN_WARNING("[parent] is locked."),
+			target = parent,
+		)
+		return TRUE
 	if(check_on_found_hooks(actor))
 		return TRUE
 	#warn check, force, etc
@@ -465,15 +476,12 @@
 
 /datum/object_system/storage/proc/show(mob/viewer)
 	if(viewer.active_storage == src)
+		refresh_ui(viewer)
 		return TRUE
 	viewer.active_storage?.hide(viewer)
-
-	#warn check, respect force
-
 	viewer.active_storage = src
 	RegisterSignal(viewer, COMSIG_MOVABLE_MOVED, PROC_REF(on_viewer_moved))
-	
-	#warn impl
+	create_ui(viewer)
 
 /**
  * if user not specified, it is 'all'.
@@ -490,19 +498,19 @@
 		viewer.active_storage = null
 	UnregisterSignal(viewer, COMSIG_MOVABLE_MOVED)
 
-	#warn impl
+	cleanup_ui(viewer)
 
 /**
  * Hooked into obj/Moved().
  */
 /datum/object_system/storage/proc/on_parent_moved(atom/old_loc, forced)
-	#warn impl
+	reconsider_mob_viewable()
 
 /**
  * Comsig hooked into anything viewing us
  */
 /datum/object_system/storage/proc/on_viewer_moved(datum/source, atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
-	#warn impl
+	reconsider_mob_viewable(source)
 
 /datum/object_system/storage/proc/refresh(mob/viewer)
 	if(isnull(viewer))
@@ -536,7 +544,31 @@
 		return
 	hide(user)
 
-/
+/datum/object_system/storage/proc/cleanup_ui(mob/user)
+	var/list/objects = ui_by_mob[user]
+	QDEL_LIST(objects)
+	ui_by_mob -= user
+
+/**
+ * we assume that the display style didn't change.
+ */
+/datum/object_system/storage/proc/refresh_ui(mob/user)
+	// for now, we just do a full redraw.
+	cleanup_ui(user)
+	create_ui(user)
+
+/datum/object_system/storage/proc/create_ui(mob/user)
+	var/uses_volumetric_ui = max_combined_volume && !ui_numerical_mode
+	if(uses_volumetric_ui)
+		create_ui_volumetric_mode(user)
+	else
+		create_ui_slot_mode(user)
+
+/datum/object_system/storage/proc/create_ui_slot_mode(mob/user)
+	#warn impl
+
+/datum/object_system/storage/proc/create_ui_volumetric_mode(mob/user)
+	#warn impl
 
 /*
 
