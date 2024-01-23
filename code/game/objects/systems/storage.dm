@@ -594,12 +594,25 @@
 		create_ui_slot_mode(user)
 
 /datum/object_system/storage/proc/create_ui_slot_mode(mob/user)
+	. = list()
 	#warn impl
 
 /datum/object_system/storage/proc/create_ui_volumetric_mode(mob/user)
+	. = list()
+	
+	var/atom/movable/screen/storage/volumetric_
+	var/atom/movable/screen/storage/volumetric_
+	var/atom/movable/screen/storage/closer
 	#warn impl
 
 /*
+
+#define STORAGE_UI_START_TILE_X 4
+#define STORAGE_UI_START_TILE_Y 2
+#define STORAGE_UI_START_PIXEL_X 16
+#define STORAGE_UI_START_PIXEL_Y 16
+#define STORAGE_UI_TILES_FOR_SCREEN_VIEW_X(X) max(4, X - 8)
+#define STORAGE_UI_MAX_ROWS 3
 
 /// Size of volumetric box icon
 #define VOLUMETRIC_STORAGE_BOX_ICON_SIZE 32
@@ -627,6 +640,59 @@
 
 #warn scream
 
+
+//? Storage Screens
+
+/atom/movable/screen/storage
+	icon = 'icons/screen/hud/common/storage.dmi'
+
+	/// host storage datum
+	var/datum/object_system/storage/storage
+	
+/atom/movable/screen/storage/item
+	var/obj/item/item
+	
+/atom/movable/screen/storage/item/New(newloc, obj/item/from_item)
+	item = from_item
+	bind(from_item)
+	return ..()
+
+/atom/movable/screen/storage/item/proc/bind(obj/item/item)
+	#warn impl
+
+/atom/movable/screen/storage/item/slot
+
+/atom/movable/screen/storage/item/slot/bind(obj/item/item)
+	..()
+
+/atom/movable/screen/storage/item/slot/Click()
+	#warn impl
+
+/atom/movable/screen/storage/slot_panel
+
+/atom/movable/screen/storage/slot_panel/Click()
+	#warn impl
+
+/atom/movable/screen/storage/slot_panel/boxes
+
+/atom/movable/screen/storage/item/volumetric
+
+/atom/movable/screen/storage/item/volumetric/bind(obj/item/item)
+	..()
+
+/atom/movable/screen/storage/item/volumetric/Click()
+	#warn impl
+
+/atom/movable/screen/storage/volumetric_panel
+
+/atom/movable/screen/storage/volumetric_panel/Click()
+	#warn impl
+
+/atom/movable/screen/storage/volumetric_panel/left
+
+/atom/movable/screen/storage/volumetric_panel/middle
+
+/atom/movable/screen/storage/volumetric_panel/right
 
 //? Lazy wrappers for init
 

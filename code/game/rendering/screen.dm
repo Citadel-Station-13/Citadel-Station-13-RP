@@ -75,23 +75,6 @@
 /atom/movable/screen/grab/attackby()
 	return
 
-
-/atom/movable/screen/storage
-	name = "storage"
-
-/atom/movable/screen/storage/Click()
-	if(!usr.canClick())
-		return 1
-	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_STORAGE))
-		return 1
-	if (istype(usr.loc,/obj/mecha)) // stops inventory actions in a mech
-		return 1
-	if(master)
-		var/obj/item/I = usr.get_active_held_item()
-		if(I)
-			usr.ClickOn(master)
-	return 1
-
 /atom/movable/screen/zone_sel
 	name = "damage zone"
 	icon_state = "zone_sel"

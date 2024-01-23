@@ -27,6 +27,16 @@
 /// same typepath
 #define STORAGE_QUICK_GATHER_COLLECT_SAME 3
 
+//* Storage UI - we shouldn't hardcode this but I don't care. *//
+//  todo: we should care
+
+#define STORAGE_UI_START_TILE_X 4
+#define STORAGE_UI_START_TILE_Y 2
+#define STORAGE_UI_START_PIXEL_X 16
+#define STORAGE_UI_START_PIXEL_Y 16
+#define STORAGE_UI_TILES_FOR_SCREEN_VIEW_X(X) max(4, X - 8)
+#define STORAGE_UI_MAX_ROWS 3
+
 //* w_class *//
 
 // ITEM INVENTORY WEIGHT, FOR w_class
