@@ -1097,15 +1097,6 @@ w
 			master.attackby(null, I, usr, params)
 	return TRUE
 
-/atom/movable/screen/storage/boxes
-	name = "storage"
-	icon_state = "block"
-	screen_loc = "7,7 to 10,8"
-	layer = HUD_LAYER
-	plane = HUD_PLANE
-	insertion_click = TRUE
-
-
 /atom/movable/screen/storage/volumetric_box
 	icon_state = "stored_continue"
 
@@ -1128,9 +1119,6 @@ w
 	if(holder)
 		QDEL_NULL(holder)
 	return ..()
-
-/atom/movable/screen/storage/volumetric_box/center/proc/on_screen_objects()
-	return list(src)
 
 /**
   * Sets the size of this box screen object and regenerates its left/right borders. This includes the actual border's size!
@@ -1169,48 +1157,3 @@ w
 		return
 	holder.our_item.layer = VOLUMETRIC_STORAGE_ACTIVE_ITEM_LAYER		//make sure we display infront of the others!
 	holder.our_item.plane = VOLUMETRIC_STORAGE_ACTIVE_ITEM_PLANE
-
-/atom/movable/screen/storage/volumetric_edge
-	layer = VOLUMETRIC_STORAGE_BOX_LAYER
-	plane = VOLUMETRIC_STORAGE_BOX_PLANE
-
-/atom/movable/screen/storage/volumetric_edge/Initialize(mapload, master, our_item)
-	src.master = master
-	return ..()
-
-/atom/movable/screen/storage/volumetric_edge/Click(location, control, params)
-	return master.Click(location, control, params)
-
-/atom/movable/screen/storage/volumetric_edge/MouseDrop(atom/over, src_location, over_location, src_control, over_control, params)
-	return master.MouseDrop(over, src_location, over_location, src_control, over_control, params)
-
-/atom/movable/screen/storage/volumetric_edge/MouseExited(location, control, params)
-	return master.MouseExited(location, control, params)
-
-/atom/movable/screen/storage/volumetric_edge/MouseEntered(location, control, params)
-	return master.MouseEntered(location, control, params)
-
-/atom/movable/screen/storage/volumetric_edge/stored_left
-	icon_state = "stored_start"
-	appearance_flags = APPEARANCE_UI | KEEP_APART | RESET_TRANSFORM // Yes I know RESET_TRANSFORM is in APPEARANCE_UI but we're hard-asserting this incase someone changes it.
-
-/atom/movable/screen/storage/volumetric_edge/stored_right
-	icon_state = "stored_end"
-	appearance_flags = APPEARANCE_UI | KEEP_APART | RESET_TRANSFORM
-
-/atom/movable/screen/storage/item_holder
-	var/obj/item/our_item
-	vis_flags = NONE
-
-/atom/movable/screen/storage/item_holder/Initialize(mapload, new_master, obj/item/I)
-	. = ..()
-	our_item = I
-	vis_contents += I
-
-/atom/movable/screen/storage/item_holder/Destroy()
-	vis_contents.Cut()
-	our_item = null
-	return ..()
-
-/atom/movable/screen/storage/item_holder/Click(location, control, params)
-	return our_item.Click(location, control, params)

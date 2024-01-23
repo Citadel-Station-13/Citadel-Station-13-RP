@@ -322,7 +322,7 @@
 	physically_insert_entity(inserting)
 
 	if(!no_update)
-		refresh(force = TRUE)
+		refresh()
 
 /**
  * handle moving an item in
@@ -337,10 +337,10 @@
  * @return TRUE / FALSE
  */
 /datum/object_system/storage/proc/auto_handle_interacted_removal(obj/item/removing, datum/event_args/actor/actor, silent, suppressed)
+	#warn impl
 
 /datum/object_system/storage/proc/try_remove(obj/item/removing, atom/to_where, datum/event_args/actor/actor, silent, suppressed, no_update)
 	#warn impl
-
 
 /**
  * remove item from self
@@ -349,7 +349,7 @@
 	#warn impl
 
 	if(!no_update)
-		refresh(force = TRUE)
+		refresh()
 
 /**
  * handle moving an item out
@@ -358,7 +358,9 @@
  */
 /datum/object_system/storage/proc/physically_remove_entity(obj/item/removing, atom/to_where)
 	removing.forceMove(to_where)
-	removing.vis_flags = (rmeoving.vis_flags & ~(VIS_INHERIT_LAYER | VIS_INHERIT_LAYER)) | (initial(removing.vis_flags) & (VIS_INHERIT_LAYER | VIS_INHERIT_PLANE))
+	removing.vis_flags = (removing.vis_flags & ~(VIS_INHERIT_LAYER | VIS_INHERIT_LAYER)) | (initial(removing.vis_flags) & (VIS_INHERIT_LAYER | VIS_INHERIT_PLANE))
+	// we might have set maptext in render_numerical_display
+	removing.maptext = null
 
 //* Limits *//
 
@@ -553,18 +555,22 @@
 /**
  * Do not modify the returned appearances; they might be real instances!
  * 
- * @return list(appearancelike = number, ...)
+ * @return list(/datum/storage_numerical_display instance, ...)
  */
 /datum/object_system/storage/proc/render_numerical_display()
 	RETURN_TYPE(/list)
 	. = list()
 	var/list/types = list()
 	for(var/obj/item/iterating in real_contents_loc())
+		var/datum/storage_numerical_display/collation
 		if(isnull(types[iterating.type]))
-			.[iterating] = 0
-		types[iterating.type] = 1 + types[iterating.type]
-	for(var/type in types)
-	#warn this is fucked
+			collation = new
+			collation.rendered_object = iterating
+			collation.amount = 0
+			. += collation
+			types[iterating.type] = collation
+		collation = types[iterating.type]
+		++collation.amount
 
 /datum/object_system/storage/proc/reconsider_mob_viewable(mob/user)
 	if(isnull(user))
@@ -590,21 +596,44 @@
 
 /datum/object_system/storage/proc/create_ui(mob/user)
 	var/uses_volumetric_ui = max_combined_volume && !ui_numerical_mode
+	var/list/atom/movable/screen/storage/objects
 	if(uses_volumetric_ui)
-		create_ui_volumetric_mode(user)
+		objects += create_ui_volumetric_mode(user)
 	else
-		create_ui_slot_mode(user)
+		objects += create_ui_slot_mode(user)
+	LAZYINITLIST(ui_by_mob)
+	ui_by_mob[user] = objects
+	user.client?.screen += objects
 
 /datum/object_system/storage/proc/create_ui_slot_mode(mob/user)
 	. = list()
+	var/atom/movable/screen/storage/closer/closer = new
+	. += closer
+	var/atom/movable/screen/storage/panel/slot/boxes/boxes = new
+	. += boxes
+	// todo: clientless support is awful here
+	var/list/decoded_view = decode_view_size(user.client?.view || world.view)
+	var/view_x = decoded_view[1]
+	// clamp to max items if needed
+	var/rendering_width = min(max_items, STORAGE_UI_TILES_FOR_SCREEN_VIEW_X(view_x))
+	// see if we need to process numerical display
+	var/list/datum/storage_numerical_display/numerical_rendered = ui_numerical_mode && render_numerical_display()
+	
 	#warn impl
 
 /datum/object_system/storage/proc/create_ui_volumetric_mode(mob/user)
 	. = list()
 	
-	var/atom/movable/screen/storage/volumetric_
-	var/atom/movable/screen/storage/volumetric_
-	var/atom/movable/screen/storage/closer
+	var/atom/movable/screen/storage/panel/volumetric/left = new
+	. += left
+	var/atom/movable/screen/storage/panel/volumetric/middle = new
+	. += middle
+	var/atom/movable/screen/storage/closer/closer = new
+	. += closer
+	// todo: clientless support is awful here
+	var/list/decoded_view = decode_view_size(user.client?.view || world.view)
+	var/view_x = decoded_view[1]
+	var/rendering_width = STORAGE_UI_TILES_FOR_SCREEN_VIEW_X(view_x)
 	#warn impl
 
 /*
@@ -642,17 +671,11 @@
 
 #warn scream
 
-/*
+//? Numerical Display Helper
 
-/**
- *! -- Storage Plane
- */
-#define STORAGE_PLANE 95
-#define STORAGE_LAYER_CONTAINER 1
-#define STORAGE_LAYER_ITEM_INACTIVE 1
-#define STORAGE_LAYER_ITEM_ACTIVE 1
-
-*/
+/datum/storage_numerical_display
+	var/obj/item/rendered_object
+	var/amount
 
 //? Storage Screens
 
@@ -679,7 +702,7 @@
 	bind(from_item)
 	return ..()
 
-/atom/mvoable/screen/storage/item/Destroy()
+/atom/movable/screen/storage/item/Destroy()
 	item = null
 	return ..()
 
@@ -697,8 +720,8 @@
 /atom/movable/screen/storage/item/proc/item_mouse_exit(mob/user)
 	layer = STORAGE_LAYER_ITEM_INACTIVE
 
-/atom/movable/screen/storage/item/MouseDrop(atom/over_object, src_location, over_location, src_control, over_control, params)
-	return item.MouesDrop(arglist(args))
+/atom/movable/screen/storage/item/MouseDrop(atom/over_object, src_location, over_location, src_control, over_control, params)	
+	return item.MouseDrop(arglist(args))
 
 /atom/movable/screen/storage/item/Click(location, control, params)
 	return item.Click(arglist(args))
@@ -734,7 +757,16 @@
 /atom/movable/screen/storage/item/volumetric
 	icon_state = "nothing"
 
-/atom/movable/screen/storage/item/volumetric/proc/fit_to_total_width(width)
+/**
+ * we are centered.
+ */
+/atom/movable/screen/storage/item/volumetric/proc/set_pixel_width(width)
+	overlays.len = 0
+	var/image/left = image(icon, icon_state = "stored_left", pixel_x = )
+	var/image/right = image(icon, icon_state = "stored_right", pixel_x = )
+	var/image/middle = image(icon, icon_state = "stored_middle")
+	middle.transform = matrix((pixels - (VOLUMETRIC_STORAGE_BOX_BORDER_SIZE * 2)) / VOLUMETRIC_STORAGE_BOX_ICON_SIZE, 0, 0, 0, 1, 0)
+	overlays = list(left, middle, right)
 	#warn impl
 
 /atom/movable/screen/storage/panel/volumetric

@@ -98,70 +98,11 @@
 /obj/item/storage/Initialize(mapload)
 	. = ..()
 
-	if(allow_quick_empty)
-		add_obj_verb(src, /obj/item/storage/verb/quick_empty)
-	else
-		remove_obj_verb(src, /obj/item/storage/verb/quick_empty)
-
-	if(allow_quick_gather)
-		add_obj_verb(src, /obj/item/storage/verb/toggle_gathering_mode)
-	else
-		remove_obj_verb(src, /obj/item/storage/verb/toggle_gathering_mode)
-
-	src.boxes = new /atom/movable/screen/storage(  )
-	src.boxes.name = "storage"
-	src.boxes.master = src
-	src.boxes.icon_state = "block"
-	src.boxes.screen_loc = storage_ui_default
-
-	src.storage_start = new /atom/movable/screen/storage(  )
-	src.storage_start.name = "storage"
-	src.storage_start.master = src
-	src.storage_start.icon_state = "storage_start"
-	src.storage_start.screen_loc = storage_ui_default
-
-	src.storage_continue = new /atom/movable/screen/storage(  )
-	src.storage_continue.name = "storage"
-	src.storage_continue.master = src
-	src.storage_continue.icon_state = "storage_continue"
-	src.storage_continue.screen_loc = storage_ui_default
-
-	src.storage_end = new /atom/movable/screen/storage(  )
-	src.storage_end.name = "storage"
-	src.storage_end.master = src
-	src.storage_end.icon_state = "storage_end"
-	src.storage_end.screen_loc = storage_ui_default
-
-	src.stored_start = new /atom/movable //we just need these to hold the icon
-	src.stored_start.icon_state = "stored_start"
-
-	src.stored_continue = new /atom/movable
-	src.stored_continue.icon_state = "stored_continue"
-
-	src.stored_end = new /atom/movable
-	src.stored_end.icon_state = "stored_end"
-
-	src.closer = new /atom/movable/screen/close(  )
-	src.closer.master = src
-	src.closer.icon_state = "storage_close"
-	src.closer.hud_layerise()
 	orient2hud()
 
 	//calibrate_size()			//Let's not!
 
 	reset_weight()
-
-/obj/item/storage/Destroy()
-	close_all()
-	QDEL_NULL(boxes)
-	QDEL_NULL(src.storage_start)
-	QDEL_NULL(src.storage_continue)
-	QDEL_NULL(src.storage_end)
-	QDEL_NULL(src.stored_start)
-	QDEL_NULL(src.stored_continue)
-	QDEL_NULL(src.stored_end)
-	QDEL_NULL(closer)
-	return ..()
 
 /obj/item/storage/get_weight()
 	. = ..()
@@ -209,49 +150,6 @@
 	else if(isliving(user) && user.Reachability(src))
 		open(user)
 	else
-
-/obj/item/storage/proc/show_to(mob/user as mob)
-	// todo: datum storage
-	if(!user.client)
-		return
-	if(user.s_active != src)
-		for(var/obj/item/I in src)
-			if(I.on_found(user))
-				return
-	if(user.s_active)
-		user.s_active.hide_from(user)
-	user.client.screen -= src.boxes
-	user.client.screen -= src.storage_start
-	user.client.screen -= src.storage_continue
-	user.client.screen -= src.storage_end
-	user.client.screen -= src.closer
-	user.client.screen -= src.contents
-	user.client.screen += src.closer
-	user.client.screen += src.contents
-	if(max_items)
-		user.client.screen += src.boxes
-	else
-		user.client.screen += src.storage_start
-		user.client.screen += src.storage_continue
-		user.client.screen += src.storage_end
-	user.s_active = src
-	is_seeing |= user
-	return
-
-/obj/item/storage/proc/hide_from(mob/user as mob)
-	if(!user)
-		return
-	is_seeing -= user
-	if(user.s_active == src)
-		user.s_active = null
-	if(!user?.client)
-		return
-	user.client.screen -= src.boxes
-	user.client.screen -= src.storage_start
-	user.client.screen -= src.storage_continue
-	user.client.screen -= src.storage_end
-	user.client.screen -= src.closer
-	user.client.screen -= src.contents
 
 /obj/item/storage/proc/open(mob/user as mob, sound_played = FALSE)
 	if (src.use_sound && !isobserver(user) && !sound_played)

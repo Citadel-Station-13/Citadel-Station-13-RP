@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 //* these call other procs in external.dm *//
 
 /**
@@ -93,3 +96,72 @@
 	for(var/slot in slots)
 		if(equip_to_slot_if_possible(I, slot, user, flags))
 			return slot
+
+/**
+ * Attempt to shove an item being held into a storage in a given slot
+ */
+/mob/proc/attempt_put_held_item_into_storage_in_slot(obj/item/inserting, datum/inventory_slot_meta/slot_like, silent, mob/initiator = src)
+	if(isnull(inserting))
+		inserting = get_active_held_item()
+	if(!is_holding(inserting))
+		return
+	slot_like = resolve_inventory_slot_meta(slot_like)
+	var/obj/item/equipped = item_by_slot(slot_like.id)
+	if(isnull(equipped))
+		if(!silent)
+			to_chat(initiator, SPAN_WARNING("There is nothing worn [slot_like.display_proposition] [initiator == src? "your" : "their"] [slot_like.display_name]."))
+		return FALSE
+	if(!equipped.obj_storage)
+		if(!silent)
+			to_chat(initiator, SPAN_WARNING("[equipped] doesn't have accessible storage."))
+		return FALSE
+	if(!equipped.obj_storage.try_insert(inserting, new /datum/event_args/actor(src, initiator), silent))
+		return FALSE
+	return TRUE
+
+/**
+ * Attempt to grab an item from a given slot into hand.
+ */
+/mob/proc/attempt_grab_item_out_of_storage_in_slot(datum/inventory_slot_meta/slot_like, silent, mob/initiator = src)
+	slot_like = resolve_inventory_slot_meta(slot_like)
+	var/obj/item/equipped = item_by_slot(slot_like.id)
+	if(isnull(equipped))
+		if(!silent)
+			to_chat(initiator, SPAN_WARNING("There is nothing worn [slot_like.display_proposition] [initiator == src? "your" : "their"] [slot_like.display_name]."))
+		return FALSE
+	if(isnull(equipped.obj_storage))
+		if(!silent)
+			to_chat(initiator, SPAN_WARNING("[equipped] doesn't have accessible storage."))
+			return FALSE
+	return attempt_grab_item_out_of_storage(equipped, silent, initiator)
+
+/**
+ * Attempt to grab an item from given storage into hand.
+ */
+/mob/proc/attempt_grab_item_out_of_storage(obj/storage, silent, mob/initiator = src)
+	if(get_active_held_item())
+		if(!silent)
+			to_chat(initiator, SPAN_WARNING("[initiator == src? "You" : "They"] already have something held in [initiator == src? "your" : "their"] hand."))
+		return FALSE
+	if(isnull(storage.obj_storage))
+		return FALSE
+	var/obj/item/removing = storage.obj_storage.top_item()
+	var/datum/event_args/actor = new(src, initiator)
+	if(!storage.obj_storage.check_on_found_hooks(actor))
+	. = storage.obj_storage.try_remove(removing, src, actor, silent)
+	if(!.)
+		return
+	if(!put_in_active_hand(removing))
+		removing.forceMove(drop_location())
+
+/**
+ * Automatically either put in hand object into a storage in a given slot, or
+ * draw an item from that storage into hand.
+ */
+/mob/proc/auto_held_insert_or_draw_for_storage_in_slot(datum/inventory_slot_meta/slot_like, silent, mob/initiator = src)
+	var/obj/item/holding = get_active_held_item()
+	if(isnull(holding))
+		return attempt_grab_item_out_of_storage_in_slot(slot_like, silent, initiator)
+	else
+		return attempt_put_held_item_into_storage_in_slot(holding, slot_like, silent, initiator)
+ 

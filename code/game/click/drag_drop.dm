@@ -16,7 +16,6 @@
 	return TRUE
 
 /atom/MouseDrop(atom/over_object, src_location, over_location, src_control, over_control, params)
-	SHOULD_NOT_OVERRIDE(TRUE)
 	// cache incase thsi somehow gets lost
 	var/user = usr
 	if(!user || !over_object)
