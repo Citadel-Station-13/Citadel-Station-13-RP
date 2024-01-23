@@ -134,7 +134,7 @@
 	icon_state = "implant"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syringe_kit", SLOT_ID_LEFT_HAND = "syringe_kit")
 
-/obj/item/storage/box/backup_kit/PopulateContents()
+/obj/item/storage/box/backup_kit/legacy_spawn_contents()
 	for(var/i = 1 to 7)
 		new /obj/item/implantcase/backup(src)
 	new /obj/item/implanter(src)

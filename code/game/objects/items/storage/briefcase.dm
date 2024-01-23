@@ -27,5 +27,5 @@
 	desc = "Hand crafted suitcase made of leather and cloth."
 	damage_force = 6
 
-/obj/item/storage/briefcase/crafted/PopulateContents()
+/obj/item/storage/briefcase/crafted/legacy_spawn_contents()
 	return //So we dont spawn items

@@ -27,6 +27,8 @@
 	/// Cleared after Initialize().
 	/// List of types associated to amounts.
 	var/list/starts_with
+	/// set to prevent us from spawning starts_with
+	var/empty = FALSE
 
 	#warn below
 
@@ -37,8 +39,6 @@
 	var/allow_quick_gather	//Set this variable to allow the object to have the 'toggle mode' verb, which quickly collects all items from a tile.
 	var/collection_mode = 1;  //0 = pick one at a time, 1 = pick all on tile
 	var/use_sound = "rustle"	//sound played when used. null for no sound.
-
-	var/empty //Mapper override to spawn an empty version of a container that usually has stuff
 
 	var/last_message = 0
 
@@ -57,10 +57,29 @@
 	. = ..()
 	
 	initialize_storage()
-	initialize_contents()
+	legacy_spawn_contents()
+	spawn_contents()
 
-/obj/item/storage/proc/initialize_contents()
-	#warn impl
+/**
+ * Make sure to set [worth_dynamic] to TRUE if this does more than spawning what's in starts_with.
+ */
+/obj/item/storage/proc/spawn_contents()
+	if(length(starts_with) && !empty)
+		// this is way too permissive already
+		var/safety = 256
+		for(var/path in starts_with)
+			var/amount = starts_with[path] || 1
+			for(var/i in 1 to amount)
+				if(!--safety)
+					CRASH("tried to spawn too many objects")
+				new path(src)
+		starts_with = null
+
+/**
+ * Please get rid of this in favor of spawn_contents() and starts_with
+ */
+/obj/item/storage/proc/legacy_spawn_contents()
+	return
 
 /obj/item/storage/proc/initialize_storage()
 	ASSERT(isnull(obj_storage))
@@ -72,7 +91,7 @@
 	obj_storage.max_single_weight_class = max_single_weight_class
 	obj_storage.max_combined_weight_class = max_combined_weight_class
 	obj_storage.max_combined_volume = max_combined_volume
-	obj_storage.max_items = max_item
+	obj_storage.max_items = max_items
 
 #warn below
 
@@ -127,10 +146,6 @@
 	src.closer.icon_state = "storage_close"
 	src.closer.hud_layerise()
 	orient2hud()
-
-	populate_contents_legacy()
-
-	PopulateContents()
 
 	//calibrate_size()			//Let's not!
 
@@ -194,20 +209,6 @@
 	else if(isliving(user) && user.Reachability(src))
 		open(user)
 	else
-
-/obj/item/storage/proc/return_inv()
-
-	var/list/L = list(  )
-
-	L += src.contents
-
-	for(var/obj/item/storage/S in src)
-		L += S.return_inv()
-	for(var/obj/item/gift/G in src)
-		L += G.gift
-		if (istype(G.gift, /obj/item/storage))
-			L += G.gift:return_inv()
-	return L
 
 /obj/item/storage/proc/show_to(mob/user as mob)
 	// todo: datum storage
@@ -406,51 +407,6 @@
 		src.slot_orient_objs(row_num, col_count, numbered_contents)
 	return
 
-//This proc return 1 if the item can be picked up and 0 if it can't.
-//Set the stop_messages to stop it from printing messages
-/obj/item/storage/proc/can_be_inserted(obj/item/W as obj, stop_messages = 0)
-	if(!istype(W))
-		return //Not an item
-
-	if(usr && usr.is_in_inventory(W) && !usr.can_unequip(W, user = usr))
-		return 0
-
-	if(src.loc == W)
-		return 0 //Means the item is already in the storage item
-
-	if(max_items != null && contents.len >= max_items)
-		if(!stop_messages)
-			to_chat(usr, "<span class='notice'>[src] is full, make some space.</span>")
-		return 0 //Storage item is full
-
-	if(insertion_whitelist.len && !is_type_in_list(W, insertion_whitelist))
-		if(!stop_messages)
-			if (istype(W, /obj/item/hand_labeler))
-				return 0
-			to_chat(usr, "<span class='notice'>[src] cannot hold [W].</span>")
-		return 0
-
-	if(insertion_blacklist.len && is_type_in_list(W, insertion_blacklist))
-		if(!stop_messages)
-			to_chat(usr, "<span class='notice'>[src] cannot hold [W].</span>")
-		return 0
-
-	if (max_single_weight_class != null && W.w_class > max_single_weight_class)
-		if(!stop_messages)
-			to_chat(usr, "<span class='notice'>[W] is too long for \the [src].</span>")
-		return 0
-
-	if((storage_space_used() + W.get_weight_volume()) > max_combined_volume) //Adds up the combined w_classes which will be in the storage item if the item is added to it.
-		if(!stop_messages)
-			to_chat(usr, "<span class='notice'>[src] is too full, make some space.</span>")
-		return 0
-
-	if(W.w_class >= src.w_class && (istype(W, /obj/item/storage)))
-		if(!stop_messages)
-			to_chat(usr, "<span class='notice'>[src] cannot hold [W] as it's a storage item of the same size.</span>")
-		return 0 //To prevent the stacking of same sized storage items.
-
-	return 1
 
 //This proc handles items being inserted. It does not perform any checks of whether an item can or can't be inserted. That's done by can_be_inserted()
 //The stop_warning parameter will stop the insertion message from being displayed. It is intended for cases where you are inserting multiple items at once,
@@ -595,18 +551,6 @@
 	var/turf/T = get_turf(src)
 	for(var/obj/item/I in contents)
 		remove_from_storage(I, T)
-
-/obj/item/storage/proc/populate_contents_legacy()
-	if(LAZYLEN(starts_with) && !empty)
-		for(var/newtype in starts_with)
-			var/count = starts_with[newtype] || 1 //Could have left it blank.
-			while(count)
-				count--
-				new newtype(src)
-		starts_with = null //Reduce list count.
-
-/obj/item/storage/proc/PopulateContents()
-	return
 
 ///Prevents spawned containers from being too small for their contents.
 /obj/item/storage/proc/calibrate_size()

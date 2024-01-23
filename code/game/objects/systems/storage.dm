@@ -52,6 +52,48 @@
 	/// this is so overriding things can be easier.
 	VAR_PROTECTED/list/insertion_allow_typecache
 
+	//* Interaction
+
+	/// insert proposition: 'on', 'in', etc
+	var/insert_preposition = "in"
+
+	/// allow quick empty at all
+	var/allow_quick_empty = FALSE
+	/// allow quick empty via clickdrag
+	#warn impl
+	var/allow_quick_empty_via_clickdrag = TRUE
+	/// allow quick empty via attack self
+	#warn impl
+	var/allow_quick_empty_via_attack_self = TRUE
+	
+	/// allow inbound mass transfers
+	var/allow_inbound_mass_transfer = TRUE
+	/// allow outbound mass transfer
+	var/allow_outbound_mass_transfer = TRUE
+	/// allow clickdrag to initiate mass transfer
+	#warn impl
+	var/allow_clickdrag_mass_transfer = TRUE
+
+	/// allow mass gather at all
+	var/allow_mass_gather = FALSE
+	/// allow mass gather via click
+	var/allow_mass_gather_via_click = TRUE
+	/// allow switching mass gathering mode
+	#warn impl action
+	var/allow_mass_gather_mode_switch = TRUE
+	/// mass gather mode
+	var/mass_gather_mode = STORAGE_QUICK_GATHER_COLLECT_ALL
+
+	/// allow opening when clicking from other hand
+	var/allow_open_via_offhand_click = TRUE
+	/// allow opening via alt click
+	var/allow_open_via_context_click = TRUE
+	/// allow opening when clicking from hand if this is equipped
+	var/allow_open_via_equipped_click = TRUE
+	/// allow opening via clickdrag to self
+	#warn impl
+	var/allow_open_via_clickdrag_to_self = TRUE
+
 	//* Limits
 
 	/// if set, limit to a certain volume
@@ -62,6 +104,8 @@
 	var/max_single_weight_class
 	/// if set, max combined weight class of all containing items we can hold
 	var/max_combined_weight_class
+	/// disallow nesting storage items of same or bigger weight class
+	var/disallow_equal_weight_class_storage_nesting = TRUE
 
 	//* Locking
 
@@ -100,6 +144,8 @@
 	
 	/// lazy list of UIs open; mob ref = list(ui objects)
 	var/list/ui_by_mob
+	/// stack stuff by number; defaults to types, please override the requisite proc to implement yours.
+	var/ui_numerical_mode = FALSE
 
 /datum/object_system/storage/New()
 	// we use typelists to detect if it's been init'd
@@ -111,6 +157,10 @@
 		insertion_allow_typecache = cached_typecacheof(insertion_allow_typecache)
 	rebuild_caches()
 
+/datum/object_system/storage/Destroy()
+	hide()
+	return ..()
+
 //* Access *//
 
 /**
@@ -121,8 +171,8 @@
 	if(random_access)
 		if(limited_random_access_stack_amount)
 			var/contents_length = length(redirection.contents)
-			if(limited_random_access_stack_bottom_up)
-				return redirection.contents.Copy(1, min(contents_length + 1, limited_random_access_stack_bottom_up + 1))
+			if(limited_random_access_stack_bottom_first)
+				return redirection.contents.Copy(1, min(contents_length + 1, limited_random_access_stack_bottom_first + 1))
 			else
 				return redirection.contents.Copy(max(1, contents_length - limited_random_access_stack_amount + 1), contents_length + 1)
 	return redirection.contents
@@ -135,8 +185,8 @@
 	if(random_access)
 		if(limited_random_access_stack_amount)
 			var/contents_length = length(redirection.contents)
-			if(limited_random_access_stack_bottom_up)
-				return redirection.contents.Copy(1, min(contents_length + 1, limited_random_access_stack_bottom_up + 1))
+			if(limited_random_access_stack_bottom_first)
+				return redirection.contents.Copy(1, min(contents_length + 1, limited_random_access_stack_bottom_first + 1))
 			else
 				return redirection.contents.Copy(max(1, contents_length - limited_random_access_stack_amount + 1), contents_length + 1)
 	return redirection.contents.Copy()
@@ -236,11 +286,35 @@
 /datum/object_system/storage/proc/auto_handle_interacted_insertion(obj/item/inserting, datum/event_args/actor/actor)
 	#warn impl
 
-/datum/object_system/storage/proc/try_insert(obj/item/inserting, datum/event_args/actor/actor)
+/datum/object_system/storage/proc/try_insert(obj/item/inserting, datum/event_args/actor/actor, silent)
+	if(!check_insertion_filters(inserting))
+		if(!silent)
+			actor?.chat_feedback(
+				msg = SPAN_WARNING("[parent] can't hold [inserting]!"),
+				target = parent,
+			)
+		return FALSE
+	var/why_insufficient_space = why_failed_insertion_limits(inserting)
+	if(why_insufficient_space)
+		if(!silent)
+			actor?.chat_feedback(
+				msg = SPAN_WARNING("[parent] can't fit [inserting]! ([why_insufficient_space])"),
+				target = parent,
+			)
+		return FALSE
+	if(inserting.worn_mob() == actor?.performer && !actor.performer.temporarily_remove_from_inventory(inserting, user = actor.performer))
+		if(!silent)
+			actor?.chat_feedback(
+				msg = SPAN_WARNING("[inserting] is stuck to your hand / body!"),
+				target = parent,
+			)
+		return FALSE
+	// point of no return
 	#warn impl
 
 /datum/object_system/storage/proc/insert(obj/item/inserting, datum/event_args/actor/actor)
 	#warn impl
+	physically_insert_entity(inserting)
 
 /**
  * handle moving an item in
@@ -262,6 +336,8 @@
 		return FALSE
 	if(!isnull(max_combined_weight_class) && (cached_combined_weight_class + their_weight_class > max_combined_weight_class))
 		return FALSE
+	if(candidate.obj_storage && (candidate.w_class >= parent.w_class) && disallow_equal_weight_class_storage_nesting)
+		return FALSE
 	return TRUE
 
 /datum/object_system/storage/proc/why_failed_insertion_limits(obj/item/candidate)
@@ -274,6 +350,8 @@
 		return "too large"
 	if(!isnull(max_combined_weight_class) && (cached_combined_weight_class + their_weight_class > max_combined_weight_class))
 		return "insufficient space"
+	if(candidate.obj_storage && (candidate.w_class >= parent.w_class) && disallow_equal_weight_class_storage_nesting)
+		return "can't nest storage"
 	return null
 
 //* Locking *//
@@ -378,12 +456,23 @@
 /**
  * @return TRUE if we did something (to interrupt clickchain)
  */
-/datum/object_system/storage/proc/auto_handle_open_interaction(datum/event_args/actor/actor)
+/datum/object_system/storage/proc/auto_handle_open_interaction(datum/event_args/actor/actor, force)
 	if(check_on_found_hooks(actor))
 		return TRUE
-	#warn impl
+	#warn check, force, etc
+	show(actor.initiator)
+	return TRUE
 
-/datum/object_system/storage/proc/show(mob/viewer, force)
+/datum/object_system/storage/proc/show(mob/viewer)
+	if(viewer.active_storage == src)
+		return TRUE
+	viewer.active_storage?.hide(viewer)
+
+	#warn check, respect force
+
+	viewer.active_storage = src
+	RegisterSignal(viewer, COMSIG_MOVABLE_MOVED, PROC_REF(on_viewer_moved))
+	
 	#warn impl
 
 /**
@@ -394,14 +483,79 @@
 		for(var/mob/iterating as anything in ui_by_mob)
 			hide(iterating)
 		return
+	
+	if(viewer.active_storage != src)
+		stack_trace("viewer didn't have active storage set right, wtf?")
+	else
+		viewer.active_storage = null
+	UnregisterSignal(viewer, COMSIG_MOVABLE_MOVED)
+
 	#warn impl
 
-/datum/object_system/storage/proc/refresh(mob/viewer, force)
+/**
+ * Hooked into obj/Moved().
+ */
+/datum/object_system/storage/proc/on_parent_moved(atom/old_loc, forced)
+	#warn impl
+
+/**
+ * Comsig hooked into anything viewing us
+ */
+/datum/object_system/storage/proc/on_viewer_moved(datum/source, atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
+	#warn impl
+
+/datum/object_system/storage/proc/refresh(mob/viewer)
 	if(isnull(viewer))
 		for(var/mob/iterating as anything in ui_by_mob)
-			show(iterating, force)
+			show(iterating)
 		return
-	show(viewer, force)
+	show(viewer)
+
+/**
+ * Do not modify the returned appearances; they might be real instances!
+ * 
+ * @return list(appearancelike = number, ...)
+ */
+/datum/object_system/storage/proc/render_numerical_display()
+	RETURN_TYPE(/list)
+	. = list()
+	var/list/types = list()
+	for(var/obj/item/iterating in real_contents_loc())
+		if(isnull(types[iterating.type]))
+			.[iterating] = 0
+		types[iterating.type] = 1 + types[iterating.type]
+	for(var/type in types)
+	#warn this is fucked
+
+/datum/object_system/storage/proc/reconsider_mob_viewable(mob/user)
+	if(isnull(user))
+		for(var/mob/viewer as anything in ui_by_mob)
+			reconsider_mob_viewable(viewer)
+		return
+	if(accessible_by_mob(user))
+		return
+	hide(user)
+
+/
+
+/*
+
+/// Size of volumetric box icon
+#define VOLUMETRIC_STORAGE_BOX_ICON_SIZE 32
+/// Size of EACH left/right border icon for volumetric boxes
+#define VOLUMETRIC_STORAGE_BOX_BORDER_SIZE 1
+/// Minimum pixels an item must have in volumetric scaled storage UI
+#define VOLUMETRIC_STORAGE_MINIMUM_PIXELS_PER_ITEM 16
+/// Maximum number of objects that will be allowed to be displayed using the volumetric display system. Arbitrary number to prevent server lockups.
+#define VOLUMETRIC_STORAGE_MAX_ITEMS 128
+/// How much padding to give between items
+#define VOLUMETRIC_STORAGE_ITEM_PADDING 4
+/// How much padding to give to edges
+#define VOLUMETRIC_STORAGE_EDGE_PADDING 1
+/// Standard pixel width ratio for volumetric storage; 1 volume converts into this many pixels.
+#define VOLUMETRIC_STORAGE_STANDARD_PIXEL_RATIO 8
+
+*/
 
 /**
  * Stack storage

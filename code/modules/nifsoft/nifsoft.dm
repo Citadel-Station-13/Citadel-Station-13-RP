@@ -309,7 +309,7 @@
 	desc = "A box of free nifsofts for security employees."
 	icon_state = "disk_kit"
 
-/obj/item/storage/box/nifsofts_security/PopulateContents()
+/obj/item/storage/box/nifsofts_security/legacy_spawn_contents()
 	for(var/i = 0 to 7)
 		new /obj/item/disk/nifsoft/security(src)
 
@@ -332,7 +332,7 @@
 	desc = "A box of free nifsofts for engineering employees."
 	icon_state = "disk_kit"
 
-/obj/item/storage/box/nifsofts_engineering/PopulateContents()
+/obj/item/storage/box/nifsofts_engineering/legacy_spawn_contents()
 	for(var/i = 0 to 7)
 		new /obj/item/disk/nifsoft/engineering(src)
 
@@ -367,7 +367,7 @@
 	desc = "A box of free nifsofts for medical employees."
 	icon_state = "disk_kit"
 
-/obj/item/storage/box/nifsofts_medical/PopulateContents()
+/obj/item/storage/box/nifsofts_medical/legacy_spawn_contents()
 	for(var/i = 0 to 7)
 		new /obj/item/disk/nifsoft/medical(src)
 
@@ -390,6 +390,6 @@
 	desc = "A box of free nifsofts for mining employees."
 	icon_state = "disk_kit"
 
-/obj/item/storage/box/nifsofts_mining/PopulateContents()
+/obj/item/storage/box/nifsofts_mining/legacy_spawn_contents()
 	for(var/i = 0 to 7)
 		new /obj/item/disk/nifsoft/mining(src)

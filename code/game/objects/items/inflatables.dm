@@ -70,7 +70,7 @@
 	max_combined_volume = WEIGHT_VOLUME_NORMAL * 7
 	insertion_whitelist = list(/obj/item/inflatable)
 
-/obj/item/storage/briefcase/inflatable/PopulateContents()
+/obj/item/storage/briefcase/inflatable/legacy_spawn_contents()
 	. = ..()
 	new /obj/item/inflatable/door(src)
 	new /obj/item/inflatable/door(src)

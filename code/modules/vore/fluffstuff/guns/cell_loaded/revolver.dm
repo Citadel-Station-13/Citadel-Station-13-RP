@@ -49,7 +49,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	max_w_class = WEIGHT_CLASS_NORMAL
 
-/obj/item/storage/secure/briefcase/nsfw_pack/PopulateContents()
+/obj/item/storage/secure/briefcase/nsfw_pack/legacy_spawn_contents()
 	new /obj/item/gun/ballistic/cell_loaded/combat(src)
 	new /obj/item/ammo_magazine/cell_mag/combat(src)
 	for(var/path in subtypesof(/obj/item/ammo_casing/microbattery/combat))
@@ -61,7 +61,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	max_w_class = WEIGHT_CLASS_NORMAL
 
-/obj/item/storage/secure/briefcase/nsfw_pack_hos/PopulateContents()
+/obj/item/storage/secure/briefcase/nsfw_pack_hos/legacy_spawn_contents()
 	new /obj/item/gun/ballistic/cell_loaded/combat(src)
 	new /obj/item/ammo_magazine/cell_mag/combat(src)
 	new /obj/item/ammo_casing/microbattery/combat/lethal(src)

@@ -8,7 +8,7 @@
 	storage_slots = 7
 	var/list/has_items = list()
 
-/obj/item/storage/box/fluff/PopulateContents()
+/obj/item/storage/box/fluff/legacy_spawn_contents()
 	. = ..()
 	storage_slots = has_items.len
 	allowed = list()
@@ -322,7 +322,7 @@ Swimsuits, for general use, to avoid arriving to work with your swimsuit.
 	name = "sobaka cube box"
 	desc = "Drymate brand sobaka cubes. Just add water!"
 
-/obj/item/storage/box/monkeycubes/sobakacubes/PopulateContents()
+/obj/item/storage/box/monkeycubes/sobakacubes/legacy_spawn_contents()
 	. = ..()
 	for(var/i = 1 to 4)
 		new /obj/item/reagent_containers/food/snacks/monkeycube/wrapped/sobakacube(src)
@@ -331,7 +331,7 @@ Swimsuits, for general use, to avoid arriving to work with your swimsuit.
 	name = "saru cube box"
 	desc = "Drymate brand saru cubes. Just add water!"
 
-/obj/item/storage/box/monkeycubes/sarucubes/PopulateContents()
+/obj/item/storage/box/monkeycubes/sarucubes/legacy_spawn_contents()
 	. = ..()
 	for(var/i = 1 to 4)
 		new /obj/item/reagent_containers/food/snacks/monkeycube/wrapped/sarucube(src)
@@ -340,7 +340,7 @@ Swimsuits, for general use, to avoid arriving to work with your swimsuit.
 	name = "sparra cube box"
 	desc = "Drymate brand sparra cubes. Just add water!"
 
-/obj/item/storage/box/monkeycubes/sparracubes/PopulateContents()
+/obj/item/storage/box/monkeycubes/sparracubes/legacy_spawn_contents()
 	. = ..()
 	for(var/i = 1 to 4)
 		new /obj/item/reagent_containers/food/snacks/monkeycube/wrapped/sparracube(src)
@@ -349,7 +349,7 @@ Swimsuits, for general use, to avoid arriving to work with your swimsuit.
 	name = "wolpin cube box"
 	desc = "Drymate brand wolpin cubes. Just add water!"
 
-/obj/item/storage/box/monkeycubes/wolpincubes/PopulateContents()
+/obj/item/storage/box/monkeycubes/wolpincubes/legacy_spawn_contents()
 	. = ..()
 	for(var/i = 1 to 4)
 		new /obj/item/reagent_containers/food/snacks/monkeycube/wrapped/wolpincube(src)

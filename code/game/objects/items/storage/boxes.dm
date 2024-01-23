@@ -150,11 +150,11 @@
 	drop_sound = 'sound/items/drop/ammobox.ogg'
 	pickup_sound = 'sound/items/pickup/ammobox.ogg'
 
-/obj/item/storage/box/beanbags/PopulateContents()
+/obj/item/storage/box/beanbags/legacy_spawn_contents()
 	for(var/i in 1 to 8)
 		new /obj/item/ammo_casing/a12g/beanbag(src)
 
-/obj/item/storage/box/beanbags/large/PopulateContents()
+/obj/item/storage/box/beanbags/large/legacy_spawn_contents()
 	for(var/i in 1 to 16)
 		new /obj/item/ammo_casing/a12g/beanbag(src)
 

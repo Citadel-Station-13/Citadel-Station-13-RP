@@ -1,39 +1,13 @@
-#define COLLECT_ONE 0
-#define COLLECT_EVERYTHING 1
-#define COLLECT_SAME 2
 
-#define DROP_NOTHING 0
-#define DROP_AT_PARENT 1
-#define DROP_AT_LOCATION 2
 
 // External storage-related logic:
 // /mob/proc/ClickOn() in /_onclick/click.dm - clicking items in storages
 // /mob/living/Move() in /modules/mob/living/living.dm - hiding storage boxes on mob movement
 
 /datum/component/storage
-
-	var/locked = FALSE								//when locked nothing can see inside or use it.
-
-
-	var/emp_shielded = FALSE
-
 	var/silent = FALSE								//whether this makes a message when things are put in.
-	var/click_gather = FALSE						//whether this can be clicked on items to pick it up rather than the other way around.
 	var/rustle_sound = TRUE							//play rustle sound on interact.
-	var/allow_quick_empty = FALSE					//allow empty verb which allows dumping on the floor of everything inside quickly.
-	var/allow_quick_gather = FALSE					//allow toggle mob verb which toggles collecting all items from a tile.
-
-	var/collection_mode = COLLECT_EVERYTHING
-
-	var/insert_preposition = "in"					//you put things "in" a bag, but "on" a tray.
-
-	var/display_numerical_stacking = FALSE			//stack things of the same type and show as a single object with a number.
-
-	var/allow_big_nesting = FALSE					//allow storage objects of the same or greater size.
-
-	var/attack_hand_interact = TRUE					//interact on attack hand.
 	var/quickdraw = FALSE							//altclick interact
-
 	var/datum/action/item_action/storage_gather_mode/modeswitch_action
 
 	//Screen variables: Do not mess with these vars unless you know what you're doing. They're not defines so storage that isn't in the same location can be supported in the future.
@@ -45,29 +19,8 @@
 	var/screen_start_y = 2
 	//End
 
-	var/limited_random_access = FALSE					//Quick if statement in accessible_items to determine if we care at all about what people can access at once.
-	var/limited_random_access_stack_position = 0					//If >0, can only access top <x> items
-	var/limited_random_access_stack_bottom_up = FALSE				//If TRUE, above becomes bottom <x> items
-
 /datum/component/storage/Initialize(datum/component/storage/concrete/master)
-	if(!isatom(parent))
-		return COMPONENT_INCOMPATIBLE
-	if(master)
-		change_master(master)
-
 	update_actions()
-
-/datum/component/storage/Destroy()
-	close_all()
-	wipe_ui_objects()
-	LAZYCLEARLIST(is_using)
-	return ..()
-
-/datum/component/storage/proc/wipe_ui_objects()
-	for(var/i in ui_by_mob)
-		var/list/objects = ui_by_mob[i]
-		QDEL_LIST(objects)
-	ui_by_mob.Cut()
 
 /datum/component/storage/proc/update_actions()
 	QDEL_NULL(modeswitch_action)
@@ -733,26 +686,6 @@ w
 		M.client.screen |= objects
 		ui_by_mob[M] = objects
 	return TRUE
-
-/**
-  * VV hooked to ensure no lingering screen objects.
-  */
-/datum/component/storage/vv_edit_var(var_name, var_value)
-	var/list/old
-	if(var_name == NAMEOF(src, storage_flags))
-		old = is_using.Copy()
-		for(var/i in is_using)
-			ui_hide(i)
-	. = ..()
-	if(old)
-		for(var/i in old)
-			ui_show(i)
-
-/**
-  * Proc triggered by signal to ensure logging out clients don't linger.
-  */
-/datum/component/storage/proc/on_logout(datum/source, client/C)
-	ui_hide(source)
 
 /**
   * Hides our UI from a mob

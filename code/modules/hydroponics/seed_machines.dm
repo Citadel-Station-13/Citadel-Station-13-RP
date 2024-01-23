@@ -30,7 +30,7 @@
 	name = "flora disk box"
 	desc = "A box of flora data disks, apparently."
 
-/obj/item/storage/box/botanydisk/PopulateContents()
+/obj/item/storage/box/botanydisk/legacy_spawn_contents()
 	for(var/i = 0;i<7;i++)
 		new /obj/item/disk/botany(src)
 

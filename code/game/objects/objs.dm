@@ -182,6 +182,7 @@
 
 /obj/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
 	. = ..()
+	obj_storage?.on_parent_moved(old_loc, forced)
 	if(register_as_dangerous_object)
 		var/turf/old_turf = get_turf(old_loc)
 		var/turf/new_turf = get_turf(src)
@@ -483,34 +484,41 @@
 	if(!isnull(obj_cell_slot?.cell) && obj_cell_slot.remove_yank_context && obj_cell_slot.interaction_active(e_args.performer))
 		var/image/rendered = image(obj_cell_slot.cell)
 		.["obj_cell_slot"] = ATOM_CONTEXT_TUPLE("remove cell", rendered, null, MOBILITY_CAN_USE)
+	if(obj_storage?.allow_open_via_context_click)
+		var/image/rendered = image(src)
+		.["obj_storage"] = ATOM_CONTEXT_TUPLE("open storage", rendered, null, MOBILITY_CAN_STORAGE)
 
 /obj/context_act(datum/event_args/actor/e_args, key)
-	if(key == "obj_cell_slot")
-		var/reachability = e_args.performer.Reachability(src)
-		if(!reachability)
+	switch(key)
+		if("obj_cell_slot")
+			var/reachability = e_args.performer.Reachability(src)
+			if(!reachability)
+				return TRUE
+			if(!CHECK_MOBILITY(e_args.performer, MOBILITY_CAN_USE))
+				e_args.initiator.action_feedback(SPAN_WARNING("You can't do that right now!"), src)
+				return TRUE
+			if(isnull(obj_cell_slot.cell))
+				e_args.initiator.action_feedback(SPAN_WARNING("[src] doesn't have a cell installed."))
+				return TRUE
+			if(!obj_cell_slot.interaction_active(e_args.performer))
+				return TRUE
+			e_args.visible_feedback(
+				target = src,
+				range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
+				visible = SPAN_NOTICE("[e_args.performer] removes the cell from [src]."),
+				audible = SPAN_NOTICE("You hear fasteners falling out and something being removed."),
+				otherwise_self = SPAN_NOTICE("You remove the cell from [src]."),
+			)
+			log_construction(e_args, src, "removed cell [obj_cell_slot.cell] ([obj_cell_slot.cell.type])")
+			var/obj/item/cell/removed = obj_cell_slot.remove_cell(src)
+			if(reachability == REACH_PHYSICAL)
+				e_args.performer.put_in_hands_or_drop(removed)
+			else
+				removed.forceMove(drop_location())
 			return TRUE
-		if(!CHECK_MOBILITY(e_args.performer, MOBILITY_CAN_USE))
-			e_args.initiator.action_feedback(SPAN_WARNING("You can't do that right now!"), src)
-			return TRUE
-		if(isnull(obj_cell_slot.cell))
-			e_args.initiator.action_feedback(SPAN_WARNING("[src] doesn't have a cell installed."))
-			return TRUE
-		if(!obj_cell_slot.interaction_active(e_args.performer))
-			return TRUE
-		e_args.visible_feedback(
-			target = src,
-			range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
-			visible = SPAN_NOTICE("[e_args.performer] removes the cell from [src]."),
-			audible = SPAN_NOTICE("You hear fasteners falling out and something being removed."),
-			otherwise_self = SPAN_NOTICE("You remove the cell from [src]."),
-		)
-		log_construction(e_args, src, "removed cell [obj_cell_slot.cell] ([obj_cell_slot.cell.type])")
-		var/obj/item/cell/removed = obj_cell_slot.remove_cell(src)
-		if(reachability == REACH_PHYSICAL)
-			e_args.performer.put_in_hands_or_drop(removed)
-		else
-			removed.forceMove(drop_location())
-		return TRUE
+		if("obj_storage")
+			obj_storage?.auto_handle_open_interaction(e_args)
+			return TRUE	
 	return ..()
 
 //* EMP *//

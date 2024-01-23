@@ -188,7 +188,7 @@
 
 	storage_slots = 9
 
-/obj/item/storage/belt/utility/fluff/vulpine/PopulateContents()
+/obj/item/storage/belt/utility/fluff/vulpine/legacy_spawn_contents()
 	. = ..()
 	new /obj/item/tool/screwdriver(src)
 	new /obj/item/tool/wrench(src)

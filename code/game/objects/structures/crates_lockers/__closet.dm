@@ -101,7 +101,7 @@
 /**
  * The proc that fills the closet with its initial contents.
  */
-/obj/structure/closet/proc/PopulateContents()
+/obj/structure/closet/proc/legacy_spawn_contents()
 	return
 
 /obj/structure/closet/examine(mob/user, dist)

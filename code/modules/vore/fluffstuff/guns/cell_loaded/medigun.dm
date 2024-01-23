@@ -46,7 +46,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	max_w_class = WEIGHT_CLASS_NORMAL
 
-/obj/item/storage/secure/briefcase/ml3m_pack_med/PopulateContents()
+/obj/item/storage/secure/briefcase/ml3m_pack_med/legacy_spawn_contents()
 	new /obj/item/gun/ballistic/cell_loaded/medical(src)
 	new /obj/item/ammo_magazine/cell_mag/medical(src)
 	new /obj/item/ammo_casing/microbattery/medical/brute(src)
@@ -59,7 +59,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	max_w_class = WEIGHT_CLASS_NORMAL
 
-/obj/item/storage/secure/briefcase/ml3m_pack_cmo/PopulateContents()
+/obj/item/storage/secure/briefcase/ml3m_pack_cmo/legacy_spawn_contents()
 	new /obj/item/gun/ballistic/cell_loaded/medical/cmo(src)
 	new /obj/item/ammo_magazine/cell_mag/medical(src)
 	new /obj/item/ammo_casing/microbattery/medical/brute(src)

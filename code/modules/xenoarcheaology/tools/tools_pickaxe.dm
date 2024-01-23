@@ -127,7 +127,7 @@
 	max_w_class = WEIGHT_CLASS_SMALL
 	use_to_pickup = 1
 
-/obj/item/storage/excavation/PopulateContents()
+/obj/item/storage/excavation/legacy_spawn_contents()
 	. = ..()
 	new /obj/item/pickaxe/brush(src)
 	new /obj/item/pickaxe/one_pick(src)

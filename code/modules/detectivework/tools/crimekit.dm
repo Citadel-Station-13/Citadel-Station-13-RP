@@ -12,7 +12,7 @@
 		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_storage.dmi',
 		)
 
-/obj/item/storage/briefcase/crimekit/PopulateContents()
+/obj/item/storage/briefcase/crimekit/legacy_spawn_contents()
 	new /obj/item/storage/box/swabs(src)
 	new /obj/item/storage/box/fingerprints(src)
 	new /obj/item/reagent_containers/spray/luminol(src)

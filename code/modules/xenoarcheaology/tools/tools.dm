@@ -23,7 +23,7 @@
 	name = "sample bag box"
 	desc = "A box claiming to contain sample bags."
 
-/obj/item/storage/box/samplebags/PopulateContents()
+/obj/item/storage/box/samplebags/legacy_spawn_contents()
 	. = ..()
 	for(var/i = 1 to 7)
 		var/obj/item/evidencebag/S = new(src)

@@ -324,10 +324,8 @@
 		else
 			. = ""
 
-/obj/item/attack_hand(mob/user, list/params)
-	attempt_pickup(user)
-
 /obj/item/proc/attempt_pickup(mob/user)
+	. = TRUE
 	if (!user)
 		return
 
@@ -996,6 +994,24 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	if(!istype(S))
 		return
 	S.stored_weight_changed(src, old_weight, new_weight)
+
+//* Interactions *//
+
+/obj/item/on_attack_hand(datum/event_args/actor/clickchain/e_args)
+	. = ..()
+	if(.)
+		return
+	
+	if(!e_args.performer.is_holding(src))
+		if(attempt_pickup(e_args.performer))
+			return TRUE
+	else if(e_args.performer.is_in_inventory(src))
+		if(e_args.performer.is_holding(src))
+			if(obj_storage?.allow_open_via_offhand_click && obj_storage.auto_handle_open_interaction(e_args))
+				return TRUE
+		else
+			if(obj_storage?.allow_open_equipped_click && obj_storage.auto_handle_open_interaction(e_args))
+				return TRUE
 
 //* Inventory *//
 

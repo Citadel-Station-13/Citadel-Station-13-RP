@@ -15,7 +15,7 @@
 	var/vial_path = /obj/item/reagent_containers/glass/hypovial
 	var/vial_amount = 6
 
-/obj/item/storage/hypokit/PopulateContents()
+/obj/item/storage/hypokit/legacy_spawn_contents()
 	. = ..()
 	new hypospray_path(src)
 	spawn_hypovials()

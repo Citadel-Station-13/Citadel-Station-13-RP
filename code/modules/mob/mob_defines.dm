@@ -49,6 +49,11 @@
 	var/atom/movable/buckled
 	/// Atom we're buckl**ing** to. Used to stop stuff like lava from incinerating those who are mid buckle.
 	var/atom/movable/buckling
+	
+	//* HUD
+	
+	/// active, opened storage
+	var/datum/object_system/storage/active_storage
 
 	//? Movespeed
 	/// List of movement speed modifiers applying to this mob
