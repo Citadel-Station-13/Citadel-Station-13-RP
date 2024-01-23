@@ -7,7 +7,7 @@
 
 	storage_slots = 1
 	max_w_class = WEIGHT_CLASS_HUGE
-	can_hold = list(
+	insertion_whitelist = list(
 		/obj/item/fish,
 	)
 	worth_dynamic = TRUE

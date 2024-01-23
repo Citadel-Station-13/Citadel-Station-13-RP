@@ -175,7 +175,7 @@
 	foldable = null
 	w_class = WEIGHT_CLASS_SMALL
 	max_w_class = WEIGHT_CLASS_NORMAL
-	can_hold = list(/obj/item/clothing/under/swimsuit/)
+	insertion_whitelist = list(/obj/item/clothing/under/swimsuit/)
 	has_items = list(/obj/item/clothing/under/swimsuit/fluff/penelope)
 
 // Aerowing:Sebastian Aji
@@ -246,7 +246,7 @@ Swimsuits, for general use, to avoid arriving to work with your swimsuit.
 	foldable = null
 	w_class = WEIGHT_CLASS_SMALL
 	max_w_class = WEIGHT_CLASS_NORMAL
-	can_hold = list(/obj/item/clothing/under/swimsuit/)
+	insertion_whitelist = list(/obj/item/clothing/under/swimsuit/)
 	has_items = list(/obj/item/clothing/under/swimsuit/black)
 
 /obj/item/storage/box/fluff/swimsuit/blue

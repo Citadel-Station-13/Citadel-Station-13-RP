@@ -115,7 +115,7 @@
 	item_state = "syringe_kit"
 	storage_slots = 7
 	w_class = WEIGHT_CLASS_SMALL
-	can_hold = list(/obj/item/pickaxe/brush,
+	insertion_whitelist = list(/obj/item/pickaxe/brush,
 	/obj/item/pickaxe/one_pick,
 	/obj/item/pickaxe/two_pick,
 	/obj/item/pickaxe/three_pick,

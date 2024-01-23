@@ -405,7 +405,7 @@
 	)
 	w_class = WEIGHT_CLASS_TINY
 	max_storage_space = WEIGHT_VOLUME_TINY * 8
-	can_hold = list(/obj/item/reagent_containers/food/snacks/pockystick)
+	insertion_whitelist = list(/obj/item/reagent_containers/food/snacks/pockystick)
 	foldable = null
 
 
@@ -450,7 +450,7 @@
 	)
 	w_class = WEIGHT_CLASS_TINY
 	max_storage_space = WEIGHT_VOLUME_TINY * 8
-	can_hold = list(/obj/item/reagent_containers/food/snacks/gondolas)
+	insertion_whitelist = list(/obj/item/reagent_containers/food/snacks/gondolas)
 	foldable = null
 
 // End Nippon-Tan vending snacks
@@ -5847,7 +5847,7 @@ END CITADEL CHANGE */
 	icon_state = "wings5"
 	var/startswith = 5
 	max_storage_space = WEIGHT_VOLUME_SMALL * 5
-	can_hold = list(/obj/item/reagent_containers/food/snacks/chickenwing)
+	insertion_whitelist = list(/obj/item/reagent_containers/food/snacks/chickenwing)
 	foldable = null
 
 /obj/item/storage/box/wings/Initialize(mapload)

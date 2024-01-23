@@ -119,7 +119,7 @@
 /obj/item/clothing/accessory/storage/knifeharness/Initialize(mapload)
 	. = ..()
 	hold.max_storage_space = WEIGHT_VOLUME_SMALL * 2
-	hold.can_hold = list(/obj/item/material/knife/machete/hatchet/unathiknife,\
+	hold.insertion_whitelist = list(/obj/item/material/knife/machete/hatchet/unathiknife,\
 	/obj/item/material/knife,\
 	/obj/item/material/knife/plastic)
 
@@ -142,7 +142,7 @@
 
 /obj/item/clothing/accessory/storage/ashlander_alchemy/Initialize(mapload)
 	. = ..()
-	hold.can_hold = list(
+	hold.insertion_whitelist = list(
 		/obj/item/reagent_containers/glass/stone,\
 		/obj/item/stack/medical/poultice_brute,\
 		/obj/item/stack/medical/poultice_burn,\

@@ -1341,7 +1341,7 @@
 	slot_flags = SLOT_BACK
 	item_icons = list(SLOT_ID_BACK = 'icons/vore/custom_onmob_vr.dmi', SLOT_ID_LEFT_HAND = 'icons/vore/custom_items_left_hand_vr.dmi', SLOT_ID_RIGHT_HAND = 'icons/vore/custom_items_right_hand_vr.dmi')
 
-	can_hold = list(/obj/item/melee/baton/fluff/stunstaff)
+	insertion_whitelist = list(/obj/item/melee/baton/fluff/stunstaff)
 
 	w_class = WEIGHT_CLASS_HUGE
 	max_w_class = WEIGHT_CLASS_HUGE

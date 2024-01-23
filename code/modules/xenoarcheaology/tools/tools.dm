@@ -17,7 +17,7 @@
 	storage_slots = 50
 	max_storage_space = WEIGHT_VOLUME_NORMAL * 50
 	max_w_class = WEIGHT_CLASS_NORMAL
-	can_hold = list(/obj/item/fossil)
+	insertion_whitelist = list(/obj/item/fossil)
 
 /obj/item/storage/box/samplebags
 	name = "sample bag box"

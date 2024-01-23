@@ -144,7 +144,7 @@
 	icon_state = "dicecup"
 	w_class = WEIGHT_CLASS_SMALL
 	storage_slots = 6
-	can_hold = list(
+	insertion_whitelist = list(
 		/obj/item/dice,
 		)
 
