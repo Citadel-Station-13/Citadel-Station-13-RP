@@ -21,6 +21,9 @@
 	var/max_combined_weight_class
 	var/max_combined_volume = WEIGHT_VOLUME_SMALL * 4
 	var/max_items
+	
+	var/weight_mitigation = 0
+	var/weight_multiply = 1
 
 	//* Initialization *//
 	
@@ -44,14 +47,6 @@
 
 	#warn above
 
-	//* Carry Weight *//
-
-	/// carry weight in us
-	var/weight_cached = 0
-	/// carry weight mitigation, static. applied after multiplicative
-	var/weight_mitigation = 0
-	/// carry weight mitigation, multiplicative.
-	var/weight_multiply = 1
 
 /obj/item/storage/Initialize(mapload)
 	. = ..()
@@ -92,6 +87,9 @@
 	obj_storage.max_combined_weight_class = max_combined_weight_class
 	obj_storage.max_combined_volume = max_combined_volume
 	obj_storage.max_items = max_items
+
+	obj_storage.weight_mitigation = weight_mitigation
+	obj_storage.weight_multiply = weight_multiply
 
 #warn below
 

@@ -925,7 +925,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 //* Carry Weight *//
 
 /obj/item/proc/get_weight()
-	return weight
+	return weight + obj_storage?.get_containing_weight()
 
 /obj/item/proc/get_encumbrance()
 	return encumbrance
@@ -990,6 +990,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 /obj/item/proc/propagate_weight(old_weight, new_weight)
 	if(!(item_flags & ITEM_IN_STORAGE))
 		return
+	#warn stuff
 	var/obj/item/storage/S = loc
 	if(!istype(S))
 		return

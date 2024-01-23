@@ -16,6 +16,17 @@
 	/// * top down is from end of contents list, bottom up is from start of contents list
 	var/limited_random_access_stack_bottom_first = FALSE
 	
+	//* Carry Weight *//
+
+	/// carry weight in us prior to mitigation
+	var/weight_cached = 0
+	#warn hook
+	/// carry weight mitigation, static. applied after multiplicative
+	var/weight_subtract = 0
+	/// carry weight mitigation, multiplicative.
+	var/weight_multiply = 1
+	#warn hook weight calcs
+
 	//* Deconstruction & Integrity
 	
 	/// on deconstruct(method), drop on these method flags
@@ -219,10 +230,13 @@
 /datum/object_system/storage/proc/rebuild_caches()
 	cached_combined_volume = 0
 	cached_combined_weight_class = 0
+	weight_cached = 0
 	for(var/obj/item/item in real_contents_loc())
 		cached_combined_volume += item.get_weight_volume()
 		cached_combined_weight_class += item.get_weight_class()
-	
+		weight_cached += item.get_weight()
+	#warn propagate weight
+
 //* Checks *//
 
 /datum/object_system/storage/proc/remaining_volume()
@@ -234,6 +248,11 @@
 /datum/object_system/storage/proc/remaining_items()
 	var/atom/indirection = real_contents_loc()
 	return isnull(max_items)? INFINITY : (max_items - length(indirection.contents))
+
+//* Carry Weight *//
+
+/datum/object_storage/storage/proc/get_containing_weight()
+	return max(0, weight_cached * weight_multiply - weight_subtract)
 
 //* Hooks*//
 
@@ -332,6 +351,7 @@
 /datum/object_system/storage/proc/physically_insert_entity(obj/item/inserting)
 	inserting.forceMove(real_contents_loc())
 	inserting.vis_flags |= VIS_INHERIT_LAYER | VIS_INHERIT_PLANE
+	inserting.item_flags |= ITEM_IN_STORAGE
 
 /**
  * @return TRUE / FALSE
@@ -359,6 +379,7 @@
 /datum/object_system/storage/proc/physically_remove_entity(obj/item/removing, atom/to_where)
 	removing.forceMove(to_where)
 	removing.vis_flags = (removing.vis_flags & ~(VIS_INHERIT_LAYER | VIS_INHERIT_LAYER)) | (initial(removing.vis_flags) & (VIS_INHERIT_LAYER | VIS_INHERIT_PLANE))
+	removing.item_flags &= ~ITEM_IN_STORAGE
 	// we might have set maptext in render_numerical_display
 	removing.maptext = null
 
