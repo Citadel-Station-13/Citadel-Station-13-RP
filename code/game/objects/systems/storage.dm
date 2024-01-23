@@ -288,10 +288,10 @@
 /**
  * @return TRUE / FALSE; if true, caller should stop clickchain.
  */
-/datum/object_system/storage/proc/auto_handle_interacted_insertion(obj/item/inserting, datum/event_args/actor/actor)
+/datum/object_system/storage/proc/auto_handle_interacted_insertion(obj/item/inserting, datum/event_args/actor/actor, silent, suppressed)
 	#warn impl
 
-/datum/object_system/storage/proc/try_insert(obj/item/inserting, datum/event_args/actor/actor, silent)
+/datum/object_system/storage/proc/try_insert(obj/item/inserting, datum/event_args/actor/actor, silent, suppressed, no_update)
 	if(!check_insertion_filters(inserting))
 		if(!silent)
 			actor?.chat_feedback(
@@ -317,9 +317,12 @@
 	// point of no return
 	#warn impl
 
-/datum/object_system/storage/proc/insert(obj/item/inserting, datum/event_args/actor/actor)
+/datum/object_system/storage/proc/insert(obj/item/inserting, datum/event_args/actor/actor, suppressed, no_update)
 	#warn impl
 	physically_insert_entity(inserting)
+
+	if(!no_update)
+		refresh(force = TRUE)
 
 /**
  * handle moving an item in
@@ -328,6 +331,32 @@
  */
 /datum/object_system/storage/proc/physically_insert_entity(obj/item/inserting)
 	inserting.forceMove(real_contents_loc())
+
+/**
+ * @return TRUE / FALSE
+ */
+/datum/object_system/storage/proc/auto_handle_interacted_removal(obj/item/removing, datum/event_args/actor/actor, silent, suppressed)
+
+/datum/object_system/storage/proc/try_remove(obj/item/removing, atom/to_where, datum/event_args/actor/actor, silent, suppressed, no_update)
+	#warn impl
+
+
+/**
+ * remove item from self
+ */
+/datum/object_system/storage/proc/remove(obj/item/removing, atom/to_where, datum/event_args/actor/actor, suppressed, no_update)
+	#warn impl
+
+	if(!no_update)
+		refresh(force = TRUE)
+
+/**
+ * handle moving an item out
+ * 
+ * we can assume this proc will do potentially literally anything with the item, so..
+ */
+/datum/object_system/storage/proc/physically_remove_entity(obj/item/removing, atom/to_where)
+	removing.forceMove(to_where)
 
 //* Limits *//
 
