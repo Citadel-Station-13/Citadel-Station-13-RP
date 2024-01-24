@@ -240,7 +240,7 @@
 	name = "hybrid cell-loaded gun kit"
 	desc = "A storage case for a multi-purpose handgun. Variety hour!"
 	w_class = WEIGHT_CLASS_NORMAL
-	max_w_class = WEIGHT_CLASS_NORMAL
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/storage/secure/briefcase/nsfw_pack_hybrid/legacy_spawn_contents()
 	new /obj/item/gun/ballistic/cell_loaded(src)
@@ -260,7 +260,7 @@
 	name = "military cell-loaded gun kit"
 	desc = "A storage case for a multi-purpose handgun. Variety hour!"
 	w_class = WEIGHT_CLASS_NORMAL
-	max_w_class = WEIGHT_CLASS_NORMAL
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/storage/secure/briefcase/nsfw_pack_hybrid_combat/legacy_spawn_contents()
 	new /obj/item/gun/ballistic/cell_loaded(src)

@@ -133,9 +133,9 @@
 	name = "Belt of Holding"
 	desc = "Can hold more than you'd expect."
 	icon_state = "ems"
-	max_w_class = WEIGHT_CLASS_NORMAL // Can hold normal sized items.
+	max_single_weight_class = WEIGHT_CLASS_NORMAL // Can hold normal sized items.
 	max_items = 14	// Twice the capacity of a typical belt.
-	max_storage_space = WEIGHT_VOLUME_NORMAL * 14
+	max_combined_volume = WEIGHT_VOLUME_NORMAL * 14
 
 /datum/technomancer/equipment/thermals
 	name = "Thermoncle"

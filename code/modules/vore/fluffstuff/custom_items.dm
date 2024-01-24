@@ -1344,8 +1344,8 @@
 	insertion_whitelist = list(/obj/item/melee/baton/fluff/stunstaff)
 
 	w_class = WEIGHT_CLASS_HUGE
-	max_w_class = WEIGHT_CLASS_HUGE
-	max_storage_space = 16
+	max_single_weight_class = WEIGHT_CLASS_HUGE
+	max_combined_volume = 16
 
 /obj/item/storage/backpack/fluff/stunstaff/Initialize(mapload)
 	. = ..()

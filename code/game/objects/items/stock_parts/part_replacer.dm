@@ -10,8 +10,8 @@
 	allow_quick_empty = 1
 	collection_mode = 1
 	display_contents_with_number = 1
-	max_w_class = WEIGHT_CLASS_NORMAL
-	max_storage_space = 200
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
+	max_combined_volume = 200
 	materials_base = list(
 		MAT_STEEL = 8000,
 		MAT_GLASS = 2500,
@@ -32,7 +32,7 @@
 	desc = "A special mechanical module made to store, sort, and apply standard machine parts.  This one has a greatly upgraded storage capacity"
 	icon_state = "RPED"
 	max_items = 200
-	max_storage_space = 400
+	max_combined_volume = 400
 	materials_base = list(
 		MAT_STEEL = 12000,
 		MAT_GLASS = 4000,
@@ -43,7 +43,7 @@
 	desc = "A special mechanical module made to store, sort, and apply standard machine parts.  This one has a further increased storage capacity, \
 	and the ability to work on machines with closed maintenance panels."
 	max_items = 400
-	max_storage_space = 800
+	max_combined_volume = 800
 	panel_req = FALSE
 
 /obj/item/storage/part_replacer/drop_contents() // hacky-feeling tier-based drop system

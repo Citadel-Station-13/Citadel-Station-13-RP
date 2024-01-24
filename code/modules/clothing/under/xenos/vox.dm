@@ -35,8 +35,8 @@
 
 /obj/item/clothing/accessory/storage/vox/Initialize(mapload)
 	. = ..()
-	hold.max_storage_space = slots * WEIGHT_VOLUME_NORMAL
-	hold.max_w_class = WEIGHT_CLASS_NORMAL
+	hold.max_combined_volume = slots * WEIGHT_VOLUME_NORMAL
+	hold.max_single_weight_class = WEIGHT_CLASS_NORMAL
 
 //Vox Pressure Suits
 /obj/item/clothing/under/pressuresuit

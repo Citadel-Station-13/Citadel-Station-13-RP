@@ -123,8 +123,8 @@
 	/obj/item/pickaxe/five_pick,
 	/obj/item/pickaxe/six_pick,
 	/obj/item/pickaxe/hand)
-	max_storage_space = WEIGHT_VOLUME_SMALL * 9
-	max_w_class = WEIGHT_CLASS_SMALL
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 9
+	max_single_weight_class = WEIGHT_CLASS_SMALL
 	use_to_pickup = 1
 
 /obj/item/storage/excavation/legacy_spawn_contents()

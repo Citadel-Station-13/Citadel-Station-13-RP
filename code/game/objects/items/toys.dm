@@ -1638,8 +1638,8 @@
 	var/static/list/dakimakura_options = list("Callie","Casca","Chaika","Elisabeth","Foxy Grandpa","Haruko","Holo","Ian","Jolyne","Kurisu","Marie","Mugi","Nar'Sie","Patchouli","Plutia","Rei","Reisen","Naga","Squid","Squigly","Tomoko","Toriel","Umaru","Yaranaika","Yoko") //Kurisu is the ideal girl." - Me, Logos.
 	w_class = WEIGHT_CLASS_NORMAL
 	slot_flags = SLOT_BACK
-	max_w_class = WEIGHT_CLASS_SMALL
-	max_storage_space = INVENTORY_BOX_SPACE
+	max_single_weight_class = WEIGHT_CLASS_SMALL
+	max_combined_volume = INVENTORY_BOX_SPACE
 
 /obj/item/storage/daki/attack_self(mob/user)
 	. = ..()

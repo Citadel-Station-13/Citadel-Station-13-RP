@@ -6,7 +6,7 @@
 	icon_state = "case"
 
 	max_items = 1
-	max_w_class = WEIGHT_CLASS_HUGE
+	max_single_weight_class = WEIGHT_CLASS_HUGE
 	insertion_whitelist = list(
 		/obj/item/fish,
 	)

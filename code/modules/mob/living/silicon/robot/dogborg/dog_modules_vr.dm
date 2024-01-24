@@ -126,7 +126,7 @@
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "dbag"
 	w_class = WEIGHT_CLASS_HUGE
-	max_w_class = WEIGHT_CLASS_SMALL
+	max_single_weight_class = WEIGHT_CLASS_SMALL
 	max_combined_w_class = WEIGHT_CLASS_SMALL
 	max_items = 1
 	collection_mode = 0

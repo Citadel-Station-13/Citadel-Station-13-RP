@@ -15,8 +15,8 @@
 	slot_flags = SLOT_BELT | SLOT_POCKET
 	w_class = WEIGHT_CLASS_NORMAL
 	max_items = 50
-	max_storage_space = WEIGHT_VOLUME_NORMAL * 50
-	max_w_class = WEIGHT_CLASS_NORMAL
+	max_combined_volume = WEIGHT_VOLUME_NORMAL * 50
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
 	insertion_whitelist = list(/obj/item/fossil)
 
 /obj/item/storage/box/samplebags

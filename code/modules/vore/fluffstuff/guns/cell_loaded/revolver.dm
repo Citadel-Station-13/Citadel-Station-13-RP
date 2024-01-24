@@ -47,7 +47,7 @@
 	name = "\improper NT-102b \'Hydra\' gun kit"
 	desc = "A storage case for a multi-purpose handgun. Variety hour!"
 	w_class = WEIGHT_CLASS_NORMAL
-	max_w_class = WEIGHT_CLASS_NORMAL
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/storage/secure/briefcase/nsfw_pack/legacy_spawn_contents()
 	new /obj/item/gun/ballistic/cell_loaded/combat(src)
@@ -59,7 +59,7 @@
 	name = "\improper NT-102b \'Hydra\' gun kit"
 	desc = "A storage case for a multi-purpose handgun. Variety hour!"
 	w_class = WEIGHT_CLASS_NORMAL
-	max_w_class = WEIGHT_CLASS_NORMAL
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/storage/secure/briefcase/nsfw_pack_hos/legacy_spawn_contents()
 	new /obj/item/gun/ballistic/cell_loaded/combat(src)

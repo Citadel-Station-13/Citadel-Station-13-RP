@@ -166,7 +166,7 @@
 	max_items = 1
 	foldable = null
 	w_class = WEIGHT_CLASS_SMALL
-	max_w_class = WEIGHT_CLASS_NORMAL
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
 	insertion_whitelist = list(/obj/item/clothing/under/swimsuit/)
 	starts_with = list(/obj/item/clothing/under/swimsuit/fluff/penelope)
 
@@ -237,7 +237,7 @@ Swimsuits, for general use, to avoid arriving to work with your swimsuit.
 	icon_state = "capsule"
 	foldable = null
 	w_class = WEIGHT_CLASS_SMALL
-	max_w_class = WEIGHT_CLASS_NORMAL
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
 	insertion_whitelist = list(/obj/item/clothing/under/swimsuit/)
 	starts_with = list(/obj/item/clothing/under/swimsuit/black)
 
