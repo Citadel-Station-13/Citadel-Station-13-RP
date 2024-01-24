@@ -613,6 +613,11 @@
 	if(isitem(AM))
 		obj_storage?.on_item_exited(AM)
 
+/obj/Entered(atom/movable/AM, atom/oldLoc)
+	. = ..()
+	if(isitem(AM))
+		obj_storage?.on_item_entered(AM)
+		
 //* Orientation *//
 
 /**

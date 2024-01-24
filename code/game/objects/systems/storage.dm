@@ -227,6 +227,12 @@
 		return TRUE
 	return user.CheapReachability(parent)
 
+/datum/object_system/storage/proc/top_entity_in_contents()
+	RETURN_TYPE(/atom/movable)
+	var/atom/indirection = real_contents_loc()
+	var/amt = length(indirection.contents)
+	return amt? indirection.contents[amt] : null
+
 //* Caches *//
 
 /datum/object_system/storage/proc/rebuild_caches()
@@ -256,12 +262,18 @@
 /datum/object_system/storage/proc/get_containing_weight()
 	return max(0, weight_cached * weight_multiply - weight_subtract)
 
-//* Hooks*//
+//* Hooks *//
 
 /**
  * Called by our object when an item exits us
  */
 /datum/object_system/storage/proc/on_item_exited(obj/item/exiting)
+	#warn impl
+
+/**
+ * Called by our object when an item enters us
+ */
+/datum/object_system/storage/proc/on_item_entered(obj/item/entering)
 	#warn impl
 
 //* Filters *//
@@ -346,7 +358,7 @@
 
 /datum/object_system/storage/proc/insert(obj/item/inserting, datum/event_args/actor/actor, suppressed, no_update)
 	#warn impl
-	physically_insert_entity(inserting)
+	physically_insert_item(inserting)
 
 	if(!no_update)
 		refresh()
@@ -356,10 +368,11 @@
  * 
  * we can assume this proc will do potentially literally anything with the item, so..
  */
-/datum/object_system/storage/proc/physically_insert_entity(obj/item/inserting)
+/datum/object_system/storage/proc/physically_insert_item(obj/item/inserting)
 	inserting.forceMove(real_contents_loc())
 	inserting.vis_flags |= VIS_INHERIT_LAYER | VIS_INHERIT_PLANE
 	inserting.item_flags |= ITEM_IN_STORAGE
+	inserting.on_enter_storage(src)
 
 /**
  * @return TRUE / FALSE
@@ -368,13 +381,20 @@
 	#warn impl
 
 /datum/object_system/storage/proc/try_remove(obj/item/removing, atom/to_where, datum/event_args/actor/actor, silent, suppressed, no_update)
+	if(!can_be_removed(removing, to_where, actor, silent))
+		return FALSE
 	#warn impl
+
+/datum/object_system/storage/proc/can_be_removed(obj/item/removing, atom/to_where, datum/event_args/actor/actor, silent)
+	return TRUE
 
 /**
  * remove item from self
  */
 /datum/object_system/storage/proc/remove(obj/item/removing, atom/to_where, datum/event_args/actor/actor, suppressed, no_update)
 	#warn impl
+
+	physically_remove_item(removing, to_where)
 
 	if(!no_update)
 		refresh()
@@ -384,10 +404,11 @@
  * 
  * we can assume this proc will do potentially literally anything with the item, so..
  */
-/datum/object_system/storage/proc/physically_remove_entity(obj/item/removing, atom/to_where)
+/datum/object_system/storage/proc/physically_remove_item(obj/item/removing, atom/to_where)
 	removing.forceMove(to_where)
 	removing.vis_flags = (removing.vis_flags & ~(VIS_INHERIT_LAYER | VIS_INHERIT_LAYER)) | (initial(removing.vis_flags) & (VIS_INHERIT_LAYER | VIS_INHERIT_PLANE))
 	removing.item_flags &= ~ITEM_IN_STORAGE
+	removing.on_exit_storage(src)
 	// we might have set maptext in render_numerical_display
 	removing.maptext = null
 
@@ -449,10 +470,10 @@
 /datum/object_system/storage/proc/auto_handle_interacted_mass_transfer(datum/event_args/actor/actor, datum/object_system/storage/to_storage)
 	#warn impl
 
-/datum/object_system/storage/proc/auto_handle_interacted_mass_pickup(datum/event_args/actor/actor, datum/object_system/storage/to_storage)
+/datum/object_system/storage/proc/auto_handle_interacted_mass_pickup(datum/event_args/actor/actor, atom/from_where)
 	#warn impl
 
-/datum/object_system/storage/proc/auto_handle_interacted_mass_dumping(datum/event_args/actor/actor, datum/object_system/storage/to_storage)
+/datum/object_system/storage/proc/auto_handle_interacted_mass_dumping(datum/event_args/actor/actor, atom/to_where)
 	#warn impl
 
 /datum/object_system/storage/proc/interacted_mass_pickup(datum/event_args/actor/actor, atom/from_loc)
@@ -821,4 +842,7 @@
 	RETURN_TYPE(/datum/object_system/storage)
 	ASSERT(isnull(obj_storage))
 	obj_storage = new path(src)
+	// get all items inside / registered
+	for(var/obj/item/item in contents)
+		obj_storage.on_item_entered(item)
 	return obj_storage

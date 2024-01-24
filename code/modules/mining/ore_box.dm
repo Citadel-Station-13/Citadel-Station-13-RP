@@ -32,7 +32,7 @@
 		var/obj/item/storage/S = W
 		if(!S.contents.len)
 			return
-		S.hide_from(usr)
+		S.obj_storage?.hide(user)
 		for(var/obj/item/stack/ore/O in S.contents)
 			S.remove_from_storage(O, src) //This will move the item to this item's contents
 		user.visible_message(SPAN_NOTICE("[user] offloads ores from [W] into [src]."), SPAN_NOTICE("You offload the ores in [W] into [src]."))

@@ -499,14 +499,6 @@
 	pixel_x = rand(-8, 8)
 	pixel_y = rand(-8, 8)
 
-// called when this item is removed from a storage item, which is passed on as S. The loc variable is already set to the new destination before this is called.
-/obj/item/proc/on_exit_storage(obj/item/storage/S as obj)
-	SEND_SIGNAL(src, COMSIG_STORAGE_EXITED, S)
-
-// called when this item is added into a storage item, which is passed on as S. The loc variable is already set to the storage item.
-/obj/item/proc/on_enter_storage(obj/item/storage/S as obj)
-	SEND_SIGNAL(src, COMSIG_STORAGE_ENTERED, S)
-
 /obj/item/verb/verb_pickup()
 	set src in oview(1)
 	set category = "Object"
@@ -1026,6 +1018,12 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
  */
 /obj/item/proc/allow_auto_storage_insert(datum/event_args/actor/actor, datum/object_system/storage/storage)
 	return TRUE
+
+/obj/item/proc/on_exit_storage(datum/object_system/storage/storage)
+	SEND_SIGNAL(src, COMSIG_STORAGE_EXITED, storage)
+
+/obj/item/proc/on_enter_storage(datum/object_system/storage/storage)
+	SEND_SIGNAL(src, COMSIG_STORAGE_ENTERED, storage)
 
 //* Materials *//
 

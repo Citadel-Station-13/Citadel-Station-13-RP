@@ -72,8 +72,8 @@
 		tank = W
 		user.visible_message("[user] jams [W] into [src]'s valve and twists it closed.","You jam [W] into [src]'s valve and twist it closed.")
 		update_icon()
-	else if(istype(W) && item_storage.can_be_inserted(W))
-		item_storage.handle_item_insertion(W, user)
+	else if(istype(W) && item_storage.obj_storage.can_be_inserted(W))
+		item_storage.try_insert(W, user)
 
 /obj/item/gun/launcher/pneumatic/attack_self(mob/user)
 	. = ..()

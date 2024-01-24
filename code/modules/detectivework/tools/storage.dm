@@ -5,20 +5,18 @@
 	icon_state = "dnakit"
 	insertion_whitelist = list(/obj/item/forensics/swab)
 	max_items = 14
-
-/obj/item/storage/box/swabs/legacy_spawn_contents()
-	for(var/i = 1 to storage_slots) // Fill 'er up.
-		new /obj/item/forensics/swab(src)
+	starts_with = list(
+		/obj/item/forensics/swab = 14,
+	)
 
 /obj/item/storage/box/evidence
 	name = "evidence bag box"
 	desc = "A box claiming to contain evidence bags."
 	max_items = 7
 	insertion_whitelist = list(/obj/item/evidencebag)
-
-/obj/item/storage/box/evidence/legacy_spawn_contents()
-	for(var/i = 1 to storage_slots)
-		new /obj/item/evidencebag(src)
+	starts_with = list(
+		/obj/item/evidencebag = 7,
+	)
 
 /obj/item/storage/box/fingerprints
 	name = "box of fingerprint cards"
@@ -27,7 +25,6 @@
 	icon_state = "dnakit"
 	insertion_whitelist = list(/obj/item/sample/print)
 	max_items = 14
-
-/obj/item/storage/box/fingerprints/legacy_spawn_contents()
-	for(var/i = 1 to storage_slots)
-		new /obj/item/sample/print(src)
+	starts_with = list(
+		/obj/item/sample/print = 14,
+	)

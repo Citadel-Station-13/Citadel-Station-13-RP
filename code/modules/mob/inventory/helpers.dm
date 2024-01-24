@@ -145,7 +145,7 @@
 		return FALSE
 	if(isnull(storage.obj_storage))
 		return FALSE
-	var/obj/item/removing = storage.obj_storage.top_item()
+	var/obj/item/removing = storage.obj_storage.top_entity_in_contents()
 	var/datum/event_args/actor = new(src, initiator)
 	if(!storage.obj_storage.check_on_found_hooks(actor))
 	. = storage.obj_storage.try_remove(removing, src, actor, silent)
