@@ -476,7 +476,7 @@
 	max_items = 24
 	insertion_whitelist = list(/obj/item/light/tube, /obj/item/light/bulb)
 	max_combined_volume = WEIGHT_VOLUME_SMALL * 24 //holds 24 items of w_class 2
-	use_to_pickup = 1 // for picking up broken bulbs, not that most people will try
+	allow_mass_gather = TRUE // for picking up broken bulbs, not that most people will try
 
 /obj/item/storage/box/lights/bulbs
 	starts_with = list(/obj/item/light/bulb = 24)
@@ -594,7 +594,7 @@
 	max_single_weight_class = WEIGHT_CLASS_NORMAL
 	insertion_whitelist = list(/obj/item/organ)
 	max_combined_volume = WEIGHT_VOLUME_NORMAL * 5 // Formally 21.  Odd numbers are bad.
-	use_to_pickup = 1 // for picking up broken bulbs, not that most people will try
+	allow_mass_gather = TRUE // for picking up broken bulbs, not that most people will try
 
 /obj/item/storage/box/freezer/Entered(var/atom/movable/AM)
 	if(istype(AM, /obj/item/organ))

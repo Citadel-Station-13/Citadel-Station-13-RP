@@ -738,6 +738,8 @@
  * Stack storage
  * 
  * Can handle both material and normal stacks.
+ * 
+ * Uses max_items and only max_items for 'total combined'.
  */
 /datum/object_system/storage/stack
 
@@ -854,12 +856,11 @@
  */
 /atom/movable/screen/storage/item/volumetric/proc/set_pixel_width(width)
 	overlays.len = 0
-	var/image/left = image(icon, icon_state = "stored_left", pixel_x = )
-	var/image/right = image(icon, icon_state = "stored_right", pixel_x = )
+	var/image/left = image(icon, icon_state = "stored_left", pixel_x = ((width / 2) - VOLUMETRIC_STORAGE_BOX_BORDER_SIZE - (WORLD_ICON_SIZE - VOLUMETRIC_STORAGE_BOX_BORDER_SIZE)))
+	var/image/right = image(icon, icon_state = "stored_right", pixel_x = -((width / 2) - VOLUMETRIC_STORAGE_BOX_BORDER_SIZE - (WORLD_ICON_SIZE - VOLUMETRIC_STORAGE_BOX_BORDER_SIZE)))
 	var/image/middle = image(icon, icon_state = "stored_middle")
 	middle.transform = matrix((pixels - (VOLUMETRIC_STORAGE_BOX_BORDER_SIZE * 2)) / VOLUMETRIC_STORAGE_BOX_ICON_SIZE, 0, 0, 0, 1, 0)
 	overlays = list(left, middle, right)
-	#warn impl
 
 /atom/movable/screen/storage/panel/volumetric
 

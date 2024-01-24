@@ -5,11 +5,11 @@
 	w_class = WEIGHT_CLASS_HUGE
 	insertion_whitelist = list(/obj/item/stock_parts, /obj/item/cell/, /obj/item/reagent_containers/glass/beaker/)
 	max_items = 100
-	use_to_pickup = 1
+	allow_mass_gather = TRUE
 	allow_quick_gather = 1
 	allow_quick_empty = 1
 	collection_mode = 1
-	display_contents_with_number = 1
+	ui_numerical_mode = TRUE
 	max_single_weight_class = WEIGHT_CLASS_NORMAL
 	max_combined_volume = 200
 	materials_base = list(

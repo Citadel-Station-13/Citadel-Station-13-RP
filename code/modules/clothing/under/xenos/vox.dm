@@ -31,12 +31,9 @@
 
 	atom_flags = PHORONGUARD
 
-	slots = 3
-
-/obj/item/clothing/accessory/storage/vox/Initialize(mapload)
-	. = ..()
-	hold.max_combined_volume = slots * WEIGHT_VOLUME_NORMAL
-	hold.max_single_weight_class = WEIGHT_CLASS_NORMAL
+	max_items = 3
+	max_combined_volume = 3 * WEIGHT_VOLUME_NORMAL
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
 
 //Vox Pressure Suits
 /obj/item/clothing/under/pressuresuit

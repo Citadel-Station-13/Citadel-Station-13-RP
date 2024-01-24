@@ -286,8 +286,8 @@
 	desc = "This kit's essential for any circuitry projects."
 	icon = 'icons/obj/integrated_electronics/electronic_misc.dmi'
 	icon_state = "circuit_kit"
-	w_class = 3
-	display_contents_with_number = 0
+	w_class = WEIGHT_CLASS_NORMAL
+	ui_numerical_mode = FALSE
 	insertion_whitelist = list(
 		/obj/item/integrated_circuit,
 		/obj/item/storage/bag/circuits/mini,
@@ -349,8 +349,8 @@
 /obj/item/storage/bag/circuits/mini
 	name = "circuit box"
 	desc = "Used to partition categories of circuits, for a neater workspace."
-	w_class = 2
-	display_contents_with_number = 1
+	w_class = WEIGHT_CLASS_SMALL
+	ui_numerical_mode = TRUE
 	insertion_whitelist = list(/obj/item/integrated_circuit)
 	var/spawn_flags_to_use = IC_SPAWN_DEFAULT
 

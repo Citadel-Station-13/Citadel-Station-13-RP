@@ -167,7 +167,7 @@
 	insertion_whitelist = list(/obj/item/reagent_containers/pill,/obj/item/dice,/obj/item/paper)
 	allow_quick_gather = 1
 	allow_quick_empty = 1
-	use_to_pickup = 1
+	allow_mass_gather = TRUE
 	use_sound = null
 	max_combined_volume = WEIGHT_VOLUME_TINY * 14
 	max_single_weight_class = WEIGHT_CLASS_TINY

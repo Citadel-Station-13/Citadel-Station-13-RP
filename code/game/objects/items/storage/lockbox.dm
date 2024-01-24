@@ -8,12 +8,15 @@
 	max_combined_volume = WEIGHT_VOLUME_NORMAL * 4 //The sum of the w_classes of all the items in this storage item.
 	req_access = list(ACCESS_SECURITY_ARMORY)
 	preserve_item = 1
-	var/locked = 1
 	var/broken = 0
 	var/icon_locked = "lockbox+l"
 	var/icon_closed = "lockbox"
 	var/icon_broken = "lockbox+b"
 
+/obj/item/storage/lockbox/initialize_storage()
+	. = ..()
+	if(locked && !broken)
+		obj_storage.set_locked(TRUE)
 
 /obj/item/storage/lockbox/attackby(obj/item/W, mob/user)
 	if (istype(W, /obj/item/card/id))
@@ -21,11 +24,10 @@
 			to_chat(user, "<span class='warning'>It appears to be broken.</span>")
 			return
 		if(src.allowed(user))
-			src.locked = !( src.locked )
-			if(src.locked)
+			obj_storage.set_locked(!obj_storage.locked)
+			if(obj_storage.locked)
 				src.icon_state = src.icon_locked
 				to_chat(user, "<span class='notice'>You lock \the [src]!</span>")
-				close_all()
 				return
 			else
 				src.icon_state = src.icon_closed
@@ -44,15 +46,6 @@
 		..()
 	else
 		to_chat(user, "<span class='warning'>It's locked!</span>")
-	return
-
-
-/obj/item/storage/lockbox/show_to(mob/user)
-	if(locked)
-		to_chat(user, "<span class='warning'>It's locked!</span>")
-	else
-		..()
-	return
 
 /obj/item/storage/lockbox/emag_act(remaining_charges, mob/user, emag_source, visual_feedback = "", audible_feedback = "")
 	if(!broken)
@@ -66,7 +59,7 @@
 			audible_feedback = "<span class='warning'>You hear a faint electrical spark.</span>"
 
 		broken = 1
-		locked = 0
+		obj_storage.set_locked(FALSE)
 		desc = "It appears to be broken."
 		icon_state = src.icon_broken
 		visible_message(visual_feedback, audible_feedback)

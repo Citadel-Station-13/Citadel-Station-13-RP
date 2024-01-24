@@ -1,9 +1,3 @@
-// To clarify:
-// For use_to_pickup and allow_quick_gather functionality,
-// see item/attackby() (/game/objects/items.dm)
-// Do not remove this functionality without good reason, cough reagent_containers cough.
-// -Sayu
-#define storage_ui_default "LEFT+7,BOTTOM+7 to LEFT+10,BOTTOM+8"
 /obj/item/storage
 	name = "storage"
 	icon = 'icons/obj/storage.dmi'
@@ -24,6 +18,12 @@
 	
 	var/weight_subtract = 0
 	var/weight_multiply = 1
+	
+	#warn these
+	var/allow_mass_gather = FALSE
+	var/allow_mass_gather_mode_switch = TRUE
+	var/mass_gather_mode = STORAGE_QUICK_GATHER_COLLECT_ALL
+	var/ui_numerical_mode = FALSE
 
 	//* Initialization *//
 	
@@ -37,9 +37,6 @@
 
 	#warn below
 
-
-	var/use_to_pickup	//Set this to make it possible to use this item in an inverse way, so you can have the item in your hand and click items on the floor to pick them up.
-	var/display_contents_with_number	//Set this to make the storage item group contents of the same type and display them as a number.
 	var/allow_quick_empty	//Set this variable to allow the object to have the 'empty' verb, which dumps all the contents on the floor.
 	var/allow_quick_gather	//Set this variable to allow the object to have the 'toggle mode' verb, which quickly collects all items from a tile.
 	var/collection_mode = 1;  //0 = pick one at a time, 1 = pick all on tile

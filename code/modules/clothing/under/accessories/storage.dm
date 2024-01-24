@@ -118,7 +118,16 @@
 	name = "decorated harness"
 	desc = "A heavily decorated harness of sinew and leather with two knife-loops."
 	icon_state = "unathiharness2"
-	max_combined_volume = WEIGHT_VOLUME_SMALL * 2
+	max_combined_volume = null
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
+	max_items = 2
+	max_combined_weight_class = null
+	insertion_whitelist = list(
+		/obj/item/material/knife,
+	)
+	starts_with = list(
+		/obj/item/material/knife/machete/hatchet/unathiknife = 2,
+	)
 
 /obj/item/clothing/accessory/storage/voyager
 	name = "voyager harness"
@@ -138,16 +147,6 @@
 	sprite_sheets = list(
 			BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/ties.dmi'
 			)
-
-/obj/item/clothing/accessory/storage/knifeharness/Initialize(mapload)
-	. = ..()
-	hold.max_combined_volume = WEIGHT_VOLUME_SMALL * 2
-	hold.insertion_whitelist = list(/obj/item/material/knife/machete/hatchet/unathiknife,\
-	/obj/item/material/knife,\
-	/obj/item/material/knife/plastic)
-
-	new /obj/item/material/knife/machete/hatchet/unathiknife(hold)
-	new /obj/item/material/knife/machete/hatchet/unathiknife(hold)
 
 /obj/item/clothing/accessory/storage/laconic
 	name = "laconic field pouch system"
