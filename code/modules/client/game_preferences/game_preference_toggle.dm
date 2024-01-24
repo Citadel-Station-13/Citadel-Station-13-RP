@@ -100,6 +100,13 @@ GLOBAL_LIST_INIT(game_preference_toggles, init_game_preference_toggles())
 	legacy_key = "OVERHEAD_CHAT"
 	description = "Enable rendering messages sent by mobs over their icon on the map."
 
+/datum/game_preference_toggle/game/help_intent_firing
+	name = "Help intent gun safety"
+	description = "If on, do not allow firing weapons in help intent."
+	key = "HelpIntentGunSafety"
+	legacy_key = "HELP_INTENT_SAFETY"
+	default_value = FALSE
+
 #warn impl
 
 /datum/game_preference_toggle/ambience

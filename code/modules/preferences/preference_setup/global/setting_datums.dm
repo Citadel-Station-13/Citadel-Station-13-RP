@@ -124,13 +124,6 @@
 	enabled_description = "Announce"
 	disabled_description = "Silent"
 
-/datum/client_preference/help_intent_firing
-	description = "Allow firing on help intent"
-	key = "HELP_INTENT_SAFETY"
-	enabled_by_default = FALSE
-	enabled_description = "Allow"
-	disabled_description = "Forbid"
-
 #warn this goes to proper graphics section
 /datum/client_preference/parallax
 	description = "Parallax (fancy space, disable for FPS issues"
