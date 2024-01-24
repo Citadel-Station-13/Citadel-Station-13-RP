@@ -48,7 +48,7 @@
 		for(var/vismob in vis_mobs)
 			var/mob/M = vismob
 			if(istype(vismob, /mob/observer))
-				if(M.client && !M.client.is_preference_enabled(/datum/client_preference/subtle_see))
+				if(M.client && !M.client.get_preference_toggle(/datum/client_preference/subtle_see))
 					continue
 			spawn(0)
 				M.show_message(message, SAYCODE_TYPE_ALWAYS)

@@ -16,7 +16,7 @@ var/global/floorIsLava = 0
 	// var/rendered = "<span class='log_message><span class='prefix'>ATTACK:</span> <span class='message'>[text]</span></span>"
 	// for(var/client/C in GLOB.admins)
 	// 	if((R_ADMIN|R_MOD) & C.holder.rights)
-	// 		if(C.is_preference_enabled(/datum/client_preference/mod/show_attack_logs))
+	// 		if(C.get_preference_toggle(/datum/client_preference/mod/show_attack_logs))
 	// 			var/msg = rendered
 	// 			to_chat(C, msg)
 
@@ -1562,7 +1562,7 @@ datum/admins/var/obj/item/paper/admin/faxreply // var to hold fax replies in
 	if(!isobserver(owner.mob))
 		return
 	var/mob/observer/dead/dead = owner.mob
-	var/stealthghost = owner.is_preference_enabled(/datum/client_preference/holder/stealth_ghost_mode)
+	var/stealthghost = owner.get_preference_toggle(/datum/client_preference/holder/stealth_ghost_mode)
 	if(!stealthghost || !fakekey)
 		dead.invisibility = initial(dead.invisibility)
 		dead.alpha = initial(dead.alpha)

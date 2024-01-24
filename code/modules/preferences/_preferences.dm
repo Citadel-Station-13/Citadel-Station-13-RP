@@ -457,7 +457,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	toggle_preference(pref_path)
 
-	to_chat(src, "You will [ (is_preference_enabled(pref_path)) ? "now" : "no longer"] hear eating related vore noises.")
+	to_chat(src, "You will [ (get_preference_toggle(pref_path)) ? "now" : "no longer"] hear eating related vore noises.")
 
 	SScharacters.queue_preferences_save(prefs)
 
@@ -473,7 +473,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	toggle_preference(pref_path)
 
-	to_chat(src, "You will [ (is_preference_enabled(pref_path)) ? "now" : "no longer"] hear digestion related vore noises.")
+	to_chat(src, "You will [ (get_preference_toggle(pref_path)) ? "now" : "no longer"] hear digestion related vore noises.")
 
 	SScharacters.queue_preferences_save(prefs)
 

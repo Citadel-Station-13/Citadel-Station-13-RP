@@ -665,7 +665,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	client.toggle_preference(/datum/client_preference/anonymous_ghost_chat)
 	SScharacters.queue_preferences_save(client.prefs)
-	if(is_preference_enabled(/datum/client_preference/anonymous_ghost_chat))
+	if(get_preference_toggle(/datum/client_preference/anonymous_ghost_chat))
 		to_chat(src, "<span class='info'>Your key won't be shown when you speak in dead chat.</span>")
 	else
 		to_chat(src, "<span class='info'>Your key will be publicly visible again.</span>")

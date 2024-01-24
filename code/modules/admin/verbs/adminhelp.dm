@@ -252,7 +252,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ticket_list)
 	//send this msg to all admins
 
 	for(var/client/X in GLOB.admins)
-		if(X.is_preference_enabled(/datum/client_preference/holder/play_adminhelp_ping))
+		if(X.get_preference_toggle(/datum/client_preference/holder/play_adminhelp_ping))
 			SEND_SOUND(X, sound('sound/effects/adminhelp.ogg'))
 		window_flash(X)
 		to_chat(X, chat_msg)
@@ -339,7 +339,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ticket_list)
 		return
 
 	if(initiator)
-		if(initiator.is_preference_enabled(/datum/client_preference/holder/play_adminhelp_ping))
+		if(initiator.get_preference_toggle(/datum/client_preference/holder/play_adminhelp_ping))
 			SEND_SOUND(initiator, sound('sound/effects/adminhelp.ogg'))
 
 		to_chat(initiator, "<font color='red' size='4'><b>- AdminHelp Rejected! -</b></font>")

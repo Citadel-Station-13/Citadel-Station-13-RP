@@ -1128,7 +1128,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 		tnote.Add(list(list("sent" = 1, "owner" = "[P.owner]", "job" = "[P.ownjob]", "message" = "[t]", "target" = "\ref[P]")))
 		P.tnote.Add(list(list("sent" = 0, "owner" = "[owner]", "job" = "[ownjob]", "message" = "[t]", "target" = "\ref[src]")))
 		for(var/mob/M in GLOB.player_list)
-			if(M.stat == DEAD && M.client && (M.is_preference_enabled(/datum/client_preference/ghost_ears))) // src.client is so that ghosts don't have to listen to mice
+			if(M.stat == DEAD && M.client && (M.get_preference_toggle(/datum/client_preference/ghost_ears))) // src.client is so that ghosts don't have to listen to mice
 				if(istype(M, /mob/new_player))
 					continue
 				if(M.forbid_seeing_deadchat)

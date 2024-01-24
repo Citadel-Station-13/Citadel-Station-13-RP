@@ -302,7 +302,7 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 		return // Can't talk in deadchat if you can't see it.
 
 	for(var/mob/M in GLOB.player_list)
-		if(M.client && ((!istype(M, /mob/new_player) && M.stat == DEAD) || (M.client.holder && M.client.holder.rights)) && M.is_preference_enabled(/datum/client_preference/show_dsay))
+		if(M.client && ((!istype(M, /mob/new_player) && M.stat == DEAD) || (M.client.holder && M.client.holder.rights)) && M.get_preference_toggle(/datum/client_preference/show_dsay))
 			var/follow
 			var/lname
 			if(M.forbid_seeing_deadchat && !M.client.holder)
@@ -318,7 +318,7 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 				var/mob/observer/dead/DM
 				if(istype(subject, /mob/observer/dead))
 					DM = subject
-				var/anonsay = DM?.is_preference_enabled(/datum/client_preference/anonymous_ghost_chat)
+				var/anonsay = DM?.get_preference_toggle(/datum/client_preference/anonymous_ghost_chat)
 				if(M.client.holder) 							// What admins see
 					lname = "[keyname][(anonsay) ? "*" : (DM ? "" : "^")] ([name])"
 				else
@@ -333,7 +333,7 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 
 /proc/say_dead_object(var/message, var/obj/subject = null)
 	for(var/mob/M in GLOB.player_list)
-		if(M.client && ((!istype(M, /mob/new_player) && M.stat == DEAD) || (M.client.holder && M.client.holder.rights)) && M.is_preference_enabled(/datum/client_preference/show_dsay))
+		if(M.client && ((!istype(M, /mob/new_player) && M.stat == DEAD) || (M.client.holder && M.client.holder.rights)) && M.get_preference_toggle(/datum/client_preference/show_dsay))
 			var/follow
 			var/lname = "Game Master"
 			if(M.forbid_seeing_deadchat && !M.client.holder)
@@ -363,7 +363,7 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 			C = M.original.client
 
 	if(C)
-		if(!isnull(C.holder?.fakekey) || !C.is_preference_enabled(/datum/client_preference/announce_ghost_joinleave))
+		if(!isnull(C.holder?.fakekey) || !C.get_preference_toggle(/datum/client_preference/announce_ghost_joinleave))
 			return
 		var/name
 		if(C.mob)

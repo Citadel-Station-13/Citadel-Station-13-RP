@@ -106,9 +106,27 @@ GLOBAL_LIST_EMPTY(game_preferences)
 
 #warn impl
 
+//? Client Wrappers ?//
+
+/client/proc/get_preference_toggle(datum/game_preference_toggle/id_path_instance)
+	var/datum/game_preference_toggle/toggle = fetch_game_preference_toggle(id_path_instance)
+	if(isnull(toggle))
+		CRASH("invalid fetch")
+	if(initialized)
+		return preferences.toggles[toggle.key]
+	return id_path_instance.default_value
+
+/client/proc/get_preference_entry(datum/game_preference_entry/id_path_instance)
+	var/datum/game_preference_entry/entry = fetch_game_preference_entry(id_path_instance)
+	if(isnull(entry))
+		CRASH("invalid fetch")
+	if(initialized)
+		return preferences.entries[entry.key]
+	return id_path_instance.default_value
+
 //? Mob Wrappers ?//
 
-/mob/proc/get_game_preference_toggle(datum/game_preference_toggle/id_path_instance)
+/mob/proc/get_preference_toggle(datum/game_preference_toggle/id_path_instance)
 	var/datum/game_preference_toggle/toggle = fetch_game_preference_toggle(id_path_instance)
 	if(isnull(toggle))
 		CRASH("invalid fetch")
@@ -116,7 +134,7 @@ GLOBAL_LIST_EMPTY(game_preferences)
 		return client.preferences.toggles[toggle.key]
 	return id_path_instance.default_value
 
-/mob/proc/get_game_preference_entry(datum/game_preference_entry/id_path_instance)
+/mob/proc/get_preference_entry(datum/game_preference_entry/id_path_instance)
 	var/datum/game_preference_entry/entry = fetch_game_preference_entry(id_path_instance)
 	if(isnull(entry))
 		CRASH("invalid fetch")

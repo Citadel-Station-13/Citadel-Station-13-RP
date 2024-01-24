@@ -324,7 +324,7 @@
 		for(var/mob/M in viewers(4, src))
 			if(M == src || M.is_blind())
 				continue
-			// if(M.client && M.client.is_preference_enabled(/datum/client_preference/examine_look))
+			// if(M.client && M.client.get_preference_toggle(/datum/client_preference/examine_look))
 			to_chat(M, SPAN_TINYNOTICE("<b>\The [src]</b> looks at \the [A]."))
 
 	do_examinate(A)
@@ -1057,7 +1057,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	return TRUE
 
 /mob/MouseEntered(location, control, params)
-	if(usr != src && usr.is_preference_enabled(/datum/client_preference/mob_tooltips) && src.will_show_tooltip())
+	if(usr != src && usr.get_preference_toggle(/datum/client_preference/mob_tooltips) && src.will_show_tooltip())
 		openToolTip(user = usr, tip_src = src, params = params, title = get_nametag_name(usr), content = get_nametag_desc(usr))
 
 	..()
