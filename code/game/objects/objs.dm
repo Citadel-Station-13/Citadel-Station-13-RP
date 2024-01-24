@@ -545,6 +545,18 @@
 /obj/proc/should_hide_underfloor()
 	return FALSE
 
+//* Inventory *//
+
+/**
+ * Returns stuff considered to be inside this object's inventory.
+ * 
+ * Do not return ourselves or there will be an infinite loop in many callers!
+ * 
+ * @return list()
+ */
+/obj/proc/return_inventory()
+	return isnull(obj_storage)? list() : obj_storage.contents()
+	
 //* Examine *//
 
 /obj/examine(mob/user, dist)

@@ -25,6 +25,21 @@
 	else
 		icon_state = "gift[pick(1, 2, 3)]"
 
+/obj/item/gift
+	name = "gift"
+	desc = "A wrapped item."
+	icon = 'icons/obj/items.dmi'
+	icon_state = "gift3"
+	var/size = 3.0
+	var/obj/item/gift = null
+	item_state = "gift"
+	w_class = WEIGHT_CLASS_BULKY
+
+/obj/item/gift/return_inventory()
+	. = list()
+	if(!isnull(gift))
+		. += gift
+
 /obj/item/gift/attack_self(mob/user)
 	. = ..()
 	if(.)

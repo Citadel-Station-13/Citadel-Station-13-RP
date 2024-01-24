@@ -109,7 +109,7 @@
 	var/obj/item/equipped = item_by_slot(slot_like.id)
 	if(isnull(equipped))
 		if(!silent)
-			to_chat(initiator, SPAN_WARNING("There is nothing worn [slot_like.display_proposition] [initiator == src? "your" : "their"] [slot_like.display_name]."))
+			to_chat(initiator, SPAN_WARNING("There is nothing worn [slot_like.display_preposition] [initiator == src? "your" : "their"] [slot_like.display_name]."))
 		return FALSE
 	if(!equipped.obj_storage)
 		if(!silent)
@@ -127,7 +127,7 @@
 	var/obj/item/equipped = item_by_slot(slot_like.id)
 	if(isnull(equipped))
 		if(!silent)
-			to_chat(initiator, SPAN_WARNING("There is nothing worn [slot_like.display_proposition] [initiator == src? "your" : "their"] [slot_like.display_name]."))
+			to_chat(initiator, SPAN_WARNING("There is nothing worn [slot_like.display_preposition] [initiator == src? "your" : "their"] [slot_like.display_name]."))
 		return FALSE
 	if(isnull(equipped.obj_storage))
 		if(!silent)

@@ -381,9 +381,6 @@
 		to_chat(user, SPAN_NOTICE("They wont fit in as there is already stuff inside."))
 		return
 
-	if(user.s_active)
-		user.s_active.close(user)
-
 	if(T.use(10))
 		var/obj/item/bot_assembly/floorbot/B = new
 		if(istype(src, /obj/item/storage/toolbox/mechanical/))

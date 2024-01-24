@@ -61,8 +61,13 @@
 			return put_in_hands(I, flags)
 		if(/datum/inventory_slot_meta/abstract/put_in_storage, /datum/inventory_slot_meta/abstract/put_in_storage_try_active)
 			if(slot == /datum/inventory_slot_meta/abstract/put_in_storage_try_active)
-				if(s_active && Adjacent(s_active) && s_active.try_insert(I, src, flags & INV_OP_SUPPRESS_WARNING, flags & INV_OP_FORCE))
-					return TRUE
+				// todo: redirection
+				if(flagS & INV_OP_FORCE)
+					if(active_storage?.insert(I, new /datum/event_args/actor(src), flags & INV_OP_SUPPRESS_WARNING))
+						return TRUE
+				else
+					if(active_storage?.try_insert(I, new /datum/event_args/actor(src), flags & INV_OP_SUPPRESS_WARNING, flags & INV_OP_SUPPRESS_SOUND))
+						return TRUE
 			for(var/obj/item/storage/S in get_equipped_items_in_slots(list(
 				SLOT_ID_BELT,
 				SLOT_ID_BACK,
@@ -256,15 +261,11 @@
 			if(/datum/inventory_slot_meta/abstract/hand/right)
 				return (flags & INV_OP_FORCE) || !get_right_held_item()
 			if(/datum/inventory_slot_meta/abstract/put_in_backpack)
-				var/obj/item/storage/S = item_by_slot(SLOT_ID_BACK)
-				if(!istype(S))
-					return FALSE
-				return S.can_be_inserted(I, TRUE)
+				var/obj/item/thing = item_by_slot(SLOT_ID_BACK)
+				return thing?.obj_storage?.can_be_inserted(I, new /datum/event_args/actor(user), TRUE)
 			if(/datum/inventory_slot_meta/abstract/put_in_belt)
-				var/obj/item/storage/S = item_by_slot(SLOT_ID_BACK)
-				if(!istype(S))
-					return FALSE
-				return S.can_be_inserted(I, TRUE)
+				var/obj/item/thing = item_by_slot(SLOT_ID_BACK)
+				return thing?.obj_storage?.can_be_inserted(I, new /datum/event_args/actor(user), TRUE)
 			if(/datum/inventory_slot_meta/abstract/put_in_hands)
 				return (flags & INV_OP_FORCE) || !hands_full()
 		return TRUE

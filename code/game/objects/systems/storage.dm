@@ -205,15 +205,20 @@
 				return redirection.contents.Copy(max(1, contents_length - limited_random_access_stack_amount + 1), contents_length + 1)
 	return redirection.contents.Copy()
 
-/datum/object_system/storage/proc/recursively_return_inventory(list/returning = list())
+/**
+ * Recursively return all inventory in this or nested storage (without indirection)
+ */
+/datum/object_system/storage/proc/recursively_return_contents(list/returning = list())
 	var/atom/redirection = real_contents_loc()
 	for(var/obj/item/iterating in redirection)
 		returning += iterating
-		iterating.obj_storage?.recursively_return_inventory(returning)
+		iterating.obj_storage?.recursively_return_contents(returning)
 	return returning
 
 /**
  * iterate through what's considered inside
+ * 
+ * this is a mutable / copy of a list, so you're free to mess with it.
  */
 /datum/object_system/storage/proc/contents()
 	. = list()
@@ -251,7 +256,7 @@
 
 //* Carry Weight *//
 
-/datum/object_storage/storage/proc/get_containing_weight()
+/datum/object_system/storage/proc/get_containing_weight()
 	return max(0, weight_cached * weight_multiply - weight_subtract)
 
 //* Hooks*//
@@ -311,6 +316,20 @@
 	#warn impl
 
 /datum/object_system/storage/proc/try_insert(obj/item/inserting, datum/event_args/actor/actor, silent, suppressed, no_update)
+	if(!can_be_inserted(inserting, actor, silent))
+		return FALSE
+	// point of no return
+	if(inserting.worn_mob() == actor?.performer && !actor.performer.temporarily_remove_from_inventory(inserting, user = actor.performer))
+		if(!silent)
+			actor?.chat_feedback(
+				msg = SPAN_WARNING("[inserting] is stuck to your hand / body!"),
+				target = parent,
+			)
+		return FALSE
+	// point of no return (real)
+	#warn impl
+
+/datum/object_system/storage/proc/can_be_inserted(obj/item/inserting, datum/event_args/actor/actor, silent)
 	if(!check_insertion_filters(inserting))
 		if(!silent)
 			actor?.chat_feedback(
@@ -326,15 +345,7 @@
 				target = parent,
 			)
 		return FALSE
-	if(inserting.worn_mob() == actor?.performer && !actor.performer.temporarily_remove_from_inventory(inserting, user = actor.performer))
-		if(!silent)
-			actor?.chat_feedback(
-				msg = SPAN_WARNING("[inserting] is stuck to your hand / body!"),
-				target = parent,
-			)
-		return FALSE
-	// point of no return
-	#warn impl
+	return TRUE
 
 /datum/object_system/storage/proc/insert(obj/item/inserting, datum/event_args/actor/actor, suppressed, no_update)
 	#warn impl

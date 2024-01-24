@@ -264,29 +264,6 @@
 	item_state = "card-id"
 	w_class = WEIGHT_CLASS_SMALL
 
-/*
-/obj/item/game_kit
-	name = "Gaming Kit"
-	icon = 'icons/obj/items.dmi'
-	icon_state = "game_kit"
-	var/selected = null
-	var/board_stat = null
-	var/data = ""
-	var/base_url = "http://svn.slurm.us/public/spacestation13/misc/game_kit"
-	item_state = "sheet-metal"
-	w_class = WEIGHT_CLASS_HUGE
-*/
-
-/obj/item/gift
-	name = "gift"
-	desc = "A wrapped item."
-	icon = 'icons/obj/items.dmi'
-	icon_state = "gift3"
-	var/size = 3.0
-	var/obj/item/gift = null
-	item_state = "gift"
-	w_class = WEIGHT_CLASS_BULKY
-
 /obj/item/caution
 	desc = "Caution! Wet Floor!"
 	name = "wet floor sign"
@@ -316,25 +293,6 @@
 	desc = "This cone is trying to warn you of something! It has been painted to look like candy corn."
 	name = "candy cone"
 	icon_state = "candycone"
-
-/*/obj/item/syndicate_uplink
-	name = "station bounced radio"
-	desc = "Remain silent about this..."
-	icon = 'icons/obj/radio.dmi'
-	icon_state = "radio"
-	var/temp = null
-	var/uses = 10.0
-	var/selfdestruct = 0.0
-	var/traitor_frequency = 0.0
-	var/mob/currentUser = null
-	var/obj/item/radio/origradio = null
-	flags = ONBELT
-	w_class = WEIGHT_CLASS_SMALL
-	item_state = "radio"
-	throw_speed = 4
-	throw_range = 20
-	materials_base = list("metal" = 100
-	origin_tech = list(TECH_MAGNET = 2, TECH_ILLEGAL = 3)*/
 
 /obj/item/SWF_uplink
 	name = "station-bounced radio"
