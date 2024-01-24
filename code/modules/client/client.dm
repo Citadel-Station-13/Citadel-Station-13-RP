@@ -96,6 +96,11 @@
 	/// menu group statuses
 	var/list/menu_group_status = list()
 
+	//? Preferences
+	/// client preferences
+	#warn init this same time as prefs
+	var/datum/game_preferences/preferences
+
 	//? Statpanel
 	/// statpanel tab ; can be null (e.g. we're looking at verb tabs)
 	var/statpanel_tab

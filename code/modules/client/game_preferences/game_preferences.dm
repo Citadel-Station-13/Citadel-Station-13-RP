@@ -105,3 +105,21 @@ GLOBAL_LIST_EMPTY(game_preferences)
 //* UI *//
 
 #warn impl
+
+//? Mob Wrappers ?//
+
+/mob/proc/get_game_preference_toggle(datum/game_preference_toggle/id_path_instance)
+	var/datum/game_preference_toggle/toggle = fetch_game_preference_toggle(id_path_instance)
+	if(isnull(toggle))
+		CRASH("invalid fetch")
+	if(client?.initialized)
+		return client.preferences.toggles[toggle.key]
+	return id_path_instance.default_value
+
+/mob/proc/get_game_preference_entry(datum/game_preference_entry/id_path_instance)
+	var/datum/game_preference_entry/entry = fetch_game_preference_entry(id_path_instance)
+	if(isnull(entry))
+		CRASH("invalid fetch")
+	if(client?.initialized)
+		return client.preferences.entries[entry.key]
+	return id_path_instance.default_value

@@ -112,6 +112,12 @@ GLOBAL_LIST_INIT(game_preference_toggles, init_game_preference_toggles())
 	abstract_type = /datum/game_preference_toggle/sfx
 	category = "Sound - Effects"
 
+/datum/game_preference_toggle/sfx/instruments
+	name = "Instruments"
+	description = "Play sounds from in-game instruments."
+	key = "InstrumentMusic"
+	legacy_key = "SOUND_INSTRUMENT"
+
 #warn impl
 
 /datum/game_preference_toggle/music

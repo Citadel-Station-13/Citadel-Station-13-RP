@@ -103,10 +103,6 @@
 	if(preference_mob.client)
 		preference_mob?.using_perspective?.planes?.sync_owner(preference_mob.client)
 
-/datum/client_preference/instrument_toggle
-	description ="Hear In-game Instruments"
-	key = "SOUND_INSTRUMENT"
-
 /datum/client_preference/anonymous_ghost_chat
 	description = "Anonymous Ghost Chat"
 	key = "ANON_GHOST_CHAT"
