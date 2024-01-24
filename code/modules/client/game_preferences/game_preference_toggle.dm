@@ -94,6 +94,12 @@ GLOBAL_LIST_INIT(game_preference_toggles, init_game_preference_toggles())
 	key = "MobTooltips"
 	legacy_key = "MOB_TOOLTIPS"
 
+/datum/game_preference_toggle/game/overhead_chat
+	name = "Overhead Chat"
+	key = "Runechat"
+	legacy_key = "OVERHEAD_CHAT"
+	description = "Enable rendering messages sent by mobs over their icon on the map."
+
 #warn impl
 
 /datum/game_preference_toggle/ambience
@@ -149,8 +155,16 @@ GLOBAL_LIST_INIT(game_preference_toggles, init_game_preference_toggles())
 	abstract_type = /datum/game_preference_toggle/vore_sounds
 	category = "Sound - Vore"
 
+#warn impl
+
 /datum/game_preference_toggle/observer
 	abstract_type = /datum/game_preference_toggle/observer
 	category = "Observer"
+
+#warn impl
+
+/datum/game_preference_toggle/presence
+	abstract_type = /datum/game_preference_toggle/presence
+	category = "Presence"
 
 #warn impl

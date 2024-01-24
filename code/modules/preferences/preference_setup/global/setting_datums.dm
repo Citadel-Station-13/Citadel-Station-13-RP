@@ -135,6 +135,7 @@
 	enabled_description = "Allow"
 	disabled_description = "Forbid"
 
+#warn this goes to proper graphics section
 /datum/client_preference/parallax
 	description = "Parallax (fancy space, disable for FPS issues"
 	key = "PARALLAX_ENABLED"
@@ -144,45 +145,16 @@
 /datum/client_preference/parallax/toggled(mob/preference_mob, enabled)
 	. = ..()
 	preference_mob?.client?.parallax_holder?.reset()
-/datum/client_preference/overhead_chat
-	description = "Overhead Chat"
-	key = "OVERHEAD_CHAT"
-	enabled_description = "Show"
-	disabled_description = "Hide"
-	enabled_by_default = TRUE
 
 /********************
 * Staff Preferences *
 ********************/
-/datum/client_preference/admin/may_toggle(var/mob/preference_mob)
-	return check_rights(R_ADMIN, 0, preference_mob)
-
-/datum/client_preference/mod/may_toggle(var/mob/preference_mob)
-	return check_rights(R_MOD|R_ADMIN, 0, preference_mob)
-
-/datum/client_preference/debug/may_toggle(var/mob/preference_mob)
-	return check_rights(R_DEBUG|R_ADMIN, 0, preference_mob)
-
-/datum/client_preference/admin/show_chat_prayers
-	description = "Chat Prayers"
-	key = "CHAT_PRAYER"
-	enabled_description = "Show"
-	disabled_description = "Hide"
-
-/datum/client_preference/holder/may_toggle(var/mob/preference_mob)
-	return preference_mob && preference_mob.client && preference_mob.client.holder
 
 /datum/client_preference/holder/play_adminhelp_ping
 	description = "Adminhelps"
 	key = "SOUND_ADMINHELP"
 	enabled_description = "Hear"
 	disabled_description = "Silent"
-
-/datum/client_preference/holder/hear_radio
-	description = "Radio chatter"
-	key = "CHAT_RADIO"
-	enabled_description = "Show"
-	disabled_description = "Hide"
 
 /datum/client_preference/holder/show_rlooc
 	description ="Remote LOOC chat"
