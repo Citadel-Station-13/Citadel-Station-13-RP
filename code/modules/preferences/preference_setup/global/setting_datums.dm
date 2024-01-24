@@ -79,47 +79,9 @@
 	key = "SOUND_AIRPUMP"
 	enabled_description = "Audible"
 
-/datum/client_preference/pickup_sounds
-	description = "Picked Up Item Sounds"
-	key = "SOUND_PICKED"
-
-	enabled_description = "Enabled"
-	disabled_description = "Disabled"
-
-/datum/client_preference/drop_sounds
-	description = "Dropped Item Sounds"
-	key = "SOUND_DROPPED"
-	enabled_description = "Enabled"
-	disabled_description = "Disabled"
-
-/datum/client_preference/hotkeys_default
-	description ="Hotkeys Default"
-	key = "HUD_HOTKEYS"
-	enabled_description = "Enabled"
-	disabled_description = "Disabled"
-	enabled_by_default = FALSE // Backwards compatibility
-
 /datum/client_preference/subtle_see
 	description = "Subtle Emotes"
 	key = "SUBTLE_SEE"
-	enabled_description = "Show"
-	disabled_description = "Hide"
-
-/datum/client_preference/show_ooc
-	description ="OOC chat"
-	key = "CHAT_OOC"
-	enabled_description = "Show"
-	disabled_description = "Hide"
-
-/datum/client_preference/show_looc
-	description ="LOOC chat"
-	key = "CHAT_LOOC"
-	enabled_description = "Show"
-	disabled_description = "Hide"
-
-/datum/client_preference/show_dsay
-	description ="Dead chat"
-	key = "CHAT_DEAD"
 	enabled_description = "Show"
 	disabled_description = "Hide"
 
@@ -128,18 +90,6 @@
 	key = "CHAT_MENTION"
 	enabled_description = "Emphasize"
 	disabled_description = "Normal"
-
-/datum/client_preference/show_progress_bar
-	description ="Progress Bar"
-	key = "SHOW_PROGRESS"
-	enabled_description = "Show"
-	disabled_description = "Hide"
-
-/datum/client_preference/browser_style
-	description = "Fake NanoUI Browser Style"
-	key = "BROWSER_STYLED"
-	enabled_description = "Fancy"
-	disabled_description = "Plain"
 
 /datum/client_preference/ambient_occlusion
 	description = "Fake Ambient Occlusion"

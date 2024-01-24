@@ -485,7 +485,7 @@
 		else
 			playsound(A, 'sound/weapons/throwtap.ogg', 1, volume, -1)
 	else
-		playsound(src, drop_sound, 30, preference = /datum/client_preference/drop_sounds)
+		playsound(src, drop_sound, 30)
 
 /obj/item/throw_land(atom/A, datum/thrownthing/TT)
 	. = ..()

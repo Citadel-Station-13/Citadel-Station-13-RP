@@ -31,12 +31,17 @@ GLOBAL_LIST_INIT(game_preference_toggles, init_game_preference_toggles())
 	/// must be unique
 	var/key
 	var/category = "Misc"
+	/// priority - higher means it appears first. only valid within the same category.
+	var/priority = 0
 	/// legacy import id
 	var/legacy_key
 	var/default_value = TRUE
 
 /datum/game_preference_toggle/proc/toggled(client/user, state)
 	return
+
+/datum/game_preference_toggle/proc/is_visible(client/user)
+	return TRUE
 
 #warn impl
 
@@ -47,9 +52,36 @@ GLOBAL_LIST_INIT(game_preference_toggles, init_game_preference_toggles())
 
 #warn impl all toggles below
 
+/datum/game_preference_toggle/admin
+	abstract_type = /datum/game_preference_toggle/admin
+	category = "Admin"
+
+/datum/game_preference_toggle/admin/is_visible(client/user)
+	return check_rights(C = user)
+
+#warn impl
+
 /datum/game_preference_toggle/chat
 	abstract_type = /datum/game_preference_toggle/chat
 	category = "Chat"
+
+/datum/game_preference_toggle/chat/ooc
+	name = "OOC enabled"
+	description = "Toggles whether you see OOC (Out of Character) chat."
+	legacy_key = "CHAT_OOC"
+	key = "ToggleOOC"
+
+/datum/game_preference_toggle/chat/looc
+	name = "LOOC enabled"
+	description = "Toggles whether you see LOOC (Local Out of Character) chat."
+	legacy_key = "CHAT_LOOC"
+	key = "ToggleLOOC"
+
+/datum/game_preference_toggle/chat/dead
+	name = "Deadchat enabled"
+	description = "Toggles whether you see dead chat."
+	legacy_key = "CHAT_DEAD"
+	key = "ToggleDeadchat"
 
 #warn impl
 
