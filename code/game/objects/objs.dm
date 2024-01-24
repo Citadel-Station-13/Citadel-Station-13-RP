@@ -352,6 +352,25 @@
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
 
+/obj/OnMouseDrop(atom/over, mob/user, proximity, params)
+	if(!isnull(obj_storage))
+		// clickdrag to self storage open
+		if(obj_storage.allow_open_via_clickdrag_to_self && ismob(over) && over == user)
+			if(obj_storage.auto_handle_interacted_open(over))
+				return CLICKCHAIN_DO_NOT_PROPAGATE
+		// clickdrag to other obj transfer
+		if(obj_storage.allow_outbound_mass_transfer && obj_storage.allow_clickdrag_mass_transfer && isobj(over))
+			var/obj/object = over
+			if(object.obj_storage.allow_inbound_mass_transfer)
+				obj_storage.interacted_mass_storage_transfer(new /datum/event_args/actor(user), object.obj_storage)
+				return CLICKCHAIN_DO_NOT_PROPAGATE
+		// clickdrag to ground mass dumping
+		if(obj_storage.allow_quick_empty_via_clickdrag && obj_storage.allow_quick_empty && isturf(over))
+			var/turf/turf = over
+			obj_storage.interacted_mass_dumping(new /datum/event_args/actor(user), turf)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()
+
 /obj/proc/drag_drop_climb_interaction(mob/user, atom/dropping)
 	if(!climb_allowed)
 		return FALSE
@@ -517,7 +536,7 @@
 				removed.forceMove(drop_location())
 			return TRUE
 		if("obj_storage")
-			obj_storage?.auto_handle_open_interaction(e_args)
+			obj_storage?.auto_handle_interacted_open(e_args)
 			return TRUE	
 	return ..()
 

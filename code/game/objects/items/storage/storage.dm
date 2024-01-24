@@ -130,16 +130,6 @@
 		S.do_reset_weight_recursive(safety - 1)
 	reset_weight()
 
-/obj/item/storage/AltClick(mob/user)
-	if(user in is_seeing)
-		src.close(user)
-	// I would think there should be some incap check here or something
-	// But MouseDrop doesn't use one (as of this writing), so...
-	else if(isliving(user) && user.Reachability(src))
-		src.open(user)
-	else
-		return ..()
-
 /obj/item/storage/OnMouseDrop(atom/over, mob/user, proximity, params)
 	if(user != over)
 		return ..()

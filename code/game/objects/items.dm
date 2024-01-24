@@ -912,6 +912,10 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 		log_construction(e_args, src, "removed cell [obj_cell_slot.cell] ([obj_cell_slot.cell.type])")
 		e_args.performer.put_in_hands_or_drop(obj_cell_slot.remove_cell(e_args.performer))
 		return TRUE
+	if(!isnull(obj_storage) && obj_storage.allow_quick_empty && obj_storage.allow_quick_empty_via_attack_self)
+		var/turf/turf = get_turf(e_args.performer)
+		obj_storage.auto_handle_interacted_mass_dumping(e_args, turf)
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return FALSE
 
 /**
@@ -1008,10 +1012,10 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 			return TRUE
 	else if(e_args.performer.is_in_inventory(src))
 		if(e_args.performer.is_holding(src))
-			if(obj_storage?.allow_open_via_offhand_click && obj_storage.auto_handle_open_interaction(e_args))
+			if(obj_storage?.allow_open_via_offhand_click && obj_storage.auto_handle_interacted_open(e_args))
 				return TRUE
 		else
-			if(obj_storage?.allow_open_equipped_click && obj_storage.auto_handle_open_interaction(e_args))
+			if(obj_storage?.allow_open_via_equipped_click && obj_storage.auto_handle_interacted_open(e_args))
 				return TRUE
 
 //* Inventory *//

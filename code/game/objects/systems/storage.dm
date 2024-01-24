@@ -71,10 +71,8 @@
 	/// allow quick empty at all
 	var/allow_quick_empty = FALSE
 	/// allow quick empty via clickdrag
-	#warn impl
 	var/allow_quick_empty_via_clickdrag = TRUE
 	/// allow quick empty via attack self
-	#warn impl
 	var/allow_quick_empty_via_attack_self = TRUE
 	
 	/// allow inbound mass transfers
@@ -82,13 +80,13 @@
 	/// allow outbound mass transfer
 	var/allow_outbound_mass_transfer = TRUE
 	/// allow clickdrag to initiate mass transfer
-	#warn impl
 	var/allow_clickdrag_mass_transfer = TRUE
 
 	/// allow mass gather at all
 	var/allow_mass_gather = FALSE
 	/// allow mass gather via click
 	var/allow_mass_gather_via_click = TRUE
+	#warn impl action
 	/// allow switching mass gathering mode
 	#warn impl action
 	var/allow_mass_gather_mode_switch = TRUE
@@ -102,7 +100,6 @@
 	/// allow opening when clicking from hand if this is equipped
 	var/allow_open_via_equipped_click = TRUE
 	/// allow opening via clickdrag to self
-	#warn impl
 	var/allow_open_via_clickdrag_to_self = TRUE
 
 	/// ghosts can always see inside
@@ -449,7 +446,13 @@
 
 //* Transfer *//
 
-/datum/object_system/storage/proc/interacted_mass_storage_transfer(datum/event_args/actor/actor, datum/object_system/storage/to_storage)
+/datum/object_system/storage/proc/auto_handle_interacted_mass_transfer(datum/event_args/actor/actor, datum/object_system/storage/to_storage)
+	#warn impl
+
+/datum/object_system/storage/proc/auto_handle_interacted_mass_pickup(datum/event_args/actor/actor, datum/object_system/storage/to_storage)
+	#warn impl
+
+/datum/object_system/storage/proc/auto_handle_interacted_mass_dumping(datum/event_args/actor/actor, datum/object_system/storage/to_storage)
 	#warn impl
 
 /datum/object_system/storage/proc/interacted_mass_pickup(datum/event_args/actor/actor, atom/from_loc)
@@ -526,7 +529,7 @@
 /**
  * @return TRUE if we did something (to interrupt clickchain)
  */
-/datum/object_system/storage/proc/auto_handle_open_interaction(datum/event_args/actor/actor, force)
+/datum/object_system/storage/proc/auto_handle_interacted_open(datum/event_args/actor/actor, force)
 	if(is_locked(actor))
 		actor.chat_feedback(
 			msg = SPAN_WARNING("[parent] is locked."),
