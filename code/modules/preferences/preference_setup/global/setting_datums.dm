@@ -1,38 +1,3 @@
-var/list/_client_preferences
-var/list/_client_preferences_by_key
-var/list/_client_preferences_by_type
-
-/proc/get_client_preferences()
-	if(!_client_preferences)
-		_client_preferences = list()
-		for(var/ct in subtypesof(/datum/client_preference))
-			var/datum/client_preference/client_type = ct
-			if(initial(client_type.description))
-				_client_preferences += new client_type()
-	return _client_preferences
-
-/proc/get_client_preference(var/datum/client_preference/preference)
-	if(istype(preference))
-		return preference
-	if(ispath(preference))
-		return get_client_preference_by_type(preference)
-	return get_client_preference_by_key(preference)
-
-/proc/get_client_preference_by_key(var/preference)
-	if(!_client_preferences_by_key)
-		_client_preferences_by_key = list()
-		for(var/ct in get_client_preferences())
-			var/datum/client_preference/client_pref = ct
-			_client_preferences_by_key[client_pref.key] = client_pref
-	return _client_preferences_by_key[preference]
-
-/proc/get_client_preference_by_type(var/preference)
-	if(!_client_preferences_by_type)
-		_client_preferences_by_type = list()
-		for(var/ct in get_client_preferences())
-			var/datum/client_preference/client_pref = ct
-			_client_preferences_by_type[client_pref.type] = client_pref
-	return _client_preferences_by_type[preference]
 
 /datum/client_preference
 	var/description
@@ -51,22 +16,6 @@ var/list/_client_preferences_by_type
 * Player Preferences *
 *********************/
 
-/datum/client_preference/play_admin_midis
-	description ="Play admin midis"
-	key = "SOUND_MIDI"
-
-/datum/client_preference/play_lobby_music
-	description ="Play lobby music"
-	key = "SOUND_LOBBY"
-
-/datum/client_preference/play_lobby_music/toggled(var/mob/preference_mob, var/enabled)
-	if(!preference_mob.client || !preference_mob.client.media)
-		return
-
-	if(enabled)
-		preference_mob.client.playtitlemusic()
-	else
-		preference_mob.client.media.stop_music()
 
 /datum/client_preference/play_ambiance
 	description ="Play ambience"
@@ -76,16 +25,6 @@ var/list/_client_preferences_by_type
 	if(!enabled)
 		SEND_SOUND(preference_mob, sound(null, repeat = 0, wait = 0, volume = 0, channel = 1))
 		SEND_SOUND(preference_mob, sound(null, repeat = 0, wait = 0, volume = 0, channel = 2))
-// Need to put it here because it should be ordered riiiight here.
-/datum/client_preference/play_jukebox
-	description ="Play jukebox music"
-	key = "SOUND_JUKEBOX"
-
-/datum/client_preference/play_jukebox/toggled(var/mob/preference_mob, var/enabled)
-	if(!enabled)
-		preference_mob.stop_all_music()
-	else
-		preference_mob.update_music()
 
 /datum/client_preference/eating_noises
 	description = "Eating Noises"
@@ -139,13 +78,6 @@ var/list/_client_preferences_by_type
 	description ="Air Pump Ambient Noise"
 	key = "SOUND_AIRPUMP"
 	enabled_description = "Audible"
-	disabled_description = "Silent"
-
-/datum/client_preference/mob_tooltips
-	description ="Mob tooltips"
-	key = "MOB_TOOLTIPS"
-	enabled_description = "Show"
-	disabled_description = "Hide"
 
 /datum/client_preference/pickup_sounds
 	description = "Picked Up Item Sounds"
@@ -172,16 +104,6 @@ var/list/_client_preferences_by_type
 	key = "SUBTLE_SEE"
 	enabled_description = "Show"
 	disabled_description = "Hide"
-
-/datum/client_preference/show_typing_indicator
-	description ="Typing indicator"
-	key = "SHOW_TYPING"
-	enabled_description = "Show"
-	disabled_description = "Hide"
-
-/datum/client_preference/show_typing_indicator/toggled(var/mob/preference_mob, var/enabled)
-	if(!enabled)
-		preference_mob.set_typing_indicator(FALSE)
 
 /datum/client_preference/show_ooc
 	description ="OOC chat"
