@@ -72,8 +72,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 //! ## Game Preferences
 	var/tgui_fancy = TRUE
 	var/tgui_lock = TRUE
-	/// Saved changlog filesize to detect if there was a change.
-	var/lastchangelog = ""
 	/// Whatever this is set to acts as 'reset' color and is thus unusable as an actual custom color.
 	var/ooccolor = "#010000"
 	/// Special role selection.
@@ -226,9 +224,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	var/datum/category_collection/player_setup_collection/player_setup
 	var/datum/browser/panel
-
-	/// Hash of last seen lobby news content.
-	var/lastnews
 
 //! ## Character Directory Stuff
 	/// Should we show in Character Directory.

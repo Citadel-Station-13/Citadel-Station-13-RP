@@ -33,6 +33,10 @@
 	var/player_age
 	/// join date
 	var/player_first_seen
+	/// arbitrary JSON-serializable key-value data
+	/// you must handle errors yourself! we won't handle it for you.
+	var/list/player_misc
+	#warn hook into sql
 
 /datum/player_data/New(key)
 	src.ckey = ckey(key)

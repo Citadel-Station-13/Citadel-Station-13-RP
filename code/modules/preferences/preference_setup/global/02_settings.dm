@@ -7,15 +7,11 @@
 	sort_order = 2
 
 /datum/category_item/player_setup_item/player_global/settings/load_preferences(var/savefile/S)
-	S["lastchangelog"]        >> pref.lastchangelog
-	S["lastnews"]             >> pref.lastnews
 	S["default_slot"]	      >> pref.default_slot
 	S["preferences"]          >> pref.preferences_enabled
 	S["preferences_disabled"] >> pref.preferences_disabled
 
 /datum/category_item/player_setup_item/player_global/settings/save_preferences(var/savefile/S)
-	S["lastchangelog"]        << pref.lastchangelog
-	S["lastnews"]             << pref.lastnews
 	S["default_slot"]         << pref.default_slot
 	S["preferences"]          << pref.preferences_enabled
 	S["preferences_disabled"] << pref.preferences_disabled
@@ -82,54 +78,3 @@
 		return PREFERENCES_REFRESH
 
 	return ..()
-
-/client/proc/is_preference_enabled(var/preference)
-	var/datum/client_preference/cp = get_client_preference(preference)
-	if(isnull(cp))
-		return FALSE
-	return prefs?.initialized? (cp.key in prefs.preferences_enabled) : cp.enabled_by_default
-
-/client/proc/set_preference(var/preference, var/set_preference)
-	var/datum/client_preference/cp = get_client_preference(preference)
-	if(!cp)
-		return FALSE
-	preference = cp.key
-
-	if(set_preference && !(preference in prefs.preferences_enabled))
-		return toggle_preference(cp)
-	else if(!set_preference && (preference in prefs.preferences_enabled))
-		return toggle_preference(cp)
-
-/client/proc/toggle_preference(var/preference, var/set_preference)
-	var/datum/client_preference/cp = get_client_preference(preference)
-	if(!cp)
-		return FALSE
-	preference = cp.key
-
-	var/enabled
-	if(preference in prefs.preferences_disabled)
-		prefs.preferences_enabled  |= preference
-		prefs.preferences_disabled -= preference
-		enabled = TRUE
-		. = TRUE
-	else if(preference in prefs.preferences_enabled)
-		prefs.preferences_enabled  -= preference
-		prefs.preferences_disabled |= preference
-		enabled = FALSE
-		. = TRUE
-	if(.)
-		cp.toggled(mob, enabled)
-
-/mob/proc/is_preference_enabled(var/preference)
-	if(!client)
-		return FALSE
-	return client.is_preference_enabled(preference)
-
-/mob/proc/set_preference(var/preference, var/set_preference)
-	if(!client)
-		return FALSE
-	if(!client.prefs)
-		log_debug(SPAN_DEBUGWARNING("Client prefs found to be null for mob [src] and client [ckey], this should be investigated."))
-		return FALSE
-
-	return client.set_preference(preference, set_preference)

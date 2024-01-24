@@ -65,6 +65,9 @@ GLOBAL_LIST_EMPTY(game_preferences)
 /datum/game_preferences/proc/oops_sql_came_back_perform_a_reload()
 	#warn fuck
 
+/datum/game_preferences/proc/perform_legacy_migration()
+	#warn FUCK
+
 //* Reset *//
 
 /datum/game_preferences/proc/reset(category)
@@ -99,3 +102,6 @@ GLOBAL_LIST_EMPTY(game_preferences)
 
 #warn impl
 
+//* UI *//
+
+#warn impl
