@@ -144,6 +144,11 @@
 	/// otherwise, using this is going to be GC failure hell from vis contents and rendering.
 	var/atom/dangerously_redirect_contents_calls
 
+	//* Rendering
+	
+	/// update icon on item change
+	var/update_icon_on_item_change = FALSE
+
 	//* State Caches
 
 	/// cached combined w class
@@ -361,6 +366,8 @@
 	physically_insert_item(inserting)
 
 	if(!no_update)
+		if(update_icon_on_item_change)
+			update_icon()
 		refresh()
 
 /**
@@ -397,6 +404,8 @@
 	physically_remove_item(removing, to_where)
 
 	if(!no_update)
+		if(update_icon_on_item_change)
+			update_icon()
 		refresh()
 
 /**
@@ -537,6 +546,13 @@
  */
 /datum/object_system/storage/proc/mass_storage_dumping_handler(list/obj/item/things, atom/to_loc, datum/progressbar/progress, datum/event_args/actor/actor, trigger_on_found = TRUE)
 	#warn impl
+
+/**
+ * what to drop
+ */
+/datum/object_system/storage/proc/mass_dumping_query()
+	var/atom/indirection = real_contents_loc()
+	return indirection.contents
 
 /**
  * drop everything at
@@ -726,6 +742,26 @@
 /datum/object_system/storage/stack
 
 #warn scream
+
+/datum/object_system/storage/stock_parts
+	ui_numerical_mode = TRUE
+
+/datum/object_system/storage/stock_parts/mass_dumping_query()
+	var/lowest_rating = INFINITY
+	var/list/current_lowest = list()
+	for(var/obj/item/item in real_contents_loc())
+		var/rating = item.rped_rating()
+		if(rating > lowest_rating)
+			continue
+		else if(rating == lowest_rating)
+			current_lowest += item
+		else
+			current_lowest.len = 0
+			current_lowest += item
+			lowest_rating = rating
+	if(lowest_rating != INFINITY)
+		return current_lowest
+	return ..()
 
 //? Numerical Display Helper
 

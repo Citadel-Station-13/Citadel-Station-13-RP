@@ -5,58 +5,81 @@
 	slot = ACCESSORY_SLOT_UTILITY
 	show_messages = 1
 
-	var/slots = 5
-	var/obj/item/storage/internal/hold
 	w_class = WEIGHT_CLASS_NORMAL
 	on_rolled = list("down" = "none")
 	var/hide_on_roll = FALSE
+	
+	//* Directly passed to storage system. *//
+
+	var/list/insertion_whitelist
+	var/list/insertion_blacklist
+	var/list/insertion_allow
+
+	var/max_single_weight_class = WEIGHT_CLASS_SMALL
+	var/max_combined_weight_class
+	var/max_combined_volume = WEIGHT_VOLUME_SMALL * 2
+	var/max_items
+	
+	var/weight_subtract = 0
+	var/weight_multiply = 1
+
+	//* Initialization *//
+	
+	/// storage datum path
+	var/storage_datum_path = /datum/object_system/storage
+	/// Cleared after Initialize().
+	/// List of types associated to amounts.
+	var/list/starts_with
+	/// set to prevent us from spawning starts_with
+	var/empty = FALSE
+
 
 /obj/item/clothing/accessory/storage/Initialize(mapload)
 	. = ..()
-	hold = new/obj/item/storage/internal(src)
-	hold.max_combined_volume = slots * 2
-	hold.max_single_weight_class = WEIGHT_CLASS_SMALL
+	
+	initialize_storage()
+	spawn_contents()
+	
 	if (!hide_on_roll)
 		on_rolled["down"] = icon_state
 
-/obj/item/clothing/accessory/storage/attack_hand(mob/user, list/params)
-	if (accessory_host)	//if we are part of a suit
-		hold.open(user)
-		return
+/**
+ * Make sure to set [worth_dynamic] to TRUE if this does more than spawning what's in starts_with.
+ */
+/obj/item/clothing/accessory/storage/proc/spawn_contents()
+	if(length(starts_with) && !empty)
+		// this is way too permissive already
+		var/safety = 256
+		for(var/path in starts_with)
+			var/amount = starts_with[path] || 1
+			for(var/i in 1 to amount)
+				if(!--safety)
+					CRASH("tried to spawn too many objects")
+				new path(src)
+		starts_with = null
 
-	if (hold.handle_attack_hand(user))	//otherwise interact as a regular storage item
-		..(user)
+/obj/item/clothing/accessory/storage/proc/initialize_storage()
+	ASSERT(isnull(obj_storage))
+	obj_storage = new(src)
+	obj_storage.set_insertion_allow(insertion_allow)
+	obj_storage.set_insertion_whitelist(insertion_whitelist)
+	obj_storage.set_insertion_blacklist(insertion_blacklist)
 
-/obj/item/clothing/accessory/storage/OnMouseDropLegacy(obj/over_object as obj)
-	if (accessory_host)
-		return
+	obj_storage.max_single_weight_class = max_single_weight_class
+	obj_storage.max_combined_weight_class = max_combined_weight_class
+	obj_storage.max_combined_volume = max_combined_volume
+	obj_storage.max_items = max_items
 
-	if (hold.handle_mousedrop(usr, over_object))
-		..(over_object)
+	obj_storage.weight_subtract = weight_subtract
+	obj_storage.weight_multiply = weight_multiply
 
-/obj/item/clothing/accessory/storage/attackby(obj/item/W as obj, mob/user as mob)
-	return hold.attackby(W, user)
-
-/obj/item/clothing/accessory/storage/emp_act(severity)
-	hold.emp_act(severity)
-	..()
-
-/obj/item/clothing/accessory/storage/attack_self(mob/user)
-	. = ..()
-	if(.)
-		return
-	to_chat(user, "<span class='notice'>You empty [src].</span>")
-	var/turf/T = get_turf(src)
-	hold.hide_from(usr)
-	for(var/obj/item/I in hold.contents)
-		hold.remove_from_storage(I, T)
-	add_fingerprint(user)
+	obj_storage.allow_quick_empty = TRUE
 
 /obj/item/clothing/accessory/storage/webbing
 	name = "webbing"
 	desc = "Sturdy mess of synthcotton belts and buckles, ready to share your burden."
 	icon_state = "webbing"
-	slots = 3
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 3
 
 /obj/item/clothing/accessory/storage/black_vest
 	name = "black webbing vest"
@@ -95,7 +118,7 @@
 	name = "decorated harness"
 	desc = "A heavily decorated harness of sinew and leather with two knife-loops."
 	icon_state = "unathiharness2"
-	slots = 2
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 2
 
 /obj/item/clothing/accessory/storage/voyager
 	name = "voyager harness"
@@ -131,14 +154,14 @@
 	desc = "This lightweight webbing system supports a hardened leather case designed to sit comfortably on the wearer's hip."
 	icon_state = "laconic"
 	slot = ACCESSORY_SLOT_UTILITY
-	slots = 5
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 5
 
 //Ashlander Potion Bandolier
 /obj/item/clothing/accessory/storage/ashlander_alchemy
 	name = "hide bandolier"
 	desc = "A sturdy bandolier meant to keep the tools or products of alchemy held securely to the wearer's body."
 	icon_state = "bandolier_ash"
-	slots = 5
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 5
 
 /obj/item/clothing/accessory/storage/ashlander_alchemy/Initialize(mapload)
 	. = ..()

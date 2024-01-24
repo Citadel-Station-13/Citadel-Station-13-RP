@@ -46,7 +46,6 @@
 	icon_state = "holdingpack"
 	max_single_weight_class = WEIGHT_CLASS_BULKY
 	max_combined_volume = WEIGHT_VOLUME_NORMAL * 14 // 56
-	weight_volume = INVENTORY_STANDARD_SPACE + 1
 
 /obj/item/storage/backpack/holding/duffle
 	name = "dufflebag of holding"

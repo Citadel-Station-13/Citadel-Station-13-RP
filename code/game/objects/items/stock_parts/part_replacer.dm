@@ -45,20 +45,3 @@
 	max_items = 400
 	max_combined_volume = 800
 	panel_req = FALSE
-
-/obj/item/storage/part_replacer/drop_contents() // hacky-feeling tier-based drop system
-	hide_from(usr)
-	var/turf/T = get_turf(src)
-	var/lowest_rating = INFINITY // We want the lowest-part tier rating in the RPED so we only drop the lowest-tier parts.
-	/*
-	* Why not just use the stock part's rating variable?
-	* Future-proofing for a potential future where stock parts aren't the only thing that can fit in an RPED.
-	* see: /tg/ and /vg/'s RPEDs fitting power cells, beakers, etc.
-	*/
-	for(var/obj/item/B in contents)
-		if(B.rped_rating() < lowest_rating)
-			lowest_rating = B.rped_rating()
-	for(var/obj/item/B in contents)
-		if(B.rped_rating() > lowest_rating)
-			continue
-		remove_from_storage(B, T)

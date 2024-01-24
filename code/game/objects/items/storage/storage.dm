@@ -22,11 +22,13 @@
 	var/max_combined_volume = WEIGHT_VOLUME_SMALL * 4
 	var/max_items
 	
-	var/weight_mitigation = 0
+	var/weight_subtract = 0
 	var/weight_multiply = 1
 
 	//* Initialization *//
 	
+	/// storage datum path
+	var/storage_datum_path = /datum/object_system/storage
 	/// Cleared after Initialize().
 	/// List of types associated to amounts.
 	var/list/starts_with
@@ -88,7 +90,7 @@
 	obj_storage.max_combined_volume = max_combined_volume
 	obj_storage.max_items = max_items
 
-	obj_storage.weight_mitigation = weight_mitigation
+	obj_storage.weight_subtract = weight_subtract
 	obj_storage.weight_multiply = weight_multiply
 
 #warn below
@@ -104,7 +106,7 @@
 
 /obj/item/storage/get_weight()
 	. = ..()
-	. += max(0, (weight_cached * weight_multiply) - weight_mitigation)
+	. += max(0, (weight_cached * weight_multiply) - weight_subtract)
 
 /obj/item/storage/proc/reset_weight()
 	var/old_weight_cached = weight_cached
