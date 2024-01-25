@@ -62,7 +62,7 @@
 		if(/datum/inventory_slot_meta/abstract/put_in_storage, /datum/inventory_slot_meta/abstract/put_in_storage_try_active)
 			if(slot == /datum/inventory_slot_meta/abstract/put_in_storage_try_active)
 				// todo: redirection
-				if(flagS & INV_OP_FORCE)
+				if(flags & INV_OP_FORCE)
 					if(active_storage?.insert(I, new /datum/event_args/actor(src), flags & INV_OP_SUPPRESS_WARNING))
 						return TRUE
 				else

@@ -14,7 +14,7 @@
 	. = ..()
 	if(mapload)
 		addtimer(CALLBACK(src, PROC_REF(take_contents)), 0)
-	PopulateContents()
+	legacy_spawn_contents()
 	// Closets need to come later because of spawners potentially creating objects during init.
 	return INITIALIZE_HINT_LATELOAD
 

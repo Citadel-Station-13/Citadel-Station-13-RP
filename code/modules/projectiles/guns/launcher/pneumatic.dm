@@ -28,7 +28,9 @@
 	item_storage.name = "hopper"
 	item_storage.max_single_weight_class = max_single_weight_class
 	item_storage.max_combined_volume = max_combined_volume
-	item_storage.use_sound = null
+	item_storage.sfx_insert = null
+	item_storage.sfx_remove = null
+	item_storage.sfx_open = null
 
 /obj/item/gun/launcher/pneumatic/verb/set_pressure() //set amount of tank pressure.
 	set name = "Set Valve Pressure"

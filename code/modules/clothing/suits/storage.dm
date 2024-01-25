@@ -45,7 +45,7 @@
 /**
  * Make sure to set [worth_dynamic] to TRUE if this does more than spawning what's in starts_with.
  */
-/obj/item/storage/proc/spawn_contents()
+/obj/item/clothing/suit/storage/toggle/proc/spawn_contents()
 	if(length(starts_with) && !empty)
 		// this is way too permissive already
 		var/safety = 256
@@ -55,10 +55,9 @@
 				if(!--safety)
 					CRASH("tried to spawn too many objects")
 				new path(src)
-		starts_with = null
+	starts_with = null
 
-
-/obj/item/storage/proc/initialize_storage()
+/obj/item/clothing/suit/storage/toggle/proc/initialize_storage()
 	ASSERT(isnull(obj_storage))
 	obj_storage = new(src)
 	obj_storage.set_insertion_allow(insertion_allow)

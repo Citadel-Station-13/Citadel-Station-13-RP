@@ -55,7 +55,7 @@
 	. = ..()
 	if(mapload && !opened)
 		addtimer(CALLBACK(src, PROC_REF(take_contents)), 0)
-	PopulateContents()
+	legacy_spawn_contents()
 	/*
 	if(secure)
 		lockerelectronics = new(src)

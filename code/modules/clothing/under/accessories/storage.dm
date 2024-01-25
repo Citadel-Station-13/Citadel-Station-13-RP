@@ -68,7 +68,7 @@
 				if(!--safety)
 					CRASH("tried to spawn too many objects")
 				new path(src)
-		starts_with = null
+	starts_with = null
 
 /obj/item/clothing/accessory/storage/proc/initialize_storage()
 	ASSERT(isnull(obj_storage))

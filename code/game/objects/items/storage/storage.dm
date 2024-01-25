@@ -62,7 +62,7 @@
 				if(!--safety)
 					CRASH("tried to spawn too many objects")
 				new path(src)
-		starts_with = null
+	starts_with = null
 
 /**
  * Please get rid of this in favor of spawn_contents() and starts_with
