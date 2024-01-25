@@ -143,20 +143,6 @@
 		open(user)
 	else
 
-/obj/item/storage/proc/open(mob/user as mob, sound_played = FALSE)
-	if (src.use_sound && !isobserver(user) && !sound_played)
-		playsound(src.loc, src.use_sound, 50, 1, -5)
-
-	orient2hud(user)
-	if (user.s_active)
-		user.s_active.close(user)
-	show_to(user)
-
-/obj/item/storage/proc/close(mob/user as mob)
-	src.hide_from(user)
-	user.s_active = null
-	return
-
 //This proc draws out the inventory and places the items on it. tx and ty are the upper left tile and mx, my are the bottm right.
 //The numbers are calculated from the bottom-left The bottom-left slot being 1,1.
 /obj/item/storage/proc/orient_objs(tx, ty, mx, my)
@@ -365,35 +351,6 @@
 	update_icon()
 	return 1
 
-/obj/item/storage/Exited(atom/movable/AM, atom/newLoc)
-	if(isitem(AM))
-		var/obj/item/I = AM
-		if(I.item_flags & ITEM_IN_STORAGE)
-			remove_from_storage(I, null, FALSE)
-	return ..()
-
-/obj/item/storage/attack_hand(mob/user, list/params)
-	if(ishuman(user))
-		var/mob/living/carbon/human/H = user
-		if(H.l_store == src && !H.get_active_held_item())	//Prevents opening if it's in a pocket.
-			H.put_in_hands(src)
-			H.l_store = null
-			return
-		if(H.r_store == src && !H.get_active_held_item())
-			H.put_in_hands(src)
-			H.r_store = null
-			return
-
-	if (loc == user)
-		open(user)
-	else
-		..()
-		for(var/mob/M in range(1))
-			if (M.s_active == src)
-				src.close(M)
-	src.add_fingerprint(user)
-	return
-
 /obj/item/storage/proc/gather_all(turf/T as turf, mob/user as mob)
 	var/list/rejections = list()
 	var/success = 0
@@ -416,104 +373,6 @@
 		if(world.time >= last_message == 0)
 			to_chat(user, "<span class='notice'>You fail to pick anything up with \the [src].</span>")
 			last_message = world.time + 200
-
-/obj/item/storage/verb/toggle_gathering_mode()
-	set name = "Switch Gathering Method"
-	set category = "Object"
-
-	collection_mode = !collection_mode
-	switch (collection_mode)
-		if(1)
-			to_chat(usr, "[src] now picks up all items on a tile at once.")
-		if(0)
-			to_chat(usr, "[src] now picks up one item at a time.")
-
-/obj/item/storage/verb/quick_empty()
-	set name = "Empty Contents"
-	set category = "Object"
-
-	if(((!(ishuman(usr) || isrobot(usr))) && (src.loc != usr)) || usr.stat || usr.restrained())
-		return
-	drop_contents()
-
-/obj/item/storage/proc/drop_contents()
-	hide_from(usr)
-	var/turf/T = get_turf(src)
-	for(var/obj/item/I in contents)
-		remove_from_storage(I, T)
-
-///Prevents spawned containers from being too small for their contents.
-/obj/item/storage/proc/calibrate_size()
-	max_combined_volume = max(storage_space_used(),max_combined_volume)
-
-/obj/item/storage/emp_act(severity)
-	if(!istype(src.loc, /mob/living))
-		for(var/obj/O in contents)
-			O.emp_act(severity)
-	..()
-
-/obj/item/storage/attack_self(mob/user)
-	. = ..()
-	if(.)
-		return
-	if((user.get_active_held_item() == src) || (isrobot(user)) && allow_quick_empty)
-		if(src.verbs.Find(/obj/item/storage/verb/quick_empty))
-			src.quick_empty()
-			return 1
-
-	if(user in is_seeing)
-		src.close(user)
-	else if(isliving(user) && user.Reachability(src))
-		src.open(user)
-	else
-		return ..()
-
-//Returns the storage depth of an atom. This is the number of storage items the atom is contained in before reaching toplevel (the area).
-//Returns -1 if the atom was not found on container.
-/atom/proc/storage_depth(atom/container)
-	var/depth = 0
-	var/atom/cur_atom = src
-
-	while (cur_atom && !(cur_atom in container.contents))
-		if (isarea(cur_atom))
-			return INFINITY
-		if (istype(cur_atom.loc, /obj/item/storage))
-			depth++
-		cur_atom = cur_atom.loc
-
-	if (!cur_atom)
-		return INFINITY	//inside something with a null loc.
-
-	return depth
-
-//Like storage depth, but returns the depth to the nearest turf
-//Returns -1 if no top level turf (a loc was null somewhere, or a non-turf atom's loc was an area somehow).
-/atom/proc/storage_depth_turf()
-	var/depth = 0
-	var/atom/cur_atom = src
-
-	while (cur_atom && !isturf(cur_atom))
-		if (isarea(cur_atom))
-			return INFINITY
-		if (istype(cur_atom.loc, /obj/item/storage))
-			depth++
-		cur_atom = cur_atom.loc
-
-	if (!cur_atom)
-		return INFINITY	//inside something with a null loc.
-
-	return depth
-
-/obj/item/storage/proc/make_exact_fit()
-	max_items = contents.len
-
-	insertion_whitelist.Cut()
-	max_single_weight_class = 0
-	max_combined_volume = 0
-	for(var/obj/item/I in src)
-		insertion_whitelist[I.type]++
-		max_single_weight_class = max(I.w_class, max_single_weight_class)
-		max_combined_volume += I.get_weight_volume()
 
 /*
  * Trinket Box - READDING SOON

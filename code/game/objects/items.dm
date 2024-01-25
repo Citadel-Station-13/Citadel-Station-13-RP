@@ -1009,7 +1009,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	. = ..()
 	if(.)
 		return
-	
+
 	if(!e_args.performer.is_holding(src))
 		if(attempt_pickup(e_args.performer))
 			return TRUE
@@ -1069,11 +1069,17 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 /obj/item/proc/get_weight_volume()
 	return isnull(weight_volume)? global.w_class_to_volume[w_class || WEIGHT_CLASS_GIGANTIC] : weight_volume
 
-#warn set_weight_class, set_weight_volume, audit sets
+/obj/item/proc/set_weight_class(weight_class)
+	w_class = weight_class
+	#warn impl update, audit w_class direct sets
+
+/obj/item/proc/set_weight_volume(volume)
+	weight_volume = volume
+	#warn impl update
 
 /**
  * called when someone is opening a storage with us in it
- * 
+ *
  * @return TRUE to stop the storage from opening
  */
 /obj/item/proc/on_containing_storage_opening(datum/event_args/actor/actor, datum/object_system/storage/storage)

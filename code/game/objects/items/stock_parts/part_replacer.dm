@@ -3,7 +3,12 @@
 	desc = "A special mechanical module made to store, sort, and apply standard machine parts."
 	icon_state = "RPED"
 	w_class = WEIGHT_CLASS_HUGE
-	insertion_whitelist = list(/obj/item/stock_parts, /obj/item/cell/, /obj/item/reagent_containers/glass/beaker/)
+	storage_datum_path = /datum/object_system/storage/stock_parts
+	insertion_whitelist = list(
+		/obj/item/stock_parts,
+		/obj/item/cell,
+		/obj/item/reagent_containers/glass/beaker,
+	)
 	max_items = 100
 	allow_mass_gather = TRUE
 	allow_quick_gather = 1

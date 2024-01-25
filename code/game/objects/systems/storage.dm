@@ -8,19 +8,19 @@
  */
 /datum/object_system/storage
 
-	//* Access 
+	//* Access
 
 	/// if set, limit allowable random access to first n items
 	var/limited_random_access_stack_amount
 	/// if set, limit allowable random access goes from bottom up, not top down
 	/// * top down is from end of contents list, bottom up is from start of contents list
 	var/limited_random_access_stack_bottom_first = FALSE
-	
+
 	//* Actions
-	
+
 	/// the action we have for mode switching gathering
 	var/datum/action/storage_gather_mode/action_mode_switch
-	
+
 	//* Carry Weight *//
 
 	/// carry weight in us prior to mitigation
@@ -33,12 +33,12 @@
 	#warn hook weight calcs
 
 	//* Deconstruction & Integrity
-	
+
 	/// on deconstruct(method), drop on these method flags
 	var/drop_on_deconstruction_methods = ALL
 	/// locks don't work if atom is broken
 	var/lock_nullified_by_atom_break = FALSE
-	
+
 	//* Defense
 
 	/// pass EMPs in
@@ -79,7 +79,7 @@
 	var/allow_quick_empty_via_clickdrag = TRUE
 	/// allow quick empty via attack self
 	var/allow_quick_empty_via_attack_self = TRUE
-	
+
 	/// allow inbound mass transfers
 	var/allow_inbound_mass_transfer = TRUE
 	/// allow outbound mass transfer
@@ -130,7 +130,7 @@
 	var/locked = FALSE
 
 	//* Redirection
-	
+
 	/// When set, we treat this as the real parent object.
 	/// **Warning**: This is an advanced feature.
 	/// All this does is make us scan a different atom's contents.
@@ -150,7 +150,7 @@
 	var/atom/dangerously_redirect_contents_calls
 
 	//* Rendering
-	
+
 	/// update icon on item change
 	var/update_icon_on_item_change = FALSE
 
@@ -162,7 +162,7 @@
 	var/tmp/cached_combined_volume
 
 	//* Sound Effects
-	
+
 	/// open / access sound passed into playsound
 	var/sfx_open = "rustle"
 	/// removal sound passed into playsoud
@@ -171,7 +171,7 @@
 	var/sfx_insert = "rustle"
 
 	//* UIs *//
-	
+
 	/// lazy list of UIs open; mob ref = list(ui objects)
 	var/list/ui_by_mob
 	/// stack stuff by number; defaults to types, please override the requisite proc to implement yours.
@@ -234,7 +234,7 @@
 
 /**
  * iterate through what's considered inside
- * 
+ *
  * this is a mutable / copy of a list, so you're free to mess with it.
  */
 /datum/object_system/storage/proc/contents()
@@ -308,19 +308,19 @@
 	return TRUE
 
 /datum/object_system/storage/proc/set_insertion_whitelist(list/types)
-	if(isnull(types))
+	if(!length(types))
 		src.insertion_whitelist_typecache = null
 		return
 	src.insertion_whitelist_typecache = cached_typecacheof(types)
 
 /datum/object_system/storage/proc/set_insertion_blacklist(list/types)
-	if(isnull(types))
+	if(!length(types))
 		src.insertion_blacklist_typecache = null
 		return
 	src.insertion_blacklist_typecache = cached_typecacheof(types)
 
 /datum/object_system/storage/proc/set_insertion_allow(list/types)
-	if(isnull(types))
+	if(!length(types))
 		src.insertion_allow_typecache = null
 		return
 	src.insertion_allow_typecache = cached_typecacheof(types)
@@ -398,7 +398,7 @@
 
 /**
  * handle moving an item in
- * 
+ *
  * we can assume this proc will do potentially literally anything with the item, so..
  */
 /datum/object_system/storage/proc/physically_insert_item(obj/item/inserting)
@@ -450,7 +450,7 @@
 
 /**
  * handle moving an item out
- * 
+ *
  * we can assume this proc will do potentially literally anything with the item, so..
  */
 /datum/object_system/storage/proc/physically_remove_item(obj/item/removing, atom/to_where)
@@ -492,6 +492,27 @@
 	if(candidate.obj_storage && (candidate.w_class >= parent.w_class) && disallow_equal_weight_class_storage_nesting)
 		return "can't nest storage"
 	return null
+
+/**
+ * generally a bad idea to call, tbh.
+ *
+ * uses max single weight class
+ * uses combined volume
+ *
+ * can use type whitelist
+ */
+/datum/object_system/storage/proc/fit_to_contents(type_whitelist = FALSE)
+	max_single_weight_class = WEIGHT_CLASS_TINY
+	max_combined_volume = 0
+	var/list/types = list()
+	for(var/obj/item/item in real_contents_loc())
+		if(type_whitelist)
+			types |= item.type
+		max_single_weight_class = max(max_single_weight_class, item.w_class)
+		max_combined_volume += item.get_weight_volume()
+	set_insertion_whitelist(types)
+	set_insertion_blacklist(null)
+	set_insertion_allow(null)
 
 //* Locking *//
 
@@ -552,6 +573,24 @@
 	#warn impl
 
 /datum/object_system/storage/proc/interacted_mass_pickup(datum/event_args/actor/actor, atom/from_loc)
+	var/list/to_pickup
+	switch(mass_gather_mode)
+		if(STORAGE_QUICK_GATHER_COLLECT_ONE)
+			if(!isitem(from_loc))
+				return
+			try_insert(from_loc, actor)
+			return
+		if(STORAGE_QUICK_GATHER_COLLECT_ALL)
+			to_pickup = list()
+			for(var/obj/item/item in from_loc)
+				to_pickup += item
+		if(STORAGE_QUICK_GATHER_COLLECT_SAME)
+			to_pickup = list()
+			for(var/obj/item/item in from_loc)
+				if(item.type != from_loc.type)
+					continue
+				to_pickup += item
+
 	#warn impl
 
 /datum/object_system/storage/proc/interacted_mass_dumping(datum/event_args/actor/actor, atom/to_loc)
@@ -559,36 +598,36 @@
 
 /**
  * handles mass storage transfers
- * 
+ *
  * this will CHECK_TICK.
- * 
+ *
  * progressbar should be initialized with goal value being the total item count.
- * 
+ *
  * @params
  * * things - things to transfer
  * * to_storage - destination storage
  * * progress - (optional) progressbar to update
  * * actor - (optional) person doing it
- * 
+ *
  * @return TRUE if not done, FALSE if done.
  */
-/datum/object_system/storage/proc/mass_storage_transfer_handler(list/obj/item/things, datum/object_system/storage/to_storage, datum/progressbar/progress, datum/event_args/actor/actor)	
+/datum/object_system/storage/proc/mass_storage_transfer_handler(list/obj/item/things, datum/object_system/storage/to_storage, datum/progressbar/progress, datum/event_args/actor/actor)
 	#warn impl
 
 /**
  * handles mass item pickups
- * 
+ *
  * this will CHECK_TICK
- * 
+ *
  * progressbar should be initialized with goal value being the total item count.
- * 
+ *
  * @params
  * * things - things to transfer
  * * from_storage - source storage
  * * progress - (optional) progressbar to update
  * * actor - (optional) person doing it
  * * rejections - (optional) list to add rejected items to
- * 
+ *
  * @return TRUE if not done, FALSE if done
  */
 /datum/object_system/storage/proc/mass_storage_pickup_handler(list/obj/item/things, atom/from_loc, datum/progressbar/progress, datum/event_args/actor/actor, list/rejections_out)
@@ -596,18 +635,18 @@
 
 /**
  * handles mass item dumps
- * 
+ *
  * this will CHECK_TICK
- * 
+ *
  * progressbar should be initialized with goal value being the total item count.
- * 
+ *
  * @params
  * * things - things to transfer
  * * from_storage - source storage
  * * progress - (optional) progressbar to update
  * * actor - (optional) person doing it
  * * rejections - (optional) list to add rejected items to
- * 
+ *
  * @return TRUE if not done, FALSE if done
  */
 /datum/object_system/storage/proc/mass_storage_dumping_handler(list/obj/item/things, atom/to_loc, datum/progressbar/progress, datum/event_args/actor/actor, trigger_on_found = TRUE)
@@ -666,7 +705,7 @@
 		for(var/mob/iterating as anything in ui_by_mob)
 			hide(iterating)
 		return
-	
+
 	if(viewer.active_storage != src)
 		stack_trace("viewer didn't have active storage set right, wtf?")
 	else
@@ -696,14 +735,14 @@
 
 /**
  * Do not modify the returned appearances; they might be real instances!
- * 
+ *
  * @return list(/datum/storage_numerical_display instance, ...)
  */
-/datum/object_system/storage/proc/render_numerical_display()
+/datum/object_system/storage/proc/render_numerical_display(list/obj/item/for_items)
 	RETURN_TYPE(/list)
 	. = list()
 	var/list/types = list()
-	for(var/obj/item/iterating in real_contents_loc())
+	for(var/obj/item/iterating in (for_items || real_contents_loc()))
 		var/datum/storage_numerical_display/collation
 		if(isnull(types[iterating.type]))
 			collation = new
@@ -713,6 +752,7 @@
 			types[iterating.type] = collation
 		collation = types[iterating.type]
 		++collation.amount
+	tim_sort(., /proc/cmp_storage_numerical_displays_name_asc)
 
 /datum/object_system/storage/proc/reconsider_mob_viewable(mob/user)
 	if(isnull(user))
@@ -760,12 +800,57 @@
 	var/rendering_width = min(max_items, STORAGE_UI_TILES_FOR_SCREEN_VIEW_X(view_x))
 	// see if we need to process numerical display
 	var/list/datum/storage_numerical_display/numerical_rendered = ui_numerical_mode && render_numerical_display()
-	
-	#warn impl
+	// process indirection
+	var/atom/indirection = real_contents_loc()
+	// compute count and rows
+	var/item_count = isnull(numerical_rendered)? length(indirection.contents) : length(numerical_rendered)
+	var/rows_needed = ceil(item_count / rendering_width)
+	// prepare iteration
+	var/current_row = 1
+	var/current_column = 1
+	// render boxes
+	boxes.screen_loc = "[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X],[STORAGE_UI_START_TILE_Y]:[STORAGE_UI_START_PIXEL_Y] to \
+		[STORAGE_UI_START_TILE_X + rendering_width - 1]:[STORAGE_UI_START_PIXEL_X],[STORAGE_UI_START_TILE_Y + rows_needed - 1]:[STORAGE_UI_START_PIXEL_Y]"
+	// render closer
+	closer.screen_loc = "[STORAGE_UI_START_TILE_X + rendering_width]:[STORAGE_UI_START_PIXEL_X],[STORAGE_UI_START_TILE_Y]:[STORAGE_UI_START_PIXEL_Y]"
+	// render items
+	if(islist(numerical_rendered))
+		for(var/datum/storage_numerical_display/display as anything in render_numerical_display())
+			var/atom/movable/screen/storage/item/slot/renderer = new(null, display.rendered_object)
+			. += renderer
+			// render amount
+			renderer.maptext = MAPTEXT("[display.amount]")
+			// position
+			renderer.screen_loc = "[STORAGE_UI_START_TILE_X + current_column - 1]:[STORAGE_UI_START_PIXEL_X],\
+				[STORAGE_UI_START_TILE_Y + current_row - 1]:[STORAGE_UI_START_PIXEL_Y]"
+			// advance
+			++current_column
+			if(current_column > rendering_width)
+				current_column = 1
+				++current_row
+				if(current_row > STORAGE_UI_MAX_ROWS)
+					break
+	else
+		for(var/obj/item/item in indirection)
+			var/atom/movable/screen/storage/item/slot/renderer = new(null, item)
+			. += renderer
+			// position
+			renderer.screen_loc = "[STORAGE_UI_START_TILE_X + current_column - 1]:[STORAGE_UI_START_PIXEL_X],\
+				[STORAGE_UI_START_TILE_Y + current_row - 1]:[STORAGE_UI_START_PIXEL_Y]"
+			// advance
+			++current_column
+			if(current_column > rendering_width)
+				current_column = 1
+				++current_row
+				if(current_row > STORAGE_UI_MAX_ROWS)
+					break
 
 /datum/object_system/storage/proc/create_ui_volumetric_mode(mob/user)
+	// guard against divide-by-0's
+	if(!max_combined_volume || !cached_combined_volume)
+		return create_ui_slot_mode(user)
 	. = list()
-	
+
 	var/atom/movable/screen/storage/panel/volumetric/left = new
 	. += left
 	var/atom/movable/screen/storage/panel/volumetric/middle = new
@@ -806,14 +891,95 @@
 
 /**
  * Stack storage
- * 
+ *
  * Can handle both material and normal stacks.
- * 
+ *
  * Uses max_items and only max_items for 'total combined'.
  */
 /datum/object_system/storage/stack
+	ui_numerical_mode = TRUE
 
-#warn scream
+	var/cached_combined_stack_amount = 0
+
+/datum/object_system/storage/stack/rebuild_caches()
+	. = ..()
+	cached_combined_stack_amount = 0
+	for(var/obj/item/stack/stack in real_contents_loc())
+		cached_combined_volume += stack.amount
+
+/datum/object_system/storage/stack/why_failed_insertion_limits(obj/item/candidate)
+	if(!istype(candidate, /obj/item/stack))
+		return "not a stack"
+	if(cached_combined_stack_amount >= max_items)
+		return "too many sheets"
+	return null
+
+/datum/object_system/storage/stack/check_insertion_limits(obj/item/candidate)
+	return cached_combined_stack_amount < max_items
+
+/datum/object_system/storage/stack/physically_insert_item(obj/item/inserting)
+	#warn impl - split stack if necessary
+
+/*
+/datum/component/storage/concrete/stack/_insert_physical_item(obj/item/I, override = FALSE)
+	if(!istype(I, /obj/item/stack))
+		if(override)
+			return ..()
+		return FALSE
+	var/atom/real_location = real_location()
+	var/obj/item/stack/S = I
+	var/can_insert = min(S.amount, remaining_space())
+	if(!can_insert)
+		return FALSE
+	for(var/i in real_location)				//combine.
+		if(QDELETED(I))
+			return
+		var/obj/item/stack/_S = i
+		if(!istype(_S))
+			continue
+		if(_S.merge_type == S.merge_type)
+			_S.add(can_insert)
+			S.use(can_insert, TRUE)
+			return TRUE
+	I = S.split_stack(null, can_insert)
+	return ..()
+*/
+
+/datum/object_system/storage/stack/physically_remove_item(obj/item/removing, atom/to_where)
+	#warn impl - we make a new stack and swap
+
+/*
+/datum/component/storage/concrete/stack/remove_from_storage(obj/item/I, atom/new_location)
+	var/atom/real_location = real_location()
+	var/obj/item/stack/S = I
+	if(!istype(S))
+		return ..()
+	if(S.amount > S.max_amount)
+		var/overrun = S.amount - S.max_amount
+		S.amount = S.max_amount
+		var/obj/item/stack/temp = new S.type(real_location, overrun)
+		handle_item_insertion(temp)
+	return ..(S, new_location)
+*/
+
+/datum/object_system/storage/stack/render_numerical_display(list/obj/item/for_items)
+	var/list/not_stack = list()
+	. = list()
+	var/list/types = list()
+	for(var/obj/item/item in real_contents_loc())
+		if(!istype(item, /obj/item/stack))
+			not_stack += item
+			continue
+		var/obj/item/stack/stack = item
+		var/datum/storage_numerical_display/display
+		if(isnull(types[stack.type]))
+			display = new /datum/storage_numerical_display(stack)
+			types[stack.type] = display
+			. += display
+		else
+			display = types[stack.type]
+		display.amount += stack.amount
+	return . + ..(not_stack)
 
 /datum/object_system/storage/stock_parts
 	ui_numerical_mode = TRUE
@@ -841,6 +1007,13 @@
 	var/obj/item/rendered_object
 	var/amount
 
+/datum/storage_numerical_display/New(obj/item/sample, amount = 0)
+	src.rendered_object = sample
+	src.amount = amount
+
+/proc/cmp_storage_numerical_displays_name_asc(datum/storage_numerical_display/A, datum/storage_numerical_display/B)
+	return sorttext(B.rendered_object.name, A.rendered_object.name) || sorttext(B.rendered_object.type, A.rendered_object.type)
+
 //? Action
 
 /datum/action/storage_gather_mode
@@ -853,7 +1026,7 @@
 	appearance_flags = APPEARANCE_UI | KEEP_TOGETHER
 	plane = STORAGE_PLANE
 	icon = 'icons/screen/hud/common/storage.dmi'
-	
+
 /atom/movable/screen/storage/closer
 	name = "close"
 	icon_state = "close"
@@ -882,14 +1055,14 @@
 /atom/movable/screen/storage/item/MouseExited(location, control, params)
 	. = ..()
 	layer = STORAGE_LAYER_ITEM_INACTIVE
-	
+
 /atom/movable/screen/storage/item/proc/item_mouse_enter(mob/user)
 	layer = STORAGE_LAYER_ITEM_ACTIVE
 
 /atom/movable/screen/storage/item/proc/item_mouse_exit(mob/user)
 	layer = STORAGE_LAYER_ITEM_INACTIVE
 
-/atom/movable/screen/storage/item/MouseDrop(atom/over_object, src_location, over_location, src_control, over_control, params)	
+/atom/movable/screen/storage/item/MouseDrop(atom/over_object, src_location, over_location, src_control, over_control, params)
 	return item.MouseDrop(arglist(args))
 
 /atom/movable/screen/storage/item/Click(location, control, params)
