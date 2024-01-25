@@ -105,7 +105,6 @@
 /obj/machinery/embedded_controller/radio/airlock/phoron
 	name = "Phoron Lock Controller"
 	valid_actions = list("cycle_ext", "cycle_int", "force_ext", "force_int", "abort", "secure")
-	var/tag_scrubber
 
 /obj/machinery/embedded_controller/radio/airlock/phoron/ui_data(mob/user, datum/tgui/ui)
 	. = list(
