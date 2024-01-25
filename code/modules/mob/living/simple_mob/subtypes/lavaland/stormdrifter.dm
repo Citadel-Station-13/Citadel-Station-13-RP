@@ -139,11 +139,14 @@
 
 /mob/living/simple_mob/animal/stormdrifter/bull/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(istype(O, /obj/item/tool/wirecutters) || is_sharp(O))
-		to_chat(user, "<span class='danger'>You amputate the [src]'s stingers! It may now be domesticated!</span>")
-		neutered = 1
-		legacy_melee_damage_lower = 5
-		legacy_melee_damage_upper = 10
-		ai_holder_type = /datum/ai_holder/simple_mob/stormdrifter/bull_neutered
+		if(!neutered)
+			to_chat(user, "<span class='danger'>You amputate the [src]'s stingers! It may now be domesticated!</span>")
+			neutered = 1
+			legacy_melee_damage_lower = 5
+			legacy_melee_damage_upper = 10
+			ai_holder_type = /datum/ai_holder/simple_mob/stormdrifter/bull_neutered
+		else
+			return ..()
 
 	if(istype(O, /obj/item/saddle/stormdrifter) && !rideable)
 		if(!neutered)
