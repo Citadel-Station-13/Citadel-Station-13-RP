@@ -213,6 +213,7 @@ GLOBAL_REAL_VAR(airlock_typecache) = typecacheof(list(
 		sparks_overlay,
 		damage_overlay,
 	))
+	compile_overlays()
 
 /obj/machinery/door/airlock/attack_generic(var/mob/living/user, var/damage)
 	// todo: refactor
