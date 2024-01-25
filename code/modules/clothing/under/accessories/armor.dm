@@ -40,7 +40,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	gender = PLURAL
 	slot = ACCESSORY_SLOT_ARMOR_S
-	slots = 2
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 2
 
 /obj/item/clothing/accessory/storage/pouches/blue
 	desc = "A collection of blue pouches that can be attached to a plate carrier. Carries up to two items."
@@ -62,7 +62,7 @@
 	name = "large storage pouches"
 	desc = "A collection of black pouches that can be attached to a plate carrier. Carries up to four items."
 	icon_state = "lpouches"
-	slots = 4
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 4
 	weight = ITEM_WEIGHT_STORAGE_POUCH_LARGE
 	encumbrance = ITEM_ENCUMBRANCE_STORAGE_POUCH_LARGE
 
@@ -93,7 +93,7 @@
 	icon = 'icons/obj/clothing/modular_armor.dmi'
 	icon_state = "shotholder"
 	slot = ACCESSORY_SLOT_ARMOR_S
-	slots = 4
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 4
 
 /obj/item/clothing/accessory/storage/shotgun_shell_holder/update_icon(updates)
 	. = ..()
