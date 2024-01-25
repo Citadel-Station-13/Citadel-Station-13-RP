@@ -26,7 +26,7 @@
 		new /datum/data/mining_equipment("Hardsuit - Plasma Cutter",	    /obj/item/hardsuit_module/device/plasmacutter,						10),
 		new /datum/data/mining_equipment("Hardsuit - Maneuvering Jets",	    /obj/item/hardsuit_module/maneuvering_jets,							12),
 		new /datum/data/mining_equipment("Hardsuit - Intelligence Storage",	/obj/item/hardsuit_module/ai_container,								25),
-		new /datum/data/mining_equipment("Injector (L) - Panacea",          /obj/item/reagent_containers/hypospray/autoinjector/biginjector/purity,	50)
+		new /datum/data/mining_equipment("Injector (L) - Panacea",          /obj/item/reagent_containers/hypospray/autoinjector/biginjector/purity,	50),
 		//Mining vendor steals - Ends
         //Power tools like the CE gets, if kev comes crying: https://cdn.discordapp.com/attachments/296237931587305472/956517623519141908/unknown.png
 		new /datum/data/mining_equipment("Advanced Hardsuit",							/obj/item/hardsuit/ce,									150),
