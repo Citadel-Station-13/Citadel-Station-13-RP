@@ -1,16 +1,88 @@
 /obj/item/clothing/suit/storage
-	var/slots = 2
+	//* Directly passed to storage system. *//
 
+	var/list/insertion_whitelist
+	var/list/insertion_blacklist
+	var/list/insertion_allow
+
+	var/max_single_weight_class = WEIGHT_CLASS_SMALL
+	var/max_combined_weight_class
+	var/max_combined_volume = WEIGHT_VOLUME_SMALL * 4
+	var/max_items
+	
+	var/weight_subtract = 0
+	var/weight_multiply = 1
+	
+	var/allow_mass_gather = FALSE
+	var/allow_mass_gather_mode_switch = TRUE
+	var/mass_gather_mode = STORAGE_QUICK_GATHER_COLLECT_ALL
+
+	var/allow_quick_empty = FALSE
+	var/allow_quick_empty_via_clickdrag = TRUE
+	var/allow_quick_empty_via_attack_self = TRUE
+	
+	var/sfx_open = "rustle"
+	var/sfx_insert = "rustle"
+	var/sfx_remove = "rustle"
+
+	var/ui_numerical_mode = FALSE
+
+	//* Initialization *//
+	
+	/// storage datum path
+	var/storage_datum_path = /datum/object_system/storage
+	/// Cleared after Initialize().
+	/// List of types associated to amounts.
+	var/list/starts_with
+	/// set to prevent us from spawning starts_with
+	var/empty = FALSE
+	
 /obj/item/clothing/suit/storage/Initialize(mapload)
 	. = ..()
-	pockets = new/obj/item/storage/internal(src, slots, WEIGHT_CLASS_SMALL)	// Fit only pocket sized items
-	pockets.max_single_weight_class = WEIGHT_CLASS_SMALL				// Fit only pocket sized items
-	pockets.max_combined_volume = WEIGHT_VOLUME_SMALL * 2
+	initialize_storage()
+	spawn_contents()
 
-/obj/item/clothing/suit/storage/Destroy()
-	QDEL_NULL(pockets)
-	. = ..()
+/**
+ * Make sure to set [worth_dynamic] to TRUE if this does more than spawning what's in starts_with.
+ */
+/obj/item/storage/proc/spawn_contents()
+	if(length(starts_with) && !empty)
+		// this is way too permissive already
+		var/safety = 256
+		for(var/path in starts_with)
+			var/amount = starts_with[path] || 1
+			for(var/i in 1 to amount)
+				if(!--safety)
+					CRASH("tried to spawn too many objects")
+				new path(src)
+		starts_with = null
 
+
+/obj/item/storage/proc/initialize_storage()
+	ASSERT(isnull(obj_storage))
+	obj_storage = new(src)
+	obj_storage.set_insertion_allow(insertion_allow)
+	obj_storage.set_insertion_whitelist(insertion_whitelist)
+	obj_storage.set_insertion_blacklist(insertion_blacklist)
+
+	obj_storage.max_single_weight_class = max_single_weight_class
+	obj_storage.max_combined_weight_class = max_combined_weight_class
+	obj_storage.max_combined_volume = max_combined_volume
+	obj_storage.max_items = max_items
+
+	obj_storage.weight_subtract = weight_subtract
+	obj_storage.weight_multiply = weight_multiply
+	
+	obj_storage.allow_mass_gather = allow_mass_gather
+	obj_storage.allow_mass_gather_mode_switch = allow_mass_gather_mode_switch
+	obj_storage.mass_gather_mode = mass_gather_mode
+	
+	obj_storage.sfx_open = sfx_open
+	obj_storage.sfx_insert = sfx_insert
+	obj_storage.sfx_remove = sfx_remove
+
+	obj_storage.ui_numerical_mode = ui_numerical_mode
+	
 /obj/item/clothing/suit/storage/toggle/AltClick()	// This only works for things that can be toggled, of course.
 	..()
 	ToggleButtons()

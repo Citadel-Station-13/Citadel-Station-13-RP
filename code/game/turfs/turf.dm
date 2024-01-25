@@ -280,10 +280,9 @@
 	return 1
 
 /turf/attackby(obj/item/I, mob/user, list/params, clickchain_flags, damage_multiplier)
-	if(istype(I, /obj/item/storage))
-		var/obj/item/storage/S = I
-		if(S.use_to_pickup && S.collection_mode)
-			S.gather_all(src, user)
+	if(I.obj_storage?.allow_mass_gather && I.obj_storage.allow_mass_gather_via_click)
+		I.obj_storage.auto_handle_interacted_mass_pickup(new /datum/event_args/actor(user), src)
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 	return ..()
 
 // Hits a mob on the tile.

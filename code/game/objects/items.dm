@@ -352,11 +352,20 @@
 	var/old_loc = src.loc
 
 	throwing?.terminate()
-	if(user.put_in_active_hand(src))
-		if(isturf(old_loc))
-			var/obj/effect/temporary_effect/item_pickup_ghost/ghost = new(old_loc)
-			ghost.assumeform(src)
-			ghost.animate_towards(user)
+
+	if(item_flags & ITEM_IN_STORAGE)
+		var/obj/object = loc
+		var/datum/object_system/storage/in_storage = object.obj_storage
+		// todo: support for indirection
+		ASSERT(!isnull(in_storage))
+		if(!in_storage.auto_handle_interacted_removal(src, new /datum/event_args/actor(user), put_in_hands = TRUE))
+			return
+	else if(!user.put_in_active_hand(src))
+		return
+	if(isturf(old_loc))
+		var/obj/effect/temporary_effect/item_pickup_ghost/ghost = new(old_loc)
+		ghost.assumeform(src)
+		ghost.animate_towards(user)
 
 /obj/item/OnMouseDrop(atom/over, mob/user, proximity, params)
 	if(anchored)	// Don't.
@@ -841,7 +850,9 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 //* Interaction *//
 
 /obj/item/attackby(obj/item/I, mob/user, list/params, clickchain_flags, damage_multiplier)
-	#warn storage stuff
+	if(I.obj_storage?.allow_mass_gather && I.obj_storage.allow_mass_gather_via_click)
+		I.obj_storage.auto_handle_interacted_mass_pickup(new /datum/event_args/actor(user), src)
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 	if(istype(I, /obj/item/storage))
 		var/obj/item/storage/S = I
 		if(S.use_to_pickup)

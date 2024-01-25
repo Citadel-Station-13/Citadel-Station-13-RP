@@ -19,10 +19,18 @@
 	var/weight_subtract = 0
 	var/weight_multiply = 1
 	
-	#warn these
 	var/allow_mass_gather = FALSE
 	var/allow_mass_gather_mode_switch = TRUE
 	var/mass_gather_mode = STORAGE_QUICK_GATHER_COLLECT_ALL
+
+	var/allow_quick_empty = FALSE
+	var/allow_quick_empty_via_clickdrag = TRUE
+	var/allow_quick_empty_via_attack_self = TRUE
+	
+	var/sfx_open = "rustle"
+	var/sfx_insert = "rustle"
+	var/sfx_remove = "rustle"
+
 	var/ui_numerical_mode = FALSE
 
 	//* Initialization *//
@@ -35,24 +43,11 @@
 	/// set to prevent us from spawning starts_with
 	var/empty = FALSE
 
-	#warn below
-
-	var/allow_quick_empty	//Set this variable to allow the object to have the 'empty' verb, which dumps all the contents on the floor.
-	var/allow_quick_gather	//Set this variable to allow the object to have the 'toggle mode' verb, which quickly collects all items from a tile.
-	var/collection_mode = 1;  //0 = pick one at a time, 1 = pick all on tile
-	var/use_sound = "rustle"	//sound played when used. null for no sound.
-
-	var/last_message = 0
-
-	#warn above
-
-
 /obj/item/storage/Initialize(mapload)
 	. = ..()
-	
 	initialize_storage()
-	legacy_spawn_contents()
 	spawn_contents()
+	legacy_spawn_contents()
 
 /**
  * Make sure to set [worth_dynamic] to TRUE if this does more than spawning what's in starts_with.
@@ -89,6 +84,16 @@
 
 	obj_storage.weight_subtract = weight_subtract
 	obj_storage.weight_multiply = weight_multiply
+	
+	obj_storage.allow_mass_gather = allow_mass_gather
+	obj_storage.allow_mass_gather_mode_switch = allow_mass_gather_mode_switch
+	obj_storage.mass_gather_mode = mass_gather_mode
+
+	obj_storage.sfx_open = sfx_open
+	obj_storage.sfx_insert = sfx_insert
+	obj_storage.sfx_remove = sfx_remove
+
+	obj_storage.ui_numerical_mode = ui_numerical_mode
 
 #warn below
 

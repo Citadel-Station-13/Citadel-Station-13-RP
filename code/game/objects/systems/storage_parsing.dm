@@ -35,22 +35,6 @@
 			return
 		modeswitch_action.Grant(M)
 
-/datum/component/storage/proc/canreach_react(datum/source, list/next)
-	var/datum/component/storage/concrete/master = master()
-	if(!master)
-		return
-	. = COMPONENT_BLOCK_REACH
-	next += master.parent
-	for(var/i in master.slaves)
-		var/datum/component/storage/slave = i
-		next += slave.parent
-
-/datum/component/storage/proc/attack_self(datum/source, mob/M)
-	if(check_locked(source, M, TRUE))
-		return FALSE
-	if((M.get_active_held_item() == parent) && allow_quick_empty)
-		quick_empty(M)
-
 /datum/component/storage/proc/preattack_intercept(datum/source, obj/O, mob/M, params)
 	if(!isitem(O) || !click_gather || SEND_SIGNAL(O, COMSIG_CONTAINS_STORAGE))
 		return FALSE
@@ -371,59 +355,6 @@ w
 		for(var/i in taking)
 			remove_from_storage(i, destination)
 	return TRUE
-
-/datum/component/storage/proc/signal_fill_type(datum/source, type, amount = 20, force = FALSE)
-	var/atom/real_location = real_location()
-	if(!force)
-		amount = min(remaining_space_items(), amount)
-	for(var/i in 1 to amount)
-		handle_item_insertion(new type(real_location), TRUE)
-		CHECK_TICK
-	return TRUE
-
-/datum/component/storage/proc/on_attack_hand(datum/source, mob/user)
-	var/atom/A = parent
-	if(!attack_hand_interact)
-		return
-	if(user.active_storage == src && A.loc == user) //if you're already looking inside the storage item
-		user.active_storage.close(user)
-		close(user)
-		. = COMPONENT_NO_ATTACK_HAND
-		return
-
-	if(rustle_sound)
-		playsound(A, "rustle", 50, 1, -5)
-
-	if(ishuman(user))
-		var/mob/living/carbon/human/H = user
-		if(H.l_store == A && !H.get_active_held_item())	//Prevents opening if it's in a pocket.
-			. = COMPONENT_NO_ATTACK_HAND
-			H.put_in_hands(A)
-			H.l_store = null
-			return
-		if(H.r_store == A && !H.get_active_held_item())
-			. = COMPONENT_NO_ATTACK_HAND
-			H.put_in_hands(A)
-			H.r_store = null
-			return
-
-	if(A.loc == user)
-		. = COMPONENT_NO_ATTACK_HAND
-		if(!check_locked(source, user, TRUE))
-			user_show_to_mob(user, trigger_on_found = TRUE)
-			A.do_jiggle()
-
-/datum/component/storage/proc/signal_on_pickup(datum/source, mob/user)
-	var/atom/A = parent
-	update_actions()
-	for(var/mob/M in range(1, A))
-		if(M.active_storage == src)
-			close(M)
-
-/datum/component/storage/proc/signal_take_obj(datum/source, atom/movable/AM, new_loc, force = FALSE)
-	if(!(AM in real_location()))
-		return FALSE
-	return remove_from_storage(AM, new_loc)
 
 /datum/component/storage/proc/on_alt_click(datum/source, mob/user)
 	if(!isliving(user) || !user.CanReach(parent))
@@ -1076,84 +1007,3 @@ w
 		else
 			var/datum/numbered_display/ND = .[I.merge_type]
 			ND.number += I.amount
-
-/atom/movable/screen/storage
-	name = "storage"
-	var/insertion_click = FALSE
-
-/atom/movable/screen/storage/Initialize(mapload, new_master)
-	. = ..()
-	master = new_master
-
-/atom/movable/screen/storage/Click(location, control, params)
-	if(!insertion_click)
-		return ..()
-	if(hud?.mymob && (hud.mymob != usr))
-		return
-	// just redirect clicks
-	if(master)
-		var/obj/item/I = usr.get_active_held_item()
-		if(I)
-			master.attackby(null, I, usr, params)
-	return TRUE
-
-/atom/movable/screen/storage/volumetric_box
-	icon_state = "stored_continue"
-
-/atom/movable/screen/storage/volumetric_box/center
-	icon_state = "stored_continue"
-	var/atom/movable/screen/storage/volumetric_edge/stored_left/left
-	var/atom/movable/screen/storage/volumetric_edge/stored_right/right
-	var/atom/movable/screen/storage/item_holder/holder
-	var/pixel_size
-
-/atom/movable/screen/storage/volumetric_box/center/Initialize(mapload, new_master, our_item)
-	left = new(null, src, our_item)
-	right = new(null, src, our_item)
-	return ..()
-
-/atom/movable/screen/storage/volumetric_box/center/Destroy()
-	QDEL_NULL(left)
-	QDEL_NULL(right)
-	vis_contents.Cut()
-	if(holder)
-		QDEL_NULL(holder)
-	return ..()
-
-/**
-  * Sets the size of this box screen object and regenerates its left/right borders. This includes the actual border's size!
-  */
-/atom/movable/screen/storage/volumetric_box/center/proc/set_pixel_size(pixels)
-	if(pixel_size == pixels)
-		return
-	pixel_size = pixels
-	cut_overlays()
-	vis_contents.Cut()
-	//our icon size is 32 pixels.
-	var/multiplier = (pixels - (VOLUMETRIC_STORAGE_BOX_BORDER_SIZE * 2)) / VOLUMETRIC_STORAGE_BOX_ICON_SIZE
-	transform = matrix(multiplier, 0, 0, 0, 1, 0)
-	if(our_item)
-		if(holder)
-			qdel(holder)
-		holder = new(null, src, our_item)
-		holder.transform = matrix(1 / multiplier, 0, 0, 0, 1, 0)
-		holder.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-		holder.appearance_flags &= ~RESET_TRANSFORM
-		makeItemInactive()
-	vis_contents += holder
-	left.pixel_x = -((pixels - VOLUMETRIC_STORAGE_BOX_ICON_SIZE) * 0.5) - VOLUMETRIC_STORAGE_BOX_BORDER_SIZE
-	right.pixel_x = ((pixels - VOLUMETRIC_STORAGE_BOX_ICON_SIZE) * 0.5) + VOLUMETRIC_STORAGE_BOX_BORDER_SIZE
-	add_overlay(left)
-	add_overlay(right)
-
-/atom/movable/screen/storage/volumetric_box/center/makeItemInactive()
-	if(!holder)
-		return
-	holder.layer = VOLUMETRIC_STORAGE_ITEM_LAYER
-	holder.plane = VOLUMETRIC_STORAGE_ITEM_PLANE
-
-/atom/movable/screen/storage/volumetric_box/center/makeItemActive()
-	if(!holder)
-		return
-	holder.our_item.layer = VOLUMETRIC_STORAGE_ACTIVE_ITEM_LAYER		//make sure we display infront of the others!
-	holder.our_item.plane = VOLUMETRIC_STORAGE_ACTIVE_ITEM_PLANE

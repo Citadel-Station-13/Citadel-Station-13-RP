@@ -16,6 +16,11 @@
 	/// * top down is from end of contents list, bottom up is from start of contents list
 	var/limited_random_access_stack_bottom_first = FALSE
 	
+	//* Actions
+	
+	/// the action we have for mode switching gathering
+	var/datum/action/storage_gather_mode/action_mode_switch
+	
 	//* Carry Weight *//
 
 	/// carry weight in us prior to mitigation
@@ -86,7 +91,6 @@
 	var/allow_mass_gather = FALSE
 	/// allow mass gather via click
 	var/allow_mass_gather_via_click = TRUE
-	#warn impl action
 	/// allow switching mass gathering mode
 	#warn impl action
 	var/allow_mass_gather_mode_switch = TRUE
@@ -141,6 +145,7 @@
 	///
 	/// todo: this needs a setter so we can properly use comsigs to hook the redirected-to object's Exited()
 	/// todo: we should also hook the thing's Destroy, etc etc.
+	/// todo: this literally doesn't work due to no Reachability hooks. please implement this properly later via reachability signal hooks.
 	/// otherwise, using this is going to be GC failure hell from vis contents and rendering.
 	var/atom/dangerously_redirect_contents_calls
 
@@ -155,6 +160,15 @@
 	var/tmp/cached_combined_weight_class
 	/// cached combined volume
 	var/tmp/cached_combined_volume
+
+	//* Sound Effects
+	
+	/// open / access sound passed into playsound
+	var/sfx_open = "rustle"
+	/// removal sound passed into playsoud
+	var/sfx_remove = "rustle"
+	/// insert sound passed into playsound
+	var/sfx_insert = "rustle"
 
 	//* UIs *//
 	
@@ -175,6 +189,7 @@
 
 /datum/object_system/storage/Destroy()
 	hide()
+	QDEL_NULL(action_mode_switch)
 	return ..()
 
 //* Access *//
@@ -327,7 +342,18 @@
  * @return TRUE / FALSE; if true, caller should stop clickchain.
  */
 /datum/object_system/storage/proc/auto_handle_interacted_insertion(obj/item/inserting, datum/event_args/actor/actor, silent, suppressed)
-	#warn impl
+	if(is_locked(actor))
+		actor.chat_feedback(
+			msg = SPAN_WARNING("[parent] is locked."),
+			target = parent,
+		)
+		return TRUE
+	if(!try_insert(inserting, actor, silent, suppressed))
+		return
+	if(!suppressed && !isnull(actor) && sfx_remove)
+		// todo: variable sound
+		playsound(actor.performer, sfx_remove, 50, 1, -5)
+
 
 /datum/object_system/storage/proc/try_insert(obj/item/inserting, datum/event_args/actor/actor, silent, suppressed, no_update)
 	if(!can_be_inserted(inserting, actor, silent))
@@ -384,8 +410,22 @@
 /**
  * @return TRUE / FALSE
  */
-/datum/object_system/storage/proc/auto_handle_interacted_removal(obj/item/removing, datum/event_args/actor/actor, silent, suppressed)
-	#warn impl
+/datum/object_system/storage/proc/auto_handle_interacted_removal(obj/item/removing, datum/event_args/actor/actor, silent, suppressed, put_in_hands)
+	if(is_locked(actor))
+		actor.chat_feedback(
+			msg = SPAN_WARNING("[parent] is locked."),
+			target = parent,
+		)
+		return TRUE
+	if(!try_remove(removing, actor.performer, actor, silent, suppressed))
+		return
+	if(put_in_hands)
+		actor.performer.put_in_hands_or_drop(removing)
+	else
+		removing.forceMove(actor.performer.drop_location())
+	if(!suppressed && !isnull(actor) && sfx_remove)
+		// todo: variable sound
+		playsound(actor.performer, sfx_remove, 50, 1, -5)
 
 /datum/object_system/storage/proc/try_remove(obj/item/removing, atom/to_where, datum/event_args/actor/actor, silent, suppressed, no_update)
 	if(!can_be_removed(removing, to_where, actor, silent))
@@ -424,8 +464,9 @@
 //* Limits *//
 
 /datum/object_system/storage/proc/check_insertion_limits(obj/item/candidate)
-	if(!isnull(max_items))
-		#warn impl
+	var/atom/movable/indirection = real_contents_loc()
+	if(!isnull(max_items) && length(indirection.contents) > max_items)
+		return FALSE
 	if(!isnull(max_combined_volume) && (cached_combined_volume + candidate.get_weight_volume() > max_combined_volume))
 		return FALSE
 	var/their_weight_class = candidate.get_weight_class()
@@ -438,8 +479,9 @@
 	return TRUE
 
 /datum/object_system/storage/proc/why_failed_insertion_limits(obj/item/candidate)
-	if(!isnull(max_items))
-		#warn impl
+	var/atom/movable/indirection = real_contents_loc()
+	if(!isnull(max_items) && length(indirection.contents) > max_items)
+		return "too many items"
 	if(!isnull(max_combined_volume) && (cached_combined_volume + candidate.get_weight_volume() > max_combined_volume))
 		return "insufficient volume"
 	var/their_weight_class = candidate.get_weight_class()
@@ -477,12 +519,36 @@
 //* Transfer *//
 
 /datum/object_system/storage/proc/auto_handle_interacted_mass_transfer(datum/event_args/actor/actor, datum/object_system/storage/to_storage)
-	#warn impl
+	if(is_locked(actor))
+		actor.chat_feedback(
+			msg = SPAN_WARNING("[parent] is locked."),
+			target = parent,
+		)
+		return TRUE
+	interacted_mass_transfer(actor, to_storage)
+	return TRUE
 
 /datum/object_system/storage/proc/auto_handle_interacted_mass_pickup(datum/event_args/actor/actor, atom/from_where)
-	#warn impl
+	if(is_locked(actor))
+		actor.chat_feedback(
+			msg = SPAN_WARNING("[parent] is locked."),
+			target = parent,
+		)
+		return TRUE
+	interacted_mass_pickup(actor, from_where)
+	return TRUE
 
 /datum/object_system/storage/proc/auto_handle_interacted_mass_dumping(datum/event_args/actor/actor, atom/to_where)
+	if(is_locked(actor))
+		actor.chat_feedback(
+			msg = SPAN_WARNING("[parent] is locked."),
+			target = parent,
+		)
+		return TRUE
+	interacted_mass_dumping(actor, to_where)
+	return TRUE
+
+/datum/object_system/storage/proc/interacted_mass_transfer(datum/event_args/actor/actor, datum/object_storage/storage/to_storage)
 	#warn impl
 
 /datum/object_system/storage/proc/interacted_mass_pickup(datum/event_args/actor/actor, atom/from_loc)
@@ -566,7 +632,7 @@
 /**
  * @return TRUE if we did something (to interrupt clickchain)
  */
-/datum/object_system/storage/proc/auto_handle_interacted_open(datum/event_args/actor/actor, force)
+/datum/object_system/storage/proc/auto_handle_interacted_open(datum/event_args/actor/actor, force, suppressed)
 	if(is_locked(actor))
 		actor.chat_feedback(
 			msg = SPAN_WARNING("[parent] is locked."),
@@ -575,6 +641,10 @@
 		return TRUE
 	if(check_on_found_hooks(actor))
 		return TRUE
+	if(!suppressed && !isnull(actor) && sfx_open)
+		// todo: variable sound
+		playsound(actor.performer, sfx_open, 50, 1, -5)
+	// todo: jiggle animation
 	#warn check, force, etc
 	show(actor.initiator)
 	return TRUE
@@ -770,6 +840,11 @@
 /datum/storage_numerical_display
 	var/obj/item/rendered_object
 	var/amount
+
+//? Action
+
+/datum/action/storage_gather_mode
+	#warn impl all
 
 //? Storage Screens
 
