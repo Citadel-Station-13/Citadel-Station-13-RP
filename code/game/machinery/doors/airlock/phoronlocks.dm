@@ -124,8 +124,8 @@
 
 //Handles the control of airlocks
 
-/datum/computer/file/embedded_program/airlock/phoron
-	var/tag_scrubber
+//datum/computer/file/embedded_program/airlock/phoron
+
 
 /datum/computer/file/embedded_program/airlock/phoron/New(var/obj/machinery/embedded_controller/M)
 	..(M)
@@ -139,10 +139,6 @@
 	memory["scrubber_status"] = "unknown"
 	memory["target_phoron"] = 0.1
 	memory["secure"] = 1
-
-	if (istype(M, /obj/machinery/embedded_controller/radio/airlock/phoron))	//if our controller is an airlock controller than we can auto-init our tags
-		var/obj/machinery/embedded_controller/radio/airlock/phoron/controller = M
-		tag_scrubber = controller.tag_scrubber ? controller.tag_scrubber : "[id_tag]_scrubber"
 
 /datum/computer/file/embedded_program/airlock/phoron/receive_signal(datum/signal/signal, receive_method, receive_param)
 	var/receive_tag = signal.data["tag"]

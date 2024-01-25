@@ -13,6 +13,7 @@
 	var/tag_interior_sensor
 	var/tag_airlock_mech_sensor
 	var/tag_shuttle_mech_sensor
+	var/tag_scrubber
 	var/tag_temperature_adjuster
 
 	var/state = STATE_CLOSED
@@ -43,6 +44,7 @@
 		tag_interior_sensor = controller.tag_interior_sensor || "[id_tag]_interior_sensor"
 		tag_airlock_mech_sensor = controller.tag_airlock_mech_sensor? controller.tag_airlock_mech_sensor : "[id_tag]_airlock_mech"
 		tag_shuttle_mech_sensor = controller.tag_shuttle_mech_sensor? controller.tag_shuttle_mech_sensor : "[id_tag]_shuttle_mech"
+		tag_scrubber = controller.tag_scrubber ? controller.tag_scrubber : "[id_tag]_scrubber"
 		tag_temperature_adjuster = controller.tag_temperature_adjuster? controller.tag_temperature_adjuster : "[id_tag]_chamber_temperature"
 		memory["secure"] = controller.tag_secure
 
