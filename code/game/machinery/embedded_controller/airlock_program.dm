@@ -212,6 +212,7 @@
 	post_signal(signal)
 
 /datum/computer/file/embedded_program/airlock/proc/signalTemperatureAdjuster(var/tag, var/power, var/temperature)
+	signalScrubber(tag_scrubber, power)//Temporary hack so mapping changes arent part of this PR
 	var/datum/signal/signal = new
 	signal.data = list(
 		"tag" = tag,
