@@ -101,11 +101,14 @@
 	if(machine_stat & (NOPOWER|BROKEN))
 		return
 
+	if(!signal.data["tag"] || (signal.data["tag"] != id_tag) || (signal.data["sigtype"]!="command"))
+		return 0
+
 	if(!isnull(signal.data["power"]))
-		if(text2num(signal.data["power"]) == 0)
-			use_power = USE_POWER_OFF
-		else
+		if(text2num(signal.data["power"]) != 0)
 			use_power = USE_POWER_ACTIVE
+		else
+			use_power = USE_POWER_OFF
 	if(!isnull(signal.data["target_temperature"]))
 		target_temp = text2num(signal.data["target_temperature"])
 	spawn(2)
