@@ -116,10 +116,13 @@
 	light("<span class='notice'>\The [src] mysteriously lights itself!.</span>")
 
 /obj/item/flame/candle/everburn/white
+	name = "white candle"
 	desc = "a white pillar candle. Its specially-formulated fuel-oxidizer wax mixture allows continued combustion in airless environments."
 	icon_state = "whitecandle"
 	icon_type = "whitecandle"
+
 /obj/item/flame/candle/everburn/black
+	name = "black candle"
 	desc = "a black pillar candle. Ominous."
 	icon_state = "blackcandle"
 	icon_type = "blackcandle"
