@@ -853,14 +853,6 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	if(I.obj_storage?.allow_mass_gather && I.obj_storage.allow_mass_gather_via_click)
 		I.obj_storage.auto_handle_interacted_mass_pickup(new /datum/event_args/actor(user), src)
 		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
-	if(istype(I, /obj/item/storage))
-		var/obj/item/storage/S = I
-		if(S.use_to_pickup)
-			if(S.collection_mode) //Mode is set to collect all items
-				if(isturf(src.loc))
-					S.gather_all(src.loc, user)
-			else if(S.can_be_inserted(src))
-				S.handle_item_insertion(src, user)
 	if(istype(I, /obj/item/cell) && !isnull(obj_cell_slot) && isnull(obj_cell_slot.cell) && obj_cell_slot.interaction_active(user))
 		if(!user.transfer_item_to_loc(I, src))
 			user.action_feedback(SPAN_WARNING("[I] is stuck to your hand!"), src)

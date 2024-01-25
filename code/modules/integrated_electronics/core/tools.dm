@@ -320,7 +320,7 @@
 	new /obj/item/tool/screwdriver(src)
 	new /obj/item/tool/crowbar(src)
 	new /obj/item/tool/wrench(src)
-	make_exact_fit()
+	obj_storage.fit_to_contents()
 
 /obj/item/storage/bag/circuits/all/legacy_spawn_contents()
 	new /obj/item/storage/bag/circuits/mini/arithmetic/all(src)
@@ -344,7 +344,7 @@
 	new /obj/item/integrated_electronics/wirer(src)
 	new /obj/item/integrated_electronics/debugger(src)
 	new /obj/item/tool/crowbar(src)
-	make_exact_fit()
+	obj_storage.fit_to_contents()
 
 /obj/item/storage/bag/circuits/mini
 	name = "circuit box"
@@ -367,7 +367,7 @@
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 4)
 				new IC.type(src)
-	make_exact_fit()
+	obj_storage.fit_to_contents()
 
 /obj/item/storage/bag/circuits/mini/trig
 	name = "trig circuit box"
@@ -382,7 +382,7 @@
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 4)
 				new IC.type(src)
-	make_exact_fit()
+	obj_storage.fit_to_contents()
 
 /obj/item/storage/bag/circuits/mini/input
 	name = "input circuit box"
@@ -397,7 +397,7 @@
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 4)
 				new IC.type(src)
-	make_exact_fit()
+	obj_storage.fit_to_contents()
 
 /obj/item/storage/bag/circuits/mini/output
 	name = "output circuit box"
@@ -412,7 +412,7 @@
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 4)
 				new IC.type(src)
-	make_exact_fit()
+	obj_storage.fit_to_contents()
 
 /obj/item/storage/bag/circuits/mini/memory
 	name = "memory circuit box"
@@ -427,7 +427,7 @@
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 4)
 				new IC.type(src)
-	make_exact_fit()
+	obj_storage.fit_to_contents()
 
 /obj/item/storage/bag/circuits/mini/logic
 	name = "logic circuit box"
@@ -442,7 +442,7 @@
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 4)
 				new IC.type(src)
-	make_exact_fit()
+	obj_storage.fit_to_contents()
 
 /obj/item/storage/bag/circuits/mini/time
 	name = "time circuit box"
@@ -457,7 +457,7 @@
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 4)
 				new IC.type(src)
-	make_exact_fit()
+	obj_storage.fit_to_contents()
 
 /obj/item/storage/bag/circuits/mini/reagents
 	name = "reagent circuit box"
@@ -473,7 +473,7 @@
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 4)
 				new IC.type(src)
-	make_exact_fit()
+	obj_storage.fit_to_contents()
 
 /obj/item/storage/bag/circuits/mini/transfer
 	name = "transfer circuit box"
@@ -488,7 +488,7 @@
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 4)
 				new IC.type(src)
-	make_exact_fit()
+	obj_storage.fit_to_contents()
 
 /obj/item/storage/bag/circuits/mini/converter
 	name = "converter circuit box"
@@ -503,7 +503,7 @@
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 4)
 				new IC.type(src)
-	make_exact_fit()
+	obj_storage.fit_to_contents()
 
 /obj/item/storage/bag/circuits/mini/smart
 	name = "smart box"
@@ -519,7 +519,7 @@
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 4)
 				new IC.type(src)
-	make_exact_fit()
+	obj_storage.fit_to_contents()
 
 /obj/item/storage/bag/circuits/mini/manipulation
 	name = "manipulation box"
@@ -535,7 +535,7 @@
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 4)
 				new IC.type(src)
-	make_exact_fit()
+	obj_storage.fit_to_contents()
 
 /obj/item/storage/bag/circuits/mini/power
 	name = "power circuit box"
@@ -554,4 +554,4 @@
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 4)
 				new IC.type(src)
-	make_exact_fit()
+	obj_storage.fit_to_contents()

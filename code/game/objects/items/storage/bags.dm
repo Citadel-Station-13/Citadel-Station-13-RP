@@ -121,6 +121,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	max_combined_volume = WEIGHT_VOLUME_NORMAL * 25 //kinda irrelevant now :^)
 	max_single_weight_class = WEIGHT_CLASS_NORMAL
+	storage_datum_path = /datum/object_system/storage/stack
 	insertion_whitelist = list(/obj/item/stack/ore)
 	var/stored_ore = list()
 	var/total_ore = 0 //current ore stored

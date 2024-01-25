@@ -18,23 +18,6 @@
 	drop_sound = 'sound/items/drop/backpack.ogg'
 	pickup_sound = 'sound/items/pickup/backpack.ogg'
 
-/obj/item/storage/backpack/attackby(obj/item/W as obj, mob/user as mob)
-	if (src.use_sound)
-		playsound(src.loc, src.use_sound, 50, 1, -5)
-	..()
-
-/obj/item/storage/backpack/equipped(var/mob/user, var/slot)
-	if (slot == SLOT_ID_BACK && src.use_sound)
-		playsound(src.loc, src.use_sound, 50, 1, -5)
-	..(user, slot)
-
-/*
-/obj/item/storage/backpack/dropped(mob/user, flags, atom/newLoc)
-	if (loc == user && src.use_sound)
-		playsound(src.loc, src.use_sound, 50, 1, -5)
-	..(user)
-*/
-
 /*
  * Backpack Types
  */

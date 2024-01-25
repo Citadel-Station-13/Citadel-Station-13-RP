@@ -8,7 +8,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	on_rolled = list("down" = "none")
 	var/hide_on_roll = FALSE
-	
+
 	//* Directly passed to storage system. *//
 
 	var/list/insertion_whitelist
@@ -19,10 +19,10 @@
 	var/max_combined_weight_class
 	var/max_combined_volume = WEIGHT_VOLUME_SMALL * 4
 	var/max_items
-	
+
 	var/weight_subtract = 0
 	var/weight_multiply = 1
-	
+
 	var/allow_mass_gather = FALSE
 	var/allow_mass_gather_mode_switch = TRUE
 	var/mass_gather_mode = STORAGE_QUICK_GATHER_COLLECT_ALL
@@ -30,7 +30,7 @@
 	var/allow_quick_empty = FALSE
 	var/allow_quick_empty_via_clickdrag = TRUE
 	var/allow_quick_empty_via_attack_self = TRUE
-	
+
 	var/sfx_open = "rustle"
 	var/sfx_insert = "rustle"
 	var/sfx_remove = "rustle"
@@ -38,7 +38,7 @@
 	var/ui_numerical_mode = FALSE
 
 	//* Initialization *//
-	
+
 	/// storage datum path
 	var/storage_datum_path = /datum/object_system/storage
 	/// Cleared after Initialize().
@@ -51,7 +51,7 @@
 	. = ..()
 	initialize_storage()
 	spawn_contents()
-	
+
 	if (!hide_on_roll)
 		on_rolled["down"] = icon_state
 
@@ -84,11 +84,11 @@
 
 	obj_storage.weight_subtract = weight_subtract
 	obj_storage.weight_multiply = weight_multiply
-	
+
 	obj_storage.allow_mass_gather = allow_mass_gather
 	obj_storage.allow_mass_gather_mode_switch = allow_mass_gather_mode_switch
 	obj_storage.mass_gather_mode = mass_gather_mode
-	
+
 	obj_storage.sfx_open = sfx_open
 	obj_storage.sfx_insert = sfx_insert
 	obj_storage.sfx_remove = sfx_remove
@@ -181,13 +181,11 @@
 	desc = "A sturdy bandolier meant to keep the tools or products of alchemy held securely to the wearer's body."
 	icon_state = "bandolier_ash"
 	max_combined_volume = WEIGHT_VOLUME_SMALL * 5
-
-/obj/item/clothing/accessory/storage/ashlander_alchemy/Initialize(mapload)
-	. = ..()
-	hold.insertion_whitelist = list(
-		/obj/item/reagent_containers/glass/stone,\
-		/obj/item/stack/medical/poultice_brute,\
-		/obj/item/stack/medical/poultice_burn,\
-		/obj/item/grenade/explosive/ashlander,\
-		/obj/item/bitterash,\
-		/obj/item/flame/lighter)
+	insertion_whitelist = list(
+		/obj/item/reagent_containers/glass/stone,
+		/obj/item/stack/medical/poultice_brute,
+		/obj/item/stack/medical/poultice_burn,
+		/obj/item/grenade/explosive/ashlander,
+		/obj/item/bitterash,
+		/obj/item/flame/lighter,
+	)

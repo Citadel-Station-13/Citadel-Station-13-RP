@@ -569,7 +569,7 @@
 	interacted_mass_dumping(actor, to_where)
 	return TRUE
 
-/datum/object_system/storage/proc/interacted_mass_transfer(datum/event_args/actor/actor, datum/object_storage/storage/to_storage)
+/datum/object_system/storage/proc/interacted_mass_transfer(datum/event_args/actor/actor, datum/object_system/storage/to_storage)
 	#warn impl
 
 /datum/object_system/storage/proc/interacted_mass_pickup(datum/event_args/actor/actor, atom/from_loc)

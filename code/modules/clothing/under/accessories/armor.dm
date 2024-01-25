@@ -94,20 +94,13 @@
 	icon_state = "shotholder"
 	slot = ACCESSORY_SLOT_ARMOR_S
 	max_combined_volume = WEIGHT_VOLUME_SMALL * 4
+	insertion_whitelist = list(
+		/obj/item/ammo_casing/a12g,
+	)
 
-/obj/item/clothing/accessory/storage/shotgun_shell_holder/update_icon(updates)
-	. = ..()
-	var/amt = length(hold.contents)
-	icon_state = "shotholder-[amt]"
-
-/obj/item/clothing/accessory/storage/shotgun_shell_holder/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/ammo_casing/a12g))
-		. = hold.attackby(W, user)
-		update_icon()
-		accessory_host?.update_icon()
-		return
-	else
-		to_chat(user, SPAN_WARNING("The [src] can only hold 12-gauge shells!"))
+/obj/item/clothing/accessory/storage/shotgun_shell_holder/update_icon_state()
+	icon_state = "shotholder-[length(contents)]"
+	return ..()
 
 ////////////////
 //Armor plates
