@@ -26,6 +26,9 @@
 /obj/machinery/atmospherics/component/unary/env_heat_pump/Initialize(mapload)
 	. = ..()
 	START_MACHINE_PROCESSING(src)
+
+/obj/machinery/atmospherics/component/unary/env_heat_pump/atmos_init()
+	. = ..()
 	if(frequency)
 		var/radio_filter_in = frequency==1439?(RADIO_FROM_AIRALARM):null
 		radio_connection = register_radio(src, frequency, frequency, radio_filter_in)
