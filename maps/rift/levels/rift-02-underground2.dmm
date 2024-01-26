@@ -1444,10 +1444,10 @@
 "eG" = (
 /obj/structure/catwalk,
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/multi_tile/metal/mait,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/machinery/door/airlock/multi_tile/glass,
 /turf/simulated/floor/plating,
 /area/rift/station/stairs_one)
 "eI" = (
@@ -1841,9 +1841,7 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/power/apc/north_mount,
-/obj/machinery/door/firedoor/glass{
-	dir = 8
-	},
+/obj/machinery/floor_inflatables,
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/stairs_one)
 "fX" = (
@@ -1897,8 +1895,8 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 1
 	},
-/obj/machinery/door/firedoor/glass{
-	dir = 4
+/obj/machinery/floor_inflatables{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/stairs_one)
@@ -1923,7 +1921,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 1
 	},
-/obj/machinery/door/firedoor/glass{
+/obj/machinery/floor_inflatables{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
@@ -2380,9 +2378,7 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/power/apc/north_mount,
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
+/obj/machinery/floor_inflatables,
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/stairs_one)
 "hJ" = (
@@ -3930,14 +3926,9 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/door/firedoor/glass{
-	dir = 8;
-	req_one_access = list(18,47)
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals5,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/undertwo)
 "mj" = (
@@ -4373,10 +4364,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
-	},
-/obj/machinery/door/firedoor/glass{
-	dir = 4;
-	req_one_access = list(18,47)
 	},
 /obj/machinery/air_alarm{
 	desc = " ";
@@ -4905,18 +4892,12 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/public_bunker)
 "oP" = (
-/obj/structure/grille,
-/obj/machinery/door/blast/shutters{
-	dir = 2;
-	id = "bunker"
+/obj/machinery/light/small{
+	dir = 4
 	},
-/obj/structure/window/phoronreinforced/full,
-/obj/structure/window/phoronreinforced,
-/obj/structure/window/phoronreinforced{
-	dir = 1
-	},
+/obj/random/trash_pile,
 /turf/simulated/floor/plating,
-/area/crew_quarters/public_bunker)
+/area/maintenance/lower/mining)
 "oR" = (
 /obj/effect/floor_decal/techfloor,
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
@@ -5143,7 +5124,7 @@
 "pr" = (
 /obj/structure/catwalk,
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/multi_tile/metal/mait,
+/obj/machinery/door/airlock/multi_tile/glass,
 /turf/simulated/floor/plating,
 /area/rift/station/stairs_one)
 "ps" = (
@@ -6509,9 +6490,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
 "uy" = (
-/obj/machinery/door/firedoor/glass{
-	dir = 8
-	},
 /obj/effect/floor_decal/borderfloor,
 /obj/structure/sign/department/eng{
 	pixel_y = -32
@@ -6962,16 +6940,6 @@
 "wp" = (
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/foyer)
-"wr" = (
-/obj/effect/floor_decal/borderfloor,
-/obj/machinery/door/firedoor/glass{
-	dir = 8
-	},
-/obj/structure/sign/department/eng{
-	pixel_y = -32
-	},
-/turf/simulated/floor/tiled/steel,
-/area/hallway/primary/undertwo)
 "ws" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
@@ -7440,11 +7408,12 @@
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
 "xK" = (
-/obj/machinery/door/firedoor/glass{
-	dir = 8
+/obj/effect/floor_decal/rust,
+/obj/structure/railing{
+	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
-/area/hallway/primary/undertwo)
+/turf/simulated/floor/plating,
+/area/maintenance/lower/atmos)
 "xL" = (
 /obj/structure/table/wooden_reinforced,
 /obj/effect/floor_decal/spline/plain{
@@ -7816,6 +7785,7 @@
 /area/rnd/secure_storage/critical/records)
 "zm" = (
 /obj/machinery/light/small,
+/obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
 "zo" = (
@@ -8579,6 +8549,10 @@
 /obj/machinery/camera/network/engineering{
 	dir = 5
 	},
+/obj/item/paper{
+	info = "In the engineering department of all places. We hope you step on a nail. Yours, Central Command.";
+	name = "Worst Lobby Award"
+	},
 /turf/simulated/floor/tiled/steel,
 /area/engineering/atmos/locker_room)
 "Cv" = (
@@ -8946,6 +8920,9 @@
 "DG" = (
 /obj/machinery/light/small{
 	dir = 1
+	},
+/obj/structure/railing{
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
@@ -10577,11 +10554,10 @@
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "Km" = (
-/obj/machinery/door/firedoor/glass{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/hallway/primary/undertwo)
+/obj/structure/table/rack,
+/obj/random/maintenance/clean,
+/turf/simulated/floor/plating,
+/area/maintenance/lower/mining)
 "Ko" = (
 /turf/simulated/floor/wood,
 /area/engineering/break_room)
@@ -13378,6 +13354,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
+/obj/item/paper{
+	info = "In the engineering department of all places. We hope you step on a nail. Yours, Central Command.";
+	name = "Worst Lobby Award"
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/foyer)
 "Un" = (
@@ -13760,6 +13740,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
+/obj/item/disk/nifsoft/compliance,
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
 "VJ" = (
@@ -29668,7 +29649,7 @@ jo
 jo
 jo
 mh
-xK
+ll
 uy
 Fa
 OK
@@ -30032,7 +30013,7 @@ DV
 VD
 Bw
 Bw
-Bw
+Ga
 ab
 at
 aK
@@ -30420,7 +30401,7 @@ DV
 Bl
 Bw
 Bw
-Bw
+MP
 ab
 aI
 fQ
@@ -30433,7 +30414,7 @@ mS
 vV
 oY
 pf
-oP
+vV
 my
 bH
 ei
@@ -30832,8 +30813,8 @@ jo
 jo
 jo
 nm
-Km
-wr
+ll
+uy
 Fa
 KR
 qW
@@ -31404,8 +31385,8 @@ ra
 pM
 qB
 ab
-mK
-mu
+xK
+nH
 cT
 nb
 hH
@@ -31599,7 +31580,7 @@ pN
 oO
 ab
 mY
-mu
+mf
 dt
 eG
 ic
@@ -31793,7 +31774,7 @@ nr
 ab
 ab
 mY
-mu
+mf
 bf
 pI
 no
@@ -31987,7 +31968,7 @@ pP
 pk
 hj
 DG
-mu
+nG
 bf
 nb
 nb
@@ -32554,8 +32535,8 @@ ws
 Px
 Bw
 JP
-Hz
-Ze
+oP
+Km
 Ze
 Tg
 JP
@@ -32755,7 +32736,7 @@ Tg
 JP
 Ze
 Ze
-Ze
+Uf
 hj
 hj
 hj
@@ -34298,7 +34279,7 @@ aa
 aa
 aa
 JP
-Ze
+Uf
 Ze
 Ze
 uK
@@ -35270,7 +35251,7 @@ sq
 JP
 Ze
 Ze
-Ze
+Uf
 JP
 Ze
 Ze
@@ -36044,7 +36025,7 @@ mC
 Ka
 sq
 JP
-Ze
+Uf
 Ze
 Ze
 JP
@@ -36238,7 +36219,7 @@ Ka
 Ka
 Ka
 JP
-Ze
+Uf
 Ze
 Ze
 JP
