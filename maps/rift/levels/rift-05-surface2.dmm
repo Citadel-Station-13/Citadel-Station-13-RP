@@ -18345,7 +18345,7 @@
 	},
 /obj/machinery/recharger,
 /obj/machinery/button/windowtint{
-	id = sssssss;
+	id = "lockerroom";
 	pixel_x = 8;
 	pixel_y = -24
 	},
