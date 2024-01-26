@@ -939,7 +939,9 @@
 /obj/effect/floor_decal/corner/lightorange/border{
 	dir = 8
 	},
-/obj/machinery/vending/cigarette,
+/obj/machinery/floor_inflatables{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
 "cm" = (
@@ -1042,10 +1044,14 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 8
 	},
+/obj/machinery/floor_inflatables{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
 "cz" = (
 /obj/effect/floor_decal/steeldecal/steel_decals5,
+/obj/machinery/floor_inflatables,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
 "cA" = (
@@ -1065,6 +1071,9 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
 	},
+/obj/machinery/floor_inflatables{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
 "cD" = (
@@ -1077,7 +1086,9 @@
 /obj/effect/floor_decal/corner/lightorange/border{
 	dir = 4
 	},
-/obj/machinery/vending/weeb,
+/obj/machinery/floor_inflatables{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
 "cE" = (
@@ -2437,6 +2448,7 @@
 /obj/effect/floor_decal/corner/orange/border{
 	dir = 10
 	},
+/obj/machinery/vending/cigarette,
 /turf/simulated/floor/tiled/steel_grid,
 /area/hallway/primary/underone)
 "go" = (

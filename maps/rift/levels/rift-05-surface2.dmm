@@ -3725,6 +3725,7 @@
 /area/maintenance/substation/research/xenobiology_lab)
 "crX" = (
 /obj/effect/floor_decal/steeldecal/steel_decals5,
+/obj/machinery/floor_inflatables,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "csj" = (
@@ -11902,6 +11903,9 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 8
 	},
+/obj/machinery/floor_inflatables{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "hMP" = (
@@ -14273,6 +14277,9 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
 	},
+/obj/machinery/floor_inflatables{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "jmn" = (
@@ -14440,6 +14447,9 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 4
+	},
+/obj/machinery/floor_inflatables{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
@@ -28246,6 +28256,9 @@
 /area/maintenance/substation/security)
 "sfB" = (
 /obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 8
+	},
+/obj/machinery/floor_inflatables{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,

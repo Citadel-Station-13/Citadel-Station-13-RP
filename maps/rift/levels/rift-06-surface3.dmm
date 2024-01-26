@@ -4673,6 +4673,9 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
 	},
+/obj/machinery/floor_inflatables{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
 "anH" = (
@@ -24464,6 +24467,9 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 8
 	},
+/obj/machinery/floor_inflatables{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
 "swD" = (
@@ -24774,6 +24780,7 @@
 /area/maintenance/bar/lower)
 "tCt" = (
 /obj/effect/floor_decal/steeldecal/steel_decals5,
+/obj/machinery/floor_inflatables,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
 "tEl" = (
