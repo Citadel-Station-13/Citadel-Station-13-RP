@@ -349,6 +349,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/upper)
 "aY" = (
+/obj/machinery/vending/weeb,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/hallway/primary/underone)
 "aZ" = (
@@ -1914,7 +1915,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled/steel,
+/turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/underone)
 "eC" = (
 /obj/effect/floor_decal/borderfloor,
@@ -2116,7 +2117,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled/steel,
+/turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/underone)
 "fi" = (
 /obj/machinery/atmospherics/pipe/manifold4w/visible/yellow,
@@ -5191,7 +5192,7 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
-/turf/simulated/floor/tiled/steel,
+/turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/underone)
 "qH" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
@@ -6928,7 +6929,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled/steel,
+/turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/underone)
 "xf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -14614,18 +14615,6 @@
 	},
 /turf/simulated/floor/concrete/rng/lythios43c,
 /area/rift/station/fighter_bay/transport_tunnel)
-"Zz" = (
-/obj/structure/disposalpipe/segment{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/aux{
-	dir = 4
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/steel,
-/area/hallway/primary/underone)
 "ZA" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
@@ -33334,7 +33323,7 @@ Ph
 gi
 aG
 dM
-Zz
+tg
 dp
 am
 hn
@@ -33528,7 +33517,7 @@ Ph
 gi
 aG
 dM
-Zz
+tg
 rT
 am
 gk
@@ -33722,7 +33711,7 @@ Ph
 hP
 aG
 dR
-Zz
+tg
 Jk
 am
 am
