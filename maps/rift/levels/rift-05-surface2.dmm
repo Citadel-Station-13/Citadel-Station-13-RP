@@ -33760,7 +33760,6 @@
 /obj/item/storage/box/masks{
 	pixel_x = -8
 	},
-/obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "vYU" = (
@@ -34993,7 +34992,9 @@
 /obj/effect/floor_decal/borderfloorwhite/corner2,
 /obj/effect/floor_decal/corner/paleblue/bordercorner2,
 /obj/effect/floor_decal/industrial/outline/blue,
-/obj/structure/closet/crate/biohazard,
+/obj/structure/closet/crate/biohazard{
+	anchored = 1
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "wUE" = (
