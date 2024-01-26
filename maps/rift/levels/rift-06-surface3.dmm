@@ -18444,23 +18444,11 @@
 /turf/simulated/floor/plating,
 /area/shuttle/emt/cockpit)
 "bis" = (
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/lightgrey/border,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
+/obj/structure/symbol/sa,
+/turf/simulated/wall/prepainted{
+	can_open = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
-/obj/machinery/air_alarm{
-	dir = 1;
-	pixel_y = -24
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/steel,
-/area/hallway/primary/surfacethree)
+/area/maintenance/bar/lower)
 "bjs" = (
 /turf/simulated/wall/prepainted/civilian,
 /area/maintenance/bar)
@@ -23332,6 +23320,24 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
+"oVb" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/lightgrey/border,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/air_alarm{
+	dir = 1;
+	pixel_y = -24
+	},
+/turf/simulated/floor/tiled/steel,
+/area/hallway/primary/surfacethree)
 "oVi" = (
 /obj/structure/disposalpipe/down{
 	dir = 1
@@ -25677,7 +25683,9 @@
 /area/security/checkpoint2)
 "vMR" = (
 /obj/structure/symbol/sa,
-/turf/simulated/wall/r_wall/prepainted/command,
+/turf/simulated/wall/r_wall/prepainted/command{
+	can_open = 1
+	},
 /area/bridge/bunker)
 "vMY" = (
 /obj/effect/floor_decal/borderfloor,
@@ -42033,8 +42041,8 @@ tCt
 aWg
 jpv
 aWg
+vMY
 bis
-cnu
 use
 aKd
 cIq
@@ -42048,7 +42056,7 @@ cIq
 cnu
 vuT
 cnu
-cnu
+bis
 cnu
 cnu
 cnu
@@ -42227,7 +42235,7 @@ anE
 aWg
 jpv
 aWg
-vMY
+oVb
 cnu
 cnu
 cnu
@@ -42241,7 +42249,7 @@ aUi
 aMm
 aUi
 aTv
-cnu
+bis
 aUi
 aIr
 avH
@@ -52076,8 +52084,6 @@ afq
 afq
 afq
 afq
-afq
-afq
 aGO
 aGO
 afq
@@ -52088,6 +52094,8 @@ aXH
 aGO
 aGO
 afq
+afq
+aGO
 afq
 afq
 afq
@@ -52255,8 +52263,6 @@ afq
 afq
 afq
 afq
-afq
-afq
 asH
 aGO
 asH
@@ -52282,6 +52288,8 @@ afq
 aGO
 aGO
 afq
+afq
+aGO
 afq
 afq
 afq
@@ -52436,9 +52444,7 @@ afq
 afq
 afq
 aGO
-aGO
-afq
-afq
+auw
 afq
 afq
 afq
@@ -52475,6 +52481,8 @@ aGO
 afq
 afq
 aGO
+aGO
+afq
 aGO
 afq
 afq
@@ -52642,8 +52650,6 @@ afq
 afq
 afq
 afq
-afq
-afq
 aWs
 avc
 aGO
@@ -52669,6 +52675,8 @@ afq
 afq
 afq
 aGO
+aGO
+afq
 aGO
 afq
 afq
@@ -52836,8 +52844,6 @@ afq
 afq
 afq
 afq
-afq
-afq
 asH
 aya
 axA
@@ -52865,6 +52871,8 @@ aGO
 aGO
 afq
 afq
+aGO
+aGO
 afq
 aGO
 aGO
@@ -53031,8 +53039,6 @@ aGO
 afq
 afq
 afq
-afq
-afq
 ayd
 aGO
 aGO
@@ -53059,6 +53065,8 @@ aGO
 aGO
 afq
 afq
+aGO
+aGO
 aGO
 aGO
 afq
@@ -53225,8 +53233,6 @@ aGO
 aGO
 afq
 afq
-afq
-afq
 axR
 anO
 auw
@@ -53250,6 +53256,8 @@ afq
 afq
 afq
 afq
+aGO
+aGO
 aGO
 aGO
 aGO
@@ -53420,8 +53428,6 @@ aGO
 afq
 afq
 afq
-afq
-afq
 aGO
 aAs
 asH
@@ -53445,6 +53451,8 @@ afq
 afq
 afq
 afq
+aGO
+aGO
 aGO
 aGO
 afq
@@ -53620,8 +53628,6 @@ afq
 afq
 afq
 afq
-afq
-afq
 aGO
 aGO
 aGO
@@ -53641,6 +53647,8 @@ afq
 afq
 afq
 aGO
+aGO
+afq
 afq
 afq
 aGO
@@ -53815,8 +53823,6 @@ afq
 afq
 afq
 afq
-afq
-afq
 aGO
 aXd
 aGO
@@ -53835,6 +53841,8 @@ afq
 afq
 aGO
 aGO
+aGO
+afq
 afq
 afq
 afq
@@ -54009,8 +54017,6 @@ afq
 afq
 afq
 afq
-afq
-afq
 aGO
 aGO
 aGO
@@ -54029,6 +54035,8 @@ afq
 afq
 aGO
 aGO
+afq
+afq
 afq
 afq
 afq
@@ -54195,8 +54203,6 @@ afq
 aGO
 aGO
 aGO
-aGO
-aGO
 afq
 afq
 afq
@@ -54223,6 +54229,8 @@ afq
 afq
 aGO
 aGO
+aGO
+afq
 afq
 afq
 afq
@@ -54392,8 +54400,6 @@ aGO
 aGO
 aGO
 aGO
-aGO
-aGO
 aya
 aGO
 afq
@@ -54415,6 +54421,8 @@ afq
 afq
 afq
 afq
+aGO
+aGO
 aGO
 aGO
 afq
@@ -54585,8 +54593,6 @@ afq
 afq
 afq
 afq
-afq
-afq
 aGO
 aGO
 aGO
@@ -54609,6 +54615,8 @@ afq
 afq
 afq
 afq
+aGO
+aGO
 aGO
 aGO
 aGO
@@ -54779,8 +54787,6 @@ afq
 afq
 afq
 afq
-afq
-afq
 aGO
 afq
 afq
@@ -54791,19 +54797,21 @@ aXd
 aXd
 aGO
 aGO
+afq
+afq
+afq
+afq
+afq
+afq
+afq
+afq
+afq
+afq
+afq
+afq
+afq
 aGO
-afq
-afq
-afq
-afq
-afq
-afq
-afq
-afq
-afq
-afq
-afq
-afq
+aGO
 aGO
 aGO
 afq
@@ -54975,9 +54983,6 @@ afq
 afq
 afq
 afq
-afq
-afq
-aGO
 aGO
 aGO
 aGO
@@ -54997,6 +55002,9 @@ afq
 afq
 afq
 afq
+afq
+afq
+aGO
 afq
 aGO
 aGO
@@ -55169,11 +55177,8 @@ afq
 afq
 afq
 afq
-afq
-afq
 aGO
 afq
-aGO
 aGO
 aGO
 aGO
@@ -55185,6 +55190,9 @@ aGO
 asH
 axR
 aGO
+afq
+afq
+afq
 afq
 afq
 afq
@@ -55331,7 +55339,7 @@ afq
 afq
 afq
 afq
-aGO
+auw
 afq
 afq
 afq
@@ -55358,8 +55366,6 @@ afq
 afq
 afq
 afq
-afq
-afq
 ajp
 aGO
 aGO
@@ -55372,7 +55378,6 @@ afq
 aGO
 aGO
 aXd
-aGO
 afq
 afq
 axA
@@ -55380,6 +55385,9 @@ auw
 aGO
 aGO
 auw
+afq
+afq
+afq
 afq
 afq
 afq
@@ -55552,8 +55560,6 @@ afq
 afq
 afq
 afq
-afq
-afq
 auw
 aAs
 aGO
@@ -55567,7 +55573,6 @@ afq
 aGO
 afq
 afq
-afq
 asH
 axR
 aGO
@@ -55576,6 +55581,9 @@ afq
 asH
 aGO
 anO
+afq
+afq
+afq
 afq
 afq
 afq
@@ -55746,8 +55754,6 @@ afq
 afq
 afq
 afq
-afq
-afq
 aGO
 aGO
 aGO
@@ -55759,7 +55765,6 @@ aGO
 aGO
 afq
 aGO
-afq
 afq
 afq
 afq
@@ -55772,6 +55777,9 @@ axR
 aGO
 auw
 asH
+afq
+afq
+afq
 afq
 afq
 afq
@@ -55939,8 +55947,6 @@ aGO
 afq
 afq
 afq
-afq
-afq
 aWs
 axA
 auw
@@ -55963,9 +55969,11 @@ afq
 afq
 afq
 afq
-afq
 aWs
 axR
+afq
+afq
+afq
 afq
 afq
 afq
@@ -56134,10 +56142,10 @@ afq
 afq
 afq
 afq
-afq
-afq
 aGO
 aGO
+afq
+afq
 afq
 afq
 afq
@@ -56328,10 +56336,10 @@ afq
 afq
 afq
 afq
-afq
-afq
 axR
 aGO
+afq
+afq
 afq
 afq
 afq
@@ -56522,12 +56530,9 @@ afq
 afq
 afq
 afq
-afq
-afq
 aGO
 aGO
 aGO
-afq
 afq
 afq
 afq
@@ -56546,6 +56551,9 @@ afq
 afq
 asH
 aGO
+afq
+afq
+afq
 afq
 afq
 afq
@@ -56718,12 +56726,9 @@ afq
 afq
 afq
 afq
-afq
-afq
 aGO
 aGO
 aGO
-afq
 afq
 afq
 afq
@@ -56741,6 +56746,9 @@ aWs
 aGO
 axR
 asH
+afq
+afq
+afq
 afq
 afq
 afq
@@ -56914,18 +56922,15 @@ afq
 afq
 afq
 afq
-afq
-afq
 aGO
 aGO
 aGO
 aGO
-aGO
+auw
 aGO
 aGO
 afq
 anO
-auw
 aXH
 aGO
 afq
@@ -56936,6 +56941,9 @@ aGO
 aGO
 aGO
 anO
+afq
+afq
+afq
 afq
 afq
 afq
@@ -57110,8 +57118,6 @@ afq
 afq
 afq
 afq
-afq
-afq
 auw
 axR
 aGO
@@ -57119,7 +57125,6 @@ aGO
 auw
 aGO
 aGO
-afq
 afq
 aGO
 aGO
@@ -57131,6 +57136,9 @@ aGO
 aAs
 aGO
 aGO
+afq
+afq
+afq
 afq
 afq
 afq
@@ -57302,8 +57310,6 @@ afq
 afq
 afq
 afq
-afq
-afq
 aGO
 aGO
 aGO
@@ -57320,12 +57326,14 @@ afq
 afq
 afq
 afq
-afq
 aGO
 aGO
 aya
 asH
 asH
+afq
+afq
+afq
 afq
 afq
 afq
@@ -57495,11 +57503,8 @@ afq
 afq
 afq
 afq
-afq
-afq
 aGO
 aGO
-afq
 afq
 afq
 afq
@@ -57520,6 +57525,9 @@ aUF
 aGO
 aGO
 auw
+afq
+afq
+afq
 afq
 afq
 afq
@@ -57688,11 +57696,8 @@ aGO
 afq
 afq
 afq
-afq
-afq
 aGO
 aGO
-afq
 afq
 afq
 afq
@@ -57714,6 +57719,9 @@ axR
 aGO
 aGO
 aWs
+afq
+afq
+afq
 afq
 afq
 afq
@@ -57882,10 +57890,7 @@ aGO
 aGO
 afq
 afq
-afq
-afq
 aGO
-afq
 afq
 afq
 afq
@@ -57908,6 +57913,9 @@ aGO
 aGO
 asH
 anO
+afq
+afq
+afq
 afq
 afq
 afq
@@ -58077,9 +58085,6 @@ aGO
 aGO
 aGO
 aGO
-aGO
-aGO
-afq
 afq
 afq
 afq
@@ -58100,6 +58105,9 @@ aWs
 aUF
 aYb
 ajp
+afq
+afq
+afq
 afq
 afq
 afq
@@ -58268,11 +58276,8 @@ afq
 afq
 afq
 afq
-afq
-afq
 aGO
 aGO
-afq
 afq
 afq
 afq
@@ -58294,6 +58299,9 @@ aMN
 aya
 aGO
 asH
+afq
+afq
+afq
 afq
 afq
 afq
@@ -58481,12 +58489,12 @@ afq
 afq
 afq
 afq
-afq
-afq
-afq
 asH
 aGO
 aUb
+afq
+afq
+afq
 afq
 afq
 afq
