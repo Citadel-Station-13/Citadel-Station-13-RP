@@ -3388,7 +3388,6 @@
 /obj/machinery/door/airlock/glass/medical/polarized{
 	id_tint = "medbay_outer";
 	name = "Medbay Lobby";
-	id = "medbay_outer"
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
@@ -6569,7 +6568,6 @@
 	id_tint = "medbay_outer";
 	name = "Medbay Lobby";
 	req_one_access = list(5);
-	id = "medbay_outer"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/medical/reception)
