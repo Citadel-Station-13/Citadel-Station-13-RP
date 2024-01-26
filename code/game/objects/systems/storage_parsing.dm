@@ -56,30 +56,6 @@
 	to_chat(M, "<span class='notice'>You put everything you could [insert_preposition] [parent].</span>")
 	A.do_squish(1.4, 0.4)
 
-
-/datum/component/storage/proc/handle_mass_pickup(list/things, atom/thing_loc, list/rejections, datum/progressbar/progress)
-	var/atom/real_location = real_location()
-	for(var/obj/item/I in things)
-		things -= I
-		if(I.loc != thing_loc)
-			continue
-		if(I.type in rejections) // To limit bag spamming: any given type only complains once
-			continue
-		if(!can_be_inserted(I, stop_messages = TRUE))	// Note can_be_inserted still makes noise when the answer is no
-			if(real_location.contents.len >= max_items)
-				break
-			rejections += I.type	// therefore full bags are still a little spammy
-			continue
-
-		handle_item_insertion(I, TRUE)	//The TRUE stops the "You put the [parent] into [S]" insertion message from being displayed.
-
-		if (TICK_CHECK)
-			progress.update(progress.goal - things.len)
-			return TRUE
-
-	progress.update(progress.goal - things.len)
-	return FALSE
-
 /datum/component/storage/proc/quick_empty(mob/M)
 	var/atom/A = parent
 	if(!M.canUseStorage() || !A.Adjacent(M) || M.incapacitated())
@@ -96,21 +72,6 @@
 	qdel(progress)
 	A.do_squish(0.8, 1.2)
 
-/datum/component/storage/proc/mass_remove_from_storage(atom/target, list/things, datum/progressbar/progress, trigger_on_found = TRUE, mob/user)
-	var/atom/real_location = real_location()
-	for(var/obj/item/I in things)
-		things -= I
-		if(I.loc != real_location)
-			continue
-		if(trigger_on_found && user && (user.active_storage != src) && I.on_found(user))
-			return FALSE
-		remove_from_storage(I, target)
-		if(TICK_CHECK)
-			progress.update(progress.goal - length(things))
-			return TRUE
-	progress.update(progress.goal - length(things))
-	return FALSE
-
 /datum/component/storage/proc/do_quick_empty(atom/_target)
 	if(!_target)
 		_target = get_turf(parent)
@@ -123,67 +84,6 @@
 			continue
 		remove_from_storage(I, _target)
 	return TRUE
-
-//Tries to dump content
-/datum/component/storage/proc/dump_content_at(atom/dest_object, mob/M)
-	var/atom/A = parent
-	var/atom/dump_destination = dest_object.get_dumping_location()
-	if(A.Adjacent(M) && dump_destination && M.Adjacent(dump_destination))
-		if(check_locked(null, M, TRUE))
-			return FALSE
-		if(dump_destination.storage_contents_dump_act(src, M))
-			playsound(A, "rustle", 50, 1, -5)
-			A.do_squish(0.8, 1.2)
-			return TRUE
-	return FALSE
-
-/datum/component/storage/proc/mousedrop_onto(datum/source, atom/over_object, mob/M)
-	SIGNAL_HANDLER
-
-	set waitfor = FALSE
-	. = COMPONENT_NO_MOUSEDROP
-	if(!ismob(M))
-		return
-	if(!over_object)
-		return
-	if(ismecha(M.loc)) // stops inventory actions in a mech
-		return
-	if(M.incapacitated() || !M.canUseStorage())
-		return
-	var/atom/A = parent
-	A.add_fingerprint(M)
-	// this must come before the screen objects only block, dunno why it wasn't before
-	if(over_object == M)
-		user_show_to_mob(M, trigger_on_found = TRUE)
-	if(isrevenant(M))
-		INVOKE_ASYNC(GLOBAL_PROC, .proc/RevenantThrow, over_object, M, source)
-		return
-	if(!istype(over_object, /atom/movable/screen))
-		INVOKE_ASYNC(src, .proc/dump_content_at, over_object, M)
-		return
-	if(A.loc != M)
-		return
-	playsound(A, "rustle", 50, TRUE, -5)
-	A.do_jiggle()
-	if(istype(over_object, /atom/movable/screen/inventory/hand))
-		var/atom/movable/screen/inventory/hand/H = over_object
-		M.putItemFromInventoryInHandIfPossible(A, H.held_index)
-		return
-	A.add_fingerprint(M)
-
-//This proc handles items being inserted. It does not perform any checks of whether an item can or can't be inserted. That's done by can_be_inserted()
-//The stop_warning parameter will stop the insertion message from being displayed. It is intended for cases where you are inserting multiple items at once,
-//such as when picking up all the items on a tile with one click.
-/datum/component/storage/proc/handle_item_insertion(obj/item/I, prevent_warning = FALSE, mob/M, datum/component/storage/remote)
-	var/atom/parent = src.parent
-	var/datum/component/storage/concrete/master = master()
-	if(!istype(master))
-		return FALSE
-	if(silent)
-		prevent_warning = TRUE
-	if(M)
-		parent.add_fingerprint(M)
-	. = master.handle_item_insertion_from_slave(src, I, prevent_warning, M)
 
 /datum/component/storage/proc/mob_item_insertion_feedback(mob/user, mob/M, obj/item/I, override = FALSE)
 	if(silent && !override)
