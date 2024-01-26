@@ -570,6 +570,9 @@
 	return TRUE
 
 /datum/object_system/storage/proc/interacted_mass_transfer(datum/event_args/actor/actor, datum/object_system/storage/to_storage)
+	var/list/obj/item/transferring = list()
+	for(var/obj/item/item in real_contents_loc())
+		transferring += item
 	#warn impl
 
 /datum/object_system/storage/proc/interacted_mass_pickup(datum/event_args/actor/actor, atom/from_loc)
@@ -594,6 +597,8 @@
 	#warn impl
 
 /datum/object_system/storage/proc/interacted_mass_dumping(datum/event_args/actor/actor, atom/to_loc)
+	var/list/obj/item/dumping = mass_dumping_query()
+
 	#warn impl
 
 /**
@@ -608,11 +613,35 @@
  * * to_storage - destination storage
  * * progress - (optional) progressbar to update
  * * actor - (optional) person doing it
+ * * rejections_out - (optional) rejected items
+ * * trigger_on_found - trigger on found?
+ *
+ * This proc does not update / refresh UIs, please do that manually when using this proc.
  *
  * @return TRUE if not done, FALSE if done.
  */
-/datum/object_system/storage/proc/mass_storage_transfer_handler(list/obj/item/things, datum/object_system/storage/to_storage, datum/progressbar/progress, datum/event_args/actor/actor)
-	#warn impl
+/datum/object_system/storage/proc/mass_storage_transfer_handler(list/obj/item/things, datum/object_system/storage/to_storage, datum/progressbar/progress, datum/event_args/actor/actor, list/obj/item/rejections_out = list(), trigger_on_found = TRUE)
+	var/atom/indirection = real_contents_loc()
+	var/i
+	. = FALSE
+	for(i in length(things) to 1 step -1)
+		var/obj/item/transferring = things[i]
+		// make sure they're still there
+		if(transferring.loc != indirection)
+			continue
+		// handle on open hooks if needed
+		if(trigger_on_found && actor?.performer.active_storage != src && transferring.on_containing_storage_opening(actor, src))
+			break
+		// see if receiver can accept it
+		if(!to_storage.try_insert(transferring, actor, TRUE, TRUE, TRUE))
+			rejections_out += transferring
+			continue
+		// stop if overtaxed
+		if(TICK_CHECK)
+			. = TRUE
+			break
+	progress.update(progress.goal - length(things) + i)
+	things.Cut(i, length(things) + 1)
 
 /**
  * handles mass item pickups
@@ -623,15 +652,33 @@
  *
  * @params
  * * things - things to transfer
- * * from_storage - source storage
+ * * from_loc - source loc
  * * progress - (optional) progressbar to update
  * * actor - (optional) person doing it
- * * rejections - (optional) list to add rejected items to
+ * * rejections_out - (optional) list to add rejected items to
+ *
+ * This proc does not update / refresh UIs, please do that manually when using this proc.
  *
  * @return TRUE if not done, FALSE if done
  */
-/datum/object_system/storage/proc/mass_storage_pickup_handler(list/obj/item/things, atom/from_loc, datum/progressbar/progress, datum/event_args/actor/actor, list/rejections_out)
-	#warn impl
+/datum/object_system/storage/proc/mass_storage_pickup_handler(list/obj/item/things, atom/from_loc, datum/progressbar/progress, datum/event_args/actor/actor, list/rejections_out = list())
+	var/i
+	. = FALSE
+	for(i in length(things) to 1 step -1)
+		var/obj/item/transferring = things[i]
+		// make sure they're still there
+		if(transferring.loc != from_loc)
+			continue
+		// see if we can accept it
+		if(!try_insert(transferring, actor, TRUE, TRUE, TRUE))
+			rejections_out += transferring
+			continue
+		// stop if overtaxed
+		if(TICK_CHECK)
+			. = TRUE
+			break
+	progress.update(progress.goal - length(things) + i)
+	things.Cut(i, length(things) + 1)
 
 /**
  * handles mass item dumps
@@ -642,15 +689,38 @@
  *
  * @params
  * * things - things to transfer
- * * from_storage - source storage
+ * * to_loc - where to transfer
  * * progress - (optional) progressbar to update
  * * actor - (optional) person doing it
- * * rejections - (optional) list to add rejected items to
+ * * rejections_out - (optional) list to add rejected items to
+ * * trigger_on_found - trigger on found?
+ *
+ * This proc does not update / refresh UIs, please do that manually when using this proc.
  *
  * @return TRUE if not done, FALSE if done
  */
-/datum/object_system/storage/proc/mass_storage_dumping_handler(list/obj/item/things, atom/to_loc, datum/progressbar/progress, datum/event_args/actor/actor, trigger_on_found = TRUE)
-	#warn impl
+/datum/object_system/storage/proc/mass_storage_dumping_handler(list/obj/item/things, atom/to_loc, datum/progressbar/progress, datum/event_args/actor/actor, list/rejections_out = list(), trigger_on_found = TRUE)
+	var/atom/indirection = real_contents_loc()
+	var/i
+	. = FALSE
+	for(i in length(things) to 1 step -1)
+		var/obj/item/transferring = things[i]
+		// make sure they're still there
+		if(transferring.loc != indirection)
+			continue
+		// handle on open hooks if needed
+		if(trigger_on_found && actor?.performer.active_storage != src && transferring.on_containing_storage_opening(actor, src))
+			break
+		// see if we can remove it
+		if(!try_remove(transferring, to_loc, actor, TRUE, TRUE, TRUE))
+			rejections_out += transferring
+			continue
+		// stop if overtaxed
+		if(TICK_CHECK)
+			. = TRUE
+			break
+	progress.update(progress.goal - length(things) + i)
+	things.Cut(i, length(things) + 1)
 
 /**
  * what to drop

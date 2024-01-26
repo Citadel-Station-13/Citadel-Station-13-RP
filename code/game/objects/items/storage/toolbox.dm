@@ -63,7 +63,7 @@
 		new /obj/item/clothing/gloves/yellow(src)
 	else
 		new /obj/item/stack/cable_coil/random(src,30)
-	calibrate_size()
+	obj_storage.fit_to_contents()
 
 /obj/item/storage/toolbox/syndicate
 	name = "black and red toolbox"

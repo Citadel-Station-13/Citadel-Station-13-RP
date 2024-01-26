@@ -137,28 +137,6 @@
 	new /obj/item/pickaxe/five_pick(src)
 	new /obj/item/pickaxe/six_pick(src)
 
-/obj/item/storage/excavation/handle_item_insertion()
-	..()
-	sort_picks()
-
-/obj/item/storage/excavation/proc/sort_picks()
-	var/list/obj/item/pickaxe/picksToSort = list()
-	for(var/obj/item/pickaxe/P in src)
-		picksToSort += P
-		P.loc = null
-	while(picksToSort.len)
-		var/min = 200 // No pick is bigger than 200
-		var/selected = 0
-		for(var/i = 1 to picksToSort.len)
-			var/obj/item/pickaxe/current = picksToSort[i]
-			if(current.excavation_amount <= min)
-				selected = i
-				min = current.excavation_amount
-		var/obj/item/pickaxe/smallest = picksToSort[selected]
-		smallest.loc = src
-		picksToSort -= smallest
-	orient2hud()
-
 /obj/item/pickaxe/excavationdrill
 	name = "excavation drill"
 	icon = 'icons/obj/xenoarchaeology.dmi'

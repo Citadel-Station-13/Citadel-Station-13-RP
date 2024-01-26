@@ -362,7 +362,7 @@
 		if(obj_storage.allow_outbound_mass_transfer && obj_storage.allow_clickdrag_mass_transfer && isobj(over))
 			var/obj/object = over
 			if(object.obj_storage.allow_inbound_mass_transfer)
-				obj_storage.interacted_mass_storage_transfer(new /datum/event_args/actor(user), object.obj_storage)
+				obj_storage.interacted_mass_transfer(new /datum/event_args/actor(user), object.obj_storage)
 				return CLICKCHAIN_DO_NOT_PROPAGATE
 		// clickdrag to ground mass dumping
 		if(obj_storage.allow_quick_empty_via_clickdrag && obj_storage.allow_quick_empty && isturf(over))
@@ -537,7 +537,7 @@
 			return TRUE
 		if("obj_storage")
 			obj_storage?.auto_handle_interacted_open(e_args)
-			return TRUE	
+			return TRUE
 	return ..()
 
 //* EMP *//
@@ -568,14 +568,14 @@
 
 /**
  * Returns stuff considered to be inside this object's inventory.
- * 
+ *
  * Do not return ourselves or there will be an infinite loop in many callers!
- * 
+ *
  * @return list()
  */
 /obj/proc/return_inventory()
 	return isnull(obj_storage)? list() : obj_storage.contents()
-	
+
 //* Examine *//
 
 /obj/examine(mob/user, dist)
@@ -617,7 +617,7 @@
 	. = ..()
 	if(isitem(AM))
 		obj_storage?.on_item_entered(AM)
-		
+
 //* Orientation *//
 
 /**

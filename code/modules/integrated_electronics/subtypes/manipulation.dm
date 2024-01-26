@@ -598,6 +598,7 @@
 	var/max_items = 10
 
 /obj/item/integrated_circuit/manipulation/inserter/do_work(ord)
+	// todo: this doesn't even fucking work
 	if(ord == 1)
 		//There shouldn't be any target required to eject all contents
 		var/obj/item/target_obj = get_pin_data_as_type(IC_INPUT, 1, /obj/item)
@@ -625,7 +626,7 @@
 			if(0)
 				if(A && isstorage(A) && Adjacent(A))
 					var/obj/item/storage/S = A
-					S.remove_from_storage(target_obj,drop_location())
+					S.obj_storage.try_remove(target_obj, drop_location())
 					activate_pin(2)
 					return TRUE
 				return

@@ -34,7 +34,7 @@
 			return
 		S.obj_storage?.hide(user)
 		for(var/obj/item/stack/ore/O in S.contents)
-			S.remove_from_storage(O, src) //This will move the item to this item's contents
+			S.forceMove(src)
 		user.visible_message(SPAN_NOTICE("[user] offloads ores from [W] into [src]."), SPAN_NOTICE("You offload the ores in [W] into [src]."))
 
 /obj/structure/ore_box/examine(mob/user, dist)

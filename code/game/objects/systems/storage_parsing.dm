@@ -56,23 +56,6 @@
 	to_chat(M, "<span class='notice'>You put everything you could [insert_preposition] [parent].</span>")
 	A.do_squish(1.4, 0.4)
 
-/datum/component/storage/proc/handle_mass_item_insertion(list/things, datum/component/storage/src_object, mob/user, datum/progressbar/progress)
-	var/atom/source_real_location = src_object.real_location()
-	for(var/obj/item/I in things)
-		things -= I
-		if(I.loc != source_real_location)
-			continue
-		if(user.active_storage != src_object)
-			if(I.on_found(user))
-				break
-		if(can_be_inserted(I,FALSE,user))
-			handle_item_insertion(I, TRUE, user)
-		if (TICK_CHECK)
-			progress.update(progress.goal - things.len)
-			return TRUE
-
-	progress.update(progress.goal - things.len)
-	return FALSE
 
 /datum/component/storage/proc/handle_mass_pickup(list/things, atom/thing_loc, list/rejections, datum/progressbar/progress)
 	var/atom/real_location = real_location()

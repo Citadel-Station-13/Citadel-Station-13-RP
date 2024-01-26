@@ -366,6 +366,7 @@
 #include "code\__HELPERS\files\hashing.dm"
 #include "code\__HELPERS\files\paths.dm"
 #include "code\__HELPERS\files\walk.dm"
+#include "code\__HELPERS\game\depth.dm"
 #include "code\__HELPERS\graphs\astar.dm"
 #include "code\__HELPERS\icons\alpha.dm"
 #include "code\__HELPERS\icons\color.dm"
