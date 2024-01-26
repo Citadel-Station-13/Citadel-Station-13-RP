@@ -25774,7 +25774,7 @@
 	},
 /obj/item/reagent_containers/spray/cleaner{
 	name = "HAZMAT Cleaner";
-	desc = "Heavy duty phenol-sodium hypochlorite bleach-based cleaner for the worst possible sanitary conditions. Do not allow runoff to enter drains or natural waterways. Corrosive, toxic, caauses cancer, wear proper PPE including a full-face respirator, internals, galoshes, and corrosion resistant 5mm thick rubber gloves.";
+	desc = "Heavy duty phenol-sodium hypochlorite bleach-based cleaner for the worst possible sanitary conditions. Do not allow runoff to enter drains or natural waterways. Corrosive, toxic, causes cancer, wear proper PPE including a full-face respirator, internals, galoshes, and corrosion resistant 5mm thick rubber gloves.";
 	start_reagent = /datum/reagent/acid/polyacid
 	},
 /turf/simulated/floor/tiled/steel,
@@ -32032,7 +32032,7 @@
 /obj/structure/closet/l3closet/janitor,
 /obj/item/reagent_containers/spray/cleaner{
 	name = "HAZMAT Cleaner";
-	desc = "Heavy duty phenol-sodium hypochlorite bleach-based cleaner for the worst possible sanitary conditions. Do not allow runoff to enter drains or natural waterways. Corrosive, toxic, caauses cancer, wear proper PPE including a full-face respirator, internals, galoshes, and corrosion resistant 5mm thick rubber gloves.";
+	desc = "Heavy duty phenol-sodium hypochlorite bleach-based cleaner for the worst possible sanitary conditions. Do not allow runoff to enter drains or natural waterways. Corrosive, toxic, causes cancer, wear proper PPE including a full-face respirator, internals, galoshes, and corrosion resistant 5mm thick rubber gloves.";
 	start_reagent = /datum/reagent/acid/polyacid
 	},
 /turf/simulated/floor/tiled/steel,
