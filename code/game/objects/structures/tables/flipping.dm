@@ -123,8 +123,8 @@
 				break
 	if(failed)
 		to_chat(usr, SPAN_WARNING("[blocking? "[blocking] is in the way!" : "It won't budge."]"))
-
-	unflip()
+	else
+		unflip()
 
 /obj/structure/table/proc/flip(var/direction)
 	var/list/obj/structure/table/tables = tableflip_closure(direction)
