@@ -15,7 +15,7 @@
 	light_color = "#05A6A8"
 
 /obj/machinery/computer/ship/sensors/planet
-	name = "Sensor satelite uplinke console"
+	name = "Sensor satelite uplink console"
 	var/planet_type = /obj/overmap/entity/visitable/sector/lythios43c
 
 /obj/machinery/computer/ship/sensors/planet/Initialize(mapload)
@@ -275,7 +275,7 @@
 
 /obj/machinery/shipsensors/uplink
 	name = "sensors uplink"
-	desc = "A high power up link, connecting to a satelite with a high power sensor array and a sophisticated cooling system."
+	desc = "A high power uplink, connecting to a satelite with a high power sensor array and a sophisticated cooling system."
 	var/planet_type = /obj/overmap/entity/visitable/sector/lythios43c
 	heat_factor = 0.1//Much much lower, since we are a cool sensor sat.
 
