@@ -8,15 +8,16 @@
 /// Size of EACH left/right border icon for volumetric boxes
 #define VOLUMETRIC_STORAGE_BOX_BORDER_SIZE 2
 /// Minimum pixels an item must have in volumetric scaled storage UI
-#define VOLUMETRIC_STORAGE_MINIMUM_PIXELS_PER_ITEM 8
+/// This must not be smaller than BOX_BORDER_SIZE * 2.
+#define VOLUMETRIC_STORAGE_MINIMUM_PIXELS_PER_ITEM 6
 /// Maximum number of objects that will be allowed to be displayed using the volumetric display system. Arbitrary number to prevent server lockups.
 #define VOLUMETRIC_STORAGE_MAX_ITEMS 128
 /// How much padding to give between items
-#define VOLUMETRIC_STORAGE_ITEM_PADDING 4
+#define VOLUMETRIC_STORAGE_ITEM_PADDING 2
 /// How much padding to give to edges
 #define VOLUMETRIC_STORAGE_EDGE_PADDING 1
 /// Standard pixel width ratio for volumetric storage; 1 volume converts into this many pixels.
-#define VOLUMETRIC_STORAGE_STANDARD_PIXEL_RATIO 8
+#define VOLUMETRIC_STORAGE_STANDARD_PIXEL_RATIO 4
 
 //* Storage quick gather modes *//
 

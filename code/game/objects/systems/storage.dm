@@ -921,43 +921,76 @@
 		return create_ui_slot_mode(user)
 	. = list()
 
-	var/atom/movable/screen/storage/panel/volumetric/left = new
-	. += left
-	var/atom/movable/screen/storage/panel/volumetric/middle = new
-	. += middle
 	var/atom/movable/screen/storage/closer/closer = new
 	. += closer
+	var/atom/movable/screen/storage/panel/volumetric/left/p_left = new
+	var/atom/movable/screen/storage/panel/volumetric/middle/p_box = new
+	. += p_left
+	. += p_box
 	// todo: clientless support is awful here
 	var/list/decoded_view = decode_view_size(user.client?.view || world.view)
 	var/view_x = decoded_view[1]
 	var/rendering_width = STORAGE_UI_TILES_FOR_SCREEN_VIEW_X(view_x)
-	#warn impl
-
-/*
-
-#define STORAGE_UI_START_TILE_X 4
-#define STORAGE_UI_START_TILE_Y 2
-#define STORAGE_UI_START_PIXEL_X 16
-#define STORAGE_UI_START_PIXEL_Y 16
-#define STORAGE_UI_TILES_FOR_SCREEN_VIEW_X(X) max(4, X - 8)
-#define STORAGE_UI_MAX_ROWS 3
-
-/// Size of volumetric box icon
-#define VOLUMETRIC_STORAGE_BOX_ICON_SIZE 32
-/// Size of EACH left/right border icon for volumetric boxes
-#define VOLUMETRIC_STORAGE_BOX_BORDER_SIZE 1
-/// Minimum pixels an item must have in volumetric scaled storage UI
-#define VOLUMETRIC_STORAGE_MINIMUM_PIXELS_PER_ITEM 16
-/// Maximum number of objects that will be allowed to be displayed using the volumetric display system. Arbitrary number to prevent server lockups.
-#define VOLUMETRIC_STORAGE_MAX_ITEMS 128
-/// How much padding to give between items
-#define VOLUMETRIC_STORAGE_ITEM_PADDING 4
-/// How much padding to give to edges
-#define VOLUMETRIC_STORAGE_EDGE_PADDING 1
-/// Standard pixel width ratio for volumetric storage; 1 volume converts into this many pixels.
-#define VOLUMETRIC_STORAGE_STANDARD_PIXEL_RATIO 8
-
-*/
+	// todo: optimize
+	var/rendering_width_in_pixels = rendering_width * 32
+	// effective max scales up if we're overrunning
+	var/effective_max_volume = max(max_combined_volume, cached_combined_volume)
+	// scale down width if it's too much
+	// todo: redo autoscaling
+	// todo: optimize
+	rendering_width_in_pixels = min(rendering_width_in_pixels, effective_max_volume * VOLUMETRIC_STORAGE_STANDARD_PIXEL_RATIO)
+	rendering_width = ceil(rendering_width_in_pixels / WORLD_ICON_SIZE)
+	rendering_width_in_pixels = rendering_width * 32
+	// ratio of usage to width
+	var/effective_pixels_per_volume = cached_combined_volume
+	// render closer
+	closer.screen_loc = "[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X + rendering_width_in_pixels],\
+		[STORAGE_UI_START_TILE_Y]:[STORAGE_UI_START_PIXEL_Y]"
+	// prepare iteration
+	// we set this to high values so we save on some code reuse because it'll make the row for us
+	var/current_pixel_x = INFINITY
+	var/current_row = 0
+	// resolve indirections
+	var/atom/indirection = real_contents_loc()
+	// iterate and render
+	var/safety = VOLUMETRIC_STORAGE_MAX_ITEMS
+	for(var/obj/item/item in indirection)
+		// bye bye!
+		if(!--safety)
+			to_chat(user, SPAN_WARNING("Some items in this storage have been truncated for performance reasons."))
+			break
+		// check row
+		// why are we adding padding and minimum pixels?
+		// because we
+		// 1. don't want to shove stuff into the padding
+		// 2. don't want to render another item if there's not enough pixels
+		if(current_pixel_x >= (rendering_width_in_pixels - (VOLUMETRIC_STORAGE_EDGE_PADDING + VOLUMETRIC_STORAGE_MINIMUM_PIXELS_PER_ITEM)))
+			// do we have another row to make?
+			if(current_row >= STORAGE_UI_MAX_ROWS)
+				break
+			// make another row
+			++current_row
+			// we start on the next pixel after edge padding
+			current_pixel_x = VOLUMETRIC_STORAGE_EDGE_PADDING
+		// render the item
+		var/atom/movable/screen/storage/item/volumetric/renderer = new(null, item)
+		// scale it as necessary, to nearest multiple of 2
+		var/used_pixels = max(VOLUMETRIC_STORAGE_MINIMUM_PIXELS_PER_ITEM, CEILING(rendering_width_in_pixels * (item.get_weight_volume() / effective_max_volume), 2))
+		renderer.set_pixel_width(used_pixels)
+		// set screen loc
+		renderer.screen_loc = "[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X + current_pixel_x + (used_pixels - VOLUMETRIC_STORAGE_BOX_ICON_SIZE) * 0.5],\
+			[STORAGE_UI_START_TILE_Y + current_row]:[STORAGE_UI_START_PIXEL_Y]"
+		// consume pixels, along with padding required
+		current_pixel_x += used_pixels + VOLUMETRIC_STORAGE_ITEM_PADDING
+	// resize the boxes to fit the rows
+	p_left.screen_loc = "[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X],\
+		[STORAGE_UI_START_TILE_Y + current_row]:[STORAGE_UI_START_PIXEL_Y] to \
+		[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X],\
+		[STORAGE_UI_START_TILE_Y + current_row]:[STORAGE_UI_START_PIXEL_Y]"
+	p_box.screen_loc = "[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X],\
+		[STORAGE_UI_START_TILE_Y]:[STORAGE_UI_START_PIXEL_Y] to \
+		[STORAGE_UI_START_TILE_X + rendering_width]:[STORAGE_UI_START_PIXEL_X],\
+		[STORAGE_UI_START_TILE_Y + current_row - 1]:[STORAGE_UI_START_PIXEL_Y]"
 
 /**
  * Stack storage
