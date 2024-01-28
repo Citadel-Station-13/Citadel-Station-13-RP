@@ -7,7 +7,7 @@
 	department_flag = CIVILIAN
 	total_positions = 5
 	spawn_positions = 5
-	supervisors = "the Pathfinder and the Head of Personnel"
+	supervisors = "the Head of Personnel"
 	idtype = /obj/item/card/id/explorer/pilot
 	selection_color = "#515151"
 	minimal_player_age = 3
