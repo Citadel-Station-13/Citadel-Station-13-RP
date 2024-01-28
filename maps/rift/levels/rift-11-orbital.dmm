@@ -2678,6 +2678,14 @@
 /obj/machinery/door/airlock/command{
 	name = "Cockpit"
 	},
+/obj/machinery/door/blast/shutters{
+	density = 0;
+	icon_state = "shutter0";
+	id = "emergency_shuttle_lockdown";
+	layer = 3.1;
+	name = "Cockpit Lockdown Shutters";
+	opacity = 0
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/shuttle/escape)
 "iI" = (
@@ -4300,7 +4308,7 @@
 	id = "emergency_shuttle_lockdown";
 	name = "Emergency Shuttle Blast Door"
 	},
-/obj/spawner/window/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/reinforced,
 /area/shuttle/escape)
 "nd" = (
@@ -4525,7 +4533,17 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "nM" = (
-/obj/spawner/window/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	id = "emergency_cockpit"
+	},
+/obj/machinery/door/blast/shutters{
+	density = 0;
+	icon_state = "shutter0";
+	id = "emergency_shuttle_lockdown";
+	layer = 3.1;
+	name = "Cockpit Lockdown Shutters";
+	opacity = 0
+	},
 /turf/simulated/floor,
 /area/shuttle/escape)
 "nN" = (
@@ -8192,6 +8210,12 @@
 	},
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
+"HU" = (
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	id = "emergency_security"
+	},
+/turf/simulated/floor,
+/area/shuttle/escape)
 "HY" = (
 /obj/machinery/shieldwallgen,
 /turf/unsimulated/floor/dark,
@@ -8210,6 +8234,12 @@
 /obj/structure/table/reinforced,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
+"Iu" = (
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	id = "emergency_medical"
+	},
+/turf/simulated/floor,
+/area/shuttle/escape)
 "Iv" = (
 /obj/structure/table/rack,
 /obj/item/tank/emergency/oxygen/double,
@@ -8578,6 +8608,17 @@
 /obj/item/hand_tele,
 /turf/unsimulated/floor/wood,
 /area/centcom/specops)
+"LK" = (
+/obj/machinery/atmospherics/pipe/simple/visible/fuel,
+/obj/machinery/door/blast/regular/open{
+	id = "emergency_shuttle_lockdown";
+	name = "Emergency Shuttle Blast Door"
+	},
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	id = "emergency_medical"
+	},
+/turf/simulated/floor/reinforced,
+/area/shuttle/escape)
 "LP" = (
 /obj/structure/cable{
 	icon_state = "0-4"
@@ -8722,6 +8763,17 @@
 /obj/machinery/pipedispenser/disposal/orderable,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
+"Nf" = (
+/obj/machinery/atmospherics/pipe/simple/visible/fuel,
+/obj/machinery/door/blast/regular/open{
+	id = "emergency_shuttle_lockdown";
+	name = "Emergency Shuttle Blast Door"
+	},
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	id = "emergency_security"
+	},
+/turf/simulated/floor/reinforced,
+/area/shuttle/escape)
 "Nn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
@@ -8739,6 +8791,10 @@
 /obj/effect/shuttle_landmark/rift/deck4/northeast,
 /turf/simulated/sky/lythios43c/moving/south,
 /area/space)
+"NN" = (
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/turf/simulated/floor,
+/area/shuttle/escape)
 "NP" = (
 /obj/structure/table/rack,
 /obj/item/gun/ballistic/automatic/lmg,
@@ -9302,6 +9358,16 @@
 	},
 /turf/unsimulated/floor/dark,
 /area/tdome/tdome1)
+"TX" = (
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	id = "emergency_cockpit"
+	},
+/obj/machinery/door/blast/regular/open{
+	id = "emergency_shuttle_lockdown";
+	name = "Emergency Shuttle Blast Door"
+	},
+/turf/simulated/floor,
+/area/shuttle/escape)
 "TY" = (
 /turf/simulated/floor/reinforced,
 /area/centcom/command)
@@ -11364,8 +11430,8 @@ lJ
 mo
 mG
 kt
-nc
-nc
+Nf
+Nf
 kt
 ob
 gx
@@ -11935,7 +12001,7 @@ ge
 gx
 gy
 gz
-nM
+TX
 gy
 jk
 jR
@@ -12334,7 +12400,7 @@ lL
 gz
 gy
 mY
-nM
+HU
 iE
 gz
 of
@@ -12514,7 +12580,7 @@ dl
 eC
 fC
 ge
-nM
+TX
 ha
 hj
 hY
@@ -12530,7 +12596,7 @@ mK
 ia
 nf
 ns
-nM
+NN
 og
 oI
 px
@@ -12708,7 +12774,7 @@ de
 eV
 fC
 ge
-nM
+TX
 hb
 hk
 ia
@@ -12902,7 +12968,7 @@ de
 fq
 fC
 ge
-nM
+TX
 hc
 hl
 hY
@@ -12918,7 +12984,7 @@ mL
 ia
 ng
 nu
-nM
+NN
 oi
 oK
 gz
@@ -13110,7 +13176,7 @@ lO
 gz
 gy
 mZ
-nM
+Iu
 iE
 gz
 of
@@ -13487,7 +13553,7 @@ ge
 gx
 gy
 gz
-nM
+TX
 gy
 jF
 jW
@@ -14080,8 +14146,8 @@ lJ
 mr
 mP
 nb
-nc
-nc
+LK
+LK
 nb
 ok
 gx
