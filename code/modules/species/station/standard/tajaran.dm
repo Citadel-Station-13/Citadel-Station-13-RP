@@ -68,7 +68,7 @@
 	breath_cold_level_2 = 100
 	breath_cold_level_3 = 60
 
-	heat_level_1 = 330
+	heat_level_1 = 340
 	heat_level_2 = 380
 	heat_level_3 = 800
 

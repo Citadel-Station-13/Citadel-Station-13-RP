@@ -198,7 +198,7 @@
 	icon_state = "winter_cloak"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	min_cold_protection_temperature = TN60C
-	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	cold_protection_cover = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	hoodtype = /obj/item/clothing/head/hood/tajaran/cloak/winter
 
 /obj/item/clothing/suit/storage/hooded/tajaran/cloak/royalist
@@ -260,7 +260,7 @@
 	item_state = "winter_cloakhood"
 	body_cover_flags = HEAD
 	inv_hide_flags = HIDEEARS|BLOCKHAIR
-	cold_protection = HEAD
+	cold_protection_cover = HEAD
 	min_cold_protection_temperature = TN60C
 
 /obj/item/clothing/head/hood/tajaran/cloak/royalist

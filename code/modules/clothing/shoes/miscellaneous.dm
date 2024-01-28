@@ -90,9 +90,9 @@
 	siemens_coefficient = 0.7
 	origin_tech = list(TECH_ARCANE = 2)
 
-	cold_protection = FEET
+	cold_protection_cover = FEET
 	min_cold_protection_temperature = SHOE_MIN_COLD_PROTECTION_TEMPERATURE
-	heat_protection = FEET
+	heat_protection_cover = FEET
 	max_heat_protection_temperature = SHOE_MAX_HEAT_PROTECTION_TEMPERATURE
 	species_restricted = null
 

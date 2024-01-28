@@ -200,6 +200,7 @@
 							qdel(thing)
 				if(checking.type == floor_type) // Don't build over empty space on lower levels.
 					var/obj/machinery/door/airlock/lift/newdoor = new door_type(checking)
+					newdoor.setDir(got_rotated_by_maploader ? got_rotated_by_maploader : dir)
 					if(internal)
 						lift.doors += newdoor
 						newdoor.lift = cfloor

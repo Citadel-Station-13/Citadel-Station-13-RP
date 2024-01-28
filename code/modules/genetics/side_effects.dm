@@ -51,7 +51,9 @@
 	if(!H.reagents.has_reagent("dexalin"))
 		for(var/organ_name in BP_ALL)
 			var/obj/item/organ/external/E = H.get_organ(organ_name)
-			E.take_damage(0, 5, 0)
+			E.inflict_bodypart_damage(
+				burn = 5,
+			)
 
 /datum/genetics/side_effect/bone_snap
 	name = "Bone Snap"
@@ -67,7 +69,9 @@
 	if(!H.reagents.has_reagent("bicaridine"))
 		var/organ_name = pick(BP_ALL)
 		var/obj/item/organ/external/E = H.get_organ(organ_name)
-		E.take_damage(20, 0, 0)
+		E.inflict_bodypart_damage(
+			brute = 20,
+		)
 		E.fracture()
 
 /*/datum/genetics/side_effect/monkey
