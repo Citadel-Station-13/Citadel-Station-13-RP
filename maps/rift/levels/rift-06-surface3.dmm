@@ -18448,6 +18448,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/machinery/holopad/ship,
 /turf/simulated/floor/wood,
 /area/exploration/pilot_prep)
 "brl" = (
@@ -20276,6 +20277,7 @@
 /area/hallway/primary/surfacethree)
 "fVL" = (
 /obj/structure/table/woodentable,
+/obj/item/storage/box/snakesnackbox,
 /turf/simulated/floor/wood,
 /area/exploration/pilot_Office)
 "gaF" = (
@@ -25597,6 +25599,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/steel,
 /area/rift/stairwell/primary/surfacethree)
+"uMP" = (
+/obj/structure/flora/pottedplant/tropical,
+/obj/structure/table/woodentable,
+/turf/simulated/floor/wood,
+/area/exploration/pilot_Office)
 "uOE" = (
 /obj/structure/cable/green{
 	icon_state = "2-4"
@@ -43131,7 +43138,7 @@ mBV
 xuc
 tdn
 apF
-aWA
+uMP
 akk
 rZH
 aMm
