@@ -28,7 +28,7 @@ var/list/nuke_disks = list()
 //checks if L has a nuke disk on their person
 /datum/game_mode/nuclear/proc/check_mob(mob/living/L)
 	for(var/obj/item/disk/nuclear/N in nuke_disks)
-		return N.depth_inside_atom(L) != null
+		return N.depth_inside_atom(L) != INFINITY
 	return 0
 
 /datum/game_mode/nuclear/declare_completion()
