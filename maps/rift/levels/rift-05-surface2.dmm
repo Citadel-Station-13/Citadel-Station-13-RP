@@ -4804,6 +4804,9 @@
 	icon_state = "4-8"
 	},
 /obj/structure/bed/chair/bay/shuttle,
+/obj/machinery/light/no_nightshift{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/hammerhead/cockpit)
 "dhE" = (
@@ -17492,9 +17495,9 @@
 	dir = 5
 	},
 /obj/machinery/door/window/brigdoor/southright{
-	name = "Holding Room";
-	icon_state = "rightsecure";
 	dir = 1;
+	icon_state = "rightsecure";
+	name = "Cockpit Access";
 	req_access = list(2);
 	req_one_access = list(2)
 	},
@@ -18074,7 +18077,9 @@
 /obj/effect/floor_decal/corner_techfloor_grid{
 	dir = 10
 	},
-/obj/machinery/door/window/brigdoor/southright,
+/obj/machinery/door/window/brigdoor/southright{
+	name = "Cockpit Access"
+	},
 /obj/effect/floor_decal/industrial/warning,
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
@@ -31450,8 +31455,12 @@
 /turf/simulated/wall/prepainted,
 /area/maintenance/research/xenobio)
 "uoE" = (
-/obj/machinery/light/no_nightshift{
-	dir = 4
+/obj/machinery/door/window/brigdoor/southright{
+	dir = 8;
+	icon_state = "rightsecure";
+	name = "Crew Section Access";
+	req_access = list(2);
+	req_one_access = list(2)
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/hammerhead/cockpit)
