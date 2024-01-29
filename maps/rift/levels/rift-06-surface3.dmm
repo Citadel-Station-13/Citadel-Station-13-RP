@@ -4684,14 +4684,14 @@
 /obj/structure/bed/chair/shuttle{
 	dir = 4
 	},
-/obj/structure/window/reinforced/polarized{
-	dir = 1
-	},
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 9
 	},
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 9
+	},
+/obj/structure/window/reinforced{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
@@ -4816,13 +4816,13 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/general)
 "aop" = (
-/obj/structure/window/reinforced/polarized{
-	dir = 1
-	},
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/paleblue/border{
+	dir = 1
+	},
+/obj/structure/window/reinforced{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
@@ -5786,13 +5786,13 @@
 /obj/structure/bed/chair/shuttle{
 	dir = 8
 	},
-/obj/structure/window/reinforced/polarized{
-	dir = 4
-	},
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/paleblue/border{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
@@ -23771,17 +23771,17 @@
 /obj/structure/bed/chair/shuttle{
 	dir = 8
 	},
-/obj/structure/window/reinforced/polarized{
-	dir = 1
-	},
-/obj/structure/window/reinforced/polarized{
-	dir = 4
-	},
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 5
 	},
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 5
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
