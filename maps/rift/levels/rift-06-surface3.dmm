@@ -4693,6 +4693,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
+/obj/structure/closet/walllocker/emerglocker/west,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
 "anT" = (
@@ -20768,6 +20769,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 8
 	},
+/obj/structure/closet/walllocker/emerglocker/west,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/cockpit)
 "hSS" = (
@@ -21331,6 +21333,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
 	},
+/obj/structure/closet/firecloset/full,
 /turf/simulated/floor,
 /area/shuttle/emt/general)
 "jsv" = (
