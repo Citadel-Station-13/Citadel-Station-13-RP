@@ -136,41 +136,17 @@
 	max_single_weight_class = WEIGHT_CLASS_NORMAL
 	storage_datum_path = /datum/object_system/storage/stack
 	insertion_whitelist = list(/obj/item/stack/ore)
-	var/stored_ore = list()
-	var/total_ore = 0 //current ore stored
-	var/max_ore = 300 //how much ore it can hold
-	var/last_update = 0
+	auto_fit_weight_class_to_largest_contained = FALSE
 
-/obj/item/storage/bag/ore/update_w_class()
-	return
-
-/obj/item/storage/bag/ore/gather_all(turf/T as turf, mob/user as mob, var/silent = 0)
-	var/success = 0
-	var/failure = 0
-	for(var/obj/item/stack/ore/I in T) //Only ever grabs ores. Doesn't do any extraneous checks, as all ore is the same size. Tons of checks means it causes hanging for up to three seconds.
-		if(istype(user.pulling, /obj/structure/ore_box))
-			var/obj/structure/ore_box/O = user.pulling
-			I.forceMove(O)
-			if(world.time < last_message && !silent)
-				to_chat(user, "<span class='notice'>You put the contents you scooped up into [O].</span>")
-				last_message = world.time + 10
-		else if(total_ore >= max_ore || contents.len >= max_combined_volume)
-			failure = 1
-			break
-		else
-			I.forceMove(src)
-			success = 1
-	if(success && !failure && !silent)
-		if(world.time < last_message == 0)
-			to_chat(user, "<span class='notice'>You put everything in [src].</span>")
-			last_message = world.time + 10
-	else if (success && (!silent || total_ore >= max_ore))
-		to_chat(user, "<span class='notice'>You fill the [src].</span>")
-		last_message = world.time + 10
-	else if(!silent)
-		if(world.time >= last_message == 0)
-			to_chat(user, "<span class='notice'>You fail to pick anything up with \the [src].</span>")
-			last_message = world.time + 90
+/obj/item/storage/bag/ore/proc/autodump()
+	var/mob/living/user = loc
+	if(!istype(user))
+		return
+	if(!istype(user.pulling, /obj/structure/ore_box))
+		return
+	var/obj/structure/ore_box/box = user.pulling
+	for(var/obj/item/stack/ore/ore in src)
+		ore.forceMove(box)
 
 /obj/item/storage/bag/ore/equipped(mob/user, slot, flags)
 	. = ..()
@@ -182,100 +158,10 @@
 
 /obj/item/storage/bag/ore/proc/autoload(datum/source, atom/oldLoc, dir, forced)
 	var/obj/item/stack/ore/O = locate() in get_turf(src)
-	if(O)
-		gather_all(get_turf(src), ismob(source)? source : null)
-
-/obj/item/storage/bag/ore/attack_self(mob/user)
-	. = ..()
-
-	if(isOreEmpty())
-		to_chat(user, SPAN_WARNING("[src] is empty."))
+	if(isnull(O))
 		return
-
-	to_chat(user, SPAN_NOTICE("You begin emptying [src]."))
-
-	if(do_after(usr,10,src))
-		while(!isOreEmpty())
-			if(!do_after(user, 2, src))
-				to_chat(user,SPAN_NOTICE("You stop emptying [src]."))
-				return
-			var/atom/A = drop_location()
-			if(!A || (length(A.contents) > 200))
-				to_chat(user, SPAN_WARNING("The area under [src] is too full."))
-				return
-			deposit(A,50)
-		to_chat(user,SPAN_NOTICE("You finish emptying [src]."))
-
-/obj/item/storage/bag/ore/Entered(atom/movable/AM, atom/oldLoc)
-	. = ..()
-	if(istype(AM, /obj/item/stack/ore))
-		take(AM)
-	else //shouldn't be possible unless someone's adminbussing weirdly.
-		AM.forceMove(drop_location())
-
-/obj/item/storage/bag/ore/drop_products(method, atom/where)
-	. = ..()
-	var/i = 0
-	while(!isOreEmpty() && i < 200) //may be laggy as hell if they're carrying 2,000+ sand, so capping it at 200 items dropped.
-		deposit(where, 50)
-		i++
-
-/obj/item/storage/bag/ore/proc/take(obj/item/stack/ore/O)
-	if(!istype(O))
-		return FALSE
-	var/overflow = max((total_ore + O.amount) - max_ore, 0)
-	var/store_amount = O.amount - overflow
-
-	if(!stored_ore[O.type])
-		stored_ore[O.type] = store_amount
-	else
-		stored_ore[O.type] += store_amount
-	total_ore += O.amount
-
-	if(overflow)
-		O.use(store_amount)
-		O.forceMove(drop_location())
-		return FALSE
-	else
-		qdel(O)
-		return TRUE
-
-/obj/item/storage/bag/ore/proc/deposit(atom/newloc, amount = 50)
-	if(isOreEmpty())
-		return FALSE
-	var/path = stored_ore[1]
-	if(amount > stored_ore[path])
-		amount = stored_ore[path]
-	new path(newloc, amount)
-	stored_ore[path] -= amount
-	total_ore -= amount
-	if(stored_ore[path] <= 0)
-		stored_ore -= path
-	return TRUE
-
-/obj/item/storage/bag/ore/proc/isOreEmpty()
-	return !length(stored_ore)
-
-/obj/item/storage/bag/ore/examine(mob/user, dist)
-	. = ..()
-	if(!Adjacent(user)) //Can only check the contents of ore bags if you can physically reach them.
-		return
-	if(istype(user, /mob/living))
-		add_fingerprint(user)
-	if(isOreEmpty())
-		. += "It is empty."
-		return
-
-	if(world.time > last_update + 10)
-		last_update = world.time
-
-	. += "<span class='notice'>It holds:</span>"
-	for(var/ore in stored_ore)
-		var/obj/item/stack/ore/O = ore
-		. += "<span class='notice'>- [stored_ore[ore]] [initial(O.name)]</span>"
-
-/obj/item/storage/bag/ore/open(mob/user as mob) //No opening it since the ores are nonexistent
-	user.do_examinate(src)
+	obj_storage?.interacted_mass_pickup(from_loc = get_turf(src))
+	autodump()
 
 //Ashlander variant!
 /obj/item/storage/bag/ore/ashlander
@@ -334,6 +220,7 @@
 	allow_quick_empty = TRUE
 	allow_mass_gather = TRUE
 	allow_mass_gather_mode_switch = FALSE
+	auto_fit_weight_class_to_largest_contained = FALSE
 
 // Modified handle_item_insertion.  Would prefer not to, but...
 /obj/item/storage/bag/sheetsnatcher/handle_item_insertion(obj/item/W as obj, prevent_warning = 0)

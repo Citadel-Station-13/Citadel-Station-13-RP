@@ -9,6 +9,7 @@
 	req_access = list(ACCESS_SECURITY_ARMORY)
 	preserve_item = 1
 	var/broken = 0
+	var/locked = TRUE
 	var/icon_locked = "lockbox+l"
 	var/icon_closed = "lockbox"
 	var/icon_broken = "lockbox+b"

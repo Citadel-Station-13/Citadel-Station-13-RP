@@ -288,12 +288,18 @@
  * Called by our object when an item exits us
  */
 /datum/object_system/storage/proc/on_item_exited(obj/item/exiting)
-	#warn impl
+	physically_remove_item(exiting, no_move = TRUE)
 
 /**
  * Called by our object when an item enters us
  */
 /datum/object_system/storage/proc/on_item_entered(obj/item/entering)
+	physically_insert_item(entering, no_move = TRUE)
+
+/datum/object_system/storage/proc/on_contents_weight_class_change(obj/item/item, old_weight_class, new_weight_class)
+	#warn impl
+
+/datum/object_system/storage/proc/on_contents_weight_volume_change(obj/item/item, old_weight_volume, new_weight_volume)
 	#warn impl
 
 //* Filters *//
@@ -387,9 +393,9 @@
 		return FALSE
 	return TRUE
 
-/datum/object_system/storage/proc/insert(obj/item/inserting, datum/event_args/actor/actor, suppressed, no_update)
+/datum/object_system/storage/proc/insert(obj/item/inserting, datum/event_args/actor/actor, suppressed, no_update, no_move)
 	#warn impl
-	physically_insert_item(inserting)
+	physically_insert_item(inserting, no_move)
 
 	if(!no_update)
 		if(update_icon_on_item_change)
@@ -401,8 +407,9 @@
  *
  * we can assume this proc will do potentially literally anything with the item, so..
  */
-/datum/object_system/storage/proc/physically_insert_item(obj/item/inserting)
-	inserting.forceMove(real_contents_loc())
+/datum/object_system/storage/proc/physically_insert_item(obj/item/inserting, no_move)
+	if(!no_move)
+		inserting.forceMove(real_contents_loc())
 	inserting.vis_flags |= VIS_INHERIT_LAYER | VIS_INHERIT_PLANE
 	inserting.item_flags |= ITEM_IN_STORAGE
 	inserting.on_enter_storage(src)
@@ -438,10 +445,10 @@
 /**
  * remove item from self
  */
-/datum/object_system/storage/proc/remove(obj/item/removing, atom/to_where, datum/event_args/actor/actor, suppressed, no_update)
+/datum/object_system/storage/proc/remove(obj/item/removing, atom/to_where, datum/event_args/actor/actor, suppressed, no_update, no_move)
 	#warn impl
 
-	physically_remove_item(removing, to_where)
+	physically_remove_item(removing, to_where, no_move)
 
 	if(!no_update)
 		if(update_icon_on_item_change)
@@ -453,8 +460,12 @@
  *
  * we can assume this proc will do potentially literally anything with the item, so..
  */
-/datum/object_system/storage/proc/physically_remove_item(obj/item/removing, atom/to_where)
-	removing.forceMove(to_where)
+/datum/object_system/storage/proc/physically_remove_item(obj/item/removing, atom/to_where, no_move)
+	if(!no_move)
+		if(to_where == null)
+			removing.moveToNullspace()
+		else
+			removing.forceMove(to_where)
 	removing.vis_flags = (removing.vis_flags & ~(VIS_INHERIT_LAYER | VIS_INHERIT_LAYER)) | (initial(removing.vis_flags) & (VIS_INHERIT_LAYER | VIS_INHERIT_PLANE))
 	removing.item_flags &= ~ITEM_IN_STORAGE
 	removing.on_exit_storage(src)
@@ -1030,7 +1041,7 @@
 /datum/object_system/storage/stack/check_insertion_limits(obj/item/candidate)
 	return cached_combined_stack_amount < max_items
 
-/datum/object_system/storage/stack/physically_insert_item(obj/item/inserting)
+/datum/object_system/storage/stack/physically_insert_item(obj/item/inserting, no_move)
 	#warn impl - split stack if necessary
 
 /datum/object_system/storage/stack/mass_storage_dumping_handler(list/obj/item/things, atom/to_loc, datum/progressbar/progress, datum/event_args/actor/actor, list/rejections_out, trigger_on_found)
@@ -1063,7 +1074,7 @@
 	return ..()
 */
 
-/datum/object_system/storage/stack/physically_remove_item(obj/item/removing, atom/to_where)
+/datum/object_system/storage/stack/physically_remove_item(obj/item/removing, atom/to_where, no_move)
 	#warn impl - we make a new stack and swap
 
 /*

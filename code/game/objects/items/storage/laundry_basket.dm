@@ -15,9 +15,7 @@
 	max_combined_volume = WEIGHT_VOLUME_NORMAL * 8
 	max_items = 20
 	allow_mass_gather = TRUE
-	allow_quick_empty = 1
-	allow_quick_gather = 1
-	collection_mode = 1
+	allow_quick_empty = TRUE
 	var/linked
 
 /obj/item/storage/laundry_basket/update_icon_state()
@@ -26,19 +24,3 @@
 		icon_state = "laundry-full"
 	else
 		icon_state = "laundry-empty"
-
-/obj/item/storage/laundry_basket/OnMouseDropLegacy(obj/over_object as obj)
-	if(over_object == usr)
-		return
-	else
-		return ..()
-
-/obj/item/storage/laundry_basket/dropped(mob/user, flags, atom/newLoc)
-	if(use_to_pickup)	// sigh refactor this shit when
-		QDEL_NULL(linked)
-	return ..()
-
-/obj/item/storage/laundry_basket/show_to(mob/user as mob)
-	return
-
-/obj/item/storage/laundry_basket/open(mob/user as mob)
