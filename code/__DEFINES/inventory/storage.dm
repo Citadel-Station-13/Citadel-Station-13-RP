@@ -77,4 +77,8 @@ GLOBAL_REAL_LIST(w_class_to_volume) = list(
 
 //* Volumetrics - Storage Volumes *//
 
+#define STORAGE_VOLUME_BOX (WEIGHT_VOLUME_SMALL * 7)
+#define STORAGE_VOLUME_BACKPACK (WEIGHT_VOLUME_NORMAL * 7)
+#define STORAGE_VOLUME_DUFFLEBAG (WEIGHT_VOLUME_NORMAL * 9)
+
 //* Volumetrics - Item Volumes *//

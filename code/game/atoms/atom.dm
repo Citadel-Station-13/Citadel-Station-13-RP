@@ -1014,6 +1014,14 @@
 	filter_data = null
 	filters = null
 
+//* Inventory *//
+
+/atom/proc/on_contents_weight_class_change(obj/item/item, old_weight_class, new_weight_class)
+	return
+
+/atom/proc/on_contents_weight_volume_change(obj/item/item, old_weight_volume, new_weight_volume)
+	return
+
 //? Layers
 
 /// Sets our plane

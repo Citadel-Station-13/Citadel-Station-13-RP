@@ -18,33 +18,46 @@
 
 //  Generic non-item
 /obj/item/storage/bag
-	allow_quick_gather = 1
-	allow_quick_empty = 1
-	allow_mass_gather = TRUE
 	slot_flags = SLOT_BELT
 	drop_sound = 'sound/items/drop/backpack.ogg'
 	pickup_sound = 'sound/items/pickup/backpack.ogg'
 
-/obj/item/storage/bag/handle_item_insertion(obj/item/W as obj, prevent_warning = 0)
-	. = ..()
-	if(.) update_w_class()
+	allow_mass_gather = TRUE
+	allow_quick_empty = TRUE
 
-/obj/item/storage/bag/remove_from_storage(obj/item/W as obj, atom/new_location)
-	. = ..()
-	if(.) update_w_class()
+	var/auto_fit_weight_class_to_largest_contained = TRUE
 
-/obj/item/storage/bag/can_be_inserted(obj/item/W, stop_messages = 0)
-	var/mob/living/carbon/human/H = usr // if we're human, then we need to check if bag in a pocket
-	if(istype(src.loc, /obj/item/storage) || ishuman(H) && (H.l_store == src || H.r_store == src))
-		if(!stop_messages)
-			to_chat(usr, SPAN_NOTICE("Take \the [src] out of [istype(src.loc, /obj) ? "\the [src.loc]" : "the pocket"] first."))
-		return 0 //causes problems if the bag expands and becomes larger than src.loc can hold, so disallow it
+/obj/item/storage/bag/Entered(atom/movable/AM, atom/oldLoc)
 	. = ..()
+	if(!isitem(AM))
+		return
+	refit_to(AM)
 
-/obj/item/storage/bag/proc/update_w_class()
-	w_class = initial(w_class)
-	for(var/obj/item/I in contents)
-		w_class = max(w_class, I.w_class)
+/obj/item/storage/bag/Exited(atom/movable/AM, atom/newLoc)
+	. = ..()
+	if(!isitem(AM))
+		return
+	refit_to(AM, TRUE)
+
+/obj/item/storage/bag/on_contents_weight_class_change(obj/item/item, old_weight_class, new_weight_class)
+	refit_to(item, TRUE)
+	return ..()
+
+/obj/item/storage/bag/proc/refit_to(obj/item/thing, removing)
+	var/their_weight_class = thing.get_weight_class()
+	if(!removing)
+		if(their_weight_class <= w_class)
+			return
+		else
+			set_weight_class(their_weight_class)
+	else
+		if(their_weight_class < w_class)
+			return
+		else
+			var/staged = initial(w_class)
+			for(var/obj/item/contained in src)
+				staged = max(staged, contained.get_weight_class())
+			set_weight_class(staged)
 
 // -----------------------------
 //          Trash bag
@@ -314,26 +327,13 @@
 	icon_state = "sheetsnatcher"
 	desc = "A patented storage system designed for any kind of mineral sheet."
 
-	var/capacity = 300; //the number of sheets it can carry.
 	w_class = WEIGHT_CLASS_NORMAL
-	max_items = 7
 
-	allow_quick_empty = 1 // this function is superceded
-
-/obj/item/storage/bag/sheetsnatcher/can_be_inserted(obj/item/W as obj, stop_messages = 0)
-	if(!istype(W,/obj/item/stack/material))
-		if(!stop_messages)
-			to_chat(usr, "The snatcher does not accept [W].")
-		return 0
-	var/current = 0
-	for(var/obj/item/stack/material/S in contents)
-		current += S.amount
-	if(capacity == current)//If it's full, you're done
-		if(!stop_messages)
-			to_chat(usr, "<span class='warning'>The snatcher is full.</span>")
-		return 0
-	return 1
-
+	storage_datum_path = /datum/object_system/storage/stack
+	max_items = 300
+	allow_quick_empty = TRUE
+	allow_mass_gather = TRUE
+	allow_mass_gather_mode_switch = FALSE
 
 // Modified handle_item_insertion.  Would prefer not to, but...
 /obj/item/storage/bag/sheetsnatcher/handle_item_insertion(obj/item/W as obj, prevent_warning = 0)
@@ -368,29 +368,6 @@
 		usr.s_active.show_to(usr)
 	update_icon()
 	return 1
-
-// Sets up numbered display to show the stack size of each stored mineral
-// NOTE: numbered display is turned off currently because it's broken
-/obj/item/storage/bag/sheetsnatcher/orient2hud(mob/user as mob)
-	var/adjusted_contents = contents.len
-
-	//Numbered contents display
-	var/list/datum/numbered_display/numbered_contents
-	if(display_contents_with_number)
-		numbered_contents = list()
-		adjusted_contents = 0
-		for(var/obj/item/stack/material/I in contents)
-			adjusted_contents++
-			var/datum/numbered_display/D = new/datum/numbered_display(I)
-			D.number = I.amount
-			numbered_contents.Add( D )
-
-	var/row_num = 0
-	var/col_count = min(7,max_items) -1
-	if (adjusted_contents > 7)
-		row_num = round((adjusted_contents-1) / 7) // 7 is the maximum allowed width.
-	src.slot_orient_objs(row_num, col_count, numbered_contents)
-	return
 
 // Modified quick_empty verb drops appropriate sized stacks
 /obj/item/storage/bag/sheetsnatcher/quick_empty()

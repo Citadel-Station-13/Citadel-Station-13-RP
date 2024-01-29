@@ -1062,11 +1062,15 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	return isnull(weight_volume)? global.w_class_to_volume[w_class || WEIGHT_CLASS_GIGANTIC] : weight_volume
 
 /obj/item/proc/set_weight_class(weight_class)
+	var/old = w_class
 	w_class = weight_class
+	loc?.on_contents_weight_class_change(src, old, weight_class)
 	#warn impl update, audit w_class direct sets
 
 /obj/item/proc/set_weight_volume(volume)
+	var/old = weight_volume
 	weight_volume = volume
+	loc?.on_contents_weight_volume_change(src, old, volume)
 	#warn impl update
 
 /**

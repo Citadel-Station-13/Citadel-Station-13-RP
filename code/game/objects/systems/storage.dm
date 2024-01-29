@@ -500,17 +500,27 @@
  * uses combined volume
  *
  * can use type whitelist
+ * if type_whitelist is FALSE, this just wipes all type whitelists.
  */
-/datum/object_system/storage/proc/fit_to_contents(type_whitelist = FALSE)
-	max_single_weight_class = WEIGHT_CLASS_TINY
-	max_combined_volume = 0
+/datum/object_system/storage/proc/fit_to_contents(type_whitelist = FALSE, no_shrink = FALSE)
+	var/scanned_max_single_weight_class = WEIGHT_CLASS_TINY
+	var/scanned_max_combined_volume = 0
+
+	if(!no_shrink)
+		max_single_weight_class = scanned_max_single_weight_class
+		max_combined_volume = scanned_max_combined_volume
+
 	var/list/types = list()
 	for(var/obj/item/item in real_contents_loc())
 		if(type_whitelist)
 			types |= item.type
-		max_single_weight_class = max(max_single_weight_class, item.w_class)
-		max_combined_volume += item.get_weight_volume()
-	set_insertion_whitelist(types)
+		scanned_max_single_weight_class = max(max_single_weight_class, item.w_class)
+		scanned_max_combined_volume += item.get_weight_volume()
+
+	max_single_weight_class = max(max_single_weight_class, scanned_max_single_weight_class)
+	max_combined_volume = max(max_combined_volume, scanned_max_combined_volume)
+
+	set_insertion_whitelist(type_whitelist? types : null)
 	set_insertion_blacklist(null)
 	set_insertion_allow(null)
 
@@ -956,7 +966,7 @@
 	var/safety = VOLUMETRIC_STORAGE_MAX_ITEMS
 	for(var/obj/item/item in indirection)
 		// bye bye!
-		if(!--safety)
+		if(--safety <= 0)
 			to_chat(user, SPAN_WARNING("Some items in this storage have been truncated for performance reasons."))
 			break
 		// check row
@@ -969,7 +979,7 @@
 			if(current_row >= STORAGE_UI_MAX_ROWS)
 				break
 			// make another row
-			++current_row
+			current_row += 1
 			// we start on the next pixel after edge padding
 			current_pixel_x = VOLUMETRIC_STORAGE_EDGE_PADDING
 		// render the item
@@ -1022,6 +1032,11 @@
 
 /datum/object_system/storage/stack/physically_insert_item(obj/item/inserting)
 	#warn impl - split stack if necessary
+
+/datum/object_system/storage/stack/mass_storage_dumping_handler(list/obj/item/things, atom/to_loc, datum/progressbar/progress, datum/event_args/actor/actor, list/rejections_out, trigger_on_found)
+	#warn impl
+	. = ..()
+
 
 /*
 /datum/component/storage/concrete/stack/_insert_physical_item(obj/item/I, override = FALSE)

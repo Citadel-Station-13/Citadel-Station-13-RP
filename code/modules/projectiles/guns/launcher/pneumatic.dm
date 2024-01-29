@@ -54,8 +54,8 @@
 /obj/item/gun/launcher/pneumatic/proc/unload_hopper(mob/user)
 	if(item_storage.contents.len > 0)
 		var/obj/item/removing = item_storage.contents[item_storage.contents.len]
-		item_storage.remove_from_storage(removing, src.loc)
-		user.put_in_hands(removing)
+		item_storage.obj_storage.remove(removing, src.loc, new /datum/event_args/actor(user))
+		user.put_in_hands_or_drop(removing)
 		to_chat(user, "You remove [removing] from the hopper.")
 		playsound(src.loc, 'sound/weapons/empty.ogg', 50, 1)
 	else
@@ -75,7 +75,7 @@
 		user.visible_message("[user] jams [W] into [src]'s valve and twists it closed.","You jam [W] into [src]'s valve and twist it closed.")
 		update_icon()
 	else if(istype(W) && item_storage.obj_storage.can_be_inserted(W))
-		item_storage.try_insert(W, user)
+		item_storage.obj_storage.try_insert(W, new /datum/event_args/actor(user))
 
 /obj/item/gun/launcher/pneumatic/attack_self(mob/user)
 	. = ..()
@@ -103,7 +103,7 @@
 		return null
 
 	var/obj/item/launched = item_storage.contents[1]
-	item_storage.remove_from_storage(launched, src)
+	item_storage.obj_storage.remove(launched, src)
 	return launched
 
 /obj/item/gun/launcher/pneumatic/examine(mob/user, dist)

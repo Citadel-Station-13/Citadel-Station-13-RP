@@ -26,7 +26,7 @@
 	item_state = "syringe_kit"
 	var/foldable = /obj/item/stack/material/cardboard	// BubbleWrap - if set, can be folded (when empty) into a sheet of cardboard
 	max_single_weight_class = WEIGHT_CLASS_SMALL
-	max_combined_volume = INVENTORY_BOX_SPACE
+	max_combined_volume = STORAGE_VOLUME_BOX
 	drop_sound = 'sound/items/drop/cardboardbox.ogg'
 	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
 

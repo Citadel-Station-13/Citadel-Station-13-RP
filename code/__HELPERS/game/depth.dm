@@ -1,17 +1,17 @@
 /**
- * get something's depth to turf, or INFINITY if not in turf
+ * get something's depth to turf, or null if not in turf
  *
  * * turfs return 0
  * * areas crash on invoke
  * * something directly in a turf's contents counts as 0
- * * something in nullspace or nested inside something in nullspace counts as INFINITY
+ * * something in nullspace or nested inside something in nullspace counts as null
  */
 /atom/proc/depth_from_turf()
 	. = 0
 	var/atom/scanning = loc
 	while(!isturf(scanning))
 		if(isnull(scanning))
-			return INFINITY
+			return null
 		++.
 		scanning = scanning.loc
 
@@ -31,7 +31,7 @@
 	var/atom/scanning = loc
 	while(scanning)
 		if(isnull(scanning))
-			return INFINITY
+			return null
 		if(scanning == containing)
 			return
 		.++

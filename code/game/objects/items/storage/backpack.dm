@@ -12,7 +12,7 @@
 	max_single_weight_class = WEIGHT_CLASS_BULKY
 	weight = ITEM_WEIGHT_STORAGE_BACKPACK
 	encumbrance = ITEM_ENCUMBRANCE_STORAGE_BACKPACK
-	max_combined_volume = INVENTORY_STANDARD_SPACE
+	max_combined_volume = STORAGE_VOLUME_BACKPACK
 	var/flippable = 0
 	var/side = 0 //0 = right, 1 = left
 	drop_sound = 'sound/items/drop/backpack.ogg'
@@ -154,7 +154,7 @@
 	flat_encumbrance = ITEM_FLAT_ENCUMBRANCE_DUFFLEBAG
 	// todo: remove when weight system is used
 	slowdown = 0.25
-	max_combined_volume = INVENTORY_DUFFLEBAG_SPACE
+	max_combined_volume = STORAGE_VOLUME_DUFFLEBAG
 
 /obj/item/storage/backpack/dufflebag/syndie
 	name = "black dufflebag"
@@ -582,7 +582,7 @@
 	icon_state = "saddlebag"
 	var/icon_base = "saddlebag"
 	encumbrance = ITEM_ENCUMBRANCE_STORAGE_DUFFLEBAG
-	max_combined_volume = INVENTORY_DUFFLEBAG_SPACE //Saddlebags can hold more, like dufflebags
+	max_combined_volume = STORAGE_VOLUME_DUFFLEBAG //Saddlebags can hold more, like dufflebags
 	var/no_message = "You aren't the appropriate taur type to wear this!"
 
 /obj/item/storage/backpack/saddlebag_common/can_equip(mob/M, slot, mob/user, flags)
@@ -636,7 +636,7 @@
 	item_state = "taurvest"
 	icon_state = "taurvest"
 	icon_base = "taurvest"
-	max_combined_volume = INVENTORY_STANDARD_SPACE
+	max_combined_volume = STORAGE_VOLUME_BACKPACK
 	encumbrance = ITEM_ENCUMBRANCE_STORAGE_BACKPACK
 
 /obj/item/storage/backpack/dufflebag/fluff //Black dufflebag without syndie buffs.

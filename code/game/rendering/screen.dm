@@ -28,17 +28,6 @@
 	maptext_height = 480
 	maptext_width = 480
 
-/atom/movable/screen/close
-	name = "close"
-
-/atom/movable/screen/close/Click()
-	if(master)
-		if(istype(master, /obj/item/storage))
-			var/obj/item/storage/S = master
-			S.close(usr)
-	return 1
-
-
 /atom/movable/screen/item_action
 	var/obj/item/owner
 

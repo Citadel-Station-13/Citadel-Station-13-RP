@@ -437,13 +437,14 @@
 					continue
 				if(istype(B, P) && istype(A, P))
 					if(their_rating > our_rating)
-						R.remove_from_storage(B, src)
-						R.handle_item_insertion(A, null, TRUE)
+						R.obj_storage.remove(B, src)
+						R.obj_storage.insert(A, suppressed = TRUE, no_update = TRUE)
 						component_parts -= A
 						component_parts += B
 						B.loc = null
 						to_chat(user, "<span class='notice'>[A.name] replaced with [B.name].</span>")
 						break
+		R.obj_storage.refresh()
 		update_appearance()
 		RefreshParts()
 	return 1

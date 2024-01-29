@@ -155,19 +155,6 @@
 	w_class = WEIGHT_CLASS_BULKY
 	max_combined_volume = WEIGHT_VOLUME_NORMAL * 4
 
-/obj/item/storage/secure/briefcase/attack_hand(mob/user, list/params)
-	if ((src.loc == user) && (src.locked == 1))
-		to_chat(user, "<span class='warning'>[src] is locked and cannot be opened!</span>")
-	else if ((src.loc == user) && (!src.locked))
-		src.open(usr)
-	else
-		..()
-		for(var/mob/M in range(1))
-			if (M.s_active == src)
-				src.close(M)
-	src.add_fingerprint(user)
-	return
-
 //LOADOUT ITEM
 /obj/item/storage/secure/briefcase/portable
 	name = "Portable Secure Briefcase"
@@ -184,7 +171,7 @@
 	name = "VI's Secure Briefpack"
 	w_class = WEIGHT_CLASS_BULKY
 	max_single_weight_class = WEIGHT_CLASS_BULKY
-	max_combined_volume = INVENTORY_STANDARD_SPACE
+	max_combined_volume = STORAGE_VOLUME_BACKPACK
 	slot_flags = SLOT_BACK
 	icon = 'icons/obj/clothing/backpack.dmi'
 	icon_state = "securev"

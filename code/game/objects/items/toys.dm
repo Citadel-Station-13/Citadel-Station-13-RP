@@ -1639,7 +1639,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	slot_flags = SLOT_BACK
 	max_single_weight_class = WEIGHT_CLASS_SMALL
-	max_combined_volume = INVENTORY_BOX_SPACE
+	max_combined_volume = STORAGE_VOLUME_BOX
 	var/last_message = 0
 
 /obj/item/storage/daki/attack_self(mob/user)
