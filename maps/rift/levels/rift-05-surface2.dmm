@@ -11621,7 +11621,7 @@
 	req_one_access = list(1,38)
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/hammerhead/general)
+/area/shuttle/hammerhead/cockpit)
 "hGo" = (
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/showers)
@@ -12424,10 +12424,6 @@
 /obj/item/tank/jetpack/oxygen,
 /turf/simulated/floor/tiled/red,
 /area/security/evastorage)
-"iaf" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/turf/simulated/floor/plating,
-/area/shuttle/hammerhead/general)
 "iag" = (
 /obj/structure/catwalk,
 /obj/machinery/door/blast/regular{
@@ -14194,7 +14190,7 @@
 	},
 /obj/machinery/light/no_nightshift,
 /turf/simulated/floor/plating,
-/area/shuttle/hammerhead/general)
+/area/shuttle/hammerhead/cockpit)
 "jhd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /obj/machinery/light/no_nightshift{
@@ -22591,9 +22587,6 @@
 /obj/fiftyspawner/steel,
 /turf/simulated/floor/tiled/steel,
 /area/rnd/workshop)
-"ote" = (
-/turf/simulated/shuttle/wall/voidcraft/red,
-/area/security/hammerhead_bay)
 "otg" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 1
@@ -25652,7 +25645,7 @@
 	},
 /obj/structure/table/rack/shelf/steel,
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/hammerhead/general)
+/area/shuttle/hammerhead/cockpit)
 "qtI" = (
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -31487,10 +31480,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/maintenance/medbay)
-"upV" = (
-/obj/structure/table/rack/shelf/steel,
-/turf/simulated/floor/tiled/techfloor,
-/area/security/hammerhead_bay)
 "uqC" = (
 /obj/structure/table/glass,
 /turf/simulated/floor/carpet/blue,
@@ -53799,15 +53788,15 @@ qly
 qly
 qly
 jgM
-ilr
-ilr
-ilr
+oOw
+oOw
+oOw
 fpW
 vKi
-iaf
-pxC
-upV
-ote
+iCM
+sQt
+pXD
+oOw
 qly
 qly
 qly
@@ -53998,10 +53987,10 @@ ilr
 ilr
 aSz
 bFP
-iaf
-pxC
+iCM
+sQt
 qtd
-ote
+oOw
 qly
 qly
 qly
@@ -54192,10 +54181,10 @@ qnJ
 ilr
 nVS
 qkS
-ilr
+oOw
 hFZ
-ilr
-ilr
+oOw
+oOw
 qly
 qly
 qly
