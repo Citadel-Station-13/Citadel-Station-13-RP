@@ -514,7 +514,6 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	var/datum/controller/subsystem/SS
 	var/SS_flags
 
-	// Time to iterate through the list of subsystems.
 	for (var/thing in subsystemstocheck)
 		// Check if the subsystem is null and remove it from the list if it is.
 		if (!thing)
@@ -522,7 +521,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 		SS = thing
 
-		// Skip subsystems that are not completely idle.
+		// Skip subsystems that are not idle.
 		if (SS.state != SS_IDLE)
 			continue
 
@@ -538,7 +537,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 		// if(SS.suspended) //TODO: Consider adding SS suspending. @Zandario
 		// 	continue
 
-		SS_flags = SS.subsystem_flags
+		SS_flags = SS.subsystem_flags //? Cache the subsystem flags for faster access.
 
 		// Skip subsystems with the SS_NO_FIRE flag.
 		if (SS_flags & SS_NO_FIRE)
@@ -562,6 +561,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 				if(LAZYLEN(SS.vars[check_vars[i]]))
 					enter_queue = TRUE
 					break
+
 			if(!enter_queue)
 				SS.hibernating = TRUE
 				SS.update_nextfire()
