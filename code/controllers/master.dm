@@ -535,9 +535,8 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 			continue
 
 		// Skip subsystems that are suspended.
-		// if(SS.suspended)
+		// if(SS.suspended) //TODO: Consider adding SS suspending. @Zandario
 		// 	continue
-		#warn consider suspended
 
 		SS_flags = SS.subsystem_flags
 
@@ -687,17 +686,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 			queue_node.last_fire = world.time
 			queue_node.times_fired++
 
-			if (queue_node_flags & SS_TICKER)
-				queue_node.next_fire = world.time + (world.tick_lag * queue_node.wait)
-
-			else if (queue_node_flags & SS_POST_FIRE_TIMING)
-				queue_node.next_fire = world.time + queue_node.wait + (world.tick_lag * (queue_node.tick_overrun/100))
-
-			else if (queue_node_flags & SS_KEEP_TIMING)
-				queue_node.next_fire += queue_node.wait
-
-			else
-				queue_node.next_fire = queue_node.queued_time + queue_node.wait + (world.tick_lag * (queue_node.tick_overrun/100))
+			queue_node.update_nextfire()
 
 			queue_node.queued_time = 0
 

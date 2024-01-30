@@ -359,13 +359,11 @@
 			if (SS_IDLE)
 				. = "  "
 
-/**
- * Could be used to postpone a costly subsystem for (default one) var/cycles, cycles.
- * For instance, during cpu intensive operations like explosions.
- */
+/// Causes the next "cycle" fires to be missed.
+/// Effect is accumulative but can reset by calling update_nextfire(reset_time = TRUE)
 /datum/controller/subsystem/proc/postpone(cycles = 1)
-	if(next_fire - world.time < wait)
-		next_fire += (wait*cycles)
+	if(can_fire && cycles >= 1)
+		postponed_fires += cycles
 
 
 /**
@@ -381,7 +379,7 @@
 		if (NAMEOF(src, can_fire))
 			// This is so the subsystem doesn't rapid fire to make up missed ticks causing more lag
 			if (var_value)
-				next_fire = world.time + wait
+				update_nextfire(reset_time = TRUE)
 
 		if (NAMEOF(src, queued_priority)) // Editing this breaks things.
 			return FALSE

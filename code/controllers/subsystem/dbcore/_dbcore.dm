@@ -14,7 +14,6 @@ SUBSYSTEM_DEF(dbcore)
 	var/list/active_queries = list()
 
 	var/connection  // Arbitrary handle returned from rust_g.
-	#warn test if we should hibernate this
 
 /datum/controller/subsystem/dbcore/Initialize()
 	//We send warnings to the admins during subsystem init, as the clients will be New'd and messages
