@@ -1314,7 +1314,8 @@
 /turf/simulated/floor/maglev{
 	dir = 8;
 	icon_state = "maglevup";
-	name = "launch rail"
+	name = "launch rail";
+	desc = "Magnetic propulsion fighter launch rails. Caution! Electrified!"
 	},
 /area/shuttle/hammerhead/general)
 "aTl" = (
@@ -2110,7 +2111,8 @@
 /turf/simulated/floor/maglev{
 	dir = 8;
 	icon_state = "maglevup";
-	name = "launch rail"
+	name = "launch rail";
+	desc = "Magnetic propulsion fighter launch rails. Caution! Electrified!"
 	},
 /area/shuttle/hammerhead/cockpit)
 "bli" = (
@@ -2800,7 +2802,8 @@
 /turf/simulated/floor/maglev{
 	dir = 8;
 	icon_state = "maglevup";
-	name = "launch rail"
+	name = "launch rail";
+	desc = "Magnetic propulsion fighter launch rails. Caution! Electrified!"
 	},
 /area/shuttle/hammerhead/general)
 "bFQ" = (
@@ -8245,7 +8248,8 @@
 /turf/simulated/floor/maglev{
 	dir = 8;
 	icon_state = "maglevup";
-	name = "launch rail"
+	name = "launch rail";
+	desc = "Magnetic propulsion fighter launch rails. Caution! Electrified!"
 	},
 /area/shuttle/hammerhead/cockpit)
 "fof" = (
@@ -8294,7 +8298,8 @@
 /turf/simulated/floor/maglev{
 	dir = 8;
 	icon_state = "maglevup";
-	name = "launch rail"
+	name = "launch rail";
+	desc = "Magnetic propulsion fighter launch rails. Caution! Electrified!"
 	},
 /area/shuttle/hammerhead/general)
 "fqf" = (
@@ -12482,7 +12487,8 @@
 /turf/simulated/floor/maglev{
 	dir = 8;
 	icon_state = "maglevup";
-	name = "launch rail"
+	name = "launch rail";
+	desc = "Magnetic propulsion fighter launch rails. Caution! Electrified!"
 	},
 /area/shuttle/hammerhead/cockpit)
 "hYR" = (
@@ -12555,7 +12561,8 @@
 /turf/simulated/floor/maglev{
 	dir = 8;
 	icon_state = "maglevup";
-	name = "launch rail"
+	name = "launch rail";
+	desc = "Magnetic propulsion fighter launch rails. Caution! Electrified!"
 	},
 /area/shuttle/hammerhead/cockpit)
 "iaY" = (
@@ -17791,7 +17798,8 @@
 /turf/simulated/floor/maglev{
 	dir = 8;
 	icon_state = "maglevup";
-	name = "launch rail"
+	name = "launch rail";
+	desc = "Magnetic propulsion fighter launch rails. Caution! Electrified!"
 	},
 /area/shuttle/hammerhead/cockpit)
 "lqA" = (
@@ -19708,7 +19716,8 @@
 /turf/simulated/floor/maglev{
 	dir = 8;
 	icon_state = "maglevup";
-	name = "launch rail"
+	name = "launch rail";
+	desc = "Magnetic propulsion fighter launch rails. Caution! Electrified!"
 	},
 /area/shuttle/hammerhead/cockpit)
 "mvo" = (
@@ -22099,6 +22108,9 @@
 	dir = 4;
 	id = "hammerheadtba";
 	name = "Fighter Launch Tube Access"
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
 	},
 /turf/simulated/floor/reinforced,
 /area/shuttle/hammerhead/general)
@@ -25573,6 +25585,7 @@
 	id = "hammerheadtba";
 	name = "Fighter Launch Tube Access"
 	},
+/obj/effect/floor_decal/borderfloorblack,
 /turf/simulated/floor/reinforced,
 /area/shuttle/hammerhead/general)
 "qly" = (
@@ -33691,7 +33704,8 @@
 /turf/simulated/floor/maglev{
 	dir = 8;
 	icon_state = "maglevup";
-	name = "launch rail"
+	name = "launch rail";
+	desc = "Magnetic propulsion fighter launch rails. Caution! Electrified!"
 	},
 /area/shuttle/hammerhead/cockpit)
 "vBG" = (
@@ -33765,7 +33779,8 @@
 /turf/simulated/floor/maglev{
 	dir = 8;
 	icon_state = "maglevup";
-	name = "launch rail"
+	name = "launch rail";
+	desc = "Magnetic propulsion fighter launch rails. Caution! Electrified!"
 	},
 /area/shuttle/hammerhead/cockpit)
 "vFi" = (
@@ -33905,7 +33920,8 @@
 /turf/simulated/floor/maglev{
 	dir = 8;
 	icon_state = "maglevup";
-	name = "launch rail"
+	name = "launch rail";
+	desc = "Magnetic propulsion fighter launch rails. Caution! Electrified!"
 	},
 /area/shuttle/hammerhead/general)
 "vKj" = (
@@ -34768,7 +34784,8 @@
 /turf/simulated/floor/maglev{
 	dir = 8;
 	icon_state = "maglevup";
-	name = "launch rail"
+	name = "launch rail";
+	desc = "Magnetic propulsion fighter launch rails. Caution! Electrified!"
 	},
 /area/shuttle/hammerhead/cockpit)
 "wrb" = (
@@ -36446,7 +36463,8 @@
 /turf/simulated/floor/maglev{
 	dir = 8;
 	icon_state = "maglevup";
-	name = "launch rail"
+	name = "launch rail";
+	desc = "Magnetic propulsion fighter launch rails. Caution! Electrified!"
 	},
 /area/shuttle/hammerhead/cockpit)
 "xFu" = (
