@@ -4156,6 +4156,9 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 10
 	},
+/obj/machinery/light{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
 "amn" = (
@@ -9259,6 +9262,10 @@
 /obj/machinery/atmospherics/portables_connector{
 	dir = 4;
 	name = "Engine Fuel Port"
+	},
+/obj/machinery/light{
+	dir = 8;
+	light_range = 12
 	},
 /turf/simulated/floor,
 /area/shuttle/emt/general)
@@ -17068,6 +17075,9 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 8
 	},
+/obj/machinery/light{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
 "aWJ" = (
@@ -18864,6 +18874,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor,
 /area/shuttle/emt/general)
 "dpK" = (
@@ -20409,6 +20422,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 6
 	},
+/obj/machinery/light,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
 "hfE" = (
@@ -21763,6 +21777,9 @@
 	},
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 5
+	},
+/obj/machinery/light{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
@@ -26686,6 +26703,9 @@
 /obj/effect/floor_decal/borderfloorwhite/cee,
 /obj/effect/floor_decal/corner/red/bordercee{
 	dir = 1
+	},
+/obj/machinery/light{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
