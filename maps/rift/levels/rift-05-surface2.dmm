@@ -1304,6 +1304,9 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/machinery/light/no_nightshift{
+	dir = 1
+	},
 /turf/simulated/floor/reinforced,
 /area/security/hammerhead_bay)
 "aTy" = (
@@ -9665,6 +9668,7 @@
 	req_one_access = list(1,38)
 	},
 /obj/machinery/door/firedoor/glass,
+/obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/hammerhead/general)
 "goH" = (
@@ -21883,6 +21887,9 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
+	},
+/obj/machinery/light/no_nightshift{
+	dir = 1
 	},
 /turf/simulated/floor/reinforced,
 /area/security/hammerhead_bay)
