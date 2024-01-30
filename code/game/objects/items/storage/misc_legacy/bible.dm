@@ -5,7 +5,6 @@
 	throw_speed = 1
 	throw_range = 5
 	w_class = WEIGHT_CLASS_NORMAL
-	var/mob/affecting = null
 	var/deity_name = "Christ"
 
 /obj/item/storage/bible/booze

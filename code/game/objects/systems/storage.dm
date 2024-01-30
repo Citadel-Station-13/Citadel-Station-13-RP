@@ -23,6 +23,9 @@
 
 	//* Carry Weight *//
 
+	/// do we propagate weight?
+	/// use the setter, do not change this manually.
+	var/weight_propagation = TRUE
 	/// carry weight in us prior to mitigation
 	var/weight_cached = 0
 	#warn hook
@@ -149,6 +152,10 @@
 	/// otherwise, using this is going to be GC failure hell from vis contents and rendering.
 	var/atom/dangerously_redirect_contents_calls
 
+	//* Radiation
+	/// pass clean radiation calls inside?
+	var/pass_clean_radiation_inside = FALSE
+
 	//* Rendering
 
 	/// update icon on item change
@@ -263,7 +270,7 @@
 		cached_combined_volume += item.get_weight_volume()
 		cached_combined_weight_class += item.get_weight_class()
 		weight_cached += item.get_weight()
-	#warn propagate weight
+	update_containing_weight()
 
 //* Checks *//
 
@@ -282,6 +289,22 @@
 /datum/object_system/storage/proc/get_containing_weight()
 	return max(0, weight_cached * weight_multiply - weight_subtract)
 
+/datum/object_system/storage/proc/update_containing_weight()
+	if(!isitem(parent))
+		return
+	var/obj/item/item = parent
+	item.update_weight()
+
+/datum/object_system/storage/proc/set_weight_propagation(value)
+	if(value == weight_propagation)
+		return
+	weight_propagation = value
+	if(!weight_propagation)
+		weight_cached = 0
+	else
+		rebuild_caches()
+	update_containing_weight()
+
 //* Hooks *//
 
 /**
@@ -297,10 +320,10 @@
 	physically_insert_item(entering, no_move = TRUE)
 
 /datum/object_system/storage/proc/on_contents_weight_class_change(obj/item/item, old_weight_class, new_weight_class)
-	#warn impl
+	cached_combined_weight_class += (new_weight_class - old_weight_class)
 
 /datum/object_system/storage/proc/on_contents_weight_volume_change(obj/item/item, old_weight_volume, new_weight_volume)
-	#warn impl
+	cached_combined_volume += (new_weight_volume - old_weight_volume)
 
 //* Filters *//
 
@@ -413,6 +436,11 @@
 	inserting.vis_flags |= VIS_INHERIT_LAYER | VIS_INHERIT_PLANE
 	inserting.item_flags |= ITEM_IN_STORAGE
 	inserting.on_enter_storage(src)
+	if(weight_propagation)
+		var/inserting_weight = inserting.get_weight()
+		if(inserting_weight)
+			weight_cached += inserting_weight
+			update_containing_weight()
 
 /**
  * @return TRUE / FALSE
@@ -471,6 +499,11 @@
 	removing.on_exit_storage(src)
 	// we might have set maptext in render_numerical_display
 	removing.maptext = null
+	if(weight_propagation)
+		var/removing_weight = removing.get_weight()
+		if(removing_weight)
+			weight_cached += removing_weight
+			update_containing_weight()
 
 //* Limits *//
 

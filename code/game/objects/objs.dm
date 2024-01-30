@@ -566,6 +566,17 @@
 
 //* Inventory *//
 
+/obj/AllowDrop()
+	if(!isnull(obj_storage))
+		return TRUE
+	return ..()
+
+/obj/clean_radiation(str, mul, cheap)
+	if(obj_storage?.pass_clean_radiation_inside)
+		for(var/atom/movable/AM as anything in contents)
+			AM.clean_radiation(str, mul, cheap)
+	return ..()
+
 /**
  * Returns stuff considered to be inside this object's inventory.
  *
