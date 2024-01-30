@@ -595,6 +595,10 @@
 	. = ..()
 	obj_storage?.on_contents_weight_volume_change(item, old_weight_volume, new_weight_volume)
 
+/obj/on_contents_weight_change(obj/item/item, old_weight, new_weight)
+	. = ..()
+	obj_storage?.on_contents_weight_change(item, old_weight, new_weight)
+
 //* Examine *//
 
 /obj/examine(mob/user, dist)

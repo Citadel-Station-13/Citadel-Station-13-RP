@@ -987,13 +987,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	worn_mob()?.update_item_slowdown()
 
 /obj/item/proc/propagate_weight(old_weight, new_weight)
-	if(!(item_flags & ITEM_IN_STORAGE))
-		return
-	#warn stuff
-	var/obj/item/storage/S = loc
-	if(!istype(S))
-		return
-	S.stored_weight_changed(src, old_weight, new_weight)
+	loc?.on_contents_weight_change(src, old_weight, new_weight)
 
 //* Interactions *//
 
@@ -1065,13 +1059,11 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	var/old = w_class
 	w_class = weight_class
 	loc?.on_contents_weight_class_change(src, old, weight_class)
-	#warn impl update, audit w_class direct sets
 
 /obj/item/proc/set_weight_volume(volume)
 	var/old = weight_volume
 	weight_volume = volume
 	loc?.on_contents_weight_volume_change(src, old, volume)
-	#warn impl update
 
 /**
  * called when someone is opening a storage with us in it

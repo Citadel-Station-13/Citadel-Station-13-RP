@@ -1022,6 +1022,9 @@
 /atom/proc/on_contents_weight_volume_change(obj/item/item, old_weight_volume, new_weight_volume)
 	return
 
+/atom/proc/on_contents_weight_change(obj/item/item, old_weight, new_weight)
+	return
+
 //? Layers
 
 /// Sets our plane
