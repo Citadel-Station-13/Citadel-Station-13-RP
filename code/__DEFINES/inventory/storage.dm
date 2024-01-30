@@ -19,6 +19,10 @@
 /// Standard pixel width ratio for volumetric storage; 1 volume converts into this many pixels.
 #define VOLUMETRIC_STORAGE_STANDARD_PIXEL_RATIO 4
 
+//* Storage access *//
+
+#define STORAGE_REACH_DEPTH 3
+
 //* Storage quick gather modes *//
 
 /// one at a time on click

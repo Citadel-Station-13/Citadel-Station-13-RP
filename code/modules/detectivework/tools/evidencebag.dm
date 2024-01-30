@@ -26,8 +26,8 @@
 	else
 		//If it isn't on the floor. Do some checks to see if it's in our hands or a box. Otherwise give up.
 		if(istype(I.loc,/obj/item/storage))	//in a container.
-			var/sdepth = I.storage_depth(user)
-			if (sdepth > MAX_STORAGE_REACH)
+			var/sdepth = I.depth_inside_atom(user)
+			if (sdepth > STORAGE_REACH_DEPTH)
 				return	//too deeply nested to access
 
 			var/obj/item/storage/U = I.loc
