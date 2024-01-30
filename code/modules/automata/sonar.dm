@@ -73,9 +73,9 @@
 		return
 	renderer.overlays += rendering_overlays
 	animate(renderer, alpha = 255, time = 0.1 SECONDS)
-	animate(alpha = 0, time = 0.5 SECONDS)
+	animate(alpha = 0, time = 1.9 SECONDS)
 	// end
-	QDEL_IN(renderer, 0.6 SECONDS)
+	QDEL_IN(renderer, 2 SECONDS)
 
 /datum/automata/wave/sonar/single_mob
 	var/mob/receiver

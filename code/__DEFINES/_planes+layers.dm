@@ -326,7 +326,7 @@
  *! -- Sonar Plane
  *? Used for renders for effects like sonar / sensory things
  */
-#define SONAR_PLANE 25
+#define SONAR_PLANE 91 // 91 because 90 is the Blind plane, and you should be able to use your ears when your eyes don't work
 
 /**
  *! -- Ghost Plane
