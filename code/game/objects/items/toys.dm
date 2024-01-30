@@ -293,7 +293,7 @@
 		item_state = "[icon_state]_blade_rainbow"
 	else
 		item_state = "[icon_state]_blade"
-	w_class = WEIGHT_CLASS_BULKY
+	set_weight_class(WEIGHT_CLASS_BULKY)
 	playsound(user, 'sound/weapons/saberon.ogg', 50, 1)
 	update_icon()
 	to_chat(user, SPAN_NOTICE("You extend the plastic blade with a quick flick of your wrist."))
