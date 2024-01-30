@@ -1994,6 +1994,7 @@
 	dir = 8
 	},
 /obj/structure/railing,
+/obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/paleblue/border,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/excursion/general)
@@ -5598,6 +5599,7 @@
 /area/shuttle/excursion/cargo)
 "aqu" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
+/obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/paleblue/border,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/excursion/general)
