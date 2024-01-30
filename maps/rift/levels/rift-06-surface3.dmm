@@ -20507,10 +20507,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/bar)
-"hpD" = (
-/obj/machinery/door/window/brigdoor/southleft,
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "hAi" = (
 /obj/machinery/light{
 	dir = 1
@@ -37992,7 +37988,7 @@ acH
 acH
 acH
 acH
-hpD
+acH
 acH
 acH
 acH
