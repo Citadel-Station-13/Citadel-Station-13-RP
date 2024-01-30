@@ -63,7 +63,7 @@
 		user.put_in_hands(holstered)
 		playsound(user, "[sound_out]", 75, 0)
 		holstered.add_fingerprint(user)
-		w_class = initial(w_class)
+		set_weight_class(initial(w_class))
 		clear_holster()
 
 /obj/item/clothing/accessory/holster/attack_hand(mob/user, list/params)

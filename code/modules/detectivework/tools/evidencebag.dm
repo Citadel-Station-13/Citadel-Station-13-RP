@@ -87,7 +87,7 @@
 		user.put_in_hands(I)
 		stored_item = null
 
-		w_class = initial(w_class)
+		set_weight_class(initial(w_class))
 		icon_state = "evidenceobj"
 		desc = "An empty evidence bag."
 	else

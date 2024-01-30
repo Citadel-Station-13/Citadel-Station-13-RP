@@ -134,7 +134,7 @@
 		W.setWelding(FALSE)
 	deployed = null
 	cut_overlays()
-	w_class = initial(w_class)
+	set_weight_class(initial(w_class))
 	update_icon()
 	tool_locked = FALSE
 

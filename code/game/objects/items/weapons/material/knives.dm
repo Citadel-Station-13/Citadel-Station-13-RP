@@ -24,7 +24,7 @@
 		damage_mode = initial(damage_mode)
 		attack_sound = initial(attack_sound)
 		icon_state = initial(icon_state)
-		w_class = initial(w_class)
+		set_weight_class(initial(w_class))
 		attack_verb = initial(attack_verb)
 		force_multiplier = initial(force_multiplier)
 	update_material_parts()

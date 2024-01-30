@@ -37,7 +37,7 @@
 	throw_force = active_throwforce
 	sharp = 1
 	edge = 1
-	w_class = active_w_class
+	set_weight_class(active_w_class)
 	playsound(user, 'sound/weapons/saberon.ogg', 50, 1)
 	update_icon()
 	set_light(lrange, lpower, lcolor)
@@ -54,7 +54,7 @@
 	throw_force = initial(throw_force)
 	sharp = initial(sharp)
 	edge = initial(edge)
-	w_class = initial(w_class)
+	set_weight_class(initial(w_class))
 	update_icon()
 	set_light(0,0)
 

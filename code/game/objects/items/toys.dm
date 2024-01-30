@@ -305,7 +305,7 @@
 	to_chat(user, SPAN_NOTICE("You push the plastic blade back down into the handle."))
 	item_state = "[icon_state]"
 	active = 0
-	w_class = initial(w_class)
+	set_weight_class(initial(w_class))
 	update_icon()
 
 /obj/item/toy/sword/attackby(obj/item/W, mob/user)

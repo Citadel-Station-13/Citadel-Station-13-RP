@@ -149,7 +149,7 @@
 	switch(part_count)
 		if(1)
 			name = initial(name)
-			w_class = WEIGHT_CLASS_NORMAL
+			set_weight_class(WEIGHT_CLASS_NORMAL)
 			icon_state = initial(icon_state)
 		if(2)
 			if(barrel && trigger_group)
@@ -161,7 +161,7 @@
 			else if(stock && barrel)
 				name = "AM rifle stock-barrel assembly"
 				icon_state = "heavysniper-barstock"
-			w_class = WEIGHT_CLASS_BULKY
+			set_weight_class(WEIGHT_CLASS_BULKY)
 
 		if(3)
 			var/obj/item/gun/ballistic/heavysniper/collapsible/gun = new (get_turf(src), 0)
