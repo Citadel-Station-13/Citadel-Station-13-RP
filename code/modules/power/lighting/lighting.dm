@@ -297,6 +297,7 @@ var/global/list/light_type_cache = list()
 	var/brightness_color_ns
 
 	//Used for shuttles, workaround for broken mounting
+	//TODO: Remove when legacy walls are nuked
 	var/old_wall = FALSE
 
 	#ifdef IN_MAP_EDITOR // So its actually visible in the mapping editor

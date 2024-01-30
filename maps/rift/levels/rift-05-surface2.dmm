@@ -1035,7 +1035,8 @@
 /area/security/armory/blue)
 "aJI" = (
 /obj/machinery/light/no_nightshift{
-	dir = 1
+	dir = 1;
+	old_wall = 1
 	},
 /obj/structure/lattice,
 /obj/structure/catwalk,
@@ -1069,7 +1070,8 @@
 "aKa" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/light/no_nightshift{
-	dir = 8
+	dir = 8;
+	old_wall = 1
 	},
 /obj/structure/closet/medical_wall{
 	pixel_x = -32
@@ -2300,7 +2302,8 @@
 /area/rift/surfacebase/outside/outside2)
 "bpb" = (
 /obj/machinery/light/no_nightshift{
-	dir = 8
+	dir = 8;
+	old_wall = 1
 	},
 /obj/structure/table/steel_reinforced,
 /obj/machinery/recharger{
@@ -7671,7 +7674,8 @@
 "eXr" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/light/no_nightshift{
-	dir = 1
+	dir = 1;
+	old_wall = 1
 	},
 /obj/structure/closet/walllocker/emergsuit_wall{
 	dir = 4;
@@ -8284,7 +8288,8 @@
 "fpW" = (
 /obj/machinery/mech_recharger,
 /obj/machinery/light/no_nightshift{
-	dir = 1
+	dir = 1;
+	old_wall = 1
 	},
 /turf/simulated/floor/maglev{
 	dir = 8;
@@ -14980,7 +14985,8 @@
 	dir = 4
 	},
 /obj/machinery/light/no_nightshift{
-	dir = 8
+	dir = 8;
+	old_wall = 1
 	},
 /obj/structure/fuel_port{
 	pixel_x = 1;
@@ -16548,7 +16554,9 @@
 /area/maintenance/security/upper)
 "kCx" = (
 /obj/structure/cable/orange,
-/obj/machinery/power/apc/west_mount,
+/obj/machinery/power/apc/west_mount{
+	old_wall = 1
+	},
 /obj/machinery/meter{
 	pixel_x = 16
 	},
@@ -17794,7 +17802,8 @@
 /area/security/warden)
 "lrj" = (
 /obj/machinery/light/no_nightshift{
-	dir = 1
+	dir = 1;
+	old_wall = 1
 	},
 /obj/machinery/button/remote/blast_door{
 	id = "hammerheadpport";
@@ -18842,7 +18851,8 @@
 	},
 /obj/structure/bed/chair/bay/shuttle,
 /obj/machinery/light/no_nightshift{
-	dir = 1
+	dir = 1;
+	old_wall = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/hammerhead/general)
@@ -26894,7 +26904,8 @@
 "raP" = (
 /obj/structure/bed/chair/bay/shuttle,
 /obj/machinery/light/no_nightshift{
-	dir = 1
+	dir = 1;
+	old_wall = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/hammerhead/general)
@@ -30365,7 +30376,9 @@
 /obj/effect/floor_decal/corner_techfloor_grid{
 	dir = 6
 	},
-/obj/machinery/power/apc/east_mount,
+/obj/machinery/power/apc/east_mount{
+	old_wall = 1
+	},
 /obj/structure/cable/orange{
 	icon_state = "0-2"
 	},
@@ -37187,7 +37200,8 @@
 	icon_state = "0-2"
 	},
 /obj/machinery/light/no_nightshift{
-	dir = 1
+	dir = 1;
+	old_wall = 1
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/hammerhead/general)
