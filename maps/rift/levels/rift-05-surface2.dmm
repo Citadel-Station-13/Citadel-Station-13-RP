@@ -2068,6 +2068,16 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/medsec_maintenance)
+"bkW" = (
+/obj/machinery/light/no_nightshift{
+	dir = 1
+	},
+/turf/simulated/floor/maglev{
+	dir = 8;
+	icon_state = "maglevup";
+	name = "launch rail"
+	},
+/area/shuttle/hammerhead/cockpit)
 "bli" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10,
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -8228,6 +8238,9 @@
 /area/security/briefing_room)
 "fpW" = (
 /obj/machinery/mech_recharger,
+/obj/machinery/light/no_nightshift{
+	dir = 1
+	},
 /turf/simulated/floor/maglev{
 	dir = 8;
 	icon_state = "maglevup";
@@ -17707,6 +17720,14 @@
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/red)
+"lqt" = (
+/obj/machinery/light/no_nightshift,
+/turf/simulated/floor/maglev{
+	dir = 8;
+	icon_state = "maglevup";
+	name = "launch rail"
+	},
+/area/shuttle/hammerhead/cockpit)
 "lqA" = (
 /obj/machinery/status_display{
 	pixel_x = 32
@@ -21801,16 +21822,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/briefing_room)
-"nNP" = (
-/obj/machinery/light/no_nightshift{
-	dir = 8
-	},
-/turf/simulated/floor/maglev{
-	dir = 8;
-	icon_state = "maglevup";
-	name = "launch rail"
-	},
-/area/shuttle/hammerhead/cockpit)
 "nOt" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -52529,7 +52540,7 @@ pFk
 pFk
 oOw
 wqC
-nNP
+wqC
 oOw
 oOw
 oOw
@@ -52722,8 +52733,8 @@ oOw
 sUa
 seE
 oOw
-wqC
-wqC
+bkW
+lqt
 oOw
 bpb
 eqt
