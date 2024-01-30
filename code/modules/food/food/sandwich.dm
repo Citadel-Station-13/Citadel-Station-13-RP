@@ -73,7 +73,7 @@
 	name = lowertext("[fullname] sandwich")
 	if(length(name) > 80)
 		name = "[pick(list("absurd","colossal","enormous","ridiculous"))] sandwich"
-	w_class = CEILING(clamp((ingredients.len/2),2,4), 1)
+	set_weight_class(CEILING(clamp((ingredients.len/2),2,4), 1))
 
 	add_overlay(overlays_to_add)
 

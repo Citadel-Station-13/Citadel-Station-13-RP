@@ -70,9 +70,7 @@
 	desc = "An evidence bag containing [I]."
 	I.loc = src
 	stored_item = I
-	w_class = I.w_class
-	return
-
+	set_weight_class(I.w_class)
 
 /obj/item/evidencebag/attack_self(mob/user)
 	. = ..()
