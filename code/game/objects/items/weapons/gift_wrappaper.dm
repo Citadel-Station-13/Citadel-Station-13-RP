@@ -251,7 +251,7 @@
 				amount -= a_used
 				var/obj/item/gift/G = new /obj/item/gift( src.loc )
 				G.size = W.w_class
-				G.w_class = G.size + 1
+				G.set_weight_class(G.size + 1)
 				G.icon_state = "gift[G.size]"
 				G.gift = W
 				W.forceMove(G)

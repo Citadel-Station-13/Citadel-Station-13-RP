@@ -75,7 +75,7 @@
 			var/image/I = image("icon"=R, "layer"=FLOAT_LAYER)
 			filled_bag.add_overlay(I)
 			filled_bag.add_overlay("evidence")
-			filled_bag.w_class = WEIGHT_CLASS_TINY
+			filled_bag.set_weight_class(WEIGHT_CLASS_TINY)
 
 			to_chat(user, "<span class='notice'>You take a core sample of the [item_to_sample].</span>")
 	else

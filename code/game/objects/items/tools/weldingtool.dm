@@ -252,7 +252,7 @@
 			playsound(loc, acti_sound, 50, 1)
 			src.damage_force = 15
 			src.damtype = "fire"
-			src.w_class = WEIGHT_CLASS_BULKY
+			src.set_weight_class(WEIGHT_CLASS_BULKY)
 			src.attack_sound = 'sound/items/welder.ogg'
 			welding = 1
 			update_icon()
@@ -274,7 +274,7 @@
 		playsound(loc, deac_sound, 50, 1)
 		src.damage_force = 3
 		src.damtype = "brute"
-		src.w_class = initial(src.w_class)
+		src.set_weight_class(initial(src.w_class))
 		src.welding = 0
 		src.attack_sound = initial(src.attack_sound)
 		update_icon()
