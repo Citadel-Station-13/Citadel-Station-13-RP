@@ -102,9 +102,9 @@
 
 	var/effective_dose = strength_mod * dose // this was being recalculated a bunch before--why?
 	if(HAS_TRAIT(M, TRAIT_ALCOHOL_INTOLERANT))
-		if(prob((5*effective_dose/strength)))
+		if(prob((50*removed/strength)))
 			M.add_chemical_effect(CE_ALCOHOL_TOXIC, 1)
-		M.adjustToxLoss(5*effective_dose/strength)
+		M.adjustToxLoss(50*removed/strength) // 10 strength = 5 tox per u, so 10u deathbell = 50, 10u vodka = 3.3333..., 10u beer = 10
 		return 0
 	M.add_chemical_effect(CE_ALCOHOL, 1)
 	if(effective_dose >= strength) // Early warning
