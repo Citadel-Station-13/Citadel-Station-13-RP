@@ -19793,6 +19793,15 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/security/upper)
+"mAj" = (
+/obj/structure/handrail{
+	dir = 1
+	},
+/obj/machinery/door/window/brigdoor/northleft{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/hammerhead/general)
 "mAG" = (
 /obj/machinery/door/firedoor/glass{
 	dir = 1
@@ -23054,13 +23063,6 @@
 /obj/machinery/transhuman/synthprinter,
 /turf/simulated/floor/tiled/steel,
 /area/assembly/robotics)
-"oHu" = (
-/obj/structure/bed/chair/bay/shuttle,
-/obj/machinery/door/window/brigdoor/northright{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/shuttle/hammerhead/general)
 "oIx" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -27487,6 +27489,13 @@
 /obj/item/bedsheet/bluedouble,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_2)
+"rtv" = (
+/obj/machinery/door/window/brigdoor/northright{
+	dir = 8
+	},
+/obj/structure/handrail,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/hammerhead/general)
 "rtU" = (
 /obj/structure/table/steel,
 /obj/item/gps/security,
@@ -29505,9 +29514,6 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_1)
 "sQe" = (
-/obj/machinery/door/window/brigdoor/northleft{
-	dir = 8
-	},
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 1
 	},
@@ -55093,9 +55099,9 @@ qly
 qly
 qly
 ilr
-uRH
-gHJ
-hsv
+rtv
+mAj
+ilr
 oIx
 dzD
 wcF
@@ -55287,7 +55293,7 @@ qly
 qly
 qly
 ilr
-oHu
+uRH
 sQe
 ilr
 oIx
