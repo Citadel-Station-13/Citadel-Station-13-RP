@@ -11891,6 +11891,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/public_garden/stairwell)
+"hKF" = (
+/obj/structure/sign/warning/docking_area,
+/turf/simulated/wall/r_wall/prepainted/security,
+/area/security/hammerhead_bay)
 "hKO" = (
 /obj/machinery/light_switch{
 	dir = 1;
@@ -55492,7 +55496,7 @@ qly
 qly
 cVK
 tVi
-uAn
+hKF
 lEq
 nxk
 nAo
@@ -55880,7 +55884,7 @@ qly
 qly
 nxh
 qly
-uAn
+hKF
 meA
 rPy
 vrz
