@@ -821,7 +821,7 @@
 	icon_state = "32-1"
 	},
 /turf/simulated/open,
-/area/rift/surfacebase/outside/outside2)
+/area/maintenance/lower/medsec_maintenance)
 "aBA" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
@@ -942,7 +942,7 @@
 /obj/item/clothing/glasses/sunglasses/medhud,
 /obj/random/maintenance/medical,
 /turf/simulated/floor/plating,
-/area/rift/surfacebase/outside/outside2)
+/area/maintenance/medbay)
 "aHd" = (
 /obj/structure/frame{
 	anchored = 1
@@ -4077,7 +4077,7 @@
 "cBh" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/plating,
-/area/rift/surfacebase/outside/outside2)
+/area/maintenance/medbay)
 "cBE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -18956,15 +18956,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
-"lZB" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/catwalk,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/plating,
-/area/rift/surfacebase/outside/outside2)
 "lZO" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -24391,7 +24382,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
-/area/rift/surfacebase/outside/outside2)
+/area/medical/surgery_hallway)
 "pru" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 6
@@ -25141,9 +25132,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery_hallway)
-"pVy" = (
-/turf/simulated/floor/tiled/steel,
-/area/rift/surfacebase/outside/outside2)
 "pVW" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 10
@@ -27193,9 +27181,6 @@
 	},
 /turf/simulated/floor/tiled/monowhite,
 /area/medical/resleeving)
-"rjt" = (
-/turf/simulated/wall/prepainted/medical,
-/area/rift/surfacebase/outside/outside2)
 "rjB" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 10
@@ -27474,12 +27459,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
-"roS" = (
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/plating,
-/area/rift/surfacebase/outside/outside2)
 "rpT" = (
 /obj/structure/cable/orange{
 	icon_state = "1-2"
@@ -29432,9 +29411,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/locker)
-"sJf" = (
-/turf/simulated/wall/prepainted/security,
-/area/rift/surfacebase/outside/outside2)
 "sJg" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -29827,7 +29803,7 @@
 /obj/structure/table/steel,
 /obj/item/material/ashtray/glass,
 /turf/simulated/floor/plating,
-/area/rift/surfacebase/outside/outside2)
+/area/maintenance/medbay)
 "tbz" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4
@@ -36724,7 +36700,7 @@
 	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
-/area/rift/surfacebase/outside/outside2)
+/area/maintenance/medbay)
 "xLB" = (
 /obj/structure/closet/secure_closet/medical3{
 	name = "surgeon's locker"
@@ -49434,7 +49410,7 @@ oWM
 jzu
 aqF
 vyn
-aKq
+vyn
 kIL
 kIL
 kIL
@@ -49822,7 +49798,7 @@ fJJ
 moy
 aqF
 hga
-pVy
+hga
 kIL
 rzB
 mqP
@@ -50210,7 +50186,7 @@ ghA
 cQN
 aqF
 qnm
-pVy
+hga
 kIL
 bgd
 tFx
@@ -50404,7 +50380,7 @@ aqF
 aqF
 aqF
 qnm
-pVy
+hga
 kIL
 obW
 qot
@@ -50598,7 +50574,7 @@ hga
 fiN
 oVk
 qnm
-rjt
+cRS
 kIL
 bmS
 bmS
@@ -50792,7 +50768,7 @@ vyB
 jZl
 vTi
 qnm
-rjt
+cRS
 czB
 lXv
 wEc
@@ -51180,7 +51156,7 @@ vyn
 mmN
 dtc
 oVk
-rjt
+cRS
 gHs
 lQo
 ohN
@@ -51374,7 +51350,7 @@ vyn
 mmN
 dtc
 oVk
-rjt
+cRS
 cRS
 iWe
 iWe
@@ -51762,7 +51738,7 @@ wNZ
 uJC
 dtc
 oVk
-aKq
+vyn
 cRS
 cRS
 cRS
@@ -51956,7 +51932,7 @@ wNZ
 uJC
 dtc
 oVk
-aKq
+vyn
 oyx
 vzc
 gPk
@@ -52150,7 +52126,7 @@ vyn
 fgh
 dtc
 oVk
-aKq
+vyn
 dAe
 bIT
 oVk
@@ -52538,7 +52514,7 @@ vyn
 uJC
 bgE
 hga
-aKq
+vyn
 hUU
 dAe
 nqW
@@ -52732,7 +52708,7 @@ vyn
 mmN
 bgE
 oVk
-aKq
+vyn
 qtM
 dAe
 nqW
@@ -52926,7 +52902,7 @@ bWq
 gcX
 iMV
 bWq
-aKq
+bWq
 bWq
 wDR
 bWq
@@ -53120,7 +53096,7 @@ tmh
 kiP
 cYj
 ucP
-lZB
+aMU
 fSu
 jOk
 jOk
@@ -53314,7 +53290,7 @@ szQ
 gcX
 jGy
 lFw
-roS
+mDK
 yaL
 mDK
 eVV
@@ -53508,7 +53484,7 @@ szQ
 gcX
 szQ
 xyC
-uJq
+szQ
 ora
 szQ
 lTc
@@ -53896,7 +53872,7 @@ dep
 dep
 vLE
 dep
-sJf
+dep
 ora
 xco
 lTc
@@ -54090,7 +54066,7 @@ usA
 jQY
 mEM
 uNo
-sJf
+dep
 qSP
 ssT
 lTc
