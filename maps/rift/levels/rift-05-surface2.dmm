@@ -705,10 +705,12 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
 "ayE" = (
-/obj/machinery/door/airlock/voidcraft/vertical,
 /obj/map_helper/airlock/door/int_door,
 /obj/effect/floor_decal/corner_techfloor_gray{
 	dir = 8
+	},
+/obj/machinery/door/airlock/glass_external{
+	name = "NPB Hammerhead"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/hammerhead/general)
@@ -3361,7 +3363,6 @@
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
 "ceM" = (
-/obj/machinery/door/airlock/voidcraft/vertical,
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
@@ -3380,6 +3381,9 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock/glass_external{
+	name = "NPB Hammerhead"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/hammerhead/general)
@@ -4108,7 +4112,6 @@
 /turf/simulated/floor/reinforced,
 /area/shuttle/hammerhead/general)
 "cEL" = (
-/obj/machinery/door/airlock/voidcraft/vertical,
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button/airlock_interior{
 	dir = 4;
@@ -4121,6 +4124,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 4
+	},
+/obj/machinery/door/airlock/glass_external{
+	name = "NPB Hammerhead"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/hammerhead/general)
@@ -5932,7 +5938,6 @@
 /turf/simulated/floor/tiled/monowhite,
 /area/medical/surgery_hallway)
 "dKZ" = (
-/obj/machinery/door/airlock/voidcraft/vertical,
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/airlock_sensor/airlock_exterior/shuttle{
 	dir = 4;
@@ -5942,6 +5947,9 @@
 	pixel_y = 23
 	},
 /obj/map_helper/airlock/sensor/ext_sensor,
+/obj/machinery/door/airlock/glass_external{
+	name = "NPB Hammerhead"
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/hammerhead/general)
 "dLr" = (
