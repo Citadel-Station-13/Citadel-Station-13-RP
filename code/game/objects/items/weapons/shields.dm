@@ -336,7 +336,7 @@
 	if (active)
 		damage_force = 10
 		update_icon()
-		w_class = WEIGHT_CLASS_BULKY
+		set_weight_class(WEIGHT_CLASS_BULKY)
 		slot_flags = null
 		playsound(user, 'sound/weapons/saberon.ogg', 50, 1)
 		to_chat(user, "<span class='notice'>\The [src] is now active.</span>")
@@ -344,7 +344,7 @@
 	else
 		damage_force = 3
 		update_icon()
-		w_class = WEIGHT_CLASS_TINY
+		set_weight_class(WEIGHT_CLASS_TINY)
 		slot_flags = SLOT_EARS
 		playsound(user, 'sound/weapons/saberoff.ogg', 50, 1)
 		to_chat(user, "<span class='notice'>\The [src] can now be concealed.</span>")
@@ -417,14 +417,14 @@
 		damage_force = 8
 		throw_force = 5
 		throw_speed = 2
-		w_class = WEIGHT_CLASS_BULKY
+		set_weight_class(WEIGHT_CLASS_BULKY)
 		slot_flags = SLOT_BACK
 		to_chat(user, "<span class='notice'>You extend \the [src].</span>")
 	else
 		damage_force = 3
 		throw_force = 3
 		throw_speed = 3
-		w_class = WEIGHT_CLASS_NORMAL
+		set_weight_class(WEIGHT_CLASS_NORMAL)
 		slot_flags = null
 		to_chat(user, "<span class='notice'>[src] can now be concealed.</span>")
 

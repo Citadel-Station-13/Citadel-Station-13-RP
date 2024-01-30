@@ -221,7 +221,7 @@
 		)
 		icon_state = "whitecane1out"
 		item_state_slots = list(SLOT_ID_RIGHT_HAND = "whitecane", SLOT_ID_LEFT_HAND = "whitecane")
-		w_class = WEIGHT_CLASS_NORMAL
+		set_weight_class(WEIGHT_CLASS_NORMAL)
 		damage_force = 5
 		attack_verb = list("smacked", "struck", "cracked", "beaten")
 	else
@@ -232,7 +232,7 @@
 		)
 		icon_state = "whitecane1in"
 		item_state_slots = list(SLOT_ID_RIGHT_HAND = null, SLOT_ID_LEFT_HAND = null)
-		w_class = WEIGHT_CLASS_SMALL
+		set_weight_class(WEIGHT_CLASS_SMALL)
 		damage_force = 3
 		attack_verb = list("hit", "poked", "prodded")
 

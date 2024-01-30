@@ -208,14 +208,14 @@
 	switch(state)
 		if(UAV_OFF) //Packing
 			state = UAV_PACKED
-			w_class = WEIGHT_CLASS_BULKY
+			set_weight_class(WEIGHT_CLASS_BULKY)
 			slowdown = 1
 			density = FALSE
 			update_icon()
 			return TRUE
 		if(UAV_PACKED) //Unpacking
 			state = UAV_OFF
-			w_class = WEIGHT_CLASS_HUGE
+			set_weight_class(WEIGHT_CLASS_HUGE)
 			slowdown = 3
 			density = TRUE
 			update_icon()

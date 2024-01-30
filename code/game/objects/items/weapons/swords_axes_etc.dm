@@ -68,7 +68,7 @@
 		"You hear an ominous click.")
 		src.icon_state = "[icon_state]_1"
 		src.item_state = "[item_state]_1"
-		w_class = WEIGHT_CLASS_NORMAL
+		set_weight_class(WEIGHT_CLASS_NORMAL)
 		damage_force = on_force //quite robust
 		attack_verb = list("struck", "beat")
 	else
@@ -78,7 +78,7 @@
 		"You hear a click.")
 		src.icon_state = initial(icon_state)
 		src.item_state = initial(item_state)
-		w_class = WEIGHT_CLASS_SMALL
+		set_weight_class(WEIGHT_CLASS_SMALL)
 		damage_force = off_force //not so robust now
 		attack_verb = list("poked", "jabbed")
 	if(istype(user,/mob/living/carbon/human))
@@ -201,12 +201,12 @@
 	if(on == 0)
 		user.visible_message("<span class='notice'>In a quick motion, [user] extends their collapsible stool.</span>")
 		icon_state = "cn_stool"
-		w_class = WEIGHT_CLASS_HUGE
+		set_weight_class(WEIGHT_CLASS_HUGE)
 		on = 1
 	else
 		user.visible_message("<span class='notice'>\ [user] collapses their stool.</span>")
 		icon_state = "cn_stool_c"
-		w_class = WEIGHT_CLASS_SMALL
+		set_weight_class(WEIGHT_CLASS_SMALL)
 		on = 0
 
 	playsound(src.loc, 'sound/weapons/empty.ogg', 50, 1)

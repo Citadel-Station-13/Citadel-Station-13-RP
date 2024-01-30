@@ -456,7 +456,7 @@
 /obj/item/gun/ballistic/ntles/attack_self(mob/user, obj/item/gun/G)
 	if(collapsible && !extended)
 		to_chat(user, "<span class='notice'>You pull out the stock on the [src], steadying the weapon.</span>")
-		w_class = WEIGHT_CLASS_BULKY
+		set_weight_class(WEIGHT_CLASS_BULKY)
 		one_handed_penalty = 10
 		extended = 1
 		update_icon()
@@ -465,7 +465,7 @@
 		return
 	else
 		to_chat(user, "<span class='notice'>You push the stock back into the [src], making it more compact.</span>")
-		w_class = WEIGHT_CLASS_NORMAL
+		set_weight_class(WEIGHT_CLASS_NORMAL)
 		one_handed_penalty = 30
 		extended = 0
 		update_icon()

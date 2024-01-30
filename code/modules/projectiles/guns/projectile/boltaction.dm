@@ -58,7 +58,7 @@
 			return
 		if(do_after(user, 30))
 			icon_state = "sawnrifle"
-			w_class = WEIGHT_CLASS_NORMAL
+			set_weight_class(WEIGHT_CLASS_NORMAL)
 			recoil = 2 // Owch
 			accuracy = -15 // You know damn well why.
 			item_state = "gun"
@@ -99,7 +99,7 @@
 		if(do_after(user, 30))
 			item_state = "mareleg"
 			icon_state = "mareleg"
-			w_class = WEIGHT_CLASS_NORMAL
+			set_weight_class(WEIGHT_CLASS_NORMAL)
 			caliber = ".357"
 			load_method = SINGLE_CASING
 			ammo_type = /obj/item/ammo_casing/a357
@@ -143,7 +143,7 @@
 		if(do_after(user, 30))
 			item_state = "mareleg"
 			icon_state = "mareleg"
-			w_class = WEIGHT_CLASS_NORMAL
+			set_weight_class(WEIGHT_CLASS_NORMAL)
 			caliber = ".44"
 			load_method = SINGLE_CASING
 			ammo_type = /obj/item/ammo_casing/a44

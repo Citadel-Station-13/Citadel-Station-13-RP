@@ -259,13 +259,13 @@
 	if (active)
 		damage_force = 30
 		item_state = "[icon_state]_blade"
-		w_class = WEIGHT_CLASS_BULKY
+		set_weight_class(WEIGHT_CLASS_BULKY)
 		playsound(src, 'sound/weapons/saberon.ogg', 50, 1)
 		to_chat(user, "<span class='notice'>[src] is now active.</span>")
 	else
 		damage_force = 3
 		item_state = "[icon_state]"
-		w_class = WEIGHT_CLASS_SMALL
+		set_weight_class(WEIGHT_CLASS_SMALL)
 		playsound(src, 'sound/weapons/saberoff.ogg', 50, 1)
 		to_chat(user, "<span class='notice'>[src] can now be concealed.</span>")
 

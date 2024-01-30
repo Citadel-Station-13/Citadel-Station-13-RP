@@ -19,7 +19,7 @@
 		attack_sound = 'sound/weapons/bladeslice.ogg'
 		force_multiplier = 1
 		icon_state += "_open"
-		w_class = WEIGHT_CLASS_NORMAL
+		set_weight_class(WEIGHT_CLASS_NORMAL)
 	else
 		damage_mode = initial(damage_mode)
 		attack_sound = initial(attack_sound)

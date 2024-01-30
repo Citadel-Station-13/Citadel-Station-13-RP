@@ -627,9 +627,9 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 
 /obj/item/stack/cable_coil/proc/update_wclass()
 	if(amount == 1)
-		w_class = WEIGHT_CLASS_TINY
+		set_weight_class(WEIGHT_CLASS_TINY)
 	else
-		w_class = WEIGHT_CLASS_SMALL
+		set_weight_class(WEIGHT_CLASS_SMALL)
 
 /obj/item/stack/cable_coil/examine(mob/user, dist)
 	. = ..()
