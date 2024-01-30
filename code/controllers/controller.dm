@@ -53,7 +53,7 @@
 	return "[name]:"
 
 
-/datum/controller/proc/stat_entry()
+/datum/controller/proc/stat_entry(msg)
 	return "\[DEBUG\]"
 
 

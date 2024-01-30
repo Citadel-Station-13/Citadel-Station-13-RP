@@ -11,22 +11,30 @@
 // No point in making this a processing substem, it overrides fire() and handles its own processing list!
 SUBSYSTEM_DEF(airflow)
 	name = "Airflow"
-	wait = 2
-	subsystem_flags = SS_NO_INIT
+	wait = 0
+	subsystem_flags = SS_NO_INIT | SS_HIBERNATE
 	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 	priority = FIRE_PRIORITY_AIRFLOW
 
-	var/list/processing = list()
-	var/list/currentrun = list()
+	var/static/tmp/list/processing = list()
+	var/static/tmp/list/current = list()
+
+
+/datum/controller/subsystem/airflow/PreInit()
+	. = ..()
+	hibernate_checks = list(
+		NAMEOF(src, processing),
+		NAMEOF(src, current)
+	)
 
 /datum/controller/subsystem/airflow/fire(resumed = FALSE)
 	CACHE_VSC_PROP(atmos_vsc, /atmos/airflow/speed_decay, speed_decay)
 	CACHE_VSC_PROP(atmos_vsc, /atmos/airflow/mob_slowdown, mob_slowdown)
 	if (!resumed)
-		currentrun = processing.Copy()
+		current = processing.Copy()
 
 	var/mywait = wait
-	var/list/curr = currentrun // Cache for sanic speed
+	var/list/curr = current // Cache for sanic speed
 	while (curr.len)
 		var/atom/movable/target = curr[curr.len]
 		curr.len--

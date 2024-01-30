@@ -135,49 +135,10 @@ DEFINE_BITFIELD(runlevels, list(
  *? If the subsystem isn't listed here it's either DEFAULT or PROCESS (if it's a processing subsystem child)
  */
 
-//? Background Subsystems - Below normal
-// Any ../subsystem/.. is here unless it doesn't have SS_BACKGROUND in subsystem_flags!
-// This means by default, ../subsystem/processing/.. is here!
+//? Special
 
-#define FIRE_PRIORITY_RADIATION    10  //! laggy as hell, bottom barrel until optimizations are done.
-#define FIRE_PRIORITY_GARBAGE      15
-#define FIRE_PRIORITY_CHARACTERS   25
-#define FIRE_PRIORITY_PARALLAX     30
-#define FIRE_PRIORITY_AIR          35
-#define FIRE_PRIORITY_PROCESS      45
-// DEFAULT PRIORITY IS HERE
-#define FIRE_PRIORITY_PLANETS      75
-
-//? Normal Subsystems - Above background, below ticker
-// Any ../subsystem/.. without SS_TICKER or SS_BACKGROUND in subsystem_flags is here!
-
-#define FIRE_PRIORITY_PING         5
-#define FIRE_PRIORITY_SHUTTLES     5
-#define FIRE_PRIORITY_PLANTS       5
-#define FIRE_PRIORITY_NIGHTSHIFT   6
-#define FIRE_PRIORITY_VOTE         9
-#define FIRE_PRIORITY_VIS          10
-#define FIRE_PRIORITY_SERVER_MAINT 10
-#define FIRE_PRIORITY_ZMIMIC       10
-#define FIRE_PRIORITY_ALARMS       20
-#define FIRE_PRIORITY_SPACEDRIFT   25
-#define FIRE_PRIORITY_AIRFLOW      30
-#define FIRE_PRIORITY_OBJ          40
-// DEFAULT PRIORITY IS HERE
-#define FIRE_PRIORITY_LIGHTING         50
-#define FIRE_PRIORITY_INSTRUMENTS      90
-#define FIRE_PRIORITY_ASSET_LOADING    100
-#define FIRE_PRIORITY_MACHINES         100
-#define FIRE_PRIORITY_NANO             150
-#define FIRE_PRIORITY_AI               200
-#define FIRE_PRIORITY_TGUI             200
-#define FIRE_PRIORITY_PROJECTILES      200
-#define FIRE_PRIORITY_THROWING         200
-#define FIRE_PRIORITY_STATPANELS       400
-#define FIRE_PRIORITY_OVERLAYS         500
-#define FIRE_PRIORITY_SMOOTHING        500
-#define FIRE_PRIORITY_CHAT             500
-#define FIRE_PRIORITY_INPUT            1000
+/// This is used as the default regardless of bucket. Check above.
+#define FIRE_PRIORITY_DEFAULT      50
 
 //? Ticker Subsystems - Highest priority
 // Any subsystem flagged with SS_TICKER is here!
@@ -189,16 +150,47 @@ DEFINE_BITFIELD(runlevels, list(
 #define FIRE_PRIORITY_DPC          700
 #define FIRE_PRIORITY_TIMER        700
 
-//? Special
+//? Normal Subsystems - Above background, below ticker
+// Any ../subsystem/.. without SS_TICKER or SS_BACKGROUND in subsystem_flags is here!
 
-/// This is used as the default regardless of bucket. Check above.
-#define FIRE_PRIORITY_DEFAULT      50
+#define FIRE_PRIORITY_INPUT        1000
+#define FIRE_PRIORITY_CHAT          500
+#define FIRE_PRIORITY_SMOOTHING     500
+#define FIRE_PRIORITY_OVERLAYS      500
+#define FIRE_PRIORITY_STATPANELS    400
+#define FIRE_PRIORITY_THROWING      200
+#define FIRE_PRIORITY_PROJECTILES   200
+#define FIRE_PRIORITY_TICKER        200
+#define FIRE_PRIORITY_TGUI          200
+#define FIRE_PRIORITY_NANO          190
+#define FIRE_PRIORITY_AI            170
+#define FIRE_PRIORITY_MACHINES      100
+#define FIRE_PRIORITY_ASSET_LOADING 100
+#define FIRE_PRIORITY_INSTRUMENTS    90
+#define FIRE_PRIORITY_LIGHTING       50
+// DEFAULT PRIORITY IS HERE
+#define FIRE_PRIORITY_OBJ            40
+#define FIRE_PRIORITY_AIRFLOW        30
+#define FIRE_PRIORITY_SPACEDRIFT     25
+#define FIRE_PRIORITY_ALARMS         20
+#define FIRE_PRIORITY_ZMIMIC         10
+#define FIRE_PRIORITY_SERVER_MAINT   10
+#define FIRE_PRIORITY_VIS            10
+#define FIRE_PRIORITY_VOTE            9
+#define FIRE_PRIORITY_NIGHTSHIFT      6
+#define FIRE_PRIORITY_PLANTS          5
+#define FIRE_PRIORITY_SHUTTLES        5
+#define FIRE_PRIORITY_PING            5
 
-/**
- * Create a new timer and add it to the queue.
- * Arguments:
- * * callback the callback to call on timer finish
- * * wait deciseconds to run the timer for
- * * atom_flags atom_flags for this timer, see: code\__DEFINES\subsystems.dm
- */
-#define addtimer(args...) _addtimer(args, file = __FILE__, line = __LINE__)
+//? Background Subsystems - Below normal
+// Any ../subsystem/.. is here unless it doesn't have SS_BACKGROUND in subsystem_flags!
+// This means by default, ../subsystem/processing/.. is here!
+
+#define FIRE_PRIORITY_PLANETS        75
+// DEFAULT PRIORITY IS HERE
+#define FIRE_PRIORITY_PROCESS        45
+#define FIRE_PRIORITY_AIR            35
+#define FIRE_PRIORITY_PARALLAX       30
+#define FIRE_PRIORITY_CHARACTERS     25
+#define FIRE_PRIORITY_GARBAGE        15
+#define FIRE_PRIORITY_RADIATION      10  //! laggy as hell, bottom barrel until optimizations are done.

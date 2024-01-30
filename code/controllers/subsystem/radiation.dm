@@ -6,7 +6,7 @@
 SUBSYSTEM_DEF(radiation)
 	name = "Radiation"
 	priority = FIRE_PRIORITY_RADIATION
-	subsystem_flags = SS_NO_INIT | SS_BACKGROUND
+	subsystem_flags = SS_NO_INIT | SS_BACKGROUND | SS_HIBERNATE
 	wait = 1 SECONDS
 
 	/// stage
@@ -26,6 +26,13 @@ SUBSYSTEM_DEF(radiation)
 
 	/// current waves
 	var/list/datum/radiation_wave/waves = list()
+
+/datum/controller/subsystem/radiation/PreInit()
+	. = ..()
+	hibernate_checks = list(
+		NAMEOF(src, queued_waves),
+		NAMEOF(src, currentrun)
+	)
 
 /datum/controller/subsystem/radiation/Recover()
 	z_listeners.len = world.maxz

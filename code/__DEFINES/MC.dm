@@ -56,11 +56,16 @@
 /// This flag overrides SS_KEEP_TIMING
 #define SS_POST_FIRE_TIMING (1<<6)
 
+/** This subsystem should not be queued if it has no work */
+/// Populate the [hibernate_checks] list with the names of vars to check before a subsystem is queued.
+/// If the length() of each var is 0, it will not be queued
+#define SS_HIBERNATE (1<<7)
+
 /// If this subsystem doesn't initialize, it should not report as a hard error in CI.
 /// This should be used for subsystems that are flaky for complicated reasons, such as
-/// the Lua subsystem, which relies on auxtools, which is unstable. //! We don't have the Lua system, but this is a good example.
+/// the Lua subsystem, which relies on auxtools, which is unstable. //? We don't have the TG's Lua system, but this is a good example.
 /// It should not be used simply to silence CI.
-#define SS_OK_TO_FAIL_INIT (1<<7)
+#define SS_OK_TO_FAIL_INIT (1<<8)
 
 DEFINE_BITFIELD(subsystem_flags, list(
 	BITFIELD(SS_NO_INIT),
@@ -69,6 +74,7 @@ DEFINE_BITFIELD(subsystem_flags, list(
 	BITFIELD(SS_TICKER),
 	BITFIELD(SS_KEEP_TIMING),
 	BITFIELD(SS_POST_FIRE_TIMING),
+	BITFIELD(SS_HIBERNATE),
 	BITFIELD(SS_OK_TO_FAIL_INIT),
 ))
 

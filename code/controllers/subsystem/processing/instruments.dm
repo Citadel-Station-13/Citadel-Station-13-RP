@@ -2,8 +2,9 @@ PROCESSING_SUBSYSTEM_DEF(instruments)
 	name = "Instruments"
 	wait = 0.5
 	init_order = INIT_ORDER_INSTRUMENTS
-	subsystem_flags = SS_KEEP_TIMING
 	priority = FIRE_PRIORITY_INSTRUMENTS
+	subsystem_flags = SS_KEEP_TIMING | SS_HIBERNATE
+
 	var/static/list/datum/instrument/instrument_data = list()		//id = datum
 	var/static/list/datum/song/songs = list()
 	var/static/musician_maxlines = 600

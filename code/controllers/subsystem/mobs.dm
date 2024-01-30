@@ -17,8 +17,9 @@ SUBSYSTEM_DEF(mobs)
 	var/list/busy_z_levels = list()
 	var/slept_mobs = 0
 
-/datum/controller/subsystem/mobs/stat_entry()
-	return ..() + " P: [global.GLOB.mob_list.len] | S: [slept_mobs]"
+/datum/controller/subsystem/mobs/stat_entry(msg)
+	msg += "P: [global.GLOB.mob_list.len] | S: [slept_mobs]"
+	return ..()
 
 /datum/controller/subsystem/mobs/fire(resumed = 0)
 	var/list/busy_z_levels = src.busy_z_levels

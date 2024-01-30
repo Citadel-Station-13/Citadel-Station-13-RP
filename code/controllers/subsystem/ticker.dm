@@ -1,7 +1,9 @@
 SUBSYSTEM_DEF(ticker)
 	name = "Ticker"
-	wait = 20
 	init_order = INIT_ORDER_TICKER
+
+	priority = FIRE_PRIORITY_TICKER
+	subsystem_flags = SS_KEEP_TIMING
 	runlevels = RUNLEVEL_LOBBY | RUNLEVEL_SETUP | RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 
 	/// Current state of the game

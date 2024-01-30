@@ -429,7 +429,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 		//# Debug.
 		if (make_runtime)
 			var/datum/controller/subsystem/SS
-			SS.can_fire = 0
+			SS.can_fire = FALSE
 
 		if (!Failsafe || (Failsafe.processing_interval > 0 && (Failsafe.lasttick+(Failsafe.processing_interval*5)) < world.time))
 			new/datum/controller/failsafe() // (re)Start the failsafe.
@@ -499,40 +499,76 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 
 /**
- * This is what decides if something should run.
+ * This procedure is responsible for checking if a subsystem should run.
  *
  * Arguments:
- * * subsystemstocheck - List of systems to check.
+ * * subsystemstocheck - A list of subsystems to check.
+ *
+ * Returns:
+ * A boolean value indicating whether the check was successful or not.
  */
 /datum/controller/master/proc/CheckQueue(list/subsystemstocheck)
 	. = FALSE // So the mc knows if we runtimed.
 
-	// We create our variables outside of the loops to save on overhead.
+	//? We create our variables outside of the loops to save on overhead.
 	var/datum/controller/subsystem/SS
 	var/SS_flags
 
+	// Time to iterate through the list of subsystems.
 	for (var/thing in subsystemstocheck)
+		// Check if the subsystem is null and remove it from the list if it is.
 		if (!thing)
 			subsystemstocheck -= thing
 
 		SS = thing
+
+		// Skip subsystems that are not completely idle.
 		if (SS.state != SS_IDLE)
 			continue
 
-		if (SS.can_fire <= 0)
+		// Skip subsystems that can't fire.
+		if (SS.can_fire <= 0) //? Might as well be a ==, but there is probably a good reason for this... right?
 			continue
 
+		// Skip subsystems that are on cooldown.
 		if (SS.next_fire > world.time)
 			continue
 
+		// Skip subsystems that are suspended.
+		// if(SS.suspended)
+		// 	continue
+		#warn consider suspended
+
 		SS_flags = SS.subsystem_flags
+
+		// Skip subsystems with the SS_NO_FIRE flag.
 		if (SS_flags & SS_NO_FIRE)
 			subsystemstocheck -= SS
 			continue
 
+		// Skip subsystems that have SS_KEEP_TIMING flag and have fired recently.
 		if ((SS_flags & (SS_TICKER|SS_KEEP_TIMING)) == SS_KEEP_TIMING && SS.last_fire + (SS.wait * 0.75) > world.time)
 			continue
 
+		if (SS.postponed_fires >= 1)
+			SS.postponed_fires--
+			SS.update_nextfire()
+			continue
+
+		// If the subsystem is hibernating, check if it has work to do, and if it does, wake it up, otherwise skip it.
+		if(SS_flags & SS_HIBERNATE)
+			var/list/check_vars = SS.hibernate_checks
+			var/enter_queue
+			for(var/i in 1 to length(check_vars))
+				if(LAZYLEN(SS.vars[check_vars[i]]))
+					enter_queue = TRUE
+					break
+			if(!enter_queue)
+				SS.hibernating = TRUE
+				SS.update_nextfire()
+				continue
+
+		// Enqueue the subsystem for firing.
 		SS.enqueue()
 
 	. = TRUE
@@ -727,8 +763,9 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	. = TRUE
 
 
-/datum/controller/master/stat_entry()
-	return "(TickRate:[Master.processing]) (Iteration:[Master.iteration])"
+/datum/controller/master/stat_entry(msg)
+	msg = "(TickRate:[Master.processing]) (Iteration:[Master.iteration]) (TickLimit: [round(Master.current_ticklimit, 0.1)])"
+	return msg
 
 
 /datum/controller/master/StartLoadingMap()

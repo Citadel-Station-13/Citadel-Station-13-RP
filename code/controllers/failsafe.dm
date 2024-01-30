@@ -125,5 +125,6 @@ var/datum/controller/failsafe/Failsafe
 	return defcon
 
 
-/datum/controller/failsafe/stat_entry()
-	return "Defcon: [defcon_pretty()] (Interval: [Failsafe.processing_interval] | Iteration: [Failsafe.master_iteration])"
+/datum/controller/failsafe/stat_entry(msg)
+	msg = "Defcon: [defcon_pretty()] (Interval: [Failsafe.processing_interval] | Iteration: [Failsafe.master_iteration])"
+	return msg

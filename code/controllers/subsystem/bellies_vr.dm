@@ -16,8 +16,9 @@ SUBSYSTEM_DEF(bellies)
 	var/list/currentrun = list()
 	var/ignored_bellies = 0
 
-/datum/controller/subsystem/bellies/stat_entry()
-	return ..() + " #: [belly_list.len] | P: [ignored_bellies]"
+/datum/controller/subsystem/bellies/stat_entry(msg)
+	msg += "#: [belly_list.len] | P: [ignored_bellies]"
+	return ..()
 
 /datum/controller/subsystem/bellies/fire(resumed = 0)
 	if (!resumed)
