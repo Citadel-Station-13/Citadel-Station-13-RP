@@ -47,7 +47,7 @@
 		ui = new(user, src, "XenoarchArtifactHarvester", name)
 		ui.open()
 
-/obj/machinery/artifact_harvester/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/artifact_harvester/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	data["info"] = list(

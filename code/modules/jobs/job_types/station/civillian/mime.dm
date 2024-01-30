@@ -4,7 +4,7 @@
 	flag = MIME
 	departments = list(DEPARTMENT_CIVILIAN)
 	department_flag = ENGSEC
-	total_positions = 1
+	total_positions = 2
 	spawn_positions = 1
 	supervisors = "the spirit of performance"
 	selection_color = "#515151"

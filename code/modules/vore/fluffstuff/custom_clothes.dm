@@ -90,7 +90,7 @@
 	permeability_coefficient = 0.01
 	armor_type = /datum/armor/none
 	inv_hide_flags = HIDEMASK|HIDEEARS
-	cold_protection = HEAD
+	cold_protection_cover = HEAD
 	siemens_coefficient = 0.9
 
 //Bonnie Head
@@ -128,7 +128,7 @@
 	allowed = list(/obj/item/flashlight,/obj/item/tank)
 	armor_type = /datum/armor/none
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
-	cold_protection = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
+	cold_protection_cover = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
 	siemens_coefficient = 0.9
 
 //Bonnie Suit
@@ -554,8 +554,9 @@
 	desc = "Squeak! A shiny outfit for cleaning, made by people with dirty minds."
 
 	icon = 'icons/clothing/uniform/costume/maid.dmi'
-	icon_state = "maid"
+	icon_state = "latex"
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
 

@@ -112,9 +112,9 @@ default behaviour is:
 		var/divided_damage = (burn_amount)/(H.organs.len)
 		var/extradam = 0	//added to when organ is at max dam
 		for(var/obj/item/organ/external/affecting in H.organs)
-			if(!affecting)	continue
-			if(affecting.take_damage(0, divided_damage+extradam))	//TODO: fix the extradam stuff. Or, ebtter yet...rewrite this entire proc ~Carn
-				H.UpdateDamageIcon()
+			affecting.inflict_bodypart_damage(
+				burn = divided_damage + extradam,
+			)
 		H.update_health()
 		return 1
 	else if(istype(src, /mob/living/silicon/ai))
@@ -449,24 +449,10 @@ default behaviour is:
 	adjustFireLoss(-burn)
 	src.update_health()
 
-// damage ONE external organ, organ gets randomly selected from damaged ones.
-/mob/living/proc/take_organ_damage(var/brute = 0, var/burn = 0, var/sharp = 0, var/edge = 0, var/emp = 0)
-	if(status_flags & STATUS_GODMODE)	return 0	//godmode
-	adjustBruteLoss(brute)
-	adjustFireLoss(burn)
-	src.update_health()
-
 // heal MANY external organs, in random order
 /mob/living/proc/heal_overall_damage(var/brute, var/burn)
 	adjustBruteLoss(-brute)
 	adjustFireLoss(-burn)
-	src.update_health()
-
-// damage MANY external organs, in random order
-/mob/living/proc/take_overall_damage(var/brute, var/burn, var/used_weapon = null)
-	if(status_flags & STATUS_GODMODE)	return 0	//godmode
-	adjustBruteLoss(brute)
-	adjustFireLoss(burn)
 	src.update_health()
 
 /mob/living/proc/restore_all_organs()
@@ -762,21 +748,6 @@ default behaviour is:
 /mob/living/proc/needs_to_breathe()
 	return !isSynthetic()
 
-/mob/living/vv_get_header()
-	. = ..()
-	. += {"
-		<a href='?_src_=vars;rename=\ref[src]'><b>[src]</b></a><font size='1'>
-		<br><a href='?_src_=vars;datumedit=\ref[src];varnameedit=ckey'>[ckey ? ckey : "No ckey"]</a> / <a href='?_src_=vars;datumedit=\ref[src];varnameedit=real_name'>[real_name ? real_name : "No real name"]</a>
-		<br>
-		BRUTE:<a href='?_src_=vars;mobToDamage=\ref[src];adjustDamage=brute'>[getBruteLoss()]</a>
-		FIRE:<a href='?_src_=vars;mobToDamage=\ref[src];adjustDamage=fire'>[getFireLoss()]</a>
-		TOXIN:<a href='?_src_=vars;mobToDamage=\ref[src];adjustDamage=toxin'>[getToxLoss()]</a>
-		OXY:<a href='?_src_=vars;mobToDamage=\ref[src];adjustDamage=oxygen'>[getOxyLoss()]</a>
-		CLONE:<a href='?_src_=vars;mobToDamage=\ref[src];adjustDamage=clone'>[getCloneLoss()]</a>
-		BRAIN:<a href='?_src_=vars;mobToDamage=\ref[src];adjustDamage=brain'>[getBrainLoss()]</a>
-		</font>
-		"}
-
 /**
  *! Enable this one if you're enabling the butchering component. Otherwise it's useless.
 /mob/living/proc/harvest(mob/living/user) //used for extra objects etc. in butchering
@@ -807,11 +778,28 @@ default behaviour is:
 
 //* Pixel Offsets
 
-/mob/living/get_centering_pixel_y_offset(dir, atom/aligning)
+/mob/living/get_centering_pixel_y_offset(dir)
 	. = ..()
 	// since we're shifted up by transforms..
-	. += ((size_multiplier * icon_scale_y) - 1) * 16
+	. -= ((size_multiplier * icon_scale_y) - 1) * 16
 
 /mob/living/get_managed_pixel_y()
 	. = ..()
 	. += depth_current
+
+//TODO: maybe expand this system to be in the VV menu for event managers to mess with - provided they trust the observers enough...
+/**
+ * Allows an observer to take control of the mob at any time. Must use the "existing" ghostrole subtype.
+ * R: the ghostrole datum to use
+ */
+/mob/living/proc/add_ghostrole(datum/role/ghostrole/existing/R = /datum/role/ghostrole/existing/)
+	var/list/L = list()
+	L["mob"] += src
+	return AddComponent(/datum/component/ghostrole_spawnpoint, R, 1, L)
+
+/mob/living/proc/get_ghostrole() //! currently not using GetComponent because that seems bugged right now. :^) @silicons
+	. = datum_components?[/datum/component/ghostrole_spawnpoint]
+	return . && (length(.) ? .[1] : .)
+
+/mob/living/proc/remove_ghostrole()
+	return DelComponent(/datum/component/ghostrole_spawnpoint)

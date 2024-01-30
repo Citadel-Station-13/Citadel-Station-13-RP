@@ -1,13 +1,13 @@
-/obj/item/reagent_containers/food/snacks/candy
+/obj/item/reagent_containers/food/snacks/wrapped/candy
   description_fluff = "The Candy Bar is a copylefted recipe designed by information freedom activists to bring the delicious taste of nougat to the masses. It's cheap, familiar, and easy to synthesize, so most food vendors stock it."
 
-/obj/item/reagent_containers/food/snacks/candy/proteinbar
+/obj/item/reagent_containers/food/snacks/wrapped/proteinbar
   description_fluff = "The SWOLEMAX protien bar is the flagship product of SWOLEMAX, a health foods corporation recently independent of Centauri Provisions. It tastes like a brick of ashes."
 
 /obj/item/reagent_containers/food/snacks/candy_corn
   description_fluff = "Nobody knows why Nanotrasen keeps making these waxy pieces of sugar and bone glue, but a handful of people swear by them. Purportedly popular with Skrell children, dubiously enough."
 
-/obj/item/reagent_containers/food/snacks/chips
+/obj/item/reagent_containers/food/snacks/bagged/chips
   description_fluff = "Actual potatos haven't been used in potato chips for centuries. They're mostly a denatured nutrient slurry pressed into a chip-shaped mold and salted. Still tastes the same."
 
 /obj/item/reagent_containers/food/snacks/donut
@@ -19,19 +19,19 @@
 /obj/item/reagent_containers/food/snacks/pie
   description_fluff = "One of the more esoteric terms of the Nanotrasen-Centauri Noncompetition Agreement of 2545 was a requirement that Nanotrasen stock these pies on all their stations. They're calibrated for commedic value, not taste."
 
-/obj/item/reagent_containers/food/snacks/sosjerky
+/obj/item/reagent_containers/food/snacks/bagged/sosjerky
   description_fluff = "Space Cows, here, being an affectionate name given by early colonists to the massive food synthesizers used to sustain independent outposts before the dominance of hydroponics. Tastes like cardboard rubbed in meat seasoning."
 
-/obj/item/reagent_containers/food/snacks/no_raisin
+/obj/item/reagent_containers/food/snacks/boxed/no_raisin
   description_fluff = "Originally Raisin Blend no. 4, 4noraisins obtained their current name in the Skadi Positronic Exclusion Crisis of 2442, where they were rebranded as part of the protests." //the exclusion crisis, presumably, involved positronic immigration being banned for no raisin
 
-/obj/item/reagent_containers/food/snacks/spacetwinkie
+/obj/item/reagent_containers/food/snacks/wrapped/spacetwinkie
   description_fluff = "Space Twinkies, a modification of a flagship product of one of Centauri Provision's predecessor corporations, are designed to withstand vacuum, radiation, dehydration, and long periods of acceleration without losing their shape or taste. They're not great, but they have earned their names (and enormous revenue for their parent company)."
 
-/obj/item/reagent_containers/food/snacks/cheesiehonkers
+/obj/item/reagent_containers/food/snacks/bagged/cheesiehonkers
   description_fluff = "Cheesie Honkers, a previously niche line of cheese puffs from a subsidiary of a subsidiary of Centauri Provisions, rose to household-name status when their tell-tale orange dust was used as evidence to convict notorious positronic serial killer Etoid in 2404."
 
-/obj/item/reagent_containers/food/snacks/hotcheesiehonkers
+/obj/item/reagent_containers/food/snacks/bagged/hotcheesiehonkers
   description_fluff = "Hot Cheesie Honkers, a once discontinued spinoff of the brand classic Cheesie Honkers; renewed deregulatory waves in OriCon politics regarding the usage of tear gas derivatives inside foods allowed a limited re-launch of the product in certain sectors."
 
 /obj/item/reagent_containers/food/snacks/syndicake
@@ -46,8 +46,8 @@
 /obj/item/reagent_containers/food/snacks/tastybread
   description_fluff = "This is the product that brought Centauri Provisions into the limelight. A product of the earliest extrasolar colony of Heaven, the Bread Tube, while bland, contains all the nutrients a spacer needs to get through the day and is decidedly edible when compared to some of its competitors."
 
-/obj/item/reagent_containers/food/snacks/skrellsnacks
+/obj/item/reagent_containers/food/snacks/wrapped/skrellsnacks
   description_fluff = "A jerky product made of Go'moa mushrooms native to the Skrellian homeworld of Qerr'balak. SkrellSnaks are actually a product of Natuna, designed to welcome Ue-Katish refugees to their colony."
 
-/obj/item/reagent_containers/food/snacks/unajerky
+/obj/item/reagent_containers/food/snacks/boxed/unajerky
   description_fluff = "Removed from Getmore vendors following ethical questions about the source of the meat, Sissalik Jerky remains a popular snack for Unathi immigrants and daredevils looking for a meaty, spicy treat that makes Scaredy's look like tofu."

@@ -1,6 +1,23 @@
 //A system to manage and display alerts on screen without needing you to do it yourself
 
-//PUBLIC -  call these wherever you want
+/mob/var/list/alerts = list() // contains /atom/movable/screen/alert only // On /mob so clientless mobs will throw alerts properly
+
+/atom/movable/screen/alert/Click(location, control, params)
+	if(!usr || !usr.client)
+		return
+	var/paramslist = params2list(params)
+	if(paramslist["shift"]) // screen objects don't do the normal Click() stuff so we'll cheat
+		to_chat(usr,"<span class='boldnotice'>[name]</span> - <span class='info'>[desc]</span>")
+		return
+	if(master)
+		return usr.client.Click(master, location, control, params)
+
+/atom/movable/screen/alert/Destroy()
+	..()
+	severity = 0
+	master = null
+	screen_loc = ""
+	return QDEL_HINT_QUEUE
 
 
 /mob/proc/throw_alert(category, type, severity, obj/new_master)
@@ -80,12 +97,26 @@
 	name = "Alert"
 	desc = "Something seems to have gone wrong with this alert, so report this bug please"
 	mouse_opacity = 1
+	/// background to render
+	var/icon/background_icon = 'icons/screen/alerts/backgrounds.dmi'
+	/// background state to render; null to not render
+	var/background_state
 	var/timeout = 0 //If set to a number, this alert will clear itself after that many deciseconds
 	var/severity = 0
 	var/alerttooltipstyle = ""
 	var/no_underlay // Don't underlay the UI style's blank template icon under this
 	/// mob that owns us
 	var/mob/owner
+
+/atom/movable/screen/alert/Initialize(mapload)
+	. = ..()
+	update_icon()
+
+/atom/movable/screen/alert/update_icon(updates)
+	. = ..()
+	underlays.len = 0
+	if(background_icon && background_state)
+		underlays += image(background_icon, background_state)
 
 /atom/movable/screen/alert/Destroy()
 	owner = null
@@ -446,6 +477,8 @@ so as to remain in compliance with the most up-to-date laws."
 
 // Re-render all alerts - also called in /datum/hud/show_hud() because it's needed there
 /datum/hud/proc/reorganize_alerts()
+	if(!mymob)
+		return
 	var/list/alerts = mymob.alerts
 	if(!hud_shown)
 		for(var/i = 1, i <= alerts.len, i++)
@@ -480,21 +513,36 @@ so as to remain in compliance with the most up-to-date laws."
 		mymob?.client?.screen |= alert
 	return 1
 
-/mob/var/list/alerts = list() // contains /atom/movable/screen/alert only // On /mob so clientless mobs will throw alerts properly
+//? Encumbrance
 
-/atom/movable/screen/alert/Click(location, control, params)
-	if(!usr || !usr.client)
-		return
-	var/paramslist = params2list(params)
-	if(paramslist["shift"]) // screen objects don't do the normal Click() stuff so we'll cheat
-		to_chat(usr,"<span class='boldnotice'>[name]</span> - <span class='info'>[desc]</span>")
-		return
-	if(master)
-		return usr.client.Click(master, location, control, params)
+/atom/movable/screen/alert/encumbered
+	abstract_type = /atom/movable/screen/alert/encumbered
+	icon = 'icons/screen/alerts/encumbered.dmi'
+	background_state = "default"
+	desc = "Carrying more than you can comfortably bear. Movement slowed."
 
-/atom/movable/screen/alert/Destroy()
-	..()
-	severity = 0
-	master = null
-	screen_loc = ""
-	return QDEL_HINT_QUEUE
+/atom/movable/screen/alert/encumbered/Click(location, control, params)
+	if(!isliving(owner))
+		return
+	var/mob/living/L = owner
+	to_chat(usr, jointext(list(
+		"[usr == L? "You are" : "[L] is"] <b>[lowertext(name)]</b>.",
+		"Encumbrance: [L.cached_carry_encumbrance] / [L.physiology.carry_strength]",
+		"Weight: [L.cached_carry_weight] / [L.physiology.carry_strength]",
+	), "<br>"))
+
+/atom/movable/screen/alert/encumbered/minor
+	name = "Lightly Encumbered"
+	icon_state = "1"
+
+/atom/movable/screen/alert/encumbered/moderate
+	name = "Moderately Encumbered"
+	icon_state = "2"
+
+/atom/movable/screen/alert/encumbered/severe
+	name = "Severely Encumbered"
+	icon_state = "3"
+
+/atom/movable/screen/alert/encumbered/extreme
+	name = "Extremely Encumbered"
+	icon_state = "4"

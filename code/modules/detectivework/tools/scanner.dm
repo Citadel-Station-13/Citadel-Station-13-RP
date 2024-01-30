@@ -6,7 +6,7 @@
 	var/list/stored = list()
 	w_class = ITEMSIZE_SMALL
 	item_state = "electronic"
-	item_flags = ITEM_NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	slot_flags = SLOT_BELT
 
 	var/reveal_fingerprints = TRUE
@@ -29,7 +29,7 @@
 			return
 		else if(user.zone_sel.selecting == "r_hand" || user.zone_sel.selecting == "l_hand")
 			var/obj/item/sample/print/P = new /obj/item/sample/print(user.loc)
-			P.melee_attack_chain(target, user)
+			P.melee_interaction_chain(target, user)
 			to_chat(user,"<span class='notice'>Done printing.</span>")
 	//		to_chat(user, "<span class='notice'>[target]'s Fingerprints: [md5(target.dna.uni_identity)]</span>")
 

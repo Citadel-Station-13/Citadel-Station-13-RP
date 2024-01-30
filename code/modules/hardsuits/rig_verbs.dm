@@ -137,7 +137,7 @@
 		to_chat(usr, "<span class='warning'>The hardsuit is not being worn.</span>")
 		return
 
-	if(!check_suit_access(usr))
+	if(!is_activated() && !check_suit_access(usr))
 		return
 
 	toggle_seals(wearer)

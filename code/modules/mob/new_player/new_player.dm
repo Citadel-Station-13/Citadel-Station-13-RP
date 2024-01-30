@@ -450,7 +450,7 @@
 		var/obj/structure/AIcore/deactivated/C = GLOB.empty_playable_ai_cores[1]
 		GLOB.empty_playable_ai_cores -= C
 
-		character.loc = C.loc
+		character.forceMove(C.loc)
 
 		AnnounceCyborg(character, rank, "has been transferred to the empty core in \the [character.loc.loc]")
 		SSticker.mode.latespawn(character)
@@ -466,7 +466,7 @@
 
 	// Moving wheelchair if they have one
 	if(character.buckled && istype(character.buckled, /obj/structure/bed/chair/wheelchair))
-		character.buckled.loc = character.loc
+		character.buckled.forceMove(character.loc)
 		character.buckled.setDir(character.dir)
 
 	SSticker.mode.latespawn(character)

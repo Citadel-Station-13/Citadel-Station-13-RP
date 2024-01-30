@@ -45,16 +45,16 @@ type Virus = {
 };
 
 type VirusDisplayProps = {
-  virus: Virus;
+  readonly virus: Virus;
 };
 
 type VirusInfoProps = {
-  virus: Virus;
+  readonly virus: Virus;
 };
 
 type TabsProps = {
-  tab: number;
-  tabHandler: (tab: number) => void;
+  readonly tab: number;
+  readonly tabHandler: (tab: number) => void;
 };
 
 type Symptom = {
@@ -70,11 +70,11 @@ type Symptom = {
 };
 
 type SymptomDisplayProps = {
-  symptoms: Symptom[];
+  readonly symptoms: Symptom[];
 };
 
 type SymptomInfoProps = {
-  symptom: Symptom;
+  readonly symptom: Symptom;
 };
 
 type Threshold = {
@@ -83,7 +83,7 @@ type Threshold = {
 };
 
 type ThresholdDisplayProps = {
-  thresholds: Threshold[];
+  readonly thresholds: Threshold[];
 };
 
 export const Pandemic = (_, context) => {

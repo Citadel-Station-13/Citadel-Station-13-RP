@@ -30,7 +30,7 @@
 	/// action button background icon
 	var/background_icon = 'icons/screen/actions/backgrounds.dmi'
 	/// action button background icon state - the _on overlay will be added while active, automatically.
-	var/background_state = "alien"
+	var/background_state = "default"
 	/// currently hotbound?
 	var/bound = FALSE
 	/// automatically hotbound?
@@ -41,6 +41,13 @@
 	var/interact_type = ABILITY_INTERACT_NONE
 	/// currently hidden?
 	var/hidden = FALSE
+	/// targeted?
+	/// targeted abilities only work with ABILITY_INTERACT_TOGGLE
+	var/targeted = FALSE
+	/// target type? Can be anything (atoms), mobs or turfs
+	var/targeting_type = ABILITY_TARGET_ALL
+	/// range?
+	var/range
 
 	//? ui
 	/// tgui id
@@ -148,6 +155,10 @@
 			return
 		if(isnull(toggling))
 			toggling = !enabled
+		if(targeted)
+			if(ishuman(user) && toggling == TRUE)
+				var/mob/living/carbon/human/H = user
+				H.ab_handler?.process_ability(src)
 	if(!check_trigger(user, toggling, TRUE))
 		return
 	if(windup)
@@ -199,12 +210,16 @@
 	enabled = TRUE
 	if(update_action)
 		update_action()
+	action?.background_icon_state += "_on"
+	action?.update_button()
 	on_enable()
 
 /datum/ability/proc/disable(update_action)
 	enabled = FALSE
 	if(update_action)
 		update_action()
+	action?.background_icon_state = background_state
+	action?.update_button()
 	on_disable()
 
 /datum/ability/proc/on_enable()
@@ -299,10 +314,30 @@
 	if(always_bind)
 		quickbind()
 
+
+/**
+ * checks if the target is within range and the ability is triggerable
+ */
+/datum/ability/proc/target_check(mob/user, atom/target)
+	if(range)
+		if(get_dist(get_turf(user),get_turf(target)) > range)
+			return FALSE
+	if(check_trigger(user))
+		target_trigger(user,target)
+		return TRUE
+	return FALSE
+
+/**
+ * target-affecting proc
+ */
+/datum/ability/proc/target_trigger(mob/user, atom/target)
+	//target-related code goes here
+	disable()
+
 /**
  * static data for tgui panel
  */
-/datum/ability/ui_static_data(mob/user)
+/datum/ability/ui_static_data(mob/user, datum/tgui/ui)
 	return list(
 		"$tgui" = tgui_id,
 		"$src" = REF(src),

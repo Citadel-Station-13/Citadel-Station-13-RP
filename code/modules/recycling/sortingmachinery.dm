@@ -329,7 +329,7 @@
 	item_state = "electronic"
 	slot_flags = SLOT_BELT
 
-/obj/item/destTagger/ui_state(mob/user, datum/tgui_module/module)
+/obj/item/destTagger/ui_state()
 	return GLOB.inventory_state
 
 /obj/item/destTagger/ui_interact(mob/user, datum/tgui/ui)
@@ -352,7 +352,7 @@
 		return
 	ui_interact(user)
 
-/obj/item/destTagger/ui_act(action, params)
+/obj/item/destTagger/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 	add_fingerprint(usr)

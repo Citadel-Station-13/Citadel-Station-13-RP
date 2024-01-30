@@ -44,16 +44,20 @@
 
 			if(istype(target, /mob/living/carbon/human))
 				var/mob/living/carbon/human/H = target
-	//			if (M.health <= 0) return
+	//			if (M.integrity <= 0) return
 
 				var/obj/item/organ/external/temp = H.get_organ(pick(BP_TORSO, BP_TORSO, BP_TORSO, BP_HEAD))
 				if(temp)
 					var/update = 0
 					switch(damtype)
 						if("brute")
-							update |= temp.take_damage(rand(force/2, force), 0)
+							temp.inflict_bodypart_damage(
+								brute = rand(force / 2, force),
+							)
 						if("fire")
-							update |= temp.take_damage(0, rand(force/2, force))
+							temp.inflict_bodypart_damage(
+								burn = rand(force / 2, force),
+							)
 						if("tox")
 							if(H.reagents)
 								if(H.reagents.get_reagent_amount("carpotoxin") + force < force*2)

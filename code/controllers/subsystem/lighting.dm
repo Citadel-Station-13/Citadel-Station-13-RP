@@ -127,7 +127,9 @@ SUBSYSTEM_DEF(lighting)
 				. += 1
 			if (TURF_IS_AMBIENT_LIT_UNSAFE(T))
 				T.generate_missing_corners()	// Forcibly generate corners.
-
+		else
+			if(!T.lighting_disable_fullbright)
+				T.add_overlay(/obj/effect/fullbright, TRUE)
 		CHECK_TICK
 
 // It's safe to pass a list of non-turfs to this list - it'll only check turfs.

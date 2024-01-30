@@ -5,10 +5,10 @@
 	icon = 'icons/obj/device_alt.dmi'
 	icon_state = "sleevemate" //Give this a fancier sprite later.
 	item_state = "healthanalyzer"
-	item_flags = ITEM_NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	slot_flags = SLOT_BELT
 	w_class = ITEMSIZE_SMALL
-	materials = list(MAT_STEEL = 200)
+	materials_base = list(MAT_STEEL = 200)
 	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 2, TECH_ILLEGAL = 1)
 
 /obj/item/bodysnatcher/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)

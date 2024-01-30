@@ -8,7 +8,7 @@
 	damage_force = 2
 	throw_force = 5
 	w_class = ITEMSIZE_TINY
-	materials = list(MAT_STEEL = 60)
+	materials_base = list(MAT_STEEL = 60)
 	drop_sound = 'sound/items/drop/glass.ogg'
 	pickup_sound = 'sound/items/pickup/glass.ogg'
 
@@ -20,13 +20,18 @@
 	var/rigged = 0
 	var/broken_chance = 0
 
-	///how much light it gives off
+	/// range of light
 	var/brightness_range = 8
+	/// power of light
 	var/brightness_power = 0.8
+	/// color of light
 	var/brightness_color = LIGHT_COLOR_HALOGEN
 
-	var/nightshift_range = 6
-	var/nightshift_power = 0.5
+	/// range of light under nightshift; null for no change
+	var/nightshift_range = LIGHT_RANGE_NIGHTSHIFT
+	/// power of light under nightshift; null for no change
+	var/nightshift_power = LIGHT_POWER_NIGHTSHIFT
+	/// color of light under nightshift; null for no change
 	var/nightshift_color = LIGHT_COLOR_NIGHTSHIFT
 
 /obj/item/light/tube
@@ -35,7 +40,7 @@
 	icon_state = "ltube"
 	base_icon_state = "ltube"
 	item_state = "c_tube"
-	materials = list(MAT_GLASS = 100)
+	materials_base = list(MAT_GLASS = 100)
 	brightness_range = 8
 	brightness_power = 0.8
 	brightness_color = LIGHT_COLOR_HALOGEN
@@ -103,13 +108,18 @@
 	icon_state = "lbulb"
 	base_icon_state = "lbulb"
 	item_state = "contvapour"
-	materials = list(MAT_GLASS = 100)
+	materials_base = list(MAT_GLASS = 100)
+
 	brightness_color = LIGHT_COLOR_TUNGSTEN
-
 	brightness_range = 4
+	brightness_power = 0.8
 
-	nightshift_range = 4
-	nightshift_power = 0.5
+	// todo: bulb nightshift stuff needs to be defines
+	// we basically disable it because bulbs are already pretty weak
+
+	nightshift_color = null
+	nightshift_range = null
+	nightshift_power = null
 
 /obj/item/light/bulb/strong
 	name = "light bulb"
@@ -117,14 +127,9 @@
 	icon_state = "lbulb"
 	base_icon_state = "lbulb"
 	item_state = "contvapour"
-	materials = list(MAT_GLASS = 100)
-	brightness_color = LIGHT_COLOR_TUNGSTEN
+	materials_base = list(MAT_GLASS = 100)
 
 	brightness_range = 8
-
-	nightshift_range = 8 //Basically just a no-nightshift light.
-	nightshift_power = 0.8
-	nightshift_color = LIGHT_COLOR_TUNGSTEN
 
 /obj/item/light/throw_impact(atom/hit_atom)
 	..()
@@ -184,7 +189,7 @@
 	icon_state = "fbulb"
 	base_icon_state = "fbulb"
 	item_state = "egg4"
-	materials = list(MAT_GLASS = 100)
+	materials_base = list(MAT_GLASS = 100)
 
 /// Fairylights
 /obj/item/light/bulb/fairy
@@ -192,7 +197,7 @@
 	desc = "A tiny replacement light bulb."
 	icon_state = "fbulb"
 	base_icon_state = "fbulb"
-	materials = list(MAT_GLASS = 10)
+	materials_base = list(MAT_GLASS = 10)
 	brightness_range = 5
 
 // update the icon state and description of the light

@@ -273,8 +273,11 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 6
 	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/tcommsat/entrance)
+/area/engineering/drone_fabrication)
 "aM" = (
 /obj/structure/table/reinforced,
 /obj/item/rcd/advanced,
@@ -303,10 +306,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -32
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/cyan{
 	icon_state = "0-8"
 	},
@@ -529,11 +529,8 @@
 /turf/simulated/floor/plating,
 /area/engineering/atmos/monitoring)
 "bA" = (
-/obj/structure/bed/chair/office/dark{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/tcommsat/entrance)
+/turf/simulated/wall/prepainted/engineering,
+/area/engineering/drone_fabrication)
 "bB" = (
 /obj/structure/atmos_tank_segment/o2{
 	icon_state = "1,2"
@@ -729,6 +726,9 @@
 /obj/structure/catwalk,
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/maintenance,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "ck" = (
@@ -761,10 +761,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/atmos/storage)
 "cn" = (
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 10
 	},
@@ -998,8 +995,14 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/plating,
-/area/tcommsat/entrance)
+/area/tcommsat/powercontrol)
 "dj" = (
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -1168,17 +1171,17 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass/engineering{
 	name = "Telecomms Control Room"
 	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"
 	},
-/area/tcommsat/entrance)
+/area/engineering/drone_fabrication)
 "dT" = (
 /obj/structure/catwalk,
 /obj/effect/floor_decal/spline/fancy/wood,
@@ -1337,8 +1340,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 8
 	},
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -1384,6 +1386,15 @@
 /obj/structure/lattice,
 /turf/space,
 /area/engineering/atmos/gas_storage)
+"eL" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/green{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/engineering/drone_fabrication)
 "eN" = (
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
@@ -1592,17 +1603,11 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engi_engine)
 "fk" = (
-/obj/structure/cable/green{
-	icon_state = "1-4"
-	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/tcommsat/entrance)
+/area/engineering/drone_fabrication)
 "fm" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
@@ -1626,17 +1631,17 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "fr" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/green{
+	icon_state = "2-8"
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/plating,
-/area/tcommsat/entrance)
+/area/tcommsat/powercontrol)
 "ft" = (
 /obj/spawner/window/low_wall/borosillicate/full/firelocks,
 /obj/effect/paint_stripe/sun,
@@ -1728,8 +1733,7 @@
 /obj/machinery/atmospherics/portables_connector{
 	dir = 4
 	},
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /obj/effect/floor_decal/industrial/outline/red,
@@ -1763,8 +1767,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
-/obj/machinery/firealarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -24
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -1959,18 +1962,15 @@
 /turf/simulated/floor/airless/ceiling,
 /area/space)
 "gt" = (
-/obj/machinery/power/smes/buildable{
-	RCon_tag = "Telecomms";
-	cur_coils = 2
-	},
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
+/obj/machinery/power/smes/buildable/tcomms,
 /turf/simulated/floor/plating,
-/area/tcommsat/entrance)
+/area/tcommsat/powercontrol)
 "gu" = (
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/monitoring)
@@ -2112,8 +2112,7 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
 	},
-/obj/machinery/firealarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -24
 	},
 /turf/simulated/floor/tiled,
@@ -2304,19 +2303,16 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/disposalpipe/segment{
 	dir = 8;
 	icon_state = "pipe-c"
 	},
-/obj/structure/cable/green{
-	icon_state = "0-8"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/maintenance/trash_pit)
@@ -2344,9 +2340,6 @@
 	},
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
-	},
-/obj/structure/cable/green{
-	icon_state = "1-4"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -2441,8 +2434,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -2565,8 +2557,7 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/closet/firecloset,
 /turf/simulated/floor/tiled/steel_dirty,
@@ -2745,11 +2736,17 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
-"jf" = (
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -32
+"je" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 1
 	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled,
+/area/engineering/hallway)
+"jf" = (
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -2863,7 +2860,7 @@
 	},
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/tcommsat/entrance)
+/area/engineering/drone_fabrication)
 "jA" = (
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/engine_airlock)
@@ -2963,7 +2960,8 @@
 	dir = 8;
 	icon_state = "freezer_1";
 	set_temperature = 73;
-	use_power = 1
+	use_power = 1;
+	power_setting_legacy = 25
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/tcommsat/computer)
@@ -3008,8 +3006,11 @@
 /area/engineering/hallway/lower)
 "jY" = (
 /obj/structure/closet/firecloset,
+/obj/structure/cable/green{
+	icon_state = "1-4"
+	},
 /turf/simulated/floor/plating,
-/area/tcommsat/entrance)
+/area/tcommsat/powercontrol)
 "jZ" = (
 /obj/structure/atmos_tank_segment/air{
 	icon_state = "0,2"
@@ -3144,11 +3145,8 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/storage)
 "ks" = (
-/obj/machinery/power/apc{
-	cell_type = /obj/item/cell/super;
-	dir = 8;
-	name = "west bump";
-	pixel_x = -30
+/obj/machinery/power/apc/west_mount{
+	cell_type = /obj/item/cell/super
 	},
 /obj/structure/cable,
 /turf/simulated/floor/plating,
@@ -3391,7 +3389,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/tcommsat/entrance)
+/area/engineering/drone_fabrication)
 "lr" = (
 /obj/item/radio/intercom{
 	dir = 1;
@@ -3514,11 +3512,8 @@
 /area/storage/tech)
 "lP" = (
 /obj/structure/cable/green,
-/obj/machinery/power/apc{
-	cell_type = /obj/item/cell/super;
-	dir = 8;
-	name = "west bump";
-	pixel_x = -30
+/obj/machinery/power/apc/west_mount{
+	cell_type = /obj/item/cell/super
 	},
 /obj/structure/table/rack{
 	dir = 8;
@@ -3557,22 +3552,20 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/engi_engine)
 "lT" = (
-/obj/machinery/power/apc{
-	cell_type = /obj/item/cell/super;
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24
-	},
-/obj/structure/cable/green{
-	icon_state = "0-8"
+/obj/machinery/power/apc/north_mount{
+	cell_type = /obj/item/cell/super
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
+/obj/structure/cable/green{
+	icon_state = "0-2"
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/tcommsat/entrance)
+/area/engineering/drone_fabrication)
 "lU" = (
-/turf/simulated/floor/tiled/techmaint,
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
 /area/engineering/engine_smes)
 "lV" = (
 /obj/structure/closet/radiation,
@@ -3721,7 +3714,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/tcommsat/entrance)
+/area/engineering/drone_fabrication)
 "ms" = (
 /obj/structure/railing{
 	dir = 4
@@ -3747,15 +3740,19 @@
 /area/engineering/atmos/storage)
 "mA" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/tcommsat/entrance)
+/area/engineering/drone_fabrication)
+"mB" = (
+/obj/machinery/door/airlock/maintenance/engi,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
+/area/tcommsat/powercontrol)
 "mC" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -3768,15 +3765,12 @@
 "mD" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/cable/green{
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/structure/disposalpipe/segment,
-/obj/structure/cable/green{
-	icon_state = "2-4"
-	},
 /turf/simulated/floor/plating,
-/area/tcommsat/entrance)
+/area/tcommsat/powercontrol)
 "mE" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -3859,11 +3853,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/table/rack{
 	dir = 8;
 	layer = 2.6
@@ -3906,7 +3896,11 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-8"
 	},
-/turf/simulated/floor/tiled/techmaint,
+/obj/structure/catwalk,
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
 /area/engineering/engine_smes)
 "nk" = (
 /obj/structure/atmos_tank_segment/phoron{
@@ -4253,11 +4247,8 @@
 /turf/simulated/floor/tiled,
 /area/engineering/break_room)
 "oE" = (
-/obj/machinery/power/apc{
-	cell_type = /obj/item/cell/super;
-	dir = 8;
-	name = "west bump";
-	pixel_x = -30
+/obj/machinery/power/apc/west_mount{
+	cell_type = /obj/item/cell/super
 	},
 /obj/structure/cable/green,
 /obj/effect/floor_decal/techfloor/orange{
@@ -4402,8 +4393,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "pc" = (
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /turf/simulated/floor/plating,
@@ -4484,8 +4474,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/hallway/lower)
 "ps" = (
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /obj/effect/floor_decal/techfloor/orange,
@@ -4525,22 +4514,14 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/debris/cleanable/dirt,
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump";
-	pixel_x = -28
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/plating,
 /area/storage/tech)
 "py" = (
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump";
-	pixel_x = -28
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green,
 /obj/structure/closet/crate/bin{
 	anchored = 1
@@ -4902,8 +4883,11 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 5
 	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/tcommsat/entrance)
+/area/engineering/drone_fabrication)
 "qK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -4947,11 +4931,8 @@
 /area/engineering/hallway)
 "qP" = (
 /obj/effect/floor_decal/industrial/warning,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/tcommsat/entrance)
+/area/engineering/drone_fabrication)
 "qQ" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
@@ -5105,11 +5086,8 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
-/obj/machinery/power/apc{
-	cell_type = /obj/item/cell/super;
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24
+/obj/machinery/power/apc/north_mount{
+	cell_type = /obj/item/cell/super
 	},
 /obj/structure/cable/green{
 	icon_state = "0-2"
@@ -5123,7 +5101,8 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled/techmaint,
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
 /area/engineering/engine_smes)
 "rs" = (
 /obj/structure/bed/chair,
@@ -5170,7 +5149,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/tcommsat/entrance)
+/area/engineering/drone_fabrication)
 "rB" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -5366,7 +5345,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/tcommsat/entrance)
+/area/engineering/drone_fabrication)
 "sf" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -5721,11 +5700,18 @@
 "tn" = (
 /obj/structure/sign/department/drones,
 /turf/simulated/wall/prepainted/engineering,
-/area/tcommsat/entrance)
+/area/engineering/drone_fabrication)
 "to" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/holopad,
-/turf/simulated/floor/tiled/techmaint,
+/obj/structure/catwalk,
+/obj/structure/cable/yellow{
+	icon_state = "1-8"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
 /area/engineering/engine_smes)
 "tq" = (
 /obj/structure/disposalpipe/segment{
@@ -6204,16 +6190,16 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/workshop)
 "uL" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /obj/machinery/door/airlock/maintenance/engi,
 /obj/machinery/door/firedoor,
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/plating,
-/area/tcommsat/entrance)
+/area/engineering/drone_fabrication)
 "uM" = (
 /obj/effect/floor_decal/industrial/warning,
 /obj/structure/cable{
@@ -6295,7 +6281,7 @@
 	amount = 50
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/tcommsat/entrance)
+/area/engineering/drone_fabrication)
 "vh" = (
 /obj/structure/table/rack{
 	dir = 8;
@@ -6390,10 +6376,8 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc{
-	cell_type = /obj/item/cell/super;
-	name = "south bump";
-	pixel_y = -32
+/obj/machinery/power/apc/south_mount{
+	cell_type = /obj/item/cell/super
 	},
 /obj/machinery/computer/general_air_control/large_tank_control{
 	frequency = 2346;
@@ -6416,7 +6400,11 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/camera/network/engine,
-/turf/simulated/floor/tiled/techfloor/grid,
+/obj/structure/catwalk,
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/turf/simulated/floor/plating,
 /area/engineering/engine_smes)
 "vI" = (
 /obj/structure/railing{
@@ -6572,11 +6560,7 @@
 /area/engineering/engine_smes)
 "wf" = (
 /obj/structure/closet/secure_closet/atmos_personal,
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump";
-	pixel_x = -28
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -6648,8 +6632,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/white,
@@ -6813,7 +6796,8 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
 /area/engineering/engine_smes)
 "wV" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/green{
@@ -6891,7 +6875,11 @@
 /area/engineering/hallway/lower)
 "xh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/tiled/techmaint,
+/obj/structure/catwalk,
+/obj/structure/cable/yellow{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/plating,
 /area/engineering/engine_smes)
 "xi" = (
 /obj/machinery/door/blast/regular{
@@ -6912,11 +6900,8 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/portnacelle)
 "xj" = (
-/obj/machinery/power/apc{
-	cell_type = /obj/item/cell/super;
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24
+/obj/machinery/power/apc/north_mount{
+	cell_type = /obj/item/cell/super
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -6955,10 +6940,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green,
 /obj/effect/floor_decal/techfloor/orange,
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -7028,6 +7010,13 @@
 	},
 /turf/simulated/floor/wood,
 /area/engineering/break_room)
+"xA" = (
+/obj/structure/catwalk,
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/engineering)
 "xB" = (
 /obj/machinery/camera/network/engine,
 /obj/effect/floor_decal/industrial/warning{
@@ -7155,8 +7144,7 @@
 	phorontanks = 0
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/monitoring)
@@ -7264,10 +7252,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "yA" = (
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -7304,8 +7289,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/techfloor/orange,
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled,
@@ -7441,10 +7425,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/workshop)
 "ze" = (
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -32
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -7471,8 +7452,7 @@
 /area/engineering/break_room)
 "zj" = (
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/table/reinforced,
 /obj/item/stack/material/steel{
@@ -7530,8 +7510,7 @@
 /turf/simulated/wall/prepainted/engineering,
 /area/maintenance/trash_pit)
 "zy" = (
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /obj/structure/table/bench/wooden,
@@ -7732,7 +7711,8 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/techmaint,
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
 /area/engineering/engine_smes)
 "Al" = (
 /obj/machinery/power/terminal,
@@ -7821,15 +7801,15 @@
 /area/engineering/portnacelle)
 "Ax" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/techmaint,
-/area/tcommsat/entrance)
+/area/engineering/drone_fabrication)
 "Ay" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -8022,11 +8002,8 @@
 /obj/machinery/air_alarm{
 	pixel_y = 22
 	},
-/obj/machinery/power/apc{
-	cell_type = /obj/item/cell/super;
-	dir = 8;
-	name = "west bump";
-	pixel_x = -30
+/obj/machinery/power/apc/west_mount{
+	cell_type = /obj/item/cell/super
 	},
 /obj/structure/cable{
 	icon_state = "0-4"
@@ -8237,8 +8214,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /obj/effect/floor_decal/techfloor/orange{
@@ -8339,6 +8315,9 @@
 	},
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
@@ -8624,15 +8603,13 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/shunt)
 "Dm" = (
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -8726,8 +8703,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
@@ -8750,7 +8726,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/wall/prepainted/engineering,
-/area/tcommsat/entrance)
+/area/engineering/drone_fabrication)
 "DE" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden,
 /turf/simulated/wall/r_wall/prepainted/engineering/atmos,
@@ -8850,9 +8826,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/tcommsat/computer)
 "DU" = (
-/obj/machinery/firealarm{
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/north_mount,
 /obj/machinery/atmospherics/portables_connector{
 	dir = 4
 	},
@@ -8876,16 +8850,13 @@
 /area/maintenance/trash_pit)
 "DY" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/green{
-	icon_state = "4-8"
+	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/tcommsat/entrance)
+/area/engineering/drone_fabrication)
 "Eb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 6
@@ -8990,7 +8961,8 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/techmaint,
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
 /area/engineering/engine_smes)
 "Ev" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -9165,7 +9137,8 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/techmaint,
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
 /area/engineering/engine_smes)
 "EY" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
@@ -9293,8 +9266,7 @@
 /area/engineering/hallway)
 "Ft" = (
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/closet/firecloset,
 /obj/structure/window/reinforced{
@@ -9589,8 +9561,7 @@
 /obj/item/hardsuit/ce/equipped{
 	req_access = list(56)
 	},
-/obj/machinery/firealarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -24
 	},
 /turf/simulated/floor/tiled,
@@ -9698,8 +9669,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
 "GP" = (
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /obj/structure/ladder/up,
@@ -9723,8 +9693,7 @@
 /area/engineering/starboardnacelle)
 "GZ" = (
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/storage)
@@ -9733,10 +9702,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -32
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
 	},
@@ -9772,11 +9738,11 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
+	},
+/obj/structure/cable/green{
+	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
@@ -10008,8 +9974,11 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
+/obj/structure/cable/green{
+	icon_state = "1-4"
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/tcommsat/entrance)
+/area/engineering/drone_fabrication)
 "HV" = (
 /obj/structure/atmos_tank_segment/n2o2{
 	icon_state = "2,0"
@@ -10156,9 +10125,6 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
 "Ix" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /obj/machinery/power/sensor{
 	name = "Powernet Sensor - Telecomms Subgrid";
 	name_tag = "Telecomms Subgrid"
@@ -10166,8 +10132,11 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
+/obj/structure/cable/green{
+	icon_state = "2-4"
+	},
 /turf/simulated/floor/plating,
-/area/tcommsat/entrance)
+/area/tcommsat/powercontrol)
 "Iz" = (
 /obj/machinery/telecomms/server/presets/supply,
 /turf/simulated/floor/tiled/dark{
@@ -10325,7 +10294,8 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/techmaint,
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
 /area/engineering/engine_smes)
 "IY" = (
 /turf/simulated/wall/prepainted,
@@ -10737,11 +10707,8 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
 "Kr" = (
-/obj/structure/cable/green{
-	icon_state = "1-4"
-	},
 /turf/simulated/floor/tiled/techmaint,
-/area/tcommsat/entrance)
+/area/engineering/drone_fabrication)
 "Ks" = (
 /obj/machinery/blackbox_recorder,
 /obj/structure/cable/green{
@@ -10806,15 +10773,9 @@
 	name = "Engineering Hardsuits";
 	req_access = list(11)
 	},
-/obj/item/hardsuit/eva/equipped{
-	req_access = list(10)
-	},
-/obj/item/hardsuit/eva/equipped{
-	req_access = list(10)
-	},
-/obj/item/hardsuit/eva/equipped{
-	req_access = list(10)
-	},
+/obj/item/hardsuit/eva/equipped,
+/obj/item/hardsuit/eva/equipped,
+/obj/item/hardsuit/eva/equipped,
 /obj/effect/floor_decal/techfloor/orange,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
@@ -10909,7 +10870,7 @@
 /area/engineering/engine_airlock)
 "KX" = (
 /turf/simulated/wall/prepainted/engineering,
-/area/tcommsat/entrance)
+/area/tcommsat/powercontrol)
 "KY" = (
 /obj/effect/floor_decal/techfloor/orange,
 /obj/structure/table/rack{
@@ -10955,8 +10916,7 @@
 /area/tcommsat/chamber)
 "Lg" = (
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -11010,8 +10970,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/monitoring)
 "Ll" = (
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /obj/machinery/computer/ship/navigation/telescreen{
@@ -11031,8 +10990,7 @@
 "Lo" = (
 /obj/machinery/suit_cycler/engineering,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced,
 /turf/simulated/floor/tiled,
@@ -11069,7 +11027,11 @@
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/obj/structure/catwalk,
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/turf/simulated/floor/plating,
 /area/engineering/engine_smes)
 "Lx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -11120,7 +11082,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/tcommsat/entrance)
+/area/engineering/drone_fabrication)
 "LD" = (
 /obj/structure/atmos_tank_segment/co2{
 	icon_state = "4,4"
@@ -11335,14 +11297,14 @@
 /turf/simulated/floor/airless/ceiling,
 /area/maintenance/engi_engine)
 "Ms" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /obj/machinery/light/small{
 	dir = 4
 	},
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
 /turf/simulated/floor/plating,
-/area/tcommsat/entrance)
+/area/tcommsat/powercontrol)
 "Mt" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 10
@@ -11520,11 +11482,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/storage)
 "MV" = (
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump";
-	pixel_x = -28
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -11616,7 +11574,7 @@
 /area/engineering/engine_smes)
 "Nm" = (
 /turf/simulated/wall/r_wall/prepainted/engineering,
-/area/tcommsat/entrance)
+/area/engineering/drone_fabrication)
 "Nn" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 8
@@ -11772,8 +11730,7 @@
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/techfloor/orange,
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /obj/machinery/light,
@@ -11828,11 +11785,8 @@
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 6
 	},
-/obj/machinery/power/apc{
-	cell_type = /obj/item/cell/super;
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24
+/obj/machinery/power/apc/north_mount{
+	cell_type = /obj/item/cell/super
 	},
 /obj/structure/cable/green{
 	icon_state = "0-4"
@@ -11975,11 +11929,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/storage)
 "Ov" = (
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 4
 	},
@@ -12254,11 +12204,8 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc{
-	cell_type = /obj/item/cell/super;
-	dir = 8;
-	name = "west bump";
-	pixel_x = -30
+/obj/machinery/power/apc/west_mount{
+	cell_type = /obj/item/cell/super
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
@@ -12357,14 +12304,14 @@
 	dir = 4;
 	icon_state = "pipe-c"
 	},
-/obj/structure/cable/green{
-	icon_state = "2-4"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
+	},
+/obj/structure/cable{
+	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/maintenance/trash_pit)
@@ -12430,12 +12377,9 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/atmos/storage)
 "PZ" = (
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /obj/structure/closet/emcloset,
 /turf/simulated/floor/plating,
-/area/tcommsat/entrance)
+/area/tcommsat/powercontrol)
 "Qa" = (
 /obj/structure/sign/greencross{
 	pixel_y = 32
@@ -12477,11 +12421,8 @@
 /turf/space,
 /area/space)
 "Qh" = (
-/obj/machinery/power/apc{
-	cell_type = /obj/item/cell/super;
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24
+/obj/machinery/power/apc/north_mount{
+	cell_type = /obj/item/cell/super
 	},
 /obj/structure/cable/green{
 	icon_state = "0-4"
@@ -12524,7 +12465,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/tcommsat/entrance)
+/area/engineering/drone_fabrication)
 "Qm" = (
 /obj/structure/railing{
 	dir = 4
@@ -12539,10 +12480,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/portnacelle)
 "Qp" = (
-/obj/machinery/firealarm{
-	dir = 1;
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/north_mount,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
 	},
@@ -12660,11 +12598,7 @@
 /turf/simulated/floor/tiled/hydro,
 /area/engineering/atmos)
 "QM" = (
-/obj/machinery/firealarm{
-	dir = 4;
-	layer = 3.3;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/east_mount,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -12843,9 +12777,6 @@
 	dir = 1;
 	icon_state = "pipe-c"
 	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
@@ -12855,17 +12786,23 @@
 /obj/machinery/camera/network/tcomms{
 	dir = 4
 	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
 /turf/simulated/floor/plating,
-/area/tcommsat/entrance)
+/area/tcommsat/powercontrol)
 "Rv" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/techmaint,
-/area/tcommsat/entrance)
+/area/engineering/drone_fabrication)
 "Rw" = (
 /obj/structure/cable/green{
 	icon_state = "2-8"
@@ -12923,10 +12860,10 @@
 "RE" = (
 /obj/machinery/holopad,
 /obj/structure/cable/green{
-	icon_state = "4-8"
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/tcommsat/entrance)
+/area/engineering/drone_fabrication)
 "RG" = (
 /obj/structure/railing,
 /obj/structure/lattice,
@@ -13075,9 +13012,6 @@
 /obj/structure/disposalpipe/junction/yjunction{
 	dir = 1
 	},
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/effect/floor_decal/techfloor/orange,
@@ -13096,11 +13030,14 @@
 	},
 /area/tcommsat/chamber)
 "Sj" = (
-/obj/structure/cable{
-	icon_state = "1-8"
+/obj/machinery/power/apc/east_mount{
+	cell_type = /obj/item/cell/super
+	},
+/obj/structure/cable/green{
+	icon_state = "0-8"
 	},
 /turf/simulated/floor/plating,
-/area/tcommsat/entrance)
+/area/tcommsat/powercontrol)
 "Sk" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass/engineering{
@@ -13461,8 +13398,16 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled/techmaint,
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
 /area/engineering/engine_smes)
+"Ty" = (
+/obj/structure/catwalk,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/engineering)
 "TA" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
@@ -13624,8 +13569,7 @@
 /turf/space,
 /area/space)
 "Ua" = (
-/obj/machinery/firealarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -24
 	},
 /turf/simulated/floor/plating,
@@ -13649,10 +13593,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/tcommsat/computer)
 "Ud" = (
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -32
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
@@ -13753,11 +13694,7 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 6
 	},
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -13966,11 +13903,11 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/machinery/power/breakerbox/activated{
+/obj/machinery/power/breakerbox{
 	RCon_tag = "TELECOMMS"
 	},
 /turf/simulated/floor/plating,
-/area/tcommsat/entrance)
+/area/tcommsat/powercontrol)
 "Ve" = (
 /obj/machinery/meter,
 /obj/machinery/atmospherics/pipe/manifold/visible/yellow,
@@ -13987,8 +13924,7 @@
 /turf/simulated/wall/prepainted/engineering,
 /area/engineering/engine_monitoring)
 "Vi" = (
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /obj/effect/floor_decal/techfloor/orange{
@@ -14222,11 +14158,8 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc{
-	cell_type = /obj/item/cell/super;
-	dir = 8;
-	name = "west bump";
-	pixel_x = -30
+/obj/machinery/power/apc/west_mount{
+	cell_type = /obj/item/cell/super
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/workshop)
@@ -14338,7 +14271,7 @@
 "Wm" = (
 /obj/machinery/recharge_station,
 /turf/simulated/floor/tiled/techmaint,
-/area/tcommsat/entrance)
+/area/engineering/drone_fabrication)
 "Wn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -14352,11 +14285,8 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc{
-	cell_type = /obj/item/cell/super;
-	dir = 1;
-	name = "north bump";
-	pixel_y = 28
+/obj/machinery/power/apc/north_mount{
+	cell_type = /obj/item/cell/super
 	},
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 9
@@ -14418,8 +14348,7 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced,
 /turf/simulated/floor/plating,
@@ -14435,7 +14364,11 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/turf/simulated/floor/tiled/techmaint,
+/obj/structure/cable/yellow{
+	icon_state = "0-2"
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
 /area/engineering/engine_smes)
 "WD" = (
 /obj/machinery/door/firedoor,
@@ -14513,7 +14446,11 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
-/turf/simulated/floor/tiled/techmaint,
+/obj/structure/cable/yellow{
+	icon_state = "0-2"
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
 /area/engineering/engine_smes)
 "WT" = (
 /obj/structure/cable{
@@ -14693,8 +14630,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /obj/effect/floor_decal/techfloor/orange,
@@ -14728,15 +14664,6 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/engineering/hallway)
-"XH" = (
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/table/reinforced,
-/obj/item/storage/briefcase/inflatable,
-/obj/item/storage/briefcase/inflatable,
-/turf/simulated/floor/tiled,
-/area/engineering/atmos/monitoring)
 "XI" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/carpet/blucarpet,
@@ -14881,8 +14808,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/machinery/firealarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -24
 	},
 /turf/simulated/floor/tiled/white,
@@ -15092,6 +15018,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
 "YJ" = (
@@ -15106,8 +15035,7 @@
 /area/engineering/atmos/monitoring)
 "YL" = (
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/table/reinforced,
 /obj/item/storage/briefcase/inflatable,
@@ -15120,11 +15048,7 @@
 	},
 /obj/structure/reagent_dispensers/watertank,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump";
-	pixel_x = -28
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/storage)
@@ -15220,11 +15144,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/firedoor,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/airlock/maintenance/engi,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/trash_pit)
 "Zi" = (
@@ -15304,9 +15228,6 @@
 /obj/machinery/power/terminal{
 	dir = 1
 	},
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 2;
 	icon_state = "pipe-c"
@@ -15317,8 +15238,14 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/plating,
-/area/tcommsat/entrance)
+/area/tcommsat/powercontrol)
 "Zx" = (
 /obj/machinery/air_alarm{
 	frequency = 1441;
@@ -15411,8 +15338,7 @@
 /area/engineering/hallway)
 "ZJ" = (
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -15463,7 +15389,7 @@
 	light_range = 12
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/tcommsat/entrance)
+/area/engineering/drone_fabrication)
 "ZR" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -15519,8 +15445,7 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/engineering/hallway/lower)
 "ZY" = (
-/obj/machinery/firealarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -24
 	},
 /obj/effect/floor_decal/techfloor/orange{
@@ -33667,16 +33592,16 @@ Oy
 Oy
 Oy
 Oy
-Oy
-Oy
-Oy
-Oy
-Oy
-Oy
-Oy
-Oy
+xA
+Ty
+Ty
+Ty
+Ty
+Ty
+Ty
+Ty
 cj
-Bl
+je
 YI
 ij
 rv
@@ -33861,7 +33786,7 @@ Oy
 KO
 Eo
 Sd
-yD
+hT
 Ub
 hK
 CN
@@ -34055,15 +33980,15 @@ HW
 Oc
 Oc
 nX
-yD
+hT
 nw
-KX
-KX
-KX
-KX
-KX
-KX
-KX
+bA
+bA
+bA
+bA
+bA
+bA
+bA
 fI
 YA
 dN
@@ -34249,15 +34174,15 @@ BH
 ZC
 zv
 KX
+mB
 KX
-KX
-KX
+bA
 se
 jz
 ZP
 lq
 se
-KX
+bA
 Pm
 AB
 dN
@@ -34450,8 +34375,8 @@ fk
 qP
 Kr
 rA
+fk
 bA
-KX
 Bl
 JP
 dN
@@ -34639,7 +34564,7 @@ zv
 Ix
 di
 jY
-KX
+bA
 lT
 aL
 RE
@@ -34838,7 +34763,7 @@ Rv
 Ax
 DY
 mA
-Rv
+eL
 dR
 Hf
 Se
@@ -35027,7 +34952,7 @@ zv
 Vd
 Ms
 Sj
-KX
+bA
 vg
 LC
 mq
@@ -35253,7 +35178,7 @@ zj
 ZJ
 yp
 Lo
-XH
+YL
 eN
 vW
 nC

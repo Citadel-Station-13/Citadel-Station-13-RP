@@ -127,6 +127,9 @@
 			ooc_style = "admin"
 
 	for(var/client/target in GLOB.clients)
+		if(!target.initialized)
+			continue
+
 		if(target.is_preference_enabled(/datum/client_preference/show_ooc))
 			if(target.is_key_ignored(key)) // If we're ignored by this person, then do nothing.
 				continue

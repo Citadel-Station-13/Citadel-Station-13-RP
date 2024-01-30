@@ -90,7 +90,7 @@
 			user.visible_message("<span class='danger'>\The [user] accidentally cuts [TU.himself] with \the [src].</span>",\
 			"<span class='danger'>You accidentally cut yourself with \the [src].</span>")
 			var/mob/living/carbon/human/H = ishuman(user)? user : null
-			H.take_organ_damage(5,5)
+			H.take_random_targeted_damage(brute = 5, burn = 5)
 		deactivate(user)
 	else
 		activate(user)
@@ -145,7 +145,7 @@
 			return
 	return ..()
 
-/obj/item/melee/energy/get_cell()
+/obj/item/melee/energy/get_cell(inducer)
 	return bcell
 
 /obj/item/melee/energy/update_icon()
@@ -634,7 +634,7 @@
 	attack_verb = list("attacked", "diced", "cleaved", "torn", "cut", "slashed")
 	armor_penetration = 50
 	var/base_state = "hfmachete"
-	hitsound = "machete_hit_sound" // dont mind the meaty hit sounds if you hit something that isnt meaty
+	attack_sound = "machete_hit_sound" // dont mind the meaty hit sounds if you hit something that isnt meaty
 	can_cleave = TRUE
 	embed_chance = 0 // let's not
 

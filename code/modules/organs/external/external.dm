@@ -6,11 +6,22 @@
 	organ_tag = "limb"
 	decays = FALSE
 
-	//? Coverage
+	//* Coverage *//
 	/// body_cover_flags that count as covering us
 	var/body_part_flags = NONE
 
-	//? Wounds
+	//* Damage
+	/// https://www.desmos.com/calculator/eyn1lj5gq7
+	/// intensifier value used for inverse-damage softcap
+	var/damage_softcap_intensifier = 0
+
+	//* Physiology *//
+	/// local physiology holder
+	var/datum/local_physiology/physiology
+	/// local-ized physiology modifiers - these are always on us, even when we are mob-less
+	var/list/datum/physiology_modifier/physiology_modifiers
+
+	//* Wounds *//
 	/// Wound datum list.
 	var/list/wounds
 	/// Number of wounds we have - some wounds like bruises will collate into one datum representing all of them.
@@ -134,6 +145,7 @@
 	var/syringe_infection_queued
 
 /obj/item/organ/external/Initialize(mapload)
+	init_local_physiology()
 	. = ..(mapload, FALSE)
 	if(istype(owner))
 		replaced(owner)
@@ -183,7 +195,10 @@
 			burn_damage += rand(2, 6)
 
 	if(burn_damage)
-		take_damage(0, burn_damage * emp_mod)
+		inflict_bodypart_damage(
+			burn = burn_damage * emp_mod,
+			weapon_descriptor = "electromagnetic overload",
+		)
 
 /obj/item/organ/external/attack_self(mob/user)
 	. = ..()
@@ -201,7 +216,7 @@
 			removable_objects |= I
 	if(removable_objects.len)
 		var/obj/item/I = pick(removable_objects)
-		I.loc = get_turf(user) //just in case something was embedded that is not an item
+		I.forceMove(get_turf(user)) //just in case something was embedded that is not an item
 		if(istype(I))
 			user.put_in_hands(I)
 		user.visible_message("<span class='danger'>\The [user] rips \the [I] out of \the [src]!</span>")
@@ -233,7 +248,7 @@
 			if(istype(W,/obj/item/surgical/hemostat))
 				if(contents.len)
 					var/obj/item/removing = pick(contents)
-					removing.loc = get_turf(user.loc)
+					removing.forceMove(get_turf(user.loc))
 					user.put_in_hands(removing)
 					user.visible_message("<span class='danger'><b>[user]</b> extracts [removing] from [src] with [W]!</span>")
 				else
@@ -285,6 +300,12 @@
 /obj/item/organ/external/replaced(var/mob/living/carbon/human/target)
 	owner = target
 	forceMove(owner)
+
+	// todo: removed() is not necessarily reliable.
+	for(var/datum/physiology_modifier/modifier as anything in owner.physiology_modifiers)
+		// todo: check biology
+		physiology.apply(modifier)
+
 	if(istype(owner))
 		owner.organs_by_name[organ_tag] = src
 		owner.organs |= src
@@ -304,18 +325,41 @@
 			   DAMAGE PROCS
 ****************************************************/
 
-/obj/item/organ/external/proc/is_damageable(var/additional_damage = 0)
-	//Continued damage to vital organs can kill you, and robot organs don't count towards total damage so no need to cap them.
-	return (vital || (robotic >= ORGAN_ROBOT) || brute_dam + burn_dam + additional_damage < max_damage)
+/obj/item/organ/external/proc/is_damageable(check_damage_cap)
+	// todo: rework
+	if(check_damage_cap)
+		//Continued damage to vital organs can kill you, and robot organs don't count towards total damage so no need to cap them.
+		// todo: this is absolutely fucking stupid, rework asap.
+		if(vital || (robotic >= ORGAN_ROBOT) || brute_dam + burn_dam < max_damage)
+			return TRUE
+		return FALSE
+	return TRUE
 
-/obj/item/organ/external/take_damage(brute, burn, sharp, edge, used_weapon = null, list/forbidden_limbs = list(), permutation = 0)
+/**
+ * process incoming damage
+ *
+ * @params
+ * * brute - brute damage to take
+ * * burn - burn damage to take
+ * * damage_mode - DAMAG_EMODE_* flags for the form of this damage
+ * * weapon descriptor - a string describing how it happened ("flash burns", "multiple precision cuts", etc)
+ * * defer_host_updates - update health / perform damage checks? this is only for owner updates, not self updates!!
+ */
+/obj/item/organ/external/proc/inflict_bodypart_damage(brute, burn, damage_mode, weapon_descriptor, defer_host_updates)
+	// todo: get rid of this shit, should be physiology
+	// legacy: brute/burnmod
 	brute = round(brute * brute_mod, 0.1)
 	burn = round(burn * burn_mod, 0.1)
 
-	if((brute <= 0) && (burn <= 0))
+	if(!brute && !burn)
 		return 0
 
-	// High brute damage or sharp objects may damage internal organs
+	// todo: this is awful
+	var/sharp = damage_mode & DAMAGE_MODE_SHARP
+	var/edge = damage_mode & DAMAGE_MODE_EDGE
+
+	// todo: lol this is shit
+	// legacy: organ damage on high damage
 	if(internal_organs && (brute_dam >= max_damage || (((sharp && brute >= 5) || brute >= 10) && prob(5))))
 		// Damage an internal organ
 		if(internal_organs && internal_organs.len)
@@ -323,22 +367,28 @@
 			brute *= 0.5
 			I.take_damage(brute)
 
-	if(status & ORGAN_BROKEN && brute)
+	// todo: lol this is shit
+	// legacy: jostle if broken
+	if(is_broken() && brute && !(damage_mode & DAMAGE_MODE_GRADUAL))
 		jostle_bone(brute)
-		if(organ_can_feel_pain() && IS_CONSCIOUS(owner) && prob(40) && !isbelly(owner.loc) && !istype(owner.loc, /obj/item/dogborg/sleeper))
+		if(organ_can_feel_pain() && IS_CONSCIOUS(owner) && prob(40))
 			owner.emote("scream")	//getting hit on broken hand hurts
-	if(used_weapon)
-		add_autopsy_data("[used_weapon]", brute + burn)
+
+	// todo: optimization
+	// legacy: autopsy data
+	if(weapon_descriptor)
+		add_autopsy_data(weapon_descriptor, brute + burn)
+
+	//! LEGACY BELOW
 
 	var/can_cut = (sharp) && (robotic < ORGAN_ROBOT)
 
 	// If the limbs can break, make sure we don't exceed the maximum damage a limb can take before breaking
 	// Non-vital organs are limited to max_damage. You can't kill someone by bludeonging their arm all the way to 200 -- you can
 	// push them faster into paincrit though, as the additional damage is converted into shock.
-	var/brute_overflow = 0
-	var/burn_overflow = 0
-	if(is_damageable(brute + burn) || !config_legacy.limbs_can_break)
-		if(brute)
+	if(brute)
+		var/can_inflict_brute = max(0, max_damage - brute_dam)
+		if(can_inflict_brute >= brute)
 			if(can_cut)
 				if(sharp && !edge)
 					create_wound( PIERCE, brute )
@@ -346,90 +396,91 @@
 					create_wound( CUT, brute )
 			else
 				create_wound( BRUISE, brute )
-		if(burn)
-			create_wound( BURN, burn )
-	else
-		//If we can't inflict the full amount of damage, spread the damage in other ways
-		//How much damage can we actually cause?
-		var/can_inflict = max_damage * config_legacy.organ_health_multiplier - (brute_dam + burn_dam)
-		var/spillover = 0
-		if(can_inflict >= 0)
-			if (brute > 0)
-				//Inflict all burte damage we can
-				if(can_cut)
-					if(sharp && !edge)
-						create_wound( PIERCE, min(brute,can_inflict) )
-					else
-						create_wound( CUT, min(brute,can_inflict) )
+		else if(!(damage_mode & DAMAGE_MODE_NO_OVERFLOW))
+			var/overflow_brute = brute - can_inflict_brute
+			// keep allowing it, but, diminishing returns
+			var/damage_anyways_brute = brute * min(1, 1 / ((brute_dam + damage_softcap_intensifier) / (damage_softcap_intensifier + max_damage)))
+			if(can_cut)
+				if(sharp && !edge)
+					create_wound( PIERCE, damage_anyways_brute )
 				else
-					create_wound( BRUISE, min(brute,can_inflict) )
-				//How much more damage can we inflict
-				brute_overflow = max(0, brute - can_inflict)
-				//How much brute damage is left to inflict
-				spillover += max(0, brute - can_inflict)
-
-			can_inflict = max_damage * config_legacy.organ_health_multiplier - (brute_dam + burn_dam) //Refresh the can_inflict var, so burn doesn't overload the limb if it is set to take both.
-
-			if (burn > 0 && can_inflict)
-				//Inflict all burn damage we can
-				create_wound(BURN, min(burn,can_inflict))
-				//How much burn damage is left to inflict
-				burn_overflow = max(0, burn - can_inflict)
-				spillover += burn_overflow
-
-		//If there is pain to dispense.
-		if(spillover)
-			owner.shock_stage += spillover * config_legacy.organ_damage_spillover_multiplier
+					create_wound( CUT, damage_anyways_brute )
+			else
+				create_wound( BRUISE, damage_anyways_brute )
+			// rest goes into shock
+			owner.shock_stage += overflow_brute * 0.33
+	if(burn)
+		var/can_inflict_burn = max(0, max_damage - burn_dam)
+		if(can_inflict_burn >= burn)
+			create_wound( BURN, burn )
+		else if(!(damage_mode & DAMAGE_MODE_NO_OVERFLOW))
+			var/overflow_burn = burn - can_inflict_burn
+			// keep allowing it, but, diminishing returns
+			var/damage_anyways_burn = burn * min(1, 1 / ((burn_dam + damage_softcap_intensifier) / (damage_softcap_intensifier + max_damage)))
+			create_wound( BURN, damage_anyways_burn )
+			// rest goes into shock
+			owner.shock_stage += overflow_burn * 0.33
 
 	// sync the organ's damage with its wounds
-	src.update_damages()
-	if(owner)
-		owner.update_health() //droplimb will call update_health() again if it does end up being called
+	update_damages()
+
+	// break it if needed
+	// todo: shit code lmao
+	if(brute_dam > min_broken_damage && prob((brute * ((brute_dam - min_broken_damage) / min_broken_damage)) * 2))
+		fracture()
 
 	//If limb took enough damage, try to cut or tear it off
-	if(owner && loc == owner && !is_stump())
-		if(!cannot_amputate && config_legacy.limbs_can_break && (brute_dam + burn_dam) >= (max_damage * config_legacy.organ_health_multiplier))
-			//organs can come off in three cases
-			//1. If the damage source is edge_eligible and the brute damage dealt exceeds the edge threshold, then the organ is cut off.
-			//2. If the damage amount dealt exceeds the disintegrate threshold, the organ is completely obliterated.
-			//3. If the organ has already reached or would be put over it's max damage amount (currently redundant),
-			//   and the brute damage dealt exceeds the tearoff threshold, the organ is torn off.
+	if(!(damage_mode & DAMAGE_MODE_GRADUAL) && !is_stump() && !cannot_amputate && ((brute_dam > max_damage) || (burn_dam > max_damage)))
+		//organs can come off in three cases
+		//1. If the damage source is edge_eligible and the brute damage dealt exceeds the edge threshold, then the organ is cut off.
+		//2. If the damage amount dealt exceeds the disintegrate threshold, the organ is completely obliterated.
+		//3. If the organ has already reached or would be put over it's max damage amount (currently redundant),
+		//   and the brute damage dealt exceeds the tearoff threshold, the organ is torn off.
 
-			//Check edge eligibility
-			var/edge_eligible = 0
-			if(edge)
-				if(istype(used_weapon,/obj/item))
-					var/obj/item/W = used_weapon
-					if(W.w_class >= w_class)
-						edge_eligible = 1
-				else
-					edge_eligible = 1
+		//Check edge eligibility
+		//! edge eligibility disabled; organs should optimally not reqiure the item reference and should instead
+		//! get descriptors (damage, damage mode, etc) of the inbound attack.
+		var/edge_eligible = edge
+		// var/edge_eligible = 0
+		// if(edge)
+		// 	if(istype(used_weapon,/obj/item))
+		// 		var/obj/item/W = used_weapon
+		// 		if(W.w_class >= w_class)
+		// 			edge_eligible = 1
+		// 	else
+		// 		edge_eligible = 1
 
-			if(nonsolid && damage >= max_damage)
-				droplimb(TRUE, DROPLIMB_EDGE)
-			else if (robotic >= ORGAN_NANOFORM && damage >= max_damage)
-				droplimb(TRUE, DROPLIMB_BURN)
-			else if(edge_eligible && brute >= max_damage / DROPLIMB_THRESHOLD_EDGE && prob(brute))
-				droplimb(0, DROPLIMB_EDGE)
-			else if((burn >= max_damage / DROPLIMB_THRESHOLD_DESTROY) && prob(burn*0.33))
-				droplimb(0, DROPLIMB_BURN)
-			else if((brute >= max_damage / DROPLIMB_THRESHOLD_DESTROY && prob(brute)))
-				droplimb(0, DROPLIMB_BLUNT)
-			else if(brute >= max_damage / DROPLIMB_THRESHOLD_TEAROFF && prob(brute*0.33))
-				droplimb(0, DROPLIMB_EDGE)
-			else if(spread_dam && owner && parent && (brute_overflow || burn_overflow) && (brute_overflow >= 5 || burn_overflow >= 5) && !permutation) //No infinite damage loops.
-				var/brute_third = brute_overflow * 0.33
-				var/burn_third = burn_overflow * 0.33
-				if(children && children.len)
-					var/brute_on_children = brute_third / children.len
-					var/burn_on_children = burn_third / children.len
-					spawn()
-						for(var/obj/item/organ/external/C in children)
-							if(!C.is_stump())
-								C.take_damage(brute_on_children, burn_on_children, 0, 0, null, forbidden_limbs, 1) //Splits the damage to each individual 'child', incase multiple exist.
-				parent.take_damage(brute_third, burn_third, 0, 0, null, forbidden_limbs, 1)
+		if(nonsolid && damage >= max_damage)
+			droplimb(TRUE, DROPLIMB_EDGE)
+		else if (robotic >= ORGAN_NANOFORM && damage >= max_damage)
+			droplimb(TRUE, DROPLIMB_BURN)
+		else if(edge_eligible && brute >= max_damage / DROPLIMB_THRESHOLD_EDGE && prob(brute))
+			droplimb(0, DROPLIMB_EDGE)
+		else if((burn >= max_damage / DROPLIMB_THRESHOLD_DESTROY) && prob(burn*0.33))
+			droplimb(0, DROPLIMB_BURN)
+		else if((brute >= max_damage / DROPLIMB_THRESHOLD_DESTROY && prob(brute)))
+			droplimb(0, DROPLIMB_BLUNT)
+		else if(brute >= max_damage / DROPLIMB_THRESHOLD_TEAROFF && prob(brute*0.33))
+			droplimb(0, DROPLIMB_EDGE)
+		//! damage spreading disabled; the attacking weapon should handle this if necessary.
+		// else if(spread_dam && owner && parent && (brute_overflow || burn_overflow) && (brute_overflow >= 5 || burn_overflow >= 5) && !permutation) //No infinite damage loops.
+		// 	var/brute_third = brute_overflow * 0.33
+		// 	var/burn_third = burn_overflow * 0.33
+		// 	if(children && children.len)
+		// 		var/brute_on_children = brute_third / children.len
+		// 		var/burn_on_children = burn_third / children.len
+		// 		spawn()
+		// 			for(var/obj/item/organ/external/C in children)
+		// 				if(!C.is_stump())
+		// 					C.take_damage(brute_on_children, burn_on_children, 0, 0, null, forbidden_limbs, 1) //Splits the damage to each individual 'child', incase multiple exist.
+		// 	parent.take_damage(brute_third, burn_third, 0, 0, null, forbidden_limbs, 1)
 
-	return update_icon()
+	//! LEGACY ABOVE
+
+	if(!defer_host_updates)
+		owner?.update_health()
+
+	update_icon()
 
 /obj/item/organ/external/proc/heal_damage(brute, burn, internal = 0, robo_repair = 0)
 	if(robotic >= ORGAN_ROBOT && !robo_repair)
@@ -537,7 +588,7 @@
 	// remove embedded objects and drop them on the floor
 	for(var/obj/implanted_object in implants)
 		if(!istype(implanted_object,/obj/item/implant) && !istype(implanted_object,/obj/item/nif))	// We don't want to remove REAL implants. Just shrapnel etc.
-			implanted_object.loc = get_turf(src)
+			implanted_object.forceMove(get_turf(src))
 			implants -= implanted_object
 
 	if(owner && !ignore_prosthetic_prefs)
@@ -754,8 +805,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 		if (W.can_autoheal() && W.wound_damage() < 50)
 			heal_amt += 0.5
 
-		//configurable regen speed woo, no-regen hardcore or instaheal hugbox, choose your destiny
-		heal_amt = heal_amt * config_legacy.organ_regeneration_multiplier
+		// todo: config entry after more med refactors
 		// amount of healing is spread over all the wounds
 		heal_amt = heal_amt / (length(wounds) + 1)
 		// making it look prettier on scanners
@@ -803,10 +853,6 @@ Note that amputating the affected organ does in fact remove the infection from t
 	//things tend to bleed if they are CUT OPEN
 	if (open && !clamped && (H && H.should_have_organ(O_HEART)))
 		status |= ORGAN_BLEEDING
-
-	//Bone fractures
-	if(config_legacy.bones_can_break && brute_dam > min_broken_damage * config_legacy.organ_health_multiplier && !(robotic >= ORGAN_ROBOT))
-		src.fracture()
 
 	update_health()
 
@@ -1087,7 +1133,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 /obj/item/organ/external/proc/mend_fracture()
 	if(robotic >= ORGAN_ROBOT)
 		return 0	//ORGAN_BROKEN doesn't have the same meaning for robot limbs
-	if(brute_dam > min_broken_damage * config_legacy.organ_health_multiplier)
+	if(brute_dam > min_broken_damage)
 		return 0	//will just immediately fracture again
 
 	status &= ~ORGAN_BROKEN
@@ -1234,6 +1280,16 @@ Note that amputating the affected organ does in fact remove the infection from t
 	owner.reconsider_inventory_slot_bodypart(organ_tag)
 	var/is_robotic = robotic >= ORGAN_ROBOT
 	var/mob/living/carbon/human/victim = owner
+
+	// todo: removed() is not necessarily reliable.
+	for(var/datum/physiology_modifier/modifier as anything in owner.physiology_modifiers)
+		// todo: check biology
+		if(!physiology.revert(modifier))
+			// todo: optimize?
+			rebuild_physiology()
+			for(var/datum/physiology_modifier/rebuilding as anything in owner.physiology_modifiers)
+				// todo: check biology
+				physiology.apply(rebuilding)
 
 	..()
 
@@ -1439,3 +1495,86 @@ Note that amputating the affected organ does in fact remove the infection from t
 		for(var/obj/item/I in L.implants)
 			if(!istype(I,/obj/item/implant) && !istype(I,/obj/item/nif))
 				return TRUE
+
+//* Environmentals *//
+
+// todo: limb specific
+
+//* Physiology *//
+
+/obj/item/organ/external/proc/rebuild_physiology()
+	physiology = new
+	for(var/datum/physiology_modifier/modifier as anything in physiology_modifiers)
+		if(!istype(modifier))
+			physiology_modifiers -= modifier
+			continue
+		physiology.apply(modifier)
+
+/obj/item/organ/external/proc/init_local_physiology()
+	for(var/i in 1 to length(physiology_modifiers))
+		if(ispath(physiology_modifiers[i]))
+			physiology_modifiers[i] = cached_physiology_modifier(physiology_modifiers[i])
+	rebuild_physiology()
+
+/obj/item/organ/external/proc/add_local_physiology_modifier(datum/physiology_modifier/modifier)
+	if(ispath(modifier))
+		modifier = cached_physiology_modifier(modifier)
+	ASSERT(!(modifier in physiology_modifiers))
+	LAZYADD(physiology_modifiers, modifier)
+	physiology.apply(modifier)
+	return TRUE
+
+/obj/item/organ/external/proc/remove_local_physiology_modifier(datum/physiology_modifier/modifier)
+	if(ispath(modifier))
+		modifier = cached_physiology_modifier(modifier)
+	ASSERT(modifier in physiology_modifiers)
+	LAZYREMOVE(physiology_modifiers, modifier)
+	if(!physiology.revert(modifier))
+		// todo: optimize with reset().
+		rebuild_physiology()
+	return TRUE
+
+/obj/item/organ/external/vv_get_dropdown()
+	. = ..()
+	VV_DROPDOWN_OPTION(null, "-----")
+	VV_DROPDOWN_OPTION(VV_HK_ADD_PHYSIOLOGY_MODIFIER, "Add Physiology Modifier")
+	VV_DROPDOWN_OPTION(VV_HK_REMOVE_PHYSIOLOGY_MODIFIER, "Remove Physiology Modifier")
+
+/obj/item/organ/external/vv_do_topic(list/href_list)
+	. = ..()
+	if(href_list[VV_HK_ADD_PHYSIOLOGY_MODIFIER])
+		// todo: this should be able to be done globally via admin panel and then added to mobs
+
+		var/datum/physiology_modifier/modifier = ask_admin_for_a_physiology_modifier(usr)
+
+		if(isnull(modifier))
+			return
+		if(QDELETED(src))
+			return
+
+		log_admin("[key_name(usr)] --> organ [ref(src)] - added physiology modifier [json_encode(modifier.serialize())]")
+		add_local_physiology_modifier(modifier)
+		return TRUE
+
+	if(href_list[VV_HK_REMOVE_PHYSIOLOGY_MODIFIER])
+		var/list/assembled = list()
+		var/i = 0
+		for(var/datum/physiology_modifier/modifier as anything in physiology_modifiers)
+			assembled["[modifier.name] (#[++i])"] = modifier
+		var/picked = input(usr, "Which modifier to remove? Please do not do this unless you know what you are doing.", "Remove Physiology Modifier") as null|anything in assembled
+		var/datum/physiology_modifier/removing = assembled[picked]
+		if(!(removing in physiology_modifiers))
+			return TRUE
+		log_admin("[key_name(usr)] --> organ [ref(src)] - removed physiology modifier [json_encode(removing.serialize())]")
+		remove_local_physiology_modifier(removing)
+		return TRUE
+
+// i'm not going to fucking support vv without automated backreferences and macros, holy shit.
+// /obj/item/organ/external/proc/get_varedit_physiology_modifier()
+// 	RETURN_TYPE(/datum/physiology_modifier)
+// 	. = locate(/datum/physiology_modifier/varedit) in physiology_modifiers
+// 	if(!isnull(.))
+// 		return
+// 	var/datum/physiology_modifier/varedit/new_holder = new
+// 	add_local_physiology_modifier(new_holder)
+// 	return new_holder

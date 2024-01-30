@@ -7,8 +7,7 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 	/obj/structure/window/reinforced/polarized/full,
 	/obj/structure/wall_frame/prepainted/,
 	/obj/structure/wall_frame,
-	/obj/machinery/door/airlock/multi_tile,
-	/obj/machinery/door/airlock)))
+	/obj/machinery/door))) //comedy.
 /// kPa
 #define FIREDOOR_MAX_PRESSURE_DIFF 25
 /// °C
@@ -34,6 +33,7 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 	open_layer = DOOR_OPEN_LAYER - 0.01// Just below doors when open
 	closed_layer = MID_LANDMARK_LAYER // Need this to be above windows/grilles/low walls.
 	smoothing_groups = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS)
+	heat_resistance = 6000
 
 	//These are frequenly used with windows, so make sure zones can pass.
 	//Generally if a firedoor is at a place where there should be a zone boundery then there will be a regular door underneath it.
@@ -51,12 +51,10 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 	var/next_process_time = 0
 	var/low_profile = FALSE
 
-	var/hatch_open = 0
-
 	power_channel = ENVIRON
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 5
-	autoset_dir = FALSE
+	autoset_dir = TRUE
 
 	var/list/tile_info[4]
 	var/list/dir_alerts[4] // 4 dirs, bitflags
@@ -87,15 +85,37 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/door/firedoor/LateInitialize()
-	setDir(dir)
+	. = ..()
+	if(autoset_dir)
+		for (var/cardinal in GLOB.cardinal)
+			var/turf/step_turf = get_step(src, cardinal)
+			if (step_turf.density == TRUE)
+				switch(cardinal)
+					if(EAST)
+						setDir(SOUTH)
+					if(WEST)
+						setDir(SOUTH)
+					if(NORTH)
+						setDir(WEST)
+					if(SOUTH)
+						setDir(WEST)
+			for(var/atom/thing as anything in step_turf)
+				if(thing.type in GLOB.firelock_align_types)
+					switch(cardinal)
+						if(EAST)
+							setDir(SOUTH)
+						if(WEST)
+							setDir(SOUTH)
+						if(NORTH)
+							setDir(WEST)
+						if(SOUTH)
+							setDir(WEST)
+					break
 
 /obj/machinery/door/firedoor/Destroy()
 	for(var/area/A in areas_added)
 		LAZYREMOVE(A.all_doors, src)
 	return ..()
-
-/obj/machinery/door/firedoor/get_material()
-	return get_material_by_name(MAT_STEEL)
 
 /obj/machinery/door/firedoor/examine(mob/user, dist)
 	. = ..()
@@ -137,7 +157,7 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 		. += "<span class = 'danger'>These people have opened \the [src] during an alert: [users_to_open_string].</span>"
 
 /obj/machinery/door/firedoor/Bumped(atom/AM)
-	if(p_open || operating)
+	if(panel_open || operating)
 		return
 	if(!density)
 		return ..()
@@ -238,7 +258,7 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 
 /obj/machinery/door/firedoor/attack_generic(var/mob/living/user, var/damage)
 	if(machine_stat & (BROKEN|NOPOWER))
-		if(damage >= STRUCTURE_MIN_DAMAGE_THRESHOLD)
+		if(damage >= 5)
 			var/time_to_force = (2 + (2 * blocked)) * 5
 			if(src.density)
 				visible_message("<span class='danger'>\The [user] starts forcing \the [src] open!</span>")
@@ -281,21 +301,21 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 			return
 
 	if(density && C.is_screwdriver())
-		hatch_open = !hatch_open
+		panel_open = !panel_open
 		playsound(src, C.tool_sound, 50, 1)
-		user.visible_message("<span class='danger'>[user] has [hatch_open ? "opened" : "closed"] \the [src] maintenance hatch.</span>",
-									"You have [hatch_open ? "opened" : "closed"] the [src] maintenance hatch.")
+		user.visible_message("<span class='danger'>[user] has [panel_open ? "opened" : "closed"] \the [src] maintenance hatch.</span>",
+									"You have [panel_open ? "opened" : "closed"] the [src] maintenance hatch.")
 		update_icon()
 		return
 
 	if(blocked && C.is_crowbar() && !repairing)
-		if(!hatch_open)
+		if(!panel_open)
 			to_chat(user, "<span class='danger'>You must open the maintenance hatch first!</span>")
 		else
 			user.visible_message("<span class='danger'>[user] is removing the electronics from \the [src].</span>",
 									"You start to remove the electronics from [src].")
 			if(do_after(user,30))
-				if(blocked && density && hatch_open)
+				if(blocked && density && panel_open)
 					playsound(src, C.tool_sound, 50, 1)
 					user.visible_message("<span class='danger'>[user] has removed the electronics from \the [src].</span>",
 										"You have removed the electronics from [src].")
@@ -427,8 +447,8 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 	return ..()
 
 /obj/machinery/door/firedoor/open(var/forced = 0)
-	if(hatch_open)
-		hatch_open = 0
+	if(panel_open)
+		panel_open = 0
 		visible_message("The maintenance hatch of \the [src] closes.")
 		update_icon()
 
@@ -446,10 +466,10 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 
 /obj/machinery/door/firedoor/do_animate(animation)
 	switch(animation)
-		if("opening")
+		if(DOOR_ANIMATION_OPEN)
 			flick("opening", src)
 			playsound(src, 'sound/machines/firelockopen.ogg', 37, 1)
-		if("closing")
+		if(DOOR_ANIMATION_CLOSE)
 			playsound(src, 'sound/machines/firelockclose.ogg', 37, 1)
 			flick("closing", src)
 	return
@@ -487,42 +507,6 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 		set_light(2, 0.25, COLOR_SUN)
 
 	return
-
-/obj/machinery/door/firedoor/setDir(ndir)
-	for(var/D in GLOB.cardinal)
-		var/turf/T = get_step(src, D)
-		for(var/obj/A in T.contents)
-			if(A.type in GLOB.firelock_align_types) //this is mainly for the cases where mappers can't manually align firelocks, i.e window spawners.
-				switch(D)
-					if(NORTH)
-						dir = WEST
-						break
-					if(EAST)
-						dir = SOUTH
-						break
-					if(SOUTH)
-						dir = WEST
-						break
-					if(WEST)
-						dir = SOUTH
-						break
-		if(T.density)
-			switch(D)
-				if(NORTH)
-					dir = WEST
-					break
-				if(EAST)
-					dir = SOUTH
-					break
-				if(SOUTH)
-					dir = WEST
-					break
-				if(WEST)
-					dir = SOUTH
-					break
-	..()
-
-
 
 /obj/machinery/door/firedoor/border_only
 /*

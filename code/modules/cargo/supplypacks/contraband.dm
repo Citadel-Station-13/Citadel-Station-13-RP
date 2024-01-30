@@ -140,13 +140,6 @@
 	contraband = 1
 	group = "Supplies"
 
-/datum/supply_pack/supply/wolfgirl
-	name = "Wolfgirl Crate"
-	cost = 200 //I mean, it's a whole wolfgirl
-	container_type = /obj/structure/largecrate/animal/wolfgirl
-	container_name = "Wolfgirl crate"
-	contraband = 1
-
 /datum/supply_pack/supply/medieval
 	name = "Knight set crate"
 	contains = list(
@@ -202,3 +195,31 @@
 	container_type = /obj/structure/closet/crate
 	container_name = "teutonic armor crate"
 	contraband = 1
+
+/datum/supply_pack/robotics/salvage
+	name = "Redirected Mech Salvage"
+	contains = list(/obj/item/mechasalvage = 6)
+	cost = 400 //High End Mech Parts, Direct To You, at an extreme markup!
+	container_type = /obj/structure/closet/crate
+	container_name = "oil-stained crate"
+	contraband = 1
+
+/datum/supply_pack/randomised/material/rareores
+	name = "Smuggled Ores and Materials"
+	num_contained = 20
+	contains = list(
+		/obj/item/stack/material/bananium,
+		/obj/item/stack/material/diamond,
+		/obj/item/stack/material/durasteel,
+		/obj/item/stack/material/morphium,
+		/obj/item/stack/material/platinum,
+		/obj/item/stack/material/verdantium,
+		/obj/item/stack/material/mhydrogen,
+		/obj/item/stack/material/silencium,
+		/obj/item/stack/material/valhollide
+		)
+	cost = 350
+	container_type = /obj/structure/closet/crate
+	container_name = "dented mining crate"
+	contraband = 1
+	group = "Materials"

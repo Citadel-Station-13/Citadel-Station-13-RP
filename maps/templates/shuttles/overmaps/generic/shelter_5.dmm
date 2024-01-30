@@ -124,7 +124,7 @@
 "n" = (
 /obj/machinery/door/airlock/external,
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1380;
 	master_tag = "escapepod_shuttle_docker";
 	pixel_x = -5;
@@ -149,7 +149,7 @@
 	},
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1380;
 	master_tag = "escapepod_shuttle_docker";
 	name = "exterior access button";
@@ -190,7 +190,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 6
 	},
-/obj/machinery/power/apc/alarms_hidden/south_bump,
+/obj/machinery/power/apc/alarms_hidden/south_mount,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/deployable/escapepod)
 "u" = (

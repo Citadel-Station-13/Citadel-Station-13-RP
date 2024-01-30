@@ -180,10 +180,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 24;
+/obj/machinery/power/apc/east_mount{
 	start_charge = 0
 	},
 /obj/structure/cable{
@@ -593,8 +590,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/shuttle/gecko_cr_wreck)
 "lV" = (
-/obj/machinery/firealarm{
-	dir = 4;
+/obj/machinery/fire_alarm/east_mount{
 	pixel_x = -27
 	},
 /obj/structure/closet/crate{
@@ -723,8 +719,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -26
 	},
 /obj/machinery/light/flicker,
@@ -732,9 +727,7 @@
 /area/shuttle/gecko_cr_cockpit_wreck)
 "pf" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
-/obj/machinery/firealarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/north_mount,
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -886,9 +879,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/machinery/firealarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/north_mount,
 /obj/structure/catwalk,
 /turf/simulated/floor/airless,
 /area/shuttle/gecko_cr_engineering_wreck)
@@ -939,10 +930,7 @@
 /area/shuttle/gecko_cr_engineering_wreck)
 "sV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24;
+/obj/machinery/power/apc/north_mount{
 	start_charge = 0
 	},
 /obj/structure/cable{
@@ -1053,9 +1041,7 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 4
 	},
-/obj/machinery/firealarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/north_mount,
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/structure/railing/grey{
 	dir = 4
@@ -1205,9 +1191,7 @@
 /area/shuttle/gecko_cr_cockpit_wreck)
 "yR" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
-/obj/machinery/firealarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/reinforced/airless,
 /area/shuttle/gecko_cr_wreck)
 "yX" = (
@@ -2416,9 +2400,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
-/obj/machinery/firealarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/north_mount,
 /obj/structure/catwalk,
 /turf/simulated/floor/airless,
 /area/shuttle/gecko_cr_engineering_wreck)
@@ -2446,10 +2428,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/shuttle/gecko_cr_wreck)
 "Tw" = (
-/obj/machinery/firealarm{
-	dir = 8;
-	pixel_x = 27
-	},
+/obj/machinery/fire_alarm/west_mount,
 /obj/structure/bed/pod,
 /obj/item/bedsheet/blue,
 /turf/simulated/floor/tiled/techfloor,
@@ -2612,8 +2591,7 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 8
 	},
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -26
 	},
 /obj/structure/handrail{

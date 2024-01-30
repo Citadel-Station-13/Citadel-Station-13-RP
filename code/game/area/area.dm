@@ -30,6 +30,11 @@
 	/// default initial gas mix
 	var/initial_gas_mix = GAS_STRING_STP
 
+	//? nightshift
+	/// nightshift level
+	/// in general, nightshift must be at or above this level for it to proc on areas.
+	var/nightshift_level = NIGHTSHIFT_LEVEL_UNSET
+
 	//? tracking lists for machinery
 	/// holopads - lazyinit'd
 	var/list/obj/machinery/holopad/holopads
@@ -324,6 +329,8 @@
 				else if(!E.density)
 					spawn(0)
 						E.close()
+		for(var/obj/machinery/floor_inflatables/i in all_doors)
+			i.trigger()
 
 /// Open all firedoors in the area
 /area/proc/firedoors_open()

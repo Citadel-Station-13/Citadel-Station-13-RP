@@ -3,10 +3,10 @@
 	icon = 'icons/obj/objects.dmi'
 	desc = "FUCK FUCK FUCK AAAHHH"
 	icon_state = "bhole3"
-	opacity = 1
-	unacidable = 1
-	density = 0
-	anchored = 1
+	opacity = TRUE
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE | INTEGRITY_ACIDPROOF | INTEGRITY_FIREPROOF | INTEGRITY_LAVAPROOF
+	density = FALSE
+	anchored = TRUE
 	var/process_step = 0
 
 /obj/effect/bhole/Initialize(mapload)

@@ -5,8 +5,8 @@
 	icon_state = "internalaffairs_rig"
 	armor_type = /datum/armor/none
 	siemens_coefficient = 0.9
-	slowdown = 0
-	offline_slowdown = 0
+	encumbrance = ITEM_ENCUMBRANCE_LEGACY_RIG_LIGHT
+	offline_encumbrance = ITEM_ENCUMBRANCE_LEGACY_RIG_LIGHT * 2
 	offline_vision_restriction = 0
 
 	allowed = list(

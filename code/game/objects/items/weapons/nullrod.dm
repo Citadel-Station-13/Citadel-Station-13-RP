@@ -138,9 +138,9 @@
 	name = "holy claymore"
 	desc = "A weapon fit for a crusade!"
 	slot_flags = SLOT_BACK|SLOT_BELT
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	projectile_parry_chance = 30
-	sharp = 1
-	hitsound = 'sound/weapons/bladeslice.ogg'
+	attack_sound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
 /obj/item/nullrod/claymore/darkblade
@@ -149,7 +149,7 @@
 	name = "dark blade"
 	desc = "Spread the glory of the dark gods!"
 	slot_flags = SLOT_BELT
-	hitsound = 'sound/hallucinations/growl1.ogg'
+	attack_sound = 'sound/hallucinations/growl1.ogg'
 
 /obj/item/nullrod/claymore/chainsaw_sword
 	icon_state = "chainsword1"
@@ -157,10 +157,9 @@
 	name = "sacred chainsaw sword"
 	desc = "Suffer not a heretic to live."
 	slot_flags = SLOT_BELT
-	sharp = 1
-	edge = 1
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	attack_verb = list("sawed", "torn", "cut", "chopped", "diced")
-	hitsound = 'sound/weapons/chainsaw_attack.ogg'
+	attack_sound = 'sound/weapons/chainsaw_attack.ogg'
 
 /obj/item/nullrod/claymore/glowing
 	icon_state = "swordon"
@@ -189,7 +188,7 @@
 
 /obj/item/nullrod/claymore/saber
 	name = "light energy sword"
-	hitsound = 'sound/weapons/blade1.ogg'
+	attack_sound = 'sound/weapons/blade1.ogg'
 	icon_state = "swordblue"
 	item_state = "swordblue"
 	desc = "If you strike me down, I shall become more robust than you can possibly imagine."
@@ -215,7 +214,7 @@
 	slot_flags = SLOT_BELT
 	damage_force = 4.13
 	throw_force = 1
-	hitsound = 'sound/weapons/bladeslice.ogg'
+	attack_sound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
 /obj/item/nullrod/scythe
@@ -225,8 +224,7 @@
 	desc = "Ask not for whom the bell tolls..."
 	armor_penetration = 35
 	slot_flags = SLOT_BACK
-	sharp = 1
-	edge = 1
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	attack_verb = list("chopped", "sliced", "cut", "reaped")
 
 /obj/item/nullrod/scythe/vibro
@@ -235,14 +233,14 @@
 	name = "high frequency blade"
 	desc = "Bad references are the DNA of the soul."
 	attack_verb = list("chopped", "sliced", "cut", "zandatsu'd")
-	hitsound = 'sound/weapons/rapierhit.ogg'
+	attack_sound = 'sound/weapons/rapierhit.ogg'
 
 /obj/item/nullrod/scythe/spellblade
 	icon_state = "spellblade"
 	item_state = "spellblade"
 	name = "dormant spellblade"
 	desc = "The blade grants the wielder nearly limitless power...if they can figure out how to turn it on, that is."
-	hitsound = 'sound/weapons/rapierhit.ogg'
+	attack_sound = 'sound/weapons/rapierhit.ogg'
 
 /obj/item/nullrod/hammmer
 	icon_state = "hammeron"
@@ -257,10 +255,9 @@
 	desc = "Good? Bad? You're the guy with the chainsaw hand."
 	icon_state = "chainsaw_on"
 	item_state = "mounted_chainsaw"
-	sharp = 1
-	edge = 1
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	attack_verb = list("sawed", "torn", "cut", "chopped", "diced")
-	hitsound = 'sound/weapons/chainsaw_attack.ogg'
+	attack_sound = 'sound/weapons/chainsaw_attack.ogg'
 
 /obj/item/nullrod/chainsaw/Initialize(mapload)
 	. = ..()
@@ -272,8 +269,8 @@
 	item_state = "render"
 	name = "clown dagger"
 	desc = "Used for absolutely hilarious sacrifices."
-	hitsound = 'sound/items/bikehorn.ogg'
-	sharp = 1
+	attack_sound = 'sound/items/bikehorn.ogg'
+	damage_mode = DAMAGE_MODE_SHARP
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
 /obj/item/nullrod/pride_hammer
@@ -286,7 +283,7 @@
 	w_class = 4
 	slot_flags = SLOT_BACK
 	attack_verb = list("attacked", "smashed", "crushed", "splattered", "cracked")
-	hitsound = 'sound/weapons/resonator_blast.ogg'
+	attack_sound = 'sound/weapons/resonator_blast.ogg'
 
 /obj/item/nullrod/pride_hammer/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	. = ..()
@@ -307,7 +304,7 @@
 	damage_force = 12
 	reach = 2
 	attack_verb = list("whipped", "lashed")
-	hitsound = 'sound/weapons/towelwhip.ogg'
+	attack_sound = 'sound/weapons/towelwhip.ogg'
 
 /obj/item/nullrod/fedora
 	name = "atheist's fedora"
@@ -315,12 +312,12 @@
 	icon_state = "fedora"
 	item_state = "fedora"
 	slot_flags = SLOT_HEAD
+	damage_mode = DAMAGE_MODE_SHARP
 	icon = 'icons/obj/clothing/hats.dmi'
 	damage_force = 0
 	throw_speed = 4
 	throw_range = 7
 	throw_force = 30
-	sharp = 1
 	attack_verb = list("enlightened", "redpilled")
 
 /obj/item/nullrod/armblade
@@ -328,8 +325,7 @@
 	desc = "Particularly twisted deities grant gifts of dubious value."
 	icon_state = "arm_blade"
 	item_state = "arm_blade"
-	sharp = 1
-	edge = 1
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 
 /obj/item/nullrod/armblade/Initialize(mapload)
 	. = ..()
@@ -353,7 +349,7 @@
 	item_state = "basecarp"
 	damage_force = 15
 	attack_verb = list("bitten", "eaten", "fin slapped")
-	hitsound = 'sound/weapons/bite.ogg'
+	attack_sound = 'sound/weapons/bite.ogg'
 	var/used_blessing = FALSE
 
 /obj/item/nullrod/carp/attack_self(mob/user)
@@ -372,8 +368,8 @@
 	damage_force = 15
 	defend_chance = 40
 	slot_flags = SLOT_BACK
-	sharp = 1
-	hitsound = "swing_hit"
+	damage_mode = DAMAGE_MODE_SHARP
+	attack_sound = "swing_hit"
 	attack_verb = list("smashed", "slammed", "whacked", "thwacked")
 	icon_state = "bostaff0"
 	item_state = "bostaff0"
@@ -407,28 +403,28 @@
 	item_state = "crysknife"
 	name = "arrhythmic knife"
 	desc = "They say fear is the true mind killer, but stabbing them in the head works too. Honour compels you to not sheathe it once drawn."
-	sharp = 1
-	edge = 1
-	hitsound = 'sound/weapons/bladeslice.ogg'
+	damage_mode = DAMAGE_MODE_SHARP
+	attack_sound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
-/obj/item/nullrod/tribal_knife/process(delta_time)
-	slowdown = rand(-2, 2)
+// no this is hrp
+// /obj/item/nullrod/tribal_knife/process(delta_time)
+// 	slowdown = rand(-2, 2)
 
 /obj/item/nullrod/pitchfork
 	icon_state = "pitchfork0"
 	name = "unholy pitchfork"
 	desc = "Holding this makes you look absolutely devilish."
 	attack_verb = list("poked", "impaled", "pierced", "jabbed")
-	hitsound = 'sound/weapons/bladeslice.ogg'
-	sharp = 1
+	attack_sound = 'sound/weapons/bladeslice.ogg'
+	damage_mode = DAMAGE_MODE_SHARP
 
 /obj/item/nullrod/egyptian
 	name = "egyptian staff"
 	desc = "A tutorial in mummification is carved into the staff. You could probably craft the wraps if you had some cloth."
 	icon_state = "pharaoh_sceptre"
 	item_state = "pharaoh_sceptre"
-	attack_verb = list("bashes", "smacks", "whacks")
+	attack_verb = list("bashed", "smacked", "whacked")
 
 /obj/item/nullrod/rosary
 	icon_state = "rosary"

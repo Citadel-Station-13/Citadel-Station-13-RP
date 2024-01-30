@@ -25,7 +25,7 @@
 		ui = new(user, src, "BioscanConsole")
 		ui.open()
 
-/obj/machinery/computer/bioscan/ui_static_data(mob/user)
+/obj/machinery/computer/bioscan/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["scan"] = buffer
 	.["antennas"] = ui_antenna_data()
@@ -46,12 +46,12 @@
 			"y" = T.y,
 		))
 
-/obj/machinery/computer/bioscan/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/computer/bioscan/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["scan_ready"] = !on_cooldown()
 	.["network"] = network_key || ""
 
-/obj/machinery/computer/bioscan/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/computer/bioscan/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	switch(action)
 		if("scan")

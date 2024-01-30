@@ -77,11 +77,11 @@
 /area/submap/CrashedMedShuttle)
 "ao" = (
 /obj/item/circuitboard/broken,
-/obj/structure/door_assembly/door_assembly_ext,
+/obj/structure/door_assembly/external,
 /turf/simulated/shuttle/plating,
 /area/submap/CrashedMedShuttle)
 "ap" = (
-/obj/structure/door_assembly/door_assembly_ext,
+/obj/structure/door_assembly/external,
 /turf/simulated/shuttle/plating,
 /area/submap/CrashedMedShuttle)
 "aq" = (

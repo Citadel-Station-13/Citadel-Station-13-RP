@@ -1,8 +1,13 @@
+/datum/physiology_modifier/intrinsic/species/alraune
+	carry_strength_add = CARRY_STRENGTH_ADD_ALRAUNE
+	carry_strength_factor = CARRY_FACTOR_MOD_ALRAUNE
+
 /datum/species/alraune
 	uid = SPECIES_ID_ALRAUNE
 	id = SPECIES_ID_ALRAUNE
 	name = SPECIES_ALRAUNE
 	name_plural = "Alraunes"
+	mob_physiology_modifier = /datum/physiology_modifier/intrinsic/species/alraune
 
 	icobase = 'icons/mob/species/human/body_greyscale.dmi'
 	deform  = 'icons/mob/species/human/deformed_body_greyscale.dmi'
@@ -12,7 +17,7 @@
 	traits with other humanoid beings, occasionally mimicking their forms to lure in prey.
 
 	Most Alraune are rather opportunistic in nature, being primarily self-serving; however, this does not mean they
-	are selfish or unable to empathise with others.
+	are selfish or unable to empathize with others.
 
 	They are highly adaptable both mentally and physically, but tend to have a collecting intra-species mindset.
 	"}
@@ -21,6 +26,8 @@
 	intrinsic_languages = LANGUAGE_ID_VERNAL
 
 	slowdown = 1 //slow, they're plants. Not as slow as full diona.
+	snow_movement  = -1 // Alraune can still wear shoes. Combined with winter boots, negates light snow slowdown but still slowed on ice.
+	water_movement = -1 // Combined with swimming fins, negates shallow water slowdown.
 	total_health = 100 //standard
 	metabolic_rate = 0.75 // slow metabolism
 
@@ -117,7 +124,7 @@
 	return TRUE //eh, why not? Aquatic plants are a thing.
 
 
-/datum/species/alraune/handle_environment_special(mob/living/carbon/human/H)
+/datum/species/alraune/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
 	if(H.inStasisNow()) // if they're in stasis, they won't need this stuff.
 		return
 
@@ -325,7 +332,7 @@
 		else
 			temp_adj /= (BODYTEMP_HEAT_DIVISOR * 5)	//don't raise temperature as much as if we were directly exposed
 
-		var/relative_density = breath.total_moles / (MOLES_CELLSTANDARD * BREATH_PERCENTAGE)
+		var/relative_density = 8 * breath.total_moles / (CELL_MOLES * BREATH_PERCENTAGE)
 		temp_adj *= relative_density
 
 		if (temp_adj > BODYTEMP_HEATING_MAX) temp_adj = BODYTEMP_HEATING_MAX

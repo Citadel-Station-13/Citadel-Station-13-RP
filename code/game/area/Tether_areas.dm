@@ -58,6 +58,43 @@
 	lift_floor_name = "Chapel, Cargo, EVA, Gateway"
 	lift_announce_str = "Arriving at Station Level 2."
 
+/area/turbolift/tether/elevator_two/transit
+	name = "tether (midway)"
+	lift_floor_label = "Tether Midpoint"
+	lift_floor_name = "Midpoint"
+	lift_announce_str = "Arriving at tether midway point."
+	delay_time = 5 SECONDS
+
+/area/turbolift/t_surface/elevator_two/level1
+	name = "surface (level 1)"
+	lift_floor_label = "Surface 1"
+	lift_floor_name = "Tram, Dorms, Mining, Surf. EVA"
+	lift_announce_str = "Arriving at Base Level 1."
+
+/area/turbolift/t_surface/elevator_two/level2
+	name = "surface (level 2)"
+	lift_floor_label = "Surface 2"
+	lift_floor_name = "Atmos, Maintenance"
+	lift_announce_str = "Arriving at Base Level 2."
+
+/area/turbolift/t_surface/elevator_two/level3
+	name = "surface (level 3)"
+	lift_floor_label = "Surface 3"
+	lift_floor_name = "Bar, Bridge, Pool, Science"
+	lift_announce_str = "Arriving at Base Level 3."
+
+/area/turbolift/t_station/elevator_two/level1
+	name = "asteroid (level 1)"
+	lift_floor_label = "Asteroid 1"
+	lift_floor_name = "AI Core, Eng, Exploration, Secondary Bridge"
+	lift_announce_str = "Arriving at Station Level 1."
+
+/area/turbolift/t_station/elevator_two/level2
+	name = "asteroid (level 2)"
+	lift_floor_label = "Asteroid 2"
+	lift_floor_name = "Chapel, Cargo, EVA, Gateway"
+	lift_announce_str = "Arriving at Station Level 2."
+
 /area/vacant/vacant_restaurant_upper
 	name = "\improper Vacant Restaurant"
 	icon_state = "vacant_site"
@@ -1442,6 +1479,9 @@
 	dynamic_lighting = FALSE
 
 	requires_power = FALSE
+
+/area/tether/elevator/two
+	name = "\improper Tether Elevator Two"
 
 /area/tether/midpoint
 	name = "\improper Tether Midpoint"

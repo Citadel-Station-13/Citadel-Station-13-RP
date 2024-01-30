@@ -10,20 +10,14 @@
 	close_sound = 'sound/vore/schlorp.ogg'
 	opened = 0
 	sealed = 0 //Don't touch this.
-	health = 100
+	integrity_max = 100
 
 /obj/structure/closet/secure_closet/egg/attackby(obj/item/W, mob/user as mob) //This also prevents crew from welding the eggs and making them unable to be opened.
 	if(istype(W, /obj/item/weldingtool))
 		src.dump_contents()
 		qdel(src)
-/*
-/obj/structure/closet/secure_closet/egg/handle_lock_addition() //As funny as it'd be to pop out an egg and slap a lock on it just... no
-	return
-
-/obj/structure/closet/secure_closet/egg/handle_lock_removal()
-	return
-
-*/
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+	return ..()
 
 /obj/structure/closet/secure_closet/egg/unathi
 	name = "unathi egg"

@@ -9,6 +9,7 @@
 	light_color = "#E09D37"
 	var/wax = 2000
 	var/icon_type = "candle"
+	var/light_range_lit = 3
 
 /obj/item/flame/candle/Initialize(mapload)
 	. = ..()
@@ -42,12 +43,11 @@
 		if(C.lit)
 			light()
 
-
 /obj/item/flame/candle/proc/light(var/flavor_text = "<span class='notice'>\The [usr] lights the [src].</span>")
 	if(!lit)
 		lit = TRUE
 		visible_message(flavor_text)
-		set_light(CANDLE_LUM)
+		set_light(light_range_lit)
 		START_PROCESSING(SSobj, src)
 
 /obj/item/flame/candle/process(delta_time)
@@ -116,10 +116,13 @@
 	light("<span class='notice'>\The [src] mysteriously lights itself!.</span>")
 
 /obj/item/flame/candle/everburn/white
+	name = "white candle"
 	desc = "a white pillar candle. Its specially-formulated fuel-oxidizer wax mixture allows continued combustion in airless environments."
 	icon_state = "whitecandle"
 	icon_type = "whitecandle"
+
 /obj/item/flame/candle/everburn/black
+	name = "black candle"
 	desc = "a black pillar candle. Ominous."
 	icon_state = "blackcandle"
 	icon_type = "blackcandle"

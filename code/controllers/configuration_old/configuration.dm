@@ -125,17 +125,8 @@
 	var/health_threshold_crit = 0
 	var/health_threshold_dead = -100
 
-	var/organ_health_multiplier = 1
-	var/organ_regeneration_multiplier = 1
 	var/default_brain_health = 400
 	var/allow_headgibs = FALSE
-
-	//Paincrit knocks someone down once they hit 60 shock_stage, so by default make it so that close to 100 additional damage needs to be dealt,
-	//so that it's similar to HALLOSS. Lowered it a bit since hitting paincrit takes much longer to wear off than a halloss stun.
-	var/organ_damage_spillover_multiplier = 0.5
-
-	var/bones_can_break = 0
-	var/limbs_can_break = 0
 
 	var/revival_pod_plants = 1
 	var/revival_cloning = 1
@@ -794,20 +785,10 @@
 					config_legacy.revival_cloning = value
 				if("revival_brain_life")
 					config_legacy.revival_brain_life = value
-				if("organ_health_multiplier")
-					config_legacy.organ_health_multiplier = value / 100
-				if("organ_regeneration_multiplier")
-					config_legacy.organ_regeneration_multiplier = value / 100
-				if("organ_damage_spillover_multiplier")
-					config_legacy.organ_damage_spillover_multiplier = value / 100
 				if("default_brain_health")
 					config_legacy.default_brain_health = text2num(value)
 					if(!config_legacy.default_brain_health || config_legacy.default_brain_health < 1)
 						config_legacy.default_brain_health = initial(config_legacy.default_brain_health)
-				if("bones_can_break")
-					config_legacy.bones_can_break = value
-				if("limbs_can_break")
-					config_legacy.limbs_can_break = value
 				if("allow_headgibs")
 					config_legacy.allow_headgibs = TRUE
 

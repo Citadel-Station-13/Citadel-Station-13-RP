@@ -42,7 +42,7 @@
 	name = "magnetic 'pin'"
 	addblends = null
 	desc = "Finally, a hair pin even a Morpheus chassis can use."
-	materials = list(MAT_STEEL = 10)
+	materials_base = list(MAT_STEEL = 10)
 
 /obj/item/clothing/head/pin/flower
 	name = "red flower pin"
@@ -410,7 +410,7 @@
 	icon_state = "beanie"
 	body_cover_flags = 0
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
-	cold_protection = HEAD
+	cold_protection_cover = HEAD
 
 /obj/item/clothing/head/beanie_loose
 	name = "loose beanie"
@@ -419,7 +419,7 @@
 	addblends = "beanie_hang_a"
 	body_cover_flags = 0
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
-	cold_protection = HEAD
+	cold_protection_cover = HEAD
 
 /obj/item/clothing/head/beretg
 	name = "beret"
@@ -721,3 +721,16 @@
 	desc = "The lettering on this hat is phenominal. It reads: 'Women fear me. Fish fear me. Men turn their eyes away from me as I walk. No beast dare makes a sound in my presence. I am alone in this barren space.' There is a patch of an extra large Monkfish sewn on beneath these words. Only the most prestegious fishers in the universe must own a hat like this..."
 	icon_state = "fishingcap"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "fishingcap", SLOT_ID_LEFT_HAND = "fishingcap")
+
+/obj/item/clothing/head/darkcleric
+	name = "dark cleric circlet"
+	desc = "This chased silver circlet bears a polished black stone in its center. A matching ponytail holder is included."
+	icon = 'icons/clothing/head/darkcleric.dmi'
+	icon_state = "darkcleric"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/head/eulrhat
+	name = "sleek side cap"
+	desc = "A simple wedge cap with red accents, highly popular within Tri-Star Compact space."
+	icon_state = "eulrhat"
+	body_cover_flags = 0

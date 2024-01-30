@@ -49,7 +49,7 @@
 
 		var/turf/deploy_location = get_turf(src)
 		var/status = template.check_deploy(deploy_location)
-		var/turf/above_location = GetAbove(deploy_location)
+		var/turf/above_location = deploy_location.above()
 		if(above_location && status == SHELTER_DEPLOY_ALLOWED)
 			status = template.check_deploy(above_location)
 
@@ -158,28 +158,21 @@
 	icon_state = "table"
 	can_reinforce = FALSE
 	can_plate = FALSE
+	material_base = /datum/material/steel
 
 /obj/structure/table/survival_pod/update_icon()
-	icon_state = "table" //this table doesn't care about your material nonsense. just ignore the overlays.
+	. = ..()
+	if(!isnull(material_base))
+		icon_state = "table" //this table doesn't care about your material nonsense. just ignore the overlays.
 
 /obj/structure/table/survival_pod/update_icon_state()
-	. = ..()
-	icon_state = "table"
+	if(!isnull(material_base))
+		icon_state = "table"
+	return ..()
 
 /obj/structure/table/survival_pod/Initialize(mapload)
-	material = get_material_by_name(MAT_STEEL)
 	remove_obj_verb(src, /obj/structure/table/verb/do_flip)
 	remove_obj_verb(src, /obj/structure/table/proc/do_put)
-	return ..()
-
-/obj/structure/table/survival_pod/attackby(obj/item/W, mob/user)
-	if(W.is_wrench()) //dismantled with one wrench usage
-		dismantle(W, user)
-		return 1
-	return ..()
-
-/obj/structure/table/survival_pod/Destroy()
-	new /obj/item/stack/material/steel(src.loc) //add an additional steel so they can make a new table with two steel if desired
 	return ..()
 
 //Sleeper
@@ -276,7 +269,7 @@
 	var/buildstacktype = /obj/item/stack/material/steel
 	var/buildstackamount = 5
 
-/obj/structure/fans/drop_products(method)
+/obj/structure/fans/drop_products(method, atom/where)
 	. = ..()
 	new buildstacktype(drop_location(), buildstackamount)
 

@@ -297,6 +297,10 @@
 	name = "Basic Headband (Colorable)"
 	path = /obj/item/clothing/head/fluff/headbando
 
+/datum/loadout_entry/head/eulrhat
+	name = "Sleek side cap"
+	path = /obj/item/clothing/head/eulrhat
+
 // happy valentine's day
 /datum/loadout_entry/head/woodcirclet
 	name = "Wooden Circlet"
@@ -336,6 +340,11 @@
 /datum/loadout_entry/head/bard
 	name = "Audacious Wide Brimmed Hat"
 	path = /obj/item/clothing/head/bard
+
+/datum/loadout_entry/head/aureate_hood
+	name = "Aureate Hood"
+	path = /obj/item/clothing/head/hood/aureate
+
 
 //Tajaran head wears
 

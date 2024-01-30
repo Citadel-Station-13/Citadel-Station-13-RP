@@ -1,6 +1,7 @@
 /obj/spawner/window
 	icon = 'icons/mapping/spawners/windows.dmi'
 	icon_state = "window_grille_pane"
+	layer = WINDOW_LAYER
 	late = TRUE
 
 	/// spawn full windows or panes on grille?

@@ -103,7 +103,7 @@
 			user.visible_message("<span class='danger'>\The [user] accidentally cuts [TU.himself] with \the [src].</span>",\
 			"<span class='danger'>You accidentally cut yourself with \the [src].</span>")
 			var/mob/living/carbon/human/H = ishuman(user)? user : null
-			H?.take_organ_damage(5,5)
+			H?.take_random_targeted_damage(brute = 5, burn = 5)
 		deactivate(user)
 		update_icon()
 		update_held_icon()
