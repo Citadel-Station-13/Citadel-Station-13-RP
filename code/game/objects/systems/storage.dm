@@ -1139,8 +1139,39 @@
 	return ..()
 
 /datum/object_system/storage/stack/mass_storage_dumping_handler(list/obj/item/things, atom/to_loc, datum/progressbar/progress, datum/event_args/actor/actor, list/rejections_out, trigger_on_found)
-	#warn impl
-	. = ..()
+	// todo: this is just a copypaste and god, that fucking sucks.
+	var/atom/indirection = real_contents_loc()
+	var/i
+	. = FALSE
+	for(i in length(things) to 1 step -1)
+		var/obj/item/stack/transferring = things[i]
+		//! UH OH, STACK STORAGE SPECIFIC CODE HERE
+		// make sure they're the right type
+		if(!istype(transferring))
+			continue
+		//! END
+		// make sure they're still there
+		if(transferring.loc != indirection)
+			continue
+		// handle on open hooks if needed
+		if(trigger_on_found && actor?.performer.active_storage != src && transferring.on_containing_storage_opening(actor, src))
+			break
+		// see if we can remove it
+		if(!try_remove(transferring, to_loc, actor, TRUE, TRUE, TRUE))
+			rejections_out += transferring
+			continue
+		//! UH OH, STACK STORAGE SPECIFIC CODE HERE
+		// if it wasn't fully removed,
+		if(transferring.loc == src && transferring.amount)
+			// shove up one so it doesn't remove it, go to the next cycle
+			i++
+		//! END
+		// stop if overtaxed
+		if(TICK_CHECK)
+			. = TRUE
+			break
+	progress.update(progress.goal - length(things) + i)
+	things.Cut(i, length(things) + 1)
 
 /datum/object_system/storage/stack/render_numerical_display(list/obj/item/for_items)
 	var/list/not_stack = list()
