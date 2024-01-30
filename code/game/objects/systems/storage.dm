@@ -1273,7 +1273,7 @@
 	var/image/left = image(icon, icon_state = "stored_left", pixel_x = ((width / 2) - VOLUMETRIC_STORAGE_BOX_BORDER_SIZE - (WORLD_ICON_SIZE - VOLUMETRIC_STORAGE_BOX_BORDER_SIZE)))
 	var/image/right = image(icon, icon_state = "stored_right", pixel_x = -((width / 2) - VOLUMETRIC_STORAGE_BOX_BORDER_SIZE - (WORLD_ICON_SIZE - VOLUMETRIC_STORAGE_BOX_BORDER_SIZE)))
 	var/image/middle = image(icon, icon_state = "stored_middle")
-	middle.transform = matrix((pixels - (VOLUMETRIC_STORAGE_BOX_BORDER_SIZE * 2)) / VOLUMETRIC_STORAGE_BOX_ICON_SIZE, 0, 0, 0, 1, 0)
+	middle.transform = matrix((width - (VOLUMETRIC_STORAGE_BOX_BORDER_SIZE * 2)) / VOLUMETRIC_STORAGE_BOX_ICON_SIZE, 0, 0, 0, 1, 0)
 	overlays = list(left, middle, right)
 
 /atom/movable/screen/storage/panel/volumetric

@@ -1146,7 +1146,7 @@
 				B = module_state_3
 			var/turf/tile = loc
 			if(isturf(tile))
-				B.gather_all(tile, src, 1) //Shhh, unless the bag fills, don't spam the borg's chat with stuff that's going on every time they move!
+				B.obj_storage.interacted_mass_pickup(new /datum/event_args/actor(src), tile)
 		return
 
 	if(scrubbing)

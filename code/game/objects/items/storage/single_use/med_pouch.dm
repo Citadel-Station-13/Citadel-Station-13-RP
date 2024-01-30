@@ -30,7 +30,7 @@
 	name = "emergency [injury_type] pouch"
 	update_desc()
 	if(length(contents))
-		make_exact_fit()
+		obj_storage.fit_to_contents(no_shrink = TRUE)
 	update_icon()
 
 

@@ -54,15 +54,6 @@
 
 	if ( !ispath(foldable) )
 		return
-	var/found = 0
-	// Close any open UI windows first
-	for(var/mob/M in range(1))
-		if (M.s_active == src)
-			close(M)
-		if ( M == user )
-			found = 1
-	if ( !found )	// User is too far away
-		return
 	// Now make the cardboard
 	to_chat(user, "<span class='notice'>You fold [src] flat.</span>")
 	new foldable(get_turf(src))

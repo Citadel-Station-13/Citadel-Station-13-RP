@@ -251,12 +251,12 @@
 	icon_state = "[initial(icon_state)][contents.len]"
 	return
 
-/obj/item/storage/fancy/cigarettes/remove_from_storage(obj/item/W as obj, atom/new_location)
+/obj/item/storage/fancy/cigarettes/Exited(atom/movable/AM, atom/newLoc)
+	. = ..()
 	// Don't try to transfer reagents to lighters
-	if(istype(W, /obj/item/clothing/mask/smokable/cigarette))
-		var/obj/item/clothing/mask/smokable/cigarette/C = W
+	if(istype(AM, /obj/item/clothing/mask/smokable/cigarette))
+		var/obj/item/clothing/mask/smokable/cigarette/C = AM
 		reagents?.trans_to_obj(C, (reagents.total_volume/contents.len))
-	return ..()
 
 /obj/item/storage/fancy/cigarettes/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(target == user && user.zone_sel.selecting == O_MOUTH)
@@ -357,12 +357,11 @@
 	icon_state = "[initial(icon_state)][contents.len]"
 	return
 
-/obj/item/storage/fancy/cigar/remove_from_storage(obj/item/W as obj, atom/new_location)
-	var/obj/item/clothing/mask/smokable/cigarette/cigar/C = W
-	if(!istype(C))
-		return ..()
-	reagents?.trans_to_obj(C, (reagents.total_volume/contents.len))
-	return ..()
+/obj/item/storage/fancy/cigar/Exited(atom/movable/AM, atom/newLoc)
+	. = ..()
+	if(!istype(AM, /obj/item/clothing/mask/smokable/cigarette/cigar))
+		return
+	reagents?.trans_to_obj(AM, (reagents.total_volume / length(contents)))
 
 /obj/item/storage/rollingpapers
 	name = "rolling paper pack"

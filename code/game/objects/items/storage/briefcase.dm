@@ -8,7 +8,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	max_single_weight_class = WEIGHT_CLASS_NORMAL
 	max_combined_volume = WEIGHT_VOLUME_NORMAL * 4
-	use_sound = 'sound/items/storage/briefcase.ogg'
+	sfx_open = 'sound/items/storage/briefcase.ogg'
 	drop_sound = 'sound/items/drop/backpack.ogg'
 	pickup_sound = 'sound/items/pickup/backpack.ogg'
 

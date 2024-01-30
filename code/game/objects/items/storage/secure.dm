@@ -70,13 +70,6 @@
 	..()
 
 
-/obj/item/storage/secure/OnMouseDropLegacy(over_object, src_location, over_location)
-	if (locked)
-		src.add_fingerprint(usr)
-		return
-	..()
-
-
 /obj/item/storage/secure/attack_self(mob/user)
 	. = ..()
 	if(.)
@@ -107,6 +100,7 @@
 				l_set = 1
 			else if ((code == l_code) && (emagged == 0) && (l_set == 1))
 				locked = 0
+				obj_storage.set_locked(FALSE)
 				set_overlays(icon_opened)
 				code = null
 			else
@@ -115,8 +109,8 @@
 			if ((href_list["type"] == "R") && (emagged == 0) && (!l_setshort))
 				locked = 1
 				cut_overlays()
+				obj_storage.set_locked(TRUE)
 				code = null
-				close(usr)
 			else
 				code += href_list["type"]
 				if (length(src.code) > 5)
@@ -136,6 +130,7 @@
 		sleep(6)
 		set_overlays(icon_locking)
 		locked = 0
+		obj_storage.set_locked(FALSE)
 		to_chat(user, (feedback ? feedback : "You short out the lock of \the [src]."))
 		return 1
 
