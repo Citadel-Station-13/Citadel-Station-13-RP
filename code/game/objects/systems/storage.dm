@@ -400,7 +400,7 @@
 			)
 		return FALSE
 	// point of no return (real)
-	#warn impl
+	return insert(inserting, actor, suppressed, no_update)
 
 /datum/object_system/storage/proc/can_be_inserted(obj/item/inserting, datum/event_args/actor/actor, silent)
 	if(!check_insertion_filters(inserting))
@@ -420,21 +420,23 @@
 		return FALSE
 	return TRUE
 
-/datum/object_system/storage/proc/insert(obj/item/inserting, datum/event_args/actor/actor, suppressed, no_update, no_move)
+/datum/object_system/storage/proc/insert(obj/item/inserting, datum/event_args/actor/actor, suppressed, no_update, no_move, force)
 	#warn impl
-	physically_insert_item(inserting, no_move)
+	physically_insert_item(inserting, no_move, FORCE_LAUNCH)
 
 	if(!no_update)
 		if(update_icon_on_item_change)
 			update_icon()
 		refresh()
 
+	return TRUE
+
 /**
  * handle moving an item in
  *
  * we can assume this proc will do potentially literally anything with the item, so..
  */
-/datum/object_system/storage/proc/physically_insert_item(obj/item/inserting, no_move)
+/datum/object_system/storage/proc/physically_insert_item(obj/item/inserting, no_move, force)
 	if(!no_move)
 		inserting.forceMove(real_contents_loc())
 	inserting.vis_flags |= VIS_INHERIT_LAYER | VIS_INHERIT_PLANE
@@ -486,6 +488,8 @@
 		if(update_icon_on_item_change)
 			update_icon()
 		refresh()
+
+	return TRUE
 
 /**
  * handle moving an item out
@@ -1078,55 +1082,65 @@
 /datum/object_system/storage/stack/check_insertion_limits(obj/item/candidate)
 	return cached_combined_stack_amount < max_items
 
+/datum/object_system/storage/stack/try_insert(obj/item/inserting, datum/event_args/actor/actor, silent, suppressed, no_update)
+	if(!istype(inserting, /obj/item/stack))
+		return FALSE
+	var/obj/item/stack/stack = inserting
+	// insert a copy
+	var/allowed_amount = max_items - cached_combined_stack_amount
+	if(allowed_amount <= 0)
+		return
+	var/obj/item/stack/actually_inserting = new stack.type(stack.loc, allowed_amount)
+	inserting = actually_inserting
+	. = ..()
+	// fully inserted
+	if(. && actually_inserting.amount <= 0)
+		stack.use(stack.amount)
+		return
+	// merge back
+	stack.use(allowed_amount - actually_inserting.amount)
+	qdel(actually_inserting)
+
+/datum/object_system/storage/stack/insert(obj/item/inserting, datum/event_args/actor/actor, suppressed, no_update, no_move)
+	if(!istype(inserting, /obj/item/stack))
+		return FALSE
+	return ..()
+
 /datum/object_system/storage/stack/physically_insert_item(obj/item/inserting, no_move)
-	#warn impl - split stack if necessary
+	if(!istype(inserting, /obj/item/stack))
+		// how the fuck
+		CRASH("attempted to physically insert a non stack")
+	var/obj/item/stack/stack = inserting
+	var/atom/indirection = real_contents_loc()
+	for(var/obj/item/stack/other in indirection)
+		if(!stack.can_merge(other))
+			continue
+		other.add(stack.amount)
+		// this should delete the stack (?!)
+		stack.use(stack.amount)
+		return TRUE
+	inserting = stack
+	return ..()
+
+/datum/object_system/storage/stack/remove(obj/item/removing, atom/to_where, datum/event_args/actor/actor, suppressed, no_update, no_move)
+	if(!istype(removing, /obj/item/stack))
+		return FALSE
+	return ..()
+
+/datum/object_system/storage/stack/physically_remove_item(obj/item/removing, atom/to_where, no_move)
+	if(!istype(removing, /obj/item/stack))
+		// how the fuck
+		CRASH("attempted to physically insert a non stack")
+	var/obj/item/stack/stack = removing
+	if(stack.amount <= stack.max_amount)
+		return ..()
+	var/obj/item/stack/actually_removing = stack.split(stack.max_amount)
+	removing = actually_removing
+	return ..()
 
 /datum/object_system/storage/stack/mass_storage_dumping_handler(list/obj/item/things, atom/to_loc, datum/progressbar/progress, datum/event_args/actor/actor, list/rejections_out, trigger_on_found)
 	#warn impl
 	. = ..()
-
-
-/*
-/datum/component/storage/concrete/stack/_insert_physical_item(obj/item/I, override = FALSE)
-	if(!istype(I, /obj/item/stack))
-		if(override)
-			return ..()
-		return FALSE
-	var/atom/real_location = real_location()
-	var/obj/item/stack/S = I
-	var/can_insert = min(S.amount, remaining_space())
-	if(!can_insert)
-		return FALSE
-	for(var/i in real_location)				//combine.
-		if(QDELETED(I))
-			return
-		var/obj/item/stack/_S = i
-		if(!istype(_S))
-			continue
-		if(_S.merge_type == S.merge_type)
-			_S.add(can_insert)
-			S.use(can_insert, TRUE)
-			return TRUE
-	I = S.split_stack(null, can_insert)
-	return ..()
-*/
-
-/datum/object_system/storage/stack/physically_remove_item(obj/item/removing, atom/to_where, no_move)
-	#warn impl - we make a new stack and swap
-
-/*
-/datum/component/storage/concrete/stack/remove_from_storage(obj/item/I, atom/new_location)
-	var/atom/real_location = real_location()
-	var/obj/item/stack/S = I
-	if(!istype(S))
-		return ..()
-	if(S.amount > S.max_amount)
-		var/overrun = S.amount - S.max_amount
-		S.amount = S.max_amount
-		var/obj/item/stack/temp = new S.type(real_location, overrun)
-		handle_item_insertion(temp)
-	return ..(S, new_location)
-*/
 
 /datum/object_system/storage/stack/render_numerical_display(list/obj/item/for_items)
 	var/list/not_stack = list()
