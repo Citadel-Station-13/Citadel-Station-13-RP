@@ -9,45 +9,48 @@
 	desc = "This object should not appear"
 	icon = 'icons/obj/storage.dmi'
 
+// todo: i just fully disabled this for now. sorry.
+// todo: add quickdrawing.
+
 	//Quickmode
 	//When set to 0, this storage will operate as a regular storage, and clicking on it while equipped will open it as a storage
 	//When set to 1, a click while it is equipped will instead move the first item inside it to your hand
-	var/quickmode = 0
+// 	var/quickmode = 0
 
-/obj/item/storage/quickdraw/attack_hand(mob/user, list/params)
-	if(src.loc == user) //If they aren't holding us, we do nothing special
-		if(ishuman(user))
-			var/mob/living/carbon/human/H = user
-			if(quickmode)
-				var/first_item = contents[1]
-				if(first_item && !H.get_active_held_item()) //Do we have anything to give you?
-					H.put_in_hands(first_item)
-					return
+// /obj/item/storage/quickdraw/attack_hand(mob/user, list/params)
+// 	if(src.loc == user) //If they aren't holding us, we do nothing special
+// 		if(ishuman(user))
+// 			var/mob/living/carbon/human/H = user
+// 			if(quickmode)
+// 				var/first_item = contents[1]
+// 				if(first_item && !H.get_active_held_item()) //Do we have anything to give you?
+// 					H.put_in_hands(first_item)
+// 					return
 
-			if(H.l_store == src && !H.get_active_held_item()) //overrides
-				src.open(user)
-				return
-			if(H.r_store == src && !H.get_active_held_item())
-				src.open(user)
-				return
-	..() //Nothing special happened, go call the other proc
+// 			if(H.l_store == src && !H.get_active_held_item()) //overrides
+// 				src.open(user)
+// 				return
+// 			if(H.r_store == src && !H.get_active_held_item())
+// 				src.open(user)
+// 				return
+// 	..() //Nothing special happened, go call the other proc
 
 
-/obj/item/storage/quickdraw/verb/toggle_quickdraw()
-	set name = "Switch Quickdraw Mode"
-	set category = "Object"
+// /obj/item/storage/quickdraw/verb/toggle_quickdraw()
+// 	set name = "Switch Quickdraw Mode"
+// 	set category = "Object"
 
-	quickmode = !quickmode
-	switch (quickmode)
-		if(1)
-			to_chat(usr, "[src] now draws the first object inside.")
-		if(0)
-			to_chat(usr, "[src] now opens as a container.")
+// 	quickmode = !quickmode
+// 	switch (quickmode)
+// 		if(1)
+// 			to_chat(usr, "[src] now draws the first object inside.")
+// 		if(0)
+// 			to_chat(usr, "[src] now opens as a container.")
 
-/obj/item/storage/quickdraw/AltClick(mob/user)
-	..()
-	if(src.loc == user) //Are they carrying us?
-		toggle_quickdraw()
+// /obj/item/storage/quickdraw/AltClick(mob/user)
+// 	..()
+// 	if(src.loc == user) //Are they carrying us?
+// 		toggle_quickdraw()
 
 
 // If we start adding more of these, we'll need to make them their own folder. 'til then, this one should be fine.

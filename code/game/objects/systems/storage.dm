@@ -419,7 +419,6 @@
 	return TRUE
 
 /datum/object_system/storage/proc/insert(obj/item/inserting, datum/event_args/actor/actor, suppressed, no_update, no_move, force)
-	#warn impl
 	physically_insert_item(inserting, no_move, FORCE_LAUNCH)
 
 	if(!no_update)
@@ -478,8 +477,6 @@
  * remove item from self
  */
 /datum/object_system/storage/proc/remove(obj/item/removing, atom/to_where, datum/event_args/actor/actor, suppressed, no_update, no_move)
-	#warn impl
-
 	physically_remove_item(removing, to_where, no_move)
 
 	if(!no_update)
@@ -606,6 +603,8 @@
 			target = parent,
 		)
 		return TRUE
+	if(actor)
+		parent.add_fingerprint(actor.performer)
 	interacted_mass_transfer(actor, to_storage)
 	return TRUE
 
@@ -616,6 +615,8 @@
 			target = parent,
 		)
 		return TRUE
+	if(actor)
+		parent.add_fingerprint(actor.performer)
 	interacted_mass_pickup(actor, from_where)
 	return TRUE
 
@@ -626,6 +627,8 @@
 			target = parent,
 		)
 		return TRUE
+	if(actor)
+		parent.add_fingerprint(actor.performer)
 	interacted_mass_dumping(actor, to_where)
 	return TRUE
 
@@ -808,6 +811,12 @@
 			target = parent,
 		)
 		return TRUE
+	if(!actor.performer.Reachability(src, STORAGE_REACH_DEPTH + 1))
+		actor.chat_feedback(
+			msg = SPAN_WARNING("You can't reach that!"),
+			target = parent,
+		)
+		return FALSE
 	if(check_on_found_hooks(actor))
 		return TRUE
 	if(!suppressed && !isnull(actor) && sfx_open)
@@ -829,7 +838,7 @@
 	RegisterSignal(viewer, COMSIG_MOVABLE_MOVED, PROC_REF(on_viewer_moved))
 	create_ui(viewer)
 
-	parent.object_storage_opened(user)
+	parent.object_storage_opened(viewer)
 
 /**
  * if user not specified, it is 'all'.
@@ -848,7 +857,7 @@
 	UnregisterSignal(viewer, COMSIG_MOVABLE_MOVED)
 	cleanup_ui(viewer)
 
-	parent.object_storage_closed(user)
+	parent.object_storage_closed(viewer)
 
 /**
  * Hooked into obj/Moved().

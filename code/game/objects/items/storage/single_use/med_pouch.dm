@@ -41,7 +41,7 @@
 
 /obj/item/storage/single_use/med_pouch/update_desc(updates)
 	. = ..()
-	desc += instruct
+	desc += instructions
 
 /obj/item/storage/single_use/med_pouch/trauma
 	name = "Trauma Pouch"
