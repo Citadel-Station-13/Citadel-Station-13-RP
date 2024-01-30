@@ -1134,6 +1134,9 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/medsec_maintenance)
+"aNv" = (
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/hammerhead/general)
 "aNH" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 8
@@ -4104,9 +4107,6 @@
 "cEL" = (
 /obj/machinery/door/airlock/voidcraft/vertical,
 /obj/map_helper/airlock/door/ext_door,
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
-	dir = 4
-	},
 /obj/machinery/access_button/airlock_interior{
 	dir = 4;
 	frequency = 1380;
@@ -4115,6 +4115,9 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/hammerhead/general)
@@ -4710,15 +4713,6 @@
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
 "dbt" = (
-/obj/structure/bed/chair/bay/shuttle{
-	dir = 8
-	},
-/obj/machinery/light/no_nightshift{
-	dir = 4
-	},
-/obj/machinery/computer/ship/navigation/telescreen{
-	pixel_x = 32
-	},
 /obj/effect/floor_decal/corner_techfloor_grid/full{
 	dir = 4
 	},
@@ -8167,6 +8161,13 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
+"fnq" = (
+/obj/structure/bed/chair/bay/shuttle,
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 24
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/hammerhead/general)
 "fnK" = (
 /obj/structure/barricade,
 /turf/simulated/floor/outdoors/snow/lythios43c,
@@ -9654,6 +9655,14 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/hos)
+"goD" = (
+/obj/machinery/door/airlock/voidcraft/vertical{
+	name = "Passenger Bay and Holding Cell";
+	req_one_access = list(1,38)
+	},
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/hammerhead/general)
 "goH" = (
 /obj/structure/barricade,
 /obj/effect/floor_decal/rust,
@@ -11670,13 +11679,11 @@
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "hFZ" = (
-/obj/machinery/light/no_nightshift{
-	dir = 8
-	},
 /obj/machinery/door/airlock/voidcraft/vertical{
-	name = "Shuttle Cockpit";
+	name = "Flight Operations";
 	req_one_access = list(1,38)
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/hammerhead/cockpit)
 "hGo" = (
@@ -13657,6 +13664,11 @@
 /obj/effect/floor_decal/corner_techfloor_grid{
 	dir = 10
 	},
+/obj/structure/closet/walllocker/emergsuit_wall{
+	dir = 8;
+	pixel_x = -32;
+	pixel_y = -24
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/hammerhead/cockpit)
 "iPh" = (
@@ -13892,6 +13904,9 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
+	},
+/obj/structure/handrail{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/hammerhead/general)
@@ -16687,19 +16702,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/medsec_maintenance)
-"kNL" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/obj/machinery/door/window/brigdoor/southleft{
-	dir = 4;
-	name = "Holding Room";
-	req_access = list(2);
-	req_one_access = list(2)
-	},
-/obj/structure/handrail,
-/turf/simulated/floor/tiled/techfloor,
-/area/shuttle/hammerhead/general)
 "kNQ" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
@@ -18783,6 +18785,9 @@
 	pixel_x = -24
 	},
 /obj/structure/bed/chair/bay/shuttle,
+/obj/machinery/light/no_nightshift{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/hammerhead/general)
 "lWx" = (
@@ -19110,13 +19115,6 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/recreation_area)
-"mhJ" = (
-/obj/structure/closet/walllocker/emergsuit_wall{
-	dir = 8;
-	pixel_x = -32
-	},
-/turf/simulated/shuttle/wall/voidcraft/red,
-/area/shuttle/hammerhead/cockpit)
 "mhS" = (
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/visible/supply,
@@ -19276,14 +19274,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
-"mkP" = (
-/obj/machinery/door/airlock/voidcraft/vertical{
-	name = "Shuttle Brig";
-	req_one_access = list(1,38)
-	},
-/obj/machinery/door/firedoor/glass,
-/turf/space/basic,
-/area/shuttle/hammerhead/general)
 "mlx" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -23042,11 +23032,10 @@
 /turf/simulated/floor/tiled/steel,
 /area/assembly/robotics)
 "oHu" = (
-/obj/item/radio/intercom/department/security{
-	dir = 1;
-	pixel_y = 35
-	},
 /obj/structure/bed/chair/bay/shuttle,
+/obj/machinery/door/window/brigdoor/northright{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/hammerhead/general)
 "oIx" = (
@@ -23073,6 +23062,14 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/assembly/robotics)
+"oJx" = (
+/obj/machinery/door/airlock/voidcraft/vertical{
+	name = "Hammerhead Cockpit";
+	req_one_access = list(1,38)
+	},
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/hammerhead/cockpit)
 "oJG" = (
 /turf/simulated/wall/prepainted,
 /area/crew_quarters/sleep/Dorm_2)
@@ -25595,11 +25592,11 @@
 /turf/simulated/floor/tiled/steel,
 /area/maintenance/medbay)
 "qnJ" = (
-/obj/machinery/light/no_nightshift{
-	dir = 8
-	},
-/obj/structure/bed/chair/bay/shuttle{
+/obj/structure/handrail{
 	dir = 1
+	},
+/obj/item/radio/intercom/department/security{
+	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/hammerhead/general)
@@ -26089,11 +26086,19 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/medsec_maintenance)
 "qDr" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/cyan,
 /obj/effect/shuttle_landmark/rift/deck2/hammerhead,
 /obj/overmap/entity/visitable/ship/landable/hammerhead,
 /obj/structure/cable/green{
 	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 9
+	},
+/obj/structure/handrail{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/hammerhead/general)
@@ -26797,10 +26802,10 @@
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/pool)
 "raP" = (
-/obj/structure/closet/hydrant{
-	pixel_x = 32
-	},
 /obj/structure/bed/chair/bay/shuttle,
+/obj/machinery/light/no_nightshift{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/hammerhead/general)
 "rba" = (
@@ -26846,9 +26851,6 @@
 "rcg" = (
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 4
-	},
-/obj/machinery/light/no_nightshift{
-	dir = 1
 	},
 /turf/simulated/shuttle/wall/voidcraft/red,
 /area/shuttle/hammerhead/general)
@@ -28526,18 +28528,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/hammerhead/cockpit)
-"seJ" = (
-/obj/machinery/door/window/brigdoor/southright{
-	dir = 4;
-	name = "Holding Room";
-	req_access = list(2);
-	req_one_access = list(2)
-	},
-/obj/structure/handrail{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/shuttle/hammerhead/general)
 "sfs" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -28803,6 +28793,13 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/chemistry)
+"srt" = (
+/obj/structure/bed/chair/bay/shuttle,
+/obj/structure/closet/hydrant{
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/hammerhead/general)
 "srw" = (
 /obj/structure/railing,
 /turf/simulated/open/lythios43c,
@@ -29484,6 +29481,15 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_1)
+"sQe" = (
+/obj/machinery/door/window/brigdoor/northleft{
+	dir = 8
+	},
+/obj/structure/bed/chair/bay/shuttle{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/hammerhead/general)
 "sQt" = (
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/hammerhead/cockpit)
@@ -30781,6 +30787,7 @@
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume,
 /obj/map_helper/airlock/atmos/chamber_pump,
+/obj/structure/handrail,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/hammerhead/general)
 "tLc" = (
@@ -30809,6 +30816,16 @@
 "tNc" = (
 /turf/simulated/wall/prepainted/security,
 /area/security/briefing_room)
+"tNt" = (
+/obj/structure/bed/chair/bay/shuttle{
+	dir = 1
+	},
+/obj/machinery/air_alarm{
+	dir = 8;
+	pixel_x = 22
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/hammerhead/general)
 "tOd" = (
 /turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hos)
@@ -31303,6 +31320,7 @@
 /obj/structure/closet/walllocker/emergsuit_wall{
 	pixel_y = 32
 	},
+/obj/structure/handrail,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/hammerhead/general)
 "uht" = (
@@ -31541,7 +31559,7 @@
 /obj/machinery/door/window/brigdoor/southright{
 	dir = 8;
 	icon_state = "rightsecure";
-	name = "Crew Section Access";
+	name = "Flight Operations Access";
 	req_access = list(2);
 	req_one_access = list(2)
 	},
@@ -33988,12 +34006,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/maintenance/medbay)
-"vTR" = (
-/obj/structure/bed/chair/bay/shuttle{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/shuttle/hammerhead/general)
 "vUk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -53120,7 +53132,7 @@ ddq
 sQt
 ffG
 iOM
-mhJ
+oOw
 wqC
 wqC
 wdn
@@ -53502,7 +53514,7 @@ kvr
 swv
 qly
 qly
-ilr
+oOw
 oOw
 oOw
 oOw
@@ -53701,7 +53713,7 @@ qly
 oOw
 oOw
 oOw
-oOw
+sQt
 oOw
 iag
 mvg
@@ -53895,7 +53907,7 @@ qly
 qly
 jgM
 oOw
-oOw
+oJx
 oOw
 fpW
 vKi
@@ -54089,7 +54101,7 @@ qly
 qly
 ilr
 ilr
-ilr
+aNv
 ilr
 aSz
 bFP
@@ -54476,9 +54488,9 @@ qly
 qly
 qly
 ilr
-uRH
-vTR
-ilr
+fnq
+gHJ
+hsv
 oIx
 rLY
 xbD
@@ -54670,9 +54682,9 @@ qly
 qly
 qly
 ilr
-kNL
-seJ
-ilr
+uRH
+aNv
+goD
 oIx
 rLY
 mFf
@@ -54864,7 +54876,7 @@ qly
 qly
 qly
 ilr
-uRH
+srt
 gHJ
 hsv
 oIx
@@ -55253,8 +55265,8 @@ qly
 qly
 ilr
 oHu
-gHJ
-hsv
+sQe
+ilr
 oIx
 uSS
 usH
@@ -55447,8 +55459,8 @@ qly
 qly
 ilr
 raP
-gHJ
-hsv
+tNt
+ilr
 uAi
 gOT
 pcN
@@ -55638,10 +55650,10 @@ cnl
 nSi
 qly
 qly
-sZb
+qly
 ilr
 rcg
-mkP
+ilr
 ilr
 pPV
 kDT
