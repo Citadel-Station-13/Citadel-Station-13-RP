@@ -2,12 +2,13 @@
 	id = MAT_TITANIUM
 	name = MAT_TITANIUM
 	stack_type = /obj/item/stack/material/titanium
-	icon_base = 'icons/turf/walls/metal_wall.dmi'
-	icon_reinf = 'icons/turf/walls/solid_wall_reinforced.dmi'
 	door_icon_base = "metal"
 	icon_colour = "#D1E6E3"
 	table_icon_base = "metal"
 	tgui_icon_key = "titanium"
+	icon_base = 'icons/turf/walls/metal/wall.dmi'
+	icon_reinf = 'icons/turf/walls/reinforced_metal.dmi'
+	wall_stripe_icon = null
 
 	relative_integrity = 1
 	density = 8 * 0.5

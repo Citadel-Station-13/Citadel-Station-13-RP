@@ -86,7 +86,7 @@ GLOBAL_LIST_EMPTY(wall_overlays_cache)
 				break
 
 	var/old_cache_key = cache_key
-	cache_key = "[icon]:[smoothing_junction]:[wall_paint]:[stripe_icon]:[stripe_paint]:[neighbor_stripe]:[shiny_wall]:[shiny_stripe]:[construction_stage]"
+	cache_key = "[icon]:[smoothing_junction]:[wall_paint]:[stripe_icon]:[stripe_paint]:[neighbor_stripe]:[construction_stage]"
 	if(!(old_cache_key == cache_key))
 
 		color = wall_paint
@@ -99,37 +99,27 @@ GLOBAL_LIST_EMPTY(wall_overlays_cache)
 			overlays.len = 0
 			var/list/new_overlays = list()
 
-			if(shiny_wall)
-				var/image/shine = image(icon, "shine-[smoothing_junction]")
-				shine.appearance_flags = RESET_COLOR
-				new_overlays += shine
-
 			var/image/smoothed_stripe = image(stripe_icon, icon_state)
 			smoothed_stripe.appearance_flags = RESET_COLOR
 			smoothed_stripe.color = stripe_paint
 			new_overlays += smoothed_stripe
 
-			if(shiny_stripe)
-				var/image/stripe_shine = image(stripe_icon, "shine-[smoothing_junction]")
-				stripe_shine.appearance_flags = RESET_COLOR
-				new_overlays += stripe_shine
-
 			if(neighbor_stripe)
-				var/image/neighb_stripe_overlay = image('icons/turf/walls/neighbor_stripe.dmi', "stripe-[neighbor_stripe]")
+				var/image/neighb_stripe_overlay = image('icons/turf/walls/other.dmi', "other-[neighbor_stripe]")
 				neighb_stripe_overlay.appearance_flags = RESET_COLOR
 				neighb_stripe_overlay.color = stripe_paint
 				new_overlays += neighb_stripe_overlay
 
-				if(shiny_wall)
-					var/image/shine = image('icons/turf/walls/neighbor_stripe.dmi', "shine-[neighbor_stripe]")
-					shine.appearance_flags = RESET_COLOR
-					new_overlays += shine
-/*
+			// if(rusted)
+			// 	var/image/rust_overlay = image('icons/turf/rust_overlay.dmi', "blobby_rust")
+			// 	rust_overlay.appearance_flags = RESET_COLOR
+			// 	new_overlays += rust_overlay
+
 			if(construction_stage != 6)
-				var/image/decon_overlay = image('icons/turf/walls/decon_states.dmi', "[construction_stage]")
+				var/image/decon_overlay = image('icons/turf/walls/decon_states.dmi', "reinf_construct-[construction_stage]")
 				decon_overlay.appearance_flags = RESET_COLOR
 				new_overlays += decon_overlay
-*/
+
 			overlays = new_overlays
 			GLOB.wall_overlays_cache[cache_key] = new_overlays
 

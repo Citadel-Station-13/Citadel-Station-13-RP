@@ -1,5 +1,4 @@
 /turf/simulated/wall/r_wall
-	icon = 'icons/turf/walls/_previews.dmi'
 	icon_state = "reinforced_solid"
 	color = "#666666"
 	rad_insulation = RAD_INSULATION_SUPER
@@ -9,64 +8,55 @@
 	material_girder = /datum/material/steel
 
 /turf/simulated/wall/shull
-	icon = 'icons/turf/walls/hull.dmi'
-	color = "#666677"
+	icon_state = "hull-steel"
 	material_outer  = /datum/material/steel/hull
 	material_reinf  = null
 	material_girder = /datum/material/steel/hull
 
 /turf/simulated/wall/rshull
-	color = "#666677"
+	icon_state = "hull-r_steel"
 	material_outer  = /datum/material/steel/hull
 	material_reinf  = /datum/material/steel/hull
 	material_girder = /datum/material/steel/hull
 
 /turf/simulated/wall/pshull
-	icon = 'icons/turf/walls/hull.dmi'
-	color = "#777788"
+	icon_state = "hull-plasteel"
 	material_outer  = /datum/material/plasteel/hull
 	material_reinf  = null
 	material_girder = /datum/material/plasteel/hull
 
 /turf/simulated/wall/rpshull
-	icon = 'icons/turf/walls/hull.dmi'
-	color = "#777788"
+	icon_state = "hull-r_plasteel"
 	material_outer  = /datum/material/plasteel/hull
 	material_reinf  = /datum/material/plasteel/hull
 	material_girder = /datum/material/plasteel/hull
 
 /turf/simulated/wall/dshull
-	icon = 'icons/turf/walls/hull.dmi'
-	color = "#45829a"
+	icon_state = "hull-durasteel"
 	material_outer  = /datum/material/durasteel/hull
 	material_reinf  = null
 	material_girder = /datum/material/durasteel/hull
 
 /turf/simulated/wall/rdshull
-	icon = 'icons/turf/walls/hull.dmi'
-	color = "#45829a"
+	icon_state = "hull-r_durasteel"
 	material_outer  = /datum/material/durasteel/hull
 	material_reinf  = /datum/material/durasteel/hull
 	material_girder = /datum/material/durasteel/hull
 
 /turf/simulated/wall/thull
-	icon = 'icons/turf/walls/hull.dmi'
-	color = "#D1E6E3"
+	icon_state = "hull-titanium"
 	material_outer  = /datum/material/plasteel/titanium/hull
 	material_reinf  = null
 	material_girder = /datum/material/plasteel/titanium/hull
 
 /turf/simulated/wall/rthull
-	icon = 'icons/turf/walls/hull.dmi'
-	color = "#D1E6E3"
+	icon_state = "hull-r_titanium"
 	material_outer  = /datum/material/plasteel/titanium/hull
 	material_reinf  = /datum/material/plasteel/titanium/hull
 	material_girder = /datum/material/plasteel/titanium/hull
 
-
 /turf/simulated/wall/cult
-	icon = 'icons/turf/walls/cult.dmi'
-	color = "#402821"
+	icon_state = "cult"
 
 	material_outer  = /datum/material/cult
 	material_reinf  = /datum/material/cult/reinf
@@ -75,13 +65,13 @@
 /turf/unsimulated/wall/cult
 	name = "cult wall"
 	desc = "Hideous images dance beneath the surface."
-	icon = 'icons/turf/walls/cult.dmi'
+	icon = 'icons/turf/walls/cult/wall.dmi'
 	icon_state = "wall-0"
 	base_icon_state = "wall"
 	color = "#402821"
 
 /turf/simulated/wall/iron
-	icon = 'icons/turf/walls/metal.dmi'
+	icon_state = "metal"
 	color = "#5C5454"
 
 	material_outer  = /datum/material/iron
@@ -89,7 +79,7 @@
 	material_girder = /datum/material/steel
 
 /turf/simulated/wall/uranium
-	icon = 'icons/turf/walls/metal.dmi'
+	icon_state = "metal"
 	color = "#007A00"
 
 	material_outer  = /datum/material/uranium
@@ -97,7 +87,7 @@
 	material_girder = /datum/material/steel
 
 /turf/simulated/wall/diamond
-	icon = 'icons/turf/walls/metal.dmi'
+	icon_state = "metal"
 	color = "#00FFE1"
 
 	material_outer  = /datum/material/diamond
@@ -105,7 +95,7 @@
 	material_girder = /datum/material/steel
 
 /turf/simulated/wall/gold
-	icon = 'icons/turf/walls/metal.dmi'
+	icon_state = "metal"
 	color = "#EDD12F"
 
 	material_outer  = /datum/material/gold
@@ -113,7 +103,7 @@
 	material_girder = /datum/material/steel
 
 /turf/simulated/wall/silver
-	icon = 'icons/turf/walls/metal.dmi'
+	icon_state = "metal"
 	color = "#D1E6E3"
 
 	material_outer  = /datum/material/silver
@@ -121,7 +111,7 @@
 	material_girder = /datum/material/steel
 
 /turf/simulated/wall/lead
-	icon = 'icons/turf/walls/metal.dmi'
+	icon_state = "metal"
 	color = "#273956"
 
 	material_outer  = /datum/material/lead
@@ -129,7 +119,7 @@
 	material_girder = /datum/material/steel
 
 /turf/simulated/wall/r_lead
-	icon = 'icons/turf/walls/metal.dmi'
+	icon_state = "metal"
 	color = "#273956"
 
 	material_outer  = /datum/material/lead
@@ -137,7 +127,7 @@
 	material_girder = /datum/material/steel
 
 /turf/simulated/wall/phoron
-	icon = 'icons/turf/walls/metal.dmi'
+	icon_state = "metal"
 	color = "#FC2BC5"
 
 	material_outer  = /datum/material/phoron
@@ -145,7 +135,7 @@
 	material_girder = /datum/material/steel
 
 /turf/simulated/wall/sandstone
-	icon = 'icons/turf/walls/stone_wall.dmi'
+	icon_state = "stone"
 	color = "#D9C179"
 
 	material_outer  = /datum/material/sandstone
@@ -153,7 +143,7 @@
 	material_girder = /datum/material/steel
 
 /turf/simulated/wall/bone
-	icon = 'icons/turf/walls/stone_wall.dmi'
+	icon_state = "stone"
 	color = "#e6dfc8"
 
 	material_outer  = /datum/material/bone
@@ -161,7 +151,7 @@
 	material_girder = /datum/material/bone
 
 /turf/simulated/wall/ironphoron
-	icon = 'icons/turf/walls/metal.dmi'
+	icon_state = "metal"
 	color = "#5C5454"
 
 	material_outer  = /datum/material/iron
@@ -169,7 +159,7 @@
 	material_girder = /datum/material/steel
 
 /turf/simulated/wall/golddiamond
-	icon = 'icons/turf/walls/metal.dmi'
+	icon_state = "metal"
 	color = "#EDD12F"
 
 	material_outer  = /datum/material/gold
@@ -177,7 +167,7 @@
 	material_girder = /datum/material/steel
 
 /turf/simulated/wall/silvergold
-	icon = 'icons/turf/walls/metal.dmi'
+	icon_state = "metal"
 	color = "#D1E6E3"
 
 	material_outer  = /datum/material/silver
@@ -185,7 +175,7 @@
 	material_girder = /datum/material/steel
 
 /turf/simulated/wall/sandstonediamond
-	icon = 'icons/turf/walls/stone_wall.dmi'
+	icon_state = "stone"
 	color = "#D9C179"
 
 	material_outer  = /datum/material/sandstone
@@ -193,7 +183,7 @@
 	material_girder = /datum/material/steel
 
 /turf/simulated/wall/snowbrick
-	icon = 'icons/turf/walls/stone_wall.dmi'
+	icon_state = "stone"
 	color = "#D8FDFF"
 
 	material_outer  = /datum/material/snowbrick
@@ -201,7 +191,7 @@
 	material_girder = /datum/material/steel
 
 /turf/simulated/wall/resin
-	icon = 'icons/turf/walls/resin.dmi'
+	icon_state = "resin"
 	color = "#261438"
 
 	material_outer  = /datum/material/resin
@@ -228,7 +218,6 @@
 	material_girder = /datum/material/steel
 
 /turf/simulated/wall/wood
-	icon = 'icons/turf/walls/_previews.dmi'
 	icon_state = "wood"
 	color = "#9c5930"
 
@@ -250,8 +239,8 @@
 	material_reinf  = null
 	material_girder = /datum/material/wood_plank/hardwood
 
+// TODO: Remove this. @Zandario
 /turf/simulated/wall/log
-	icon = 'icons/turf/walls/log.dmi'
 	color = "#9c5930"
 
 	material_outer  = /datum/material/wood_log
@@ -259,7 +248,6 @@
 	material_girder = /datum/material/wood_log
 
 /turf/simulated/wall/log_sif
-	icon = 'icons/turf/walls/log.dmi'
 	color = "#0099cc"
 
 	material_outer  = /datum/material/wood_log/sif

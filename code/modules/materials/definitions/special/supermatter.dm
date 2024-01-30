@@ -5,7 +5,7 @@
 	stack_type = /obj/item/stack/material/supermatter
 	shard_type = SHARD_SHARD
 	ignition_point = PHORON_MINIMUM_BURN_TEMPERATURE
-	icon_base = 'icons/turf/walls/stone_wall.dmi'
+	icon_base = 'icons/turf/walls/stone/wall.dmi'
 	shard_type = SHARD_SHARD
 	door_icon_base = "stone"
 	sheet_singular_name = "crystal"

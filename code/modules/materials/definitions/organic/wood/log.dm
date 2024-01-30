@@ -1,7 +1,7 @@
 /datum/material/wood_log
 	id = "log"
 	name = "log"
-	icon_base = 'icons/turf/walls/log.dmi'
+	icon_base = 'icons/turf/walls/wood/wall.dmi'
 	stack_type = /obj/item/stack/material/log
 	sheet_singular_name = null
 	sheet_plural_name = "pile"
@@ -9,7 +9,7 @@
 
 	// todo: this is all copypasted from wood
 	icon_colour = "#9c5930"
-	wall_stripe_icon = 'icons/turf/walls/wood_wall_stripe.dmi'
+	wall_stripe_icon = 'icons/turf/walls/wood/stripe.dmi'
 	explosion_resistance = 2
 	shard_type = SHARD_SPLINTER
 	shard_can_repair = 0 // you can't weld splinters back into planks

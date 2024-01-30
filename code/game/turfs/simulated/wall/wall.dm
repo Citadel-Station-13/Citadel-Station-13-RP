@@ -18,14 +18,12 @@
 
 	armor_type = /datum/armor/object/heavy
 
-	#ifdef IN_MAP_EDITOR // Display disposal pipes etc. above walls in map editors.
-	layer = PLATING_LAYER
-	#endif
+	// Display disposal pipes etc. above walls in map editors.
+	layer = MAP_SWITCH(WALL_LAYER, PLATING_LAYER)
 
 	opacity = TRUE
 	density = TRUE
 	blocks_air = TRUE
-	layer = WALL_LAYER
 	rad_insulation = RAD_INSULATION_EXTREME
 //	air_status = AIR_STATUS_BLOCK
 	thermal_conductivity = WALL_HEAT_TRANSFER_COEFFICIENT
@@ -70,8 +68,6 @@
 	/// This is set by update_overlays(), do not touch!
 	VAR_PRIVATE/cache_key
 
-	var/shiny_wall //? Not even used rn?
-	var/shiny_stripe
 
 /turf/simulated/wall/Initialize(mapload)
 	// Remove the color that was set for mapping clarity.

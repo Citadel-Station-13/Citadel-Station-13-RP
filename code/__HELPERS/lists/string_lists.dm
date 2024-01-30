@@ -31,5 +31,5 @@ GLOBAL_LIST_EMPTY(string_lists)
 /turf/baseturfs_ded
 	name = "Report this"
 	desc = "It looks like base turfs went to the fucking moon, TELL YOUR LOCAL CODER TODAY"
-	icon = 'icons/turf/debug.dmi'
+	icon = 'icons/turf/walls/debug/wall.dmi'
 	icon_state = ""

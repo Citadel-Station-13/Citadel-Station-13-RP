@@ -7,6 +7,9 @@
 	sheet_singular_name = "ingot"
 	sheet_plural_name = "ingots"
 	tgui_icon_key = "silver"
+	icon_base = 'icons/turf/walls/metal/wall.dmi'
+	icon_reinf = 'icons/turf/walls/reinforced_metal.dmi'
+	wall_stripe_icon = null
 
 	relative_integrity = 0.7
 	weight_multiplier = 1

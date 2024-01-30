@@ -1,0 +1,2 @@
+template = "bitmask/cardinal_32x32"
+output_name = "wall"

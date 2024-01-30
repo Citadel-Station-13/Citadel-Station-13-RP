@@ -89,12 +89,12 @@ GLOBAL_LIST_INIT(wallframe_typecache, typecacheof(list(
 			neighbor_stripe ^= cardinal
 
 	if(neighbor_stripe)
-		var/image/neighb_stripe_overlay = new ('icons/turf/walls/neighbor_stripe.dmi', "stripe-[neighbor_stripe]", layer = ABOVE_WINDOW_LAYER)
+		var/image/neighb_stripe_overlay = new (const_material.wall_stripe_icon, "stripe-[neighbor_stripe]", layer = ABOVE_WINDOW_LAYER)
 		neighb_stripe_overlay.appearance_flags = RESET_COLOR
 		neighb_stripe_overlay.color = stripe_color || const_material.icon_colour
 		add_overlay(neighb_stripe_overlay)
 		if(shiny_stripe)
-			var/image/shine = image('icons/turf/walls/neighbor_stripe.dmi', "shine-[smoothing_junction]")
+			var/image/shine = image(const_material.wall_stripe_icon, "shine-[smoothing_junction]")
 			shine.appearance_flags = RESET_COLOR
 			add_overlay(shine)
 

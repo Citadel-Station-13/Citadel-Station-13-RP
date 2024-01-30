@@ -1,0 +1,7 @@
+template = "bitmask/wall_32x32.toml"
+output_name = "other"
+
+smooth_diagonally = false
+
+[cut_pos]
+y = 3

@@ -9,11 +9,7 @@
 	desc = "This cable is tough. It cannot be cut with simple hand tools."
 	plane = TURF_PLANE
 
-	#ifndef IN_MAP_EDITOR
-	layer = HEAVYDUTY_WIRE_LAYER //Just below pipes
-	#else
-	layer = ABOVE_TURF_LAYER
-	#endif
+	layer = MAP_SWITCH(HEAVYDUTY_WIRE_LAYER, ABOVE_TURF_LAYER)
 
 	color = null
 

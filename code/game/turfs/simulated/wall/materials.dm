@@ -61,7 +61,7 @@
 	else if(!isnull(material_outer))
 		icon = material_outer.icon_base
 	else
-		icon = 'icons/turf/walls/solid_wall.dmi'
+		icon = 'icons/turf/walls/solid/wall.dmi'
 
 	stripe_icon = material_outer.wall_stripe_icon
 	material_color = material_outer.icon_colour

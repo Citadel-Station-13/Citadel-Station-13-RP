@@ -4,6 +4,9 @@
 	icon_colour = "#b45c13"
 	stack_type = /obj/item/stack/material/copper
 	tgui_icon_key = "copper"
+	icon_base = 'icons/turf/walls/metal/wall.dmi'
+	icon_reinf = 'icons/turf/walls/reinforced_metal.dmi'
+	wall_stripe_icon = null
 
 	relative_integrity = 0.8
 	density = 8 * 0.9

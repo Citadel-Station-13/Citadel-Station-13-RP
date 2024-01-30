@@ -147,6 +147,9 @@ export const IconCutterTarget = new Juke.Target({
   executes: async () => {
     await Juke.exec(cutter_path, [
       '--dont-wait',
+      // '--flatten', // Waiting for bugs with different outputs to be fixed.
+      // '--output',
+      // `icons/bitmask_cache`,
       '--templates',
       'cutter_templates',
       'icons',

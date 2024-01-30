@@ -9,14 +9,10 @@ var/list/floor_decals = list()
 
 	plane = TURF_PLANE
 
-	#ifdef IN_MAP_EDITOR
 	// Display disposal pipes etc. above walls in map editors.
-	layer = PLATING_DECAL_LAYER
-	alpha = 128 // Set for the benefit of mapping.
-	#else
-	// Our actual layer ingame.
-	layer = FLOOR_DECAL_LAYER
-	#endif
+	layer = MAP_SWITCH(FLOOR_DECAL_LAYER, PLATING_DECAL_LAYER)
+	// Set for the benefit of mapping.
+	alpha = MAP_SWITCH(255, 128)
 
 	var/supplied_dir
 

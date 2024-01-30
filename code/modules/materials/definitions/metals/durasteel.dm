@@ -3,8 +3,8 @@
 	name = "durasteel"
 	stack_type = /obj/item/stack/material/durasteel
 	melting_point = 7000
-	icon_base = 'icons/turf/walls/metal_wall.dmi'
-	icon_reinf = 'icons/turf/walls/solid_wall_reinforced.dmi'
+	icon_base = 'icons/turf/walls/metal/wall.dmi'
+	icon_reinf = 'icons/turf/walls/reinforced_metal.dmi'
 	icon_colour = "#6EA7BE"
 	explosion_resistance = 75
 	stack_origin_tech = list(TECH_MATERIAL = 8)

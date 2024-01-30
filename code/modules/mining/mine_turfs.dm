@@ -10,7 +10,7 @@ CREATE_STANDARD_TURFS(/turf/unsimulated/mineral)
 
 /turf/simulated/mineral //wall piece
 	name = "rock"
-	icon = 'icons/turf/walls/natural.dmi'
+	icon = 'icons/turf/walls/_previews.dmi'
 	icon_state = "preview"
 	base_icon_state = "wall"
 	smoothing_flags = SMOOTH_CUSTOM
@@ -26,6 +26,7 @@ CREATE_STANDARD_TURFS(/turf/unsimulated/mineral)
 	smoothing_groups = (SMOOTH_GROUP_WALLS+SMOOTH_GROUP_MINERAL_WALLS)
 	canSmoothWith = (SMOOTH_GROUP_WALLS + SMOOTH_GROUP_CLOSED_TURFS+SMOOTH_GROUP_MINERAL_WALLS)
 
+	var/wall_icon = 'icons/turf/walls/natural/wall.dmi'
 	var/sand_icon = 'icons/turf/flooring/asteroid.dmi'
 	var/rock_side_icon_state = "rock_side"
 	var/sand_icon_state = "asteroid"
@@ -221,7 +222,7 @@ CREATE_STANDARD_TURFS(/turf/unsimulated/mineral)
 		else
 			name = "rock"
 
-		icon = 'icons/turf/walls/natural.dmi'
+		icon = wall_icon
 //		icon_state = rock_icon_state
 
 	//We are a sand floor

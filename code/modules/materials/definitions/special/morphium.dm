@@ -2,8 +2,9 @@
 	name = MAT_MORPHIUM
 	id = MAT_MORPHIUM
 	stack_type = /obj/item/stack/material/morphium
-	icon_base = 'icons/turf/walls/metal.dmi'
+	icon_base = 'icons/turf/walls/metal/wall.dmi'
 	icon_reinf = 'icons/turf/walls/reinforced_metal.dmi'
+	wall_stripe_icon = null
 	door_icon_base = "metal"
 	icon_colour = "#37115A"
 	shard_type = SHARD_SHARD
@@ -27,5 +28,3 @@
 	name = MAT_MORPHIUMHULL
 	id = "morphium_hull"
 	stack_type = /obj/item/stack/material/morphium/hull
-	icon_base = 'icons/turf/walls/hull.dmi'
-	icon_reinf = 'icons/turf/walls/reinforced_mesh.dmi'
