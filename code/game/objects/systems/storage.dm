@@ -28,12 +28,10 @@
 	var/weight_propagation = TRUE
 	/// carry weight in us prior to mitigation
 	var/weight_cached = 0
-	#warn hook
 	/// carry weight mitigation, static. applied after multiplicative
 	var/weight_subtract = 0
 	/// carry weight mitigation, multiplicative.
 	var/weight_multiply = 1
-	#warn hook weight calcs
 
 	//* Deconstruction & Integrity
 
@@ -824,10 +822,14 @@
 	if(viewer.active_storage == src)
 		refresh_ui(viewer)
 		return TRUE
+
 	viewer.active_storage?.hide(viewer)
 	viewer.active_storage = src
+
 	RegisterSignal(viewer, COMSIG_MOVABLE_MOVED, PROC_REF(on_viewer_moved))
 	create_ui(viewer)
+
+	parent.object_storage_opened(user)
 
 /**
  * if user not specified, it is 'all'.
@@ -842,9 +844,11 @@
 		stack_trace("viewer didn't have active storage set right, wtf?")
 	else
 		viewer.active_storage = null
-	UnregisterSignal(viewer, COMSIG_MOVABLE_MOVED)
 
+	UnregisterSignal(viewer, COMSIG_MOVABLE_MOVED)
 	cleanup_ui(viewer)
+
+	parent.object_storage_closed(user)
 
 /**
  * Hooked into obj/Moved().
@@ -1331,6 +1335,14 @@
 
 /atom/movable/screen/storage/panel/volumetric/right
 	icon_state = "storage_right"
+
+//? Hooks
+
+/obj/proc/object_storage_opened(mob/user)
+	return
+
+/obj/proc/object_storage_closed(mob/user)
+	return
 
 //? Lazy wrappers for init
 

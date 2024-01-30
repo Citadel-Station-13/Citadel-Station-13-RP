@@ -77,14 +77,17 @@
 	insertion_whitelist = list() // any
 	insertion_blacklist = list(/obj/item/disk/nuclear)
 
-/obj/item/storage/bag/trash/update_w_class()
-	..()
-	update_icon()
+/obj/item/storage/bag/trash/update_icon_state()
 	switch(w_class)
-		if(2) icon_state = "[initial(icon_state)]"
-		if(3) icon_state = "[initial(icon_state)]1"
-		if(4) icon_state = "[initial(icon_state)]2"
-		if(5 to INFINITY) icon_state = "[initial(icon_state)]3"
+		if(3)
+			icon_state = "[initial(icon_state)]1"
+		if(4)
+			icon_state = "[initial(icon_state)]2"
+		if(5 to INFINITY)
+			icon_state = "[initial(icon_state)]3"
+		else
+			icon_state = "[initial(icon_state)]"
+	return ..()
 
 /obj/item/storage/bag/trash/bluespace
 	name = "trash bag of holding"
@@ -175,7 +178,8 @@
 	name = "mining satchel of holding"
 	desc = "This advanced spacious storage efficiently stores and transports ores using bluespace technology. It's like having an ore box latched onto your pocket!"
 	icon_state = "satchel_bspace"
-	max_ore = SHORT_REAL_LIMIT //if someone manages to reach 16+ million ores in a single 5 hour round, they'd have to be something else.
+	// :omegawheelchair:
+	max_items = SHORT_REAL_LIMIT
 
 
 // -----------------------------
@@ -229,7 +233,7 @@
 /obj/item/storage/bag/sheetsnatcher/borg
 	name = "sheet snatcher 9000"
 	desc = ""
-	capacity = 500//Borgs get more because >specialization
+	max_items = 600
 
 // -----------------------------
 //           Cash Bag
