@@ -35,9 +35,6 @@
 #define TYPE_PROC_REF(TYPE, X) (##TYPE.proc/##X)
 /// Call by name proc reference, checks if the proc is existing global proc
 #define GLOBAL_PROC_REF(X) (/proc/##X)
-// misc shit ~silicons
-#define ceil(X) CEILING(X, 1)
-#define floor(X) FLOOR(X, 1)
 #else
 /// Call by name proc reference, checks if the proc exists on this type or as a global proc
 #define PROC_REF(X) (nameof(.proc/##X))

@@ -1105,7 +1105,7 @@
 	var/atom/indirection = real_contents_loc()
 	// compute count and rows
 	var/item_count = isnull(numerical_rendered)? length(indirection.contents) : length(numerical_rendered)
-	var/rows_needed = ceil(item_count / rendering_width)
+	var/rows_needed = ROUND_UP(item_count / rendering_width)
 	// prepare iteration
 	var/current_row = 1
 	var/current_column = 1
@@ -1170,7 +1170,7 @@
 	// todo: redo autoscaling
 	// todo: optimize
 	rendering_width_in_pixels = min(rendering_width_in_pixels, effective_max_volume * VOLUMETRIC_STORAGE_STANDARD_PIXEL_RATIO)
-	rendering_width = ceil(rendering_width_in_pixels / WORLD_ICON_SIZE)
+	rendering_width = ROUND_UP(rendering_width_in_pixels / WORLD_ICON_SIZE)
 	rendering_width_in_pixels = rendering_width * 32
 	// render closer
 	closer.screen_loc = "[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X + rendering_width_in_pixels],\
