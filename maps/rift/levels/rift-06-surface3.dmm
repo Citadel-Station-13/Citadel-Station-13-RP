@@ -20262,6 +20262,7 @@
 /obj/structure/cable/pink{
 	icon_state = "1-2"
 	},
+/obj/effect/paint/violet,
 /turf/simulated/floor/plating,
 /area/exploration/explorer_prep)
 "fMP" = (
@@ -20272,6 +20273,7 @@
 /obj/structure/cable/pink{
 	icon_state = "4-8"
 	},
+/obj/effect/paint/violet,
 /turf/simulated/floor/plating,
 /area/exploration/explorer_prep)
 "fOF" = (
