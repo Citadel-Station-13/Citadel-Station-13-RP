@@ -160,6 +160,7 @@
 	if(!src.concealed_blade && istype(W))
 		if(!user.attempt_insert_item_for_installation(W, src))
 			return
+		concealed_blade = W
 		var/datum/gender/T = GLOB.gender_datums[user.get_visible_gender()]
 		user.visible_message(
 			SPAN_WARNING("[user] has sheathed \a [W] into [T.his] [src]!"),
