@@ -311,7 +311,7 @@
 		var/failure_probability = round((charge / capacity) * 100)
 
 		// If failure probability is below 5% it's usually safe to do modifications
-		if (failure_probability < 5)
+		if (failure_probability <= 5)
 			failure_probability = 0
 
 		// Crowbar - Disassemble the SMES.
