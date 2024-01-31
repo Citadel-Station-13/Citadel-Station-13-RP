@@ -3008,7 +3008,7 @@
 /area/crew_quarters/heads/hop)
 "aje" = (
 /obj/machinery/door/airlock/engineering{
-	name = "Science Substation";
+	name = "Exploration Substation";
 	req_one_access = list(11,24,47)
 	},
 /obj/structure/cable/green{
@@ -6865,7 +6865,6 @@
 	frequency = 1380;
 	id_tag = "expshuttle_dock_pump"
 	},
-/obj/map_helper/airlock/atmos/scrubber,
 /turf/simulated/floor/plating,
 /area/exploration/excursion_dock)
 "atD" = (
@@ -9275,7 +9274,6 @@
 	frequency = 1380;
 	id_tag = "expshuttle_dock_pump"
 	},
-/obj/map_helper/airlock/atmos/scrubber,
 /turf/simulated/floor/plating,
 /area/exploration/excursion_dock)
 "azG" = (
@@ -10935,12 +10933,12 @@
 /turf/simulated/floor/carpet/tealcarpet,
 /area/shuttle/civvie/general)
 "aEW" = (
-/obj/machinery/door/airlock/engineering{
-	name = "Science Substation";
-	req_one_access = list(11,24,47)
-	},
 /obj/structure/cable{
 	icon_state = "1-2"
+	},
+/obj/machinery/door/airlock/engineering{
+	name = "Exploration Substation";
+	req_one_access = list(11,24,47)
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/exploration)
@@ -14865,7 +14863,6 @@
 	frequency = 1380;
 	id_tag = "expshuttle_dock_pump"
 	},
-/obj/map_helper/airlock/atmos/scrubber,
 /turf/simulated/floor/plating,
 /area/exploration/excursion_dock)
 "aPV" = (
@@ -15430,7 +15427,6 @@
 	frequency = 1380;
 	id_tag = "expshuttle_dock_pump"
 	},
-/obj/map_helper/airlock/atmos/scrubber,
 /turf/simulated/floor/plating,
 /area/exploration/excursion_dock)
 "aRx" = (
@@ -19256,6 +19252,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 2;
 	icon_state = "pipe-c"
+	},
+/obj/structure/cable{
+	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
@@ -23330,8 +23329,8 @@
 /turf/simulated/floor/reinforced,
 /area/rnd/telescience_lab/chamber)
 "nFC" = (
-/obj/machinery/power/breakerbox{
-	RCon_tag = "Exploration and Research Shuttles Substation Bypass"
+/obj/machinery/power/breakerbox/activated{
+	RCon_tag = "Exploration Substation Bypass"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/exploration)
