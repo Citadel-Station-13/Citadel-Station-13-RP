@@ -147,7 +147,8 @@
 		return FALSE
 	var/obj/item/removing = storage.obj_storage.top_entity_in_contents()
 	var/datum/event_args/actor = new(src, initiator)
-	if(!storage.obj_storage.check_on_found_hooks(actor))
+	if(storage.obj_storage.check_on_found_hooks(actor))
+		return
 	. = storage.obj_storage.try_remove(removing, src, actor, silent)
 	if(!.)
 		return
@@ -164,4 +165,3 @@
 		return attempt_grab_item_out_of_storage_in_slot(slot_like, silent, initiator)
 	else
 		return attempt_put_held_item_into_storage_in_slot(holding, slot_like, silent, initiator)
- 

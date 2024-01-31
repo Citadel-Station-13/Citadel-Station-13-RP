@@ -1172,8 +1172,6 @@
 	rendering_width_in_pixels = min(rendering_width_in_pixels, effective_max_volume * VOLUMETRIC_STORAGE_STANDARD_PIXEL_RATIO)
 	rendering_width = ceil(rendering_width_in_pixels / WORLD_ICON_SIZE)
 	rendering_width_in_pixels = rendering_width * 32
-	// ratio of usage to width
-	var/effective_pixels_per_volume = cached_combined_volume
 	// render closer
 	closer.screen_loc = "[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X + rendering_width_in_pixels],\
 		[STORAGE_UI_START_TILE_Y]:[STORAGE_UI_START_PIXEL_Y]"

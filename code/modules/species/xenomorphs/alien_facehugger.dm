@@ -84,7 +84,10 @@ var/const/MAX_ACTIVE_TIME = 400
 	Proximity(null, target)
 	return
 
-/obj/item/clothing/mask/facehugger/on_found(mob/finder as mob)
+/obj/item/clothing/mask/facehugger/on_containing_storage_opening(datum/event_args/actor/actor, datum/object_system/storage/storage)
+	. = ..()
+
+	var/mob/finder = actor.performer
 	if(stat == CONSCIOUS)
 		Proximity(null, finder)
 		return 1

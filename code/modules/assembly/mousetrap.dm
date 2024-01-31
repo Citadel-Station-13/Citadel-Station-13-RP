@@ -99,7 +99,10 @@
 	..()
 
 
-/obj/item/assembly/mousetrap/on_found(var/mob/living/finder)
+/obj/item/assembly/mousetrap/on_containing_storage_opening(datum/event_args/actor/actor, datum/object_system/storage/storage)
+	. = ..()
+
+	var/mob/finder = actor.performer
 	if(armed)
 		finder.visible_message("<span class='warning'>[finder] accidentally sets off [src], breaking their fingers.</span>", \
 							   "<span class='warning'>You accidentally trigger [src]!</span>")
