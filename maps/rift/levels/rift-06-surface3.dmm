@@ -5574,6 +5574,9 @@
 /obj/item/defib_kit/loaded,
 /obj/item/storage/firstaid/surgery,
 /obj/machinery/power/apc/west_mount,
+/obj/structure/cable/green{
+	icon_state = "0-4"
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/exploration/medic_prep)
 "aqh" = (
