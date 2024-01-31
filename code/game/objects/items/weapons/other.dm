@@ -136,7 +136,7 @@
 	. = ..()
 	var/obj/item/material/butterfly/switchblade/temp_blade = new(src)
 	concealed_blade = temp_blade
-	temp_blade.attack_self()
+	concealed_blade.set_active(TRUE)
 
 /obj/item/cane/concealed/attack_self(mob/user)
 	. = ..()

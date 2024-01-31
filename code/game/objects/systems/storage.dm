@@ -499,8 +499,8 @@
 		actor.visible_feedback(
 			target = parent,
 			range = MESSAGE_RANGE_INVENTORY_SOFT,
-			visible = "[actor.performer] takes [inserting] out of [parent].",
-			visible_self = "You take [inserting] out of [parent]",
+			visible = "[actor.performer] takes [removing] out of [parent].",
+			visible_self = "You take [removing] out of [parent]",
 		)
 
 /datum/object_system/storage/proc/try_remove(obj/item/removing, atom/to_where, datum/event_args/actor/actor, silent, suppressed, no_update)
@@ -619,6 +619,38 @@
 	if(locked)
 		hide()
 
+//* Quickdraw *//
+
+// todo: quickdraw
+/*
+/datum/component/storage/proc/on_alt_click(datum/source, mob/user)
+	if(!isliving(user) || !user.CanReach(parent))
+		return
+	if(check_locked(source, user, TRUE))
+		return TRUE
+
+	var/atom/A = parent
+	if(!quickdraw)
+		A.add_fingerprint(user)
+		user_show_to_mob(user, trigger_on_found = TRUE)
+		if(rustle_sound)
+			playsound(A, "rustle", 50, 1, -5)
+		return TRUE
+
+	if(user.can_hold_items() && !user.incapacitated())
+		var/obj/item/I = locate() in real_location()
+		if(!I)
+			return
+		A.add_fingerprint(user)
+		remove_from_storage(I, get_turf(user))
+		if(!user.put_in_hands(I))
+			user.visible_message("<span class='warning'>[user] fumbles with the [parent], letting [I] fall on the floor.</span>", \
+								"<span class='notice'>You fumble with [parent], letting [I] fall on the floor.</span>")
+			return TRUE
+		user.visible_message("<span class='warning'>[user] draws [I] from [parent]!</span>", "<span class='notice'>You draw [I] from [parent].</span>")
+		return TRUE
+*/
+
 //* Redirection *//
 
 /datum/object_system/storage/proc/real_contents_loc()
@@ -681,15 +713,48 @@
 	interacted_mass_dumping(actor, to_where)
 	return TRUE
 
-/datum/object_system/storage/proc/interacted_mass_transfer(datum/event_args/actor/actor, datum/object_system/storage/to_storage)
+/datum/object_system/storage/proc/interacted_mass_transfer(datum/event_args/actor/actor, datum/object_system/storage/to_storage, silent, suppressed)
 	var/list/obj/item/transferring = list()
 	for(var/obj/item/item in real_contents_loc())
 		transferring += item
 
-	#warn impl
+	if(!length(transferring))
+		if(!silent)
+			actor.chat_feedback(
+				msg = "There's nothing to transfer out of [parent].",
+				target = src,
+			)
+		return
+	if(!silent)
+		actor.chat_feedback(
+			msg = "You start transferring the contents of [parent] to [to_storage.parent]",
+			target = src,
+		)
+	if(!suppressed && sfx_insert)
+		playsound(parent, sfx_insert, 50, TRUE, -4)
 
-/datum/object_system/storage/proc/interacted_mass_pickup(datum/event_args/actor/actor, atom/from_loc)
-	var/list/to_pickup
+	var/list/rejections = list()
+	var/datum/progressbar/progress = new(actor.performer, length(transferring), actor.performer)
+	while(do_after(actor.performer, 1 SECONDS, parent, DO_AFTER_NO_PROGRESS, MOBILITY_CAN_STORAGE | MOBILITY_CAN_PICKUP))
+		if(!mass_storage_transfer_handler(transferring, to_loc, progress, actor, rejections))
+			break
+
+	if(!silent)
+		if(!length(rejections))
+			actor.chat_feedback(
+				msg = "You finish transferring everything out from [parent].",
+				target = src,
+			)
+		else
+			actor.chat_feedback(
+				msg = "You fail to transfer some things out of[parent].",
+				target = src,
+			)
+
+	refresh()
+
+/datum/object_system/storage/proc/interacted_mass_pickup(datum/event_args/actor/actor, atom/from_loc, silent, suppressed)
+	var/list/transferring
 	switch(mass_gather_mode)
 		if(STORAGE_QUICK_GATHER_COLLECT_ONE)
 			if(!isitem(from_loc))
@@ -697,22 +762,71 @@
 			try_insert(from_loc, actor)
 			return
 		if(STORAGE_QUICK_GATHER_COLLECT_ALL)
-			to_pickup = list()
+			transferring = list()
 			for(var/obj/item/item in from_loc)
-				to_pickup += item
+				transferring += item
 		if(STORAGE_QUICK_GATHER_COLLECT_SAME)
-			to_pickup = list()
+			transferring = list()
 			for(var/obj/item/item in from_loc)
 				if(item.type != from_loc.type)
 					continue
-				to_pickup += item
+				transferring += item
 
-	#warn impl
+	if(!length(transferring))
+		return
+	if(!silent)
+		actor.chat_feedback(
+			msg = "You start gathering things from [from_loc] with [parent].",
+			target = src,
+		)
+	if(!suppressed && sfx_insert)
+		playsound(parent, sfx_insert, 50, TRUE, -4)
 
-/datum/object_system/storage/proc/interacted_mass_dumping(datum/event_args/actor/actor, atom/to_loc)
-	var/list/obj/item/dumping = mass_dumping_query()
+	var/list/rejections = list()
+	var/datum/progressbar/progress = new(actor.performer, length(transferring), actor.performer)
+	while(do_after(actor.performer, 1 SECONDS, parent, DO_AFTER_NO_PROGRESS, MOBILITY_CAN_STORAGE | MOBILITY_CAN_PICKUP))
+		if(!mass_storage_pickup_handler(transferring, to_loc, progress, actor, rejections))
+			break
 
-	#warn impl
+	refresh()
+
+/datum/object_system/storage/proc/interacted_mass_dumping(datum/event_args/actor/actor, atom/to_loc, silent, suppressed)
+	var/list/obj/item/transferring = mass_dumping_query()
+
+	if(!length(transferring))
+		if(!silent)
+			actor.chat_feedback(
+				msg = "There's nothing to dump out of [parent].",
+				target = src,
+			)
+		return
+	if(!silent)
+		actor.chat_feedback(
+			msg = "You start dumping out the contents of [parent].",
+			target = src,
+		)
+	if(!suppressed && sfx_insert)
+		playsound(parent, sfx_remove, 50, TRUE, -4)
+
+	var/list/rejections = list()
+	var/datum/progressbar/progress = new(actor.performer, length(transferring), actor.performer)
+	while(do_after(actor.performer, 1 SECONDS, parent, DO_AFTER_NO_PROGRESS, MOBILITY_CAN_STORAGE | MOBILITY_CAN_PICKUP))
+		if(!mass_storage_dumping_handler(transferring, to_loc, progress, actor, rejections))
+			break
+
+	if(!silent)
+		if(!length(rejections))
+			actor.chat_feedback(
+				msg = "You finish dumping everything out of [parent].",
+				target = src,
+			)
+		else
+			actor.chat_feedback(
+				msg = "You fail to dump some things out of [parent].",
+				target = src,
+			)
+
+	refresh()
 
 /**
  * handles mass storage transfers
