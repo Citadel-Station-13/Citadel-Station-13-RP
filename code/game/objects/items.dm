@@ -996,16 +996,16 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	if(.)
 		return
 
-	if(!e_args.performer.is_holding(src))
-		if(attempt_pickup(e_args.performer))
-			return TRUE
-	else if(e_args.performer.is_in_inventory(src))
+	if(e_args.performer.is_in_inventory(src))
 		if(e_args.performer.is_holding(src))
 			if(obj_storage?.allow_open_via_offhand_click && obj_storage.auto_handle_interacted_open(e_args))
 				return TRUE
 		else
 			if(obj_storage?.allow_open_via_equipped_click && obj_storage.auto_handle_interacted_open(e_args))
 				return TRUE
+	else if(!e_args.performer.is_holding(src))
+		if(attempt_pickup(e_args.performer))
+			return TRUE
 
 //* Inventory *//
 

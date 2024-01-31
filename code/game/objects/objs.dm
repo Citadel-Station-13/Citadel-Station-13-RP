@@ -356,7 +356,7 @@
 	if(!isnull(obj_storage) && proximity)
 		// clickdrag to self storage open
 		if(obj_storage.allow_open_via_clickdrag_to_self && ismob(over) && over == user)
-			if(obj_storage.auto_handle_interacted_open(over))
+			if(obj_storage.auto_handle_interacted_open(new /datum/event_args/actor(user)))
 				return CLICKCHAIN_DO_NOT_PROPAGATE
 		// clickdrag to other obj transfer
 		if(obj_storage.allow_outbound_mass_transfer && obj_storage.allow_clickdrag_mass_transfer && isobj(over))

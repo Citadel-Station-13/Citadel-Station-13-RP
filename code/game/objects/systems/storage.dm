@@ -181,7 +181,8 @@
 	/// stack stuff by number; defaults to types, please override the requisite proc to implement yours.
 	var/ui_numerical_mode = FALSE
 
-/datum/object_system/storage/New()
+/datum/object_system/storage/New(obj/parent)
+	src.parent = parent
 	// we use typelists to detect if it's been init'd
 	if(!is_typelist(insertion_whitelist_typecache))
 		insertion_whitelist_typecache = cached_typecacheof(insertion_whitelist_typecache)
@@ -267,6 +268,7 @@
 	action_mode_switch.update_button()
 
 /datum/object_system/storage/proc/grant_buttons(mob/wearer)
+	ensure_mode_switch_button()
 	action_mode_switch.grant(wearer)
 
 /datum/object_system/storage/proc/revoke_buttons(mob/wearer)
