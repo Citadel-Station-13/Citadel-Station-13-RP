@@ -260,7 +260,9 @@
 
 //* Buttons *//
 
-/datum/object_system/storage/proc/ensure_mode_switch_button()
+/datum/object_system/storage/proc/ensure_buttons()
+	if(!allow_mass_gather_mode_switch)
+		return
 	if(!isnull(action_mode_switch))
 		return
 	action_mode_switch = new(src)
@@ -268,11 +270,12 @@
 	action_mode_switch.update_button()
 
 /datum/object_system/storage/proc/grant_buttons(mob/wearer)
-	ensure_mode_switch_button()
-	action_mode_switch.grant(wearer)
+	ensure_buttons()
+	if(!allow_mass_gather_mode_switch)
+		action_mode_switch.grant(wearer)
 
 /datum/object_system/storage/proc/revoke_buttons(mob/wearer)
-	action_mode_switch.remove(wearer)
+	action_mode_switch?.remove(wearer)
 
 /datum/object_system/storage/ui_action_click(datum/action/action, mob/user)
 	switch_gathering_modes(user)
@@ -476,6 +479,8 @@
 		if(inserting_weight)
 			weight_cached += inserting_weight
 			update_containing_weight()
+	cached_combined_volume += inserting.get_weight_volume()
+	cached_combined_weight_class += inserting.get_weight_class()
 
 /**
  * @return TRUE / FALSE
@@ -544,6 +549,8 @@
 		if(removing_weight)
 			weight_cached += removing_weight
 			update_containing_weight()
+	cached_combined_volume -= removing.get_weight_volume()
+	cached_combined_weight_class -= removing.get_weight_class()
 
 //* Limits *//
 
@@ -1185,8 +1192,8 @@
 		[STORAGE_UI_START_TILE_Y]:[STORAGE_UI_START_PIXEL_Y]"
 	// prepare iteration
 	// we set this to high values so we save on some code reuse because it'll make the row for us
-	var/current_pixel_x = INFINITY
-	var/current_row = 0
+	var/current_pixel_x = VOLUMETRIC_STORAGE_EDGE_PADDING
+	var/current_row = 1
 	// resolve indirections
 	var/atom/indirection = real_contents_loc()
 	// iterate and render
@@ -1229,6 +1236,13 @@
 		[STORAGE_UI_START_TILE_Y]:[STORAGE_UI_START_PIXEL_Y] to \
 		[STORAGE_UI_START_TILE_X + rendering_width - 1]:[STORAGE_UI_START_PIXEL_X],\
 		[STORAGE_UI_START_TILE_Y + current_row - 1]:[STORAGE_UI_START_PIXEL_Y]"
+	if(current_row > 1)
+		var/atom/movable/screen/storage/panel/volumetric/right/p_right = new
+		. += p_right
+		p_right.screen_loc = "[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X + rendering_width_in_pixels - WORLD_ICON_SIZE + VOLUMETRIC_STORAGE_BOX_BORDER_SIZE],\
+			[STORAGE_UI_START_TILE_Y + 1]:[STORAGE_UI_START_PIXEL_Y] to \
+			[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X + rendering_width_in_pixels - WORLD_ICON_SIZE + VOLUMETRIC_STORAGE_BOX_BORDER_SIZE],\
+			[STORAGE_UI_START_TILE_Y + current_row - 1]:[STORAGE_UI_START_PIXEL_Y]"
 
 /**
  * Stack storage
@@ -1404,6 +1418,7 @@
 //? Action
 
 /datum/action/storage_gather_mode
+	name = "Switch Gather Mode"
 
 //? Storage Screens
 
@@ -1466,7 +1481,6 @@
 
 /atom/movable/screen/storage/panel
 	layer = STORAGE_LAYER_CONTAINER
-	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /atom/movable/screen/storage/panel/Click()
 	var/obj/item/held = usr.get_active_held_item()
@@ -1491,11 +1505,12 @@
  */
 /atom/movable/screen/storage/item/volumetric/proc/set_pixel_width(width)
 	overlays.len = 0
-	var/shift_from_center = -((WORLD_ICON_SIZE * 0.5) - VOLUMETRIC_STORAGE_BOX_BORDER_SIZE) + (width * 0.5)
+	var/center_thickness = (width - (VOLUMETRIC_STORAGE_BOX_BORDER_SIZE * 2))
+	var/shift_from_center = -((WORLD_ICON_SIZE * 0.5) - VOLUMETRIC_STORAGE_BOX_BORDER_SIZE) + (center_thickness * 0.5)
 	var/image/left = image(icon, icon_state = "stored_left", pixel_x = -shift_from_center)
 	var/image/right = image(icon, icon_state = "stored_right", pixel_x = shift_from_center)
 	var/image/middle = image(icon, icon_state = "stored_middle")
-	middle.transform = matrix((width - (VOLUMETRIC_STORAGE_BOX_BORDER_SIZE * 2)) / VOLUMETRIC_STORAGE_BOX_ICON_SIZE, 0, 0, 0, 1, 0)
+	middle.transform = matrix(center_thickness / VOLUMETRIC_STORAGE_BOX_ICON_SIZE, 0, 0, 0, 1, 0)
 	overlays = list(left, middle, right)
 
 /atom/movable/screen/storage/panel/volumetric

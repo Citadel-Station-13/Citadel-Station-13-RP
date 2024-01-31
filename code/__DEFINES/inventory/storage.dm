@@ -13,9 +13,9 @@
 /// Maximum number of objects that will be allowed to be displayed using the volumetric display system. Arbitrary number to prevent server lockups.
 #define VOLUMETRIC_STORAGE_MAX_ITEMS 128
 /// How much padding to give between items
-#define VOLUMETRIC_STORAGE_ITEM_PADDING 2
+#define VOLUMETRIC_STORAGE_ITEM_PADDING 1
 /// How much padding to give to edges
-#define VOLUMETRIC_STORAGE_EDGE_PADDING 1
+#define VOLUMETRIC_STORAGE_EDGE_PADDING 0
 /// Standard pixel width ratio for volumetric storage; 1 volume converts into this many pixels.
 #define VOLUMETRIC_STORAGE_STANDARD_PIXEL_RATIO 8
 
@@ -63,8 +63,8 @@
 
 //* Volumetrics - Default Item Volumes *//
 
-#define WEIGHT_VOLUME_TINY				2
-#define WEIGHT_VOLUME_SMALL			3
+#define WEIGHT_VOLUME_TINY				1
+#define WEIGHT_VOLUME_SMALL			2
 #define WEIGHT_VOLUME_NORMAL			4
 #define WEIGHT_VOLUME_BULKY			8
 #define WEIGHT_VOLUME_HUGE				16
