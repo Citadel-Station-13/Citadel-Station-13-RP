@@ -323,7 +323,7 @@
 			playsound(get_turf(src), W.tool_sound, 50, 1)
 			to_chat(user, "<span class='warning'>You begin to disassemble the [src]!</span>")
 			// takes longer the more coils are in it
-			if (do_after(usr, (3 SECONDS * min(cur_coils, 4)) * W.tool_speed * (failure_probability? 2 : 1)))
+			if (do_after(usr, (3 SECONDS * min(cur_coils, 4)) * W.tool_speed * (failure_probability? 1.5 : 1)))
 
 				if (failure_probability && prob(failure_probability))
 					total_system_failure(failure_probability, user)
