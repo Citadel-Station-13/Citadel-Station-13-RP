@@ -1216,9 +1216,10 @@
 		renderer.set_pixel_width(used_pixels)
 		// set screen loc
 		renderer.screen_loc = "[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X + current_pixel_x + (used_pixels - VOLUMETRIC_STORAGE_BOX_ICON_SIZE) * 0.5],\
-			[STORAGE_UI_START_TILE_Y + current_row]:[STORAGE_UI_START_PIXEL_Y]"
+			[STORAGE_UI_START_TILE_Y + current_row - 1]:[STORAGE_UI_START_PIXEL_Y]"
 		// consume pixels, along with padding required
 		current_pixel_x += used_pixels + VOLUMETRIC_STORAGE_ITEM_PADDING
+		. += renderer
 	// resize the boxes to fit the rows
 	p_left.screen_loc = "[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X - VOLUMETRIC_STORAGE_BOX_BORDER_SIZE],\
 		[STORAGE_UI_START_TILE_Y]:[STORAGE_UI_START_PIXEL_Y] to \
@@ -1465,6 +1466,7 @@
 
 /atom/movable/screen/storage/panel
 	layer = STORAGE_LAYER_CONTAINER
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /atom/movable/screen/storage/panel/Click()
 	var/obj/item/held = usr.get_active_held_item()
@@ -1489,8 +1491,9 @@
  */
 /atom/movable/screen/storage/item/volumetric/proc/set_pixel_width(width)
 	overlays.len = 0
-	var/image/left = image(icon, icon_state = "stored_left", pixel_x = ((width / 2) - VOLUMETRIC_STORAGE_BOX_BORDER_SIZE - (WORLD_ICON_SIZE - VOLUMETRIC_STORAGE_BOX_BORDER_SIZE)))
-	var/image/right = image(icon, icon_state = "stored_right", pixel_x = -((width / 2) - VOLUMETRIC_STORAGE_BOX_BORDER_SIZE - (WORLD_ICON_SIZE - VOLUMETRIC_STORAGE_BOX_BORDER_SIZE)))
+	var/shift_from_center = -((WORLD_ICON_SIZE * 0.5) - VOLUMETRIC_STORAGE_BOX_BORDER_SIZE) + (width * 0.5)
+	var/image/left = image(icon, icon_state = "stored_left", pixel_x = -shift_from_center)
+	var/image/right = image(icon, icon_state = "stored_right", pixel_x = shift_from_center)
 	var/image/middle = image(icon, icon_state = "stored_middle")
 	middle.transform = matrix((width - (VOLUMETRIC_STORAGE_BOX_BORDER_SIZE * 2)) / VOLUMETRIC_STORAGE_BOX_ICON_SIZE, 0, 0, 0, 1, 0)
 	overlays = list(left, middle, right)
