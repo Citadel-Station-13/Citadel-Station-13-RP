@@ -405,10 +405,17 @@
 		return TRUE
 	if(!try_insert(inserting, actor, silent, suppressed))
 		return
-	if(!suppressed && !isnull(actor) && sfx_remove)
-		// todo: variable sound
-		playsound(actor.performer, sfx_remove, 50, 1, -5)
-
+	// sound
+	if(!suppressed && !isnull(actor))
+		if(sfx_insert)
+			// todo: variable sound
+			playsound(actor.performer, sfx_insert, 50, 1, -5)
+		actor.visible_feedback(
+			target = parent,
+			range = MESSAGE_RANGE_INVENTORY_SOFT,
+			visible = "[actor.performer] puts [inserting] into [parent].",
+			visible_self = "You put [inserting] into [parent]",
+		)
 
 /datum/object_system/storage/proc/try_insert(obj/item/inserting, datum/event_args/actor/actor, silent, suppressed, no_update)
 	if(!can_be_inserted(inserting, actor, silent))
@@ -485,9 +492,16 @@
 		actor.performer.put_in_hands_or_drop(removing)
 	else
 		removing.forceMove(actor.performer.drop_location())
-	if(!suppressed && !isnull(actor) && sfx_remove)
-		// todo: variable sound
-		playsound(actor.performer, sfx_remove, 50, 1, -5)
+	if(!suppressed && !isnull(actor))
+		if(sfx_remove)
+			// todo: variable sound
+			playsound(actor.performer, sfx_remove, 50, 1, -5)
+		actor.visible_feedback(
+			target = parent,
+			range = MESSAGE_RANGE_INVENTORY_SOFT,
+			visible = "[actor.performer] takes [inserting] out of [parent].",
+			visible_self = "You take [inserting] out of [parent]",
+		)
 
 /datum/object_system/storage/proc/try_remove(obj/item/removing, atom/to_where, datum/event_args/actor/actor, silent, suppressed, no_update)
 	return remove(removing, to_where, actor, suppressed, no_update)
@@ -620,7 +634,16 @@
 //* Transfer *//
 
 /datum/object_system/storage/proc/switch_gathering_modes(mob/user)
-	#warn impl
+	switch(mass_gather_mode)
+		if(STORAGE_QUICK_GATHER_COLLECT_ONE)
+			mass_gather_mode = STORAGE_QUICK_GATHER_COLLECT_ALL
+			to_chat(user, SPAN_NOTICE("[parent] is now collecting all items from a tile."))
+		if(STORAGE_QUICK_GATHER_COLLECT_ALL)
+			mass_gather_mode = STORAGE_QUICK_GATHER_COLLECT_SAME
+			to_chat(user, SPAN_NOTICE("[parent] is now collecting all items of a given type from a tile."))
+		if(STORAGE_QUICK_GATHER_COLLECT_SAME)
+			mass_gather_mode = STORAGE_QUICK_GATHER_COLLECT_ONE
+			to_chat(user, SPAN_NOTICE("[parent] is now collecting one item at a time."))
 
 /datum/object_system/storage/proc/auto_handle_interacted_mass_transfer(datum/event_args/actor/actor, datum/object_system/storage/to_storage)
 	if(is_locked(actor))
@@ -662,6 +685,7 @@
 	var/list/obj/item/transferring = list()
 	for(var/obj/item/item in real_contents_loc())
 		transferring += item
+
 	#warn impl
 
 /datum/object_system/storage/proc/interacted_mass_pickup(datum/event_args/actor/actor, atom/from_loc)
