@@ -72,7 +72,7 @@
 	insertion_whitelist = list(/obj/item/reagent_containers/syringe, /obj/item/reagent_containers/hypospray/autoinjector,
 					/obj/item/reagent_containers/pill, /obj/item/pen, /obj/item/flashlight/pen, /obj/item/clothing/mask/smokable/cigarette)
 
-	quickmode = 1 //Starts in quickdraw mode
+	// quickmode = 1 //Starts in quickdraw mode
 	//Preloaded for your convenience!
 	starts_with = list(
 		/obj/item/reagent_containers/syringe,

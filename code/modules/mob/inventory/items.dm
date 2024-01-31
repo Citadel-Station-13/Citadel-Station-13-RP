@@ -129,6 +129,9 @@
 	// close context menus
 	context_close()
 
+	// storage stuff
+	obj_storage?.on_dropped(user)
+
 	// get rid of shieldcalls
 	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
 		if(!shieldcall.shields_in_inventory)
@@ -161,6 +164,9 @@
 	if(isliving(user))
 		var/mob/living/L = user
 		L.adjust_current_carry_weight(weight_registered)
+
+	// storage stuff
+	obj_storage?.on_pickup(user)
 
 	// get rid of shieldcalls
 	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)

@@ -353,7 +353,7 @@
 	return ..()
 
 /obj/OnMouseDrop(atom/over, mob/user, proximity, params)
-	if(!isnull(obj_storage))
+	if(!isnull(obj_storage) && proximity)
 		// clickdrag to self storage open
 		if(obj_storage.allow_open_via_clickdrag_to_self && ismob(over) && over == user)
 			if(obj_storage.auto_handle_interacted_open(over))
@@ -536,6 +536,9 @@
 				removed.forceMove(drop_location())
 			return TRUE
 		if("obj_storage")
+			var/reachability = e_args.performer.Reachability(src)
+			if(!reachability)
+				return TRUE
 			obj_storage?.auto_handle_interacted_open(e_args)
 			return TRUE
 	return ..()

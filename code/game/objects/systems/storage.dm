@@ -258,6 +258,24 @@
 	var/amt = length(indirection.contents)
 	return amt? indirection.contents[amt] : null
 
+//* Buttons *//
+
+/datum/object_system/storage/proc/ensure_mode_switch_button()
+	if(!isnull(action_mode_switch))
+		return
+	action_mode_switch = new(src)
+	action_mode_switch.button_overlay = parent
+	action_mode_switch.update_button()
+
+/datum/object_system/storage/proc/grant_buttons(mob/wearer)
+	action_mode_switch.grant(wearer)
+
+/datum/object_system/storage/proc/revoke_buttons(mob/wearer)
+	action_mode_switch.remove(wearer)
+
+/datum/object_system/storage/ui_action_click(datum/action/action, mob/user)
+	switch_gathering_modes(user)
+
 //* Caches *//
 
 /datum/object_system/storage/proc/rebuild_caches()
@@ -304,6 +322,12 @@
 	update_containing_weight()
 
 //* Hooks *//
+
+/datum/object_system/storage/proc/on_pickup(mob/user)
+	grant_buttons(user)
+
+/datum/object_system/storage/proc/on_dropped(mob/user)
+	revoke_buttons(user)
 
 /**
  * Called by our object when an item exits us
@@ -466,9 +490,7 @@
 		playsound(actor.performer, sfx_remove, 50, 1, -5)
 
 /datum/object_system/storage/proc/try_remove(obj/item/removing, atom/to_where, datum/event_args/actor/actor, silent, suppressed, no_update)
-	if(!can_be_removed(removing, to_where, actor, silent))
-		return FALSE
-	#warn impl
+	return remove(removing, to_where, actor, suppressed, no_update)
 
 /datum/object_system/storage/proc/can_be_removed(obj/item/removing, atom/to_where, datum/event_args/actor/actor, silent)
 	return TRUE
@@ -592,9 +614,13 @@
 
 /datum/object_system/storage/proc/update_icon()
 	parent.update_icon()
+	action_mode_switch?.button_overlay = parent
 	dangerously_redirect_contents_calls?.update_icon()
 
 //* Transfer *//
+
+/datum/object_system/storage/proc/switch_gathering_modes(mob/user)
+	#warn impl
 
 /datum/object_system/storage/proc/auto_handle_interacted_mass_transfer(datum/event_args/actor/actor, datum/object_system/storage/to_storage)
 	if(is_locked(actor))
@@ -811,19 +837,12 @@
 			target = parent,
 		)
 		return TRUE
-	if(!actor.performer.Reachability(src, STORAGE_REACH_DEPTH + 1))
-		actor.chat_feedback(
-			msg = SPAN_WARNING("You can't reach that!"),
-			target = parent,
-		)
-		return FALSE
 	if(check_on_found_hooks(actor))
 		return TRUE
 	if(!suppressed && !isnull(actor) && sfx_open)
 		// todo: variable sound
 		playsound(actor.performer, sfx_open, 50, 1, -5)
 	// todo: jiggle animation
-	#warn check, force, etc
 	show(actor.initiator)
 	return TRUE
 
@@ -1241,7 +1260,6 @@
 //? Action
 
 /datum/action/storage_gather_mode
-	#warn impl all
 
 //? Storage Screens
 
