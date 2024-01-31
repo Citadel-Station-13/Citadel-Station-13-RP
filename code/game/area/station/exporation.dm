@@ -19,6 +19,11 @@
 	icon_state = "locker"
 	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
+/area/exploration/medic_prep
+	name = "\improper Field Medic Prep Room"
+	icon_state = "locker"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
+
 /area/exploration/pilot_prep
 	name = "\improper Pilot Prep Room"
 	icon_state = "locker"
