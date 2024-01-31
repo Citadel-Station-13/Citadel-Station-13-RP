@@ -4793,7 +4793,8 @@
 /area/crew_quarters/heads/hor)
 "ddq" = (
 /obj/structure/bed/chair/bay/shuttle{
-	dir = 8
+	dir = 8;
+	name = "Pilot's Seat"
 	},
 /obj/effect/floor_decal/corner_techfloor_grid{
 	dir = 1
@@ -7931,13 +7932,6 @@
 	pixel_y = -26
 	},
 /obj/machinery/light/no_nightshift,
-/obj/machinery/button/remote/blast_door{
-	dir = 1;
-	id = "hammerheadpport";
-	name = "Port Personnel Door";
-	pixel_x = -5;
-	pixel_y = -26
-	},
 /turf/simulated/floor/plating,
 /area/shuttle/hammerhead/general)
 "fdT" = (
@@ -12156,6 +12150,13 @@
 	},
 /obj/effect/floor_decal/corner_techfloor_grid/full{
 	dir = 4
+	},
+/obj/machinery/button/remote/blast_door{
+	dir = 1;
+	id = "hammerfighterport";
+	name = "Port Fighter Bay";
+	pixel_x = 6;
+	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/hammerhead/cockpit)
@@ -17817,15 +17818,16 @@
 	dir = 1;
 	old_wall = 1
 	},
-/obj/machinery/button/remote/blast_door{
-	id = "hammerheadpport";
-	name = "Port Personnel Door";
-	pixel_x = -6;
-	pixel_y = 26
-	},
 /obj/structure/lattice,
 /obj/structure/catwalk,
 /obj/structure/marker_beacon/red,
+/obj/machinery/button/remote/blast_door{
+	dir = 1;
+	id = "hammerfighterport";
+	name = "Port Fighter Bay";
+	pixel_x = 6;
+	pixel_y = 26
+	},
 /turf/simulated/floor/plating,
 /area/shuttle/hammerhead/general)
 "lrw" = (
@@ -19856,7 +19858,8 @@
 	dir = 1
 	},
 /obj/machinery/door/window/brigdoor/northleft{
-	dir = 8
+	dir = 8;
+	name = "Holding Cell"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/hammerhead/general)
@@ -27567,7 +27570,8 @@
 /area/crew_quarters/sleep/Dorm_2)
 "rtv" = (
 /obj/machinery/door/window/brigdoor/northright{
-	dir = 8
+	dir = 8;
+	name = "Holding Cell"
 	},
 /obj/structure/handrail,
 /turf/simulated/floor/tiled/techfloor,
@@ -30907,6 +30911,16 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/plating,
 /area/maintenance/locker)
+"tLv" = (
+/obj/structure/bed/chair/bay/shuttle{
+	dir = 8;
+	name = "Copilot's Seat"
+	},
+/obj/effect/floor_decal/corner_techfloor_grid{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/hammerhead/cockpit)
 "tLz" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -53253,7 +53267,7 @@ qly
 qly
 iCM
 uuY
-ddq
+tLv
 sQt
 ffG
 iOM
