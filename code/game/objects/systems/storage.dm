@@ -337,12 +337,16 @@
  * Called by our object when an item exits us
  */
 /datum/object_system/storage/proc/on_item_exited(obj/item/exiting)
+	if(!(exiting.item_flags & ITEM_IN_INVENTORY))
+		return
 	physically_remove_item(exiting, no_move = TRUE)
 
 /**
  * Called by our object when an item enters us
  */
 /datum/object_system/storage/proc/on_item_entered(obj/item/entering)
+	if(exiting.item_flags & ITEM_IN_INVENTORY)
+		return
 	physically_insert_item(entering, no_move = TRUE)
 
 /datum/object_system/storage/proc/on_contents_weight_class_change(obj/item/item, old_weight_class, new_weight_class)
@@ -469,10 +473,10 @@
  * we can assume this proc will do potentially literally anything with the item, so..
  */
 /datum/object_system/storage/proc/physically_insert_item(obj/item/inserting, no_move, force)
+	inserting.item_flags |= ITEM_IN_STORAGE
 	if(!no_move)
 		inserting.forceMove(real_contents_loc())
 	inserting.vis_flags |= VIS_INHERIT_LAYER | VIS_INHERIT_PLANE
-	inserting.item_flags |= ITEM_IN_STORAGE
 	inserting.on_enter_storage(src)
 	if(weight_propagation)
 		var/inserting_weight = inserting.get_weight()
@@ -534,13 +538,13 @@
  * we can assume this proc will do potentially literally anything with the item, so..
  */
 /datum/object_system/storage/proc/physically_remove_item(obj/item/removing, atom/to_where, no_move)
+	removing.item_flags &= ~ITEM_IN_STORAGE
 	if(!no_move)
 		if(to_where == null)
 			removing.moveToNullspace()
 		else
 			removing.forceMove(to_where)
 	removing.vis_flags = (removing.vis_flags & ~(VIS_INHERIT_LAYER | VIS_INHERIT_LAYER)) | (initial(removing.vis_flags) & (VIS_INHERIT_LAYER | VIS_INHERIT_PLANE))
-	removing.item_flags &= ~ITEM_IN_STORAGE
 	removing.on_exit_storage(src)
 	// we might have set maptext in render_numerical_display
 	removing.maptext = null
@@ -1191,8 +1195,11 @@
 	closer.screen_loc = "[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X + rendering_width_in_pixels],\
 		[STORAGE_UI_START_TILE_Y]:[STORAGE_UI_START_PIXEL_Y]"
 	// prepare iteration
-	// we set this to high values so we save on some code reuse because it'll make the row for us
+	// start after padding
 	var/current_pixel_x = VOLUMETRIC_STORAGE_EDGE_PADDING
+	// stores the amount of padding currently used; we expand the box to that.
+	var/max_x_padding_used = VOLUMETRIC_STORAGE_EDGE_PADDING * 2
+	var/current_padding_x = VOLUMETRIC_STORAGE_EDGE_PADDING * 2
 	var/current_row = 1
 	// resolve indirections
 	var/atom/indirection = real_contents_loc()
@@ -1214,27 +1221,39 @@
 				break
 			// make another row
 			current_row += 1
+			// remove the last item's padding
+			current_padding_x -= VOLUMETRIC_STORAGE_ITEM_PADDING
+			// store max padding used
+			max_x_padding_used = max(max_x_padding_used, current_padding_x)
 			// we start on the next pixel after edge padding
 			current_pixel_x = VOLUMETRIC_STORAGE_EDGE_PADDING
+			current_padding_x = VOLUMETRIC_STORAGE_EDGE_PADDING * 2
 		// render the item
 		var/atom/movable/screen/storage/item/volumetric/renderer = new(null, item)
 		// scale it as necessary, to nearest multiple of 2
 		var/used_pixels = max(VOLUMETRIC_STORAGE_MINIMUM_PIXELS_PER_ITEM, CEILING(rendering_width_in_pixels * (item.get_weight_volume() / effective_max_volume), 2))
-		renderer.set_pixel_width(used_pixels)
+		renderer.set_pixel_width(min(used_pixels, rendering_width_in_pixels - (current_pixel_x + VOLUMETRIC_STORAGE_EDGE_PADDING)))
 		// set screen loc
 		renderer.screen_loc = "[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X + current_pixel_x + (used_pixels - VOLUMETRIC_STORAGE_BOX_ICON_SIZE) * 0.5],\
 			[STORAGE_UI_START_TILE_Y + current_row - 1]:[STORAGE_UI_START_PIXEL_Y]"
 		// consume pixels, along with padding required
 		current_pixel_x += used_pixels + VOLUMETRIC_STORAGE_ITEM_PADDING
+		// consume padding
+		current_padding_x += VOLUMETRIC_STORAGE_ITEM_PADDING
 		. += renderer
+	// store max padding used
+	max_x_padding_used = max(max_x_padding_used, current_padding_x)
 	// resize the boxes to fit the rows
 	p_left.screen_loc = "[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X - VOLUMETRIC_STORAGE_BOX_BORDER_SIZE],\
 		[STORAGE_UI_START_TILE_Y]:[STORAGE_UI_START_PIXEL_Y] to \
 		[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X - VOLUMETRIC_STORAGE_BOX_BORDER_SIZE],\
 		[STORAGE_UI_START_TILE_Y + current_row - 1]:[STORAGE_UI_START_PIXEL_Y]"
-	p_box.screen_loc = "[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X],\
+	var/middle_width = rendering_width_in_pixels + max_x_padding_used
+	p_box.set_pixel_width(middle_width)
+	var/middle_shift = round(middle_width * 0.5 - VOLUMETRIC_STORAGE_BOX_ICON_SIZE * 0.5)
+	p_box.screen_loc = "[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X + middle_shift],\
 		[STORAGE_UI_START_TILE_Y]:[STORAGE_UI_START_PIXEL_Y] to \
-		[STORAGE_UI_START_TILE_X + rendering_width - 1]:[STORAGE_UI_START_PIXEL_X],\
+		[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X + middle_shift],\
 		[STORAGE_UI_START_TILE_Y + current_row - 1]:[STORAGE_UI_START_PIXEL_Y]"
 	if(current_row > 1)
 		var/atom/movable/screen/storage/panel/volumetric/right/p_right = new
@@ -1260,7 +1279,7 @@
 	. = ..()
 	cached_combined_stack_amount = 0
 	for(var/obj/item/stack/stack in real_contents_loc())
-		cached_combined_volume += stack.amount
+		cached_combined_stack_amount += stack.amount
 
 /datum/object_system/storage/stack/why_failed_insertion_limits(obj/item/candidate)
 	if(!istype(candidate, /obj/item/stack))
@@ -1486,7 +1505,7 @@
 	var/obj/item/held = usr.get_active_held_item()
 	if(isnull(held))
 		return
-	usr.active_storage?.auto_handle_interacted_insertion(held)
+	usr.active_storage?.auto_handle_interacted_insertion(held, new /datum/event_args/actor(usr))
 
 /atom/movable/screen/storage/item/slot
 	icon_state = "nothing"
@@ -1520,6 +1539,12 @@
 
 /atom/movable/screen/storage/panel/volumetric/middle
 	icon_state = "storage_middle"
+
+/**
+ * we are centered.
+ */
+/atom/movable/screen/storage/panel/volumetric/middle/proc/set_pixel_width(width)
+	transform = matrix(width / VOLUMETRIC_STORAGE_BOX_ICON_SIZE, 0, 0, 0, 1, 0)
 
 /atom/movable/screen/storage/panel/volumetric/right
 	icon_state = "storage_right"
