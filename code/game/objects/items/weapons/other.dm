@@ -135,8 +135,8 @@
 /obj/item/cane/concealed/Initialize(mapload)
 	. = ..()
 	var/obj/item/material/butterfly/switchblade/temp_blade = new(src)
+	temp_blade.set_active(TRUE)
 	concealed_blade = temp_blade
-	concealed_blade.set_active(TRUE)
 
 /obj/item/cane/concealed/attack_self(mob/user)
 	. = ..()

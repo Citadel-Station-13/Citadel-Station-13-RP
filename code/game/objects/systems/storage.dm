@@ -93,7 +93,6 @@
 	/// allow mass gather via click
 	var/allow_mass_gather_via_click = TRUE
 	/// allow switching mass gathering mode
-	#warn impl action
 	var/allow_mass_gather_mode_switch = TRUE
 	/// mass gather mode
 	var/mass_gather_mode = STORAGE_QUICK_GATHER_COLLECT_ALL
@@ -736,7 +735,7 @@
 	var/list/rejections = list()
 	var/datum/progressbar/progress = new(actor.performer, length(transferring), actor.performer)
 	while(do_after(actor.performer, 1 SECONDS, parent, DO_AFTER_NO_PROGRESS, MOBILITY_CAN_STORAGE | MOBILITY_CAN_PICKUP))
-		if(!mass_storage_transfer_handler(transferring, to_loc, progress, actor, rejections))
+		if(!mass_storage_transfer_handler(transferring, to_storage, progress, actor, rejections))
 			break
 
 	if(!silent)
@@ -785,7 +784,7 @@
 	var/list/rejections = list()
 	var/datum/progressbar/progress = new(actor.performer, length(transferring), actor.performer)
 	while(do_after(actor.performer, 1 SECONDS, parent, DO_AFTER_NO_PROGRESS, MOBILITY_CAN_STORAGE | MOBILITY_CAN_PICKUP))
-		if(!mass_storage_pickup_handler(transferring, to_loc, progress, actor, rejections))
+		if(!mass_storage_pickup_handler(transferring, from_loc, progress, actor, rejections))
 			break
 
 	refresh()
