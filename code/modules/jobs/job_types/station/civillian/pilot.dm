@@ -11,7 +11,7 @@
 	idtype = /obj/item/card/id/explorer/pilot
 	selection_color = "#515151"
 	minimal_player_age = 3
-	pto_type = PTO_EXPLORATION
+	pto_type = PTO_CIVILIAN
 	minimal_access = list(
 		ACCESS_GENERAL_PILOT,
 		ACCESS_ENGINEERING_AIRLOCK,
