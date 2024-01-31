@@ -1,7 +1,7 @@
 /datum/material/resin
 	id = "xenoresin"
 	name = "resin"
-	icon_colour = "#261438"
+	icon_colour = "#7b49ad" // Was "#261438", but was too dark
 	icon_base = 'icons/turf/walls/resin.dmi'
 	dooropen_noise = 'sound/effects/attackblob.ogg'
 	door_icon_base = "resin"

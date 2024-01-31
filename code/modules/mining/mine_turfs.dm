@@ -2,24 +2,24 @@
 CREATE_STANDARD_TURFS(/turf/unsimulated/mineral)
 /turf/unsimulated/mineral
 	name = "impassable rock"
-	icon = 'icons/turf/walls.dmi'
-	icon_state = "rock-dark"
-	density = 1
+	icon = 'icons/turf/walls/_previews.dmi'
+	icon_state = "natural"
+	density = TRUE
 
 	smoothing_groups = (SMOOTH_GROUP_CLOSED_TURFS + SMOOTH_GROUP_MINERAL_WALLS)
 
 /turf/simulated/mineral //wall piece
 	name = "rock"
 	icon = 'icons/turf/walls/_previews.dmi'
-	icon_state = "preview"
+	icon_state = "natural"
 	base_icon_state = "wall"
 	smoothing_flags = SMOOTH_CUSTOM
 	initial_gas_mix = GAS_STRING_VACUUM
-	opacity = 1
-	density = 1
-	blocks_air = 1
+	opacity = TRUE
+	density = TRUE
+	blocks_air = TRUE
 	can_dirty = FALSE
-	has_resources = 1
+	has_resources = TRUE
 	color = COLOR_ASTEROID_ROCK
 
 	smoothing_flags = SMOOTH_BITMASK
