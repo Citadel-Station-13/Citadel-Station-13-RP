@@ -17,7 +17,7 @@
 /// How much padding to give to edges
 #define VOLUMETRIC_STORAGE_EDGE_PADDING 1
 /// Standard pixel width ratio for volumetric storage; 1 volume converts into this many pixels.
-#define VOLUMETRIC_STORAGE_STANDARD_PIXEL_RATIO 8
+#define VOLUMETRIC_STORAGE_STANDARD_PIXEL_RATIO (28 / 7)
 
 //* Storage access *//
 
