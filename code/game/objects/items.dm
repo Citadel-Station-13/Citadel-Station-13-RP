@@ -866,6 +866,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 		)
 		obj_cell_slot.insert_cell(I)
 		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+	return ..()
 
 /**
  * Called when the item is in the active hand, and clicked; alternately, there is an 'activate held object' verb or you can hit pagedown.
@@ -1003,7 +1004,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 		else
 			if(obj_storage?.allow_open_via_equipped_click && obj_storage.auto_handle_interacted_open(e_args))
 				return TRUE
-	else if(!e_args.performer.is_holding(src))
+	if(!e_args.performer.is_holding(src))
 		if(attempt_pickup(e_args.performer))
 			return TRUE
 

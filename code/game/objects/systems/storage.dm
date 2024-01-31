@@ -751,6 +751,7 @@
 				msg = "You fail to transfer some things out of[parent].",
 				target = src,
 			)
+	qdel(progress)
 
 	refresh()
 
@@ -788,6 +789,7 @@
 	while(do_after(actor.performer, 1 SECONDS, parent, DO_AFTER_NO_PROGRESS, MOBILITY_CAN_STORAGE | MOBILITY_CAN_PICKUP))
 		if(!mass_storage_pickup_handler(transferring, from_loc, progress, actor, rejections))
 			break
+	qdel(progress)
 
 	refresh()
 
@@ -814,6 +816,7 @@
 	while(do_after(actor.performer, 1 SECONDS, parent, DO_AFTER_NO_PROGRESS, MOBILITY_CAN_STORAGE | MOBILITY_CAN_PICKUP))
 		if(!mass_storage_dumping_handler(transferring, to_loc, progress, actor, rejections))
 			break
+	qdel(progress)
 
 	if(!silent)
 		if(!length(rejections))
@@ -1068,6 +1071,7 @@
 
 /datum/object_system/storage/proc/cleanup_ui(mob/user)
 	var/list/objects = ui_by_mob[user]
+	user.client?.screen -= objects
 	QDEL_LIST(objects)
 	ui_by_mob -= user
 
@@ -1177,7 +1181,7 @@
 	rendering_width = ROUND_UP(rendering_width_in_pixels / WORLD_ICON_SIZE)
 	rendering_width_in_pixels = rendering_width * 32
 	// render closer
-	closer.screen_loc = "[STORAGE_UI_START_TILE_X + 1]:[STORAGE_UI_START_PIXEL_X + rendering_width_in_pixels],\
+	closer.screen_loc = "[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X + rendering_width_in_pixels],\
 		[STORAGE_UI_START_TILE_Y]:[STORAGE_UI_START_PIXEL_Y]"
 	// prepare iteration
 	// we set this to high values so we save on some code reuse because it'll make the row for us
@@ -1216,13 +1220,13 @@
 		// consume pixels, along with padding required
 		current_pixel_x += used_pixels + VOLUMETRIC_STORAGE_ITEM_PADDING
 	// resize the boxes to fit the rows
-	p_left.screen_loc = "[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X],\
+	p_left.screen_loc = "[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X - VOLUMETRIC_STORAGE_BOX_BORDER_SIZE],\
 		[STORAGE_UI_START_TILE_Y]:[STORAGE_UI_START_PIXEL_Y] to \
-		[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X],\
+		[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X - VOLUMETRIC_STORAGE_BOX_BORDER_SIZE],\
 		[STORAGE_UI_START_TILE_Y + current_row - 1]:[STORAGE_UI_START_PIXEL_Y]"
 	p_box.screen_loc = "[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X],\
 		[STORAGE_UI_START_TILE_Y]:[STORAGE_UI_START_PIXEL_Y] to \
-		[STORAGE_UI_START_TILE_X + rendering_width]:[STORAGE_UI_START_PIXEL_X],\
+		[STORAGE_UI_START_TILE_X + rendering_width - 1]:[STORAGE_UI_START_PIXEL_X],\
 		[STORAGE_UI_START_TILE_Y + current_row - 1]:[STORAGE_UI_START_PIXEL_Y]"
 
 /**
