@@ -10,7 +10,7 @@
 
 	layer = MAP_SWITCH(parent_type::layer, PLATING_LAYER) // Display disposal pipes etc. above walls in map editors.
 
-	smoothing_flags = SMOOTH_CUSTOM
+	smoothing_flags = SMOOTH_CUSTOM // | SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_OPEN_FLOOR)
 	canSmoothWith = (SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_OPEN_FLOOR)
 
@@ -104,6 +104,8 @@
 		QUEUE_SMOOTH(src)
 		QUEUE_SMOOTH_NEIGHBORS(src)
 	levelupdate()
+	update_appearance()
+
 
 //This proc will set floor_type to null and the update_icon() proc will then change the icon_state of the turf
 //This proc auto corrects the grass tiles' siding.
@@ -137,6 +139,7 @@
 	burnt = null
 	flooring_override = null
 
+	update_appearance()
 
 /turf/simulated/floor/levelupdate()
 	for(var/obj/O in src)

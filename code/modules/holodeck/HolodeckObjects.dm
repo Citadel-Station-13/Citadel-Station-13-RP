@@ -51,9 +51,13 @@
 
 /turf/simulated/floor/holofloor/grass
 	name = "lush grass"
-	icon = 'icons/turf/flooring/grass.dmi'
+	icon = 'icons/turf/floors.dmi'
 	icon_state = "grass0"
 	initial_flooring = /singleton/flooring/grass
+
+/turf/simulated/floor/holofloor/grass/Initialize(mapload)
+	. = ..()
+	icon_state = "grass[rand(0,3)]"
 
 /turf/simulated/floor/holofloor/snow
 	name = "snow"

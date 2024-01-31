@@ -59,7 +59,6 @@ GLOBAL_LIST(topic_status_cache)
 
 	world.Profile(PROFILE_START)
 	make_datum_reference_lists()	//initialises global lists for referencing frequently used datums (so that we only ever do it once)
-	setupgenetics()
 
 	GLOB.revdata = new
 
@@ -104,15 +103,6 @@ GLOBAL_LIST(topic_status_cache)
 	src.update_status()
 
 	. = ..()
-
-	// Create frame types.
-	populate_frame_types()
-
-	// Create floor types.
-	populate_flooring_types()
-
-	// Create robolimbs for chargen.
-	populate_robolimb_list()
 
 	//Must be done now, otherwise ZAS zones and lighting overlays need to be recreated.
 	createRandomZlevel()

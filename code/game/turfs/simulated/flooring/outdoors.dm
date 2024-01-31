@@ -3,7 +3,7 @@
 	name = "ash sand"
 	desc = "Soft and ominous."
 	icon = 'icons/turf/flooring/asteroid.dmi'
-	icon_base = "asteroid"
+	base_icon_state = "asteroid"
 	footstep_sounds = list("human" = list(
 		'sound/effects/footstep/asteroid1.ogg',
 		'sound/effects/footstep/asteroid2.ogg',
@@ -14,7 +14,7 @@
 	name = "irradiated sand"
 	desc = "It literally glows in the dark."
 	icon = 'icons/turf/flooring/asteroid.dmi'
-	icon_base = "asteroid"
+	base_icon_state = "asteroid"
 	footstep_sounds = list("human" = list(
 		'sound/effects/footstep/asteroid1.ogg',
 		'sound/effects/footstep/asteroid2.ogg',
@@ -24,7 +24,7 @@
 /singleton/flooring/outdoors/dirt
 	name = "dirt"
 	icon = 'icons/turf/outdoors.dmi'
-	icon_base = "dirt-dark"
+	base_icon_state = "dirt-dark"
 	footstep_sounds = list("human" = list(
 		'sound/effects/footstep/asteroid1.ogg',
 		'sound/effects/footstep/asteroid2.ogg',
@@ -35,7 +35,7 @@
 /singleton/flooring/outdoors/grass
 	name = "grass"
 	icon = 'icons/turf/outdoors.dmi'
-	icon_base = "grass"
+	base_icon_state = "grass"
 	footstep_sounds = list("human" = list(
 		'sound/effects/footstep/grass1.ogg',
 		'sound/effects/footstep/grass2.ogg',
@@ -45,12 +45,12 @@
 /singleton/flooring/outdoors/grass/sif
 	name = "growth"
 	icon = 'icons/turf/outdoors.dmi'
-	icon_base = "grass_sif"
+	base_icon_state = "grass_sif"
 
 /singleton/flooring/outdoors/beach
 	name = "beach"
 	icon = 'icons/turf/outdoors.dmi'
-	icon_base = "sand"
+	base_icon_state = "sand"
 	footstep_sounds = list("human" = list(
 		'sound/effects/footstep/asteroid1.ogg',
 		'sound/effects/footstep/asteroid2.ogg',
@@ -60,7 +60,7 @@
 /singleton/flooring/outdoors/beach/sand/desert
 	name = "beach"
 	icon = 'icons/turf/outdoors.dmi'
-	icon_base = "desert"
+	base_icon_state = "desert"
 	footstep_sounds = list("human" = list(
 		'sound/effects/footstep/asteroid1.ogg',
 		'sound/effects/footstep/asteroid2.ogg',
@@ -71,7 +71,7 @@
 	name = "water"
 	desc = "Water is wet, gosh, who knew!"
 	icon = 'icons/turf/outdoors.dmi'
-	icon_base = "seashallow"
+	base_icon_state = "seashallow"
 	footstep_sounds = list("human" = list(
 		'sound/effects/footstep/water1.ogg',
 		'sound/effects/footstep/water2.ogg',

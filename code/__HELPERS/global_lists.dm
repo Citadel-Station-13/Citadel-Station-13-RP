@@ -116,6 +116,17 @@ GLOBAL_LIST_EMPTY(mannequins)
 	//* Drink Reactions
 	init_subtypes(/datum/chemical_reaction/drinks, GLOB.drink_recipes)
 
+	// Create frame types.
+	populate_frame_types()
+
+	// Create floor types.
+	populate_flooring_types()
+
+	// Create robolimbs for chargen.
+	populate_robolimb_list()
+
+	setupgenetics()
+
 	var/list/paths
 
 	//Posters

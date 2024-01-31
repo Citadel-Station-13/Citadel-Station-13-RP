@@ -8,7 +8,7 @@
 
 	base_layer = CATWALK_LAYER
 	// Currently if flooring is set, it breaks the layering of the glass floor.
-	// initial_flooring = /singleton/flooring/glass
+	initial_flooring = /singleton/flooring/glass
 
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_FLOOR_TRANSPARENT_GLASS)
@@ -31,4 +31,4 @@
 	icon = 'icons/turf/flooring/glass/reinforced.dmi'
 
 	// Currently if flooring is set, it breaks the layering of the glass floor.
-	// initial_flooring = /singleton/flooring/glass/reinforced
+	initial_flooring = /singleton/flooring/glass/reinforced

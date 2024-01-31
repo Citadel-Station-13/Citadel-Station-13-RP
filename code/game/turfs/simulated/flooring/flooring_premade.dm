@@ -143,9 +143,11 @@
 	return ..()
 
 /turf/simulated/floor/grass
-	name = "grass patch"
-	icon = 'icons/turf/flooring/grass.dmi'
-	icon_state = "grass0"
+	name = "grass"
+	desc = "A patch of grass."
+	icon = 'icons/turf/floors.dmi'
+	icon_state = "grass"
+	base_icon_state = "grass"
 	initial_flooring = /singleton/flooring/grass
 
 /turf/simulated/floor/tiled

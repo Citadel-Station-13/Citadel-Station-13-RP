@@ -5,7 +5,7 @@ var/list/flooring_types
 	for (var/flooring_path in typesof(/singleton/flooring))
 		flooring_types["[flooring_path]"] = new flooring_path
 
-/proc/get_flooring_data(var/flooring_path)
+/proc/get_flooring_data(flooring_path)
 	if(!flooring_types)
 		flooring_types = list()
 	if(!flooring_types["[flooring_path]"])
@@ -13,20 +13,20 @@ var/list/flooring_types
 	return flooring_types["[flooring_path]"]
 
 // State values:
-// [icon_base]: initial base icon_state without edges or corners.
+// [base_icon_state]: initial base icon_state without edges or corners.
 // if has_base_range is set, append 0-has_base_range ie.
-//   [icon_base][has_base_range]
-// [icon_base]_broken: damaged overlay.
+//   [base_icon_state][has_base_range]
+// [base_icon_state]_broken: damaged overlay.
 // if has_damage_range is set, append 0-damage_range for state ie.
-//   [icon_base]_broken[has_damage_range]
-// [icon_base]_edges: directional overlays for edges.
-// [icon_base]_corners: directional overlays for non-edge corners.
+//   [base_icon_state]_broken[has_damage_range]
+// [base_icon_state]_edges: directional overlays for edges.
+// [base_icon_state]_corners: directional overlays for non-edge corners.
 
 /singleton/flooring
 	var/name = "floor"
 	var/desc
 	var/icon
-	var/icon_base
+	var/base_icon_state
 
 	var/has_base_range
 	var/has_damage_range
@@ -117,7 +117,7 @@ var/list/flooring_types
 
 	//? Icon Smoothing
 	/// Icon-smoothing behavior.
-	var/smoothing_flags = NONE
+	var/smoothing_flags = SMOOTH_CUSTOM
 	/// What directions this is currently smoothing with. IMPORTANT: This uses the smoothing direction flags as defined in icon_smoothing.dm, instead of the BYOND flags.
 	var/smoothing_junction = null //This starts as null for us to know when it's first set, but after that it will hold a 8-bit mask ranging from 0 to 255.
 	/**
@@ -125,13 +125,22 @@ var/list/flooring_types
 	 * If null, nobody can smooth with it.
 	 *! Must be sorted.
 	 */
-	var/list/smoothing_groups = null
+	var/list/smoothing_groups = (SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_OPEN_FLOOR)
 	/**
 	 * List of smoothing groups this atom can smooth with.
 	 * If this is null and atom is smooth, it smooths only with itself.
 	 *! Must be sorted.
 	 */
-	var/list/canSmoothWith = null
+	var/list/canSmoothWith = (SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_OPEN_FLOOR)
+
+	// //? These are used for big icons.
+	// /// Icon offset in X direction.
+	// var/base_pixel_x = 0
+	// /// Icon offset in Y direction.
+	// var/base_pixel_y = 0
+
+/singleton/flooring/New()
+	SETUP_SMOOTHING()
 
 /singleton/flooring/proc/get_plating_type(turf/T)
 	return plating_type
@@ -154,7 +163,7 @@ var/list/flooring_types
 	name = "carpet"
 	desc = "Imported and comfy."
 	icon = 'icons/turf/flooring/carpet.dmi'
-	icon_base = "carpet"
+	base_icon_state = "carpet"
 	build_type = /obj/item/stack/tile/carpet
 	damage_temperature = T0C+200
 	flooring_flags = TURF_HAS_EDGES | TURF_HAS_CORNERS | TURF_REMOVE_CROWBAR | TURF_CAN_BURN
@@ -167,92 +176,92 @@ var/list/flooring_types
 
 /singleton/flooring/carpet/bcarpet
 	name = "black carpet"
-	icon_base = "bcarpet"
+	base_icon_state = "bcarpet"
 	build_type = /obj/item/stack/tile/carpet/bcarpet
 
 /singleton/flooring/carpet/blucarpet
 	name = "blue carpet"
-	icon_base = "blucarpet"
+	base_icon_state = "blucarpet"
 	build_type = /obj/item/stack/tile/carpet/blucarpet
 
 /singleton/flooring/carpet/turcarpet
 	name = "tur carpet"
-	icon_base = "turcarpet"
+	base_icon_state = "turcarpet"
 	build_type = /obj/item/stack/tile/carpet/turcarpet
 
 /singleton/flooring/carpet/sblucarpet
 	name = "silver blue carpet"
-	icon_base = "sblucarpet"
+	base_icon_state = "sblucarpet"
 	build_type = /obj/item/stack/tile/carpet/sblucarpet
 
 /singleton/flooring/carpet/gaycarpet
 	name = "clown carpet"
-	icon_base = "gaycarpet"
+	base_icon_state = "gaycarpet"
 	build_type = /obj/item/stack/tile/carpet/gaycarpet
 
 /singleton/flooring/carpet/purcarpet
 	name = "purple carpet"
-	icon_base = "purcarpet"
+	base_icon_state = "purcarpet"
 	build_type = /obj/item/stack/tile/carpet/purcarpet
 
 /singleton/flooring/carpet/oracarpet
 	name = "orange carpet"
-	icon_base = "oracarpet"
+	base_icon_state = "oracarpet"
 	build_type = /obj/item/stack/tile/carpet/oracarpet
 
 /singleton/flooring/carpet/tealcarpet
 	name = "teal carpet"
-	icon_base = "tealcarpet"
+	base_icon_state = "tealcarpet"
 	build_type = /obj/item/stack/tile/carpet/teal
 
 /singleton/flooring/carpet/arcadecarpet
 	name = "arcade carpet"
-	icon_base = "arcade"
+	base_icon_state = "arcade"
 	build_type = /obj/item/stack/tile/carpet/arcadecarpet
 
 /singleton/flooring/carpet/patterened/brown
 	name = "brown patterened carpet"
-	icon_base = "brown"
+	base_icon_state = "brown"
 	build_type = /obj/item/stack/tile/carpet/patterned/brown
 
 /singleton/flooring/carpet/patterened/red
 	name = "red patterened carpet"
-	icon_base = "red"
+	base_icon_state = "red"
 	build_type = /obj/item/stack/tile/carpet/patterned/red
 
 /singleton/flooring/carpet/patterened/blue
 	name = "blue patterened carpet"
-	icon_base = "blue1"
+	base_icon_state = "blue1"
 	build_type = /obj/item/stack/tile/carpet/patterned/blue
 
 /singleton/flooring/carpet/patterened/blue/alt
 	name = "blue patterened carpet"
-	icon_base = "blue2"
+	base_icon_state = "blue2"
 	build_type = /obj/item/stack/tile/carpet/patterned/blue/alt
 
 /singleton/flooring/carpet/patterened/blue/alt2
 	name = "blue patterened carpet"
-	icon_base = "blue3"
+	base_icon_state = "blue3"
 	build_type = /obj/item/stack/tile/carpet/patterned/blue/alt2
 
 /singleton/flooring/carpet/patterened/green
 	name = "green patterened carpet"
-	icon_base = "green"
+	base_icon_state = "green"
 	build_type = /obj/item/stack/tile/carpet/patterned/green
 
 /singleton/flooring/carpet/patterened/magenta
 	name = "magenta patterened carpet"
-	icon_base = "magenta"
+	base_icon_state = "magenta"
 	build_type = /obj/item/stack/tile/carpet/patterned/magenta
 
 /singleton/flooring/carpet/patterened/purple
 	name = "purple patterened carpet"
-	icon_base = "purple"
+	base_icon_state = "purple"
 	build_type = /obj/item/stack/tile/carpet/patterned/purple
 
 /singleton/flooring/carpet/patterened/orange
 	name = "orange patterened carpet"
-	icon_base = "orange"
+	base_icon_state = "orange"
 	build_type = /obj/item/stack/tile/carpet/patterned/orange
 
 
@@ -260,7 +269,7 @@ var/list/flooring_types
 	name = "floor"
 	desc = "Scuffed from the passage of countless greyshirts."
 	icon = 'icons/turf/flooring/tiles.dmi'
-	icon_base = "tiled"
+	base_icon_state = "tiled"
 	has_damage_range = 2
 	damage_temperature = T0C+1400
 	flooring_flags = TURF_REMOVE_CROWBAR | TURF_CAN_BREAK | TURF_CAN_BURN
@@ -276,84 +285,84 @@ var/list/flooring_types
 /singleton/flooring/tiling/tech
 	desc = "Scuffed from the passage of countless greyshirts."
 	icon = 'icons/turf/flooring/techfloor.dmi'
-	icon_base = "techfloor_gray"
+	base_icon_state = "techfloor_gray"
 	build_type = /obj/item/stack/tile/floor/techgrey
 	can_paint = null
 
 /singleton/flooring/tiling/tech/grid
-	icon_base = "techfloor_grid"
+	base_icon_state = "techfloor_grid"
 	build_type = /obj/item/stack/tile/floor/techgrid
 
 /singleton/flooring/tiling/tech/monogrid
-	icon_base = "techfloor_monogrid"
+	base_icon_state = "techfloor_monogrid"
 	flooring_flags = TURF_IS_FRAGILE
 	build_type = null
 
 /singleton/flooring/tiling/new_tile
 	name = "floor"
-	icon_base = "tile_full"
+	base_icon_state = "tile_full"
 	flooring_flags = TURF_CAN_BREAK | TURF_CAN_BURN | TURF_IS_FRAGILE
 	build_type = null
 
 /singleton/flooring/tiling/new_tile/cargo_one
-	icon_base = "cargo_one_full"
+	base_icon_state = "cargo_one_full"
 
 /singleton/flooring/tiling/new_tile/kafel
-	icon_base = "kafel_full"
+	base_icon_state = "kafel_full"
 
 /singleton/flooring/tiling/new_tile/techmaint
-	icon_base = "techmaint"
+	base_icon_state = "techmaint"
 
 /singleton/flooring/tiling/new_tile/monofloor
-	icon_base = "monofloor"
+	base_icon_state = "monofloor"
 
 /singleton/flooring/tiling/new_tile/monotile
-	icon_base = "monotile"
+	base_icon_state = "monotile"
 
 /singleton/flooring/tiling/new_tile/monowhite
-	icon_base = "monowhite"
+	base_icon_state = "monowhite"
 
 /singleton/flooring/tiling/new_tile/monodark
-	icon_base = "monodark"
+	base_icon_state = "monodark"
 
 /singleton/flooring/tiling/new_tile/monotechmaint
-	icon_base = "monotechmaint"
+	base_icon_state = "monotechmaint"
 
 /singleton/flooring/tiling/new_tile/steel_grid
-	icon_base = "steel_grid"
+	base_icon_state = "steel_grid"
 
 /singleton/flooring/tiling/new_tile/steel_ridged
-	icon_base = "steel_ridged"
+	base_icon_state = "steel_ridged"
 
 /singleton/flooring/linoleum
 	name = "linoleum"
 	desc = "It's like the 2390's all over again."
 	icon = 'icons/turf/flooring/linoleum.dmi'
-	icon_base = "lino"
+	base_icon_state = "lino"
 	can_paint = 1
 	build_type = /obj/item/stack/tile/linoleum
 	flooring_flags = TURF_REMOVE_SCREWDRIVER
 
 /singleton/flooring/tiling/red
 	name = "floor"
-	icon_base = "white"
+	base_icon_state = "white"
 	has_damage_range = null
 	flooring_flags = TURF_REMOVE_CROWBAR
 	build_type = /obj/item/stack/tile/floor/red
 
 /singleton/flooring/tiling/steel
 	name = "floor"
-	icon_base = "steel"
+	base_icon_state = "steel"
 	build_type = /obj/item/stack/tile/floor/steel
 
 /singleton/flooring/tiling/steel_dirty
 	name = "floor"
-	icon_base = "steel_dirty"
+	base_icon_state = "steel_dirty"
 	build_type = /obj/item/stack/tile/floor/steel_dirty
 
 /singleton/flooring/tiling/asteroidfloor
 	name = "floor"
-	icon_base = "asteroidfloor"
+	base_icon_state = "asteroidfloor"
 	has_damage_range = null
 	flooring_flags = TURF_REMOVE_CROWBAR
 	build_type = /obj/item/stack/tile/floor/steel
@@ -361,12 +370,12 @@ var/list/flooring_types
 /singleton/flooring/tiling/white
 	name = "floor"
 	desc = "How sterile."
-	icon_base = "white"
+	base_icon_state = "white"
 	build_type = /obj/item/stack/tile/floor/white
 
 /singleton/flooring/tiling/yellow
 	name = "floor"
-	icon_base = "white"
+	base_icon_state = "white"
 	has_damage_range = null
 	flooring_flags = TURF_REMOVE_CROWBAR
 	build_type = /obj/item/stack/tile/floor/yellow
@@ -374,32 +383,32 @@ var/list/flooring_types
 /singleton/flooring/tiling/dark
 	name = "floor"
 	desc = "How ominous."
-	icon_base = "dark"
+	base_icon_state = "dark"
 	has_damage_range = null
 	flooring_flags = TURF_REMOVE_CROWBAR
 	build_type = /obj/item/stack/tile/floor/dark
 
 /singleton/flooring/tiling/hydro
 	name = "floor"
-	icon_base = "hydrofloor"
+	base_icon_state = "hydrofloor"
 	build_type = /obj/item/stack/tile/floor/steel
 
 /singleton/flooring/tiling/neutral
 	name = "floor"
-	icon_base = "neutral"
+	base_icon_state = "neutral"
 	build_type = /obj/item/stack/tile/floor/steel
 
 /singleton/flooring/tiling/freezer
 	name = "floor"
 	desc = "Don't slip."
-	icon_base = "freezer"
+	base_icon_state = "freezer"
 	build_type = /obj/item/stack/tile/floor/freezer
 
 /singleton/flooring/wmarble
 	name = "marble floor"
 	desc = "Very regal white marble flooring."
 	icon = 'icons/turf/flooring/misc.dmi'
-	icon_base = "lightmarble"
+	base_icon_state = "lightmarble"
 	build_type = /obj/item/stack/tile/wmarble
 	flooring_flags = TURF_REMOVE_CROWBAR
 
@@ -407,7 +416,7 @@ var/list/flooring_types
 	name = "marble floor"
 	desc = "Very regal black marble flooring."
 	icon = 'icons/turf/flooring/misc.dmi'
-	icon_base = "darkmarble"
+	base_icon_state = "darkmarble"
 	build_type = /obj/item/stack/tile/bmarble
 	flooring_flags = TURF_REMOVE_CROWBAR
 
@@ -415,7 +424,7 @@ var/list/flooring_types
 	name = "concrete"
 	desc = "That's concrete baby!"
 	icon = 'icons/turf/flooring/concrete.dmi'
-	icon_base = "concrete"
+	base_icon_state = "concrete"
 	footstep_sounds = list("human" = list(
 		'sound/effects/footstep/floor1.ogg',
 		'sound/effects/footstep/floor2.ogg',
@@ -427,13 +436,13 @@ var/list/flooring_types
 	name = "concrete tile"
 	desc = "That's concrete baby!"
 	icon = 'icons/turf/flooring/concrete.dmi'
-	icon_base = "concrete3"
+	base_icon_state = "concrete3"
 
 /singleton/flooring/bananium
 	name = "bananium floor"
 	desc = "Have you ever seen a clown frown?"
 	icon = 'icons/turf/flooring/misc.dmi'
-	icon_base = "bananium"
+	base_icon_state = "bananium"
 	build_type = /obj/item/stack/tile/bananium
 	flooring_flags = TURF_REMOVE_CROWBAR
 
@@ -441,7 +450,7 @@ var/list/flooring_types
 	name = "silencium floor"
 	desc = "Surprisingly, doesn't mask your footsteps."
 	icon = 'icons/turf/flooring/misc.dmi'
-	icon_base = "silencium"
+	base_icon_state = "silencium"
 	build_type = /obj/item/stack/tile/silencium
 	flooring_flags = TURF_REMOVE_CROWBAR
 
@@ -449,7 +458,7 @@ var/list/flooring_types
 	name = "silencium floor"
 	desc = "Surprisingly, doesn't mask your footsteps."
 	icon = 'icons/turf/flooring/misc.dmi'
-	icon_base = "silencium"
+	base_icon_state = "silencium"
 	build_type = /obj/item/stack/tile/silencium
 	flooring_flags = TURF_REMOVE_CROWBAR
 
@@ -457,7 +466,7 @@ var/list/flooring_types
 	name = "plasteel floor"
 	desc = "Sturdy metal flooring. Almost certainly a waste."
 	icon = 'icons/turf/flooring/misc.dmi'
-	icon_base = "plasteel"
+	base_icon_state = "plasteel"
 	build_type = /obj/item/stack/tile/plasteel
 	flooring_flags = TURF_REMOVE_CROWBAR
 
@@ -465,7 +474,7 @@ var/list/flooring_types
 	name = "durasteel floor"
 	desc = "Incredibly sturdy metal flooring. Definitely a waste."
 	icon = 'icons/turf/flooring/misc.dmi'
-	icon_base = "durasteel"
+	base_icon_state = "durasteel"
 	build_type = /obj/item/stack/tile/durasteel
 	flooring_flags = TURF_REMOVE_CROWBAR
 
@@ -473,7 +482,7 @@ var/list/flooring_types
 	name = "silver floor"
 	desc = "This opulent flooring reminds you of the ocean. Almost certainly a waste."
 	icon = 'icons/turf/flooring/misc.dmi'
-	icon_base = "silver"
+	base_icon_state = "silver"
 	build_type = /obj/item/stack/tile/silver
 	flooring_flags = TURF_REMOVE_CROWBAR
 
@@ -481,7 +490,7 @@ var/list/flooring_types
 	name = "gold floor"
 	desc = "This richly tooled flooring makes you feel powerful."
 	icon = 'icons/turf/flooring/misc.dmi'
-	icon_base = "gold"
+	base_icon_state = "gold"
 	build_type = /obj/item/stack/tile/gold
 	flooring_flags = TURF_REMOVE_CROWBAR
 
@@ -489,7 +498,7 @@ var/list/flooring_types
 	name = "phoron floor"
 	desc = "Although stable for now, this solid phoron flooring radiates danger."
 	icon = 'icons/turf/flooring/misc.dmi'
-	icon_base = "phoron"
+	base_icon_state = "phoron"
 	build_type = /obj/item/stack/tile/phoron
 	flooring_flags = TURF_REMOVE_CROWBAR
 
@@ -497,7 +506,7 @@ var/list/flooring_types
 	name = "uranium floor"
 	desc = "This flooring literally radiates danger."
 	icon = 'icons/turf/flooring/misc.dmi'
-	icon_base = "uranium"
+	base_icon_state = "uranium"
 	build_type = /obj/item/stack/tile/uranium
 	flooring_flags = TURF_REMOVE_CROWBAR
 
@@ -505,7 +514,7 @@ var/list/flooring_types
 	name = "diamond floor"
 	desc = "This flooring proves that you are a king among peasants. It's virtually impossible to scuff."
 	icon = 'icons/turf/flooring/misc.dmi'
-	icon_base = "diamond"
+	base_icon_state = "diamond"
 	build_type = /obj/item/stack/tile/diamond
 	flooring_flags = TURF_REMOVE_CROWBAR
 
@@ -513,7 +522,7 @@ var/list/flooring_types
 	name = "brass floor"
 	desc = "There's something strange about this tile. If you listen closely, it sounds like it's ticking."
 	icon = 'icons/turf/flooring/misc.dmi'
-	icon_base = "clockwork_floor"
+	base_icon_state = "clockwork_floor"
 	build_type = /obj/item/stack/tile/brass
 	flooring_flags = TURF_REMOVE_CROWBAR
 
@@ -521,7 +530,7 @@ var/list/flooring_types
 	name = "wooden floor"
 	desc = "Polished redwood planks."
 	icon = 'icons/turf/flooring/wood.dmi'
-	icon_base = "wood"
+	base_icon_state = "wood"
 	has_damage_range = 6
 	damage_temperature = T0C+200
 	descriptor = "planks"
@@ -537,14 +546,14 @@ var/list/flooring_types
 /singleton/flooring/wood/sif
 	name = "alien wooden floor"
 	desc = "Polished alien wood planks."
-	icon_base = "sifwood"
+	base_icon_state = "sifwood"
 	build_type = /obj/item/stack/tile/wood/sif
 
 /singleton/flooring/reinforced
 	name = "reinforced floor"
 	desc = "Heavily reinforced with steel rods."
 	icon = 'icons/turf/flooring/tiles.dmi'
-	icon_base = "reinforced"
+	base_icon_state = "reinforced"
 	flooring_flags = TURF_REMOVE_WRENCH | TURF_ACID_IMMUNE
 	build_type = /obj/item/stack/rods
 	build_cost = 2
@@ -556,20 +565,20 @@ var/list/flooring_types
 /singleton/flooring/reinforced/circuit
 	name = "processing strata"
 	icon = 'icons/turf/flooring/circuit.dmi'
-	icon_base = "bcircuit"
+	base_icon_state = "bcircuit"
 	build_type = null
 	flooring_flags = TURF_ACID_IMMUNE | TURF_CAN_BREAK | TURF_REMOVE_CROWBAR
 	can_paint = 1
 
 /singleton/flooring/reinforced/circuit/green
 	name = "processing strata"
-	icon_base = "gcircuit"
+	base_icon_state = "gcircuit"
 
 /singleton/flooring/reinforced/cult
 	name = "engraved floor"
 	desc = "Unsettling whispers waver from the surface..."
 	icon = 'icons/turf/flooring/cult.dmi'
-	icon_base = "cult"
+	base_icon_state = "cult"
 	build_type = null
 	has_damage_range = 6
 	flooring_flags = TURF_ACID_IMMUNE | TURF_CAN_BREAK
@@ -593,7 +602,7 @@ var/list/flooring_types
 	name = "flesh"
 	desc = "This slick flesh ripples and squishes under your touch"
 	icon = 'icons/turf/stomach_vr.dmi'
-	icon_base = "flesh_floor"
+	base_icon_state = "flesh_floor"
 
 /turf/simulated/floor/tiled/freezer/cold
 	temperature = T0C - 5
@@ -602,7 +611,7 @@ var/list/flooring_types
 	name = "suspicious flooring"
 	desc = "There's something off about this tile."
 	icon = 'icons/turf/flooring/plating.dmi'
-	icon_base = "plating"
+	base_icon_state = "plating"
 	build_type = null
 	flooring_flags = TURF_ACID_IMMUNE | TURF_CAN_BREAK
 	can_paint = null
@@ -611,7 +620,7 @@ var/list/flooring_types
 	name = "wax floor"
 	desc = "Soft wax sheets shaped into tile sheets. It's a little squishy, and leaves a waxy residue when touched."
 	icon = 'icons/turf/flooring/misc.dmi'
-	icon_base = "wax"
+	base_icon_state = "wax"
 	damage_temperature = T0C+200
 	build_type = /obj/item/stack/tile/wax
 	flooring_flags = TURF_REMOVE_CROWBAR
@@ -620,7 +629,7 @@ var/list/flooring_types
 	name = "honeycomb floor"
 	desc = "A shallow layer of honeycomb. Some pods have been filled with honey and sealed over in wax, while others are vacant."
 	icon = 'icons/turf/flooring/misc.dmi'
-	icon_base = "honeycomb"
+	base_icon_state = "honeycomb"
 	has_damage_range = 6
 	damage_temperature = T0C+200
 	build_type = /obj/item/stack/tile/honeycomb
@@ -637,7 +646,7 @@ var/list/flooring_types
 	name = "sandstone floor"
 	desc = "A tile made out of sand that has been compacted and hardened until it's nearly as dense as stone."
 	icon = 'icons/turf/flooring/misc.dmi'
-	icon_base = "sandstone"
+	base_icon_state = "sandstone"
 	build_type = /obj/item/stack/tile/floor/sandstone
 	flooring_flags = TURF_REMOVE_CROWBAR
 
@@ -645,20 +654,20 @@ var/list/flooring_types
 	name = "bone floor"
 	desc = "A plate of solid bone etched into a subtle tiled pattern."
 	icon = 'icons/turf/flooring/misc.dmi'
-	icon_base = "bone"
+	base_icon_state = "bone"
 	build_type = null
 	flooring_flags = TURF_ACID_IMMUNE
 
 /singleton/flooring/bone/engraved
 	name = "engraved bone floor"
 	desc = "A plate of solid bone with intricate symbols and patterns engraved into it."
-	icon_base = "bonecarve"
+	base_icon_state = "bonecarve"
 
 /singleton/flooring/glass
 	name = "glass flooring"
 	desc = "A window to the world outside. Or the world beneath your feet, rather."
 	icon = 'icons/turf/flooring/glass/glass.dmi'
-	icon_base = "glass"
+	base_icon_state = "glass"
 	build_type = /obj/item/stack/material/glass
 	build_cost = 1
 	build_time = 30
@@ -669,6 +678,11 @@ var/list/flooring_types
 	mz_flags = MZ_MIMIC_DEFAULTS
 	// footstep_type = /decl/footsteps/plating
 
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = (SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_FLOOR_TRANSPARENT_GLASS)
+	canSmoothWith = (SMOOTH_GROUP_FLOOR_TRANSPARENT_GLASS)
+
+
 /singleton/flooring/glass/reinforced
 	name = "reinforced glass flooring"
 	desc = "Heavily reinforced with steel rods."
@@ -676,5 +690,3 @@ var/list/flooring_types
 	// build_type = /obj/item/stack/material/glass/reinforced
 	build_cost = 2
 	flooring_flags = TURF_REMOVE_WRENCH | TURF_ACID_IMMUNE
-
-	mz_flags = MZ_MIMIC_DEFAULTS
