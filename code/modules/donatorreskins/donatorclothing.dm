@@ -173,7 +173,7 @@
 	item_state = "noah_cloak"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	min_cold_protection_temperature = TN60C
-	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	cold_protection_cover = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	hoodtype = /obj/item/clothing/head/hood/donatornoahcloak
 	icon = 'icons/mob/clothing/donatorclothing.dmi'
 	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
@@ -185,7 +185,7 @@
 	item_state = "noah_cloakhood"
 	body_cover_flags = HEAD
 	inv_hide_flags = HIDEEARS|BLOCKHAIR
-	cold_protection = HEAD
+	cold_protection_cover = HEAD
 	min_cold_protection_temperature = TN60C
 	icon = 'icons/mob/clothing/donatorclothing.dmi'
 	icon_override = 'icons/mob/clothing/donatorclothing.dmi'

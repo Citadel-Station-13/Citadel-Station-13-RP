@@ -90,7 +90,7 @@
 	permeability_coefficient = 0.01
 	armor_type = /datum/armor/none
 	inv_hide_flags = HIDEMASK|HIDEEARS
-	cold_protection = HEAD
+	cold_protection_cover = HEAD
 	siemens_coefficient = 0.9
 
 //Bonnie Head
@@ -128,7 +128,7 @@
 	allowed = list(/obj/item/flashlight,/obj/item/tank)
 	armor_type = /datum/armor/none
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
-	cold_protection = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
+	cold_protection_cover = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
 	siemens_coefficient = 0.9
 
 //Bonnie Suit

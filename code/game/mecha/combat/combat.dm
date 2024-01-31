@@ -65,9 +65,13 @@
 					switch(damtype)
 						if("brute")
 							H.afflict_unconscious(20 * 1)
-							update |= temp.take_damage(rand(force/2, force), 0)
+							temp.inflict_bodypart_damage(
+								brute = rand(force / 2, force),
+							)
 						if("fire")
-							update |= temp.take_damage(0, rand(force/2, force))
+							temp.inflict_bodypart_damage(
+								burn = rand(force / 2, force),
+							)
 						if("tox")
 							if(H.reagents)
 								if(H.reagents.get_reagent_amount("carpotoxin") + force < force*2)

@@ -73,4 +73,4 @@
 	encumbrance = ITEM_ENCUMBRANCE_ARMOR_LIGHT_BOOTS
 	armor_type = /datum/armor/station/tactical
 	min_cold_protection_temperature = T0C - 20
-	cold_protection = LEGS
+	cold_protection_cover = LEGS

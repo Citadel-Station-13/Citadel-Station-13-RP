@@ -355,8 +355,11 @@
 	var/exhale_type = GAS_ID_CARBON_DIOXIDE
 
 	/// Species will try to stabilize at this temperature. (also affects temperature processing)
+	/// Null to disable natural stabilization.
+	//  todo: shoo, needs to be organ/biology based
 	var/body_temperature = 310.15
 	/// Species will gain this much temperature every second
+	//  todo: shoo, needs to be organ/biology based
 	var/passive_temp_gain = 0
 
 	//? Cold Air
@@ -436,6 +439,7 @@
 	var/show_ssd = "fast asleep"
 	/// This allows you to pick up crew
 	var/holder_type = /obj/item/holder/micro
+	var/custom_ability_handler
 
 	//? on death drops
 	/// The color of the species flesh.
@@ -776,7 +780,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	return
 
 // Only used for alien plasma weeds atm, but could be used for Dionaea later.
-/datum/species/proc/handle_environment_special(var/mob/living/carbon/human/H)
+/datum/species/proc/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
 	return
 
 // Used to update alien icons for aliens.

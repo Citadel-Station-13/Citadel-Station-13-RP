@@ -8,9 +8,9 @@
 	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT
 	armor_type = /datum/armor/exploration/space/pilot
 	inv_hide_flags = HIDEEARS
-	cold_protection = HEAD
+	cold_protection_cover = HEAD
 	min_cold_protection_temperature = HELMET_MIN_COLD_PROTECTION_TEMPERATURE
-	heat_protection = HEAD
+	heat_protection_cover = HEAD
 	max_heat_protection_temperature = HELMET_MAX_HEAT_PROTECTION_TEMPERATURE
 	w_class = ITEMSIZE_NORMAL
 

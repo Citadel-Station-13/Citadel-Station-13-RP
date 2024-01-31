@@ -1,4 +1,7 @@
-//* Medical system defines go in here
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
+//* This file is called 'life', but realistically is the resting place of all things metabolism, health, and related. *//
 
 //?  Health - Core
 /** Round damage values to this value
@@ -8,6 +11,19 @@
 #define DAMAGE_TIER_PRECISION		0.01
 #define ARMOR_PRECISION				0.001
 #define ARMOR_TIER_PRECISION		0.01
+
+//* Health - Environmental Interactions *//
+
+/// % of temperature recovered when going towards favorable
+#define MOB_BODYTEMP_EQUALIZATION_FAVORABLE_RATIO (1 / 6)
+/// % of temperature gained/lost when going away from favorable
+#define MOB_BODYTEMP_EQUALIZATION_UNFAVORABLE_RATIO (1 / 6)
+/// minimum stabilization when far from 'livable' tempreatures, but environment is closer to livable temperature
+#define MOB_BODYTEMP_EQUALIZATION_MIN_FAVORABLE 10
+/// minimum temperature change when environment is further from livable temperature / is going ot harm us from its temperature
+#define MOB_BODYTEMP_EQUALIZATION_MIN_UNFAVORABLE 1
+/// maximum temperature change when environment is further from livable temperature / is going to harm us from its temperature
+#define MOB_BODYTEMP_EQUALIZATION_MAX_UNFAVORABLE 50
 
 //?  CPR
 /// how long CPR suppresses brain decay

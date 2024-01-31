@@ -132,7 +132,7 @@
 
 	var/has_feral_abilities = FALSE
 
-/datum/species/shapeshifter/xenochimera/handle_environment_special(mob/living/carbon/human/H)
+/datum/species/shapeshifter/xenochimera/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
 	//If they're KO'd/dead, they're probably not thinking a lot about much of anything.
 	if(!H.stat)
 		handle_feralness(H)
@@ -143,13 +143,6 @@
 
 	//Cold/pressure effects when not regenerating
 	else
-		var/pressure2 = H.loc.return_pressure()
-		var/adjusted_pressure2 = H.calculate_affecting_pressure(pressure2)
-
-		//Very low pressure damage
-		if(adjusted_pressure2 <= 20)
-			H.take_overall_damage(brute=LOW_PRESSURE_DAMAGE, used_weapon = "Low Pressure")
-
 		//Cold hurts and gives them pain messages, eventually weakening and paralysing, but doesn't damage or trigger feral.
 		//NB: 'body_temperature' used here is the 'setpoint' species var
 		var/temp_diff = body_temperature - H.bodytemperature
@@ -732,7 +725,7 @@
 	name = "Dissonant Shriek"
 	desc = "We shift our vocal cords to release a high-frequency sound that overloads nearby electronics."
 	action_state = "ling_resonant_shriek"
-	var/range = 8
+	range = 8
 	//Slightly more potent than an EMP grenade
 	var/emp_heavy = 3
 	var/emp_med = 6

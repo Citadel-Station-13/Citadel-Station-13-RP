@@ -165,7 +165,7 @@
 	log_game("SMES FAILURE: <b>[src.x]X [src.y]Y [src.z]Z</b> User: [usr.ckey], Intensity: [intensity]/100")
 	message_admins("SMES FAILURE: <b>[src.x]X [src.y]Y [src.z]Z</b> User: [usr.ckey], Intensity: [intensity]/100 - <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>")
 
-	var/used_hand = h_user.hand?"l_hand":"r_hand"
+	var/used_hand = h_user.hand? BP_L_HAND : BP_R_HAND
 
 	switch (intensity)
 		if (0 to 15)
@@ -176,7 +176,11 @@
 				to_chat(h_user, "A small electrical arc almost burns your hand. Luckily you had your gloves on!")
 			else
 				to_chat(h_user, "A small electrical arc sparks and burns your hand as you touch the [src]!")
-				h_user.adjustFireLossByPart(rand(5,10), used_hand)
+				h_user.take_targeted_damage(
+					burn = rand(5, 10),
+					damage_mode = DAMAGE_MODE_REDIRECT,
+					body_zone = used_hand,
+				)
 				h_user.afflict_paralyze(20 * 2)
 
 		if (16 to 35)
@@ -187,7 +191,11 @@
 				to_chat(h_user, "A medium electrical arc sparks and almost burns your hand. Luckily you had your gloves on!")
 			else
 				to_chat(h_user, "A medium electrical arc sparks as you touch the [src], severely burning your hand!")
-				h_user.adjustFireLossByPart(rand(10,25), used_hand)
+				h_user.take_targeted_damage(
+					burn = rand(10, 25),
+					damage_mode = DAMAGE_MODE_REDIRECT,
+					body_zone = used_hand,
+				)
 				h_user.afflict_paralyze(20 * 5)
 			spawn()
 				empulse(get_turf(src), 1, 2, 3, 4)
@@ -198,7 +206,11 @@
 			s.set_up(7,1,src)
 			if (user_protected)
 				to_chat(h_user, "A strong electrical arc sparks between you and [src], ignoring your gloves and burning your hand!")
-				h_user.adjustFireLossByPart(rand(25,60), used_hand)
+				h_user.take_targeted_damage(
+					burn = rand(25, 60),
+					damage_mode = DAMAGE_MODE_REDIRECT,
+					body_zone = used_hand,
+				)
 				h_user.afflict_paralyze(20 * 8)
 			else
 				to_chat(h_user, "A strong electrical arc sparks between you and [src], knocking you out for a while!")
@@ -240,8 +252,6 @@
 
 	s.start()
 	charge = 0
-
-
 
 // Proc: apcs_overload()
 // Parameters: 2 (failure_chance - chance to actually break the APC, overload_chance - Chance of breaking lights)

@@ -5025,7 +5025,7 @@
 /obj/machinery/door/airlock/glass_external,
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1380;
 	master_tag = "civvie_docker";
 	pixel_x = -24;

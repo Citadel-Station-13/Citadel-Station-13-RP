@@ -345,7 +345,7 @@
 
 /obj/item/clothing/accessory/armor/tag/ntbs
 	name = "\improper BLUESHIELD tag"
-	desc = "An armor tag with the words BLUESHIELD printed in red lettering."
+	desc = "An armor tag with the words BLUESHIELD printed in blue lettering."
 	icon_state = "ntbstag"
 
 /obj/item/clothing/accessory/armor/tag/ntc
