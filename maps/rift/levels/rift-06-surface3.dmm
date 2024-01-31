@@ -2243,6 +2243,10 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/lime/border,
+/obj/effect/floor_decal/borderfloor/corner2,
+/obj/effect/floor_decal/corner/lime/bordercorner2,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
 "ahk" = (
@@ -5411,6 +5415,9 @@
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
+	},
 /turf/simulated/floor/wood,
 /area/exploration/pilot_Office)
 "apG" = (
@@ -7589,6 +7596,8 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/lime/border,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
 "avy" = (
@@ -12879,6 +12888,9 @@
 "aKd" = (
 /obj/machinery/air_alarm/west_mount,
 /obj/structure/bed/chair/bay/comfy/black,
+/obj/effect/floor_decal/spline/plain{
+	dir = 8
+	},
 /turf/simulated/floor/wood,
 /area/exploration/pilot_Office)
 "aKe" = (
@@ -14139,6 +14151,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals9,
+/obj/effect/floor_decal/industrial/outline,
 /turf/simulated/floor/tiled,
 /area/exploration/pilot_prep)
 "aNW" = (
@@ -18653,6 +18666,8 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/lime/border,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
 "bON" = (
@@ -19095,6 +19110,7 @@
 /obj/item/modular_computer/console/preset/civilian{
 	dir = 1
 	},
+/obj/effect/floor_decal/spline/plain,
 /turf/simulated/floor/wood,
 /area/exploration/pilot_Office)
 "dcy" = (
@@ -20680,6 +20696,9 @@
 /obj/machinery/computer/ship/sensors/planet{
 	dir = 1
 	},
+/obj/effect/floor_decal/spline/plain{
+	dir = 10
+	},
 /turf/simulated/floor/wood,
 /area/exploration/pilot_Office)
 "gTy" = (
@@ -20879,6 +20898,8 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/lime/border,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
 "hAM" = (
@@ -21516,6 +21537,8 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/lime/border,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
 "jbk" = (
@@ -21823,6 +21846,12 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
+"jHN" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/exploration/pilot_Office)
 "jIg" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 1
@@ -22015,6 +22044,14 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/lime/border,
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/lime/bordercorner2{
+	dir = 9
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
 "jZP" = (
@@ -22199,6 +22236,25 @@
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/teleporter/departing)
+"kKk" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/lightgrey/border,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/lime/border,
+/turf/simulated/floor/tiled/steel,
+/area/hallway/primary/surfacethree)
 "kKC" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /obj/machinery/beehive,
@@ -22448,6 +22504,9 @@
 	},
 /obj/item/paper_bin,
 /obj/item/pen,
+/obj/effect/floor_decal/spline/plain{
+	dir = 8
+	},
 /turf/simulated/floor/wood,
 /area/exploration/pilot_Office)
 "lDX" = (
@@ -22927,6 +22986,9 @@
 	icon_state = "1-2"
 	},
 /mob/living/simple_mob/animal/passive/snake/noodle,
+/obj/effect/floor_decal/spline/plain{
+	dir = 5
+	},
 /turf/simulated/floor/wood,
 /area/exploration/pilot_Office)
 "mCR" = (
@@ -24788,6 +24850,12 @@
 /obj/landmark/spawnpoint/job/blueshield,
 /turf/simulated/floor/carpet/blue,
 /area/crew_quarters/heads/blueshield)
+"rKd" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 9
+	},
+/turf/simulated/floor/wood,
+/area/exploration/pilot_Office)
 "rKC" = (
 /obj/structure/bed/chair/backed_grey{
 	dir = 8
@@ -24950,6 +25018,29 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/exploration/pilot_prep)
+"sja" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/lightgrey/border,
+/obj/machinery/computer/guestpass{
+	dir = 1;
+	pixel_y = -24
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/lime/border,
+/turf/simulated/floor/tiled/steel,
+/area/hallway/primary/surfacethree)
 "slu" = (
 /obj/structure/railing{
 	dir = 4
@@ -25179,6 +25270,9 @@
 "tdn" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
+	},
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
 	},
 /turf/simulated/floor/wood,
 /area/exploration/pilot_Office)
@@ -25696,6 +25790,7 @@
 /area/crew_quarters/locker/laundry_arrival)
 "uEE" = (
 /obj/structure/filingcabinet/chestdrawer,
+/obj/effect/floor_decal/spline/plain,
 /turf/simulated/floor/wood,
 /area/exploration/pilot_Office)
 "uGZ" = (
@@ -25746,6 +25841,9 @@
 "uMP" = (
 /obj/structure/flora/pottedplant/tropical,
 /obj/structure/table/woodentable,
+/obj/effect/floor_decal/spline/plain{
+	dir = 6
+	},
 /turf/simulated/floor/wood,
 /area/exploration/pilot_Office)
 "uOE" = (
@@ -26891,6 +26989,9 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
+	},
 /turf/simulated/floor/wood,
 /area/exploration/pilot_Office)
 "xug" = (
@@ -27116,6 +27217,12 @@
 /obj/structure/grille,
 /turf/simulated/floor/plating,
 /area/ai)
+"xUu" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/exploration/pilot_Office)
 "xVh" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -42721,10 +42828,10 @@ jpv
 jpv
 vMY
 nOb
-aWA
+rKd
 aKd
 lAT
-aWA
+jHN
 gPk
 cIq
 cIq
@@ -42915,7 +43022,7 @@ jpv
 jpv
 ahj
 akk
-aWA
+xUu
 dVA
 fVL
 jlx
@@ -43107,9 +43214,9 @@ suT
 jpv
 jpv
 jpv
-vMY
+kKk
 lWV
-aWA
+xUu
 dVA
 apI
 aWA
@@ -44077,7 +44184,7 @@ tHQ
 aaQ
 aaQ
 aaQ
-fVI
+sja
 aqW
 cWu
 lJp
