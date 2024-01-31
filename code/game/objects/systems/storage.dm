@@ -1100,14 +1100,16 @@
 	var/list/decoded_view = decode_view_size(user.client?.view || world.view)
 	var/view_x = decoded_view[1]
 	// clamp to max items if needed
-	var/rendering_width = min(max_items, STORAGE_UI_TILES_FOR_SCREEN_VIEW_X(view_x))
+	var/rendering_width = STORAGE_UI_TILES_FOR_SCREEN_VIEW_X(view_x)
+	if(max_items)
+		rendering_width = min(max_items, rendering_width)
 	// see if we need to process numerical display
 	var/list/datum/storage_numerical_display/numerical_rendered = ui_numerical_mode && render_numerical_display()
 	// process indirection
 	var/atom/indirection = real_contents_loc()
 	// compute count and rows
 	var/item_count = isnull(numerical_rendered)? length(indirection.contents) : length(numerical_rendered)
-	var/rows_needed = ROUND_UP(item_count / rendering_width)
+	var/rows_needed = ROUND_UP(item_count / rendering_width) || 1
 	// prepare iteration
 	var/current_row = 1
 	var/current_column = 1
@@ -1150,7 +1152,7 @@
 
 /datum/object_system/storage/proc/create_ui_volumetric_mode(mob/user)
 	// guard against divide-by-0's
-	if(!max_combined_volume || !cached_combined_volume)
+	if(!max_combined_volume)
 		return create_ui_slot_mode(user)
 	. = list()
 
@@ -1175,7 +1177,7 @@
 	rendering_width = ROUND_UP(rendering_width_in_pixels / WORLD_ICON_SIZE)
 	rendering_width_in_pixels = rendering_width * 32
 	// render closer
-	closer.screen_loc = "[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X + rendering_width_in_pixels],\
+	closer.screen_loc = "[STORAGE_UI_START_TILE_X + 1]:[STORAGE_UI_START_PIXEL_X + rendering_width_in_pixels],\
 		[STORAGE_UI_START_TILE_Y]:[STORAGE_UI_START_PIXEL_Y]"
 	// prepare iteration
 	// we set this to high values so we save on some code reuse because it'll make the row for us
@@ -1215,9 +1217,9 @@
 		current_pixel_x += used_pixels + VOLUMETRIC_STORAGE_ITEM_PADDING
 	// resize the boxes to fit the rows
 	p_left.screen_loc = "[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X],\
-		[STORAGE_UI_START_TILE_Y + current_row]:[STORAGE_UI_START_PIXEL_Y] to \
+		[STORAGE_UI_START_TILE_Y]:[STORAGE_UI_START_PIXEL_Y] to \
 		[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X],\
-		[STORAGE_UI_START_TILE_Y + current_row]:[STORAGE_UI_START_PIXEL_Y]"
+		[STORAGE_UI_START_TILE_Y + current_row - 1]:[STORAGE_UI_START_PIXEL_Y]"
 	p_box.screen_loc = "[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X],\
 		[STORAGE_UI_START_TILE_Y]:[STORAGE_UI_START_PIXEL_Y] to \
 		[STORAGE_UI_START_TILE_X + rendering_width]:[STORAGE_UI_START_PIXEL_X],\
