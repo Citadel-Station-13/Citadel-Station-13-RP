@@ -115,6 +115,24 @@ var/list/flooring_types
 	/// Same z flags used for turfs, i.e ZMIMIC_DEFAULT etc.
 	var/mz_flags = MZ_ATMOS_UP | MZ_OPEN_UP
 
+	//? Icon Smoothing
+	/// Icon-smoothing behavior.
+	var/smoothing_flags = NONE
+	/// What directions this is currently smoothing with. IMPORTANT: This uses the smoothing direction flags as defined in icon_smoothing.dm, instead of the BYOND flags.
+	var/smoothing_junction = null //This starts as null for us to know when it's first set, but after that it will hold a 8-bit mask ranging from 0 to 255.
+	/**
+	 * What smoothing groups does this atom belongs to, to match canSmoothWith.
+	 * If null, nobody can smooth with it.
+	 *! Must be sorted.
+	 */
+	var/list/smoothing_groups = null
+	/**
+	 * List of smoothing groups this atom can smooth with.
+	 * If this is null and atom is smooth, it smooths only with itself.
+	 *! Must be sorted.
+	 */
+	var/list/canSmoothWith = null
+
 /singleton/flooring/proc/get_plating_type(turf/T)
 	return plating_type
 
@@ -131,74 +149,6 @@ var/list/flooring_types
 	else
 		for(var/i in 1 to min(build_cost, 50))
 			new build_type(A)
-
-/singleton/flooring/grass
-	name = "grass"
-	desc = "Do they smoke grass out in space, Bowie? Or do they smoke AstroTurf?"
-	icon = 'icons/turf/flooring/grass.dmi'
-	icon_base = "grass"
-	has_base_range = 3
-	damage_temperature = T0C+80
-	flooring_flags = TURF_HAS_EDGES | TURF_REMOVE_SHOVEL
-	build_type = /obj/item/stack/tile/grass
-
-/singleton/flooring/asteroid
-	name = "coarse sand"
-	desc = "Gritty and unpleasant."
-	icon = 'icons/turf/flooring/asteroid.dmi'
-	icon_base = "asteroid"
-	flooring_flags = TURF_HAS_EDGES | TURF_REMOVE_SHOVEL
-	build_type = null
-
-/singleton/flooring/snow
-	name = "snow"
-	desc = "A layer of many tiny bits of frozen water. It's hard to tell how deep it is."
-	icon = 'icons/turf/snow_new.dmi'
-	icon_base = "snow"
-	footstep_sounds = list("human" = list(
-		'sound/effects/footstep/snow1.ogg',
-		'sound/effects/footstep/snow2.ogg',
-		'sound/effects/footstep/snow3.ogg',
-		'sound/effects/footstep/snow4.ogg',
-		'sound/effects/footstep/snow5.ogg'))
-
-/singleton/flooring/snow/gravsnow
-	name = "snowy gravel"
-	desc = "A layer of coarse ice pebbles and assorted gravel."
-	icon = 'icons/turf/snow_new.dmi'
-	icon_base = "gravsnow"
-	footstep_sounds = list("human" = list(
-		'sound/effects/footstep/snow1.ogg',
-		'sound/effects/footstep/snow2.ogg',
-		'sound/effects/footstep/snow3.ogg',
-		'sound/effects/footstep/snow4.ogg',
-		'sound/effects/footstep/snow5.ogg'))
-
-/singleton/flooring/snow/snow2
-	name = "snow"
-	desc = "A layer of many tiny bits of frozen water. It's hard to tell how deep it is."
-	icon = 'icons/turf/snow.dmi'
-	icon_base = "snow"
-	flooring_flags = TURF_HAS_EDGES
-
-/singleton/flooring/snow/gravsnow2
-	name = "gravsnow"
-	icon = 'icons/turf/snow.dmi'
-	icon_base = "gravsnow"
-
-/singleton/flooring/snow/plating
-	name = "snowy plating"
-	desc = "Steel plating coated with a light layer of snow."
-	icon_base = "snowyplating"
-	flooring_flags = null
-
-/singleton/flooring/snow/ice
-	name = "ice"
-	desc = "Looks slippery."
-	icon_base = "ice"
-
-/singleton/flooring/snow/plating/drift
-	icon_base = "snowyplayingdrift"
 
 /singleton/flooring/carpet
 	name = "carpet"
@@ -625,75 +575,6 @@ var/list/flooring_types
 	flooring_flags = TURF_ACID_IMMUNE | TURF_CAN_BREAK
 	can_paint = null
 
-/singleton/flooring/outdoors/lavaland
-	name = "ash sand"
-	desc = "Soft and ominous."
-	icon = 'icons/turf/flooring/asteroid.dmi'
-	icon_base = "asteroid"
-	footstep_sounds = list("human" = list(
-		'sound/effects/footstep/asteroid1.ogg',
-		'sound/effects/footstep/asteroid2.ogg',
-		'sound/effects/footstep/asteroid3.ogg',
-		'sound/effects/footstep/asteroid4.ogg'))
-
-/singleton/flooring/outdoors/classd
-	name = "irradiated sand"
-	desc = "It literally glows in the dark."
-	icon = 'icons/turf/flooring/asteroid.dmi'
-	icon_base = "asteroid"
-	footstep_sounds = list("human" = list(
-		'sound/effects/footstep/asteroid1.ogg',
-		'sound/effects/footstep/asteroid2.ogg',
-		'sound/effects/footstep/asteroid3.ogg',
-		'sound/effects/footstep/asteroid4.ogg'))
-
-/singleton/flooring/outdoors/dirt
-	name = "dirt"
-	icon = 'icons/turf/outdoors.dmi'
-	icon_base = "dirt-dark"
-	footstep_sounds = list("human" = list(
-		'sound/effects/footstep/asteroid1.ogg',
-		'sound/effects/footstep/asteroid2.ogg',
-		'sound/effects/footstep/asteroid3.ogg',
-		'sound/effects/footstep/asteroid4.ogg'))
-
-
-/singleton/flooring/outdoors/grass
-	name = "grass"
-	icon = 'icons/turf/outdoors.dmi'
-	icon_base = "grass"
-	footstep_sounds = list("human" = list(
-		'sound/effects/footstep/grass1.ogg',
-		'sound/effects/footstep/grass2.ogg',
-		'sound/effects/footstep/grass3.ogg',
-		'sound/effects/footstep/grass4.ogg'))
-
-/singleton/flooring/outdoors/grass/sif
-	name = "growth"
-	icon = 'icons/turf/outdoors.dmi'
-	icon_base = "grass_sif"
-
-/singleton/flooring/water
-	name = "water"
-	desc = "Water is wet, gosh, who knew!"
-	icon = 'icons/turf/outdoors.dmi'
-	icon_base = "seashallow"
-	footstep_sounds = list("human" = list(
-		'sound/effects/footstep/water1.ogg',
-		'sound/effects/footstep/water2.ogg',
-		'sound/effects/footstep/water3.ogg',
-		'sound/effects/footstep/water4.ogg'))
-
-/singleton/flooring/outdoors/beach
-	name = "beach"
-	icon = 'icons/turf/outdoors.dmi'
-	icon_base = "sand"
-	footstep_sounds = list("human" = list(
-		'sound/effects/footstep/asteroid1.ogg',
-		'sound/effects/footstep/asteroid2.ogg',
-		'sound/effects/footstep/asteroid3.ogg',
-		'sound/effects/footstep/asteroid4.ogg'))
-
 /turf/simulated/floor/flesh
 	name = "flesh"
 	desc = "This slick flesh ripples and squishes under your touch"
@@ -713,16 +594,6 @@ var/list/flooring_types
 	desc = "This slick flesh ripples and squishes under your touch"
 	icon = 'icons/turf/stomach_vr.dmi'
 	icon_base = "flesh_floor"
-
-/singleton/flooring/outdoors/beach/sand/desert
-	name = "beach"
-	icon = 'icons/turf/outdoors.dmi'
-	icon_base = "desert"
-	footstep_sounds = list("human" = list(
-		'sound/effects/footstep/asteroid1.ogg',
-		'sound/effects/footstep/asteroid2.ogg',
-		'sound/effects/footstep/asteroid3.ogg',
-		'sound/effects/footstep/asteroid4.ogg'))
 
 /turf/simulated/floor/tiled/freezer/cold
 	temperature = T0C - 5
@@ -786,7 +657,7 @@ var/list/flooring_types
 /singleton/flooring/glass
 	name = "glass flooring"
 	desc = "A window to the world outside. Or the world beneath your feet, rather."
-	icon = 'icons/turf/flooring/glass.dmi'
+	icon = 'icons/turf/flooring/glass/glass.dmi'
 	icon_base = "glass"
 	build_type = /obj/item/stack/material/glass
 	build_cost = 1
@@ -801,8 +672,7 @@ var/list/flooring_types
 /singleton/flooring/glass/reinforced
 	name = "reinforced glass flooring"
 	desc = "Heavily reinforced with steel rods."
-	icon = 'icons/turf/flooring/glass_reinf.dmi'
-	icon_base = "glass_reinf"
+	icon = 'icons/turf/flooring/glass/reinforced.dmi'
 	// build_type = /obj/item/stack/material/glass/reinforced
 	build_cost = 2
 	flooring_flags = TURF_REMOVE_WRENCH | TURF_ACID_IMMUNE
