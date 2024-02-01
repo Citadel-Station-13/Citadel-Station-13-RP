@@ -337,7 +337,7 @@
  * Called by our object when an item exits us
  */
 /datum/object_system/storage/proc/on_item_exited(obj/item/exiting)
-	if(!(exiting.item_flags & ITEM_IN_INVENTORY))
+	if(!(exiting.item_flags & ITEM_IN_STORAGE))
 		return
 	physically_remove_item(exiting, no_move = TRUE)
 
@@ -345,7 +345,7 @@
  * Called by our object when an item enters us
  */
 /datum/object_system/storage/proc/on_item_entered(obj/item/entering)
-	if(exiting.item_flags & ITEM_IN_INVENTORY)
+	if(entering.item_flags & ITEM_IN_STORAGE)
 		return
 	physically_insert_item(entering, no_move = TRUE)
 
@@ -457,8 +457,8 @@
 		return FALSE
 	return TRUE
 
-/datum/object_system/storage/proc/insert(obj/item/inserting, datum/event_args/actor/actor, suppressed, no_update, no_move, force)
-	physically_insert_item(inserting, no_move, FORCE_LAUNCH)
+/datum/object_system/storage/proc/insert(obj/item/inserting, datum/event_args/actor/actor, suppressed, no_update, no_move)
+	physically_insert_item(inserting, no_move)
 
 	if(!no_update)
 		if(update_icon_on_item_change)
@@ -472,7 +472,7 @@
  *
  * we can assume this proc will do potentially literally anything with the item, so..
  */
-/datum/object_system/storage/proc/physically_insert_item(obj/item/inserting, no_move, force)
+/datum/object_system/storage/proc/physically_insert_item(obj/item/inserting, no_move)
 	inserting.item_flags |= ITEM_IN_STORAGE
 	if(!no_move)
 		inserting.forceMove(real_contents_loc())
@@ -984,7 +984,7 @@
  * @return TRUE if we did something (to interrupt clickchain)
  */
 /datum/object_system/storage/proc/auto_handle_interacted_open(datum/event_args/actor/actor, force, suppressed)
-	if(is_locked(actor))
+	if(!force && is_locked(actor))
 		actor.chat_feedback(
 			msg = SPAN_WARNING("[parent] is locked."),
 			target = parent,
