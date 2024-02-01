@@ -853,9 +853,7 @@
 		playsound(parent, sfx_remove, 50, TRUE, -4)
 
 	var/list/rejections = list()
-	var/i = 0
 	while(do_after(actor.performer, 0.5 SECONDS, parent, NONE, MOBILITY_CAN_STORAGE | MOBILITY_CAN_PICKUP))
-		++i
 		var/keep_going = mass_storage_dumping_handler(transferring, to_loc, actor, rejections)
 		if(!keep_going)
 			break
