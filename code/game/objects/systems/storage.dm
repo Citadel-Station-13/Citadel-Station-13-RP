@@ -1232,7 +1232,7 @@
 		// emit to renderer
 		renderer.set_pixel_width(used_pixels)
 		// set screen loc
-		renderer.screen_loc = "[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X + (maximum_used_width + iteration_used_padding + VOLUMETRIC_STORAGE_EDGE_PADDING) + (used_pixels - VOLUMETRIC_STORAGE_BOX_ICON_SIZE) * 0.5],\
+		renderer.screen_loc = "[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X + (iteration_used_width + iteration_used_padding + VOLUMETRIC_STORAGE_EDGE_PADDING) + (used_pixels - VOLUMETRIC_STORAGE_BOX_ICON_SIZE) * 0.5],\
 			[STORAGE_UI_START_TILE_Y + current_row - 1]:[STORAGE_UI_START_PIXEL_Y]"
 		// add to emitted screen list
 		. += renderer
@@ -1245,7 +1245,7 @@
 
 	// now that everything's set up, we can render everything based on the solved sizes.
 	// middle size; we also keep in account padding so there's a smooth expansion instead of a sudden expansion at the end.
-	var/middle_width = max(maximum_used_width, rendering_width_in_pixels + iteration_used_padding - VOLUMETRIC_STORAGE_ITEM_PADDING)
+	var/middle_width = max(maximum_used_width, rendering_width_in_pixels + iteration_used_padding)
 	var/middle_shift = round(middle_width * 0.5 - VOLUMETRIC_STORAGE_BOX_ICON_SIZE * 0.5)
 	// render left
 	var/atom/movable/screen/storage/panel/volumetric/left/p_left = new
@@ -1265,15 +1265,15 @@
 	// render closer on bottom
 	var/atom/movable/screen/storage/closer/closer = new
 	. += closer
-	closer.screen_loc = "[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X + rendering_width_in_pixels],\
+	closer.screen_loc = "[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X + middle_width],\
 		[STORAGE_UI_START_TILE_Y]:[STORAGE_UI_START_PIXEL_Y]"
 	// render right sides above closer
 	if(current_row > 1)
 		var/atom/movable/screen/storage/panel/volumetric/right/p_right = new
 		. += p_right
-		p_right.screen_loc = "[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X + rendering_width_in_pixels - WORLD_ICON_SIZE + VOLUMETRIC_STORAGE_BOX_BORDER_SIZE],\
+		p_right.screen_loc = "[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X + middle_width - WORLD_ICON_SIZE + VOLUMETRIC_STORAGE_BOX_BORDER_SIZE],\
 			[STORAGE_UI_START_TILE_Y + 1]:[STORAGE_UI_START_PIXEL_Y] to \
-			[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X + rendering_width_in_pixels - WORLD_ICON_SIZE + VOLUMETRIC_STORAGE_BOX_BORDER_SIZE],\
+			[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X + middle_width - WORLD_ICON_SIZE + VOLUMETRIC_STORAGE_BOX_BORDER_SIZE],\
 			[STORAGE_UI_START_TILE_Y + current_row - 1]:[STORAGE_UI_START_PIXEL_Y]"
 
 /**
