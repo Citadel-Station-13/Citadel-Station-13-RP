@@ -12,10 +12,7 @@
 	//circuit = /obj/item/circuitboard/engineering_equip
 	prize_list = list(
 		//Mining vendor steals
-		new /datum/data/mining_equipment("Whiskey",						    /obj/item/reagent_containers/food/drinks/bottle/whiskey,		3),
-		new /datum/data/mining_equipment("Absinthe",					    /obj/item/reagent_containers/food/drinks/bottle/absinthe,	    3),
-		new /datum/data/mining_equipment("Special Blend Whiskey",		    /obj/item/reagent_containers/food/drinks/bottle/specialwhiskey,	5),
-		new /datum/data/mining_equipment("Random Booze",			        /obj/random/alcohol,		                                    3),
+		new /datum/data/mining_equipment("Vodka",						    /obj/item/reagent_containers/food/drinks/bottle/vodka,			3),
 		new /datum/data/mining_equipment("Cigar",						    /obj/item/clothing/mask/smokable/cigarette/cigar/havana,        5),
 		new /datum/data/mining_equipment("Soap",						    /obj/item/soap/nanotrasen,									    2),
 		new /datum/data/mining_equipment("Laser Pointer",				    /obj/item/laser_pointer,										9),
@@ -29,10 +26,7 @@
 		new /datum/data/mining_equipment("Hardsuit - Plasma Cutter",	    /obj/item/hardsuit_module/device/plasmacutter,						10),
 		new /datum/data/mining_equipment("Hardsuit - Maneuvering Jets",	    /obj/item/hardsuit_module/maneuvering_jets,							12),
 		new /datum/data/mining_equipment("Hardsuit - Intelligence Storage",	/obj/item/hardsuit_module/ai_container,								25),
-		new /datum/data/mining_equipment("Injector (L) - Glucose",          /obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose,	50),
 		new /datum/data/mining_equipment("Injector (L) - Panacea",          /obj/item/reagent_containers/hypospray/autoinjector/biginjector/purity,	50),
-		new /datum/data/mining_equipment("Injector (L) - Trauma",           /obj/item/reagent_containers/hypospray/autoinjector/biginjector/brute,	50),
-		new /datum/data/mining_equipment("Nanopaste Tube",				    /obj/item/stack/nanopaste,										10),
 		//Mining vendor steals - Ends
         //Power tools like the CE gets, if kev comes crying: https://cdn.discordapp.com/attachments/296237931587305472/956517623519141908/unknown.png
 		new /datum/data/mining_equipment("Advanced Hardsuit",							/obj/item/hardsuit/ce,									150),

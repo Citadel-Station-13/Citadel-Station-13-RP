@@ -2666,7 +2666,7 @@
 	},
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1380;
 	pixel_x = 5;
 	pixel_y = 25;
@@ -3285,7 +3285,7 @@
 	},
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1380;
 	pixel_x = -5;
 	pixel_y = -25;
@@ -3670,7 +3670,7 @@
 	},
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	pixel_x = 10;
 	pixel_y = -25;
 	req_access = list(160)
@@ -5197,7 +5197,7 @@
 	},
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	pixel_x = -10;
 	pixel_y = 25;
 	req_access = list(160)
@@ -6555,7 +6555,7 @@
 	},
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1380;
 	master_tag = "tradeport_hangar_dock";
 	pixel_x = 25;
@@ -7095,7 +7095,7 @@
 /area/shuttle/trade_ship/general)
 "zH" = (
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 8018;
 	master_tag = "trade_space_lock";
 	pixel_x = 25;
@@ -7394,7 +7394,7 @@
 	name = "Nebula Gas - Employees Only"
 	},
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1380;
 	pixel_x = -6;
 	pixel_y = 25;
@@ -7554,7 +7554,7 @@
 /area/tradeport/atmospherics)
 "Bq" = (
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 8018;
 	master_tag = "trade_space_lock";
 	pixel_x = -25;
@@ -9004,7 +9004,7 @@
 	},
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1380;
 	master_tag = "tradeport_hangar_dock";
 	pixel_x = -25;
@@ -10707,7 +10707,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible,
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1380;
 	pixel_x = 25;
 	pixel_y = 5;

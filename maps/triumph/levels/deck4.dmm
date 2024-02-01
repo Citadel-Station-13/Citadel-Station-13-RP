@@ -5514,7 +5514,7 @@
 /area/hydroponics/garden)
 "dIH" = (
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1379;
 	master_tag = "sec_shuttle_airlock";
 	name = "interior access button";
@@ -6105,7 +6105,7 @@
 	id_tag = "sec_shuttle_pump"
 	},
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1379;
 	master_tag = "sec_shuttle_airlock";
 	name = "exterior access button";
@@ -7922,7 +7922,7 @@
 /area/exploration/explorer_prep)
 "ftm" = (
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1379;
 	master_tag = "sec_shuttle_airlock";
 	name = "exterior access button";
@@ -8341,7 +8341,7 @@
 "fLT" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1380;
 	master_tag = "civvie_docker";
 	pixel_x = 5;
@@ -14028,7 +14028,7 @@
 /area/security/prison)
 "jFB" = (
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1379;
 	master_tag = "sec_shuttle_airlock";
 	name = "interior access button";
@@ -18665,7 +18665,7 @@
 /area/hallway/secondary/civilian_hallway_mid)
 "mTU" = (
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1380;
 	master_tag = "civvie_docker";
 	pixel_y = -21
