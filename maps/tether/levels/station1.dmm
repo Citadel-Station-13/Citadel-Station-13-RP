@@ -2374,7 +2374,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/airlock_sensor{
-	command = "cycle_interior";
+	command = "cycle_int";
 	dir = 8;
 	id_tag = "gravity_isensor";
 	master_tag = "gravity_airlock";
@@ -6900,7 +6900,7 @@
 /area/tether/exploration/showers)
 "oc" = (
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1380;
 	master_tag = "dock_d1a1";
 	name = "interior access button";
@@ -7908,7 +7908,7 @@
 /area/hallway/station/atrium)
 "qa" = (
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1380;
 	master_tag = "dock_d1a1";
 	name = "exterior access button";
@@ -11882,7 +11882,7 @@
 	dir = 4
 	},
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1379;
 	master_tag = "eng_starboard_airlock";
 	name = "interior access button";
@@ -13628,7 +13628,7 @@
 	dir = 8
 	},
 /obj/machinery/airlock_sensor{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	dir = 4;
 	id_tag = "gravity_esensor";
 	master_tag = "gravity_airlock";
@@ -14210,7 +14210,7 @@
 /area/ai_upload)
 "Dj" = (
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1380;
 	master_tag = "dock_d2a1";
 	name = "exterior access button";
@@ -21068,7 +21068,7 @@
 /area/engineering/hallway)
 "Rr" = (
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1379;
 	master_tag = "eng_starboard_airlock";
 	name = "exterior access button";
@@ -21597,7 +21597,7 @@
 /area/engineering/foyer)
 "Sy" = (
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1380;
 	master_tag = "dock_d2a1";
 	name = "interior access button";
@@ -23373,7 +23373,7 @@
 /area/crew_quarters/sleep/engi_wash)
 "VR" = (
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1380;
 	master_tag = "dock_d1a2";
 	name = "interior access button";

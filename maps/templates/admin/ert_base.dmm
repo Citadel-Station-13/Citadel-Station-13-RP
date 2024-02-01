@@ -92,7 +92,7 @@
 	},
 /obj/structure/fans/tiny,
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1380;
 	master_tag = "ert1_control";
 	pixel_x = 24;
@@ -304,7 +304,7 @@
 "aL" = (
 /obj/machinery/atmospherics/pipe/manifold/visible,
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1380;
 	master_tag = "ert1_control";
 	pixel_x = -22;
@@ -1824,7 +1824,7 @@
 /area/shuttle/specops/centcom)
 "dL" = (
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1381;
 	master_tag = "ert2_control";
 	pixel_x = -22;
@@ -2007,7 +2007,7 @@
 /area/shuttle/specops/centcom)
 "ed" = (
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1381;
 	master_tag = "ert2_control";
 	pixel_x = 24;

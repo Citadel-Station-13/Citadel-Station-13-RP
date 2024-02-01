@@ -68,7 +68,8 @@
 
 	name = "Access Controller"
 	tag_secure = 1
-	valid_actions = list("cycle_ext_door", "cycle_int_door", "force_ext", "force_int")
+	valid_actions = list("cycle_ext", "cycle_int", "force_ext", "force_int")
+	program = /datum/computer/file/embedded_program/airlock/access_controll
 
 
 /obj/machinery/embedded_controller/radio/airlock/access_controller/update_icon()

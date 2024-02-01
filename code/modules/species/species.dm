@@ -439,6 +439,7 @@
 	var/show_ssd = "fast asleep"
 	/// This allows you to pick up crew
 	var/holder_type = /obj/item/holder/micro
+	var/custom_ability_handler
 
 	//? on death drops
 	/// The color of the species flesh.
