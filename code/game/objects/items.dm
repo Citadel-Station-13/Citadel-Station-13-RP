@@ -42,6 +42,17 @@
 	/// economic category for items
 	var/economic_category_item = ECONOMIC_CATEGORY_ITEM_DEFAULT
 
+	//* Environmentals *//
+	/// Set this variable to determine up to which temperature (IN KELVIN) the item protects against heat damage. Keep at null to disable protection. Only protects areas set by heat_protection flags.
+	var/max_heat_protection_temperature
+	/// Set this variable to determine down to which temperature (IN KELVIN) the item protects against cold damage. 0 is NOT an acceptable number due to if(varname) tests!! Keep at null to disable protection. Only protects areas set by cold_protection flags.
+	var/min_cold_protection_temperature
+
+	/// Set this variable if the item protects its wearer against high pressures below an upper bound. Keep at null to disable protection.
+	var/max_pressure_protection
+	/// Set this variable if the item protects its wearer against low pressures above a lower bound. Keep at null to disable protection. 0 represents protection against hard vacuum.
+	var/min_pressure_protection
+
 	//? Carry Weight
 	/// encumberance.
 	/// calculated as max() of all encumbrance
@@ -72,7 +83,7 @@
 	var/damage_mode = NONE
 	// todo: port over damtype
 
-	//* Storage
+	//* Storage *//
 	/// storage cost for volumetric storage
 	/// null to default to weight class
 	var/weight_volume
@@ -80,11 +91,6 @@
 	//? unsorted / legacy
 	/// This saves our blood splatter overlay, which will be processed not to go over the edges of the sprite
 	var/image/blood_overlay = null
-	var/r_speed = 1.0
-	var/burn_point = null
-	var/burning = null
-	/// If it's an item we don't want to log attack_logs with, set this to TRUE
-	var/no_attack_log = FALSE
 	pass_flags = ATOM_PASS_TABLE
 	pressure_resistance = 5
 	var/obj/item/master = null
@@ -95,16 +101,6 @@
 	 * Either a list() with equal chances or a single verb.
 	 */
 	var/list/attack_verb = "attacked"
-
-	/// Set this variable to determine up to which temperature (IN KELVIN) the item protects against heat damage. Keep at null to disable protection. Only protects areas set by heat_protection flags.
-	var/max_heat_protection_temperature
-	/// Set this variable to determine down to which temperature (IN KELVIN) the item protects against cold damage. 0 is NOT an acceptable number due to if(varname) tests!! Keep at null to disable protection. Only protects areas set by cold_protection flags.
-	var/min_cold_protection_temperature
-
-	/// Set this variable if the item protects its wearer against high pressures below an upper bound. Keep at null to disable protection.
-	var/max_pressure_protection
-	/// Set this variable if the item protects its wearer against low pressures above a lower bound. Keep at null to disable protection. 0 represents protection against hard vacuum.
-	var/min_pressure_protection
 
 	//? todo: more advanced handling, multi actions, etc
 	var/datum/action/item_action/action = null
@@ -122,12 +118,16 @@
 	/// For electrical admittance/conductance (electrocution checks and shit)
 	var/siemens_coefficient = 1
 	/// Suit storage stuff.
+	// todo: kill with fire
 	var/list/allowed = null
+	// todo: kill with fire
 	/// All items can have an uplink hidden inside, just remember to add the triggers.
 	var/obj/item/uplink/hidden/hidden_uplink = null
 	/// Name used for message when binoculars/scope is used
+	// todo: kill with fire
 	var/zoomdevicename = null
 	/// TRUE if item is actively being used to zoom. For scoped guns and binoculars.
+	// todo: kill with fire
 	var/zoom = FALSE
 	/// 0 won't embed, and 100 will always embed
 	var/embed_chance = EMBED_CHANCE_UNSET
