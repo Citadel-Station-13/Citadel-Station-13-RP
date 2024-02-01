@@ -677,6 +677,7 @@
  * * dt - seconds to simulate
  */
 /mob/living/carbon/human/handle_environment(datum/gas_mixture/environment, dt)
+	// todo: rework all of this. again. on characters v2.
 
 	// legacy: species special processes
 	//Stuff like the xenomorph's plasma regen happens here.
@@ -760,7 +761,7 @@
 		var/to_nominal = nominal - bodytemperature
 		var/is_stabilizing = ((to_nominal > 0? 1 : -1) == (difference > 0? 1 : -1)) && \
 			((abs(nominal - environment_temperature) < MOB_BODYTEMP_EQUALIZATION_FAVORABLE_LEEWAY) || \
-				(abs(nominal - bodytemperature) > MOb_BODYTEMP_EQUALIZATION_FAVORABLE_FORCED_THRESHOLD) \
+				(abs(nominal - bodytemperature) > MOB_BODYTEMP_EQUALIZATION_FAVORABLE_FORCED_THRESHOLD) \
 			)
 
 		var/adjust = is_stabilizing? \
