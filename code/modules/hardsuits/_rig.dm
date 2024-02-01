@@ -249,9 +249,9 @@
 	ASSERT(isnull(obj_storage))
 	init_storage()
 
-	obj_storage.set_insertion_allow(insertion_allow)
-	obj_storage.set_insertion_whitelist(insertion_whitelist)
-	obj_storage.set_insertion_blacklist(insertion_blacklist)
+	obj_storage.set_insertion_allow(storage_insertion_allow)
+	obj_storage.set_insertion_whitelist(storage_insertion_whitelist)
+	obj_storage.set_insertion_blacklist(storage_insertion_blacklist)
 
 	obj_storage.max_single_weight_class = storage_max_single_weight_class
 	obj_storage.max_combined_weight_class = storage_max_combined_weight_class

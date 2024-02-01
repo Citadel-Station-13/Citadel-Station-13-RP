@@ -171,7 +171,7 @@
 	var/mob/user = worn_mob()
 	if(isnull(user))
 		return
-	INVOKE_ASYNC(src, PROC_REF(autoload, user, O))
+	INVOKE_ASYNC(src, PROC_REF(autoload), user, O)
 
 /obj/item/storage/bag/ore/proc/autoload(mob/user, obj/item/stack/ore/piece_of_ore)
 	var/turf/target = piece_of_ore.loc
