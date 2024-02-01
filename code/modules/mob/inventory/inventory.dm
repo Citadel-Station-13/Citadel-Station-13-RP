@@ -54,12 +54,12 @@
 		if(/datum/inventory_slot_meta/abstract/put_in_belt)
 			var/obj/item/held = item_by_slot(SLOT_ID_BELT)
 			if(flags & INV_OP_FORCE)
-				return held?.obj_storage.insert(I, new /datum/event_args/actor(src), flags & INV_OP_SUPPRESS_SOUND)
+				return held?.obj_storage?.insert(I, new /datum/event_args/actor(src), flags & INV_OP_SUPPRESS_SOUND)
 			return held?.obj_storage?.auto_handle_interacted_insertion(I, new /datum/event_args/actor(src), flags & INV_OP_SUPPRESS_WARNING, flags & INV_OP_SUPPRESS_SOUND)
 		if(/datum/inventory_slot_meta/abstract/put_in_backpack)
 			var/obj/item/held = item_by_slot(SLOT_ID_BACK)
 			if(flags & INV_OP_FORCE)
-				return held?.obj_storage.insert(I, new /datum/event_args/actor(src), flags & INV_OP_SUPPRESS_SOUND)
+				return held?.obj_storage?.insert(I, new /datum/event_args/actor(src), flags & INV_OP_SUPPRESS_SOUND)
 			return held?.obj_storage?.auto_handle_interacted_insertion(I, new /datum/event_args/actor(src), flags & INV_OP_SUPPRESS_WARNING, flags & INV_OP_SUPPRESS_SOUND)
 		if(/datum/inventory_slot_meta/abstract/put_in_hands)
 			return put_in_hands(I, flags)
@@ -80,9 +80,11 @@
 				SLOT_ID_LEFT_POCKET,
 				SLOT_ID_RIGHT_POCKET
 			)) + get_held_items())
+				if(isnull(held?.obj_storage))
+					continue
 				if(flags & INV_OP_FORCE)
-					return held?.obj_storage.insert(I, new /datum/event_args/actor(src), flags & INV_OP_SUPPRESS_SOUND)
-				return held?.obj_storage?.auto_handle_interacted_insertion(I, new /datum/event_args/actor(src), flags & INV_OP_SUPPRESS_WARNING, flags & INV_OP_SUPPRESS_SOUND)
+					return held.obj_storage.insert(I, new /datum/event_args/actor(src), flags & INV_OP_SUPPRESS_SOUND)
+				return held.obj_storage.auto_handle_interacted_insertion(I, new /datum/event_args/actor(src), flags & INV_OP_SUPPRESS_WARNING, flags & INV_OP_SUPPRESS_SOUND)
 			return FALSE
 		if(/datum/inventory_slot_meta/abstract/attach_as_accessory)
 			for(var/obj/item/clothing/C in get_equipped_items())

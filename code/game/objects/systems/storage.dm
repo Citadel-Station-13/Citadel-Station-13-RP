@@ -693,7 +693,7 @@
 
 /datum/object_system/storage/proc/auto_handle_interacted_mass_transfer(datum/event_args/actor/actor, datum/object_system/storage/to_storage)
 	if(is_locked(actor))
-		actor.chat_feedback(
+		actor?.chat_feedback(
 			msg = SPAN_WARNING("[parent] is locked."),
 			target = parent,
 		)
@@ -705,7 +705,7 @@
 
 /datum/object_system/storage/proc/auto_handle_interacted_mass_pickup(datum/event_args/actor/actor, atom/from_where)
 	if(is_locked(actor))
-		actor.chat_feedback(
+		actor?.chat_feedback(
 			msg = SPAN_WARNING("[parent] is locked."),
 			target = parent,
 		)
@@ -717,7 +717,7 @@
 
 /datum/object_system/storage/proc/auto_handle_interacted_mass_dumping(datum/event_args/actor/actor, atom/to_where)
 	if(is_locked(actor))
-		actor.chat_feedback(
+		actor?.chat_feedback(
 			msg = SPAN_WARNING("[parent] is locked."),
 			target = parent,
 		)
@@ -734,13 +734,13 @@
 
 	if(!length(transferring))
 		if(!silent)
-			actor.chat_feedback(
+			actor?.chat_feedback(
 				msg = "There's nothing to transfer out of [parent].",
 				target = src,
 			)
 		return
 	if(!silent)
-		actor.chat_feedback(
+		actor?.chat_feedback(
 			msg = "You start transferring the contents of [parent] to [to_storage.parent]",
 			target = src,
 		)
@@ -754,12 +754,12 @@
 
 	if(!silent)
 		if(!length(rejections))
-			actor.chat_feedback(
+			actor?.chat_feedback(
 				msg = "You finish transferring everything out from [parent].",
 				target = src,
 			)
 		else
-			actor.chat_feedback(
+			actor?.chat_feedback(
 				msg = "You fail to transfer some things out of [parent].",
 				target = src,
 			)
@@ -776,10 +776,12 @@
 			return
 		if(STORAGE_QUICK_GATHER_COLLECT_ALL)
 			transferring = list()
+			from_loc = get_turf(from_loc)
 			for(var/obj/item/item in from_loc)
 				transferring += item
 		if(STORAGE_QUICK_GATHER_COLLECT_SAME)
 			transferring = list()
+			from_loc = get_turf(from_loc)
 			for(var/obj/item/item in from_loc)
 				if(item.type != from_loc.type)
 					continue
@@ -788,7 +790,7 @@
 	if(!length(transferring))
 		return
 	if(!silent)
-		actor.chat_feedback(
+		actor?.chat_feedback(
 			msg = "You start gathering things from [from_loc] with [parent].",
 			target = src,
 		)
@@ -807,13 +809,13 @@
 
 	if(!length(transferring))
 		if(!silent)
-			actor.chat_feedback(
+			actor?.chat_feedback(
 				msg = "There's nothing to dump out of [parent].",
 				target = src,
 			)
 		return
 	if(!silent)
-		actor.chat_feedback(
+		actor?.chat_feedback(
 			msg = "You start dumping out the contents of [parent].",
 			target = src,
 		)
@@ -827,12 +829,12 @@
 
 	if(!silent)
 		if(!length(rejections))
-			actor.chat_feedback(
+			actor?.chat_feedback(
 				msg = "You finish dumping everything out of [parent].",
 				target = src,
 			)
 		else
-			actor.chat_feedback(
+			actor?.chat_feedback(
 				msg = "You fail to dump some things out of [parent].",
 				target = src,
 			)

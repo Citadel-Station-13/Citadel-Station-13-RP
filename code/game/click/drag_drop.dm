@@ -16,6 +16,9 @@
 	return TRUE
 
 /atom/MouseDrop(atom/over_object, src_location, over_location, src_control, over_control, params)
+	// no clickdrag to self
+	if(over_object == src)
+		return
 	// cache incase thsi somehow gets lost
 	var/user = usr
 	if(!user || !over_object)
@@ -27,7 +30,7 @@
 		return
 
 	// shit proximity check, refactor later
-	var/proximity = Adjacent(usr) && over_object.Adjacent(usr)
+	var/proximity = usr.Reachability(src) && ((over_object == usr) || usr.Reachability(over_object))
 	if(proximity)
 		// this one only runs if the above pass. legacy behavior.
 		if(over_object.MouseDroppedOnLegacy(src, user, params) & CLICKCHAIN_DO_NOT_PROPAGATE)
