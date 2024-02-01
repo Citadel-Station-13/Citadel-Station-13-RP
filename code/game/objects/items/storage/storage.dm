@@ -89,6 +89,10 @@
 	obj_storage.allow_mass_gather_mode_switch = allow_mass_gather_mode_switch
 	obj_storage.mass_gather_mode = mass_gather_mode
 
+	obj_storage.allow_quick_empty = allow_quick_empty
+	obj_storage.allow_quick_empty_via_clickdrag = allow_quick_empty_via_clickdrag
+	obj_storage.allow_quick_empty_via_attack_self = allow_quick_empty_via_attack_self
+
 	obj_storage.sfx_open = sfx_open
 	obj_storage.sfx_insert = sfx_insert
 	obj_storage.sfx_remove = sfx_remove
