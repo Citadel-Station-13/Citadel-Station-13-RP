@@ -21,6 +21,7 @@
 		for(var/obj/item/stack/ore/ore in I)
 			ore.forceMove(src)
 			offloaded = TRUE
+		I.obj_storage?.refresh()
 		if(offloaded)
 			user.visible_message(SPAN_NOTICE("[user] offloads ores from [I] into [src]."), SPAN_NOTICE("You offload the ores in [I] into [src]."))
 	else if (istype(I, /obj/item/storage))

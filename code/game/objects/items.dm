@@ -1103,5 +1103,19 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 				// check, as worn_mob() returns /mob, not /living
 				if(istype(L))
 					L.update_item_slowdown()
+		if(NAMEOF(src, w_class))
+			if(!isnum(var_value) && !raw_edit)
+				return FALSE
+			if((var_value < WEIGHT_CLASS_MIN) || (var_value > WEIGHT_CLASS_MAX))
+				return FALSE
+			set_weight_class(var_value)
+			return TRUE
+		if(NAMEOF(src, weight_volume))
+			if(!isnum(var_value) && !raw_edit)
+				return FALSE
+			if(var_value < 0)
+				return FALSE
+			set_weight_volume(var_value)
+			return TRUE
 		else
 			return ..()

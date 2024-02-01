@@ -48,6 +48,9 @@
 // todo: lmao this is so outdated, semantically
 // keep this 1 to n, and make sure w_class_to_volume is updated.
 
+#define WEIGHT_CLASS_MIN 0
+#define WEIGHT_CLASS_MAX 6
+
 /// Usually items smaller then a human hand, ex: Playing Cards, Lighter, Scalpel, Coins/Money
 #define WEIGHT_CLASS_TINY     1
 /// Pockets can hold small and tiny items, ex: Flashlight, Multitool, Grenades, GPS Device

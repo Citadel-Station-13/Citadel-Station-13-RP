@@ -354,6 +354,8 @@
 
 /datum/object_system/storage/proc/on_contents_weight_class_change(obj/item/item, old_weight_class, new_weight_class)
 	cached_combined_weight_class += (new_weight_class - old_weight_class)
+	if(isnull(item.weight_volume))
+		on_contents_weight_volume_change(item, global.w_class_to_volume[old_weight_class], global.w_class_to_volume[new_weight_class])
 
 /datum/object_system/storage/proc/on_contents_weight_volume_change(obj/item/item, old_weight_volume, new_weight_volume)
 	cached_combined_volume += (new_weight_volume - old_weight_volume)
@@ -851,17 +853,12 @@
 		playsound(parent, sfx_remove, 50, TRUE, -4)
 
 	var/list/rejections = list()
-	to_chat(world, "[__FILE__] [__LINE__]")
 	var/i = 0
 	while(do_after(actor.performer, 0.5 SECONDS, parent, NONE, MOBILITY_CAN_STORAGE | MOBILITY_CAN_PICKUP))
 		++i
-		to_chat(world, "[__FILE__] [__LINE__] [i]")
 		var/keep_going = mass_storage_dumping_handler(transferring, to_loc, actor, rejections)
-		to_chat(world, "[__FILE__] [__LINE__] [i]")
 		if(!keep_going)
 			break
-		to_chat(world, "[__FILE__] [__LINE__] [i]")
-	to_chat(world, "[__FILE__] [__LINE__]")
 
 	if(!silent)
 		if(length(rejections))
@@ -1425,9 +1422,9 @@
 /datum/object_system/storage/stack/mass_storage_dumping_handler(list/obj/item/things, atom/to_loc, datum/event_args/actor/actor, list/rejections_out, trigger_on_found)
 	// todo: this is just a copypaste and god, that fucking sucks.
 	var/atom/indirection = real_contents_loc()
-	var/i
-	. = FALSE
-	for(i in length(things) to 1 step -1)
+	var/i = length(things)
+	. = TRUE
+	while(i > 0)
 		var/obj/item/stack/transferring = things[i]
 		//! UH OH, STACK STORAGE SPECIFIC CODE HERE
 		// make sure they're the right type
@@ -1440,6 +1437,7 @@
 			continue
 		// handle on open hooks if needed
 		if(trigger_on_found && actor?.performer.active_storage != src && transferring.on_containing_storage_opening(actor, src))
+			. = FALSE
 			break
 		// see if we can remove it
 		if(!try_remove(transferring, to_loc, actor, TRUE, TRUE, TRUE))
@@ -1450,15 +1448,18 @@
 		var/obj/item/stack/remaining = locate(transferring_type) in indirection
 		if(!isnull(remaining))
 			// swap it back
-			things[i] = remaining
 			// and don't cut it out just yet
-			i++
+			things[i] = remaining
+		else
+			// cut it out
+			i--
 		//! END
 		// stop if overtaxed
 		if(TICK_CHECK)
-			. = TRUE
 			break
-	things.Cut(i, length(things) + 1)
+	if(i < length(things))
+		things.Cut(i + 1, length(things) + 1)
+	return . && length(things)
 
 /datum/object_system/storage/stack/render_numerical_display(list/obj/item/for_items)
 	var/list/not_stack = list()
