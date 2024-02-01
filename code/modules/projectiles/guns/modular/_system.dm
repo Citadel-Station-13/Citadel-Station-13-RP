@@ -2,10 +2,12 @@
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
 /**
- * master system for modular weapons
+ * master system for modular guns
  *
  * used to make code-reuse less on implementing types
  */
-/datum/modular_weapon_system
+/datum/modular_gun_system
+	/// attached gun
+	var/obj/item/gun/gun
 
 #warn impl

@@ -6,4 +6,7 @@
  */
 /obj/item/modular_gun_part/barrel
 
+/obj/item/modular_gun_part/barrel/proc/modify_outgoing_projectile(obj/projectile/projectile)
+	return
+
 #warn impl
