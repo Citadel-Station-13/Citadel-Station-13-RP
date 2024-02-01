@@ -1378,9 +1378,10 @@
 	if(!istype(inserting, /obj/item/stack))
 		// how the fuck
 		CRASH("attempted to physically insert a non stack")
+	var/obj/item/stack/stack = inserting
+	cached_combined_stack_amount += stack.amount
 	if(no_move)
 		return ..()
-	var/obj/item/stack/stack = inserting
 	var/atom/indirection = real_contents_loc()
 	for(var/obj/item/stack/other in indirection)
 		if(!stack.can_merge(other))
@@ -1405,9 +1406,10 @@
 	if(!istype(removing, /obj/item/stack))
 		// how the fuck
 		CRASH("attempted to physically insert a non stack")
+	var/obj/item/stack/stack = removing
+	cached_combined_stack_amount -= stack.amount
 	if(no_move)
 		return ..()
-	var/obj/item/stack/stack = removing
 	if(stack.amount <= stack.max_amount)
 		return ..()
 	var/obj/item/stack/staying_inside = stack.split(stack.amount - stack.max_amount, null, TRUE)
