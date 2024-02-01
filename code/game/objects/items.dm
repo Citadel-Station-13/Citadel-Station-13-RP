@@ -368,10 +368,13 @@
 		ghost.animate_towards(user)
 
 /obj/item/OnMouseDrop(atom/over, mob/user, proximity, params)
+	. = ..()
+	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
+		return
 	if(anchored)	// Don't.
-		return ..()
+		return
 	if(user.restrained())
-		return ..()	// don't.
+		return	// don't.
 		// todo: restraint levels, e.g. handcuffs vs straightjacket
 	if(!user.is_in_inventory(src))
 		// not being held
@@ -401,7 +404,6 @@
 				user.visible_message(SPAN_NOTICE("[user] slides [src] over."), SPAN_NOTICE("You slide [src] over."), range = MESSAGE_RANGE_COMBAT_SUBTLE)
 			log_inventory("[user] slid [src] from [COORD(old)] to [COORD(over)]")
 			return CLICKCHAIN_DO_NOT_PROPAGATE
-		return ..()
 	else
 		// being held, check for attempt unequip
 		if(istype(over, /atom/movable/screen/inventory/hand))
@@ -415,7 +417,6 @@
 		else if(istype(over, /turf))
 			user.drop_item_to_ground(src)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
-		return ..()
 
 // funny!
 /mob/proc/CanSlideItem(obj/item/I, turf/over)

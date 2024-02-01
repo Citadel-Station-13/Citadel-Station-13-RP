@@ -51,6 +51,8 @@
  * - user - the person dropping it
  * - proximity - can we reach the thing?
  * - params - click params
+ *
+ * @return clickchain flags
  */
 /atom/proc/OnMouseDrop(atom/over, mob/user, proximity, params)
 	return NONE
@@ -72,6 +74,8 @@
  * - user - the person dropping it
  * - proximity - can we reach the thing?
  * - params - click params
+ *
+ * @return clickchain flags
  */
 /atom/proc/MouseDroppedOn(atom/dropping, mob/user, proximity, params)
 	return NONE

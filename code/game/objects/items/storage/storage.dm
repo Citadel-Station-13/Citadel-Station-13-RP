@@ -23,9 +23,9 @@
 	var/allow_mass_gather_mode_switch = TRUE
 	var/mass_gather_mode = STORAGE_QUICK_GATHER_COLLECT_ALL
 
-	var/allow_quick_empty = FALSE
+	var/allow_quick_empty = TRUE
 	var/allow_quick_empty_via_clickdrag = TRUE
-	var/allow_quick_empty_via_attack_self = TRUE
+	var/allow_quick_empty_via_attack_self = FALSE
 
 	var/sfx_open = "rustle"
 	var/sfx_insert = "rustle"

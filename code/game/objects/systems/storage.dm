@@ -424,6 +424,7 @@
 			visible = "[actor.performer] puts [inserting] into [parent].",
 			visible_self = "You put [inserting] into [parent]",
 		)
+	return TRUE
 
 /datum/object_system/storage/proc/try_insert(obj/item/inserting, datum/event_args/actor/actor, silent, suppressed, no_update)
 	if(!can_be_inserted(inserting, actor, silent))
@@ -512,6 +513,7 @@
 			visible = "[actor.performer] takes [removing] out of [parent].",
 			visible_self = "You take [removing] out of [parent]",
 		)
+	return TRUE
 
 /datum/object_system/storage/proc/try_remove(obj/item/removing, atom/to_where, datum/event_args/actor/actor, silent, suppressed, no_update)
 	return remove(removing, to_where, actor, suppressed, no_update)
@@ -746,9 +748,8 @@
 		playsound(parent, sfx_insert, 50, TRUE, -4)
 
 	var/list/rejections = list()
-	var/datum/progressbar/progress = new(actor.performer, length(transferring), actor.performer)
-	while(do_after(actor.performer, 1 SECONDS, parent, DO_AFTER_NO_PROGRESS, MOBILITY_CAN_STORAGE | MOBILITY_CAN_PICKUP))
-		if(!mass_storage_transfer_handler(transferring, to_storage, progress, actor, rejections))
+	while(do_after(actor.performer, 1 SECONDS, parent, NONE, MOBILITY_CAN_STORAGE | MOBILITY_CAN_PICKUP))
+		if(!mass_storage_transfer_handler(transferring, to_storage, actor, rejections))
 			break
 
 	if(!silent)
@@ -759,10 +760,9 @@
 			)
 		else
 			actor.chat_feedback(
-				msg = "You fail to transfer some things out of[parent].",
+				msg = "You fail to transfer some things out of [parent].",
 				target = src,
 			)
-	qdel(progress)
 
 	refresh()
 
@@ -796,11 +796,9 @@
 		playsound(parent, sfx_insert, 50, TRUE, -4)
 
 	var/list/rejections = list()
-	var/datum/progressbar/progress = new(actor.performer, length(transferring), actor.performer)
-	while(do_after(actor.performer, 1 SECONDS, parent, DO_AFTER_NO_PROGRESS, MOBILITY_CAN_STORAGE | MOBILITY_CAN_PICKUP))
-		if(!mass_storage_pickup_handler(transferring, from_loc, progress, actor, rejections))
+	while(do_after(actor.performer, 1 SECONDS, parent, NONE, MOBILITY_CAN_STORAGE | MOBILITY_CAN_PICKUP))
+		if(!mass_storage_pickup_handler(transferring, from_loc, actor, rejections))
 			break
-	qdel(progress)
 
 	refresh()
 
@@ -823,11 +821,9 @@
 		playsound(parent, sfx_remove, 50, TRUE, -4)
 
 	var/list/rejections = list()
-	var/datum/progressbar/progress = new(actor.performer, length(transferring), actor.performer)
-	while(do_after(actor.performer, 1 SECONDS, parent, DO_AFTER_NO_PROGRESS, MOBILITY_CAN_STORAGE | MOBILITY_CAN_PICKUP))
-		if(!mass_storage_dumping_handler(transferring, to_loc, progress, actor, rejections))
+	while(do_after(actor.performer, 1 SECONDS, parent, NONE, MOBILITY_CAN_STORAGE | MOBILITY_CAN_PICKUP))
+		if(!mass_storage_dumping_handler(transferring, to_loc, actor, rejections))
 			break
-	qdel(progress)
 
 	if(!silent)
 		if(!length(rejections))
@@ -862,7 +858,7 @@
  *
  * @return TRUE if not done, FALSE if done.
  */
-/datum/object_system/storage/proc/mass_storage_transfer_handler(list/obj/item/things, datum/object_system/storage/to_storage, datum/progressbar/progress, datum/event_args/actor/actor, list/obj/item/rejections_out = list(), trigger_on_found = TRUE)
+/datum/object_system/storage/proc/mass_storage_transfer_handler(list/obj/item/things, datum/object_system/storage/to_storage, datum/event_args/actor/actor, list/obj/item/rejections_out = list(), trigger_on_found = TRUE)
 	var/atom/indirection = real_contents_loc()
 	var/i
 	. = FALSE
@@ -882,7 +878,6 @@
 		if(TICK_CHECK)
 			. = TRUE
 			break
-	progress.update(progress.goal - length(things) + i)
 	things.Cut(i, length(things) + 1)
 
 /**
@@ -903,7 +898,7 @@
  *
  * @return TRUE if not done, FALSE if done
  */
-/datum/object_system/storage/proc/mass_storage_pickup_handler(list/obj/item/things, atom/from_loc, datum/progressbar/progress, datum/event_args/actor/actor, list/rejections_out = list())
+/datum/object_system/storage/proc/mass_storage_pickup_handler(list/obj/item/things, atom/from_loc, datum/event_args/actor/actor, list/rejections_out = list())
 	var/i
 	. = FALSE
 	for(i in length(things) to 1 step -1)
@@ -919,7 +914,6 @@
 		if(TICK_CHECK)
 			. = TRUE
 			break
-	progress.update(progress.goal - length(things) + i)
 	things.Cut(i, length(things) + 1)
 
 /**
@@ -941,7 +935,7 @@
  *
  * @return TRUE if not done, FALSE if done
  */
-/datum/object_system/storage/proc/mass_storage_dumping_handler(list/obj/item/things, atom/to_loc, datum/progressbar/progress, datum/event_args/actor/actor, list/rejections_out = list(), trigger_on_found = TRUE)
+/datum/object_system/storage/proc/mass_storage_dumping_handler(list/obj/item/things, atom/to_loc, datum/event_args/actor/actor, list/rejections_out = list(), trigger_on_found = TRUE)
 	var/atom/indirection = real_contents_loc()
 	var/i
 	. = FALSE
@@ -961,7 +955,6 @@
 		if(TICK_CHECK)
 			. = TRUE
 			break
-	progress.update(progress.goal - length(things) + i)
 	things.Cut(i, length(things) + 1)
 
 /**
@@ -1364,7 +1357,7 @@
 	removing = actually_removing
 	return ..()
 
-/datum/object_system/storage/stack/mass_storage_dumping_handler(list/obj/item/things, atom/to_loc, datum/progressbar/progress, datum/event_args/actor/actor, list/rejections_out, trigger_on_found)
+/datum/object_system/storage/stack/mass_storage_dumping_handler(list/obj/item/things, atom/to_loc, datum/event_args/actor/actor, list/rejections_out, trigger_on_found)
 	// todo: this is just a copypaste and god, that fucking sucks.
 	var/atom/indirection = real_contents_loc()
 	var/i
@@ -1396,7 +1389,6 @@
 		if(TICK_CHECK)
 			. = TRUE
 			break
-	progress.update(progress.goal - length(things) + i)
 	things.Cut(i, length(things) + 1)
 
 /datum/object_system/storage/stack/render_numerical_display(list/obj/item/for_items)

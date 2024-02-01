@@ -24,6 +24,7 @@
 
 	allow_mass_gather = TRUE
 	allow_quick_empty = TRUE
+	allow_quick_empty_via_attack_self = TRUE
 
 	var/auto_fit_weight_class_to_largest_contained = TRUE
 
