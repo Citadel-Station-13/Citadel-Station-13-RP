@@ -18,7 +18,6 @@
 		/obj/item/flashlight,
 		/obj/item/tank,
 		/obj/item/suit_cooling_unit,
-		/obj/item/storage/backpack,
 		/obj/item/storage/briefcase/inflatable,
 		/obj/item/t_scanner,
 		/obj/item/rcd
@@ -77,7 +76,6 @@
 		/obj/item/t_scanner,
 		/obj/item/pickaxe,
 		/obj/item/rcd,
-		/obj/item/storage/backpack,
 		/obj/item/bluespace_radio,
 	)
 
