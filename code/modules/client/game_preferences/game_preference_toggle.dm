@@ -101,17 +101,33 @@ GLOBAL_LIST_INIT(game_preference_toggles, init_game_preference_toggles())
 	description = "Enable rendering messages sent by mobs over their icon on the map."
 
 /datum/game_preference_toggle/game/help_intent_firing
-	name = "Help intent gun safety"
+	name = "Help Intent Gun Safety"
 	description = "If on, do not allow firing weapons in help intent."
 	key = "HelpIntentGunSafety"
 	legacy_key = "HELP_INTENT_SAFETY"
 	default_value = FALSE
+
+/datum/game_preference_toggle/game/legacy_name_highlight
+	name = "Emphasize Name Mentions"
+	description = "Enlargen messages calling you by name."
+	key = "LegacyNameMention"
+	legacy_key = "CHAT_MENTION"
 
 #warn impl
 
 /datum/game_preference_toggle/ambience
 	abstract_type = /datum/game_preference_toggle/ambience
 	category = "Sound - Ambience"
+
+/datum/game_preference_toggle/ambience/supermatter_hum
+	name = "Supermatter Hum"
+	key = "SupermatterAmbience"
+	legacy_key = "SOUND_SUPERMATTER"
+
+/datum/game_preference_toggle/ambience/weather
+	name = "Weather Sounds"
+	key = "WeatherAmbience"
+	legacy_key = "SOUND_WEATHER"
 
 #warn impl
 
@@ -167,6 +183,18 @@ GLOBAL_LIST_INIT(game_preference_toggles, init_game_preference_toggles())
 /datum/game_preference_toggle/vore_sounds
 	abstract_type = /datum/game_preference_toggle/vore_sounds
 	category = "Sound - Vore"
+
+/datum/game_preference_toggle/vore_sounds/eating_noises
+	name = "Eating Noises"
+	key = "VoreEatingSounds"
+	default_value = FALSE
+	legacy_key = "EATING_NOISES"
+
+/datum/game_preference_toggle/vore_sounds/digestion_noises
+	name = "Digestion Noises"
+	key = "VoreDigestionSounds"
+	default_value = FALSE
+	legacy_key = "DIGEST_NOISES"
 
 #warn impl
 

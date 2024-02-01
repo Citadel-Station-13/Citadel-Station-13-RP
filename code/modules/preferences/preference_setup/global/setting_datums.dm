@@ -16,40 +16,6 @@
 * Player Preferences *
 *********************/
 
-
-/datum/client_preference/play_ambiance
-	description ="Play ambience"
-	key = "SOUND_AMBIENCE"
-
-/datum/client_preference/play_ambiance/toggled(var/mob/preference_mob, var/enabled)
-	if(!enabled)
-		SEND_SOUND(preference_mob, sound(null, repeat = 0, wait = 0, volume = 0, channel = 1))
-		SEND_SOUND(preference_mob, sound(null, repeat = 0, wait = 0, volume = 0, channel = 2))
-
-/datum/client_preference/eating_noises
-	description = "Eating Noises"
-	key = "EATING_NOISES"
-	enabled_description = "Noisy"
-	disabled_description = "Silent"
-
-/datum/client_preference/digestion_noises
-	description = "Digestion Noises"
-	key = "DIGEST_NOISES"
-	enabled_description = "Noisy"
-	disabled_description = "Silent"
-
-/datum/client_preference/weather_sounds
-	description ="Weather sounds"
-	key = "SOUND_WEATHER"
-	enabled_description = "Audible"
-	disabled_description = "Silent"
-
-/datum/client_preference/supermatter_hum
-	description ="Supermatter hum"
-	key = "SOUND_SUPERMATTER"
-	enabled_description = "Audible"
-	disabled_description = "Silent"
-
 /datum/client_preference/ghost_ears
 	description ="Ghost ears"
 	key = "CHAT_GHOSTEARS"
@@ -84,12 +50,6 @@
 	key = "SUBTLE_SEE"
 	enabled_description = "Show"
 	disabled_description = "Hide"
-
-/datum/client_preference/check_mention
-	description ="Emphasize Name Mention"
-	key = "CHAT_MENTION"
-	enabled_description = "Emphasize"
-	disabled_description = "Normal"
 
 /datum/client_preference/ambient_occlusion
 	description = "Fake Ambient Occlusion"
