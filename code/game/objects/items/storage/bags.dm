@@ -164,7 +164,10 @@
 	var/obj/item/stack/ore/O = locate() in get_turf(src)
 	if(isnull(O))
 		return
-	obj_storage?.interacted_mass_pickup(from_loc = get_turf(src))
+	var/mob/user = worn_mob()
+	if(isnull(user))
+		return
+	obj_storage?.interacted_mass_pickup(new /datum/event_args/actor(user), from_loc = get_turf(src))
 	autodump()
 
 //Ashlander variant!

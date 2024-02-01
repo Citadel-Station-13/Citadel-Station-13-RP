@@ -691,6 +691,9 @@
 			mass_gather_mode = STORAGE_QUICK_GATHER_COLLECT_ONE
 			to_chat(user, SPAN_NOTICE("[parent] is now collecting one item at a time."))
 
+/**
+ * Actor is mandatory.
+ */
 /datum/object_system/storage/proc/auto_handle_interacted_mass_transfer(datum/event_args/actor/actor, datum/object_system/storage/to_storage)
 	if(is_locked(actor))
 		actor?.chat_feedback(
@@ -698,11 +701,13 @@
 			target = parent,
 		)
 		return TRUE
-	if(actor)
-		parent.add_fingerprint(actor.performer)
+	parent.add_fingerprint(actor.performer)
 	interacted_mass_transfer(actor, to_storage)
 	return TRUE
 
+/**
+ * Actor is mandatory.
+ */
 /datum/object_system/storage/proc/auto_handle_interacted_mass_pickup(datum/event_args/actor/actor, atom/from_where)
 	if(is_locked(actor))
 		actor?.chat_feedback(
@@ -710,11 +715,13 @@
 			target = parent,
 		)
 		return TRUE
-	if(actor)
-		parent.add_fingerprint(actor.performer)
+	parent.add_fingerprint(actor.performer)
 	interacted_mass_pickup(actor, from_where)
 	return TRUE
 
+/**
+ * Actor is mandatory.
+ */
 /datum/object_system/storage/proc/auto_handle_interacted_mass_dumping(datum/event_args/actor/actor, atom/to_where)
 	if(is_locked(actor))
 		actor?.chat_feedback(
@@ -722,11 +729,13 @@
 			target = parent,
 		)
 		return TRUE
-	if(actor)
-		parent.add_fingerprint(actor.performer)
+	parent.add_fingerprint(actor.performer)
 	interacted_mass_dumping(actor, to_where)
 	return TRUE
 
+/**
+ * Actor is mandatory.
+ */
 /datum/object_system/storage/proc/interacted_mass_transfer(datum/event_args/actor/actor, datum/object_system/storage/to_storage, silent, suppressed)
 	var/list/obj/item/transferring = list()
 	for(var/obj/item/item in real_contents_loc())
@@ -734,13 +743,13 @@
 
 	if(!length(transferring))
 		if(!silent)
-			actor?.chat_feedback(
+			actor.chat_feedback(
 				msg = "There's nothing to transfer out of [parent].",
 				target = src,
 			)
 		return
 	if(!silent)
-		actor?.chat_feedback(
+		actor.chat_feedback(
 			msg = "You start transferring the contents of [parent] to [to_storage.parent]",
 			target = src,
 		)
@@ -754,18 +763,21 @@
 
 	if(!silent)
 		if(!length(rejections))
-			actor?.chat_feedback(
+			actor.chat_feedback(
 				msg = "You finish transferring everything out from [parent].",
 				target = src,
 			)
 		else
-			actor?.chat_feedback(
+			actor.chat_feedback(
 				msg = "You fail to transfer some things out of [parent].",
 				target = src,
 			)
 
 	refresh()
 
+/**
+ * Actor is mandatory.
+ */
 /datum/object_system/storage/proc/interacted_mass_pickup(datum/event_args/actor/actor, atom/from_loc, silent, suppressed)
 	var/list/transferring
 	switch(mass_gather_mode)
@@ -790,7 +802,7 @@
 	if(!length(transferring))
 		return
 	if(!silent)
-		actor?.chat_feedback(
+		actor.chat_feedback(
 			msg = "You start gathering things from [from_loc] with [parent].",
 			target = src,
 		)
@@ -804,18 +816,21 @@
 
 	refresh()
 
+/**
+ * Actor is mandatory.
+ */
 /datum/object_system/storage/proc/interacted_mass_dumping(datum/event_args/actor/actor, atom/to_loc, silent, suppressed)
 	var/list/obj/item/transferring = mass_dumping_query()
 
 	if(!length(transferring))
 		if(!silent)
-			actor?.chat_feedback(
+			actor.chat_feedback(
 				msg = "There's nothing to dump out of [parent].",
 				target = src,
 			)
 		return
 	if(!silent)
-		actor?.chat_feedback(
+		actor.chat_feedback(
 			msg = "You start dumping out the contents of [parent].",
 			target = src,
 		)
@@ -829,12 +844,12 @@
 
 	if(!silent)
 		if(!length(rejections))
-			actor?.chat_feedback(
+			actor.chat_feedback(
 				msg = "You finish dumping everything out of [parent].",
 				target = src,
 			)
 		else
-			actor?.chat_feedback(
+			actor.chat_feedback(
 				msg = "You fail to dump some things out of [parent].",
 				target = src,
 			)
