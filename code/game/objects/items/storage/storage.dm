@@ -32,6 +32,7 @@
 	var/sfx_remove = "rustle"
 
 	var/ui_numerical_mode = FALSE
+	var/ui_expand_when_needed = FALSE
 
 	//* Initialization *//
 
@@ -98,3 +99,4 @@
 	obj_storage.sfx_remove = sfx_remove
 
 	obj_storage.ui_numerical_mode = ui_numerical_mode
+	obj_storage.ui_expand_when_needed = ui_expand_when_needed

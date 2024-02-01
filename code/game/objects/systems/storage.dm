@@ -180,6 +180,9 @@
 	var/list/ui_by_mob
 	/// stack stuff by number; defaults to types, please override the requisite proc to implement yours.
 	var/ui_numerical_mode = FALSE
+	/// show minimum number of slots necessary, expand as needed
+	/// currently only works for slot mode
+	var/ui_expand_when_needed = FALSE
 
 /datum/object_system/storage/New(obj/parent)
 	src.parent = parent
@@ -261,7 +264,7 @@
 //* Buttons *//
 
 /datum/object_system/storage/proc/ensure_buttons()
-	if(!allow_mass_gather_mode_switch)
+	if(!allow_mass_gather || !allow_mass_gather_mode_switch)
 		return
 	if(!isnull(action_mode_switch))
 		return
@@ -271,7 +274,7 @@
 
 /datum/object_system/storage/proc/grant_buttons(mob/wearer)
 	ensure_buttons()
-	if(!allow_mass_gather_mode_switch)
+	if(allow_mass_gather && allow_mass_gather_mode_switch)
 		action_mode_switch.grant(wearer)
 
 /datum/object_system/storage/proc/revoke_buttons(mob/wearer)
@@ -1132,6 +1135,9 @@
 	var/list/datum/storage_numerical_display/numerical_rendered = ui_numerical_mode && render_numerical_display()
 	// process indirection
 	var/atom/indirection = real_contents_loc()
+	// if we have expand when needed, only show 1 more than the actual amount.
+	if(ui_expand_when_needed)
+		rendering_width = min(rendering_width, (isnull(numerical_rendered)? length(indirection.contents) : length(numerical_rendered)) + 1)
 	// compute count and rows
 	var/item_count = isnull(numerical_rendered)? length(indirection.contents) : length(numerical_rendered)
 	var/rows_needed = ROUND_UP(item_count / rendering_width) || 1
@@ -1323,19 +1329,16 @@
 		return FALSE
 	var/obj/item/stack/stack = inserting
 	// insert a copy
-	var/allowed_amount = max_items - cached_combined_stack_amount
+	var/allowed_amount = min(stack.amount, max_items - cached_combined_stack_amount)
 	if(allowed_amount <= 0)
 		return
 	var/obj/item/stack/actually_inserting = new stack.type(stack.loc, allowed_amount)
 	inserting = actually_inserting
 	. = ..()
 	// fully inserted
-	if(. && actually_inserting.amount <= 0)
-		stack.use(stack.amount)
+	if(!.)
 		return
-	// merge back
-	stack.use(allowed_amount - actually_inserting.amount)
-	qdel(actually_inserting)
+	stack.use(allowed_amount)
 
 /datum/object_system/storage/stack/insert(obj/item/inserting, datum/event_args/actor/actor, suppressed, no_update, no_move)
 	if(!istype(inserting, /obj/item/stack))
