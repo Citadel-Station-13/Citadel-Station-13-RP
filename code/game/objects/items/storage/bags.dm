@@ -140,6 +140,7 @@
 	max_combined_weight_class = null
 	max_items = 300
 	storage_datum_path = /datum/object_system/storage/stack
+	ui_expand_when_needed = TRUE
 	insertion_whitelist = list(/obj/item/stack/ore)
 	auto_fit_weight_class_to_largest_contained = FALSE
 
@@ -242,6 +243,7 @@
 	allow_mass_gather = TRUE
 	allow_mass_gather_mode_switch = FALSE
 	auto_fit_weight_class_to_largest_contained = FALSE
+	ui_expand_when_needed = TRUE
 
 // -----------------------------
 //    Sheet Snatcher (Cyborg)

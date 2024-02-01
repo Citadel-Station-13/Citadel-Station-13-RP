@@ -173,9 +173,9 @@
 			S.use_charge(charge_costs[i] * used) // Doesn't need to be deleted
 		return TRUE
 
-/obj/item/stack/proc/add(extra)
+/obj/item/stack/proc/add(extra, force)
 	if(!uses_charge)
-		if(amount + extra > get_max_amount())
+		if((amount + extra > get_max_amount()) && !force)
 			return FALSE
 		else
 			amount += extra

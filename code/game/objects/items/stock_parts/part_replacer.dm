@@ -15,6 +15,7 @@
 	max_single_weight_class = WEIGHT_CLASS_NORMAL
 	max_items = 100
 	max_combined_volume = 100
+	ui_expand_when_needed = TRUE
 	materials_base = list(
 		MAT_STEEL = 8000,
 		MAT_GLASS = 2500,

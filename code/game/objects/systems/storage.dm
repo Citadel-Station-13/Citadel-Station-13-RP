@@ -1132,7 +1132,7 @@
 	if(max_items)
 		rendering_width = min(max_items, rendering_width)
 	// see if we need to process numerical display
-	var/list/datum/storage_numerical_display/numerical_rendered = ui_numerical_mode && render_numerical_display()
+	var/list/datum/storage_numerical_display/numerical_rendered = ui_numerical_mode? render_numerical_display() : null
 	// process indirection
 	var/atom/indirection = real_contents_loc()
 	// if we have expand when needed, only show 1 more than the actual amount.
@@ -1354,7 +1354,7 @@
 	for(var/obj/item/stack/other in indirection)
 		if(!stack.can_merge(other))
 			continue
-		other.add(stack.amount)
+		other.add(stack.amount, TRUE)
 		// this should delete the stack (?!)
 		stack.use(stack.amount)
 		return TRUE
