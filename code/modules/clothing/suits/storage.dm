@@ -59,7 +59,7 @@
 
 /obj/item/clothing/suit/storage/proc/initialize_storage()
 	ASSERT(isnull(obj_storage))
-	obj_storage = new(src)
+	init_storage(storage_datum_path)
 	obj_storage.set_insertion_allow(insertion_allow)
 	obj_storage.set_insertion_whitelist(insertion_whitelist)
 	obj_storage.set_insertion_blacklist(insertion_blacklist)

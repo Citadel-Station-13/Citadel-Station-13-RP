@@ -143,6 +143,7 @@
 
 /obj/item/hardsuit/Initialize(mapload)
 	. = ..()
+	initialize_storage()
 
 	suit_state = icon_state
 	item_state = icon_state
@@ -199,6 +200,10 @@
 		piece.set_armor(fetch_armor())
 
 	update_icon(1)
+
+/obj/item/hardsuit/proc/initialize_storage()
+	ASSERT(isnull(obj_storage))
+	init_storage()
 
 /obj/item/hardsuit/Destroy()
 	for(var/obj/item/piece in list(gloves,boots,helmet,chest))
