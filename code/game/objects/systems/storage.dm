@@ -421,6 +421,7 @@
 	if(!try_insert(inserting, actor, silent, suppressed))
 		return TRUE
 	// sound
+	// todo: put this in interacted_insert()..?
 	if(!suppressed && !isnull(actor))
 		if(sfx_insert)
 			// todo: variable sound
@@ -512,6 +513,7 @@
 		actor.performer.put_in_hands_or_drop(removing)
 	else
 		removing.forceMove(actor.performer.drop_location())
+	// todo: put this in interacted_insert()..?
 	if(!suppressed && !isnull(actor))
 		if(sfx_remove)
 			// todo: variable sound

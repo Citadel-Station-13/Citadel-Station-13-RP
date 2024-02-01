@@ -115,7 +115,7 @@
 		if(!silent)
 			to_chat(initiator, SPAN_WARNING("[equipped] doesn't have accessible storage."))
 		return FALSE
-	if(!equipped.obj_storage.try_insert(inserting, new /datum/event_args/actor(src, initiator), silent))
+	if(!equipped.obj_storage.auto_handle_interacted_insertion(inserting, new /datum/event_args/actor(src, initiator), silent))
 		return FALSE
 	return TRUE
 
@@ -149,11 +149,7 @@
 	var/datum/event_args/actor = new(src, initiator)
 	if(storage.obj_storage.check_on_found_hooks(actor))
 		return
-	. = storage.obj_storage.try_remove(removing, src, actor, silent)
-	if(!.)
-		return
-	if(!put_in_active_hand(removing))
-		removing.forceMove(drop_location())
+	return storage.obj_storage.auto_handle_interacted_removal(removing, actor, silent)
 
 /**
  * Automatically either put in hand object into a storage in a given slot, or
