@@ -27,7 +27,7 @@
 /// temperature of environment has to be within this range of favorable to be considered.. favorable
 #define MOB_BODYTEMP_EQUALIZATION_FAVORABLE_LEEWAY 30
 /// temperature difference of body from normal, if exceeding this much from normal, makes something able to be favorable even if it's outside of leeway.
-#define MOb_BODYTEMP_EQUALIZATION_FAVORABLE_FORCED_THRESHOLD 200
+#define MOB_BODYTEMP_EQUALIZATION_FAVORABLE_FORCED_THRESHOLD 200
 
 //?  CPR
 /// how long CPR suppresses brain decay
