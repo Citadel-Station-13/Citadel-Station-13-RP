@@ -1246,6 +1246,10 @@
 	// now that everything's set up, we can render everything based on the solved sizes.
 	// middle size; we also keep in account padding so there's a smooth expansion instead of a sudden expansion at the end.
 	var/middle_width = max(maximum_used_width, rendering_width_in_pixels + iteration_used_padding)
+	// i hate byond i hate byond i hate byond i hate byond; this is because things break if we don't extend by 2 pixels
+	// at a time for left/right as we use a dumb transform matrix and screen loc to shift, instead of a scale and shift matrix
+	middle_width = CEILING(middle_width, 2)
+	// todo: instead of this crap we should instead have the translation matrix do the shift
 	var/middle_shift = round(middle_width * 0.5 - VOLUMETRIC_STORAGE_BOX_ICON_SIZE * 0.5)
 	// render left
 	var/atom/movable/screen/storage/panel/volumetric/left/p_left = new
