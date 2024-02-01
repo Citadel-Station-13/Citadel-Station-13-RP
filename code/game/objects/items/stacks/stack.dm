@@ -218,18 +218,18 @@
 
 /// Creates a new stack with the specified amount.
 // todo: refactor and combine /change_stack into here
-/obj/item/stack/proc/split(tamount)
+/obj/item/stack/proc/split(tamount, atom/where, force)
 	if (!amount)
 		return null
 	if (uses_charge)
 		return null
 
-	var/transfer = max(min(tamount, src.amount, initial(max_amount)), 0)
+	var/transfer = max(min(tamount, src.amount, force? INFINITY : initial(max_amount)), 0)
 
 	var/orig_amount = src.amount
 	if (transfer && src.use(transfer))
 		var/make_type = isnull(split_type)? type : split_type
-		var/obj/item/stack/newstack = new make_type(loc, transfer, FALSE)
+		var/obj/item/stack/newstack = new make_type(where, transfer, FALSE)
 		newstack.color = color
 		if (prob(transfer/orig_amount * 100))
 			transfer_fingerprints_to(newstack)

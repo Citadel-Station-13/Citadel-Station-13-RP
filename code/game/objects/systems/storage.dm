@@ -408,14 +408,16 @@
  * @return TRUE / FALSE; if true, caller should stop clickchain.
  */
 /datum/object_system/storage/proc/auto_handle_interacted_insertion(obj/item/inserting, datum/event_args/actor/actor, silent, suppressed)
-	if(is_locked(actor))
+	if(is_locked(actor.performer))
 		actor.chat_feedback(
 			msg = SPAN_WARNING("[parent] is locked."),
 			target = parent,
 		)
 		return TRUE
+	if(!actor.performer.Reachability(parent))
+		return TRUE
 	if(!try_insert(inserting, actor, silent, suppressed))
-		return
+		return TRUE
 	// sound
 	if(!suppressed && !isnull(actor))
 		if(sfx_insert)
@@ -433,7 +435,7 @@
 	if(!can_be_inserted(inserting, actor, silent))
 		return FALSE
 	// point of no return
-	if(inserting.worn_mob() == actor?.performer && !actor.performer.temporarily_remove_from_inventory(inserting, user = actor.performer))
+	if(actor && (inserting.worn_mob() == actor.performer && !actor.performer.temporarily_remove_from_inventory(inserting, user = actor.performer)))
 		if(!silent)
 			actor?.chat_feedback(
 				msg = SPAN_WARNING("[inserting] is stuck to your hand / body!"),
@@ -494,14 +496,16 @@
  * @return TRUE / FALSE
  */
 /datum/object_system/storage/proc/auto_handle_interacted_removal(obj/item/removing, datum/event_args/actor/actor, silent, suppressed, put_in_hands)
-	if(is_locked(actor))
+	if(is_locked(actor.performer))
 		actor.chat_feedback(
 			msg = SPAN_WARNING("[parent] is locked."),
 			target = parent,
 		)
 		return TRUE
+	if(!actor.performer.Reachability(parent))
+		return TRUE
 	if(!try_remove(removing, actor.performer, actor, silent, suppressed))
-		return
+		return TRUE
 	if(put_in_hands)
 		actor.performer.put_in_hands_or_drop(removing)
 	else
@@ -626,7 +630,11 @@
 
 //* Locking *//
 
-/datum/object_system/storage/proc/is_locked(datum/event_args/actor/actor)
+/**
+ * @params
+ * * accessing - the mob physically trying to reach in
+ */
+/datum/object_system/storage/proc/is_locked(mob/accessing)
 	return locked && (!lock_nullified_by_atom_break || !(parent.atom_flags & ATOM_BROKEN))
 
 /datum/object_system/storage/proc/set_locked(value)
@@ -698,7 +706,7 @@
  * Actor is mandatory.
  */
 /datum/object_system/storage/proc/auto_handle_interacted_mass_transfer(datum/event_args/actor/actor, datum/object_system/storage/to_storage)
-	if(is_locked(actor))
+	if(is_locked(actor.performer))
 		actor?.chat_feedback(
 			msg = SPAN_WARNING("[parent] is locked."),
 			target = parent,
@@ -712,7 +720,7 @@
  * Actor is mandatory.
  */
 /datum/object_system/storage/proc/auto_handle_interacted_mass_pickup(datum/event_args/actor/actor, atom/from_where)
-	if(is_locked(actor))
+	if(is_locked(actor.performer))
 		actor?.chat_feedback(
 			msg = SPAN_WARNING("[parent] is locked."),
 			target = parent,
@@ -726,7 +734,7 @@
  * Actor is mandatory.
  */
 /datum/object_system/storage/proc/auto_handle_interacted_mass_dumping(datum/event_args/actor/actor, atom/to_where)
-	if(is_locked(actor))
+	if(is_locked(actor.performer))
 		actor?.chat_feedback(
 			msg = SPAN_WARNING("[parent] is locked."),
 			target = parent,
@@ -760,9 +768,10 @@
 		playsound(parent, sfx_insert, 50, TRUE, -4)
 
 	var/list/rejections = list()
-	while(do_after(actor.performer, 1 SECONDS, parent, NONE, MOBILITY_CAN_STORAGE | MOBILITY_CAN_PICKUP))
+	while(do_after(actor.performer, 0.5 SECONDS, parent, NONE, MOBILITY_CAN_STORAGE | MOBILITY_CAN_PICKUP))
 		if(!mass_storage_transfer_handler(transferring, to_storage, actor, rejections))
 			break
+		stoplag(1)
 
 	if(!silent)
 		if(!length(rejections))
@@ -813,9 +822,10 @@
 		playsound(parent, sfx_insert, 50, TRUE, -4)
 
 	var/list/rejections = list()
-	while(do_after(actor.performer, 1 SECONDS, parent, NONE, MOBILITY_CAN_STORAGE | MOBILITY_CAN_PICKUP))
+	while(do_after(actor.performer, 0.5 SECONDS, parent, NONE, MOBILITY_CAN_STORAGE | MOBILITY_CAN_PICKUP))
 		if(!mass_storage_pickup_handler(transferring, from_loc, actor, rejections))
 			break
+		stoplag(1)
 
 	refresh()
 
@@ -841,19 +851,27 @@
 		playsound(parent, sfx_remove, 50, TRUE, -4)
 
 	var/list/rejections = list()
-	while(do_after(actor.performer, 1 SECONDS, parent, NONE, MOBILITY_CAN_STORAGE | MOBILITY_CAN_PICKUP))
-		if(!mass_storage_dumping_handler(transferring, to_loc, actor, rejections))
+	to_chat(world, "[__FILE__] [__LINE__]")
+	var/i = 0
+	while(do_after(actor.performer, 0.5 SECONDS, parent, NONE, MOBILITY_CAN_STORAGE | MOBILITY_CAN_PICKUP))
+		++i
+		to_chat(world, "[__FILE__] [__LINE__] [i]")
+		var/keep_going = mass_storage_dumping_handler(transferring, to_loc, actor, rejections)
+		to_chat(world, "[__FILE__] [__LINE__] [i]")
+		if(!keep_going)
 			break
+		to_chat(world, "[__FILE__] [__LINE__] [i]")
+	to_chat(world, "[__FILE__] [__LINE__]")
 
 	if(!silent)
-		if(!length(rejections))
-			actor.chat_feedback(
-				msg = "You finish dumping everything out of [parent].",
-				target = src,
-			)
-		else
+		if(length(rejections))
 			actor.chat_feedback(
 				msg = "You fail to dump some things out of [parent].",
+				target = src,
+			)
+		else if(!length(transferring))
+			actor.chat_feedback(
+				msg = "You finish dumping everything out of [parent].",
 				target = src,
 			)
 
@@ -881,7 +899,7 @@
 /datum/object_system/storage/proc/mass_storage_transfer_handler(list/obj/item/things, datum/object_system/storage/to_storage, datum/event_args/actor/actor, list/obj/item/rejections_out = list(), trigger_on_found = TRUE)
 	var/atom/indirection = real_contents_loc()
 	var/i
-	. = FALSE
+	. = TRUE
 	for(i in length(things) to 1 step -1)
 		var/obj/item/transferring = things[i]
 		// make sure they're still there
@@ -889,6 +907,7 @@
 			continue
 		// handle on open hooks if needed
 		if(trigger_on_found && actor?.performer.active_storage != src && transferring.on_containing_storage_opening(actor, src))
+			. = FALSE
 			break
 		// see if receiver can accept it
 		if(!to_storage.try_insert(transferring, actor, TRUE, TRUE, TRUE))
@@ -896,9 +915,9 @@
 			continue
 		// stop if overtaxed
 		if(TICK_CHECK)
-			. = TRUE
 			break
 	things.Cut(i, length(things) + 1)
+	return . && length(things)
 
 /**
  * handles mass item pickups
@@ -920,7 +939,7 @@
  */
 /datum/object_system/storage/proc/mass_storage_pickup_handler(list/obj/item/things, atom/from_loc, datum/event_args/actor/actor, list/rejections_out = list())
 	var/i
-	. = FALSE
+	. = TRUE
 	for(i in length(things) to 1 step -1)
 		var/obj/item/transferring = things[i]
 		// make sure they're still there
@@ -932,9 +951,9 @@
 			continue
 		// stop if overtaxed
 		if(TICK_CHECK)
-			. = TRUE
 			break
 	things.Cut(i, length(things) + 1)
+	return . && length(things)
 
 /**
  * handles mass item dumps
@@ -958,7 +977,7 @@
 /datum/object_system/storage/proc/mass_storage_dumping_handler(list/obj/item/things, atom/to_loc, datum/event_args/actor/actor, list/rejections_out = list(), trigger_on_found = TRUE)
 	var/atom/indirection = real_contents_loc()
 	var/i
-	. = FALSE
+	. = TRUE
 	for(i in length(things) to 1 step -1)
 		var/obj/item/transferring = things[i]
 		// make sure they're still there
@@ -966,6 +985,7 @@
 			continue
 		// handle on open hooks if needed
 		if(trigger_on_found && actor?.performer.active_storage != src && transferring.on_containing_storage_opening(actor, src))
+			. = FALSE
 			break
 		// see if we can remove it
 		if(!try_remove(transferring, to_loc, actor, TRUE, TRUE, TRUE))
@@ -973,16 +993,17 @@
 			continue
 		// stop if overtaxed
 		if(TICK_CHECK)
-			. = TRUE
 			break
 	things.Cut(i, length(things) + 1)
+	return . && length(things)
 
 /**
  * what to drop
  */
 /datum/object_system/storage/proc/mass_dumping_query()
 	var/atom/indirection = real_contents_loc()
-	return indirection.contents
+	// holy shit do a copy please
+	return indirection.contents.Copy()
 
 /**
  * drop everything at
@@ -997,7 +1018,7 @@
  * @return TRUE if we did something (to interrupt clickchain)
  */
 /datum/object_system/storage/proc/auto_handle_interacted_open(datum/event_args/actor/actor, force, suppressed)
-	if(!force && is_locked(actor))
+	if(!force && is_locked(actor.performer))
 		actor.chat_feedback(
 			msg = SPAN_WARNING("[parent] is locked."),
 			target = parent,
@@ -1020,7 +1041,6 @@
 	viewer.active_storage?.hide(viewer)
 	viewer.active_storage = src
 
-	RegisterSignal(viewer, COMSIG_MOVABLE_MOVED, PROC_REF(on_viewer_moved))
 	create_ui(viewer)
 
 	parent.object_storage_opened(viewer)
@@ -1039,7 +1059,6 @@
 	else
 		viewer.active_storage = null
 
-	UnregisterSignal(viewer, COMSIG_MOVABLE_MOVED)
 	cleanup_ui(viewer)
 
 	parent.object_storage_closed(viewer)
@@ -1049,12 +1068,6 @@
  */
 /datum/object_system/storage/proc/on_parent_moved(atom/old_loc, forced)
 	reconsider_mob_viewable()
-
-/**
- * Comsig hooked into anything viewing us
- */
-/datum/object_system/storage/proc/on_viewer_moved(datum/source, atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
-	reconsider_mob_viewable(source)
 
 /datum/object_system/storage/proc/refresh(mob/viewer)
 	if(isnull(viewer))
@@ -1108,7 +1121,7 @@
 	create_ui(user)
 
 /datum/object_system/storage/proc/create_ui(mob/user)
-	var/uses_volumetric_ui = max_combined_volume && !ui_numerical_mode
+	var/uses_volumetric_ui = uses_volumetric_ui()
 	var/list/atom/movable/screen/storage/objects
 	if(uses_volumetric_ui)
 		objects += create_ui_volumetric_mode(user)
@@ -1117,6 +1130,18 @@
 	LAZYINITLIST(ui_by_mob)
 	ui_by_mob[user] = objects
 	user.client?.screen += objects
+
+/**
+ * this should not rely on uses_numerical_ui()
+ */
+/datum/object_system/storage/proc/uses_volumetric_ui()
+	return max_combined_volume && !ui_numerical_mode
+
+/**
+ * this should not rely on uses_volumetric_ui()
+ */
+/datum/object_system/storage/proc/uses_numerical_ui()
+	return ui_numerical_mode
 
 /datum/object_system/storage/proc/create_ui_slot_mode(mob/user)
 	. = list()
@@ -1132,7 +1157,7 @@
 	if(max_items)
 		rendering_width = min(max_items, rendering_width)
 	// see if we need to process numerical display
-	var/list/datum/storage_numerical_display/numerical_rendered = ui_numerical_mode? render_numerical_display() : null
+	var/list/datum/storage_numerical_display/numerical_rendered = uses_numerical_ui()? render_numerical_display() : null
 	// process indirection
 	var/atom/indirection = real_contents_loc()
 	// if we have expand when needed, only show 1 more than the actual amount.
@@ -1151,11 +1176,11 @@
 	closer.screen_loc = "[STORAGE_UI_START_TILE_X + rendering_width]:[STORAGE_UI_START_PIXEL_X],[STORAGE_UI_START_TILE_Y]:[STORAGE_UI_START_PIXEL_Y]"
 	// render items
 	if(islist(numerical_rendered))
-		for(var/datum/storage_numerical_display/display as anything in render_numerical_display())
+		for(var/datum/storage_numerical_display/display as anything in numerical_rendered)
 			var/atom/movable/screen/storage/item/slot/renderer = new(null, display.rendered_object)
 			. += renderer
 			// render amount
-			renderer.maptext = MAPTEXT("[display.amount]")
+			display.rendered_object.maptext = MAPTEXT("[display.amount]")
 			// position
 			renderer.screen_loc = "[STORAGE_UI_START_TILE_X + current_column - 1]:[STORAGE_UI_START_PIXEL_X],\
 				[STORAGE_UI_START_TILE_Y + current_row - 1]:[STORAGE_UI_START_PIXEL_Y]"
@@ -1308,6 +1333,12 @@
 
 	var/cached_combined_stack_amount = 0
 
+/datum/object_system/storage/stack/uses_volumetric_ui()
+	return FALSE
+
+/datum/object_system/storage/stack/uses_numerical_ui()
+	return TRUE
+
 /datum/object_system/storage/stack/rebuild_caches()
 	. = ..()
 	cached_combined_stack_amount = 0
@@ -1324,6 +1355,8 @@
 /datum/object_system/storage/stack/check_insertion_limits(obj/item/candidate)
 	return cached_combined_stack_amount < max_items
 
+// insertion hooked to support partial inserts
+
 /datum/object_system/storage/stack/try_insert(obj/item/inserting, datum/event_args/actor/actor, silent, suppressed, no_update)
 	if(!istype(inserting, /obj/item/stack))
 		return FALSE
@@ -1332,13 +1365,11 @@
 	var/allowed_amount = min(stack.amount, max_items - cached_combined_stack_amount)
 	if(allowed_amount <= 0)
 		return
-	var/obj/item/stack/actually_inserting = new stack.type(stack.loc, allowed_amount)
+	if(allowed_amount == stack.amount)
+		return ..()
+	var/obj/item/stack/actually_inserting = stack.split(allowed_amount, null, TRUE)
 	inserting = actually_inserting
-	. = ..()
-	// fully inserted
-	if(!.)
-		return
-	stack.use(allowed_amount)
+	return ..()
 
 /datum/object_system/storage/stack/insert(obj/item/inserting, datum/event_args/actor/actor, suppressed, no_update, no_move)
 	if(!istype(inserting, /obj/item/stack))
@@ -1346,9 +1377,12 @@
 	return ..()
 
 /datum/object_system/storage/stack/physically_insert_item(obj/item/inserting, no_move)
+	// todo: support non-stacks
 	if(!istype(inserting, /obj/item/stack))
 		// how the fuck
 		CRASH("attempted to physically insert a non stack")
+	if(no_move)
+		return ..()
 	var/obj/item/stack/stack = inserting
 	var/atom/indirection = real_contents_loc()
 	for(var/obj/item/stack/other in indirection)
@@ -1361,21 +1395,32 @@
 	inserting = stack
 	return ..()
 
+// removal is directly hooked to never allow producing stacks with amounts higher than max amounts
+// in the future, we might want to change this to allow it if someone really needs/wants to.
+
 /datum/object_system/storage/stack/remove(obj/item/removing, atom/to_where, datum/event_args/actor/actor, suppressed, no_update, no_move)
 	if(!istype(removing, /obj/item/stack))
 		return FALSE
 	return ..()
 
 /datum/object_system/storage/stack/physically_remove_item(obj/item/removing, atom/to_where, no_move)
+	// todo: support non-stacks
 	if(!istype(removing, /obj/item/stack))
 		// how the fuck
 		CRASH("attempted to physically insert a non stack")
+	if(no_move)
+		return ..()
 	var/obj/item/stack/stack = removing
 	if(stack.amount <= stack.max_amount)
 		return ..()
-	var/obj/item/stack/actually_removing = stack.split(stack.max_amount)
-	removing = actually_removing
-	return ..()
+	var/obj/item/stack/staying_inside = stack.split(stack.amount - stack.max_amount, null, TRUE)
+	stack.amount = stack.max_amount
+	// do the normal removal
+	. = ..()
+	// insert into, without triggering normal hooks
+	staying_inside.abstract_move(real_contents_loc())
+	// perform aftereffects and register it
+	physically_insert_item(staying_inside, TRUE)
 
 /datum/object_system/storage/stack/mass_storage_dumping_handler(list/obj/item/things, atom/to_loc, datum/event_args/actor/actor, list/rejections_out, trigger_on_found)
 	// todo: this is just a copypaste and god, that fucking sucks.
@@ -1388,6 +1433,7 @@
 		// make sure they're the right type
 		if(!istype(transferring))
 			continue
+		var/transferring_type = transferring.type
 		//! END
 		// make sure they're still there
 		if(transferring.loc != indirection)
@@ -1401,8 +1447,11 @@
 			continue
 		//! UH OH, STACK STORAGE SPECIFIC CODE HERE
 		// if it wasn't fully removed,
-		if(transferring.loc == src && transferring.amount)
-			// shove up one so it doesn't remove it, go to the next cycle
+		var/obj/item/stack/remaining = locate(transferring_type) in indirection
+		if(!isnull(remaining))
+			// swap it back
+			things[i] = remaining
+			// and don't cut it out just yet
 			i++
 		//! END
 		// stop if overtaxed
@@ -1432,6 +1481,12 @@
 
 /datum/object_system/storage/stock_parts
 	ui_numerical_mode = TRUE
+
+/datum/object_system/storage/stock_parts/uses_volumetric_ui()
+	return FALSE
+
+/datum/object_system/storage/stock_parts/uses_numerical_ui()
+	return TRUE
 
 /datum/object_system/storage/stock_parts/mass_dumping_query()
 	var/lowest_rating = INFINITY
