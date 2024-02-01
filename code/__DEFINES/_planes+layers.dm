@@ -323,12 +323,6 @@
 #define ABOVE_LIGHTING_LAYER_MAIN 1
 
 /**
- *! -- Sonar Plane
- *? Used for renders for effects like sonar / sensory things
- */
-#define SONAR_PLANE 25
-
-/**
  *! -- Ghost Plane
  *? Where ghosts live.
  * ~ Spooooooooky ghooooooosts ~
@@ -365,6 +359,13 @@
 #define FULLSCREEN_LAYER_BLIND 20.3
 #define FULLSCREEN_LAYER_CRIT 20.4
 #define FULLSCREEN_LAYER_CURSE 20.5
+
+/**
+ *! -- Sonar Plane
+ *? Used for renders for effects like sonar / sensory things
+ *  todo: this needs to be under fullscreen plane but above blind.
+ */
+#define SONAR_PLANE 80
 
 /**
  *! -- Player HUD Plane
