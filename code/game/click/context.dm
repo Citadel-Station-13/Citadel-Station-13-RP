@@ -73,6 +73,8 @@
 	GLOB.radial_menus[id] = menu
 	LAZYSET(context_menus, receiving, menu)
 
+	receiving.context_menu = menu
+
 	menu.radius = 32
 	menu.host = src
 	menu.anchor = src
@@ -81,10 +83,12 @@
 	menu.show_to(receiving.mob)
 	menu.wait(receiving.mob, src, TRUE)
 
+	receiving.context_menu = null
+
 	var/chosen_name = menu.selected_choice
 
-	qdel(menu)
 	GLOB.radial_menus -= id
+	qdel(menu)
 
 	if(isnull(chosen_name))
 		return
