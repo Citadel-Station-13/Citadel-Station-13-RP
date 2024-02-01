@@ -11,6 +11,7 @@
 	)
 	allow_mass_gather = TRUE
 	allow_quick_empty = TRUE
+	allow_quick_empty_via_attack_self = TRUE
 	ui_numerical_mode = TRUE
 	max_single_weight_class = WEIGHT_CLASS_NORMAL
 	max_items = 100
