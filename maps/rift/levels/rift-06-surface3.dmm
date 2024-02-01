@@ -14152,6 +14152,9 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals9,
 /obj/effect/floor_decal/industrial/outline,
+/obj/machinery/camera/network/civilian{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/exploration/pilot_prep)
 "aNW" = (
@@ -24030,6 +24033,9 @@
 	pixel_y = -11
 	},
 /obj/machinery/recharger,
+/obj/machinery/camera/network/civilian{
+	dir = 8
+	},
 /turf/simulated/floor/wood,
 /area/exploration/pilot_prep)
 "pul" = (
@@ -26471,6 +26477,13 @@
 /obj/machinery/suit_storage_unit/exploration,
 /turf/simulated/floor/tiled/steel_grid,
 /area/exploration/explorer_prep)
+"vUJ" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
+/obj/machinery/camera/network/civilian,
+/turf/simulated/floor/wood,
+/area/exploration/pilot_Office)
 "vVw" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -43022,7 +43035,7 @@ jpv
 jpv
 ahj
 akk
-xUu
+vUJ
 dVA
 fVL
 jlx
