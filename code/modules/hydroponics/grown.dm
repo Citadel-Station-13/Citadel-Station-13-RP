@@ -184,7 +184,7 @@
 				pocell.charge = pocell.maxcharge
 				qdel(src)
 				return
-		else if(W.sharp)
+		else if(is_sharp(W))
 			if(seed.kitchen_tag == "pumpkin") // Ugggh these checks are awful.
 				user.show_message("<span class='notice'>You carve a face into [src]!</span>", 1)
 				new /obj/item/clothing/head/pumpkinhead (user.loc)
