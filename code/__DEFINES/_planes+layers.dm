@@ -323,12 +323,6 @@
 #define ABOVE_LIGHTING_LAYER_MAIN 1
 
 /**
- *! -- Sonar Plane
- *? Used for renders for effects like sonar / sensory things
- */
-#define SONAR_PLANE 25
-
-/**
  *! -- Ghost Plane
  *? Where ghosts live.
  * ~ Spooooooooky ghooooooosts ~
@@ -353,6 +347,12 @@
  */
 #define FULLSCREEN_PLANE 90
 
+/**
+ *! -- Sonar Plane
+ *? Used for renders for effects like sonar / sensory things
+ */
+#define SONAR_PLANE 91 // 91 because 90 is the Blind plane, and you should be able to use your ears when your eyes don't work
+
 #define FULLSCREEN_LAYER_OBFUSCATION 19.9
 #define FULLSCREEN_LAYER_MAIN 20.1
 #define FULLSCREEN_LAYER_DAMAGE 20.2
@@ -363,7 +363,7 @@
 /**
  *! -- Camera Mask Plane
  */
-#define CAMERA_MASK_PLANE 91
+#define CAMERA_MASK_PLANE 92
 #define CAMERA_MASK_LAYER_MAIN 1
 
 /**
