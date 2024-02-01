@@ -154,20 +154,30 @@
 
 /obj/item/storage/bag/ore/equipped(mob/user, slot, flags)
 	. = ..()
-	RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(autoload), override = TRUE)
+	RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(signal_autoload), override = TRUE)
 
 /obj/item/storage/bag/ore/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
 
-/obj/item/storage/bag/ore/proc/autoload(datum/source, atom/oldLoc, dir, forced)
-	var/obj/item/stack/ore/O = locate() in get_turf(src)
+/obj/item/storage/bag/ore/proc/signal_autoload(datum/source, atom/oldLoc, dir, forced)
+	// todo: this is weird with SSinput.
+	if(TICK_CHECK)
+		return // not if we're already overloaded
+	var/obj/item/stack/ore/O = locate() in get_turf(source)
 	if(isnull(O))
 		return
 	var/mob/user = worn_mob()
 	if(isnull(user))
 		return
-	obj_storage?.interacted_mass_pickup(new /datum/event_args/actor(user), from_loc = get_turf(src))
+	INVOKE_ASYNC(src, PROC_REF(autoload, user, O))
+
+/obj/item/storage/bag/ore/proc/autoload(mob/user, obj/item/stack/ore/piece_of_ore)
+	var/turf/target = piece_of_ore.loc
+	var/list/ores = list()
+	for(var/obj/item/stack/ore/ore in target)
+		ores += ore
+	obj_storage?.mass_storage_pickup_handler(ores, target)
 	autodump()
 
 //Ashlander variant!
