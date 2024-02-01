@@ -9,12 +9,12 @@
 		/obj/item/cell,
 		/obj/item/reagent_containers/glass/beaker,
 	)
-	max_items = 100
 	allow_mass_gather = TRUE
 	allow_quick_empty = TRUE
 	ui_numerical_mode = TRUE
 	max_single_weight_class = WEIGHT_CLASS_NORMAL
-	max_combined_volume = 200
+	max_items = 100
+	max_combined_volume = 100
 	materials_base = list(
 		MAT_STEEL = 8000,
 		MAT_GLASS = 2500,
@@ -24,7 +24,6 @@
 /obj/item/storage/part_replacer/basic
 	name = "basic part exchanger"
 	desc = "A basic part exchanger. It can't seem to store much."
-	max_items = 35
 	materials_base = list(
 		MAT_STEEL = 4000,
 		MAT_GLASS = 1500,
@@ -35,7 +34,7 @@
 	desc = "A special mechanical module made to store, sort, and apply standard machine parts.  This one has a greatly upgraded storage capacity"
 	icon_state = "RPED"
 	max_items = 200
-	max_combined_volume = 400
+	max_combined_volume = 200
 	materials_base = list(
 		MAT_STEEL = 12000,
 		MAT_GLASS = 4000,

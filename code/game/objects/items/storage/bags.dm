@@ -136,8 +136,9 @@
 	icon_state = "satchel"
 	slot_flags = SLOT_BELT | SLOT_POCKET
 	w_class = WEIGHT_CLASS_NORMAL
-	max_combined_volume = WEIGHT_VOLUME_NORMAL * 25 //kinda irrelevant now :^)
-	max_single_weight_class = WEIGHT_CLASS_NORMAL
+	max_combined_volume = null
+	max_combined_weight_class = null
+	max_items = 300
 	storage_datum_path = /datum/object_system/storage/stack
 	insertion_whitelist = list(/obj/item/stack/ore)
 	auto_fit_weight_class_to_largest_contained = FALSE
@@ -234,6 +235,8 @@
 	w_class = WEIGHT_CLASS_NORMAL
 
 	storage_datum_path = /datum/object_system/storage/stack
+	max_combined_volume = null
+	max_combined_weight_class = null
 	max_items = 300
 	allow_quick_empty = TRUE
 	allow_mass_gather = TRUE
