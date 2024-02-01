@@ -100,12 +100,13 @@
 	if(is_vampire)
 		handle_vampire(M, alien, removed, is_vampire)
 
-	var/effective_dose = strength_mod * dose // this was being recalculated a bunch before--why?
 	if(HAS_TRAIT(M, TRAIT_ALCOHOL_INTOLERANT))
-		if(prob(effective_dose/10))
+		var/intolerant_dose = 50*strength_mod*removed/strength
+		if(prob((intolerant_dose)))
 			M.add_chemical_effect(CE_ALCOHOL_TOXIC, 1)
-		M.adjustToxLoss(effective_dose/10)
+		M.adjustToxLoss(intolerant_dose) // 10 strength = 5 tox per u, so 10u deathbell = 50, 10u vodka = 3.3333..., 10u beer = 10
 		return 0
+	var/effective_dose = strength_mod * dose // this was being recalculated a bunch before--why?
 	M.add_chemical_effect(CE_ALCOHOL, 1)
 	if(effective_dose >= strength) // Early warning
 		M.make_dizzy(6) // It is decreased at the speed of 3 per tick
