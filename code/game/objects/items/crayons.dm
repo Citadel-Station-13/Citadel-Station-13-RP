@@ -269,44 +269,4 @@
 	shadeColour = "#0082A8"
 	colourName = "blue"
 
-<<<<<<< HEAD
 #warn spraycans :D
-=======
-/obj/item/pen/crayon/chalk/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
-	if(istype(target,/turf/simulated/floor))
-		var/drawtype = input("Choose what you'd like to draw.") in list("graffiti","rune")
-		switch(drawtype)
-			if("graffiti")
-				to_chat(user, "You start drawing graffiti on the [target.name].")
-			if("rune")
-				to_chat(user, "You start drawing a rune on the [target.name].")
-		if(instant || do_after(user, 50))
-			if(!user.Adjacent(target))
-				return
-			new /obj/effect/debris/cleanable/crayon/chalk(target,colour,shadeColour,drawtype)
-			to_chat(user, "You finish drawing.")
-			target.add_fingerprint(user)		// Adds their fingerprints to the floor the chalk is drawn on.
-			log_game("[key_name(user)] drew [target], [colour], [shadeColour], [drawtype] with chalk.")
-			if(uses)
-				uses--
-				if(!uses)
-					to_chat(user, "<span class='warning'>You used up your chalk!</span>")
-					qdel(src)
-	return
-
-/obj/item/pen/crayon/chalk/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-	if(user.a_intent == INTENT_HARM)
-		return ..()
-	if(target == user)
-		to_chat(user, "You take a bite of the chalk and swallow it.")
-		user.nutrition += 1
-		user.reagents.add_reagent("chalk_dust",min(5,uses)/3)
-		if(uses)
-			uses -= 5
-			if(uses <= 0)
-				to_chat(user,"<span class='warning'>You ate your chalk!</span>")
-				qdel(src)
-		return CLICKCHAIN_DO_NOT_PROPAGATE
-	return ..()
->>>>>>> citrp/master

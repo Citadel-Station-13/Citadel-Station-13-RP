@@ -56,35 +56,18 @@ SUBSYSTEM_DEF(persistence)
 	current_map_id = ckey(SSmapping.config.persistence_id)
 	current_map_directory = "[PERSISTENCE_MAP_ROOT_DIRECTORY]/[current_map_id]"
 
-
-//! map ID shims, so we can replace these with less snowflake when SSmapping is done
-
 #warn impl
 
-/datum/controller/subsystem/persistence/proc/_map_id_of_z(z)
-	if(!z)
-		return
-
-/datum/controller/subsystem/persistence/proc/_z_of_map_id(id)
-	if(!id)
-		return
-
-/datum/controller/subsystem/persistence/proc/_is_map_id_loaded(id)
-	return !!_z_of_map_id(id)
-
-/datum/controller/subsystem/persistence/proc/_all_loaded_map_ids()
-	RETURN_TYPE(/list)
-
-/datum/controller/subsystem/persistence/proc/_all_persisting_zs()
-	RETURN_TYPE(/list)
-
-/datum/controller/subsystem/persistence/proc/_z_to_map_id_lookup()
-	RETURN_TYPE(/list)
+/**
+ * gets ID of host map datum
+ *
+ * you usually want level_id_of_z instead.
+ */
+/datum/controller/subsystem/persistence/proc/map_id_of_z(z)
+	#warn impl
 
 /**
- * includes nulls, so quick if(list[z]) index checks work.
+ * gets ID of level
  */
-/datum/controller/subsystem/persistence/proc/_full_z_to_map_id_lookup()
-	RETURN_TYPE(/list)
-
-#warn impl above
+/datum/controller/subsystem/persistence/proc/level_id_of_z()
+	#warn impl

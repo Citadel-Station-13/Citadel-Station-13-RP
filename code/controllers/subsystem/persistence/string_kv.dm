@@ -16,6 +16,8 @@
  */
 /datum/controller/subsystem/persistence
 
+//* Get / Set *//
+
 /**
  * gets a persistent string
  *
@@ -23,8 +25,8 @@
  * - key - key of string
  * - group - optional group-specific. null counts as its own group.
  */
-/datum/controller/subsystem/persistence/proc/GetString(key, group)
-	return LoadString(group, key)
+/datum/controller/subsystem/persistence/proc/string_kkv_get(key, group)
+	return string_kkv_load(group, key)
 
 /**
  * sets a persistent string
@@ -35,40 +37,19 @@
  * - group - optional group-specific. null counts as its own group.
  * - flush - immediately invoke SQL; otherwise subsystem decides when.
  */
-/datum/controller/subsystem/persistence/proc/SetString(key, value, group, flush)
-	SaveString(group, key, value)
+/datum/controller/subsystem/persistence/proc/string_kkv_set(key, value, group, flush)
+	string_kkv_save(group, key, value)
 
-/**
- * gets the group name for the current map
- */
-//! This segment will be uncommented when maploader rework is done and we have station map IDs.
-/*
-/datum/controller/subsystem/persistence/proc/_map_string_group()
-	PRIVATE_PROC(TRUE)
-	return current_map_id? "__map_[current_map_id]" : null
-
-/datum/controller/subsystem/persistence/proc/GetMapString(key)
-	var/group = _map_string_group()
-	if(!group)
-		return
-	return GetString(key, group)
-
-/datum/controller/subsystem/persistence/proc/SetMapString(key, value, flush)
-	var/group = _map_string_group()
-	if(!group)
-		return
-	return SetString(key, value, group, flush)
-*/
-
+//* Backend Save/Load *//
 //! Why the usr fuckery? Because we intentionally wish to obfuscate admin proccalls, since we properly sanitize **everything** in these procs.
 
-/datum/controller/subsystem/persistence/proc/LoadString(group = OBJECT_PERSISTENCE_GROUP_NONE, key)
+/datum/controller/subsystem/persistence/proc/string_kkv_load(group = OBJECT_PERSISTENCE_GROUP_NONE, key)
 	if(!SSdbcore.Connect())
 		return
 	var/oldusr = usr
 	usr = null
 	var/datum/db_query/query = SSdbcore.NewQuery(
-		"SELECT `value` FROM [format_table_name("persist_keyed_strings")] WHERE `group` = :group, `key` = :key",
+		"SELECT `value` FROM [format_table_name("persistence_string_kkv")] WHERE `group` = :group, `key` = :key",
 		list(
 			"group" = group,
 			"key" = key
@@ -81,13 +62,13 @@
 	. = query.item[1]
 	qdel(query)
 
-/datum/controller/subsystem/persistence/proc/SaveString(group = OBJECT_PERSISTENCE_GROUP_NONE, key, value)
+/datum/controller/subsystem/persistence/proc/string_kkv_save(group = OBJECT_PERSISTENCE_GROUP_NONE, key, value)
 	if(!SSdbcore.Connect())
 		return
 	var/oldusr = usr
 	usr = null
 	var/datum/db_query/query = SSdbcore.NewQuery(
-		"INSERT INTO [format_table_name("persist_keyed_strings")] (`group`, `key`, `value`) VALUES (:group, :key, :value) ON DUPLICATE KEY UPDATE `value` = VALUES(`value`), `modified` = Now(), `revision` = `revision` + 1",
+		"INSERT INTO [format_table_name("persistence_string_kkv")] (`group`, `key`, `value`) VALUES (:group, :key, :value) ON DUPLICATE KEY UPDATE `value` = VALUES(`value`), `modified` = Now(), `revision` = `revision` + 1",
 		list(
 			"group" = group,
 			"key" = key,
@@ -98,7 +79,9 @@
 	usr = oldusr
 	qdel(query)
 
-/datum/controller/subsystem/persistence/proc/benchmark_strings()
+//* Benchmarks *//
+
+/datum/controller/subsystem/persistence/proc/benchmark_string_kkv()
 	var/oldusr = usr
 	usr = null
 	message_admins("SSpersist: benchmarking string storage")
@@ -122,20 +105,20 @@
 	message_admins("SSpersist: loading 1000 strings took [end - start] ds")
 	usr = oldusr
 
-/datum/controller/subsystem/persistence/proc/string_save_benchmark(list/pointer, list/keys, list/values, amt)
+/datum/controller/subsystem/persistence/proc/kkv_string_save_benchmark(list/pointer, list/keys, list/values, amt)
 	set waitfor = FALSE
 	for(var/i in 1 to amt)
 		_string_save_benchmark(pointer, keys[i], values[i])
 
-/datum/controller/subsystem/persistence/proc/string_load_benchmark(list/pointer, list/keys, amt)
+/datum/controller/subsystem/persistence/proc/kkv_string_load_benchmark(list/pointer, list/keys, amt)
 	set waitfor = FALSE
 	for(var/i in 1 to amt)
 		_string_load_benchmark(pointer, keys[i])
 
-/datum/controller/subsystem/persistence/proc/_string_save_benchmark(list/pointer, key, value)
+/datum/controller/subsystem/persistence/proc/kkv__string_save_benchmark(list/pointer, key, value)
 	SaveString("benchmark", key, value)
 	pointer[1]--
 
-/datum/controller/subsystem/persistence/proc/_string_load_benchmark(list/pointer, key)
+/datum/controller/subsystem/persistence/proc/kkv__string_load_benchmark(list/pointer, key)
 	LoadString("benchmark", key)
 	pointer[1]--

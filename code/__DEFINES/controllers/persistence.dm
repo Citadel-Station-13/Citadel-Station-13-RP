@@ -1,4 +1,16 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
+//* Common *//
+
+/// default string for null groups
+#define PERSISTENCE_DEFAULT_NULL_GROUP ""
+
+#warn below
+
 //! Object Storage System - General
+
+
 
 // persistence type enum
 #define OBJECT_PERSISTENCE_LOCATION_MAPPED			1
