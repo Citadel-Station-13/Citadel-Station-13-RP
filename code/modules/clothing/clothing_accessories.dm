@@ -21,10 +21,10 @@
 	if(key[1] != "A" || key[2] != "-")
 		return FALSE
 	var/list/split = splittext(key, "-")
-	if(length(split < 3))
+	if(length(split) < 3)
 		return FALSE
 	var/accessory_ref = split[2]
-	var/obj/item/clothing/accessory = locate(accessory_ref)
+	var/obj/item/clothing/accessory = locate(accessory_ref) in accessories
 	if(!(accessory in accessories))
 		return FALSE
 	return accessory.context_act(e_args, split[3])
