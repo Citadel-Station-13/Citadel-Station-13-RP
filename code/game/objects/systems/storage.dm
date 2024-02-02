@@ -1081,11 +1081,12 @@
 	reconsider_mob_viewable()
 
 /datum/object_system/storage/proc/refresh(mob/viewer)
+	ui_refresh_queued = FALSE
 	if(isnull(viewer))
 		for(var/mob/iterating as anything in ui_by_mob)
-			show(iterating)
+			refresh_ui(iterating)
 		return
-	show(viewer)
+	refresh_ui(viewer)
 
 /**
  * Do not modify the returned appearances; they might be real instances!
@@ -1133,7 +1134,6 @@
  * we assume that the display style didn't change.
  */
 /datum/object_system/storage/proc/refresh_ui(mob/user)
-	ui_refresh_queued = FALSE
 	// for now, we just do a full redraw.
 	cleanup_ui(user)
 	create_ui(user)
