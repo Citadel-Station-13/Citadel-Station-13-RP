@@ -1,2 +1,2 @@
 output_name = "glass"
-template = "bitmask/wall_32x32.toml"
+template = "bitmask/slanted_32x32.toml"

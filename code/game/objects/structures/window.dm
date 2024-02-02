@@ -65,14 +65,6 @@
 		construction_state = WINDOW_STATE_UNSECURED
 		update_verbs()
 	AIR_UPDATE_ON_INITIALIZE_AUTO
-	if(fulltile)
-		if(considered_reinforced)
-			icon = 'icons/obj/structures/window_reinforced.dmi'
-			icon_state = "window-0"
-		else
-			icon = 'icons/obj/structures/window.dmi'
-			icon_state = "window-0"
-
 
 /obj/structure/window/Destroy()
 	AIR_UPDATE_ON_DESTROY_AUTO
@@ -540,21 +532,23 @@
 	integrity_max = 20
 
 /obj/structure/window/basic/full
+	icon = 'icons/obj/structures/window.dmi'
 	base_icon_state = "window"
+	icon_state = "window-0"
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_WINDOW_FULLTILE)
-	integrity = 40
-	integrity_max = 40
 	canSmoothWith = FULLTILE_SMOOTHING
 	color = GLASS_COLOR
+	integrity = 40
+	integrity_max = 40
 	alpha = 180
-
 	fulltile = TRUE
 
 /obj/structure/window/phoronbasic
 	name = "phoron window"
 	desc = "A borosilicate alloy window. It seems to be quite strong."
-	icon_state = "phoronwindow"
+	icon_state = "window"
+	color = GLASS_COLOR_SILICATE
 
 	shardtype = /obj/item/material/shard/phoron
 	glasstype = /obj/item/stack/material/glass/phoronglass
@@ -565,51 +559,51 @@
 
 
 /obj/structure/window/phoronbasic/full
+	icon = 'icons/obj/structures/window.dmi'
+	base_icon_state = "window"
+	icon_state = "window-0"
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_WINDOW_FULLTILE)
+	canSmoothWith = FULLTILE_SMOOTHING
+	color = GLASS_COLOR_SILICATE
 	integrity = 160
 	integrity_max = 160
-	canSmoothWith = FULLTILE_SMOOTHING
-
 	fulltile = TRUE
-	color = GLASS_COLOR_SILICATE
 	alpha = 180
 
 /obj/structure/window/phoronreinforced
 	name = "reinforced borosilicate window"
 	desc = "A borosilicate alloy window, with rods supporting it. It seems to be very strong."
-	icon_state = "phoronrwindow"
-
+	icon_state = "rwindow"
+	color = GLASS_COLOR_SILICATE
 	shardtype = /obj/item/material/shard/phoron
 	glasstype = /obj/item/stack/material/glass/phoronrglass
-
 	integrity = 120
 	integrity_max = 120
-
 	considered_reinforced = TRUE
 	maximal_heat = INFINITY // Same here. The reinforcement is just structural anyways
 	damage_per_fire_tick = 1.0 // This should last for 80 fire ticks if the window is not damaged at all. The idea is that borosilicate windows have something like ablative layer that protects them for a while.
 
 /obj/structure/window/phoronreinforced/full
+	icon = 'icons/obj/structures/window_reinforced.dmi'
+	base_icon_state = "window_reinforced"
+	icon_state = "window_reinforced-0"
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_WINDOW_FULLTILE)
 	canSmoothWith = FULLTILE_SMOOTHING
-	// canSmoothWith = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS + SMOOTH_GROUP_AIRLOCK + SMOOTH_GROUP_WINDOW_FULLTILE + SMOOTH_GROUP_WALLS)
-
+	color = GLASS_COLOR_SILICATE
 	integrity = 240
 	integrity_max = 240
 	fulltile = TRUE
-	color = GLASS_COLOR_SILICATE
 	alpha = 180
 
 /obj/structure/window/reinforced
 	name = "reinforced window"
 	desc = "It looks rather strong. Might take a few good hits to shatter it."
 	icon_state = "rwindow"
+	color = GLASS_COLOR
 	armor_type = /datum/armor/window/reinforced
-
 	glasstype = /obj/item/stack/material/glass/reinforced
-
 	integrity = 80
 	integrity_max = 80
 	considered_reinforced = TRUE
@@ -617,39 +611,42 @@
 	damage_per_fire_tick = 2.0
 
 /obj/structure/window/reinforced/full
+	icon = 'icons/obj/structures/window_reinforced.dmi'
+	base_icon_state = "window_reinforced"
+	icon_state = "window_reinforced-0"
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_WINDOW_FULLTILE)
 	canSmoothWith = FULLTILE_SMOOTHING
-	// canSmoothWith = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS + SMOOTH_GROUP_AIRLOCK + SMOOTH_GROUP_WINDOW_FULLTILE + SMOOTH_GROUP_WALLS)
-
 	integrity = 160
 	integrity_max = 160
 	fulltile = TRUE
-	color = GLASS_COLOR
 	alpha = 180
 
 /obj/structure/window/reinforced/tinted
 	name = "tinted window"
 	desc = "It looks rather strong and opaque. Might take a few good hits to shatter it."
 	icon_state = "twindow"
+	color = GLASS_COLOR_TINTED
 	opacity = TRUE
+
 /obj/structure/window/reinforced/tinted/full
 	name = "tinted window"
 	desc = "It looks rather strong and opaque. Might take a few good hits to shatter it."
-	icon_state = "rwindow-full"
+	icon = 'icons/obj/structures/window_reinforced.dmi'
+	base_icon_state = "window_reinforced"
+	icon_state = "window_reinforced-0"
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = (SMOOTH_GROUP_WINDOW_FULLTILE)
+	canSmoothWith = FULLTILE_SMOOTHING
 	integrity = 80
 	integrity_max = 80
 	fulltile = TRUE
 
-	color = GLASS_COLOR_TINTED
-	smoothing_flags = SMOOTH_BITMASK
-	smoothing_groups = (SMOOTH_GROUP_WINDOW_FULLTILE)
-	canSmoothWith = FULLTILE_SMOOTHING
 
 /obj/structure/window/reinforced/tinted/frosted
 	name = "frosted window"
 	desc = "It looks rather strong and frosted over. Looks like it might take a few less hits then a normal reinforced window."
-	icon_state = "fwindow"
+	icon_state = "rwindow"
 	color = GLASS_COLOR_FROSTED
 	alpha = 180
 
@@ -658,7 +655,8 @@
 	name = "shuttle window"
 	desc = "It looks rather strong. Might take a few good hits to shatter it."
 	icon = 'icons/obj/structures/window.dmi'
-	icon_state = "window"
+	base_icon_state = "window"
+	icon_state = "window-0"
 
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_WINDOW_FULLTILE_SHUTTLE)
@@ -677,17 +675,16 @@
 	var/id
 
 /obj/structure/window/reinforced/polarized/full
-	icon = 'icons/obj/structures/window_full_reinforced.dmi'
-	icon_state = "window-0"
-
-	color = GLASS_COLOR
+	icon = 'icons/obj/structures/window_reinforced.dmi'
+	base_icon_state = "window_reinforced"
+	icon_state = "window_reinforced-0"
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_WINDOW_FULLTILE)
 	canSmoothWith = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS + SMOOTH_GROUP_AIRLOCK + SMOOTH_GROUP_WINDOW_FULLTILE + SMOOTH_GROUP_WALLS)
+	color = GLASS_COLOR
 	integrity = 160
 	integrity_max = 160
 	alpha = 180
-	color = GLASS_COLOR
 	fulltile = TRUE
 
 /obj/structure/window/reinforced/polarized/attackby(obj/item/object, mob/user)

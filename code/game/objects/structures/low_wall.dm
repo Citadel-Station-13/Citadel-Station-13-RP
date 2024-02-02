@@ -15,8 +15,8 @@ GLOBAL_LIST_INIT(wallframe_typecache, typecacheof(list(
 	name = "low wall"
 	desc = "A low wall, with space to mount windows or grilles on top of it."
 	icon = 'icons/obj/structures/low_wall.dmi'
-	icon_state = "wall-0"
-	base_icon_state = "wall"
+	icon_state = "low_wall-0"
+	base_icon_state = "low_wall"
 	color = "#57575c" //To display in mapping softwares
 	density = TRUE
 	anchored = TRUE
@@ -24,7 +24,7 @@ GLOBAL_LIST_INIT(wallframe_typecache, typecacheof(list(
 	layer = LOW_WALL_LAYER
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_LOW_WALL)
-	canSmoothWith = (SMOOTH_GROUP_AIRLOCK+SMOOTH_GROUP_LOW_WALL+SMOOTH_GROUP_WALLS)
+	canSmoothWith = (SMOOTH_GROUP_AIRLOCK + SMOOTH_GROUP_LOW_WALL + SMOOTH_GROUP_WALLS)
 	depth_projected = TRUE
 	depth_level = 8
 	climb_allowed = TRUE
@@ -64,7 +64,7 @@ GLOBAL_LIST_INIT(wallframe_typecache, typecacheof(list(
 	var/datum/material/const_material = get_primary_material()
 	color = const_material.icon_colour
 
-	var/image/smoothed_stripe = image(const_material.wall_stripe_icon, icon_state, layer = ABOVE_WINDOW_LAYER)
+	var/image/smoothed_stripe = image(const_material.wall_stripe_icon, "stripe-[smoothing_junction]", layer = ABOVE_WINDOW_LAYER)
 	smoothed_stripe.appearance_flags = RESET_COLOR
 	smoothed_stripe.color = stripe_color || const_material.icon_colour
 	add_overlay(smoothed_stripe)
@@ -89,14 +89,14 @@ GLOBAL_LIST_INIT(wallframe_typecache, typecacheof(list(
 			neighbor_stripe ^= cardinal
 
 	if(neighbor_stripe)
-		var/image/neighb_stripe_overlay = new (const_material.wall_stripe_icon, "stripe-[neighbor_stripe]", layer = ABOVE_WINDOW_LAYER)
+		var/image/neighb_stripe_overlay = image('icons/turf/walls/other.dmi', "other-[neighbor_stripe]", layer = ABOVE_WINDOW_LAYER)
 		neighb_stripe_overlay.appearance_flags = RESET_COLOR
 		neighb_stripe_overlay.color = stripe_color || const_material.icon_colour
 		add_overlay(neighb_stripe_overlay)
-		if(shiny_stripe)
-			var/image/shine = image(const_material.wall_stripe_icon, "shine-[smoothing_junction]")
-			shine.appearance_flags = RESET_COLOR
-			add_overlay(shine)
+		// if(shiny_stripe)
+		// 	var/image/shine = image(const_material.wall_stripe_icon, "shine-[smoothing_junction]")
+		// 	shine.appearance_flags = RESET_COLOR
+		// 	add_overlay(shine)
 
 	return ..()
 

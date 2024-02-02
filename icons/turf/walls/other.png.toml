@@ -1,5 +1,5 @@
-template = "bitmask/wall_32x32.toml"
 output_name = "other"
+template = "bitmask/slanted_32x32.toml"
 
 smooth_diagonally = false
 

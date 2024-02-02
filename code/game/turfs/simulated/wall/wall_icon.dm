@@ -99,7 +99,7 @@ GLOBAL_LIST_EMPTY(wall_overlays_cache)
 			overlays.len = 0
 			var/list/new_overlays = list()
 
-			var/image/smoothed_stripe = image(stripe_icon, icon_state)
+			var/image/smoothed_stripe = image(stripe_icon, "stripe-[smoothing_junction]")
 			smoothed_stripe.appearance_flags = RESET_COLOR
 			smoothed_stripe.color = stripe_paint
 			new_overlays += smoothed_stripe
@@ -107,8 +107,15 @@ GLOBAL_LIST_EMPTY(wall_overlays_cache)
 			if(neighbor_stripe)
 				var/image/neighb_stripe_overlay = image('icons/turf/walls/other.dmi', "other-[neighbor_stripe]")
 				neighb_stripe_overlay.appearance_flags = RESET_COLOR
+				neighb_stripe_overlay.layer = LOW_WALL_LAYER
 				neighb_stripe_overlay.color = stripe_paint
 				new_overlays += neighb_stripe_overlay
+
+			if(material_reinf)
+				var/image/reinf_overlay = image(material_reinf.icon_reinf, icon_state)
+				reinf_overlay.appearance_flags = RESET_COLOR
+				reinf_overlay.color = wall_paint
+				new_overlays += reinf_overlay
 
 			// if(rusted)
 			// 	var/image/rust_overlay = image('icons/turf/rust_overlay.dmi', "blobby_rust")

@@ -1,2 +1,2 @@
-output_name = "glass"
+output_name = "window"
 template = "bitmask/slanted_32x32.toml"
