@@ -77,10 +77,8 @@
 //Pilot Locker
 /obj/structure/closet/secure_closet/pilot
 	name = "pilot locker"
-	closet_appearance = /singleton/closet_appearance/secure_closet/expedition
+	closet_appearance = /singleton/closet_appearance/secure_closet/pilot
 	req_access = list(ACCESS_GENERAL_PILOT)
-
-/obj/structure/closet/secure_closet/pilot
 	starts_with = list(
 		/obj/item/storage/backpack/parachute,
 		/obj/item/storage/box/survival_knife,
