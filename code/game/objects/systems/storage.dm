@@ -724,6 +724,8 @@
  * Actor is mandatory.
  */
 /datum/object_system/storage/proc/auto_handle_interacted_mass_transfer(datum/event_args/actor/actor, datum/object_system/storage/to_storage)
+	if(to_storage == src)
+		return FALSE
 	if(is_locked(actor.performer))
 		actor?.chat_feedback(
 			msg = SPAN_WARNING("[parent] is locked."),
@@ -908,6 +910,8 @@
  * @return TRUE if not done, FALSE if done.
  */
 /datum/object_system/storage/proc/mass_storage_transfer_handler(list/obj/item/things, datum/object_system/storage/to_storage, datum/event_args/actor/actor, list/obj/item/rejections_out = list(), trigger_on_found = TRUE)
+	if(to_storage == src)
+		return FALSE
 	var/atom/indirection = real_contents_loc()
 	var/i
 	. = TRUE
@@ -921,9 +925,15 @@
 			. = FALSE
 			break
 		// see if receiver can accept it
-		if(!to_storage.try_insert(transferring, actor, TRUE, TRUE, TRUE))
+		if(!to_storage.can_be_inserted(transferring, actor, TRUE))
 			rejections_out += transferring
 			continue
+		// see if we can remove it
+		if(!can_be_removed(transferring, indirection, actor, TRUE))
+			rejections_out += transferring
+			continue
+		// transfer; the on enter/exit hooks will handle the rest (awful but whatever!)
+		remove(transferring, indirection, actor, TRUE, TRUE)
 		// stop if overtaxed
 		if(TICK_CHECK)
 			break
