@@ -636,13 +636,15 @@
 
 /obj/Exited(atom/movable/AM, atom/newLoc)
 	. = ..()
-	if(isitem(AM))
-		obj_storage?.on_item_exited(AM)
+	// todo: this is fucking awful, proper redirection support when
+	if(isitem(AM) && obj_storage && (!obj_storage.dangerously_redirect_contents_calls || obj_storage.dangerously_redirect_contents_calls == src))
+		obj_storage.on_item_exited(AM)
 
 /obj/Entered(atom/movable/AM, atom/oldLoc)
 	. = ..()
-	if(isitem(AM))
-		obj_storage?.on_item_entered(AM)
+	// todo: this is fucking awful, proper redirection support when
+	if(isitem(AM) && obj_storage && (!obj_storage.dangerously_redirect_contents_calls || obj_storage.dangerously_redirect_contents_calls == src))
+		obj_storage.on_item_entered(AM)
 
 //* Orientation *//
 

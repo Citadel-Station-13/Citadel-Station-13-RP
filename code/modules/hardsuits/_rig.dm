@@ -128,7 +128,7 @@
 
 	var/storage_max_single_weight_class = WEIGHT_CLASS_NORMAL
 	var/storage_max_combined_weight_class
-	var/storage_max_combined_volume = WEIGHT_CLASS_NORMAL * 7
+	var/storage_max_combined_volume = WEIGHT_VOLUME_NORMAL * 7
 	var/storage_max_items
 
 	var/storage_weight_subtract = 0
