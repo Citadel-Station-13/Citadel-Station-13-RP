@@ -147,6 +147,8 @@
 	/// todo: we should also hook the thing's Destroy, etc etc.
 	/// todo: this literally doesn't work due to no Reachability hooks. please implement this properly later via reachability signal hooks.
 	/// otherwise, using this is going to be GC failure hell from vis contents and rendering.
+	//! todo: a potential plan is /atom/movable/storage_indirection_holder,
+	//! which then has back-pointers to storage.
 	var/atom/dangerously_redirect_contents_calls
 
 	//* Radiation
