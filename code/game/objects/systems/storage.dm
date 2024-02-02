@@ -912,7 +912,7 @@
 /datum/object_system/storage/proc/mass_storage_transfer_handler(list/obj/item/things, datum/object_system/storage/to_storage, datum/event_args/actor/actor, list/obj/item/rejections_out = list(), trigger_on_found = TRUE)
 	if(to_storage == src)
 		return FALSE
-	var/atom/indirection = real_contents_loc()
+	var/atom/indirection = to_storage.real_contents_loc()
 	var/i
 	. = TRUE
 	for(i in length(things) to 1 step -1)
