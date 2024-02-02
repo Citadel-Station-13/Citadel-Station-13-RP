@@ -912,13 +912,14 @@
 /datum/object_system/storage/proc/mass_storage_transfer_handler(list/obj/item/things, datum/object_system/storage/to_storage, datum/event_args/actor/actor, list/obj/item/rejections_out = list(), trigger_on_found = TRUE)
 	if(to_storage == src)
 		return FALSE
-	var/atom/indirection = to_storage.real_contents_loc()
+	var/atom/indirection_from = real_contents_loc()
+	var/atom/indirection_to = to_storage.real_contents_loc()
 	var/i
 	. = TRUE
 	for(i in length(things) to 1 step -1)
 		var/obj/item/transferring = things[i]
 		// make sure they're still there
-		if(transferring.loc != indirection)
+		if(transferring.loc != indirection_from)
 			continue
 		// handle on open hooks if needed
 		if(trigger_on_found && actor?.performer.active_storage != src && transferring.on_containing_storage_opening(actor, src))
@@ -929,11 +930,11 @@
 			rejections_out += transferring
 			continue
 		// see if we can remove it
-		if(!can_be_removed(transferring, indirection, actor, TRUE))
+		if(!can_be_removed(transferring, indirection_to, actor, TRUE))
 			rejections_out += transferring
 			continue
 		// transfer; the on enter/exit hooks will handle the rest (awful but whatever!)
-		remove(transferring, indirection, actor, TRUE, TRUE)
+		remove(transferring, indirection_to, actor, TRUE, TRUE)
 		// stop if overtaxed
 		if(TICK_CHECK)
 			break
