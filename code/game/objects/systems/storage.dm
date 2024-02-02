@@ -183,6 +183,9 @@
 	/// show minimum number of slots necessary, expand as needed
 	/// currently only works for slot mode
 	var/ui_expand_when_needed = FALSE
+	/// ui update queued?
+	//  todo: this is only needed because redirection is halfassed.
+	var/ui_refresh_queued = FALSE
 
 /datum/object_system/storage/New(obj/parent)
 	src.parent = parent
@@ -198,6 +201,13 @@
 /datum/object_system/storage/Destroy()
 	hide()
 	QDEL_NULL(action_mode_switch)
+	//! SHITCODE ALERT
+	if(istype(dangerously_redirect_contents_calls, /obj/storage_indirection_holder))
+		var/obj/storage_indirection_holder/casted = dangerously_redirect_contents_calls
+		casted.obj_storage = null
+		qdel(casted)
+	dangerously_redirect_contents_calls = null
+	//! AAAA
 	return ..()
 
 //* Access *//
@@ -343,6 +353,7 @@
 	if(!(exiting.item_flags & ITEM_IN_STORAGE))
 		return
 	physically_remove_item(exiting, no_move = TRUE)
+	ui_queue_refresh()
 
 /**
  * Called by our object when an item enters us
@@ -351,6 +362,7 @@
 	if(entering.item_flags & ITEM_IN_STORAGE)
 		return
 	physically_insert_item(entering, no_move = TRUE)
+	ui_queue_refresh()
 
 /datum/object_system/storage/proc/on_contents_weight_class_change(obj/item/item, old_weight_class, new_weight_class)
 	cached_combined_weight_class += (new_weight_class - old_weight_class)
@@ -1103,6 +1115,12 @@
 		return
 	hide(user)
 
+/datum/object_system/storage/proc/ui_queue_refresh()
+	if(ui_refresh_queued)
+		return
+	ui_refresh_queued = TRUE
+	addtimer(CALLBACK(src, PROC_REF(refresh)), 0)
+
 /datum/object_system/storage/proc/cleanup_ui(mob/user)
 	var/list/objects = ui_by_mob[user]
 	user.client?.screen -= objects
@@ -1113,6 +1131,7 @@
  * we assume that the display style didn't change.
  */
 /datum/object_system/storage/proc/refresh_ui(mob/user)
+	ui_refresh_queued = FALSE
 	// for now, we just do a full redraw.
 	cleanup_ui(user)
 	create_ui(user)
@@ -1646,7 +1665,7 @@
 
 //? Lazy indirection helper
 
-/atom/movable/storage_indirection_holder
+/obj/storage_indirection_holder
 	name = "storage indirection holder"
 	desc = "Why do you see this?"
 	atom_flags = ATOM_ABSTRACT
@@ -1668,6 +1687,9 @@
 		for(var/obj/item/item in contents)
 			obj_storage.on_item_entered(item)
 	else
-		var/atom/movable/indirection = new /atom/movable/storage_indirection_holder(src)
+		var/obj/indirection = new /obj/storage_indirection_holder(src)
 		obj_storage.dangerously_redirect_contents_calls = indirection
+		// this is shitcode oh my god
+		// AAAAAAAAAAAAAAAAAAA
+		indirection.obj_storage = obj_storage
 	return obj_storage
