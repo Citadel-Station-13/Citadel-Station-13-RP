@@ -62,6 +62,10 @@
 	/// full list of accessories, everything inside must be an /obj/item/clothing.
 	var/list/accessories
 
+	//* Clothing *//
+	/// Don't automatically have someone yank us off on attack hand if this is FALSE
+	var/attack_hand_auto_unequip = TRUE
+
 	//* Carry Weight
 	/// encumbrance compensation for accessories - flat.
 	var/accessory_encumbrance_mitigation = 0
@@ -92,7 +96,17 @@
 		. += " with traces of [english_list(acc)]"
 
 /obj/item/clothing/should_attempt_pickup(datum/event_args/actor/actor)
-	return ..() && (worn_mob() != actor.performer)
+	// either attack_hand_auto_unequip off, not being worn
+	. = ..() && (attack_hand_auto_unequip || (worn_mob() != actor.performer))
+	if(!.)
+		return
+	for(var/obj/item/clothing/accessory as anything in accessories)
+		// check if accessory has storage allowing equipped click
+		if(accessory.obj_storage.allow_open_via_equipped_click)
+			return FALSE
+		// check if they allow pickup
+		if(!accessory.should_attempt_pickup(actor))
+			return FALSE
 
 /obj/item/clothing/equipped(mob/user, slot, flags)
 	. = ..()

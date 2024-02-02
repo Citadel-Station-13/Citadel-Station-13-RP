@@ -11,6 +11,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	show_messages = 1
 	blood_sprite_state = "uniformblood"
+	attack_hand_auto_unequip = FALSE
 
 	//! Suit Sensors
 	/// do we have suit sensors?
