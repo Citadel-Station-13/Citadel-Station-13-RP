@@ -59,7 +59,7 @@
 	var/mutable_appearance/accessory_inv_cached
 
 	//? accessory system - attached to by accessories
-	/// full list of accessories, everything inside must be an /obj/item. *not* /obj/item/clothing.
+	/// full list of accessories, everything inside must be an /obj/item/clothing.
 	var/list/accessories
 
 	//* Carry Weight

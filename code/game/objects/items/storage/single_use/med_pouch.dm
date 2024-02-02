@@ -8,6 +8,7 @@
 	max_items = 7
 	w_class = WEIGHT_CLASS_SMALL
 	max_single_weight_class = WEIGHT_CLASS_SMALL
+	base_icon_state = "pack"
 	icon_state = "pack0"
 	sfx_tear = 'sound/effects/rip1.ogg'
 	//material = /decl/material/solid/plastic

@@ -502,10 +502,10 @@
 	. = ..()
 	if(!isnull(obj_cell_slot?.cell) && obj_cell_slot.remove_yank_context && obj_cell_slot.interaction_active(e_args.performer))
 		var/image/rendered = image(obj_cell_slot.cell)
-		.["obj_cell_slot"] = ATOM_CONTEXT_TUPLE("remove cell", rendered, null, MOBILITY_CAN_USE)
+		.["obj_cell_slot"] = atom_context_tuple("remove cell", rendered, mobility = MOBILITY_CAN_USE, defaultable = TRUE)
 	if(obj_storage?.allow_open_via_context_click)
 		var/image/rendered = image(src)
-		.["obj_storage"] = ATOM_CONTEXT_TUPLE("open storage", rendered, null, MOBILITY_CAN_STORAGE)
+		.["obj_storage"] = atom_context_tuple("open storage", rendered, mobility = MOBILITY_CAN_STORAGE, defaultable = TRUE)
 
 /obj/context_act(datum/event_args/actor/e_args, key)
 	switch(key)
