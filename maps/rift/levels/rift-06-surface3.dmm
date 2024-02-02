@@ -22272,10 +22272,6 @@
 /obj/effect/paint/commandblue,
 /turf/simulated/floor/plating,
 /area/bridge)
-"kep" = (
-/obj/structure/catwalk,
-/turf/simulated/wall/prepainted/civilian,
-/area/exploration/pilot_Office)
 "kih" = (
 /obj/machinery/door/firedoor/glass{
 	dir = 8
@@ -46848,7 +46844,7 @@ akk
 eOV
 akk
 akk
-kep
+akk
 akk
 atK
 aoa
