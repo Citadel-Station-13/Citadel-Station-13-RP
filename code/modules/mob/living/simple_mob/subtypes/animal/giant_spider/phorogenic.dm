@@ -35,8 +35,8 @@
 	health = 225
 	taser_kill = FALSE //You will need more than a peashooter to kill the juggernaut.
 
-	melee_damage_lower = 25
-	melee_damage_upper = 40
+	legacy_melee_damage_lower = 25
+	legacy_melee_damage_upper = 40
 	attack_armor_pen = 15
 
 	movement_cooldown = 15
@@ -83,8 +83,8 @@
 	maxHealth = 100
 	health = 100
 
-	melee_damage_lower = 10
-	melee_damage_upper = 25
+	legacy_melee_damage_lower = 10
+	legacy_melee_damage_upper = 25
 	attack_armor_pen = 10
 
 	poison_chance = 20

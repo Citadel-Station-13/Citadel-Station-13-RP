@@ -1,3 +1,7 @@
+/datum/physiology_modifier/intrinsic/species/tajaran
+	carry_strength_add = CARRY_STRENGTH_ADD_TAJARAN
+	carry_strength_factor = CARRY_FACTOR_MOD_TAJARAN
+
 /datum/species/tajaran
 	uid = SPECIES_ID_TAJARAN
 	id = SPECIES_ID_TAJARAN
@@ -5,6 +9,7 @@
 	name_plural = "Tajaran"
 	category = "Tajaran"
 	default_bodytype = BODYTYPE_TAJARAN
+	mob_physiology_modifier = /datum/physiology_modifier/intrinsic/species/tajaran
 
 	icobase      = 'icons/mob/species/tajaran/body_greyscale.dmi'
 	deform       = 'icons/mob/species/tajaran/deformed_body_greyscale.dmi'
@@ -63,7 +68,7 @@
 	breath_cold_level_2 = 100
 	breath_cold_level_3 = 60
 
-	heat_level_1 = 330
+	heat_level_1 = 340
 	heat_level_2 = 380
 	heat_level_3 = 800
 

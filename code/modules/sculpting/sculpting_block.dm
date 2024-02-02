@@ -80,7 +80,7 @@
 
 /obj/structure/sculpting_block/Initialize(mapload, material)
 	// todo: materials system
-	src.material = SSmaterials.get_material(material || src.material)
+	src.material = SSmaterials.resolve_material(material || src.material)
 	// todo: if it autoinit'd, don't do this
 	reset_sculpting()
 	return ..()
@@ -165,7 +165,7 @@
 		otherwise_self = SPAN_NOTICE("You start slicing [src] apart."),
 	)
 	log_construction(e_args, src, "started deconstructing")
-	if(!use_welder(I, e_args, flags, 7 SECONDS, 3))
+	if(!use_welder(I, e_args, flags, 7 SECONDS))
 		return TRUE
 	e_args.visible_feedback(
 		target = src,

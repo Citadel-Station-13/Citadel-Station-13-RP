@@ -10,7 +10,7 @@
 	throw_speed = 2
 	throw_range = 5
 	origin_tech = list(TECH_MATERIAL = 1)
-	materials = list(MAT_STEEL = 500)
+	materials_base = list(MAT_STEEL = 500)
 	drop_sound = 'sound/items/drop/accessory.ogg'
 	pickup_sound = 'sound/items/pickup/accessory.ogg'
 	var/elastic
@@ -105,6 +105,7 @@
 		user.drop_all_held_items()
 		user.stop_pulling()
 
+/* grimdark code that's disabled for code quality reasons - readd later if we care
 var/last_chew = 0
 /mob/living/carbon/human/RestrainedClickOn(var/atom/A)
 	if (A != src) return ..()
@@ -130,6 +131,7 @@ var/last_chew = 0
 		H:UpdateDamageIcon()
 
 	last_chew = world.time
+*/
 
 /obj/item/handcuffs/fuzzy
 	name = "fuzzy cuffs"

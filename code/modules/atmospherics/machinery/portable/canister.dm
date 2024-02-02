@@ -6,7 +6,9 @@
 	icon_state = "yellow"
 	density = 1
 	interaction_flags_machine = INTERACT_MACHINE_OFFLINE
-	var/health = 100.0
+	integrity = 300
+	integrity_max = 300
+	integrity_failure = 100
 	w_class = ITEMSIZE_HUGE
 
 	layer = TABLE_LAYER	// Above catwalks, hopefully below other things
@@ -191,7 +193,7 @@ update_flag
 32 = tank_pressure go boom.
 */
 
-	if (destroyed)
+	if (atom_flags & ATOM_BROKEN)
 		cut_overlays()
 		icon_state = "[canister_color]-1"
 		return
@@ -222,34 +224,26 @@ update_flag
 
 	return
 
+// todo: generic fire
 /obj/machinery/portable_atmospherics/canister/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 	if(exposed_temperature > temperature_resistance)
-		health -= 5
-		healthcheck()
+		inflict_atom_damage(5)
 
-/obj/machinery/portable_atmospherics/canister/proc/healthcheck()
-	if(destroyed)
-		return 1
+/obj/machinery/portable_atmospherics/canister/drop_products(method, atom/where)
+	. = ..()
+	new /obj/item/stack/material/steel(drop_location(), method == ATOM_DECONSTRUCT_DISASSEMBLED? 10 : 7)
 
-	if (src.health <= 10)
-		var/atom/location = src.loc
-		location.assume_air(air_contents)
-
-		src.destroyed = 1
-		playsound(src.loc, 'sound/effects/spray.ogg', 10, 1, -3)
-		src.density = 0
-		update_icon()
-
-		if (src.holding)
-			src.holding.loc = src.loc
-			src.holding = null
-
-		return 1
-	else
-		return 1
+/obj/machinery/portable_atmospherics/canister/atom_break()
+	. = ..()
+	loc.assume_air(air_contents)
+	set_density(FALSE)
+	playsound(src, 'sound/effects/spray.ogg', 20, 1)
+	if(holding)
+		holding.forceMove(drop_location())
+		holding = null
 
 /obj/machinery/portable_atmospherics/canister/process(delta_time)
-	if (destroyed)
+	if (atom_flags & ATOM_BROKEN)
 		return
 
 	..()
@@ -282,21 +276,7 @@ update_flag
 /obj/machinery/portable_atmospherics/canister/return_air()
 	return air_contents
 
-/obj/machinery/portable_atmospherics/canister/bullet_act(var/obj/projectile/Proj)
-	if(!(Proj.damage_type == BRUTE || Proj.damage_type == BURN))
-		return
-
-	if(Proj.damage)
-		src.health -= round(Proj.damage / 2)
-		healthcheck()
-	..()
-
 /obj/machinery/portable_atmospherics/canister/attackby(var/obj/item/W as obj, var/mob/user as mob)
-	if(!W.is_wrench() && !istype(W, /obj/item/tank) && !istype(W, /obj/item/atmos_analyzer) && !istype(W, /obj/item/pda))
-		visible_message(SPAN_WARNING("\The [user] hits \the [src] with \a [W]!"))
-		src.health -= W.damage_force
-		healthcheck()
-
 	if(istype(user, /mob/living/silicon/robot) && istype(W, /obj/item/tank/jetpack))
 		var/datum/gas_mixture/thejetpack = W:air_contents
 		var/env_pressure = thejetpack.return_pressure()
@@ -308,11 +288,10 @@ update_flag
 			var/datum/gas_mixture/removed = air_contents.remove(transfer_moles)
 			thejetpack.merge(removed)
 			to_chat(user, "You pulse-pressurize your jetpack from the tank.")
-		return
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 
-	..()
-
-	SSnanoui.update_uis(src) // Update all NanoUIs attached to src
+	. = ..()
+	update_ui_data()
 
 /obj/machinery/portable_atmospherics/canister/attack_ai(var/mob/user as mob)
 	return src.attack_hand(user)
@@ -320,7 +299,7 @@ update_flag
 /obj/machinery/portable_atmospherics/canister/attack_hand(mob/user, list/params)
 	return src.ui_interact(user)
 
-/obj/machinery/portable_atmospherics/canister/ui_state(mob/user, datum/tgui_module/module)
+/obj/machinery/portable_atmospherics/canister/ui_state()
 	return GLOB.physical_state
 
 /obj/machinery/portable_atmospherics/canister/ui_interact(mob/user, datum/tgui/ui)
@@ -329,7 +308,7 @@ update_flag
 		ui = new(user, src, "Canister", name)
 		ui.open()
 
-/obj/machinery/portable_atmospherics/canister/ui_static_data(mob/user)
+/obj/machinery/portable_atmospherics/canister/ui_static_data(mob/user, datum/tgui/ui)
 	return list(
 		"defaultReleasePressure" = round(CAN_DEFAULT_RELEASE_PRESSURE),
 		"minReleasePressure" = round(can_min_release_pressure),
@@ -339,7 +318,7 @@ update_flag
 		"holdingTankFragPressure" = round(TANK_FRAGMENT_PRESSURE)
 	)
 
-/obj/machinery/portable_atmospherics/canister/ui_data()
+/obj/machinery/portable_atmospherics/canister/ui_data(mob/user, datum/tgui/ui)
 	. = list(
 		"portConnected" = !!connected_port,
 		"tankPressure" = round(air_contents.return_pressure()),
@@ -368,7 +347,7 @@ update_flag
 			)
 		)
 
-/obj/machinery/portable_atmospherics/canister/ui_act(action, params)
+/obj/machinery/portable_atmospherics/canister/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return
@@ -580,7 +559,3 @@ update_flag
 	. = ..()
 	src.air_contents.adjust_gas(GAS_ID_PHORON, MolesForPressure())
 	src.update_icon()
-
-/obj/machinery/portable_atmospherics/canister/take_damage(var/damage)
-	src.health -= damage
-	healthcheck()

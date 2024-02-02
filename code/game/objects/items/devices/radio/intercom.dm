@@ -1,3 +1,4 @@
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/item/radio/intercom, 28)
 /obj/item/radio/intercom
 	name = "station intercom (General)"
 	desc = "Talk through this."
@@ -14,6 +15,21 @@
 	var/last_tick //used to delay the powercheck
 	var/wiresexposed = 0
 	var/overlay_color = PIPE_COLOR_GREEN
+
+/obj/item/radio/intercom/setDir(ndir)
+	. = ..()
+	base_pixel_x = 0
+	base_pixel_y = 0
+	switch(dir)
+		if(NORTH)
+			base_pixel_y = -28
+		if(SOUTH)
+			base_pixel_y = 28
+		if(WEST)
+			base_pixel_x = 28
+		if(EAST)
+			base_pixel_x = -28
+	reset_pixel_offsets()
 
 /obj/item/radio/intercom/update_icon(updates)
 	cut_overlays()

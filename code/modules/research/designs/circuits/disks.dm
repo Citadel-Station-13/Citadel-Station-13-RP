@@ -3,7 +3,7 @@
 	abstract_type = /datum/design/circuit/disk
 	lathe_type = LATHE_TYPE_CIRCUIT
 	req_tech = list(TECH_DATA = 3)
-	materials = list(MAT_PLASTIC = 2000, MAT_GLASS = 1000)
+	materials_base = list(MAT_PLASTIC = 2000, MAT_GLASS = 1000)
 	reagents = list("pacid" = 10)
 	work = (5 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 

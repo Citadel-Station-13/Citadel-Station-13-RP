@@ -57,7 +57,7 @@
 			*/
 			if(ishuman(T))
 				var/mob/living/carbon/human/H = T
-	//			if (M.health <= 0) return
+	//			if (M.integrity <= 0) return
 
 				var/obj/item/organ/external/temp = H.get_organ(pick(BP_TORSO, BP_TORSO, BP_TORSO, BP_HEAD))
 				if(temp)
@@ -65,9 +65,13 @@
 					switch(damtype)
 						if("brute")
 							H.afflict_unconscious(20 * 1)
-							update |= temp.take_damage(rand(force/2, force), 0)
+							temp.inflict_bodypart_damage(
+								brute = rand(force / 2, force),
+							)
 						if("fire")
-							update |= temp.take_damage(0, rand(force/2, force))
+							temp.inflict_bodypart_damage(
+								burn = rand(force / 2, force),
+							)
 						if("tox")
 							if(H.reagents)
 								if(H.reagents.get_reagent_amount("carpotoxin") + force < force*2)
@@ -119,9 +123,9 @@
 				playsound(src, 'sound/weapons/heavysmash.ogg', 50, 1)
 
 				if(istype(T, /obj/structure/girder))
-					T:take_damage(force * 3) //Girders have 200 health by default. Steel, non-reinforced walls take four punches, girders take (with this value-mod) two, girders took five without.
+					T:take_damage_legacy(force * 3) //Girders have 200 integrity by default. Steel, non-reinforced walls take four punches, girders take (with this value-mod) two, girders took five without.
 				else
-					T:take_damage(force)
+					T:take_damage_legacy(force)
 
 				melee_can_hit = 0
 

@@ -221,6 +221,9 @@ GLOBAL_LIST_INIT(robot_modules, list(
 /obj/item/robot_module/proc/is_dog()
 	return FALSE
 
+/obj/item/robot_module/proc/is_cat()
+	return FALSE
+
 /obj/item/robot_module/robot/get_modules()
 	. = ..()
 	// Common items that all modules have.
@@ -292,6 +295,12 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	ASSERT(istype(R))
 	// This is the only non-canid dogborg type right now.
 	return R.icontype != "F3-LINE"
+
+/obj/item/robot_module/robot/quad/is_cat()
+	var/mob/living/silicon/robot/R = loc
+	ASSERT(istype(R))
+	// This is the only non-canid dogborg type right now.
+	return R.icontype == "F3-LINE"
 
 // Custom sprite stuff. There's a dedicated system for this, not sure why this is done separately.
 

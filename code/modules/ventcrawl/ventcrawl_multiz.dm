@@ -3,7 +3,10 @@
 	set desc = "Climb up through a pipe."
 	set category = "Abilities"
 	set src = usr.loc
-	var/obj/machinery/atmospherics/target = check_ventcrawl(GetAbove(loc))
+	var/turf/T = loc
+	if(!istype(T))
+		return
+	var/obj/machinery/atmospherics/target = check_ventcrawl(T.above())
 	if(target) ventcrawl_to(usr, target, UP)
 
 /obj/machinery/atmospherics/pipe/zpipe/down/verb/ventcrawl_move_down()
@@ -11,7 +14,10 @@
 	set desc = "Climb down through a pipe."
 	set category = "Abilities"
 	set src = usr.loc
-	var/obj/machinery/atmospherics/target = check_ventcrawl(GetBelow(loc))
+	var/turf/T = loc
+	if(!istype(T))
+		return
+	var/obj/machinery/atmospherics/target = check_ventcrawl(T.below())
 	if(target) ventcrawl_to(usr, target, DOWN)
 
 /obj/machinery/atmospherics/pipe/zpipe/proc/check_ventcrawl(var/turf/target)

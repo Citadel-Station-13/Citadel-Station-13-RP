@@ -20,7 +20,7 @@
 		var/damage = round(30/(get_dist(B,get_turf(src))+1))
 		if(B.overmind)
 			damage *= B.overmind.blob_type.burn_multiplier
-		B.adjust_integrity(-damage)
+		B.adjust_integrity_blob(-damage)
 
 	new/obj/effect/particle_effect/sparks(src.loc)
 	new/obj/effect/particle_effect/smoke/illumination(src.loc, 5, 30, 30, "#FFFFFF")

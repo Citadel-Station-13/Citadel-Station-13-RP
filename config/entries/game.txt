@@ -11,9 +11,6 @@ STARLIGHT
 ## Set to 0 to disable holidays (you monster)
 ALLOW_HOLIDAYS
 
-## Set to 0 to disable nightshifts (you monster!!)
-NIGHTSHIFTS_ENABLED
-
 ## Engine submap probabilities
 ## Supermatter
 ENGINE_SUBMAP EngineSubmap_SM 40
@@ -43,3 +40,25 @@ EMOJIS
 
 ## Set to 0 to disable everyone on station having maint.
 ALMOST_EVERYONE_HAS_MAINTENANCE_ACCESS
+
+### Nightshift ###
+
+## Set to 0 to disable nightshifts (you monster!!)
+NIGHTSHIFTS_ENABLED
+
+## Nightshift Levels
+## Set to 1 or 0 as needed.
+
+NIGHTSHIFT_LEVELS Unset 0
+
+NIGHTSHIFT_LEVELS PublicHalls 1
+NIGHTSHIFT_LEVELS PublicAreas 1
+
+NIGHTSHIFT_LEVELS DepartmentHalls 1
+NIGHTSHIFT_LEVELS DepartmentAreas 0
+NIGHTSHIFT_LEVELS DepartmentSecure 0
+NIGHTSHIFT_LEVELS DepartmentLeisure 1
+
+NIGHTSHIFT_LEVELS CommandHalls 1
+NIGHTSHIFT_LEVELS CommandAreas 0
+NIGHTSHIFT_LEVELS CommandSecure 0

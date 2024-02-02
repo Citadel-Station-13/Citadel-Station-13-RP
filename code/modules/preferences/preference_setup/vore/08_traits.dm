@@ -1,6 +1,7 @@
 #define POSITIVE_MODE 1
 #define NEUTRAL_MODE 2
 #define NEGATIVE_MODE 3
+#define ALL_MODE 4
 
 /datum/preferences
 	var/custom_species	// Custom species name, can't be changed due to it having been used in savefiles already.
@@ -72,7 +73,7 @@
 
 	if(pref.real_species_id() != SPECIES_ID_CUSTOM)
 		pref.pos_traits.Cut()
-		pref.neg_traits.Cut()
+
 	// Clean up positive traits
 	for(var/path in pref.pos_traits)
 		if(!(path in positive_traits))
@@ -86,6 +87,8 @@
 	//Negative traits
 	for(var/path in pref.neg_traits)
 		if(!(path in negative_traits))
+			pref.neg_traits -= path
+		if((pref.real_species_id() != SPECIES_ID_CUSTOM) && !(path in everyone_traits))
 			pref.neg_traits -= path
 
 	var/datum/species/selected_species = pref.real_species_datum()
@@ -160,12 +163,22 @@
 			. += "<li>- <a href='?src=\ref[src];clicked_neg_trait=[T]'>[trait.name] ([trait.cost])</a></li>"
 		. += "</ul>"
 
-	. += "<a href='?src=\ref[src];add_trait=[NEUTRAL_MODE]'>Neutral Trait +</a><br>"
-	. += "<ul>"
-	for(var/T in pref.neu_traits)
-		var/datum/trait/trait = neutral_traits[T]
-		. += "<li>- <a href='?src=\ref[src];clicked_neu_trait=[T]'>[trait.name] ([trait.cost])</a></li>"
-	. += "</ul>"
+		. += "<a href='?src=\ref[src];add_trait=[NEUTRAL_MODE]'>Neutral Trait +</a><br>"
+		. += "<ul>"
+		for(var/T in pref.neu_traits)
+			var/datum/trait/trait = neutral_traits[T]
+			. += "<li>- <a href='?src=\ref[src];clicked_neu_trait=[T]'>[trait.name] ([trait.cost])</a></li>"
+		. += "</ul>"
+	else
+		. += "<a href='?src=\ref[src];add_trait=[ALL_MODE]'>Trait +</a><br>"
+		. += "<ul>"
+		for(var/T in pref.neu_traits)
+			var/datum/trait/trait = neutral_traits[T]
+			. += "<li>- <a href='?src=\ref[src];clicked_neu_trait=[T]'>[trait.name]</a></li>"
+		for(var/T in pref.neg_traits)
+			var/datum/trait/trait = negative_traits[T]
+			. += "<li>- <a href='?src=\ref[src];clicked_neg_trait=[T]'>[trait.name]</a></li>"
+		. += "</ul>"
 
 	. += "<b>Blood Color: </b>" //People that want to use a certain species to have that species traits (xenochimera/promethean/spider) should be able to set their own blood color.
 	. += "<a href='?src=\ref[src];blood_color=1'>Set Color</a>"
@@ -282,7 +295,9 @@
 			if(NEGATIVE_MODE)
 				picklist = negative_traits.Copy() - pref.neg_traits
 				mylist = pref.neg_traits
-			else
+			if(ALL_MODE)
+				picklist = everyone_traits.Copy() - pref.neu_traits - pref.neg_traits
+				mylist = pref.neg_traits.Copy() + pref.neu_traits.Copy()
 
 		if(isnull(picklist))
 			return PREFERENCES_REFRESH
@@ -291,8 +306,12 @@
 			return PREFERENCES_REFRESH
 
 		var/list/nicelist = list()
+		var/species = pref.real_species_name()
 		for(var/P in picklist)
 			var/datum/trait/T = picklist[P]
+			if(LAZYLEN(T.allowed_species) && !(species in T.allowed_species))
+				picklist -= P
+				continue
 			nicelist[T.name] = P
 
 		var/points_left = pref.starting_trait_points
@@ -351,6 +370,12 @@
 				Please remove that trait, or pick another trait to add.","Error")
 				return PREFERENCES_REFRESH
 
+			if(mode == ALL_MODE)
+				if(instance.cost < 0)
+					mylist = pref.neg_traits
+				else
+					mylist = pref.neu_traits
+
 			mylist += path
 			return PREFERENCES_REFRESH
 
@@ -359,3 +384,4 @@
 #undef POSITIVE_MODE
 #undef NEUTRAL_MODE
 #undef NEGATIVE_MODE
+#undef ALL_MODE

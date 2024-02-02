@@ -167,7 +167,6 @@
 /area/antag/antag_base)
 "ar" = (
 /obj/machinery/newscaster{
-	layer = 3.3;
 	pixel_y = 32
 	},
 /turf/unsimulated/floor{
@@ -2619,7 +2618,7 @@
 	opacity = 0
 	},
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1331;
 	master_tag = "merc_shuttle";
 	name = "exterior access button";
@@ -2892,7 +2891,7 @@
 	req_access = list(150)
 	},
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1331;
 	master_tag = "merc_shuttle";
 	name = "interior access button";
@@ -4095,7 +4094,7 @@
 /area/shuttle/mercenary)
 "hh" = (
 /obj/machinery/access_button/airlock_exterior{
-	command = "cycle_interior";
+	command = "cycle_int";
 	master_tag = "merc_south_airlock";
 	pixel_x = -25
 	},

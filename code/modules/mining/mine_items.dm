@@ -20,7 +20,7 @@
 	icon_state = "pickaxe"
 	item_state = "jackhammer"
 	w_class = ITEMSIZE_LARGE
-	materials = list(MAT_STEEL = 3750)
+	materials_base = list(MAT_STEEL = 3750)
 	var/digspeed = 40 //moving the delay to an item var so R&D can make improved picks. --NEO
 	var/sand_dig = FALSE
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
@@ -128,7 +128,7 @@
 	icon_state = "icepick"
 	item_state = "spickaxe" //im lazy fuck u
 	w_class = ITEMSIZE_SMALL
-	materials = list(MAT_STEEL = 2750, MAT_TITANIUM = 2000)
+	materials_base = list(MAT_STEEL = 2750, MAT_TITANIUM = 2000)
 	digspeed = 25 //More expensive than a diamond pick, a lot smaller but decently slower.
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
 	attack_verb = list("mined", "pierced", "stabbed", "attacked")
@@ -177,8 +177,10 @@
 			attack_verb = list("shredded", "ripped", "torn")
 			playsound(src, 'sound/weapons/chainsaw_startup.ogg',40,1)
 			damage_force = 15
-			sharp = 1
-			active = 1
+			damage_mode |= DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
+			edge = TRUE
+			sharp = TRUE
+			active = TRUE
 			update_icon()
 		else
 			to_chat(user, "You fumble with the string.")
@@ -189,9 +191,10 @@
 	attack_verb = list("bluntly hit", "beat", "knocked")
 	playsound(user, 'sound/weapons/chainsaw_turnoff.ogg',40,1)
 	damage_force = 3
-	edge = 0
-	sharp = 0
-	active = 0
+	damage_mode = initial(damage_mode)
+	edge = FALSE
+	sharp = FALSE
+	active = FALSE
 	update_icon()
 
 /obj/item/pickaxe/tyrmalin/attack_self(mob/user)
@@ -211,13 +214,8 @@
 	if(target && active)
 		if(get_fuel() > 0)
 			reagents.remove_reagent("fuel", 1)
-		if(istype(target,/obj/structure/window))
-			var/obj/structure/window/W = target
-			W.shatter()
-		else if(istype(target,/obj/structure/grille))
-			new /obj/structure/grille/broken(target.loc)
-			new /obj/item/stack/rods(target.loc)
-			qdel(target)
+		if(istype(target, /obj/structure/window) || istype(target, /obj/structure/grille))
+			target.atom_destruction()
 	if(jam_chance && active)
 		switch(rand(1,100))
 			if(1 to 30)
@@ -274,7 +272,7 @@
 	item_state = "shovel"
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
-	materials = list(MAT_STEEL = 50)
+	materials_base = list(MAT_STEEL = 50)
 	attack_verb = list("bashed", "bludgeoned", "thrashed", "whacked")
 	sharp = 0
 	edge = 1

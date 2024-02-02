@@ -11,3 +11,4 @@
 	fingerprint_chance = 100
 	punch_force = 2
 	body_cover_flags = 0
+	material_factoring = 0

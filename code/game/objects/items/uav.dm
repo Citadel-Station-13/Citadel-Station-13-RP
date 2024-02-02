@@ -323,7 +323,7 @@
 		var/rendered = "<i><span class='game say'>UAV received, <span class='message'>[msg]</span></span></i>"
 		master.show_message(rendered, type)
 
-/obj/item/uav/take_damage(var/damage)
+/obj/item/uav/take_damage_legacy(var/damage)
 	health -= damage
 	CheckHealth()
 	return

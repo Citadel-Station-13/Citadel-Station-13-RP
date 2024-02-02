@@ -1,3 +1,7 @@
+/datum/physiology_modifier/intrinsic/species/human
+	carry_strength_add = CARRY_STRENGTH_ADD_HUMAN
+	carry_strength_factor = CARRY_FACTOR_MOD_HUMAN
+
 /datum/species/human
 	id = SPECIES_ID_HUMAN
 	uid = SPECIES_ID_HUMAN
@@ -15,6 +19,7 @@
 	interests, rampant cyber and bio-augmentation initiatives, and secretive factions make life on most human \
 	worlds tumultous at best."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/humans)
+	mob_physiology_modifier = /datum/physiology_modifier/intrinsic/species/human
 
 	max_additional_languages = 3
 	intrinsic_languages = list(
@@ -49,9 +54,9 @@
 	)
 
 	unarmed_types = list(
-		/datum/unarmed_attack/stomp,
-		/datum/unarmed_attack/kick,
 		/datum/unarmed_attack/punch,
+		/datum/unarmed_attack/kick,
+		/datum/unarmed_attack/stomp,
 		/datum/unarmed_attack/bite,
 	)
 

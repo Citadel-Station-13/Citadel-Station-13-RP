@@ -435,7 +435,7 @@
 	to_chat(usr, "You [lights_on ? "enable" : "disable"] your integrated light.")
 
 	if (lights_on)
-		radio.set_light(integrated_light_power, 0.75, l_color = get_light_color_for_icontype(), angle = LIGHT_WIDE)
+		radio.set_light(integrated_light_power, 2, l_color = get_light_color_for_icontype(), angle = LIGHT_WIDE)
 	else
 		radio.set_light(0)
 
@@ -494,6 +494,13 @@
 	set category = "Robot Commands"
 	set name = "Emit Sparks"
 	spark_system.start()
+
+/mob/living/silicon/robot/verb/toggle_cover()
+	set category = "Robot Commands"
+	set name = "Toggle Cover"
+	locked = !locked
+	to_chat(src, "You [ locked ? "lock" : "unlock"] your interface.")
+	updateicon()
 
 // this function returns the robots jetpack, if one is installed
 /mob/living/silicon/robot/proc/installed_jetpack()
@@ -755,6 +762,18 @@
 			else
 				to_chat(usr, "Upgrade error!")
 
+	else if(istype(W, /obj/item/ka_modkit/))
+		var/obj/item/ka_modkit/M = W
+		if(!opened)
+			to_chat(usr, "You must access the borgs internals!")
+		else if(!src.module && M.require_module)
+			to_chat(usr, "The borg must choose a module before it can be upgraded!")
+		else
+			if(M.install(src))
+				user.transfer_item_to_loc(M, src, INV_OP_FORCE)
+				to_chat(usr, "You apply the modkit to [src]!")
+			else
+				to_chat(usr, "Upgrade error!")
 
 	else
 		if( !(istype(W, /obj/item/robotanalyzer) || istype(W, /obj/item/healthanalyzer)) )
@@ -1117,7 +1136,7 @@
 							cleaned_human.clean_blood(1)
 							to_chat(cleaned_human, "<font color='red'>[src] cleans your face!</font>")
 
-		if((module_state_1 && istype(module_state_1, /obj/item/storage/bag/ore)) || (module_state_2 && istype(module_state_2, /obj/item/storage/bag/ore)) || (module_state_3 && istype(module_state_3, /obj/item/storage/bag/ore))) //Borgs and drones can use their mining bags ~automagically~ if they're deployed in a slot. Only mining bags, as they're optimized for mass use.
+		if(istype(module_state_1, /obj/item/storage/bag/ore) || istype(module_state_2, /obj/item/storage/bag/ore) || istype(module_state_3, /obj/item/storage/bag/ore)) //Borgs and drones can use their mining bags ~automagically~ if they're deployed in a slot. Only mining bags, as they're optimized for mass use.
 			var/obj/item/storage/bag/ore/B = null
 			if(istype(module_state_1, /obj/item/storage/bag/ore)) //First orebag has priority, if they for some reason have multiple.
 				B = module_state_1

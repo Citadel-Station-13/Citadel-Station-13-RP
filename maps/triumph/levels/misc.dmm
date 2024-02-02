@@ -1315,7 +1315,7 @@
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_thunderdomecourt)
 "Fa" = (
-/obj/structure/table/rack/holorack,
+/obj/structure/table/rack/holorack_legacy,
 /obj/item/clothing/under/dress/dress_saloon,
 /obj/item/clothing/head/pin/flower,
 /turf/simulated/floor/holofloor/tiled/dark,
@@ -1992,7 +1992,7 @@
 /area/holodeck/source_meetinghall)
 "Vm" = (
 /obj/landmark/costume/random,
-/obj/structure/table/rack/holorack,
+/obj/structure/table/rack/holorack_legacy,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_theatre)
 "Vr" = (

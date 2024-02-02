@@ -68,10 +68,7 @@
 	dir = 8;
 	pixel_x = -32
 	},
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24;
+/obj/machinery/power/apc/north_mount{
 	start_charge = 0
 	},
 /obj/structure/bed/chair/bay/chair{
@@ -158,9 +155,7 @@
 	dir = 8;
 	pixel_x = -32
 	},
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -24;
+/obj/machinery/power/apc/south_mount{
 	start_charge = 0
 	},
 /turf/simulated/floor/tiled/techfloor{
@@ -291,7 +286,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/airlock/voidcraft{
 	density = 0;
-	icon_state = "door_open"
+	icon_state = "open"
 	},
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/shuttle/salamander_wreck_head)
@@ -410,10 +405,7 @@
 /obj/structure/bed/chair/bay/comfy{
 	dir = 4
 	},
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump";
-	pixel_x = -28;
+/obj/machinery/power/apc/west_mount{
 	start_charge = 0
 	},
 /turf/simulated/floor/tiled/techmaint/airless,
@@ -665,16 +657,16 @@
 /obj/machinery/door/airlock/multi_tile/glass{
 	density = 0;
 	dir = 4;
-	icon_state = "door_open"
-	},
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 1
+	icon_state = "open"
 	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/shuttle/salamander_wreck_cockpit)
@@ -756,7 +748,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/airlock/voidcraft{
 	density = 0;
-	icon_state = "door_open"
+	icon_state = "open"
 	},
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/shuttle/salamander_wreck_q2)
@@ -855,7 +847,7 @@
 	},
 /obj/machinery/door/airlock/glass_external/public{
 	density = 0;
-	icon_state = "door_open"
+	icon_state = "open"
 	},
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/shuttle/salamander_wreck)
@@ -1082,10 +1074,7 @@
 	dir = 8;
 	pixel_x = -32
 	},
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24;
+/obj/machinery/power/apc/north_mount{
 	start_charge = 0
 	},
 /obj/structure/bed/chair/bay/chair{
@@ -1175,6 +1164,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 4
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/shuttle/salamander_wreck_engineering)
@@ -1287,9 +1279,7 @@
 	dir = 8;
 	pixel_x = -32
 	},
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -24;
+/obj/machinery/power/apc/south_mount{
 	start_charge = 0
 	},
 /turf/simulated/floor/tiled/techfloor{
@@ -1312,7 +1302,7 @@
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/glass_external/public{
 	density = 0;
-	icon_state = "door_open"
+	icon_state = "open"
 	},
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/shuttle/salamander_wreck)
@@ -1337,6 +1327,9 @@
 /area/shuttle/salamander_wreck_engineering)
 "DB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint/airless,
@@ -1604,7 +1597,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/airlock/voidcraft{
 	density = 0;
-	icon_state = "door_open"
+	icon_state = "open"
 	},
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/shuttle/salamander_wreck_galley)
@@ -1736,7 +1729,7 @@
 "UT" = (
 /obj/machinery/door/airlock/glass_external/public{
 	density = 0;
-	icon_state = "door_open"
+	icon_state = "open"
 	},
 /obj/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/techmaint/airless,
@@ -1748,10 +1741,7 @@
 /obj/structure/handrail{
 	dir = 8
 	},
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 24;
+/obj/machinery/power/apc/east_mount{
 	start_charge = 0
 	},
 /turf/simulated/floor/tiled/techfloor{
@@ -1802,15 +1792,15 @@
 /obj/machinery/door/airlock/multi_tile/metal{
 	density = 0;
 	dir = 4;
-	icon_state = "door_open";
+	icon_state = "open";
 	name = "Salamander Engineering Bay";
 	opacity = 0
 	},
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 1
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/shuttle/salamander_wreck_engineering)
@@ -1902,10 +1892,7 @@
 /obj/structure/railing/grey{
 	dir = 8
 	},
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 24;
+/obj/machinery/power/apc/east_mount{
 	start_charge = 0
 	},
 /turf/simulated/floor/tiled/techfloor{

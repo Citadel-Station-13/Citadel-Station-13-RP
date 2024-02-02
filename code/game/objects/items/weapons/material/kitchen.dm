@@ -8,13 +8,10 @@
 	drop_sound = 'sound/items/drop/knife.ogg'
 	pickup_sound = 'sound/items/pickup/knife.ogg'
 	w_class = ITEMSIZE_TINY
-	thrown_force_divisor = 1
 	origin_tech = list(TECH_MATERIAL = 1)
 	attack_verb = list("attacked", "stabbed", "poked")
-	sharp = 1
-	edge = 1
-	force_divisor = 0.1 // 6 when wielded with hardness 60 (steel)
-	thrown_force_divisor = 0.25 // 5 when thrown with weight 20 (steel)
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
+	material_significance = MATERIAL_SIGNIFICANCE_SHARD
 	var/loaded      //Descriptive string for currently loaded food object.
 	var/scoop_food = 1
 
@@ -58,47 +55,45 @@
 	name = "fork"
 	desc = "It's a fork. Sure is pointy."
 	icon_state = "fork"
-	sharp = 1
-	edge = 0
+	damage_mode = DAMAGE_MODE_SHARP
 
 /obj/item/material/kitchen/utensil/fork/plastic
-	default_material = "plastic"
+	material_parts = /datum/material/plastic
 
 /obj/item/material/kitchen/utensil/fork/plasteel
-	default_material = "plasteel"
+	material_parts = /datum/material/plasteel
 
 /obj/item/material/kitchen/utensil/fork/durasteel
-	default_material = "durasteel"
+	material_parts = /datum/material/durasteel
 
 /obj/item/material/kitchen/utensil/spoon/plasteel
-	default_material = "plasteel"
+	material_parts = /datum/material/plasteel
 
 /obj/item/material/kitchen/utensil/spoon/durasteel
-	default_material = "durasteel"
+	material_parts = /datum/material/durasteel
 
 /obj/item/material/knife/plasteel
-	default_material = "plasteel"
+	material_parts = /datum/material/plasteel
 
 /obj/item/material/knife/durasteel
-	default_material = "durasteel"
+	material_parts = /datum/material/durasteel
 
 /obj/item/material/kitchen/rollingpin/plasteel
-  default_material = "plasteel"
+	material_parts = /datum/material/plasteel
 
 /obj/item/material/kitchen/rollingpin/durasteel
-  default_material = "durasteel"
+	material_parts = /datum/material/durasteel
 
 /obj/item/material/kitchen/utensil/spoon
 	name = "spoon"
 	desc = "It's a spoon. You can see your own upside-down face in it."
 	icon_state = "spoon"
 	attack_verb = list("attacked", "poked")
-	edge = 0
-	sharp = 0
-	force_divisor = 0.1 //2 when wielded with weight 20 (steel)
+	material_significance = MATERIAL_SIGNIFICANCE_SHARD
+	damage_mode = NONE
 
 /obj/item/material/kitchen/utensil/spoon/plastic
-	default_material = "plastic"
+	material_parts = /datum/material/plastic
 
 /*
  * Knives
@@ -108,12 +103,12 @@
 /obj/item/material/knife/attack(target as mob, mob/living/user as mob)
 	if ((MUTATION_CLUMSY in user.mutations) && prob(50))
 		to_chat(user, "<span class='warning'>You accidentally cut yourself with \the [src].</span>")
-		user.take_organ_damage(20)
+		user.take_random_targeted_damage(brute = 20)
 		return
 	return ..()
 */
 /obj/item/material/knife/plastic
-	default_material = "plastic"
+	material_parts = /datum/material/plastic
 
 /*
  * Rolling Pins
@@ -124,10 +119,8 @@
 	desc = "Used to knock out the Bartender."
 	icon_state = "rolling_pin"
 	attack_verb = list("bashed", "battered", "bludgeoned", "thrashed", "whacked")
-	default_material = "wood"
-	force_divisor = 0.7 // 10 when wielded with weight 15 (wood)
-	dulled_divisor = 0.75	// Still a club
-	thrown_force_divisor = 1 // as above
+	material_parts = /datum/material/wood_plank
+	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_LIGHT
 	drop_sound = 'sound/items/drop/wooden.ogg'
 	pickup_sound = 'sound/items/pickup/wooden.ogg'
 
@@ -137,7 +130,7 @@
 		return ..()
 	if ((MUTATION_CLUMSY in L.mutations) && prob(50))
 		to_chat(user, "<span class='warning'>\The [src] slips out of your hand and hits your head.</span>")
-		L.take_organ_damage(10)
+		L.take_random_targeted_damage(brute = 10)
 		L.afflict_unconscious(20 * 2)
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()

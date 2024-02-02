@@ -5,7 +5,7 @@
 	desc = "The jaws of the law."
 	damage_force = 10
 	throw_force = 0
-	hitsound = 'sound/weapons/bite.ogg'
+	attack_sound = 'sound/weapons/bite.ogg'
 	attack_verb = list("chomped", "bit", "ripped", "mauled", "enforced")
 	w_class = ITEMSIZE_NORMAL
 
@@ -16,7 +16,7 @@
 	desc = "The jaws of a small dog."
 	damage_force = 5
 	throw_force = 0
-	hitsound = 'sound/weapons/bite.ogg'
+	attack_sound = 'sound/weapons/bite.ogg'
 	attack_verb = list("nibbled", "bit", "gnawed", "chomped", "nommed")
 	w_class = ITEMSIZE_NORMAL
 	var/emagged = 0
@@ -35,7 +35,7 @@
 			desc = "The jaws of the law."
 			damage_force = 10
 			throw_force = 0
-			hitsound = 'sound/weapons/bite.ogg'
+			attack_sound = 'sound/weapons/bite.ogg'
 			attack_verb = list("chomped", "bit", "ripped", "mauled", "enforced")
 			w_class = ITEMSIZE_NORMAL
 		else
@@ -45,7 +45,7 @@
 			desc = "The jaws of a small dog."
 			damage_force = 5
 			throw_force = 0
-			hitsound = 'sound/weapons/bite.ogg'
+			attack_sound = 'sound/weapons/bite.ogg'
 			attack_verb = list("nibbled", "bit", "gnawed", "chomped", "nommed")
 			w_class = ITEMSIZE_NORMAL
 		update_icon()
@@ -57,7 +57,7 @@
 	icon_state = "nose"
 	desc = "The BOOP module, a simple reagent and atmosphere sniffer."
 	damage_force = 0
-	item_flags = ITEM_NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	throw_force = 0
 	attack_verb = list("nuzzled", "nosed", "booped")
 	w_class = ITEMSIZE_TINY
@@ -180,8 +180,8 @@
 	desc = "Useful for slurping mess off the floor before affectionally licking the crew members in the face."
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "synthtongue"
-	hitsound = 'sound/effects/attackblob.ogg'
-	item_flags = ITEM_NOBLUDGEON
+	attack_sound = 'sound/effects/attackblob.ogg'
+	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	var/emagged = 0
 	var/datum/matter_synth/water = null
 
@@ -241,7 +241,10 @@
 				to_chat(user, "<span class='notice'>You finish off [target].</span>")
 				qdel(target)
 				var/mob/living/silicon/robot/R = user
-				R.cell.charge += 250
+				if(istype(target,/obj/item/trash/rkibble))
+					R.cell.charge += 1000
+				else
+					R.cell.charge += 250
 				water.use_charge(5)
 			return
 		if(istype(target,/obj/item/cell))
@@ -300,7 +303,7 @@
 	desc = "Toggles floor scrubbing."
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "scrub0"
-	item_flags = ITEM_NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	var/enabled = FALSE
 
 /obj/item/pupscrubber/attack_self(mob/user)
@@ -337,7 +340,7 @@
 	sharp = 1
 	edge = 1
 	throw_force = 0 //This shouldn't be thrown in the first place.
-	hitsound = 'sound/weapons/blade1.ogg'
+	attack_sound = 'sound/weapons/blade1.ogg'
 	attack_verb = list("slashed", "stabbed", "jabbed", "mauled", "sliced")
 	w_class = ITEMSIZE_NORMAL
 
@@ -379,7 +382,7 @@
 	icon_state = "pounce"
 	desc = "Leap at your target to momentarily stun them."
 	damage_force = 0
-	item_flags = ITEM_NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	throw_force = 0
 
 /obj/item/dogborg/pounce/attack_self(mob/user)

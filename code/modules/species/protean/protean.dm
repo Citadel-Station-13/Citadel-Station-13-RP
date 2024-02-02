@@ -1,6 +1,10 @@
 #define DAM_SCALE_FACTOR 0.01
 #define METAL_PER_TICK 100
 
+/datum/physiology_modifier/intrinsic/species/protean
+	carry_strength_add = CARRY_STRENGTH_ADD_PROTEAN
+	carry_strength_factor = CARRY_FACTOR_MOD_PROTEAN
+
 /datum/species/protean
 	uid = SPECIES_ID_PROTEAN
 	name = SPECIES_PROTEAN
@@ -13,6 +17,7 @@
 	death_message = "rapidly loses cohesion, dissolving into a cloud of gray dust..."
 	knockout_message = "collapses inwards, forming a disordered puddle of gray goo."
 	remains_type = /obj/effect/debris/cleanable/ash
+	mob_physiology_modifier = /datum/physiology_modifier/intrinsic/species/protean
 
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch, /datum/unarmed_attack/bite) // Regular human attack verbs are enough.
 
@@ -205,7 +210,7 @@
 	var/obj/item/organ/external/E = H.get_organ(BP_TORSO)
 	return E.brute_dam + E.burn_dam
 
-/datum/species/protean/handle_environment_special(var/mob/living/carbon/human/H)
+/datum/species/protean/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
 	if((getActualDamage(H) > damage_to_blob) && isturf(H.loc)) //So, only if we're not a blob (we're in nullspace) or in someone (or a locker, really, but whatever).
 		H.nano_intoblob()
 		return ..() //Any instakill shot runtimes since there are no organs after this. No point to not skip these checks, going to nullspace anyway.
@@ -347,7 +352,7 @@
 
 	if(istype(back, /obj/item/hardsuit/protean))
 		var/obj/item/hardsuit/protean/suit = back
-		if(suit.myprotean == src)			
+		if(suit.myprotean == src)
 			suit.reset()
 			suit.forceMove(src)
 			to_chat(src, SPAN_WARNING("You retract your nanosuit."))

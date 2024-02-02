@@ -2636,7 +2636,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "kitchenC";
-	layer = 3.3;
 	name = "Kitchen Shutters"
 	},
 /turf/unsimulated/floor/steel,
@@ -3344,7 +3343,6 @@
 /obj/machinery/door/blast/regular{
 	dir = 8;
 	id = "ArmouryC2";
-	layer = 3.3;
 	name = "Armoury"
 	},
 /turf/unsimulated/floor/steel,
@@ -6504,7 +6502,7 @@
 /obj/machinery/door/airlock/multi_tile/glass{
 	req_access = list(5)
 	},
-/obj/machinery/door/firedoor/multi_tile,
+/obj/machinery/door/firedoor/glass,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -8956,7 +8954,6 @@
 /obj/machinery/door/blast/regular{
 	dir = 8;
 	id = "ArmouryC4";
-	layer = 3.3;
 	name = "Armoury"
 	},
 /turf/unsimulated/floor{
@@ -12331,6 +12328,12 @@
 	icon_state = "dark"
 	},
 /area/centcom/specops)
+"NC" = (
+/obj/machinery/door/firedoor/glass,
+/turf/unsimulated/floor/steel{
+	icon_state = "white"
+	},
+/area/centcom/medical)
 "NE" = (
 /obj/structure/table/reinforced,
 /obj/item/material/minihoe,
@@ -14677,7 +14680,6 @@
 /area/centcom/evac)
 "Yc" = (
 /obj/machinery/newscaster{
-	layer = 3.3;
 	pixel_x = 28
 	},
 /obj/effect/floor_decal/borderfloorblack{
@@ -21803,7 +21805,7 @@ kv
 pT
 oS
 kv
-kv
+NC
 kv
 kv
 kv

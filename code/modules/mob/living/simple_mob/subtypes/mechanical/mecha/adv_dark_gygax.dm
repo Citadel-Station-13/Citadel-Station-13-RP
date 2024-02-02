@@ -173,7 +173,7 @@
 
 			else if(istype(thing, /obj/mecha))
 				var/obj/mecha/M = thing
-				M.take_damage(i * 2, "energy") // Mechs don't have a concept for siemens so energy armor check is the best alternative.
+				M.take_damage_legacy(i * 2, "energy") // Mechs don't have a concept for siemens so energy armor check is the best alternative.
 
 		sleep(1 SECOND)
 

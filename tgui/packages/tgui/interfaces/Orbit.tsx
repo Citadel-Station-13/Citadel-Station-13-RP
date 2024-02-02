@@ -49,14 +49,14 @@ type OrbitData = {
 }
 
 type BasicSectionProps = {
-  searchText: string,
-  source: OrbitList[],
-  title: string,
+  readonly searchText: string,
+  readonly source: OrbitList[],
+  readonly title: string,
 }
 
 type OrbitedButtonProps = {
-  color: string,
-  thing: OrbitList,
+  readonly color: string,
+  readonly thing: OrbitList,
 }
 
 const BasicSection = (props: BasicSectionProps, context: any) => {

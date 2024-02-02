@@ -18,10 +18,10 @@
 		ui = new(user, src, "PlantAnalyzer", name)
 		ui.open()
 
-/obj/item/plant_analyzer/ui_state(mob/user, datum/tgui_module/module)
+/obj/item/plant_analyzer/ui_state()
 	return GLOB.inventory_state
 
-/obj/item/plant_analyzer/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/item/plant_analyzer/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	var/datum/seed/grown_seed = locate(last_seed)

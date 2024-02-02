@@ -74,7 +74,7 @@ var/datum/species/shapeshifter/promethean/prometheans
 	cold_level_2 = 220
 	cold_level_3 = 130
 
-	heat_level_1 = 320
+	heat_level_1 = 340
 	heat_level_2 = 370
 	heat_level_3 = 600
 

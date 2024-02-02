@@ -324,7 +324,7 @@ const SupplyConsoleMenuOrderList = (props, context) => {
         ) : null}>
           <LabeledList>
             {order.entries.map(field => field.entry ? (
-              <LabeledList.Item label={field.field} buttons={order_auth ? (
+              <LabeledList.Item key={field.field} label={field.field} buttons={order_auth ? (
                 <Button
                   icon="pen"
                   content="Edit"

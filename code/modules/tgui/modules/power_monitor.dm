@@ -8,7 +8,7 @@
 	. = ..()
 	refresh_sensors()
 
-/datum/tgui_module_old/power_monitor/ui_data(mob/user)
+/datum/tgui_module_old/power_monitor/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 
 	var/list/sensors = list()
@@ -37,7 +37,7 @@
 
 	return data
 
-/datum/tgui_module_old/power_monitor/ui_act(action, params)
+/datum/tgui_module_old/power_monitor/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -81,5 +81,5 @@
 
 // Subtype for self_state
 /datum/tgui_module_old/power_monitor/robot
-/datum/tgui_module_old/power_monitor/robot/ui_state(mob/user, datum/tgui_module/module)
+/datum/tgui_module_old/power_monitor/robot/ui_state()
 	return GLOB.self_state
