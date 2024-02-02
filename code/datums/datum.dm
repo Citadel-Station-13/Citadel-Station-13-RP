@@ -60,10 +60,6 @@
 	#endif
 #endif
 
-#ifdef DATUMVAR_DEBUGGING_MODE
-	var/list/cached_vars
-#endif
-
 /**
  * Called when a href for this datum is clicked
  *
@@ -142,32 +138,7 @@
 	for(var/target in signal_procs)
 		UnregisterSignal(target, signal_procs[target])
 
-#ifdef DATUMVAR_DEBUGGING_MODE
-/datum/proc/save_vars()
-	cached_vars = list()
-	for(var/i in vars)
-		if(i == "cached_vars")
-			continue
-		cached_vars[i] = vars[i]
-
-/datum/proc/check_changed_vars()
-	. = list()
-	for(var/i in vars)
-		if(i == "cached_vars")
-			continue
-		if(cached_vars[i] != vars[i])
-			.[i] = list(cached_vars[i], vars[i])
-
-/datum/proc/txt_changed_vars()
-	var/list/l = check_changed_vars()
-	var/t = "[src]([REF(src)]) changed vars:"
-	for(var/i in l)
-		t += "\"[i]\" \[[l[i][1]]\] --> \[[l[i][2]]\] "
-	t += "."
-
-/datum/proc/to_chat_check_changed_vars(target = world)
-	to_chat(target, txt_changed_vars())
-#endif
+//* Cooldowns *//
 
 /**
  * Callback called by a timer to end an associative-list-indexed cooldown.
@@ -199,8 +170,7 @@
 	SEND_SIGNAL(source, COMSIG_CD_RESET(index), S_TIMER_COOLDOWN_TIMELEFT(source, index))
 	TIMER_COOLDOWN_END(source, index)
 
-//? simple serialize/deserialize; it's expected to use this for simple datums only.
-//? do not use this for /atoms, SSpersistence handles that!
+//* Serialization *//
 
 /**
  * serializes us to a list
@@ -221,22 +191,3 @@
  */
 /datum/proc/deserialize(list/data)
 	return
-
-/**
- * make a datum from a serialized list
- * you are responsible for knowing what datums this is valid for.
- * you are responsible for sanitizing the input.
- */
-/proc/deserialize_datum(list/data)
-	if(istext(data))
-		data = json_decode(data)
-	var/path = text2path(data["type"])
-	ASSERT(ispath(path, /datum))
-	return (new path):deserialize(data)
-
-/**
- * serializes a datum into a json text string
- */
-/proc/serialize_datum(datum/D)
-	ASSERT(isdatum(D))
-	return json_encode(D.serialize())
