@@ -324,6 +324,9 @@
 		else
 			. = ""
 
+/obj/item/proc/should_attempt_pickup(datum/event_args/actor/actor)
+	return TRUE
+
 /obj/item/proc/attempt_pickup(mob/user)
 	. = TRUE
 	if (!user)
@@ -1006,7 +1009,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 			if(obj_storage?.allow_open_via_equipped_click && obj_storage.auto_handle_interacted_open(e_args))
 				return TRUE
 	if(!e_args.performer.is_holding(src))
-		if(attempt_pickup(e_args.performer))
+		if(should_attempt_pickup(e_args) && attempt_pickup(e_args.performer))
 			return TRUE
 
 //* Inventory *//

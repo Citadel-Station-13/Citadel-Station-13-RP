@@ -91,6 +91,9 @@
 	if(acc.len)
 		. += " with traces of [english_list(acc)]"
 
+/obj/item/clothing/should_attempt_pickup(datum/event_args/actor/actor)
+	return ..() && (worn_mob() != actor.performer)
+
 /obj/item/clothing/equipped(mob/user, slot, flags)
 	. = ..()
 	if(enables_planes)

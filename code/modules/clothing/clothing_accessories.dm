@@ -18,14 +18,16 @@
 	. = ..()
 	if(.)
 		return
-	if(key[1] != "A")
+	if(key[1] != "A" || key[2] != "-")
 		return FALSE
 	var/list/split = splittext(key, "-")
+	if(length(split < 3))
+		return FALSE
 	var/accessory_ref = split[2]
 	var/obj/item/clothing/accessory = locate(accessory_ref)
 	if(!(accessory in accessories))
 		return FALSE
-	return accessory.context_act(e_args, key)
+	return accessory.context_act(e_args, split[3])
 
 /obj/item/clothing/on_attack_hand(datum/event_args/actor/clickchain/e_args)
 	. = ..()
@@ -207,18 +209,6 @@
 		return
 
 	..()
-
-/obj/item/clothing/attack_hand(mob/user, list/params)
-	//only forward to the attached accessory if the clothing is equipped (not in a storage)
-	if(LAZYLEN(accessories) && src.loc == user)
-		for(var/obj/item/clothing/accessory/A in accessories)
-			A.attack_hand(user)
-		return
-	if (ishuman(user) && src.loc == user)
-		var/mob/living/carbon/human/H = user
-		if(src == H.w_uniform) // Un-equip on single click, but not on uniform.
-			return
-	return ..()
 
 /obj/item/clothing/examine(var/mob/user)
 	. = ..()

@@ -45,13 +45,14 @@
 		return FALSE
 	// check for defaulting
 	if(length(menu_options) == 1)
-		var/list/first_option = menu_options[1]
+		var/key = menu_options[1]
+		var/list/first_option = menu_options[key]
 		// todo: this is shitcode but we don't want assoclists for performance, just yet.
 		// make sure it's defaultable
 		if(length(first_option) >= 5 && first_option[5])
 			// it is, log and execute
-			log_click_context(e_args, src, "menu execute [first_option[1]] (default)")
-			context_act(e_args, first_option[1])
+			log_click_context(e_args, src, "menu execute [key] (default)")
+			context_act(e_args, key)
 			return
 	// open
 	log_click_context(e_args, src, "menu open")
