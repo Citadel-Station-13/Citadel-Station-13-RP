@@ -57,12 +57,13 @@
 	if(length(starts_with) && !empty)
 		// this is way too permissive already
 		var/safety = 256
+		var/atom/where_real_contents = obj_storage.real_contents_loc()
 		for(var/path in starts_with)
 			var/amount = starts_with[path] || 1
 			for(var/i in 1 to amount)
 				if(!--safety)
 					CRASH("tried to spawn too many objects")
-				new path(src)
+				new path(where_real_contents)
 	starts_with = null
 
 /**

@@ -1530,7 +1530,7 @@
 
 /atom/movable/screen/storage
 	name = "storage"
-	appearance_flags = APPEARANCE_UI | KEEP_TOGETHER
+	appearance_flags = APPEARANCE_UI | KEEP_TOGETHER | TILE_BOUND
 	plane = STORAGE_PLANE
 	icon = 'icons/screen/hud/common/storage.dmi'
 
@@ -1644,13 +1644,30 @@
 /obj/proc/object_storage_closed(mob/user)
 	return
 
+//? Lazy indirection helper
+
+/atom/movable/storage_indirection_holder
+	name = "storage indirection holder"
+	desc = "Why do you see this?"
+	atom_flags = ATOM_ABSTRACT
+
+/atom/movable/storage_indirection_holder/CanReachIn(atom/movable/mover, atom/target, obj/item/tool, list/cache)
+	return TRUE
+
+/atom/movable/storage_indirection_holder/CanReachOut(atom/movable/mover, atom/target, obj/item/tool, list/cache)
+	return TRUE
+
 //? Lazy wrappers for init
 
-/obj/proc/init_storage(path = /datum/object_system/storage)
+/obj/proc/init_storage(path = /datum/object_system/storage, indirected = FALSE)
 	RETURN_TYPE(/datum/object_system/storage)
 	ASSERT(isnull(obj_storage))
 	obj_storage = new path(src)
-	// get all items inside / registered
-	for(var/obj/item/item in contents)
-		obj_storage.on_item_entered(item)
+	if(!indirected)
+		// get all items inside / registered
+		for(var/obj/item/item in contents)
+			obj_storage.on_item_entered(item)
+	else
+		var/atom/movable/indirection = new /atom/movable/storage_indirection_holder(src)
+		obj_storage.dangerously_redirect_contents_calls = indirection
 	return obj_storage

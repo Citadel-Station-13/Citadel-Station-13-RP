@@ -96,17 +96,22 @@
 		. += " with traces of [english_list(acc)]"
 
 /obj/item/clothing/should_attempt_pickup(datum/event_args/actor/actor)
+	// if we're currently attached as an accessory
+	if(accessory_host)
+		return FALSE
 	// either attack_hand_auto_unequip off, not being worn
-	. = ..() && (attack_hand_auto_unequip || (worn_mob() != actor.performer))
+	var/equipped_by_performer = actor.performer == worn_mob()
+	. = ..() && (attack_hand_auto_unequip || !equipped_by_performer)
 	if(!.)
 		return
-	for(var/obj/item/clothing/accessory as anything in accessories)
-		// check if accessory has storage allowing equipped click
-		if(accessory.obj_storage.allow_open_via_equipped_click)
-			return FALSE
-		// check if they allow pickup
-		if(!accessory.should_attempt_pickup(actor))
-			return FALSE
+	if(equipped_by_performer)
+		for(var/obj/item/clothing/accessory as anything in accessories)
+			// check if accessory has storage allowing equipped click
+			if(accessory.obj_storage?.allow_open_via_equipped_click)
+				return FALSE
+			// check if they allow pickup
+			if(!accessory.should_attempt_pickup(actor))
+				return FALSE
 
 /obj/item/clothing/equipped(mob/user, slot, flags)
 	. = ..()

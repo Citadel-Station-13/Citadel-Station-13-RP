@@ -356,14 +356,17 @@
 
 	throwing?.terminate()
 
-	if(item_flags & ITEM_IN_STORAGE)
-		var/obj/object = loc
-		var/datum/object_system/storage/in_storage = object.obj_storage
-		// todo: support for indirection
-		ASSERT(!isnull(in_storage))
-		if(!in_storage.auto_handle_interacted_removal(src, new /datum/event_args/actor(user), put_in_hands = TRUE))
-			return
-	else if(!user.put_in_active_hand(src))
+	//! FUCK; this is off because we don't have storage indirection working properly.
+
+	// if(item_flags & ITEM_IN_STORAGE)
+	// 	var/obj/object = loc
+	// 	var/datum/object_system/storage/in_storage = object.obj_storage
+	// 	// todo: support for indirection
+	// 	ASSERT(!isnull(in_storage))
+	// 	if(!in_storage.auto_handle_interacted_removal(src, new /datum/event_args/actor(user), put_in_hands = TRUE))
+	// 		return
+	// else if(!user.put_in_active_hand(src))
+	if(!user.put_in_active_hand(src))
 		return
 	if(isturf(old_loc))
 		var/obj/effect/temporary_effect/item_pickup_ghost/ghost = new(old_loc)

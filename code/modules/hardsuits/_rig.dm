@@ -247,7 +247,7 @@
 
 /obj/item/hardsuit/proc/initialize_storage()
 	ASSERT(isnull(obj_storage))
-	init_storage()
+	init_storage(indirected = TRUE)
 
 	obj_storage.set_insertion_allow(storage_insertion_allow)
 	obj_storage.set_insertion_whitelist(storage_insertion_whitelist)
