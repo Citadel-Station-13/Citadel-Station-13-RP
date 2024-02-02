@@ -1,7 +1,7 @@
 /obj/machinery/atmospheric_field_generator
 	name = "atmospheric retention field generator"
 	desc = "A floor-mounted piece of equipment that generates an atmosphere-retaining energy field when powered and activated. Linked to environmental alarm systems and will automatically activate when hazardous conditions are detected.<br><br>Note: prolonged immersion in active atmospheric retention fields may have negative long-term health consequences."
-	icon = 'icons/obj/atm_fieldgen.dmi'
+	icon = 'icons/obj/structures/atm_fieldgen.dmi'
 	icon_state = "arfg_off"
 	anchored = TRUE
 	opacity = FALSE
@@ -175,49 +175,32 @@
 /obj/structure/atmospheric_retention_field
 	name = "atmospheric retention field"
 	desc = "A shimmering forcefield that keeps the good air inside and the bad air outside. This field has been modulated so that it doesn't impede movement or projectiles.<br><br>Note: prolonged immersion in active atmospheric retention fields may have negative long-term health consequences."
-	icon = 'icons/obj/atm_fieldgen.dmi'
-	icon_state = "arfg_field"
+	icon = 'icons/obj/structures/retention_field.dmi'
+	icon_state = "retention_field-0"
+	base_icon_state = "retention_field"
 	anchored = TRUE
 	density = FALSE
-	opacity = 0
+	opacity = FALSE
 	plane = MOB_PLANE
 	layer = ABOVE_MOB_LAYER
-	//mouse_opacity = 0
 	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED
-	var/basestate = "arfg_field"
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = SMOOTH_GROUP_RETENTION_FIELD
+	canSmoothWith = SMOOTH_GROUP_RETENTION_FIELD
 
 	//light_range = 3
 	//light_power = 1
 	//light_color = "#FFFFFF"
 	//light_on = TRUE
 
-/obj/structure/atmospheric_retention_field/update_icon()
-	cut_overlays()
-	var/list/dirs = list()
-	for(var/obj/structure/atmospheric_retention_field/F in orange(src,1))
-		dirs += get_dir(src, F)
-
-	var/list/connections = dirs_to_corner_states(dirs)
-
-	icon_state = ""
-	for(var/i = 1 to 4)
-		var/image/I = image(icon, "[basestate][connections[i]]", dir = 1<<(i-1))
-		add_overlay(I)
-
-	return
-
 /obj/structure/atmospheric_retention_field/Initialize(mapload)
 	. = ..()
 	update_nearby_tiles() //Force ZAS update
-	return INITIALIZE_HINT_LATELOAD
-
-/obj/structure/atmospheric_retention_field/LateInitialize()
-	update_connections(1)
-	update_icon()
+	QUEUE_SMOOTH(src)
+	QUEUE_SMOOTH_NEIGHBORS(src)
 
 /obj/structure/atmospheric_retention_field/Destroy()
-	for(var/obj/structure/atmospheric_retention_field/W in orange(1, src.loc))
-		W.update_connections(1)
+	QUEUE_SMOOTH_NEIGHBORS(src)
 	update_nearby_tiles() //Force ZAS update
 	. = ..()
 
@@ -232,6 +215,6 @@
 
 /obj/structure/atmospheric_retention_field/impassable
 	desc = "A shimmering forcefield that keeps the good air inside and the bad air outside. It seems fairly solid, almost like it's made out of some kind of hardened light.<br><br>Note: prolonged immersion in active atmospheric retention fields may have negative long-term health consequences."
-	icon = 'icons/obj/atm_fieldgen.dmi'
+	icon = 'icons/obj/structures/atm_fieldgen.dmi'
 	icon_state = "arfg_field"
 	density = TRUE
