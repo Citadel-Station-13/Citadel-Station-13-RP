@@ -3,6 +3,7 @@
 
 SUBSYSTEM_DEF(persistence)
 	name = "Persistence"
+	#warn bump init order
 	init_order = INIT_ORDER_PERSISTENCE
 	subsystem_flags = SS_NO_FIRE
 	/// The directory to write to for per-map persistence. If null, the current map shouldn't be persisted to/from.
@@ -58,16 +59,18 @@ SUBSYSTEM_DEF(persistence)
 
 #warn impl
 
+//* ID Mapping *//
+
 /**
  * gets ID of host map datum
  *
  * you usually want level_id_of_z instead.
  */
 /datum/controller/subsystem/persistence/proc/map_id_of_z(z)
-	#warn impl
+	return SSmapping.ordered_levels[z]?.parent_map
 
 /**
  * gets ID of level
  */
-/datum/controller/subsystem/persistence/proc/level_id_of_z()
-	#warn impl
+/datum/controller/subsystem/persistence/proc/level_id_of_z(z)
+	return SSmapping.level_id(z)

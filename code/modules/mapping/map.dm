@@ -55,6 +55,12 @@
 	if(loaded)
 		. = QDEL_HINT_LETMELIVE
 		CRASH("UH OH, SOMETHING TRIED TO DELETE AN INSTANTIATED MAP.")
+	for(var/datum/map_level/level in levels)
+		if(level.parent_map != src)
+			stack_trace("how?")
+			continue
+		level.parent_map = null
+	levels = null
 	return ..()
 
 /datum/map/serialize()
@@ -115,7 +121,7 @@
 	for(var/i in 1 to length(levels))
 		if(ispath(levels[i]))
 			var/datum/map_level/level_path = levels[i]
-			levels[i] = new level_path
+			levels[i] = new level_path(src)
 
 /**
  * anything to do immediately on load

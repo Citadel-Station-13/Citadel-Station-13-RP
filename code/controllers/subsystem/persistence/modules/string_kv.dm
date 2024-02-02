@@ -2,7 +2,7 @@
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
 /**
- * ! Unique String Persistence
+ * String KKV module
  *
  * this is the "generic store anything by key/value" system
  * group specific string load is allowed but not required.
@@ -21,6 +21,9 @@
 /**
  * gets a persistent string
  *
+ * given this proc is for advanced users, it will not hold your hand on what group to use. figure it out.
+ * prefer SSpersistence for id lookups, not SSmapping, as it's outside of SSmapping's concerns to resolve that.
+ *
  * @params
  * - key - key of string
  * - group - optional group-specific. null counts as its own group.
@@ -30,6 +33,9 @@
 
 /**
  * sets a persistent string
+ *
+ * given this proc is for advanced users, it will not hold your hand on what group to use. figure it out.
+ * prefer SSpersistence for id lookups, not SSmapping, as it's outside of SSmapping's concerns to resolve that.
  *
  * @params
  * - key - key of string

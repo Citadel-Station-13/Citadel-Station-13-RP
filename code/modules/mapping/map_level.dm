@@ -10,6 +10,8 @@
 	var/display_id
 	/// player visible name for non-technical displays - randomized if unset
 	var/display_name
+	/// host /datum/map, if any
+	var/datum/map/parent_map
 	/// traits
 	var/list/traits
 	/// attributes associated key-values
@@ -80,7 +82,9 @@
 	var/holomap_legend_x = 96	// x position of the holomap legend for this z
 	var/holomap_legend_y = 96	// y position of the holomap legend for this z
 
-/datum/map_level/New()
+/datum/map_level/New(datum/map/parent_map)
+	src.parent_map = parent_map
+
 	#define UNPACK_LINK(vname) if(ispath(vname, /datum/map_level)) { var/datum/map_level/cast_##vname = vname; vname = initial(cast_##vname.id) ; }
 	UNPACK_LINK(link_north)
 	UNPACK_LINK(link_south)
@@ -95,6 +99,7 @@
 	if(loaded)
 		. = QDEL_HINT_LETMELIVE
 		CRASH("UH OH, SOMETHING TRIED TO DELETE AN INSTANTIATED LEVEL.")
+	parent_map = null
 	return ..()
 
 /datum/map_level/serialize()
