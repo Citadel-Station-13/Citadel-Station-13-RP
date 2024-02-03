@@ -34,11 +34,13 @@
 	var/bubble_icon = "normal"
 
 	//? Armor
-	/// armor datm - this armor mitigates damage
-	/// damage is reduced to 1 / (armor / 100 + 1), so 100 armor = 2x effective hp, 200 = 3x
-	/// if negative, you receive that % more damage, -100 = 0.5x effective hp, -200 = 0.33x, so on and so forth.
+	/// armor datum - holds armor values
+	/// this is lazy initialized, only init'd when armor is fetched
+	/// [armor_type] specifies the typepath to fetch if this is null during a fetch
 	var/datum/armor/armor
 	/// armor datum type
+	/// this is the type to init if armor is unset when armor is fetched
+	/// * anonymous typepaths are not allowed here
 	var/armor_type = /datum/armor/none
 
 	//? Context
@@ -1063,6 +1065,8 @@
 	set_base_layer(initial(layer))
 
 //? Pixel Offsets
+
+// todo: at some point we need to optimize this entire chain of bullshit, proccalls are expensive yo
 
 /atom/proc/set_pixel_x(val)
 	pixel_x = val + get_managed_pixel_x()

@@ -61,6 +61,7 @@
 /obj/item/storage/box/glasses/meta
 	name = "box of half-pint metamorphic glasses"
 	glass_type = /obj/item/reagent_containers/food/drinks/metaglass
+	insertion_whitelist = list(/obj/item/reagent_containers/food/drinks/metaglass)
 
 /obj/item/storage/box/glass_extras
 	name = "box of cocktail garnishings"

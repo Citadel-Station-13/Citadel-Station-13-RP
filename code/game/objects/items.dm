@@ -488,8 +488,7 @@
 	var/matrix/M = matrix(transform)
 	M.Turn(rand(-170, 170))
 	transform = M
-	pixel_x = rand(-8, 8)
-	pixel_y = rand(-8, 8)
+	set_pixel_offsets(rand(-8, 8), rand(-8, 8))
 
 /obj/item/verb/verb_pickup()
 	set src in oview(1)

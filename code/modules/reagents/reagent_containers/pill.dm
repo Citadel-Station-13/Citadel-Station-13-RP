@@ -26,6 +26,17 @@
 		icon_state = "pill[rand(1,20)]"
 	if(reagents.total_volume && rename_with_volume)
 		name += " ([reagents.total_volume]u)"
+	randomize_pixel_offsets()
+
+/obj/item/reagent_containers/pill/dropped(mob/user, flags, atom/newLoc)
+	. = ..()
+	if(. != NONE)
+		return
+	randomize_pixel_offsets()
+
+// todo: generic /obj/item pixel randomization
+/obj/item/reagent_containers/pill/proc/randomize_pixel_offsets()
+	set_pixel_offsets(rand(-10, 10), rand(-10, 10))
 
 /obj/item/reagent_containers/pill/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(target == user)

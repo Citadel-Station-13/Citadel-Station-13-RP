@@ -502,6 +502,7 @@
 	if(!no_move)
 		inserting.forceMove(real_contents_loc())
 	inserting.vis_flags |= VIS_INHERIT_LAYER | VIS_INHERIT_PLANE
+	inserting.reset_pixel_offsets()
 	inserting.on_enter_storage(src)
 	if(weight_propagation)
 		var/inserting_weight = inserting.get_weight()
