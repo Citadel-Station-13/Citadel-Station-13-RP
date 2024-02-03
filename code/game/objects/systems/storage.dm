@@ -182,6 +182,8 @@
 	var/list/ui_by_mob
 	/// stack stuff by number; defaults to types, please override the requisite proc to implement yours.
 	var/ui_numerical_mode = FALSE
+	/// ui force slot mode.
+	var/ui_force_slot_mode = FALSE
 	/// show minimum number of slots necessary, expand as needed
 	/// currently only works for slot mode
 	var/ui_expand_when_needed = FALSE
@@ -1164,7 +1166,7 @@
  * this should not rely on uses_numerical_ui()
  */
 /datum/object_system/storage/proc/uses_volumetric_ui()
-	return max_combined_volume && !ui_numerical_mode
+	return max_combined_volume && !ui_numerical_mode && !ui_force_slot_mode
 
 /**
  * this should not rely on uses_volumetric_ui()

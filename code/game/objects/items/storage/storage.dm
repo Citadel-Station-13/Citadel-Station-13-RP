@@ -33,6 +33,7 @@
 
 	var/ui_numerical_mode = FALSE
 	var/ui_expand_when_needed = FALSE
+	var/ui_force_slot_mode = FALSE
 
 	//* Initialization *//
 
@@ -101,3 +102,4 @@
 
 	obj_storage.ui_numerical_mode = ui_numerical_mode
 	obj_storage.ui_expand_when_needed = ui_expand_when_needed
+	obj_storage.ui_force_slot_mode = ui_force_slot_mode
