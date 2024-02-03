@@ -357,8 +357,6 @@
 /obj/item/melee/energy/sword/dualsaber/proc/jedi_spin(mob/living/user)
 	for(var/i in list(NORTH,SOUTH,EAST,WEST))
 		user.setDir(i)
-		if(i == WEST)
-			user.emote("flip")
 		sleep(1)
 
 /*
@@ -475,8 +473,6 @@
 /obj/item/melee/energy/sword/charge/dualsaber/proc/jedi_spin(mob/living/user)
 	for(var/i in list(NORTH,SOUTH,EAST,WEST))
 		user.setDir(i)
-		if(i == WEST)
-			user.emote("flip")
 		sleep(1)
 
 //Energy Blade (ninja uses this)
