@@ -162,7 +162,7 @@
 			our_nutrient.data[cookstage_information[cookstage][COOKINFO_TASTE]] = serving_amount
 		if(istype(loc, /obj/item/reagent_containers/glass/food_holder))
 			var/obj/item/reagent_containers/glass/food_holder/FH = loc
-			FH.check_recipe_completion()
+			FH.check_recipe_completion(cook_method)
 		on_cooked(cookstage, cook_method)
 
 /obj/item/reagent_containers/food/snacks/ingredient/proc/on_cooked(var/reached_stage, var/cook_method)

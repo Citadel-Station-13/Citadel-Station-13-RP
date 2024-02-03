@@ -46,8 +46,7 @@
 	required_method = METHOD_OVEN
 	reagents = list("sodiumchloride" = 1, "blackpepper" = 1)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/dough,
-		/obj/item/reagent_containers/food/snacks/dough
+		/obj/item/reagent_containers/food/snacks/dough = 2
 	)
 	result = /obj/item/reagent_containers/food/snacks/baguette
 
@@ -244,10 +243,7 @@
 	fruit = list("tomato" = 1)
 	items = list(
 		/obj/item/reagent_containers/food/snacks/sliceable/flatdough,
-		/obj/item/reagent_containers/food/snacks/cheesewedge,
-		/obj/item/reagent_containers/food/snacks/cheesewedge,
-		/obj/item/reagent_containers/food/snacks/cheesewedge,
-		/obj/item/reagent_containers/food/snacks/cheesewedge
+		/obj/item/reagent_containers/food/snacks/cheesewedge = 4
 	)
 	result = /obj/item/reagent_containers/food/snacks/sliceable/pizza/margherita
 
@@ -256,9 +252,7 @@
 	fruit = list("tomato" = 1)
 	items = list(
 		/obj/item/reagent_containers/food/snacks/sliceable/flatdough,
-		/obj/item/reagent_containers/food/snacks/meat,
-		/obj/item/reagent_containers/food/snacks/meat,
-		/obj/item/reagent_containers/food/snacks/meat,
+		/obj/item/reagent_containers/food/snacks/meat= 3,
 		/obj/item/reagent_containers/food/snacks/cheesewedge
 	)
 	result = /obj/item/reagent_containers/food/snacks/sliceable/pizza/meatpizza
@@ -268,9 +262,7 @@
 	fruit = list("tomato" = 1)
 	items = list(
 		/obj/item/reagent_containers/food/snacks/sliceable/flatdough,
-		/obj/item/reagent_containers/food/snacks/meat/syntiflesh,
-		/obj/item/reagent_containers/food/snacks/meat/syntiflesh,
-		/obj/item/reagent_containers/food/snacks/meat/syntiflesh,
+		/obj/item/reagent_containers/food/snacks/meat/syntiflesh = 3,
 		/obj/item/reagent_containers/food/snacks/cheesewedge
 	)
 	result = /obj/item/reagent_containers/food/snacks/sliceable/pizza/meatpizza
@@ -301,8 +293,7 @@
 	items = list(
 		/obj/item/reagent_containers/food/snacks/sliceable/flatdough,
 		/obj/item/reagent_containers/food/snacks/cheesewedge,
-		/obj/item/reagent_containers/food/snacks/pineapple_ring,
-		/obj/item/reagent_containers/food/snacks/pineapple_ring
+		/obj/item/reagent_containers/food/snacks/pineapple_ring = 2
 	)
 	result = /obj/item/reagent_containers/food/snacks/sliceable/pizza/pineapple
 
@@ -344,8 +335,7 @@
 /datum/recipe/cake/cheese
 	required_method = METHOD_OVEN
 	items = list(
-		/obj/item/reagent_containers/food/snacks/cheesewedge,
-		/obj/item/reagent_containers/food/snacks/cheesewedge
+		/obj/item/reagent_containers/food/snacks/cheesewedge = 2,
 	)
 	result = /obj/item/reagent_containers/food/snacks/sliceable/cheesecake
 
@@ -397,8 +387,7 @@
 	required_method = METHOD_OVEN
 	fruit = list("berries" = 2)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/sliceable/flatdough,
-		/obj/item/reagent_containers/food/snacks/sliceable/flatdough
+		/obj/item/reagent_containers/food/snacks/sliceable/flatdough = 2
 	)
 	result = /obj/item/reagent_containers/food/snacks/pancakes
 
@@ -406,10 +395,8 @@
 	required_method = METHOD_OVEN
 	fruit = list("tomato" = 2, "eggplant" = 1)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/sliceable/flatdough,
-		/obj/item/reagent_containers/food/snacks/sliceable/flatdough,
-		/obj/item/reagent_containers/food/snacks/cutlet,
-		/obj/item/reagent_containers/food/snacks/cutlet
+		/obj/item/reagent_containers/food/snacks/sliceable/flatdough = 2,
+		/obj/item/reagent_containers/food/snacks/cutlet = 2
 	)
 	result = /obj/item/reagent_containers/food/snacks/lasagna
 	
@@ -435,12 +422,7 @@
 /datum/recipe/bacon_oven
 	required_method = METHOD_OVEN
 	items = list(
-		/obj/item/reagent_containers/food/snacks/rawbacon,
-		/obj/item/reagent_containers/food/snacks/rawbacon,
-		/obj/item/reagent_containers/food/snacks/rawbacon,
-		/obj/item/reagent_containers/food/snacks/rawbacon,
-		/obj/item/reagent_containers/food/snacks/rawbacon,
-		/obj/item/reagent_containers/food/snacks/rawbacon,
+		/obj/item/reagent_containers/food/snacks/rawbacon = 6,
 		/obj/item/reagent_containers/food/snacks/spreads
 	)
 	result = /obj/item/reagent_containers/food/snacks/bacon/oven
@@ -462,10 +444,7 @@
 	items = list(
 		/obj/item/reagent_containers/food/snacks/sliceable/flatdough,
 		/obj/item/reagent_containers/food/snacks/cheesewedge,
-		/obj/item/reagent_containers/food/snacks/bacon,
-		/obj/item/reagent_containers/food/snacks/bacon,
-		/obj/item/reagent_containers/food/snacks/bacon,
-		/obj/item/reagent_containers/food/snacks/bacon
+		/obj/item/reagent_containers/food/snacks/bacon = 4
 	)
 	result = /obj/item/reagent_containers/food/snacks/bacon_flatbread
 
@@ -501,9 +480,7 @@
 	reagents = list("brine" = 15)
 	
 	items = list(
-		/obj/item/reagent_containers/food/snacks/meat,
-		/obj/item/reagent_containers/food/snacks/meat,
-		/obj/item/reagent_containers/food/snacks/meat
+		/obj/item/reagent_containers/food/snacks/meat = 3,
 	)
 	result = /obj/item/reagent_containers/food/snacks/ham
 

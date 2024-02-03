@@ -166,7 +166,9 @@
 /obj/machinery/cooking/proc/insert_item(obj/item/I, mob/user)
 	if(!user.attempt_insert_item_for_installation(I, src))
 		return
-	var/list/used_list = list(1,2,3,4) //this feels so bad but i literally cannot think of a better way
+	var/list/used_list = list()
+	for(var/i in 1 to max_contents)
+		used_list += i
 	for(var/t in food_containers)
 		used_list -= food_containers[t]
 	food_containers[I] = pick(used_list) //random position :D

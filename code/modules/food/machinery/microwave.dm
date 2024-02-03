@@ -251,7 +251,7 @@
 		stop()
 		return
 
-	var/datum/recipe/recipe = select_recipe(available_recipes,src)
+	var/datum/recipe/recipe = select_recipe(available_recipes,src, available_method = METHOD_MICROWAVE)
 	var/obj/cooked
 	if (!recipe)
 		dirty += 1
@@ -302,7 +302,7 @@
 			cooked_items.Add(recipe.make_food(src, null))
 
 			valid = 0
-			recipe = select_recipe(available_recipes,src)
+			recipe = select_recipe(available_recipes,src, available_method = METHOD_MICROWAVE)
 			if (recipe && recipe.result == result)
 				sleep(2)
 				valid = 1

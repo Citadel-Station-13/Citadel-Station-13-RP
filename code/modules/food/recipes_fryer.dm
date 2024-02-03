@@ -83,11 +83,10 @@
 
 /datum/recipe/shrimptempura
 	required_method = METHOD_DEEPFRY
-	reagents = list("sodiumchloride" = 2)
+	reagents = list("sodiumchloride" = 2, "batter" = 5)
 	items = list(
 		/obj/item/reagent_containers/food/snacks/shrimp
 	)
-	reagents = list("batter" = 5)
 	result = /obj/item/reagent_containers/food/snacks/shrimptempura
 
 //Sweet Recipes.

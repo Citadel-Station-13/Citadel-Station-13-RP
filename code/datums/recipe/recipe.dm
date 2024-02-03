@@ -296,10 +296,12 @@ GLOBAL_LIST_EMPTY(cooking_recipes)
 //When exact is false, extraneous ingredients are ignored
 //When exact is true, extraneous ingredients will fail the recipe
 //In both cases, the full complement of required inredients is still needed
-/proc/select_recipe(var/list/datum/recipe/available_recipes, var/obj/obj as obj, var/exact = 0)
+/proc/select_recipe(var/list/datum/recipe/available_recipes, var/obj/obj as obj, var/exact = 0, var/available_method = METHOD_MICROWAVE)
 	var/list/datum/recipe/possible_recipes = list()
 	for(var/datum/recipe/recipe in available_recipes)
 		if((recipe.check_reagents(obj.reagents) < exact) || (recipe.check_items(obj) < exact) || (recipe.check_fruit(obj) < exact))
+			continue
+		if(recipe.required_method != available_method)
 			continue
 		possible_recipes |= recipe
 	if(!possible_recipes.len)

@@ -840,6 +840,7 @@
 	display_name = "banana tree"
 	kitchen_tag = "banana"
 	chems = list("banana" = list(10,10))
+	food_info = list(list(0, 1, "banana"), list(15 SECONDS, 1.2, "cooked banana"), list(32 SECONDS, 1, "warm, mushy banana"), list(40 SECONDS, 0.9, "bitter carbon sludge"))
 	trash_type = /obj/item/bananapeel
 
 /datum/seed/banana/New()

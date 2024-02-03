@@ -24,7 +24,7 @@
 	. += SPAN_NOTICE("It contains:")
 	for(var/obj/item/examine_item in contents)
 		if(!istype(examine_item, /obj/item/reagent_containers/food/snacks/ingredient))
-			. += "<span class='notice'>[icon2html(thing = examine_item, target = user)] The [examine_item].</span>"
+			. += "<span class='notice'>[icon2html(thing = examine_item, target = user)][examine_item].</span>"
 			continue
 		
 		var/obj/item/reagent_containers/food/snacks/ingredient/examine_ingredient = examine_item
@@ -38,7 +38,7 @@
 				cooked_span = "yellow"
 			if(BURNT)
 				cooked_span = "tajaran_signlang"
-		. += "<span class='notice'>[icon2html(thing = examine_ingredient, target = user)] The [examine_ingredient.name], which looks </span><span class='[cooked_span]'>[examine_ingredient.cookstage2text()]</span><span class='notice'> and has been cooked for about [examine_ingredient.accumulated_time_cooked / 10] seconds.</span>"
+		. += "<span class='notice'>[icon2html(thing = examine_ingredient, target = user)][examine_ingredient.name], which looks </span><span class='[cooked_span]'>[examine_ingredient.cookstage2text()]</span><span class='notice'> and has been cooked for about [examine_ingredient.accumulated_time_cooked / 10] seconds.</span>"
 
 /obj/item/reagent_containers/glass/food_holder/update_icon()
 	var/mutable_appearance/filling_overlay = mutable_appearance(icon, "[icon_state]_filling_overlay")
@@ -180,8 +180,8 @@
 
 
 
-/obj/item/reagent_containers/glass/food_holder/proc/check_recipe_completion()
-	var/datum/recipe/our_recipe = select_recipe(GLOB.cooking_recipes, src)
+/obj/item/reagent_containers/glass/food_holder/proc/check_recipe_completion(var/cook_method = METHOD_MICROWAVE)
+	var/datum/recipe/our_recipe = select_recipe(GLOB.cooking_recipes, src, available_method = cook_method)
 	if (!our_recipe)
 		return
 	our_recipe.make_food(src)
