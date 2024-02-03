@@ -146,7 +146,7 @@
 	if(isnull(storage.obj_storage))
 		return FALSE
 	var/obj/item/removing = storage.obj_storage.top_entity_in_contents()
-	var/datum/event_args/actor = new(src, initiator)
+	var/datum/event_args/actor/actor = new(src, initiator)
 	if(storage.obj_storage.check_on_found_hooks(actor))
 		return
 	return storage.obj_storage.auto_handle_interacted_removal(removing, actor, silent)

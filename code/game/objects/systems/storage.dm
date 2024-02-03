@@ -309,6 +309,19 @@
 		weight_cached += item.get_weight()
 	update_containing_weight()
 
+/**
+ * rebuild full state, used when shit explodes, vv use only. this is not totally
+ * idempotent due to on_enter_storage() not being 100% idempotent, so, this is a debug proc.
+ */
+/datum/object_system/storage/proc/dangerously_kind_of_rebuild_state()
+	// incase it wasn't clear enough: **DO NOT USE THIS UNLESS YOU ARE AN ADMIN TRYING TO FIX SOMETHING WITH SDQL.**
+	PRIVATE_PROC(TRUE)
+	for(var/obj/item/item in real_contents_loc())
+		// assert variables
+		physically_insert_item(item, no_move = TRUE)
+	// rebuild the caches we just fucked up
+	rebuild_caches()
+
 //* Checks *//
 
 /datum/object_system/storage/proc/remaining_volume()

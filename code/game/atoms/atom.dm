@@ -1076,6 +1076,11 @@
 	pixel_y = val + get_managed_pixel_y()
 	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
+/atom/proc/set_pixel_offsets(x, y)
+	pixel_x = x + get_managed_pixel_x()
+	pixel_y = y + get_managed_pixel_y()
+	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
+
 /atom/proc/reset_pixel_offsets()
 	pixel_x = get_managed_pixel_x()
 	pixel_y = get_managed_pixel_y()
