@@ -157,7 +157,7 @@
 	mutants = list("bluetomato","bloodtomato")
 	chems = list("nutriment" = list(1,10), "tomatojuice" = list(10,10))
 	kitchen_tag = "tomato"
-	food_info = list(list(0, 1, "ripe tomato"), list(15 SECONDS, 1.2, "soft cooked tomato"), list(25 SECONDS, 1, "overcooked tomato"), list(30 SECONDS, 0.9, "dry, overcooked tomato"))
+	food_info = list(list(0, 1, "ripe tomato"), list(10 SECONDS, 1.2, "soft cooked tomato"), list(25 SECONDS, 1, "overcooked tomato"), list(30 SECONDS, 0.9, "dry, overcooked tomato"))
 
 /datum/seed/tomato/New()
 	..()
@@ -181,6 +181,7 @@
 	mutants = list("killer")
 	chems = list("nutriment" = list(1,10), "blood" = list(1,5))
 	splat_type = /obj/effect/debris/cleanable/blood/splatter
+	food_info = list(list(0, 1, "metallic tomato"), list(15 SECONDS, 1.2, "soft, metallic cooked tomato"), list(25 SECONDS, 1, "rusty tomato"), list(30 SECONDS, 0.9, "burnt, coagulated blood"))
 
 /datum/seed/tomato/blood/New()
 	..()
@@ -194,6 +195,8 @@
 	mutants = null
 	can_self_harvest = 1
 	has_mob_product = /mob/living/simple_mob/hostile/tomato
+	food_info = list(list(0, 1, "ripe tomato"), list(10 SECONDS, 1.2, "soft cooked tomato"), list(25 SECONDS, 1, "overcooked tomato"), list(30 SECONDS, 0.9, "dry, overcooked tomato"))
+	
 
 /datum/seed/tomato/killer/New()
 	..()
@@ -206,6 +209,7 @@
 	display_name = "blue tomato plant"
 	mutants = list("bluespacetomato")
 	chems = list("nutriment" = list(1,20), "lube" = list(1,5))
+	food_info = list(list(0, 1, "ripe tomato"), list(10 SECONDS, 1.2, "soft cooked tomato"), list(25 SECONDS, 1, "overcooked tomato"), list(30 SECONDS, 0.9, "dry, overcooked tomato"))
 
 /datum/seed/tomato/blue/New()
 	..()
@@ -218,6 +222,7 @@
 	display_name = "bluespace tomato plant"
 	mutants = null
 	chems = list("nutriment" = list(1,20), "singulo" = list(10,5))
+	food_info = list(list(0, 1, "ripe teleportomato"), list(10 SECONDS, 1.2, "soft cooked tomato"), list(25 SECONDS, 1, "overcooked tomato"), list(30 SECONDS, 0.9, "dry, overcooked tomato"))
 
 /datum/seed/tomato/blue/teleport/New()
 	..()
@@ -234,10 +239,10 @@
 	kitchen_tag = "eggplant"
 	mutants = list("egg-plant")
 	chems = list("nutriment" = list(1,10))
+	food_info = list(list(0, 1, "raw eggplant"), list(20 SECONDS, 1.2, "tender, juicy eggplant"), list(30 SECONDS, 1, "mushy eggplant"), list(45 SECONDS, 0.9, "crusty, overcooked eggplant"))
 
 /datum/seed/eggplant/New()
 	..()
-	set_trait(TRAIT_HARVEST_REPEAT,1)
 	set_trait(TRAIT_MATURATION,6)
 	set_trait(TRAIT_PRODUCTION,6)
 	set_trait(TRAIT_YIELD,2)
@@ -257,6 +262,7 @@
 	mutants = null
 	chems = list("nutriment" = list(1,5), "egg" = list(3,12))
 	has_item_product = /obj/item/reagent_containers/food/snacks/egg/purple
+	food_info = list(list(0, 1, "raw egg"), list(15 SECONDS, 1.2, "cooked egg"), list(25 SECONDS, 1, "overcooked egg"), list(30 SECONDS, 0.9, "burnt egg"))
 
 //Apples/varieties.
 /datum/seed/apple
@@ -266,6 +272,7 @@
 	kitchen_tag = "apple"
 	mutants = list("poisonapple","goldapple")
 	chems = list("nutriment" = list(1,10),"applejuice" = list(10,20))
+	food_info = list(list(0, 1, "crispy, fresh apple"), list(10 SECONDS, 1.2, "tender, sweet apple"), list(30 SECONDS, 1, "mushy and weird apple"), list(45 SECONDS, 0.9, "unpleasantly warm baby food"))
 
 /datum/seed/apple/New()
 	..()
@@ -284,6 +291,7 @@
 	name = "poisonapple"
 	mutants = null
 	chems = list("cyanide" = list(1,5))
+	food_info = list(list(0, 1, "crispy, fresh apple"), list(10 SECONDS, 1.2, "tender, sweet apple"), list(30 SECONDS, 1, "mushy and weird apple"), list(45 SECONDS, 0.9, "unpleasantly warm baby food"))
 
 /datum/seed/apple/gold
 	name = "goldapple"
@@ -292,6 +300,7 @@
 	kitchen_tag = "goldapple"
 	mutants = null
 	chems = list("nutriment" = list(1,10), MAT_GOLD = list(1,5))
+	food_info = list(list(0, 1, "tangy, fresh apple"), list(10 SECONDS, 1.2, "tender, tangy apple"), list(30 SECONDS, 1, "mushy and sour apple"), list(45 SECONDS, 0.9, "unpleasantly bitter baby food"))
 
 /datum/seed/apple/gold/New()
 	..()
@@ -309,6 +318,7 @@
 	kitchen_tag = "ambrosia"
 	mutants = list("ambrosiadeus")
 	chems = list("nutriment" = list(1), "space_drugs" = list(1,8), "kelotane" = list(1,8,1), "bicaridine" = list(1,10,1), "toxin" = list(1,10))
+	food_info = list(list(0, 1, "leafy, bitter spinach"), list(30 SECONDS, 1.2, "cooked bitter spinach"), list(35 SECONDS, 1, "mushy bitter spinach"), list(60 SECONDS, 0.9, "bitterness and wilted spinach"))
 
 /datum/seed/ambrosia/New()
 	..()
@@ -329,6 +339,7 @@
 	kitchen_tag = "ambrosiadeus"
 	mutants = list("ambrosiagaia")
 	chems = list("nutriment" = list(1), "bicaridine" = list(1,8), "synaptizine" = list(1,8,1), "hyperzine" = list(1,10,1), "space_drugs" = list(1,10))
+	food_info = list(list(0, 1, "leafy, extra-bitter spinach"), list(30 SECONDS, 1.2, "cooked, extra-bitter spinach"), list(35 SECONDS, 1, "mushy bitter spinach"), list(60 SECONDS, 0.9, "bitterness and wilted spinach"))
 
 /datum/seed/ambrosia/deus/New()
 	..()
@@ -367,6 +378,7 @@
 	chems = list("nutriment" = list(1,25))
 	splat_type = /obj/effect/plant
 	kitchen_tag = "mushroom"
+	food_info = list(list(0, 1, "earthy, fruity mushroom"), list(25 SECONDS, 1.2, "tender, fruity mushroom"), list(40 SECONDS, 1, "mushy mushroom"), list(45 SECONDS, 0.9, "an unpleasantly rubbery mass"))
 
 /datum/seed/mushroom/New()
 	..()
@@ -405,6 +417,7 @@
 	mutants = list("walkingmushroom","towercap")
 	chems = list("nutriment" = list(2,10))
 	kitchen_tag = "plumphelmet"
+	food_info = list(list(0, 1, "bland, tough mushroom"), list(25 SECONDS, 1.2, "bland cooked mushroom"), list(40 SECONDS, 1, "bland, squishy mushroom"), list(45 SECONDS, 0.9, "an unpleasantly firm mass"))
 
 /datum/seed/mushroom/plump/New()
 	..()
@@ -507,6 +520,7 @@
 	display_name = "glowshrooms"
 	mutants = null
 	chems = list("radium" = list(1,20))
+	food_info = list(list(0, 1, "spicy, fruity mushroom"), list(14 SECONDS, 1.2, "tender, spicy and fruity mushroom"), list(18 SECONDS, 1, "tough, spicy mushroom"), list(22 SECONDS, 0.9, "an unpleasantly rubbery mass")) //glowshrooms are hard to cook but have a unique flavour
 
 /datum/seed/mushroom/glowshroom/New()
 	..()
@@ -527,6 +541,7 @@
 	display_name = "plastellium"
 	mutants = null
 	chems = list("plasticide" = list(1,10))
+	food_info = list(list(0, 1, "plasticky mushroom"), list(60 SECONDS, 1.2, "warm plastic"), list(120 SECONDS, 1, "burning plastic"), list(180 SECONDS, 0.9, "plastic and toxic chemicals"))
 
 /datum/seed/mushroom/plastic/New()
 	..()
@@ -546,6 +561,7 @@
 	display_name = "harebells"
 	kitchen_tag = "harebell"
 	chems = list("nutriment" = list(1,20))
+	food_info = list(list(0, 1, "slightly sweet leaves and petals"), list(10 SECONDS, 1.2, "slightly sweet leaves and petals"), list(20 SECONDS, 1, "wilting leaves and petals"), list(25 SECONDS, 0.9, "a dead plant"))
 
 /datum/seed/flower/New()
 	..()
@@ -564,6 +580,7 @@
 	display_name = "poppies"
 	kitchen_tag = "poppy"
 	chems = list("nutriment" = list(1,20), "bicaridine" = list(1,10))
+	food_info = list(list(0, 1, "slightly sweet almonds"), list(15 SECONDS, 1.2, "sweet, nutty almond"), list(20 SECONDS, 1, "over-roasted almond"), list(25 SECONDS, 0.9, "carbonized seeds")) //poppy is good to eat :D
 
 /datum/seed/flower/poppy/New()
 	..()
@@ -583,6 +600,7 @@
 	seed_name = "sunflower"
 	display_name = "sunflowers"
 	kitchen_tag = "sunflower"
+	food_info = list(list(0, 1, "bright with a hint of floral bitterness"), list(20 SECONDS, 1.2, "mild nuttiness"), list(25 SECONDS, 1, "over-roasted nuts"), list(40 SECONDS, 0.9, "burnt sunflower and sadness"))
 
 /datum/seed/flower/sunflower/New()
 	..()
@@ -656,6 +674,7 @@
 	kitchen_tag = "grapes"
 	mutants = list("greengrapes")
 	chems = list("nutriment" = list(1,10), "sugar" = list(1,5), "grapejuice" = list(10,10))
+	food_info = list(list(0, 1, "fresh, sweet grapes"), list(10 SECONDS, 1.2, "tender, stewed grape"), list(15 SECONDS, 1, "grape mush"), list(20 SECONDS, 0.9, "unpalatable grapey mush"))
 
 /datum/seed/grapes/New()
 	..()
@@ -677,6 +696,7 @@
 	display_name = "green grapevines"
 	mutants = null
 	chems = list("nutriment" = list(1,10), "kelotane" = list(3,5), "grapejuice" = list(10,10))
+	food_info = list(list(0, 1, "fresh, sweet-sour grapes"), list(10 SECONDS, 1.2, "tender, stewed grape"), list(15 SECONDS, 1, "grape mush"), list(20 SECONDS, 0.9, "unpalatable grapey mush"))
 
 /datum/seed/grapes/green/New()
 	..()
@@ -689,6 +709,7 @@
 	display_name = "lettuce"
 	kitchen_tag = "cabbage"
 	chems = list("nutriment" = list(1,15))
+	food_info = list(list(0, 1, "leafy greens"), list(15 SECONDS, 1.2, "tender, cooked salad leaves"), list(20 SECONDS, 1, "mushy, unpleasant salad leaves"), list(25 SECONDS, 0.9, "sad dead lettuce"))
 
 /datum/seed/lettuce/New()
 	..()
@@ -711,6 +732,7 @@
 	display_name = "glacial lettuce"
 	kitchen_tag = "icelettuce"
 	chems = list("nutriment" = list(1,5), "paracetamol" = list(0,2))
+	food_info = list(list(0, 1, "crunchy, fresh greens"), list(20 SECONDS, 1.2, "tender, cooked salad leaves"), list(22 SECONDS, 1, "mushy, unpleasant salad leaves"), list(30 SECONDS, 0.9, "sad dead lettuce"))
 
 /datum/seed/lettuce/ice/New()
 	..()
@@ -727,6 +749,7 @@
 	kitchen_tag = "wabback"
 	mutants = list("blackwabback","wildwabback")
 	has_item_product = /obj/item/stack/material/cloth
+	food_info = list(list(0, 1, "bland plant matter"), list(20 SECONDS, 1.2, "mealy, cooked plant matter"), list(22 SECONDS, 1, "mushy, unpleasant plant matter"), list(30 SECONDS, 0.9, "sad dead plant"))
 
 /datum/seed/wabback/New()
 	..()
@@ -779,6 +802,7 @@
 	display_name = "peanut vines"
 	kitchen_tag = "peanut"
 	chems = list("nutriment" = list(1,10), "peanutoil" = list(1,3))
+	food_info = list(list(0, 1, "fresh peanuts"), list(30 SECONDS, 1.2, "toasted peanuts"), list(60 SECONDS, 1, "roasted peanuts"), list(80 SECONDS, 0.9, "peanuts that have been through a coffee roaster"))
 
 /datum/seed/peanuts/New()
 	..()
@@ -798,6 +822,7 @@
 	display_name = "vanilla"
 	kitchen_tag = "vanilla"
 	chems = list("nutriment" = list(1,10), "vanilla" = list(0,3), "sugar" = list(0, 1))
+	food_info = list(list(0, 1, "vanilla pods"), list(15 SECONDS, 1.2, "toasted vanilla pods"), list(25 SECONDS, 1, "roasted vanilla pods"), list(60 SECONDS, 0.9, "vanilla and death"))
 
 /datum/seed/vanilla/New()
 	..()
@@ -818,6 +843,7 @@
 	display_name = "cabbages"
 	kitchen_tag = "cabbage"
 	chems = list("nutriment" = list(1,10))
+	food_info = list(list(0, 1, "cabbage leaves"), list(15 SECONDS, 1.2, "tender, cooked cabbage"), list(20 SECONDS, 1, "mushy, unpleasant cabbage leaves"), list(25 SECONDS, 0.9, "cabbage cooked very thoroughly in the heat from a signal flare"))
 
 /datum/seed/cabbage/New()
 	..()
@@ -840,10 +866,10 @@
 	display_name = "banana tree"
 	kitchen_tag = "banana"
 	chems = list("banana" = list(10,10))
-	food_info = list(list(0, 1, "banana"), list(15 SECONDS, 1.2, "cooked banana"), list(32 SECONDS, 1, "warm, mushy banana"), list(40 SECONDS, 0.9, "bitter carbon sludge"))
+	food_info = list(list(0, 1, "banana"), list(15 SECONDS, 1.2, "cooked banana"), list(32 SECONDS, 1, "warm, mushy banana"), list(40 SECONDS, 0.9, "bitter carbonized sludge"))
 	trash_type = /obj/item/bananapeel
 
-/datum/seed/banana/New()
+/datum/seed/banana/New() //this banana for you
 	..()
 	set_trait(TRAIT_HARVEST_REPEAT,1)
 	set_trait(TRAIT_MATURATION,6)
@@ -864,6 +890,7 @@
 	kitchen_tag = "corn"
 	chems = list("nutriment" = list(1,10), "cornoil" = list(1,10))
 	trash_type = /obj/item/corncob
+	food_info = list(list(0, 1, "sweet corn"), list(10 SECONDS, 1.2, "toasted sweetcorn"), list(20 SECONDS, 1.1, "grilled sweetcorn"), list(40 SECONDS, 0.9, "burnt no-longer-sweet corn"))
 
 /datum/seed/corn/New()
 	..()
@@ -885,6 +912,7 @@
 	display_name = "potatoes"
 	kitchen_tag = "potato"
 	chems = list("nutriment" = list(1,10), "potatojuice" = list(10,10))
+	food_info = list(list(0, 1, "raw potato"), list(35 SECONDS, 1.2, "cooked potato and starchy goodness"), list(85 SECONDS, 1.1, "starchy okayness"), list(110 SECONDS, 0.7, "starchy badness"))
 
 /datum/seed/potato/New()
 	..()
@@ -904,6 +932,7 @@
 	display_name = "onions"
 	kitchen_tag = "onion"
 	chems = list("nutriment" = list(1,10))
+	food_info = list(list(0, 1, "sharp onion"), list(20 SECONDS, 1.2, "sweet, caramelized onion"), list(30 SECONDS, 0.9, "slightly bitter caramelized onion"), list(40 SECONDS, 0.7, "bitter, mushy onion"))
 
 /datum/seed/onion/New()
 	..()
@@ -922,6 +951,7 @@
 	display_name = "soybeans"
 	kitchen_tag = "soybeans"
 	chems = list("nutriment" = list(1,20), "soymilk" = list(10,20))
+	food_info = list(list(0, 1, "fresh, grassy soybeans"), list(15 SECONDS, 1.2, "sweet and grassy soybeans with nutty undertones"), list(25 SECONDS, 1, "slightly bitter soybean and grass"), list(40 SECONDS, 0.7, "burnt grass flavoured baby food"))
 
 /datum/seed/soybean/New()
 	..()
@@ -940,6 +970,7 @@
 	display_name = "wheat stalks"
 	kitchen_tag = "wheat"
 	chems = list("nutriment" = list(1,25), "flour" = list(15,15))
+	food_info = list(list(0, 1, "plain wheat"), list(30 SECONDS, 1.2, "toasted wheat"), list(35 SECONDS, 1, "roasted wheat"), list(60 SECONDS, 0.7, "burnt wheat"))
 
 /datum/seed/wheat/New()
 	..()
@@ -960,6 +991,7 @@
 	display_name = "rice stalks"
 	kitchen_tag = "rice"
 	chems = list("nutriment" = list(1,25), "rice" = list(10,15))
+	food_info = list(list(0, 0.2, "hard, raw rice"), list(30 SECONDS, 1.2, "light, fluffy rice"), list(45 SECONDS, 1, "mushy, overcooked rice"), list(60 SECONDS, 0.7, "crispy mush and burnt rice"))
 
 /datum/seed/rice/New()
 	..()
@@ -980,6 +1012,7 @@
 	display_name = "carrots"
 	kitchen_tag = "carrot"
 	chems = list("nutriment" = list(1,20), "imidazoline" = list(3,5), "carrotjuice" = list(10,20))
+	food_info = list(list(0, 1, "fresh, sweet carrot"), list(30 SECONDS, 1.2, "tender, cooked carrot"), list(45 SECONDS, 1.1, "firm roast carrot"), list(60 SECONDS, 0.7, "carrot mush flecked with carbon"))
 
 /datum/seed/carrots/New()
 	..()
@@ -998,6 +1031,7 @@
 	display_name = "taro root"
 	kitchen_tag = "taro"
 	chems = list("nutriment" = list(1,20), "taropowder" = list(10,20))
+	food_info = list(list(0, 1, "sweet potato with hints of nuttiness"), list(30 SECONDS, 1.2, "tender sweet potato with hints of vanilla and nuttiness"), list(45 SECONDS, 1, "mushy sweet potato with hints of nuttiness"), list(60 SECONDS, 0.7, "mushy overcooked potato with hints of burnt nuttiness"))
 
 /datum/seed/taro/New()
 	..()
@@ -1016,6 +1050,7 @@
 	display_name = "palm tree"
 	kitchen_tag = "coconut"
 	chems = list("nutriment" = list(1,20), "coconutwater" = list(10,20), "coconutmilk" = list(10,20))
+	food_info = list(list(0, 1, "slightly sweet coconut flesh"), list(10 SECONDS, 1.2, "tender, slightly-sweet coconut flesh"), list(25 SECONDS, 1.2, "toasted coconut"), list(40 SECONDS, 0.7, "a wad of burning rubber infused with a hint of coconut"))
 
 /datum/seed/coconut/New()
 	..()
@@ -1030,6 +1065,7 @@
 	set_trait(TRAIT_IDEAL_HEAT, 298)
 	set_trait(TRAIT_IDEAL_LIGHT, 7)
 	set_trait(TRAIT_WATER_CONSUMPTION, 6)
+
 /datum/seed/weeds
 	name = "weeds"
 	seed_name = "weed"
@@ -1053,6 +1089,7 @@
 	display_name = "white-beets"
 	kitchen_tag = "whitebeet"
 	chems = list("nutriment" = list(0,20), "sugar" = list(1,5))
+	food_info = list(list(0, 1, "mild, neutral and firm beet"), list(30 SECONDS, 1.2, "tender, slightly-sweet white beet"), list(45 SECONDS, 1, "soft, slightly-sweet white beet"), list(40 SECONDS, 0.7, "squishy, rubbery and bland mush"))
 
 /datum/seed/whitebeets/New()
 	..()
@@ -1072,6 +1109,7 @@
 	display_name = "sugarcanes"
 	kitchen_tag = "sugarcanes"
 	chems = list("sugar" = list(4,5))
+	food_info = list(list(0, 1, "earthy, fresh sugarcane"), list(20 SECONDS, 1.2, "lightly-roasted sugarcane and sweetness"), list(30 SECONDS, 1, "slightly-burnt sugarcane"), list(45 SECONDS, 0.7, "tough, inedible plant matter mixed with bitterness and sweetness"))
 
 /datum/seed/sugarcane/New()
 	..()
@@ -1092,6 +1130,7 @@
 	display_name = "rhubarb"
 	kitchen_tag = "rhubarb"
 	chems = list("nutriment" = list(1,15))
+	food_info = list(list(0, 1, "crunchy and lip-puckeringly tart rhubarb"), list(35 SECONDS, 1.2, "soft, tender and very tart rhubarb"), list(55 SECONDS, 0.9, "mushy and sour rhubarb"), list(110 SECONDS, 0.7, "extremely sour baby food"))
 
 /datum/seed/rhubarb/New()
 	..()
@@ -1110,6 +1149,7 @@
 	display_name = "celery"
 	kitchen_tag = "celery"
 	chems = list("nutriment" = list(5,20))
+	food_info = list(list(0, 1, "crunchy and fresh celery"), list(10 SECONDS, 1, "soft, tender celery"), list(20 SECONDS, 1, "mushy celery"), list(30 SECONDS, 0.7, "bland green mush that might've been a plant at some point"))
 
 /datum/seed/celery/New()
 	..()
@@ -1128,6 +1168,7 @@
 	display_name = "spineapple"
 	kitchen_tag = "spineapple"
 	chems = list("nutriment" = list(3,5), "enzyme" = list(3,5), "pineapplejuice" = list(15, 20))
+	food_info = list(list(0, 1, "fresh pineapple"), list(15 SECONDS, 1.2, "sweet cooked pineapple with a hint of sourness"), list(20 SECONDS, 1, "mushy cooked pineapple"), list(30 SECONDS, 0.7, "a pineapple-flavoured sludgey mass"))
 
 /datum/seed/spineapple/New()
 	..()
@@ -1151,6 +1192,7 @@
 	display_name = "loose peas"
 	kitchen_tag = "peas"
 	chems = list("nutriment" = list(1,10))
+	food_info = list(list(0, 1, "fresh, sweet peas"), list(20 SECONDS, 1.2, "tender, cooked peas"), list(30 SECONDS, 0.9, "overcooked peas"), list(50 SECONDS, 0.7, "firm little balls of sadness"))
 
 /datum/seed/peas/New()
 	..()
@@ -1172,6 +1214,7 @@
 	display_name = "durian"
 	kitchen_tag = "durian"
 	chems = list("nutriment" = list(1,5), "durianpaste" = list(1, 20))
+	food_info = list(list(0, 1, "fresh custard-like fruit flavoured heavily with almond, with occasional notes of sherry"), list(20 SECONDS, 1.2, "a rich almond custard with notes of caramelized onion, sherry and cream cheese"), list(30 SECONDS, 0.9, "durian mush"), list(50 SECONDS, 0.7, "durian-flavoured dead mush"))
 
 /datum/seed/durian/New()
 	..()
@@ -1193,6 +1236,7 @@
 	display_name = "watermelon vine"
 	kitchen_tag = "watermelon"
 	chems = list("nutriment" = list(1,6), "watermelonjuice" = list(10,6))
+	food_info = list(list(0, 1, "fresh, crispy and sweet watermelon"), list(15 SECONDS, 1.2, "tender, cooked watermelon"), list(25 SECONDS, 0.9, "rubbery-mushy watermelon"), list(30 SECONDS, 0.7, "rubbery-mushy watermelon lacking any sort of flavour"))
 
 /datum/seed/watermelon/New()
 	..()
@@ -1217,6 +1261,7 @@
 	display_name = "pumpkin vine"
 	kitchen_tag = "pumpkin"
 	chems = list("nutriment" = list(1,6))
+	food_info = list(list(0, 1, "fresh, firm pumpkin"), list(25 SECONDS, 1.2, "tender, sweet and slightly nutty pumpkin"), list(35 SECONDS, 0.9, "mushy, sad pumpkin"), list(30 SECONDS, 0.7, "a bitter, dead mush with notes of sweetness"))
 
 /datum/seed/pumpkin/New()
 	..()
@@ -1237,6 +1282,7 @@
 	display_name = "lime trees"
 	kitchen_tag = "lime"
 	chems = list("nutriment" = list(1,20), "limejuice" = list(10,20))
+	food_info = list(list(0, 1, "sweet, fresh lime"), list(30 SECONDS, 1.2, "tender stewed limes, still sweet and slightly sour"), list(40 SECONDS, 1, "stewed limes with little to no sweetness remaining"), list(60 SECONDS, 0.7, "what might have been a lime, once, before its incineration"))
 
 /datum/seed/citrus/New()
 	..()
@@ -1257,6 +1303,7 @@
 	display_name = "lemon trees"
 	kitchen_tag = "lemon"
 	chems = list("nutriment" = list(1,20), "lemonjuice" = list(10,20))
+	food_info = list(list(0, 1, "fresh, sour lemon"), list(30 SECONDS, 1.2, "tender stewed lemon, still sour with sweet hints"), list(40 SECONDS, 1, "stewed, mildly sour lemon"), list(60 SECONDS, 0.7, "a lemon desecrated through a chef's neglect and carelessness"))
 
 /datum/seed/citrus/lemon/New()
 	..()
@@ -1272,6 +1319,7 @@
 	display_name = "orange trees"
 	kitchen_tag = "orange"
 	chems = list("nutriment" = list(1,20), "orangejuice" = list(10,20))
+	food_info = list(list(0, 1, "fresh, tasty orange"), list(30 SECONDS, 1.2, "tender stewed orange, mostly sweet"), list(40 SECONDS, 1, "stewed, mildly orange-y orange"), list(60 SECONDS, 0.7, "overcooked orange sludge"))
 
 /datum/seed/citrus/orange/New()
 	..()
@@ -1285,6 +1333,7 @@
 	kitchen_tag = "grass"
 	mutants = "carpet"
 	chems = list("nutriment" = list(1,20))
+	food_info = list(list(0, 1, "grass"), list(30 SECONDS, 1, "tender grass"), list(40 SECONDS, 0.9, "cooked grass"), list(60 SECONDS, 0.7, "overcooked grass"))
 
 /datum/seed/grass/New()
 	..()
@@ -1306,6 +1355,7 @@
 	kitchen_tag = "carpet"
 	mutants = null
 	chems = list("liquidcarpet" = list(5,10))
+	food_info = list(list(0, 1, "carpet"), list(30 SECONDS, 1, "carpet that's been heated on the stove"), list(40 SECONDS, 0.9, "oven-roasted carpety goodness"), list(60 SECONDS, 0.7, "carpet that's been blowtorched"))
 
 /datum/seed/grass/carpet/New()
 	..()
@@ -1321,6 +1371,7 @@
 	display_name = "cacao tree"
 	kitchen_tag = "cocoa"
 	chems = list("nutriment" = list(1,10), "coco" = list(4,5))
+	food_info = list(list(0, 1, "bitter cocoa pods"), list(25 SECONDS, 1, "tender, not-as-bitter cocoa pods"), list(40 SECONDS, 1.1, "roasted cocoa beans"), list(60 SECONDS, 0.7, "a mix of burnt cocoa beans in cocoapod sludge, flecked with specks of burnt plant matter"))
 
 /datum/seed/cocoa/New()
 	..()
@@ -1342,6 +1393,7 @@
 	display_name = "cherry tree"
 	kitchen_tag = "cherries"
 	chems = list("nutriment" = list(1,15), "sugar" = list(1,15), "cherryjelly" = list(10,15))
+	food_info = list(list(0, 1, "fresh, tasty cherries"), list(25 SECONDS, 1.2, "stewed cherries"), list(35 SECONDS, 1, "cherry sludge"), list(60 SECONDS, 0.7, "overcooked cherry sludge"))
 
 /datum/seed/cherries/New()
 	..()
@@ -1362,6 +1414,7 @@
 	display_name = "tobacco"
 	kitchen_tag = "tobacco"
 	chems = list("nicotine" = list(5,10))
+	food_info = list(list(0, 1, "fresh tobacco"), list(30 SECONDS, 1, "wilting tobacco"), list(40 SECONDS, 1, "drying tobacco"), list(60 SECONDS, 1, "dried tobacco"))
 
 /datum/seed/tobacco/New()
 	..()
@@ -1381,6 +1434,7 @@
 	display_name = "kudzu vines"
 	kitchen_tag = "kudzu"
 	chems = list("nutriment" = list(1,50), "anti_toxin" = list(1,25))
+	food_info = list(list(0, 1, "slightly bland spinach"), list(30 SECONDS, 1.2, "cooked, slightly bland spinach"), list(40 SECONDS, 1, "wilting bland spinach"), list(60 SECONDS, 1, "a bland spinachy sludge"))
 
 /datum/seed/kudzu/New()
 	..()

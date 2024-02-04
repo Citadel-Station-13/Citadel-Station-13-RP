@@ -55,15 +55,20 @@
 /obj/item/reagent_containers/food/snacks/ingredient/attackby(obj/item/I, mob/user)
 	if(I.type != type)
 		return ..()
-	var/obj/item/reagent_containers/food/snacks/ingredient/add_ingredient = I
+	if(check_merge(I, user))
+		to_chat(user, SPAN_NOTICE("You combine [I] into [src]."))
+		merge_ingredient(I)
+
+
+/obj/item/reagent_containers/food/snacks/ingredient/proc/check_merge(/obj/item/reagent_containers/food/snacks/ingredient/add_ingredient, mob/user)
 	if((((accumulated_time_cooked - INGREDIENT_COOKTIME_MAX_SEPERATION) < add_ingredient.accumulated_time_cooked) && (add_ingredient.accumulated_time_cooked < (accumulated_time_cooked + INGREDIENT_COOKTIME_MAX_SEPERATION))) && (add_ingredient.cookstage = cookstage))
 		if((add_ingredient.serving_amount + serving_amount) < max_servings)
-			to_chat(user, SPAN_NOTICE("You combine [I] into [src]."))
-			merge_ingredient(I)
-			return
+			return TRUE
 		to_chat(user, SPAN_NOTICE("There's too much to combine!"))
+		return FALSE
 	else
 		to_chat(user, SPAN_NOTICE("You can't mix raw and cooked ingredients."))
+		return FALSE
 
 /obj/item/reagent_containers/food/snacks/ingredient/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(istype(target, /obj/singularity/energy_ball)) //snowflaked for sing/tesla
