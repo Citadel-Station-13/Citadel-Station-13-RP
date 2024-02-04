@@ -157,6 +157,10 @@
 	if(color)
 		add_atom_colour(color, FIXED_COLOUR_PRIORITY)
 
+	// todo: uh oh.
+	// this is to trigger entered effects
+	// bad news is this is not necessarily currently idempotent
+	// we probably have to deal with this at.. some point.
 	for(var/atom/movable/AM in src)
 		Entered(AM)
 

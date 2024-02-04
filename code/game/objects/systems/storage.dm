@@ -393,6 +393,10 @@
 	weight_cached += (new_weight - old_weight)
 	update_containing_weight()
 
+/datum/object_system/storage/proc/on_contents_item_new(obj/item/item)
+	physically_insert_item(item, no_move = TRUE)
+	ui_queue_refresh()
+
 //* Filters *//
 
 /datum/object_system/storage/proc/check_insertion_filters(obj/item/candidate)

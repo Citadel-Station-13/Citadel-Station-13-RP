@@ -1027,6 +1027,12 @@
 /atom/proc/on_contents_weight_change(obj/item/item, old_weight, new_weight)
 	return
 
+/**
+ * called when an /obj/item Initialize()s in us.
+ */
+/atom/proc/on_contents_item_new(obj/item/item)
+	return
+
 //? Layers
 
 /// Sets our plane

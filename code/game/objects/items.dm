@@ -163,10 +163,9 @@
 
 /obj/item/Initialize(mapload)
 	. = ..()
+	loc?.on_contents_item_new(src)
 	if(islist(origin_tech))
 		origin_tech = typelist(NAMEOF(src, origin_tech), origin_tech)
-	if(istype(loc, /obj/item/storage))
-		item_flags |= ITEM_IN_STORAGE
 	//Potential memory optimization: Making embed chance a getter if unset.
 	if(embed_chance == EMBED_CHANCE_UNSET)
 		if(sharp)

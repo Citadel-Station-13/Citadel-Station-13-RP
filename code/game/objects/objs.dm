@@ -580,6 +580,10 @@
 			AM.clean_radiation(str, mul, cheap)
 	return ..()
 
+/obj/on_contents_item_new(obj/item/item)
+	. = ..()
+	obj_storage?.on_contents_item_new(item)
+
 /**
  * Returns stuff considered to be inside this object's inventory.
  *
