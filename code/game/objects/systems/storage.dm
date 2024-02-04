@@ -200,7 +200,6 @@
 		insertion_blacklist_typecache = cached_typecacheof(insertion_blacklist_typecache)
 	if(!is_typelist(insertion_allow_typecache))
 		insertion_allow_typecache = cached_typecacheof(insertion_allow_typecache)
-	rebuild_caches()
 
 /datum/object_system/storage/Destroy()
 	hide()
@@ -1709,8 +1708,11 @@
 /atom/movable/storage_indirection_holder/CanReachOut(atom/movable/mover, atom/target, obj/item/tool, list/cache)
 	return TRUE
 
-//? Lazy wrappers for init
+//? Wrapper for init
 
+/**
+ * Use this to init, not new()!
+ */
 /obj/proc/init_storage(path = /datum/object_system/storage, indirected = FALSE)
 	RETURN_TYPE(/datum/object_system/storage)
 	ASSERT(isnull(obj_storage))

@@ -21,12 +21,12 @@
 	var/rename_with_volume = FALSE
 
 /obj/item/reagent_containers/pill/Initialize(mapload)
+	randomize_pixel_offsets()
 	. = ..()
 	if(!icon_state)
 		icon_state = "pill[rand(1,20)]"
 	if(reagents.total_volume && rename_with_volume)
 		name += " ([reagents.total_volume]u)"
-	randomize_pixel_offsets()
 
 /obj/item/reagent_containers/pill/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
@@ -35,6 +35,7 @@
 	randomize_pixel_offsets()
 
 // todo: generic /obj/item pixel randomization
+// todo: randomization must be called **before** ..() on initialize.
 /obj/item/reagent_containers/pill/proc/randomize_pixel_offsets()
 	set_pixel_offsets(rand(-10, 10), rand(-10, 10))
 

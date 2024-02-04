@@ -11,9 +11,9 @@
 	material_parts = /datum/material/glass
 
 /obj/item/material/shard/Initialize(mapload, material)
-	. = ..()
 	pixel_x = rand(-8, 8)
 	pixel_y = rand(-8, 8)
+	. = ..()
 
 /obj/item/material/shard/update_material_single(datum/material/material)
 	. = ..()

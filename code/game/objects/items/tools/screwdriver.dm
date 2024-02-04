@@ -31,7 +31,6 @@
 	return(BRUTELOSS)
 
 /obj/item/tool/screwdriver/Initialize(mapload)
-	. = ..()
 	if(random_color)
 		switch(pick("red","blue","purple","brown","green","cyan","yellow"))
 			if ("red")
@@ -58,6 +57,8 @@
 
 	if (prob(75))
 		src.pixel_y = rand(0, 16)
+
+	return ..()
 
 /obj/item/tool/screwdriver/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent != INTENT_HARM)
