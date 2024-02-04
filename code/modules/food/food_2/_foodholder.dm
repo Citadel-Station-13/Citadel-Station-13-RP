@@ -52,10 +52,15 @@
 	var/overlay_color
 
 	for(var/obj/item/reagent_containers/food/snacks/ingredient/color_tally in contents)
-		newcolor = color_tally.filling_color != "#FFFFFF" ? color_tally.filling_color : AverageColor(get_flat_icon(color_tally, color_tally.dir, 0), 1, 1)
+		if(color_tally.filling_color == "#FFFFFF")
+			newcolor = AverageColor(get_flat_icon(cooking_thingy, cooking_thingy.dir, 0))
+		else
+			newcolor = color_tally.filling_color
+
 		if(!overlay_color)
 			overlay_color = newcolor
-		overlay_color = BlendRGB(overlay_color, newcolor, 1/contents.len)
+		else
+			overlay_color = BlendRGB(overlay_color, newcolor, 1/contents.len)
 
 	if(!overlay_color)
 		overlay_color = reagents.get_color()
@@ -73,12 +78,15 @@
 		for(var/obj/item/reagent_containers/food/snacks/ingredient/compare_ingredient in contents)
 			if(compare_ingredient.type == I.type)
 				try_merge(I, compare_ingredient, user)
+				update_icon()
 		if(!user.attempt_insert_item_for_installation(I, src))
 			user.visible_message("<span class='notice'>[user] puts [I] into [src].</span>", "<span class='notice'>You put [I] into [src].</span>")
+			update_icon()
 			return
 		return
 	else if(istype(I, /obj/item/food_serving))
 		generate_serving(I, user)
+		update_icon()
 	return ..()
 
 /obj/item/reagent_containers/glass/food_holder/CtrlClick(mob/living/user)
@@ -108,6 +116,7 @@
 		remove_item = input(user, "What to remove?", "Remove from container", null) as null|anything in removables
 	if(remove_item)
 		user.put_in_hands_or_drop(removables[remove_item])
+		update_icon()
 		return TRUE
 	return FALSE
 

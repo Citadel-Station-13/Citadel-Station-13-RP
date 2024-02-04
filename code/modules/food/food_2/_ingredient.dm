@@ -60,7 +60,7 @@
 		merge_ingredient(I)
 
 
-/obj/item/reagent_containers/food/snacks/ingredient/proc/check_merge(/obj/item/reagent_containers/food/snacks/ingredient/add_ingredient, mob/user)
+/obj/item/reagent_containers/food/snacks/ingredient/proc/check_merge(obj/item/reagent_containers/food/snacks/ingredient/add_ingredient, mob/user)
 	if((((accumulated_time_cooked - INGREDIENT_COOKTIME_MAX_SEPERATION) < add_ingredient.accumulated_time_cooked) && (add_ingredient.accumulated_time_cooked < (accumulated_time_cooked + INGREDIENT_COOKTIME_MAX_SEPERATION))) && (add_ingredient.cookstage = cookstage))
 		if((add_ingredient.serving_amount + serving_amount) < max_servings)
 			return TRUE

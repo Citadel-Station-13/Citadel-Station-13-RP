@@ -359,7 +359,7 @@
 	else
 		to_chat(user, SPAN_WARNING("There's not enough serves in the [src]!"))
 
-/obj/item/reagent_containers/food/snacks/ingredient/grown/check_merge(/obj/item/reagent_containers/food/snacks/ingredient/add_ingredient, mob/user)
+/obj/item/reagent_containers/food/snacks/ingredient/grown/check_merge(obj/item/reagent_containers/food/snacks/ingredient/add_ingredient, mob/user)
 	var/obj/item/reagent_containers/food/snacks/ingredient/grown/grown_add = add_ingredient
 	if(grown_add.plantname != src.plantname)
 		to_chat(user, SPAN_NOTICE("You can't mix different types of growns."))
