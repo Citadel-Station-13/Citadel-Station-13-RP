@@ -295,9 +295,6 @@
 		var/turf/T = loc
 		T.has_opaque_atom = TRUE // No need to recalculate it in this case, it's guranteed to be on afterwards anyways.
 
-	if(persist_static_uid)
-		load_static_persistence()
-
 	return INITIALIZE_HINT_NORMAL
 
 /**
@@ -334,12 +331,6 @@
 		QDEL_NULL(reagents)
 
 	orbiters = null // The component is attached to us normaly and will be deleted elsewhere
-
-	if(persist_flags & ATOM_PERSIST_ACTIVE)
-		if(persist_static_uid)
-			qdestroying_static_persistence()
-		else if(persist_dynamic_uid)
-			qdestroying_dynamic_persistence()
 
 	LAZYCLEARLIST(overlays)
 	LAZYNULL(managed_overlays)
