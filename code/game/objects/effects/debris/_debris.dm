@@ -12,6 +12,8 @@
 /obj/effect/debris
 	/// collate?
 	var/collate = FALSE
+	/// used by persistence serialization as a temp var for speed
+	var/tmp/debris_serialization_temporary
 
 /obj/effect/debris/Initialize(mapload)
 	. = ..()
