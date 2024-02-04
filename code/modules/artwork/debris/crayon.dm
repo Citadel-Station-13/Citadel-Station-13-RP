@@ -3,37 +3,24 @@
  *
  * allows for partially shaded debris drawn on the floor via crayon or spraycans.
  */
-
 /obj/effect/debris/cleanable/crayon
-	name = "rune"
-	desc = "A rune drawn in crayon."
-	icon = 'icons/obj/rune.dmi'
-	anchored = TRUE
+	name = "crayon stuff"
+	desc = "A scribbling in crayon."
+	icon = 'icons/modules/artwork/debris/crayon_paint_32x32.dmi'
+	icon_state = "largebrush"
 
-/obj/effect/debris/cleanable/crayon/New(location, main = "#FFFFFF", shade = "#000000", type = "rune")
-	..()
-	loc = location
+/obj/effect/debris/cleanable/crayon/Initialize(mapload, datum/crayon_decal_meta/meta, color, state)
+	. = ..()
 
-	name = type
-	desc = "A [type] drawn in crayon."
+	if(isnull(meta))
+		return
 
-	switch(type)
-		if("rune")
-			type = "rune[rand(1,6)]"
-		if("graffiti")
-			type = pick("amyjon","face","matt","revolution","engie","guy","end","dwarf","uboa")
+	// init crayon
+	icon = meta.icon_ref
+	color = color
+	icon_state = state
 
-	var/icon/mainOverlay = new/icon('icons/effects/crayondecal.dmi',"[type]",2.1)
-	var/icon/shadeOverlay = new/icon('icons/effects/crayondecal.dmi',"[type]s",2.1)
-
-	mainOverlay.Blend(main,ICON_ADD)
-	shadeOverlay.Blend(shade,ICON_ADD)
-
-	var/list/overlays_to_add = list()
-	overlays_to_add += mainOverlay
-	overlays_to_add += shadeOverlay
-	add_overlay(overlays_to_add)
-
+	// todo: maybe just log this instead of doing this bullsiht?
 	add_hiddenprint(usr)
 
 /obj/effect/debris/cleanable/crayon/chalk

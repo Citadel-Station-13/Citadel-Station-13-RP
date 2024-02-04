@@ -1,4 +1,55 @@
 /obj/item/pen/crayon
+	name = "crayon"
+	desc = "A colourful crayon. Please refrain from eating it or putting it in your nose."
+	icon = 'icons/obj/crayons.dmi'
+	icon_state = "crayonred"
+	w_class = ITEMSIZE_TINY
+	attack_verb = list("attacked", "coloured")
+	colour = "#FF0000" //RGB
+	var/shadeColour = "#220000" //RGB
+	var/uses = 30 //0 for unlimited uses
+	var/instant = 0
+	var/colourName = "red" //for updateIcon purposes
+	drop_sound = 'sound/items/drop/gloves.ogg'
+	pickup_sound = 'sound/items/pickup/gloves.ogg'
+
+
+	/// path to decal; must be a subtype of /obj/effect/debris/cleanable/crayon!
+	var/debris_path = /obj/effect/debris/cleanable/crayon
+
+/obj/item/pen/crayon/suicide_act(mob/user)
+	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
+	to_chat(viewers(user),"<font color='red'><b>[user] is jamming the [src.name] up [TU.his] nose and into [TU.his] brain. It looks like [TU.he] [TU.is] trying to commit suicide.</b></font>")
+	return (BRUTELOSS|OXYLOSS)
+
+/obj/item/pen/crayon/Initialize(mapload)
+	. = ..()
+	name = "[colourName] crayon"
+
+/obj/item/pen/crayon/marker
+	name = "marker"
+	desc = "A chisel-tip permanent marker. Hopefully non-toxic."
+	icon_state = "markerred"
+
+/obj/item/pen/crayon/marker/Initialize(mapload)
+	. = ..()
+	name = "[colourName] marker"
+
+/obj/item/pen/crayon/chalk
+	name = "ritual chalk"
+	desc = "A stick of blessed chalk, used in rituals."
+	icon_state = "chalkwhite"
+
+/obj/item/pen/crayon/chalk/Initialize(mapload)
+	. = ..()
+	name = "[colourName] chalk"
+
+/obj/item/pen/crayon/chalk/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
+	return
+
 
 /obj/item/pen/crayon/afterattack(atom/target, mob/user as mob, proximity)
 	if(!proximity) return

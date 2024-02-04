@@ -569,7 +569,7 @@
 		return TRUE
 	return FALSE
 
-//? Atom Color - we don't use the expensive system.
+//* Atom Color - we don't use the expensive system. *//
 
 /turf/get_atom_colour()
 	return color
