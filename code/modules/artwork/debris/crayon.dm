@@ -1,3 +1,9 @@
+/**
+ * base type of crayon decals
+ *
+ * allows for partially shaded debris drawn on the floor via crayon or spraycans.
+ */
+
 /obj/effect/debris/cleanable/crayon
 	name = "rune"
 	desc = "A rune drawn in crayon."
