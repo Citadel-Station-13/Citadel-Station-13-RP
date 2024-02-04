@@ -5,7 +5,7 @@
 	icon_state = "crayonred"
 	w_class = ITEMSIZE_TINY
 	attack_verb = list("attacked", "coloured")
-	colour = "#FF0000" //RGB
+	pen_color = "#FF0000" //RGB
 	var/shadeColour = "#220000" //RGB
 	var/uses = 30 //0 for unlimited uses
 	var/instant = 0
@@ -69,10 +69,10 @@
 		if(instant || do_after(user, 50))
 			if(!user.Adjacent(target))
 				return
-			new /obj/effect/debris/cleanable/crayon(target,colour,shadeColour,drawtype)
+			new /obj/effect/debris/cleanable/crayon(target,pen_color,shadeColour,drawtype)
 			to_chat(user, "You finish drawing.")
 			target.add_fingerprint(user)		// Adds their fingerprints to the floor the crayon is drawn on.
-			log_game("[key_name(user)] drew [target], [colour], [shadeColour], [drawtype] with a crayon.")
+			log_game("[key_name(user)] drew [target], [pen_color], [shadeColour], [drawtype] with a crayon.")
 			if(uses)
 				uses--
 				if(!uses)
@@ -105,10 +105,10 @@
 		if(instant || do_after(user, 50))
 			if(!user.Adjacent(target))
 				return
-			new /obj/effect/debris/cleanable/crayon/chalk(target,colour,shadeColour,drawtype)
+			new /obj/effect/debris/cleanable/crayon/chalk(target,pen_color,shadeColour,drawtype)
 			to_chat(user, "You finish drawing.")
 			target.add_fingerprint(user)		// Adds their fingerprints to the floor the chalk is drawn on.
-			log_game("[key_name(user)] drew [target], [colour], [shadeColour], [drawtype] with chalk.")
+			log_game("[key_name(user)] drew [target], [pen_color], [shadeColour], [drawtype] with chalk.")
 			if(uses)
 				uses--
 				if(!uses)
@@ -131,44 +131,44 @@
 
 /obj/item/pen/crayon/red
 	icon_state = "crayonred"
-	colour = "#DA0000"
+	pen_color = "#DA0000"
 	shadeColour = "#810C0C"
 	colourName = "red"
 
 /obj/item/pen/crayon/orange
 	icon_state = "crayonorange"
-	colour = "#FF9300"
+	pen_color = "#FF9300"
 	shadeColour = "#A55403"
 	colourName = "orange"
 
 /obj/item/pen/crayon/yellow
 	icon_state = "crayonyellow"
-	colour = "#FFF200"
+	pen_color = "#FFF200"
 	shadeColour = "#886422"
 	colourName = "yellow"
 
 /obj/item/pen/crayon/green
 	icon_state = "crayongreen"
-	colour = "#A8E61D"
+	pen_color = "#A8E61D"
 	shadeColour = "#61840F"
 	colourName = "green"
 
 /obj/item/pen/crayon/blue
 	icon_state = "crayonblue"
-	colour = "#00B7EF"
+	pen_color = "#00B7EF"
 	shadeColour = "#0082A8"
 	colourName = "blue"
 
 /obj/item/pen/crayon/purple
 	icon_state = "crayonpurple"
-	colour = "#DA00FF"
+	pen_color = "#DA00FF"
 	shadeColour = "#810CFF"
 	colourName = "purple"
 
 /obj/item/pen/crayon/mime
 	icon_state = "crayonmime"
 	desc = "A very sad-looking crayon."
-	colour = "#FFFFFF"
+	pen_color = "#FFFFFF"
 	shadeColour = "#000000"
 	colourName = "mime"
 	uses = 0
@@ -177,19 +177,19 @@
 	. = ..()
 	if(.)
 		return //inversion
-	if(colour != "#FFFFFF" && shadeColour != "#000000")
-		colour = "#FFFFFF"
+	if(pen_color != "#FFFFFF" && shadeColour != "#000000")
+		pen_color = "#FFFFFF"
 		shadeColour = "#000000"
 		to_chat(user, "You will now draw in white and black with this crayon.")
 	else
-		colour = "#000000"
+		pen_color = "#000000"
 		shadeColour = "#FFFFFF"
 		to_chat(user, "You will now draw in black and white with this crayon.")
 	return
 
 /obj/item/pen/crayon/rainbow
 	icon_state = "crayonrainbow"
-	colour = "#FFF000"
+	pen_color = "#FFF000"
 	shadeColour = "#000FFF"
 	colourName = "rainbow"
 	uses = 0
@@ -198,55 +198,55 @@
 	. = ..()
 	if(.)
 		return
-	colour = input(user, "Please select the main colour.", "Crayon colour") as color
-	shadeColour = input(user, "Please select the shade colour.", "Crayon colour") as color
+	pen_color = input(user, "Please select the main pen_color.", "Crayon pen_color") as color
+	shadeColour = input(user, "Please select the shade pen_color.", "Crayon pen_color") as color
 
 /obj/item/pen/crayon/marker/black
 	icon_state = "markerblack"
-	colour = "#2D2D2D"
+	pen_color = "#2D2D2D"
 	shadeColour = "#000000"
 	colourName = "black"
 
 /obj/item/pen/crayon/marker/red
 	icon_state = "markerred"
-	colour = "#DA0000"
+	pen_color = "#DA0000"
 	shadeColour = "#810C0C"
 	colourName = "red"
 
 /obj/item/pen/crayon/marker/orange
 	icon_state = "markerorange"
-	colour = "#FF9300"
+	pen_color = "#FF9300"
 	shadeColour = "#A55403"
 	colourName = "orange"
 
 /obj/item/pen/crayon/marker/yellow
 	icon_state = "markeryellow"
-	colour = "#FFF200"
+	pen_color = "#FFF200"
 	shadeColour = "#886422"
 	colourName = "yellow"
 
 /obj/item/pen/crayon/marker/green
 	icon_state = "markergreen"
-	colour = "#A8E61D"
+	pen_color = "#A8E61D"
 	shadeColour = "#61840F"
 	colourName = "green"
 
 /obj/item/pen/crayon/marker/blue
 	icon_state = "markerblue"
-	colour = "#00B7EF"
+	pen_color = "#00B7EF"
 	shadeColour = "#0082A8"
 	colourName = "blue"
 
 /obj/item/pen/crayon/marker/purple
 	icon_state = "markerpurple"
-	colour = "#DA00FF"
+	pen_color = "#DA00FF"
 	shadeColour = "#810CFF"
 	colourName = "purple"
 
 /obj/item/pen/crayon/marker/mime
 	icon_state = "markermime"
 	desc = "A very sad-looking marker."
-	colour = "#FFFFFF"
+	pen_color = "#FFFFFF"
 	shadeColour = "#000000"
 	colourName = "mime"
 	uses = 0
@@ -255,19 +255,19 @@
 	. = ..()
 	if(.)
 		return //inversion
-	if(colour != "#FFFFFF" && shadeColour != "#000000")
-		colour = "#FFFFFF"
+	if(pen_color != "#FFFFFF" && shadeColour != "#000000")
+		pen_color = "#FFFFFF"
 		shadeColour = "#000000"
 		to_chat(user, "You will now draw in white and black with this marker.")
 	else
-		colour = "#000000"
+		pen_color = "#000000"
 		shadeColour = "#FFFFFF"
 		to_chat(user, "You will now draw in black and white with this marker.")
 	return
 
 /obj/item/pen/crayon/marker/rainbow
 	icon_state = "markerrainbow"
-	colour = "#FFF000"
+	pen_color = "#FFF000"
 	shadeColour = "#000FFF"
 	colourName = "rainbow"
 	uses = 0
@@ -276,8 +276,8 @@
 	. = ..()
 	if(.)
 		return
-	colour = input(user, "Please select the main colour.", "Marker colour") as color
-	shadeColour = input(user, "Please select the shade colour.", "Marker colour") as color
+	pen_color = input(user, "Please select the main pen_color.", "Marker pen_color") as color
+	shadeColour = input(user, "Please select the shade pen_color.", "Marker pen_color") as color
 	return
 
 /obj/item/pen/crayon/marker/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
@@ -298,25 +298,25 @@
 //Ritual Chalk
 /obj/item/pen/crayon/chalk/white
 	icon_state = "chalkwhite"
-	colour = "#FFFFFF"
+	pen_color = "#FFFFFF"
 	shadeColour = "#000000"
 	colourName = "white"
 
 /obj/item/pen/crayon/chalk/red
 	icon_state = "chalkred"
-	colour = "#DA0000"
+	pen_color = "#DA0000"
 	shadeColour = "#810C0C"
 	colourName = "red"
 
 /obj/item/pen/crayon/chalk/black
 	icon_state = "chalkblack"
-	colour = "#2D2D2D"
+	pen_color = "#2D2D2D"
 	shadeColour = "#000000"
 	colourName = "black"
 
 /obj/item/pen/crayon/chalk/blue
 	icon_state = "chalkblue"
-	colour = "#00B7EF"
+	pen_color = "#00B7EF"
 	shadeColour = "#0082A8"
 	colourName = "blue"
 

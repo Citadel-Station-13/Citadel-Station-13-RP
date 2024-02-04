@@ -29,7 +29,7 @@
 	drop_sound = 'sound/items/drop/accessory.ogg'
 	pickup_sound = 'sound/items/pickup/accessory.ogg'
 	#warn name to pen_color because this is confusion-prone
-	var/colour = "black"	//what colour the ink is!
+	var/pen_color = "black"	//what colour the ink is!
 	/// can we write with this?
 	var/pen_capable = TRUE
 	/// spans to force when writing - either text or list
@@ -48,12 +48,12 @@
 /obj/item/pen/blue
 	desc = "It's a normal blue ink pen."
 	icon_state = "pen_blue"
-	colour = "blue"
+	pen_color = "blue"
 
 /obj/item/pen/red
 	desc = "It's a normal red ink pen."
 	icon_state = "pen_red"
-	colour = "red"
+	pen_color = "red"
 
 /obj/item/pen/fountain
 	desc = "A well made fountain pen."
@@ -76,14 +76,14 @@
 	if(++selectedColor > 3)
 		selectedColor = 1
 
-	colour = colors[selectedColor]
+	pen_color = colors[selectedColor]
 
-	if(colour == "black")
+	if(pen_color == "black")
 		icon_state = "pen"
 	else
-		icon_state = "pen_[colour]"
+		icon_state = "pen_[pen_color]"
 
-	to_chat(user, "<span class='notice'>Changed color to '[colour].'</span>")
+	to_chat(user, "<span class='notice'>Changed color to '[pen_color].'</span>")
 
 /obj/item/pen/click
 	name = "clicker pen"
@@ -107,7 +107,7 @@
 /obj/item/pen/invisible
 	desc = "It's an invisble pen marker."
 	icon_state = "pen"
-	colour = "white"
+	pen_color = "white"
 
 /*
  * Reagent pens
@@ -217,12 +217,12 @@
 /obj/item/pen/blade/blue
 	desc = "It's a normal blue ink pen."
 	icon_state = "pen_blue"
-	colour = "blue"
+	pen_color = "blue"
 
 /obj/item/pen/blade/red
 	desc = "It's a normal red ink pen."
 	icon_state = "pen_red"
-	colour = "red"
+	pen_color = "red"
 
 /obj/item/pen/blade/fountain
 	desc = "A well made fountain pen."
@@ -291,23 +291,23 @@
 	if(selected_type)
 		switch(selected_type)
 			if("Yellow")
-				colour = COLOR_YELLOW
+				pen_color = COLOR_YELLOW
 			if("Green")
-				colour = COLOR_LIME
+				pen_color = COLOR_LIME
 			if("Pink")
-				colour = COLOR_PINK
+				pen_color = COLOR_PINK
 			if("Blue")
-				colour = COLOR_BLUE
+				pen_color = COLOR_BLUE
 			if("Orange")
-				colour = COLOR_ORANGE
+				pen_color = COLOR_ORANGE
 			if("Cyan")
-				colour = COLOR_CYAN
+				pen_color = COLOR_CYAN
 			if("Red")
-				colour = COLOR_RED
+				pen_color = COLOR_RED
 			if("Invisible")
-				colour = COLOR_WHITE
+				pen_color = COLOR_WHITE
 			else
-				colour = COLOR_BLACK
+				pen_color = COLOR_BLACK
 		to_chat(usr, "<span class='info'>You select the [lowertext(selected_type)] ink container.</span>")
 
 /obj/item/pen/charcoal
