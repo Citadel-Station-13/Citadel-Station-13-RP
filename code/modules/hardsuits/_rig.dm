@@ -237,12 +237,13 @@
 	if(length(storage_starts_with) && !storage_empty)
 		// this is way too permissive already
 		var/safety = 256
+		var/atom/where_real_contents = obj_storage.real_contents_loc()
 		for(var/path in storage_starts_with)
 			var/amount = storage_starts_with[path] || 1
 			for(var/i in 1 to amount)
 				if(!--safety)
 					CRASH("tried to spawn too many objects")
-				new path(src)
+				new path(where_real_contents)
 	storage_starts_with = null
 
 /obj/item/hardsuit/proc/initialize_storage()

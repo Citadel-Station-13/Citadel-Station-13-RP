@@ -381,18 +381,26 @@
 	ui_queue_refresh()
 
 /datum/object_system/storage/proc/on_contents_weight_class_change(obj/item/item, old_weight_class, new_weight_class)
+	if(dangerously_redirect_contents_calls && item.loc != dangerously_redirect_contents_calls)
+		return
 	cached_combined_weight_class += (new_weight_class - old_weight_class)
 	if(isnull(item.weight_volume))
 		on_contents_weight_volume_change(item, global.w_class_to_volume[old_weight_class], global.w_class_to_volume[new_weight_class])
 
 /datum/object_system/storage/proc/on_contents_weight_volume_change(obj/item/item, old_weight_volume, new_weight_volume)
+	if(dangerously_redirect_contents_calls && item.loc != dangerously_redirect_contents_calls)
+		return
 	cached_combined_volume += (new_weight_volume - old_weight_volume)
 
 /datum/object_system/storage/proc/on_contents_weight_change(obj/item/item, old_weight, new_weight)
+	if(dangerously_redirect_contents_calls && item.loc != dangerously_redirect_contents_calls)
+		return
 	weight_cached += (new_weight - old_weight)
 	update_containing_weight()
 
 /datum/object_system/storage/proc/on_contents_item_new(obj/item/item)
+	if(dangerously_redirect_contents_calls && item.loc != dangerously_redirect_contents_calls)
+		return
 	if(item.item_flags & ITEM_IN_STORAGE) // somehow
 		return
 	physically_insert_item(item, no_move = TRUE)
