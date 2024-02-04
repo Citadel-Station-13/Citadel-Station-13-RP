@@ -157,7 +157,11 @@
 	//atom color stuff
 	if(!isnull(color) && atom_colouration_system)
 		add_atom_colour(color, FIXED_COLOUR_PRIORITY)
-	loc?.Entered(src, null)
+	// WARNING WARNING SHITCODE THIS MEANS THAT ONLY TURFS RECEIVE MAPLOAD ENTERED
+	// DO NOT RELY ON ENTERED
+	// TODO: what would tg do (but maybe not that much component signal abuse?)
+	if(!mapload)
+		loc?.Entered(src, null)
 	switch(blocks_emissive)
 		if(EMISSIVE_BLOCK_GENERIC)
 			var/mutable_appearance/gen_emissive_blocker = mutable_appearance(icon, icon_state, plane = EMISSIVE_PLANE, alpha = src.alpha)

@@ -393,6 +393,8 @@
 	update_containing_weight()
 
 /datum/object_system/storage/proc/on_contents_item_new(obj/item/item)
+	if(item.item_flags & ITEM_IN_STORAGE) // somehow
+		return
 	physically_insert_item(item, no_move = TRUE)
 	ui_queue_refresh()
 
