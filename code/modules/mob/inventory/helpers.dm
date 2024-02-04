@@ -149,7 +149,7 @@
 	var/datum/event_args/actor/actor = new(src, initiator)
 	if(storage.obj_storage.check_on_found_hooks(actor))
 		return
-	return storage.obj_storage.auto_handle_interacted_removal(removing, actor, silent)
+	return storage.obj_storage.auto_handle_interacted_removal(removing, actor, silent, put_in_hands = TRUE)
 
 /**
  * Automatically either put in hand object into a storage in a given slot, or
