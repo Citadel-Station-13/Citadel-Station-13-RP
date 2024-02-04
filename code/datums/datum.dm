@@ -168,17 +168,18 @@
  * note that *everything* will be trampled down to a number or text.
  * do not store raw types.
  *
- * reserved:
- * "type" - this is always the type at time of saving. this is for current limitations, DO NOT use this if at all possible.
+ * do not serialize type with this; type should always be stored externally from data.
  */
 /datum/proc/serialize()
-	return list("type" = "[type]")
+	return list()
 
 /**
  * deserializes from a list
  *
  * @params
  * * data - json_decode()'d list.
+ *
+ * @return TRUE / FALSE success / failure
  */
 /datum/proc/deserialize(list/data)
-	return
+	return TRUE

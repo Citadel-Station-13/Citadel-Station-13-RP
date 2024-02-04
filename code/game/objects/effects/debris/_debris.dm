@@ -8,6 +8,7 @@
  * * etc
  *
  * * Always define your own initialization procedures BEFORE calling parent, or Collate() won't run at the right time.
+ * * serialize() and deserialize() is used by persistence.
  */
 /obj/effect/debris
 	/// collate?

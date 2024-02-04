@@ -4,7 +4,7 @@
  * allows for partially shaded debris drawn on the floor via crayon or spraycans.
  */
 /obj/effect/debris/cleanable/crayon
-	name = "crayon stuff"
+	name = "crayon scribble"
 	desc = "A scribbling in crayon."
 	icon = 'icons/modules/artwork/debris/crayon_paint_32x32.dmi'
 	icon_state = "largebrush"
@@ -30,39 +30,46 @@
 		turning.Turn(turn_angle)
 		transform = turning
 
-	// todo: maybe just log this instead of doing this bullsiht?
+	// todo: maybe just log drawing instead of doing this bullsiht?
 	add_hiddenprint(usr)
+
+/obj/effect/debris/cleanable/crayon/serialize()
+	. = ..()
+	.["angle"] = turn_angle
+	.["color"] = color
+	.["icon"] = "[icon]"
+	.["state"] = icon_state
+
+/obj/effect/debris/cleanable/crayon/deserialize(list/data)
+	. = ..()
+	var/icon_path_as_string = data["icon"]
+	var/datum/crayon_decal_meta/metadata = GLOB.crayon_data_lookup_by_string_icon_path[icon_path_as_string]
+	if(isnull(metadata))
+		return FALSE
+	var/state = data["state"]
+	if(!(state in metadata.states))
+		return FALSE
+	icon = metadata.icon_ref
+	icon_state = state
+	var/angle = data["angle"]
+	if(angle)
+		turn_angle = angle
+		var/matrix/turning = matrix()
+		turning.Turn(turn_angle)
+		transform = turning
+	color = data["color"]
+
 
 #warn below
 
 /obj/effect/debris/cleanable/crayon/chalk
-	name = "arcane rune"
-	desc = "A rune drawn in chalk."
-	icon = 'icons/obj/rune.dmi'
-	anchored = 1
+	name = "chalk drawing"
+	desc = "A scribbling in chalk."
 
-/obj/effect/debris/cleanable/crayon/chalk/New(location, main = "#FFFFFF", shade = "#000000", type = "rune")
-	..()
-	loc = location
+/obj/effect/debris/cleanable/crayon/marker
+	name = "marker sketch"
+	desc = "A sketch made with a marker."
 
-	name = type
-	desc = "A [type] drawn in chalk."
-
-	switch(type)
-		if("rune")
-			type = "rune[rand(1,6)]"
-		if("graffiti")
-			type = pick("end","uboa")
-
-	var/icon/mainOverlay = new/icon('icons/effects/crayondecal.dmi',"[type]",2.1)
-	var/icon/shadeOverlay = new/icon('icons/effects/crayondecal.dmi',"[type]s",2.1)
-
-	mainOverlay.Blend(main,ICON_ADD)
-	shadeOverlay.Blend(shade,ICON_ADD)
-
-	var/list/overlays_to_add = list()
-	overlays_to_add += mainOverlay
-	overlays_to_add += shadeOverlay
-	add_overlay(overlays_to_add)
-
-	add_hiddenprint(usr)
+/obj/effect/debris/cleanable/crayon/spraycan
+	name = "sprayed graffiti"
+	desc = "A symbol made with spray paint."
