@@ -91,35 +91,35 @@
 	var/oldusr = usr
 	usr = null
 	message_admins("SSpersist: benchmarking string storage")
-	var/amt = 1000
+	var/amt = 10000
 	var/list/pointer = list(amt)
 	var/list/keys = list()
 	var/list/values = list()
-	for(var/i in 1 to 1000)
+	for(var/i in 1 to amt)
 		keys += "[rand(1, 10000000)]"
 		values += "[rand(1, 100000000000000)]"
 	var/start = REALTIMEOFDAY
 	string_save_benchmark(pointer, keys, values, amt)
 	UNTIL(pointer[1] == 0)
 	var/end = REALTIMEOFDAY
-	message_admins("SSpersist: saving 1000 strings took [end - start] ds")
+	message_admins("SSpersist: saving [amt] strings took [end - start] ds")
 	pointer = list(amt)
 	start = REALTIMEOFDAY
 	string_load_benchmark(pointer, keys, amt)
 	UNTIL(pointer[1] == 0)
 	end = REALTIMEOFDAY
-	message_admins("SSpersist: loading 1000 strings took [end - start] ds")
+	message_admins("SSpersist: loading [amt] strings took [end - start] ds")
 	usr = oldusr
 
 /datum/controller/subsystem/persistence/proc/kkv_string_save_benchmark(list/pointer, list/keys, list/values, amt)
 	set waitfor = FALSE
 	for(var/i in 1 to amt)
-		_string_save_benchmark(pointer, keys[i], values[i])
+		kkv__string_save_benchmark(pointer, keys[i], values[i])
 
 /datum/controller/subsystem/persistence/proc/kkv_string_load_benchmark(list/pointer, list/keys, amt)
 	set waitfor = FALSE
 	for(var/i in 1 to amt)
-		_string_load_benchmark(pointer, keys[i])
+		kkv__string_load_benchmark(pointer, keys[i])
 
 /datum/controller/subsystem/persistence/proc/kkv__string_save_benchmark(list/pointer, key, value)
 	SaveString("benchmark", key, value)

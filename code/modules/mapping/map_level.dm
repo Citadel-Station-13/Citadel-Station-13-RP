@@ -3,6 +3,9 @@
  */
 /datum/map_level
 	/// id - must be globally unique across all possible maps
+	/// if we are New()'d with a map, this is namespaced with that map automatically! you do not need
+	/// to namespace map levels yourself.
+	/// please use 'dashes-as-spacing' to format ids.
 	var/id
 	/// friendly debug / code name of level
 	var/name
@@ -60,13 +63,17 @@
 	/// load orientation - overridden if loaded as part of a /datum/map
 	var/orientation = SOUTH
 
-	//* Loading
+	//* Loading *//
 	/// are we loaded in
 	var/tmp/loaded = FALSE
 	/// our zlevel once loaded
 	var/tmp/z_index
 
-	//* Tracking
+	//* Persistence *//
+	/// loaded persistence metadata, if any
+	var/datum/map_level_persistence/persistence
+
+	//* Tracking *//
 	var/turfs_rebuild_count = 0
 	var/transitions_rebuild_count = 0
 
@@ -84,6 +91,9 @@
 
 /datum/map_level/New(datum/map/parent_map)
 	src.parent_map = parent_map
+
+	if(!isnull(parent_map))
+		id = "[parent_map.id]-[initial(id)]"
 
 	#define UNPACK_LINK(vname) if(ispath(vname, /datum/map_level)) { var/datum/map_level/cast_##vname = vname; vname = initial(cast_##vname.id) ; }
 	UNPACK_LINK(link_north)

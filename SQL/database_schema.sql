@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%schema_revision` (
 
 -- persistence --
 
--- SSpersistence string_kv.dm
+-- SSpersistence modules/string_kv
 CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_string_kv` (
   `created` DATETIME NOT NULL DEFAULT Now(),
   `modified` DATETIME NOT NULL,
@@ -30,6 +30,44 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_string_kv` (
   `revision` INT(11) NOT NULL,
   PRIMARY KEY(`key`, `group`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- SSpersistence modules/map_metadata
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_level_metadata` (
+  `created` DATETIME NOT NULL DEFAULT Now(),
+  `saved` DATETIME NOT NULL,
+  `id` VARCHAR(64) NOT NULL,
+  `data` MEDIUMTEXT NOT NULL,
+  `revision` INT(11) NOT NULL,
+  `generation` INT(11) NOT NULL,
+  PRIMARY KEY(`id`)
+)
+
+-- SSpersistence modules/objects
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_static_objects` (
+  `created` DATETIME NOT NULL DEFAULT Now(),
+  `generation` INT(11) NOT NULL,
+  `id` VARCHAR(64) NOT NULL,
+  `revision` INT(11) NOT NULL,
+  `bind_id` VARCHAR(64) NOT NULL,
+  `bind_mode` VARCHAR(64) NOT NULL,
+  `data` MEDIUMTEXT NOT NULL,
+  PRIMARY KEY(`id`, `bind_id`)
+)
+
+-- SSpersistence modules/objects
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_dynamic_objects` (
+  `created` DATETIME NOT NULL DEFAULT Now(),
+  `generation` INT(11) NOT NULL,
+  `id` VARCHAR(64) NOT NULL,
+  `level_id` VARCHAR(64) NOT NULL,
+  `status` INT(24) NOT NULL DEFAULT 0,
+  `data` MEDIUMTEXT NOT NULL,
+  `type` VARCHAR(256) NOT NULL,
+  `revision` INT(11) NOT NULL,
+  `x` INT(8) NOT NULL,
+  `y` INT(8) NoT NULL,
+  PRIMARY KEY(`id`, `level_id`)
+)
 
 -- CREATE TABLE IF NOT EXISTS `%_PREFIX_%persist_mass_atoms` (
 --   `saved` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -51,40 +89,6 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_string_kv` (
 --   `fragments` INT(4) NOT NULL,
 -- PRIMARY KEY(`handler_id`, `level_id`)
 -- ) ENGINE = InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- CREATE TABLE IF NOT EXISTS `%_PREFIX_%persist_dynamic_atoms` (
---   `modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
---   `created` datetime NOT NULL,
---   `id` INT(11) NOT NULL AUTO_INCREMENT,
---   `x` INT(8) NOT NULL,
---   `y` INT(8) NOT NULL,
---   `level_id` varchar(64) NOT NULL,
---   `type` varchar(64) NOT NULL,
---   `json` MEDIUMTEXT NOT NULL,
---   `flags` INT(24) NOT NULL,
---   `revision` INT(11) NOT NULL,
---   PRIMARY KEY(`id`)
--- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- CREATE TABLE IF NOT EXISTS `%_PREFIX_%persist_keyed_atoms` (
---   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
---   `modified` datetime NOT NULL,
---   `map` varchar(64) NULL,
---   `key` varchar(64) NOT NULL,
---   `json` MEDIUMTEXT NOT NULL,
---   `revision` INT(11) NOT NULL,
---   PRIMARY KEY(`key`, `map`)
--- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- CREATE TABLE IF NOT EXISTS `%_PREFIX_%persist_datums` (
---   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
---   `modified` datetime NOT NULL,
---   `datum_key` varchar(64) NOT NULL,
---   `json` MEDIUMTEXT NOT NULL,
---   `revision` INT(11) NOT NULL,
---   `id` INT(11) NOT NULL AUTO_INCREMENT,
---   PRIMARY KEY(`datum_key`, `id`)
--- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATe=utf8mb4_general_ci;
 
 -- photography --
 

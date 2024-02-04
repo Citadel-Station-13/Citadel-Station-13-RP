@@ -89,6 +89,25 @@
 	/// make the actual materials multiplied by this amount. used by lathes to prevent duping with efficiency upgrades.
 	var/material_multiplier = 1
 
+	//* Persistence *//
+	/// persistence state flags
+	var/obj_persist_status = NONE
+	/// if set, we persist via static object persistence. this is our ID and must be unique for a given map level.
+	/// will override and prevent dynamic persistence.
+	var/obj_persist_static_id
+	/// static namespacing mode
+	var/obj_persist_static_mode = OBJ_PERSIST_STATIC_MODE_MAP
+	/// if set, we are currently dynamically persisting. this is our ID and must be unique for a given map level.
+	/// this id will not collide with static id.
+	var/obj_persist_dynamic_id
+	/// dynamic persistence state flags
+	var/obj_persist_dynamic_status = NONE
+	/// revision; if this mismatches the db entry,
+	/// the entry is purged
+	/// this is so type updates can toss data properly.
+	var/obj_persist_revision = 1
+	#warn impl all
+
 	//? Sounds
 	/// volume when breaking out using resist process
 	var/breakout_sound = 'sound/effects/grillehit.ogg'
@@ -155,6 +174,7 @@
 		// init material parts only if it wasn't initialized already
 		if(!(obj_flags & OBJ_MATERIAL_INITIALIZED))
 			init_material_parts()
+	#warn persistence entrypoint
 	if (set_obj_flags)
 		var/flagslist = splittext(set_obj_flags,";")
 		var/list/string_to_objflag = GLOB.bitfields["obj_flags"]
@@ -565,7 +585,7 @@
 
 /**
  * Standard wallmount orientation: face away
- * 
+ *
  * Directly sets dir without setDir()
  */
 /obj/proc/auto_orient_wallmount_single_preinit()

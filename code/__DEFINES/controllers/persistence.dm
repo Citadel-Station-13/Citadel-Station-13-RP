@@ -6,80 +6,32 @@
 /// default string for null groups
 #define PERSISTENCE_DEFAULT_NULL_GROUP ""
 
-#warn below
+//* /obj - obj_persist_status *//
 
-//! Object Storage System - General
-
-
-
-// persistence type enum
-#define OBJECT_PERSISTENCE_LOCATION_MAPPED			1
-#define OBJECT_PERSISTENCE_UNIQUE_MAPLOAD			2
-#define OBJECT_PERSISTENCE_UNIQUE_GENERIC			3
-#define OBJECT_PERSISTENCE_UNIQUE_STRING			4
-
-//? Object Storage System - Groups
-
-/// default group for null groups
-#define OBJECT_PERSISTENCE_GROUP_NONE ""
-/// group for map persistence key
-#define OBJECT_PERSISTENCE_GROUP_FOR_MAP_KEY(_key) "map_[_key]"
-
-//? Object Storage System - Character Types
-
-/// /datum/character_data/human
-#define OBJECT_PERSISTENCE_CHARACTER_TYPE_HUMAN "human"
-
-//! Object Storage System - atom proc opflags
-/// when deciding whether or not to persist things, don't persist if they are fully broken/dead
-#define PERSIST_OP_CHECK_SEMANTIC_SURVIVAL			(1<<0)
-/// when deciding whether or not to persist things, don't persist if they're considered irreversibly damaged/dying. undefined behvaior if SEMANTIC_SURVIVAL is not check
-#define PERSIST_OP_AGGRESSIVE_SURVIVAL_CHECK		(1<<1)
-/// saving/loading from static onmap
-#define PERSIST_OP_STATIC_OBJECT					(1<<2)
-/// saving/loading from dynamic onmap
-#define PERSIST_OP_DYNAIMC_OBJECT					(1<<3)
-/// saving/loading from/into another object's persistence procs
-#define PERSIST_OP_NESTED							(1<<4)
-/// saving/loading from/to some kind of inventory
-#define PERSIST_OP_INVENTORY_OBJECT					(1<<5)
-
-//! Object Storage System - atom persist_flags
-/// we loaded already
-#define ATOM_PERSIST_LOADED							(1<<0)
-/// we saved already
-#define ATOM_PERSIST_SAVED							(1<<1)
+/// we loaded in already
+#define OBJ_PERSIST_STATUS_LOADED (1<<0)
+/// we saved atleast once
+#define OBJ_PERSIST_STATUS_SAVED (1<<1)
 /// this is the first round we're persisting from
-#define ATOM_PERSIST_FIRST_GENERATION				(1<<2)
-/// we're active - enables save/load hooks
-#define ATOM_PERSIST_ACTIVE							(1<<3)
-/// for static persisting objects, data survives qdeletion
-#define ATOM_PERSIST_SURVIVE_STATIC_QDELETION		(1<<4)
-/// for static persisting objects, data survives being moved off the designated map id. you probably want this by default.
-#define ATOM_PERSIST_SURVIVE_STATIC_OFFMAP			(1<<5)
-/// for all persisting objects, get_turf(src) for z detection. can get really weird, use sparingly.
-#define ATOM_PERSIST_UNWRAPS_ONTO_TURF				(1<<6)
-/// for static persisting objects, we use a global ID, and are therefore map agnostic. make sure you know what you are doing.
-#define ATOM_PERSIST_STATIC_IS_MAP_AGNOSTIC			(1<<7)
+/// for dynamic, this is the round we were made
+/// for static, this is the round that we were restored after a deletion
+#define OBJ_PERSIST_STATUS_FIRST_GENERATION (1<<2)
 
+//* /obj - obj_persist_dynamic_status *//
 
-#warn define bitfields
+/// requires us to be considered alive
+#define OBJ_PERSIST_DYNAMIC_STATUS_REQUIRE_SEMANTIC_SURVIVAL (1<<0)
+/// requires us to be considered alive and well functioning
+#define OBJ_PERSIST_DYNAMIC_STATUS_REQUIRE_HEALTHY_SURVIVAL (1<<1)
 
-//! Object Storage Sysstem - atom persist_flags_dynamic
-/// dynamic persistence: we care about survival
-#define ATOM_PERSIST_DYNAMIC_REQUIRE_SEMANTIC_SURVIVAL			(1<<0)
-/// dynamic persistence: we REALLY care about survival
-#define ATOM_PERSIST_DYNAMIC_SURVIVAL_OF_THE_FITTEST			(1<<1)
+//* /obj - obj_persist_static_mode *//
 
-//! Object Storage System - Location Mapped - SQL flags
-/// we deleted this level, pretend it's gone
-#define MASS_PERSISTENCE_LEVEL_IS_DELETED										(1<<0)
-
-//! datum persistence datum types.
-//! changing these results in data loss.
-//! don't do it unless you're intentionally throwing out old data from the design schemas of your objects.
-
-// currently none
+/// bound by level id
+#define OBJ_PERSIST_STATIC_MODE_LEVEL "level"
+/// bound by map id; if no map, this doesn't persist
+#define OBJ_PERSIST_STATIC_MODE_MAP "map"
+/// not bound by any id, global
+#define OBJ_PERSIST_STATIC_MODE_GLOBAL "global"
 
 //! Misc/Legacy/Unrelated/Don't care/Didn't ask/Ratio'd
 
