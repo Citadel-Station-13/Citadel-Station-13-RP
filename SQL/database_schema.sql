@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_level_metadata` (
   PRIMARY KEY(`id`)
 )
 
--- SSpersistence modules/objects
+-- SSpersistence modules/level_objects
 CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_static_objects` (
   `created` DATETIME NOT NULL DEFAULT Now(),
   `generation` INT(11) NOT NULL,
@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_static_objects` (
   PRIMARY KEY(`id`, `bind_id`)
 )
 
--- SSpersistence modules/objects
+-- SSpersistence modules/level_objects
 CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_dynamic_objects` (
   `created` DATETIME NOT NULL DEFAULT Now(),
   `generation` INT(11) NOT NULL,
@@ -69,26 +69,6 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_dynamic_objects` (
   PRIMARY KEY(`id`, `level_id`)
 )
 
--- CREATE TABLE IF NOT EXISTS `%_PREFIX_%persist_mass_atoms` (
---   `saved` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
---   `handler_id` varchar(64) NOT NULL,
---   `level_id` varchar(64) NOT NULL,
---   `fragment` INT(3) NOT NULL,
---   `data` MEDIUMTEXT NOT NULL,
---   `version` INT(3) NOT NULL
--- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- CREATE TABLE IF NOT EXISTS `%_PREFIX_%persist_mass_levels` (
---   `saved` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
---   `handler_id` varchar(64) NOT NULL,
---   `level_id` varchar(64) NOT NULL,
---   `revision` INT(11) NOT NULL,
---   `flags` INT(24) NOT NULL,
---   `width` INT(4) NOT NULL,
---   `height` INT(4) NOT NULL,
---   `fragments` INT(4) NOT NULL,
--- PRIMARY KEY(`handler_id`, `level_id`)
--- ) ENGINE = InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- photography --
 

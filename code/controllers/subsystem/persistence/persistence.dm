@@ -6,18 +6,19 @@ SUBSYSTEM_DEF(persistence)
 	#warn bump init order
 	init_order = INIT_ORDER_PERSISTENCE
 	subsystem_flags = SS_NO_FIRE
-	/// The directory to write to for per-map persistence. If null, the current map shouldn't be persisted to/from.
-	var/current_map_directory
-	/// current map id - used for database
-	var/current_map_id
+
+	/// world already loaded?
+	var/static/loaded_persistent_world = FALSE
 
 /datum/controller/subsystem/persistence/Initialize()
+	#warn stuff
 	SetMapDirectory()
 	InitPersistence()
 	LoadPersistence()
 	return ..()
 
 /datum/controller/subsystem/persistence/Shutdown()
+	#warn stuff
 	SavePersistence()
 	return ..()
 
@@ -45,19 +46,6 @@ SUBSYSTEM_DEF(persistence)
   */
 /datum/controller/subsystem/persistence/proc/SavePersistence()
 	return
-
-/**
-  * Sets our current_map_directory to corrospond to the current map.
-  */
-/datum/controller/subsystem/persistence/proc/SetMapDirectory()
-	if(!SSmapping.config.persistence_id)
-		current_map_id = null
-		current_map_directory = null
-		return			// map doesn't support persistence.
-	current_map_id = ckey(SSmapping.config.persistence_id)
-	current_map_directory = "[PERSISTENCE_MAP_ROOT_DIRECTORY]/[current_map_id]"
-
-#warn impl
 
 //* ID Mapping *//
 

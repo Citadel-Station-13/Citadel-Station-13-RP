@@ -13,6 +13,11 @@
  *
  * notice how we can't delete strings?
  * that's intentional, and for optimization.
+ *
+ * string KKV does not currently allow for generations, because generations is a map concept, and this
+ * is more of a general system. if you require generations, it can be added later. i just do not really
+ * foresee a usage for it yet; even if we needed full-state map serialization, the map systems should
+ * handle that instead.
  */
 /datum/controller/subsystem/persistence
 
@@ -99,13 +104,13 @@
 		keys += "[rand(1, 10000000)]"
 		values += "[rand(1, 100000000000000)]"
 	var/start = REALTIMEOFDAY
-	string_save_benchmark(pointer, keys, values, amt)
+	kkv_string_save_benchmark(pointer, keys, values, amt)
 	UNTIL(pointer[1] == 0)
 	var/end = REALTIMEOFDAY
 	message_admins("SSpersist: saving [amt] strings took [end - start] ds")
 	pointer = list(amt)
 	start = REALTIMEOFDAY
-	string_load_benchmark(pointer, keys, amt)
+	kkv_string_load_benchmark(pointer, keys, amt)
 	UNTIL(pointer[1] == 0)
 	end = REALTIMEOFDAY
 	message_admins("SSpersist: loading [amt] strings took [end - start] ds")
@@ -122,9 +127,9 @@
 		kkv__string_load_benchmark(pointer, keys[i])
 
 /datum/controller/subsystem/persistence/proc/kkv__string_save_benchmark(list/pointer, key, value)
-	SaveString("benchmark", key, value)
+	string_kkv_save("benchmark", key, value)
 	pointer[1]--
 
 /datum/controller/subsystem/persistence/proc/kkv__string_load_benchmark(list/pointer, key)
-	LoadString("benchmark", key)
+	string_kkv_load("benchmark", key)
 	pointer[1]--

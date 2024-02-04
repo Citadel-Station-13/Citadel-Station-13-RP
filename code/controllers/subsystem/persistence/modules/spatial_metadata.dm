@@ -12,9 +12,11 @@
 	RETURN_TYPE(/datum/map_level_persistence)
 	if(isnum(level))
 		level = SSmapping.ordered_levels[level]
+	if(!level.persistence_allowed)
+		return null
 	if(isnull(level.persistence))
 		level.persistence = new
-		level.persistence.level_id = level.id
+		level.persistence.level_id = level_persistence_id || level.id
 		level.persistence.load_or_new()
 	return level.persistence
 

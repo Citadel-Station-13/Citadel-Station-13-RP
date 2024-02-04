@@ -72,6 +72,11 @@
 	//* Persistence *//
 	/// loaded persistence metadata, if any
 	var/datum/map_level_persistence/persistence
+	/// allow persistence?
+	var/persistence_allowed = TRUE
+	/// override level id for persistence so two levels are considered the same
+	/// two levels should **never** be loaded at the same time with the same persistence ID!
+	var/persistence_id
 
 	//* Tracking *//
 	var/turfs_rebuild_count = 0

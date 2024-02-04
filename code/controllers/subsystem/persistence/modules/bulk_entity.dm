@@ -8,6 +8,7 @@
  */
 /datum/controller/subsystem/persistence
 
+
 #warn impl all
 
 /**
@@ -23,6 +24,11 @@
 	#warn impl
 
 /datum/bulk_entity_persistence
+	abstract_type = /datum/bulk_entity_persistence
+	/// id - must be unique
+	var/id
+	/// if sql data doesn't match revision, it's tossed out
+	var/revision = 1
 
 /datum/bulk_entity_persistence/proc/gather_all()
 
@@ -36,4 +42,4 @@
 	var/level_id
 	var/amount
 	var/list/data
-
+	var/generation
