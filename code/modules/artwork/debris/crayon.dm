@@ -9,7 +9,10 @@
 	icon = 'icons/modules/artwork/debris/crayon_paint_32x32.dmi'
 	icon_state = "largebrush"
 
-/obj/effect/debris/cleanable/crayon/Initialize(mapload, datum/crayon_decal_meta/meta, color, state)
+	// turn angle, clockwise of north
+	var/turn_angle = 0
+
+/obj/effect/debris/cleanable/crayon/Initialize(mapload, datum/crayon_decal_meta/meta, color, state, angle)
 	. = ..()
 
 	if(isnull(meta))
@@ -20,8 +23,17 @@
 	color = color
 	icon_state = state
 
+	// init turn
+	if(angle)
+		turn_angle = angle
+		var/matrix/turning = matrix()
+		turning.Turn(turn_angle)
+		transform = turning
+
 	// todo: maybe just log this instead of doing this bullsiht?
 	add_hiddenprint(usr)
+
+#warn below
 
 /obj/effect/debris/cleanable/crayon/chalk
 	name = "arcane rune"
