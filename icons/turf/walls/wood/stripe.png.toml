@@ -1,2 +1,2 @@
-template = "bitmask/cardinal_32x32"
-output_name = "wall"
+output_name = "stripe"
+template = "bitmask/slanted_32x32.toml"

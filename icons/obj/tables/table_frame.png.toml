@@ -1,0 +1,2 @@
+output_name = "frame"
+template = "bitmask/diagonal_32x32"

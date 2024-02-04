@@ -1,11 +1,8 @@
-
-// todo: put everything into their own files
-
 // Material definition and procs follow.
 /datum/material
 	abstract_type = /datum/material
 
-	//* Core
+	//# Core
 
 	/**
 	 * ID.
@@ -22,7 +19,7 @@
 	var/sheet_plural_name = "sheets"
 	var/is_fusion_fuel
 
-	//! Shards/tables/structures
+	//# Shards/tables/structures
 	/// Path of debris object.
 	var/shard_type = SHARD_SHRAPNEL
 	/// Related to above.
@@ -34,7 +31,7 @@
 	/// Fancy string for barricades/tables/objects exploding.
 	var/destruction_desc = "breaks apart"
 
-	//! Icons
+	//# Icons
 	/// Colour applied to products of this material.
 	var/icon_colour
 	/// Wall and table base icon tag. See header.
@@ -55,15 +52,15 @@
 	/// Will stacks made from this material pass their colors onto objects?
 	var/pass_stack_colors = FALSE
 
-	//* Armor
+	//# Armor
 	/// caching of armor. text2num(significance)_[mob_armor? 1 : 0] = armor datum instance
 	var/tmp/list/armor_cache = list()
 
-	//* Attacks
+	//# Attacks
 	/// melee stats cache. text2num(mode)_text2num(significance) = list(stats)
 	var/tmp/list/melee_cache = list()
 
-	//* Attributes
+	//# Attributes
 	/// relative HP multiplier for something made out of this
 	var/relative_integrity = 1
 
@@ -128,19 +125,19 @@
 	/// * impacts acid armor
 	var/relative_permeability = 1
 
-	//* Flags
+	//# Flags
 	/// material flags
 	var/material_flags = NONE
 	/// material constraint flags - what we are considered
 	var/material_constraints = NONE
 
-	//* Traits
+	//# Traits
 	/// Material traits - set to list of paths to instance on New / register; associate them to their initial data.
 	var/list/material_traits
 	/// Material trait sensitivity hooks - total
 	var/material_trait_flags
 
-	//! Attributes - legacy
+	//# Attributes - legacy
 	/// Delay in ticks when cutting through this wall.
 	var/cut_delay = 0
 	/// K, point at which the material catches on fire.
@@ -165,7 +162,7 @@
 	var/wire_product
 	var/list/window_options = list()
 
-	//! Damage values.
+	//# Damage values.
 
 	/// Noise when someone is faceplanted onto a table made of this material.
 	var/tableslam_noise = 'sound/weapons/tablehit1.ogg'
@@ -176,21 +173,80 @@
 	/// Wallrot crumble message.
 	var/rotting_touch_message = "crumbles under your touch"
 
-	//* Economy
+	//# Economy
 	/// Raw worth per cm3
 	var/worth = 0
 	/// economic category for this
 	var/economic_category_material = ECONOMIC_CATEGORY_MATERIAL_DEFAULT
 
-	//* Sounds
+	//# Sounds
 	/// melee sound on blunt force - getsfx compatible
 	var/sound_melee_brute = 'sound/weapons/smash.ogg'
 	/// melee sound on burn damage - getsfx compatible
 	var/sound_melee_burn = 'sound/items/Welder.ogg'
 
-	//* TGUI
+	//# TGUI
 	/// tgui icon key in icons/interface/materials.dm
 	var/tgui_icon_key = "unknown"
+
+/**
+ * Handles initializing the material.
+ *
+ * Arugments:
+ * - _id: The ID the material should use. Overrides the existing ID.
+ */
+/datum/material/proc/Initialize(_id, ...)
+	if(_id)
+		id = _id
+	else if(isnull(id))
+		id = type
+
+	if(!display_name)
+		display_name = name
+	if(!use_name)
+		use_name = display_name
+	if(!shard_icon)
+		shard_icon = shard_type
+
+	if(istext(icon_base))
+		stack_trace("icon_reinf [id] has a string for icon_base, this is deprecated and should be a DMI path.")
+	if(istext(icon_reinf))
+		stack_trace("Material [id] has a string for icon_reinf, this is deprecated and should be a DMI path.")
+	if(istext(wall_stripe_icon))
+		stack_trace("Material [id] has a string for wall_stripe_icon, this is deprecated and should be a DMI path.")
+	if(istext(door_icon_base))
+		stack_trace("Material [id] has a string for door_icon_base, this is deprecated and should be a DMI path.")
+	if(istext(table_icon_base))
+		stack_trace("Material [id] has a string for table_icon_base, this is deprecated and should be a DMI path.")
+	if(istext(table_reinf_icon_base))
+		stack_trace("Material [id] has a string for table_reinf_icon_base, this is deprecated and should be a DMI path.")
+
+	init_traits()
+
+	return TRUE
+
+/datum/material/serialize()
+	. = ..()
+	var/list/serialized_traits = list()
+	// use type directly - we don't care about update stability.
+	for(var/datum/material_trait/trait in material_traits)
+		serialized_traits[trait.type] = list(
+			"trait" = trait.serialize(),
+			"data" = material_traits[trait],
+		)
+	.["traits"] = serialized_traits
+
+/datum/material/deserialize(list/data)
+	. = ..()
+	var/list/deserializing_traits = .["traits"]
+	for(var/path in deserializing_traits)
+		var/resolved = text2path(path)
+		if(!ispath(resolved, /datum/material_trait))
+			continue
+		var/list/data_list = deserializing_traits[path]
+		var/datum/material_trait/trait = new resolved
+		trait.deserialize(data_list["trait"])
+		material_traits[trait] = data_list["data"]
 
 /// Placeholders for light tiles and rglass.
 /datum/material/proc/build_rod_product(mob/user, obj/item/stack/used_stack, obj/item/stack/target_stack)
@@ -219,52 +275,6 @@
 	to_chat(user, SPAN_NOTICE("You attach wire to the [name]."))
 	var/obj/item/product = new wire_product(get_turf(user))
 	user.put_in_hands(product)
-
-/**
- * Handles initializing the material.
- *
- * Arugments:
- * - _id: The ID the material should use. Overrides the existing ID.
- */
-/datum/material/proc/Initialize(_id, ...)
-	if(_id)
-		id = _id
-	else if(isnull(id))
-		id = type
-
-	if(!display_name)
-		display_name = name
-	if(!use_name)
-		use_name = display_name
-	if(!shard_icon)
-		shard_icon = shard_type
-
-	init_traits()
-
-	return TRUE
-
-/datum/material/serialize()
-	. = ..()
-	var/list/serialized_traits = list()
-	// use type directly - we don't care about update stability.
-	for(var/datum/material_trait/trait in material_traits)
-		serialized_traits[trait.type] = list(
-			"trait" = trait.serialize(),
-			"data" = material_traits[trait],
-		)
-	.["traits"] = serialized_traits
-
-/datum/material/deserialize(list/data)
-	. = ..()
-	var/list/deserializing_traits = .["traits"]
-	for(var/path in deserializing_traits)
-		var/resolved = text2path(path)
-		if(!ispath(resolved, /datum/material_trait))
-			continue
-		var/list/data_list = deserializing_traits[path]
-		var/datum/material_trait/trait = new resolved
-		trait.deserialize(data_list["trait"])
-		material_traits[trait] = data_list["data"]
 
 /// This is a placeholder for proper integration of windows/windoors into the system.
 /datum/material/proc/build_windows(mob/living/user, obj/item/stack/used_stack)
@@ -300,7 +310,7 @@
 /datum/material/proc/wall_touch_special(turf/simulated/wall/W, mob/living/L)
 	return
 
-//* traits & trait hooks
+//# traits & trait hooks
 
 /datum/material/proc/init_traits()
 	for(var/i in 1 to length(material_traits))
