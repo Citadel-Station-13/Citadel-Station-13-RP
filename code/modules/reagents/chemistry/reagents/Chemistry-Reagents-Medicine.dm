@@ -1284,7 +1284,7 @@
 	. = ..()
 
 	var/obj/O = target
-	O.water_act(reac_volume / 5)
+	O.water_act(volume / 5)
 
 /datum/reagent/firefighting_foam/touch_expose_mob(mob/target, volume, temperature, list/data, organ_tag)
 	. = ..()
