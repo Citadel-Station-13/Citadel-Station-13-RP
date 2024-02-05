@@ -125,11 +125,11 @@
 /obj/item/storage/fancy/crayons/update_icon()
 	cut_overlays()
 	for(var/obj/item/pen/crayon/crayon in contents)
-		add_overlay(crayon.colourName)
+		add_overlay(crayon.crayon_color_name)
 
 /obj/item/storage/fancy/crayons/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/pen/crayon))
-		switch(W:colourName)
+		switch(W:crayon_color_name)
 			if("mime")
 				to_chat(user, "This crayon is too sad to be contained in this box.")
 				return
@@ -165,11 +165,11 @@
 /obj/item/storage/fancy/markers/update_icon()
 	cut_overlays()
 	for(var/obj/item/pen/crayon/marker/marker in contents)
-		add_overlay("m[marker.colourName]")
+		add_overlay("m[marker.crayon_color_name]")
 
 /obj/item/storage/fancy/markers/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/pen/crayon/marker))
-		switch(W:colourName)
+		switch(W:crayon_color_name)
 			if("mime")
 				to_chat(user, "This marker is too depressing to be contained in this box.")
 				return
@@ -202,7 +202,7 @@
 /obj/item/storage/fancy/chalk/update_icon()
 	cut_overlays()
 	for(var/obj/item/pen/crayon/chalk/chalk in contents)
-		add_overlay("c[chalk.colourName]")
+		add_overlay("c[chalk.crayon_color_name]")
 
 /*
  * Cracker Packet

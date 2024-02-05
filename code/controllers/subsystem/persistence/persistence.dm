@@ -12,7 +12,6 @@ SUBSYSTEM_DEF(persistence)
 
 /datum/controller/subsystem/persistence/Initialize()
 	#warn stuff
-	SetMapDirectory()
 	InitPersistence()
 	LoadPersistence()
 	return ..()
@@ -24,7 +23,6 @@ SUBSYSTEM_DEF(persistence)
 
 /datum/controller/subsystem/persistence/Recover()
 	. = ..()
-	SetMapDirectory()
 	InitPersistence()
 
 /**

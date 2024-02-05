@@ -19,6 +19,11 @@
 /area/vars_to_save()
 	return list("name")
 
+/datum/proc/serialize_vr()
+	return list("type" = type)
+
+/datum/proc/deserialize_vr(list/data)
+
 /atom/serialize_vr()
 	var/list/data = ..()
 	for(var/thing in vars_to_save())
@@ -32,7 +37,6 @@
 		if(thing in data)
 			vars[thing] = data[thing]
 	..()
-
 
 /*
 Whoops, forgot to put documentation here.
