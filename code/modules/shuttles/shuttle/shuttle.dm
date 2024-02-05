@@ -43,7 +43,7 @@
 	var/datum/event_args/shuttle/movement/currently_moving
 	/// the port we're using
 	var/obj/shuttle_port/docked_via_port
-	
+
 	//* Movement - Ephemeral / In-Move
 	/// current direction of motion, used to calculate things like visuals and roadkill
 	var/translating_physics_direction
@@ -97,11 +97,11 @@
 //* Initialization *//
 
 /**
- * Called after all areas are made and all turfs are there, 
+ * Called after all areas are made and all turfs are there,
  * but before atoms initialization.
- * 
+ *
  * Used to auto-register everything
- * 
+ *
  * **Extremely dangerous proc. Don't call it unless you know what you're doing.**
  */
 /datum/shuttle/proc/before_bounds_init(datum/turf_reservation/from_reservation, datum/shuttle_template/from_template)
@@ -158,7 +158,7 @@
 
 /**
  * Called after the bounds have initialized their atoms/areas
- * 
+ *
  * **Extremely dangerous proc. Don't call / override it unless you know what you're doing.**
  */
 /datum/shuttle/proc/after_bounds_init(datum/turf_reservation/from_reservation, datum/shuttle_template/from_template)
@@ -197,8 +197,8 @@
 //* Docking - Handling *//
 
 /**
- * handles when an overlap occurs 
- * 
+ * handles when an overlap occurs
+ *
  * overlap always occurs on any turfs in the way
  * overlap always occurs on any movables that are non abstract and considered a game object
  */
@@ -209,11 +209,11 @@
 
 /**
  * immediate shuttle move to a turf
- * 
+ *
  * all translations must use this.
- * 
+ *
  * optionally, align a port with that turf instead of aligning our anchor to that turf
- * 
+ *
  * aligned = the port / anchor (if no port specified) is on the turf, and faces the same way,
  * respecting all necessary offsets.
  * ports should generally be centered.
@@ -222,7 +222,7 @@
 	// todo: more physics directions
 	translating_physics_direction = direction
 	// set up translating process caches
-	var/overall_width = anchor.get_width(directio)
+	var/overall_width = anchor.overall_width(direction)
 	translating_pepsi_man_lookup_cache = new /list(overall_width)
 	translating_garbage_disposal_lookup_cache = new /list(overall_width)
 	translating_needs_to_be_thrown_away = list()
@@ -244,7 +244,7 @@
 		direction,
 		NONE,
 		/turf/baseturf_skipover/shuttle,
-		docked_underneath_area,
+		docked.base_area_instance(),
 		null,
 		null,
 		CALLBACK(src, PROC_REF(overlap_handler)),
