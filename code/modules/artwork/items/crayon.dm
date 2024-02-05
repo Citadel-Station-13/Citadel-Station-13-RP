@@ -37,6 +37,39 @@
 	name = "[crayon_color_name] [initial(name)]"
 	return ..()
 
+/obj/item/pen/crayon/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "Crayon")
+		ui.open()
+
+/obj/item/pen/crayon/ui_static_data(mob/user, datum/tgui/ui)
+	. = ..()
+
+/obj/item/pen/crayon/ui_data(mob/user, datum/tgui/ui)
+	. = ..()
+
+/obj/item/pen/crayon/ui_assets(mob/user)
+	. = ..()
+	. += get_asset_datum(/datum/asset/spritesheet/crayons)
+
+/obj/item/pen/crayon/ui_act(action, list/params, datum/tgui/ui)
+	. = ..()
+
+/obj/item/pen/crayon/proc/make_graffiti(atom/target, datum/crayon_decal_meta/datapack, state)
+
+/obj/item/pen/crayon/proc/color_entity(atom/target)
+
+/obj/item/pen/crayon/proc/attempt_make_graffiti(atom/target, datum/event_args/actor/actor, datum/crayon_decal_meta/datapack, state)
+
+/obj/item/pen/crayon/proc/attempt_color_entity(atom/target, datum/event_args/actor/actor)
+
+/obj/item/pen/crayon/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
+		return ..()
+	#warn impl
+	return ..()
+
 
 /obj/item/pen/crayon/afterattack(atom/target, mob/user as mob, proximity)
 	if(!proximity) return

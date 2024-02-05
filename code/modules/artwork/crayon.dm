@@ -42,6 +42,7 @@ GLOBAL_LIST_EMPTY(crayon_data_lookup_by_string_icon_path)
 		data_holder.width = width
 		data_holder.height = height
 		data_holder.icon_ref = icon
+		data_holder.name = name
 
 		created += data_holder
 		lookup["[icon_path]"] = data_holder
@@ -50,6 +51,8 @@ GLOBAL_LIST_EMPTY(crayon_data_lookup_by_string_icon_path)
 	GLOB.crayon_data_lookup_by_string_icon_path = lookup
 
 /datum/crayon_decal_meta
+	/// name
+	var/name
 	/// valid states
 	var/list/states
 	/// our width
