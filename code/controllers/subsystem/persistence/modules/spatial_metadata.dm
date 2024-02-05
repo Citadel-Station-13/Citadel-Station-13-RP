@@ -16,7 +16,7 @@
 		return null
 	if(isnull(level.persistence))
 		level.persistence = new
-		level.persistence.level_id = level_persistence_id || level.id
+		level.persistence.level_id = level.persistence_id || level.id
 		level.persistence.load_or_new()
 	return level.persistence
 

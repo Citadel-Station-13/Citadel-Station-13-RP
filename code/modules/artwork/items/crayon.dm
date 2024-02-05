@@ -26,6 +26,11 @@
 	/// the reagents in us
 	var/crayon_reagent_amount = 6
 
+	/// currently picked datapack string path
+	var/current_graffiti_icon_string_path
+	/// currently picked datapack icon state
+	var/current_graffiti_icon_state
+
 /obj/item/pen/crayon/Initialize(mapload)
 	. = ..()
 	if(!isnull(crayon_pickable_colors))
@@ -45,6 +50,10 @@
 
 /obj/item/pen/crayon/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
+	var/list/datapacks = list()
+	for(var/datum/crayon_decal_meta/datapack in GLOB.crayon_data)
+		datapacks[++datapacks.len] = datapack.tgui_crayon_data()
+	.["datapacks"] = datapacks
 
 /obj/item/pen/crayon/ui_data(mob/user, datum/tgui/ui)
 	. = ..()

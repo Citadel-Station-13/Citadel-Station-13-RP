@@ -1,6 +1,8 @@
 import { useBackend } from "../../backend";
 import { Window } from "../../layouts";
 
+const CRAYON_SPRITESHEET_NAME = "crayon-graffiti";
+
 interface CrayonDatapack {
   name: string;
   states: string[];
@@ -10,6 +12,10 @@ interface CrayonDatapack {
 
 interface CrayonUIData {
   datapacks: CrayonDatapack[];
+}
+
+const sizeKeyForCrayonDatapack = (pack: CrayonDatapack) => {
+  return `${pack.width}x${pack.height}`;
 }
 
 export const Crayon = (props, context) => {

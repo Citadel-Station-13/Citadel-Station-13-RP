@@ -63,5 +63,10 @@ GLOBAL_LIST_EMPTY(crayon_data_lookup_by_string_icon_path)
 	var/icon/icon_ref
 
 /datum/crayon_decal_meta/proc/tgui_crayon_data()
-	#warn impl
+	return list(
+		"name" = name,
+		"states" = states,
+		"width" = width,
+		"height" = height,
+	)
 
