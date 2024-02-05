@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 /**
  * base type of crayon decals
  *
@@ -58,9 +61,6 @@
 		turning.Turn(turn_angle)
 		transform = turning
 	color = data["color"]
-
-
-#warn below
 
 /obj/effect/debris/cleanable/crayon/chalk
 	name = "chalk drawing"
