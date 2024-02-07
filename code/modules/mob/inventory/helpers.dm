@@ -49,11 +49,11 @@
 /mob/proc/drop_slots_to_ground(list/slots, flags, datum/callback/cb)
 	if(islist(slots))
 		for(var/slot in slots)
-			var/obj/item/I = item_by_slot(slot)
+			var/obj/item/I = item_by_slot_id(slot)
 			. = drop_item_to_ground(I, flags)
 			cb?.Invoke(I, .)
 	else
-		var/obj/item/I = item_by_slot(slots)
+		var/obj/item/I = item_by_slot_id(slots)
 		. = drop_item_to_ground(I, flags)
 		cb?.Invoke(I, .)
 
@@ -63,11 +63,11 @@
 	// de-equipped from the jumpsuit
 	if(islist(slots))
 		for(var/slot in slots)
-			var/obj/item/I = item_by_slot(slot)
+			var/obj/item/I = item_by_slot_id(slot)
 			. = transfer_item_to_loc(I, A, flags)
 			cb?.Invoke(I, .)
 	else
-		var/obj/item/I = item_by_slot(slots)
+		var/obj/item/I = item_by_slot_id(slots)
 		. = transfer_item_to_loc(I, A, flags)
 		cb?.Invoke(I, .)
 
@@ -76,11 +76,11 @@
 	var/obj/item/I
 	if(islist(slots))
 		for(var/slot in slots)
-			I = item_by_slot(slot)
+			I = item_by_slot_id(slot)
 			if(I)
 				. += I
 	else
-		I = item_by_slot(slots)
+		I = item_by_slot_id(slots)
 		if(I)
 			. += I
 
@@ -106,7 +106,7 @@
 	if(!is_holding(inserting))
 		return
 	slot_like = resolve_inventory_slot_meta(slot_like)
-	var/obj/item/equipped = item_by_slot(slot_like.id)
+	var/obj/item/equipped = item_by_slot_id(slot_like.id)
 	if(isnull(equipped))
 		if(!silent)
 			to_chat(initiator, SPAN_WARNING("There is nothing worn [slot_like.display_preposition] [initiator == src? "your" : "their"] [slot_like.display_name]."))
@@ -124,7 +124,7 @@
  */
 /mob/proc/attempt_grab_item_out_of_storage_in_slot(datum/inventory_slot_meta/slot_like, silent, mob/initiator = src)
 	slot_like = resolve_inventory_slot_meta(slot_like)
-	var/obj/item/equipped = item_by_slot(slot_like.id)
+	var/obj/item/equipped = item_by_slot_id(slot_like.id)
 	if(isnull(equipped))
 		if(!silent)
 			to_chat(initiator, SPAN_WARNING("There is nothing worn [slot_like.display_preposition] [initiator == src? "your" : "their"] [slot_like.display_name]."))
@@ -155,9 +155,30 @@
  * Automatically either put in hand object into a storage in a given slot, or
  * draw an item from that storage into hand.
  */
-/mob/proc/auto_held_insert_or_draw_for_storage_in_slot(datum/inventory_slot_meta/slot_like, silent, mob/initiator = src)
+/mob/proc/auto_held_insert_or_draw_via_slot(datum/inventory_slot_meta/slot_like, silent, mob/initiator = src)
+	slot_like = resolve_inventory_slot_meta(slot_like)
 	var/obj/item/holding = get_active_held_item()
-	if(isnull(holding))
-		return attempt_grab_item_out_of_storage_in_slot(slot_like, silent, initiator)
+	var/obj/item/in_slot = item_by_slot_id(slot_like.id)
+	if(isnull(in_slot) || isnull(in_slot.obj_storage))
+		if(isnull(holding))
+			if(isnull(in_slot))
+				to_chat(initiator, SPAN_WARNING("[initiator == src? "You" : "They"] have nothing held in [slot_like.display_name]!"))
+				return FALSE
+			if(put_in_active_hand(in_slot))
+				to_chat(initiator, SPAN_NOTICE("You draw [holding] from your [slot_like.display_name]."))
+				return TRUE
+			else
+				to_chat(initiator, SPAN_WARNING("You fail to draw [holding] from your [slot_like.display_name]!"))
+				return FALSE
+		else
+			if(equip_to_slot_if_possible(holding, slot_like, user = initiator))
+				to_chat(initiator, SPAN_NOTICE("You tuck [holding] away [slot_like.display_preposition] your [slot_like.display_name]."))
+				return TRUE
+			else
+				to_chat(initiator, SPAN_WARNING("[holding] won't go [slot_like.display_preposition] your [slot_like.display_name]!"))
+				return FALSE
 	else
-		return attempt_put_held_item_into_storage_in_slot(holding, slot_like, silent, initiator)
+		if(isnull(holding))
+			return attempt_grab_item_out_of_storage_in_slot(slot_like, silent, initiator)
+		else
+			return attempt_put_held_item_into_storage_in_slot(holding, slot_like, silent, initiator)

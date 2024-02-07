@@ -876,7 +876,7 @@
 			break
 		stoplag(1)
 
-	refresh()
+	ui_queue_refresh()
 
 /**
  * Actor is mandatory.
@@ -917,7 +917,7 @@
 				target = src,
 			)
 
-	refresh()
+	ui_queue_refresh()
 
 /**
  * handles mass storage transfers

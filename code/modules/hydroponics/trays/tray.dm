@@ -529,7 +529,7 @@
 		var/obj/item/storage/bag/plants/S = O
 		for (var/obj/item/reagent_containers/food/snacks/grown/G in locate(user.x,user.y,user.z))
 			S.obj_storage.try_insert(G, new /datum/event_args/actor(user), TRUE, TRUE, TRUE)
-		S.obj_storage.refresh()
+		S.obj_storage.ui_queue_refresh()
 
 	else if ( istype(O, /obj/item/plantspray) )
 		var/obj/item/plantspray/spray = O

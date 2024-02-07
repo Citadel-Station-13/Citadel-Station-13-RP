@@ -133,9 +133,9 @@
 	if(!istype(M))
 		return 0 //not equipped
 
-	if((slot_flags & SLOT_BACK) && M.item_by_slot(SLOT_ID_BACK) == src)
+	if((slot_flags & SLOT_BACK) && M.item_by_slot_id(SLOT_ID_BACK) == src)
 		return 1
-	if((slot_flags & SLOT_BELT) && M.item_by_slot(SLOT_ID_BELT) == src)
+	if((slot_flags & SLOT_BELT) && M.item_by_slot_id(SLOT_ID_BELT) == src)
 		return 1
 
 	return 0

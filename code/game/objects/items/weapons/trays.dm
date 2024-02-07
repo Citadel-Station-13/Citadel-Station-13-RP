@@ -77,7 +77,7 @@
 
 	var/protected = 0
 	for(var/slot in list(SLOT_ID_HEAD, SLOT_ID_MASK, SLOT_ID_GLASSES))
-		var/obj/item/protection = victim.item_by_slot(slot)
+		var/obj/item/protection = victim.item_by_slot_id(slot)
 		if(istype(protection) && (protection.body_cover_flags & FACE))
 			protected = 1
 			break

@@ -444,7 +444,7 @@
 						B.loc = null
 						to_chat(user, "<span class='notice'>[A.name] replaced with [B.name].</span>")
 						break
-		R.obj_storage.refresh()
+		R.obj_storage.ui_queue_refresh()
 		update_appearance()
 		RefreshParts()
 	return 1

@@ -592,7 +592,7 @@ var/list/global/organ_rel_size = list(
 	var/held = is_holding(item)
 
 	if(!slot)
-		slot = slot_by_item(item)
+		slot = slot_id_by_item(item)
 
 	if(!istype(hud_used) || !slot || !LAZYLEN(hud_used.slot_info))
 		return

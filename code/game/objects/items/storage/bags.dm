@@ -181,7 +181,7 @@
 		ores += ore
 	obj_storage?.mass_storage_pickup_handler(ores, target)
 	autodump()
-	obj_storage?.refresh()
+	obj_storage?.ui_queue_refresh()
 
 //Ashlander variant!
 /obj/item/storage/bag/ore/ashlander

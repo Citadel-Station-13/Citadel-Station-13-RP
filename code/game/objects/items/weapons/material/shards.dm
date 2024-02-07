@@ -78,7 +78,7 @@
 	if(prob(75))
 		will_break = TRUE
 
-	var/obj/item/gloves = user.item_by_slot(SLOT_ID_GLOVES)
+	var/obj/item/gloves = user.item_by_slot_id(SLOT_ID_GLOVES)
 
 	if(gloves && (gloves.body_cover_flags & HANDS) && istype(gloves, /obj/item/clothing/gloves)) // Not-gloves aren't gloves, and therefore don't protect us
 		protected_hands = TRUE // If we're wearing gloves we can probably handle it just fine

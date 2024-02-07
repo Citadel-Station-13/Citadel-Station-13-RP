@@ -711,7 +711,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	else if(!zoom && user.get_active_held_item() != src && wornslot == FALSE)
 		to_chat(user, "You are too distracted to look through the [devicename], perhaps if it was in your active hand this might work better")
 		cannotzoom = 1
-	else if(!zoom && user.item_by_slot(wornslot) != src && wornslot != FALSE)
+	else if(!zoom && user.item_by_slot_id(wornslot) != src && wornslot != FALSE)
 		to_chat(user, "You need to wear the [devicename] to look through it properly")
 		cannotzoom = 1
 	//We checked above if they are a human and returned already if they weren't.

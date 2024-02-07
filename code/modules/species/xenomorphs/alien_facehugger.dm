@@ -144,7 +144,7 @@ var/const/MAX_ACTIVE_TIME = 400
 		var/mob/living/carbon/target = L
 
 		// i'm sorry for i have sinned ~silicons
-		var/obj/item/snowflake_but_also_what_about_head = target.item_by_slot(SLOT_ID_HEAD)
+		var/obj/item/snowflake_but_also_what_about_head = target.item_by_slot_id(SLOT_ID_HEAD)
 		if(istype(snowflake_but_also_what_about_head, /obj/item/clothing/head/helmet/space))
 			visible_message(SPAN_DANGER("[src] smashes against [target]'s [snowflake_but_also_what_about_head], but bounces off!"))
 			Die()

@@ -859,9 +859,9 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 	if(!istype(M))
 		return 0 //not equipped
 
-	if((slot_flags & SLOT_BACK) && M.item_by_slot(SLOT_ID_BACK) == src)
+	if((slot_flags & SLOT_BACK) && M.item_by_slot_id(SLOT_ID_BACK) == src)
 		return 1
-	if((slot_flags & SLOT_BACK) && M.item_by_slot(SLOT_ID_SUIT_STORAGE) == src)
+	if((slot_flags & SLOT_BACK) && M.item_by_slot_id(SLOT_ID_SUIT_STORAGE) == src)
 		return 1
 
 	return 0
