@@ -2682,6 +2682,7 @@
 #include "code\modules\food\food_2\cookers\fryer.dm"
 #include "code\modules\food\food_2\cookers\oven.dm"
 #include "code\modules\food\food_2\ingredients\dough_bread.dm"
+#include "code\modules\food\food_2\ingredients\meat.dm"
 #include "code\modules\food\glass\bottle.dm"
 #include "code\modules\food\glass\bottle_vr.dm"
 #include "code\modules\food\glass\bottle\robot.dm"
