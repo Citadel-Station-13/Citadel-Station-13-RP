@@ -35,8 +35,8 @@
 //* Storage UI - we shouldn't hardcode this but I don't care. *//
 //  todo: we should care
 
-#define STORAGE_UI_START_TILE_X 4
-#define STORAGE_UI_START_TILE_Y 2
+#define STORAGE_UI_START_TILE_X 3
+#define STORAGE_UI_START_TILE_Y 1
 #define STORAGE_UI_START_PIXEL_X 16
 #define STORAGE_UI_START_PIXEL_Y 16
 #define STORAGE_UI_TILES_FOR_SCREEN_VIEW_X(X) max(4, X - 8)

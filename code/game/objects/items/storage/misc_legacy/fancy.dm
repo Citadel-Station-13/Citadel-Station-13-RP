@@ -22,6 +22,10 @@
 	drop_sound = 'sound/items/drop/cardboardbox.ogg'
 	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
 
+/obj/item/storage/fancy/initialize_storage()
+	. = ..()
+	obj_storage.update_icon_on_item_change = TRUE
+
 /obj/item/storage/fancy/update_icon_state()
 	. = ..()
 	icon_state = "[icon_type]box[contents.len]"

@@ -1228,10 +1228,10 @@
 	var/current_row = 1
 	var/current_column = 1
 	// render boxes
-	boxes.screen_loc = "[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X],[STORAGE_UI_START_TILE_Y]:[STORAGE_UI_START_PIXEL_Y] to \
-		[STORAGE_UI_START_TILE_X + rendering_width - 1]:[STORAGE_UI_START_PIXEL_X],[STORAGE_UI_START_TILE_Y + rows_needed - 1]:[STORAGE_UI_START_PIXEL_Y]"
+	boxes.screen_loc = "LEFT+[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X],BOTTOM+[STORAGE_UI_START_TILE_Y]:[STORAGE_UI_START_PIXEL_Y] to \
+		LEFT+[STORAGE_UI_START_TILE_X + rendering_width - 1]:[STORAGE_UI_START_PIXEL_X],BOTTOM+[STORAGE_UI_START_TILE_Y + rows_needed - 1]:[STORAGE_UI_START_PIXEL_Y]"
 	// render closer
-	closer.screen_loc = "[STORAGE_UI_START_TILE_X + rendering_width]:[STORAGE_UI_START_PIXEL_X],[STORAGE_UI_START_TILE_Y]:[STORAGE_UI_START_PIXEL_Y]"
+	closer.screen_loc = "LEFT+[STORAGE_UI_START_TILE_X + rendering_width]:[STORAGE_UI_START_PIXEL_X],BOTTOM+[STORAGE_UI_START_TILE_Y]:[STORAGE_UI_START_PIXEL_Y]"
 	// render items
 	if(islist(numerical_rendered))
 		for(var/datum/storage_numerical_display/display as anything in numerical_rendered)
@@ -1240,8 +1240,8 @@
 			// render amount
 			display.rendered_object.maptext = MAPTEXT("[display.amount]")
 			// position
-			renderer.screen_loc = "[STORAGE_UI_START_TILE_X + current_column - 1]:[STORAGE_UI_START_PIXEL_X],\
-				[STORAGE_UI_START_TILE_Y + current_row - 1]:[STORAGE_UI_START_PIXEL_Y]"
+			renderer.screen_loc = "LEFT+[STORAGE_UI_START_TILE_X + current_column - 1]:[STORAGE_UI_START_PIXEL_X],\
+				BOTTOM+[STORAGE_UI_START_TILE_Y + current_row - 1]:[STORAGE_UI_START_PIXEL_Y]"
 			// advance
 			++current_column
 			if(current_column > rendering_width)
@@ -1254,8 +1254,8 @@
 			var/atom/movable/screen/storage/item/slot/renderer = new(null, item)
 			. += renderer
 			// position
-			renderer.screen_loc = "[STORAGE_UI_START_TILE_X + current_column - 1]:[STORAGE_UI_START_PIXEL_X],\
-				[STORAGE_UI_START_TILE_Y + current_row - 1]:[STORAGE_UI_START_PIXEL_Y]"
+			renderer.screen_loc = "LEFT+[STORAGE_UI_START_TILE_X + current_column - 1]:[STORAGE_UI_START_PIXEL_X],\
+				BOTTOM+[STORAGE_UI_START_TILE_Y + current_row - 1]:[STORAGE_UI_START_PIXEL_Y]"
 			// advance
 			++current_column
 			if(current_column > rendering_width)
@@ -1331,8 +1331,8 @@
 		// emit to renderer
 		renderer.set_pixel_width(used_pixels)
 		// set screen loc
-		renderer.screen_loc = "[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X + (iteration_used_width + iteration_used_padding + VOLUMETRIC_STORAGE_EDGE_PADDING) + (used_pixels - VOLUMETRIC_STORAGE_BOX_ICON_SIZE) * 0.5],\
-			[STORAGE_UI_START_TILE_Y + current_row - 1]:[STORAGE_UI_START_PIXEL_Y]"
+		renderer.screen_loc = "LEFT+[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X + (iteration_used_width + iteration_used_padding + VOLUMETRIC_STORAGE_EDGE_PADDING) + (used_pixels - VOLUMETRIC_STORAGE_BOX_ICON_SIZE) * 0.5],\
+			BOTTOM+[STORAGE_UI_START_TILE_Y + current_row - 1]:[STORAGE_UI_START_PIXEL_Y]"
 		// add to emitted screen list
 		. += renderer
 		// add to iteration tracking
@@ -1353,31 +1353,31 @@
 	// render left
 	var/atom/movable/screen/storage/panel/volumetric/left/p_left = new
 	. += p_left
-	p_left.screen_loc = "[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X - VOLUMETRIC_STORAGE_BOX_BORDER_SIZE],\
-		[STORAGE_UI_START_TILE_Y]:[STORAGE_UI_START_PIXEL_Y] to \
-		[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X - VOLUMETRIC_STORAGE_BOX_BORDER_SIZE],\
-		[STORAGE_UI_START_TILE_Y + current_row - 1]:[STORAGE_UI_START_PIXEL_Y]"
+	p_left.screen_loc = "LEFT+[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X - VOLUMETRIC_STORAGE_BOX_BORDER_SIZE],\
+		BOTTOM+[STORAGE_UI_START_TILE_Y]:[STORAGE_UI_START_PIXEL_Y] to \
+		LEFT+[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X - VOLUMETRIC_STORAGE_BOX_BORDER_SIZE],\
+		BOTTOM+[STORAGE_UI_START_TILE_Y + current_row - 1]:[STORAGE_UI_START_PIXEL_Y]"
 	// render middle
 	var/atom/movable/screen/storage/panel/volumetric/middle/p_box = new
 	. += p_box
 	p_box.set_pixel_width(middle_width)
-	p_box.screen_loc = "[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X + middle_shift],\
-		[STORAGE_UI_START_TILE_Y]:[STORAGE_UI_START_PIXEL_Y] to \
-		[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X + middle_shift],\
-		[STORAGE_UI_START_TILE_Y + current_row - 1]:[STORAGE_UI_START_PIXEL_Y]"
+	p_box.screen_loc = "LEFT+[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X + middle_shift],\
+		BOTTOM+[STORAGE_UI_START_TILE_Y]:[STORAGE_UI_START_PIXEL_Y] to \
+		LEFT+[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X + middle_shift],\
+		BOTTOM+[STORAGE_UI_START_TILE_Y + current_row - 1]:[STORAGE_UI_START_PIXEL_Y]"
 	// render closer on bottom
 	var/atom/movable/screen/storage/closer/closer = new
 	. += closer
-	closer.screen_loc = "[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X + middle_width],\
-		[STORAGE_UI_START_TILE_Y]:[STORAGE_UI_START_PIXEL_Y]"
+	closer.screen_loc = "LEFT+[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X + middle_width],\
+		BOTTOM+[STORAGE_UI_START_TILE_Y]:[STORAGE_UI_START_PIXEL_Y]"
 	// render right sides above closer
 	if(current_row > 1)
 		var/atom/movable/screen/storage/panel/volumetric/right/p_right = new
 		. += p_right
-		p_right.screen_loc = "[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X + middle_width - WORLD_ICON_SIZE + VOLUMETRIC_STORAGE_BOX_BORDER_SIZE],\
-			[STORAGE_UI_START_TILE_Y + 1]:[STORAGE_UI_START_PIXEL_Y] to \
-			[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X + middle_width - WORLD_ICON_SIZE + VOLUMETRIC_STORAGE_BOX_BORDER_SIZE],\
-			[STORAGE_UI_START_TILE_Y + current_row - 1]:[STORAGE_UI_START_PIXEL_Y]"
+		p_right.screen_loc = "LEFT+[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X + middle_width - WORLD_ICON_SIZE + VOLUMETRIC_STORAGE_BOX_BORDER_SIZE],\
+			BOTTOM+[STORAGE_UI_START_TILE_Y + 1]:[STORAGE_UI_START_PIXEL_Y] to \
+			LEFT+[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X + middle_width - WORLD_ICON_SIZE + VOLUMETRIC_STORAGE_BOX_BORDER_SIZE],\
+			BOTTOM+[STORAGE_UI_START_TILE_Y + current_row - 1]:[STORAGE_UI_START_PIXEL_Y]"
 
 /**
  * Stack storage
