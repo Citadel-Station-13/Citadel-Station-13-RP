@@ -368,7 +368,7 @@
 /datum/object_system/storage/proc/on_item_exited(obj/item/exiting)
 	if(!(exiting.item_flags & ITEM_IN_STORAGE))
 		return
-	physically_remove_item(exiting, no_move = TRUE)
+	physically_remove_item(exiting, no_move = TRUE, from_hook = TRUE)
 	ui_queue_refresh()
 
 /**
@@ -377,7 +377,7 @@
 /datum/object_system/storage/proc/on_item_entered(obj/item/entering)
 	if(entering.item_flags & ITEM_IN_STORAGE)
 		return
-	physically_insert_item(entering, no_move = TRUE)
+	physically_insert_item(entering, no_move = TRUE, from_hook = TRUE)
 	ui_queue_refresh()
 
 /datum/object_system/storage/proc/on_contents_weight_class_change(obj/item/item, old_weight_class, new_weight_class)
@@ -523,7 +523,7 @@
  *
  * we can assume this proc will do potentially literally anything with the item, so..
  */
-/datum/object_system/storage/proc/physically_insert_item(obj/item/inserting, no_move)
+/datum/object_system/storage/proc/physically_insert_item(obj/item/inserting, no_move, from_hook)
 	inserting.item_flags |= ITEM_IN_STORAGE
 	if(!no_move)
 		inserting.forceMove(real_contents_loc())
@@ -593,7 +593,7 @@
  *
  * we can assume this proc will do potentially literally anything with the item, so..
  */
-/datum/object_system/storage/proc/physically_remove_item(obj/item/removing, atom/to_where, no_move)
+/datum/object_system/storage/proc/physically_remove_item(obj/item/removing, atom/to_where, no_move, from_hook)
 	removing.item_flags &= ~ITEM_IN_STORAGE
 	if(!no_move)
 		if(to_where == null)
@@ -1434,7 +1434,7 @@
 		return FALSE
 	return ..()
 
-/datum/object_system/storage/stack/physically_insert_item(obj/item/inserting, no_move)
+/datum/object_system/storage/stack/physically_insert_item(obj/item/inserting, no_move, from_hook)
 	// todo: support non-stacks
 	if(!istype(inserting, /obj/item/stack))
 		// how the fuck
@@ -1462,14 +1462,14 @@
 		return FALSE
 	return ..()
 
-/datum/object_system/storage/stack/physically_remove_item(obj/item/removing, atom/to_where, no_move)
+/datum/object_system/storage/stack/physically_remove_item(obj/item/removing, atom/to_where, no_move, from_hook)
 	// todo: support non-stacks
 	if(!istype(removing, /obj/item/stack))
 		// how the fuck
 		CRASH("attempted to physically insert a non stack")
 	var/obj/item/stack/stack = removing
 	cached_combined_stack_amount -= stack.amount
-	if(no_move)
+	if(no_move && (!from_hook))
 		return ..()
 	if(stack.amount <= stack.max_amount)
 		return ..()
