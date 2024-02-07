@@ -18,6 +18,12 @@
 	#warn impl
 
 /**
+ * @return list(list(entities), ...) --> length = world.maxz
+ */
+/datum/controller/subsystem/persistence/proc/bulk_entity_group_by_zlevel(list/atom/movable/entity)
+	#warn impl
+
+/**
  * @return list(list(entity, ...), ...)
  */
 /datum/controller/subsystem/persistence/proc/bulk_entity_split_by_amount(list/atom/movable/entity, amount)

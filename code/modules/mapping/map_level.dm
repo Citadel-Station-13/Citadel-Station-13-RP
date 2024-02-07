@@ -103,6 +103,13 @@
 	/// 0 to disable; will override defaults
 	var/persistent_debris_important_demotion_level_threshold = 0
 
+	//* Persistence - Trash *//
+	/// % chance per round to drop 'important' persistent trash
+	///
+	/// 0 to disable
+	var/persistent_trash_important_drop_chance = 0
+	///
+
 	//* Tracking *//
 	var/turfs_rebuild_count = 0
 	var/transitions_rebuild_count = 0
