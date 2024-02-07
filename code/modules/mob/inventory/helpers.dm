@@ -146,6 +146,10 @@
 	if(isnull(storage.obj_storage))
 		return FALSE
 	var/obj/item/removing = storage.obj_storage.top_entity_in_contents()
+	if(isnull(removing))
+		if(!silent)
+			to_chat(initiator, SPAN_WARNING("[initiator == src? "Your" : "Their"] [storage] is empty!"))
+		return FALSE
 	var/datum/event_args/actor/actor = new(src, initiator)
 	if(storage.obj_storage.check_on_found_hooks(actor))
 		return
@@ -165,17 +169,16 @@
 				to_chat(initiator, SPAN_WARNING("[initiator == src? "You" : "They"] have nothing held in [slot_like.display_name]!"))
 				return FALSE
 			if(put_in_active_hand(in_slot))
-				to_chat(initiator, SPAN_NOTICE("You draw [holding] from your [slot_like.display_name]."))
+				to_chat(initiator, SPAN_NOTICE("You draw [in_slot] from your [slot_like.display_name]."))
 				return TRUE
 			else
-				to_chat(initiator, SPAN_WARNING("You fail to draw [holding] from your [slot_like.display_name]!"))
+				to_chat(initiator, SPAN_WARNING("You fail to draw [in_slot] from your [slot_like.display_name]!"))
 				return FALSE
 		else
 			if(equip_to_slot_if_possible(holding, slot_like, user = initiator))
 				to_chat(initiator, SPAN_NOTICE("You tuck [holding] away [slot_like.display_preposition] your [slot_like.display_name]."))
 				return TRUE
 			else
-				to_chat(initiator, SPAN_WARNING("[holding] won't go [slot_like.display_preposition] your [slot_like.display_name]!"))
 				return FALSE
 	else
 		if(isnull(holding))
