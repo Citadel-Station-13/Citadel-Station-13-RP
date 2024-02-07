@@ -146,7 +146,7 @@
 	name = "grass"
 	desc = "A patch of grass."
 	icon = 'icons/turf/floors.dmi'
-	icon_state = "grass"
+	icon_state = "grass0"
 	base_icon_state = "grass"
 	initial_flooring = /singleton/flooring/grass
 
