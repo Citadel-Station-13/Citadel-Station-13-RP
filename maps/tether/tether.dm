@@ -146,6 +146,7 @@
 
 /datum/map_level/tether/station
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
+	persistence_allowed = TRUE
 	// holomap_legend_x = 220
 	// holomap_legend_y = 160
 

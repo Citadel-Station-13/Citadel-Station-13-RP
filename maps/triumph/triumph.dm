@@ -129,6 +129,7 @@
 
 /datum/map_level/triumph/ship
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
+	persistence_allowed = TRUE
 
 /datum/map_level/triumph/ship/deck_one
 	id = "TriumphDeck1"

@@ -170,6 +170,7 @@
 
 /datum/map_level/rift/station
 	abstract_type = /datum/map_level/rift/station
+	persistence_allowed = TRUE
 
 /datum/map_level/rift/station/underground_floor
 	id = "underground-3"

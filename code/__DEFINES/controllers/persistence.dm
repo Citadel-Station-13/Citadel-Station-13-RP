@@ -5,6 +5,10 @@
 
 /// default string for null groups
 #define PERSISTENCE_DEFAULT_NULL_GROUP ""
+/// check if an /obj has some form of persistence
+#define OBJ_HAS_PERSISTENCE_ENABLED(OBJ) (OBJ.persist_static_id || OBJ.persist_dynamic_id)
+/// check if an /obj is eligible at all for mass persistence
+#define OBJ_MASS_PERSIST_SANITY_CHECK(OBJ) (OBJ_HAS_PERSIST_ENABLED(OBJ) && !(OBJ.obj_persist_status & (OBJ_PERSIST_STATUS_NO_THANK_YOU)))
 
 //* /obj - obj_persist_status *//
 
@@ -16,6 +20,8 @@
 /// for dynamic, this is the round we were made
 /// for static, this is the round that we were restored after a deletion
 #define OBJ_PERSIST_STATUS_FIRST_GENERATION (1<<2)
+/// do not persist
+#define OBJ_PERSIST_STATUS_NO_THANK_YOU (1<<3)
 
 //* /obj - obj_persist_dynamic_status *//
 

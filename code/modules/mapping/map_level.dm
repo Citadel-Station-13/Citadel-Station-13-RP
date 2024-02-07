@@ -73,10 +73,35 @@
 	/// loaded persistence metadata, if any
 	var/datum/map_level_persistence/persistence
 	/// allow persistence?
-	var/persistence_allowed = TRUE
+	var/persistence_allowed = FALSE
 	/// override level id for persistence so two levels are considered the same
 	/// two levels should **never** be loaded at the same time with the same persistence ID!
 	var/persistence_id
+
+	//* Persistence - Debris *//
+	/// drop n largest zones
+	///
+	/// 0 to disable
+	var/persistent_debris_drop_n_largest = 0
+	/// drop n smallest zones
+	/// this usually results in dropping single tile dirt/blood/etc
+	///
+	/// 0 to disable
+	var/persistent_debris_drop_n_smallest = 0
+	/// % chance per round to drop 'important' persistent debris like graffiti
+	///
+	/// 0 to disable
+	var/persistent_debris_important_drop_chance = 0
+	/// critical mass of important debris count needed in a zone before they're treated
+	/// as regular debris: mostly for grief prevention
+	///
+	/// 0 to disable; will override defaults
+	var/persistent_debris_important_demotion_zone_threshold = 0
+	/// critical mass of important debris total needed before they're treated
+	/// as regular debris; mostly for grief prevention
+	///
+	/// 0 to disable; will override defaults
+	var/persistent_debris_important_demotion_level_threshold = 0
 
 	//* Tracking *//
 	var/turfs_rebuild_count = 0

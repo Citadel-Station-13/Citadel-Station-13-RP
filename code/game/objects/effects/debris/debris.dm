@@ -15,11 +15,15 @@
 	var/collate = FALSE
 	/// used by persistence serialization as a temp var for speed
 	var/tmp/debris_serialization_temporary
+	/// this is considered valuable and uses a % clean chance instead of being entirely based off of zones
+	var/relatively_important = FALSE
 
 /obj/effect/debris/Initialize(mapload)
 	. = ..()
 	if(collate && Collate())
 		return INITIALIZE_HINT_QDEL
+	if(mapload)
+		obj_persist_status |= OBJ_PERSIST_STATUS_NO_THANK_YOU
 
 /**
  * return true to qdel on init instead
