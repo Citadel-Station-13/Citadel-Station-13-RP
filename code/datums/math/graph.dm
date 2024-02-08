@@ -67,7 +67,7 @@
 		"count" = length(graph.vertices),
 		"edges" = serializing_edges,
 	)
-	return json_encode(serializes)
+	return json_encode(serializing)
 
 /**
  * rust_g will return a list of edges
@@ -81,7 +81,7 @@
 	return graph_deserialize_from_rustg_call_list(decoded, ordered_vertices)
 
 /proc/graph_deserialize_from_rustg_call_list(list/decoded, list/ordered_vertices)
-	ASSERT(decoded["count"] == length(ordered_vetices))
+	ASSERT(decoded["count"] == length(ordered_vertices))
 	var/datum/graph/building = new
 	var/list/vertices = new /list(length(ordered_vertices))
 	var/list/edges = decoded["edges"]

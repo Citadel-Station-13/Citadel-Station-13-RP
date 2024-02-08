@@ -8,6 +8,149 @@
  */
 /datum/controller/subsystem/persistence
 
+/datum/controller/subsystem/persistence/proc/level_objects_store_static(list/obj/entities, generation, level_id, map_id)
+	if(!SSdbcore.Connect())
+		return FALSE
+
+	var/intentionally_allow_admin_proccall = usr
+	usr = null
+	#warn impl
+	usr = intentionally_allow_admin_proccall
+
+	#warn impl
+
+	return TRUE
+
+/datum/controller/subsystem/persistence/proc/level_objects_store_dynamic(list/obj/entities, generation, level_id)
+	if(!SSdbcore.Connect())
+		return FALSE
+
+	var/intentionally_allow_admin_proccall = usr
+	usr = null
+	#warn impl
+	usr = intentionally_allow_admin_proccall
+
+	#warn impl
+
+	return TRUE
+
+/datum/controller/subsystem/persistence/proc/level_objects_load_dynamic(generation, level_id)
+	if(!SSdbcore.Connect())
+		return FALSE
+
+	var/intentionally_allow_admin_proccall = usr
+	usr = null
+	#warn impl
+	usr = intentionally_allow_admin_proccall
+
+	#warn impl
+
+	return TRUE
+
+/datum/controller/subsystem/persistence/proc/level_objects_load_static(list/obj/entities, generation, level_id, map_id)
+	if(!SSdbcore.Connect())
+		return FALSE
+
+	var/intentionally_allow_admin_proccall = usr
+	usr = null
+	#warn impl
+	usr = intentionally_allow_admin_proccall
+
+	#warn impl
+
+	return TRUE
+
+/datum/controller/subsystem/persistence/proc/level_objects_drop_old(generation)
+	if(!SSdbcore.Connect())
+		return FALSE
+
+	var/intentionally_allow_admin_proccall = usr
+	usr = null
+	#warn impl
+	usr = intentionally_allow_admin_proccall
+
+	#warn impl
+
+	return TRUE
+
+/datum/controller/subsystem/persistence/proc/level_objects_drop_static_all()
+	if(!SSdbcore.Connect())
+		return FALSE
+
+	var/intentionally_allow_admin_proccall = usr
+	usr = null
+	#warn impl
+	usr = intentionally_allow_admin_proccall
+
+	#warn impl
+
+	return TRUE
+
+/datum/controller/subsystem/persistence/proc/level_objects_drop_static_level(level_id)
+	if(!SSdbcore.Connect())
+		return FALSE
+
+	var/intentionally_allow_admin_proccall = usr
+	usr = null
+	#warn impl
+	usr = intentionally_allow_admin_proccall
+
+	#warn impl
+
+	return TRUE
+
+/datum/controller/subsystem/persistence/proc/level_objects_drop_static_map(map_id)
+	if(!SSdbcore.Connect())
+		return FALSE
+
+	var/intentionally_allow_admin_proccall = usr
+	usr = null
+	#warn impl
+	usr = intentionally_allow_admin_proccall
+
+	#warn impl
+
+	return TRUE
+
+/datum/controller/subsystem/persistence/proc/level_objects_drop_static_global()
+	if(!SSdbcore.Connect())
+		return FALSE
+
+	var/intentionally_allow_admin_proccall = usr
+	usr = null
+	#warn impl
+	usr = intentionally_allow_admin_proccall
+
+	#warn impl
+
+	return TRUE
+
+/datum/controller/subsystem/persistence/proc/level_objects_drop_dynamic_all()
+	if(!SSdbcore.Connect())
+		return FALSE
+
+	var/intentionally_allow_admin_proccall = usr
+	usr = null
+	#warn impl
+	usr = intentionally_allow_admin_proccall
+
+	#warn impl
+
+	return TRUE
+
+/datum/controller/subsystem/persistence/proc/level_objects_drop_dynamic_level(level_id)
+	if(!SSdbcore.Connect())
+		return FALSE
+
+	var/intentionally_allow_admin_proccall = usr
+	usr = null
+	#warn impl
+	usr = intentionally_allow_admin_proccall
+
+	#warn impl
+
+	return TRUE
+
 /**
  * @return list(list(static objects), list(dynamic objects))
  */
@@ -52,7 +195,3 @@
 			dynamic_objects += thing
 
 	return list(static_objects, dynamic_objects)
-
-#warn impl all
-
-

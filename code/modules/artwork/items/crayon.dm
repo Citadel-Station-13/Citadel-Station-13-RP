@@ -21,6 +21,8 @@
 	var/list/crayon_pickable_colors
 	/// can pick any color
 	var/crayon_free_recolor = FALSE
+	/// active color
+	var/crayon_color
 	/// the reagents in us
 	var/crayon_reagent_type = /datum/reagent/crayon_dust
 	/// the reagents in us
@@ -30,11 +32,20 @@
 	var/current_graffiti_icon_string_path
 	/// currently picked datapack icon state
 	var/current_graffiti_icon_state
+	/// currently picked angle
+	var/current_graffiti_angle
+
+	/// has cap
+	var/cappable = FALSE
+	/// capped?
+	var/capped = FALSE
 
 /obj/item/pen/crayon/Initialize(mapload)
 	. = ..()
 	if(!isnull(crayon_pickable_colors))
 		crayon_pickable_colors = typelist(NAMEOF(src, crayon_pickable_colors), crayon_pickable_colors)
+	if(isnull(crayon_color))
+		crayon_color = color
 	create_reagents(crayon_reagent_amount)
 	reagents.add_reagent(crayon_reagent_type, crayon_reagent_amount)
 
@@ -65,13 +76,37 @@
 /obj/item/pen/crayon/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 
-/obj/item/pen/crayon/proc/make_graffiti(atom/target, datum/crayon_decal_meta/datapack, state)
+/obj/item/pen/crayon/proc/set_capped(capped)
+	src.capped = capped
+	update_icon()
+
+/obj/item/pen/crayon/proc/make_graffiti(atom/target, datum/crayon_decal_meta/datapack, state, angle)
+	if(isnull(datapack))
+		datapack = GLOB.crayon_data_lookup_by_string_icon_path[current_graffiti_icon_string_path]
+	if(isnull(state))
+		state = current_graffiti_icon_state
+	if(isnull(angle))
+		angle = current_graffiti_angle
+	var/obj/effect/debris/cleanable/crayon/created = new debris_path(target, datapack, crayon_color, state)
+	return created
 
 /obj/item/pen/crayon/proc/color_entity(atom/target)
+	return FALSE
 
 /obj/item/pen/crayon/proc/attempt_make_graffiti(atom/target, datum/event_args/actor/actor, datum/crayon_decal_meta/datapack, state)
+	var/cost = 1
 
 /obj/item/pen/crayon/proc/attempt_color_entity(atom/target, datum/event_args/actor/actor)
+	var/cost = 1
+
+/obj/item/pen/crayon/proc/has_remaining(amount)
+	return amount <= remaining
+
+/obj/item/pen/crayon/proc/use_remaining(amount)
+	remaining = max(0, remaining - amount)
+
+/obj/item/pen/crayon/proc/switch_color(new_color)
+	crayon_color = new_color
 
 /obj/item/pen/crayon/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
@@ -118,42 +153,6 @@
 			uses -= 5
 			if(uses <= 0)
 				to_chat(user,"<span class='warning'>You ate your crayon!</span>")
-				qdel(src)
-	else
-		..()
-
-/obj/item/pen/crayon/chalk/afterattack(atom/target, mob/user as mob, proximity)
-	if(!proximity) return
-	if(istype(target,/turf/simulated/floor))
-		var/drawtype = input("Choose what you'd like to draw.") in list("graffiti","rune")
-		switch(drawtype)
-			if("graffiti")
-				to_chat(user, "You start drawing graffiti on the [target.name].")
-			if("rune")
-				to_chat(user, "You start drawing a rune on the [target.name].")
-		if(instant || do_after(user, 50))
-			if(!user.Adjacent(target))
-				return
-			new /obj/effect/debris/cleanable/crayon/chalk(target,pen_color,shadeColour,drawtype)
-			to_chat(user, "You finish drawing.")
-			target.add_fingerprint(user)		// Adds their fingerprints to the floor the chalk is drawn on.
-			log_game("[key_name(user)] drew [target], [pen_color], [shadeColour], [drawtype] with chalk.")
-			if(uses)
-				uses--
-				if(!uses)
-					to_chat(user, "<span class='warning'>You used up your chalk!</span>")
-					qdel(src)
-	return
-
-/obj/item/pen/crayon/chalk/attack(mob/M as mob, mob/user as mob)
-	if(M == user)
-		to_chat(user, "You take a bite of the chalk and swallow it.")
-		user.nutrition += 1
-		user.reagents.add_reagent("chalk_dust",min(5,uses)/3)
-		if(uses)
-			uses -= 5
-			if(uses <= 0)
-				to_chat(user,"<span class='warning'>You ate your chalk!</span>")
 				qdel(src)
 	else
 		..()

@@ -16,7 +16,7 @@ interface CrayonUIData {
 
 const sizeKeyForCrayonDatapack = (pack: CrayonDatapack) => {
   return `${pack.width}x${pack.height}`;
-}
+};
 
 export const Crayon = (props, context) => {
   const { data, act } = useBackend<CrayonDatapack>(context);

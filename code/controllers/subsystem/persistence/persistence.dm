@@ -11,6 +11,10 @@ SUBSYSTEM_DEF(persistence)
 
 	/// world already loaded?
 	var/static/loaded_persistent_world = FALSE
+	/// world load in progress; block.
+	var/static/world_serialization_mutex = FALSE
+	/// current world generation; do not touch this unless you know what you are doing.
+	var/static/world_generation_current
 
 /datum/controller/subsystem/persistence/Initialize()
 	#warn stuff

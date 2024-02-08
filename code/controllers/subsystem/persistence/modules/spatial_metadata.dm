@@ -29,6 +29,8 @@
 	var/rounds_since_saved = 0
 	/// curent entity generation
 	var/generation = 0
+	/// the round ID we were saved on
+	var/round_id_saved
 
 /datum/map_level_persistence/proc/load_or_new()
 	var/allow_admin_proc_call = usr
