@@ -2,6 +2,11 @@
 //* Copyright (c) 2024 Citadel Station developers.          *//
 
 /**
+ * Warning. This file is very strongly coupled with Citade Station's rust-g repository,
+ * notably geometry.rs. Do not mess with things in here unless you know what you are doing.
+ */
+
+/**
  * undirected graph
  *
  * vertices can be arbitrary datums
@@ -35,3 +40,59 @@
 	// no assertion - this will runtime if it's not there
 	vertices[A] -= B
 	vertices[B] -= A
+
+/**
+ * serialize a graph to be a rust_g string
+ *
+ * this way, vertex datums can be arbitrary without making rust_g code different
+ */
+/proc/graph_serialize_to_rustg_call_string(datum/graph/graph)
+	// construct reverse lookup
+	var/list/vertex_map = list()
+	for(var/i in 1 to length(graph.vertices))
+		var/vertex = graph.vertices[i]
+		vertex_map[vertex] = i
+	// edges.
+	var/list/serializing_edges = list()
+	// build
+	for(var/i in 1 to length(graph.vertices))
+		var/vertex = graph.vertices[i]
+		var/list/edges = graph.vertices[vertex]
+		var/list/resolved = list()
+		for(var/edge in edges)
+			resolved += vertex_map[edge]
+		serializing_edges[++serializing_edges.len] = resolved
+	// serialize and return
+	var/list/serializing = list(
+		"count" = length(graph.vertices),
+		"edges" = serializing_edges,
+	)
+	return json_encode(serializes)
+
+/**
+ * rust_g will return a list of edges
+ *
+ * edge list are lists of A, B where A and B are indices in ordered_vertices
+ *
+ * ordered_vertices are referenced, not copied.
+ */
+/proc/graph_deserialize_from_rustg_call_string(string, list/ordered_vertices)
+	var/list/decoded = json_decode(string)
+	return graph_deserialize_from_rustg_call_list(decoded, ordered_vertices)
+
+/proc/graph_deserialize_from_rustg_call_list(list/decoded, list/ordered_vertices)
+	ASSERT(decoded["count"] == length(ordered_vetices))
+	var/datum/graph/building = new
+	var/list/vertices = new /list(length(ordered_vertices))
+	var/list/edges = decoded["edges"]
+	for(var/i in 1 to length(vertices))
+		vertices[ordered_vertices[i]] = list()
+	for(var/a in 1 to length(edges))
+		var/list/connections = edges[a]
+		for(var/b in connections)
+			var/node_a = ordered_vertices[a]
+			var/node_b = ordered_vertices[b]
+			vertices[node_a][node_b] = TRUE
+			vertices[node_b][node_a] = TRUE
+	building.vertices = vertices
+	return building

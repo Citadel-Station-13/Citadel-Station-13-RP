@@ -2,6 +2,11 @@
 //* Copyright (c) 2024 Citadel Station developers.          *//
 
 /**
+ * Warning. This file is very strongly coupled with Citade Station's rust-g repository,
+ * notably geometry.rs. Do not mess with things in here unless you know what you are doing.
+ */
+
+/**
  * directed graph
  *
  * vertices can be arbitrary datums
