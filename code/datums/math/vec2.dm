@@ -65,6 +65,7 @@
 		"area" = area,
 		"cell" = cell,
 		"points" = vec2_serialiez_to_rustg_call_list(points),
+		"margin" = bounidng_margin,
 	)))
 	var/list/decoded = json_decode(encoded)
 	var/count = length(points)

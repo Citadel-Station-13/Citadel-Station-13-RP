@@ -38,5 +38,12 @@
  * @return list(list(items), list(densities))
  */
 /datum/bulk_entity_persistence/trash/proc/density_computation(list/obj/item/items)
+	// lockstepped list of vec2's
+	var/list/datum/vec2/points = list()
+	for(var/i in 1 to length(items))
+		var/obj/item/item = items[i]
+		points += new /datum/vec2(item.x, item.y)
+
+	#warn triangulation / voronoi
 
 #warn impl all

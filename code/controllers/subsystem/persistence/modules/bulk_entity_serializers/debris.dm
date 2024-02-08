@@ -35,6 +35,8 @@
 		formed += group
 		// floodfill time
 		var/list/turf/floodfilling = list(instance.loc = TRUE)
+		var/total_center_x = 0
+		var/total_center_y = 0
 		var/list/turf/found_turfs = list()
 		var/pos = 1
 		while(pos <= length(floodfilling))
@@ -49,17 +51,25 @@
 				group.contained += scanned
 				// mark success
 				found = TRUE
-			// if nothing was found, tihs is a dead end
+			// if nothing was found, this is a dead end
 			if(!found)
 				continue
 			// add to found
 			found_turfs += scanning
+			// add overall center x / y
+			total_center_x += scanning.x
+			total_center_y += scanning.y
 			// add adjacent turfs to floodfilling if they're not there already
 			for(var/turf/enemy in RANGE_TURFS(1, scanning))
 				// because we're using an assoc list, this won't add an entry if it's already there.
 				floodfilling[enemy] = TRUE
 		// count tiles
 		group.tile_count = length(found_turfs)
+		// get center
+		group.center_x = total_center_x / group.tile_count
+		group.center_y = total_center_y / group.tile_count
+
+	#warn triangulation / voronoi
 
 	return formed
 
@@ -68,6 +78,10 @@
 	var/list/obj/effect/debris/contained = list()
 	/// tile count in this group
 	var/tile_count = 0
+	/// center of x
+	var/center_x
+	/// center of y
+	var/center_y
 
 /**
  * get relative debris density
