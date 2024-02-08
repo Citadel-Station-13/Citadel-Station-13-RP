@@ -20,7 +20,7 @@
 			continue
 		. += debris
 
-/datum/bulk_entity_persistence/debris/serialize_entities_into_chunks(list/atom/movable/entity, perform_filtering)
+/datum/bulk_entity_persistence/debris/serialize_entities_into_chunks(list/atom/movable/entities, perform_filtering)
 	. = ..()
 	#warn impl
 
@@ -78,10 +78,10 @@
  *
  * we assume all input debris are on turfs!!
  *
- * @return list(/datum/debris_group instance, ...)
+ * @return list(/datum/persistent_debris_group instance, ...)
  */
 /datum/bulk_entity_persistence/debris/proc/calculate_groups(list/obj/effect/debris/debris)
-	var/list/datum/debris_group/formed = list()
+	var/list/datum/persistent_debris_group/formed = list()
 
 	// lol, lmao, this'll probably result in higgs bugson down the line but whatever
 	// todo: maybe don't do this
@@ -96,7 +96,7 @@
 		if(instance.debris_serialization_temporary == calculation_iteration)
 			continue
 		// make group
-		var/datum/debris_group/group = new
+		var/datum/persistent_debris_group/group = new
 		formed += group
 		// floodfill time
 		var/list/turf/floodfilling = list(instance.loc = TRUE)
@@ -138,7 +138,7 @@
 
 	return formed
 
-/datum/debris_group
+/datum/persistent_debris_group
 	/// debris in this group
 	var/list/obj/effect/debris/contained = list()
 	/// tile count in this group
@@ -151,5 +151,5 @@
 /**
  * get relative debris density
  */
-/datum/debris_group/proc/estimate_density()
+/datum/persistent_debris_group/proc/estimate_density()
 	return length(contained) / tile_count

@@ -104,11 +104,16 @@
 	var/persistent_debris_important_demotion_level_threshold = 0
 
 	//* Persistence - Trash *//
-	/// % chance per round to drop 'important' persistent trash
-	///
-	/// 0 to disable
-	var/persistent_trash_important_drop_chance = 0
-	///
+	/// drop n largest meshes of trash
+	var/persistent_trash_drop_n_largest = 0
+	/// drop n smallest meshes of trash
+	var/persistent_trash_drop_n_smallest = 0
+	/// drop n least dense single items of trash
+	var/persistent_trash_drop_n_most_isolated = 0
+	/// drop n most dense single items of trash
+	var/persistent_trash_drop_n_least_isolated = 0
+	/// mesh heuristic in tiles
+	var/persistent_trash_mesh_heuristic = 3
 
 	//* Tracking *//
 	var/turfs_rebuild_count = 0

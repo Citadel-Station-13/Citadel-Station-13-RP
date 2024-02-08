@@ -8,7 +8,7 @@
  */
 /datum/controller/subsystem/persistence
 
-/datum/controller/subsystem/persistence/proc/spatial_metadata_for_level(datum/map_level/level)
+/datum/controller/subsystem/persistence/proc/spatial_metadata_get_level(datum/map_level/level)
 	RETURN_TYPE(/datum/map_level_persistence)
 	if(isnum(level))
 		level = SSmapping.ordered_levels[level]
@@ -19,6 +19,16 @@
 		level.persistence.level_id = level.persistence_id || level.id
 		level.persistence.load_or_new()
 	return level.persistence
+
+/datum/controller/subsystem/persistence/proc/spatial_metadata_get_current_generation(datum/map_level/level)
+	var/datum/map_level_persistence/persistence = spatial_metadata_get_level(level)
+	return persistence?.generation
+
+/datum/controller/subsystem/persistence/proc/spatial_metadata_get_next_generation(datum/map_level/level)
+	var/datum/map_level_persistence/persistence = spatial_metadata_get_level(level)
+	if(isnull(persistence))
+		return
+	return persistence.generation + 1
 
 /datum/map_level_persistence
 	/// level id

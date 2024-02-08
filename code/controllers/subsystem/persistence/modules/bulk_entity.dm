@@ -104,7 +104,7 @@
  *
  * @return list(count saved, count dropped, count errored)
  */
-/datum/bulk_entity_persistence/proc/serialize_entities_into_chunks(list/atom/movable/entity, perform_filtering)
+/datum/bulk_entity_persistence/proc/serialize_entities_into_chunks(list/atom/movable/entities, perform_filtering)
 	return list(0, 0, 0)
 
 /**
@@ -114,9 +114,15 @@
 	return list(0, 0, 0)
 
 /datum/bulk_entity_chunk
+	//* Set by serialize_entities_into_chunks *//
 	var/level_id
 	var/amount
 	var/list/data
+
+	//* Set by serialization and deserialization, do not manually set. *//
+	/// our generation
+	/// * set by load from DB
+	/// * set on save by save proc before being sent into bulk_entity_save_chunks()
 	var/generation
 
 	//* Set by loader, do not manually set. *//

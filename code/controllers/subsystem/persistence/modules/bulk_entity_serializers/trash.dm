@@ -22,8 +22,66 @@
 		. += item
 	return filter_items(.)
 
-/datum/bulk_entity_persistence/trash/serialize_entities_into_chunks(list/atom/movable/entity, perform_filtering)
-	#warn impl
+/datum/bulk_entity_persistence/trash/serialize_entities_into_chunks(list/atom/movable/entities, perform_filtering)
+	var/list/datum/bulk_entity_chunk/chunks = list()
+	// split by zlevel
+	var/list/z_index_split = SSpersistence.bulk_entity_group_by_zlevel(entities)
+	// iterate
+	for(var/z_index in 1 to world.maxz)
+		var/list/atom/movable/z_entities = z_index_split[z_index]
+		var/level_id = SSpersistence.level_id_of_z(z_index)
+		if(isnull(level_id) || !length(z_entities) || isnull(level_generation))
+			continue
+		if(perform_filtering)
+			// perform entity filtering based on level and configuraiton
+			var/mesh_heuristic = level_instance.persistent_trash_mesh_heuristic
+			var/drop_n_largest_meshes = level_instance.persistent_trash_drop_n_largest
+			var/drop_n_smallest_meshes = level_instance.persistent_trash_drop_n_smallest
+			var/drop_n_most_isolated = level_instance.persistent_trash_drop_n_most_isolated
+			var/drop_n_least_isolated = level_instance.persistent_trash_drop_n_least_isolated
+			// run heuristics
+			var/list/results = heuristics(z_entities, mesh_heuristic)
+			var/list/meshes = results[1]
+			var/list/singles = results[2]
+			// sort results by descending density
+			tim_sort(meshes, GLOBAL_PROC_REF(cmp_persistent_trash_group_density_dsc))
+			tim_sort(singles, GLOBAL_PROC_REF(cmp_numeric_dsc), associative = TRUE)
+			// drop results as needed
+			meshes.Cut(1, min(length(meshes) + 1, drop_n_largest_meshes + 1))
+			meshes.len -= drop_n_smallest_meshes
+			singles.Cut(1, min(length(singles) + 1, drop_n_least_isolated + 1))
+			singles.len -= drop_n_most_isolated
+			// collate filtered back into z_entities
+			var/list/collating = singles.Copy()
+			for(var/datum/persistent_trash_group/mesh as anything in meshes)
+				collating += mesh.trash
+			z_entities = collating
+		// split by area/turf
+		var/list/area_turf_tuples = SSpersistence.bulk_entity_group_by_area_and_turf(z_entities)
+		for(var/list/area_turf_tuple as anything in area_turf_tuples)
+			var/area_type = area_turf_tuple[1]
+			var/turf_type = area_turf_tuple[2]
+			var/list/area_turf_entities = area_turf_tuples[area_turf_tuple]
+			// limit to 500 entities per chunk
+			for(var/list/atom/movable/chunk_entities as anything in SSpersistence.bulk_entity_split_by_amount(area_turf_entities, 500))
+				// create chunk
+				var/datum/bulk_entity_chunk/chunk = new
+				chunk.level_id = level_id
+				chunk.amount = length(chunk_entities)
+				var/list/entities_constructed = list()
+				for(var/atom/movable/entity as anything in chunk_entities)
+					entities_constructed[++entities_constructed.len] = list(
+						"x" = entity.x,
+						"y" = entity.y,
+						"type" = entity.type,
+						"data" = entity.serialize(),
+					)
+				chunk.data = list(
+					"area_lock" = area_type,
+					"turf_lock" = turf_lock,
+					"entities" = entities_constructed,
+				)
+	return chunks
 
 /datum/bulk_entity_persistence/trash/load_chunks(datum/bulk_entity_chunk/chunks)
 	var/loaded = 0
@@ -99,13 +157,16 @@
 	return filtered
 
 /**
- * returns a lockstepped list
- *
  * all items should be on the same zlevel.
  *
- * @return list(list(items), list(densities))
+ * returns a list with indices:
+ *
+ * 1: meshes with densities
+ * 2: list of single items associated to density
+ *
+ * @return list(list(/datum/persistent_trash_group instance, ..), list(item instance = density, ...))
  */
-/datum/bulk_entity_persistence/trash/proc/density_computation(list/obj/item/items)
+/datum/bulk_entity_persistence/trash/proc/heuristics(list/obj/item/items)
 	// lockstepped list of vec2's
 	var/list/datum/vec2/points = list()
 	for(var/i in 1 to length(items))
@@ -115,3 +176,12 @@
 	#warn triangulation / voronoi
 
 #warn impl all
+
+/datum/persistent_trash_group
+	/// trash in this group
+	var/list/obj/item/trash = list()
+	/// highest marked density in this group
+	var/highest_marked_density = 0
+
+/proc/cmp_persistent_trash_group_density_dsc(datum/persistent_trash_group/A, datum/persistent_trash_group/B)
+	return B.highest_marked_density - A.highest_marked_density

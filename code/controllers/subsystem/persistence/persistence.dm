@@ -57,12 +57,18 @@ SUBSYSTEM_DEF(persistence)
  * gets ID of host map datum
  *
  * you usually want level_id_of_z instead.
+ *
+ * @return null if map shouldn't persist (levels under it still can!! careful!!), otherwise map id for persistence
  */
 /datum/controller/subsystem/persistence/proc/map_id_of_z(z)
-	return SSmapping.ordered_levels[z]?.parent_map
+	var/datum/map/map = SSmapping.ordered_levels[z]?.parent_map
+	return map?.id
 
 /**
  * gets ID of level
+ *
+ * @return null if level shouldn't persist, otherwise level id for persistence
  */
 /datum/controller/subsystem/persistence/proc/level_id_of_z(z)
-	return SSmapping.level_id(z)
+	var/datum/map_level/level = SSmapping.ordered_levels[z]
+	return level.persistence_allowed? (level.persistence_id || level.id) : null
