@@ -20,11 +20,11 @@
 			continue
 		. += debris
 
-/datum/bulk_entity_persistence/debris/serialize_entities_into_chunks(list/atom/movable/entities, perform_filtering)
+/datum/bulk_entity_persistence/debris/serialize_entities_into_chunks(list/atom/movable/entities, datum/map_level/level)
 	. = ..()
 	#warn impl
 
-/datum/bulk_entity_persistence/debris/load_chunks(datum/bulk_entity_chunk/chunks)
+/datum/bulk_entity_persistence/debris/load_chunks(list/datum/bulk_entity_chunk/chunks)
 	var/loaded = 0
 	var/dropped = 0
 	for(var/datum/bulk_entity_chunk/chunk as anything in chunks)

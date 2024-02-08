@@ -91,6 +91,8 @@
 	var/id
 	/// if sql data doesn't match revision, it's tossed out
 	var/revision = 1
+	/// split entities returned from gather procs to this amount per chunk
+	var/auto_entity_chunk_split = 500
 
 /datum/bulk_entity_persistence/proc/gather_all()
 	return list()
@@ -99,18 +101,35 @@
 	return list()
 
 /**
- * @params
- * * perform_filtering - perform standard filtering; e.g. dropping dense debris / trash items
+ * perform global filtering on all entities
+ *
+ * input list can be modified
+ *
+ * this is for 'drop n entities through the whole world'; this is only called when the entire world is being
+ * serialized, as opposed to a single level.
+ *
+ * @return filtered list
+ */
+/datum/bulk_entity_persistence/proc/perform_global_filter(list/atom/movable/entities)
+	return entities
+
+/**
+ * perform level filtering
+ */
+/datum/bulk_entity_persistence/proc/perform_level_filter(list/atom/movable/entities, datum/map_level/level)
+
+/**
+ * serialize entities into chunks for a single level
  *
  * @return list(count saved, count dropped, count errored)
  */
-/datum/bulk_entity_persistence/proc/serialize_entities_into_chunks(list/atom/movable/entities, perform_filtering)
+/datum/bulk_entity_persistence/proc/serialize_entities_into_chunks(list/atom/movable/entities, datum/map_level/level)
 	return list(0, 0, 0)
 
 /**
  * @return list(count loaded, count dropped, count errored)
  */
-/datum/bulk_entity_persistence/proc/load_chunks(datum/bulk_entity_chunk/chunks)
+/datum/bulk_entity_persistence/proc/load_chunks(list/datum/bulk_entity_chunk/chunks)
 	return list(0, 0, 0)
 
 /datum/bulk_entity_chunk

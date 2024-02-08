@@ -16,46 +16,48 @@
 
 /datum/bulk_entity_persistence/trash/gather_level(z)
 	. = list()
-	for(var/obj/effect/trash/item in world)
+	for(var/obj/item/item in world)
 		if(item.z != z)
 			continue
 		. += item
 	return filter_items(.)
 
-/datum/bulk_entity_persistence/trash/serialize_entities_into_chunks(list/atom/movable/entities, perform_filtering)
+/datum/bulk_entity_persistence/trash/perform_level_filter(list/atom/movable/entities, datum/map_level/level)
+	// perform entity filtering based on level and configuraiton
+	var/mesh_heuristic = level_instance.persistent_trash_mesh_heuristic
+	var/drop_n_largest_meshes = level_instance.persistent_trash_drop_n_largest
+	var/drop_n_smallest_meshes = level_instance.persistent_trash_drop_n_smallest
+	var/drop_n_most_isolated = level_instance.persistent_trash_drop_n_most_isolated
+	var/drop_n_least_isolated = level_instance.persistent_trash_drop_n_least_isolated
+	// run heuristics
+	var/list/results = heuristics(entities, mesh_heuristic)
+	var/list/meshes = results[1]
+	var/list/singles = results[2]
+	// sort results by descending density
+	tim_sort(meshes, GLOBAL_PROC_REF(cmp_persistent_trash_group_density_dsc))
+	tim_sort(singles, GLOBAL_PROC_REF(cmp_numeric_dsc), associative = TRUE)
+	// drop results as needed
+	meshes.Cut(1, min(length(meshes) + 1, drop_n_largest_meshes + 1))
+	meshes.len -= drop_n_smallest_meshes
+	singles.Cut(1, min(length(singles) + 1, drop_n_least_isolated + 1))
+	singles.len -= drop_n_most_isolated
+	// collate filtered back into z_entities
+	var/list/collating = singles.Copy()
+	for(var/datum/persistent_trash_group/mesh as anything in meshes)
+		collating += mesh.trash
+	return collating
+
+/datum/bulk_entity_persistence/trash/serialize_entities_into_chunks(list/atom/movable/entities, datum/map_level/level)
 	var/list/datum/bulk_entity_chunk/chunks = list()
 	// split by zlevel
 	var/list/z_index_split = SSpersistence.bulk_entity_group_by_zlevel(entities)
 	// iterate
 	for(var/z_index in 1 to world.maxz)
 		var/list/atom/movable/z_entities = z_index_split[z_index]
+		var/datum/map_level/level_instance = SSmapping.ordered_levels[z_index]
 		var/level_id = SSpersistence.level_id_of_z(z_index)
-		if(isnull(level_id) || !length(z_entities) || isnull(level_generation))
+		if(isnull(level_id) || !length(z_entities))
 			continue
-		if(perform_filtering)
-			// perform entity filtering based on level and configuraiton
-			var/mesh_heuristic = level_instance.persistent_trash_mesh_heuristic
-			var/drop_n_largest_meshes = level_instance.persistent_trash_drop_n_largest
-			var/drop_n_smallest_meshes = level_instance.persistent_trash_drop_n_smallest
-			var/drop_n_most_isolated = level_instance.persistent_trash_drop_n_most_isolated
-			var/drop_n_least_isolated = level_instance.persistent_trash_drop_n_least_isolated
-			// run heuristics
-			var/list/results = heuristics(z_entities, mesh_heuristic)
-			var/list/meshes = results[1]
-			var/list/singles = results[2]
-			// sort results by descending density
-			tim_sort(meshes, GLOBAL_PROC_REF(cmp_persistent_trash_group_density_dsc))
-			tim_sort(singles, GLOBAL_PROC_REF(cmp_numeric_dsc), associative = TRUE)
-			// drop results as needed
-			meshes.Cut(1, min(length(meshes) + 1, drop_n_largest_meshes + 1))
-			meshes.len -= drop_n_smallest_meshes
-			singles.Cut(1, min(length(singles) + 1, drop_n_least_isolated + 1))
-			singles.len -= drop_n_most_isolated
-			// collate filtered back into z_entities
-			var/list/collating = singles.Copy()
-			for(var/datum/persistent_trash_group/mesh as anything in meshes)
-				collating += mesh.trash
-			z_entities = collating
 		// split by area/turf
 		var/list/area_turf_tuples = SSpersistence.bulk_entity_group_by_area_and_turf(z_entities)
 		for(var/list/area_turf_tuple as anything in area_turf_tuples)
@@ -78,12 +80,12 @@
 					)
 				chunk.data = list(
 					"area_lock" = area_type,
-					"turf_lock" = turf_lock,
+					"turf_lock" = turf_type,
 					"entities" = entities_constructed,
 				)
 	return chunks
 
-/datum/bulk_entity_persistence/trash/load_chunks(datum/bulk_entity_chunk/chunks)
+/datum/bulk_entity_persistence/trash/load_chunks(list/datum/bulk_entity_chunk/chunks)
 	var/loaded = 0
 	var/dropped = 0
 	for(var/datum/bulk_entity_chunk/chunk as anything in chunks)
@@ -172,6 +174,7 @@
 	for(var/i in 1 to length(items))
 		var/obj/item/item = items[i]
 		points += new /datum/vec2(item.x, item.y)
+
 
 	#warn triangulation / voronoi
 
