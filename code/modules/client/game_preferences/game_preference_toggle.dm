@@ -147,6 +147,11 @@ GLOBAL_LIST_INIT(game_preference_toggles, init_game_preference_toggles())
 	abstract_type = /datum/game_preference_toggle/ambience
 	category = "Sound - Ambience"
 
+/datum/game_preference_toggle/ambience/area_ambience
+	name = "Area Ambience"
+	key = "area_ambience"
+	default_value = TRUE
+
 /datum/game_preference_toggle/ambience/supermatter_hum
 	name = "Supermatter Hum"
 	key = "supermatter_ambience"
@@ -187,9 +192,9 @@ GLOBAL_LIST_INIT(game_preference_toggles, init_game_preference_toggles())
 
 /datum/game_preference_toggle/music/lobby/toggled(client/user, state)
 	if(state)
-		user.mob?.playtitlemusic()
+		user.playtitlemusic()
 	else
-		user.mob?.media?.stop_music()
+		user.media?.stop_music()
 
 /datum/game_preference_toggle/music/admin
 	name = "Admin Music"

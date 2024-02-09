@@ -230,7 +230,7 @@
 
 	// Admins with RLOOC displayed who weren't already in
 	for(var/client/admin in GLOB.admins)
-		if(!(admin in receivers) && admin.get_preference_toggle(/datum/game_preference_toggle/admin/global_hud_looc))
+		if(!(admin in receivers) && admin.get_preference_toggle(/datum/game_preference_toggle/admin/global_looc))
 			r_receivers |= admin
 
 	msg = emoji_parse(msg)
