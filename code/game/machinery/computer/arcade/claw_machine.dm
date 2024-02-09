@@ -174,7 +174,7 @@
 		ui.autoupdate = TRUE
 		ui.open()
 
-/obj/machinery/computer/arcade/clawmachine/ui_data(mob/user, datum/tgui/ui)
+/obj/machinery/computer/arcade/clawmachine/ui_data(mob/user, datum/tgui/ui, is_module)
 	var/list/data = list()
 
 	data["wintick"] = wintick

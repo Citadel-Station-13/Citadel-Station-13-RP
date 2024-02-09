@@ -55,7 +55,7 @@
 		ui = new(user, src, "XenoarchSuspension", name)
 		ui.open()
 
-/obj/machinery/suspension_gen/ui_data(mob/user, datum/tgui/ui)
+/obj/machinery/suspension_gen/ui_data(mob/user, datum/tgui/ui, is_module)
 	var/list/data = ..()
 
 	data["cell"] = cell

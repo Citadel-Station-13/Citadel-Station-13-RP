@@ -337,7 +337,7 @@
 /**
  * static data for tgui panel
  */
-/datum/ability/ui_static_data(mob/user, datum/tgui/ui)
+/datum/ability/ui_static_data(mob/user, datum/tgui/ui, is_module)
 	return list(
 		"$tgui" = tgui_id,
 		"$src" = REF(src),

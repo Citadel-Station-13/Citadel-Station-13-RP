@@ -43,7 +43,7 @@
 				G.rate = new_delay
 			return TRUE
 
-/datum/tgui_module_old/gyrotron_control/ui_data(mob/user, datum/tgui/ui)
+/datum/tgui_module_old/gyrotron_control/ui_data(mob/user, datum/tgui/ui, is_module)
 	var/list/data = list()
 	var/list/gyros = list()
 

@@ -189,7 +189,7 @@
 		ui = new(user, src, "ICPrinter", name) // 500, 600
 		ui.open()
 
-/obj/item/integrated_circuit_printer/ui_static_data(mob/user, datum/tgui/ui)
+/obj/item/integrated_circuit_printer/ui_static_data(mob/user, datum/tgui/ui, is_module)
 	var/list/data = ..()
 
 	var/list/categories = list()
@@ -233,7 +233,7 @@
 
 	return data
 
-/obj/item/integrated_circuit_printer/ui_data(mob/user, datum/tgui/ui)
+/obj/item/integrated_circuit_printer/ui_data(mob/user, datum/tgui/ui, is_module)
 	var/list/data = ..()
 
 	data["metal"] = cur_metal

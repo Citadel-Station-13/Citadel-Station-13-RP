@@ -58,10 +58,11 @@
  * @params
  * * user - (optional) the mob using the UI
  * * ui - (optional) the host tgui
+ * * is_module - (optional) this is a module
  *
  * return list Data to be sent to the UI.
  */
-/datum/proc/ui_data(mob/user, datum/tgui/ui)
+/datum/proc/ui_data(mob/user, datum/tgui/ui, is_module)
 	return list() // Not implemented.
 
 /**
@@ -78,10 +79,11 @@
  * @params
  * * user - (optional) the mob using the UI
  * * ui - (optional) the host tgui
+ * * is_module - (optional) this is a module
  *
  * return list Static Data to be sent to the UI.
  */
-/datum/proc/ui_static_data(mob/user, datum/tgui/ui)
+/datum/proc/ui_static_data(mob/user, datum/tgui/ui, is_module)
 	return list()
 
 /**
@@ -196,7 +198,7 @@
  * * user - (optional) the mob to update
  * * ui - (optional) the /datum/tgui to update
  */
-/datum/proc/update_ui_data(mob/user, datum/tgui/ui)
+/datum/proc/update_ui_data(mob/user, datum/tgui/ui, is_module)
 	if(isnull(user))
 		SStgui.update_uis(src)
 	else

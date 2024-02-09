@@ -102,7 +102,7 @@
 		ui = new(user, src, "AtmosPump", name)
 		ui.open()
 
-/obj/machinery/atmospherics/component/unary/outlet_injector/ui_data(mob/user, datum/tgui/ui)
+/obj/machinery/atmospherics/component/unary/outlet_injector/ui_data(mob/user, datum/tgui/ui, is_module)
 	var/data = list()
 	data["on"] = injecting
 	data["rate"] = round(volume_rate)

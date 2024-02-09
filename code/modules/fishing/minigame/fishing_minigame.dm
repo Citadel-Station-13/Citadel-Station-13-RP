@@ -164,7 +164,7 @@
 	if(!completed)
 		complete(FALSE)
 
-/datum/fishing_challenge/ui_static_data(mob/user, datum/tgui/ui)
+/datum/fishing_challenge/ui_static_data(mob/user, datum/tgui/ui, is_module)
 	. = ..()
 	.["difficulty"] = max(1,min(difficulty,100))
 	.["fish_ai"] = fish_ai

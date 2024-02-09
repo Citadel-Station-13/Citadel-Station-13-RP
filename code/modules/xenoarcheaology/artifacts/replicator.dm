@@ -147,7 +147,7 @@
 		ui = new(user, src, "XenoarchReplicator", name)
 		ui.open()
 
-/obj/machinery/replicator/ui_data(mob/user, datum/tgui/ui)
+/obj/machinery/replicator/ui_data(mob/user, datum/tgui/ui, is_module)
 	var/list/data = ..()
 	data["tgui_construction"] = tgui_construction
 	return data

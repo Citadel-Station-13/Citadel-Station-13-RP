@@ -104,7 +104,7 @@
 			if(vmode > 1)
 				vmode = 0
 
-/obj/machinery/computer/stockexchange/ui_data(mob/user, datum/tgui/ui)
+/obj/machinery/computer/stockexchange/ui_data(mob/user, datum/tgui/ui, is_module)
 	var/list/data = list()
 
 	data["stationName"] = (LEGACY_MAP_DATUM).station_name
@@ -207,7 +207,7 @@
 		ui = new(user, src, "StockExchangeHistory")
 		ui.open()
 
-/obj/machinery/computer/stockexchange/history/ui_data(mob/user, datum/tgui/ui)
+/obj/machinery/computer/stockexchange/history/ui_data(mob/user, datum/tgui/ui, is_module)
 	var/list/data = list()
 	//data["var"] = var
 	return data
@@ -230,7 +230,7 @@
 		ui = new(user, src, "StockExchangeArchive")
 		ui.open()
 
-/obj/machinery/computer/stockexchange/archive/ui_data(mob/user, datum/tgui/ui)
+/obj/machinery/computer/stockexchange/archive/ui_data(mob/user, datum/tgui/ui, is_module)
 	var/list/data = list()
 	//data["var"] = var
 	return data

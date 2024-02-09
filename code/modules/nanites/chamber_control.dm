@@ -73,7 +73,7 @@
 			linked.try_refresh_protean(usr)
 			return TRUE
 
-/obj/machinery/computer/nanite_chamber/ui_data(mob/user, datum/tgui/ui)
+/obj/machinery/computer/nanite_chamber/ui_data(mob/user, datum/tgui/ui, is_module)
 	. = ..()
 	if(isnull(linked))
 		return
@@ -81,7 +81,7 @@
 	.["locked"] = linked.locked
 	.["operating"] = linked.operating
 
-/obj/machinery/computer/nanite_chamber/ui_static_data(mob/user, datum/tgui/ui)
+/obj/machinery/computer/nanite_chamber/ui_static_data(mob/user, datum/tgui/ui, is_module)
 	. = ..()
 	if(isnull(linked))
 		.["hasChamber"] = FALSE

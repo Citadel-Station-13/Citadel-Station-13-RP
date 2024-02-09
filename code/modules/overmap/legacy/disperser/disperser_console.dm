@@ -127,7 +127,7 @@
 		ui = new(user, src, "OvermapDisperser", "[linked.name] ORB control") // 400, 550
 		ui.open()
 
-/obj/machinery/computer/ship/disperser/ui_data(mob/user, datum/tgui/ui)
+/obj/machinery/computer/ship/disperser/ui_data(mob/user, datum/tgui/ui, is_module)
 	var/list/data = list()
 	data["faillink"] = FALSE
 	data["calibration"] = null

@@ -171,7 +171,7 @@
 		ui = new(user, src, "AlgaeFarm", name)
 		ui.open()
 
-/obj/machinery/atmospherics/component/binary/algae_farm/ui_data(mob/user, datum/tgui/ui)
+/obj/machinery/atmospherics/component/binary/algae_farm/ui_data(mob/user, datum/tgui/ui, is_module)
 	var/list/data = list()
 
 	data["panelOpen"] = panel_open

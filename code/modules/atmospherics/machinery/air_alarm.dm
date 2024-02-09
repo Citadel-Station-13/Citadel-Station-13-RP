@@ -539,7 +539,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/air_alarm, 26)
 			ui.set_state(state)
 		ui.open()
 
-/obj/machinery/air_alarm/ui_data(mob/user, datum/tgui/ui)
+/obj/machinery/air_alarm/ui_data(mob/user, datum/tgui/ui, is_module)
 	. = ..()
 	var/datum/gas_mixture/environment = loc.return_air()
 	.["environment"] = environment.tgui_analyzer_scan(GAS_GROUP_REAGENT | GAS_GROUP_UNKNOWN)
@@ -573,7 +573,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/air_alarm, 26)
 	. += data
 	//! end
 
-/obj/machinery/air_alarm/ui_static_data(mob/user, datum/tgui/ui)
+/obj/machinery/air_alarm/ui_static_data(mob/user, datum/tgui/ui, is_module)
 	. = ..()
 	.["gasContext"] = global.gas_data.tgui_gas_context()
 	.["gasTLV"] = tlv_ids

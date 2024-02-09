@@ -2368,6 +2368,7 @@
 #include "code\modules\client\data\client_data.dm"
 #include "code\modules\client\data\player_data.dm"
 #include "code\modules\client\game_preferences\game_preference_entry.dm"
+#include "code\modules\client\game_preferences\game_preference_middleware.dm"
 #include "code\modules\client\game_preferences\game_preference_toggle.dm"
 #include "code\modules\client\game_preferences\game_preferences.dm"
 #include "code\modules\client\game_preferences\entries\graphics.dm"

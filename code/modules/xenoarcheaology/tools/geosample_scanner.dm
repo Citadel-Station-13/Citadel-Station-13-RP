@@ -124,7 +124,7 @@
 		ui = new(user, src, "XenoarchSpectrometer", name)
 		ui.open()
 
-/obj/machinery/radiocarbon_spectrometer/ui_data(mob/user, datum/tgui/ui)
+/obj/machinery/radiocarbon_spectrometer/ui_data(mob/user, datum/tgui/ui, is_module)
 	var/list/data = ..()
 
 

@@ -48,6 +48,9 @@ GLOBAL_LIST_INIT(game_preference_entries, init_game_preference_entries())
 /datum/game_preference_entry/proc/on_set(client/user, value)
 	return
 
+/datum/game_preference_entry/proc/filter_value(client/user, value)
+	return value
+
 /datum/game_preference_entry/proc/migrate_legacy_data(data)
 	return data
 
@@ -57,15 +60,27 @@ GLOBAL_LIST_INIT(game_preference_entries, init_game_preference_entries())
 	var/max_value
 	var/round_to_nearest
 
+/datum/game_preference/entry/number/filter_value(client/user, value)
+	. = isnum(value)? clamp(value, min_value, max_value) : default_value
+	if(!isnull(.))
+		. = round(., round_to_nearest)
+
 /datum/game_preference_entry/string
 	default_value = ""
 	var/min_length = 0
 	var/max_length = 64
 
+/datum/game_preference/entry/string/filter_value(client/user, value)
+	. = "[value]"
+	return copytext_char(., 1, min(length_char(.) + 1, max_length + 1))
+
 /datum/game_preference_entry/toggle
 	default_value = TRUE
 	var/enabled_name = "On"
 	var/disabled_name = "Off"
+
+/datum/game_preference/entry/toggle/filter_value(client/user, value)
+	return !!value
 
 /datum/game_preference_entry/dropdown
 	default_value = null
@@ -75,6 +90,9 @@ GLOBAL_LIST_INIT(game_preference_entries, init_game_preference_entries())
 /datum/game_preference_entry/dropdown/New()
 	if(isnull(default_value) && length(options))
 		default_value = options[1]
+
+/datum/game_preference_entry/dropdown/filter_value(client/user, value)
+	return (value in options)? value : ((length(options) && options[1]) || null)
 
 #warn impl
 

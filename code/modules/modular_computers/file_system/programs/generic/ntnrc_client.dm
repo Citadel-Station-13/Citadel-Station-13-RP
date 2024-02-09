@@ -170,12 +170,12 @@
 		channel.remove_client(src)
 	..()
 
-/datum/computer_file/program/chatclient/ui_static_data(mob/user, datum/tgui/ui)
+/datum/computer_file/program/chatclient/ui_static_data(mob/user, datum/tgui/ui, is_module)
 	var/list/data = list()
 	data["can_admin"] = can_run(user, FALSE, ACCESS_NETWORK)
 	return data
 
-/datum/computer_file/program/chatclient/ui_data(mob/user, datum/tgui/ui)
+/datum/computer_file/program/chatclient/ui_data(mob/user, datum/tgui/ui, is_module)
 	if(!ntnet_global || !ntnet_global.chat_channels)
 		return list()
 

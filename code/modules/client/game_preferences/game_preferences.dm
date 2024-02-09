@@ -33,8 +33,14 @@ GLOBAL_LIST_EMPTY(game_preferences)
 	var/list/toggles_by_key
 	/// preferences by key - key = value
 	var/list/entries_by_key
+
+	//* Handled by middleware-like entries *//
 	/// keybindings - key to list of keys
 	var/list/keybindings
+	/// ignored players
+	var/list/ignored_ckeys
+	/// ignored
+
 	/// were we originally sql loaded?
 	/// used to determine if sql is authoritative when sql comes back
 	///
@@ -103,6 +109,29 @@ GLOBAL_LIST_EMPTY(game_preferences)
 #warn impl
 
 //* UI *//
+
+/datum/game_preferences/ui_static_data(mob/user, datum/tgui/ui, is_module)
+	. = ..()
+
+/datum/game_preferences/ui_data(mob/user, datum/tgui/ui, is_module)
+	. = ..()
+
+/datum/game_preferences/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+	. = ..()
+
+/datum/game_preferences/ui_route(action, list/params, datum/tgui/ui, id)
+	. = ..()
+	#warn impl
+
+/datum/game_preferences/ui_status(mob/user, datum/ui_state/state)
+	if(user.ckey == ckey)
+		return UI_INTERACTIVE
+	if(check_rights(C = user, rights_required = R_DEBUG))
+		return UI_INTERACTIVE
+	return UI_CLOSE
+
+/datum/game_preferences/ui_act(action, list/params, datum/tgui/ui)
+	. = ..()
 
 #warn impl
 

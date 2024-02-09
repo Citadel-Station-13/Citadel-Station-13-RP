@@ -848,7 +848,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 22)
 		ui = new(user, src, "APC", name) // 510, 460
 		ui.open()
 
-/obj/machinery/power/apc/ui_data(mob/user, datum/tgui/ui)
+/obj/machinery/power/apc/ui_data(mob/user, datum/tgui/ui, is_module)
 	var/list/data = list(
 		"locked" = locked,
 		"normallyLocked" = locked,
