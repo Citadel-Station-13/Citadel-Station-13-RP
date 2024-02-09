@@ -46,7 +46,21 @@ GLOBAL_LIST_INIT(game_preference_entries, init_game_preference_entries())
 /datum/game_preference_entry/proc/is_visible(client/user)
 	return TRUE
 
+/**
+ * called when a value is changed with a client active
+ */
 /datum/game_preference_entry/proc/on_set(client/user, value)
+	return
+
+/**
+ * called when we first load onto a client to apply the value
+ * 
+ * subsequent loads don't call this, we only call this on the first load of the preferences
+ * the client should poll their preferences datum itself. 
+ * 
+ * this is just so the client init isn't blocked on prefs init, technically
+ */
+/datum/game_preference_entry/proc/on_first_init(client/user, value)
 	return
 
 /datum/game_preference_entry/proc/filter_value(client/user, value)
@@ -67,6 +81,7 @@ GLOBAL_LIST_INIT(game_preference_entries, init_game_preference_entries())
 	)
 
 /datum/game_preference_entry/number
+	abstract_type = /datum/game_preference_entry/number
 	default_value = 0
 	/// optional
 	var/min_value
@@ -89,6 +104,7 @@ GLOBAL_LIST_INIT(game_preference_entries, init_game_preference_entries())
 	)
 
 /datum/game_preference_entry/string
+	abstract_type = /datum/game_preference_entry/string
 	default_value = ""
 	/// mandatory
 	var/min_length = 0
@@ -107,6 +123,7 @@ GLOBAL_LIST_INIT(game_preference_entries, init_game_preference_entries())
 	)
 
 /datum/game_preference_entry/toggle
+	abstract_type = /datum/game_preference_entry/toggle
 	default_value = TRUE
 	/// mandatory
 	var/enabled_name = "On"
@@ -124,6 +141,7 @@ GLOBAL_LIST_INIT(game_preference_entries, init_game_preference_entries())
 	)
 
 /datum/game_preference_entry/dropdown
+	abstract_type = /datum/game_preference_entry/dropdown
 	default_value = null
 	/// entries must be strings
 	var/list/options = list()
@@ -139,6 +157,18 @@ GLOBAL_LIST_INIT(game_preference_entries, init_game_preference_entries())
 	return ..() | list(
 		"type" = "dropdown",
 		"options" = options,
+	)
+
+/datum/game_preference_entry/simple_color
+	abstract_type = /datum/game_preference_entry/simple_color
+	default_value = "#ffffff"
+
+/datum/game_preference_entry/simple_color/filter_value(client/user, value)
+	return sanitize_hexcolor(value, desired_format = 6, default = default_value)
+
+/datum/game_preference_entry/simple_color/tgui_preference_schema()
+	return ..() | list(
+		"type" = "simpleColor",
 	)
 
 #warn impl

@@ -1,20 +1,20 @@
 import { useBackend, useComputedOnce, useLocalState } from "../../backend";
 import { Button, Section, Stack } from "../../components";
 import { Window } from "../../layouts";
-import { KeybindScreen } from "./KeybindScreen";
-import { PreferenceEntry, PreferenceEntrySchema } from "./PreferenceEntry";
-import { PreferenceToggleSchema } from "./PreferenceToggle";
+import { GamePreferenceKeybindScreen } from "./GamePreferenceKeybinds";
+import { GamePreferenceEntry, GamePreferenceEntrySchema } from "./GamePreferenceEntry";
+import { GamePreferenceToggleSchema } from "./GamePreferenceToggle";
 
 interface GamePreferencesData {
-  entries: PreferenceEntrySchema[];
-  toggles: PreferenceToggleSchema[];
+  entries: GamePreferenceEntrySchema[];
+  toggles: GamePreferenceToggleSchema[];
 }
 
 const middlewareCategories = [
   "Keybindings",
 ];
 
-const computeGamePreferenceCategoryCache = (entries: PreferenceEntrySchema[]): Record<string, string[]> => {
+const computeGamePreferenceCategoryCache = (entries: GamePreferenceEntrySchema[]): Record<string, string[]> => {
   let computed: Record<string, string[]> = {};
   entries.forEach((entry) => {
     if (!computed[entry.category]) {
@@ -73,7 +73,7 @@ const GamePreferencesBody = (props: GamePreferencesBodyProps, context) => {
   switch (props.activeCategory) {
     case "Keybindings":
       return (
-        <KeybindScreen />
+        <GamePreferenceKeybindScreen />
       );
   }
 
@@ -82,7 +82,7 @@ const GamePreferencesBody = (props: GamePreferencesBodyProps, context) => {
       {props.subcategories.map((subcat) => (
         <Section title={subcat} key={subcat}>
           {data.entries.filter((e) => e.category === props.activeCategory && e.subcategory === subcat).map((entry) => (
-            <PreferenceEntry schema={entry} key={entry.key} />
+            <GamePreferenceEntry schema={entry} key={entry.key} />
           ))}
         </Section>
       ))}

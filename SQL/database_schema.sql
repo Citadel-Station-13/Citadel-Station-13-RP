@@ -115,6 +115,24 @@ END
 $$
 DELIMITER ;
 
+
+-- Preferences --
+
+-- Stores game preferences --
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%game_preferences` (
+  `player` INT(11) NOT NULL,
+  `toggles` MEDIUMTEXT NOT NULL,
+  `entries` MEDIUMTEXT NOT NULL,
+  `keybinds` MEDIUMTEXT NOT NULL,
+  `modified` DATETIME NOT NULL,
+  `version` INT(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `linked_player` FOREIGN KEY (`player`)
+  REFERENCES `%_PREFIX_%player` (`id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 -- Security - Ipintel --
 
 --        Ipintel Cache Table       --

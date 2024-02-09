@@ -3,5 +3,6 @@
 
 /datum/game_preference_middleware
 	key = "keybindings"
+	tgui_interface = ""
 
 #warn impl all

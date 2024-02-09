@@ -1,16 +1,17 @@
 import { BooleanLike } from "common/react";
 
-interface PreferenceEntryProps {
-  schema: PreferenceEntrySchema;
+interface GamePreferenceEntryProps {
+  schema: GamePreferenceEntrySchema;
   value: any;
   setValue: (v: any) => void;
 }
 
-export type PreferenceEntrySchema = 
+export type GamePreferenceEntrySchema = 
   PreferenceNumberEntrySchema | 
   PreferenceStringEntrySchema | 
   PreferenceToggleEntrySchema | 
-  PreferenceDropdownEntrySchema;
+  PreferenceDropdownEntrySchema | 
+  PreferenceSimpleColorEntrySchema;
 
 interface PreferenceBaseEntrySchema {
   key: string;
@@ -50,6 +51,10 @@ interface PreferenceDropdownEntrySchema extends PreferenceBaseEntrySchema {
   defaultValue: string;
 }
 
-export const PreferenceEntry = (props: PreferenceEntryProps, context) => {
+interface PreferenceSimpleColorEntrySchema extends PreferenceBaseEntrySchema {
+  type: "simpleColor";
+}
+
+export const GamePreferenceEntry = (props: GamePreferenceEntryProps, context) => {
   
 };

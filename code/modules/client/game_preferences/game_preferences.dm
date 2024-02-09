@@ -37,10 +37,7 @@ GLOBAL_LIST_EMPTY(game_preferences)
 	//* Handled by middleware-like entries *//
 	/// keybindings - key to list of keys
 	var/list/keybindings
-	/// ignored players
-	var/list/ignored_ckeys
-	/// ignored
-
+	
 	/// were we originally sql loaded?
 	/// used to determine if sql is authoritative when sql comes back
 	///
@@ -59,6 +56,8 @@ GLOBAL_LIST_EMPTY(game_preferences)
 	/// we will try to load a sql preferences of a given playerid
 	/// when we load from sql
 	var/authoritative_player_id
+	/// our prefs version
+	var/version
 
 /datum/game_preferences/New(ckey)
 	src.ckey = ckey
@@ -88,23 +87,46 @@ GLOBAL_LIST_EMPTY(game_preferences)
 	#warn impl
 
 /datum/game_preferences/proc/get_toggle(datum/game_preference_toggle/id_path_instance)
-	#warn impl
+	var/datum/game_preference_toggle/toggle = fetch_game_preference_toggle(id_path_instance)
+	if(isnull(toggle))
+		CRASH("invalid fetch")
+	if(!initialized)
+		return toggle.default_value
+	if(!toggle.is_visible(GLOB.directory[ckey]))
+		return toggle.default_value
+	return toggles_by_key[toggle.key]
 
 /datum/game_preferences/proc/set_entry(datum/game_preference_entry/id_path_instance, value)
 	#warn impl
 
 /datum/game_preferences/proc/get_entry(datum/game_preference_entry/id_path_instance)
-	#warn impl
+	var/datum/game_preference_entry/entry = fetch_game_preference_entry(id_path_instance)
+	if(isnull(toggle))
+		CRASH("invalid fetch")
+	if(!initialized)
+		return entry.default_value
+	if(!entry.is_visible(GLOB.directory[ckey]))
+		return entry.default_value
+	return entries_by_key[entry.key]
 
 //* Save / Load *//
 
+/**
+ * @return FALSE if we couldn't load
+ */
 /datum/game_preferences/proc/load_from_sql()
 
 /datum/game_preferences/proc/save_to_sql()
 
+/**
+ * @return FALSE if we couldn't load
+ */
 /datum/game_preferences/proc/load_from_file()
 
 /datum/game_preferences/proc/save_to_file()
+	var/savefile_path = "data/player_saves/[copytext(ckey, 1, 2)]/[ckey]/game_preferences.sav"
+	
+	
 
 #warn impl
 
@@ -141,7 +163,7 @@ GLOBAL_LIST_EMPTY(game_preferences)
 	var/datum/game_preference_toggle/toggle = fetch_game_preference_toggle(id_path_instance)
 	if(isnull(toggle))
 		CRASH("invalid fetch")
-	if(!initialized)
+	if(!initialized || !preferences.initialized)
 		return toggle.default_value
 	if(!toggle.is_visible(src))
 		return toggle.default_value
@@ -163,7 +185,7 @@ GLOBAL_LIST_EMPTY(game_preferences)
 	var/datum/game_preference_toggle/toggle = fetch_game_preference_toggle(id_path_instance)
 	if(isnull(toggle))
 		CRASH("invalid fetch")
-	if(!client?.initialized)
+	if(!client?.initialized || !client.preferences.initialized)
 		return toggle.default_value
 	if(!toggle.is_visible(client))
 		return toggle.default_value
@@ -173,7 +195,7 @@ GLOBAL_LIST_EMPTY(game_preferences)
 	var/datum/game_preference_entry/entry = fetch_game_preference_entry(id_path_instance)
 	if(isnull(entry))
 		CRASH("invalid fetch")
-	if(!client?.initialized)
+	if(!client?.initialized || !client.preferences.initialized)
 		return entry.default_value
 	if(!entry.is_visible(client))
 		return entry.default_value
