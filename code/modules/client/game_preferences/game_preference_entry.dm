@@ -28,19 +28,25 @@ GLOBAL_LIST_INIT(game_preference_entries, init_game_preference_entries())
 	var/description = "A preference entry."
 	/// Must be unique
 	var/key
-	var/category
+	var/category = "Misc"
+	var/subcategory = "Misc"
+	/// priority - higher means it appears first. only valid within the same category.
+	var/priority = 0
+	/// default value
+	var/default_value
 	/// legacy import id - set if it's using new global prefs system
 	var/legacy_global_key
 	/// legacy import id - set if it's using old savefile direct write
 	var/legacy_savefile_key
-	/// default value
-	var/default_value
 
 /datum/game_preference_entry/proc/default_value(client/user)
 	return default_value
 
 /datum/game_preference_entry/proc/is_visible(client/user)
 	return TRUE
+
+/datum/game_preference_entry/proc/on_set(client/user, value)
+	return
 
 /datum/game_preference_entry/proc/migrate_legacy_data(data)
 	return data
