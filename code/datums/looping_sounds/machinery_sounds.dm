@@ -102,4 +102,4 @@
 	mid_length = 4
 	end_sound = 'sound/machines/air_pump/airpumpshutdown.ogg'
 	volume = 15
-	pref_check = /datum/client_preference/air_pump_noise
+	pref_check = /datum/game_preference_toggle/ambience/atmospherics

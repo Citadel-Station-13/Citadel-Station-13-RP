@@ -318,7 +318,7 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 				var/mob/observer/dead/DM
 				if(istype(subject, /mob/observer/dead))
 					DM = subject
-				var/anonsay = DM?.get_preference_toggle(/datum/client_preference/anonymous_ghost_chat)
+				var/anonsay = DM?.get_preference_toggle(/datum/game_preference_toggle/presence/anonymous_ghost_chat)
 				if(M.client.holder) 							// What admins see
 					lname = "[keyname][(anonsay) ? "*" : (DM ? "" : "^")] ([name])"
 				else
@@ -363,7 +363,7 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 			C = M.original.client
 
 	if(C)
-		if(!isnull(C.holder?.fakekey) || !C.get_preference_toggle(/datum/client_preference/announce_ghost_joinleave))
+		if(!isnull(C.holder?.fakekey) || !C.get_preference_toggle(/datum/game_preference_toggle/presence/announce_ghost_joinleave))
 			return
 		var/name
 		if(C.mob)

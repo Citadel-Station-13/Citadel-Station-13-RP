@@ -195,7 +195,7 @@ GLOBAL_VAR_INIT(sound_distance_offscreen, 7)
 
 /client/proc/playtitlemusic()
 	if(!SSticker || !SSmedia_tracks.lobby_tracks.len || !media)	return
-	if(get_preference_toggle(/datum/client_preference/play_lobby_music))
+	if(get_preference_toggle(/datum/game_preference_toggle/music/lobby))
 		var/datum/media_track/T = pick(SSmedia_tracks.lobby_tracks)
 		media.push_music(T.url, world.time, 0.85)
 		to_chat(src,"<span class='notice'>Lobby music: <b>[T.title]</b> by <b>[T.artist]</b>.</span>")

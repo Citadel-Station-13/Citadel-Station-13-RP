@@ -1562,7 +1562,7 @@ datum/admins/var/obj/item/paper/admin/faxreply // var to hold fax replies in
 	if(!isobserver(owner.mob))
 		return
 	var/mob/observer/dead/dead = owner.mob
-	var/stealthghost = owner.get_preference_toggle(/datum/client_preference/holder/stealth_ghost_mode)
+	var/stealthghost = owner.get_preference_toggle(/datum/game_preference_toggle/admin/stealth_hides_ghost)
 	if(!stealthghost || !fakekey)
 		dead.invisibility = initial(dead.invisibility)
 		dead.alpha = initial(dead.alpha)

@@ -663,9 +663,9 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set name = "Toggle Anonymous Chat"
 	set desc = "Toggles showing your key in dead chat."
 
-	client.toggle_preference(/datum/client_preference/anonymous_ghost_chat)
+	client.toggle_preference(/datum/game_preference_toggle/presence/anonymous_ghost_chat)
 	SScharacters.queue_preferences_save(client.prefs)
-	if(get_preference_toggle(/datum/client_preference/anonymous_ghost_chat))
+	if(get_preference_toggle(/datum/game_preference_toggle/presence/anonymous_ghost_chat))
 		to_chat(src, "<span class='info'>Your key won't be shown when you speak in dead chat.</span>")
 	else
 		to_chat(src, "<span class='info'>Your key will be publicly visible again.</span>")

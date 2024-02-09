@@ -68,7 +68,7 @@
 				entry += "[C.holder.fakekey]"
 			else
 				entry += "[C.key]"
-			if(C.get_preference_toggle(/datum/client_preference/show_in_advanced_who))
+			if(C.get_preference_toggle(/datum/game_preference_toggle/presence/show_advanced_who))
 				if(isobserver(C.mob))
 					entry += " - <font color='gray'>Observing</font>"
 				else if(istype(C.mob, /mob/new_player))

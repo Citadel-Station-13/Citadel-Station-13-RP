@@ -27,7 +27,7 @@ GLOBAL_LIST_INIT(stealthmin_nicknames, world.file2list("[global.config.directory
 
 	var/key
 	if(holder.fakekey)
-		if(get_preference_toggle(/datum/client_preference/holder/obfuscate_stealth_dsay))
+		if(get_preference_toggle(/datum/game_preference_toggle/admin/obfuscate_stealth_dsay))
 			key = pick(GLOB.stealthmin_nicknames)
 		else
 			key = holder.fakekey
