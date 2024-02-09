@@ -5,6 +5,7 @@ GLOBAL_LIST_INIT(game_preference_entries, init_game_preference_entries())
 
 /proc/init_game_preference_entries()
 	. = list()
+	var/list/category_cache = list()
 	for(var/datum/game_preference_entry/casted as anything in subtypesof(/datum/game_preference_entry))
 		if(initial(casted.abstract_type) == casted)
 			continue
@@ -54,10 +55,24 @@ GLOBAL_LIST_INIT(game_preference_entries, init_game_preference_entries())
 /datum/game_preference_entry/proc/migrate_legacy_data(data)
 	return data
 
+/datum/game_preference_entry/proc/tgui_preference_schema()
+	return list(
+		"key" = key,
+		"category" = category,
+		"subcategory" = subcategory,
+		"name" = name,
+		"desc" = description,
+		"priority" = priority,
+		"defaultValue" = default_value,
+	)
+
 /datum/game_preference_entry/number
 	default_value = 0
+	/// optional
 	var/min_value
+	/// optional
 	var/max_value
+	/// optional
 	var/round_to_nearest
 
 /datum/game_preference/entry/number/filter_value(client/user, value)
@@ -65,22 +80,48 @@ GLOBAL_LIST_INIT(game_preference_entries, init_game_preference_entries())
 	if(!isnull(.))
 		. = round(., round_to_nearest)
 
+/datum/game_preference_entry/number/tgui_preference_schema()
+	return ..() | list(
+		"type" = "number",
+		"minValue" = min_value,
+		"maxValue" = max_value,
+		"round_to" = round_to_nearest,
+	)
+
 /datum/game_preference_entry/string
 	default_value = ""
+	/// mandatory
 	var/min_length = 0
+	/// mandatory
 	var/max_length = 64
 
 /datum/game_preference/entry/string/filter_value(client/user, value)
 	. = "[value]"
 	return copytext_char(., 1, min(length_char(.) + 1, max_length + 1))
 
+/datum/game_preference_entry/string/tgui_preference_schema()
+	return ..() | list(
+		"type" = "string",
+		"minLength" = min_length,
+		"maxLength" = max_length,
+	)
+
 /datum/game_preference_entry/toggle
 	default_value = TRUE
+	/// mandatory
 	var/enabled_name = "On"
+	/// mandatory
 	var/disabled_name = "Off"
 
 /datum/game_preference/entry/toggle/filter_value(client/user, value)
 	return !!value
+
+/datum/game_preference_entry/toggle/tgui_preference_schema()
+	return ..() | list(
+		"type" = "toggle",
+		"enabledName" = enabled_name,
+		"disabledName" = disabled_name,
+	)
 
 /datum/game_preference_entry/dropdown
 	default_value = null
@@ -93,6 +134,12 @@ GLOBAL_LIST_INIT(game_preference_entries, init_game_preference_entries())
 
 /datum/game_preference_entry/dropdown/filter_value(client/user, value)
 	return (value in options)? value : ((length(options) && options[1]) || null)
+
+/datum/game_preference_entry/dropdown/tgui_preference_schema()
+	return ..() | list(
+		"type" = "dropdown",
+		"options" = options,
+	)
 
 #warn impl
 
