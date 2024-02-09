@@ -141,17 +141,21 @@ GLOBAL_LIST_EMPTY(game_preferences)
 	var/datum/game_preference_toggle/toggle = fetch_game_preference_toggle(id_path_instance)
 	if(isnull(toggle))
 		CRASH("invalid fetch")
-	if(initialized)
-		return preferences.toggles[toggle.key]
-	return id_path_instance.default_value
+	if(!initialized)
+		return toggle.default_value
+	if(!toggle.is_visible(src))
+		return toggle.default_value
+	return preferences.toggles_by_key[toggle.key]
 
 /client/proc/get_preference_entry(datum/game_preference_entry/id_path_instance)
 	var/datum/game_preference_entry/entry = fetch_game_preference_entry(id_path_instance)
 	if(isnull(entry))
 		CRASH("invalid fetch")
-	if(initialized)
-		return preferences.entries[entry.key]
-	return id_path_instance.default_value
+	if(!initialized)
+		return entry.default_value
+	if(!entry.is_visible(src))
+		return entry.default_value
+	return preferences.entries_by_key[entry.key]
 
 //? Mob Wrappers ?//
 
@@ -159,14 +163,18 @@ GLOBAL_LIST_EMPTY(game_preferences)
 	var/datum/game_preference_toggle/toggle = fetch_game_preference_toggle(id_path_instance)
 	if(isnull(toggle))
 		CRASH("invalid fetch")
-	if(client?.initialized)
-		return client.preferences.toggles[toggle.key]
-	return id_path_instance.default_value
+	if(!client?.initialized)
+		return toggle.default_value
+	if(!toggle.is_visible(client))
+		return toggle.default_value
+	return client.preferences.toggles_by_key[toggle.key]
 
 /mob/proc/get_preference_entry(datum/game_preference_entry/id_path_instance)
 	var/datum/game_preference_entry/entry = fetch_game_preference_entry(id_path_instance)
 	if(isnull(entry))
 		CRASH("invalid fetch")
-	if(client?.initialized)
-		return client.preferences.entries[entry.key]
-	return id_path_instance.default_value
+	if(!client?.initialized)
+		return entry.default_value
+	if(!entry.is_visible(client))
+		return entry.default_value
+	return client.preferences.entries_by_key[entry.key]

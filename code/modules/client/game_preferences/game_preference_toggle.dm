@@ -95,7 +95,7 @@ GLOBAL_LIST_INIT(game_preference_toggles, init_game_preference_toggles())
 	legacy_key = "CHAT_LOOC"
 	key = "toggle_looc"
 
-/datum/game_preference_toggle/chat/dead
+/datum/game_preference_toggle/chat/dsay
 	name = "Deadchat enabled"
 	description = "Toggles whether you see dead chat."
 	legacy_key = "CHAT_DEAD"

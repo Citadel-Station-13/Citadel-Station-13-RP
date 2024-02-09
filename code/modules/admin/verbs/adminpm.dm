@@ -166,8 +166,8 @@
 				to_chat(src, "<font color=#4F49AF>PM to-<b>Admins</b>: [msg]</font>")
 
 			//play the recieving admin the adminhelp sound (if they have them enabled)
-			if(recipient.get_preference_toggle(/datum/client_preference/holder/play_adminhelp_ping))
-				SEND_SOUND(recipient, sound('sound/effects/adminhelp.ogg'))
+			// if(recipient.get_preference_toggle(/datum/client_preference/holder/play_adminhelp_ping))
+				// SEND_SOUND(recipient, sound('sound/effects/adminhelp.ogg'))
 
 		else
 			if(holder)	//sender is an admin but recipient is not. Do BIG RED TEXT

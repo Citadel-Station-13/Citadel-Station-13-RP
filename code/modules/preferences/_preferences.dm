@@ -453,7 +453,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	set category = "Vore"
 	set desc = "Toggles Vore Eating noises."
 
-	var/pref_path = /datum/client_preference/eating_noises
+	var/pref_path = /datum/game_preference_toggle/vore/eating_noises
 
 	toggle_preference(pref_path)
 
@@ -469,7 +469,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	set category = "Vore"
 	set desc = "Toggles Vore Digestion noises."
 
-	var/pref_path = /datum/client_preference/digestion_noises
+	var/pref_path = /datum/game_preference_toggle/vore/digestion_noises
 
 	toggle_preference(pref_path)
 

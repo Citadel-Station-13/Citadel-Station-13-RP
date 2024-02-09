@@ -1087,7 +1087,7 @@
 	if(noisy == TRUE && nutrition < 250 && prob(10))
 		var/sound/growlsound = sound(get_sfx("hunger_sounds"))
 		var/growlmultiplier = 100 - (nutrition / 250 * 100)
-		playsound(src, growlsound, vol = growlmultiplier, vary = 1, falloff = 0.1, ignore_walls = TRUE, preference = /datum/client_preference/digestion_noises)
+		playsound(src, growlsound, vol = growlmultiplier, vary = 1, falloff = 0.1, ignore_walls = TRUE, preference = /datum/game_preference_toggle/vore/digestion_noises)
 
 	// TODO: stomach and bloodstream organ.
 	if(!isSynthetic())

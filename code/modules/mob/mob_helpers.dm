@@ -302,7 +302,7 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 		return // Can't talk in deadchat if you can't see it.
 
 	for(var/mob/M in GLOB.player_list)
-		if(M.client && ((!istype(M, /mob/new_player) && M.stat == DEAD) || (M.client.holder && M.client.holder.rights)) && M.get_preference_toggle(/datum/client_preference/show_dsay))
+		if(M.client && ((!istype(M, /mob/new_player) && M.stat == DEAD) || (M.client.holder && M.client.holder.rights)) && M.get_preference_toggle(/datum/game_preference_toggle/chat/dsay))
 			var/follow
 			var/lname
 			if(M.forbid_seeing_deadchat && !M.client.holder)
@@ -333,7 +333,7 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 
 /proc/say_dead_object(var/message, var/obj/subject = null)
 	for(var/mob/M in GLOB.player_list)
-		if(M.client && ((!istype(M, /mob/new_player) && M.stat == DEAD) || (M.client.holder && M.client.holder.rights)) && M.get_preference_toggle(/datum/client_preference/show_dsay))
+		if(M.client && ((!istype(M, /mob/new_player) && M.stat == DEAD) || (M.client.holder && M.client.holder.rights)) && M.get_preference_toggle(/datum/game_preference_toggle/chat/dsay))
 			var/follow
 			var/lname = "Game Master"
 			if(M.forbid_seeing_deadchat && !M.client.holder)
