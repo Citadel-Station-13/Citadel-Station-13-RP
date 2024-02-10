@@ -27,6 +27,8 @@
 	var/crayon_reagent_type = /datum/reagent/crayon_dust
 	/// the reagents in us
 	var/crayon_reagent_amount = 6
+	/// sound to play
+	var/crayon_sound
 
 	/// currently picked datapack string path
 	var/current_graffiti_icon_string_path
@@ -149,7 +151,7 @@
 		to_chat(user, "You take a bite of the crayon and swallow it.")
 		user.nutrition += 1
 		user.reagents.add_reagent("crayon_dust",min(5,uses)/3)
-		if(uses)
+		if(uses)w
 			uses -= 5
 			if(uses <= 0)
 				to_chat(user,"<span class='warning'>You ate your crayon!</span>")

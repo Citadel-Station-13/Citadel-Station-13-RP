@@ -24,11 +24,11 @@
 
 /datum/bulk_entity_persistence/trash/perform_level_filter(list/atom/movable/entities, datum/map_level/level)
 	// perform entity filtering based on level and configuraiton
-	var/mesh_heuristic = level_instance.persistent_trash_mesh_heuristic
-	var/drop_n_largest_meshes = level_instance.persistent_trash_drop_n_largest
-	var/drop_n_smallest_meshes = level_instance.persistent_trash_drop_n_smallest
-	var/drop_n_most_isolated = level_instance.persistent_trash_drop_n_most_isolated
-	var/drop_n_least_isolated = level_instance.persistent_trash_drop_n_least_isolated
+	var/mesh_heuristic = level.persistent_trash_mesh_heuristic
+	var/drop_n_largest_meshes = level.persistent_trash_drop_n_largest
+	var/drop_n_smallest_meshes = level.persistent_trash_drop_n_smallest
+	var/drop_n_most_isolated = level.persistent_trash_drop_n_most_isolated
+	var/drop_n_least_isolated = level.persistent_trash_drop_n_least_isolated
 	// run heuristics
 	var/list/results = heuristics(entities, mesh_heuristic)
 	var/list/meshes = results[1]

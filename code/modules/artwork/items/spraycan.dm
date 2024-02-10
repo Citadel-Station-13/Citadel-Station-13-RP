@@ -6,9 +6,8 @@
 	icon = 'icons/modules/artwork/items/spraycans.dmi'
 	icon_state = "spraycan"
 
-	#warn ugh
-
 	debris_path = /obj/effect/debris/cleanable/crayon/spraycan
+	crayon_sound = /datum/soundbyte/spray_air
 	crayon_free_recolor = TRUE
 	cappable = TRUE
 	capped = TRUE

@@ -156,7 +156,7 @@
 		user.visible_message("*fizzle*", "<span class='danger'>*fizzle*</span>")
 	else
 		src.visible_message("*fizzle*")
-	playsound(src.loc, 'sound/effects/sparks1.ogg', 100, 1)
+	playsound(src.loc, /datum/soundbyte/grouped/sparks, 100, 1)
 /*
 /obj/item/gun/energy/staff/animate
 	name = "staff of animation"
