@@ -6207,7 +6207,7 @@ END CITADEL CHANGE */
 
 /obj/item/reagent_containers/food/snacks/diggerstew
 	name = "digger stew"
-	desc = "A thick, hearty Stew, usually cooked in large portions for hungry Tyrmalin miners."
+	desc = "A thick, hearty stew, usually cooked in large portions for hungry Tyrmalin miners."
 	icon_state = "diggerstew"
 	trash = /obj/item/trash/bowl
 	filling_color = "#9E673A"
@@ -6224,7 +6224,7 @@ END CITADEL CHANGE */
 
 /obj/item/reagent_containers/food/snacks/diggerstew_pot
 	name = "pot of digger stew"
-	desc = "A thick, hearty Stew, usually cooked in large portions for hungry Tyrmalin miners. The larger pot means more veggies!"
+	desc = "A thick, hearty stew, usually cooked in large portions for hungry Tyrmalin miners. The larger pot means more veggies!"
 	icon_state = "diggerstew_pot"
 	filling_color = "#9E673A"
 	nutriment_amt = 10
