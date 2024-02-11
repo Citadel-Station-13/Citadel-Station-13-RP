@@ -425,7 +425,7 @@
 GLOBAL_VAR_INIT(text_tag_icons, new /icon('./icons/chattags.dmi'))
 
 /proc/create_text_tag(tagname, tagdesc = tagname, client/C)
-	if(!(C && C.get_preference_toggle(/datum/game_preference_toggle/chat_tags)))
+	if(!(C && C.get_preference_toggle(/datum/game_preference_toggle/chat/legacy_chat_tags)))
 		return tagdesc
 	return icon2html(GLOB.text_tag_icons, C, tagname)
 

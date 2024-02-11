@@ -330,11 +330,12 @@
 	pre_init_viewport()
 	mob.reload_rendering()
 
-	if(prefs.lastchangelog != GLOB.changelog_hash) //bolds the changelog button on the interface so we know there are updates.
-		to_chat(src, "<span class='info'>You have unread updates in the changelog.</span>")
-		winset(src, "infowindow.changelog", "background-color=#eaeaea;font-style=bold")
-		if(config_legacy.aggressive_changelog)
-			changelog_async()
+	// todo: this is dead because changelog is dead but we should fix it tbvqh
+	// if(prefs.lastchangelog != GLOB.changelog_hash) //bolds the changelog button on the interface so we know there are updates.
+	// 	to_chat(src, "<span class='info'>You have unread updates in the changelog.</span>")
+	// 	winset(src, "infowindow.changelog", "background-color=#eaeaea;font-style=bold")
+	// 	if(config_legacy.aggressive_changelog)
+	// 		changelog_async()
 
 	// ensure asset cache is there
 	INVOKE_ASYNC(src, PROC_REF(warn_if_no_asset_cache_browser))

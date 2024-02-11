@@ -101,9 +101,10 @@
 		GLOB.changelog_tgui = new /datum/changelog()
 
 	GLOB.changelog_tgui.ui_interact(usr)
-	if(prefs.lastchangelog != GLOB.changelog_hash)
-		prefs.lastchangelog = GLOB.changelog_hash
-		prefs.save_preferences()
+	
+	if(player.immediately_available() && player.player_misc["changelog_hash"] != GLOB.changelog_hash)
+		player.player_misc["changelog_hash"] = GLOB.changelog_hash
+		player.save()
 		winset(src, "infowindow.changelog", "font-style=;")
 
 /client/verb/hotkeys_help()

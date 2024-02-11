@@ -20,7 +20,7 @@ GLOBAL_LIST_INIT(game_preference_entries, init_game_preference_entries())
 		entrylike = initial(entrylike.key)
 	else if(istype(entrylike))
 	else
-		entrylike = GLOB.game_preference_entrys[entrylike]
+		entrylike = GLOB.game_preference_entries[entrylike]
 	return entrylike
 
 /datum/game_preference_entry
@@ -85,7 +85,7 @@ GLOBAL_LIST_INIT(game_preference_entries, init_game_preference_entries())
 	/// optional
 	var/round_to_nearest
 
-/datum/game_preference/entry/number/filter_value(client/user, value)
+/datum/game_preference_entry/number/filter_value(client/user, value)
 	. = isnum(value)? clamp(value, min_value, max_value) : default_value
 	if(!isnull(.))
 		. = round(., round_to_nearest)
