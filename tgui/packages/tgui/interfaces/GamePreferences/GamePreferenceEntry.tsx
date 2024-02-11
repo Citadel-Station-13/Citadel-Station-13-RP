@@ -1,4 +1,5 @@
 import { BooleanLike } from "common/react";
+import { ByondAtomColor } from "../common/Color";
 
 interface GamePreferenceEntryProps {
   schema: GamePreferenceEntrySchema;
@@ -42,7 +43,7 @@ interface PreferenceToggleEntrySchema extends PreferenceBaseEntrySchema {
   type: "toggle";
   enabledName: string;
   disabledName: string;
-  defaultValue: BooleanLike
+  defaultValue: BooleanLike;
 }
 
 interface PreferenceDropdownEntrySchema extends PreferenceBaseEntrySchema {
@@ -53,6 +54,7 @@ interface PreferenceDropdownEntrySchema extends PreferenceBaseEntrySchema {
 
 interface PreferenceSimpleColorEntrySchema extends PreferenceBaseEntrySchema {
   type: "simpleColor";
+  defaultValue: ByondAtomColor;
 }
 
 export const GamePreferenceEntry = (props: GamePreferenceEntryProps, context) => {

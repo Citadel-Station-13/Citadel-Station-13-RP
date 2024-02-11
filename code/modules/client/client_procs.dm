@@ -200,7 +200,9 @@
 	//* Resolve database data
 	player = new(key)
 	player.log_connect()
-	// todo: move preferences up here but above persistent
+	//* Resolve preferences
+	preferences = resolve_game_preferences(ckey)
+	preferences.active = src
 
 	//* Setup user interface
 	// todo: move top level menu here, for now it has to be under prefs.
@@ -383,9 +385,11 @@
 	// log
 	log_access("Logout: [key_name(src)]")
 	// unreference storage datums
-	prefs = null
 	persistent = null
 	player = null
+	preferences.active = null
+	preferences = null
+	prefs = null
 
 	//* unsorted
 	GLOB.ahelp_tickets.ClientLogout(src)

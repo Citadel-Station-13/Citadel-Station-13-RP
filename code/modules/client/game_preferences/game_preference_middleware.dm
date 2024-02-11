@@ -24,6 +24,18 @@ GLOBAL_LIST_INIT(game_preference_middleware, init_game_preference_middleware())
 /datum/game_preference_middleware/proc/handle_topic(datum/game_preferences/prefs, action, list/params)	
 	#warn impl
 
+/**
+ * when we want to reset whatever this handles
+ */
+/datum/game_preference_middleware/proc/handle_reset(datum/game_preferences/prefs)
+	return
+
+/**
+ * on initial load
+ */
+/datum/game_preference_middleware/proc/on_initial_load(datum/game_preferences/prefs)
+	return
+
 /datum/game_preference_middleware/ui_static_data(mob/user, datum/tgui/ui, is_module)
 	. = ..()
 

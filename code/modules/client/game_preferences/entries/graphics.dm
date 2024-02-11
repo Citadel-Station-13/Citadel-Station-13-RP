@@ -9,7 +9,7 @@
 	subcategory = "Parallax"
 	default_value = TRUE
 
-/datum/game_preference_entry/toggle/parallax/on_set(client/user, value)
+/datum/game_preference_entry/toggle/parallax/on_set(client/user, value, first_init)
 	. = ..()
 	user.parallax_holder?.reset()
 
@@ -21,6 +21,19 @@
 	subcategory = "Rendering"
 	default_value = FALSE
 
-/datum/game_preference_entry/toggle/ambient_occlusion/on_set(client/user, value)
+/datum/game_preference_entry/toggle/ambient_occlusion/on_set(client/user, value, first_init)
 	. = ..()
 	user.using_perspective?.planes?.sync_owner(user)
+
+/datum/game_preference_entry/number/fps
+	name = "FPS"
+	description = "Client rendering FPS. It is recommended to set this to a multiple of the server's tickrate. 0 to sync with server."
+	key = "client_fps"
+	category = "Graphics"
+	subcategory = "Rendering"
+	default_value = 0
+	legacy_savefile_key = "client_fps"
+
+/datum/game_preference_entry/number/fps/on_set(client/user, value, first_init)
+	. = ..()
+	user.fps = value

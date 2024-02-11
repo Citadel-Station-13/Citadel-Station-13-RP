@@ -48,19 +48,13 @@ GLOBAL_LIST_INIT(game_preference_entries, init_game_preference_entries())
 
 /**
  * called when a value is changed with a client active
- */
-/datum/game_preference_entry/proc/on_set(client/user, value)
-	return
-
-/**
- * called when we first load onto a client to apply the value
  * 
- * subsequent loads don't call this, we only call this on the first load of the preferences
- * the client should poll their preferences datum itself. 
- * 
- * this is just so the client init isn't blocked on prefs init, technically
+ * @params
+ * * user - active client
+ * * value - current (sanitized) value
+ * * first_init - are we being called as a client is first being associated to a preferences datum?
  */
-/datum/game_preference_entry/proc/on_first_init(client/user, value)
+/datum/game_preference_entry/proc/on_set(client/user, value, first_init)
 	return
 
 /datum/game_preference_entry/proc/filter_value(client/user, value)
@@ -76,6 +70,7 @@ GLOBAL_LIST_INIT(game_preference_entries, init_game_preference_entries())
 		"subcategory" = subcategory,
 		"name" = name,
 		"desc" = description,
+		"nullable" = nullable,
 		"priority" = priority,
 		"defaultValue" = default_value,
 	)

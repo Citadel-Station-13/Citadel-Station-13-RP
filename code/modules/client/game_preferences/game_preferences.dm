@@ -33,6 +33,7 @@ GLOBAL_LIST_EMPTY(game_preferences)
 	var/list/toggles_by_key
 	/// preferences by key - key = value
 	var/list/entries_by_key
+	// todo: move menu options in here and not from /datum/preferences
 
 	//* Handled by middleware-like entries *//
 	/// keybindings - key to list of keys
@@ -50,6 +51,8 @@ GLOBAL_LIST_EMPTY(game_preferences)
 	var/sql_state_desynced = FALSE
 	/// our player's ckey
 	var/ckey
+	/// our active client
+	var/client/active
 	/// our player's id
 	///
 	/// set upon successful sql save
@@ -65,6 +68,17 @@ GLOBAL_LIST_EMPTY(game_preferences)
 //* Init *//
 
 /datum/game_preferences/proc/initialize()
+	#warn impl
+
+/datum/game_preferences/proc/block_on_initialized(timeout = 10 SECONDS)
+	var/wait_until = world.time + timeout
+	UNTIL(initialized || (world.time >= wait_until))
+	if(!initialized)
+		. = FALSE
+		CRASH("block_on_initialize timeout")
+	return initialized
+
+/datum/game_preferences/proc/on_initial_load()
 	#warn impl
 
 /datum/game_preferences/proc/oops_sql_came_back_perform_a_reload()
