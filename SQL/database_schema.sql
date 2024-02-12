@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_bulk_entity` (
   `type_id` VARCHAR(64) NOT NULL,
   `level_id` VARCHAR(64) NOT NULL,
   `data` MEDIUMTEXT,
-  `round_id` INT(11) Not NULL,
+  `round_id` INT(11) NOT NULL,
   PRIMARY KEY (`id`),
   INDEX(`type_id`),
   INDEX(`level_id`, `generation`)
@@ -61,16 +61,16 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_static_global_objects` (
 
 -- SSpersistence modules/level_objects
 CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_dynamic_objects` (
-  `id` INT(24) NOT NULL AUTO_INCREMENT,
   `generation` INT(11) NOT NULL,
+  `object_id` INT(24) NOT NULL AUTO_INCREMENT,
   `level_id` VARCHAR(64) NOT NULL,
   `prototype_id` VARCHAR(256) NOT NULL,
   `status` INT(24) NOT NULL DEFAULT 0,
   `data` MEDIUMTEXT NOT NULL,
   `x` INT(8) NOT NULL,
   `y` INT(8) NoT NULL,
-  PRIMARY KEY(`id`, `generation`),
-  INDEX(`id`),
+  PRIMARY KEY(`object_id`, `generation`),
+  INDEX(`object_id`),
   INDEX(`level_id`, `generation`),
   INDEX(`prototype_id`)
 )
@@ -79,11 +79,11 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_dynamic_objects` (
 CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_level_metadata` (
   `created` DATETIME NOT NULL DEFAULT Now(),
   `saved` DATETIME NOT NULL,
-  `id` VARCHAR(64) NOT NULL,
+  `saved_round_id` INT(11) NOT NULL,
+  `level_id` VARCHAR(64) NOT NULL,
   `data` MEDIUMTEXT NOT NULL,
-  `revision` INT(11) NOT NULL,
   `generation` INT(11) NOT NULL,
-  PRIMARY KEY(`id`)
+  PRIMARY KEY(`level_id`)
 )
 
 -- SSpersistence modules/string_kv

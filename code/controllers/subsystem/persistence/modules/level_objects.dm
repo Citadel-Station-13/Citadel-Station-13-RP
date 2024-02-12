@@ -144,10 +144,16 @@
 
 	var/intentionally_allow_admin_proccall = usr
 	usr = null
-	#warn impl
-	usr = intentionally_allow_admin_proccall
 
-	#warn impl
+	SSdbcore.dangerously_block_on_multiple_unsanitized_queries(
+		list(
+			"TRUNCATE TABLE [format_table_name("persistence_static_map_objects")]",
+			"TRUNCATE TABLE [format_table_name("persistence_static_level_objects")]",
+			"TRUNCATE TABLE [format_table_name("persistence_static_global_objects")]",
+		)
+	)
+
+	usr = intentionally_allow_admin_proccall
 
 	return TRUE
 
@@ -157,10 +163,15 @@
 
 	var/intentionally_allow_admin_proccall = usr
 	usr = null
-	#warn impl
-	usr = intentionally_allow_admin_proccall
 
-	#warn impl
+	SSdbcore.RunQuery(
+		"DELETE FROM [format_table_name("persistence_static_level_objects")] WHERE level_id = :level",
+		list(
+			"level" = level_id,
+		),
+	)
+
+	usr = intentionally_allow_admin_proccall
 
 	return TRUE
 
@@ -170,10 +181,15 @@
 
 	var/intentionally_allow_admin_proccall = usr
 	usr = null
-	#warn impl
-	usr = intentionally_allow_admin_proccall
 
-	#warn impl
+	SSdbcore.RunQuery(
+		"DELETE FROM [format_table_name("persistence_static_map_objects")] WHERE map_id = :map",
+		list(
+			"map" = map_id,
+		),
+	)
+
+	usr = intentionally_allow_admin_proccall
 
 	return TRUE
 
@@ -183,10 +199,12 @@
 
 	var/intentionally_allow_admin_proccall = usr
 	usr = null
-	#warn impl
-	usr = intentionally_allow_admin_proccall
 
-	#warn impl
+	SSdbcore.RunQuery(
+		"DELETE FROM [format_table_name("persistence_static_global_objects")]",
+	)
+
+	usr = intentionally_allow_admin_proccall
 
 	return TRUE
 
@@ -196,10 +214,12 @@
 
 	var/intentionally_allow_admin_proccall = usr
 	usr = null
-	#warn impl
-	usr = intentionally_allow_admin_proccall
 
-	#warn impl
+	SSdbcore.RunQuery(
+		"TRUNCATE TABLE [format_table_name("persistence_dynamic_objects")]",
+	)
+
+	usr = intentionally_allow_admin_proccall
 
 	return TRUE
 
@@ -209,10 +229,15 @@
 
 	var/intentionally_allow_admin_proccall = usr
 	usr = null
-	#warn impl
-	usr = intentionally_allow_admin_proccall
 
-	#warn impl
+	SSdbcore.RunQuery(
+		"DELETE FROM [format_table_name("persistence_dynamic_objects")] WHERE level_id = :level",
+		list(
+			"level" = level_id,
+		),
+	)
+
+	usr = intentionally_allow_admin_proccall
 
 	return TRUE
 

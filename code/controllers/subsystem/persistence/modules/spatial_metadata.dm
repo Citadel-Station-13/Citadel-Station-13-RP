@@ -41,19 +41,60 @@
 	var/generation = 0
 	/// the round ID we were saved on
 	var/round_id_saved
+	/// arbitrary key-value data
+	var/list/arbitrary_data
 
-/datum/map_level_persistence/proc/load_or_new()
+/datum/map_level_persistence/proc/load_or_new(level_id)
 	var/allow_admin_proc_call = usr
 	usr = null
+
+	var/datum/db_query/query = SSdbcore.NewQuery(
+		"SELECT DATEDIFF(Now(), saved), saved_round_id, data, generation \
+			FROM [format_table_name("persistence_level_metadata")] \
+			WHERE level_id = :level",
+		list(
+			"level" = level_id,
+		),
+	)
+
+	if(query.NextRow())
+		src.hours_since_saved = query.item[1]
+		src.round_id_saved = query.item[2]
+		src.arbitrary_data = json_decode(query.item[3])
+		src.generation = query.item[4]
+
+		src.rounds_since_saved = GLOB.round_id - src.round_id_saved
+	else
+		src.level_id = level_id
+		src.hours_since_saved = 0
+		src.rounds_since_saved = 0
+		src.generation = 0
+		src.round_id_saved = GLOB.round_id
+		src.arbitrary_data = list()
 
 	#warn impl
 
 	usr = allow_admin_proc_call
 
-/datum/map_level_persistence/proc/mark_serialized()
+/datum/map_level_persistence/proc/mark_serialized_to_generation(generation)
 	var/allow_admin_proc_call = usr
 	usr = null
 
-	#warn impl
+	src.generation = generation
+	src.hours_since_saved = 0
+	src.rounds_since_saved = 0
+	src.round_id_saved = GLOB.round_id
+
+	SSdbcore.RunQuery(
+		"INSERT INTO [format_table_name("persistence_level_metadata")] (saved, saved_round_id, level_id, data, generation) \
+			VALUES (Now(), :round, :level, :data, :generation) ON DUPLICATE KEY UPDATE \
+			data = VALUES(data), generation = VALUES(generation), round = VALUES(round), saved = VALUES(saved)",
+		list(
+			"generation" = generation,
+			"round" = GLOB.round_id,
+			"level" = level_id,
+			"data" = json_encode(arbitrary_data),
+		),
+	)
 
 	usr = allow_admin_proc_call
