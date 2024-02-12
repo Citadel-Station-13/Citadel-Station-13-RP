@@ -10,16 +10,19 @@ SUBSYSTEM_DEF(persistence)
 	subsystem_flags = SS_NO_FIRE
 
 	/// world already loaded?
-	var/static/loaded_persistent_world = FALSE
+	var/static/world_loaded = FALSE
+	/// world saved how many times?
+	var/static/world_saved_count = 0
 	/// world load in progress; block.
 	var/static/world_serialization_mutex = FALSE
-	/// current world generation; do not touch this unless you know what you are doing.
-	var/static/world_generation_current
 
 /datum/controller/subsystem/persistence/Initialize()
-	#warn stuff
 	InitPersistence()
 	LoadPersistence()
+
+	// todo: should this be here? save_the_world is in ticker.
+	load_the_world()
+
 	return ..()
 
 /datum/controller/subsystem/persistence/Shutdown()

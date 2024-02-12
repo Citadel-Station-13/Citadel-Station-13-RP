@@ -72,8 +72,6 @@
 		src.round_id_saved = GLOB.round_id
 		src.arbitrary_data = list()
 
-	#warn impl
-
 	usr = allow_admin_proc_call
 
 /datum/map_level_persistence/proc/mark_serialized_to_generation(generation)

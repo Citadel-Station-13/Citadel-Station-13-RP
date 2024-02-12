@@ -63,6 +63,9 @@
 
 	return TRUE
 
+/**
+ * **warning** - does not dedupe. don't directly call unless you know what you're doing!
+ */
 /datum/controller/subsystem/persistence/proc/level_objects_store_dynamic(list/obj/entities, generation, level_id)
 	if(!SSdbcore.Connect())
 		return FALSE
@@ -105,8 +108,7 @@
 			)
 			query.Execute(FALSE)
 			entity.obj_persist_dynamic_id = query.last_insert_id
-
-	qdel(query)
+		qdel(query)
 
 	usr = intentionally_allow_admin_proccall
 
@@ -116,12 +118,39 @@
 	if(!SSdbcore.Connect())
 		return FALSE
 
+	// todo: anti-dupe system
+
 	var/intentionally_allow_admin_proccall = usr
 	usr = null
-	#warn impl
-	usr = intentionally_allow_admin_proccall
 
-	#warn impl
+	var/datum/db_query/query = SSdbcore.NewQuery(
+		"SELECT object_id, prototype_id, status, data, x, y WHERE level_id = :level, generation = :generation",
+		list(
+			"generation" = generation,
+			"level" = level_id,
+		)
+	)
+	query.Execute(FALSE)
+
+	while(query.NextRow())
+		var/object_id = query.item[1]
+		var/prototype_id = query.item[2]
+		var/status = query.item[3]
+		var/data_encoded = query.item[4]
+		var/x = query.item[5]
+		var/y = query.item[6]
+
+		// resolve prototype
+		var/object_type = text2path(prototype_id)
+		if(isnull(object_type))
+			continue
+
+		var/obj/deserializing = new object_type(locate(x, y, z))
+		deserializing.obj_persist_dynamic_id = object_id
+		deserializing.obj_persist_dynamic_status = status
+		deserializing.deserialize(json_decode(data_encoded))
+
+	usr = intentionally_allow_admin_proccall
 
 	return TRUE
 
@@ -131,10 +160,49 @@
 
 	var/intentionally_allow_admin_proccall = usr
 	usr = null
-	#warn impl
-	usr = intentionally_allow_admin_proccall
 
-	#warn impl
+	for(var/obj/entity as anything in entities)
+		var/datum/db_query/query
+		switch(entity.obj_persist_dynamic_status)
+			if(OBJ_PERSIST_STATIC_MODE_GLOBAL)
+				query = SSdbcore.NewQuery(
+					"SELECT data FROM [format_table_name("persistence_static_global_objects")] \
+						WHERE object_id = :object, generation = :generation",
+					list(
+						"object" = entity.obj_persist_static_id,
+						"generation" = generation,
+					),
+				)
+			if(OBJ_PERSIST_STATIC_MODE_LEVEL)
+				query = SSdbcore.NewQuery(
+					"SELECT data FROM [format_table_name("persistence_static_level_objects")] \
+						WHERE object_id = :object, level_id = :level, generation = :generation",
+					list(
+						"object" = entity.obj_persist_static_id,
+						"level" = level_id,
+						"generation" = generation,
+					),
+				)
+			if(OBJ_PERSIST_STATIC_MODE_MAP)
+				query = SSdbcore.NewQuery(
+					"SELECT data FROM [format_table_name("persistence_static_map_objects")] \
+						WHERE object_id = :object, map_id = :map, generation = :generation",
+					list(
+						"object" = entity.obj_persist_static_id,
+						"map" = map_id,
+						"generation" = generation,
+					),
+				)
+			else
+				stack_trace("unrecognized mode [entity.obj_persist_static_mode]")
+				continue
+		query.Execute(FALSE)
+		if(!query.NextRow())
+			continue
+		var/json_data = query.item[1]
+		entity.deserialize(json_decode(json_data))
+
+	usr = intentionally_allow_admin_proccall
 
 	return TRUE
 
@@ -150,7 +218,7 @@
 			"TRUNCATE TABLE [format_table_name("persistence_static_map_objects")]",
 			"TRUNCATE TABLE [format_table_name("persistence_static_level_objects")]",
 			"TRUNCATE TABLE [format_table_name("persistence_static_global_objects")]",
-		)
+		),
 	)
 
 	usr = intentionally_allow_admin_proccall

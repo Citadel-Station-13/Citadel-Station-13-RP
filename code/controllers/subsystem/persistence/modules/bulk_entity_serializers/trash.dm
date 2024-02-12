@@ -69,7 +69,6 @@
 				// create chunk
 				var/datum/bulk_entity_chunk/chunk = new
 				chunk.level_id = level_id
-				chunk.amount = length(chunk_entities)
 				var/list/entities_constructed = list()
 				for(var/atom/movable/entity as anything in chunk_entities)
 					entities_constructed[++entities_constructed.len] = list(
@@ -141,10 +140,9 @@
 		/obj/item/cigbutt,
 		/obj/item/paper/crumpled,
 	)
-	#warn impl
 	for(var/type in specific_inclusions)
 		specific_inclusions[type] = TRUE
-	return typecacheof(umbrella_inclusions) + specific_inclusions
+	return typecacheof(umbrella_inclusions) | specific_inclusions
 
 /datum/bulk_entity_persistence/trash/proc/filter_items(list/obj/item/items)
 	// append, not remove; save the vector resizing/etc

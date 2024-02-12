@@ -1,10 +1,20 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
+/datum/controller/subsystem/persistence/proc/block_on_world_mutex(timeout = 10 SECONDS)
+	var/expire_at = world.time + timeout
+	UNTIL(!world_serialization_mutex || world.time > expire_at)
+	if(world_serialization_mutex)
+		. = FALSE
+		CRASH("failed to obtain world mutex")
+	return TRUE
+
 /datum/controller/subsystem/persistence/proc/load_the_world()
-	if(loaded_persistent_world)
+	block_on_world_mutex()
+
+	if(world_loaded)
 		CRASH("cannot load world twice or bad shit happens")
-	loaded_persistent_world = TRUE
+	world_loaded = TRUE
 
 	var/start_time
 
@@ -19,6 +29,10 @@
 	#warn impl
 
 /datum/controller/subsystem/persistence/proc/save_the_world()
+	block_on_world_mutex()
+
+	++world_saved_count
+
 	var/start_time
 	#warn impl all
 
