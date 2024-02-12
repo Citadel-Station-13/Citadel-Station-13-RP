@@ -53,7 +53,7 @@
 			subsystem_log("world-load: z-[z_index] for [bulk_serializer.id] start")
 
 			start_time = REALTIMEOFDAY
-			var/list/datum/bulk_entity_chunk/level_chunks = bulk_entity_load_chunks_on_level(bulk_serializer.id, levle_meta)
+			var/list/datum/bulk_entity_chunk/level_chunks = bulk_entity_load_chunks_on_level(bulk_serializer.id, level_metadata.level_id, level_metadata.generation, level_metadata)
 			end_time = REALTIMEOFDAY
 			subsystem_log("world-load: z-[z_index] for [bulk_serializer.id] read took [round((end_time - start_time) * 0.1, 0.01)]s")
 
@@ -174,9 +174,9 @@
 		end_time = REALTIMEOFDAY
 		subsystem_log("world-save: [bulk_serializer.id] group by level took [round((end_time - start_time) * 0.1, 0.01)]s")
 
-		var/datum/map_level/level_data = SSmapping.ordered_levels[z_index]
 
 		for(var/z_index in 1 to world.maxz)
+			var/datum/map_level/level_data = SSmapping.ordered_levels[z_index]
 			start_time = REALTIMEOFDAY
 			bulk_entities_by_zlevel[z_index] = bulk_serializer.perform_level_filter(bulk_entities_by_zlevel[z_index], level_data)
 			end_time = REALTIMEOFDAY
@@ -186,7 +186,11 @@
 		var/list/datum/bulk_entity_chunk/chunks = bulk_serializer.serialize_entities_into_chunks(entities, level_data)
 		end_time = REALTIMEOFDAY
 		subsystem_log("world-save: [bulk_serializer.id] serialize took [round((end_time - start_time) * 0.1, 0.01)]s")
-		#warn impl
+
+		start_time = REALTIMEOFDAY
+		bulk_entity_save_chunks(chunks)
+		end_time = REALTIMEOFDAY
+		subsystem_log("world-save: [bulk_serializer.id] write took [round((end_time - start_time) * 0.1, 0.01)]s")
 
 	// increment everything
 	#warn this will require a legacy mass insert
