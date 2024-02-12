@@ -228,7 +228,7 @@
 			add_fingerprint(user)
 			return
 
-		if (has_edge(W))
+		if (W.is_sharp())
 			if (!can_slice_here)
 				to_chat(user, "<span class='warning'>You cannot slice \the [src] here! You need a table or at least a tray to do it.</span>")
 				return

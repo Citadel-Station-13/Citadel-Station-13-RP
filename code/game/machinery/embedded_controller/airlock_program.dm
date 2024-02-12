@@ -13,6 +13,8 @@
 	var/tag_interior_sensor
 	var/tag_airlock_mech_sensor
 	var/tag_shuttle_mech_sensor
+	var/tag_scrubber
+	var/tag_temperature_adjuster
 
 	var/state = STATE_CLOSED
 
@@ -42,6 +44,8 @@
 		tag_interior_sensor = controller.tag_interior_sensor || "[id_tag]_interior_sensor"
 		tag_airlock_mech_sensor = controller.tag_airlock_mech_sensor? controller.tag_airlock_mech_sensor : "[id_tag]_airlock_mech"
 		tag_shuttle_mech_sensor = controller.tag_shuttle_mech_sensor? controller.tag_shuttle_mech_sensor : "[id_tag]_shuttle_mech"
+		tag_scrubber = controller.tag_scrubber ? controller.tag_scrubber : "[id_tag]_scrubber"
+		tag_temperature_adjuster = controller.tag_temperature_adjuster? controller.tag_temperature_adjuster : "[id_tag]_chamber_temperature"
 		memory["secure"] = controller.tag_secure
 
 		spawn(10)
@@ -206,6 +210,17 @@
 		"tag" = tag,
 		"sigtype" = "command",
 		"power" = "[power]",
+	)
+	post_signal(signal)
+
+/datum/computer/file/embedded_program/airlock/proc/signalTemperatureAdjuster(var/tag, var/power, var/temperature)
+	signalScrubber(tag_scrubber, power)//Temporary hack so mapping changes arent part of this PR
+	var/datum/signal/signal = new
+	signal.data = list(
+		"tag" = tag,
+		"sigtype" = "command",
+		"power" = "[power]",
+		"target_temperature" = "[temperature]",
 	)
 	post_signal(signal)
 
