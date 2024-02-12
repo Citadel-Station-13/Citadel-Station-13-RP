@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%schema_revision` (
 CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_bulk_entity` (
   `id` INT(24) NOT NULL AUTO_INCREMENT,
   `generation` INT(11) NOT NULL,
-  `type_id` VARCHAR(64) NOT NULL,
+  `persistence_key` VARCHAR(64) NOT NULL,
   `level_id` VARCHAR(64) NOT NULL,
   `data` MEDIUMTEXT,
   `round_id` INT(11) NOT NULL,

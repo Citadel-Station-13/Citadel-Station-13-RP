@@ -103,7 +103,6 @@
 	var/obj_persist_dynamic_id
 	/// dynamic persistence state flags
 	var/obj_persist_dynamic_status = NONE
-	#warn impl all
 
 	//? Sounds
 	/// volume when breaking out using resist process
@@ -171,7 +170,6 @@
 		// init material parts only if it wasn't initialized already
 		if(!(obj_flags & OBJ_MATERIAL_INITIALIZED))
 			init_material_parts()
-	#warn persistence entrypoint
 	if (set_obj_flags)
 		var/flagslist = splittext(set_obj_flags,";")
 		var/list/string_to_objflag = GLOB.bitfields["obj_flags"]

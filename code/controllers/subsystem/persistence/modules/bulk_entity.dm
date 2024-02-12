@@ -8,32 +8,67 @@
  */
 /datum/controller/subsystem/persistence
 
-/datum/controller/subsystem/persistence/proc/bulk_entity_save_chunks(persistence_id, list/datum/bulk_entity_chunk/chunks)
+/datum/controller/subsystem/persistence/proc/bulk_entity_save_chunks(list/datum/bulk_entity_chunk/chunks)
 	if(!SSdbcore.Connect())
 		return FALSE
 
 	var/intentionally_allow_admin_proccall = usr
 	usr = null
-	#warn impl
-	usr = intentionally_allow_admin_proccall
 
-	#warn impl
+	for(var/datum/bulk_entity_chunk/chunk as anything in chunks)
+		var/datum/db_query/query = SSdbcore.NewQuery(
+			"INSERT INTO [format_table_name("persistence_bulk_entity")] \
+				(generation, persistence_key, level_id, data, round_id) \
+				VALUES (:generation, :persistence, :level, :data, :round)",
+			list(
+				"generation" = chunk.generation,
+				"level" = chunk.level_id,
+				"round" = GLOB.round_id,
+				"data" = json_encode(chunk.data),
+				"persistence" = chunk.persistence_key,
+			),
+		)
+		query.warn_execute()
+		qdel(query)
+	usr = intentionally_allow_admin_proccall
 
 	return TRUE
 
 
-/datum/controller/subsystem/persistence/proc/bulk_entity_load_chunks_on_level(persistence_id, level_id)
+/datum/controller/subsystem/persistence/proc/bulk_entity_load_chunks_on_level(persistence_key, level_id, generation, datum/map_level_persistence/level_data)
 	if(!SSdbcore.Connect())
 		return FALSE
 
+	var/list/datum/bulk_entity_chunk/chunks = list()
+
 	var/intentionally_allow_admin_proccall = usr
 	usr = null
-	#warn impl
+
+	var/datum/db_query/query = SSdbcore.NewQuery(
+		"SELECT data FROM [format_table_name("persistence_bulk_entity")] \
+			WHERE generation = :generation, persistence_key = :persistence, level_id = :level",
+		list(
+			"generation" = generation,
+			"persistence" = persistence_key,
+			"level" = level_id,
+		),
+	)
+
+	while(query.NextRow())
+		var/encoded_data = query.item[1]
+
+		var/datum/bulk_entity_chunk/chunk = new
+		chunk.generation = generation
+		chunk.persistence_key = persistence_key
+		chunk.data = json_decode(encoded_data)
+		chunk.level_id = level_id
+		chunk.round_id_saved = level_data.round_id_saved
+		chunk.rounds_since_saved = level_data.rounds_since_saved
+		chunk.hours_since_saved = level_data.hours_since_saved
+
 	usr = intentionally_allow_admin_proccall
 
-	#warn impl
-
-	return TRUE
+	return chunks
 
 
 /**
@@ -142,6 +177,8 @@
 	/// * set by load from DB
 	/// * set on save by save proc before being sent into bulk_entity_save_chunks()
 	var/generation
+	/// bulk_entity_persistence key
+	var/persistence_key
 
 	//* Set by loader, do not manually set. *//
 	/// round id we were saved on

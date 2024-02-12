@@ -49,7 +49,7 @@
 	usr = null
 
 	var/datum/db_query/query = SSdbcore.NewQuery(
-		"SELECT DATEDIFF(Now(), saved), saved_round_id, data, generation \
+		"SELECT DATEDIFF(hour, Now(), saved), saved_round_id, data, generation \
 			FROM [format_table_name("persistence_level_metadata")] \
 			WHERE level_id = :level",
 		list(

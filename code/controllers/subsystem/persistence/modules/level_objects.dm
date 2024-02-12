@@ -58,6 +58,7 @@
 				continue
 		query.Execute(FALSE)
 		qdel(query)
+		entity.obj_persist_status |= OBJ_PERSIST_STATUS_SAVED
 
 	usr = intentionally_allow_admin_proccall
 
@@ -108,15 +109,24 @@
 			)
 			query.Execute(FALSE)
 			entity.obj_persist_dynamic_id = query.last_insert_id
+			entity.obj_persist_status |= OBJ_PERSIST_STATUS_FIRST_GENERATION
+		entity.obj_persist_status |= OBJ_PERSIST_STATUS_SAVED
 		qdel(query)
 
 	usr = intentionally_allow_admin_proccall
 
 	return TRUE
 
-/datum/controller/subsystem/persistence/proc/level_objects_load_dynamic(generation, level_id)
+/**
+ * @return list(count loaded, count dropped, count errored)
+ */
+/datum/controller/subsystem/persistence/proc/level_objects_load_dynamic(generation, level_id, datum/map_level_persistence/level_data)
 	if(!SSdbcore.Connect())
 		return FALSE
+
+	var/count_loaded = 0
+	var/count_dropped = 0
+	var/count_errored = 0
 
 	// todo: anti-dupe system
 
@@ -124,7 +134,9 @@
 	usr = null
 
 	var/datum/db_query/query = SSdbcore.NewQuery(
-		"SELECT object_id, prototype_id, status, data, x, y WHERE level_id = :level, generation = :generation",
+		"SELECT object_id, prototype_id, status, data, x, y \
+			FROM [format_table_name("persistence_dynamic_objects")]\
+			WHERE level_id = :level, generation = :generation",
 		list(
 			"generation" = generation,
 			"level" = level_id,
@@ -143,20 +155,31 @@
 		// resolve prototype
 		var/object_type = text2path(prototype_id)
 		if(isnull(object_type))
+			count_dropped++
 			continue
 
 		var/obj/deserializing = new object_type(locate(x, y, z))
 		deserializing.obj_persist_dynamic_id = object_id
 		deserializing.obj_persist_dynamic_status = status
 		deserializing.deserialize(json_decode(data_encoded))
+		deserializing.decay_persisted(level_data.rounds_since_saved, level_data.hours_since_saved)
+		deserializing.obj_persist_status |= OBJ_PERSIST_STATUS_LOADED
+		count_loaded++
 
 	usr = intentionally_allow_admin_proccall
 
-	return TRUE
+	return list(count_loaded, count_dropped, count_errored)
 
-/datum/controller/subsystem/persistence/proc/level_objects_load_static(list/obj/entities, generation, level_id, map_id)
+/**
+ * @return list(count loaded, count dropped, count errored)
+ */
+/datum/controller/subsystem/persistence/proc/level_objects_load_static(list/obj/entities, generation, level_id, map_id, datum/map_level_persistence/level_data)
 	if(!SSdbcore.Connect())
 		return FALSE
+
+	var/count_loaded = 0
+	var/count_dropped = 0
+	var/count_errored = 0
 
 	var/intentionally_allow_admin_proccall = usr
 	usr = null
@@ -201,10 +224,13 @@
 			continue
 		var/json_data = query.item[1]
 		entity.deserialize(json_decode(json_data))
+		entity.decay_persisted(level_data.rounds_since_saved, level_data.hours_since_saved)
+		entity.obj_persist_status |= OBJ_PERSIST_STATUS_LOADED
+		count_loaded++
 
 	usr = intentionally_allow_admin_proccall
 
-	return TRUE
+	return list(count_loaded, count_dropped, count_errored)
 
 /datum/controller/subsystem/persistence/proc/level_objects_drop_static_all()
 	if(!SSdbcore.Connect())
@@ -322,6 +348,9 @@
 		// we only care about things on turfs
 		if(!isturf(thing.loc))
 			continue
+		// check flags
+		if(thing.obj_persist_status & OBJ_PERSIST_STATUS_NO_THANK_YOU)
+			continue
 		// are they static?
 		if(thing.obj_persist_static_id)
 			static_objects += thing
@@ -344,6 +373,9 @@
 		// we only care about things on turfs
 		// and since if you're not on a turf, z is 0, this works anyways lol
 		if(thing.z != z)
+			continue
+		// check flags
+		if(thing.obj_persist_status & OBJ_PERSIST_STATUS_NO_THANK_YOU)
 			continue
 		// are they static?
 		if(thing.obj_persist_static_id)

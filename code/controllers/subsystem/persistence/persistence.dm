@@ -5,7 +5,6 @@
 
 SUBSYSTEM_DEF(persistence)
 	name = "Persistence"
-	#warn bump init order
 	init_order = INIT_ORDER_PERSISTENCE
 	subsystem_flags = SS_NO_FIRE
 
@@ -26,7 +25,6 @@ SUBSYSTEM_DEF(persistence)
 	return ..()
 
 /datum/controller/subsystem/persistence/Shutdown()
-	#warn stuff
 	SavePersistence()
 	return ..()
 
