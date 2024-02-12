@@ -241,7 +241,24 @@ SUBSYSTEM_DEF(dbcore)
 		if (qdel)
 			qdel(query)
 
+/**
+ * **WARNING**: Extremely dangerous.
+ *
+ * Directly runs SQL strings asynchronously, and only returns when they're done.
+ *
+ * No sanitization provided.
+ */
+/datum/controller/subsystem/dbcore/proc/dangerously_block_on_multiple_unsanitized_queries(list/query_strings)
+	#warn impl
 
+/**
+ * **WARNING**: Extremely dangerous.
+ *
+ * Mass, unsanitized insert. Make sure you sanitize all input to this.
+ */
+/datum/controller/subsystem/dbcore/proc/dangerously_unsanitized_mass_insert(table_name, list/columns, list/rows, duplicate_key, ignore_errors = FALSE, async = TRUE, list/static_columns)
+	if(duplicate_key == DB_MASS_INSERT_DUPLICATE_KEY_AUTO_OVERWRITE)
+	#warn impl
 
 /*
 Takes a list of rows (each row being an associated list of column => value) and inserts them via a single mass query.
@@ -255,7 +272,7 @@ Delayed insert mode was removed in mysql 7 and only works with MyISAM type table
 	It was included because it is still supported in mariadb.
 	It does not work with duplicate_key and the mysql server ignores it in those cases
 */
-/datum/controller/subsystem/dbcore/proc/MassInsert(table, list/rows, duplicate_key = FALSE, ignore_errors = FALSE, delayed = FALSE, warn = FALSE, async = TRUE, special_columns = null)
+/datum/controller/subsystem/dbcore/proc/MassInsertLegacy(table, list/rows, duplicate_key = FALSE, ignore_errors = FALSE, delayed = FALSE, warn = FALSE, async = TRUE, special_columns = null)
 	if (!table || !rows || !istype(rows))
 		return
 

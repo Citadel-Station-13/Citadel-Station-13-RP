@@ -20,18 +20,62 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%schema_revision` (
 
 -- persistence --
 
--- SSpersistence modules/string_kv
-CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_string_kv` (
-  `created` DATETIME NOT NULL DEFAULT Now(),
-  `modified` DATETIME NOT NULL,
-  `key` VARCHAR(64) NOT NULL,
-  `value` MEDIUMTEXT NULL,
-  `group` VARCHAR(64) NOT NULL,
-  `revision` INT(11) NOT NULL,
-  PRIMARY KEY(`key`, `group`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+-- SSpersistence modules/bulk_entity
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_bulk_entity` (
+  `id` INT(24) NOT NULL AUTO_INCREMENT,
+  `generation` INT(11) NOT NULL,
+  `type_id` VARCHAR(64) NOT NULL,
+  `level_id` VARCHAR(64) NOT NULL,
+  `data` MEDIUMTEXT,
+  `round_id` INT(11) Not NULL,
+  PRIMARY KEY (`id`),
+  INDEX(`type_id`),
+  INDEX(`level_id`, `generation`)
+)
 
--- SSpersistence modules/map_metadata
+-- SSpersistence modules/level_objects
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_static_level_objects` (
+  `generation` INT(11) NOT NULL,
+  `object_id` VARCHAR(64) NOT NULL,
+  `level_id` VARCHAR(64) NULL,
+  `data` MEDIUMTEXT NOT NULL,
+  PRIMARY KEY(`generation`, `object_id`, `level_id`)
+)
+
+-- SSpersistence modules/level_objects
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_static_map_objects` (
+  `generation` INT(11) NOT NULL,
+  `object_id` VARCHAR(64) NOT NULL,
+  `map_id` VARCHAR(64) NULL,
+  `data` MEDIUMTEXT NOT NULL,
+  PRIMARY KEY(`generation`, `object_id`, `map_id`)
+)
+
+-- SSpersistence modules/level_objects
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_static_global_objects` (
+  `generation` INT(11) NOT NULL,
+  `object_id` VARCHAR(64) NOT NULL,
+  `data` MEDIUMTEXT NOT NULL,
+  PRIMARY KEY(`generation`, `object_id`)
+)
+
+-- SSpersistence modules/level_objects
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_dynamic_objects` (
+  `id` INT(24) NOT NULL AUTO_INCREMENT,
+  `generation` INT(11) NOT NULL,
+  `level_id` VARCHAR(64) NOT NULL,
+  `prototype_id` VARCHAR(256) NOT NULL,
+  `status` INT(24) NOT NULL DEFAULT 0,
+  `data` MEDIUMTEXT NOT NULL,
+  `x` INT(8) NOT NULL,
+  `y` INT(8) NoT NULL,
+  PRIMARY KEY(`id`, `generation`),
+  INDEX(`id`),
+  INDEX(`level_id`, `generation`),
+  INDEX(`prototype_id`)
+)
+
+-- SSpersistence modules/spatial_metadata
 CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_level_metadata` (
   `created` DATETIME NOT NULL DEFAULT Now(),
   `saved` DATETIME NOT NULL,
@@ -42,33 +86,16 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_level_metadata` (
   PRIMARY KEY(`id`)
 )
 
--- SSpersistence modules/level_objects
-CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_static_objects` (
+-- SSpersistence modules/string_kv
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_string_kv` (
   `created` DATETIME NOT NULL DEFAULT Now(),
-  `generation` INT(11) NOT NULL,
-  `id` VARCHAR(64) NOT NULL,
+  `modified` DATETIME NOT NULL,
+  `key` VARCHAR(64) NOT NULL,
+  `value` MEDIUMTEXT NULL,
+  `group` VARCHAR(64) NOT NULL,
   `revision` INT(11) NOT NULL,
-  `bind_id` VARCHAR(64) NOT NULL,
-  `bind_mode` VARCHAR(64) NOT NULL,
-  `data` MEDIUMTEXT NOT NULL,
-  PRIMARY KEY(`id`, `bind_id`)
-)
-
--- SSpersistence modules/level_objects
-CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_dynamic_objects` (
-  `created` DATETIME NOT NULL DEFAULT Now(),
-  `generation` INT(11) NOT NULL,
-  `id` VARCHAR(64) NOT NULL,
-  `level_id` VARCHAR(64) NOT NULL,
-  `status` INT(24) NOT NULL DEFAULT 0,
-  `data` MEDIUMTEXT NOT NULL,
-  `type` VARCHAR(256) NOT NULL,
-  `revision` INT(11) NOT NULL,
-  `x` INT(8) NOT NULL,
-  `y` INT(8) NoT NULL,
-  PRIMARY KEY(`id`, `level_id`)
-)
-
+  PRIMARY KEY(`key`, `group`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- photography --
 

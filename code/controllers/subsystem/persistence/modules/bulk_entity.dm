@@ -135,7 +135,6 @@
 /datum/bulk_entity_chunk
 	//* Set by serialize_entities_into_chunks *//
 	var/level_id
-	var/amount
 	var/list/data
 
 	//* Set by serialization and deserialization, do not manually set. *//

@@ -85,6 +85,8 @@
 /obj/item/pen/crayon/proc/make_graffiti(atom/target, datum/crayon_decal_meta/datapack, state, angle)
 	if(isnull(datapack))
 		datapack = GLOB.crayon_data_lookup_by_string_icon_path[current_graffiti_icon_string_path]
+		if(isnull(datapack))
+			return
 	if(isnull(state))
 		state = current_graffiti_icon_state
 	if(isnull(angle))
@@ -109,13 +111,6 @@
 
 /obj/item/pen/crayon/proc/switch_color(new_color)
 	crayon_color = new_color
-
-/obj/item/pen/crayon/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
-		return ..()
-	#warn impl
-	return ..()
-
 
 /obj/item/pen/crayon/afterattack(atom/target, mob/user as mob, proximity)
 	if(!proximity) return
@@ -146,18 +141,26 @@
 					qdel(src)
 	return
 
-/obj/item/pen/crayon/attack(mob/M as mob, mob/user as mob)
-	if(M == user)
-		to_chat(user, "You take a bite of the crayon and swallow it.")
-		user.nutrition += 1
-		user.reagents.add_reagent("crayon_dust",min(5,uses)/3)
-		if(uses)w
-			uses -= 5
-			if(uses <= 0)
-				to_chat(user,"<span class='warning'>You ate your crayon!</span>")
-				qdel(src)
-	else
-		..()
+/obj/item/pen/crayon/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
+		return ..()
+	if(iscarbon(user) && target == user)
+		var/mob/living/carbon/eater = user
+		to_chat(user, SPAN_WARNING("You take a bite out of [src] and swallow it. Was that a good idea?"))
+		// todo: logging
+		reagents.trans_to(eater.ingested, 1 / 5 * reagents.maximum_volume)
+		if(!reagents.total_volume)
+			qdel(src)
+		return CLICKCHAIN_DID_SOMETHING
+	var/datum/event_args/actor/e_args = new(user)
+	if(isturf(target))
+		attempt_make_graffiti(target, e_args)
+		return CLICKCHAIN_DID_SOMETHING
+	else if(ismob(target))
+		return ..()
+	else if(isobj(target))
+		attempt_color_entity(target, e_args)
+		return CLICKCHAIN_DID_SOMETHING
 
 /obj/item/pen/crayon/red
 	icon_state = "crayonred"

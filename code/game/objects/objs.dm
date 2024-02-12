@@ -90,22 +90,19 @@
 	var/material_multiplier = 1
 
 	//* Persistence *//
+	// todo: we need a version and entity string ID system for update durability!!
 	/// persistence state flags
 	var/obj_persist_status = NONE
 	/// if set, we persist via static object persistence. this is our ID and must be unique for a given map level.
 	/// will override and prevent dynamic persistence.
 	var/obj_persist_static_id
-	/// static namespacing mode
+	/// static namespacing / binding mode
 	var/obj_persist_static_mode = OBJ_PERSIST_STATIC_MODE_MAP
 	/// if set, we are currently dynamically persisting. this is our ID and must be unique for a given map level.
 	/// this id will not collide with static id.
 	var/obj_persist_dynamic_id
 	/// dynamic persistence state flags
 	var/obj_persist_dynamic_status = NONE
-	/// revision; if this mismatches the db entry,
-	/// the entry is purged
-	/// this is so type updates can toss data properly.
-	var/obj_persist_revision = 1
 	#warn impl all
 
 	//? Sounds
