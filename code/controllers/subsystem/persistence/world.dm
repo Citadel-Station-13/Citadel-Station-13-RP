@@ -34,11 +34,35 @@
 	++world_saved_count
 
 	var/start_time
+	var/end_time
 	#warn impl all
 
 	var/list/datum/map_level_persistence/ordered_level_metadata = new /list(length(SSmapping.ordered_levels))
 
 	// handle objects
+	start_time = REALTIMEOFDAY
+	var/list/obj/level_entities = level_objects_gather_world()
+	end_time = REALTIMEOFDAY
+	subsystem_log("world-save: gather took [round((end_time - start_time) * 0.1, 0.01)]s")
+
+	start_time = REALTIMEOFDAY
+	var/list/static_entities_by_zlevel = entity_group_by_zlevel(level_entities[1])
+	var/list/dynamic_entities_by_zlevel = entity_group_by_zlevel(level_entities[2])
+	end_time = REALTIMEOFDAY
+	subsystem_log("world-save: group by level took [round((end_time - start_time) * 0.1, 0.01)]s")
+
+	for(var/z_index in 1 to world.maxz)
+		var/datum/map_level_persistence/level_metadata = ordered_level_metadata[z_index]
+
+		start_time = REALTIMEOFDAY
+		level_objects_store_static(static_entities_by_zlevel[z_index], level_metadata.generation + 1, level_metadata.level_id, level_metadata.map_id)
+		end_time = REALTIMEOFDAY
+		subsystem_log("world-save: z[z_index] ([level_metadata.level_id]) static took [round((end_time - start_time) * 0.1, 0.01)]s")
+
+		start_time = REALTIMEOFDAY
+		level_objects_store_dynamic(static_entities_by_zlevel[z_index], level_metadata.generation + 1, level_metadata.level_id)
+		end_time = REALTIMEOFDAY
+		subsystem_log("world-save: z[z_index] ([level_metadata.level_id]) dynamic took [round((end_time - start_time) * 0.1, 0.01)]s")
 
 	// handle bulk entities
 	for(var/datum/bulk_entity_persistence/bulk_serializer as anything in subtypesof(/datum/bulk_entity_persistence))
@@ -49,9 +73,13 @@
 		var/list/datum/bulk_entity_chunk/chunks = bulk_serializer.serialize_entities_into_chunks(entities)
 		#warn impl
 
+	// increment everything
+	#warn this will require a legacy mass insert
+
 	// cleanup
 	start_time = REALTIMEOFDAY
 	clean_the_world()
+	end_time = REALTIMEOFDAY
 	subsystem_log("world-save: clean took [round((end_time - start_time) * 0.1, 0.01)]s")
 
 /**

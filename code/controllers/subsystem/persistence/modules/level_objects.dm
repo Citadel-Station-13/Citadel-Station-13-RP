@@ -336,6 +336,11 @@
 	return TRUE
 
 /**
+ * @return list(list(objects), ...)
+ */
+/datum/controller/subsystem/persistence
+
+/**
  * @return list(list(static objects), list(dynamic objects))
  */
 /datum/controller/subsystem/persistence/proc/level_objects_gather_world()

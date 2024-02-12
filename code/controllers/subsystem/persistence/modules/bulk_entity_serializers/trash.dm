@@ -50,7 +50,7 @@
 /datum/bulk_entity_persistence/trash/serialize_entities_into_chunks(list/atom/movable/entities, datum/map_level/level)
 	var/list/datum/bulk_entity_chunk/chunks = list()
 	// split by zlevel
-	var/list/z_index_split = SSpersistence.bulk_entity_group_by_zlevel(entities)
+	var/list/z_index_split = SSpersistence.entity_group_by_zlevel(entities)
 	// iterate
 	for(var/z_index in 1 to world.maxz)
 		var/list/atom/movable/z_entities = z_index_split[z_index]
@@ -59,13 +59,13 @@
 		if(isnull(level_id) || !length(z_entities))
 			continue
 		// split by area/turf
-		var/list/area_turf_tuples = SSpersistence.bulk_entity_group_by_area_and_turf(z_entities)
+		var/list/area_turf_tuples = SSpersistence.entity_group_by_area_and_turf(z_entities)
 		for(var/list/area_turf_tuple as anything in area_turf_tuples)
 			var/area_type = area_turf_tuple[1]
 			var/turf_type = area_turf_tuple[2]
 			var/list/area_turf_entities = area_turf_tuples[area_turf_tuple]
 			// limit to 500 entities per chunk
-			for(var/list/atom/movable/chunk_entities as anything in SSpersistence.bulk_entity_split_by_amount(area_turf_entities, 500))
+			for(var/list/atom/movable/chunk_entities as anything in SSpersistence.entity_split_by_amount(area_turf_entities, 500))
 				// create chunk
 				var/datum/bulk_entity_chunk/chunk = new
 				chunk.level_id = level_id

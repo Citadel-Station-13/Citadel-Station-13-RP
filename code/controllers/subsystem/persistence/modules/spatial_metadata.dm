@@ -16,8 +16,7 @@
 		return null
 	if(isnull(level.persistence))
 		level.persistence = new
-		level.persistence.level_id = level.persistence_id || level.id
-		level.persistence.load_or_new()
+		level.persistence.load_or_new(level.persistence_id || level.id, level.parent_map?.persistence_id || level.parent_map?.id)
 	return level.persistence
 
 /datum/controller/subsystem/persistence/proc/spatial_metadata_get_current_generation(datum/map_level/level)
@@ -33,6 +32,8 @@
 /datum/map_level_persistence
 	/// level id
 	var/level_id
+	/// map id
+	var/map_id
 	/// hours since we were serialized
 	var/hours_since_saved = 0
 	/// rounds since we were serialized
@@ -44,9 +45,12 @@
 	/// arbitrary key-value data
 	var/list/arbitrary_data
 
-/datum/map_level_persistence/proc/load_or_new(level_id)
+/datum/map_level_persistence/proc/load_or_new(level_id, map_id)
 	var/allow_admin_proc_call = usr
 	usr = null
+
+	src.level_id = level_id
+	src.map_id = map_id
 
 	var/datum/db_query/query = SSdbcore.NewQuery(
 		"SELECT DATEDIFF(hour, Now(), saved), saved_round_id, data, generation \
