@@ -98,6 +98,9 @@
 	var/obj_persist_static_id
 	/// static namespacing / binding mode
 	var/obj_persist_static_mode = OBJ_PERSIST_STATIC_MODE_MAP
+	/// on static map/level bind mode, this is to determine which level/map we're bound to
+	/// once bound, even if we go to another level, we are treated as this level.
+	var/obj_persist_static_bound_id
 	/// if set, we are currently dynamically persisting. this is our ID and must be unique for a given map level.
 	/// this id will not collide with static id.
 	var/obj_persist_dynamic_id

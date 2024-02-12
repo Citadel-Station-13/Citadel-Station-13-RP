@@ -6,6 +6,9 @@
  */
 /datum/bulk_entity_persistence/debris
 
+/datum/bulk_entity_persistence/debris/is_enabled()
+	return CONFIG_GET(flag/persistent_debris)
+
 /datum/bulk_entity_persistence/debris/gather_all()
 	. = list()
 	for(var/obj/effect/debris/debris in world)

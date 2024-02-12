@@ -26,7 +26,7 @@
 					list(
 						"generation" = generation,
 						"object_id" = entity.obj_persist_static_id,
-						"level_id" = level_id,
+						"level_id" = entity.obj_persist_static_bound_id || level_id,
 						"data" = entity.serialize(),
 					),
 				)
@@ -38,7 +38,7 @@
 					list(
 						"generation" = generation,
 						"object_id" = entity.obj_persist_static_id,
-						"map_id" = map_id,
+						"map_id" = entity.obj_persist_static_bound_id || map_id,
 						"data" = entity.serialize(),
 					),
 				)
@@ -186,6 +186,7 @@
 
 	for(var/obj/entity as anything in entities)
 		var/datum/db_query/query
+		var/bind_id
 		switch(entity.obj_persist_dynamic_status)
 			if(OBJ_PERSIST_STATIC_MODE_GLOBAL)
 				query = SSdbcore.NewQuery(
@@ -206,6 +207,7 @@
 						"generation" = generation,
 					),
 				)
+				bind_id = level_id
 			if(OBJ_PERSIST_STATIC_MODE_MAP)
 				query = SSdbcore.NewQuery(
 					"SELECT data FROM [format_table_name("persistence_static_map_objects")] \
@@ -216,6 +218,7 @@
 						"generation" = generation,
 					),
 				)
+				bind_id = map_id
 			else
 				stack_trace("unrecognized mode [entity.obj_persist_static_mode]")
 				continue
@@ -226,6 +229,8 @@
 		entity.deserialize(json_decode(json_data))
 		entity.decay_persisted(level_data.rounds_since_saved, level_data.hours_since_saved)
 		entity.obj_persist_status |= OBJ_PERSIST_STATUS_LOADED
+		if(!isnull(bind_id))
+			entity.obj_persist_static_bound_id = bind_id
 		count_loaded++
 
 	usr = intentionally_allow_admin_proccall
@@ -336,9 +341,43 @@
 	return TRUE
 
 /**
- * @return list(list(objects), ...)
+ * @return list(static objects)
  */
-/datum/controller/subsystem/persistence
+/datum/controller/subsystem/persistence/proc/level_objects_gather_world_static()
+	. = list()
+
+	for(var/obj/thing in world)
+		// don't lock up the server
+		CHECK_TICK
+		// we only care about things on turfs
+		if(!isturf(thing.loc))
+			continue
+		// check flags
+		if(thing.obj_persist_status & OBJ_PERSIST_STATUS_NO_THANK_YOU)
+			continue
+		// are they static?
+		if(thing.obj_persist_static_id)
+			. += thing
+
+/**
+ * @return list(static objects)
+ */
+/datum/controller/subsystem/persistence/proc/level_objects_gather_level_static(z)
+	. = list()
+
+	for(var/obj/thing in world)
+		// don't lock up the server
+		CHECK_TICK
+		// we only care about things on turfs
+		// and since if you're not on a turf, z is 0, this works anyways lol
+		if(thing.z != z)
+			continue
+		// check flags
+		if(thing.obj_persist_status & OBJ_PERSIST_STATUS_NO_THANK_YOU)
+			continue
+		// are they static?
+		if(thing.obj_persist_static_id)
+			. += thing
 
 /**
  * @return list(list(static objects), list(dynamic objects))

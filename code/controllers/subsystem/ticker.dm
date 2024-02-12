@@ -120,7 +120,7 @@ SUBSYSTEM_DEF(ticker)
 
 				SSdbcore.SetRoundEnd()
 				SSpersistence.SavePersistence()
-				if(!SSpersistence.world_saved_count)
+				if(!SSpersistence.world_saved_count && CONFIG_GET(flag/persistence))
 					SSpersistence.save_the_world()
 
 

@@ -6,6 +6,9 @@
  */
 /datum/bulk_entity_persistence/trash
 
+/datum/bulk_entity_persistence/trash/is_enabled()
+	return CONFIG_GET(flag/persistent_trash)
+
 /datum/bulk_entity_persistence/trash/gather_all()
 	. = list()
 	for(var/obj/item/item in world)

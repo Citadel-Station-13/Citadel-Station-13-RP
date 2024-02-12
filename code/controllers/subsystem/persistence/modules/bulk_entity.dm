@@ -79,6 +79,9 @@
 	/// split entities returned from gather procs to this amount per chunk
 	var/auto_entity_chunk_split = 500
 
+/datum/bulk_entity_persistence/proc/is_enabled()
+	return TRUE
+
 /datum/bulk_entity_persistence/proc/gather_all()
 	return list()
 

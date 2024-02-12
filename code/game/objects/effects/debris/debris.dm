@@ -53,4 +53,18 @@
 		return
 	color = other.color
 
-#warn turf click redirection
+//* Interaction *//
+
+/obj/effect/debris/tool_interaction(obj/item/I, datum/event_args/actor/clickchain/e_args, clickchain_flags, function, hint, datum/callback/reachability_check)
+	// redirect all clicks to turf
+	if(!isturf(loc))
+		// how moment
+		return ..()
+	return loc.tool_interaction(arglist(args))
+
+/obj/effect/debris/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+	// redirect all clicks to turf
+	if(!isturf(loc))
+		// how moment
+		return ..()
+	return loc.attackby(arglist(args))

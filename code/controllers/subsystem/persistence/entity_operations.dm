@@ -47,3 +47,15 @@
 	for(index in 1 to length(entities) step amount)
 		split[++split.len] = entities.Copy(index, min(index + amount, length(entities) + 1))
 	return split
+
+/**
+ * drops all entities not on persisting zlevels
+ */
+/datum/controller/subsystem/persistence/proc/entity_filter_out_non_persisting_levels(list/atom/movable/entities, list/datum/map_level/ordered_level_data)
+	. = list()
+	for(var/atom/movable/entity as anything in entities)
+		if(!entity.z)
+			continue
+		if(!ordered_level_data[entity.z].persistence_allowed)
+			continue
+		. += entity

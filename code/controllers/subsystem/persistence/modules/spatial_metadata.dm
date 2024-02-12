@@ -31,6 +31,11 @@
 		return
 	return persistence.generation + 1
 
+/datum/controller/subsystem/persistence/proc/spatial_metadata_get_ordered_levels()
+	. = new /list(world.maxz)
+	for(var/z_index in 1 to world.maxz)
+		.[z_index] = spatial_metadata_get_level(z_index)
+
 /datum/map_level_persistence
 	/// level id
 	var/level_id

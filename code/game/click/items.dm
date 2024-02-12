@@ -29,6 +29,10 @@
 		return
 
 	// todo: refactor
+	// todo: this should all be split into:
+	// - item use & receive item use (item_interaction() on /atom, definiteily)
+	// - tool use & receive tool use (we already have tool_interaction() on /atom)
+	// - melee attack & receive melee attack (melee_interaction() on /atom? not melee_act directly?)
 	if(resolve_attackby(target, user, params, null, clickchain_flags))
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 

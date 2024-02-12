@@ -1,7 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
-/datum/controller/subsystem/persistence/proc/block_on_world_mutex(timeout = 10 SECONDS)
+/datum/controller/subsystem/persistence/proc/acquire_world_mutex(timeout = 10 SECONDS)
 	var/expire_at = world.time + timeout
 	UNTIL(!world_serialization_mutex || world.time > expire_at)
 	if(world_serialization_mutex)
@@ -10,34 +10,111 @@
 	return TRUE
 
 /datum/controller/subsystem/persistence/proc/load_the_world()
-	block_on_world_mutex()
+	if(!acquire_world_mutex())
+		return
 
 	if(world_loaded)
 		CRASH("cannot load world twice or bad shit happens")
 	world_loaded = TRUE
 
 	var/start_time
+	var/end_time
+
+	var/complete_start_time
+	var/complete_end_time
+
+	subsystem_log("world-load: starting")
+
+	complete_start_time = REALTIMEOFDAY
+
+	start_time = REALTIMEOFDAY
+	var/list/datum/map_level_persistence/ordered_level_metadata = spatial_metadata_get_ordered_levels()
+	end_time = REALTIMEOFDAY
+	subsystem_log("world-load: level metadata acquire took [round((end_time - start_time) * 0.1, 0.01)]s")
 
 	// handle bulk entities
 	for(var/datum/bulk_entity_persistence/bulk_serializer as anything in subtypesof(/datum/bulk_entity_persistence))
 		if(initial(bulk_serializer.abstract_type) == bulk_serializer)
 			continue
+
 		bulk_serializer = new bulk_serializer
+		if(!bulk_serializer.is_enabled())
+			continue
+
+		subsystem_log("world-load: [bulk_serializer.id] start")
+
+		for(var/z_index in 1 to world.maxz)
+			var/datum/map_level_persistence/level_metadata = ordered_level_metadata[z_index]
+
+			if(!level_metadata.persistence_allowed)
+				subsystem_log("world-load: z-[z_index] for [bulk_serializer.id] skipped (persistence not allowed")
+				continue
+
+			subsystem_log("world-load: z-[z_index] for [bulk_serializer.id] start")
+
+			start_time = REALTIMEOFDAY
+			var/list/datum/bulk_entity_chunk/level_chunks = bulk_entity_load_chunks_on_level(bulk_serializer.id, levle_meta)
+			end_time = REALTIMEOFDAY
+			subsystem_log("world-load: z-[z_index] for [bulk_serializer.id] read took [round((end_time - start_time) * 0.1, 0.01)]s")
+
+			start_time = REALTIMEOFDAY
+			bulk_serializer.load_chunks(level_chunks)
+			end_time = REALTIMEOFDAY
+			subsystem_log("world-load: z-[z_index] for [bulk_serializer.id] load took [round((end_time - start_time) * 0.1, 0.01)]s")
 
 	// handle objects
+	start_time = REALTIMEOFDAY
+	var/list/obj/static_entities = level_objects_gather_world_static()
+	end_time = REALTIMEOFDAY
+	subsystem_log("world-load: static gather took [round((end_time - start_time) * 0.1, 0.01)]s")
 
-	#warn impl
+	start_time = REALTIMEOFDAY
+	var/list/obj/static_entities_by_zlevel = entity_group_by_zlevel(static_entities)
+	end_time = REALTIMEOFDAY
+	subsystem_log("world-load: static group by level took [round((end_time - start_time) * 0.1, 0.01)]s")
+
+	for(var/z_index in 1 to world.maxz)
+		var/datum/map_level_persistence/level_metadata = ordered_level_metadata[z_index]
+
+		if(!level_metadata.persistence_allowed)
+			subsystem_log("world-load: z-[z_index] skipped (persistence not allowed")
+			continue
+
+		subsystem_log("world-load: z-[z_index] ([level_metadata.level_id]) start")
+
+		start_time = REALTIMEOFDAY
+		level_objects_load_static(static_entities_by_zlevel[z_index], level_metadata.generation, level_metadata.level_id, level_metadata.map_id, level_metadata)
+		end_time = REALTIMEOFDAY
+		subsystem_log("world-load: z-[z_index] ([level_metadata.level_id]) static took [round((end_time - start_time) * 0.1, 0.01)]s")
+
+		start_time = REALTIMEOFDAY
+		level_objects_load_dynamic(static_entities_by_zlevel[z_index], level_metadata.level_id, level_metadata)
+		end_time = REALTIMEOFDAY
+		subsystem_log("world-load: z-[z_index] ([level_metadata.level_id]) dynamic took [round((end_time - start_time) * 0.1, 0.01)]s")
+
+	complete_end_time = REALTIMEOFDAY
+	subsystem_log("world-load: world loaded in [round((complete_end_time - complete_start_time) * 0.1, 0.01)]s")
 
 /datum/controller/subsystem/persistence/proc/save_the_world()
-	block_on_world_mutex()
+	if(!acquire_world_mutex())
+		return
 
 	++world_saved_count
 
 	var/start_time
 	var/end_time
-	#warn impl all
 
-	var/list/datum/map_level_persistence/ordered_level_metadata = new /list(length(SSmapping.ordered_levels))
+	var/complete_start_time
+	var/complete_end_time
+
+	subsystem_log("world-save: starting")
+
+	complete_start_time = REALTIMEOFDAY
+
+	start_time = REALTIMEOFDAY
+	var/list/datum/map_level_persistence/ordered_level_metadata = spatial_metadata_get_ordered_levels()
+	end_time = REALTIMEOFDAY
+	subsystem_log("world-save: level metadata acquire took [round((end_time - start_time) * 0.1, 0.01)]s")
 
 	// handle objects
 	start_time = REALTIMEOFDAY
@@ -58,6 +135,8 @@
 			subsystem_log("world-save: z-[z_index] skipped (persistence not allowed")
 			continue
 
+		subsystem_log("world-save: z-[z_index] ([level_metadata.level_id]) start")
+
 		start_time = REALTIMEOFDAY
 		level_objects_store_static(static_entities_by_zlevel[z_index], level_metadata.generation + 1, level_metadata.level_id, level_metadata.map_id)
 		end_time = REALTIMEOFDAY
@@ -72,19 +151,55 @@
 	for(var/datum/bulk_entity_persistence/bulk_serializer as anything in subtypesof(/datum/bulk_entity_persistence))
 		if(initial(bulk_serializer.abstract_type) == bulk_serializer)
 			continue
+
 		bulk_serializer = new bulk_serializer
+		if(!bulk_serializer.is_enabled())
+			continue
+
+		subsystem_log("world-save: [bulk_serializer.id] start")
+
+		start_time = REALTIMEOFDAY
 		var/list/atom/movable/entities = bulk_serializer.gather_all()
-		var/list/datum/bulk_entity_chunk/chunks = bulk_serializer.serialize_entities_into_chunks(entities)
+		entities = entity_filter_out_non_persisting_levels(entities, SSmapping.ordered_levels)
+		end_time = REALTIMEOFDAY
+		subsystem_log("world-save: [bulk_serializer.id] gather took [round((end_time - start_time) * 0.1, 0.01)]s")
+
+		start_time = REALTIMEOFDAY
+		var/list/bulk_entities_by_zlevel = bulk_serializer.perform_global_filter(entities)
+		end_time = REALTIMEOFDAY
+		subsystem_log("world-save: [bulk_serializer.id] global filter took [round((end_time - start_time) * 0.1, 0.01)]s")
+
+		start_time = REALTIMEOFDAY
+		var/list/bulk_entities_by_zlevel = entity_group_by_zlevel(entities)
+		end_time = REALTIMEOFDAY
+		subsystem_log("world-save: [bulk_serializer.id] group by level took [round((end_time - start_time) * 0.1, 0.01)]s")
+
+		var/datum/map_level/level_data = SSmapping.ordered_levels[z_index]
+
+		for(var/z_index in 1 to world.maxz)
+			start_time = REALTIMEOFDAY
+			bulk_entities_by_zlevel[z_index] = bulk_serializer.perform_level_filter(bulk_entities_by_zlevel[z_index], level_data)
+			end_time = REALTIMEOFDAY
+			subsystem_log("world-save: [bulk_serializer.id] z-[z_index] level filter took [round((end_time - start_time) * 0.1, 0.01)]s")
+
+		start_time = REALTIMEOFDAY
+		var/list/datum/bulk_entity_chunk/chunks = bulk_serializer.serialize_entities_into_chunks(entities, level_data)
+		end_time = REALTIMEOFDAY
+		subsystem_log("world-save: [bulk_serializer.id] serialize took [round((end_time - start_time) * 0.1, 0.01)]s")
 		#warn impl
 
 	// increment everything
 	#warn this will require a legacy mass insert
+
+	complete_end_time = REALTIMEOFDAY
+	subsystem_log("world-save: world saved in [round((complete_end_time - complete_start_time) * 0.1, 0.01)]s")
 
 	// cleanup
 	start_time = REALTIMEOFDAY
 	clean_the_world()
 	end_time = REALTIMEOFDAY
 	subsystem_log("world-save: clean took [round((end_time - start_time) * 0.1, 0.01)]s")
+
 
 /**
  * called to clean out unused data from the database.

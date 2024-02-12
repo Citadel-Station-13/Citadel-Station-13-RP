@@ -20,7 +20,8 @@ SUBSYSTEM_DEF(persistence)
 	LoadPersistence()
 
 	// todo: should this be here? save_the_world is in ticker.
-	load_the_world()
+	if(CONFIG_GET(flag/persistence))
+		load_the_world()
 
 	return ..()
 
