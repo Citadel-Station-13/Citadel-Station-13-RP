@@ -16,7 +16,9 @@
 		return null
 	if(isnull(level.persistence))
 		level.persistence = new
-		level.persistence.load_or_new(level.persistence_id || level.id, level.parent_map?.persistence_id || level.parent_map?.id)
+		level.persistence.persistence_allowed = level.persistence_allowed
+		if(level.persistence_allowed)
+			level.persistence.load_or_new(level.persistence_id || level.id, level.parent_map?.persistence_id || level.parent_map?.id)
 	return level.persistence
 
 /datum/controller/subsystem/persistence/proc/spatial_metadata_get_current_generation(datum/map_level/level)
@@ -34,6 +36,8 @@
 	var/level_id
 	/// map id
 	var/map_id
+	/// persistence allowed?
+	var/persistence_allowed
 	/// hours since we were serialized
 	var/hours_since_saved = 0
 	/// rounds since we were serialized

@@ -41,7 +41,6 @@
 		/datum/shuttle/autodock/ferry/supply/cargo,
 		/datum/shuttle/autodock/ferry/belter,
 	)
-	legacy_persistence_id = "rift"
 	full_name = "NSB Atlas"
 	use_overmap = TRUE
 	overmap_size = 60

@@ -54,15 +54,19 @@
 	for(var/z_index in 1 to world.maxz)
 		var/datum/map_level_persistence/level_metadata = ordered_level_metadata[z_index]
 
+		if(!level_metadata.persistence_allowed)
+			subsystem_log("world-save: z-[z_index] skipped (persistence not allowed")
+			continue
+
 		start_time = REALTIMEOFDAY
 		level_objects_store_static(static_entities_by_zlevel[z_index], level_metadata.generation + 1, level_metadata.level_id, level_metadata.map_id)
 		end_time = REALTIMEOFDAY
-		subsystem_log("world-save: z[z_index] ([level_metadata.level_id]) static took [round((end_time - start_time) * 0.1, 0.01)]s")
+		subsystem_log("world-save: z-[z_index] ([level_metadata.level_id]) static took [round((end_time - start_time) * 0.1, 0.01)]s")
 
 		start_time = REALTIMEOFDAY
 		level_objects_store_dynamic(static_entities_by_zlevel[z_index], level_metadata.generation + 1, level_metadata.level_id)
 		end_time = REALTIMEOFDAY
-		subsystem_log("world-save: z[z_index] ([level_metadata.level_id]) dynamic took [round((end_time - start_time) * 0.1, 0.01)]s")
+		subsystem_log("world-save: z-[z_index] ([level_metadata.level_id]) dynamic took [round((end_time - start_time) * 0.1, 0.01)]s")
 
 	// handle bulk entities
 	for(var/datum/bulk_entity_persistence/bulk_serializer as anything in subtypesof(/datum/bulk_entity_persistence))

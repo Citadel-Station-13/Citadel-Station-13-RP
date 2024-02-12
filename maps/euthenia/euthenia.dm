@@ -26,8 +26,6 @@
 		/datum/map/sector/roguemining_192/one,
 	)
 	full_name = "NSV Euthenia"
-	legacy_persistence_id = "euthenia"
-	full_name = "NSV Euthenia"
 	use_overmap = TRUE
 	overmap_size = 60
 	overmap_event_areas = 50

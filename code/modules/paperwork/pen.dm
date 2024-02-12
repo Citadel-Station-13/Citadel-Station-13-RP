@@ -28,7 +28,6 @@
 	pressure_resistance = 2
 	drop_sound = 'sound/items/drop/accessory.ogg'
 	pickup_sound = 'sound/items/pickup/accessory.ogg'
-	#warn name to pen_color because this is confusion-prone
 	var/pen_color = "black"	//what colour the ink is!
 	/// can we write with this?
 	var/pen_capable = TRUE
