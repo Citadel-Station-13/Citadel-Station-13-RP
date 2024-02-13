@@ -56,8 +56,6 @@
 //* Interaction *//
 
 /obj/effect/debris/tool_interaction(obj/item/I, datum/event_args/actor/clickchain/e_args, clickchain_flags, function, hint, datum/callback/reachability_check)
-	// this is shitcode; we really need an unified intercept point for this shit..
-	SHOULD_NOT_OVERRIDE(FALSE)
 	// redirect all clicks to turf
 	if(!isturf(loc))
 		// how moment

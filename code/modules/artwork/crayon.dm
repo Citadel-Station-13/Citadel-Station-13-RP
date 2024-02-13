@@ -15,18 +15,18 @@ GLOBAL_LIST_EMPTY(crayon_data_lookup_by_string_icon_path)
 	var/list/lookup = list()
 
 	var/list/crayon_files = list(
-		'crayon_paint_32x32.dmi' = "Paint",
-		'crayon_numbers_32x32.dmi' = "Numbers",
-		'crayon_letters_32x32.dmi' = "Letters",
-		'crayon_punctuation_32x32.dmi' = "Punctuation",
-		'crayon_symbols_32x32.dmi' = "Symbols",
-		'crayon_gangs_32x32.dmi' = "Gangs",
-		'crayon_items_32x32.dmi' = "Items",
-		'crayon_living_32x32.dmi' = "Living",
-		'crayon_runes_32x32.dmi' = "Runes",
-		'crayon_signs_32x32.dmi' = "Signs",
-		'crayon_misc_32x32.dmi' = "Misc (32x32)",
-		'crayon_misc_96x32.dmi' = "Misc (96x32)",
+		'icons/modules/artwork/debris/crayon_paint_32x32.dmi' = "Paint",
+		'icons/modules/artwork/debris/crayon_numbers_32x32.dmi' = "Numbers",
+		'icons/modules/artwork/debris/crayon_letters_32x32.dmi' = "Letters",
+		'icons/modules/artwork/debris/crayon_punctuation_32x32.dmi' = "Punctuation",
+		'icons/modules/artwork/debris/crayon_symbols_32x32.dmi' = "Symbols",
+		'icons/modules/artwork/debris/crayon_gangs_32x32.dmi' = "Gangs",
+		'icons/modules/artwork/debris/crayon_items_32x32.dmi' = "Items",
+		'icons/modules/artwork/debris/crayon_living_32x32.dmi' = "Living",
+		'icons/modules/artwork/debris/crayon_runes_32x32.dmi' = "Runes",
+		'icons/modules/artwork/debris/crayon_signs_32x32.dmi' = "Signs",
+		'icons/modules/artwork/debris/crayon_misc_32x32.dmi' = "Misc (32x32)",
+		'icons/modules/artwork/debris/crayon_misc_96x32.dmi' = "Misc (96x32)",
 	)
 
 	for(var/icon_path in crayon_files)

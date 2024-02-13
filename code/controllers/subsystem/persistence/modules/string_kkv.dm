@@ -54,7 +54,7 @@
 //* Backend Save/Load *//
 //! Why the usr fuckery? Because we intentionally wish to obfuscate admin proccalls, since we properly sanitize **everything** in these procs.
 
-/datum/controller/subsystem/persistence/proc/string_kkv_load(group = OBJECT_PERSISTENCE_GROUP_NONE, key)
+/datum/controller/subsystem/persistence/proc/string_kkv_load(group = PERSISTENCE_DEFAULT_NULL_GROUP, key)
 	if(!SSdbcore.Connect())
 		return
 	var/oldusr = usr
@@ -73,7 +73,7 @@
 	. = query.item[1]
 	qdel(query)
 
-/datum/controller/subsystem/persistence/proc/string_kkv_save(group = OBJECT_PERSISTENCE_GROUP_NONE, key, value)
+/datum/controller/subsystem/persistence/proc/string_kkv_save(group = PERSISTENCE_DEFAULT_NULL_GROUP, key, value)
 	if(!SSdbcore.Connect())
 		return
 	var/oldusr = usr

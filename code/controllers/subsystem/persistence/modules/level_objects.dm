@@ -120,13 +120,16 @@
 /**
  * @return list(count loaded, count dropped, count errored)
  */
-/datum/controller/subsystem/persistence/proc/level_objects_load_dynamic(generation, level_id, datum/map_level_persistence/level_data)
+/datum/controller/subsystem/persistence/proc/level_objects_load_dynamic(generation, datum/map_level_persistence/level_data, z_index)
 	if(!SSdbcore.Connect())
 		return FALSE
 
 	var/count_loaded = 0
 	var/count_dropped = 0
 	var/count_errored = 0
+
+	var/generation = level_data.generation
+	var/level_id = level_data.level_id
 
 	// todo: anti-dupe system
 
@@ -158,7 +161,7 @@
 			count_dropped++
 			continue
 
-		var/obj/deserializing = new object_type(locate(x, y, z))
+		var/obj/deserializing = new object_type(locate(x, y, z_index))
 		deserializing.obj_persist_dynamic_id = object_id
 		deserializing.obj_persist_dynamic_status = status
 		deserializing.deserialize(json_decode(data_encoded))
@@ -173,13 +176,17 @@
 /**
  * @return list(count loaded, count dropped, count errored)
  */
-/datum/controller/subsystem/persistence/proc/level_objects_load_static(list/obj/entities, generation, level_id, map_id, datum/map_level_persistence/level_data)
+/datum/controller/subsystem/persistence/proc/level_objects_load_static(list/obj/entities, datum/map_level_persistence/level_data)
 	if(!SSdbcore.Connect())
 		return FALSE
 
 	var/count_loaded = 0
 	var/count_dropped = 0
 	var/count_errored = 0
+
+	var/generation = level_data.generation
+	var/level_id = level_data.level_id
+	var/map_id = level_data.map_id
 
 	var/intentionally_allow_admin_proccall = usr
 	usr = null

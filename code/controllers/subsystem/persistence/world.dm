@@ -83,12 +83,12 @@
 		subsystem_log("world-load: z-[z_index] ([level_metadata.level_id]) start")
 
 		start_time = REALTIMEOFDAY
-		level_objects_load_static(static_entities_by_zlevel[z_index], level_metadata.generation, level_metadata.level_id, level_metadata.map_id, level_metadata)
+		level_objects_load_static(static_entities_by_zlevel[z_index], level_metadata)
 		end_time = REALTIMEOFDAY
 		subsystem_log("world-load: z-[z_index] ([level_metadata.level_id]) static took [round((end_time - start_time) * 0.1, 0.01)]s")
 
 		start_time = REALTIMEOFDAY
-		level_objects_load_dynamic(static_entities_by_zlevel[z_index], level_metadata.level_id, level_metadata)
+		level_objects_load_dynamic(static_entities_by_zlevel[z_index], level_metadata, z_index)
 		end_time = REALTIMEOFDAY
 		subsystem_log("world-load: z-[z_index] ([level_metadata.level_id]) dynamic took [round((end_time - start_time) * 0.1, 0.01)]s")
 
@@ -143,7 +143,7 @@
 		subsystem_log("world-save: z-[z_index] ([level_metadata.level_id]) static took [round((end_time - start_time) * 0.1, 0.01)]s")
 
 		start_time = REALTIMEOFDAY
-		level_objects_store_dynamic(static_entities_by_zlevel[z_index], level_metadata.generation + 1, level_metadata.level_id)
+		level_objects_store_dynamic(dynamic_entities_by_zlevel[z_index], level_metadata.generation + 1, level_metadata.level_id)
 		end_time = REALTIMEOFDAY
 		subsystem_log("world-save: z-[z_index] ([level_metadata.level_id]) dynamic took [round((end_time - start_time) * 0.1, 0.01)]s")
 
@@ -159,18 +159,18 @@
 		subsystem_log("world-save: [bulk_serializer.id] start")
 
 		start_time = REALTIMEOFDAY
-		var/list/atom/movable/entities = bulk_serializer.gather_all()
-		entities = entity_filter_out_non_persisting_levels(entities, SSmapping.ordered_levels)
+		var/list/atom/movable/bulk_entities = bulk_serializer.gather_all()
+		entities = entity_filter_out_non_persisting_levels(bulk_entities, SSmapping.ordered_levels)
 		end_time = REALTIMEOFDAY
-		subsystem_log("world-save: [bulk_serializer.id] gather took [round((end_time - start_time) * 0.1, 0.01)]s")
+		subsystem_log("world-save: [bulk_serializer.id] gather-filter took [round((end_time - start_time) * 0.1, 0.01)]s")
 
 		start_time = REALTIMEOFDAY
-		var/list/bulk_entities_by_zlevel = bulk_serializer.perform_global_filter(entities)
+		var/list/filtered_entities = bulk_serializer.perform_global_filter(bulk_entities)
 		end_time = REALTIMEOFDAY
 		subsystem_log("world-save: [bulk_serializer.id] global filter took [round((end_time - start_time) * 0.1, 0.01)]s")
 
 		start_time = REALTIMEOFDAY
-		var/list/bulk_entities_by_zlevel = entity_group_by_zlevel(entities)
+		var/list/bulk_entities_by_zlevel = entity_group_by_zlevel(filtered_entities)
 		end_time = REALTIMEOFDAY
 		subsystem_log("world-save: [bulk_serializer.id] group by level took [round((end_time - start_time) * 0.1, 0.01)]s")
 
@@ -182,15 +182,15 @@
 			end_time = REALTIMEOFDAY
 			subsystem_log("world-save: [bulk_serializer.id] z-[z_index] level filter took [round((end_time - start_time) * 0.1, 0.01)]s")
 
-		start_time = REALTIMEOFDAY
-		var/list/datum/bulk_entity_chunk/chunks = bulk_serializer.serialize_entities_into_chunks(entities, level_data)
-		end_time = REALTIMEOFDAY
-		subsystem_log("world-save: [bulk_serializer.id] serialize took [round((end_time - start_time) * 0.1, 0.01)]s")
+			start_time = REALTIMEOFDAY
+			var/list/datum/bulk_entity_chunk/chunks = bulk_serializer.serialize_entities_into_chunks(entities, level_data)
+			end_time = REALTIMEOFDAY
+			subsystem_log("world-save: [bulk_serializer.id] z-[z_index] serialize took [round((end_time - start_time) * 0.1, 0.01)]s")
 
-		start_time = REALTIMEOFDAY
-		bulk_entity_save_chunks(chunks)
-		end_time = REALTIMEOFDAY
-		subsystem_log("world-save: [bulk_serializer.id] write took [round((end_time - start_time) * 0.1, 0.01)]s")
+			start_time = REALTIMEOFDAY
+			bulk_entity_save_chunks(chunks)
+			end_time = REALTIMEOFDAY
+			subsystem_log("world-save: [bulk_serializer.id] z-[z_index] write took [round((end_time - start_time) * 0.1, 0.01)]s")
 
 	// increment everything
 	#warn this will require a legacy mass insert
