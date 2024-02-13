@@ -158,6 +158,7 @@
 			visible_self = SPAN_WARNING("You start to draw on [target] with [src]!"),
 		)
 		if(!do_after(actor.performer, debris_time, target, mobility_flags = MOBILITY_CAN_USE | MOBILITY_CAN_HOLD))
+			return FALSE
 
 	actor.visible_feedback(
 		range = MESSAGE_RANGE_CONSTRUCTION,

@@ -16,7 +16,6 @@ SUBSYSTEM_DEF(persistence)
 	var/static/world_serialization_mutex = FALSE
 
 /datum/controller/subsystem/persistence/Initialize()
-	InitPersistence()
 	LoadPersistence()
 
 	// todo: should this be here? save_the_world is in ticker.
@@ -29,29 +28,17 @@ SUBSYSTEM_DEF(persistence)
 	SavePersistence()
 	return ..()
 
-/datum/controller/subsystem/persistence/Recover()
-	. = ..()
-	InitPersistence()
-
-/**
- * first pass: create all singletons necessary for operation
- *
- * called on initialization **and** recovery. make sure everything is recreated if necessary.
- */
-/datum/controller/subsystem/persistence/proc/InitPersistence()
-	return
-
 /**
   * Loads all persistent information from disk.
   */
 /datum/controller/subsystem/persistence/proc/LoadPersistence()
-	return
+	LoadPanicBunker()
 
 /**
   * Saves all persistent information to disk.
   */
 /datum/controller/subsystem/persistence/proc/SavePersistence()
-	return
+	SavePanicBunker()
 
 //* ID Mapping *//
 

@@ -83,12 +83,12 @@
 		subsystem_log("world-load: z-[z_index] ([level_metadata.level_id]) start")
 
 		start_time = REALTIMEOFDAY
-		level_objects_load_static(static_entities_by_zlevel[z_index], level_metadata)
+		level_objects_load_static(level_metadata, static_entities_by_zlevel[z_index])
 		end_time = REALTIMEOFDAY
 		subsystem_log("world-load: z-[z_index] ([level_metadata.level_id]) static took [round((end_time - start_time) * 0.1, 0.01)]s")
 
 		start_time = REALTIMEOFDAY
-		level_objects_load_dynamic(static_entities_by_zlevel[z_index], level_metadata, z_index)
+		level_objects_load_dynamic(level_metadata, z_index)
 		end_time = REALTIMEOFDAY
 		subsystem_log("world-load: z-[z_index] ([level_metadata.level_id]) dynamic took [round((end_time - start_time) * 0.1, 0.01)]s")
 
@@ -160,7 +160,7 @@
 
 		start_time = REALTIMEOFDAY
 		var/list/atom/movable/bulk_entities = bulk_serializer.gather_all()
-		entities = entity_filter_out_non_persisting_levels(bulk_entities, SSmapping.ordered_levels)
+		bulk_entities = entity_filter_out_non_persisting_levels(bulk_entities, SSmapping.ordered_levels)
 		end_time = REALTIMEOFDAY
 		subsystem_log("world-save: [bulk_serializer.id] gather-filter took [round((end_time - start_time) * 0.1, 0.01)]s")
 
@@ -183,7 +183,7 @@
 			subsystem_log("world-save: [bulk_serializer.id] z-[z_index] level filter took [round((end_time - start_time) * 0.1, 0.01)]s")
 
 			start_time = REALTIMEOFDAY
-			var/list/datum/bulk_entity_chunk/chunks = bulk_serializer.serialize_entities_into_chunks(entities, level_data)
+			var/list/datum/bulk_entity_chunk/chunks = bulk_serializer.serialize_entities_into_chunks(bulk_entities_by_zlevel[z_index], level_data)
 			end_time = REALTIMEOFDAY
 			subsystem_log("world-save: [bulk_serializer.id] z-[z_index] serialize took [round((end_time - start_time) * 0.1, 0.01)]s")
 

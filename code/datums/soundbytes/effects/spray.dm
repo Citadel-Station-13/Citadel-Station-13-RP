@@ -7,6 +7,6 @@
 	name = "Spray (Liquid)"
 	is_sfx = TRUE
 	path = list(
-		'sound/soundbytes/effects/spray/spray_liquid_slow.ogg',
-		'sound/soundbytes/effects/spray/spray_liquid_fast.ogg',
+		'sound/soundbytes/effects/spray/spray_liquid_slower.ogg',
+		'sound/soundbytes/effects/spray/spray_liquid_faster.ogg',
 	)

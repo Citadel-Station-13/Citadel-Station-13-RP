@@ -120,7 +120,7 @@
 /**
  * @return list(count loaded, count dropped, count errored)
  */
-/datum/controller/subsystem/persistence/proc/level_objects_load_dynamic(generation, datum/map_level_persistence/level_data, z_index)
+/datum/controller/subsystem/persistence/proc/level_objects_load_dynamic(datum/map_level_persistence/level_data, z_index)
 	if(!SSdbcore.Connect())
 		return FALSE
 
@@ -176,7 +176,7 @@
 /**
  * @return list(count loaded, count dropped, count errored)
  */
-/datum/controller/subsystem/persistence/proc/level_objects_load_static(list/obj/entities, datum/map_level_persistence/level_data)
+/datum/controller/subsystem/persistence/proc/level_objects_load_static(datum/map_level_persistence/level_data, list/obj/entities)
 	if(!SSdbcore.Connect())
 		return FALSE
 

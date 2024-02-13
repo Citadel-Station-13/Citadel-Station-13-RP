@@ -102,7 +102,7 @@
 /obj/item/storage/fancy/crayons
 	name = "box of crayons"
 	desc = "A box of crayons for all your rune drawing needs."
-	icon = 'icons/obj/crayons.dmi'
+	icon = 'icons/modules/artwork/items/crayon_box.dmi'
 	icon_state = "crayonbox"
 	w_class = ITEMSIZE_SMALL
 	icon_type = "crayon"
@@ -141,7 +141,7 @@
 /obj/item/storage/fancy/markers
 	name = "box of markers"
 	desc = "A very professional looking box of permanent markers."
-	icon = 'icons/obj/crayons.dmi'
+	icon = 'icons/modules/artwork/items/marker_box.dmi'
 	icon_state = "markerbox"
 	w_class = ITEMSIZE_SMALL
 	icon_type = "marker"
@@ -181,7 +181,7 @@
 /obj/item/storage/fancy/chalk
 	name = "box of ritual chalk"
 	desc = "A box of chalk for all your ritual needs."
-	icon = 'icons/obj/crayons.dmi'
+	icon = 'icons/modules/artwork/items/chalk_box.dmi'
 	icon_state = "chalkbox"
 	w_class = ITEMSIZE_SMALL
 	icon_type = "chalk"
