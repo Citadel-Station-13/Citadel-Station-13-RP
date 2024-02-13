@@ -102,6 +102,16 @@
 				return TRUE
 			current_graffiti_icon_state = picked_state
 			return TRUE
+		if("color")
+			var/picked_color = params["color"]
+			if(crayon_free_recolor)
+				picked_color = sanitize_hexcolor(picked_color, 6, TRUE, "#ffffff")
+			else if(!isnull(crayon_pickable_colors) && !(picked_color in crayon_pickable_colors))
+				return TRUE
+			else
+				return TRUE
+			crayon_color = picked_color
+			return TRUE
 
 /obj/item/pen/crayon/proc/set_capped(capped)
 	src.capped = capped
