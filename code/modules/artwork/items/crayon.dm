@@ -35,7 +35,7 @@
 	/// currently picked datapack icon state
 	var/current_graffiti_icon_state
 	/// currently picked angle
-	var/current_graffiti_angle
+	var/current_graffiti_angle = 0
 
 	/// has cap
 	var/cappable = FALSE
@@ -70,6 +70,9 @@
 
 /obj/item/pen/crayon/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
+	.["graffitiPickedIcon"] = current_graffiti_icon_string_path
+	.["graffitiPickedState"] = current_graffiti_icon_state
+	.["graffitiPickedAngle"] = current_graffiti_angle
 
 /obj/item/pen/crayon/ui_assets(mob/user)
 	. = ..()
@@ -77,6 +80,28 @@
 
 /obj/item/pen/crayon/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
+	if(.)
+		return
+
+	switch(action)
+		if("angle")
+			current_graffiti_angle = text2num(params["angle"])
+			return TRUE
+		if("icon")
+			var/picked_icon = params["icon"]
+			if(isnull(GLOB.crayon_data_lookup_by_string_icon_path[picked_icon]))
+				return TRUE
+			current_graffiti_icon_string_path = picked_icon
+			return TRUE
+		if("state")
+			var/datum/crayon_decal_meta/datapack = GLOB.crayon_data_lookup_by_string_icon_path[current_graffiti_icon_string_path]
+			if(isnull(datapack))
+				return TRUE
+			var/picked_state = params["state"]
+			if(!(picked_state in datapack.states))
+				return TRUE
+			current_graffiti_icon_state = picked_state
+			return TRUE
 
 /obj/item/pen/crayon/proc/set_capped(capped)
 	src.capped = capped
@@ -154,34 +179,6 @@
 
 /obj/item/pen/crayon/proc/switch_color(new_color)
 	crayon_color = new_color
-
-/obj/item/pen/crayon/afterattack(atom/target, mob/user as mob, proximity)
-	if(!proximity) return
-	if(istype(target,/turf/simulated/floor))
-		var/drawtype = input("Choose what you'd like to draw.", "Crayon scribbles") in list("graffiti","rune","letter","arrow")
-		switch(drawtype)
-			if("letter")
-				drawtype = input("Choose the letter.", "Crayon scribbles") in list("a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z")
-				to_chat(user, "You start drawing a letter on the [target.name].")
-			if("graffiti")
-				to_chat(user, "You start drawing graffiti on the [target.name].")
-			if("rune")
-				to_chat(user, "You start drawing a rune on the [target.name].")
-			if("arrow")
-				drawtype = input("Choose the arrow.", "Crayon scribbles") in list("left", "right", "up", "down")
-				to_chat(user, "You start drawing an arrow on the [target.name].")
-		if(instant || do_after(user, 50))
-			if(!user.Adjacent(target))
-				return
-			new /obj/effect/debris/cleanable/crayon(target,pen_color,shadeColour,drawtype)
-			to_chat(user, "You finish drawing.")
-			target.add_fingerprint(user)		// Adds their fingerprints to the floor the crayon is drawn on.
-			log_game("[key_name(user)] drew [target], [pen_color], [shadeColour], [drawtype] with a crayon.")
-			if(uses)
-				uses--
-				if(!uses)
-					to_chat(user, "<span class='warning'>You used up your crayon!</span>")
-					qdel(src)
 
 /obj/item/pen/crayon/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
