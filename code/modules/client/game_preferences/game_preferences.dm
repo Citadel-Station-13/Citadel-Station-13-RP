@@ -38,7 +38,7 @@ GLOBAL_LIST_EMPTY(game_preferences)
 	//* Handled by middleware-like entries *//
 	/// keybindings - key to list of keys
 	var/list/keybindings
-	
+
 	/// were we originally sql loaded?
 	/// used to determine if sql is authoritative when sql comes back
 	///
@@ -68,7 +68,8 @@ GLOBAL_LIST_EMPTY(game_preferences)
 //* Init *//
 
 /datum/game_preferences/proc/initialize()
-	#warn impl
+	perform_initial_load()
+	initialized = TRUE
 
 /datum/game_preferences/proc/block_on_initialized(timeout = 10 SECONDS)
 	var/wait_until = world.time + timeout
@@ -82,10 +83,41 @@ GLOBAL_LIST_EMPTY(game_preferences)
 	#warn impl
 
 /datum/game_preferences/proc/oops_sql_came_back_perform_a_reload()
-	#warn fuck
+	// load from sql if we can; SQL is authoritative
+	if(load_from_sql())
+		return
+	// otherwise, save our current changes to SQL
+	save_to_sql()
 
 /datum/game_preferences/proc/perform_legacy_migration()
 	#warn FUCK
+
+/datum/game_preferences/proc/perform_initial_load()
+	if(SSdbcore.Connect())
+		// sql mode
+		// load
+		if(!load_from_sql())
+			// if not, load from file
+			if(!load_from_file())
+				// if not, reset to defaults
+				reset()
+				// perform legacy migration to see if there's data
+				perform_legacy_migration()
+			// save results to sql, as sql is authoritative
+			save_to_sql()
+		else
+			// synchronize sql to file for backup for when sql is down
+			save_to_file()
+	else
+		// normal mode
+		// load
+		if(!load_from_file())
+			// if not, reset to defaults
+			reset()
+			// perform legacy migration to see if there's data
+			perform_legacy_migration()
+			// save to file
+			save_to_file()
 
 //* Reset *//
 
@@ -95,10 +127,32 @@ GLOBAL_LIST_EMPTY(game_preferences)
 //* Set / Get *//
 
 /datum/game_preferences/proc/set_toggle(datum/game_preference_toggle/id_path_instance, value)
-	#warn impl
+	var/datum/game_preference_toggle/toggle = fetch_game_preference_toggle(id_path_instance)
+	if(isnull(toggle))
+		CRASH("invalid fetch")
+	if(!initialized)
+		return FALSE
+	// we don't check is visible, as it's checked on 'get'
+	// if(!toggle.is_visible(active))
+	// 	return FALSE
+	toggles_by_key[toggle.key] = value
+	if(active)
+		toggle.toggled(active, value)
+	return TRUE
 
 /datum/game_preferences/proc/toggle(datum/game_preference_toggle/id_path_instance)
-	#warn impl
+	var/datum/game_preference_toggle/toggle = fetch_game_preference_toggle(id_path_instance)
+	if(isnull(toggle))
+		CRASH("invalid fetch")
+	if(!initialized)
+		return FALSE
+	// we don't check is visible, as it's checked on 'get'
+	// if(!toggle.is_visible(active))
+	// 	return FALSE
+	toggles_by_key[toggle.key] = !toggles_by_key[toggle.key]
+	if(active)
+		toggle.toggled(active, toggles_by_key[toggle.key])
+	return TRUE
 
 /datum/game_preferences/proc/get_toggle(datum/game_preference_toggle/id_path_instance)
 	var/datum/game_preference_toggle/toggle = fetch_game_preference_toggle(id_path_instance)
@@ -106,7 +160,7 @@ GLOBAL_LIST_EMPTY(game_preferences)
 		CRASH("invalid fetch")
 	if(!initialized)
 		return toggle.default_value
-	if(!toggle.is_visible(GLOB.directory[ckey]))
+	if(!toggle.is_visible(active))
 		return toggle.default_value
 	return toggles_by_key[toggle.key]
 
@@ -115,32 +169,39 @@ GLOBAL_LIST_EMPTY(game_preferences)
 
 /datum/game_preferences/proc/get_entry(datum/game_preference_entry/id_path_instance)
 	var/datum/game_preference_entry/entry = fetch_game_preference_entry(id_path_instance)
-	if(isnull(toggle))
+	if(isnull(entry))
 		CRASH("invalid fetch")
 	if(!initialized)
 		return entry.default_value
-	if(!entry.is_visible(GLOB.directory[ckey]))
+	if(!entry.is_visible(active))
 		return entry.default_value
 	return entries_by_key[entry.key]
 
 //* Save / Load *//
 
 /**
+ * this proc does not overwrite data if load fails!
+ *
  * @return FALSE if we couldn't load
  */
 /datum/game_preferences/proc/load_from_sql()
 
 /datum/game_preferences/proc/save_to_sql()
 
+/datum/game_preferences/proc/file_path()
+	return "data/player_saves/[copytext(ckey, 1, 2)]/[ckey]/game_preferences.sav"
+
 /**
+ * this proc does not overwrite data if load fails!
+ *
  * @return FALSE if we couldn't load
  */
 /datum/game_preferences/proc/load_from_file()
+	var/savefile_path = file_path()
 
 /datum/game_preferences/proc/save_to_file()
-	var/savefile_path = "data/player_saves/[copytext(ckey, 1, 2)]/[ckey]/game_preferences.sav"
-	
-	
+	var/savefile_path = file_path()
+
 
 #warn impl
 

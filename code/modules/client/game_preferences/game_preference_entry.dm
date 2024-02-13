@@ -48,7 +48,7 @@ GLOBAL_LIST_INIT(game_preference_entries, init_game_preference_entries())
 
 /**
  * called when a value is changed with a client active
- * 
+ *
  * @params
  * * user - active client
  * * value - current (sanitized) value
@@ -70,7 +70,6 @@ GLOBAL_LIST_INIT(game_preference_entries, init_game_preference_entries())
 		"subcategory" = subcategory,
 		"name" = name,
 		"desc" = description,
-		"nullable" = nullable,
 		"priority" = priority,
 		"defaultValue" = default_value,
 	)
@@ -106,7 +105,7 @@ GLOBAL_LIST_INIT(game_preference_entries, init_game_preference_entries())
 	/// mandatory
 	var/max_length = 64
 
-/datum/game_preference/entry/string/filter_value(client/user, value)
+/datum/game_preference_entry/string/filter_value(client/user, value)
 	. = "[value]"
 	return copytext_char(., 1, min(length_char(.) + 1, max_length + 1))
 
@@ -165,7 +164,3 @@ GLOBAL_LIST_INIT(game_preference_entries, init_game_preference_entries())
 	return ..() | list(
 		"type" = "simpleColor",
 	)
-
-#warn impl
-
-#warn unit test key uniqueness

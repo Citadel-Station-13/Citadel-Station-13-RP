@@ -42,5 +42,3 @@
 /datum/game_preference_entry/dropdown/tooltip_style/New()
 	options = all_tooltip_styles.Copy()
 	..()
-
-#warn import

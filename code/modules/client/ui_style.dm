@@ -1,6 +1,7 @@
 
+// todo: lol we should datumize these probably?
 
-/var/all_ui_styles = list(
+/var/global/list/all_ui_styles = list(
 	UI_STYLE_MIDNIGHT     = 'icons/mob/screen/midnight.dmi',
 	UI_STYLE_ORANGE       = 'icons/mob/screen/orange.dmi',
 	UI_STYLE_OLD          = 'icons/mob/screen/old.dmi',
@@ -10,7 +11,7 @@
 	UI_STYLE_HOLOGRAM     = 'icons/mob/screen/holo.dmi'
 	)
 
-/var/all_ui_styles_robot = list(
+/var/global/list/all_ui_styles_robot = list(
 	UI_STYLE_MIDNIGHT     = 'icons/mob/screen1_robot.dmi',
 	UI_STYLE_ORANGE       = 'icons/mob/screen1_robot.dmi',
 	UI_STYLE_OLD          = 'icons/mob/screen1_robot.dmi',
