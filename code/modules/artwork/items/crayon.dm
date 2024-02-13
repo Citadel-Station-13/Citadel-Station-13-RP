@@ -97,11 +97,54 @@
 /obj/item/pen/crayon/proc/color_entity(atom/target)
 	return FALSE
 
-/obj/item/pen/crayon/proc/attempt_make_graffiti(atom/target, datum/event_args/actor/actor, datum/crayon_decal_meta/datapack, state)
+/obj/item/pen/crayon/proc/attempt_make_graffiti(atom/target, datum/event_args/actor/actor, datum/crayon_decal_meta/datapack, state, angle)
 	var/cost = 1
 
+	if(isnull(datapack))
+		datapack = GLOB.crayon_data_lookup_by_string_icon_path[current_graffiti_icon_string_path]
+		if(isnull(datapack))
+			return
+	if(isnull(state))
+		state = current_graffiti_icon_state
+	if(isnull(angle))
+		angle = current_graffiti_angle
+
+	if(has_remaining(cost))
+		actor.chat_feedback(
+			SPAN_WARNING("[src] doesn't have enough remaining to draw graffiti."),
+			src,
+		)
+		return FALSE
+
+	if(debris_time)
+		actor.visible_feedback(
+			range = MESSAGE_RANGE_CONSTRUCTION,
+			visible = SPAN_WARNING("[actor.performer] starts to draw on [target] with [src]!"),
+			visible_self = SPAN_WARNING("You start to draw on [target] with [src]!"),
+		)
+		if(!do_after(actor.performer, debris_time, target, mobility_flags = MOBILITY_CAN_USE | MOBILITY_CAN_HOLD))
+
+	actor.visible_feedback(
+		range = MESSAGE_RANGE_CONSTRUCTION,
+		visible = SPAN_WARNING("[actor.performer] draws some graffiti on [target]!"),
+		visible_self = SPAN_WARNING("You draw some graffiti on [target]!"),
+	)
+
+
+	if(!use_remaining(cost))
+		actor.chat_feedback(
+			SPAN_WARNING("[src] doesn't have enough remaining to draw graffiti."),
+			src,
+		)
+		return FALSE
+
+	playsound(src, crayon_sound, 50, TRUE, -1)
+
+	return make_graffiti(target, datapack, state, angle)
+
 /obj/item/pen/crayon/proc/attempt_color_entity(atom/target, datum/event_args/actor/actor)
-	var/cost = 1
+	// todo: implement attempt_color_entity
+	return FALSE
 
 /obj/item/pen/crayon/proc/has_remaining(amount)
 	return amount <= remaining
@@ -139,7 +182,6 @@
 				if(!uses)
 					to_chat(user, "<span class='warning'>You used up your crayon!</span>")
 					qdel(src)
-	return
 
 /obj/item/pen/crayon/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
