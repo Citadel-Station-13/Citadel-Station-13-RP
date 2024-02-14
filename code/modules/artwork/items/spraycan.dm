@@ -6,13 +6,18 @@
 	icon = 'icons/modules/artwork/items/spraycans.dmi'
 	icon_state = "spraycan"
 
+	materials_base = list(
+		MAT_STEEL = 500,
+		MAT_GLASS = 100,
+	)
+
 	debris_path = /obj/effect/debris/cleanable/crayon/spraycan
 	crayon_sound = /datum/soundbyte/spray_air
 	crayon_free_recolor = TRUE
 	cappable = TRUE
 	capped = TRUE
 
-	/// cap overlay?
+	/// do we render the cap?
 	var/cap_overlay = TRUE
 
 /obj/item/pen/crayon/spraycan/Initialize(mapload)
