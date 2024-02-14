@@ -3,6 +3,7 @@
 	desc = "A chisel-tip permanent marker. Hopefully non-toxic."
 	icon = 'icons/modules/artwork/items/markers.dmi'
 	icon_state = "markerred"
+	crayon_name = "marker"
 	crayon_color_name = "red"
 	crayon_reagent_type = /datum/reagent/marker_ink
 	debris_path = /obj/effect/debris/cleanable/crayon/marker

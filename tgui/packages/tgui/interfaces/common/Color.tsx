@@ -89,27 +89,6 @@ export type ByondAtomColor =
   ByondColorMatrixRGBAC |
   ByondColorMatrixRGBC;
 
-interface ColorPickerProps extends BoxProps {
-  readonly allowMatrix?: boolean;
-  readonly allowAlpha?: boolean;
-  readonly currentColor: ByondAtomColor;
-  readonly setColor: (ByondAtomColor) => void;
-}
-
-interface ColorPickerState {
-  mode: ColorPickerMode;
-  cRed: number;
-  cGreen: number;
-  cBlue: number;
-  cAlpha: number;
-  cMatrix: ByondColorMatrixRGBAC;
-}
-
-enum ColorPickerMode {
-  Normal = 0,
-  Matrix = 1,
-}
-
 export const ConvertByondColorMatrixRGBACToRGBC = (
   matrix: ByondColorMatrixRGBAC
 ): ByondColorMatrixRGBC => {
@@ -181,6 +160,27 @@ export const ConvertByondColorMatrixtoRGBAC = (
       throw new Error("invalid matrix length");
   }
 };
+
+interface ColorPickerProps extends BoxProps {
+  readonly allowMatrix?: boolean;
+  readonly allowAlpha?: boolean;
+  readonly currentColor: ByondAtomColor;
+  readonly setColor: (ByondAtomColor) => void;
+}
+
+interface ColorPickerState {
+  mode: ColorPickerMode;
+  cRed: number;
+  cGreen: number;
+  cBlue: number;
+  cAlpha: number;
+  cMatrix: ByondColorMatrixRGBAC;
+}
+
+enum ColorPickerMode {
+  Normal = 0,
+  Matrix = 1,
+}
 
 export class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
   assembleState = (): ColorPickerState => {

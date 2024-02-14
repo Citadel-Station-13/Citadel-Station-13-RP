@@ -12,6 +12,7 @@
 	)
 
 	debris_path = /obj/effect/debris/cleanable/crayon/spraycan
+	crayon_name = "spraycan"
 	crayon_sound = /datum/soundbyte/spray_air
 	crayon_free_recolor = TRUE
 	cappable = TRUE

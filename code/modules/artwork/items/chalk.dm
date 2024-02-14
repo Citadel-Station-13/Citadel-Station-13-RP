@@ -3,6 +3,7 @@
 	desc = "A stick of blessed chalk, used in rituals."
 	icon = 'icons/modules/artwork/items/chalk.dmi'
 	icon_state = "chalkwhite"
+	crayon_name = "chalk"
 	crayon_color_name = "white"
 	crayon_reagent_type = /datum/reagent/chalk_dust
 	debris_path = /obj/effect/debris/cleanable/crayon/chalk

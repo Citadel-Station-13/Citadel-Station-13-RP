@@ -11,6 +11,8 @@
 
 	/// color name
 	var/crayon_color_name = "red"
+	/// what we show as; e.g. 'crayon', 'marker'
+	var/crayon_name = "crayon"
 	/// uses left; null for infinite
 	var/remaining = 30
 	/// time to draw graffiti
@@ -70,6 +72,7 @@
 	.["cappable"] = cappable
 	.["anyColor"] = crayon_free_recolor
 	.["colorList"] = crayon_pickable_colors
+	.["canonicalName"] = crayon_name
 
 /obj/item/pen/crayon/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
@@ -96,6 +99,7 @@
 			var/picked_state = params["state"]
 			if(isnull(GLOB.crayon_data_lookup_by_string_icon_path[picked_icon]))
 				return TRUE
+			var/datum/crayon_decal_meta/datapack = GLOB.crayon_data_lookup_by_string_icon_path[picked_icon]
 			if(!(picked_state in datapack.states))
 				return TRUE
 			current_graffiti_icon_string_path = picked_icon
