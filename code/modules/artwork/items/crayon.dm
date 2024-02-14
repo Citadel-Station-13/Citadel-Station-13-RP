@@ -67,9 +67,13 @@
 	for(var/datum/crayon_decal_meta/datapack in GLOB.crayon_data)
 		datapacks[++datapacks.len] = datapack.tgui_crayon_data()
 	.["datapacks"] = datapacks
+	.["cappable"] = cappable
+	.["anyColor"] = crayon_free_recolor
+	.["colorList"] = crayon_pickable_colors
 
 /obj/item/pen/crayon/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
+	.["capped"] = capped
 	.["graffitiPickedIcon"] = current_graffiti_icon_string_path
 	.["graffitiPickedState"] = current_graffiti_icon_state
 	.["graffitiPickedAngle"] = current_graffiti_angle
@@ -87,19 +91,14 @@
 		if("angle")
 			current_graffiti_angle = text2num(params["angle"])
 			return TRUE
-		if("icon")
+		if("pick")
 			var/picked_icon = params["icon"]
+			var/picked_state = params["state"]
 			if(isnull(GLOB.crayon_data_lookup_by_string_icon_path[picked_icon]))
 				return TRUE
-			current_graffiti_icon_string_path = picked_icon
-			return TRUE
-		if("state")
-			var/datum/crayon_decal_meta/datapack = GLOB.crayon_data_lookup_by_string_icon_path[current_graffiti_icon_string_path]
-			if(isnull(datapack))
-				return TRUE
-			var/picked_state = params["state"]
 			if(!(picked_state in datapack.states))
 				return TRUE
+			current_graffiti_icon_string_path = picked_icon
 			current_graffiti_icon_state = picked_state
 			return TRUE
 		if("color")

@@ -1,5 +1,7 @@
+import { BooleanLike } from "common/react";
 import { useBackend } from "../../backend";
 import { Window } from "../../layouts";
+import { ByondAtomColor } from "../common/Color";
 
 const CRAYON_SPRITESHEET_NAME = "crayon-graffiti";
 
@@ -12,6 +14,13 @@ interface CrayonDatapack {
 
 interface CrayonUIData {
   datapacks: CrayonDatapack[];
+  capped: BooleanLike;
+  cappable: BooleanLike;
+  anyColor: BooleanLike;
+  colorList: null | ByondAtomColor[];
+  graffitiPickedItem: string | null;
+  graffitiPickedState: string | null;
+  graffitiPickedAngle: number;
 }
 
 const sizeKeyForCrayonDatapack = (pack: CrayonDatapack) => {
