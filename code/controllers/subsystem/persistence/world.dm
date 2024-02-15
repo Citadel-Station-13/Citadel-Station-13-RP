@@ -198,10 +198,12 @@
 			subsystem_log("world-save: [bulk_serializer.id] z-[z_index] write took [round((end_time - start_time) * 0.1, 0.01)]s")
 
 	// increment everything
+	subsystem_log("world-save: incrementing generations...")
+	// todo: this is *NOT* atomic!
 	for(var/z_index in 1 to world.maxz)
 		var/datum/map_level_persistence/level_metadata = ordered_level_metadata[z_index]
-		level_metadata.generation = level_metadata.generation + 1
-	#warn this will require a legacy mass insert
+		level_metadata.mark_serialized_to_generation(level_metadata.generation + 1)
+	subsystem_log("world-save: generations incremented.")
 
 	complete_end_time = REALTIMEOFDAY
 	subsystem_log("world-save: world saved in [round((complete_end_time - complete_start_time) * 0.1, 0.01)]s")

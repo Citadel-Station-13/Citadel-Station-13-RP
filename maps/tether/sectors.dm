@@ -18,9 +18,9 @@
 	for(var/datum/map_level/path as anything in snowflake_space_levels)
 		var/datum/map_level/level
 		if(ispath(path))
-			level = SSmapping.typed_levels[thing]
+			level = SSmapping.typed_levels[path]
 		else if(istext(path))
-			level = SSmapping.keyed_levels[thing]
+			level = SSmapping.keyed_levels[path]
 		if(isnull(level))
 			STACK_TRACE("failed to resolve [id] [path]")
 			continue
