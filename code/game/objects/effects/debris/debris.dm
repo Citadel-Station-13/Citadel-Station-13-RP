@@ -12,7 +12,15 @@
  */
 /obj/effect/debris
 	/// collate?
-	var/collate = FALSE
+	var/collate = TRUE
+	/// lazy check for amount of stuff within turf that's our type or subtype
+	var/collate_type_limit
+	/// type to check for, defaults to our type
+	var/collate_type
+	/// automatic collation kills other instead of self
+	var/collate_type_annihilate_other = FALSE
+	/// lazy check for amount of stuff within turf at all
+	var/collate_turf_limit
 	/// used by persistence serialization as a temp var for speed
 	var/tmp/debris_serialization_temporary
 	/// this is considered valuable and uses a % clean chance instead of being entirely based off of zones
@@ -31,8 +39,22 @@
  * this proc should kick our date into other matching thing son this turf.
  */
 /obj/effect/debris/proc/Collate()
-	// by default, deletes ourselves if there's anything like us in the turf.
-	return locate(type) in loc
+	if(!isnull(collate_type_limit))
+		var/check_type = collate_type || type
+		var/found = 0
+		if(!isnull(collate_turf_limit) && length(loc.contents) > collate_turf_limit)
+			return TRUE
+		for(var/obj/enemy in loc)
+			if(istype(enemy, check_type))
+				found++
+				if(found > collate_type_limit)
+					if(collate_type_annihilate_other)
+						qdel(enemy)
+						return FALSE
+					return TRUE
+	else if(!isnull(collate_turf_limit))
+		return length(loc.contents) > collate_turf_limit
+	return FALSE
 
 //* Atom Color - we don't use the expensive system. *//
 

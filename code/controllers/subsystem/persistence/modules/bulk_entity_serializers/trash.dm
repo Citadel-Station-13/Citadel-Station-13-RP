@@ -32,7 +32,7 @@
 	if(length(entities) <= 3)
 		return entities
 	// perform entity filtering based on level and configuraiton
-	var/mesh_heuristic = level.persistent_trash_mesh_heuristic
+	var/mesh_heuristic = level.persistent_trash_mesh_heuristic + round(length(entities) * 0.001 * level.persistent_trash_mesh_heuristic_escalate_per_thousand)
 	var/drop_n_largest_meshes = level.persistent_trash_drop_n_largest
 	var/drop_n_smallest_meshes = level.persistent_trash_drop_n_smallest
 	var/drop_n_most_isolated = level.persistent_trash_drop_n_most_isolated
@@ -205,25 +205,29 @@
 		var/datum/vec2/vertex = vertices[length(vertices)]
 		vertices.len--
 
-		var/list/obj/item/items_at_vertex = list()
 		var/list/datum/vec2/expanding = list(vertex)
+		var/list/obj/item/items_within_group = list()
+		items_within_group += vertices[vertex]
 		var/maximum_density_over_expansion = 0
 		var/expanding_index = 1
 		while(expanding_index <= length(expanding))
 			var/datum/vec2/source = expanding[expanding_index]
-			items_at_vertex += vertices[source]
 			maximum_density_over_expansion = max(maximum_density_over_expansion, 1 / source.voronoi_area)
 			for(var/datum/vec2/dest in constructed_graph.vertices[source])
 				if(source.chebyshev_distance_to(dest) > mesh_heuristic_threshold)
 					continue
 				expanding |= dest
+				items_within_group += vertices[source]
 				vertices -= dest
 			expanding_index++
 
-		if(length(items_at_vertex) > 1)
+		if(length(items_within_group) > 1)
 			var/datum/persistent_trash_group/constructed_mesh = new
-			constructed_mesh.trash = items_at_vertex
+			constructed_mesh.trash = items_within_group
 			constructed_mesh.highest_marked_density = maximum_density_over_expansion
+			// todo: configurable?
+			var/density_escalation_heuristic = length(items_within_group) / 20
+			constructed_mesh.highest_marked_density *= density_escalation_heuristic
 		else
 			ASSERT(items_at_vertex[1])
 			singles += items_at_vertex[1]

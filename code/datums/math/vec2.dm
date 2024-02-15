@@ -89,5 +89,5 @@
 			for(var/list/data_list as anything in point.voronoi_cells)
 				decoded_cell_vec2 += new /datum/vec2(data_list["x"], data_list["y"])
 			point.voronoi_cells = decoded_cell_vec2
-	var/datum/graph/constructed = graph_deserialize_from_rustg_call_string(decoded["graph"], points)
+	var/datum/graph/constructed = graph_deserialize_from_rustg_call_list(decoded["graph"], points)
 	return constructed

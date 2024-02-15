@@ -118,6 +118,8 @@
 	var/persistent_trash_drop_n_least_isolated = 0
 	/// mesh heuristic in tiles
 	var/persistent_trash_mesh_heuristic = 3
+	/// additional mesh heuristic per 1000 objects
+	var/persistent_trash_mesh_heuristic_escalate_per_thousand = 5
 
 	//* Tracking *//
 	var/turfs_rebuild_count = 0
