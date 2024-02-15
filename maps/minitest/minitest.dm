@@ -66,8 +66,11 @@
 
 	allowed_spawns = list("Arrivals Shuttle")
 
+/datum/map_level/minitest
+	persistence_allowed = TRUE
+
 /datum/map_level/minitest/station
-	id = "MinitestStation"
+	id = "station"
 	name = "Minitest - Station"
 	display_id = "!debug-station"
 	display_name = "Minitest Debugging Map - Station"
@@ -80,7 +83,7 @@
 	flags = LEGACY_LEVEL_STATION | LEGACY_LEVEL_CONTACT | LEGACY_LEVEL_PLAYER | LEGACY_LEVEL_CONSOLES
 
 /datum/map_level/minitest/sector1
-	id = "MinitestSector1"
+	id = "sector-1"
 	name = "Minitest - Sector 1"
 	display_id = "!debug-sector-1"
 	display_name = "Minitest Debugging Map - Sector 1"
@@ -89,7 +92,7 @@
 	flags = LEGACY_LEVEL_STATION | LEGACY_LEVEL_CONTACT | LEGACY_LEVEL_PLAYER | LEGACY_LEVEL_CONSOLES
 
 /datum/map_level/minitest/sector2
-	id = "MinitestSector2"
+	id = "sector-2"
 	name = "Minitest - Sector 2"
 	display_id = "!debug-sector-2"
 	display_name = "Minitest Debugging Map - Sector 2"

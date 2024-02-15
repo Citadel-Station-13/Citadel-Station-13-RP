@@ -109,10 +109,10 @@
 /**
  * serialize entities into chunks for a single level
  *
- * @return list(count saved, count dropped, count errored)
+ * @return list(chunks)
  */
 /datum/bulk_entity_persistence/proc/serialize_entities_into_chunks(list/atom/movable/entities, datum/map_level/level, datum/map_level_persistence/persistence)
-	return list(0, 0, 0)
+	return list()
 
 /**
  * @return list(count loaded, count dropped, count errored)
