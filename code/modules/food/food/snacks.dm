@@ -5237,7 +5237,7 @@ END CITADEL CHANGE */
 	icon_state = "friedmushroom"
 	filling_color = "#EDDD00"
 	nutriment_amt = 4
-	nutriment_desc = list("alcoholic mushrooms" = 4)
+	nutriment_desc = list("yeasty mushrooms" = 4)
 
 /obj/item/reagent_containers/food/snacks/friedmushroom/Initialize(mapload)
 	. = ..()
