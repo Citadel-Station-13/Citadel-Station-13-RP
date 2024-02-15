@@ -8,6 +8,7 @@
 	drop_sound = 'sound/items/drop/gloves.ogg'
 	pickup_sound = 'sound/items/pickup/gloves.ogg'
 	pen_color = "#FF0000" //RGB
+	clickable = FALSE
 
 	/// color name
 	var/crayon_color_name = "red"
@@ -153,9 +154,9 @@
 	if(isnull(angle))
 		angle = current_graffiti_angle
 
-	if(has_remaining(cost))
+	if(!has_remaining(cost))
 		actor.chat_feedback(
-			SPAN_WARNING("[src] doesn't have enough remaining to draw graffiti."),
+			SPAN_WARNING("There isn't enough left of [src] to draw graffiti."),
 			src,
 		)
 		return FALSE
@@ -181,18 +182,18 @@
 			)
 			return FALSE
 
+	if(!use_remaining(cost))
+		actor.chat_feedback(
+			SPAN_WARNING("There isn't enough left of [src] to draw graffiti."),
+			src,
+		)
+		return FALSE
+
 	actor.visible_feedback(
 		range = MESSAGE_RANGE_CONSTRUCTION,
 		visible = SPAN_WARNING("[actor.performer] draws some graffiti on [target]!"),
 		visible_self = SPAN_WARNING("You draw some graffiti on [target]!"),
 	)
-
-	if(!use_remaining(cost))
-		actor.chat_feedback(
-			SPAN_WARNING("[src] doesn't have enough remaining to draw graffiti."),
-			src,
-		)
-		return FALSE
 
 	playsound(src, crayon_sound, 50, TRUE, -1)
 

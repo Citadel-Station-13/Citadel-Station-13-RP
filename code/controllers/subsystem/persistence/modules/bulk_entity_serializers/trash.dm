@@ -50,14 +50,13 @@
 		collating += mesh.trash
 	return collating
 
-/datum/bulk_entity_persistence/trash/serialize_entities_into_chunks(list/atom/movable/entities, datum/map_level/level)
+/datum/bulk_entity_persistence/trash/serialize_entities_into_chunks(list/atom/movable/entities, datum/map_level/level, datum/map_level_persistence/persistence)
 	var/list/datum/bulk_entity_chunk/chunks = list()
 	// split by zlevel
 	var/list/z_index_split = SSpersistence.entity_group_by_zlevel(entities)
 	// iterate
 	for(var/z_index in 1 to world.maxz)
 		var/list/atom/movable/z_entities = z_index_split[z_index]
-		var/datum/map_level/level_instance = SSmapping.ordered_levels[z_index]
 		var/level_id = SSpersistence.level_id_of_z(z_index)
 		if(isnull(level_id) || !length(z_entities))
 			continue
@@ -169,21 +168,68 @@
  *
  * @return list(list(/datum/persistent_trash_group instance, ..), list(item instance = density, ...))
  */
-/datum/bulk_entity_persistence/trash/proc/heuristics(list/obj/item/items)
+/datum/bulk_entity_persistence/trash/proc/heuristics(list/obj/item/items, mesh_heuristic_threshold)
+	// we need a way to dedupe, so...
+	// this is the 'real' graph vertices list; only one is made for a coordinate.
+	// this is associated to the list of items in it.
+	var/list/datum/vec2/vertices = list()
 	// lockstepped list of vec2's
-	var/list/datum/vec2/points = list()
+	var/list/datum/vec2/lockstepped_points = list()
+	// 16 MB at 1000x1000, dropped right after
+	var/list/buffer = new /list(world.maxx * world.maxy)
 	for(var/i in 1 to length(items))
 		var/obj/item/item = items[i]
-		points += new /datum/vec2(item.x, item.y)
+		var/index = (item.y - 1) * world.maxx + (item.x)
+		if(isnull(buffer[index]))
+			var/datum/vec2/created_point = new /datum/vec2(item.x, item.y)
+			buffer[index] = created_point
+			vertices[created_point] = list()
+		vertices[buffer[index]] += item
+		lockstepped_points += buffer[index]
+	// drop buffer now
+	buffer = null
+	// construct graph
+	var/datum/graph/constructed_graph = vec2_dual_delaunay_voronoi_graph(vertices)
+
+	// prepare
+	var/list/datum/persistent_trash_group/meshes = list()
+	var/list/obj/item/singles = list()
+
+	// go through vertices and create meshes
+	while(length(vertices))
+		var/datum/vec2/vertex = vertices[length(vertices)]
+		vertices.len--
+
+		var/list/obj/item/items_at_vertex = list()
+		var/list/datum/vec2/expanding = list(vertex)
+		var/maximum_density_over_expansion = 0
+		var/expanding_index = 1
+		while(expanding_index <= length(expanding))
+			var/datum/vec2/source = expanding[expanding_index]
+			items_at_vertex += vertices[source]
+			maximum_density_over_expansion = max(maximum_density_over_expansion, 1 / source.voronoi_area)
+			for(var/datum/vec2/dest in constructed_graph.vertices[source])
+				if(source.chebyshev_distance_to(dest) > mesh_heuristic_threshold)
+					continue
+				expanding |= dest
+				vertices -= dest
+			expanding_index++
+
+		if(length(items_at_vertex) > 1)
+			var/datum/persistent_trash_group/constructed_mesh = new
+			constructed_mesh.trash = items_at_vertex
+			constructed_mesh.highest_marked_density = maximum_density_over_expansion
+		else
+			ASSERT(items_at_vertex[1])
+			singles += items_at_vertex[1]
 
 
-	#warn triangulation / voronoi
+	return list(meshes, singles)
 
-#warn impl all
 
 /datum/persistent_trash_group
 	/// trash in this group
-	var/list/obj/item/trash = list()
+	var/list/obj/item/trash
 	/// highest marked density in this group
 	var/highest_marked_density = 0
 

@@ -50,7 +50,7 @@
 	// return collating
 	#warn impl
 
-/datum/bulk_entity_persistence/debris/serialize_entities_into_chunks(list/atom/movable/entities, datum/map_level/level)
+/datum/bulk_entity_persistence/debris/serialize_entities_into_chunks(list/atom/movable/entities, datum/map_level/level, datum/map_level_persistence/persistence)
 	. = ..()
 	#warn impl
 

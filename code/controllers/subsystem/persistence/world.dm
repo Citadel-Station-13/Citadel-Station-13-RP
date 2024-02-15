@@ -184,7 +184,7 @@
 			subsystem_log("world-save: [bulk_serializer.id] z-[z_index] level filter took [round((end_time - start_time) * 0.1, 0.01)]s")
 
 			start_time = REALTIMEOFDAY
-			var/list/datum/bulk_entity_chunk/chunks = bulk_serializer.serialize_entities_into_chunks(bulk_entities_by_zlevel[z_index], level_data)
+			var/list/datum/bulk_entity_chunk/chunks = bulk_serializer.serialize_entities_into_chunks(bulk_entities_by_zlevel[z_index], level_data, level_metadata)
 			end_time = REALTIMEOFDAY
 			subsystem_log("world-save: [bulk_serializer.id] z-[z_index] serialize took [round((end_time - start_time) * 0.1, 0.01)]s")
 

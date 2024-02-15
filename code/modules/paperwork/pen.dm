@@ -33,10 +33,14 @@
 	var/pen_capable = TRUE
 	/// spans to force when writing - either text or list
 	var/pen_spans
+	/// can we click?
+	var/clickable = TRUE
 
 /obj/item/pen/attack_self(mob/user)
 	. = ..()
 	if(.)
+		return
+	if(!clickable)
 		return
 	if(user.next_move > world.time)
 		return

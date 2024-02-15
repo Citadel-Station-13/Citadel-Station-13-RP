@@ -1,6 +1,6 @@
 import { BooleanLike } from "common/react";
 import { useBackend } from "../../backend";
-import { Button, LabeledList, Section, Stack } from "../../components";
+import { Button, Flex, LabeledList, Section, Stack } from "../../components";
 import { Sprite } from "../../components/Sprite";
 import { Window } from "../../layouts";
 import { ByondAtomColor } from "../common/Color";
@@ -22,7 +22,7 @@ interface CrayonUIData {
   cappable: BooleanLike;
   anyColor: BooleanLike;
   colorList: null | ByondAtomColor[];
-  graffitiPickedItem: string | null;
+  graffitiPickedIcon: string | null;
   graffitiPickedState: string | null;
   graffitiPickedAngle: number;
 }
@@ -35,7 +35,7 @@ export const Crayon = (props, context) => {
   const { data, act } = useBackend<CrayonUIData>(context);
 
   return (
-    <Window width={800} height={800} title={data.canonicalName}>
+    <Window width={500} height={800} title={data.canonicalName}>
       <Window.Content>
         <Stack fill vertical>
           <Stack.Item>
@@ -57,15 +57,25 @@ export const Crayon = (props, context) => {
             </Section>
           </Stack.Item>
           <Stack.Item grow={1}>
-            <Section title="Stencil" scrollable>
-              {data.datapacks.map((pack) => (
-                <Section key={pack.id} title={pack.name}>
-                  {pack.states.sort((a, b) => a.localeCompare(b)).map((state) => (
-                    <Sprite sheet="crayon-graffiti" sprite={state} prefix={pack.name}
-                      sizeKey={sizeKeyForCrayonDatapack(pack)} key={state} />
-                  ))}
-                </Section>
-              ))}
+            <Section title="Stencil" fill scrollable>
+              <Flex direction="column">
+                {data.datapacks.map((pack) => (
+                  <Flex.Item key={pack.id}>
+                    <Flex wrap>
+                      {pack.states.sort((a, b) => a.localeCompare(b)).map((state) => (
+                        <Flex.Item key={state}>
+                          <Button selected={data.graffitiPickedState === state && data.graffitiPickedIcon === pack.id}
+                            onClick={() => act('pick', { icon: pack.id, state: state })}
+                            color="transparent">
+                            <Sprite sheet="crayon-graffiti" sprite={state} prefix={pack.name}
+                              sizeKey={sizeKeyForCrayonDatapack(pack)} key={state} />
+                          </Button>
+                        </Flex.Item>
+                      ))}
+                    </Flex>
+                  </Flex.Item>
+                ))}
+              </Flex>
             </Section>
           </Stack.Item>
         </Stack>
