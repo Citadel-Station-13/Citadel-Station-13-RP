@@ -18,6 +18,85 @@ CREATE TABLE IF NOT EXISTS `rp_schema_revision` (
   PRIMARY KEY (`major`, `minor`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- persistence --
+
+-- SSpersistence modules/bulk_entity
+CREATE TABLE IF NOT EXISTS `rp_persistence_bulk_entity` (
+  `id` INT(24) NOT NULL AUTO_INCREMENT,
+  `generation` INT(11) NOT NULL,
+  `persistence_key` VARCHAR(64) NOT NULL,
+  `level_id` VARCHAR(64) NOT NULL,
+  `data` MEDIUMTEXT,
+  `round_id` INT(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX(`level_id`, `generation`, `persistence_key`),
+  INDEX(`level_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- SSpersistence modules/level_objects
+CREATE TABLE IF NOT EXISTS `rp_persistence_static_level_objects` (
+  `generation` INT(11) NOT NULL,
+  `object_id` VARCHAR(64) NOT NULL,
+  `level_id` VARCHAR(64) NULL,
+  `data` MEDIUMTEXT NOT NULL,
+  PRIMARY KEY(`generation`, `object_id`, `level_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- SSpersistence modules/level_objects
+CREATE TABLE IF NOT EXISTS `rp_persistence_static_map_objects` (
+  `generation` INT(11) NOT NULL,
+  `object_id` VARCHAR(64) NOT NULL,
+  `map_id` VARCHAR(64) NULL,
+  `data` MEDIUMTEXT NOT NULL,
+  PRIMARY KEY(`generation`, `object_id`, `map_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- SSpersistence modules/level_objects
+CREATE TABLE IF NOT EXISTS `rp_persistence_static_global_objects` (
+  `generation` INT(11) NOT NULL,
+  `object_id` VARCHAR(64) NOT NULL,
+  `data` MEDIUMTEXT NOT NULL,
+  PRIMARY KEY(`generation`, `object_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- SSpersistence modules/level_objects
+CREATE TABLE IF NOT EXISTS `rp_persistence_dynamic_objects` (
+  `generation` INT(11) NOT NULL,
+  `object_id` INT(24) NOT NULL AUTO_INCREMENT,
+  `level_id` VARCHAR(64) NOT NULL,
+  `prototype_id` VARCHAR(256) NOT NULL,
+  `status` INT(24) NOT NULL DEFAULT 0,
+  `data` MEDIUMTEXT NOT NULL,
+  `x` INT(8) NOT NULL,
+  `y` INT(8) NoT NULL,
+  PRIMARY KEY(`object_id`, `generation`),
+  INDEX(`object_id`),
+  INDEX(`level_id`, `generation`),
+  INDEX(`prototype_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- SSpersistence modules/spatial_metadata
+CREATE TABLE IF NOT EXISTS `rp_persistence_level_metadata` (
+  `created` DATETIME NOT NULL DEFAULT Now(),
+  `saved` DATETIME NOT NULL,
+  `saved_round_id` INT(11) NOT NULL,
+  `level_id` VARCHAR(64) NOT NULL,
+  `data` MEDIUMTEXT NOT NULL,
+  `generation` INT(11) NOT NULL,
+  PRIMARY KEY(`level_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- SSpersistence modules/string_kv
+CREATE TABLE IF NOT EXISTS `rp_persistence_string_kv` (
+  `created` DATETIME NOT NULL DEFAULT Now(),
+  `modified` DATETIME NOT NULL,
+  `key` VARCHAR(64) NOT NULL,
+  `value` MEDIUMTEXT NULL,
+  `group` VARCHAR(64) NOT NULL,
+  `revision` INT(11) NOT NULL,
+  PRIMARY KEY(`key`, `group`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 -- photography --
 
 --           picture table            --
@@ -153,17 +232,6 @@ CREATE TABLE IF NOT EXISTS `rp_connection_log` (
   `ip` varchar(16) NOT NULL,
   `computerid` varchar(32) NOT NULL,
   PRIMARY KEY(`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- Persistence - Object Storage: Strings --
-CREATE TABLE IF NOT EXISTS `rp_persist_keyed_strings` (
-  `created` DATETIME NOT NULL DEFAULT Now(),
-  `modified` DATETIME NOT NULL,
-  `key` VARCHAR(64) NOT NULL,
-  `value` MEDIUMTEXT NULL,
-  `group` VARCHAR(64) NOT NULL,
-  `revision` INT(11) NOT NULL,
-  PRIMARY KEY(`key`, `group`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- /datum/character - Character Table --
@@ -356,58 +424,3 @@ CREATE TABLE IF NOT EXISTS `rp_population` (
   `time` DATETIME NOT NULL ,
   PRIMARY KEY (`id`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-CREATE TABLE IF NOT EXISTS `rp_persist_mass_atoms` (
-  `saved` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `handler_id` varchar(64) NOT NULL,
-  `level_id` varchar(64) NOT NULL,
-  `fragment` INT(3) NOT NULL,
-  `data` MEDIUMTEXT NOT NULL,
-  `version` INT(3) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-CREATE TABLE IF NOT EXISTS `rp_persist_mass_levels` (
-  `saved` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `handler_id` varchar(64) NOT NULL,
-  `level_id` varchar(64) NOT NULL,
-  `revision` INT(11) NOT NULL,
-  `flags` INT(24) NOT NULL,
-  `width` INT(4) NOT NULL,
-  `height` INT(4) NOT NULL,
-  `fragments` INT(4) NOT NULL,
-PRIMARY KEY(`handler_id`, `level_id`)
-) ENGINE = InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-CREATE TABLE IF NOT EXISTS `rp_persist_dynamic_atoms` (
-  `modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `created` datetime NOT NULL,
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `x` INT(8) NOT NULL,
-  `y` INT(8) NOT NULL,
-  `level_id` varchar(64) NOT NULL,
-  `type` varchar(64) NOT NULL,
-  `json` MEDIUMTEXT NOT NULL,
-  `flags` INT(24) NOT NULL,
-  `revision` INT(11) NOT NULL,
-  PRIMARY KEY(`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-CREATE TABLE IF NOT EXISTS `rp_persist_keyed_atoms` (
-  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `modified` datetime NOT NULL,
-  `map` varchar(64) NULL,
-  `key` varchar(64) NOT NULL,
-  `json` MEDIUMTEXT NOT NULL,
-  `revision` INT(11) NOT NULL,
-  PRIMARY KEY(`key`, `map`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-CREATE TABLE IF NOT EXISTS `rp_persist_datums` (
-  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `modified` datetime NOT NULL,
-  `datum_key` varchar(64) NOT NULL,
-  `json` MEDIUMTEXT NOT NULL,
-  `revision` INT(11) NOT NULL,
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY(`datum_key`, `id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATe=utf8mb4_general_ci;

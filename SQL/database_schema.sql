@@ -29,9 +29,9 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_bulk_entity` (
   `data` MEDIUMTEXT,
   `round_id` INT(11) NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX(`type_id`),
-  INDEX(`level_id`, `generation`)
-)
+  INDEX(`level_id`, `generation`, `persistence_key`),
+  INDEX(`level_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- SSpersistence modules/level_objects
 CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_static_level_objects` (
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_static_level_objects` (
   `level_id` VARCHAR(64) NULL,
   `data` MEDIUMTEXT NOT NULL,
   PRIMARY KEY(`generation`, `object_id`, `level_id`)
-)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- SSpersistence modules/level_objects
 CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_static_map_objects` (
@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_static_map_objects` (
   `map_id` VARCHAR(64) NULL,
   `data` MEDIUMTEXT NOT NULL,
   PRIMARY KEY(`generation`, `object_id`, `map_id`)
-)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- SSpersistence modules/level_objects
 CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_static_global_objects` (
@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_static_global_objects` (
   `object_id` VARCHAR(64) NOT NULL,
   `data` MEDIUMTEXT NOT NULL,
   PRIMARY KEY(`generation`, `object_id`)
-)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- SSpersistence modules/level_objects
 CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_dynamic_objects` (
@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_dynamic_objects` (
   INDEX(`object_id`),
   INDEX(`level_id`, `generation`),
   INDEX(`prototype_id`)
-)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- SSpersistence modules/spatial_metadata
 CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_level_metadata` (
@@ -84,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_level_metadata` (
   `data` MEDIUMTEXT NOT NULL,
   `generation` INT(11) NOT NULL,
   PRIMARY KEY(`level_id`)
-)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- SSpersistence modules/string_kv
 CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_string_kv` (
