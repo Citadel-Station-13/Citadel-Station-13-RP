@@ -124,7 +124,9 @@
 	for(var/i in 1 to length(levels))
 		if(ispath(levels[i]))
 			var/datum/map_level/level_path = levels[i]
-			levels[i] = new level_path(src)
+			var/datum/map_level/level_instance = new level_path
+			level_instance.hardcoded = TRUE
+			levels[i] = level_instance
 
 /**
  * anything to do immediately on load

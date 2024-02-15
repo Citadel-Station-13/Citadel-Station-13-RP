@@ -7,6 +7,10 @@
 	/// to namespace map levels yourself.
 	/// please use 'dashes-as-spacing' to format ids.
 	var/id
+	/// is this a hardcoded level? generally should be 'yes';
+	/// if it is, it's registered in the by-typepath lookup
+	var/hardcoded = FALSE
+
 	/// friendly debug / code name of level
 	var/name
 	/// player visible id for technical displays - randomized if unset
@@ -135,7 +139,7 @@
 	src.parent_map = parent_map
 
 	if(!isnull(parent_map))
-		id = "[parent_map.id]-[initial(id)]"
+		id = "[parent_map.id]-[id]"
 
 	#define UNPACK_LINK(vname) if(ispath(vname, /datum/map_level)) { var/datum/map_level/cast_##vname = vname; vname = initial(cast_##vname.id) ; }
 	UNPACK_LINK(link_north)
@@ -283,7 +287,7 @@
 		// if both sides are not null, we require agreement between the two
 		return (l1 == l2)? l1 : null
 	switch(dir)
-		#define RESOLVE(X) istype(X, /datum/map_level)? X : SSmapping.keyed_levels[X]
+		#define RESOLVE(X) istype(X, /datum/map_level)? X : (istext(X)? SSmapping.keyed_levels[X] : SSmapping.typed_levels[X])
 		if(NORTH)
 			return RESOLVE(link_north)
 		if(SOUTH)
