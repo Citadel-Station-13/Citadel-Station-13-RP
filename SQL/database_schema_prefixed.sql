@@ -227,9 +227,9 @@ CREATE TABLE IF NOT EXISTS `rp_round` (
 CREATE TABLE IF NOT EXISTS `rp_connection_log` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `datetime` datetime NOT NULL,
-  `serverip` varchar(16) NOT NULL,
+  `serverip` varchar(45) NOT NULL,
   `ckey` varchar(32) NOT NULL,
-  `ip` varchar(16) NOT NULL,
+  `ip` varchar(45) NOT NULL,
   `computerid` varchar(32) NOT NULL,
   PRIMARY KEY(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;

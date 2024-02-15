@@ -138,7 +138,7 @@
 
 	var/datum/db_query/query = SSdbcore.NewQuery(
 		"SELECT object_id, prototype_id, status, data, x, y \
-			FROM [format_table_name("persistence_dynamic_objects")]\
+			FROM [format_table_name("persistence_dynamic_objects")] \
 			WHERE level_id = :level, generation = :generation",
 		list(
 			"generation" = generation,

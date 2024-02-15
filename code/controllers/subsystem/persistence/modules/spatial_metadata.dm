@@ -97,7 +97,7 @@
 	SSdbcore.RunQuery(
 		"INSERT INTO [format_table_name("persistence_level_metadata")] (saved, saved_round_id, level_id, data, generation) \
 			VALUES (Now(), :round, :level, :data, :generation) ON DUPLICATE KEY UPDATE \
-			data = VALUES(data), generation = VALUES(generation), round = VALUES(round), saved = VALUES(saved)",
+			data = VALUES(data), generation = VALUES(generation), saved_round_id = VALUES(saved_round_id), saved = VALUES(saved)",
 		list(
 			"generation" = generation,
 			"round" = GLOB.round_id,

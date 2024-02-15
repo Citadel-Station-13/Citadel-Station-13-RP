@@ -5,6 +5,7 @@
  * /obj/item's that fit a filter
  */
 /datum/bulk_entity_persistence/trash
+	id = "trash"
 
 /datum/bulk_entity_persistence/trash/is_enabled()
 	return CONFIG_GET(flag/persistent_trash)
@@ -26,6 +27,10 @@
 	return filter_items(.)
 
 /datum/bulk_entity_persistence/trash/perform_level_filter(list/atom/movable/entities, datum/map_level/level)
+	// yeah the voronoi algorithm doesn't work if there's nothing to compute tbh
+	// we need atleast 1 for proper triangulation, but let's be safe and break if not 3+.
+	if(length(entities) <= 3)
+		return entities
 	// perform entity filtering based on level and configuraiton
 	var/mesh_heuristic = level.persistent_trash_mesh_heuristic
 	var/drop_n_largest_meshes = level.persistent_trash_drop_n_largest
