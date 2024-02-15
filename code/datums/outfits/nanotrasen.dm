@@ -20,7 +20,7 @@
 	name = "Nanotrasen officer"
 	head = /obj/item/clothing/head/beret/centcom/officer
 	l_ear = /obj/item/radio/headset/heads/captain
-	belt = /obj/item/gun/energy
+	belt = /obj/item/gun/projectile/energy
 	id_pda_assignment = "NanoTrasen Officer"
 
 /datum/outfit/nanotrasen/commander
@@ -28,5 +28,5 @@
 	uniform = /obj/item/clothing/under/rank/centcom
 	l_ear = /obj/item/radio/headset/heads/captain
 	head = /obj/item/clothing/head/beret/centcom/captain
-	belt = /obj/item/gun/energy
+	belt = /obj/item/gun/projectile/energy
 	id_pda_assignment = "NanoTrasen Commander"

@@ -1,5 +1,5 @@
 // -------------- Dominator -------------
-/obj/item/gun/energy/gun/fluff/dominator
+/obj/item/gun/projectile/energy/gun/fluff/dominator
 	name = "bulky energy gun"
 	desc = "A MWPSB Dominator from the Federation. Like the basic Energy Gun, this gun has two settings. It is used by the United Federation Public Safety Bureau's Criminal Investigation Division. The weapon can only be fired by the owner and is alert-level locked."
 
@@ -26,14 +26,14 @@
 	var/emagged = FALSE
 
 
-/obj/item/gun/energy/gun/fluff/dominator/special_check(mob/user)
+/obj/item/gun/projectile/energy/gun/fluff/dominator/special_check(mob/user)
 	if(!emagged && mode_name == "lethal" && get_security_level() == "green")
 		to_chat(user,"<span class='warning'>The trigger refuses to depress while on the lethal setting under security level green!</span>")
 		return FALSE
 
 	return ..()
 
-/obj/item/gun/energy/gun/fluff/dominator/emag_act(var/remaining_charges,var/mob/user)
+/obj/item/gun/projectile/energy/gun/fluff/dominator/emag_act(var/remaining_charges,var/mob/user)
 	..()
 	if(!emagged)
 		emagged = TRUE
@@ -46,6 +46,6 @@
 /obj/projectile/beam/dominator
 	name = "dominator lethal beam"
 	icon_state = "xray"
-	muzzle_type = /obj/effect/projectile/muzzle/xray
-	tracer_type = /obj/effect/projectile/tracer/xray
-	impact_type = /obj/effect/projectile/impact/xray
+	hitscan_muzzle_type = /obj/effect/projectile/muzzle/xray
+	hitscan_tracer_type = /obj/effect/projectile/tracer/xray
+	hitscan_impact_type = /obj/effect/projectile/impact/xray

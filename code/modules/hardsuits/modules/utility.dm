@@ -432,20 +432,6 @@
 
 	gun = /obj/item/reagent_containers/spray/cleaner
 
-//obj/item/reagent_containers/spray/cleaner
-//	spary =
-
-/obj/item/hardsuit_module/mounted/engage(atom/target)
-
-	if(!..())
-		return 0
-
-	if(!target)
-		gun.attack_self(holder.wearer)
-		return 1
-
-	gun.Fire(target,holder.wearer)
-	return 1
 
 /obj/item/hardsuit_module/mounted/mop/process(delta_time)
 

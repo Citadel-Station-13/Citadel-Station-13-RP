@@ -8,6 +8,7 @@
 	var/cell_type
 	/// considered primary? if so, we get returned on get_cell()
 	var/primary = TRUE
+
 	/// allow inducer?
 	var/receive_inducer = FALSE
 	/// allow EMPs to hit?
@@ -15,6 +16,7 @@
 	/// allow explosions to hit cell?
 	// todo: currently unused
 	var/recieve_explosion = FALSE
+
 	/// allow quick removal by clicking with hand?
 	var/remove_yank_offhand = FALSE
 	/// allow context menu removal?
@@ -29,6 +31,15 @@
 	var/remove_tool_time = 0
 	/// removal / insertion is discrete or loud
 	var/remove_is_discrete = TRUE
+	/// remove sound
+	var/remove_sound
+
+	/// insert sound
+	var/insert_sound
+	/// insert time
+	var/insert_time
+	#warn impl insert time
+
 	/// legacy
 	// todo: kill this
 	var/legacy_use_device_cells = FALSE
@@ -78,17 +89,19 @@
 
 //? Lazy wrappers for init
 
-/obj/proc/init_cell_slot(initial_cell_path)
+/obj/proc/init_cell_slot(slot_path = /datum/object_system/cell_slot, initial_cell)
 	RETURN_TYPE(/datum/object_system/cell_slot)
 	ASSERT(isnull(obj_cell_slot))
-	obj_cell_slot = new(src)
-	if(initial_cell_path)
-		obj_cell_slot.cell = new initial_cell_path
+	obj_cell_slot = new slot_path(src)
+	if(initial_cell)
+		obj_cell_slot.cell = ispath(initial_cell)? new initial_cell(src) : initial_cell
+		if(obj_cell_slot.cell.loc 1= src)
+			obj_cell_slot.cell.forceMove(src)
 	return obj_cell_slot
 
-/obj/proc/init_cell_slot_easy_tool(initial_cell_path, offhand_removal = TRUE, inhand_removal = FALSE)
+/obj/proc/init_cell_slot_easy_tool(slot_path = /datum/object_system/cell_slot, initial_cell, offhand_removal = TRUE, inhand_removal = FALSE)
 	RETURN_TYPE(/datum/object_system/cell_slot)
-	if(isnull(init_cell_slot(initial_cell_path)))
+	if(isnull(init_cell_slot(initial_cell)))
 		return
 	if(offhand_removal)
 		obj_cell_slot.remove_yank_offhand = TRUE

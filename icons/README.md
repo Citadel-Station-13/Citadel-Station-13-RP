@@ -15,12 +15,15 @@ Yes, this currently includes all turfs, mobs, objs, and misc things. Sorry. We'l
   - /clothing - general, non-module clothing items placed in here
     - /{type} - uniform, head, shoes, suit, etc
       - /costumes - vanity costumes like kilts, mime outfits, clown outfits, cueball outfits, etc
-      - /formal - formalwear like siuts, dresses, etc
+      - /formal - formalwear like suits, dresses, etc
       - /job - basic job uniforms
       - /misc - unsorted things
       - /rank - "formal" "rank"-wear like flight suits, military/naval, etc
     - /gearsets - bundled sets, like voidsuits, cryosuits, etc
   - /effects - generic visual effects that are not screen/rendering: e.g. attack, emp, bomb, etc.
+  - /factions - faction-specific content goes in here.
+    - /{factionname} - name of faction
+      - Follow a reasonable folder structure within a faction folder.
   - /items - general, non-module, non-clothing items placed in here
   - /interface - used for stuff going into spritesheets for tgui, etc. if it's a HUD object, it should go in /screen instead.
   - /machinery - used for sprites for general, non-module machines. use subdirectories if more than one .dmi is needed, or for closely related machinery.
@@ -36,8 +39,6 @@ Yes, this currently includes all turfs, mobs, objs, and misc things. Sorry. We'l
       - /structures - structures
   - /objects - miscellaneous objects that are not items, machinery, or structures
   - /overmaps - **All** overmap sprites, whether or not it's screen   rendering, goes in here
-  - /runtime - follow similar structure inside this, treat it as a   sub-copy. icons in this are copied over for use during runtime
-    - **Warning!** - everything not in this folder cannot be accessed by   "filename" and must be compiled in with 'filename'.
   - /screen - all screen objects, like hud icons, buttons, inventory   interface, parallax, etc
     - /actions - all action button sprites go in here
     - /atom_hud - the /image huds that atoms can have has their icons in   here

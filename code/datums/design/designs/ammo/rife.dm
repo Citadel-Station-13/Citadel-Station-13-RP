@@ -1,7 +1,7 @@
 /datum/design/ammo/rifle
 	abstract_type = /datum/design/ammo/rifle
 
-/datum/design/ammo/rifle/m762mm
+/datum/design/ammo/rifle/m762m
 	id = "AmmoRifle762mm"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC

@@ -11,7 +11,7 @@
 	parent_organ = BP_L_ARM
 	target_slot = /datum/inventory_slot_meta/abstract/hand/left
 	target_parent_classes = list(ORGAN_FLESH, ORGAN_ASSISTED)
-	integrated_object_type = /obj/item/gun/energy/laser/mounted/augment
+	integrated_object_type = /obj/item/gun/projectile/energy/laser/mounted/augment
 
 
 /obj/item/organ/internal/augment/armmounted/attackby(obj/item/I as obj, mob/user as mob)
@@ -34,14 +34,14 @@
 	name = "taser implant"
 	desc = "A large implant that fits into a subject's arm. It deploys a taser-emitting array by some painful means."
 	icon_state = "augment_taser"
-	integrated_object_type = /obj/item/gun/energy/taser/mounted/augment
+	integrated_object_type = /obj/item/gun/projectile/energy/taser/mounted/augment
 
 /obj/item/organ/internal/augment/armmounted/dartbow
 	name = "crossbow implant"
 	desc = "A small implant that fits into a subject's arm. It deploys a dart launching mechanism through the flesh through unknown means."
 	icon_state = "augment_dart"
 	w_class = ITEMSIZE_SMALL
-	integrated_object_type = /obj/item/gun/energy/crossbow
+	integrated_object_type = /obj/item/gun/projectile/energy/crossbow
 
 // Wrist-or-hand-mounted implant
 

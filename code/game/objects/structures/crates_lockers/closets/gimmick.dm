@@ -58,7 +58,7 @@
 	starts_with = list(
 		/obj/item/clothing/suit/armor/tdome/red = 3,
 		/obj/item/melee/energy/sword = 3,
-		/obj/item/gun/energy/laser = 3,
+		/obj/item/gun/projectile/energy/laser = 3,
 		/obj/item/melee/baton = 3,
 		/obj/item/storage/box/flashbangs = 3,
 		/obj/item/clothing/head/helmet/thunderdome = 3)
@@ -72,7 +72,7 @@
 	starts_with = list(
 		/obj/item/clothing/suit/armor/tdome/green = 3,
 		/obj/item/melee/energy/sword = 3,
-		/obj/item/gun/energy/laser = 3,
+		/obj/item/gun/projectile/energy/laser = 3,
 		/obj/item/melee/baton = 3,
 		/obj/item/storage/box/flashbangs = 3,
 		/obj/item/clothing/head/helmet/thunderdome = 3)

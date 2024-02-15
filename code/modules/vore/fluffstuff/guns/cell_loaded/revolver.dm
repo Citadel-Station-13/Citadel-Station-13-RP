@@ -1,5 +1,5 @@
 // The Gun //
-/obj/item/gun/ballistic/cell_loaded/combat
+/obj/item/gun/projectile/ballistic/cell_loaded/combat
 	name = "cell-loaded revolver"
 	desc = "Variety is the spice of life! The NT-102b 'Hydra' is an unholy hybrid of an ammo-driven  \
 	energy weapon that allows the user to mix and match their own fire modes. Up to four combinations of \
@@ -9,7 +9,7 @@
 	description_fluff = "The Nanotrasen 'Nanotech Selectable Fire Weapon' allows one to customize their loadout in the field, or before deploying, to achieve various results in a weapon they are already familiar with wielding."
 	allowed_magazines = list(/obj/item/ammo_magazine/cell_mag/combat)
 
-/obj/item/gun/ballistic/cell_loaded/combat/prototype
+/obj/item/gun/projectile/ballistic/cell_loaded/combat/prototype
 	name = "prototype cell-loaded revolver"
 	desc = "Variety is the spice of life! A prototype based on NT-102b 'Hydra' for short, is an unholy hybrid of an ammo-driven  \
 	energy weapon that allows the user to mix and match their own fire modes. Up to two combinations of \
@@ -27,7 +27,7 @@
 	name = "microbattery magazine"
 	desc = "A microbattery holder for the \'Hydra\'"
 	icon_state = "nsfw_mag"
-	max_ammo = 4
+	ammo_max = 4
 	x_offset = 4
 	catalogue_data = null//list(/datum/category_item/catalogue/information/organization/nanotrasen)
 	description_info = "This magazine holds Hydra microbatteries to power the Hydra handgun. Up to three can be loaded at once, and each provides four shots of their respective energy type. Loading multiple of the same type will provide additional shots of that type. The batteries can be recharged in a normal recharger."
@@ -36,7 +36,7 @@
 /obj/item/ammo_magazine/cell_mag/combat/prototype
 	name = "prototype microbattery magazine"
 	icon_state = "nsfw_mag_prototype"
-	max_ammo = 2
+	ammo_max = 2
 	x_offset = 6
 	catalogue_data = null
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 3, TECH_MAGNETS = 2)
@@ -50,7 +50,7 @@
 	max_w_class = ITEMSIZE_NORMAL
 
 /obj/item/storage/secure/briefcase/nsfw_pack/PopulateContents()
-	new /obj/item/gun/ballistic/cell_loaded/combat(src)
+	new /obj/item/gun/projectile/ballistic/cell_loaded/combat(src)
 	new /obj/item/ammo_magazine/cell_mag/combat(src)
 	for(var/path in subtypesof(/obj/item/ammo_casing/microbattery/combat))
 		new path(src)
@@ -62,7 +62,7 @@
 	max_w_class = ITEMSIZE_NORMAL
 
 /obj/item/storage/secure/briefcase/nsfw_pack_hos/PopulateContents()
-	new /obj/item/gun/ballistic/cell_loaded/combat(src)
+	new /obj/item/gun/projectile/ballistic/cell_loaded/combat(src)
 	new /obj/item/ammo_magazine/cell_mag/combat(src)
 	new /obj/item/ammo_casing/microbattery/combat/lethal(src)
 	new /obj/item/ammo_casing/microbattery/combat/lethal(src)

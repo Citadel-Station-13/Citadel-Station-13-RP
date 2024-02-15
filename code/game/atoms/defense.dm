@@ -55,6 +55,21 @@
 /atom/proc/unarmed_act(mob/attacker, datum/unarmed_attack/style, target_zone, mult = 1)
 	return CLICKCHAIN_DO_NOT_ATTACK
 
+#warn replace all calls
+/**
+ * Called on projectile hit
+ *
+ * @params
+ * * proj - the projectile
+ * * flags - BULLET_HIT_* flags
+ * * def_zone - hit zone
+ *
+ * @return BULLET_ACT_* enum
+ */
+/atom/proc/bullet_act(obj/projectile/proj, flags, def_zone)
+	P.on_hit(src, 0, def_zone)
+	. = 0
+
 //? Damage API
 
 /**
