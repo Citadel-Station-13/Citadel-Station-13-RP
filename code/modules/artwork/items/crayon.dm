@@ -91,6 +91,12 @@
 		return
 
 	switch(action)
+		if("cap")
+			if(!cappable)
+				return TRUE
+			set_capped(!capped)
+			usr.visible_message(SPAN_NOTICE("[usr] [capped? "caps" : "uncaps"] src."), range = MESSAGE_RANGE_ITEM_SOFT)
+			return TRUE
 		if("angle")
 			current_graffiti_angle = text2num(params["angle"])
 			return TRUE
@@ -153,6 +159,12 @@
 			src,
 		)
 		return FALSE
+	if(capped)
+		actor.chat_feedback(
+			SPAN_WARNING("[src] is capped."),
+			src,
+		)
+		return FALSE
 
 	if(debris_time)
 		actor.visible_feedback(
@@ -162,13 +174,18 @@
 		)
 		if(!do_after(actor.performer, debris_time, target, mobility_flags = MOBILITY_CAN_USE | MOBILITY_CAN_HOLD))
 			return FALSE
+		if(capped)
+			actor.chat_feedback(
+				SPAN_WARNING("[src] is capped."),
+				src,
+			)
+			return FALSE
 
 	actor.visible_feedback(
 		range = MESSAGE_RANGE_CONSTRUCTION,
 		visible = SPAN_WARNING("[actor.performer] draws some graffiti on [target]!"),
 		visible_self = SPAN_WARNING("You draw some graffiti on [target]!"),
 	)
-
 
 	if(!use_remaining(cost))
 		actor.chat_feedback(

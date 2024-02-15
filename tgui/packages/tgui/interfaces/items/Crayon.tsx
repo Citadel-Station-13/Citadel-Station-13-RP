@@ -1,6 +1,7 @@
 import { BooleanLike } from "common/react";
 import { useBackend } from "../../backend";
-import { Section, Stack } from "../../components";
+import { Button, LabeledList, Section, Stack } from "../../components";
+import { Sprite } from "../../components/Sprite";
 import { Window } from "../../layouts";
 import { ByondAtomColor } from "../common/Color";
 
@@ -39,12 +40,32 @@ export const Crayon = (props, context) => {
         <Stack fill vertical>
           <Stack.Item>
             <Section title="Basic">
-              Test
+              <LabeledList>
+                {data.cappable && (
+                  <LabeledList.Item label="Cap">
+                    <Button content={data.capped? "Capped" : "Uncapped"}
+                      selected={!data.capped} onClick={() => act('cap')} />
+                  </LabeledList.Item>
+                )}
+                <LabeledList.Item label="Color">
+                  test
+                </LabeledList.Item>
+                <LabeledList.Item label="Angle">
+                  Test
+                </LabeledList.Item>
+              </LabeledList>
             </Section>
           </Stack.Item>
           <Stack.Item grow={1}>
             <Section title="Stencil" scrollable>
-              Test
+              {data.datapacks.map((pack) => (
+                <Section key={pack.id} title={pack.name}>
+                  {pack.states.sort((a, b) => a.localeCompare(b)).map((state) => (
+                    <Sprite sheet="crayon-graffiti" sprite={state} prefix={pack.name}
+                      sizeKey={sizeKeyForCrayonDatapack(pack)} key={state} />
+                  ))}
+                </Section>
+              ))}
             </Section>
           </Stack.Item>
         </Stack>

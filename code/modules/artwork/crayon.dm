@@ -36,6 +36,8 @@ GLOBAL_LIST_EMPTY(crayon_data_lookup_by_string_icon_path)
 		var/height = icon.Height()
 		// pass path in directly
 		var/list/states = rustg_dmi_icon_states(icon_path)
+		if(!islist(states))
+			stack_trace("failed to parse states for crayon pack [icon_path]")
 
 		var/datum/crayon_decal_meta/data_holder = new
 		data_holder.states = states

@@ -177,6 +177,7 @@
 
 		for(var/z_index in 1 to world.maxz)
 			var/datum/map_level/level_data = SSmapping.ordered_levels[z_index]
+			var/datum/map_level_persistence/level_metadata = ordered_level_metadata[z_index]
 			start_time = REALTIMEOFDAY
 			bulk_entities_by_zlevel[z_index] = bulk_serializer.perform_level_filter(bulk_entities_by_zlevel[z_index], level_data)
 			end_time = REALTIMEOFDAY
@@ -187,39 +188,69 @@
 			end_time = REALTIMEOFDAY
 			subsystem_log("world-save: [bulk_serializer.id] z-[z_index] serialize took [round((end_time - start_time) * 0.1, 0.01)]s")
 
+			// we manually handle chunk generations
+			for(var/datum/bulk_entity_chunk/chunk as anything in chunks)
+				chunk.generation = level_metadata.generation + 1
+
 			start_time = REALTIMEOFDAY
 			bulk_entity_save_chunks(chunks)
 			end_time = REALTIMEOFDAY
 			subsystem_log("world-save: [bulk_serializer.id] z-[z_index] write took [round((end_time - start_time) * 0.1, 0.01)]s")
 
 	// increment everything
+	for(var/z_index in 1 to world.maxz)
+		var/datum/map_level_persistence/level_metadata = ordered_level_metadata[z_index]
+		level_metadata.generation = level_metadata.generation + 1
 	#warn this will require a legacy mass insert
 
 	complete_end_time = REALTIMEOFDAY
 	subsystem_log("world-save: world saved in [round((complete_end_time - complete_start_time) * 0.1, 0.01)]s")
 
 	// cleanup
-	start_time = REALTIMEOFDAY
-	clean_the_world()
-	end_time = REALTIMEOFDAY
-	subsystem_log("world-save: clean took [round((end_time - start_time) * 0.1, 0.01)]s")
+	// todo: start autocleaning someday when we have more persistence
+	// start_time = REALTIMEOFDAY
+	// clean_the_world()
+	// end_time = REALTIMEOFDAY
+	// subsystem_log("world-save: clean took [round((end_time - start_time) * 0.1, 0.01)]s")
 
 
 /**
  * called to clean out unused data from the database.
+ *
+ * todo: doesn't clean global objects
+ * todo: doesn't clean map objects
  */
-/datum/controller/subsystem/persistence/proc/clean_the_world()
+/datum/controller/subsystem/persistence/proc/clean_the_world(list/datum/map_level_persistence/ordered_level_metadata = spatial_metadata_get_ordered_levels())
 	if(!SSdbcore.Connect())
 		return FALSE
 
 	var/intentionally_allow_admin_proccall = usr
 	usr = null
 
-	var/list/metadata = new /list(world.maxz)
-	#warn impl
-	usr = intentionally_allow_admin_proccall
+	for(var/datum/map_level_persistence/level_metadata as anything in ordered_level_metadata)
+		SSdbcore.RunQuery(
+			"DELETE FROM [format_table_name("persistence_bulk_entity")] WHERE level_id = :level, generation != :generation",
+			list(
+				"level" = level_metadata.level_id,
+				"generation" = level_metadata.generation,
+			),
+		)
+		SSdbcore.RunQuery(
+			"DELETE FROM [format_table_name("persistence_static_level_objects")] WHERE level_id = :level, generation != :generation",
+			list(
+				"level" = level_metadata.level_id,
+				"generation" = level_metadata.generation,
+			),
+		)
+		SSdbcore.RunQuery(
+			"DELETE FROM [format_table_name("persistence_dynamic_objects")] WHERE level_id = :level, generation != :generation",
+			list(
+				"level" = level_metadata.level_id,
+				"generation" = level_metadata.generation,
+			),
+		)
 
-	#warn impl
+	usr = intentionally_allow_admin_proccall
 
 	return TRUE
 

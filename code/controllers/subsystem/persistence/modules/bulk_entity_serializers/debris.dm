@@ -23,6 +23,33 @@
 			continue
 		. += debris
 
+/datum/bulk_entity_persistence/debris/perform_level_filter(list/atom/movable/entities, datum/map_level/level)
+	// perform entity filtering based on level and configuraiton
+	// var/datum/map_level/level
+	// var/mesh_heuristic = level.persistent_debris_drop_n_largest
+	// var/drop_n_largest_meshes = level.persistent_trash_drop_n_largest
+	// var/drop_n_smallest_meshes = level.persistent_trash_drop_n_smallest
+	// var/drop_n_most_isolated = level.persistent_trash_drop_n_most_isolated
+	// var/drop_n_least_isolated = level.persistent_trash_drop_n_least_isolated
+	// // run heuristics
+	// var/list/results = heuristics(entities, mesh_heuristic)
+	// var/list/meshes = results[1]
+	// var/list/singles = results[2]
+	// // sort results by descending density
+	// tim_sort(meshes, GLOBAL_PROC_REF(cmp_persistent_trash_group_density_dsc))
+	// tim_sort(singles, GLOBAL_PROC_REF(cmp_numeric_dsc), associative = TRUE)
+	// // drop results as needed
+	// meshes.Cut(1, min(length(meshes) + 1, drop_n_largest_meshes + 1))
+	// meshes.len -= drop_n_smallest_meshes
+	// singles.Cut(1, min(length(singles) + 1, drop_n_least_isolated + 1))
+	// singles.len -= drop_n_most_isolated
+	// collate filtered back into z_entities
+	// var/list/collating = singles.Copy()
+	// for(var/datum/persistent_trash_group/mesh as anything in meshes)
+	// 	collating += mesh.trash
+	// return collating
+	#warn impl
+
 /datum/bulk_entity_persistence/debris/serialize_entities_into_chunks(list/atom/movable/entities, datum/map_level/level)
 	. = ..()
 	#warn impl
