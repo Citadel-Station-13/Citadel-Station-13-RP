@@ -229,8 +229,8 @@
 			var/density_escalation_heuristic = length(items_within_group) / 20
 			constructed_mesh.highest_marked_density *= density_escalation_heuristic
 		else
-			ASSERT(items_at_vertex[1])
-			singles += items_at_vertex[1]
+			ASSERT(items_within_group[1])
+			singles += items_within_group[1]
 
 
 	return list(meshes, singles)

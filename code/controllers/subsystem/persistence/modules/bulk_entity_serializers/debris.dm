@@ -25,31 +25,79 @@
 		. += debris
 
 /datum/bulk_entity_persistence/debris/perform_level_filter(list/atom/movable/entities, datum/map_level/level)
-	// perform entity filtering based on level and configuraiton
-	// var/datum/map_level/level
-	// var/mesh_heuristic = level.persistent_debris_drop_n_largest
-	// var/drop_n_largest_meshes = level.persistent_trash_drop_n_largest
-	// var/drop_n_smallest_meshes = level.persistent_trash_drop_n_smallest
-	// var/drop_n_most_isolated = level.persistent_trash_drop_n_most_isolated
-	// var/drop_n_least_isolated = level.persistent_trash_drop_n_least_isolated
-	// // run heuristics
-	// var/list/results = heuristics(entities, mesh_heuristic)
-	// var/list/meshes = results[1]
-	// var/list/singles = results[2]
-	// // sort results by descending density
-	// tim_sort(meshes, GLOBAL_PROC_REF(cmp_persistent_trash_group_density_dsc))
-	// tim_sort(singles, GLOBAL_PROC_REF(cmp_numeric_dsc), associative = TRUE)
-	// // drop results as needed
-	// meshes.Cut(1, min(length(meshes) + 1, drop_n_largest_meshes + 1))
-	// meshes.len -= drop_n_smallest_meshes
-	// singles.Cut(1, min(length(singles) + 1, drop_n_least_isolated + 1))
-	// singles.len -= drop_n_most_isolated
-	// collate filtered back into z_entities
-	// var/list/collating = singles.Copy()
-	// for(var/datum/persistent_trash_group/mesh as anything in meshes)
-	// 	collating += mesh.trash
-	// return collating
-	#warn impl - voronoi
+	var/list/datum/persistent_debris_group/groups = calculate_groups(entities)
+	// sort descending densities
+	tim_sort(groups, GLOBAL_PROC_REF(cmp_persistent_debris_group_unimportant_density_dsc))
+
+	// firstly, drop important groups as needed
+	var/important_zone_drop_chance = level.persistent_debris_important_drop_chance
+	var/important_total_found = 0
+	var/important_demotion_zone_threshold = level.persistent_debris_important_demotion_zone_threshold
+	for(var/datum/persistent_debris_group/group as anything in groups)
+		if(!length(group.important))
+			continue
+		if(important_demotion_zone_threshold && length(group.important) > important_demotion_zone_threshold)
+			group.contained += group.important
+			group.important.len = 0
+			continue
+		important_total_found += length(group.important)
+		if(prob(important_zone_drop_chance))
+			group.important.len = 0
+	// if too many
+	if(important_total_found > level.persistent_debris_important_demotion_level_threshold)
+		// drop literally everything
+		for(var/datum/persistent_debris_group/group as anything in groups)
+			group.contained += group.important
+			group.important.len = 0
+
+	// single dropping does not use any graph ops
+	var/to_drop_single = level.persistent_debris_drop_n_single
+	var/drop_index
+	for(drop_index in length(groups) to 1 step -1)
+		if(to_drop_single <= 0)
+			break
+		var/datum/persistent_debris_group/group = groups[drop_index]
+		switch(length(group.contained))
+			if(0)
+				continue
+			if(1)
+			else
+				break
+		group.contained.len = 0
+		to_drop_single--
+
+	// todo: proper graph ops
+	// byondapi when?
+	// we need proper support for mesh operations, the current way is too jank
+
+	// drop n smallest
+	var/to_drop_smallest = level.persistent_debris_drop_n_smallest
+	for(drop_index in drop_index to 1 step -1)
+		if(to_drop_smallest <= 0)
+			break
+		var/datum/persistent_debris_group/group = groups[drop_index]
+		if(!length(group.contained))
+			continue
+		group.contained.len = 0
+		--to_drop_smallest
+
+	// drop n largest
+	var/to_drop_largest = level.persistent_debris_drop_n_largest
+	for(drop_index in 1 to drop_index)
+		if(to_drop_largest <= 0)
+			break
+		var/datum/persistent_debris_group/group = groups[drop_index]
+		if(!length(group.contained))
+			break
+		group.contained.len = 0
+		--to_drop_largest
+
+	var/list/atom/movable/collated = list()
+	for(var/datum/persistent_debris_group/group as anything in groups)
+		collated += group.important
+		collated += group.contained
+
+	return collated
 
 /datum/bulk_entity_persistence/debris/serialize_entities_into_chunks(list/atom/movable/entities, datum/map_level/level, datum/map_level_persistence/persistence)
 	var/list/datum/bulk_entity_chunk/chunks = list()
@@ -135,7 +183,6 @@
 			loaded++
 	return list(loaded, dropped, 0)
 
-
 /**
  * forms debris into groups
  *
@@ -176,7 +223,10 @@
 				// don't rescan that
 				scanned.debris_serialization_temporary = calculation_iteration
 				// add to group
-				group.contained += scanned
+				if(scanned.relatively_important)
+					group.important += scanned
+				else
+					group.contained += scanned
 				// mark success
 				found = TRUE
 			// if nothing was found, this is a dead end
@@ -191,8 +241,11 @@
 			for(var/turf/enemy in RANGE_TURFS(1, scanning))
 				// because we're using an assoc list, this won't add an entry if it's already there.
 				floodfilling[enemy] = TRUE
-		// count tiles
+		// count tiles and objects
 		group.tile_count = length(found_turfs)
+		group.object_count = length(group.contained) + length(group.important)
+		// get relative density
+		group.self_naive_density = (length(group.contained) + length(group.important)) / group.tile_count
 		// get center
 		group.center_x = total_center_x / group.tile_count
 		group.center_y = total_center_y / group.tile_count
@@ -202,15 +255,27 @@
 /datum/persistent_debris_group
 	/// debris in this group
 	var/list/obj/effect/debris/contained = list()
+	/// important debris in this group
+	var/list/obj/effect/debris/important = list()
 	/// tile count in this group
 	var/tile_count = 0
+	/// total object count
+	var/object_count = 0
 	/// center of x
 	var/center_x
 	/// center of y
 	var/center_y
+	/// self naive density calc
+	var/self_naive_density
 
 /**
  * get relative debris density
  */
 /datum/persistent_debris_group/proc/estimate_density()
-	return length(contained) / tile_count
+	return (length(contained) + length(important)) / tile_count
+
+/proc/cmp_persistent_debris_group_density_dsc(datum/persistent_debris_group/A, datum/persistent_debris_group/B)
+	return B.self_naive_density - A.self_naive_density
+
+/proc/cmp_persistent_debris_group_unimportant_density_dsc(datum/persistent_debris_group/A, datum/persistent_debris_group/B)
+	return length(B.contained) - length(A.contained)

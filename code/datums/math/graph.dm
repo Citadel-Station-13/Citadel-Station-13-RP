@@ -90,6 +90,9 @@
 	for(var/a in 1 to length(edges))
 		var/list/connections = edges[a]
 		for(var/b in connections)
+			// rust is 0 indexed; we don't have to increment a because a was turned to 1
+			// indexing by json_decode list positioning, but this isn't!
+			b++
 			var/node_a = ordered_vertices[a]
 			var/node_b = ordered_vertices[b]
 			vertices[node_a][node_b] = TRUE

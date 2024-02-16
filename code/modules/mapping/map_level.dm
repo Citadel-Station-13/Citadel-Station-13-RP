@@ -87,12 +87,16 @@
 	///
 	/// 0 to disable
 	var/persistent_debris_drop_n_largest = 0
-	/// drop n smallest zones
-	/// this usually results in dropping single tile dirt/blood/etc
+	/// drop n smallest non-single zones
 	///
 	/// 0 to disable
 	var/persistent_debris_drop_n_smallest = 0
+	/// drop n single object zones
+	///
+	/// 0 to disable
+	var/persistent_debris_drop_n_single = 0
 	/// % chance per round to drop 'important' persistent debris like graffiti
+	/// we drop them as a zone when we drop.
 	///
 	/// 0 to disable
 	var/persistent_debris_important_drop_chance = 0
