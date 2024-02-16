@@ -11,6 +11,8 @@
 /datum/controller/subsystem/persistence/proc/bulk_entity_save_chunks(list/datum/bulk_entity_chunk/chunks)
 	if(!SSdbcore.Connect())
 		return FALSE
+	if(!length(chunks))
+		return
 
 	var/intentionally_allow_admin_proccall = usr
 	usr = null
@@ -34,7 +36,6 @@
 
 	return TRUE
 
-
 /datum/controller/subsystem/persistence/proc/bulk_entity_load_chunks_on_level(persistence_key, level_id, generation, datum/map_level_persistence/level_data)
 	if(!SSdbcore.Connect())
 		return FALSE
@@ -46,7 +47,7 @@
 
 	var/datum/db_query/query = SSdbcore.NewQuery(
 		"SELECT data FROM [format_table_name("persistence_bulk_entity")] \
-			WHERE generation = :generation, persistence_key = :persistence, level_id = :level",
+			WHERE generation = :generation AND persistence_key = :persistence AND level_id = :level",
 		list(
 			"generation" = generation,
 			"persistence" = persistence_key,

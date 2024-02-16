@@ -26,6 +26,9 @@
 
 /datum/bulk_entity_persistence/debris/perform_level_filter(list/atom/movable/entities, datum/map_level/level)
 	var/list/datum/persistent_debris_group/groups = calculate_groups(entities)
+	// do we have any
+	if(!length(groups))
+		return
 	// sort descending densities
 	tim_sort(groups, GLOBAL_PROC_REF(cmp_persistent_debris_group_unimportant_density_dsc))
 
@@ -215,8 +218,8 @@
 		var/list/turf/found_turfs = list()
 		var/pos = 1
 		while(pos <= length(floodfilling))
-			pos++
 			var/turf/scanning = floodfilling[pos]
+			pos++
 			// do we have anything in us?
 			var/found = FALSE
 			for(var/obj/effect/debris/scanned in scanning)

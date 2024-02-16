@@ -60,7 +60,7 @@
 	var/oldusr = usr
 	usr = null
 	var/datum/db_query/query = SSdbcore.NewQuery(
-		"SELECT `value` FROM [format_table_name("persistence_string_kkv")] WHERE `group` = :group, `key` = :key",
+		"SELECT `value` FROM [format_table_name("persistence_string_kkv")] WHERE `group` = :group AND `key` = :key",
 		list(
 			"group" = group,
 			"key" = key

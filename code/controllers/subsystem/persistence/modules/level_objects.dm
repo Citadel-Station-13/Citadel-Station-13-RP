@@ -139,7 +139,7 @@
 	var/datum/db_query/query = SSdbcore.NewQuery(
 		"SELECT object_id, prototype_id, status, data, x, y \
 			FROM [format_table_name("persistence_dynamic_objects")] \
-			WHERE level_id = :level, generation = :generation",
+			WHERE level_id = :level AND generation = :generation",
 		list(
 			"generation" = generation,
 			"level" = level_id,
@@ -198,7 +198,7 @@
 			if(OBJ_PERSIST_STATIC_MODE_GLOBAL)
 				query = SSdbcore.NewQuery(
 					"SELECT data FROM [format_table_name("persistence_static_global_objects")] \
-						WHERE object_id = :object, generation = :generation",
+						WHERE object_id = :object AND generation = :generation",
 					list(
 						"object" = entity.obj_persist_static_id,
 						"generation" = generation,
@@ -207,7 +207,7 @@
 			if(OBJ_PERSIST_STATIC_MODE_LEVEL)
 				query = SSdbcore.NewQuery(
 					"SELECT data FROM [format_table_name("persistence_static_level_objects")] \
-						WHERE object_id = :object, level_id = :level, generation = :generation",
+						WHERE object_id = :object AND level_id = :level AND generation = :generation",
 					list(
 						"object" = entity.obj_persist_static_id,
 						"level" = level_id,
@@ -218,7 +218,7 @@
 			if(OBJ_PERSIST_STATIC_MODE_MAP)
 				query = SSdbcore.NewQuery(
 					"SELECT data FROM [format_table_name("persistence_static_map_objects")] \
-						WHERE object_id = :object, map_id = :map, generation = :generation",
+						WHERE object_id = :object AND map_id = :map AND generation = :generation",
 					list(
 						"object" = entity.obj_persist_static_id,
 						"map" = map_id,

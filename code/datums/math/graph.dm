@@ -83,10 +83,11 @@
 /proc/graph_deserialize_from_rustg_call_list(list/decoded, list/ordered_vertices)
 	ASSERT(decoded["count"] == length(ordered_vertices))
 	var/datum/graph/building = new
-	var/list/vertices = new /list(length(ordered_vertices))
+	var/list/vertices = list()
 	var/list/edges = decoded["edges"]
 	for(var/i in 1 to length(vertices))
 		vertices[ordered_vertices[i]] = list()
+	ASSERT(length(vertices) == decoded["count"])
 	for(var/a in 1 to length(edges))
 		var/list/connections = edges[a]
 		for(var/b in connections)

@@ -203,11 +203,12 @@
 	// go through vertices and create meshes
 	while(length(vertices))
 		var/datum/vec2/vertex = vertices[length(vertices)]
+		var/list/items_on_vertex = vertices[vertex]
 		vertices.len--
 
 		var/list/datum/vec2/expanding = list(vertex)
 		var/list/obj/item/items_within_group = list()
-		items_within_group += vertices[vertex]
+		items_within_group += items_on_vertex
 		var/maximum_density_over_expansion = 0
 		var/expanding_index = 1
 		while(expanding_index <= length(expanding))
