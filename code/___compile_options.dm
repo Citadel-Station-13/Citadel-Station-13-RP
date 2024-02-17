@@ -149,11 +149,13 @@
 
 /**
  * ## MAPPING
- * IN_MAP_EDITOR macro is used to make some things appear visually more clearly in the map editor
- * this handles StrongDMM (and other editors using SpacemanDMM parser), toggle it manually if using a different editor
+ * MAP_SWITCH macro is used to make some things appear visually more clearly in the map editor
+ * this handles StrongDMM (and other editors using SpacemanDMM parser), toggle it manually if using a different editor.
  */
-#if (defined(SPACEMAN_DMM) || defined(FASTDMM))
-#define IN_MAP_EDITOR
+#if (defined(SPACEMAN_DMM) || defined(FASTDMM) || !defined(CBT))
+#define MAP_SWITCH(compile_time, map_time) ##map_time
+#else
+#define MAP_SWITCH(compile_time, map_time) ##compile_time
 #endif
 
 

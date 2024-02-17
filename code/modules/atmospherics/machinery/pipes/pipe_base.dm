@@ -9,9 +9,8 @@
 
 	pipe_flags = NONE // Does not have PIPING_DEFAULT_LAYER_ONLY flag.
 
-	#ifdef IN_MAP_EDITOR
-	alpha = 128 // Set for the benefit of mapping.
-	#endif
+	// Set for the benefit of mapping.
+	alpha = MAP_SWITCH(255, 128)
 
 	var/datum/gas_mixture/air_temporary // used when reconstructing a pipeline that broke
 	var/datum/pipeline/parent

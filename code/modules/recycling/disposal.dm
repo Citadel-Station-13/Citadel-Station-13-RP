@@ -706,9 +706,8 @@
 	integrity = 100
 	integrity_max = 100
 
-	#ifdef IN_MAP_EDITOR // Display disposal pipes etc. above walls in map editors.
-	alpha = 128 // Set for the benefit of mapping.
-	#endif
+	// Set for the benefit of mapping.
+	alpha = MAP_SWITCH(255, 128)
 
 	/// Bitmask of pipe directions.
 	var/dpdir = 0

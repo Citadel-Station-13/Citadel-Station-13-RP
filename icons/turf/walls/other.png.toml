@@ -1,0 +1,7 @@
+output_name = "other"
+template = "bitmask/slanted_32x32.toml"
+
+smooth_diagonally = false
+
+[cut_pos]
+y = 3

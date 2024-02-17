@@ -3,8 +3,8 @@
 	name = "phoron"
 	stack_type = /obj/item/stack/material/phoron
 	ignition_point = PHORON_MINIMUM_BURN_TEMPERATURE
-	icon_base = 'icons/turf/walls/solid_wall.dmi'
-	icon_reinf = 'icons/turf/walls/solid_wall_reinforced.dmi'
+	icon_base = 'icons/turf/walls/solid/wall.dmi'
+	icon_reinf = 'icons/turf/walls/solid/reinforced.dmi'
 	icon_colour = "#FC2BC5"
 	shard_type = SHARD_SHARD
 	stack_origin_tech = list(TECH_MATERIAL = 2, TECH_PHORON = 2)

@@ -107,7 +107,7 @@
 	return FALSE
 
 /datum/material/glass/reinforced
-	id = "glass_reinf"
+	id = "glass_reinforced"
 	name = "rglass"
 	display_name = "reinforced glass"
 	stack_type = /obj/item/stack/material/glass/reinforced

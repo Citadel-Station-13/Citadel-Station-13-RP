@@ -2,7 +2,7 @@ var/list/table_icon_cache = list()
 
 /obj/structure/table
 	name = "table frame"
-	icon = 'icons/obj/tables.dmi'
+	icon = 'icons/obj/tables/tables.dmi'
 	icon_state = "frame"
 	desc = "It's a table, for putting things on. Or standing on, if you really want to."
 	density = TRUE

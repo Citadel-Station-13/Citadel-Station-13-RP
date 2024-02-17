@@ -3,7 +3,7 @@
 	name = "biomass"
 	icon_colour = null
 	stack_type = null
-	icon_base = 'icons/turf/walls/diona.dmi'
+	icon_base = 'icons/turf/walls/natural/wall.dmi' // TODO: Some kind of organic wall.
 	icon_reinf = null
 
 	relative_integrity = 2

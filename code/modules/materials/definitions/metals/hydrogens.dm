@@ -1,6 +1,9 @@
 /datum/material/hydrogen
 	abstract_type = /datum/material/hydrogen
 
+	icon_base = 'icons/turf/walls/metal/wall.dmi'
+	icon_reinf = 'icons/turf/walls/reinforced_metal.dmi'
+	wall_stripe_icon = null
 	relative_integrity = 0.2
 	density = 8 * 0.2
 	relative_conductivity = 5

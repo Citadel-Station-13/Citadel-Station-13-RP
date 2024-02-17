@@ -3,8 +3,6 @@
 	name = "plasteel"
 	stack_type = /obj/item/stack/material/plasteel
 	melting_point = 6000
-	icon_base = 'icons/turf/walls/metal_wall.dmi'
-	icon_reinf = 'icons/turf/walls/solid_wall_reinforced.dmi'
 	icon_colour = "#777777"
 	explosion_resistance = 25
 	// great reinforcing material, shite conductor

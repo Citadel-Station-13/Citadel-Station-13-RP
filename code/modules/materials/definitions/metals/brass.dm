@@ -4,6 +4,9 @@
 	icon_colour = "#CAC955"
 	stack_type = /obj/item/stack/material/brass
 	tgui_icon_key = "brass"
+	icon_base = 'icons/turf/walls/metal/wall.dmi'
+	icon_reinf = 'icons/turf/walls/reinforced_metal.dmi'
+	wall_stripe_icon = null
 
 	relative_integrity = 1.3
 	hardness = MATERIAL_RESISTANCE_MODERATE

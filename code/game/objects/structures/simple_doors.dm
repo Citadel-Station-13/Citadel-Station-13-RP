@@ -1,4 +1,5 @@
 /obj/structure/simple_door
+	abstract_type = /obj/structure/simple_door
 	name = "door"
 	density = 1
 	anchored = 1
@@ -18,6 +19,9 @@
 /obj/structure/simple_door/Initialize(mapload, material)
 	if(!isnull(material))
 		set_primary_material(SSmaterials.resolve_material(material))
+	if(!base_icon_state)
+		var/datum/material/primary = get_primary_material()
+		base_icon_state = primary.door_icon_base
 	return ..()
 
 /obj/structure/simple_door/update_material_single(datum/material/material)
@@ -34,7 +38,7 @@
 		set_armor(material.create_armor(MATERIAL_SIGNIFICANCE_DOOR))
 		color = material.icon_colour
 		set_opacity(material.opacity > MATERIAL_OPACITY_THRESHOLD)
-	update_icon()
+	update_appearance()
 
 /obj/structure/simple_door/Bumped(atom/user)
 	..()
@@ -88,12 +92,12 @@
 	isSwitchingStates = 1
 	var/datum/material/material = get_primary_material()
 	playsound(loc, material.dooropen_noise, 100, 1)
-	flick("[material.door_icon_base]opening",src)
+	flick("[base_icon_state]_opening",src)
 	sleep(10)
 	density = 0
 	set_opacity(0)
 	state = 1
-	update_icon()
+	update_appearance()
 	isSwitchingStates = 0
 	update_nearby_tiles()
 
@@ -101,24 +105,18 @@
 	isSwitchingStates = 1
 	var/datum/material/material = get_primary_material()
 	playsound(loc, material.dooropen_noise, 100, 1)
-	flick("[material.door_icon_base]closing",src)
+	flick("[base_icon_state]_closing",src)
 	sleep(10)
 	density = 1
 	set_opacity(1)
 	state = 0
-	update_icon()
+	update_appearance()
 	isSwitchingStates = 0
 	update_nearby_tiles()
 
-/obj/structure/simple_door/update_icon()
-	var/datum/material/material = get_primary_material()
-	if(isnull(material))
-		icon_state = state? "open" : "closed"
-		return
-	if(state)
-		icon_state = "[material.door_icon_base]open"
-	else
-		icon_state = material.door_icon_base
+/obj/structure/simple_door/update_icon_state()
+	icon_state = "[base_icon_state][!density ? "_open" : ""]"
+	..()
 
 /obj/structure/simple_door/attackby(obj/item/W as obj, mob/user as mob)
 	if(user.a_intent == INTENT_HARM)

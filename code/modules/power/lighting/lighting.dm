@@ -230,7 +230,7 @@ var/global/list/light_type_cache = list()
 	name = "light fixture"
 	icon = 'icons/obj/lighting_vr.dmi'
 	base_icon_state = "tube_empty"
-	icon_state = "tube_empty"
+	icon_state = MAP_SWITCH("tube_empty", "tube_map") // So its actually visible in the mapping editor
 	desc = "A lighting fixture."
 	anchored = 1
 	plane = MOB_PLANE
@@ -295,10 +295,6 @@ var/global/list/light_type_cache = list()
 	var/brightness_range_ns
 	var/brightness_power_ns
 	var/brightness_color_ns
-
-	#ifdef IN_MAP_EDITOR // So its actually visible in the mapping editor
-	icon_state = "tube_map"
-	#endif
 
 /obj/machinery/light/flicker
 	auto_flicker = TRUE

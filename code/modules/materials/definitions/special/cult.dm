@@ -2,7 +2,7 @@
 	id = "cult"
 	name = "cult"
 	display_name = "disturbing stone"
-	icon_base = 'icons/turf/walls/cult.dmi'
+	icon_base = 'icons/turf/walls/cult/wall.dmi'
 	icon_colour = "#402821"
 	icon_reinf = "reinf_cult"
 	shard_type = SHARD_STONE_PIECE

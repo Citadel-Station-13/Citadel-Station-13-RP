@@ -67,6 +67,8 @@ DEFINE_BITFIELD(smoothing_junction, list(
  * If you change, update, or add to these, please add the ? to the comment.
  */
 
+// TODO: Revert to type lists or do some cursed type composition. @Zandario
+
 /**
  * # SMOOTHING GROUPS
  * Groups of things to smooth with.
@@ -164,3 +166,5 @@ DEFINE_BITFIELD(smoothing_junction, list(
 #define SMOOTH_GROUP_INDUSTRIAL_LIFT              S_OBJ(30) // /obj/structure/industrial_lift
 
 #define SMOOTH_GROUP_GAS_TANK                     S_OBJ(31)
+
+#define SMOOTH_GROUP_RETENTION_FIELD              S_OBJ(32) //! /obj/structure/atmospheric_retention_field

@@ -2,8 +2,8 @@
 	id = MAT_STEEL
 	name = MAT_STEEL
 	stack_type = /obj/item/stack/material/steel
-	icon_base = 'icons/turf/walls/metal_wall.dmi'
-	icon_reinf = 'icons/turf/walls/solid_wall_reinforced.dmi'
+	icon_base = 'icons/turf/walls/solid/wall.dmi'
+	icon_reinf = 'icons/turf/walls/solid/reinforced.dmi'
 	icon_colour = "#666666"
 	table_icon_base = "metal"
 	tgui_icon_key = "metal"

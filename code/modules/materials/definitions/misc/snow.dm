@@ -2,8 +2,8 @@
 	id = "snow"
 	name = MAT_SNOW
 	stack_type = /obj/item/stack/material/snow
-	icon_base = 'icons/turf/walls/solid.dmi'
-	icon_reinf = 'icons/turf/walls/reinforced_solid.dmi'
+	icon_base = 'icons/turf/walls/solid/wall.dmi'
+	icon_reinf = 'icons/turf/walls/solid/reinforced.dmi'
 	icon_colour = "#FFFFFF"
 	stack_origin_tech = list(TECH_MATERIAL = 1)
 	melting_point = T0C+1
@@ -65,7 +65,7 @@
 	id = "snow_packed"
 	name = "packed snow"
 	stack_type = /obj/item/stack/material/snowbrick
-	icon_base = 'icons/turf/walls/stone_wall.dmi'
+	icon_base = 'icons/turf/walls/stone/wall.dmi'
 	icon_reinf = 'icons/turf/walls/reinforced_stone.dmi'
 	icon_reinf_directionals = TRUE
 	icon_colour = "#D8FDFF"

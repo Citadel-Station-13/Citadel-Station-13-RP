@@ -1,0 +1,4 @@
+template = "bitmask/diagonal_32x32"
+
+[cut_pos]
+y = 5

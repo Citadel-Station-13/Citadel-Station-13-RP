@@ -2,30 +2,31 @@
 CREATE_STANDARD_TURFS(/turf/unsimulated/mineral)
 /turf/unsimulated/mineral
 	name = "impassable rock"
-	icon = 'icons/turf/walls.dmi'
-	icon_state = "rock-dark"
-	density = 1
+	icon = 'icons/turf/walls/_previews.dmi'
+	icon_state = "natural"
+	density = TRUE
 
 	smoothing_groups = (SMOOTH_GROUP_CLOSED_TURFS + SMOOTH_GROUP_MINERAL_WALLS)
 
 /turf/simulated/mineral //wall piece
 	name = "rock"
-	icon = 'icons/turf/walls/natural.dmi'
-	icon_state = "preview"
+	icon = 'icons/turf/walls/_previews.dmi'
+	icon_state = "natural"
 	base_icon_state = "wall"
 	smoothing_flags = SMOOTH_CUSTOM
 	initial_gas_mix = GAS_STRING_VACUUM
-	opacity = 1
-	density = 1
-	blocks_air = 1
+	opacity = TRUE
+	density = TRUE
+	blocks_air = TRUE
 	can_dirty = FALSE
-	has_resources = 1
+	has_resources = TRUE
 	color = COLOR_ASTEROID_ROCK
 
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_WALLS+SMOOTH_GROUP_MINERAL_WALLS)
 	canSmoothWith = (SMOOTH_GROUP_WALLS + SMOOTH_GROUP_CLOSED_TURFS+SMOOTH_GROUP_MINERAL_WALLS)
 
+	var/wall_icon = 'icons/turf/walls/natural/wall.dmi'
 	var/sand_icon = 'icons/turf/flooring/asteroid.dmi'
 	var/rock_side_icon_state = "rock_side"
 	var/sand_icon_state = "asteroid"
@@ -221,7 +222,7 @@ CREATE_STANDARD_TURFS(/turf/unsimulated/mineral)
 		else
 			name = "rock"
 
-		icon = 'icons/turf/walls/natural.dmi'
+		icon = wall_icon
 //		icon_state = rock_icon_state
 
 	//We are a sand floor
