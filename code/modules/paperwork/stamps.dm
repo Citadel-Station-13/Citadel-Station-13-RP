@@ -5,7 +5,7 @@
 	icon_state = "stamp-qm"
 	item_state = "stamp"
 	throw_force = 0
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	slot_flags = SLOT_HOLSTER
 	throw_speed = 7
 	throw_range = 15

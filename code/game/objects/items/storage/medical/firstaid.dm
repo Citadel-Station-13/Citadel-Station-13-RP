@@ -15,7 +15,7 @@
 	throw_speed = 2
 	throw_range = 8
 	slot_flags = SLOT_BELT
-	max_storage_space = ITEMSIZE_COST_SMALL * 7 // 14
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 7 // 14
 	drop_sound = 'sound/items/drop/cardboardbox.ogg'
 	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
 
@@ -114,10 +114,10 @@
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "surgerykit"
 	item_state = "firstaid-surgery"
-	max_w_class = ITEMSIZE_NORMAL
-	max_storage_space = 25 //update this when necessary!
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
+	max_combined_volume = 25 //update this when necessary!
 
-	can_hold = list(
+	insertion_whitelist = list(
 		/obj/item/surgical,
 		/obj/item/stack/medical/advanced/bruise_pack,
 		/obj/item/stack/nanopaste,
@@ -143,13 +143,13 @@
 	name = "clotting kit"
 	desc = "Contains chemicals to stop bleeding."
 	icon_state = "clottingkit"
-	max_storage_space = ITEMSIZE_COST_SMALL * 7
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 7
 	starts_with = list(/obj/item/reagent_containers/hypospray/autoinjector/biginjector/clotting = 8)
 
 /obj/item/storage/firstaid/bonemed
 	name = "bone repair kit"
 	desc = "Contains chemicals to mend broken bones."
-	max_storage_space = ITEMSIZE_COST_SMALL * 7
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 7
 	starts_with = list(/obj/item/reagent_containers/hypospray/autoinjector/biginjector/bonemed = 8)
 
 /*
@@ -163,14 +163,15 @@
 	drop_sound = 'sound/items/drop/pillbottle.ogg'
 	pickup_sound = 'sound/items/pickup/pillbottle.ogg'
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "contsolid", SLOT_ID_LEFT_HAND = "contsolid")
-	w_class = ITEMSIZE_SMALL
-	can_hold = list(/obj/item/reagent_containers/pill,/obj/item/dice,/obj/item/paper)
-	allow_quick_gather = 1
-	allow_quick_empty = 1
-	use_to_pickup = 1
-	use_sound = null
-	max_storage_space = ITEMSIZE_COST_TINY * 14
-	max_w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_SMALL
+	insertion_whitelist = list(/obj/item/reagent_containers/pill,/obj/item/dice,/obj/item/paper)
+	allow_quick_empty = TRUE
+	allow_mass_gather = TRUE
+	sfx_insert = null
+	sfx_remove = null
+	sfx_open = null
+	max_combined_volume = WEIGHT_VOLUME_TINY * 14
+	max_single_weight_class = WEIGHT_CLASS_TINY
 
 	var/label_text = ""
 	var/labeled = 0

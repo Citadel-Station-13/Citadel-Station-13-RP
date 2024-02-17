@@ -130,7 +130,7 @@
 /obj/item/storage/box/mechabeacons
 	name = "Exosuit Tracking Beacons"
 
-/obj/item/storage/box/mechabeacons/PopulateContents()
+/obj/item/storage/box/mechabeacons/legacy_spawn_contents()
 	new /obj/item/mecha_parts/mecha_tracking(src)
 	new /obj/item/mecha_parts/mecha_tracking(src)
 	new /obj/item/mecha_parts/mecha_tracking(src)

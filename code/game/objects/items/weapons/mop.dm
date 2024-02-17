@@ -11,7 +11,7 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 	throw_force = 10.0
 	throw_speed = 5
 	throw_range = 10
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	attack_verb = list("mopped", "bashed", "bludgeoned", "whacked")
 	materials_base = list(MAT_PLASTIC = 3)
 	var/mopping = 0

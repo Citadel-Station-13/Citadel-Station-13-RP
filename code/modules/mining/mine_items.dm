@@ -19,7 +19,7 @@
 	throw_force = 4.0
 	icon_state = "pickaxe"
 	item_state = "jackhammer"
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	materials_base = list(MAT_STEEL = 3750)
 	var/digspeed = 40 //moving the delay to an item var so R&D can make improved picks. --NEO
 	var/sand_dig = FALSE
@@ -81,7 +81,7 @@
 	name = "plasma cutter"
 	icon_state = "plasmacutter"
 	item_state = "gun"
-	w_class = ITEMSIZE_NORMAL //it is smaller than the pickaxe
+	w_class = WEIGHT_CLASS_NORMAL //it is smaller than the pickaxe
 	damtype = "fire"
 	digspeed = 20 //Can slice though normal walls, all girders, or be used in reinforced wall deconstruction/ light thermite on fire
 	origin_tech = list(TECH_MATERIAL = 4, TECH_PHORON = 3, TECH_ENGINEERING = 3)
@@ -127,7 +127,7 @@
 	throw_force = 15 //Discount shuriken.
 	icon_state = "icepick"
 	item_state = "spickaxe" //im lazy fuck u
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	materials_base = list(MAT_STEEL = 2750, MAT_TITANIUM = 2000)
 	digspeed = 25 //More expensive than a diamond pick, a lot smaller but decently slower.
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
@@ -270,7 +270,7 @@
 	damage_force = 8.0
 	throw_force = 4.0
 	item_state = "shovel"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
 	materials_base = list(MAT_STEEL = 50)
 	attack_verb = list("bashed", "bludgeoned", "thrashed", "whacked")
@@ -296,7 +296,7 @@
 	item_state = "spade"
 	damage_force = 5.0
 	throw_force = 7.0
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/shovel/spade/bone
 	name = "primitive spade"

@@ -27,11 +27,14 @@
 
 #define SIGN(x) ( (x)!=0 ? (x) / abs(x) : 0 )
 
-#define CEILING(x, y) ( -round(-(x) / (y)) * (y) )
-
+/// ceil()
 #define ROUND_UP(x) ( -round(-(x)))
+/// floor()
+#define ROUND_DOWN(x) (round(x))
 
-// round() acts like floor(x, 1) by default but can't handle other values
+// x to the nearest higher multiple of y
+#define CEILING(x, y) ( -round(-(x) / (y)) * (y) )
+// x to the nearest lower multiple of y
 #define FLOOR(x, y) ( round((x) / (y)) * (y) )
 
 // Similar to clamp but the bottom rolls around to the top and vice versa. min is inclusive, max is exclusive

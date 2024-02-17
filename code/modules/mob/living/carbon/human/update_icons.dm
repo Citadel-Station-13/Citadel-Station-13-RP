@@ -817,7 +817,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	var/list/obj/item/relevant = get_equipped_items(TRUE, TRUE)
 	if(hud_used)
 		for(var/obj/item/I as anything in relevant)
-			position_hud_item(I, slot_by_item(I))
+			position_hud_item(I, slot_id_by_item(I))
 	if(client)
 		client.screen |= relevant
 

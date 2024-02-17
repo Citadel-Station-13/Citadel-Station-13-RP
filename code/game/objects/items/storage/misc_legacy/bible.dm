@@ -4,8 +4,7 @@
 	icon_state ="bible"
 	throw_speed = 1
 	throw_range = 5
-	w_class = ITEMSIZE_NORMAL
-	var/mob/affecting = null
+	w_class = WEIGHT_CLASS_NORMAL
 	var/deity_name = "Christ"
 
 /obj/item/storage/bible/booze
@@ -28,8 +27,3 @@
 			var/water2holy = target.reagents.get_reagent_amount("water")
 			target.reagents.del_reagent("water")
 			target.reagents.add_reagent("holywater",water2holy)
-
-/obj/item/storage/bible/attackby(obj/item/W as obj, mob/user as mob)
-	if (src.use_sound)
-		playsound(src.loc, src.use_sound, 50, 1, -5)
-	..()

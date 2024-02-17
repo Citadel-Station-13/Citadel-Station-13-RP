@@ -4,7 +4,7 @@
 	icon = 'icons/obj/closets/bases/closet.dmi'
 	icon_state = "base"
 	density = 1
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 	layer = UNDER_JUNK_LAYER
 	armor_type = /datum/armor/object/medium
 
@@ -55,7 +55,7 @@
 	. = ..()
 	if(mapload && !opened)
 		addtimer(CALLBACK(src, PROC_REF(take_contents)), 0)
-	PopulateContents()
+	legacy_spawn_contents()
 	/*
 	if(secure)
 		lockerelectronics = new(src)
@@ -101,7 +101,7 @@
 /**
  * The proc that fills the closet with its initial contents.
  */
-/obj/structure/closet/proc/PopulateContents()
+/obj/structure/closet/proc/legacy_spawn_contents()
 	return
 
 /obj/structure/closet/examine(mob/user, dist)
@@ -301,15 +301,6 @@
 			for(var/mob/M in viewers(src))
 				M.show_message("<span class='notice'>\The [src] has been cut apart by [user] with \the [WT].</span>", 3, "You hear welding.", 2)
 			qdel(src)
-			return
-		if(istype(I, /obj/item/storage/laundry_basket) && I.contents.len)
-			var/obj/item/storage/laundry_basket/LB = I
-			var/turf/T = get_turf(src)
-			for(var/obj/item/I2 in LB.contents)
-				LB.remove_from_storage(I2, T)
-			user.visible_message("<span class='notice'>[user] empties \the [LB] into \the [src].</span>", \
-								 "<span class='notice'>You empty \the [LB] into \the [src].</span>", \
-								 "<span class='notice'>You hear rustling of clothes.</span>")
 			return
 		if(isrobot(user))
 			return

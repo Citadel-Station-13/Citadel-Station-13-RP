@@ -24,7 +24,7 @@
 
 /datum/keybinding/human/quick_equipbelt/down(client/user)
 	var/mob/living/carbon/human/H = user.mob
-	H.smart_equipbelt()
+	H.auto_held_insert_or_draw_via_slot(/datum/inventory_slot_meta/inventory/belt)
 	return TRUE
 
 /datum/keybinding/human/bag_equip
@@ -35,5 +35,5 @@
 
 /datum/keybinding/human/bag_equip/down(client/user)
 	var/mob/living/carbon/human/H = user.mob
-	H.smart_equipbag()
+	H.auto_held_insert_or_draw_via_slot(/datum/inventory_slot_meta/inventory/back)
 	return TRUE

@@ -7,33 +7,16 @@
 	desc = "You wear this on your back and put items into it."
 	icon = 'icons/obj/clothing/backpack.dmi'
 	icon_state = "backpack"
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = SLOT_BACK
-	max_w_class = ITEMSIZE_LARGE
+	max_single_weight_class = WEIGHT_CLASS_BULKY
 	weight = ITEM_WEIGHT_STORAGE_BACKPACK
 	encumbrance = ITEM_ENCUMBRANCE_STORAGE_BACKPACK
-	max_storage_space = INVENTORY_STANDARD_SPACE
+	max_combined_volume = STORAGE_VOLUME_BACKPACK
 	var/flippable = 0
 	var/side = 0 //0 = right, 1 = left
 	drop_sound = 'sound/items/drop/backpack.ogg'
 	pickup_sound = 'sound/items/pickup/backpack.ogg'
-
-/obj/item/storage/backpack/attackby(obj/item/W as obj, mob/user as mob)
-	if (src.use_sound)
-		playsound(src.loc, src.use_sound, 50, 1, -5)
-	..()
-
-/obj/item/storage/backpack/equipped(var/mob/user, var/slot)
-	if (slot == SLOT_ID_BACK && src.use_sound)
-		playsound(src.loc, src.use_sound, 50, 1, -5)
-	..(user, slot)
-
-/*
-/obj/item/storage/backpack/dropped(mob/user, flags, atom/newLoc)
-	if (loc == user && src.use_sound)
-		playsound(src.loc, src.use_sound, 50, 1, -5)
-	..(user)
-*/
 
 /*
  * Backpack Types
@@ -44,9 +27,8 @@
 	desc = "A backpack that opens into a localized pocket of Blue Space."
 	origin_tech = list(TECH_BLUESPACE = 4)
 	icon_state = "holdingpack"
-	max_w_class = ITEMSIZE_LARGE
-	max_storage_space = ITEMSIZE_COST_NORMAL * 14 // 56
-	storage_cost = INVENTORY_STANDARD_SPACE + 1
+	max_single_weight_class = WEIGHT_CLASS_BULKY
+	max_combined_volume = WEIGHT_VOLUME_NORMAL * 14 // 56
 
 /obj/item/storage/backpack/holding/duffle
 	name = "dufflebag of holding"
@@ -80,9 +62,9 @@
 	desc = "Space Santa uses this to deliver toys to all the nice children in space in Christmas! Wow, it's pretty big!"
 	icon_state = "giftbag0"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "giftbag", SLOT_ID_LEFT_HAND = "giftbag")
-	w_class = ITEMSIZE_LARGE
-	max_w_class = ITEMSIZE_NORMAL
-	max_storage_space = ITEMSIZE_COST_NORMAL * 100 // can store a ton of shit!
+	w_class = WEIGHT_CLASS_BULKY
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
+	max_combined_volume = WEIGHT_VOLUME_NORMAL * 100 // can store a ton of shit!
 	item_state_slots = null
 
 /obj/item/storage/backpack/cultpack
@@ -172,7 +154,7 @@
 	flat_encumbrance = ITEM_FLAT_ENCUMBRANCE_DUFFLEBAG
 	// todo: remove when weight system is used
 	slowdown = 0.25
-	max_storage_space = INVENTORY_DUFFLEBAG_SPACE
+	max_combined_volume = STORAGE_VOLUME_DUFFLEBAG
 
 /obj/item/storage/backpack/dufflebag/syndie
 	name = "black dufflebag"
@@ -510,9 +492,9 @@
 	desc = "A small, fashionable bag typically worn over the shoulder."
 	icon_state = "purse"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "lgpurse", SLOT_ID_LEFT_HAND = "lgpurse")
-	w_class = ITEMSIZE_LARGE
-	max_w_class = ITEMSIZE_NORMAL
-	max_storage_space = ITEMSIZE_COST_NORMAL * 5
+	w_class = WEIGHT_CLASS_BULKY
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
+	max_combined_volume = WEIGHT_VOLUME_NORMAL * 5
 
 //Parachutes
 /obj/item/storage/backpack/parachute
@@ -520,7 +502,7 @@
 	desc = "A specially made backpack, designed to help one survive jumping from incredible heights. It sacrifices some storage space for that added functionality."
 	icon_state = "parachute"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "backpack", SLOT_ID_LEFT_HAND = "backpack")
-	max_storage_space = ITEMSIZE_COST_NORMAL * 5
+	max_combined_volume = WEIGHT_VOLUME_NORMAL * 5
 
 /obj/item/storage/backpack/parachute/examine(mob/user, dist)
 	. = ..()
@@ -600,7 +582,7 @@
 	icon_state = "saddlebag"
 	var/icon_base = "saddlebag"
 	encumbrance = ITEM_ENCUMBRANCE_STORAGE_DUFFLEBAG
-	max_storage_space = INVENTORY_DUFFLEBAG_SPACE //Saddlebags can hold more, like dufflebags
+	max_combined_volume = STORAGE_VOLUME_DUFFLEBAG //Saddlebags can hold more, like dufflebags
 	var/no_message = "You aren't the appropriate taur type to wear this!"
 
 /obj/item/storage/backpack/saddlebag_common/can_equip(mob/M, slot, mob/user, flags)
@@ -654,7 +636,7 @@
 	item_state = "taurvest"
 	icon_state = "taurvest"
 	icon_base = "taurvest"
-	max_storage_space = INVENTORY_STANDARD_SPACE
+	max_combined_volume = STORAGE_VOLUME_BACKPACK
 	encumbrance = ITEM_ENCUMBRANCE_STORAGE_BACKPACK
 
 /obj/item/storage/backpack/dufflebag/fluff //Black dufflebag without syndie buffs.

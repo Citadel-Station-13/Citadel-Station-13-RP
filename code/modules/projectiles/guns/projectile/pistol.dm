@@ -105,7 +105,7 @@
 	name = "silenced pistol"
 	desc = "A small, quiet,  easily concealable gun. Uses .45 rounds."
 	icon_state = "silenced_pistol"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	caliber = ".45"
 	silenced = 1
 	fire_delay = 1
@@ -190,7 +190,7 @@
 	description_fluff = "The Lumoco Arms P3 Whisper is a compact, easily concealable gun. Designed by GMC as a simplified improvement to the Konigin, the Whisper comes with a threaded barrel and slender profile. This weapon was favored by Syndicate special operatives during the Phoron War, and retains a somewhat sinister reputation to this day. Due to its slim design it is only compatible with compact 9mm magazines."
 	icon_state = "pistol"
 	item_state = null
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	caliber = "9mm"
 	suppressible = TRUE
 	silenced_icon = "pistol_silencer"
@@ -209,7 +209,7 @@
 	desc = "a silencer"
 	icon = 'icons/obj/gun/ballistic.dmi'
 	icon_state = "silencer"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/gun/ballistic/pirate
 	name = "zip gun"
@@ -284,7 +284,7 @@
 	desc = "It's not size of your gun that matters, just the size of your load. Uses .357 rounds." //OHHH MYYY~
 	icon_state = "derringer"
 	item_state = "concealed"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_ILLEGAL = 3)
 	handle_casings = CYCLE_CASINGS //player has to take the old casing out manually before reloading
 	load_method = SINGLE_CASING
@@ -360,7 +360,7 @@
 	item_state = "revolver"
 	caliber = "organic"
 	load_method = MAGAZINE
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_ILLEGAL = 3)
 	magazine_type = /obj/item/ammo_magazine/mcompressedbio/compact
 	allowed_magazines = list(/obj/item/ammo_magazine/mcompressedbio/compact)
@@ -373,7 +373,7 @@
 	description_fluff = "Originally produced in 2463 by GMC, the Konigin is considered to be the direct ancestor to the P3 Whisper. Considerably more expensive to manufacture and maintain, the Konigin saw limited use outside of Syndicate special operations cells. By the time GMC ended production of the Konigin-63, the weapon had undergone significant design changes - most notably the installment of a single capacity underbarrel shotgun. This rare design is certainly inspired, and has become something of a collector's item post-war."
 	icon_state = "konigin"
 	item_state = null
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	caliber = "9mm"
 	suppressible = TRUE
 	silenced_icon = "konigin_silencer"
@@ -456,7 +456,7 @@
 /obj/item/gun/ballistic/ntles/attack_self(mob/user, obj/item/gun/G)
 	if(collapsible && !extended)
 		to_chat(user, "<span class='notice'>You pull out the stock on the [src], steadying the weapon.</span>")
-		w_class = ITEMSIZE_LARGE
+		set_weight_class(WEIGHT_CLASS_BULKY)
 		one_handed_penalty = 10
 		extended = 1
 		update_icon()
@@ -465,7 +465,7 @@
 		return
 	else
 		to_chat(user, "<span class='notice'>You push the stock back into the [src], making it more compact.</span>")
-		w_class = ITEMSIZE_NORMAL
+		set_weight_class(WEIGHT_CLASS_NORMAL)
 		one_handed_penalty = 30
 		extended = 0
 		update_icon()
@@ -480,7 +480,7 @@
 	item_state = "pistol"
 	caliber = "5.7x28mm"
 	load_method = MAGAZINE
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
 	magazine_type = /obj/item/ammo_magazine/m57x28mm/fiveseven
 	allowed_magazines = list(/obj/item/ammo_magazine/m57x28mm/fiveseven)
@@ -499,7 +499,7 @@
 	item_state = "florayield"
 	caliber = "apidean"
 	load_method = MAGAZINE
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2, TECH_BIO = 5)
 	magazine_type = /obj/item/ammo_magazine/biovial
 	allowed_magazines = list(/obj/item/ammo_magazine/biovial)
@@ -516,7 +516,7 @@
 	icon_state = "junker_pistol"
 	item_state = "revolver"
 	load_method = SINGLE_CASING
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_ILLEGAL = 3)
 	recoil = 3
 	handle_casings = CYCLE_CASINGS
@@ -529,7 +529,7 @@
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "toy_pistol"
 	item_state = null
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	caliber = "foamdart"
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/mfoam/pistol
@@ -547,4 +547,4 @@
 /obj/item/gun/ballistic/pistol/foam/magnum
 	name = "toy automag"
 	icon_state = "toy_pistol_orange"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL

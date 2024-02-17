@@ -6,7 +6,7 @@
 	slot_flags = SLOT_BELT
 	damage_force = 10
 	throw_force = 7
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	origin_tech = list(TECH_COMBAT = 4)
 	attack_verb = list("flogged", "whipped", "lashed", "disciplined")
 
@@ -23,7 +23,7 @@
 	attack_sound = 'sound/weapons/rapierhit.ogg'
 	damage_force = 35
 	throw_force = 15
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	origin_tech = list(TECH_COMBAT = 4)
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
@@ -41,7 +41,7 @@
 	slot_flags = SLOT_BELT
 	damage_force = 5
 	throw_force = 5
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	var/open = FALSE
 
 /obj/item/melee/umbrella/Initialize(mapload)
@@ -77,7 +77,7 @@
 	slot_flags = SLOT_BELT | SLOT_BACK
 	damage_force = 30
 	throw_force = 10
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	sharp = 1
 	edge = 1
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
@@ -112,7 +112,7 @@
 	desc = "You shouldn't be seeing this. Contact an Admin."
 	icon_state = "skateboard"
 	icon = 'icons/obj/weapons.dmi'
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 	slot_flags = SLOT_BELT
 	damage_force = 10
 	throw_force = 7
@@ -174,7 +174,7 @@
 	slot_flags = SLOT_BELT | SLOT_BACK
 	damage_force = 30
 	throw_force = 10
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	sharp = 1
 	edge = 1
 	reach = 2
@@ -201,7 +201,7 @@
 	slot_flags = SLOT_BELT
 	damage_force = 30
 	throw_force = 10
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	sharp = 1
 	edge = 1
 	attack_verb = list("grasped", "torn", "cut", "pierced", "lashed")
@@ -244,7 +244,7 @@
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	damage_force = 20
 	throw_force = 10
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	slot_flags = SLOT_BELT
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut", "chopped")
 	sharp = 1
@@ -302,7 +302,7 @@
 	playsound(loc, 'sound/weapons/gun_flamethrower3.ogg', 50, 1)
 	src.damage_force = 20
 	src.damtype = "fire"
-	src.w_class = ITEMSIZE_LARGE
+	src.set_weight_class(WEIGHT_CLASS_BULKY)
 	src.attack_sound = 'sound/weapons/gun_flamethrower2.ogg'
 	active = 1
 	update_icon()
@@ -312,7 +312,7 @@
 	playsound(loc, 'sound/weapons/gun_flamethrower1.ogg', 50, 1)
 	src.damage_force = 20
 	src.damtype = "brute"
-	src.w_class = initial(src.w_class)
+	src.set_weight_class(initial(src.w_class))
 	src.attack_sound = initial(src.attack_sound)
 	src.active = 0
 	update_icon()
@@ -332,14 +332,14 @@
 	attack_verb = list("attacked", "stabbed", "sliced", "diced", "cut")
 	damage_force = 8
 	throw_force = 5
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	sharp = 1
 
 //I would like two-handed weapons that don't use our annoying material system, resulting in a "Steel Mjollnir". Drives me crazy.
 /obj/item/melee/twohanded
 	name = "Two Handed Weapon"
 	desc = "You shouldn't be seeing this. Report to a Maintainer."
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	var/wielded = 0
 	var/force_wielded = 0
 	var/force_unwielded
@@ -383,7 +383,7 @@
 	throw_force = 30
 	force_wielded = 75
 	force_unwielded = 50
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 	edge = 1
 	attack_verb = list("attacked", "smashed", "crushed", "wacked", "pounded")
 	armor_penetration = 50
@@ -552,7 +552,7 @@
 			playsound(loc, acti_sound, 50, 1)
 			src.damage_force = 15
 			src.damtype = "fire"
-			src.w_class = ITEMSIZE_LARGE
+			src.set_weight_class(WEIGHT_CLASS_BULKY)
 			src.attack_sound = 'sound/items/welder.ogg'
 			src.sharp = 1
 			src.edge = 1
@@ -571,7 +571,7 @@
 		playsound(loc, deac_sound, 50, 1)
 		src.damage_force = 3
 		src.damtype = "brute"
-		src.w_class = initial(src.w_class)
+		src.set_weight_class(initial(src.w_class))
 		src.active = 0
 		src.sharp = 0
 		src.edge = 0

@@ -43,10 +43,10 @@
 /obj/item/storage/secure/briefcase/ml3m_pack_med
 	name = "\improper AML \'Medigun\' kit"
 	desc = "A storage case for a multi-purpose healing gun. Variety hour!"
-	w_class = ITEMSIZE_NORMAL
-	max_w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
 
-/obj/item/storage/secure/briefcase/ml3m_pack_med/PopulateContents()
+/obj/item/storage/secure/briefcase/ml3m_pack_med/legacy_spawn_contents()
 	new /obj/item/gun/ballistic/cell_loaded/medical(src)
 	new /obj/item/ammo_magazine/cell_mag/medical(src)
 	new /obj/item/ammo_casing/microbattery/medical/brute(src)
@@ -56,10 +56,10 @@
 /obj/item/storage/secure/briefcase/ml3m_pack_cmo
 	name = "\improper Advanced AML \'Medigun\' kit"
 	desc = "A storage case for a multi-purpose healing gun. Variety hour!"
-	w_class = ITEMSIZE_NORMAL
-	max_w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
 
-/obj/item/storage/secure/briefcase/ml3m_pack_cmo/PopulateContents()
+/obj/item/storage/secure/briefcase/ml3m_pack_cmo/legacy_spawn_contents()
 	new /obj/item/gun/ballistic/cell_loaded/medical/cmo(src)
 	new /obj/item/ammo_magazine/cell_mag/medical(src)
 	new /obj/item/ammo_casing/microbattery/medical/brute(src)

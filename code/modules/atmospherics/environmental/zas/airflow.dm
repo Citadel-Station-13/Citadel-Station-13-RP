@@ -66,11 +66,11 @@ Contains helper procs for airflow, handled in /connection_group.
 	if(isnull(w_class))
 		if(n < dense_pressure) return 0 //most non-item objs don't have a w_class yet
 	switch(w_class)
-		if(ITEMSIZE_TINY,ITEMSIZE_SMALL)
+		if(WEIGHT_CLASS_TINY,WEIGHT_CLASS_SMALL)
 			if(n < lightest_pressure) return 0
-		if(ITEMSIZE_NORMAL)
+		if(WEIGHT_CLASS_NORMAL)
 			if(n < light_pressure) return 0
-		if(ITEMSIZE_LARGE,ITEMSIZE_HUGE)
+		if(WEIGHT_CLASS_BULKY,WEIGHT_CLASS_HUGE)
 			if(n < medium_pressure) return 0
 		else
 			if(n < dense_pressure) return 0
@@ -89,7 +89,7 @@ Contains helper procs for airflow, handled in /connection_group.
 		return 0
 	if(buckled)
 		return 0
-	var/obj/item/shoes = item_by_slot(SLOT_ID_SHOES)
+	var/obj/item/shoes = item_by_slot_id(SLOT_ID_SHOES)
 	if(istype(shoes) && (shoes.clothing_flags & NOSLIP))
 		return 0
 	return 1

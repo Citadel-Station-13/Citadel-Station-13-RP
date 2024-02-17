@@ -5,7 +5,7 @@
 	icon = 'icons/obj/technomancer.dmi'
 	icon_state = "technomancer_core"
 	item_state = "technomancer_core"
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 	slot_flags = SLOT_BACK
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE | INTEGRITY_ACIDPROOF | INTEGRITY_FIREPROOF | INTEGRITY_LAVAPROOF
 	origin_tech = list(

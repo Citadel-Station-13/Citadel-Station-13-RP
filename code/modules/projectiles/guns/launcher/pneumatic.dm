@@ -4,7 +4,7 @@
 	icon_state = "pneumatic"
 	item_state = "pneumatic"
 	slot_flags = SLOT_BELT
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 	heavy = TRUE
 	fire_sound_text = "a loud whoosh of moving air"
 	fire_delay = 50
@@ -12,8 +12,8 @@
 	one_handed_penalty = 10
 
 	var/fire_pressure                                   // Used in fire checks/pressure checks.
-	var/max_w_class = ITEMSIZE_NORMAL                   // Hopper intake size.
-	var/max_storage_space = ITEMSIZE_COST_NORMAL * 5    // Total internal storage size.
+	var/max_single_weight_class = WEIGHT_CLASS_NORMAL                   // Hopper intake size.
+	var/max_combined_volume = WEIGHT_VOLUME_NORMAL * 5    // Total internal storage size.
 	var/obj/item/tank/tank = null                // Tank of gas for use in firing the cannon.
 
 	var/obj/item/storage/item_storage
@@ -26,9 +26,11 @@
 	. = ..()
 	item_storage = new(src)
 	item_storage.name = "hopper"
-	item_storage.max_w_class = max_w_class
-	item_storage.max_storage_space = max_storage_space
-	item_storage.use_sound = null
+	item_storage.max_single_weight_class = max_single_weight_class
+	item_storage.max_combined_volume = max_combined_volume
+	item_storage.sfx_insert = null
+	item_storage.sfx_remove = null
+	item_storage.sfx_open = null
 
 /obj/item/gun/launcher/pneumatic/verb/set_pressure() //set amount of tank pressure.
 	set name = "Set Valve Pressure"
@@ -52,8 +54,8 @@
 /obj/item/gun/launcher/pneumatic/proc/unload_hopper(mob/user)
 	if(item_storage.contents.len > 0)
 		var/obj/item/removing = item_storage.contents[item_storage.contents.len]
-		item_storage.remove_from_storage(removing, src.loc)
-		user.put_in_hands(removing)
+		item_storage.obj_storage.remove(removing, src.loc, new /datum/event_args/actor(user))
+		user.put_in_hands_or_drop(removing)
 		to_chat(user, "You remove [removing] from the hopper.")
 		playsound(src.loc, 'sound/weapons/empty.ogg', 50, 1)
 	else
@@ -72,8 +74,8 @@
 		tank = W
 		user.visible_message("[user] jams [W] into [src]'s valve and twists it closed.","You jam [W] into [src]'s valve and twist it closed.")
 		update_icon()
-	else if(istype(W) && item_storage.can_be_inserted(W))
-		item_storage.handle_item_insertion(W, user)
+	else if(istype(W) && item_storage.obj_storage.can_be_inserted(W))
+		item_storage.obj_storage.try_insert(W, new /datum/event_args/actor(user))
 
 /obj/item/gun/launcher/pneumatic/attack_self(mob/user)
 	. = ..()
@@ -101,7 +103,7 @@
 		return null
 
 	var/obj/item/launched = item_storage.contents[1]
-	item_storage.remove_from_storage(launched, src)
+	item_storage.obj_storage.remove(launched, src)
 	return launched
 
 /obj/item/gun/launcher/pneumatic/examine(mob/user, dist)

@@ -203,9 +203,9 @@
 
 			if( I != src && !I.anchored && !istype(I, /obj/item/clothing/under) && !istype(I, /obj/item/clothing/suit) && !istype(I, /obj/projectile) )
 				var/add = 0
-				if(I.w_class == ITEMSIZE_TINY)
+				if(I.w_class == WEIGHT_CLASS_TINY)
 					add = 1
-				else if(I.w_class == ITEMSIZE_SMALL)
+				else if(I.w_class == WEIGHT_CLASS_SMALL)
 					add = 3
 				else
 					add = 5
@@ -423,7 +423,7 @@
 	desc = "Hand-held device which allows rapid deployment and removal of inflatables."
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "inf_deployer"
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 
 	var/stored_walls = 5
 	var/stored_doors = 2
@@ -432,7 +432,7 @@
 	var/mode = 0 // 0 - Walls   1 - Doors
 
 /obj/item/inflatable_dispenser/robot
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 	stored_walls = 10
 	stored_doors = 5
 	max_walls = 10

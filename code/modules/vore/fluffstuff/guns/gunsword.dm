@@ -9,7 +9,7 @@
 	item_state = null
 	item_icons = null
 
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	origin_tech = list(TECH_COMBAT = 8, TECH_MATERIAL = 4)
 	slot_flags = null
 	projectile_type = /obj/projectile/beam/stun
@@ -41,13 +41,13 @@
 	throw_force = 5
 	throw_speed = 1
 	throw_range = 5
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_MAGNET = 3, TECH_COMBAT = 5)
 
 	var/active = 0
 	var/active_force = 30
 	var/active_throwforce = 20
-	var/active_w_class = ITEMSIZE_LARGE
+	var/active_w_class = WEIGHT_CLASS_BULKY
 	var/active_embed_chance = 0		//In the off chance one of these is supposed to embed, you can just tweak this var
 	sharp = 0
 	edge = 0
@@ -69,7 +69,7 @@
 	throw_force = active_throwforce
 	sharp = 1
 	edge = 1
-	w_class = active_w_class
+	set_weight_class(active_w_class)
 	playsound(user, 'sound/weapons/saberon.ogg', 50, 1)
 	set_light(lrange, lpower, lcolor)
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
@@ -88,7 +88,7 @@
 	throw_force = initial(throw_force)
 	sharp = initial(sharp)
 	edge = initial(edge)
-	w_class = initial(w_class)
+	set_weight_class(initial(w_class))
 	set_light(0,0)
 	attack_verb = list()
 

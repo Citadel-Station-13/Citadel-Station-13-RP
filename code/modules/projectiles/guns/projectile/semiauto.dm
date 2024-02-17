@@ -3,7 +3,7 @@
 	desc = "This is the vintage semi-automatic rifle that famously helped win the second World War on ancient Terra. Another Cybersun Industries reproduction, the blueprints have since proliferated through the exonet, with most back-alley flash-forges creating their own variations of the iconic rifle."
 	icon_state = "garand"
 	item_state = "boltaction"
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE
 	caliber = "7.62mm"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
@@ -29,7 +29,7 @@
 	icon_state = "sgarand"
 	pin = /obj/item/firing_pin/explorer
 	magazine_type = /obj/item/ammo_magazine/m762garand/sniperhunter
-	w_class = ITEMSIZE_HUGE // We don't need this fitting in backpacks.
+	w_class = WEIGHT_CLASS_HUGE // We don't need this fitting in backpacks.
 	accuracy = 70 //Forced missing fucking sucks ass
 	scoped_accuracy = 100
 
@@ -45,7 +45,7 @@
 	desc = "A biotechnological marvel, this living rifle can grow its ammo when provided with liquified wax. It fires poisonous bolts of barbed chitin."
 	icon_state = "apigun"
 	item_state = "speargun"
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE
 	caliber = "apidean"
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3, TECH_BIO = 7)

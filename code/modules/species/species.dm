@@ -622,7 +622,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	else if(synth)
 		new /obj/item/fbp_backup_cell(box)
 
-	box.calibrate_size()
+	box.obj_storage.fit_to_contents(no_shrink = TRUE)
 
 	if(H.backbag == 1)
 		H.equip_to_slot_or_del(box, /datum/inventory_slot_meta/abstract/hand/right, INV_OP_SILENT | INV_OP_FLUFFLESS)

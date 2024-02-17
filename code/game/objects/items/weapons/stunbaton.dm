@@ -12,7 +12,7 @@
 	edge = 0
 	throw_force = 7
 	atom_flags = NOCONDUCT
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	drop_sound = 'sound/items/drop/metalweapon.ogg'
 	pickup_sound = 'sound/items/pickup/metalweapon.ogg'
 	origin_tech = list(TECH_COMBAT = 2)
@@ -295,7 +295,7 @@
 	name = "stun lance"
 	desc = "Designed by NanoTrasen for mounted expeditions, the stun lance is useful for running down and incapacitating wildlife for study. Its efficacy on fugitives is tacitly implied."
 	icon_state = "stunlance"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	reach = 2
 
 /obj/item/melee/baton/stunlance/Initialize(mapload)
@@ -307,7 +307,7 @@
 	desc = "A smaller, more potent version of a hand-held tazer, one zap and the target is sure to be on the ground, and the <b>integrated</b> cell empty. Standard issue to Command staff, indentured sex workers and anyone else who might get mobbed by dissatisfied clientele. Do not lick."
 	icon_state = "mini_baton"
 	item_state = "mini_baton"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	damage_force = 5
 	stunforce = 5
 	throw_force = 2

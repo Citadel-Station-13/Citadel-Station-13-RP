@@ -188,7 +188,7 @@
 	  return 0 //only carbon liveforms have this proc
 
 /mob/living/emp_act(severity)
-	var/list/L = src.get_contents()
+	var/list/L = src.get_equipped_items(TRUE, TRUE)
 	for(var/obj/O in L)
 		O.emp_act(severity)
 	..()
