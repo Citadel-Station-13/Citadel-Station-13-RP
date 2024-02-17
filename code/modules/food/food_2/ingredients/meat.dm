@@ -36,6 +36,7 @@
 /obj/item/reagent_containers/food/snacks/xenomeat // Buff 6 >> 10
 	name = "xenomeat"
 	desc = "A slab of green meat. Smells like acid."
+	cookstage_information = list(list(0, 0.5, "raw, tough and acidic meat"), list(45 SECONDS, 1.2, "tough meat"), list(60 SECONDS, 0.9, "rubbery and sour meat"), list(75 SECONDS, 0.1, "a hunk of plastic boiled in acid"))
 	icon_state = "xenomeat"
 	filling_color = "#43DE18"
 
@@ -48,6 +49,7 @@
 /obj/item/reagent_containers/food/snacks/xenomeat/spidermeat // Substitute for recipes requiring xeno meat.
 	name = "spider meat"
 	desc = "A slab of green meat."
+	cookstage_information = list(list(0, 0.5, "raw, squishy and bitter meat"), list(45 SECONDS, 1.2, "squishy, bitter meat"), list(60 SECONDS, 0.9, "vulcanized rubbermeat and sour meat"), list(75 SECONDS, 0.1, "vulcanized rubber seasoned with flies killed by a bug-zapper"))
 	icon_state = "xenomeat"
 	filling_color = "#43DE18"
 
@@ -143,13 +145,14 @@
 	icon_state = "hotdog"
 	bitesize = 2
 
-/obj/item/reagent_containers/food/snacks/sausage // Buff 6 >> 9
+/obj/item/reagent_containers/food/snacks/ingredient/sausage // Buff 6 >> 9
 	name = "Sausage"
 	desc = "A piece of mixed, long meat."
+	cookstage_information = list(list(0, 0.5, "raw meat and sausage casing"), list(30 SECONDS, 1.2, "hotdog"), list(45 SECONDS, 0.9, "rubbery hotdog"), list(60 SECONDS, 0.1, "squishy, ovecooked sausage casing and charred meat"))
 	icon_state = "sausage"
 	filling_color = "#DB0000"
 
-/obj/item/reagent_containers/food/snacks/sausage/Initialize(mapload)
+/obj/item/reagent_containers/food/snacks/ingredient/sausage/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("protein", 9)
 	bitesize = 3
@@ -163,10 +166,6 @@
 	icon_state = "rawbacon"
 	bitesize = 1
 
-/obj/item/reagent_containers/food/snacks/rawbacon/Initialize(mapload)
-	. = ..()
-	reagents.add_reagent("protein", 0.33)
-
 /obj/item/reagent_containers/food/snacks/ingredient/bacon/on_cooked(reached_stage, cook_method)
 	if(reached_stage = COOKED)
 		icon_state = "bacon"
@@ -176,27 +175,62 @@
 
 
 //seafoods
-/obj/item/reagent_containers/food/snacks/lobster
+/obj/item/reagent_containers/food/snacks/ingredient/lobster
 	name = "raw lobster"
 	desc = "A shifty lobster. You can try eating it, but its shell is extremely tough."
 	icon_state = "lobster_raw"
 	nutriment_amt = 5
 
-/obj/item/reagent_containers/food/snacks/cuttlefish
+/obj/item/reagent_containers/food/snacks/ingredient/cuttlefish
 	name = "raw cuttlefish"
 	desc = "It's an adorable squid! you can't possible be thinking about eating this right?"
 	icon_state = "cuttlefish_raw"
 	nutriment_amt = 5
 
-/obj/item/reagent_containers/food/snacks/shrimp
+/obj/item/reagent_containers/food/snacks/ingredient/shrimp
 	name = "raw shrimp"
 	desc = "An old-Earth sea creature. Formerly a luxury item, shrimp are commonly farmed as an easy source of protein."
 	icon_state = "shrimp_raw"
 	nutriment_amt = 5
 
 
+/obj/item/reagent_containers/food/snacks/ingredient/meat/carp
+	name = "fillet"
+	desc = "A fillet of carp meat"
+	icon_state = "fishfillet"
+	filling_color = "#FFDEFE"
+	center_of_mass = list("x"=17, "y"=13)
+
+	var/toxin_type = "carpotoxin"
+	var/toxin_amount = 3
+
+/obj/item/reagent_containers/food/snacks/ingredient/meat/carp/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 3)
+	reagents.add_reagent(toxin_type, toxin_amount)
+	src.bitesize = 6
+
+/obj/item/reagent_containers/food/snacks/ingredient/meat/carp/sif
+	desc = "A fillet of sivian fish meat."
+	filling_color = "#2c2cff"
+	color = "#2c2cff"
+	toxin_type = "neurotoxic_protein"
+	toxin_amount = 2
+
+/obj/item/reagent_containers/food/snacks/ingredient/meat/carp/fish // Removed toxin and added a bit more oomph
+	desc = "A fillet of fish meat."
+	toxin_amount = 0
+	toxin_type = null
+	nutriment_amt = 2
+
+/obj/item/reagent_containers/food/snacks/ingredient/meat/carp/fish/murkfish
+	desc = "A fillet of murkfish meat."
+	filling_color = "#4d331a"
+	color = "#4d331a"
+
+
 //non-vegan plant-based meats
-/obj/item/reagent_containers/food/snacks/hugemushroomslice // Buff 3 >> 5
+/obj/item/reagent_containers/food/snacks/ingredient/hugemushroomslice // Buff 3 >> 5
 	name = "huge mushroom slice"
 	desc = "A slice from a huge mushroom."
 	icon_state = "hugemushroomslice"
@@ -204,7 +238,7 @@
 	nutriment_amt = 5
 	nutriment_desc = list("raw" = 2, "mushroom" = 2)
 
-/obj/item/reagent_containers/food/snacks/tomatomeat
+/obj/item/reagent_containers/food/snacks/ingredient/tomatomeat
 	name = "tomato slice"
 	desc = "A slice from a huge tomato"
 	icon_state = "tomatomeat"

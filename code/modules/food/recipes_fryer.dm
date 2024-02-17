@@ -1,10 +1,7 @@
-
-
-
 /datum/recipe/fries
 	required_method = METHOD_DEEPFRY
 	items = list(
-		/obj/item/reagent_containers/food/snacks/rawsticks
+		/obj/item/reagent_containers/food/snacks/ingredient/rawsticks
 	)
 	result = /obj/item/reagent_containers/food/snacks/fries
 
@@ -34,15 +31,15 @@
 	required_method = METHOD_DEEPFRY
 	fruit = list("chili" = 1)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/dough,
-		/obj/item/reagent_containers/food/snacks/carpmeat
+		/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough,
+		/obj/item/reagent_containers/food/snacks/ingredient/meat/carp
 	)
 	result = /obj/item/reagent_containers/food/snacks/cubancarp
 
 /datum/recipe/batteredsausage
 	required_method = METHOD_DEEPFRY
 	items = list(
-		/obj/item/reagent_containers/food/snacks/sausage
+		/obj/item/reagent_containers/food/snacks/ingredient/sausage
 	)
 	result = /obj/item/reagent_containers/food/snacks/sausage/battered
 	reagents = list("batter" = 5)
@@ -51,7 +48,7 @@
 /datum/recipe/katsu
 	required_method = METHOD_DEEPFRY
 	items = list(
-		/obj/item/reagent_containers/food/snacks/meat/chicken
+		/obj/item/reagent_containers/food/snacks/ingredient/meat/chicken
 	)
 	result = /obj/item/reagent_containers/food/snacks/chickenkatsu
 	reagents = list("beerbatter" = 5)
@@ -85,7 +82,7 @@
 	required_method = METHOD_DEEPFRY
 	reagents = list("sodiumchloride" = 2, "batter" = 5)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/shrimp
+		/obj/item/reagent_containers/food/snacks/ingredient/shrimp
 	)
 	result = /obj/item/reagent_containers/food/snacks/shrimptempura
 
@@ -95,7 +92,7 @@
 	required_method = METHOD_DEEPFRY
 	reagents = list("berryjuice" = 10, "sugar" = 10, "batter" = 5)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/doughslice
+		/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough/slice
 	)
 	result = /obj/item/reagent_containers/food/snacks/donut/jelly
 	result_quantity = 2
@@ -114,7 +111,7 @@
 	required_method = METHOD_DEEPFRY
 	reagents = list("sugar" = 10, "batter" = 5)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/doughslice
+		/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough/slice
 	)
 	result = /obj/item/reagent_containers/food/snacks/donut/normal
 	result_quantity = 2
@@ -124,7 +121,7 @@
 	reagents = list("frostoil" = 10, "capsaicin" = 10, "sugar" = 10, "batter" = 5)
 	reagent_mix = RECIPE_REAGENT_REPLACE //This creates its own reagents
 	items = list(
-		/obj/item/reagent_containers/food/snacks/doughslice
+		/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough/slice
 	)
 	result = /obj/item/reagent_containers/food/snacks/donut/chaos
 	result_quantity = 2
@@ -144,7 +141,7 @@
 /datum/recipe/corn_dog
 	required_method = METHOD_DEEPFRY
 	items = list(
-		/obj/item/reagent_containers/food/snacks/sausage
+		/obj/item/reagent_containers/food/snacks/ingredient/sausage
 	)
 	fruit = list("corn" = 1)
 	reagents = list("batter" = 5)
@@ -153,8 +150,8 @@
 /datum/recipe/sweet_and_sour
 	required_method = METHOD_DEEPFRY
 	items = list(
-		/obj/item/reagent_containers/food/snacks/bacon,
-		/obj/item/reagent_containers/food/snacks/cutlet
+		/obj/item/reagent_containers/food/snacks/ingredient/bacon,
+		/obj/item/reagent_containers/food/snacks/ingredient/cutlet
 	)
 	reagents = list("soysauce" = 5, "batter" = 10)
 	result = /obj/item/reagent_containers/food/snacks/sweet_and_sour
@@ -163,7 +160,7 @@
 	required_method = METHOD_DEEPFRY
 	reagents = list("capsaicin" = 2, "sugar" = 2, "batter" = 10)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/meat = 2
+		/obj/item/reagent_containers/food/snacks/ingredient/meat = 2
 	)
 	result = /obj/item/reagent_containers/food/snacks/generalschicken
 
@@ -171,7 +168,7 @@
 	required_method = METHOD_DEEPFRY
 	reagents = list("capsaicin" = 5, "batter" = 10)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/meat = 4
+		/obj/item/reagent_containers/food/snacks/ingredient/meat = 4
 	)
 	result = /obj/item/storage/box/wings //This is kinda like the donut box.
 
@@ -180,7 +177,7 @@
 	reagents = list("sodiumchloride" = 1, "blackpepper" = 1, "batter" = 10)
 	fruit = list("onion" = 1)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/cutlet = 2
+		/obj/item/reagent_containers/food/snacks/ingredient/cutlet = 2
 	)
 	result = /obj/item/reagent_containers/food/snacks/schnitzel
 
@@ -188,7 +185,7 @@
 	required_method = METHOD_DEEPFRY
 	reagents = list("sugar" = 5, "batter" = 10)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/dough
+		/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough
 	)
 	result = /obj/item/reagent_containers/food/snacks/churro
 
