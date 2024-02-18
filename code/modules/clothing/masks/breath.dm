@@ -5,7 +5,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "breath", SLOT_ID_LEFT_HAND = "breath")
 	clothing_flags = ALLOWINTERNALS|FLEXIBLEMATERIAL
 	body_cover_flags = FACE
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	gas_transfer_coefficient = 0.10
 	permeability_coefficient = 0.50
 	var/hanging = 0

@@ -51,7 +51,7 @@
 	item_state = "rods"
 	damage_force = 8
 	throw_force = 10
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	attack_verb = list("hit", "bludgeoned", "whacked", "bonked")
 	material_significance = MATERIAL_SIGNIFICANCE_SHARD
 

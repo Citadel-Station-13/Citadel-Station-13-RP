@@ -4,7 +4,7 @@
 	icon_state = "taperecorder_empty"
 	item_state = "analyzer"
 	icon = 'icons/obj/device.dmi'
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 
 	materials_base = list(MAT_STEEL = 60, MAT_GLASS = 30)
 
@@ -369,7 +369,7 @@
 	icon = 'icons/obj/device.dmi'
 	icon_state = "tape_white"
 	item_state = "analyzer"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	materials_base = list(MAT_STEEL=20, "glass"=5)
 	damage_force = 1
 	throw_force = 0

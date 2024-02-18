@@ -5,7 +5,7 @@
 	clothing_flags = BLOCK_GAS_SMOKE_EFFECT | ALLOWINTERNALS | ALLOW_SURVIVALFOOD
 	inv_hide_flags = HIDEEARS|HIDEEYES|HIDEFACE
 	body_cover_flags = FACE|EYES
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "gas_alt", SLOT_ID_LEFT_HAND = "gas_alt")
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.01
@@ -45,7 +45,7 @@
 	icon_state = "halfgas"
 	siemens_coefficient = 0.7
 	body_cover_flags = FACE
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	var/hanging = FALSE
 	inv_hide_flags = HIDEFACE
 	action_button_name = "Adjust Face Mask"

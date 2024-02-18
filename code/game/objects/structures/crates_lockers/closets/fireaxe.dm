@@ -13,7 +13,7 @@
 	var/hitstaken = 0
 	var/smashed = 0
 
-/obj/structure/closet/fireaxecabinet/PopulateContents()
+/obj/structure/closet/fireaxecabinet/legacy_spawn_contents()
 	. = ..()
 	fireaxe = new /obj/item/material/twohanded/fireaxe(src)
 

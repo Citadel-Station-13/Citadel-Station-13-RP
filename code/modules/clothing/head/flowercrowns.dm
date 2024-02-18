@@ -2,7 +2,7 @@
 	name = "wood circlet"
 	desc = "A small wood circlet for making a flower crown."
 	icon_state = "woodcirclet"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	body_cover_flags = 0
 
 /obj/item/clothing/head/woodcirclet/attackby(obj/item/W as obj, mob/user as mob)

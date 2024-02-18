@@ -13,7 +13,7 @@
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5,10,15,25,30,60)
 	volume = 60
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	atom_flags = OPENCONTAINER | NOCONDUCT
 	integrity_flags = INTEGRITY_ACIDPROOF
 	drop_sound = 'sound/items/drop/bottle.ogg'
@@ -126,7 +126,7 @@
 		..()
 	if(istype(W,/obj/item/reagent_containers/glass) || istype(W,/obj/item/reagent_containers/food/drinks) || istype(W,/obj/item/reagent_containers/food/condiment))
 		return
-	if(W && W.w_class <= w_class && (atom_flags & OPENCONTAINER))
+	if(W && W.get_weight_class() <= get_weight_class() && (atom_flags & OPENCONTAINER))
 		to_chat(user, "<span class='notice'>You dip \the [W] into \the [src].</span>")
 		reagents.touch_obj(W, reagents.total_volume)
 
@@ -247,7 +247,7 @@
 	base_icon_state = "vial"
 	materials_base = list(MAT_GLASS = 250)
 	volume = 30
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5,10,15,30)
 	atom_flags = OPENCONTAINER
@@ -269,7 +269,7 @@
 	base_icon_state = "bucket"
 	item_state = "bucket"
 	materials_base = list(MAT_STEEL = 200)
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	amount_per_transfer_from_this = 20
 	possible_transfer_amounts = list(10,20,30,60,120)
 	volume = 120
@@ -331,7 +331,7 @@
 	base_icon_state = "woodbucket"
 	item_state = "woodbucket"
 	materials_base = list(MAT_WOOD = 50)
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	amount_per_transfer_from_this = 20
 	possible_transfer_amounts = list(10,20,30,60,120)
 	volume = 120
@@ -368,7 +368,7 @@
 	base_icon_state = "sandbucket"
 	item_state = "woodbucket"
 	materials_base = list("sandstone" = 50)
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	integrity_flags = INTEGRITY_ACIDPROOF
 
 /obj/item/reagent_containers/glass/bucket/sandstone/examine(mob/user, dist)
@@ -401,7 +401,7 @@
 	icon_state = "water_cooler_bottle"
 	base_icon_state = "water_cooler_bottle"
 	materials_base = list(MAT_GLASS = 2000)
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	amount_per_transfer_from_this = 20
 	possible_transfer_amounts = list(10,20,30,60,120)
 	volume = 120
@@ -414,7 +414,7 @@
 	icon_state = "portable_fuelcan"
 	base_icon_state = "portable_fuelcan"
 	materials_base = list("metal" = 2000)
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(10,20,50,100)
 	volume = 60
@@ -443,7 +443,7 @@
 	icon_state = "portable_fuelcan_tiny"
 	base_icon_state = "portable_fuelcan_tiny"
 	materials_base = list("metal" = 500)
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	volume = 20
 
 /obj/item/reagent_containers/glass/stone

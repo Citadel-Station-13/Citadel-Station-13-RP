@@ -5,7 +5,7 @@
 	req_access = list(ACCESS_COMMAND_LOCKERS)
 	var/registered_name = null
 
-/obj/structure/closet/secure_closet/personal/PopulateContents()
+/obj/structure/closet/secure_closet/personal/legacy_spawn_contents()
 	new /obj/item/radio/headset(src)
 	if(prob(50))
 		new /obj/item/storage/backpack(src)
@@ -13,7 +13,7 @@
 		new /obj/item/storage/backpack/satchel/norm(src)
 	new /obj/item/instrument/piano_synth(src)
 
-/obj/structure/closet/secure_closet/personal/patient/PopulateContents()
+/obj/structure/closet/secure_closet/personal/patient/legacy_spawn_contents()
 	new /obj/item/clothing/under/medigown(src)
 	new /obj/item/clothing/under/color/white(src)
 	new /obj/item/clothing/shoes/white(src)

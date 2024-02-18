@@ -1,13 +1,10 @@
 // todo: see all this? needs to be decided what to do with and shoved into the inventory handling system proper once evaluated.
 
-/mob
-	var/obj/item/storage/s_active = null // Even ghosts can/should be able to peek into boxes on the ground
-
 //This proc is called whenever someone clicks an inventory ui slot.
 /mob/proc/attack_ui(var/slot)
 	var/obj/item/W = get_active_held_item()
 
-	var/obj/item/E = item_by_slot(slot)
+	var/obj/item/E = item_by_slot_id(slot)
 	if (istype(E))
 		if(istype(W))
 			E.attackby(W,src)
@@ -50,7 +47,7 @@
  */
 /mob/proc/remove_all_restraints()
 	drop_slots_to_ground(list(SLOT_ID_HANDCUFFED, SLOT_ID_LEGCUFFED), INV_OP_FORCE)
-	var/obj/item/suit_check = item_by_slot(SLOT_ID_SUIT)
+	var/obj/item/suit_check = item_by_slot_id(SLOT_ID_SUIT)
 	if(istype(suit_check, /obj/item/clothing/suit/straight_jacket))
 		drop_item_to_ground(suit_check, INV_OP_FORCE)
 	// guess at if it's a bad thing

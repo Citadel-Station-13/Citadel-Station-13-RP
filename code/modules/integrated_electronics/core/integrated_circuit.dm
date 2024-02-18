@@ -8,7 +8,7 @@ a creative player the means to solve many problems.  Circuits are held inside an
 	desc = "It's a tiny chip!  This one doesn't seem to do much, however."
 	icon = 'icons/obj/integrated_electronics/electronic_components.dmi'
 	icon_state = "template"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	/// Reference to the assembly holding this circuit, if any.
 	var/obj/item/electronic_assembly/assembly = null
 	var/extended_desc = null

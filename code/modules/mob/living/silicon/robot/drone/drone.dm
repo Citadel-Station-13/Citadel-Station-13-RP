@@ -17,7 +17,7 @@
 	integrated_light_power = 3
 	local_transmit = 1
 
-	can_pull_size = ITEMSIZE_NO_CONTAINER
+	can_pull_size = WEIGHT_CLASS_HUGE
 	can_pull_mobs = MOB_PULL_SMALLER
 	can_enter_vent_with = list(
 		/obj)

@@ -16,7 +16,7 @@
 	var/frequency = 1451
 	var/broadcasting = null
 	var/listening = 1.0
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	item_state = "electronic"
 	throw_speed = 4
 	throw_range = 20
@@ -126,7 +126,7 @@ Frequency:
 	icon_state = "hand_tele"
 	item_state = "electronic"
 	throw_force = 5
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	throw_speed = 3
 	throw_range = 5
 	origin_tech = list(TECH_MAGNET = 1, TECH_BLUESPACE = 3)

@@ -8,7 +8,7 @@
 	worn_render_flags = NONE
 	desc = "A polaroid camera. 10 photos left."
 	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = SLOT_BELT
 	materials_base = list(MAT_STEEL = 2000)
 	var/pictures_max = 10

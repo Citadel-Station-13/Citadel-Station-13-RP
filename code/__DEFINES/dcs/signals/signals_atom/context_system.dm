@@ -9,11 +9,29 @@
 	#define RAISE_ATOM_CONTEXT_ACT_HANDLED (1<<0)
 
 /// create context
+/// todo: this is deprecated, i think.
 /// * name: name
 /// * image: context menu image
 /// * distance: distance where this is valid; much be reachable or actable; null = requires adjacency or adjacency-equivalence
 /// * mobility: mobility flags required
 #define ATOM_CONTEXT_TUPLE(name, image, distance, mobility) list(name, image, distance, mobility)
+
+/// Creates context list
+///
+/// @params
+/// * name: name
+/// * image: context menu image
+/// * distance: distance where this is valid; much be reachable or actable; null = requires adjacency or adjacency-equivalence
+/// * mobility: mobility flags required
+/// * defaultable: allow defaulting if this is the only thing in the list
+/atom/proc/atom_context_tuple(name, image/I, distance, mobility, defaultable)
+	return list(
+		name,
+		I,
+		distance,
+		mobility,
+		defaultable,
+	)
 
 /// when used as distance, telekinetics and other things do not count as adjacency
 //  todo: currently not implemented

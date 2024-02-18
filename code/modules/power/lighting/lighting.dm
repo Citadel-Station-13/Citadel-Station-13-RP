@@ -1015,4 +1015,4 @@ var/global/list/light_type_cache = list()
 	desc = "A lamp shade for a lamp."
 	icon = 'icons/obj/lighting.dmi'
 	icon_state = "lampshade"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY

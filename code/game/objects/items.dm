@@ -1,7 +1,7 @@
 /obj/item
 	name = "item"
 	icon = 'icons/obj/items.dmi'
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	// todo: better way, for now, block all rad contamination to interior
 	rad_flags = RAD_BLOCK_CONTENTS
 	obj_flags = OBJ_IGNORE_MOB_DEPTH | OBJ_RANGE_TARGETABLE
@@ -42,6 +42,17 @@
 	/// economic category for items
 	var/economic_category_item = ECONOMIC_CATEGORY_ITEM_DEFAULT
 
+	//* Environmentals *//
+	/// Set this variable to determine up to which temperature (IN KELVIN) the item protects against heat damage. Keep at null to disable protection. Only protects areas set by heat_protection flags.
+	var/max_heat_protection_temperature
+	/// Set this variable to determine down to which temperature (IN KELVIN) the item protects against cold damage. 0 is NOT an acceptable number due to if(varname) tests!! Keep at null to disable protection. Only protects areas set by cold_protection flags.
+	var/min_cold_protection_temperature
+
+	/// Set this variable if the item protects its wearer against high pressures below an upper bound. Keep at null to disable protection.
+	var/max_pressure_protection
+	/// Set this variable if the item protects its wearer against low pressures above a lower bound. Keep at null to disable protection. 0 represents protection against hard vacuum.
+	var/min_pressure_protection
+
 	//? Carry Weight
 	/// encumberance.
 	/// calculated as max() of all encumbrance
@@ -72,15 +83,14 @@
 	var/damage_mode = NONE
 	// todo: port over damtype
 
+	//* Storage *//
+	/// storage cost for volumetric storage
+	/// null to default to weight class
+	var/weight_volume
+
 	//? unsorted / legacy
 	/// This saves our blood splatter overlay, which will be processed not to go over the edges of the sprite
 	var/image/blood_overlay = null
-	var/r_speed = 1.0
-	var/burn_point = null
-	var/burning = null
-	var/storage_cost = null
-	/// If it's an item we don't want to log attack_logs with, set this to TRUE
-	var/no_attack_log = FALSE
 	pass_flags = ATOM_PASS_TABLE
 	pressure_resistance = 5
 	var/obj/item/master = null
@@ -91,16 +101,6 @@
 	 * Either a list() with equal chances or a single verb.
 	 */
 	var/list/attack_verb = "attacked"
-
-	/// Set this variable to determine up to which temperature (IN KELVIN) the item protects against heat damage. Keep at null to disable protection. Only protects areas set by heat_protection flags.
-	var/max_heat_protection_temperature
-	/// Set this variable to determine down to which temperature (IN KELVIN) the item protects against cold damage. 0 is NOT an acceptable number due to if(varname) tests!! Keep at null to disable protection. Only protects areas set by cold_protection flags.
-	var/min_cold_protection_temperature
-
-	/// Set this variable if the item protects its wearer against high pressures below an upper bound. Keep at null to disable protection.
-	var/max_pressure_protection
-	/// Set this variable if the item protects its wearer against low pressures above a lower bound. Keep at null to disable protection. 0 represents protection against hard vacuum.
-	var/min_pressure_protection
 
 	//? todo: more advanced handling, multi actions, etc
 	var/datum/action/item_action/action = null
@@ -118,12 +118,16 @@
 	/// For electrical admittance/conductance (electrocution checks and shit)
 	var/siemens_coefficient = 1
 	/// Suit storage stuff.
+	// todo: kill with fire
 	var/list/allowed = null
+	// todo: kill with fire
 	/// All items can have an uplink hidden inside, just remember to add the triggers.
 	var/obj/item/uplink/hidden/hidden_uplink = null
 	/// Name used for message when binoculars/scope is used
+	// todo: kill with fire
 	var/zoomdevicename = null
 	/// TRUE if item is actively being used to zoom. For scoped guns and binoculars.
+	// todo: kill with fire
 	var/zoom = FALSE
 	/// 0 won't embed, and 100 will always embed
 	var/embed_chance = EMBED_CHANCE_UNSET
@@ -159,10 +163,9 @@
 
 /obj/item/Initialize(mapload)
 	. = ..()
+	loc?.on_contents_item_new(src)
 	if(islist(origin_tech))
 		origin_tech = typelist(NAMEOF(src, origin_tech), origin_tech)
-	if(istype(loc, /obj/item/storage))
-		item_flags |= ITEM_IN_STORAGE
 	//Potential memory optimization: Making embed chance a getter if unset.
 	if(embed_chance == EMBED_CHANCE_UNSET)
 		if(sharp)
@@ -305,25 +308,26 @@
 
 /proc/weightclass2text(w_class)
 	switch(w_class)
-		if(WEIGHT_CLASS_TINY, ITEMSIZE_TINY)
+		if(WEIGHT_CLASS_TINY, WEIGHT_CLASS_TINY)
 			. = "tiny"
-		if(WEIGHT_CLASS_SMALL, ITEMSIZE_SMALL)
+		if(WEIGHT_CLASS_SMALL, WEIGHT_CLASS_SMALL)
 			. = "small"
-		if(WEIGHT_CLASS_NORMAL, ITEMSIZE_NORMAL)
+		if(WEIGHT_CLASS_NORMAL, WEIGHT_CLASS_NORMAL)
 			. = "normal-sized"
-		if(WEIGHT_CLASS_BULKY, ITEMSIZE_LARGE)
+		if(WEIGHT_CLASS_BULKY, WEIGHT_CLASS_BULKY)
 			. = "bulky"
-		if(WEIGHT_CLASS_HUGE, ITEMSIZE_HUGE)
+		if(WEIGHT_CLASS_HUGE, WEIGHT_CLASS_HUGE)
 			. = "huge"
 		if(WEIGHT_CLASS_GIGANTIC)
 			. = "gigantic"
 		else
 			. = ""
 
-/obj/item/attack_hand(mob/user, list/params)
-	attempt_pickup(user)
+/obj/item/proc/should_attempt_pickup(datum/event_args/actor/actor)
+	return TRUE
 
 /obj/item/proc/attempt_pickup(mob/user)
+	. = TRUE
 	if (!user)
 		return
 
@@ -350,17 +354,32 @@
 	var/old_loc = src.loc
 
 	throwing?.terminate()
-	if(user.put_in_active_hand(src))
-		if(isturf(old_loc))
-			var/obj/effect/temporary_effect/item_pickup_ghost/ghost = new(old_loc)
-			ghost.assumeform(src)
-			ghost.animate_towards(user)
+
+	//! FUCK; this is off because we don't have storage indirection working properly.
+
+	// if(item_flags & ITEM_IN_STORAGE)
+	// 	var/obj/object = loc
+	// 	var/datum/object_system/storage/in_storage = object.obj_storage
+	// 	// todo: support for indirection
+	// 	ASSERT(!isnull(in_storage))
+	// 	if(!in_storage.auto_handle_interacted_removal(src, new /datum/event_args/actor(user), put_in_hands = TRUE))
+	// 		return
+	// else if(!user.put_in_active_hand(src))
+	if(!user.put_in_active_hand(src))
+		return
+	if(isturf(old_loc))
+		var/obj/effect/temporary_effect/item_pickup_ghost/ghost = new(old_loc)
+		ghost.assumeform(src)
+		ghost.animate_towards(user)
 
 /obj/item/OnMouseDrop(atom/over, mob/user, proximity, params)
+	. = ..()
+	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
+		return
 	if(anchored)	// Don't.
-		return ..()
+		return
 	if(user.restrained())
-		return ..()	// don't.
+		return	// don't.
 		// todo: restraint levels, e.g. handcuffs vs straightjacket
 	if(!user.is_in_inventory(src))
 		// not being held
@@ -390,7 +409,6 @@
 				user.visible_message(SPAN_NOTICE("[user] slides [src] over."), SPAN_NOTICE("You slide [src] over."), range = MESSAGE_RANGE_COMBAT_SUBTLE)
 			log_inventory("[user] slid [src] from [COORD(old)] to [COORD(over)]")
 			return CLICKCHAIN_DO_NOT_PROPAGATE
-		return ..()
 	else
 		// being held, check for attempt unequip
 		if(istype(over, /atom/movable/screen/inventory/hand))
@@ -404,7 +422,6 @@
 		else if(istype(over, /turf))
 			user.drop_item_to_ground(src)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
-		return ..()
 
 // funny!
 /mob/proc/CanSlideItem(obj/item/I, turf/over)
@@ -424,30 +441,6 @@
 		var/mob/living/silicon/robot/R = user
 		R.activate_module(src)
 		R.hud_used.update_robot_modules_display()
-
-/obj/item/attackby(obj/item/I, mob/user, list/params, clickchain_flags, damage_multiplier)
-	if(istype(I, /obj/item/storage))
-		var/obj/item/storage/S = I
-		if(S.use_to_pickup)
-			if(S.collection_mode) //Mode is set to collect all items
-				if(isturf(src.loc))
-					S.gather_all(src.loc, user)
-
-			else if(S.can_be_inserted(src))
-				S.handle_item_insertion(src, user)
-	if(istype(I, /obj/item/cell) && !isnull(obj_cell_slot) && isnull(obj_cell_slot.cell) && obj_cell_slot.interaction_active(user))
-		if(!user.transfer_item_to_loc(I, src))
-			user.action_feedback(SPAN_WARNING("[I] is stuck to your hand!"), src)
-			return CLICKCHAIN_DO_NOT_PROPAGATE
-		user.visible_action_feedback(
-			target = src,
-			hard_range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
-			visible_hard = SPAN_NOTICE("[user] inserts [I] into [src]."),
-			audible_hard = SPAN_NOTICE("You hear something being slotted in."),
-			visible_self = SPAN_NOTICE("You insert [I] into [src]."),
-		)
-		obj_cell_slot.insert_cell(I)
-		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 
 /obj/item/proc/talk_into(mob/M as mob, text)
 	return
@@ -494,20 +487,7 @@
 	var/matrix/M = matrix(transform)
 	M.Turn(rand(-170, 170))
 	transform = M
-	pixel_x = rand(-8, 8)
-	pixel_y = rand(-8, 8)
-
-// called when this item is removed from a storage item, which is passed on as S. The loc variable is already set to the new destination before this is called.
-/obj/item/proc/on_exit_storage(obj/item/storage/S as obj)
-	SEND_SIGNAL(src, COMSIG_STORAGE_EXITED, S)
-
-// called when this item is added into a storage item, which is passed on as S. The loc variable is already set to the storage item.
-/obj/item/proc/on_enter_storage(obj/item/storage/S as obj)
-	SEND_SIGNAL(src, COMSIG_STORAGE_ENTERED, S)
-
-// called when "found" in pockets and storage items. Returns 1 if the search should end.
-/obj/item/proc/on_found(mob/finder as mob)
-	return
+	set_pixel_offsets(rand(-8, 8), rand(-8, 8))
 
 /obj/item/verb/verb_pickup()
 	set src in oview(1)
@@ -731,7 +711,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	else if(!zoom && user.get_active_held_item() != src && wornslot == FALSE)
 		to_chat(user, "You are too distracted to look through the [devicename], perhaps if it was in your active hand this might work better")
 		cannotzoom = 1
-	else if(!zoom && user.item_by_slot(wornslot) != src && wornslot != FALSE)
+	else if(!zoom && user.item_by_slot_id(wornslot) != src && wornslot != FALSE)
 		to_chat(user, "You need to wear the [devicename] to look through it properly")
 		cannotzoom = 1
 	//We checked above if they are a human and returned already if they weren't.
@@ -801,7 +781,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 // 	. = ..()
 // 	update_action_buttons()
 
-//* Armor
+//* Armor *//
 
 /**
  * called to be checked for mob armor
@@ -822,7 +802,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	damage = fetch_armor().resultant_damage(damage, tier, flag)
 	return args.Copy()
 
-//* Attack
+//* Attack *//
 
 /**
  * grabs an attack verb to use
@@ -872,7 +852,26 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 /obj/item/proc/is_shred(strict)
 	return (damage_mode & DAMAGE_MODE_SHRED)
 
-//* Interaction
+//* Interaction *//
+
+/obj/item/attackby(obj/item/I, mob/user, list/params, clickchain_flags, damage_multiplier)
+	if(isturf(loc) && I.obj_storage?.allow_mass_gather && I.obj_storage.allow_mass_gather_via_click)
+		I.obj_storage.auto_handle_interacted_mass_pickup(new /datum/event_args/actor(user), src)
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+	if(istype(I, /obj/item/cell) && !isnull(obj_cell_slot) && isnull(obj_cell_slot.cell) && obj_cell_slot.interaction_active(user))
+		if(!user.transfer_item_to_loc(I, src))
+			user.action_feedback(SPAN_WARNING("[I] is stuck to your hand!"), src)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		user.visible_action_feedback(
+			target = src,
+			hard_range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
+			visible_hard = SPAN_NOTICE("[user] inserts [I] into [src]."),
+			audible_hard = SPAN_NOTICE("You hear something being slotted in."),
+			visible_self = SPAN_NOTICE("You insert [I] into [src]."),
+		)
+		obj_cell_slot.insert_cell(I)
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+	return ..()
 
 /**
  * Called when the item is in the active hand, and clicked; alternately, there is an 'activate held object' verb or you can hit pagedown.
@@ -914,6 +913,10 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 		log_construction(e_args, src, "removed cell [obj_cell_slot.cell] ([obj_cell_slot.cell.type])")
 		e_args.performer.put_in_hands_or_drop(obj_cell_slot.remove_cell(e_args.performer))
 		return TRUE
+	if(!isnull(obj_storage) && obj_storage.allow_quick_empty && obj_storage.allow_quick_empty_via_attack_self)
+		var/turf/turf = get_turf(e_args.performer)
+		obj_storage.auto_handle_interacted_mass_dumping(e_args, turf)
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return FALSE
 
 /**
@@ -924,10 +927,10 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 /obj/item/proc/attacksound_override(atom/target, attack_type)
 	return
 
-//* Carry Weight
+//* Carry Weight *//
 
 /obj/item/proc/get_weight()
-	return weight
+	return weight + obj_storage?.get_containing_weight()
 
 /obj/item/proc/get_encumbrance()
 	return encumbrance
@@ -990,14 +993,42 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	worn_mob()?.update_item_slowdown()
 
 /obj/item/proc/propagate_weight(old_weight, new_weight)
-	if(!(item_flags & ITEM_IN_STORAGE))
-		return
-	var/obj/item/storage/S = loc
-	if(!istype(S))
-		return
-	S.stored_weight_changed(src, old_weight, new_weight)
+	loc?.on_contents_weight_change(src, old_weight, new_weight)
 
-//* Materials
+//* Interactions *//
+
+/obj/item/on_attack_hand(datum/event_args/actor/clickchain/e_args)
+	. = ..()
+	if(.)
+		return
+
+	if(e_args.performer.is_in_inventory(src))
+		if(e_args.performer.is_holding(src))
+			if(obj_storage?.allow_open_via_offhand_click && obj_storage.auto_handle_interacted_open(e_args))
+				return TRUE
+		else
+			if(obj_storage?.allow_open_via_equipped_click && obj_storage.auto_handle_interacted_open(e_args))
+				return TRUE
+	if(!e_args.performer.is_holding(src))
+		if(should_attempt_pickup(e_args) && attempt_pickup(e_args.performer))
+			return TRUE
+
+//* Inventory *//
+
+/**
+ * Called when someone clisk us on a storage, before the storage handler's
+ * 'put item in' runs. Return FALSE to deny.
+ */
+/obj/item/proc/allow_auto_storage_insert(datum/event_args/actor/actor, datum/object_system/storage/storage)
+	return TRUE
+
+/obj/item/proc/on_exit_storage(datum/object_system/storage/storage)
+	SEND_SIGNAL(src, COMSIG_STORAGE_EXITED, storage)
+
+/obj/item/proc/on_enter_storage(datum/object_system/storage/storage)
+	SEND_SIGNAL(src, COMSIG_STORAGE_ENTERED, storage)
+
+//* Materials *//
 
 /obj/item/material_trait_brittle_shatter()
 	var/datum/material/material = get_primary_material()
@@ -1012,7 +1043,43 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	playsound(src, "shatter", 70, 1)
 	qdel(src)
 
-//? VV
+//* Mouse *//
+
+/obj/item/MouseEntered(location, control, params)
+	..()
+	SEND_SIGNAL(src, COMSIG_ITEM_MOUSE_ENTERED, usr)
+
+/obj/item/MouseExited(location, control, params)
+	..()
+	SEND_SIGNAL(src, COMSIG_ITEM_MOUSE_EXITED, usr)
+
+//* Storage *//
+
+/obj/item/proc/get_weight_class()
+	return w_class
+
+/obj/item/proc/get_weight_volume()
+	return isnull(weight_volume)? global.w_class_to_volume[w_class || WEIGHT_CLASS_GIGANTIC] : weight_volume
+
+/obj/item/proc/set_weight_class(weight_class)
+	var/old = w_class
+	w_class = weight_class
+	loc?.on_contents_weight_class_change(src, old, weight_class)
+
+/obj/item/proc/set_weight_volume(volume)
+	var/old = weight_volume
+	weight_volume = volume
+	loc?.on_contents_weight_volume_change(src, old, volume)
+
+/**
+ * called when someone is opening a storage with us in it
+ *
+ * @return TRUE to stop the storage from opening
+ */
+/obj/item/proc/on_containing_storage_opening(datum/event_args/actor/actor, datum/object_system/storage/storage)
+	return FALSE
+
+//* VV *//
 
 /obj/item/vv_edit_var(var_name, var_value, mass_edit, raw_edit)
 	switch(var_name)
@@ -1040,5 +1107,19 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 				// check, as worn_mob() returns /mob, not /living
 				if(istype(L))
 					L.update_item_slowdown()
+		if(NAMEOF(src, w_class))
+			if(!isnum(var_value) && !raw_edit)
+				return FALSE
+			if((var_value < WEIGHT_CLASS_MIN) || (var_value > WEIGHT_CLASS_MAX))
+				return FALSE
+			set_weight_class(var_value)
+			return TRUE
+		if(NAMEOF(src, weight_volume))
+			if(!isnum(var_value) && !raw_edit)
+				return FALSE
+			if(var_value < 0)
+				return FALSE
+			set_weight_volume(var_value)
+			return TRUE
 		else
 			return ..()

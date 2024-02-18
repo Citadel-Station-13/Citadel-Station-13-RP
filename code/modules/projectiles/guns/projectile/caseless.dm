@@ -3,7 +3,7 @@
 	desc = "This experimental rifle is the efforts of NanoTrasen's R&D division, made manifest. Uses 5mm solid-phoron caseless rounds, obviously."
 	icon_state = "caseless"
 	item_state = "caseless"
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	caliber = "5mm caseless"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 3)
 	slot_flags = SLOT_BACK
@@ -27,7 +27,7 @@
 	desc = "A relic dating back to the Xenomorph Wars and the former primary battle rifle of the  United Solar Marine Corps. Loads using 10x24mm caseless Magazines"
 	icon_state = "usmc"
 	item_state = "usmc"
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	caliber = "10mmCL"
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 3)
 	slot_flags = SLOT_BACK

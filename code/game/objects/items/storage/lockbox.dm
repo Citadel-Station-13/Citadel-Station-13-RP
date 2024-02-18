@@ -3,17 +3,21 @@
 	desc = "A locked box."
 	icon_state = "lockbox+l"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syringe_kit", SLOT_ID_LEFT_HAND = "syringe_kit")
-	w_class = ITEMSIZE_LARGE
-	max_w_class = ITEMSIZE_NORMAL
-	max_storage_space = ITEMSIZE_COST_NORMAL * 4 //The sum of the w_classes of all the items in this storage item.
+	w_class = WEIGHT_CLASS_BULKY
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
+	max_combined_volume = WEIGHT_VOLUME_NORMAL * 4 //The sum of the w_classes of all the items in this storage item.
 	req_access = list(ACCESS_SECURITY_ARMORY)
 	preserve_item = 1
-	var/locked = 1
 	var/broken = 0
+	var/locked = TRUE
 	var/icon_locked = "lockbox+l"
 	var/icon_closed = "lockbox"
 	var/icon_broken = "lockbox+b"
 
+/obj/item/storage/lockbox/initialize_storage()
+	. = ..()
+	if(locked && !broken)
+		obj_storage.set_locked(TRUE)
 
 /obj/item/storage/lockbox/attackby(obj/item/W, mob/user)
 	if (istype(W, /obj/item/card/id))
@@ -21,11 +25,10 @@
 			to_chat(user, "<span class='warning'>It appears to be broken.</span>")
 			return
 		if(src.allowed(user))
-			src.locked = !( src.locked )
-			if(src.locked)
+			obj_storage.set_locked(!obj_storage.locked)
+			if(obj_storage.locked)
 				src.icon_state = src.icon_locked
 				to_chat(user, "<span class='notice'>You lock \the [src]!</span>")
-				close_all()
 				return
 			else
 				src.icon_state = src.icon_closed
@@ -44,15 +47,6 @@
 		..()
 	else
 		to_chat(user, "<span class='warning'>It's locked!</span>")
-	return
-
-
-/obj/item/storage/lockbox/show_to(mob/user)
-	if(locked)
-		to_chat(user, "<span class='warning'>It's locked!</span>")
-	else
-		..()
-	return
 
 /obj/item/storage/lockbox/emag_act(remaining_charges, mob/user, emag_source, visual_feedback = "", audible_feedback = "")
 	if(!broken)
@@ -66,7 +60,7 @@
 			audible_feedback = "<span class='warning'>You hear a faint electrical spark.</span>"
 
 		broken = 1
-		locked = 0
+		obj_storage.set_locked(FALSE)
 		desc = "It appears to be broken."
 		icon_state = src.icon_broken
 		visible_message(visual_feedback, audible_feedback)
@@ -90,7 +84,7 @@
 	name = "lockbox of medals"
 	desc = "A lockbox filled with commemorative medals, it has the NanoTrasen logo stamped on it."
 	req_access = list(ACCESS_COMMAND_BRIDGE)
-	storage_slots = 7
+	max_items = 7
 	starts_with = list(
 		/obj/item/clothing/accessory/medal/conduct,
 		/obj/item/clothing/accessory/medal/bronze_heart,
@@ -105,7 +99,7 @@
 /obj/item/storage/lockbox/colonial
 	name = "Colonial Equipment Pack"
 	req_access = list(ACCESS_GENERAL_PATHFINDER)
-	storage_slots = 34
+	max_items = 34
 	starts_with = list(
 		/obj/item/clothing/under/customs/khaki = 4,
 		/obj/item/clothing/suit/colonial_redcoat = 4,
@@ -121,7 +115,7 @@
 /obj/item/storage/lockbox/gateway
 	name = "Gateway Guardian Pack"
 	req_access = list(ACCESS_GENERAL_PATHFINDER)
-	storage_slots = 24
+	max_items = 24
 	starts_with = list(
 		/obj/item/clothing/under/tactical = 4,
 		/obj/item/clothing/accessory/storage/black_vest = 4,
@@ -135,7 +129,7 @@
 /obj/item/storage/lockbox/cowboy
 	name = "Cyan Posse Pack"
 	req_access = list(ACCESS_GENERAL_PATHFINDER)
-	storage_slots = 33
+	max_items = 33
 	starts_with = list(
 		/obj/item/clothing/suit/storage/toggle/brown_jacket = 4,
 		/obj/item/clothing/shoes/boots/cowboy/classic = 4,
@@ -154,7 +148,7 @@
 /obj/item/storage/lockbox/russian
 	name = "Conscript Pack"
 	req_access = list(ACCESS_GENERAL_PATHFINDER)
-	storage_slots = 17
+	max_items = 17
 	starts_with = list(
 		/obj/item/clothing/under/soviet = 4,
 		/obj/item/clothing/head/ushanka = 3,
@@ -169,7 +163,7 @@
 /obj/item/storage/lockbox/crusade
 	name = "Holy Crusade Pack"
 	req_access = list(ACCESS_GENERAL_PATHFINDER)
-	storage_slots = 34
+	max_items = 34
 	starts_with = list(
 		/obj/item/clothing/suit/armor/medieval/crusader/cross/templar = 4,
 		/obj/item/clothing/head/helmet/medieval/crusader/templar = 4,
@@ -182,7 +176,7 @@
 /obj/item/storage/lockbox/maniple
 	name = "Maniple Pack"
 	req_access = list(ACCESS_GENERAL_PATHFINDER)
-	storage_slots = 16
+	max_items = 16
 	starts_with = list(
 		/obj/item/clothing/under/roman = 4,
 		/obj/item/clothing/head/helmet/roman = 3,
@@ -194,7 +188,7 @@
 /obj/item/storage/lockbox/away
 	name = "Away Team Pack"
 	req_access = list(ACCESS_GENERAL_PATHFINDER)
-	storage_slots = 17
+	max_items = 17
 	starts_with = list(
 		/obj/item/clothing/under/rank/trek/command/ds9 = 1,
 		/obj/item/clothing/under/rank/trek/engsec/ds9 = 2,
@@ -209,7 +203,7 @@
 	name = "Lightweight Plating Kit"
 	desc = "A lockbox filled with a plate harness and modular limb armor."
 	req_access = list(ACCESS_SECURITY_EQUIPMENT)
-	storage_slots = 5
+	max_items = 5
 	starts_with = list(
 		/obj/item/clothing/suit/armor/plate_harness,
 		/obj/item/clothing/accessory/armor/limb_plate/arm_r,

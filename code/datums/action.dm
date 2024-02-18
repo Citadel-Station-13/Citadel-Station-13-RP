@@ -71,6 +71,8 @@
 	var/button_managed = FALSE
 	/// is the button visible
 	var/button_visibility = TRUE
+	/// custom overlay to add to button; this is arbitrary, and can be a reference to an item
+	var/button_overlay
 
 /datum/action/New(datum/target)
 	if(!target_compatible(target))
@@ -89,6 +91,8 @@
 		remove(owner)
 	target = null
 	QDEL_NULL(button)
+	// clear ref, because it might be directly an object
+	button_overlay = null
 	return ..()
 
 /datum/action/proc/grant(mob/living/T)
@@ -213,6 +217,9 @@
 	img.pixel_y = 0
 	button.add_overlay(img)
 
+	if(button_overlay)
+		button.add_overlay(button_overlay)
+
 	if(button_availability < 1)
 		button.color = rgb(128,0,0,128)
 	else
@@ -246,6 +253,7 @@
 //? Action Button
 
 /atom/movable/screen/movable/action_button
+	appearance_flags = APPEARANCE_UI | KEEP_TOGETHER
 	var/datum/action/owner
 	screen_loc = "LEFT,TOP"
 

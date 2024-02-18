@@ -26,11 +26,11 @@
 		return
 	deployed = !(deployed)
 	if(deployed)
-		w_class = ITEMSIZE_NORMAL
+		set_weight_class(WEIGHT_CLASS_NORMAL)
 		icon_state = "[initial(icon_state)]"
 		to_chat(usr, SPAN_NOTICE("You flip open \the [src]."))
 	else
-		w_class = ITEMSIZE_SMALL
+		set_weight_class(WEIGHT_CLASS_SMALL)
 		icon_state = "[initial(icon_state)]_closed"
 		to_chat(usr, SPAN_NOTICE("You close \the [src]."))
 

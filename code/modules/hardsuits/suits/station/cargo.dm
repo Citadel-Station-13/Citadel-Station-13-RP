@@ -19,7 +19,6 @@
 		/obj/item/t_scanner,
 		/obj/item/pickaxe,
 		/obj/item/rcd,
-		/obj/item/storage/backpack,
 		/obj/item/bluespace_radio,
 	)
 

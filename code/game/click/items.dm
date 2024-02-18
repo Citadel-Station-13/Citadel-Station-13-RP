@@ -22,6 +22,8 @@
 
 	. = clickchain_flags
 
+	// todo: inject something here for 'used as item' much like /tg/, to get rid of attackby pattern
+
 	if((. |= tool_attack_chain(target, user, ., params)) & CLICKCHAIN_DO_NOT_PROPAGATE)
 		return
 
@@ -33,11 +35,11 @@
 	// - item use & receive item use (item_interaction() on /atom, definiteily)
 	// - tool use & receive tool use (we already have tool_interaction() on /atom)
 	// - melee attack & receive melee attack (melee_interaction() on /atom? not melee_act directly?)
-	if(resolve_attackby(target, user, params, null, clickchain_flags))
+	if(resolve_attackby(target, user, params, null, .))
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 
 	// todo: signal for afterattack here
-	return clickchain_flags | afterattack(target, user, clickchain_flags, params)
+	return . | afterattack(target, user, clickchain_flags, params)
 
 /**
  * Called when trying to click something that the user can't Reachability() to.

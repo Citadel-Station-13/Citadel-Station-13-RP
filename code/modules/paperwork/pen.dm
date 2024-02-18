@@ -21,7 +21,7 @@
 	item_state = "pen"
 	slot_flags = SLOT_BELT | SLOT_EARS
 	throw_force = 0
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	throw_speed = 7
 	throw_range = 15
 	materials_base = list(MAT_STEEL = 10)
@@ -150,7 +150,7 @@
 	item_state = "pen"
 	slot_flags = SLOT_BELT | SLOT_EARS
 	throw_force = 3
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	throw_speed = 7
 	throw_range = 15
 	armor_penetration = 20
@@ -159,7 +159,7 @@
 	var/active_embed_chance = 0
 	var/active_force = 15
 	var/active_throwforce = 30
-	var/active_w_class = ITEMSIZE_NORMAL
+	var/active_w_class = WEIGHT_CLASS_NORMAL
 	var/active_icon_state
 	var/default_icon_state
 
@@ -190,7 +190,7 @@
 
 	sharp = 1
 	edge = 1
-	w_class = active_w_class
+	set_weight_class(active_w_class)
 	playsound(src, 'sound/weapons/saberon.ogg', 15, 1)
 	damtype = SEARING
 	item_flags |= ITEM_THROW_UNCATCHABLE
@@ -213,7 +213,7 @@
 	throw_force = initial(throw_force)
 	sharp = initial(sharp)
 	edge = initial(edge)
-	w_class = initial(w_class)
+	set_weight_class(initial(w_class))
 	damtype = BRUTE
 	item_flags &= ~ITEM_THROW_UNCATCHABLE
 
@@ -311,7 +311,6 @@
 				pen_color = COLOR_WHITE
 			else
 				pen_color = COLOR_BLACK
-		to_chat(usr, "<span class='info'>You select the [lowertext(selected_type)] ink container.</span>")
 
 /obj/item/pen/charcoal
 	name = "charcoal stick"
