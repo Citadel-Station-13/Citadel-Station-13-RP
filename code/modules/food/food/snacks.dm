@@ -228,7 +228,7 @@
 			add_fingerprint(user)
 			return
 
-		if (has_edge(W))
+		if (W.is_sharp())
 			if (!can_slice_here)
 				to_chat(user, "<span class='warning'>You cannot slice \the [src] here! You need a table or at least a tray to do it.</span>")
 				return
@@ -5237,7 +5237,7 @@ END CITADEL CHANGE */
 	icon_state = "friedmushroom"
 	filling_color = "#EDDD00"
 	nutriment_amt = 4
-	nutriment_desc = list("alcoholic mushrooms" = 4)
+	nutriment_desc = list("yeasty mushrooms" = 4)
 
 /obj/item/reagent_containers/food/snacks/friedmushroom/Initialize(mapload)
 	. = ..()

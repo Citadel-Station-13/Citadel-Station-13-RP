@@ -31,6 +31,8 @@
 
 	var/hide_from_reports = FALSE
 
+	var/sensors
+
 	var/has_distress_beacon
 	var/list/unowned_areas // areas we don't own despite them being present on our z
 

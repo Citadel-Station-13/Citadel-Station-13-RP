@@ -6,7 +6,9 @@
 /area/tradeport/cyndishow)
 "ab" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/hardsuit/internalaffairs,
+/obj/item/storage/briefcase/fission{
+	starts_with = list(/obj/item/coin/supermatter,/obj/item/coin/supermatter,/obj/item/coin/supermatter)
+	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "ad" = (
@@ -382,9 +384,7 @@
 /area/tradeport/cyndishow)
 "bo" = (
 /obj/random/multiple/voidsuit/vintage,
-/obj/machinery/suit_storage_unit{
-	isopen = 1
-	},
+/obj/structure/closet,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "bp" = (
@@ -587,7 +587,7 @@
 /obj/machinery/door/firedoor{
 	req_one_access = list(160)
 	},
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/red,
 /area/shuttle/trade_ship/general)
 "ci" = (
 /turf/simulated/floor/tiled/techmaint,
@@ -800,7 +800,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/red,
 /area/shuttle/trade_ship/general)
 "cW" = (
 /obj/machinery/suit_storage_unit/syndicate,
@@ -1213,9 +1213,7 @@
 "eq" = (
 /obj/structure/table/steel_reinforced,
 /obj/structure/window/reinforced,
-/obj/item/storage/briefcase/fission{
-	starts_with = list(/obj/item/coin/supermatter,/obj/item/coin/supermatter,/obj/item/coin/supermatter)
-	},
+/obj/item/hardsuit/internalaffairs,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "er" = (
@@ -1393,7 +1391,7 @@
 	pixel_x = -7;
 	pixel_y = -2
 	},
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/red,
 /area/shuttle/trade_ship/general)
 "eX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -2035,6 +2033,9 @@
 	name = "discount cryptographic sequencer";
 	uses = 1
 	},
+/obj/structure/sign/poster{
+	pixel_x = 32
+	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "hm" = (
@@ -2227,7 +2228,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/red,
 /area/shuttle/trade_ship/general)
 "ie" = (
 /obj/structure/sink{
@@ -2431,7 +2432,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/red,
 /area/shuttle/trade_ship/general)
 "iL" = (
 /obj/effect/debris/cleanable/blood/drip,
@@ -2487,7 +2488,7 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/red,
 /area/shuttle/trade_ship/general)
 "iT" = (
 /obj/structure/table/hardwoodtable,
@@ -2639,7 +2640,7 @@
 /turf/simulated/floor/plating,
 /area/tradeport/engineering)
 "jo" = (
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/red,
 /area/shuttle/trade_ship/cockpit)
 "jq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -2798,7 +2799,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/red,
 /area/shuttle/trade_ship/general)
 "jV" = (
 /obj/effect/floor_decal/industrial/outline/grey,
@@ -3214,7 +3215,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/red,
 /area/shuttle/trade_ship/general)
 "lp" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
@@ -3394,11 +3395,11 @@
 /turf/simulated/floor/plating,
 /area/tradeport/atmospherics)
 "lX" = (
-/obj/machinery/power/apc/alarms_hidden/south_mount{
-	req_access = list(160)
-	},
 /obj/structure/cable/green{
 	icon_state = "0-8"
+	},
+/obj/machinery/power/apc/alarms_hidden/south_mount{
+	req_access = list(160)
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
@@ -3411,7 +3412,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/item/storage/secure/briefcase,
 /obj/structure/table/steel,
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/red,
 /area/shuttle/trade_ship/general)
 "ma" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -3510,7 +3511,7 @@
 	dir = 4;
 	name = "Trader Register"
 	},
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/red,
 /area/shuttle/trade_ship/general)
 "mr" = (
 /obj/structure/flora/pumpkin/carved/scream,
@@ -3524,7 +3525,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/red,
 /area/shuttle/trade_ship/general)
 "mu" = (
 /obj/machinery/light,
@@ -4037,14 +4038,14 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/red,
 /area/shuttle/trade_ship/general)
 "ow" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/red,
 /area/shuttle/trade_ship/general)
 "oy" = (
 /obj/structure/table/glass,
@@ -4404,7 +4405,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/red,
 /area/shuttle/trade_ship/general)
 "qb" = (
 /obj/structure/bed/chair/comfy/black,
@@ -4709,7 +4710,7 @@
 /obj/structure/bed/chair/bay/comfy/captain{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/red,
 /area/shuttle/trade_ship/cockpit)
 "ra" = (
 /obj/machinery/door/airlock/maintenance_hatch{
@@ -4757,7 +4758,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/red,
 /area/shuttle/trade_ship/general)
 "rj" = (
 /obj/machinery/light,
@@ -5423,7 +5424,7 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/red,
 /area/shuttle/trade_ship/general)
 "ua" = (
 /obj/structure/cable/yellow{
@@ -5519,7 +5520,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/red,
 /area/shuttle/trade_ship/general)
 "uy" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -6066,7 +6067,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/red,
 /area/shuttle/trade_ship/general)
 "wh" = (
 /obj/machinery/light{
@@ -6313,7 +6314,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/red,
 /area/shuttle/trade_ship/general)
 "wS" = (
 /obj/machinery/atmospherics/pipe/simple/visible/universal,
@@ -6340,7 +6341,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/red,
 /area/shuttle/trade_ship/general)
 "xa" = (
 /obj/structure/transit_tube,
@@ -6919,7 +6920,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
 	},
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/red,
 /area/shuttle/trade_ship/general)
 "zf" = (
 /obj/machinery/camera{
@@ -7085,7 +7086,7 @@
 	dir = 8;
 	req_one_access = list(160)
 	},
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/red,
 /area/shuttle/trade_ship/general)
 "zG" = (
 /obj/machinery/light{
@@ -7266,7 +7267,7 @@
 "Aw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/red,
 /area/shuttle/trade_ship/general)
 "Ax" = (
 /obj/structure/sign/poster{
@@ -7278,7 +7279,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/red,
 /area/shuttle/trade_ship/general)
 "Ay" = (
 /obj/machinery/button/remote/blast_door{
@@ -7653,7 +7654,7 @@
 	pixel_y = -22;
 	req_one_access = list(160)
 	},
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/red,
 /area/shuttle/trade_ship/general)
 "BJ" = (
 /obj/structure/sign/atmos_plasma{
@@ -7663,11 +7664,11 @@
 /turf/simulated/wall/r_wall,
 /area/tradeport/pads)
 "BK" = (
-/obj/machinery/power/apc/alarms_hidden/south_mount{
-	req_access = list(160)
-	},
 /obj/structure/cable/green{
 	icon_state = "0-4"
+	},
+/obj/machinery/power/apc/alarms_hidden/south_mount{
+	req_access = list(160)
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/cockpit)
@@ -7881,7 +7882,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/red,
 /area/shuttle/trade_ship/general)
 "Cw" = (
 /obj/machinery/door/firedoor{
@@ -8263,7 +8264,7 @@
 /obj/machinery/vending/boozeomat{
 	req_access = null
 	},
-/turf/simulated/shuttle/floor/black,
+/turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "Eb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -8459,7 +8460,7 @@
 	pixel_x = 32
 	},
 /obj/machinery/holopad/ship/starts_inactive,
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/red,
 /area/shuttle/trade_ship/cockpit)
 "EL" = (
 /obj/structure/cable/yellow{
@@ -9147,7 +9148,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/red,
 /area/shuttle/trade_ship/general)
 "Ho" = (
 /obj/machinery/vending/loadout/gadget,
@@ -9595,13 +9596,6 @@
 "IX" = (
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
-"IY" = (
-/obj/machinery/suit_storage_unit{
-	isopen = 1
-	},
-/obj/random/multiple/voidsuit/vintage,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "Jb" = (
 /turf/simulated/wall/r_wall,
 /area/tradeport/cyndishow)
@@ -9824,7 +9818,7 @@
 "JO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/structure/table/steel,
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/red,
 /area/shuttle/trade_ship/general)
 "JT" = (
 /obj/effect/debris/cleanable/molten_item,
@@ -10496,7 +10490,7 @@
 /obj/machinery/media/jukebox{
 	state_base = "darkjuke"
 	},
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/red,
 /area/shuttle/trade_ship/general)
 "Mr" = (
 /obj/structure/railing,
@@ -10870,7 +10864,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/tradeport)
 "NC" = (
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/red,
 /area/shuttle/trade_ship/general)
 "NE" = (
 /obj/machinery/door/airlock/glass_external{
@@ -10927,7 +10921,7 @@
 /area/shuttle/trade_ship/general)
 "NK" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden,
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/red,
 /area/shuttle/trade_ship/general)
 "NL" = (
 /obj/structure/toilet{
@@ -11059,7 +11053,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/red,
 /area/shuttle/trade_ship/general)
 "Ol" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -13624,7 +13618,7 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/red,
 /area/shuttle/trade_ship/general)
 "XF" = (
 /obj/machinery/air_alarm/alarms_hidden{
@@ -13680,7 +13674,7 @@
 	dir = 6
 	},
 /obj/machinery/holopad/ship/starts_inactive,
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/red,
 /area/shuttle/trade_ship/general)
 "XR" = (
 /obj/structure/table/marble,
@@ -14051,7 +14045,7 @@
 /obj/machinery/door/firedoor{
 	req_one_access = list(160)
 	},
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/red,
 /area/shuttle/trade_ship/general)
 "YW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -14346,7 +14340,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/red,
 /area/shuttle/trade_ship/general)
 "ZY" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -39220,7 +39214,7 @@ Jv
 Jv
 Jv
 cQ
-IY
+bo
 XW
 WF
 NO
