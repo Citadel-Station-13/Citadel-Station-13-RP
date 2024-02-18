@@ -85,7 +85,7 @@
 	var/datum/graph/building = new
 	var/list/vertices = list()
 	var/list/edges = decoded["edges"]
-	for(var/i in 1 to length(vertices))
+	for(var/i in 1 to length(ordered_vertices))
 		vertices[ordered_vertices[i]] = list()
 	ASSERT(length(vertices) == decoded["count"])
 	for(var/a in 1 to length(edges))
