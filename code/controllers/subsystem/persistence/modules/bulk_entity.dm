@@ -31,7 +31,8 @@
 			),
 		)
 		query.warn_execute()
-		qdel(query)
+		QDEL_NULL(query)
+
 	usr = intentionally_allow_admin_proccall
 
 	return TRUE
@@ -66,6 +67,8 @@
 		chunk.round_id_saved = level_data.round_id_saved
 		chunk.rounds_since_saved = level_data.rounds_since_saved
 		chunk.hours_since_saved = level_data.hours_since_saved
+
+	QDEL_NULL(query)
 
 	usr = intentionally_allow_admin_proccall
 

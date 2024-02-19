@@ -15,8 +15,11 @@
 	if(isnull(level.persistence))
 		level.persistence = new
 		level.persistence.persistence_allowed = level.persistence_allowed
-		if(level.persistence_allowed)
-			level.persistence.load_or_new(level.persistence_id || level.id, level.parent_map?.persistence_id || level.parent_map?.id)
+		var/effective_level_id = level.persistence_id || level.id
+		var/effective_map_id = level.parent_map?.persistence_id || level.parent_map?.id
+		// level id required but not map id; if map id null, map persisting objects will simply use the level id
+		if(level.persistence_allowed && effective_level_id)
+			level.persistence.load_or_new(effective_level_id, effective_map_id || effective_level_id)
 	return level.persistence
 
 /datum/controller/subsystem/persistence/proc/spatial_metadata_get_current_generation(datum/map_level/level)
@@ -82,6 +85,8 @@
 		src.generation = 0
 		src.round_id_saved = GLOB.round_id
 		src.arbitrary_data = list()
+
+	QDEL_NULL(query)
 
 	usr = allow_admin_proc_call
 

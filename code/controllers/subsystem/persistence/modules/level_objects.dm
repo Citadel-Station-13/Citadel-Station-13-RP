@@ -57,7 +57,8 @@
 				stack_trace("unrecognized mode [entity.obj_persist_static_mode]")
 				continue
 		query.Execute(FALSE)
-		qdel(query)
+		QDEL_NULL(query)
+
 		entity.obj_persist_status |= OBJ_PERSIST_STATUS_SAVED
 
 	usr = intentionally_allow_admin_proccall
@@ -111,7 +112,7 @@
 			entity.obj_persist_dynamic_id = query.last_insert_id
 			entity.obj_persist_status |= OBJ_PERSIST_STATUS_FIRST_GENERATION
 		entity.obj_persist_status |= OBJ_PERSIST_STATUS_SAVED
-		qdel(query)
+		QDEL_NULL(query)
 
 	usr = intentionally_allow_admin_proccall
 
@@ -168,6 +169,8 @@
 		deserializing.decay_persisted(level_data.rounds_since_saved, level_data.hours_since_saved)
 		deserializing.obj_persist_status |= OBJ_PERSIST_STATUS_LOADED
 		count_loaded++
+
+	QDEL_NULL(query)
 
 	usr = intentionally_allow_admin_proccall
 
@@ -239,6 +242,7 @@
 		if(!isnull(bind_id))
 			entity.obj_persist_static_bound_id = bind_id
 		count_loaded++
+		QDEL_NULL(query)
 
 	usr = intentionally_allow_admin_proccall
 
