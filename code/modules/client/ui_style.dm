@@ -76,8 +76,8 @@ var/global/list/all_tooltip_styles = list(
 
 
 	if(alert("Like it? Save changes?",,"Yes", "No") == "Yes")
-		prefs.UI_style = UI_style_new
-		prefs.UI_style_alpha = UI_style_alpha_new
-		prefs.UI_style_color = UI_style_color_new
+		preferences.set_entry(/datum/game_preference_entry/dropdown/hud_style, UI_style_new)
+		preferences.set_entry(/datum/game_preference_entry/number/hud_alpha, UI_style_alpha_new)
+		preferences.set_entry(/datum/game_preference_entry/simple_color/hud_color, UI_style_color_new)
 		SScharacters.queue_preferences_save(prefs)
 		to_chat(usr, "UI was saved")

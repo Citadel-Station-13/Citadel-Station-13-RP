@@ -113,7 +113,9 @@
 	if(!window.is_ready())
 		window.initialize(
 			strict_mode = TRUE,
-			fancy = user.client.prefs.tgui_fancy,
+			// todo: do we need that lmao
+			// fancy = user.client.prefs.tgui_fancy,
+			fancy = TRUE,
 			assets = list(
 				get_asset_datum(/datum/asset/simple/tgui),
 			))

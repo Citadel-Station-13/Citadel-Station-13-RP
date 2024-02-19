@@ -189,7 +189,7 @@ GLOBAL_LIST_EMPTY(game_preferences)
 /datum/game_preferences/proc/save_to_sql()
 
 /datum/game_preferences/proc/file_path()
-	return "data/player_saves/[copytext(ckey, 1, 2)]/[ckey]/game_preferences.sav"
+	return "data/players/[copytext(ckey, 1, 2)]/[ckey]/preferences.json"
 
 /**
  * this proc does not overwrite data if load fails!
@@ -199,9 +199,16 @@ GLOBAL_LIST_EMPTY(game_preferences)
 /datum/game_preferences/proc/load_from_file()
 	var/savefile_path = file_path()
 
+	if(!fexists(savefile_path))
+		return FALSE
+
+	var/file_ref = file(savefile_path)
+	#warn impl
+
 /datum/game_preferences/proc/save_to_file()
 	var/savefile_path = file_path()
 
+	var/file_ref = file(savefile_path)
 
 #warn impl
 

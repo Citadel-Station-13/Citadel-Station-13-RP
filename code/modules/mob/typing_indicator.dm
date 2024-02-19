@@ -8,9 +8,6 @@
 	typing_indicator.appearance_flags |= RESET_COLOR | PIXEL_SCALE
 
 /mob/proc/set_typing_indicator(state)
-	if(!get_preference_toggle(/datum/client_preference/show_typing_indicator))
-		state = FALSE
-
 	if(!state)
 		if(!typing)
 			return

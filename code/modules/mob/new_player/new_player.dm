@@ -349,8 +349,6 @@
 		return
 	var/savefile/F = get_server_news()
 	if(F)
-		client.prefs.lastnews = md5(F["body"])
-		SScharacters.queue_preferences_save(client.prefs)
 
 		var/dat = "<html><body><center>"
 		dat += "<h1>[F["title"]]</h1>"
@@ -362,6 +360,9 @@
 		var/datum/browser/popup = new(src, "Server News", "Server News", 450, 300, src)
 		popup.set_content(dat)
 		popup.open()
+
+		if(client.player.block_on_available())
+			client.prefs.lastnews = md5(F["body"])
 
 /mob/new_player/proc/time_till_respawn()
 	if(!ckey)

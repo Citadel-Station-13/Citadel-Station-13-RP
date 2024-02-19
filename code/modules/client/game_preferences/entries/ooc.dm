@@ -1,8 +1,6 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
-#warn import
-
 /datum/game_preference_entry/simple_color/admin_ooc_color
 	name = "OOC Color (Admin)"
 	description = "Choose your OOC color. Do not make it too eye-searing. Set to #000001 or reset to default to sync with server color."
