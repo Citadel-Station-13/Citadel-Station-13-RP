@@ -191,6 +191,7 @@
 			// we manually handle chunk generations
 			for(var/datum/bulk_entity_chunk/chunk as anything in chunks)
 				chunk.generation = level_metadata.generation + 1
+				chunk.persistence_key = bulk_serializer.id
 
 			start_time = REALTIMEOFDAY
 			bulk_entity_save_chunks(chunks)
@@ -202,6 +203,8 @@
 	// todo: this is *NOT* atomic!
 	for(var/z_index in 1 to world.maxz)
 		var/datum/map_level_persistence/level_metadata = ordered_level_metadata[z_index]
+		if(!level_metadata.persistence_allowed)
+			continue
 		level_metadata.mark_serialized_to_generation(level_metadata.generation + 1)
 	subsystem_log("world-save: generations incremented.")
 

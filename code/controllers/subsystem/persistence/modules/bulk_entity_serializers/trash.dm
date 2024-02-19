@@ -111,7 +111,7 @@
 		for(var/list/struct as anything in entities)
 			if(!islist(struct))
 				continue
-			var/entity_type = struct["type"]
+			var/entity_type = text2path(struct["type"])
 			var/list/entity_data = struct["data"]
 			// check for valid item
 			if(!ispath(entity_type, /obj/item))

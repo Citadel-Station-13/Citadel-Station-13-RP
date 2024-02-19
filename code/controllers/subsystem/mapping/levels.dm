@@ -389,6 +389,7 @@
  * generates random hex fluff level id
  */
 /datum/controller/subsystem/mapping/proc/generate_fluff_level_id()
+	// todo: needs to be persistence-stable..?
 	var/discriminator = GLOB.round_id? "[num2hex(text2num(GLOB.round_id), 6)]-" : ""
 	var/safety = 500
 	do

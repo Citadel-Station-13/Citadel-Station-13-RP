@@ -65,13 +65,14 @@
 	src.map_id = map_id
 
 	var/datum/db_query/query = SSdbcore.NewQuery(
-		"SELECT DATEDIFF(hour, Now(), saved), saved_round_id, data, generation \
+		"SELECT TIMESTAMPDIFF(HOUR, saved, NOW()), saved_round_id, data, generation \
 			FROM [format_table_name("persistence_level_metadata")] \
 			WHERE level_id = :level",
 		list(
 			"level" = level_id,
 		),
 	)
+	query.warn_execute(FALSE)
 
 	if(query.NextRow())
 		src.hours_since_saved = query.item[1]
@@ -79,13 +80,13 @@
 		src.arbitrary_data = json_decode(query.item[3])
 		src.generation = query.item[4]
 
-		src.rounds_since_saved = GLOB.round_id - src.round_id_saved
+		src.rounds_since_saved = GLOB.round_number - src.round_id_saved
 	else
 		src.level_id = level_id
 		src.hours_since_saved = 0
 		src.rounds_since_saved = 0
 		src.generation = 0
-		src.round_id_saved = GLOB.round_id
+		src.round_id_saved = GLOB.round_number
 		src.arbitrary_data = list()
 
 	QDEL_NULL(query)
@@ -107,7 +108,7 @@
 			data = VALUES(data), generation = VALUES(generation), saved_round_id = VALUES(saved_round_id), saved = VALUES(saved)",
 		list(
 			"generation" = generation,
-			"round" = GLOB.round_id,
+			"round" = GLOB.round_number,
 			"level" = level_id,
 			"data" = json_encode(arbitrary_data),
 		),

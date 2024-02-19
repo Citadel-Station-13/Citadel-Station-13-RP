@@ -25,7 +25,7 @@
 			list(
 				"generation" = chunk.generation,
 				"level" = chunk.level_id,
-				"round" = GLOB.round_id,
+				"round" = GLOB.round_number,
 				"data" = json_encode(chunk.data),
 				"persistence" = chunk.persistence_key,
 			),
@@ -55,6 +55,7 @@
 			"level" = level_id,
 		),
 	)
+	query.warn_execute()
 
 	while(query.NextRow())
 		var/encoded_data = query.item[1]
@@ -67,6 +68,7 @@
 		chunk.round_id_saved = level_data.round_id_saved
 		chunk.rounds_since_saved = level_data.rounds_since_saved
 		chunk.hours_since_saved = level_data.hours_since_saved
+		chunks += chunk
 
 	QDEL_NULL(query)
 
@@ -130,6 +132,7 @@
 	var/list/data
 
 	//* Set by serialization and deserialization, do not manually set. *//
+	// todo: where should this be set? currently it's [code/controllers/subsystem/persistence/world.dm]
 	/// our generation
 	/// * set by load from DB
 	/// * set on save by save proc before being sent into bulk_entity_save_chunks()

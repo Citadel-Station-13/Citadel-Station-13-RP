@@ -56,7 +56,7 @@
 			else
 				stack_trace("unrecognized mode [entity.obj_persist_static_mode]")
 				continue
-		query.Execute(FALSE)
+		query.warn_execute()
 		QDEL_NULL(query)
 
 		entity.obj_persist_status |= OBJ_PERSIST_STATUS_SAVED
@@ -94,7 +94,7 @@
 					"y" = entity.y,
 				)
 			)
-			query.Execute(FALSE)
+			query.warn_execute()
 		else
 			query = SSdbcore.NewQuery(
 				"INSERT INTO [format_table_name("persistence_dynamic_objects")] (status, data, prototype_id, level_id, x, y) \
@@ -108,7 +108,7 @@
 					"y" = entity.y,
 				)
 			)
-			query.Execute(FALSE)
+			query.warn_execute()
 			entity.obj_persist_dynamic_id = query.last_insert_id
 			entity.obj_persist_status |= OBJ_PERSIST_STATUS_FIRST_GENERATION
 		entity.obj_persist_status |= OBJ_PERSIST_STATUS_SAVED
@@ -146,7 +146,7 @@
 			"level" = level_id,
 		)
 	)
-	query.Execute(FALSE)
+	query.warn_execute()
 
 	while(query.NextRow())
 		var/object_id = query.item[1]
@@ -232,7 +232,7 @@
 			else
 				stack_trace("unrecognized mode [entity.obj_persist_static_mode]")
 				continue
-		query.Execute(FALSE)
+		query.warn_execute(FALSE)
 		if(!query.NextRow())
 			continue
 		var/json_data = query.item[1]
@@ -242,6 +242,7 @@
 		if(!isnull(bind_id))
 			entity.obj_persist_static_bound_id = bind_id
 		count_loaded++
+		CHECK_TICK
 		QDEL_NULL(query)
 
 	usr = intentionally_allow_admin_proccall

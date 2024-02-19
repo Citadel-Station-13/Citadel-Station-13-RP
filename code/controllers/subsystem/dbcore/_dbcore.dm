@@ -131,6 +131,7 @@ SUBSYSTEM_DEF(dbcore)
 	)
 	query_round_initialize.Execute(async = FALSE)
 	GLOB.round_id = "[query_round_initialize.last_insert_id]"
+	GLOB.round_number = text2num(GLOB.round_id)
 	qdel(query_round_initialize)
 
 /datum/controller/subsystem/dbcore/proc/SetRoundStart()
