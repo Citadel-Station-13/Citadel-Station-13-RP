@@ -3,7 +3,7 @@
 	desc = "A pre-fabricated security camera kit, ready to be assembled and mounted to a surface."
 	icon = 'icons/machinery/security_camera.dmi'
 	icon_state = "cameracase"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	anchored = 0
 
 	materials_base = list(MAT_STEEL = 700, MAT_GLASS = 300)

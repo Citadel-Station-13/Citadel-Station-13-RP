@@ -95,10 +95,10 @@
 /obj/machinery/papershredder/proc/empty_bin(var/mob/living/user, var/obj/item/storage/empty_into)
 
 	// Sanity.
-	if(empty_into && !istype(empty_into))
+	if(empty_into && (!istype(empty_into) || isnull(empty_into.max_items)))
 		empty_into = null
 
-	if(empty_into && empty_into.contents.len >= empty_into.storage_slots)
+	if(empty_into && empty_into.contents.len >= empty_into.max_items)
 		to_chat(user, "<span class='notice'>\The [empty_into] is full.</span>")
 		return
 
@@ -106,8 +106,8 @@
 		var/obj/item/shreddedp/SP = get_shredded_paper()
 		if(!SP) break
 		if(empty_into)
-			empty_into.handle_item_insertion(SP, user)
-			if(empty_into.contents.len >= empty_into.storage_slots)
+			empty_into.obj_storage.insert(SP)
+			if(empty_into.contents.len >= empty_into.max_items)
 				break
 	if(empty_into)
 		if(paperamount)
@@ -154,7 +154,7 @@
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "shredp"
 	throw_force = 0
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	throw_range = 3
 	throw_speed = 1
 

@@ -52,7 +52,7 @@
 	name = "skrell tentacle wear"
 	desc = "Some stuff worn by skrell to adorn their head tentacles."
 	icon = 'icons/obj/clothing/ears.dmi'
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	slot_flags = SLOT_EARS
 
 /obj/item/clothing/ears/skrell/chain
@@ -198,7 +198,7 @@
 	desc = "A dark green laurel wreath that's worn tight around the head."
 	icon = 'icons/obj/clothing/ears.dmi'
 	icon_state = "laurel"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	slot_flags = SLOT_EARS
 	drop_sound = 'sound/items/drop/wrapper.ogg'
 	pickup_sound = 'sound/items/drop/wrapper.ogg'

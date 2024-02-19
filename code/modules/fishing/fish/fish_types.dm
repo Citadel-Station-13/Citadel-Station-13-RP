@@ -340,7 +340,7 @@
 /obj/item/storage/box/fish_debug
 	name = "box full of fish"
 
-/obj/item/storage/box/fish_debug/PopulateContents()
+/obj/item/storage/box/fish_debug/legacy_spawn_contents()
 	for(var/fish_type in subtypesof(/obj/item/fish))
 		new fish_type(src)
 

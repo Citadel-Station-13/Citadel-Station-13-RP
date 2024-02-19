@@ -1171,7 +1171,7 @@ GLOBAL_DATUM_INIT(circuit_translation_context, /datum/translation_context/simple
 	desc = "This monitors the charge level of an internal battery."
 	icon_state = "internalbm"
 	extended_desc = "This circuit will give you the values of charge, max charge and the current percentage of the internal battery on demand."
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	complexity = 1
 	inputs = list()
 	outputs = list(
@@ -1208,7 +1208,7 @@ GLOBAL_DATUM_INIT(circuit_translation_context, /datum/translation_context/simple
 	desc = "This can read the battery state of any device in view."
 	icon_state = "externalbm"
 	extended_desc = "This circuit will give you the charge, max charge and the current percentage values of any device or battery in view."
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	complexity = 2
 	inputs = list("target" = IC_PINTYPE_REF)
 	outputs = list(
@@ -1295,7 +1295,7 @@ GLOBAL_DATUM_INIT(circuit_translation_context, /datum/translation_context/simple
 	extended_desc = "This chip contains an esoteric mix of sensors with spurious claims.  Proponents claim it facilitates communication \
 	with beings from other dimensions.  A larger majority believe it to be a sophisticated hacking device.  The designers simply state\
 	that \"more testing is required\"."
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	complexity = 4
 	inputs = list("toggle on" = IC_PINTYPE_BOOLEAN)
 //	outputs = list("" = )

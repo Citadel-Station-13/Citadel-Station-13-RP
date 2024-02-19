@@ -1,7 +1,7 @@
 /obj/item/kit
 	icon_state = "modkit"
 	icon = 'icons/obj/device.dmi'
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	var/new_name = "custom item"
 	var/new_desc = "A custom item."
 	var/new_fluff = "A custom item."

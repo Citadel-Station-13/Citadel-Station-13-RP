@@ -16,7 +16,7 @@
 	name = "bio suit"
 	desc = "A suit that protects against biological contamination."
 	icon_state = "bio"
-	w_class = ITEMSIZE_LARGE//bulky item
+	w_class = WEIGHT_CLASS_BULKY//bulky item
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.01
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS|FEET
@@ -110,7 +110,7 @@
 	name = "beekeeping suit"
 	desc = "A thick suit that protects against stinging insects."
 	icon_state = "beekeeper"
-	w_class = ITEMSIZE_LARGE//bulky item
+	w_class = WEIGHT_CLASS_BULKY//bulky item
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.01
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS|FEET

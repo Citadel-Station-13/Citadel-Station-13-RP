@@ -1699,7 +1699,7 @@
 /area/shuttle/trade)
 "dQ" = (
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1331;
 	master_tag = "trade2_control";
 	pixel_x = -22;
@@ -1874,7 +1874,7 @@
 /area/shuttle/trade)
 "ei" = (
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1331;
 	master_tag = "trade2_control";
 	pixel_x = 24;

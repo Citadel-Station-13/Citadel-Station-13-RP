@@ -145,7 +145,7 @@
 	allowed = list(/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/tank/emergency/oxygen,/obj/item/clothing/head/helmet)
 	encumbrance = ITEM_ENCUMBRANCE_ARMOR_HEAVY + ITEM_ENCUMBRANCE_ARMOR_HEAVY_BOOTS + ITEM_ENCUMBRANCE_ARMOR_HEAVY_GLOVES
 	weight = ITEM_WEIGHT_ARMOR_HEAVY + ITEM_WEIGHT_ARMOR_HEAVY_BOOTS + ITEM_WEIGHT_ARMOR_HEAVY_GLOVES
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 	armor_type = /datum/armor/centcom/deathsquad
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
 	cold_protection_cover = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
@@ -461,6 +461,7 @@
 	armor_type = /datum/armor/station/heavy
 	encumbrance = ITEM_ENCUMBRANCE_ARMOR_HEAVY
 	weight = ITEM_WEIGHT_ARMOR_HEAVY
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 4
 
 /obj/item/clothing/suit/storage/vest/heavy/officer
 	name = "officer heavy armor vest"
@@ -557,7 +558,7 @@
 	desc = "A suit that protects against some damage."
 	icon_state = "centcom"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "armor", SLOT_ID_LEFT_HAND = "armor")
-	w_class = ITEMSIZE_LARGE//bulky item
+	w_class = WEIGHT_CLASS_BULKY//bulky item
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	allowed = list(/obj/item/gun/ballistic/sec/flash, /obj/item/gun/energy,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/tank/emergency/oxygen,/obj/item/clothing/head/helmet)
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
@@ -571,7 +572,7 @@
 	icon_state = "heavy"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
 	armor_type = /datum/armor/security/bulky_kinetic
-	w_class = ITEMSIZE_HUGE // Very bulky, very heavy.
+	w_class = WEIGHT_CLASS_HUGE // Very bulky, very heavy.
 	gas_transfer_coefficient = 0.90
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
@@ -602,7 +603,7 @@
 	icon_state = "samurai"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "leather_coat", SLOT_ID_LEFT_HAND = "leather_coat")
 	armor_type = /datum/armor/general/samurai
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	inv_hide_flags = HIDETIE|HIDEHOLSTER
 	siemens_coefficient = 0.6

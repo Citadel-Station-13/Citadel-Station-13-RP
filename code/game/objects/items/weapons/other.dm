@@ -9,7 +9,7 @@
 	throw_force = 2.0
 	throw_speed = 1
 	throw_range = 4
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	attack_verb = list("called", "rang")
 	attack_sound = 'sound/weapons/ring.ogg'
 
@@ -23,7 +23,7 @@
 	anchored = 0.0
 	var/stored_matter = 0
 	var/mode = 1
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/soap
 	name = "soap"
@@ -32,7 +32,7 @@
 	icon = 'icons/obj/items.dmi'
 	icon_state = "soap"
 	atom_flags = NOCONDUCT
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = SLOT_HOLSTER
 	throw_force = 0
 	throw_speed = 4
@@ -64,7 +64,7 @@
 	icon_state = "bike_horn"
 	item_state = "bike_horn"
 	throw_force = 3
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = SLOT_HOLSTER
 	throw_speed = 3
 	throw_range = 15
@@ -109,7 +109,7 @@
 	icon = 'icons/obj/items.dmi'
 	icon_state = "c_tube"
 	throw_force = 1
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = SLOT_HOLSTER
 	throw_speed = 4
 	throw_range = 5
@@ -125,7 +125,7 @@
 			)
 	damage_force = 5.0
 	throw_force = 7.0
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	materials_base = list(MAT_STEEL = 50)
 	attack_verb = list("bludgeoned", "whacked", "disciplined", "thrashed")
 
@@ -135,8 +135,8 @@
 /obj/item/cane/concealed/Initialize(mapload)
 	. = ..()
 	var/obj/item/material/butterfly/switchblade/temp_blade = new(src)
+	temp_blade.set_active(TRUE)
 	concealed_blade = temp_blade
-	temp_blade.attack_self()
 
 /obj/item/cane/concealed/attack_self(mob/user)
 	. = ..()
@@ -160,6 +160,7 @@
 	if(!src.concealed_blade && istype(W))
 		if(!user.attempt_insert_item_for_installation(W, src))
 			return
+		concealed_blade = W
 		var/datum/gender/T = GLOB.gender_datums[user.get_visible_gender()]
 		user.visible_message(
 			SPAN_WARNING("[user] has sheathed \a [W] into [T.his] [src]!"),
@@ -203,7 +204,7 @@
 			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
 		)
 	slot_flags = SLOT_BELT
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	damage_force = 3
 	var/on = 0
 
@@ -221,7 +222,7 @@
 		)
 		icon_state = "whitecane1out"
 		item_state_slots = list(SLOT_ID_RIGHT_HAND = "whitecane", SLOT_ID_LEFT_HAND = "whitecane")
-		w_class = ITEMSIZE_NORMAL
+		set_weight_class(WEIGHT_CLASS_NORMAL)
 		damage_force = 5
 		attack_verb = list("smacked", "struck", "cracked", "beaten")
 	else
@@ -232,7 +233,7 @@
 		)
 		icon_state = "whitecane1in"
 		item_state_slots = list(SLOT_ID_RIGHT_HAND = null, SLOT_ID_LEFT_HAND = null)
-		w_class = ITEMSIZE_SMALL
+		set_weight_class(WEIGHT_CLASS_SMALL)
 		damage_force = 3
 		attack_verb = list("hit", "poked", "prodded")
 
@@ -262,30 +263,7 @@
 	desc = "Better keep this safe."
 	icon_state = "nucleardisk"
 	item_state = "card-id"
-	w_class = ITEMSIZE_SMALL
-
-/*
-/obj/item/game_kit
-	name = "Gaming Kit"
-	icon = 'icons/obj/items.dmi'
-	icon_state = "game_kit"
-	var/selected = null
-	var/board_stat = null
-	var/data = ""
-	var/base_url = "http://svn.slurm.us/public/spacestation13/misc/game_kit"
-	item_state = "sheet-metal"
-	w_class = ITEMSIZE_HUGE
-*/
-
-/obj/item/gift
-	name = "gift"
-	desc = "A wrapped item."
-	icon = 'icons/obj/items.dmi'
-	icon_state = "gift3"
-	var/size = 3.0
-	var/obj/item/gift = null
-	item_state = "gift"
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/caution
 	desc = "Caution! Wet Floor!"
@@ -296,7 +274,7 @@
 	throw_force = 3.0
 	throw_speed = 1
 	throw_range = 5
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	attack_verb = list("warned", "cautioned", "smashed")
 
 /obj/item/caution/attackby(obj/item/D, mob/user)
@@ -317,25 +295,6 @@
 	name = "candy cone"
 	icon_state = "candycone"
 
-/*/obj/item/syndicate_uplink
-	name = "station bounced radio"
-	desc = "Remain silent about this..."
-	icon = 'icons/obj/radio.dmi'
-	icon_state = "radio"
-	var/temp = null
-	var/uses = 10.0
-	var/selfdestruct = 0.0
-	var/traitor_frequency = 0.0
-	var/mob/currentUser = null
-	var/obj/item/radio/origradio = null
-	flags = ONBELT
-	w_class = ITEMSIZE_SMALL
-	item_state = "radio"
-	throw_speed = 4
-	throw_range = 20
-	materials_base = list("metal" = 100
-	origin_tech = list(TECH_MAGNET = 2, TECH_ILLEGAL = 3)*/
-
 /obj/item/SWF_uplink
 	name = "station-bounced radio"
 	desc = "Used to communicate, it appears."
@@ -349,7 +308,7 @@
 	slot_flags = SLOT_BELT
 	item_state = "radio"
 	throw_force = 5
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	throw_speed = 4
 	throw_range = 20
 	materials_base = list(MAT_STEEL = 100)
@@ -368,7 +327,7 @@
 	throw_force = 5.0
 	throw_speed = 1
 	throw_range = 5
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	attack_verb = list("bludgeoned", "whacked", "disciplined")
 
 /obj/item/staff/broom
@@ -393,13 +352,13 @@
 	throw_force = 5.0
 	throw_speed = 1
 	throw_range = 5
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/module
 	icon = 'icons/obj/module.dmi'
 	icon_state = "std_module"
 	item_state = "std_mod"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	var/mtype = 1 // 1=electronic 2=hardware
 
 /obj/item/module/card_reader
@@ -446,7 +405,7 @@
 	icon = 'icons/obj/cigarettes.dmi'
 	icon_state = "cigarpacket"
 	item_state = "cigarpacket"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	throw_force = 2
 	var/cigarcount = 6
 	flags = ONBELT
@@ -486,7 +445,7 @@
 	desc = "A portable seat designed to be mounted on trained animals. You shouldn't be seeing this version!"
 	icon = 'icons/obj/items.dmi'
 	icon_state = "saddle"
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 
 /obj/item/saddle/horse
 	desc = "A portable seat designed to be mounted on trained animals. This leather design originates from Old Earth, where it was primarily used on horses."
@@ -518,7 +477,7 @@
 	desc = "This strange gem is considered sacred by the inhabitants of Surt. Jealously protected by the tribes, these stones exhibit anomalous properties - primarily a faintly audible chiming ring."
 	icon = 'icons/obj/lavaland.dmi'
 	icon_state = "elderstone"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	catalogue_data = list(/datum/category_item/catalogue/anomalous/scorian_religion/elder_stone)
 
 /obj/item/condensedphlogiston
@@ -526,14 +485,14 @@
 	desc = "Phlogiston stabilized into a putty-like solid. It is less volatile than raw phlogiston, requiring special circumstances to detonate."
 	icon = 'icons/obj/lavaland.dmi'
 	icon_state = "condensedphlogiston"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/bitterash
 	name = "poultice (bitter ash)"
 	desc = "A pungent poultice used primarily in Scorian religious rites. It is believed to provide protection from rampaging beasts."
 	icon = 'icons/obj/lavaland.dmi'
 	icon_state = "poulticeash"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	var/use_sound = list('sound/effects/ointment.ogg')
 
 //Code isn't working. Figure it out tomorrow.

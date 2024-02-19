@@ -158,7 +158,7 @@
 /// Tactical kittens!
 /obj/item/holder/cat/kitten
 	icon_state = "kitten"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 
 /datum/say_list/cat
 	speak = list("Meow!","Esp!","Purr!","HSSSSS")

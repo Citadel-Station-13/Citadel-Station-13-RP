@@ -17,7 +17,7 @@
  * Twohanded
  */
 /obj/item/material/twohanded
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	var/unwielded_force_multiplier = 0.25
 	var/wielded = 0
 	var/wieldsound = null
@@ -79,7 +79,7 @@
 	description_info = "A hefty two-handed cutting implement. Used for chopping through wood, glass, metal grating, wild animals, and even trees, shockingly enough. Good thing NanoTrasen stocks these for free."
 	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_HEAVY
 	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = SLOT_BACK
 	attack_verb = list("attacked", "chopped", "cleaved", "torn", "cut")
 	material_color = FALSE
@@ -154,7 +154,7 @@
 	desc = "A haphazardly-constructed yet still deadly weapon of ancient design."
 	description_info = "This weapon can strike from two tiles away, and over certain objects such as tables, or other people."
 	damage_force = 10
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = SLOT_BACK
 	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_HEAVY
 	throw_force_multiplier = 1.5
@@ -247,7 +247,7 @@
 	description_info = "This weapon can cleave, striking nearby lesser, hostile enemies close to the primary target.  It must be held in both hands to do this."
 	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_SUPERHEAVY
 	attack_sound = 'sound/weapons/heavysmash.ogg'
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 	encumbrance = ITEM_ENCUMBRANCE_MELEE_SLEDGEHAMMER
 	attack_verb = list("attacked", "smashed", "crushed", "wacked", "pounded")
 	armor_penetration = 50

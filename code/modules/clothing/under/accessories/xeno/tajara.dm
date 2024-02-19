@@ -96,7 +96,7 @@
 	slot_flags = SLOT_OCLOTHING | SLOT_TIE
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	siemens_coefficient = 0.9
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	slot = ACCESSORY_SLOT_OVER
 
 /obj/item/clothing/accessory/tponcho/tajarancloak/fancy

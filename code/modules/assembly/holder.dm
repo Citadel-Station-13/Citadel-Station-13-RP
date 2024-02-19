@@ -4,7 +4,7 @@
 	icon_state = "holder"
 	item_state = "assembly"
 	throw_force = 5
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	throw_speed = 3
 	throw_range = 10
 
@@ -73,11 +73,10 @@
 	if(a_right)
 		a_right.Crossed(AM)
 
-/obj/item/assembly_holder/on_found(mob/finder as mob)
-	if(a_left)
-		a_left.on_found(finder)
-	if(a_right)
-		a_right.on_found(finder)
+/obj/item/assembly_holder/on_containing_storage_opening(datum/event_args/actor/actor, datum/object_system/storage/storage)
+	. = ..()
+	. |= a_left?.on_containing_storage_opening(arglist(args))
+	. |= a_right?.on_containing_storage_opening(arglist(args))
 
 /obj/item/assembly_holder/Move()
 	..()

@@ -17,7 +17,7 @@
 	density = FALSE
 	pass_flags_self = ATOM_PASS_GLASS
 	dir = NORTH
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 
 	var/obj/item/airlock_electronics/electronics = null
 	var/created_name = null

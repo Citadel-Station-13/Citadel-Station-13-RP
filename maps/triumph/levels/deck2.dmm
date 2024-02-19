@@ -3371,7 +3371,7 @@
 	name = "Engineering Fore External Access"
 	},
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1379;
 	master_tag = "mining_fore_airlock";
 	name = "exterior access button";
@@ -5515,7 +5515,7 @@
 	icon_state = "2-8"
 	},
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1379;
 	master_tag = "solar_dock";
 	name = "interior access button";
@@ -12889,7 +12889,7 @@
 /area/crew_quarters/recreation_area)
 "Nl" = (
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1379;
 	master_tag = "mining_fore_airlock";
 	name = "interior access button";
@@ -13693,7 +13693,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1379;
 	master_tag = "solar_dock";
 	name = "exterior access button";

@@ -17,7 +17,7 @@
 	desc = "The NT  EW15 Apollo is an energy handgun, specifically designed for self-defense against aggressive wildlife."
 	icon_state = "phase"
 	item_state = "taser"	//I don't have an in-hand sprite, taser will be fine
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
 	charge_cost = 300
 	projectile_type = /obj/projectile/energy/phase/light
@@ -38,7 +38,7 @@
 	icon_state = "phaserifle"
 	item_state = "phaserifle"
 	wielded_item_state = "phaserifle-wielded"
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = SLOT_BACK
 	charge_cost = 150
 	projectile_type = /obj/projectile/energy/phase/heavy
@@ -50,7 +50,7 @@
 	icon_state = "phasecannon"
 	item_state = "phasecannon"
 	wielded_item_state = "phasecannon-wielded"	//TODO: New Sprites
-	w_class = ITEMSIZE_HUGE		// This thing is big.
+	w_class = WEIGHT_CLASS_HUGE		// This thing is big.
 	slot_flags = SLOT_BACK
 	heavy = TRUE
 	charge_cost = 100

@@ -238,10 +238,10 @@
 	return ..()
 
 /obj/machinery/airlock_sensor/airlock_interior
-	command = "cycle_interior"
+	command = "cycle_int"
 
 /obj/machinery/airlock_sensor/airlock_exterior
-	command = "cycle_exterior"
+	command = "cycle_ext"
 
 // Return the air from the turf in "front" of us (Used in shuttles, so it can be in the shuttle area but sense outside it)
 /obj/machinery/airlock_sensor/airlock_exterior/shuttle/return_air()
@@ -312,8 +312,8 @@
 
 /obj/machinery/access_button/airlock_interior
 	frequency = 1379
-	command = "cycle_interior"
+	command = "cycle_int"
 
 /obj/machinery/access_button/airlock_exterior
 	frequency = 1379
-	command = "cycle_exterior"
+	command = "cycle_ext"

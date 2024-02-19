@@ -7,7 +7,7 @@
 /obj/item/material/kitchen/utensil
 	drop_sound = 'sound/items/drop/knife.ogg'
 	pickup_sound = 'sound/items/pickup/knife.ogg'
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	origin_tech = list(TECH_MATERIAL = 1)
 	attack_verb = list("attacked", "stabbed", "poked")
 	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE

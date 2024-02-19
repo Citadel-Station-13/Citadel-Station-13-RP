@@ -97,7 +97,7 @@
 	var/dancing //determines if assailant and affecting keep looking at each other. Basically a wrestling position
 
 	item_state = "nothing"
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 
 /obj/item/grab/Initialize(mapload, mob/victim)
 	. = ..()
