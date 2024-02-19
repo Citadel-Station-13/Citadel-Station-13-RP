@@ -6,3 +6,5 @@
 /// set this to a value that's slightly above average of a common multiplier for reservation sizes.
 #define RESERVED_TURF_RESOLUTION 8
 
+/// minimum turfs from edge where we are considered to be on our own zlevel rather than another / about to clip a transition
+#define LEVEL_TRANSITION_CLEARANCE 1

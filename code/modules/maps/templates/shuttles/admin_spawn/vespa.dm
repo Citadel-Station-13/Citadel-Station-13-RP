@@ -136,7 +136,7 @@
 	//icon_state = "shuttle"
 
 // The shuttle's 'shuttle' computer
-// /obj/machinery/computer/shuttle_control/explore/vespaboat
+// /obj/machinery/computer/shuttle_control/vespaboat
     //name = "Vespa's Shuttle control console"
     //shuttle_tag = "Vespa's Ship's Boat"
     //req_one_access = list(ACCESS_GENERAL_PILOT)

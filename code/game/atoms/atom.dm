@@ -210,6 +210,7 @@
 	/// Default sound played on a burn type impact. This is usually null for default.
 	var/hit_sound_burn
 
+//* Initialization / Destruction *//
 
 /**
  * Called when an atom is created in byond (built in engine proc)
@@ -235,6 +236,22 @@
 		if(SSatoms.InitAtom(src, args))
 			//we were deleted
 			return
+
+/**
+ * Pre-initialize mangling of string IDs.
+ *
+ * Called by the maploader.
+ */
+/atom/proc/preloading_instance(with_id)
+	return
+
+/**
+ * hook for abstract direction sets from the maploader
+ *
+ * return FALSE to override maploader automatic rotation
+ */
+/atom/proc/preloading_dir(datum/map_preloader/preloader)
+	return TRUE
 
 /**
  * The primary method that objects are setup in SS13 with
@@ -345,6 +362,8 @@
 
 	return ..()
 
+//* Misc / Legacy *//
+
 /atom/proc/reveal_blood()
 	return
 
@@ -359,10 +378,6 @@
 /atom/proc/is_open_container()
 	return atom_flags & OPENCONTAINER
 
-///Is this atom within 1 tile of another atom
-/atom/proc/HasProximity(atom/movable/proximity_check_mob as mob|obj)
-	return
-
 ///Return true if we're inside the passed in atom
 /atom/proc/in_contents_of(container)//can take class or object instance as argument
 	if(ispath(container))
@@ -371,30 +386,6 @@
 	else if(src in container)
 		return TRUE
 	return FALSE
-
-/*
- *	atom/proc/search_contents_for(path,list/filter_path=null)
- * Recursevly searches all atom contens (including contents contents and so on).
- *
- * ARGS: path - search atom contents for atoms of this type
- *	   list/filter_path - if set, contents of atoms not of types in this list are excluded from search.
- *
- * RETURNS: list of found atoms
- */
-/atom/proc/search_contents_for(path,list/filter_path=null)
-	var/list/found = list()
-	for(var/atom/A in src)
-		if(istype(A, path))
-			found += A
-		if(filter_path)
-			var/pass = 0
-			for(var/type in filter_path)
-				pass |= istype(A, type)
-			if(!pass)
-				continue
-		if(A.contents.len)
-			found += A.search_contents_for(path,filter_path)
-	return found
 
 /atom/proc/get_examine_name(mob/user)
 	. = "\a <b>[src]</b>"

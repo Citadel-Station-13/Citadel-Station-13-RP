@@ -1,6 +1,8 @@
 // global datum that will preload variables on atoms instanciation
 GLOBAL_REAL_VAR(use_preloader) = FALSE
 GLOBAL_REAL(preloader, /datum/map_preloader) = new
+/// the ID passed to preloading_instance() during load
+GLOBAL_REAL_VAR(preloader_mangling_id)
 
 /// Preloader datum
 /datum/map_preloader
@@ -87,11 +89,16 @@ GLOBAL_REAL(preloader, /datum/map_preloader) = new
 		what.pixel_x = px
 		what.pixel_y = py
 
+	// handle mangling
+	what.preloading_instance(global.preloader_mangling_id)
+
+// todo: /area/ignore
 /area/template_noop
 	name = "Area Passthrough"
 	icon = 'icons/mapping/helpers/maploader_objects.dmi'
 	icon_state = "area_noop"
 
+// todo: /turf/ignore
 /turf/template_noop
 	name = "Turf Passthrough"
 	icon = 'icons/mapping/helpers/maploader_objects.dmi'

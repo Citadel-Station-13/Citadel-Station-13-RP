@@ -1,6 +1,8 @@
 //? This is here because the linter will explode if this isn't here. Don't believe me? Remove it. I dare you.
 /datum/language_server_error_blocker
 
+//* Please prefix all flags with CF_
+
 //## Core settings
 //! Fastboot flags - useful for debugging
 /// Disable loading late maps.
@@ -190,7 +192,9 @@
 	#define ZAS_BREAKPOINT_HOOKS
 #endif
 
+// ## Lighting
 
+// #define AO_USE_LIGHTING_OPACITY
 
 // ## Overlays
 /**
@@ -199,12 +203,11 @@
  */
 #define MAX_ATOM_OVERLAYS 100
 
-
 // ## Timers
 
 // #define TIMER_LOOP_DEBUGGING
 
+// ## Shuttles
 
-// ## Lighting
-
-// #define AO_USE_LIGHTING_OPACITY
+/// Uncomment to enable shuttle bounding box visualizations
+#define CF_SHUTTLE_VISUALIZE_BOUNDING_BOXES

@@ -29,10 +29,6 @@
 	base_area = /area/centcom/specops/dock
 	shuttle_type = /datum/shuttle/autodock/overmap/specops
 
-/obj/machinery/computer/shuttle_control/explore/specops
-	name = "special operations short jump console"
-	shuttle_tag = "NDV Quicksilver"
-
 // Spec Ops Areas
 /area/shuttle/specops
 	requires_power = TRUE
@@ -92,7 +88,7 @@
 	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Special Oops Shuttle"
 
-/obj/machinery/computer/shuttle_control/explore/specialops2
+/obj/machinery/computer/shuttle_control/specialops2
 	name = "short jump console"
 	shuttle_tag = "Special Oops Shuttle"
 */

@@ -1635,7 +1635,7 @@
 /turf/simulated/shuttle/wall/voidcraft/blue,
 /area/shuttle/escape)
 "vM" = (
-/obj/machinery/computer/shuttle_control/emergency{
+/obj/machinery/computer/shuttle_control{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -2473,7 +2473,7 @@
 /area/holodeck/source_picnicarea)
 "Gb" = (
 /obj/structure/table/reinforced,
-/obj/machinery/computer/shuttle_control/emergency,
+/obj/machinery/computer/shuttle_control,
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "Gc" = (

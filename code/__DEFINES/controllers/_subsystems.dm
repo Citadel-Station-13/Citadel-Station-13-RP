@@ -152,7 +152,6 @@ DEFINE_BITFIELD(runlevels, list(
 // Any ../subsystem/.. without SS_TICKER or SS_BACKGROUND in subsystem_flags is here!
 
 #define FIRE_PRIORITY_PING         5
-#define FIRE_PRIORITY_SHUTTLES     5
 #define FIRE_PRIORITY_PLANTS       5
 #define FIRE_PRIORITY_NIGHTSHIFT   6
 #define FIRE_PRIORITY_VOTE         9
@@ -165,7 +164,9 @@ DEFINE_BITFIELD(runlevels, list(
 #define FIRE_PRIORITY_OBJ          40
 // DEFAULT PRIORITY IS HERE
 #define FIRE_PRIORITY_LIGHTING         50
-#define FIRE_PRIORITY_INSTRUMENTS      90
+#define FIRE_PRIORITY_INSTRUMENTS      80
+#define FIRE_PRIORITY_SHUTTLES         90
+#define FIRE_PRIORITY_OVERMAPS         90
 #define FIRE_PRIORITY_ASSET_LOADING    100
 #define FIRE_PRIORITY_MACHINES         100
 #define FIRE_PRIORITY_NANO             150
@@ -194,11 +195,5 @@ DEFINE_BITFIELD(runlevels, list(
 /// This is used as the default regardless of bucket. Check above.
 #define FIRE_PRIORITY_DEFAULT      50
 
-/**
- * Create a new timer and add it to the queue.
- * Arguments:
- * * callback the callback to call on timer finish
- * * wait deciseconds to run the timer for
- * * atom_flags atom_flags for this timer, see: code\__DEFINES\subsystems.dm
- */
-#define addtimer(args...) _addtimer(args, file = __FILE__, line = __LINE__)
+//* Helpers *//
+#define SUBSYSTEM_FIRE_COMPUTE_DT (subsystem_flags & SS_TICKER)? (wait * world.tick_lag) : max(world.tick_lag, wait * 0.1)

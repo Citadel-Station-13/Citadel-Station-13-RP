@@ -2772,10 +2772,7 @@
 /turf/simulated/floor/tiled,
 /area/bridge)
 "hh" = (
-/obj/machinery/computer/shuttle_control{
-	name = "ferry-demo shuttle control console";
-	shuttle_tag = "Ferry-Demo"
-	},
+/obj/machinery/computer/shuttle_control,
 /turf/simulated/shuttle/floor,
 /area/shuttle/ferrydemo)
 "hi" = (
@@ -2787,26 +2784,15 @@
 /turf/simulated/shuttle/floor,
 /area/shuttle/webdemo)
 "hk" = (
-/obj/machinery/computer/shuttle_control{
-	dir = 8;
-	name = "ferry-demo shuttle control console";
-	shuttle_tag = "Ferry-Demo"
-	},
+/obj/machinery/computer/shuttle_control,
 /turf/simulated/floor/tiled,
 /area/bridge)
 "hl" = (
-/obj/machinery/computer/shuttle_control/multi{
-	dir = 8;
-	name = "multi-demo shuttle control console";
-	shuttle_tag = "Multi-Demo"
-	},
+/obj/machinery/computer/shuttle_control,
 /turf/simulated/floor/tiled,
 /area/bridge)
 "hm" = (
-/obj/machinery/computer/shuttle_control/multi{
-	name = "multi-demo shuttle control console";
-	shuttle_tag = "Multi-Demo"
-	},
+/obj/machinery/computer/shuttle_control,
 /turf/simulated/shuttle/floor,
 /area/shuttle/multidemo)
 "hn" = (
@@ -2880,11 +2866,7 @@
 	dir = 4;
 	icon_state = "tube1"
 	},
-/obj/machinery/computer/shuttle_control/web{
-	dir = 8;
-	name = "Web-Demo Remote Control";
-	shuttle_tag = "Web-Demo"
-	},
+/obj/machinery/computer/shuttle_control,
 /turf/simulated/floor/tiled,
 /area/bridge)
 "hz" = (
@@ -3048,10 +3030,7 @@
 /turf/simulated/shuttle/floor/voidcraft/light,
 /area/shuttle/overmapdemo)
 "qz" = (
-/obj/machinery/computer/shuttle_control/explore{
-	name = "Overmap-Demo Shuttle Control";
-	shuttle_tag = "Overmap-Demo"
-	},
+/obj/machinery/computer/shuttle_control,
 /turf/simulated/shuttle/floor/voidcraft/light,
 /area/shuttle/overmapdemo)
 "qR" = (
@@ -3511,11 +3490,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/main)
 "LJ" = (
-/obj/machinery/computer/shuttle_control/web{
-	my_doors = list("webdemo_docker_hatch"="Hatch");
-	name = "Web-Demo Console";
-	shuttle_tag = "Web-Demo"
-	},
+/obj/machinery/computer/shuttle_control,
 /turf/simulated/shuttle/floor,
 /area/shuttle/webdemo)
 "Mz" = (

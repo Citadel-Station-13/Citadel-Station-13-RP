@@ -11007,7 +11007,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/rift/stairwell/primary/surfacetwo)
 "hhM" = (
-/obj/machinery/computer/shuttle_control/explore/hammerhead{
+/obj/machinery/computer/shuttle_control{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner_techfloor_grid/full,
