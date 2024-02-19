@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `rp_persistence_static_level_objects` (
 CREATE TABLE IF NOT EXISTS `rp_persistence_static_map_objects` (
   `generation` INT(11) NOT NULL,
   `object_id` VARCHAR(64) NOT NULL,
-  `map_id` VARCHAR(64) NULL,
+  `map_id` VARCHAR(64) NOT NULL,
   `data` MEDIUMTEXT NOT NULL,
   PRIMARY KEY(`generation`, `object_id`, `map_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;

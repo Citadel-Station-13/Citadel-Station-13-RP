@@ -128,7 +128,7 @@
 			if(!istype(where, turf_type) || !istype(where.loc, area_type))
 				dropped++
 				continue
-			var/obj/item/creating = new(where)
+			var/obj/item/creating = new entity_type(where)
 			creating.deserialize(entity_data)
 			creating.decay_persisted(rounds_since, hours_since)
 			loaded++

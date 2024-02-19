@@ -158,7 +158,7 @@
 		for(var/list/struct as anything in entities)
 			if(!islist(struct))
 				continue
-			var/entity_type = struct["type"]
+			var/entity_type = text2path(struct["type"])
 			var/list/entity_data = struct["data"]
 			// check for valid debris
 			if(!ispath(entity_type, /obj/effect/debris))
@@ -175,7 +175,7 @@
 			if(!istype(where, turf_type) || !istype(where.loc, area_type))
 				dropped++
 				continue
-			var/obj/effect/debris/creating = new(where)
+			var/obj/effect/debris/creating = new entity_type(where)
 			creating.deserialize(entity_data)
 			creating.decay_persisted(rounds_since, hours_since)
 			loaded++
