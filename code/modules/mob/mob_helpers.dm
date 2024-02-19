@@ -16,7 +16,7 @@
 	return round(log(2, mob_size_A/mob_size_B), 1)
 
 /mob/proc/can_wield_item(obj/item/W)
-	if(W.w_class >= ITEMSIZE_LARGE && issmall(src))
+	if(W.w_class >= WEIGHT_CLASS_BULKY && issmall(src))
 		return FALSE //M is too small to wield this
 	return TRUE
 
@@ -592,7 +592,7 @@ var/list/global/organ_rel_size = list(
 	var/held = is_holding(item)
 
 	if(!slot)
-		slot = slot_by_item(item)
+		slot = slot_id_by_item(item)
 
 	if(!istype(hud_used) || !slot || !LAZYLEN(hud_used.slot_info))
 		return

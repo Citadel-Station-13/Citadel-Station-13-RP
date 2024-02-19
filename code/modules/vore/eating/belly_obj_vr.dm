@@ -414,7 +414,7 @@
 						I.forceMove(src)
 						items_preserved += I // these are undigestable anyway so just add them regardless
 			for(var/slot in slots)
-				var/obj/item/I = M.item_by_slot(slot)
+				var/obj/item/I = M.item_by_slot_id(slot)
 				if(I)
 					M.transfer_item_to_loc(I, src, INV_OP_FORCE)
 					if(contaminates || istype(I,/obj/item/card/id))

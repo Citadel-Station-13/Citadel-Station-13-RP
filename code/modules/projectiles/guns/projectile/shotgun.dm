@@ -4,7 +4,7 @@
 	icon_state = "shotgun"
 	item_state = "shotgun"
 	max_shells = 4
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE
 	damage_force = 10
 	slot_flags = SLOT_BACK
@@ -76,7 +76,7 @@
 	desc = "A heavily modified Hephaestus Industries KS-40. This version bears multiple after-market mods, including a laser sight to help compensate for its shortened stock. 'Property of the Warden' has been etched into the side of the reciever. Uses 12g rounds."
 	icon_state = "shotgun_w"
 	slot_flags = SLOT_BELT|SLOT_BACK
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	ammo_type = /obj/item/ammo_casing/a12g/beanbag
 
 /obj/item/gun/ballistic/shotgun/pump/combat/warden/verb/rename_gun()
@@ -153,7 +153,7 @@
 	load_method = SINGLE_CASING|SPEEDLOADER
 	handle_casings = CYCLE_CASINGS
 	max_shells = 2
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE
 	damage_force = 10
 	slot_flags = SLOT_BACK
@@ -198,7 +198,7 @@
 		if(do_after(user, 30))	//SHIT IS STEALTHY EYYYYY
 			icon_state = "sawnshotgun"
 			item_state = "sawnshotgun"
-			w_class = ITEMSIZE_NORMAL
+			set_weight_class(WEIGHT_CLASS_NORMAL)
 			damage_force = 5
 			slot_flags &= ~SLOT_BACK	//you can't sling it on your back
 			slot_flags |= (SLOT_BELT|SLOT_HOLSTER) //but you can wear it on your belt (poorly concealed under a trenchcoat, ideally) - or in a holster, why not.
@@ -217,7 +217,7 @@
 	accuracy = 40
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
 	ammo_type = /obj/item/ammo_casing/a12g/pellet
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	damage_force = 5
 	one_handed_penalty = 5
 
@@ -238,7 +238,7 @@
 	load_method = SINGLE_CASING|SPEEDLOADER
 	handle_casings = CYCLE_CASINGS
 	max_shells = 4
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	damage_force = 5
 	accuracy = 40
 	slot_flags = SLOT_BACK
@@ -263,7 +263,7 @@
 	accuracy = 80
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
 	ammo_type = /obj/item/ammo_casing/a10g/silver
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	safety_state = GUN_SAFETY_OFF
 	damage_force = 15
 
@@ -276,7 +276,7 @@
 	load_method = SINGLE_CASING
 	handle_casings = CYCLE_CASINGS
 	max_shells = 1
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	damage_force = 5
 	slot_flags = SLOT_BELT
 	caliber = "12g"
@@ -312,7 +312,7 @@
 	handle_casings = CYCLE_CASINGS
 	ammo_type = /obj/item/ammo_casing/a12g/silver
 	max_shells = 1
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	damage_force = 25
 	slot_flags = SLOT_BACK
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2, TECH_OCCULT = 1)
@@ -328,7 +328,7 @@
 	load_method = SINGLE_CASING
 	handle_casings = CYCLE_CASINGS
 	max_shells = 1
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	caliber = "12g"
 	ammo_type = /obj/item/ammo_casing/a12g
 	one_handed_penalty = 0

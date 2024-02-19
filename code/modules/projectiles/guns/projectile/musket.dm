@@ -14,7 +14,7 @@
 	caliber = "musket"
 
 	slot_flags = SLOT_BACK
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	one_handed_penalty = 30 //You should really use both hands
 
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
@@ -66,7 +66,7 @@
 	desc = "An ivory container for gunpowder."
 	icon = 'icons/obj/ammo.dmi'
 	icon_state = "powderhorn"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = SLOT_BELT
 	amount_per_transfer_from_this = 5
 	possible_transfer_amounts = list(5)
@@ -117,7 +117,7 @@
 	wielded_item_state = null
 
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	one_handed_penalty = 0
 
 /obj/item/gun/ballistic/musket/pistol/brass

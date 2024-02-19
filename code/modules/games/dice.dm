@@ -3,7 +3,7 @@
 	desc = "A dice with six sides."
 	icon = 'icons/obj/dice.dmi'
 	icon_state = "d66"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	var/sides = 6
 	var/result = 6
 	var/currently_throwing = FALSE
@@ -111,7 +111,7 @@
 	drop_sound = 'sound/items/drop/hat.ogg'
 	pickup_sound = 'sound/items/pickup/hat.ogg'
 
-/obj/item/storage/pill_bottle/dice/PopulateContents()
+/obj/item/storage/pill_bottle/dice/legacy_spawn_contents()
 	for(var/i = 1 to 7)
 		new /obj/item/dice( src )
 
@@ -124,7 +124,7 @@
 	drop_sound = 'sound/items/drop/hat.ogg'
 	pickup_sound = 'sound/items/pickup/hat.ogg'
 
-/obj/item/storage/pill_bottle/dice_nerd/PopulateContents()
+/obj/item/storage/pill_bottle/dice_nerd/legacy_spawn_contents()
 	new /obj/item/dice/d4( src )
 	new /obj/item/dice( src )
 	new /obj/item/dice/d8( src )
@@ -142,9 +142,9 @@
 	desc = "A cup used to conceal and hold dice."
 	icon = 'icons/obj/dice.dmi'
 	icon_state = "dicecup"
-	w_class = ITEMSIZE_SMALL
-	storage_slots = 6
-	can_hold = list(
+	w_class = WEIGHT_CLASS_SMALL
+	max_items = 6
+	insertion_whitelist = list(
 		/obj/item/dice,
 		)
 
@@ -185,6 +185,6 @@
 		revealDice(player)
 
 
-/obj/item/storage/dicecup/loaded/PopulateContents()
+/obj/item/storage/dicecup/loaded/legacy_spawn_contents()
 	for(var/i = 1 to 6)
 		new /obj/item/dice( src )

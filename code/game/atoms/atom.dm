@@ -34,11 +34,13 @@
 	var/bubble_icon = "normal"
 
 	//? Armor
-	/// armor datm - this armor mitigates damage
-	/// damage is reduced to 1 / (armor / 100 + 1), so 100 armor = 2x effective hp, 200 = 3x
-	/// if negative, you receive that % more damage, -100 = 0.5x effective hp, -200 = 0.33x, so on and so forth.
+	/// armor datum - holds armor values
+	/// this is lazy initialized, only init'd when armor is fetched
+	/// [armor_type] specifies the typepath to fetch if this is null during a fetch
 	var/datum/armor/armor
 	/// armor datum type
+	/// this is the type to init if armor is unset when armor is fetched
+	/// * anonymous typepaths are not allowed here
 	var/armor_type = /datum/armor/none
 
 	//? Context
@@ -941,6 +943,14 @@
 /atom/proc/update_atom_colour()
 	CRASH("base proc hit")
 
+//* Deletions *//
+
+// /**
+//  * Called when something in our contents is being Destroy()'d, before they get moved.
+//  */
+// /atom/proc/handle_contents_del(atom/movable/deleting)
+// 	return
+
 //? Filters
 
 /atom/proc/add_filter(name, priority, list/params, update = TRUE)
@@ -1006,6 +1016,23 @@
 	filter_data = null
 	filters = null
 
+//* Inventory *//
+
+/atom/proc/on_contents_weight_class_change(obj/item/item, old_weight_class, new_weight_class)
+	return
+
+/atom/proc/on_contents_weight_volume_change(obj/item/item, old_weight_volume, new_weight_volume)
+	return
+
+/atom/proc/on_contents_weight_change(obj/item/item, old_weight, new_weight)
+	return
+
+/**
+ * called when an /obj/item Initialize()s in us.
+ */
+/atom/proc/on_contents_item_new(obj/item/item)
+	return
+
 //? Layers
 
 /// Sets our plane
@@ -1045,12 +1072,19 @@
 
 //? Pixel Offsets
 
+// todo: at some point we need to optimize this entire chain of bullshit, proccalls are expensive yo
+
 /atom/proc/set_pixel_x(val)
 	pixel_x = val + get_managed_pixel_x()
 	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
 /atom/proc/set_pixel_y(val)
 	pixel_y = val + get_managed_pixel_y()
+	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
+
+/atom/proc/set_pixel_offsets(x, y)
+	pixel_x = x + get_managed_pixel_x()
+	pixel_y = y + get_managed_pixel_y()
 	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
 /atom/proc/reset_pixel_offsets()

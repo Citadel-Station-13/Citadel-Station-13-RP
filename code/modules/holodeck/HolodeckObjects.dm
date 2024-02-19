@@ -214,7 +214,6 @@
 
 /obj/item/holo
 	damtype = HALLOSS
-	no_attack_log = 1
 
 /obj/item/holo/esword
 	desc = "May the force be within you. Sorta."
@@ -230,7 +229,7 @@
 	throw_speed = 1
 	throw_range = 5
 	throw_force = 0
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	atom_flags = NOBLOODY
 	var/active = 0
 
@@ -259,13 +258,13 @@
 	if (active)
 		damage_force = 30
 		item_state = "[icon_state]_blade"
-		w_class = ITEMSIZE_LARGE
+		set_weight_class(WEIGHT_CLASS_BULKY)
 		playsound(src, 'sound/weapons/saberon.ogg', 50, 1)
 		to_chat(user, "<span class='notice'>[src] is now active.</span>")
 	else
 		damage_force = 3
 		item_state = "[icon_state]"
-		w_class = ITEMSIZE_SMALL
+		set_weight_class(WEIGHT_CLASS_SMALL)
 		playsound(src, 'sound/weapons/saberoff.ogg', 50, 1)
 		to_chat(user, "<span class='notice'>[src] can now be concealed.</span>")
 
@@ -302,7 +301,7 @@
 	icon_state = "basketball"
 	name = "basketball"
 	desc = "Here's your chance, do your dance at the Space Jam."
-	w_class = ITEMSIZE_LARGE //Stops people from hiding it in their bags/pockets
+	w_class = WEIGHT_CLASS_BULKY //Stops people from hiding it in their bags/pockets
 	drop_sound = 'sound/items/drop/basketball.ogg'
 	pickup_sound = 'sound/items/pickup/basketball.ogg'
 

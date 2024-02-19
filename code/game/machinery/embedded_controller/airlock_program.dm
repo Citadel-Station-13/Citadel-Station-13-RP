@@ -13,6 +13,8 @@
 	var/tag_interior_sensor
 	var/tag_airlock_mech_sensor
 	var/tag_shuttle_mech_sensor
+	var/tag_scrubber
+	var/tag_temperature_adjuster
 
 	var/state = STATE_CLOSED
 
@@ -42,6 +44,8 @@
 		tag_interior_sensor = controller.tag_interior_sensor || "[id_tag]_interior_sensor"
 		tag_airlock_mech_sensor = controller.tag_airlock_mech_sensor? controller.tag_airlock_mech_sensor : "[id_tag]_airlock_mech"
 		tag_shuttle_mech_sensor = controller.tag_shuttle_mech_sensor? controller.tag_shuttle_mech_sensor : "[id_tag]_shuttle_mech"
+		tag_scrubber = controller.tag_scrubber ? controller.tag_scrubber : "[id_tag]_scrubber"
+		tag_temperature_adjuster = controller.tag_temperature_adjuster? controller.tag_temperature_adjuster : "[id_tag]_chamber_temperature"
 		memory["secure"] = controller.tag_secure
 
 		spawn(10)
@@ -209,6 +213,17 @@
 	)
 	post_signal(signal)
 
+/datum/computer/file/embedded_program/airlock/proc/signalTemperatureAdjuster(var/tag, var/power, var/temperature)
+	signalScrubber(tag_scrubber, power)//Temporary hack so mapping changes arent part of this PR
+	var/datum/signal/signal = new
+	signal.data = list(
+		"tag" = tag,
+		"sigtype" = "command",
+		"power" = "[power]",
+		"target_temperature" = "[temperature]",
+	)
+	post_signal(signal)
+
 /datum/computer/file/embedded_program/airlock/proc/signal_mech_sensor(command, sensor)
 	var/datum/signal/signal = new
 	signal.data["tag"] = sensor
@@ -285,3 +300,47 @@ send an additional command to open the door again.
 
 	if(doorCommand)
 		signalDoor(doorTag, doorCommand)
+
+/datum/computer/file/embedded_program/airlock/access_controll/process()
+	switch(state)
+		if(STATE_OPEN_OUT)
+			return 1
+		if(STATE_OPEN_IN)
+			return 1
+		if(STATE_CLOSED)
+			return 1
+		if(STATE_BYPASS)
+			return 1
+		if(STATE_CYCLING_IN)
+			if(memory["exterior_status"]["state"] == "open")
+				toggleDoor(memory["exterior_status"],tag_exterior_door, 1, "close")
+			else
+				toggleDoor(memory["interior_status"],tag_interior_door, 1, "open")
+				state = STATE_OPEN_IN
+				memory["processing"] = FALSE
+		if(STATE_CYCLING_OUT)
+			if(memory["interior_status"]["state"] == "open")
+				toggleDoor(memory["interior_status"],tag_interior_door, 1, "close")
+			else
+				toggleDoor(memory["exterior_status"],tag_exterior_door, 1, "open")
+				signalPump(tag_airpump, 0, 1, memory["external_sensor_pressure"])//Turn the pump off
+				state = STATE_OPEN_OUT
+				memory["processing"] = FALSE
+		if(STATE_SEALING)
+			if(memory["interior_status"]["state"] == "open")
+				toggleDoor(memory["interior_status"],tag_interior_door, 1, "close")
+				memory["processing"] = TRUE
+			else if(memory["exterior_status"]["state"] == "open")
+				toggleDoor(memory["exterior_status"],tag_exterior_door, 1, "close")
+				memory["processing"] = TRUE
+			else
+				state = STATE_CLOSED
+				memory["processing"] = FALSE
+		if(STATE_BYPASSING)
+			signalDoor(tag_interior_door, "unlock")
+			signalDoor(tag_exterior_door, "unlock")
+			state = STATE_BYPASS
+
+		else
+			state = STATE_UNDEFINED
+	return 1

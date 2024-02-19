@@ -6,7 +6,7 @@
 	caliber = "rocket"
 	max_shells = 1
 	load_method = SINGLE_CASING
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE
 	throw_speed = 2
 	throw_range = 10
@@ -69,7 +69,7 @@
 	desc = "A single use rocket launcher designed with portability in mind. This disposable launcher must be extended before it can fire."
 	icon_state = "missile"
 	item_state = "missile"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	slot_flags = SLOT_BELT
 	handle_casings = HOLD_CASINGS
 	ammo_type = /obj/item/ammo_casing/rocket

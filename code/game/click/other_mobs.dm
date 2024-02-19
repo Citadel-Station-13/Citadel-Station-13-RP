@@ -31,14 +31,15 @@
 // todo: /datum/event_args/actor/clickchain
 /atom/proc/attack_hand(mob/user, list/params)
 	var/datum/event_args/actor/clickchain/e_args = new(user, target = src, intent = user.a_intent, params = params)
-	if(user.a_intent == INTENT_HARM)
-		return user.melee_attack_chain(src, e_args)
 	if(on_attack_hand(e_args))
 		return TRUE
+	if(user.a_intent == INTENT_HARM)
+		return user.melee_attack_chain(src, e_args)
 	. = _try_interact(user)
 
 /**
  * Override this instead of attack_hand.
+ * This happens before melee attack chain checks.
  *
  * Return TRUE to cancel other attack hand effects that respect it.
  *

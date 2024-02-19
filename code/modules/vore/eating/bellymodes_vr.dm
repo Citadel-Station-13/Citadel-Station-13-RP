@@ -118,7 +118,7 @@
 				//Stripping flag
 				if(mode_flags & DM_FLAG_STRIPPING)
 					for(var/slot in slots)
-						var/obj/item/I = H.item_by_slot(slot)
+						var/obj/item/I = H.item_by_slot_id(slot)
 						if(I)
 							H.transfer_item_to_loc(I, src, INV_OP_FORCE)
 							if(contaminates || istype(I,/obj/item/card/id))

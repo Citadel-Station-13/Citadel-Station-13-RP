@@ -6,7 +6,7 @@
 	item_state_slots = list(slot_r_hand_str = "", slot_l_hand_str = "")
 	appearance_flags = RESET_COLOR	// Stops accessory_host's color from being multiplied onto the accessory
 	slot_flags = SLOT_TIE
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	accessory_render_legacy = TRUE
 	accessory_render_specific = FALSE
 	var/slot = ACCESSORY_SLOT_DECOR

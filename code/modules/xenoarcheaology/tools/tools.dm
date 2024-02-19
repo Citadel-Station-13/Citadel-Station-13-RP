@@ -5,7 +5,7 @@
 	icon_state = "measuring"
 	origin_tech = list(TECH_MATERIAL = 1)
 	materials_base = list(MAT_STEEL = 100)
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/storage/bag/fossils
 	name = "Fossil Satchel"
@@ -13,17 +13,17 @@
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "satchel"
 	slot_flags = SLOT_BELT | SLOT_POCKET
-	w_class = ITEMSIZE_NORMAL
-	storage_slots = 50
-	max_storage_space = ITEMSIZE_COST_NORMAL * 50
-	max_w_class = ITEMSIZE_NORMAL
-	can_hold = list(/obj/item/fossil)
+	w_class = WEIGHT_CLASS_NORMAL
+	max_items = 50
+	max_combined_volume = WEIGHT_VOLUME_NORMAL * 50
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
+	insertion_whitelist = list(/obj/item/fossil)
 
 /obj/item/storage/box/samplebags
 	name = "sample bag box"
 	desc = "A box claiming to contain sample bags."
 
-/obj/item/storage/box/samplebags/PopulateContents()
+/obj/item/storage/box/samplebags/legacy_spawn_contents()
 	. = ..()
 	for(var/i = 1 to 7)
 		var/obj/item/evidencebag/S = new(src)
@@ -38,7 +38,7 @@
 	item_state = "lampgreen"
 	origin_tech = list(TECH_BLUESPACE = 3, TECH_MAGNET = 3, TECH_ARCANE = 1)
 	materials_base = list(MAT_STEEL = 10000, MAT_GLASS = 5000)
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = SLOT_BELT
 
 	var/last_scan_time = 0
@@ -99,7 +99,7 @@
 	item_state = "analyzer"
 	origin_tech = list(TECH_MAGNET = 2, TECH_ENGINEERING = 2, TECH_BLUESPACE = 2)
 	materials_base = list(MAT_STEEL = 1000, MAT_GLASS = 1000)
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = SLOT_BELT
 	var/list/positive_locations = list()
 	var/datum/depth_scan/current
@@ -335,7 +335,7 @@
 	icon = 'icons/obj/xenoarchaeology.dmi'
 	origin_tech = list(TECH_MAGNET = 3, TECH_ENGINEERING = 3, TECH_BLUESPACE = 2, TECH_ARCANE = 1)
 	materials_base = list(MAT_STEEL = 10000, MAT_GLASS = 5000)
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = SLOT_BELT
 	var/mode = 1 //Start off scanning. 1 = scanning, 0 = measuring
 	var/obj/item/ano_scanner/anomaly_scanner = null

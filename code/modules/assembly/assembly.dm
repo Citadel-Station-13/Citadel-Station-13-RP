@@ -10,7 +10,7 @@
 	desc = "A small electronic device that should never exist."
 	icon = 'icons/obj/assemblies/new_assemblies.dmi'
 	icon_state = ""
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	materials_base = list(MAT_STEEL = 100)
 	throw_force = 2
 	throw_speed = 3

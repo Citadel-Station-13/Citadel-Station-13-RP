@@ -56,7 +56,7 @@
 	to_chat(user, "Hardware Integrity Test... (Corruption: [damage]/[max_damage]) [damage > damage_failure ? "FAIL" : damage > damage_malfunction ? "WARN" : "PASS"]")
 
 /obj/item/computer_hardware/Initialize(mapload)
-	w_class = hardware_size
+	set_weight_class(hardware_size)
 	if(istype(loc, /obj/item/modular_computer))
 		holder2 = loc
 	return ..()

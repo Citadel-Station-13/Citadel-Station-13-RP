@@ -11,7 +11,7 @@
 	excavation_amount = 1
 	drill_sound = 'sound/weapons/thudswoosh.ogg'
 	drill_verb = "brushing"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/pickaxe/one_pick
 	name = "2cm pick"
@@ -24,7 +24,7 @@
 	excavation_amount = 2
 	drill_sound = 'sound/items/Screwdriver.ogg'
 	drill_verb = "delicately picking"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/pickaxe/two_pick
 	name = "4cm pick"
@@ -37,7 +37,7 @@
 	excavation_amount = 4
 	drill_sound = 'sound/items/Screwdriver.ogg'
 	drill_verb = "delicately picking"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/pickaxe/three_pick
 	name = "6cm pick"
@@ -50,7 +50,7 @@
 	excavation_amount = 6
 	drill_sound = 'sound/items/Screwdriver.ogg'
 	drill_verb = "delicately picking"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/pickaxe/four_pick
 	name = "8cm pick"
@@ -63,7 +63,7 @@
 	excavation_amount = 8
 	drill_sound = 'sound/items/Screwdriver.ogg'
 	drill_verb = "delicately picking"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/pickaxe/five_pick
 	name = "10cm pick"
@@ -76,7 +76,7 @@
 	excavation_amount = 10
 	drill_sound = 'sound/items/Screwdriver.ogg'
 	drill_verb = "delicately picking"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/pickaxe/six_pick
 	name = "12cm pick"
@@ -89,7 +89,7 @@
 	excavation_amount = 12
 	drill_sound = 'sound/items/Screwdriver.ogg'
 	drill_verb = "delicately picking"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/pickaxe/hand
 	name = "hand pickaxe"
@@ -102,7 +102,7 @@
 	excavation_amount = 30
 	drill_sound = 'sound/items/Crowbar.ogg'
 	drill_verb = "clearing"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Pack for holding pickaxes
@@ -113,9 +113,9 @@
 	icon_state = "excavation"
 	desc = "A set of picks for excavation."
 	item_state = "syringe_kit"
-	storage_slots = 7
-	w_class = ITEMSIZE_SMALL
-	can_hold = list(/obj/item/pickaxe/brush,
+	max_items = 7
+	w_class = WEIGHT_CLASS_SMALL
+	insertion_whitelist = list(/obj/item/pickaxe/brush,
 	/obj/item/pickaxe/one_pick,
 	/obj/item/pickaxe/two_pick,
 	/obj/item/pickaxe/three_pick,
@@ -123,11 +123,11 @@
 	/obj/item/pickaxe/five_pick,
 	/obj/item/pickaxe/six_pick,
 	/obj/item/pickaxe/hand)
-	max_storage_space = ITEMSIZE_COST_SMALL * 9
-	max_w_class = ITEMSIZE_SMALL
-	use_to_pickup = 1
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 9
+	max_single_weight_class = WEIGHT_CLASS_SMALL
+	allow_mass_gather = TRUE
 
-/obj/item/storage/excavation/PopulateContents()
+/obj/item/storage/excavation/legacy_spawn_contents()
 	. = ..()
 	new /obj/item/pickaxe/brush(src)
 	new /obj/item/pickaxe/one_pick(src)
@@ -136,28 +136,6 @@
 	new /obj/item/pickaxe/four_pick(src)
 	new /obj/item/pickaxe/five_pick(src)
 	new /obj/item/pickaxe/six_pick(src)
-
-/obj/item/storage/excavation/handle_item_insertion()
-	..()
-	sort_picks()
-
-/obj/item/storage/excavation/proc/sort_picks()
-	var/list/obj/item/pickaxe/picksToSort = list()
-	for(var/obj/item/pickaxe/P in src)
-		picksToSort += P
-		P.loc = null
-	while(picksToSort.len)
-		var/min = 200 // No pick is bigger than 200
-		var/selected = 0
-		for(var/i = 1 to picksToSort.len)
-			var/obj/item/pickaxe/current = picksToSort[i]
-			if(current.excavation_amount <= min)
-				selected = i
-				min = current.excavation_amount
-		var/obj/item/pickaxe/smallest = picksToSort[selected]
-		smallest.loc = src
-		picksToSort -= smallest
-	orient2hud()
 
 /obj/item/pickaxe/excavationdrill
 	name = "excavation drill"

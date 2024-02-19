@@ -3,7 +3,7 @@
 	desc = "A portable(ish) machine made to print tiny modular circuitry out of metal."
 	icon = 'icons/obj/integrated_electronics/electronic_tools.dmi'
 	icon_state = "circuit_printer"
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	var/cur_metal = 0
 	var/max_metal = 250
 	/// One sheet equals this much metal.
@@ -360,7 +360,7 @@
 	icon = 'icons/obj/integrated_electronics/electronic_tools.dmi'
 	icon_state = "upgrade_disk"
 	item_state = "card-id"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_ENGINEERING = 3, TECH_DATA = 4)
 
 /obj/item/disk/integrated_circuit/upgrade/advanced

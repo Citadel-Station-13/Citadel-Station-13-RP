@@ -559,7 +559,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 22)
 		if (machine_stat & MAINT)
 			to_chat(user,"<span class='warning'>You need to install the wiring and electronics first.</span>")
 			return
-		if(W.w_class != ITEMSIZE_NORMAL)
+		if(W.w_class != WEIGHT_CLASS_NORMAL)
 			to_chat(user,"\The [W] is too [W.w_class < 3? "small" : "large"] to work here.")
 			return
 		if(!user.attempt_insert_item_for_installation(W, src))
@@ -729,7 +729,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 22)
 		if ((machine_stat & BROKEN) \
 				&& !opened \
 				&& W.damage_force >= 5 \
-				&& W.w_class >= ITEMSIZE_SMALL )
+				&& W.w_class >= WEIGHT_CLASS_SMALL )
 			user.visible_message("<span class='danger'>The [src.name] has been hit with the [W.name] by [user.name]!</span>", \
 				"<span class='danger'>You hit the [src.name] with your [W.name]!</span>", \
 				"You hear a bang!")

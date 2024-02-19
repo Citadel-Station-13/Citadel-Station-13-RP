@@ -24,7 +24,7 @@
 
 	var/obj/item/device/headpods/deployed_headpods
 
-	w_class = ITEMSIZE_COST_SMALL
+	w_class = WEIGHT_VOLUME_SMALL
 	slot_flags = SLOT_BELT
 
 /obj/item/device/walkpod/Destroy()
@@ -267,5 +267,5 @@
 	icon = 'icons/obj/device_vr.dmi'
 	icon_state = "headpods"
 	item_state = "headphones_on"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = SLOT_HEAD

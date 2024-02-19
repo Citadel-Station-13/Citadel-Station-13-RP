@@ -228,7 +228,7 @@
 	name = "package wrapper"
 	icon = 'icons/obj/items.dmi'
 	icon_state = "deliveryPaper"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	var/amount = 25.0
 
 
@@ -258,8 +258,8 @@
 					user.client.screen -= O
 			P.wrapped = O
 			O.forceMove(P)
-			P.w_class = O.w_class
-			var/i = round(O.w_class)
+			P.set_weight_class(O.w_class)
+			var/i = round(O.get_weight_class())
 			if(i in list(1,2,3,4,5))
 				P.icon_state = "deliverycrate[i]"
 				switch(i)
@@ -325,7 +325,7 @@
 	icon_state = "dest_tagger"
 	var/currTag = 0
 
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	item_state = "electronic"
 	slot_flags = SLOT_BELT
 

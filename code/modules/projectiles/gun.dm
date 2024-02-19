@@ -42,7 +42,7 @@
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
 	materials_base = list(MAT_STEEL = 2000)
 	rad_flags = RAD_BLOCK_CONTENTS
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	throw_force = 5
 	throw_speed = 4
 	throw_range = 5

@@ -95,9 +95,11 @@
 	/// volume when breaking out using resist process
 	var/breakout_volume = 100
 
-	//? Systems - naming convention is 'object_[system]'
+	//? Systems - naming convention is 'obj_[system]'
 	/// cell slot system
 	var/datum/object_system/cell_slot/obj_cell_slot
+	/// storage system
+	var/datum/object_system/storage/obj_storage
 
 	//? misc / legacy
 	/// Set when a player renames a renamable object.
@@ -175,10 +177,12 @@
 	SStgui.close_uis(src)
 	SSnanoui.close_uis(src)
 	QDEL_NULL(obj_cell_slot)
+	QDEL_NULL(obj_storage)
 	return ..()
 
 /obj/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
 	. = ..()
+	obj_storage?.on_parent_moved(old_loc, forced)
 	if(register_as_dangerous_object)
 		var/turf/old_turf = get_turf(old_loc)
 		var/turf/new_turf = get_turf(src)
@@ -303,6 +307,9 @@
 		)
 		obj_cell_slot.insert_cell(I)
 		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+	var/datum/event_args/actor/actor = new(user)
+	if(!isnull(obj_storage) && I.allow_auto_storage_insert(actor, obj_storage) && obj_storage?.auto_handle_interacted_insertion(I, actor))
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 	return ..()
 
 /obj/on_attack_hand(datum/event_args/actor/clickchain/e_args)
@@ -343,6 +350,25 @@
 /obj/MouseDroppedOn(atom/dropping, mob/user, proximity, params)
 	if(drag_drop_climb_interaction(user, dropping))
 		return CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()
+
+/obj/OnMouseDrop(atom/over, mob/user, proximity, params)
+	if(!isnull(obj_storage) && proximity)
+		// clickdrag to self storage open
+		if(obj_storage.allow_open_via_clickdrag_to_self && ismob(over) && over == user)
+			if(obj_storage.auto_handle_interacted_open(new /datum/event_args/actor(user)))
+				return CLICKCHAIN_DO_NOT_PROPAGATE
+		// clickdrag to other obj transfer
+		if(obj_storage.allow_outbound_mass_transfer && obj_storage.allow_clickdrag_mass_transfer && isobj(over))
+			var/obj/object = over
+			if(object.obj_storage.allow_inbound_mass_transfer)
+				obj_storage.interacted_mass_transfer(new /datum/event_args/actor(user), object.obj_storage)
+				return CLICKCHAIN_DO_NOT_PROPAGATE
+		// clickdrag to ground mass dumping
+		if(obj_storage.allow_quick_empty_via_clickdrag && obj_storage.allow_quick_empty && isturf(over))
+			var/turf/turf = over
+			obj_storage.interacted_mass_dumping(new /datum/event_args/actor(user), turf)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
 
 /obj/proc/drag_drop_climb_interaction(mob/user, atom/dropping)
@@ -476,35 +502,45 @@
 	. = ..()
 	if(!isnull(obj_cell_slot?.cell) && obj_cell_slot.remove_yank_context && obj_cell_slot.interaction_active(e_args.performer))
 		var/image/rendered = image(obj_cell_slot.cell)
-		.["obj_cell_slot"] = ATOM_CONTEXT_TUPLE("remove cell", rendered, null, MOBILITY_CAN_USE)
+		.["obj_cell_slot"] = atom_context_tuple("remove cell", rendered, mobility = MOBILITY_CAN_USE, defaultable = TRUE)
+	if(obj_storage?.allow_open_via_context_click)
+		var/image/rendered = image(src)
+		.["obj_storage"] = atom_context_tuple("open storage", rendered, mobility = MOBILITY_CAN_STORAGE, defaultable = TRUE)
 
 /obj/context_act(datum/event_args/actor/e_args, key)
-	if(key == "obj_cell_slot")
-		var/reachability = e_args.performer.Reachability(src)
-		if(!reachability)
+	switch(key)
+		if("obj_cell_slot")
+			var/reachability = e_args.performer.Reachability(src)
+			if(!reachability)
+				return TRUE
+			if(!CHECK_MOBILITY(e_args.performer, MOBILITY_CAN_USE))
+				e_args.initiator.action_feedback(SPAN_WARNING("You can't do that right now!"), src)
+				return TRUE
+			if(isnull(obj_cell_slot.cell))
+				e_args.initiator.action_feedback(SPAN_WARNING("[src] doesn't have a cell installed."))
+				return TRUE
+			if(!obj_cell_slot.interaction_active(e_args.performer))
+				return TRUE
+			e_args.visible_feedback(
+				target = src,
+				range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
+				visible = SPAN_NOTICE("[e_args.performer] removes the cell from [src]."),
+				audible = SPAN_NOTICE("You hear fasteners falling out and something being removed."),
+				otherwise_self = SPAN_NOTICE("You remove the cell from [src]."),
+			)
+			log_construction(e_args, src, "removed cell [obj_cell_slot.cell] ([obj_cell_slot.cell.type])")
+			var/obj/item/cell/removed = obj_cell_slot.remove_cell(src)
+			if(reachability == REACH_PHYSICAL)
+				e_args.performer.put_in_hands_or_drop(removed)
+			else
+				removed.forceMove(drop_location())
 			return TRUE
-		if(!CHECK_MOBILITY(e_args.performer, MOBILITY_CAN_USE))
-			e_args.initiator.action_feedback(SPAN_WARNING("You can't do that right now!"), src)
+		if("obj_storage")
+			var/reachability = e_args.performer.Reachability(src)
+			if(!reachability)
+				return TRUE
+			obj_storage?.auto_handle_interacted_open(e_args)
 			return TRUE
-		if(isnull(obj_cell_slot.cell))
-			e_args.initiator.action_feedback(SPAN_WARNING("[src] doesn't have a cell installed."))
-			return TRUE
-		if(!obj_cell_slot.interaction_active(e_args.performer))
-			return TRUE
-		e_args.visible_feedback(
-			target = src,
-			range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
-			visible = SPAN_NOTICE("[e_args.performer] removes the cell from [src]."),
-			audible = SPAN_NOTICE("You hear fasteners falling out and something being removed."),
-			otherwise_self = SPAN_NOTICE("You remove the cell from [src]."),
-		)
-		log_construction(e_args, src, "removed cell [obj_cell_slot.cell] ([obj_cell_slot.cell.type])")
-		var/obj/item/cell/removed = obj_cell_slot.remove_cell(src)
-		if(reachability == REACH_PHYSICAL)
-			e_args.performer.put_in_hands_or_drop(removed)
-		else
-			removed.forceMove(drop_location())
-		return TRUE
 	return ..()
 
 //* EMP *//
@@ -513,6 +549,15 @@
 	. = ..()
 	if(obj_cell_slot?.receive_emp)
 		obj_cell_slot?.cell?.emp_act(severity)
+	if(obj_storage?.pass_emp_inside)
+		// ugh
+		if(obj_storage.pass_emp_weaken && severity < 4)
+			var/pass_severity = severity - 1
+			for(var/atom/movable/inside in obj_storage.contents())
+				inside.emp_act(pass_severity)
+		else
+			for(var/atom/movable/inside in obj_storage.contents())
+				inside.emp_act(severity)
 
 //* Hiding / Underfloor *//
 
@@ -521,6 +566,45 @@
 
 /obj/proc/should_hide_underfloor()
 	return FALSE
+
+//* Inventory *//
+
+/obj/AllowDrop()
+	if(!isnull(obj_storage))
+		return TRUE
+	return ..()
+
+/obj/clean_radiation(str, mul, cheap)
+	if(obj_storage?.pass_clean_radiation_inside)
+		for(var/atom/movable/AM as anything in contents)
+			AM.clean_radiation(str, mul, cheap)
+	return ..()
+
+/obj/on_contents_item_new(obj/item/item)
+	. = ..()
+	obj_storage?.on_contents_item_new(item)
+
+/**
+ * Returns stuff considered to be inside this object's inventory.
+ *
+ * Do not return ourselves or there will be an infinite loop in many callers!
+ *
+ * @return list()
+ */
+/obj/proc/return_inventory()
+	return isnull(obj_storage)? list() : obj_storage.contents()
+
+/obj/on_contents_weight_class_change(obj/item/item, old_weight_class, new_weight_class)
+	. = ..()
+	obj_storage?.on_contents_weight_class_change(item, old_weight_class, new_weight_class)
+
+/obj/on_contents_weight_volume_change(obj/item/item, old_weight_volume, new_weight_volume)
+	. = ..()
+	obj_storage?.on_contents_weight_volume_change(item, old_weight_volume, new_weight_volume)
+
+/obj/on_contents_weight_change(obj/item/item, old_weight, new_weight)
+	. = ..()
+	obj_storage?.on_contents_weight_change(item, old_weight, new_weight)
 
 //* Examine *//
 
@@ -552,6 +636,20 @@
 		else
 			. += SPAN_BOLDWARNING("It's falling apart!")
 
+//* Movement *//
+
+/obj/Exited(atom/movable/AM, atom/newLoc)
+	. = ..()
+	// todo: this is fucking awful, proper redirection support when
+	if(isitem(AM) && obj_storage && (!obj_storage.dangerously_redirect_contents_calls || obj_storage.dangerously_redirect_contents_calls == src))
+		obj_storage.on_item_exited(AM)
+
+/obj/Entered(atom/movable/AM, atom/oldLoc)
+	. = ..()
+	// todo: this is fucking awful, proper redirection support when
+	if(isitem(AM) && obj_storage && (!obj_storage.dangerously_redirect_contents_calls || obj_storage.dangerously_redirect_contents_calls == src))
+		obj_storage.on_item_entered(AM)
+
 //* Orientation *//
 
 /**
@@ -565,7 +663,7 @@
 
 /**
  * Standard wallmount orientation: face away
- * 
+ *
  * Directly sets dir without setDir()
  */
 /obj/proc/auto_orient_wallmount_single_preinit()

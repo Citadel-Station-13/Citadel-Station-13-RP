@@ -11,6 +11,8 @@
 	var/tag_interior_sensor
 	var/tag_airlock_mech_sensor
 	var/tag_shuttle_mech_sensor
+	var/tag_scrubber
+	var/tag_temperature_adjuster
 	var/tag_secure = 0
 	var/list/dummy_terminals = list()
 	var/cycle_to_external_air = 0
@@ -69,6 +71,7 @@
 	name = "Access Controller"
 	tag_secure = 1
 	valid_actions = list("cycle_ext", "cycle_int", "force_ext", "force_int")
+	program = /datum/computer/file/embedded_program/airlock/access_controll
 
 
 /obj/machinery/embedded_controller/radio/airlock/access_controller/update_icon()

@@ -3,7 +3,7 @@
 	icon = 'icons/obj/shards.dmi'
 	desc = "Made of nothing. How does this even exist?" // set based on material, if this desc is visible it's a bug (shards default to being made of glass)
 	icon_state = "large"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	material_significance = MATERIAL_SIGNIFICANCE_SHARD
 	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	item_state = "shard-glass"
@@ -11,9 +11,9 @@
 	material_parts = /datum/material/glass
 
 /obj/item/material/shard/Initialize(mapload, material)
-	. = ..()
 	pixel_x = rand(-8, 8)
 	pixel_y = rand(-8, 8)
+	. = ..()
 
 /obj/item/material/shard/update_material_single(datum/material/material)
 	. = ..()
@@ -78,7 +78,7 @@
 	if(prob(75))
 		will_break = TRUE
 
-	var/obj/item/gloves = user.item_by_slot(SLOT_ID_GLOVES)
+	var/obj/item/gloves = user.item_by_slot_id(SLOT_ID_GLOVES)
 
 	if(gloves && (gloves.body_cover_flags & HANDS) && istype(gloves, /obj/item/clothing/gloves)) // Not-gloves aren't gloves, and therefore don't protect us
 		protected_hands = TRUE // If we're wearing gloves we can probably handle it just fine

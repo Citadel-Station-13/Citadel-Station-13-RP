@@ -129,6 +129,9 @@
 	// close context menus
 	context_close()
 
+	// storage stuff
+	obj_storage?.on_dropped(user)
+
 	// get rid of shieldcalls
 	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
 		if(!shieldcall.shields_in_inventory)
@@ -161,6 +164,9 @@
 	if(isliving(user))
 		var/mob/living/L = user
 		L.adjust_current_carry_weight(weight_registered)
+
+	// storage stuff
+	obj_storage?.on_pickup(user)
 
 	// get rid of shieldcalls
 	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
@@ -263,22 +269,22 @@
 
 	switch(slot)
 		if(SLOT_ID_LEFT_POCKET, SLOT_ID_RIGHT_POCKET)
-			if(H.semantically_has_slot(SLOT_ID_UNIFORM) && !H.item_by_slot(SLOT_ID_UNIFORM))
+			if(H.semantically_has_slot(SLOT_ID_UNIFORM) && !H.item_by_slot_id(SLOT_ID_UNIFORM))
 				if(!(flags & INV_OP_SUPPRESS_WARNING))
 					to_chat(H, SPAN_WARNING("You need a jumpsuit before you can attach [src]."))
 				return FALSE
 		if(SLOT_ID_WORN_ID)
-			if(H.semantically_has_slot(SLOT_ID_UNIFORM) && !H.item_by_slot(SLOT_ID_UNIFORM))
+			if(H.semantically_has_slot(SLOT_ID_UNIFORM) && !H.item_by_slot_id(SLOT_ID_UNIFORM))
 				if(!(flags & INV_OP_SUPPRESS_WARNING))
 					to_chat(H, SPAN_WARNING("You need a jumpsuit before you can attach [src]."))
 				return FALSE
 		if(SLOT_ID_BELT)
-			if(H.semantically_has_slot(SLOT_ID_UNIFORM) && !H.item_by_slot(SLOT_ID_UNIFORM))
+			if(H.semantically_has_slot(SLOT_ID_UNIFORM) && !H.item_by_slot_id(SLOT_ID_UNIFORM))
 				if(!(flags & INV_OP_SUPPRESS_WARNING))
 					to_chat(H, SPAN_WARNING("You need a jumpsuit before you can attach [src]."))
 				return FALSE
 		if(SLOT_ID_SUIT_STORAGE)
-			if(H.semantically_has_slot(SLOT_ID_SUIT) && !H.item_by_slot(SLOT_ID_SUIT))
+			if(H.semantically_has_slot(SLOT_ID_SUIT) && !H.item_by_slot_id(SLOT_ID_SUIT))
 				if(!(flags & INV_OP_SUPPRESS_WARNING))
 					to_chat(H, SPAN_WARNING("You need a suit before you can attach [src]."))
 				return FALSE

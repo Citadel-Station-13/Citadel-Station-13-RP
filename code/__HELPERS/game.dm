@@ -1,13 +1,4 @@
 
-/proc/dopage(src, target)
-	var/href_list
-	var/href
-	href_list = params2list("src=\ref[src]&[target]=1")
-	href = "src=\ref[src];[target]=1"
-	src:temphtml = null
-	src:Topic(href, href_list)
-	return null
-
 /proc/is_on_same_plane_or_station(z1, z2)
 	if (z1 == z2)
 		return TRUE
@@ -394,25 +385,8 @@
 			return get_step(start, EAST)
 
 /proc/get_mob_by_key(key)
-	return GLOB.directory[ckey(key)]
-
-/**
- * Will return a list of active candidates.
- * It increases the buffer 5 times until it finds a candidate which is active within the buffer.
- */
-/proc/get_active_candidates(buffer = 1)
-
-	/// List of candidate KEYS to assume control of the new larva ~Carn
-	var/list/candidates = list()
-	var/i = 0
-	while(candidates.len <= 0 && i < 5)
-		for(var/mob/observer/dead/G in GLOB.player_list)
-			// The most active players are more likely to become an alien.
-			if(((G.client.inactivity/10)/60) <= buffer + i)
-				if(!(G.mind && G.mind.current && G.mind.current.stat != DEAD))
-					candidates += G.key
-		i++
-	return candidates
+	var/client/found = GLOB.directory[ckey(key)]
+	return found?.mob
 
 /**
  * Same as above but for alien candidates.
@@ -431,24 +405,6 @@
 						candidates += G.key
 		i++
 	return candidates
-
-/proc/ScreenText(obj/O, maptext="", screen_loc="CENTER-7,CENTER-7", maptext_height=480, maptext_width=480)
-	if(!isobj(O))	O = new /atom/movable/screen/text()
-	O.maptext = maptext
-	O.maptext_height = maptext_height
-	O.maptext_width = maptext_width
-	O.screen_loc = screen_loc
-	return O
-
-/proc/Show2Group4Delay(obj/O, list/group, delay=0)
-	if(!isobj(O))	return
-	if(!group)	group = GLOB.clients
-	for(var/client/C in group)
-		C.screen += O
-	if(delay)
-		spawn(delay)
-			for(var/client/C in group)
-				C.screen -= O
 
 /datum/projectile_data
 	var/src_x
@@ -486,67 +442,6 @@
 	var/dest_y = src_y + distance*cos(rotation);
 
 	return new /datum/projectile_data(src_x, src_y, time, distance, power_x, power_y, dest_x, dest_y)
-
-/proc/GetRedPart(const/hexa)
-	return hex2num(copytext(hexa,2,4))
-
-/proc/GetGreenPart(const/hexa)
-	return hex2num(copytext(hexa,4,6))
-
-/proc/GetBluePart(const/hexa)
-	return hex2num(copytext(hexa,6,8))
-
-/proc/GetHexColors(const/hexa)
-	return list(
-		GetRedPart(hexa),
-		GetGreenPart(hexa),
-		GetBluePart(hexa)
-	)
-
-/proc/MixColors(const/list/colors)
-	var/list/reds = list()
-	var/list/blues = list()
-	var/list/greens = list()
-	var/list/weights = list()
-
-	for (var/i = 0, ++i <= colors.len)
-		reds.Add(GetRedPart(colors[i]))
-		blues.Add(GetBluePart(colors[i]))
-		greens.Add(GetGreenPart(colors[i]))
-		weights.Add(1)
-
-	var/r = mixOneColor(weights, reds)
-	var/g = mixOneColor(weights, greens)
-	var/b = mixOneColor(weights, blues)
-	return rgb(r,g,b)
-
-/proc/mixOneColor(list/weight, list/color)
-	if (!weight || !color || length(weight)!=length(color))
-		return 0
-
-	var/contents = length(weight)
-	var/i
-
-	//normalize weights
-	var/listsum = 0
-	for(i=1; i<=contents; i++)
-		listsum += weight[i]
-	for(i=1; i<=contents; i++)
-		weight[i] /= listsum
-
-	//mix them
-	var/mixedcolor = 0
-	for(i=1; i<=contents; i++)
-		mixedcolor += weight[i]*color[i]
-	mixedcolor = round(mixedcolor)
-
-	// Until someone writes a formal proof for this algorithm, let's keep this in.
-	// if(mixedcolor<0x00 || mixedcolor>0xFF)
-	// 	return 0
-	// That's not the kind of operation we are running here, NERD.
-	mixedcolor=min(max(mixedcolor,0),255)
-
-	return mixedcolor
 
 /**
  * Gets the highest and lowest pressures from the tiles in cardinal directions

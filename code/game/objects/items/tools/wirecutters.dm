@@ -12,7 +12,7 @@
 	damage_force = 6
 	throw_speed = 2
 	throw_range = 9
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
 	materials_base = list(MAT_STEEL = 80)
 	attack_verb = list("pinched", "nipped")
@@ -118,7 +118,7 @@
 	desc = "This cuts wires.  With <span class='alien'>Science!</span>"
 	catalogue_data = list(/datum/category_item/catalogue/anomalous/precursor_a/alien_wirecutters)
 	icon_state = "hybcutters"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	weight = ITEM_WEIGHT_HYBRID_TOOLS
 	origin_tech = list(TECH_MATERIAL = 3, TECH_ENGINEERING = 3, TECH_PHORON = 2)
 	attack_verb = list("pinched", "nipped", "warped", "blasted")

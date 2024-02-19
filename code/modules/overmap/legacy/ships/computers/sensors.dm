@@ -14,6 +14,23 @@
 	icon_screen = "adv_sensors_screen"
 	light_color = "#05A6A8"
 
+/obj/machinery/computer/ship/sensors/planet
+	name = "Sensor satelite uplink console"
+	var/planet_type = /obj/overmap/entity/visitable/sector/lythios43c
+
+/obj/machinery/computer/ship/sensors/planet/Initialize(mapload)
+	. = ..()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/machinery/computer/ship/sensors/planet/LateInitialize()
+	. = ..()
+	var/area/overmap/map = locate() in world
+	for(var/obj/overmap/entity/visitable/sector/S in map)
+		if(istype(S,planet_type))
+			linked = S
+			src.sensors = linked.sensors//Late init to be sure that the sensors have been set on the planet
+			break
+
 /obj/machinery/computer/ship/sensors/attempt_hook_up(obj/overmap/entity/visitable/ship/sector)
 	if(!(. = ..()))
 		return
@@ -150,6 +167,7 @@
 	var/range = 1
 
 	idle_power_usage = 5000
+	var/heat_factor = 1
 
 /obj/machinery/shipsensors/attackby(obj/item/W, mob/user)
 	var/damage = max_health - health
@@ -223,7 +241,7 @@
 
 			take_damage_legacy(rand(10,50))
 			toggle()
-		heat += idle_power_usage/15000
+		heat += (idle_power_usage/15000) * heat_factor
 
 	if (heat > 0)
 		heat = max(0, heat - heat_reduction)
@@ -254,3 +272,20 @@
 /obj/machinery/shipsensors/weak
 	heat_reduction = 0.2
 	desc = "Miniturized gravity scanner with various other sensors, used to detect irregularities in surrounding space. Can only run in vacuum to protect delicate quantum BS elements."
+
+/obj/machinery/shipsensors/uplink
+	name = "sensors uplink"
+	desc = "A high power uplink, connecting to a satelite with a high power sensor array and a sophisticated cooling system."
+	var/planet_type = /obj/overmap/entity/visitable/sector/lythios43c
+	heat_factor = 0.1//Much much lower, since we are a cool sensor sat.
+
+/obj/machinery/shipsensors/uplink/in_vacuum()
+	return TRUE
+
+/obj/machinery/shipsensors/uplink/Initialize(mapload)
+	. = ..()
+	var/area/overmap/map = locate() in world
+	for(var/obj/overmap/entity/visitable/sector/S in map)
+		if(istype(S,planet_type))
+			S.sensors = src
+

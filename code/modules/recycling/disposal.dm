@@ -109,7 +109,7 @@
 		var/obj/item/storage/bag/trash/T = I
 		to_chat(user, "<font color=#4F49AF>You empty the bag.</font>")
 		for(var/obj/item/O in T.contents)
-			T.remove_from_storage(O,src)
+			T.obj_storage.remove(O, src)
 		T.update_icon()
 		update()
 		return
