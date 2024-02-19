@@ -105,7 +105,7 @@
 /datum/bulk_entity_persistence/debris/serialize_entities_into_chunks(list/atom/movable/entities, datum/map_level/level, datum/map_level_persistence/persistence)
 	var/list/datum/bulk_entity_chunk/chunks = list()
 	if(!length(entities))
-		continue
+		return
 	// split by area/turf
 	var/list/area_turf_tuples = SSpersistence.entity_group_by_area_and_turf(entities)
 	for(var/list/area_turf_tuple as anything in area_turf_tuples)
@@ -130,6 +130,7 @@
 				"turf_lock" = turf_type,
 				"entities" = entities_constructed,
 			)
+			chunks += chunk
 	return chunks
 
 /datum/bulk_entity_persistence/debris/load_chunks(list/datum/bulk_entity_chunk/chunks)

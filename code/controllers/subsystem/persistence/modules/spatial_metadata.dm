@@ -20,6 +20,8 @@
 		// level id required but not map id; if map id null, map persisting objects will simply use the level id
 		if(level.persistence_allowed && effective_level_id)
 			level.persistence.load_or_new(effective_level_id, effective_map_id || effective_level_id)
+		else
+			level.persistence_allowed = FALSE
 	return level.persistence
 
 /datum/controller/subsystem/persistence/proc/spatial_metadata_get_current_generation(datum/map_level/level)

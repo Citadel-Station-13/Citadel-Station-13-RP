@@ -58,7 +58,7 @@
 /datum/bulk_entity_persistence/trash/serialize_entities_into_chunks(list/atom/movable/entities, datum/map_level/level, datum/map_level_persistence/persistence)
 	var/list/datum/bulk_entity_chunk/chunks = list()
 	if(!length(entities))
-		continue
+		return
 	// split by area/turf
 	var/list/area_turf_tuples = SSpersistence.entity_group_by_area_and_turf(entities)
 	for(var/list/area_turf_tuple as anything in area_turf_tuples)
@@ -69,7 +69,7 @@
 		for(var/list/atom/movable/chunk_entities as anything in SSpersistence.entity_split_by_amount(area_turf_entities, 500))
 			// create chunk
 			var/datum/bulk_entity_chunk/chunk = new
-			chunk.level_id = level_id
+			chunk.level_id = persistence.level_id
 			var/list/entities_constructed = list()
 			for(var/atom/movable/entity as anything in chunk_entities)
 				entities_constructed[++entities_constructed.len] = list(
@@ -83,6 +83,7 @@
 				"turf_lock" = turf_type,
 				"entities" = entities_constructed,
 			)
+			chunks += chunk
 	return chunks
 
 /datum/bulk_entity_persistence/trash/load_chunks(list/datum/bulk_entity_chunk/chunks)
@@ -193,12 +194,14 @@
 	// prepare
 	var/list/datum/persistent_trash_group/meshes = list()
 	var/list/obj/item/singles = list()
+	var/list/datum/vec2/vertices_processing = vertices.Copy()
+	var/list/datum/vec2/processed = list()
 
 	// go through vertices and create meshes
-	while(length(vertices))
-		var/datum/vec2/vertex = vertices[length(vertices)]
+	while(length(vertices_processing))
+		var/datum/vec2/vertex = vertices_processing[length(vertices_processing)]
+		vertices_processing.len--
 		var/list/items_on_vertex = vertices[vertex]
-		vertices.len--
 
 		var/list/datum/vec2/expanding = list(vertex)
 		var/list/obj/item/items_within_group = list()
@@ -207,14 +210,17 @@
 		var/expanding_index = 1
 		while(expanding_index <= length(expanding))
 			var/datum/vec2/source = expanding[expanding_index]
+			expanding_index++
+			if(processed[source])
+				continue
+			processed[source] = TRUE
 			maximum_density_over_expansion = max(maximum_density_over_expansion, 1 / source.voronoi_area)
 			for(var/datum/vec2/dest in constructed_graph.vertices[source])
 				if(source.chebyshev_distance_to(dest) > mesh_heuristic_threshold)
 					continue
 				expanding |= dest
 				items_within_group += vertices[source]
-				vertices -= dest
-			expanding_index++
+				vertices_processing -= dest
 
 		if(length(items_within_group) > 1)
 			var/datum/persistent_trash_group/constructed_mesh = new
@@ -228,9 +234,7 @@
 			ASSERT(items_within_group[1])
 			singles += items_within_group[1]
 
-
 	return list(meshes, singles)
-
 
 /datum/persistent_trash_group
 	/// trash in this group
