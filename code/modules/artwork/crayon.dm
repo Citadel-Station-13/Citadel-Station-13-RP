@@ -25,8 +25,8 @@ GLOBAL_LIST_EMPTY(crayon_data_lookup_by_string_icon_path)
 		'icons/modules/artwork/debris/crayon_living_32x32.dmi' = "Living",
 		'icons/modules/artwork/debris/crayon_runes_32x32.dmi' = "Runes",
 		'icons/modules/artwork/debris/crayon_signs_32x32.dmi' = "Signs",
-		'icons/modules/artwork/debris/crayon_misc_32x32.dmi' = "Misc (32x32)",
-		'icons/modules/artwork/debris/crayon_misc_96x32.dmi' = "Misc (96x32)",
+		'icons/modules/artwork/debris/crayon_misc_32x32.dmi' = "Misc-32x32",
+		'icons/modules/artwork/debris/crayon_misc_96x32.dmi' = "Misc-96x32",
 	)
 
 	for(var/icon_path in crayon_files)
