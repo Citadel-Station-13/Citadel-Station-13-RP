@@ -61,15 +61,25 @@ export const Crayon = (props, context) => {
                 {(data.anyColor || data.colorList) && (
                   <LabeledList.Item label="Color">
                     {data.anyColor? (
-                      <>
-                        <Box backgroundColor={data.graffitiPickedColor} width="10px" height="10px" />
-                        <Button content="Change" onClick={() => setPickingColor(true)} />
-                      </>
-                    ) : (data.colorList?.map((color) => (
-                      <Button key={color} content={
-                        <Box backgroundColor={data.graffitiPickedColor} width="10px" height="10px" />
-                      } onClick={() => act('color', { color: color })} />
-                    )))}
+                      <Stack>
+                        <Stack.Item>
+                          <Box backgroundColor={data.graffitiPickedColor} width="15px" height="15px" />
+                        </Stack.Item>
+                        <Stack.Item>
+                          <Button content="Change" onClick={() => setPickingColor(true)} />
+                        </Stack.Item>
+                      </Stack>
+                    ) : (
+                      <Stack>
+                        {data.colorList?.map((color) => (
+                          <Stack.Item key={color}>
+                            <Button content={
+                              <Box backgroundColor={data.graffitiPickedColor} width="15px" height="15px" />
+                            } onClick={() => act('color', { color: color })} />
+                          </Stack.Item>
+                        ))}
+                      </Stack>
+                    )}
                   </LabeledList.Item>
                 )}
                 <LabeledList.Item label="Angle">

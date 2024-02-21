@@ -51,8 +51,10 @@
 	. = ..()
 	if(!isnull(crayon_pickable_colors))
 		crayon_pickable_colors = typelist(NAMEOF(src, crayon_pickable_colors), crayon_pickable_colors)
-	if(isnull(crayon_color))
-		crayon_color = color
+	if(length(crayon_pickable_colors))
+		crayon_color = crayon_pickable_colors[1]
+	else if(isnull(crayon_color))
+		crayon_color = color || "#ffffff"
 	create_reagents(crayon_reagent_amount)
 	reagents.add_reagent(crayon_reagent_type, crayon_reagent_amount)
 
@@ -139,7 +141,7 @@
 		state = current_graffiti_icon_state
 	if(isnull(angle))
 		angle = current_graffiti_angle
-	var/obj/effect/debris/cleanable/crayon/created = new debris_path(target, datapack, crayon_color, state)
+	var/obj/effect/debris/cleanable/crayon/created = new debris_path(target, datapack, crayon_color, state, angle)
 	return created
 
 /obj/item/pen/crayon/proc/color_entity(atom/target)
@@ -151,7 +153,11 @@
 	if(isnull(datapack))
 		datapack = GLOB.crayon_data_lookup_by_string_icon_path[current_graffiti_icon_string_path]
 		if(isnull(datapack))
-			return
+			actor.chat_feedback(
+				SPAN_WARNING("Pick a stencil first!"),
+				src,
+			)
+			return FALSE
 	if(isnull(state))
 		state = current_graffiti_icon_state
 	if(isnull(angle))
