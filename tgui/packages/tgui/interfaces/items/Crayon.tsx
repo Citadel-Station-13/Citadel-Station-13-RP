@@ -1,9 +1,9 @@
 import { BooleanLike } from "common/react";
-import { useBackend } from "../../backend";
-import { Button, Flex, LabeledList, Section, Stack } from "../../components";
+import { useBackend, useLocalState } from "../../backend";
+import { Box, Button, Dimmer, Flex, Icon, LabeledList, NumberInput, Section, Stack } from "../../components";
 import { Sprite } from "../../components/Sprite";
 import { Window } from "../../layouts";
-import { ByondAtomColor } from "../common/Color";
+import { ByondColorString, ColorPicker } from "../common/Color";
 
 const CRAYON_SPRITESHEET_NAME = "crayon-graffiti";
 
@@ -21,10 +21,11 @@ interface CrayonUIData {
   capped: BooleanLike;
   cappable: BooleanLike;
   anyColor: BooleanLike;
-  colorList: null | ByondAtomColor[];
+  colorList: null | ByondColorString[];
   graffitiPickedIcon: string | null;
   graffitiPickedState: string | null;
   graffitiPickedAngle: number;
+  graffitiPickedColor: ByondColorString;
 }
 
 const sizeKeyForCrayonDatapack = (pack: CrayonDatapack) => {
@@ -33,9 +34,19 @@ const sizeKeyForCrayonDatapack = (pack: CrayonDatapack) => {
 
 export const Crayon = (props, context) => {
   const { data, act } = useBackend<CrayonUIData>(context);
+  const [pickingColor, setPickingColor] = useLocalState<boolean>(context, 'pickingColor', false);
 
   return (
     <Window width={500} height={800} title={data.canonicalName}>
+      {pickingColor && (
+        <Dimmer>
+          <Box>
+            <ColorPicker
+              currentColor={data.graffitiPickedColor}
+              setColor={(what) => act('color', { color: what })} />
+          </Box>
+        </Dimmer>
+      )}
       <Window.Content>
         <Stack fill vertical>
           <Stack.Item>
@@ -47,11 +58,35 @@ export const Crayon = (props, context) => {
                       selected={!data.capped} onClick={() => act('cap')} />
                   </LabeledList.Item>
                 )}
-                <LabeledList.Item label="Color">
-                  test
-                </LabeledList.Item>
+                {(data.anyColor || data.colorList) && (
+                  <LabeledList.Item label="Color">
+                    {data.anyColor? (
+                      <>
+                        Test
+                        <Button content="Change" onClick={() => setPickingColor(true)} />
+                      </>
+                    ) : (data.colorList?.map((color) => (
+                      <Button key={color} content="t" onClick={() => act('color', { color: color })} />
+                    )))}
+                  </LabeledList.Item>
+                )}
                 <LabeledList.Item label="Angle">
-                  Test
+                  <>
+                    <Icon
+                      mr={1}
+                      size={1.2}
+                      name="arrow-up"
+                      rotation={
+                        Math.round(data.graffitiPickedAngle)
+                      } />
+                    <NumberInput
+                      value={data.graffitiPickedAngle}
+                      unit="deg"
+                      minValue={0}
+                      maxValue={359}
+                      step={1}
+                      onChange={(e, val) => act('angle', { angle: val })} />
+                  </>
                 </LabeledList.Item>
               </LabeledList>
             </Section>

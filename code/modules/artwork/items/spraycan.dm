@@ -15,6 +15,7 @@
 	crayon_name = "spraycan"
 	crayon_sound = /datum/soundbyte/spray_air
 	crayon_free_recolor = TRUE
+	crayon_edible = FALSE
 	cappable = TRUE
 	capped = TRUE
 	debris_time = 1 SECONDS

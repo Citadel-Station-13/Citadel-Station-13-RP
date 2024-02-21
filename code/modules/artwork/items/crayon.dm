@@ -32,6 +32,8 @@
 	var/crayon_reagent_amount = 6
 	/// sound to play
 	var/crayon_sound
+	/// can eat
+	var/crayon_edible = TRUE
 
 	/// currently picked datapack string path
 	var/current_graffiti_icon_string_path
@@ -81,6 +83,7 @@
 	.["graffitiPickedIcon"] = current_graffiti_icon_string_path
 	.["graffitiPickedState"] = current_graffiti_icon_state
 	.["graffitiPickedAngle"] = current_graffiti_angle
+	.["graffitiPickedColor"] = crayon_color
 
 /obj/item/pen/crayon/ui_assets(mob/user)
 	. = ..()
@@ -212,10 +215,10 @@
 /obj/item/pen/crayon/proc/switch_color(new_color)
 	crayon_color = new_color
 
-/obj/item/pen/crayon/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+/obj/item/pen/crayon/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return ..()
-	if(iscarbon(user) && target == user)
+	if(crayon_edible && iscarbon(user) && target == user)
 		var/mob/living/carbon/eater = user
 		to_chat(user, SPAN_WARNING("You take a bite out of [src] and swallow it. Was that a good idea?"))
 		// todo: logging
@@ -223,6 +226,11 @@
 		if(!reagents.total_volume)
 			qdel(src)
 		return CLICKCHAIN_DID_SOMETHING
+	return ..()
+
+/obj/item/pen/crayon/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
+		return ..()
 	var/datum/event_args/actor/e_args = new(user)
 	if(isturf(target))
 		attempt_make_graffiti(target, e_args)
@@ -232,6 +240,7 @@
 	else if(isobj(target))
 		attempt_color_entity(target, e_args)
 		return CLICKCHAIN_DID_SOMETHING
+	return ..()
 
 /obj/item/pen/crayon/red
 	icon_state = "crayonred"
