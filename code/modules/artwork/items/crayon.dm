@@ -207,9 +207,10 @@
 	return FALSE
 
 /obj/item/pen/crayon/proc/has_remaining(amount)
-	return amount >= remaining
+	return amount <= remaining
 
 /obj/item/pen/crayon/proc/use_remaining(amount)
+	. = remaining >= amount
 	remaining = max(0, remaining - amount)
 
 /obj/item/pen/crayon/proc/switch_color(new_color)

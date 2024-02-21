@@ -62,11 +62,13 @@ export const Crayon = (props, context) => {
                   <LabeledList.Item label="Color">
                     {data.anyColor? (
                       <>
-                        Test
+                        <Box backgroundColor={data.graffitiPickedColor} width="10px" height="10px" />
                         <Button content="Change" onClick={() => setPickingColor(true)} />
                       </>
                     ) : (data.colorList?.map((color) => (
-                      <Button key={color} content="t" onClick={() => act('color', { color: color })} />
+                      <Button key={color} content={
+                        <Box backgroundColor={data.graffitiPickedColor} width="10px" height="10px" />
+                      } onClick={() => act('color', { color: color })} />
                     )))}
                   </LabeledList.Item>
                 )}
