@@ -17,6 +17,7 @@
 	crayon_free_recolor = TRUE
 	cappable = TRUE
 	capped = TRUE
+	debris_time = 1 SECONDS
 
 	/// do we render the cap?
 	var/cap_overlay = TRUE

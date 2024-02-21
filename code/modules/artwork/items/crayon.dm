@@ -96,7 +96,7 @@
 			if(!cappable)
 				return TRUE
 			set_capped(!capped)
-			usr.visible_message(SPAN_NOTICE("[usr] [capped? "caps" : "uncaps"] src."), range = MESSAGE_RANGE_ITEM_SOFT)
+			usr.visible_message(SPAN_NOTICE("[usr] [capped? "caps" : "uncaps"] [src]."), range = MESSAGE_RANGE_ITEM_SOFT)
 			return TRUE
 		if("angle")
 			current_graffiti_angle = text2num(params["angle"])
@@ -204,7 +204,7 @@
 	return FALSE
 
 /obj/item/pen/crayon/proc/has_remaining(amount)
-	return amount <= remaining
+	return amount >= remaining
 
 /obj/item/pen/crayon/proc/use_remaining(amount)
 	remaining = max(0, remaining - amount)
