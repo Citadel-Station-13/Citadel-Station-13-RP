@@ -150,7 +150,7 @@
 	mob.key_focus?.keyLoop(src)
 
 /client/proc/update_movement_keys(datum/game_preferences/direct_prefs)
-	var/datum/preferences/D = preferences || direct_prefs
+	var/datum/game_preferences/D = preferences || direct_prefs
 	if(!D?.keybindings)
 		return
 	movement_keys = list()

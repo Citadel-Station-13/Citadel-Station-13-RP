@@ -397,8 +397,8 @@ export const useLocalState = <T>(
 /**
  * Gets a computation, that should be cached.
  * Used to do initial pre-processing of data.
- * 
- * todo: rethink this when we go to react, this is shitcode-y
+ *
+ * todo: rethink this when we go to react or otherwise rework tgui, this is shitcode-y
  */
 export const useComputedOnce = <T>(
   context: any, key: string, valueClosure: () => T

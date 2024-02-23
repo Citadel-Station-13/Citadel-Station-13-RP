@@ -464,6 +464,8 @@
 /**
  * Registers a datum as a module into this UI.
  *
+ * todo: why is 'interface' a param again..?
+ *
  * @params
  * * module - the module in question
  * * id - the id to use for the module

@@ -90,7 +90,33 @@ GLOBAL_LIST_EMPTY(game_preferences)
 	save_to_sql()
 
 /datum/game_preferences/proc/perform_legacy_migration()
-	#warn FUCK
+	var/savefile/legacy_savefile = new /savefile("data/player_saves/[copytext(ckey, 1, 2)]/[ckey]/preferences.sav")
+	var/list/legacy_options
+	legacy_savefile["global"] >> legacy_options
+	if(isnull(legacy_options))
+		legacy_options = list()
+
+	// we are fired after reset, but before save
+	// we assume lists are init'd
+	for(var/key in GLOB.game_preference_entries)
+		var/datum/game_preference_entry/entry = GLOB.game_preference_entries[key]
+		var/migrated_value
+		if(entry.legacy_global_key)
+			migrated_value = legacy_options[entry.legacy_global_key]
+		else if(entry.legacy_savefile_key)
+			S[entry.legacy_savefile_key] >> migrated_value
+		if(!isnull(migrated_value))
+			migrated_value = entry.filter_value(active, migrated_value)
+			entries_by_key[key] = migrated_value
+
+	var/list/old_toggles
+	legacy_savefile["preferences"] >> old_toggles
+
+	for(var/key in GLOB.game_preference_toggles)
+		var/datum/game_preference_toggle/toggle = GLOB.game_preference_toggles[key]
+		if(!toggle.legacy_key)
+			continue
+		toggles_by_key[key] = !!old_toggles[toggle.legacy_key]
 
 /datum/game_preferences/proc/perform_initial_load()
 	if(SSdbcore.Connect())
@@ -118,6 +144,8 @@ GLOBAL_LIST_EMPTY(game_preferences)
 			perform_legacy_migration()
 			// save to file
 			save_to_file()
+
+	sanitize_everything()
 
 //* Reset *//
 
@@ -165,7 +193,17 @@ GLOBAL_LIST_EMPTY(game_preferences)
 	return toggles_by_key[toggle.key]
 
 /datum/game_preferences/proc/set_entry(datum/game_preference_entry/id_path_instance, value)
-	#warn impl
+	var/datum/game_preference_entry/entry = fetch_game_preference_entry(id_path_instance)
+	if(isnull(entry))
+		CRASH("invalid fetch")
+	if(!initialized)
+		return FALSE
+	if(!entry.is_visible(acitve))
+		return FALSE
+	value = entry.filter_value(active, value)
+	entries_by_key[entry.key] = value
+	entry.on_set(active, value, FALSE)
+	return TRUE
 
 /datum/game_preferences/proc/get_entry(datum/game_preference_entry/id_path_instance)
 	var/datum/game_preference_entry/entry = fetch_game_preference_entry(id_path_instance)
@@ -185,8 +223,10 @@ GLOBAL_LIST_EMPTY(game_preferences)
  * @return FALSE if we couldn't load
  */
 /datum/game_preferences/proc/load_from_sql()
+	#warn impl
 
 /datum/game_preferences/proc/save_to_sql()
+	#warn impl
 
 /datum/game_preferences/proc/file_path()
 	return "data/players/[copytext(ckey, 1, 2)]/[ckey]/preferences.json"
@@ -202,29 +242,61 @@ GLOBAL_LIST_EMPTY(game_preferences)
 	if(!fexists(savefile_path))
 		return FALSE
 
-	var/file_ref = file(savefile_path)
-	#warn impl
+	var/list/deserialized = json_decode(file2text(savefile_path))
+
+	entries_by_key = deserialized["entries"]
+	toggles_by_key = deserialized["toggles"]
+	keybindings = deserialized["keybindings"]
+
+	return TRUE
 
 /datum/game_preferences/proc/save_to_file()
 	var/savefile_path = file_path()
 
-	var/file_ref = file(savefile_path)
+	var/list/serializing = list(
+		"entries" = entries_by_key,
+		"toggles" = toggles_by_key,
+		"keybindings" = keybindings,
+	)
 
-#warn impl
+	if(fexists(savefile_path))
+		fdel(savefile_path)
+
+	text2file(json_encode(serializing), savefile_path)
+
+	return TRUE
+
+/datum/game_preferences/proc/sanitize_everything()
+	#warn impl
 
 //* UI *//
 
 /datum/game_preferences/ui_static_data(mob/user, datum/tgui/ui, is_module)
 	. = ..()
-
-/datum/game_preferences/ui_data(mob/user, datum/tgui/ui, is_module)
-	. = ..()
+	var/list/middleware = list()
+	for(var/key in GLOB.game_preference_middleware)
+		middleware += key
+	.["middleware"] = middleware
+	var/list/entries = list()
+	for(var/key in GLOB.game_preference_entries)
+		var/datum/game_preference_entry/entry = GLOB.game_preference_entries[key]
+		entries[++entries.len] = entry.tgui_preference_schema()
+	.["entries"] = entries
 
 /datum/game_preferences/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
-	. = ..()
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(isnull(ui))
+		ui = new(user, src, "GamePreferences")
+		for(var/key in GLOB.game_preference_middleware)
+			var/datum/game_preference_middleware/middleware = GLOB.game_preference_middleware[key]
+			ui.register_module(middleware, key)
+		ui.open()
 
 /datum/game_preferences/ui_route(action, list/params, datum/tgui/ui, id)
 	. = ..()
+	if(.)
+		return
+	var/datum/game_preference_middleware/middleware = GLOB.game_preference_middleware[id]
 	#warn impl
 
 /datum/game_preferences/ui_status(mob/user, datum/ui_state/state)

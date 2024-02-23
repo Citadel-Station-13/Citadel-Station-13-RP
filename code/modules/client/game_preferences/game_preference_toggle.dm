@@ -43,14 +43,17 @@ GLOBAL_LIST_INIT(game_preference_toggles, init_game_preference_toggles())
 /datum/game_preference_toggle/proc/is_visible(client/user)
 	return TRUE
 
-#warn impl
-
-#warn unit test key uniqueness
-
-
-#warn use GAME_PREFERENCE_TOGGLE_VERB_DECLARE(NAME, TOGGLEPATH)
-
-#warn impl all toggles below
+/datum/game_preference_toggle/proc/tgui_preference_schema()
+	return list(
+		"key" = key,
+		"category" = category,
+		"priority" = priority,
+		"default" = default_value,
+		"name" = name,
+		"desc" = description,
+		"enabled" = enabled_name,
+		"disabled" = disabled_name,
+	)
 
 /datum/game_preference_toggle/admin
 	abstract_type = /datum/game_preference_toggle/admin

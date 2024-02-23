@@ -1,18 +1,14 @@
-import { useBackend, useComputedOnce, useLocalState } from "../../backend";
+import { useBackend, useComputedOnce, useLocalState, useModule } from "../../backend";
 import { Button, Section, Stack } from "../../components";
 import { Window } from "../../layouts";
-import { GamePreferenceKeybindScreen } from "./GamePreferenceKeybinds";
 import { GamePreferenceEntry, GamePreferenceEntrySchema } from "./GamePreferenceEntry";
-import { GamePreferenceToggleSchema } from "./GamePreferenceToggle";
+import { GamePreferenceKeybindScreen } from "./GamePreferenceKeybinds";
+import { GamePreferenceToggleScreen } from "./GamePreferenceToggles";
 
 interface GamePreferencesData {
   entries: GamePreferenceEntrySchema[];
-  toggles: GamePreferenceToggleSchema[];
+  middleware: string[];
 }
-
-const middlewareCategories = [
-  "Keybindings",
-];
 
 const computeGamePreferenceCategoryCache = (entries: GamePreferenceEntrySchema[]): Record<string, string[]> => {
   let computed: Record<string, string[]> = {};
@@ -22,20 +18,16 @@ const computeGamePreferenceCategoryCache = (entries: GamePreferenceEntrySchema[]
     }
     computed[entry.category].push(entry.subcategory);
   });
-  middlewareCategories.forEach((cat) => {
-    if (!computed[cat]) {
-      computed[cat] = [];
-    }
-  });
   Object.values(computed).forEach((arr) => arr.sort((a, b) => a.localeCompare(b)));
   return computed;
 };
 
 export const GamePreferences = (props, context) => {
   const { act, data } = useBackend<GamePreferencesData>(context);
-  
+
   let categoryCache = useComputedOnce(context, "prefsCategoryCache", () => computeGamePreferenceCategoryCache(data.entries));
   let [activeCategory, setActiveCategory] = useLocalState<string>(context, "prefsCategoryActive", Object.keys(categoryCache)[0]);
+  let [activeMiddleware, setActiveMiddleware] = useLocalState<string | null>(context, "prefsMiddlewareActive", null);
 
   return (
     <Window width={800} height={800}>
@@ -45,7 +37,7 @@ export const GamePreferences = (props, context) => {
             <Stack fill>
               {Object.keys(categoryCache).sort((a, b) => a.localeCompare(b)).map((cat) => (
                 <Stack.Item grow={1} key={cat}>
-                  <Button 
+                  <Button
                     content={cat}
                     selected={activeCategory === cat}
                     onClick={() => setActiveCategory(cat)} />
@@ -54,7 +46,11 @@ export const GamePreferences = (props, context) => {
             </Stack>
           </Stack.Item>
           <Stack.Item grow={1}>
-            <GamePreferencesBody activeCategory={activeCategory} subcategories={categoryCache[activeCategory]} />
+            <GamePreferencesBody
+              activeCategory={activeCategory}
+              activeMiddleware={activeMiddleware}
+              subcategories={categoryCache[activeCategory]}
+              middleware={data.middleware} />
           </Stack.Item>
         </Stack>
       </Window.Content>
@@ -64,17 +60,26 @@ export const GamePreferences = (props, context) => {
 
 interface GamePreferencesBodyProps {
   readonly activeCategory: string;
+  readonly activeMiddleware: string | null;
   readonly subcategories: string[];
+  readonly middleware: string[];
 }
 
 const GamePreferencesBody = (props: GamePreferencesBodyProps, context) => {
   const { act, data } = useBackend<GamePreferencesData>(context);
 
-  switch (props.activeCategory) {
-    case "Keybindings":
-      return (
-        <GamePreferenceKeybindScreen />
-      );
+  if (props.activeMiddleware) {
+    switch (props.activeMiddleware) {
+      let middlewareData =
+      case 'keybindings':
+        return (
+          <GamePreferenceKeybindScreen />
+        );
+      case 'toggles':
+        return (
+          <GamePreferenceToggleScreen />
+        );
+    }
   }
 
   return (

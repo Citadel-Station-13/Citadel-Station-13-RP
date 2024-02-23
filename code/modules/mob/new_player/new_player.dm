@@ -362,7 +362,8 @@
 		popup.open()
 
 		if(client.player.block_on_available())
-			client.prefs.lastnews = md5(F["body"])
+			client.player.player_misc["lastnews"] = md5(F["body"])
+			client.player.save()
 
 /mob/new_player/proc/time_till_respawn()
 	if(!ckey)

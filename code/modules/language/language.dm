@@ -276,10 +276,10 @@
 	return 0
 
 /mob/proc/get_language_prefix()
-	return client?.prefs?.get_primary_language_prefix() || config_legacy.language_prefixes[1]
+	return config_legacy.language_prefixes[1]
 
 /mob/proc/is_language_prefix(prefix)
-	return client?.prefs?.is_language_prefix(prefix) || (prefix in config_legacy.language_prefixes)
+	return (prefix in config_legacy.language_prefixes)
 
 //TBD
 /mob/verb/check_languages()

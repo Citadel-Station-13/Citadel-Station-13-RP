@@ -15,13 +15,10 @@ GLOBAL_LIST_INIT(game_preference_middleware, init_game_preference_middleware())
 /datum/game_preference_middleware
 	/// key
 	var/key
-	/// tgui interface
-	var/tgui_interface
-
 /**
  * return TRUE to stop handling
  */
-/datum/game_preference_middleware/proc/handle_topic(datum/game_preferences/prefs, action, list/params)	
+/datum/game_preference_middleware/proc/handle_topic(datum/game_preferences/prefs, action, list/params)
 	#warn impl
 
 /**
@@ -31,27 +28,13 @@ GLOBAL_LIST_INIT(game_preference_middleware, init_game_preference_middleware())
 	return
 
 /**
+ * sanitize everything
+ */
+/datum/game_preference_middleware/proc/handle_sanitize(datum/game_preferences/prefS)
+	return
+
+/**
  * on initial load
  */
 /datum/game_preference_middleware/proc/on_initial_load(datum/game_preferences/prefs)
 	return
-
-/datum/game_preference_middleware/ui_static_data(mob/user, datum/tgui/ui, is_module)
-	. = ..()
-
-	var/datum/game_preferences/prefs = ui.src_object
-	if(!istype(prefs))
-		return
-		
-	.["$tgui"] = tgui_interface
-
-	#warn impl
-
-/datum/game_preference_middleware/ui_data(mob/user, datum/tgui/ui)
-	. = ..()
-
-	var/datum/game_preferences/prefs = ui.src_object
-	if(!istype(prefs))
-		return
-		
-	#warn impl

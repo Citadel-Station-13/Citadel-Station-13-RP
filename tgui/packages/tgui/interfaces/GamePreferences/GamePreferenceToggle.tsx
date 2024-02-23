@@ -7,7 +7,14 @@ interface GamePreferenceToggleProps {
 }
 
 export interface GamePreferenceToggleSchema {
-
+  name: string;
+  desc: string;
+  enabled: string;
+  disabled: string;
+  key: string;
+  category: string;
+  priority: number;
+  default: BooleanLike;
 }
 
 export const GamePreferenceToggle = (props: GamePreferenceToggleProps, context) => {

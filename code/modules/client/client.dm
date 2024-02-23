@@ -98,7 +98,6 @@
 
 	//? Preferences
 	/// client preferences
-	#warn init this same time as prefs
 	var/datum/game_preferences/preferences
 
 	//? Statpanel
