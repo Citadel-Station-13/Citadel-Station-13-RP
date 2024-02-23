@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_bulk_entity` (
 CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_static_level_objects` (
   `generation` INT(11) NOT NULL,
   `object_id` VARCHAR(64) NOT NULL,
-  `level_id` VARCHAR(64) NULL,
+  `level_id` VARCHAR(64) NOT NULL,
   `data` MEDIUMTEXT NOT NULL,
   PRIMARY KEY(`generation`, `object_id`, `level_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
