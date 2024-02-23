@@ -864,7 +864,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/maintenance/trash_pit
 	name = "\improper Trash Pit"
-	area_flag = AREA_FLAG_ERODING
+	area_flags = AREA_FLAG_ERODING
 
 /area/maintenance/cargo_research
 	name = "Cargo Research Maintenance"
