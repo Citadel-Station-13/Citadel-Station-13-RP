@@ -578,6 +578,7 @@
 
 /area/maintenance/lower/trash_pit
 	name = "\improper Trash Pit"
+	area_flag = AREA_FLAG_ERODING
 
 /area/maintenance/lower/solars
 	name = "\improper Solars Maintenance"

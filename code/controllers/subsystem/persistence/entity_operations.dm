@@ -59,3 +59,23 @@
 		if(!ordered_level_data[entity.z].persistence_allowed)
 			continue
 		. += entity
+
+/**
+ * drops all entities in eroding turfs
+ *
+ * unsimulated turfs are always eroding for now.
+ */
+/datum/controller/subsystem/persistence/proc/entity_filter_out_eroding_turfs(list/atom/movable/entities)
+	. = list()
+	var/outdoors_will_erode = CONFIG_GET(flag/persistent_outdoors_will_erode)
+	for(var/atom/movable/entity as anything in entities)
+		var/turf/simulated/simulated_turf = entity.loc
+		if(!istype(simulated_turf))
+			continue
+		if(outdoors_will_erode && simulated_turf.outdoors)
+			continue
+		var/area/belonging_to_area = simulated_turf.loc
+		if(belonging_to_area?.area_flags & AREA_FLAG_ERODING)
+			continue
+		. += entity
+

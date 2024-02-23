@@ -43,6 +43,8 @@ GLOBAL_LIST_EMPTY(crayon_data_lookup_by_string_icon_path)
 		data_holder.states = states
 		data_holder.width = width
 		data_holder.height = height
+		data_holder.centering_pixel_x = -((width - WORLD_ICON_SIZE) * 0.5)
+		data_holder.centering_pixel_y = -((height - WORLD_ICON_SIZE) * 0.5)
 		data_holder.icon_ref = icon
 		data_holder.name = name
 		data_holder.id = "[icon_path]"
@@ -66,6 +68,10 @@ GLOBAL_LIST_EMPTY(crayon_data_lookup_by_string_icon_path)
 	var/height
 	/// our icon ref
 	var/icon/icon_ref
+	/// shift by this to center
+	var/centering_pixel_x
+	/// shift by this to center
+	var/centering_pixel_y
 
 /datum/crayon_decal_meta/proc/tgui_crayon_data()
 	return list(

@@ -15,7 +15,7 @@
 	// turn angle, clockwise of north
 	var/turn_angle = 0
 
-/obj/effect/debris/cleanable/crayon/Initialize(mapload, datum/crayon_decal_meta/meta, color, state, angle)
+/obj/effect/debris/cleanable/crayon/Initialize(mapload, datum/crayon_decal_meta/meta, color, state, angle, pixel_x, pixel_y)
 	. = ..()
 
 	if(isnull(meta))
@@ -23,7 +23,9 @@
 
 	// init crayon
 	icon = meta.icon_ref
-	color = color
+	src.color = color
+	src.pixel_x = pixel_x + meta.centering_pixel_x
+	src.pixel_y = pixel_y + meta.centering_pixel_y
 	icon_state = state
 
 	// init turn
@@ -42,6 +44,8 @@
 	.["color"] = color
 	.["icon"] = "[icon]"
 	.["state"] = icon_state
+	.["pixel_x"] = pixel_x
+	.["pixel_y"] = pixel_y
 
 /obj/effect/debris/cleanable/crayon/deserialize(list/data)
 	. = ..()
@@ -61,6 +65,8 @@
 		turning.Turn(turn_angle)
 		transform = turning
 	color = data["color"]
+	pixel_x = data["pixel_x"]
+	pixel_y = data["pixel_y"]
 
 /obj/effect/debris/cleanable/crayon/chalk
 	name = "chalk drawing"

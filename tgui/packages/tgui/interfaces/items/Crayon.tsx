@@ -1,6 +1,6 @@
 import { BooleanLike } from "common/react";
 import { useBackend, useLocalState } from "../../backend";
-import { Box, Button, Dimmer, Flex, Icon, LabeledList, NumberInput, Section, Stack } from "../../components";
+import { Box, Button, Dimmer, Flex, Icon, LabeledList, Modal, NumberInput, Section, Stack } from "../../components";
 import { Sprite } from "../../components/Sprite";
 import { Window } from "../../layouts";
 import { ByondColorString, ColorPicker } from "../common/Color";
@@ -40,11 +40,15 @@ export const Crayon = (props, context) => {
     <Window width={500} height={800} title={data.canonicalName}>
       {pickingColor && (
         <Dimmer>
-          <Box>
-            <ColorPicker
-              currentColor={data.graffitiPickedColor}
-              setColor={(what) => act('color', { color: what })} />
-          </Box>
+          <Modal>
+            <Section title="Color" backgroundColor="transparent" buttons={
+              <Button icon="times" onClick={() => setPickingColor(false)} />
+            }>
+              <ColorPicker
+                currentColor={data.graffitiPickedColor}
+                setColor={(what) => act('color', { color: what })} />
+            </Section>
+          </Modal>
         </Dimmer>
       )}
       <Window.Content>
@@ -63,7 +67,8 @@ export const Crayon = (props, context) => {
                     {data.anyColor? (
                       <Stack>
                         <Stack.Item>
-                          <Box backgroundColor={data.graffitiPickedColor} width="15px" height="15px" />
+                          <Box style={{ position: "relative", top: "5px", "margin-top": "-3px" }}
+                            backgroundColor={data.graffitiPickedColor} width="13.5px" height="13.5px" />
                         </Stack.Item>
                         <Stack.Item>
                           <Button content="Change" onClick={() => setPickingColor(true)} />
@@ -74,7 +79,8 @@ export const Crayon = (props, context) => {
                         {data.colorList?.map((color) => (
                           <Stack.Item key={color}>
                             <Button content={
-                              <Box backgroundColor={data.graffitiPickedColor} width="15px" height="15px" />
+                              <Box style={{ position: "relative", top: "5px", "margin-top": "-3px" }}
+                                backgroundColor={data.graffitiPickedColor} width="13.5px" height="13.5px" />
                             } onClick={() => act('color', { color: color })} />
                           </Stack.Item>
                         ))}

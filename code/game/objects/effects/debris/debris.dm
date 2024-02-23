@@ -14,11 +14,11 @@
 	/// collate?
 	var/collate = TRUE
 	/// lazy check for amount of stuff within turf that's our type or subtype
-	var/collate_type_limit
+	var/collate_type_limit = 10
 	/// type to check for, defaults to our type
 	var/collate_type
 	/// automatic collation kills other instead of self
-	var/collate_type_annihilate_other = FALSE
+	var/collate_type_annihilate_other = TRUE
 	/// lazy check for amount of stuff within turf at all
 	var/collate_turf_limit
 	/// used by persistence serialization as a temp var for speed

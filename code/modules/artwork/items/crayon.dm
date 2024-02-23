@@ -58,6 +58,11 @@
 	create_reagents(crayon_reagent_amount)
 	reagents.add_reagent(crayon_reagent_type, crayon_reagent_amount)
 
+/obj/item/pen/crayon/examine(mob/user, dist)
+	. = ..()
+	if(dist <= 1 && !isnull(remaining))
+		. += SPAN_NOTICE("It has [remaining] left.")
+
 /obj/item/pen/crayon/update_name(updates)
 	name = "[crayon_color_name] [initial(name)]"
 	return ..()
@@ -132,7 +137,7 @@
 	src.capped = capped
 	update_icon()
 
-/obj/item/pen/crayon/proc/make_graffiti(atom/target, datum/crayon_decal_meta/datapack, state, angle)
+/obj/item/pen/crayon/proc/make_graffiti(atom/target, datum/crayon_decal_meta/datapack, state, angle, pixel_x = 0, pixel_y = 0)
 	if(isnull(datapack))
 		datapack = GLOB.crayon_data_lookup_by_string_icon_path[current_graffiti_icon_string_path]
 		if(isnull(datapack))
@@ -141,13 +146,13 @@
 		state = current_graffiti_icon_state
 	if(isnull(angle))
 		angle = current_graffiti_angle
-	var/obj/effect/debris/cleanable/crayon/created = new debris_path(target, datapack, crayon_color, state, angle)
+	var/obj/effect/debris/cleanable/crayon/created = new debris_path(target, datapack, crayon_color, state, angle, pixel_x, pixel_y)
 	return created
 
 /obj/item/pen/crayon/proc/color_entity(atom/target)
 	return FALSE
 
-/obj/item/pen/crayon/proc/attempt_make_graffiti(atom/target, datum/event_args/actor/actor, datum/crayon_decal_meta/datapack, state, angle)
+/obj/item/pen/crayon/proc/attempt_make_graffiti(atom/target, datum/event_args/actor/actor, datum/crayon_decal_meta/datapack, state, angle, pixel_x, pixel_y)
 	var/cost = 1
 
 	if(isnull(datapack))
@@ -206,16 +211,20 @@
 
 	playsound(src, crayon_sound, 50, TRUE, -1)
 
-	return make_graffiti(target, datapack, state, angle)
+	return make_graffiti(target, datapack, state, angle, pixel_x, pixel_y)
 
 /obj/item/pen/crayon/proc/attempt_color_entity(atom/target, datum/event_args/actor/actor)
 	// todo: implement attempt_color_entity
 	return FALSE
 
 /obj/item/pen/crayon/proc/has_remaining(amount)
+	if(isnull(remaining))
+		return TRUE
 	return amount <= remaining
 
 /obj/item/pen/crayon/proc/use_remaining(amount)
+	if(isnull(remaining))
+		return TRUE
 	. = remaining >= amount
 	remaining = max(0, remaining - amount)
 
@@ -240,7 +249,9 @@
 		return ..()
 	var/datum/event_args/actor/e_args = new(user)
 	if(isturf(target))
-		attempt_make_graffiti(target, e_args)
+		var/decoded_px = text2num(params["icon-x"]) - 16
+		var/decoded_py = text2num(params["icon-y"]) - 16
+		attempt_make_graffiti(target, e_args, pixel_x = decoded_px, pixel_y = decoded_py)
 		return CLICKCHAIN_DID_SOMETHING
 	else if(ismob(target))
 		return ..()

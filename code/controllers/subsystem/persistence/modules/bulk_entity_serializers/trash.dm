@@ -26,6 +26,9 @@
 		. += item
 	return filter_items(.)
 
+/datum/bulk_entity_persistence/trash/perform_global_filter(list/atom/movable/entities)
+	return SSpersistence.entity_filter_out_eroding_turfs(entities)
+
 /datum/bulk_entity_persistence/trash/perform_level_filter(list/atom/movable/entities, datum/map_level/level)
 	// yeah the voronoi algorithm doesn't work if there's nothing to compute tbh
 	// we need atleast 1 for proper triangulation, but let's be safe and break if not 3+.

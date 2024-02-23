@@ -246,7 +246,7 @@ export class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
               }}>Matrix
             </Tabs.Tab>
           </Tabs>
-          <Stack.Item>
+          <Stack.Item minWidth={30}>
             {this.state.mode === ColorPickerMode.Normal && (
               <Box>
                 <Stack>
