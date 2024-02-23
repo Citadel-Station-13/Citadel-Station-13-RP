@@ -79,7 +79,7 @@
 /// From base of /mob/update_sight(): ()
 #define COMSIG_MOB_UPDATE_SIGHT "mob_update_sight"
 //// From /mob/living/say(): ()
-////#define COMSIG_MOB_SAY "mob_say"
+#define COMSIG_MOB_SAY "mob_say"
 	////#define COMPONENT_UPPERCASE_SPEECH (1<<0)
 	//? used to access COMSIG_MOB_SAY argslist
 	////#define SPEECH_MESSAGE 1

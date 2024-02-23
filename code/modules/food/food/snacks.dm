@@ -5,6 +5,7 @@
 	icon = 'icons/obj/food.dmi'
 	icon_state = null
 	atom_flags = OPENCONTAINER
+
 	var/bitesize = 1
 	var/bitecount = 0
 	var/trash = null
@@ -26,7 +27,7 @@
 	//Generally applied during modification cooking with oven/fryer
 	//Used to stop deepfried meat from looking like slightly tanned raw meat, and make it actually look cooked
 	center_of_mass = list("x"=16, "y"=16)
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	damage_force = 1
 
 /obj/item/reagent_containers/food/snacks/Initialize(mapload)
@@ -56,10 +57,7 @@
 		open(user)
 
 /obj/item/reagent_containers/food/snacks/proc/open(mob/user)
-	if(custom_open_sound)
-		playsound(loc,custom_open_sound, rand(10,50), 1)
-	else
-		playsound(loc,'sound/items/foodcanopen.ogg', rand(10,50), 1)
+	playsound(loc,custom_open_sound || 'sound/items/foodcanopen.ogg', rand(10,50), 1)
 
 	if(opened_icon)
 		icon_state = "[initial(icon_state)]-open"
@@ -152,7 +150,8 @@
 			user.visible_message("<span class='danger'>[user] feeds [M] [src].</span>")
 
 		if(reagents)								//Handle ingestion of the reagent.
-			playsound(M.loc,'sound/items/eatfood.ogg', rand(10,50), 1)
+			if(bite_sound)
+				playsound(M.loc,bite_sound, rand(10,50), 1)
 			if(reagents.total_volume)
 				if(reagents.total_volume > bitesize)
 					reagents.trans_to_mob(M, bitesize, CHEM_INGEST)
@@ -217,6 +216,9 @@
 		var/hide_item = !has_edge(W) || !can_slice_here
 
 		if (hide_item)
+			var/confirm=input(user, "Are you certain you want to insert \the [W] into [src]?","Hide item") as null|anything in list("Yes","No")
+			if(!confirm || confirm == "No")
+				return
 			if (W.w_class >= w_class || is_robot_module(W))
 				return
 			if(!user.attempt_insert_item_for_installation(W, src))
@@ -226,7 +228,7 @@
 			add_fingerprint(user)
 			return
 
-		if (has_edge(W))
+		if (W.is_sharp())
 			if (!can_slice_here)
 				to_chat(user, "<span class='warning'>You cannot slice \the [src] here! You need a table or at least a tray to do it.</span>")
 				return
@@ -377,7 +379,7 @@
 	name = "Pocky Stick"
 	desc = "A chocolate covered biscuit stick."
 	icon_state  = "pockystick"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	nutriment_amt = 2
 	nutriment_desc = list("chocolate" = 2)
 
@@ -401,9 +403,9 @@
 		/obj/item/reagent_containers/food/snacks/pockystick,
 		/obj/item/reagent_containers/food/snacks/pockystick
 	)
-	w_class = ITEMSIZE_TINY
-	max_storage_space = ITEMSIZE_COST_TINY * 8
-	can_hold = list(/obj/item/reagent_containers/food/snacks/pockystick)
+	w_class = WEIGHT_CLASS_TINY
+	max_combined_volume = WEIGHT_VOLUME_TINY * 8
+	insertion_whitelist = list(/obj/item/reagent_containers/food/snacks/pockystick)
 	foldable = null
 
 
@@ -412,7 +414,7 @@
 	desc = "Freeze Dried peas covered in a very spicy substance!"
 	icon_state = "wasabi_peas"
 	nutriment_amt = 4
-	nutriment_desc = list("capsaicin" = 2, "protein" = 2)
+	nutriment_desc = list("wasabi" = 2, "protein" = 2)
 
 /obj/item/reagent_containers/food/snacks/bagged/wpeas/Initialize(mapload)
 	. = ..()
@@ -423,7 +425,7 @@
 	name = "Gondola Cookies"
 	desc = "A small cookie filled with chocolate."
 	icon_state = "gondas"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	nutriment_amt = 2
 	nutriment_desc = list("chocolate" = 1, "sugar" = 1)
 
@@ -446,9 +448,9 @@
 		/obj/item/reagent_containers/food/snacks/gondolas,
 		/obj/item/reagent_containers/food/snacks/gondolas
 	)
-	w_class = ITEMSIZE_TINY
-	max_storage_space = ITEMSIZE_COST_TINY * 8
-	can_hold = list(/obj/item/reagent_containers/food/snacks/gondolas)
+	w_class = WEIGHT_CLASS_TINY
+	max_combined_volume = WEIGHT_VOLUME_TINY * 8
+	insertion_whitelist = list(/obj/item/reagent_containers/food/snacks/gondolas)
 	foldable = null
 
 // End Nippon-Tan vending snacks
@@ -1885,7 +1887,10 @@
 		var/mob/living/carbon/human/H = M
 		H.visible_message("<span class='warning'>A screeching creature bursts out of [M]'s chest!</span>")
 		var/obj/item/organ/external/organ = H.get_organ(BP_TORSO)
-		organ.take_damage(50, 0, 0, "Animal escaping the ribcage")
+		organ?.inflict_bodypart_damage(
+			brute = 50,
+			weapon_descriptor = "bursting",
+		)
 	Expand()
 
 /obj/item/reagent_containers/food/snacks/monkeycube/on_reagent_change()
@@ -2545,7 +2550,7 @@
 // sliceable is just an organization type path, it doesn't have any additional code or variables tied to it.
 
 /obj/item/reagent_containers/food/snacks/sliceable
-	w_class = ITEMSIZE_NORMAL //Whole pizzas and cakes shouldn't fit in a pocket, you can slice them if you want to do that.
+	w_class = WEIGHT_CLASS_NORMAL //Whole pizzas and cakes shouldn't fit in a pocket, you can slice them if you want to do that.
 
 /**
  *  A food item slice
@@ -5232,7 +5237,7 @@ END CITADEL CHANGE */
 	icon_state = "friedmushroom"
 	filling_color = "#EDDD00"
 	nutriment_amt = 4
-	nutriment_desc = list("alcoholic mushrooms" = 4)
+	nutriment_desc = list("yeasty mushrooms" = 4)
 
 /obj/item/reagent_containers/food/snacks/friedmushroom/Initialize(mapload)
 	. = ..()
@@ -5519,7 +5524,7 @@ END CITADEL CHANGE */
 	icon_state = "worm_sickly"
 	nutriment_amt = 1
 	nutriment_desc = list("bugflesh" = 1)
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/reagent_containers/food/snacks/wormsickly/Initialize(mapload)
 	. = ..()
@@ -5532,7 +5537,7 @@ END CITADEL CHANGE */
 	icon_state = "worm"
 	nutriment_amt = 1
 	nutriment_desc = list("bugflesh" = 1)
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/reagent_containers/food/snacks/worm/Initialize(mapload)
 	. = ..()
@@ -5545,7 +5550,7 @@ END CITADEL CHANGE */
 	icon_state = "worm_deluxe"
 	nutriment_amt = 5
 	nutriment_desc = list("bugflesh" = 1)
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/reagent_containers/food/snacks/wormdeluxe/Initialize(mapload)
 	. = ..()
@@ -5559,7 +5564,7 @@ END CITADEL CHANGE */
 	icon_state = "siffruit"
 	nutriment_amt = 2
 	nutriment_desc = list("tart" = 1)
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/reagent_containers/food/snacks/siffruit/Initialize(mapload)
 	. = ..()
@@ -5841,8 +5846,8 @@ END CITADEL CHANGE */
 	icon = 'icons/obj/food.dmi'
 	icon_state = "wings5"
 	var/startswith = 5
-	max_storage_space = ITEMSIZE_COST_SMALL * 5
-	can_hold = list(/obj/item/reagent_containers/food/snacks/chickenwing)
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 5
+	insertion_whitelist = list(/obj/item/reagent_containers/food/snacks/chickenwing)
 	foldable = null
 
 /obj/item/storage/box/wings/Initialize(mapload)
@@ -6042,7 +6047,7 @@ END CITADEL CHANGE */
 	icon = 'icons/obj/food48x48_vr.dmi'
 	icon_state = "monkfish_raw"
 	nutriment_amt = 30
-	w_class = ITEMSIZE_HUGE //Is that a monkfish in your pocket, or are you just happy to see me?
+	w_class = WEIGHT_CLASS_HUGE //Is that a monkfish in your pocket, or are you just happy to see me?
 	slice_path = /obj/item/reagent_containers/food/snacks/monkfishfillet
 	slices_num = 6
 	trash = /obj/item/reagent_containers/food/snacks/sliceable/monkfishremains
@@ -6079,7 +6084,7 @@ END CITADEL CHANGE */
 	name = "monkfish remains"
 	icon_state = "monkfish_remains"
 	desc = "the work of a madman."
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	nutriment_amt = 10
 	slice_path = /obj/item/clothing/head/fish
 	slices_num = 1

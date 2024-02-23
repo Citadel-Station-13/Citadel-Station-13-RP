@@ -518,4 +518,4 @@ export const constructModuleAct = (id: string, ref: string): actFunctionType => 
 export const getModuleData = <TData extends ModuleData>(context, id: string): TData => {
   let backend = useBackend<TData>(context);
   return backend.modules[id];
-}
+};

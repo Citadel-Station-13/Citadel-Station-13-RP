@@ -6,7 +6,7 @@
 	icon_state = "heavysniper"
 	item_state = "heavysniper"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "l6closed-empty", SLOT_ID_LEFT_HAND = "l6closed-empty") // placeholder
-	w_class = ITEMSIZE_HUGE // So it can't fit in a backpack.
+	w_class = WEIGHT_CLASS_HUGE // So it can't fit in a backpack.
 	damage_force = 10
 	heavy = TRUE
 	slot_flags = SLOT_BACK
@@ -82,7 +82,7 @@
 	desc = "The SVD, also known as the Dragunov, is mass produced with an Optical Sniper Sight so simple that even Ivan can use it. Too bad for you that the inscriptions are written in Russian. Uses 7.62mm rounds."
 	icon_state = "SVD"
 	item_state = "SVD"
-	w_class = ITEMSIZE_HUGE // So it can't fit in a backpack.
+	w_class = WEIGHT_CLASS_HUGE // So it can't fit in a backpack.
 	damage_force = 10
 	slot_flags = SLOT_BACK // Needs a sprite.
 	origin_tech = list(TECH_COMBAT = 8, TECH_MATERIAL = 2, TECH_ILLEGAL = 8)

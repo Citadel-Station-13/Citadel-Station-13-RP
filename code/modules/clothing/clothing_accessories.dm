@@ -7,6 +7,37 @@
 /obj/item/clothing/proc/is_accessory()
 	return is_accessory
 
+/obj/item/clothing/context_query(datum/event_args/actor/e_args)
+	. = ..()
+	for(var/obj/item/clothing/accessory as anything in accessories)
+		var/list/queried = accessory.context_query(e_args)
+		for(var/key in queried)
+			.["A-[ref(accessory)]-[key]"] = queried[key]
+
+/obj/item/clothing/context_act(datum/event_args/actor/e_args, key)
+	. = ..()
+	if(.)
+		return
+	if(key[1] != "A" || key[2] != "-")
+		return FALSE
+	var/list/split = splittext(key, "-")
+	if(length(split) < 3)
+		return FALSE
+	var/accessory_ref = split[2]
+	var/obj/item/clothing/accessory = locate(accessory_ref) in accessories
+	if(!(accessory in accessories))
+		return FALSE
+	return accessory.context_act(e_args, split[3])
+
+/obj/item/clothing/on_attack_hand(datum/event_args/actor/clickchain/e_args)
+	. = ..()
+	if(.)
+		return
+	for(var/obj/item/clothing/accessory as anything in accessories)
+		if(accessory.on_attack_hand(e_args))
+			return TRUE
+	return FALSE
+
 /obj/item/clothing/worn_mob()
 	return isnull(accessory_host)? ..() : accessory_host.worn_mob()
 
@@ -178,18 +209,6 @@
 		return
 
 	..()
-
-/obj/item/clothing/attack_hand(mob/user, list/params)
-	//only forward to the attached accessory if the clothing is equipped (not in a storage)
-	if(LAZYLEN(accessories) && src.loc == user)
-		for(var/obj/item/clothing/accessory/A in accessories)
-			A.attack_hand(user)
-		return
-	if (ishuman(user) && src.loc == user)
-		var/mob/living/carbon/human/H = user
-		if(src == H.w_uniform) // Un-equip on single click, but not on uniform.
-			return
-	return ..()
 
 /obj/item/clothing/examine(var/mob/user)
 	. = ..()

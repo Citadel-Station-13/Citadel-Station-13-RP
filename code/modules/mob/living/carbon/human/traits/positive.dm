@@ -34,15 +34,23 @@
 
 /datum/trait/positive/melee_attack
 	name = "Sharp Melee"
-	desc = "Provides sharp melee attacks that do slightly more damage."
+	desc = "Provides sharp melee attacks that do more damage."
 	cost = 1
-	var_changes = list("unarmed_types" = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp))
+	var_changes = list("unarmed_types" = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws/good, /datum/unarmed_attack/bite/sharp/good))
+
+/datum/trait/positive/melee_attack/apply(var/datum/species/S,var/mob/living/carbon/human/H)
+	..(S,H)
+	S.update_attack_types()
 
 /datum/trait/positive/melee_attack_fangs
-	name = "Sharp Melee & Numbing Fangs"
-	desc = "Provides sharp melee attacks that do slightly more damage, along with fangs that makes the person bit unable to feel their body or pain."
+	name = "Sharp Melee & Venomous Fangs"
+	desc = "Provides sharp melee attacks that do more damage, along with venomous fangs."
 	cost = 2
-	var_changes = list("unarmed_types" = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp, /datum/unarmed_attack/bite/sharp/numbing))
+	var_changes = list("unarmed_types" = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws/good/venom, /datum/unarmed_attack/bite/sharp/good/venom))
+
+/datum/trait/positive/melee_attack_fangs/apply(var/datum/species/S,var/mob/living/carbon/human/H)
+	..(S,H)
+	S.update_attack_types()
 
 /datum/trait/positive/minor_brute_resist
 	name = "Minor Brute Resist"

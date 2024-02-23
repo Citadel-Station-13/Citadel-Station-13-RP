@@ -7,7 +7,7 @@
 	icon = 'icons/obj/bots/medibots.dmi'
 	icon_state = "medibot"
 	base_icon_state = "medkit"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	created_name = "Medibot" // To preserve the name if it's a unique medibot I guess.
 
 	var/healthanalyzer = /obj/item/healthanalyzer

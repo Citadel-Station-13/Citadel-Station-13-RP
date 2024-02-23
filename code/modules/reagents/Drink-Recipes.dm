@@ -191,7 +191,7 @@
 /datum/chemical_reaction/drinks/kahlua
 	name = "Kahlua"
 	id = "kahlua"
-	result = "kahlua"
+	result = /datum/reagent/ethanol/coffee/kahlua
 	required_reagents = list("coffee" = 5, "sugar" = 5)
 	catalysts = list("enzyme" = 5)
 	result_amount = 5
@@ -1337,13 +1337,6 @@
 	id = "gimlet"
 	result = "gimlet"
 	required_reagents = list("gin" = 1, "limejuice" = 1, "sodawater" = 1)
-	result_amount = 3
-
-/datum/chemical_reaction/drinks/firepunch
-	name = "Fire Punch"
-	id = "firepunch"
-	result = "firepunch"
-	required_reagents = list("sugar" = 2, "rum" = 1)
 	result_amount = 3
 
 /datum/chemical_reaction/drinks/newsheriff

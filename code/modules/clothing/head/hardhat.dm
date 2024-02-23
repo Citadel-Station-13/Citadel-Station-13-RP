@@ -8,7 +8,7 @@
 	inv_hide_flags = 0
 	siemens_coefficient = 0.9
 	action_button_name = "Toggle Head-light"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	ear_protection = 1
 	drop_sound = 'sound/items/drop/helm.ogg'
 	pickup_sound = 'sound/items/pickup/helm.ogg'
@@ -20,7 +20,7 @@
 /obj/item/clothing/head/hardhat/red
 	icon_state = "hardhat0_red"
 	name = "firefighter helmet"
-	heat_protection = HEAD
+	heat_protection_cover = HEAD
 	max_heat_protection_temperature = FIRE_HELMET_MAX_HEAT_PROTECTION_TEMPERATURE
 	min_pressure_protection = 0.2* ONE_ATMOSPHERE
 	max_pressure_protection = 20 * ONE_ATMOSPHERE
@@ -29,7 +29,7 @@
 /obj/item/clothing/head/hardhat/white
 	icon_state = "hardhat0_white"
 	name = "sleek hard hat"
-	heat_protection = HEAD
+	heat_protection_cover = HEAD
 	max_heat_protection_temperature = FIRE_HELMET_MAX_HEAT_PROTECTION_TEMPERATURE
 	min_pressure_protection = 0.2* ONE_ATMOSPHERE
 	max_pressure_protection = 20 * ONE_ATMOSPHERE

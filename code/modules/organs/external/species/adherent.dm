@@ -3,7 +3,7 @@
 	amputation_point = "axis"
 	joint = "central axis"
 	model = "NULL DATA."
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	gendered_icon = 0
 	dislocated = -1
 	max_damage = 50

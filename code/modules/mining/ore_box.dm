@@ -11,31 +11,27 @@
 	var/last_update = 0
 	var/list/stored_ore = list()
 
-/obj/structure/ore_box/attackby(obj/item/W as obj, mob/user as mob)
-	if (istype(W, /obj/item/stack/ore))
-		if(!user.attempt_insert_item_for_installation(W, src))
+/obj/structure/ore_box/attackby(obj/item/I, mob/user, list/params, clickchain_flags, damage_multiplier)
+	if (istype(I, /obj/item/stack/ore))
+		if(!user.attempt_insert_item_for_installation(I, src))
 			return
-		user.visible_message(SPAN_NOTICE("[user] drops [W] into [src]."), SPAN_NOTICE("You drop [W] into [src]."))
-	else if (istype(W, /obj/item/storage/bag/ore)) //it works differently now
-		var/obj/item/storage/bag/ore/S = W
-		if(S.isOreEmpty())
-			return
-		for(var/ore in S.stored_ore)
-			if(!stored_ore[ore])
-				stored_ore[ore] = S.stored_ore[ore]
-			else
-				stored_ore[ore] += S.stored_ore[ore]
-		S.stored_ore = list() //it'll get emptied as a result.
-		S.total_ore = 0
-		user.visible_message(SPAN_NOTICE("[user] offloads ores from [W] into [src]."), SPAN_NOTICE("You offload the ores in [W] into [src]."))
-	else if (istype(W, /obj/item/storage))
-		var/obj/item/storage/S = W
+		user.visible_message(SPAN_NOTICE("[user] drops [I] into [src]."), SPAN_NOTICE("You drop [I] into [src]."))
+	else if (istype(I, /obj/item/storage/bag/ore)) //it works differently now
+		var/offloaded = FALSE
+		for(var/obj/item/stack/ore/ore in I)
+			ore.forceMove(src)
+			offloaded = TRUE
+		I.obj_storage?.ui_queue_refresh()
+		if(offloaded)
+			user.visible_message(SPAN_NOTICE("[user] offloads ores from [I] into [src]."), SPAN_NOTICE("You offload the ores in [I] into [src]."))
+	else if (istype(I, /obj/item/storage))
+		var/obj/item/storage/S = I
 		if(!S.contents.len)
 			return
-		S.hide_from(usr)
+		S.obj_storage?.hide(user)
 		for(var/obj/item/stack/ore/O in S.contents)
-			S.remove_from_storage(O, src) //This will move the item to this item's contents
-		user.visible_message(SPAN_NOTICE("[user] offloads ores from [W] into [src]."), SPAN_NOTICE("You offload the ores in [W] into [src]."))
+			S.forceMove(src)
+		user.visible_message(SPAN_NOTICE("[user] offloads ores from [I] into [src]."), SPAN_NOTICE("You offload the ores in [I] into [src]."))
 
 /obj/structure/ore_box/examine(mob/user, dist)
 	. = ..()

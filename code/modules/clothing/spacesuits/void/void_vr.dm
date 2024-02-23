@@ -120,7 +120,7 @@
 	siemens_coefficient = 1
 	species_restricted = list("exclude",SPECIES_DIONA,SPECIES_VOX) //this thing can autoadapt
 	breach_threshold = 6 //this thing is basically tissue paper
-	w_class = ITEMSIZE_NORMAL //if it's snug, high-tech, and made of relatively soft materials, it should be much easier to store!
+	w_class = WEIGHT_CLASS_NORMAL //if it's snug, high-tech, and made of relatively soft materials, it should be much easier to store!
 
 /obj/item/clothing/suit/space/void/autolok/Initialize(mapload)
 	. = ..()

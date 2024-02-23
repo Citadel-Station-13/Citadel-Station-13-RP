@@ -15,10 +15,10 @@
 /turf/space,
 /area/space)
 "ae" = (
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall/r_wall/prepainted/engineering,
 /area/engineering/engine_gas)
 "af" = (
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall/r_wall/prepainted/engineering,
 /area/engineering/engine_room)
 "ag" = (
 /obj/machinery/atmospherics/portables_connector{
@@ -116,7 +116,7 @@
 /area/space)
 "at" = (
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1379;
 	master_tag = "eng_north_airlock";
 	name = "exterior access button";
@@ -171,7 +171,7 @@
 /area/engineering/engine_room)
 "aw" = (
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1379;
 	master_tag = "eng_north_airlock";
 	name = "interior access button";
@@ -225,11 +225,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump";
-	pixel_x = -28
-	},
+/obj/machinery/power/apc/west_mount,
 /turf/simulated/floor,
 /area/engineering/engine_gas)
 "az" = (
@@ -278,7 +274,7 @@
 	icon_state = "radiation";
 	name = "RADIOACTIVE AREA"
 	},
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall/r_wall/prepainted/engineering,
 /area/engineering/engine_room)
 "aD" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
@@ -407,11 +403,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/engine_room)
 "aO" = (
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/cyan{
 	icon_state = "0-2"
 	},
@@ -523,25 +515,6 @@
 	},
 /turf/simulated/floor/airless,
 /area/space)
-"aY" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/machinery/door/blast/regular{
-	density = 0;
-	icon_state = "pdoor0";
-	id = "EngineRadiatorViewport";
-	name = "Engine Radiator Viewport Shutter";
-	opacity = 0
-	},
-/turf/simulated/floor,
-/area/submap/pa_room)
 "aZ" = (
 /obj/structure/cable/yellow{
 	icon_state = "2-4"
@@ -576,20 +549,15 @@
 /turf/simulated/floor/tiled,
 /area/engineering/engine_room)
 "bd" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced,
 /obj/machinery/door/blast/regular{
 	density = 0;
+	dir = 4;
 	icon_state = "pdoor0";
-	id = "EngineRadiatorViewport";
-	name = "Engine Radiator Viewport Shutter";
+	id = "SupermatterPort";
+	name = "Reactor Blast Door";
 	opacity = 0
 	},
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/submap/pa_room)
 "be" = (
@@ -610,10 +578,10 @@
 	icon_state = "radiation";
 	name = "RADIOACTIVE AREA"
 	},
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall/r_wall/prepainted/engineering,
 /area/submap/pa_room)
 "bi" = (
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall/r_wall/prepainted/engineering,
 /area/submap/pa_room)
 "bj" = (
 /obj/structure/cable/cyan{
@@ -656,24 +624,8 @@
 /turf/simulated/floor/tiled,
 /area/engineering/engine_room)
 "bm" = (
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall/r_wall/prepainted/engineering,
 /area/template_noop)
-"bn" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/machinery/door/blast/regular{
-	density = 0;
-	icon_state = "pdoor0";
-	id = "EngineRadiatorViewport";
-	name = "Engine Radiator Viewport Shutter";
-	opacity = 0
-	},
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor,
-/area/submap/pa_room)
 "bo" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 5
@@ -708,11 +660,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/machinery/light_switch{
 	pixel_y = 24
 	},
@@ -778,12 +726,10 @@
 /turf/simulated/floor/tiled,
 /area/submap/pa_room)
 "bC" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
 /obj/structure/cable/yellow{
 	icon_state = "0-4"
 	},
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/submap/pa_room)
 "bD" = (
@@ -808,22 +754,18 @@
 /turf/simulated/floor/airless,
 /area/space)
 "bF" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/machinery/door/blast/regular{
-	density = 0;
-	icon_state = "pdoor0";
-	id = "EngineRadiatorViewport";
-	name = "Engine Radiator Viewport Shutter";
-	opacity = 0
-	},
-/obj/machinery/door/firedoor/glass,
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 4;
+	icon_state = "pdoor0";
+	id = "SupermatterPort";
+	name = "Reactor Blast Door";
+	opacity = 0
+	},
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/submap/pa_room)
 "bG" = (
@@ -869,9 +811,6 @@
 /turf/simulated/floor/tiled,
 /area/submap/pa_room)
 "bL" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -881,6 +820,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "0-4"
 	},
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/submap/pa_room)
 "bM" = (
@@ -936,9 +876,6 @@
 /turf/template_noop,
 /area/template_noop)
 "bP" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -946,9 +883,7 @@
 	name = "Engine Radiator Viewport Shutter";
 	opacity = 0
 	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/submap/pa_room)
 "bQ" = (
@@ -1160,20 +1095,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/engine_room)
-"cm" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/door/blast/regular{
-	density = 0;
-	icon_state = "pdoor0";
-	id = "EngineRadiatorViewport";
-	name = "Engine Radiator Viewport Shutter";
-	opacity = 0
-	},
-/obj/structure/window/reinforced,
-/turf/simulated/floor,
-/area/submap/pa_room)
 "cn" = (
 /obj/structure/cable/cyan{
 	icon_state = "2-4"
@@ -1239,7 +1160,7 @@
 /area/space)
 "ct" = (
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1379;
 	master_tag = "eng_south_airlock";
 	name = "exterior access button";
@@ -1293,7 +1214,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1379;
 	master_tag = "eng_south_airlock";
 	name = "interior access button";
@@ -1374,23 +1295,18 @@
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_room)
 "cC" = (
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall/r_wall/prepainted/engineering,
 /area/space)
 "cE" = (
 /obj/machinery/door/blast/regular{
 	density = 0;
-	dir = 2;
+	dir = 4;
 	icon_state = "pdoor0";
 	id = "SupermatterPort";
 	name = "Reactor Blast Door";
 	opacity = 0
 	},
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "cF" = (
@@ -1560,7 +1476,7 @@ ab
 ab
 ab
 ab
-ad
+ac
 ab
 aa
 "}
@@ -1592,7 +1508,7 @@ ab
 ab
 ab
 ad
-ad
+ac
 ab
 aa
 "}
@@ -1963,12 +1879,12 @@ aB
 ab
 ab
 ab
-aY
-bn
-bn
+bd
+bd
+bd
 bF
-bn
-bn
+bd
+bd
 bd
 ab
 ab
@@ -2001,7 +1917,7 @@ bw
 bQ
 bW
 bX
-cm
+bP
 ab
 ab
 ab
@@ -2033,7 +1949,7 @@ bx
 bG
 bR
 ca
-cm
+bP
 ab
 ab
 ab

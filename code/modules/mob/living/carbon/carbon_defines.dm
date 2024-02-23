@@ -1,8 +1,20 @@
+/**
+ * The root type of complex mobs.
+ * 
+ * These mobs have:
+ * * organ / bodypart simulation
+ * * reagent metabolism
+ * * species
+ * * virus simulation
+ * * and more.
+ * 
+ * todo: this should be carbon.dm at some point
+ */
 /mob/living/carbon
 	gender = MALE
 	throw_force = 10
 
-	//? Composition
+	//* Composition *//
 	/// species - datumized handling of racial intrinsics like health, environmental, breathing, etc. set using set_species() **only**
 	var/datum/species/species
 

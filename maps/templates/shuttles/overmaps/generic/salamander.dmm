@@ -79,7 +79,7 @@
 	dir = 8;
 	pixel_x = -32
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/salamander_galley)
 "bK" = (
@@ -155,7 +155,7 @@
 	dir = 8;
 	pixel_x = -32
 	},
-/obj/machinery/power/apc/alarms_hidden/south_bump,
+/obj/machinery/power/apc/alarms_hidden/south_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/salamander_head)
 "cC" = (
@@ -398,7 +398,7 @@
 /obj/structure/bed/chair/bay/comfy{
 	dir = 4
 	},
-/obj/machinery/power/apc/alarms_hidden/west_bump,
+/obj/machinery/power/apc/alarms_hidden/west_mount,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/salamander_cockpit)
 "gC" = (
@@ -1069,7 +1069,7 @@
 	dir = 8;
 	pixel_x = -32
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/salamander_q2)
 "qu" = (
@@ -1290,7 +1290,7 @@
 	dir = 8;
 	pixel_x = -32
 	},
-/obj/machinery/power/apc/alarms_hidden/south_bump,
+/obj/machinery/power/apc/alarms_hidden/south_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/salamander_q2)
 "Bf" = (
@@ -1731,7 +1731,7 @@
 /obj/structure/handrail{
 	dir = 8
 	},
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/salamander_engineering)
 "Vs" = (
@@ -1887,7 +1887,7 @@
 /obj/structure/railing/grey{
 	dir = 8
 	},
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/salamander)
 

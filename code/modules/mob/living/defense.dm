@@ -188,7 +188,7 @@
 	  return 0 //only carbon liveforms have this proc
 
 /mob/living/emp_act(severity)
-	var/list/L = src.get_contents()
+	var/list/L = src.get_equipped_items(TRUE, TRUE)
 	for(var/obj/O in L)
 		O.emp_act(severity)
 	..()
@@ -337,7 +337,7 @@
 
 //This is called when the mob is thrown into a dense turf
 /mob/living/proc/turf_collision(var/turf/T, var/speed)
-	src.take_organ_damage(speed*5)
+	src.take_random_targeted_damage(brute = speed*5)
 
 /mob/living/proc/near_wall(var/direction,var/distance=1)
 	var/turf/T = get_step(get_turf(src),direction)

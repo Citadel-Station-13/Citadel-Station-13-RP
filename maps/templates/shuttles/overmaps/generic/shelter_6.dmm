@@ -511,7 +511,7 @@
 	req_one_access = list(101)
 	},
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1380;
 	master_tag = "tabiranth_airlock";
 	name = "exterior access button";
@@ -649,7 +649,7 @@
 	req_one_access = list(101)
 	},
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1380;
 	master_tag = "tabiranth_airlock";
 	pixel_x = 5;
@@ -667,7 +667,7 @@
 	req_one_access = list(101)
 	},
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1380;
 	master_tag = "tabiranth_docker";
 	pixel_x = -5;
@@ -1034,7 +1034,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/alarms_hidden/west_bump,
+/obj/machinery/power/apc/alarms_hidden/west_mount,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/tabiranth)
 "aY" = (
@@ -1666,7 +1666,7 @@
 	},
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1380;
 	master_tag = "tabiranth_docker";
 	name = "exterior access button";

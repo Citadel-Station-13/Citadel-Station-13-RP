@@ -109,6 +109,7 @@
 		/mob/living/carbon/human/proc/hide_horns,
 		/mob/living/carbon/human/proc/hide_wings,
 		/mob/living/carbon/human/proc/hide_tail,
+		/mob/living/proc/set_size,
 		/mob/living/proc/shred_limb,
 		/mob/living/proc/eat_trash,
 		/mob/living/proc/glow_toggle,
@@ -131,7 +132,7 @@
 
 	var/has_feral_abilities = FALSE
 
-/datum/species/shapeshifter/xenochimera/handle_environment_special(mob/living/carbon/human/H)
+/datum/species/shapeshifter/xenochimera/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
 	//If they're KO'd/dead, they're probably not thinking a lot about much of anything.
 	if(!H.stat)
 		handle_feralness(H)
@@ -142,13 +143,6 @@
 
 	//Cold/pressure effects when not regenerating
 	else
-		var/pressure2 = H.loc.return_pressure()
-		var/adjusted_pressure2 = H.calculate_affecting_pressure(pressure2)
-
-		//Very low pressure damage
-		if(adjusted_pressure2 <= 20)
-			H.take_overall_damage(brute=LOW_PRESSURE_DAMAGE, used_weapon = "Low Pressure")
-
 		//Cold hurts and gives them pain messages, eventually weakening and paralysing, but doesn't damage or trigger feral.
 		//NB: 'body_temperature' used here is the 'setpoint' species var
 		var/temp_diff = body_temperature - H.bodytemperature
@@ -731,7 +725,7 @@
 	name = "Dissonant Shriek"
 	desc = "We shift our vocal cords to release a high-frequency sound that overloads nearby electronics."
 	action_state = "ling_resonant_shriek"
-	var/range = 8
+	range = 8
 	//Slightly more potent than an EMP grenade
 	var/emp_heavy = 3
 	var/emp_med = 6
@@ -887,9 +881,16 @@
 	var/target = null
 	var/text = null
 
-	for(var/datum/mind/possible_target in SSticker.minds)	//not us, on the station and not a synthetic
-		if (istype(possible_target.current, /mob/living) && possible_target != owner.mind && isStationLevel(get_z(possible_target.current)) && !possible_target.current.isSynthetic())
-			LAZYADD(targets,possible_target.current)
+//If the target is not a synth, not us, and a valid mob
+	for(var/datum/mind/possible_target in SSticker.minds)
+		if (istype(possible_target.current, /mob/living))
+			if(possible_target != owner.mind)
+				if(!possible_target.current.isSynthetic())
+					if(isStationLevel(get_z(owner)))									//If we're on station, go through the station
+						if(isStationLevel(get_z(possible_target.current)))
+							LAZYADD(targets,possible_target.current)
+					else if (get_z(owner) == get_z(possible_target.current))			//Otherwise, go through the z level we're on
+						LAZYADD(targets,possible_target.current)
 
 	target = input("Select a creature!", "Speak to creature", null, null) as null|anything in targets
 	if(!target)

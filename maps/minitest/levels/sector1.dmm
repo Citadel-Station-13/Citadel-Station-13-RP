@@ -128,11 +128,7 @@
 "av" = (
 /obj/item/storage/toolbox/electrical,
 /obj/structure/cable,
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump";
-	pixel_x = -24
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
@@ -507,7 +503,7 @@
 	icon_state = "intact"
 	},
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1375;
 	master_tag = "carp_airlock";
 	name = "interior access button";
@@ -678,7 +674,7 @@
 /area/awaymission)
 "ca" = (
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1375;
 	master_tag = "carp_airlock";
 	name = "exterior access button";

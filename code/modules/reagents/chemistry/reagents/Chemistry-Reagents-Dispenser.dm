@@ -100,12 +100,13 @@
 	if(is_vampire)
 		handle_vampire(M, alien, removed, is_vampire)
 
-	var/effective_dose = strength_mod * dose // this was being recalculated a bunch before--why?
 	if(HAS_TRAIT(M, TRAIT_ALCOHOL_INTOLERANT))
-		if(prob(effective_dose/10))
+		var/intolerant_dose = 50*strength_mod*removed/strength
+		if(prob((intolerant_dose)))
 			M.add_chemical_effect(CE_ALCOHOL_TOXIC, 1)
-		M.adjustToxLoss(effective_dose/10)
+		M.adjustToxLoss(intolerant_dose) // 10 strength = 5 tox per u, so 10u deathbell = 50, 10u vodka = 3.3333..., 10u beer = 10
 		return 0
+	var/effective_dose = strength_mod * dose // this was being recalculated a bunch before--why?
 	M.add_chemical_effect(CE_ALCOHOL, 1)
 	if(effective_dose >= strength) // Early warning
 		M.make_dizzy(6) // It is decreased at the speed of 3 per tick
@@ -167,7 +168,7 @@
 
 /datum/reagent/acid/affect_blood(mob/living/carbon/M, alien, removed)
 	if(issmall(M)) removed *= 2
-	M.take_organ_damage(0, removed * power * 2)
+	M.take_random_targeted_damage(brute = 0, brute = removed * power * 2)
 
 /datum/reagent/acid/affect_touch(mob/living/carbon/M, alien, removed) // This is the most interesting
 	if(ishuman(M))
@@ -213,20 +214,21 @@
 			return
 
 	if(volume < meltdose) // Not enough to melt anything
-		M.take_organ_damage(0, removed * power * 0.2) //burn damage, since it causes chemical burns. Acid doesn't make bones shatter, like brute trauma would.
+		M.take_random_targeted_damage(brute = 0, brute = removed * power * 0.2) //burn damage, since it causes chemical burns. Acid doesn't make bones shatter, like brute trauma would.
 		return
 	if(!M.unacidable && removed > 0)
 		if(istype(M, /mob/living/carbon/human) && volume >= meltdose)
 			var/mob/living/carbon/human/H = M
 			var/obj/item/organ/external/affecting = H.get_organ(BP_HEAD)
 			if(affecting)
-				if(affecting.take_damage(0, removed * power * 0.1))
-					H.UpdateDamageIcon()
+				affecting.inflict_bodypart_damage(
+					burn = removed * power * 0.1,
+				)
 				if(prob(100 * removed / meltdose)) // Applies disfigurement
 					if (affecting.organ_can_feel_pain())
 						H.emote("scream")
 		else
-			M.take_organ_damage(0, removed * power * 0.1) // Balance. The damage is instant, so it's weaker. 10 units -> 5 damage, double for pacid. 120 units beaker could deal 60, but a) it's burn, which is not as dangerous, b) it's a one-use weapon, c) missing with it will splash it over the ground and d) clothes give some protection, so not everything will hit
+			M.take_random_targeted_damage(brute = 0, brute = removed * power * 0.1) // Balance. The damage is instant, so it's weaker. 10 units -> 5 damage, double for pacid. 120 units beaker could deal 60, but a) it's burn, which is not as dangerous, b) it's a one-use weapon, c) missing with it will splash it over the ground and d) clothes give some protection, so not everything will hit
 
 /datum/reagent/acid/touch_obj(obj/O)
 	if(O.integrity_flags & INTEGRITY_INDESTRUCTIBLE)

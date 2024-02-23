@@ -157,6 +157,11 @@
 	if(color)
 		add_atom_colour(color, FIXED_COLOUR_PRIORITY)
 
+	// todo: uh oh.
+	// TODO: what would tg do (but maybe not that much component signal abuse?)
+	// this is to trigger entered effects
+	// bad news is this is not necessarily currently idempotent
+	// we probably have to deal with this at.. some point.
 	for(var/atom/movable/AM in src)
 		Entered(AM)
 
@@ -280,10 +285,9 @@
 	return 1
 
 /turf/attackby(obj/item/I, mob/user, list/params, clickchain_flags, damage_multiplier)
-	if(istype(I, /obj/item/storage))
-		var/obj/item/storage/S = I
-		if(S.use_to_pickup && S.collection_mode)
-			S.gather_all(src, user)
+	if(I.obj_storage?.allow_mass_gather && I.obj_storage.allow_mass_gather_via_click)
+		I.obj_storage.auto_handle_interacted_mass_pickup(new /datum/event_args/actor(user), src)
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 	return ..()
 
 // Hits a mob on the tile.
@@ -588,7 +592,7 @@
 		return
 	color = other.color
 
-//? Depth
+//* Depth *//
 
 /**
  * gets overall depth level for stuff standing on us
@@ -600,20 +604,39 @@
 			continue
 		. = max(., O.depth_level)
 
-//? Multiz
+//* Multiz *//
 
 /turf/proc/update_multiz()
 	return
 
-//? Sector API
+//* Orientation *//
+
+/**
+ * Are we a valid anchor or orientation source for a wall-mounted object?
+ *
+ * If so, return the anchor object.
+ */
+/turf/proc/get_wallmount_anchor()
+	RETURN_TYPE(/atom)
+	// are we valid
+	if(GLOB.wallframe_typecache[type])
+		return src
+	// are our contents valid
+	for(var/obj/O in contents)
+		if(GLOB.wallframe_typecache[O.type])
+			return O
+
+//* Sector API *//
 
 /**
  * called by planet / weather to update temperature during weather changes
+ *
+ * todo: this is bad lol this either needs more specifications/documentation or a redesign
  */
 /turf/proc/sector_set_temperature(temperature)
 	return
 
-//? Radiation
+//* Radiation *//
 
 /turf/proc/update_rad_insulation()
 	rad_insulation_contents = 1

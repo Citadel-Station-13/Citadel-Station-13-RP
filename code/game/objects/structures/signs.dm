@@ -5,7 +5,7 @@
 	density = 0
 	plane = OBJ_PLANE
 	layer = ABOVE_JUNK_LAYER
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/structure/sign/legacy_ex_act(severity)
 	switch(severity)
@@ -39,7 +39,7 @@
 	name = "sign"
 	desc = ""
 	icon = 'icons/obj/decals.dmi'
-	w_class = ITEMSIZE_NORMAL		//big
+	w_class = WEIGHT_CLASS_NORMAL		//big
 	var/sign_state = ""
 
 /obj/item/sign/attackby(obj/item/tool as obj, mob/user as mob)	//construction

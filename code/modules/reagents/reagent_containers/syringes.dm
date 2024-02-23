@@ -12,7 +12,7 @@
 	amount_per_transfer_from_this = 5
 	possible_transfer_amounts = null
 	volume = 15
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	slot_flags = SLOT_EARS
 	sharp = 1
 	integrity_flags = INTEGRITY_ACIDPROOF
@@ -257,13 +257,14 @@
 			return
 
 		user.visible_message("<span class='danger'>[user] stabs [target] in \the [hit_area] with [src.name]!</span>")
-
-		if(affecting.take_damage(3))
-			H.UpdateDamageIcon()
-
+		affecting.inflict_bodypart_damage(
+			brute = 3,
+			damage_mode = DAMAGE_MODE_SHARP,
+			weapon_descriptor = "a needle",
+		)
 	else
 		user.visible_message("<span class='danger'>[user] stabs [target] with [src.name]!</span>")
-		target.take_organ_damage(3)// 7 is the same as crowbar punch
+		target.take_random_targeted_damage(brute = 3)// 7 is the same as crowbar punch
 
 	var/syringestab_amount_transferred = rand(0, (reagents.total_volume - 5)) //nerfed by popular demand
 	var/contained = reagents.get_reagents()

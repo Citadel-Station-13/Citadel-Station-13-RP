@@ -465,7 +465,7 @@
 	},
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/browndouble,
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/carpet/turcarpet,
 /area/itglight/crew4)
 "cv" = (
@@ -512,7 +512,7 @@
 	dir = 8
 	},
 /obj/structure/cable/pink,
-/obj/machinery/power/apc/alarms_hidden/south_bump,
+/obj/machinery/power/apc/alarms_hidden/south_mount,
 /turf/simulated/floor/wood,
 /area/itglight/captain)
 "cU" = (
@@ -690,7 +690,7 @@
 /area/itglight/crew1)
 "ed" = (
 /obj/structure/cable/pink,
-/obj/machinery/power/apc/alarms_hidden/south_bump,
+/obj/machinery/power/apc/alarms_hidden/south_mount,
 /turf/simulated/floor/carpet,
 /area/itglight/readyroom)
 "ei" = (
@@ -1085,7 +1085,7 @@
 /area/itglight/captain)
 "hc" = (
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1380;
 	master_tag = "itglight_dock_1";
 	name = "port exterior access button";
@@ -1093,7 +1093,7 @@
 	pixel_y = 65
 	},
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1380;
 	master_tag = "itglight_dock_2";
 	name = "starboard exterior access button";
@@ -1610,7 +1610,7 @@
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 1
 	},
-/obj/machinery/power/apc/alarms_hidden/south_bump,
+/obj/machinery/power/apc/alarms_hidden/south_mount,
 /turf/simulated/floor/tiled/eris/dark/monofloor,
 /area/itglight/cockpit)
 "kH" = (
@@ -1669,7 +1669,7 @@
 /obj/structure/cable/pink{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/white,
 /area/itglight/showers)
 "kY" = (
@@ -1694,7 +1694,7 @@
 /obj/structure/cable/pink{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/eris/steel/brown_platform,
 /area/itglight/afthall)
 "li" = (
@@ -1927,7 +1927,7 @@
 /obj/structure/cable/pink{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/alarms_hidden/west_bump,
+/obj/machinery/power/apc/alarms_hidden/west_mount,
 /turf/simulated/floor/tiled/eris/steel/gray_platform,
 /area/itglight/porthighsec)
 "na" = (
@@ -2249,7 +2249,7 @@
 /obj/fiftyspawner/phoron,
 /obj/fiftyspawner/phoron,
 /obj/structure/closet/crate,
-/obj/machinery/power/apc/alarms_hidden/west_bump,
+/obj/machinery/power/apc/alarms_hidden/west_mount,
 /turf/simulated/floor,
 /area/itglight/starboardengi)
 "pm" = (
@@ -2314,7 +2314,7 @@
 /obj/structure/cable/pink{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/eris/white/cargo,
 /area/itglight/medbay)
 "pU" = (
@@ -2637,7 +2637,7 @@
 /obj/structure/cable/pink{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/itglightshuttle)
 "sQ" = (
@@ -3270,7 +3270,7 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold4w/hidden,
 /obj/structure/catwalk,
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor,
 /area/itglight/portdocking)
 "xM" = (
@@ -3361,7 +3361,7 @@
 	dir = 4
 	},
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1380;
 	master_tag = "itglight_port";
 	name = "interior access button";
@@ -3470,7 +3470,7 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold4w/hidden,
 /obj/structure/catwalk,
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor,
 /area/itglight/starboarddocking)
 "yZ" = (
@@ -3561,7 +3561,7 @@
 /obj/structure/cable/pink{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/eris/steel/gray_platform,
 /area/itglight/starboardhighsec)
 "zM" = (
@@ -3694,7 +3694,7 @@
 /obj/structure/cable/pink{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/monotile,
 /area/itglight/forehall)
 "AK" = (
@@ -3752,7 +3752,7 @@
 /obj/structure/cable/pink{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/monotile,
 /area/itglight/lockers)
 "Bj" = (
@@ -3855,7 +3855,7 @@
 	},
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/browndouble,
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/carpet/turcarpet,
 /area/itglight/crew1)
 "BW" = (
@@ -3919,7 +3919,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1380;
 	master_tag = "itglight_dock_1";
 	name = "exterior access button";
@@ -4039,7 +4039,7 @@
 	},
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1380;
 	master_tag = "itglight_dock_1";
 	name = "interior access button";
@@ -4273,7 +4273,7 @@
 	id_tag = "itglight_dock_2_inner"
 	},
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1380;
 	master_tag = "itglight_dock_2";
 	name = "interior access button";
@@ -4351,7 +4351,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1380;
 	master_tag = "itglight_dock_2";
 	name = "exterior access button";
@@ -4580,7 +4580,7 @@
 	},
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1380;
 	master_tag = "itglight_starboard";
 	name = "interior access button";
@@ -4999,7 +4999,7 @@
 /obj/structure/cable/pink{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/eris/steel/brown_platform,
 /area/itglight/shuttlebay)
 "IN" = (
@@ -5031,7 +5031,7 @@
 /obj/structure/cable/pink{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/eris/steel/gray_platform,
 /area/itglight/portcargo)
 "Jg" = (
@@ -5046,7 +5046,7 @@
 	},
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1380;
 	master_tag = "itglight_starboard";
 	name = "exterior access button";
@@ -5164,7 +5164,7 @@
 	},
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/browndouble,
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/carpet/turcarpet,
 /area/itglight/crew3)
 "JT" = (
@@ -5211,7 +5211,7 @@
 /obj/structure/cable/pink{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/eris/steel/gray_platform,
 /area/itglight/starboardcargo)
 "Kj" = (
@@ -5269,7 +5269,7 @@
 /obj/structure/cable/pink{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor,
 /area/itglight/portengi)
 "KG" = (
@@ -5443,7 +5443,7 @@
 	},
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/browndouble,
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/carpet/turcarpet,
 /area/itglight/crew2)
 "Ml" = (
@@ -5750,7 +5750,7 @@
 /area/itglight/lockers)
 "NY" = (
 /obj/structure/cable/pink,
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/eris/cafe,
 /area/itglight/kitchen)
 "Oc" = (
@@ -5760,7 +5760,7 @@
 /obj/structure/cable/pink{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/dark,
 /area/itglight/passengersleeping)
 "Oe" = (
@@ -6065,7 +6065,7 @@
 /obj/structure/cable/pink{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/eris/steel/brown_platform,
 /area/itglight/metingroom)
 "Qi" = (
@@ -6931,7 +6931,7 @@
 /obj/structure/table/wooden_reinforced,
 /obj/random/plushie,
 /obj/structure/cable/pink,
-/obj/machinery/power/apc/alarms_hidden/south_bump,
+/obj/machinery/power/apc/alarms_hidden/south_mount,
 /turf/simulated/floor/tiled/eris/steel/brown_platform,
 /area/itglight/common)
 "WN" = (
@@ -6958,7 +6958,7 @@
 	},
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1380;
 	master_tag = "itglight_port";
 	name = "exterior access button";
@@ -7018,7 +7018,7 @@
 /obj/structure/cable/pink{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/alarms_hidden/west_bump,
+/obj/machinery/power/apc/alarms_hidden/west_mount,
 /turf/simulated/floor/tiled/white,
 /area/itglight/restrooms)
 "Xn" = (

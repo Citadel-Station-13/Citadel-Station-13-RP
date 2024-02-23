@@ -150,7 +150,7 @@
 /obj/item/ammo_magazine/m45tommydrum
 	name = "Tommy Gun drum magazine (.45)"
 	icon_state = "tommy-drum"
-	w_class = ITEMSIZE_NORMAL // Bulky ammo doesn't fit in your pockets!
+	w_class = WEIGHT_CLASS_NORMAL // Bulky ammo doesn't fit in your pockets!
 	mag_type = MAGAZINE
 	ammo_type = /obj/item/ammo_casing/a45
 	materials_base = list(MAT_STEEL = 3750)
@@ -231,7 +231,7 @@
 	ammo_type = /obj/item/ammo_casing/a10x24mmcaseless
 	icon_state = "usmc-large"
 	caliber = "10mmCL"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	materials_base = list(MAT_STEEL = 8500)
 	mag_type = MAGAZINE
 	max_ammo = 96
@@ -745,7 +745,7 @@
 	caliber = "5.56mm"
 	materials_base = list(MAT_STEEL = 10000)
 	ammo_type = /obj/item/ammo_casing/a556
-	w_class = ITEMSIZE_NORMAL // This should NOT fit in your pocket!!
+	w_class = WEIGHT_CLASS_NORMAL // This should NOT fit in your pocket!!
 	max_ammo = 50
 	multiple_sprites = 1
 
@@ -931,7 +931,7 @@
 	caliber = "7.62mm"
 	materials_base = list(MAT_STEEL = 10000)
 	ammo_type = /obj/item/ammo_casing/a762
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	max_ammo = 50
 	multiple_sprites = 1
 
@@ -1146,7 +1146,7 @@
 	desc = "A heavy plastic box designed to hold belts of foam darts! Wow!"
 	icon_state = "toy_lmg"
 	materials_base = list(MAT_PLASTIC = 10000)
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	max_ammo = 50
 
 /obj/item/ammo_magazine/mfoam/lmg/empty

@@ -3,7 +3,7 @@
 	desc = "A simple silver bracelet with a clasp."
 	icon = 'icons/obj/clothing/ties.dmi'
 	icon_state = "bracelet"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	slot_flags = SLOT_TIE
 	slot = ACCESSORY_SLOT_DECOR
 

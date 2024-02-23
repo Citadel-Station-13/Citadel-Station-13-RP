@@ -40,8 +40,11 @@ GLOBAL_DATUM(character_directory, /datum/character_directory)
 
 	var/list/directory_mobs = list()
 	for(var/client/C in GLOB.clients)
+		if(!C.initialized)
+			continue
+
 		// Allow opt-out.
-		if(!C?.prefs?.show_in_directory)
+		if(!C.prefs.show_in_directory)
 			continue
 
 		// These are the three vars we're trying to find

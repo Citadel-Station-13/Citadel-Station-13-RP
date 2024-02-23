@@ -283,7 +283,7 @@ var/list/sacrificed = list()
 			for(var/obj/item/organ/E in H.bad_external_organs)
 				var/obj/item/organ/external/affected = E
 				// fix bones
-				if((affected.damage < affected.min_broken_damage * config_legacy.organ_health_multiplier) && (affected.status & ORGAN_BROKEN))
+				if((affected.damage < affected.min_broken_damage) && (affected.status & ORGAN_BROKEN))
 					affected.status &= ~ORGAN_BROKEN
 				// fix IB
 				affected.cure_specific_wound(/datum/wound/internal_bleeding, all = TRUE)
@@ -434,7 +434,7 @@ var/list/sacrificed = list()
 				L.ajourn=0
 				return
 			else
-				L.take_organ_damage(3, 0)
+				L.take_random_targeted_damage(brute = 3, burn = 0)
 			sleep(100)
 	return fizzle()
 
@@ -488,7 +488,7 @@ var/list/sacrificed = list()
 	log_and_message_admins("used a manifest rune.")
 	var/mob/living/user = usr
 	while(this_rune && user && user.stat==CONSCIOUS && user.client && user.loc==this_rune.loc)
-		user.take_organ_damage(1, 0)
+		user.take_random_targeted_damage(brute = 1)
 		sleep(30)
 	if(D)
 		D.visible_message("<span class='danger'>[D] slowly dissipates into dust and bones.</span>", \
@@ -793,7 +793,7 @@ var/list/sacrificed = list()
 	usr.say("Khari[pick("'","`")]d! Eske'te tannin!")
 	src.density = !src.density
 	var/mob/living/user = usr
-	user.take_organ_damage(2, 0)
+	user.take_random_targeted_damage(brute = 2)
 	if(src.density)
 		to_chat(usr, "<span class='danger'>Your blood flows into the rune, and you feel that the very space over the rune thickens.</span>")
 	else

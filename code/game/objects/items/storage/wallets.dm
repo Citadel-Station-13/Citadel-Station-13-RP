@@ -1,11 +1,11 @@
 /obj/item/storage/wallet
 	name = "wallet"
 	desc = "It can hold a few small and personal things."
-	storage_slots = 10
+	max_items = 10
 	icon = 'icons/obj/wallet.dmi'
 	icon_state = "wallet-orange"
-	w_class = ITEMSIZE_SMALL
-	can_hold = list(
+	w_class = WEIGHT_CLASS_SMALL
+	insertion_whitelist = list(
 		/obj/item/spacecash,
 		/obj/item/card,
 		/obj/item/clothing/mask/smokable/cigarette/,
@@ -38,7 +38,7 @@
 		/obj/item/clothing/accessory/badge,
 		/obj/item/makeover
 		)
-	cant_hold = list(/obj/item/tool/screwdriver/power)
+	insertion_blacklist = list(/obj/item/tool/screwdriver/power)
 	slot_flags = SLOT_ID
 
 	var/obj/item/card/id/front_id = null
@@ -46,21 +46,25 @@
 	drop_sound = 'sound/items/drop/cloth.ogg'
 	pickup_sound = 'sound/items/pickup/cloth.ogg'
 
-/obj/item/storage/wallet/remove_from_storage(obj/item/W as obj, atom/new_location, do_move = TRUE)
+/obj/item/storage/wallet/Entered(atom/movable/AM, atom/oldLoc)
 	. = ..()
-	if(.)
-		if(W == front_id)
-			front_id = null
-			name = initial(name)
-			update_icon()
+	update_front_id()
 
-/obj/item/storage/wallet/handle_item_insertion(obj/item/W as obj, mob/user, prevent_warning = 0)
+/obj/item/storage/wallet/Exited(atom/movable/AM, atom/newLoc)
 	. = ..()
-	if(.)
-		if(!front_id && istype(W, /obj/item/card/id))
-			front_id = W
-			name = "[name] ([front_id])"
-			update_icon()
+	update_front_id()
+
+/obj/item/storage/wallet/proc/update_front_id()
+	// todo: lol fuck this is bad ~ silicons
+	var/obj/item/card/id/found = locate(/obj/item/card/id) in contents
+	if(isnull(front_id) == isnull(found))
+		return
+	front_id = found
+	if(isnull(front_id))
+		name = initial(name)
+	else
+		name = "[initial(name)] ([front_id])"
+	update_icon()
 
 /obj/item/storage/wallet/update_icon()
 	cut_overlays()

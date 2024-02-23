@@ -3,7 +3,7 @@
 	desc = "A hand-held emergency light."
 	icon = 'icons/obj/lighting.dmi'
 	icon_state = "flashlight"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = SLOT_BELT
 	materials_base = list(MAT_STEEL = 50, MAT_GLASS = 20)
 	action_button_name = "Toggle Flashlight"
@@ -234,7 +234,7 @@
 	pickup_sound = 'sound/items/pickup/accessory.ogg'
 	slot_flags = SLOT_EARS
 	brightness_on = 2
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	power_use = 0
 	flashlight_range = 2
 	light_wedge = LIGHT_OMNI
@@ -265,7 +265,7 @@
 	icon_state = "maglight"
 	damage_force = 10
 	slot_flags = SLOT_BELT
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	attack_verb = list ("smacked", "thwacked", "thunked")
 	attack_sound = "swing_hit"
 	materials_base = list(MAT_STEEL = 200, MAT_GLASS = 50)
@@ -279,7 +279,7 @@
 	item_state = null
 	brightness_on = 2
 	flashlight_range = 2
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	power_use = 0
 
 // the desk lamps are a bit special
@@ -289,7 +289,7 @@
 	icon_state = "lamp"
 	damage_force = 10
 	brightness_on = 5
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	power_use = 0
 	on = 1
 	light_wedge = LIGHT_OMNI
@@ -319,7 +319,7 @@
 	desc = "A red standard-issue flare. There are instructions on the side reading 'pull cord, make light'."
 	icon_state = "flare"
 	item_state = "flare"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 
 	brightness_on = 8 // Pretty bright.
 	flashlight_power = 0.8
@@ -387,7 +387,7 @@
 /obj/item/flashlight/glowstick
 	name = "green glowstick"
 	desc = "A green military-grade glowstick."
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	brightness_on = 4
 	icon_state = "glowstick"
 	item_state = "glowstick"

@@ -25,7 +25,7 @@ var/list/infomorph_emotions = list(
 	pass_flags = 1
 	mob_size = MOB_SMALL
 
-	can_pull_size = ITEMSIZE_SMALL
+	can_pull_size = WEIGHT_CLASS_SMALL
 	can_pull_mobs = MOB_PULL_SMALLER
 
 	idcard_type = /obj/item/card/id
@@ -235,7 +235,10 @@ var/list/infomorph_emotions = list(
 			var/mob/living/carbon/human/H = holder
 			for(var/obj/item/organ/external/affecting in H.organs)
 				if(card in affecting.implants)
-					affecting.take_damage(rand(30,50))
+					affecting.inflict_bodypart_damage(
+						brute = rand(30, 50),
+						weapon_descriptor = "bursting",
+					)
 					affecting.implants -= card
 					H.visible_message("<span class='danger'>\The [src] explodes out of \the [H]'s [affecting.name] in shower of gore!</span>")
 					break

@@ -3,7 +3,7 @@
 	desc = "..."
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = null
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	item_flags = ITEM_CAREFUL_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 
 	/// start reagent list. overrides reagent/volume. list(id = volume); volume must be specified.

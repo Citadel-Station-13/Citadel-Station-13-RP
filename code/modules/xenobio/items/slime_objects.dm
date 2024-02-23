@@ -79,7 +79,7 @@
 	It can also teleport someone else, by throwing it at them or attacking them with it."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "slime_crystal_small"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	origin_tech = list(TECH_MAGNET = 6, TECH_BLUESPACE = 3)
 	damage_force = 1 //Needs a token damage_force to ensure you can attack because for some reason you can't attack with 0 damage_force things
 
@@ -119,7 +119,7 @@
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "slime_crystal_large"
 	uses = 1
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_MAGNET = 5, TECH_BLUESPACE = 4)
 
 
@@ -148,7 +148,7 @@
 	item_state = "slime"
 	light_color = LIGHT_COLOR_YELLOW
 	light_wedge = LIGHT_OMNI
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	brightness_on = 6
 	on = TRUE //Bio-luminesence has one setting, on.
 	power_use = 0
@@ -174,7 +174,7 @@
 	light_color = "#00FF00"
 	light_power = 0.4
 	light_range = 2
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/slime_irradiator/New()
 	START_PROCESSING(SSobj, src)

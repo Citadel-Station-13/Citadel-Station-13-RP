@@ -101,7 +101,7 @@
 	if(!slot_meta)
 		return FALSE
 
-	var/obj/item/ours = item_by_slot(slot_id)
+	var/obj/item/ours = item_by_slot_id(slot_id)
 	var/obj/item/theirs = user.get_active_held_item()
 	if(!ours && !theirs)
 		to_chat(user, SPAN_WARNING("They're not wearing anything in that slot!"))
@@ -220,7 +220,7 @@
 			if(get_held_index(ours) != slot_id_or_index)
 				return FALSE
 		else
-			if(slot_by_item(ours) != slot_id_or_index)
+			if(slot_id_by_item(ours) != slot_id_or_index)
 				return FALSE
 	else
 		if(!user.is_holding(theirs))
