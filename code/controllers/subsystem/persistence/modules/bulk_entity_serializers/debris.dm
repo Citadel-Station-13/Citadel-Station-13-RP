@@ -25,7 +25,9 @@
 		. += debris
 
 /datum/bulk_entity_persistence/debris/perform_global_filter(list/atom/movable/entities)
-	return SSpersistence.entity_filter_out_eroding_turfs(entities)
+	entities = SSpersistence.entity_filter_out_non_persisting_objs(entities)
+	entities = SSpersistence.entity_filter_out_eroding_turfs(entities)
+	return entities
 
 /datum/bulk_entity_persistence/debris/perform_level_filter(list/atom/movable/entities, datum/map_level/level)
 	var/list/datum/persistent_debris_group/groups = calculate_groups(entities)

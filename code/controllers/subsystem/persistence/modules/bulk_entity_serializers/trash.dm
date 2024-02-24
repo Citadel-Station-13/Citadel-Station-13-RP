@@ -27,7 +27,9 @@
 	return filter_items(.)
 
 /datum/bulk_entity_persistence/trash/perform_global_filter(list/atom/movable/entities)
-	return SSpersistence.entity_filter_out_eroding_turfs(entities)
+	entities = SSpersistence.entity_filter_out_non_persisting_objs(entities)
+	entities = SSpersistence.entity_filter_out_eroding_turfs(entities)
+	return entities
 
 /datum/bulk_entity_persistence/trash/perform_level_filter(list/atom/movable/entities, datum/map_level/level)
 	// yeah the voronoi algorithm doesn't work if there's nothing to compute tbh

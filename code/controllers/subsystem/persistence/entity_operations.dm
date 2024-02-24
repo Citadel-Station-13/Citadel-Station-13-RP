@@ -79,3 +79,12 @@
 			continue
 		. += entity
 
+/**
+ * drops specifically /objs marked to not persist
+ */
+/datum/controller/subsystem/persistence/proc/entity_filter_out_non_persisting_objs(list/obj/objs)
+	. = list()
+	for(var/obj/obj as anything in objs)
+		if(obj.obj_persist_status & OBJ_PERSIST_STATUS_NO_THANK_YOU)
+			continue
+		. += obj
