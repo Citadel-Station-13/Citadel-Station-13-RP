@@ -45,6 +45,8 @@
 		if(!isnull(collate_turf_limit) && length(loc.contents) > collate_turf_limit)
 			return TRUE
 		for(var/obj/enemy in loc)
+			if(enemy == src)
+				continue
 			if(istype(enemy, check_type))
 				found++
 				if(found > collate_type_limit)

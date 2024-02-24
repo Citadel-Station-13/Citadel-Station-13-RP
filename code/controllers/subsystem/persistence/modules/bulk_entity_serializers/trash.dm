@@ -191,6 +191,11 @@
 		lockstepped_points += buffer[index]
 	// drop buffer now
 	buffer = null
+	// enough?
+	if(length(vertices) < 3)
+		// if less than 3 vertices they're all singles
+		// todo: we should try to mesh anything on the same tile..
+		return list(list(), items)
 	// construct graph
 	var/datum/graph/constructed_graph = vec2_dual_delaunay_voronoi_graph(vertices)
 
