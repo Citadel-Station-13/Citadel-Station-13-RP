@@ -42,7 +42,6 @@
 	var/dirs=0
 	var/coming_state="blood1"
 	var/going_state="blood2"
-	var/updatedtracks=0
 
 	// dir = id in stack
 	var/list/setdirs=list(
@@ -59,16 +58,8 @@
 	// List of laid tracks and their colors.
 	var/list/datum/fluidtrack/stack=list()
 
-/obj/effect/debris/cleanable/blood/tracks/serialize()
-	. = ..()
-	.["dirs"] = dirs
-	#warn uh
-
-/obj/effect/debris/cleanable/blood/tracks/deserialize(list/data)
-	. = ..()
-	// tracks =
-	#warn uh
-	update_icon()
+	// todo: this piece of shit obj is full of shitcode so we have to just exclude it for now
+	obj_persist_status = OBJ_PERSIST_STATUS_NO_THANK_YOU
 
 /**
  * Add tracks to an existing trail.
@@ -108,7 +99,6 @@
 			track=new /datum/fluidtrack(b,bloodcolor,t)
 			stack.Add(track)
 			setdirs["[b]"]=stack.Find(track)
-			updatedtracks |= b
 			updated=1
 
 		// GOING BIT (shift up 4)
@@ -125,7 +115,6 @@
 			track=new /datum/fluidtrack(b,bloodcolor,t)
 			stack.Add(track)
 			setdirs["[b]"]=stack.Find(track)
-			updatedtracks |= b
 			updated=1
 
 	dirs |= comingdir|realgoing
@@ -157,7 +146,6 @@
 		track.overlay=I
 		stack[stack_idx]=track
 		add_overlay(I)
-	updatedtracks=0 // Clear our memory of updated tracks.
 
 /obj/effect/debris/cleanable/blood/tracks/footprints
 	name = "wet footprints"
