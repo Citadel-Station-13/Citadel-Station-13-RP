@@ -78,8 +78,8 @@
 	piece_component.inv_hide_flags_sealed = inv_hide_flags_active
 	piece_component.inv_hide_flags_unsealed = inv_hide_flags_inactive
 	physical.body_cover_flags = body_cover_flags
-	physical.heat_protection = body_cover_flags
-	physical.cold_protection = body_cover_flags
+	physical.heat_protection_cover = body_cover_flags
+	physical.cold_protection_cover = body_cover_flags
 	// rendering
 	physical.worn_render_flags = worn_render_flags || theme.worn_render_flags
 	// bodytypes
