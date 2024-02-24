@@ -301,12 +301,13 @@
 /datum/object_system/storage/proc/rebuild_caches()
 	cached_combined_volume = 0
 	cached_combined_weight_class = 0
+	var/old_weight = weight_cached
 	weight_cached = 0
 	for(var/obj/item/item in real_contents_loc())
 		cached_combined_volume += item.get_weight_volume()
 		cached_combined_weight_class += item.get_weight_class()
 		weight_cached += item.get_weight()
-	update_containing_weight()
+	update_containing_weight(weight_cached - old_weight)
 
 /**
  * rebuild full state, used when shit explodes, vv use only. this is not totally
@@ -338,21 +339,25 @@
 /datum/object_system/storage/proc/get_containing_weight()
 	return max(0, weight_cached * weight_multiply - weight_subtract)
 
-/datum/object_system/storage/proc/update_containing_weight()
+/datum/object_system/storage/proc/update_containing_weight(change)
 	if(!isitem(parent))
 		return
+	// todo: rewrite the weight system
 	var/obj/item/item = parent
 	item.update_weight()
+	var/current = item.get_weight()
+	item.propagate_weight(current - change, current)
 
 /datum/object_system/storage/proc/set_weight_propagation(value)
 	if(value == weight_propagation)
 		return
 	weight_propagation = value
 	if(!weight_propagation)
+		var/old_weight_cached = weight_cached
 		weight_cached = 0
+		update_containing_weight(-old_weight_cached)
 	else
 		rebuild_caches()
-	update_containing_weight()
 
 //* Hooks *//
 
@@ -361,7 +366,7 @@
 
 /datum/object_system/storage/proc/on_dropped(mob/user)
 	revoke_buttons(user)
-
+b
 /**
  * Called by our object when an item exits us
  */
@@ -396,7 +401,7 @@
 	if(dangerously_redirect_contents_calls && item.loc != dangerously_redirect_contents_calls)
 		return
 	weight_cached += (new_weight - old_weight)
-	update_containing_weight()
+	update_containing_weight(new_weight - old_weight)
 
 /datum/object_system/storage/proc/on_contents_item_new(obj/item/item)
 	if(dangerously_redirect_contents_calls && item.loc != dangerously_redirect_contents_calls)
@@ -534,7 +539,7 @@
 		var/inserting_weight = inserting.get_weight()
 		if(inserting_weight)
 			weight_cached += inserting_weight
-			update_containing_weight()
+			update_containing_weight(inserting_weight)
 	cached_combined_volume += inserting.get_weight_volume()
 	cached_combined_weight_class += inserting.get_weight_class()
 
@@ -607,8 +612,8 @@
 	if(weight_propagation)
 		var/removing_weight = removing.get_weight()
 		if(removing_weight)
-			weight_cached += removing_weight
-			update_containing_weight()
+			weight_cached -= removing_weight
+			update_containing_weight(-removing_weight)
 	cached_combined_volume -= removing.get_weight_volume()
 	cached_combined_weight_class -= removing.get_weight_class()
 
@@ -1631,13 +1636,13 @@
 	layer = STORAGE_LAYER_ITEM_INACTIVE
 
 /atom/movable/screen/storage/item/MouseDrop(atom/over_object, src_location, over_location, src_control, over_control, params)
-	return item.MouseDrop(arglist(args))
+	return item?.MouseDrop(arglist(args))
 
 /atom/movable/screen/storage/item/Click(location, control, params)
-	return item.Click(arglist(args))
+	return item?.Click(arglist(args))
 
 /atom/movable/screen/storage/item/DblClick(location, control, params)
-	return item.DblClick(arglist(args))
+	return item?.DblClick(arglist(args))
 
 /atom/movable/screen/storage/item/proc/bind(obj/item/item)
 	vis_contents += item

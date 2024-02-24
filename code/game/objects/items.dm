@@ -945,6 +945,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	if(. == weight_registered)
 		return 0
 	. -= weight_registered
+	weight_registered += .
 	var/mob/living/wearer = worn_mob()
 	if(istype(wearer))
 		wearer.adjust_current_carry_weight(.)

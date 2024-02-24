@@ -337,6 +337,9 @@
 	icon_state = "baron"
 	initial_icon = "baron"
 
+	integrity = 600
+	integrity_max = 600
+
 	catalogue_data = list(/datum/category_item/catalogue/technology/baron)
 	wreckage = /obj/effect/decal/mecha_wreckage/baron
 
@@ -387,8 +390,8 @@
 
 	step_in = 3 //slightly slower than a baron (this shit doesnt actually work atm, likely due to the whole equipment weight nonsense)
 
-	integrity = 800
-	integrity_max = 800 //double baron HP, only room for one defensive upgrade. No specials(cloaking, speed, ect) or universals.
+	integrity = 1200
+	integrity_max = 1200 //double baron HP, only room for one defensive upgrade. No specials(cloaking, speed, ect) or universals.
 
 	max_hull_equip = 1
 	max_weapon_equip = 4
