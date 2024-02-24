@@ -84,6 +84,7 @@
 	if(!isturf(loc))
 		// how moment
 		return ..()
+	clickchain_flags |= CLICKCHAIN_REDIRECTED
 	return loc.tool_interaction(arglist(args))
 
 /obj/effect/debris/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
@@ -91,4 +92,5 @@
 	if(!isturf(loc))
 		// how moment
 		return ..()
+	clickchain_flags |= CLICKCHAIN_REDIRECTED
 	return loc.attackby(arglist(args))
