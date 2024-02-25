@@ -25711,7 +25711,9 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 6
 	},
-/obj/machinery/light,
+/obj/machinery/light{
+	old_wall = 1
+	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
 "tVG" = (
