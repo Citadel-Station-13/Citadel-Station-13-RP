@@ -17,6 +17,13 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
 /obj/item/stream_projector/medichine
 	name = "medichine stream projector"
 	desc = "A specialized, locked-down variant of a nanite stream projector. Deploys medichines from a cartridge onto a target's surface."
+	#warn icon
+
+	// todo: proper cataloguing fluff desc system
+	description_fluff = "An expensive prototype first developed jointly by Vey-Med and Nanotrasen, the medichine stream projector is essentially a \
+	somewhat perfected cross between a holofabricator's confinement stream and a just-in-time nanoswarm compiler. Due to the relative little \
+	need for a powerful, laminar stream of particles, this has a far higher efficient range than a standard holofabricator. Nanites must \
+	be provided with prepared medichine cartridges."
 
 	#warn impl
 
