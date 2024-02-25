@@ -22444,7 +22444,7 @@
 	cycle_to_external_air = 1;
 	dir = 4;
 	frequency = 1380;
-	id_tag = "expshuttle_docker";
+	id_tag = "emt_shuttle_docker";
 	pixel_x = 8;
 	pixel_y = -36
 	},
@@ -22592,7 +22592,7 @@
 /obj/machinery/airlock_sensor{
 	dir = 1;
 	frequency = 1380;
-	id_tag = "hammerhead_docker";
+	id_tag = "emt_shuttle_docker";
 	pixel_y = -21
 	},
 /obj/map_helper/airlock/sensor/chamber_sensor,
@@ -25163,8 +25163,8 @@
 /obj/machinery/airlock_sensor/airlock_exterior/shuttle{
 	dir = 4;
 	frequency = 1380;
-	id_tag = "hammerhead_exterior_sensor";
-	master_tag = "hammerhead_docker";
+	id_tag = "emt_shuttle_exterior_sensor";
+	master_tag = "emt_shuttle_docker";
 	pixel_y = 23
 	},
 /obj/map_helper/airlock/sensor/ext_sensor,
@@ -25555,7 +25555,7 @@
 "tIi" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	frequency = 1380;
-	id_tag = "civvie_docker_pump"
+	id_tag = "emt_shuttle_docker_pump"
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/structure/closet/walllocker/emergsuit_wall{
