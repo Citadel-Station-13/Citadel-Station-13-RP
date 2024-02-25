@@ -213,6 +213,7 @@ ColorTone(rgb, tone)
 
 /**
  * reads RGB or RGBA values to list
+ *
  * @return list(r, g, b) or list(r, g, b, a), values 0 to 255.
  */
 /proc/ReadRGB(rgb)
@@ -498,18 +499,21 @@ ColorTone(rgb, tone)
 
 	return hsv(hue, sat, val, alpha)
 
-/*
-	Smooth blend between RGB colors
-
-	amount=0 is the first color
-	amount=1 is the second color
-	amount=0.5 is directly between the two colors
-
-	amount<0 or amount>1 are allowed
+/**
+ * Smooth blend between RGB colors
+ *
+ * amount=0 is the first color
+ * amount=1 is the second color
+ * amount=0.5 is directly between the two colors
+ *
+ * amount<0 or amount>1 are allowed
+ *
+ * if rgb1/rgb2 are lists, they are treated as rgb lists directly.
+ * it is up to you to not pass in dumb shit.
  */
 /proc/BlendRGB(rgb1, rgb2, amount)
-	var/list/RGB1 = ReadRGB(rgb1)
-	var/list/RGB2 = ReadRGB(rgb2)
+	var/list/RGB1 = islist(rgb1)? rgb1 : ReadRGB(rgb1)
+	var/list/RGB2 = islist(rgb2)? rgb2 : ReadRGB(rgb2)
 
 	// add missing alpha if needed
 	if(RGB1.len < RGB2.len)
@@ -524,6 +528,38 @@ ColorTone(rgb, tone)
 	var/alpha = usealpha ? round(RGB1[4] + (RGB2[4] - RGB1[4]) * amount, 1) : null
 
 	return isnull(alpha) ? rgb(r, g, b) : rgb(r, g, b, alpha)
+
+/**
+ * Smooth blend between RGB colors
+ *
+ * amount=0 is the first color
+ * amount=1 is the second color
+ * amount=0.5 is directly between the two colors
+ *
+ * amount<0 or amount>1 are allowed
+ *
+ * if rgb1/rgb2 are lists, they are treated as rgb lists directly.
+ * it is up to you to not pass in dumb shit.
+ *
+ * emits a rgb list
+ */
+/proc/BlendRGBList(rgb1, rgb2, amount)
+	var/list/RGB1 = islist(rgb1)? rgb1 : ReadRGB(rgb1)
+	var/list/RGB2 = islist(rgb2)? rgb2 : ReadRGB(rgb2)
+
+	// add missing alpha if needed
+	if(RGB1.len < RGB2.len)
+		RGB1 += 255
+	else if(RGB2.len < RGB1.len)
+		RGB2 += 255
+	var/usealpha = RGB1.len > 3
+
+	var/r = round(RGB1[1] + (RGB2[1] - RGB1[1]) * amount, 1)
+	var/g = round(RGB1[2] + (RGB2[2] - RGB1[2]) * amount, 1)
+	var/b = round(RGB1[3] + (RGB2[3] - RGB1[3]) * amount, 1)
+	var/alpha = usealpha ? round(RGB1[4] + (RGB2[4] - RGB1[4]) * amount, 1) : null
+
+	return isnull(alpha)? list(r, g, b) : list(r, g, b, alpha)
 
 /proc/BlendRGBasHSV(rgb1, rgb2, amount)
 	return HSVtoRGB(RGBtoHSV(rgb1), RGBtoHSV(rgb2), amount)

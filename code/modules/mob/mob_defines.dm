@@ -49,9 +49,9 @@
 	var/atom/movable/buckled
 	/// Atom we're buckl**ing** to. Used to stop stuff like lava from incinerating those who are mid buckle.
 	var/atom/movable/buckling
-	
+
 	//* HUD
-	
+
 	/// active, opened storage
 	//  todo: doesn't clear from clients properly on logout, relies on login clearing screne.
 	//  todo: we'll eventually need a system to handle ckey transfers properly.
@@ -365,7 +365,7 @@
 
 	//? Unit Tests
 	/// A mock client, provided by tests and friends
-	var/datum/client_interface/mock_client
+	var/datum/mocking/client/mock_client
 
 	//? Throwing
 	/// whether or not we're prepared to throw stuff.
