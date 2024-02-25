@@ -47,7 +47,7 @@
 			var/datum/map_level_persistence/level_metadata = ordered_level_metadata[z_index]
 
 			if(!level_metadata.persistence_allowed)
-				subsystem_log("world-load: z-[z_index] for [bulk_serializer.id] skipped (persistence not allowed")
+				subsystem_log("world-load: z-[z_index] for [bulk_serializer.id] skipped (persistence not allowed)")
 				continue
 
 			subsystem_log("world-load: z-[z_index] for [bulk_serializer.id] start")
@@ -77,7 +77,7 @@
 		var/datum/map_level_persistence/level_metadata = ordered_level_metadata[z_index]
 
 		if(!level_metadata.persistence_allowed)
-			subsystem_log("world-load: z-[z_index] skipped (persistence not allowed")
+			subsystem_log("world-load: z-[z_index] skipped (persistence not allowed)")
 			continue
 
 		subsystem_log("world-load: z-[z_index] ([level_metadata.level_id]) start")
@@ -132,7 +132,7 @@
 		var/datum/map_level_persistence/level_metadata = ordered_level_metadata[z_index]
 
 		if(!level_metadata.persistence_allowed)
-			subsystem_log("world-save: z-[z_index] skipped (persistence not allowed")
+			subsystem_log("world-save: z-[z_index] skipped (persistence not allowed)")
 			continue
 
 		subsystem_log("world-save: z-[z_index] ([level_metadata.level_id]) start")
