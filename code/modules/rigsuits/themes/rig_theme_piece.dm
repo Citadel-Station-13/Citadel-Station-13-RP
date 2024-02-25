@@ -99,7 +99,6 @@
 		physical.set_coloration_matrix(isnull(coloration_matrix)? theme.coloration_matrix : coloration_matrix)
 	else
 		physical.set_coloration_parts(isnull(coloration_colors)? theme.coloration_colors : coloration_colors)
-	#warn impl
 
 /datum/rig_theme_piece/proc/imprint_behavior(datum/rig_theme/theme, datum/component/rig_piece/piece_component)
 	var/obj/item/physical = piece_component.parent

@@ -34,11 +34,9 @@ Yes, this currently includes all turfs, mobs, objs, and misc things. Sorry. We'l
       - /clothing - clothing
       - /machinery - machinery
       - /structures - structures
+    - /overmaps - **All** overmap sprites, whether or not it's screen rendering, goes in here
   - /objects - miscellaneous objects that are not items, machinery, or structures
-  - /overmaps - **All** overmap sprites, whether or not it's screen   rendering, goes in here
-  - /runtime - follow similar structure inside this, treat it as a   sub-copy. icons in this are copied over for use during runtime
-    - **Warning!** - everything not in this folder cannot be accessed by   "filename" and must be compiled in with 'filename'.
-  - /screen - all screen objects, like hud icons, buttons, inventory   interface, parallax, etc
+  - /screen - all screen objects, like hud icons, buttons, inventory interface, parallax, etc
     - /actions - all action button sprites go in here
     - /atom_hud - the /image huds that atoms can have has their icons in   here
     - /fullscreen - fullscreen effects go in here (see code/_rendering/  fullscreen)

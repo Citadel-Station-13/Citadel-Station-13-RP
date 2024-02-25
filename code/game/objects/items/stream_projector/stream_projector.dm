@@ -9,7 +9,7 @@
 /obj/item/stream_projector
 	#warn impl
 
-	/// locked targets
+	/// locked targets; associated value must be truthy but is reserved by visual construction.
 	var/list/atom/active_targets
 	/// drop all targets on attack self
 	var/drop_all_targets_on_attack_self = TRUE
@@ -40,6 +40,17 @@
 		return FALSE
 	LAZYSET(active_targets, entity, TRUE)
 	#warn impl
+
+/**
+ * setup visuals to target
+ */
+/obj/item/stream_projector/proc/setup_target_visuals(atom/entity)
+
+/**
+ * teardown visuals to target
+ */
+/obj/item/stream_projector/proc/teardown_target_visuals(atom/entity)
+	return
 
 /**
  * do target removal logic here
