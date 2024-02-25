@@ -4,7 +4,7 @@
 	icon_state = "taperecorder_empty"
 	item_state = "analyzer"
 	icon = 'icons/obj/device.dmi'
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = SLOT_BELT
 	throw_force = 2
 	throw_speed = 4

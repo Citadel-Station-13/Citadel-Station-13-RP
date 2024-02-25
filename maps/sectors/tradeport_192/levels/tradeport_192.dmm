@@ -4,11 +4,6 @@
 /obj/effect/floor_decal/grass_edge,
 /turf/simulated/floor/outdoors/dirt,
 /area/tradeport/cyndishow)
-"ab" = (
-/obj/structure/table/steel_reinforced,
-/obj/item/hardsuit/internalaffairs,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "ad" = (
 /turf/simulated/floor/tiled/freezer,
 /area/tradeport)
@@ -62,6 +57,16 @@
 "ao" = (
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/dark,
+/area/shuttle/trade_ship/general)
+"aq" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/red,
 /area/shuttle/trade_ship/general)
 "ar" = (
 /obj/effect/floor_decal/techfloor,
@@ -380,13 +385,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/tradeport/cyndishow)
-"bo" = (
-/obj/random/multiple/voidsuit/vintage,
-/obj/machinery/suit_storage_unit{
-	isopen = 1
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "bp" = (
 /obj/structure/reagent_dispensers/watertank,
 /turf/simulated/floor/plating,
@@ -577,18 +575,6 @@
 /obj/machinery/chemical_dispenser/catering/bar_alc,
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/shuttle/trade_ship/general)
-"ch" = (
-/obj/machinery/door/airlock/multi_tile/glass,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/door/firedoor{
-	req_one_access = list(160)
-	},
-/turf/simulated/floor/tiled/old_cargo/red,
-/area/shuttle/trade_ship/general)
 "ci" = (
 /turf/simulated/floor/tiled/techmaint,
 /area/tradeport/engineering)
@@ -737,6 +723,27 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tradeport/engineering)
+"cK" = (
+/obj/structure/table/marble,
+/obj/machinery/door/blast/shutters{
+	density = 0;
+	dir = 8;
+	icon_state = "shutter0";
+	id = "trade";
+	name = "Shop Shutters";
+	opacity = 0
+	},
+/obj/machinery/door/firedoor{
+	dir = 8;
+	req_one_access = list(160)
+	},
+/obj/machinery/cash_register/trader{
+	desc = "Swipe your ID card to make purchases electronically. There is a note at the bottom. Press Custom Order. Enter reason and cost. Then have customer swipe their card. ";
+	dir = 4;
+	name = "Trader Register"
+	},
+/turf/simulated/floor/tiled/red,
+/area/shuttle/trade_ship/general)
 "cM" = (
 /obj/machinery/light{
 	dir = 8
@@ -795,12 +802,12 @@
 	},
 /turf/simulated/floor/airless,
 /area/space)
-"cV" = (
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+"cU" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/old_cargo/red,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/red,
 /area/shuttle/trade_ship/general)
 "cW" = (
 /obj/machinery/suit_storage_unit/syndicate,
@@ -1210,14 +1217,6 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
-"eq" = (
-/obj/structure/table/steel_reinforced,
-/obj/structure/window/reinforced,
-/obj/item/storage/briefcase/fission{
-	starts_with = list(/obj/item/coin/supermatter,/obj/item/coin/supermatter,/obj/item/coin/supermatter)
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "er" = (
 /obj/machinery/light{
 	dir = 4
@@ -1371,30 +1370,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/shuttle/trade_ship/general)
-"eW" = (
-/obj/structure/window/reinforced,
-/obj/machinery/door/blast/shutters{
-	density = 0;
-	dir = 8;
-	icon_state = "shutter0";
-	id = "trade";
-	name = "Shop Shutters";
-	opacity = 0
-	},
-/obj/structure/table/marble,
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/obj/machinery/door/firedoor{
-	dir = 8;
-	req_one_access = list(160)
-	},
-/obj/item/deskbell{
-	pixel_x = -7;
-	pixel_y = -2
-	},
-/turf/simulated/floor/tiled/old_cargo/red,
-/area/shuttle/trade_ship/general)
 "eX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
@@ -1509,12 +1484,27 @@
 	},
 /turf/simulated/shuttle/floor/white,
 /area/tradeport/commons)
+"fs" = (
+/obj/structure/cable/green{
+	icon_state = "0-4"
+	},
+/obj/machinery/power/apc/alarms_hidden/south_mount{
+	req_access = list(160)
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/trade_ship/cockpit)
 "ft" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/effect/debris/cleanable/dirt,
 /obj/random/cutout,
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport)
+"fu" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/red,
+/area/shuttle/trade_ship/general)
 "fv" = (
 /obj/machinery/button/remote/blast_door{
 	dir = 4;
@@ -1793,6 +1783,12 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/tradeport/pads)
+"gq" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/item/storage/secure/briefcase,
+/obj/structure/table/steel,
+/turf/simulated/floor/tiled/red,
+/area/shuttle/trade_ship/general)
 "gr" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/door/firedoor{
@@ -1924,6 +1920,18 @@
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
+"gT" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/structure/sign/kiddieplaque{
+	desc = "A plaque commemorating the construction of the cargo ship Beruang.";
+	name = "Beruang";
+	pixel_x = 32
+	},
+/obj/machinery/holopad/ship/starts_inactive,
+/turf/simulated/floor/tiled/red,
+/area/shuttle/trade_ship/cockpit)
 "gU" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -2025,18 +2033,6 @@
 	},
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/tradeport/safari)
-"hl" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
-/obj/structure/table/rack/shelf/steel,
-/obj/item/card/emag{
-	desc = "It's a card with a magnetic strip attached to some circuitry. Looks really flimsy, like it'll fall apart at any moment.";
-	name = "discount cryptographic sequencer";
-	uses = 1
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "hm" = (
 /obj/machinery/camera{
 	dir = 8
@@ -2090,6 +2086,20 @@
 /obj/structure/undies_wardrobe,
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/shuttle/trade_ship/general)
+"hw" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
+/mob/living/bot/cleanbot/edCLN{
+	desc = "A large cleaning robot. It's nametag reads 'Jim'.";
+	move_speed = 6;
+	name = "Jim"
+	},
+/turf/simulated/floor/tiled/old_cargo/beige,
+/area/tradeport/atmospherics)
 "hA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -2216,19 +2226,6 @@
 "ia" = (
 /turf/simulated/wall/r_wall,
 /area/tradeport/pads)
-"ic" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/turf/simulated/floor/tiled/old_cargo/red,
-/area/shuttle/trade_ship/general)
 "ie" = (
 /obj/structure/sink{
 	dir = 8;
@@ -2280,6 +2277,13 @@
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
+"ip" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/media/jukebox{
+	state_base = "darkjuke"
+	},
+/turf/simulated/floor/tiled/red,
+/area/shuttle/trade_ship/general)
 "iq" = (
 /obj/structure/closet/crate/bin{
 	anchored = 1
@@ -2427,12 +2431,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/tradeport/cyndishow)
-"iK" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/old_cargo/red,
-/area/shuttle/trade_ship/general)
 "iL" = (
 /obj/effect/debris/cleanable/blood/drip,
 /turf/simulated/floor/tiled/hydro,
@@ -2479,16 +2477,6 @@
 /obj/overmap/entity/visitable/sector/trade_post,
 /turf/space,
 /area/space)
-"iR" = (
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled/old_cargo/red,
-/area/shuttle/trade_ship/general)
 "iT" = (
 /obj/structure/table/hardwoodtable,
 /turf/simulated/floor/carpet/blucarpet,
@@ -2539,6 +2527,15 @@
 	},
 /turf/simulated/shuttle/floor/white,
 /area/tradeport/commons)
+"ja" = (
+/obj/machinery/vending/sovietsoda{
+	contraband = list(/obj/item/reagent_containers/food/drinks/cans/crystalgibb = 20);
+	desc = "An old sweet water vending machine. It looks like someone crossed out the D and replaced it with an F.";
+	name = "BOFA";
+	products = list(/obj/item/reagent_containers/food/drinks/cans/thirteenloko = 20)
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/trade_ship/general)
 "jb" = (
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
@@ -2638,9 +2635,6 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/plating,
 /area/tradeport/engineering)
-"jo" = (
-/turf/simulated/floor/tiled/old_cargo/red,
-/area/shuttle/trade_ship/cockpit)
 "jq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
@@ -2794,12 +2788,6 @@
 	},
 /turf/simulated/floor/carpet/blucarpet,
 /area/tradeport)
-"jR" = (
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/old_cargo/red,
-/area/shuttle/trade_ship/general)
 "jV" = (
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/item/reagent_containers/syringe/drugs,
@@ -3205,17 +3193,6 @@
 /obj/structure/lightpost,
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/tradeport/safarizoo)
-"lo" = (
-/obj/structure/cable/green{
-	icon_state = "2-4"
-	},
-/obj/structure/cable/green{
-	icon_state = "2-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled/old_cargo/red,
-/area/shuttle/trade_ship/general)
 "lp" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
 /obj/machinery/light/small{
@@ -3393,26 +3370,11 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/tradeport/atmospherics)
-"lX" = (
-/obj/machinery/power/apc/alarms_hidden/south_mount{
-	req_access = list(160)
-	},
-/obj/structure/cable/green{
-	icon_state = "0-8"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "lY" = (
 /obj/machinery/atmospherics/pipe/simple/visible,
 /obj/structure/catwalk,
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/tradeport/pads)
-"lZ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/item/storage/secure/briefcase,
-/obj/structure/table/steel,
-/turf/simulated/floor/tiled/old_cargo/red,
-/area/shuttle/trade_ship/general)
 "ma" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
@@ -3491,41 +3453,10 @@
 /obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/tradeport)
-"mp" = (
-/obj/structure/table/marble,
-/obj/machinery/door/blast/shutters{
-	density = 0;
-	dir = 8;
-	icon_state = "shutter0";
-	id = "trade";
-	name = "Shop Shutters";
-	opacity = 0
-	},
-/obj/machinery/door/firedoor{
-	dir = 8;
-	req_one_access = list(160)
-	},
-/obj/machinery/cash_register/trader{
-	desc = "Swipe your ID card to make purchases electronically. There is a note at the bottom. Press Custom Order. Enter reason and cost. Then have customer swipe their card. ";
-	dir = 4;
-	name = "Trader Register"
-	},
-/turf/simulated/floor/tiled/old_cargo/red,
-/area/shuttle/trade_ship/general)
 "mr" = (
 /obj/structure/flora/pumpkin/carved/scream,
 /turf/simulated/floor/outdoors/dirt,
 /area/tradeport/cyndishow)
-"ms" = (
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/old_cargo/red,
-/area/shuttle/trade_ship/general)
 "mu" = (
 /obj/machinery/light,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -3713,6 +3644,18 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/facility)
+"nb" = (
+/obj/machinery/camera{
+	dir = 4
+	},
+/obj/machinery/vending/sovietsoda{
+	contraband = list(/obj/item/reagent_containers/food/drinks/cans/crystalgibb = 20);
+	desc = "An old sweet water vending machine. It looks like someone crossed out the D and replaced it with an F.";
+	name = "BOFA";
+	products = list(/obj/item/reagent_containers/food/drinks/cans/thirteenloko = 20)
+	},
+/turf/simulated/floor/tiled/old_tile/blue,
+/area/tradeport)
 "nd" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 4
@@ -3829,6 +3772,11 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/cockpit)
+"ny" = (
+/obj/random/multiple/voidsuit/vintage,
+/obj/structure/closet,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/trade_ship/general)
 "nB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -3942,6 +3890,16 @@
 	},
 /turf/simulated/floor/carpet/blue,
 /area/tradeport/commons)
+"nX" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/red,
+/area/shuttle/trade_ship/general)
 "nZ" = (
 /obj/machinery/vending/loadout/accessory,
 /turf/simulated/floor/wood,
@@ -3962,6 +3920,15 @@
 "ob" = (
 /turf/simulated/floor/plating,
 /area/tradeport/commhall)
+"oc" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/red,
+/area/shuttle/trade_ship/general)
 "od" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/old_tile/gray,
@@ -4031,21 +3998,6 @@
 /obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
-"ov" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled/old_cargo/red,
-/area/shuttle/trade_ship/general)
-"ow" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/old_cargo/red,
-/area/shuttle/trade_ship/general)
 "oy" = (
 /obj/structure/table/glass,
 /obj/item/radio/intercom/trader{
@@ -4061,6 +4013,21 @@
 	},
 /turf/simulated/floor/carpet,
 /area/tradeport/commons)
+"oA" = (
+/obj/machinery/door/blast/shutters{
+	density = 0;
+	dir = 8;
+	icon_state = "shutter0";
+	id = "trade-ship-secure";
+	name = "Blast Shutters";
+	opacity = 0
+	},
+/obj/machinery/door/firedoor{
+	dir = 8;
+	req_one_access = list(160)
+	},
+/turf/simulated/floor/tiled/red,
+/area/shuttle/trade_ship/general)
 "oB" = (
 /obj/machinery/air_sensor{
 	frequency = 1443;
@@ -4124,6 +4091,15 @@
 "oO" = (
 /turf/simulated/floor/reinforced/airmix,
 /area/tradeport/atmospherics)
+"oP" = (
+/obj/structure/cable/green{
+	icon_state = "0-8"
+	},
+/obj/machinery/power/apc/alarms_hidden/south_mount{
+	req_access = list(160)
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/trade_ship/general)
 "oR" = (
 /obj/machinery/sleeper{
 	dir = 4
@@ -4399,13 +4375,6 @@
 /obj/landmark/spawnpoint/job/trader,
 /turf/simulated/floor/wood,
 /area/tradeport/cafeteria)
-"pZ" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled/old_cargo/red,
-/area/shuttle/trade_ship/general)
 "qb" = (
 /obj/structure/bed/chair/comfy/black,
 /obj/machinery/newscaster{
@@ -4553,6 +4522,13 @@
 	},
 /turf/simulated/floor/wood,
 /area/tradeport/commons)
+"qx" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/red,
+/area/shuttle/trade_ship/general)
 "qy" = (
 /obj/machinery/door/firedoor{
 	dir = 8;
@@ -4705,12 +4681,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/tradeport/pads)
-"qZ" = (
-/obj/structure/bed/chair/bay/comfy/captain{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/old_cargo/red,
-/area/shuttle/trade_ship/cockpit)
 "ra" = (
 /obj/machinery/door/airlock/maintenance_hatch{
 	req_access = list(160);
@@ -4752,13 +4722,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/tradeport/pads)
-"ri" = (
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/old_cargo/red,
-/area/shuttle/trade_ship/general)
 "rj" = (
 /obj/machinery/light,
 /turf/simulated/floor/tiled/dark,
@@ -5148,6 +5111,18 @@
 	},
 /turf/simulated/floor/tiled/old_tile/white,
 /area/tradeport)
+"sV" = (
+/obj/machinery/door/airlock/multi_tile/glass,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/firedoor{
+	req_one_access = list(160)
+	},
+/turf/simulated/floor/tiled/red,
+/area/shuttle/trade_ship/general)
 "sW" = (
 /obj/machinery/light{
 	dir = 4
@@ -5225,6 +5200,21 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plating,
 /area/tradeport/commhall)
+"tj" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/structure/table/rack/shelf/steel,
+/obj/item/card/emag{
+	desc = "It's a card with a magnetic strip attached to some circuitry. Looks really flimsy, like it'll fall apart at any moment.";
+	name = "discount cryptographic sequencer";
+	uses = 1
+	},
+/obj/structure/sign/poster{
+	pixel_x = 32
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/trade_ship/general)
 "tk" = (
 /obj/structure/table/glass,
 /obj/item/deck/cards{
@@ -5314,6 +5304,12 @@
 	},
 /turf/simulated/floor/wood,
 /area/tradeport/cafeteria)
+"tE" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/red,
+/area/shuttle/trade_ship/general)
 "tF" = (
 /obj/item/storage/firstaid/regular,
 /obj/item/storage/firstaid/fire,
@@ -5418,13 +5414,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/tradeport/safarizoo)
-"tY" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled/old_cargo/red,
-/area/shuttle/trade_ship/general)
 "ua" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -5446,6 +5435,18 @@
 /obj/item/toy/figure/captain,
 /turf/simulated/floor/tiled/old_tile/red,
 /area/tradeport)
+"ue" = (
+/obj/structure/sign/poster{
+	pixel_y = 32
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/red,
+/area/shuttle/trade_ship/general)
 "uf" = (
 /obj/machinery/power/apc/alarms_hidden/south_mount{
 	req_access = list(160)
@@ -5512,15 +5513,6 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/cyndishow)
-"ux" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/old_cargo/red,
-/area/shuttle/trade_ship/general)
 "uy" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -5694,6 +5686,28 @@
 /obj/structure/catwalk,
 /turf/simulated/floor,
 /area/tradeport/pads)
+"uX" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled/red,
+/area/shuttle/trade_ship/general)
+"uY" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/red,
+/area/shuttle/trade_ship/general)
 "uZ" = (
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
@@ -6059,14 +6073,11 @@
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/cafeteria)
-"wg" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 6
-	},
-/turf/simulated/floor/tiled/old_cargo/red,
+"wf" = (
+/obj/structure/table/steel_reinforced,
+/obj/structure/window/reinforced,
+/obj/item/hardsuit/internalaffairs,
+/turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "wh" = (
 /obj/machinery/light{
@@ -6264,6 +6275,18 @@
 /obj/machinery/light,
 /turf/simulated/floor/carpet/blue,
 /area/tradeport/commons)
+"wI" = (
+/obj/structure/cable/green{
+	icon_state = "1-4"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/red,
+/area/shuttle/trade_ship/general)
 "wK" = (
 /obj/machinery/vending/loadout/costume,
 /turf/simulated/floor/wood,
@@ -6307,14 +6330,6 @@
 /obj/structure/catwalk,
 /turf/simulated/floor,
 /area/tradeport/pads)
-"wR" = (
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/turf/simulated/floor/tiled/old_cargo/red,
-/area/shuttle/trade_ship/general)
 "wS" = (
 /obj/machinery/atmospherics/pipe/simple/visible/universal,
 /turf/simulated/floor/plating,
@@ -6336,12 +6351,6 @@
 	},
 /turf/simulated/floor/tiled/old_tile/red,
 /area/tradeport)
-"wZ" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/old_cargo/red,
-/area/shuttle/trade_ship/general)
 "xa" = (
 /obj/structure/transit_tube,
 /obj/effect/floor_decal/industrial/warning{
@@ -6546,6 +6555,11 @@
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/shuttle/plating,
 /area/shuttle/trade_ship/general)
+"xM" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/structure/table/steel,
+/turf/simulated/floor/tiled/red,
+/area/shuttle/trade_ship/general)
 "xN" = (
 /obj/machinery/door/airlock/external/glass{
 	req_access = list(160)
@@ -6616,6 +6630,14 @@
 	},
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/tradeport/spine)
+"xW" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/turf/simulated/floor/tiled/red,
+/area/shuttle/trade_ship/general)
 "xY" = (
 /obj/structure/loot_pile/surface/drone,
 /turf/simulated/mineral/floor/vacuum,
@@ -6862,6 +6884,12 @@
 	},
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/shuttle/trade_ship/general)
+"yR" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/red,
+/area/shuttle/trade_ship/general)
 "yT" = (
 /obj/structure/undies_wardrobe,
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -6915,12 +6943,6 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/cyndi)
-"ze" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 5
-	},
-/turf/simulated/floor/tiled/old_cargo/red,
-/area/shuttle/trade_ship/general)
 "zf" = (
 /obj/machinery/camera{
 	dir = 4
@@ -7072,21 +7094,6 @@
 /obj/structure/table/marble,
 /turf/simulated/floor/outdoors/beach/sand/desert,
 /area/tradeport/cyndishow)
-"zE" = (
-/obj/machinery/door/blast/shutters{
-	density = 0;
-	dir = 8;
-	icon_state = "shutter0";
-	id = "trade-ship-secure";
-	name = "Blast Shutters";
-	opacity = 0
-	},
-/obj/machinery/door/firedoor{
-	dir = 8;
-	req_one_access = list(160)
-	},
-/turf/simulated/floor/tiled/old_cargo/red,
-/area/shuttle/trade_ship/general)
 "zG" = (
 /obj/machinery/light{
 	dir = 4
@@ -7244,6 +7251,9 @@
 "Ap" = (
 /turf/simulated/floor/wood,
 /area/tradeport/cafeteria)
+"Ar" = (
+/turf/simulated/floor/tiled/red,
+/area/shuttle/trade_ship/general)
 "At" = (
 /obj/structure/closet/crate/bin{
 	anchored = 1
@@ -7263,23 +7273,6 @@
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/facility)
-"Aw" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled/old_cargo/red,
-/area/shuttle/trade_ship/general)
-"Ax" = (
-/obj/structure/sign/poster{
-	pixel_y = 32
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/old_cargo/red,
-/area/shuttle/trade_ship/general)
 "Ay" = (
 /obj/machinery/button/remote/blast_door{
 	dir = 4;
@@ -7402,20 +7395,6 @@
 	},
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/tradeport)
-"AV" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 6
-	},
-/mob/living/bot/cleanbot/edCLN{
-	desc = "A large cleaning robot. It's nametag reads 'Jim'.";
-	move_speed = 6;
-	name = "Jim"
-	},
-/turf/simulated/floor/tiled/old_cargo/beige,
-/area/tradeport/atmospherics)
 "AW" = (
 /obj/structure/inflatable,
 /turf/simulated/floor/airless,
@@ -7429,6 +7408,13 @@
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/tradeport)
+"AZ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/red,
+/area/shuttle/trade_ship/general)
 "Ba" = (
 /obj/machinery/power/apc/alarms_hidden/south_mount{
 	req_access = list(160)
@@ -7597,6 +7583,14 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/tradeport/pads)
+"Bw" = (
+/obj/machinery/vending/assist{
+	contraband = null;
+	name = "Old Vending Machine";
+	products = list(/obj/item/assembly/prox_sensor = 5, /obj/item/assembly/signaler = 4, /obj/item/assembly/infra = 4, /obj/item/assembly/prox_sensor = 4, /obj/item/handcuffs = 8, /obj/item/flash = 4, /obj/item/cartridge/signal = 4, /obj/item/clothing/glasses/sunglasses = 4)
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/trade_ship/cockpit)
 "Bx" = (
 /obj/structure/railing{
 	dir = 8
@@ -7644,17 +7638,6 @@
 	},
 /turf/simulated/floor/tiled/old_tile/purple,
 /area/tradeport)
-"BG" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/machinery/air_alarm/alarms_hidden{
-	dir = 1;
-	pixel_y = -22;
-	req_one_access = list(160)
-	},
-/turf/simulated/floor/tiled/old_cargo/red,
-/area/shuttle/trade_ship/general)
 "BJ" = (
 /obj/structure/sign/atmos_plasma{
 	desc = "WARNING! Plasma flow tube nearby.";
@@ -7662,15 +7645,6 @@
 	},
 /turf/simulated/wall/r_wall,
 /area/tradeport/pads)
-"BK" = (
-/obj/machinery/power/apc/alarms_hidden/south_mount{
-	req_access = list(160)
-	},
-/obj/structure/cable/green{
-	icon_state = "0-4"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/cockpit)
 "BM" = (
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced/full,
@@ -7874,15 +7848,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/tradeport/medical)
-"Ct" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/old_cargo/red,
-/area/shuttle/trade_ship/general)
 "Cw" = (
 /obj/machinery/door/firedoor{
 	dir = 8;
@@ -7904,18 +7869,6 @@
 	},
 /turf/simulated/wall/r_wall,
 /area/tradeport/pads)
-"Cy" = (
-/obj/machinery/camera{
-	dir = 4
-	},
-/obj/machinery/vending/sovietsoda{
-	contraband = list(/obj/item/reagent_containers/food/drinks/cans/crystalgibb = 20);
-	desc = "An old sweet water vending machine. It looks like someone crossed out the D and replaced it with an F.";
-	name = "BOFA";
-	products = list(/obj/item/reagent_containers/food/drinks/cans/thirteenloko = 20)
-	},
-/turf/simulated/floor/tiled/old_tile/blue,
-/area/tradeport)
 "Cz" = (
 /obj/machinery/vending/loadout/overwear,
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -8123,6 +8076,13 @@
 	},
 /turf/simulated/floor/tiled/old_tile/purple,
 /area/tradeport/spine)
+"Dy" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/red,
+/area/shuttle/trade_ship/general)
 "DA" = (
 /obj/machinery/door/airlock/silver{
 	name = "Sleeping"
@@ -8182,18 +8142,6 @@
 	},
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/shuttle/trade_ship/general)
-"DI" = (
-/obj/machinery/vending/cigarette{
-	name = "Cigarette machine";
-	prices = list();
-	products = list(/obj/item/storage/fancy/cigarettes = 10, /obj/item/storage/box/matches = 10, /obj/item/flame/lighter/zippo = 4, /obj/item/clothing/mask/smokable/cigarette/cigar/havana = 2)
-	},
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 1
-	},
-/obj/effect/floor_decal/spline/fancy/wood,
-/turf/simulated/floor/carpet/bcarpet,
-/area/tradeport/commons)
 "DK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
@@ -8259,12 +8207,6 @@
 	},
 /turf/simulated/floor/tiled/old_tile/red,
 /area/tradeport)
-"Ea" = (
-/obj/machinery/vending/boozeomat{
-	req_access = null
-	},
-/turf/simulated/shuttle/floor/black,
-/area/shuttle/trade_ship/general)
 "Eb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -8369,15 +8311,6 @@
 /obj/effect/floor_decal/spline/fancy/wood,
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/commons)
-"Er" = (
-/obj/machinery/vending/sovietsoda{
-	contraband = list(/obj/item/reagent_containers/food/drinks/cans/crystalgibb = 20);
-	desc = "An old sweet water vending machine. It looks like someone crossed out the D and replaced it with an F.";
-	name = "BOFA";
-	products = list(/obj/item/reagent_containers/food/drinks/cans/thirteenloko = 20)
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "Et" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -8402,6 +8335,14 @@
 	},
 /turf/simulated/floor/wood,
 /area/tradeport/cafeteria)
+"Ex" = (
+/obj/machinery/vending/cigarette{
+	name = "Cigarette machine";
+	prices = list();
+	products = list(/obj/item/storage/fancy/cigarettes = 10, /obj/item/storage/box/matches = 10, /obj/item/flame/lighter/zippo = 4, /obj/item/clothing/mask/smokable/cigarette/cigar/havana = 2)
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/trade_ship/cockpit)
 "Ey" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/stack/material/phoron{
@@ -8428,6 +8369,15 @@
 "EB" = (
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/tradeport/safari)
+"EC" = (
+/obj/machinery/door/airlock/multi_tile/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/firedoor{
+	req_one_access = list(160)
+	},
+/turf/simulated/floor/tiled/red,
+/area/shuttle/trade_ship/general)
 "ED" = (
 /turf/simulated/floor/plating,
 /area/tradeport)
@@ -8449,18 +8399,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/facility)
-"EI" = (
-/obj/machinery/light{
-	dir = 4
-	},
-/obj/structure/sign/kiddieplaque{
-	desc = "A plaque commemorating the construction of the cargo ship Beruang.";
-	name = "Beruang";
-	pixel_x = 32
-	},
-/obj/machinery/holopad/ship/starts_inactive,
-/turf/simulated/floor/tiled/old_cargo/red,
-/area/shuttle/trade_ship/cockpit)
 "EL" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -8587,6 +8525,9 @@
 	},
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/shuttle/trade_ship/general)
+"Ff" = (
+/turf/simulated/floor/tiled/red,
+/area/shuttle/trade_ship/cockpit)
 "Fg" = (
 /obj/machinery/door/airlock/maintenance_hatch{
 	req_access = list(160);
@@ -8629,14 +8570,6 @@
 	},
 /turf/simulated/floor/carpet,
 /area/shuttle/trade_ship/general)
-"Fq" = (
-/obj/machinery/vending/cigarette{
-	name = "Cigarette machine";
-	prices = list();
-	products = list(/obj/item/storage/fancy/cigarettes = 10, /obj/item/storage/box/matches = 10, /obj/item/flame/lighter/zippo = 4, /obj/item/clothing/mask/smokable/cigarette/cigar/havana = 2)
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/cockpit)
 "Fr" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/cell/hyper,
@@ -9143,12 +9076,6 @@
 	},
 /turf/simulated/floor/carpet,
 /area/shuttle/trade_ship/general)
-"Hn" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/old_cargo/red,
-/area/shuttle/trade_ship/general)
 "Ho" = (
 /obj/machinery/vending/loadout/gadget,
 /turf/simulated/floor/tiled/steel,
@@ -9253,6 +9180,13 @@
 	dir = 5
 	},
 /turf/simulated/floor/carpet/bcarpet,
+/area/shuttle/trade_ship/general)
+"HM" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
+/turf/simulated/floor/tiled/red,
 /area/shuttle/trade_ship/general)
 "HN" = (
 /obj/machinery/light/small{
@@ -9595,13 +9529,6 @@
 "IX" = (
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
-"IY" = (
-/obj/machinery/suit_storage_unit{
-	isopen = 1
-	},
-/obj/random/multiple/voidsuit/vintage,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "Jb" = (
 /turf/simulated/wall/r_wall,
 /area/tradeport/cyndishow)
@@ -9821,11 +9748,6 @@
 /obj/random/paintkit/gygax,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
-"JO" = (
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/structure/table/steel,
-/turf/simulated/floor/tiled/old_cargo/red,
-/area/shuttle/trade_ship/general)
 "JT" = (
 /obj/effect/debris/cleanable/molten_item,
 /turf/simulated/floor/plating,
@@ -9862,6 +9784,14 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tradeport/engineering)
+"JZ" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/red,
+/area/shuttle/trade_ship/general)
 "Ka" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -9914,6 +9844,30 @@
 "Kj" = (
 /turf/space,
 /area/tradeport/expansion)
+"Kk" = (
+/obj/structure/window/reinforced,
+/obj/machinery/door/blast/shutters{
+	density = 0;
+	dir = 8;
+	icon_state = "shutter0";
+	id = "trade";
+	name = "Shop Shutters";
+	opacity = 0
+	},
+/obj/structure/table/marble,
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/machinery/door/firedoor{
+	dir = 8;
+	req_one_access = list(160)
+	},
+/obj/item/deskbell{
+	pixel_x = -7;
+	pixel_y = -2
+	},
+/turf/simulated/floor/tiled/red,
+/area/shuttle/trade_ship/general)
 "Kn" = (
 /obj/structure/table/hardwoodtable,
 /obj/item/reagent_containers/food/drinks/shaker{
@@ -10175,6 +10129,12 @@
 /obj/effect/debris/cleanable/spiderling_remains,
 /turf/simulated/floor/tiled/steel,
 /area/tradeport)
+"Lh" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/red,
+/area/shuttle/trade_ship/general)
 "Lk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -10235,6 +10195,17 @@
 	},
 /turf/simulated/floor/plating,
 /area/tradeport/commhall)
+"Lv" = (
+/obj/structure/cable/green{
+	icon_state = "2-4"
+	},
+/obj/structure/cable/green{
+	icon_state = "2-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/red,
+/area/shuttle/trade_ship/general)
 "Lw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -10384,6 +10355,11 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/tradeport/pads)
+"LY" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/red,
+/area/shuttle/trade_ship/general)
 "Ma" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
@@ -10491,13 +10467,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/tradeport/cyndishow)
-"Mq" = (
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/media/jukebox{
-	state_base = "darkjuke"
-	},
-/turf/simulated/floor/tiled/old_cargo/red,
-/area/shuttle/trade_ship/general)
 "Mr" = (
 /obj/structure/railing,
 /turf/space,
@@ -10643,6 +10612,12 @@
 /obj/machinery/power/solar_control/autostart,
 /turf/simulated/floor/tiled/techmaint,
 /area/tradeport/engineering)
+"MP" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/red,
+/area/shuttle/trade_ship/general)
 "MQ" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -10869,9 +10844,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/tradeport)
-"NC" = (
-/turf/simulated/floor/tiled/old_cargo/red,
-/area/shuttle/trade_ship/general)
 "NE" = (
 /obj/machinery/door/airlock/glass_external{
 	name = "Nebula Gas - External Access"
@@ -10924,10 +10896,6 @@
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/shuttle/plating,
-/area/shuttle/trade_ship/general)
-"NK" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden,
-/turf/simulated/floor/tiled/old_cargo/red,
 /area/shuttle/trade_ship/general)
 "NL" = (
 /obj/structure/toilet{
@@ -11049,18 +11017,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/tradeport/cyndi)
-"Oi" = (
-/obj/structure/cable/green{
-	icon_state = "1-4"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 5
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
-	},
-/turf/simulated/floor/tiled/old_cargo/red,
-/area/shuttle/trade_ship/general)
 "Ol" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
@@ -11141,6 +11097,13 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/plating,
 /area/tradeport/engineering)
+"OD" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 6
+	},
+/obj/machinery/holopad/ship/starts_inactive,
+/turf/simulated/floor/tiled/red,
+/area/shuttle/trade_ship/general)
 "OE" = (
 /obj/machinery/door/firedoor{
 	dir = 2
@@ -11602,6 +11565,13 @@
 /obj/item/reagent_containers/glass/rag,
 /turf/simulated/floor/wood,
 /area/tradeport)
+"Qb" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/storage/briefcase/fission{
+	starts_with = list(/obj/item/coin/supermatter,/obj/item/coin/supermatter,/obj/item/coin/supermatter)
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/trade_ship/general)
 "Qc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -11727,6 +11697,12 @@
 "QF" = (
 /turf/simulated/floor/outdoors/ice,
 /area/tradeport/cyndishow)
+"QG" = (
+/obj/structure/bed/chair/bay/comfy/captain{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/red,
+/area/shuttle/trade_ship/cockpit)
 "QI" = (
 /turf/simulated/floor/plating,
 /area/tradeport/dock)
@@ -11772,6 +11748,13 @@
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/tradeport)
+"QR" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/red,
+/area/shuttle/trade_ship/general)
 "QS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
@@ -12119,6 +12102,17 @@
 	},
 /turf/simulated/floor/wood,
 /area/tradeport/safarizoo)
+"RT" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/air_alarm/alarms_hidden{
+	dir = 1;
+	pixel_y = -22;
+	req_one_access = list(160)
+	},
+/turf/simulated/floor/tiled/red,
+/area/shuttle/trade_ship/general)
 "RW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/meter,
@@ -12588,14 +12582,6 @@
 /obj/landmark/spawnpoint/job/trader,
 /turf/simulated/floor/carpet,
 /area/tradeport/commons)
-"TD" = (
-/obj/machinery/vending/assist{
-	contraband = null;
-	name = "Old Vending Machine";
-	products = list(/obj/item/assembly/prox_sensor = 5, /obj/item/assembly/signaler = 4, /obj/item/assembly/infra = 4, /obj/item/assembly/prox_sensor = 4, /obj/item/handcuffs = 8, /obj/item/flash = 4, /obj/item/cartridge/signal = 4, /obj/item/clothing/glasses/sunglasses = 4)
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/cockpit)
 "TF" = (
 /obj/machinery/light{
 	dir = 1
@@ -12655,6 +12641,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/facility)
+"TT" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/red,
+/area/shuttle/trade_ship/general)
 "TU" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 5
@@ -13059,6 +13051,18 @@
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/trade_ship/general)
+"Vi" = (
+/obj/machinery/vending/cigarette{
+	name = "Cigarette machine";
+	prices = list();
+	products = list(/obj/item/storage/fancy/cigarettes = 10, /obj/item/storage/box/matches = 10, /obj/item/flame/lighter/zippo = 4, /obj/item/clothing/mask/smokable/cigarette/cigar/havana = 2)
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/obj/effect/floor_decal/spline/fancy/wood,
+/turf/simulated/floor/carpet/bcarpet,
+/area/tradeport/commons)
 "Vk" = (
 /obj/machinery/button/remote/blast_door{
 	dir = 8;
@@ -13391,6 +13395,12 @@
 /obj/item/stolenpackage,
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/facility)
+"WJ" = (
+/obj/machinery/vending/boozeomat{
+	req_access = null
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/trade_ship/general)
 "WK" = (
 /turf/simulated/floor/wood,
 /area/tradeport/cyndishow)
@@ -13619,13 +13629,6 @@
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/facility)
-"XE" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
-/turf/simulated/floor/tiled/old_cargo/red,
-/area/shuttle/trade_ship/general)
 "XF" = (
 /obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
@@ -13634,6 +13637,10 @@
 	},
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/tradeport/safari)
+"XG" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden,
+/turf/simulated/floor/tiled/red,
+/area/shuttle/trade_ship/general)
 "XI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -13675,13 +13682,6 @@
 	},
 /turf/simulated/floor/tiled/old_tile/red,
 /area/tradeport/spine)
-"XO" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 6
-	},
-/obj/machinery/holopad/ship/starts_inactive,
-/turf/simulated/floor/tiled/old_cargo/red,
-/area/shuttle/trade_ship/general)
 "XR" = (
 /obj/structure/table/marble,
 /obj/machinery/chemical_dispenser/catering/bar_soft{
@@ -14044,15 +14044,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/tradeport/atmospherics)
-"YV" = (
-/obj/machinery/door/airlock/multi_tile/glass,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/door/firedoor{
-	req_one_access = list(160)
-	},
-/turf/simulated/floor/tiled/old_cargo/red,
-/area/shuttle/trade_ship/general)
 "YW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
@@ -14245,6 +14236,15 @@
 /obj/structure/sign/vacuum,
 /turf/simulated/wall/r_wall,
 /area/tradeport/engineering)
+"ZD" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/red,
+/area/shuttle/trade_ship/general)
 "ZE" = (
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller{
 	frequency = 8018;
@@ -14342,12 +14342,6 @@
 /obj/structure/closet/emcloset,
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
-"ZX" = (
-/obj/structure/bed/chair/office/dark{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/old_cargo/red,
-/area/shuttle/trade_ship/general)
 "ZY" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 5
@@ -36121,8 +36115,8 @@ Jv
 Jv
 iN
 HJ
-qZ
-qZ
+QG
+QG
 XL
 xL
 Jv
@@ -36315,8 +36309,8 @@ Jv
 Jv
 iN
 Gb
-EI
-jo
+gT
+Ff
 jE
 xL
 Jv
@@ -36705,7 +36699,7 @@ PJ
 oV
 ZP
 Gb
-TD
+Bw
 PJ
 Jv
 Jv
@@ -37673,9 +37667,9 @@ PJ
 PJ
 PJ
 MX
-Fq
+Ex
 jC
-BK
+fs
 BZ
 Uc
 PJ
@@ -38061,10 +38055,10 @@ rR
 PJ
 TK
 eL
-Er
+ja
 im
 Fv
-Ea
+WJ
 sO
 oS
 UZ
@@ -38255,8 +38249,8 @@ od
 We
 NO
 HU
-jR
-Ct
+Lh
+ZD
 Fv
 NO
 aM
@@ -38448,10 +38442,10 @@ eR
 GT
 oX
 zQ
-XE
-pZ
-ux
-ov
+HM
+QR
+oc
+JZ
 zQ
 Qx
 KY
@@ -38479,7 +38473,7 @@ NX
 IB
 BX
 wo
-AV
+hw
 hT
 eD
 eD
@@ -38642,10 +38636,10 @@ XV
 yQ
 PJ
 LJ
-Ct
+ZD
 UC
 bM
-wZ
+TT
 Me
 PJ
 yf
@@ -38836,10 +38830,10 @@ PJ
 PJ
 Su
 HT
-Ct
+ZD
 MK
 xd
-wZ
+TT
 NO
 Su
 PJ
@@ -39026,14 +39020,14 @@ Jv
 Jv
 PJ
 Su
-ab
+Qb
 wD
 hN
 Fy
-Ct
+ZD
 wb
 NR
-wZ
+TT
 zY
 dy
 FR
@@ -39220,14 +39214,14 @@ Jv
 Jv
 Jv
 cQ
-IY
+ny
 XW
 WF
 NO
-Ct
+ZD
 PD
 nC
-wZ
+TT
 NO
 QN
 SC
@@ -39414,14 +39408,14 @@ Jv
 Jv
 Jv
 cQ
-bo
+ny
 sN
-eq
+wf
 NO
-Ct
+ZD
 ll
 BR
-wZ
+TT
 NO
 PS
 ao
@@ -39608,14 +39602,14 @@ Jv
 Jv
 Jv
 cQ
-bo
+ny
 ZY
 aP
 NO
-Ct
+ZD
 mD
 JN
-wZ
+TT
 NO
 yh
 xG
@@ -39649,7 +39643,7 @@ rG
 DX
 pS
 GI
-Cy
+nb
 dM
 xg
 Ns
@@ -39806,10 +39800,10 @@ Fr
 uS
 Yc
 Uu
-Ct
+ZD
 TU
 fo
-wZ
+TT
 NO
 fh
 If
@@ -40000,10 +39994,10 @@ aA
 aA
 aA
 Su
-Ax
-NC
-NC
-BG
+ue
+Ar
+Ar
+RT
 Su
 aA
 aA
@@ -40195,8 +40189,8 @@ xK
 xK
 PJ
 iE
-zE
-zE
+oA
+oA
 UQ
 PJ
 ge
@@ -40384,18 +40378,18 @@ tP
 ZE
 Bq
 ep
-wg
-Aw
-Aw
-YV
-ux
-ow
-tY
-lo
-ch
-ms
-iR
-Oi
+uY
+LY
+LY
+EC
+oc
+qx
+cU
+Lv
+sV
+aq
+nX
+wI
 ao
 BU
 LP
@@ -40578,18 +40572,18 @@ zH
 PO
 RJ
 Rf
-wR
-iK
+xW
+yR
 ck
 gr
 Cd
-cV
-ri
+AZ
+Dy
 YK
 gr
 OV
-ri
-ic
+Dy
+uX
 Ze
 GQ
 zP
@@ -40777,8 +40771,8 @@ rw
 ry
 Su
 aH
-mp
-eW
+cK
+Kk
 fV
 nM
 Ch
@@ -40971,9 +40965,9 @@ PJ
 Su
 Su
 wh
-ZX
-NC
-lX
+tE
+Ar
+oP
 Su
 Su
 PJ
@@ -41164,10 +41158,10 @@ im
 jK
 PJ
 fS
-lZ
-ze
-XO
-JO
+gq
+fu
+OD
+xM
 FD
 PJ
 sR
@@ -41358,10 +41352,10 @@ FO
 Pv
 PJ
 fS
-Mq
-NK
-Hn
-JO
+ip
+XG
+MP
+xM
 FD
 PJ
 uP
@@ -41553,7 +41547,7 @@ lH
 Su
 Su
 hs
-hl
+tj
 Yx
 BP
 Su
@@ -42542,7 +42536,7 @@ cA
 tu
 tu
 tu
-DI
+Vi
 YQ
 qw
 wa

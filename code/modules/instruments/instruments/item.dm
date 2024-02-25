@@ -27,7 +27,7 @@
 	return ..()
 
 /obj/item/instrument/proc/should_stop_playing(mob/user)
-	return !Adjacent(user) && !(storage_depth(user) < 3)
+	return (loc != user) && (depth_inside_atom(user) < 3)
 
 /*
 /obj/item/instrument/process(wait)

@@ -27,7 +27,7 @@
 	item_state = null	//so the human update icon uses the icon_state instead.
 	charge_cost = 100
 	damage_force = 8
-	w_class = ITEMSIZE_LARGE	//Probably gonna make it a rifle sooner or later
+	w_class = WEIGHT_CLASS_BULKY	//Probably gonna make it a rifle sooner or later
 	fire_delay = 6
 	heavy = TRUE
 	projectile_type = /obj/projectile/beam/stun/weak
@@ -51,7 +51,7 @@
 	item_state = null	//so the human update icon uses the icon_state instead.
 	charge_cost = 20
 	damage_force = 8
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	fire_delay = 3
 	projectile_type = /obj/projectile/beam/excavation
 	origin_tech = list(TECH_COMBAT = 4, TECH_MAGNET = 2, TECH_ILLEGAL = 2)
@@ -72,7 +72,7 @@
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 5, TECH_POWER = 3)
 	slot_flags = SLOT_BELT
 	damage_force = 8 //looks heavier than a pistol
-	w_class = ITEMSIZE_LARGE	//Looks bigger than a pistol, too.
+	w_class = WEIGHT_CLASS_BULKY	//Looks bigger than a pistol, too.
 	heavy = TRUE
 	fire_delay = 6	//This one's not a handgun, it should have the same fire delay as everything else
 	cell_type = /obj/item/cell/device/weapon/recharge
@@ -100,7 +100,7 @@
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3, TECH_POWER = 3)
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
 	damage_force = 10 //for the HOS to lay down a good beating in desperate situations. Holdover from TG.
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	fire_delay = 6	//standard rate
 	battery_lock = 0
 	modifystate = null

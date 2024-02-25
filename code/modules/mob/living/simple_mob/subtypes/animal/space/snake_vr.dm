@@ -171,9 +171,9 @@
 	desc = "A box containing Noodle's special sugermouse treats."
 	icon = 'icons/mob/snake_vr.dmi'
 	icon_state = "sneksnakbox"
-	storage_slots = 7
+	max_items = 7
 
-/obj/item/storage/box/snakesnackbox/PopulateContents()
+/obj/item/storage/box/snakesnackbox/legacy_spawn_contents()
 	new /obj/item/reagent_containers/food/snacks/snakesnack(src)
 	new /obj/item/reagent_containers/food/snacks/snakesnack(src)
 	new /obj/item/reagent_containers/food/snacks/snakesnack(src)

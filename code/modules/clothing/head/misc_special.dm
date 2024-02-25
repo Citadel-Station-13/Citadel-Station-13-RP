@@ -24,7 +24,7 @@
 	body_cover_flags = HEAD|FACE|EYES
 	action_button_name = "Flip Welding Mask"
 	siemens_coefficient = 0.9
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	var/base_state
 	flash_protection = FLASH_PROTECTION_MAJOR
 	tint = TINT_HEAVY
@@ -188,7 +188,7 @@
 	body_cover_flags = HEAD|FACE|EYES
 	brightness_on = 2
 	light_overlay = "helmet_light"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	drop_sound = 'sound/items/drop/herb.ogg'
 	pickup_sound = 'sound/items/pickup/herb.ogg'
 
@@ -232,7 +232,7 @@
 	icon = 'icons/clothing/head/cage_32x48.dmi'
 	icon_state = "cage"
 	body_cover_flags = HEAD
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /*

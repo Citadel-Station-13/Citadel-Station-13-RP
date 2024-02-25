@@ -16,7 +16,7 @@
 	throw_force = 10
 	throw_speed = 1
 	throw_range = 5
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	origin_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 2)
 	materials_base = list(MAT_STEEL = 24000)
 	preserve_item = TRUE // RCDs are pretty important.
@@ -421,7 +421,7 @@
 	)
 
 
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_MATERIAL = 2)
 	materials_base = list(MAT_STEEL = 20000, MAT_GLASS = 4000)
 	var/remaining = RCD_MAX_CAPACITY / 3

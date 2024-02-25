@@ -603,7 +603,7 @@
 	attack_verb = list("bashed", "battered", "chaired")
 	damage_force = 1
 	throw_force = 3
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_LIGHT
 	attack_sound = 'sound/effects/metal_chair_slam.ogg'
 	pickup_sound = 'sound/items/pickup/axe.ogg'
