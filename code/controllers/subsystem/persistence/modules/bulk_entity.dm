@@ -76,6 +76,37 @@
 
 	return chunks
 
+/datum/controller/subsystem/persistence/proc/bulk_entity_drop_chunks_all()
+	if(!SSdbcore.Connect())
+		return FALSE
+
+	var/intentionally_allow_admin_proccall = usr
+	usr = null
+
+	SSdbcore.dangerously_block_on_multiple_unsanitized_queries(
+		list(
+			"TRUNCATE TABLE [format_table_name("persistence_bulk_entity")]",
+		),
+	)
+
+	usr = intentionally_allow_admin_proccall
+
+/datum/controller/subsystem/persistence/proc/bulk_entity_drop_chunks_level(level_id)
+	if(!SSdbcore.Connect())
+		return FALSE
+
+	var/intentionally_allow_admin_proccall = usr
+	usr = null
+
+	SSdbcore.RunQuery(
+		"DELETE FROM [format_table_name("persistence_bulk_entity")] WHERE level_id = :level",
+		list(
+			"level" = level_id,
+		),
+	)
+
+	usr = intentionally_allow_admin_proccall
+
 /datum/bulk_entity_persistence
 	abstract_type = /datum/bulk_entity_persistence
 	/// id - must be unique
