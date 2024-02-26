@@ -1164,7 +1164,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/trash_pit)
 "dQ" = (
-/obj/random/trash,
 /turf/simulated/floor/wood,
 /area/maintenance/dormitory)
 "dR" = (
@@ -3672,7 +3671,6 @@
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
 "mk" = (
-/obj/random/trash,
 /turf/simulated/floor/carpet,
 /area/maintenance/dormitory)
 "ml" = (
