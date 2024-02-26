@@ -14,7 +14,7 @@
 		stack_trace("Attempted to spawn base /obj/random.")
 		return INITIALIZE_HINT_QDEL
 	if(!prob(spawn_nothing_percentage))
-		spawn_item()
+		spawn_item(mapload)
 	return INITIALIZE_HINT_QDEL
 
 // this function should return a specific item to spawn
@@ -25,10 +25,16 @@
 	return drop_get_turf? get_turf(src) : ..()
 
 // creates the random item
-/obj/random/proc/spawn_item()
+/obj/random/proc/spawn_item(mapload)
 	var/build_path = item_to_spawn()
 
 	var/atom/A = new build_path(drop_location())
+
+	// todo: shitcode but w/e
+	if(istype(A, /obj/item/trash) || istype(A, /obj/effect/debris))
+		var/obj/O = A
+		O.obj_persist_status |= OBJ_PERSIST_STATUS_NO_THANK_YOU
+
 	if(pixel_x || pixel_y)
 		A.pixel_x = pixel_x
 		A.pixel_y = pixel_y
