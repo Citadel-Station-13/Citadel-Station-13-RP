@@ -8428,7 +8428,6 @@
 /area/hallway/lower/third_south)
 "eOC" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/effect/debris/cleanable/blood,
 /obj/structure/bed/chair{
 	dir = 1
 	},
@@ -12284,7 +12283,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/iaa/officeb)
 "hdG" = (
-/obj/effect/debris/cleanable/tomato_smudge,
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
@@ -17255,7 +17253,6 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/upperhall)
 "kfH" = (
-/obj/effect/debris/cleanable/tomato_smudge,
 /turf/simulated/floor/lino,
 /area/tether/surfacebase/entertainment/stage)
 "khE" = (
@@ -19538,7 +19535,6 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/robotics)
 "lGM" = (
-/obj/effect/debris/cleanable/blood/oil,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -20220,7 +20216,6 @@
 	name = "Robotics Operating Table"
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/effect/debris/cleanable/blood/oil,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/robotics/surgeryroom1)
 "mcm" = (
@@ -24372,7 +24367,6 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/obj/effect/debris/cleanable/tomato_smudge,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},

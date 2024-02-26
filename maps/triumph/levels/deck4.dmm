@@ -2816,7 +2816,6 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "bVS" = (
-/obj/effect/debris/cleanable/blood,
 /obj/item/melee/baton/cattleprod,
 /turf/simulated/floor/plating,
 /area/maintenance/security/starboard)
@@ -7338,7 +7337,6 @@
 /turf/simulated/wall/prepainted/security,
 /area/security/hallway)
 "eZM" = (
-/obj/effect/debris/cleanable/blood/drip,
 /turf/simulated/floor/plating,
 /area/maintenance/security/starboard)
 "faa" = (
@@ -17052,7 +17050,6 @@
 /turf/simulated/floor/tiled,
 /area/security/security_lockerroom)
 "lMv" = (
-/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/plating,
 /area/maintenance/security/starboard)
 "lMU" = (
@@ -17794,7 +17791,6 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/obj/effect/debris/cleanable/blood/drip,
 /obj/machinery/light/small/emergency{
 	dir = 4
 	},
@@ -24737,7 +24733,6 @@
 /area/exploration)
 "rjP" = (
 /obj/structure/table,
-/obj/effect/debris/cleanable/blood/drip,
 /turf/simulated/floor/plating,
 /area/maintenance/security/starboard)
 "rjX" = (
@@ -27108,7 +27103,6 @@
 /turf/simulated/floor/tiled,
 /area/security/lobby)
 "sZk" = (
-/obj/effect/debris/cleanable/blood,
 /obj/structure/bed,
 /turf/simulated/floor/plating,
 /area/maintenance/security/starboard)

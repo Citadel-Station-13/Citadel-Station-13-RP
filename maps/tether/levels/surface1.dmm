@@ -1177,7 +1177,6 @@
 /turf/simulated/floor,
 /area/maintenance/substation/SurfMedsubstation)
 "aFc" = (
-/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tether/surfacebase/public_garden_one)
 "aFF" = (
@@ -2147,7 +2146,6 @@
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
 "bgm" = (
-/obj/effect/debris/cleanable/blood/oil,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/maintenance/lower/atmos)
 "bgW" = (
@@ -7677,7 +7675,6 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/airlock)
 "dZL" = (
-/obj/effect/debris/cleanable/blood/oil,
 /turf/simulated/floor/plating,
 /area/vacant/vacant_bar)
 "dZQ" = (
@@ -11905,7 +11902,6 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_8)
 "gkS" = (
-/obj/effect/debris/cleanable/dirt,
 /obj/random/trash,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tether/surfacebase/public_garden_one)
@@ -13882,7 +13878,6 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_one_hall)
 "hqx" = (
-/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "hqz" = (
@@ -19046,7 +19041,6 @@
 /area/engineering/atmos)
 "khn" = (
 /obj/machinery/door/window/southleft,
-/obj/effect/debris/cleanable/vomit,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "kim" = (
@@ -33866,7 +33860,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
 "sjS" = (
-/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/plating,
 /area/vacant/vacant_bar)
 "sjY" = (
@@ -35231,7 +35224,6 @@
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
 "sUU" = (
-/obj/effect/debris/cleanable/dirt,
 /obj/random/junk,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tether/surfacebase/public_garden_one)
@@ -35968,7 +35960,6 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/maintDorm3)
 "ttR" = (
-/obj/effect/debris/cleanable/blood/oil,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "ttV" = (
@@ -41977,7 +41968,6 @@
 /obj/random/contraband,
 /obj/random/mre,
 /obj/structure/closet/crate,
-/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining_eva)
 "wFa" = (

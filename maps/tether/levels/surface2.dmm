@@ -1062,7 +1062,6 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/patient_b)
 "aNo" = (
-/obj/effect/debris/cleanable/blood,
 /obj/item/clothing/shoes/athletic{
 	desc = "Assault"
 	},
@@ -3038,7 +3037,6 @@
 /turf/simulated/wall/prepainted/engineering/atmos,
 /area/tether/surfacebase/emergency_storage/atmos)
 "chK" = (
-/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor,
 /area/maintenance/lower/north)
 "chM" = (
@@ -13274,7 +13272,6 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/recoveryward)
 "jxa" = (
-/obj/effect/debris/cleanable/blood/oil,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/drone_fabrication)
@@ -13783,7 +13780,6 @@
 /obj/item/handcuffs/legcuffs,
 /obj/item/handcuffs,
 /obj/effect/floor_decal/rust,
-/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/lower/atmos)
 "jSW" = (
@@ -23671,7 +23667,6 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/recoveryward)
 "rtZ" = (
-/obj/effect/debris/cleanable/blood,
 /obj/item/cassette_tape{
 	desc = "No Talk"
 	},
@@ -26843,7 +26838,6 @@
 /area/tcommsat/chamber)
 "tUJ" = (
 /obj/structure/bed,
-/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/south)
 "tUS" = (
@@ -27221,7 +27215,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/effect/debris/cleanable/molten_item,
 /turf/simulated/floor/tiled/techmaint,
 /area/tcomfoyer)
 "umc" = (
@@ -27253,7 +27246,6 @@
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/double,
 /obj/structure/curtain/open/privacy,
-/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/wood,
 /area/vacant/vacant_bar_upper)
 "uoh" = (
@@ -32486,7 +32478,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/bar)
 "yeu" = (
-/obj/effect/debris/cleanable/blood/oil,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "yez" = (

@@ -542,7 +542,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/upper)
 "bu" = (
-/obj/effect/debris/cleanable/blood/gibs/robot/up,
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/elevator)
@@ -691,7 +690,6 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/effect/debris/cleanable/spiderling_remains,
 /obj/structure/table/rack,
 /obj/item/pickaxe/drill{
 	desc = "Go get it.";
@@ -923,7 +921,6 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/effect/debris/cleanable/spiderling_remains,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/upper)
 "cl" = (
@@ -13756,7 +13753,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
 "VY" = (
-/obj/effect/debris/cleanable/blood/gibs/robot/up,
 /turf/simulated/floor/plating,
 /area/maintenance/elevator)
 "VZ" = (

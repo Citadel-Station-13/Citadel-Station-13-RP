@@ -21,7 +21,6 @@
 "ad" = (
 /obj/item/paper,
 /obj/effect/rune,
-/obj/effect/debris/cleanable/blood,
 /obj/random/maintenance/engineering,
 /turf/simulated/floor,
 /area/maintenance/station/eng_upper)
@@ -13427,7 +13426,6 @@
 /turf/simulated/floor/tiled,
 /area/engineering/foyer_mezzenine)
 "Bj" = (
-/obj/effect/debris/cleanable/blood,
 /obj/item/paper,
 /turf/simulated/floor,
 /area/maintenance/station/eng_upper)
@@ -14290,7 +14288,6 @@
 /turf/simulated/floor/tiled,
 /area/ai_monitored/storage/eva)
 "CO" = (
-/obj/effect/debris/cleanable/blood,
 /obj/item/reagent_containers/blood,
 /turf/simulated/floor,
 /area/maintenance/station/eng_upper)
@@ -23026,7 +23023,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/excursion/general)
 "UW" = (
-/obj/effect/debris/cleanable/blood,
 /obj/item/paperplane,
 /obj/random/maintenance/engineering,
 /turf/simulated/floor,

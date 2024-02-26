@@ -877,7 +877,6 @@
 /obj/item/bone/arm,
 /obj/item/bone/skull/tajaran,
 /obj/item/bedsheet,
-/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/prison)
 "iN" = (
@@ -2373,7 +2372,6 @@
 /turf/simulated/shuttle/plating/carry,
 /area/shuttle/belter)
 "uO" = (
-/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/prison)
 "uP" = (
@@ -5082,7 +5080,6 @@
 /obj/item/bone/arm,
 /obj/item/bone/ribs,
 /obj/item/bone/skull/tajaran,
-/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/prison)
 "UD" = (
