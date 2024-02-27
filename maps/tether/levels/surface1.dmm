@@ -1981,7 +1981,6 @@
 /obj/effect/floor_decal/corner/yellow/bordercorner2{
 	dir = 1
 	},
-/obj/random/trash,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b{
 	outdoors = 0
 	},
@@ -3713,7 +3712,6 @@
 /obj/effect/floor_decal/corner/yellow/bordercorner2{
 	dir = 10
 	},
-/obj/random/trash,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b{
 	outdoors = 0
 	},
@@ -11902,7 +11900,6 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_8)
 "gkS" = (
-/obj/random/trash,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tether/surfacebase/public_garden_one)
 "gld" = (
@@ -16276,7 +16273,6 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
 "iCc" = (
-/obj/random/trash,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tether/surfacebase/public_garden_one)
 "iCC" = (
@@ -38539,7 +38535,6 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
 "uWf" = (
-/obj/random/trash,
 /turf/simulated/mineral/floor/virgo3b{
 	ignore_mapgen = 1
 	},
@@ -43110,7 +43105,6 @@
 /obj/effect/floor_decal/corner/yellow/bordercorner2{
 	dir = 6
 	},
-/obj/random/trash,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b{
 	outdoors = 0
 	},

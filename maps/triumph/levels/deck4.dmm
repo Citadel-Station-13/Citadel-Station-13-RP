@@ -1140,7 +1140,6 @@
 /obj/item/material/ashtray{
 	icon_state = "ashtray"
 	},
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/security/starboard)
 "aKC" = (
@@ -1155,7 +1154,6 @@
 /obj/structure/closet/hydrant{
 	pixel_x = 32
 	},
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
 "aKL" = (
@@ -1714,7 +1712,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/brig)
 "beW" = (
-/obj/random/trash,
 /obj/structure/closet/crate/trashcart,
 /turf/simulated/floor/tiled,
 /area/maintenance/security/starboard)
@@ -2608,7 +2605,6 @@
 /area/security/armoury)
 "bNR" = (
 /obj/structure/catwalk,
-/obj/random/trash,
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -3439,7 +3435,6 @@
 /area/security/hallway)
 "cta" = (
 /obj/structure/table/steel,
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/security/starboard)
 "ctl" = (
@@ -3565,7 +3560,6 @@
 /turf/simulated/floor/tiled/monotile,
 /area/security/security_lockerroom)
 "cyD" = (
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/security/starboard)
 "cyU" = (
@@ -3716,7 +3710,6 @@
 /area/crew_quarters/sleep/CMO_quarters)
 "cGY" = (
 /obj/random/maintenance/security,
-/obj/random/trash,
 /turf/simulated/floor/tiled,
 /area/maintenance/security/starboard)
 "cHj" = (
@@ -3856,7 +3849,6 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/random/trash,
 /obj/structure/table/rack,
 /obj/item/mop,
 /obj/item/reagent_containers/glass/bucket,
@@ -4317,7 +4309,6 @@
 /area/security/forensics)
 "dcn" = (
 /obj/structure/catwalk,
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/security/starboard)
 "dcL" = (
@@ -5616,7 +5607,6 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/hallway/secondary/docking_hallway)
 "dNv" = (
-/obj/random/trash,
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/security/starboard)
@@ -7799,7 +7789,6 @@
 /obj/machinery/light/small/emergency{
 	dir = 8
 	},
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/central)
 "fox" = (
@@ -8970,7 +8959,6 @@
 	cell_type = /obj/item/cell/super
 	},
 /obj/structure/catwalk,
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
 "ghn" = (
@@ -9907,7 +9895,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/security)
 "gPW" = (
-/obj/random/trash,
 /turf/simulated/floor/tiled,
 /area/maintenance/security/starboard)
 "gQK" = (
@@ -10028,7 +10015,6 @@
 /area/crew_quarters/heads/hop)
 "gUz" = (
 /obj/structure/catwalk,
-/obj/random/trash,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
@@ -10641,7 +10627,6 @@
 /turf/simulated/floor/wood,
 /area/vacant/vacant_bar)
 "hlO" = (
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/central)
 "hlP" = (
@@ -10653,7 +10638,6 @@
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/general)
 "hmm" = (
-/obj/random/trash,
 /obj/structure/reagent_dispensers/watertank,
 /turf/simulated/floor/plating,
 /area/maintenance/security/starboard)
@@ -10955,11 +10939,6 @@
 /area/lawoffice)
 "hzc" = (
 /obj/structure/closet/crate/trashcart,
-/obj/random/trash,
-/obj/random/trash,
-/obj/random/trash,
-/obj/random/trash,
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/central)
 "hzU" = (
@@ -15718,7 +15697,6 @@
 	icon_state = "4-8"
 	},
 /obj/structure/catwalk,
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/central)
 "kIs" = (
@@ -16124,7 +16102,6 @@
 /turf/simulated/floor/tiled/old_cargo/red,
 /area/security/security_processing)
 "kWe" = (
-/obj/random/trash,
 /obj/structure/railing{
 	dir = 1
 	},
@@ -16176,7 +16153,6 @@
 	dir = 4;
 	pixel_x = -22
 	},
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/central)
 "kXB" = (
@@ -16297,7 +16273,6 @@
 /area/exploration)
 "lbc" = (
 /obj/structure/catwalk,
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/central)
 "lbH" = (
@@ -16464,7 +16439,6 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
 "liL" = (
@@ -17189,8 +17163,6 @@
 /area/shuttle/courser/cockpit)
 "lPI" = (
 /obj/structure/table/rack,
-/obj/random/trash,
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
 "lPJ" = (
@@ -17248,7 +17220,6 @@
 	dir = 4
 	},
 /obj/structure/table/steel,
-/obj/random/trash,
 /obj/random/drinkbottle,
 /turf/simulated/floor/plating,
 /area/maintenance/central)
@@ -17353,7 +17324,6 @@
 /area/ai)
 "lXu" = (
 /obj/structure/catwalk,
-/obj/random/trash,
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -21512,7 +21482,6 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/lounge)
 "oVo" = (
-/obj/random/trash,
 /obj/machinery/light/small,
 /mob/living/simple_mob/animal/passive/mouse/rat,
 /turf/simulated/floor/plating,
@@ -21596,7 +21565,6 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/primary/aft)
 "oYj" = (
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/security/port)
 "oYx" = (
@@ -24062,7 +24030,6 @@
 /turf/simulated/floor/tiled,
 /area/bridge/hallway)
 "qKv" = (
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/security/brig)
 "qKF" = (
@@ -25690,8 +25657,6 @@
 /area/maintenance/security/starboard)
 "rUV" = (
 /obj/structure/table/rack,
-/obj/random/trash,
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/central)
 "rVB" = (
@@ -26621,7 +26586,6 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/ai)
 "sEA" = (
-/obj/random/trash,
 /turf/simulated/floor/wood,
 /area/maintenance/security/starboard)
 "sFn" = (
@@ -27502,7 +27466,6 @@
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
 "tqE" = (
-/obj/random/trash,
 /turf/simulated/floor/wood/broken,
 /area/maintenance/central)
 "trn" = (
@@ -29322,7 +29285,6 @@
 /turf/simulated/floor/tiled,
 /area/security/brig)
 "uze" = (
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
 "uzz" = (
@@ -30121,7 +30083,6 @@
 /area/library)
 "vca" = (
 /obj/structure/closet/firecloset,
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
 "vce" = (
@@ -32242,7 +32203,6 @@
 /area/hydroponics/garden)
 "wFu" = (
 /obj/structure/catwalk,
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
 "wFM" = (
@@ -33616,7 +33576,6 @@
 /area/hallway/primary/aft)
 "xxb" = (
 /obj/structure/table/rack,
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
 "xxd" = (

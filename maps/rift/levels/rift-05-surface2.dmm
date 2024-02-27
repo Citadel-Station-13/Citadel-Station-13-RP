@@ -3119,7 +3119,6 @@
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
 "bVi" = (
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/medsec_maintenance)
 "bVn" = (
@@ -24121,7 +24120,6 @@
 /area/hallway/primary/surfacetwo)
 "pmi" = (
 /obj/structure/catwalk,
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/security/upper)
 "pnl" = (
@@ -26727,7 +26725,6 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/medsec_maintenance)
 "rbb" = (
@@ -35110,7 +35107,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
 "wOG" = (
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/security/upper)
 "wPF" = (

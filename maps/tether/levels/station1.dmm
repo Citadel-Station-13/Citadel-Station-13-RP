@@ -1452,7 +1452,6 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/docks)
 "cU" = (
-/obj/random/trash,
 /turf/simulated/floor/wood,
 /area/maintenance/abandonedlibrary)
 "cV" = (
@@ -3373,7 +3372,6 @@
 /turf/simulated/floor/tiled/white,
 /area/shuttle/medivac/cockpit)
 "gP" = (
-/obj/random/trash,
 /turf/simulated/floor,
 /area/vacant/vacant_restaurant_lower)
 "gQ" = (
@@ -4189,7 +4187,6 @@
 /turf/simulated/floor,
 /area/vacant/vacant_restaurant_lower)
 "iw" = (
-/obj/random/trash,
 /obj/random/junk,
 /turf/simulated/floor,
 /area/maintenance/station/eng_lower)
@@ -5086,7 +5083,6 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/abandonedlibrary)
 "kq" = (
@@ -5979,7 +5975,6 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/random/trash,
 /turf/simulated/floor,
 /area/maintenance/station/eng_lower)
 "mi" = (
@@ -6416,7 +6411,6 @@
 /area/engineering/shield_gen)
 "nd" = (
 /obj/random/junk,
-/obj/random/trash,
 /turf/simulated/floor,
 /area/maintenance/station/eng_lower)
 "ne" = (
@@ -12353,7 +12347,6 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/gravity_gen)
 "zw" = (
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/abandonedlibraryconference)
 "zx" = (
@@ -17172,7 +17165,6 @@
 /turf/simulated/floor/tiled,
 /area/security/customs)
 "Jh" = (
-/obj/random/trash,
 /turf/simulated/floor,
 /area/constructionsite)
 "Ji" = (
@@ -21511,7 +21503,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/abandonedlibrary)
 "Sp" = (
-/obj/random/trash,
 /turf/simulated/floor/carpet,
 /area/maintenance/abandonedlibrary)
 "Sq" = (

@@ -6627,7 +6627,6 @@
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/cockpit)
 "asQ" = (
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "asR" = (
@@ -8867,7 +8866,6 @@
 /turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "ayE" = (
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/station/exploration)
 "ayF" = (
@@ -10731,7 +10729,6 @@
 /turf/simulated/floor/carpet/purcarpet,
 /area/exploration/meeting)
 "aEx" = (
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "aEy" = (

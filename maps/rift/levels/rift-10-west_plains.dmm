@@ -1998,7 +1998,6 @@
 /area/rift/exterior/nuketown/interior)
 "iX" = (
 /obj/effect/overlay/snow/floor,
-/obj/random/trash,
 /turf/simulated/floor/lythios43c,
 /area/rift/facility/interior/surface)
 "iY" = (
@@ -2475,7 +2474,6 @@
 /area/rnd/outpost/storage)
 "lo" = (
 /obj/effect/overlay/snow/floor,
-/obj/random/trash,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/surface)
 "lq" = (
@@ -2792,9 +2790,6 @@
 "mS" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/closet/crate/trashcart,
-/obj/random/trash,
-/obj/random/trash,
-/obj/random/trash,
 /obj/item/broken_device/random,
 /obj/item/broken_device/random,
 /obj/item/broken_device/random,
@@ -3765,7 +3760,6 @@
 /turf/simulated/floor,
 /area/construction/solarscontrol)
 "rB" = (
-/obj/random/trash,
 /obj/structure/bed/chair/shuttle{
 	dir = 1
 	},
@@ -4261,7 +4255,6 @@
 /area/rift/facility/exterior)
 "tH" = (
 /obj/effect/overlay/snow/floor,
-/obj/random/trash,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/rift/facility/interior/surface)
 "tI" = (
@@ -6217,7 +6210,6 @@
 /obj/effect/overlay/snow/floor/edges,
 /obj/effect/overlay/snow/floor,
 /obj/machinery/light/small,
-/obj/random/trash,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/exterior/shuttle)
 "CY" = (
@@ -6528,7 +6520,6 @@
 /area/rnd/outpost/testing_lab)
 "EF" = (
 /obj/effect/floor_decal/rust,
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/rift/exterior/nuketown/interior)
 "EG" = (
@@ -6872,7 +6863,6 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
 "Gr" = (
-/obj/random/trash,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/exterior/shuttle)
 "Gs" = (
@@ -7955,7 +7945,6 @@
 /area/outpost/mining_main/outpost/airlock/one)
 "Lv" = (
 /obj/effect/overlay/snow/floor,
-/obj/random/trash,
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/facility/interior/surface)
 "Lx" = (
@@ -10623,7 +10612,6 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
 "Ya" = (
-/obj/random/trash,
 /obj/effect/overlay/snow/floor/edges{
 	dir = 4
 	},

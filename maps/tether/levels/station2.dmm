@@ -1358,7 +1358,6 @@
 /turf/simulated/floor/tiled,
 /area/tether/station/visitorhallway/lounge)
 "cO" = (
-/obj/random/trash,
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
@@ -2552,7 +2551,6 @@
 /area/quartermaster/qm)
 "fh" = (
 /obj/effect/floor_decal/rust,
-/obj/random/trash,
 /obj/effect/floor_decal/techfloor{
 	dir = 5
 	},
@@ -6501,7 +6499,6 @@
 /turf/simulated/floor/wood,
 /area/tether/exploration/pathfinder_office)
 "nj" = (
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/vacant/vacant_restaurant_upper)
 "nk" = (
@@ -11552,7 +11549,6 @@
 /area/gateway)
 "xm" = (
 /obj/effect/floor_decal/rust,
-/obj/random/trash,
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
@@ -13169,7 +13165,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/public_meeting_room)
 "AJ" = (
-/obj/random/trash,
 /obj/machinery/air_alarm{
 	pixel_y = 22
 	},
@@ -23356,7 +23351,6 @@
 /turf/simulated/floor/plating,
 /area/engineering/shaft)
 "VF" = (
-/obj/random/trash,
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},

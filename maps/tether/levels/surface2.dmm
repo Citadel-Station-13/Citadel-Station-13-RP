@@ -4627,7 +4627,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/random/trash,
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/lower/south)
 "dpc" = (
@@ -9826,7 +9825,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/south)
 "hal" = (
@@ -15352,7 +15350,6 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/breakroom)
 "lfi" = (
-/obj/random/trash,
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/lower/south)
 "lfl" = (
@@ -18137,7 +18134,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
 "nkd" = (
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/bar)
 "nkg" = (
@@ -20282,7 +20278,6 @@
 /area/maintenance/lower/public_garden_maintenance/upper)
 "oPN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/random/trash,
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/lower/south)
 "oPZ" = (
@@ -31217,7 +31212,6 @@
 /area/tether/surfacebase/surface_two_hall)
 "xjC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/random/trash,
 /turf/simulated/floor/carpet,
 /area/maintenance/lower/south)
 "xjY" = (
