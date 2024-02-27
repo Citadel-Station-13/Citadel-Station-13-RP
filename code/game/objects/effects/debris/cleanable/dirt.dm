@@ -20,7 +20,7 @@
 		return TRUE
 
 /turf/proc/add_dirt_object(initial_alpha = 150, add_alpha = 10, max_alpha = 255)
-	if(turf_flags & TURF_SEMANTICALLY_BOTOMLESS)
+	if(turf_flags & TURF_SEMANTICALLY_BOTTOMLESS)
 		return
 	var/obj/effect/debris/cleanable/dirt/D = locate() in src
 	if(!D)
@@ -29,7 +29,7 @@
 		D.alpha = clamp(D.alpha + add_alpha, 0, min(255, max_alpha))
 
 /turf/proc/set_dirt_object(alpha = 150)
-	if(turf_flags & TURF_SEMANTICALLY_BOTOMLESS)
+	if(turf_flags & TURF_SEMANTICALLY_BOTTOMLESS)
 		return
 	var/obj/effect/debris/cleanable/dirt/D = locate() in src
 	if(!D)
@@ -38,7 +38,7 @@
 		D.alpha = clamp(alpha, 0, 255)
 
 /turf/proc/clear_dirt_object()
-	if(turf_flags & TURF_SEMANTICALLY_BOTOMLESS)
+	if(turf_flags & TURF_SEMANTICALLY_BOTTOMLESS)
 		return
 	var/obj/effect/debris/cleanable/dirt/D = locate() in src
 	if(D)
