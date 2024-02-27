@@ -74,6 +74,8 @@
 			continue
 		if(outdoors_will_erode && simulated_turf.outdoors)
 			continue
+		if(simulated_turf.turf_flags & TURF_FLAG_ERODING)
+			continue
 		var/area/belonging_to_area = simulated_turf.loc
 		if(belonging_to_area?.area_flags & AREA_FLAG_ERODING)
 			continue
