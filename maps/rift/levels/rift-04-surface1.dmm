@@ -2017,12 +2017,6 @@
 /turf/simulated/floor/plating,
 /area/medical/virologyisolation)
 "brW" = (
-/obj/effect/debris/cleanable/blood/drip{
-	icon_state = "3"
-	},
-/obj/effect/debris/cleanable/blood/drip{
-	icon_state = "5"
-	},
 /turf/simulated/floor/wood/broken,
 /area/maintenance/lowmedbaymaint)
 "bsr" = (
@@ -15958,18 +15952,6 @@
 /area/maintenance/tool_storage)
 "kmk" = (
 /obj/effect/floor_decal/rust,
-/obj/effect/debris/cleanable/blood/drip{
-	icon_state = "5"
-	},
-/obj/effect/debris/cleanable/blood/drip{
-	icon_state = "2"
-	},
-/obj/effect/debris/cleanable/blood/drip{
-	icon_state = "3"
-	},
-/obj/effect/debris/cleanable/blood/drip{
-	icon_state = "4"
-	},
 /obj/item/handcuffs/cable/white,
 /turf/simulated/floor/plating,
 /area/maintenance/lowmedbaymaint)
@@ -25571,9 +25553,6 @@
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "qih" = (
-/obj/effect/debris/cleanable/blood/drip{
-	icon_state = "3"
-	},
 /turf/simulated/floor/plating,
 /area/maintenance/lowmedbaymaint)
 "qiy" = (
@@ -26412,9 +26391,6 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_eva)
 "qIO" = (
-/obj/effect/debris/cleanable/vomit{
-	icon_state = "vomit_3"
-	},
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/security/lower)
 "qJb" = (
@@ -38115,10 +38091,6 @@
 /turf/simulated/floor/plating,
 /area/security/prison)
 "xMw" = (
-/obj/effect/debris/cleanable/vomit{
-	icon_state = "vomit_3";
-	pixel_x = 11
-	},
 /turf/simulated/floor/wood,
 /area/maintenance/lowmedbaymaint)
 "xMJ" = (

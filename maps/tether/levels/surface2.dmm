@@ -2260,9 +2260,7 @@
 /obj/machinery/light_switch{
 	pixel_y = 25
 	},
-/obj/effect/debris/cleanable/cobweb{
-	icon_state = "cobweb2"
-	},
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/maintenance/asmaint2)
 "bKN" = (
@@ -7086,9 +7084,7 @@
 /turf/simulated/floor/plating,
 /area/tcommsat/chamber)
 "fiE" = (
-/obj/effect/debris/cleanable/cobweb{
-	icon_state = "cobweb2"
-	},
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "fiL" = (

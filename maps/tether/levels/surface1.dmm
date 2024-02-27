@@ -11459,9 +11459,7 @@
 /obj/random/maintenance/cargo,
 /obj/random/maintenance/clean,
 /obj/random/tool,
-/obj/effect/debris/cleanable/cobweb{
-	icon_state = "cobweb2"
-	},
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/mining_eva)
 "gbl" = (
@@ -16126,9 +16124,7 @@
 /obj/random/cigarettes,
 /obj/random/coin,
 /obj/random/drinkbottle,
-/obj/effect/debris/cleanable/cobweb{
-	icon_state = "cobweb2"
-	},
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/xenoflora)
 "iyI" = (

@@ -1877,9 +1877,7 @@
 "dG" = (
 /obj/machinery/light_construct/small,
 /obj/structure/bookcase,
-/obj/effect/debris/cleanable/cobweb{
-	icon_state = "cobweb2"
-	},
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/carpet,
 /area/maintenance/abandonedlibrary)
 "dH" = (
@@ -2999,9 +2997,7 @@
 	dir = 4
 	},
 /obj/structure/bookcase,
-/obj/effect/debris/cleanable/cobweb{
-	icon_state = "cobweb2"
-	},
+/obj/effect/debris/cleanable/cobweb,
 /obj/item/book/manual/rust_engine,
 /turf/simulated/floor/wood,
 /area/maintenance/abandonedlibrary)
@@ -6746,9 +6742,7 @@
 /obj/machinery/light_construct/small{
 	dir = 8
 	},
-/obj/effect/debris/cleanable/cobweb{
-	icon_state = "cobweb2"
-	},
+/obj/effect/debris/cleanable/cobweb,
 /obj/item/book/manual/nuclear,
 /turf/simulated/floor/wood,
 /area/maintenance/abandonedlibrary)
@@ -7406,9 +7400,7 @@
 /obj/machinery/light_construct/small{
 	dir = 4
 	},
-/obj/effect/debris/cleanable/cobweb{
-	icon_state = "cobweb2"
-	},
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/plating,
 /area/maintenance/abandonedlibraryconference)
 "pa" = (
@@ -19871,9 +19863,7 @@
 /area/tether/exploration/equipment)
 "OV" = (
 /obj/structure/bookcase,
-/obj/effect/debris/cleanable/cobweb{
-	icon_state = "cobweb2"
-	},
+/obj/effect/debris/cleanable/cobweb,
 /obj/machinery/light_construct{
 	dir = 1
 	},
@@ -20016,9 +20006,7 @@
 /area/maintenance/station/abandonedholodeck)
 "Pk" = (
 /obj/structure/bookcase,
-/obj/effect/debris/cleanable/cobweb{
-	icon_state = "cobweb2"
-	},
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/wood,
 /area/maintenance/abandonedlibrary)
 "Pl" = (
@@ -21480,9 +21468,7 @@
 	pixel_x = 1;
 	pixel_y = 5
 	},
-/obj/effect/debris/cleanable/cobweb{
-	icon_state = "cobweb2"
-	},
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/wood,
 /area/maintenance/abandonedlibraryconference)
 "Sn" = (
