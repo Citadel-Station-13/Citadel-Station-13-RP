@@ -71,7 +71,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/shuttle
 	requires_power = 0
-	area_flags = AREA_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_ERODING
 	sound_env = SMALL_ENCLOSED
 	area_limited_icon_smoothing = /area/shuttle
 
@@ -1155,6 +1155,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/hallway/secondary/exit
 	name = "\improper Escape Shuttle Hallway"
 	icon_state = "escape"
+	area_flags = AREA_FLAG_ERODING
 
 /area/hallway/secondary/construction
 	name = "\improper Construction Area"
@@ -1200,6 +1201,9 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/hallway/secondary/entry/docking_lounge
 	name = "\improper Docking Lounge"
 	icon_state = "docking_lounge"
+
+/area/hallway/secondary/escape
+	area_flags = AREA_FLAG_ERODING
 
 /area/hallway/secondary/escape/dock_escape_pod_hallway_port
 	name = "\improper Dock Escape Pod Hallway Port"
