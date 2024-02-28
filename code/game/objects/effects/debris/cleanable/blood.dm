@@ -22,6 +22,16 @@ var/global/list/image/splatter_cache=list()
 	var/amount = 5
 	var/drytime
 
+/obj/effect/debris/cleanable/blood/serialize()
+	. = ..()
+	.["amount"] = amount
+	.["color"] = color
+
+/obj/effect/debris/cleanable/blood/deserialize(list/data)
+	. = ..()
+	amount = data["amount"] || 0
+	color = data["color"] || "#ffffff"
+
 /obj/effect/debris/cleanable/blood/reveal_blood()
 	if(!fluorescent)
 		fluorescent = 1

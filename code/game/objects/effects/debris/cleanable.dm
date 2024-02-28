@@ -14,3 +14,13 @@
 		if(random_icon_states.len)
 			icon_state = pick(random_icon_states)
 	return ..()
+
+/obj/effect/debris/cleanable/serialize()
+	. = ..()
+	if(length(random_icon_states))
+		.["icon_state"] = icon_state
+
+/obj/effect/debris/cleanable/deserialize(list/data)
+	. = ..()
+	if(!isnull(data["icon_state"]))
+		icon_state = data["icon_state"]
