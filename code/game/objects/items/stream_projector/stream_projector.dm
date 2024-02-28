@@ -5,9 +5,10 @@
  * base supertype of stream projection devices
  *
  * e.g. mediguns
+ *
+ * processing uses SSprocessing.
  */
 /obj/item/stream_projector
-	#warn impl
 
 	/// locked targets; associated value must be truthy but is reserved by visual construction.
 	var/list/atom/active_targets
@@ -15,9 +16,18 @@
 	var/drop_all_targets_on_attack_self = TRUE
 	/// process while active
 	var/process_while_active = FALSE
+	/// process always
+	var/process_always = FALSE
+
+/obj/item/stream_projector/Initialize(mapload)
+	. = ..()
+	if(process_always)
+		START_PROCESSING(SSprocessing, src)
 
 /obj/item/stream_projector/Destroy()
 	drop_all_targets()
+	if(datum_flags & DF_ISPROCESSING)
+		STOP_PROCESSING(SSprocessing, src)
 	return ..()
 
 /obj/item/stream_projector/on_attack_self(datum/event_args/actor/e_args)
@@ -37,8 +47,16 @@
 	return NONE
 
 /obj/item/stream_projector/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	. = ..()
+	if(!valid_target(target))
+		return ..()
+	. = CLICKCHAIN_DO_NOT_PROPAGATE
+	if(active_targets?[target])
+		try_drop_target(target, new /datum/event_args/actor(user))
+	else
+		try_lock_target(target, new /datum/event_args/actor(user))
 
+/obj/item/stream_projector/process()
+	return // don't process_kill by default
 
 /**
  * checks if a target is valid to be locked at all
@@ -62,6 +80,9 @@
 	LAZYSET(active_targets, entity, TRUE)
 	setup_target_visuals(entity)
 	on_target_add(entity)
+	if(process_while_active && !process_always)
+		// START_PROCESSING checks for DF_ISPROCESSING already
+		START_PROCESSING(SSprocessing, src)
 	return TRUE
 
 /**
@@ -115,6 +136,9 @@
 /obj/item/stream_projector/proc/perform_try_lock_target(atom/entity, datum/event_args/actor/actor, silent)
 	return TRUE
 
+/obj/item/stream_projector/proc/try_drop_target(atom/entity, datum/event_args/actor/actor, silent)
+	return drop_target(entity)
+
 /obj/item/stream_projector/proc/drop_target(atom/entity)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	if(!active_targets?[entity])
@@ -122,13 +146,10 @@
 	LAZYREMOVE(active_targets, entity)
 	teardown_target_visuals(entity)
 	on_target_remove(entity)
+	if(!length(active_targets) && process_while_active && !process_always)
+		STOP_PROCESSING(SSprocessing, src)
 	return TRUE
 
 /obj/item/stream_projector/proc/drop_all_targets()
 	for(var/atom/entity as anything in active_targets)
 		drop_target(entity)
-
-#warn impl all
-
-
-

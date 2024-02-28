@@ -23,13 +23,17 @@
 	return ..()
 
 /datum/item_interface/proc/mount_item(obj/item/item)
+	#warn hook
 	return TRUE
 
 /datum/item_interface/proc/unmount_item(obj/item/item)
+	#warn hook
 	return TRUE
 
 /datum/item_interface/proc/unmount_everything()
 	return TRUE
+
+//* Reagent Bus *//
 
 /datum/item_interface/proc/use_reagent_exact_gradual(obj/item/item, datum/reagent/reagentlike, amount, dt)
 	return FALSE
@@ -37,14 +41,20 @@
 /datum/item_interface/proc/use_reagent_exact_immediate(obj/item/item, datum/reagent/reagentlike, amount)
 	return FALSE
 
+//* Material Bus *//
+
 /datum/item_interface/proc/use_material_exact_gradual(obj/item/item, datum/material/materiallike, amount, dt)
 	return FALSE
 
 /datum/item_interface/proc/use_material_exact_immediate(obj/item/item, datum/material/materiallike, amount)
 	return FALSE
 
+//* Power Bus *//
+
 /datum/item_interface/proc/use_power_immediate(obj/item/item, joules)
 	return FALSE
+
+#warn power bus stuff
 
 /**
  * register a gradual power usage
@@ -52,7 +62,7 @@
  * register as 0 watts to unregister
  */
 /datum/item_interface/proc/set_power_load(obj/item/item, watts)
-	return FALSE
+	#warn power bus stuff
 
 /**
  * check how much power is available from registered gradual power
@@ -67,6 +77,22 @@
  */
 /datum/item_interface/proc/available_power_load_ratio()
 	return 0
+
+//* Miscellaneous / One-Offs *//
+
+/**
+ * @return amount used
+ */
+/datum/item_interface/proc/use_medichines(datum/medichine_cell/requested, amount)
+	return 0
+
+/**
+ * @return /datum/medichine_cell instance
+ */
+/datum/item_interface/proc/query_medichines()
+	return null
+
+//? Implementations ?//
 
 /**
  * one-interface, one-item
@@ -91,3 +117,17 @@
 	var/list/obj/item/bound_items
 
 #warn impl all
+
+#warn hook
+
+/**
+ * called when we're attached to an interface
+ */
+/obj/item/proc/interface_attached(datum/item_interface/interface)
+	return
+
+/**
+ * called when we're detached from an interface
+ */
+/obj/item/proc/interface_detached(datum/item_interface/interface)
+	return

@@ -23,6 +23,7 @@ GLOBAL_LIST_EMPTY(holofabricator_templates)
 /**
  * new RCDs
  */
+ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/holofabricator, interface)
 /obj/item/stream_projector/holofabricator
 	name = "holofabricator"
 	desc = "A precise triage tool used by many frontier engineers. Uses materials from a loaded cartridge \
@@ -45,7 +46,8 @@ GLOBAL_LIST_EMPTY(holofabricator_templates)
 
 	/// selected template
 	var/datum/holofabricator_template/selected_template
-
+	/// interface to draw from if provided
+	var/datum/item_interface/interface
 
 #warn impl all
 

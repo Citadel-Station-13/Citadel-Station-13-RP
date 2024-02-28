@@ -330,7 +330,7 @@
 /datum/proc/GetComponent(datum/component/c_type)
 	RETURN_TYPE(c_type)
 	. = datum_components?[initial(c_type.registered_type)]
-	return . && (length(.) ? .[1] : .)
+	. = length(.)? .[1] : .
 
 /**
  * Get all components of a given type that are attached to this datum
@@ -435,9 +435,7 @@
  * * ... additional arguments to be passed when creating the component if it does not exist
  */
 /datum/proc/_LoadComponent(list/arguments)
-	. = GetComponent(arguments[1])
-	if(!.)
-		return _AddComponent(arguments)
+	return GetComponent(arguments[1]) || _AddComponent(arguments)
 
 /**
  * qdels a component of given registered type,
