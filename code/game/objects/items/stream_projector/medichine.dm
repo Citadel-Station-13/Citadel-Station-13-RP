@@ -25,6 +25,8 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
 	need for a powerful, laminar stream of particles, this has a far higher efficient range than a standard holofabricator. Nanites must \
 	be provided with prepared medichine cartridges."
 
+	process_while_active = TRUE
+
 	#warn impl
 
 	/// installed cartridge
@@ -36,6 +38,23 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
 /obj/item/stream_projector/medichine/examine(mob/user, dist)
 	. = ..()
 	. += SPAN_NOTICE("This projector's injection rate is inversely proportional to distance from a given target. Use close-by for best results.")
+
+/obj/item/stream_projector/medichine/valid_target(atom/entity)
+	return isliving(entity)
+
+/obj/item/stream_projector/medichine/process(delta_time)
+	for(var/mob/entity as anything in active_targets)
+	#warn impl
+
+/obj/item/stream_projector/medichine/setup_target_visuals(atom/entity)
+	var/datum/component/medichine_visualizer/visualizer = entity.LoadComponent(/datum/component/medichine_visualizer)
+	#warn impl
+
+/obj/item/stream_projector/medichine/teardown_target_visuals(atom/entity)
+	var/datum/component/medichine_visualizer/visualizer = entity.LoadComponent(/datum/component/medichine_visualizer)
+	#warn impl
+	if(!visualizer.total_strength)
+		qdel(visualizer)
 
 #warn impl all
 
@@ -188,6 +207,14 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
  * medical beamgun effect
  */
 /datum/medichine_effect
+
+/**
+ * as opposed to ticking on objs.
+ *
+ * @return FALSE if there's nothing left to do
+ */
+/datum/medichine_effect/proc/tick_on_mob(mob/living/entity, volume)
+	return FALSE
 
 /datum/medichine_effect/wound_healing
 	var/disinfect_strength = 0

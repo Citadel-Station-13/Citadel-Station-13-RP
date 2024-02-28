@@ -3,4 +3,4 @@
  */
 /atom/movable/particle_render
 	atom_flags = ATOM_ABSTRACT
-	mouse_opacity = FALSE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT

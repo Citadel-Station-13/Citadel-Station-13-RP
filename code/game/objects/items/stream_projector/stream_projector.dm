@@ -13,6 +13,8 @@
 	var/list/atom/active_targets
 	/// drop all targets on attack self
 	var/drop_all_targets_on_attack_self = TRUE
+	/// process while active
+	var/process_while_active = FALSE
 
 /obj/item/stream_projector/Destroy()
 	drop_all_targets()
@@ -28,23 +30,45 @@
 		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 	return ..()
 
+/obj/item/stream_projector/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	// flatly don't emit the attack if not in harm
+	if(intent == INTENT_HARM)
+		return ..()
+	return NONE
+
+/obj/item/stream_projector/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	. = ..()
+
+
+/**
+ * checks if a target is valid to be locked at all
+ */
 /obj/item/stream_projector/proc/valid_target(atom/entity)
 	return istype(entity)
 
-/obj/item/stream_projector/proc/can_target(atom/entity)
+/**
+ * checks if we currently can lock onto a target
+ */
+/obj/item/stream_projector/proc/can_target(atom/entity, datum/event_args/actor/actor, silent)
 	return TRUE
 
+/**
+ * immediately lock to target
+ */
 /obj/item/stream_projector/proc/lock_target(atom/entity)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	if(active_targets?[entity])
 		return FALSE
 	LAZYSET(active_targets, entity, TRUE)
-	#warn impl
+	setup_target_visuals(entity)
+	on_target_add(entity)
+	return TRUE
 
 /**
  * setup visuals to target
  */
 /obj/item/stream_projector/proc/setup_target_visuals(atom/entity)
+	return
 
 /**
  * teardown visuals to target
@@ -64,14 +88,41 @@
 /obj/item/stream_projector/proc/on_target_remove(atom/entity)
 	return
 
+/**
+ * this proc should include all instant checks
+ */
 /obj/item/stream_projector/proc/try_lock_target(atom/entity, datum/event_args/actor/actor, silent)
+	// check if we're already locking that target
+	if(active_targets[entity])
+		return FALSE
+
+	// check if it's remotely the right type
+	if(!valid_target(entity))
+		return FALSE
+
+	// check if we can target
+	if(!can_target(entity, actor, silent))
+		return FALSE
+
+	if(!perform_try_lock_target(entity, actor, silent))
+		return FALSE
+
+	return lock_target(entity)
+
+/**
+ * this proc can block and should include blocking checks
+ */
+/obj/item/stream_projector/proc/perform_try_lock_target(atom/entity, datum/event_args/actor/actor, silent)
+	return TRUE
 
 /obj/item/stream_projector/proc/drop_target(atom/entity)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	if(!active_targets?[entity])
 		return FALSE
 	LAZYREMOVE(active_targets, entity)
-	#warn impl
+	teardown_target_visuals(entity)
+	on_target_remove(entity)
+	return TRUE
 
 /obj/item/stream_projector/proc/drop_all_targets()
 	for(var/atom/entity as anything in active_targets)

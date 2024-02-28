@@ -76,6 +76,8 @@
  * * Only use this if shared can't work for you.
  */
 /datum/item_interface/single
+	/// bound item
+	var/obj/item/bound_item
 
 /**
  * one-interface, many-item
@@ -85,5 +87,7 @@
  * * You should probalby use this in most cases.
  */
 /datum/item_interface/shared
+	/// bound items
+	var/list/obj/item/bound_items
 
 #warn impl all

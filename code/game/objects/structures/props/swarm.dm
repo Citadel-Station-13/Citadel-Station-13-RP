@@ -27,7 +27,7 @@
 	active_beams = list()
 
 /obj/structure/cult/pylon/swarm/Destroy()
-	for(var/datum/beam/B in active_beams)
+	for(var/datum/beam_legacy/B in active_beams)
 		QDEL_NULL(B)
 	active_beams = null
 	..()
@@ -89,7 +89,7 @@
 
 	for(var/mob/living/silicon/robot/drone/swarm/S in view(3, src))
 		var/has_beam = FALSE
-		for(var/datum/beam/B in active_beams)
+		for(var/datum/beam_legacy/B in active_beams)
 			if(B.target == S)
 				has_beam = TRUE
 				break
