@@ -42,11 +42,20 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	. = ..()
 	#warn impl
 
+/obj/item/stream_projector/medichine/setup_target_visuals(atom/entity)
+	. = ..()
+
+/obj/item/stream_projector/medichine/teardown_target_visuals(atom/entity)
+	. = ..()
+
+
 /obj/item/stream_projector/medichine/process(delta_time)
 	..()
 	// if not injecting, drop
 	if(!length(active_targets))
 		return
+
+	return
 
 	// get effective cell
 	var/datum/medichine_cell/effective_package
