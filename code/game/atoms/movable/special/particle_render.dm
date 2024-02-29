@@ -5,3 +5,9 @@
 	appearance_flags = KEEP_TOGETHER
 	atom_flags = ATOM_ABSTRACT
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/atom/movable/particle_render/doMove()
+	CRASH("someone tried to move us normally")
+
+/atom/movable/particle_render/Move()
+	CRASH("someone tried to move us normally")

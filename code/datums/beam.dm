@@ -52,26 +52,20 @@
 	return created
 
 /**
- * creates a beam that renders via particles
+ * creates a beam that... doesn't render (lmao)
  *
  * you must delete this beam yourself, unlike legacy beams
- *
- * particle beams basically only get transformed.
  *
  * @params
  * * source - where to draw from
  * * target - where to draw to
  * * collider_type - set to a type to create colliders
- * * particle_reference - particle reference to use.
- * * emissive_reference - emissive particle reference, if any
  */
-/proc/create_particle_beam(atom/source, atom/target, collider_type, particles/particle_reference, particles/emissive_reference)
+/proc/create_particle_beam(atom/source, atom/target, collider_type)
 	var/datum/beam/created = new(source, target)
 	if(!isnull(collider_type))
 		created.collider_type = collider_type
 		created.colliders = TRUE
-	created.particle_reference = particle_reference
-	created.emissive_particle_reference = emissive_reference
 	created.initialize()
 	return created
 
@@ -99,10 +93,14 @@
 	var/collider_type
 	/// registered colliding entities, turf or movable; only made as a list if collision or segment mode is enabled
 	var/list/atom/colliding
+	/// colliders
+	var/list/atom/movable/beam_collider/colliders
 
 	//* segmentation *//
-	/// 1 to n, beam segments; used both for colliders and for rendering if needed
-	var/list/atom/movable/beam_element/elements
+	/// beam segment holder
+	var/atom/movable/beam_segments/segmentation
+	/// beam segment holder
+	var/atom/movable/beam_segments/emissive/emissive_segmentation
 
 	//* graphics *//
 	/// graphics mode
@@ -171,10 +169,9 @@
 	// for any modes with emissives, the emissive is shoved into the main renderer
 	// and the entire thing is KT-group'd together.
 	switch(beam_visual_mode)
-		if(BEAM_VISUAL_PARTICLES)
-			#warn impl
 		if(BEAM_VISUAL_SEGMENTS)
-			LAZYINITLIST(elements)
+			segmentation = new
+			emissive_segmentation = new
 		if(BEAM_VISUAL_STRETCH)
 			line_renderer = new
 			line_renderer.icon = icon
@@ -185,7 +182,7 @@
 				emissive_line_renderer.icon_state = emissive_state
 
 	if(colliders)
-		LAZYINITLIST(elements)
+		LAZYINITLIST(colliders)
 		LAZYINITLIST(colliding)
 
 	force_redraw()
@@ -242,9 +239,23 @@
 	var/distance = sqrt(dx ** 2 + dy ** 2)
 	// draw
 	switch(beam_visual_mode)
-		if(BEAM_VISUAL_PARTICLES)
-			#warn impl
+		#warn deal with particles
+		// if(BEAM_VISUAL_PARTICLES)
+		// 	// calculate matrix
+		// 	var/matrix/transform_to_apply = matrix()
+		// 	// rotate to clockwise-from-north as opposed to counterclockwise-from-east
+		// 	transform_to_apply.Turn((-north_of_east) - 90)
+		// 	// handle normal render
+		// 	particle_renderer.loc = start
+		// 	particle_renderer.transform = transform_to_apply
+		// 	// handle emissive render
+		// 	if(!isnull(emissive_particle_renderer))
+		// 		emissive_particle_renderer.loc = start
+		// 		emissive_particle_renderer.transform = transform_to_apply
 		if(BEAM_VISUAL_SEGMENTS)
+			// don't stretch past distance
+			var/steps_required = round(distance / WORLD_ICON_SIZE)
+			// we assume both segment renderers are lockstepped
 			#warn impl
 		if(BEAM_VISUAL_STRETCH)
 			// calculate matrix
@@ -262,16 +273,98 @@
 			if(!isnull(emissive_line_renderer))
 				emissive_line_renderer.loc = start
 				emissive_line_renderer.transform = transform_to_apply
-	// if we're not in segment mode, we're in trouble
-	if(beam_visual_mode != BEAM_VISUAL_SEGMENTS && colliders)
-		// if we're using colliders we need to manually draw them again
-		#warn impl
+	// deal with colliders
+	var/list/turf/colliding_turfs = getline(start, end)
+	if(length(colliding_turfs) < colliders)
+		// if more than needed, nullspace the rest but keep them on hand
+		for(var/i in length(colliding_turfs) + 1 to length(collliders))
+			var/atom/movable/beam_collider/collider = colliders[i]
+			collider.move_onto(null)
+	else if(length(colliding_turfs) > colliders)
+		// if less than needed, make new ones but don't collide yet
+		for(var/i in 1 to length(colliding_turfs) - length(colliders))
+			colliders += new atom/movable/beam_collider(src)
+	// we should be greater-or-equal colliders than turfs now
+	// now-overallocated colliders are ignored and cached in nullspace
+	// this system also enforces deterministic source-to-target propagation as opposed
+	// to non-deterministic orderings.
+	for(var/i in 1 to min(length(colliders), length(colliding_turfs)))
+		var/atom/movable/beam_collider/collider = colliders[i]
+		collider.move_onto(colliding_turfs[i])
 
-/atom/movable/graphics_render/beam_element
+/datum/beam/proc/uncrossed(atom/movable/entity)
+	SHOULD_CALL_PARENT(TRUE)
+	colliding -= entity
+
+/datum/beam/proc/crossed(atom/movable/entity)
+	SHOULD_CALL_PARENT(TRUE)
+	colliding += entity
+
+#warn deal with particles
+
+/**
+ * adds a set of particles to this beam
+ *
+ * you have to control the particles yourself
+ *
+ * * the beam assumes that the particles will project in the **north** direction.
+ * * this just makes the beam automatically rotate the particles as necessary.
+ */
+/datum/beam/proc/set_particles(particles/particle_reference, particles/emissive_particle_reference)
+	if(isnull(particle_renderer))
+		particle_renderer = new
+	particle_renderer.particles = particle_reference
+	if(!isnull(emissive_particle_reference))
+		if(isnull(emissive_particle_renderer))
+			emissive_particle_renderer = new
+		emissive_particle_renderer.particles = emissive_particle_reference
+	else if(!isnull(emissive_particle_renderer))
+		QDEL_NULL(emissive_particle_renderer)
+	force_redraw()
+
+//* Segmented Renderers *//
+
+/atom/movable/graphics_render/beam_segments
 	appearance_flags = KEEP_TOGETHER
 
-/atom/movable/graphics_render/beam_element/emissive
+	/// segments in us
+	var/list/mutable_appearance/segment_appearances = list()
+
+/atom/movable/graphics_render/beam_segments/emissive
 	plane = EMISSIVE_PLANE
+
+//* Colliders *//
+
+INITIALIZE_IMMEDIATE(/atom/movable/beam_collider)
+/atom/movable/beam_collider
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	invisibility = INVISIBILITY_ABSTRACT
+
+	/// parent beam
+	var/datum/beam/parent
+
+/atom/movable/beam_collider/Initialize(mapload, datum/beam/parent)
+	SHOULD_CALL_PARENT(FALSE)
+	src.parent = parent
+	atom_flags |= ATOM_INITIALIZED
+	return INITIALIZE_HINT_NORMAL
+
+/atom/movable/beam_collider/proc/move_onto(turf/where)
+	for(var/atom/movable/other as anything in loc)
+		if(other == src)
+			continue
+		if(other.atom_flags & ATOM_ABSTRACT)
+			continue
+		parent.uncrossed(other)
+	loc = where
+	for(var/atom/movable/other as anything in loc)
+		if(other == src)
+			continue
+		if(other.atom_flags & ATOM_ABSTRACT)
+			continue
+		parent.crossed(other)
+
+//* Stretched Renderers *//
 
 /atom/movable/graphics_render/beam_line
 	appearance_flags = KEEP_TOGETHER
@@ -279,8 +372,20 @@
 /atom/movable/graphics_render/beam_line/emissive
 	plane = EMISSIVE_PLANE
 
+//* Particle Renderers *//
+
 /atom/movable/particle_render/beam_line
 	appearance_flags = KEEP_TOGETHER
 
 /atom/movable/particle_render/beam_line/emissive
 	plane = EMISSIVE_PLANE
+
+/atom/movable/particle_render/beam_line/emissive/Initialize(mapload)
+	ASSERT(istype(loc, /atom/movable/particle_render/beam_line))
+	loc:vis_contents += src
+	return ..()
+
+/atom/movable/particle_render/beam_line/emissive/Destroy()
+	ASSERT(istype(loc, /atom/movable/particle_render/beam_line))
+	loc:vis_contents -= src
+	return ..()
