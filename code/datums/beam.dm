@@ -300,8 +300,6 @@
 	SHOULD_CALL_PARENT(TRUE)
 	colliding += entity
 
-#warn deal with particles
-
 /**
  * adds a set of particles to this beam
  *
