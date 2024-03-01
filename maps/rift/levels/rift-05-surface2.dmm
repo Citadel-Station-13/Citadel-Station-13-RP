@@ -21779,7 +21779,6 @@
 /obj/structure/closet,
 /obj/random/maintenance/medical,
 /obj/random/maintenance/clean,
-/obj/random/junk,
 /obj/item/reagent_containers/food/drinks/bottle/rum{
 	desc = "TASTE DEMOCRACY";
 	name = "Managed Democra-cider"
@@ -23236,9 +23235,6 @@
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "oPZ" = (
 /obj/structure/closet/crate/trashcart,
-/obj/random/junk,
-/obj/random/junk,
-/obj/random/junk,
 /turf/simulated/floor,
 /area/maintenance/substation/security)
 "oQa" = (
@@ -25223,7 +25219,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "qdL" = (
-/obj/random/junk,
 /turf/simulated/floor/wood,
 /area/maintenance/security/upper)
 "qdY" = (

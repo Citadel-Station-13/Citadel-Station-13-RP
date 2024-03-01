@@ -603,7 +603,6 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/rust,
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/station/eng_lower)
 "bj" = (
@@ -1109,7 +1108,6 @@
 /area/hallway/secondary/escape/medical_escape_pod_hallway)
 "cm" = (
 /obj/structure/closet,
-/obj/random/junk,
 /obj/random/tool,
 /turf/simulated/floor,
 /area/maintenance/station/eng_lower)
@@ -1352,7 +1350,6 @@
 /obj/random/maintenance/clean,
 /obj/random/maintenance/clean,
 /obj/random/maintenance/engineering,
-/obj/random/junk,
 /turf/simulated/floor,
 /area/maintenance/station/eng_lower)
 "cM" = (
@@ -2147,7 +2144,6 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/random/junk,
 /turf/simulated/floor,
 /area/maintenance/station/eng_lower)
 "ek" = (
@@ -2351,7 +2347,6 @@
 /turf/simulated/floor,
 /area/engineering/engine_smes)
 "eF" = (
-/obj/random/junk,
 /obj/structure/closet,
 /obj/random/maintenance/clean,
 /turf/simulated/floor,
@@ -2775,7 +2770,6 @@
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
 "fv" = (
-/obj/random/junk,
 /turf/simulated/floor,
 /area/constructionsite)
 "fw" = (
@@ -2989,7 +2983,6 @@
 	pixel_x = 25
 	},
 /obj/structure/table/woodentable,
-/obj/random/junk,
 /turf/simulated/floor/carpet,
 /area/maintenance/abandonedlibrary)
 "fS" = (
@@ -4000,7 +3993,6 @@
 	dir = 8;
 	layer = 2.9
 	},
-/obj/random/junk,
 /obj/random/maintenance/medical,
 /turf/simulated/floor/plating,
 /area/maintenance/station/eng_lower)
@@ -4084,7 +4076,6 @@
 "in" = (
 /obj/structure/closet,
 /obj/random/tool,
-/obj/random/junk,
 /obj/random/maintenance/security,
 /turf/simulated/floor/plating,
 /area/maintenance/station/eng_lower)
@@ -4183,7 +4174,6 @@
 /turf/simulated/floor,
 /area/vacant/vacant_restaurant_lower)
 "iw" = (
-/obj/random/junk,
 /turf/simulated/floor,
 /area/maintenance/station/eng_lower)
 "iy" = (
@@ -6406,7 +6396,6 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/shield_gen)
 "nd" = (
-/obj/random/junk,
 /turf/simulated/floor,
 /area/maintenance/station/eng_lower)
 "ne" = (
@@ -6621,7 +6610,6 @@
 	icon_state = "0-2"
 	},
 /obj/machinery/power/apc/north_mount,
-/obj/random/junk,
 /obj/random/tool,
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
@@ -6857,7 +6845,6 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/random/junk,
 /turf/simulated/floor,
 /area/maintenance/station/eng_lower)
 "nZ" = (
@@ -9549,7 +9536,6 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/docks)
 "tB" = (
-/obj/random/junk,
 /turf/simulated/floor/wood/broken,
 /area/maintenance/abandonedlibrary)
 "tC" = (
@@ -10184,7 +10170,6 @@
 /area/tether/exploration/showers)
 "uY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/universal,
-/obj/random/junk,
 /turf/simulated/floor,
 /area/maintenance/station/eng_lower)
 "uZ" = (
@@ -11465,7 +11450,6 @@
 "xL" = (
 /obj/structure/closet,
 /obj/random/contraband,
-/obj/random/junk,
 /turf/simulated/floor,
 /area/maintenance/station/eng_lower)
 "xM" = (
@@ -12885,8 +12869,6 @@
 /area/crew_quarters/heads/chief)
 "AF" = (
 /obj/structure/closet/crate,
-/obj/random/junk,
-/obj/random/junk,
 /turf/simulated/floor,
 /area/constructionsite)
 "AG" = (
@@ -13359,7 +13341,6 @@
 /turf/simulated/floor/tiled,
 /area/tether/exploration/hallway)
 "BE" = (
-/obj/random/junk,
 /turf/simulated/floor,
 /area/maintenance/station/eng_lower)
 "BF" = (
@@ -13968,7 +13949,6 @@
 /turf/simulated/floor/plating,
 /area/bridge/secondary)
 "CJ" = (
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/abandonedlibrary)
 "CK" = (
@@ -14217,7 +14197,6 @@
 /turf/simulated/floor/tiled,
 /area/engineering/engine_monitoring)
 "Dm" = (
-/obj/random/junk,
 /turf/simulated/floor/wood/broken,
 /area/maintenance/station/eng_lower)
 "Dn" = (
@@ -14869,7 +14848,6 @@
 	dir = 9
 	},
 /obj/structure/railing,
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/station/eng_lower)
 "Ew" = (
@@ -15353,7 +15331,6 @@
 	dir = 8;
 	layer = 2.9
 	},
-/obj/random/junk,
 /obj/random/maintenance/engineering,
 /turf/simulated/floor,
 /area/maintenance/station/eng_lower)
@@ -16286,9 +16263,6 @@
 "Hp" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/closet,
-/obj/random/junk,
-/obj/random/junk,
-/obj/random/junk,
 /obj/random/maintenance/engineering,
 /turf/simulated/floor/plating,
 /area/maintenance/station/eng_lower)
@@ -16497,8 +16471,6 @@
 	dir = 4
 	},
 /obj/structure/closet/crate,
-/obj/random/junk,
-/obj/random/junk,
 /obj/random/medical,
 /turf/simulated/floor/plating,
 /area/maintenance/station/eng_lower)
@@ -17541,7 +17513,6 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/random/junk,
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 1
 	},
@@ -17871,7 +17842,6 @@
 	dir = 8;
 	pixel_x = 24
 	},
-/obj/random/junk,
 /turf/simulated/floor,
 /area/constructionsite)
 "KB" = (
@@ -17990,11 +17960,9 @@
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 1
 	},
-/obj/random/junk,
 /turf/simulated/floor/tiled,
 /area/tether/exploration/hallway)
 "KM" = (
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/tether/exploration/hallway)
 "KN" = (
@@ -18756,7 +18724,6 @@
 /area/engineering/break_room)
 "Mv" = (
 /obj/effect/floor_decal/rust,
-/obj/random/junk,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
@@ -18861,7 +18828,6 @@
 /area/vacant/vacant_restaurant_lower)
 "MG" = (
 /obj/machinery/fire_alarm/east_mount,
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/abandonedlibrary)
 "MH" = (
@@ -18992,7 +18958,6 @@
 /turf/simulated/wall/prepainted/engineering,
 /area/maintenance/station/eng_lower)
 "MZ" = (
-/obj/random/junk,
 /obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/plating,
 /area/maintenance/abandonedlibrary)
@@ -19153,7 +19118,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/random/junk,
 /turf/simulated/floor,
 /area/crew_quarters/sleep/cryo)
 "Nr" = (
@@ -19807,9 +19771,6 @@
 	dir = 8;
 	layer = 2.9
 	},
-/obj/random/junk,
-/obj/random/junk,
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/station/eng_lower)
 "OP" = (
@@ -20912,7 +20873,6 @@
 	layer = 2.9
 	},
 /obj/random/maintenance/clean,
-/obj/random/junk,
 /turf/simulated/floor,
 /area/maintenance/station/spacecommandmaint)
 "QZ" = (
@@ -21100,7 +21060,6 @@
 /area/maintenance/abandonedlibrary)
 "Rx" = (
 /obj/effect/floor_decal/rust,
-/obj/random/junk,
 /turf/simulated/floor,
 /area/maintenance/station/eng_lower)
 "Ry" = (
@@ -21190,7 +21149,6 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/docks)
 "RM" = (
-/obj/random/junk,
 /turf/simulated/floor,
 /area/maintenance/station/spacecommandmaint)
 "RN" = (
@@ -21346,7 +21304,6 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
-/obj/random/junk,
 /turf/simulated/floor,
 /area/maintenance/substation/civilian)
 "Sb" = (
@@ -21458,8 +21415,6 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/rust,
-/obj/random/junk,
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/station/eng_lower)
 "Sm" = (
@@ -23693,8 +23648,6 @@
 /area/engineering/hallway)
 "WB" = (
 /obj/structure/closet/crate,
-/obj/random/junk,
-/obj/random/junk,
 /turf/simulated/floor,
 /area/vacant/vacant_restaurant_lower)
 "WC" = (
@@ -24039,7 +23992,6 @@
 /turf/simulated/floor,
 /area/maintenance/station/eng_lower)
 "Xn" = (
-/obj/random/junk,
 /turf/simulated/floor,
 /area/vacant/vacant_restaurant_lower)
 "Xo" = (
@@ -24575,7 +24527,6 @@
 /obj/random/maintenance/clean,
 /obj/random/maintenance/clean,
 /obj/random/maintenance/engineering,
-/obj/random/junk,
 /turf/simulated/floor,
 /area/maintenance/station/eng_lower)
 "Yq" = (
@@ -25076,7 +25027,6 @@
 /obj/random/maintenance/clean,
 /obj/random/maintenance/clean,
 /obj/random/maintenance/engineering,
-/obj/random/junk,
 /turf/simulated/floor,
 /area/crew_quarters/sleep/cryo)
 "Zs" = (
@@ -25259,7 +25209,6 @@
 	dir = 8;
 	layer = 2.9
 	},
-/obj/random/junk,
 /obj/structure/symbol/lo{
 	pixel_x = -32
 	},

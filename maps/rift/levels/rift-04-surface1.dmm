@@ -3973,7 +3973,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/office)
 "cIt" = (
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/maint_bar)
 "cIP" = (
@@ -6150,7 +6149,6 @@
 /area/medical/medbay_emt_bay)
 "dZn" = (
 /obj/effect/floor_decal/rust,
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/starboard)
 "dZX" = (
@@ -11932,7 +11930,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/research/lower)
 "hPe" = (
-/obj/random/junk,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/maintenance/maint_bar)
 "hPo" = (
@@ -12932,7 +12929,6 @@
 /area/hallway/secondary/civilian_hallway_mid)
 "ium" = (
 /obj/machinery/light/small,
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/research/lower)
 "iuZ" = (
@@ -17527,7 +17523,6 @@
 /area/medical/psych_ward)
 "lnK" = (
 /obj/structure/table/rack/shelf,
-/obj/random/junk,
 /obj/random/maintenance/clean,
 /obj/random/maintenance/security,
 /turf/simulated/floor/wood,
@@ -18322,7 +18317,6 @@
 	dir = 1
 	},
 /obj/structure/table,
-/obj/random/junk,
 /obj/item/storage/toolbox/mechanical,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/maintenance/maint_bar)
@@ -18558,7 +18552,6 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/research/lower)
 "maS" = (
@@ -19587,7 +19580,6 @@
 "mDl" = (
 /obj/item/stack/rods,
 /obj/item/stack/rods,
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/maint_bar)
 "mDM" = (
@@ -29535,7 +29527,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/medical_restroom)
 "sAz" = (
-/obj/random/junk,
 /turf/simulated/floor/wood/broken,
 /area/maintenance/maint_bar)
 "sBt" = (
@@ -30804,7 +30795,6 @@
 /turf/simulated/floor/snow,
 /area/rift/surfacebase/outside/outside1)
 "toj" = (
-/obj/random/junk,
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -31925,7 +31915,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "tXc" = (
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/starboard)
 "tXh" = (
@@ -33672,7 +33661,6 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/rust,
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/starboard)
 "uWy" = (
@@ -34134,7 +34122,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/civilian_hallway_mid)
 "vky" = (
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/research/lower)
 "vls" = (
@@ -35107,7 +35094,6 @@
 /turf/simulated/floor/carpet/gaycarpet,
 /area/tether/surfacebase/funny/clownoffice)
 "vXr" = (
-/obj/random/junk,
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -35359,7 +35345,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/research/lower)
 "weV" = (
-/obj/random/junk,
 /turf/simulated/floor/wood,
 /area/maintenance/maint_bar)
 "wft" = (
@@ -37046,7 +37031,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/library)
 "xen" = (
-/obj/random/junk,
 /obj/structure/table,
 /turf/simulated/floor/wood/broken,
 /area/maintenance/maint_bar)
@@ -37325,7 +37309,6 @@
 /obj/structure/sign/poster{
 	pixel_y = 32
 	},
-/obj/random/junk,
 /turf/simulated/floor/wood/broken,
 /area/maintenance/maint_bar)
 "xlG" = (

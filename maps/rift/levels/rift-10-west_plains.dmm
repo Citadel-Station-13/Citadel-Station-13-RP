@@ -352,11 +352,6 @@
 /area/rift/facility/interior/surface)
 "bS" = (
 /obj/structure/closet/crate/radiation,
-/obj/random/junk,
-/obj/random/junk,
-/obj/random/junk,
-/obj/random/junk,
-/obj/random/junk,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/exterior/shuttle)
 "bW" = (
@@ -3578,12 +3573,6 @@
 /area/rift/facility/interior/surface)
 "qN" = (
 /obj/structure/closet/crate/radiation,
-/obj/random/junk,
-/obj/random/junk,
-/obj/random/junk,
-/obj/random/junk,
-/obj/random/junk,
-/obj/random/junk,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/exterior/shuttle)
 "qO" = (

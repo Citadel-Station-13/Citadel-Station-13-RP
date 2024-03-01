@@ -700,7 +700,6 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/refinery)
 "hC" = (
-/obj/random/junk,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/underground2)
 "hD" = (
@@ -1824,7 +1823,6 @@
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/belterdock)
 "pH" = (
-/obj/random/junk,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/underground2)
 "pI" = (
@@ -4370,7 +4368,6 @@
 /area/rift/facility/interior/underground2)
 "Ng" = (
 /obj/effect/floor_decal/rust,
-/obj/random/junk,
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_deep)
 "Nl" = (
@@ -5332,7 +5329,6 @@
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/substation)
 "WR" = (
-/obj/random/junk,
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_deep)
 "WW" = (

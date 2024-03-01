@@ -3060,7 +3060,6 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
 "ajp" = (
-/obj/random/junk,
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside3)
 "ajq" = (
@@ -14855,12 +14854,6 @@
 	dir = 1
 	},
 /obj/structure/closet/crate/trashcart,
-/obj/random/junk,
-/obj/random/junk,
-/obj/random/junk,
-/obj/random/junk,
-/obj/random/junk,
-/obj/random/junk,
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/surfaceeva/aa/cliff_north)
 "aPW" = (

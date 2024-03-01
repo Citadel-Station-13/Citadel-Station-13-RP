@@ -124,7 +124,6 @@
 	dir = 8
 	},
 /obj/effect/overlay/snow/floor,
-/obj/random/junk,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/core)
 "hg" = (
@@ -311,7 +310,6 @@
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/underground3)
 "nQ" = (
-/obj/random/junk,
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/facility/interior/core)
 "ok" = (
@@ -432,7 +430,6 @@
 /area/rift/facility/interior/core)
 "uB" = (
 /obj/effect/overlay/snow/floor,
-/obj/random/junk,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/core)
 "uQ" = (
@@ -696,7 +693,6 @@
 	dir = 1
 	},
 /obj/effect/overlay/snow/floor,
-/obj/random/junk,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/core)
 "Kh" = (
@@ -749,7 +745,6 @@
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/underground3)
 "MP" = (
-/obj/random/junk,
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_base)
 "Nf" = (
@@ -768,7 +763,6 @@
 /turf/simulated/mineral/floor/ignore_cavegen/has_air,
 /area/rift/surfacebase/outside/west_base)
 "NI" = (
-/obj/random/junk,
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/facility/interior/vault)
 "NS" = (
@@ -877,7 +871,6 @@
 /area/rift/facility/interior/barracks)
 "Sk" = (
 /obj/effect/floor_decal/rust,
-/obj/random/junk,
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_base)
 "So" = (

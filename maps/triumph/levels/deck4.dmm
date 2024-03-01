@@ -11578,7 +11578,6 @@
 "hYh" = (
 /obj/structure/catwalk,
 /obj/item/bananapeel,
-/obj/random/junk,
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
@@ -14734,7 +14733,6 @@
 /turf/simulated/floor/plating,
 /area/exploration/pathfinder_office)
 "kbl" = (
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/security/starboard)
 "kbw" = (
@@ -20017,7 +20015,6 @@
 /obj/machinery/air_alarm{
 	pixel_y = 22
 	},
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/security/starboard)
 "nSi" = (
@@ -25399,7 +25396,6 @@
 /turf/simulated/wall/r_wall/prepainted/exploration,
 /area/exploration/showers)
 "rKE" = (
-/obj/random/junk,
 /turf/simulated/floor/wood,
 /area/maintenance/security/starboard)
 "rKO" = (

@@ -1315,7 +1315,6 @@
 /turf/simulated/floor,
 /area/rnd/outpost/maintenance)
 "pG" = (
-/obj/random/junk,
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
 "pN" = (
@@ -1855,12 +1854,6 @@
 	info = "Diagnosis: Radiation Poisoning, its the third one this month. Its very obvious the cause, even the Colonel knows yet still Adhomai refuses to send use proper supplies. Its getting the point where one of my staff even suggested contacting one of the megacorps to arrange deliveries of Arithazine. If the Commissariat found out we'd be send off to the mines Miaphus'irra certainly. However if we don't figure out something soon there may be serious loss in manpower from all the exposure.";
 	name = "discarded note"
 	},
-/obj/random/junk,
-/obj/random/junk,
-/obj/random/junk,
-/obj/random/junk,
-/obj/random/junk,
-/obj/random/junk,
 /obj/effect/floor_decal/borderfloor{
 	dir = 5
 	},
