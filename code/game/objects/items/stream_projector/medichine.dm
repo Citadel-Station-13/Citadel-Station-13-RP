@@ -19,7 +19,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	name = "medichine stream projector"
 	desc = "A specialized, locked-down variant of a nanite stream projector. Deploys medichines from a cartridge onto a target's surface."
 	#warn icon
-	#warn projector, cell, cell-[1-4]
+	#warn projector, cell, cell-n 1-4
 
 	// todo: proper cataloguing fluff desc system
 	description_fluff = "An expensive prototype first developed jointly by Vey-Med and Nanotrasen, the medichine stream projector is essentially a \
@@ -35,6 +35,8 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	var/injection_rate = 1
 	/// interface to draw from if provided
 	var/datum/item_interface/interface
+	/// all beams
+	var/list/datum/beam/beams_by_entity
 
 /obj/item/stream_projector/medichine/valid_target(atom/entity)
 	return isliving(entity)
@@ -45,10 +47,14 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 
 /obj/item/stream_projector/medichine/setup_target_visuals(atom/entity)
 	. = ..()
+	var/datum/beam/creating_beam = create_segmented_beam(src, entity, icon = 'icons/effects/beam.dmi', icon_state = "medbeam_tiled")
+	LAZYSET(beams_by_entity, entity, creating_beam)
 
 /obj/item/stream_projector/medichine/teardown_target_visuals(atom/entity)
 	. = ..()
-
+	var/datum/beam/their_beam = beams_by_entity[entity]
+	beams_by_entity -= entity
+	qdel(their_beam)
 
 /obj/item/stream_projector/medichine/process(delta_time)
 	..()

@@ -36,7 +36,7 @@
 				reagents.touch(AM, reagents.total_volume)
 		sleep(delay)
 
-/obj/effect/water/Crossed(atom/movable/AM, oldloc)
+/obj/effect/water/Crossed(atom/movable/AM)
 	. = ..()
 	if(!isobj(AM) && !ismob(AM))
 		return

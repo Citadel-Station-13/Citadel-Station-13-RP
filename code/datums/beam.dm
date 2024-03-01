@@ -98,9 +98,9 @@
 
 	//* segmentation *//
 	/// beam segment holder
-	var/atom/movable/beam_segments/segmentation
+	var/atom/movable/graphics_render/beam_segments/segmentation
 	/// beam segment holder
-	var/atom/movable/beam_segments/emissive/emissive_segmentation
+	var/atom/movable/graphics_render/beam_segments/emissive/emissive_segmentation
 
 	//* graphics *//
 	/// graphics mode
@@ -131,6 +131,13 @@
 
 /datum/beam/Destroy()
 	unregister()
+	// get rid of emissives first
+	QDEL_NULL(emissive_line_renderer)
+	QDEL_NULL(line_renderer)
+	QDEL_NULL(emissive_particle_renderer)
+	QDEL_NULL(particle_renderer)
+	QDEL_NULL(emissive_segmentation)
+	QDEL_NULL(segmentation)
 	return ..()
 
 /datum/beam/proc/register()
@@ -171,13 +178,13 @@
 	switch(beam_visual_mode)
 		if(BEAM_VISUAL_SEGMENTS)
 			segmentation = new
-			emissive_segmentation = new
+			emissive_segmentation = new(segmentation)
 		if(BEAM_VISUAL_STRETCH)
 			line_renderer = new
 			line_renderer.icon = icon
 			line_renderer.icon_state = icon_state
 			if(!isnull(emissive_state))
-				emissive_line_renderer = new
+				emissive_line_renderer = new(line_renderer)
 				emissive_line_renderer.icon = icon
 				emissive_line_renderer.icon_state = emissive_state
 
@@ -196,7 +203,7 @@
 	var/epy = 0
 	if(isturf(beam_source.loc))
 		var/atom/movable/movable_source = beam_source
-		spx = movable_source.get_centering_pixel_x_offset
+		spx = movable_source.pixel_x
 		spy = movable_source.pixel_y
 	if(isturf(beam_target.loc))
 		var/atom/movable/movable_target = beam_target
@@ -239,24 +246,36 @@
 	var/distance = sqrt(dx ** 2 + dy ** 2)
 	// draw
 	switch(beam_visual_mode)
-		#warn deal with particles
-		// if(BEAM_VISUAL_PARTICLES)
-		// 	// calculate matrix
-		// 	var/matrix/transform_to_apply = matrix()
-		// 	// rotate to clockwise-from-north as opposed to counterclockwise-from-east
-		// 	transform_to_apply.Turn((-north_of_east) - 90)
-		// 	// handle normal render
-		// 	particle_renderer.loc = start
-		// 	particle_renderer.transform = transform_to_apply
-		// 	// handle emissive render
-		// 	if(!isnull(emissive_particle_renderer))
-		// 		emissive_particle_renderer.loc = start
-		// 		emissive_particle_renderer.transform = transform_to_apply
 		if(BEAM_VISUAL_SEGMENTS)
 			// don't stretch past distance
 			var/steps_required = round(distance / WORLD_ICON_SIZE)
 			// we assume both segment renderers are lockstepped
-			#warn impl
+			var/requires_update = FALSE
+			if(steps_required > length(segmentation.segment_appearances))
+				requires_update = TRUE
+				for(var/i in 1 to steps_required - length(segmentation.segment_appearances))
+					var/image/injecting = image(icon_state = icon_state)
+					segmentation.segment_appearances += injecting
+				if(!isnull(emissive_segmentation))
+					for(var/i in 1 to steps_required - length(emissive_segmentation.segment_appearances))
+						var/image/emissive_injecting = image(icon_state = emissive_state)
+						emissive_segmentation.segment_appearances += emissive_injecting
+			else if(steps_required < length(segmentation.segment_appearances))
+				requires_update = TRUE
+				segmentation.len = steps_required
+				emissive_segmentation?.len = steps_required
+			if(requires_update)
+				segmentation.overlays = segmentation.segment_appearances
+				emissive_segmentation?.overlays = emissive_segmentation?.segment_appearances
+			// calculate matrix
+			var/matrix/transform_to_apply = matrix()
+			// rotate to clockwise-from-north as opposed to counterclockwise-from-east
+			transform_to_apply.Turn((-north_of_east) - 90)
+			// move renders to location
+			segmentation.loc = start
+			segmentation.pixel_x = start_px
+			segmentation.pixel_y = start_py
+			segmentation.transform = transform_to_apply
 		if(BEAM_VISUAL_STRETCH)
 			// calculate matrix
 			var/matrix/transform_to_apply = matrix()
@@ -268,22 +287,20 @@
 			transform_to_apply.Turn((-north_of_east) - 90)
 			// handle normal render
 			line_renderer.loc = start
+			line_renderer.pixel_x = start_px
+			line_renderer.pixel_y = start_py
 			line_renderer.transform = transform_to_apply
-			// handle emissive render
-			if(!isnull(emissive_line_renderer))
-				emissive_line_renderer.loc = start
-				emissive_line_renderer.transform = transform_to_apply
 	// deal with colliders
 	var/list/turf/colliding_turfs = getline(start, end)
 	if(length(colliding_turfs) < colliders)
 		// if more than needed, nullspace the rest but keep them on hand
-		for(var/i in length(colliding_turfs) + 1 to length(collliders))
+		for(var/i in length(colliding_turfs) + 1 to length(colliders))
 			var/atom/movable/beam_collider/collider = colliders[i]
 			collider.move_onto(null)
 	else if(length(colliding_turfs) > colliders)
 		// if less than needed, make new ones but don't collide yet
 		for(var/i in 1 to length(colliding_turfs) - length(colliders))
-			colliders += new atom/movable/beam_collider(src)
+			colliders += new /atom/movable/beam_collider(src)
 	// we should be greater-or-equal colliders than turfs now
 	// now-overallocated colliders are ignored and cached in nullspace
 	// this system also enforces deterministic source-to-target propagation as opposed
@@ -291,6 +308,17 @@
 	for(var/i in 1 to min(length(colliders), length(colliding_turfs)))
 		var/atom/movable/beam_collider/collider = colliders[i]
 		collider.move_onto(colliding_turfs[i])
+	// deal with particles
+	if(!isnull(particle_renderer))
+		// calculate matrix
+		var/matrix/transform_to_apply = matrix()
+		// rotate to clockwise-from-north as opposed to counterclockwise-from-east
+		transform_to_apply.Turn((-north_of_east) - 90)
+		// move renders to location
+		particle_renderer.loc = start
+		particle_renderer.pixel_x = start_px
+		particle_renderer.pixel_y = start_py
+		particle_renderer.transform = transform_to_apply
 
 /datum/beam/proc/uncrossed(atom/movable/entity)
 	SHOULD_CALL_PARENT(TRUE)
@@ -326,10 +354,20 @@
 	appearance_flags = KEEP_TOGETHER
 
 	/// segments in us
-	var/list/mutable_appearance/segment_appearances = list()
+	var/list/image/segment_appearances = list()
 
 /atom/movable/graphics_render/beam_segments/emissive
 	plane = EMISSIVE_PLANE
+
+/atom/movable/graphics_render/beam_segments/emissive/Initialize(mapload)
+	ASSERT(istype(loc, /atom/movable/graphics_render/beam_segments))
+	loc:vis_contents += src
+	return ..()
+
+/atom/movable/graphics_render/beam_segments/emissive/Destroy()
+	ASSERT(istype(loc, /atom/movable/graphics_render/beam_segments))
+	loc:vis_contents -= src
+	return ..()
 
 //* Colliders *//
 
@@ -362,6 +400,18 @@ INITIALIZE_IMMEDIATE(/atom/movable/beam_collider)
 			continue
 		parent.crossed(other)
 
+/atom/movable/beam_collider/Crossed(atom/movable/AM)
+	. = ..()
+	if(AM.atom_flags & (ATOM_ABSTRACT))
+		return
+	parent.crossed(AM)
+
+/atom/movable/beam_collider/Uncrossed(atom/movable/AM)
+	. = ..()
+	if(AM.atom_flags & (ATOM_ABSTRACT))
+		return
+	parent.uncrossed(AM)
+
 //* Stretched Renderers *//
 
 /atom/movable/graphics_render/beam_line
@@ -369,6 +419,16 @@ INITIALIZE_IMMEDIATE(/atom/movable/beam_collider)
 
 /atom/movable/graphics_render/beam_line/emissive
 	plane = EMISSIVE_PLANE
+
+/atom/movable/graphics_render/beam_line/emissive/Initialize(mapload)
+	ASSERT(istype(loc, /atom/movable/graphics_render/beam_line))
+	loc:vis_contents += src
+	return ..()
+
+/atom/movable/graphics_render/beam_line/emissive/Destroy()
+	ASSERT(istype(loc, /atom/movable/graphics_render/beam_line))
+	loc:vis_contents -= src
+	return ..()
 
 //* Particle Renderers *//
 
