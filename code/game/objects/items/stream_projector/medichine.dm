@@ -20,6 +20,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	desc = "A specialized, locked-down variant of a nanite stream projector. Deploys medichines from a cartridge onto a target's surface."
 	icon = 'icons/items/stream_projector/medichine.dmi'
 	icon_state = "projector"
+	base_icon_state = "projector"
 
 	// todo: proper cataloguing fluff desc system
 	description_fluff = "An expensive prototype first developed jointly by Vey-Med and Nanotrasen, the medichine stream projector is essentially a \
@@ -215,6 +216,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	desc = "A cartridge meant to hold medicinal nanites."
 	icon = 'icons/items/stream_projector/medichine.dmi'
 	icon_state = "cell"
+	base_icon_state = "cell"
 
 	/// path to cell datum
 	var/datum/medichine_cell/cell_datum = /datum/medichine_cell
@@ -233,7 +235,10 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	. = ..()
 	var/number = volume? round(volume / max_volume * 4) : 0
 	if(number)
-		add_overlay("cell-[number]")
+		var/image/I = image()
+		I.icon_state = "[base_icon_state]-[number]"
+		I.color = cell_datum.color
+		add_overlay(I)
 
 /obj/item/medichine_cell/proc/fill(amount)
 	volume = clamp(volume + amount, 0, max_volume)

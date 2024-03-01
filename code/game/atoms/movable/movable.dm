@@ -632,7 +632,7 @@
 /**
  * for the love of god don't call this unnecessarily this fucks people's GPUs up if spammed
  */
-/atom/movable/proc/ensure_render_target()
+/atom/movable/proc/ensure_render_target(make_us_invisible)
 	if(!isnull(render_target))
 		return
-	render_target = "[REF(src)]-[rand(1,1000)]-[world.time]"
+	render_target = "[make_us_invisible? "*":""][REF(src)]-[rand(1,1000)]-[world.time]"

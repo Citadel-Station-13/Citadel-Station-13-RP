@@ -175,7 +175,10 @@
 	switch(beam_visual_mode)
 		if(BEAM_VISUAL_SEGMENTS)
 			segmentation = new
-			emissive_segmentation = new(segmentation)
+			segmentation.icon = icon
+			if(!isnull(emissive_state))
+				emissive_segmentation = new(segmentation)
+				emissive_segmentation.icon = icon
 		if(BEAM_VISUAL_STRETCH)
 			line_renderer = new
 			line_renderer.icon = icon
@@ -269,7 +272,7 @@
 			// rotate to clockwise-from-north as opposed to counterclockwise-from-east
 			transform_to_apply.Turn((-north_of_east) - 90)
 			// move renders to location
-			segmentation.loc = start
+			segmentation.forceMove(start)
 			segmentation.pixel_x = start_px
 			segmentation.pixel_y = start_py
 			segmentation.transform = transform_to_apply
@@ -283,7 +286,7 @@
 			// rotate to clockwise-from-north as opposed to counterclockwise-from-east
 			transform_to_apply.Turn((-north_of_east) - 90)
 			// handle normal render
-			line_renderer.loc = start
+			line_renderer.forceMove(start)
 			line_renderer.pixel_x = start_px
 			line_renderer.pixel_y = start_py
 			line_renderer.transform = transform_to_apply
@@ -313,7 +316,7 @@
 		// rotate to clockwise-from-north as opposed to counterclockwise-from-east
 		transform_to_apply.Turn((-north_of_east) - 90)
 		// move renders to location
-		particle_renderer.loc = start
+		particle_renderer.forceMove(start)
 		particle_renderer.pixel_x = start_px
 		particle_renderer.pixel_y = start_py
 		particle_renderer.transform = transform_to_apply
@@ -414,6 +417,14 @@ INITIALIZE_IMMEDIATE(/atom/movable/beam_collider)
 	if(AM.atom_flags & (ATOM_ABSTRACT))
 		return
 	parent.uncrossed(AM)
+
+/atom/movable/beam_collider/Move()
+	return FALSE
+
+/atom/movable/beam_collider/doMove(atom/destination)
+	if(destination == null)
+		return ..()
+	return FALSE
 
 //* Stretched Renderers *//
 

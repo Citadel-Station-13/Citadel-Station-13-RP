@@ -17,3 +17,8 @@
 	var/stored_capacity = 0
 
 #warn impl all
+
+/obj/item/matter_cartridge/get_materials(respect_multiplier)
+	. = ..()
+	for(var/key in stored_materials)
+		.[key] += stored_materials[key]

@@ -29,6 +29,8 @@
 /// Does not leave user's fingerprints/fibers when used on things?
 #define NOPRINT             (1<<12) // TODO: item flag
 
+/// we were made by a holofabricator
+#define ATOM_HOLOFABRICATED			(1<<21)
 /// We are ticking in materials
 #define ATOM_MATERIALS_TICKING		(1<<22)
 /// Use initial icon/icon state for HTML renders in things like VV
@@ -48,6 +50,7 @@ DEFINE_BITFIELD(atom_flags, list(
 	BITFIELD(OPENCONTAINER),
 	BITFIELD(PHORONGUARD),
 	BITFIELD(NOPRINT),
+	BITFIELD_NEW("Holofabricated", ATOM_HOLOFABRICATED),
 	BITFIELD(ATOM_MATERIALS_TICKING),
 	BITFIELD(ATOM_HTML_INITIAL_ICON),
 ))

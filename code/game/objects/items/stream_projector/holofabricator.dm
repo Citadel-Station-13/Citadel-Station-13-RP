@@ -51,6 +51,8 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/holofabricato
 	var/datum/holofabricator_template/selected_template
 	/// interface to draw from if provided
 	var/datum/item_interface/interface
+	/// we're in deconstruction mode
+	var/deconstruction_mode = FALSE
 
 #warn impl all
 
@@ -81,7 +83,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/holofabricato
 	if(istype(I, /obj/item/matter_cartridge))
 		var/obj/item/matter_cartridge/cartridge = I
 		if(!user.transfer_item_to_loc(cartridge, src))
-			user.action_feedback(SPAN_WARNING("[cell] is stuck to your hand!"), src)
+			user.action_feedback(SPAN_WARNING("[cartridge] is stuck to your hand!"), src)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		var/obj/item/matter_cartridge/old_cartridge = inserted_cartridge
 		inserted_cartridge = cartridge
@@ -108,6 +110,9 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/holofabricato
 		return null
 	else
 		CRASH("what?")
+
+/obj/item/stream_projector/holofabricator/proc/on_cartridge_swap(obj/item/matter_cartridge/old_cartridge, obj/item/matter_cartridge/new_cartridge)
+	return
 
 /proc/cmp_holofabricator_templates(datum/holofabricator_template/A, datum/holofabricator_template/B)
 	if(A.priority != B.priority)
