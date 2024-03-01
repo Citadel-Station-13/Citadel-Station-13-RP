@@ -21,6 +21,17 @@
 /obj/random/proc/item_to_spawn()
 	return
 
+/obj/random/proc/create_obj(obj_path, location)
+	var/obj/created = new obj_path(location)
+	ASSERT(istype(created))
+
+	// todo: shitcode but w/e
+	created.obj_persist_status |= OBJ_PERSIST_STATUS_NO_THANK_YOU
+
+	if(pixel_x || pixel_y)
+		created.pixel_x = pixel_x
+		created.pixel_y = pixel_y
+
 /obj/random/drop_location()
 	return drop_get_turf? get_turf(src) : ..()
 
@@ -28,16 +39,7 @@
 /obj/random/proc/spawn_item(mapload)
 	var/build_path = item_to_spawn()
 
-	var/atom/A = new build_path(drop_location())
-
-	// todo: shitcode but w/e
-	if(istype(A, /obj/item/trash) || istype(A, /obj/effect/debris))
-		var/obj/O = A
-		O.obj_persist_status |= OBJ_PERSIST_STATUS_NO_THANK_YOU
-
-	if(pixel_x || pixel_y)
-		A.pixel_x = pixel_x
-		A.pixel_y = pixel_y
+	create_obj(build_path, drop_location())
 
 var/list/random_junk_
 var/list/random_useful_
@@ -93,7 +95,7 @@ var/list/random_useful_
 /obj/random/multiple/spawn_item()
 	var/list/things_to_make = item_to_spawn()
 	for(var/new_type in things_to_make)
-		new new_type(src.loc)
+		create_obj(new_type, src.loc)
 
 /*
 //	Multi Point Spawn
