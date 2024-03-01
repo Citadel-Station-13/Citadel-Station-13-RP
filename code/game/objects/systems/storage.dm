@@ -133,7 +133,6 @@
 
 	/// When set, we treat this as the real parent object.
 	/// **Warning**: This is an advanced feature.
-	/// All this does is make us scan a different atom's contents.
 	/// It is your responsibility to understand what that means in context of storage, not ours.
 	///
 	/// The storage backend this was inspired from used to have a real / virtual system,
@@ -143,13 +142,8 @@
 	/// That, however, is too complex and awful, so, we just have a single redirection var now
 	/// if you mess it up, it is not my fault. ~silicons
 	///
-	/// todo: this needs a setter so we can properly use comsigs to hook the redirected-to object's Exited()
-	/// todo: we should also hook the thing's Destroy, etc etc.
 	/// todo: this literally doesn't work due to no Reachability hooks. please implement this properly later via reachability signal hooks.
-	/// otherwise, using this is going to be GC failure hell from vis contents and rendering.
-	//! todo: a potential plan is /atom/movable/storage_indirection_holder,
-	//! which then has back-pointers to storage.
-	var/atom/dangerously_redirect_contents_calls
+	var/atom/movable/storage_indirection/indirection
 
 	//* Radiation
 	/// pass clean radiation calls inside?
@@ -204,13 +198,7 @@
 /datum/object_system/storage/Destroy()
 	hide()
 	QDEL_NULL(action_mode_switch)
-	//! SHITCODE ALERT
-	if(istype(dangerously_redirect_contents_calls, /obj/storage_indirection_holder))
-		var/obj/storage_indirection_holder/casted = dangerously_redirect_contents_calls
-		casted.obj_storage = null
-		qdel(casted)
-	dangerously_redirect_contents_calls = null
-	//! AAAA
+	QDEL_NULL(indirection)
 	return ..()
 
 //* Access *//
@@ -386,26 +374,18 @@ b
 	ui_queue_refresh()
 
 /datum/object_system/storage/proc/on_contents_weight_class_change(obj/item/item, old_weight_class, new_weight_class)
-	if(dangerously_redirect_contents_calls && item.loc != dangerously_redirect_contents_calls)
-		return
 	cached_combined_weight_class += (new_weight_class - old_weight_class)
 	if(isnull(item.weight_volume))
 		on_contents_weight_volume_change(item, global.w_class_to_volume[old_weight_class], global.w_class_to_volume[new_weight_class])
 
 /datum/object_system/storage/proc/on_contents_weight_volume_change(obj/item/item, old_weight_volume, new_weight_volume)
-	if(dangerously_redirect_contents_calls && item.loc != dangerously_redirect_contents_calls)
-		return
 	cached_combined_volume += (new_weight_volume - old_weight_volume)
 
 /datum/object_system/storage/proc/on_contents_weight_change(obj/item/item, old_weight, new_weight)
-	if(dangerously_redirect_contents_calls && item.loc != dangerously_redirect_contents_calls)
-		return
 	weight_cached += (new_weight - old_weight)
 	update_containing_weight(new_weight - old_weight)
 
 /datum/object_system/storage/proc/on_contents_item_new(obj/item/item)
-	if(dangerously_redirect_contents_calls && item.loc != dangerously_redirect_contents_calls)
-		return
 	if(item.item_flags & ITEM_IN_STORAGE) // somehow
 		return
 	physically_insert_item(item, no_move = TRUE)
@@ -749,14 +729,13 @@ b
 //* Redirection *//
 
 /datum/object_system/storage/proc/real_contents_loc()
-	return dangerously_redirect_contents_calls || parent
+	return indirection || parent
 
 //* Rendering - Object *//
 
 /datum/object_system/storage/proc/update_icon()
 	parent.update_icon()
 	action_mode_switch?.button_overlay = parent
-	dangerously_redirect_contents_calls?.update_icon()
 
 //* Transfer *//
 
@@ -1411,6 +1390,34 @@ b
 			BOTTOM+[STORAGE_UI_START_TILE_Y + current_row - 1]:[STORAGE_UI_START_PIXEL_Y]"
 
 /**
+ * **USE AT YOUR OWN PERIL**
+ */
+/datum/object_system/storage/proc/indirect(atom/where)
+	ASSERT(isnull(indirection))
+	indirection = new(where, src)
+
+/**
+ * remove indirection by obliterating contents
+ */
+/datum/object_system/storage/proc/destructively_remove_indirection()
+	QDEL_NULL(indirection)
+
+/**
+ * remove indirection by moving contents
+ */
+/datum/object_system/storage/proc/relocate_remove_indirection(atom/where_to)
+	ASSERT(!isnull(where_to) && where_to != indirection)
+	for(var/atom/movable/AM as anything in indirection)
+		AM.forceMove(where_to)
+	QDEL_NULL(indirection)
+
+/**
+ * move indirection somewhere else
+ */
+/datum/object_system/storage/proc/move_indirection_to(atom/where_to)
+	indirection.forceMove(where_to)
+
+/**
  * Stack storage
  *
  * Can handle both material and normal stacks.
@@ -1689,19 +1696,6 @@ b
 /obj/proc/object_storage_closed(mob/user)
 	return
 
-//? Lazy indirection helper
-
-/obj/storage_indirection_holder
-	name = "storage indirection holder"
-	desc = "Why do you see this?"
-	atom_flags = ATOM_ABSTRACT
-
-/atom/movable/storage_indirection_holder/CanReachIn(atom/movable/mover, atom/target, obj/item/tool, list/cache)
-	return TRUE
-
-/atom/movable/storage_indirection_holder/CanReachOut(atom/movable/mover, atom/target, obj/item/tool, list/cache)
-	return TRUE
-
 //? Wrapper for init
 
 /**
@@ -1716,9 +1710,41 @@ b
 		for(var/obj/item/item in contents)
 			obj_storage.on_item_entered(item)
 	else
-		var/obj/indirection = new /obj/storage_indirection_holder(src)
-		obj_storage.dangerously_redirect_contents_calls = indirection
-		// this is shitcode oh my god
-		// AAAAAAAAAAAAAAAAAAA
-		indirection.obj_storage = obj_storage
+		obj_storage.indirect(src)
 	return obj_storage
+
+//? Indirection Holder
+
+/atom/movable/storage_indirection
+	atom_flags = ATOM_ABSTRACT
+
+	/// owner
+	var/datum/object_system/storage/parent
+
+/atom/movable/storage_indirection/Initialize(mapload, datum/object_system/storage/parent)
+	src.parent = parent
+	return ..()
+
+/atom/movable/storage_indirection/Destroy()
+	if(src.parent.indirection == src)
+		src.parent.indirection = null
+	src.parent = null
+	return ..()
+
+/atom/movable/storage_indirection/CanReachIn(atom/movable/mover, atom/target, obj/item/tool, list/cache)
+	return TRUE
+
+/atom/movable/storage_indirection/CanReachOut(atom/movable/mover, atom/target, obj/item/tool, list/cache)
+	return TRUE
+
+/atom/movable/storage_indirection/on_contents_weight_class_change(obj/item/item, old_weight_class, new_weight_class)
+	parent.on_contents_weight_class_change(item, old_weight_class, new_weight_class)
+
+/atom/movable/storage_indirection/on_contents_weight_volume_change(obj/item/item, old_weight_volume, new_weight_volume)
+	parent.on_contents_weight_volume_change(item, old_weight_volume, new_weight_volume)
+
+/atom/movable/storage_indirection/on_contents_weight_change(obj/item/item, old_weight, new_weight)
+	parent.on_contents_weight_change(item, old_weight, new_weight)
+
+/atom/movable/storage_indirection/on_contents_item_new(obj/item/item)
+	parent.on_contents_item_new(item)

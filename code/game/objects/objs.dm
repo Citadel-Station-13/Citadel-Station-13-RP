@@ -582,7 +582,27 @@
 
 /obj/on_contents_item_new(obj/item/item)
 	. = ..()
+	if(!isnull(obj_storage.indirection))
+		return
 	obj_storage?.on_contents_item_new(item)
+
+/obj/on_contents_weight_class_change(obj/item/item, old_weight_class, new_weight_class)
+	. = ..()
+	if(!isnull(obj_storage.indirection))
+		return
+	obj_storage?.on_contents_weight_class_change(item, old_weight_class, new_weight_class)
+
+/obj/on_contents_weight_volume_change(obj/item/item, old_weight_volume, new_weight_volume)
+	. = ..()
+	if(!isnull(obj_storage.indirection))
+		return
+	obj_storage?.on_contents_weight_volume_change(item, old_weight_volume, new_weight_volume)
+
+/obj/on_contents_weight_change(obj/item/item, old_weight, new_weight)
+	. = ..()
+	if(!isnull(obj_storage.indirection))
+		return
+	obj_storage?.on_contents_weight_change(item, old_weight, new_weight)
 
 /**
  * Returns stuff considered to be inside this object's inventory.
@@ -593,18 +613,6 @@
  */
 /obj/proc/return_inventory()
 	return isnull(obj_storage)? list() : obj_storage.contents()
-
-/obj/on_contents_weight_class_change(obj/item/item, old_weight_class, new_weight_class)
-	. = ..()
-	obj_storage?.on_contents_weight_class_change(item, old_weight_class, new_weight_class)
-
-/obj/on_contents_weight_volume_change(obj/item/item, old_weight_volume, new_weight_volume)
-	. = ..()
-	obj_storage?.on_contents_weight_volume_change(item, old_weight_volume, new_weight_volume)
-
-/obj/on_contents_weight_change(obj/item/item, old_weight, new_weight)
-	. = ..()
-	obj_storage?.on_contents_weight_change(item, old_weight, new_weight)
 
 //* Examine *//
 
@@ -640,14 +648,12 @@
 
 /obj/Exited(atom/movable/AM, atom/newLoc)
 	. = ..()
-	// todo: this is fucking awful, proper redirection support when
-	if(isitem(AM) && obj_storage && (!obj_storage.dangerously_redirect_contents_calls || obj_storage.dangerously_redirect_contents_calls == src))
+	if(isitem(AM) && !isnull(obj_storage) && isnull(obj_storage.indirection))
 		obj_storage.on_item_exited(AM)
 
 /obj/Entered(atom/movable/AM, atom/oldLoc)
 	. = ..()
-	// todo: this is fucking awful, proper redirection support when
-	if(isitem(AM) && obj_storage && (!obj_storage.dangerously_redirect_contents_calls || obj_storage.dangerously_redirect_contents_calls == src))
+	if(isitem(AM) && !isnull(obj_storage) && isnull(obj_storage.indirection))
 		obj_storage.on_item_entered(AM)
 
 //* Orientation *//
