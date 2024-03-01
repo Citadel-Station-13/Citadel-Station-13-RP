@@ -513,6 +513,16 @@ b
 		return FALSE
 	return TRUE
 
+/**
+ * inserts something
+ *
+ * @params
+ * * inserting - thing being inserted
+ * * actor - who's inserting it
+ * * suppressed - suppress sounds
+ * * no_update - do not update uis
+ * * no_move - much more than not moving; basically makes an abstract contents operation without otherwise doing normal logic. use with care.
+ */
 /datum/object_system/storage/proc/insert(obj/item/inserting, datum/event_args/actor/actor, suppressed, no_update, no_move)
 	physically_insert_item(inserting, no_move)
 
@@ -526,7 +536,7 @@ b
 /**
  * handle moving an item in
  *
- * we can assume this proc will do potentially literally anything with the item, so..
+ * we can assume this proc will do potentially literally anything with the item, so.
  */
 /datum/object_system/storage/proc/physically_insert_item(obj/item/inserting, no_move, from_hook)
 	inserting.item_flags |= ITEM_IN_STORAGE
@@ -574,6 +584,11 @@ b
 		)
 	return TRUE
 
+/**
+ * try to remove item from self
+ *
+ * @return item removed; not necessarily the item passed in.
+ */
 /datum/object_system/storage/proc/try_remove(obj/item/removing, atom/to_where, datum/event_args/actor/actor, silent, suppressed, no_update)
 	return remove(removing, to_where, actor, suppressed, no_update)
 
@@ -582,16 +597,18 @@ b
 
 /**
  * remove item from self
+ *
+ * @return item removed; not necessarily the item passed in.
  */
 /datum/object_system/storage/proc/remove(obj/item/removing, atom/to_where, datum/event_args/actor/actor, suppressed, no_update, no_move)
-	physically_remove_item(removing, to_where, no_move)
+	. = physically_remove_item(removing, to_where, no_move)
+	if(isnull(.))
+		return
 
 	if(!no_update)
 		if(update_icon_on_item_change)
 			update_icon()
 		refresh()
-
-	return TRUE
 
 /**
  * handle moving an item out
@@ -616,6 +633,7 @@ b
 			update_containing_weight(-removing_weight)
 	cached_combined_volume -= removing.get_weight_volume()
 	cached_combined_weight_class -= removing.get_weight_class()
+	return removing
 
 //* Limits *//
 
@@ -948,9 +966,9 @@ b
 		return FALSE
 	var/atom/indirection_from = real_contents_loc()
 	var/atom/indirection_to = to_storage.real_contents_loc()
-	var/i
+	var/i = length(things)
 	. = TRUE
-	for(i in length(things) to 1 step -1)
+	while(i > 0)
 		var/obj/item/transferring = things[i]
 		// make sure they're still there
 		if(transferring.loc != indirection_from)
@@ -968,7 +986,9 @@ b
 			rejections_out += transferring
 			continue
 		// transfer; the on enter/exit hooks will handle the rest (awful but whatever!)
-		remove(transferring, indirection_to, actor, TRUE, TRUE)
+		if(transferring == remove(transferring, indirection_to, actor, TRUE, TRUE))
+			// but only go down if we got rid of the real item
+			i--
 		// stop if overtaxed
 		if(TICK_CHECK)
 			break
@@ -1032,9 +1052,9 @@ b
  */
 /datum/object_system/storage/proc/mass_storage_dumping_handler(list/obj/item/things, atom/to_loc, datum/event_args/actor/actor, list/rejections_out = list(), trigger_on_found = TRUE)
 	var/atom/indirection = real_contents_loc()
-	var/i
+	var/i = length(things)
 	. = TRUE
-	for(i in length(things) to 1 step -1)
+	while(i > 0)
 		var/obj/item/transferring = things[i]
 		// make sure they're still there
 		if(transferring.loc != indirection)
@@ -1044,9 +1064,15 @@ b
 			. = FALSE
 			break
 		// see if we can remove it
-		if(!try_remove(transferring, to_loc, actor, TRUE, TRUE, TRUE))
+		var/obj/item/removed = try_remove(transferring, to_loc, actor, TRUE, TRUE, TRUE)
+		if(isnull(removed))
+			// failed
 			rejections_out += transferring
 			continue
+		// succeeded
+		if(removed == transferring)
+			// but only go down if we got rid of the real item
+			i--
 		// stop if overtaxed
 		if(TICK_CHECK)
 			break
@@ -1478,56 +1504,9 @@ b
 		return ..()
 	if(stack.amount <= stack.max_amount)
 		return ..()
-	var/obj/item/stack/staying_inside = stack.split(stack.amount - stack.max_amount, null, TRUE)
-	stack.amount = stack.max_amount
-	// do the normal removal
-	. = ..()
-	// insert into, without triggering normal hooks
-	staying_inside.abstract_move(real_contents_loc())
-	// perform aftereffects and register it
-	physically_insert_item(staying_inside, TRUE)
-
-/datum/object_system/storage/stack/mass_storage_dumping_handler(list/obj/item/things, atom/to_loc, datum/event_args/actor/actor, list/rejections_out, trigger_on_found)
-	// todo: this is just a copypaste and god, that fucking sucks.
-	var/atom/indirection = real_contents_loc()
-	var/i = length(things)
-	. = TRUE
-	while(i > 0)
-		var/obj/item/stack/transferring = things[i]
-		//! UH OH, STACK STORAGE SPECIFIC CODE HERE
-		// make sure they're the right type
-		if(!istype(transferring))
-			continue
-		var/transferring_type = transferring.type
-		//! END
-		// make sure they're still there
-		if(transferring.loc != indirection)
-			continue
-		// handle on open hooks if needed
-		if(trigger_on_found && actor?.performer.active_storage != src && transferring.on_containing_storage_opening(actor, src))
-			. = FALSE
-			break
-		// see if we can remove it
-		if(!try_remove(transferring, to_loc, actor, TRUE, TRUE, TRUE))
-			rejections_out += transferring
-			continue
-		//! UH OH, STACK STORAGE SPECIFIC CODE HERE
-		// if it wasn't fully removed,
-		var/obj/item/stack/remaining = locate(transferring_type) in indirection
-		if(!isnull(remaining))
-			// swap it back
-			// and don't cut it out just yet
-			things[i] = remaining
-		else
-			// cut it out
-			i--
-		//! END
-		// stop if overtaxed
-		if(TICK_CHECK)
-			break
-	if(i < length(things))
-		things.Cut(i + 1, length(things) + 1)
-	return . && length(things)
+	var/obj/item/stack/going_outside = stack.split(stack.max_amount, null, TRUE)
+	removing = going_outside
+	return ..()
 
 /datum/object_system/storage/stack/render_numerical_display(list/obj/item/for_items)
 	var/list/not_stack = list()
