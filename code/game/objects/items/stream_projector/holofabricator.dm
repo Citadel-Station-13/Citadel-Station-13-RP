@@ -29,6 +29,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/holofabricato
 	desc = "A precise triage tool used by many frontier engineers. Uses materials from a loaded cartridge \
 	to rapidly fabricate a generated holotemplate."
 	#warn icon
+	#warn projector-[1-10], cartridge
 
 	// todo: proper cataloguing fluff desc system
 	description_fluff = "Despite having been around for hundreds of years, holofabricators are still a novel, alpha-stage concept \

@@ -19,6 +19,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	name = "medichine stream projector"
 	desc = "A specialized, locked-down variant of a nanite stream projector. Deploys medichines from a cartridge onto a target's surface."
 	#warn icon
+	#warn projector, cell, cell-[1-4]
 
 	// todo: proper cataloguing fluff desc system
 	description_fluff = "An expensive prototype first developed jointly by Vey-Med and Nanotrasen, the medichine stream projector is essentially a \
