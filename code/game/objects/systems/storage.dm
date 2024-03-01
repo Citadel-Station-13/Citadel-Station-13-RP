@@ -971,7 +971,7 @@ b
 		// stop if overtaxed
 		if(TICK_CHECK)
 			break
-	things.Cut(i, length(things) + 1)
+	things.Cut(i + 1, length(things) + 1)
 	return . && length(things)
 
 /**
@@ -1055,7 +1055,7 @@ b
 		// stop if overtaxed
 		if(TICK_CHECK)
 			break
-	things.Cut(i, length(things) + 1)
+	things.Cut(i + 1, length(things) + 1)
 	return . && length(things)
 
 /**
