@@ -101,11 +101,9 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	if(!length(active_targets))
 		return
 
-	return
-
 	// get effective cell
 	var/datum/medichine_cell/effective_package
-	if(isnull(interface))
+	if(!isnull(interface))
 		effective_package = interface.query_medichines()
 	else
 		effective_package = inserted_cartridge?.cell_datum
@@ -192,7 +190,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 
 /datum/component/medichine_field/proc/inject_medichines(datum/medichine_cell/medichines, amount)
 	LAZYINITLIST(active)
-	active[medichines] += active
+	active[medichines] += amount
 	recalculate_color()
 	ensure_visuals()
 
@@ -206,7 +204,19 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	else
 		var/atom/entity = parent
 		renderer.loc = entity
-	#warn impl - particles?
+	var/particles/particle_instance = new /particles/medichine_field
+	renderer.particles = particle_instance
+	renderer.particles.color = current_color
+
+/particles/medichine_field
+	width = 32
+	height = 32
+	count = 75
+	spawning = 10
+	fade = 3
+	lifespan = 1
+	velocity = list(0, 2.5, 0)
+	position = generator("box", list(-8, -16, 0), list(8, 0, 0))
 
 /**
  * medical beamgun cell
@@ -235,8 +245,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	. = ..()
 	var/number = volume? round(volume / max_volume * 4) : 0
 	if(number)
-		var/image/I = new
-		I.icon_state = "[base_icon_state]-[number]"
+		var/image/I = image(icon, "[base_icon_state]-[number]")
 		I.color = cell_datum.color
 		add_overlay(I)
 
