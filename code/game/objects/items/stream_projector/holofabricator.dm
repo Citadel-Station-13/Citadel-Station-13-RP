@@ -45,6 +45,8 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/holofabricato
 
 	#warn impl
 
+	/// inserted matter cartridge
+	var/obj/item/matter_cartridge/inserted_cartridge
 	/// selected template
 	var/datum/holofabricator_template/selected_template
 	/// interface to draw from if provided
@@ -56,6 +58,56 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/holofabricato
 	. = ..()
 	. += SPAN_RED("Things constructed with holofabricators do not have the same structural integrity as things built by conventional means.")
 	. += SPAN_RED("Transfer efficiency is lowered quadratically with a target's distance from the applied holofabricator.")
+
+/obj/item/stream_projector/holofabricator/valid_target(atom/entity)
+	return isatom(entity)
+
+/obj/item/stream_projector/holofabricator/attack_hand(mob/user, list/params)
+	if(user.is_holding_inactive(src))
+		if(isnull(inserted_cartridge))
+			user.action_feedback(SPAN_WARNING("[src] has no vial loaded."), src)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		user.put_in_hands_or_drop(inserted_cartridge)
+		user.action_feedback(SPAN_NOTICE("You remove [inserted_cartridge] from [src]."), src)
+		var/obj/item/matter_cartridge/old_cartridge = inserted_cartridge
+		inserted_cartridge = null
+		playsound(src, 'sound/weapons/empty.ogg', 50, FALSE)
+		update_icon()
+		on_cartridge_swap(old_cartridge, null)
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+	return ..()
+
+/obj/item/stream_projector/holofabricator/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+	if(istype(I, /obj/item/matter_cartridge))
+		var/obj/item/matter_cartridge/cartridge = I
+		if(!user.transfer_item_to_loc(cartridge, src))
+			user.action_feedback(SPAN_WARNING("[cell] is stuck to your hand!"), src)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		var/obj/item/matter_cartridge/old_cartridge = inserted_cartridge
+		inserted_cartridge = cartridge
+		if(!isnull(old_cartridge))
+			user.action_feedback(SPAN_NOTICE("You quickly swap [old_cartridge] with [cartridge]."), src)
+			user.put_in_hands_or_drop(old_cartridge)
+		else
+			user.action_feedback(SPAN_NOTICE("You insert [cartridge] into [src]."), src)
+		playsound(src, 'sound/weapons/autoguninsert.ogg', 50, FALSE)
+		update_icon()
+		on_cartridge_swap(old_cartridge, cartridge)
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+	return ..()
+
+/obj/item/stream_projector/holofabricator/process()
+	#warn impl
+
+/obj/item/stream_projector/holofabricator/transform_target_lock(atom/target)
+	if(isturf(target))
+		#warn impl
+	else if(isobj(target))
+		#warn impl
+	else if(ismob(target))
+		return null
+	else
+		CRASH("what?")
 
 /proc/cmp_holofabricator_templates(datum/holofabricator_template/A, datum/holofabricator_template/B)
 	if(A.priority != B.priority)

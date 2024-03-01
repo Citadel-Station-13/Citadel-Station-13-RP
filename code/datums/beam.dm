@@ -343,7 +343,7 @@
 		if(isnull(emissive_particle_renderer))
 			emissive_particle_renderer = new
 		if(emissive_particle_reference == TRUE)
-			particle_renderer.ensure_render_taget()
+			particle_renderer.ensure_render_target()
 			emissive_particle_renderer.render_source = particle_renderer.render_target
 		else
 			emissive_particle_renderer.particles = emissive_particle_reference

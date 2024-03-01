@@ -55,6 +55,12 @@
 	else
 		try_lock_target(target, new /datum/event_args/actor(user))
 
+/**
+ * used to potentially redirect target before lock-on completes; useful for things like holofabricators
+ */
+/obj/item/stream_projector/proc/transform_target_lock(atom/target)
+	return target
+
 /obj/item/stream_projector/process()
 	return // don't process_kill by default
 
@@ -75,6 +81,9 @@
  */
 /obj/item/stream_projector/proc/lock_target(atom/entity)
 	SHOULD_NOT_OVERRIDE(TRUE)
+	entity = transform_target_lock(entity)
+	if(isnull(entity))
+		return FALSE
 	if(active_targets?[entity])
 		return FALSE
 	LAZYSET(active_targets, entity, TRUE)
