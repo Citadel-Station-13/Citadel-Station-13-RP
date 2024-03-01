@@ -114,7 +114,7 @@
  */
 /obj/item/stream_projector/proc/try_lock_target(atom/entity, datum/event_args/actor/actor, silent)
 	// check if we're already locking that target
-	if(active_targets[entity])
+	if(active_targets?[entity])
 		return FALSE
 
 	// check if it's remotely the right type

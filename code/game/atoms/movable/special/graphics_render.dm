@@ -5,6 +5,7 @@
 	appearance_flags = KEEP_TOGETHER
 	atom_flags = ATOM_ABSTRACT
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	vis_flags = NONE
 
 /atom/movable/graphics_render/doMove()
 	CRASH("someone tried to move us normally")

@@ -18,7 +18,6 @@
 	var/datum/beam/created = new(source, target)
 	if(!isnull(collider_type))
 		created.collider_type = collider_type
-		created.colliders = TRUE
 	created.icon = icon
 	created.icon_state = icon_state
 	created.emissive_state = emissive_state
@@ -43,7 +42,6 @@
 	var/datum/beam/created = new(source, target)
 	if(!isnull(collider_type))
 		created.collider_type = collider_type
-		created.colliders = TRUE
 	created.icon = icon
 	created.icon_state = icon_state
 	created.emissive_state = emissive_state
@@ -65,7 +63,6 @@
 	var/datum/beam/created = new(source, target)
 	if(!isnull(collider_type))
 		created.collider_type = collider_type
-		created.colliders = TRUE
 	created.initialize()
 	return created
 
@@ -87,8 +84,6 @@
 	var/no_automatic_redraw = FALSE
 
 	//* collision *//
-	/// requires collision
-	var/colliders = FALSE
 	/// collider type to use
 	var/collider_type
 	/// registered colliding entities, turf or movable; only made as a list if collision or segment mode is enabled
@@ -138,6 +133,8 @@
 	QDEL_NULL(particle_renderer)
 	QDEL_NULL(emissive_segmentation)
 	QDEL_NULL(segmentation)
+	// get rid of colliders
+	QDEL_LIST_NULL(colliders)
 	return ..()
 
 /datum/beam/proc/register()
@@ -150,7 +147,7 @@
 			iterating = iterating.loc
 		while(ismovable(iterating))
 	if(ismovable(beam_target))
-		iterating = beam_source
+		iterating = beam_target
 		do
 			RegisterSignal(iterating, COMSIG_MOVABLE_MOVED, PROC_REF(signal_redraw))
 			iterating = iterating.loc
@@ -188,7 +185,7 @@
 				emissive_line_renderer.icon = icon
 				emissive_line_renderer.icon_state = emissive_state
 
-	if(colliders)
+	if(collider_type)
 		LAZYINITLIST(colliders)
 		LAZYINITLIST(colliding)
 
@@ -262,8 +259,8 @@
 						emissive_segmentation.segment_appearances += emissive_injecting
 			else if(steps_required < length(segmentation.segment_appearances))
 				requires_update = TRUE
-				segmentation.len = steps_required
-				emissive_segmentation?.len = steps_required
+				segmentation.segment_appearances.len = steps_required
+				emissive_segmentation?.segment_appearances.len = steps_required
 			if(requires_update)
 				segmentation.overlays = segmentation.segment_appearances
 				emissive_segmentation?.overlays = emissive_segmentation?.segment_appearances
@@ -291,23 +288,24 @@
 			line_renderer.pixel_y = start_py
 			line_renderer.transform = transform_to_apply
 	// deal with colliders
-	var/list/turf/colliding_turfs = getline(start, end)
-	if(length(colliding_turfs) < colliders)
-		// if more than needed, nullspace the rest but keep them on hand
-		for(var/i in length(colliding_turfs) + 1 to length(colliders))
+	if(!isnull(collider_type))
+		var/list/turf/colliding_turfs = getline(start, end)
+		if(length(colliding_turfs) < colliders)
+			// if more than needed, nullspace the rest but keep them on hand
+			for(var/i in length(colliding_turfs) + 1 to length(colliders))
+				var/atom/movable/beam_collider/collider = colliders[i]
+				collider.move_onto(null)
+		else if(length(colliding_turfs) > colliders)
+			// if less than needed, make new ones but don't collide yet
+			for(var/i in 1 to length(colliding_turfs) - length(colliders))
+				colliders += new /atom/movable/beam_collider(src)
+		// we should be greater-or-equal colliders than turfs now
+		// now-overallocated colliders are ignored and cached in nullspace
+		// this system also enforces deterministic source-to-target propagation as opposed
+		// to non-deterministic orderings.
+		for(var/i in 1 to min(length(colliders), length(colliding_turfs)))
 			var/atom/movable/beam_collider/collider = colliders[i]
-			collider.move_onto(null)
-	else if(length(colliding_turfs) > colliders)
-		// if less than needed, make new ones but don't collide yet
-		for(var/i in 1 to length(colliding_turfs) - length(colliders))
-			colliders += new /atom/movable/beam_collider(src)
-	// we should be greater-or-equal colliders than turfs now
-	// now-overallocated colliders are ignored and cached in nullspace
-	// this system also enforces deterministic source-to-target propagation as opposed
-	// to non-deterministic orderings.
-	for(var/i in 1 to min(length(colliders), length(colliding_turfs)))
-		var/atom/movable/beam_collider/collider = colliders[i]
-		collider.move_onto(colliding_turfs[i])
+			collider.move_onto(colliding_turfs[i])
 	// deal with particles
 	if(!isnull(particle_renderer))
 		// calculate matrix
@@ -335,6 +333,7 @@
  *
  * * the beam assumes that the particles will project in the **north** direction.
  * * this just makes the beam automatically rotate the particles as necessary.
+ * * if you pass in 'TRUE' as emissive_particle_renderer, emissives will render_source from the main particle system.
  */
 /datum/beam/proc/set_particles(particles/particle_reference, particles/emissive_particle_reference)
 	if(isnull(particle_renderer))
@@ -343,7 +342,11 @@
 	if(!isnull(emissive_particle_reference))
 		if(isnull(emissive_particle_renderer))
 			emissive_particle_renderer = new
-		emissive_particle_renderer.particles = emissive_particle_reference
+		if(emissive_particle_reference == TRUE)
+			particle_renderer.ensure_render_taget()
+			emissive_particle_renderer.render_source = particle_renderer.render_target
+		else
+			emissive_particle_renderer.particles = emissive_particle_reference
 	else if(!isnull(emissive_particle_renderer))
 		QDEL_NULL(emissive_particle_renderer)
 	force_redraw()

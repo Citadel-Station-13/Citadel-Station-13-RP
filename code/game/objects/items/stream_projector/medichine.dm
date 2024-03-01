@@ -18,8 +18,8 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 /obj/item/stream_projector/medichine
 	name = "medichine stream projector"
 	desc = "A specialized, locked-down variant of a nanite stream projector. Deploys medichines from a cartridge onto a target's surface."
-	#warn icon
-	#warn projector, cell, cell-n 1-4
+	icon = 'icons/items/stream_projector/medichine.dmi'
+	icon_state = "projector"
 
 	// todo: proper cataloguing fluff desc system
 	description_fluff = "An expensive prototype first developed jointly by Vey-Med and Nanotrasen, the medichine stream projector is essentially a \
@@ -41,20 +41,58 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 /obj/item/stream_projector/medichine/valid_target(atom/entity)
 	return isliving(entity)
 
+/obj/item/stream_projector/medichine/attack_hand(mob/user, list/params)
+	if(user.is_holding_inactive(src))
+		if(isnull(inserted_cartridge))
+			user.action_feedback(SPAN_WARNING("[src] has no vial loaded."), src)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		user.put_in_hands_or_drop(inserted_cartridge)
+		user.action_feedback(SPAN_NOTICE("You remove [inserted_cartridge] from [src]."), src)
+		var/obj/item/medichine_cell/old_cell = inserted_cartridge
+		inserted_cartridge = null
+		playsound(src, 'sound/weapons/empty.ogg', 50, FALSE)
+		update_icon()
+		on_cell_swap(old_cell, null)
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+	return ..()
+
 /obj/item/stream_projector/medichine/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
-	. = ..()
-	#warn impl
+	if(istype(I, /obj/item/medichine_cell))
+		var/obj/item/medichine_cell/cell = I
+		if(!user.transfer_item_to_loc(cell, src))
+			user.action_feedback(SPAN_WARNING("[cell] is stuck to your hand!"), src)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		var/obj/item/medichine_cell/old_cell = inserted_cartridge
+		inserted_cartridge = cell
+		if(!isnull(old_cell))
+			user.action_feedback(SPAN_NOTICE("You quickly swap [old_cell] with [cell]."), src)
+			user.put_in_hands_or_drop(old_cell)
+		else
+			user.action_feedback(SPAN_NOTICE("You insert [cell] into [src]."), src)
+		playsound(src, 'sound/weapons/autoguninsert.ogg', 50, FALSE)
+		update_icon()
+		on_cell_swap(old_cell, cell)
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+	return ..()
 
 /obj/item/stream_projector/medichine/setup_target_visuals(atom/entity)
 	. = ..()
 	var/datum/beam/creating_beam = create_segmented_beam(src, entity, icon = 'icons/effects/beam.dmi', icon_state = "medbeam_tiled")
 	LAZYSET(beams_by_entity, entity, creating_beam)
+	#warn color beam
 
 /obj/item/stream_projector/medichine/teardown_target_visuals(atom/entity)
 	. = ..()
 	var/datum/beam/their_beam = beams_by_entity[entity]
 	beams_by_entity -= entity
 	qdel(their_beam)
+
+/obj/item/stream_projector/medichine/proc/on_cell_swap(obj/item/medichine_cell/old_cell, obj/item/medichine_cell/new_cell)
+	// drop all targets if no new cell
+	if(isnull(new_cell))
+		drop_all_targets()
+		return
+	#warn recolor beams
 
 /obj/item/stream_projector/medichine/process(delta_time)
 	..()
@@ -70,21 +108,22 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 		effective_package = interface.query_medichines()
 	else
 		effective_package = inserted_cartridge?.cell_datum
+	// drop targets if not injecting
 	if(isnull(effective_package))
 		drop_all_targets()
 		return
 
 	// get injection rate
-	var/injection_rate = min(effective_package.injection_multiplier * injection_rate, effective_package.suspension_limit)
+	var/effective_injection_rate = min(effective_package.injection_multiplier * injection_rate, effective_package.suspension_limit)
 
 	// modulate injection rate
 	var/requested_amount = 0
 	for(var/mob/entity as anything in active_targets)
 		var/datum/component/medichine_field/field = entity.GetComponent(/datum/component/medichine_field)
 		if(isnull(field))
-			requested_amount += injection_rate
+			requested_amount += effective_injection_rate
 			continue
-		requested_amount += min(injection_rate, effective_package.suspension_limit - field.active[effective_package])
+		requested_amount += min(effective_injection_rate, effective_package.suspension_limit - field.active[effective_package])
 
 	// get allowed ratio
 	var/allowed_ratio = (isnull(interface)? inserted_cartridge?.use(requested_amount) : interface.use_medichines(effective_package, requested_amount)) / requested_amount
@@ -96,7 +135,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	// inject
 	for(var/mob/entity as anything in active_targets)
 		var/datum/component/medichine_field/field = entity.LoadComponent(/datum/component/medichine_field)
-		field.inject_medichines(effective_package, allowed_ratio * injection_rate)
+		field.inject_medichines(effective_package, allowed_ratio * effective_injection_rate)
 
 /**
  * component used to form a mob's nanite cloud visuals + processing
@@ -174,7 +213,8 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 /obj/item/medichine_cell
 	name = "medichine cartridge (EMPTY)"
 	desc = "A cartridge meant to hold medicinal nanites."
-	#warn impl
+	icon = 'icons/items/stream_projector/medichine.dmi'
+	icon_state = "cell"
 
 	/// path to cell datum
 	var/datum/medichine_cell/cell_datum = /datum/medichine_cell
@@ -185,7 +225,15 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 
 /obj/item/medichine_cell/Initialize(mapload)
 	. = ..()
-	#warn sprite
+	cell_datum = fetch_cached_medichine_cell_datum(cell_datum)
+	update_icon()
+
+/obj/item/medichine_cell/update_icon(updates)
+	cut_overlays()
+	. = ..()
+	var/number = volume? round(volume / max_volume * 4) : 0
+	if(number)
+		add_overlay("cell-[number]")
 
 /obj/item/medichine_cell/proc/fill(amount)
 	volume = clamp(volume + amount, 0, max_volume)
