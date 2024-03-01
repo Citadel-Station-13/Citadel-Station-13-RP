@@ -129,6 +129,11 @@
 	/// use set_locked() to modify.
 	var/locked = FALSE
 
+	//* Mass Operations
+
+	/// mutex to prevent mass operation spam
+	var/mass_operation_interaction_mutex = FALSE
+
 	//* Redirection
 
 	/// When set, we treat this as the real parent object.
@@ -799,6 +804,10 @@ b
  * Actor is mandatory.
  */
 /datum/object_system/storage/proc/interacted_mass_transfer(datum/event_args/actor/actor, datum/object_system/storage/to_storage, silent, suppressed)
+	if(mass_operation_interaction_mutex)
+		return
+	mass_operation_interaction_mutex = TRUE
+
 	var/list/obj/item/transferring = list()
 	for(var/obj/item/item in real_contents_loc())
 		transferring += item
@@ -809,6 +818,7 @@ b
 				msg = "There's nothing to transfer out of [parent].",
 				target = src,
 			)
+		mass_operation_interaction_mutex = FALSE
 		return
 	if(!silent)
 		actor.chat_feedback(
@@ -836,18 +846,24 @@ b
 				target = src,
 			)
 
-	refresh()
+	ui_queue_refresh()
+	mass_operation_interaction_mutex = FALSE
 
 /**
  * Actor is mandatory.
  */
 /datum/object_system/storage/proc/interacted_mass_pickup(datum/event_args/actor/actor, atom/from_loc, silent, suppressed)
+	if(mass_operation_interaction_mutex)
+		return
+	mass_operation_interaction_mutex = TRUE
+
 	var/list/transferring
 	switch(mass_gather_mode)
 		if(STORAGE_QUICK_GATHER_COLLECT_ONE)
 			if(!isitem(from_loc))
 				return
 			try_insert(from_loc, actor)
+			mass_operation_interaction_mutex = FALSE
 			return
 		if(STORAGE_QUICK_GATHER_COLLECT_ALL)
 			transferring = list()
@@ -863,6 +879,7 @@ b
 				transferring += item
 
 	if(!length(transferring))
+		mass_operation_interaction_mutex = FALSE
 		return
 	if(!silent)
 		actor.chat_feedback(
@@ -879,11 +896,16 @@ b
 		stoplag(1)
 
 	ui_queue_refresh()
+	mass_operation_interaction_mutex = FALSE
 
 /**
  * Actor is mandatory.
  */
 /datum/object_system/storage/proc/interacted_mass_dumping(datum/event_args/actor/actor, atom/to_loc, silent, suppressed)
+	if(mass_operation_interaction_mutex)
+		return
+	mass_operation_interaction_mutex = TRUE
+
 	var/list/obj/item/transferring = mass_dumping_query()
 
 	if(!length(transferring))
@@ -892,6 +914,7 @@ b
 				msg = "There's nothing to dump out of [parent].",
 				target = src,
 			)
+		mass_operation_interaction_mutex = FALSE
 		return
 	if(!silent)
 		actor.chat_feedback(
@@ -920,6 +943,7 @@ b
 			)
 
 	ui_queue_refresh()
+	mass_operation_interaction_mutex = FALSE
 
 /**
  * handles mass storage transfers
