@@ -277,8 +277,8 @@
 /atom/proc/_contents()
 	return contents.Copy()
 
-/proc/_typesof(...)
-	return typesof(arglist(args))
+/proc/_typesof(what)
+	return typesof(what)
 
 /proc/_subtypesof(what)
 	return subtypesof(what)
