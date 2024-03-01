@@ -235,7 +235,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	. = ..()
 	var/number = volume? round(volume / max_volume * 4) : 0
 	if(number)
-		var/image/I = image()
+		var/image/I = new
 		I.icon_state = "[base_icon_state]-[number]"
 		I.color = cell_datum.color
 		add_overlay(I)

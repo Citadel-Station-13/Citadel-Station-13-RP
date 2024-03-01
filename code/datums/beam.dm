@@ -242,7 +242,8 @@
 	// calculate parameters
 	var/dx = ((WORLD_ICON_SIZE * end.x + end_px) - (WORLD_ICON_SIZE * start.x + start_px))
 	var/dy = ((WORLD_ICON_SIZE * end.y + end_py) - (WORLD_ICON_SIZE * start.y + start_py))
-	var/north_of_east = arctan(dx, dy)
+	// cw from north
+	var/angle = arctan(dy, dx)
 	var/distance = sqrt(dx ** 2 + dy ** 2)
 	// draw
 	switch(beam_visual_mode)
@@ -253,12 +254,15 @@
 			var/requires_update = FALSE
 			if(steps_required > length(segmentation.segment_appearances))
 				requires_update = TRUE
+				var/start_from_pixel = length(segmentation.segment_appearances) * WORLD_ICON_SIZE
 				for(var/i in 1 to steps_required - length(segmentation.segment_appearances))
 					var/image/injecting = image(icon_state = icon_state)
+					injecting.pixel_y = i * WORLD_ICON_SIZE - (WORLD_ICON_SIZE * 0.5) + start_from_pixel
 					segmentation.segment_appearances += injecting
 				if(!isnull(emissive_segmentation))
 					for(var/i in 1 to steps_required - length(emissive_segmentation.segment_appearances))
 						var/image/emissive_injecting = image(icon_state = emissive_state)
+						emissive_injecting.pixel_y = i * WORLD_ICON_SIZE - (WORLD_ICON_SIZE * 0.5) + start_from_pixel
 						emissive_segmentation.segment_appearances += emissive_injecting
 			else if(steps_required < length(segmentation.segment_appearances))
 				requires_update = TRUE
@@ -269,8 +273,8 @@
 				emissive_segmentation?.overlays = emissive_segmentation?.segment_appearances
 			// calculate matrix
 			var/matrix/transform_to_apply = matrix()
-			// rotate to clockwise-from-north as opposed to counterclockwise-from-east
-			transform_to_apply.Turn((-north_of_east) - 90)
+			// rotate
+			transform_to_apply.Turn(angle)
 			// move renders to location
 			segmentation.forceMove(start)
 			segmentation.pixel_x = start_px
@@ -283,8 +287,8 @@
 			transform_to_apply.Translate(0, 16)
 			// scale up the now shifted one so we don't have to translate post-scale
 			transform_to_apply.Scale(1, distance / WORLD_ICON_SIZE)
-			// rotate to clockwise-from-north as opposed to counterclockwise-from-east
-			transform_to_apply.Turn((-north_of_east) - 90)
+			// rotate
+			transform_to_apply.Turn(angle)
 			// handle normal render
 			line_renderer.forceMove(start)
 			line_renderer.pixel_x = start_px
@@ -313,8 +317,8 @@
 	if(!isnull(particle_renderer))
 		// calculate matrix
 		var/matrix/transform_to_apply = matrix()
-		// rotate to clockwise-from-north as opposed to counterclockwise-from-east
-		transform_to_apply.Turn((-north_of_east) - 90)
+		// rotate
+		transform_to_apply.Turn(angle)
 		// move renders to location
 		particle_renderer.forceMove(start)
 		particle_renderer.pixel_x = start_px
@@ -358,6 +362,7 @@
 
 /atom/movable/graphics_render/beam_segments
 	appearance_flags = KEEP_TOGETHER
+	animate_movement = NONE
 
 	/// segments in us
 	var/list/image/segment_appearances = list()
@@ -379,6 +384,7 @@
 
 INITIALIZE_IMMEDIATE(/atom/movable/beam_collider)
 /atom/movable/beam_collider
+	animate_movement = NONE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	invisibility = INVISIBILITY_ABSTRACT
 
@@ -392,6 +398,8 @@ INITIALIZE_IMMEDIATE(/atom/movable/beam_collider)
 	return INITIALIZE_HINT_NORMAL
 
 /atom/movable/beam_collider/proc/move_onto(turf/where)
+	if(where == loc)
+		return
 	for(var/atom/movable/other as anything in loc)
 		if(other == src)
 			continue
@@ -430,6 +438,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/beam_collider)
 
 /atom/movable/graphics_render/beam_line
 	appearance_flags = KEEP_TOGETHER
+	animate_movement = NONE
 
 /atom/movable/graphics_render/beam_line/emissive
 	plane = EMISSIVE_PLANE
@@ -448,6 +457,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/beam_collider)
 
 /atom/movable/particle_render/beam_line
 	appearance_flags = KEEP_TOGETHER
+	animate_movement = NONE
 
 /atom/movable/particle_render/beam_line/emissive
 	plane = EMISSIVE_PLANE
