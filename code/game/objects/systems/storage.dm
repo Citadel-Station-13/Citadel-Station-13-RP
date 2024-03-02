@@ -972,9 +972,13 @@ b
 	var/i = length(things)
 	. = TRUE
 	while(i > 0)
+		// stop if overtaxed
+		if(TICK_CHECK)
+			break
 		var/obj/item/transferring = things[i]
 		// make sure they're still there
 		if(transferring.loc != indirection_from)
+			i--
 			continue
 		// handle on open hooks if needed
 		if(trigger_on_found && actor?.performer.active_storage != src && transferring.on_containing_storage_opening(actor, src))
@@ -983,18 +987,17 @@ b
 		// see if receiver can accept it
 		if(!to_storage.can_be_inserted(transferring, actor, TRUE))
 			rejections_out += transferring
+			i--
 			continue
 		// see if we can remove it
 		if(!can_be_removed(transferring, indirection_to, actor, TRUE))
 			rejections_out += transferring
+			i--
 			continue
 		// transfer; the on enter/exit hooks will handle the rest (awful but whatever!)
 		if(transferring == remove(transferring, indirection_to, actor, TRUE, TRUE))
 			// but only go down if we got rid of the real item
 			i--
-		// stop if overtaxed
-		if(TICK_CHECK)
-			break
 	things.Cut(i + 1, length(things) + 1)
 	return . && length(things)
 
@@ -1020,6 +1023,9 @@ b
 	var/i
 	. = TRUE
 	for(i in length(things) to 1 step -1)
+		// stop if overtaxed
+		if(TICK_CHECK)
+			break
 		var/obj/item/transferring = things[i]
 		// make sure they're still there
 		if(transferring.loc != from_loc)
@@ -1028,9 +1034,6 @@ b
 		if(!try_insert(transferring, actor, TRUE, TRUE, TRUE))
 			rejections_out += transferring
 			continue
-		// stop if overtaxed
-		if(TICK_CHECK)
-			break
 	things.Cut(i, length(things) + 1)
 	return . && length(things)
 
@@ -1058,9 +1061,13 @@ b
 	var/i = length(things)
 	. = TRUE
 	while(i > 0)
+		// stop if overtaxed
+		if(TICK_CHECK)
+			break
 		var/obj/item/transferring = things[i]
 		// make sure they're still there
 		if(transferring.loc != indirection)
+			i--
 			continue
 		// handle on open hooks if needed
 		if(trigger_on_found && actor?.performer.active_storage != src && transferring.on_containing_storage_opening(actor, src))
@@ -1071,14 +1078,12 @@ b
 		if(isnull(removed))
 			// failed
 			rejections_out += transferring
+			i--
 			continue
 		// succeeded
 		if(removed == transferring)
 			// but only go down if we got rid of the real item
 			i--
-		// stop if overtaxed
-		if(TICK_CHECK)
-			break
 	things.Cut(i + 1, length(things) + 1)
 	return . && length(things)
 
