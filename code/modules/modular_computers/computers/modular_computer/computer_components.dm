@@ -53,7 +53,7 @@
 		if(!user.attempt_insert_item_for_installation(H, src))
 			return
 		to_chat(user, "You install \the [H] into \the [src]")
-		H.holder2 = src
+		H.holder = src
 		update_verbs()
 
 /// Uninstalls component. Found and Critical vars may be passed by parent types, if they have additional hardware.
@@ -94,7 +94,7 @@
 		else
 			H.moveToNullspace()
 		//! End
-		H.holder2 = null
+		H.holder = null
 		update_verbs()
 	if(critical && enabled)
 		if(user)
