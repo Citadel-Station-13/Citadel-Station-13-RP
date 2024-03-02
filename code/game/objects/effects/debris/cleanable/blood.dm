@@ -43,6 +43,7 @@ var/global/list/image/splatter_cache=list()
 	if(invisibility != 100)
 		invisibility = 100
 		amount = 0
+		obj_persist_status |= OBJ_PERSIST_STATUS_NO_THANK_YOU
 		STOP_PROCESSING(SSobj, src)
 	..(ignore=1)
 
