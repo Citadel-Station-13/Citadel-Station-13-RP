@@ -56,7 +56,7 @@ export const Crayon = (props, context) => {
           <Stack.Item>
             <Section title="Basic">
               <LabeledList>
-                {data.cappable && (
+                {!!data.cappable && (
                   <LabeledList.Item label="Cap">
                     <Button content={data.capped? "Capped" : "Uncapped"}
                       selected={!data.capped} onClick={() => act('cap')} />

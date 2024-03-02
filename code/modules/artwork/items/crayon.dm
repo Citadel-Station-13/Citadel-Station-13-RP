@@ -54,7 +54,7 @@
 	if(length(crayon_pickable_colors))
 		crayon_color = crayon_pickable_colors[1]
 	else if(isnull(crayon_color))
-		crayon_color = color || "#ffffff"
+		crayon_color = pen_color || color || "#ffffff"
 	create_reagents(crayon_reagent_amount)
 	reagents.add_reagent(crayon_reagent_type, crayon_reagent_amount)
 
