@@ -1,3 +1,4 @@
+// todo: move all organs to /carbon WHY are they on living??
 /mob/living
 	var/list/internal_organs = list()
 	var/list/organs = list()
@@ -6,6 +7,7 @@
 	/// So internal organs have less ickiness too
 	var/list/internal_organs_by_name = list()
 	/// Organs we check until they are good.
+	//  todo: whta the fuck does this mean exactly? re-evaluate and document, please!
 	var/list/bad_external_organs = list()
 
 /mob/living/proc/get_bodypart_name(zone)

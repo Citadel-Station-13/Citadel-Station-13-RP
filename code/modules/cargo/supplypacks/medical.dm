@@ -424,24 +424,22 @@
 	access = ACCESS_MEDICAL_EQUIPMENT
 
 /datum/supply_pack/med/medigun
-	name = "Cell-Loaded Medigun crate"
+	name = "Medichine Stream Projector"
 	contains = list(
-			/obj/item/gun/ballistic/cell_loaded/medical = 1,
-			/obj/item/ammo_magazine/cell_mag/medical = 1
-			)
-	cost = 250
+		/obj/item/stream_projector/medichine = 1,
+	)
+	cost = 50
 	container_type = /obj/structure/closet/crate/secure/corporate/veymed
-	container_name = "Cell-Loaded Medigun crate"
-	access = ACCESS_MEDICAL_CMO
+	access = ACCESS_MEDICAL_EQUIPMENT
 
-/datum/supply_pack/med/medigun_cells
-	name = "Cell-Loaded Medigun Cell Pack crate"
+/datum/supply_pack/med/medigun
+	name = "Medichine Stream Cells (Assorted)"
 	contains = list(
-			/obj/item/ammo_casing/microbattery/medical/brute = 3,
-			/obj/item/ammo_casing/microbattery/medical/burn = 3,
-			/obj/item/ammo_casing/microbattery/medical/stabilize = 3
-			)
-	cost = 100
+		/obj/item/medichine_cell/seal_wounds = 4,
+		/obj/item/medichine_cell/seal_wounds/violently = 2,
+		/obj/item/medichine_cell/stabilize = 4,
+		/obj/item/medichine_cell/synth_repair = 4,
+	)
+	cost = 50
 	container_type = /obj/structure/closet/crate/secure/corporate/veymed
-	container_name = "Cell-Loaded Medigun Cell Pack crate"
-	access = ACCESS_MEDICAL_CMO
+	access = ACCESS_MEDICAL_EQUIPMENT

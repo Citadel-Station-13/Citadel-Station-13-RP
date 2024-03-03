@@ -499,28 +499,34 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 /datum/medichine_effect/wound_healing
 	/// allowed biologies
 	var/biology_types = BIOLOGY_TYPES_SYNTHETIC
-	var/disinfect_strength = 0
-	var/seal_strength = 0
-	// per unit
+	// todo: strength, not instant
+	var/seal_wounds = FALSE
+	// todo: strength, not instant
+	var/disinfect_wounds = FALSE
+	/// per unit
 	var/repair_strength_brute = 0
-	// per unit
+	/// per unit
 	var/repair_strength_burn = 0
+	/// works on the dead
 	var/while_dead = FALSE
+	/// only fixes open wounds, will not seal until it's closed
 	var/only_open = FALSE
 
-#warn impl
-
 /datum/medichine_effect/wound_healing/tick_on_mob(datum/component/medichine_field/field, mob/living/entity, volume, seconds)
-	. = ..()
+	#warn impl
 
+#warn oxygenate
+#warn toxfilter
 
 /datum/medichine_effect/stabilize
 
 /datum/medichine_effect/stabilize/target_added(datum/component/medichine_field/field, atom/entity)
-	. = ..()
+	ADD_TRAIT(entity, TRAIT_MECHANICAL_VENTILATION, "medichine-[REF(src)]")
+	ADD_TRAIT(entity, TRAIT_MECHANICAL_CIRCULATION, "medichine-[REF(src)]")
 
 /datum/medichine_effect/stabilize/target_removed(datum/component/medichine_field/field, atom/entity)
-	. = ..()
+	REMOVE_TRAIT(entity, TRAIT_MECHANICAL_VENTILATION, "medichine-[REF(src)]")
+	REMOVE_TRAIT(entity, TRAIT_MECHANICAL_CIRCULATION, "medichine-[REF(src)]")
 
 /datum/medichine_effect/forced_metabolism
 	/// time multiplier; 2 = tick 2 seconds per second
@@ -533,26 +539,30 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 
 /datum/medichine_effect/forced_metabolism/tick_on_mob(datum/component/medichine_field/field, mob/living/entity, volume, seconds)
 	if(STAT_IS_DEAD(entity.stat) && !while_dead)
-		return
+		return null
 	var/real_rate = scale_rate_constant + volume * scale_rate_to_volume
 	entity.forced_metabolism(real_rate * seconds)
-
-	#warn impl
+	return 1
 
 /datum/medichine_effect/agony_from_open_wounds
+
 	var/strength_constant = 0
 	var/strength_factor = 0
 
 /datum/medichine_effect/agony_from_open_wounds/tick_on_mob(datum/component/medichine_field/field, mob/living/entity, volume, seconds)
+	var/mob/living/carbon/humanlike = entity
+	if(!istype(humanlike))
+		return
+	for(var/obj/item/organ/external/ext as anything in humanlike.bad_external_organs)
+		var/size_ratio = organ_rel_size[ext.organ_tag] / GLOB.organ_combined_size
+		if(!size_ratio)
+			continue
 	#warn impl
 
 // /datum/medichine_effect/stoneskin
 
 // /datum/medichine_effect/stoneskin/tick_on_mob(mob/living/entity, volume)
-// 	. = ..()
 
 // /datum/medichine_effect/dextrous_motion
 
 // /datum/medichine_effect/dextrous_motion/tick_on_mob(mob/living/entity, volume)
-// 	. = ..()
-
