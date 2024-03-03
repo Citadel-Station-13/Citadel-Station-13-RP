@@ -80,7 +80,9 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	. = ..()
 	var/datum/beam/creating_beam = create_segmented_beam(src, entity, icon = 'icons/effects/beam.dmi', icon_state = "medbeam_tiled")
 	LAZYSET(beams_by_entity, entity, creating_beam)
-	#warn color beam
+	var/datum/medichine_cell/effective_cell = effective_cell_datum()
+	if(!isnull(effective_cell))
+		creating_beam.line_renderer.color = effective_cell.color
 
 /obj/item/stream_projector/medichine/teardown_target_visuals(atom/entity)
 	. = ..()
@@ -93,7 +95,14 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	if(isnull(new_cell))
 		drop_all_targets()
 		return
-	#warn recolor beams
+	var/datum/medichine_cell/effective_cell = effective_cell_datum()
+	if(!isnull(effective_cell))
+		for(var/atom/entity as anything in beams_by_entity)
+			var/datum/beam/entity_beam = beams_by_entity[entity]
+			entity_beam.line_renderer.color = effective_cell.color
+
+/obj/item/stream_projector/medichine/proc/effective_cell_datum()
+	return isnull(interface)? inserted_cartridge?.cell_datum : interface.query_medichines()
 
 /obj/item/stream_projector/medichine/process(delta_time)
 	..()
@@ -102,11 +111,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 		return
 
 	// get effective cell
-	var/datum/medichine_cell/effective_package
-	if(!isnull(interface))
-		effective_package = interface.query_medichines()
-	else
-		effective_package = inserted_cartridge?.cell_datum
+	var/datum/medichine_cell/effective_package = effective_cell_datum()
 	// drop targets if not injecting
 	if(isnull(effective_package))
 		drop_all_targets()
@@ -176,7 +181,28 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	if(!isliving(parent)) // no support for atoms yet
 		return
 	var/mob/living/victim = parent
-	#warn impl
+	var/removed_something = FALSE
+	for(var/datum/medichine_cell/cell_package as anything in active)
+		var/cell_volume = active[cell_package]
+		var/reacting = cell_package.reaction_rate
+		var/reacted_ratio = 0
+
+		// perform tick
+		for(var/datum/medichine_effect/cell_effect as anything in cell_package.effects)
+			var/used_ratio
+			used_ratio = cell_effect.tick_on_mob(src, victim, reacting)
+			if(isnull(used_ratio))
+				continue
+			reacted_ratio = max(reacted_ratio, used_ratio)
+
+		active[cell_package] -= max(cell_package.decay_minimum_baseline, injecting * reacted_ratio)
+		if(active[cell_package] < 0)
+			active -= cell_package
+			for(var/datum/medichine_effect/cell_effect as anything in cell_package.effects)
+				cell_effect.target_removed(victim)
+			removed_something = TRUE
+	if(removed_something)
+		recalculate_color()
 
 /datum/component/medichine_field/proc/recalculate_color()
 	var/list/blended = list(0, 0, 0)
@@ -186,10 +212,13 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 		blended[2] += package.color_rgb_list[2] * ratio
 		blended[3] += package.color_rgb_list[3] * ratio
 	current_color = rgb(blended[1], blended[2], blended[3])
-	#warn change renderer color
+	renderer.color = current_color
 
 /datum/component/medichine_field/proc/inject_medichines(datum/medichine_cell/medichines, amount)
 	LAZYINITLIST(active)
+	if(isnull(active[medichines]))
+		for(var/datum/medichine_effect/effect as anything in medichines.effects)
+			effect.target_added(parent)
 	active[medichines] += amount
 	recalculate_color()
 	ensure_visuals()
@@ -206,7 +235,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 		renderer.loc = entity
 	var/particles/particle_instance = new /particles/medichine_field
 	renderer.particles = particle_instance
-	renderer.particles.color = current_color
+	renderer.color = current_color
 
 /particles/medichine_field
 	width = 32
@@ -227,6 +256,11 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	icon = 'icons/items/stream_projector/medichine.dmi'
 	icon_state = "cell"
 	base_icon_state = "cell"
+	materials_base = list(
+		MAT_STEEL = 500,
+		MAT_PLASTIC = 500,
+		MAT_GLASS = 250,
+	)
 
 	/// path to cell datum
 	var/datum/medichine_cell/cell_datum = /datum/medichine_cell
@@ -234,6 +268,9 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	var/volume = 100
 	/// maximum units left
 	var/max_volume = 100
+
+	/// materials needed per unit of nanites
+	var/list/materials_per_volume_unit = list()
 
 /obj/item/medichine_cell/Initialize(mapload)
 	. = ..()
@@ -255,42 +292,85 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 /obj/item/medichine_cell/proc/use(amount)
 	volume = clamp(volume - amount, 0, max_volume)
 
+/obj/item/medichine_cell/detect_material_base_costs()
+	. = ..()
+	for(var/key in materials_per_volume_unit)
+		var/val = materials_per_volume_unit[key]
+		.[key] += round(val * volume)
+
+/obj/item/medichine_cell/get_materials(respect_multiplier)
+	. = ..()
+	var/multiplier = respect_multiplier? material_multiplier : 1
+	for(var/key in materials_per_volume_unit)
+		var/val = materials_per_volume_unit[key]
+		.[key] += round(val * volume) * multiplier
+
 // todo: after med rework all of these need a look-over
 
 /obj/item/medichine_cell/seal_wounds
 	name = "medichine cartridge (SEAL)"
 	desc = "A cartridge of swirling dust. This will repair, disinfect, and seal open wounds."
 	cell_datum = /datum/medichine_cell/seal_wounds
+	materials_per_volume_unit = list(
+		MAT_GLASS = 2,
+		MAT_STEEL = 2,
+	)
 
 /obj/item/medichine_cell/seal_wounds/violently
 	name = "medichine cartridge (DEBRIDE)"
 	desc = "A cartridge of angrily swirling dust. This will repair, disinfect, and seal open wounds. Rapidly, and painfully."
 	cell_datum = /datum/medichine_cell/seal_wounds/violently
+	materials_per_volume_unit = list(
+		MAT_GLASS = 2,
+		MAT_STEEL = 2,
+		MAT_SILVER = 2.5,
+		MAT_DIAMOND = 1,
+	)
 
-/obj/item/medichine_cell/fortify
-	name = "medichine cartridge (FORTIFY)"
-	desc = "A cartridge of robust swirling dust. This will toughen someone's skin with an artificial layer of cohesive nanites."
-	cell_datum = /datum/medichine_cell/fortify
+// /obj/item/medichine_cell/fortify
+// 	name = "medichine cartridge (FORTIFY)"
+// 	desc = "A cartridge of robust swirling dust. This will toughen someone's skin with an artificial layer of cohesive nanites."
+// 	cell_datum = /datum/medichine_cell/fortify
 
 /obj/item/medichine_cell/stabilize
 	name = "medichine cartridge (STABILIZE)"
 	desc = "A cartridge of cohesive swirling dust. This will stabilize someone's life functions and provide manual metabolism."
 	cell_datum = /datum/medichine_cell/stabilize
+	materials_per_volume_unit = list(
+		MAT_GLASS = 2,
+		MAT_STEEL = 2,
+		MAT_PLASTIC = 2,
+		MAT_SILVER = 2,
+	)
 
 /obj/item/medichine_cell/deathmend
 	name = "medichine cartridge (DEATHMEND)"
 	desc = "A cartridge of necromantic swirling dust. This will repair the wounds, even of the dead."
 	cell_datum = /datum/medichine_cell/deathmend
+	materials_per_volume_unit = list(
+		MAT_GLASS = 2,
+		MAT_STEEL = 2,
+		MAT_PLASTIC = 1.5,
+		MAT_URANIUM = 1.5,
+		MAT_SILVER = 2,
+		MAT_GOLD = 1.5,
+	)
 
 /obj/item/medichine_cell/synth_repair
 	name = "medichine cartridge (SYNTHFIX)"
 	desc = "A cartridge of metallic swirling dust. This will patch up damaged limbs on a synthetic."
 	cell_datum = /datum/medichine_cell/synth_repair
+	materials_per_volume_unit = list(
+		MAT_GLASS = 2,
+		MAT_STEEL = 2,
+		MAT_PLASTIC = 1.5,
+		MAT_DIAMOND = 2,
+	)
 
-/obj/item/medichine_cell/synth_tuning
-	name = "medichine cartridge (SYNTHTUNE)"
-	desc = "A cartridge of glowing, swirling dust. This will act in cohesion with a synthetic, as a performance amplifier."
-	cell_datum = /datum/medichine_cell/synth_tuning
+// /obj/item/medichine_cell/synth_tuning
+// 	name = "medichine cartridge (SYNTHTUNE)"
+// 	desc = "A cartridge of glowing, swirling dust. This will act in cohesion with a synthetic, as a performance amplifier."
+// 	cell_datum = /datum/medichine_cell/synth_tuning
 
 /**
  * medical beamgun effect package
@@ -321,11 +401,18 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 		effects[i] = effect
 
 /datum/medichine_cell/seal_wounds
-	injection_multiplier = 1
+	effects = list(
+		/datum/medichine_effect/wound_healing{
+			disinfect_strength = 2;
+			seal_strength = 5;
+			repair_strength_brute = 2;
+			repair_strength_burn = 2;
+		}
+	)
+	color = "#aa0000"
 	#warn impl
 
 /datum/medichine_cell/seal_wounds/violently
-	injection_multiplier = 2
 	// agony needs to tick first
 	effects = list(
 		/datum/medichine_effect/agony_from_open_wounds{
@@ -339,12 +426,26 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 			repair_strength_burn = 2;
 		}
 	)
+	color = "#ff3300"
 	#warn impl
 
-/datum/medichine_cell/fortify
-	#warn impl
+// /datum/medichine_cell/fortify
+// 	#warn impl
 
 /datum/medichine_cell/stabilize
+	effects = list(
+		/datum/medichine_effect/stabilize{
+			ignore_consumption = FALSE;
+		},
+		/datum/medichine_effect/forced_metabolism{
+			ignore_consumption = FALSE;
+		},
+	)
+	// we always draw 1 per tick.
+	reaction_rate = 1
+	// we always draw 1 per tick.
+	decay_minimum_baseline = 1
+	color = "#9999ff"
 	#warn impl
 
 /datum/medichine_cell/deathmend
@@ -352,91 +453,106 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	#warn impl
 
 /datum/medichine_cell/synth_repair
+	effects = list(
+		/datum/medichine_effect/wound_healing{
+			biology_types = BIOLOGY_TYPES_SYNTHETIC;
+			seal_strength = 5;
+			repair_strength_brute = 2;
+			repair_strength_burn = 2;
+		}
+	)
+	color = "#888844"
 	#warn impl
 
-/datum/medichine_cell/synth_tuning
-	#warn impl
+// /datum/medichine_cell/synth_tuning
+// 	#warn impl
 
 /**
  * medical beamgun effect
  */
 /datum/medichine_effect
-	/// are we relevant for 'how much are we using'?
-	var/limits_utilization = TRUE
+	/// completely ignore us for calculations by assuming we are never using any nanite volume
+	/// set from the /datum/medichine_cell side to allow for 'side' effects that don't necessarily
+	/// use any nanite volume and are always just there.
+	var/ignore_consumption = FALSE
 
 /**
  * as opposed to ticking on objs.
  *
  * @return 0 to 1 of ratio used; null for 'stop'
  */
-/datum/medichine_effect/proc/tick_on_mob(obj/item/stream_projector/medichine/projector, mob/living/entity, volume)
-	return null
-
-/**
- * called when we're being applied to a carbon
- *
- * wounds can be empty
- *
- * @return 0 to 1 of ratio used; null for 'stop'
- */
-/datum/medichine_effect/proc/tick_on_wounds(obj/item/stream_projector/medichine/projector, mob/living/carbon/entity, list/datum/wound/wounds)
-	return null
+/datum/medichine_effect/proc/tick_on_mob(datum/component/medichine_field/field, mob/living/entity, volume, seconds)
+	return 1
 
 /**
  * called on target add
  */
-/datum/medichine_effect/proc/target_added(atom/entity)
+/datum/medichine_effect/proc/target_added(datum/component/medichine_field/field, atom/entity)
 	return
 
 /**
  * called on target remove
  */
-/datum/medichine_effect/proc/target_removed(atom/entity)
+/datum/medichine_effect/proc/target_removed(datum/component/medichine_field/field, atom/entity)
 	return
 
 /datum/medichine_effect/wound_healing
+	/// allowed biologies
+	var/biology_types = BIOLOGY_TYPES_SYNTHETIC
 	var/disinfect_strength = 0
 	var/seal_strength = 0
 	// per unit
 	var/repair_strength_brute = 0
 	// per unit
 	var/repair_strength_burn = 0
-	var/fix_synths = FALSE
-	var/synth_only = FALSE
 	var/while_dead = FALSE
 	var/only_open = FALSE
 
 #warn impl
 
-/datum/medichine_effect/wound_healing/tick_on_wounds(mob/living/carbon/entity, list/datum/wound/wounds)
+/datum/medichine_effect/wound_healing/tick_on_mob(datum/component/medichine_field/field, mob/living/entity, volume, seconds)
+	. = ..()
 
 
 /datum/medichine_effect/stabilize
 
-/datum/medichine_effect/stabilize/tick_on_mob(mob/living/entity, volume)
+/datum/medichine_effect/stabilize/target_added(datum/component/medichine_field/field, atom/entity)
+	. = ..()
 
+/datum/medichine_effect/stabilize/target_removed(datum/component/medichine_field/field, atom/entity)
+	. = ..()
 
 /datum/medichine_effect/forced_metabolism
+	/// time multiplier; 2 = tick 2 seconds per second
+	/// this is the constant before volume is added.
+	var/scale_rate_constant = 0
+	/// scale time multiplier to volume used; if non-0, each 1 volume adds this much rate.
+	var/scale_rate_to_volume = 1
+	/// continue to force metabolism while dead?
 	var/while_dead = FALSE
 
-/datum/medichine_effect/forced_metabolism/tick_on_mob(mob/living/entity, volume)
+/datum/medichine_effect/forced_metabolism/tick_on_mob(datum/component/medichine_field/field, mob/living/entity, volume, seconds)
+	if(STAT_IS_DEAD(entity.stat) && !while_dead)
+		return
+	var/real_rate = scale_rate_constant + volume * scale_rate_to_volume
+	entity.forced_metabolism(real_rate * seconds)
 
+	#warn impl
 
 /datum/medichine_effect/agony_from_open_wounds
 	var/strength_constant = 0
 	var/strength_factor = 0
 
-/datum/medichine_effect/agony_from_open_wounds/tick_on_wounds(mob/living/carbon/entity, list/datum/wound/wounds)
+/datum/medichine_effect/agony_from_open_wounds/tick_on_mob(datum/component/medichine_field/field, mob/living/entity, volume, seconds)
+	#warn impl
 
+// /datum/medichine_effect/stoneskin
 
-/datum/medichine_effect/stoneskin
+// /datum/medichine_effect/stoneskin/tick_on_mob(mob/living/entity, volume)
+// 	. = ..()
 
-/datum/medichine_effect/stoneskin/tick_on_mob(mob/living/entity, volume)
-	. = ..()
+// /datum/medichine_effect/dextrous_motion
 
-
-/datum/medichine_effect/dextrous_motion
-
-/datum/medichine_effect/dextrous_motion/tick_on_mob(mob/living/entity, volume)
-	. = ..()
+// /datum/medichine_effect/dextrous_motion/tick_on_mob(mob/living/entity, volume)
+// 	. = ..()
 

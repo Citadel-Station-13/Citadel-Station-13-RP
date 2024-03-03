@@ -5,6 +5,11 @@
 	drop_sound = 'sound/items/drop/flesh.ogg'
 	pickup_sound = 'sound/items/pickup/flesh.ogg'
 
+	//* Biology / Identity *//
+	/// what biology we are
+	var/biology_type = NONE
+	#warn impl on subtypes
+
 //! ## STRINGS VARS
 	/// Unique identifier.
 	var/organ_tag = "organ"

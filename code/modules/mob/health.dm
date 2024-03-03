@@ -1,3 +1,5 @@
+//* Critical *//
+
 /**
  * are we in critical?
  *
@@ -6,11 +8,15 @@
 /mob/proc/is_in_critical()
 	return FALSE
 
+//* Health *//
+
 /**
  * update health
  */
 /mob/proc/update_health()
 	return
+
+//* Stat *//
 
 /**
  * update stat, return new stat
@@ -51,6 +57,8 @@
 		update_mobility()
 	update_hud_med_status()
 	return TRUE
+
+//* Revival & Rejuvenation *//
 
 /**
  * brings a mob back to life
