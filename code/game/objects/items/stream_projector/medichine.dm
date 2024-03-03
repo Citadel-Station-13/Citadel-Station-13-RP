@@ -590,8 +590,8 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 /datum/medichine_effect/forced_metabolism/tick_on_mob(datum/component/medichine_field/field, mob/living/entity, volume, seconds)
 	if(STAT_IS_DEAD(entity.stat) && !while_dead)
 		return null
-	var/real_rate = scale_rate_constant + volume * scale_rate_to_volume
-	entity.forced_metabolism(real_rate * seconds)
+	var/real_rate = scale_rate_constant * seconds + volume * scale_rate_to_volume
+	entity.forced_metabolism(real_rate)
 	return 1
 
 /datum/medichine_effect/agony_from_open_wounds
