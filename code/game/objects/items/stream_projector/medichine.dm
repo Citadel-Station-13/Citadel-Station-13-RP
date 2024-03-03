@@ -195,7 +195,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 				continue
 			reacted_ratio = max(reacted_ratio, used_ratio)
 
-		active[cell_package] -= max(cell_package.decay_minimum_baseline, injecting * reacted_ratio)
+		active[cell_package] -= max(cell_package.decay_minimum_baseline, reacting * reacted_ratio)
 		if(active[cell_package] < 0)
 			active -= cell_package
 			for(var/datum/medichine_effect/cell_effect as anything in cell_package.effects)
@@ -513,14 +513,16 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	var/only_open = FALSE
 
 /datum/medichine_effect/wound_healing/tick_on_mob(datum/component/medichine_field/field, mob/living/entity, volume, seconds)
-	var/mob/living/carbon/humanlike = entity
-	if(!istype(humanlike))
-		#warn heal simplemob
-		return
 	var/brute_healing_total = volume * repair_strength_brute
 	var/burn_healing_total = volume * repair_strength_burn
 	var/brute_healing_left = brute_healing_total
 	var/burn_healing_left = burn_healing_total
+	var/mob/living/carbon/humanlike = entity
+	// do simple healing for simplemobs
+	if(!istype(humanlike))
+		brute_healing_left -= entity.heal_brute_loss(brute_healing_total)
+		burn_healing_left -= entity.heal_burn_loss(burn_healing_total)
+		return max(1 - (burn_healing_left / burn_healing_total), 1 - (brute_healing_left / brute_healing_total))
 	var/brute_loss_total = 0
 	var/burn_loss_total = 0
 	var/list/datum/wound/wounds_healing = list()
