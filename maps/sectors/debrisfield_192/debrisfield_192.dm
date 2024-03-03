@@ -22,7 +22,7 @@
 			GLOBAL_PROC,
 			GLOBAL_PROC_REF(seed_submaps),
 			list(z_index),
-			150,
+			200,
 			/area/space/debrisfield/unexplored,
 			/datum/map_template/submap/level_specific/debrisfield_vr,
 		)
