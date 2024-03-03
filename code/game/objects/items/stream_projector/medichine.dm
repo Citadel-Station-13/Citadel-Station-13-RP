@@ -513,10 +513,60 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	var/only_open = FALSE
 
 /datum/medichine_effect/wound_healing/tick_on_mob(datum/component/medichine_field/field, mob/living/entity, volume, seconds)
+	var/mob/living/carbon/humanlike = entity
+	if(!istype(humanlike))
+		#warn heal simplemob
+		return
+	var/brute_healing_total = volume * repair_strength_brute
+	var/burn_healing_total = volume * repair_strength_burn
+	var/brute_healing_left = brute_healing_total
+	var/burn_healing_left = burn_healing_total
+	var/brute_loss_total = 0
+	var/burn_loss_total = 0
+	var/list/datum/wound/wounds_healing = list()
+	for(var/obj/item/organ/external/ext as anything in humanlike.bad_external_organs)
+		for(var/datum/wound/wound as anything in ext.wounds)
+			if(wound.internal)
+				continue
+			if(only_open && (wound.is_treated()))
+				continue
+			if(wound.damage_type == BURN)
+				burn_loss_total += wound.damage
+			else
+				brute_loss_total += wound.damage
+	var/burn_heal_per = burn_healing_left / burn_loss_total
+	var/brute_heal_per = brute_healing_left / brute_loss_total
+	burn_heal_per = CEILING(burn_heal_per, 1)
+	brute_heal_per = CEILING(brute_heal_per, 1)
+	for(var/datum/wound/wound as anything in wounds_healing)
+		if(wound.damage_type == BURN)
+			#warn burn
+		else
+			#warn brute
 	#warn impl
+	return max(1 - (burn_healing_left / burn_healing_total), 1 - (brute_healing_left / brute_healing_total))
 
 #warn oxygenate
 #warn toxfilter
+
+
+/datum/medichine_effect/oxygenate
+	/// works on the dead
+	var/while_dead = FALSE
+	/// amount per volume
+	var/strength = 0
+
+/datum/medichine_effect/oxygenate/tick_on_mob(datum/component/medichine_field/field, mob/living/entity, volume, seconds)
+	#warn impl
+
+/datum/medichine_effect/toxfilter
+	/// works on the dead
+	var/while_dead = FALSE
+	/// amount per volume
+	var/strength = 0
+
+/datum/medichine_effect/toxfilter/tick_on_mob(datum/component/medichine_field/field, mob/living/entity, volume, seconds)
+	#warn impl
 
 /datum/medichine_effect/stabilize
 
