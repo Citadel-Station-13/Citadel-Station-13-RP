@@ -19,6 +19,8 @@
 
 	var/reagent_type = "water"
 
+	var/can_fish = TRUE
+
 /turf/simulated/floor/water/Initialize(mapload)
 	. = ..()
 	var/singleton/flooring/F = get_flooring_data(/singleton/flooring/water)
@@ -92,7 +94,7 @@
 
 /turf/simulated/floor/water/pre_fishing_query(obj/item/fishing_rod/rod, mob/user)
 	. = ..()
-	if(.)
+	if(!can_fish || .)
 		return
 	if(!GetComponent(/datum/component/fishing_spot))
 		AddComponent(/datum/component/fishing_spot, /datum/fish_source/ocean)
@@ -113,11 +115,13 @@
 	desc = "Don't worry, it's not closed."
 	under_state = "pool"
 	outdoors = FALSE
+	can_fish = FALSE
 
 /turf/simulated/floor/water/deep/pool
 	name = "deep pool"
 	desc = "Don't worry, it's not closed."
 	outdoors = FALSE
+	can_fish = FALSE
 
 /mob/living/proc/can_breathe_water()
 	return FALSE

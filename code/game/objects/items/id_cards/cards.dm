@@ -14,7 +14,7 @@
 	desc = "Does card things."
 	icon = 'icons/obj/card_cit.dmi'
 	icon_state = "generic"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	slot_flags = SLOT_ID | SLOT_EARS
 	var/associated_account_number = 0
 

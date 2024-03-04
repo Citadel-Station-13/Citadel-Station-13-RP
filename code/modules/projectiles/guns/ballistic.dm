@@ -4,7 +4,7 @@
 	icon = 'icons/obj/gun/ballistic.dmi'
 	icon_state = "revolver"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	materials_base = list(MAT_STEEL = 1000)
 	recoil = 0
 	projectile_type = /obj/projectile/bullet/pistol/strong	//Only used for chameleon guns
@@ -252,7 +252,7 @@
 				return CLICKCHAIN_DO_NOT_PROPAGATE
 			to_chat(user, "<span class='notice'>You screw [A] onto [src].</span>")
 			silenced = TRUE
-			w_class = ITEMSIZE_NORMAL
+			set_weight_class(WEIGHT_CLASS_NORMAL)
 			update_icon()
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		else if(istype(A, /obj/item/tool/wrench))
@@ -261,7 +261,7 @@
 				to_chat(user, "<span class='notice'>You unscrew [S]] from [src].</span>")
 				user.put_in_hands(S)
 				silenced = FALSE
-				w_class = ITEMSIZE_SMALL
+				set_weight_class(WEIGHT_CLASS_SMALL)
 				update_icon()
 
 /obj/item/gun/ballistic/attack_self(mob/user)

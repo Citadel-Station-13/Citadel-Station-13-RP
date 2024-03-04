@@ -87,7 +87,7 @@ Note: Must be placed within 3 tiles of the R&D Console
 /obj/machinery/r_n_d/destructive_analyzer/MouseDroppedOnLegacy(atom/dropping, mob/living/user)
 	if(istype(dropping, /obj/item/storage/part_replacer))
 		var/obj/item/storage/part_replacer/replacer = dropping
-		replacer.hide_from(user)
+		replacer.hide()
 		if(!linked_console)
 			to_chat(user, "<span class='notice'>\The [src] must be linked to an R&D console first.</span>")
 			return 0

@@ -15,7 +15,7 @@
 	throw_force = 5.0
 	throw_speed = 1
 	throw_range = 5
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 
 	//Cost to make in the autolathe
 	materials_base = list(MAT_STEEL = 70, MAT_GLASS = 30)
@@ -252,7 +252,7 @@
 			playsound(loc, acti_sound, 50, 1)
 			src.damage_force = 15
 			src.damtype = "fire"
-			src.w_class = ITEMSIZE_LARGE
+			src.set_weight_class(WEIGHT_CLASS_BULKY)
 			src.attack_sound = 'sound/items/welder.ogg'
 			welding = 1
 			update_icon()
@@ -274,7 +274,7 @@
 		playsound(loc, deac_sound, 50, 1)
 		src.damage_force = 3
 		src.damtype = "brute"
-		src.w_class = initial(src.w_class)
+		src.set_weight_class(initial(src.w_class))
 		src.welding = 0
 		src.attack_sound = initial(src.attack_sound)
 		update_icon()
@@ -346,7 +346,7 @@
 	desc = "A much larger welder with a huge tank."
 	icon_state = "indwelder"
 	max_fuel = 80
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	origin_tech = list(TECH_ENGINEERING = 3)
 	materials_base = list(MAT_STEEL = 70, MAT_GLASS = 120)
 
@@ -355,7 +355,7 @@
 	desc = "A miniature welder used during emergencies."
 	icon_state = "miniwelder"
 	max_fuel = 10
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	materials_base = list(MAT_METAL = 30, MAT_GLASS = 10)
 	change_icons = 0
 	tool_speed = 2
@@ -432,7 +432,7 @@
 	desc = "An experimental welder capable of synthesizing its own fuel from waste compounds. It can output a flame hotter than regular welders."
 	icon_state = "exwelder"
 	max_fuel = 40
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	origin_tech = list(TECH_ENGINEERING = 4, TECH_PHORON = 3)
 	materials_base = list(MAT_STEEL = 70, MAT_GLASS = 120)
 	tool_speed = 0.5
@@ -481,7 +481,7 @@
 	eye_safety_modifier = -2	// Brighter than the sun. Literally, you can look at the sun with a welding mask of proper grade, this will burn through that.
 	weight = ITEM_WEIGHT_HYBRID_TOOLS
 	tool_speed = 0.25
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	flame_intensity = 5
 	origin_tech = list(TECH_ENGINEERING = 5, TECH_PHORON = 4, TECH_PRECURSOR = 1)
 	reach = 2
@@ -495,7 +495,7 @@
 	desc = "A bulky, cooler-burning welding tool that draws from a worn welding tank."
 	icon_state = "tubewelder"
 	max_fuel = 10
-	w_class = ITEMSIZE_NO_CONTAINER
+	w_class = WEIGHT_CLASS_HUGE
 	materials_base = null
 	tool_speed = 1.25
 	change_icons = 0
@@ -555,7 +555,7 @@
 	desc = "A miniature welder attached to a spear, providing more reach. Typically used by Tyrmalin workers."
 	icon_state = "welderspear"
 	max_fuel = 10
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	materials_base = list(MAT_METAL = 50, MAT_GLASS = 10)
 	tool_speed = 1.5
 	eye_safety_modifier = 1 // Safer on eyes.

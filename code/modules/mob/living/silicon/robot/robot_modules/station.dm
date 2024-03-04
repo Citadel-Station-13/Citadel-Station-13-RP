@@ -25,7 +25,7 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	name = "robot module"
 	icon = 'icons/obj/module.dmi'
 	icon_state = "std_module"
-	w_class = ITEMSIZE_NO_CONTAINER
+	w_class = WEIGHT_CLASS_HUGE
 	item_state = "std_mod"
 	var/hide_on_manifest = 0
 	var/channels = list()

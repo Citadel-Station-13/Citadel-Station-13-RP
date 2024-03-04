@@ -23,9 +23,9 @@
 	var/l_hacking = 0
 	var/emagged = 0
 	var/open = 0
-	w_class = ITEMSIZE_NORMAL
-	max_w_class = ITEMSIZE_SMALL
-	max_storage_space = ITEMSIZE_SMALL * 7
+	w_class = WEIGHT_CLASS_NORMAL
+	max_single_weight_class = WEIGHT_CLASS_SMALL
+	max_combined_volume = WEIGHT_CLASS_SMALL * 7
 
 /obj/item/storage/secure/examine(mob/user, dist)
 	. = ..()
@@ -70,13 +70,6 @@
 	..()
 
 
-/obj/item/storage/secure/OnMouseDropLegacy(over_object, src_location, over_location)
-	if (locked)
-		src.add_fingerprint(usr)
-		return
-	..()
-
-
 /obj/item/storage/secure/attack_self(mob/user)
 	. = ..()
 	if(.)
@@ -107,6 +100,7 @@
 				l_set = 1
 			else if ((code == l_code) && (emagged == 0) && (l_set == 1))
 				locked = 0
+				obj_storage.set_locked(FALSE)
 				set_overlays(icon_opened)
 				code = null
 			else
@@ -115,8 +109,8 @@
 			if ((href_list["type"] == "R") && (emagged == 0) && (!l_setshort))
 				locked = 1
 				cut_overlays()
+				obj_storage.set_locked(TRUE)
 				code = null
-				close(usr)
 			else
 				code += href_list["type"]
 				if (length(src.code) > 5)
@@ -136,6 +130,7 @@
 		sleep(6)
 		set_overlays(icon_locking)
 		locked = 0
+		obj_storage.set_locked(FALSE)
 		to_chat(user, (feedback ? feedback : "You short out the lock of \the [src]."))
 		return 1
 
@@ -151,28 +146,15 @@
 	damage_force = 8.0
 	throw_speed = 1
 	throw_range = 4
-	max_w_class = ITEMSIZE_NORMAL
-	w_class = ITEMSIZE_LARGE
-	max_storage_space = ITEMSIZE_COST_NORMAL * 4
-
-/obj/item/storage/secure/briefcase/attack_hand(mob/user, list/params)
-	if ((src.loc == user) && (src.locked == 1))
-		to_chat(user, "<span class='warning'>[src] is locked and cannot be opened!</span>")
-	else if ((src.loc == user) && (!src.locked))
-		src.open(usr)
-	else
-		..()
-		for(var/mob/M in range(1))
-			if (M.s_active == src)
-				src.close(M)
-	src.add_fingerprint(user)
-	return
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
+	w_class = WEIGHT_CLASS_BULKY
+	max_combined_volume = WEIGHT_VOLUME_NORMAL * 4
 
 //LOADOUT ITEM
 /obj/item/storage/secure/briefcase/portable
 	name = "Portable Secure Briefcase"
 	desc = "A not-so large briefcase with a digital locking system. Holds less, but fits into more."
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 
 	starts_with = list(
 		/obj/item/paper,
@@ -182,9 +164,9 @@
 
 /obj/item/storage/secure/briefcase/vicase
 	name = "VI's Secure Briefpack"
-	w_class = ITEMSIZE_LARGE
-	max_w_class = ITEMSIZE_LARGE
-	max_storage_space = INVENTORY_STANDARD_SPACE
+	w_class = WEIGHT_CLASS_BULKY
+	max_single_weight_class = WEIGHT_CLASS_BULKY
+	max_combined_volume = STORAGE_VOLUME_BACKPACK
 	slot_flags = SLOT_BACK
 	icon = 'icons/obj/clothing/backpack.dmi'
 	icon_state = "securev"
@@ -206,11 +188,11 @@
 	icon_locking = "safeb"
 	icon_sparking = "safespark"
 	damage_force = 8.0
-	w_class = ITEMSIZE_NO_CONTAINER
-	max_w_class = ITEMSIZE_LARGE // This was 8 previously...
+	w_class = WEIGHT_CLASS_HUGE
+	max_single_weight_class = WEIGHT_CLASS_BULKY // This was 8 previously...
 	anchored = 1.0
 	density = 0
-	cant_hold = list(/obj/item/storage/secure/briefcase)
+	insertion_blacklist = list(/obj/item/storage/secure/briefcase)
 	starts_with = list(
 		/obj/item/paper,
 		/obj/item/pen

@@ -22,6 +22,10 @@
 	drop_sound = 'sound/items/drop/cardboardbox.ogg'
 	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
 
+/obj/item/storage/fancy/initialize_storage()
+	. = ..()
+	obj_storage.update_icon_on_item_change = TRUE
+
 /obj/item/storage/fancy/update_icon_state()
 	. = ..()
 	icon_state = "[icon_type]box[contents.len]"
@@ -46,9 +50,9 @@
 	icon_state = "eggbox"
 	icon_type = "egg"
 	name = "egg box"
-	storage_slots = 12
-	max_storage_space = 12 * ITEMSIZE_COST_SMALL
-	can_hold = list(
+	max_items = 12
+	max_combined_volume = 12 * WEIGHT_VOLUME_SMALL
+	insertion_whitelist = list(
 		/obj/item/reagent_containers/food/snacks/egg,
 		/obj/item/reagent_containers/food/snacks/boiledegg
 		)
@@ -67,7 +71,7 @@
 	item_state = "candlebox5"
 	throw_force = 2
 	slot_flags = SLOT_BELT
-	max_storage_space = ITEMSIZE_COST_SMALL * 5
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 5
 	starts_with = list(/obj/item/flame/candle = 5)
 
 /obj/item/storage/fancy/whitecandle_box
@@ -79,7 +83,7 @@
 	item_state = "whitecandlebox5"
 	throw_force = 2
 	slot_flags = SLOT_BELT
-	max_storage_space = ITEMSIZE_COST_SMALL * 5
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 5
 	starts_with = list(/obj/item/flame/candle/white = 5)
 
 /obj/item/storage/fancy/blackcandle_box
@@ -91,7 +95,7 @@
 	item_state = "blackcandlebox5"
 	throw_force = 2
 	slot_flags = SLOT_BELT
-	max_storage_space = ITEMSIZE_COST_SMALL * 5
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 5
 	starts_with = list(/obj/item/flame/candle/black = 5)
 
 
@@ -104,9 +108,9 @@
 	desc = "A box of crayons for all your rune drawing needs."
 	icon = 'icons/obj/crayons.dmi'
 	icon_state = "crayonbox"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	icon_type = "crayon"
-	can_hold = list(
+	insertion_whitelist = list(
 		/obj/item/pen/crayon
 	)
 	starts_with = list(
@@ -143,9 +147,9 @@
 	desc = "A very professional looking box of permanent markers."
 	icon = 'icons/obj/crayons.dmi'
 	icon_state = "markerbox"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	icon_type = "marker"
-	can_hold = list(
+	insertion_whitelist = list(
 		/obj/item/pen/crayon/marker
 	)
 	starts_with = list(
@@ -183,9 +187,9 @@
 	desc = "A box of chalk for all your ritual needs."
 	icon = 'icons/obj/crayons.dmi'
 	icon_state = "chalkbox"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	icon_type = "chalk"
-	can_hold = list(
+	insertion_whitelist = list(
 		/obj/item/pen/crayon/chalk
 	)
 	starts_with = list(
@@ -213,10 +217,10 @@
 	icon = 'icons/obj/food.dmi'
 	icon_state = "crackerbox"
 	icon_type = "cracker"
-	max_storage_space = ITEMSIZE_COST_TINY * 6
-	max_w_class = ITEMSIZE_TINY
-	w_class = ITEMSIZE_SMALL
-	can_hold = list(/obj/item/reagent_containers/food/snacks/cracker)
+	max_combined_volume = WEIGHT_VOLUME_TINY * 6
+	max_single_weight_class = WEIGHT_CLASS_TINY
+	w_class = WEIGHT_CLASS_SMALL
+	insertion_whitelist = list(/obj/item/reagent_containers/food/snacks/cracker)
 	starts_with = list(/obj/item/reagent_containers/food/snacks/cracker = 6)
 
 ////////////
@@ -228,11 +232,11 @@
 	icon = 'icons/obj/cigarettes.dmi'
 	icon_state = "cigpacket"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "cigpacket", SLOT_ID_LEFT_HAND = "cigpacket")
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	throw_force = 2
 	slot_flags = SLOT_BELT | SLOT_EARS
-	storage_slots = 6
-	can_hold = list(/obj/item/clothing/mask/smokable/cigarette, /obj/item/flame/lighter, /obj/item/cigbutt)
+	max_items = 6
+	insertion_whitelist = list(/obj/item/clothing/mask/smokable/cigarette, /obj/item/flame/lighter, /obj/item/cigbutt)
 	icon_type = "cigarette"
 	starts_with = list(/obj/item/clothing/mask/smokable/cigarette = 6)
 	var/brand = "\improper Trans-Stellar Duty-free"
@@ -240,7 +244,7 @@
 /obj/item/storage/fancy/cigarettes/Initialize(mapload)
 	. = ..()
 	atom_flags |= NOREACT
-	create_reagents(15 * storage_slots)//so people can inject cigarettes without opening a packet, now with being able to inject the whole one
+	create_reagents(15 * max_items)//so people can inject cigarettes without opening a packet, now with being able to inject the whole one
 	atom_flags |= OPENCONTAINER
 	if(brand)
 		for(var/obj/item/clothing/mask/smokable/cigarette/C in src)
@@ -251,12 +255,12 @@
 	icon_state = "[initial(icon_state)][contents.len]"
 	return
 
-/obj/item/storage/fancy/cigarettes/remove_from_storage(obj/item/W as obj, atom/new_location)
+/obj/item/storage/fancy/cigarettes/Exited(atom/movable/AM, atom/newLoc)
+	. = ..()
 	// Don't try to transfer reagents to lighters
-	if(istype(W, /obj/item/clothing/mask/smokable/cigarette))
-		var/obj/item/clothing/mask/smokable/cigarette/C = W
+	if(istype(AM, /obj/item/clothing/mask/smokable/cigarette))
+		var/obj/item/clothing/mask/smokable/cigarette/C = AM
 		reagents?.trans_to_obj(C, (reagents.total_volume/contents.len))
-	return ..()
 
 /obj/item/storage/fancy/cigarettes/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(target == user && user.zone_sel.selecting == O_MOUTH)
@@ -274,7 +278,6 @@
 
 		// We call remove_from_storage first to manage the reagent transfer and
 		// UI updates.
-		remove_from_storage(cig, null)
 		if(!user.equip_to_slot_if_possible(cig, SLOT_ID_MASK, INV_OP_SUPPRESS_WARNING))
 			cig.forceMove(user.drop_location())
 
@@ -340,40 +343,39 @@
 	desc = "A case for holding your cigars when you are not smoking them."
 	icon_state = "cigarcase"
 	icon = 'icons/obj/cigarettes.dmi'
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	throw_force = 2
 	slot_flags = SLOT_BELT
-	storage_slots = 7
-	can_hold = list(/obj/item/clothing/mask/smokable/cigarette/cigar, /obj/item/cigbutt/cigarbutt)
+	max_items = 7
+	insertion_whitelist = list(/obj/item/clothing/mask/smokable/cigarette/cigar, /obj/item/cigbutt/cigarbutt)
 	icon_type = "cigar"
 	starts_with = list(/obj/item/clothing/mask/smokable/cigarette/cigar = 7)
 
 /obj/item/storage/fancy/cigar/Initialize(mapload)
 	. = ..()
 	atom_flags |= NOREACT
-	create_reagents(15 * storage_slots)
+	create_reagents(15 * max_items)
 
 /obj/item/storage/fancy/cigar/update_icon()
 	icon_state = "[initial(icon_state)][contents.len]"
 	return
 
-/obj/item/storage/fancy/cigar/remove_from_storage(obj/item/W as obj, atom/new_location)
-	var/obj/item/clothing/mask/smokable/cigarette/cigar/C = W
-	if(!istype(C))
-		return ..()
-	reagents?.trans_to_obj(C, (reagents.total_volume/contents.len))
-	return ..()
+/obj/item/storage/fancy/cigar/Exited(atom/movable/AM, atom/newLoc)
+	. = ..()
+	if(!istype(AM, /obj/item/clothing/mask/smokable/cigarette/cigar))
+		return
+	reagents?.trans_to_obj(AM, (reagents.total_volume / length(contents)))
 
 /obj/item/storage/rollingpapers
 	name = "rolling paper pack"
 	desc = "A small cardboard pack containing several folded rolling papers."
 	icon_state = "paperbox"
 	icon = 'icons/obj/cigarettes.dmi'
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	throw_force = 2
 	slot_flags = SLOT_BELT
-	storage_slots = 14
-	can_hold = list(/obj/item/rollingpaper)
+	max_items = 14
+	insertion_whitelist = list(/obj/item/rollingpaper)
 	starts_with = list(/obj/item/rollingpaper = 14)
 
 /obj/item/storage/rollingblunts
@@ -381,11 +383,11 @@
 	desc = "A small cardboard pack containing a few tabacco-based blunt papers."
 	icon_state = "bluntbox"
 	icon = 'icons/obj/cigarettes.dmi'
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	throw_force = 2
 	slot_flags = SLOT_BELT
-	storage_slots = 7
-	can_hold = list(/obj/item/rollingblunt)
+	max_items = 7
+	insertion_whitelist = list(/obj/item/rollingblunt)
 	starts_with = list(/obj/item/rollingblunt = 7)
 
 /*
@@ -397,8 +399,8 @@
 	icon_state = "vialbox6"
 	icon_type = "vial"
 	name = "vial storage box"
-	storage_slots = 6
-	can_hold = list(/obj/item/reagent_containers/glass/beaker/vial)
+	max_items = 6
+	insertion_whitelist = list(/obj/item/reagent_containers/glass/beaker/vial)
 	starts_with = list(/obj/item/reagent_containers/glass/beaker/vial = 6)
 
 /obj/item/storage/lockbox/vials
@@ -407,10 +409,10 @@
 	icon = 'icons/obj/vialbox.dmi'
 	icon_state = "vialbox0"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syringe_kit", SLOT_ID_LEFT_HAND = "syringe_kit")
-	max_w_class = ITEMSIZE_SMALL
-	can_hold = list(/obj/item/reagent_containers/glass/beaker/vial)
-	max_storage_space = ITEMSIZE_COST_SMALL * 6 //The sum of the w_classes of all the items in this storage item.
-	storage_slots = 6
+	max_single_weight_class = WEIGHT_CLASS_SMALL
+	insertion_whitelist = list(/obj/item/reagent_containers/glass/beaker/vial)
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 6 //The sum of the w_classes of all the items in this storage item.
+	max_items = 6
 	req_access = list(ACCESS_MEDICAL_VIROLOGY)
 
 /obj/item/storage/lockbox/vials/Initialize(mapload)
@@ -449,8 +451,8 @@
 	icon_type = "chocolate"
 
 	var/startswith = 6
-	max_storage_space = ITEMSIZE_COST_SMALL * 6
-	can_hold = list(
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 6
+	insertion_whitelist = list(
 		/obj/item/reagent_containers/food/snacks/chocolatepiece,
 		/obj/item/reagent_containers/food/snacks/chocolatepiece/white,
 		/obj/item/reagent_containers/food/snacks/chocolatepiece/truffle

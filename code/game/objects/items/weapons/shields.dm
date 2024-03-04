@@ -66,7 +66,7 @@
 	throw_force = 5.0
 	throw_speed = 1
 	throw_range = 4
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	origin_tech = list(TECH_MATERIAL = 2)
 	materials_base = list(MAT_GLASS = 7500, MAT_STEEL = 1000)
 	attack_verb = list("shoved", "bashed")
@@ -193,7 +193,7 @@
 	damage_force = 16
 	encumbrance = ITEM_ENCUMBRANCE_SHIELD_TOWER
 	throw_force = 15 //Massive piece of metal
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 
 /obj/item/shield/riot/tower/swat
 	name = "swat shield"
@@ -294,7 +294,7 @@
 	throw_force = 5.0
 	throw_speed = 1
 	throw_range = 4
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	var/lrange = 1.5
 	var/lpower = 1.5
 	var/lcolor = "#006AFF"
@@ -336,7 +336,7 @@
 	if (active)
 		damage_force = 10
 		update_icon()
-		w_class = ITEMSIZE_LARGE
+		set_weight_class(WEIGHT_CLASS_BULKY)
 		slot_flags = null
 		playsound(user, 'sound/weapons/saberon.ogg', 50, 1)
 		to_chat(user, "<span class='notice'>\The [src] is now active.</span>")
@@ -344,7 +344,7 @@
 	else
 		damage_force = 3
 		update_icon()
-		w_class = ITEMSIZE_TINY
+		set_weight_class(WEIGHT_CLASS_TINY)
 		slot_flags = SLOT_EARS
 		playsound(user, 'sound/weapons/saberoff.ogg', 50, 1)
 		to_chat(user, "<span class='notice'>\The [src] can now be concealed.</span>")
@@ -396,7 +396,7 @@
 	throw_force = 3
 	throw_speed = 3
 	throw_range = 4
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	var/active = 0
 /*
 /obj/item/shield/energy/IsShield()
@@ -417,14 +417,14 @@
 		damage_force = 8
 		throw_force = 5
 		throw_speed = 2
-		w_class = ITEMSIZE_LARGE
+		set_weight_class(WEIGHT_CLASS_BULKY)
 		slot_flags = SLOT_BACK
 		to_chat(user, "<span class='notice'>You extend \the [src].</span>")
 	else
 		damage_force = 3
 		throw_force = 3
 		throw_speed = 3
-		w_class = ITEMSIZE_NORMAL
+		set_weight_class(WEIGHT_CLASS_NORMAL)
 		slot_flags = null
 		to_chat(user, "<span class='notice'>[src] can now be concealed.</span>")
 

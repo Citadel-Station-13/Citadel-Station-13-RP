@@ -32,7 +32,7 @@
 
 	holder_type = /obj/item/holder/pai
 
-	can_pull_size = ITEMSIZE_SMALL
+	can_pull_size = WEIGHT_CLASS_SMALL
 	can_pull_mobs = MOB_PULL_SMALLER
 
 	idcard_type = /obj/item/card/id

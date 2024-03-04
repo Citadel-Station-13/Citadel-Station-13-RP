@@ -105,7 +105,6 @@
 /obj/machinery/embedded_controller/radio/airlock/phoron
 	name = "Phoron Lock Controller"
 	valid_actions = list("cycle_ext", "cycle_int", "force_ext", "force_int", "abort", "secure")
-	var/tag_scrubber
 
 /obj/machinery/embedded_controller/radio/airlock/phoron/ui_data(mob/user, datum/tgui/ui)
 	. = list(
@@ -124,8 +123,8 @@
 
 //Handles the control of airlocks
 
-/datum/computer/file/embedded_program/airlock/phoron
-	var/tag_scrubber
+//datum/computer/file/embedded_program/airlock/phoron
+
 
 /datum/computer/file/embedded_program/airlock/phoron/New(var/obj/machinery/embedded_controller/M)
 	..(M)
@@ -139,10 +138,6 @@
 	memory["scrubber_status"] = "unknown"
 	memory["target_phoron"] = 0.1
 	memory["secure"] = 1
-
-	if (istype(M, /obj/machinery/embedded_controller/radio/airlock/phoron))	//if our controller is an airlock controller than we can auto-init our tags
-		var/obj/machinery/embedded_controller/radio/airlock/phoron/controller = M
-		tag_scrubber = controller.tag_scrubber ? controller.tag_scrubber : "[id_tag]_scrubber"
 
 /datum/computer/file/embedded_program/airlock/phoron/receive_signal(datum/signal/signal, receive_method, receive_param)
 	var/receive_tag = signal.data["tag"]
@@ -191,7 +186,7 @@
 				signalPump(tag_airpump, 1, 1, memory["target_pressure"]) // And pressurizng to offset losses
 				memory["processing"] = TRUE
 			else if(fuzzy_smaller_check(memory["chamber_sensor_temperature"], memory["target_temperature"]))
-				signalScrubber(tag_scrubber, 1)//the scrubbers also work as heats because fuck making sense
+				signalTemperatureAdjuster(tag_temperature_adjuster, 1, memory["target_temperature"])
 				memory["processing"] = TRUE
 			else if(fuzzy_smaller_check(memory["chamber_sensor_pressure"], memory["internal_sensor_pressure"]))
 				signalScrubber(tag_scrubber, 0) // stop cleaning
@@ -200,10 +195,12 @@
 			else // both phoron and pressure levels are acceptable
 				toggleDoor(memory["interior_status"],tag_interior_door, 1, "open")
 				signalScrubber(tag_scrubber, 0)
+				signalTemperatureAdjuster(tag_temperature_adjuster, 0, memory["target_temperature"])
 				signalPump(tag_airpump, 0, 1, memory["external_sensor_pressure"])//Turn the pump off
 				state = STATE_OPEN_IN
 				memory["processing"] = FALSE
 		if(STATE_CYCLING_OUT)
+			signalTemperatureAdjuster(tag_temperature_adjuster, 0, memory["target_temperature"])
 			if(memory["interior_status"]["state"] == "open")
 				toggleDoor(memory["interior_status"],tag_interior_door, 1, "close")
 			else if((memory["chamber_sensor_pressure"] - memory["external_sensor_pressure"]) > 1 )
@@ -231,4 +228,5 @@
 /datum/computer/file/embedded_program/airlock/phoron/stop_everything()
 	. = ..()
 	signalScrubber(tag_scrubber, 0)//Turn off scrubbers
+	signalTemperatureAdjuster(tag_temperature_adjuster, 0, memory["target_temperature"])
 

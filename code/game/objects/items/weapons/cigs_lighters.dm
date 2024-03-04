@@ -30,7 +30,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_state = "match_unlit"
 	var/burnt = 0
 	var/smoketime = 5
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	origin_tech = list(TECH_MATERIAL = 1)
 	slot_flags = SLOT_EARS
 	attack_verb = list("burnt", "singed")
@@ -266,7 +266,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_state = "cig"
 	item_state = "cig"
 	throw_speed = 0.5
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	slot_flags = SLOT_EARS | SLOT_MASK
 	worn_render_flags = WORN_RENDER_INHAND_NO_RENDER | WORN_RENDER_SLOT_ALLOW_DEFAULT
 	attack_verb = list("burnt", "singed")
@@ -326,7 +326,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_state = "cigimp"
 	item_state = "cigimp"
 	throw_speed = 0.5
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	slot_flags = SLOT_EARS | SLOT_MASK
 	attack_verb = list("burnt", "singed")
 	type_butt = /obj/item/cigbutt/imp
@@ -396,7 +396,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	desc = "A manky old cigarette butt."
 	icon = 'icons/obj/clothing/masks.dmi'
 	icon_state = "cigbutt"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	slot_flags = SLOT_EARS
 	throw_force = 1
 
@@ -530,7 +530,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	name = "rolling paper"
 	desc = "A small, thin piece of easily flammable paper, commonly used for rolling and smoking various dried plants."
 	icon = 'icons/obj/cigarettes.dmi'
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	icon_state = "cig paper"
 
 /obj/item/rollingpaper/attackby(obj/item/W as obj, mob/user as mob)
@@ -553,7 +553,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	name = "blunt paper"
 	desc = "A small, thin piece of tobacco-based paper, commonly used for rolling and smoking various dried plants."
 	icon = 'icons/obj/cigarettes.dmi'
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	icon_state = "blunt paper"
 
 /obj/item/rollingblunt/attackby(obj/item/W as obj, mob/user as mob)
@@ -582,7 +582,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon = 'icons/obj/items.dmi'
 	icon_state = "lighter-g"
 	item_state = "lighter-g"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	throw_force = 4
 	slot_flags = SLOT_BELT
 	attack_verb = list("burnt", "singed")

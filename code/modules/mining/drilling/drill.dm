@@ -323,7 +323,7 @@
 	else if(S)
 		var/tookall = TRUE
 		for(var/obj/item/stack/ore/O in contents)
-			if(!S.take(O))
+			if(!S.obj_storage.try_insert(O))
 				tookall = FALSE
 				break
 		to_chat(user, "<span class='notice'>You unload [tookall ? "all" : "some"] of the drill's storage cache into [S].</span>")

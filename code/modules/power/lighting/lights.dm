@@ -7,7 +7,7 @@
 	icon = 'icons/obj/lighting.dmi'
 	damage_force = 2
 	throw_force = 5
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	materials_base = list(MAT_STEEL = 60)
 	drop_sound = 'sound/items/drop/glass.ogg'
 	pickup_sound = 'sound/items/pickup/glass.ogg'
@@ -49,7 +49,7 @@
 	nightshift_power = 0.5
 
 /obj/item/light/tube/large
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	name = "large light tube"
 	brightness_range = 8
 	brightness_power = 1

@@ -24,6 +24,10 @@
 #define MOB_BODYTEMP_EQUALIZATION_MIN_UNFAVORABLE 1
 /// maximum temperature change when environment is further from livable temperature / is going to harm us from its temperature
 #define MOB_BODYTEMP_EQUALIZATION_MAX_UNFAVORABLE 50
+/// temperature of environment has to be within this range of favorable to be considered.. favorable
+#define MOB_BODYTEMP_EQUALIZATION_FAVORABLE_LEEWAY 30
+/// temperature difference of body from normal, if exceeding this much from normal, makes something able to be favorable even if it's outside of leeway.
+#define MOB_BODYTEMP_EQUALIZATION_FAVORABLE_FORCED_THRESHOLD 200
 
 //?  CPR
 /// how long CPR suppresses brain decay

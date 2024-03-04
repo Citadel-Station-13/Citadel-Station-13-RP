@@ -6,7 +6,7 @@
 		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_gloves.dmi',
 		)
 	gender = PLURAL //Carn: for grammarically correct text-parsing
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	icon = 'icons/obj/clothing/gloves.dmi'
 	siemens_coefficient = 0.9
 	blood_sprite_state = "bloodyhands"

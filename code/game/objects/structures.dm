@@ -1,6 +1,6 @@
 /obj/structure
 	icon = 'icons/obj/structures.dmi'
-	w_class = ITEMSIZE_NO_CONTAINER
+	w_class = WEIGHT_CLASS_HUGE
 	pass_flags = ATOM_PASS_BUCKLED
 
 	// todo: rename to default_unanchor, allow generic structure unanchoring.

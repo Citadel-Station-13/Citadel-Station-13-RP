@@ -8,7 +8,7 @@
 	extended_desc = "The circuit accepts a 'dir' number as a direction to move towards.<br>\
 	Pulsing the 'step towards dir' activator pin will cause the machine to move one step in that direction, assuming it is not \
 	being held, or anchored in some way.  It should be noted that the ability to move is dependant on the type of assembly that this circuit inhabits; only drone assemblies can move."
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	complexity = 10
 	cooldown_per_use = 1
 	ext_cooldown = 4
@@ -598,6 +598,7 @@
 	var/max_items = 10
 
 /obj/item/integrated_circuit/manipulation/inserter/do_work(ord)
+	// todo: this doesn't even fucking work
 	if(ord == 1)
 		//There shouldn't be any target required to eject all contents
 		var/obj/item/target_obj = get_pin_data_as_type(IC_INPUT, 1, /obj/item)
@@ -625,7 +626,7 @@
 			if(0)
 				if(A && isstorage(A) && Adjacent(A))
 					var/obj/item/storage/S = A
-					S.remove_from_storage(target_obj,drop_location())
+					S.obj_storage.try_remove(target_obj, drop_location())
 					activate_pin(2)
 					return TRUE
 				return
@@ -814,7 +815,7 @@
 	The 'fire' activator will cause the mechanism to attempt to fire the weapon at the coordinates, if possible.  Note that the \
 	normal limitations to firearms, such as ammunition requirements and firing delays, still hold true if fired by the mechanism."
 	complexity = 20
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	size = 3
 	can_be_asked_input = TRUE
 	inputs = list(
