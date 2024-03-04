@@ -4,16 +4,23 @@
 	desc = "Small crystal with imprinted photonic circuits that can be used to store data. Its capacity is 16 GQ."
 	power_usage = 10
 	icon_state = "flashdrive_basic"
-	hardware_size = 1
-	max_capacity = 16
 	origin_tech = list(TECH_DATA = 1)
+	w_class = WEIGHT_CLASS_TINY
+	critical = FALSE
+	max_capacity = 16
+	device_type = MC_SDD
+
+/obj/item/computer_hardware/hard_drive/portable/on_remove(obj/item/modular_computer/MC, mob/user)
+	return //this is a floppy disk, let's not shut the computer down when it gets pulled out.
+
+/obj/item/computer_hardware/hard_drive/portable/install_default_programs()
+	return // Empty by default
 
 /obj/item/computer_hardware/hard_drive/portable/advanced
 	name = "advanced data crystal"
 	desc = "Small crystal with imprinted high-density photonic circuits that can be used to store data. Its capacity is 64 GQ."
 	power_usage = 20
 	icon_state = "flashdrive_advanced"
-	hardware_size = 1
 	max_capacity = 64
 	origin_tech = list(TECH_DATA = 2)
 
@@ -22,16 +29,5 @@
 	desc = "Small crystal with imprinted ultra-density photonic circuits that can be used to store data. Its capacity is 256 GQ."
 	power_usage = 40
 	icon_state = "flashdrive_super"
-	hardware_size = 1
 	max_capacity = 256
 	origin_tech = list(TECH_DATA = 4)
-
-/obj/item/computer_hardware/hard_drive/portable/Initialize(mapload)
-	. = ..()
-	stored_files = list()
-	recalculate_size()
-
-/obj/item/computer_hardware/hard_drive/portable/Destroy()
-	if(holder2 && (holder2.portable_drive == src))
-		holder2.portable_drive = null
-	return ..()

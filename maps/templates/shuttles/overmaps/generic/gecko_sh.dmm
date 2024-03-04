@@ -2251,7 +2251,7 @@
 "SV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/item/modular_computer/telescreen/preset{
+/obj/machinery/modular_computer/console/telescreen/preset{
 	pixel_y = 23
 	},
 /obj/structure/handrail,

@@ -103,3 +103,14 @@
 	end_sound = 'sound/machines/air_pump/airpumpshutdown.ogg'
 	volume = 15
 	pref_check = /datum/client_preference/air_pump_noise
+
+/datum/looping_sound/computer
+	start_sound = 'sound/machines/computer/computer_start.ogg'
+	start_length = 7.2 SECONDS
+	start_volume = 10
+	mid_sounds = list('sound/machines/computer/computer_mid1.ogg'=1, 'sound/machines/computer/computer_mid2.ogg'=1)
+	mid_length = 1.8 SECONDS
+	end_sound = 'sound/machines/computer/computer_end.ogg'
+	end_volume = 10
+	volume = 2
+	extra_range = -12

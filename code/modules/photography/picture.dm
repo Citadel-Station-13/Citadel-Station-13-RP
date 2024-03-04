@@ -4,6 +4,8 @@
  * cares not for text metadata like names/anything mutable.
  */
 /datum/picture
+	var/picture_name = "picture"
+	var/picture_desc = "This is a picture."
 	/// image hash (used for unique identification)
 	var/image_hash
 	/// image - are we loaded?

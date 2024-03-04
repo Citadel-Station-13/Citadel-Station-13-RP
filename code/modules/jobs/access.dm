@@ -1,19 +1,18 @@
 
-/// Returns 1 if this mob has sufficient access to use this object
+//returns TRUE if this mob has sufficient access to use this object
 /obj/proc/allowed(mob/M)
 	if(IsAdminGhost(M))
 		return TRUE
 	//check if it doesn't require any access at all
-	if(src.check_access(null))
-		return 1
+	if(check_access(null))
+		return TRUE
+	if(!M)
+		return FALSE
 
 	var/id = M.GetIdCard()
 	if(id)
 		return check_access(id)
-	return 0
-
-///obj/item/proc/GetAccess()
-//	return list()
+	return FALSE
 
 /atom/movable/proc/GetAccess()
 	var/obj/item/card/id/id = GetIdCard()
@@ -21,6 +20,12 @@
 
 /obj/proc/GetID()
 	return null
+
+/obj/item/proc/RemoveID()
+	return null
+
+/obj/item/proc/InsertID()
+	return FALSE
 
 /obj/proc/check_access(obj/item/I)
 	return check_access_list(I ? I.GetAccess() : list())

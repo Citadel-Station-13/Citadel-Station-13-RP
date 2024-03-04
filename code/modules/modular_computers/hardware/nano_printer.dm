@@ -1,27 +1,31 @@
 /obj/item/computer_hardware/nano_printer
 	name = "nano printer"
 	desc = "Small integrated printer with paper recycling module."
-	power_usage = 50
+	power_usage = 100
 	origin_tech = list(TECH_DATA = 2, TECH_ENGINEERING = 2)
 	critical = 0
 	icon_state = "printer"
-	hardware_size = 1
-	var/stored_paper = 5
-	var/max_paper = 10
+	w_class = WEIGHT_CLASS_TINY
+	device_type = MC_PRINT
+	expansion_hw = TRUE
+	var/stored_paper = 20
+	var/max_paper = 30
 
-/obj/item/computer_hardware/nano_printer/diagnostics(var/mob/user)
+/obj/item/computer_hardware/nano_printer/diagnostics(mob/living/user)
 	..()
-	to_chat(user, "Paper buffer level: [stored_paper]/[max_paper]")
+	to_chat(user, SPAN_NOTICE("Paper level: [stored_paper]/[max_paper]."))
 
-/obj/item/computer_hardware/nano_printer/proc/print_text(var/text_to_print, var/paper_title = null)
+/obj/item/computer_hardware/nano_printer/examine(mob/user)
+	. = ..()
+	. += SPAN_NOTICE("Paper level: [stored_paper]/[max_paper].")
+
+/obj/item/computer_hardware/nano_printer/proc/print_text(text_to_print, paper_title = "")
 	if(!stored_paper)
-		return 0
-	if(!enabled)
-		return 0
+		return FALSE
 	if(!check_functionality())
-		return 0
+		return FALSE
 
-	var/obj/item/paper/P = new/obj/item/paper(get_turf(holder2))
+	var/obj/item/paper/P = new/obj/item/paper(holder.drop_location())
 
 	// Damaged printer causes the resulting paper to be somewhat harder to read.
 	if(damage > damage_malfunction)
@@ -30,15 +34,16 @@
 		P.info = text_to_print
 	if(paper_title)
 		P.name = paper_title
-	P.update_icon()
+	P.update_appearance()
+	// OLDPAPER
 	P.fields = count_fields(P.info)
 	P.updateinfolinks()
-
+	// END OLDPAPER
 	stored_paper--
-	return 1
+	return TRUE
 
-/obj/item/computer_hardware/nano_printer/proc/count_fields(var/info)
-//Count the fields. This is taken directly from paper.dm, TYPE_PROC_REF(/obj/item/paper, parsepencode)(). -Hawk_v3
+// OLDPAPER FIELDS
+/obj/item/computer_hardware/nano_printer/proc/count_fields(info)
 	var/fields = 0
 	var/t = info
 	var/laststart = 1
@@ -50,22 +55,24 @@
 		fields++
 	return fields
 
-/obj/item/computer_hardware/nano_printer/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/paper))
+/obj/item/computer_hardware/nano_printer/try_insert(obj/item/I, mob/living/user = null)
+	if(istype(I, /obj/item/paper))
 		if(stored_paper >= max_paper)
-			to_chat(user, "You try to add \the [W] into \the [src], but its paper bin is full.")
-			return
-		var/confirm=input(user, "Are you certain you want to insert \the [W] into [src]? The contents will be lost.","Nano Printer") in list("Yes","No")
-		if(confirm=="Yes")
-			to_chat(user, "You insert \the [W] into [src].")
-			qdel(W)
-			stored_paper++
-	else if(istype(W, /obj/item/paper_bundle))
-		var/obj/item/paper_bundle/B = W
+			to_chat(user, SPAN_WARNING("You try to add \the [I] into [src], but its paper bin is full!"))
+			return FALSE
+
+		if(user && !user.temporarily_remove_from_inventory(I))
+			return FALSE
+		to_chat(user, SPAN_NOTICE("You insert \the [I] into [src]'s paper recycler."))
+		qdel(I)
+		stored_paper++
+		return TRUE
+	else if(istype(I, /obj/item/paper_bundle))
+		var/obj/item/paper_bundle/B = I
 		var/num_of_pages_added = 0
 		if(stored_paper >= max_paper)
-			to_chat(user, "You try to add \the [W] into \the [src], but its paper bin is full.")
-			return
+			to_chat(user, SPAN_WARNING("You try to add \the [I] into [src], but its paper bin is full!"))
+			return FALSE
 		for(var/obj/item/bundleitem in B) //loop through items in bundle
 			if(istype(bundleitem, /obj/item/paper)) //if item is paper (and not photo), add into the bin
 				B.pages.Remove(bundleitem)
@@ -73,21 +80,16 @@
 				num_of_pages_added++
 				stored_paper++
 			if(stored_paper >= max_paper) //check if the printer is full yet
-				to_chat(user, "The printer has been filled to full capacity.")
+				to_chat(user, SPAN_NOTICE("The printer has been filled to full capacity."))
 				break
 		if(B.pages.len == 0) //if all its papers have been put into the printer, delete bundle
-			qdel(W)
+			qdel(I)
 		else if(B.pages.len == 1) //if only one item left, extract item and delete the one-item bundle
 			if(!user.attempt_consume_item_for_construction(B))
-				return
+				return FALSE
 			user.put_in_hands(B[1])
 		else //if at least two items remain, just update the bundle icon
 			B.update_icon()
-		to_chat(user, "You add [num_of_pages_added] papers from \the [W] into \the [src].")
-	return
-
-/obj/item/computer_hardware/nano_printer/Destroy()
-	if(holder2 && (holder2.nano_printer == src))
-		holder2.nano_printer = null
-	holder2 = null
-	return ..()
+		to_chat(user, SPAN_NOTICE("You add [num_of_pages_added] papers from \the [I] into \the [src]."))
+		return TRUE
+	return FALSE

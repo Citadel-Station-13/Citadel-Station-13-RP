@@ -1,10 +1,9 @@
 /datum/computer_file/program/newsbrowser
 	filename = "newsbrowser"
-	filedesc = "NTNet/ExoNet News Browser"
-	extended_desc = "This program may be used to view and download news articles from the network."
+	filedesc = "Newscaster"
+	category = PROGRAM_CATEGORY_MISC
+	extended_desc = "This program allows any user to access the Newscaster network from anywhere."
 	program_icon_state = "generic"
-	program_key_state = "generic_key"
-	program_menu_icon = "contact"
 	size = 4
 	requires_ntnet = TRUE
 	available_on_ntnet = TRUE
@@ -21,6 +20,10 @@
 /datum/computer_file/program/newsbrowser/process_tick()
 	if(!downloading)
 		return
+	if(download_progress >= loaded_article.size)
+		downloading = 0
+		requires_ntnet = 0 // Turn off NTNet requirement as we already loaded the file into local memory.
+
 	download_netspeed = 0
 	// Speed defines are found in misc.dm
 	switch(ntnet_status)
@@ -31,10 +34,6 @@
 		if(3)
 			download_netspeed = NTNETSPEED_ETHERNET
 	download_progress += download_netspeed
-	if(download_progress >= loaded_article.size)
-		downloading = 0
-		requires_ntnet = 0 // Turn off NTNet requirement as we already loaded the file into local memory.
-	SStgui.update_uis(src)
 
 /datum/computer_file/program/newsbrowser/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = get_header_data()
@@ -70,13 +69,12 @@
 
 	return data
 
-/datum/computer_file/program/newsbrowser/kill_program()
-	..()
-	requires_ntnet = TRUE
+/datum/computer_file/program/newsbrowser/kill_program(forced)
 	loaded_article = null
 	download_progress = 0
 	downloading = FALSE
 	show_archived = FALSE
+	return ..()
 
 /datum/computer_file/program/newsbrowser/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
@@ -109,7 +107,7 @@
 			var/savename = sanitize(input(usr, "Enter file name or leave blank to cancel:", "Save article", loaded_article.filename))
 			if(!savename)
 				return TRUE
-			var/obj/item/computer_hardware/hard_drive/HDD = computer.hard_drive
+			var/obj/item/computer_hardware/hard_drive/HDD = computer.all_components[MC_CARD]
 			if(!HDD)
 				return TRUE
 			var/datum/computer_file/data/news_article/N = loaded_article.clone()

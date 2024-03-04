@@ -224,7 +224,7 @@
 		cost = 2,
 	)
 	. += create_stack_recipe_datum("category" = "modular computer frames", name = "modular console frame", product = /obj/item/modular_computer/console, time = 2 SECONDS, cost = 10)
-	. += create_stack_recipe_datum("category" = "modular computer frames", name = "modular telescreen frame", product = /obj/item/modular_computer/telescreen, time = 2 SECONDS, cost = 5)
+	. += create_stack_recipe_datum("category" = "modular computer frames", name = "modular telescreen frame", product = /obj/machinery/modular_computer/console/telescreen, time = 2 SECONDS, cost = 5)
 	. += create_stack_recipe_datum("category" = "modular computer frames", name = "modular laptop frame", product = /obj/item/modular_computer/laptop, time = 2 SECONDS, cost = 3)
 	. += create_stack_recipe_datum("category" = "modular computer frames", name = "modular tablet frame", product = /obj/item/modular_computer/tablet, time = 2 SECONDS, cost = 2)
 	. += create_stack_recipe_datum(

@@ -4,12 +4,16 @@
  *
  * This script uses Juke Build, read the docs here:
  * https://github.com/stylemistake/juke-build
+ *
+ * @file
+ * @copyright 2021 Aleksej Komarov
+ * @license MIT
  */
 
 import fs from 'fs';
-import Juke from './juke/index.js';
 import { DreamDaemon, DreamMaker } from './lib/byond.js';
 import { yarn } from './lib/yarn.js';
+import Juke from './juke/index.js';
 
 Juke.chdir('../..', import.meta.url);
 Juke.setup({ file: import.meta.url }).then((code) => {
@@ -74,9 +78,12 @@ export const DmTarget = new Juke.Target({
     `${DME_NAME}.rsc`,
   ],
   executes: async ({ get }) => {
+    const defines = get(DefineParameter);
+    if (defines.length > 0) {
+      Juke.logger.info('Using defines:', defines.join(', '));
+    }
     await DreamMaker(`${DME_NAME}.dme`, {
-      defines: ['CBT', ...get(DefineParameter)],
-      warningsAsErrors: get(WarningParameter).includes('error'),
+      defines: ['CBT', ...defines],
     });
   },
 });
@@ -87,10 +94,13 @@ export const DmTestTarget = new Juke.Target({
     get(DefineParameter).includes('ALL_MAPS') && DmMapsIncludeTarget,
   ],
   executes: async ({ get }) => {
+    const defines = get(DefineParameter);
+    if (defines.length > 0) {
+      Juke.logger.info('Using defines:', defines.join(', '));
+    }
     fs.copyFileSync(`${DME_NAME}.dme`, `${DME_NAME}.test.dme`);
     await DreamMaker(`${DME_NAME}.test.dme`, {
-      defines: ['CBT', 'CIBUILDING', ...get(DefineParameter)],
-      warningsAsErrors: get(WarningParameter).includes('error'),
+      defines: ['CBT', 'CIBUILDING', ...defines],
     });
     Juke.rm('data/logs/ci', { recursive: true });
     await DreamDaemon(
@@ -111,7 +121,6 @@ export const DmTestTarget = new Juke.Target({
 });
 
 export const YarnTarget = new Juke.Target({
-  parameters: [CiParameter],
   inputs: [
     'tgui/.yarn/+(cache|releases|plugins|sdks)/**/*',
     'tgui/**/package.json',
@@ -120,7 +129,9 @@ export const YarnTarget = new Juke.Target({
   outputs: [
     'tgui/.yarn/install-target',
   ],
-  executes: ({ get }) => yarn('install', get(CiParameter) && '--immutable'),
+  executes: async () => {
+    await yarn('install');
+  },
 });
 
 export const TgFontTarget = new Juke.Target({
@@ -152,7 +163,9 @@ export const TguiTarget = new Juke.Target({
     'tgui/public/tgui-panel.bundle.css',
     'tgui/public/tgui-panel.bundle.js',
   ],
-  executes: () => yarn('tgui:build'),
+  executes: async () => {
+    await yarn('webpack-cli', '--mode=production');
+  },
 });
 
 export const TguiEslintTarget = new Juke.Target({
@@ -224,9 +237,13 @@ export const TguiCleanTarget = new Juke.Target({
   executes: async () => {
     Juke.rm('tgui/public/.tmp', { recursive: true });
     Juke.rm('tgui/public/*.map');
-    Juke.rm('tgui/public/*.{chunk,bundle,hot-update}.*');
+    Juke.rm('tgui/public/*.chunk.*');
+    Juke.rm('tgui/public/*.bundle.*');
+    Juke.rm('tgui/public/*.hot-update.*');
     Juke.rm('tgui/packages/tgfont/dist', { recursive: true });
-    Juke.rm('tgui/.yarn/{cache,unplugged,webpack}', { recursive: true });
+    Juke.rm('tgui/.yarn/cache', { recursive: true });
+    Juke.rm('tgui/.yarn/unplugged', { recursive: true });
+    Juke.rm('tgui/.yarn/webpack', { recursive: true });
     Juke.rm('tgui/.yarn/build-state.yml');
     Juke.rm('tgui/.yarn/install-state.gz');
     Juke.rm('tgui/.yarn/install-target');
@@ -237,7 +254,9 @@ export const TguiCleanTarget = new Juke.Target({
 export const CleanTarget = new Juke.Target({
   dependsOn: [TguiCleanTarget],
   executes: async () => {
-    Juke.rm('*.{dmb,rsc}');
+    Juke.rm('*.dmb');
+    Juke.rm('*.rsc');
+    Juke.rm('*.mdme');
     Juke.rm('*.mdme*');
     Juke.rm('*.m.*');
     Juke.rm('maps/templates.dm');

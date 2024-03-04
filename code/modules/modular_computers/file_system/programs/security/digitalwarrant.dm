@@ -1,14 +1,3 @@
-var/global/warrant_uid = 0
-/datum/datacore
-	var/list/warrants = list()
-
-/datum/data/record/warrant
-	var/warrant_id
-
-/datum/data/record/warrant/New()
-	..()
-	warrant_id = warrant_uid++
-
 /datum/computer_file/program/digitalwarrant
 	filename = "digitalwarrant"
 	filedesc = "Warrant Assistant"

@@ -7,7 +7,7 @@
 /datum/nano_module/New(var/datum/host, var/topic_manager)
 	..()
 	src.host = host.nano_host()
-	src.topic_manager = topic_manager
+	// src.topic_manager = topic_manager
 
 /datum/nano_module/nano_host()
 	return host ? host : src
@@ -40,22 +40,23 @@
 
 	return 0
 
+#warn IMPLEMENT; MODCOMP
 /datum/nano_module/Topic(href, href_list)
-	if(topic_manager && topic_manager.Topic(href, href_list))
-		return TRUE
+	// if(topic_manager && topic_manager.Topic(href, href_list))
+	// 	return TRUE
 	. = ..()
 
 /datum/nano_module/proc/print_text(var/text, var/mob/user)
-	var/obj/item/modular_computer/MC = nano_host()
-	if(istype(MC))
-		if(!MC.nano_printer)
-			to_chat(user, "Error: No printer detected. Unable to print document.")
-			return
+	// var/obj/item/modular_computer/MC = nano_host()
+	// if(istype(MC))
+	// 	if(!MC.nano_printer)
+	// 		to_chat(user, "Error: No printer detected. Unable to print document.")
+	// 		return
 
-		if(!MC.nano_printer.print_text(text))
-			to_chat(user, "Error: Printer was unable to print the document. It may be out of paper.")
-	else
-		to_chat(user, "Error: Unable to detect compatible printer interface. Are you running NTOSv2 compatible system?")
+	// 	if(!MC.nano_printer.print_text(text))
+	// 		to_chat(user, "Error: Printer was unable to print the document. It may be out of paper.")
+	// else
+	// 	to_chat(user, "Error: Unable to detect compatible printer interface. Are you running NTOSv2 compatible system?")
 
 /datum/proc/initial_data()
 	return list()

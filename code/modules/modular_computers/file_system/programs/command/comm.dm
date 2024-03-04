@@ -7,15 +7,12 @@
 	filename = "comm"
 	filedesc = "Command and Communications Program"
 	program_icon_state = "comm"
-	program_key_state = "med_key"
-	program_menu_icon = "flag"
 	tguimodule_path =  /datum/tgui_module_old/communications/ntos
 	extended_desc = "Used to command and control. Can relay long-range communications. This program can not be run on tablet computers."
 	required_access = ACCESS_COMMAND_BRIDGE
 	requires_ntnet = 1
 	size = 12
 	usage_flags = PROGRAM_CONSOLE | PROGRAM_LAPTOP
-	network_destination = "long-range communication array"
 	var/datum/comm_message_listener/message_core = new
 
 /datum/computer_file/program/comm/clone()

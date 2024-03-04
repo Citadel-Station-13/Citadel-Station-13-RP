@@ -600,7 +600,8 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		customname = "[(LEGACY_MAP_DATUM).company_name] Update"
 
 	//New message handling
-	post_comm_message(customname, replacetext(input, "\n", "<br/>"))
+	#warn IMPLEMENT; MODCOMP
+	// post_comm_message(customname, replacetext(input, "\n", "<br/>"))
 
 	switch(alert("Should this be announced to the general population?",,"Yes","No"))
 		if("Yes")

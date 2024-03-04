@@ -7,6 +7,7 @@ This is useful for things such as the power monitor, which needs to exist on a p
 Code is pretty much ripped verbatim from nano modules, but with un-needed stuff removed
 */
 
+//! THIS IS DEPRICATED, DO NOT USE THIS
 /datum/tgui_module_old
 	var/name
 	var/datum/host
@@ -62,21 +63,23 @@ Code is pretty much ripped verbatim from nano modules, but with un-needed stuff 
 	if(istype(host))
 		. += host.get_header_data()
 
+
+#warn DEPRICATE; MODCOMP
 /datum/tgui_module_old/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
-	var/obj/item/modular_computer/host = ui_host()
-	if(istype(host))
-		if(action == "PC_exit")
-			host.kill_program()
-			return TRUE
-		if(action == "PC_shutdown")
-			host.shutdown_computer()
-			return TRUE
-		if(action == "PC_minimize")
-			host.minimize_program(usr)
-			return TRUE
+	// var/obj/item/modular_computer/host = ui_host()
+	// if(istype(host))
+	// 	if(action == "PC_exit")
+	// 		host.kill_program()
+	// 		return TRUE
+	// 	if(action == "PC_shutdown")
+	// 		host.shutdown_computer()
+	// 		return TRUE
+	// 	if(action == "PC_minimize")
+	// 		host.minimize_program(usr)
+	// 		return TRUE
 
 // Just a nice little default interact in case the subtypes don't need any special behavior here
 /datum/tgui_module_old/ui_interact(mob/user, datum/tgui/ui = null, datum/tgui/parent_ui = null)

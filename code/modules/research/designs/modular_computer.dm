@@ -80,42 +80,42 @@
 	id = "bat_normal"
 	req_tech = list(TECH_POWER = 1, TECH_ENGINEERING = 1)
 	materials_base = list(MAT_STEEL = 2000)
-	build_path = /obj/item/computer_hardware/battery_module
+	build_path = /obj/item/cell/computer
 
 /datum/design/science/modularcomponent/battery/advanced
 	design_name = "advanced battery module"
 	id = "bat_advanced"
 	req_tech = list(TECH_POWER = 2, TECH_ENGINEERING = 2)
 	materials_base = list(MAT_STEEL = 4000)
-	build_path = /obj/item/computer_hardware/battery_module/advanced
+	build_path = /obj/item/cell/computer/advanced
 
 /datum/design/science/modularcomponent/battery/super
 	design_name = "super battery module"
 	id = "bat_super"
 	req_tech = list(TECH_POWER = 3, TECH_ENGINEERING = 3)
 	materials_base = list(MAT_STEEL = 8000)
-	build_path = /obj/item/computer_hardware/battery_module/super
+	build_path = /obj/item/cell/computer/super
 
 /datum/design/science/modularcomponent/battery/ultra
 	design_name = "ultra battery module"
 	id = "bat_ultra"
 	req_tech = list(TECH_POWER = 5, TECH_ENGINEERING = 4)
 	materials_base = list(MAT_STEEL = 16000)
-	build_path = /obj/item/computer_hardware/battery_module/ultra
+	build_path = /obj/item/cell/computer/ultra
 
 /datum/design/science/modularcomponent/battery/nano
 	design_name = "nano battery module"
 	id = "bat_nano"
 	req_tech = list(TECH_POWER = 1, TECH_ENGINEERING = 1)
 	materials_base = list(MAT_STEEL = 2000)
-	build_path = /obj/item/computer_hardware/battery_module/nano
+	build_path = /obj/item/cell/computer/nano
 
 /datum/design/science/modularcomponent/battery/micro
 	design_name = "micro battery module"
 	id = "bat_micro"
 	req_tech = list(TECH_POWER = 2, TECH_ENGINEERING = 2)
 	materials_base = list(MAT_STEEL = 4000)
-	build_path = /obj/item/computer_hardware/battery_module/micro
+	build_path = /obj/item/cell/computer/micro
 
 /datum/design/science/modularcomponent/cpu
 	abstract_type = /datum/design/science/modularcomponent/cpu
@@ -167,7 +167,7 @@
 	id = "teslalink"
 	req_tech = list(TECH_DATA = 2, TECH_POWER = 3, TECH_ENGINEERING = 2)
 	materials_base = list(MAT_STEEL = 10000)
-	build_path = /obj/item/computer_hardware/tesla_link
+	build_path = /obj/item/computer_hardware/recharger/tesla_link
 
 /datum/design/science/modularcomponent/portabledrive
 	abstract_type = /datum/design/science/modularcomponent/portabledrive

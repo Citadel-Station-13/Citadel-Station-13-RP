@@ -219,3 +219,17 @@ if (!(DATUM.datum_flags & DF_ISPROCESSING)) {\
 #define ORION_GAMER_PAMPHLET -1
 //game begins to have a chance to warn sec and med
 #define ORION_GAMER_REPORT_THRESHOLD 2
+
+//Modular computer part defines
+#define MC_CPU "CPU"
+#define MC_HDD "HDD"
+#define MC_SDD "SDD"
+#define MC_CARD "CARD"
+#define MC_CARD2 "CARD2"
+#define MC_NET "NET"
+#define MC_PRINT "PRINT"
+#define MC_CELL "CELL"
+#define MC_CHARGE "CHARGE"
+#define MC_AI "AI"
+#define MC_SENSORS "SENSORS"
+#define MC_SIGNALER "SIGNALER"

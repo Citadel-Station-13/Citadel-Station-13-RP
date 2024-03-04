@@ -4655,7 +4655,7 @@
 /obj/item/computer_hardware/processor_unit,
 /obj/item/computer_hardware/processor_unit,
 /obj/item/computer_hardware/processor_unit/small,
-/obj/item/computer_hardware/tesla_link,
+/obj/item/computer_hardware/recharger/tesla_link,
 /obj/item/computer_hardware/nano_printer,
 /obj/item/computer_hardware/hard_drive/portable,
 /obj/item/computer_hardware/hard_drive/portable,

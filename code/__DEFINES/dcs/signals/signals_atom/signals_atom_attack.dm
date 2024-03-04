@@ -42,4 +42,4 @@
 /// From base of atom/attack_paw(): (mob/user)
 ////#define COMSIG_ATOM_ATTACK_PAW "atom_attack_paw"
 	///? Works on all 3.
-	////#define COMPONENT_NO_ATTACK_HAND (1<<0)
+	#define COMPONENT_NO_ATTACK_HAND (1<<0)

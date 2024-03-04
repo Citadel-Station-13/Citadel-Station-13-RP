@@ -270,7 +270,7 @@
 		cameras += C
 	return cameras
 
-/area/proc/atmosalert(danger_level, var/alarm_source)
+/area/proc/atmosalert(danger_level, obj/alarm_source)
 	if (danger_level == 0)
 		atmosphere_alarm.clearAlarm(src, alarm_source)
 	else
@@ -288,6 +288,17 @@
 			danger_level = max(danger_level, AA.danger_level)
 
 	if(danger_level != atmosalm)
+		var/obj/machinery/air_alarm/atmosalarm = alarm_source // hack, need to get camera; really should port optimizions from tg (cameras are refed on areas vice versa)
+		if (danger_level == 2)
+			for(var/item in GLOB.alarmdisplay)
+				var/datum/computer_file/program/alarm_monitor/p = item
+				p.triggerAlarm("Atmosphere", src, atmosalarm.get_alarm_cameras(), alarm_source)
+
+		else if (src.atmosalm == 2)
+			for(var/item in GLOB.alarmdisplay)
+				var/datum/computer_file/program/alarm_monitor/p = item
+				p.cancelAlarm("Atmosphere", src, alarm_source)
+
 		atmosalm = danger_level
 		//closing the doors on red and opening on green provides a bit of hysteresis that will hopefully prevent fire doors from opening and closing repeatedly due to noise
 		if (danger_level < 1 || danger_level >= 2)
@@ -296,8 +307,8 @@
 		for (var/obj/machinery/air_alarm/AA in src)
 			AA.update_icon()
 
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /// Either close or open firedoors depending on current alert statuses
 /area/proc/firedoors_update()
@@ -345,6 +356,11 @@
 				else if(E.density)
 					spawn(0)
 						E.open()
+
+///Get rid of any dangling camera refs
+/area/proc/clear_camera(obj/machinery/camera/cam)
+	for(var/datum/computer_file/program/alarm_monitor/monitor as anything in GLOB.alarmdisplay)
+		monitor.freeCamera(src, cam)
 
 /// Activate all retention fields!
 /area/proc/arfgs_activate()

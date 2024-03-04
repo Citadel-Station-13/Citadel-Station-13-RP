@@ -3,11 +3,11 @@
 	filedesc = "NanoWord"
 	extended_desc = "This program allows the editing and preview of text documents."
 	program_icon_state = "word"
-	program_key_state = "atmos_key"
 	size = 4
 	requires_ntnet = FALSE
 	available_on_ntnet = TRUE
 	tgui_id = "NtosWordProcessor"
+	program_icon = "file"
 
 	var/browsing
 	var/open_file
@@ -15,8 +15,8 @@
 	var/error
 	var/is_edited
 
-/datum/computer_file/program/wordprocessor/proc/get_file(var/filename)
-	var/obj/item/computer_hardware/hard_drive/HDD = computer.hard_drive
+/datum/computer_file/program/wordprocessor/proc/get_file(filename)
+	var/obj/item/computer_hardware/hard_drive/HDD = computer.all_components[MC_HDD]
 	if(!HDD)
 		return
 	var/datum/computer_file/data/F = HDD.find_file_by_name(filename)
@@ -24,20 +24,20 @@
 		return
 	return F
 
-/datum/computer_file/program/wordprocessor/proc/open_file(var/filename)
+/datum/computer_file/program/wordprocessor/proc/open_file(filename)
 	var/datum/computer_file/data/F = get_file(filename)
 	if(F)
 		open_file = F.filename
 		loaded_data = F.stored_data
 		return TRUE
 
-/datum/computer_file/program/wordprocessor/proc/save_file(var/filename)
+/datum/computer_file/program/wordprocessor/proc/save_file(filename)
 	var/datum/computer_file/data/F = get_file(filename)
 	if(!F) //try to make one if it doesn't exist
 		F = create_file(filename, loaded_data)
 		return !isnull(F)
 	var/datum/computer_file/data/backup = F.clone()
-	var/obj/item/computer_hardware/hard_drive/HDD = computer.hard_drive
+	var/obj/item/computer_hardware/hard_drive/HDD = computer.all_components[MC_HDD]
 	if(!HDD)
 		return
 	HDD.remove_file(F)
@@ -49,10 +49,10 @@
 	is_edited = 0
 	return TRUE
 
-/datum/computer_file/program/wordprocessor/proc/create_file(var/newname, var/data = "")
+/datum/computer_file/program/wordprocessor/proc/create_file(newname, data = "")
 	if(!newname)
 		return
-	var/obj/item/computer_hardware/hard_drive/HDD = computer.hard_drive
+	var/obj/item/computer_hardware/hard_drive/HDD = computer.all_components[MC_HDD]
 	if(!HDD)
 		return
 	if(get_file(newname))
@@ -174,10 +174,11 @@
 			return TRUE
 
 		if("PRG_printfile")
-			if(!computer.nano_printer)
+			var/obj/item/computer_hardware/nano_printer/NP = computer.all_components[MC_PRINT]
+			if(!NP)
 				error = "Missing Hardware: Your computer does not have the required hardware to complete this operation."
 				return TRUE
-			if(!computer.nano_printer.print_text(pencode2html(loaded_data)))
+			if(!NP.print_text(pencode2html(loaded_data)))
 				error = "Hardware error: Printer was unable to print the file. It may be out of paper."
 				return TRUE
 			return TRUE
@@ -185,8 +186,8 @@
 /datum/computer_file/program/wordprocessor/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = get_header_data()
 
-	var/obj/item/computer_hardware/hard_drive/HDD = computer.hard_drive
-	var/obj/item/computer_hardware/hard_drive/portable/RHDD = computer.portable_drive
+	var/obj/item/computer_hardware/hard_drive/HDD = computer.all_components[MC_HDD]
+	var/obj/item/computer_hardware/hard_drive/RHDD = computer.all_components[MC_SDD]
 	data["error"] = null
 	if(error)
 		data["error"] = error

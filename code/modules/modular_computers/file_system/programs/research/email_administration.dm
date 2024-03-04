@@ -1,15 +1,15 @@
 /datum/computer_file/program/email_administration
 	filename = "emailadmin"
-	filedesc = "Email Administration Utility"
+	filedesc = "EMU Mail Manager"
+	category = PROGRAM_CATEGORY_MISC
 	extended_desc = "This program may be used to administrate NTNet's emailing service."
 	program_icon_state = "comm_monitor"
-	program_key_state = "generic_key"
-	program_menu_icon = "mail-open"
 	size = 12
 	requires_ntnet = 1
 	available_on_ntnet = 1
 	tgui_id = "NtosEmailAdministration"
 	required_access = ACCESS_NETWORK
+	program_icon = "envelope"
 
 	var/datum/computer_file/data/email_account/current_account = null
 	var/datum/computer_file/data/email_message/current_message = null
@@ -61,8 +61,9 @@
 	return data
 
 /datum/computer_file/program/email_administration/ui_act(action, list/params, datum/tgui/ui)
-	if(..())
-		return TRUE
+	. = ..()
+	if(.)
+		return
 
 	// High security - can only be operated when the user has an ID with access on them.
 	var/obj/item/card/id/I = usr.GetIdCard()

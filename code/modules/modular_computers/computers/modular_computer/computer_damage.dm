@@ -1,37 +1,44 @@
-/obj/item/modular_computer/examine(mob/user, dist)
-	. = ..()
-	if(damage > broken_damage)
-		. += SPAN_DANGER("It is heavily damaged!")
-	else if(damage)
-		. += "It is damaged."
+/obj/item/modular_computer/proc/take_damage_legacy(damage_amount, damage_type = BRUTE)
+	var/component_probability = min(50, max(damage_amount*0.1, 1 - integrity/integrity_max))
+	if(component_probability && damage_type == BRUTE) // legacy
+		integrity -= component_probability
+		integrity = clamp(integrity, 0,  integrity_max)
 
-/obj/item/modular_computer/proc/legacy_break_apart()
-	visible_message("\The [src] breaks apart!")
-	var/turf/newloc = get_turf(src)
-	new /obj/item/stack/material/steel(newloc, round(steel_sheet_cost/2))
-	for(var/obj/item/computer_hardware/H in get_all_components())
-		uninstall_component(null, H)
-		H.forceMove(newloc)
-		if(prob(25))
-			H.take_damage_legacy(rand(10,30))
-	qdel()
-
-/obj/item/modular_computer/proc/take_damage_legacy(amount, component_probability, damage_casing = TRUE, randomize = TRUE)
-	if(randomize)
-		// 75%-125%, rand() works with integers, apparently.
-		amount *= (rand(75, 125) / 100.0)
-	amount = round(amount)
-	if(damage_casing)
-		damage += amount
-		damage = clamp( damage, 0,  max_damage)
+	switch(damage_flag)
+		if(BRUTE)
+			component_probability = damage_amount * 0.5
+		if(SEARING)
+			component_probability = damage_amount * 0.66
 
 	if(component_probability)
-		for(var/obj/item/computer_hardware/H in get_all_components())
+		for(var/I in all_components)
+			var/obj/item/computer_hardware/H = all_components[I]
 			if(prob(component_probability))
-				H.take_damage_legacy(round(amount / 2))
+				H.take_damage_legacy(round(damage_amount*0.5))
 
-	if(damage >= max_damage)
-		legacy_break_apart()
+	if(integrity <= 0)
+		break_apart()
+
+/obj/item/modular_computer/deconstructed(method)
+	break_apart()
+
+/obj/item/modular_computer/break_apart()
+	if(!(integrity_flags & INTEGRITY_NO_DECONSTRUCT))
+		physical.visible_message(SPAN_NOTICE("\The [src] breaks apart!"))
+		var/turf/newloc = get_turf(src)
+		new /obj/item/stack/material/steel(newloc, round(steel_sheet_cost/2))
+		for(var/C in all_components)
+			var/obj/item/computer_hardware/H = all_components[C]
+			if(QDELETED(H))
+				continue
+			uninstall_component(H)
+			H.forceMove(newloc)
+			if(prob(25))
+				H.take_damage_legacy(rand(10,30))
+	relay_qdel()
+	qdel(src)
+
+//! old proc function helpers
 
 /**
  * Stronger explosions cause serious damage to internal components
@@ -44,7 +51,7 @@
 /// EMPs are similar to explosions, but don't cause physical damage to the casing. Instead they screw up the components
 /obj/item/modular_computer/emp_act(severity)
 	. = ..()
-	take_damage_legacy(rand(100,200) / severity, 50 / severity, 0)
+	take_damage_legacy(rand(100,200) / severity, 50 / severity, FALSE)
 
 /**
  * "Stun" weapons can cause minor damage to components (short-circuits?)
@@ -53,10 +60,4 @@
  */
 /obj/item/modular_computer/bullet_act(obj/projectile/Proj)
 	. = ..()
-	switch(Proj.damage_type)
-		if(BRUTE)
-			take_damage_legacy(Proj.damage, Proj.damage / 2)
-		if(HALLOSS)
-			take_damage_legacy(Proj.damage, Proj.damage / 3, 0)
-		if(BURN)
-			take_damage_legacy(Proj.damage, Proj.damage / 1.5)
+	take_damage_legacy(Proj.damage, Proj.damage_type)

@@ -1,45 +1,19 @@
 /datum/computer_file/program/ntnetmonitor
-	filename = "ntmonitor"
-	filedesc = "NTNet Diagnostics and Monitoring"
+	filename = "wirecarp"
+	filedesc = "WireCarp"
+	category = PROGRAM_CATEGORY_MISC
 	program_icon_state = "comm_monitor"
-	program_key_state = "generic_key"
-	program_menu_icon = "wrench"
-	extended_desc = "This program monitors the local NTNet network, provides access to logging systems, and allows for configuration changes"
+	extended_desc = "This program monitors stationwide NTNet network, provides access to logging systems, and allows for configuration changes"
 	size = 12
 	requires_ntnet = TRUE
-	required_access = ACCESS_NETWORK
+	required_access = ACCESS_NETWORK //NETWORK CONTROL IS A MORE SECURE PROGRAM.
 	available_on_ntnet = TRUE
 	tgui_id = "NtosNetMonitor"
+	program_icon = "network-wired"
 
-/datum/computer_file/program/ntnetmonitor/ui_data(mob/user, datum/tgui/ui)
-	if(!ntnet_global)
-		return
-	var/list/data = get_header_data()
-
-	data["ntnetstatus"] = ntnet_global.check_function()
-	data["ntnetrelays"] = ntnet_global.relays.len
-	data["idsstatus"] = ntnet_global.intrusion_detection_enabled
-	data["idsalarm"] = ntnet_global.intrusion_detection_alarm
-
-	data["config_softwaredownload"] = ntnet_global.setting_softwaredownload
-	data["config_peertopeer"] = ntnet_global.setting_peertopeer
-	data["config_communication"] = ntnet_global.setting_communication
-	data["config_systemcontrol"] = ntnet_global.setting_systemcontrol
-
-	data["ntnetlogs"] = list()
-	data["minlogs"] = MIN_NTNET_LOGS
-	data["maxlogs"] = MAX_NTNET_LOGS
-
-	data["banned_nids"] = list(ntnet_global.banned_nids)
-
-	for(var/i in ntnet_global.logs)
-		data["ntnetlogs"] += list(list("entry" = i))
-	data["ntnetmaxlogs"] = ntnet_global.setting_maxlogcount
-
-	return data
-
-/datum/computer_file/program/ntnetmonitor/ui_act(action, list/params, datum/tgui/ui)
-	if(..())
+/datum/computer_file/program/ntnetmonitor/ui_act(action, params)
+	. = ..()
+	if(.)
 		return
 	switch(action)
 		if("resetIDS")
@@ -59,9 +33,7 @@
 				ntnet_global.setting_disabled = FALSE
 				return TRUE
 
-			var/response = alert(usr, "Really disable NTNet wireless? If your computer is connected wirelessly you won't be able to turn it back on! This will affect all connected wireless devices.", "NTNet shutdown", "Yes", "No")
-			if(response == "Yes" && ui?.still_interactive())
-				ntnet_global.setting_disabled = TRUE
+			ntnet_global.setting_disabled = TRUE
 			return TRUE
 		if("purgelogs")
 			if(ntnet_global)
@@ -77,17 +49,28 @@
 				return
 			ntnet_global.toggle_function(text2num(params["id"]))
 			return TRUE
-		if("ban_nid")
-			if(!ntnet_global)
-				return
-			var/nid = input(usr,"Enter NID of device which you want to block from the network:", "Enter NID") as null|num
-			if(nid && ui?.still_interactive())
-				ntnet_global.banned_nids |= nid
-			return TRUE
-		if("unban_nid")
-			if(!ntnet_global)
-				return
-			var/nid = input(usr,"Enter NID of device which you want to unblock from the network:", "Enter NID") as null|num
-			if(nid && ui?.still_interactive())
-				ntnet_global.banned_nids -= nid
-			return TRUE
+
+/datum/computer_file/program/ntnetmonitor/ui_data(mob/user)
+	if(!ntnet_global)
+		return
+	var/list/data = get_header_data()
+
+	data["ntnetstatus"] = ntnet_global.check_function()
+	data["ntnetrelays"] = ntnet_global.relays.len
+	data["idsstatus"] = ntnet_global.intrusion_detection_enabled
+	data["idsalarm"] = ntnet_global.intrusion_detection_alarm
+
+	data["config_softwaredownload"] = ntnet_global.setting_softwaredownload
+	data["config_peertopeer"] = ntnet_global.setting_peertopeer
+	data["config_communication"] = ntnet_global.setting_communication
+	data["config_systemcontrol"] = ntnet_global.setting_systemcontrol
+
+	data["ntnetlogs"] = list()
+	data["minlogs"] = MIN_NTNET_LOGS
+	data["maxlogs"] = MAX_NTNET_LOGS
+
+	for(var/i in ntnet_global.logs)
+		data["ntnetlogs"] += list(list("entry" = i))
+	data["ntnetmaxlogs"] = ntnet_global.setting_maxlogcount
+
+	return data

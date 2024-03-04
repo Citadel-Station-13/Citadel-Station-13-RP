@@ -215,16 +215,18 @@
 // This proc operates in two distinct ways depending on the context in which the module is created.
 // It can either return a list of cameras sharing the same the internal `network` variable, or
 // It can scan all station networks and determine what cameras to show based on the access of the user.
+#warn DEPRICATE; MODCOMP
 /datum/tgui_module_old/camera/proc/get_available_cameras(mob/user)
 	var/list/all_networks = list()
 	// Access Based
+
 	if(access_based)
-		for(var/network in (LEGACY_MAP_DATUM).station_networks)
-			if(can_access_network(user, get_camera_access(network), 1))
-				all_networks.Add(network)
-		for(var/network in (LEGACY_MAP_DATUM).secondary_networks)
-			if(can_access_network(user, get_camera_access(network), 0))
-				all_networks.Add(network)
+	// 	for(var/network in (LEGACY_MAP_DATUM).station_networks)
+	// 		if(can_access_network(user, get_camera_access(network), 1))
+	// 			all_networks.Add(network)
+	// 	for(var/network in (LEGACY_MAP_DATUM).secondary_networks)
+	// 		if(can_access_network(user, get_camera_access(network), 0))
+	// 			all_networks.Add(network)
 	// Network Based
 	else
 		all_networks = network.Copy()

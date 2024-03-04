@@ -6930,7 +6930,7 @@
 /area/tradeport/cyndi)
 "zh" = (
 /obj/machinery/vending/sovietsoda,
-/obj/item/modular_computer/telescreen/preset{
+/obj/machinery/modular_computer/console/telescreen/preset{
 	pixel_y = 23;
 	text = "Text"
 	},
@@ -11785,7 +11785,7 @@
 /area/tradeport/dock)
 "QT" = (
 /obj/machinery/vending/loadout/accessory,
-/obj/item/modular_computer/telescreen/preset{
+/obj/machinery/modular_computer/console/telescreen/preset{
 	pixel_y = 23;
 	text = "Text"
 	},

@@ -2,7 +2,9 @@ var/global/datum/ntnet/ntnet_global = new()
 
 
 // This is the NTNet datum. There can be only one NTNet datum in game at once. Modular computers read data from this.
-/datum/ntnet/
+/datum/ntnet
+	var/network_id = "Network"
+
 	var/list/relays = list()
 	var/list/logs = list()
 	var/list/available_station_software = list()
@@ -17,18 +19,20 @@ var/global/datum/ntnet/ntnet_global = new()
 	var/setting_maxlogcount = 100
 
 	// These only affect wireless. LAN (consoles) are unaffected since it would be possible to create scenario where someone turns off NTNet, and is unable to turn it back on since it refuses connections
-	var/setting_softwaredownload = 1
-	var/setting_peertopeer = 1
-	var/setting_communication = 1
-	var/setting_systemcontrol = 1
-	var/setting_disabled = 0					// Setting to 1 will disable all wireless, independently on relays status.
+	var/setting_softwaredownload = TRUE
+	var/setting_peertopeer = TRUE
+	var/setting_communication = TRUE
+	var/setting_systemcontrol = TRUE
+	var/setting_disabled = FALSE					// Setting to 1 will disable all wireless, independently on relays status.
 
-	var/intrusion_detection_enabled = 1 		// Whether the IDS warning system is enabled
-	var/intrusion_detection_alarm = 0			// Set when there is an IDS warning due to malicious (antag) software.
+	var/intrusion_detection_enabled = TRUE 		// Whether the IDS warning system is enabled
+	var/intrusion_detection_alarm = FALSE			// Set when there is an IDS warning due to malicious (antag) software.
 
 
 // If new NTNet datum is spawned, it replaces the old one.
-/datum/ntnet/New()
+/datum/ntnet/New(_netid)
+	if(_netid)
+		network_id = _netid
 	if(ntnet_global && (ntnet_global != src))
 		ntnet_global = src // There can be only one.
 	for(var/obj/machinery/ntnet_relay/R in GLOB.machines)
@@ -39,12 +43,12 @@ var/global/datum/ntnet/ntnet_global = new()
 	build_emails_list()
 	add_log("NTNet logging system activated.")
 
-/datum/ntnet/proc/add_log_with_ids_check(var/log_string, var/obj/item/computer_hardware/network_card/source = null)
+/datum/ntnet/proc/add_log_with_ids_check(log_string, obj/item/computer_hardware/network_card/source = null)
 	if(intrusion_detection_enabled)
 		add_log(log_string, source)
 
 // Simplified logging: Adds a log. log_string is mandatory parameter, source is optional.
-/datum/ntnet/proc/add_log(var/log_string, var/obj/item/computer_hardware/network_card/source = null)
+/datum/ntnet/proc/add_log(log_string, obj/item/computer_hardware/network_card/source = null)
 	var/log_text = "[stationtime2text()] - "
 	if(source)
 		log_text += "[source.get_network_tag()] - "
@@ -53,13 +57,9 @@ var/global/datum/ntnet/ntnet_global = new()
 	log_text += log_string
 	logs.Add(log_text)
 
+	// We have too many logs, remove the oldest entries until we get into the limit
 	if(logs.len > setting_maxlogcount)
-		// We have too many logs, remove the oldest entries until we get into the limit
-		for(var/L in logs)
-			if(logs.len > setting_maxlogcount)
-				logs.Remove(L)
-			else
-				break
+		logs = logs.Copy(logs.len-setting_maxlogcount,0)
 
 /datum/ntnet/proc/check_banned(var/NID)
 	if(!relays || !relays.len)
@@ -72,9 +72,9 @@ var/global/datum/ntnet/ntnet_global = new()
 	return FALSE
 
 // Checks whether NTNet operates. If parameter is passed checks whether specific function is enabled.
-/datum/ntnet/proc/check_function(var/specific_action = 0)
+/datum/ntnet/proc/check_function(specific_action = 0)
 	if(!relays || !relays.len) // No relays found. NTNet is down
-		return 0
+		return FALSE
 
 	var/operating = 0
 
@@ -85,7 +85,7 @@ var/global/datum/ntnet/ntnet_global = new()
 			break
 
 	if(setting_disabled)
-		return 0
+		return FALSE
 
 	if(specific_action == NTNET_SOFTWAREDOWNLOAD)
 		return (operating && setting_softwaredownload)
@@ -104,7 +104,7 @@ var/global/datum/ntnet/ntnet_global = new()
 	for(var/F in typesof(/datum/computer_file/program))
 		var/datum/computer_file/program/prog = new F
 		// Invalid type (shouldn't be possible but just in case), invalid filetype (not executable program) or invalid filename (unset program)
-		if(!prog || !istype(prog) || prog.filename == "UnknownProgram" || prog.filetype != "PRG")
+		if(!prog || prog.filename == "UnknownProgram" || prog.filetype != "PRG")
 			continue
 		// Check whether the program should be available for station/antag download, if yes, add it to lists.
 		if(prog.available_on_ntnet)
@@ -126,17 +126,19 @@ var/global/datum/ntnet/ntnet_global = new()
 		new F()
 
 // Attempts to find a downloadable file according to filename var
-/datum/ntnet/proc/find_ntnet_file_by_name(var/filename)
-	for(var/datum/computer_file/program/P in available_station_software)
+/datum/ntnet/proc/find_ntnet_file_by_name(filename)
+	for(var/N in available_station_software)
+		var/datum/computer_file/program/P = N
 		if(filename == P.filename)
 			return P
-	for(var/datum/computer_file/program/P in available_antag_software)
+	for(var/N in available_antag_software)
+		var/datum/computer_file/program/P = N
 		if(filename == P.filename)
 			return P
 
 // Resets the IDS alarm
 /datum/ntnet/proc/resetIDS()
-	intrusion_detection_alarm = 0
+	intrusion_detection_alarm = FALSE
 
 /datum/ntnet/proc/toggleIDS()
 	resetIDS()
@@ -148,15 +150,15 @@ var/global/datum/ntnet/ntnet_global = new()
 	add_log("-!- LOGS DELETED BY SYSTEM OPERATOR -!-")
 
 // Updates maximal amount of stored logs. Use this instead of setting the number, it performs required checks.
-/datum/ntnet/proc/update_max_log_count(var/lognumber)
+/datum/ntnet/proc/update_max_log_count(lognumber)
 	if(!lognumber)
-		return 0
+		return FALSE
 	// Trim the value if necessary
 	lognumber = clamp( lognumber, MIN_NTNET_LOGS,  MAX_NTNET_LOGS)
 	setting_maxlogcount = lognumber
 	add_log("Configuration Updated. Now keeping [setting_maxlogcount] logs in system memory.")
 
-/datum/ntnet/proc/toggle_function(var/function)
+/datum/ntnet/proc/toggle_function(function)
 	if(!function)
 		return
 	function = text2num(function)
@@ -174,7 +176,7 @@ var/global/datum/ntnet/ntnet_global = new()
 			setting_systemcontrol = !setting_systemcontrol
 			add_log("Configuration Updated. Wireless network firewall now [setting_systemcontrol ? "allows" : "disallows"] remote control of station's systems.")
 
-/datum/ntnet/proc/does_email_exist(var/login)
+/datum/ntnet/proc/does_email_exist(login)
 	for(var/datum/computer_file/data/email_account/A in ntnet_global.email_accounts)
 		if(A.login == login)
 			return 1

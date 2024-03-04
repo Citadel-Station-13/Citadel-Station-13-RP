@@ -170,12 +170,12 @@ modular computers
 
 /datum/loadout_entry/utility/cheaptablet
 	name = "Tablet Computer - Cheap"
-	path = /obj/item/modular_computer/tablet/preset/custom_loadout/cheap
+	path = /obj/item/modular_computer/tablet/preset/cheap
 	cost = 3
 
 /datum/loadout_entry/utility/normaltablet
 	name = "Tablet Computer - Advanced"
-	path = /obj/item/modular_computer/tablet/preset/custom_loadout/advanced
+	path = /obj/item/modular_computer/tablet/preset/advanced
 	cost = 4
 
 /datum/loadout_entry/utility/customtablet

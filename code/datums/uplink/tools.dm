@@ -173,7 +173,7 @@
 /datum/uplink_item/item/tools/elitetablet
 	name = "Tablet (Advanced)"
 	item_cost = 15
-	path = /obj/item/modular_computer/tablet/preset/custom_loadout/advanced
+	path = /obj/item/modular_computer/tablet/preset/advanced
 
 /datum/uplink_item/item/tools/elitelaptop
 	name = "Laptop (Advanced)"

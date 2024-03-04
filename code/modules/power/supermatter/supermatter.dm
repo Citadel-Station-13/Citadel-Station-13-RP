@@ -111,6 +111,9 @@
 	var/record_interval = 20
 	var/next_record = 0
 
+	///Boolean used for logging if we've passed the emergency point
+	var/has_reached_emergency = FALSE
+
 /obj/machinery/power/supermatter/Initialize(mapload)
 	. = ..()
 	uid = gl_uid++
@@ -206,17 +209,25 @@
 	var/alert_msg = " Integrity at [integrity]%"
 	var/message_sound = 'sound/ambience/matteralarm.ogg'
 
-	if(damage > emergency_point)
-		alert_msg = emergency_alert + alert_msg
-		lastwarning = world.timeofday - WARNING_DELAY * 4
-	else if(damage >= damage_archived) // The damage is still going up
-		safe_warned = 0
-		alert_msg = warning_alert + alert_msg
-		lastwarning = world.timeofday
-	else if(!safe_warned)
-		safe_warned = 1 // We are safe, warn only once
-		alert_msg = safe_alert
-		lastwarning = world.timeofday
+	if (damage > warning_point)
+		if(damage_archived < warning_point) //If damage_archive is under the warning point, this is the very first cycle that we've reached said point.
+			SEND_SIGNAL(src, COMSIG_SUPERMATTER_DELAM_START_ALARM)
+
+		if(damage > emergency_point)
+			SEND_SIGNAL(src, COMSIG_SUPERMATTER_DELAM_ALARM)
+			lastwarning = REALTIMEOFDAY
+			if(!has_reached_emergency)
+				investigate_log("has reached the emergency point for the first time.", INVESTIGATE_SUPERMATTER)
+				message_admins("[src] has reached the emergency point [ADMIN_JMP(src)].")
+				has_reached_emergency = TRUE
+		else if(damage >= damage_archived) // The damage is still going up
+			SEND_SIGNAL(src, COMSIG_SUPERMATTER_DELAM_ALARM)
+			lastwarning = REALTIMEOFDAY - (WARNING_DELAY * 5)
+			alert_msg = warning_alert + alert_msg
+		else if(!safe_warned)
+			safe_warned = 1 // We are safe, warn only once
+			alert_msg = "[safe_alert][alert_msg]"
+			lastwarning = REALTIMEOFDAY
 	else
 		alert_msg = null
 	if(alert_msg)
@@ -269,7 +280,7 @@
 		shift_light(5, warning_color)
 		if(damage > emergency_point)
 			shift_light(7, emergency_color)
-		if(!istype(L, /turf/space) && (world.timeofday - lastwarning) >= WARNING_DELAY * 10)
+		if(!istype(L, /turf/space) && ((REALTIMEOFDAY - lastwarning) / 10 >= WARNING_DELAY))
 			announce_warning()
 	else
 		shift_light(4,initial(light_color))

@@ -3,15 +3,34 @@
 	filedesc = "Email Client"
 	extended_desc = "This program may be used to log in into your email account."
 	program_icon_state = "generic"
-	program_key_state = "generic_key"
-	program_menu_icon = "mail-closed"
 	size = 7
-	requires_ntnet = 1
+	requires_ntnet = TRUE
+	requires_ntnet_feature = NTNET_COMMUNICATION // duh
 	available_on_ntnet = 1
+	tgui_id = "NtosEmailClient"
+
 	var/stored_login = ""
 	var/stored_password = ""
 
-	tguimodule_path = /datum/tgui_module_old/email_client
+	var/msg_title = ""
+	var/msg_body = ""
+	var/msg_recipient = ""
+	var/datum/computer_file/msg_attachment = null
+	var/folder = "Inbox"
+	var/addressbook = FALSE
+	var/new_message = FALSE
+
+	var/last_message_count = 0	// How many messages were there during last check.
+	var/read_message_count = 0	// How many messages were there when user has last accessed the UI.
+
+	var/datum/computer_file/downloading = null
+	var/download_progress = 0
+	var/download_speed = 0
+
+	var/datum/computer_file/data/email_account/current_account = null
+	var/datum/computer_file/data/email_message/current_message = null
+
+	// tguimodule_path = /datum/tgui_module_old/email_client
 
 // Persistency. Unless you log out, or unless your password changes, this will pre-fill the login data when restarting the program
 /datum/computer_file/program/email_client/kill_program()

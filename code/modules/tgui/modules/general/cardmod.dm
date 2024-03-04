@@ -418,8 +418,9 @@
 	. = ..()
 	program = null
 
+#warn DEPRICATE; MODCOMP
 /datum/tgui_module/card_mod/standard/id_computer/ntos/edit_target()
-	return program.computer.card_slot.stored_card
+	// return program.computer.card_slot.stored_card
 
 /datum/tgui_module/card_mod/standard/id_computer/ntos/auth_source(mob/user)
 	if(isliving(user))

@@ -1,51 +1,64 @@
-/obj/item/modular_computer/proc/power_failure(malfunction = FALSE)
+// Tries to draw power from charger or, if no operational charger is present, from power cell.
+/obj/item/modular_computer/proc/use_power(amount = 0)
+	if(check_power_override())
+		return TRUE
+
+	var/obj/item/computer_hardware/recharger/recharger = all_components[MC_CHARGE]
+
+	if(recharger?.check_functionality())
+		// if(recharger.use_power(amount))
+		return TRUE
+
+	var/obj/item/computer_hardware/battery/battery_module = all_components[MC_CELL]
+
+	if(battery_module && battery_module.battery && battery_module.battery.charge)
+		var/obj/item/cell/cell = battery_module.battery
+		if(cell.use(amount * GLOB.cellrate))
+			return TRUE
+		else // Discharge the cell anyway.
+			cell.use(min(amount * GLOB.cellrate, cell.charge))
+			return FALSE
+	return FALSE
+
+/obj/item/modular_computer/proc/give_power(amount)
+	var/obj/item/computer_hardware/battery/battery_module = all_components[MC_CELL]
+	if(battery_module?.battery)
+		return battery_module.battery.give(amount)
+	return FALSE
+
+/obj/item/modular_computer/get_cell()
+	var/obj/item/computer_hardware/battery/battery_module = all_components[MC_CELL]
+	return battery_module?.get_cell()
+
+// Used in following function to reduce copypaste
+/obj/item/modular_computer/proc/power_failure()
 	if(enabled) // Shut down the computer
-		visible_message(SPAN_DANGER("\The [src]'s screen flickers briefly and then goes dark."))
 		if(active_program)
 			active_program.event_powerfailure(0)
-		for(var/datum/computer_file/program/PRG in idle_threads)
+		for(var/I in idle_threads)
+			var/datum/computer_file/program/PRG = I
 			PRG.event_powerfailure(1)
 		shutdown_computer(0)
 
-/// Tries to use power from battery. Passing 0 as parameter results in this proc returning whether battery is functional or not.
-/obj/item/modular_computer/proc/battery_power(power_usage = 0)
-	apc_powered = FALSE
-	if(!battery_module || !battery_module.check_functionality() || battery_module.battery.charge <= 0)
-		return FALSE
-	if(battery_module.battery.use(DYNAMIC_W_TO_CELL_UNITS(power_usage, 1)) || ((power_usage == 0) && battery_module.battery.charge))
-		return TRUE
-	return FALSE
+// Handles power-related things, such as battery interaction, recharging, shutdown when it's discharged
+/obj/item/modular_computer/proc/handle_power(delta_time)
+	var/obj/item/computer_hardware/recharger/recharger = all_components[MC_CHARGE]
+	if(recharger)
+		recharger.process(delta_time)
 
-/// Tries to use power from APC, if present.
-/obj/item/modular_computer/proc/apc_power(power_usage = 0)
-	apc_powered = TRUE
-	// Tesla link was originally limited to machinery only, but this probably works too, and the benefit of being able to power all devices from an APC outweights
-	// the possible minor performance loss.
-	if(!tesla_link || !tesla_link.check_functionality())
-		return FALSE
-	var/area/A = get_area(src)
-	if(!istype(A) || !A.powered(EQUIP))
-		return FALSE
-
-	// At this point, we know that APC can power us for this tick. Check if we also need to charge our battery, and then actually use the power.
-	if(battery_module && (battery_module.battery.charge < battery_module.battery.maxcharge) && (power_usage > 0))
-		power_usage += tesla_link.passive_charging_rate
-		battery_module.battery.give(DYNAMIC_W_TO_CELL_UNITS(tesla_link.passive_charging_rate, 1))
-
-	A.use_power_oneoff(power_usage, EQUIP)
-	return TRUE
-
-/// Handles power-related things, such as battery interaction, recharging, shutdown when it's discharged
-/obj/item/modular_computer/proc/handle_power()
 	var/power_usage = screen_on ? base_active_power_usage : base_idle_power_usage
-	for(var/obj/item/computer_hardware/H in get_all_components())
+
+	for(var/obj/item/computer_hardware/H in all_components)
 		if(H.enabled)
 			power_usage += H.power_usage
-	last_power_usage = power_usage
 
-	// First tries to charge from an APC, if APC is unavailable switches to battery power. If neither works the computer fails.
-	if(apc_power(power_usage))
-		return
-	if(battery_power(power_usage))
-		return
-	power_failure()
+	if(use_power(power_usage))
+		last_power_usage = power_usage
+		return TRUE
+	else
+		power_failure()
+		return FALSE
+
+// Used by child types if they have other power source than battery or recharger
+/obj/item/modular_computer/proc/check_power_override()
+	return FALSE

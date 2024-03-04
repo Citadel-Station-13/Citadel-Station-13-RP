@@ -335,7 +335,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/generic_shuttle/gen)
 "aL" = (
-/obj/item/modular_computer/tablet/preset/custom_loadout/standard,
+/obj/item/modular_computer/tablet/preset/custom_loadout/cheap,
 /obj/structure/table/standard,
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"

@@ -164,12 +164,13 @@
 
 /datum/loadout_tweak/tablet
 	var/list/ValidProcessors = list(/obj/item/computer_hardware/processor_unit/small)
-	var/list/ValidBatteries = list(/obj/item/computer_hardware/battery_module/nano, /obj/item/computer_hardware/battery_module/micro, /obj/item/computer_hardware/battery_module)
+	#warn FIXME
+	var/list/ValidBatteries = list()//list(/obj/item/computer_hardware/battery_module/nano, /obj/item/computer_hardware/battery_module/micro, /obj/item/computer_hardware/battery_module)
 	var/list/ValidHardDrives = list(/obj/item/computer_hardware/hard_drive/micro, /obj/item/computer_hardware/hard_drive/small, /obj/item/computer_hardware/hard_drive)
 	var/list/ValidNetworkCards = list(/obj/item/computer_hardware/network_card, /obj/item/computer_hardware/network_card/advanced)
 	var/list/ValidNanoPrinters = list(null, /obj/item/computer_hardware/nano_printer)
 	var/list/ValidCardSlots = list(null, /obj/item/computer_hardware/card_slot)
-	var/list/ValidTeslaLinks = list(null, /obj/item/computer_hardware/tesla_link)
+	var/list/ValidTeslaLinks = list(null, /obj/item/computer_hardware/recharger/tesla_link)
 
 /datum/loadout_tweak/tablet/get_contents(var/list/metadata)
 	var/list/names = list()
@@ -286,39 +287,42 @@
 /datum/loadout_tweak/tablet/get_default()
 	return list(1, 1, 1, 1, 1, 1, 1)
 
-/datum/loadout_tweak/tablet/tweak_item(var/obj/item/modular_computer/tablet/I, var/list/metadata)
-	if(ValidProcessors[metadata[1]])
-		var/t = ValidProcessors[metadata[1]]
-		I.processor_unit = new t(I)
-	if(ValidBatteries[metadata[2]])
-		var/t = ValidBatteries[metadata[2]]
-		I.battery_module = new t(I)
-		I.battery_module.charge_to_full()
-	if(ValidHardDrives[metadata[3]])
-		var/t = ValidHardDrives[metadata[3]]
-		I.hard_drive = new t(I)
-	if(ValidNetworkCards[metadata[4]])
-		var/t = ValidNetworkCards[metadata[4]]
-		I.network_card = new t(I)
-	if(ValidNanoPrinters[metadata[5]])
-		var/t = ValidNanoPrinters[metadata[5]]
-		I.nano_printer = new t(I)
-	if(ValidCardSlots[metadata[6]])
-		var/t = ValidCardSlots[metadata[6]]
-		I.card_slot = new t(I)
-	if(ValidTeslaLinks[metadata[7]])
-		var/t = ValidTeslaLinks[metadata[7]]
-		I.tesla_link = new t(I)
-	I.update_verbs()
+/datum/loadout_tweak/tablet/tweak_item(obj/item/modular_computer/tablet/I, list/metadata)
+	warning("NOT IMPLEMENTED")
+	#warn IMPLEMENT; MODCOMP
+	// if(ValidProcessors[metadata[1]])
+	// 	var/t = ValidProcessors[metadata[1]]
+	// 	I.processor_unit = new t(I)
+	// if(ValidBatteries[metadata[2]])
+	// 	var/t = ValidBatteries[metadata[2]]
+	// 	I.battery_module = new t(I)
+	// 	I.battery_module.charge_to_full()
+	// if(ValidHardDrives[metadata[3]])
+	// 	var/t = ValidHardDrives[metadata[3]]
+	// 	I.hard_drive = new t(I)
+	// if(ValidNetworkCards[metadata[4]])
+	// 	var/t = ValidNetworkCards[metadata[4]]
+	// 	I.network_card = new t(I)
+	// if(ValidNanoPrinters[metadata[5]])
+	// 	var/t = ValidNanoPrinters[metadata[5]]
+	// 	I.nano_printer = new t(I)
+	// if(ValidCardSlots[metadata[6]])
+	// 	var/t = ValidCardSlots[metadata[6]]
+	// 	I.card_slot = new t(I)
+	// if(ValidTeslaLinks[metadata[7]])
+	// 	var/t = ValidTeslaLinks[metadata[7]]
+	// 	I.tesla_link = new t(I)
+	// I.update_verbs()
 
 /datum/loadout_tweak/laptop
+	#warn FIXME
 	var/list/ValidProcessors = list(/obj/item/computer_hardware/processor_unit/small, /obj/item/computer_hardware/processor_unit)
-	var/list/ValidBatteries = list(/obj/item/computer_hardware/battery_module, /obj/item/computer_hardware/battery_module/advanced, /obj/item/computer_hardware/battery_module/super)
+	var/list/ValidBatteries = list() //list(/obj/item/computer_hardware/battery_module, /obj/item/computer_hardware/battery_module/advanced, /obj/item/computer_hardware/battery_module/super)
 	var/list/ValidHardDrives = list(/obj/item/computer_hardware/hard_drive, /obj/item/computer_hardware/hard_drive/advanced, /obj/item/computer_hardware/hard_drive/super)
 	var/list/ValidNetworkCards = list(/obj/item/computer_hardware/network_card, /obj/item/computer_hardware/network_card/advanced)
 	var/list/ValidNanoPrinters = list(null, /obj/item/computer_hardware/nano_printer)
 	var/list/ValidCardSlots = list(null, /obj/item/computer_hardware/card_slot)
-	var/list/ValidTeslaLinks = list(null, /obj/item/computer_hardware/tesla_link)
+	var/list/ValidTeslaLinks = list(null, /obj/item/computer_hardware/recharger/tesla_link)
 
 /datum/loadout_tweak/laptop/get_contents(var/list/metadata)
 	var/list/names = list()
@@ -435,30 +439,32 @@
 /datum/loadout_tweak/laptop/get_default()
 	return list(1, 1, 1, 1, 1, 1, 1)
 
-/datum/loadout_tweak/laptop/tweak_item(var/obj/item/modular_computer/laptop/preset/I, var/list/metadata)
-	if(ValidProcessors[metadata[1]])
-		var/t = ValidProcessors[metadata[1]]
-		I.processor_unit = new t(I)
-	if(ValidBatteries[metadata[2]])
-		var/t = ValidBatteries[metadata[2]]
-		I.battery_module = new t(I)
-		I.battery_module.charge_to_full()
-	if(ValidHardDrives[metadata[3]])
-		var/t = ValidHardDrives[metadata[3]]
-		I.hard_drive = new t(I)
-	if(ValidNetworkCards[metadata[4]])
-		var/t = ValidNetworkCards[metadata[4]]
-		I.network_card = new t(I)
-	if(ValidNanoPrinters[metadata[5]])
-		var/t = ValidNanoPrinters[metadata[5]]
-		I.nano_printer = new t(I)
-	if(ValidCardSlots[metadata[6]])
-		var/t = ValidCardSlots[metadata[6]]
-		I.card_slot = new t(I)
-	if(ValidTeslaLinks[metadata[7]])
-		var/t = ValidTeslaLinks[metadata[7]]
-		I.tesla_link = new t(I)
-	I.update_verbs()
+/datum/loadout_tweak/laptop/tweak_item(obj/item/modular_computer/laptop/preset/I, list/metadata)
+	warning("NOT IMPLEMENTED")
+	#warn IMPLEMENT; MODCOMP
+	// if(ValidProcessors[metadata[1]])
+	// 	var/t = ValidProcessors[metadata[1]]
+	// 	I.processor_unit = new t(I)
+	// if(ValidBatteries[metadata[2]])
+	// 	var/t = ValidBatteries[metadata[2]]
+	// 	I.battery_module = new t(I)
+	// 	I.battery_module.charge_to_full()
+	// if(ValidHardDrives[metadata[3]])
+	// 	var/t = ValidHardDrives[metadata[3]]
+	// 	I.hard_drive = new t(I)
+	// if(ValidNetworkCards[metadata[4]])
+	// 	var/t = ValidNetworkCards[metadata[4]]
+	// 	I.network_card = new t(I)
+	// if(ValidNanoPrinters[metadata[5]])
+	// 	var/t = ValidNanoPrinters[metadata[5]]
+	// 	I.nano_printer = new t(I)
+	// if(ValidCardSlots[metadata[6]])
+	// 	var/t = ValidCardSlots[metadata[6]]
+	// 	I.card_slot = new t(I)
+	// if(ValidTeslaLinks[metadata[7]])
+	// 	var/t = ValidTeslaLinks[metadata[7]]
+	// 	I.tesla_link = new t(I)
+	// I.update_verbs()
 
 /datum/loadout_tweak/collar_tag/get_contents(var/metadata)
 	return "Tag: [metadata]"

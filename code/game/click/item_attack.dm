@@ -54,3 +54,11 @@ avoid code duplication. This includes items that may sometimes act as a standard
 		if(!isnull(M.attack_speed_percent))
 			speed *= M.attack_speed_percent
 	return speed
+
+/obj/item/proc/get_clamped_volume()
+	if(w_class)
+		// if(throw_force)
+		// 	return clamp((throw_force + w_class) * 4, 30, 100)// Add the item's force to its weight class and multiply by 4, then clamp the value between 30 and 100
+		// else
+		// idk what force to put up there ^
+		return clamp(w_class * 6, 10, 100) // Multiply the item's weight class by 6, then clamp the value between 10 and 100

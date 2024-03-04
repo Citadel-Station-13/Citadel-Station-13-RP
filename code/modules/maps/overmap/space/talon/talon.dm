@@ -367,12 +367,15 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/air_alarm/talon, 26)
 ///////////////////////////
 //// Computers
 // Talon helmet cameras
+
+#warn IMPLEMENT; MODCOMP
+
 /datum/computer_file/program/camera_monitor/talon_helmet
 	filename = "talhcammon"
 	filedesc = "Helmet Camera Monitoring (Talon)"
 	extended_desc = "This program allows remote access to Talon helmet camera systems."
 	size = 4 //Smaller because limited scope
-	tguimodule_path = /datum/tgui_module_old/camera/ntos/talon_helmet
+	// tguimodule_path = /datum/tgui_module_old/camera/ntos/talon_helmet
 	required_access = ACCESS_FACTION_TALON
 
 // Talon ship cameras
@@ -381,7 +384,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/air_alarm/talon, 26)
 	filedesc = "Ship Camera Monitoring (Talon)"
 	extended_desc = "This program allows remote access to the Talon's camera system."
 	size = 10 //Smaller because limited scope
-	tguimodule_path = /datum/tgui_module_old/camera/ntos/talon_ship
+	// tguimodule_path = /datum/tgui_module_old/camera/ntos/talon_ship
 	required_access = ACCESS_FACTION_TALON
 
 /datum/tgui_module_old/camera/ntos/talon_ship
@@ -428,50 +431,50 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/air_alarm/talon, 26)
 /obj/item/modular_computer/laptop/preset/custom_loadout/standard/talon/engineer
 	name = "engineer's laptop"
 
-/obj/item/modular_computer/laptop/preset/custom_loadout/standard/talon/engineer/install_default_programs()
-	..()
-	hard_drive.store_file(new/datum/computer_file/program/power_monitor/talon())
-	hard_drive.store_file(new/datum/computer_file/program/alarm_monitor/talon())
-	hard_drive.store_file(new/datum/computer_file/program/rcon_console/talon())
-	hard_drive.store_file(new/datum/computer_file/program/atmos_control/talon())
+// /obj/item/modular_computer/laptop/preset/custom_loadout/standard/talon/engineer/install_default_programs()
+// 	..()
+// 	hard_drive.store_file(new/datum/computer_file/program/power_monitor/talon())
+// 	hard_drive.store_file(new/datum/computer_file/program/alarm_monitor/talon())
+// 	hard_drive.store_file(new/datum/computer_file/program/rcon_console/talon())
+// 	hard_drive.store_file(new/datum/computer_file/program/atmos_control/talon())
 
 /obj/item/modular_computer/laptop/preset/custom_loadout/standard/talon/security
 	name = "guard's laptop"
 
-/obj/item/modular_computer/laptop/preset/custom_loadout/standard/talon/security/install_default_programs()
-	..()
-	hard_drive.store_file(new/datum/computer_file/program/camera_monitor/talon_ship())
+// /obj/item/modular_computer/laptop/preset/custom_loadout/standard/talon/security/install_default_programs()
+// 	..()
+// 	hard_drive.store_file(new/datum/computer_file/program/camera_monitor/talon_ship())
 
 /obj/item/modular_computer/laptop/preset/custom_loadout/standard/talon/medical
 	name = "doctor's laptop"
 
-/obj/item/modular_computer/laptop/preset/custom_loadout/standard/talon/medical/install_default_programs()
-	..()
-	hard_drive.store_file(new/datum/computer_file/program/suit_sensors/talon())
-	hard_drive.store_file(new/datum/computer_file/program/camera_monitor/talon_helmet())
-	set_autorun("tsensormonitor")
+// /obj/item/modular_computer/laptop/preset/custom_loadout/standard/talon/medical/install_default_programs()
+// 	..()
+// 	hard_drive.store_file(new/datum/computer_file/program/suit_sensors/talon())
+// 	hard_drive.store_file(new/datum/computer_file/program/camera_monitor/talon_helmet())
+// 	set_autorun("tsensormonitor")
 
 //Generic modular consoles scattered around
 /obj/item/modular_computer/console/preset/talon
 	name = "talon modular computer"
 
-/obj/item/modular_computer/console/preset/talon/install_default_hardware()
-	..()
-	processor_unit = new/obj/item/computer_hardware/processor_unit(src)
-	tesla_link = new/obj/item/computer_hardware/tesla_link(src)
-	hard_drive = new/obj/item/computer_hardware/hard_drive/super(src)
-	network_card = new/obj/item/computer_hardware/network_card/wired(src)
-	nano_printer = new/obj/item/computer_hardware/nano_printer(src)
+// /obj/item/modular_computer/console/preset/talon/install_default_hardware()
+// 	..()
+// 	processor_unit = new/obj/item/computer_hardware/processor_unit(src)
+// 	tesla_link = new/obj/item/computer_hardware/recharger/tesla_link(src)
+// 	hard_drive = new/obj/item/computer_hardware/hard_drive/super(src)
+// 	network_card = new/obj/item/computer_hardware/network_card/wired(src)
+// 	nano_printer = new/obj/item/computer_hardware/nano_printer(src)
 
-/obj/item/modular_computer/console/preset/talon/install_default_programs()
-	..()
-	hard_drive.store_file(new/datum/computer_file/program/power_monitor/talon())
-	hard_drive.store_file(new/datum/computer_file/program/alarm_monitor/talon())
-	hard_drive.store_file(new/datum/computer_file/program/rcon_console/talon())
-	hard_drive.store_file(new/datum/computer_file/program/atmos_control/talon())
-	hard_drive.store_file(new/datum/computer_file/program/camera_monitor/talon_ship())
-	hard_drive.store_file(new/datum/computer_file/program/suit_sensors/talon())
-	hard_drive.store_file(new/datum/computer_file/program/camera_monitor/talon_helmet())
+// /obj/item/modular_computer/console/preset/talon/install_default_programs()
+// 	..()
+// 	hard_drive.store_file(new/datum/computer_file/program/power_monitor/talon())
+// 	hard_drive.store_file(new/datum/computer_file/program/alarm_monitor/talon())
+// 	hard_drive.store_file(new/datum/computer_file/program/rcon_console/talon())
+// 	hard_drive.store_file(new/datum/computer_file/program/atmos_control/talon())
+// 	hard_drive.store_file(new/datum/computer_file/program/camera_monitor/talon_ship())
+// 	hard_drive.store_file(new/datum/computer_file/program/suit_sensors/talon())
+// 	hard_drive.store_file(new/datum/computer_file/program/camera_monitor/talon_helmet())
 
 
 // Just in case someone decides to clean up radio.dm and remove this Im going to leave a copy commented out here. Might save someone some trouble later trying to find this. Bloop

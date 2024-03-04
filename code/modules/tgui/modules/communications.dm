@@ -133,9 +133,11 @@
 		list("id" = SEC_LEVEL_VIOLET, "name" = "Violet", "icon" = "biohazard"),
 	)
 
-	var/datum/comm_message_listener/l = obtain_message_listener()
-	data["messages"] = l.messages
-	data["message_deletion_allowed"] = l != global_message_listener
+
+#warn IMPLEMENT; MODCOMP
+	// var/datum/comm_message_listener/l = obtain_message_listener()
+	// data["messages"] = l.messages
+	// data["message_deletion_allowed"] = l != global_message_listener
 	data["message_current_id"] = current_viewing_message_id
 	data["message_current"] = current_viewing_message
 
@@ -155,10 +157,11 @@
 /datum/tgui_module_old/communications/proc/setCurrentMessage(mob/user, value)
 	current_viewing_message_id = value
 
-	var/datum/comm_message_listener/l = obtain_message_listener()
-	for(var/list/m in l.messages)
-		if(m["id"] == current_viewing_message_id)
-			current_viewing_message = m
+#warn DEPRICATE; MODCOMP
+	// var/datum/comm_message_listener/l = obtain_message_listener()
+	// for(var/list/m in l.messages)
+	// 	if(m["id"] == current_viewing_message_id)
+	// 		current_viewing_message = m
 
 /datum/tgui_module_old/communications/proc/setMenuState(mob/user, value)
 	if(isAI(user) || isrobot(user))
@@ -167,10 +170,11 @@
 		menu_state = value
 
 /datum/tgui_module_old/communications/proc/obtain_message_listener()
-	if(istype(host, /datum/computer_file/program/comm))
-		var/datum/computer_file/program/comm/P = host
-		return P.message_core
-	return global_message_listener
+#warn DEPRICATE; MODCOMP
+	// if(istype(host, /datum/computer_file/program/comm))
+	// 	var/datum/computer_file/program/comm/P = host
+	// 	return P.message_core
+	// return global_message_listener
 
 /proc/post_status(atom/source, command, data1, data2, mob/user = null)
 	var/datum/radio_frequency/frequency = radio_controller.return_frequency(1435)
@@ -295,14 +299,16 @@
 			SSlegacy_atc.squelched = !SSlegacy_atc.squelched
 
 		if("delmessage")
-			var/datum/comm_message_listener/l = obtain_message_listener()
+
+#warn DEPRICATE; MODCOMP
+			// var/datum/comm_message_listener/l = obtain_message_listener()
 			if(params["msgid"])
 				setCurrentMessage(usr, text2num(params["msgid"]))
 			var/response = tgui_alert(usr, "Are you sure you wish to delete this message?", "Confirm", list("Yes", "No"))
 			if(response == "Yes")
 				if(current_viewing_message)
-					if(l != global_message_listener)
-						l.Remove(current_viewing_message)
+					// if(l != global_message_listener)
+					// 	l.Remove(current_viewing_message)
 					current_viewing_message = null
 				setMenuState(usr, COMM_SCREEN_MESSAGES)
 

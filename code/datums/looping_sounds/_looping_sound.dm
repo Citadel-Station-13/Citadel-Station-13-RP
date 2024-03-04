@@ -21,31 +21,39 @@
 	var/list/atom/output_atoms
 	var/mid_sounds
 	var/mid_length
+	///Override for volume of start sound
+	var/start_volume
 	var/start_sound
 	var/start_length
+	///Override for volume of end sound
+	var/end_volume
 	var/end_sound
 	var/chance
 	var/volume = 100
+	var/vary = FALSE
 	var/max_loops
 	var/direct
-	var/vary
-	var/extra_range
+	var/extra_range = 0
 	var/opacity_check
 	var/pref_check
 	var/soundenvdry
 	var/soundenvwet
 
 	var/timerid
+	var/skip_starting_sounds = FALSE
+	var/loop_started = FALSE
 
-/datum/looping_sound/New(list/_output_atoms=list(), start_immediately=FALSE, _direct=FALSE)
+/datum/looping_sound/New(list/_output_atoms=list(), start_immediately=FALSE, _direct=FALSE, _skip_starting_sounds = FALSE)
 	if(!mid_sounds)
 		WARNING("A looping sound datum was created without sounds to play.")
 		return
 
+	// TODO: this should keep track of atoms and null them if they get qdeled!!!
 	if(isatom(_output_atoms))
 		_output_atoms = list(_output_atoms)
 	output_atoms = _output_atoms
 	direct = _direct
+	skip_starting_sounds = _skip_starting_sounds
 
 	if(start_immediately)
 		start()
@@ -70,22 +78,24 @@
 	on_stop()
 	deltimer(timerid)
 	timerid = null
+	loop_started = FALSE
 
 /datum/looping_sound/proc/sound_loop(starttime)
+	loop_started = TRUE
 	if(max_loops && (world.time >= (starttime + mid_length * max_loops)))
 		stop()
 		return
 	if(!chance || prob(chance))
 		play(get_sound(starttime))
 	if(!timerid)
-		timerid = addtimer(CALLBACK(src, PROC_REF(sound_loop), world.time), mid_length, TIMER_STOPPABLE | TIMER_LOOP)
+		timerid = addtimer(CALLBACK(src, PROC_REF(sound_loop), world.time), mid_length, TIMER_CLIENT_TIME | TIMER_STOPPABLE | TIMER_LOOP | TIMER_DELETE_ME)
 
-/datum/looping_sound/proc/play(soundfile)
+/datum/looping_sound/proc/play(soundfile, volume_override)
 	var/list/atoms_cache = output_atoms
 	var/sound/S = sound(soundfile)
 	if(direct)
 		S.channel = SSsounds.random_available_channel()
-		S.volume = volume
+		S.volume = volume_override || volume //Use volume as fallback if theres no override
 	for(var/i in 1 to atoms_cache.len)
 		var/atom/thing = atoms_cache[i]
 		if(direct)
@@ -98,20 +108,17 @@
 			playsound(thing, S, volume, vary, extra_range, ignore_walls = !opacity_check, preference = pref_check)
 
 /datum/looping_sound/proc/get_sound(starttime, _mid_sounds)
-	if(!_mid_sounds)
-		. = mid_sounds
-	else
-		. = _mid_sounds
+	. = _mid_sounds || mid_sounds
 	while(!isfile(.) && !isnull(.))
 		. = pickweight(.)
 
 /datum/looping_sound/proc/on_start()
-	var/start_wait = 1 // On TG this is 0, however it needs to be 1 to work around an issue.
-	if(start_sound)
-		play(start_sound)
+	var/start_wait = 0 // surely the issue is fixed now, timerid is referenced
+	if(start_sound && !skip_starting_sounds)
+		play(start_sound, start_volume)
 		start_wait = start_length
-	addtimer(CALLBACK(src, PROC_REF(sound_loop)), start_wait)
+	timerid = addtimer(CALLBACK(src, PROC_REF(sound_loop)), start_wait, TIMER_CLIENT_TIME | TIMER_DELETE_ME | TIMER_STOPPABLE)
 
 /datum/looping_sound/proc/on_stop()
-	if(end_sound)
+	if(end_sound && loop_started)
 		play(end_sound)

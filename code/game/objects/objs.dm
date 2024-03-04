@@ -233,8 +233,11 @@
 			in_use = 0
 
 /obj/attack_ghost(mob/user)
+	. = ..()
+	if(.)
+		return
+	ui_interact(user)
 	nano_ui_interact(user)
-	..()
 
 /mob/proc/unset_machine()
 	machine = null

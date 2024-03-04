@@ -9,7 +9,7 @@
 	active_power_usage = 40000	//10 kW
 	var/efficiency = 10000 //will provide the modified power rate when upgraded
 	var/obj/item/charging = null
-	var/list/allowed_devices = list(/obj/item/gun/energy, /obj/item/melee/baton, /obj/item/modular_computer, /obj/item/computer_hardware/battery_module, /obj/item/cell, /obj/item/flashlight, /obj/item/electronic_assembly, /obj/item/weldingtool/electric, /obj/item/ammo_magazine/smart, /obj/item/flash, /obj/item/ammo_casing/microbattery, /obj/item/shield_diffuser, /obj/item/ammo_magazine/cell_mag, /obj/item/gun/ballistic/cell_loaded)
+	var/list/allowed_devices = list(/obj/item/gun/energy, /obj/item/melee/baton, /obj/item/cell, /obj/item/flashlight, /obj/item/electronic_assembly, /obj/item/weldingtool/electric, /obj/item/ammo_magazine/smart, /obj/item/flash, /obj/item/ammo_casing/microbattery, /obj/item/shield_diffuser, /obj/item/ammo_magazine/cell_mag, /obj/item/gun/ballistic/cell_loaded)
 	var/icon_state_charged = "recharger2"
 	var/icon_state_charging = "recharger1"
 	var/icon_state_idle = "recharger0" //also when unpowered
@@ -44,11 +44,12 @@
 			if(E.self_recharge)
 				to_chat(user, "<span class='notice'>\The [E] has no recharge port.</span>")
 				return
-		else if(istype(G, /obj/item/modular_computer))
-			var/obj/item/modular_computer/C = G
-			if(!C.battery_module)
-				to_chat(user, "<span class='notice'>\The [C] does not have a battery installed. </span>")
-				return
+		// no? dont fucking jam the entire computer in there
+		// else if(istype(G, /obj/item/modular_computer))
+		// 	var/obj/item/modular_computer/C = G
+		// 	if(!C.battery_module)
+		// 		to_chat(user, "<span class='notice'>\The [C] does not have a battery installed. </span>")
+		// 		return
 		else if(istype(G, /obj/item/melee/baton))
 			var/obj/item/melee/baton/B = G
 			if(B.use_external_power)
@@ -132,26 +133,26 @@
 		update_use_power(USE_POWER_IDLE)
 		icon_state = icon_state_idle
 	else
-		if(istype(charging, /obj/item/modular_computer))
-			var/obj/item/modular_computer/C = charging
-			if(!C.battery_module.battery.fully_charged())
-				icon_state = icon_state_charging
-				C.battery_module.battery.give(DYNAMIC_W_TO_CELL_UNITS(efficiency, 1))
-				update_use_power(USE_POWER_ACTIVE)
-			else
-				icon_state = icon_state_charged
-				update_use_power(USE_POWER_IDLE)
-			return
-		else if(istype(charging, /obj/item/computer_hardware/battery_module))
-			var/obj/item/computer_hardware/battery_module/BM = charging
-			if(!BM.battery.fully_charged())
-				icon_state = icon_state_charging
-				BM.battery.give(DYNAMIC_W_TO_CELL_UNITS(efficiency, 1))
-				update_use_power(USE_POWER_ACTIVE)
-			else
-				icon_state = icon_state_charged
-				update_use_power(USE_POWER_IDLE)
-			return
+		// if(istype(charging, /obj/item/modular_computer))
+		// 	var/obj/item/modular_computer/C = charging
+		// 	if(!C.battery_module.battery.fully_charged())
+		// 		icon_state = icon_state_charging
+		// 		C.battery_module.battery.give(DYNAMIC_W_TO_CELL_UNITS(efficiency, 1))
+		// 		update_use_power(USE_POWER_ACTIVE)
+		// 	else
+		// 		icon_state = icon_state_charged
+		// 		update_use_power(USE_POWER_IDLE)
+		// 	return
+		// else if(istype(charging, /obj/item/computer_hardware/battery_module))
+		// 	var/obj/item/computer_hardware/battery_module/BM = charging
+		// 	if(!BM.battery.fully_charged())
+		// 		icon_state = icon_state_charging
+		// 		BM.battery.give(DYNAMIC_W_TO_CELL_UNITS(efficiency, 1))
+		// 		update_use_power(USE_POWER_ACTIVE)
+		// 	else
+		// 		icon_state = icon_state_charged
+		// 		update_use_power(USE_POWER_IDLE)
+		// 	return
 
 		var/obj/item/cell/C = charging.get_cell()
 		if(istype(C))

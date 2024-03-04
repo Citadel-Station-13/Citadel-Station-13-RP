@@ -44,14 +44,15 @@
 
 // Oh by the way this didn't work with old click code which is why clicking shit didn't spam you
 /atom/proc/attack_ghost(mob/observer/dead/user)
-	SHOULD_CALL_PARENT(TRUE)
-	SEND_SIGNAL(src, COMSIG_ATOM_ATTACK_GHOST, user)
-	// TODO: main ai interact bay code fucking disgusts me wtf
-	if(IsAdminGhost(user))		// admin AI interact
-		AdminAIInteract(user)
-		return
-	if(user.client && user.client.inquisitive_ghost)
-		user.examinate(src)
+	if(SEND_SIGNAL(src, COMSIG_ATOM_ATTACK_GHOST, user) & COMPONENT_NO_ATTACK_HAND)
+		return TRUE
+	if(user.client)
+		if(IsAdminGhost(user))
+			AdminAIInteract(user)
+			// attack_ai(user)
+		else if(user.client.inquisitive_ghost)
+			user.examinate(src)
+	return FALSE
 
 // defaults to just attack_ai
 /atom/proc/AdminAIInteract(mob/user)

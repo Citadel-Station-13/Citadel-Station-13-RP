@@ -1,16 +1,13 @@
-var/global/nttransfer_uid = 0
+
 
 /datum/computer_file/program/nttransfer
 	filename = "nttransfer"
 	filedesc = "NTNet P2P Transfer Client"
 	extended_desc = "This program allows for simple file transfer via direct peer to peer connection."
 	program_icon_state = "comm_logs"
-	program_key_state = "generic_key"
-	program_menu_icon = "transferthick-e-w"
 	size = 7
 	requires_ntnet = 1
 	requires_ntnet_feature = NTNET_PEERTOPEER
-	network_destination = "other device via P2P tunnel"
 	available_on_ntnet = 1
 	tgui_id = "NtosNetTransfer"
 
@@ -24,10 +21,10 @@ var/global/nttransfer_uid = 0
 	var/actual_netspeed = 0								// Displayed in the UI, this is the actual transfer speed.
 	var/unique_token 									// UID of this program
 	var/upload_menu = 0									// Whether we show the program list and upload menu
+	var/static/nttransfer_uid = 0
 
 /datum/computer_file/program/nttransfer/New()
-	unique_token = nttransfer_uid
-	nttransfer_uid++
+	unique_token = nttransfer_uid++
 	..()
 
 /datum/computer_file/program/nttransfer/process_tick()
@@ -38,7 +35,7 @@ var/global/nttransfer_uid = 0
 			// Transfer speed is limited by device which uses slower connectivity.
 			// We can have multiple clients downloading at same time, but let's assume we use some sort of multicast transfer
 			// so they can all run on same speed.
-			C.actual_netspeed = min(C.ntnet_speed, ntnet_speed)
+			C.actual_netspeed = min(C.ntnet_status, ntnet_status)
 			C.download_completion += C.actual_netspeed
 			if(C.download_completion >= provided_file.size)
 				C.finish_download()
@@ -58,7 +55,8 @@ var/global/nttransfer_uid = 0
 
 // Finishes download and attempts to store the file on HDD
 /datum/computer_file/program/nttransfer/proc/finish_download()
-	if(!computer || !computer.hard_drive || !computer.hard_drive.store_file(downloaded_file))
+	var/obj/item/computer_hardware/hard_drive/HDD = computer.all_components[MC_HDD]
+	if(!computer || !HDD?.store_file(downloaded_file))
 		error = "I/O Error:  Unable to save file. Check your hard drive and try again."
 	finalize_download()
 
@@ -95,9 +93,10 @@ var/global/nttransfer_uid = 0
 		data["upload_filename"] = "[provided_file.filename].[provided_file.filetype]"
 
 	data["upload_filelist"] = list()
-	if(upload_menu)
+	var/obj/item/computer_hardware/hard_drive/HDD = computer.all_components[MC_HDD]
+	if(upload_menu && HDD)
 		var/list/all_files = list()
-		for(var/datum/computer_file/F in computer.hard_drive.stored_files)
+		for(var/datum/computer_file/F in HDD.stored_files)
 			all_files.Add(list(list(
 			"uid" = F.uid,
 			"filename" = "[F.filename].[F.filetype]",
@@ -160,7 +159,11 @@ var/global/nttransfer_uid = 0
 			server_password = pass
 			return TRUE
 		if("PRG_uploadfile")
-			for(var/datum/computer_file/F in computer.hard_drive.stored_files)
+			var/obj/item/computer_hardware/hard_drive/HDD = computer.all_components[MC_HDD]
+			if (!HDD)
+				// uhh, how did we get here?
+				return FALSE
+			for(var/datum/computer_file/F in HDD.stored_files)
 				if(F.uid == text2num(params["uid"]))
 					if(F.unsendable)
 						error = "I/O Error: File locked."

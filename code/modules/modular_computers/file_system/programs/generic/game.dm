@@ -1,15 +1,12 @@
-// This file is used as a reference for Modular Computers Development guide on the wiki. It contains a lot of excess comments, as it is intended as explanation
-// for someone who may not be as experienced in coding. When making changes, please try to keep it this way.
-
-/datum/computer_file/program/game
-	filename = "dsarcade"				// File name, as shown in the file browser program.
-	filedesc = "Donksoft Micro Arcade"	// User-Friendly name.
-	program_icon_state = "arcade"		// Icon state of this program's screen.
-	extended_desc = "This is a port of the classic game 'Outbomb Cuban Pete', redesigned to run on tablets; Now with thrilling graphics and chilling storytelling."	// A nice description.
-	size = 6							// Size in GQ. Integers only. Smaller sizes should be used for utility/low use programs (like this one), while large sizes are for important programs.
-	requires_ntnet = FALSE				// This particular program does not require NTNet network conectivity...
-	available_on_ntnet = TRUE			// ... but we want it to be available for download.
-	tgui_id = "NtosArcade"				// Path of relevant tgui template.js file.
+/datum/computer_file/program/arcade
+	filename = "dsarcade"
+	filedesc = "Donksoft Micro Arcade"
+	program_icon_state = "arcade"
+	extended_desc = "This port of the classic game 'Outbomb Cuban Pete', redesigned to run on tablets, with thrilling graphics and chilling storytelling."
+	requires_ntnet = FALSE
+	size = 6
+	tgui_id = "NtosArcade"
+	program_icon = "gamepad"
 
 	///Returns TRUE if the game is being played.
 	var/game_active = TRUE
@@ -26,31 +23,30 @@
 	///Determines which boss image to use on the UI.
 	var/boss_id = 1
 
-// This is the primary game loop, which handles the logic of being defeated or winning.
-/datum/computer_file/program/game/proc/game_check(mob/user)
+/datum/computer_file/program/arcade/proc/game_check(mob/user)
 	sleep(5)
+	// user?.mind?.adjust_experience(/datum/skill/gaming, 1)
 	if(boss_hp <= 0)
 		heads_up = "You have crushed [boss_name]! Rejoice!"
-		playsound(computer.loc, 'sound/arcade/win.ogg', 50, TRUE, extrarange = -3, falloff = 0.1)
+		playsound(computer.loc, 'sound/arcade/win.ogg', 50)
 		game_active = FALSE
 		program_icon_state = "arcade_off"
 		if(istype(computer))
-			computer.update_icon()
+			computer.update_appearance()
 		ticket_count += 1
 		// user?.mind?.adjust_experience(/datum/skill/gaming, 50)
 		sleep(10)
 	else if(player_hp <= 0 || player_mp <= 0)
 		heads_up = "You have been defeated... how will the station survive?"
-		playsound(computer.loc, 'sound/arcade/lose.ogg', 50, TRUE, extrarange = -3, falloff = 0.1)
+		playsound(computer.loc, 'sound/arcade/lose.ogg', 50)
 		game_active = FALSE
 		program_icon_state = "arcade_off"
 		if(istype(computer))
-			computer.update_icon()
+			computer.update_appearance()
 		// user?.mind?.adjust_experience(/datum/skill/gaming, 10)
 		sleep(10)
 
-// This handles the boss "AI".
-/datum/computer_file/program/game/proc/enemy_check(mob/user)
+/datum/computer_file/program/arcade/proc/enemy_check(mob/user)
 	var/boss_attackamt = 0 //Spam protection from boss attacks as well.
 	var/boss_mpamt = 0
 	var/bossheal = 0
@@ -60,37 +56,30 @@
 		bossheal = rand (4,6)
 	if(game_active == FALSE)
 		return
-	if(boss_mp <= 5)
+	if (boss_mp <= 5)
 		heads_up = "[boss_mpamt] magic power has been stolen from you!"
-		playsound(computer.loc, 'sound/arcade/steal.ogg', 50, TRUE, extrarange = -3, falloff = 0.1)
+		playsound(computer.loc, 'sound/arcade/steal.ogg', 50, TRUE)
 		player_mp -= boss_mpamt
 		boss_mp += boss_mpamt
 	else if(boss_mp > 5 && boss_hp <12)
 		heads_up = "[boss_name] heals for [bossheal] health!"
-		playsound(computer.loc, 'sound/arcade/heal.ogg', 50, TRUE, extrarange = -3, falloff = 0.1)
+		playsound(computer.loc, 'sound/arcade/heal.ogg', 50, TRUE)
 		boss_hp += bossheal
 		boss_mp -= boss_mpamt
 	else
 		heads_up = "[boss_name] attacks you for [boss_attackamt] damage!"
-		playsound(computer.loc, 'sound/arcade/hit.ogg', 50, TRUE, extrarange = -3, falloff = 0.1)
+		playsound(computer.loc, 'sound/arcade/hit.ogg', 50, TRUE)
 		player_hp -= boss_attackamt
 
 	pause_state = FALSE
 	game_check()
 
-/**
- * UI assets define a list of asset datums to be sent with the UI.
- * In this case, it's a bunch of cute enemy sprites.
- */
-/datum/computer_file/program/game/ui_assets(mob/user)
+/datum/computer_file/program/arcade/ui_assets(mob/user)
 	return list(
 		get_asset_datum(/datum/asset/simple/arcade),
 	)
 
-/**
- * This provides all of the relevant data to the UI in a list().
- */
-/datum/computer_file/program/game/ui_data(mob/user, datum/tgui/ui)
+/datum/computer_file/program/arcade/ui_data(mob/user)
 	var/list/data = get_header_data()
 	data["Hitpoints"] = boss_hp
 	data["PlayerHitpoints"] = player_hp
@@ -102,19 +91,20 @@
 	data["BossID"] = "boss[boss_id].gif"
 	return data
 
-/**
- * This is tgui's replacement for Topic(). It handles any user input from the UI.
- */
-/datum/computer_file/program/game/ui_act(action, list/params, datum/tgui/ui)
-	if(..()) // Always call parent in ui_act, it handles making sure the user is allowed to interact with the UI.
-		return TRUE
+/datum/computer_file/program/arcade/ui_act(action, list/params)
+	. = ..()
+	if(.)
+		return
 
 	var/obj/item/computer_hardware/nano_printer/printer
 	if(computer)
-		printer = computer.nano_printer
+		printer = computer.all_components[MC_PRINT]
 
-	// var/gamerSkillLevel = usr.mind?.get_skill_level(/datum/skill/gaming)
-	// var/gamerSkill = usr.mind?.get_skill_modifier(/datum/skill/gaming, SKILL_RANDS_MODIFIER)
+	// var/gamerSkillLevel = 0
+	var/gamerSkill = 0
+	// if(usr?.mind)
+	// 	gamerSkillLevel = usr.mind.get_skill_level(/datum/skill/gaming)
+	// 	gamerSkill = usr.mind.get_skill_modifier(/datum/skill/gaming, SKILL_RANDS_MODIFIER)
 	switch(action)
 		if("Attack")
 			var/attackamt = 0 //Spam prevention.
@@ -122,7 +112,7 @@
 				attackamt = rand(2,6) // + rand(0, gamerSkill)
 			pause_state = TRUE
 			heads_up = "You attack for [attackamt] damage."
-			playsound(computer.loc, 'sound/arcade/hit.ogg', 50, TRUE, extrarange = -3, falloff = 0.1)
+			playsound(computer.loc, 'sound/arcade/hit.ogg', 50, TRUE)
 			boss_hp -= attackamt
 			sleep(10)
 			game_check()
@@ -139,7 +129,7 @@
 				healcost = rand(1, maxPointCost)
 			pause_state = TRUE
 			heads_up = "You heal for [healamt] damage."
-			playsound(computer.loc, 'sound/arcade/heal.ogg', 50, TRUE, extrarange = -3, falloff = 0.1)
+			playsound(computer.loc, 'sound/arcade/heal.ogg', 50, TRUE)
 			player_hp += healamt
 			player_mp -= healcost
 			sleep(10)
@@ -152,7 +142,7 @@
 				rechargeamt = rand(4,7) // + rand(0, gamerSkill)
 			pause_state = TRUE
 			heads_up = "You regain [rechargeamt] magic power."
-			playsound(computer.loc, 'sound/arcade/mana.ogg', 50, TRUE, extrarange = -3, falloff = 0.1)
+			playsound(computer.loc, 'sound/arcade/mana.ogg', 50, TRUE)
 			player_mp += rechargeamt
 			sleep(10)
 			game_check()
@@ -160,20 +150,20 @@
 			return TRUE
 		if("Dispense_Tickets")
 			if(!printer)
-				to_chat(usr, "<span class='notice'>Hardware error: A printer is required to redeem tickets.</span>")
+				to_chat(usr, SPAN_NOTICE("Hardware error: A printer is required to redeem tickets."))
 				return
 			if(printer.stored_paper <= 0)
-				to_chat(usr, "<span class='notice'>Hardware error: Printer is out of paper.</span>")
+				to_chat(usr, SPAN_NOTICE("Hardware error: Printer is out of paper."))
 				return
 			else
-				computer.visible_message("<span class='notice'>\The [computer] prints out paper.</span>")
+				computer.visible_message(SPAN_NOTICE("\The [computer] prints out paper."))
 				if(ticket_count >= 1)
 					new /obj/item/stack/arcadeticket((get_turf(computer)), 1)
-					to_chat(usr, "<span class='notice'>[src] dispenses a ticket!</span>")
+					to_chat(usr, SPAN_NOTICE("[computer] dispenses a ticket!"))
 					ticket_count -= 1
 					printer.stored_paper -= 1
 				else
-					to_chat(usr, "<span class='notice'>You don't have any stored tickets!</span>")
+					to_chat(usr, SPAN_NOTICE("You don't have any stored tickets!"))
 				return TRUE
 		if("Start_Game")
 			game_active = TRUE
@@ -185,4 +175,4 @@
 			boss_id = rand(1,6)
 			pause_state = FALSE
 			if(istype(computer))
-				computer.update_icon()
+				computer.update_appearance()
