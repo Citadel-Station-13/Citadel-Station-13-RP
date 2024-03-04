@@ -441,6 +441,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 		},
 		/datum/medichine_effect/forced_metabolism{
 			ignore_consumption = FALSE;
+			only_dead = TRUE;
 		},
 	)
 	// we always draw 1 per tick.
@@ -589,10 +590,16 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	var/scale_rate_to_volume = 1
 	/// continue to force metabolism while dead?
 	var/while_dead = FALSE
+	/// only while dead? overrides [while_dead].
+	var/only_dead = FALSE
 
 /datum/medichine_effect/forced_metabolism/tick_on_mob(datum/component/medichine_field/field, mob/living/entity, volume, seconds)
-	if(STAT_IS_DEAD(entity.stat) && !while_dead)
-		return null
+	if(STAT_IS_DEAD(entity.stat))
+		if(!while_dead || only_dead)
+			return null
+	else
+		if(only_dead)
+			return nul
 	var/real_rate = scale_rate_constant * seconds + volume * scale_rate_to_volume
 	entity.forced_metabolism(real_rate)
 	return 1
