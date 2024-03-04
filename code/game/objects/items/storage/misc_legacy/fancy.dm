@@ -106,7 +106,7 @@
 /obj/item/storage/fancy/crayons
 	name = "box of crayons"
 	desc = "A box of crayons for all your rune drawing needs."
-	icon = 'icons/obj/crayons.dmi'
+	icon = 'icons/modules/artwork/items/crayon_box.dmi'
 	icon_state = "crayonbox"
 	w_class = WEIGHT_CLASS_SMALL
 	icon_type = "crayon"
@@ -129,11 +129,11 @@
 /obj/item/storage/fancy/crayons/update_icon()
 	cut_overlays()
 	for(var/obj/item/pen/crayon/crayon in contents)
-		add_overlay(crayon.colourName)
+		add_overlay(crayon.crayon_color_name)
 
 /obj/item/storage/fancy/crayons/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/pen/crayon))
-		switch(W:colourName)
+		switch(W:crayon_color_name)
 			if("mime")
 				to_chat(user, "This crayon is too sad to be contained in this box.")
 				return
@@ -145,7 +145,7 @@
 /obj/item/storage/fancy/markers
 	name = "box of markers"
 	desc = "A very professional looking box of permanent markers."
-	icon = 'icons/obj/crayons.dmi'
+	icon = 'icons/modules/artwork/items/marker_box.dmi'
 	icon_state = "markerbox"
 	w_class = WEIGHT_CLASS_SMALL
 	icon_type = "marker"
@@ -169,11 +169,11 @@
 /obj/item/storage/fancy/markers/update_icon()
 	cut_overlays()
 	for(var/obj/item/pen/crayon/marker/marker in contents)
-		add_overlay("m[marker.colourName]")
+		add_overlay("m[marker.crayon_color_name]")
 
 /obj/item/storage/fancy/markers/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/pen/crayon/marker))
-		switch(W:colourName)
+		switch(W:crayon_color_name)
 			if("mime")
 				to_chat(user, "This marker is too depressing to be contained in this box.")
 				return
@@ -185,7 +185,7 @@
 /obj/item/storage/fancy/chalk
 	name = "box of ritual chalk"
 	desc = "A box of chalk for all your ritual needs."
-	icon = 'icons/obj/crayons.dmi'
+	icon = 'icons/modules/artwork/items/chalk_box.dmi'
 	icon_state = "chalkbox"
 	w_class = WEIGHT_CLASS_SMALL
 	icon_type = "chalk"
@@ -206,7 +206,7 @@
 /obj/item/storage/fancy/chalk/update_icon()
 	cut_overlays()
 	for(var/obj/item/pen/crayon/chalk/chalk in contents)
-		add_overlay("c[chalk.colourName]")
+		add_overlay("c[chalk.crayon_color_name]")
 
 /*
  * Cracker Packet

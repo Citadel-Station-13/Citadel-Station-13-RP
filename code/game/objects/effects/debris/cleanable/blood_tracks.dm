@@ -13,9 +13,6 @@
 // 5 seconds
 #define TRACKS_CRUSTIFY_TIME   50
 
-// color-dir-dry
-var/global/list/image/fluidtrack_cache=list()
-
 /datum/fluidtrack
 	var/direction=0
 	var/basecolor="#A10808"
@@ -40,12 +37,11 @@ var/global/list/image/fluidtrack_cache=list()
 /obj/effect/debris/cleanable/blood/tracks
 	amount = 0
 	random_icon_states = null
-	var/dirs=0
 	icon = 'icons/effects/fluidtracks.dmi'
 	icon_state = ""
+	var/dirs=0
 	var/coming_state="blood1"
 	var/going_state="blood2"
-	var/updatedtracks=0
 
 	// dir = id in stack
 	var/list/setdirs=list(
@@ -61,6 +57,9 @@ var/global/list/image/fluidtrack_cache=list()
 
 	// List of laid tracks and their colors.
 	var/list/datum/fluidtrack/stack=list()
+
+	// todo: this piece of shit obj is full of shitcode so we have to just exclude it for now
+	obj_persist_status = OBJ_PERSIST_STATUS_NO_THANK_YOU
 
 /**
  * Add tracks to an existing trail.
@@ -100,7 +99,6 @@ var/global/list/image/fluidtrack_cache=list()
 			track=new /datum/fluidtrack(b,bloodcolor,t)
 			stack.Add(track)
 			setdirs["[b]"]=stack.Find(track)
-			updatedtracks |= b
 			updated=1
 
 		// GOING BIT (shift up 4)
@@ -117,7 +115,6 @@ var/global/list/image/fluidtrack_cache=list()
 			track=new /datum/fluidtrack(b,bloodcolor,t)
 			stack.Add(track)
 			setdirs["[b]"]=stack.Find(track)
-			updatedtracks |= b
 			updated=1
 
 	dirs |= comingdir|realgoing
@@ -149,7 +146,6 @@ var/global/list/image/fluidtrack_cache=list()
 		track.overlay=I
 		stack[stack_idx]=track
 		add_overlay(I)
-	updatedtracks=0 // Clear our memory of updated tracks.
 
 /obj/effect/debris/cleanable/blood/tracks/footprints
 	name = "wet footprints"

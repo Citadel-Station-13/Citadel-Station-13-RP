@@ -1164,7 +1164,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/trash_pit)
 "dQ" = (
-/obj/random/trash,
 /turf/simulated/floor/wood,
 /area/maintenance/dormitory)
 "dR" = (
@@ -3672,7 +3671,6 @@
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
 "mk" = (
-/obj/random/trash,
 /turf/simulated/floor/carpet,
 /area/maintenance/dormitory)
 "ml" = (
@@ -4513,7 +4511,6 @@
 	pixel_y = -4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/debris/cleanable/dirt,
 /obj/machinery/power/apc/west_mount,
 /obj/structure/cable{
 	icon_state = "0-2"
@@ -5109,7 +5106,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "rt" = (
-/obj/effect/debris/cleanable/blood/splatter,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
 	},
@@ -6299,7 +6295,6 @@
 	pixel_x = 4;
 	pixel_y = -3
 	},
-/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/storage/tech)
 "vj" = (
@@ -7404,7 +7399,6 @@
 	pixel_x = 6;
 	pixel_y = -3
 	},
-/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/storage/tech)
 "zc" = (
@@ -9333,7 +9327,6 @@
 	pixel_x = 6;
 	pixel_y = -3
 	},
-/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/storage/tech)
 "FF" = (
@@ -14725,7 +14718,6 @@
 /area/engineering/hallway)
 "XV" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor,
 /area/storage/tech)
 "XW" = (
@@ -14935,7 +14927,6 @@
 /turf/simulated/floor/tiled,
 /area/station/stairs_one)
 "Yw" = (
-/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor,
 /area/storage/tech)
 "Yy" = (

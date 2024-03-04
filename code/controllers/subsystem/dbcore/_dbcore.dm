@@ -131,6 +131,7 @@ SUBSYSTEM_DEF(dbcore)
 	)
 	query_round_initialize.Execute(async = FALSE)
 	GLOB.round_id = "[query_round_initialize.last_insert_id]"
+	GLOB.round_number = text2num(GLOB.round_id)
 	qdel(query_round_initialize)
 
 /datum/controller/subsystem/dbcore/proc/SetRoundStart()
@@ -241,7 +242,28 @@ SUBSYSTEM_DEF(dbcore)
 		if (qdel)
 			qdel(query)
 
+/**
+ * **WARNING**: Extremely dangerous.
+ *
+ * Directly runs SQL strings asynchronously, and only returns when they're done.
+ *
+ * No sanitization provided.
+ */
+/datum/controller/subsystem/dbcore/proc/dangerously_block_on_multiple_unsanitized_queries(list/query_strings, timeout = 10 SECONDS)
+	var/list/datum/db_query/queries = list()
+	var/expire_at = world.time + timeout
 
+	for(var/string in query_strings)
+		var/datum/db_query/query = SSdbcore.NewQuery(string)
+		INVOKE_ASYNC(query, TYPE_PROC_REF(/datum/db_query, warn_execute))
+		queries += query
+
+	for(var/datum/db_query/query as anything in queries)
+		UNTIL(!query.in_progress || world.time > expire_at)
+		if(world.time > expire_at)
+			. = FALSE
+			CRASH("timeout expired")
+	return TRUE
 
 /*
 Takes a list of rows (each row being an associated list of column => value) and inserts them via a single mass query.
@@ -255,7 +277,9 @@ Delayed insert mode was removed in mysql 7 and only works with MyISAM type table
 	It was included because it is still supported in mariadb.
 	It does not work with duplicate_key and the mysql server ignores it in those cases
 */
-/datum/controller/subsystem/dbcore/proc/MassInsert(table, list/rows, duplicate_key = FALSE, ignore_errors = FALSE, delayed = FALSE, warn = FALSE, async = TRUE, special_columns = null)
+// todo: this is 'Legacy' because we need a true mass_insert that uses rust_g
+// todo: mass_insert(table_name, list/columns, list/rows, duplicate_key, ignore_errors, async, list/static_columns)
+/datum/controller/subsystem/dbcore/proc/MassInsertLegacy(table, list/rows, duplicate_key = FALSE, ignore_errors = FALSE, delayed = FALSE, warn = FALSE, async = TRUE, special_columns = null)
 	if (!table || !rows || !istype(rows))
 		return
 
