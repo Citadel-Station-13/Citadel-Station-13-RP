@@ -183,38 +183,6 @@ default behaviour is:
 				amount = round(amount * M.disable_duration_percent)
 	..(amount)
 
-// ++++ROCKDTBEN++++ MOB PROCS //END
-
-// Applies direct "cold" damage while checking protection against the cold.
-/mob/living/proc/inflict_cold_damage(amount)
-	amount *= 1 - get_cold_protection(50) // Within spacesuit protection.
-	if(amount > 0)
-		adjustFireLoss(amount)
-
-// Ditto, but for "heat".
-/mob/living/proc/inflict_heat_damage(amount)
-	amount *= 1 - get_heat_protection(10000) // Within firesuit protection.
-	if(amount > 0)
-		adjustFireLoss(amount)
-
-// and one for electricity because why not
-/mob/living/proc/inflict_shock_damage(amount)
-	electrocute_act(amount, null, 1 - get_shock_protection(), pick(BP_HEAD, BP_TORSO, BP_GROIN))
-
-// also one for water (most things resist it entirely, except for slimes)
-/mob/living/proc/inflict_water_damage(amount)
-	amount *= 1 - get_water_protection()
-	if(amount > 0)
-		adjustToxLoss(amount)
-
-// one for abstracted away ""poison"" (mostly because simplemobs shouldn't handle reagents)
-/mob/living/proc/inflict_poison_damage(amount)
-	if(isSynthetic())
-		return
-	amount *= 1 - get_poison_protection()
-	if(amount > 0)
-		adjustToxLoss(amount)
-
 /mob/proc/get_contents()
 	. = list()
 	var/list/obj/processing = get_equipped_items(TRUE, TRUE)
@@ -239,19 +207,6 @@ default behaviour is:
 		t = BP_HEAD
 	var/obj/item/organ/external/def_zone = ran_zone(t)
 	return def_zone
-
-
-// heal ONE external organ, organ gets randomly selected from damaged ones.
-/mob/living/proc/heal_organ_damage(var/brute, var/burn)
-	adjustBruteLoss(-brute)
-	adjustFireLoss(-burn)
-	src.update_health()
-
-// heal MANY external organs, in random order
-/mob/living/proc/heal_overall_damage(var/brute, var/burn)
-	adjustBruteLoss(-brute)
-	adjustFireLoss(-burn)
-	src.update_health()
 
 /mob/living/proc/restore_all_organs()
 	return

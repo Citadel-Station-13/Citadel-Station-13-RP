@@ -5,7 +5,7 @@
 GLOBAL_LIST_EMPTY(medichine_cell_datums)
 
 /proc/fetch_cached_medichine_cell_datum(datum/medichine_cell/typepath)
-	if(isnull(GLOB.medichine_cell_datums))
+	if(isnull(GLOB.medichine_cell_datums[typepath]))
 		GLOB.medichine_cell_datums[typepath] = new typepath
 	return GLOB.medichine_cell_datums[typepath]
 
@@ -403,8 +403,9 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 /datum/medichine_cell/seal_wounds
 	effects = list(
 		/datum/medichine_effect/wound_healing{
-			disinfect_strength = 2;
-			seal_strength = 5;
+			biology_types = BIOLOGY_TYPES_FLESHY;
+			disinfect_wounds = TRUE;
+			seal_wounds = TRUE;
 			repair_strength_brute = 2;
 			repair_strength_burn = 2;
 		}
@@ -417,11 +418,12 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	effects = list(
 		/datum/medichine_effect/agony_from_open_wounds{
 			strength_factor = 1;
-			limits_utilization = FALSE;
+			ignore_consumption = TRUE;
 		},
 		/datum/medichine_effect/wound_healing{
-			disinfect_strength = 2;
-			seal_strength = 5;
+			biology_types = BIOLOGY_TYPES_FLESHY;
+			disinfect_wounds = TRUE;
+			seal_wounds = TRUE;
 			repair_strength_brute = 2;
 			repair_strength_burn = 2;
 		}
@@ -456,7 +458,8 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	effects = list(
 		/datum/medichine_effect/wound_healing{
 			biology_types = BIOLOGY_TYPES_SYNTHETIC;
-			seal_strength = 5;
+			seal_wounds = TRUE;
+			disinfect_wounds = TRUE;
 			repair_strength_brute = 2;
 			repair_strength_burn = 2;
 		}
@@ -498,7 +501,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 
 /datum/medichine_effect/wound_healing
 	/// allowed biologies
-	var/biology_types = BIOLOGY_TYPES_SYNTHETIC
+	var/biology_types = NONE
 	// todo: strength, not instant
 	var/seal_wounds = FALSE
 	// todo: strength, not instant
@@ -521,7 +524,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	// do simple healing for simplemobs
 	if(!istype(humanlike))
 		brute_healing_left -= entity.heal_brute_loss(brute_healing_total)
-		burn_healing_left -= entity.heal_burn_loss(burn_healing_total)
+		burn_healing_left -= entity.heal_fire_loss(burn_healing_total)
 		return max(1 - (burn_healing_left / burn_healing_total), 1 - (brute_healing_left / brute_healing_total))
 	var/brute_loss_total = 0
 	var/burn_loss_total = 0
@@ -543,14 +546,12 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	for(var/datum/wound/wound as anything in wounds_healing)
 		if(wound.damage_type == BURN)
 			#warn burn
+			pass()
 		else
 			#warn brute
+			pass()
 	#warn impl
 	return max(1 - (burn_healing_left / burn_healing_total), 1 - (brute_healing_left / brute_healing_total))
-
-#warn oxygenate
-#warn toxfilter
-
 
 /datum/medichine_effect/oxygenate
 	/// works on the dead
