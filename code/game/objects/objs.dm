@@ -520,7 +520,7 @@
 			return 2
 		if(COLORATION_MODE_GB_MATRIX)
 			return 2
-		if(COLORATION_MODE_RBB_MATRIX)
+		if(COLORATION_MODE_RGB_MATRIX)
 			return 3
 	return coloration_amount
 

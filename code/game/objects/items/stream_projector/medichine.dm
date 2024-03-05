@@ -439,8 +439,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	// each cell heals 400, but faster
 	effects = list(
 		/datum/medichine_effect/agony_from_open_wounds{
-			strength_factor = 1;
-			ignore_consumption = TRUE;
+			hard_limit = 50;
 		},
 		/datum/medichine_effect/wound_healing{
 			biology_types = BIOLOGY_TYPES_FLESHY;
@@ -448,7 +447,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 			seal_wounds = TRUE;
 			repair_strength_brute = 2;
 			repair_strength_burn = 2;
-		}
+		},
 	)
 	color = "#ff3300"
 	#warn impl
@@ -579,6 +578,8 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 			// only heal 15 wounds at a time thank you!
 			if(length(wounds_healing) > 15)
 				break
+			if(!wound.damage)
+				continue
 			if(wound.internal)
 				continue
 			if(only_open && (wound.is_treated()))
@@ -618,6 +619,12 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 			else
 				brute_heal_overrun = effective_heal - wound.damage
 				wound.heal_damage(wound.damage)
+		if(!wound.damage)
+			if(seal_wounds)
+				wound.bandage()
+				wound.salve()
+			if(disinfect_wounds)
+				wound.disinfect()
 	return max(1 - (burn_healing_left / burn_healing_total), 1 - (brute_healing_left / brute_healing_total))
 
 /datum/medichine_effect/oxygenate
@@ -685,19 +692,49 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	return 1
 
 /datum/medichine_effect/agony_from_open_wounds
-
-	var/strength_constant = 0
-	var/strength_factor = 0
+	// it makes no sense to use this for consumption rate most of the time.
+	ignore_consumption = TRUE
+	/// hard limit to agony
+	var/hard_limit = 0
+	/// grace threshold above hard limit we can deal to so we don't oscillate too hard
+	var/hard_overrun_allowed = 5
+	/// agony multiplier
+	var/global_multiplier = 1
+	/// agony per open damage
+	var/per_damage = 0.5
+	/// increase rate per missing (minimum 1)
+	var/gain_rate_scaling = 0.15
+	/// limit by bodypart based on bodypart ratio
+	/// if 0.5, it means 'agony can only be half of the bodypart's ratio or less'
+	/// you therefore usually want it way above say, 10, because 0.4 ratio with 100 ratio_scaling would be 40.
+	var/ratio_scaling = 100
 
 /datum/medichine_effect/agony_from_open_wounds/tick_on_mob(datum/component/medichine_field/field, mob/living/entity, volume, seconds)
 	var/mob/living/carbon/humanlike = entity
 	if(!istype(humanlike))
-		return
+		return null
+	if(humanlike.halloss >= hard_limit)
+		return 0
+	var/can_deal = (hard_limit + hard_overrun_allowed) - humanlike.halloss
+	var/will_deal = 0
 	for(var/obj/item/organ/external/ext as anything in humanlike.bad_external_organs)
 		var/size_ratio = organ_rel_size[ext.organ_tag] / GLOB.organ_combined_size
 		if(!size_ratio)
 			continue
-	#warn impl
+		var/organ_limit = ratio_scaling * size_ratio
+		var/total_damage = 0
+		for(var/datum/wound/wound as anything in ext.wounds)
+			if(wound.internal)
+				continue
+			if(wound.is_treated())
+				continue
+			total_damage += wound.damage
+		will_deal += min(organ_limit, per_damage * total_damage)
+	var/missing = humanlike.halloss - will_deal
+	var/dealing = min(can_deal, missing * gain_rate_scaling + 1)
+	humanlike.adjustHalLoss(dealing)
+	// todo: actually calculate consumption rate based on something..?
+	return 1
 
 // /datum/medichine_effect/stoneskin
 
