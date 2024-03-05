@@ -250,7 +250,7 @@
 	switch(beam_visual_mode)
 		if(BEAM_VISUAL_SEGMENTS)
 			// don't stretch past distance
-			var/steps_required = round(distance / WORLD_ICON_SIZE)
+			var/steps_required = round(distance / WORLD_ICON_SIZE, 1)
 			// we assume both segment renderers are lockstepped
 			var/requires_update = FALSE
 			if(steps_required > length(segmentation.segment_appearances))

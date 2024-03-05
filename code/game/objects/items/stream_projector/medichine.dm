@@ -43,11 +43,15 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	/// maximum distance
 	var/maximum_distance = 7
 	/// multiplier to distance when dividing by distance
-	var/distance_divisor_multiplier = 1
+	var/distance_divisor_multiplier = 0.5
 
 /obj/item/stream_projector/medichine/examine(mob/user, dist)
 	. = ..()
-	. += SPAN_BOLDWARNING("[src] loses efficiency based on its distance to a target.")
+	. += SPAN_RED("[src] loses some efficiency based on its distance to a target.")
+	if(isnull(inserted_cartridge))
+		. += "[src] has nothing loaded."
+	else
+		. += "[src] has [inserted_cartridge] loaded."
 
 /obj/item/stream_projector/medichine/valid_target(atom/entity)
 	return isliving(entity)
@@ -121,11 +125,11 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 
 /obj/item/stream_projector/medichine/setup_target_visuals(atom/entity)
 	. = ..()
-	var/datum/beam/creating_beam = create_segmented_beam(src, entity, icon = 'icons/effects/beam.dmi', icon_state = "medbeam_tiled")
+	var/datum/beam/creating_beam = create_segmented_beam(src, entity, icon = 'icons/effects/beam.dmi', icon_state = "medbeam_br_tiled", collider_type = /atom/movable/beam_collider)
 	LAZYSET(beams_by_entity, entity, creating_beam)
 	var/datum/medichine_cell/effective_cell = effective_cell_datum()
 	if(!isnull(effective_cell))
-		creating_beam.line_renderer.color = effective_cell.color
+		creating_beam.segmentation.color = beam_color(effective_cell.color)
 	RegisterSignal(creating_beam, COMSIG_BEAM_REDRAW, PROC_REF(on_beam_redraw))
 	RegisterSignal(creating_beam, COMSIG_BEAM_CROSSED, PROC_REF(on_beam_crossed))
 
@@ -156,7 +160,15 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	if(!isnull(effective_cell))
 		for(var/atom/entity as anything in beams_by_entity)
 			var/datum/beam/entity_beam = beams_by_entity[entity]
-			entity_beam.line_renderer.color = effective_cell.color
+			entity_beam.segmentation.color = beam_color(effective_cell.color)
+
+/obj/item/stream_projector/medichine/proc/beam_color(color)
+	var/list/decoded = ReadRGB(color)
+	return list(
+		decoded[1] / 255, decoded[2] / 255, decoded[3] / 255,
+		0, 0, 0,
+		1, 1, 1,
+	)
 
 /obj/item/stream_projector/medichine/proc/effective_cell_datum()
 	return isnull(interface)? inserted_cartridge?.cell_datum : interface.query_medichines()
@@ -183,7 +195,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	var/requested_amount = 0
 	for(var/mob/entity as anything in active_targets)
 		var/datum/component/medichine_field/field = entity.GetComponent(/datum/component/medichine_field)
-		var/distance_multiplier = 1 / max(1, get_dist(src, entity) * distance_divisor_multiplier)
+		var/distance_multiplier = 1 / max(1, 1 + (get_dist(src, entity) - 1) * distance_divisor_multiplier)
 		if(isnull(field))
 			requested_amount += effective_injection_rate * distance_multiplier
 			continue
@@ -245,7 +257,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	var/removed_something = FALSE
 	for(var/datum/medichine_cell/cell_package as anything in active)
 		var/cell_volume = active[cell_package]
-		var/reacting = cell_package.reaction_rate
+		var/reacting = min(cell_package.reaction_rate, cell_volume)
 		var/reacted_ratio = 0
 
 		// perform tick
@@ -266,13 +278,16 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 		recalculate_color()
 
 /datum/component/medichine_field/proc/recalculate_color()
-	var/list/blended = list(0, 0, 0)
-	for(var/datum/medichine_cell/package as anything in active)
-		var/ratio = (active[package] / total_volume)
-		blended[1] += package.color_rgb_list[1] * ratio
-		blended[2] += package.color_rgb_list[2] * ratio
-		blended[3] += package.color_rgb_list[3] * ratio
-	current_color = rgb(blended[1], blended[2], blended[3])
+	if(!total_volume)
+		current_color = "#ffffff"
+	else
+		var/list/blended = list(0, 0, 0)
+		for(var/datum/medichine_cell/package as anything in active)
+			var/ratio = (active[package] / total_volume)
+			blended[1] += package.color_rgb_list[1] * ratio
+			blended[2] += package.color_rgb_list[2] * ratio
+			blended[3] += package.color_rgb_list[3] * ratio
+		current_color = rgb(blended[1], blended[2], blended[3])
 	renderer.color = current_color
 
 /datum/component/medichine_field/proc/inject_medichines(datum/medichine_cell/medichines, amount)
@@ -348,9 +363,15 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 		add_overlay(I)
 
 /obj/item/medichine_cell/proc/fill(amount)
+	. = min(amount, volume)
+	if(!.)
+		return
 	volume = clamp(volume + amount, 0, max_volume)
 
 /obj/item/medichine_cell/proc/use(amount)
+	. = min(amount, volume)
+	if(!.)
+		return
 	volume = clamp(volume - amount, 0, max_volume)
 
 /obj/item/medichine_cell/detect_material_base_costs()

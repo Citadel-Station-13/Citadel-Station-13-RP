@@ -132,7 +132,7 @@
 /datum/item_interface/proc/check_high_power()
 	return min(1, default_power_bus_avail_high / default_power_bus_load_high)
 
-//* Miscellaneous / One-Offs *//
+//* Miscellaneous / Specific Items *//
 
 /**
  * @return amount used
