@@ -232,10 +232,6 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 		return COMPONENT_INCOMPATIBLE
 	return ..()
 
-/datum/component/medichine_field/Destroy()
-	QDEL_NULL(renderer)
-	return ..()
-
 /datum/component/medichine_field/RegisterWithParent()
 	. = ..()
 	RegisterSignal(parent, COMSIG_MOB_ON_LIFE, PROC_REF(on_life))
@@ -243,6 +239,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 /datum/component/medichine_field/UnregisterFromParent()
 	. = ..()
 	UnregisterSignal(parent, COMSIG_MOB_ON_LIFE)
+	QDEL_NULL(renderer)
 
 /datum/component/medichine_field/proc/on_life(datum/source, seconds, times_fired)
 	tick(seconds)
@@ -373,6 +370,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	if(!.)
 		return
 	volume = clamp(volume - amount, 0, max_volume)
+	update_icon()
 
 /obj/item/medichine_cell/detect_material_base_costs()
 	. = ..()

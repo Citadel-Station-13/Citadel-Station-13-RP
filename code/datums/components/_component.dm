@@ -329,7 +329,7 @@
  */
 /datum/proc/GetComponent(datum/component/c_type)
 	RETURN_TYPE(c_type)
-	. = datum_components?[initial(c_type.registered_type)]
+	. = datum_components?[initial(c_type.registered_type) || c_type]
 	. = length(.)? .[1] : .
 
 /**
