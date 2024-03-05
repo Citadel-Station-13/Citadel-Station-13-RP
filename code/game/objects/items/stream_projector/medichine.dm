@@ -305,7 +305,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	renderer.particles = particle_instance
 	renderer.color = current_color
 
-//? VFXb
+//? VFX
 
 /atom/movable/particle_render/medichine_field
 	alpha = 200
