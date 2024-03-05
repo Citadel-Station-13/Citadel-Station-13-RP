@@ -2891,6 +2891,7 @@
 #include "code\modules\integrated_electronics\subtypes\built_in.dm"
 #include "code\modules\integrated_electronics\subtypes\converters.dm"
 #include "code\modules\integrated_electronics\subtypes\data_transfer.dm"
+#include "code\modules\integrated_electronics\subtypes\filters.dm"
 #include "code\modules\integrated_electronics\subtypes\input.dm"
 #include "code\modules\integrated_electronics\subtypes\lists.dm"
 #include "code\modules\integrated_electronics\subtypes\logic.dm"
