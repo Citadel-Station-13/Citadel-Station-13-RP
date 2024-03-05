@@ -283,13 +283,13 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 
 /datum/component/medichine_field/proc/inject_medichines(datum/medichine_cell/medichines, amount)
 	LAZYINITLIST(active)
+	ensure_visuals()
 	if(isnull(active[medichines]))
 		for(var/datum/medichine_effect/effect as anything in medichines.effects)
 			effect.target_added(parent)
 		recalculate_color()
 	active[medichines] += amount
 	total_volume += amount
-	ensure_visuals()
 
 /datum/component/medichine_field/proc/ensure_visuals()
 	if(!isnull(renderer))
@@ -642,8 +642,8 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 		brute_healing_left -= entity.heal_brute_loss(brute_healing_total)
 		burn_healing_left -= entity.heal_fire_loss(burn_healing_total)
 		return max(1 - (burn_healing_left / burn_healing_total), 1 - (brute_healing_left / brute_healing_total))
-	var/brute_loss_total = 0
-	var/burn_loss_total = 0
+	var/brute_loss_instances = 0
+	var/burn_loss_instances = 0
 	var/list/datum/wound/wounds_healing = list()
 	for(var/obj/item/organ/external/ext as anything in humanlike.bad_external_organs)
 		// only heal 15 wounds at a time thank you!
@@ -660,12 +660,12 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 			if(only_open && (wound.is_treated()))
 				continue
 			if(wound.damage_type == BURN)
-				burn_loss_total += wound.damage
+				burn_loss_instances++
 			else
-				brute_loss_total += wound.damage
+				brute_loss_instances++
 			wounds_healing += wound
-	var/burn_heal_per = burn_healing_left / burn_loss_total
-	var/brute_heal_per = brute_healing_left / brute_loss_total
+	var/burn_heal_per = burn_loss_instances && (burn_healing_left / burn_loss_instances)
+	var/brute_heal_per = brute_loss_instances && (brute_healing_left / brute_loss_instances)
 	burn_heal_per = CEILING(burn_heal_per, 1)
 	brute_heal_per = CEILING(brute_heal_per, 1)
 	var/burn_heal_overrun = 0

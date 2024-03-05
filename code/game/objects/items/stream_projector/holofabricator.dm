@@ -75,7 +75,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/holofabricato
 	return isatom(entity)
 
 /obj/item/stream_projector/holofabricator/setup_target_visuals(atom/entity)
-	var/datum/beam/beam = create_stretched_beam(src, entity, icon = 'icons/items/stream_projector/holofabricator', icon_state = "beam-double", collider_type = /atom/movable/beam_collider)
+	var/datum/beam/beam = create_stretched_beam(src, entity, icon = 'icons/items/stream_projector/holofabricator.dmi', icon_state = "beam-double", collider_type = /atom/movable/beam_collider)
 	active_targets[entity] = beam
 
 /obj/item/stream_projector/holofabricator/teardown_target_visuals(atom/entity)
