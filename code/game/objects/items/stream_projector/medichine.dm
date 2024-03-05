@@ -125,7 +125,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 
 /obj/item/stream_projector/medichine/setup_target_visuals(atom/entity)
 	. = ..()
-	var/datum/beam/creating_beam = create_segmented_beam(src, entity, icon = 'icons/effects/beam.dmi', icon_state = "medbeam_br_tiled", collider_type = /atom/movable/beam_collider)
+	var/datum/beam/creating_beam = create_segmented_beam(src, entity, icon = 'icons/items/stream_projector/medichine.dmi', icon_state = "beam", collider_type = /atom/movable/beam_collider)
 	LAZYSET(beams_by_entity, entity, creating_beam)
 	var/datum/medichine_cell/effective_cell = effective_cell_datum()
 	if(!isnull(effective_cell))
@@ -187,9 +187,9 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 		return
 
 	// get suspension limit
-	var/effective_suspension_limit = effective_package.suspension_limit * suspension_multiplier
+	var/effective_suspension_limit = max(0, effective_package.suspension_limit * suspension_multiplier)
 	// get injection rate
-	var/effective_injection_rate = min(effective_package.injection_multiplier * injection_rate, effective_suspension_limit)
+	var/effective_injection_rate = clamp(effective_package.injection_multiplier * injection_rate, 0, effective_suspension_limit)
 
 	// modulate injection rate
 	var/requested_amount = 0
@@ -280,7 +280,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	else
 		var/list/blended = list(0, 0, 0)
 		for(var/datum/medichine_cell/package as anything in active)
-			var/ratio = (active[package] / total_volume)
+			var/ratio = 1 / length(active)
 			blended[1] += package.color_rgb_list[1] * ratio
 			blended[2] += package.color_rgb_list[2] * ratio
 			blended[3] += package.color_rgb_list[3] * ratio
@@ -292,8 +292,8 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	if(isnull(active[medichines]))
 		for(var/datum/medichine_effect/effect as anything in medichines.effects)
 			effect.target_added(parent)
+		recalculate_color()
 	active[medichines] += amount
-	recalculate_color()
 	ensure_visuals()
 
 /datum/component/medichine_field/proc/ensure_visuals()
@@ -316,9 +316,13 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	count = 75
 	spawning = 10
 	fade = 3
-	lifespan = 1
+	lifespan = 3
 	velocity = list(0, 2.5, 0)
-	position = generator("box", list(-8, -16, 0), list(8, 0, 0))
+	icon = 'icons/items/stream_projector/medichine.dmi'
+	icon_state = list(
+		"particle-plus" = 1,
+	)
+	position = generator("box", list(-8, -16, 0), list(7, 0, 0))
 
 /**
  * medical beamgun cell
