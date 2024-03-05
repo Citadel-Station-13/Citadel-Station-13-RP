@@ -329,10 +329,12 @@
 /datum/beam/proc/uncrossed(atom/movable/entity)
 	SHOULD_CALL_PARENT(TRUE)
 	colliding -= entity
+	SEND_SIGNAL(src, COMSIG_BEAM_UNCROSSED, entity)
 
 /datum/beam/proc/crossed(atom/movable/entity)
 	SHOULD_CALL_PARENT(TRUE)
 	colliding += entity
+	SEND_SIGNAL(src, COMSIG_BEAM_CROSSED, entity)
 
 /**
  * adds a set of particles to this beam

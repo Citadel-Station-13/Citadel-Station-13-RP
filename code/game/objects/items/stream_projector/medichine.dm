@@ -86,6 +86,39 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 	return ..()
 
+/obj/item/stream_projector/medichine/try_lock_target(atom/entity, datum/event_args/actor/actor, silent)
+	var/turf/where_we_are = get_turf(src)
+	var/turf/where_they_are = get_turf(entity)
+	if(get_dist(where_we_are, where_they_are) <= 1 && !where_we_are.TurfAdjacency(where_they_are))
+		if(!silent)
+			actor.chat_feedback(
+				SPAN_WARNING("Something is in the way!"),
+				target = src,
+			)
+		return FALSE
+	var/list/turf/line_to_them = getline(where_we_are, get_turf(entity))
+	if(isnull(line_to_them))
+		return FALSE
+	var/atom/blocking
+	for(var/turf/potential_blocker in line_to_them)
+		if(potential_blocker.density && !(potential_blocker.pass_flags_self & ATOM_PASS_CLICK))
+			blocking = potential_blocker
+			break
+		for(var/obj/object in potential_blocker)
+			if(object.density && !(object.pass_flags_self & ATOM_PASS_CLICK))
+				blocking = object
+				break
+		if(!isnull(blocking))
+			break
+	if(!isnull(blocking))
+		if(!silent)
+			actor.chat_feedback(
+				SPAN_WARNING("Something is in the way!"),
+				target = src,
+			)
+		return FALSE
+	return ..()
+
 /obj/item/stream_projector/medichine/setup_target_visuals(atom/entity)
 	. = ..()
 	var/datum/beam/creating_beam = create_segmented_beam(src, entity, icon = 'icons/effects/beam.dmi', icon_state = "medbeam_tiled")
@@ -94,11 +127,19 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	if(!isnull(effective_cell))
 		creating_beam.line_renderer.color = effective_cell.color
 	RegisterSignal(creating_beam, COMSIG_BEAM_REDRAW, PROC_REF(on_beam_redraw))
+	RegisterSignal(creating_beam, COMSIG_BEAM_CROSSED, PROC_REF(on_beam_cross))
 
 /obj/item/stream_projector/medichine/proc/on_beam_redraw(datum/beam/source)
 	var/atom/movable/target = source.beam_target
 	if(get_dist(src, target) > maximum_distance)
 		drop_target(target)
+
+/obj/item/stream_projector/medichine/proc/on_beam_crossed(datum/beam/source, atom/what)
+	if(what.pass_flags_self & ATOM_PASS_CLICK)
+		return
+	if(!what.density)
+		return
+	drop_target(source.beam_target)
 
 /obj/item/stream_projector/medichine/teardown_target_visuals(atom/entity)
 	. = ..()
