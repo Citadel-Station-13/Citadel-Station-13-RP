@@ -30,8 +30,8 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/holofabricato
 	name = "holofabricator"
 	desc = "A precise triage tool used by many frontier engineers. Uses materials from a loaded cartridge \
 	to rapidly fabricate a generated holotemplate."
-	#warn icon
-	#warn projector-n 1-10, cartridge
+	icon = 'icons/items/stream_projector/holofabricator.dmi'
+	icon_state = "projector"
 
 	// todo: proper cataloguing fluff desc system
 	description_fluff = "Despite having been around for hundreds of years, holofabricators are still a novel, alpha-stage concept \
@@ -63,8 +63,24 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/holofabricato
 	. += SPAN_RED("Things constructed with holofabricators do not have the same structural integrity as things built by conventional means.")
 	. += SPAN_RED("Transfer efficiency is lowered quadratically with a target's distance from the applied holofabricator.")
 
+/obj/item/stream_projector/holofabricator/update_icon(updates)
+	cut_overlays()
+	. = ..()
+	var/amount = inserted_cartridge?.get_ratio() * 10
+	if(amount)
+		amount = CEILING(amount, 1)
+		add_overlay("projector-[amount]", TRUE)
+
 /obj/item/stream_projector/holofabricator/valid_target(atom/entity)
 	return isatom(entity)
+
+/obj/item/stream_projector/holofabricator/setup_target_visuals(atom/entity)
+	var/datum/beam/beam = create_stretched_beam(src, entity, icon = 'icons/items/stream_projector/holofabricator', icon_state = "beam-double", collider_type = /atom/movable/beam_collider)
+	active_targets[entity] = beam
+
+/obj/item/stream_projector/holofabricator/teardown_target_visuals(atom/entity)
+	var/datum/beam/beam = active_targets[entity]
+	QDEL_NULL(beam)
 
 /obj/item/stream_projector/holofabricator/attack_hand(mob/user, list/params)
 	if(user.is_holding_inactive(src))

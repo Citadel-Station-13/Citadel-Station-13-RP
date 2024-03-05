@@ -80,6 +80,10 @@
 	var/atom/beam_source
 	/// target
 	var/atom/beam_target
+	/// distance to bias towards target from source
+	var/shift_start_towards_target = 0
+	/// distance to bias towards source from target
+	var/shift_end_towards_source = 0
 	/// do not automatically redraw on things moving
 	var/no_automatic_redraw = FALSE
 
@@ -245,6 +249,23 @@
 	var/dy = ((WORLD_ICON_SIZE * end.y + end_py) - (WORLD_ICON_SIZE * start.y + start_py))
 	// cw from north
 	var/angle = arctan(dy, dx)
+	// do biases
+	// todo: there is a better way to do this
+	if(shift_start_towards_target)
+		var/x_amt = shift_start_towards_target * sin(angle)
+		var/y_amt = shift_start_towards_target * cos(angle)
+		start_px += x_amt
+		start_py += y_amt
+		dx -= abs(x_amt)
+		dy -= abs(y_amt)
+	if(shift_end_towards_source)
+		var/x_amt = shift_end_towards_source * sin(angle)
+		var/y_amt = shift_end_towards_source * cos(angle)
+		start_px -= x_amt
+		start_py -= y_amt
+		dx -= abs(x_amt)
+		dy -= abs(y_amt)
+	// dist in pixels
 	var/distance = sqrt(dx ** 2 + dy ** 2)
 	// draw
 	switch(beam_visual_mode)

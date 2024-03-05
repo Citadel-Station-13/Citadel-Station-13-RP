@@ -7,6 +7,8 @@
 /obj/item/matter_cartridge
 	name = "matter cartridge"
 	desc = "A cartridge filled with atomized materials. Used in many fabrication systems."
+	icon = 'icons/items/stream_projector/holofabricator.dmi'
+	icon_state = "cartridge"
 	w_class = WEIGHT_CLASS_NORMAL
 
 	/// stored lazy k-v list of materials; ids only please! paths will be resolved to ids on new()
@@ -17,10 +19,15 @@
 	var/stored_capacity = 0
 
 
-
 #warn impl all
 
 /obj/item/matter_cartridge/get_materials(respect_multiplier)
 	. = ..()
 	for(var/key in stored_materials)
 		.[key] += stored_materials[key]
+
+/obj/item/matter_cartridge/proc/get_ratio()
+	. = 0
+	for(var/key in stored_materials)
+		. += stored_materials[key]
+	return min(1, . / stored_capacity)

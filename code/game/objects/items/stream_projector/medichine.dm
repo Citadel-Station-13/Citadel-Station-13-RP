@@ -9,6 +9,8 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
 		GLOB.medichine_cell_datums[typepath] = new typepath
 	return GLOB.medichine_cell_datums[typepath]
 
+//? Projector
+
 /**
  * medical beamgun
  *
@@ -126,6 +128,8 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 /obj/item/stream_projector/medichine/setup_target_visuals(atom/entity)
 	. = ..()
 	var/datum/beam/creating_beam = create_segmented_beam(src, entity, icon = 'icons/items/stream_projector/medichine.dmi', icon_state = "beam", collider_type = /atom/movable/beam_collider)
+	creating_beam.shift_start_towards_target = 8
+	creating_beam.shift_end_towards_source = 8
 	LAZYSET(beams_by_entity, entity, creating_beam)
 	var/datum/medichine_cell/effective_cell = effective_cell_datum()
 	if(!isnull(effective_cell))
@@ -185,34 +189,22 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	if(isnull(effective_package))
 		drop_all_targets()
 		return
+	// todo: this is for multi-cell support; implement that.
+	var/list/datum/medichine_cell/injecting_packages = list(effective_package)
+	// for each cell
+	for(var/datum/medichine_cell/injecting_package as anything in injecting_packages)
+		// get effective suspension limit and injection rates
+		var/injecting_suspension = max(0, injecting_package.suspension_limit * suspension_multiplier)
+		var/injecting_rate = clamp(injection_rate * injecting_package.injection_multiplier, 0, injecting_suspension)
+		// inject to active targets
+		for(var/mob/entity in active_targets)
+			var/datum/component/medichine_field/field = entity.LoadComponent(/datum/component/medichine_field)
+			var/distance_multiplier = 1 / max(1, 1 + (get_dist(src, entity) - 1) * distance_divisor_multiplier)
+			var/requested = min(injecting_rate * distance_multiplier, max(0, injecting_suspension - field.active?[injecting_package]))
+			var/allowed = isnull(interface)? inserted_cartridge?.use(injecting_package, requested) : interface.use_medichines(injecting_package, requested)
+			field.inject_medichines(injecting_package, allowed)
 
-	// get suspension limit
-	var/effective_suspension_limit = max(0, effective_package.suspension_limit * suspension_multiplier)
-	// get injection rate
-	var/effective_injection_rate = clamp(effective_package.injection_multiplier * injection_rate, 0, effective_suspension_limit)
-
-	// modulate injection rate
-	var/requested_amount = 0
-	for(var/mob/entity as anything in active_targets)
-		var/datum/component/medichine_field/field = entity.GetComponent(/datum/component/medichine_field)
-		var/distance_multiplier = 1 / max(1, 1 + (get_dist(src, entity) - 1) * distance_divisor_multiplier)
-		if(isnull(field))
-			requested_amount += effective_injection_rate * distance_multiplier
-			continue
-		requested_amount += min(effective_injection_rate * distance_multiplier, effective_suspension_limit - field.active[effective_package])
-
-	// get allowed ratio
-	var/allowed_ratio = (isnull(interface)? inserted_cartridge?.use(requested_amount) : interface.use_medichines(effective_package, requested_amount)) / requested_amount
-	// drop if done
-	if(!allowed_ratio)
-		drop_all_targets()
-		return
-
-	// inject
-	for(var/mob/entity as anything in active_targets)
-		var/datum/component/medichine_field/field = entity.LoadComponent(/datum/component/medichine_field)
-		var/distance_multiplier = 1 / max(1, get_dist(src, entity) * distance_divisor_multiplier)
-		field.inject_medichines(effective_package, allowed_ratio * effective_injection_rate * distance_multiplier)
+//? Field
 
 /**
  * component used to form a mob's nanite cloud visuals + processing
@@ -265,7 +257,9 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 				continue
 			reacted_ratio = max(reacted_ratio, used_ratio)
 
-		active[cell_package] -= max(cell_package.decay_minimum_baseline, reacting * reacted_ratio)
+		var/decaying = max(cell_package.decay_minimum_baseline, reacting * reacted_ratio)
+		active[cell_package] -= decaying
+		total_volume -= decaying
 		if(active[cell_package] < 0)
 			active -= cell_package
 			for(var/datum/medichine_effect/cell_effect as anything in cell_package.effects)
@@ -294,12 +288,13 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 			effect.target_added(parent)
 		recalculate_color()
 	active[medichines] += amount
+	total_volume += amount
 	ensure_visuals()
 
 /datum/component/medichine_field/proc/ensure_visuals()
 	if(!isnull(renderer))
 		return
-	renderer = new(null)
+	renderer = new /atom/movable/particle_render/medichine_field(null)
 	if(ismovable(parent))
 		var/atom/movable/entity = parent
 		entity.vis_contents += renderer
@@ -310,11 +305,16 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	renderer.particles = particle_instance
 	renderer.color = current_color
 
+//? VFXb
+
+/atom/movable/particle_render/medichine_field
+	alpha = 200
+
 /particles/medichine_field
 	width = 32
 	height = 32
 	count = 75
-	spawning = 10
+	spawning = 1.25
 	fade = 3
 	lifespan = 3
 	velocity = list(0, 2.5, 0)
@@ -322,7 +322,9 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	icon_state = list(
 		"particle-plus" = 1,
 	)
-	position = generator("box", list(-8, -16, 0), list(7, 0, 0))
+	position = generator("box", list(-4, -16, 0), list(6, 0, 0))
+
+//? Cell
 
 /**
  * medical beamgun cell
@@ -365,7 +367,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	if(number)
 		var/image/I = image(icon, "[base_icon_state]-[number]")
 		I.color = cell_datum.color
-		add_overlay(I)
+		add_overlay(I, TRUE)
 
 /obj/item/medichine_cell/proc/fill(amount)
 	. = min(amount, volume)
@@ -373,7 +375,9 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 		return
 	volume = clamp(volume + amount, 0, max_volume)
 
-/obj/item/medichine_cell/proc/use(amount)
+/obj/item/medichine_cell/proc/use(datum/medichine_cell/requested, amount)
+	if(requested != cell_datum)
+		return 0
 	. = min(amount, volume)
 	if(!.)
 		return
@@ -454,6 +458,8 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 		MAT_PLASTIC = 1.5,
 		MAT_DIAMOND = 2,
 	)
+
+//? Effect Packages
 
 // /obj/item/medichine_cell/synth_tuning
 // 	name = "medichine cartridge (SYNTHTUNE)"
@@ -577,6 +583,8 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 
 // /datum/medichine_cell/synth_tuning
 // 	#warn impl
+
+//? Effects
 
 /**
  * medical beamgun effect
