@@ -147,7 +147,6 @@
 /area/medical/virologymaint)
 "aeP" = (
 /obj/effect/floor_decal/industrial/outline,
-/obj/effect/debris/cleanable/blood/oil,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/quartermaster/garage)
 "aeZ" = (
@@ -671,7 +670,6 @@
 /area/maintenance/library)
 "axD" = (
 /obj/effect/floor_decal/rust,
-/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/plating,
 /area/maintenance/lowmedbaymaint)
 "axE" = (
@@ -927,7 +925,6 @@
 /turf/simulated/floor/plating,
 /area/medical/virology)
 "aIk" = (
-/obj/effect/debris/cleanable/spiderling_remains,
 /turf/simulated/floor/plating,
 /area/maintenance/research/lower)
 "aIo" = (
@@ -1791,7 +1788,6 @@
 /turf/simulated/floor/plating,
 /area/security/prison)
 "bny" = (
-/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/wood,
 /area/maintenance/maint_bar)
 "bnG" = (
@@ -2021,12 +2017,6 @@
 /turf/simulated/floor/plating,
 /area/medical/virologyisolation)
 "brW" = (
-/obj/effect/debris/cleanable/blood/drip{
-	icon_state = "3"
-	},
-/obj/effect/debris/cleanable/blood/drip{
-	icon_state = "5"
-	},
 /turf/simulated/floor/wood/broken,
 /area/maintenance/lowmedbaymaint)
 "bsr" = (
@@ -3983,7 +3973,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/office)
 "cIt" = (
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/maint_bar)
 "cIP" = (
@@ -4260,7 +4249,6 @@
 /area/lawoffice)
 "cTd" = (
 /obj/item/tool/screwdriver,
-/obj/effect/debris/cleanable/ash,
 /obj/item/cigbutt,
 /turf/simulated/floor/plating,
 /area/maintenance/lowmedbaymaint)
@@ -6161,7 +6149,6 @@
 /area/medical/medbay_emt_bay)
 "dZn" = (
 /obj/effect/floor_decal/rust,
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/starboard)
 "dZX" = (
@@ -6480,7 +6467,6 @@
 /turf/simulated/floor/carpet/blucarpet,
 /area/lawoffice)
 "eir" = (
-/obj/effect/debris/cleanable/greenglow,
 /turf/simulated/floor/plating,
 /area/maintenance/research/lower)
 "eit" = (
@@ -7535,7 +7521,6 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/virologyisolation)
 "eXK" = (
-/obj/effect/debris/cleanable/liquid_fuel,
 /turf/simulated/floor/plating,
 /area/maintenance/research/lower)
 "eXL" = (
@@ -8595,7 +8580,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/research/lower)
 "fMu" = (
-/obj/effect/debris/cleanable/molten_item,
 /turf/simulated/floor/plating,
 /area/maintenance/research/lower)
 "fMy" = (
@@ -9560,7 +9544,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/prison)
 "gvX" = (
-/obj/effect/debris/cleanable/egg_smudge,
 /obj/item/stool/padded,
 /obj/machinery/camera/network/civilian,
 /turf/simulated/floor/lino,
@@ -10865,7 +10848,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/server)
 "hhv" = (
-/obj/effect/debris/cleanable/ash,
 /obj/item/cigbutt/cigarbutt,
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/security/lower)
@@ -11948,7 +11930,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/research/lower)
 "hPe" = (
-/obj/random/junk,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/maintenance/maint_bar)
 "hPo" = (
@@ -12948,7 +12929,6 @@
 /area/hallway/secondary/civilian_hallway_mid)
 "ium" = (
 /obj/machinery/light/small,
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/research/lower)
 "iuZ" = (
@@ -15968,19 +15948,6 @@
 /area/maintenance/tool_storage)
 "kmk" = (
 /obj/effect/floor_decal/rust,
-/obj/effect/debris/cleanable/blood/drip{
-	icon_state = "5"
-	},
-/obj/effect/debris/cleanable/blood/drip,
-/obj/effect/debris/cleanable/blood/drip{
-	icon_state = "2"
-	},
-/obj/effect/debris/cleanable/blood/drip{
-	icon_state = "3"
-	},
-/obj/effect/debris/cleanable/blood/drip{
-	icon_state = "4"
-	},
 /obj/item/handcuffs/cable/white,
 /turf/simulated/floor/plating,
 /area/maintenance/lowmedbaymaint)
@@ -17556,7 +17523,6 @@
 /area/medical/psych_ward)
 "lnK" = (
 /obj/structure/table/rack/shelf,
-/obj/random/junk,
 /obj/random/maintenance/clean,
 /obj/random/maintenance/security,
 /turf/simulated/floor/wood,
@@ -18351,7 +18317,6 @@
 	dir = 1
 	},
 /obj/structure/table,
-/obj/random/junk,
 /obj/item/storage/toolbox/mechanical,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/maintenance/maint_bar)
@@ -18587,7 +18552,6 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/research/lower)
 "maS" = (
@@ -19584,7 +19548,6 @@
 /turf/simulated/floor/tiled/white,
 /area/rift/trade_shop)
 "mBD" = (
-/obj/effect/debris/cleanable/blood/drip,
 /turf/simulated/floor/plating,
 /area/maintenance/lowmedbaymaint)
 "mCe" = (
@@ -19617,7 +19580,6 @@
 "mDl" = (
 /obj/item/stack/rods,
 /obj/item/stack/rods,
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/maint_bar)
 "mDM" = (
@@ -25583,10 +25545,6 @@
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "qih" = (
-/obj/effect/debris/cleanable/blood/drip,
-/obj/effect/debris/cleanable/blood/drip{
-	icon_state = "3"
-	},
 /turf/simulated/floor/plating,
 /area/maintenance/lowmedbaymaint)
 "qiy" = (
@@ -25663,7 +25621,6 @@
 /area/medical/virologyaccess)
 "qjA" = (
 /obj/item/tool/wirecutters,
-/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/plating,
 /area/maintenance/lowmedbaymaint)
 "qkv" = (
@@ -26426,9 +26383,6 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_eva)
 "qIO" = (
-/obj/effect/debris/cleanable/vomit{
-	icon_state = "vomit_3"
-	},
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/security/lower)
 "qJb" = (
@@ -28726,7 +28680,6 @@
 "sfP" = (
 /obj/structure/bed/chair,
 /obj/item/handcuffs/cable/white,
-/obj/effect/debris/cleanable/blood,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/security/lower)
@@ -29097,7 +29050,6 @@
 /area/security/checkpoint)
 "snf" = (
 /obj/machinery/light/small,
-/obj/effect/debris/cleanable/spiderling_remains,
 /turf/simulated/floor/plating,
 /area/maintenance/research/lower)
 "snj" = (
@@ -29575,7 +29527,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/medical_restroom)
 "sAz" = (
-/obj/random/junk,
 /turf/simulated/floor/wood/broken,
 /area/maintenance/maint_bar)
 "sBt" = (
@@ -30376,7 +30327,6 @@
 "sZR" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/bed,
-/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/plating,
 /area/maintenance/lowmedbaymaint)
 "taf" = (
@@ -30845,7 +30795,6 @@
 /turf/simulated/floor/snow,
 /area/rift/surfacebase/outside/outside1)
 "toj" = (
-/obj/random/junk,
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -31245,7 +31194,6 @@
 /area/hallway/primary/surfaceone)
 "tBB" = (
 /obj/effect/floor_decal/spline/plain,
-/obj/effect/debris/cleanable/pie_smudge,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -31967,7 +31915,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "tXc" = (
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/starboard)
 "tXh" = (
@@ -32600,7 +32547,6 @@
 /obj/item/tank/anesthetic,
 /obj/item/clothing/mask/breath/anesthetic,
 /obj/item/clothing/glasses/sunglasses/blindfold,
-/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/plating,
 /area/maintenance/lowmedbaymaint)
 "upi" = (
@@ -33137,7 +33083,6 @@
 /turf/simulated/wall/r_wall/prepainted/science,
 /area/rnd/xenoarch_storage)
 "uBT" = (
-/obj/effect/debris/cleanable/mucus,
 /turf/simulated/floor/plating,
 /area/maintenance/research/lower)
 "uBV" = (
@@ -33286,7 +33231,6 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "uFU" = (
-/obj/effect/debris/cleanable/blood/oil,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 4
 	},
@@ -33717,7 +33661,6 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/rust,
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/starboard)
 "uWy" = (
@@ -34179,7 +34122,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/civilian_hallway_mid)
 "vky" = (
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/research/lower)
 "vls" = (
@@ -34783,7 +34725,6 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/obj/effect/debris/cleanable/tomato_smudge,
 /turf/simulated/floor/lino,
 /area/tether/surfacebase/entertainment)
 "vNx" = (
@@ -35153,7 +35094,6 @@
 /turf/simulated/floor/carpet/gaycarpet,
 /area/tether/surfacebase/funny/clownoffice)
 "vXr" = (
-/obj/random/junk,
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -35405,7 +35345,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/research/lower)
 "weV" = (
-/obj/random/junk,
 /turf/simulated/floor/wood,
 /area/maintenance/maint_bar)
 "wft" = (
@@ -36577,7 +36516,6 @@
 /area/turbolift/rmine/surface)
 "wNE" = (
 /obj/structure/catwalk,
-/obj/effect/debris/cleanable/liquid_fuel,
 /turf/simulated/floor/plating,
 /area/maintenance/research/lower)
 "wOB" = (
@@ -37093,7 +37031,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/library)
 "xen" = (
-/obj/random/junk,
 /obj/structure/table,
 /turf/simulated/floor/wood/broken,
 /area/maintenance/maint_bar)
@@ -37372,7 +37309,6 @@
 /obj/structure/sign/poster{
 	pixel_y = 32
 	},
-/obj/random/junk,
 /turf/simulated/floor/wood/broken,
 /area/maintenance/maint_bar)
 "xlG" = (
@@ -38138,11 +38074,6 @@
 /turf/simulated/floor/plating,
 /area/security/prison)
 "xMw" = (
-/obj/effect/debris/cleanable/vomit{
-	icon_state = "vomit_3";
-	pixel_x = 11
-	},
-/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/wood,
 /area/maintenance/lowmedbaymaint)
 "xMJ" = (

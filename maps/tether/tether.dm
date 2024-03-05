@@ -146,11 +146,12 @@
 
 /datum/map_level/tether/station
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
+	persistence_allowed = TRUE
 	// holomap_legend_x = 220
 	// holomap_legend_y = 160
 
 /datum/map_level/tether/station/surface_low
-	id = "TetherSurface1"
+	id = "surface-1"
 	name = "Tether - Surface 1"
 	display_id = "adephagia-surface-1"
 	display_name = "NSB Adephagia Surface 1 (Lobby & External)"
@@ -168,7 +169,7 @@
 	// holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*0
 
 /datum/map_level/tether/station/surface_mid
-	id = "TetherSurface2"
+	id = "surface-2"
 	name = "Tether - Surface 2"
 	display_id = "adephagia-surface-2"
 	display_name = "NSB Adephagia Surface 2 (Research & Life Suppot)"
@@ -187,7 +188,7 @@
 	// holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*1
 
 /datum/map_level/tether/station/surface_high
-	id = "TetherSurface3"
+	id = "surface-3"
 	name = "Tether - Surface 3"
 	display_id = "adephagia-surface-3"
 	display_name = "NSB Adephagia Surface 3 (Services & Command)"
@@ -206,7 +207,7 @@
 	// holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*2
 
 /datum/map_level/tether/transit
-	id = "TetherMidpoint"
+	id = "midpoint"
 	name = "Tether - Midpoint"
 	display_id = "adephagia-tether"
 	display_name = "NSB Adephagia Tether Midpoint"
@@ -223,7 +224,7 @@
 	base_turf = /turf/simulated/open
 
 /datum/map_level/tether/station/space_low
-	id = "TetherSpace1"
+	id = "space-1"
 	name = "Tether - Space 1"
 	display_id = "adephagia-station-1"
 	display_name = "NSB Adephagia Station 1 (Engineering Deck)"
@@ -239,7 +240,7 @@
 	// holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*0
 
 /datum/map_level/tether/station/space_high
-	id = "TetherSpace2"
+	id = "space-2"
 	name = "Tether - Space 2"
 	display_id = "adephagia-station-2"
 	display_name = "NSB Adephagia Station 2 (Logistics Deck)"
@@ -255,7 +256,7 @@
 	// holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*1
 
 /datum/map_level/tether/mine
-	id = "TetherMiningOutpost"
+	id = "mining-outpost"
 	name = "Tether - Mining Outpost"
 	display_id = "adephagia-mining"
 	display_name = "NSB Adephagia Mining Outpost"
@@ -273,7 +274,7 @@
 	new /datum/random_map/noise/ore(null, 1, 1, z_index, 64, 64)         // Create the mining ore distribution map.
 
 /datum/map_level/tether/misc
-	id = "TetherMisc"
+	id = "misc"
 	name = "Tether - Misc"
 	absolute_path = "maps/tether/levels/misc.dmm"
 	traits = list(
@@ -282,7 +283,7 @@
 	flags = LEGACY_LEVEL_ADMIN|LEGACY_LEVEL_SEALED|LEGACY_LEVEL_CONTACT
 
 /datum/map_level/tether/underdark
-	id = "TetherUnderdark"
+	id = "underdark"
 	name = "Tether - Underdark"
 	display_id = "adephagia-underdark"
 	display_name = "NSB Adephagia Underdark"
@@ -310,7 +311,7 @@
 	new /datum/random_map/noise/ore(null, 1, 1, z_index, 64, 64)         // Create the mining ore distribution map.
 
 /datum/map_level/tether/plains
-	id = "TetherSouthPlains"
+	id = "south-plains"
 	name = "Tether - South Plains"
 	display_id = "adephagia-south-plains"
 	display_name = "NSB Adephagia Southern Plains"

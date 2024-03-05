@@ -379,7 +379,6 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/outpost/mining_main/outpost)
 "eC" = (
-/obj/random/trash,
 /obj/effect/floor_decal/borderfloor{
 	dir = 6
 	},
@@ -449,7 +448,6 @@
 /area/outpost/mining_main/outpost)
 "fg" = (
 /obj/effect/overlay/snow/floor,
-/obj/random/trash,
 /turf/simulated/floor/lythios43c,
 /area/rift/facility/interior/medical)
 "fh" = (
@@ -590,7 +588,6 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost)
 "gP" = (
-/obj/random/trash,
 /turf/simulated/floor/tiled/monotile/lythios43c,
 /area/rift/facility/interior/bathrooms)
 "gR" = (
@@ -800,7 +797,6 @@
 /obj/structure/toilet{
 	pixel_y = 9
 	},
-/obj/random/trash,
 /obj/machinery/light/small{
 	dir = 4
 	},
@@ -832,7 +828,6 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/workroom)
 "ju" = (
-/obj/random/trash,
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/underground1)
 "jw" = (
@@ -909,7 +904,6 @@
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
 "kz" = (
-/obj/random/trash,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/paleblue/border,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
@@ -1077,7 +1071,6 @@
 /turf/simulated/floor,
 /area/outpost/mining_main/outpost/substation)
 "mS" = (
-/obj/random/trash,
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/facility/interior/underground1)
 "mW" = (
@@ -1162,7 +1155,6 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/workroom)
 "nN" = (
-/obj/random/trash,
 /obj/structure/loot_pile/surface/medicine_cabinet{
 	pixel_y = -32
 	},
@@ -1323,7 +1315,6 @@
 /turf/simulated/floor,
 /area/rnd/outpost/maintenance)
 "pG" = (
-/obj/random/junk,
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
 "pN" = (
@@ -1366,7 +1357,6 @@
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
 "qp" = (
-/obj/random/trash,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 4
 	},
@@ -1670,7 +1660,6 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
 "tM" = (
-/obj/random/trash,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/exterior/bunker/lower)
 "tP" = (
@@ -1865,12 +1854,6 @@
 	info = "Diagnosis: Radiation Poisoning, its the third one this month. Its very obvious the cause, even the Colonel knows yet still Adhomai refuses to send use proper supplies. Its getting the point where one of my staff even suggested contacting one of the megacorps to arrange deliveries of Arithazine. If the Commissariat found out we'd be send off to the mines Miaphus'irra certainly. However if we don't figure out something soon there may be serious loss in manpower from all the exposure.";
 	name = "discarded note"
 	},
-/obj/random/junk,
-/obj/random/junk,
-/obj/random/junk,
-/obj/random/junk,
-/obj/random/junk,
-/obj/random/junk,
 /obj/effect/floor_decal/borderfloor{
 	dir = 5
 	},
@@ -2041,7 +2024,6 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 4
 	},
-/obj/random/trash,
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/workroom)
 "xA" = (
@@ -2104,7 +2086,6 @@
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
 "yE" = (
-/obj/random/trash,
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/facility/interior/command)
 "yH" = (
@@ -2556,7 +2537,6 @@
 /area/outpost/mining_main/outpost/airlock/three)
 "DO" = (
 /obj/structure/grille/broken,
-/obj/random/trash,
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/facility/interior/command)
 "DQ" = (
@@ -2900,7 +2880,6 @@
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/surfacebase/outside/west_caves/submap_seedzone)
 "GR" = (
-/obj/random/trash,
 /obj/effect/map_effect/radiation_emitter/chernobyl,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/medical)
@@ -3187,7 +3166,6 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/outpost/storage)
 "KS" = (
-/obj/random/trash,
 /turf/simulated/floor/tiled/steel/lythios43c,
 /area/rift/facility/interior/workroom)
 "KU" = (
@@ -3616,8 +3594,6 @@
 /area/rift/surfacebase/outside/west_caves)
 "Qe" = (
 /obj/structure/grille/broken,
-/obj/random/trash,
-/obj/random/trash,
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/facility/interior/command)
 "Qh" = (
@@ -4054,7 +4030,6 @@
 /obj/structure/toilet{
 	pixel_y = 9
 	},
-/obj/random/trash,
 /obj/item/reagent_containers/syringe/drugs,
 /obj/item/reagent_containers/syringe/drugs,
 /obj/item/reagent_containers/syringe/drugs,
@@ -4349,7 +4324,6 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/outpost/storage)
 "XG" = (
-/obj/random/trash,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/workroom)
 "XJ" = (

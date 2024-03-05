@@ -9,6 +9,7 @@ $include entries/general.txt
 $include entries/health.txt
 $include entries/lobby.txt
 $include entries/logging.txt
+$include entries/persistence.txt
 $include entries/photography.txt
 $include entries/resources.txt
 $include entries/security.txt
