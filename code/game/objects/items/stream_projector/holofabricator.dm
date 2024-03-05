@@ -137,6 +137,49 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/holofabricato
 		return B.priority - A.priority
 	return sorttext(A.name, B.name)
 
+//? Frame Object
+
+/**
+ * 'frame' of an object, that solidifies into the object itself at a certain point
+ */
+/obj/structure/holofabricator_construction
+
+#warn impl all
+
+//? Repair Field
+
+/**
+ * visual / effect handler for repairs
+ * created on entities when targeted by a holofabricator
+ */
+/datum/component/holofabricator_field
+	/// affecting fabricators
+	var/list/obj/item/stream_projector/holofabricator/affecting = list()
+
+/datum/component/holofabricator_field/Destroy()
+	#warn rid visuals
+	return ..()
+
+/datum/component/holofabricator_field/RegisterWithParent()
+	if(!isatom(parent))
+		return COMPONENT_INCOMPATIBLE
+	init_or_assert_visuals()
+	return ..()
+
+/datum/component/holofabricator_field/proc/init_or_assert_visuals()
+	#warn impl
+
+/datum/component/holofabricator_field/proc/attached(obj/item/stream_projector/holofabricator/fabricator)
+	affecting += fabricator
+	#warn impl
+
+/datum/component/holofabricator_field/proc/detached(obj/item/stream_projector/holofabricator/fabricator)
+	affecting -= fabricator
+	if(!length(affecting))
+		qdel(src)
+
+#warn impl all
+
 //? Templates
 
 /**

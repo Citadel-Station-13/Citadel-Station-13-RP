@@ -43,9 +43,11 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	/// all beams
 	var/list/datum/beam/beams_by_entity
 	/// maximum distance
-	var/maximum_distance = 7
+	var/maximum_distance = 10
 	/// multiplier to distance when dividing by distance
 	var/distance_divisor_multiplier = 0.5
+	/// distance allowed before starting to apply penalty
+	var/distance_penalty_start = 1
 
 /obj/item/stream_projector/medichine/examine(mob/user, dist)
 	. = ..()
@@ -141,6 +143,10 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	var/atom/movable/target = source.beam_target
 	if(get_dist(src, target) > maximum_distance)
 		drop_target(target)
+	var/turf/where_we_are = get_turf(src)
+	var/turf/where_they_are = get_turf(target)
+	if(where_we_are?.z != where_they_are?.z)
+		drop_target(target)
 
 /obj/item/stream_projector/medichine/proc/on_beam_crossed(datum/beam/source, atom/what)
 	if(what.pass_flags_self & ATOM_PASS_CLICK)
@@ -199,7 +205,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 		// inject to active targets
 		for(var/mob/entity in active_targets)
 			var/datum/component/medichine_field/field = entity.LoadComponent(/datum/component/medichine_field)
-			var/distance_multiplier = 1 / max(1, 1 + (get_dist(src, entity) - 1) * distance_divisor_multiplier)
+			var/distance_multiplier = 1 / max(1, 1 + max(get_dist(src, entity) - distance_penalty_start, 0) * distance_divisor_multiplier)
 			var/requested = min(injecting_rate * distance_multiplier, max(0, injecting_suspension - field.active?[injecting_package]))
 			var/allowed = isnull(interface)? inserted_cartridge?.use(injecting_package, requested) : interface.use_medichines(injecting_package, requested)
 			field.inject_medichines(injecting_package, allowed)

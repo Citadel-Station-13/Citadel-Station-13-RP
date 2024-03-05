@@ -244,6 +244,9 @@
 	force_redraw()
 
 /datum/beam/proc/render(turf/start, start_px, start_py, turf/end, end_px, end_py)
+	// nah.
+	if(start.z != end.z)
+		return FALSE
 	// calculate parameters
 	var/dx = ((WORLD_ICON_SIZE * end.x + end_px) - (WORLD_ICON_SIZE * start.x + start_px))
 	var/dy = ((WORLD_ICON_SIZE * end.y + end_py) - (WORLD_ICON_SIZE * start.y + start_py))
@@ -411,6 +414,7 @@
 
 INITIALIZE_IMMEDIATE(/atom/movable/beam_collider)
 /atom/movable/beam_collider
+	atom_flags = ATOM_ABSTRACT
 	animate_movement = NONE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	invisibility = INVISIBILITY_ABSTRACT
@@ -424,6 +428,13 @@ INITIALIZE_IMMEDIATE(/atom/movable/beam_collider)
 	atom_flags |= ATOM_INITIALIZED
 	return INITIALIZE_HINT_NORMAL
 
+/atom/movable/beam_collider/Destroy()
+	if(!isnull(parent))
+		// make sure we uncross everything!
+		move_onto(null)
+		parent = null
+	return ..()
+
 /atom/movable/beam_collider/proc/move_onto(turf/where)
 	if(where == loc)
 		return
@@ -433,7 +444,9 @@ INITIALIZE_IMMEDIATE(/atom/movable/beam_collider)
 		if(other.atom_flags & ATOM_ABSTRACT)
 			continue
 		parent.uncrossed(other)
-	loc = where
+	parent.uncrossed(loc)
+	abstract_move(where)
+	parent.crossed(loc)
 	for(var/atom/movable/other as anything in loc)
 		if(other == src)
 			continue
