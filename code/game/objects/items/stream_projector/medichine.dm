@@ -679,7 +679,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 			return null
 	else
 		if(only_dead)
-			return nul
+			return null
 	var/real_rate = scale_rate_constant * seconds + volume * scale_rate_to_volume
 	entity.forced_metabolism(real_rate)
 	return 1

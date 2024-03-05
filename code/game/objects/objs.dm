@@ -514,26 +514,59 @@
 			return 0
 		if(COLORATION_MODE_MATRIX, COLORATION_MODE_MULTIPLY)
 			return 1
+		if(COLORATION_MODE_RB_MATRIX)
+			return 2
+		if(COLORATION_MODE_RG_MATRIX)
+			return 2
+		if(COLORATION_MODE_GB_MATRIX)
+			return 2
+		if(COLORATION_MODE_RBB_MATRIX)
+			return 3
 	return coloration_amount
 
 /obj/proc/set_coloration_matrix(list/color_matrix)
 	if(coloration_mode != COLORATION_MODE_MATRIX)
 		return
 	color = color_matrix
+	// well, we can't pack a matrix :/
+	coloration = null
 
 /obj/proc/set_coloration_parts(list/colors)
-	if(isnull(colors))
-		if(coloration_mode == COLORATION_MODE_MULTIPLY)
+	switch(coloration_mode)
+		if(COLORATION_MODE_MATRIX, COLORATION_MODE_MULTIPLY)
+			ASSERT(length(colors) == 1)
+			color = colors[1]
+		if(COLORATION_MODE_RB_MATRIX)
+			ASSERT(length(colors) == 2)
+			// todo: implement
+			pass()
+		if(COLORATION_MODE_GB_MATRIX)
+			ASSERT(length(colors) == 2)
+			// todo: implement
+			pass()
+		if(COLORATION_MODE_RB_MATRIX)
+			ASSERT(length(colors) == 2)
+			// todo: implement
+			pass()
+		if(COLORATION_MODE_RGB_MATRIX)
+			ASSERT(length(colors) == 3)
+			// todo: implement
+			pass()
+		if(COLORATION_MODE_OVERLAYS)
+			ASSERT(length(colors) == coloration_amount)
+			// todo: implement; we'll probably have to hook both update_overlays as well as
+			// todo: something in [code/modules/mob/inventory/rendering.dm].
+			pass()
+		if(COLORATION_MODE_NONE)
+			// why are we here?
+			ASSERT(!length(colors))
 			color = null
-		return
-	#warn impl
+	coloration = pack_coloration_string(colors)
 
-/obj/proc/update_coloration(list/colors)
-	// todo: complex modes that aren't multiply/matrix go here
-	return
 
 /obj/proc/set_coloration_packed(packed_colors)
-	#warn impl
+	var/list/unpacked = unpack_coloration_string(packed_colors)
+	return set_coloration_parts(unpacked)
 
 /obj/proc/get_coloration_parts()
 	if(!(coloration_mode & COLORATION_MODES_COMPLEX))
