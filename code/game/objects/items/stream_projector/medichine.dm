@@ -51,7 +51,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	if(isnull(inserted_cartridge))
 		. += "[src] has nothing loaded."
 	else
-		. += "[src] has [inserted_cartridge] loaded."
+		. += "[src] has [inserted_cartridge] loaded. It has [CEILING(inserted_cartridge.volume, 0.01)]/[inserted_cartridge.max_volume] left."
 
 /obj/item/stream_projector/medichine/valid_target(atom/entity)
 	return isliving(entity)
@@ -349,6 +349,10 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	. = ..()
 	cell_datum = fetch_cached_medichine_cell_datum(cell_datum)
 	update_icon()
+
+/obj/item/medichine_cell/examine(mob/user, dist)
+	. = ..()
+	. += SPAN_NOTICE("Its gauge reads [CEILING(volume, 0.01)]/[max_volume].")
 
 /obj/item/medichine_cell/update_icon(updates)
 	cut_overlays()

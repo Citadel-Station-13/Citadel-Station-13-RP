@@ -250,7 +250,7 @@
 	switch(beam_visual_mode)
 		if(BEAM_VISUAL_SEGMENTS)
 			// don't stretch past distance
-			var/steps_required = round(distance / WORLD_ICON_SIZE, 1)
+			var/steps_required = CEILING(distance / WORLD_ICON_SIZE, 1)
 			// we assume both segment renderers are lockstepped
 			var/requires_update = FALSE
 			if(steps_required > length(segmentation.segment_appearances))
@@ -274,6 +274,9 @@
 				emissive_segmentation?.overlays = emissive_segmentation?.segment_appearances
 			// calculate matrix
 			var/matrix/transform_to_apply = matrix()
+			// transform as necessary to shrink just enough to cut off extra pixels
+			// todo: please use an alphamask filter on last element maybe, this looks like shit
+			transform_to_apply.Scale(1, distance / (steps_required * WORLD_ICON_SIZE))
 			// rotate
 			transform_to_apply.Turn(angle)
 			// move renders to location
