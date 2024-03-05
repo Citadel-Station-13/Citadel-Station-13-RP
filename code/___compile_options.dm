@@ -10,9 +10,6 @@
 /// Disable atmospherics zone build.
 // #define FASTBOOT_DISABLE_ZONES
 
-/// Enables the ability to cache datum vars and retrieve later for debugging which vars changed.
-// #define DATUMVAR_DEBUGGING_MODE
-
 /// Comment this out if you are debugging problems that might be obscured by custom error handling in world/Error.
 #ifdef DEBUG
 	#define USE_CUSTOM_ERROR_HANDLER
@@ -26,8 +23,6 @@
 // #define TESTING
 #ifdef TESTING
 	#warn compiling in TESTING mode. testing() debug messages will be visible.
-
-	#define DATUMVAR_DEBUGGING_MODE
 
 	/// Used to find the sources of harddels, quite laggy, don't be surpised if it freezes your client for a good while.
 	// #define REFERENCE_TRACKING

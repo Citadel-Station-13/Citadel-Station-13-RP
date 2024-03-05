@@ -69,7 +69,7 @@ export const DecalPainter = (props, context) => {
           )}
         </Section>
         <Section title="Decal Style">
-          <Flex direction="row" wrap="nowrap" align="fill" justify="fill">
+          <Flex direction="row" wrap="nowrap" align="stretch" justify="space-evenly">
             {data.decal_list.map((decal) => {
               const nondirectional = data.nondirectional_decals.includes(
                 decal.decal
@@ -91,8 +91,8 @@ export const DecalPainter = (props, context) => {
                   key={decal.decal}
                   direction="column"
                   wrap="nowrap"
-                  align="fill"
-                  justify="fill">
+                  align="stretch"
+                  justify="space-evenly">
                   {data.dir_list.map((dir) => {
                     const selected
                       = decal.decal === data.current_decal

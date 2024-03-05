@@ -41,8 +41,7 @@
 	var/build_path = item_to_spawn()
 
 	var/mob/living/simple_mob/M = new build_path(src.loc)
-	if(!istype(M))
-		return
+	ASSERT(istype(M))
 	if(M.has_AI())
 		var/datum/ai_holder/AI = M.ai_holder
 		AI.go_sleep() //Don't fight eachother while we're still setting up!

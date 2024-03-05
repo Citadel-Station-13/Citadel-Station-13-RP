@@ -9,6 +9,8 @@
 	// Assume there's a vacuum for the purposes of avoiding active edges at initialization, as well as ZAS fun if a window breaks.
 	initial_gas_mix = GAS_STRING_VACUUM
 
+	turf_flags = TURF_FLAG_ERODING
+
 /turf/simulated/sky/Initialize(mapload)
 	. = ..()
 	set_light(2, 2, "#FFFFFF")

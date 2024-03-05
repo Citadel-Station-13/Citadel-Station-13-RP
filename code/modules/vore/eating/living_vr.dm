@@ -228,7 +228,7 @@
 	var/list/serialized = list()
 	for(var/belly in src.vore_organs)
 		var/obj/belly/B = belly
-		serialized += list(B.serialize()) //Can't add a list as an object to another list in Byond. Thanks.
+		serialized += list(B.serialize_vr()) //Can't add a list as an object to another list in Byond. Thanks.
 
 	P.belly_prefs = serialized
 
