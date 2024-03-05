@@ -127,7 +127,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	if(!isnull(effective_cell))
 		creating_beam.line_renderer.color = effective_cell.color
 	RegisterSignal(creating_beam, COMSIG_BEAM_REDRAW, PROC_REF(on_beam_redraw))
-	RegisterSignal(creating_beam, COMSIG_BEAM_CROSSED, PROC_REF(on_beam_cross))
+	RegisterSignal(creating_beam, COMSIG_BEAM_CROSSED, PROC_REF(on_beam_crossed))
 
 /obj/item/stream_projector/medichine/proc/on_beam_redraw(datum/beam/source)
 	var/atom/movable/target = source.beam_target
@@ -491,7 +491,6 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 		},
 	)
 	color = "#ff3300"
-	#warn impl
 
 // /datum/medichine_cell/fortify
 // 	#warn impl
