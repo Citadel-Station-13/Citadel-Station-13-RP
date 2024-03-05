@@ -314,7 +314,7 @@
 			spark_system.set_up(5, 0, loc)
 			spark_system.start()
 			playsound(src, 'sound/weapons/blade1.ogg', 50, 1)
-			playsound(src, "sparks", 50, 1)
+			playsound(src, /datum/soundbyte/grouped/sparks, 50, 1)
 
 	else if(I.is_wrench())
 		if(sealed)
