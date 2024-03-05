@@ -33,11 +33,21 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	/// installed cartridge
 	var/obj/item/medichine_cell/inserted_cartridge
 	/// standard injection rate (amount per second)
-	var/injection_rate = 1
+	var/injection_rate = 2
+	/// standard suspension limit multiplier
+	var/suspension_multiplier = 1
 	/// interface to draw from if provided
 	var/datum/item_interface/interface
 	/// all beams
 	var/list/datum/beam/beams_by_entity
+	/// maximum distance
+	var/maximum_distance = 7
+	/// multiplier to distance when dividing by distance
+	var/distance_divisor_multiplier = 1
+
+/obj/item/stream_projector/medichine/examine(mob/user, dist)
+	. = ..()
+	. += SPAN_BOLDWARNING("[src] loses efficiency based on its distance to a target.")
 
 /obj/item/stream_projector/medichine/valid_target(atom/entity)
 	return isliving(entity)
@@ -83,6 +93,12 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	var/datum/medichine_cell/effective_cell = effective_cell_datum()
 	if(!isnull(effective_cell))
 		creating_beam.line_renderer.color = effective_cell.color
+	RegisterSignal(creating_beam, COMSIG_BEAM_REDRAW, PROC_REF(on_beam_redraw))
+
+/obj/item/stream_projector/medichine/proc/on_beam_redraw(datum/beam/source)
+	var/atom/movable/target = source.beam_target
+	if(get_dist(src, target) > maximum_distance)
+		drop_target(target)
 
 /obj/item/stream_projector/medichine/teardown_target_visuals(atom/entity)
 	. = ..()
@@ -117,17 +133,20 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 		drop_all_targets()
 		return
 
+	// get suspension limit
+	var/effective_suspension_limit = effective_package.suspension_limit * suspension_multiplier
 	// get injection rate
-	var/effective_injection_rate = min(effective_package.injection_multiplier * injection_rate, effective_package.suspension_limit)
+	var/effective_injection_rate = min(effective_package.injection_multiplier * injection_rate, effective_suspension_limit)
 
 	// modulate injection rate
 	var/requested_amount = 0
 	for(var/mob/entity as anything in active_targets)
 		var/datum/component/medichine_field/field = entity.GetComponent(/datum/component/medichine_field)
+		var/distance_multiplier = 1 / max(1, get_dist(src, entity) * distance_divisor_multiplier)
 		if(isnull(field))
-			requested_amount += effective_injection_rate
+			requested_amount += effective_injection_rate * distance_multiplier
 			continue
-		requested_amount += min(effective_injection_rate, effective_package.suspension_limit - field.active[effective_package])
+		requested_amount += min(effective_injection_rate * distance_multiplier, effective_suspension_limit - field.active[effective_package])
 
 	// get allowed ratio
 	var/allowed_ratio = (isnull(interface)? inserted_cartridge?.use(requested_amount) : interface.use_medichines(effective_package, requested_amount)) / requested_amount
@@ -139,7 +158,8 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	// inject
 	for(var/mob/entity as anything in active_targets)
 		var/datum/component/medichine_field/field = entity.LoadComponent(/datum/component/medichine_field)
-		field.inject_medichines(effective_package, allowed_ratio * effective_injection_rate)
+		var/distance_multiplier = 1 / max(1, get_dist(src, entity) * distance_divisor_multiplier)
+		field.inject_medichines(effective_package, allowed_ratio * effective_injection_rate * distance_multiplier)
 
 /**
  * component used to form a mob's nanite cloud visuals + processing
@@ -385,7 +405,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	/// amount of volume that can stick onto someone by default
 	var/suspension_limit = 10
 	/// minimum decay rate so the field doesn't stick forever
-	var/decay_minimum_baseline = 0
+	var/decay_minimum_baseline = 0.1
 	/// normal color
 	var/color = "#ffffff"
 	/// normal color as a list
@@ -401,20 +421,22 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 		effects[i] = effect
 
 /datum/medichine_cell/seal_wounds
+	// each cell heals 400
 	effects = list(
 		/datum/medichine_effect/wound_healing{
 			biology_types = BIOLOGY_TYPES_FLESHY;
 			disinfect_wounds = TRUE;
 			seal_wounds = TRUE;
-			repair_strength_brute = 2;
-			repair_strength_burn = 2;
+			repair_strength_brute = 4;
+			repair_strength_burn = 4;
 		}
 	)
 	color = "#aa0000"
-	#warn impl
 
 /datum/medichine_cell/seal_wounds/violently
+	reaction_rate = 2
 	// agony needs to tick first
+	// each cell heals 400, but faster
 	effects = list(
 		/datum/medichine_effect/agony_from_open_wounds{
 			strength_factor = 1;
@@ -443,30 +465,49 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 			ignore_consumption = FALSE;
 			only_dead = TRUE;
 		},
+		/datum/medichine_effect/oxygenate{
+			strength = 5;
+			only_while_above = 40;
+		},
 	)
-	// we always draw 1 per tick.
-	reaction_rate = 1
-	// we always draw 1 per tick.
-	decay_minimum_baseline = 1
+	// 30 seconds
+	suspension_limit = 10
+	// constant draw, 5 minutes of stabilization per cell
+	reaction_rate = (1 / 3)
+	decay_minimum_baseline = (1 / 3)
 	color = "#9999ff"
-	#warn impl
 
 /datum/medichine_cell/deathmend
+	// each cell heals 600-1200 (!!)
+	effects = list(
+		/datum/medichine_effect/wound_healing{
+			biology_types = BIOLOGY_TYPES_FLESHY;
+			disinfect_wounds = TRUE;
+			seal_wounds = TRUE;
+			repair_strength_brute = 6;
+			repair_strength_burn = 6;
+		}
+	)
+	suspension_limit = 5
+	// 18-36 hp/s
+	reaction_rate = 3
 	color = "#883333"
-	#warn impl
 
 /datum/medichine_cell/synth_repair
+	// each cell heals 400
 	effects = list(
 		/datum/medichine_effect/wound_healing{
 			biology_types = BIOLOGY_TYPES_SYNTHETIC;
 			seal_wounds = TRUE;
 			disinfect_wounds = TRUE;
-			repair_strength_brute = 2;
-			repair_strength_burn = 2;
+			repair_strength_brute = 4;
+			repair_strength_burn = 4;
 		}
 	)
 	color = "#888844"
-	#warn impl
+	// no pre-buffing allowed!
+	suspension_limit = 5
+	decay_minimum_baseline = 0.5
 
 // /datum/medichine_cell/synth_tuning
 // 	#warn impl
@@ -531,7 +572,13 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	var/burn_loss_total = 0
 	var/list/datum/wound/wounds_healing = list()
 	for(var/obj/item/organ/external/ext as anything in humanlike.bad_external_organs)
+		// only heal 15 wounds at a time thank you!
+		if(length(wounds_healing) > 15)
+			break
 		for(var/datum/wound/wound as anything in ext.wounds)
+			// only heal 15 wounds at a time thank you!
+			if(length(wounds_healing) > 15)
+				break
 			if(wound.internal)
 				continue
 			if(only_open && (wound.is_treated()))
@@ -540,18 +587,37 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 				burn_loss_total += wound.damage
 			else
 				brute_loss_total += wound.damage
+			wounds_healing += wound
 	var/burn_heal_per = burn_healing_left / burn_loss_total
 	var/brute_heal_per = brute_healing_left / brute_loss_total
 	burn_heal_per = CEILING(burn_heal_per, 1)
 	brute_heal_per = CEILING(brute_heal_per, 1)
+	var/burn_heal_overrun = 0
+	var/brute_heal_overrun = 0
 	for(var/datum/wound/wound as anything in wounds_healing)
+		var/effective_heal
 		if(wound.damage_type == BURN)
-			#warn burn
-			pass()
+			if(!burn_healing_left)
+				continue
+			effective_heal = min(burn_heal_per + burn_heal_overrun, burn_healing_left)
+			if(wound.damage > effective_heal)
+				wound.heal_damage(effective_heal)
+				burn_heal_overrun = 0
+				burn_healing_left -= effective_heal
+			else
+				burn_heal_overrun = effective_heal - wound.damage
+				wound.heal_damage(wound.damage)
 		else
-			#warn brute
-			pass()
-	#warn impl
+			if(!brute_healing_left)
+				continue
+			effective_heal = min(brute_heal_per + brute_heal_overrun, brute_healing_left)
+			if(wound.damage > effective_heal)
+				wound.heal_damage(effective_heal)
+				brute_healing_left -= effective_heal
+				brute_heal_overrun = 0
+			else
+				brute_heal_overrun = effective_heal - wound.damage
+				wound.heal_damage(wound.damage)
 	return max(1 - (burn_healing_left / burn_healing_total), 1 - (brute_healing_left / brute_healing_total))
 
 /datum/medichine_effect/oxygenate
@@ -559,18 +625,32 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	var/while_dead = FALSE
 	/// amount per volume
 	var/strength = 0
+	/// don't heal above that much damage
+	var/only_while_above = INFINITY
 
 /datum/medichine_effect/oxygenate/tick_on_mob(datum/component/medichine_field/field, mob/living/entity, volume, seconds)
-	#warn impl
+	if(STAT_IS_DEAD(entity.stat) && !while_dead)
+		return null
+	var/amount_to_heal = min(strength * volume, entity.getOxyLoss() - only_while_above)
+	if(amount_to_heal <= 0)
+		return 0
+	return entity.heal_oxy_loss(amount_to_heal) / amount_to_heal
 
 /datum/medichine_effect/toxfilter
 	/// works on the dead
 	var/while_dead = FALSE
 	/// amount per volume
 	var/strength = 0
+	/// don't heal above that much damage
+	var/only_while_above = INFINITY
 
 /datum/medichine_effect/toxfilter/tick_on_mob(datum/component/medichine_field/field, mob/living/entity, volume, seconds)
-	#warn impl
+	if(STAT_IS_DEAD(entity.stat) && !while_dead)
+		return null
+	var/amount_to_heal = min(strength * volume, entity.getToxLoss(), only_while_above)
+	if(amount_to_heal <= 0)
+		return 0
+	return entity.heal_tox_loss(amount_to_heal) / amount_to_heal
 
 /datum/medichine_effect/stabilize
 

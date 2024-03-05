@@ -20,6 +20,8 @@ GLOBAL_LIST_EMPTY(holofabricator_templates)
 #define HOLOFABRICATOR_MODE_REPAIR 2
 #define HOLOFABRICATOR_MODE_DECONSTRUCT 3
 
+//? Projector
+
 /**
  * new RCDs
  */
@@ -119,6 +121,8 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/holofabricato
 		return B.priority - A.priority
 	return sorttext(A.name, B.name)
 
+//? Templates
+
 /**
  * rcd templates
  */
@@ -162,6 +166,18 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/holofabricato
 
 /datum/holofabricator_template/divider
 	name = "Dividers"
+
+//? Materials
+
+/**
+ * A special polyfill material usable for most templates.
+ */
+/datum/material/polyfill
+	id = "holofab-polyfill"
+	name = "Structural Polyfill"
+
+/datum/material/polyfill/generate_recipes()
+	return list()
 
 #undef HOLOFABRICATOR_MODE_CONSTRUCT
 #undef HOLOFABRICATOR_MODE_DECONSTRUCT

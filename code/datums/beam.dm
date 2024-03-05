@@ -82,6 +82,8 @@
 	var/atom/beam_target
 	/// do not automatically redraw on things moving
 	var/no_automatic_redraw = FALSE
+	/// callback to invoke on redraw
+	var/datum/callback/on_redraw
 
 	//* collision *//
 	/// collider type to use
@@ -126,6 +128,8 @@
 
 /datum/beam/Destroy()
 	unregister()
+	// unreference on_redraw
+	on_redraw = null
 	// get rid of emissives first
 	QDEL_NULL(emissive_line_renderer)
 	QDEL_NULL(line_renderer)
@@ -210,6 +214,7 @@
 		epx = movable_target.pixel_x
 		epy = movable_target.pixel_y
 	render(start, spx, spy, end, epx, epy)
+	on_redraw?.Invoke()
 
 /datum/beam/proc/signal_redraw(atom/movable/source, atom/old_loc, dir, forced, list/old_locs, momentum_change)
 	if(ismovable(old_loc))

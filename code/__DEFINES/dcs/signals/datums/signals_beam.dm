@@ -1,3 +1,5 @@
-/// Called before beam is redrawn
-#define COMSIG_BEAM_BEFORE_DRAW "beam_before_draw"
-	#define BEAM_CANCEL_DRAW (1 << 0)
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
+/// called on beam redraw
+#define COMSIG_BEAM_REDRAW "redrawing"
