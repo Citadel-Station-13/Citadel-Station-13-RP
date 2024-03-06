@@ -381,14 +381,26 @@
 //? passthrough / allowthrough
 
 /mob/living/CanAllowThrough(atom/movable/mover, turf/target)
+	. = ..()
+	if(.)
+		return
 	if(ismob(mover))
-		var/mob/M = mover
-		if(buckled && M.buckled == buckled)
+		var/mob/moving_mob = mover
+		if ((other_mobs && moving_mob.other_mobs))
+			return TRUE
+		if((wallflowering != NONE) && (ISDIAGONALDIR(wallflowering) || (loc == target? (wallflowering != turn(get_dir(mover, target), 180)) : (wallflowering != get_dir(moving, target)))))
+			return TRUE
+		if(buckled && moving_mob.buckled == buckled)
 			// riding same thing, don't block each other
 			return TRUE
 	// can't throw blob stuff through blob stuff
 	if(istype(mover, /obj/structure/blob) && faction == "blob" && !mover.throwing) //Blobs should ignore things on their faction.
 		return TRUE
+
+/mob/living/CheckExit(atom/movable/AM, atom/newLoc)
+	// clip their ass if they're in us and we're wallflowering, and we wouldn't otherwise let them through
+	if(isturf(newLoc) && (wallflowering != NONE) && !ISDIAGONALDIR(wallflowering) && (wallflowering == get_dir(AM, newLoc)))
+		return CanAllowThrough(AM, newLoc)
 	return ..()
 
 /mob/living/CanPassThrough(atom/blocker, turf/target, blocker_opinion)
