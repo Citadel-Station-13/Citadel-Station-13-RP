@@ -55,15 +55,24 @@
 	/// Will stacks made from this material pass their colors onto objects?
 	var/pass_stack_colors = FALSE
 
-	//* Armor
+	//* Alloying *//
+	/// if set, we are considered a 'weak' allow; get_materials (when supported) will consider this material to be composite
+	/// and in many cases this material can even be broken down to materials during fabrication
+	var/list/weak_alloy
+	/// if set, we are considered a 'strong' allow; this doesn't separate properly, and while materials science
+	/// can use this to detect our alloy composition, we won't automatically break down during fabrication to
+	/// the component materials
+	var/list/strong_alloy
+
+	//* Armor *//
 	/// caching of armor. text2num(significance)_[mob_armor? 1 : 0] = armor datum instance
 	var/tmp/list/armor_cache = list()
 
-	//* Attacks
+	//* Attacks *//
 	/// melee stats cache. text2num(mode)_text2num(significance) = list(stats)
 	var/tmp/list/melee_cache = list()
 
-	//* Attributes
+	//* Attributes *//
 	/// relative HP multiplier for something made out of this
 	var/relative_integrity = 1
 
@@ -128,13 +137,13 @@
 	/// * impacts acid armor
 	var/relative_permeability = 1
 
-	//* Flags
+	//* Flags *//
 	/// material flags
 	var/material_flags = NONE
 	/// material constraint flags - what we are considered
 	var/material_constraints = NONE
 
-	//* Traits
+	//* Traits *//
 	/// Material traits - set to list of paths to instance on New / register; associate them to their initial data.
 	var/list/material_traits
 	/// Material trait sensitivity hooks - total
@@ -151,11 +160,8 @@
 	var/opacity = 1
 	/// Only used by walls currently.
 	var/explosion_resistance = 5
-	/// Objects that respect this will randomly absorb impacts with this var as the percent chance.
-	var/negation = 0
-	/// Objects that have trouble staying in the same physical space by sheer laws of nature have this. Percent for respecting items to cause teleportation.
-	var/spatial_instability = 0
 	/// If set, object matter var will be a list containing these values.
+	//  todo: replace with weak_alloy and strong_alloy
 	var/list/composite_material
 
 	//! Placeholder vars for the time being, todo properly integrate windows/light tiles/rods.
@@ -240,6 +246,7 @@
 		shard_icon = shard_type
 
 	init_traits()
+	init_alloys()
 
 	return TRUE
 
@@ -300,7 +307,27 @@
 /datum/material/proc/wall_touch_special(turf/simulated/wall/W, mob/living/L)
 	return
 
-//* traits & trait hooks
+//* Alloys *//
+
+/datum/material/proc/init_alloys()
+	for(var/i in 1 to length(weak_alloy))
+		var/key = weak_alloy[i]
+		var/value = weak_alloy[key]
+		if(ispath(key))
+			var/datum/material/casted = key
+			key = initial(casted.id)
+			weak_alloy[i] = key
+			weak_alloy[key] = value
+	for(var/i in 1 to length(strong_alloy))
+		var/key = strong_alloy[i]
+		var/value = strong_alloy[key]
+		if(ispath(key))
+			var/datum/material/casted = key
+			key = initial(casted.id)
+			strong_alloy[i] = key
+			strong_alloy[key] = value
+
+//* traits & trait hooks *//
 
 /datum/material/proc/init_traits()
 	for(var/i in 1 to length(material_traits))

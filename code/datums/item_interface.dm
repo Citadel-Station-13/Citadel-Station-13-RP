@@ -132,6 +132,19 @@
 /datum/item_interface/proc/check_high_power()
 	return min(1, default_power_bus_avail_high / default_power_bus_load_high)
 
+//* UI *//
+
+/**
+ * A hook used to determine if a user should be able to physically access an UI anchored / hosted on a specific item.
+ *
+ * Item-side must implement/use this.
+ *
+ * @return non-null to override if we can reach an item.
+ */
+/datum/item_interface/proc/ui_override_reachability(obj/item/item, mob/user/user)
+	#warn tgui needs a way to hook
+	return null
+
 //* Miscellaneous / Specific Items *//
 
 /**

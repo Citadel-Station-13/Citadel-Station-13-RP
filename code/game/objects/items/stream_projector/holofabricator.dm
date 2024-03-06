@@ -51,17 +51,40 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/holofabricato
 	var/obj/item/matter_cartridge/inserted_cartridge
 	/// selected template
 	var/datum/holofabricator_template/selected_template
+	/// k-v part-to-material choices for current template
+	var/list/selected_materials
+	/// k-v options list selected for current template
+	var/list/selected_options
 	/// interface to draw from if provided
 	var/datum/item_interface/interface
 	/// we're in deconstruction mode
 	var/deconstruction_mode = FALSE
+	/// what cell type we start with
+	var/cell_type = /obj/item/cell/super
+	/// base work done per second
+	var/work_speed = 10
+	/// no-penalty distance
+	var/no_penalty_distance = 1
+	/// multiplier to distance for divisor when outisde of no_penalty_distance
+	var/distance_divisor_multiplier = 0.5
+	/// watts used per second
+	var/power_draw = POWER_USAGE_HOLOFABRICATOR
 
 #warn impl all
+
+/obj/item/stream_projector/holofabricator/Initialize(mapload)
+	. = ..()
+	init_cell_slot(cell_type)
+	obj_cell_slot.legacy_use_device_cells = FALSE
+	obj_cell_slot.remove_yank_offhand = TRUE
+	obj_cell_slot.remove_yank_context = TRUE
 
 /obj/item/stream_projector/holofabricator/examine(mob/user, dist)
 	. = ..()
 	. += SPAN_RED("Things constructed with holofabricators do not have the same structural integrity as things built by conventional means.")
 	. += SPAN_RED("Transfer efficiency is lowered quadratically with a target's distance from the applied holofabricator.")
+	#warn power
+	#warn matter
 
 /obj/item/stream_projector/holofabricator/update_icon(updates)
 	cut_overlays()
@@ -143,6 +166,8 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/holofabricato
  * 'frame' of an object, that solidifies into the object itself at a certain point
  */
 /obj/structure/holofabricator_construction
+	name = "hardlight template"
+	desc = "A partially assembled template for something, likely formed with a holofabricator."
 
 #warn impl all
 
@@ -198,6 +223,8 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/holofabricato
  */
 /datum/holofabricator_template/proc/initialize()
 	#warn impl
+
+
 
 #warn impl all
 
