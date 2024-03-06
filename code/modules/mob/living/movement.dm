@@ -388,7 +388,7 @@
 		var/mob/moving_mob = mover
 		if ((other_mobs && moving_mob.other_mobs))
 			return TRUE
-		if((wallflowering != NONE) && (ISDIAGONALDIR(wallflowering) || (loc == target? (wallflowering != turn(get_dir(mover, target), 180)) : (wallflowering != get_dir(moving, target)))))
+		if((wallflowering != NONE) && (ISDIAGONALDIR(wallflowering) || (loc == target? (wallflowering != turn(get_dir(mover, target), 180)) : (wallflowering != get_dir(mover, target)))))
 			return TRUE
 		if(buckled && moving_mob.buckled == buckled)
 			// riding same thing, don't block each other
