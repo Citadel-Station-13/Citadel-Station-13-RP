@@ -1,6 +1,6 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
-
+#warn depricate this
 /**
  * ID mod module
  *
