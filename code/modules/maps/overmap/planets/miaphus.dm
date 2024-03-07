@@ -338,3 +338,27 @@
 
 /area/tether_away/beach/desert/poi/covert_post
 	name = "Miaphus'irra - Clown Listening Post"
+
+/area/tether_away/beach/desert/poi/oilwell
+	name = "Miaphus'irra - Oil Spring"
+
+/area/tether_away/beach/desert/poi/huntercamp
+	name = "Miaphus'irra - Hunter's Camp"
+
+/area/tether_away/beach/desert/poi/refinery
+	name = "Miaphus'irra - Fuel Refinery"
+
+/area/tether_away/beach/desert/poi/minecamp
+	name = "Miaphus'irra - Mining Camp"
+
+/area/tether_away/beach/desert/poi/wastedump
+	name = "Miaphus'irra - Hazardous Waste Dump"
+
+/area/tether_away/beach/desert/poi/snipernest
+	name = "Miaphus'irra - Sniper Nest"
+
+/area/tether_away/beach/desert/poi/turretnest
+	name = "Miaphus'irra - Automated Defense Battery"
+
+/area/tether_away/beach/desert/poi/piratehideout
+	name = "Miaphus'irra - Pirate Hideout"
