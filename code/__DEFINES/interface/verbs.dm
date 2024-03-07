@@ -5,3 +5,5 @@
 #define VERB_CATEGORY_OOC "OOC"
 #define VERB_CATEGORY_OBJECT "Object"
 #define VERB_CATEGORY_SYSTEM "System"
+
+// todo: admin verb categories too
