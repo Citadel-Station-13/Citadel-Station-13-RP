@@ -424,7 +424,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/holofabricato
 	)
 
 /**
- * todo: asset cache should do this lol
+ * todo: someday when shit isn't slow, we should just auto-generate these things instead :/
  */
 /datum/holofabricator_template_patterns/proc/with_pattern(name, id, preview_state)
 
@@ -434,49 +434,90 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/holofabricato
 
 /datum/holofabricator_template/structure
 	category = "Structure"
+	spritesheet_icon = 'icons/items/stream_projector/holofabricator-structure.dmi'
 
 /datum/holofabricator_template/structure/wall
 	#warn impl
 	work_required = 3 SECONDS
 
+/datum/holofabricator_template/structure/wall/construct_patterns(datum/holofabricator_template_patterns/patterns)
+	. = ..()
+	#warn impl
+
 /datum/holofabricator_template/structure/floor
 	#warn impl
 	work_required = 0.25 SECONDS
 
+/datum/holofabricator_template/structure/floor/construct_patterns(datum/holofabricator_template_patterns/patterns)
+	. = ..()
+	#warn impl
+
 /datum/holofabricator_template/structure/airlock
 	#warn impl
 	work_required = 5 SECONDS
+	spritesheet_icon = 'icons/items/stream_projector/holofabricator-airlock.dmi'
+
+/datum/holofabricator_template/structure/airlock/construct_patterns(datum/holofabricator_template_patterns/patterns)
+	. = ..()
+	#warn impl
 
 /datum/holofabricator_template/structure/full_window
 	#warn impl
 	work_required = 2.5 SECONDS
 
+/datum/holofabricator_template/structure/full_window/construct_patterns(datum/holofabricator_template_patterns/patterns)
+	. = ..()
+	#warn impl
+
 /datum/holofabricator_template/structure/grille
 	#warn impl
 	work_required = 1 SECONDS
+
+/datum/holofabricator_template/structure/grille/construct_patterns(datum/holofabricator_template_patterns/patterns)
+	. = ..()
+	#warn impl
 
 /datum/holofabricator_template/structure/low_wall
 	#warn impl
 	work_required = 1 SECONDS
 
+/datum/holofabricator_template/structure/low_wall/construct_patterns(datum/holofabricator_template_patterns/patterns)
+	. = ..()
+	#warn impl
+
 /datum/holofabricator_template/furniture
 	category = "Furniture"
+	spritesheet_icon = 'icons/items/stream_projector/holofabricator-furniture.dmi'
 
 /datum/holofabricator_template/furniture/table
 	#warn impl
 	work_required = 1 SECONDS
 
+/datum/holofabricator_template/furniture/table/construct_patterns(datum/holofabricator_template_patterns/patterns)
+	. = ..()
+	#warn impl
+
 /datum/holofabricator_template/furniture/office_chair
 	#warn impl
 	work_required = 1 SECONDS
 
+/datum/holofabricator_template/furniture/office_chair/construct_patterns(datum/holofabricator_template_patterns/patterns)
+	. = ..()
+	#warn impl
+
 /datum/holofabricator_template/furniture/stool
 	#warn impl
 	work_required = 1 SECONDS
+/datum/holofabricator_template/furniture/stool/construct_patterns(datum/holofabricator_template_patterns/patterns)
+	. = ..()
+	#warn impl
 
 /datum/holofabricator_template/furniture/bed
 	#warn impl
 	work_required = 1 SECONDS
+/datum/holofabricator_template/furniture/bed/construct_patterns(datum/holofabricator_template_patterns/patterns)
+	. = ..()
+	#warn impl
 
 // todo: frame refactor
 
