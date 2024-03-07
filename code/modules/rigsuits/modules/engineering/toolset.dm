@@ -71,6 +71,10 @@
 
 // todo: powertools
 
+/obj/item/rig_module/toolset/engineering/power
+
 //? Hardlight (tier 3)
 
 // todo: hardlight
+
+/obj/item/rig_module/toolset/engineering/hardlight
