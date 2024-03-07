@@ -5,7 +5,6 @@
 	icon_colour = "#fff127"
 	explosion_resistance = 25
 	opacity = 0.8
-	negation = 5 // boing.
 	stack_origin_tech = list(TECH_MATERIAL = 5, TECH_ILLEGAL = 3)
 	tgui_icon_key = "bananium"
 
