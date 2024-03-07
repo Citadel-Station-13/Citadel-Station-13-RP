@@ -117,6 +117,77 @@ GLOBAL_REAL_VAR(airlock_typecache) = typecacheof(list(
 	var/tinted
 	var/id_tint
 
+/obj/machinery/door/airlock/Initialize(mapload, obj/structure/door_assembly/assembly)
+	//if assembly is given, create the new door from the assembly
+	if (assembly && istype(assembly))
+		assembly_type = assembly.type
+
+		electronics = assembly.electronics
+		electronics.loc = src
+
+		//update the door's access to match the electronics'
+		secured_wires = electronics.secure
+		req_one_access = electronics.conf_req_one_access?.Copy()
+		req_access = electronics.conf_req_access?.Copy()
+
+		//get the name from the assembly
+		if(assembly.created_name)
+			name = assembly.created_name
+		else
+			name = "[istext(assembly.glass) ? "[assembly.glass] airlock" : assembly.base_name]"
+
+		//get the dir from the assembly
+		setDir(assembly.dir)
+
+	//wires
+	var/turf/T = get_turf(loc)
+	if(T && (T.z in (LEGACY_MAP_DATUM).admin_levels))
+		secured_wires = 1
+	if (secured_wires)
+		wires = new/datum/wires/airlock/secure(src)
+	else
+		wires = new/datum/wires/airlock(src)
+
+	if(src.closeOtherId != null)
+		for (var/obj/machinery/door/airlock/A in GLOB.machines)
+			if(A.closeOtherId == src.closeOtherId && A != src)
+				src.closeOther = A
+				break
+	name = "\improper [name]"
+	if(autoset_dir)
+		for (var/cardinal in GLOB.cardinal) //No list copy please good sir
+			var/turf/step_turf = get_step(src, cardinal)
+			for(var/atom/thing as anything in step_turf)
+				if(thing.type in airlock_typecache)
+					switch(cardinal)
+						if(EAST)
+							setDir(SOUTH)
+						if(WEST)
+							setDir(SOUTH)
+						if(NORTH)
+							setDir(WEST)
+						if(SOUTH)
+							setDir(WEST)
+					break
+			if (step_turf.density == TRUE)
+				switch(cardinal)
+					if(EAST)
+						setDir(SOUTH)
+					if(WEST)
+						setDir(SOUTH)
+					if(NORTH)
+						setDir(WEST)
+					if(SOUTH)
+						setDir(WEST)
+				break
+	update_airlock_icon(AIRLOCK_CLOSED)
+	return ..()
+
+/obj/machinery/door/airlock/Destroy()
+	QDEL_NULL(wires)
+	QDEL_NULL(electronics)
+	return ..()
+
 /obj/machinery/door/airlock/proc/set_airlock_overlays(state)
 	var/icon/color_overlay
 	var/icon/filling_overlay
@@ -225,7 +296,7 @@ GLOBAL_REAL_VAR(airlock_typecache) = typecacheof(list(
 				if(do_after(user,10 SECONDS,src))
 					src.locked = 0
 					src.welded = 0
-					update_icon()
+					update_airlock_icon()
 					open(1)
 					if(prob(25))
 						src.shock(user, 100)
@@ -254,7 +325,7 @@ GLOBAL_REAL_VAR(airlock_typecache) = typecacheof(list(
 					playsound(src.loc, 'sound/machines/airlock_creaking.ogg', 100, 1)
 					src.locked = 0
 					src.welded = 0
-					update_icon()
+					update_airlock_icon()
 					open(1)
 					src.emag_act()
 			else if(src.density)
@@ -398,7 +469,7 @@ About the new airlock wires panel:
 	if(electrified_until && isAllPowerLoss())
 		electrify(0)
 
-	update_icon()
+	update_airlock_icon()
 
 /obj/machinery/door/airlock/proc/loseBackupPower()
 	backup_power_lost_until = backupPowerCablesCut() ? -1 : world.time + SecondsToTicks(60)
@@ -410,7 +481,7 @@ About the new airlock wires panel:
 	if(electrified_until && isAllPowerLoss())
 		electrify(0)
 
-	update_icon()
+	update_airlock_icon()
 
 /obj/machinery/door/airlock/proc/regainMainPower()
 	if(!mainPowerCablesCut())
@@ -419,14 +490,14 @@ About the new airlock wires panel:
 		if(!backup_power_lost_until)
 			backup_power_lost_until = -1
 
-	update_icon()
+	update_airlock_icon()
 
 /obj/machinery/door/airlock/proc/regainBackupPower()
 	if(!backupPowerCablesCut())
 		// Restore backup power only if main power is offline, otherwise permanently disable
 		backup_power_lost_until = main_power_lost_until == 0 ? -1 : 0
 
-	update_icon()
+	update_airlock_icon()
 
 /obj/machinery/door/airlock/proc/electrify(var/duration, var/feedback = 0)
 	var/message = ""
@@ -497,8 +568,7 @@ About the new airlock wires panel:
 	else
 		return 0
 
-
-/obj/machinery/door/airlock/update_icon(var/doorstate)
+/obj/machinery/door/airlock/proc/update_airlock_icon(var/doorstate)
 	switch(doorstate)
 		if(AIRLOCK_OPEN)
 			icon_state = "open"
@@ -507,6 +577,10 @@ About the new airlock wires panel:
 		if(AIRLOCK_OPENING, AIRLOCK_CLOSING, AIRLOCK_EMAG, AIRLOCK_DENY)
 			icon_state = ""
 
+	update_icon()
+
+/obj/machinery/door/airlock/update_icon(updates)
+	. = ..()
 	set_airlock_overlays(state)
 
 /obj/machinery/door/airlock/custom_smooth()
@@ -517,24 +591,24 @@ About the new airlock wires panel:
 		if(DOOR_ANIMATION_OPEN)
 			set_airlock_overlays(AIRLOCK_OPENING)
 			flick("opening", src)//[stat ? "_stat":]
-			update_icon(AIRLOCK_OPEN)
+			update_airlock_icon(AIRLOCK_OPEN)
 		if(DOOR_ANIMATION_CLOSE)
 			set_airlock_overlays(AIRLOCK_CLOSING)
 			flick("closing", src)
-			update_icon(AIRLOCK_CLOSED)
+			update_airlock_icon(AIRLOCK_CLOSED)
 		if(DOOR_ANIMATION_DENY)
 			set_airlock_overlays(AIRLOCK_DENY)
 			if(density && arePowerSystemsOn())
 				flick("deny", src)
 				if(speaker)
 					playsound(loc, denied_sound, 50, 0)
-			update_icon(AIRLOCK_CLOSED)
+			update_airlock_icon(AIRLOCK_CLOSED)
 		if(DOOR_ANIMATION_EMAG)
 			set_airlock_overlays(AIRLOCK_EMAG)
 			if(density && arePowerSystemsOn())
 				flick("deny", src)
 		else
-			update_icon()
+			update_airlock_icon()
 
 /obj/machinery/door/airlock/attack_ai(mob/user as mob)
 	ui_interact(user)
@@ -674,14 +748,14 @@ About the new airlock wires panel:
 		if("disrupt-main")
 			if(!main_power_lost_until)
 				loseMainPower()
-				update_icon()
+				update_airlock_icon()
 			else
 				to_chat(usr, SPAN_WARNING("Main power is already offline."))
 			. = TRUE
 		if("disrupt-backup")
 			if(!backup_power_lost_until)
 				loseBackupPower()
-				update_icon()
+				update_airlock_icon()
 			else
 				to_chat(usr, SPAN_WARNING("Backup power is already offline."))
 			. = TRUE
@@ -708,7 +782,7 @@ About the new airlock wires panel:
 				to_chat(usr, "The bolt lights wire is cut - The door bolt lights are permanently disabled.")
 				return
 			lights = !lights
-			update_icon()
+			update_airlock_icon()
 			. = TRUE
 		if("safe-toggle")
 			set_safeties(!safe, 1)
@@ -723,7 +797,7 @@ About the new airlock wires panel:
 			user_toggle_open(usr)
 			. = TRUE
 
-	update_icon()
+	update_airlock_icon()
 	return TRUE
 
 /obj/machinery/door/airlock/proc/user_allowed(mob/user)
@@ -787,7 +861,7 @@ About the new airlock wires panel:
 			else
 				src.welded = null
 			playsound(src.loc, C.tool_sound, 75, 1)
-			src.update_icon()
+			src.update_airlock_icon()
 			return
 		else
 			return
@@ -801,7 +875,7 @@ About the new airlock wires panel:
 		else
 			src.panel_open = 1
 			playsound(src, C.tool_sound, 50, 1)
-		src.update_icon()
+		src.update_airlock_icon()
 	else if(C.is_wirecutter())
 		return src.attack_hand(user)
 	else if(istype(C, /obj/item/multitool))
@@ -1007,7 +1081,7 @@ About the new airlock wires panel:
 	playsound(src, bolt_down_sound, 30, 0, 3)
 	for(var/mob/M in range(1,src))
 		M.show_message("You hear a click from the bottom of the door.", 2)
-	update_icon()
+	update_airlock_icon()
 	return 1
 
 /obj/machinery/door/airlock/proc/unlock(var/forced=0)
@@ -1021,7 +1095,7 @@ About the new airlock wires panel:
 	playsound(src, bolt_up_sound, 30, 0, 3)
 	for(var/mob/M in range(1,src))
 		M.show_message("You hear a click from the bottom of the door.", 2)
-	update_icon()
+	update_airlock_icon()
 	return 1
 
 /obj/machinery/door/airlock/allowed(mob/M)
@@ -1029,82 +1103,6 @@ About the new airlock wires panel:
 		return 0
 	return ..(M)
 
-/obj/machinery/door/airlock/can_pathfinding_enter(atom/movable/actor, dir, datum/pathfinding/search)
-	return ..() || (has_access(req_access, req_one_access, search.ss13_with_access) && !locked && !inoperable())
-
-/obj/machinery/door/airlock/can_pathfinding_pass(atom/movable/actor, datum/pathfinding/search)
-	return ..() || (has_access(req_access, req_one_access, search.ss13_with_access) && !locked && !inoperable())
-
-/obj/machinery/door/airlock/Initialize(mapload, obj/structure/door_assembly/assembly)
-	//if assembly is given, create the new door from the assembly
-	if (assembly && istype(assembly))
-		assembly_type = assembly.type
-
-		electronics = assembly.electronics
-		electronics.loc = src
-
-		//update the door's access to match the electronics'
-		secured_wires = electronics.secure
-		req_one_access = electronics.conf_req_one_access?.Copy()
-		req_access = electronics.conf_req_access?.Copy()
-
-		//get the name from the assembly
-		if(assembly.created_name)
-			name = assembly.created_name
-		else
-			name = "[istext(assembly.glass) ? "[assembly.glass] airlock" : assembly.base_name]"
-
-		//get the dir from the assembly
-		setDir(assembly.dir)
-
-	//wires
-	var/turf/T = get_turf(loc)
-	if(T && (T.z in (LEGACY_MAP_DATUM).admin_levels))
-		secured_wires = 1
-	if (secured_wires)
-		wires = new/datum/wires/airlock/secure(src)
-	else
-		wires = new/datum/wires/airlock(src)
-
-	if(src.closeOtherId != null)
-		for (var/obj/machinery/door/airlock/A in GLOB.machines)
-			if(A.closeOtherId == src.closeOtherId && A != src)
-				src.closeOther = A
-				break
-	name = "\improper [name]"
-	if(autoset_dir)
-		for (var/cardinal in GLOB.cardinal) //No list copy please good sir
-			var/turf/step_turf = get_step(src, cardinal)
-			for(var/atom/thing as anything in step_turf)
-				if(thing.type in airlock_typecache)
-					switch(cardinal)
-						if(EAST)
-							setDir(SOUTH)
-						if(WEST)
-							setDir(SOUTH)
-						if(NORTH)
-							setDir(WEST)
-						if(SOUTH)
-							setDir(WEST)
-					break
-			if (step_turf.density == TRUE)
-				switch(cardinal)
-					if(EAST)
-						setDir(SOUTH)
-					if(WEST)
-						setDir(SOUTH)
-					if(NORTH)
-						setDir(WEST)
-					if(SOUTH)
-						setDir(WEST)
-				break
-	update_icon(AIRLOCK_CLOSED)
-	. = ..()
-
-/obj/machinery/door/airlock/Destroy()
-	qdel(wires)
-	wires = null
-	return ..()
 
 // Most doors will never be deconstructed over the course of a round,
 // so as an optimization defer the creation of electronics until
@@ -1170,7 +1168,7 @@ About the new airlock wires panel:
 		// If we lost power, disable electrification
 		// Keeping door lights on, runs on internal battery or something.
 		electrified_until = 0
-	update_icon()
+	update_airlock_icon()
 
 /obj/machinery/door/airlock/proc/prison_open()
 	if(arePowerSystemsOn())
@@ -1213,5 +1211,10 @@ About the new airlock wires panel:
 			return TRUE
 	return FALSE
 
-/obj/machinery/door/airlock/glass_external/public
-	req_one_access = list()
+//* Pathfinding *//
+
+/obj/machinery/door/airlock/can_pathfinding_enter(atom/movable/actor, dir, datum/pathfinding/search)
+	return ..() || (has_access(req_access, req_one_access, search.ss13_with_access) && !locked && !inoperable())
+
+/obj/machinery/door/airlock/can_pathfinding_pass(atom/movable/actor, datum/pathfinding/search)
+	return ..() || (has_access(req_access, req_one_access, search.ss13_with_access) && !locked && !inoperable())

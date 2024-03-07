@@ -299,7 +299,7 @@
 			open()
 	..()
 
-/obj/machinery/door/update_icon()
+/obj/machinery/door/update_icon(updates)
 	if(density)
 		icon_state = "door1"
 	else

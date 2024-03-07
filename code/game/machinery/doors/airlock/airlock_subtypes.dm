@@ -135,6 +135,9 @@
 	door_color = COLOR_MAROON
 	window_color = GLASS_COLOR
 
+/obj/machinery/door/airlock/glass_external/public
+	req_one_access = list()
+
 /obj/machinery/door/airlock/glass
 	name = "Glass Airlock"
 	open_sound_powered = 'sound/machines/door/hall1o.ogg'
