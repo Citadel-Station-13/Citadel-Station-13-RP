@@ -28,8 +28,6 @@
 			.[key] += stored_capacity * resolved_polyfill.weak_alloy[key]
 	else
 		.[resolved_polyfill.id] += stored_capacity
-	for(var/key in stored_materials)
-		.[key] += stored_materials[key]
 
 /obj/item/polyfill_cartridge/proc/use(amount)
 	. = min(amount, stored_capacity)
@@ -40,3 +38,9 @@
 /obj/item/polyfill_cartridge/proc/give(amount)
 	. = min(amount, maximum_capacity - stored_capacity)
 	stored_capacity += .
+
+/**
+ * @return 0 to 1 inclusive of how full we are
+ */
+/obj/item/polyfill_cartridge/proc/get_ratio()
+	return clamp(stored_capacity / maximum_capacity, 0, 1)

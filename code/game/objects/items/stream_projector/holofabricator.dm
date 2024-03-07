@@ -260,14 +260,13 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/holofabricato
 	var/work_remaining
 	/// locked holofabricators
 	var/list/obj/item/stream_projector/holofabricator/affecting = list()
-	/// specified req-access
-	var/list/req_access
-	/// specified req-one-access
-	var/list/req_one_access
 
 /obj/structure/holofabricator_construction/Initialize(mapload, datum/holofabricator_template/template, pattern, list/options, list/materials, list/req_access, list/req_one_access)
 	. = ..()
 	#warn impl
+
+	src.req_access = req_access
+	src.req_one_access = req_one_access
 
 /obj/structure/holofabricator_construction/proc/work_on(obj/item/stream_projector/holofabricator/fabricator, amount)
 	work_remaining = max(0, work_remaining - amount)
@@ -332,7 +331,8 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/holofabricato
 
 	/// typepath of object
 	var/build_path
-	/// patterns, if any - ids to names
+	#warn sigh how to dela with patterns like airlocks??
+	/// patterns, please use pattern builder system
 	var/datum/holofabricator_template_patterns/patterns
 	/// material choices - list of keys
 	var/list/material_parts
@@ -398,7 +398,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/holofabricato
  * * options - k-v options list
  * * materials - k-v materials list
  */
-/datum/holofabricator_template/proc/finalize(obj/structure/holofabricator_construction/in_progress, atom/where, datum/material/structure, list/options, list/materials)
+/datum/holofabricator_template/proc/finalize(obj/structure/holofabricator_construction/in_progress)
 	if(!isnull(in_progress))
 		if(isnull(where))
 			where = in_progress.loc
@@ -408,10 +408,10 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/holofabricato
 			options = in_progress.options
 		if(isnull(materials))
 			materials = in_progress.materials
-	var/obj/created = create(where, options, materials)
+	var/obj/created = create(in_progress.loc, in_progress.pattern, in_progress.options, in_progress.materials, in_progress.req_access, in_progress.req_one_access)
 	return created
 
-/datum/holofabricator_template/proc/instantiate(atom/where, list/options, list/materials)
+/datum/holofabricator_template/proc/instantiate(atom/where, pattern, list/options, list/materials, list/req_access, list/req_one_access)
 	return new build_path(where)
 
 /datum/holofabricator_template_options
