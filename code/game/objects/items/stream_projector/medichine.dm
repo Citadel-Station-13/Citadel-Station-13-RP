@@ -97,6 +97,13 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 /obj/item/stream_projector/medichine/try_lock_target(atom/entity, datum/event_args/actor/actor, silent)
 	var/turf/where_we_are = get_turf(src)
 	var/turf/where_they_are = get_turf(entity)
+	if(get_dist(where_we_are, where_they_are) > maximum_distance)
+		if(!silent)
+			actor.chat_feedback(
+				SPAN_WARNING("That is out of range."),
+				target = src,
+			)
+		return FALSE
 	if(get_dist(where_we_are, where_they_are) <= 1 && !where_we_are.TurfAdjacency(where_they_are))
 		if(!silent)
 			actor.chat_feedback(
@@ -142,10 +149,6 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 /obj/item/stream_projector/medichine/proc/on_beam_redraw(datum/beam/source)
 	var/atom/movable/target = source.beam_target
 	if(get_dist(src, target) > maximum_distance)
-		drop_target(target)
-	var/turf/where_we_are = get_turf(src)
-	var/turf/where_they_are = get_turf(target)
-	if(where_we_are?.z != where_they_are?.z)
 		drop_target(target)
 
 /obj/item/stream_projector/medichine/proc/on_beam_crossed(datum/beam/source, atom/what)

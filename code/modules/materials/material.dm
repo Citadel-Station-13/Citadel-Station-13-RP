@@ -273,6 +273,10 @@
 		trait.deserialize(data_list["trait"])
 		material_traits[trait] = data_list["data"]
 
+/datum/material/clone()
+	var/datum/material/cloned = new type
+	return cloned
+
 /// This is a placeholder for proper integration of windows/windoors into the system.
 /datum/material/proc/build_windows(mob/living/user, obj/item/stack/used_stack)
 	return FALSE

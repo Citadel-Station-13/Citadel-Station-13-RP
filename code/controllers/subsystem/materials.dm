@@ -138,6 +138,39 @@ SUBSYSTEM_DEF(materials)
 	CRASH("what?")
 
 /**
+ * resolve a 'reskinned' material
+ *
+ * basically, a material but looking like another
+ *
+ * @params
+ * * id_or_path - real material to use
+ * * into_material - what material to make it look like
+ */
+/datum/controller/subsystem/materials/proc/resolve_reskinned_material(datum/material/id_or_path, datum/material/into_material)
+	// todo: optimize
+	var/datum/material/source_material = resolve_material(id_or_path)
+	var/datum/material/target_material = resolve_material(into_material)
+	var/reskinned_id = "[target_material.id]-reskinned-[source_material.id]"
+	if(isnull(material_lookup[reskinned_id]))
+		var/datum/material/created_reskin = source_material.clone()
+		var/static/list/direct_clone_vars = list(
+			NAMEOF(created_reskin, icon_colour),
+			NAMEOF(created_reskin, icon_base),
+			NAMEOF(created_reskin, icon_reinf),
+			NAMEOF(created_reskin, wall_stripe_icon),
+			NAMEOF(created_reskin, door_icon_base),
+			NAMEOF(created_reskin, table_icon_base),
+			NAMEOF(created_reskin, table_reinf_icon_base),
+			NAMEOF(created_reskin, icon_reinf_directionals),
+			NAMEOF(created_reskin, shard_icon),
+			NAMEOF(created_reskin, tgui_icon_key),
+		)
+		for(var/varname in direct_clone_vars)
+			created_reskin.vars[varname] = into_material.vars[varname]
+		material_lookup[reskinned_id] = created_reskin
+	return material_lookup[reskinned_id]
+
+/**
  * ensures a list is full of material ids for keys
  *
  * if key is not a valid material or is null, it will be nulled.

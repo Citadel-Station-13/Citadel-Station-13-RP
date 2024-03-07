@@ -60,7 +60,7 @@
 /obj/item/stream_projector/proc/transform_target_lock(atom/target)
 	return target
 
-/obj/item/stream_projector/process()
+/obj/item/stream_projector/process(delta_time)
 	return // don't process_kill by default
 
 /**
@@ -91,6 +91,8 @@
 	if(process_while_active && !process_always)
 		// START_PROCESSING checks for DF_ISPROCESSING already
 		START_PROCESSING(SSprocessing, src)
+	if(ismovable(entity))
+		RegisterSignal(entity, COMSIG_MOVABLE_MOVED, PROC_REF(on_target_moved))
 	return TRUE
 
 /**
@@ -157,6 +159,12 @@
 	if(!length(active_targets) && process_while_active && !process_always)
 		STOP_PROCESSING(SSprocessing, src)
 	return TRUE
+
+/obj/item/stream_projector/proc/on_target_moved(atom/movable/source)
+	// notice how we specifically don't check for being on a turf
+	// if you want that, you have to check on subtypes (or add a var to base type later)
+	if(get_z(source) != get_z(src))
+		drop_target(source)
 
 /obj/item/stream_projector/proc/drop_all_targets()
 	for(var/atom/entity as anything in active_targets)
