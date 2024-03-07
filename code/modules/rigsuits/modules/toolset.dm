@@ -10,4 +10,7 @@
 /obj/item/rig_module/toolset
 	abstract_type = /obj/item/rig_module/toolset
 
+	/// list of items; set to a list of typepaths to init.
+	var/list/obj/item/items = list()
+
 #warn impl all

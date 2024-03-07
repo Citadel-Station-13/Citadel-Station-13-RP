@@ -689,11 +689,11 @@
 
 /obj/item/hardsuit_module/device/toolset/Initialize(mapload)
 	. = ..()
-	intcrowbar = new /obj/item/tool/crowbar/RIGset(src)
-	intwrench = new /obj/item/tool/wrench/RIGset(src)
-	intcutter = new /obj/item/tool/wirecutters/RIGset(src)
-	intdriver = new /obj/item/tool/screwdriver/RIGset(src)
-	//intwelder = new /obj/item/weldingtool/electric/mounted/RIGset(src)
+	intcrowbar = new /obj/item/tool/crowbar/rig_basic(src)
+	intwrench = new /obj/item/tool/wrench/rig_basic(src)
+	intcutter = new /obj/item/tool/wirecutters/rig_basic(src)
+	intdriver = new /obj/item/tool/screwdriver/rig_basic(src)
+	//intwelder = new /obj/item/weldingtool/electric/mounted/rig_basic(src)
 	device = intcrowbar
 
 /obj/item/hardsuit_module/device/toolset/engage(atom/target)
@@ -724,4 +724,4 @@
 	interface_name = "Integrated arc-welder"
 	interface_desc = "A hardsuit-mounted electrical welder. Smells of ozone."
 	engage_string = "Engage/Disengage"
-	device_type = /obj/item/weldingtool/electric/mounted/RIGset
+	device_type = /obj/item/weldingtool/electric/mounted/rig_basic
