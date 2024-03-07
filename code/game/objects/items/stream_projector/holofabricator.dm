@@ -361,7 +361,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/holofabricato
  * constructs options datum
  */
 /datum/holofabricator_template/proc/construct_options(datum/holofabricator_template_options/options)
-	return option
+	return options
 /**
  * constructs patterns datum
  */
@@ -377,6 +377,8 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/holofabricato
 		"patterns" = patterns.tgui_template_patterns(),
 		"options" = options.tgui_template_options(),
 	)
+
+#warn a way to adapt to things, ergo 'there's already a low wall but we want to also make a low wall'
 
 /**
  * create the work in progress construction object
@@ -415,7 +417,13 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/holofabricato
 /datum/holofabricator_template_options
 
 /datum/holofabricator_template_options/proc/tgui_template_options()
-	return list() // unimplemented.
+	return list(
+
+	)
+
+/datum/holofabricator_template_options/proc/with_color_option(key, name)
+
+#warn impl all
 
 /datum/holofabricator_template_patterns
 
@@ -439,6 +447,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/holofabricato
 /datum/holofabricator_template/structure/wall
 	#warn impl
 	work_required = 3 SECONDS
+	#warn wall
 
 /datum/holofabricator_template/structure/wall/construct_patterns(datum/holofabricator_template_patterns/patterns)
 	. = ..()
@@ -447,6 +456,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/holofabricato
 /datum/holofabricator_template/structure/floor
 	#warn impl
 	work_required = 0.25 SECONDS
+	#warn plating
 
 /datum/holofabricator_template/structure/floor/construct_patterns(datum/holofabricator_template_patterns/patterns)
 	. = ..()
@@ -456,6 +466,8 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/holofabricato
 	#warn impl
 	work_required = 5 SECONDS
 	spritesheet_icon = 'icons/items/stream_projector/holofabricator-airlock.dmi'
+	#warn airlock, airlock-glass, hatch, hatch-glass, external
+	#warn options for colors
 
 /datum/holofabricator_template/structure/airlock/construct_patterns(datum/holofabricator_template_patterns/patterns)
 	. = ..()
@@ -464,22 +476,16 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/holofabricato
 /datum/holofabricator_template/structure/full_window
 	#warn impl
 	work_required = 2.5 SECONDS
+	#warn window, window-reinf
 
 /datum/holofabricator_template/structure/full_window/construct_patterns(datum/holofabricator_template_patterns/patterns)
-	. = ..()
-	#warn impl
-
-/datum/holofabricator_template/structure/grille
-	#warn impl
-	work_required = 1 SECONDS
-
-/datum/holofabricator_template/structure/grille/construct_patterns(datum/holofabricator_template_patterns/patterns)
 	. = ..()
 	#warn impl
 
 /datum/holofabricator_template/structure/low_wall
 	#warn impl
 	work_required = 1 SECONDS
+	#warn low-wall
 
 /datum/holofabricator_template/structure/low_wall/construct_patterns(datum/holofabricator_template_patterns/patterns)
 	. = ..()
@@ -492,6 +498,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/holofabricato
 /datum/holofabricator_template/furniture/table
 	#warn impl
 	work_required = 1 SECONDS
+	#warn table, table-reinf, table-frame
 
 /datum/holofabricator_template/furniture/table/construct_patterns(datum/holofabricator_template_patterns/patterns)
 	. = ..()
@@ -500,6 +507,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/holofabricato
 /datum/holofabricator_template/furniture/office_chair
 	#warn impl
 	work_required = 1 SECONDS
+	#warn office-chair-white, office-chair-dark
 
 /datum/holofabricator_template/furniture/office_chair/construct_patterns(datum/holofabricator_template_patterns/patterns)
 	. = ..()
@@ -508,6 +516,8 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/holofabricato
 /datum/holofabricator_template/furniture/stool
 	#warn impl
 	work_required = 1 SECONDS
+	#warn stool
+
 /datum/holofabricator_template/furniture/stool/construct_patterns(datum/holofabricator_template_patterns/patterns)
 	. = ..()
 	#warn impl
@@ -515,6 +525,8 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/holofabricato
 /datum/holofabricator_template/furniture/bed
 	#warn impl
 	work_required = 1 SECONDS
+	#warn bed, bed-double
+
 /datum/holofabricator_template/furniture/bed/construct_patterns(datum/holofabricator_template_patterns/patterns)
 	. = ..()
 	#warn impl
