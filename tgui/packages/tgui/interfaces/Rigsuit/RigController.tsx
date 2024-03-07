@@ -7,10 +7,10 @@ import { BooleanLike } from "common/react";
 import { getModuleData, useBackend, useLocalState } from "../../backend";
 import { Button, Flex, Icon, LabeledList, NoticeBox, Section, Stack, Tabs, Tooltip } from "../../components";
 import { Window } from "../../layouts";
-import { RigActivationStatus, RigControlFlags, RigModuleReflist, RigModuleZoneSelection, RigPieceReflist, RigPieceSealStatus } from "./RigsuitCommon";
-import { RigsuitPieceData } from "./RigsuitPiece";
+import { RigActivationStatus, RigControlFlags, RigModuleReflist, RigModuleZoneSelection, RigPieceReflist, RigPieceSealStatus } from "./common";
+import { RigPieceData } from "./RigPiece";
 
-export interface RigsuitControllerData {
+export interface RigControllerData {
   controlFlags: RigControlFlags;
   activation: RigActivationStatus;
   pieceRefs: RigPieceReflist;
@@ -20,15 +20,15 @@ export interface RigsuitControllerData {
   wornCorrectly: BooleanLike;
 }
 export interface RigControllerProps {
-  readonly rig: RigsuitControllerData;
+  readonly rig: RigControllerData;
 }
 
-export const RigsuitController = (props, context) => {
+export const RigController = (props, context) => {
   const [systemTab, setSystemTab] = useLocalState<number>(context, 'rigsuitSystemTab', 1);
   const [suitSection, setSuitSection] = useLocalState<string>(context, "rigsuitSectionTab", "All");
   const [moduleSection, setModuleSection] = useLocalState<string>(context, "rigsuitModuleTab", RigModuleZoneSelection[0].key);
 
-  const { data, act } = useBackend<RigsuitControllerData>(context);
+  const { data, act } = useBackend<RigControllerData>(context);
   const rig = data;
 
   return (
@@ -118,7 +118,7 @@ export const RigsuitController = (props, context) => {
                     </Stack>
                   </Tabs.Tab>
                   {rig.pieceRefs.map((ref) => {
-                    let pieceData = getModuleData<RigsuitPieceData>(context, ref);
+                    let pieceData = getModuleData<RigPieceData>(context, ref);
                     return (
                       <Tabs.Tab
                         key={ref}

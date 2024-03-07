@@ -6,9 +6,9 @@
 import { BooleanLike } from "common/react";
 import { ModuleData, useModule } from "../../backend";
 import { NoticeBox, Section } from "../../components";
-import { RigPieceFlags, RigPieceSealStatus } from "./RigsuitCommon";
+import { RigPieceFlags, RigPieceSealStatus } from "./common";
 
-export interface RigsuitPieceData extends ModuleData {
+export interface RigPieceData extends ModuleData {
   name: string;
   id: string;
   sealed: RigPieceSealStatus;
@@ -17,8 +17,8 @@ export interface RigsuitPieceData extends ModuleData {
   sprite64: string;
 }
 
-export const RigsuitPiece = (props, context) => {
-  const { act, data } = useModule<RigsuitPieceData>(context);
+export const RigPiece = (props, context) => {
+  const { act, data } = useModule<RigPieceData>(context);
   return (
     <Section>
       <NoticeBox warning>

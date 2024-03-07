@@ -8,11 +8,11 @@ import { InfernoNode } from "inferno";
 import { useBackend, useLocalState } from "../../backend";
 import { Icon, NoticeBox, Section, Stack, Tabs, Tooltip } from "../../components";
 import { Window } from "../../layouts";
-import { RigActivationStatus, RigPieceID, RigPieceSealStatus, RigHardwareZoneSelection } from "./RigsuitCommon";
-import { RigsuitConsole, RigsuitConsoleData } from "./RigsuitConsole";
+import { RigActivationStatus, RigPieceID, RigPieceSealStatus, RigHardwareZoneSelection } from "./common";
+import { RigConsole, RigConsoleData } from "./RigConsole";
 
-interface RigsuitMaintenanceData {
-  console: RigsuitConsoleData;
+interface RigMaintenanceData {
+  console: RigConsoleData;
   pieceIDs: RigPieceID[];
   activation: RigActivationStatus;
   panelLock: BooleanLike;
@@ -23,14 +23,14 @@ interface RigsuitMaintenanceData {
   sprite64: string;
 }
 
-interface RigsuitMaintenancePiece {
+interface RigMaintenancePiece {
   id: string;
   sealed: RigPieceSealStatus;
   deployed: BooleanLike;
 }
 
-export const RigsuitMaintenance = (props, context) => {
-  const { act, data } = useBackend<RigsuitMaintenanceData>(context);
+export const RigMaintenance = (props, context) => {
+  const { act, data } = useBackend<RigMaintenanceData>(context);
   const [systemTab, setSystemTab] = useLocalState<number>(context, 'rigsuitSystemTab', 1);
   const [suitSection, setSuitSection] = useLocalState<string>(context, "rigsuitSectionTab", "All");
   const [moduleSection, setModuleSection] = useLocalState<string>(context, "rigsuitModuleTab", RigHardwareZoneSelection[0].key);
@@ -70,7 +70,7 @@ export const RigsuitMaintenance = (props, context) => {
           <Stack.Item grow={1}>
             <Stack vertical fill>
               <Stack.Item>
-                <RigsuitConsole consoleData={data.console}
+                <RigConsole consoleData={data.console}
                   consoleInput={(raw) => act('consoleInput', { command: raw })} />
               </Stack.Item>
               {/* <Stack.Item>
@@ -94,7 +94,7 @@ export const RigsuitMaintenance = (props, context) => {
                     </Stack>
                   </Tabs.Tab>
                   {data.pieceIDs.map((ref) => {
-                    let pieceData = getModuleData<RigsuitPieceData>(context, ref);
+                    let pieceData = getModuleData<RigPieceData>(context, ref);
                     let pieceSealButton: InfernoNode | undefined;
                     switch (pieceData.sealed) {
                       case RigPieceSealStatus.Sealed:

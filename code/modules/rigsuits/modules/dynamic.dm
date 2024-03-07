@@ -8,6 +8,7 @@
  * have to write their own TGUI templates.
  */
 /obj/item/rig_module/dynamic
+	tgui_interface = "dynamic"
 	#warn impl
 
 	/// by type

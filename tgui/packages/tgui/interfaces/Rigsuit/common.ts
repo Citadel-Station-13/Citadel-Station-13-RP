@@ -1,4 +1,5 @@
-import { BooleanLike } from "common/react";
+
+// RIG data
 
 export enum RigControlFlags {
   None = 0,
@@ -30,6 +31,8 @@ export enum RigPieceSealStatus {
   Sealed = (1<<3),
 }
 
+// RIG Pieces
+
 export enum RigPieceFlags {
   ApplyArmor = (1<<0),
   ApplyEnvironmentals = (1<<1),
@@ -39,6 +42,8 @@ export type RigPieceReference = string;
 export type RigPieceReflist = RigPieceReference[];
 
 export type RigPieceID = string;
+
+// RIG Modules
 
 export type RigModuleReference = string;
 export type RigModuleReflist = RigModuleReference[];
@@ -83,6 +88,8 @@ export const RigModuleZoneSelection:
     },
   ];
 
+// RIG UI
+
 export const RigHardwareZoneSelection:
   {
     name: string;
@@ -125,51 +132,3 @@ export const RigHardwareZoneSelection:
       key: "legs",
     },
   ];
-
-export type RigModuleDynamicSchema = (
-  RigModuleDynamicSchemaAction |
-  RigModuleDynamicSchemaActionSection
-)[];
-
-export type RigModuleDynamicSchemaBase = {
-  id: string;
-}
-export type RigModuleDynamicSchemaAction = RigModuleDynamicSchemaBase & {
-  type: "action";
-  name: string;
-  icon: string | null | undefined;
-  confirm: BooleanLike;
-  bindable: BooleanLike;
-  confirmText: string | null | undefined;
-  confirmIcon: string | null | undefined;
-}
-
-export type RigModuleDynamicSchemaActionSection = {
-  type: "section";
-  actions: RigModuleDynamicSchemaAction[]
-};
-
-export type RigModuleDynamicConfig = (
-  RigModuleDynamicConfigNumber |
-  RigModuleDynamicConfigString |
-  RigModuleDynamicConfigToggle
-)[];
-
-export type RigModuleDynamicConfigBase = {
-  name: string;
-  key: string;
-}
-export type RigModuleDynamicConfigToggle = RigModuleDynamicConfigBase & {
-  type: "toggle";
-};
-export type RigModuleDynamicConfigNumber = RigModuleDynamicConfigBase & {
-  type: "number";
-  min: number;
-  max: number;
-  round: number | null | undefined;
-};
-export type RigModuleDynamicConfigString = RigModuleDynamicConfigBase & {
-  type: "string";
-  maxLength: number;
-  alphanumeric: BooleanLike;
-}

@@ -35,6 +35,8 @@
 	var/cached_tgui_icon_b64
 	/// is our UI update queued?
 	var/ui_update_queued = FALSE
+	/// TGUI route; this is handled by routes.tsx in the Rigsuit folder on TGUI!
+	var/tgui_interface = "base"
 
 	//* Zone
 	#warn ughh
@@ -42,11 +44,11 @@
 /**
  * @return list(command = desc, ...)
  */
-/obj/item/rig_module/proc/console_query(mob/user)
+/obj/item/rig_module/proc/console_query(effective_control_flags, username)
 	return list()
 
 /**
  * @return list(output, admin log text)
  */
-/obj/item/rig_module/proc/console_process(mob/user, effective_control_flags, username, command, list/arguments)
+/obj/item/rig_module/proc/console_process(effective_control_flags, username, command, list/arguments)
 	return list("unknown command", "<invalid>")

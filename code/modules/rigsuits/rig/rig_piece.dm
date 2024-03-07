@@ -314,7 +314,7 @@
 /**
  * @return list(command = desc, ...)
  */
-/datum/component/rig_piece/proc/console_query(mob/user)
+/datum/component/rig_piece/proc/console_query(effective_control_flags, username)
 	return list(
 		"deploy \['seal'?\]" = "Deploy to user. Use 'deploy seal' to seal after deployment.",
 		"retract" = "Retract into controller.",
@@ -325,7 +325,7 @@
 /**
  * @return list(output, admin log text)
  */
-/datum/component/rig_piece/proc/console_process(mob/user, effective_control_flags, username, command, list/arguments)
+/datum/component/rig_piece/proc/console_process(effective_control_flags, username, command, list/arguments)
 	switch(command)
 		if("deploy")
 			#warn impl

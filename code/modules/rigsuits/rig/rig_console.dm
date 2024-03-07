@@ -79,9 +79,9 @@
 			return list(jointext(built, "<br>"), "<help text>")
 		if("system")
 			if(length(fragments) >= 2)
-				return host.console_process(user, effective_control_flags, username, fragments[2], fragments.Copy(3))
+				return host.console_process(effective_control_flags, username, fragments[2], fragments.Copy(3))
 			else
-				var/list/query = host.console_query(user)
+				var/list/query = host.console_query(effective_control_flags, username)
 				var/list/built = list()
 				for(var/command in query)
 					built += "[command] - [query[command]]"
@@ -98,7 +98,7 @@
 					if(isnull(host.module_lookup[id]))
 						return list("invalid module", "<module - not found>")
 					var/obj/item/rig_module/module = host.module_lookup[id]
-					var/list/query = module.console_query(user)
+					var/list/query = module.console_query(effective_control_flags, username)
 					var/list/built = list("-- [id] commands --")
 					for(var/command in query)
 						built += "[command] - [query[command]]"
@@ -108,7 +108,7 @@
 					if(isnull(host.module_lookup[id]))
 						return list("invalid module", "<module - not found>")
 					var/obj/item/rig_module/module = host.module_lookup[id]
-					return module.console_process(user, effective_control_flags, username, fragments[3], fragments.Copy(4))
+					return module.console_process(effective_control_flags, username, fragments[3], fragments.Copy(4))
 		if("piece")
 			switch(length(fragments))
 				if(1)
@@ -121,7 +121,7 @@
 					if(isnull(host.piece_lookup[id]))
 						return list("invalid piece", "<piece - not found>")
 					var/datum/component/rig_piece/piece = host.piece_lookup[id]
-					var/list/query = piece.console_query(user)
+					var/list/query = piece.console_query(effective_control_flags, username)
 					var/list/built = list("-- [id] commands --")
 					for(var/command in query)
 						built += "[command] - [query[command]]"
@@ -131,7 +131,7 @@
 					if(isnull(host.piece_lookup[id]))
 						return list("invalid piece", "<piece - not found>")
 					var/datum/component/rig_piece/piece = host.piece_lookup[id]
-					return piece.console_process(user, effective_control_flags, username, fragments[3], fragments.Copy(4))
+					return piece.console_process(effective_control_flags, username, fragments[3], fragments.Copy(4))
 
 		if("deploy", "retract", "seal", "unseal")
 			switch(length(fragments))
@@ -145,7 +145,7 @@
 					if(isnull(host.piece_lookup[id]))
 						return list("invalid piece", "<piece - not found>")
 					var/datum/component/rig_piece/piece = host.piece_lookup[id]
-					return piece.console_process(user, effective_control_flags, username, fragments[1], fragments.Copy(3))
+					return piece.console_process(effective_control_flags, username, fragments[1], fragments.Copy(3))
 
 		else
 			return list("unknown command - type 'help' for help.", "<invalid>")
