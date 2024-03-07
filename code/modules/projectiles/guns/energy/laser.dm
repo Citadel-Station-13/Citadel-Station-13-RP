@@ -181,7 +181,7 @@
 	one_handed_penalty = 60 // The weapon itself is heavy, and the long barrel makes it hard to hold steady with just one hand.
 
 /obj/item/gun/energy/sniperrifle/verb/scope()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Use Scope"
 	set popup_menu = 1
 	set src in usr
@@ -217,7 +217,7 @@
 	var/scope_multiplier = 1.5
 
 /obj/item/gun/energy/monorifle/verb/sights()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Aim Down Sights"
 	set popup_menu = 1
 	set src in usr

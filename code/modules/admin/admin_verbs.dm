@@ -1080,9 +1080,3 @@ var/list/admin_verbs_event_manager = list(
 	popup.set_content(dat.Join(""))
 	popup.open()
 
-/client/verb/stop_client_sounds()
-	set name = "Stop Sounds"
-	set category = "Preferences"
-	set desc = "Stop Current Sounds"
-	usr << sound(null)
-	usr.client?.tgui_panel?.stop_music()

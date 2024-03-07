@@ -1,4 +1,4 @@
-import { useBackend, useComputedOnce, useLocalState, useModule } from "../../backend";
+import { getModuleData, useBackend, useComputedOnce, useLocalState } from "../../backend";
 import { Button, Section, Stack } from "../../components";
 import { Window } from "../../layouts";
 import { GamePreferenceEntry, GamePreferenceEntrySchema } from "./GamePreferenceEntry";
@@ -69,8 +69,8 @@ const GamePreferencesBody = (props: GamePreferencesBodyProps, context) => {
   const { act, data } = useBackend<GamePreferencesData>(context);
 
   if (props.activeMiddleware) {
+    let middlewareData = getModuleData(context, props.activeMiddleware);
     switch (props.activeMiddleware) {
-      let middlewareData =
       case 'keybindings':
         return (
           <GamePreferenceKeybindScreen />

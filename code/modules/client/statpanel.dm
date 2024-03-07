@@ -364,6 +364,6 @@
 
 /client/verb/fix_stat_panel()
 	set name = "Fix Stat Panel"
-	set category = "OOC"
+	set category = VERB_CATEGORY_OOC
 
 	statpanel_reset()

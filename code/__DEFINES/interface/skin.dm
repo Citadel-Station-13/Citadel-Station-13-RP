@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 //? WINCLONE IDs; NO SKIN CONTROL MAY HAVE THESE IDs, OR WINCLONE WILL NOT CREATE "NAKED" CONTROLS OF THIS TYPE!
 #define SKIN_ID_ABSTRACT_MENU "menu"
 #define SKIN_ID_ABSTRACT_WINDOW "window"

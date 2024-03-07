@@ -55,6 +55,7 @@ var/global/list/all_tooltip_styles = list(
 
 	var/UI_style_color_new = input(usr, "Choose your UI color. Dark colors are not recommended!") as color|null
 	if(!UI_style_color_new) return
+	#warn move ot new system
 
 	//update UI
 	var/list/icons = usr.hud_used.adding + usr.hud_used.other + usr.hud_used.hotkeybuttons

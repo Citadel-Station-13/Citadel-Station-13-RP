@@ -527,3 +527,11 @@ export const constructModuleAct = (id: string, ref: string): actFunctionType => 
     Byond.sendMessage('mod/' + action, sent);
   };
 };
+
+/**
+ * Extracts module data from context
+ */
+export const getModuleData = <TData extends ModuleData>(context, id: string): TData => {
+  let backend = useBackend<TData>(context);
+  return backend.modules[id];
+};

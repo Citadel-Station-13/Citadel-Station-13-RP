@@ -1,6 +1,20 @@
+// todo: most of the things in here should probably be re-thought category wise;
+// verticality for one is more graphics/visuals 
+// but isn't a preference because it's something you need to actively see at some times but not others..
+
+/client/verb/toggle_verticality_visibility()
+	set name = "Toggle Verticality Plane"
+	set desc = "Toggle if you see ceiling overlays and similar."
+	set category = VERB_CATEGORY_OOC
+
+	var/atom/movable/screen/plane_master/plane = global_planes.by_plane_type(/atom/movable/screen/plane_master/verticality)
+	plane.alpha = plane.alpha == 255? 0 : 255
+	to_chat(src, SPAN_NOTICE("You now [plane.alpha == 255? "see" : "no longer see"] verticality overlays."))
+
+
 /client/verb/motd()
 	set name = "MOTD"
-	set category = "OOC"
+	set category = VERB_CATEGORY_OOC
 	set desc ="Check the Message of the Day"
 
 	var/motd = config.motd
@@ -45,7 +59,7 @@
 
 /client/verb/ooc(msg as text)
 	set name = "OOC" //Gave this shit a shorter name so you only have to time out "ooc" rather than "ooc message" to use it --NeoFite
-	set category = "OOC"
+	set category = VERB_CATEGORY_OOC
 
 	if(!reject_on_initialization_block())
 		return
@@ -153,7 +167,7 @@
 /client/verb/looc(msg as text)
 	set name = "LOOC"
 	set desc = "Local OOC, seen only by those in view."
-	set category = "OOC"
+	set category = VERB_CATEGORY_OOC
 
 	if(!reject_on_initialization_block())
 		return

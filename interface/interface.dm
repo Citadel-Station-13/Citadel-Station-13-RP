@@ -2,7 +2,7 @@
 /client/verb/wiki(query as text)
 	set name = "wiki"
 	set desc = "Type what you want to know about.  This will open the wiki on your web browser."
-	set category = "OOC"
+	set category = VERB_CATEGORY_OOC
 	if(config_legacy.wikiurl)
 		if(query)
 			if(config_legacy.wikisearchurl)
@@ -96,7 +96,7 @@
 
 /client/verb/changelog()
 	set name = "Changelog"
-	set category = "OOC"
+	set category = VERB_CATEGORY_OOC
 	if(!GLOB.changelog_tgui)
 		GLOB.changelog_tgui = new /datum/changelog()
 
@@ -109,7 +109,7 @@
 
 /client/verb/hotkeys_help()
 	set name = "hotkeys-help"
-	set category = "OOC"
+	set category = VERB_CATEGORY_OOC
 
 	var/admin = {"<font color='purple'>
 Admin:

@@ -453,7 +453,7 @@
 
 /obj/structure/window/verb/rotate_counterclockwise()
 	set name = "Rotate Counterclockwise" // Temporary fix until someone more intelligent figures out how to add proper rotation verbs to the panels
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 
 	if (usr.incapacitated())
@@ -471,7 +471,7 @@
 
 /obj/structure/window/verb/rotate_clockwise()
 	set name = "Rotate Clockwise"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 
 	if (usr.incapacitated())

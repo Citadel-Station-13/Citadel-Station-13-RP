@@ -835,7 +835,7 @@
 
 /obj/item/gun/verb/toggle_safety_verb()
 	set src in usr
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Toggle Gun Safety"
 
 	if(usr == loc)

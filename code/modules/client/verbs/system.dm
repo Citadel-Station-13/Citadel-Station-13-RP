@@ -1,3 +1,28 @@
+//? Setup Panels
+
+/client/verb/character_setup()
+	set name = "Character Setup"
+	set category = VERB_CATEGORY_SYSTEM
+
+	prefs?.ShowChoices(usr)
+
+/client/verb/preferences()
+	set name = "Game Preferences"
+	set category = VERB_CATEGORY_SYSTEM
+
+	prefs?.ShowChoices(usr)
+
+//? Sound Management
+
+/client/verb/stop_client_sounds()
+	set name = "Stop Sounds"
+	set category = VERB_CATEGORY_SYSTEM
+	set desc = "Stop Current Sounds"
+	usr << sound(null)
+	usr.client?.tgui_panel?.stop_music()
+
+//? Ping System
+
 /client/verb/update_ping(time as num)
 	set instant = TRUE
 	set name = ".update_ping"
@@ -18,5 +43,5 @@
 
 /client/verb/ping()
 	set name = "Ping"
-	set category = "OOC"
+	set category = VERB_CATEGORY_SYSTEM
 	winset(src, null, "command=.display_ping+[world.time+world.tick_lag*TICK_USAGE_REAL/100]")

@@ -190,7 +190,7 @@
 	playsound(get_turf(src), 'sound/machines/ping.ogg', 50, 0)
 
 /obj/machinery/computer/teleporter/verb/set_id(t as text)
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Set teleporter ID"
 	set src in oview(1)
 	set desc = "ID Tag:"

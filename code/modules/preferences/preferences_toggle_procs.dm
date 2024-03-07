@@ -3,7 +3,7 @@
 
 /mob/living/carbon/human/verb/toggle_pain_msg()
 	set name = "Toggle Pain Messages"
-	set category = "Preferences"
+	set category = "OOC"
 	set desc = "Toggles pain messages."
 	set src = usr
 
@@ -12,11 +12,10 @@
 	else
 		src.painmsg = 1
 	to_chat(src,"You will [ (painmsg) ? "now" : "no longer"] see your own pain messages.")
-	feedback_add_details("admin_verb","painmsg") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /mob/living/carbon/human/verb/acting()
 	set name = "Feign Impairment"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 	set desc = "Allows user to manually enable drunkenness, stutter, jitter, etc."
 	set src = usr
 

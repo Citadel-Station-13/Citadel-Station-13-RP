@@ -3,7 +3,7 @@
 
 /client/verb/who_advanced()
 	set name = "Advanced Who"
-	set category = "OOC"
+	set category = VERB_CATEGORY_OOC
 
 	var/msg = "<b>Current Players:</b>\n"
 

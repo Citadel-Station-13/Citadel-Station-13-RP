@@ -35,7 +35,7 @@
 /client/verb/fix_macros()
 	set name = "Fix Keybindings"
 	set desc = "Re-assert all your macros/keybindings."
-	set category = "OOC"
+	set category = VERB_CATEGORY_OOC
 	if(!SSinput.initialized)
 		to_chat(src, "<span class='warning'>Input hasn't been initialized yet. Wait a while.</span>")
 		return

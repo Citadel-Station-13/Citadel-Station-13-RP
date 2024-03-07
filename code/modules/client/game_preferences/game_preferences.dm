@@ -104,7 +104,7 @@ GLOBAL_LIST_EMPTY(game_preferences)
 		if(entry.legacy_global_key)
 			migrated_value = legacy_options[entry.legacy_global_key]
 		else if(entry.legacy_savefile_key)
-			S[entry.legacy_savefile_key] >> migrated_value
+			legacy_savefile[entry.legacy_savefile_key] >> migrated_value
 		if(!isnull(migrated_value))
 			migrated_value = entry.filter_value(active, migrated_value)
 			entries_by_key[key] = migrated_value
@@ -198,11 +198,12 @@ GLOBAL_LIST_EMPTY(game_preferences)
 		CRASH("invalid fetch")
 	if(!initialized)
 		return FALSE
-	if(!entry.is_visible(acitve))
+	if(!entry.is_visible(active))
 		return FALSE
 	value = entry.filter_value(active, value)
 	entries_by_key[entry.key] = value
-	entry.on_set(active, value, FALSE)
+	if(active)
+		entry.on_set(active, value, FALSE)
 	return TRUE
 
 /datum/game_preferences/proc/get_entry(datum/game_preference_entry/id_path_instance)

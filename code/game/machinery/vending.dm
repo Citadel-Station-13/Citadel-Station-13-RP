@@ -486,7 +486,7 @@
 
 /obj/machinery/vending/verb/check_logs()
 	set name = "Check Vending Logs"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 
 	show_log(usr)

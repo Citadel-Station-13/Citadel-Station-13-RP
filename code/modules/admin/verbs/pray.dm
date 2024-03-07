@@ -1,6 +1,6 @@
 /// Used by players to ask badmins to do things for them, but ICly.
 /mob/verb/pray(msg as text)
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 	set name = "Pray"
 
 	msg = sanitize(msg)
