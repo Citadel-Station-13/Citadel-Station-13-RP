@@ -34,7 +34,7 @@ AUTO_RIG_THEME(/species/nepid/generic)
 	fluff_desc = "The standard EVA harness worn by Dnin-Nepids everywhere. Mass produced and stocked aboard practically \
 	every Nepid arkship, this piece of equipment has become integral to their ascension to the stars. Fitted with a modest \
 	yet usable amount of hardware mounting points, it is the most common piece of equipment used by Nepid \
-	spacefarers."
+	explorers."
 	display_name = "EVA"
 	visible_name = "flight"
 	insulated_gloves = TRUE
