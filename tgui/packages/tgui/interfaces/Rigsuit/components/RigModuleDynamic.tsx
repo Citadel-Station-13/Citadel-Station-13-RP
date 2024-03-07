@@ -3,17 +3,23 @@ import { RigModuleData } from "../RigModule";
 
 export interface RigModuleDynamicData extends RigModuleData {
   $tgui: 'dynamic';
+  schema: RigModuleDynamicSchema;
 }
 
-export type RigModuleDynamicSchema = (
-  RigModuleDynamicSchemaAction |
-  RigModuleDynamicSchemaActionSection
-)[];
+interface RigModuleDynamicSchema {
+  fragments: RigModuleDynamicFragment[];
+  config: RigModuleDynamicConfig[];
+}
 
-export type RigModuleDynamicSchemaBase = {
+type RigModuleDynamicFragment = (
+  RigModuleDynamicFragmentAction |
+  RigModuleDynamicFragmentActionSection
+);
+
+type RigModuleDynamicFragmentBase = {
   id: string;
 }
-export type RigModuleDynamicSchemaAction = RigModuleDynamicSchemaBase & {
+type RigModuleDynamicFragmentAction = RigModuleDynamicFragmentBase & {
   type: "action";
   name: string;
   icon: string | null | undefined;
@@ -23,31 +29,31 @@ export type RigModuleDynamicSchemaAction = RigModuleDynamicSchemaBase & {
   confirmIcon: string | null | undefined;
 }
 
-export type RigModuleDynamicSchemaActionSection = {
+type RigModuleDynamicFragmentActionSection = {
   type: "section";
-  actions: RigModuleDynamicSchemaAction[]
+  actions: RigModuleDynamicFragmentAction[]
 };
 
-export type RigModuleDynamicConfig = (
+type RigModuleDynamicConfig = (
   RigModuleDynamicConfigNumber |
   RigModuleDynamicConfigString |
   RigModuleDynamicConfigToggle
-)[];
+);
 
-export type RigModuleDynamicConfigBase = {
+type RigModuleDynamicConfigBase = {
   name: string;
   key: string;
 }
-export type RigModuleDynamicConfigToggle = RigModuleDynamicConfigBase & {
+type RigModuleDynamicConfigToggle = RigModuleDynamicConfigBase & {
   type: "toggle";
 };
-export type RigModuleDynamicConfigNumber = RigModuleDynamicConfigBase & {
+type RigModuleDynamicConfigNumber = RigModuleDynamicConfigBase & {
   type: "number";
   min: number;
   max: number;
   round: number | null | undefined;
 };
-export type RigModuleDynamicConfigString = RigModuleDynamicConfigBase & {
+type RigModuleDynamicConfigString = RigModuleDynamicConfigBase & {
   type: "string";
   maxLength: number;
   alphanumeric: BooleanLike;

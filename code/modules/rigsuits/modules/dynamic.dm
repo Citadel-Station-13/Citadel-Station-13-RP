@@ -38,6 +38,10 @@
 /obj/item/rig_module/dynamic/proc/action_trigger()
 	#warn impl
 
+/obj/item/rig_module/dynamic/tgui_module_static()
+	. = ..()
+	.["schema"] = schema.tgui_schema_data()
+
 #warn impl all
 
 /**
@@ -45,11 +49,17 @@
  */
 /datum/rig_dynamic_schema
 	/// storage list
-	var/list/schema = list()
+	var/list/fragments = list()
 	/// constraint / data list for key
 	var/list/config = list()
 	/// buttons left in section
 	var/section_remaining = 0
+
+/datum/rig_dynamic_schema/proc/tgui_schema_data()
+	return list(
+		"fragments" = fragments,
+		"config" = config,
+	)
 
 /datum/rig_dynamic_schema/proc/compile()
 	. = FALSE
@@ -107,16 +117,16 @@
 		"confirmIcon" = confirm_icon,
 	)
 	if(section_remaining)
-		var/list/actions = schema[schema.len]["actions"]
+		var/list/actions = fragments[fragments.len]["actions"]
 		actions.Add(action)
 		--section_remaining
 	else
-		schema[++schema.len] = action
+		fragments[++fragments.len] = action
 
 /datum/rig_dynamic_schema/proc/create_section(number_of_actions = 3)
 	ASSERT(!section_remaining)
 	section_remaining = number_of_actions
-	schema[++schema.len] = list(
+	fragments[++fragments.len] = list(
 		"type" = "section",
 		"actions" = list(),
 	)

@@ -56,6 +56,7 @@
 			var/obj/item/rig_module/module = module_lookup[id]
 			var/reference = RIG_UI_ENCODE_MODULE_REF(ref(module))
 			// todo: for when modules are made
+			#warn module data + how to handle data vs static?
 			assembled_fragments[reference] = list()
 			module_refs += reference
 			module.ui_update_queued = FALSE
@@ -83,7 +84,6 @@
 		for(var/id in module_lookup)
 			var/obj/item/rig_module/module = module_lookup[id]
 			var/reference = RIG_UI_ENCODE_MODULE_REF(ref(module))
-			// todo: for when modules are made
 			module_refs += reference
 		push_ui_data(data = list(
 			"pieceRefs" = piece_refs,

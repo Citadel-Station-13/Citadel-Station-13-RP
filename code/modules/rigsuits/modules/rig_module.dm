@@ -36,7 +36,7 @@
 	/// is our UI update queued?
 	var/ui_update_queued = FALSE
 	/// TGUI route; this is handled by routes.tsx in the Rigsuit folder on TGUI!
-	var/tgui_interface = "base"
+	var/tgui_interface = "inert"
 
 	//* Zone
 	#warn ughh
@@ -52,3 +52,19 @@
  */
 /obj/item/rig_module/proc/console_process(effective_control_flags, username, command, list/arguments)
 	return list("unknown command", "<invalid>")
+
+/obj/item/rig_module/proc/tgui_module_static()
+	return list(
+		"$tgui" = tgui_interface,
+		"$src" = ref(src),
+	)
+	#warn impl
+
+/obj/item/rig_module/proc/tgui_module_data()
+	#warn impl
+
+/obj/item/rig_module/proc/tgui_push_data(list/data)
+	#warn impl
+
+/obj/item/rig_module/proc/tgui_queue_data()
+	#warn impl
