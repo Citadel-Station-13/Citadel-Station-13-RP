@@ -344,6 +344,8 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/holofabricato
 	var/has_directions = FALSE
 	/// has access settings
 	var/has_access = FALSE
+	/// spritesheet icon
+	var/spritesheet_icon
 	/// spritesheet prefix
 	var/spritesheet_prefix
 
