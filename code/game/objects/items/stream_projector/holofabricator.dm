@@ -392,22 +392,9 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/holofabricato
  * we will not delete the construction object!
  *
  * @params
- * * in_progress - (optional) the thing being made
- * * where - atom to make the new thing
- * * structure - the polyfill material used
- * * options - k-v options list
- * * materials - k-v materials list
+ * * in_progress - the thing being made
  */
 /datum/holofabricator_template/proc/finalize(obj/structure/holofabricator_construction/in_progress)
-	if(!isnull(in_progress))
-		if(isnull(where))
-			where = in_progress.loc
-		if(isnull(structure))
-			structure = in_progress.structure
-		if(isnull(options))
-			options = in_progress.options
-		if(isnull(materials))
-			materials = in_progress.materials
 	var/obj/created = create(in_progress.loc, in_progress.pattern, in_progress.options, in_progress.materials, in_progress.req_access, in_progress.req_one_access)
 	return created
 

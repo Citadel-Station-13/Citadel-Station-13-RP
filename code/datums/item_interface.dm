@@ -141,7 +141,7 @@
  *
  * @return non-null to override if we can reach an item.
  */
-/datum/item_interface/proc/ui_override_reachability(obj/item/item, mob/user/user)
+/datum/item_interface/proc/ui_override_reachability(obj/item/item, mob/user)
 	#warn tgui needs a way to hook
 	return null
 
