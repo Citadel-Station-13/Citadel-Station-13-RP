@@ -6,6 +6,7 @@
 	min_broken_damage = 1000
 	vital = TRUE
 	emp_mod = 7
+	biology_type = BIOLOGY_TYPE_NANITES
 
 /obj/item/organ/external/groin/unbreakable/nano
 	robotic = ORGAN_NANOFORM
@@ -14,6 +15,7 @@
 	min_broken_damage = 1000 //Multiple
 	vital = FALSE
 	emp_mod = 4
+	biology_type = BIOLOGY_TYPE_NANITES
 
 /obj/item/organ/external/head/unbreakable/nano
 	robotic = ORGAN_NANOFORM
@@ -22,6 +24,7 @@
 	min_broken_damage = 1000 //Inheritance
 	vital = FALSE
 	emp_mod = 4
+	biology_type = BIOLOGY_TYPE_NANITES
 
 /obj/item/organ/external/arm/unbreakable/nano
 	robotic = ORGAN_NANOFORM
@@ -30,6 +33,7 @@
 	min_broken_damage = 1000 //Please
 	vital = FALSE
 	emp_mod = 4
+	biology_type = BIOLOGY_TYPE_NANITES
 
 /obj/item/organ/external/arm/right/unbreakable/nano
 	robotic = ORGAN_NANOFORM
@@ -38,6 +42,7 @@
 	min_broken_damage = 1000
 	vital = FALSE
 	emp_mod = 4
+	biology_type = BIOLOGY_TYPE_NANITES
 
 /obj/item/organ/external/leg/unbreakable/nano
 	robotic = ORGAN_NANOFORM
@@ -46,6 +51,7 @@
 	min_broken_damage = 1000
 	vital = FALSE
 	emp_mod = 4
+	biology_type = BIOLOGY_TYPE_NANITES
 
 /obj/item/organ/external/leg/right/unbreakable/nano
 	robotic = ORGAN_NANOFORM
@@ -54,6 +60,7 @@
 	min_broken_damage = 1000
 	vital = FALSE
 	emp_mod = 4
+	biology_type = BIOLOGY_TYPE_NANITES
 
 /obj/item/organ/external/hand/unbreakable/nano
 	robotic = ORGAN_NANOFORM
@@ -62,6 +69,7 @@
 	min_broken_damage = 1000
 	vital = FALSE
 	emp_mod = 4
+	biology_type = BIOLOGY_TYPE_NANITES
 
 /obj/item/organ/external/hand/right/unbreakable/nano
 	robotic = ORGAN_NANOFORM
@@ -70,6 +78,7 @@
 	min_broken_damage = 1000
 	vital = FALSE
 	emp_mod = 4
+	biology_type = BIOLOGY_TYPE_NANITES
 
 /obj/item/organ/external/foot/unbreakable/nano
 	robotic = ORGAN_NANOFORM
@@ -78,6 +87,7 @@
 	min_broken_damage = 1000
 	vital = FALSE
 	emp_mod = 4
+	biology_type = BIOLOGY_TYPE_NANITES
 
 /obj/item/organ/external/foot/right/unbreakable/nano
 	robotic = ORGAN_NANOFORM
@@ -86,10 +96,12 @@
 	min_broken_damage = 1000
 	vital = FALSE
 	emp_mod = 4
+	biology_type = BIOLOGY_TYPE_NANITES
 
 // // // Internal Organs
 /obj/item/organ/internal/nano
 	robotic = ORGAN_ROBOT
+	biology_type = BIOLOGY_TYPE_SYNTH
 
 /obj/item/organ/internal/nano/orchestrator
 	name = "orchestrator module"
