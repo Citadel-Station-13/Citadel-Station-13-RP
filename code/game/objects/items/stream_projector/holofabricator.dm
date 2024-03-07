@@ -197,7 +197,9 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/holofabricato
 		#warn impl
 	else if(isobj(target))
 		if(istype(target, /obj/structure/holofabricator_construction))
+			pass()
 		else
+			pass()
 		#warn impl
 	else if(ismob(target))
 		return null
@@ -429,7 +431,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/holofabricato
 
 /datum/holofabricator_template/structure
 	category = "Structure"
-	spritesheet_icon = 'icons/items/stream_projector/holofabricator-structure.dmi'
+	spritesheet_icon = 'icons/items/stream_projector/holofabricator-structures.dmi'
 
 /datum/holofabricator_template/structure/wall
 	#warn impl
@@ -452,7 +454,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/holofabricato
 /datum/holofabricator_template/structure/airlock
 	#warn impl
 	work_required = 5 SECONDS
-	spritesheet_icon = 'icons/items/stream_projector/holofabricator-airlock.dmi'
+	spritesheet_icon = 'icons/items/stream_projector/holofabricator-airlocks.dmi'
 	#warn airlock, airlock-glass, hatch, hatch-glass, external
 	#warn options for colors
 

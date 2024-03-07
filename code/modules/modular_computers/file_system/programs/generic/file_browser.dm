@@ -47,6 +47,7 @@
 			if(!F || !istype(F))
 				return
 			var/datum/computer_file/C = F.clone(1)
+			C.filename = "[C.filename] (Copy)"
 			HDD.store_file(C)
 			return TRUE
 		if("PRG_edit")

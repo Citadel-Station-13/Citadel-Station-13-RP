@@ -131,10 +131,7 @@
 				add_talent(id)
 	return TRUE
 
-/**
- * clones
- */
-/datum/characteristics_holder/proc/clone()
+/datum/characteristics_holder/clone()
 	RETURN_TYPE(/datum/characteristics_holder)
 	var/datum/characteristics_holder/cloning = new
 	cloning.skills = skills.Copy()

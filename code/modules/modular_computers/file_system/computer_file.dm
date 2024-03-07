@@ -25,16 +25,12 @@ var/global/file_uid = 0
 	holder = null
 	return ..()
 
-// Returns independent copy of this file.
-/datum/computer_file/proc/clone(var/rename = 0)
+/datum/computer_file/clone()
 	var/datum/computer_file/temp = new type
 	temp.unsendable = unsendable
 	temp.undeletable = undeletable
 	temp.size = size
-	if(rename)
-		temp.filename = filename + "(Copy)"
-	else
-		temp.filename = filename
+	temp.filename = filename
 	temp.filetype = filetype
 	return temp
 
