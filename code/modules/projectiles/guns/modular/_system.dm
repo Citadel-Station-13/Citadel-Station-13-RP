@@ -11,3 +11,11 @@
 	var/obj/item/gun/gun
 
 #warn impl
+
+
+/**
+ * firing cycle tracking
+ * this is faster than associative list calls
+ */
+/datum/modular_gun_firing
+
