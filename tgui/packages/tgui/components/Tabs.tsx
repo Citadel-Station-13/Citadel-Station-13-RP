@@ -44,17 +44,30 @@ interface TabProps extends BoxProps {
 }
 
 const Tab = (props: TabProps) => {
+  // "why the hell are we using this pattern instead of just accessing props like a normal react dev"
+  // well, you-who-dared-venture-into-the-components-folder,
+  // one of these three caused shit to be invisible when passed into computeBoxProps
+  // (probably color, maybe className, who knows)
+  // i don't feel like dealing with it.
+  // rip bozo.
+  let {
+    color,
+    selected,
+    className,
+    textAlign,
+    ...rest
+  } = props;
   return (
     <div
       className={classes([
         'Tab',
         'Tabs__Tab',
-        'Tab--color--' + props.color,
-        props.selected && 'Tab--selected',
-        props.className,
-        ...computeBoxClassName(props).split(" "),
+        'Tab--color--' + color,
+        selected && 'Tab--selected',
+        className,
+        computeBoxClassName(rest),
       ])}
-      {...computeBoxProps(props)}>
+      {...computeBoxProps(rest)}>
       {canRender(props.leftSlot) && (
         <div className="Tab__left">
           {props.leftSlot}

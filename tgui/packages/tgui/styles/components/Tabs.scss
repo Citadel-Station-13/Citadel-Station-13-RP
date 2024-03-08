@@ -85,6 +85,7 @@ $fg-map: colors.$fg-map !default;
 
 .Tab__text {
   margin: 0 0.5em;
+  flex-grow: 1;
 }
 
 .Tab__left {

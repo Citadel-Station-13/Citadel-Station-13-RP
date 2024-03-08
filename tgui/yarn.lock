@@ -3605,14 +3605,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^1.6.7":
-  version: 1.6.7
-  resolution: "axios@npm:1.6.7"
+"axios@npm:^1.6.0":
+  version: 1.6.2
+  resolution: "axios@npm:1.6.2"
   dependencies:
-    follow-redirects: ^1.15.4
+    follow-redirects: ^1.15.0
     form-data: ^4.0.0
     proxy-from-env: ^1.1.0
-  checksum: 87d4d429927d09942771f3b3a6c13580c183e31d7be0ee12f09be6d5655304996bb033d85e54be81606f4e89684df43be7bf52d14becb73a12727bf33298a082
+  checksum: 4a7429e2b784be0f2902ca2680964391eae7236faa3967715f30ea45464b98ae3f1c6f631303b13dfe721b17126b01f486c7644b9ef276bfc63112db9fd379f8
   languageName: node
   linkType: hard
 
@@ -5790,13 +5790,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"follow-redirects@npm:^1.15.4":
-  version: 1.15.5
-  resolution: "follow-redirects@npm:1.15.5"
+"follow-redirects@npm:^1.15.0":
+  version: 1.15.3
+  resolution: "follow-redirects@npm:1.15.3"
   peerDependenciesMeta:
     debug:
       optional: true
-  checksum: 5ca49b5ce6f44338cbfc3546823357e7a70813cecc9b7b768158a1d32c1e62e7407c944402a918ea8c38ae2e78266312d617dc68783fac502cbb55e1047b34ec
+  checksum: 584da22ec5420c837bd096559ebfb8fe69d82512d5585004e36a3b4a6ef6d5905780e0c74508c7b72f907d1fa2b7bd339e613859e9c304d0dc96af2027fd0231
   languageName: node
   linkType: hard
 
@@ -6526,14 +6526,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"inferno-shared@npm:7.4.8":
-  version: 7.4.8
-  resolution: "inferno-shared@npm:7.4.8"
-  checksum: d9a3204ce75ee2133d2efb5f4f247d82c087631f900ab088a0c87a0259d4cd4719ace583e1dd88b4bc32cacac975995ee3cc16f6603a620f7cd061e2f7d3d650
+"inferno-shared@npm:7.4.11":
+  version: 7.4.11
+  resolution: "inferno-shared@npm:7.4.11"
+  checksum: 48b453fb11d7126d30668e3d74ccc4a4f00f9f7b191d27eded2138acc0cd07c02d14c1c936319b5b25bf46f7476b480938337ec7a64b932b2949b73c968ae52a
   languageName: node
   linkType: hard
 
-"inferno-vnode-flags@npm:7.4.8, inferno-vnode-flags@npm:^7.4.8":
+"inferno-vnode-flags@npm:7.4.11":
+  version: 7.4.11
+  resolution: "inferno-vnode-flags@npm:7.4.11"
+  checksum: 8a2f1d8d546b99c14c31a25a88ac45f076be9ac630202f898c49140aa420cf2c96d871fcc3f8e5813d5176d569a40c3fd1727198edf46306de3a989fe85176ab
+  languageName: node
+  linkType: hard
+
+"inferno-vnode-flags@npm:^7.4.8":
   version: 7.4.8
   resolution: "inferno-vnode-flags@npm:7.4.8"
   checksum: 72f26ebb361482a3312a30c89606c1eee85d7c7a790b2614d0d8567291d6cd7079b7536285b749dbfd5ead77e1546a2f4a676692e3fb08eb90eef009cbabbce0
@@ -6541,13 +6548,13 @@ __metadata:
   linkType: hard
 
 "inferno@npm:^7.4.8":
-  version: 7.4.8
-  resolution: "inferno@npm:7.4.8"
+  version: 7.4.11
+  resolution: "inferno@npm:7.4.11"
   dependencies:
-    inferno-shared: 7.4.8
-    inferno-vnode-flags: 7.4.8
+    inferno-shared: 7.4.11
+    inferno-vnode-flags: 7.4.11
     opencollective-postinstall: ^2.0.3
-  checksum: fa814fcb5f7e865ec29ceee00e6e6d7688cd0dcc9db57ab9619d62de08076ee823ee81c4e47ff3fa6632e896817bda1b45ac8a30b60357197ffcc9a1ef9e0ac0
+  checksum: 1651aad357995170c135520ff09d6e24311e05f0b0736b66d50dba5e68ff521b6c9dff13eec64effd6b79455d39f06176f0a5be50a1aaa979384721ae9b9862c
   languageName: node
   linkType: hard
 
@@ -10869,7 +10876,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "tgui-dev-server@workspace:packages/tgui-dev-server"
   dependencies:
-    axios: ^1.6.7
+    axios: ^1.6.0
     glob: ^7.1.7
     source-map: ^0.7.3
     stacktrace-parser: ^0.1.10
