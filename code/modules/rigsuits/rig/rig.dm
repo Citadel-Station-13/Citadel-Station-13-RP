@@ -42,6 +42,8 @@
 	//* Control
 	#warn todo
 
+	//* Defense
+
 	//* Environmentals *//
 	#warn todo
 
@@ -78,10 +80,8 @@
 	//* Modules
 	/// list of /obj/item/rig_module's by its lookup_id
 	var/list/obj/item/rig_module/module_lookup
-	/// nested list of /obj/item/rig_modules by zone
-	/// this is a cached list that includes all fullbody modules as well
-	/// necessary due to later damage calculations
-	var/list/modules_by_zone
+	/// total weight of all modules
+	var/module_weight_tally = 0
 
 	//* Pieces
 	/// list of /datum/component/rig_piece's by its lookup_id
@@ -138,6 +138,14 @@
 	/// What slot we must be in - typepath or ID.
 	var/wearer_required_slot_id = /datum/inventory_slot_meta/inventory/back
 
+	//* Zones
+	var/datum/rig_zone/z_head = new /datum/rig_zone/head
+	var/datum/rig_zone/z_chest = new /datum/rig_zone/chest
+	var/datum/rig_zone/z_left_arm = new /datum/rig_zone/left_arm
+	var/datum/rig_zone/z_right_arm = new /datum/rig_zone/right_arm
+	var/datum/rig_zone/z_left_leg = new /datum/rig_zone/left_leg
+	var/datum/rig_zone/z_right_leg = new /datum/rig_zone/right_leg
+
 #warn impl all
 
 //* Main
@@ -152,6 +160,12 @@
 	wipe_everything()
 	QDEL_NULL(console)
 	QDEL_NULL(maint_panel)
+	QDEL_NULL(z_head)
+	QDEL_NULL(z_chest)
+	QDEL_NULL(z_left_arm)
+	QDEL_NULL(z_right_arm)
+	QDEL_NULL(z_left_leg)
+	QDEL_NULL(z_right_leg)
 	return ..()
 
 /obj/item/rig/examine(mob/user, dist)
@@ -198,6 +212,12 @@
 		var/datum/component/rig_piece/piece = piece_lookup[id]
 		remove_piece(piece)
 	#warn annihilate modules
+	z_head.reset_state_after_wipe()
+	z_chest.reset_state_after_wipe()
+	z_left_arm.reset_state_after_wipe()
+	z_right_arm.reset_state_after_wipe()
+	z_left_leg.reset_state_after_wipe()
+	z_right_leg.reset_state_after_wipe()
 	ui_queue_everything()
 
 /obj/item/rig/get_encumbrance()

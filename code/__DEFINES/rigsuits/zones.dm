@@ -45,6 +45,24 @@ DEFINE_ENUM(rig_zones, list(
 	RIG_ZONE_RIGHT_LEG, \
 )
 
+#define ALL_RIG_ZONES_ASSOCIATED_TO_ZERO list( \
+	RIG_ZONE_CHEST = 0, \
+	RIG_ZONE_HEAD = 0, \
+	RIG_ZONE_LEFT_ARM = 0, \
+	RIG_ZONE_RIGHT_ARM = 0, \
+	RIG_ZONE_LEFT_LEG = 0, \
+	RIG_ZONE_RIGHT_LEG = 0, \
+)
+
+#define ALL_RIG_ZONES_ASSOCIATED_TO(X) list( \
+	RIG_ZONE_CHEST = X, \
+	RIG_ZONE_HEAD = X, \
+	RIG_ZONE_LEFT_ARM = X, \
+	RIG_ZONE_RIGHT_ARM = X, \
+	RIG_ZONE_LEFT_LEG = X, \
+	RIG_ZONE_RIGHT_LEG = X, \
+)
+
 //* Bits
 
 #define RIG_ZONE_BIT_CHEST (1<<0)
@@ -72,9 +90,20 @@ GLOBAL_REAL_LIST(rig_zone_to_bit) = list(
 	RIG_ZONE_LEGS = RIG_ZONE_BIT_LEGS,
 	RIG_ZONE_ARMS = RIG_ZONE_BIT_ARMS,
 )
+GLOBAL_REAL_LIST(rig_zone_bits) = list(
+	RIG_ZONE_BIT_CHEST,
+	RIG_ZONE_BIT_HEAD,
+	RIG_ZONE_BIT_LEFT_ARM,
+	RIG_ZONE_BIT_RIGHT_ARM,
+	RIG_ZONE_BIT_LEFT_LEG,
+	RIG_ZONE_BIT_RIGHT_LEG,
+)
 
 DEFINE_BITFIELD_NEW(rig_zone_flags, list(
 	/datum/component/rig_piece = list(
+		"rig_zone_bits",
+	),
+	/datum/rig_theme_piece = list(
 		"rig_zone_bits",
 	),
 ), list(
@@ -85,6 +114,21 @@ DEFINE_BITFIELD_NEW(rig_zone_flags, list(
 	BITFIELD_NEW("Left Leg", RIG_ZONE_BIT_LEFT_LEG),
 	BITFIELD_NEW("Right Leg", RIG_ZONE_BIT_RIGHT_LEG),
 ))
+
+/proc/rig_zone_bit_to_zone_enum(bit)
+	switch(bit)
+		if(RIG_ZONE_BIT_CHEST)
+			return RIG_ZONE_CHEST
+		if(RIG_ZONE_BIT_LEFT_ARM)
+			return RIG_ZONE_LEFT_ARM
+		if(RIG_ZONE_BIT_RIGHT_ARM)
+			return RIG_ZONE_RIGHT_ARM
+		if(RIG_ZONE_BIT_LEFT_LEG)
+			return RIG_ZONE_LEFT_LEG
+		if(RIG_ZONE_BIT_RIGHT_LEG)
+			return RIG_ZONE_RIGHT_LEG
+		if(RIG_ZONE_BIT_HEAD)
+			return RIG_ZONE_HEAD
 
 //* Handedness - returned from procs as enum
 

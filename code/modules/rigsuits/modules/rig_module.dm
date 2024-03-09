@@ -32,7 +32,17 @@
 	//* Conflicts
 	/// single-conflict enum; if set, only one of this kind of module can exist on a rig
 	/// this will not conflict with any of the other conflict types!
-	var/single_conflict_rig
+	var/global_conflict_enum
+	/// cannot put more than one of this type in the rig;
+	var/global_conflict_type
+	/// cannot put more than one of ourselves into the rig
+	var/global_conflict_self
+	/// zone-conflict enum; if set, only one our exact type can exist in any of our zones
+	var/zone_conflict_enum
+	/// cannot put more than one of this type in any of our zones
+	var/zone_conflict_type
+	/// cannot put more htan one of our own exact type into any of our zones
+	var/zone_conflict_self
 
 	//* UI
 	//! todo: this is fucking evil

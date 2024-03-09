@@ -54,6 +54,8 @@
 	var/piece_seal_delay_adjust = 0
 	/// body cover flags
 	var/body_cover_flags = NONE
+	/// rig zone flags
+	var/rig_zone_bits = NONE
 
 /datum/rig_theme_piece/New()
 	CONSTRUCT_BODYTYPES(worn_bodytypes)
@@ -107,6 +109,7 @@
 	piece_component.rig_piece_flags = rig_piece_flags
 	piece_component.inventory_slot = equip_slot
 	piece_component.lookup_prefix = lookup_prefix
+	piece_component.rig_zone_bits = rig_zone_bits
 
 /datum/rig_theme_piece/helmet
 	display_name = "helmet"
