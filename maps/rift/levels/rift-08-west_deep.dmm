@@ -367,7 +367,6 @@
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
 "dG" = (
-/obj/random/trash,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
@@ -701,7 +700,6 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/refinery)
 "hC" = (
-/obj/random/junk,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/underground2)
 "hD" = (
@@ -814,7 +812,6 @@
 /turf/simulated/floor,
 /area/outpost/mining_main/outpost/airlock/three)
 "ii" = (
-/obj/random/trash,
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
@@ -877,7 +874,6 @@
 /obj/item/bone/arm,
 /obj/item/bone/skull/tajaran,
 /obj/item/bedsheet,
-/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/prison)
 "iN" = (
@@ -1827,7 +1823,6 @@
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/belterdock)
 "pH" = (
-/obj/random/junk,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/underground2)
 "pI" = (
@@ -2262,7 +2257,6 @@
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
 "ud" = (
-/obj/random/trash,
 /obj/machinery/light/small{
 	dir = 1
 	},
@@ -2373,7 +2367,6 @@
 /turf/simulated/shuttle/plating/carry,
 /area/shuttle/belter)
 "uO" = (
-/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/prison)
 "uP" = (
@@ -2404,7 +2397,6 @@
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_deep)
 "vp" = (
-/obj/random/trash,
 /obj/machinery/light/small{
 	dir = 1;
 	pixel_x = -2
@@ -2518,7 +2510,6 @@
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/exterior/mineshaft)
 "wz" = (
-/obj/random/trash,
 /obj/effect/floor_decal/borderfloor/corner,
 /obj/effect/floor_decal/corner/beige/bordercorner,
 /turf/simulated/floor/tiled/steel/lythios43c,
@@ -2702,7 +2693,6 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/underground2)
 "ys" = (
-/obj/random/trash,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/prison)
 "yv" = (
@@ -3069,7 +3059,6 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/underground2)
 "BI" = (
-/obj/random/trash,
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},
@@ -3130,7 +3119,6 @@
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_deep)
 "Cf" = (
-/obj/random/trash,
 /turf/simulated/floor/tiled/steel/lythios43c,
 /area/rift/facility/interior/underground2)
 "Cg" = (
@@ -3440,7 +3428,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/rift/facility/interior/temple)
 "Ex" = (
-/obj/random/trash,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/beige/border,
 /turf/simulated/floor/tiled/steel/lythios43c,
@@ -3795,7 +3782,6 @@
 /turf/simulated/floor/plating,
 /area/gateway)
 "HW" = (
-/obj/random/trash,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/exterior/bunker/bottom)
 "Ia" = (
@@ -4331,7 +4317,6 @@
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/exterior/bunker/bottom)
 "MN" = (
-/obj/random/trash,
 /obj/structure/fence{
 	dir = 4
 	},
@@ -4383,7 +4368,6 @@
 /area/rift/facility/interior/underground2)
 "Ng" = (
 /obj/effect/floor_decal/rust,
-/obj/random/junk,
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_deep)
 "Nl" = (
@@ -5082,7 +5066,6 @@
 /obj/item/bone/arm,
 /obj/item/bone/ribs,
 /obj/item/bone/skull/tajaran,
-/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/prison)
 "UD" = (
@@ -5093,7 +5076,6 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/janitorial)
 "UF" = (
-/obj/random/trash,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
@@ -5303,7 +5285,6 @@
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/surfacebase/outside/west_deep/submap_seedzone)
 "Wx" = (
-/obj/random/trash,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/beige/border,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
@@ -5348,7 +5329,6 @@
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/substation)
 "WR" = (
-/obj/random/junk,
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_deep)
 "WW" = (
@@ -5442,7 +5422,6 @@
 /turf/simulated/mineral/icerock/ignore_cavegen/lythios43c,
 /area/rift/surfacebase/outside/west_deep)
 "XT" = (
-/obj/random/trash,
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},

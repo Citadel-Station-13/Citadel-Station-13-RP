@@ -10,6 +10,7 @@
 	edge_icon_state = "water_shallow"
 	slowdown = 4
 	outdoors = TRUE
+	turf_flags = TURF_FLAG_ERODING
 
 	layer = WATER_FLOOR_LAYER
 

@@ -25,14 +25,22 @@
 	throw_speed = 7
 	throw_range = 15
 	materials_base = list(MAT_STEEL = 10)
-	var/colour = "black"	//what colour the ink is!
 	pressure_resistance = 2
 	drop_sound = 'sound/items/drop/accessory.ogg'
 	pickup_sound = 'sound/items/pickup/accessory.ogg'
+	var/pen_color = "black"	//what colour the ink is!
+	/// can we write with this?
+	var/pen_capable = TRUE
+	/// spans to force when writing - either text or list
+	var/pen_spans
+	/// can we click?
+	var/clickable = TRUE
 
 /obj/item/pen/attack_self(mob/user)
 	. = ..()
 	if(.)
+		return
+	if(!clickable)
 		return
 	if(user.next_move > world.time)
 		return
@@ -43,12 +51,12 @@
 /obj/item/pen/blue
 	desc = "It's a normal blue ink pen."
 	icon_state = "pen_blue"
-	colour = "blue"
+	pen_color = "blue"
 
 /obj/item/pen/red
 	desc = "It's a normal red ink pen."
 	icon_state = "pen_red"
-	colour = "red"
+	pen_color = "red"
 
 /obj/item/pen/fountain
 	desc = "A well made fountain pen."
@@ -71,14 +79,14 @@
 	if(++selectedColor > 3)
 		selectedColor = 1
 
-	colour = colors[selectedColor]
+	pen_color = colors[selectedColor]
 
-	if(colour == "black")
+	if(pen_color == "black")
 		icon_state = "pen"
 	else
-		icon_state = "pen_[colour]"
+		icon_state = "pen_[pen_color]"
 
-	to_chat(user, "<span class='notice'>Changed color to '[colour].'</span>")
+	to_chat(user, "<span class='notice'>Changed color to '[pen_color].'</span>")
 
 /obj/item/pen/click
 	name = "clicker pen"
@@ -102,7 +110,7 @@
 /obj/item/pen/invisible
 	desc = "It's an invisble pen marker."
 	icon_state = "pen"
-	colour = "white"
+	pen_color = "white"
 
 /*
  * Reagent pens
@@ -212,12 +220,12 @@
 /obj/item/pen/blade/blue
 	desc = "It's a normal blue ink pen."
 	icon_state = "pen_blue"
-	colour = "blue"
+	pen_color = "blue"
 
 /obj/item/pen/blade/red
 	desc = "It's a normal red ink pen."
 	icon_state = "pen_red"
-	colour = "red"
+	pen_color = "red"
 
 /obj/item/pen/blade/fountain
 	desc = "A well made fountain pen."
@@ -286,77 +294,23 @@
 	if(selected_type)
 		switch(selected_type)
 			if("Yellow")
-				colour = COLOR_YELLOW
+				pen_color = COLOR_YELLOW
 			if("Green")
-				colour = COLOR_LIME
+				pen_color = COLOR_LIME
 			if("Pink")
-				colour = COLOR_PINK
+				pen_color = COLOR_PINK
 			if("Blue")
-				colour = COLOR_BLUE
+				pen_color = COLOR_BLUE
 			if("Orange")
-				colour = COLOR_ORANGE
+				pen_color = COLOR_ORANGE
 			if("Cyan")
-				colour = COLOR_CYAN
+				pen_color = COLOR_CYAN
 			if("Red")
-				colour = COLOR_RED
+				pen_color = COLOR_RED
 			if("Invisible")
-				colour = COLOR_WHITE
+				pen_color = COLOR_WHITE
 			else
-				colour = COLOR_BLACK
-		to_chat(usr, "<span class='info'>You select the [lowertext(selected_type)] ink container.</span>")
-
-
-/*
- * Crayons
- */
-
-/obj/item/pen/crayon
-	name = "crayon"
-	desc = "A colourful crayon. Please refrain from eating it or putting it in your nose."
-	icon = 'icons/obj/crayons.dmi'
-	icon_state = "crayonred"
-	w_class = WEIGHT_CLASS_TINY
-	attack_verb = list("attacked", "coloured")
-	colour = "#FF0000" //RGB
-	var/shadeColour = "#220000" //RGB
-	var/uses = 30 //0 for unlimited uses
-	var/instant = 0
-	var/colourName = "red" //for updateIcon purposes
-	drop_sound = 'sound/items/drop/gloves.ogg'
-	pickup_sound = 'sound/items/pickup/gloves.ogg'
-
-/obj/item/pen/crayon/suicide_act(mob/user)
-	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
-	to_chat(viewers(user),"<font color='red'><b>[user] is jamming the [src.name] up [TU.his] nose and into [TU.his] brain. It looks like [TU.he] [TU.is] trying to commit suicide.</b></font>")
-	return (BRUTELOSS|OXYLOSS)
-
-/obj/item/pen/crayon/Initialize(mapload)
-	. = ..()
-	name = "[colourName] crayon"
-
-/obj/item/pen/crayon/marker
-	name = "marker"
-	desc = "A chisel-tip permanent marker. Hopefully non-toxic."
-	icon_state = "markerred"
-
-/obj/item/pen/crayon/marker/Initialize(mapload)
-	. = ..()
-	name = "[colourName] marker"
-
-/obj/item/pen/crayon/chalk
-	name = "ritual chalk"
-	desc = "A stick of blessed chalk, used in rituals."
-	icon_state = "chalkwhite"
-
-/obj/item/pen/crayon/chalk/Initialize(mapload)
-	. = ..()
-	name = "[colourName] chalk"
-
-/obj/item/pen/crayon/chalk/attack_self(mob/user)
-	. = ..()
-	if(.)
-		return
-	return
+				pen_color = COLOR_BLACK
 
 /obj/item/pen/charcoal
 	name = "charcoal stick"

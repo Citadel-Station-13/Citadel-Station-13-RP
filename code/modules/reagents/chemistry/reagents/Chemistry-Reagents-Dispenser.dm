@@ -49,9 +49,10 @@
 	var/effective_dose = dose * strength_mod * (1 + volume/60) //drinking a LOT will make you go down faster
 	M.add_chemical_effect(CE_ALCOHOL, 1)
 	if(HAS_TRAIT(M, TRAIT_ALCOHOL_INTOLERANT))
-		if(prob(effective_dose/10))
+		var/intolerant_dose = 100*strength_mod*removed/strength
+		if(prob((intolerant_dose)))
 			M.add_chemical_effect(CE_ALCOHOL_TOXIC, 1)
-		M.adjustToxLoss(effective_dose/10)
+		M.adjustToxLoss(intolerant_dose) // 10 strength = 10 tox per u, so 10u deathbell = 100, 10u vodka = 6.6666..., 10u beer = 20
 		return 0
 	if(effective_dose >= strength) // Early warning
 		M.make_dizzy(18) // It is decreased at the speed of 3 per tick

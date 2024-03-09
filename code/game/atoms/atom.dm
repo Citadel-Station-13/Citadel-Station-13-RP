@@ -1070,6 +1070,18 @@
 	plane = initial(plane)
 	set_base_layer(initial(layer))
 
+//* Persistence *//
+
+/**
+ * Triggered by SSpersistence to decay persisted atoms on load.
+ *
+ * @params
+ * * rounds_since_saved - rounds since we were saved
+ * * hours_since_saved - hours since we were saved
+ */
+/atom/proc/decay_persisted(rounds_since_saved, hours_since_saved)
+	return
+
 //? Pixel Offsets
 
 // todo: at some point we need to optimize this entire chain of bullshit, proccalls are expensive yo

@@ -18,8 +18,9 @@
 	var/loading = FALSE
 	/// saving?
 	var/saving = FALSE
-	// todo: this lock system sucks ass
-	// todo: it should realistically be able to queue if something modifies us a lot
+	/// re-save queued?
+	/// used so we only have one blocking save if we get modified during a save
+	var/resave_queued = FALSE
 
 	//! loaded data
 	/// player id
@@ -168,12 +169,16 @@
 	set waitfor = FALSE
 	// why are we in here if we're write locked?
 	if(saving)
-		CRASH("write locked")
+		if(resave_queued)
+			return
+		resave_queued = TRUE
+		UNTIL(!saving && !loading)
+		resave_queued = FALSE
 	// don't fuck with things if we're read-locked
 	UNTIL(!loading)
 	// check again
 	if(saving)
-		CRASH("write locked")
+		CRASH("race condition in save")
 	// allow admin proccalls - there's no args here.
 	var/old_usr = usr
 	usr = null

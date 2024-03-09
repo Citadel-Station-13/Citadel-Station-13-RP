@@ -8428,7 +8428,6 @@
 /area/hallway/lower/third_south)
 "eOC" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/effect/debris/cleanable/blood,
 /obj/structure/bed/chair{
 	dir = 1
 	},
@@ -10898,7 +10897,6 @@
 	dir = 4;
 	pixel_x = -22
 	},
-/obj/random/junk,
 /turf/simulated/floor/wood,
 /area/maintenance/lower/medsec_maintenance)
 "gme" = (
@@ -12284,7 +12282,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/iaa/officeb)
 "hdG" = (
-/obj/effect/debris/cleanable/tomato_smudge,
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
@@ -15564,7 +15561,6 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/random/junk,
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
@@ -17255,7 +17251,6 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/upperhall)
 "kfH" = (
-/obj/effect/debris/cleanable/tomato_smudge,
 /turf/simulated/floor/lino,
 /area/tether/surfacebase/entertainment/stage)
 "khE" = (
@@ -19538,7 +19533,6 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/robotics)
 "lGM" = (
-/obj/effect/debris/cleanable/blood/oil,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -20220,7 +20214,6 @@
 	name = "Robotics Operating Table"
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/effect/debris/cleanable/blood/oil,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/robotics/surgeryroom1)
 "mcm" = (
@@ -24372,7 +24365,6 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/obj/effect/debris/cleanable/tomato_smudge,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
@@ -29494,7 +29486,6 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/random/junk,
 /obj/structure/disposalpipe/segment{
 	dir = 8;
 	icon_state = "pipe-c"
@@ -34184,7 +34175,6 @@
 /obj/random/maintenance/medical,
 /obj/random/maintenance/medical,
 /obj/random/maintenance/clean,
-/obj/random/junk,
 /obj/item/reagent_containers/food/drinks/bottle/rum{
 	desc = "TASTE DEMOCRACY";
 	name = "Managed Democra-cider"
@@ -34802,7 +34792,6 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/briefingroom)
 "unZ" = (
-/obj/random/junk,
 /obj/machinery/air_alarm{
 	pixel_y = 22
 	},
@@ -38280,10 +38269,8 @@
 /obj/structure/closet/crate,
 /obj/random/maintenance/medical,
 /obj/random/maintenance/medical,
-/obj/random/junk,
 /obj/random/maintenance/medical,
 /obj/random/maintenance/clean,
-/obj/random/junk,
 /obj/machinery/fire_alarm/west_mount{
 	pixel_x = -24
 	},
@@ -41115,7 +41102,6 @@
 /obj/machinery/light_switch{
 	pixel_y = 25
 	},
-/obj/random/junk,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},

@@ -224,7 +224,10 @@
 		"clone damage"			= IC_PINTYPE_NUMBER,
 		"blood loss"			= IC_PINTYPE_NUMBER,
 		"pain level"			= IC_PINTYPE_NUMBER,
-		"radiation"				= IC_PINTYPE_NUMBER
+		"radiation"				= IC_PINTYPE_NUMBER,
+		"nutrition"				= IC_PINTYPE_NUMBER,
+		"list of reagents"		= IC_PINTYPE_LIST,
+		"quantity of reagents"	= IC_PINTYPE_LIST
 	)
 	activators = list("scan" = IC_PINTYPE_PULSE_IN, "on scanned" = IC_PINTYPE_PULSE_OUT)
 	spawn_flags = IC_SPAWN_RESEARCH
@@ -254,7 +257,41 @@
 			set_pin_data(IC_OUTPUT, 10, round((H.vessel.get_reagent_amount("blood") / H.species.blood_volume)*100))
 			set_pin_data(IC_OUTPUT, 11, H.traumatic_shock)
 			set_pin_data(IC_OUTPUT, 12, H.radiation)
+			set_pin_data(IC_OUTPUT, 13, H.nutrition)
+			var/cont[0]
+			var/amt[0]
+			for(var/datum/reagent/RE in H.reagents.reagent_list)
+				if(RE.scannable)
+					cont += RE.id
+					amt	+= round(H.reagents.get_reagent_amount(RE.id), 1)
+			set_pin_data(IC_OUTPUT, 14, cont)
+			set_pin_data(IC_OUTPUT, 15, amt)
 
+		push_data()
+		activate_pin(2)
+
+/obj/item/integrated_circuit/input/view_filter
+	name = "view filter"
+	desc = "This circuit will filter every object in assembly view."
+	extended_desc = "The first pin is ref to filter, to see avaliable filters go to Filter category. The output will contents everything with filtering type"
+	inputs = list(
+		"filter" = IC_PINTYPE_REF
+	)
+	outputs = list(
+		"objects" = IC_PINTYPE_LIST
+	)
+	activators = list("scan" = IC_PINTYPE_PULSE_IN, "on scanned" = IC_PINTYPE_PULSE_OUT)
+	spawn_flags = IC_SPAWN_RESEARCH
+	power_draw_per_use = 30
+
+/obj/item/integrated_circuit/input/view_filter/do_work(ord)
+	var/list/objects = list()
+	var/obj/item/integrated_circuit/filter/ref/filter = get_pin_data(IC_INPUT, 1)
+	if(istype(filter) && assembly && (filter in assembly.assembly_components))
+		for(var/atom/A in view(get_turf(assembly)))
+			if(istype(A, filter.filter_type))
+				objects.Add(WEAKREF(A))
+		set_pin_data(IC_OUTPUT, 1, objects)
 		push_data()
 		activate_pin(2)
 
@@ -1242,7 +1279,8 @@ GLOBAL_DATUM_INIT(circuit_translation_context, /datum/translation_context/simple
 			if(cell)
 
 				var/turf/A = get_turf(src)
-				if(AM in view(A))
+				var/turf/B = get_turf(AM)
+				if(A.Adjacent(B) || (AM in view(A)))
 					push_data()
 					set_pin_data(IC_OUTPUT, 1, cell.charge)
 					set_pin_data(IC_OUTPUT, 2, cell.maxcharge)

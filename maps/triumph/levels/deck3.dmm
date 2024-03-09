@@ -2648,7 +2648,6 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "cpA" = (
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/research)
 "cpB" = (
@@ -4644,7 +4643,6 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medbreak/surgery)
 "dYb" = (
-/obj/effect/debris/cleanable/blood/oil,
 /turf/simulated/floor/plating,
 /area/maintenance/medbay/aft)
 "dYB" = (
@@ -6077,7 +6075,6 @@
 /area/medical/ward)
 "ffL" = (
 /obj/structure/catwalk,
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/research)
 "fhj" = (
@@ -7101,7 +7098,6 @@
 /area/rnd/research_foyer_auxiliary)
 "fVB" = (
 /obj/structure/catwalk,
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/medbay/fore)
 "fWa" = (
@@ -10107,7 +10103,6 @@
 	pixel_y = -24
 	},
 /obj/structure/closet/coffin,
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/fpmaint2)
 "ivj" = (
@@ -10578,7 +10573,6 @@
 /area/medical/psych_ward)
 "iKx" = (
 /obj/machinery/atmospherics/component/binary/passive_gate/on,
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/fpmaint2)
 "iKZ" = (
@@ -10635,7 +10629,6 @@
 /area/rnd/xenobiology)
 "iNs" = (
 /obj/structure/catwalk,
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/medbay/aft)
 "iNI" = (
@@ -15119,7 +15112,6 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "mIk" = (
-/obj/random/trash,
 /obj/structure/railing,
 /turf/simulated/floor/plating,
 /area/maintenance/fore)
@@ -15133,7 +15125,6 @@
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
 "mIO" = (
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/medbay/aft)
 "mKe" = (
@@ -16032,7 +16023,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/fore)
 "nys" = (
@@ -16129,7 +16119,6 @@
 	dir = 4;
 	pixel_x = -22
 	},
-/obj/effect/debris/cleanable/blood/oil,
 /turf/simulated/floor/plating,
 /area/maintenance/medbay/aft)
 "nCp" = (
@@ -16648,7 +16637,6 @@
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab)
 "nXk" = (
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/medbay/fore)
 "nXl" = (
@@ -18132,7 +18120,6 @@
 /area/medical/sleeper)
 "pgB" = (
 /obj/structure/table,
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/research)
 "pgN" = (
@@ -18299,7 +18286,6 @@
 /turf/simulated/floor/tiled,
 /area/medical/sleeper)
 "pkD" = (
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/fpmaint2)
 "pkR" = (
@@ -20375,7 +20361,6 @@
 	dir = 8
 	},
 /obj/structure/catwalk,
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/fpmaint2)
 "qOj" = (
@@ -21308,7 +21293,6 @@
 /obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/research)
 "rAG" = (
@@ -21788,7 +21772,6 @@
 /obj/landmark{
 	name = "blobstart"
 	},
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/medbay/aft)
 "rVa" = (
@@ -23545,7 +23528,6 @@
 	dir = 4;
 	pixel_x = -22
 	},
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/research)
 "tyB" = (
@@ -27123,8 +27105,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/medbay/fore)
 "wxx" = (
-/obj/effect/debris/cleanable/blood,
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/medbay/aft)
 "wxE" = (
@@ -28407,7 +28387,6 @@
 	dir = 4
 	},
 /obj/structure/catwalk,
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/fore)
 "xEA" = (
@@ -28617,7 +28596,6 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/medbay/fore)
 "xJN" = (
@@ -28901,7 +28879,6 @@
 /turf/simulated/floor/tiled,
 /area/medical/sleeper)
 "xVR" = (
-/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/plating,
 /area/maintenance/medbay/aft)
 "xXp" = (
