@@ -4,8 +4,8 @@
 /**
  * balancing paradigm:
  *
- * * slots balances complexity / variety of functions.
- * * niche/powerful/adaptive gear = more slots
+ * * complexity balances complexity / variety of functions.
+ * * niche/powerful/adaptive gear = more complexity
  *
  * * size balances offense / defense / storage
  * * 'pick two of three'

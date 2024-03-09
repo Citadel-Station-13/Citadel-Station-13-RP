@@ -21,3 +21,14 @@
 	if(!can_remove_module(module, actor, silent))
 		return FALSE
 	return remove_module(module, actor)
+
+/obj/item/rig/proc/on_module_weight_change(obj/item/rig_module/module, old_value, new_value)
+	module_weight_tally += (new_value - old_value)
+	update_module_weight()
+
+/obj/item/rig/proc/on_module_complexity_change(obj/item/rig_module/module, old_value, new_value)
+
+/obj/item/rig/proc/on_module_volume_change(obj/item/rig_module/module, old_value, new_value)
+
+/obj/item/rig/proc/update_module_weight()
+	#warn impl

@@ -2,7 +2,7 @@
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
 /**
- * modules are modular items that can be inserted into specific slots on the rig.
+ * modules are modular items that can be inserted into specific complexity on the rig.
  */
 /obj/item/rig_module
 	#warn impl all
@@ -14,16 +14,16 @@
 	var/lookup_prefix = "unkw"
 
 	//* Balancing
-	/// slots this takes up
+	/// complexity this takes up
 	///
-	/// slots is the metric used to balance complexity / variety of functions
-	/// more niche & powerful/varied gear takes up more slots
-	var/module_slots = 0
-	/// size this takes up
+	/// complexity is the metric used to balance complexity / variety of functions
+	/// more niche & powerful/varied gear takes up more complexity
+	var/module_complexity = 0
+	/// volume this takes up
 	///
-	/// size is the metric used to balance offense/defense/storage
+	/// volume is the metric used to balance offense/defense/storage
 	/// you generally can have two of the three, not all of the above
-	var/module_size = 0
+	var/module_volume = 0
 	/// weight to add to rigsuit
 	///
 	/// stuff like heavy armor tends to be heavier.
@@ -71,8 +71,8 @@
 
 	//* Zone
 	/// our zone define, e.g. RIG_ZONE_X
-	/// all = takes slots from all zones
-	/// none = takes slots from any zone
+	/// all = takes complexity from all zones
+	/// none = takes complexity from any zone
 	/// this is a define instead of a bit because of speed reasons.
 	var/zone = RIG_ZONE_NONE
 	/// allow automatically swapping handedness if we are only on one arm zone
@@ -179,6 +179,28 @@
 /obj/item/rig_module/proc/use_low_burst_power(joules)
 	return isnull(host)? 0 : host.draw_low_power(joules)
 
+//* Setters *//
+
+/obj/item/rig_module/proc/set_module_weight(weight)
+	var/old = module_weight
+	module_weight = weight
+	host?.on_module_weight_change(src, old, weight)
+
+/obj/item/rig_module/proc/set_module_volume(volume)
+	var/old = module_volume
+	module_volume = volume
+	host?.on_module_volume_change(src, old, volume)
+
+/obj/item/rig_module/proc/set_module_complexity(complexity)
+	var/old = module_complexity
+	module_complexity = complexity
+	host?.on_module_complexity_change(src, old, complexity)
+
+/obj/item/rig_module/proc/set_module_zone(new_zone)
+	// yeah, nah, we're not handling this cleanly
+	ASSERT(!host)
+	zone = new_zone
+
 //* UI *//
 
 /obj/item/rig_module/proc/tgui_module_static()
@@ -229,16 +251,16 @@
 /obj/item/rig_module/proc/auto_swap_handedness()
 	switch(zone)
 		if(RIG_ZONE_LEFT_ARM)
-			zone = RIG_ZONE_RIGHT_ARM
+			set_module_zone(RIG_ZONE_RIGHT_ARM)
 			return TRUE
 		if(RIG_ZONE_RIGHT_ARM)
-			zone = RIG_ZONE_LEFT_ARM
+			set_module_zone(RIG_ZONE_LEFT_ARM)
 			return TRUE
 		if(RIG_ZONE_LEFT_LEG)
-			zone = RIG_ZONE_RIGHT_LEG
+			set_module_zone(RIG_ZONE_RIGHT_LEG)
 			return TRUE
 		if(RIG_ZONE_RIGHT_LEG)
-			zone = RIG_ZONE_LEFT_LEG
+			set_module_zone(RIG_ZONE_LEFT_LEG)
 			return TRUE
 		else
 			return FALSE

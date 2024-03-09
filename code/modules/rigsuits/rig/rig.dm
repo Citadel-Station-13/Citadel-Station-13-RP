@@ -44,7 +44,7 @@
 
 	//* Defense
 
-	//* Environmentals *//
+	//* Environmentals
 	#warn todo
 
 	//* Legacy - to be made into dynamic data once components/modules are done.

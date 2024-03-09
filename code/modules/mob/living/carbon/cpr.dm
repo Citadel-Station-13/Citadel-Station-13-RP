@@ -84,7 +84,6 @@
 	ingested?.metabolize(strength, TRUE)
 	touching?.metabolize(strength, TRUE)
 
-
 /mob/living/carbon/proc/cpr_act(atom/actor)
 	var/clipping = HAS_TRAIT(src, TRAIT_CPR_COOLDOWN)
 

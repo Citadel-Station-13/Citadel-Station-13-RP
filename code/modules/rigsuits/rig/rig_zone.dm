@@ -18,10 +18,10 @@
 	var/burn_damage = 0
 	/// our max integrity
 	var/max_integrity = 100
-	/// used slots
-	var/slot_used = 0
-	/// slots available
-	var/slot_capacity = 0
+	/// used complexity
+	var/complexity_used = 0
+	/// complexity available
+	var/complexity_capacity = 0
 	/// used volume
 	var/volume_used = 0
 	/// volume available
@@ -37,7 +37,7 @@
 	ASSERT(!length(modules))
 	brute_damage = 0
 	burn_damage = 0
-	slot_used = 0
+	complexity_used = 0
 	volume_used = 0
 
 /datum/rig_zone/head

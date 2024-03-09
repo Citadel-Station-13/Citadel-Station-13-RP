@@ -11,6 +11,7 @@
 	if(istype(parent_mob))
 		parent = parent_mob
 
+// todo: this should be by seconds.
 /datum/reagents/metabolism/proc/metabolize(speed_mult = 1, force_allow_dead)
 
 	var/metabolism_type = 0 //non-human mobs

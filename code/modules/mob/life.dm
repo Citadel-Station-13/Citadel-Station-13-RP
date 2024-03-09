@@ -62,4 +62,4 @@
  * Force x seconds of metabolism.
  */
 /mob/proc/forced_metabolism(seconds)
-	#warn impl on subtypes
+	return
