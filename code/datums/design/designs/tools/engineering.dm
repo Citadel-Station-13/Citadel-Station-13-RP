@@ -22,3 +22,10 @@
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	design_flags = DESIGN_NO_SCALE
 	build_path = /obj/item/rcd_ammo
+
+/datum/design/tool/spraycan
+	id = "Spraycan"
+	lathe_type = LATHE_TYPE_AUTOLATHE
+	design_unlock = DESIGN_UNLOCK_INTRINSIC
+	design_flags = DESIGN_NO_SCALE
+	build_path = /obj/item/pen/crayon/spraycan

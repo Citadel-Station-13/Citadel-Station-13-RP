@@ -22,7 +22,6 @@
 /area/engineering/atmos)
 "ac" = (
 /obj/structure/table/rack/steel,
-/obj/random/junk,
 /obj/machinery/light/small{
 	dir = 1
 	},
@@ -215,7 +214,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/public_bunker)
 "aE" = (
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/pumpstation)
 "aF" = (
@@ -394,7 +392,6 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/pumpstation)
 "bf" = (
@@ -542,7 +539,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/upper)
 "bu" = (
-/obj/effect/debris/cleanable/blood/gibs/robot/up,
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/elevator)
@@ -691,7 +687,6 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/effect/debris/cleanable/spiderling_remains,
 /obj/structure/table/rack,
 /obj/item/pickaxe/drill{
 	desc = "Go get it.";
@@ -923,7 +918,6 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/effect/debris/cleanable/spiderling_remains,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/upper)
 "cl" = (
@@ -1835,7 +1829,6 @@
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/underone)
 "eo" = (
-/obj/random/junk,
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/elevator)
@@ -2847,7 +2840,6 @@
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "hO" = (
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/elevator)
 "hP" = (
@@ -2951,7 +2943,6 @@
 	},
 /area/rift/surfacebase/underground/under1)
 "io" = (
-/obj/random/junk,
 /obj/random/maintenance/clean,
 /obj/machinery/light/small{
 	dir = 1
@@ -3575,7 +3566,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/public_bunker)
 "kt" = (
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/rift/surfacebase/underground/under1)
 "kv" = (
@@ -5067,7 +5057,6 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/upper)
 "qf" = (
@@ -5650,7 +5639,6 @@
 /turf/simulated/floor,
 /area/storage/tech)
 "sL" = (
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/upper)
 "sM" = (
@@ -5680,7 +5668,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "sS" = (
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "sT" = (
@@ -5727,7 +5714,6 @@
 /area/maintenance/engineering)
 "sZ" = (
 /obj/effect/overlay/snow/floor,
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "ta" = (
@@ -7628,8 +7614,6 @@
 	},
 /obj/structure/railing,
 /obj/effect/floor_decal/rust,
-/obj/random/junk,
-/obj/random/junk,
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
@@ -8234,7 +8218,6 @@
 /area/rnd/secure_storage/upper)
 "BN" = (
 /obj/effect/floor_decal/rust,
-/obj/random/junk,
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
@@ -8367,8 +8350,6 @@
 /area/engineering/atmos)
 "Cq" = (
 /obj/effect/floor_decal/industrial/warning,
-/obj/random/junk,
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
 "Cs" = (
@@ -8389,8 +8370,6 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/atmos)
 "Cw" = (
-/obj/random/junk,
-/obj/random/junk,
 /obj/random/maintenance/clean,
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -8631,8 +8610,6 @@
 "Do" = (
 /obj/effect/floor_decal/rust,
 /obj/random/cigarettes,
-/obj/random/junk,
-/obj/random/junk,
 /obj/random/tool,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
@@ -8716,8 +8693,6 @@
 /turf/simulated/floor/tiled,
 /area/rnd/secure_storage/upper)
 "DG" = (
-/obj/random/junk,
-/obj/random/junk,
 /obj/random/maintenance/clean,
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
@@ -8761,7 +8736,6 @@
 /area/tcommsat/chamber)
 "DR" = (
 /obj/effect/floor_decal/rust,
-/obj/random/junk,
 /obj/random/maintenance/engineering,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
@@ -10116,7 +10090,6 @@
 /area/engineering/atmos)
 "Iz" = (
 /obj/effect/floor_decal/rust,
-/obj/random/junk,
 /obj/structure/closet/crate,
 /obj/random/maintenance/clean,
 /obj/random/maintenance/clean,
@@ -11608,8 +11581,6 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/station/fighter_bay/hangar)
 "NI" = (
-/obj/random/junk,
-/obj/random/junk,
 /obj/random/maintenance/clean,
 /obj/structure/cable/green{
 	icon_state = "1-8"
@@ -12526,7 +12497,6 @@
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "Ra" = (
-/obj/random/junk,
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
@@ -12963,8 +12933,6 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
-/obj/random/junk,
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
 "SN" = (
@@ -13341,7 +13309,6 @@
 /area/rift/station/fighter_bay)
 "Uw" = (
 /obj/random/cigarettes,
-/obj/random/junk,
 /obj/structure/cable/green{
 	icon_state = "2-4"
 	},
@@ -13353,8 +13320,6 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/obj/random/junk,
-/obj/random/junk,
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
@@ -13387,8 +13352,6 @@
 	},
 /area/rift/surfacebase/underground/under1)
 "UE" = (
-/obj/random/junk,
-/obj/random/junk,
 /obj/random/maintenance/clean,
 /obj/random/tool,
 /obj/structure/catwalk,
@@ -13511,7 +13474,6 @@
 /area/hallway/primary/underone)
 "Vd" = (
 /obj/structure/table/steel,
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/elevator)
 "Ve" = (
@@ -13756,7 +13718,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
 "VY" = (
-/obj/effect/debris/cleanable/blood/gibs/robot/up,
 /turf/simulated/floor/plating,
 /area/maintenance/elevator)
 "VZ" = (
@@ -14497,8 +14458,6 @@
 /area/tcommsat/chamber)
 "YP" = (
 /obj/effect/floor_decal/rust,
-/obj/random/junk,
-/obj/random/junk,
 /obj/random/maintenance/cargo,
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,

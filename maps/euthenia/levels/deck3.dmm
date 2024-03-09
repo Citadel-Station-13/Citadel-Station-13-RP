@@ -7805,7 +7805,6 @@
 /turf/simulated/floor/plating,
 /area/rnd/research)
 "ilQ" = (
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_three/aft/starboard)
 "ilW" = (
@@ -10736,7 +10735,6 @@
 /turf/simulated/wall/r_wall/prepainted/security,
 /area/security/prison)
 "lti" = (
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/security/brig)
 "ltr" = (
@@ -13159,7 +13157,6 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/gravity_gen)
 "nUC" = (
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_three/port)
 "nVk" = (
@@ -14650,7 +14647,6 @@
 	name = "Robotics Operating Table"
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/effect/debris/cleanable/blood/oil,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/robotics/surgeryroom1)
 "poP" = (
@@ -19127,7 +19123,6 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_three/port)
 "uhH" = (
@@ -21361,7 +21356,6 @@
 /turf/simulated/floor/tiled/monotile,
 /area/security/brig)
 "wDE" = (
-/obj/random/trash,
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},

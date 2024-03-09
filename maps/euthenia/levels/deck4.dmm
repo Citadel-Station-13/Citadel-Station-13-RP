@@ -3997,7 +3997,6 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/maintenance/deck_four/forward)
 "pp" = (
-/obj/effect/debris/cleanable/blood/splatter,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
 	},

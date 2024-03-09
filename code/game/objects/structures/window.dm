@@ -242,7 +242,7 @@
 	else if (istype(object, /obj/item/stack/cable_coil) && considered_reinforced && construction_state == WINDOW_STATE_UNSECURED && !istype(src, /obj/structure/window/reinforced/polarized))
 		var/obj/item/stack/cable_coil/C = object
 		if (C.use(1))
-			playsound(src.loc, 'sound/effects/sparks1.ogg', 75, TRUE)
+			playsound(src.loc, /datum/soundbyte/grouped/sparks, 75, TRUE)
 			user.visible_message(
 				message = SPAN_NOTICE("\The [user] begins to wire \the [src] for electrochromic tinting."),
 				self_message = SPAN_NOTICE("You begin to wire \the [src] for electrochromic tinting."),

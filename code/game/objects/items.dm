@@ -355,21 +355,29 @@
 
 	throwing?.terminate()
 
-	//! FUCK; this is off because we don't have storage indirection working properly.
+	var/obj/item/actually_picked_up = src
+	if(item_flags & ITEM_IN_STORAGE)
+		var/datum/object_system/storage/resolved
+		if(istype(loc, /atom/movable/storage_indirection))
+			var/atom/movable/storage_indirection/holder = loc
+			resolved = holder.parent
+		else if(isobj(loc))
+			var/obj/obj_loc = loc
+			resolved = obj_loc.obj_storage
+		if(isnull(resolved))
+			item_flags &= ~ITEM_IN_STORAGE
+			CRASH("in storage at [loc] ([REF(loc)]) ([loc?.type || "NULL"]) but cannot resolve storage system")
+		actually_picked_up = resolved.try_remove(src, user, new /datum/event_args/actor(user))
 
-	// if(item_flags & ITEM_IN_STORAGE)
-	// 	var/obj/object = loc
-	// 	var/datum/object_system/storage/in_storage = object.obj_storage
-	// 	// todo: support for indirection
-	// 	ASSERT(!isnull(in_storage))
-	// 	if(!in_storage.auto_handle_interacted_removal(src, new /datum/event_args/actor(user), put_in_hands = TRUE))
-	// 		return
-	// else if(!user.put_in_active_hand(src))
-	if(!user.put_in_active_hand(src))
+	if(isnull(actually_picked_up))
+		to_chat(user, SPAN_WARNING("[src] somehow slips through your grasp. What just happened?"))
+		return
+	if(!user.put_in_hands(actually_picked_up))
+		actually_picked_up.forceMove(user.drop_location())
 		return
 	if(isturf(old_loc))
 		var/obj/effect/temporary_effect/item_pickup_ghost/ghost = new(old_loc)
-		ghost.assumeform(src)
+		ghost.assumeform(actually_picked_up)
 		ghost.animate_towards(user)
 
 /obj/item/OnMouseDrop(atom/over, mob/user, proximity, params)
