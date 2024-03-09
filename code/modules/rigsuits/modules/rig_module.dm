@@ -44,6 +44,22 @@
 	/// cannot put more htan one of our own exact type into any of our zones
 	var/zone_conflict_self
 
+	//* Defense
+	/// brute damage
+	var/brute_damage = 0
+	/// burn damage
+	var/burn_damage = 0
+	/// total integrity
+	var/max_health = 100
+
+	//* Registration
+	/// the rig we're on
+	var/obj/item/rig/host
+	/// registered low power draw in watts
+	var/registered_low_power = 0
+	/// registered high power draw in watts
+	var/registered_high_power = 0
+
 	//* UI
 	//! todo: this is fucking evil
 	/// cached b64 string of our UI icon
@@ -63,6 +79,11 @@
 	/// via a certain tool
 	/// legs also count as handedness.
 	var/swap_handedness_tool = TOOL_SCREWDRIVER
+
+/obj/item/rig_module/Destroy()
+	if(host)
+		host.remove_module(src)
+	return ..()
 
 /obj/item/rig_module/dynamic_tool_query(obj/item/I, datum/event_args/actor/clickchain/e_args, list/hint_images)
 	. = list()
@@ -143,6 +164,20 @@
  */
 /obj/item/rig_module/proc/console_process(effective_control_flags, username, command, list/arguments)
 	return list("unknown command", "<invalid>")
+
+//* Power *//
+
+/obj/item/rig_module/proc/set_high_power_draw(watts)
+	#warn impl
+
+/obj/item/rig_module/proc/set_low_power_draw(watts)
+	#warn impl
+
+/obj/item/rig_module/proc/use_high_burst_power(joules)
+	return isnull(host)? 0 : host.draw_high_power(joules)
+
+/obj/item/rig_module/proc/use_low_burst_power(joules)
+	return isnull(host)? 0 : host.draw_low_power(joules)
 
 //* UI *//
 

@@ -82,6 +82,12 @@
 	var/list/obj/item/rig_module/module_lookup
 	/// total weight of all modules
 	var/module_weight_tally = 0
+	/// registered high power load from modules
+	var/module_power_high = 0
+	/// registered low power load from modules
+	var/module_power_low = 0
+	/// conflict enums and types
+	var/list/module_conflict_lookup
 
 	//* Pieces
 	/// list of /datum/component/rig_piece's by its lookup_id
