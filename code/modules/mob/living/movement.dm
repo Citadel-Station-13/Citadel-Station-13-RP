@@ -351,10 +351,12 @@
 	var/their_dir = isliving(pushing) && pushing.dir
 
 	// push them
-	if(pushing.Move(get_step(pushing.loc, dir_to_target), dir_to_target, glide_size))
+	if(pushing.Move(get_step(pushing.loc, dir_to_target), dir_to_target))
 		pushing.add_fingerprint(src)
 		// follow through on success
 		Move(get_step(loc, dir_to_target), dir_to_target)
+		// set their glide size to match us as we change during Move()
+		pushing.glide_size = glide_size
 
 	// restore dir if needed
 	if(their_dir)
