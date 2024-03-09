@@ -62,7 +62,7 @@
 
 /obj/item/rig_module/tool_act(obj/item/I, datum/event_args/actor/clickchain/e_args, function, flags, hint)
 	if(function == swap_handedness_tool)
-		if(auto_swap_handedness)
+		if(auto_swap_handedness())
 			e_args.visible_feedback(
 				target = src,
 				range = MESSAGE_RANGE_CONFIGURATION,

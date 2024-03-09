@@ -78,6 +78,10 @@
 	//* Modules
 	/// list of /obj/item/rig_module's by its lookup_id
 	var/list/obj/item/rig_module/module_lookup
+	/// nested list of /obj/item/rig_modules by zone
+	/// this is a cached list that includes all fullbody modules as well
+	/// necessary due to later damage calculations
+	var/list/modules_by_zone
 
 	//* Pieces
 	/// list of /datum/component/rig_piece's by its lookup_id
