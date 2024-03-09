@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 //* /datum/component/rig_piece rig_piece_flags
 
 #define RIG_PIECE_APPLY_ARMOR (1<<0)

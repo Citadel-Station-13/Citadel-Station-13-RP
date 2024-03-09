@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 //* /obj/item/rig activation_state
 
 #define RIG_ACTIVATION_OFFLINE (1<<0)

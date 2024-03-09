@@ -30,7 +30,6 @@
 	// todo: b64 is shit
 	.["sprite64"] = host.cached_tgui_icon_b64 || (host.cached_tgui_icon_b64 = icon2base64(icon(host.icon, host.icon_state, SOUTH, 1, FALSE)))
 	#warn piece IDs updates
-	#warn console update
 
 /datum/rig_maint_panel/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
@@ -45,9 +44,9 @@
 	for(var/id in host.piece_lookup)
 		var/datum/component/rig_piece/piece = host.piece_lookup[id]
 		.[piece.lookup_id] = list(
-			id = piece.lookup_id,
-			sealed = piece.sealed,
-			deployed = piece.is_deployed(),
+			"id" = piece.lookup_id,
+			"sealed" = piece.sealed,
+			"deployed" = piece.is_deployed(),
 		)
 
 /datum/rig_maint_panel/ui_act(action, list/params, datum/tgui/ui)

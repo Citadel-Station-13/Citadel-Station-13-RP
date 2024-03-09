@@ -17,6 +17,8 @@
 	//* Flags
 	/// piece intrinsic flags
 	var/rig_piece_flags = NONE
+	/// which zones we count as
+	var/rig_zone_bits = NONE
 	/// inventory hide flags when sealed
 	var/inv_hide_flags_sealed
 	/// inventory hide flags when unsealed
@@ -64,6 +66,10 @@
 		return . | COMPONENT_INCOMPATIBLE
 	src.controller = controller
 	#warn impl
+
+/datum/component/rig_piece/Destroy()
+	controller = null
+	return ..()
 
 /datum/component/rig_piece/RegisterWithParent()
 	. = ..()

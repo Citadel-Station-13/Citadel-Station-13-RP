@@ -29,15 +29,20 @@
 	if(!length(string))
 		return
 	if(log_command)
-		command_logs += "[string]"
 		if(length(command_logs) > COMMAND_LOG_LIMIT)
 			command_logs.Cut(1, length(command_logs) - COMMAND_LOG_LIMIT + 1)
+		command_logs += "[string]"
 	var/list/split = split_command(string)
 	if(!length(split))
 		return
-	var/result = process_command(user, split, effective_control_flags, username)
-	command_logs += "> [result]"
-	#warn admin logging
+	var/list/result = process_command(user, split, effective_control_flags, username)
+	var/console_out = result[1]
+	var/log_out = result[2]
+	command_logs += "> [console_out]"
+	// todo: better logging lmao
+	log_game("RIG-CONSOLE: [key_name(user)] @ [REF(host)] ([key_name(host.wearer)]): [string] --> [log_out || console_out]")
+	// todo: should this really be here?
+	host.maint_panel?.push_ui_data(list("console" = tgui_console_data()))
 	return result
 
 /datum/rig_console/proc/split_command(mob/user, raw)

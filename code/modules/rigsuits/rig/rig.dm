@@ -40,7 +40,10 @@
 	var/datum/rig_console/console
 
 	//* Control
-	// todo.
+	#warn todo
+
+	//* Environmentals *//
+	#warn todo
 
 	//* Legacy - to be made into dynamic data once components/modules are done.
 	var/datum/armor/suit_armor
@@ -73,15 +76,15 @@
 	var/maint_panel_armor_type = /datum/armor/object/light
 
 	//* Modules
-	//  todo: unfinished
 	/// list of /obj/item/rig_module's by its lookup_id
 	var/list/obj/item/rig_module/module_lookup
 
 	//* Pieces
 	/// list of /datum/component/rig_piece's by its lookup_id
 	var/list/datum/component/rig_piece/piece_lookup
-	/// direct access cache to the items held by those pieces
-	var/list/obj/item/piece_items
+
+	//* Power
+	#warn todo.
 
 	//* Stats - Base
 	/// startup/shutdown time
@@ -187,8 +190,11 @@
 
 /obj/item/rig/proc/wipe_everything()
 	hard_reset()
-	#warn use remove piece properly
-	#warn impl
+	for(var/id in piece_lookup)
+		var/datum/component/rig_piece/piece = piece_lookup[id]
+		remove_piece(piece)
+	#warn annihilate modules
+	ui_queue_everything()
 
 /obj/item/rig/get_encumbrance()
 	return fully_activated()? online_encumbrance : offline_encumbrance

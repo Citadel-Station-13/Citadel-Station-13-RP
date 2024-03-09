@@ -59,8 +59,6 @@
 			SPAN_NOTICE("[src] hums to life, adjusting its seals as it starts to attach to [wearer].")
 		)
 
-	#warn feedback to people around
-
 	var/delay = instant? 0 : boot_delay
 	var/start_time = world.time
 	var/operation_id = activation_operation
@@ -105,8 +103,6 @@
 			SPAN_NOTICE("[src] hums to life, adjusting its seals as it starts to detach from [wearer].")
 		)
 
-	#warn feedback to people around
-
 	var/delay = instant? 0 : boot_delay
 	var/start_time = world.time
 	var/operation_id = activation_operation
@@ -150,10 +146,6 @@
 				SPAN_NOTICE("[src] finishes adjusting its seals around [wearer], snugly latching itself around their body")
 			)
 
-	#warn update wearer/etc data
-
-	#warn feedback to people around
-
 	if(deploy)
 		deploy_suit_async(auto_seal, instant_seal, force)
 	else if(auto_seal)
@@ -190,10 +182,6 @@
 		wearer?.visible_message(
 			SPAN_NOTICE("[src] completely detaches from [wearer], its lights and panels going dim.")
 		)
-
-	#warn update wearer/etc data
-
-	#warn feedback to people around
 
 /**
  * @return TRUE if op was interrupted

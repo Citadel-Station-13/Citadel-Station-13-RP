@@ -1,4 +1,8 @@
 /**
+ * This is a top level UI.
+ *
+ * todo: why is this a top level UI? why not embedded? huh?? huh??
+ *
  * @file
  * @license MIT
  */

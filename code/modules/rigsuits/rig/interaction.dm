@@ -2,7 +2,10 @@
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
 /obj/item/rig/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
-	. = ..()
+	if(istype(I, /obj/item/rig_module))
+		#warn impl
+	#warn cells / eris cells / power
+	return ..()
 
 /obj/item/rig/screwdriver_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
 	. = ..()

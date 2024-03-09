@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 //* rig_control_flags; do not edit these without editing TGUI side.
 /// walk
 #define RIG_CONTROL_MOVEMENT (1<<0)

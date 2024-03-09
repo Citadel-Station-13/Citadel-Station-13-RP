@@ -14,6 +14,8 @@
 	switch(command)
 		if("activate")
 			activation_sequence()
+			return list("activating...", "<active 1>")
 		if("deactivate")
 			deactivation_sequence()
+			return list("deactivating...", "<active 0>")
 	return list("unknown command", "<invalid>")

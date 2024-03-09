@@ -114,7 +114,6 @@
 
 /obj/item/rig/proc/add_piece(datum/component/rig_piece/piece)
 	LAZYINITLIST(piece_lookup)
-	LAZYINITLIST(piece_items)
 	if(piece_lookup[piece.lookup_prefix])
 		var/count = 1
 		do
@@ -123,10 +122,11 @@
 	else
 		piece.lookup_id = piece.lookup_prefix
 	piece_lookup[piece.lookup_id] = piece
-	piece_items += piece.parent
 
 /obj/item/rig/proc/remove_piece(datum/component/rig_piece/piece)
-	#warn impl
+	piece_lookup -= piece.lookup_id
+	// obliterates the component too
+	QDEL_NULL(piece.parent)
 
 /obj/item/rig/proc/legacy_sync_piece(datum/component/rig_piece/piece, sealed)
 	var/obj/item/physical = piece.parent
