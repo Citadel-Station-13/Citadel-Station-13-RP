@@ -26,7 +26,7 @@
 		if(!istype(examine_item, /obj/item/reagent_containers/food/snacks/ingredient))
 			. += "<span class='notice'>[icon2html(thing = examine_item, target = user)][examine_item].</span>"
 			continue
-		
+
 		var/obj/item/reagent_containers/food/snacks/ingredient/examine_ingredient = examine_item
 		var/cooked_span = "userdanger"
 		switch(examine_ingredient.cookstage)
@@ -53,7 +53,7 @@
 
 	for(var/obj/item/reagent_containers/food/snacks/ingredient/color_tally in contents)
 		if(color_tally.filling_color == "#FFFFFF")
-			newcolor = AverageColor(get_flat_icon(cooking_thingy, cooking_thingy.dir, 0))
+			newcolor = AverageColor(get_flat_icon(color_tally, color_tally.dir, 0))
 		else
 			newcolor = color_tally.filling_color
 

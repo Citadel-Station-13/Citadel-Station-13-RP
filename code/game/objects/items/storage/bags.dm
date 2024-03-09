@@ -207,10 +207,10 @@
 	name = "plant bag"
 	icon = 'icons/obj/hydroponics_machines.dmi'
 	icon_state = "plantbag"
-	max_storage_space = WEIGHT_VOLUME_NORMAL * 25
-	max_w_class = WEIGHT_CLASS_NORMAL
+	max_combined_volume = WEIGHT_VOLUME_NORMAL * 25
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
 	w_class = WEIGHT_CLASS_SMALL
-	can_hold = list(/obj/item/reagent_containers/food/snacks/ingredient/grown,/obj/item/seeds,/obj/item/grown)
+	insertion_whitelist = list(/obj/item/reagent_containers/food/snacks/ingredient/grown,/obj/item/seeds,/obj/item/grown)
 
 
 /obj/item/storage/bag/plants/large

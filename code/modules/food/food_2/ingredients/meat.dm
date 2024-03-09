@@ -5,7 +5,7 @@
 	filling_color = "#FF1C1C"
 	center_of_mass = list("x"=16, "y"=14)
 	cookstage_information = list(list(0, 0.5, "raw meat"), list(45 SECONDS, 1.2, "cooked meat"), list(60 SECONDS, 0.9, "rubbery meat"), list(75 SECONDS, 0.1, "a lump of char with some rubbery parts"))
-	slice_path = /obj/item/reagent_containers/food/snacks/ingredient/rawcutlet
+	slice_path = /obj/item/reagent_containers/food/snacks/ingredient/cutlet
 	slices_num = 3
 
 /obj/item/reagent_containers/food/snacks/ingredient/meat/Initialize(mapload)
@@ -15,7 +15,7 @@
 	src.bitesize = 1.5
 
 /obj/item/reagent_containers/food/snacks/ingredient/meat/on_cooked(reached_stage, cook_method)
-	if(reached_stage = COOKED && !isnull(cooked_icon))
+	if(reached_stage == COOKED && !isnull(cooked_icon))
 		icon_state = cooked_icon
 
 
@@ -33,27 +33,27 @@
 	name = "horse meat"
 	desc = "No no, I said it came from something fast."
 
-/obj/item/reagent_containers/food/snacks/xenomeat // Buff 6 >> 10
+/obj/item/reagent_containers/food/snacks/ingredient/meat/xenomeat // Buff 6 >> 10
 	name = "xenomeat"
 	desc = "A slab of green meat. Smells like acid."
 	cookstage_information = list(list(0, 0.5, "raw, tough and acidic meat"), list(45 SECONDS, 1.2, "tough meat"), list(60 SECONDS, 0.9, "rubbery and sour meat"), list(75 SECONDS, 0.1, "a hunk of plastic boiled in acid"))
 	icon_state = "xenomeat"
 	filling_color = "#43DE18"
 
-/obj/item/reagent_containers/food/snacks/xenomeat/Initialize(mapload)
+/obj/item/reagent_containers/food/snacks/ingredient/meat/xenomeat/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("protein", 10)
 	reagents.add_reagent("pacid",6)
 	src.bitesize = 6
 
-/obj/item/reagent_containers/food/snacks/xenomeat/spidermeat // Substitute for recipes requiring xeno meat.
+/obj/item/reagent_containers/food/snacks/ingredient/meat/xenomeat/spidermeat // Substitute for recipes requiring xeno meat.
 	name = "spider meat"
 	desc = "A slab of green meat."
 	cookstage_information = list(list(0, 0.5, "raw, squishy and bitter meat"), list(45 SECONDS, 1.2, "squishy, bitter meat"), list(60 SECONDS, 0.9, "vulcanized rubbermeat and sour meat"), list(75 SECONDS, 0.1, "vulcanized rubber seasoned with flies killed by a bug-zapper"))
 	icon_state = "xenomeat"
 	filling_color = "#43DE18"
 
-/obj/item/reagent_containers/food/snacks/xenomeat/spidermeat/Initialize(mapload)
+/obj/item/reagent_containers/food/snacks/ingredient/meat/xenomeat/spidermeat/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("spidertoxin",6)
 	reagents.remove_reagent("pacid",6)
@@ -121,7 +121,7 @@
 	bitesize = 1
 
 /obj/item/reagent_containers/food/snacks/ingredient/cutlet/on_cooked(reached_stage, cook_method)
-	if(reached_stage = COOKED)
+	if(reached_stage == COOKED)
 		icon_state = "cutlet"
 		reagents.add_reagent("protein", 2)
 
@@ -134,7 +134,7 @@
 	bitesize = 2
 
 /obj/item/reagent_containers/food/snacks/ingredient/cutlet/on_cooked(reached_stage, cook_method)
-	if(reached_stage = COOKED)
+	if(reached_stage == COOKED)
 		icon_state = "meatball"
 		reagents.add_reagent("protein", 2)
 
@@ -158,7 +158,7 @@
 	bitesize = 3
 
 
-/obj/item/reagent_containers/food/snacks/rawbacon
+/obj/item/reagent_containers/food/snacks/ingredient/bacon
 	name = "raw bacon"
 	desc = "A very thin piece of raw meat."
 	cookstage_information = list(list(0, 0.5, "raw bacon"), list(25 SECONDS, 1.2, "bacon"), list(35 SECONDS, 0.9, "rubbery, tough bacon"), list(45 SECONDS, 0.1, "bacon, burnt to unpalatability"))
@@ -167,7 +167,7 @@
 	bitesize = 1
 
 /obj/item/reagent_containers/food/snacks/ingredient/bacon/on_cooked(reached_stage, cook_method)
-	if(reached_stage = COOKED)
+	if(reached_stage == COOKED)
 		icon_state = "bacon"
 		reagents.add_reagent("protein", 0.6)
 
@@ -240,7 +240,7 @@
 
 /obj/item/reagent_containers/food/snacks/ingredient/tomatomeat
 	name = "tomato slice"
-	desc = "A slice from a huge tomato"
+	desc = "A slice from a huge tomato."
 	icon_state = "tomatomeat"
 	filling_color = "#DB0000"
 	nutriment_amt = 3
