@@ -1,6 +1,6 @@
 /obj/item/reagent_containers/food/drinks/shaker
 	name = "shaker"
-	desc = "A metal shaker to mix drinks in."
+	desc = "A metal shaker to mix drinks in. Can be shaken vigorously in your hand."
 	icon_state = "shaker"
 	amount_per_transfer_from_this = 10
 	volume = 120
