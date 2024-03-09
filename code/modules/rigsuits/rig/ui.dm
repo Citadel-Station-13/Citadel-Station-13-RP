@@ -119,6 +119,7 @@
 	#warn icecream update will modify this, check the root definition!
 	. = ..()
 	.["theme"] = theme_name
+	.["windowTheme"] = ui_theme || detect_ui_theme()
 	.["activation"] = activation_state
 	.["sprite64"] = isnull(cached_tgui_icon_b64)? (cached_tgui_icon_b64 = icon2base64(icon(icon, state_sealed, SOUTH, 1, FALSE))) : cached_tgui_icon_b64
 	var/list/piece_refs = list()
@@ -291,3 +292,17 @@
 	var/result = state.can_use_topic(src_object, user)
 	. = max(., result)
 */
+
+/**
+ * attempts to detect theme from wearer, if ui theme is not being forced
+ */
+/obj/item/rig/proc/detect_ui_theme()
+	var/mob/living/carbon/human/casted = wearer
+	if(!istype(casted))
+		return
+	if(!isnull(casted.nif))
+		// 1: attempt to detect from nif
+		var/detected = casted.nif.save_data["ui_theme"]
+		if(detected in global.all_tgui_themes)
+			return detected
+	// failed

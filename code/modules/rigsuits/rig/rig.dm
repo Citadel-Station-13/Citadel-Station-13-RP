@@ -137,6 +137,9 @@
 	//! todo: this is fucking evil
 	/// cached b64 string of our UI icon
 	var/cached_tgui_icon_b64
+	/// ui theme, set by the theme datum; if null, use default
+	#warn hook
+	var/ui_theme
 
 	//* Wearer
 	/// Our wearer

@@ -11,6 +11,7 @@ import { BooleanLike } from "common/react";
 import { getModuleData, useBackend, useLocalState } from "../../backend";
 import { Button, Flex, Icon, LabeledList, NoticeBox, Section, Stack, Tabs, Tooltip } from "../../components";
 import { Window } from "../../layouts";
+import { WindowTheme } from "../../styles/themes/typedef";
 import { RigActivationStatus, RigControlFlags, RigModuleReflist, RigModuleZoneSelection, RigPieceReflist, RigPieceSealStatus } from "./common";
 import { RigPieceData } from "./RigPiece";
 
@@ -20,8 +21,10 @@ export interface RigControllerData {
   pieceRefs: RigPieceReflist;
   moduleRefs: RigModuleReflist;
   sprite64: string;
+  // theme name
   theme: string;
   wornCorrectly: BooleanLike;
+  windowTheme: WindowTheme | null;
 }
 export interface RigControllerProps {
   readonly rig: RigControllerData;
@@ -36,7 +39,8 @@ export const RigController = (props, context) => {
   const rig = data;
 
   return (
-    <Window width={450} height={800} title={`${rig.theme} hardsuit controller`}>
+    <Window width={450} height={800} title={`${rig.theme} hardsuit controller`}
+      theme={data.windowTheme}>
       <Window.Content>
         <Stack fill vertical>
           <Stack.Item maxHeight="40%">

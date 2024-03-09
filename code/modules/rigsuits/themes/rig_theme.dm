@@ -58,6 +58,8 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 	var/datum/bodytypes/worn_bodytypes_fallback = BODYTYPES_ALL
 	/// render flags
 	var/worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	/// TGUI theme; unset to default
+	var/ui_theme
 
 	//* base stats
 	/// startup / shutdown time
@@ -135,6 +137,7 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 	control_module.boot_delay = boot_delay
 	control_module.seal_delay = seal_delay
 	control_module.theme_name = display_name || name
+	control_module.ui_theme = ui_theme
 	#warn impl
 
 /datum/rig_theme/proc/imprint_control_legacy(obj/item/rig/control_module)

@@ -5,10 +5,15 @@
  */
 
 import { classes } from 'common/react';
-import { computeBoxClassName, computeBoxProps } from '../components/Box';
+import { BoxProps, computeBoxClassName, computeBoxProps } from '../components/Box';
 import { addScrollableNode, removeScrollableNode } from '../events';
+import { WindowTheme } from '../styles/themes/typedef';
 
-export const Layout = props => {
+export interface LayoutProps extends BoxProps {
+  readonly theme?: WindowTheme | null;
+}
+
+export const Layout = (props: LayoutProps) => {
   const {
     className,
     theme = 'nanotrasen',
