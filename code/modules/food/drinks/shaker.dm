@@ -11,6 +11,6 @@
 
 	playsound(loc, "sound/items/shaker.ogg", 75, 1, -1)
 	if(prob(50))
-		user.visible_message("<span class='rose'>With an almost casual flick, [user] spins the [src] in their hands, thoroughly mixing it.</span>")
+		user.visible_message("<span class='rose'>With an almost casual flick, [user] spins [src] in their hands, thoroughly mixing it.</span>")
 	else
-		user.visible_message("<span class='rose'>[user] shakes the [src], mixing the contents up.</span>")
+		user.visible_message("<span class='rose'>[user] shakes [src], mixing the contents up.</span>")
