@@ -8,6 +8,12 @@
 	max_contents = 3
 	visible_position_xy = list(list(0, 0), list(0, 4), list(0,8))
 
+
+/obj/machinery/cooking/oven/Initialize(mapload, newdir)
+	..()
+	if(prob(0.1))
+		desc = "Why do they call it oven when you of in the cold food of out hot eat the food?"
+
 /obj/machinery/cooking/oven/update_icon()
 	cut_overlays()
 	add_overlay("ovenpanel_[cooking_power]")
@@ -27,7 +33,7 @@
 			filling_overlay.pixel_x = px
 			filling_overlay.pixel_y = py
 			filling_overlay.color = FH.tally_color()
-				
+
 			add_overlay(cooktop_overlay)
 			if(LAZYLEN(FH.contents))
 				add_overlay(filling_overlay)
@@ -45,7 +51,7 @@
 			cooktop_overlay.color = AverageColor(get_flat_icon(cooking_thingy, cooking_thingy.dir, 0))
 
 			add_overlay(cooktop_overlay)
-	
+
 	if(cooking_power)
 		icon_state = "oven_on"
 		add_overlay("ovendoor_closed")
