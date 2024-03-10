@@ -2,7 +2,7 @@
 /obj/machinery/cooking/grill
 	name = "grill"
 	desc = "A high-power electric grill."
-	icon_state = "fryer_off"
+	icon_state = "grill_off"
 
 	cooker_type = METHOD_GRILL
 
@@ -40,7 +40,9 @@
 		else if(istype(I, /obj/item/reagent_containers/food/snacks/ingredient))
 			var/obj/item/reagent_containers/food/snacks/ingredient/cooking_thingy = I
 
-			cooktop_overlay = get_flat_icon(cooking_thingy, cooking_thingy.dir, 0)
+			cooktop_overlay = mutable_appearance(cooking_thingy.icon, cooking_thingy.icon_state)
+			cooktop_overlay.underlays |= cooking_thingy.underlays
+			cooktop_overlay.overlays |= cooking_thingy.overlays
 			cooktop_overlay.transform *= 0.25 //the designated space on the grill is 8x8, so 1/4 (1/2?) size
 			var/px = visible_position_xy[food_containers[I]][1]
 			var/py = visible_position_xy[food_containers[I]][2]
