@@ -1073,10 +1073,8 @@
 	},
 /area/awaymission/labs/researchdivision)
 "dH" = (
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "Worn-out APC";
-	pixel_x = 24
+/obj/machinery/power/apc/east_mount{
+	name = "Worn-out APC"
 	},
 /obj/structure/cable{
 	icon_state = "0-2"
@@ -1677,10 +1675,8 @@
 /turf/simulated/floor,
 /area/awaymission/labs/gateway)
 "ft" = (
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "Worn-out APC";
-	pixel_x = 24
+/obj/machinery/power/apc/east_mount{
+	name = "Worn-out APC"
 	},
 /obj/structure/cable{
 	icon_state = "0-4"
@@ -1748,14 +1744,12 @@
 	},
 /area/awaymission/labs/militarydivision)
 "fD" = (
-/obj/machinery/power/apc{
-	dir = 8;
+/obj/machinery/power/apc/west_mount{
 	environ = 0;
 	equipment = 0;
 	lighting = 0;
 	locked = 0;
-	name = "Worn-out APC";
-	pixel_x = -24
+	name = "Worn-out APC"
 	},
 /obj/structure/closet/crate/secure/weapon,
 /obj/structure/cable{
@@ -1904,14 +1898,12 @@
 	},
 /area/awaymission/labs/militarydivision)
 "fW" = (
-/obj/machinery/power/apc{
-	dir = 8;
+/obj/machinery/power/apc/west_mount{
 	environ = 0;
 	equipment = 0;
 	lighting = 0;
 	locked = 0;
-	name = "Worn-out APC";
-	pixel_x = -24
+	name = "Worn-out APC"
 	},
 /obj/structure/cable{
 	icon_state = "0-4"
@@ -2014,14 +2006,12 @@
 	},
 /area/awaymission/labs/militarydivision)
 "gj" = (
-/obj/machinery/power/apc{
-	dir = 8;
+/obj/machinery/power/apc/west_mount{
 	environ = 0;
 	equipment = 0;
 	lighting = 0;
 	locked = 0;
-	name = "Worn-out APC";
-	pixel_x = -24
+	name = "Worn-out APC"
 	},
 /obj/structure/cable{
 	icon_state = "0-2"
@@ -2785,10 +2775,9 @@
 /turf/simulated/floor,
 /area/awaymission/labs/researchdivision)
 "im" = (
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/south_mount{
 	dir = 0;
-	name = "Worn-out APC";
-	pixel_y = -24
+	name = "Worn-out APC"
 	},
 /obj/structure/cable{
 	icon_state = "0-4"
@@ -3153,14 +3142,12 @@
 	},
 /area/awaymission/labs/militarydivision)
 "jm" = (
-/obj/machinery/power/apc{
-	dir = 8;
+/obj/machinery/power/apc/west_mount{
 	environ = 0;
 	equipment = 0;
 	lighting = 0;
 	locked = 0;
-	name = "Worn-out APC";
-	pixel_x = -24
+	name = "Worn-out APC"
 	},
 /obj/structure/cable{
 	icon_state = "0-4"
@@ -3498,16 +3485,16 @@
 /area/awaymission/labs/solars)
 "kp" = (
 /obj/item/clothing/suit/space/void/security{
-	cold_protection = 1;
+	cold_protection_cover = 1;
 	desc = "A suit specially designed for Sogun anatomy, as well as operation in high-temperature environments. Has sunray shielding.";
-	heat_protection = 3000;
+	heat_protection_cover = 3000;
 	icon_state = "rig-soghun";
 	item_state = "rig-soghun";
 	name = "Soghun Hardsuit"
 	},
 /obj/item/clothing/head/helmet/space/void/security{
 	desc = "A special helmet designed for the Soghun anatomy, as well as work in a hazardous, high-temperature environment. Has sunray shielding.";
-	heat_protection = 3000;
+	heat_protection_cover = 3000;
 	name = "Soghun Suit Helmet"
 	},
 /obj/item/clothing/mask/breath,
@@ -3659,14 +3646,12 @@
 	},
 /area/awaymission/desert)
 "kK" = (
-/obj/machinery/power/apc{
-	dir = 8;
+/obj/machinery/power/apc/west_mount{
 	environ = 0;
 	equipment = 0;
 	lighting = 0;
 	locked = 0;
-	name = "Worn-out APC";
-	pixel_x = -24
+	name = "Worn-out APC"
 	},
 /obj/structure/cable{
 	icon_state = "0-2"
@@ -4098,10 +4083,8 @@
 	c_tag = "Aft Port Solar Control";
 	dir = 1
 	},
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "Worn-out APC";
-	pixel_x = 24
+/obj/machinery/power/apc/east_mount{
+	name = "Worn-out APC"
 	},
 /obj/structure/cable,
 /obj/machinery/power/terminal{
@@ -4466,11 +4449,9 @@
 /turf/simulated/floor,
 /area/awaymission/labs/cargo)
 "mI" = (
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/north_mount{
 	cell_type = 5000;
-	dir = 1;
-	name = "Virology APC";
-	pixel_y = 24
+	name = "Virology APC"
 	},
 /obj/structure/cable{
 	icon_state = "0-4"
@@ -4574,16 +4555,16 @@
 /area/awaymission/labs/civilian)
 "mW" = (
 /obj/item/clothing/suit/space/void/security{
-	cold_protection = 1;
+	cold_protection_cover = 1;
 	desc = "A suit specially designed for Sogun anatomy, as well as operation in high-temperature environments. Has sunray shielding.";
-	heat_protection = 3000;
+	heat_protection_cover = 3000;
 	icon_state = "rig-soghun";
 	item_state = "rig-soghun";
 	name = "Soghun Hardsuit"
 	},
 /obj/item/clothing/head/helmet/space/void/security{
 	desc = "A special helmet designed for the Soghun anatomy, as well as work in a hazardous, high-temperature environment. Has sunray shielding.";
-	heat_protection = 3000;
+	heat_protection_cover = 3000;
 	name = "Soghun Suit Helmet"
 	},
 /obj/item/clothing/mask/breath,
@@ -4780,16 +4761,16 @@
 /area/awaymission/labs/cave)
 "nC" = (
 /obj/item/clothing/suit/space/void/security{
-	cold_protection = 1;
+	cold_protection_cover = 1;
 	desc = "A suit specially designed for Sogun anatomy, as well as operation in high-temperature environments. Has sunray shielding.";
-	heat_protection = 3000;
+	heat_protection_cover = 3000;
 	icon_state = "rig-soghun";
 	item_state = "rig-soghun";
 	name = "Soghun Hardsuit"
 	},
 /obj/item/clothing/head/helmet/space/void/security{
 	desc = "A special helmet designed for the Soghun anatomy, as well as work in a hazardous, high-temperature environment. Has sunray shielding.";
-	heat_protection = 3000;
+	heat_protection_cover = 3000;
 	name = "Soghun Suit Helmet"
 	},
 /obj/item/clothing/mask/breath,
@@ -4959,10 +4940,8 @@
 /turf/simulated/floor,
 /area/awaymission/labs/cave)
 "oc" = (
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "Worn-out APC";
-	pixel_x = 24
+/obj/machinery/power/apc/east_mount{
+	name = "Worn-out APC"
 	},
 /obj/structure/cable{
 	icon_state = "0-8"
@@ -5254,10 +5233,9 @@
 	},
 /area/awaymission/labs/civilian)
 "oS" = (
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/south_mount{
 	dir = 0;
-	name = "Worn-out APC";
-	pixel_y = -24
+	name = "Worn-out APC"
 	},
 /obj/structure/cable{
 	icon_state = "0-8"
@@ -5267,15 +5245,13 @@
 	},
 /area/awaymission/labs/civilian)
 "oT" = (
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/west_mount{
 	cell_type = 5000;
-	dir = 8;
 	environ = 0;
 	equipment = 0;
 	lighting = 0;
 	locked = 0;
-	name = "Worn-out APC";
-	pixel_x = -24
+	name = "Worn-out APC"
 	},
 /obj/structure/cable{
 	icon_state = "0-4"
@@ -5419,10 +5395,8 @@
 /turf/simulated/floor,
 /area/awaymission/labs/civilian)
 "po" = (
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "Worn-out APC";
-	pixel_x = 24
+/obj/machinery/power/apc/east_mount{
+	name = "Worn-out APC"
 	},
 /obj/structure/cable{
 	icon_state = "0-8"
@@ -5722,10 +5696,8 @@
 	},
 /area/awaymission/labs/command)
 "qm" = (
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "Worn-out APC";
-	pixel_x = 24
+/obj/machinery/power/apc/east_mount{
+	name = "Worn-out APC"
 	},
 /obj/structure/cable{
 	icon_state = "0-8"
@@ -5859,10 +5831,8 @@
 	},
 /area/awaymission/labs/command)
 "qJ" = (
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "Worn-out APC";
-	pixel_x = 24
+/obj/machinery/power/apc/east_mount{
+	name = "Worn-out APC"
 	},
 /obj/structure/cable{
 	icon_state = "0-8"
@@ -6042,10 +6012,9 @@
 	},
 /area/awaymission/labs/civilian)
 "rk" = (
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/south_mount{
 	dir = 0;
-	name = "Worn-out APC";
-	pixel_y = -24
+	name = "Worn-out APC"
 	},
 /obj/structure/cable{
 	icon_state = "0-4"
@@ -6391,10 +6360,8 @@
 /turf/simulated/floor,
 /area/awaymission/labs/civilian)
 "sq" = (
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "Worn-out APC";
-	pixel_x = 24
+/obj/machinery/power/apc/east_mount{
+	name = "Worn-out APC"
 	},
 /obj/structure/cable{
 	icon_state = "0-8"
@@ -6978,11 +6945,9 @@
 	},
 /area/awaymission/labs/security)
 "ug" = (
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/north_mount{
 	cell_type = 5000;
-	dir = 1;
-	name = "Virology APC";
-	pixel_y = 24
+	name = "Virology APC"
 	},
 /obj/structure/cable,
 /turf/simulated/floor{
@@ -7062,10 +7027,9 @@
 "ur" = (
 /obj/structure/table/standard,
 /obj/machinery/light,
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/south_mount{
 	dir = 0;
-	name = "Worn-out APC";
-	pixel_y = -24
+	name = "Worn-out APC"
 	},
 /obj/structure/cable,
 /turf/simulated/floor{

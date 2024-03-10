@@ -27,7 +27,7 @@
 	return ..()
 
 /obj/item/instrument/proc/should_stop_playing(mob/user)
-	return !Adjacent(user) && !(storage_depth(user) < 3)
+	return (loc != user) && (depth_inside_atom(user) < 3)
 
 /*
 /obj/item/instrument/process(wait)
@@ -264,7 +264,7 @@
 		SLOT_ID_LEFT_HAND = 'icons/mob/inhands/equipment/horns_lefthand.dmi',
 		SLOT_ID_RIGHT_HAND = 'icons/mob/inhands/equipment/horns_righthand.dmi'
 		)
-	attack_verb = list("beautifully honks")
+	attack_verb = list("beautifully honked")
 	allowed_instrument_ids = list("honk", "bikehorn")
 	w_class = WEIGHT_CLASS_TINY
 	damage_force = 0

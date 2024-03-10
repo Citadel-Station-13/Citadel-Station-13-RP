@@ -1,4 +1,12 @@
 /**
+ * Linter check, do not call.
+ */
+/proc/lint__check_mob_login_doesnt_sleep()
+	SHOULD_NOT_SLEEP(TRUE)
+	var/mob/M
+	M.Login()
+
+/**
  * Run when a client is put in this mob or reconnets to byond and their client was on this mob
  *
  * Things it does:

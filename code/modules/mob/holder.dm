@@ -129,7 +129,7 @@
 	origin_tech = list(TECH_DATA = 2)
 
 /obj/item/holder/mouse
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/holder/borer
 	origin_tech = list(TECH_BIO = 6)
@@ -144,11 +144,6 @@
 	slot_flags = SLOT_HOLSTER
 	origin_tech = list(TECH_BIO = 3)
 
-/obj/item/holder/protoblob
-	slot_flags = SLOT_HEAD | SLOT_OCLOTHING | SLOT_HOLSTER | SLOT_ICLOTHING | SLOT_ID | SLOT_MASK
-	w_class = ITEMSIZE_TINY
-	allowed = list(/obj/item/gun,/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/melee/baton)
-
 
 /obj/item/holder/fish/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!target)
@@ -160,19 +155,25 @@
 		if(prob(10))
 			L.afflict_stun(20 * 2)
 
+/obj/item/holder/protoblob
+	clothing_flags = ALLOWINTERNALS
+	slot_flags = SLOT_HEAD | SLOT_OCLOTHING | SLOT_HOLSTER | SLOT_ICLOTHING | SLOT_ID | SLOT_MASK | SLOT_GLOVES | SLOT_BACK | SLOT_BELT | SLOT_FEET | SLOT_EARS | SLOT_EYES
+	w_class = WEIGHT_CLASS_TINY
+	allowed = list(/obj/item/gun,/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/melee/baton)
+
 //Roach Types
 /obj/item/holder/roach
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 /obj/item/holder/roachling
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 /obj/item/holder/panzer
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 /obj/item/holder/jager
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 /obj/item/holder/seuche
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 /obj/item/holder/fuhrer
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/holder/attackby(obj/item/W as obj, mob/user as mob)
 	for(var/mob/M in src.contents)

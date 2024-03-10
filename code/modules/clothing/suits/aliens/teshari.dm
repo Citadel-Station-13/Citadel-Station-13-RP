@@ -321,7 +321,7 @@
 	species_restricted = list(SPECIES_TESHARI)
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
 	inv_hide_flags = HIDEHOLSTER|HIDETIE
-	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	cold_protection_cover = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	armor_type = /datum/armor/teshari/hood_cloak
 	action_button_name = "Toggle Cloak Hood"
@@ -338,7 +338,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "tesh_hood_bo", SLOT_ID_LEFT_HAND = "tesh_hood_bo")
 	inv_hide_flags = BLOCKHAIR
 	body_cover_flags = HEAD
-	cold_protection = HEAD|FACE
+	cold_protection_cover = HEAD|FACE
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 
 /obj/item/clothing/suit/storage/hooded/teshari/standard/black_orange

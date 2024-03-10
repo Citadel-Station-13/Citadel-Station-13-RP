@@ -318,11 +318,11 @@
 			scrub_groups ^= target
 			return TRUE
 
-/obj/machinery/atmospherics/component/unary/vent_scrubber/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/atmospherics/component/unary/vent_scrubber/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["state"] = ui_scrubber_data()
 
-/obj/machinery/atmospherics/component/unary/vent_scrubber/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/atmospherics/component/unary/vent_scrubber/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["gasContext"] = global.gas_data.tgui_gas_context()
 	.["name"] = name
@@ -396,15 +396,11 @@
 
 	//! legacy below
 
-	if(signal.data["status"] != null)
-		spawn(2)
-			broadcast_status()
-		return //do not update_icon
-
-//			log_admin("DEBUG \[[world.timeofday]\]: vent_scrubber/receive_signal: unknown command \"[signal.data["command"]]\"\n[signal.debug_print()]")
 	spawn(2)
 		broadcast_status()
-	update_icon()
+
+	if(signal.data["status"] == null)
+		update_icon()
 
 //* Subtypes
 
@@ -420,7 +416,7 @@
 
 /obj/machinery/atmospherics/component/unary/vent_scrubber/retro/on
 	on = TRUE
-	icon_state = "map_scrubber_on"
+	icon_state = "map_scrubber_on_retro"
 
 /obj/machinery/atmospherics/component/unary/vent_scrubber/retro/on/welded
 	welded = 1

@@ -155,7 +155,7 @@
 		macros_built[++macros_built.len] = L | list("index" = ++index)
 	return macros_built
 
-/obj/machinery/chemical_dispenser/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/chemical_dispenser/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["cartridges"] = ui_cartridge_data()
 	var/list/chems_built = list()
@@ -164,7 +164,7 @@
 		for(var/id in synth.reagents_provided)
 			if(chems_built[id])
 				continue
-			var/datum/reagent/R = SSchemistry.get_reagent(id)
+			var/datum/reagent/R = SSchemistry.fetch_reagent(id)
 			if(!R)
 				continue
 			chems_built[id] = list(
@@ -180,7 +180,7 @@
 	.["macros_full"] = length(macros) >= MAX_MACROS
 	.["macros_max_steps"] = MAX_MACRO_STEPS
 
-/obj/machinery/chemical_dispenser/ui_data(mob/user)
+/obj/machinery/chemical_dispenser/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["amount"] = dispense_amount
 	.["amount_max"] = dispense_amount_max
@@ -198,7 +198,7 @@
 	.["recharging"] = charging
 	.["recharge_rate"] = recharge_rate
 
-/obj/machinery/chemical_dispenser/ui_act(action, params)
+/obj/machinery/chemical_dispenser/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return

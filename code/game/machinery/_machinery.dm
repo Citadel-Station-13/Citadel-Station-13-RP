@@ -100,7 +100,7 @@
 /obj/machinery
 	name = "machinery"
 	icon = 'icons/obj/stationobjs.dmi'
-	w_class = ITEMSIZE_NO_CONTAINER
+	w_class = WEIGHT_CLASS_HUGE
 	layer = UNDER_JUNK_LAYER
 	// todo: don't block rad contents and just have component parts be unable to be contaminated while inside
 	// todo: wow rad contents is a weird system
@@ -118,6 +118,8 @@
 	/// Can be anchored / unanchored by players without deconstructing by default with a wrench. null for off, number for time needed.
 	//  todo: proc for allow / disallow, refactor, unify with can_be_unanchored
 	var/default_unanchor
+	/// default deconstruct requires panel open
+	var/default_deconstruct_requires_panel_open = TRUE
 	/// tool used for deconstruction
 	var/tool_deconstruct = TOOL_CROWBAR
 	/// tool used for panel open
@@ -435,13 +437,14 @@
 					continue
 				if(istype(B, P) && istype(A, P))
 					if(their_rating > our_rating)
-						R.remove_from_storage(B, src)
-						R.handle_item_insertion(A, null, TRUE)
+						R.obj_storage.remove(B, src)
+						R.obj_storage.insert(A, suppressed = TRUE, no_update = TRUE)
 						component_parts -= A
 						component_parts += B
 						B.loc = null
 						to_chat(user, "<span class='notice'>[A.name] replaced with [B.name].</span>")
 						break
+		R.obj_storage.ui_queue_refresh()
 		update_appearance()
 		RefreshParts()
 	return 1

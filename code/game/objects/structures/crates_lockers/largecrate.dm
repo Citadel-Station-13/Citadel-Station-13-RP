@@ -14,7 +14,7 @@
 	. = ..()
 	if(mapload)
 		addtimer(CALLBACK(src, PROC_REF(take_contents)), 0)
-	PopulateContents()
+	legacy_spawn_contents()
 	// Closets need to come later because of spawners potentially creating objects during init.
 	return INITIALIZE_HINT_LATELOAD
 
@@ -44,7 +44,7 @@
 /**
  * The proc that fills the closet with its initial contents.
  */
-/obj/structure/largecrate/proc/PopulateContents()
+/obj/structure/largecrate/proc/legacy_spawn_contents()
 	return
 
 /*	/// Doesnt work but im gonna leave this here commented out in case I broke something with the shameless copy pasta from above -Bloop

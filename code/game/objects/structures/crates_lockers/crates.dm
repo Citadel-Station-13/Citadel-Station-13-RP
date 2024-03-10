@@ -77,6 +77,8 @@
 	return 1
 
 /obj/structure/closet/crate/attackby(obj/item/W as obj, mob/user as mob)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
 	if(opened)
 		if(isrobot(user))
 			return
@@ -248,7 +250,7 @@
 			spawn(6)
 				cut_overlay(sparks) //Tried lots of stuff but nothing works right. so i have to use this *sadface*
 				compile_overlays()
-			playsound(src.loc, 'sound/effects/sparks4.ogg', 75, 1)
+			playsound(src.loc, /datum/soundbyte/grouped/sparks, 75, 1)
 			locked = 0
 			update_icon()
 	if(!opened && prob(20/severity))

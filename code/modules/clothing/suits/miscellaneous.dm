@@ -96,7 +96,7 @@
 	icon = 'icons/obj/clothing/spacesuits.dmi'
 	icon_state = "syndicate"
 	desc = "A plastic replica of the syndicate space suit, you'll look just like a real murderous syndicate agent in this! This is a toy, it is not made for use in space!"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	allowed = list(/obj/item/flashlight,/obj/item/tank/emergency/oxygen,/obj/item/toy)
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|HANDS|LEGS|FEET
@@ -306,7 +306,7 @@
 	. = ..()
 	if(slot == SLOT_ID_SUIT)
 		user.drop_all_held_items()
-		user.drop_item_to_ground(user.item_by_slot(SLOT_ID_HANDCUFFED), INV_OP_FORCE)
+		user.drop_item_to_ground(user.item_by_slot_id(SLOT_ID_HANDCUFFED), INV_OP_FORCE)
 
 /obj/item/clothing/suit/ianshirt
 	name = "worn shirt"
@@ -336,6 +336,14 @@
 	name = "kamishimo"
 	desc = "Traditional Japanese menswear."
 	icon_state = "kamishimo"
+
+/obj/item/clothing/suit/storage/aureate
+	name = "aureate kimono"
+	desc = "An embellished spin on an ancient, traditional garb. It comes with various insignias."
+	icon = 'icons/clothing/suit/coats/aureate_kimono.dmi'
+	icon_state = "aureate_kimono"
+	body_cover_flags = UPPER_TORSO|ARM_RIGHT|LOWER_TORSO
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/suit/storage/furcoat
 	name = "furcoat"
@@ -522,7 +530,7 @@
 	icon_state = "leathercoat"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "wcoat", SLOT_ID_LEFT_HAND = "wcoat")
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
-	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS
+	cold_protection_cover = UPPER_TORSO|LOWER_TORSO|ARMS
 	inv_hide_flags = HIDEHOLSTER
 
 /obj/item/clothing/suit/browncoat
@@ -718,7 +726,7 @@
 	icon_state = "pufferjacket"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "chainmail", SLOT_ID_LEFT_HAND = "chainmail")
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
-	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS
+	cold_protection_cover = UPPER_TORSO|LOWER_TORSO|ARMS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	inv_hide_flags = HIDEHOLSTER
 
@@ -728,7 +736,7 @@
 	icon_state = "puffervest"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "chainmail", SLOT_ID_LEFT_HAND = "chainmail")
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
-	cold_protection = UPPER_TORSO|LOWER_TORSO
+	cold_protection_cover = UPPER_TORSO|LOWER_TORSO
 
 /obj/item/clothing/suit/storage/miljacket
 	name = "military jacket"
@@ -794,7 +802,7 @@
 	allowed = list (/obj/item/gun/ballistic/sec/flash, /obj/item/pen, /obj/item/paper, /obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes, /obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask)
 	body_cover_flags = UPPER_TORSO|ARMS
 	inv_hide_flags = HIDEHOLSTER
-	cold_protection = UPPER_TORSO|ARMS
+	cold_protection_cover = UPPER_TORSO|ARMS
 	min_cold_protection_temperature = T0C - 20
 	siemens_coefficient = 0.7
 
@@ -805,7 +813,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "brown_jacket", SLOT_ID_LEFT_HAND = "brown_jacket")
 	body_cover_flags = UPPER_TORSO|ARMS
 	inv_hide_flags = HIDEHOLSTER
-	cold_protection = UPPER_TORSO|ARMS
+	cold_protection_cover = UPPER_TORSO|ARMS
 	min_cold_protection_temperature = T0C - 20
 	siemens_coefficient = 0.7
 
@@ -906,7 +914,7 @@
 	icon_state = "grey_hoodie"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "suit_grey", SLOT_ID_LEFT_HAND = "suit_grey")
 	min_cold_protection_temperature = T0C - 20
-	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS
+	cold_protection_cover = UPPER_TORSO|LOWER_TORSO|ARMS
 	inv_hide_flags = HIDEHOLSTER
 
 /obj/item/clothing/suit/storage/toggle/hoodie/black
@@ -1195,7 +1203,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "labcoat", SLOT_ID_LEFT_HAND = "labcoat")
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
 	inv_hide_flags = HIDEHOLSTER
-	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS
+	cold_protection_cover = UPPER_TORSO|LOWER_TORSO|ARMS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	allowed = list (/obj/item/gun/ballistic/sec/flash, /obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes, /obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask)
 
@@ -1379,7 +1387,7 @@
 	desc = "An utterly ancient suit of Earth armor, reverently maintained and restored over the years. This appears less sturdy than the authentic article."
 	icon_state = "samurai_colorable"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "leather_coat", SLOT_ID_LEFT_HAND = "leather_coat")
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	inv_hide_flags = HIDETIE|HIDEHOLSTER
 
@@ -1534,7 +1542,7 @@
 	desc = "A form fitting utilitarion coat with straps around the shoulders and holding a sash around the waist. The collar is lined with fur to help stay warm."
 	icon_state = "fur_utility"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
-	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	cold_protection_cover = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
 	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit)
@@ -1572,7 +1580,7 @@
 	icon_state = "runner_jacket"
 	inv_hide_flags = HIDEHOLSTER
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
-	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	cold_protection_cover = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
 	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/energy,
@@ -1584,13 +1592,13 @@
 		open = 0
 		icon_state = "[icon_state]_closed"
 		inv_hide_flags = HIDETIE|HIDEHOLSTER
-		cold_protection = HEAD|UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+		cold_protection_cover = HEAD|UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 		to_chat(usr, "You close the coat and activate the coils.")
 	else if(open == 0)
 		open = 1
 		icon_state = initial(icon_state)
 		inv_hide_flags = HIDEHOLSTER
-		cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+		cold_protection_cover = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 		to_chat(usr, "You open the coat and deactivate the coils.")
 	else //in case some goofy admin switches icon states around without switching the icon_open or icon_closed
 		to_chat(usr, "You attempt to zip-up the zipper on your [src], before promptly realising how silly you are.")

@@ -5,10 +5,12 @@
 	icon = 'icons/turf/outdoors.dmi'
 	icon_state = "seashallow" // So it shows up in the map editor as water.
 	var/water_state = "water_shallow"
+	var/water_file = 'icons/turf/outdoors.dmi'
 	var/under_state = "rock"
 	edge_icon_state = "water_shallow"
 	slowdown = 4
 	outdoors = TRUE
+	turf_flags = TURF_FLAG_ERODING
 
 	layer = WATER_FLOOR_LAYER
 
@@ -17,6 +19,8 @@
 	var/depth = 1 // Higher numbers indicates deeper water.
 
 	var/reagent_type = "water"
+
+	var/can_fish = TRUE
 
 /turf/simulated/floor/water/Initialize(mapload)
 	. = ..()
@@ -28,7 +32,7 @@
 	..() // To get the edges.
 
 	icon_state = under_state // This isn't set at compile time in order for it to show as water in the map editor.
-	var/image/water_sprite = image(icon = 'icons/turf/outdoors.dmi', icon_state = water_state, layer = WATER_LAYER)
+	var/image/water_sprite = image(icon = water_file, icon_state = water_state, layer = WATER_LAYER)
 	add_overlay(water_sprite)
 
 /turf/simulated/floor/water/attackby(obj/item/O as obj, mob/user as mob)
@@ -91,7 +95,7 @@
 
 /turf/simulated/floor/water/pre_fishing_query(obj/item/fishing_rod/rod, mob/user)
 	. = ..()
-	if(.)
+	if(!can_fish || .)
 		return
 	if(!GetComponent(/datum/component/fishing_spot))
 		AddComponent(/datum/component/fishing_spot, /datum/fish_source/ocean)
@@ -112,11 +116,13 @@
 	desc = "Don't worry, it's not closed."
 	under_state = "pool"
 	outdoors = FALSE
+	can_fish = FALSE
 
 /turf/simulated/floor/water/deep/pool
 	name = "deep pool"
 	desc = "Don't worry, it's not closed."
 	outdoors = FALSE
+	can_fish = FALSE
 
 /mob/living/proc/can_breathe_water()
 	return FALSE

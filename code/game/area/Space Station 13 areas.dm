@@ -31,7 +31,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	power_equip = 0
 	power_environ = 0
 	ambience = AMBIENCE_SPACE
-	area_flags = AREA_FLAG_EXTERNAL
+	area_flags = AREA_FLAG_EXTERNAL | AREA_FLAG_ERODING
 	is_outside = OUTSIDE_YES
 	nightshift_level = NONE
 
@@ -71,7 +71,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/shuttle
 	requires_power = 0
-	area_flags = AREA_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_ERODING
 	sound_env = SMALL_ENCLOSED
 	area_limited_icon_smoothing = /area/shuttle
 
@@ -864,6 +864,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/maintenance/trash_pit
 	name = "\improper Trash Pit"
+	area_flags = AREA_FLAG_ERODING
 
 /area/maintenance/cargo_research
 	name = "Cargo Research Maintenance"
@@ -1154,6 +1155,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/hallway/secondary/exit
 	name = "\improper Escape Shuttle Hallway"
 	icon_state = "escape"
+	area_flags = AREA_FLAG_ERODING
 
 /area/hallway/secondary/construction
 	name = "\improper Construction Area"
@@ -1199,6 +1201,9 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/hallway/secondary/entry/docking_lounge
 	name = "\improper Docking Lounge"
 	icon_state = "docking_lounge"
+
+/area/hallway/secondary/escape
+	area_flags = AREA_FLAG_ERODING
 
 /area/hallway/secondary/escape/dock_escape_pod_hallway_port
 	name = "\improper Dock Escape Pod Hallway Port"
@@ -1967,6 +1972,9 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Engineering Atmos EVA"
 	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
+/area/engineering/atmos/workshop
+	name = "\improper Atmospherics Workshop"
+
 /area/engineering/drone_fabrication
 	name = "\improper Engineering Drone Fabrication"
 	icon_state = "drone_fab"
@@ -2702,6 +2710,8 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/quartermaster/garage
 	name = "\improper Cargo Garage"
 
+/area/quartermaster/cargo_shelter_dock
+	name = "\improper Cargo Shuttle Dock"
 // SCIENCE
 
 /area/rnd
@@ -3547,52 +3557,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/tcommsat/powercontrol
 	name = "\improper Telecommunications Power Control"
 	icon_state = "tcomsatwest"
-
-
-//Exploration areas
-/area/exploration
-	name = "\improper Exploration Foyer"
-	icon_state = "purple"
-	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_HALLWAYS
-
-/area/exploration/excursion_dock
-	name = "\improper Excursion Shuttle Dock"
-	icon_state = "hangar"
-	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
-
-/area/exploration/courser_dock
-	name = "\improper Courser Shuttle Dock"
-	icon_state = "hangar"
-	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
-
-/area/exploration/explorer_prep
-	name = "\improper Explorer Prep Room"
-	icon_state = "locker"
-	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
-
-/area/exploration/pilot_prep
-	name = "\improper Pilot Prep Room"
-	icon_state = "locker"
-	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
-
-/area/exploration/meeting
-	name = "\improper Explorer Meeting Room"
-	icon_state = "northeast"
-	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_LEISURE
-
-/area/exploration/showers
-	name = "\improper Explorer Showers"
-	icon_state = "restrooms"
-	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_LEISURE
-
-/area/exploration/medical
-	name = "\improper Exploration Med Station"
-	icon_state = "medbay"
-	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
-
-/area/exploration/pathfinder_office
-	name = "\improper Pathfinder's Office"
-	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/station/protean_nanite_room
 	name = "\improper Nanite Chamber"

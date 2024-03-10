@@ -116,7 +116,7 @@
 /area/space)
 "at" = (
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1379;
 	master_tag = "eng_north_airlock";
 	name = "exterior access button";
@@ -170,7 +170,7 @@
 /area/engineering/engine_room)
 "aw" = (
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1379;
 	master_tag = "eng_north_airlock";
 	name = "interior access button";
@@ -224,11 +224,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump";
-	pixel_x = -28
-	},
+/obj/machinery/power/apc/west_mount,
 /turf/simulated/floor,
 /area/engineering/engine_gas)
 "az" = (
@@ -323,7 +319,6 @@
 	dir = 2;
 	icon_state = "pdoor0";
 	id = "SupermatterPort";
-	layer = 3.3;
 	name = "Reactor Blast Door";
 	opacity = 0
 	},
@@ -399,11 +394,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/engine_room)
 "aO" = (
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/cyan{
 	icon_state = "0-2"
 	},
@@ -449,7 +440,6 @@
 	dir = 2;
 	icon_state = "pdoor0";
 	id = "SupermatterPort";
-	layer = 3.3;
 	name = "Reactor Blast Door";
 	opacity = 0
 	},
@@ -552,7 +542,6 @@
 	dir = 2;
 	icon_state = "pdoor0";
 	id = "SupermatterPort";
-	layer = 3.3;
 	name = "Reactor Blast Door";
 	opacity = 0
 	},
@@ -750,11 +739,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/machinery/light_switch{
 	pixel_y = 24
 	},
@@ -1132,7 +1117,6 @@
 	dir = 2;
 	icon_state = "pdoor0";
 	id = "SupermatterPort";
-	layer = 3.3;
 	name = "Reactor Blast Door";
 	opacity = 0
 	},
@@ -1276,7 +1260,7 @@
 /area/space)
 "ct" = (
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1379;
 	master_tag = "eng_south_airlock";
 	name = "exterior access button";
@@ -1329,7 +1313,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1379;
 	master_tag = "eng_south_airlock";
 	name = "interior access button";
@@ -1438,7 +1422,6 @@
 	dir = 2;
 	icon_state = "pdoor0";
 	id = "SupermatterPort";
-	layer = 3.3;
 	name = "Reactor Blast Door";
 	opacity = 0
 	},

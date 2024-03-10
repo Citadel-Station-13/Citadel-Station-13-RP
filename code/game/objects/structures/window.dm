@@ -14,7 +14,7 @@
 	can_be_unanchored = TRUE
 	pass_flags_self = ATOM_PASS_GLASS
 	CanAtmosPass = ATMOS_PASS_PROC
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	rad_flags = RAD_BLOCK_CONTENTS | RAD_NO_CONTAMINATE
 
 	plane = OBJ_PLANE
@@ -242,7 +242,7 @@
 	else if (istype(object, /obj/item/stack/cable_coil) && considered_reinforced && construction_state == WINDOW_STATE_UNSECURED && !istype(src, /obj/structure/window/reinforced/polarized))
 		var/obj/item/stack/cable_coil/C = object
 		if (C.use(1))
-			playsound(src.loc, 'sound/effects/sparks1.ogg', 75, TRUE)
+			playsound(src.loc, /datum/soundbyte/grouped/sparks, 75, TRUE)
 			user.visible_message(
 				message = SPAN_NOTICE("\The [user] begins to wire \the [src] for electrochromic tinting."),
 				self_message = SPAN_NOTICE("You begin to wire \the [src] for electrochromic tinting."),
@@ -721,59 +721,6 @@
 	else
 		animate(src, color = GLASS_COLOR_FROSTED, time=5)
 		set_opacity(TRUE)
-
-/obj/machinery/button/windowtint
-	name = "window tint control"
-	icon = 'icons/obj/power.dmi'
-	icon_state = "light0"
-	desc = "A remote control switch for polarized windows."
-	var/range = 7
-
-/obj/machinery/button/windowtint/attack_hand(mob/user, list/params)
-	if (..())
-		return TRUE
-	else
-		toggle_tint()
-
-/obj/machinery/button/windowtint/proc/toggle_tint()
-	use_power(5)
-
-	active = !active
-	update_appearance()
-
-	for (var/obj/structure/window/reinforced/polarized/target_window in range(src, range))
-		if (target_window.id == id || !target_window.id)
-			INVOKE_ASYNC(target_window, TYPE_PROC_REF(/obj/structure/window/reinforced/polarized, toggle))
-
-/obj/machinery/button/windowtint/power_change()
-	..()
-	if (active && !powered(power_channel))
-		toggle_tint()
-
-/obj/machinery/button/windowtint/update_icon_state()
-	. = ..()
-	icon_state = "light[active]"
-
-/obj/machinery/button/windowtint/attackby(obj/item/object, mob/user)
-	if (istype(object, /obj/item/multitool))
-		var/obj/item/multitool/MT = object
-		if (!id)
-			// If no ID is set yet (newly built button?) let them select an ID for first-time use!
-			var/new_id = tgui_input_text(
-				user = user,
-				message = "Enter the ID for the window.",
-				title = name,
-			)
-			if (new_id && user.get_active_held_item() != object && in_range(src, user))
-				id = new_id
-				to_chat(user, SPAN_NOTICE("The new ID of \the [src] is [id]"))
-		if (id)
-			// It already has an ID (or they just set one), buffer it for copying to windows.
-			to_chat(user, SPAN_NOTICE("You store \the [src] in \the [MT]'s buffer!"))
-			MT.connectable = src
-			MT.update_appearance()
-		return TRUE
-	return ..()
 
 /obj/structure/window/wooden
 	name = "wooden panel"

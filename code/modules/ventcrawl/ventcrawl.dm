@@ -132,13 +132,13 @@ var/list/ventcrawl_machinery = list(
 			if(vent_found.air_contents && !issilicon(src))
 
 				switch(vent_found.air_contents.temperature)
-					if(0 to BODYTEMP_COLD_DAMAGE_LIMIT)
+					if(0 to LEGACY_BODYTEMP_COLD_DAMAGE_THRESHOLD)
 						to_chat(src, "<span class='danger'>You feel a painful freeze coming from the vent!</span>")
-					if(BODYTEMP_COLD_DAMAGE_LIMIT to T0C)
+					if(LEGACY_BODYTEMP_COLD_DAMAGE_THRESHOLD to T0C)
 						to_chat(src, "<span class='warning'>You feel an icy chill coming from the vent.</span>")
-					if(T0C + 40 to BODYTEMP_HEAT_DAMAGE_LIMIT)
+					if(T0C + 40 to LEGACY_BODYTEMP_HEAT_DAMAGE_THRESHOLD)
 						to_chat(src, "<span class='warning'>You feel a hot wash coming from the vent.</span>")
-					if(BODYTEMP_HEAT_DAMAGE_LIMIT to INFINITY)
+					if(LEGACY_BODYTEMP_HEAT_DAMAGE_THRESHOLD to INFINITY)
 						to_chat(src, "<span class='danger'>You feel a searing heat coming from the vent!</span>")
 
 				switch(vent_found.air_contents.return_pressure())

@@ -9,7 +9,7 @@
 	item_state = "syringe_kit"
 	materials_base = list(MAT_STEEL = 500)
 	throw_force = 5
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	throw_speed = 4
 	throw_range = 10
 	preserve_item = 1

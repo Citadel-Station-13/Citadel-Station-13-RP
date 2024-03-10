@@ -390,7 +390,9 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 					//If they are a human, do damage (doesn't hurt other mobs...?)
 					if(Ht)
 						for(var/obj/item/organ/external/I in Ht.organs)
-							I.take_damage(calculated_damage, 0) // 5 damage min, 26.25 damage max, depending on size & RNG. If they're only stepped on once, the damage will (probably not...) heal over time.
+							I.inflict_bodypart_damage(
+								brute = calculated_damage,
+							)
 						Ht.drip(0.1)
 						add_attack_logs(src,tmob,"Crushed underfoot (run, about [calculated_damage] damage)")
 
@@ -401,8 +403,10 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 
 					//If they are a human, do damage (doesn't hurt other mobs...?)
 					if(Ht)
-						for(var/obj/item/organ/I in Ht.organs)
-							I.take_damage(calculated_damage, 0)
+						for(var/obj/item/organ/external/E in Ht.get_damageable_external_organs())
+							E.inflict_bodypart_damage(
+								brute = calculated_damage,
+							)
 						Ht.drip(3)
 						add_attack_logs(src,tmob,"Crushed underfoot (walk, about [calculated_damage] damage)")
 

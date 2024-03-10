@@ -28,17 +28,6 @@
 	maptext_height = 480
 	maptext_width = 480
 
-/atom/movable/screen/close
-	name = "close"
-
-/atom/movable/screen/close/Click()
-	if(master)
-		if(istype(master, /obj/item/storage))
-			var/obj/item/storage/S = master
-			S.close(usr)
-	return 1
-
-
 /atom/movable/screen/item_action
 	var/obj/item/owner
 
@@ -74,23 +63,6 @@
 
 /atom/movable/screen/grab/attackby()
 	return
-
-
-/atom/movable/screen/storage
-	name = "storage"
-
-/atom/movable/screen/storage/Click()
-	if(!usr.canClick())
-		return 1
-	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_STORAGE))
-		return 1
-	if (istype(usr.loc,/obj/mecha)) // stops inventory actions in a mech
-		return 1
-	if(master)
-		var/obj/item/I = usr.get_active_held_item()
-		if(I)
-			usr.ClickOn(master)
-	return 1
 
 /atom/movable/screen/zone_sel
 	name = "damage zone"

@@ -4,7 +4,7 @@
 	item_state = "xenobio"
 	icon = 'icons/obj/device.dmi'
 	origin_tech = list(TECH_BIO = 1)
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	throw_force = 0
 	throw_speed = 3
 	throw_range = 7

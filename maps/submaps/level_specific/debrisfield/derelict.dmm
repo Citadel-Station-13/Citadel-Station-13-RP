@@ -369,10 +369,8 @@
 /area/debrisfield/derelict)
 "bJ" = (
 /obj/structure/cable,
-/obj/machinery/power/apc{
-	alarms_hidden = 1;
-	name = "south bump";
-	pixel_y = -24
+/obj/machinery/power/apc/south_mount{
+	alarms_hidden = 1
 	},
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/debrisfield/derelict)
@@ -549,11 +547,8 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc{
-	alarms_hidden = 1;
-	dir = 4;
-	name = "east bump";
-	pixel_x = 28
+/obj/machinery/power/apc/east_mount{
+	alarms_hidden = 1
 	},
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/debrisfield/derelict)
@@ -608,11 +603,8 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc{
-	alarms_hidden = 1;
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24
+/obj/machinery/power/apc/north_mount{
+	alarms_hidden = 1
 	},
 /turf/simulated/floor/greengrid/airless,
 /area/debrisfield/derelict)
@@ -638,11 +630,8 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc{
-	alarms_hidden = 1;
-	dir = 4;
-	name = "east bump";
-	pixel_x = 28
+/obj/machinery/power/apc/east_mount{
+	alarms_hidden = 1
 	},
 /turf/simulated/floor/plating/external,
 /area/debrisfield/derelict)

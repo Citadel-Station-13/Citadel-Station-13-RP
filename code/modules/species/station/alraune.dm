@@ -124,7 +124,7 @@
 	return TRUE //eh, why not? Aquatic plants are a thing.
 
 
-/datum/species/alraune/handle_environment_special(mob/living/carbon/human/H)
+/datum/species/alraune/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
 	if(H.inStasisNow()) // if they're in stasis, they won't need this stuff.
 		return
 
@@ -332,7 +332,7 @@
 		else
 			temp_adj /= (BODYTEMP_HEAT_DIVISOR * 5)	//don't raise temperature as much as if we were directly exposed
 
-		var/relative_density = 8 * breath.total_moles / (MOLES_CELLSTANDARD * BREATH_PERCENTAGE)
+		var/relative_density = 8 * breath.total_moles / (CELL_MOLES * BREATH_PERCENTAGE)
 		temp_adj *= relative_density
 
 		if (temp_adj > BODYTEMP_HEATING_MAX) temp_adj = BODYTEMP_HEATING_MAX

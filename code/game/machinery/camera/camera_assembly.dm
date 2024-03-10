@@ -1,9 +1,9 @@
 /obj/item/camera_assembly
 	name = "camera assembly"
 	desc = "A pre-fabricated security camera kit, ready to be assembled and mounted to a surface."
-	icon = 'icons/obj/monitors_vr.dmi'
+	icon = 'icons/machinery/security_camera.dmi'
 	icon_state = "cameracase"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	anchored = 0
 
 	materials_base = list(MAT_STEEL = 700, MAT_GLASS = 300)
@@ -35,7 +35,7 @@
 				anchored = 1
 				state = 1
 				update_icon()
-				auto_turn()
+				auto_orient_wallmount_single()
 				return
 
 		if(1)
@@ -95,14 +95,10 @@
 				input = sanitizeSafe(input(usr, "How would you like to name the camera?", "Set Camera Name", camera_name ? camera_name : temptag), MAX_NAME_LEN)
 
 				state = 4
-				var/obj/machinery/camera/C = new(src.loc)
-				src.loc = C
+				var/obj/machinery/camera/auto_mount/C = new(src.loc)
+				forceMove(C)
 				C.assembly = src
-
-				C.auto_turn()
-
 				C.replace_networks(uniqueList(tempnetwork))
-
 				C.c_tag = input
 
 				for(var/i = 5; i >= 0; i -= 1)

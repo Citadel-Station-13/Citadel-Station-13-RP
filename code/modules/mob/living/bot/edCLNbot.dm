@@ -81,7 +81,7 @@
 	qdel(src)
 	return
 
-/mob/living/bot/cleanbot/edCLN/ui_data(mob/user)
+/mob/living/bot/cleanbot/edCLN/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 	data["version"] = "v3.0"
 	data["rgbpanel"] = TRUE

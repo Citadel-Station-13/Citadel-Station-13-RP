@@ -5,6 +5,10 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	))
 
 /client/proc/security_checks()
+	set waitfor = FALSE
+	security_checks_impl()
+
+/client/proc/security_checks_impl()
 	if(byond_version < 513)
 		security_kick("BYOND 512 and prior clients are too outdated.", tell_user = TRUE)
 		return FALSE

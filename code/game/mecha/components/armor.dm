@@ -3,7 +3,7 @@
 	name = "mecha plating"
 	icon = 'icons/mecha/mech_component.dmi'
 	icon_state = "armor"
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 	origin_tech = list(TECH_DATA = 1, TECH_ENGINEERING = 2)
 	materials_base = list(MAT_STEEL = 5000, MAT_GLASS = 1000)
 

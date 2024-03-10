@@ -24,8 +24,15 @@
 	complexity = 20
 	cooldown_per_use = 30 SECONDS
 	inputs = list()
-	outputs = list("volume used" = IC_PINTYPE_NUMBER,"self reference" = IC_PINTYPE_SELFREF)
-	activators = list("create smoke" = IC_PINTYPE_PULSE_IN,"on smoked" = IC_PINTYPE_PULSE_OUT)
+	outputs = list(
+		"volume used" = IC_PINTYPE_NUMBER,
+		"self reference" = IC_PINTYPE_SELFREF,
+		)
+	activators = list(
+		"create smoke" = IC_PINTYPE_PULSE_IN,
+		"on smoked" = IC_PINTYPE_PULSE_OUT,
+		"push ref" = IC_PINTYPE_PULSE_IN
+		)
 	spawn_flags = IC_SPAWN_RESEARCH
 	origin_tech = list(TECH_ENGINEERING = 3, TECH_DATA = 3, TECH_BIO = 3)
 	volume = 100
@@ -40,15 +47,20 @@
 	push_data()
 	..()
 
-/obj/item/integrated_circuit/reagent/smoke/do_work()
-	playsound(src.loc, 'sound/effects/smoke.ogg', 50, 1, -3)
-	var/datum/effect_system/smoke_spread/chem/smoke_system = new()
-	smoke_system.set_up(reagents, 10, 0, get_turf(src))
-	spawn(0)
-		for(var/i = 1 to 8)
-			smoke_system.start()
-		reagents.clear_reagents()
-	activate_pin(2)
+/obj/item/integrated_circuit/reagent/smoke/do_work(ord)
+	switch(ord)
+		if(1)
+			playsound(src.loc, 'sound/effects/smoke.ogg', 50, 1, -3)
+			var/datum/effect_system/smoke_spread/chem/smoke_system = new()
+			smoke_system.set_up(reagents, 10, 0, get_turf(src))
+			spawn(0)
+				for(var/i = 1 to 8)
+					smoke_system.start()
+				reagents.clear_reagents()
+			activate_pin(2)
+		if(4)
+			set_pin_data(IC_OUTPUT, 2, WEAKREF(src))
+			push_data()
 
 /obj/item/integrated_circuit/reagent/injector
 	name = "integrated hypo-injector"
@@ -60,17 +72,22 @@
 	volume = 30
 	complexity = 20
 	cooldown_per_use = 6 SECONDS
-	inputs = list("target" = IC_PINTYPE_REF, "injection amount" = IC_PINTYPE_NUMBER)
-	inputs_default = list("2" = 5)
+	inputs = list(
+		"target" = IC_PINTYPE_REF,
+		"injection amount" = IC_PINTYPE_NUMBER
+		)
+	inputs_default = list(
+		"2" = 5
+		)
 	outputs = list(
 		"volume used" = IC_PINTYPE_NUMBER,
 		"self reference" = IC_PINTYPE_SELFREF
 		)
 	activators = list(
-		"push ref" = IC_PINTYPE_PULSE_IN,
 		"inject" = IC_PINTYPE_PULSE_IN,
 		"on injected" = IC_PINTYPE_PULSE_OUT,
-		"on fail" = IC_PINTYPE_PULSE_OUT
+		"on fail" = IC_PINTYPE_PULSE_OUT,
+		"push ref" = IC_PINTYPE_PULSE_IN
 		)
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 	power_draw_per_use = 15
@@ -127,8 +144,13 @@
 			activate_pin(3)
 			return
 		if(isliving(AM))
-			var/mob/living/L = AM
-			if(!L.can_inject(null, 0))
+			var/mob/living/carbon/human/L = AM
+			var/bypass
+			if(assembly == L.r_store || assembly == L.l_store)
+				bypass = TRUE //The injector has been put under the thick layer
+			if(!L.can_inject(null, 0, BP_TORSO, bypass))
+				L.visible_message("<span class='danger'>[acting_object] failed to pierce [L] thick clothing!</span>", \
+									"<span class='userdanger'>[acting_object] failed to pierce your thick clothing!</span>")
 				activate_pin(3)
 				return
 
@@ -138,8 +160,8 @@
 			L.visible_message("<span class='danger'>[acting_object] is trying to inject [L]!</span>", \
 								"<span class='userdanger'>[acting_object] is trying to inject you!</span>")
 			busy = TRUE
-			if(do_atom(src, L, extra_checks=CALLBACK(L, TYPE_PROC_REF(/mob/living, can_inject),null,0)))
-				reagents.trans_to(L, transfer_amount)
+			if(do_atom(src, L, extra_checks=CALLBACK(L, TYPE_PROC_REF(/mob/living, can_inject),null,0,BP_TORSO,bypass)))
+				reagents.trans_to_mob(L, transfer_amount)
 				log_attack(src, L, "attempted to inject [L] which had [contained]")
 				L.visible_message("<span class='danger'>[acting_object] injects [L] with its needle!</span>", \
 									"<span class='userdanger'>[acting_object] injects you with its needle!</span>")
@@ -159,13 +181,28 @@
 		var/tramount = abs(transfer_amount)
 
 		if(isliving(AM))
-			var/mob/living/L = AM
+			var/mob/living/carbon/human/L = AM
+			var/bypass
+			if(assembly == L.r_store || assembly == L.l_store)
+				bypass = TRUE //The injector has been put under the thick layer
+			if(!L.can_inject(null, 0, BP_TORSO, bypass))
+				L.visible_message("<span class='danger'>[acting_object] failed to pierce [L] thick clothing!</span>", \
+									"<span class='userdanger'>[acting_object] failed to pierce your thick clothing!</span>")
+				activate_pin(3)
+				return
+
 			L.visible_message("<span class='danger'>[acting_object] is trying to take a blood sample from [L]!</span>", \
 								"<span class='userdanger'>[acting_object] is trying to take a blood sample from you!</span>")
 			busy = TRUE
-			if(do_atom(src, L, extra_checks=CALLBACK(L, TYPE_PROC_REF(/mob/living, can_inject),null,0)))
+			if(do_atom(src, L, extra_checks=CALLBACK(L, TYPE_PROC_REF(/mob/living, can_inject),null,0,BP_TORSO,bypass)))
 				var/mob/living/carbon/LB = L
-				if(LB.take_blood(src, tramount))
+				var/datum/reagent/B
+				B = LB.take_blood(src, tramount)
+				if(B)
+					reagents.reagent_list += B
+					reagents.update_total()
+					AM.on_reagent_change()
+					reagents.handle_reactions()
 					L.visible_message("<span class='danger'>[acting_object] takes a blood sample from [L]!</span>", \
 					"<span class='userdanger'>[acting_object] takes a blood sample from you!</span>")
 				else
@@ -182,12 +219,14 @@
 				activate_pin(3)
 				return
 
-			if(!AM.can_be_injected_by())
+			if(!AM.is_open_container())
 				activate_pin(3)
 				return
 			tramount = min(tramount, AM.reagents.total_volume)
 			AM.reagents.trans_to(src, tramount)
+	push_vol()
 	activate_pin(2)
+
 
 
 
@@ -353,11 +392,14 @@
 	complexity = 4
 	inputs = list()
 	outputs = list("volume used" = IC_PINTYPE_NUMBER,"self reference" = IC_PINTYPE_REF)
-	activators = list()
+	activators = list("push ref" = IC_PINTYPE_PULSE_IN)
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 	origin_tech = list(TECH_ENGINEERING = 2, TECH_DATA = 2, TECH_BIO = 2)
 	volume = 60
 
+/obj/item/integrated_circuit/reagent/storage/do_work()
+	set_pin_data(IC_OUTPUT, 2, WEAKREF(src))
+	push_data()
 
 /obj/item/integrated_circuit/reagent/storage/interact(mob/user)
 	set_pin_data(IC_OUTPUT, 2, WEAKREF(src))
@@ -382,7 +424,7 @@
 	name = "chemical heater"
 	desc = "Stores liquid inside the device away from electrical components.  It can store up to 60u.  It will heat or cool the reagents \
 	to the target temperature when turned on."
-	icon_state = "heater"
+	icon_state = "reagent_storage"
 	complexity = 8
 	inputs = list(
 		"target temperature" = IC_PINTYPE_NUMBER,
@@ -422,7 +464,7 @@
 	category_text = "Reagent"
 	name = "reagent funnel"
 	desc = "A funnel with a small pump that lets you refill an internal reagent storage."
-	icon_state = "reagent_funnel"
+	icon_state = "reagent_pump"
 	can_be_asked_input = TRUE
 	inputs = list(
 		"target" = IC_PINTYPE_REF
@@ -456,7 +498,7 @@
 	name = "tubing"
 	desc = "A length of flexible piping that can be used to connect one container to another."
 	extended_desc = "Use these to supply your fuel cell with never-ending phoron! Beware of leaks."
-	icon_state = "reagent_funnel"
+	icon_state = "reagent_pump"
 	atom_flags = OPENCONTAINER
 	inputs = list(
 		"toggle cap"		= IC_PINTYPE_BOOLEAN,
@@ -492,7 +534,7 @@
 /obj/item/integrated_circuit/reagent/storage/grinder
 	name = "reagent grinder"
 	desc = "This is a reagent grinder.  It accepts a ref to something, and refines it into reagents.  It can store up to 100u."
-	icon_state = "blender"
+	icon_state = "reagent_storage"
 	extended_desc = ""
 	inputs = list(
 		"target" = IC_PINTYPE_REF

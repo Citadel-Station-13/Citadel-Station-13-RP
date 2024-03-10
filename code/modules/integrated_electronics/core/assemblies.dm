@@ -4,7 +4,7 @@
 	name = "electronic assembly"
 	obj_flags = OBJ_RANGE_TARGETABLE | OBJ_MELEE_TARGETABLE
 	desc = "It's a case, for building small electronics with."
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	icon = 'icons/obj/integrated_electronics/electronic_setups.dmi'
 	icon_state = "setup_small"
 	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
@@ -153,7 +153,7 @@
 	return battery
 
 // TGUI
-/obj/item/electronic_assembly/ui_state(mob/user, datum/tgui_module/module)
+/obj/item/electronic_assembly/ui_state()
 	return GLOB.physical_state
 
 /obj/item/electronic_assembly/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
@@ -162,7 +162,7 @@
 		ui = new(user, src, "ICAssembly", name, parent_ui)
 		ui.open()
 
-/obj/item/electronic_assembly/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/item/electronic_assembly/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	var/total_parts = 0

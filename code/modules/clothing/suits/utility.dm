@@ -13,7 +13,7 @@
 	name = "firesuit"
 	desc = "A suit that protects against fire and heat."
 	icon_state = "fire"
-	w_class = ITEMSIZE_LARGE//bulky item
+	w_class = WEIGHT_CLASS_BULKY//bulky item
 	gas_transfer_coefficient = 0.90
 	permeability_coefficient = 0.50
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
@@ -22,9 +22,9 @@
 	weight = ITEM_WEIGHT_ARMOR_FIRE_SUIT
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
 	clothing_flags = 0
-	heat_protection = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
+	heat_protection_cover = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROTECTION_TEMPERATURE
-	cold_protection = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
+	cold_protection_cover = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
 	min_pressure_protection = 0.2 * ONE_ATMOSPHERE
 	max_pressure_protection = 20  * ONE_ATMOSPHERE
 
@@ -50,14 +50,14 @@
 	name = "bomb suit"
 	desc = "A suit designed for safety when handling explosives."
 	icon_state = "bombsuit"
-	w_class = ITEMSIZE_LARGE//bulky item
+	w_class = WEIGHT_CLASS_BULKY//bulky item
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.01
 	encumbrance = ITEM_ENCUMBRANCE_ARMOR_BOMB_SUIT
 	weight = ITEM_WEIGHT_ARMOR_BOMB_SUIT
 	armor_type = /datum/armor/station/bomb
 	inv_hide_flags = HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
-	heat_protection = UPPER_TORSO|LOWER_TORSO
+	heat_protection_cover = UPPER_TORSO|LOWER_TORSO
 	max_heat_protection_temperature = ARMOR_MAX_HEAT_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0
 
@@ -88,7 +88,7 @@
 	name = "Radiation suit"
 	desc = "A suit that protects against radiation. Label: Made with lead, do not eat insulation."
 	icon_state = "rad"
-	w_class = ITEMSIZE_LARGE//bulky item
+	w_class = WEIGHT_CLASS_BULKY//bulky item
 	gas_transfer_coefficient = 0.90
 	permeability_coefficient = 0.50
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS|FEET

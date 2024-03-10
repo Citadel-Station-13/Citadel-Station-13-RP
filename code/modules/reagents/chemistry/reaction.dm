@@ -93,7 +93,7 @@
 		result = initial(result_initial.id)
 
 /datum/chemical_reaction/proc/generate()
-	var/datum/reagent/resolved = SSchemistry.get_reagent(result)
+	var/datum/reagent/resolved = SSchemistry.fetch_reagent(result)
 	if(isnull(name))
 		name = resolved?.name || "???"
 		if(isnull(display_name) && !isnull(resolved))

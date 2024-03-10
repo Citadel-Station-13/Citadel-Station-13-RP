@@ -3,7 +3,7 @@
 
 /obj/machinery/dynamic_tool_query(obj/item/I, datum/event_args/actor/clickchain/e_args, list/hint_images = list())
 	. = list()
-	if(tool_deconstruct && !isnull(default_deconstruct) && panel_open)
+	if(tool_deconstruct && !isnull(default_deconstruct) && (!default_deconstruct_requires_panel_open || panel_open))
 		LAZYSET(.[tool_deconstruct], "deconstruct", dyntool_image_backward(tool_deconstruct))
 	if(tool_unanchor && !isnull(default_unanchor))
 		LAZYSET(.[tool_unanchor], anchored? "unanchor" : "anchor", anchored? dyntool_image_backward(tool_unanchor) : dyntool_image_forward(tool_unanchor))
@@ -15,7 +15,7 @@
 	if(INTERACTING_WITH_FOR(e_args.performer, src, INTERACTING_FOR_CONSTRUCTION))
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	START_INTERACTING_WITH(e_args.performer, src, INTERACTING_FOR_CONSTRUCTION)
-	if(function == tool_deconstruct && !isnull(default_deconstruct))
+	if(function == tool_deconstruct && !isnull(default_deconstruct) && (!default_deconstruct_requires_panel_open || panel_open))
 		if(default_deconstruction_dismantle(I, e_args, flags = flags))
 			. = CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 		. = CLICKCHAIN_DO_NOT_PROPAGATE

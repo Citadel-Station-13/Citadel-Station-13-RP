@@ -15,7 +15,7 @@
 	jurisdictions including NT space, APP guns are officially classed as mining equipment rather than firearms."
 	fire_sound = 'sound/weapons/blaster.ogg'
 	slot_flags = SLOT_BELT
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	projectile_type = /obj/projectile/bullet/particle
 	origin_tech = list(TECH_COMBAT = 3, TECH_MAGNET = 2, TECH_MATERIAL = 2)
 	fire_delay = 10
@@ -31,7 +31,7 @@
 	desc = "A Kawashima Material Technology Model E-8 anti-particle projector. A down-scale of the same technology behind the Model 9 anti-particle cannon, fitted with an enhanced power-generation unit for theoretically infinite recharges."
 	slot_flags = SLOT_BELT
 	damage_force = 8 //looks heavier than a pistol
-	w_class = ITEMSIZE_LARGE	//bigger than a pistol, too.
+	w_class = WEIGHT_CLASS_BULKY	//bigger than a pistol, too.
 	heavy = TRUE
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 5, TECH_POWER = 3, TECH_MAGNET = 3)
 	fire_delay = 6	//This one's not a handgun, it should have the same fire delay as everything else
@@ -53,7 +53,7 @@
 	projectile_type = /obj/projectile/bullet/particle/heavy
 	battery_lock = 1
 	fire_delay = 15 // fires faster than a laser cannon. c'mon, it's an awesome-but-impractical endgame gun.
-	w_class = ITEMSIZE_HUGE // So it can't fit in a backpack.
+	w_class = WEIGHT_CLASS_HUGE // So it can't fit in a backpack.
 	damage_force = 10
 	one_handed_penalty = 60 // The thing's heavy and huge.
 	accuracy = 70
@@ -164,7 +164,7 @@
 	icon = 'icons/obj/gun/energy.dmi'
 	icon_state = "pressurelock"
 	desc = "A safety interlock that can be installed in an antiparticle projector. It prevents the weapon from discharging in pressurised environments."
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
 
 // projectiles below

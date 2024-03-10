@@ -495,6 +495,13 @@
 	set name = "Emit Sparks"
 	spark_system.start()
 
+/mob/living/silicon/robot/verb/toggle_cover()
+	set category = "Robot Commands"
+	set name = "Toggle Cover"
+	locked = !locked
+	to_chat(src, "You [ locked ? "lock" : "unlock"] your interface.")
+	updateicon()
+
 // this function returns the robots jetpack, if one is installed
 /mob/living/silicon/robot/proc/installed_jetpack()
 	if(module)
@@ -673,8 +680,8 @@
 			to_chat(user, "Close the panel first.")
 		else if(cell)
 			to_chat(user, "There is a power cell already installed.")
-		else if(W.w_class != ITEMSIZE_NORMAL)
-			to_chat(user, "\The [W] is too [W.w_class < ITEMSIZE_NORMAL ? "small" : "large"] to fit here.")
+		else if(W.w_class != WEIGHT_CLASS_NORMAL)
+			to_chat(user, "\The [W] is too [W.w_class < WEIGHT_CLASS_NORMAL ? "small" : "large"] to fit here.")
 		else
 			if(!user.attempt_insert_item_for_installation(W, src))
 				return
@@ -1139,7 +1146,7 @@
 				B = module_state_3
 			var/turf/tile = loc
 			if(isturf(tile))
-				B.gather_all(tile, src, 1) //Shhh, unless the bag fills, don't spam the borg's chat with stuff that's going on every time they move!
+				B.obj_storage.interacted_mass_pickup(new /datum/event_args/actor(src), tile)
 		return
 
 	if(scrubbing)

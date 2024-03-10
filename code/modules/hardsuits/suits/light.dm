@@ -104,7 +104,6 @@
 		/obj/item/tank,
 		/obj/item/suit_cooling_unit,
 		/obj/item/cell,
-		/obj/item/storage/backpack,
 		/obj/item/bluespace_radio,
 	)
 

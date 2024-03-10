@@ -35,10 +35,9 @@
 				if(!H.gloves)
 					affecting = H.get_organ(type)
 					H.afflict_stun(20 * 3)
-		if(affecting)
-			if(affecting.take_damage(1, 0))
-				H.UpdateDamageIcon()
-			H.update_health()
+		affecting?.inflict_bodypart_damage(
+			brute = 1,
+		)
 	else if(ismouse(target))
 		var/mob/living/simple_mob/animal/passive/mouse/M = target
 		visible_message("<font color='red'><b>SPLAT!</b></font>")
@@ -100,7 +99,12 @@
 	..()
 
 
-/obj/item/assembly/mousetrap/on_found(var/mob/living/finder)
+/obj/item/assembly/mousetrap/on_containing_storage_opening(datum/event_args/actor/actor, datum/object_system/storage/storage)
+	. = ..()
+
+	var/mob/living/finder = actor.performer
+	if(!istype(finder))
+		return
 	if(armed)
 		finder.visible_message("<span class='warning'>[finder] accidentally sets off [src], breaking their fingers.</span>", \
 							   "<span class='warning'>You accidentally trigger [src]!</span>")

@@ -8,7 +8,7 @@
 	damage_tier = MELEE_TIER_LIGHT
 	throw_speed = 3
 	throw_range = 7
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	item_icons = list(
 			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_material.dmi',
 			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_material.dmi',

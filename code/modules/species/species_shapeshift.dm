@@ -543,7 +543,7 @@ var/list/wrapped_species_by_ref = list()
 		visible_message(SPAN_NOTICE("\The [src]'s \"hair\" composition seems to change."))
 		update_hair()
 
-/datum/species/shapeshifter/handle_environment_special(mob/living/carbon/human/H)
+/datum/species/shapeshifter/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
 	// Heal remaining damage.
 	if(H.fire_stacks >= 0 && heal_rate > 0)
 		if(H.getBruteLoss() || H.getFireLoss() || H.getOxyLoss() || H.getToxLoss())

@@ -38,9 +38,17 @@
 	/// Are byond mouse events beyond the window passed in to the ui
 	var/mouse_hooked = FALSE
 	/// The Parent UI
+	//? STOP USING THIS. USE MODULES. ~SILICONS
 	var/datum/tgui/parent_ui
 	/// Children of this UI
+	//? STOP USING THIS. USE MODULES. ~SILICONS
 	var/list/children = list()
+
+	//* Modules *//
+	/// datums to IDs
+	var/list/datum/modules_registered
+	/// processed modules
+	var/list/datum/modules_processed
 
 /**
  * public
@@ -73,6 +81,8 @@
 /datum/tgui/Destroy()
 	user = null
 	src_object = null
+	for(var/datum/module in modules_registered)
+		unregister_module(module)
 	return ..()
 
 /**
@@ -125,6 +135,10 @@
 	if(mouse_hooked)
 		window.set_mouse_macro()
 	SStgui.on_open(src)
+	// todo: should these hooks be here?
+	src_object.on_ui_open(user, src)
+	for(var/datum/module as anything in modules_registered)
+		module.on_ui_open(user, src, TRUE)
 	return TRUE
 
 /**
@@ -146,12 +160,15 @@
 		// the error message properly.
 		window.release_lock()
 		window.close(can_be_suspended)
-		src_object.ui_close(user)
 		SStgui.on_close(src)
 	state = null
 	if(parent_ui)
 		parent_ui.children -= src
 	parent_ui = null
+	// todo: should these hooks be here?
+	src_object.on_ui_close(user, src)
+	for(var/datum/module as anything in modules_registered)
+		module.on_ui_close(user, src, TRUE)
 	qdel(src)
 
 /**
@@ -168,6 +185,8 @@
  * public
  *
  * Enable/disable passing through byond mouse events to the window
+ *
+ * todo: this is like the least documented proc in history wtf
  *
  * required value bool Enable/disable hooking.
  */
@@ -241,24 +260,6 @@
 	))
 
 /**
- * public
- *
- * Send a partial update to the client of only the provided data lists
- * Does not update config at all
- *
- * WARNING: Do not use this unless you know what you are doing
- *
- * required data The data to send
- * optional force bool Send an update even if UI is not interactive.
- */
-/datum/tgui/proc/push_data(data, force)
-	if(!user.client || !initialized || closing)
-		return
-	if(!force && status < UI_UPDATE)
-		return
-	window.send_message("data", data)
-
-/**
  * private
  *
  * Package the data to send to the UI, as JSON.
@@ -287,14 +288,18 @@
 			"observer" = isobserver(user),
 		),
 	)
-	var/list/modules
+	var/list/modules = list()
 	// static first
 	if(with_static_data)
 		json_data["static"] = src_object.ui_static_data(user, src, state)
-		modules = src_object.ui_module_static(user, src, state)
+		for(var/datum/module as anything in modules_registered)
+			var/id = modules_registered[module]
+			modules[id] = module.ui_static_data(user, src, TRUE)
 	if(with_data)
 		json_data["data"] = src_object.ui_data(user, src, state)
-		modules = (modules || list()) | src_object.ui_module_data(user, src, state)
+		for(var/datum/module as anything in (with_static_data? modules_registered : modules_processed))
+			var/id = modules_registered[module]
+			modules[id] = modules[id] | module.ui_data(user, src, TRUE)
 	if(modules)
 		json_data["modules"] = modules
 	if(src_object.tgui_shared_states)
@@ -383,7 +388,7 @@
 				// we're kind of stuck doing this
 				// maybe in the future we'll just have ui modules list but for now
 				// eh.
-				if(src_object.ui_module_route(action, payload, src, id))
+				if(src_object.ui_route(action, payload, src, id))
 					SStgui.update_uis(src_object)
 				return FALSE
 	switch(type)
@@ -407,3 +412,100 @@
 			LAZYINITLIST(src_object.tgui_shared_states)
 			src_object.tgui_shared_states[href_list["key"]] = href_list["value"]
 			SStgui.update_uis(src_object)
+
+//* Advanced API - Updates *//
+
+/**
+ * public
+ *
+ * Send a partial update to the client of only the provided data lists
+ * Does not update config at all
+ *
+ * WARNING: Do not use this unless you know what you are doing
+ *
+ * required data The data to send
+ * optional force bool Send an update even if UI is not interactive.
+ */
+/datum/tgui/proc/push_data(data, force)
+	if(!user.client || !initialized || closing)
+		return
+	if(!force && status < UI_UPDATE)
+		return
+	window.send_message("data", data)
+
+/**
+ * public
+ *
+ * Send an update to module data.
+ * As with normal data, this will be combined by a reducer
+ * to overwrite only where necessary, so partial pushes
+ * can work fine.
+ *
+ * WARNING: Do not use this unless you know what you are doing.
+ *
+ * @params
+ * * updates - list(id = list(data...), ...) of modules to update.
+ * * force - (optional) send update even if UI is not interactive
+ */
+/datum/tgui/proc/push_modules(list/updates, force)
+	if(isnull(user.client) || !initialized || closing)
+		return
+	if(!force && status < UI_UPDATE)
+		return
+	window.send_message("modules", updates)
+
+//* Module System *//
+
+/**
+ * Registers a datum as a module into this UI.
+ *
+ * @params
+ * * module - the module in question
+ * * id - the id to use for the module
+ * * interface - the interface identifier (e.g. TGUILatheContrrol)
+ * * process - should this be a processed / auto updated module?
+ */
+/datum/tgui/proc/register_module(datum/module, id, interface, process = TRUE)
+	if(isnull(interface) && istype(module, /datum/tgui_module))
+		var/datum/tgui_module/actual_module = module
+		interface = actual_module.tgui_id
+	LAZYINITLIST(modules_registered)
+	modules_registered[module] = id
+	if(process)
+		LAZYINITLIST(modules_processed)
+		modules_processed += module
+	RegisterSignal(module, COMSIG_PARENT_QDELETING, PROC_REF(module_deleted))
+	RegisterSignal(module, COMSIG_DATUM_PUSH_UI_DATA, PROC_REF(module_send_data))
+
+/datum/tgui/proc/unregister_module(datum/module)
+	modules_processed -= module
+	modules_registered -= module
+	UnregisterSignal(module, list(
+		COMSIG_PARENT_QDELETING,
+		COMSIG_DATUM_PUSH_UI_DATA,
+	))
+
+/datum/tgui/proc/module_deleted(datum/source)
+	SIGNAL_HANDLER
+	unregister_module(source)
+
+/datum/tgui/proc/module_send_data(datum/source, mob/user, datum/tgui/ui, list/data)
+	if(!isnull(user) && user != user)
+		return
+	if(!isnull(ui) && ui != src)
+		return
+	// todo: this is force because otherwise static data can be desynced. should static data be on another proc instead?
+	push_modules(
+		updates = list(
+			(modules_registered[source]) = data,
+		),
+		force = TRUE,
+	)
+
+//* Helpers - Invoked from ui_act() *//
+
+/**
+ * Lazy check to see if the host window is still interactive.
+ */
+/datum/tgui/proc/still_interactive()
+	return status == UI_INTERACTIVE

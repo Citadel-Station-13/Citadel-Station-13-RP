@@ -9,11 +9,11 @@
 	suffix = "rust.dmm"
 	display_name = list("Budget Star", "Bane of Synthetics", "Glowy Field", "Funny Spinny EM Field", "Protean Rarity Enforcement")
 
-/datum/map_template/engine/tether/singulo
+/*/datum/map_template/engine/tether/singulo
 	name = "ProcEngine_Tether_Singulo"
 	desc = "Lord Singuloth"
 	suffix = "singulo.dmm"
-	display_name = list("Hypnosis Swirls", "Lord Singuloth", "The Devourer of Stations", "Contained Black Hole", "The Forbidden Succ")
+	display_name = list("Hypnosis Swirls", "Lord Singuloth", "The Devourer of Stations", "Contained Black Hole", "The Forbidden Succ")*/
 
 /datum/map_template/engine/tether/supermatter
 	name = "ProcEngine_Tether_Supermatter"

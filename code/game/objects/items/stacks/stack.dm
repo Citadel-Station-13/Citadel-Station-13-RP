@@ -79,7 +79,7 @@
 		ui = new(user, src, "StackCrafting")
 		ui.open()
 
-/obj/item/stack/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/item/stack/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["recipes"] = tgui_recipes()
 	.["maxAmount"] = max_amount
@@ -94,7 +94,7 @@
 		assembled[++assembled.len] = recipe.tgui_recipe_data()
 	return assembled
 
-/obj/item/stack/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/item/stack/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["amount"] = get_amount()
 
@@ -173,9 +173,9 @@
 			S.use_charge(charge_costs[i] * used) // Doesn't need to be deleted
 		return TRUE
 
-/obj/item/stack/proc/add(extra)
+/obj/item/stack/proc/add(extra, force)
 	if(!uses_charge)
-		if(amount + extra > get_max_amount())
+		if((amount + extra > get_max_amount()) && !force)
 			return FALSE
 		else
 			amount += extra
@@ -218,18 +218,18 @@
 
 /// Creates a new stack with the specified amount.
 // todo: refactor and combine /change_stack into here
-/obj/item/stack/proc/split(tamount)
+/obj/item/stack/proc/split(tamount, atom/where, force)
 	if (!amount)
 		return null
 	if (uses_charge)
 		return null
 
-	var/transfer = max(min(tamount, src.amount, initial(max_amount)), 0)
+	var/transfer = max(min(tamount, src.amount, force? INFINITY : initial(max_amount)), 0)
 
 	var/orig_amount = src.amount
 	if (transfer && src.use(transfer))
 		var/make_type = isnull(split_type)? type : split_type
-		var/obj/item/stack/newstack = new make_type(loc, transfer, FALSE)
+		var/obj/item/stack/newstack = new make_type(where, transfer, FALSE)
 		newstack.color = color
 		if (prob(transfer/orig_amount * 100))
 			transfer_fingerprints_to(newstack)

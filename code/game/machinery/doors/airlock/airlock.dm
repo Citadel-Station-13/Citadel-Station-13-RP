@@ -100,9 +100,8 @@ GLOBAL_REAL_VAR(airlock_typecache) = typecacheof(list(
 	var/color_fill_file = 'icons/obj/doors/station/fill_color.dmi'
 	var/stripe_file = 'icons/obj/doors/station/stripe.dmi'
 	var/stripe_fill_file = 'icons/obj/doors/station/fill_stripe.dmi'
-	var/glass_file = 'icons/obj/doors/station/fill_glass.dmi'
+	//var/glass_file = 'icons/obj/doors/station/fill_glass.dmi'
 	var/bolts_file = 'icons/obj/doors/station/lights_bolts.dmi'
-	var/deny_file = 'icons/obj/doors/station/lights_deny.dmi'
 	var/lights_file = 'icons/obj/doors/station/lights_green.dmi'
 	var/panel_file = 'icons/obj/doors/station/panel.dmi'
 	var/sparks_damaged_file = 'icons/obj/doors/station/sparks_damaged.dmi'
@@ -115,7 +114,8 @@ GLOBAL_REAL_VAR(airlock_typecache) = typecacheof(list(
 
 	/// Bandaid around a problem.
 	var/last_spark = 0
-
+	var/tinted
+	var/id_tint
 
 /obj/machinery/door/airlock/proc/set_airlock_overlays(state)
 	var/icon/color_overlay
@@ -138,26 +138,21 @@ GLOBAL_REAL_VAR(airlock_typecache) = typecacheof(list(
 			color_overlay = new(color_file)
 			color_overlay.Blend(door_color, ICON_MULTIPLY)
 			GLOB.airlock_icon_cache["[ikey]"] = color_overlay
-	if(glass)
-		if (window_color && window_color != "none")
-			var/ikey = "[airlock_type]-[window_color]-windowcolor"
-			filling_overlay = GLOB.airlock_icon_cache["[ikey]"]
-			if (!filling_overlay)
-				filling_overlay = new(glass_file)
-				filling_overlay.Blend(window_color, ICON_MULTIPLY)
-				GLOB.airlock_icon_cache["[ikey]"] = filling_overlay
-		else
-			filling_overlay = glass_file
-	else
-		if(door_color && !(door_color == "none"))
-			var/ikey = "[airlock_type]-[door_color]-fillcolor"
-			filling_overlay = GLOB.airlock_icon_cache["[ikey]"]
-			if(!filling_overlay)
-				filling_overlay = new(color_fill_file)
+
+	if(door_color && !(door_color == "none"))
+		var/ikey = "[airlock_type]-[door_color]-fillcolor-[glass]"
+		filling_overlay = GLOB.airlock_icon_cache["[ikey]"]
+		if(!filling_overlay)
+			filling_overlay = new(fill_file)
+			if(!glass || tinted)
 				filling_overlay.Blend(door_color, ICON_MULTIPLY)
-				GLOB.airlock_icon_cache["[ikey]"] = filling_overlay
-		else
-			filling_overlay = fill_file
+			else
+				filling_overlay.Blend(window_color, ICON_MULTIPLY)
+			GLOB.airlock_icon_cache["[ikey]"] = filling_overlay
+	else
+		filling_overlay = fill_file
+
+
 	if(stripe_color && !(stripe_color == "none"))
 		var/ikey = "[airlock_type]-[stripe_color]-stripe"
 		stripe_overlay = GLOB.airlock_icon_cache["[ikey]"]
@@ -178,11 +173,6 @@ GLOBAL_REAL_VAR(airlock_typecache) = typecacheof(list(
 			if(AIRLOCK_CLOSED)
 				if(lights && locked)
 					lights_overlay = bolts_file
-					set_light(1, 2, l_color = COLOR_RED_LIGHT)
-
-			if(AIRLOCK_DENY)
-				if(lights)
-					lights_overlay = deny_file
 					set_light(1, 2, l_color = COLOR_RED_LIGHT)
 
 			if(AIRLOCK_EMAG)
@@ -223,6 +213,7 @@ GLOBAL_REAL_VAR(airlock_typecache) = typecacheof(list(
 		sparks_overlay,
 		damage_overlay,
 	))
+	compile_overlays()
 
 /obj/machinery/door/airlock/attack_generic(var/mob/living/user, var/damage)
 	// todo: refactor
@@ -559,7 +550,7 @@ About the new airlock wires panel:
 		ui.open()
 	return TRUE
 
-/obj/machinery/door/airlock/ui_data(mob/user)
+/obj/machinery/door/airlock/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 
 	var/list/power = list()
@@ -666,14 +657,14 @@ About the new airlock wires panel:
 			src.attack_alien(user)
 			return
 
-	if(src.p_open)
+	if(src.panel_open)
 		user.set_machine(src)
 		wires.Interact(user)
 	else
 		..(user)
 	return
 
-/obj/machinery/door/airlock/ui_act(action, params)
+/obj/machinery/door/airlock/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 	if(!user_allowed(usr))
@@ -774,7 +765,7 @@ About the new airlock wires panel:
 		open()
 
 /obj/machinery/door/airlock/proc/can_remove_electronics()
-	return src.p_open && (operating < 0 || (!operating && welded && !src.arePowerSystemsOn() && density && (!src.locked || (machine_stat & BROKEN))))
+	return src.panel_open && (operating < 0 || (!operating && welded && !src.arePowerSystemsOn() && density && (!src.locked || (machine_stat & BROKEN))))
 
 /obj/machinery/door/airlock/attackby(obj/item/C, mob/user as mob)
 	//TO_WORLD("airlock attackby src [src] obj [C] mob [user]")
@@ -801,14 +792,14 @@ About the new airlock wires panel:
 		else
 			return
 	else if(C.is_screwdriver())
-		if (src.p_open)
+		if (src.panel_open)
 			if (machine_stat & BROKEN)
 				to_chat(usr, "<span class='warning'>The panel is broken and cannot be closed.</span>")
 			else
-				src.p_open = 0
+				src.panel_open = 0
 				playsound(src, C.tool_sound, 50, 1)
 		else
-			src.p_open = 1
+			src.panel_open = 1
 			playsound(src, C.tool_sound, 50, 1)
 		src.update_icon()
 	else if(C.is_wirecutter())
@@ -869,7 +860,7 @@ About the new airlock wires panel:
 	..()
 
 /obj/machinery/door/airlock/atom_break()
-	src.p_open = 1
+	src.panel_open = 1
 	if (secured_wires)
 		lock()
 	. = ..()
@@ -926,6 +917,16 @@ About the new airlock wires panel:
 		if(killthis)
 			LEGACY_EX_ACT(killthis, 2, null)//Smashin windows
 	return ..()
+
+/obj/machinery/door/airlock/set_opacity_on_close()
+	if(visible)
+		if(glass)
+			if(tinted)
+				set_opacity(1)
+			else
+				set_opacity(0)
+		else
+			set_opacity(1)
 
 /obj/machinery/door/airlock/can_open(var/forced=0)
 	if(!forced)
@@ -1178,6 +1179,19 @@ About the new airlock wires panel:
 		src.lock()
 	return
 
+/obj/machinery/door/airlock/proc/toggle()
+	if(!glass)
+		return
+	tinted = !tinted
+	if(tinted)
+		icon = initial(icon)
+		if(!operating && density)
+			set_opacity(1)
+	else
+		if(!operating)
+			set_opacity(0)
+
+	set_airlock_overlays(src.state)
 
 /obj/machinery/door/airlock/rcd_values(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
 	switch(passed_mode)

@@ -82,7 +82,7 @@
 		ui = new(user, src, "GasTemperatureSystem", name)
 		ui.open()
 
-/obj/machinery/atmospherics/component/unary/heater/ui_data(mob/user)
+/obj/machinery/atmospherics/component/unary/heater/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 
 	data["on"] = use_power ? 1 : 0
@@ -100,7 +100,7 @@
 
 	return data
 
-/obj/machinery/atmospherics/component/unary/heater/ui_act(action, params)
+/obj/machinery/atmospherics/component/unary/heater/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

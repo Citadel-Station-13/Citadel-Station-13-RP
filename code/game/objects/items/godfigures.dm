@@ -8,7 +8,7 @@
 	throw_speed = 1
 	throw_range = 4
 	throw_force = 10
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/godfig/attack_self(mob/user)
 	. = ..()

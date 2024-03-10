@@ -1087,7 +1087,7 @@
 		src.log_append_to_last("Armor saved.")
 		if(istype(A, /mob/living))
 			var/mob/living/M = A
-			M.take_organ_damage(10)
+			M.take_random_targeted_damage(brute = 10)
 	else if(istype(A, /obj))
 		var/obj/O = A
 		if(O.throw_force)

@@ -35,7 +35,7 @@
 	/// The layout key for this ui (this is used on the frontend, leave it as "default" unless you know what you're doing)
 	var/layout_key = "default"
 	/// Optional layout key for additional ui header content to include
-	var/layout_header_key = "default_header"
+	// var/layout_header_key = "default_header"
 	/// This sets whether to re-render the ui layout with each update (default 0, turning on will break the map ui if it's in use)
 	var/auto_update_layout = FALSE
 	/// This sets whether to re-render the ui content with each update (default 1)
@@ -342,8 +342,8 @@
 	// before the UI opens, add the layout files based on the layout key
 	add_stylesheet("layout_[layout_key].css")
 	add_template("layout", "layout_[layout_key].tmpl")
-	if (layout_header_key)
-		add_template("layoutHeader", "layout_[layout_header_key].tmpl")
+	// if (layout_header_key)
+	// 	add_template("layoutHeader", "layout_[layout_header_key].tmpl")
 
 	var/head_content = ""
 
@@ -445,7 +445,7 @@
  */
 /datum/nanoui/proc/close()
 	is_auto_updating = 0
-	SSnanoui.ui_closed(src)
+	SSnanoui.on_ui_closed(src)
 	user << browse(null, "window=[window_id]")
 	for(var/datum/nanoui/child in children)
 		child.close()

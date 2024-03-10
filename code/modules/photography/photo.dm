@@ -35,7 +35,7 @@
 	worn_render_flags = WORN_RENDER_INHAND_ALLOW_DEFAULT
 	inhand_default_type = INHAND_DEFAULT_ICON_GENERAL
 	inhand_state = "paper"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	drop_sound = 'sound/items/drop/paper.ogg'
 	pickup_sound = 'sound/items/pickup/paper.ogg'
 

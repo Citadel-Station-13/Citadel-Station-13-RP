@@ -20,8 +20,8 @@
 
 /mob/living/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
 	. = ..()
-	if(s_active && !CheapReachability(s_active))
-		s_active.close(src)
+	if(active_storage)
+		addtimer(CALLBACK(active_storage, TYPE_PROC_REF(/datum/object_system/storage, reconsider_mob_viewable), src), 0)
 	if(forced && isnull(depth_staged) && isturf(loc))
 		var/turf/T = loc
 		depth_staged = T.depth_level()

@@ -3,31 +3,28 @@
 	desc = "Sterilized equipment within. Do not contaminate."
 	icon = 'icons/obj/forensics.dmi'
 	icon_state = "dnakit"
-	can_hold = list(/obj/item/forensics/swab)
-	storage_slots = 14
-
-/obj/item/storage/box/swabs/PopulateContents()
-	for(var/i = 1 to storage_slots) // Fill 'er up.
-		new /obj/item/forensics/swab(src)
+	insertion_whitelist = list(/obj/item/forensics/swab)
+	max_items = 14
+	starts_with = list(
+		/obj/item/forensics/swab = 14,
+	)
 
 /obj/item/storage/box/evidence
 	name = "evidence bag box"
 	desc = "A box claiming to contain evidence bags."
-	storage_slots = 7
-	can_hold = list(/obj/item/evidencebag)
-
-/obj/item/storage/box/evidence/PopulateContents()
-	for(var/i = 1 to storage_slots)
-		new /obj/item/evidencebag(src)
+	max_items = 7
+	insertion_whitelist = list(/obj/item/evidencebag)
+	starts_with = list(
+		/obj/item/evidencebag = 7,
+	)
 
 /obj/item/storage/box/fingerprints
 	name = "box of fingerprint cards"
 	desc = "Sterilized equipment within. Do not contaminate."
 	icon = 'icons/obj/forensics.dmi'
 	icon_state = "dnakit"
-	can_hold = list(/obj/item/sample/print)
-	storage_slots = 14
-
-/obj/item/storage/box/fingerprints/PopulateContents()
-	for(var/i = 1 to storage_slots)
-		new /obj/item/sample/print(src)
+	insertion_whitelist = list(/obj/item/sample/print)
+	max_items = 14
+	starts_with = list(
+		/obj/item/sample/print = 14,
+	)

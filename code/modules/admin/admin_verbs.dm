@@ -38,7 +38,6 @@ var/list/admin_verbs_admin = list(
 	/client/proc/cmd_admin_subtle_message,	//send an message to somebody as a 'voice in their head',
 	/client/proc/cmd_admin_icsubtle_message, //send a message to someone as a voice from centcom
 	/client/proc/cmd_admin_delete,		//delete an instance/object/mob/etc,
-	/client/proc/cmd_admin_check_contents,	//displays the contents of an instance,
 	/client/proc/cmd_admin_check_player_logs,	//checks a player's attack logs,
 	/client/proc/cmd_admin_check_dialogue_logs,	//checks a player's dialogue logs,
 	/datum/admins/proc/access_news_network,	//allows access of newscasters,
@@ -274,7 +273,6 @@ var/list/admin_verbs_hideable = list(
 	/client/proc/toggle_view_range,
 	/client/proc/cmd_admin_subtle_message,
 	/client/proc/cmd_admin_icsubtle_message,
-	/client/proc/cmd_admin_check_contents,
 	/client/proc/cmd_admin_check_player_logs,
 	/client/proc/cmd_admin_check_dialogue_logs,
 	/datum/admins/proc/access_news_network,
@@ -1120,6 +1118,8 @@ var/list/admin_verbs_event_manager = list(
 	var/list/client/eligible = GLOB.clients.Copy()
 	for(var/i in eligible)
 		var/client/C = i
+		if(!C.initialized)
+			eligible -= C
 		if(!isliving(C.mob))
 			eligible -= C
 	for(var/role in GLOB.event_role_list)

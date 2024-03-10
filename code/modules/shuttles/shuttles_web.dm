@@ -205,7 +205,7 @@
 
 	return ..()
 
-/obj/machinery/computer/shuttle_control/web/ui_data(mob/user)
+/obj/machinery/computer/shuttle_control/web/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 
 	var/list/routes[0]
@@ -289,7 +289,7 @@
 
 	return data
 
-/obj/machinery/computer/shuttle_control/web/ui_act(action, list/params)
+/obj/machinery/computer/shuttle_control/web/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

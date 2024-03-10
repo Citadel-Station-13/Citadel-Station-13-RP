@@ -3,7 +3,7 @@
 	desc = "A magazine containing steel flechettes."
 	icon = 'icons/obj/ammo.dmi'
 	icon_state = "5.56"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	materials_base = list(MAT_STEEL = 1800)
 	origin_tech = list(TECH_COMBAT = 1)
 	var/remaining = 9

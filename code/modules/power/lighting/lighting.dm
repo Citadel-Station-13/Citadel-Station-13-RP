@@ -296,6 +296,14 @@ var/global/list/light_type_cache = list()
 	var/brightness_power_ns
 	var/brightness_color_ns
 
+	//Used for shuttles, workaround for broken mounting
+	//TODO: Remove when legacy walls are nuked
+	var/old_wall = FALSE
+
+	#ifdef IN_MAP_EDITOR // So its actually visible in the mapping editor
+	icon_state = "tube_map"
+	#endif
+
 /obj/machinery/light/flicker
 	auto_flicker = TRUE
 
@@ -419,6 +427,8 @@ var/global/list/light_type_cache = list()
 	light_type = /obj/item/light/tube/large
 	shows_alerts = FALSE
 
+/obj/machinery/light/spot/no_nightshift
+	nightshift_allowed = FALSE
 /obj/machinery/light/spot/flicker
 	auto_flicker = TRUE
 
@@ -496,6 +506,10 @@ var/global/list/light_type_cache = list()
 
 /obj/machinery/light/setDir(ndir)
 	. = ..()
+
+	if(old_wall)
+		return
+
 	base_pixel_y = 0
 	base_pixel_x = 0
 	var/turf/T = get_step(get_turf(src), src.dir)
@@ -1009,4 +1023,4 @@ var/global/list/light_type_cache = list()
 	desc = "A lamp shade for a lamp."
 	icon = 'icons/obj/lighting.dmi'
 	icon_state = "lampshade"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY

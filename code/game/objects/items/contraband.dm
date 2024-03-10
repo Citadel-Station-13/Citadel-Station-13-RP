@@ -47,7 +47,7 @@
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "deliverycrate5"
 	item_state = "table_parts"
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 
 /obj/item/stolenpackage/attack_self(mob/user)
 	. = ..()
@@ -145,27 +145,27 @@
 /obj/item/storage/fancy/cigar/havana
 	name = "\improper Havana cigar case"
 	desc = "Save these for the fancy-pantses at the next CentCom black tie reception. You can't blow the smoke from such majestic stogies in just anyone's face."
-	can_hold = list(/obj/item/clothing/mask/smokable/cigarette/cigar/havana)
+	insertion_whitelist = list(/obj/item/clothing/mask/smokable/cigarette/cigar/havana)
 	starts_with = list(/obj/item/clothing/mask/smokable/cigarette/cigar/havana = 7)
 
 /obj/item/storage/fancy/cigar/cohiba
 	name = "\improper Cohiba Robusto cigar case"
 	desc = "If Havana cigars were meant for the black tie reception, then these are meant to be family heirlooms instead of being smoked. These are the pinnacle of smoking luxury, make no mistake."
-	can_hold = list(/obj/item/clothing/mask/smokable/cigarette/cigar/cohiba)
+	insertion_whitelist = list(/obj/item/clothing/mask/smokable/cigarette/cigar/cohiba)
 	starts_with = list(/obj/item/clothing/mask/smokable/cigarette/cigar/cohiba = 7)
 
 /obj/item/storage/fancy/cigar/taj
 	name = "\improper S'rendarr's Hand case"
 	desc = "A luxury medicinal cigar exported from Adhomai. The trifecta flag on the case showing a symbol of unity amongst producers of S'rendarr's from all Tajaran nations."
 	icon_state = "cigarcase-taj"
-	can_hold = list(/obj/item/clothing/mask/smokable/cigarette/cigar/taj)
+	insertion_whitelist = list(/obj/item/clothing/mask/smokable/cigarette/cigar/taj)
 	starts_with = list(/obj/item/clothing/mask/smokable/cigarette/cigar/taj = 7)
 
 /obj/item/storage/fancy/cigar/taj/premium
 	name = "\improper S'rendarr's Own case"
 	desc = "Truly luxurious medicinal cigars bearing the proof marks of the Confederate Commonwealth, the \"united\" galactic lobbying body of all three Tajaran states, marking these cigars as the best Adhomai has to offer."
 	icon_state = "cigarcase-tajalt"
-	can_hold = list(/obj/item/clothing/mask/smokable/cigarette/cigar/taj/premium)
+	insertion_whitelist = list(/obj/item/clothing/mask/smokable/cigarette/cigar/taj/premium)
 	starts_with = list(/obj/item/clothing/mask/smokable/cigarette/cigar/taj/premium = 7)
 
 
@@ -175,7 +175,7 @@
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "deliverycrate5"
 	item_state = "table_parts"
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 
 /obj/item/stolenpackageplus/attack_self(mob/user)
 	. = ..()
@@ -240,7 +240,7 @@
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "deliverycrate5"
 	item_state = "table_parts"
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 
 /obj/item/mechasalvage/attack_self(mob/user)
 	. = ..()

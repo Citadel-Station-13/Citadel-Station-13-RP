@@ -32,7 +32,7 @@
 
 	holstered = I
 	holstered.add_fingerprint(user)
-	w_class = max(w_class, holstered.w_class)
+	set_weight_class(max(w_class, holstered.w_class))
 	user.visible_message("<span class='notice'>[user] [holster_verb]s \the [holstered].</span>", "<span class='notice'>You [holster_verb] \the [holstered].</span>")
 	name = "occupied [initial(name)]"
 	playsound(user, "[sound_in]", 75, 0)
@@ -63,7 +63,7 @@
 		user.put_in_hands(holstered)
 		playsound(user, "[sound_out]", 75, 0)
 		holstered.add_fingerprint(user)
-		w_class = initial(w_class)
+		set_weight_class(initial(w_class))
 		clear_holster()
 
 /obj/item/clothing/accessory/holster/attack_hand(mob/user, list/params)

@@ -83,7 +83,7 @@
 			return
 	to_chat(user, SPAN_NOTICE("You find nothing in [src]."))
 
-/obj/structure/filingcabinet/ui_state(mob/user, datum/tgui_module/module)
+/obj/structure/filingcabinet/ui_state()
 	return GLOB.physical_state
 
 /obj/structure/filingcabinet/ui_interact(mob/user, datum/tgui/ui)
@@ -93,7 +93,7 @@
 		ui.set_autoupdate(FALSE)
 		ui.open()
 
-/obj/structure/filingcabinet/ui_data(mob/user)
+/obj/structure/filingcabinet/ui_data(mob/user, datum/tgui/ui)
 	var/list/files = list()
 	for(var/obj/item/P in src)
 		files.Add(list(list(
@@ -103,7 +103,7 @@
 
 	return list("contents" = files)
 
-/obj/structure/filingcabinet/ui_act(action, params)
+/obj/structure/filingcabinet/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

@@ -9,7 +9,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	icon = 'icons/obj/pda.dmi'
 	icon_state = "pda"
 	item_state = "electronic"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = SLOT_ID | SLOT_BELT
 	rad_flags = RAD_BLOCK_CONTENTS
 	item_flags = ITEM_NOBLUDGEON
@@ -970,7 +970,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 						if("2")		// Eject pAI device
 							var/turf/T = get_turf_or_move(src.loc)
 							if(T)
-								pai.loc = T
+								pai.forceMove(T)
 								pai = null
 
 		else
@@ -1084,7 +1084,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 				M.put_in_hands(O)
 				to_chat(usr, "<span class='notice'>You remove \the [O] from \the [src].</span>")
 				return
-		O.loc = get_turf(src)
+		O.forceMove(get_turf(src))
 	else
 		to_chat(usr, "<span class='notice'>This PDA does not have a pen in it.</span>")
 

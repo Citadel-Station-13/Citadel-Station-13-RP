@@ -10,6 +10,7 @@
 	icon = 'icons/obj/structures/window_spawners.dmi'
 	icon_state = "wingrille"
 	density = TRUE
+	layer = WINDOW_LAYER
 	anchored = 1.0
 	pressure_resistance = 4*ONE_ATMOSPHERE
 	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED

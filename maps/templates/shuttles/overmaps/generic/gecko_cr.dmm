@@ -194,7 +194,7 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/gecko_cr_cockpit)
 "eP" = (
@@ -578,8 +578,7 @@
 /turf/simulated/floor/reinforced,
 /area/shuttle/gecko_cr)
 "lV" = (
-/obj/machinery/firealarm{
-	dir = 4;
+/obj/machinery/fire_alarm/east_mount{
 	pixel_x = -27
 	},
 /obj/structure/closet/crate{
@@ -707,17 +706,14 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/gecko_cr_cockpit)
 "pf" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
-/obj/machinery/firealarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/north_mount,
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -876,9 +872,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/machinery/firealarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/north_mount,
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/gecko_cr_engineering)
@@ -940,7 +934,7 @@
 	},
 /obj/machinery/meter,
 /obj/effect/catwalk_plated/dark,
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/plating,
 /area/shuttle/gecko_cr)
 "te" = (
@@ -1051,9 +1045,7 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 4
 	},
-/obj/machinery/firealarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/north_mount,
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/structure/railing/grey{
 	dir = 4
@@ -1245,9 +1237,7 @@
 /area/shuttle/gecko_cr)
 "yR" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
-/obj/machinery/firealarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/reinforced,
 /area/shuttle/gecko_cr)
 "yX" = (
@@ -2025,7 +2015,7 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/gecko_cr_engineering)
 "Mf" = (
@@ -2105,8 +2095,7 @@
 /area/shuttle/gecko_cr_engineering)
 "NM" = (
 /obj/structure/handrail,
-/obj/machinery/firealarm{
-	dir = 4;
+/obj/machinery/fire_alarm/east_mount{
 	pixel_x = -27
 	},
 /turf/simulated/floor/plating,
@@ -2315,10 +2304,7 @@
 /area/shuttle/gecko_cr_cockpit)
 "PW" = (
 /obj/structure/handrail,
-/obj/machinery/firealarm{
-	dir = 8;
-	pixel_x = 27
-	},
+/obj/machinery/fire_alarm/west_mount,
 /turf/simulated/floor/plating,
 /area/shuttle/gecko_cr_engineering)
 "Ql" = (
@@ -2490,9 +2476,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
-/obj/machinery/firealarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/north_mount,
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/gecko_cr_engineering)
@@ -2520,10 +2504,7 @@
 /turf/simulated/floor/reinforced,
 /area/shuttle/gecko_cr)
 "Tw" = (
-/obj/machinery/firealarm{
-	dir = 8;
-	pixel_x = 27
-	},
+/obj/machinery/fire_alarm/west_mount,
 /obj/structure/bed/pod,
 /obj/item/bedsheet/blue,
 /turf/simulated/floor/tiled/techfloor,
@@ -2676,8 +2657,7 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 8
 	},
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -26
 	},
 /obj/structure/handrail{

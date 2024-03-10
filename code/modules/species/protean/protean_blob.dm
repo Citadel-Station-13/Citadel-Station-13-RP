@@ -73,6 +73,9 @@
 		add_verb(src, /mob/living/simple_mob/protean_blob/proc/appearanceswitch)
 		add_verb(src, /mob/living/simple_mob/protean_blob/proc/rig_transform)
 		add_verb(src, /mob/living/simple_mob/protean_blob/proc/leap_attack)
+		add_verb(src, /mob/living/simple_mob/protean_blob/proc/chameleon_apperance)
+		add_verb(src, /mob/living/simple_mob/protean_blob/proc/chameleon_color)
+		add_verb(src, /mob/living/simple_mob/protean_blob/proc/chameleon_apperance_rig)
 		add_verb(src, /mob/living/proc/usehardsuit)
 		INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, update_health))
 	else
@@ -145,16 +148,10 @@
 	return FALSE //ok so tasers hurt protean blobs what the fuck
 
 /mob/living/simple_mob/protean_blob/adjustBruteLoss(var/amount,var/include_robo)
-	if(humanform)
-		humanform.adjustBruteLossByPart(amount, BP_TORSO)
-	else
-		..()
+	return humanform? humanform.take_targeted_damage(brute = amount, body_zone = BP_TORSO) : ..()
 
 /mob/living/simple_mob/protean_blob/adjustFireLoss(var/amount,var/include_robo)
-	if(humanform)
-		humanform.adjustFireLossByPart(amount, BP_TORSO)
-	else
-		..()
+	return humanform? humanform.take_targeted_damage(burn = amount, body_zone = BP_TORSO) : ..()
 
 // citadel hack - FUCK YOU DIE CORRECTLY THIS ENTIRE FETISH RACE IS A SORRY MISTAKE
 /mob/living/simple_mob/protean_blob/death(gibbed, deathmessage = "dissolves away, leaving only a few spare parts!")
@@ -530,6 +527,11 @@
 			icon_living = "puddle0"
 			update_icon()
 
+	if(istype(loc, /obj/item/holder))
+		var/obj/item/holder/H = loc
+		H.sync()
+
+
 /mob/living/simple_mob/protean_blob/proc/leap_attack()
 	set name = "Pounce"
 	set desc = "Allows a protean blob to launch itself at people."
@@ -560,7 +562,7 @@
 		return
 
 	visible_message("<span class='warning'>[src] coils itself up like a spring, preparing to leap at [target]!</span>")
-	if(do_after(src, 7.5 SECONDS, target)) //7.5 seconds.
+	if(do_after(src, 1 SECOND, target)) //1 second
 		if(buckled || pinned.len)
 			return
 
@@ -569,7 +571,10 @@
 		src.forceMove(H)
 
 		switch(src.zone_sel.selecting)
-			if(BP_GROIN)
+			if(BP_L_LEG)
+				targeted_area = SLOT_ID_UNIFORM //fetish_code.rtf
+				target_displayname = "body"
+			if(BP_R_LEG)
 				targeted_area = SLOT_ID_UNIFORM //fetish_code.rtf
 				target_displayname = "body"
 			if(BP_TORSO)
@@ -581,6 +586,24 @@
 			if(O_MOUTH)
 				targeted_area = SLOT_ID_MASK
 				target_displayname = "face"
+			if(BP_R_HAND)
+				targeted_area = SLOT_ID_GLOVES
+				target_displayname = "body"
+			if(BP_L_HAND)
+				targeted_area = SLOT_ID_GLOVES
+				target_displayname = "body"
+			if(BP_GROIN)
+				targeted_area = SLOT_ID_BACK
+				target_displayname = "back"
+			if(BP_L_FOOT)
+				targeted_area = SLOT_ID_SHOES
+				target_displayname = "feet"
+			if(BP_R_FOOT)
+				targeted_area = SLOT_ID_SHOES
+				target_displayname = "feet"
+			if(O_EYES)
+				targeted_area = SLOT_ID_GLASSES
+				target_displayname = "eyes"
 
 		if(target.equip_to_slot_if_possible(H, targeted_area, INV_OP_IGNORE_DELAY | INV_OP_SILENT))
 			visible_message("<span class='danger'>[src] leaps at [target]'s [target_displayname]!</span>")
@@ -588,6 +611,140 @@
 			visible_message("<span class='notice'>[src] leaps at [target]'s [target_displayname] and bounces off harmlessly!</span>")
 		H.sync(src)
 		return
+
+/mob/living/simple_mob/protean_blob/proc/chameleon_apperance()
+	set name = "Chameleon Change"
+	set desc = "Allows a protean blob to change or reset its apperance when worn."
+	set category = "Abilities"
+
+	if(!istype(loc, /obj/item/holder))
+		to_chat(src, "<span class='notice'>You can't do that while not being held or worn.</span>")
+		return
+
+	var/obj/item/holder/H = loc
+	var/chosen_list
+	var/icon_file
+	switch(input(src,"What type of clothing would you like to mimic or reset appearance?","Mimic Clothes") as null|anything in list("under", "suit", "hat", "gloves", "shoes", "back", "mask", "glasses", "belt", "ears", "headsets", "reset"))
+		if("reset")
+			H.color = initial(H.color)
+			H.icon_override = null
+			H.sync(src)
+			return
+		if("under")
+			chosen_list = GLOB.clothing_under
+			icon_file = 'icons/mob/clothing/uniform.dmi'
+		if("suit")
+			chosen_list = GLOB.clothing_suit
+			icon_file = 'icons/mob/clothing/suits.dmi'
+		if("hat")
+			chosen_list = GLOB.clothing_head
+			icon_file = 'icons/mob/clothing/head.dmi'
+		if("gloves")
+			chosen_list = GLOB.clothing_gloves
+			icon_file = 'icons/mob/clothing/hands.dmi'
+		if("shoes")
+			chosen_list = GLOB.clothing_shoes
+			icon_file = 'icons/mob/clothing/feet.dmi'
+		if("back")
+			chosen_list = GLOB.clothing_backpack
+			icon_file = 'icons/mob/clothing/back.dmi'
+		if("mask")
+			chosen_list = GLOB.clothing_mask
+			icon_file = 'icons/mob/clothing/mask.dmi'
+		if("glasses")
+			chosen_list = GLOB.clothing_glasses
+			icon_file = 'icons/mob/clothing/eyes.dmi'
+		if("belt")
+			chosen_list = GLOB.clothing_belt
+			icon_file = 'icons/mob/clothing/belt.dmi'
+		if("ears")
+			chosen_list = GLOB.clothing_ears
+			icon_file = 'icons/mob/clothing/ears.dmi'
+		if("headsets")
+			chosen_list = GLOB.clothing_headsets
+			icon_file = 'icons/mob/clothing/ears.dmi'
+			
+	var/picked = input(src,"What clothing would you like to mimic?","Mimic Clothes") as null|anything in chosen_list
+
+	if(!ispath(chosen_list[picked]))
+		return
+
+	H.disguise(chosen_list[picked])
+	if(isnull(H.icon_override))
+		H.icon_override = icon_file
+	H.update_worn_icon()	//so our overlays update.
+	
+	if (ismob(H.loc))
+		var/mob/M = H.loc
+		M.update_inv_belt() //so our overlays
+		M.update_inv_back()
+
+
+/mob/living/simple_mob/protean_blob/proc/chameleon_apperance_rig()
+	set name = "Chameleon Hardsuit Change"
+	set desc = "Allows a protean blob to change or reset its apperance when worn."
+	set category = "Abilities"
+
+	if(!istype(loc, /obj/item/hardsuit/protean))
+		to_chat(src, "<span class='notice'>You can't do that while not being held or worn as a hardsuit.</span>")
+		return
+
+	var/obj/item/hardsuit/protean/H = loc
+	var/chosen_list
+	var/obj/item/clothing/chosenpart
+
+	switch(input(src,"What type of clothing would you like to mimic or reset appearance?","Mimic Clothes") as null|anything in list("suit", "helmet", "gloves", "boots", "reset"))
+		if("reset")
+			H.boots.disguise(H.boots.type) //disguising it as itself just sets its vars back to initial which is what we want
+			H.chest.disguise(H.chest.type)
+			H.helmet.disguise(H.helmet.type)
+			H.gloves.disguise(H.gloves.type)
+			H.boots.update_worn_icon()
+			H.chest.update_worn_icon()
+			H.helmet.update_worn_icon()
+			H.gloves.update_worn_icon()
+			return
+		if("suit")
+			chosenpart = H.chest
+			chosen_list = GLOB.clothing_suit
+		if("helmet")
+			chosenpart = H.helmet
+			chosen_list = GLOB.clothing_head
+		if("gloves")
+			chosenpart = H.gloves
+			chosen_list = GLOB.clothing_gloves
+		if("boots")
+			chosenpart = H.boots
+			chosen_list = GLOB.clothing_shoes
+
+	
+	var/picked = input(src,"What clothing would you like to mimic?","Mimic Clothes") as null|anything in chosen_list
+
+	if(!ispath(chosen_list[picked]))
+		return
+
+	chosenpart.disguise(chosen_list[picked])
+	chosenpart.update_worn_icon()
+
+
+/mob/living/simple_mob/protean_blob/proc/chameleon_color()
+	set name = "Chameleon Color"
+	set desc = "Allows a protean blob to change or reset its color when worn."
+	set category = "Abilities"
+
+	if(!istype(loc, /obj/item/holder))
+		to_chat(src, "<span class='notice'>You can't do that while not being held or worn.</span>")
+		return
+
+	var/obj/item/holder/H = loc
+	var/color_in = input("Pick a color. Cancelling sets it to default.","Color", H.color) as null|color
+	
+	if(color_in)
+		H.color = color_in
+	else
+		H.color = initial(H.color)
+	H.update_worn_icon()	//so our overlays update.
+
 
 /mob/living/simple_mob/protean_blob/make_perspective()
 	. = ..()
