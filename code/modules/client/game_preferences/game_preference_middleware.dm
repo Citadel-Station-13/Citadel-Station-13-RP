@@ -1,7 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
-/// key value ckey = value
+/// key value id = middleware instance
 GLOBAL_LIST_INIT(game_preference_middleware, init_game_preference_middleware())
 
 /proc/init_game_preference_middleware()
@@ -15,11 +15,14 @@ GLOBAL_LIST_INIT(game_preference_middleware, init_game_preference_middleware())
 /datum/game_preference_middleware
 	/// key
 	var/key
+	
 /**
  * return TRUE to stop handling
+ * 
+ * we assume the 'usr' has been validated by the prefs datum!
  */
 /datum/game_preference_middleware/proc/handle_topic(datum/game_preferences/prefs, action, list/params)
-	#warn impl
+	return FALSE
 
 /**
  * when we want to reset whatever this handles

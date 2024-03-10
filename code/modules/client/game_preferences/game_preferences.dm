@@ -27,25 +27,33 @@ GLOBAL_LIST_EMPTY(game_preferences)
  * Game prefs don't need an init order because unlike character setup, there's no dependencies, in theory.
  */
 /datum/game_preferences
+	//* Loading *//
 	/// loaded?
 	var/initialized = FALSE
-	/// toggles by key - TRUE or FALSE
-	var/list/toggles_by_key
+
+	//* Preferences *//
 	/// preferences by key - key = value
 	var/list/entries_by_key
+	/// arbitrary key access used by middleware
+	var/list/misc_by_key
 	// todo: move menu options in here and not from /datum/preferences
 
-	//* Handled by middleware-like entries *//
+	//* Middleware - Keybindings *//
 	/// keybindings - key to list of keys
 	var/list/keybindings
 
+	//* Middleware - Toggles *//
+	/// toggles by key - TRUE or FALSE
+	var/list/toggles_by_key
+
+	//* System *//
 	/// were we originally sql loaded?
 	/// used to determine if sql is authoritative when sql comes back
 	///
 	/// - if sql was originally loaded and sql comes back, we are still authoritative
 	/// - if sql wasn't originally loaded and sql comes back and a sql save exists, we are overwritten
 	/// - if a save doesn't exist, we are authoritative and are flushed to sql
-	var/authoritatively_loaded_by_sql
+	var/authoritatively_loaded_by_sql = FALSE
 	/// something fucky wucky happened and the next time sql comes back,
 	/// we need to flush data and assert authoritativeness
 	var/sql_state_desynced = FALSE
@@ -60,7 +68,7 @@ GLOBAL_LIST_EMPTY(game_preferences)
 	/// when we load from sql
 	var/authoritative_player_id
 	/// our prefs version
-	var/version
+	var/version = GAME_PREFERENCES_VERSION_CURRENT
 
 /datum/game_preferences/New(ckey)
 	src.ckey = ckey
@@ -119,16 +127,18 @@ GLOBAL_LIST_EMPTY(game_preferences)
 		toggles_by_key[key] = !!old_toggles[toggle.legacy_key]
 
 /datum/game_preferences/proc/perform_initial_load()
-	if(SSdbcore.Connect())
+	if(SSdbcore.IsConnected())
 		// sql mode
 		// load
 		if(!load_from_sql())
 			// if not, load from file
 			if(!load_from_file())
 				// if not, reset to defaults
-				reset()
+				full_reset()
 				// perform legacy migration to see if there's data
-				perform_legacy_migration()
+				if(perform_legacy_migration())
+					// something was there, set our version to legacy
+					version = GAME_PREFERENCES_VERSION_LEGACY
 			// save results to sql, as sql is authoritative
 			save_to_sql()
 		else
@@ -139,18 +149,53 @@ GLOBAL_LIST_EMPTY(game_preferences)
 		// load
 		if(!load_from_file())
 			// if not, reset to defaults
-			reset()
+			full_reset()
 			// perform legacy migration to see if there's data
-			perform_legacy_migration()
+			if(perform_legacy_migration())
+				// something was there, set our version to legacy
+				version = GAME_PREFERENCES_VERSION_LEGACY
 			// save to file
 			save_to_file()
 
+	// do we need to migrate?
+	if(version < GAME_PREFERENCES_VERSION_CURRENT)
+		// yes
+		if(!perform_migration_sequence())
+			// reset to defaults if failed
+			full_reset()
+		// perform save
+		if(SSdbcore.IsConnected())
+			save_to_sql()
+		else
+			save_to_file()
+
+	// todo: shouldn't we save after sanitize..?
 	sanitize_everything()
+
+/**
+ * @return FALSE if failed
+ */
+/datum/game_preferences/proc/perform_migration_sequence()
+	if(version <= GAME_PREFERENCES_VERSION_DROP)
+		return FALSE
+	perform_migrations(version)
+	version = GAME_PREFERENCES_VERSION_CURRENT
+
+/datum/game_preferences/proc/perform_migrations(from_version)
+	PRIVATE_PROC(TRUE)
 
 //* Reset *//
 
 /datum/game_preferences/proc/reset(category)
 	#warn impl
+
+/datum/game_preferences/proc/full_reset()
+	// reset normal categories
+	reset()
+	// reset middleware
+	for(var/id in GLOB.game_preference_middleware)
+		var/datum/game_preference_middleware/middleware = GLOB.game_preference_middleware[id]
+		middleware.handle_reset(src)
 
 //* Set / Get *//
 
@@ -219,21 +264,72 @@ GLOBAL_LIST_EMPTY(game_preferences)
 //* Save / Load *//
 
 /**
- * this proc does not overwrite data if load fails!
+ * this proc does not sanitize!
  *
  * @return FALSE if we couldn't load
  */
 /datum/game_preferences/proc/load_from_sql()
-	#warn impl
+	var/datum/player_data/player_data = resolve_player_data(ckey)
+	if(!player_data.block_on_available(10 SECONDS))
+		message_admins(SPAN_BOLDANNOUNCE("failed to resolve player data during prefs op for [ckey]. ping maintainers."))
+		CRASH("failed to grab player data while loading via sql. something bad has happened!")
+	authoritative_player_id = player_data.player_id
+	var/datum/db_query/query = SSdbcore.NewQuery(
+		"SELECT `toggles`, `entries`, `misc`, `keybinds`, `version` FROM [format_table_name("game_preferences")] \
+		WHERE `player` = :player",
+		list(
+			"player" = authoritative_player_id,
+		),
+	)
+	query.warn_execute(FALSE)
+	if(!query.NextRow())
+		qdel(query)
+		return FALSE
+	var/toggles_json = query.item[1]
+	var/entries_json = query.item2[]
+	var/misc_json = query.items[3]
+	var/keybinds_json = query.items[4]
+	var/loaded_version = query.items[5]
+
+	toggles_by_key = safe_json_decode(toggles_json)
+	entries_by_key = safe_json_decode(entries_json)
+	misc_by_key = safe_json_decode(misc_json)
+	keybindings = safe_json_decode(keybinds_json)
+	version = loaded_version
+
+	qdel(query)
+	return TRUE
 
 /datum/game_preferences/proc/save_to_sql()
-	#warn impl
+	var/datum/player_data/player_data = resolve_player_data(ckey)
+	if(!player_data.block_on_available(10 SECONDS))
+		message_admins(SPAN_BOLDANNOUNCE("failed to resolve player data during prefs op for [ckey]. ping maintainers."))
+		CRASH("failed to grab player data while loading via sql. something bad has happened!")
+	authoritative_player_id = player_data.player_id
+	var/datum/db_query/query = SSdbcore.NewQuery(
+		"INSERT INTO [format_table_name("game_preferences")] \
+		(`player`, `toggles`, `entries`, `misc`, `keybinds`, `version`, `modified`) VALUES \
+		(:player, :toggles, :entries, :misc, :keybinds, :version, Now()) ON DUPLICATE KEY UPDATE \
+		`player` = VALUES(player), `toggles` = VALUES(toggles), `entries` = VALUES(entries), `misc` = VALUES(misc), \
+		`keybinds` = VALUES(keybinds), `version` = VALUES(version), `modified` = Now()",
+		list(
+			"player" = authoritative_player_id,
+			"toggles" = safe_json_encode(toggles_by_key),
+			"entries" = safe_json_encode(entries_by_key),
+			"misc" = safe_json_encode(misc_by_key),
+			"keybinds" = safe_json_encode(keybindings),
+			"version" = version,
+		)
+	)
+	query.warn_execute(FALSE)
+	qdel(query)
+	return TRUE
 
 /datum/game_preferences/proc/file_path()
 	return "data/players/[copytext(ckey, 1, 2)]/[ckey]/preferences.json"
 
 /**
- * this proc does not overwrite data if load fails!
+ * this proc does not sanitize!
  *
  * @return FALSE if we couldn't load
  */
@@ -248,6 +344,8 @@ GLOBAL_LIST_EMPTY(game_preferences)
 	entries_by_key = deserialized["entries"]
 	toggles_by_key = deserialized["toggles"]
 	keybindings = deserialized["keybindings"]
+	hotkey_mode = deserialized["hotkey_mode"]
+	misc_by_key = deserialized["misc"]
 
 	return TRUE
 
@@ -258,6 +356,8 @@ GLOBAL_LIST_EMPTY(game_preferences)
 		"entries" = entries_by_key,
 		"toggles" = toggles_by_key,
 		"keybindings" = keybindings,
+		"hotkey_mode" = hotkey_mode,
+		"misc" = misc_by_key,
 	)
 
 	if(fexists(savefile_path))
@@ -268,7 +368,14 @@ GLOBAL_LIST_EMPTY(game_preferences)
 	return TRUE
 
 /datum/game_preferences/proc/sanitize_everything()
-	#warn impl
+	// reset middleware
+	for(var/id in GLOB.game_preference_middleware)
+		var/datum/game_preference_middleware/middleware = GLOB.game_preference_middleware[id]
+		middleware.handle_sanitize(src)
+	for(var/key in GLOB.game_preference_entries)
+		var/datum/game_preference_entry/entry = GLOB.game_preference_entries[key]
+		var/current_value = entries_by_key[key]
+		entries_by_key[key] = entry.filter_value(current_value)
 
 //* UI *//
 

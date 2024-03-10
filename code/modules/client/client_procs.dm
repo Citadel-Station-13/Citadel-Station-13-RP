@@ -198,7 +198,7 @@
 	// resolve persistent data
 	persistent = resolve_client_data(ckey, key)
 	//* Resolve database data
-	player = new(key)
+	player = resolve_player_data(ckey, key)
 	player.log_connect()
 	//* Resolve preferences
 	preferences = resolve_game_preferences(ckey)

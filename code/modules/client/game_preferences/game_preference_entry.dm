@@ -57,7 +57,7 @@ GLOBAL_LIST_INIT(game_preference_entries, init_game_preference_entries())
 /datum/game_preference_entry/proc/on_set(client/user, value, first_init)
 	return
 
-/datum/game_preference_entry/proc/filter_value(client/user, value)
+/datum/game_preference_entry/proc/filter_value(value)
 	return value
 
 /datum/game_preference_entry/proc/migrate_legacy_data(data)
@@ -84,7 +84,7 @@ GLOBAL_LIST_INIT(game_preference_entries, init_game_preference_entries())
 	/// optional
 	var/round_to_nearest
 
-/datum/game_preference_entry/number/filter_value(client/user, value)
+/datum/game_preference_entry/number/filter_value(value)
 	. = isnum(value)? clamp(value, min_value, max_value) : default_value
 	if(!isnull(.))
 		. = round(., round_to_nearest)
@@ -105,7 +105,7 @@ GLOBAL_LIST_INIT(game_preference_entries, init_game_preference_entries())
 	/// mandatory
 	var/max_length = 64
 
-/datum/game_preference_entry/string/filter_value(client/user, value)
+/datum/game_preference_entry/string/filter_value(value)
 	. = "[value]"
 	return copytext_char(., 1, min(length_char(.) + 1, max_length + 1))
 
@@ -144,7 +144,7 @@ GLOBAL_LIST_INIT(game_preference_entries, init_game_preference_entries())
 	if(isnull(default_value) && length(options))
 		default_value = options[1]
 
-/datum/game_preference_entry/dropdown/filter_value(client/user, value)
+/datum/game_preference_entry/dropdown/filter_value(value)
 	return (value in options)? value : ((length(options) && options[1]) || null)
 
 /datum/game_preference_entry/dropdown/tgui_preference_schema()
@@ -157,7 +157,7 @@ GLOBAL_LIST_INIT(game_preference_entries, init_game_preference_entries())
 	abstract_type = /datum/game_preference_entry/simple_color
 	default_value = "#ffffff"
 
-/datum/game_preference_entry/simple_color/filter_value(client/user, value)
+/datum/game_preference_entry/simple_color/filter_value(value)
 	return sanitize_hexcolor(value, desired_format = 6, default = default_value)
 
 /datum/game_preference_entry/simple_color/tgui_preference_schema()

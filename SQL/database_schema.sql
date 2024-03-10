@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%photographs` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- players --
+-- Players --
 
 --           Player lookup table                   --
 -- Used to look up player ID from ckey, as well as --
@@ -74,6 +74,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%player` (
   `flags` int(24) NOT NULL DEFAULT 0,
   `firstseen` datetime NOT NULL DEFAULT Now(),
   `lastseen` datetime NOT NULL,
+  `misc` MEDIUMTEXT NOT NULL DEFAULT '{}',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -121,12 +122,13 @@ DELIMITER ;
 -- Stores game preferences --
 CREATE TABLE IF NOT EXISTS `%_PREFIX_%game_preferences` (
   `player` INT(11) NOT NULL,
-  `toggles` MEDIUMTEXT NOT NULL,
   `entries` MEDIUMTEXT NOT NULL,
+  `misc` MEDIUMTEXT NOT NULL,
   `keybinds` MEDIUMTEXT NOT NULL,
+  `toggles` MEDIUMTEXT NOT NULL,
   `modified` DATETIME NOT NULL,
   `version` INT(11) NOT NULL,
-  PRIMARY KEY (`id`),
+  PRIMARY KEY (`player`),
   CONSTRAINT `linked_player` FOREIGN KEY (`player`)
   REFERENCES `%_PREFIX_%player` (`id`)
   ON DELETE CASCADE
