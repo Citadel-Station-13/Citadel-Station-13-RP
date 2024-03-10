@@ -59,7 +59,7 @@
 /area/tether_away/beach/desert/poi/piratehideout)
 "fE" = (
 /turf/simulated/mineral/cave,
-/area/template_noop)
+/area/tether_away/beach/desert/poi)
 "fM" = (
 /obj/structure/flora/pottedplant/large,
 /turf/simulated/floor/tiled/steel_dirty,
@@ -97,7 +97,7 @@
 	pixel_y = -32
 	},
 /turf/simulated/mineral/floor/cave,
-/area/template_noop)
+/area/tether_away/beach/desert/poi)
 "iZ" = (
 /obj/machinery/portable_atmospherics/canister/air,
 /turf/simulated/floor/tiled/steel_dirty,
@@ -131,7 +131,7 @@
 /area/tether_away/beach/desert/poi/piratehideout)
 "pE" = (
 /turf/simulated/wall/solidrock,
-/area/template_noop)
+/area/tether_away/beach/desert/poi)
 "qk" = (
 /obj/structure/bed/chair/comfy/orange{
 	dir = 8
@@ -234,12 +234,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether_away/beach/desert/poi/piratehideout)
 "Fh" = (
-/obj/effect/shuttle_landmark/shuttle_initializer/pirate{
-	base_turf = /turf/simulated/floor/tiled/steel_dirty;
-	base_area = /area/tether_away/beach/desert/poi/piratehideout;
-	landmark_tag = "pirate_hideout";
-	name = "Pirate Hideout"
-	},
+/obj/effect/shuttle_landmark/premade/miaphus/piratehideout,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether_away/beach/desert/poi/piratehideout)
 "Fj" = (
@@ -412,11 +407,24 @@
 /turf/simulated/floor/tiled/old_tile,
 /area/tether_away/beach/desert/poi/piratehideout)
 "Uy" = (
-/turf/simulated/wall/r_wall,
-/area/template_noop)
+/obj/structure/closet/crate/bin,
+/obj/random/junk,
+/obj/random/junk,
+/obj/random/junk,
+/obj/random/junk,
+/obj/random/junk,
+/obj/random/junk,
+/obj/item/reagent_containers/hypospray/glukoz/empty,
+/obj/item/reagent_containers/hypospray/glukoz/empty,
+/obj/item/reagent_containers/hypospray/glukoz/empty,
+/obj/item/reagent_containers/hypospray/glukoz/empty,
+/obj/item/reagent_containers/hypospray/glukoz/empty,
+/obj/item/reagent_containers/hypospray/glukoz/empty,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/tether_away/beach/desert/poi/piratehideout)
 "UL" = (
 /turf/simulated/mineral/floor/cave,
-/area/template_noop)
+/area/tether_away/beach/desert/poi)
 "UP" = (
 /obj/structure/flora/pottedplant/decorative,
 /turf/simulated/floor/tiled/steel_dirty,
@@ -829,7 +837,7 @@ sF
 pE
 pE
 pE
-Uy
+sF
 Rm
 Rm
 Rm
@@ -917,7 +925,6 @@ sF
 sx
 KS
 KS
-gb
 KS
 KS
 KS
@@ -925,7 +932,8 @@ KS
 KS
 KS
 KS
-gb
+KS
+KS
 KS
 gb
 PU
@@ -999,7 +1007,7 @@ KS
 gb
 sF
 KS
-gb
+KS
 KS
 KS
 KS
@@ -1085,7 +1093,6 @@ sF
 KS
 KS
 KS
-gb
 KS
 KS
 KS
@@ -1093,7 +1100,8 @@ KS
 KS
 KS
 KS
-gb
+KS
+KS
 KS
 KS
 KS
@@ -1284,7 +1292,7 @@ sF
 sF
 sF
 sF
-KS
+Uy
 KS
 KS
 sF
@@ -1796,7 +1804,6 @@ wR
 rz
 nh
 sF
-gb
 KS
 KS
 KS
@@ -1808,7 +1815,8 @@ KS
 KS
 KS
 KS
-gb
+KS
+KS
 KS
 KS
 cJ
@@ -1844,7 +1852,7 @@ KS
 KS
 KS
 KS
-gb
+KS
 KS
 KS
 KS
