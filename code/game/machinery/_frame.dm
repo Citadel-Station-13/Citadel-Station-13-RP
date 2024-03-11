@@ -1,6 +1,8 @@
 /var/global/list/construction_frame_wall
 /var/global/list/construction_frame_floor
 
+
+
 // TODO: MAKE FRAMES NOT AWFUL
 // WHY IN THE NAME OF THE SEVEN HELLS ARE THEY NOT STATIC DATUMS AT THIS POINT?!
 // WHY ARE VARIABLES HARD TYPECHECKED?
