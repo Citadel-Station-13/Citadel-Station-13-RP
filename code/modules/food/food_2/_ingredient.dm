@@ -22,8 +22,6 @@
 
 	//how many servings it will give when added to stuff
 	var/serving_amount = 1
-
-	var/cooker_overlay = "meat" //what overlay we use for the cooker
 	var/finished_overlay //what overlay we use for the finished item, if null we dont do anything special
 
 	var/extra_serving_overlay_threshold = 2 //for every extra_serving_overlay_threshold we gain a overlay

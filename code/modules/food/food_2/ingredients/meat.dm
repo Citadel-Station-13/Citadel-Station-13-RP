@@ -1,6 +1,7 @@
 /obj/item/reagent_containers/food/snacks/ingredient/meat
 	name = "meat"
 	desc = "A slab of meat."
+	icon = 'icons/obj/food.dmi'
 	icon_state = "meat"
 	filling_color = "#FF1C1C"
 	center_of_mass = list("x"=16, "y"=14)
