@@ -13,6 +13,10 @@
 	options = all_ui_styles.Copy()
 	..()
 
+/datum/game_preference_entry/dropdown/hud_style/on_set(client/user, value, first_init)
+	. = ..()
+	user.set_ui_style(value)
+
 /datum/game_preference_entry/simple_color/hud_color
 	name = "HUD Color"
 	description = "Manually recolor your inventory / game HUD"
@@ -22,6 +26,10 @@
 	default_value = "#ffffff"
 	legacy_savefile_key = "UI_style_color"
 
+/datum/game_preference_entry/simple_color/hud_color/on_set(client/user, value, first_init)
+	. = ..()
+	user.set_ui_color(value)
+
 /datum/game_preference_entry/number/hud_alpha
 	name = "HUD Alpha"
 	description = "Manually set the transparency of your inventory / game HUD"
@@ -30,6 +38,10 @@
 	subcategory = "HUD Overlay"
 	default_value = 255
 	legacy_savefile_key = "UI_style_alpha"
+
+/datum/game_preference_entry/number/hud_alpha/on_set(client/user, value, first_init)
+	. = ..()
+	user.set_ui_alpha(value)
 
 /datum/game_preference_entry/dropdown/tooltip_style
 	name = "Tooltips Style"

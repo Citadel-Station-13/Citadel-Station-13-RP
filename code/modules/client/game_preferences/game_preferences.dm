@@ -11,8 +11,6 @@ GLOBAL_LIST_EMPTY(game_preferences)
 		initializing.initialize()
 	return GLOB.game_preferences[ckey]
 
-#warn global list + how to grab them
-
 /world/on_sql_reconnect()
 	for(var/ckey in GLOB.game_preferences)
 		var/datum/game_preferences/preferences = GLOB.game_preferences[ckey]
@@ -79,6 +77,11 @@ GLOBAL_LIST_EMPTY(game_preferences)
 	perform_initial_load()
 	initialized = TRUE
 
+/datum/game_preferences/proc/on_reconnect()
+	if(!initialized)
+		return
+	initialize_client()
+
 /datum/game_preferences/proc/block_on_initialized(timeout = 10 SECONDS)
 	var/wait_until = world.time + timeout
 	UNTIL(initialized || (world.time >= wait_until))
@@ -87,8 +90,13 @@ GLOBAL_LIST_EMPTY(game_preferences)
 		CRASH("block_on_initialize timeout")
 	return initialized
 
-/datum/game_preferences/proc/on_initial_load()
-	#warn impl
+/datum/game_preferences/proc/initialize_client()
+	if(isnull(active))
+		return
+	for(var/key in GLOB.game_preference_entries)
+		var/datum/game_preference_entry/entry = GLOB.game_preference_entries[key]
+		var/value = entries_by_key[entry.key]
+		entry.on_set(active, value, TRUE)
 
 /datum/game_preferences/proc/oops_sql_came_back_perform_a_reload()
 	// load from sql if we can; SQL is authoritative
@@ -171,6 +179,10 @@ GLOBAL_LIST_EMPTY(game_preferences)
 
 	// todo: shouldn't we save after sanitize..?
 	sanitize_everything()
+	// loaded; push initial update triggers.
+	initialize_client()
+	// initialized!
+	initialized = TRUE
 
 /**
  * @return FALSE if failed
@@ -286,10 +298,10 @@ GLOBAL_LIST_EMPTY(game_preferences)
 		qdel(query)
 		return FALSE
 	var/toggles_json = query.item[1]
-	var/entries_json = query.item2[]
-	var/misc_json = query.items[3]
-	var/keybinds_json = query.items[4]
-	var/loaded_version = query.items[5]
+	var/entries_json = query.item[2]
+	var/misc_json = query.item[3]
+	var/keybinds_json = query.item[4]
+	var/loaded_version = query.item[5]
 
 	toggles_by_key = safe_json_decode(toggles_json)
 	entries_by_key = safe_json_decode(entries_json)
@@ -344,7 +356,6 @@ GLOBAL_LIST_EMPTY(game_preferences)
 	entries_by_key = deserialized["entries"]
 	toggles_by_key = deserialized["toggles"]
 	keybindings = deserialized["keybindings"]
-	hotkey_mode = deserialized["hotkey_mode"]
 	misc_by_key = deserialized["misc"]
 
 	return TRUE
@@ -356,7 +367,6 @@ GLOBAL_LIST_EMPTY(game_preferences)
 		"entries" = entries_by_key,
 		"toggles" = toggles_by_key,
 		"keybindings" = keybindings,
-		"hotkey_mode" = hotkey_mode,
 		"misc" = misc_by_key,
 	)
 

@@ -52,7 +52,7 @@ GLOBAL_LIST_INIT(game_preference_entries, init_game_preference_entries())
  * @params
  * * user - active client
  * * value - current (sanitized) value
- * * first_init - are we being called as a client is first being associated to a preferences datum?
+ * * first_init - are we being called as a client is first being associated to a preferences datum, or on first load?
  */
 /datum/game_preference_entry/proc/on_set(client/user, value, first_init)
 	return
