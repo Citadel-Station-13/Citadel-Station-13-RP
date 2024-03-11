@@ -62,7 +62,7 @@ jobs:
         run: |
           pip3 install setuptools
           tools/bootstrap/node --version
-          bash tools/ci/install_spaceman_dmm.sh dreamchecker
+          bash tools/ci/install/install_spaceman_dmm.sh dreamchecker
           cargo install ripgrep --features pcre2
           tools/bootstrap/python -c ''
       - name: Give Linters A Go
@@ -152,7 +152,7 @@ jobs:
       - name: Compile Tests
         id: compile_tests
         run: |
-          bash tools/ci/install_byond.sh
+          bash tools/ci/install/install_byond.sh
           source $HOME/BYOND/byond/bin/byondsetup
           tools/build/build --ci dm -DCIBUILDING -DANSICOLORS -WError -NWTG0001
       - name: Run Tests
