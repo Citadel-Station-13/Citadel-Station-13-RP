@@ -62,7 +62,7 @@
 "ar" = (
 /obj/item/aicard,
 /obj/item/pinpointer/advpinpointer,
-/obj/item/stamp/centcomm,
+/obj/item/stamp/centcom,
 /obj/structure/table/steel_reinforced,
 /turf/unsimulated/floor/wood,
 /area/centcom/specops)
@@ -3533,7 +3533,7 @@
 	},
 /area/centcom/medical)
 "ly" = (
-/obj/machinery/telecomms/server/presets/centcomm,
+/obj/machinery/telecomms/server/presets/centcom,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "lz" = (
@@ -5232,7 +5232,7 @@
 /turf/unsimulated/wall,
 /area/centcom/restaurant)
 "qQ" = (
-/obj/item/stamp/centcomm,
+/obj/item/stamp/centcom,
 /obj/item/pen,
 /obj/item/paper_bin{
 	pixel_x = 1;
@@ -7280,7 +7280,7 @@
 	},
 /area/centcom/security)
 "xe" = (
-/obj/machinery/telecomms/server/presets/centcomm,
+/obj/machinery/telecomms/server/presets/centcom,
 /turf/unsimulated/floor{
 	icon_state = "steel"
 	},
