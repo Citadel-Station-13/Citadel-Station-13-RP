@@ -164,7 +164,7 @@ SUBSYSTEM_DEF(garbage)
 // 1 from the hard reference in the queue, and 1 from the variable used before this
 #define REFS_WE_EXPECT 2
 
-#if DM_VERSION >= 515
+#if DM_VERSION >= 515 && !defined(SPACEMAN_DMM)
 // 1 from the hard reference in the queue, and 1 from the variable used before this
 #warn 515 compile mode active, if you are fully moving to 515 please remove IS_DELETED and use refcount() instead
 #define IS_DELETED(datum, _) (refcount(##datum) == REFS_WE_EXPECT)

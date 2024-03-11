@@ -492,7 +492,7 @@ SUBSYSTEM_DEF(timer)
 	bucket_pos = -1
 	bucket_joined = FALSE
 
-#if DM_VERSION >= 515
+#if DM_VERSION >= 515 && !defined(SPACEMAN_DMM)
 #warn remove this 515 version check
 /datum/timedevent/proc/operator""()
 	if(!length(timer_info))
