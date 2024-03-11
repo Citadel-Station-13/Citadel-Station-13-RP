@@ -6,8 +6,9 @@
 
 	cooker_type = METHOD_GRILL
 
-	max_contents = 4
+	max_contents = 2
 	visible_position_xy = list(list(-5, 0), list(5, 0))
+
 
 /obj/machinery/cooking/grill/Initialize(mapload, newdir)
 	. = ..()
@@ -41,9 +42,10 @@
 			var/obj/item/reagent_containers/food/snacks/ingredient/cooking_thingy = I
 
 			cooktop_overlay = mutable_appearance(cooking_thingy.icon, cooking_thingy.icon_state)
+			cooktop_overlay.appearance_flags |= PIXEL_SCALE //so we dont look ugly!
 			cooktop_overlay.underlays |= cooking_thingy.underlays
 			cooktop_overlay.overlays |= cooking_thingy.overlays
-			cooktop_overlay.transform *= 0.25 //the designated space on the grill is 8x8, so 1/4 (1/2?) size
+			cooktop_overlay.transform *= food_scale_amount //the designated space on the grill is 8x8, so 1/4 (1/2?) size
 			var/px = visible_position_xy[food_containers[I]][1]
 			var/py = visible_position_xy[food_containers[I]][2]
 			cooktop_overlay.pixel_x = px

@@ -6,3 +6,4 @@
 #warn todo: doughbread sprites
 #warn todo: meat sprites check
 #warn todo: recipes test
+#warn todo: mapping

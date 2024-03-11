@@ -23,7 +23,7 @@
 	var/max_contents = 4			// Maximum number of things this appliance can simultaneously cook
 	var/list/food_containers //what food (/obj/item/reagent_containers/glass/food_holder = 1, /reagent_containers/snacks/ingredient = 2) we are cooking, and their positions inside the thing
 	var/list/visible_position_xy = list(list(-7, 6), list(7, 6),list(-7, -3), list(7, -3))//for mapping a pixel_x, pixel_y to abstract ''position
-
+	var/food_scale_amount = 0.5 //this is a variable, so you can do funny with it!
 
 // . += "<span class='notice'>[icon2html(thing = examine_ingredient, target = user)] The [examine_ingredient.name], which looks </span><span class='[cooked_span]'>[examine_ingredient.cookstage2text()]</span><span class='notice'> and has been cooked for about [examine_ingredient.accumulated_time_cooked / 10] seconds.</span>"
 #warn todo: show ingred
@@ -99,15 +99,15 @@
 	if(istype(I, /obj/item/reagent_containers/glass/food_holder) || istype(I, /obj/item/reagent_containers/food/snacks/ingredient))
 		//From here we can start cooking food
 		insert_item(I, user)
-		
+
 /obj/machinery/cooking/update_icon()
-	var/fire_color = COLOR_YELLOW
+	var/fire_color = null
 	cut_overlays()
 	switch(cooking_power)
-		if(0)
-			fire_color = null
 		if(HEAT_LOW)
 			fire_color = COLOR_RED
+		if(HEAT_MID)
+			fire_color = COLOR_YELLOW
 		if(HEAT_HIGH)
 			fire_color = COLOR_CYAN
 	for(var/I in food_containers)
@@ -130,8 +130,12 @@
 			switch(FH.cooker_overlay)
 				if("skillet")
 					filling_overlay.pixel_y -= 3
+					if(px > 0) //if px is positive
+						cooktop_overlay = mutable_appearance(icon, "[FH.cooker_overlay]_flip")
 				if("pan")
 					filling_overlay.pixel_y -= 2
+					if(px > 0) //if px is positive
+						cooktop_overlay = mutable_appearance(icon, "[FH.cooker_overlay]_flip")
 
 			if(fire_color)
 				fire_overlay = mutable_appearance(icon, "stove_flame")
@@ -139,7 +143,7 @@
 				fire_overlay.pixel_y = py
 				fire_overlay.color = fire_color
 				add_overlay(fire_overlay)
-				
+
 			add_overlay(cooktop_overlay)
 			add_overlay(filling_overlay)
 
@@ -147,7 +151,11 @@
 		else if(istype(I, /obj/item/reagent_containers/food/snacks/ingredient))
 			var/obj/item/reagent_containers/food/snacks/ingredient/cooking_thingy = I
 
-			cooktop_overlay = mutable_appearance(icon, "[cooking_thingy.cooker_overlay]_stove")
+			cooktop_overlay = mutable_appearance(cooking_thingy.icon, cooking_thingy.icon_state)
+			cooktop_overlay.appearance_flags |= PIXEL_SCALE //so we dont look ugly!
+			cooktop_overlay.underlays |= cooking_thingy.underlays
+			cooktop_overlay.overlays |= cooking_thingy.overlays
+			cooktop_overlay.transform *= food_scale_amount
 
 			var/px = visible_position_xy[food_containers[I]][1] //get 'location' from food containers, get pixel_x (first item of list) from visible_position_xy
 			var/py = visible_position_xy[food_containers[I]][2]
@@ -248,7 +256,7 @@
 				user.visible_message("[user] turns [src] on.", "You turn on [src].")
 			user.visible_message("[user] turns [src] to low power.", "You turn [src] to high power.")
 			cooking_power = HEAT_HIGH
-		
+
 
 	playsound(src, 'sound/machines/click.ogg', 40, 1)
 	update_icon()

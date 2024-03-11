@@ -50,10 +50,14 @@
 
 
 
-		else if(istype(I, /obj/item/reagent_containers/food/snacks/ingredient))
+		else if(istype(I, /obj/item/reagent_containers/food/snacks/ingredient)) //if somehow a non-basket gets in here
 			var/obj/item/reagent_containers/food/snacks/ingredient/cooking_thingy = I
 
-			cooktop_overlay = mutable_appearance(icon, "[cooking_thingy.cooker_overlay]_fryer")
+			cooktop_overlay = mutable_appearance(cooking_thingy.icon, cooking_thingy.icon_state)
+			cooktop_overlay.appearance_flags |= PIXEL_SCALE //so we dont look ugly!
+			cooktop_overlay.underlays |= cooking_thingy.underlays
+			cooktop_overlay.overlays |= cooking_thingy.overlays
+			cooktop_overlay.transform *= food_scale_amount
 
 			var/px = visible_position_xy[food_containers[I]][1] //get 'location' from food containers, get pixel_x (first item of list) from visible_position_xy
 			var/py = visible_position_xy[food_containers[I]][2]

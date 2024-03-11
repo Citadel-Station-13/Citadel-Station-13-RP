@@ -1,6 +1,7 @@
 
 /obj/machinery/microwave
 	name = "Microwave"
+	desc = "So much more than just a microwave. The Multipurpose Irradiative Cooking/Reconstitution Operation Worker  mark 4 Version 3 is capable of only two things: turning a messy pile of raw ingredients into perfectly cooked meals, and heating up donkpockets."
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "mw"
 	layer = 2.9
