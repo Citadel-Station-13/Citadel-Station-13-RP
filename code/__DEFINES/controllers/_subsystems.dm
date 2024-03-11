@@ -1,25 +1,23 @@
-/**
- *! Defines for subsystems and overlays
- *
- *? Lots of important stuff in here, make sure you have your brain switched on when editing this file!
- */
+//! Defines for subsystems and overlays
+//!
+//! Lots of important stuff in here, make sure you have your brain switched on
+//! when editing this file
 
 //! ## Initialization subsystem
 
-/// New should not call Initialize.
-#define INITIALIZATION_INSSATOMS     0
-/// New should call Initialize(FALSE).
-#define INITIALIZATION_INNEW_REGULAR 1
-/// New should call Initialize(TRUE).
+///New should not call Initialize
+#define INITIALIZATION_INSSATOMS 0
+///New should call Initialize(TRUE)
 #define INITIALIZATION_INNEW_MAPLOAD 2
+///New should call Initialize(FALSE)
+#define INITIALIZATION_INNEW_REGULAR 1
 
 //! ### Initialization hints
 
-/// Nothing happens
+///Nothing happens
 #define INITIALIZE_HINT_NORMAL 0
-
 /**
- * call LateInitialize at the end of all atom Initalization.
+ * call LateInitialize at the end of all atom Initalization
  *
  * The item will be added to the late_loaders list, this is iterated over after
  * initalization of subsystems is complete and calls LateInitalize on the atom
@@ -27,57 +25,50 @@
  */
 #define INITIALIZE_HINT_LATELOAD 1
 
-/// Call qdel on the atom after intialization.
+///Call qdel on the atom after intialization
 #define INITIALIZE_HINT_QDEL 2
 
-/// type and all subtypes should always immediately call Initialize in New().
+///type and all subtypes should always immediately call Initialize in New()
 #define INITIALIZE_IMMEDIATE(X) ##X/New(loc, ...){\
 	..();\
 	if(!(atom_flags & ATOM_INITIALIZED)) {\
+		var/previous_initialized_value = SSatoms.initialized;\
+		SSatoms.initialized = INITIALIZATION_INNEW_MAPLOAD;\
 		args[1] = TRUE;\
-		SSatoms.InitAtom(src, args);\
+		SSatoms.InitAtom(src, FALSE, args);\
+		SSatoms.initialized = previous_initialized_value;\
 	}\
 }
 
-//! ### SS runlevels
-
-/// "Initialize Only" - Used for subsystems that should never be fired (Should also have SS_NO_FIRE set).
-#define RUNLEVEL_INIT     0
-/// Initial runlevel before setup.  Returns to here if setup fails.
-#define RUNLEVEL_LOBBY    1
-/// While the gamemode setup is running.  I.E gameticker.setup()
-#define RUNLEVEL_SETUP    2
-/// After successful game ticker setup, while the round is running.
-#define RUNLEVEL_GAME     4
-/// When round completes but before reboot.
-#define RUNLEVEL_POSTGAME 8
-
-/// default runlevels for most subsystems
-#define RUNLEVELS_DEFAULT (RUNLEVEL_SETUP | RUNLEVEL_GAME | RUNLEVEL_POSTGAME)
-/// all valid runlevels - subsystems with this will run all the time after their MC init stage.
-#define RUNLEVELS_ALL (RUNLEVEL_LOBBY | RUNLEVEL_SETUP | RUNLEVEL_GAME | RUNLEVEL_POSTGAME)
-
-var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_GAME, RUNLEVEL_POSTGAME)
-/// Convert from the runlevel bitfield constants to index in runlevel_flags list.
-#define RUNLEVEL_FLAG_TO_INDEX(flag) (log(2, flag) + 1)
-
-DEFINE_BITFIELD(runlevels, list(
-	BITFIELD(RUNLEVEL_INIT),
-	BITFIELD(RUNLEVEL_LOBBY),
-	BITFIELD(RUNLEVEL_SETUP),
-	BITFIELD(RUNLEVEL_GAME),
-	BITFIELD(RUNLEVEL_POSTGAME),
-))
-
+//! ### SS initialization hints
 /**
- *! Subsystem init_order, from highest priority to lowest priority.
- *? Subsystems shutdown in the reverse of the order they initialize in.
- *? The numbers just define the ordering, they are meaningless otherwise.
+ * Negative values incidate a failure or warning of some kind, positive are good.
+ * 0 and 1 are unused so that TRUE and FALSE are guarenteed to be invalid values.
  */
 
-// todo: tg init brackets
+/// Subsystem failed to initialize entirely. Print a warning, log, and disable firing.
+#define SS_INIT_FAILURE -2
+
+/// The default return value which must be overriden. Will succeed with a warning.
+#define SS_INIT_NONE -1
+
+/// Subsystem initialized sucessfully.
+#define SS_INIT_SUCCESS 2
+
+/// If your system doesn't need to be initialized (by being disabled or something)
+#define SS_INIT_NO_NEED 3
+
+/// Succesfully initialized, BUT do not announce it to players (generally to hide game mechanics it would otherwise spoil)
+#define SS_INIT_NO_MESSAGE 4
+
+//! ### SS initialization load orders
+// Subsystem init_order, from highest priority to lowest priority
+// Subsystems shutdown in the reverse of the order they initialize in
+// The numbers just define the ordering, they are meaningless otherwise.
+
 
 #define INIT_ORDER_FAIL2TOPIC      200
+#define INIT_ORDER_GARBAGE         198 // sorry but why isnt this near max?
 #define INIT_ORDER_IPINTEL         197
 #define INIT_ORDER_TIMER           195
 #define INIT_ORDER_DBCORE          190
@@ -88,7 +79,6 @@ DEFINE_BITFIELD(runlevels, list(
 #define INIT_ORDER_JOBS            150
 #define INIT_ORDER_CHARACTERS      140
 #define INIT_ORDER_SOUNDS          130
-#define INIT_ORDER_GARBAGE         120
 #define INIT_ORDER_VIS             80
 #define INIT_ORDER_SERVER_MAINT    65
 #define INIT_ORDER_INSTRUMENTS     50
@@ -127,19 +117,14 @@ DEFINE_BITFIELD(runlevels, list(
 #define INIT_ORDER_CIRCUIT        -60
 #define INIT_ORDER_AI             -70
 #define INIT_ORDER_PATH           -98
-#define INIT_ORDER_CHAT           -100  //! Should be last to ensure chat remains smooth during init.
+#define INIT_ORDER_CHAT 		  -100 //Should be last to ensure chat remains smooth during init.
 
-
-/**
- *! Subsystem fire priority, from lowest to highest priority
- *? If the subsystem isn't listed here it's either DEFAULT or PROCESS (if it's a processing subsystem child)
- */
+// Subsystem fire priority, from lowest to highest priority
+// If the subsystem isn't listed here it's either DEFAULT or PROCESS (if it's a processing subsystem child)
 
 //? Background Subsystems - Below normal
-// Any ../subsystem/.. is here unless it doesn't have SS_BACKGROUND in subsystem_flags!
-// This means by default, ../subsystem/processing/.. is here!
-
 #define FIRE_PRIORITY_RADIATION    10  //! laggy as hell, bottom barrel until optimizations are done.
+#define FIRE_PRIORITY_DATABASE 16
 #define FIRE_PRIORITY_GARBAGE      15
 #define FIRE_PRIORITY_CHARACTERS   25
 #define FIRE_PRIORITY_PARALLAX     30
@@ -149,9 +134,8 @@ DEFINE_BITFIELD(runlevels, list(
 #define FIRE_PRIORITY_PLANETS      75
 
 //? Normal Subsystems - Above background, below ticker
-// Any ../subsystem/.. without SS_TICKER or SS_BACKGROUND in subsystem_flags is here!
 
-#define FIRE_PRIORITY_PING         5
+#define FIRE_PRIORITY_PING 10
 #define FIRE_PRIORITY_SHUTTLES     5
 #define FIRE_PRIORITY_PLANTS       5
 #define FIRE_PRIORITY_NIGHTSHIFT   6
@@ -163,21 +147,22 @@ DEFINE_BITFIELD(runlevels, list(
 #define FIRE_PRIORITY_SPACEDRIFT   25
 #define FIRE_PRIORITY_AIRFLOW      30
 #define FIRE_PRIORITY_OBJ          40
-// DEFAULT PRIORITY IS HERE
+#define FIRE_PRIORITY_DEFAULT 50
 #define FIRE_PRIORITY_LIGHTING         50
 #define FIRE_PRIORITY_INSTRUMENTS      90
 #define FIRE_PRIORITY_ASSET_LOADING    100
 #define FIRE_PRIORITY_MACHINES         100
-#define FIRE_PRIORITY_NANO             150
+#define FIRE_PRIORITY_NANO             110
+#define FIRE_PRIORITY_TGUI             110
+#define FIRE_PRIORITY_TICKER 200
 #define FIRE_PRIORITY_AI               200
-#define FIRE_PRIORITY_TGUI             200
 #define FIRE_PRIORITY_PROJECTILES      200
 #define FIRE_PRIORITY_THROWING         200
 #define FIRE_PRIORITY_STATPANELS       400
+#define FIRE_PRIORITY_CHAT             400
 #define FIRE_PRIORITY_OVERLAYS         500
 #define FIRE_PRIORITY_SMOOTHING        500
-#define FIRE_PRIORITY_CHAT             500
-#define FIRE_PRIORITY_INPUT            1000
+#define FIRE_PRIORITY_INPUT 1000 // This must always always be the max highest priority. Player input must never be lost.
 
 //? Ticker Subsystems - Highest priority
 // Any subsystem flagged with SS_TICKER is here!
@@ -189,16 +174,53 @@ DEFINE_BITFIELD(runlevels, list(
 #define FIRE_PRIORITY_DPC          700
 #define FIRE_PRIORITY_TIMER        700
 
-//? Special
+// SS runlevels
 
-/// This is used as the default regardless of bucket. Check above.
-#define FIRE_PRIORITY_DEFAULT      50
+#define RUNLEVEL_LOBBY (1<<0)
+#define RUNLEVEL_SETUP (1<<1)
+#define RUNLEVEL_GAME (1<<2)
+#define RUNLEVEL_POSTGAME (1<<3)
+
+#define RUNLEVELS_DEFAULT (RUNLEVEL_SETUP | RUNLEVEL_GAME | RUNLEVEL_POSTGAME)
+
+//SSticker.current_state values
+/// Game is loading
+#define GAME_STATE_STARTUP 0
+/// Game is loaded and in pregame lobby
+#define GAME_STATE_PREGAME 1
+/// Game is attempting to start the round
+#define GAME_STATE_SETTING_UP 2
+/// Game has round in progress
+#define GAME_STATE_PLAYING 3
+/// Game has round finished
+#define GAME_STATE_FINISHED 4
+
+// Used for SSticker.force_ending
+/// Default, round is not being forced to end.
+#define END_ROUND_AS_NORMAL 0
+/// End the round now as normal
+#define FORCE_END_ROUND 1
+/// For admin forcing roundend, can be used to distinguish the two
+#define ADMIN_FORCE_END_ROUND 2
 
 /**
- * Create a new timer and add it to the queue.
- * Arguments:
- * * callback the callback to call on timer finish
- * * wait deciseconds to run the timer for
- * * atom_flags atom_flags for this timer, see: code\__DEFINES\subsystems.dm
- */
+	Create a new timer and add it to the queue.
+	* Arguments:
+	* * callback the callback to call on timer finish
+	* * wait deciseconds to run the timer for
+	* * flags flags for this timer, see: code\__DEFINES\subsystems.dm
+	* * timer_subsystem the subsystem to insert this timer into
+*/
 #define addtimer(args...) _addtimer(args, file = __FILE__, line = __LINE__)
+
+// Subsystem delta times or tickrates, in seconds. I.e, how many seconds in between each process() call for objects being processed by that subsystem.
+// Only use these defines if you want to access some other objects processing seconds_per_tick, otherwise use the seconds_per_tick that is sent as a parameter to process()
+#define SSMACHINES_DT (SSmachines.wait/10)
+#define SSMOBS_DT (SSmobs.wait/10)
+#define SSOBJ_DT (SSobj.wait/10)
+
+// The change in the world's time from the subsystem's last fire in seconds.
+#define DELTA_WORLD_TIME(ss) ((world.time - ss.last_fire) * 0.1)
+
+/// The timer key used to know how long subsystem initialization takes
+#define SS_INIT_TIMER_KEY "ss_init"

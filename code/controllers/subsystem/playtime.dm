@@ -9,7 +9,6 @@
 SUBSYSTEM_DEF(playtime)
 	name = "Playtime"
 	wait = 10 MINUTES
-	subsystem_flags = SS_NO_TICK_CHECK
 
 /datum/controller/subsystem/playtime/Shutdown()
 	flush_playtimes()

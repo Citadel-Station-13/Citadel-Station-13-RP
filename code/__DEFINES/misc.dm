@@ -509,3 +509,6 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 #error T_BOARD already defined elsewhere, we can't use it.
 #endif
 #define T_BOARD(name) "circuit board (" + (name) + ")"
+
+/// Takes a datum as input, returns its ref string
+#define text_ref(datum) ref(datum)

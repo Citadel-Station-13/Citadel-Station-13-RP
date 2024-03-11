@@ -1,6 +1,6 @@
 SUBSYSTEM_DEF(media_tracks)
 	name = "Media Tracks"
-	subsystem_flags = SS_NO_FIRE
+	flags = SS_NO_FIRE
 	init_order = INIT_ORDER_MEDIA_TRACKS
 
 	/// Every track, including secret

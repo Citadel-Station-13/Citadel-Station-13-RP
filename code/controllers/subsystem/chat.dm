@@ -1,13 +1,12 @@
-/**
- *! Copyright (c) 2020 Aleksej Komarov
- *! SPDX-License-Identifier: MIT
+/*!
+ * Copyright (c) 2020 Aleksej Komarov
+ * SPDX-License-Identifier: MIT
  */
 
 SUBSYSTEM_DEF(chat)
 	name = "Chat"
-	subsystem_flags = NONE
-	wait = 0.25 // scale up to 40 fps
-	runlevels = RUNLEVELS_ALL
+	flags = SS_TICKER|SS_NO_INIT
+	wait = 1
 	priority = FIRE_PRIORITY_CHAT
 	init_order = INIT_ORDER_CHAT
 

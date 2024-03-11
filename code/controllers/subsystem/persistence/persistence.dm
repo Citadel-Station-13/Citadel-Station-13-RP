@@ -6,7 +6,7 @@
 SUBSYSTEM_DEF(persistence)
 	name = "Persistence"
 	init_order = INIT_ORDER_PERSISTENCE
-	subsystem_flags = SS_NO_FIRE
+	flags = SS_NO_FIRE
 
 	/// world already loaded?
 	var/static/world_loaded = FALSE

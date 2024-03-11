@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(fail2topic)
 	name = "Fail2Topic"
 	init_order = INIT_ORDER_FAIL2TOPIC
-	subsystem_flags = SS_BACKGROUND
+	flags = SS_BACKGROUND
 	runlevels = ALL
 
 	var/list/rate_limiting = list()
@@ -25,10 +25,11 @@ SUBSYSTEM_DEF(fail2topic)
 		enabled = FALSE
 		subsystem_log("DISABLED - UNIX systems are not supported.")
 	if(!enabled)
-		subsystem_flags |= SS_NO_FIRE
+		flags |= SS_NO_FIRE
 		can_fire = FALSE
+		return SS_INIT_NO_NEED
 
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/fail2topic/fire()
 	if(length(rate_limiting))
@@ -109,12 +110,10 @@ SUBSYSTEM_DEF(fail2topic)
 	fail_counts -= ip
 	rate_limiting -= ip
 
-	. = shell("netsh advfirewall firewall add rule name=\"[rule_name]\" dir=in interface=any action=block remoteip=[ip]")
-
-	if (.)
-		subsystem_log("Failed to ban [ip]. Exit code: [.].")
-	else if (isnull(.))
-		subsystem_log("Failed to invoke shell to ban [ip].")
+	var/list/output = world.shelleo("netsh advfirewall firewall add rule name=\"[rule_name]\" dir=in interface=any action=block remoteip=[ip]")
+	var/errorlevel = output[SHELLEO_ERRORLEVEL]
+	if (errorlevel)
+		subsystem_log("Failed to ban [ip]. [output[SHELLEO_STDERR]]")
 	else
 		subsystem_log("Banned [ip].")
 
@@ -124,11 +123,10 @@ SUBSYSTEM_DEF(fail2topic)
 
 	active_bans = list()
 
-	. = shell("netsh advfirewall firewall delete rule name=\"[rule_name]\"")
+	var/list/output = world.shelleo("netsh advfirewall firewall delete rule name=\"[rule_name]\"")
+	var/errorlevel = output[SHELLEO_ERRORLEVEL]
 
-	if (.)
-		subsystem_log("Failed to drop firewall rule. Exit code: [.].")
-	else if (isnull(.))
-		subsystem_log("Failed to invoke shell for firewall rule drop.")
+	if (errorlevel)
+		subsystem_log("Failed to drop firewall rule. [output[SHELLEO_STDERR]]")
 	else
 		subsystem_log("Firewall rule dropped.")

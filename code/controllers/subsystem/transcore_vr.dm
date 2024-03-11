@@ -10,7 +10,7 @@ SUBSYSTEM_DEF(transcore)
 	name = "Transcore"
 	priority = 20
 	wait = 3 MINUTES
-	subsystem_flags = SS_BACKGROUND|SS_NO_INIT
+	flags = SS_BACKGROUND|SS_NO_INIT
 	runlevels = RUNLEVEL_GAME
 
 	// THINGS

@@ -147,12 +147,12 @@
 	else if(is_sharp())
 		if(!contents.len)
 			if(item_state == "paperbag_None")
-				to_chat("<span class='notice'>You cut eyeholes into [src].</span>")
+				to_chat(user, "<span class='notice'>You cut eyeholes into [src].</span>")
 				new /obj/item/clothing/head/papersack(user.loc)
 				qdel(src)
 				return FALSE
 			else if(item_state == "paperbag_SmileyFace")
-				to_chat("<span class='notice'>You cut eyeholes into [src] and modify the design.</span>")
+				to_chat(user, "<span class='notice'>You cut eyeholes into [src] and modify the design.</span>")
 				new /obj/item/clothing/head/papersack/smiley(user.loc)
 				qdel(src)
 				return FALSE

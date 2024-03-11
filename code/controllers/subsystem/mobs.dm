@@ -8,7 +8,7 @@ SUBSYSTEM_DEF(mobs)
 	name = "Mobs"
 	priority = 100
 	wait = 2 SECONDS
-	subsystem_flags = SS_KEEP_TIMING|SS_NO_INIT
+	flags = SS_KEEP_TIMING|SS_NO_INIT
 	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 
 	var/list/currentrun = list()
@@ -36,7 +36,7 @@ SUBSYSTEM_DEF(mobs)
 	//cache for sanic speed (lists are references anyways)
 	var/list/currentrun = src.currentrun
 	var/times_fired = src.times_fired
-	var/dt = (subsystem_flags & SS_TICKER)? (world.tick_lag * wait) : max(world.tick_lag, wait * 0.1)
+	var/dt = (flags & SS_TICKER)? (world.tick_lag * wait) : max(world.tick_lag, wait * 0.1)
 	while(currentrun.len)
 		var/mob/M = currentrun[currentrun.len]
 		currentrun.len--

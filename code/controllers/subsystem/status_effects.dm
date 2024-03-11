@@ -1,6 +1,6 @@
 SUBSYSTEM_DEF(status_effects)
 	wait = 0.5
-	subsystem_flags = NONE
+	flags = NONE
 	name = "Status Effects"
 
 	/// ticking effects
@@ -35,6 +35,6 @@ SUBSYSTEM_DEF(status_effects)
 			continue
 		effect.tick(effect.tick_interval)
 		effect.tick_next = world.time + effect.tick_interval
-		if(MC_TICK_CHECK_USAGE) // effect.tick() is SHOULD NOT SLEEP.
+		if(MC_TICK_CHECK) // effect.tick() is SHOULD NOT SLEEP.
 			return
 	currentrun.Cut(1, i + 1)

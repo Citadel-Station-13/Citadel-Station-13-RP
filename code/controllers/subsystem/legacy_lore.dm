@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(legacy_lore)
 	name = "Loremaster (Legacy)"
 	init_order = INIT_ORDER_LEGACY_LORE
-	subsystem_flags = SS_NO_FIRE
+	flags = SS_NO_FIRE
 
 	var/list/organizations = list()
 
@@ -13,4 +13,4 @@ SUBSYSTEM_DEF(legacy_lore)
 		if(initial(instance.name))
 			instance = new path()
 			organizations[path] = instance
-	return ..()
+	return SS_INIT_SUCCESS

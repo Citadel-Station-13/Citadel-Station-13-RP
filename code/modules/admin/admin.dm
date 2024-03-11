@@ -841,7 +841,7 @@ var/datum/legacy_announcement/minor/admin_min_announcer = new
 		SSticker.start_immediately = TRUE
 		log_admin("[usr.key] has started the game.")
 		var/msg = ""
-		if(SSticker.current_state == GAME_STATE_INIT)
+		if(SSticker.current_state == GAME_STATE_STARTUP)
 			msg = " (The server is still setting up, but the round will be started as soon as possible.)"
 		message_admins(SPAN_ADMINNOTICE("[usr.key] has started the game.[msg]"))
 		feedback_add_details("admin_verb","SN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!

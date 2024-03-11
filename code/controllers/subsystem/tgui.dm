@@ -1,6 +1,6 @@
-/**
- *! Copyright (c) 2020 Aleksej Komarov
- *! SPDX-License-Identifier: MIT
+/*!
+ * Copyright (c) 2020 Aleksej Komarov
+ * SPDX-License-Identifier: MIT
  */
 
 /**
@@ -13,7 +13,7 @@
 SUBSYSTEM_DEF(tgui)
 	name = "tgui"
 	wait = 9
-	subsystem_flags = SS_NO_INIT
+	flags = SS_NO_INIT
 	priority = FIRE_PRIORITY_TGUI
 	runlevels = RUNLEVEL_LOBBY | RUNLEVELS_DEFAULT
 
@@ -32,14 +32,10 @@ SUBSYSTEM_DEF(tgui)
 	var/polyfill = file2text('tgui/public/tgui-polyfill.min.js')
 	polyfill = "<script>\n[polyfill]\n</script>"
 	basehtml = replacetextEx(basehtml, "<!-- tgui:inline-polyfill -->", polyfill)
+	basehtml = replacetextEx(basehtml, "<!-- tgui:nt-copyright -->", "Nanotrasen (c) 2525-[game_year]")
 
 /datum/controller/subsystem/tgui/Shutdown()
 	close_all_uis()
-/* //no tguistat
-/datum/controller/subsystem/tgui/stat_entry(msg)
-	msg = "P:[length(open_uis)]"
-	return ..()
-*/
 
 /datum/controller/subsystem/tgui/stat_entry()
 	return ..() + " P:[length(open_uis)]"
@@ -53,8 +49,8 @@ SUBSYSTEM_DEF(tgui)
 		var/datum/tgui/ui = current_run[current_run.len]
 		current_run.len--
 		// TODO: Move user/src_object check to process()
-		if(ui && ui.user && ui.src_object)
-			ui.process()
+		if(ui?.user && ui.src_object)
+			ui.process(wait * 0.1)
 		else
 			open_uis.Remove(ui)
 		if(MC_TICK_CHECK)

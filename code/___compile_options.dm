@@ -24,24 +24,22 @@
 #ifdef TESTING
 	#warn compiling in TESTING mode. testing() debug messages will be visible.
 
-	/// Used to find the sources of harddels, quite laggy, don't be surpised if it freezes your client for a good while.
-	// #define REFERENCE_TRACKING
+	///Used to find the sources of harddels, quite laggy, don't be surpised if it freezes your client for a good while
+	//#define REFERENCE_TRACKING
 	#ifdef REFERENCE_TRACKING
-		/**
-		 * Used for doing dry runs of the reference finder, to test for feature completeness.
-		 * Slightly slower, higher in memory. Just not optimal.
-		 */
-		// #define REFERENCE_TRACKING_DEBUG
 
+	///Used for doing dry runs of the reference finder, to test for feature completeness
+	///Slightly slower, higher in memory. Just not optimal
+	//#define REFERENCE_TRACKING_DEBUG
 
-		/// Run a lookup on things hard deleting by default.
-		// #define GC_FAILURE_HARD_LOOKUP
+	///Run a lookup on things hard deleting by default.
+	//#define GC_FAILURE_HARD_LOOKUP
+	#ifdef GC_FAILURE_HARD_LOOKUP
+	///Don't stop when searching, go till you're totally done
+	#define FIND_REF_NO_CHECK_TICK
+	#endif //ifdef GC_FAILURE_HARD_LOOKUP
 
-		/// Don't stop when searching, go till you're totally done.
-		#define FIND_REF_NO_CHECK_TICK
-
-	#endif
-
+	#endif //ifdef REFERENCE_TRACKING
 
 	/**
 	 * Enables debug messages for every single reaction step.
@@ -121,14 +119,30 @@
 
 // ## CBT BUILD DEFINES
 
+//Additional code for the above flags.
+#ifdef TESTING
+#warn compiling in TESTING mode. testing() debug messages will be visible.
+#endif
+
 #ifdef CIBUILDING
-	#define UNIT_TESTS
+#define UNIT_TESTS
 #endif
 
 #ifdef CITESTING
-	#define TESTING
+#define TESTING
 #endif
 
+#if defined(UNIT_TESTS)
+//Hard del testing defines
+#define REFERENCE_TRACKING
+#define REFERENCE_TRACKING_DEBUG
+#define FIND_REF_NO_CHECK_TICK
+#define GC_FAILURE_HARD_LOOKUP
+//Ensures all early assets can actually load early
+#define DO_NOT_DEFER_ASSETS
+//Test at full capacity, the extra cost doesn't matter
+#define TIMER_DEBUG
+#endif
 
 #ifdef TGS
 // TGS performs its own build of dm.exe, but includes a prepended TGS define.

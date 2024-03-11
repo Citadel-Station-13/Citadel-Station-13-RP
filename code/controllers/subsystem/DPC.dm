@@ -7,9 +7,8 @@ This is pretty much just an optimization for wait=0 timers. They're relatively c
 SUBSYSTEM_DEF(dpc)
 	name = "Delayed Procedure Call"
 	wait = 1
-	runlevels = RUNLEVELS_ALL
 	priority = FIRE_PRIORITY_DPC
-	subsystem_flags = SS_TICKER | SS_NO_INIT
+	flags = SS_TICKER | SS_NO_INIT
 
 	var/list/queued_calls = list()
 	var/list/avg = 0

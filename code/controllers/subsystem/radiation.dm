@@ -6,7 +6,7 @@
 SUBSYSTEM_DEF(radiation)
 	name = "Radiation"
 	priority = FIRE_PRIORITY_RADIATION
-	subsystem_flags = SS_NO_INIT | SS_BACKGROUND
+	flags = SS_NO_INIT | SS_BACKGROUND
 	wait = 1 SECONDS
 
 	/// stage
@@ -50,7 +50,7 @@ SUBSYSTEM_DEF(radiation)
 		if(length(currentrun))
 			var/i
 			var/datum/component/radioactive/source
-			var/dt = (subsystem_flags & SS_TICKER)? (world.tick_lag * wait) : (wait)
+			var/dt = (flags & SS_TICKER)? (world.tick_lag * wait) : (wait)
 			for(i in 1 to length(currentrun))
 				source = currentrun[i]
 				source.emit(dt)

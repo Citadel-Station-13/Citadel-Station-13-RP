@@ -1,7 +1,9 @@
 SUBSYSTEM_DEF(nanoui)
 	name = "NanoUI"
+	wait = 9
+	flags = SS_NO_INIT
 	priority = FIRE_PRIORITY_NANO
-	wait = 7
+	runlevels = RUNLEVEL_LOBBY | RUNLEVELS_DEFAULT
 
 	/// A list of current open /nanoui UIs, grouped by src_object and ui_key.
 	var/list/open_uis = list()
@@ -9,13 +11,10 @@ SUBSYSTEM_DEF(nanoui)
 	/// A list of current open /nanoui UIs, not grouped, for use in processing.
 	var/list/processing_uis = list()
 
-
-
 /datum/controller/subsystem/nanoui/fire(resumed)
 	for(var/thing in processing_uis)
 		var/datum/nanoui/UI = thing
 		UI.process()
-
 
 /datum/controller/subsystem/nanoui/Recover()
 	if(SSnanoui.open_uis)
@@ -26,7 +25,6 @@ SUBSYSTEM_DEF(nanoui)
 
 /datum/controller/subsystem/nanoui/stat_entry()
 	return ..() + " [processing_uis.len] UIs"
-
 
 /**
  * Get an open /nanoui ui for the current user, src_object and ui_key and try to update it with data

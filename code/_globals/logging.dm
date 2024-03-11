@@ -50,3 +50,7 @@ SIMPLE_LOG_BOILERPLATE(click_log, click)
 GLOBAL_VAR(world_suspicious_login_log)
 GLOBAL_PROTECT(world_suspicious_login_log)
 
+
+#if defined(UNIT_TESTS) || defined(SPACEMAN_DMM)
+GLOBAL_VAR(test_log)
+#endif

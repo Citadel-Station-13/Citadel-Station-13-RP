@@ -1400,8 +1400,7 @@
 /area/rift/facility/interior/workroom)
 "qF" = (
 /obj/random/obstruction,
-/obj/machinery/power/apc/alarms_hidden/north_mount{
-	},
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
 	},

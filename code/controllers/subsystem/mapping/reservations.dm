@@ -16,7 +16,7 @@
 	/// doing some blocking op on reservation system
 	var/static/reservation_blocking_op = FALSE
 	/// singleton area holding all free reservation turfs
-	var/static/area/unused_reservation_area/unallocated_reserve_area = new
+	var/static/area/unused_reservation_area/unallocated_reserve_area // you CANNOT INIT THIS DURING STARTUP; GLOB DOESNT EXIST YET!
 
 /datum/controller/subsystem/mapping/Recover()
 	. = ..()

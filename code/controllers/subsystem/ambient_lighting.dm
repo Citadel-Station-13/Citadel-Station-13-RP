@@ -4,7 +4,7 @@ SUBSYSTEM_DEF(ambient_lighting)
 	priority = FIRE_PRIORITY_LIGHTING
 	init_order = INIT_ORDER_AMBIENT_LIGHT
 	runlevels = RUNLEVEL_LOBBY | RUNLEVELS_DEFAULT // Copied from icon update subsystem.
-	// subsystem_flags = SS_NO_INIT
+	// flags = SS_NO_INIT
 
 	var/list/queued = list()
 

@@ -3,7 +3,7 @@
  */
 SUBSYSTEM_DEF(lobby)
 	name = "Lobby Manager"
-	subsystem_flags = SS_NO_FIRE
+	flags = SS_NO_FIRE
 	init_order = INIT_ORDER_LOBBY
 
 	/// our titlescreen
