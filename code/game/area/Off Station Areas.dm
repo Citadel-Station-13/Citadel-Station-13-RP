@@ -966,7 +966,7 @@
 	requires_power = 0
 
 /area/awaymission/spacebattle/cruiser
-	name = "\improper NanoTrasen Cruiser"
+	name = "\improper Nanotrasen Cruiser"
 
 /area/awaymission/spacebattle/syndicate1
 	name = "\improper Syndicate Assault Ship 1"

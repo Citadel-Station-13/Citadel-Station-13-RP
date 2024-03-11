@@ -41,7 +41,7 @@
 
 /obj/item/clothing/suit/armor/vest/alt
 	name = "security armor"
-	desc = "An armored vest that protects against some damage. This one has a NanoTrasen corporate badge."
+	desc = "An armored vest that protects against some damage. This one has a Nanotrasen corporate badge."
 	icon_state = "armoralt"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "armor", SLOT_ID_LEFT_HAND = "armor")
 

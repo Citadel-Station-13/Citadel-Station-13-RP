@@ -320,18 +320,18 @@ Category: Reference
 				</html>
 				"}
 
-///Security Guidelines by NanoTrasen.
+///Security Guidelines by Nanotrasen.
 
 /obj/item/book/custom_library/reference/securityguidelines
 
 	name = "Security Guidelines"
-	desc = "A hardbound book titled \"Security Guidelines\" as provided by NanoTrasen."
-	description_info = "This book is titled \"Security Guidelines\" as provided by NanoTrasen. It covers the basic security etiquette on NanoTrasen stations and vessels."
+	desc = "A hardbound book titled \"Security Guidelines\" as provided by Nanotrasen."
+	description_info = "This book is titled \"Security Guidelines\" as provided by Nanotrasen. It covers the basic security etiquette on Nanotrasen stations and vessels."
 
 	title = "Security Guidelines"
 	icon_state = "bookSpaceLaw"
 	origkey = "Schnayy"
-	author = "NanoTrasen"
+	author = "Nanotrasen"
 
 	dat = {"<html>
 				<head>

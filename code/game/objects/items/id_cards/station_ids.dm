@@ -228,7 +228,7 @@
 
 /obj/item/card/id/synthetic
 	name = "\improper Synthetic ID"
-	desc = "Access module for NanoTrasen Synthetics"
+	desc = "Access module for Nanotrasen Synthetics"
 	icon_state = "id-robot"
 	item_state = "idgreen"
 	assignment = "Synthetic"

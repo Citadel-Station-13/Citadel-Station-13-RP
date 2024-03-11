@@ -920,4 +920,4 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 */
 /obj/item/bluespace_radio/commerce
 	name = "commercial subspace radio"
-	desc = "Immensely expensive, this communications device has the ability to send and recieve transmissions from anywhere. Only a few of these devices have been sold by either Ward Takahashi or NanoTrasen. This device is incredibly rare and mind-numbingly expensive. Do not lose it."
+	desc = "Immensely expensive, this communications device has the ability to send and recieve transmissions from anywhere. Only a few of these devices have been sold by either Ward Takahashi or Nanotrasen. This device is incredibly rare and mind-numbingly expensive. Do not lose it."
