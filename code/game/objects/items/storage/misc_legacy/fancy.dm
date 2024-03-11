@@ -240,6 +240,7 @@
 	icon_type = "cigarette"
 	starts_with = list(/obj/item/clothing/mask/smokable/cigarette = 6)
 	var/brand = "\improper Trans-Stellar Duty-free"
+	var/overlay_amount = 6
 
 /obj/item/storage/fancy/cigarettes/Initialize(mapload)
 	. = ..()
@@ -251,9 +252,10 @@
 			C.brand = brand
 			C.desc += " This one is \a [brand]."
 
-/obj/item/storage/fancy/cigarettes/update_icon()
-	icon_state = "[initial(icon_state)][contents.len]"
-	return
+/obj/item/storage/fancy/cigarettes/update_icon_state()
+	if(overlay_amount)
+		icon_state = "[initial(icon_state)][min(length(contents), overlay_amount)]"
+	return ..()
 
 /obj/item/storage/fancy/cigarettes/Exited(atom/movable/AM, atom/newLoc)
 	. = ..()

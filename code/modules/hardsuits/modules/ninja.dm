@@ -92,7 +92,7 @@
 	if(!M || !T)
 		return
 
-	playsound(T, "sparks", 50, 1)
+	playsound(T, /datum/soundbyte/grouped/sparks, 50, 1)
 	anim(T,M,'icons/mob/mob.dmi',,"phaseout",,M.dir)
 
 /obj/item/hardsuit_module/teleporter/engage(var/atom/target, var/notify_ai)

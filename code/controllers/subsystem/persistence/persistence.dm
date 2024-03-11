@@ -14,6 +14,9 @@ SUBSYSTEM_DEF(persistence)
 	var/static/world_saved_count = 0
 	/// world load in progress; block.
 	var/static/world_serialization_mutex = FALSE
+	/// world is non-canon; do not save world automatically
+	//  todo: interface on subsystem panel
+	var/static/world_non_canon = FALSE
 
 /datum/controller/subsystem/persistence/Initialize()
 	LoadPersistence()
