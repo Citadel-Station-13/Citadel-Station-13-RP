@@ -68,8 +68,8 @@
 		BIOGEN_REAGENT("50 milk", "milk", 50, 95),
 		BIOGEN_REAGENT("10 Cream", "cream", 10, 30),
 		BIOGEN_REAGENT("50 Cream", "cream", 50, 120),
-		BIOGEN_ITEM("Slab of meat", /obj/item/reagent_containers/food/snacks/meat, 1, 50),
-		BIOGEN_ITEM("5 slabs of meat", /obj/item/reagent_containers/food/snacks/meat, 5, 250),
+		BIOGEN_ITEM("Slab of meat", /obj/item/reagent_containers/food/snacks/ingredient/meat, 1, 50),
+		BIOGEN_ITEM("5 slabs of meat", /obj/item/reagent_containers/food/snacks/ingredient/meat, 5, 250),
 	)
 	item_list["Cooking Ingredients"] = list(
 		BIOGEN_REAGENT("10 Universal Enzyme", "enzyme", 10, 30),

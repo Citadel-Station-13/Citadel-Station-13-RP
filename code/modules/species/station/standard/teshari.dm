@@ -55,7 +55,7 @@
 	base_color  = "#001144"
 
 	reagent_tag = IS_TESHARI
-	meat_type   = /obj/item/reagent_containers/food/snacks/meat/chicken/teshari
+	meat_type   = /obj/item/reagent_containers/food/snacks/ingredient/meat/chicken/teshari
 	move_trail = /obj/effect/debris/cleanable/blood/tracks/paw
 
 	slowdown          = -0.5

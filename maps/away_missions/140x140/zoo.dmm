@@ -155,8 +155,8 @@
 /area/awaymission/zoo/pirateship)
 "ax" = (
 /obj/structure/closet/crate/freezer,
-/obj/item/reagent_containers/food/snacks/meat,
-/obj/item/reagent_containers/food/snacks/meat,
+/obj/item/reagent_containers/food/snacks/ingredient/meat,
+/obj/item/reagent_containers/food/snacks/ingredient/meat,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
@@ -164,7 +164,7 @@
 /area/awaymission/zoo/pirateship)
 "ay" = (
 /obj/structure/closet/crate/freezer,
-/obj/item/reagent_containers/food/snacks/meat,
+/obj/item/reagent_containers/food/snacks/ingredient/meat,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
@@ -479,11 +479,11 @@
 /obj/structure/table/reinforced,
 /obj/item/material/knife/butch,
 /obj/item/reagent_containers/food/drinks/bottle/small/beer,
-/obj/item/reagent_containers/food/snacks/xenomeat,
-/obj/item/reagent_containers/food/snacks/xenomeat,
-/obj/item/reagent_containers/food/snacks/xenomeat,
-/obj/item/reagent_containers/food/snacks/xenomeat,
-/obj/item/reagent_containers/food/snacks/xenomeat,
+/obj/item/reagent_containers/food/snacks/ingredient/xenomeat,
+/obj/item/reagent_containers/food/snacks/ingredient/xenomeat,
+/obj/item/reagent_containers/food/snacks/ingredient/xenomeat,
+/obj/item/reagent_containers/food/snacks/ingredient/xenomeat,
+/obj/item/reagent_containers/food/snacks/ingredient/xenomeat,
 /obj/effect/floor_decal/corner/blue/diagonal,
 /turf/simulated/floor/tiled/white,
 /area/awaymission/zoo/pirateship)
@@ -734,18 +734,18 @@
 /obj/structure/closet/secure_closet/freezer/meat{
 	opened = 1
 	},
-/obj/item/reagent_containers/food/snacks/xenomeat,
-/obj/item/reagent_containers/food/snacks/xenomeat,
-/obj/item/reagent_containers/food/snacks/xenomeat,
-/obj/item/reagent_containers/food/snacks/xenomeat,
-/obj/item/reagent_containers/food/snacks/xenomeat,
+/obj/item/reagent_containers/food/snacks/ingredient/xenomeat,
+/obj/item/reagent_containers/food/snacks/ingredient/xenomeat,
+/obj/item/reagent_containers/food/snacks/ingredient/xenomeat,
+/obj/item/reagent_containers/food/snacks/ingredient/xenomeat,
+/obj/item/reagent_containers/food/snacks/ingredient/xenomeat,
 /turf/simulated/floor/tiled/white,
 /area/awaymission/zoo/pirateship)
 "cr" = (
 /obj/structure/closet/crate/freezer,
-/obj/item/reagent_containers/food/snacks/meat,
-/obj/item/reagent_containers/food/snacks/meat,
-/obj/item/reagent_containers/food/snacks/xenomeat,
+/obj/item/reagent_containers/food/snacks/ingredient/meat,
+/obj/item/reagent_containers/food/snacks/ingredient/meat,
+/obj/item/reagent_containers/food/snacks/ingredient/xenomeat,
 /turf/simulated/floor/tiled/white,
 /area/awaymission/zoo/pirateship)
 "cs" = (
@@ -910,7 +910,7 @@
 /turf/simulated/floor/tiled,
 /area/awaymission/zoo/pirateship)
 "cP" = (
-/obj/item/reagent_containers/food/snacks/meat,
+/obj/item/reagent_containers/food/snacks/ingredient/meat,
 /turf/simulated/floor/tiled/freezer,
 /area/awaymission/zoo/pirateship)
 "cQ" = (
@@ -1210,7 +1210,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/item/reagent_containers/food/snacks/xenomeat,
+/obj/item/reagent_containers/food/snacks/ingredient/xenomeat,
 /turf/simulated/floor/plating,
 /area/awaymission/zoo/pirateship)
 "dI" = (
@@ -1323,7 +1323,7 @@
 /area/awaymission/zoo/pirateship)
 "dY" = (
 /obj/effect/debris/cleanable/dirt,
-/obj/item/reagent_containers/food/snacks/xenomeat,
+/obj/item/reagent_containers/food/snacks/ingredient/xenomeat,
 /turf/simulated/floor/plating,
 /area/awaymission/zoo/pirateship)
 "dZ" = (
@@ -1439,7 +1439,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/item/reagent_containers/food/snacks/xenomeat,
+/obj/item/reagent_containers/food/snacks/ingredient/xenomeat,
 /turf/simulated/floor/plating,
 /area/awaymission/zoo/pirateship)
 "ep" = (
@@ -1548,7 +1548,7 @@
 	base_state = "right";
 	icon_state = "right"
 	},
-/obj/item/reagent_containers/food/snacks/xenomeat,
+/obj/item/reagent_containers/food/snacks/ingredient/xenomeat,
 /turf/simulated/floor/plating,
 /area/awaymission/zoo/pirateship)
 "eD" = (
@@ -1558,7 +1558,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/zoo/pirateship)
 "eE" = (
-/obj/item/reagent_containers/food/snacks/xenomeat,
+/obj/item/reagent_containers/food/snacks/ingredient/xenomeat,
 /turf/simulated/floor/plating,
 /area/awaymission/zoo/pirateship)
 "eF" = (
@@ -1866,7 +1866,7 @@
 /area/awaymission/zoo/pirateship)
 "fA" = (
 /obj/structure/closet/crate/freezer,
-/obj/item/reagent_containers/food/snacks/meat,
+/obj/item/reagent_containers/food/snacks/ingredient/meat,
 /turf/simulated/floor/tiled/freezer,
 /area/awaymission/zoo/pirateship)
 "fB" = (

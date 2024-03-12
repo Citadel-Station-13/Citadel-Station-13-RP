@@ -68,7 +68,7 @@
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 
 	meat_amount = 3
-	meat_type = /obj/item/reagent_containers/food/snacks/xenomeat
+	meat_type = /obj/item/reagent_containers/food/snacks/ingredient/xenomeat
 	hide_amount = 2
 	hide_type = /obj/item/stack/xenochitin
 

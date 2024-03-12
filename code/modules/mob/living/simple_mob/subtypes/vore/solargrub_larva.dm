@@ -17,7 +17,7 @@ var/global/list/grub_machine_overlays = list()
 	legacy_melee_damage_upper = 1
 
 	meat_amount = 2
-	meat_type = /obj/item/reagent_containers/food/snacks/meat/grubmeat
+	meat_type = /obj/item/reagent_containers/food/snacks/ingredient/meat/grubmeat
 
 	faction = "grubs"
 

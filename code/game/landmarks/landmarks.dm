@@ -148,7 +148,7 @@ INITIALIZE_IMMEDIATE(/obj/landmark)
 	. = ..()
 	new /obj/item/clothing/suit/chickensuit(src.loc)
 	new /obj/item/clothing/head/chicken(src.loc)
-	new /obj/item/reagent_containers/food/snacks/egg(src.loc)
+	new /obj/item/reagent_containers/food/snacks/ingredient/egg(src.loc)
 	delete_on_roundstart = 1
 
 /obj/landmark/costume/gladiator/Initialize(mapload)

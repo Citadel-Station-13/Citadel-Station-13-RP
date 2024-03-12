@@ -34,27 +34,27 @@
 	name = "horse meat"
 	desc = "No no, I said it came from something fast."
 
-/obj/item/reagent_containers/food/snacks/ingredient/meat/xenomeat // Buff 6 >> 10
+/obj/item/reagent_containers/food/snacks/ingredient/xenomeat // Buff 6 >> 10
 	name = "xenomeat"
 	desc = "A slab of green meat. Smells like acid."
 	cookstage_information = list(list(0, 0.5, "raw, tough and acidic meat"), list(45 SECONDS, 1.2, "tough meat"), list(60 SECONDS, 0.9, "rubbery and sour meat"), list(75 SECONDS, 0.1, "a hunk of plastic boiled in acid"))
 	icon_state = "xenomeat"
 	filling_color = "#43DE18"
 
-/obj/item/reagent_containers/food/snacks/ingredient/meat/xenomeat/Initialize(mapload)
+/obj/item/reagent_containers/food/snacks/ingredient/xenomeat/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("protein", 10)
 	reagents.add_reagent("pacid",6)
 	src.bitesize = 6
 
-/obj/item/reagent_containers/food/snacks/ingredient/meat/xenomeat/spidermeat // Substitute for recipes requiring xeno meat.
+/obj/item/reagent_containers/food/snacks/ingredient/xenomeat/spidermeat // Substitute for recipes requiring xeno meat.
 	name = "spider meat"
 	desc = "A slab of green meat."
 	cookstage_information = list(list(0, 0.5, "raw, squishy and bitter meat"), list(45 SECONDS, 1.2, "squishy, bitter meat"), list(60 SECONDS, 0.9, "vulcanized rubbermeat and sour meat"), list(75 SECONDS, 0.1, "vulcanized rubber seasoned with flies killed by a bug-zapper"))
 	icon_state = "xenomeat"
 	filling_color = "#43DE18"
 
-/obj/item/reagent_containers/food/snacks/ingredient/meat/xenomeat/spidermeat/Initialize(mapload)
+/obj/item/reagent_containers/food/snacks/ingredient/xenomeat/spidermeat/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("spidertoxin",6)
 	reagents.remove_reagent("pacid",6)
@@ -64,7 +64,7 @@
 // TODO: rewrite kitchen code to check a var on the meat item so we can remove
 // all these sybtypes.
 /obj/item/reagent_containers/food/snacks/ingredient/meat/human
-	name = "suspicious meat"
+	name = "porcine(?) meat"
 	desc = "Tastes vaguely like pork."
 
 /obj/item/reagent_containers/food/snacks/ingredient/meat/monkey
@@ -111,6 +111,18 @@
 	reagents.add_reagent("triglyceride", 2)
 	reagents.add_reagent("phoron", 3)
 	src.bitesize = 1.5
+
+/obj/item/reagent_containers/food/snacks/ingredient/meat/grubmeat
+	name = "grubmeat"
+	desc = "A slab of grub meat, it gives a gentle shock if you touch it"
+	icon_state = "grubmeat"
+	center_of_mass = list("x"=16, "y"=10)
+
+/obj/item/reagent_containers/food/snacks/ingredient/meat/grubmeat/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 1)
+	reagents.add_reagent("shockchem", 6)
+	bitesize = 6
 
 
 /obj/item/reagent_containers/food/snacks/ingredient/cutlet
@@ -169,6 +181,8 @@
 
 /obj/item/reagent_containers/food/snacks/ingredient/bacon/on_cooked(reached_stage, cook_method)
 	if(reached_stage == COOKED)
+		name = "bacon"
+		desc = "Mmmmm, bacon."
 		icon_state = "bacon"
 		reagents.add_reagent("protein", 0.6)
 
@@ -195,7 +209,7 @@
 	nutriment_amt = 5
 
 
-/obj/item/reagent_containers/food/snacks/ingredient/meat/carp
+/obj/item/reagent_containers/food/snacks/ingredient/carp
 	name = "fillet"
 	desc = "A fillet of carp meat"
 	icon_state = "fishfillet"
@@ -205,26 +219,26 @@
 	var/toxin_type = "carpotoxin"
 	var/toxin_amount = 3
 
-/obj/item/reagent_containers/food/snacks/ingredient/meat/carp/Initialize(mapload)
+/obj/item/reagent_containers/food/snacks/ingredient/carp/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("protein", 3)
 	reagents.add_reagent(toxin_type, toxin_amount)
 	src.bitesize = 6
 
-/obj/item/reagent_containers/food/snacks/ingredient/meat/carp/sif
+/obj/item/reagent_containers/food/snacks/ingredient/carp/sif
 	desc = "A fillet of sivian fish meat."
 	filling_color = "#2c2cff"
 	color = "#2c2cff"
 	toxin_type = "neurotoxic_protein"
 	toxin_amount = 2
 
-/obj/item/reagent_containers/food/snacks/ingredient/meat/carp/fish // Removed toxin and added a bit more oomph
+/obj/item/reagent_containers/food/snacks/ingredient/carp/fish // Removed toxin and added a bit more oomph
 	desc = "A fillet of fish meat."
 	toxin_amount = 0
 	toxin_type = null
 	nutriment_amt = 2
 
-/obj/item/reagent_containers/food/snacks/ingredient/meat/carp/fish/murkfish
+/obj/item/reagent_containers/food/snacks/ingredient/carp/fish/murkfish
 	desc = "A fillet of murkfish meat."
 	filling_color = "#4d331a"
 	color = "#4d331a"

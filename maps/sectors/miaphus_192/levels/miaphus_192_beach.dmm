@@ -2931,10 +2931,10 @@
 /area/tether_away/beach/resort/canteen)
 "xb" = (
 /obj/structure/table/marble,
-/obj/item/reagent_containers/food/snacks/carpmeat/fish,
-/obj/item/reagent_containers/food/snacks/carpmeat/fish,
-/obj/item/reagent_containers/food/snacks/carpmeat/fish,
-/obj/item/reagent_containers/food/snacks/carpmeat/fish,
+/obj/item/reagent_containers/food/snacks/ingredient/carp/fish,
+/obj/item/reagent_containers/food/snacks/ingredient/carp/fish,
+/obj/item/reagent_containers/food/snacks/ingredient/carp/fish,
+/obj/item/reagent_containers/food/snacks/ingredient/carp/fish,
 /turf/simulated/floor/wood,
 /area/tether_away/beach/resort/fishing)
 "xe" = (

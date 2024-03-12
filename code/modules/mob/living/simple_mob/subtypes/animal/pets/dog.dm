@@ -32,7 +32,7 @@
 	say_list_type = /datum/say_list/dog
 
 	meat_amount = 3
-	meat_type = /obj/item/reagent_containers/food/snacks/meat/corgi
+	meat_type = /obj/item/reagent_containers/food/snacks/ingredient/meat/corgi
 	bone_amount = 2
 	hide_amount = 5
 	hide_type = /obj/item/stack/animalhide/corgi
@@ -79,7 +79,7 @@
 
 
 
-/obj/item/reagent_containers/food/snacks/meat/corgi
+/obj/item/reagent_containers/food/snacks/ingredient/meat/corgi
 	name = "corgi meat"
 	desc = "Tastes like... well, you know..."
 

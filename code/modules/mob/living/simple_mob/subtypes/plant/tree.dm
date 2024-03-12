@@ -34,7 +34,7 @@
 	attack_sound = 'sound/weapons/bite.ogg'
 
 	meat_amount = 1
-	meat_type = /obj/item/reagent_containers/food/snacks/xenomeat
+	meat_type = /obj/item/reagent_containers/food/snacks/ingredient/xenomeat
 
 	pixel_x = -16
 

@@ -35,7 +35,7 @@
 	mob_class = MOB_CLASS_ABERRATION	// It's a monster.
 
 	meat_amount = 2
-	meat_type = /obj/item/reagent_containers/food/snacks/meat/worm
+	meat_type = /obj/item/reagent_containers/food/snacks/ingredient/meat/worm
 
 	var/mob/living/simple_mob/animal/space/space_worm/previous //next/previous segments, correspondingly
 	var/mob/living/simple_mob/animal/space/space_worm/next     //head is the nextest segment
@@ -412,21 +412,21 @@
 
 // Worm meat.
 
-/obj/item/reagent_containers/food/snacks/meat/worm
+/obj/item/reagent_containers/food/snacks/ingredient/meat/worm
 	name = "meat"
 	desc = "A chunk of pulsating meat."
 	icon_state = "wormmeat"
 	filling_color = "#551A8B"
 	center_of_mass = list("x"=16, "y"=14)
 
-/obj/item/reagent_containers/food/snacks/meat/worm/Initialize(mapload)
+/obj/item/reagent_containers/food/snacks/ingredient/meat/worm/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("protein", 6)
 	reagents.add_reagent("phoron", 3)
 	reagents.add_reagent("myelamine", 3)
 	src.bitesize = 3
 
-/obj/item/reagent_containers/food/snacks/meat/worm/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/reagent_containers/food/snacks/ingredient/meat/worm/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/material/knife))
 		var/to_spawn = pickweight(/obj/random/junk = 30,
 		/obj/random/trash = 30,

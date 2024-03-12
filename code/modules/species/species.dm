@@ -444,7 +444,7 @@
 	//? on death drops
 	/// The color of the species flesh.
 	var/flesh_color = "#FFC896"
-	var/meat_type = /obj/item/reagent_containers/food/snacks/meat/human
+	var/meat_type = /obj/item/reagent_containers/food/snacks/ingredient/meat/human
 	var/bone_type = /obj/item/stack/material/bone
 	var/hide_type = /obj/item/stack/animalhide/human
 	var/exotic_type = /obj/item/stack/sinew

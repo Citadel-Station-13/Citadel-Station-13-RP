@@ -32,7 +32,7 @@
 	fruit = list("chili" = 1)
 	items = list(
 		/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough,
-		/obj/item/reagent_containers/food/snacks/ingredient/meat/carp
+		/obj/item/reagent_containers/food/snacks/ingredient/carp
 	)
 	result = /obj/item/reagent_containers/food/snacks/cubancarp
 
@@ -41,7 +41,7 @@
 	items = list(
 		/obj/item/reagent_containers/food/snacks/ingredient/sausage
 	)
-	result = /obj/item/reagent_containers/food/snacks/sausage/battered
+	result = /obj/item/reagent_containers/food/snacks/ingredient/sausage/battered
 	reagents = list("batter" = 5)
 
 

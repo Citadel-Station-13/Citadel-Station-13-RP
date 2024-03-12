@@ -261,7 +261,7 @@
 	kitchen_tag = "egg-plant"
 	mutants = null
 	chems = list("nutriment" = list(1,5), "egg" = list(3,12))
-	has_item_product = /obj/item/reagent_containers/food/snacks/egg/purple
+	has_item_product = /obj/item/reagent_containers/food/snacks/ingredient/egg/purple
 	food_info = list(list(0, 1, "raw egg"), list(15 SECONDS, 1.2, "cooked egg"), list(25 SECONDS, 1, "overcooked egg"), list(30 SECONDS, 0.9, "burnt egg"))
 
 //Apples/varieties.

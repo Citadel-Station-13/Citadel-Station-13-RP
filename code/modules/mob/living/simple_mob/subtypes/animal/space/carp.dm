@@ -53,7 +53,7 @@
 	attacktext = list("bitten")
 
 	meat_amount = 3
-	meat_type = /obj/item/reagent_containers/food/snacks/carpmeat
+	meat_type = /obj/item/reagent_containers/food/snacks/ingredient/carp
 	bone_amount = 3
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee

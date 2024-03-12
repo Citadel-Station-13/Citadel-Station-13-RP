@@ -15,7 +15,7 @@
 /datum/recipe/ribplate //Putting this here for not seeing a roast section.
 	required_method = METHOD_OVEN
 	reagents = list("honey" = 5, "spacespice" = 2, "blackpepper" = 1)
-	items = list(/obj/item/reagent_containers/food/snacks/meat)
+	items = list(/obj/item/reagent_containers/food/snacks/ingredient/meat)
 	
 	result = /obj/item/reagent_containers/food/snacks/ribplate
 
@@ -30,7 +30,7 @@
 	required_method = METHOD_OVEN
 	fruit = list("lemon" = 1)
 	reagents = list("sodiumchloride" = 1, "blackpepper" = 1)
-	items = list(/obj/item/reagent_containers/food/snacks/meat/chicken/teshari)
+	items = list(/obj/item/reagent_containers/food/snacks/ingredient/meat/chicken/teshari)
 	result = /obj/item/reagent_containers/food/snacks/teshariroast
 	
 
@@ -57,7 +57,7 @@
 	required_method = METHOD_OVEN
 	items = list(
 		/obj/item/reagent_containers/food/snacks/sliceable/flatdough,
-		/obj/item/reagent_containers/food/snacks/meat
+		/obj/item/reagent_containers/food/snacks/ingredient/meat
 	)
 	result = /obj/item/reagent_containers/food/snacks/meatpie
 
@@ -73,7 +73,7 @@
 	required_method = METHOD_OVEN
 	items = list(
 		/obj/item/reagent_containers/food/snacks/sliceable/flatdough,
-		/obj/item/reagent_containers/food/snacks/xenomeat
+		/obj/item/reagent_containers/food/snacks/ingredient/xenomeat
 	)
 	result = /obj/item/reagent_containers/food/snacks/xemeatpie
 
@@ -252,7 +252,7 @@
 	fruit = list("tomato" = 1)
 	items = list(
 		/obj/item/reagent_containers/food/snacks/sliceable/flatdough,
-		/obj/item/reagent_containers/food/snacks/meat= 3,
+		/obj/item/reagent_containers/food/snacks/ingredient/meat= 3,
 		/obj/item/reagent_containers/food/snacks/cheesewedge
 	)
 	result = /obj/item/reagent_containers/food/snacks/sliceable/pizza/meatpizza
@@ -262,7 +262,7 @@
 	fruit = list("tomato" = 1)
 	items = list(
 		/obj/item/reagent_containers/food/snacks/sliceable/flatdough,
-		/obj/item/reagent_containers/food/snacks/meat/syntiflesh = 3,
+		/obj/item/reagent_containers/food/snacks/ingredient/meat/syntiflesh = 3,
 		/obj/item/reagent_containers/food/snacks/cheesewedge
 	)
 	result = /obj/item/reagent_containers/food/snacks/sliceable/pizza/meatpizza
@@ -480,7 +480,7 @@
 	reagents = list("brine" = 15)
 	
 	items = list(
-		/obj/item/reagent_containers/food/snacks/meat = 3,
+		/obj/item/reagent_containers/food/snacks/ingredient/meat = 3,
 	)
 	result = /obj/item/reagent_containers/food/snacks/ham
 

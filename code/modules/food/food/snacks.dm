@@ -705,75 +705,6 @@
 		src.name = "Frosted Jelly Donut"
 		reagents.add_reagent("sprinkles", 2)
 
-/obj/item/reagent_containers/food/snacks/egg
-	name = "egg"
-	desc = "An egg!"
-	icon_state = "egg"
-	filling_color = "#FDFFD1"
-	volume = 10
-
-/obj/item/reagent_containers/food/snacks/egg/Initialize(mapload)
-	. = ..()
-	reagents.add_reagent("egg", 3)
-
-/obj/item/reagent_containers/food/snacks/egg/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(istype(target,/obj/machinery/microwave))
-		return ..()
-	if(!((clickchain_flags & CLICKCHAIN_HAS_PROXIMITY) && target.is_open_container()))
-		return
-	to_chat(user, "You crack \the [src] into \the [target].")
-	reagents.trans_to(target, reagents.total_volume)
-	qdel(src)
-
-/obj/item/reagent_containers/food/snacks/egg/throw_impact(atom/hit_atom)
-	. = ..()
-	new/obj/effect/debris/cleanable/egg_smudge(src.loc)
-	src.reagents.splash(hit_atom, reagents.total_volume)
-	src.visible_message("<font color='red'>[src.name] has been squashed.</font>","<font color='red'>You hear a smack.</font>")
-	qdel(src)
-
-/obj/item/reagent_containers/food/snacks/egg/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype( W, /obj/item/pen/crayon ))
-		var/obj/item/pen/crayon/C = W
-		var/clr = C.crayon_color_name
-
-		if(!(clr in list("blue","green","mime","orange","purple","rainbow","red","yellow")))
-			to_chat(usr, "<font color=#4F49AF>The egg refuses to take on this color!</font>")
-			return
-
-		to_chat(usr, "<font color=#4F49AF>You color \the [src] [clr]</font>")
-		icon_state = "egg-[clr]"
-	else
-		. = ..()
-
-/obj/item/reagent_containers/food/snacks/egg/randomized/Initialize(mapload)
-	. = ..()
-	var/randeggicon = pick("egg-blue","egg-green","egg-orange","egg-purple","egg-red","egg-yellow","egg-rainbow")
-	icon_state = (randeggicon)
-
-/obj/item/reagent_containers/food/snacks/egg/blue
-	icon_state = "egg-blue"
-
-/obj/item/reagent_containers/food/snacks/egg/green
-	icon_state = "egg-green"
-
-/obj/item/reagent_containers/food/snacks/egg/mime
-	icon_state = "egg-mime"
-
-/obj/item/reagent_containers/food/snacks/egg/orange
-	icon_state = "egg-orange"
-
-/obj/item/reagent_containers/food/snacks/egg/purple
-	icon_state = "egg-purple"
-
-/obj/item/reagent_containers/food/snacks/egg/rainbow
-	icon_state = "egg-rainbow"
-
-/obj/item/reagent_containers/food/snacks/egg/red
-	icon_state = "egg-red"
-
-/obj/item/reagent_containers/food/snacks/egg/yellow
-	icon_state = "egg-yellow"
 
 /obj/item/reagent_containers/food/snacks/friedegg // Buff 3 >> 6
 	name = "Fried egg"
@@ -849,45 +780,6 @@
 	. = ..()
 	bitesize = 2 // Was 1
 
-/obj/item/reagent_containers/food/snacks/carpmeat
-	name = "fillet"
-	desc = "A fillet of carp meat"
-	icon_state = "fishfillet"
-	filling_color = "#FFDEFE"
-	center_of_mass = list("x"=17, "y"=13)
-
-	var/toxin_type = "carpotoxin"
-	var/toxin_amount = 3
-
-/obj/item/reagent_containers/food/snacks/carpmeat/Initialize(mapload)
-	. = ..()
-	reagents.add_reagent("protein", 3)
-	reagents.add_reagent(toxin_type, toxin_amount)
-	src.bitesize = 6
-
-/obj/item/reagent_containers/food/snacks/carpmeat/sif
-	desc = "A fillet of sivian fish meat."
-	filling_color = "#2c2cff"
-	color = "#2c2cff"
-	toxin_type = "neurotoxic_protein"
-	toxin_amount = 2
-
-/obj/item/reagent_containers/food/snacks/carpmeat/fish // Removed toxin and added a bit more oomph
-	desc = "A fillet of fish meat."
-	toxin_amount = 0
-	toxin_type = null
-	nutriment_amt = 2
-
-/obj/item/reagent_containers/food/snacks/carpmeat/fish/murkfish
-	desc = "A fillet of murkfish meat."
-	filling_color = "#4d331a"
-	color = "#4d331a"
-
-/obj/item/reagent_containers/food/snacks/carpmeat/fish/Initialize(mapload)
-	. = ..()
-	reagents.add_reagent("protein", 4)
-	bitesize = 3
-
 /obj/item/reagent_containers/food/snacks/fishfingers
 	name = "Fish Fingers"
 	desc = "A finger of fish."
@@ -947,25 +839,25 @@
 	reagents.add_reagent("protein", 4)
 	bitesize = 3
 
-/obj/item/reagent_containers/food/snacks/xenomeat // Buff 6 >> 10
+/obj/item/reagent_containers/food/snacks/ingredient/xenomeat // Buff 6 >> 10
 	name = "xenomeat"
 	desc = "A slab of green meat. Smells like acid."
 	icon_state = "xenomeat"
 	filling_color = "#43DE18"
 
-/obj/item/reagent_containers/food/snacks/xenomeat/Initialize(mapload)
+/obj/item/reagent_containers/food/snacks/ingredient/xenomeat/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("protein", 10)
 	reagents.add_reagent("pacid",6)
 	src.bitesize = 6
 
-/obj/item/reagent_containers/food/snacks/xenomeat/spidermeat // Substitute for recipes requiring xeno meat.
+/obj/item/reagent_containers/food/snacks/ingredient/xenomeat/spidermeat // Substitute for recipes requiring xeno meat.
 	name = "spider meat"
 	desc = "A slab of green meat."
 	icon_state = "xenomeat"
 	filling_color = "#43DE18"
 
-/obj/item/reagent_containers/food/snacks/xenomeat/spidermeat/Initialize(mapload)
+/obj/item/reagent_containers/food/snacks/ingredient/xenomeat/spidermeat/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("spidertoxin",6)
 	reagents.remove_reagent("pacid",6)
@@ -982,13 +874,13 @@
 	reagents.add_reagent("protein", 4)
 	bitesize = 2
 
-/obj/item/reagent_containers/food/snacks/sausage // Buff 6 >> 9
+/obj/item/reagent_containers/food/snacks/ingredient/sausage // Buff 6 >> 9
 	name = "Sausage"
 	desc = "A piece of mixed, long meat."
 	icon_state = "sausage"
 	filling_color = "#DB0000"
 
-/obj/item/reagent_containers/food/snacks/sausage/Initialize(mapload)
+/obj/item/reagent_containers/food/snacks/ingredient/sausage/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("protein", 9)
 	bitesize = 3
@@ -3514,7 +3406,7 @@
 /obj/item/reagent_containers/food/snacks/doughslice/Initialize(mapload)
 	. = ..()
 
-/obj/item/reagent_containers/food/snacks/bun
+/obj/item/reagent_containers/food/snacks/ingredient/bun
 	name = "bun"
 	desc = "A base for any self-respecting burger."
 	icon = 'icons/obj/food_ingredients.dmi'
@@ -3523,11 +3415,11 @@
 	nutriment_amt = 4
 	nutriment_desc = list("bun" = 4)
 
-/obj/item/reagent_containers/food/snacks/bun/Initialize(mapload)
+/obj/item/reagent_containers/food/snacks/ingredient/bun/Initialize(mapload)
 	. = ..()
 
 /* BEGIN CITADEL CHANGE - Moved to /code/modules/food/food/snacks.dm for Aurora kitchen port
-/obj/item/reagent_containers/food/snacks/bun/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/reagent_containers/food/snacks/ingredient/bun/attackby(obj/item/W as obj, mob/user as mob)
 	// Bun + meatball = burger
 	if(istype(W,/obj/item/reagent_containers/food/snacks/meatball))
 		new /obj/item/reagent_containers/food/snacks/monkeyburger(src)
@@ -3543,7 +3435,7 @@
 		qdel(src)
 
 	// Bun + sausage = hotdog
-	else if(istype(W,/obj/item/reagent_containers/food/snacks/sausage))
+	else if(istype(W,/obj/item/reagent_containers/food/snacks/ingredient/sausage))
 		new /obj/item/reagent_containers/food/snacks/hotdog(src)
 		to_chat(user, "You make a hotdog.")
 		qdel(W)
@@ -4077,14 +3969,14 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/sliceable/cheesewheel
 	slices_num = 8
 
-/obj/item/reagent_containers/food/snacks/sausage/battered
+/obj/item/reagent_containers/food/snacks/ingredient/sausage/battered
 	name = "battered sausage"
 	desc = "A piece of mixed, long meat, battered and then deepfried."
 	icon_state = "batteredsausage"
 	filling_color = "#DB0000"
 
 
-/obj/item/reagent_containers/food/snacks/sausage/battered/Initialize(mapload)
+/obj/item/reagent_containers/food/snacks/ingredient/sausage/battered/Initialize(mapload)
 		. = ..()
 		reagents.add_reagent("protein", 6)
 		reagents.add_reagent("batter", 1.7)
@@ -4612,7 +4504,7 @@ END CITADEL CHANGE */
 	reagents.add_reagent("honey", 3)
 
 // Moved /bun/attackby() from /code/modules/food/food/snacks.dm
-/obj/item/reagent_containers/food/snacks/bun/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/reagent_containers/food/snacks/ingredient/bun/attackby(obj/item/W as obj, mob/user as mob)
 	//i honestly should probably refactor this whole thing but idgaf
 	if(istype(W,/obj/item/storage))
 		. = ..() //if you want to bag a ton of buns idk i don't play chef
@@ -4634,7 +4526,7 @@ END CITADEL CHANGE */
 		qdel(src)
 
 	// Bun + sausage = hotdog
-	else if(istype(W,/obj/item/reagent_containers/food/snacks/sausage))
+	else if(istype(W,/obj/item/reagent_containers/food/snacks/ingredient/sausage))
 		result = new /obj/item/reagent_containers/food/snacks/hotdog(src)
 		to_chat(user, "You make a hotdog.")
 		qdel(W)
@@ -5868,18 +5760,6 @@ END CITADEL CHANGE */
 	. = ..()
 	reagents.add_reagent("protein", 4)
 	bitesize = 2
-
-/obj/item/reagent_containers/food/snacks/meat/grubmeat
-	name = "grubmeat"
-	desc = "A slab of grub meat, it gives a gentle shock if you touch it"
-	icon_state = "grubmeat"
-	center_of_mass = list("x"=16, "y"=10)
-
-/obj/item/reagent_containers/food/snacks/meat/grubmeat/Initialize(mapload)
-	. = ..()
-	reagents.add_reagent("protein", 1)
-	reagents.add_reagent("shockchem", 6)
-	bitesize = 6
 
 /obj/item/reagent_containers/food/snacks/bugball
 	name = "bugball"
