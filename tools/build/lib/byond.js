@@ -154,7 +154,7 @@ export const DreamMaker = async (dmeFile, options = {}) => {
       throw new Juke.ExitCode(1);
     }
     const requiredMajorVersion = 514;
-    const requiredMinorVersion = 1589; // First with -D switch functionality
+    const requiredMinorVersion = 1588; // First with -D switch functionality
     const major = Number(version[1]);
     const minor = Number(version[2]);
     if(major < requiredMajorVersion || major == requiredMajorVersion && minor < requiredMinorVersion){
