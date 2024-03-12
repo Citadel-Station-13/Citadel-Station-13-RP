@@ -4,9 +4,9 @@ name: Run Integration Tests
 on:
   workflow_call:
     inputs:
-      map:
-        required: true
-        type: string
+      # map:
+      #   required: true
+      #   type: string
       major:
         required: false
         type: string
