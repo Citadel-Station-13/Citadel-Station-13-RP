@@ -242,6 +242,9 @@
 	var/list/datum/map/station/potential = list()
 	for(var/id in keyed_maps)
 		var/datum/map/station/checking = keyed_maps[id]
+		if(!istype(checking))
+			// not a station map
+			continue
 		if(!checking.allow_random_draw)
 			continue
 		potential += checking
