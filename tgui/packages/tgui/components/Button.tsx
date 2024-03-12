@@ -1,4 +1,7 @@
 /**
+ * todo: combine flashing and selected into ButtonStatus or something, god.
+ * todo: combine circular/elipssis/etc into a style, god. this is awful.
+ *
  * @file
  * @copyright 2020 Aleksej Komarov
  * @license MIT
@@ -85,7 +88,6 @@ export const Button = (props: ButtonProps) => {
         'Button',
         fluid && 'Button--fluid',
         disabled && 'Button--disabled',
-        selected && (buttonColor === 'default') && !props.flashing && 'Button--selected',
         hasContent && 'Button--hasContent',
         ellipsis && 'Button--ellipsis',
         circular && 'Button--circular',
@@ -94,7 +96,9 @@ export const Button = (props: ButtonProps) => {
         verticalAlignContent && "Button--flex",
         (verticalAlignContent && fluid) && "Button--flex--fluid",
         verticalAlignContent && 'Button--verticalAlignContent--' + verticalAlignContent,
-        (props.flashing? `Button--flash--${buttonColor}` : `Button--color--${buttonColor}`),
+        (props.flashing? `Button--flash--${buttonColor}` : (`Button--color--${buttonColor}`)),
+        selected && !props.flashing && (buttonColor === 'default' || buttonColor === 'transparent')
+        && 'Button--selected',
         className,
         computeBoxClassName(rest),
       ])}
@@ -159,8 +163,8 @@ Button.defaultHooks = pureComponentHooks;
 
 interface ButtonCheckboxProps extends ButtonProps {
   readonly checked?: BooleanLike;
-  readonly checkedIcon: string;
-  readonly uncheckedIcon: string;
+  readonly checkedIcon?: string;
+  readonly uncheckedIcon?: string;
 }
 
 export const ButtonCheckbox = (props: ButtonCheckboxProps) => {
@@ -168,20 +172,17 @@ export const ButtonCheckbox = (props: ButtonCheckboxProps) => {
     checked,
     icon,
     color,
-    selected,
+    selected = checked,
     checkedIcon = 'check-square-o',
     uncheckedIcon = 'square-o',
     ...rest
   } = props;
   return (
-    <>
-      {JSON.stringify(props)}
-      <Button
-        color="transparent"
-        icon={checked ? 'check-square-o' : 'square-o'}
-        selected={checked}
-        {...rest} />
-    </>
+    <Button
+      color="transparent"
+      icon={checked ? 'check-square-o' : 'square-o'}
+      selected={selected}
+      {...rest} />
   );
 };
 
