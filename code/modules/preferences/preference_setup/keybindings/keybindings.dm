@@ -1,9 +1,3 @@
-// todo: convert and make looking up keys BY BIND possible
-/datum/preferences
-	/// Custom Keybindings
-	var/list/key_bindings = list()
-	/// Hotkeys mode
-	var/hotkeys = TRUE
 
 //Used in savefile update from 11, can be removed once that is no longer relevant.
 /datum/preferences/proc/force_reset_keybindings()
@@ -17,25 +11,6 @@
 			key_bindings[key] = oldkeys[key]
 	client.update_movement_keys()
 
-/datum/category_group/player_setup_category/keybindings
-	name = "Keybindings"
-	sort_order = 7
-	category_item_type = /datum/category_item/player_setup_item/keybinding
-	auto_split = FALSE
-
-/datum/category_item/player_setup_item/keybinding/hotkey_mode
-	name = "Hotkey Mode"
-	sort_order = 1
-
-/datum/category_item/player_setup_item/keybinding/hotkey_mode/load_preferences(savefile/S)
-	S["hotkeys"] >> pref.hotkeys
-
-/datum/category_item/player_setup_item/keybinding/hotkey_mode/save_preferences(savefile/S)
-	WRITE_FILE(S["hotkeys"], pref.hotkeys)
-
-/datum/category_item/player_setup_item/keybinding/hotkey_mode/sanitize_preferences()
-	pref.hotkeys = sanitize_integer(pref.hotkeys, 0, 1, initial(pref.hotkeys))
-
 /datum/category_item/player_setup_item/keybinding/hotkey_mode/content(datum/preferences/prefs, mob/user, data)
 	. += "<b>Hotkey mode:</b> <a href='?src=[REF(src)];option=hotkeys'>[(pref.hotkeys) ? "Hotkeys" : "Default"]</a><br>"
 	. += "Keybindings mode controls how the game behaves with tab and map/input focus.<br>If it is on <b>Hotkeys</b>, the game will always attempt to force you to map focus, meaning keypresses are sent \
@@ -47,24 +22,6 @@
 	<b>IMPORTANT:</b> While in input mode's non hotkey setting (tab toggled), Ctrl + KEY will send KEY to the keybind system as the key itself, not as Ctrl + KEY. This means Ctrl + T/W/A/S/D/all your familiar stuff still works, but you \
 	won't be able to access any regular Ctrl binds.<br>"
 
-/datum/category_item/player_setup_item/keybinding/hotkey_mode/OnTopic(href, list/href_list, mob/user)
-	if(href_list["option"])
-		switch(href_list["option"])
-			if("hotkeys")
-				pref.hotkeys = !pref.hotkeys
-				user.client.set_macros()
-		return PREFERENCES_REFRESH
-	return ..()
-
-/datum/category_item/player_setup_item/keybinding/bindings
-	name = "Bindings"
-	sort_order = 2
-
-/datum/category_item/player_setup_item/keybinding/bindings/load_preferences(savefile/S)
-	S["key_bindings"] >> pref.key_bindings
-
-/datum/category_item/player_setup_item/keybinding/bindings/save_preferences(savefile/S)
-	WRITE_FILE(S["key_bindings"], pref.key_bindings)
 
 /datum/category_item/player_setup_item/keybinding/bindings/sanitize_preferences()
 	pref.key_bindings = sanitize_islist(pref.key_bindings, list())
@@ -136,7 +93,7 @@
 					user << browse(null, "window=capturekeypress")
 					return PREFERENCES_REFRESH
 
-				var/clear_key = text2num(href_list["clear_key"])
+				varw/clear_key = text2num(href_list["clear_key"])
 				var/old_key = href_list["old_key"]
 				if(clear_key)
 					if(pref.key_bindings[old_key])

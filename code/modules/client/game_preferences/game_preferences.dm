@@ -67,6 +67,8 @@ GLOBAL_LIST_EMPTY(game_preferences)
 	var/authoritative_player_id
 	/// our prefs version
 	var/version = GAME_PREFERENCES_VERSION_CURRENT
+	/// are we saved? if TRUE, we have modified vars
+	var/is_dirty = FALSE
 
 /datum/game_preferences/New(ckey)
 	src.ckey = ckey
@@ -99,11 +101,23 @@ GLOBAL_LIST_EMPTY(game_preferences)
 		entry.on_set(active, value, TRUE)
 
 /datum/game_preferences/proc/oops_sql_came_back_perform_a_reload()
+	// if we were sql loaded, don't desync from sql
+	if(authoritatively_loaded_by_sql)
+		if(!sql_state_desynced)
+			return
+		if(active)
+			to_chat(active, SPAN_BOLDANNOUNCE("The server's SQL database has reconnected and your preferences were changed during the lapse. Your preferences has been automatically flushed to database."))
+		save_to_sql()
+		return
 	// load from sql if we can; SQL is authoritative
 	if(load_from_sql())
+		if(active)
+			to_chat(active, SPAN_BOLDANNOUNCE("The server's SQL database has reconnected and your preferences were found to be fully desynced from the copy in the database. Your preferences has been automatically reloaded from the database. Please ensure all settings are workable."))
 		return
 	// otherwise, save our current changes to SQL
 	save_to_sql()
+	if(active)
+		to_chat(active, SPAN_BOLDANNOUNCE("The server's SQL database has reconnected and your preferences were not found in them. Your preferences have been automatically saved to database."))
 
 /datum/game_preferences/proc/perform_legacy_migration()
 	var/savefile/legacy_savefile = new /savefile("data/player_saves/[copytext(ckey, 1, 2)]/[ckey]/preferences.sav")
@@ -133,6 +147,14 @@ GLOBAL_LIST_EMPTY(game_preferences)
 		if(!toggle.legacy_key)
 			continue
 		toggles_by_key[key] = !!old_toggles[toggle.legacy_key]
+
+	var/list/old_keybinds
+	legacy_savefile["keybindings"] >> old_keybinds
+	keybindings = old_keybinds
+
+	var/old_hotkeys
+	legacy_savefile["hotkeys"] >> old_hotkeys
+	misc_by_key[GAME_PREFERENCE_MISC_KEY_HOTKEY_MODE] = !!old_hotkeys
 
 /datum/game_preferences/proc/perform_initial_load()
 	if(SSdbcore.IsConnected())
@@ -199,7 +221,15 @@ GLOBAL_LIST_EMPTY(game_preferences)
 //* Reset *//
 
 /datum/game_preferences/proc/reset(category)
-	#warn impl
+	for(var/key in GLOB.game_preference_entries)
+		var/datum/game_preference_entry/entry = GLOB.game_preference_entries[key]
+		if(category && entry != category)
+			continue
+		var/value = entry.default_value(active)
+		entries_by_key[entry.key] = value
+		if(!isnull(active))
+			entry.on_set(active, value, TRUE)
+	mark_dirty()
 
 /datum/game_preferences/proc/full_reset()
 	// reset normal categories
@@ -223,6 +253,7 @@ GLOBAL_LIST_EMPTY(game_preferences)
 	toggles_by_key[toggle.key] = value
 	if(active)
 		toggle.toggled(active, value)
+	mark_dirty()
 	return TRUE
 
 /datum/game_preferences/proc/toggle(datum/game_preference_toggle/id_path_instance)
@@ -237,6 +268,7 @@ GLOBAL_LIST_EMPTY(game_preferences)
 	toggles_by_key[toggle.key] = !toggles_by_key[toggle.key]
 	if(active)
 		toggle.toggled(active, toggles_by_key[toggle.key])
+	mark_dirty()
 	return TRUE
 
 /datum/game_preferences/proc/get_toggle(datum/game_preference_toggle/id_path_instance)
@@ -261,6 +293,7 @@ GLOBAL_LIST_EMPTY(game_preferences)
 	entries_by_key[entry.key] = value
 	if(active)
 		entry.on_set(active, value, FALSE)
+	mark_dirty()
 	return TRUE
 
 /datum/game_preferences/proc/get_entry(datum/game_preference_entry/id_path_instance)
@@ -275,6 +308,30 @@ GLOBAL_LIST_EMPTY(game_preferences)
 
 //* Save / Load *//
 
+/datum/game_preferences/proc/auto_save()
+	if(!is_dirty)
+		return
+	save()
+
+/datum/game_preferences/proc/mark_dirty()
+	is_dirty = TRUE
+
+/datum/game_preferences/proc/save()
+	if(!initialized)
+		return FALSE
+	if(SSdbcore.Connect())
+		return save_to_sql()
+	else
+		return save_to_file()
+
+/datum/game_preferences/proc/load()
+	if(!initialized)
+		return FALSE
+	if(SSdbcore.Connect())
+		return load_from_sql()
+	else
+		return load_from_file()
+
 /**
  * this proc does not sanitize!
  *
@@ -286,6 +343,10 @@ GLOBAL_LIST_EMPTY(game_preferences)
 		message_admins(SPAN_BOLDANNOUNCE("failed to resolve player data during prefs op for [ckey]. ping maintainers."))
 		CRASH("failed to grab player data while loading via sql. something bad has happened!")
 	authoritative_player_id = player_data.player_id
+
+	var/mob/allow_admin_proccalls = usr
+	usr = null
+
 	var/datum/db_query/query = SSdbcore.NewQuery(
 		"SELECT `toggles`, `entries`, `misc`, `keybinds`, `version` FROM [format_table_name("game_preferences")] \
 		WHERE `player` = :player",
@@ -293,6 +354,9 @@ GLOBAL_LIST_EMPTY(game_preferences)
 			"player" = authoritative_player_id,
 		),
 	)
+
+	usr = allow_admin_proccalls
+
 	query.warn_execute(FALSE)
 	if(!query.NextRow())
 		qdel(query)
@@ -310,6 +374,9 @@ GLOBAL_LIST_EMPTY(game_preferences)
 	version = loaded_version
 
 	qdel(query)
+
+	authoritatively_loaded_by_sql = TRUE
+
 	return TRUE
 
 /datum/game_preferences/proc/save_to_sql()
@@ -318,6 +385,10 @@ GLOBAL_LIST_EMPTY(game_preferences)
 		message_admins(SPAN_BOLDANNOUNCE("failed to resolve player data during prefs op for [ckey]. ping maintainers."))
 		CRASH("failed to grab player data while loading via sql. something bad has happened!")
 	authoritative_player_id = player_data.player_id
+
+	var/mob/allow_admin_proccalls = usr
+	usr = null
+
 	var/datum/db_query/query = SSdbcore.NewQuery(
 		"INSERT INTO [format_table_name("game_preferences")] \
 		(`player`, `toggles`, `entries`, `misc`, `keybinds`, `version`, `modified`) VALUES \
@@ -333,8 +404,16 @@ GLOBAL_LIST_EMPTY(game_preferences)
 			"version" = version,
 		)
 	)
+
+	usr = allow_admin_proccalls
+
 	query.warn_execute(FALSE)
 	qdel(query)
+
+	is_dirty = FALSE
+	authoritatively_loaded_by_sql = TRUE
+	sql_state_desynced = FALSE
+
 	return TRUE
 
 /datum/game_preferences/proc/file_path()
@@ -358,6 +437,9 @@ GLOBAL_LIST_EMPTY(game_preferences)
 	keybindings = deserialized["keybindings"]
 	misc_by_key = deserialized["misc"]
 
+	if(authoritatively_loaded_by_sql)
+		sql_state_desynced = TRUE
+
 	return TRUE
 
 /datum/game_preferences/proc/save_to_file()
@@ -374,6 +456,10 @@ GLOBAL_LIST_EMPTY(game_preferences)
 		fdel(savefile_path)
 
 	text2file(json_encode(serializing), savefile_path)
+	is_dirty = FALSE
+
+	if(authoritatively_loaded_by_sql)
+		sql_state_desynced = TRUE
 
 	return TRUE
 
@@ -386,6 +472,7 @@ GLOBAL_LIST_EMPTY(game_preferences)
 		var/datum/game_preference_entry/entry = GLOB.game_preference_entries[key]
 		var/current_value = entries_by_key[key]
 		entries_by_key[key] = entry.filter_value(current_value)
+	mark_dirty()
 
 //* UI *//
 
@@ -400,8 +487,16 @@ GLOBAL_LIST_EMPTY(game_preferences)
 		var/datum/game_preference_entry/entry = GLOB.game_preference_entries[key]
 		entries[++entries.len] = entry.tgui_preference_schema()
 	.["entries"] = entries
+	.["values"] = entries_by_key
 
+// todo: when do we refactor tgui again i don't like ui_interact because i'm a snowflake who likes being different
+// (real complaint: ui_interact is weird for being called from tgui as well as from external)
+// (update procs should be internally called, imo, not the 'open ui' proc, it leads to)
+// (confusion when people add code with side effects like shocking people on touch in it.)
 /datum/game_preferences/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+	if(!initialized)
+		to_chat(user, SPAN_BOLDANNOUNCE("Your preferences are still being loaded. Please wait."))
+		return
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(isnull(ui))
 		ui = new(user, src, "GamePreferences")
@@ -415,7 +510,8 @@ GLOBAL_LIST_EMPTY(game_preferences)
 	if(.)
 		return
 	var/datum/game_preference_middleware/middleware = GLOB.game_preference_middleware[id]
-	#warn impl
+	if(middleware.handle_topic(src, action, params))
+		return TRUE
 
 /datum/game_preferences/ui_status(mob/user, datum/ui_state/state)
 	if(user.ckey == ckey)
@@ -426,8 +522,22 @@ GLOBAL_LIST_EMPTY(game_preferences)
 
 /datum/game_preferences/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
-
-#warn impl
+	if(.)
+		return
+	switch(action)
+		if("set")
+			var/list/to_store = params["entries"]
+			for(var/key in to_store)
+				if(isnull(GLOB.game_preference_entries[key]))
+					continue
+				set_entry(key, to_store[key])
+			return TRUE
+		if("reset")
+			reset(params["category"])
+			return TRUE
+		if("save")
+			auto_save()
+			return TRUE
 
 //? Client Wrappers ?//
 

@@ -15,10 +15,10 @@ GLOBAL_LIST_INIT(game_preference_middleware, init_game_preference_middleware())
 /datum/game_preference_middleware
 	/// key
 	var/key
-	
+
 /**
  * return TRUE to stop handling
- * 
+ *
  * we assume the 'usr' has been validated by the prefs datum!
  */
 /datum/game_preference_middleware/proc/handle_topic(datum/game_preferences/prefs, action, list/params)
@@ -28,12 +28,14 @@ GLOBAL_LIST_INIT(game_preference_middleware, init_game_preference_middleware())
  * when we want to reset whatever this handles
  */
 /datum/game_preference_middleware/proc/handle_reset(datum/game_preferences/prefs)
+	prefs.mark_dirty()
 	return
 
 /**
  * sanitize everything
  */
 /datum/game_preference_middleware/proc/handle_sanitize(datum/game_preferences/prefS)
+	prefs.mark_dirty()
 	return
 
 /**

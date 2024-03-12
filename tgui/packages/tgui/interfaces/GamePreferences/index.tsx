@@ -8,6 +8,8 @@ import { GamePreferenceToggleScreen } from "./GamePreferenceToggles";
 interface GamePreferencesData {
   entries: GamePreferenceEntrySchema[];
   middleware: string[];
+  // entry key --> value as any
+  values: Record<string, any>;
 }
 
 const computeGamePreferenceCategoryCache = (entries: GamePreferenceEntrySchema[]): Record<string, string[]> => {
