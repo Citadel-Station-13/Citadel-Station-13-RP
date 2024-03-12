@@ -159,16 +159,29 @@ Button.defaultHooks = pureComponentHooks;
 
 interface ButtonCheckboxProps extends ButtonProps {
   readonly checked?: BooleanLike;
+  readonly checkedIcon: string;
+  readonly uncheckedIcon: string;
 }
 
 export const ButtonCheckbox = (props: ButtonCheckboxProps) => {
-  const { checked, ...rest } = props;
+  const {
+    checked,
+    icon,
+    color,
+    selected,
+    checkedIcon = 'check-square-o',
+    uncheckedIcon = 'square-o',
+    ...rest
+  } = props;
   return (
-    <Button
-      color="transparent"
-      icon={checked ? 'check-square-o' : 'square-o'}
-      selected={checked}
-      {...rest} />
+    <>
+      {JSON.stringify(props)}
+      <Button
+        color="transparent"
+        icon={checked ? 'check-square-o' : 'square-o'}
+        selected={checked}
+        {...rest} />
+    </>
   );
 };
 
