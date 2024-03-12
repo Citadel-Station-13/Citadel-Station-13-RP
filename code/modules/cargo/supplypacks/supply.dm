@@ -13,7 +13,7 @@
 			/obj/item/reagent_containers/food/drinks/milk = 3,
 			/obj/item/reagent_containers/food/drinks/soymilk = 2,
 			/obj/item/storage/fancy/egg_box = 2,
-			/obj/item/reagent_containers/food/snacks/tofu = 4,
+			/obj/item/reagent_containers/food/snacks/ingredient/tofu = 4,
 			/obj/item/reagent_containers/food/snacks/ingredient/meat = 4
 			)
 	cost = 10

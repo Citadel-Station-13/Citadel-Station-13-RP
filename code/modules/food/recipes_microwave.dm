@@ -68,7 +68,7 @@
 /datum/recipe/tofuburger
 	items = list(
 		/obj/item/reagent_containers/food/snacks/ingredient/bun,
-		/obj/item/reagent_containers/food/snacks/tofu
+		/obj/item/reagent_containers/food/snacks/ingredient/tofu
 	)
 	result = /obj/item/reagent_containers/food/snacks/tofuburger
 #warn TODO tofus and stuff
@@ -230,8 +230,8 @@
 /datum/recipe/tofukabob
 	items = list(
 		/obj/item/stack/rods,
-		/obj/item/reagent_containers/food/snacks/tofu,
-		/obj/item/reagent_containers/food/snacks/tofu
+		/obj/item/reagent_containers/food/snacks/ingredient/tofu,
+		/obj/item/reagent_containers/food/snacks/ingredient/tofu
 	)
 	result = /obj/item/reagent_containers/food/snacks/tofukabob
 
@@ -408,8 +408,8 @@
 	items = list(
 		/obj/item/reagent_containers/food/snacks/soydope,
 		/obj/item/reagent_containers/food/snacks/soydope, //what the fuck is a soy dope
-		/obj/item/reagent_containers/food/snacks/tofu,
-		/obj/item/reagent_containers/food/snacks/tofu
+		/obj/item/reagent_containers/food/snacks/ingredient/tofu,
+		/obj/item/reagent_containers/food/snacks/ingredient/tofu
 	)
 	result = /obj/item/reagent_containers/food/snacks/milosoup
 
@@ -565,7 +565,7 @@
 	reagents = list("water" = 10, "egg" = 3)
 	items = list(
 		/obj/item/reagent_containers/food/snacks/badrecipe,
-		/obj/item/reagent_containers/food/snacks/tofu,
+		/obj/item/reagent_containers/food/snacks/ingredient/tofu,
 		/obj/item/reagent_containers/food/snacks/cheesewedge
 	)
 	reagent_mix = RECIPE_REAGENT_REPLACE
@@ -629,8 +629,8 @@
 
 /datum/recipe/tofurkey
 	items = list(
-		/obj/item/reagent_containers/food/snacks/tofu,
-		/obj/item/reagent_containers/food/snacks/tofu,
+		/obj/item/reagent_containers/food/snacks/ingredient/tofu,
+		/obj/item/reagent_containers/food/snacks/ingredient/tofu,
 		/obj/item/reagent_containers/food/snacks/stuffing
 	)
 	result = /obj/item/reagent_containers/food/snacks/tofurkey
@@ -696,8 +696,8 @@
 	reagents = list("cream" = 5, "spacespice" = 2, "rice" = 5)
 	fruit = list("chili" = 1)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/tofu,
-		/obj/item/reagent_containers/food/snacks/tofu
+		/obj/item/reagent_containers/food/snacks/ingredient/tofu,
+		/obj/item/reagent_containers/food/snacks/ingredient/tofu
 	)
 	reagent_mix = RECIPE_REAGENT_REPLACE //Simplify end product
 	result = /obj/item/reagent_containers/food/snacks/greencurry
@@ -891,7 +891,7 @@
 	fruit = list("chili" = 1, "lime" = 1)
 	reagents = list("spacespice" = 1, "blackpepper" = 1,"sodiumchloride" = 1)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/tofu
+		/obj/item/reagent_containers/food/snacks/ingredient/tofu
 	)
 	result = /obj/item/reagent_containers/food/snacks/dip/guac
 	reagent_mix = RECIPE_REAGENT_REPLACE //Ingredients are mixed together.
@@ -1154,7 +1154,7 @@
 	fruit = list("cabbage" = 1, "mushroom" = 1)
 	reagents = list("sodiumchloride" = 2, "blackpepper" = 2, "water" = 10)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/tofu
+		/obj/item/reagent_containers/food/snacks/ingredient/tofu
 	)
 	result = /obj/item/reagent_containers/food/snacks/hotandsoursoup
 
@@ -1162,7 +1162,7 @@
 	reagents = list("egg" = 3)
 	items = list(
 		/obj/item/reagent_containers/food/snacks/spagetti,
-		/obj/item/reagent_containers/food/snacks/tofu
+		/obj/item/reagent_containers/food/snacks/ingredient/tofu
 	)
 	result = /obj/item/reagent_containers/food/snacks/kitsuneudon
 

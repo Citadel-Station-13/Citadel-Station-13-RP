@@ -65,7 +65,7 @@
 	required_method = METHOD_OVEN
 	items = list(
 		/obj/item/reagent_containers/food/snacks/sliceable/flatdough,
-		/obj/item/reagent_containers/food/snacks/tofu
+		/obj/item/reagent_containers/food/snacks/ingredient/tofu
 	)
 	result = /obj/item/reagent_containers/food/snacks/tofupie
 

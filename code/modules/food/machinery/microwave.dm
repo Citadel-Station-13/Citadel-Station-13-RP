@@ -188,7 +188,7 @@
 			if (istype(O,/obj/item/reagent_containers/food/snacks/ingredient/egg))
 				items_measures[display_name] = "egg"
 				items_measures_p[display_name] = "eggs"
-			if (istype(O,/obj/item/reagent_containers/food/snacks/tofu))
+			if (istype(O,/obj/item/reagent_containers/food/snacks/ingredient/tofu))
 				items_measures[display_name] = "tofu chunk"
 				items_measures_p[display_name] = "tofu chunks"
 			if (istype(O,/obj/item/reagent_containers/food/snacks/ingredient/meat)) //any meat

@@ -14,7 +14,7 @@
 /datum/chemical_reaction/food/tofu/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
 	for(var/i = 1, i <= created_volume, i++)
-		new /obj/item/reagent_containers/food/snacks/tofu(location)
+		new /obj/item/reagent_containers/food/snacks/ingredient/tofu(location)
 	return
 
 /datum/chemical_reaction/food/soysauce

@@ -68,3 +68,18 @@
 
 /obj/item/reagent_containers/food/snacks/ingredient/egg/yellow
 	icon_state = "egg-yellow"
+
+
+/obj/item/reagent_containers/food/snacks/ingredient/tofu
+	name = "Tofu"
+	desc = "We all love tofu."
+
+
+	filling_color = "#FFFEE0"
+	icon_state = "tofu"
+	nutriment_amt = 6
+	nutriment_desc = list("tofu" = 3, "goeyness" = 3)
+
+/obj/item/reagent_containers/food/snacks/ingredient/tofu/Initialize(mapload)
+	. = ..()
+	src.bitesize = 3
