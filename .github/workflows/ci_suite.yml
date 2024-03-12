@@ -97,6 +97,7 @@ jobs:
   compile_all_maps:
     if: ( !contains(github.event.head_commit.message, '[ci skip]') )
     name: Compile Maps
+    needs: [collect_data]
     runs-on: ubuntu-22.04
     concurrency:
       group: compile_all_maps-${{ github.head_ref || github.run_id }}
@@ -113,49 +114,53 @@ jobs:
           bash tools/ci/install/install_byond.sh
           source $HOME/BYOND/byond/bin/byondsetup
           tools/build/build --ci dm -DCIBUILDING -DCITESTING -DALL_MAPS
+      - name: Check client Compatibility
+        uses: tgstation/byond-client-compatibility-check@v3
+        with:
+          dmb-location: tgstation.dmb
+          max-required-client-version: ${{needs.collect_data.outputs.max_required_byond_client}}
+
+  collect_data:
+    if: ( !contains(github.event.head_commit.message, '[ci skip]') )
+    name: Collect data for other tasks
+    runs-on: ubuntu-22.04
+    outputs:
+      # maps: ${{ steps.map_finder.outputs.maps }}
+      alternate_tests: ${{ steps.alternate_test_finder.outputs.alternate_tests }}
+      max_required_byond_client: ${{ steps.max_required_byond_client.outputs.max_required_byond_client }}
+    concurrency:
+      group: find_all_maps-${{ github.head_ref || github.run_id }}
+      cancel-in-progress: true
+    steps:
+      - uses: actions/checkout@v4
+      # - name: Find Maps
+      #   id: map_finder
+      #   run: |
+      #     echo "$(ls -mw0 _maps/*.json)" > maps_output.txt
+      #     sed -i -e s+_maps/+\"+g -e s+.json+\"+g maps_output.txt
+      #     echo "Maps: $(cat maps_output.txt)"
+      #     echo "maps={\"paths\":[$(cat maps_output.txt)]}" >> $GITHUB_OUTPUT
+      - name: Find Alternate Tests
+        id: alternate_test_finder
+        run: |
+          ALTERNATE_TESTS_JSON=$(jq -nRc '[inputs | capture("^(?<major>[0-9]+)\\.(?<minor>[0-9]+): (?<map>.+)$")]' .github/alternate_byond_versions.txt)
+          echo "alternate_tests=$ALTERNATE_TESTS_JSON" >> $GITHUB_OUTPUT
+      - name: Collect byond client version configuration
+        id: max_required_byond_client
+        #the regex here does not filter out non-numbers because error messages about no input are less helpful then error messages about bad input (which includes the bad input)
+        run: |
+          echo "max_required_byond_client=$(grep -Ev '^[[:blank:]]{0,}#{1,}|^[[:blank:]]{0,}$' .github/max_required_byond_client.txt | tail -n1)" >> $GITHUB_OUTPUT
 
   run_all_tests:
     if: ( !contains(github.event.head_commit.message, '[ci skip]') )
     name: Integration Tests
+    needs: [collect_data]
     strategy:
       fail-fast: false
     concurrency:
       group: run_all_tests-${{ github.head_ref || github.run_id }}
       cancel-in-progress: true
-    runs-on: ubuntu-22.04
-    services:
-      mysql:
-        image: mysql:latest
-        env:
-          MYSQL_ROOT_PASSWORD: root
-        ports:
-          - 3306
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
-    steps:
-      - uses: actions/checkout@v4
-      - name: Restore BYOND cache
-        uses: actions/cache@v4
-        with:
-          path: ~/BYOND
-          key: ${{ runner.os }}-byond-${{ secrets.CACHE_PURGE_KEY }}
-      - name: Setup database
-        run: |
-          sudo systemctl start mysql
-          mysql -u root -proot -e 'CREATE DATABASE ss13_ci;'
-          mysql -u root -proot ss13_ci < SQL/database_schema_prefixed.sql
-          mysql -u root -proot ss13_ci < SQL/unified_schema.sql
-        # mysql -u root -proot -e 'CREATE DATABASE tg_ci_prefixed;'
-        # mysql -u root -proot tg_ci_prefixed < SQL/tgstation_schema_prefixed.sql
-      - name: Install rust-g
-        run: |
-          bash tools/ci/install/install_rust_g.sh
-      - name: Compile Tests
-        id: compile_tests
-        run: |
-          bash tools/ci/install/install_byond.sh
-          source $HOME/BYOND/byond/bin/byondsetup
-          tools/build/build --ci dm -DCIBUILDING -DANSICOLORS -WError -NWTG0001
-      - name: Run Tests
-        run: |
-          source $HOME/BYOND/byond/bin/byondsetup
-          bash tools/ci/run_server.sh
+    uses: ./.github/workflows/run_integration_tests.yml
+    with:
+      max_required_byond_client: ${{needs.collect_data.outputs.max_required_byond_client}}
+
