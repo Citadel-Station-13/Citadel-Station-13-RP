@@ -57,7 +57,6 @@ var/global/list/all_tooltip_styles = list(
 
 // todo: refactor
 /client/proc/set_ui_alpha(alpha)
-	var/UI_style_new = style
 	//update UI
 	var/list/icons = usr.hud_used.adding + usr.hud_used.other + usr.hud_used.hotkeybuttons
 	icons.Add(usr.zone_sel)
@@ -66,17 +65,12 @@ var/global/list/all_tooltip_styles = list(
 	icons.Add(usr.gun_move_icon)
 	icons.Add(usr.radio_use_icon)
 
-	var/icon/ic = all_ui_styles[UI_style_new]
-	if(isrobot(usr))
-		ic = all_ui_styles_robot[UI_style_new]
-
 	for(var/atom/movable/screen/I in icons)
 		if(I.name in list(INTENT_HELP, INTENT_HARM, INTENT_DISARM, INTENT_GRAB)) continue
-		I.alpha = UI_style_alpha_new
+		I.alpha = alpha
 
 // todo: refactor
 /client/proc/set_ui_color(color)
-	var/UI_style_new = style
 	//update UI
 	var/list/icons = usr.hud_used.adding + usr.hud_used.other + usr.hud_used.hotkeybuttons
 	icons.Add(usr.zone_sel)
@@ -85,10 +79,6 @@ var/global/list/all_tooltip_styles = list(
 	icons.Add(usr.gun_move_icon)
 	icons.Add(usr.radio_use_icon)
 
-	var/icon/ic = all_ui_styles[UI_style_new]
-	if(isrobot(usr))
-		ic = all_ui_styles_robot[UI_style_new]
-
 	for(var/atom/movable/screen/I in icons)
 		if(I.name in list(INTENT_HELP, INTENT_HARM, INTENT_DISARM, INTENT_GRAB)) continue
-		I.color = UI_style_color_new
+		I.color = color

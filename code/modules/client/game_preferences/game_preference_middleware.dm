@@ -34,7 +34,7 @@ GLOBAL_LIST_INIT(game_preference_middleware, init_game_preference_middleware())
 /**
  * sanitize everything
  */
-/datum/game_preference_middleware/proc/handle_sanitize(datum/game_preferences/prefS)
+/datum/game_preference_middleware/proc/handle_sanitize(datum/game_preferences/prefs)
 	prefs.mark_dirty()
 	return
 

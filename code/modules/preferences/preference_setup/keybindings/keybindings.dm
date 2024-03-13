@@ -1,16 +1,3 @@
-
-//Used in savefile update from 11, can be removed once that is no longer relevant.
-/datum/preferences/proc/force_reset_keybindings()
-	var/choice = tgalert(client.mob, "Your basic keybindings need to be reset, emotes will remain as before. Would you prefer 'hotkey' or 'classic' mode?", "Reset keybindings", "Hotkey", "Classic")
-	hotkeys = (choice != "Classic")
-	var/list/oldkeys = key_bindings
-	key_bindings = (hotkeys) ? deep_copy_list(GLOB.hotkey_keybinding_list_by_key) : deep_copy_list(GLOB.classic_keybinding_list_by_key)
-
-	for(var/key in oldkeys)
-		if(!key_bindings[key])
-			key_bindings[key] = oldkeys[key]
-	client.update_movement_keys()
-
 /datum/category_item/player_setup_item/keybinding/hotkey_mode/content(datum/preferences/prefs, mob/user, data)
 	. += "<b>Hotkey mode:</b> <a href='?src=[REF(src)];option=hotkeys'>[(pref.hotkeys) ? "Hotkeys" : "Default"]</a><br>"
 	. += "Keybindings mode controls how the game behaves with tab and map/input focus.<br>If it is on <b>Hotkeys</b>, the game will always attempt to force you to map focus, meaning keypresses are sent \
@@ -22,78 +9,16 @@
 	<b>IMPORTANT:</b> While in input mode's non hotkey setting (tab toggled), Ctrl + KEY will send KEY to the keybind system as the key itself, not as Ctrl + KEY. This means Ctrl + T/W/A/S/D/all your familiar stuff still works, but you \
 	won't be able to access any regular Ctrl binds.<br>"
 
-
-/datum/category_item/player_setup_item/keybinding/bindings/sanitize_preferences()
-	pref.key_bindings = sanitize_islist(pref.key_bindings, list())
-	for(var/key in pref.key_bindings)
-		var/list/L = pref.key_bindings[key]
-		for(var/kb in L)
-			if(!GLOB.keybindings_by_name[kb])
-				L -= kb
-		if(!length(L))
-			pref.key_bindings -= key
-
-/datum/category_item/player_setup_item/keybinding/bindings/content(datum/preferences/prefs, mob/user, data)
-	. = list()
-	var/list/key_bindings = pref.key_bindings		//cache for speed or atleast my finger's sake..
-	// Create an inverted list of keybindings -> key
-	var/list/user_binds = list()
-	for (var/key in key_bindings)
-		for(var/kb_name in key_bindings[key])
-			user_binds[kb_name] += list(key)
-
-	var/list/kb_categories = list()
-	// Group keybinds by category
-	for (var/name in GLOB.keybindings_by_name)
-		var/datum/keybinding/kb = GLOB.keybindings_by_name[name]
-		kb_categories[kb.category] += list(kb)
-
-	. += "<style>label { display: inline-block; width: 200px; }</style><body>"
-
-	for (var/category in kb_categories)
-		. += "<h3>[category]</h3>"
-		for (var/i in kb_categories[category])
-			var/datum/keybinding/kb = i
-			if(!length(user_binds[kb.name]))
-				. += "<label>[kb.full_name]</label> <a href ='?src=[REF(src)];option=keybindings_capture;keybinding=[kb.name];old_key=["Unbound"]'>Unbound</a>"
-				var/list/default_keys = pref.hotkeys ? kb.hotkey_keys : kb.classic_keys
-				if(LAZYLEN(default_keys))
-					. += "| Default: [default_keys.Join(", ")]"
-				. += "<br>"
-			else
-				var/bound_key = user_binds[kb.name][1]
-				. += "<label>[kb.full_name]</label> <a href ='?src=[REF(src)];option=keybindings_capture;keybinding=[kb.name];old_key=[bound_key]'>[bound_key]</a>"
-				for(var/bound_key_index in 2 to length(user_binds[kb.name]))
-					bound_key = user_binds[kb.name][bound_key_index]
-					. += " | <a href ='?src=[REF(src)];option=keybindings_capture;keybinding=[kb.name];old_key=[bound_key]'>[bound_key]</a>"
-				if(length(user_binds[kb.name]) < MAX_KEYS_PER_KEYBIND)
-					. += "| <a href ='?src=[REF(src)];option=keybindings_capture;keybinding=[kb.name]'>Add Secondary</a>"
-				var/list/default_keys = pref.hotkeys ? kb.classic_keys : kb.hotkey_keys
-				if(LAZYLEN(default_keys))
-					. += "| Default: [default_keys.Join(", ")]"
-				. += "<br>"
-
-	. += "<br><br>"
-	. += "<a href ='?src=[REF(src)];option=keybindings_reset'>\[Reset to default\]</a>"
-	. += "</body>"
-	. = jointext(., null)
-
 /datum/category_item/player_setup_item/keybinding/bindings/OnTopic(href, list/href_list, mob/user)
 	if(href_list["option"])
 		switch(href_list["option"])
-			if("keybindings_capture")
-				var/datum/keybinding/kb = GLOB.keybindings_by_name[href_list["keybinding"]]
-				var/old_key = href_list["old_key"]
-				pref.CaptureKeybinding(user, kb, old_key, src)
-				return
-
 			if("keybindings_set")
 				var/kb_name = href_list["keybinding"]
 				if(!kb_name)
 					user << browse(null, "window=capturekeypress")
 					return PREFERENCES_REFRESH
 
-				varw/clear_key = text2num(href_list["clear_key"])
+				var/clear_key = text2num(href_list["clear_key"])
 				var/old_key = href_list["old_key"]
 				if(clear_key)
 					if(pref.key_bindings[old_key])
@@ -134,16 +59,6 @@
 				user << browse(null, "window=capturekeypress")
 				user.client.update_movement_keys()
 				SScharacters.queue_preferences_save(pref)
-
-			if("keybindings_reset")
-				var/choice = tgalert(user, "Would you prefer 'hotkey' or 'classic' defaults?", "Setup keybindings", "Hotkey", "Classic", "Cancel")
-				if(choice == "Cancel")
-					return PREFERENCES_REFRESH
-				pref.hotkeys = (choice == "Hotkey")
-				pref.key_bindings = (pref.hotkeys) ? deep_copy_list(GLOB.hotkey_keybinding_list_by_key) : deep_copy_list(GLOB.classic_keybinding_list_by_key)
-				user.client.update_movement_keys()
-		return PREFERENCES_REFRESH
-	return ..()
 
 /datum/preferences/proc/CaptureKeybinding(mob/user, datum/keybinding/kb, old_key, datum/category_item/player_setup_item/keybinding/bindings/host)
 	var/HTML = {"

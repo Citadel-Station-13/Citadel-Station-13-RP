@@ -62,7 +62,7 @@
 		var/command = macroset[key]
 		winset(src, "[name]-[REF(key)]", "parent=[name];name=[key];command=[command]")
 
-/client/proc/set_macros(datum/preferences/prefs_override = prefs)
+/client/proc/set_macros(datum/game_preferences/prefs_override = preferences)
 	set waitfor = FALSE
 
 	keys_held.Cut()
@@ -81,10 +81,10 @@
 			window.set_mouse_macro()
 
 	set_hotkeys_preference()
-	set_hotkeys_button(prefs_override.hotkeys)
+	set_hotkeys_button(prefs_override.is_hotkeys_mode())
 
-/client/proc/set_hotkeys_preference(datum/preferences/prefs_override = prefs)
-	if(prefs_override.hotkeys)
+/client/proc/set_hotkeys_preference(datum/game_preferences/prefs_override = preferences)
+	if(prefs_override.is_hotkeys_mode())
 		winset(src, null, "map.focus=true input.background-color=[COLOR_INPUT_DISABLED] mainwindow.macro=[SKIN_MACROSET_HOTKEYS]")
 	else
 		winset(src, null, "input.focus=true input.background-color=[COLOR_INPUT_ENABLED] mainwindow.macro=[SKIN_MACROSET_CLASSIC_INPUT]")

@@ -101,7 +101,7 @@
 		GLOB.changelog_tgui = new /datum/changelog()
 
 	GLOB.changelog_tgui.ui_interact(usr)
-	
+
 	if(player.immediately_available() && player.player_misc["changelog_hash"] != GLOB.changelog_hash)
 		player.player_misc["changelog_hash"] = GLOB.changelog_hash
 		player.save()
@@ -228,13 +228,3 @@ Any-Mode: (hotkey doesn't need to be on)
 		to_chat(src, other)
 	if(holder)
 		to_chat(src, admin)
-
-/client/verb/skin_toggle_hotkeys()
-	set name = "Toggle Hotkeys"
-	set category = "Preferences"
-	set desc = "Toggle input control scheme"
-	set hidden = TRUE
-
-	prefs.hotkeys = !prefs.hotkeys
-	set_macros()
-

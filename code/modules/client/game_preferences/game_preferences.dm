@@ -489,6 +489,10 @@ GLOBAL_LIST_EMPTY(game_preferences)
 	.["entries"] = entries
 	.["values"] = entries_by_key
 
+/datum/game_preferences/ui_data(mob/user, datum/tgui/ui, is_module)
+	. = ..()
+	.["dirty"] = is_dirty
+
 // todo: when do we refactor tgui again i don't like ui_interact because i'm a snowflake who likes being different
 // (real complaint: ui_interact is weird for being called from tgui as well as from external)
 // (update procs should be internally called, imo, not the 'open ui' proc, it leads to)

@@ -38,3 +38,12 @@
 	var/datum/game_preferences/prefs = ui.src_object
 	.["toggles"] = prefs.toggles_by_key
 
+/datum/game_preference_middleware/toggles/handle_sanitize(datum/game_preferences/prefs)
+	. = ..()
+	prefs.toggles_by_key = sanitize_islist(prefs.toggles_by_key)
+	for(var/key in prefs.toggles_by_key)
+		var/datum/game_preference_toggle/toggle = GLOB.game_preference_toggles[key]
+		if(isnull(toggle))
+			prefs.toggles_by_key -= key
+			continue
+		prefs.toggles_by_key[key] = !!prefs.toggles_by_key[key]
