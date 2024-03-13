@@ -2394,7 +2394,6 @@
 #include "code\modules\client\onboarding\security_checks.dm"
 #include "code\modules\client\verbs\minimap.dm"
 #include "code\modules\client\verbs\ooc.dm"
-#include "code\modules\client\verbs\panic_bunker_player.dm"
 #include "code\modules\client\verbs\ping.dm"
 #include "code\modules\client\verbs\preferences.dm"
 #include "code\modules\client\verbs\view.dm"
