@@ -1,9 +1,6 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
-#define AUTO_FRAME_DATUM(typepath, icon)
-#warn that
-
 GLOBAL_LIST_INIT(frame_datums, init_frame_datums())
 
 /proc/init_frame_datums()
@@ -44,6 +41,8 @@ GLOBAL_LIST_INIT(frame_datums, init_frame_datums())
 	var/material_cost = 1
 	/// for future use: set to TRUE to allow all materials
 	var/material_unlocked = FALSE
+	/// can we be built?
+	var/material_buildable = TRUE
 
 	/// construction steps
 	/// see /datum/frame2 readme (so up above in this file) for how to do this
@@ -56,7 +55,11 @@ GLOBAL_LIST_INIT(frame_datums, init_frame_datums())
 	/// is this frame freely un/anchorable?
 	var/freely_anchorable = FALSE
 	/// do we need to be anchored to finish? we will not allow progression past last stage if so.
-	var/requires_anchored_to_finish = FALSE
+	var/requires_anchored_to_finish = TRUE
+	/// anchoring time
+	var/anchor_time = 2 SECONDS
+	/// anchoring tool
+	var/anchor_tool = TOOL_WRENCH
 
 	/// is this frame a wall-frame?
 	var/wall_frame = FALSE
@@ -71,6 +74,11 @@ GLOBAL_LIST_INIT(frame_datums, init_frame_datums())
 	var/has_structure_stage_states = TRUE
 	/// do we append -stage to items?
 	var/has_item_stage_states = FALSE
+
+	/// weight class of item
+	var/item_weight_class = WEIGHT_CLASS_NORMAL
+	/// weight volume of item
+	var/item_weight_volume = WEIGHT_VOLUME_NORMAL
 
 #warn impl
 
@@ -145,5 +153,17 @@ AUTO_FRAME_DATUM(preloaded/apc, 'icons/objects/frames/fire_alarm.dmi')
 
 AUTO_FRAME_DATUM(preloaded/apc, 'icons/objects/frames/solar_panel.dmi')
 /datum/frame2/preloaded/solar_panel
+	name = "solar assembly"
+	material_buildable = FALSE
+	steps_forward = list(
+		list(
+			FRAME_STEP_TYPE = FRAME_STEP_TYPE_PROC,
+		),
+	)
+	steps_backward = list(
+		list(
+			FRAME_STEP_TYPE = FRAME_STEP_TYPE_PROC,
+		),
+	)
 
-#undef AUTO_FRAME_DATUM
+	has_structure_stage_states = FALSE

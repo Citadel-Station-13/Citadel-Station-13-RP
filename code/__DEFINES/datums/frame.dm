@@ -38,3 +38,8 @@
 
 /// automatic context for storing items put into the frame
 #define FRAME_CONTEXT_FOR_STAGE(N) "![N]-parts"
+
+//* special things
+
+#define AUTO_FRAME_DATUM(typepath, icon)
+#warn that
