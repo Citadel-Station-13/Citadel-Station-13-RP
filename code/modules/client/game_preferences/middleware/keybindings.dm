@@ -40,17 +40,37 @@
 		if("addBind")
 			var/keybind_id = params["keybind"]
 			var/datum/keybinding/keybind = GLOB.keybindings_by_name[keybind_id]
+			// key can be blank if we're only using ctrl/alt/shift!!
 			var/key = params["key"]
 			var/alt_depressed = params["alt"]
 			var/shift_depressed = params["shift"]
 			var/ctrl_depressed = params["ctrl"]
+			var/is_numpad = params["numpad"]
 			var/replacing_key = params["replaceKey"]
+			var/adding_key = "[alt_depressed? "Alt":""][ctrl_depressed? "Ctrl":""][shift_depressed? "Shift":""][is_numpad? "Numpad":""][key]"
+			if(!adding_key)
+				return TRUE
+			if(adding_key == replacing_key)
+				return TRUE
 			if(!isnull(replacing_key))
 				prefs.keybindings[replacing_key] -= keybind_id
-			if(isnull(prefs.keybindings[key]))
-				prefs.keybindings[key] = list()
-			prefs.keybindings[key] += keybind_id
-			prefs.push_ui_modules(updates = list((key) = list(
+			if(isnull(prefs.keybindings[adding_key]))
+				prefs.keybindings[adding_key] = list()
+			if(keybind_id in prefs.keybindings[adding_key])
+				return TRUE
+			prefs.keybindings[adding_key] += keybind_id
+			prefs.push_ui_modules(updates = list((src.key) = list(
+				"keybindings" = prefs.keybindings,
+			)))
+			prefs.active?.update_movement_keys()
+			return TRUE
+		if("removeBind")
+			var/keybind_id = params["keybind"]
+			var/key = params["key"]
+			if(!key)
+				return TRUE
+			prefs.keybindings[key] -= keybind_id
+			prefs.push_ui_modules(updates = list((src.key) = list(
 				"keybindings" = prefs.keybindings,
 			)))
 			prefs.active?.update_movement_keys()
@@ -69,7 +89,7 @@
 				keybind_ids.len = MAX_COMMANDS_PER_KEY
 			for(var/bind_id in prefs.keybindings[key])
 				var/datum/keybinding/found = GLOB.keybindings_by_name[bind_id]
-				if(isnull(fonud))
+				if(isnull(found))
 					prefs.keybindings[key] -= bind_id
 					continue
 				if(isnull(keys_by_bind_id[bind_id]))
