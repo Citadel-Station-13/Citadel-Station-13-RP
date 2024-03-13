@@ -8,7 +8,7 @@ GLOBAL_LIST_INIT(frame_datums, init_frame_datums())
 #warn global list
 
 /**
- * arbitrary construction frames
+ * arbitrary construction framework
  *
  * ### how state machines work here
  *
