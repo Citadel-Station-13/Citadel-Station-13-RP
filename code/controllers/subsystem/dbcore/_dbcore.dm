@@ -99,6 +99,8 @@ SUBSYSTEM_DEF(dbcore)
 		connection = result["handle"]
 		if(was_ever_connected)
 			// we got re-connected.
+			for(var/datum/controller/subsystem/subsystem in Master.subsystems)
+				subsystem.on_sql_reconnect()
 			world.on_sql_reconnect()
 		was_ever_connected = TRUE
 	else

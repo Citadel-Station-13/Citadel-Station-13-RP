@@ -3,6 +3,8 @@
 
 GLOBAL_LIST_INIT(game_preference_entries, init_game_preference_entries())
 
+#error preferences subsystem :/
+
 /proc/init_game_preference_entries()
 	. = list()
 	for(var/datum/game_preference_entry/casted as anything in subtypesof(/datum/game_preference_entry))

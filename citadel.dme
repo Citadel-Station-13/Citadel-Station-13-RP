@@ -533,6 +533,7 @@
 #include "code\controllers\subsystem\planets.dm"
 #include "code\controllers\subsystem\plants.dm"
 #include "code\controllers\subsystem\playtime.dm"
+#include "code\controllers\subsystem\preferences.dm"
 #include "code\controllers\subsystem\radiation.dm"
 #include "code\controllers\subsystem\repository.dm"
 #include "code\controllers\subsystem\research.dm"

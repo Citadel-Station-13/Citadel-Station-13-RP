@@ -4,21 +4,6 @@
 /// key value ckey = value
 GLOBAL_LIST_EMPTY(game_preferences)
 
-/proc/resolve_game_preferences(ckey)
-	if(!istype(GLOB.game_preferences[ckey], /datum/game_preferences))
-		var/datum/game_preferences/initializing = new(ckey)
-		GLOB.game_preferences[ckey] = initializing
-		initializing.initialize()
-	return GLOB.game_preferences[ckey]
-
-/world/on_sql_reconnect()
-	for(var/ckey in GLOB.game_preferences)
-		var/datum/game_preferences/preferences = GLOB.game_preferences[ckey]
-		if(!istype(preferences))
-			continue
-		preferences.oops_sql_came_back_perform_a_reload()
-	return ..()
-
 /**
  * Game preferences
  *
