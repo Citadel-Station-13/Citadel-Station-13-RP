@@ -1986,8 +1986,6 @@
 #include "code\game\turfs\turf_flick_animations.dm"
 #include "code\game\turfs\turf_movement.dm"
 #include "code\game\turfs\unsimulated.dm"
-#include "code\game\turfs\initialization\init.dm"
-#include "code\game\turfs\initialization\maintenance.dm"
 #include "code\game\turfs\simulated\sky.dm"
 #include "code\game\turfs\simulated\floor\floor.dm"
 #include "code\game\turfs\simulated\floor\floor_acts.dm"

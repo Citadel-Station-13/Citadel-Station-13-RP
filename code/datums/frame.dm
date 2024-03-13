@@ -137,9 +137,9 @@ AUTO_FRAME_DATUM(preloaded/apc, 'icons/objects/frames/apc.dmi')
 	wall_frame = TRUE
 	#warn wallframe offsets
 
-/datum/frame2/preloaded/apc/finish(atom/location, dir, stage, list/context)
-	ASSERT(isturf(location))
-	return new /obj/machinery/power/apc(location, dir, TRUE)
+/datum/frame2/preloaded/apc/finish_frame(obj/structure/frame/frame)
+	ASSERT(isturf(frame.loc))
+	return new /obj/machinery/power/apc(frame.loc, frame.dir, TRUE)
 
 
 AUTO_FRAME_DATUM(preloaded/apc, 'icons/objects/frames/fire_alarm.dmi')
@@ -179,7 +179,7 @@ AUTO_FRAME_DATUM(preloaded/apc, 'icons/objects/frames/fire_alarm.dmi')
 		),
 		list(
 			FRAME_STEP_TYPE = FRAME_STEP_TYPE_TOOL,
-			FRAME_STEP_REQUEST = TOOL_WIRECUTTERS,
+			FRAME_STEP_REQUEST = TOOL_WIRECUTTER,
 		),
 	)
 
