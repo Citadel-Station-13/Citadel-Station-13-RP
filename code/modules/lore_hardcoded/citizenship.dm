@@ -24,7 +24,7 @@
 	explorers, and territories solidify with every passing year. Today the Orion Confederation stands as the cultural center \
 	of the galaxy, with it's megacorporations bringing untold prosperity to the galaxy... along with untold toil and struggle. \
 	The Orion Confederation's hold on it's native megacorps is always tenuous; these major entities are almost left to their own affairs, \
-	especially in the aftermath of the Phoron Wars, in regards to one of it's flagship corporations: NanoTrasen."
+	especially in the aftermath of the Phoron Wars, in regards to one of it's flagship corporations: Nanotrasen."
 
 /datum/lore/character_background/citizenship/naramadiascendancy
 	name = "Naramadi Ascendancy"

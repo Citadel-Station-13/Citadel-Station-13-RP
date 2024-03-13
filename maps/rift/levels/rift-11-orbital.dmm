@@ -1787,7 +1787,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "fL" = (
-/obj/machinery/telecomms/server/presets/centcomm,
+/obj/machinery/telecomms/server/presets/centcom,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "fM" = (
@@ -6589,7 +6589,7 @@
 "xT" = (
 /obj/effect/floor_decal/industrial/outline,
 /obj/structure/closet/secure_closet/nanotrasen_security{
-	desc = "This locker is filled silly stickers and some other serious NanoTrasen ones. It is lazily labeled 'The big cat'."
+	desc = "This locker is filled silly stickers and some other serious Nanotrasen ones. It is lazily labeled 'The big cat'."
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/main_hall)
@@ -6757,13 +6757,13 @@
 /area/centcom/command)
 "yA" = (
 /obj/machinery/door/airlock/centcom{
-	name = "NanoTrasen Offices"
+	name = "Nanotrasen Offices"
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "yB" = (
 /obj/machinery/door/airlock/multi_tile/metal{
-	name = "NanoTrasen Visitors"
+	name = "Nanotrasen Visitors"
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
@@ -7257,7 +7257,7 @@
 "Ah" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/multi_tile/metal{
-	name = "NanoTrasen Offices";
+	name = "Nanotrasen Offices";
 	req_one_access = list(101)
 	},
 /turf/unsimulated/floor/steel,
@@ -7269,7 +7269,7 @@
 "Aj" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/multi_tile/metal{
-	name = "NanoTrasen Visitors"
+	name = "Nanotrasen Visitors"
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
@@ -8958,7 +8958,7 @@
 /area/centcom/specops/dock)
 "Qs" = (
 /obj/structure/table/reinforced,
-/obj/item/stamp/centcomm,
+/obj/item/stamp/centcom,
 /obj/item/pen,
 /obj/item/paper_bin{
 	pixel_x = 1;
@@ -9429,7 +9429,7 @@
 /obj/structure/table/reinforced,
 /obj/item/aicard,
 /obj/item/pinpointer/advpinpointer,
-/obj/item/stamp/centcomm,
+/obj/item/stamp/centcom,
 /turf/unsimulated/floor/wood,
 /area/centcom/specops)
 "Ve" = (

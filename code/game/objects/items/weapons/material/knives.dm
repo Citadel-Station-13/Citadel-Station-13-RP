@@ -71,7 +71,7 @@
 	name = "kitchen knife"
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "knife"
-	desc = "A general purpose chef's knife. Glithari Exports filet knives, Centauri bread knives, all pale in comparison to NanoTrasen's very own Cookware line of cheap, affordable chef's knives."
+	desc = "A general purpose chef's knife. Glithari Exports filet knives, Centauri bread knives, all pale in comparison to Nanotrasen's very own Cookware line of cheap, affordable chef's knives."
 	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_LIGHT
 	materials_base = list(MAT_STEEL = 12000)
@@ -148,7 +148,7 @@
 /obj/item/material/knife/butch
 	name = "butcher's cleaver"
 	icon_state = "butch"
-	desc = "Another fine product from NanoTrasen's Cookware line. The heavy head and grooved grip makes chopping meat a breeze."
+	desc = "Another fine product from Nanotrasen's Cookware line. The heavy head and grooved grip makes chopping meat a breeze."
 	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_HEAVY
 	attack_verb = list("cleaved", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	force_multiplier = 1.15

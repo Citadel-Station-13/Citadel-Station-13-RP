@@ -39,7 +39,7 @@
 	throw_range = 20
 
 /obj/item/soap/nanotrasen
-	desc = "A NanoTrasen-brand bar of soap. Smells of phoron."
+	desc = "A Nanotrasen-brand bar of soap. Smells of phoron."
 	icon_state = "soapnt"
 
 /obj/item/soap/deluxe

@@ -1,6 +1,6 @@
 /obj/item/gun/ballistic/caseless/prototype
 	name = "prototype caseless rifle"
-	desc = "This experimental rifle is the efforts of NanoTrasen's R&D division, made manifest. Uses 5mm solid-phoron caseless rounds, obviously."
+	desc = "This experimental rifle is the efforts of Nanotrasen's R&D division, made manifest. Uses 5mm solid-phoron caseless rounds, obviously."
 	icon_state = "caseless"
 	item_state = "caseless"
 	w_class = WEIGHT_CLASS_BULKY

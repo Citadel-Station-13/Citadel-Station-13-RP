@@ -146,7 +146,7 @@
 /obj/item/clothing/suit/space/void/odst_eng
 	icon_state = "odst_orange"
 	name = "hephaestus icarus engineer suit"
-	desc = "Favoured suit of deep-space engineers, comfortable and comparable to suits avalible to NanoTrasen Engineers. Comes equipped with a wrist-bound oxygen timer."
+	desc = "Favoured suit of deep-space engineers, comfortable and comparable to suits avalible to Nanotrasen Engineers. Comes equipped with a wrist-bound oxygen timer."
 	w_class = WEIGHT_CLASS_NORMAL
 	armor_type = /datum/armor/engineering/space
 	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/melee/energy/sword,/obj/item/handcuffs)
