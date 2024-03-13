@@ -222,7 +222,7 @@
 	if(obj_integrity == 0)
 		if(ismob(loc))
 			var/mob/living/L = loc
-			playsound(src, "sparks", 100, TRUE)
+			playsound(src, /datum/soundbyte/grouped/sparks, 100, TRUE)
 			L.visible_message("<span class='boldwarning'>[src] overloads from the damage sustained!</span>")
 			L.dropItemToGround(src)			//implant component catch hook will grab it.
 

@@ -109,7 +109,7 @@
 			src.visible_message("[src] pushes [T] out of the way.")
 
 		melee_can_hit = 0
-		if(do_after(melee_cooldown))
+		spawn(melee_cooldown)
 			melee_can_hit = 1
 		return
 
@@ -121,15 +121,11 @@
 				src.occupant_message("You hit [T].")
 				src.visible_message("<font color='red'><b>[src.name] hits [T]</b></font>")
 				playsound(src, 'sound/weapons/heavysmash.ogg', 50, 1)
-
-				if(istype(T, /obj/structure/girder))
-					T:take_damage_legacy(force * 3) //Girders have 200 integrity by default. Steel, non-reinforced walls take four punches, girders take (with this value-mod) two, girders took five without.
-				else
-					T:take_damage_legacy(force)
+				T.inflict_atom_damage(force, MELEE_TIER_HEAVY, ARMOR_MELEE, weapon = src)
 
 				melee_can_hit = 0
 
-				if(do_after(melee_cooldown))
+				spawn(melee_cooldown)
 					melee_can_hit = 1
 	return
 
