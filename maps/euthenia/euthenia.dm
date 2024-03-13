@@ -1,6 +1,10 @@
 /datum/map/station/euthenia
 	id = "euthenia"
 	name = "World - Euthenia"
+
+	// todo: remove after dev is done
+	allow_random_draw = FALSE
+
 	levels = list(
 		/datum/map_level/euthenia/deck/four,
 		/datum/map_level/euthenia/deck/three,

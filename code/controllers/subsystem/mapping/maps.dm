@@ -67,7 +67,7 @@
 
 /datum/controller/subsystem/mapping/proc/read_next_map()
 	var/datum/map/station/next_map
-	var/datum/map/station/default = keyed_maps[keyed_maps[1]]
+	var/datum/map/station/default = get_default_map()
 	if(isnull(default))
 		stack_trace("no default map; world init is likely going to explode.")
 #ifdef FORCE_MAP
@@ -237,6 +237,18 @@
 	// load
 	load_map(instance)
 	return TRUE
+
+/datum/controller/subsystem/mapping/proc/get_default_map()
+	var/list/datum/map/station/potential = list()
+	for(var/id in keyed_maps)
+		var/datum/map/station/checking = keyed_maps[id]
+		if(!istype(checking))
+			// not a station map
+			continue
+		if(!checking.allow_random_draw)
+			continue
+		potential += checking
+	return SAFEPICK(potential)
 
 // todo: admin subsystems panel
 // admin tooling for map swapping below
