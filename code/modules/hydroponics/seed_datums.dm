@@ -196,7 +196,7 @@
 	can_self_harvest = 1
 	has_mob_product = /mob/living/simple_mob/hostile/tomato
 	food_info = list(list(0, 1, "ripe tomato"), list(10 SECONDS, 1.2, "soft cooked tomato"), list(25 SECONDS, 1, "overcooked tomato"), list(30 SECONDS, 0.9, "dry, overcooked tomato"))
-	
+
 
 /datum/seed/tomato/killer/New()
 	..()
@@ -888,7 +888,7 @@
 	seed_name = "corn"
 	display_name = "ears of corn"
 	kitchen_tag = "corn"
-	chems = list("nutriment" = list(1,10), "cornoil" = list(1,10))
+	chems = list("nutriment" = list(1,10), "cornoil" = list(1,10), "cornflour" = list(15,15))
 	trash_type = /obj/item/corncob
 	food_info = list(list(0, 1, "sweet corn"), list(10 SECONDS, 1.2, "toasted sweetcorn"), list(20 SECONDS, 1.1, "grilled sweetcorn"), list(40 SECONDS, 0.9, "burnt no-longer-sweet corn"))
 

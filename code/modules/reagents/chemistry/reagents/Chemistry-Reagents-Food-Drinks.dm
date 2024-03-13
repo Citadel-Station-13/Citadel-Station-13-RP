@@ -156,6 +156,19 @@
 	if(!istype(T, /turf/space))
 		new /obj/effect/debris/cleanable/flour(T)
 
+/datum/reagent/nutriment/cornflour
+	name = "corn flour"
+	id = "cornflour"
+	description = "With the advent of modern autonixtamalizing maize varieties, even YOU can make masa by just grinding down fresh corn."
+	taste_description = "chalky corn"
+	reagent_state = REAGENT_SOLID
+	nutriment_factor = 1
+	color = "#FFFFFF"
+
+/datum/reagent/nutriment/flour/touch_turf(turf/simulated/T)
+	if(!istype(T, /turf/space))
+		new /obj/effect/debris/cleanable/flour(T)
+
 /datum/reagent/nutriment/flour/vitapaste
 	name = "NutriFlour"
 	id = "nutriflour"
@@ -1245,7 +1258,7 @@
 	taste_description = "tropical, somewhat buttery water"
 	color = "#fafafa70"
 	nutrition=1
-	
+
 	glass_name = "Coconut Water"
 	glass_desc = "A fresh clear liquid found within coconuts."
 
