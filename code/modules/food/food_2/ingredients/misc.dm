@@ -83,3 +83,48 @@
 /obj/item/reagent_containers/food/snacks/ingredient/tofu/Initialize(mapload)
 	. = ..()
 	src.bitesize = 3
+
+
+/obj/item/reagent_containers/food/snacks/ingredient/cheesewheel
+	name = "cheese wheel"
+	desc = "A big wheel of delcious space cheese."
+	icon_state = "cheesewheel"
+	slice_path = /obj/item/reagent_containers/food/snacks/ingredient/cheesewedge
+	slices_num = 6
+	filling_color = "#FFF700"
+	nutriment_desc = list("cheese" = 10)
+	nutriment_amt = 10
+
+/obj/item/reagent_containers/food/snacks/ingredient/cheesewheel/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 10)
+	bitesize = 2
+
+/obj/item/reagent_containers/food/snacks/ingredient/cheesewedge
+	name = "cheese wedge"
+	desc = "A wedge of delicious space cheese. The wheel it was cut from can't have gone far."
+	icon_state = "cheesewedge"
+	filling_color = "#FFF700"
+	bitesize = 2
+
+/obj/item/reagent_containers/food/snacks/ingredient/bluecheesewheel
+	name = "blue cheese wheel"
+	desc = "A big wheel of mold-infused blue cheese."
+	icon_state = "bluecheesewheel"
+	slice_path = /obj/item/reagent_containers/food/snacks/ingredient/bluecheesewedge
+	slices_num = 6
+	filling_color = "#f1f0c8"
+	nutriment_desc = list("sour cheese" = 10)
+	nutriment_amt = 10
+
+/obj/item/reagent_containers/food/snacks/ingredient/bluecheesewheel/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 10)
+	bitesize = 2
+
+/obj/item/reagent_containers/food/snacks/ingredient/bluecheesewedge
+	name = "blue cheese wedge"
+	desc = "A wedge of moldy blue cheese. The wheel it was cut from can't have gone far."
+	icon_state = "bluecheesewedge"
+	filling_color = "#f1f0c8"
+	bitesize = 2

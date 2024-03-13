@@ -320,7 +320,7 @@
 	},
 /area/wizard_station)
 "aN" = (
-/obj/item/reagent_containers/food/snacks/cheesewedge,
+/obj/item/reagent_containers/food/snacks/ingredient/cheesewedge,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},

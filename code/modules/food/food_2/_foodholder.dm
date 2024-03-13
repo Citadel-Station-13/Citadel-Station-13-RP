@@ -89,10 +89,12 @@
 		update_icon()
 	return ..()
 
-/obj/item/reagent_containers/glass/food_holder/CtrlClick(mob/living/user)
+/obj/item/reagent_containers/glass/food_holder/CtrlClick(mob/user)
 	if(user.a_intent == INTENT_GRAB)
 		generate_serving(null, user)
 		return
+	else
+		food_name_override = input(user, "What would you like to name the finished dishes?", "Name dishes from container", null) as null|text
 
 /obj/item/reagent_containers/glass/food_holder/AltClick(mob/living/user)
 	var/list/removables = list()
@@ -104,10 +106,8 @@
 		var/obj/item/reagent_containers/food/snacks/ingredient/I = removeding
 		if(counter)
 			removables["[I.name] ([counter]) \[[I.cookstage2text()]\]"] = I
-			to_chat(user, "Option [I.name] ([counter]) \[[I.cookstage2text()]\] = [I]")
 		else
 			removables["[I.name] \[[I.cookstage2text()]\]"] = I
-			to_chat(user, "Option [I.name] \[[I.cookstage2text()]\] = [I]")
 		counter++
 	if(!LAZYLEN(removables))
 		return
@@ -120,7 +120,6 @@
 		return TRUE
 	return FALSE
 
-
 /obj/item/reagent_containers/glass/food_holder/proc/try_merge(obj/item/reagent_containers/food/snacks/ingredient/I, obj/item/reagent_containers/food/snacks/ingredient/compare_ingredient, mob/user)
 	if(!istype(I))
 		return
@@ -130,13 +129,12 @@
 
 
 /obj/item/reagent_containers/glass/food_holder/proc/generate_serving(var/obj/item/food_serving/FS, mob/user)
-	if(!istype(FS))
-		return
 	var/obj/item/reagent_containers/food/snacks/food_serving/generated_serving = new /obj/item/reagent_containers/food/snacks/food_serving(null)
 	var/list/tally_flavours = list()
 	var/list/fancy_overlay_to_add = list()
 	var/food_color
 	var/serving_thing_name = "handful"
+	var/foodname = generate_food_name()
 
 	var/fs_icon = FS ? FS.icon : 'icons/obj/food_ingredients/custom_food.dmi'
 	var/fs_iconstate = FS ? FS.icon_state : "handful"
@@ -167,7 +165,7 @@
 		FS.forceMove(generated_serving)
 
 	generated_serving.name = "a [serving_thing_name] of "
-	generated_serving.name += generate_food_name()
+	generated_serving.name += foodname
 	generated_serving.icon = fs_icon
 	generated_serving.icon_state = fs_iconstate
 	generated_serving.add_overlay(fancy_overlay_to_add)

@@ -34,6 +34,13 @@
 			cooktop_overlay.pixel_x = px
 			cooktop_overlay.pixel_y = (py - 2) //2 down
 
+			if(px > 0)
+				switch(FH.cooker_overlay)
+					if("skillet")
+						cooktop_overlay = mutable_appearance(icon, "[FH.cooker_overlay]_flip")
+					if("pan")
+						cooktop_overlay = mutable_appearance(icon, "[FH.cooker_overlay]_flip")
+	
 			add_overlay(cooktop_overlay)
 
 

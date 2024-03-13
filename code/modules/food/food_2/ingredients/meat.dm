@@ -186,7 +186,17 @@
 		icon_state = "bacon"
 		reagents.add_reagent("protein", 0.6)
 
+/obj/item/reagent_containers/food/snacks/ingredient/ham
+	name = "ham"
+	desc = "A hearty chunk of cured pork leg."
+	icon_state = "ham"
+	nutriment_amt = 8
+	nutriment_desc = list("meat" = 5, "salt" = 3)
 
+/obj/item/reagent_containers/food/snacks/ingredient/ham/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 8)
+	bitesize = 2
 
 
 //seafoods

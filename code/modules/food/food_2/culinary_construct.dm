@@ -180,6 +180,9 @@
 	icon_state = "custburrito"
 	ingredients_placement = INGREDIENTS_FILLSPECIAL
 
+//todo:custom taco
+//look inside culinary construct . dm
+//custom tacos already done
 /obj/item/reagent_containers/food/snacks/customizable/taco
 	name = "taco"
 	ingMax = 6

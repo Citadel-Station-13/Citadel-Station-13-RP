@@ -217,6 +217,26 @@
 			return
 
 	if(slices_num && slice_path && slices_num > 0)
+		if(W.is_sharp())
+			var/slices_lost = 0
+			if(W.w_class > 3)
+				user.visible_message("<span class='notice'>[user] crudely slices [src] with [W]!</span>", "<span class='notice'>You crudely slice [src] with your [W]!</span>")
+				slices_lost = rand(1, min(1, round(slices_num/2)))
+			else
+				user.visible_message("<span class='notice'>[user] slices [src]!</span>", "<span class='notice'>You slice [src]!</span>")
+			var/reagents_per_slice = (reagents.total_volume / slices_num)
+			for(var/i=1 to (slices_num-slices_lost))
+				var/obj/slice = new slice_path (loc)
+				reagents.trans_to_obj(slice, reagents_per_slice)
+			qdel(src)
+			return
+
+	if(istype(W,/obj/item/material/kitchen/rollingpin))
+		try_flatten(user)
+		return
+
+
+/*
 		//these are used to allow hiding edge items in food that is not on a table/tray
 		var/can_slice_here = isturf(loc) && ((locate(/obj/structure/table) in loc) || (locate(/obj/machinery/optable) in loc) || (locate(/obj/item/tray) in loc))
 		var/hide_item = !has_edge(W) || !can_slice_here
@@ -233,29 +253,9 @@
 			to_chat(user, "<span class='warning'>You slip \the [W] inside \the [src].</span>")
 			add_fingerprint(user)
 			return
-
-		if (W.is_sharp())
-			if (!can_slice_here)
-				to_chat(user, "<span class='warning'>You cannot slice \the [src] here! You need a table or at least a tray to do it.</span>")
-				return
-
-			var/slices_lost = 0
-			if (W.w_class > 3)
-				user.visible_message("<span class='notice'>\The [user] crudely slices \the [src] with [W]!</span>", "<span class='notice'>You crudely slice \the [src] with your [W]!</span>")
-				slices_lost = rand(1,min(1,round(slices_num/2)))
-			else
-				user.visible_message("<span class='notice'>\The [user] slices \the [src]!</span>", "<span class='notice'>You slice \the [src]!</span>")
-
-			var/reagents_per_slice = reagents.total_volume/slices_num
-			for(var/i=1 to (slices_num-slices_lost))
-				var/obj/slice = new slice_path (loc)
-				reagents.trans_to_obj(slice, reagents_per_slice)
-			qdel(src)
-			return
-
-	if(istype(W,/obj/item/material/kitchen/rollingpin))
-		try_flatten(user)
-		return
+*/
+//no more hiding shit in food. i dont care nobody fucking used this anyways
+//i will readd it if there is enough complaining. but also make it better.
 
 /obj/item/reagent_containers/food/snacks/proc/try_flatten(mob/user)
 	return
@@ -1461,7 +1461,7 @@
 	. = ..()
 	bitesize = 2
 
-/obj/item/reagent_containers/food/snacks/spagetti // Buff 1 >> 2
+/obj/item/reagent_containers/food/snacks/ingredient/spaghetti // Buff 1 >> 2
 	name = "Spaghetti"
 	desc = "A bundle of raw spaghetti."
 	icon_state = "spagetti"
@@ -1469,7 +1469,7 @@
 	nutriment_amt = 2
 	nutriment_desc = list("noodles" = 2)
 
-/obj/item/reagent_containers/food/snacks/spagetti/Initialize(mapload)
+/obj/item/reagent_containers/food/snacks/ingredient/spaghetti/Initialize(mapload)
 	. = ..()
 	bitesize = 2
 
@@ -2822,50 +2822,6 @@
 /obj/item/reagent_containers/food/snacks/slice/chocolatecake/filled
 	filled = TRUE
 
-/obj/item/reagent_containers/food/snacks/sliceable/cheesewheel
-	name = "Cheese wheel"
-	desc = "A big wheel of delcious Cheddar."
-	icon_state = "cheesewheel"
-	slice_path = /obj/item/reagent_containers/food/snacks/cheesewedge
-	slices_num = 5
-	filling_color = "#FFF700"
-	nutriment_desc = list("cheese" = 10)
-	nutriment_amt = 10
-
-/obj/item/reagent_containers/food/snacks/sliceable/cheesewheel/Initialize(mapload)
-	. = ..()
-	reagents.add_reagent("protein", 10)
-	bitesize = 2
-
-/obj/item/reagent_containers/food/snacks/cheesewedge
-	name = "Cheese wedge"
-	desc = "A wedge of delicious Cheddar. The cheese wheel it was cut from can't have gone far."
-	icon_state = "cheesewedge"
-	filling_color = "#FFF700"
-	bitesize = 2
-
-/obj/item/reagent_containers/food/snacks/sliceable/bluecheesewheel
-	name = "Blue Cheese wheel"
-	desc = "A big wheel of moldy blue cheese."
-	icon_state = "bluecheesewheel"
-	slice_path = /obj/item/reagent_containers/food/snacks/bluecheesewedge
-	slices_num = 5
-	filling_color = "#f1f0c8"
-	nutriment_desc = list("sour cheese" = 10)
-	nutriment_amt = 10
-
-/obj/item/reagent_containers/food/snacks/sliceable/bluecheesewheel/Initialize(mapload)
-	. = ..()
-	reagents.add_reagent("protein", 10)
-	bitesize = 2
-
-/obj/item/reagent_containers/food/snacks/bluecheesewedge
-	name = "Blue Cheese wedge"
-	desc = "A wedge of moldy blue cheese. The cheese wheel it was cut from can't have gone far."
-	icon_state = "bluecheesewedge"
-	filling_color = "#f1f0c8"
-	bitesize = 2
-
 /obj/item/reagent_containers/food/snacks/sliceable/birthdaycake
 	name = "Birthday Cake"
 	desc = "Happy Birthday..."
@@ -3344,68 +3300,7 @@
 
 ///////////////////////////////////////////
 // new old food stuff from bs12
-///////////////////////////////////////////
-/obj/item/reagent_containers/food/snacks/dough
-	name = "dough"
-	desc = "A piece of dough."
-	icon = 'icons/obj/food_ingredients.dmi'
-	icon_state = "dough"
-	bitesize = 2
-	nutriment_amt = 3
-	nutriment_desc = list("uncooked dough" = 3)
-
-/obj/item/reagent_containers/food/snacks/dough/Initialize(mapload)
-	. = ..()
-	reagents.add_reagent("protein", 1)
-
-// Dough + rolling pin = flat dough
-/obj/item/reagent_containers/food/snacks/dough/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W,/obj/item/material/kitchen/rollingpin))
-		new /obj/item/reagent_containers/food/snacks/sliceable/flatdough(src)
-		to_chat(user, "You flatten the dough.")
-		qdel(src)
-	else
-		. = ..()
-
-// slicable into 3xdoughslices
-/obj/item/reagent_containers/food/snacks/sliceable/flatdough
-	name = "flat dough"
-	desc = "A flattened dough."
-	icon = 'icons/obj/food_ingredients.dmi'
-	icon_state = "flat dough"
-	slice_path = /obj/item/reagent_containers/food/snacks/doughslice
-	slices_num = 3
-
-/obj/item/reagent_containers/food/snacks/sliceable/flatdough/Initialize(mapload)
-	. = ..()
-	reagents.add_reagent("protein", 1)
-	reagents.add_reagent("nutriment", 3)
-
-/obj/item/reagent_containers/food/snacks/doughslice
-	name = "dough slice"
-	desc = "A building block of an impressive dish."
-	icon = 'icons/obj/food_ingredients.dmi'
-	icon_state = "doughslice"
-	slice_path = /obj/item/reagent_containers/food/snacks/spagetti
-	slices_num = 1
-	bitesize = 2
-	nutriment_amt = 1
-	nutriment_desc = list("uncooked dough" = 1)
-
-/obj/item/reagent_containers/food/snacks/doughslice/Initialize(mapload)
-	. = ..()
-
-/obj/item/reagent_containers/food/snacks/ingredient/bun
-	name = "bun"
-	desc = "A base for any self-respecting burger."
-	icon = 'icons/obj/food_ingredients.dmi'
-	icon_state = "bun"
-	bitesize = 2
-	nutriment_amt = 4
-	nutriment_desc = list("bun" = 4)
-
-/obj/item/reagent_containers/food/snacks/ingredient/bun/Initialize(mapload)
-	. = ..()
+///////////////////////////////////////////	
 
 /* BEGIN CITADEL CHANGE - Moved to /code/modules/food/food/snacks.dm for Aurora kitchen port
 /obj/item/reagent_containers/food/snacks/ingredient/bun/attackby(obj/item/W as obj, mob/user as mob)
@@ -3430,28 +3325,6 @@
 		qdel(W)
 		qdel(src)
 END CITADEL CHANGE */
-
-// Burger + cheese wedge = cheeseburger
-/obj/item/reagent_containers/food/snacks/monkeyburger/attackby(obj/item/reagent_containers/food/snacks/cheesewedge/W as obj, mob/user as mob)
-	if(istype(W))// && !istype(src,/obj/item/reagent_containers/food/snacks/cheesewedge))
-		new /obj/item/reagent_containers/food/snacks/cheeseburger(src)
-		to_chat(user, "You make a cheeseburger.")
-		qdel(W)
-		qdel(src)
-		return
-	else
-		. = ..()
-
-// Human Burger + cheese wedge = cheeseburger
-/obj/item/reagent_containers/food/snacks/human/burger/attackby(obj/item/reagent_containers/food/snacks/cheesewedge/W as obj, mob/user as mob)
-	if(istype(W))
-		new /obj/item/reagent_containers/food/snacks/cheeseburger(src)
-		to_chat(user, "You make a cheeseburger.")
-		qdel(W)
-		qdel(src)
-		return
-	else
-		. = ..()
 
 /obj/item/reagent_containers/food/snacks/bunbun // Name fix
 	name = "Improper Bun Bun"
@@ -3530,28 +3403,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/flatbread/Initialize(mapload)
 	. = ..()
 
-/*
-// potato + knife = raw sticks
-/obj/item/reagent_containers/food/snacks/ingredient/grown/attackby(obj/item/W, mob/user)
-	if(seed && seed.kitchen_tag && seed.kitchen_tag == "potato" && istype(W,/obj/item/material/knife))
-		new /obj/item/reagent_containers/food/snacks/rawsticks(get_turf(src))
-		to_chat(user, "You cut the potato.")
-		qdel(src)
-	else
-		. = ..()
-		*/
-
-/obj/item/reagent_containers/food/snacks/rawsticks
-	name = "raw potato sticks"
-	desc = "Raw fries, not very tasty."
-	icon = 'icons/obj/food_ingredients.dmi'
-	icon_state = "rawsticks"
-	bitesize = 2
-	nutriment_amt = 3
-	nutriment_desc = list("raw potato" = 3)
-
-/obj/item/reagent_containers/food/snacks/rawsticks/Initialize(mapload)
-	. = ..()
 
 /obj/item/reagent_containers/food/snacks/liquid // Buff back to 30 from 20
 	name = "\improper LiquidFood Ration"
@@ -3955,17 +3806,17 @@ END CITADEL CHANGE */
 /mob/living/simple_animal/lizard
 	kitchen_tag = "lizard"
 
-/obj/item/reagent_containers/food/snacks/sliceable/cheesewheel
+/obj/item/reagent_containers/food/snacks/ingredient/cheesewheel
 	slices_num = 8
 
-/obj/item/reagent_containers/food/snacks/ingredient/sausage/battered
+/obj/item/reagent_containers/food/snacks/sausage/battered
 	name = "battered sausage"
 	desc = "A piece of mixed, long meat, battered and then deepfried."
 	icon_state = "batteredsausage"
 	filling_color = "#DB0000"
 
 
-/obj/item/reagent_containers/food/snacks/ingredient/sausage/battered/Initialize(mapload)
+/obj/item/reagent_containers/food/snacks/sausage/battered/Initialize(mapload)
 		. = ..()
 		reagents.add_reagent("protein", 6)
 		reagents.add_reagent("batter", 1.7)
@@ -6388,21 +6239,9 @@ END CITADEL CHANGE */
 	reagents.add_reagent("nutriment", 5)
 	bitesize = 2
 
-/obj/item/reagent_containers/food/snacks/ham
-	name = "ham"
-	desc = "A hearty chunk of brined pork."
-	icon_state = "ham"
-	nutriment_amt = 8
-	nutriment_desc = list("meat" = 5, "salt" = 3)
-
-/obj/item/reagent_containers/food/snacks/ham/Initialize(mapload)
-	. = ..()
-	reagents.add_reagent("protein", 8)
-	bitesize = 2
-
 /obj/item/reagent_containers/food/snacks/rumham
 	name = "rum ham"
-	desc = "EATING your booze? That...is genius!"
+	desc = "EATING your booze? That... is genius!"
 	icon_state = "rumham"
 	nutriment_amt = 6
 	nutriment_desc = list("meat" = 3, "salt" = 3, "rum" = 6)

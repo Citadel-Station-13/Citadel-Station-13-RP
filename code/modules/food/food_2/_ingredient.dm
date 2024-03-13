@@ -234,18 +234,19 @@
 
 /obj/item/reagent_containers/food/snacks/ingredient/transformable
 	name = "transforming generic ingredient"
-	var/list/transform_list = list(METHOD_STOVE = /obj/item/reagent_containers/food/snacks/ingredient, METHOD_OVEN = /obj/item/reagent_containers/food/snacks/ingredient) //example
+	var/list/transform_list = list(METHOD_STOVE = /obj/item/reagent_containers/food/snacks/ingredient) //example
 	var/obj/item/reagent_containers/food/snacks/fallback_create = /obj/item/reagent_containers/food/snacks/ingredient
 
 
 /obj/item/reagent_containers/food/snacks/ingredient/transformable/on_cooked(reached_stage, cook_method)
 	if(reached_stage == COOKED)
 		var/obj/item/reagent_containers/food/snacks/create_item
+		var/make_item
 		if(cook_method in transform_list)
-			create_item = transform_list[cook_method]
+			make_item = transform_list[cook_method]
 		else
-			create_item = fallback_create
-		create_item = new(loc)
+			make_item = fallback_create
+		create_item = new make_item(loc)
 		reagents.del_reagent("nutriment") //remove nutrient so we dont get weird tastes
 		create_item.reagents.trans_to_holder(reagents, reagents.total_volume, 1, TRUE)
 		if(istype(create_item, /obj/item/reagent_containers/food/snacks/ingredient))

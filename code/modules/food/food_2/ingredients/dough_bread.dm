@@ -12,10 +12,11 @@
 
 /obj/item/reagent_containers/food/snacks/ingredient/transformable/dough/try_flatten(mob/user)
 	if(flatten_type)
+		var/make_item = flatten_type
+		var/obj/item/reagent_containers/food/snacks/ingredient/flatten_output = new make_item(loc)
 		to_chat(user, SPAN_NOTICE("You flatten [src]."))
-		flatten_type = new(loc)
-		flatten_type.cookstage = cookstage
-		flatten_type.accumulated_time_cooked = accumulated_time_cooked
+		flatten_output.cookstage = cookstage
+		flatten_output.accumulated_time_cooked = accumulated_time_cooked
 		qdel(src)
 		return
 
@@ -36,7 +37,7 @@
 	desc = "A building block of an impressive dish."
 	icon_state = "doughslice"
 	cookstage_information = list(list(0, 0.5, "raw dough"), list(30 SECONDS, 1, "bread"), list(80 SECONDS, 0.9, "weird dough"), list(100 SECONDS, 0.1, "weird dough")) //only thing that matters here is cooktime
-	slice_path = /obj/item/reagent_containers/food/snacks/spagetti
+	slice_path = /obj/item/reagent_containers/food/snacks/ingredient/spaghetti
 	nutriment_amt = 1
 	slices_num = 1
 	bitesize = 2
@@ -74,7 +75,7 @@
 
 /obj/item/reagent_containers/food/snacks/ingredient/bread
 	name = "bread"
-	cookstage_information = list(list(0, 1, "fresh white bread"), list(20 SECONDS, 1, "toast"), list(40 SECONDS, 0.8, "burnt toast"), list(100 SECONDS, 0.1, "pure carbon"))
+	cookstage_information = list(list(0, 1, "fresh white bread"), list(80 SECONDS, 1, "toast"), list(120 SECONDS, 0.8, "burnt toast"), list(140 SECONDS, 0.1, "pure carbon"))
 	desc = "Some plain white bread."
 	icon_state = "bread"
 	slice_path = /obj/item/reagent_containers/food/snacks/ingredient/slice/bread
@@ -159,3 +160,8 @@
 /obj/item/reagent_containers/food/snacks/ingredient/bread/damper
 	name = "damper"
 	desc = "A simple unleavened bread made from wheat flour. Typically cooked in the coals of a fire, but any cooking method will do in a pinch."
+
+
+/obj/item/reagent_containers/food/snacks/ingredient/spaghetti
+	name = "raw spaghetti"
+	desc = "Raw, handmade spaghetti noodles."

@@ -41,7 +41,7 @@
 	items = list(
 		/obj/item/reagent_containers/food/snacks/ingredient/sausage
 	)
-	result = /obj/item/reagent_containers/food/snacks/ingredient/sausage/battered
+	result = /obj/item/reagent_containers/food/snacks/sausage/battered
 	reagents = list("batter" = 5)
 
 
