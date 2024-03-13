@@ -13,7 +13,7 @@
 	mid_length = 60
 	volume = 40
 	extra_range = 10
-	pref_check = /datum/client_preference/supermatter_hum
+	pref_check = /datum/game_preference_toggle/ambience/supermatter_hum
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
