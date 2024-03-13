@@ -85,10 +85,27 @@ GLOBAL_LIST_INIT(frame_datums, init_frame_datums())
 /**
  * @return finished product
  */
-/datum/frame2/proc/finish(atom/location, dir, stage, list/context)
+/datum/frame2/proc/finish_frame(obj/structure/frame/frame)
 
-/datum/frame2/proc/on_examine(list/examine_list, stage, list/context)
+/datum/frame2/proc/move_frame_forwards(obj/structure/frame/frame, from_stage)
 
+/datum/frame2/proc/move_frame_backwards(obj/structure/frame/frame, from_stage)
+
+/datum/frame2/proc/move_frame_to(obj/structure/frame/frame, from_stage, to_stage)
+
+/datum/frame2/proc/on_examine(obj/structure/frame/frame, list/examine_list)
+
+/**
+ * @return TRUE if handled
+ */
+/datum/frame2/proc/on_item(obj/structure/frame/frame, obj/item/item, datum/event_args/actor/actor)
+
+/**
+ * @return TRUE if handled
+ */
+/datum/frame2/proc/on_tool(obj/structure/frame/frame, obj/item/tool, datum/event_args/actor/actor, function)
+
+#warn guh
 
 /**
  * requires a specific circuitboard, or just doesn't require one at all
@@ -157,12 +174,14 @@ AUTO_FRAME_DATUM(preloaded/apc, 'icons/objects/frames/solar_panel.dmi')
 	material_buildable = FALSE
 	steps_forward = list(
 		list(
-			FRAME_STEP_TYPE = FRAME_STEP_TYPE_PROC,
+			FRAME_STEP_TYPE = FRAME_STEP_TYPE_MATERIAL,
+			FRAME_STEP_REQUEST = /datum/material/glass,
 		),
 	)
+	// no deconstruction
 	steps_backward = list(
 		list(
-			FRAME_STEP_TYPE = FRAME_STEP_TYPE_PROC,
+			FRAME_STEP_TYPE = FRAME_STEP_TYPE_NONE,
 		),
 	)
 

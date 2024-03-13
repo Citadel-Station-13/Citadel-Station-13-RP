@@ -26,6 +26,8 @@
 #define FRAME_STEP_TYPE_INTERACT "!INTERACT"
 /// amount is time needed, request is tool function
 #define FRAME_STEP_TYPE_TOOL "!TOOL"
+/// "no".
+#define FRAME_STEP_TYPE_NONE "!NONE"
 
 //* special stages
 
