@@ -1,29 +1,6 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
-GLOBAL_LIST_INIT(game_preference_entries, init_game_preference_entries())
-
-#error preferences subsystem :/
-
-/proc/init_game_preference_entries()
-	. = list()
-	for(var/datum/game_preference_entry/casted as anything in subtypesof(/datum/game_preference_entry))
-		if(initial(casted.abstract_type) == casted)
-			continue
-		casted = new casted
-		if(!isnull(.[casted.key]))
-			STACK_TRACE("dupe key between [casted.type] and [.[casted.key]:type]")
-			continue
-		.[casted.key] = casted
-
-/proc/fetch_game_preference_entry(datum/game_preference_entry/entrylike)
-	if(ispath(entrylike))
-		entrylike = initial(entrylike.key)
-	else if(istype(entrylike))
-	else
-		entrylike = GLOB.game_preference_entries[entrylike]
-	return entrylike
-
 /datum/game_preference_entry
 	abstract_type = /datum/game_preference_entry
 	var/name = "-- broken entry --"

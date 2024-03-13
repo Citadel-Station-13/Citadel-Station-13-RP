@@ -201,7 +201,7 @@
 	player = resolve_player_data(ckey, key)
 	player.log_connect()
 	//* Resolve preferences
-	preferences = resolve_game_preferences(ckey)
+	preferences = SSpreferences.resolve_game_preferences(ckey)
 	preferences.active = src
 
 	//* Setup user interface

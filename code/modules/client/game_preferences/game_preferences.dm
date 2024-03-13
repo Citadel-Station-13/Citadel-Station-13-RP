@@ -1,9 +1,6 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
-/// key value ckey = value
-GLOBAL_LIST_EMPTY(game_preferences)
-
 /**
  * Game preferences
  *
@@ -227,7 +224,7 @@ GLOBAL_LIST_EMPTY(game_preferences)
 //* Set / Get *//
 
 /datum/game_preferences/proc/set_toggle(datum/game_preference_toggle/id_path_instance, value)
-	var/datum/game_preference_toggle/toggle = fetch_game_preference_toggle(id_path_instance)
+	var/datum/game_preference_toggle/toggle = SSpreferences.resolve_preference_toggle(id_path_instance)
 	if(isnull(toggle))
 		CRASH("invalid fetch")
 	if(!initialized)
@@ -242,7 +239,7 @@ GLOBAL_LIST_EMPTY(game_preferences)
 	return TRUE
 
 /datum/game_preferences/proc/toggle(datum/game_preference_toggle/id_path_instance)
-	var/datum/game_preference_toggle/toggle = fetch_game_preference_toggle(id_path_instance)
+	var/datum/game_preference_toggle/toggle = SSpreferences.resolve_preference_toggle(id_path_instance)
 	if(isnull(toggle))
 		CRASH("invalid fetch")
 	if(!initialized)
@@ -257,7 +254,7 @@ GLOBAL_LIST_EMPTY(game_preferences)
 	return TRUE
 
 /datum/game_preferences/proc/get_toggle(datum/game_preference_toggle/id_path_instance)
-	var/datum/game_preference_toggle/toggle = fetch_game_preference_toggle(id_path_instance)
+	var/datum/game_preference_toggle/toggle = SSpreferences.resolve_preference_toggle(id_path_instance)
 	if(isnull(toggle))
 		CRASH("invalid fetch")
 	if(!initialized)
@@ -267,7 +264,7 @@ GLOBAL_LIST_EMPTY(game_preferences)
 	return toggles_by_key[toggle.key]
 
 /datum/game_preferences/proc/set_entry(datum/game_preference_entry/id_path_instance, value)
-	var/datum/game_preference_entry/entry = fetch_game_preference_entry(id_path_instance)
+	var/datum/game_preference_entry/entry = SSpreferences.resolve_preference_entry(id_path_instance)
 	if(isnull(entry))
 		CRASH("invalid fetch")
 	if(!initialized)
@@ -282,7 +279,7 @@ GLOBAL_LIST_EMPTY(game_preferences)
 	return TRUE
 
 /datum/game_preferences/proc/get_entry(datum/game_preference_entry/id_path_instance)
-	var/datum/game_preference_entry/entry = fetch_game_preference_entry(id_path_instance)
+	var/datum/game_preference_entry/entry = SSpreferences.resolve_preference_entry(id_path_instance)
 	if(isnull(entry))
 		CRASH("invalid fetch")
 	if(!initialized)
@@ -531,7 +528,7 @@ GLOBAL_LIST_EMPTY(game_preferences)
 //? Client Wrappers ?//
 
 /client/proc/get_preference_toggle(datum/game_preference_toggle/id_path_instance)
-	var/datum/game_preference_toggle/toggle = fetch_game_preference_toggle(id_path_instance)
+	var/datum/game_preference_toggle/toggle = SSpreferences.resolve_preference_toggle(id_path_instance)
 	if(isnull(toggle))
 		CRASH("invalid fetch")
 	if(!initialized || !preferences.initialized)
@@ -541,7 +538,7 @@ GLOBAL_LIST_EMPTY(game_preferences)
 	return preferences.toggles_by_key[toggle.key]
 
 /client/proc/get_preference_entry(datum/game_preference_entry/id_path_instance)
-	var/datum/game_preference_entry/entry = fetch_game_preference_entry(id_path_instance)
+	var/datum/game_preference_entry/entry = SSpreferences.resolve_preference_entry(id_path_instance)
 	if(isnull(entry))
 		CRASH("invalid fetch")
 	if(!initialized)
@@ -553,7 +550,7 @@ GLOBAL_LIST_EMPTY(game_preferences)
 //? Mob Wrappers ?//
 
 /mob/proc/get_preference_toggle(datum/game_preference_toggle/id_path_instance)
-	var/datum/game_preference_toggle/toggle = fetch_game_preference_toggle(id_path_instance)
+	var/datum/game_preference_toggle/toggle = SSpreferences.resolve_preference_toggle(id_path_instance)
 	if(isnull(toggle))
 		CRASH("invalid fetch")
 	if(!client?.initialized || !client.preferences.initialized)
@@ -563,7 +560,7 @@ GLOBAL_LIST_EMPTY(game_preferences)
 	return client.preferences.toggles_by_key[toggle.key]
 
 /mob/proc/get_preference_entry(datum/game_preference_entry/id_path_instance)
-	var/datum/game_preference_entry/entry = fetch_game_preference_entry(id_path_instance)
+	var/datum/game_preference_entry/entry = SSpreferences.resolve_preference_entry(id_path_instance)
 	if(isnull(entry))
 		CRASH("invalid fetch")
 	if(!client?.initialized || !client.preferences.initialized)
