@@ -49,7 +49,7 @@
 	name = "masa"
 	desc = "A piece of dough made from corn flour. Used for making tortillas and cornbread."
 	cookstage_information = list(list(0, 0.5, "raw corn dough"), list(60 SECONDS, 1, "cornbread"), list(80 SECONDS, 0.9, "weird dough"), list(100 SECONDS, 0.1, "weird dough"))
-	icon_state = "dough"
+	icon_state = "masa"
 	transform_list = list(METHOD_OVEN = /obj/item/reagent_containers/food/snacks/ingredient/cornbread, METHOD_DEEPFRY = /obj/item/reagent_containers/food/snacks/ingredient/hushpuppy)
 	fallback_create = /obj/item/reagent_containers/food/snacks/ingredient/bread/pone
 	flatten_type = /obj/item/reagent_containers/food/snacks/ingredient/transformable/dough/flat/corn
@@ -58,7 +58,7 @@
 	name = "flat masa"
 	desc = "A piece of dough made from corn flour. Used for making tortillas and cornbread."
 	cookstage_information = list(list(0, 0.5, "raw corn dough"), list(60 SECONDS, 1, "cornbread"), list(80 SECONDS, 0.9, "weird dough"), list(100 SECONDS, 0.1, "weird dough"))
-	icon_state = "flat dough"
+	icon_state = "flatmasa"
 	transform_list = null
 	fallback_create = /obj/item/reagent_containers/food/snacks/ingredient/bread/pone
 	slice_path = /obj/item/reagent_containers/food/snacks/ingredient/transformable/dough/slice/corn
@@ -67,6 +67,7 @@
 /obj/item/reagent_containers/food/snacks/ingredient/transformable/dough/slice/corn
 	name = "masa slice"
 	desc = "A building block of an impressive dish."
+	icon_state = "masaslice"
 	cookstage_information = list(list(0, 0.5, "raw corn dough"), list(30 SECONDS, 1, "cornbread"), list(45 SECONDS, 0.9, "weird dough"), list(60 SECONDS, 0.1, "weird dough"))
 	transform_list = null
 	fallback_create = /obj/item/reagent_containers/food/snacks/ingredient/cornmuffin
@@ -101,7 +102,7 @@
 	name = "cornbread"
 	cookstage_information = list(list(0, 1, "fresh cornbread"), list(20 SECONDS, 1, "toasted cornbread"), list(40 SECONDS, 0.8, "burnt corn toast"), list(100 SECONDS, 0.1, "pure carbon"))
 	icon_state = "A loaf of cornbread."
-	icon_state = "bread"
+	icon_state = "cornbread"
 	slice_path = /obj/item/reagent_containers/food/snacks/ingredient/slice/cornbread
 	slices_num = 5
 	filling_color = "#c7d232"
@@ -110,13 +111,14 @@
 	name = "slice of cornbread"
 	cookstage_information = list(list(0, 1, "fresh cornbread"), list(10 SECONDS, 1, "corn toast"), list(20 SECONDS, 0.8, "burnt corn toast"), list(25 SECONDS, 0.1, "crispy pure carbon"))
 	desc = "A slice of cornbread."
-	icon_state = "breadslice"
+	icon_state = "cornbreadslice"
 	filling_color = "#c7d232"
 
 /obj/item/reagent_containers/food/snacks/ingredient/tortilla
 	name = "tortilla"
 	cookstage_information = list(list(0, 1, "raw masa"), list(10 SECONDS, 1, "light, fluffy tortilla"), list(20 SECONDS, 0.8, "crispy tortilla"), list(25 SECONDS, 0.1, "flat carbon"))
 	desc = "A plain tortilla, made from masa."
+	icon = 'icons/obj/food_ingredients.dmi'
 	icon_state = "tortilla"
 	filling_color = "#FFE396"
 
@@ -124,6 +126,7 @@
 	name = "flour tortilla"
 	cookstage_information = list(list(0, 1, "raw dough"), list(10 SECONDS, 1, "light, fluffy tortilla"), list(20 SECONDS, 0.8, "crispy tortilla"), list(25 SECONDS, 0.1, "flat carbon"))
 	desc = "A plain tortilla, made from flour."
+	icon_state = "flourtortilla"
 
 /obj/item/reagent_containers/food/snacks/ingredient/cornmuffin
 	name = "cornbread muffin"
@@ -143,25 +146,32 @@
 
 /obj/item/reagent_containers/food/snacks/ingredient/frieddoughball
 	name = "fried doughball"
-	desc = "A fried ball of dough. What do you plan to do with this?"
+	desc = "A fried ball of dough. What do you plan to do with this? It probably could've been a croquette or something, but not anymore."
+	icon_state = "frieddoughball"
 
 /obj/item/reagent_containers/food/snacks/ingredient/hushpuppy
 	name = "hush puppy"
 	desc = "A fried ball of corn dough. A versatile side dish."
+	icon_state = "frieddoughball"
 
 /obj/item/reagent_containers/food/snacks/ingredient/bun
 	name = "bun"
 	desc = "A plain bun."
+	icon = 'icons/obj/food_ingredients.dmi'
+	icon_state = "bun"
 
 /obj/item/reagent_containers/food/snacks/ingredient/bread/pone
 	name = "corn pone"
 	desc = "A simple unleavened bread made from corn flour."
+	icon_state = "cornpone"
 
 /obj/item/reagent_containers/food/snacks/ingredient/bread/damper
 	name = "damper"
 	desc = "A simple unleavened bread made from wheat flour. Typically cooked in the coals of a fire, but any cooking method will do in a pinch."
-
+	icon_state = "damper"
 
 /obj/item/reagent_containers/food/snacks/ingredient/spaghetti
 	name = "raw spaghetti"
 	desc = "Raw, handmade spaghetti noodles."
+	icon = 'icons/obj/food_ingredients.dmi'
+	icon_state = "spaghetti"

@@ -50,7 +50,7 @@
 /obj/item/reagent_containers/food/snacks/ingredient/xenomeat/spidermeat // Substitute for recipes requiring xeno meat.
 	name = "spider meat"
 	desc = "A slab of green meat."
-	cookstage_information = list(list(0, 0.5, "raw, squishy and bitter meat"), list(45 SECONDS, 1.2, "squishy, bitter meat"), list(60 SECONDS, 0.9, "vulcanized rubbermeat and sour meat"), list(75 SECONDS, 0.1, "vulcanized rubber seasoned with flies killed by a bug-zapper"))
+	cookstage_information = list(list(0, 0.5, "raw, squishy and bitter meat"), list(45 SECONDS, 1.2, "squishy, bitter meat"), list(60 SECONDS, 0.9, "vulcanized rubbermeat and sourness"), list(75 SECONDS, 0.1, "vulcanized rubber seasoned with flies killed by a bug-zapper"))
 	icon_state = "xenomeat"
 	filling_color = "#43DE18"
 
@@ -126,12 +126,13 @@
 
 
 /obj/item/reagent_containers/food/snacks/ingredient/cutlet
-	name = "cutlet"
+	name = "raw cutlet"
 	desc = "A thin piece of meat."
 	cookstage_information = list(list(0, 0.5, "raw meat"), list(30 SECONDS, 1.2, "cooked meat"), list(45 SECONDS, 0.9, "rubbery meat"), list(60 SECONDS, 0.1, "a lump of char with some rubbery parts"))
 	icon = 'icons/obj/food_ingredients.dmi'
 	icon_state = "rawcutlet"
 	bitesize = 1
+	name_on_cook = "cutlet"
 
 /obj/item/reagent_containers/food/snacks/ingredient/cutlet/on_cooked(reached_stage, cook_method)
 	if(reached_stage == COOKED)
@@ -139,12 +140,13 @@
 		reagents.add_reagent("protein", 2)
 
 /obj/item/reagent_containers/food/snacks/ingredient/meatball
-	name = "meatball"
+	name = "raw meatball"
 	desc = "A meatball."
 	icon = 'icons/obj/food_ingredients.dmi'
 	cookstage_information = list(list(0, 0.5, "raw meatball"), list(30 SECONDS, 1.2, "meatballs"), list(45 SECONDS, 0.9, "rubbery meat"), list(60 SECONDS, 0.1, "a sphere of char with some rubbery parts"))
 	icon_state = "rawmeatball"
 	bitesize = 2
+	name_on_cook = "meatball"
 
 /obj/item/reagent_containers/food/snacks/ingredient/cutlet/on_cooked(reached_stage, cook_method)
 	if(reached_stage == COOKED)
@@ -152,18 +154,20 @@
 		reagents.add_reagent("protein", 2)
 
 /obj/item/reagent_containers/food/snacks/ingredient/hotdog
-	name = "hotdog"
+	name = "raw hotdog"
 	desc = "Unrelated to dogs, maybe."
 	cookstage_information = list(list(0, 0.5, "raw meat and sausage casing"), list(30 SECONDS, 1.2, "hotdog"), list(45 SECONDS, 0.9, "rubbery hotdog"), list(60 SECONDS, 0.1, "squishy, ovecooked sausage casing and charred meat"))
 	icon_state = "hotdog"
 	bitesize = 2
+	name_on_cook = "hotdog"
 
 /obj/item/reagent_containers/food/snacks/ingredient/sausage // Buff 6 >> 9
-	name = "Sausage"
+	name = "sausage"
 	desc = "A piece of mixed, long meat."
 	cookstage_information = list(list(0, 0.5, "raw meat and sausage casing"), list(30 SECONDS, 1.2, "hotdog"), list(45 SECONDS, 0.9, "rubbery hotdog"), list(60 SECONDS, 0.1, "squishy, ovecooked sausage casing and charred meat"))
 	icon_state = "sausage"
 	filling_color = "#DB0000"
+
 
 /obj/item/reagent_containers/food/snacks/ingredient/sausage/Initialize(mapload)
 	. = ..()
@@ -178,10 +182,10 @@
 	icon = 'icons/obj/food_ingredients.dmi'
 	icon_state = "rawbacon"
 	bitesize = 1
+	name_on_cook = "bacon"
 
 /obj/item/reagent_containers/food/snacks/ingredient/bacon/on_cooked(reached_stage, cook_method)
 	if(reached_stage == COOKED)
-		name = "bacon"
 		desc = "Mmmmm, bacon."
 		icon_state = "bacon"
 		reagents.add_reagent("protein", 0.6)
@@ -208,7 +212,7 @@
 
 /obj/item/reagent_containers/food/snacks/ingredient/cuttlefish
 	name = "raw cuttlefish"
-	desc = "It's an adorable squid! you can't possible be thinking about eating this right?"
+	desc = "It's an adorable squid! you can't possible be thinking about eating this, right? Right?"
 	icon_state = "cuttlefish_raw"
 	nutriment_amt = 5
 

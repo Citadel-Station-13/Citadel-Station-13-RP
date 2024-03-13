@@ -26,6 +26,9 @@
 
 	var/extra_serving_overlay_threshold = 2 //for every extra_serving_overlay_threshold we gain a overlay
 	var/max_servings = 10 //max amount of servings we can have
+
+
+	var/name_on_cook //the name we change into once we're cooked
 	//should be everything for now
 
 /obj/item/reagent_containers/food/snacks/ingredient/Initialize(mapload)
@@ -166,6 +169,8 @@
 		if(istype(loc, /obj/item/reagent_containers/glass/food_holder))
 			var/obj/item/reagent_containers/glass/food_holder/FH = loc
 			FH.check_recipe_completion(cook_method)
+		if((cookstage == COOKED) && name_on_cook)
+			name = name_on_cook
 		on_cooked(cookstage, cook_method)
 
 /obj/item/reagent_containers/food/snacks/ingredient/proc/on_cooked(var/reached_stage, var/cook_method)
