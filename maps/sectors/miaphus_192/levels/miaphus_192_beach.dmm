@@ -518,6 +518,15 @@
 /obj/random/meat,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether_away/beach/station)
+"cp" = (
+/obj/effect/floor_decal/tracks{
+	dir = 8
+	},
+/obj/random/outcrop,
+/turf/simulated/mineral/floor/cave{
+	name = "dirt"
+	},
+/area/tether_away/beach/mineshaft)
 "cs" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/storage/box/wormcan,
@@ -589,6 +598,11 @@
 	},
 /turf/simulated/floor/water/deep,
 /area/tether_away/beach/aa)
+"di" = (
+/obj/random/obstruction,
+/obj/effect/floor_decal/tracks,
+/turf/simulated/floor/wood,
+/area/tether_away/beach/mineshaft)
 "dm" = (
 /turf/simulated/floor/tiled/old_tile/white,
 /area/tether_away/beach/resort/lockermed)
@@ -789,7 +803,8 @@
 /turf/simulated/floor/wood,
 /area/tether_away/beach/resort/bunk)
 "eX" = (
-/turf/simulated/floor/outdoors/beach/sand,
+/obj/effect/floor_decal/tracks,
+/turf/simulated/floor/wood,
 /area/tether_away/beach/mineshaft)
 "eZ" = (
 /obj/structure/stairs/middle{
@@ -917,6 +932,13 @@
 "gd" = (
 /obj/structure/simple_door/sandstone,
 /turf/simulated/floor/tiled/asteroid_steel,
+/area/tether_away/beach/resort/greenhouse)
+"gf" = (
+/obj/spawner/window/full,
+/obj/effect/floor_decal/tracks{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
 /area/tether_away/beach/resort/greenhouse)
 "gq" = (
 /turf/simulated/floor/wood,
@@ -1357,6 +1379,15 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether_away/beach/station/tram)
+"jw" = (
+/obj/effect/floor_decal/tracks/t_north{
+	dir = 9
+	},
+/obj/machinery/floodlight,
+/turf/simulated/mineral/floor/cave{
+	name = "dirt"
+	},
+/area/tether_away/beach/mineshaft)
 "jx" = (
 /obj/structure/cable/cyan{
 	icon_state = "0-2"
@@ -1446,6 +1477,14 @@
 /obj/random/multiple/underdark/miningdrills,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether_away/beach/station)
+"kj" = (
+/obj/effect/floor_decal/tracks{
+	dir = 8
+	},
+/obj/structure/closet/crate/miningcar,
+/obj/random/multiple/underdark/ores,
+/turf/simulated/floor/wood,
+/area/tether_away/beach/mineshaft)
 "kk" = (
 /obj/structure/closet/crate,
 /obj/item/melee/umbrella/random,
@@ -1502,6 +1541,12 @@
 /obj/random/mre,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether_away/beach/bunker/bunk)
+"kE" = (
+/obj/effect/floor_decal/tracks/intersection{
+	dir = 9
+	},
+/turf/simulated/floor/wood,
+/area/tether_away/beach/mineshaft)
 "kK" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/wood/broken,
@@ -2000,7 +2045,13 @@
 	},
 /area/tether_away/beach/mineyard)
 "px" = (
-/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/obj/effect/floor_decal/tracks/t_north{
+	dir = 9
+	},
+/obj/random/outcrop,
+/turf/simulated/mineral/floor/cave{
+	name = "dirt"
+	},
 /area/tether_away/beach/mineshaft)
 "py" = (
 /obj/structure/cable{
@@ -2103,6 +2154,15 @@
 	name = "dirt"
 	},
 /area/tether_away/beach/jungle)
+"qp" = (
+/obj/effect/floor_decal/tracks{
+	dir = 8
+	},
+/obj/structure/barricade,
+/turf/simulated/mineral/floor/cave{
+	name = "dirt"
+	},
+/area/tether_away/beach/mineshaft)
 "qq" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/steel_dirty,
@@ -3243,6 +3303,15 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/tether_away/beach/resort/greenhouse)
+"Av" = (
+/obj/effect/floor_decal/tracks/t_north{
+	dir = 9
+	},
+/obj/machinery/light/flamp/noshade,
+/turf/simulated/mineral/floor/cave{
+	name = "dirt"
+	},
+/area/tether_away/beach/mineshaft)
 "Aw" = (
 /obj/item/stool/padded,
 /turf/simulated/mineral/floor/cave{
@@ -3606,6 +3675,11 @@
 /obj/structure/toilet,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/tether_away/beach/resort)
+"DZ" = (
+/obj/structure/barricade,
+/obj/effect/floor_decal/tracks,
+/turf/simulated/floor/wood,
+/area/tether_away/beach/mineshaft)
 "Ed" = (
 /turf/simulated/floor/water/contaminated{
 	outdoors = 0
@@ -3747,6 +3821,24 @@
 /obj/machinery/vending/fishing,
 /turf/simulated/floor/wood,
 /area/tether_away/beach/resort/fishing)
+"Fh" = (
+/obj/effect/floor_decal/tracks{
+	dir = 8
+	},
+/obj/structure/table/rack/steel,
+/obj/item/pickaxe,
+/obj/item/pickaxe,
+/obj/item/pickaxe,
+/obj/item/storage/bag/ore,
+/obj/item/storage/bag/ore,
+/obj/item/storage/bag/ore,
+/obj/item/flashlight/lantern,
+/obj/item/flashlight/lantern,
+/obj/item/flashlight/lantern,
+/turf/simulated/mineral/floor/cave{
+	name = "dirt"
+	},
+/area/tether_away/beach/mineshaft)
 "Fm" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -4325,6 +4417,10 @@
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
+/area/tether_away/beach/mineshaft)
+"KX" = (
+/obj/structure/sign/signnew/danger,
+/turf/simulated/wall/wood,
 /area/tether_away/beach/mineshaft)
 "Le" = (
 /obj/structure/fence,
@@ -5221,11 +5317,11 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether_away/beach/bunker)
 "Td" = (
-/obj/random/mob/spider/nurse,
-/turf/simulated/mineral/floor/cave{
-	name = "dirt"
+/obj/effect/floor_decal/tracks{
+	dir = 4
 	},
-/area/tether_away/beach/jungle)
+/turf/simulated/floor/wood,
+/area/tether_away/beach/mineshaft)
 "Tg" = (
 /obj/machinery/door/blast/shutters{
 	dir = 2;
@@ -5856,6 +5952,12 @@
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
+/area/tether_away/beach/mineshaft)
+"ZW" = (
+/obj/effect/floor_decal/tracks/t_north{
+	dir = 9
+	},
+/turf/simulated/wall/wood,
 /area/tether_away/beach/mineshaft)
 "ZX" = (
 /obj/structure/cable/cyan{
@@ -7625,9 +7727,9 @@ ZC
 ZC
 ZC
 ZC
-ZC
-ZC
-ZC
+Wd
+kj
+Wd
 ZC
 ZC
 ZC
@@ -7811,9 +7913,6 @@ Cg
 "}
 (11,1,1) = {"
 zV
-px
-px
-px
 ZC
 ZC
 ZC
@@ -7822,6 +7921,9 @@ ZC
 ZC
 ZC
 ZC
+aL
+aG
+aL
 ZC
 ZC
 ZC
@@ -8005,18 +8107,18 @@ Cg
 "}
 (12,1,1) = {"
 an
-px
-px
-px
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
+aL
+Wd
+cp
+aL
+aL
+Av
+Wd
+aL
+aL
+aG
+aL
+jw
 ZC
 ZC
 ZC
@@ -8199,29 +8301,29 @@ Cg
 "}
 (13,1,1) = {"
 an
-px
-px
-px
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
+aL
+aL
+PV
+PV
+PV
+PV
+PV
+PV
+PV
+aG
+PV
+PV
+qp
+KX
+fQ
+PV
+PV
+xy
+xy
+Wd
+au
+xy
+xy
 ZC
 ZC
 ZC
@@ -8393,29 +8495,29 @@ Cg
 "}
 (14,1,1) = {"
 an
-px
 eX
 eX
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
+eX
+eX
+eX
+eX
+eX
+eX
+eX
+kE
+eX
+eX
+DZ
+di
+di
+di
+eX
+eX
+eX
+di
+au
+au
+xy
 wg
 xy
 xy
@@ -8587,28 +8689,28 @@ Cg
 "}
 (15,1,1) = {"
 an
-px
-eX
-eX
-px
-px
-px
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
+PV
+PV
+PV
+PV
+PV
+PV
+PV
+PV
+PV
+Td
+aL
+xy
+qp
+KX
+au
+xy
+wg
+xy
+xy
+Wd
+au
+xy
 xy
 xy
 xy
@@ -8781,19 +8883,18 @@ Cg
 "}
 (16,1,1) = {"
 an
-ZC
-ZC
-eX
-px
-px
-px
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
+PV
+Wd
+PV
+PV
+cp
+PV
+Wd
+aL
+aL
+Td
+aL
+aL
 ZC
 ZC
 ZC
@@ -8803,6 +8904,7 @@ ZC
 ZC
 ZC
 xy
+ZC
 lt
 xy
 xy
@@ -8977,10 +9079,15 @@ Cg
 zV
 ZC
 ZC
-eX
+ZC
+ZC
+ZC
+ZC
+ZC
+ZC
 px
-px
-px
+Td
+aL
 ZC
 ZC
 ZC
@@ -8989,12 +9096,7 @@ ZC
 ZC
 ZC
 ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
+xy
 xy
 xy
 xy
@@ -9171,15 +9273,15 @@ Cg
 zV
 ZC
 ZC
-eX
-eX
-eX
-px
-px
 ZC
 ZC
 ZC
 ZC
+ZC
+ZC
+Wd
+Td
+Wd
 ZC
 ZC
 ZC
@@ -9365,18 +9467,18 @@ Cg
 zV
 ZC
 ZC
-px
-eX
-eX
-px
-px
 ZC
 ZC
 ZC
 ZC
 ZC
 ZC
+aL
+Td
+Av
 ZC
+ZC
+zV
 ZC
 ZC
 ZC
@@ -9559,18 +9661,18 @@ Cg
 zV
 ZC
 ZC
-px
-px
-px
-px
-px
 ZC
 ZC
 ZC
 ZC
 ZC
 ZC
+aL
+Td
+aL
 ZC
+ZC
+zV
 ZC
 ZC
 ZC
@@ -9754,17 +9856,17 @@ zV
 ZC
 ZC
 ZC
-px
-px
-px
-px
-px
 ZC
 ZC
 ZC
 ZC
 ZC
+aL
+Td
+aL
 ZC
+ZC
+zV
 ZC
 ZC
 ZC
@@ -9948,17 +10050,17 @@ zV
 ZC
 ZC
 ZC
-px
-px
-px
-px
-px
 ZC
 ZC
 ZC
 ZC
 ZC
+ZW
+Td
+ZW
 ZC
+ZC
+zV
 ZC
 ZC
 ZC
@@ -10142,17 +10244,17 @@ zV
 ZC
 ZC
 ZC
-px
-px
-px
-px
-px
 ZC
 ZC
 ZC
 ZC
 ZC
+aL
+Td
+aL
 ZC
+ZC
+zV
 ZC
 ZC
 wg
@@ -10336,17 +10438,17 @@ zV
 ZC
 ZC
 ZC
-px
-px
-px
-px
-px
 ZC
 ZC
 ZC
 ZC
 ZC
+aL
+Td
+aL
 ZC
+ZC
+zV
 ZC
 ZC
 xy
@@ -10532,15 +10634,15 @@ ZC
 ZC
 ZC
 ZC
+ZC
+ZC
+ZC
 px
-eX
-px
-px
+Td
+aL
 ZC
 ZC
-ZC
-ZC
-ZC
+zV
 ZC
 xy
 jT
@@ -10720,26 +10822,26 @@ am
 Cg
 "}
 (26,1,1) = {"
-TK
-bq
-bq
-bq
-bq
-bq
-ce
-bp
-ce
-ce
-bq
-bq
-bq
-bq
-bq
-bq
+zV
+ZC
+ZC
+ZC
+ZC
+ZC
+ZC
+ZC
+ZC
+aL
 Td
-br
-bq
-bq
+Av
+ZC
+ZC
+zV
+ZC
+QV
+xy
+ZC
+ZC
 bq
 bq
 bq
@@ -10914,25 +11016,25 @@ am
 Cg
 "}
 (27,1,1) = {"
-TK
-bq
-bq
-bq
-bq
-bq
-ce
-ce
-ce
-ce
-ce
-bq
-bq
-bq
-bq
-bq
-br
-br
-br
+zV
+ZC
+ZC
+ZC
+ZC
+ZC
+ZC
+ZC
+ZC
+Wd
+Td
+Wd
+ZC
+ZC
+zV
+ZC
+xy
+xy
+xy
 bq
 bq
 bq
@@ -11108,23 +11210,23 @@ am
 Cg
 "}
 (28,1,1) = {"
-TK
-bq
-bq
-bq
-bq
-bq
-bq
-ce
-ce
-ce
-ce
-bq
-bq
-bq
-bq
-bq
-bq
+zV
+ZC
+ZC
+ZC
+ZC
+ZC
+ZC
+ZC
+ZC
+aL
+Td
+aL
+ZC
+ZC
+zV
+ZC
+ZC
 br
 AF
 bq
@@ -11302,23 +11404,23 @@ am
 Cg
 "}
 (29,1,1) = {"
-TK
-bq
-bq
-bq
-bq
-bq
-bq
-ce
-ce
-ce
-ce
-bq
-bq
-bq
-bq
-bq
-bq
+zV
+ZC
+ZC
+ZC
+ZC
+ZC
+ZC
+ZC
+ZC
+aL
+Td
+aL
+ZC
+ZC
+zV
+ZC
+ZC
 Mg
 AF
 AF
@@ -11496,21 +11598,21 @@ am
 Cg
 "}
 (30,1,1) = {"
+zV
+ZC
+ZC
+ZC
+ZC
+ZC
+ZC
+ZC
+ZC
+PV
+Td
+cp
+ZC
+ZC
 TK
-bq
-bq
-bq
-bq
-bq
-bq
-ce
-ce
-bp
-bp
-ce
-bq
-bq
-bq
 bq
 bq
 bq
@@ -11690,21 +11792,21 @@ am
 Cg
 "}
 (31,1,1) = {"
+zV
+ZC
+ZC
+ZC
+ZC
+ZC
+ZC
+ZC
+ZC
+Wd
+Td
+Wd
+ZC
+bq
 TK
-bq
-bq
-bq
-bq
-bq
-bq
-ce
-ce
-bp
-bp
-ce
-ce
-bq
-bq
 bq
 bq
 bq
@@ -11884,19 +11986,19 @@ am
 Cg
 "}
 (32,1,1) = {"
-TK
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-ce
-bp
-bp
-ce
-ce
+zV
+ZC
+ZC
+ZC
+ZC
+ZC
+ZC
+ZC
+ZC
+Fh
+Td
+aL
+ZC
 bq
 bq
 bq
@@ -12078,19 +12180,19 @@ am
 Cg
 "}
 (33,1,1) = {"
-TK
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-ce
-bp
-bp
-ce
-ce
+zV
+ZC
+ZC
+ZC
+ZC
+ZC
+ZC
+ZC
+ZC
+PV
+Td
+aL
+ZC
 bq
 bq
 bq
@@ -12280,10 +12382,10 @@ bq
 bq
 bq
 bq
+bq
 ce
 ce
-ce
-ce
+bp
 ce
 ce
 ce
@@ -12474,9 +12576,9 @@ bq
 bq
 bq
 bq
-bq
 ce
 ce
+bp
 ce
 ce
 ce
@@ -12668,10 +12770,10 @@ bq
 bq
 bq
 bq
-bq
 ce
 ce
 ce
+bp
 bp
 ce
 ce
@@ -12862,7 +12964,7 @@ bq
 bq
 bq
 bq
-bq
+ce
 ce
 ce
 ce
@@ -13055,11 +13157,11 @@ bq
 bq
 bq
 bq
-bq
-bq
 ce
 ce
 ce
+ce
+bp
 ce
 ce
 ce
@@ -13249,12 +13351,12 @@ bq
 bq
 bq
 bq
-bq
-bq
 ce
 ce
 ce
 ce
+ce
+bp
 ce
 ce
 ce
@@ -13442,9 +13544,9 @@ bq
 bq
 bq
 bq
-bq
-bq
-bq
+ce
+ce
+ce
 ce
 ce
 ce
@@ -13636,13 +13738,13 @@ bq
 bq
 bq
 bq
-bq
-bq
-bq
-bq
-bq
-bq
 ce
+ce
+ce
+ce
+ce
+ce
+bp
 ce
 ce
 ce
@@ -13830,14 +13932,14 @@ bq
 bq
 bq
 bq
-bq
-bq
-bq
-bq
-bq
-bq
 ce
 ce
+ce
+ce
+ce
+ce
+ce
+bp
 ce
 bp
 bp
@@ -14024,11 +14126,11 @@ bq
 bq
 bq
 bp
-bq
-bq
-bq
-bq
-bq
+ce
+ce
+ce
+ce
+ce
 bp
 ce
 ce
@@ -14219,9 +14321,9 @@ bq
 bq
 bp
 ce
-bq
-bq
-bq
+ce
+ce
+ce
 bp
 bp
 bp
@@ -23435,7 +23537,7 @@ RD
 as
 RD
 Kq
-xi
+gf
 zw
 zw
 Nv
