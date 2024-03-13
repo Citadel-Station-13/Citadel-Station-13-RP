@@ -5,7 +5,7 @@
 GLOBAL_LIST_EMPTY(game_preferences)
 
 /proc/resolve_game_preferences(ckey)
-	if(!istype(GLOB.game_preferences[ckey]))
+	if(!istype(GLOB.game_preferences[ckey], /datum/game_preferences))
 		var/datum/game_preferences/initializing = new(ckey)
 		GLOB.game_preferences[ckey] = initializing
 		initializing.initialize()

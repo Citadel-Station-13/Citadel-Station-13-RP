@@ -5,7 +5,6 @@ GLOBAL_LIST_INIT(game_preference_entries, init_game_preference_entries())
 
 /proc/init_game_preference_entries()
 	. = list()
-	var/list/category_cache = list()
 	for(var/datum/game_preference_entry/casted as anything in subtypesof(/datum/game_preference_entry))
 		if(initial(casted.abstract_type) == casted)
 			continue
@@ -124,7 +123,7 @@ GLOBAL_LIST_INIT(game_preference_entries, init_game_preference_entries())
 	/// mandatory
 	var/disabled_name = "Off"
 
-/datum/game_preference/entry/toggle/filter_value(client/user, value)
+/datum/game_preference_entry/toggle/filter_value(client/user, value)
 	return !!value
 
 /datum/game_preference_entry/toggle/tgui_preference_schema()

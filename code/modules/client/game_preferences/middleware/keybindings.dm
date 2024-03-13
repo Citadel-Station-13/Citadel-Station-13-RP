@@ -17,6 +17,7 @@
 		isnull(prefs.misc_by_key[GAME_PREFERENCE_MISC_KEY_HOTKEY_MODE])? TRUE : !!prefs.misc_by_key[GAME_PREFERENCE_MISC_KEY_HOTKEY_MODE]
 	var/hotkey_mode = prefs.misc_by_key[GAME_PREFERENCE_MISC_KEY_HOTKEY_MODE]
 	var/list/defaults = deep_copy_list(hotkey_mode? GLOB.hotkey_keybinding_list_by_key : GLOB.classic_keybinding_list_by_key)
+	prefs.keybindings = defaults
 
 	prefs.push_ui_modules(updates = list((key) = list(
 		"keybindings" = prefs.keybindings,
@@ -39,7 +40,6 @@
 			return TRUE
 		if("addBind")
 			var/keybind_id = params["keybind"]
-			var/datum/keybinding/keybind = GLOB.keybindings_by_name[keybind_id]
 			// key can be blank if we're only using ctrl/alt/shift!!
 			var/key = params["key"]
 			var/alt_depressed = params["alt"]
