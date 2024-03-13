@@ -39,6 +39,7 @@ GLOBAL_LIST_INIT(frame_datums, init_frame_datums())
 	var/name
 	/// sheet metal cost
 	var/material_cost = 1
+	//  todo: non-steel support
 	/// for future use: set to TRUE to allow all materials
 	var/material_unlocked = FALSE
 	/// can we be built?
@@ -106,6 +107,18 @@ GLOBAL_LIST_INIT(frame_datums, init_frame_datums())
  * @return TRUE if handled
  */
 /datum/frame2/proc/on_tool(obj/structure/frame/frame, obj/item/tool, datum/event_args/actor/actor, function)
+
+/**
+ * regarding direction
+ * * is in direction of machine that will be built if non-wall
+ * * will be in the direction of the wall from the tile if wall
+ *
+ * @return TRUE / FALSE
+ */
+/datum/frame2/proc/allow_placement(turf/location, dir, datum/event_args/actor/actor, silent)
+	if(!wall_frame)
+		#warn not wall frame; check non-blocking
+	#warn wall frame..
 
 #warn guh
 
