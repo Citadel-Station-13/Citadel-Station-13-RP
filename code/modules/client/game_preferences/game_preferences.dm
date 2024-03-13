@@ -77,8 +77,8 @@
 /datum/game_preferences/proc/initialize_client()
 	if(isnull(active))
 		return
-	for(var/key in GLOB.game_preference_entries)
-		var/datum/game_preference_entry/entry = GLOB.game_preference_entries[key]
+	for(var/key in SSpreferences.entries_by_key)
+		var/datum/game_preference_entry/entry = SSpreferences.entries_by_key[key]
 		var/value = entries_by_key[entry.key]
 		entry.on_set(active, value, TRUE)
 
@@ -110,8 +110,8 @@
 
 	// we are fired after reset, but before save
 	// we assume lists are init'd
-	for(var/key in GLOB.game_preference_entries)
-		var/datum/game_preference_entry/entry = GLOB.game_preference_entries[key]
+	for(var/key in SSpreferences.entries_by_key)
+		var/datum/game_preference_entry/entry = SSpreferences.entries_by_key[key]
 		var/migrated_value
 		if(entry.legacy_global_key)
 			migrated_value = legacy_options[entry.legacy_global_key]
@@ -124,8 +124,8 @@
 	var/list/old_toggles
 	legacy_savefile["preferences"] >> old_toggles
 
-	for(var/key in GLOB.game_preference_toggles)
-		var/datum/game_preference_toggle/toggle = GLOB.game_preference_toggles[key]
+	for(var/key in SSpreferences.toggles_by_key)
+		var/datum/game_preference_toggle/toggle = SSpreferences.toggles_by_key[key]
 		if(!toggle.legacy_key)
 			continue
 		toggles_by_key[key] = !!old_toggles[toggle.legacy_key]
@@ -203,8 +203,8 @@
 //* Reset *//
 
 /datum/game_preferences/proc/reset(category)
-	for(var/key in GLOB.game_preference_entries)
-		var/datum/game_preference_entry/entry = GLOB.game_preference_entries[key]
+	for(var/key in SSpreferences.entries_by_key)
+		var/datum/game_preference_entry/entry = SSpreferences.entries_by_key[key]
 		if(category && entry != category)
 			continue
 		var/value = entry.default_value(active)
@@ -450,8 +450,8 @@
 	for(var/id in GLOB.game_preference_middleware)
 		var/datum/game_preference_middleware/middleware = GLOB.game_preference_middleware[id]
 		middleware.handle_sanitize(src)
-	for(var/key in GLOB.game_preference_entries)
-		var/datum/game_preference_entry/entry = GLOB.game_preference_entries[key]
+	for(var/key in SSpreferences.entries_by_key)
+		var/datum/game_preference_entry/entry = SSpreferences.entries_by_key[key]
 		var/current_value = entries_by_key[key]
 		entries_by_key[key] = entry.filter_value(current_value)
 	mark_dirty()
@@ -465,8 +465,8 @@
 		middleware += key
 	.["middleware"] = middleware
 	var/list/entries = list()
-	for(var/key in GLOB.game_preference_entries)
-		var/datum/game_preference_entry/entry = GLOB.game_preference_entries[key]
+	for(var/key in SSpreferences.entries_by_key)
+		var/datum/game_preference_entry/entry = SSpreferences.entries_by_key[key]
 		entries[++entries.len] = entry.tgui_preference_schema()
 	.["entries"] = entries
 	.["values"] = entries_by_key
@@ -514,7 +514,7 @@
 		if("set")
 			var/list/to_store = params["entries"]
 			for(var/key in to_store)
-				if(isnull(GLOB.game_preference_entries[key]))
+				if(isnull(SSpreferences.entries_by_key[key]))
 					continue
 				set_entry(key, to_store[key])
 			return TRUE

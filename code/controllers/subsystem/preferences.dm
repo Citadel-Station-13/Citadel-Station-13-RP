@@ -66,6 +66,3 @@ SUBSYSTEM_DEF(preferences)
 			continue
 		preferences.oops_sql_came_back_perform_a_reload()
 	return ..()
-
-#warn sigh
-
