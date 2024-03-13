@@ -10,6 +10,7 @@
 import { BooleanLike } from "common/react";
 import { getModuleData, useBackend, useLocalState } from "../../backend";
 import { Button, Flex, Icon, LabeledList, NoticeBox, Section, Stack, Tabs, Tooltip } from "../../components";
+import { checkClickEventNoSwitchTab } from "../../components/Tabs";
 import { Window } from "../../layouts";
 import { WindowTheme } from "../../styles/themes/typedef";
 import { RigActivationStatus, RigControlFlags, RigModuleReflist, RigModuleZoneSelection, RigPieceReflist, RigPieceSealStatus } from "./common";
@@ -51,11 +52,11 @@ export const RigController = (props, context) => {
                     <Stack vertical>
                       <Stack.Item>
                         <Tabs fluid>
-                          <Tabs.Tab onClick={() => setSystemTab(1)} selected={systemTab === 1}>Systems</Tabs.Tab>
-                          <Tabs.Tab onClick={() => setSystemTab(2)} selected={systemTab === 2}>Core</Tabs.Tab>
-                          <Tabs.Tab onClick={() => setSystemTab(3)} selected={systemTab === 3}>Wearer</Tabs.Tab>
-                          <Tabs.Tab onClick={() => setSystemTab(4)} selected={systemTab === 4}>Integrity</Tabs.Tab>
-                          <Tabs.Tab onClick={() => setSystemTab(5)} selected={systemTab === 5}>Control</Tabs.Tab>
+                          <Tabs.Tab onClick={(e) => setSystemTab(1)} selected={systemTab === 1}>Systems</Tabs.Tab>
+                          <Tabs.Tab onClick={(e) => setSystemTab(2)} selected={systemTab === 2}>Core</Tabs.Tab>
+                          <Tabs.Tab onClick={(e) => setSystemTab(3)} selected={systemTab === 3}>Wearer</Tabs.Tab>
+                          <Tabs.Tab onClick={(e) => setSystemTab(4)} selected={systemTab === 4}>Integrity</Tabs.Tab>
+                          <Tabs.Tab onClick={(e) => setSystemTab(5)} selected={systemTab === 5}>Control</Tabs.Tab>
                         </Tabs>
                       </Stack.Item>
                       <Stack.Item>
@@ -131,7 +132,7 @@ export const RigController = (props, context) => {
                       <Tabs.Tab
                         key={ref}
                         color="transparent"
-                        onClick={() => setSuitSection(ref)}
+                        onClick={(e) => !checkClickEventNoSwitchTab(e) && setSuitSection(ref)}
                         selected={suitSection === ref}
                         innerStyle={{ height: "100%", width: "100%" }}>
                         <Stack>

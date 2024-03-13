@@ -9,6 +9,22 @@ import { InfernoNode } from 'inferno';
 import { BoxProps, computeBoxClassName, computeBoxProps } from './Box';
 import { Icon } from './Icon';
 
+//* Constants
+
+const CLICK_EVENT_FLAG_DO_NOT_TAB = "TGUI--NO-TAB";
+/**
+ * Mark a click event as 'do not tab'
+ */
+export const markClickEventNoSwitchTab = (e: MouseEvent) => {
+  e[CLICK_EVENT_FLAG_DO_NOT_TAB] = true;
+};
+/**
+ * Check if a click event should allow tabbing
+ */
+export const checkClickEventNoSwitchTab = (e: MouseEvent) => {
+  return !!e[CLICK_EVENT_FLAG_DO_NOT_TAB];
+};
+
 interface TabsProps extends BoxProps {
   readonly vertical?: BooleanLike;
   readonly fill?: BooleanLike;

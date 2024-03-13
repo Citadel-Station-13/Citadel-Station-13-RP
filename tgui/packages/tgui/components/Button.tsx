@@ -14,6 +14,7 @@ import { Component, createRef } from 'inferno';
 import { createLogger } from '../logging';
 import { Box, BoxProps, computeBoxClassName, computeBoxProps } from './Box';
 import { Icon } from './Icon';
+import { markClickEventNoSwitchTab } from './Tabs';
 import { Tooltip } from './Tooltip';
 
 const logger = createLogger('Button');
@@ -73,6 +74,7 @@ export const Button = (props: ButtonProps) => {
       + `https://infernojs.org/docs/guides/event-handling`);
   }
   rest.onClick = e => {
+    markClickEventNoSwitchTab(e);
     if (!disabled && onClick) {
       onClick(e);
     }
@@ -236,7 +238,7 @@ export class ButtonConfirm extends Component<ButtonConfirmProps, ButtonConfirmSt
         icon={this.state.clicked ? confirmIcon : icon}
         color={this.state.clicked ? confirmColor : color}
         onClick={(e) => {
-          e.stopPropagation();
+          markClickEventNoSwitchTab(e);
           this.state.clicked ? onClick?.(e) : this.setClickedOnce(true);
         }}
         {...rest}
@@ -317,7 +319,7 @@ export class ButtonInput<T extends ButtonInputProps> extends Component<T, {}> {
           'Button--color--' + color,
         ])}
         {...rest}
-        onClick={() => this.setInInput(true)}>
+        onClick={(e) => { markClickEventNoSwitchTab(e); this.setInInput(true); }}>
         {icon && (
           <Icon name={icon} rotation={iconRotation} spin={iconSpin} />
         )}
