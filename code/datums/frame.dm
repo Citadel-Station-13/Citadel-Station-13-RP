@@ -71,8 +71,10 @@ GLOBAL_LIST_INIT(frame_datums, init_frame_datums())
 	var/wall_pixel_y = 16
 
 	/// do we append -stage to structure?
+	/// structure preview state will always be "structure"
 	var/has_structure_stage_states = TRUE
 	/// do we append -stage to items?
+	/// item preview state will always be "item"
 	var/has_item_stage_states = FALSE
 
 	/// weight class of item
