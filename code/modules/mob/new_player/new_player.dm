@@ -35,6 +35,7 @@
 	var/output = "<div align='center'>"
 	output +="<hr>"
 	output += "<p><a href='byond://?src=\ref[src];show_preferences=1'>Character Setup</A></p>"
+	output += "<br><p><a href='byond://?src=\ref[src];game_preferences=1'>Game Preferences</A></p>"
 
 	if(!SSticker || SSticker.current_state <= GAME_STATE_PREGAME)
 		if(ready)
@@ -120,6 +121,14 @@
 		if(!client.reject_on_initialization_block())
 			return
 		client.prefs.ShowChoices(src)
+		return 1
+
+	if(href_list["game_preferences"])
+		if(!client.reject_age_unverified())
+			return
+		if(!client.reject_on_initialization_block())
+			return
+		client.preferences.ui_interact(src)
 		return 1
 
 	if(href_list["ready"])
