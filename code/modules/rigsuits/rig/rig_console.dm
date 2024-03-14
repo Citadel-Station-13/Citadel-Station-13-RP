@@ -155,6 +155,4 @@
 		else
 			return list("unknown command - type 'help' for help.", "<invalid>")
 
-#warn impl all
-
 #undef COMMAND_LOG_LIMIT

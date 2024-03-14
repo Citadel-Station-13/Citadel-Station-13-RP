@@ -38,9 +38,9 @@
 /obj/item/rig_module/dynamic/proc/action_trigger()
 	#warn impl
 
-/obj/item/rig_module/dynamic/tgui_module_static()
+/obj/item/rig_module/dynamic/rig_static_data()
 	. = ..()
-	.["schema"] = schema.tgui_schema_data()
+	.["schema"] = schema.schema_data()
 
 #warn impl all
 
@@ -55,7 +55,7 @@
 	/// buttons left in section
 	var/section_remaining = 0
 
-/datum/rig_dynamic_schema/proc/tgui_schema_data()
+/datum/rig_dynamic_schema/proc/schema_data()
 	return list(
 		"fragments" = fragments,
 		"config" = config,

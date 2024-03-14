@@ -203,21 +203,38 @@
 
 //* UI *//
 
-/obj/item/rig_module/proc/tgui_module_static()
+/obj/item/rig_module/proc/rig_static_data()
 	return list(
 		"$tgui" = tgui_interface,
 		"$src" = ref(src),
 	)
 	#warn impl
 
-/obj/item/rig_module/proc/tgui_module_data()
+/obj/item/rig_module/proc/rig_data()
 	#warn impl
 
-/obj/item/rig_module/proc/tgui_push_data(list/data)
+/obj/item/rig_module/proc/rig_push_data(list/data)
 	#warn impl
 
-/obj/item/rig_module/proc/tgui_queue_data()
+/**
+ * queues non-static
+ */
+/obj/item/rig_module/proc/rig_queue_data()
 	#warn impl
+
+/**
+ * @return TRUE if did something (and stop propagation).
+ */
+/obj/item/rig_module/proc/rig_act(mob/user, control_flags, action, list/params)
+	return FALSE
+
+/**
+ * checks if someone's allowed to do something; if FALSE, tgui_act
+ *
+ * @return TRUE / FALSE
+ */
+/obj/item/rig_module/proc/rig_allowed(mob/user, control_flags, action, list/params)
+	return control_flags & RIG_CONTROL_MODULES
 
 //* Zones *//
 
