@@ -33,10 +33,6 @@
 	 */
 	var/list/def_components
 
-	var/contain_parts = TRUE
-
-#warn frame stuff
-
 /**
  * called when we are used to construct something.
  *

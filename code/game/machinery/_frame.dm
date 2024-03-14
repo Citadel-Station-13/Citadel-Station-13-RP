@@ -386,10 +386,7 @@
 					circuit.after_construct(new_machine)
 
 					for(var/obj/O in components)
-						if(circuit.contain_parts)
-							O.loc = new_machine
-						else
-							O.loc = null
+						O.loc = new_machine
 						new_machine.component_parts += O
 
 					circuit.loc = null
