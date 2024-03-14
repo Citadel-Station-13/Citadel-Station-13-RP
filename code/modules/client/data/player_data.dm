@@ -12,7 +12,7 @@ GLOBAL_LIST_EMPTY(player_data)
 		GLOB.player_data[ckey] = new /datum/player_data(ckey, key)
 	return GLOB.player_data[ckey]
 
-#warn PERFORM DATABASE MIGRATION TO ADD 'MISC' TO PLAYER TABLE PRIOR TO TESTMERGE!!!
+#warn PERFORM DATABASE MIGRATION TO ADD 'MISC' TO PLAYER TABLE PRIOR TO TESTMERGE!!! ADD PREFS TABLE TOO!!!
 
 /**
  * holds db-related data

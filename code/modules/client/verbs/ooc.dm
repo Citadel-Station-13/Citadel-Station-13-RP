@@ -1,5 +1,5 @@
 // todo: most of the things in here should probably be re-thought category wise;
-// verticality for one is more graphics/visuals 
+// verticality for one is more graphics/visuals
 // but isn't a preference because it's something you need to actively see at some times but not others..
 
 /client/verb/toggle_verticality_visibility()
@@ -154,8 +154,12 @@
 						display_name = "[holder.fakekey]/([src.key])"
 					else
 						display_name = holder.fakekey
-			if(holder && !holder.fakekey && (holder.rights & R_ADMIN) && CONFIG_GET(flag/allow_admin_ooccolor)) // keeping this for the badmins
-				to_chat(target, "<span class='prefix [ooc_style]'><span class='ooc'><font color='[preferences.get_entry(/datum/game_preference_entry/simple_color/admin_ooc_color)]'>" + "OOC: " + "<EM>[display_name]: </EM><span class='linkify'>[msg]</span></span></span></font>")
+			var/effective_color = preferences.get_entry(/datum/game_preference_entry/simple_color/admin_ooc_color)
+			var/datum/game_preference_entry/simple_color/admin_ooc_color/entry_casted
+			if(effective_color == initial(entry_casted.default_value))
+				effective_color = null
+			if(effective_color) // keeping this for the badmins
+				to_chat(target, "<span class='prefix [ooc_style]'><span class='ooc'><font color='[effective_color]'>" + "OOC: " + "<EM>[display_name]: </EM><span class='linkify'>[msg]</span></span></span></font>")
 			else
 				to_chat(target, "<span class='ooc'><span class='[ooc_style]'><span class='message'>OOC: <EM>[display_name]: </EM><span class='linkify'>[msg]</span></span></span></span>")
 

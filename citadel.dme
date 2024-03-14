@@ -2397,7 +2397,6 @@
 #include "code\modules\client\game_preferences\game_preferences.dm"
 #include "code\modules\client\game_preferences\entries\game.dm"
 #include "code\modules\client\game_preferences\entries\graphics.dm"
-#include "code\modules\client\game_preferences\entries\ooc.dm"
 #include "code\modules\client\game_preferences\middleware\keybindings.dm"
 #include "code\modules\client\game_preferences\middleware\toggles.dm"
 #include "code\modules\client\onboarding\_onboarding.dm"

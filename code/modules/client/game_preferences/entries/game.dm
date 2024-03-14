@@ -54,3 +54,19 @@
 /datum/game_preference_entry/dropdown/tooltip_style/New()
 	options = all_tooltip_styles.Copy()
 	..()
+
+/datum/game_preference_entry/simple_color/admin_ooc_color
+	name = "OOC Color (Admin)"
+	description = "Choose your OOC color. Do not make it too eye-searing. Set to #000001 or reset to default to sync with server color."
+	key = "admin_ooc_color"
+	category = "Game"
+	subcategory = "OOC"
+	default_value = "#000001"
+	legacy_savefile_key = "ooccolor"
+
+/datum/game_preference_entry/simple_color/admin_ooc_color/is_visible(client/user)
+	return check_rights(C = user) && CONFIG_GET(flag/allow_admin_ooccolor)
+
+// todo: should we make things nullable? it's a weird pattern but...
+/datum/game_preference_entry/simple_color/admin_ooc_color/default_value(client/user)
+	return "#000001"

@@ -518,7 +518,7 @@
 		if("set")
 			var/key = params["key"]
 			if(isnull(SSpreferences.entries_by_key[key]))
-				continue
+				return TRUE
 			set_entry(key, params["value"])
 			return TRUE
 		if("reset")

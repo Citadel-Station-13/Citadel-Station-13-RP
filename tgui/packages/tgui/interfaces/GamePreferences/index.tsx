@@ -3,8 +3,9 @@
  * @license MIT
  */
 import { BooleanLike } from "common/react";
+import { InfernoNode } from "inferno";
 import { getModuleData, useBackend, useComputedOnce, useLocalState } from "../../backend";
-import { Button, Section, Stack, Tabs } from "../../components";
+import { Button, Section, Stack } from "../../components";
 import { Window } from "../../layouts";
 import { GamePreferenceEntry, GamePreferenceEntrySchema } from "./GamePreferenceEntry";
 import { GamePreferenceKeybindScreen } from "./GamePreferenceKeybinds";
@@ -24,11 +25,28 @@ const GamePreferencesTabs = (props, context) => {
   let categoryCache = useComputedOnce(context, "prefsCategoryCache", () => computeGamePreferenceCategoryCache(data.entries));
   let [activeCategory, setActiveCategory] = useLocalState<string>(context, "prefsCategoryActive", Object.keys(categoryCache)[0]);
   let [activeMiddleware, setActiveMiddleware] = useLocalState<string | null>(context, "prefsMiddlewareActive", null);
+  let tabs: InfernoNode[] = [];
+  Object.keys(categoryCache).forEach((cat) => tabs.push(
+    <Stack.Item grow={1}>
+      <GamePreferencesTab
+        name={cat}
+        selected={activeCategory === cat && !activeMiddleware}
+        onClick={() => { setActiveCategory(cat); setActiveMiddleware(null); }} />
+    </Stack.Item>
+  ));
+  Object.entries(data.middleware).forEach(([key, name]) => { tabs.push(
+    <Stack.Item grow={1}>
+      <GamePreferencesTab
+        name={name}
+        selected={key === activeMiddleware}
+        onClick={() => { setActiveMiddleware(key); }} />
+    </Stack.Item>
+  ); });
 
   return (
-    <Tabs fluid>
-      {}
-    </Tabs>
+    <Stack>
+      {tabs}
+    </Stack>
   );
 };
 
@@ -38,7 +56,8 @@ const GamePreferencesTab = (props: {
   readonly selected: BooleanLike;
 }, context) => {
   return (
-    <Button selected={props.selected} onClick={props.onClick}>{props.name}</Button>
+    <Button fluid selected={props.selected} onClick={props.onClick} textAlign="center">{props.name}
+    </Button>
   );
 };
 
@@ -48,7 +67,9 @@ const computeGamePreferenceCategoryCache = (entries: GamePreferenceEntrySchema[]
     if (!computed[entry.category]) {
       computed[entry.category] = [];
     }
-    computed[entry.category].push(entry.subcategory);
+    if (!computed[entry.category].includes(entry.subcategory)) {
+      computed[entry.category].push(entry.subcategory);
+    }
   });
   Object.values(computed).forEach((arr) => arr.sort((a, b) => a.localeCompare(b)));
   return computed;
@@ -62,9 +83,8 @@ export const GamePreferences = (props, context) => {
   let [activeMiddleware, setActiveMiddleware] = useLocalState<string | null>(context, "prefsMiddlewareActive", null);
 
   return (
-    <Window width={800} height={800}>
+    <Window width={600} height={800} title="Game Preferences">
       <Window.Content>
-        {JSON.stringify(categoryCache)}
         <Stack vertical fill>
           <Stack.Item>
             <GamePreferencesTabs />
@@ -73,7 +93,6 @@ export const GamePreferences = (props, context) => {
             <GamePreferencesBody />
           </Stack.Item>
         </Stack>
-        {JSON.stringify(data)}
       </Window.Content>
     </Window>
   );
@@ -87,9 +106,9 @@ const GamePreferencesBody = (props, context) => {
   let [activeMiddleware, setActiveMiddleware] = useLocalState<string | null>(context, "prefsMiddlewareActive", null);
 
 
-  if (props.activeMiddleware) {
-    let middlewareData = getModuleData(context, props.activeMiddleware);
-    switch (props.activeMiddleware) {
+  if (activeMiddleware) {
+    let middlewareData = getModuleData(context, activeMiddleware);
+    switch (activeMiddleware) {
       case 'keybindings':
         return (
           <GamePreferenceKeybindScreen />
@@ -102,15 +121,17 @@ const GamePreferencesBody = (props, context) => {
   }
 
   return (
-    <Section fill>
-      {props.subcategories.map((subcat) => (
-        <Section title={subcat} key={subcat}>
-          {data.entries.filter((e) => e.category === props.activeCategory && e.subcategory === subcat).map((entry) => (
-            <GamePreferenceEntry schema={entry} key={entry.key} value={data.values[entry.key]}
-              setValue={(val) => act('set', { key: entry.key, value: val })} />
-          ))}
-        </Section>
+    <Stack fill vertical overflowY="auto">
+      {categoryCache[activeCategory].map((subcat) => (
+        <Stack.Item key={subcat}>
+          <Section title={subcat}>
+            {data.entries.filter((e) => e.category === activeCategory && e.subcategory === subcat).map((entry) => (
+              <GamePreferenceEntry schema={entry} key={entry.key} value={data.values[entry.key]}
+                setValue={(val) => act('set', { key: entry.key, value: val })} />
+            ))}
+          </Section>
+        </Stack.Item>
       ))}
-    </Section>
+    </Stack>
   );
 };
