@@ -134,6 +134,13 @@
 		else
 			M.afflict_sleeping(20 * 20)
 			M.drowsyness = max(M.drowsyness, 60)
+#warn todo stock > broth?
+/datum/reagent/nutriment/vegetablestock
+	name = "vegetable stock"
+	id = "vegstock"
+	description = "A thin stock, made from vegetables."
+	nutriment_factor = 0.4
+	color = "#CCCCCC"
 
 /datum/reagent/nutriment/mayo
 	name = "mayonnaise"

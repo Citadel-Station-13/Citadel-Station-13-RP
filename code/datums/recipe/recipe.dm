@@ -61,7 +61,8 @@ GLOBAL_LIST_EMPTY(cooking_recipes)
 
 	var/result        // example: = /obj/item/reagent_containers/food/snacks/donut/normal
 	var/result_quantity = 1 //number of instances of result that are created.
-	var/time = 50    // 1/10 part of second // Citadel change, increases recipe speed.
+	var/result_reagents //list of result reagents. example = list("berryjuice" = 5, "carbon" = 18)
+	var/time = 50    // in ds
 
 
 
@@ -167,8 +168,6 @@ GLOBAL_LIST_EMPTY(cooking_recipes)
 // food-related
 //This proc is called under the assumption that the container has already been checked and found to contain the necessary ingredients
 /datum/recipe/proc/make_food(var/obj/container, var/obj/output)
-	if(!result)
-		return
 	if(!output)
 		output = container
 
@@ -235,6 +234,11 @@ GLOBAL_LIST_EMPTY(cooking_recipes)
 	If, as in the most common case, there is only a single result, then it will just be a reference to
 	the single-result's reagents
 	*/
+	if(!result && result_reagents)
+		if(container.reagents && result_reagents)
+			for(var/r in result_reagents)
+				container.reagents.add_reagent(r, result_reagents[r])
+		return null
 	var/obj/tempholder = new(src)
 	tempholder.create_reagents(100000000)
 	var/list/results = list()
@@ -291,6 +295,11 @@ GLOBAL_LIST_EMPTY(cooking_recipes)
 		for(var/i in results)
 			var/atom/a = i //optimisation
 			tempholder.reagents.trans_to(a, total / results.len)
+
+	if(container.reagents && result_reagents)
+		for(var/r in result_reagents)
+			container.reagents.add_reagent(r, result_reagents[r])
+
 	return results
 
 //When exact is false, extraneous ingredients are ignored

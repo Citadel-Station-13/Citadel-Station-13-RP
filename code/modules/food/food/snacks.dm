@@ -1464,7 +1464,7 @@
 /obj/item/reagent_containers/food/snacks/ingredient/spaghetti // Buff 1 >> 2
 	name = "Spaghetti"
 	desc = "A bundle of raw spaghetti."
-	icon_state = "spagetti"
+	icon_state = "spaghetti"
 	filling_color = "#EDDD00"
 	nutriment_amt = 2
 	nutriment_desc = list("noodles" = 2)
@@ -2129,16 +2129,16 @@
 	. = ..()
 	bitesize = 2
 
-/obj/item/reagent_containers/food/snacks/boiledspagetti // Buff 2 >> 6
+/obj/item/reagent_containers/food/snacks/boiledspaghetti // Buff 2 >> 6
 	name = "Boiled Spaghetti"
 	desc = "A plain dish of noodles, this sucks."
-	icon_state = "spagettiboiled"
+	icon_state = "spaghettiboiled"
 	trash = /obj/item/trash/plate
 	filling_color = "#FCEE81"
 	nutriment_amt = 6
 	nutriment_desc = list("noodles" = 2)
 
-/obj/item/reagent_containers/food/snacks/boiledspagetti/Initialize(mapload)
+/obj/item/reagent_containers/food/snacks/boiledspaghetti/Initialize(mapload)
 	. = ..()
 	bitesize = 2
 
@@ -2182,16 +2182,16 @@
 	reagents.add_reagent("tomatojuice", 10)
 	bitesize = 4
 
-/obj/item/reagent_containers/food/snacks/meatballspagetti // Buff 8 >> 14
+/obj/item/reagent_containers/food/snacks/meatballspaghetti // Buff 8 >> 14
 	name = "Spaghetti & Meatballs"
 	desc = "Now thats a nic'e meatball!"
-	icon_state = "meatballspagetti"
+	icon_state = "meatballspaghetti"
 	trash = /obj/item/trash/plate
 	filling_color = "#DE4545"
 	nutriment_amt = 6
 	nutriment_desc = list("noodles" = 4)
 
-/obj/item/reagent_containers/food/snacks/meatballspagetti/Initialize(mapload)
+/obj/item/reagent_containers/food/snacks/meatballspaghetti/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("protein", 8)
 	bitesize = 2

@@ -25,10 +25,29 @@
 	var/list/visible_position_xy = list(list(-7, 6), list(7, 6),list(-7, -3), list(7, -3))//for mapping a pixel_x, pixel_y to abstract ''position
 	var/food_scale_amount = 0.5 //this is a variable, so you can do funny with it!
 
-// . += "<span class='notice'>[icon2html(thing = examine_ingredient, target = user)] The [examine_ingredient.name], which looks </span><span class='[cooked_span]'>[examine_ingredient.cookstage2text()]</span><span class='notice'> and has been cooked for about [examine_ingredient.accumulated_time_cooked / 10] seconds.</span>"
+
 #warn todo: show ingred
 /obj/machinery/cooking/examine(mob/user, dist)
 	. = ..()
+	. += SPAN_NOTICE("It currently contains [LAZYLEN(food_containers)] items:")
+	for(var/obj/item/examine_item in food_containers)
+		if(!istype(examine_item, /obj/item/reagent_containers/food/snacks/ingredient))
+			. += "<span class='notice'>[icon2html(thing = examine_item, target = user)][examine_item].</span>"
+			continue
+
+		var/obj/item/reagent_containers/food/snacks/ingredient/examine_ingredient = examine_item
+		var/cooked_span = "userdanger"
+		switch(examine_ingredient.cookstage)
+			if(RAW)
+				cooked_span = "rose"
+			if(COOKED)
+				cooked_span = "boldnicegreen"
+			if(OVERCOOKED)
+				cooked_span = "yellow"
+			if(BURNT)
+				cooked_span = "tajaran_signlang"
+		. += "<span class='notice'>[icon2html(thing = examine_ingredient, target = user)][examine_ingredient.name], which looks </span><span class='[cooked_span]'>[examine_ingredient.cookstage2text()]</span><span class='notice'> and has been cooked for about [examine_ingredient.accumulated_time_cooked / 10] seconds.</span>"
+
 	switch(cooking_power)
 		if(0)
 			. += "<span class='notice'>[src] is off.</span>"

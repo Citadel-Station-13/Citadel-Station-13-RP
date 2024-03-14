@@ -90,6 +90,13 @@
 	icon_state = "breadslice"
 	filling_color = "#D27332"
 
+/obj/item/reagent_containers/food/snacks/ingredient/slice/bread/attackby(obj/item/I, mob/user)
+	if(istype(I, /obj/item/reagent_containers/food/snacks))
+		var/obj/item/reagent_containers/food/snacks/customizable/sandwich/S = new(get_turf(src))
+		S.attackby(I, user)
+		qdel(src)
+	..()
+
 /obj/item/reagent_containers/food/snacks/ingredient/damper
 	name = "damper"
 	cookstage_information = list(list(0, 1, "fresh bread"), list(40 SECONDS, 1, "toast"), list(120 SECONDS, 0.8, "burnt toast"), list(300 SECONDS, 0.1, "a lump of charcoal")) //damper is very forgiving cooktime-wise
@@ -122,11 +129,28 @@
 	icon_state = "tortilla"
 	filling_color = "#FFE396"
 
+
+/obj/item/reagent_containers/food/snacks/ingredient/tortilla/attackby(obj/item/I, mob/user)
+	if(istype(I,/obj/item/reagent_containers/food/snacks))
+		var/obj/item/reagent_containers/food/snacks/customizable/taco/S = new(get_turf(src))
+		S.attackby(I, user)
+		qdel(src)
+	else
+		return ..()
+
 /obj/item/reagent_containers/food/snacks/ingredient/tortilla/flour
 	name = "flour tortilla"
 	cookstage_information = list(list(0, 1, "raw dough"), list(10 SECONDS, 1, "light, fluffy tortilla"), list(20 SECONDS, 0.8, "crispy tortilla"), list(25 SECONDS, 0.1, "flat carbon"))
 	desc = "A plain tortilla, made from flour."
 	icon_state = "flourtortilla"
+
+/obj/item/reagent_containers/food/snacks/ingredient/tortilla/flour/attackby(obj/item/I, mob/user)
+	if(istype(I,/obj/item/reagent_containers/food/snacks))
+		var/obj/item/reagent_containers/food/snacks/customizable/burrito/S = new(get_turf(src))
+		S.attackby(I, user)
+		qdel(src)
+	else
+		return ..()
 
 /obj/item/reagent_containers/food/snacks/ingredient/cornmuffin
 	name = "cornbread muffin"
@@ -159,6 +183,15 @@
 	desc = "A plain bun."
 	icon = 'icons/obj/food_ingredients.dmi'
 	icon_state = "bun"
+
+
+/obj/item/reagent_containers/food/snacks/ingredient/bun/attackby(obj/item/I, mob/user)
+	if(istype(I,/obj/item/reagent_containers/food/snacks))
+		var/obj/item/reagent_containers/food/snacks/customizable/burger/S = new(get_turf(src))
+		S.attackby(I, user)
+		qdel(src)
+	else
+		return ..()
 
 /obj/item/reagent_containers/food/snacks/ingredient/bread/pone
 	name = "corn pone"

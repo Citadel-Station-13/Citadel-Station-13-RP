@@ -419,19 +419,12 @@
 	)
 	result = /obj/item/reagent_containers/food/snacks/stewedsoymeat
 
-/*/datum/recipe/spagetti We have the processor now
+/*/datum/recipe/spaghetti We have the processor now
 	items = list(
 		/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough/slice
 	)
 	result= /obj/item/reagent_containers/food/snacks/ingredient/spaghetti*/
 
-#warn todo: stove recipe this
-/datum/recipe/boiledspagetti
-	reagents = list("water" = 5)
-	items = list(
-		/obj/item/reagent_containers/food/snacks/ingredient/spaghetti
-	)
-	result = /obj/item/reagent_containers/food/snacks/boiledspagetti
 
 /datum/recipe/boiledrice
 	reagents = list("water" = 5, "rice" = 10)
@@ -447,13 +440,13 @@
 	items = list(/obj/item/reagent_containers/food/snacks/ingredient/spaghetti)
 	result = /obj/item/reagent_containers/food/snacks/pastatomato
 
-/datum/recipe/meatballspagetti
+/datum/recipe/meatballspaghetti
 	reagents = list("water" = 5)
 	items = list(
 		/obj/item/reagent_containers/food/snacks/ingredient/spaghetti,
 		/obj/item/reagent_containers/food/snacks/ingredient/meatball = 2
 	)
-	result = /obj/item/reagent_containers/food/snacks/meatballspagetti
+	result = /obj/item/reagent_containers/food/snacks/meatballspaghetti
 
 /datum/recipe/spesslaw
 	reagents = list("water" = 5)
@@ -616,15 +609,6 @@
 	for (var/obj/item/reagent_containers/food/snacks/validsalad/being_cooked in .)
 		being_cooked.reagents.del_reagent("toxin")
 
-
-/datum/recipe/stuffing
-	reagents = list("water" = 5, "sodiumchloride" = 1, "blackpepper" = 1)
-	items = list(
-		/obj/item/reagent_containers/food/snacks/ingredient/bread
-	)
-	result = /obj/item/reagent_containers/food/snacks/stuffing
-#warn todo stuffing no longer in micheal wave? cook on stove?
-
 /datum/recipe/tofurkey
 	items = list(
 		/obj/item/reagent_containers/food/snacks/ingredient/tofu,
@@ -657,15 +641,6 @@
 //////////////////////////////////////////
 // bs12 food port stuff
 //////////////////////////////////////////
-
-/datum/recipe/taco
-	items = list(
-		/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough/slice,
-		/obj/item/reagent_containers/food/snacks/ingredient/cutlet,
-		/obj/item/reagent_containers/food/snacks/ingredient/cheesewedge
-	)
-	result = /obj/item/reagent_containers/food/snacks/taco
-#warn todo tacos to custom food
 
 /datum/recipe/mint
 	reagents = list("sugar" = 5, "frostoil" = 5)

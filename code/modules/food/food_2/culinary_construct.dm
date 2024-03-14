@@ -214,7 +214,7 @@
 
 /obj/item/reagent_containers/food/snacks/customizable/pizza
 	name = "pizza"
-	desc = "A personalized pan pizza meant for only one person."
+	desc = "It's pizza time!"
 	ingredients_placement = INGREDIENTS_SCATTER
 	ingMax = 8
 	slice_path = /obj/item/reagent_containers/food/snacks/slice/custompizza
@@ -229,7 +229,7 @@
 
 
 /obj/item/reagent_containers/food/snacks/customizable/sandwich
-	name = "toast"
+	name = "bread"
 	desc = "A timeless classic."
 	ingredients_placement = INGREDIENTS_STACK
 	icon_state = "breadslice"

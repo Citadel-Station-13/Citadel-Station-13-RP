@@ -2667,6 +2667,7 @@
 #include "code\modules\food\recipes_fryer.dm"
 #include "code\modules\food\recipes_microwave.dm"
 #include "code\modules\food\recipes_oven.dm"
+#include "code\modules\food\recipes_stove.dm"
 #include "code\modules\food\drinkingglass\extras.dm"
 #include "code\modules\food\drinkingglass\glass1.dm"
 #include "code\modules\food\drinkingglass\glass2.dm"
