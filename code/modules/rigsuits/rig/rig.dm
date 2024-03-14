@@ -129,6 +129,7 @@
 	/// piece + component + module list awaiting update
 	var/ui_queued_reflists = FALSE
 	/// such a big change has happened that everything is queued
+	/// this will *not* resend module static data!
 	var/ui_queued_everything = FALSE
 	/// pieces awaiting update
 	var/list/datum/component/rig_piece/ui_queued_pieces
