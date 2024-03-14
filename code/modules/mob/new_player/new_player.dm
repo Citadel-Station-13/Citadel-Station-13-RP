@@ -35,7 +35,7 @@
 	var/output = "<div align='center'>"
 	output +="<hr>"
 	output += "<p><a href='byond://?src=\ref[src];show_preferences=1'>Character Setup</A></p>"
-	output += "<br><p><a href='byond://?src=\ref[src];game_preferences=1'>Game Preferences</A></p>"
+	output += "<p><a href='byond://?src=\ref[src];game_preferences=1'>Game Preferences</A></p>"
 
 	if(!SSticker || SSticker.current_state <= GAME_STATE_PREGAME)
 		if(ready)

@@ -12,6 +12,7 @@
 /datum/game_preference_middleware/keybindings/handle_reset(datum/game_preferences/prefs)
 	. = ..()
 
+	prefs.keybindings = list()
 	// don't change their hotkey mode.. unless it was never there.
 	prefs.misc_by_key[GAME_PREFERENCE_MISC_KEY_HOTKEY_MODE] = \
 		isnull(prefs.misc_by_key[GAME_PREFERENCE_MISC_KEY_HOTKEY_MODE])? TRUE : !!prefs.misc_by_key[GAME_PREFERENCE_MISC_KEY_HOTKEY_MODE]

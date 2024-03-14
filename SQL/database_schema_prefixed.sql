@@ -1,11 +1,3 @@
-/**
- * make sure to bump schema version and mark changes in database_changelog.md!
- *
- * default prefix is rp_
- * find replace case sensitive rp_
- * PRESERVE ANY vr_'s! We need to replace those tables and features at some point, that's how we konw.
- **/
-
 -- core --
 
 --
@@ -128,7 +120,7 @@ CREATE TABLE IF NOT EXISTS `rp_photographs` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- players --
+-- Players --
 
 --           Player lookup table                   --
 -- Used to look up player ID from ckey, as well as --
@@ -194,6 +186,25 @@ CREATE TRIGGER `playtimeTlogdelete` AFTER DELETE ON `rp_playtime` FOR EACH ROW B
 END
 $$
 DELIMITER ;
+
+
+-- Preferences --
+
+-- Stores game preferences --
+CREATE TABLE IF NOT EXISTS `rp_game_preferences` (
+  `player` INT(11) NOT NULL,
+  `entries` MEDIUMTEXT NOT NULL DEFAULT '{}',
+  `misc` MEDIUMTEXT NOT NULL DEFAULT '{}',
+  `keybinds` MEDIUMTEXT NOT NULL DEFAULT '{}',
+  `toggles` MEDIUMTEXT NOT NULL DEFAULT '{}',
+  `modified` DATETIME NOT NULL,
+  `version` INT(11) NOT NULL,
+  PRIMARY KEY (`player`),
+  CONSTRAINT `linked_player` FOREIGN KEY (`player`)
+  REFERENCES `rp_player` (`id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Security - Ipintel --
 

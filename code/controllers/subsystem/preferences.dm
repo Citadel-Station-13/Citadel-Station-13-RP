@@ -15,6 +15,7 @@ SUBSYSTEM_DEF(preferences)
 /datum/controller/subsystem/preferences/proc/resolve_preference_entry(datum/game_preference_entry/entrylike)
 	if(ispath(entrylike))
 		entrylike = initial(entrylike.key)
+		entrylike = entries_by_key[entrylike]
 	else if(istype(entrylike))
 	else
 		entrylike = entries_by_key[entrylike]
@@ -23,6 +24,7 @@ SUBSYSTEM_DEF(preferences)
 /datum/controller/subsystem/preferences/proc/resolve_preference_toggle(datum/game_preference_toggle/togglelike)
 	if(ispath(togglelike))
 		togglelike = initial(togglelike.key)
+		togglelike = toggles_by_key[togglelike]
 	else if(istype(togglelike))
 	else
 		togglelike = toggles_by_key[togglelike]
@@ -34,6 +36,9 @@ SUBSYSTEM_DEF(preferences)
 		if(initial(casted.abstract_type) == casted)
 			continue
 		casted = new casted
+		if(!casted.key || !istext(casted.key))
+			STACK_TRACE("bad key: [casted.key]")
+			continue
 		if(!isnull(.[casted.key]))
 			STACK_TRACE("dupe key between [casted.type] and [.[casted.key]:type]")
 			continue
@@ -46,6 +51,9 @@ SUBSYSTEM_DEF(preferences)
 		if(initial(casted.abstract_type) == casted)
 			continue
 		casted = new casted
+		if(!casted.key || !istext(casted.key))
+			STACK_TRACE("bad key: [casted.key]")
+			continue
 		if(!isnull(.[casted.key]))
 			STACK_TRACE("dupe key between [casted.type] and [.[casted.key]:type]")
 			continue

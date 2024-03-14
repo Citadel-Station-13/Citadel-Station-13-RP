@@ -64,7 +64,7 @@
 
 /datum/game_preference_entry/number/filter_value(value)
 	. = isnum(value)? clamp(value, min_value, max_value) : default_value
-	if(!isnull(.))
+	if(!isnull(.) && round_to_nearest)
 		. = round(., round_to_nearest)
 
 /datum/game_preference_entry/number/tgui_preference_schema()

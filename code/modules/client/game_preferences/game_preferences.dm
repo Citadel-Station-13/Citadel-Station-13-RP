@@ -132,7 +132,7 @@
 
 	var/list/old_keybinds
 	legacy_savefile["keybindings"] >> old_keybinds
-	keybindings = old_keybinds
+	keybindings = sanitize_islist(old_keybinds)
 
 	var/old_hotkeys
 	legacy_savefile["hotkeys"] >> old_hotkeys
@@ -203,6 +203,7 @@
 //* Reset *//
 
 /datum/game_preferences/proc/reset(category)
+	entries_by_key = list()
 	for(var/key in SSpreferences.entries_by_key)
 		var/datum/game_preference_entry/entry = SSpreferences.entries_by_key[key]
 		if(category && entry != category)
@@ -214,6 +215,8 @@
 	mark_dirty()
 
 /datum/game_preferences/proc/full_reset()
+	// reset misc stuff first as everything potentially uses it
+	misc_by_key = list()
 	// reset normal categories
 	reset()
 	// reset middleware
@@ -349,10 +352,10 @@
 	var/keybinds_json = query.item[4]
 	var/loaded_version = query.item[5]
 
-	toggles_by_key = safe_json_decode(toggles_json)
-	entries_by_key = safe_json_decode(entries_json)
-	misc_by_key = safe_json_decode(misc_json)
-	keybindings = safe_json_decode(keybinds_json)
+	toggles_by_key = sanitize_islist(safe_json_decode(toggles_json))
+	entries_by_key = sanitize_islist(safe_json_decode(entries_json))
+	misc_by_key = sanitize_islist(safe_json_decode(misc_json))
+	keybindings = sanitize_islist(safe_json_decode(keybinds_json))
 	version = loaded_version
 
 	qdel(query)
@@ -412,12 +415,12 @@
 	if(!fexists(savefile_path))
 		return FALSE
 
-	var/list/deserialized = json_decode(file2text(savefile_path))
+	var/list/deserialized = safe_json_decode(file2text(savefile_path))
 
-	entries_by_key = deserialized["entries"]
-	toggles_by_key = deserialized["toggles"]
-	keybindings = deserialized["keybindings"]
-	misc_by_key = deserialized["misc"]
+	entries_by_key = sanitize_islist(deserialized["entries"])
+	toggles_by_key =sanitize_islist( deserialized["toggles"])
+	keybindings = sanitize_islist(deserialized["keybindings"])
+	misc_by_key = sanitize_islist(deserialized["misc"])
 
 	if(authoritatively_loaded_by_sql)
 		sql_state_desynced = TRUE
@@ -437,7 +440,7 @@
 	if(fexists(savefile_path))
 		fdel(savefile_path)
 
-	text2file(json_encode(serializing), savefile_path)
+	text2file(safe_json_encode(serializing), savefile_path)
 	is_dirty = FALSE
 
 	if(authoritatively_loaded_by_sql)
