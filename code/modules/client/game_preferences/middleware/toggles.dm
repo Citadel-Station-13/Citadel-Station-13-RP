@@ -2,6 +2,7 @@
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
 /datum/game_preference_middleware/toggles
+	name = "Toggles"
 	key = "toggles"
 
 /datum/game_preference_middleware/toggles/handle_reset(datum/game_preferences/prefs)

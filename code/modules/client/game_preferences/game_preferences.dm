@@ -465,7 +465,8 @@
 	. = ..()
 	var/list/middleware = list()
 	for(var/key in GLOB.game_preference_middleware)
-		middleware += key
+		var/datum/game_preference_middleware/middleware_instance = GLOB.game_preference_middleware[key]
+		middleware[key] = middleware_instance.name
 	.["middleware"] = middleware
 	var/list/entries = list()
 	for(var/key in SSpreferences.entries_by_key)
@@ -515,11 +516,10 @@
 		return
 	switch(action)
 		if("set")
-			var/list/to_store = params["entries"]
-			for(var/key in to_store)
-				if(isnull(SSpreferences.entries_by_key[key]))
-					continue
-				set_entry(key, to_store[key])
+			var/key = params["key"]
+			if(isnull(SSpreferences.entries_by_key[key]))
+				continue
+			set_entry(key, params["value"])
 			return TRUE
 		if("reset")
 			reset(params["category"])

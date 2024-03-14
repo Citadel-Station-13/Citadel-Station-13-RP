@@ -2,6 +2,7 @@
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
 /datum/game_preference_middleware/keybindings
+	name = "Keybindings"
 	key = "keybindings"
 
 /datum/game_preference_middleware/keybindings/on_initial_load(datum/game_preferences/prefs)

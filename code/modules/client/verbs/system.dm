@@ -10,7 +10,7 @@
 	set name = "Game Preferences"
 	set category = VERB_CATEGORY_SYSTEM
 
-	prefs?.ShowChoices(usr)
+	preferences.ui_interact(src)
 
 //? Sound Management
 

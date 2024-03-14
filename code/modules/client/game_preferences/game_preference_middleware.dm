@@ -13,6 +13,8 @@ GLOBAL_LIST_INIT(game_preference_middleware, init_game_preference_middleware())
 	return keyed_middleware
 
 /datum/game_preference_middleware
+	/// category name
+	var/name
 	/// key
 	var/key
 

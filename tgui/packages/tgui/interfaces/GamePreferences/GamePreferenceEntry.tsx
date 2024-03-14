@@ -1,17 +1,21 @@
+/**
+ * @file
+ * @license MIT
+ */
 import { BooleanLike } from "common/react";
 import { ByondAtomColor } from "../common/Color";
 
 interface GamePreferenceEntryProps {
-  schema: GamePreferenceEntrySchema;
-  value: any;
-  setValue: (v: any) => void;
+  readonly schema: GamePreferenceEntrySchema;
+  readonly value: any;
+  readonly setValue: (v: any) => void;
 }
 
-export type GamePreferenceEntrySchema = 
-  PreferenceNumberEntrySchema | 
-  PreferenceStringEntrySchema | 
-  PreferenceToggleEntrySchema | 
-  PreferenceDropdownEntrySchema | 
+export type GamePreferenceEntrySchema =
+  PreferenceNumberEntrySchema |
+  PreferenceStringEntrySchema |
+  PreferenceToggleEntrySchema |
+  PreferenceDropdownEntrySchema |
   PreferenceSimpleColorEntrySchema;
 
 interface PreferenceBaseEntrySchema {
@@ -58,5 +62,9 @@ interface PreferenceSimpleColorEntrySchema extends PreferenceBaseEntrySchema {
 }
 
 export const GamePreferenceEntry = (props: GamePreferenceEntryProps, context) => {
-  
+  return (
+    <>
+      Test
+    </>
+  );
 };

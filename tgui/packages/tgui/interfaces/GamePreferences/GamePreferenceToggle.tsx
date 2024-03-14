@@ -1,3 +1,7 @@
+/**
+ * @file
+ * @license MIT
+ */
 import { BooleanLike } from "common/react";
 
 interface GamePreferenceToggleProps {

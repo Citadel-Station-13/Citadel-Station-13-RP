@@ -1,3 +1,7 @@
+/**
+ * @file
+ * @license MIT
+ */
 import { Section } from "../../components";
 
 interface GamePreferenceToggleScreenProps {
