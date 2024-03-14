@@ -292,7 +292,7 @@
 
 /obj/machinery/computer/rdservercontrol/emag_act(var/remaining_charges, var/mob/user)
 	if(!emagged)
-		playsound(src.loc, 'sound/effects/sparks4.ogg', 75, TRUE)
+		playsound(src.loc, /datum/soundbyte/grouped/sparks, 75, TRUE)
 		emagged = TRUE
 		to_chat(user, SPAN_NOTICE("You you disable the security protocols."))
 		SStgui.update_uis(src)

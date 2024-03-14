@@ -2,6 +2,7 @@ GLOBAL_VAR_INIT(sound_extrarange_multiplier, 3)
 GLOBAL_VAR_INIT(sound_env_wet, -1500)
 GLOBAL_VAR_INIT(sound_env_dry, 0)
 
+// todo: refactor this crap
 /proc/playsound(atom/source, soundin, vol as num, vary, extrarange as num, falloff, is_global, frequency = null, channel = 0, pressure_affected = TRUE, ignore_walls = TRUE, preference = null, soundenvwet, soundenvdry)
 	if(!soundin)
 		return
@@ -28,6 +29,7 @@ GLOBAL_VAR_INIT(sound_env_dry, 0)
 	var/list/listeners = GLOB.player_list		//SSmobs.clients_by_zlevel[z]
 	if(!ignore_walls) //these sounds don't carry through walls
 		listeners = listeners & hearers(maxdistance,turf_source)
+	// todo: fast ordered lookup in SSmapping for turf stack/relative depth computations? we want cross-level..
 	for(var/P in listeners)
 		var/mob/M = P
 		if(get_dist(M, turf_source) <= maxdistance)
@@ -209,8 +211,6 @@ GLOBAL_VAR_INIT(sound_distance_offscreen, 7)
 		switch(soundin)
 			if ("shatter")
 				soundin = pick('sound/effects/Glassbr1.ogg','sound/effects/Glassbr2.ogg','sound/effects/Glassbr3.ogg')
-			if ("sparks")
-				soundin = pick('sound/effects/sparks1.ogg','sound/effects/sparks2.ogg','sound/effects/sparks3.ogg','sound/effects/sparks5.ogg','sound/effects/sparks6.ogg','sound/effects/sparks7.ogg')
 			if ("rustle")
 				soundin = pick('sound/effects/rustle1.ogg','sound/effects/rustle2.ogg','sound/effects/rustle3.ogg','sound/effects/rustle4.ogg','sound/effects/rustle5.ogg')
 			if ("punch")

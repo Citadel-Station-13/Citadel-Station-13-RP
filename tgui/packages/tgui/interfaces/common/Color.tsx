@@ -89,27 +89,6 @@ export type ByondAtomColor =
   ByondColorMatrixRGBAC |
   ByondColorMatrixRGBC;
 
-interface ColorPickerProps extends BoxProps {
-  readonly allowMatrix?: boolean;
-  readonly allowAlpha?: boolean;
-  readonly currentColor: ByondAtomColor;
-  readonly setColor: (ByondAtomColor) => void;
-}
-
-interface ColorPickerState {
-  mode: ColorPickerMode;
-  cRed: number;
-  cGreen: number;
-  cBlue: number;
-  cAlpha: number;
-  cMatrix: ByondColorMatrixRGBAC;
-}
-
-enum ColorPickerMode {
-  Normal = 0,
-  Matrix = 1,
-}
-
 export const ConvertByondColorMatrixRGBACToRGBC = (
   matrix: ByondColorMatrixRGBAC
 ): ByondColorMatrixRGBC => {
@@ -182,6 +161,27 @@ export const ConvertByondColorMatrixtoRGBAC = (
   }
 };
 
+interface ColorPickerProps extends BoxProps {
+  readonly allowMatrix?: boolean;
+  readonly allowAlpha?: boolean;
+  readonly currentColor: ByondAtomColor;
+  readonly setColor: (ByondAtomColor) => void;
+}
+
+interface ColorPickerState {
+  mode: ColorPickerMode;
+  cRed: number;
+  cGreen: number;
+  cBlue: number;
+  cAlpha: number;
+  cMatrix: ByondColorMatrixRGBAC;
+}
+
+enum ColorPickerMode {
+  Normal = 0,
+  Matrix = 1,
+}
+
 export class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
   assembleState = (): ColorPickerState => {
     if ((typeof this.props.currentColor) !== 'string') {
@@ -246,7 +246,7 @@ export class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
               }}>Matrix
             </Tabs.Tab>
           </Tabs>
-          <Stack.Item>
+          <Stack.Item minWidth={30}>
             {this.state.mode === ColorPickerMode.Normal && (
               <Box>
                 <Stack>

@@ -358,7 +358,9 @@ GLOBAL_LIST_EMPTY(asset_datums)
 /datum/asset/spritesheet/proc/create_spritesheets()
 	SHOULD_CALL_PARENT(FALSE)
 	CRASH("create_spritesheets() not implemented for [type]!")
-
+/**
+ * neither prefixes nor states may have spaces!
+ */
 /datum/asset/spritesheet/proc/Insert(sprite_name, icon/I, icon_state="", dir=SOUTH, frame=1, moving=FALSE)
 	if(load_immediately)
 		queuedInsert(sprite_name, I, icon_state, dir, frame, moving)
@@ -370,6 +372,8 @@ GLOBAL_LIST_EMPTY(asset_datums)
  * A GOON CODER SAYS BAD ICON ERRORS CAN BE THROWN BY THE "ICON CACHE"
  * APPARENTLY IT MAKES ICONS IMMUTABLE
  * LOOK INTO USING THE MUTABLE APPEARANCE PATTERN HERE
+ *
+ * neither prefixes nor states may have spaces!
  */
 /datum/asset/spritesheet/proc/queuedInsert(sprite_name, icon/I, icon_state="", dir=SOUTH, frame=1, moving=FALSE)
 	I = icon(I, icon_state=icon_state, dir=dir, frame=frame, moving=moving)
@@ -404,6 +408,9 @@ GLOBAL_LIST_EMPTY(asset_datums)
 /datum/asset/spritesheet/proc/ModifyInserted(icon/pre_asset)
 	return pre_asset
 
+/**
+ * neither prefixes nor states may have spaces!
+ */
 /datum/asset/spritesheet/proc/InsertAll(prefix, icon/I, list/directions)
 	if (length(prefix))
 		prefix = "[prefix]-"

@@ -37,6 +37,7 @@
 /obj/item/integrated_circuit_printer/debug
 	name = "fractal integrated circuit printer"
 	desc = "A portable(ish) machine that makes modular circuitry seemingly out of thin air."
+	cur_metal = 250
 	debug = TRUE
 	upgraded = TRUE
 	can_clone = TRUE

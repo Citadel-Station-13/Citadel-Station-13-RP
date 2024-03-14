@@ -18,7 +18,7 @@
 	pickup_sound = 'sound/items/pickup/helm.ogg'
 	encumbrance = ITEM_ENCUMBRANCE_ARMOR_MEDIUM_HELMET
 	weight = ITEM_WEIGHT_ARMOR_MEDIUM_HELMET
-	material_factoring = 0.0002
+	material_factoring = 0.000075
 
 /obj/item/clothing/head/helmet/ntsec
 	name = "corpsec helmet"

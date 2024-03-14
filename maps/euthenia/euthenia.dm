@@ -1,6 +1,10 @@
 /datum/map/station/euthenia
 	id = "euthenia"
 	name = "World - Euthenia"
+
+	// todo: remove after dev is done
+	allow_random_draw = FALSE
+
 	levels = list(
 		/datum/map_level/euthenia/deck/four,
 		/datum/map_level/euthenia/deck/three,
@@ -25,8 +29,6 @@
 		/datum/map/sector/miaphus_192,
 		/datum/map/sector/roguemining_192/one,
 	)
-	full_name = "NSV Euthenia"
-	legacy_persistence_id = "euthenia"
 	full_name = "NSV Euthenia"
 	use_overmap = TRUE
 	overmap_size = 60

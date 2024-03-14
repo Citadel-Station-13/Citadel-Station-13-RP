@@ -113,7 +113,7 @@
 	 a source of organic fuel; blood from sapient creatures is more efficient."
 	atom_flags = OPENCONTAINER
 	complexity = 4
-	inputs = list()
+	inputs = list("push ref" = IC_PINTYPE_PULSE_IN)
 	outputs = list("volume used" = IC_PINTYPE_NUMBER,"self reference" = IC_PINTYPE_REF)
 	activators = list()
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
@@ -129,6 +129,10 @@
 	set_pin_data(IC_OUTPUT, 2, WEAKREF(src))
 	push_data()
 	..()
+
+/obj/item/integrated_circuit/passive/power/chemical_cell/do_work()
+	set_pin_data(IC_OUTPUT, 2, WEAKREF(src))
+	push_data()
 
 /obj/item/integrated_circuit/passive/power/chemical_cell/on_reagent_change()
 	set_pin_data(IC_OUTPUT, 1, reagents.total_volume)

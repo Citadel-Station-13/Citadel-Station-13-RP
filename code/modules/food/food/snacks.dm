@@ -706,7 +706,7 @@
 /obj/item/reagent_containers/food/snacks/egg/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype( W, /obj/item/pen/crayon ))
 		var/obj/item/pen/crayon/C = W
-		var/clr = C.colourName
+		var/clr = C.crayon_color_name
 
 		if(!(clr in list("blue","green","mime","orange","purple","rainbow","red","yellow")))
 			to_chat(usr, "<font color=#4F49AF>The egg refuses to take on this color!</font>")
@@ -5855,7 +5855,10 @@ END CITADEL CHANGE */
 	for(var/i=1 to startswith)
 		new /obj/item/reagent_containers/food/snacks/chickenwing(src)
 	update_icon()
-	return
+
+/obj/item/storage/box/wings/initialize_storage()
+	. = ..()
+	obj_storage.update_icon_on_item_change = TRUE
 
 /obj/item/storage/box/wings/update_icon()
 	var/i = 0

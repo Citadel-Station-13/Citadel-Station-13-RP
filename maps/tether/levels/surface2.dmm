@@ -129,7 +129,6 @@
 /obj/machinery/atmospherics/pipe/simple/visible/supply{
 	dir = 4
 	},
-/obj/random/junk,
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -871,7 +870,6 @@
 /turf/simulated/floor/plating,
 /area/engineering/drone_fabrication)
 "aEs" = (
-/obj/random/junk,
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/lower/south)
 "aGi" = (
@@ -1062,7 +1060,6 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/patient_b)
 "aNo" = (
-/obj/effect/debris/cleanable/blood,
 /obj/item/clothing/shoes/athletic{
 	desc = "Assault"
 	},
@@ -1946,7 +1943,6 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "buc" = (
@@ -2261,9 +2257,7 @@
 /obj/machinery/light_switch{
 	pixel_y = 25
 	},
-/obj/effect/debris/cleanable/cobweb{
-	icon_state = "cobweb2"
-	},
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/maintenance/asmaint2)
 "bKN" = (
@@ -2827,7 +2821,6 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "cex" = (
@@ -3038,7 +3031,6 @@
 /turf/simulated/wall/prepainted/engineering/atmos,
 /area/tether/surfacebase/emergency_storage/atmos)
 "chK" = (
-/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor,
 /area/maintenance/lower/north)
 "chM" = (
@@ -3662,7 +3654,6 @@
 /turf/simulated/floor/outdoors/dirt/virgo3b,
 /area/tether/surfacebase/outside/outside2)
 "cFv" = (
-/obj/random/junk,
 /turf/simulated/mineral/floor/virgo3b,
 /area/tether/surfacebase/outside/outside2)
 "cFG" = (
@@ -4174,7 +4165,6 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/random/junk,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/north)
 "cWY" = (
@@ -4254,7 +4244,6 @@
 "cZv" = (
 /obj/structure/catwalk,
 /obj/effect/floor_decal/rust,
-/obj/random/junk,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/asmaint2)
 "cZW" = (
@@ -4591,7 +4580,6 @@
 /area/rnd/rdoffice)
 "dlA" = (
 /obj/structure/bed/pod,
-/obj/random/junk,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/tether/surfacebase/old_shelter)
 "dmy" = (
@@ -4629,7 +4617,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/random/trash,
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/lower/south)
 "dpc" = (
@@ -4657,7 +4644,6 @@
 /obj/random/cigarettes,
 /obj/random/toy,
 /obj/random/tech_supply,
-/obj/random/junk,
 /obj/item/flame/lighter/zippo,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/bar)
@@ -7089,9 +7075,7 @@
 /turf/simulated/floor/plating,
 /area/tcommsat/chamber)
 "fiE" = (
-/obj/effect/debris/cleanable/cobweb{
-	icon_state = "cobweb2"
-	},
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "fiL" = (
@@ -7187,7 +7171,6 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/breakroom)
 "fmr" = (
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/bar)
 "fmD" = (
@@ -7352,7 +7335,6 @@
 /turf/simulated/floor/reinforced,
 /area/rnd/rdoffice)
 "fxm" = (
-/obj/random/junk,
 /turf/simulated/floor/outdoors/grass/sif/virgo3b,
 /area/tether/surfacebase/outside/outside2)
 "fxu" = (
@@ -8958,7 +8940,6 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
 	},
-/obj/random/junk,
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/lower/south)
 "gwt" = (
@@ -9512,7 +9493,6 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
 "gOn" = (
@@ -9828,7 +9808,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/south)
 "hal" = (
@@ -9858,7 +9837,6 @@
 "hbc" = (
 /obj/effect/floor_decal/techfloor,
 /obj/structure/catwalk,
-/obj/random/junk,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
@@ -10074,7 +10052,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/surfacebase/medical/morgue)
 "hlF" = (
-/obj/random/junk,
 /obj/item/broken_bottle,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
@@ -10310,7 +10287,6 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_two)
 "hvD" = (
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "hvF" = (
@@ -10713,7 +10689,6 @@
 "hMi" = (
 /obj/structure/table/survival_pod,
 /obj/effect/floor_decal/rust,
-/obj/random/junk,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/tether/surfacebase/old_shelter)
 "hMl" = (
@@ -10931,7 +10906,6 @@
 /area/engineering/lower/lobby)
 "hTu" = (
 /obj/structure/catwalk,
-/obj/random/junk,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/asmaint2)
 "hTx" = (
@@ -13103,7 +13077,6 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "jrt" = (
@@ -13274,7 +13247,6 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/recoveryward)
 "jxa" = (
-/obj/effect/debris/cleanable/blood/oil,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/drone_fabrication)
@@ -13636,7 +13608,6 @@
 "jLb" = (
 /obj/structure/catwalk,
 /obj/effect/floor_decal/rust,
-/obj/random/junk,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -13783,7 +13754,6 @@
 /obj/item/handcuffs/legcuffs,
 /obj/item/handcuffs,
 /obj/effect/floor_decal/rust,
-/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/lower/atmos)
 "jSW" = (
@@ -14571,7 +14541,6 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/surface_two_hall)
 "kyL" = (
-/obj/random/junk,
 /turf/simulated/floor,
 /area/maintenance/lower/north)
 "kzz" = (
@@ -14999,7 +14968,6 @@
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 1
 	},
-/obj/random/junk,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/asmaint2)
 "kTs" = (
@@ -15173,7 +15141,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/south)
 "kYf" = (
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/rnd)
 "kYp" = (
@@ -15248,7 +15215,6 @@
 /obj/structure/railing,
 /obj/structure/closet,
 /obj/random/maintenance/clean,
-/obj/random/junk,
 /obj/random/maintenance/research,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
@@ -15356,7 +15322,6 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/breakroom)
 "lfi" = (
-/obj/random/trash,
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/lower/south)
 "lfl" = (
@@ -15384,7 +15349,6 @@
 /area/bridge/meeting_room)
 "lgE" = (
 /obj/structure/bed/chair,
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "lhm" = (
@@ -15642,7 +15606,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/bar)
 "lvu" = (
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
 "lvF" = (
@@ -17780,8 +17743,6 @@
 /turf/simulated/floor,
 /area/maintenance/substation/medsec)
 "mYS" = (
-/obj/random/junk,
-/obj/random/junk,
 /obj/machinery/light/small{
 	dir = 8
 	},
@@ -18141,7 +18102,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
 "nkd" = (
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/bar)
 "nkg" = (
@@ -19389,7 +19349,6 @@
 /obj/random/maintenance/research,
 /obj/random/maintenance/clean,
 /obj/random/maintenance/clean,
-/obj/random/junk,
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
@@ -20244,9 +20203,6 @@
 	icon_state = "2-8"
 	},
 /obj/structure/closet/crate/trashcart,
-/obj/random/junk,
-/obj/random/junk,
-/obj/random/junk,
 /turf/simulated/floor,
 /area/maintenance/substation/medsec)
 "oMV" = (
@@ -20286,7 +20242,6 @@
 /area/maintenance/lower/public_garden_maintenance/upper)
 "oPN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/random/trash,
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/lower/south)
 "oPZ" = (
@@ -21512,9 +21467,6 @@
 /obj/item/fbp_backup_cell,
 /obj/item/storage/single_use/mre/random,
 /obj/effect/floor_decal/rust,
-/obj/random/junk,
-/obj/random/junk,
-/obj/random/junk,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/tether/surfacebase/old_shelter)
 "pMK" = (
@@ -22508,7 +22460,6 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/random/junk,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/maintenance/asmaint2)
 "qxj" = (
@@ -23671,7 +23622,6 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/recoveryward)
 "rtZ" = (
-/obj/effect/debris/cleanable/blood,
 /obj/item/cassette_tape{
 	desc = "No Talk"
 	},
@@ -23834,7 +23784,6 @@
 "rAZ" = (
 /obj/structure/catwalk,
 /obj/effect/floor_decal/rust,
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/public_garden_maintenance/upper)
 "rBx" = (
@@ -26843,7 +26792,6 @@
 /area/tcommsat/chamber)
 "tUJ" = (
 /obj/structure/bed,
-/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/south)
 "tUS" = (
@@ -27221,7 +27169,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/effect/debris/cleanable/molten_item,
 /turf/simulated/floor/tiled/techmaint,
 /area/tcomfoyer)
 "umc" = (
@@ -27253,7 +27200,6 @@
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/double,
 /obj/structure/curtain/open/privacy,
-/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/wood,
 /area/vacant/vacant_bar_upper)
 "uoh" = (
@@ -27625,7 +27571,6 @@
 /obj/machinery/atmospherics/pipe/simple/visible/purple{
 	dir = 1
 	},
-/obj/random/junk,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/asmaint2)
 "uDh" = (
@@ -27975,7 +27920,6 @@
 	dir = 4;
 	pixel_x = -23
 	},
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "uOI" = (
@@ -28092,7 +28036,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/bar)
 "uRn" = (
@@ -28312,7 +28255,6 @@
 	dir = 8;
 	icon_state = "techfloororange_edges"
 	},
-/obj/random/junk,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/bar)
 "vbk" = (
@@ -29058,7 +29000,6 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
 "vBX" = (
@@ -29999,7 +29940,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/supply,
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/south)
 "wnq" = (
@@ -31225,7 +31165,6 @@
 /area/tether/surfacebase/surface_two_hall)
 "xjC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/random/trash,
 /turf/simulated/floor/carpet,
 /area/maintenance/lower/south)
 "xjY" = (
@@ -32149,7 +32088,6 @@
 /area/tether/surfacebase/medical/resleeving)
 "xRn" = (
 /obj/structure/catwalk,
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "xRC" = (
@@ -32486,7 +32424,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/bar)
 "yeu" = (
-/obj/effect/debris/cleanable/blood/oil,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "yez" = (

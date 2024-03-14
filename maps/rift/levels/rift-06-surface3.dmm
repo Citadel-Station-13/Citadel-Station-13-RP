@@ -953,7 +953,6 @@
 "adj" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
 /obj/landmark/spawnpoint/job/chef,
-/obj/effect/debris/cleanable/flour,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "adk" = (
@@ -3061,7 +3060,6 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
 "ajp" = (
-/obj/random/junk,
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside3)
 "ajq" = (
@@ -5706,7 +5704,6 @@
 "aqy" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
 /obj/machinery/light,
-/obj/effect/debris/cleanable/egg_smudge,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "aqz" = (
@@ -6629,8 +6626,6 @@
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/cockpit)
 "asQ" = (
-/obj/effect/debris/cleanable/dirt,
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "asR" = (
@@ -7109,7 +7104,6 @@
 "auj" = (
 /obj/machinery/vending/cola,
 /obj/effect/debris/cleanable/cobweb,
-/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "auk" = (
@@ -7316,7 +7310,6 @@
 /area/bridge)
 "auP" = (
 /obj/machinery/vending/snack,
-/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "auR" = (
@@ -7858,7 +7851,6 @@
 /area/ai)
 "awb" = (
 /obj/random/trash_pile,
-/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "awd" = (
@@ -8086,10 +8078,6 @@
 /area/exploration)
 "awA" = (
 /obj/item/reagent_containers/food/drinks/cans/space_mountain_wind,
-/obj/effect/debris/cleanable/flour,
-/obj/effect/debris/cleanable/dirt,
-/obj/effect/debris/cleanable/dirt,
-/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "awB" = (
@@ -8526,7 +8514,6 @@
 /area/rift/surfacebase/outside/outside3)
 "axB" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
-/obj/effect/debris/cleanable/flour,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -8584,7 +8571,6 @@
 /area/maintenance/bar)
 "axO" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
-/obj/effect/debris/cleanable/egg_smudge,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "axR" = (
@@ -8605,9 +8591,6 @@
 /area/shuttle/civvie/cockpit)
 "axU" = (
 /obj/item/trash/cheesie,
-/obj/effect/debris/cleanable/dirt,
-/obj/effect/debris/cleanable/dirt,
-/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "axX" = (
@@ -8882,7 +8865,6 @@
 /turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "ayE" = (
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/station/exploration)
 "ayF" = (
@@ -8927,7 +8909,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/hop)
 "ayK" = (
-/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "ayL" = (
@@ -10510,8 +10491,6 @@
 /obj/structure/table/steel,
 /obj/item/modular_computer/laptop/preset/custom_loadout/elite,
 /obj/effect/debris/cleanable/cobweb2,
-/obj/effect/debris/cleanable/dirt,
-/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "aDH" = (
@@ -10749,7 +10728,6 @@
 /turf/simulated/floor/carpet/purcarpet,
 /area/exploration/meeting)
 "aEx" = (
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "aEy" = (
@@ -11521,7 +11499,6 @@
 /area/crew_quarters/freezer)
 "aGy" = (
 /obj/structure/catwalk,
-/obj/effect/debris/cleanable/fruit_smudge,
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
 "aGz" = (
@@ -11879,9 +11856,6 @@
 "aHA" = (
 /obj/machinery/light/small,
 /obj/random/maintenance/clean,
-/obj/effect/debris/cleanable/dirt,
-/obj/effect/debris/cleanable/dirt,
-/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "aHB" = (
@@ -13305,9 +13279,6 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/cockpit)
 "aLl" = (
-/obj/effect/debris/cleanable/dirt,
-/obj/effect/debris/cleanable/dirt,
-/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "aLm" = (
@@ -13454,9 +13425,6 @@
 /area/security/nuke_storage)
 "aLO" = (
 /obj/item/reagent_containers/food/drinks/cans/space_mountain_wind,
-/obj/effect/debris/cleanable/dirt,
-/obj/effect/debris/cleanable/dirt,
-/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "aLQ" = (
@@ -14886,12 +14854,6 @@
 	dir = 1
 	},
 /obj/structure/closet/crate/trashcart,
-/obj/random/junk,
-/obj/random/junk,
-/obj/random/junk,
-/obj/random/junk,
-/obj/random/junk,
-/obj/random/junk,
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/surfaceeva/aa/cliff_north)
 "aPW" = (
@@ -16186,7 +16148,6 @@
 /area/bridge)
 "aTs" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
-/obj/effect/debris/cleanable/flour,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "aTt" = (
@@ -16932,8 +16893,6 @@
 	pixel_y = 15
 	},
 /obj/random/medical/pillbottle,
-/obj/effect/debris/cleanable/dirt,
-/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "aVy" = (
@@ -18965,7 +18924,6 @@
 /obj/item/storage/daki{
 	icon_state = "daki_Holo"
 	},
-/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "cya" = (
@@ -19109,7 +19067,6 @@
 /area/bridge)
 "cRX" = (
 /obj/item/trash/chips,
-/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "cSf" = (
@@ -19290,7 +19247,6 @@
 /area/crew_quarters/barrestroom)
 "dxW" = (
 /obj/item/trash/unajerky,
-/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "dyY" = (
@@ -19799,7 +19755,6 @@
 /area/rift/turbolift/maint)
 "eAl" = (
 /obj/structure/catwalk,
-/obj/effect/debris/cleanable/flour,
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
@@ -20140,10 +20095,6 @@
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/secondary/docking_hallway)
 "ffg" = (
-/obj/effect/debris/cleanable/dirt,
-/obj/effect/debris/cleanable/dirt,
-/obj/effect/debris/cleanable/dirt,
-/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "fgP" = (
@@ -20411,9 +20362,6 @@
 "fPD" = (
 /obj/machinery/light/small,
 /obj/random/trash_pile,
-/obj/effect/debris/cleanable/dirt,
-/obj/effect/debris/cleanable/dirt,
-/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "fQQ" = (
@@ -21611,7 +21559,6 @@
 /area/hallway/secondary/docking_hallway)
 "iPo" = (
 /obj/item/bedsheet/reddouble,
-/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "iRO" = (
@@ -22765,7 +22712,6 @@
 /area/shuttle/excursion/cargo)
 "lKG" = (
 /obj/item/reagent_containers/food/drinks/bottle/space_mountain_wind,
-/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "lKN" = (
@@ -23016,9 +22962,6 @@
 /area/exploration/excursion_dock)
 "mbP" = (
 /obj/structure/bed/padded,
-/obj/effect/debris/cleanable/fruit_smudge,
-/obj/effect/debris/cleanable/dirt,
-/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "mhO" = (
@@ -23316,8 +23259,6 @@
 /area/rnd/telescience_lab)
 "mPf" = (
 /obj/item/trash/cheesie,
-/obj/effect/debris/cleanable/dirt,
-/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "mPB" = (
@@ -24153,7 +24094,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
 "oXj" = (
-/obj/effect/debris/cleanable/dirt,
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
@@ -24541,7 +24481,6 @@
 /turf/simulated/floor/plating,
 /area/shuttle/civvie/general)
 "qaO" = (
-/obj/effect/debris/cleanable/fruit_smudge,
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
@@ -24637,10 +24576,6 @@
 /area/hallway/secondary/docking_hallway2)
 "qlA" = (
 /obj/item/trash/cheesie,
-/obj/effect/debris/cleanable/flour,
-/obj/effect/debris/cleanable/dirt,
-/obj/effect/debris/cleanable/dirt,
-/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "qmp" = (
@@ -25427,7 +25362,6 @@
 /area/hallway/secondary/docking_hallway)
 "szx" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
-/obj/effect/debris/cleanable/egg_smudge,
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},

@@ -4231,7 +4231,6 @@
 /obj/effect/floor_decal/steeldecal/steel_decals6{
 	dir = 8
 	},
-/obj/effect/debris/cleanable/blood/oil,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/robotics)
 "ddd" = (
@@ -22813,7 +22812,6 @@
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/foyer)
 "rlE" = (
-/obj/effect/debris/cleanable/blood/oil,
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/maintenance/deck_two/starboard)
 "rms" = (

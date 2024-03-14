@@ -46,7 +46,7 @@ SUBSYSTEM_DEF(playtime)
 				"player" = playerid
 			)
 		C.persistent.playtime_queued = list()
-	SSdbcore.MassInsert(format_table_name("playtime"), built, duplicate_key = "ON DUPLICATE KEY UPDATE minutes = minutes + VALUES(minutes)")
+	SSdbcore.MassInsertLegacy(format_table_name("playtime"), built, duplicate_key = "ON DUPLICATE KEY UPDATE minutes = minutes + VALUES(minutes)")
 
 /**
  * returns a list of playtime roles

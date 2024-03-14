@@ -349,18 +349,6 @@
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	projectile_parry_chance = 85
 
-/obj/item/melee/energy/sword/dualsaber/pre_attack(atom/target, mob/user, clickchain_flags, list/params)
-	if(prob(50))
-		INVOKE_ASYNC(src, PROC_REF(jedi_spin), user)
-	return ..()
-
-/obj/item/melee/energy/sword/dualsaber/proc/jedi_spin(mob/living/user)
-	for(var/i in list(NORTH,SOUTH,EAST,WEST))
-		user.setDir(i)
-		if(i == WEST)
-			user.emote("flip")
-		sleep(1)
-
 /*
  *Ionic Rapier
  */
@@ -466,18 +454,6 @@
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	projectile_parry_chance = 65
 	hitcost = 150
-
-/obj/item/melee/energy/sword/charge/dualsaber/pre_attack(atom/target, mob/user, clickchain_flags, list/params)
-	if(prob(50))
-		INVOKE_ASYNC(src, PROC_REF(jedi_spin), user)
-	return ..()
-
-/obj/item/melee/energy/sword/charge/dualsaber/proc/jedi_spin(mob/living/user)
-	for(var/i in list(NORTH,SOUTH,EAST,WEST))
-		user.setDir(i)
-		if(i == WEST)
-			user.emote("flip")
-		sleep(1)
 
 //Energy Blade (ninja uses this)
 

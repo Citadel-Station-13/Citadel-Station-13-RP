@@ -352,24 +352,39 @@
 			return
 
 	var/old_loc = src.loc
+	var/obj/item/actually_picked_up = src
+	var/has_to_drop_to_ground_on_fail = FALSE
 
-	throwing?.terminate()
+	if(isturf(old_loc))
+		// if picking up from floor
+		throwing?.terminate()
+	else if(item_flags & ITEM_IN_STORAGE)
+		// trying to take out of backpack
+		var/datum/object_system/storage/resolved
+		if(istype(loc, /atom/movable/storage_indirection))
+			var/atom/movable/storage_indirection/holder = loc
+			resolved = holder.parent
+		else if(isobj(loc))
+			var/obj/obj_loc = loc
+			resolved = obj_loc.obj_storage
+		if(isnull(resolved))
+			item_flags &= ~ITEM_IN_STORAGE
+			CRASH("in storage at [loc] ([REF(loc)]) ([loc?.type || "NULL"]) but cannot resolve storage system")
+		actually_picked_up = resolved.try_remove(src, user, new /datum/event_args/actor(user))
+		// they're in user, but not equipped now. this is so it doesn't touch the ground first.
+		has_to_drop_to_ground_on_fail = TRUE
 
-	//! FUCK; this is off because we don't have storage indirection working properly.
-
-	// if(item_flags & ITEM_IN_STORAGE)
-	// 	var/obj/object = loc
-	// 	var/datum/object_system/storage/in_storage = object.obj_storage
-	// 	// todo: support for indirection
-	// 	ASSERT(!isnull(in_storage))
-	// 	if(!in_storage.auto_handle_interacted_removal(src, new /datum/event_args/actor(user), put_in_hands = TRUE))
-	// 		return
-	// else if(!user.put_in_active_hand(src))
-	if(!user.put_in_active_hand(src))
+	if(isnull(actually_picked_up))
+		to_chat(user, SPAN_WARNING("[src] somehow slips through your grasp. What just happened?"))
 		return
+	if(!user.put_in_hands(actually_picked_up))
+		if(has_to_drop_to_ground_on_fail)
+			actually_picked_up.forceMove(user.drop_location())
+		return
+	// success
 	if(isturf(old_loc))
 		var/obj/effect/temporary_effect/item_pickup_ghost/ghost = new(old_loc)
-		ghost.assumeform(src)
+		ghost.assumeform(actually_picked_up)
 		ghost.animate_towards(user)
 
 /obj/item/OnMouseDrop(atom/over, mob/user, proximity, params)
@@ -945,6 +960,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	if(. == weight_registered)
 		return 0
 	. -= weight_registered
+	weight_registered += .
 	var/mob/living/wearer = worn_mob()
 	if(istype(wearer))
 		wearer.adjust_current_carry_weight(.)

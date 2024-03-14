@@ -288,7 +288,7 @@
 
 		if("Colour")
 			var/newcolour = input("Which colour would you like to use?") as null|anything in list("black","blue","red","green","yellow")
-			if(newcolour) colour = newcolour
+			if(newcolour) pen_color = newcolour
 
 		if("Mode")
 			if (mode == 1)
