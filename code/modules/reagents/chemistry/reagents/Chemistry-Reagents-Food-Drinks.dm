@@ -134,13 +134,35 @@
 		else
 			M.afflict_sleeping(20 * 20)
 			M.drowsyness = max(M.drowsyness, 60)
-#warn todo stock > broth?
-/datum/reagent/nutriment/vegetablestock
-	name = "vegetable stock"
-	id = "vegstock"
-	description = "A thin stock, made from vegetables."
+
+
+/datum/reagent/nutriment/vegetablebroth
+	name = "vegetable broth"
+	id = "vegbroth"
+	description = "A thin broth, made from vegetables."
+	taste_description = "vegetables and salt"
 	nutriment_factor = 0.4
-	color = "#CCCCCC"
+
+/datum/reagent/nutriment/meatbroth
+	name = "meat broth"
+	id = "meatbroth"
+	description = "A thin broth, made from some sort of meat."
+	taste_description = "meat and salt"
+	nutriment_factor = 0.6
+
+/datum/reagent/nutriment/chickenbroth
+	name = "chicken broth"
+	id = "chickenbroth"
+	description = "A thin broth, made from chicken."
+	taste_description = "chicken and salt"
+	nutriment_factor = 0.5
+
+/datum/reagent/nutriment/fishbroth
+	name = "fish broth"
+	id = "fishbroth"
+	description = "A thin broth, made from some sort of fish."
+	taste_description = "fish and salt"
+	nutriment_factor = 0.6
 
 /datum/reagent/nutriment/mayo
 	name = "mayonnaise"

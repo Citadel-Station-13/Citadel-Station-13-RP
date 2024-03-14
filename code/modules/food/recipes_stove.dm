@@ -18,9 +18,36 @@
 
 /datum/recipe/veggiestock
 	required_method = METHOD_STOVE
-	reagents = list("water" = 60)
+	reagents = list("water" = 60, "sodiumchloride" = 5)
+	fruit = list("carrot" = 1, "onion" = 1)
+	result = null
+	result_reagents = list("vegbroth" = 60)
+
+/datum/recipe/chickenstock
+	required_method = METHOD_STOVE
+	reagents = list("water" = 60, "sodiumchloride" = 10)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/ingredient/plant
+		/obj/item/reagent_containers/food/snacks/ingredient/meat/chicken
 	)
 	result = null
-	result_reagents = list("vegstock" = 60)
+	result_reagents = list("chickenbroth" = 60)
+
+/datum/recipe/meatstock
+	required_method = METHOD_STOVE
+	reagents = list("water" = 60, "sodiumchloride" = 10)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/ingredient/meat
+	)
+	result = null
+	result_reagents = list("meatbroth" = 60)
+
+/datum/recipe/fishstock
+	required_method = METHOD_STOVE
+	reagents = list("water" = 60, "sodiumchloride" = 10)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/ingredient/carp
+	)
+	result = null
+	result_reagents = list("fishbroth" = 60)
+
+
