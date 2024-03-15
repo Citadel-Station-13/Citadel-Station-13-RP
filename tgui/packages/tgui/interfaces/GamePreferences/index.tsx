@@ -56,7 +56,8 @@ const GamePreferencesTab = (props: {
   readonly selected: BooleanLike;
 }, context) => {
   return (
-    <Button fluid selected={props.selected} onClick={props.onClick} textAlign="center">{props.name}
+    <Button color="transparent"
+      fluid selected={props.selected} onClick={props.onClick} textAlign="center">{props.name}
     </Button>
   );
 };
@@ -121,17 +122,18 @@ const GamePreferencesBody = (props, context) => {
   }
 
   return (
-    <Stack fill vertical overflowY="auto">
-      {categoryCache[activeCategory].map((subcat) => (
-        <Stack.Item key={subcat}>
-          <Section title={subcat}>
+    <Section fill>
+      <Stack fill vertical overflowY="auto">
+        {categoryCache[activeCategory].map((subcat) => (
+          <Stack.Item key={subcat}>
+            <h1>{subcat}</h1>
             {data.entries.filter((e) => e.category === activeCategory && e.subcategory === subcat).map((entry) => (
               <GamePreferenceEntry schema={entry} key={entry.key} value={data.values[entry.key]}
                 setValue={(val) => act('set', { key: entry.key, value: val })} />
             ))}
-          </Section>
-        </Stack.Item>
-      ))}
-    </Stack>
+          </Stack.Item>
+        ))}
+      </Stack>
+    </Section>
   );
 };
