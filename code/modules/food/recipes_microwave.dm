@@ -1,21 +1,3 @@
-
-// see code/datums/recipe.dm
-
-/datum/recipe/friedegg
-	reagents = list("sodiumchloride" = 1, "blackpepper" = 1)
-	items = list(
-		/obj/item/reagent_containers/food/snacks/ingredient/egg
-	)
-	result = /obj/item/reagent_containers/food/snacks/friedegg
-
-/datum/recipe/boiledegg
-	reagents = list("water" = 5)
-	reagent_mix = RECIPE_REAGENT_REPLACE
-	items = list(
-		/obj/item/reagent_containers/food/snacks/ingredient/egg
-	)
-	result = /obj/item/reagent_containers/food/snacks/boiledegg
-
 /datum/recipe/humanburger
 	items = list(
 		/obj/item/reagent_containers/food/snacks/ingredient/meat/human,
@@ -684,7 +666,7 @@
 /datum/recipe/bearburger
 	items = list(
 		/obj/item/reagent_containers/food/snacks/ingredient/bun,
-		/obj/item/reagent_containers/food/snacks/ingredient/bearmeat 
+		/obj/item/reagent_containers/food/snacks/ingredient/bearmeat
 	)
 	result = /obj/item/reagent_containers/food/snacks/bearburger
 

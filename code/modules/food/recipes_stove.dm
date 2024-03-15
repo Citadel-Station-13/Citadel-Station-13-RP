@@ -50,4 +50,21 @@
 	result = null
 	result_reagents = list("fishbroth" = 60)
 
+/datum/recipe/friedegg
+	required_method = METHOD_STOVE
+	reagents = list("sodiumchloride" = 1, "blackpepper" = 1)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/ingredient/egg
+	)
+	result = /obj/item/reagent_containers/food/snacks/friedegg
+
+/datum/recipe/boiledegg
+	required_method = METHOD_STOVE
+	reagents = list("water" = 15)
+	reagent_mix = RECIPE_REAGENT_REPLACE
+	items = list(
+		/obj/item/reagent_containers/food/snacks/ingredient/egg
+	)
+	result = /obj/item/reagent_containers/food/snacks/boiledegg
+
 
