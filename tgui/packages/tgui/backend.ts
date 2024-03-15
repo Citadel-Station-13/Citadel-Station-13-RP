@@ -276,13 +276,18 @@ export const backendMiddleware = store => {
   };
 };
 
-export type actFunctionType = (action: string, payload?: object) => void;
+export type actFunctionType = (action: string, payload?: object, routed?: boolean) => void;
 
 /**
  * Sends an action to `ui_act` on `src_object` that this tgui window
  * is associated with.
+ *
+ * @params
+ * * action - action string
+ * * payload - payload object; this is the list/params byond-side
+ * * routed - go to ui_route() instead of ui_act()
  */
-export const sendAct: actFunctionType = (action: string, payload: object = {}) => {
+export const sendAct: actFunctionType = (action: string, payload: object = {}, routed: boolean = false) => {
   // Validate that payload is an object
   const isObject = typeof payload === 'object'
     && payload !== null
@@ -291,7 +296,7 @@ export const sendAct: actFunctionType = (action: string, payload: object = {}) =
     logger.error(`Payload for act() must be an object, got this:`, payload);
     return;
   }
-  Byond.sendMessage('act/' + action, payload);
+  Byond.sendMessage((routed? 'mod/' : 'act/') + action, payload);
 };
 
 type BackendContext = {
@@ -531,7 +536,7 @@ export const constructModuleAct = (id: string, ref: string): actFunctionType => 
 /**
  * Extracts module data from context
  */
-export const getModuleData = <TData extends ModuleData>(context, id: string): TData => {
+export const getModuleData = <TData>(context, id: string): TData => {
   let backend = useBackend<TData>(context);
   return backend.modules[id];
 };

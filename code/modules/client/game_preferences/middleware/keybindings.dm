@@ -107,7 +107,12 @@
 /datum/game_preference_middleware/keybindings/ui_static_data(mob/user, datum/tgui/ui, is_module)
 	. = ..()
 	var/datum/game_preferences/prefs = ui.src_object
-	.["keybindings"] = prefs.keybindings
+	.["bindings"] = prefs.keybindings
+	var/list/constructed_keybinds = list()
+	for(var/key in GLOB.keybindings_by_name)
+		var/datum/keybinding/keybind = GLOB.keybindings_by_name[key]
+		constructed_keybinds[++constructed_keybinds.len] = keybind.tgui_keybinding_data()
+	.["keybinds"] = constructed_keybinds
 	.["hotkeyMode"] = prefs.misc_by_key[GAME_PREFERENCE_MISC_KEY_HOTKEY_MODE]
 
 //? Preferences Helpers

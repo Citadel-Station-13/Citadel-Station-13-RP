@@ -5,7 +5,7 @@
 	name = "HUD Style"
 	description = "Set the style of your inventory / game HUD"
 	key = "hud_style"
-	category = "Game"
+	category = GAME_PREFERENCE_CATEGORY_GAME
 	subcategory = "HUD Overlay"
 	legacy_savefile_key = "UI_style"
 
@@ -21,7 +21,7 @@
 	name = "HUD Color"
 	description = "Manually recolor your inventory / game HUD"
 	key = "hud_color"
-	category = "Game"
+	category = GAME_PREFERENCE_CATEGORY_GAME
 	subcategory = "HUD Overlay"
 	default_value = "#ffffff"
 	legacy_savefile_key = "UI_style_color"
@@ -34,7 +34,7 @@
 	name = "HUD Alpha"
 	description = "Manually set the transparency of your inventory / game HUD"
 	key = "hud_alpha"
-	category = "Game"
+	category = GAME_PREFERENCE_CATEGORY_GAME
 	subcategory = "HUD Overlay"
 	default_value = 255
 	legacy_savefile_key = "UI_style_alpha"
@@ -47,7 +47,7 @@
 	name = "Tooltips Style"
 	description = "Set the HUD style of pop up tooltips."
 	key = "tooltip_style"
-	category = "Game"
+	category = GAME_PREFERENCE_CATEGORY_GAME
 	subcategory = "Tooltips"
 	legacy_savefile_key = "tooltipstyle"
 
@@ -59,7 +59,7 @@
 	name = "OOC Color (Admin)"
 	description = "Choose your OOC color. Do not make it too eye-searing. Set to #000001 or reset to default to sync with server color."
 	key = "admin_ooc_color"
-	category = "Game"
+	category = GAME_PREFERENCE_CATEGORY_GAME
 	subcategory = "OOC"
 	default_value = "#000001"
 	legacy_savefile_key = "ooccolor"

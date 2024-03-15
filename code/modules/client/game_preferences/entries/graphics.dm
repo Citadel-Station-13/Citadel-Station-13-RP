@@ -5,7 +5,7 @@
 	name = "Parallax Enabled"
 	description = "Render space via parallax. This should be kept on."
 	key = "enable_parallax"
-	category = "Graphics"
+	category = GAME_PREFERENCE_CATEGORY_GRAPHICS
 	subcategory = "Parallax"
 	default_value = TRUE
 
@@ -17,7 +17,7 @@
 	name = "Fake Ambient Occlusion"
 	description = "Fake, filter ambient occlusion. This should be kept off."
 	key = "fake_ambient_occlusion"
-	category = "Graphics"
+	category = GAME_PREFERENCE_CATEGORY_GRAPHICS
 	subcategory = "Rendering"
 	default_value = FALSE
 
@@ -29,7 +29,7 @@
 	name = "FPS"
 	description = "Client rendering FPS. It is recommended to set this to a multiple of the server's tickrate. 0 to sync with server."
 	key = "client_fps"
-	category = "Graphics"
+	category = GAME_PREFERENCE_CATEGORY_GRAPHICS
 	subcategory = "Rendering"
 	default_value = 0
 	legacy_savefile_key = "client_fps"

@@ -23,3 +23,10 @@
 
 /// boolean value for if we're in hotkeys mode
 #define GAME_PREFERENCE_MISC_KEY_HOTKEY_MODE "hotkey-mode"
+
+//* Category Names
+
+// these are the same due to low entry count
+
+#define GAME_PREFERENCE_CATEGORY_GAME "Game"
+#define GAME_PREFERENCE_CATEGORY_GRAPHICS "Game"

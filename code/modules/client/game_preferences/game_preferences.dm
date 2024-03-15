@@ -39,6 +39,8 @@
 	var/sql_state_desynced = FALSE
 	/// our player's ckey
 	var/ckey
+	/// we are a guest
+	var/is_guest = FALSE
 	/// our active client
 	var/client/active
 	/// our player's id
@@ -52,8 +54,9 @@
 	/// are we saved? if TRUE, we have modified vars
 	var/is_dirty = FALSE
 
-/datum/game_preferences/New(ckey)
+/datum/game_preferences/New(key, ckey)
 	src.ckey = ckey
+	src.is_guest = IsGuestKey(key)
 
 //* Init *//
 
@@ -102,6 +105,10 @@
 		to_chat(active, SPAN_BOLDANNOUNCE("The server's SQL database has reconnected and your preferences were not found in them. Your preferences have been automatically saved to database."))
 
 /datum/game_preferences/proc/perform_legacy_migration()
+	if(is_guest)
+		return FALSE
+	if(!fexists("data/player_saves/[copytext(ckey, 1, 2)]/[ckey]/preferences.sav"))
+		return FALSE
 	var/savefile/legacy_savefile = new /savefile("data/player_saves/[copytext(ckey, 1, 2)]/[ckey]/preferences.sav")
 	var/list/legacy_options
 	legacy_savefile["global"] >> legacy_options
@@ -138,12 +145,31 @@
 	legacy_savefile["hotkeys"] >> old_hotkeys
 	misc_by_key[GAME_PREFERENCE_MISC_KEY_HOTKEY_MODE] = !!old_hotkeys
 
+	return TRUE
+
 /datum/game_preferences/proc/perform_initial_load()
-	if(SSdbcore.IsConnected())
-		// sql mode
-		// load
-		if(!load_from_sql())
-			// if not, load from file
+	if(!is_guest)
+		// only if not guest
+		if(SSdbcore.IsConnected())
+			// sql mode
+			// load
+			if(!load_from_sql())
+				// if not, load from file
+				if(!load_from_file())
+					// if not, reset to defaults
+					full_reset()
+					// perform legacy migration to see if there's data
+					if(perform_legacy_migration())
+						// something was there, set our version to legacy
+						version = GAME_PREFERENCES_VERSION_LEGACY
+				// save results to sql, as sql is authoritative
+				save_to_sql()
+			else
+				// synchronize sql to file for backup for when sql is down
+				save_to_file()
+		else
+			// normal mode
+			// load
 			if(!load_from_file())
 				// if not, reset to defaults
 				full_reset()
@@ -151,35 +177,23 @@
 				if(perform_legacy_migration())
 					// something was there, set our version to legacy
 					version = GAME_PREFERENCES_VERSION_LEGACY
-			// save results to sql, as sql is authoritative
-			save_to_sql()
-		else
-			// synchronize sql to file for backup for when sql is down
-			save_to_file()
-	else
-		// normal mode
-		// load
-		if(!load_from_file())
-			// if not, reset to defaults
-			full_reset()
-			// perform legacy migration to see if there's data
-			if(perform_legacy_migration())
-				// something was there, set our version to legacy
-				version = GAME_PREFERENCES_VERSION_LEGACY
-			// save to file
-			save_to_file()
+				// save to file
+				save_to_file()
 
-	// do we need to migrate?
-	if(version < GAME_PREFERENCES_VERSION_CURRENT)
-		// yes
-		if(!perform_migration_sequence())
-			// reset to defaults if failed
-			full_reset()
-		// perform save
-		if(SSdbcore.IsConnected())
-			save_to_sql()
-		else
-			save_to_file()
+		// do we need to migrate?
+		if(version < GAME_PREFERENCES_VERSION_CURRENT)
+			// yes
+			if(!perform_migration_sequence())
+				// reset to defaults if failed
+				full_reset()
+			// perform save
+			if(SSdbcore.IsConnected())
+				save_to_sql()
+			else
+				save_to_file()
+	else
+		// if guest, just reset lmao
+		full_reset()
 
 	// todo: shouldn't we save after sanitize..?
 	sanitize_everything()

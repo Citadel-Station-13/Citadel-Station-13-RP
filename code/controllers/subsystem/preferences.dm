@@ -60,9 +60,9 @@ SUBSYSTEM_DEF(preferences)
 		.[casted.key] = casted
 	toggles_by_key = .
 
-/datum/controller/subsystem/preferences/proc/resolve_game_preferences(ckey)
+/datum/controller/subsystem/preferences/proc/resolve_game_preferences(key, ckey)
 	if(!istype(preferences_by_key[ckey], /datum/game_preferences))
-		var/datum/game_preferences/initializing = new(ckey)
+		var/datum/game_preferences/initializing = new(key, ckey)
 		preferences_by_key[ckey] = initializing
 		initializing.initialize()
 	return preferences_by_key[ckey]

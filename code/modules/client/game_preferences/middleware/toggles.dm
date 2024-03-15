@@ -37,7 +37,12 @@
 /datum/game_preference_middleware/toggles/ui_static_data(mob/user, datum/tgui/ui, is_module)
 	. = ..()
 	var/datum/game_preferences/prefs = ui.src_object
-	.["toggles"] = prefs.toggles_by_key
+	var/list/collected_toggles = list()
+	for(var/key in SSpreferences.toggles_by_key)
+		var/datum/game_preference_toggle/toggle = SSpreferences.toggles_by_key[key]
+		collected_toggles[toggle.key] = toggle.tgui_preference_schema()
+	.["toggles"] = collected_toggles
+	.["states"] = prefs.toggles_by_key
 
 /datum/game_preference_middleware/toggles/handle_sanitize(datum/game_preferences/prefs)
 	. = ..()

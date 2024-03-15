@@ -1,4 +1,10 @@
 /**
+ * the citrp game preferences system
+ * attempts to be fast but is ultimately unoptimized
+ * the optimized version will be our character setup system : )
+ *
+ * todo: when character tgui is done, maybe this should use a similar backend? who knows.
+ *
  * @file
  * @license MIT
  */
@@ -9,7 +15,7 @@ import { Button, Section, Stack } from "../../components";
 import { Window } from "../../layouts";
 import { GamePreferenceEntry, GamePreferenceEntrySchema } from "./GamePreferenceEntry";
 import { GamePreferenceKeybindScreen } from "./GamePreferenceKeybinds";
-import { GamePreferenceToggleScreen } from "./GamePreferenceToggles";
+import { GamePreferenceToggleScreen, GamePreferenceTogglesMiddleware } from "./GamePreferenceToggles";
 
 interface GamePreferencesData {
   entries: GamePreferenceEntrySchema[];
@@ -116,17 +122,20 @@ const GamePreferencesBody = (props, context) => {
         );
       case 'toggles':
         return (
-          <GamePreferenceToggleScreen />
+          <GamePreferenceToggleScreen toggleAct={(key: string, val: BooleanLike) => act('toggle', { key: key }, true)} {
+            ...middlewareData as GamePreferenceTogglesMiddleware
+          } />
         );
     }
   }
 
   return (
     <Section fill>
+      {JSON.stringify(getModuleData(context, 'keybindings'))}
       <Stack fill vertical overflowY="auto">
         {categoryCache[activeCategory].map((subcat) => (
           <Stack.Item key={subcat}>
-            <h1>{subcat}</h1>
+            <h1 style={{ "text-align": "center" }}>{subcat}</h1>
             {data.entries.filter((e) => e.category === activeCategory && e.subcategory === subcat).map((entry) => (
               <GamePreferenceEntry schema={entry} key={entry.key} value={data.values[entry.key]}
                 setValue={(val) => act('set', { key: entry.key, value: val })} />
