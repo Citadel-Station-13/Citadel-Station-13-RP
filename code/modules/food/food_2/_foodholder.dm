@@ -163,7 +163,7 @@
 	for(var/obj/item/reagent_containers/food/snacks/tally_snack in contents)
 		if(istype(tally_snack, /obj/item/reagent_containers/food/snacks/ingredient))
 			continue
-		tally_snack.reagents.trans_to_holder(generated_serving.reagents, tally_snack.reagents.volume)
+		tally_snack.reagents.trans_to_holder(generated_serving.reagents, tally_snack.reagents.total_volume)
 
 		var/ingredient_fillcolor = tally_snack.filling_color != "#FFFFFF" ? tally_snack.filling_color : AverageColor(get_flat_icon(tally_snack, tally_snack.dir, 0), 1, 1)
 		if(food_color)
@@ -175,12 +175,6 @@
 		mixed_stuff_overlay.color = food_color
 		fancy_overlay_to_add += mixed_stuff_overlay
 		qdel(tally_snack)
-
-	if(FS)
-		serving_thing_name = FS.serving_type
-		generated_serving.trash = FS
-		FS.forceMove(generated_serving)
-
 
 	if(FS)
 		serving_thing_name = FS.serving_type
