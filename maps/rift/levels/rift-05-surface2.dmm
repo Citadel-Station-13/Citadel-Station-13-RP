@@ -33884,9 +33884,8 @@
 /obj/structure/cable/orange{
 	icon_state = "1-4"
 	},
-/obj/effect/floor_decal/industrial/warning,
 /obj/effect/floor_decal/industrial/warning{
-	dir = 8
+	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/hammerhead/general)
@@ -35724,17 +35723,14 @@
 /area/security/evastorage)
 "xbD" = (
 /obj/effect/floor_decal/corner_techfloor_grid/diagonal,
-/obj/effect/floor_decal/industrial/warning{
-	dir = 4
-	},
-/obj/effect/floor_decal/industrial/warning{
-	dir = 1
-	},
 /obj/machinery/button/remote/blast_door{
 	id = "hammerheadtba";
 	name = "Fighter Tube Access";
 	pixel_x = -26;
 	pixel_y = 8
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 5
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/hammerhead/general)
