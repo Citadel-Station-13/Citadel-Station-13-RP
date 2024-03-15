@@ -76,13 +76,13 @@
 /**
  * called directly, if operating standalone. routes to static_data(user), with all other args skipped.
  */
-/datum/tgui_module/ui_static_data(mob/user, datum/tgui/ui, is_module)
+/datum/tgui_module/ui_static_data(mob/user, datum/tgui/ui)
 	return static_data(user)
 
 /**
  * called directly, if operating standalone. routes to data(user), with all other args skipped.
  */
-/datum/tgui_module/ui_data(mob/user, datum/tgui/ui, is_module)
+/datum/tgui_module/ui_data(mob/user, datum/tgui/ui)
 	return data(user)
 
 /**

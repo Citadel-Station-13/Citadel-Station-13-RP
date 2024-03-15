@@ -59,7 +59,7 @@
 	temp.armed = armed
 	return temp
 
-/datum/computer_file/program/revelation/ui_data(mob/user, datum/tgui/ui, is_module)
+/datum/computer_file/program/revelation/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = get_header_data()
 
 	data["armed"] = armed

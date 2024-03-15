@@ -31,7 +31,7 @@
 		ui = new(user, src, "DroneConsole", name)
 		ui.open()
 
-/obj/machinery/computer/drone_control/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/computer/drone_control/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 
 	var/list/drones = list()

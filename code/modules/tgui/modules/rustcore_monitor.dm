@@ -35,7 +35,7 @@
 			C.target_field_strength = new_strength
 			return TRUE
 
-/datum/tgui_module_old/rustcore_monitor/ui_data(mob/user, datum/tgui/ui, is_module)
+/datum/tgui_module_old/rustcore_monitor/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 	var/list/cores = list()
 

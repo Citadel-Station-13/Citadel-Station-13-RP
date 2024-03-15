@@ -68,7 +68,7 @@
 		ui = new(user, src, "GasTemperatureSystem", name)
 		ui.open()
 
-/obj/machinery/atmospherics/component/unary/freezer/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/atmospherics/component/unary/freezer/ui_data(mob/user, datum/tgui/ui)
 	// this is the data which will be sent to the ui
 	var/data[0]
 	data["on"] = use_power ? 1 : 0

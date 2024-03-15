@@ -55,7 +55,7 @@ Code is pretty much ripped verbatim from nano modules, but with un-needed stuff 
 
 	return 0
 
-/datum/tgui_module_old/ui_static_data(mob/user, datum/tgui/ui, is_module)
+/datum/tgui_module_old/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 
 	var/obj/item/modular_computer/host = ui_host()

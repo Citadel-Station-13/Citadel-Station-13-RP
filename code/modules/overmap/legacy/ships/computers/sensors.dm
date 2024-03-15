@@ -54,7 +54,7 @@
 		ui = new(user, src, "OvermapShipSensors", "[linked.name] Sensors Control") // 420, 530
 		ui.open()
 
-/obj/machinery/computer/ship/sensors/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/computer/ship/sensors/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 
 	data["viewing"] = viewing_overmap(user)

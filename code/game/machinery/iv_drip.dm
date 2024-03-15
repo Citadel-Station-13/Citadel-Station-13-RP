@@ -48,7 +48,7 @@
 		ui = new(user, src, "IVDrip", name)
 		ui.open()
 
-/obj/machinery/iv_drip/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/iv_drip/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 	data["transferRate"] = transfer_rate
 	data["maxInjectRate"] = MAX_IV_TRANSFER_RATE

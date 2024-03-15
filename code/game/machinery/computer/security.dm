@@ -101,7 +101,7 @@
 		ui.set_autoupdate(FALSE)
 
 
-/obj/machinery/computer/secure_data/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/computer/secure_data/ui_data(mob/user, datum/tgui/ui)
 	var/data[0]
 	data["temp"] = temp
 	data["scan"] = scan ? scan.name : null

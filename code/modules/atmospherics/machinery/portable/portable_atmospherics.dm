@@ -86,13 +86,13 @@
 		ui = new(user, src, tgui_interface)
 		ui.open()
 
-/obj/machinery/portable_atmospherics/ui_static_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/portable_atmospherics/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["controlFlags"] = atmos_portable_ui_flags
 	.["useCharge"] = FALSE
 	.["flowMax"] = flow_maximum
 
-/obj/machinery/portable_atmospherics/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/portable_atmospherics/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["flow"] = flow_current
 	.["flowSetting"] = flow_setting

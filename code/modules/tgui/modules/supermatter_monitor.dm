@@ -35,7 +35,7 @@
 	for(var/obj/machinery/power/supermatter/S in supermatters)
 		. = max(., S.get_status())
 
-/datum/tgui_module_old/supermatter_monitor/ui_data(mob/user, datum/tgui/ui, is_module)
+/datum/tgui_module_old/supermatter_monitor/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	if(istype(active))

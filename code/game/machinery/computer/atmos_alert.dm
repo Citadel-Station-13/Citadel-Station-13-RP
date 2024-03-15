@@ -28,7 +28,7 @@ var/global/list/minor_air_alarms = list()
 		ui = new(user, src, "AtmosAlertConsole", name)
 		ui.open()
 
-/obj/machinery/computer/atmos_alert/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/computer/atmos_alert/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	var/list/major_alarms = list()
 	var/list/minor_alarms = list()

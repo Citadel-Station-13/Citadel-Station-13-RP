@@ -118,7 +118,7 @@
 // Proc: ui_data()
 // Parameters: User, UI, State
 // Description: Uses a bunch of for loops to turn lists into lists of lists, so they can be displayed in nanoUI, then displays various buttons to the user.
-/obj/item/communicator/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/item/communicator/ui_data(mob/user, datum/tgui/ui)
 	// this is the data which will be sent to the ui
 	var/list/data = list()						//General nanoUI information
 	var/list/communicators = list()			    //List of communicators
@@ -298,7 +298,7 @@
 // Proc: ui_static_data()
 // Parameters: User, UI, State
 // Description: Just like ui_data, except it only gets called once when the user opens the UI, not every tick.
-/obj/item/communicator/ui_static_data(mob/user, datum/tgui/ui, is_module)
+/obj/item/communicator/ui_static_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 	// Update manifest'
 	if(data_core)

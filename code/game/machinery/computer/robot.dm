@@ -121,7 +121,7 @@
 		ui = new(user, src, "RoboticsControlConsole",  name)
 		ui.open()
 
-/obj/machinery/computer/robotics/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/computer/robotics/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 	data["auth"] = is_authenticated(user)
 	data["can_hack"] = can_hack_any(user)

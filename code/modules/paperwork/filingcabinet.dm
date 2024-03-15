@@ -93,7 +93,7 @@
 		ui.set_autoupdate(FALSE)
 		ui.open()
 
-/obj/structure/filingcabinet/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/structure/filingcabinet/ui_data(mob/user, datum/tgui/ui)
 	var/list/files = list()
 	for(var/obj/item/P in src)
 		files.Add(list(list(

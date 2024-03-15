@@ -84,7 +84,7 @@
 				feedback_inc("alert_comms_blue",1)
 	tmp_alertlevel = 0
 
-/datum/tgui_module_old/communications/ui_data(mob/user, datum/tgui/ui, is_module)
+/datum/tgui_module_old/communications/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 	data["is_ai"]         = isAI(user) || isrobot(user)
 	data["menu_state"]    = data["is_ai"] ? ai_menu_state : menu_state

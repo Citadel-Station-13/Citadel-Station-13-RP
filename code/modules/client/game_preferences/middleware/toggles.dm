@@ -35,7 +35,7 @@
 			)))
 			return TRUE
 
-/datum/game_preference_middleware/toggles/ui_static_data(mob/user, datum/tgui/ui, is_module)
+/datum/game_preference_middleware/toggles/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	var/datum/game_preferences/prefs = ui.src_object
 	var/list/collected_toggles = list()

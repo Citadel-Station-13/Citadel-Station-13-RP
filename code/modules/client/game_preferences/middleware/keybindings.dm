@@ -104,7 +104,7 @@
 		if(!had_something)
 			prefs.keybindings -= key
 
-/datum/game_preference_middleware/keybindings/ui_static_data(mob/user, datum/tgui/ui, is_module)
+/datum/game_preference_middleware/keybindings/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	var/datum/game_preferences/prefs = ui.src_object
 	.["bindings"] = prefs.keybindings

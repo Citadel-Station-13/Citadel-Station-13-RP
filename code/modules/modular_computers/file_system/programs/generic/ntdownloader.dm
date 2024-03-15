@@ -127,7 +127,7 @@
 			return TRUE
 	return FALSE
 
-/datum/computer_file/program/ntnetdownload/ui_data(mob/user, datum/tgui/ui, is_module)
+/datum/computer_file/program/ntnetdownload/ui_data(mob/user, datum/tgui/ui)
 	my_computer = computer
 	if(!istype(my_computer))
 		return

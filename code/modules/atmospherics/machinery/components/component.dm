@@ -73,12 +73,12 @@
 // /obj/machinery/atmospherics/component/ui_state()
 // 	return GLOB.default_state
 
-/obj/machinery/atmospherics/component/ui_static_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/atmospherics/component/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["powerRating"] = power_maximum
 	.["controlFlags"] = atmos_component_ui_flags
 
-/obj/machinery/atmospherics/component/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/atmospherics/component/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	if(!tgui_interface)
 		return

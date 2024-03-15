@@ -308,7 +308,7 @@ update_flag
 		ui = new(user, src, "Canister", name)
 		ui.open()
 
-/obj/machinery/portable_atmospherics/canister/ui_static_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/portable_atmospherics/canister/ui_static_data(mob/user, datum/tgui/ui)
 	return list(
 		"defaultReleasePressure" = round(CAN_DEFAULT_RELEASE_PRESSURE),
 		"minReleasePressure" = round(can_min_release_pressure),
@@ -318,7 +318,7 @@ update_flag
 		"holdingTankFragPressure" = round(TANK_FRAGMENT_PRESSURE)
 	)
 
-/obj/machinery/portable_atmospherics/canister/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/portable_atmospherics/canister/ui_data(mob/user, datum/tgui/ui)
 	. = list(
 		"portConnected" = !!connected_port,
 		"tankPressure" = round(air_contents.return_pressure()),

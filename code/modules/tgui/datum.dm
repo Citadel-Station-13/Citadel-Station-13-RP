@@ -62,7 +62,7 @@
  *
  * return list Data to be sent to the UI.
  */
-/datum/proc/ui_data(mob/user, datum/tgui/ui, is_module)
+/datum/proc/ui_data(mob/user, datum/tgui/ui)
 	return list() // Not implemented.
 
 /**
@@ -83,7 +83,7 @@
  *
  * return list Static Data to be sent to the UI.
  */
-/datum/proc/ui_static_data(mob/user, datum/tgui/ui, is_module)
+/datum/proc/ui_static_data(mob/user, datum/tgui/ui)
 	return list()
 
 /**
@@ -200,7 +200,7 @@
  * * user - (optional) the mob to update
  * * ui - (optional) the /datum/tgui to update
  */
-/datum/proc/update_ui_data(mob/user, datum/tgui/ui, is_module)
+/datum/proc/update_ui_data(mob/user, datum/tgui/ui)
 	if(isnull(user))
 		SStgui.update_uis(src)
 	else

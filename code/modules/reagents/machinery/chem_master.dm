@@ -217,7 +217,7 @@
 		ui = new(user, src, "ChemMaster", name)
 		ui.open()
 
-/obj/machinery/chem_master/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/chem_master/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 
 	data["mode"]   = mode
@@ -265,7 +265,7 @@
 
 	return data
 
-/obj/machinery/chem_master/ui_static_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/chem_master/ui_static_data(mob/user, datum/tgui/ui)
 	var/list/static_data = list()
 	//Calculated once since it'll never change
 	if(!pill_styles || !bottle_styles || !chosen_patch_style || !patch_styles)

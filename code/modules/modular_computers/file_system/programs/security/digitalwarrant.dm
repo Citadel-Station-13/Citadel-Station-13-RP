@@ -25,7 +25,7 @@ var/global/warrant_uid = 0
 
 	var/datum/data/record/warrant/activewarrant
 
-/datum/computer_file/program/digitalwarrant/ui_data(mob/user, datum/tgui/ui, is_module)
+/datum/computer_file/program/digitalwarrant/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = get_header_data()
 
 	data["warrantname"] = null

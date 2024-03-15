@@ -115,7 +115,7 @@
 			usr.switch_to_camera(C)
 			return 1
 
-/datum/tgui_module_old/alarm_monitor/ui_data(mob/user, datum/tgui/ui, is_module)
+/datum/tgui_module_old/alarm_monitor/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 
 	var/categories[0]

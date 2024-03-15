@@ -44,7 +44,7 @@
 		ui = new(user, src, "ICDetailer", name)
 		ui.open()
 
-/obj/item/integrated_electronics/detailer/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/item/integrated_electronics/detailer/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 	data["detail_color"] = detail_color
 	data["color_list"] = color_list

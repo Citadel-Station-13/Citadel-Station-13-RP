@@ -268,7 +268,7 @@
 		ui = new(user, src, "Medibot", name)
 		ui.open()
 
-/mob/living/bot/medibot/ui_data(mob/user, datum/tgui/ui, is_module)
+/mob/living/bot/medibot/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 	data["on"] = on
 	data["open"] = open

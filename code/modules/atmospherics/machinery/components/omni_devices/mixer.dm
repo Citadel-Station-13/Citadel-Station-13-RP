@@ -130,7 +130,7 @@
 		ui = new(user, src, "OmniMixer", name)
 		ui.open()
 
-/obj/machinery/atmospherics/component/quaternary/mixer/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/atmospherics/component/quaternary/mixer/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = new()
 
 	data["power"] = use_power

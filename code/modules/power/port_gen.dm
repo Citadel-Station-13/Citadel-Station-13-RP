@@ -317,7 +317,7 @@
 		ui = new(user, src, "PortableGenerator", name)
 		ui.open()
 
-/obj/machinery/power/port_gen/pacman/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/power/port_gen/pacman/ui_data(mob/user, datum/tgui/ui)
 	// todo: rewrite the whole fuckin' UI.
 	var/list/data = list()
 

@@ -54,7 +54,7 @@
 		ui = new(user, src, "MaterialProcessor", name)
 		ui.open()
 
-/obj/machinery/mineral/processing_unit_console/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/mineral/processing_unit_console/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 
 	var/list/ores = list()

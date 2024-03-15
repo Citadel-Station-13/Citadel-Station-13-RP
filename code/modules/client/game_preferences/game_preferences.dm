@@ -475,7 +475,7 @@
 
 //* UI *//
 
-/datum/game_preferences/ui_static_data(mob/user, datum/tgui/ui, is_module)
+/datum/game_preferences/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	var/list/middleware = list()
 	for(var/key in GLOB.game_preference_middleware)
@@ -489,7 +489,7 @@
 	.["entries"] = entries
 	.["values"] = entries_by_key
 
-/datum/game_preferences/ui_data(mob/user, datum/tgui/ui, is_module)
+/datum/game_preferences/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["dirty"] = is_dirty
 

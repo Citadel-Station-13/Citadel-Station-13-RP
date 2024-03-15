@@ -305,7 +305,7 @@
 /obj/machinery/telecomms/attack_ai(var/mob/user as mob)
 	attack_hand(user)
 
-/obj/machinery/telecomms/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/telecomms/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 
 	data["temp"] = temp

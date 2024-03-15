@@ -318,11 +318,11 @@
 			scrub_groups ^= target
 			return TRUE
 
-/obj/machinery/atmospherics/component/unary/vent_scrubber/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/atmospherics/component/unary/vent_scrubber/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["state"] = ui_scrubber_data()
 
-/obj/machinery/atmospherics/component/unary/vent_scrubber/ui_static_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/atmospherics/component/unary/vent_scrubber/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["gasContext"] = global.gas_data.tgui_gas_context()
 	.["name"] = name

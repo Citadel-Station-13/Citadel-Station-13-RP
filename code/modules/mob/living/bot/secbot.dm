@@ -138,7 +138,7 @@
 		ui = new(user, src, "Secbot", name)
 		ui.open()
 
-/mob/living/bot/secbot/ui_data(mob/user, datum/tgui/ui, is_module)
+/mob/living/bot/secbot/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	data["on"] = on
