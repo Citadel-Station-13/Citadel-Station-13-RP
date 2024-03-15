@@ -143,7 +143,7 @@
 		tally_flavours[tally_ingredient.cookstage_information[tally_ingredient.cookstage][COOKINFO_TASTE]] = tally_ingredient.serving_amount //the more it is the stronger it'll taste
 		var/total_volume_transferred = (1 / tally_ingredient.serving_amount)
 		tally_ingredient.reagents.trans_to_holder(generated_serving.reagents, total_volume_transferred, tally_ingredient.cookstage_information[tally_ingredient.cookstage][COOKINFO_NUTRIMULT])
-		tally_ingredient.consume_serving()
+
 
 		var/ingredient_fillcolor = tally_ingredient.filling_color != "#FFFFFF" ? tally_ingredient.filling_color : AverageColor(get_flat_icon(tally_ingredient, tally_ingredient.dir, 0), 1, 1)
 		if(tally_ingredient.finished_overlay)
@@ -158,6 +158,29 @@
 		var/mutable_appearance/mixed_stuff_overlay = mutable_appearance(fs_icon, "[fs_iconstate]_filling")
 		mixed_stuff_overlay.color = food_color
 		fancy_overlay_to_add += mixed_stuff_overlay
+		tally_ingredient.consume_serving()
+
+	for(var/obj/item/reagent_containers/food/snacks/tally_snack in contents)
+		if(istype(tally_snack, /obj/item/reagent_containers/food/snacks/ingredient))
+			continue
+		tally_snack.reagents.trans_to_holder(generated_serving.reagents, tally_snack.reagents.volume)
+
+		var/ingredient_fillcolor = tally_snack.filling_color != "#FFFFFF" ? tally_snack.filling_color : AverageColor(get_flat_icon(tally_snack, tally_snack.dir, 0), 1, 1)
+		if(food_color)
+			food_color = BlendRGB(food_color, ingredient_fillcolor, 0.5)
+		else
+			food_color = ingredient_fillcolor
+
+		var/mutable_appearance/mixed_stuff_overlay = mutable_appearance(fs_icon, "[fs_iconstate]_filling")
+		mixed_stuff_overlay.color = food_color
+		fancy_overlay_to_add += mixed_stuff_overlay
+		qdel(tally_snack)
+
+	if(FS)
+		serving_thing_name = FS.serving_type
+		generated_serving.trash = FS
+		FS.forceMove(generated_serving)
+
 
 	if(FS)
 		serving_thing_name = FS.serving_type

@@ -50,6 +50,9 @@
 	result = null
 	result_reagents = list("fishbroth" = 60)
 
+
+//temporary recipes until we get reagent temperature
+//so you can crack an egg in a skillet and then fry it
 /datum/recipe/friedegg
 	required_method = METHOD_STOVE
 	reagents = list("sodiumchloride" = 1, "blackpepper" = 1)
