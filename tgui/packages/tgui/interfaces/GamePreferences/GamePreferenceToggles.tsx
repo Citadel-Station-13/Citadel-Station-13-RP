@@ -60,7 +60,11 @@ export const GamePreferenceToggleScreen = (props: GamePreferenceToggleScreenProp
                       <b>{toggle.name}</b>
                     </Table.Cell>
                     <Table.Cell>
-                      <Stack fill>
+                      <Button.Checkbox checked={props.states[toggle.key]}
+                        onClick={() => props.toggleAct(toggle.key, !props.states[toggle.key])}
+                        content={props.states[toggle.key]? toggle.enabled : toggle.disabled}
+                        color="transparent" fluid />
+                      {/* <Stack fill>
                         <Stack.Item grow={1}>
                           <Button selected={props.states[toggle.key]} onClick={() => props.toggleAct(toggle.key, true)}
                             content={toggle.enabled} color="transparent" fluid />
@@ -70,7 +74,7 @@ export const GamePreferenceToggleScreen = (props: GamePreferenceToggleScreenProp
                             onClick={() => props.toggleAct(toggle.key, false)}
                             content={toggle.disabled} color="transparent" fluid />
                         </Stack.Item>
-                      </Stack>
+                      </Stack> */}
                     </Table.Cell>
                   </Table.Row>
                 );

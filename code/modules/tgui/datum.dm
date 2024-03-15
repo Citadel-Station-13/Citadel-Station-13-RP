@@ -58,7 +58,6 @@
  * @params
  * * user - (optional) the mob using the UI
  * * ui - (optional) the host tgui
- * * is_module - (optional) this is a module
  *
  * return list Data to be sent to the UI.
  */
@@ -79,7 +78,6 @@
  * @params
  * * user - (optional) the mob using the UI
  * * ui - (optional) the host tgui
- * * is_module - (optional) this is a module
  *
  * return list Static Data to be sent to the UI.
  */
