@@ -41,40 +41,44 @@ const collectPreferenceToggles = (toggles: Record<string, GamePreferenceToggleSc
 export const GamePreferenceToggleScreen = (props: GamePreferenceToggleScreenProps, context) => {
   const collected: Record<string, string[]> = useComputedOnce(context, 'gamePreferenceToggleCollect', () => collectPreferenceToggles(props.toggles));
   return (
-    <Section fill>
-      {Object.entries(collected).map(([category, keys]) => (
-        <Table key={category}>
-          {keys.map((key) => {
-            const toggle = props.toggles[key];
-            return (
-              <>
-                {props.toggles[key]}
-                <br />
-                {key}
-              </>
-            );
-            return (
-              <Table.Row key={toggle.key}>
-                <Table.Cell>
-                  <b>{toggle.name}</b>
-                </Table.Cell>
-                <Table.Cell>
-                  <Stack fill>
-                    <Stack.Item grow={1}>
-                      <Button selected={props.states[toggle.key]} onClick={() => props.toggleAct(toggle.key, true)}
-                        content={toggle.enabled} />
-                    </Stack.Item>
-                    <Stack.Item grow={1}>
-                      <Button selected={!props.states[toggle.key]} onClick={() => props.toggleAct(toggle.key, false)}
-                        content={toggle.disabled} />
-                    </Stack.Item>
-                  </Stack>
-                </Table.Cell>
-              </Table.Row>
-            );
-          })}
-        </Table>
-      ))}
+    <Section fill scrollable>
+      <Stack vertical>
+        {Object.entries(collected).sort(
+          ([c1, k1], [c2, k2]) => (
+            c1.localeCompare(c2)
+          )
+        ).map(([category, keys]) => (
+          <Stack.Item key={category}>
+            <h1 style={{ "text-align": "center" }}>{category}</h1>
+            <hr />
+            <Table>
+              {keys.map((key) => {
+                const toggle = props.toggles[key];
+                return (
+                  <Table.Row key={toggle.key}>
+                    <Table.Cell width="50%">
+                      <b>{toggle.name}</b>
+                    </Table.Cell>
+                    <Table.Cell>
+                      <Stack fill>
+                        <Stack.Item grow={1}>
+                          <Button selected={props.states[toggle.key]} onClick={() => props.toggleAct(toggle.key, true)}
+                            content={toggle.enabled} color="transparent" fluid />
+                        </Stack.Item>
+                        <Stack.Item grow={1}>
+                          <Button selected={!props.states[toggle.key]}
+                            onClick={() => props.toggleAct(toggle.key, false)}
+                            content={toggle.disabled} color="transparent" fluid />
+                        </Stack.Item>
+                      </Stack>
+                    </Table.Cell>
+                  </Table.Row>
+                );
+              })}
+            </Table>
+          </Stack.Item>
+        ))}
+      </Stack>
     </Section>
   );
 };

@@ -4,10 +4,14 @@
  * @license MIT
  */
 
-import { classes, pureComponentHooks } from 'common/react';
-import { computeBoxClassName, computeBoxProps } from './Box';
+import { BooleanLike, classes, pureComponentHooks } from 'common/react';
+import { BoxProps, computeBoxClassName, computeBoxProps } from './Box';
 
-export const Table = props => {
+interface TableProps extends BoxProps {
+  readonly collapsing?: BooleanLike;
+}
+
+export const Table = (props: TableProps) => {
   const {
     className,
     collapsing,
@@ -32,7 +36,11 @@ export const Table = props => {
 
 Table.defaultHooks = pureComponentHooks;
 
-export const TableRow = props => {
+interface TableRowProps extends BoxProps {
+  readonly header?: BooleanLike;
+}
+
+export const TableRow = (props: TableRowProps) => {
   const {
     className,
     header,
@@ -52,7 +60,12 @@ export const TableRow = props => {
 
 TableRow.defaultHooks = pureComponentHooks;
 
-export const TableCell = props => {
+interface TableCellProps extends BoxProps {
+  readonly header?: BooleanLike;
+  readonly collapsing?: BooleanLike;
+}
+
+export const TableCell = (props: TableCellProps) => {
   const {
     className,
     collapsing,

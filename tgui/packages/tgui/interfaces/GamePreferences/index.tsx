@@ -50,9 +50,11 @@ const GamePreferencesTabs = (props, context) => {
   ); });
 
   return (
-    <Stack>
-      {tabs}
-    </Stack>
+    <Section>
+      <Stack>
+        {tabs}
+      </Stack>
+    </Section>
   );
 };
 
@@ -122,7 +124,7 @@ const GamePreferencesBody = (props, context) => {
         );
       case 'toggles':
         return (
-          <GamePreferenceToggleScreen toggleAct={(key: string, val: BooleanLike) => act('toggle', { key: key }, true)} {
+          <GamePreferenceToggleScreen toggleAct={(key: string, val: BooleanLike) => act('toggle', { key: key, val: val }, 'toggles')} {
             ...middlewareData as GamePreferenceTogglesMiddleware
           } />
         );
@@ -130,7 +132,8 @@ const GamePreferencesBody = (props, context) => {
   }
 
   return (
-    <Section fill>
+    <Section fill scrollable>
+      {JSON.stringify(getModuleData(context, 'toggles'))}
       {JSON.stringify(getModuleData(context, 'keybindings'))}
       <Stack fill vertical overflowY="auto">
         {categoryCache[activeCategory].map((subcat) => (

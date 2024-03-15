@@ -28,8 +28,9 @@
 			var/key = params["key"]
 			if(isnull(SSpreferences.toggles_by_key[key]))
 				return TRUE
-			prefs.toggle(key)
-			prefs.push_ui_modules(updates = list((key) = list(
+			prefs.set_toggle(key, !!params["val"])
+			// todo: optimize this
+			prefs.push_ui_modules(updates = list((src.key) = list(
 				"toggles" = prefs.toggles_by_key,
 			)))
 			return TRUE

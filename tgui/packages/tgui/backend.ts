@@ -276,18 +276,20 @@ export const backendMiddleware = store => {
   };
 };
 
-export type actFunctionType = (action: string, payload?: object, routed?: boolean) => void;
+export type actFunctionType = (action: string, payload?: object, route_id?: string) => void;
 
 /**
  * Sends an action to `ui_act` on `src_object` that this tgui window
  * is associated with.
  *
+ * todo: overhaul module system
+ *
  * @params
  * * action - action string
  * * payload - payload object; this is the list/params byond-side
- * * routed - go to ui_route() instead of ui_act()
+ * * route_id - route via ui_route() with given id instead of ui_act()
  */
-export const sendAct: actFunctionType = (action: string, payload: object = {}, routed: boolean = false) => {
+export const sendAct: actFunctionType = (action: string, payload: object = {}, route_id?: string) => {
   // Validate that payload is an object
   const isObject = typeof payload === 'object'
     && payload !== null
@@ -296,7 +298,10 @@ export const sendAct: actFunctionType = (action: string, payload: object = {}, r
     logger.error(`Payload for act() must be an object, got this:`, payload);
     return;
   }
-  Byond.sendMessage((routed? 'mod/' : 'act/') + action, payload);
+  if (route_id) {
+    payload['$m_id'] = route_id;
+  }
+  Byond.sendMessage((route_id? 'mod/' : 'act/') + action, payload);
 };
 
 type BackendContext = {

@@ -514,7 +514,7 @@
 	if(.)
 		return
 	var/datum/game_preference_middleware/middleware = GLOB.game_preference_middleware[id]
-	if(middleware.handle_topic(src, action, params))
+	if(middleware?.handle_topic(src, action, params))
 		return TRUE
 
 /datum/game_preferences/ui_status(mob/user, datum/ui_state/state)
