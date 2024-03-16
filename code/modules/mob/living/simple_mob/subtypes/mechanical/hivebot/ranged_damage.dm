@@ -203,3 +203,23 @@
 	base_attack_cooldown = 60
 
 	projectiletype = /obj/projectile/arc/fragmentation/mortar
+
+
+//kiting miniboss hivebot. punishes indecisive behavior and overly-reliant melee, extremely weak to staying on their butt.
+//relatively weak bullets, but high armor pen for consistent damage. do not use in large quantities
+/mob/living/simple_mob/mechanical/hivebot/ranged_damage/kiting
+	name = "hivebot lurker"
+	desc = "A hivebot with an attached plasma gun, and what seems to be mild cloaking-technology that reflects visible-wavelength."
+	icon = 'lurker'
+	alpha = 200
+
+	maxHealth = 3 LASERS_TO_KILL
+	health = 3 LASERS_TO_KILL
+
+	base_attack_cooldown = 25
+	projectiletype = /obj/projectile/beam/xray
+	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting/sniper
+
+	icon_scale_x = 1.4
+	icon_scale_y = 1.4
+
