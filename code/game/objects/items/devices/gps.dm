@@ -576,7 +576,7 @@
 
 /obj/item/gps/internal/base
 	gps_tag = "NT_BASE"
-	desc = "A homing signal from NanoTrasen's outpost."
+	desc = "A homing signal from Nanotrasen's outpost."
 
 /obj/item/gps/internal/poi
 	gps_tag = "Unidentified Signal"

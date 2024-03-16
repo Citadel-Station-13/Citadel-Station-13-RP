@@ -249,8 +249,8 @@
 
 //Pilot
 /obj/item/clothing/under/rank/pilot1
-	name = "\improper NanoTrasen flight suit"
-	desc = "A blue and grey NanoTrasen flight suit. Warm and practical, it feels cozy."
+	name = "\improper Nanotrasen flight suit"
+	desc = "A blue and grey Nanotrasen flight suit. Warm and practical, it feels cozy."
 	icon_state = "flight1"
 	icon = 'icons/clothing/uniform/rank/flight.dmi'
 	starting_accessories = list(/obj/item/clothing/accessory/storage/webbing/pilot1)
@@ -262,8 +262,8 @@
 	worn_has_rollsleeve = UNIFORM_HAS_ROLL
 
 /obj/item/clothing/under/rank/pilot2
-	name = "\improper NanoTrasen flight suit"
-	desc = "A dark blue NanoTrasen flight suit. Warm and practical, several patches are scattered across it."
+	name = "\improper Nanotrasen flight suit"
+	desc = "A dark blue Nanotrasen flight suit. Warm and practical, several patches are scattered across it."
 	icon_state = "flight2"
 	icon = 'icons/clothing/uniform/rank/flight.dmi'
 	starting_accessories = list(/obj/item/clothing/accessory/storage/webbing/pilot2)

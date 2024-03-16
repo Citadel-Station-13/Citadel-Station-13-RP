@@ -229,7 +229,7 @@
 		spawn(6)
 			cut_overlay(sparks) //Tried lots of stuff but nothing works right. so i have to use this *sadface*
 			compile_overlays()
-		playsound(src.loc, "sparks", 60, 1)
+		playsound(src.loc, /datum/soundbyte/grouped/sparks, 60, 1)
 		locked = 0
 		broken = 1
 		to_chat(user, "<span class='notice'>You unlock \the [src].</span>")
@@ -323,7 +323,7 @@
 
 /obj/structure/closet/crate/contraband
 	name = "Poster crate"
-	desc = "A random assortment of posters manufactured by providers NOT listed under NanoTrasen's whitelist."
+	desc = "A random assortment of posters manufactured by providers NOT listed under Nanotrasen's whitelist."
 	icon_state = "crate"
 	icon_opened = "crateopen"
 	icon_closed = "crate"
@@ -649,17 +649,17 @@
 	//closet_appearance = /singleton/closet_appearance/crate/branded/morpheus
 
 /obj/structure/closet/crate/corporate/nanotrasen
-	desc = "A crate emblazoned with the standard NanoTrasen livery."
+	desc = "A crate emblazoned with the standard Nanotrasen livery."
 	icon_state = "nt"
 	//closet_appearance = /singleton/closet_appearance/crate/branded/nanotrasen
 
 /obj/structure/closet/crate/corporate/nanothreads
-	desc = "A crate emblazoned with the NanoThreads Garments livery, a subsidary of the NanoTrasen Corporation."
+	desc = "A crate emblazoned with the NanoThreads Garments livery, a subsidary of the Nanotrasen Corporation."
 	icon_state = "nt"
 	//closet_appearance = /singleton/closet_appearance/crate/branded/nanotrasen
 
 /obj/structure/closet/crate/corporate/nanomed
-	desc = "A crate emblazoned with the NanoMed Medical livery, a subsidary of the NanoTrasen Corporation."
+	desc = "A crate emblazoned with the NanoMed Medical livery, a subsidary of the Nanotrasen Corporation."
 	icon_state = "ntmed"
 	//closet_appearance = /singleton/closet_appearance/crate/branded/nanotrasen
 
@@ -792,12 +792,12 @@
 	//closet_appearance = /singleton/closet_appearance/crate/branded/morpheus/secure
 
 /obj/structure/closet/crate/secure/corporate/nanotrasen
-	desc = "A secure crate emblazoned with the standard NanoTrasen livery."
+	desc = "A secure crate emblazoned with the standard Nanotrasen livery."
 	icon_state = "ntsecure"
 	//closet_appearance = /singleton/closet_appearance/crate/branded/nanotrasen/secure
 
 /obj/structure/closet/crate/secure/corporate/nanomed
-	desc = "A secure crate emblazoned with the NanoMed Medical livery, a subsidary of the NanoTrasen Corporation."
+	desc = "A secure crate emblazoned with the NanoMed Medical livery, a subsidary of the Nanotrasen Corporation."
 	icon_state = "ntmedsecure"
 	//closet_appearance = /singleton/closet_appearance/crate/branded/nanotrasen/secure
 

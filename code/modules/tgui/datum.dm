@@ -105,6 +105,8 @@
  * private
  *
  * todo: this is just completely ignored for modules/embedding. is this a good thing? ~silicons
+ * todo: this doesn't even matter for UI state right now; this is not a good thing?? ~silicons
+ * todo: why do we even have this?
  *
  * The UI's host object (usually src_object).
  * This allows modules/datums to have the UI attached to them,

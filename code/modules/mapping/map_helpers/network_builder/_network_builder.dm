@@ -24,7 +24,7 @@
 		return INITIALIZE_HINT_NORMAL
 	var/conflict = duplicates()
 	if(length(conflict))
-		stack_trace("WARNING: [type] network building helper found check_duplicates() conflicts [english_list(conflict)] in its location.!")
+		stack_trace("WARNING: [type] network building helper found check_duplicates() conflicts [english_list(conflict)] ([length(conflict)]) in its location.!")
 		return INITIALIZE_HINT_QDEL
 	network_directions = scan()
 	return INITIALIZE_HINT_LATELOAD

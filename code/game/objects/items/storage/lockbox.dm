@@ -42,7 +42,7 @@
 			spark_system.set_up(5, 0, src.loc)
 			spark_system.start()
 			playsound(src.loc, 'sound/weapons/blade1.ogg', 50, 1)
-			playsound(src.loc, "sparks", 50, 1)
+			playsound(src.loc, /datum/soundbyte/grouped/sparks, 50, 1)
 	if(!locked)
 		..()
 	else
@@ -82,7 +82,7 @@
 
 /obj/item/storage/lockbox/medal
 	name = "lockbox of medals"
-	desc = "A lockbox filled with commemorative medals, it has the NanoTrasen logo stamped on it."
+	desc = "A lockbox filled with commemorative medals, it has the Nanotrasen logo stamped on it."
 	req_access = list(ACCESS_COMMAND_BRIDGE)
 	max_items = 7
 	starts_with = list(

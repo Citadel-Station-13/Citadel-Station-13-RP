@@ -552,8 +552,8 @@
 	build_path = /obj/item/bodybag/cryobag/robobag
 
 /datum/design/science/prosfab/badge_nt
-	design_name = "NanoTrasen Tag"
-	desc = "Used to identify an empty NanoTrasen FBP."
+	design_name = "Nanotrasen Tag"
+	desc = "Used to identify an empty Nanotrasen FBP."
 	id = "misc_synth_bag_tag_nt"
 	materials_base = list(MAT_STEEL = 1000, MAT_GLASS = 500, MAT_PLASTIC = 1000)
 	build_path = /obj/item/clothing/accessory/badge/corporate_tag
