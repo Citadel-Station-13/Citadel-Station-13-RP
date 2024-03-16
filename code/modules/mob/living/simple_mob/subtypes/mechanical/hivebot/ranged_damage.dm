@@ -205,12 +205,13 @@
 	projectiletype = /obj/projectile/arc/fragmentation/mortar
 
 
-//kiting miniboss hivebot. punishes indecisive behavior and overly-reliant melee, extremely weak to staying on their butt.
+//kiting hivebot, not exactly a miniboss but dangerous. punishes indecisive behavior and overly-reliant melee, extremely weak to staying on their butt.
 //relatively weak bullets, but high armor pen for consistent damage. do not use in large quantities
 /mob/living/simple_mob/mechanical/hivebot/ranged_damage/kiting
 	name = "hivebot lurker"
 	desc = "A hivebot with an attached plasma gun, and what seems to be mild cloaking-technology that reflects visible-wavelength."
-	icon = 'lurker'
+	icon_state = "lurker"
+	icon_living = "lurker"
 	alpha = 200
 
 	maxHealth = 3 LASERS_TO_KILL
@@ -222,4 +223,13 @@
 
 	icon_scale_x = 1.4
 	icon_scale_y = 1.4
+
+//faster-moving hivebot that would love to get to know you more personal-like. causes light damage and also halloss, no armor pen
+/mob/living/simple_mob/mechanical/hivebot/ranged_damage/suppressor
+	name = "hivebot suppressor"
+	desc = "A hivebot with two weak shock-guns that fire painful bolts. Not exactly non-lethal, but not the deadliest in the bunch. Still a pain."
+	icon_living = "suppressor"
+	icon_state = "suppressor"
+	movement_cooldown = 0.5 SECONDS
+	projectiletype = /obj/projectile/beam/shock
 
