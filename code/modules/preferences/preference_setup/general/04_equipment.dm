@@ -6,7 +6,7 @@
 	name = "Clothing"
 	sort_order = 4
 
-/datum/category_item/player_setup_item/general/equipment/load_character(var/savefile/S)
+/datum/category_item/player_setup_item/general/equipment/load_character(savefile/S)
 	S["all_underwear"] >> pref.all_underwear
 	S["all_underwear_metadata"] >> pref.all_underwear_metadata
 	S["backbag"]	>> pref.backbag
@@ -14,7 +14,7 @@
 	S["communicator_visibility"]	>> pref.communicator_visibility
 	S["ringtone"]	>> pref.ringtone
 
-/datum/category_item/player_setup_item/general/equipment/save_character(var/savefile/S)
+/datum/category_item/player_setup_item/general/equipment/save_character(savefile/S)
 	S["all_underwear"] << pref.all_underwear
 	S["all_underwear_metadata"] << pref.all_underwear_metadata
 	S["backbag"]	<< pref.backbag
@@ -94,7 +94,7 @@
 
 	return jointext(.,null)
 
-/datum/category_item/player_setup_item/general/equipment/proc/get_metadata(var/underwear_category, var/datum/loadout_tweak/gt)
+/datum/category_item/player_setup_item/general/equipment/proc/get_metadata(underwear_category, datum/loadout_tweak/gt)
 	var/metadata = pref.all_underwear_metadata[underwear_category]
 	if(!metadata)
 		metadata = list()
@@ -106,12 +106,12 @@
 		metadata["[gt]"] = tweak_data
 	return tweak_data
 
-/datum/category_item/player_setup_item/general/equipment/proc/set_metadata(var/underwear_category, var/datum/loadout_tweak/gt, var/new_metadata)
+/datum/category_item/player_setup_item/general/equipment/proc/set_metadata(underwear_category, datum/loadout_tweak/gt, new_metadata)
 	var/list/metadata = pref.all_underwear_metadata[underwear_category]
 	metadata["[gt]"] = new_metadata
 
 
-/datum/category_item/player_setup_item/general/equipment/OnTopic(var/href,var/list/href_list, var/mob/user)
+/datum/category_item/player_setup_item/general/equipment/OnTopic(href,list/href_list, mob/user)
 	if(href_list["change_backpack"])
 		var/new_backbag = tgui_input_list(user, "Choose your character's style of bag:", "Character Preference", backbaglist, backbaglist[pref.backbag])
 		if(!isnull(new_backbag) && CanUseTopic(user))

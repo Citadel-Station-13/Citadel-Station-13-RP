@@ -66,7 +66,7 @@
 
 	return nano_ui_interact(user)
 
-/obj/machinery/power/grid_checker/proc/power_failure(var/announce = TRUE)
+/obj/machinery/power/grid_checker/proc/power_failure(announce = TRUE)
 	if(announce)
 		command_announcement.Announce("Abnormal activity detected in [station_name()]'s powernet. As a precautionary measure, \
 		the colony's power will be shut off for an indeterminate duration while the powernet monitor restarts automatically, or \
@@ -92,7 +92,7 @@
 		if(power_failing) // Check to see if engineering didn't beat us to it.
 			end_power_failure(TRUE)
 
-/obj/machinery/power/grid_checker/proc/end_power_failure(var/announce = TRUE)
+/obj/machinery/power/grid_checker/proc/end_power_failure(announce = TRUE)
 	if(announce)
 		command_announcement.Announce("Power has been restored to [station_name()]. We apologize for the inconvenience.",
 		"Power Systems Nominal",

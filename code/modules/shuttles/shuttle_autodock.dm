@@ -23,7 +23,7 @@
 
 	var/list/obj/item/clothing/head/pilot/helmets
 
-/datum/shuttle/autodock/New(var/_name, var/obj/effect/shuttle_landmark/start_waypoint)
+/datum/shuttle/autodock/New(_name, obj/effect/shuttle_landmark/start_waypoint)
 	..(_name, start_waypoint)
 
 	helmets = list()
@@ -52,7 +52,7 @@
 
 	return ..()
 
-/datum/shuttle/autodock/proc/set_docking_codes(var/code)
+/datum/shuttle/autodock/proc/set_docking_codes(code)
 	docking_codes = code
 	if(shuttle_docking_controller)
 		shuttle_docking_controller.docking_codes = code
@@ -62,7 +62,7 @@
 	..()
 
 // Despite the name this actually updates the SHUTTLE docking conroller, not the active.
-/datum/shuttle/autodock/proc/update_docking_target(var/obj/effect/shuttle_landmark/location)
+/datum/shuttle/autodock/proc/update_docking_target(obj/effect/shuttle_landmark/location)
 	var/current_dock_target
 	if(location && location.special_dock_targets && location.special_dock_targets[name])
 		current_dock_target = location.special_dock_targets[name]
@@ -175,7 +175,7 @@
 	"Public" procs
 */
 // Queue shuttle for undock and launch by shuttle subsystem.
-/datum/shuttle/autodock/proc/launch(var/user)
+/datum/shuttle/autodock/proc/launch(user)
 	if (!can_launch()) return
 
 	in_use = user	// Obtain an exclusive lock on the shuttle
@@ -184,7 +184,7 @@
 	undock()
 
 // Queue shuttle for forced undock and launch by shuttle subsystem.
-/datum/shuttle/autodock/proc/force_launch(var/user)
+/datum/shuttle/autodock/proc/force_launch(user)
 	if (!can_force()) return
 
 	in_use = user	// Obtain an exclusive lock on the shuttle
@@ -192,7 +192,7 @@
 	process_state = FORCE_LAUNCH
 
 // Cancel queued launch.
-/datum/shuttle/autodock/cancel_launch(var/user)
+/datum/shuttle/autodock/cancel_launch(user)
 	if (!can_cancel()) return
 
 	moving_status = SHUTTLE_IDLE

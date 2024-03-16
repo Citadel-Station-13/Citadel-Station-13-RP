@@ -19,7 +19,7 @@
 		//ANTIGEN_CULT = 0,
 		)
 
-/datum/immune_system/New(var/mob/living/L)
+/datum/immune_system/New(mob/living/L)
 	..()
 	if (!L)
 		qdel(src)
@@ -54,7 +54,7 @@
 
 /*i think this is supposed to be for blood transfusions?
     but i don't see it used in their code, so i'm commenting it out
-/datum/immune_system/proc/transfer_to(var/mob/living/L)
+/datum/immune_system/proc/transfer_to(mob/living/L)
 	if (!L.immune_system)
 		L.immune_system = new (L)
 
@@ -90,7 +90,7 @@
 	overloaded = TRUE
 
 //If even one antibody hass sufficient concentration, the disease won't be able to infect
-/datum/immune_system/proc/CanInfect(var/datum/disease2/disease/disease)
+/datum/immune_system/proc/CanInfect(datum/disease2/disease/disease)
 	if (overloaded)
 		return TRUE
 	/*if(!disease.CanInfect(body)) disease.CanInfect() literally just returned true. i don't know why this was here.
@@ -101,7 +101,7 @@
 			return FALSE
 	return TRUE
 
-/datum/immune_system/proc/ApplyAntipathogenics(var/threshold, var/list/antigen_restriction = list(), var/multiplier = 1)
+/datum/immune_system/proc/ApplyAntipathogenics(threshold, list/antigen_restriction = list(), multiplier = 1)
 	if (overloaded)
 		return
 	for (var/ID in body.virus2)
@@ -130,7 +130,7 @@
 					if (prob(threshold) && prob(tally * 10) && prob((100 - antibodies[A])*100/(100-threshold)))//smaller and smaller chance for further increase
 						antibodies[A] = min(antibodies[A] + 1, 100)
 
-/datum/immune_system/proc/ApplyVaccine(var/list/antigen)
+/datum/immune_system/proc/ApplyVaccine(list/antigen)
 	if (overloaded)
 		return
 
@@ -138,7 +138,7 @@
 		antibodies[A] = min(antibodies[A] + 20, 100)
 
 /* dunno what this is for
-/datum/immune_system/send_to_past(var/duration)
+/datum/immune_system/send_to_past(duration)
 	..()
 	var/static/list/resettable_vars = list(
 		"strength",

@@ -8,12 +8,12 @@
 	name = "Autohiss"
 	sort_order = 4
 
-/datum/category_item/player_setup_item/vore/autohiss/load_character(var/savefile/S)
+/datum/category_item/player_setup_item/vore/autohiss/load_character(savefile/S)
 	S["autohiss"] >> pref.autohiss
 	S["autohiss_type"] >> pref.autohiss_type
 
 
-/datum/category_item/player_setup_item/vore/autohiss/save_character(var/savefile/S)
+/datum/category_item/player_setup_item/vore/autohiss/save_character(savefile/S)
 	S["autohiss"] << pref.autohiss
 	S["autohiss_type"] << pref.autohiss_type
 
@@ -61,7 +61,7 @@
 		else
 			CRASH("Invalid autohiss preference! '[pref.autohiss]'")
 
-/datum/category_item/player_setup_item/vore/autohiss/OnTopic(var/href, var/list/href_list, var/mob/user)
+/datum/category_item/player_setup_item/vore/autohiss/OnTopic(href, list/href_list, mob/user)
 	if(href_list["toggle_off"])
 		pref.autohiss = AUTOHISS_OFF
 		return PREFERENCES_REFRESH

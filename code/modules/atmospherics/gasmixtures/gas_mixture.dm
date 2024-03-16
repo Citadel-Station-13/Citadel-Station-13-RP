@@ -189,7 +189,7 @@
 	So returning a constant/(partial pressure) would probably do what most players expect. Although the version I have implemented below is a bit more nuanced than simply 1/P in that it scales in a way
 	which is bit more realistic (natural log), and returns a fairly accurate entropy around room temperatures and pressures.
 */
-/datum/gas_mixture/proc/specific_entropy_gas(var/gasid)
+/datum/gas_mixture/proc/specific_entropy_gas(gasid)
 	if (!(gasid in gas) || gas[gasid] == 0)
 		return SPECIFIC_ENTROPY_VACUUM	//that gas isn't here
 
@@ -292,7 +292,7 @@
 
 //Checks if we are within acceptable range of another gas_mixture to suspend processing or merge.
 // returns TRUE if we are considered equal enough
-/datum/gas_mixture/proc/compare(datum/gas_mixture/sample, var/vacuum_exception = 0)
+/datum/gas_mixture/proc/compare(datum/gas_mixture/sample, vacuum_exception = 0)
 	if(!sample)
 		return FALSE
 

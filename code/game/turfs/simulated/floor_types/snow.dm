@@ -21,7 +21,7 @@
 			add_overlay(image(icon = 'icons/turf/outdoors.dmi', icon_state = "snow_footprints", dir = AM.dir))
 	return ..()
 
-/turf/simulated/floor/outdoors/snow/attackby(var/obj/item/W, var/mob/user)
+/turf/simulated/floor/outdoors/snow/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/shovel))
 		to_chat(user, "<span class='notice'>You begin to remove \the [src] with your [W].</span>")
 		if(do_after(user, 4 SECONDS * W.tool_speed))
@@ -58,7 +58,7 @@
 	desc = "Looks slippery."
 	edge_blending_priority = 0
 
-/turf/simulated/floor/outdoors/ice/Entered(var/mob/living/M)
+/turf/simulated/floor/outdoors/ice/Entered(mob/living/M)
 	. = ..()
 	if(istype(M, /mob/living))
 		if(!M.is_stunned())

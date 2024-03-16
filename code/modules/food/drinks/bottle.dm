@@ -41,7 +41,7 @@
 				reagents.splash(hit_atom, reagents.total_volume)
 			src.smash(loc, hit_atom)
 
-/obj/item/reagent_containers/food/drinks/bottle/proc/smash_check(var/distance)
+/obj/item/reagent_containers/food/drinks/bottle/proc/smash_check(distance)
 	if(!isGlass || !smash_duration)
 		return 0
 
@@ -51,7 +51,7 @@
 		return 0
 	return prob(chance_table[idx])
 
-/obj/item/reagent_containers/food/drinks/bottle/proc/smash(var/newloc, atom/against = null)
+/obj/item/reagent_containers/food/drinks/bottle/proc/smash(newloc, atom/against = null)
 	if(ismob(loc))
 		var/mob/M = loc
 		M.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)

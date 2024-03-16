@@ -198,7 +198,7 @@
 	return 1
 
 //Cham Projector Exception
-/obj/structure/closet/proc/store_misc(var/stored_units)
+/obj/structure/closet/proc/store_misc(stored_units)
 	var/added_units = 0
 	for(var/obj/effect/dummy/chameleon/AD in loc)
 		if((stored_units + added_units) > storage_capacity)
@@ -207,7 +207,7 @@
 		added_units++
 	return added_units
 
-/obj/structure/closet/proc/store_items(var/stored_units)
+/obj/structure/closet/proc/store_items(stored_units)
 	var/added_units = 0
 	for(var/obj/item/I in loc)
 		var/item_size = CEILING(I.w_class / 2, 1)
@@ -218,7 +218,7 @@
 			added_units += item_size
 	return added_units
 
-/obj/structure/closet/proc/store_mobs(var/stored_units)
+/obj/structure/closet/proc/store_mobs(stored_units)
 	var/added_units = 0
 	for(var/mob/living/M in loc)
 		if(M.buckled || M.pinned.len)
@@ -230,7 +230,7 @@
 		added_units += M.mob_size
 	return added_units
 
-/obj/structure/closet/proc/store_closets(var/stored_units)
+/obj/structure/closet/proc/store_closets(stored_units)
 	var/added_units = 0
 	for(var/obj/structure/closet/C in loc)
 		if(C == src)	//Don't store ourself
@@ -538,13 +538,13 @@
 	animate(src, transform=turn(matrix(), 8*shake_dir), pixel_x=init_px + 2*shake_dir, time=1)
 	animate(transform=null, pixel_x=init_px, time=6, easing=ELASTIC_EASING)
 
-/obj/structure/closet/onDropInto(var/atom/movable/AM)
+/obj/structure/closet/onDropInto(atom/movable/AM)
 	return
 
 /obj/structure/closet/AllowDrop()
 	return !opened
 
-/obj/structure/closet/return_air_for_internal_lifeform(var/mob/living/L)
+/obj/structure/closet/return_air_for_internal_lifeform(mob/living/L)
 	if(loc)
 		if(istype(loc, /obj/structure/closet))
 			return (loc.return_air_for_internal_lifeform(L))
@@ -593,7 +593,7 @@
 	else
 		to_chat(user, "<span class='notice'>Access Denied</span>")
 
-/obj/structure/closet/emag_act(var/remaining_charges, var/mob/user, var/emag_source, var/visual_feedback = "", var/audible_feedback = "")
+/obj/structure/closet/emag_act(remaining_charges, mob/user, emag_source, visual_feedback = "", audible_feedback = "")
 	if(!broken && secure)
 		broken = 1
 		locked = 0

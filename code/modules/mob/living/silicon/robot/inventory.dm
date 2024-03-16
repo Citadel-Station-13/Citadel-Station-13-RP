@@ -104,7 +104,7 @@
 		return 0
 
 // This one takes an object's type instead of an instance, as above.
-/mob/living/silicon/robot/proc/has_active_type(var/type_to_compare)
+/mob/living/silicon/robot/proc/has_active_type(type_to_compare)
 	var/list/active_modules = list(module_state_1, module_state_2, module_state_3)
 	if(is_path_in_list(type_to_compare, active_modules))
 		return TRUE
@@ -114,11 +114,11 @@
 //These are hackish but they help clean up code elsewhere.
 
 //module_selected(module) - Checks whether the module slot specified by "module" is currently selected.
-/mob/living/silicon/robot/proc/module_selected(var/module) //Module is 1-3
+/mob/living/silicon/robot/proc/module_selected(module) //Module is 1-3
 	return module == get_selected_module()
 
 //module_active(module) - Checks whether there is a module active in the slot specified by "module".
-/mob/living/silicon/robot/proc/module_active(var/module) //Module is 1-3
+/mob/living/silicon/robot/proc/module_active(module) //Module is 1-3
 	if(module < 1 || module > 3) return 0
 
 	switch(module)
@@ -145,7 +145,7 @@
 	return 0
 
 //select_module(module) - Selects the module slot specified by "module"
-/mob/living/silicon/robot/proc/select_module(var/module) //Module is 1-3
+/mob/living/silicon/robot/proc/select_module(module) //Module is 1-3
 	if(module < 1 || module > 3) return
 
 	if(!module_active(module)) return
@@ -175,7 +175,7 @@
 	return
 
 //deselect_module(module) - Deselects the module slot specified by "module"
-/mob/living/silicon/robot/proc/deselect_module(var/module) //Module is 1-3
+/mob/living/silicon/robot/proc/deselect_module(module) //Module is 1-3
 	if(module < 1 || module > 3) return
 
 	switch(module)
@@ -197,7 +197,7 @@
 	return
 
 //toggle_module(module) - Toggles the selection of the module slot specified by "module".
-/mob/living/silicon/robot/proc/toggle_module(var/module) //Module is 1-3
+/mob/living/silicon/robot/proc/toggle_module(module) //Module is 1-3
 	if(module < 1 || module > 3) return
 
 	if(module_selected(module))
@@ -230,7 +230,7 @@
 
 	return
 
-/mob/living/silicon/robot/proc/activate_module(var/obj/item/O)
+/mob/living/silicon/robot/proc/activate_module(obj/item/O)
 	if(!(locate(O) in src.module.modules) && O != src.module.emag)
 		return
 	if(activated(O))

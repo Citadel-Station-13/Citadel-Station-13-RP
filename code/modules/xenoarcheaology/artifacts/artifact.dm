@@ -274,7 +274,7 @@
 			to_chat(M, "<b>You accidentally touch [src].</b>")
 	..()
 
-/obj/machinery/artifact/bullet_act(var/obj/projectile/P)
+/obj/machinery/artifact/bullet_act(obj/projectile/P)
 	if(istype(P,/obj/projectile/bullet))
 		if(my_effect.trigger == TRIGGER_FORCE)
 			my_effect.ToggleActivate()

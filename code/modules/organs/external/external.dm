@@ -297,7 +297,7 @@
 /obj/item/organ/external/update_health()
 	damage = min(max_damage, (brute_dam + burn_dam))
 
-/obj/item/organ/external/replaced(var/mob/living/carbon/human/target)
+/obj/item/organ/external/replaced(mob/living/carbon/human/target)
 	owner = target
 	forceMove(owner)
 
@@ -896,7 +896,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 ****************************************************/
 
 //Handles dismemberment
-/obj/item/organ/external/proc/droplimb(var/clean, var/disintegrate = DROPLIMB_EDGE, var/ignore_children = null)
+/obj/item/organ/external/proc/droplimb(clean, disintegrate = DROPLIMB_EDGE, ignore_children = null)
 
 	if(cannot_amputate || !owner)
 		return
@@ -1023,7 +1023,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 /obj/item/organ/external/proc/is_stump()
 	return 0
 
-/obj/item/organ/external/proc/release_restraints(var/mob/living/carbon/human/holder)
+/obj/item/organ/external/proc/release_restraints(mob/living/carbon/human/holder)
 	if(!holder)
 		holder = owner
 	if(!holder)
@@ -1139,7 +1139,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 	status &= ~ORGAN_BROKEN
 	return 1
 
-/obj/item/organ/external/proc/apply_splint(var/atom/movable/splint)
+/obj/item/organ/external/proc/apply_splint(atom/movable/splint)
 	if(!splinted)
 		splinted = splint
 		if(!applied_pressure)
@@ -1157,7 +1157,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 		return 1
 	return 0
 
-/obj/item/organ/external/robotize(var/company, var/skip_prosthetics = 0, var/keep_organs = 0, force)
+/obj/item/organ/external/robotize(company, skip_prosthetics = 0, keep_organs = 0, force)
 	//! SHITCODE ALERT: REFACTOR ORGANS ASAP; FORCE IS JUST SO PREFS WORK.
 	if(robotic >= ORGAN_ROBOT && !force)
 		return
@@ -1214,7 +1214,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 //! ## VIRGO HOOK, TODO: Integrate this.
 //Sideways override for nanoform limbs (ugh)
-/obj/item/organ/external/robotize(var/company, var/skip_prosthetics = FALSE, var/keep_organs = FALSE, force)
+/obj/item/organ/external/robotize(company, skip_prosthetics = FALSE, keep_organs = FALSE, force)
 	var/original_robotic = robotic
 	if(original_robotic >= ORGAN_NANOFORM)
 		var/o_encased = encased
@@ -1254,7 +1254,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 /obj/item/organ/external/proc/is_malfunctioning()
 	return ((robotic >= ORGAN_ROBOT) && (brute_dam + burn_dam) >= min_broken_damage*0.83 && prob(brute_dam + burn_dam)) // Makes robotic limb damage scalable
 
-/obj/item/organ/external/proc/embed(var/obj/item/W, var/silent = 0)
+/obj/item/organ/external/proc/embed(obj/item/W, silent = 0)
 	if(!owner || loc != owner)
 		return
 	if(owner.species.species_flags & IS_SLIME)
@@ -1274,7 +1274,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 	W.add_blood(owner)
 	W.forceMove(owner)
 
-/obj/item/organ/external/removed(var/mob/living/user, var/ignore_children = 0)
+/obj/item/organ/external/removed(mob/living/user, ignore_children = 0)
 	if(!owner)
 		return
 	owner.reconsider_inventory_slot_bodypart(organ_tag)
@@ -1346,7 +1346,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 	victim.refresh_modular_limb_verbs()
 	victim.update_icons_body()
 
-/obj/item/organ/external/proc/disfigure(var/type = "brute")
+/obj/item/organ/external/proc/disfigure(type = "brute")
 	if (disfigured)
 		return
 	if(owner)
@@ -1452,7 +1452,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 		return english_list(flavor_text)
 
 // Returns a list of the clothing (not glasses) that are covering this part
-/obj/item/organ/external/proc/get_covering_clothing(var/target_covering)	// target_covering checks for mouth/eye coverage
+/obj/item/organ/external/proc/get_covering_clothing(target_covering)	// target_covering checks for mouth/eye coverage
 	var/list/covering_clothing = list()
 
 	if(!target_covering)

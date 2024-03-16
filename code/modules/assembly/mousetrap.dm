@@ -7,7 +7,7 @@
 	var/armed = 0
 
 
-/obj/item/assembly/mousetrap/examine(var/mob/user)
+/obj/item/assembly/mousetrap/examine(mob/user)
 	. = ..()
 	if(armed)
 		. += "It looks like it's armed."
@@ -20,7 +20,7 @@
 	if(holder)
 		holder.update_icon()
 
-/obj/item/assembly/mousetrap/proc/triggered(var/mob/target, var/type = "feet")
+/obj/item/assembly/mousetrap/proc/triggered(mob/target, type = "feet")
 	if(!armed)
 		return
 	var/obj/item/organ/external/affecting = null
@@ -84,7 +84,7 @@
 	..()
 
 
-/obj/item/assembly/mousetrap/Crossed(var/atom/movable/AM)
+/obj/item/assembly/mousetrap/Crossed(atom/movable/AM)
 	if(AM.is_incorporeal())
 		return
 	if(armed)

@@ -600,7 +600,7 @@
 	icon = 'icons/vore/custom_clothes_vr.dmi'
 	icon_state = "vietsi_ring"
 
-/obj/item/clothing/gloves/ring/seal/signet/fluff/vietsi/change_name(var/signet_name = "Unknown")
+/obj/item/clothing/gloves/ring/seal/signet/fluff/vietsi/change_name(signet_name = "Unknown")
 	name = "[signet_name]'s Bone Signet Ring"
 	desc = "A signet ring belonging to [signet_name], carved from the bones of something long extinct, as a ward against bad luck."
 
@@ -625,10 +625,10 @@
 	icon_override = 'icons/vore/custom_onmob_vr.dmi'
 	item_state = "bracer_xander_sthasha"
 
-/obj/item/clothing/accessory/bracer/fluff/xander_sthasha/digest_act(var/atom/movable/item_storage = null)
+/obj/item/clothing/accessory/bracer/fluff/xander_sthasha/digest_act(atom/movable/item_storage = null)
 	return FALSE
 
-/obj/item/clothing/accessory/bracer/fluff/xander_sthasha/gurgle_contaminate(var/atom/movable/item_storage = null)
+/obj/item/clothing/accessory/bracer/fluff/xander_sthasha/gurgle_contaminate(atom/movable/item_storage = null)
 	return FALSE
 
 //Heroman3003:Lauren Zackson

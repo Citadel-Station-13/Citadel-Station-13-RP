@@ -86,7 +86,7 @@
 	update_icon()
 
 
-/obj/item/tape_recorder/hear_talk(mob/living/M as mob, msg, var/verb="says", datum/language/speaking=null)
+/obj/item/tape_recorder/hear_talk(mob/living/M as mob, msg, verb="says", datum/language/speaking=null)
 	if(mytape && recording)
 
 		if(speaking)
@@ -97,7 +97,7 @@
 			mytape.record_speech("[M.name] [verb], \"[msg]\"")
 
 
-/obj/item/tape_recorder/see_emote(mob/M as mob, text, var/emote_type)
+/obj/item/tape_recorder/see_emote(mob/M as mob, text, emote_type)
 	if(emote_type != 2) //only hearable emotes
 		return
 	if(mytape && recording)
@@ -115,7 +115,7 @@
 	if(mytape && recording)
 		mytape.record_noise("[strip_html_properly(recordedtext)]")
 
-/obj/item/tape_recorder/emag_act(var/remaining_charges, var/mob/user)
+/obj/item/tape_recorder/emag_act(remaining_charges, mob/user)
 	if(emagged == 0)
 		emagged = 1
 		recording = 0

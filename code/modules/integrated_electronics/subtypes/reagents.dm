@@ -316,7 +316,7 @@
 		return FALSE
 	attackby_react(I, user, a_intent)
 
-/obj/item/integrated_circuit/input/beaker_connector/attackby_react(var/obj/item/reagent_containers/I, var/mob/living/user)
+/obj/item/integrated_circuit/input/beaker_connector/attackby_react(obj/item/reagent_containers/I, mob/living/user)
 	//Check if it truly is a reagent container
 	if(!istype(I,/obj/item/reagent_containers/glass/beaker))
 		to_chat(user,"<span class='warning'>The [I.name] doesn't seem to fit in here.</span>")

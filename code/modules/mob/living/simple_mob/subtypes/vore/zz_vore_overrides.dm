@@ -160,7 +160,7 @@
 		var/obj/belly/B = belly
 		B.digest_mode = safe ? DM_HOLD : vore_default_mode
 
-/mob/living/simple_mob/animal/space/carp/holographic/set_safety(var/safe)
+/mob/living/simple_mob/animal/space/carp/holographic/set_safety(safe)
 	. = ..()
 	for(var/belly in vore_organs)
 		var/obj/belly/B = belly

@@ -1,7 +1,7 @@
 // All mobs should have custom emote, really..
 //m_type == 1 --> visual.
 //m_type == 2 --> audible
-/mob/proc/custom_emote(var/m_type=1,var/message = null,var/range=world.view)
+/mob/proc/custom_emote(m_type=1,message = null,range=world.view)
 	if(stat || !use_me && usr == src)
 		to_chat(src, "You are unable to emote.")
 		return
@@ -55,13 +55,13 @@
 					O.see_emote(src, message, m_type)
 
 // Shortcuts for above proc
-/mob/proc/visible_emote(var/act_desc)
+/mob/proc/visible_emote(act_desc)
 	custom_emote(1, act_desc)
 
-/mob/proc/audible_emote(var/act_desc)
+/mob/proc/audible_emote(act_desc)
 	custom_emote(2, act_desc)
 
-/mob/proc/emote_dead(var/message)
+/mob/proc/emote_dead(message)
 
 	if(client.prefs.muted & MUTE_DEADCHAT)
 		to_chat(src, "<span class='danger'>You cannot send deadchat emotes (muted).</span>")

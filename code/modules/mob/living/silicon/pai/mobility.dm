@@ -103,7 +103,7 @@
 	update_chassis_actions()
 
 /// Handle being picked up.
-/mob/living/silicon/pai/get_scooped(var/mob/living/carbon/grabber, var/self_drop)
+/mob/living/silicon/pai/get_scooped(mob/living/carbon/grabber, self_drop)
 	var/obj/item/holder/H = ..(grabber, self_drop)
 	if(!istype(H))
 		return

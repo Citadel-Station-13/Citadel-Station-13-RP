@@ -67,7 +67,7 @@
 	else
 		icon_state = initial(icon_state)
 
-/obj/machinery/sleep_console/nano_ui_interact(var/mob/user, var/ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = outside_state)
+/obj/machinery/sleep_console/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1, datum/topic_state/state = outside_state)
 	var/data[0]
 
 	var/obj/machinery/sleeper/S = sleeper
@@ -265,7 +265,7 @@
 /obj/machinery/sleeper/update_icon()
 	icon_state = "sleeper_[occupant ? TRUE : FALSE]"
 
-/obj/machinery/sleeper/attackby(var/obj/item/I, var/mob/user)
+/obj/machinery/sleeper/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/grab))
 		var/obj/item/grab/G = I
 		if(G.affecting)
@@ -313,16 +313,16 @@
 		go_out()
 	add_fingerprint(usr)
 
-/obj/machinery/sleeper/MouseDroppedOnLegacy(var/mob/target, var/mob/user)
+/obj/machinery/sleeper/MouseDroppedOnLegacy(mob/target, mob/user)
 	if(user.stat || user.lying || !Adjacent(user) || !target.Adjacent(user) || !ishuman(target))
 		return
 	go_in(target, user)
 
-/obj/machinery/sleeper/relaymove(var/mob/user)
+/obj/machinery/sleeper/relaymove(mob/user)
 	..()
 	go_out()
 
-/obj/machinery/sleeper/emp_act(var/severity)
+/obj/machinery/sleeper/emp_act(severity)
 	if(filtering)
 		toggle_filter()
 
@@ -349,7 +349,7 @@
 		return
 	pumping = !pumping
 
-/obj/machinery/sleeper/proc/go_in(var/mob/M, var/mob/user)
+/obj/machinery/sleeper/proc/go_in(mob/M, mob/user)
 	if(!M)
 		return
 	if(machine_stat & (BROKEN|NOPOWER))

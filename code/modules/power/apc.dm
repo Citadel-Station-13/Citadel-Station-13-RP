@@ -286,7 +286,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 22)
 		terminal.setDir(turn(src.dir, 180)) // Terminal has same dir as master
 		terminal.connect_to_network() // Refresh the network the terminal is connected to.
 
-/obj/machinery/power/apc/proc/energy_fail(var/duration)
+/obj/machinery/power/apc/proc/energy_fail(duration)
 	failure_timer = max(failure_timer, round(duration))
 
 /obj/machinery/power/apc/proc/make_terminal()
@@ -764,7 +764,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 22)
 		else
 			to_chat(user,"<span class='warning'>Access denied.</span>")
 
-/obj/machinery/power/apc/emag_act(var/remaining_charges, var/mob/user)
+/obj/machinery/power/apc/emag_act(remaining_charges, mob/user)
 	if (!(emagged || hacker))		// trying to unlock with an emag card
 		if(opened)
 			to_chat(user,"You must close the cover to do that.")
@@ -1001,7 +1001,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 22)
 //			to_chat(world, "[area.power_equip]")
 	area.power_change()
 
-/obj/machinery/power/apc/proc/can_use(mob/user as mob, var/loud = 0) //used by attack_hand() and Topic()
+/obj/machinery/power/apc/proc/can_use(mob/user as mob, loud = 0) //used by attack_hand() and Topic()
 	if(!user.client)
 		return 0
 	if(IsAdminGhost(user)) //This is to allow nanoUI interaction by ghost admins.
@@ -1077,7 +1077,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 22)
 /obj/machinery/power/apc/proc/attempt_charging()
 	return (chargemode && charging == 1 && operating)
 
-/obj/machinery/power/apc/draw_power(var/amount)
+/obj/machinery/power/apc/draw_power(amount)
 	if(terminal && terminal.powernet)
 		return terminal.powernet.draw_power(amount)
 	return 0
@@ -1326,7 +1326,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 22)
 
 // overload the lights in this APC area
 
-/obj/machinery/power/apc/proc/overload_lighting(var/chance = 100)
+/obj/machinery/power/apc/proc/overload_lighting(chance = 100)
 	if(/* !get_connection() || */ !operating || shorted || grid_check)
 		return
 	if( cell && cell.charge>=20)
@@ -1338,7 +1338,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 22)
 					L.broken()
 				sleep(1)
 
-/obj/machinery/power/apc/proc/flicker_lights(var/chance = 100)
+/obj/machinery/power/apc/proc/flicker_lights(chance = 100)
 	for(var/obj/machinery/light/L in area)
 		L.flicker(rand(15,25))
 
@@ -1351,7 +1351,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 22)
 		return 0
 
 // Malfunction: Transfers APC under AI's control
-/obj/machinery/power/apc/proc/ai_hack(var/mob/living/silicon/ai/A = null)
+/obj/machinery/power/apc/proc/ai_hack(mob/living/silicon/ai/A = null)
 	if(!A || !A.hacked_apcs || hacker || aidisabled || A.stat == DEAD)
 		return 0
 	src.hacker = A
@@ -1387,7 +1387,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 22)
 	update_icon()
 	update()
 
-/obj/machinery/power/apc/overload(var/obj/machinery/power/source)
+/obj/machinery/power/apc/overload(obj/machinery/power/source)
 	if(is_critical)
 		return
 
@@ -1435,7 +1435,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 22)
 		name = "[area.name] APC"
 	update()
 
-/obj/machinery/power/apc/proc/set_nightshift(on, var/automated)
+/obj/machinery/power/apc/proc/set_nightshift(on, automated)
 	set waitfor = FALSE
 	if(automated && istype(area, /area/shuttle))
 		return

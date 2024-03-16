@@ -30,7 +30,7 @@
 	density = 8 * 1
 	relative_conductivity = 0
 
-/datum/material/glass/build_windows(var/mob/living/user, var/obj/item/stack/used_stack)
+/datum/material/glass/build_windows(mob/living/user, obj/item/stack/used_stack)
 
 	if(!user || !used_stack || !created_window || !created_fulltile_window || !window_options.len)
 		return 0

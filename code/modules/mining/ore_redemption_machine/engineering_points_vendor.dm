@@ -145,7 +145,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	var/datum/supply_pack/redeemable_for = null
 
-/obj/item/engineering_voucher/proc/redeem(var/mob/user)
+/obj/item/engineering_voucher/proc/redeem(mob/user)
 	if(!redeemable_for)
 		to_chat(user, SPAN_WARNING("[src] has already been used"))
 		return

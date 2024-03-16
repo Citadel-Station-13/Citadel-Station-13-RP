@@ -193,7 +193,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/air_alarm, 26)
 			last_sound_played = world.time
 */
 
-/obj/machinery/air_alarm/proc/handle_heating_cooling(var/datum/gas_mixture/environment)
+/obj/machinery/air_alarm/proc/handle_heating_cooling(datum/gas_mixture/environment)
 	var/list/tlv = tlv_temperature
 	var/this_is_fine = AIR_ALARM_TEST_TLV(target_temperature, tlv)
 	if(!regulating_temperature)
@@ -395,7 +395,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/air_alarm, 26)
 	frequency = new_frequency
 	radio_connection = radio_controller.add_object(src, frequency, RADIO_TO_AIRALARM)
 
-/obj/machinery/air_alarm/proc/send_signal(var/target, var/list/command)//sends signal 'command' to 'target'. Returns 0 if no radio connection, 1 otherwise
+/obj/machinery/air_alarm/proc/send_signal(target, list/command)//sends signal 'command' to 'target'. Returns 0 if no radio connection, 1 otherwise
 	if(!radio_connection)
 		return 0
 
@@ -485,7 +485,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/air_alarm, 26)
 					continue
 				send_signal(scrubber.id_tag, list("power" = FALSE))
 
-/obj/machinery/air_alarm/proc/apply_danger_level(var/new_danger_level)
+/obj/machinery/air_alarm/proc/apply_danger_level(new_danger_level)
 	if(report_danger_level && alarm_area.atmosalert(new_danger_level, src))
 		post_alert(new_danger_level)
 

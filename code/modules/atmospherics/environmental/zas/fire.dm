@@ -63,7 +63,7 @@ If it gains pressure too slowly, it may leak or just rupture instead of explodin
 	if(!fire_tiles.len)
 		SSair.active_fire_zones.Remove(src)
 
-/datum/zas_zone/proc/remove_liquidfuel(var/used_liquid_fuel, var/remove_fire=0)
+/datum/zas_zone/proc/remove_liquidfuel(used_liquid_fuel, remove_fire=0)
 	if(!fuel_objs.len)
 		return
 
@@ -212,7 +212,7 @@ If it gains pressure too slowly, it may leak or just rupture instead of explodin
 	animate(src, color = fire_color(air_contents.temperature), 5)
 	set_light(l_color = color)
 
-/atom/movable/fire/proc/fire_color(var/env_temperature)
+/atom/movable/fire/proc/fire_color(env_temperature)
 	CACHE_VSC_PROP(atmos_vsc, /atmos/fire/firelevel_multiplier, firelevel_multiplier)
 	var/temperature = max(4000*sqrt(firelevel/firelevel_multiplier), env_temperature)
 	return heat2colour(temperature)
@@ -225,13 +225,13 @@ If it gains pressure too slowly, it may leak or just rupture instead of explodin
 /turf/simulated/apply_fire_protection()
 	fire_protection = world.time
 
-/mob/living/proc/FireBurn(var/firelevel, var/last_temperature, var/pressure)
+/mob/living/proc/FireBurn(firelevel, last_temperature, pressure)
 	CACHE_VSC_PROP(atmos_vsc, /atmos/fire/firelevel_multiplier, firelevel_multiplier)
 	var/mx = 5 * firelevel/firelevel_multiplier * min(pressure / ONE_ATMOSPHERE, 1)
 	apply_damage(2.5*mx, BURN)
 
 
-/mob/living/carbon/human/FireBurn(var/firelevel, var/last_temperature, var/pressure)
+/mob/living/carbon/human/FireBurn(firelevel, last_temperature, pressure)
 	//Burns mobs due to fire. Respects heat transfer coefficients on various body parts.
 	//Due to TG reworking how fireprotection works, this is kinda less meaningful.
 

@@ -71,7 +71,7 @@ var/const/TRADER			=(1<<15)
 
 	return occupations
 
-/proc/get_alternate_titles(var/job)
+/proc/get_alternate_titles(job)
 	var/list/jobs = get_job_datums()
 	var/list/titles = list()
 

@@ -4,7 +4,7 @@
 	var/singleton/hierarchy/parent
 	var/list/singleton/hierarchy/children
 
-/singleton/hierarchy/New(var/full_init = TRUE)
+/singleton/hierarchy/New(full_init = TRUE)
 	children = list()
 	if(!full_init)
 		return

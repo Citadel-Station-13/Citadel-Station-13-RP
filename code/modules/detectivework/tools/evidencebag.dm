@@ -9,7 +9,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	var/obj/item/stored_item = null
 
-/obj/item/evidencebag/OnMouseDropLegacy(var/obj/item/I as obj)
+/obj/item/evidencebag/OnMouseDropLegacy(obj/item/I as obj)
 	if (!ishuman(usr))
 		return
 	if(!istype(I) || I.anchored)

@@ -20,7 +20,7 @@
 
 	var/list/linked_radios_weakrefs = list()
 
-/obj/machinery/telecomms/allinone/proc/link_radio(var/obj/item/radio/R)
+/obj/machinery/telecomms/allinone/proc/link_radio(obj/item/radio/R)
 	if(!istype(R))
 		return
 	linked_radios_weakrefs |= WEAKREF(R)

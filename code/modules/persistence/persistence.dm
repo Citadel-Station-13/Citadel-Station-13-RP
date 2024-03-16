@@ -32,7 +32,7 @@
 	return data
 
 
-/atom/deserialize_vr(var/list/data)
+/atom/deserialize_vr(list/data)
 	for(var/thing in vars_to_save())
 		if(thing in data)
 			vars[thing] = data[thing]
@@ -51,13 +51,13 @@ If you're clever, you can do neat things with SDQL and this, though be careful -
 some objects, like humans, are dependent that certain extra things are defined
 in their list
 */
-/proc/object_to_json(var/atom/movable/thing)
+/proc/object_to_json(atom/movable/thing)
 	return json_encode(thing.serialize_vr())
 
-/proc/json_to_object(var/json_data, var/loc)
+/proc/json_to_object(json_data, loc)
 	return list_to_object(json_decode(json_data), loc)
 
-/proc/list_to_object(var/list/data, var/loc)
+/proc/list_to_object(list/data, loc)
 	if(!islist(data))
 		throw EXCEPTION("You didn't give me a list, bucko")
 	if(!("type" in data))

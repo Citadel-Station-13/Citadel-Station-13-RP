@@ -65,7 +65,7 @@
 
 	return TRUE
 
-/obj/item/champagne/proc/create_landable_shuttle(var/shuttle_name, var/turf/start_loc, var/area/shuttle_area)
+/obj/item/champagne/proc/create_landable_shuttle(shuttle_name, turf/start_loc, area/shuttle_area)
 	// First things first, create the starting location landmark.
 	// WARNING - We can't figure out a good base_area or base_turf from inspecttion, as the shuttle is already built!
 	// For now its going to just do world.area and z level base turf. Beware!

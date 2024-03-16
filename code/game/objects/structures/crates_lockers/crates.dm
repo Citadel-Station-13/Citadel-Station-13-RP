@@ -176,7 +176,7 @@
 	else
 		to_chat(user, "<span class='notice'>Access Denied</span>")
 
-/obj/structure/closet/crate/secure/proc/set_locked(var/newlocked, mob/user = null)
+/obj/structure/closet/crate/secure/proc/set_locked(newlocked, mob/user = null)
 	if(locked == newlocked)
 		return
 
@@ -261,7 +261,7 @@
 			req_access += pick(get_all_station_access())
 	..()
 
-/obj/structure/closet/crate/secure/bullet_act(var/obj/projectile/Proj)
+/obj/structure/closet/crate/secure/bullet_act(obj/projectile/Proj)
 	if(!(Proj.damage_type == BRUTE || Proj.damage_type == BURN))
 		return
 
@@ -377,13 +377,13 @@
 		newgas.temperature = target_temp
 	return newgas
 
-/obj/structure/closet/crate/freezer/Entered(var/atom/movable/AM)
+/obj/structure/closet/crate/freezer/Entered(atom/movable/AM)
 	if(istype(AM, /obj/item/organ))
 		var/obj/item/organ/O = AM
 		O.preserve(CRATE_FREEZER_TRAIT)
 	..()
 
-/obj/structure/closet/crate/freezer/Exited(var/atom/movable/AM)
+/obj/structure/closet/crate/freezer/Exited(atom/movable/AM)
 	if(istype(AM, /obj/item/organ))
 		var/obj/item/organ/O = AM
 		O.unpreserve(CRATE_FREEZER_TRAIT)

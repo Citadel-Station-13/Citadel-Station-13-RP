@@ -8,7 +8,7 @@
 		var/list/instances		//What items are actually stored
 		var/stored				//The thing holding it is
 
-/datum/stored_item/New(var/stored, var/path, var/name = null, var/amount = 0)
+/datum/stored_item/New(stored, path, name = null, amount = 0)
 	src.item_path = path
 
 	if(!name)
@@ -33,7 +33,7 @@
 /datum/stored_item/proc/get_amount()
 	return instances ? instances.len : amount
 
-/datum/stored_item/proc/get_product(var/product_location)
+/datum/stored_item/proc/get_product(product_location)
 	if(!get_amount() || !product_location)
 		return
 	init_products()
@@ -43,7 +43,7 @@
 	product.forceMove(product_location)
 	return product
 
-/datum/stored_item/proc/add_product(var/atom/movable/product)
+/datum/stored_item/proc/add_product(atom/movable/product)
 	if(product.type != item_path)
 		return 0
 	init_products()

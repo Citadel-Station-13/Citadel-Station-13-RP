@@ -3,7 +3,7 @@
 	var/list/recipe_list
 	var/result_type_name
 
-/obj/machinery/recipe_lookup/proc/display_recipe_instructions(var/recipe)
+/obj/machinery/recipe_lookup/proc/display_recipe_instructions(recipe)
 	return
 
 /obj/machinery/recipe_lookup/proc/display_options()
@@ -43,7 +43,7 @@
 	. = ..()
 	recipe_list = GLOB.drink_recipes
 
-/obj/machinery/recipe_lookup/drinks/display_recipe_instructions(var/datum/chemical_reaction/recipe)
+/obj/machinery/recipe_lookup/drinks/display_recipe_instructions(datum/chemical_reaction/recipe)
 	var/instructions = "Reagents required to create [recipe.result_amount] parts <b>[recipe.result]</b>\n"
 	for(var/item in recipe.required_reagents)
 		instructions += "[recipe.required_reagents[item]] parts <b>[item]</b>\n"

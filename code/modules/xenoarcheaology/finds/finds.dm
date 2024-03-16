@@ -8,7 +8,7 @@
 	var/dissonance_spread = 1		//proportion of the tile that is affected by this find
 									//used in conjunction with analysis machines to determine correct suspension field type
 
-/datum/find/New(var/digsite, var/exc_req)
+/datum/find/New(digsite, exc_req)
 	excavation_required = exc_req
 	find_type = get_random_find_type(digsite)
 	clearance_range = rand(4, 12)
@@ -30,7 +30,7 @@
 	if(inside_item_type)
 		new /obj/item/archaeological_find(src, inside_item_type)
 
-/obj/item/strangerock/attackby(var/obj/item/I, var/mob/user)
+/obj/item/strangerock/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/pickaxe/brush))
 		var/obj/item/inside = locate() in src
 		if(inside)

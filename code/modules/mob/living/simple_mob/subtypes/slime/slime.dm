@@ -193,7 +193,7 @@
 	return
 
 // Hat simulator
-/mob/living/simple_mob/slime/proc/give_hat(var/obj/item/clothing/head/new_hat, var/mob/living/user)
+/mob/living/simple_mob/slime/proc/give_hat(obj/item/clothing/head/new_hat, mob/living/user)
 	if(!istype(new_hat))
 		to_chat(user, SPAN_WARNING( "\The [new_hat] isn't a hat."))
 		return
@@ -208,7 +208,7 @@
 		update_icon()
 		return
 
-/mob/living/simple_mob/slime/proc/remove_hat(var/mob/living/user)
+/mob/living/simple_mob/slime/proc/remove_hat(mob/living/user)
 	if(!hat)
 		to_chat(user, "<span class='warning'>\The [src] doesn't have a hat to remove.</span>")
 	else

@@ -296,7 +296,7 @@
 	var/poison_per_bite = 5
 	var/poison_type = "phoron"
 
-/mob/living/simple_mob/animal/roach/seuche/apply_melee_effects(var/atom/A)
+/mob/living/simple_mob/animal/roach/seuche/apply_melee_effects(atom/A)
 	if(isliving(A))
 		var/mob/living/L = A
 		if(L.reagents)

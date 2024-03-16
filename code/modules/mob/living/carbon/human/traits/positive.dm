@@ -38,7 +38,7 @@
 	cost = 1
 	var_changes = list("unarmed_types" = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws/good, /datum/unarmed_attack/bite/sharp/good))
 
-/datum/trait/positive/melee_attack/apply(var/datum/species/S,var/mob/living/carbon/human/H)
+/datum/trait/positive/melee_attack/apply(datum/species/S,mob/living/carbon/human/H)
 	..(S,H)
 	S.update_attack_types()
 
@@ -48,7 +48,7 @@
 	cost = 2
 	var_changes = list("unarmed_types" = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws/good/venom, /datum/unarmed_attack/bite/sharp/good/venom))
 
-/datum/trait/positive/melee_attack_fangs/apply(var/datum/species/S,var/mob/living/carbon/human/H)
+/datum/trait/positive/melee_attack_fangs/apply(datum/species/S,mob/living/carbon/human/H)
 	..(S,H)
 	S.update_attack_types()
 
@@ -128,7 +128,7 @@
 	desc = "Your body either by science or nature has been reinforced and is harder to break."
 	cost = 4 //Strong Trait, high cost.
 
-/datum/trait/positive/reinforced/apply(var/datum/species/S,var/mob/living/carbon/human/H)
+/datum/trait/positive/reinforced/apply(datum/species/S,mob/living/carbon/human/H)
 	..(S,H)
 	for(var/obj/item/organ/external/O in H.organs)
 		O.min_broken_damage *= 1.25
@@ -139,7 +139,7 @@
 	desc = "Allows you to fly. Whether by wings, technology, or other means."
 	cost = 1
 
-/datum/trait/positive/winged_flight/apply(var/datum/species/S,var/mob/living/carbon/human/H)
+/datum/trait/positive/winged_flight/apply(datum/species/S,mob/living/carbon/human/H)
 	..(S,H)
 	add_verb(H, /mob/living/proc/flying_toggle)
 
@@ -148,7 +148,7 @@
 	desc = "Makes your nice clawed, scaled, hooved, armored, or otherwise just awfully calloused feet immune to glass shards."
 	cost = 1
 
-/datum/trait/positive/hardfeet/apply(var/datum/species/S,var/mob/living/carbon/human/H)
+/datum/trait/positive/hardfeet/apply(datum/species/S,mob/living/carbon/human/H)
 	..(S,H)
 	S.species_flags |= NO_MINOR_CUT
 
@@ -157,7 +157,7 @@
 	desc = "Your saliva has especially strong antiseptic properties that can be used to heal small wounds."
 	cost = 1
 
-/datum/trait/positive/antiseptic_saliva/apply(var/datum/species/S,var/mob/living/carbon/human/H)
+/datum/trait/positive/antiseptic_saliva/apply(datum/species/S,mob/living/carbon/human/H)
 	..()
 	add_verb(H, /mob/living/carbon/human/proc/lick_wounds)
 
@@ -173,7 +173,7 @@
 	cost = 2
 	//var_changes = list("is_weaver" = 1)
 
-/datum/trait/positive/positive/weaver/apply(var/datum/species/S,var/mob/living/carbon/human/H)
+/datum/trait/positive/positive/weaver/apply(datum/species/S,mob/living/carbon/human/H)
 	..()
 	add_verb(H, /mob/living/carbon/human/proc/check_silk_amount)
 	add_verb(H, /mob/living/carbon/human/proc/toggle_silk_production)

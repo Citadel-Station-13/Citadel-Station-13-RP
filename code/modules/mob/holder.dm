@@ -50,7 +50,7 @@
 			continue
 		M.forceMove(get_turf(src))
 
-/obj/item/holder/onDropInto(var/atom/movable/AM)
+/obj/item/holder/onDropInto(atom/movable/AM)
 	if(ismob(loc))   // Bypass our holding mob and drop directly to its loc
 		return loc.loc
 	return ..()
@@ -177,7 +177,7 @@
 //Mob procs and vars for scooping up
 /mob/living/var/holder_type
 
-/mob/living/OnMouseDropLegacy(var/atom/over_object)
+/mob/living/OnMouseDropLegacy(atom/over_object)
 	var/mob/living/carbon/human/H = over_object
 	if((usr == over_object || usr == src) && holder_type && issmall(src) && istype(H) && !H.lying && Adjacent(H) && (src.a_intent == INTENT_HELP && H.a_intent == INTENT_HELP))
 		if(!issmall(H) || !istype(src, /mob/living/carbon/human))
@@ -185,7 +185,7 @@
 		return
 	return ..()
 
-/mob/living/proc/get_scooped(var/mob/living/carbon/grabber, var/self_grab)
+/mob/living/proc/get_scooped(mob/living/carbon/grabber, self_grab)
 
 	if(!holder_type || buckled || pinned.len)
 		return
@@ -217,7 +217,7 @@
 	var/list/holder_slot_icons = list()
 	slot_flags = SLOT_BACK
 
-/obj/item/holder/human/sync(var/mob/living/M)
+/obj/item/holder/human/sync(mob/living/M)
 	// Generate appropriate on-mob icons.
 	var/mob/living/carbon/human/owner = M
 	if(istype(owner) && owner.species)

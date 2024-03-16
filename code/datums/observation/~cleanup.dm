@@ -16,24 +16,24 @@ GLOBAL_LIST_EMPTY(event_listen_count)
 		cleanup_event_listener(source, GLOB.event_listen_count[source])
 
 
-/singleton/observ/register(var/datum/event_source, var/datum/listener, var/proc_call)
+/singleton/observ/register(datum/event_source, datum/listener, proc_call)
 	. = ..()
 	if(.)
 		GLOB.event_sources_count[event_source] += 1
 		GLOB.event_listen_count[listener] += 1
 
-/singleton/observ/unregister(var/datum/event_source, var/datum/listener, var/proc_call)
+/singleton/observ/unregister(datum/event_source, datum/listener, proc_call)
 	. = ..()
 	if(.)
 		GLOB.event_sources_count[event_source] -= 1
 		GLOB.event_listen_count[listener] -= 1
 
-/singleton/observ/register_global(var/datum/listener, var/proc_call)
+/singleton/observ/register_global(datum/listener, proc_call)
 	. = ..()
 	if(.)
 		GLOB.global_listen_count[listener] += 1
 
-/singleton/observ/unregister_global(var/datum/listener, var/proc_call)
+/singleton/observ/unregister_global(datum/listener, proc_call)
 	. = ..()
 	if(.)
 		GLOB.global_listen_count[listener] -= 1

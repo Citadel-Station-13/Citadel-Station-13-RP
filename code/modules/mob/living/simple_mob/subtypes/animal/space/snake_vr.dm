@@ -132,7 +132,7 @@
 					visible_emote("stares at the [movement_target] that [movement_target.loc] has with an unknowable reptilian gaze.")
 */
 
-/mob/living/simple_mob/animal/passive/snake/noodle/apply_melee_effects(var/atom/A)
+/mob/living/simple_mob/animal/passive/snake/noodle/apply_melee_effects(atom/A)
 	if(ismouse(A))
 		var/mob/living/simple_mob/animal/passive/mouse/mouse = A
 		if(mouse.getMaxHealth() < 20) // In case a badmin makes giant mice or something.
@@ -141,7 +141,7 @@
 	else
 		..()
 
-/mob/living/simple_mob/animal/passive/snake/noodle/attackby(var/obj/item/O, var/mob/user)
+/mob/living/simple_mob/animal/passive/snake/noodle/attackby(obj/item/O, mob/user)
 	if(istype(O, /obj/item/reagent_containers/food/snacks/snakesnack))
 		visible_message("<span class='notice'>[user] feeds \the [O] to [src].</span>")
 		qdel(O)

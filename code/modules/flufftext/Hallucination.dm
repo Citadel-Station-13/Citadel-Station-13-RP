@@ -240,7 +240,7 @@ proc/check_panel(mob/M)
 	var/collapse
 	var/image/down
 
-/obj/effect/fake_attacker/attackby(var/obj/item/P as obj, mob/user as mob)
+/obj/effect/fake_attacker/attackby(obj/item/P as obj, mob/user as mob)
 	step_away(src,my_target,2)
 	for(var/mob/M in oviewers(world.view,my_target))
 		to_chat(M, "<font color='red'><B>[my_target] flails around wildly.</B></font>")
@@ -248,7 +248,7 @@ proc/check_panel(mob/M)
 
 	src.health -= P.damage_force
 
-/obj/effect/fake_attacker/Crossed(var/mob/M, somenumber)
+/obj/effect/fake_attacker/Crossed(mob/M, somenumber)
 	. = ..()
 	if(M == my_target)
 		step_away(src,my_target,2)
@@ -318,7 +318,7 @@ proc/check_panel(mob/M)
 	collapse = 1
 	updateimage()
 
-/proc/fake_blood(var/mob/target)
+/proc/fake_blood(mob/target)
 	var/obj/effect/overlay/O = new/obj/effect/overlay(target.loc)
 	O.name = "blood"
 	var/image/I = image('icons/effects/blood.dmi',O,"floor[rand(1,7)]",O.dir,1)
@@ -343,7 +343,7 @@ GLOBAL_LIST_INIT(non_fakeattack_weapons, list(/obj/item/gun/ballistic, /obj/item
 	/obj/item/clothing/shoes/magboots, /obj/item/blueprints, /obj/item/disk/nuclear,\
 	/obj/item/clothing/suit/space/void, /obj/item/tank))
 
-/proc/fake_attack(var/mob/living/target)
+/proc/fake_attack(mob/living/target)
 	var/list/possible_clones = new/list()
 	var/mob/living/carbon/human/clone = null
 	var/clone_weapon = null

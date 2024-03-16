@@ -225,7 +225,7 @@
 		return FALSE
 	return TRUE
 
-/obj/machinery/organ_printer/proc/print_organ(var/choice)
+/obj/machinery/organ_printer/proc/print_organ(choice)
 	var/new_organ = choice
 	var/obj/item/organ/O = new new_organ(get_turf(src))
 	O.status |= ORGAN_CUT_AWAY
@@ -352,7 +352,7 @@
 		new /obj/item/stack/material/steel(get_turf(src), FLOOR(stored_matter/matter_amount_per_sheet, 1))
 	return ..()
 
-/obj/machinery/organ_printer/robot/print_organ(var/choice)
+/obj/machinery/organ_printer/robot/print_organ(choice)
 	var/obj/item/organ/O = ..()
 	O.robotize()
 	O.status |= ORGAN_CUT_AWAY  // robotize() resets status to 0
@@ -360,7 +360,7 @@
 	audible_message("<span class='info'>\The [src] dings, then spits out \a [O].</span>")
 	return O
 
-/obj/machinery/organ_printer/robot/attackby(var/obj/item/W, var/mob/user)
+/obj/machinery/organ_printer/robot/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/stack/material) && W.get_material_name() == matter_type)
 		if((max_stored_matter-stored_matter) < matter_amount_per_sheet)
 			to_chat(user, "<span class='warning'>\The [src] is too full.</span>")

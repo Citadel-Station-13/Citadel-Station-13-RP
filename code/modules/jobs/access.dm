@@ -25,14 +25,14 @@
 /obj/proc/check_access(obj/item/I)
 	return check_access_list(I ? I.GetAccess() : list())
 
-/obj/proc/check_access_list(var/list/L)
+/obj/proc/check_access_list(list/L)
 	if(!L)
 		return 0
 	if(!istype(L, /list))
 		return 0
 	return has_access(req_access, req_one_access, L)
 
-/proc/has_access(var/list/req_access, var/list/req_one_access, var/list/accesses)
+/proc/has_access(list/req_access, list/req_one_access, list/accesses)
 	var/has_RA = LAZYLEN(req_access)
 	var/has_ROA = LAZYLEN(req_one_access)
 	var/has_A = LAZYLEN(accesses)
@@ -102,7 +102,7 @@
 	RETURN_TYPE(/list)
 	return SSjob.access_ids_of_region(region)
 
-/proc/get_region_accesses_name(var/code)
+/proc/get_region_accesses_name(code)
 	// todo: remove this proc
 	switch(code)
 		if(ACCESS_REGION_ALL)
@@ -168,7 +168,7 @@
 /mob/living/silicon/GetIdCard()
 	return idcard
 
-/proc/FindNameFromID(var/mob/living/carbon/human/H)
+/proc/FindNameFromID(mob/living/carbon/human/H)
 	ASSERT(istype(H))
 	var/obj/item/card/id/C = H.GetIdCard()
 	if(C)

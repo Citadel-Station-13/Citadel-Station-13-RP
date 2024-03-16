@@ -87,7 +87,7 @@
 		SStgui.close_uis(src)
 	..()
 
-/obj/item/clothing/glasses/omnihud/emp_act(var/severity)
+/obj/item/clothing/glasses/omnihud/emp_act(severity)
 	var/disconnect_ar = arscreen
 	arscreen = null
 	var/disconnect_tgar = tgarscreen
@@ -101,7 +101,7 @@
 	if(flash_prot && ishuman(loc))
 		to_chat(loc, "<span class='warning'>Your [src.name] darken to try and protect your eyes!</span>")
 
-/obj/item/clothing/glasses/omnihud/prescribe(var/mob/user)
+/obj/item/clothing/glasses/omnihud/prescribe(mob/user)
 	prescription = !prescription
 	playsound(user,'sound/items/screwdriver.ogg', 50, 1)
 	if(prescription)
@@ -125,7 +125,7 @@
 		if(!ar_interact(H))
 			to_chat(user, "<span class='warning'>The [src] does not have any kind of special display.</span>")
 
-/obj/item/clothing/glasses/omnihud/proc/ar_interact(var/mob/living/carbon/human/user)
+/obj/item/clothing/glasses/omnihud/proc/ar_interact(mob/living/carbon/human/user)
 	return 0 //The base models do nothing.
 
 /obj/item/clothing/glasses/omnihud/prescription
@@ -146,7 +146,7 @@
 	. = ..()
 	AddElement(/datum/element/hud_granter, list(DATA_HUD_ID_JOB, DATA_HUD_MEDICAL), list(SLOT_ID_GLASSES))
 
-/obj/item/clothing/glasses/omnihud/med/ar_interact(var/mob/living/carbon/human/user)
+/obj/item/clothing/glasses/omnihud/med/ar_interact(mob/living/carbon/human/user)
 	if(tgarscreen)
 		tgarscreen.ui_interact(user)
 	return 1
@@ -165,7 +165,7 @@
 	. = ..()
 	AddElement(/datum/element/hud_granter, list(DATA_HUD_SECURITY_ADVANCED), list(SLOT_ID_GLASSES))
 
-/obj/item/clothing/glasses/omnihud/sec/ar_interact(var/mob/living/carbon/human/user)
+/obj/item/clothing/glasses/omnihud/sec/ar_interact(mob/living/carbon/human/user)
 	if(arscreen)
 		arscreen.nano_ui_interact(user,"main",null,1,glasses_state)
 	return 1
@@ -180,7 +180,7 @@
 	action_button_name = "AR Console (Station Alerts)"
 	arscreen_path = /datum/nano_module/alarm_monitor/engineering
 
-/obj/item/clothing/glasses/omnihud/eng/ar_interact(var/mob/living/carbon/human/user)
+/obj/item/clothing/glasses/omnihud/eng/ar_interact(mob/living/carbon/human/user)
 	if(arscreen)
 		arscreen.nano_ui_interact(user,"main",null,1,glasses_state)
 	return 1

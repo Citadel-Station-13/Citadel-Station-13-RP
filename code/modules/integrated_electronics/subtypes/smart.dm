@@ -177,7 +177,7 @@
 
 	var/obj/item/mmi/installed_brain
 
-/obj/item/integrated_circuit/input/mmi_tank/attackby_react(var/obj/item/mmi/O, var/mob/user)
+/obj/item/integrated_circuit/input/mmi_tank/attackby_react(obj/item/mmi/O, mob/user)
 	if(!istype(O,/obj/item/mmi))
 		to_chat(user,"<span class='warning'>You can't put that inside.</span>")
 		return
@@ -209,7 +209,7 @@
 	RemoveBrain()
 	..()
 
-/obj/item/integrated_circuit/input/mmi_tank/relaymove(var/n,var/dir)
+/obj/item/integrated_circuit/input/mmi_tank/relaymove(n,dir)
 	set_pin_data(IC_OUTPUT, 2, dir)
 	do_work(1)
 	switch(dir)
@@ -218,7 +218,7 @@
 		if(1)	activate_pin(4)
 		if(2)	activate_pin(5)
 
-/obj/item/integrated_circuit/input/mmi_tank/do_work(var/n)
+/obj/item/integrated_circuit/input/mmi_tank/do_work(n)
 	push_data()
 	activate_pin(n)
 
@@ -304,7 +304,7 @@
 
 	var/obj/item/paicard/installed_pai
 
-/obj/item/integrated_circuit/input/pAI_connector/attackby_react(var/obj/item/paicard/O, var/mob/user)
+/obj/item/integrated_circuit/input/pAI_connector/attackby_react(obj/item/paicard/O, mob/user)
 	if(!istype(O,/obj/item/paicard))
 		to_chat(user,"<span class='warning'>You can't put that inside.</span>")
 		return
@@ -332,7 +332,7 @@
 	else
 		to_chat(user, "<span class='notice'>The connection port is empty.</span>")
 
-/obj/item/integrated_circuit/input/pAI_connector/relaymove(var/n,var/dir)
+/obj/item/integrated_circuit/input/pAI_connector/relaymove(n,dir)
 	set_pin_data(IC_OUTPUT, 2, dir)
 	do_work(1)
 	switch(dir)
@@ -341,7 +341,7 @@
 		if(1)	activate_pin(4)
 		if(2)	activate_pin(5)
 
-/obj/item/integrated_circuit/input/pAI_connector/do_work(var/n)
+/obj/item/integrated_circuit/input/pAI_connector/do_work(n)
 	push_data()
 	activate_pin(n)
 

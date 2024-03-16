@@ -3,7 +3,7 @@
 /datum/admin_secret_item/admin_secret/admin_logs
 	name = "Admin Logs"
 
-/datum/admin_secret_item/admin_secret/admin_logs/execute(var/mob/user)
+/datum/admin_secret_item/admin_secret/admin_logs/execute(mob/user)
 	. = ..()
 	if(!.)
 		return
@@ -23,7 +23,7 @@
 /datum/admin_secret_item/admin_secret/round_logs
 	name = "Round Dialogue Logs"
 
-/datum/admin_secret_item/admin_secret/round_logs/execute(var/mob/user)
+/datum/admin_secret_item/admin_secret/round_logs/execute(mob/user)
 	. = ..()
 	if(!.)
 		return

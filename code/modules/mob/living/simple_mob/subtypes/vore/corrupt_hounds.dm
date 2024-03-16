@@ -141,7 +141,7 @@
 
 	vore_pounce_chance = 0 //No...
 
-/mob/living/simple_mob/vore/aggressive/corrupthound/sword/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/mob/living/simple_mob/vore/aggressive/corrupthound/sword/attackby(obj/item/O as obj, mob/user as mob)
 	if(O.damage_force)
 		if(prob(20))
 			visible_message("<span class='danger'>\The [src] swats \the [O] with its sword tail!</span>")
@@ -154,7 +154,7 @@
 		to_chat(user, "<span class='warning'>This weapon is ineffective, it does no damage.</span>")
 		visible_message("<span class='warning'>\The [user] gently taps [src] with \the [O].</span>")
 
-/mob/living/simple_mob/vore/aggressive/corrupthound/sword/bullet_act(var/obj/projectile/Proj)
+/mob/living/simple_mob/vore/aggressive/corrupthound/sword/bullet_act(obj/projectile/Proj)
 	if(!Proj)	return
 	if(prob(35))
 		visible_message("<span class='warning'>[src] deflects [Proj] with its sword tail!</span>")
@@ -171,7 +171,7 @@
 /mob/living/simple_mob/vore/aggressive/corrupthound/speech_bubble_appearance()
 	return "synthetic_evil"
 
-/mob/living/simple_mob/vore/aggressive/corrupthound/apply_melee_effects(var/atom/A)
+/mob/living/simple_mob/vore/aggressive/corrupthound/apply_melee_effects(atom/A)
 	if(ismouse(A))
 		var/mob/living/simple_mob/animal/passive/mouse/mouse = A
 		if(mouse.getMaxHealth() < 20) // In case a badmin makes giant mice or something.

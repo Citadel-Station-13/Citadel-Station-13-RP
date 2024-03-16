@@ -159,7 +159,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 	else
 		icon_state = initial(icon_state)
 
-/obj/machinery/power/pointdefense/default_unfasten_wrench(var/mob/user, var/obj/item/W, var/time)
+/obj/machinery/power/pointdefense/default_unfasten_wrench(mob/user, obj/item/W, time)
 	if((. = ..()))
 		src.transform = null // Reset rotation if we're anchored/unanchored
 

@@ -77,7 +77,7 @@
 	interface_name = "VOID-shift phase projector"
 	interface_desc = "An advanced teleportation system. It is capable of pinpoint precision or random leaps forward."
 
-/obj/item/hardsuit_module/teleporter/proc/phase_in(var/mob/M,var/turf/T)
+/obj/item/hardsuit_module/teleporter/proc/phase_in(mob/M,turf/T)
 
 	if(!M || !T)
 		return
@@ -87,7 +87,7 @@
 	playsound(T, /datum/soundbyte/grouped/sparks, 50, 1)
 	anim(T,M,'icons/mob/mob.dmi',,"phasein",,M.dir)
 
-/obj/item/hardsuit_module/teleporter/proc/phase_out(var/mob/M,var/turf/T)
+/obj/item/hardsuit_module/teleporter/proc/phase_out(mob/M,turf/T)
 
 	if(!M || !T)
 		return
@@ -95,7 +95,7 @@
 	playsound(T, /datum/soundbyte/grouped/sparks, 50, 1)
 	anim(T,M,'icons/mob/mob.dmi',,"phaseout",,M.dir)
 
-/obj/item/hardsuit_module/teleporter/engage(var/atom/target, var/notify_ai)
+/obj/item/hardsuit_module/teleporter/engage(atom/target, notify_ai)
 
 	var/mob/living/carbon/human/H = holder.wearer
 
@@ -208,7 +208,7 @@
 	if(holder.wearer.stat == 2)
 		engage(1)
 
-/obj/item/hardsuit_module/self_destruct/engage(var/skip_check)
+/obj/item/hardsuit_module/self_destruct/engage(skip_check)
 	if(!skip_check && usr && alert(usr, "Are you sure you want to push that button?", "Self-destruct", "No", "Yes") == "No")
 		return
 	if(holder && holder.wearer)

@@ -31,11 +31,11 @@
 /obj/item/inserted_spell/proc/on_insert()
 	return
 
-/obj/item/inserted_spell/proc/on_expire(var/dispelled = 0)
+/obj/item/inserted_spell/proc/on_expire(dispelled = 0)
 	qdel(src)
 	return
 
-/obj/item/spell/insert/proc/insert(var/mob/living/L, mob/user)
+/obj/item/spell/insert/proc/insert(mob/living/L, mob/user)
 	if(inserting)
 		if(!allow_stacking)
 			for(var/obj/item/inserted_spell/IS in L.contents)

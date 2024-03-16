@@ -11,14 +11,14 @@ var/list/_client_preferences_by_type
 				_client_preferences += new client_type()
 	return _client_preferences
 
-/proc/get_client_preference(var/datum/client_preference/preference)
+/proc/get_client_preference(datum/client_preference/preference)
 	if(istype(preference))
 		return preference
 	if(ispath(preference))
 		return get_client_preference_by_type(preference)
 	return get_client_preference_by_key(preference)
 
-/proc/get_client_preference_by_key(var/preference)
+/proc/get_client_preference_by_key(preference)
 	if(!_client_preferences_by_key)
 		_client_preferences_by_key = list()
 		for(var/ct in get_client_preferences())
@@ -26,7 +26,7 @@ var/list/_client_preferences_by_type
 			_client_preferences_by_key[client_pref.key] = client_pref
 	return _client_preferences_by_key[preference]
 
-/proc/get_client_preference_by_type(var/preference)
+/proc/get_client_preference_by_type(preference)
 	if(!_client_preferences_by_type)
 		_client_preferences_by_type = list()
 		for(var/ct in get_client_preferences())
@@ -41,10 +41,10 @@ var/list/_client_preferences_by_type
 	var/enabled_description = "Yes"
 	var/disabled_description = "No"
 
-/datum/client_preference/proc/may_toggle(var/mob/preference_mob)
+/datum/client_preference/proc/may_toggle(mob/preference_mob)
 	return TRUE
 
-/datum/client_preference/proc/toggled(var/mob/preference_mob, var/enabled)
+/datum/client_preference/proc/toggled(mob/preference_mob, enabled)
 	return
 
 /*********************
@@ -59,7 +59,7 @@ var/list/_client_preferences_by_type
 	description ="Play lobby music"
 	key = "SOUND_LOBBY"
 
-/datum/client_preference/play_lobby_music/toggled(var/mob/preference_mob, var/enabled)
+/datum/client_preference/play_lobby_music/toggled(mob/preference_mob, enabled)
 	if(!preference_mob.client || !preference_mob.client.media)
 		return
 
@@ -72,7 +72,7 @@ var/list/_client_preferences_by_type
 	description ="Play ambience"
 	key = "SOUND_AMBIENCE"
 
-/datum/client_preference/play_ambiance/toggled(var/mob/preference_mob, var/enabled)
+/datum/client_preference/play_ambiance/toggled(mob/preference_mob, enabled)
 	if(!enabled)
 		SEND_SOUND(preference_mob, sound(null, repeat = 0, wait = 0, volume = 0, channel = 1))
 		SEND_SOUND(preference_mob, sound(null, repeat = 0, wait = 0, volume = 0, channel = 2))
@@ -81,7 +81,7 @@ var/list/_client_preferences_by_type
 	description ="Play jukebox music"
 	key = "SOUND_JUKEBOX"
 
-/datum/client_preference/play_jukebox/toggled(var/mob/preference_mob, var/enabled)
+/datum/client_preference/play_jukebox/toggled(mob/preference_mob, enabled)
 	if(!enabled)
 		preference_mob.stop_all_music()
 	else
@@ -179,7 +179,7 @@ var/list/_client_preferences_by_type
 	enabled_description = "Show"
 	disabled_description = "Hide"
 
-/datum/client_preference/show_typing_indicator/toggled(var/mob/preference_mob, var/enabled)
+/datum/client_preference/show_typing_indicator/toggled(mob/preference_mob, enabled)
 	if(!enabled)
 		preference_mob.set_typing_indicator(FALSE)
 
@@ -226,7 +226,7 @@ var/list/_client_preferences_by_type
 	enabled_description = "On"
 	disabled_description = "Off"
 
-/datum/client_preference/ambient_occlusion/toggled(var/mob/preference_mob, var/enabled)
+/datum/client_preference/ambient_occlusion/toggled(mob/preference_mob, enabled)
 	. = ..()
 	if(preference_mob.client)
 		preference_mob?.using_perspective?.planes?.sync_owner(preference_mob.client)
@@ -282,13 +282,13 @@ var/list/_client_preferences_by_type
 /********************
 * Staff Preferences *
 ********************/
-/datum/client_preference/admin/may_toggle(var/mob/preference_mob)
+/datum/client_preference/admin/may_toggle(mob/preference_mob)
 	return check_rights(R_ADMIN, 0, preference_mob)
 
-/datum/client_preference/mod/may_toggle(var/mob/preference_mob)
+/datum/client_preference/mod/may_toggle(mob/preference_mob)
 	return check_rights(R_MOD|R_ADMIN, 0, preference_mob)
 
-/datum/client_preference/debug/may_toggle(var/mob/preference_mob)
+/datum/client_preference/debug/may_toggle(mob/preference_mob)
 	return check_rights(R_DEBUG|R_ADMIN, 0, preference_mob)
 
 /datum/client_preference/mod/show_attack_logs
@@ -311,7 +311,7 @@ var/list/_client_preferences_by_type
 	enabled_description = "Show"
 	disabled_description = "Hide"
 
-/datum/client_preference/holder/may_toggle(var/mob/preference_mob)
+/datum/client_preference/holder/may_toggle(mob/preference_mob)
 	return preference_mob && preference_mob.client && preference_mob.client.holder
 
 /datum/client_preference/holder/play_adminhelp_ping

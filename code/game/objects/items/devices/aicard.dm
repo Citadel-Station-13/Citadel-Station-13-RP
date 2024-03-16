@@ -28,7 +28,7 @@
 
 	nano_ui_interact(user)
 
-/obj/item/aicard/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = inventory_state)
+/obj/item/aicard/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1, datum/topic_state/state = inventory_state)
 	var/data[0]
 	data["has_ai"] = carded_ai != null
 	if(carded_ai)
@@ -100,7 +100,7 @@
 	else
 		icon_state = "aicard"
 
-/obj/item/aicard/proc/grab_ai(var/mob/living/silicon/ai/ai, var/mob/living/user)
+/obj/item/aicard/proc/grab_ai(mob/living/silicon/ai/ai, mob/living/user)
 	if(carded_ai)
 		to_chat(user, "<span class='danger'>Transfer failed:</span> Existing AI found on remote device. Remove existing AI to install a new one.")
 		return 0
@@ -159,7 +159,7 @@
 		carded_ai.show_message(rendered, type)
 	..()
 
-/obj/item/aicard/relaymove(var/mob/user, var/direction)
+/obj/item/aicard/relaymove(mob/user, direction)
 	if(!CHECK_MOBILITY(user, MOBILITY_CAN_MOVE))
 		return
 	var/obj/item/hardsuit/hardsuit = src.get_hardsuit()

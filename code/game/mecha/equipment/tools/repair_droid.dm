@@ -67,7 +67,7 @@
 
 /datum/global_iterator/mecha_repair_droid
 
-/datum/global_iterator/mecha_repair_droid/process(var/obj/item/mecha_parts/mecha_equipment/repair_droid/RD as obj)
+/datum/global_iterator/mecha_repair_droid/process(obj/item/mecha_parts/mecha_equipment/repair_droid/RD as obj)
 	if(!RD.chassis)
 		stop()
 		RD.set_ready_state(1)

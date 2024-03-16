@@ -518,21 +518,21 @@
 	return relaymove(user, direction)
 
 // Called to set the atom's density and used to add behavior to density changes.
-/atom/proc/set_density(var/new_density)
+/atom/proc/set_density(new_density)
 	if(density == new_density)
 		return FALSE
 	density = !!new_density // Sanitize to be strictly 0 or 1
 	return TRUE
 
 // Called to set the atom's invisibility and usd to add behavior to invisibility changes.
-/atom/proc/set_invisibility(var/new_invisibility)
+/atom/proc/set_invisibility(new_invisibility)
 	if(invisibility == new_invisibility)
 		return FALSE
 	invisibility = new_invisibility
 	return TRUE
 
 // todo: this really needs to be refactored
-/atom/proc/emag_act(var/remaining_charges, var/mob/user, var/emag_source)
+/atom/proc/emag_act(remaining_charges, mob/user, emag_source)
 	return -1
 
 
@@ -683,7 +683,7 @@
 	return
 
 
-/atom/proc/transfer_fingerprints_to(var/atom/A)
+/atom/proc/transfer_fingerprints_to(atom/A)
 
 	if(!istype(A.fingerprints,/list))
 		A.fingerprints = list()
@@ -724,7 +724,7 @@
 	. = 1
 	return 1
 
-/atom/proc/add_vomit_floor(mob/living/carbon/M as mob, var/toxvomit = 0)
+/atom/proc/add_vomit_floor(mob/living/carbon/M as mob, toxvomit = 0)
 	if( istype(src, /turf/simulated) )
 		var/obj/effect/debris/cleanable/vomit/this = new /obj/effect/debris/cleanable/vomit(src)
 		this.virus2 = virus_copylist(M.virus2)
@@ -783,7 +783,7 @@
 /// message is the message output to anyone who can hear.
 /// deaf_message (optional) is what deaf people will see.
 /// hearing_distance (optional) is the range, how many tiles away the message can be heard.
-/atom/proc/audible_message(var/message, var/deaf_message, var/hearing_distance, datum/language/lang)
+/atom/proc/audible_message(message, deaf_message, hearing_distance, datum/language/lang)
 
 	var/range = hearing_distance || world.view
 	var/list/hear = get_mobs_and_objs_in_view_fast(get_turf(src),range,remote_ghosts = FALSE)
@@ -806,7 +806,7 @@
 	if(!no_runechat && ismovable(src))
 		INVOKE_ASYNC(src, TYPE_PROC_REF(/atom/movable, animate_chat), (message ? message : deaf_message), null, FALSE, heard_to_floating_message, 30)
 
-/atom/movable/proc/dropInto(var/atom/destination)
+/atom/movable/proc/dropInto(atom/destination)
 	while(istype(destination))
 		var/atom/drop_destination = destination.onDropInto(src)
 		if(!istype(drop_destination) || drop_destination == destination)
@@ -814,10 +814,10 @@
 		destination = drop_destination
 	return moveToNullspace()
 
-/atom/proc/onDropInto(var/atom/movable/AM)
+/atom/proc/onDropInto(atom/movable/AM)
 	return // If onDropInto returns null, then dropInto will forceMove AM into us.
 
-/atom/movable/onDropInto(var/atom/movable/AM)
+/atom/movable/onDropInto(atom/movable/AM)
 	return loc // If onDropInto returns something, then dropInto will attempt to drop AM there.
 
 /atom/proc/InsertedContents()

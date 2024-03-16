@@ -196,7 +196,7 @@ GLOBAL_LIST_EMPTY(observer_list)
 	handle_regular_hud_updates()
 	handle_vision()
 
-/mob/proc/ghostize(var/can_reenter_corpse = 1)
+/mob/proc/ghostize(can_reenter_corpse = 1)
 	if(key)
 		SSplaytime.queue_playtimes(client)
 		if(ishuman(src))
@@ -337,7 +337,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		H.remove_hud_from(src)
 	to_chat(src,"<font color=#4F49AF><B>AntagHUD [antagHUD ? "Enabled" : "Disabled"]</B></font>")
 
-/mob/observer/dead/proc/dead_tele(var/area/A in GLOB.sortedAreas)
+/mob/observer/dead/proc/dead_tele(area/A in GLOB.sortedAreas)
 	set category = "Ghost"
 	set name = "Teleport"
 	set desc = "Teleport to a location"
@@ -622,7 +622,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			"<span class='warning'>You get the feeling that the ghost can't become any more visible.</span>" \
 		)
 
-/mob/observer/dead/proc/toggle_icon(var/icon)
+/mob/observer/dead/proc/toggle_icon(icon)
 	if(!client)
 		return
 
@@ -636,7 +636,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		var/image/J = image('icons/mob/mob.dmi', loc = src, icon_state = icon)
 		client.images += J
 
-/mob/observer/dead/proc/toggle_visibility(var/forced = 0)
+/mob/observer/dead/proc/toggle_visibility(forced = 0)
 	set category = "Ghost"
 	set name = "Toggle Visibility"
 	set desc = "Allows you to turn (in)visible (almost) at will."
@@ -684,7 +684,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	update_ghost_sight()
 	to_chat(src,"You [ghostvision ? "now" : "no longer"] have ghost vision.")
 
-/mob/observer/dead/MayRespawn(var/feedback = 0)
+/mob/observer/dead/MayRespawn(feedback = 0)
 	if(!client)
 		return 0
 	if(mind && mind.current && mind.current.stat != DEAD && can_reenter_corpse)
@@ -700,15 +700,15 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /atom/proc/extra_ghost_link()
 	return
 
-/mob/extra_ghost_link(var/atom/ghost)
+/mob/extra_ghost_link(atom/ghost)
 	if(client && eyeobj)
 		return "|<a href='byond://?src=\ref[ghost];track=\ref[eyeobj]'>eye</a>"
 
-/mob/observer/dead/extra_ghost_link(var/atom/ghost)
+/mob/observer/dead/extra_ghost_link(atom/ghost)
 	if(mind && mind.current)
 		return "|<a href='byond://?src=\ref[ghost];track=\ref[mind.current]'>body</a>"
 
-/proc/ghost_follow_link(var/atom/target, var/atom/ghost)
+/proc/ghost_follow_link(atom/target, atom/ghost)
 	if((!target) || (!ghost)) return
 	. = "<a href='byond://?src=\ref[ghost];track=\ref[target]'>follow</a>"
 	. += target.extra_ghost_link(ghost)
@@ -792,7 +792,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 // Lets a ghost know someone's trying to bring them back, and for them to get into their body.
 // Mostly the same as TG's sans the hud element, since we don't have TG huds.
-/mob/observer/dead/proc/notify_revive(var/message, var/sound, flashwindow = TRUE)
+/mob/observer/dead/proc/notify_revive(message, sound, flashwindow = TRUE)
 	if((last_revive_notification + 2 MINUTES) > world.time)
 		return
 	last_revive_notification = world.time

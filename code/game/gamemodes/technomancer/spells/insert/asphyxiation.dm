@@ -44,7 +44,7 @@
 
 // if((getOxyLoss() > (species.total_health/2)) || (health <= config_legacy.health_threshold_crit))
 
-/obj/item/inserted_spell/asphyxiation/proc/predict_crit(var/pulses_remaining, var/mob/living/carbon/human/victim, var/previous_damage = 0)
+/obj/item/inserted_spell/asphyxiation/proc/predict_crit(pulses_remaining, mob/living/carbon/human/victim, previous_damage = 0)
 	if(pulses_remaining <= 0) // Infinite loop protection
 		return 0
 	var/health_lost

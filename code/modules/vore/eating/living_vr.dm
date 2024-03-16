@@ -268,7 +268,7 @@
 //
 // Release everything in every vore organ
 //
-/mob/living/proc/release_vore_contents(var/include_absorbed = TRUE, var/silent = FALSE)
+/mob/living/proc/release_vore_contents(include_absorbed = TRUE, silent = FALSE)
 	for(var/belly in vore_organs)
 		var/obj/belly/B = belly
 		B.release_all_contents(include_absorbed, silent)
@@ -312,7 +312,7 @@
 //
 // Clearly super important. Obviously.
 //
-/mob/living/proc/lick(var/mob/living/tasted in living_mobs(1))
+/mob/living/proc/lick(mob/living/tasted in living_mobs(1))
 	set name = "Lick"
 	set category = "IC"
 	set desc = "Lick someone nearby!"
@@ -430,11 +430,11 @@
 //
 // Eating procs depending on who clicked what
 //
-/mob/living/proc/feed_grabbed_to_self(var/mob/living/user, var/mob/living/prey)
+/mob/living/proc/feed_grabbed_to_self(mob/living/user, mob/living/prey)
 	var/belly = user.vore_selected
 	return perform_the_nom(user, prey, user, belly)
 
-/mob/living/proc/eat_held_mob(var/mob/living/user, var/mob/living/prey, var/mob/living/pred)
+/mob/living/proc/eat_held_mob(mob/living/user, mob/living/prey, mob/living/pred)
 	var/belly
 	if(user != pred)
 		belly = input("Choose Belly") in pred.vore_organs
@@ -442,18 +442,18 @@
 		belly = pred.vore_selected
 	return perform_the_nom(user, prey, pred, belly)
 
-/mob/living/proc/feed_self_to_grabbed(var/mob/living/user, var/mob/living/pred)
+/mob/living/proc/feed_self_to_grabbed(mob/living/user, mob/living/pred)
 	var/belly = input("Choose Belly") in pred.vore_organs
 	return perform_the_nom(user, user, pred, belly)
 
-/mob/living/proc/feed_grabbed_to_other(var/mob/living/user, var/mob/living/prey, var/mob/living/pred)
+/mob/living/proc/feed_grabbed_to_other(mob/living/user, mob/living/prey, mob/living/pred)
 	var/belly = input("Choose Belly") in pred.vore_organs
 	return perform_the_nom(user, prey, pred, belly)
 
 //
 // Master vore proc that actually does vore procedures
 //
-/mob/living/proc/perform_the_nom(var/mob/living/user, var/mob/living/prey, var/mob/living/pred, var/obj/belly/belly, var/delay)
+/mob/living/proc/perform_the_nom(mob/living/user, mob/living/prey, mob/living/pred, obj/belly/belly, delay)
 	if(!prey.devourable)
 		return
 	//Sanity
@@ -583,7 +583,7 @@
 		forceMove(C.loc)
 	return
 
-/mob/living/proc/feed_grabbed_to_self_falling_nom(var/mob/living/user, var/mob/living/prey)
+/mob/living/proc/feed_grabbed_to_self_falling_nom(mob/living/user, mob/living/prey)
 	var/belly = user.vore_selected
 	return perform_the_nom(user, prey, user, belly, delay = 1) //1/10th of a second is probably fine.
 

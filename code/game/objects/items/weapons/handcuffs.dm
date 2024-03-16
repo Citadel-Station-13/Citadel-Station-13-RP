@@ -43,7 +43,7 @@
 		else
 			to_chat(user, "<span class='danger'>You need to have a firm grip on [C] before you can put \the [src] on!</span>")
 
-/obj/item/handcuffs/proc/can_place(var/mob/target, var/mob/user)
+/obj/item/handcuffs/proc/can_place(mob/target, mob/user)
 	if(user == target)
 		return 1
 	if(target.lying) //Mobs that are lying down can be handcuffed without needing to grab them, to make arrests a little easier
@@ -57,7 +57,7 @@
 				return 1
 	return 0
 
-/obj/item/handcuffs/proc/place_handcuffs(var/mob/living/carbon/target, var/mob/user)
+/obj/item/handcuffs/proc/place_handcuffs(mob/living/carbon/target, mob/user)
 
 	var/mob/living/carbon/human/H = target
 	if(!istype(H))
@@ -107,7 +107,7 @@
 
 /* grimdark code that's disabled for code quality reasons - readd later if we care
 var/last_chew = 0
-/mob/living/carbon/human/RestrainedClickOn(var/atom/A)
+/mob/living/carbon/human/RestrainedClickOn(atom/A)
 	if (A != src) return ..()
 	if (last_chew + 26 > world.time) return
 
@@ -178,7 +178,7 @@ var/last_chew = 0
 /obj/item/handcuffs/cable/white
 	color = "#FFFFFF"
 
-/obj/item/handcuffs/cable/attackby(var/obj/item/I, mob/user as mob)
+/obj/item/handcuffs/cable/attackby(obj/item/I, mob/user as mob)
 	..()
 	if(istype(I, /obj/item/stack/rods))
 		var/obj/item/stack/rods/R = I
@@ -209,7 +209,7 @@ var/last_chew = 0
 	icon_state = "disruptorcuff"
 	desc = "These cutting edge handcuffs were originally designed by the PMD. Commonly deployed to restrain anomalous lifeforms, disruptor cuffs employ a form of acausal logic engine disruption, in tandem with morphogenic resonance, to neutralize the abilities of technological and biological threats."
 
-/obj/item/handcuffs/disruptor/equipped(var/mob/living/user,var/slot)
+/obj/item/handcuffs/disruptor/equipped(mob/living/user,slot)
 	. = ..()
 	if(slot == SLOT_ID_HANDCUFFED)
 		ADD_TRAIT(user, TRAIT_DISRUPTED, CLOTHING_TRAIT)
@@ -252,7 +252,7 @@ var/last_chew = 0
 		else
 			to_chat(user, "<span class='danger'>You need to have a firm grip on [C] before you can put \the [src] on!</span>")
 
-/obj/item/handcuffs/legcuffs/proc/place_legcuffs(var/mob/living/carbon/target, var/mob/user)
+/obj/item/handcuffs/legcuffs/proc/place_legcuffs(mob/living/carbon/target, mob/user)
 	playsound(src.loc, cuff_sound, 30, 1, -2)
 
 	var/mob/living/carbon/human/H = target
@@ -293,7 +293,7 @@ var/last_chew = 0
 		forceMove(user.drop_location())
 	return 1
 
-/obj/item/handcuffs/legcuffs/equipped(var/mob/living/user,var/slot)
+/obj/item/handcuffs/legcuffs/equipped(mob/living/user,slot)
 	. = ..()
 	if(slot == SLOT_ID_LEGCUFFED)
 		if(user.m_intent != "walk")
@@ -318,15 +318,15 @@ var/last_chew = 0
 	breakouttime = 30
 	cuff_sound = 'sound/weapons/towelwipe.ogg' //Is there anything this sound can't do?
 
-/obj/item/handcuffs/legcuffs/bola/can_place(var/mob/target, var/mob/user)
+/obj/item/handcuffs/legcuffs/bola/can_place(mob/target, mob/user)
 	if(user) //A ranged legcuff, until proper implementation as items it remains a projectile-only thing.
 		return 1
 
-/obj/item/handcuffs/legcuffs/bola/throw_impact(var/atom/target, var/mob/user)
+/obj/item/handcuffs/legcuffs/bola/throw_impact(atom/target, mob/user)
 	var/mob/living/L = target
 	place_legcuffs(L, user)
 
-/obj/item/handcuffs/legcuffs/bola/place_legcuffs(var/mob/living/carbon/target, var/mob/user)
+/obj/item/handcuffs/legcuffs/bola/place_legcuffs(mob/living/carbon/target, mob/user)
 	playsound(src.loc, cuff_sound, 30, 1, -2)
 
 	var/mob/living/carbon/human/H = target
@@ -363,7 +363,7 @@ var/last_chew = 0
 		to_chat(user, "<span class='warning'>The bola seems to take on a life of its own!</span>")
 		place_legcuffs(user)
 
-/obj/item/handcuffs/legcuffs/bola/cult/throw_impact(var/atom/target, var/mob/user, mob/living/carbon/human/H)
+/obj/item/handcuffs/legcuffs/bola/cult/throw_impact(atom/target, mob/user, mob/living/carbon/human/H)
 	if(iscultist(user))
 		return
 	if(H.mind.isholy)

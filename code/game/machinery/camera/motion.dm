@@ -29,7 +29,7 @@
 					// If they aren't in range, lose the target.
 					lostTarget(target)
 
-/obj/machinery/camera/proc/newTarget(var/mob/target)
+/obj/machinery/camera/proc/newTarget(mob/target)
 	if (istype(target, /mob/living/silicon/ai))
 		return FALSE
 	if (detectTime == 0)
@@ -38,7 +38,7 @@
 		motionTargets += target
 	return TRUE
 
-/obj/machinery/camera/proc/lostTarget(var/mob/target)
+/obj/machinery/camera/proc/lostTarget(mob/target)
 	if (target in motionTargets)
 		motionTargets -= target
 	if (motionTargets.len == 0)

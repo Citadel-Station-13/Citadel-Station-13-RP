@@ -62,7 +62,7 @@
 /mob/living/silicon/pai/can_use_hardsuit()
 	return loc == card
 
-/mob/living/proc/HardsuitClickOn(var/atom/A, var/alert_ai = 0)
+/mob/living/proc/HardsuitClickOn(atom/A, alert_ai = 0)
 	if(!can_use_hardsuit() || !canClick())
 		return 0
 	var/obj/item/hardsuit/hardsuit = get_hardsuit(TRUE)

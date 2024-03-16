@@ -74,7 +74,7 @@
 		return 0
 	removal_menu(user)
 
-/obj/machinery/suit_storage_closet/proc/removal_menu(var/mob/user)
+/obj/machinery/suit_storage_closet/proc/removal_menu(mob/user)
 	if (can_remove_items(user))
 		var/list/menuoptions = list()
 		if(helmet_amount > 0)
@@ -122,7 +122,7 @@
 		return 1
 	return 0
 
-/obj/machinery/suit_storage_closet/proc/can_remove_items(var/mob/user)
+/obj/machinery/suit_storage_closet/proc/can_remove_items(mob/user)
 	if (!Adjacent(user))
 		return 0
 
@@ -131,7 +131,7 @@
 
 	return 1
 /*
-/obj/machinery/suit_storage_closet/proc/dispense_helmet(mob/user as mob, var/list_index)
+/obj/machinery/suit_storage_closet/proc/dispense_helmet(mob/user as mob, list_index)
 	if(helmet_amount <= 0)
 		return
 	else
@@ -140,7 +140,7 @@
 		helmet_dispense.loc = src.loc
 		return
 
-/obj/machinery/suit_storage_closet/proc/dispense_mask(mob/user as mob, var/list_index)
+/obj/machinery/suit_storage_closet/proc/dispense_mask(mob/user as mob, list_index)
 	if(mask_amount <= 0)
 		return
 	else
@@ -149,7 +149,7 @@
 		mask_dispense.loc = src.loc
 		return
 
-/obj/machinery/suit_storage_closet/proc/dispense_suit(mob/user as mob, var/list_index)
+/obj/machinery/suit_storage_closet/proc/dispense_suit(mob/user as mob, list_index)
 	if(suit_amount <= 0)
 		return
 	else
@@ -158,7 +158,7 @@
 		suit_dispense.loc = src.loc
 		return
 
-/obj/machinery/suit_storage_closet/proc/dispense_boot(mob/user as mob, var/list_index)
+/obj/machinery/suit_storage_closet/proc/dispense_boot(mob/user as mob, list_index)
 	if(boots_amount <= 0)
 		return
 	else

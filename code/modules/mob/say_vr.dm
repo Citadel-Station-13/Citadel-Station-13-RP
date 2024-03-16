@@ -17,7 +17,7 @@
 	else
 		usr.emote_vr(message)
 
-/mob/proc/custom_emote_vr(var/m_type=1,var/message = null) //This would normally go in emote.dm
+/mob/proc/custom_emote_vr(m_type=1,message = null) //This would normally go in emote.dm
 	if(stat || !use_me && usr == src)
 		to_chat(src, "You are unable to emote.")
 		return
@@ -62,7 +62,7 @@
 		for(var/mob/M in other_viewers - vis_mobs)
 			M.show_message(SPAN_SMALL("<i>[src] does something [pick("subtly", "discreetly", "hidden", "obscured")].</i>"), SAYCODE_TYPE_VISIBLE)
 
-/mob/proc/emote_vr(var/act, var/type, var/message) //This would normally go in say.dm
+/mob/proc/emote_vr(act, type, message) //This would normally go in say.dm
 	if(act == "me")
 		return custom_emote_vr(type, message)
 

@@ -40,7 +40,7 @@
 	var/y_offset
 
 /// Get the icon state to use at a given state.  Default implementation is based on the frame's name
-/datum/frame/frame_types/proc/get_icon_state(var/state)
+/datum/frame/frame_types/proc/get_icon_state(state)
 	var/type = lowertext(name)
 	type = replacetext(type, " ", "_")
 	return "[type]_[state]"

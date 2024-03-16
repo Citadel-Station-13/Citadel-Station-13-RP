@@ -19,19 +19,19 @@
 		return ..()
 	return
 
-/obj/machinery/r_n_d/proc/getMaterialType(var/name)
+/obj/machinery/r_n_d/proc/getMaterialType(name)
 	var/datum/material/M = get_material_by_name(name)
 	if(M && M.stack_type)
 		return M.stack_type
 	return null
 
-/obj/machinery/r_n_d/proc/getMaterialName(var/type)
+/obj/machinery/r_n_d/proc/getMaterialName(type)
 	if(istype(type, /obj/item/stack/material))
 		var/obj/item/stack/material/M = type
 		return M.material.name
 	return null
 
-/obj/machinery/r_n_d/proc/eject(var/material, var/amount)
+/obj/machinery/r_n_d/proc/eject(material, amount)
 	if(!(material in stored_materials))
 		return
 	var/obj/item/stack/material/sheetType = getMaterialType(material)

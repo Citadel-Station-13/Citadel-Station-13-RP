@@ -316,7 +316,7 @@
 	to_chat(src,"<b>You are \the [src].</b> [player_msg]")
 
 
-/mob/living/simple_mob/emote(var/act, var/type, var/desc)
+/mob/living/simple_mob/emote(act, type, desc)
 	if(act)
 		..(act, type, desc)
 
@@ -385,7 +385,7 @@
 		icon_state = icon_living
 	update_icon()
 
-/mob/living/simple_mob/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
+/mob/living/simple_mob/say(message, datum/language/speaking = null, verb="says", alt_name="", whispering = 0)
 	verb = "says"
 	if(speak_emote.len)
 		verb = pick(speak_emote)
@@ -394,7 +394,7 @@
 
 	return ..()
 
-/mob/living/simple_mob/get_speech_ending(verb, var/ending)
+/mob/living/simple_mob/get_speech_ending(verb, ending)
 	return verb
 
 
@@ -451,7 +451,7 @@
 	return "<i>[tt_desc]</i>"
 
 /// Override for special butchering checks.
-/mob/living/simple_mob/can_butcher(var/mob/user, var/obj/item/I)
+/mob/living/simple_mob/can_butcher(mob/user, obj/item/I)
 	. = ..()
 	if(. && (!is_sharp(I) || !has_edge(I)))
 		return FALSE

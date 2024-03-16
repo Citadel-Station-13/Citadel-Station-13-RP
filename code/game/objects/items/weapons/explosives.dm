@@ -28,7 +28,7 @@
 	wires = null
 	return ..()
 
-/obj/item/plastique/attackby(var/obj/item/I, var/mob/user)
+/obj/item/plastique/attackby(obj/item/I, mob/user)
 	if(I.is_screwdriver())
 		open_panel = !open_panel
 		to_chat(user, "<span class='notice'>You [open_panel ? "open" : "close"] the wire panel.</span>")
@@ -73,7 +73,7 @@
 		spawn(timer*10)
 			explode(get_turf(target))
 
-/obj/item/plastique/proc/explode(var/location)
+/obj/item/plastique/proc/explode(location)
 	if(!target)
 		target = get_atom_on_turf(src)
 	if(!target)
@@ -101,7 +101,7 @@
 	blast_light = 4
 	blast_flash = 7
 
-/obj/item/plastique/seismic/attackby(var/obj/item/I, var/mob/user)
+/obj/item/plastique/seismic/attackby(obj/item/I, mob/user)
 	. = ..()
 	if(open_panel)
 		if(istype(I, /obj/item/stock_parts/micro_laser))
@@ -121,7 +121,7 @@
 /obj/item/plastique/seismic/locked
 	desc = "Used to dig holes in specific areas without too much extra hole. Has extra mechanism that safely implodes the bomb if it is used in close proximity to the facility."
 
-/obj/item/plastique/seismic/locked/explode(var/location)
+/obj/item/plastique/seismic/locked/explode(location)
 	if(!target)
 		target = get_atom_on_turf(src)
 	if(!target)

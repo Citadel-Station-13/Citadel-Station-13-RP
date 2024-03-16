@@ -2,11 +2,11 @@
 	name = "OOC"
 	sort_order = 4
 
-/datum/category_item/player_setup_item/player_global/ooc/load_preferences(var/savefile/S)
+/datum/category_item/player_setup_item/player_global/ooc/load_preferences(savefile/S)
 	S["ignored_players"]	>> pref.ignored_players
 
 
-/datum/category_item/player_setup_item/player_global/ooc/save_preferences(var/savefile/S)
+/datum/category_item/player_setup_item/player_global/ooc/save_preferences(savefile/S)
 	S["ignored_players"]	<< pref.ignored_players
 
 /*
@@ -21,7 +21,7 @@
 		. += "[ignored_player] (<a href='?src=\ref[src];unignore_player=[ignored_player]'>Unignore</a>)<br>"
 	. += "(<a href='?src=\ref[src];ignore_player=1'>Ignore Player</a>)"
 
-/datum/category_item/player_setup_item/player_global/ooc/OnTopic(var/href,var/list/href_list, var/mob/user)
+/datum/category_item/player_setup_item/player_global/ooc/OnTopic(href,list/href_list, mob/user)
 	if(href_list["unignore_player"])
 		if(CanUseTopic(user))
 			pref.ignored_players -= href_list["unignore_player"]

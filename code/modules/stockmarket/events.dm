@@ -20,7 +20,7 @@
 /datum/stockEvent/proc/transition()
 	return
 
-/datum/stockEvent/proc/spacetime(var/ticks)
+/datum/stockEvent/proc/spacetime(ticks)
 	var/seconds = round(ticks / 10)
 	var/minutes = round(seconds / 60)
 	seconds -= minutes * 60
@@ -68,7 +68,7 @@
 	var/effect = 0
 	var/bailout_millions = 0
 
-/datum/stockEvent/bankruptcy/New(var/datum/stock/S)
+/datum/stockEvent/bankruptcy/New(datum/stock/S)
 	hidden = 1
 	company = S
 	var/mins = rand(9*TIME_MULTIPLIER,60*TIME_MULTIPLIER)

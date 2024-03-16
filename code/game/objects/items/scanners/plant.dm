@@ -108,7 +108,7 @@
 		return
 	print_report(usr)
 
-/obj/item/plant_analyzer/proc/print_report(var/mob/living/user)
+/obj/item/plant_analyzer/proc/print_report(mob/living/user)
 	var/datum/seed/grown_seed = locate(last_seed)
 	if(!istype(grown_seed))
 		to_chat(user, SPAN_WARNING("There is no scan data to print."))

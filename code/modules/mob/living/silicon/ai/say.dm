@@ -11,7 +11,7 @@
 		return aiRadio.talk_into(src,message,message_mode,verb,speaking)
 
 //For holopads only. Usable by AI.
-/mob/living/silicon/ai/proc/holopad_talk(var/message, verb, datum/language/speaking)
+/mob/living/silicon/ai/proc/holopad_talk(message, verb, datum/language/speaking)
 	message = trim(message)
 
 	if (!message)
@@ -28,7 +28,7 @@
 		return FALSE
 	return TRUE
 
-/mob/living/silicon/ai/proc/holopad_emote(var/message) //This is called when the AI uses the 'me' verb while using a holopad.
+/mob/living/silicon/ai/proc/holopad_emote(message) //This is called when the AI uses the 'me' verb while using a holopad.
 
 	message = trim(message)
 
@@ -46,7 +46,7 @@
 		return FALSE
 	return TRUE
 
-/mob/living/silicon/ai/emote(var/act, var/type, var/message)
+/mob/living/silicon/ai/emote(act, type, message)
 	if(holopad)
 		holopad_emote(message)
 	else //Emote normally, then.

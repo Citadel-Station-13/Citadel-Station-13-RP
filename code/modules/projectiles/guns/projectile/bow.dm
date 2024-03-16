@@ -15,7 +15,7 @@
 	safety_state = GUN_SAFETY_OFF
 	var/ready = 0
 
-/obj/item/gun/ballistic/bow/unload_ammo(mob/user, var/allow_dump =0)
+/obj/item/gun/ballistic/bow/unload_ammo(mob/user, allow_dump =0)
 	var/obj/item/ammo_casing/C = loaded[loaded.len]
 	loaded.len--
 	user.put_in_hands(C)
@@ -24,7 +24,7 @@
 	playsound(src.loc, 'sound/weapons/empty.ogg', 50, 1)
 	update_icon()
 
-/obj/item/gun/ballistic/bow/load_ammo(var/obj/item/A, mob/user)
+/obj/item/gun/ballistic/bow/load_ammo(obj/item/A, mob/user)
 	if(istype(A, /obj/item/ammo_casing))
 		var/obj/item/ammo_casing/C = A
 		if(!(load_method & SINGLE_CASING) || caliber != C.caliber)
@@ -60,7 +60,7 @@
 	else
 		return ..()
 
-/obj/item/gun/ballistic/bow/attackby(var/obj/item/A as obj, mob/user as mob)
+/obj/item/gun/ballistic/bow/attackby(obj/item/A as obj, mob/user as mob)
 	if (istype(A, /obj/item/ammo_casing/arrow))
 		load_ammo(A, user)
 

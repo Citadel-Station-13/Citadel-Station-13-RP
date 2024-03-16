@@ -137,7 +137,7 @@
 	cooperative = FALSE
 	can_flee = FALSE
 
-/mob/living/simple_mob/animal/stormdrifter/bull/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/mob/living/simple_mob/animal/stormdrifter/bull/attackby(obj/item/O as obj, mob/user as mob)
 	if(istype(O, /obj/item/tool/wirecutters) || is_sharp(O))
 		if(!neutered)
 			to_chat(user, "<span class='danger'>You amputate the [src]'s stingers! It may now be domesticated!</span>")

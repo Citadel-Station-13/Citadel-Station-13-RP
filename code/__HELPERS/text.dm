@@ -214,7 +214,7 @@
 /**
  * Old variant. Haven't dared to replace in some places.
  */
-/proc/sanitize_old(var/t,var/list/repl_chars = list("\n"="#","\t"="#"))
+/proc/sanitize_old(t, list/repl_chars = list("\n"="#","\t"="#"))
 	return html_encode(replace_characters(t,repl_chars))
 
 /**

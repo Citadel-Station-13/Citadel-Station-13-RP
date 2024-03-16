@@ -40,14 +40,14 @@
 /datum/outfit/death_command
 	name = "Spec Ops - Death Commando"
 
-/datum/outfit/death_command/equip(var/mob/living/carbon/human/H)
+/datum/outfit/death_command/equip(mob/living/carbon/human/H)
 	deathsquad.equip(H)
 	return 1
 
 /datum/outfit/syndicate_command
 	name = "Spec ops - Syndicate Commando"
 
-/datum/outfit/syndicate_command/equip(var/mob/living/carbon/human/H)
+/datum/outfit/syndicate_command/equip(mob/living/carbon/human/H)
 	commandos.equip(H)
 	return 1
 
@@ -84,7 +84,7 @@
 	id_slot = SLOT_ID_WORN_ID
 	id_type = /obj/item/card/id/centcom/ERT/PARA
 
-/datum/outfit/PARA/equip(var/mob/living/carbon/human/H)
+/datum/outfit/PARA/equip(mob/living/carbon/human/H)
 	. = ..()
 	if(H.mind)
 		H.mind.isholy = TRUE

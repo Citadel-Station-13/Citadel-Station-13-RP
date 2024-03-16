@@ -213,7 +213,7 @@
 	return
 
 // This is awful but its literally say code.
-/mob/living/simple_mob/animal/borer/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
+/mob/living/simple_mob/animal/borer/say(message, datum/language/speaking = null, verb="says", alt_name="", whispering = 0)
 	message = sanitize(message)
 	message = capitalize(message)
 

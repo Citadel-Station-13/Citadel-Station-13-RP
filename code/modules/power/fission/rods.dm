@@ -46,7 +46,7 @@
 			adjust_thermal_energy(power)
 			radiation_pulse(src, max(power * ROD_RADIATION_MULTIPLIER, 0))
 
-/obj/item/fuelrod/proc/equalize(var/E, var/efficiency)
+/obj/item/fuelrod/proc/equalize(E, efficiency)
 	var/our_heatcap = heat_capacity()
 	// Ugly code ahead. Thanks for not allowing polymorphism, Byond.
 	if(istype(E, /obj/machinery/power/fission))
@@ -80,7 +80,7 @@
 	if(integrity == 0 && integrity_lost > 0) // Meltdown time.
 		meltdown()
 
-/obj/item/fuelrod/adjust_thermal_energy(var/thermal_energy)
+/obj/item/fuelrod/adjust_thermal_energy(thermal_energy)
 	if(mass < 1)
 		return 0
 
@@ -96,7 +96,7 @@
 /obj/item/fuelrod/proc/heat_capacity()
 	. = specific_heat * (mass / molar_mass)
 
-/obj/item/fuelrod/proc/tick_life(var/apply_heat = 0, var/insertion_override = 0)
+/obj/item/fuelrod/proc/tick_life(apply_heat = 0, insertion_override = 0)
 	var/applied_insertion = get_insertion()
 	if(insertion_override)
 		applied_insertion = insertion_override

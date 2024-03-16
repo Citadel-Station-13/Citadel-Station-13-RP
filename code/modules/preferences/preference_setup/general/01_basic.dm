@@ -10,7 +10,7 @@
 	name = "Basic"
 	sort_order = 1
 
-/datum/category_item/player_setup_item/general/basic/load_character(var/savefile/S)
+/datum/category_item/player_setup_item/general/basic/load_character(savefile/S)
 	S["real_name"]				>> pref.real_name
 	S["nickname"]				>> pref.nickname
 	S["name_is_always_random"]	>> pref.be_random_name
@@ -23,7 +23,7 @@
 	S["Full_Ref_URL"]			>> pref.full_ref_url
 	S["Ref_Toggle"]				>> pref.full_ref_toggle
 
-/datum/category_item/player_setup_item/general/basic/save_character(var/savefile/S)
+/datum/category_item/player_setup_item/general/basic/save_character(savefile/S)
 	S["real_name"]				<< pref.real_name
 	S["nickname"]				<< pref.nickname
 	S["name_is_always_random"]	<< pref.be_random_name
@@ -95,7 +95,7 @@
 	. += "<b>Profile Reference:</b> <a href='?src=\ref[src];fullref_toggle=1'>[pref.full_ref_toggle ? "Full Reference" : "Headshot"]</a><br>"
 	. = jointext(., null)
 
-/datum/category_item/player_setup_item/general/basic/OnTopic(var/href,var/list/href_list, var/mob/user)
+/datum/category_item/player_setup_item/general/basic/OnTopic(href,list/href_list, mob/user)
 	if(href_list["rename"])
 		var/raw_name = input(user, "Choose your character's name:", "Character Name")  as text|null
 		if (!isnull(raw_name) && CanUseTopic(user))

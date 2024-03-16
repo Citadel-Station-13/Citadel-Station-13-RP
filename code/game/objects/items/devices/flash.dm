@@ -41,7 +41,7 @@
 	. = ..()
 	power_supply = new cell_type(src)
 
-/obj/item/flash/attackby(var/obj/item/W, var/mob/user)
+/obj/item/flash/attackby(obj/item/W, mob/user)
 	if(W.is_screwdriver() && broken)
 		if(repairing)
 			to_chat(user, "<span class='notice'>\The [src] is already being repaired!</span>")
@@ -89,7 +89,7 @@
 					return suit.cell
 	return null
 
-/obj/item/flash/proc/clown_check(var/mob/user)
+/obj/item/flash/proc/clown_check(mob/user)
 	if(user && (MUTATION_CLUMSY in user.mutations) && prob(50))
 		to_chat(user, "<span class='warning'>\The [src] slips out of your hand.</span>")
 		user.drop_active_held_item()
@@ -119,7 +119,7 @@
 	update_icon()
 
 // Returns true if the device can flash.
-/obj/item/flash/proc/check_capacitor(var/mob/user)
+/obj/item/flash/proc/check_capacitor(mob/user)
 	//spamming the flash before it's fully charged (60 seconds) increases the chance of it breaking
 	//It will never break on the first use.
 	var/obj/item/cell/battery = power_supply

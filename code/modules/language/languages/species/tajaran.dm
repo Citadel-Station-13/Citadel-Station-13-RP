@@ -14,7 +14,7 @@
 	"hal","ket","jurl","mah","tul","cresh","azu","ragh","mro","mra","mrro","mrra")
 	shorthand = "MAAS"
 
-/datum/language/tajaran/get_random_name(var/gender)
+/datum/language/tajaran/get_random_name(gender)
 	var/new_name = ..(gender,1)
 	if(prob(50))
 		new_name += " [pick(list("Hadii","Kaytam","Nazkiin","Zhan-Khazan","Hharar","Njarir'Akhan","Faaira'Nrezi","Rhezar","Mi'dynh","Rrhazkal","Bayan","Al'Manq","Mi'jri","Chur'eech","Sanu'dra","Ii'rka"))]"
@@ -50,7 +50,7 @@
 	language_flags = LANGUAGE_WHITELISTED | LANGUAGE_SIGNLANG | LANGUAGE_NO_STUTTER | LANGUAGE_NONVERBAL
 	shorthand = "TAJR"
 
-/datum/language/tajsign/can_speak_special(var/mob/speaker)	// TODO: If ever we make external organs assist languages, convert this over to the new format
+/datum/language/tajsign/can_speak_special(mob/speaker)	// TODO: If ever we make external organs assist languages, convert this over to the new format
 	var/list/allowed_species = list(SPECIES_TAJ, SPECIES_TESHARI)	// Need a tail and ears and such to use this.
 	if(iscarbon(speaker))
 		var/obj/item/organ/external/hand/hands = locate() in speaker //you can't sign without hands

@@ -16,7 +16,7 @@
 	return FALSE
 
 // Used to distinguish friend from foe.
-/obj/item/spell/proc/is_ally(var/mob/living/L)
+/obj/item/spell/proc/is_ally(mob/living/L)
 	if(L == owner) // The best ally is ourselves.
 		return 1
 	if(L.mind && technomancers.is_antagonist(L.mind)) // This should be done better since we might want opposing technomancers later.
@@ -37,17 +37,17 @@
 			return FALSE
 	return TRUE
 
-/obj/item/spell/proc/within_range(var/atom/target, var/max_range = 7) // Beyond 7 is off the screen.
+/obj/item/spell/proc/within_range(atom/target, max_range = 7) // Beyond 7 is off the screen.
 	if(target in view(max_range, owner))
 		return TRUE
 	return FALSE
 
-/obj/item/spell/proc/calculate_spell_power(var/amount)
+/obj/item/spell/proc/calculate_spell_power(amount)
 	if(core)
 		return round(amount * core.spell_power_modifier, 1)
 
 // Returns a 'target' mob from a radius around T.
-/obj/item/spell/proc/targeting_assist(var/turf/T, radius = 5)
+/obj/item/spell/proc/targeting_assist(turf/T, radius = 5)
 	var/chosen_target = null
 	var/potential_targets = view(T,radius)
 	for(var/mob/living/L in potential_targets)

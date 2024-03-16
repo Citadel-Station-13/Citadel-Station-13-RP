@@ -493,7 +493,7 @@
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee
 
-/mob/living/simple_mob/humanoid/cultist/elite/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/mob/living/simple_mob/humanoid/cultist/elite/attackby(obj/item/O as obj, mob/user as mob)
 	if(O.damage_force)
 		if(prob(30))
 			visible_message("<span class='danger'>\The [src] blocks \the [O] with its shield!</span>")
@@ -506,7 +506,7 @@
 		to_chat(user, "<span class='warning'>This weapon is ineffective, it does no damage.</span>")
 		visible_message("<span class='warning'>\The [user] gently taps [src] with \the [O].</span>")
 
-/mob/living/simple_mob/humanoid/cultist/elite/bullet_act(var/obj/projectile/Proj)
+/mob/living/simple_mob/humanoid/cultist/elite/bullet_act(obj/projectile/Proj)
 	if(!Proj)	return
 	if(prob(50))
 		visible_message("<font color='red'><B>[Proj] disappears into the mirror world as it hits the shield.</B></font>")

@@ -6,7 +6,7 @@
 //
 // Simple nom proc for if you get ckey'd into a simple_mob mob! Avoids grabs.
 //
-/mob/living/simple_mob/proc/animal_nom(var/mob/living/T in living_mobs(1))
+/mob/living/simple_mob/proc/animal_nom(mob/living/T in living_mobs(1))
 	set name = "Animal Nom"
 	set category = "IC"
 	set desc = "Since you can't grab, you get a verb!"
@@ -71,7 +71,7 @@
 	vore_selected.fancy_vore = !vore_selected.fancy_vore
 	to_chat(user, "[src] is now using [vore_selected.fancy_vore ? "Fancy" : "Classic"] vore sounds.")
 
-/mob/living/simple_mob/attackby(var/obj/item/O, var/mob/user)
+/mob/living/simple_mob/attackby(obj/item/O, mob/user)
 	if (istype(O, /obj/item/newspaper) && !(ckey || (ai_holder.hostile && faction != user.faction)) && isturf(user.loc))
 		if (ai_holder.retaliate && prob(vore_pounce_chance/2)) // This is a gamble!
 			user.afflict_paralyze(20 * 5) //They get tackled anyway whether they're edible or not.

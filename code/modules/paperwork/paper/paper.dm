@@ -89,7 +89,7 @@
 		return
 	icon_state = "paper"
 
-/obj/item/paper/proc/update_space(var/new_text)
+/obj/item/paper/proc/update_space(new_text)
 	if(!new_text)
 		return
 
@@ -103,7 +103,7 @@
 		. += "<span class='notice'>You have to go closer if you want to read it.</span>"
 	return
 
-/obj/item/paper/proc/show_content(var/mob/user, var/forceshow=0)
+/obj/item/paper/proc/show_content(mob/user, forceshow=0)
 	if(!(istype(user, /mob/living/carbon/human) || istype(user, /mob/observer/dead) || istype(user, /mob/living/silicon)) && !forceshow)
 		user << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[stars(info)][stamps]</BODY></HTML>", "window=[name]")
 		onclose(user, "[name]")
@@ -152,7 +152,7 @@
 				spam_flag = 0
 	return
 
-/obj/item/paper/attack_ai(var/mob/living/silicon/ai/user as mob)
+/obj/item/paper/attack_ai(mob/living/silicon/ai/user as mob)
 	var/dist
 	if(istype(user) && user.camera) //is AI
 		dist = get_dist(src, user.camera)
@@ -189,7 +189,7 @@
 					H.update_icons_body()
 	return ..()
 
-/obj/item/paper/proc/addtofield(var/id, var/text, var/links = 0)
+/obj/item/paper/proc/addtofield(id, text, links = 0)
 	var/locid = 0
 	var/laststart = 1
 	var/textindex = 1
@@ -243,7 +243,7 @@
 	updateinfolinks()
 	update_icon()
 
-/obj/item/paper/proc/get_signature(var/obj/item/pen/P, mob/user as mob)
+/obj/item/paper/proc/get_signature(obj/item/pen/P, mob/user as mob)
 	if(P && istype(P, /obj/item/pen))
 		return P.get_signature(user)
 	return (user && user.real_name) ? user.real_name : "Anonymous"
@@ -254,7 +254,7 @@
 	update_space(info)
 	updateinfolinks()
 
-/obj/item/paper/proc/parsepencode(var/t, var/obj/item/pen/P, mob/user as mob, var/iscrayon = 0)
+/obj/item/paper/proc/parsepencode(t, obj/item/pen/P, mob/user as mob, iscrayon = 0)
 	//! todo: do this shit in rust_g or something
 	//? repacements
 	t = parse_tags(t, user, P)

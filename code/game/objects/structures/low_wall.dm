@@ -106,7 +106,7 @@ GLOBAL_LIST_INIT(wallframe_typecache, typecacheof(list(
 	if(istype(mover) && mover.check_pass_flags(ATOM_PASS_TABLE))
 		return TRUE
 
-/obj/structure/wall_frame/attackby(var/obj/item/I, var/mob/user)
+/obj/structure/wall_frame/attackby(obj/item/I, mob/user)
 	//grille placing
 	if(istype(I, /obj/item/stack/rods))
 		for(var/obj/structure/window/WINDOW in loc)

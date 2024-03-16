@@ -64,7 +64,7 @@
 		/obj/item/mecha_parts/mecha_equipment/teleporter
 		)
 
-/obj/mecha/combat/honker/cluwne/add_cell(var/obj/item/cell/C=null)
+/obj/mecha/combat/honker/cluwne/add_cell(obj/item/cell/C=null)
 	if(C)
 		C.forceMove(src)
 		cell = C

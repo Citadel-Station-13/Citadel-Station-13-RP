@@ -57,7 +57,7 @@
 	playsound(src, 'sound/effects/EMPulse.ogg', 100, 1)
 
 // These things are so silly
-/datum/global_iterator/mecha_cloak/process(var/obj/item/mecha_parts/mecha_equipment/cloak/cloak)
+/datum/global_iterator/mecha_cloak/process(obj/item/mecha_parts/mecha_equipment/cloak/cloak)
 	//Removed from chassis
 	if(!cloak.chassis)
 		stop()

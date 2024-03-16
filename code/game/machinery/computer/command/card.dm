@@ -94,7 +94,7 @@
 		update_static_data()
 	return CLICKCHAIN_DO_NOT_PROPAGATE
 
-/obj/machinery/computer/card/attack_ai(var/mob/user as mob)
+/obj/machinery/computer/card/attack_ai(mob/user as mob)
 	return attack_hand(user)
 
 /obj/machinery/computer/card/attack_hand(mob/user, list/params)

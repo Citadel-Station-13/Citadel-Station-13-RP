@@ -1,4 +1,4 @@
-/proc/alien_queen_exists(var/ignore_self,var/mob/living/carbon/human/self)
+/proc/alien_queen_exists(ignore_self,mob/living/carbon/human/self)
 	for(var/mob/living/carbon/human/Q in living_mob_list)
 		if(self && ignore_self && self == Q)
 			continue
@@ -9,7 +9,7 @@
 		return 1
 	return 0
 
-/mob/living/carbon/human/proc/gain_plasma(var/amount)
+/mob/living/carbon/human/proc/gain_plasma(amount)
 
 	var/obj/item/organ/internal/xenos/plasmavessel/I = internal_organs_by_name[O_PLASMA]
 	if(!istype(I)) return
@@ -18,7 +18,7 @@
 		I.stored_plasma += amount
 	I.stored_plasma = max(0,min(I.stored_plasma,I.max_plasma))
 
-/mob/living/carbon/human/proc/check_alien_ability(var/cost,var/needs_foundation,var/needs_organ)	//Returns 1 if the ability is clear for usage.
+/mob/living/carbon/human/proc/check_alien_ability(cost,needs_foundation,needs_organ)	//Returns 1 if the ability is clear for usage.
 
 	var/obj/item/organ/internal/xenos/plasmavessel/P = internal_organs_by_name[O_PLASMA]
 	if(!istype(P))
@@ -126,7 +126,7 @@
 			O.color = "#321D37"
 	return
 
-/mob/living/carbon/human/proc/Spit(var/atom/A)
+/mob/living/carbon/human/proc/Spit(atom/A)
 	if((last_spit + 1 SECONDS) > world.time) //To prevent YATATATATATAT spitting.
 		to_chat(src, "<span class='warning'>You have not yet prepared your chemical glands. You must wait before spitting again.</span>")
 		return

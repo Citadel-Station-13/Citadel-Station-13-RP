@@ -11,7 +11,7 @@
 	. = ..()
 	create_reagents(reagent_amount)
 
-/obj/projectile/bullet/chemdart/on_hit(var/atom/target, var/blocked = 0, var/def_zone = null)
+/obj/projectile/bullet/chemdart/on_hit(atom/target, blocked = 0, def_zone = null)
 	if(blocked < 2 && isliving(target))
 		var/mob/living/L = target
 		if(L.can_inject(target_zone=def_zone))
@@ -130,7 +130,7 @@
 	return ..()
 
 //fills the given dart with reagents
-/obj/item/gun/ballistic/dartgun/proc/fill_dart(var/obj/projectile/bullet/chemdart/dart)
+/obj/item/gun/ballistic/dartgun/proc/fill_dart(obj/projectile/bullet/chemdart/dart)
 	if(mixing.len)
 		var/mix_amount = dart.reagent_amount/mixing.len
 		for(var/obj/item/reagent_containers/glass/beaker/B in mixing)
@@ -171,7 +171,7 @@
 	user << browse(dat, "window=dartgun")
 	onclose(user, "dartgun", src)
 
-/obj/item/gun/ballistic/dartgun/proc/check_beaker_mixing(var/obj/item/B)
+/obj/item/gun/ballistic/dartgun/proc/check_beaker_mixing(obj/item/B)
 	if(!mixing || !beakers)
 		return 0
 	for(var/obj/item/M in mixing)

@@ -50,7 +50,7 @@
 		linked = sector
 		return 1
 
-/datum/tgui_module_old/ship/proc/look(var/mob/user)
+/datum/tgui_module_old/ship/proc/look(mob/user)
 	if(!linked)
 		to_chat(user, SPAN_DANGER("No linked ship. Something's wrong."))
 		return
@@ -60,7 +60,7 @@
 	RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(unlook))
 	LAZYDISTINCTADD(viewers, WEAKREF(user))
 
-/datum/tgui_module_old/ship/proc/unlook(var/mob/user)
+/datum/tgui_module_old/ship/proc/unlook(mob/user)
 	user.reset_perspective()
 	user.client?.reset_temporary_view()
 	UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
@@ -69,7 +69,7 @@
 /datum/tgui_module_old/ship/proc/viewing_overmap(mob/user)
 	return (WEAKREF(user) in viewers)
 
-/datum/tgui_module_old/ship/check_eye(var/mob/user)
+/datum/tgui_module_old/ship/check_eye(mob/user)
 	if(!get_dist(user, ui_host()) > 1 || user.blinded || !linked)
 		unlook(user)
 		return -1

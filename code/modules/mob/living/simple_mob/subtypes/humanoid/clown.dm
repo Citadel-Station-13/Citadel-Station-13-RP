@@ -235,7 +235,7 @@
 	corpse = /obj/spawner/corpse/clown/clownop/space
 	loot_list = list(/obj/item/melee/clownstaff = 100)
 
-/mob/living/simple_mob/humanoid/clown/commando/melee/space/Process_Spacemove(var/check_drift = 0)
+/mob/living/simple_mob/humanoid/clown/commando/melee/space/Process_Spacemove(check_drift = 0)
 	return
 
 /mob/living/simple_mob/humanoid/clown/commando/melee/space/alt
@@ -274,7 +274,7 @@
 	base_attack_cooldown = 5 // Two attacks a second or so.
 	reload_max = 20
 
-/mob/living/simple_mob/humanoid/clown/commando/ranged/space/Process_Spacemove(var/check_drift = 0)
+/mob/living/simple_mob/humanoid/clown/commando/ranged/space/Process_Spacemove(check_drift = 0)
 	return
 
 /mob/living/simple_mob/humanoid/clown/commando/ranged/space/alt

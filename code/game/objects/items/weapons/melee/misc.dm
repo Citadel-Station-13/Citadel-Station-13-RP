@@ -86,14 +86,14 @@
 	var/list/voice_mobs = list() //The curse of the sword is that it has someone trapped inside.
 
 
-/obj/item/melee/cursedblade/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
+/obj/item/melee/cursedblade/handle_shield(mob/user, damage, atom/damage_source = null, mob/attacker = null, def_zone = null, attack_text = "the attack")
 	if(default_parry_check(user, attacker, damage_source) && prob(50))
 		user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
 		playsound(user.loc, 'sound/weapons/punchmiss.ogg', 50, 1)
 		return 1
 	return 0
 
-/obj/item/melee/cursedblade/proc/ghost_inhabit(var/mob/candidate)
+/obj/item/melee/cursedblade/proc/ghost_inhabit(mob/candidate)
 	if(!isobserver(candidate))
 		return
 	//Handle moving the ghost into the new shell.
@@ -347,7 +347,7 @@
 	var/unwieldsound = null
 
 //Allow a small chance of parrying melee attacks when wielded - maybe generalize this to other weapons someday
-/obj/item/melee/twohanded/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
+/obj/item/melee/twohanded/handle_shield(mob/user, damage, atom/damage_source = null, mob/attacker = null, def_zone = null, attack_text = "the attack")
 	if(wielded && default_parry_check(user, attacker, damage_source) && prob(15))
 		user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
 		playsound(user.loc, 'sound/weapons/punchmiss.ogg', 50, 1)
@@ -503,7 +503,7 @@
 /obj/item/melee/thermalcutter/proc/get_max_fuel()
 	return max_fuel
 
-/obj/item/melee/thermalcutter/proc/remove_fuel(var/amount = 1, var/mob/M = null)
+/obj/item/melee/thermalcutter/proc/remove_fuel(amount = 1, mob/M = null)
 	if(!active)
 		return 0
 	if(amount)
@@ -541,7 +541,7 @@
 		M.update_inv_l_hand()
 		M.update_inv_r_hand()
 
-/obj/item/melee/thermalcutter/proc/activate(var/mob/M)
+/obj/item/melee/thermalcutter/proc/activate(mob/M)
 	var/turf/T = get_turf(src)
 	if(!active)
 		if (get_fuel() > 0)

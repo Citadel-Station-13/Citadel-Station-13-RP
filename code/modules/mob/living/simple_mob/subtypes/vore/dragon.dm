@@ -33,7 +33,7 @@
 	ai_holder_type = /datum/ai_holder/simple_mob/melee
 	say_list_type = /datum/say_list/dragonboss
 
-/mob/living/simple_mob/vore/aggressive/dragon/Process_Spacemove(var/check_drift = 0)
+/mob/living/simple_mob/vore/aggressive/dragon/Process_Spacemove(check_drift = 0)
 	return 1	//No drifting in space for space dragons!
 
 // Activate Noms!

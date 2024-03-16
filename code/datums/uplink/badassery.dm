@@ -21,7 +21,7 @@
 	name = "Random Item"
 	desc = "Buys you one random item."
 
-/datum/uplink_item/item/badassery/random_one/buy(var/obj/item/uplink/U, var/mob/user)
+/datum/uplink_item/item/badassery/random_one/buy(obj/item/uplink/U, mob/user)
 	var/datum/uplink_item/item = default_uplink_selection.get_random_item(U.uses)
 	return item.buy(U, user)
 
@@ -32,10 +32,10 @@
 	name = "Random Items"
 	desc = "Buys you as many random items you can afford. Convenient packaging NOT included."
 
-/datum/uplink_item/item/badassery/random_many/cost(var/telecrystals)
+/datum/uplink_item/item/badassery/random_many/cost(telecrystals)
 	return max(1, telecrystals)
 
-/datum/uplink_item/item/badassery/random_many/get_goods(var/obj/item/uplink/U, var/loc)
+/datum/uplink_item/item/badassery/random_many/get_goods(obj/item/uplink/U, loc)
 	var/list/bought_items = list()
 	for(var/datum/uplink_item/UI in get_random_uplink_items(U, U.uses, loc))
 		UI.purchase_log(U)
@@ -77,7 +77,7 @@
 	..()
 	desc = "A crate containing [item_worth] telecrystal\s worth of surplus leftovers."
 
-/datum/uplink_item/item/badassery/surplus/get_goods(var/obj/item/uplink/U, var/loc)
+/datum/uplink_item/item/badassery/surplus/get_goods(obj/item/uplink/U, loc)
 	var/obj/structure/largecrate/C = new(loc)
 	var/random_items = get_surplus_items(null, item_worth, C)
 	for(var/datum/uplink_item/I in random_items)

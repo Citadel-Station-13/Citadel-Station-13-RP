@@ -89,7 +89,7 @@
 							unlook(M)
 				return TRUE
 
-/datum/tgui_module_old/uav/proc/set_current(var/obj/item/uav/U)
+/datum/tgui_module_old/uav/proc/set_current(obj/item/uav/U)
 	if(current_uav == U)
 		return
 
@@ -231,7 +231,7 @@
 ////
 //// Relaying movements to the UAV
 ////
-/datum/tgui_module_old/uav/relaymove(var/mob/user, direction)
+/datum/tgui_module_old/uav/relaymove(mob/user, direction)
 	if(current_uav)
 		return current_uav.relaymove(user, direction, signal_strength)
 

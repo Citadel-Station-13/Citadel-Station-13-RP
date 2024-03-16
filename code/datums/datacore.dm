@@ -297,7 +297,7 @@ GLOBAL_LIST_EMPTY(PDA_Manifest)
 			manifest_inject(H)
 		return
 
-/datum/datacore/proc/manifest_modify(var/name, var/assignment, var/rank)
+/datum/datacore/proc/manifest_modify(name, assignment, rank)
 	ResetPDAManifest()
 	var/datum/data/record/foundrecord
 	var/real_title = assignment
@@ -327,7 +327,7 @@ GLOBAL_LIST_EMPTY(PDA_Manifest)
 		foundrecord.fields["rank"] = assignment
 		foundrecord.fields["real_rank"] = real_title
 
-/datum/datacore/proc/manifest_inject(var/mob/living/carbon/human/H)
+/datum/datacore/proc/manifest_inject(mob/living/carbon/human/H)
 	if(H.mind && !player_is_antag(H.mind, only_offstation_roles = 1))
 		var/assignment = GetAssignment(H)
 		var/hidden
@@ -469,7 +469,7 @@ GLOBAL_LIST_EMPTY(PDA_Manifest)
 
 	return G
 
-/datum/datacore/proc/CreateSecurityRecord(var/name, var/id, var/hidden)
+/datum/datacore/proc/CreateSecurityRecord(name, id, hidden)
 	ResetPDAManifest()
 	var/datum/data/record/R = new /datum/data/record()
 	R.name = "Security Record #[id]"
@@ -490,7 +490,7 @@ GLOBAL_LIST_EMPTY(PDA_Manifest)
 
 	return R
 
-/datum/datacore/proc/CreateMedicalRecord(var/name, var/id, var/hidden)
+/datum/datacore/proc/CreateMedicalRecord(name, id, hidden)
 	ResetPDAManifest()
 	var/datum/data/record/M = new()
 	M.name = "Medical Record #[id]"
@@ -534,7 +534,7 @@ GLOBAL_LIST_EMPTY(PDA_Manifest)
 		if(R.fields[field] == value)
 			return R
 
-/proc/GetAssignment(var/mob/living/carbon/human/H)
+/proc/GetAssignment(mob/living/carbon/human/H)
 	. = "Unassigned"
 	var/faction = H.mind?.original_background_faction()?.id
 	if((faction && !(faction == "nanotrasen")) || !H.mind.role_alt_title)

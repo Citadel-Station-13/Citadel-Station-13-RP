@@ -425,7 +425,7 @@
 	if(target && (flags & APPEARANCE_UPDATE_DNA))
 		target.update_dna()
 
-/datum/tgui_module_old/appearance_changer/proc/can_change(var/flag)
+/datum/tgui_module_old/appearance_changer/proc/can_change(flag)
 	var/mob/living/carbon/human/target = owner
 	if(customize_usr)
 		if(!ishuman(usr))

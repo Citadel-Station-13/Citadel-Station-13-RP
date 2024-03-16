@@ -36,7 +36,7 @@
 		amt = amt * species.radiation_mod
 	return ..()
 
-/mob/living/carbon/human/adjustBrainLoss(var/amount)
+/mob/living/carbon/human/adjustBrainLoss(amount)
 
 	if(status_flags & STATUS_GODMODE)	return 0	//godmode
 
@@ -53,7 +53,7 @@
 	else
 		brainloss = 0
 
-/mob/living/carbon/human/setBrainLoss(var/amount)
+/mob/living/carbon/human/setBrainLoss(amount)
 
 	if(status_flags & STATUS_GODMODE)	return 0	//godmode
 
@@ -128,7 +128,7 @@
 	return amount
 
 //'include_robo' only applies to healing, for legacy purposes, as all damage typically hurts both types of organs
-/mob/living/carbon/human/adjustBruteLoss(var/amount,var/include_robo)
+/mob/living/carbon/human/adjustBruteLoss(amount,include_robo)
 	amount = amount*species.brute_mod
 	if(amount > 0)
 		for(var/datum/modifier/M in modifiers)
@@ -146,7 +146,7 @@
 	update_hud_med_all()
 
 //'include_robo' only applies to healing, for legacy purposes, as all damage typically hurts both types of organs
-/mob/living/carbon/human/adjustFireLoss(var/amount,var/include_robo)
+/mob/living/carbon/human/adjustFireLoss(amount,include_robo)
 	amount = amount*species.burn_mod
 	if(amount > 0)
 		for(var/datum/modifier/M in modifiers)
@@ -188,13 +188,13 @@
 		cloneloss = 0
 	return ..()
 
-/mob/living/carbon/human/setCloneLoss(var/amount)
+/mob/living/carbon/human/setCloneLoss(amount)
 	if((species.species_flags & NO_SCAN) || isSynthetic())
 		cloneloss = 0
 	else
 		..()
 
-/mob/living/carbon/human/adjustCloneLoss(var/amount)
+/mob/living/carbon/human/adjustCloneLoss(amount)
 	..()
 
 	if((species.species_flags & NO_SCAN) || isSynthetic())
@@ -235,14 +235,14 @@
 		oxyloss = 0
 	return ..()
 
-/mob/living/carbon/human/adjustOxyLoss(var/amount)
+/mob/living/carbon/human/adjustOxyLoss(amount)
 	if(!should_have_organ(O_LUNGS))
 		oxyloss = 0
 	else
 		amount = amount*species.oxy_mod
 		..(amount)
 
-/mob/living/carbon/human/setOxyLoss(var/amount)
+/mob/living/carbon/human/setOxyLoss(amount)
 	if(!should_have_organ(O_LUNGS))
 		oxyloss = 0
 	else
@@ -253,14 +253,14 @@
 		toxloss = 0
 	return ..()
 
-/mob/living/carbon/human/adjustToxLoss(var/amount)
+/mob/living/carbon/human/adjustToxLoss(amount)
 	if(species.species_flags & NO_POISON)
 		toxloss = 0
 	else
 		amount = amount*species.toxins_mod
 		..(amount)
 
-/mob/living/carbon/human/setToxLoss(var/amount)
+/mob/living/carbon/human/setToxLoss(amount)
 	if(species.species_flags & NO_POISON)
 		toxloss = 0
 	else
@@ -269,7 +269,7 @@
 ////////////////////////////////////////////
 
 //Returns a list of damaged organs
-/mob/living/carbon/human/proc/get_damaged_organs(var/brute, var/burn)
+/mob/living/carbon/human/proc/get_damaged_organs(brute, burn)
 	var/list/obj/item/organ/external/parts = list()
 	for(var/obj/item/organ/external/O in organs)
 		if((brute && O.brute_dam) || (burn && O.burn_dam))
@@ -287,7 +287,7 @@
 //Heals ONE external organ, organ gets randomly selected from damaged ones.
 //It automatically updates damage overlays if necesary
 //It automatically updates health status
-/mob/living/carbon/human/heal_organ_damage(var/brute, var/burn)
+/mob/living/carbon/human/heal_organ_damage(brute, burn)
 	var/list/obj/item/organ/external/parts = get_damaged_organs(brute,burn)
 	if(!parts.len)	return
 	var/obj/item/organ/external/picked = pick(parts)
@@ -298,7 +298,7 @@
 
 //Heal MANY external organs, in random order
 //'include_robo' only applies to healing, for legacy purposes, as all damage typically hurts both types of organs
-/mob/living/carbon/human/heal_overall_damage(var/brute, var/burn, var/include_robo)
+/mob/living/carbon/human/heal_overall_damage(brute, burn, include_robo)
 	var/list/obj/item/organ/external/parts = get_damaged_organs(brute,burn)
 
 	var/update = 0
@@ -333,11 +333,11 @@ This function restores the subjects blood to max.
 /*
 This function restores all organs.
 */
-/mob/living/carbon/human/restore_all_organs(var/ignore_prosthetic_prefs)
+/mob/living/carbon/human/restore_all_organs(ignore_prosthetic_prefs)
 	for(var/obj/item/organ/external/current_organ in organs)
 		current_organ.rejuvenate_legacy(ignore_prosthetic_prefs)
 
-/mob/living/carbon/human/apply_damage(var/damage = 0, var/damagetype = BRUTE, var/def_zone = null, var/blocked = 0, var/soaked = 0, var/sharp = 0, var/edge = 0, var/obj/used_weapon = null)
+/mob/living/carbon/human/apply_damage(damage = 0, damagetype = BRUTE, def_zone = null, blocked = 0, soaked = 0, sharp = 0, edge = 0, obj/used_weapon = null)
 	if(GLOB.Debug2)
 		log_world("## DEBUG: human/apply_damage() was called on [src], with [damage] damage, an armor value of [blocked], and a soak value of [soaked].")
 

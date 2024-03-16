@@ -59,7 +59,7 @@ var/global/list/navbeacons = list()	// no I don't like putting this in, but it w
 
 // called when turf state changes
 // hide the object if turf is intact
-/obj/machinery/navbeacon/hide(var/intact)
+/obj/machinery/navbeacon/hide(intact)
 	invisibility = intact ? 101 : 0
 	updateicon()
 
@@ -97,7 +97,7 @@ var/global/list/navbeacons = list()	// no I don't like putting this in, but it w
 			to_chat(user, "You must open the cover first!")
 	return
 
-/obj/machinery/navbeacon/attack_ai(var/mob/user)
+/obj/machinery/navbeacon/attack_ai(mob/user)
 	interact(user, 1)
 
 /obj/machinery/navbeacon/attack_hand(mob/user, list/params)

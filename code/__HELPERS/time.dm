@@ -79,7 +79,7 @@ GLOBAL_VAR_INIT(roundstart_hour, pick(2,7,12,17))
 /**
  * Returns 1 if it is the selected month and day.
  */
-/proc/isDay(var/month, var/day)
+/proc/isDay(month, day)
 	if(isnum(month) && isnum(day))\
 		/// Get the current month.
 		var/MM = text2num(time2text(world.timeofday, "MM"))

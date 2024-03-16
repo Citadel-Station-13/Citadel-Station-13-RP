@@ -120,7 +120,7 @@
 	set category = "Abilities"
 	diona_split_into_nymphs(5)	// Separate proc to void argments being supplied when used as a verb
 
-/mob/living/carbon/human/proc/diona_split_into_nymphs(var/number_of_resulting_nymphs)
+/mob/living/carbon/human/proc/diona_split_into_nymphs(number_of_resulting_nymphs)
 	var/turf/T = get_turf(src)
 
 	var/mob/living/carbon/alien/diona/S = new(T)
@@ -305,10 +305,10 @@
 		nutrition -= 75
 		active_regen = FALSE
 
-/mob/living/carbon/human/proc/get_charge(var/mob/living/carbon/human/H)
+/mob/living/carbon/human/proc/get_charge(mob/living/carbon/human/H)
 	return H.nutrition
 
-/mob/living/carbon/human/proc/spend_charge(var/spent, var/mob/living/carbon/human/H)
+/mob/living/carbon/human/proc/spend_charge(spent, mob/living/carbon/human/H)
 	H.nutrition = H.nutrition - spent
 
 /mob/living/carbon/human/verb/toggle_eyes_layer()

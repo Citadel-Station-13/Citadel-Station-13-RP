@@ -21,7 +21,7 @@
 	//var/tag_pump_out_external not part of basic airlocks
 	//var/tag_pump_out_internal
 
-/datum/computer/file/embedded_program/airlock/New(var/obj/machinery/embedded_controller/M)
+/datum/computer/file/embedded_program/airlock/New(obj/machinery/embedded_controller/M)
 	..(M)
 
 	memory["chamber_sensor_pressure"] = ONE_ATMOSPHERE
@@ -187,13 +187,13 @@
 	toggleDoor(memory["exterior_status"], tag_exterior_door, 1, "close")
 
 
-/datum/computer/file/embedded_program/airlock/proc/signalDoor(var/tag, var/command)
+/datum/computer/file/embedded_program/airlock/proc/signalDoor(tag, command)
 	var/datum/signal/signal = new
 	signal.data["tag"] = tag
 	signal.data["command"] = command
 	post_signal(signal, RADIO_AIRLOCK)
 
-/datum/computer/file/embedded_program/airlock/proc/signalPump(var/tag, var/power, var/direction, var/pressure)
+/datum/computer/file/embedded_program/airlock/proc/signalPump(tag, power, direction, pressure)
 	var/datum/signal/signal = new
 	signal.data = list(
 		"tag" = tag,
@@ -204,7 +204,7 @@
 	)
 	post_signal(signal)
 
-/datum/computer/file/embedded_program/airlock/proc/signalScrubber(var/tag, var/power)
+/datum/computer/file/embedded_program/airlock/proc/signalScrubber(tag, power)
 	var/datum/signal/signal = new
 	signal.data = list(
 		"tag" = tag,
@@ -213,7 +213,7 @@
 	)
 	post_signal(signal)
 
-/datum/computer/file/embedded_program/airlock/proc/signalTemperatureAdjuster(var/tag, var/power, var/temperature)
+/datum/computer/file/embedded_program/airlock/proc/signalTemperatureAdjuster(tag, power, temperature)
 	signalScrubber(tag_scrubber, power)//Temporary hack so mapping changes arent part of this PR
 	var/datum/signal/signal = new
 	signal.data = list(
@@ -243,10 +243,10 @@
 	state = STATE_UNDEFINED
 	memory["processing"] = FALSE
 
-/datum/computer/file/embedded_program/airlock/proc/delta_check(var/to_check, var/target_value, var/delta)
+/datum/computer/file/embedded_program/airlock/proc/delta_check(to_check, target_value, delta)
 	return (abs(to_check - target_value) <= delta)
 
-/datum/computer/file/embedded_program/airlock/proc/fuzzy_smaller_check(var/to_check, var/target_value, var/fuzz = 0.1)
+/datum/computer/file/embedded_program/airlock/proc/fuzzy_smaller_check(to_check, target_value, fuzz = 0.1)
 	return (to_check < (target_value - fuzz))
 /*----------------------------------------------------------
 toggleDoor()
@@ -260,7 +260,7 @@ Only sends a command if it is needed, i.e. if the door is
 already open, passing an open command to this proc will not
 send an additional command to open the door again.
 ----------------------------------------------------------*/
-/datum/computer/file/embedded_program/airlock/proc/toggleDoor(var/list/doorStatus, var/doorTag, var/secure, var/command)
+/datum/computer/file/embedded_program/airlock/proc/toggleDoor(list/doorStatus, doorTag, secure, command)
 	var/doorCommand = null
 
 	if(command == "toggle")

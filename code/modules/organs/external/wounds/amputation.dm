@@ -1,7 +1,7 @@
 /** EXTERNAL ORGAN LOSS **/
 /datum/wound/lost_limb
 
-/datum/wound/lost_limb/New(var/obj/item/organ/external/lost_limb, var/losstype, var/clean)
+/datum/wound/lost_limb/New(obj/item/organ/external/lost_limb, losstype, clean)
 	var/damage_amt = lost_limb.max_damage
 	if(clean) damage_amt /= 2
 
@@ -26,5 +26,5 @@
 
 	..(damage_amt)
 
-/datum/wound/lost_limb/can_merge(var/datum/wound/other)
+/datum/wound/lost_limb/can_merge(datum/wound/other)
 	return FALSE //cannot be merged

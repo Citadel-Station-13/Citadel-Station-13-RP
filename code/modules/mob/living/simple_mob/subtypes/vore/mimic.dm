@@ -107,7 +107,7 @@
 	wander = FALSE
 	hostile = TRUE
 
-/mob/living/simple_mob/vore/aggressive/mimic/apply_melee_effects(var/atom/A)
+/mob/living/simple_mob/vore/aggressive/mimic/apply_melee_effects(atom/A)
 	if(isliving(A))
 		var/mob/living/L = A
 		if(prob(knockdown_chance))

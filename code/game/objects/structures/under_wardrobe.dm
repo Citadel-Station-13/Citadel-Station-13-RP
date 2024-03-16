@@ -11,7 +11,7 @@
 		return
 	interact(user)
 
-/obj/structure/undies_wardrobe/interact(var/mob/living/carbon/human/H)
+/obj/structure/undies_wardrobe/interact(mob/living/carbon/human/H)
 	var/dat = list()
 	dat += "<b>Underwear:</b><br>"
 	for(var/datum/category_group/underwear/UWC in GLOB.global_underwear.categories)
@@ -26,7 +26,7 @@
 	dat = jointext(dat,null)
 	H << browse(dat, "window=wardrobe;size=400x200")
 
-/obj/structure/undies_wardrobe/proc/get_metadata(var/mob/living/carbon/human/H, var/underwear_category, var/datum/loadout_tweak/gt)
+/obj/structure/undies_wardrobe/proc/get_metadata(mob/living/carbon/human/H, underwear_category, datum/loadout_tweak/gt)
 	var/metadata = H.all_underwear_metadata[underwear_category]
 	if(!metadata)
 		metadata = list()
@@ -38,16 +38,16 @@
 		metadata["[gt]"] = tweak_data
 	return tweak_data
 
-/obj/structure/undies_wardrobe/proc/set_metadata(var/mob/living/carbon/human/H, var/underwear_category, var/datum/loadout_tweak/gt, var/new_metadata)
+/obj/structure/undies_wardrobe/proc/set_metadata(mob/living/carbon/human/H, underwear_category, datum/loadout_tweak/gt, new_metadata)
 	var/list/metadata = H.all_underwear_metadata[underwear_category]
 	metadata["[gt]"] = new_metadata
 
-/obj/structure/undies_wardrobe/proc/human_who_can_use_underwear(var/mob/living/carbon/human/H)
+/obj/structure/undies_wardrobe/proc/human_who_can_use_underwear(mob/living/carbon/human/H)
 	if(!istype(H) || !H.species || !(H.species.species_appearance_flags & HAS_UNDERWEAR))
 		return FALSE
 	return TRUE
 
-/obj/structure/undies_wardrobe/CanUseTopic(var/user)
+/obj/structure/undies_wardrobe/CanUseTopic(user)
 	if(!human_who_can_use_underwear(user))
 		return UI_CLOSE
 

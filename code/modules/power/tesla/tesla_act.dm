@@ -5,7 +5,7 @@
 /obj
 	var/being_shocked = FALSE
 
-/obj/proc/tesla_act(var/power)
+/obj/proc/tesla_act(power)
 	being_shocked = TRUE
 	var/power_bounced = power / 2
 	tesla_zap(src, 3, power_bounced)
@@ -36,7 +36,7 @@
 	else
 		legacy_ex_act(2)
 
-/obj/machinery/camera/tesla_act(var/power)//EMP proof upgrade also makes it tesla immune
+/obj/machinery/camera/tesla_act(power)//EMP proof upgrade also makes it tesla immune
 	if(isEmpProof())
 		return
 	..()
@@ -50,7 +50,7 @@
 	on = TRUE
 	broken()
 
-/obj/structure/closet/tesla_act(var/power)
+/obj/structure/closet/tesla_act(power)
 	..() //extend the zap
 	visible_message("<span class='danger'>[src] is blown apart by the bolt of electricity!</span>", "<span class='danger'>You hear a metallic screeching sound.</span>")
 	dump_contents()

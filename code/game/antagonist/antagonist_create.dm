@@ -1,4 +1,4 @@
-/datum/antagonist/proc/create_antagonist(var/datum/mind/target, var/move, var/gag_announcement, var/preserve_appearance)
+/datum/antagonist/proc/create_antagonist(datum/mind/target, move, gag_announcement, preserve_appearance)
 
 	if(!target)
 		return
@@ -18,7 +18,7 @@
 	greet(target)
 	announce_antagonist_spawn()
 
-/datum/antagonist/proc/create_default(var/mob/source)
+/datum/antagonist/proc/create_default(mob/source)
 	var/mob/living/M
 	if(mob_path)
 		M = new mob_path(get_turf(source))
@@ -30,7 +30,7 @@
 	add_antagonist(M.mind, 1, 0, 1) // Equip them and move them to spawn.
 	return M
 
-/datum/antagonist/proc/create_id(var/assignment, var/mob/living/carbon/human/player, var/equip = 1)
+/datum/antagonist/proc/create_id(assignment, mob/living/carbon/human/player, equip = 1)
 
 	var/obj/item/card/id/W = new id_type(player)
 	if(!W) return
@@ -40,7 +40,7 @@
 	if(equip) player.equip_to_slot_or_del(W, SLOT_ID_WORN_ID)
 	return W
 
-/datum/antagonist/proc/create_radio(var/freq, var/mob/living/carbon/human/player)
+/datum/antagonist/proc/create_radio(freq, mob/living/carbon/human/player)
 	var/obj/item/radio/R
 
 	switch(freq)
@@ -55,7 +55,7 @@
 	player.equip_to_slot_or_del(R, SLOT_ID_LEFT_EAR)
 	return R
 
-/datum/antagonist/proc/create_nuke(var/atom/paper_spawn_loc, var/datum/mind/code_owner)
+/datum/antagonist/proc/create_nuke(atom/paper_spawn_loc, datum/mind/code_owner)
 
 	// Decide on a code.
 	var/obj/landmark/nuke_spawn = locate(nuke_spawn_loc ? nuke_spawn_loc : "landmark*Nuclear-Bomb")
@@ -94,7 +94,7 @@
 	spawned_nuke = code
 	return code
 
-/datum/antagonist/proc/greet(var/datum/mind/player)
+/datum/antagonist/proc/greet(datum/mind/player)
 	// Makes it harder to miss if you're alt-tabbed or not paying attention.
 	if(antag_sound)
 		SEND_SOUND(player.current, sound(antag_sound))
@@ -116,7 +116,7 @@
 		show_objectives(player)
 	return 1
 
-/datum/antagonist/proc/set_antag_name(var/mob/living/player)
+/datum/antagonist/proc/set_antag_name(mob/living/player)
 	// Choose a name, if any.
 	var/newname = sanitize(input(player, "You are a [role_text]. Would you like to change your name to something else?", "Name change") as null|text, MAX_NAME_LEN)
 	if (newname)

@@ -54,13 +54,13 @@
 		time = 2 SECONDS,
 	)
 
-/datum/material/resin/can_open_material_door(var/mob/living/user)
+/datum/material/resin/can_open_material_door(mob/living/user)
 	var/mob/living/carbon/M = user
 	if(istype(M) && locate(/obj/item/organ/internal/xenos/hivenode) in M.internal_organs)
 		return 1
 	return 0
 
-/datum/material/resin/wall_touch_special(var/turf/simulated/wall/W, var/mob/living/L)
+/datum/material/resin/wall_touch_special(turf/simulated/wall/W, mob/living/L)
 	var/mob/living/carbon/M = L
 	if(istype(M) && locate(/obj/item/organ/internal/xenos/hivenode) in M.internal_organs)
 		to_chat(M, "<span class='alien'>\The [W] shudders under your touch, starting to become porous.</span>")

@@ -20,7 +20,7 @@
 	var/obj/machinery/atmospherics/target = check_ventcrawl(T.below())
 	if(target) ventcrawl_to(usr, target, DOWN)
 
-/obj/machinery/atmospherics/pipe/zpipe/proc/check_ventcrawl(var/turf/target)
+/obj/machinery/atmospherics/pipe/zpipe/proc/check_ventcrawl(turf/target)
 	if(!istype(target))
 		return
 	if(node1 in target)

@@ -15,7 +15,7 @@
 ///How much power emergency lights will consume per tick
 #define LIGHT_EMERGENCY_POWER_USE 0.2
 var/global/list/light_type_cache = list()
-/proc/get_light_type_instance(var/light_type)
+/proc/get_light_type_instance(light_type)
 	. = light_type_cache[light_type]
 	if(!.)
 		. = new light_type
@@ -565,7 +565,7 @@ var/global/list/light_type_cache = list()
 			update()
 
 // update lighting
-/obj/machinery/light/proc/update(var/trigger = 1)
+/obj/machinery/light/proc/update(trigger = 1)
 	update_icon()
 	if(!on)
 		needsound = TRUE // Play sound next time we turn on
@@ -606,7 +606,7 @@ var/global/list/light_type_cache = list()
 
 	active_power_usage = ((light_range * light_power) * LIGHTING_POWER_FACTOR)
 
-/obj/machinery/light/proc/nightshift_mode(var/state)
+/obj/machinery/light/proc/nightshift_mode(state)
 	if(!nightshift_allowed)
 		return
 
@@ -614,7 +614,7 @@ var/global/list/light_type_cache = list()
 		nightshift_enabled = state
 		update(FALSE)
 
-/obj/machinery/light/attack_generic(var/mob/user, var/damage)
+/obj/machinery/light/attack_generic(mob/user, damage)
 	if(!damage)
 		return
 	if(status == LIGHT_EMPTY||status == LIGHT_BROKEN)
@@ -637,7 +637,7 @@ var/global/list/light_type_cache = list()
 
 // attempt to set the light's on/off status
 // will not switch on if broken/burned/empty
-/obj/machinery/light/proc/seton(var/s)
+/obj/machinery/light/proc/seton(s)
 	on = (s && status == LIGHT_OK)
 	update()
 
@@ -831,7 +831,7 @@ var/global/list/light_type_cache = list()
 	return TRUE
 
 
-/obj/machinery/light/proc/flicker(var/amount = rand(10, 20))
+/obj/machinery/light/proc/flicker(amount = rand(10, 20))
 	if(flickering) return
 	flickering = 1
 	spawn(0)
@@ -933,7 +933,7 @@ var/global/list/light_type_cache = list()
 
 // break the light and make sparks if was on
 
-/obj/machinery/light/proc/broken(var/skip_sound_and_sparks = 0)
+/obj/machinery/light/proc/broken(skip_sound_and_sparks = 0)
 	if(status == LIGHT_EMPTY)
 		return
 

@@ -26,13 +26,13 @@ var/datum/antagonist/technomancer/technomancers
 	..()
 	technomancers = src
 
-/datum/antagonist/technomancer/update_antag_mob(var/datum/mind/technomancer)
+/datum/antagonist/technomancer/update_antag_mob(datum/mind/technomancer)
 	..()
 	technomancer.store_memory("<B>Remember:</B> Do not forget to purchase the functions and equipment you need.")
 	technomancer.current.real_name = "[pick(GLOB.wizard_first)] [pick(GLOB.wizard_second)]"
 	technomancer.current.name = technomancer.current.real_name
 
-/datum/antagonist/technomancer/equip(var/mob/living/carbon/human/technomancer_mob)
+/datum/antagonist/technomancer/equip(mob/living/carbon/human/technomancer_mob)
 
 	if(!..())
 		return 0
@@ -50,7 +50,7 @@ var/datum/antagonist/technomancer/technomancers
 	technomancer_mob.equip_to_slot_or_del(new /obj/item/clothing/head/technomancer/master(technomancer_mob), SLOT_ID_HEAD)
 	return 1
 
-/datum/antagonist/technomancer/proc/equip_apprentice(var/mob/living/carbon/human/technomancer_mob)
+/datum/antagonist/technomancer/proc/equip_apprentice(mob/living/carbon/human/technomancer_mob)
 
 	technomancer_mob.equip_to_slot_or_del(new /obj/item/clothing/under/technomancer/apprentice(technomancer_mob), SLOT_ID_UNIFORM)
 	create_id("Techno-apprentice", technomancer_mob)
@@ -89,7 +89,7 @@ var/datum/antagonist/technomancer/technomancers
 			continue // Cores containing spells only.
 		to_chat(world, "Abandoned [core] had [english_list(core.spells)].<br>")
 
-/datum/antagonist/technomancer/print_player_full(var/datum/mind/player)
+/datum/antagonist/technomancer/print_player_full(datum/mind/player)
 	var/text = print_player_lite(player)
 
 	var/obj/item/technomancer_core/core

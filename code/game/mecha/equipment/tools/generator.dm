@@ -66,7 +66,7 @@
 		occupant_message(message)
 	return
 
-/obj/item/mecha_parts/mecha_equipment/generator/proc/load_fuel(var/obj/item/stack/material/P)
+/obj/item/mecha_parts/mecha_equipment/generator/proc/load_fuel(obj/item/stack/material/P)
 	if(P.type == fuel.type && P.amount)
 		var/to_load = max(max_fuel - fuel.amount*fuel.perunit,0)
 		if(to_load)
@@ -107,7 +107,7 @@
 
 /datum/global_iterator/mecha_generator
 
-/datum/global_iterator/mecha_generator/process(var/obj/item/mecha_parts/mecha_equipment/generator/EG)
+/datum/global_iterator/mecha_generator/process(obj/item/mecha_parts/mecha_equipment/generator/EG)
 	if(!EG.chassis)
 		stop()
 		EG.set_ready_state(1)
@@ -156,7 +156,7 @@
 
 /datum/global_iterator/mecha_generator/nuclear
 
-/datum/global_iterator/mecha_generator/nuclear/process(var/obj/item/mecha_parts/mecha_equipment/generator/nuclear/EG)
+/datum/global_iterator/mecha_generator/nuclear/process(obj/item/mecha_parts/mecha_equipment/generator/nuclear/EG)
 	if(..())
 		radiation_pulse(EG, RAD_INTENSITY_MECH_REACTOR_TICK * EG.rad_multiplier)
 	return 1

@@ -171,7 +171,7 @@
 	item_state = "armblade"
 	slot_flags = NONE
 
-/obj/item/material/knife/machete/armblade/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
+/obj/item/material/knife/machete/armblade/handle_shield(mob/user, damage, atom/damage_source = null, mob/attacker = null, def_zone = null, attack_text = "the attack")
 	if(default_parry_check(user, attacker, damage_source) && prob(33))
 		user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
 		playsound(user.loc, 'sound/weapons/punchmiss.ogg', 50, 1)

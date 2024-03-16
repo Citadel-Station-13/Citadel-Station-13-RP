@@ -64,7 +64,7 @@
 		return
 	..()
 
-/obj/machinery/power/tesla_coil/tesla_act(var/power)
+/obj/machinery/power/tesla_coil/tesla_act(power)
 	if(anchored && !panel_open)
 		being_shocked = TRUE
 		//don't lose arc power when it's not connected to anything
@@ -130,7 +130,7 @@
 		return
 	..()
 
-/obj/machinery/power/grounding_rod/tesla_act(var/power)
+/obj/machinery/power/grounding_rod/tesla_act(power)
 	if(anchored && !panel_open)
 		flick("grounding_rodhit", src)
 	else

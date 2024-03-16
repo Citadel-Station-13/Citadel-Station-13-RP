@@ -18,14 +18,14 @@
 	name = "Size"
 	sort_order = 2
 
-/datum/category_item/player_setup_item/vore/size/load_character(var/savefile/S)
+/datum/category_item/player_setup_item/vore/size/load_character(savefile/S)
 	S["size_multiplier"]	>> pref.size_multiplier
 	S["weight_vr"]			>> pref.weight_vr
 	S["weight_gain"]		>> pref.weight_gain
 	S["weight_loss"]		>> pref.weight_loss
 	S["fuzzy"]				>> pref.fuzzy
 
-/datum/category_item/player_setup_item/vore/size/save_character(var/savefile/S)
+/datum/category_item/player_setup_item/vore/size/save_character(savefile/S)
 	S["size_multiplier"]	<< pref.size_multiplier
 	S["weight_vr"]			<< pref.weight_vr
 	S["weight_gain"]		<< pref.weight_gain
@@ -61,7 +61,7 @@
 	. += "<b>Weight Gain Rate:</b> <a href='?src=\ref[src];weight_gain=1'>[pref.weight_gain]</a><br>"
 	. += "<b>Weight Loss Rate:</b> <a href='?src=\ref[src];weight_loss=1'>[pref.weight_loss]</a><br>"
 
-/datum/category_item/player_setup_item/vore/size/OnTopic(var/href, var/list/href_list, var/mob/user)
+/datum/category_item/player_setup_item/vore/size/OnTopic(href, list/href_list, mob/user)
 	if(href_list["size_multiplier"])
 		var/new_size = input(user, "Choose your character's size, ranging from 25% to 200%", "Set Size") as num|null
 		if (!ISINRANGE(new_size,25,200))

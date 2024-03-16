@@ -186,7 +186,7 @@
 	flick("airlock_sensor_cycle", src)
 
 // Checks the change of the values, if the change is sufficently large on any of them, send a new signal
-/obj/machinery/airlock_sensor/proc/delta_check(var/new_pressure, var/new_phoron, var/new_temperature)
+/obj/machinery/airlock_sensor/proc/delta_check(new_pressure, new_phoron, new_temperature)
 	if(previous_pressure == null || previous_phoron == null || previous_temperature == null)
 		return 1
 	if(abs(new_pressure - previous_pressure) > 0.1)

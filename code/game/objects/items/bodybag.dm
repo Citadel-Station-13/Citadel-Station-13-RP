@@ -75,7 +75,7 @@
 		cut_overlays()
 		return
 
-/obj/structure/closet/body_bag/store_mobs(var/stored_units)
+/obj/structure/closet/body_bag/store_mobs(stored_units)
 	contains_body = ..()
 	return contains_body
 
@@ -109,7 +109,7 @@
 		occupants += H
 	return occupants
 
-/obj/structure/closet/body_bag/proc/update(var/broadcast=0)
+/obj/structure/closet/body_bag/proc/update(broadcast=0)
 	if(istype(loc, /obj/structure/morgue))
 		var/obj/structure/morgue/M = loc
 		M.update(broadcast)
@@ -200,7 +200,7 @@
 		return tank.air_contents
 	..()
 
-/obj/structure/closet/body_bag/cryobag/proc/inject_occupant(var/mob/living/carbon/human/H)
+/obj/structure/closet/body_bag/cryobag/proc/inject_occupant(mob/living/carbon/human/H)
 	if(!syringe)
 		return
 

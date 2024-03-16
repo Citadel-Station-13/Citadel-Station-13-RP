@@ -1,7 +1,7 @@
 /atom/proc/DefaultTopicState()
 	return GLOB.default_state
 
-/atom/Topic(href, href_list, var/datum/topic_state/state = default_state)
+/atom/Topic(href, href_list, datum/topic_state/state = default_state)
 	if(usr && ..())
 		return TRUE
 
@@ -16,22 +16,22 @@
 	CouldNotUseTopic(usr)
 	return TRUE
 
-/obj/CanUseTopic(var/mob/user, var/datum/topic_state/state = default_state)
+/obj/CanUseTopic(mob/user, datum/topic_state/state = default_state)
 	if(user.CanUseObjTopic(src))
 		return ..()
 	to_chat(user, "<span class='danger'>[icon2html(thing = src, target = user)] Access Denied!</span>")
 	return UI_CLOSE
 
-/mob/living/silicon/CanUseObjTopic(var/obj/O)
+/mob/living/silicon/CanUseObjTopic(obj/O)
 	var/id = src.GetIdCard()
 	return O.check_access(id)
 
 /mob/proc/CanUseObjTopic()
 	return TRUE
 
-/atom/proc/CouldUseTopic(var/mob/user)
+/atom/proc/CouldUseTopic(mob/user)
 	var/atom/host = nano_host()
 	host.add_hiddenprint(user)
 
-/atom/proc/CouldNotUseTopic(var/mob/user)
+/atom/proc/CouldNotUseTopic(mob/user)
 	// Nada

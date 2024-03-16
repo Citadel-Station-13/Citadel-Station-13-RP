@@ -59,7 +59,7 @@
 	. = ..()
 	create_reagents(15)
 
-/obj/item/clothing/gloves/ring/reagent/equipped(var/mob/living/carbon/human/H)
+/obj/item/clothing/gloves/ring/reagent/equipped(mob/living/carbon/human/H)
 	..()
 	if(istype(H) && H.gloves==src)
 
@@ -112,7 +112,7 @@
 	change_name(user)
 	nameset = TRUE
 
-/obj/item/clothing/gloves/ring/seal/signet/proc/change_name(var/signet_name = "Unknown")
+/obj/item/clothing/gloves/ring/seal/signet/proc/change_name(signet_name = "Unknown")
 	name = "[signet_name]'s signet ring"
 	desc = "A signet ring belonging to [signet_name], for when you're too sophisticated to sign letters."
 

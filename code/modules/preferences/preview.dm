@@ -20,7 +20,7 @@
 	set_character_renders(new /mutable_appearance(mannequin))
 
 // todo: refactor
-/datum/preferences/proc/dress_preview_mob(var/mob/living/carbon/human/mannequin, flags)
+/datum/preferences/proc/dress_preview_mob(mob/living/carbon/human/mannequin, flags)
 	copy_to(mannequin, flags)
 
 	if(!equip_preview_mob)

@@ -259,7 +259,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 /// FOOD END
 ////////////////////////////////////////////////////////////////////////////////
-/obj/item/reagent_containers/food/snacks/attack_generic(var/mob/living/user)
+/obj/item/reagent_containers/food/snacks/attack_generic(mob/living/user)
 	if(!isanimal(user) && !isalien(user))
 		return
 	user.visible_message("<b>[user]</b> nibbles away at \the [src].","You nibble away at \the [src].")
@@ -1882,7 +1882,7 @@
 	atom_flags |= OPENCONTAINER
 	return
 
-/obj/item/reagent_containers/food/snacks/monkeycube/On_Consume(var/mob/M)
+/obj/item/reagent_containers/food/snacks/monkeycube/On_Consume(mob/M)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		H.visible_message("<span class='warning'>A screeching creature bursts out of [M]'s chest!</span>")
@@ -3975,7 +3975,7 @@ END CITADEL CHANGE */
 	return ..()
 
 //This proc handles drawing coatings out of a container when this food is dipped into it
-/obj/item/reagent_containers/food/snacks/proc/apply_coating(var/datum/reagent/nutriment/coating/C, var/mob/user)
+/obj/item/reagent_containers/food/snacks/proc/apply_coating(datum/reagent/nutriment/coating/C, mob/user)
 	if (coating)
 		to_chat(user, "The [src] is already coated in [coating.name]!")
 		return 0
@@ -4073,7 +4073,7 @@ END CITADEL CHANGE */
 			C.data["cooked"] = 1
 			C.name = C.cooked_name
 
-/obj/item/reagent_containers/food/snacks/proc/on_consume(var/mob/eater, var/mob/feeder = null)
+/obj/item/reagent_containers/food/snacks/proc/on_consume(mob/eater, mob/feeder = null)
 	if(!reagents.total_volume)
 		eater.visible_message("<span class='notice'>[eater] finishes eating \the [src].</span>","<span class='notice'>You finish eating \the [src].</span>")
 

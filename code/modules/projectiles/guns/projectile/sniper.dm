@@ -58,12 +58,12 @@
 		return 0
 	return ..()
 
-/obj/item/gun/ballistic/heavysniper/load_ammo(var/obj/item/A, mob/user)
+/obj/item/gun/ballistic/heavysniper/load_ammo(obj/item/A, mob/user)
 	if(!bolt_open)
 		return
 	..()
 
-/obj/item/gun/ballistic/heavysniper/unload_ammo(mob/user, var/allow_dump=1)
+/obj/item/gun/ballistic/heavysniper/unload_ammo(mob/user, allow_dump=1)
 	if(!bolt_open)
 		return
 	..()

@@ -51,7 +51,7 @@
 	nifsoft = null
 	return ..()
 
-/obj/item/communicator/commlink/register_device(var/new_name)
+/obj/item/communicator/commlink/register_device(new_name)
 	owner = new_name
 	name = "[owner]'s [initial(name)]"
 	nif.save_data["commlink_name"] = owner
@@ -88,7 +88,7 @@
 	return
 
 //The silent treatment
-/obj/item/communicator/commlink/request(var/atom/candidate)
+/obj/item/communicator/commlink/request(atom/candidate)
 	if(candidate in voice_requests)
 		return
 	var/who = null
@@ -108,7 +108,7 @@
 		nif.notify("New commlink call from [who]. (<a href='?src=\ref[nifsoft];open=1'>Open</a>)")
 
 //Similar reason
-/obj/item/communicator/commlink/request_im(var/atom/candidate, var/origin_address, var/text)
+/obj/item/communicator/commlink/request_im(atom/candidate, origin_address, text)
 	var/who = null
 	if(isobserver(candidate))
 		var/mob/observer/dead/ghost = candidate

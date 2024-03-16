@@ -49,7 +49,7 @@
 Two lists may be different (A!=B) even if they have the same elements.
 This actually tests if they have the same entries and values.
 */
-/proc/same_entries(var/list/first, var/list/second)
+/proc/same_entries(list/first, list/second)
 	if(!islist(first) || !islist(second))
 		return 0
 	if(length(first) != length(second))
@@ -188,13 +188,13 @@ This actually tests if they have the same entries and values.
 
 
 //! ## VR FILE MERGE ## !//
-/proc/dd_sortedObjectList(var/list/L, var/cache=list())
+/proc/dd_sortedObjectList(list/L, list/cache=list())
 	if(L.len < 2)
 		return L
 	var/middle = L.len / 2 + 1 // Copy is first,second-1
 	return dd_mergeObjectList(dd_sortedObjectList(L.Copy(0,middle), cache), dd_sortedObjectList(L.Copy(middle), cache), cache) //second parameter null = to end of list
 
-/proc/dd_mergeObjectList(var/list/L, var/list/R, var/list/cache)
+/proc/dd_mergeObjectList(list/L, list/R, list/cache)
 	var/Li=1
 	var/Ri=1
 	var/list/result = new()
@@ -219,7 +219,7 @@ This actually tests if they have the same entries and values.
 	return (result + R.Copy(Ri, 0))
 
 // Insert an object into a sorted list, preserving sortedness
-/proc/dd_insertObjectList(var/list/L, var/O)
+/proc/dd_insertObjectList(list/L, O)
 	var/min = 1
 	var/max = L.len
 	var/Oval = O:dd_SortValue()
@@ -392,13 +392,13 @@ proc/dd_sortedObjectList(list/incoming)
 	return L
 
 // List of lists, sorts by element[key] - for things like crew monitoring computer sorting records by name.
-/proc/sortByKey(var/list/L, var/key)
+/proc/sortByKey(list/L, key)
 	if(L.len < 2)
 		return L
 	var/middle = L.len / 2 + 1
 	return mergeKeyedLists(sortByKey(L.Copy(0, middle), key), sortByKey(L.Copy(middle), key), key)
 
-/proc/mergeKeyedLists(var/list/L, var/list/R, var/key)
+/proc/mergeKeyedLists(list/L, list/R, key)
 	var/Li=1
 	var/Ri=1
 	var/list/result = new()

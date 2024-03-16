@@ -84,7 +84,7 @@
 
 	return ..()
 
-/obj/structure/reagent_dispensers/fueltank/bullet_act(var/obj/projectile/Proj)
+/obj/structure/reagent_dispensers/fueltank/bullet_act(obj/projectile/Proj)
 	if(Proj.get_structure_damage())
 		if(istype(Proj.firer))
 			message_admins("[key_name_admin(Proj.firer)] shot fueltank at [loc.loc.name] ([loc.x],[loc.y],[loc.z]) (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>).")

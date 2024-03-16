@@ -276,7 +276,7 @@ update_flag
 /obj/machinery/portable_atmospherics/canister/return_air()
 	return air_contents
 
-/obj/machinery/portable_atmospherics/canister/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/machinery/portable_atmospherics/canister/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(user, /mob/living/silicon/robot) && istype(W, /obj/item/tank/jetpack))
 		var/datum/gas_mixture/thejetpack = W:air_contents
 		var/env_pressure = thejetpack.return_pressure()
@@ -293,7 +293,7 @@ update_flag
 	. = ..()
 	update_ui_data()
 
-/obj/machinery/portable_atmospherics/canister/attack_ai(var/mob/user as mob)
+/obj/machinery/portable_atmospherics/canister/attack_ai(mob/user as mob)
 	return src.attack_hand(user)
 
 /obj/machinery/portable_atmospherics/canister/attack_hand(mob/user, list/params)

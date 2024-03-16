@@ -45,7 +45,7 @@
 //
 //	Check if an object is capable of eating things, based on vore_organs
 //
-/proc/is_vore_predator(var/mob/living/O)
+/proc/is_vore_predator(mob/living/O)
 	if(istype(O,/mob/living))
 		if(O.vore_organs.len > 0)
 			return TRUE
@@ -172,5 +172,5 @@
 	return TRUE
 
 //Can do conversions here
-/datum/vore_preferences/proc/patch_version(var/list/json_FROM_FILE,var/version)
+/datum/vore_preferences/proc/patch_version(list/json_FROM_FILE,version)
 	return json_FROM_FILE

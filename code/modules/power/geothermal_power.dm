@@ -63,7 +63,7 @@
 	return ..()
 
 
-/obj/machinery/power/geothermal_controller/proc/scan_for_collectors(var/ran)
+/obj/machinery/power/geothermal_controller/proc/scan_for_collectors(ran)
 	power_total = 0
 	for (var/obj/machinery/power/geothermal_collector/col in range(ran, src))
 		if(istype(col))

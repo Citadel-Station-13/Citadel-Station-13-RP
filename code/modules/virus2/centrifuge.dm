@@ -9,7 +9,7 @@
 	var/obj/item/reagent_containers/glass/beaker/vial/sample = null
 	var/datum/disease2/disease/virus2 = null
 
-/obj/machinery/computer/centrifuge/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/machinery/computer/centrifuge/attackby(obj/item/O as obj, mob/user as mob)
 	if(O.is_screwdriver())
 		return ..()
 
@@ -159,7 +159,7 @@
 	update_icon()
 	ping("\The [src] pings, \"Pathogen isolated.\"")
 
-/obj/machinery/computer/centrifuge/proc/print(var/mob/user)
+/obj/machinery/computer/centrifuge/proc/print(mob/user)
 	var/obj/item/paper/P = new /obj/item/paper(loc)
 	P.name = "paper - Pathology Report"
 	P.info = {"

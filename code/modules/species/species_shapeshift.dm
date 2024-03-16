@@ -184,7 +184,7 @@ var/list/wrapped_species_by_ref = list()
 		return
 	shapeshifter_change_shape(new_species)
 
-/mob/living/carbon/human/proc/shapeshifter_change_shape(var/new_species = null)
+/mob/living/carbon/human/proc/shapeshifter_change_shape(new_species = null)
 	if(!new_species)
 		return
 

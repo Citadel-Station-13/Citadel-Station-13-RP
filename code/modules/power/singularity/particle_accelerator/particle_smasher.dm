@@ -127,7 +127,7 @@
 	else
 		set_light(0, 0, "#FFFFFF")
 
-/obj/machinery/particle_smasher/bullet_act(var/obj/projectile/Proj)
+/obj/machinery/particle_smasher/bullet_act(obj/projectile/Proj)
 	if(istype(Proj, /obj/projectile/beam))
 		if(Proj.damage >= 50)
 			TryCraft()
@@ -194,7 +194,7 @@
 				break
 	update_icon()
 
-/obj/machinery/particle_smasher/proc/DoCraft(var/datum/particle_smasher_recipe/recipe)
+/obj/machinery/particle_smasher/proc/DoCraft(datum/particle_smasher_recipe/recipe)
 	if(!recipe)
 		return
 
@@ -254,7 +254,7 @@
 	var/required_atmos_temp_max = 600	// The maximum ambient atmospheric temperature required, in kelvin.
 	var/probability = 0					// The probability for the recipe to be produced. 0 will make it impossible.
 
-/datum/particle_smasher_recipe/proc/check_items(var/obj/container as obj)
+/datum/particle_smasher_recipe/proc/check_items(obj/container as obj)
 	. = 1
 	if (items && items.len)
 		var/list/checklist = list()
@@ -277,7 +277,7 @@
 			. = -1
 	return .
 
-/datum/particle_smasher_recipe/proc/check_reagents(var/datum/reagents/avail_reagents)
+/datum/particle_smasher_recipe/proc/check_reagents(datum/reagents/avail_reagents)
 	. = 1
 	for (var/r_r in reagents)
 		var/aval_r_amnt = avail_reagents.get_reagent_amount(r_r)

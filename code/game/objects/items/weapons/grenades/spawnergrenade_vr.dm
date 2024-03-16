@@ -24,7 +24,7 @@
 	else
 		return ..()
 
-/obj/item/grenade/spawnergrenade/manhacks/station/locked/emag_act(var/remaining_charges,var/mob/user)
+/obj/item/grenade/spawnergrenade/manhacks/station/locked/emag_act(remaining_charges,mob/user)
 	..()
 	locked = !locked
 	to_chat(user, "<span class='warning'>You [locked ? "enable" : "disable"] the safety lock on \the [src]!</span>")

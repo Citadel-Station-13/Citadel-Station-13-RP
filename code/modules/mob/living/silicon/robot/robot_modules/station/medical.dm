@@ -89,7 +89,7 @@
 	B.synths = list(synths_by_kind[MATSYN_DRUGS])
 	. += B
 
-/obj/item/robot_module/robot/medical/surgeon/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
+/obj/item/robot_module/robot/medical/surgeon/respawn_consumable(mob/living/silicon/robot/R, amount)
 
 	var/obj/item/reagent_containers/syringe/S = locate() in src.modules
 	if(S.mode == 2)

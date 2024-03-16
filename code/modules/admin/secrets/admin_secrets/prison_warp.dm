@@ -1,7 +1,7 @@
 /datum/admin_secret_item/admin_secret/prison_warp
 	name = "Prison Warp"
 
-/datum/admin_secret_item/admin_secret/prison_warp/execute(var/mob/user)
+/datum/admin_secret_item/admin_secret/prison_warp/execute(mob/user)
 	. = ..()
 	if(!.)
 		return

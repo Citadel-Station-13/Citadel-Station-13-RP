@@ -39,7 +39,7 @@
  * Give Random Good Mutation to M
  */
 //
-/proc/randmutg(var/mob/living/M)
+/proc/randmutg(mob/living/M)
 	if(!M)
 		return
 	M.dna.check_integrity()

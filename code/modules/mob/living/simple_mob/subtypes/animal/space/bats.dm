@@ -48,7 +48,7 @@
 
 	var/scare_chance = 15
 
-/mob/living/simple_mob/animal/space/bats/apply_melee_effects(var/atom/A)
+/mob/living/simple_mob/animal/space/bats/apply_melee_effects(atom/A)
 	if(isliving(A))
 		var/mob/living/L = A
 		if(prob(scare_chance))

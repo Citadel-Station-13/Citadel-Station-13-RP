@@ -99,7 +99,7 @@
 			AM.inflict_atom_damage(charge_damage, charge_damage_tier, charge_damage_flag, charge_damage_mode, ATTACK_TYPE_UNARMED, src)
 	..()
 
-/mob/living/simple_mob/animal/horing/proc/runOver(var/mob/living/M)
+/mob/living/simple_mob/animal/horing/proc/runOver(mob/living/M)
 	if(istype(M))
 		visible_message("<span class='warning'>[src] rams [M] over!</span>")
 		playsound(src, 'sound/effects/splat.ogg', 50, 1)
@@ -170,7 +170,7 @@
 	give_target(new_target)
 	return new_target
 
-/datum/ai_holder/simple_mob/horing/proc/checkthreatened(var/possible_target, var/target_threatlevel = 0)
+/datum/ai_holder/simple_mob/horing/proc/checkthreatened(possible_target, target_threatlevel = 0)
 	if(check_attacker(possible_target))
 		return TRUE
 	if(untrusting == 1 && target_threatlevel > 130 && (possible_target in range(5)))

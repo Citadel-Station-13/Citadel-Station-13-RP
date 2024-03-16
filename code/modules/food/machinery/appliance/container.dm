@@ -21,7 +21,7 @@
 	atom_flags |= OPENCONTAINER | NOREACT
 
 
-/obj/item/reagent_containers/cooking_container/examine(var/mob/user)
+/obj/item/reagent_containers/cooking_container/examine(mob/user)
 	. = ..()
 	if (contents.len)
 		var/string = "It contains....</br>"
@@ -31,7 +31,7 @@
 	if (reagents.total_volume)
 		. += "<span class = 'notice'>It contains [reagents.total_volume]u of reagents.</span>"
 
-/obj/item/reagent_containers/cooking_container/attackby(var/obj/item/I as obj, var/mob/user as mob)
+/obj/item/reagent_containers/cooking_container/attackby(obj/item/I as obj, mob/user as mob)
 	for (var/possible_type in insertable)
 		if (istype(I, possible_type))
 			if (!can_fit(I))
@@ -83,7 +83,7 @@
 			return 1//Contains only a single object which can be extracted alone
 	return 2//Contains multiple objects and/or reagents
 
-/obj/item/reagent_containers/cooking_container/AltClick(var/mob/user)
+/obj/item/reagent_containers/cooking_container/AltClick(mob/user)
 	do_empty(user)
 
 //Deletes contents of container.
@@ -95,7 +95,7 @@
 	if (reagents)
 		reagents.clear_reagents()
 
-/obj/item/reagent_containers/cooking_container/proc/label(var/number, var/CT = null)
+/obj/item/reagent_containers/cooking_container/proc/label(number, CT = null)
 	//This returns something like "Fryer basket 1 - empty"
 	//The latter part is a brief reminder of contents
 	//This is used in the removal menu
@@ -117,7 +117,7 @@
 		. += "empty"
 
 
-/obj/item/reagent_containers/cooking_container/proc/can_fit(var/obj/item/I)
+/obj/item/reagent_containers/cooking_container/proc/can_fit(obj/item/I)
 	var/total = 0
 	for (var/obj/item/J in contents)
 		total += J.w_class
@@ -128,7 +128,7 @@
 
 //Takes a reagent holder as input and distributes its contents among the items in the container
 //Distribution is weighted based on the volume already present in each item
-/obj/item/reagent_containers/cooking_container/proc/soak_reagent(var/datum/reagents/holder)
+/obj/item/reagent_containers/cooking_container/proc/soak_reagent(datum/reagents/holder)
 	var/total = 0
 	var/list/weights = list()
 	for (var/obj/item/I in contents)

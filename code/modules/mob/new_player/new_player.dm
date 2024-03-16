@@ -481,7 +481,7 @@
 
 	qdel(src)
 
-/mob/new_player/proc/AnnounceCyborg(var/mob/living/character, var/rank, var/join_message)
+/mob/new_player/proc/AnnounceCyborg(mob/living/character, rank, join_message)
 	if (SSticker.current_state == GAME_STATE_PLAYING)
 		if(character.mind.role_alt_title)
 			rank = character.mind.role_alt_title
@@ -489,7 +489,7 @@
 		GLOB.global_announcer.autosay("A new [rank] has arrived on the station.", "Arrivals Announcement Computer")
 
 
-/mob/new_player/proc/create_character(var/turf/T)
+/mob/new_player/proc/create_character(turf/T)
 	// don't lose out if we join fast
 	SSplaytime.queue_playtimes(client)
 	if(!spawn_checks_vr())
@@ -612,7 +612,7 @@
 	return ready && ..()
 
 // Prevents lobby players from seeing say, even with ghostears
-/mob/new_player/hear_say(var/message, var/verb = "says", var/datum/language/language = null, var/alt_name = "",var/italics = 0, var/mob/speaker = null)
+/mob/new_player/hear_say(message, verb = "says", datum/language/language = null, alt_name = "",italics = 0, mob/speaker = null)
 	return
 
 // Prevents lobby players from seeing emotes, even with ghosteyes

@@ -135,7 +135,7 @@
 		for(var/path in powertypes)
 			protean_abilities += new path()
 
-/datum/species/protean/create_organs(var/mob/living/carbon/human/H)
+/datum/species/protean/create_organs(mob/living/carbon/human/H)
 	var/obj/item/nif/saved_nif = H.nif
 	if(saved_nif)
 		H.nif.unimplant(H) //Needs reference to owner to unimplant right.
@@ -149,7 +149,7 @@
 		return H.impersonate_bodytype || ..()
 	return ..()
 
-/datum/species/protean/get_bodytype_legacy(var/mob/living/carbon/human/H)
+/datum/species/protean/get_bodytype_legacy(mob/living/carbon/human/H)
 	if(H)
 		return H.impersonate_bodytype_legacy || ..()
 	return ..()
@@ -172,7 +172,7 @@
 	var/obj/item/hardsuit/protean/prig = new /obj/item/hardsuit/protean(H)
 	prig.myprotean = H
 
-/datum/species/protean/equip_survival_gear(var/mob/living/carbon/human/H)
+/datum/species/protean/equip_survival_gear(mob/living/carbon/human/H)
 	var/obj/item/storage/box/box = new /obj/item/storage/box/survival/synth(H)
 	var/obj/item/stack/material/steel/metal_stack = new(box)
 	metal_stack.amount = 3 // Less starting steel due to regen changes
@@ -185,13 +185,13 @@
 	else
 		H.equip_to_slot_or_del(box, /datum/inventory_slot_meta/abstract/put_in_backpack)
 
-/datum/species/protean/get_blood_colour(var/mob/living/carbon/human/H)
+/datum/species/protean/get_blood_colour(mob/living/carbon/human/H)
 	return rgb(80,80,80,230)
 
-/datum/species/protean/get_flesh_colour(var/mob/living/carbon/human/H)
+/datum/species/protean/get_flesh_colour(mob/living/carbon/human/H)
 	return rgb(80,80,80,230)
 
-/datum/species/protean/handle_death(var/mob/living/carbon/human/H, gibbed)		// citadel edit - FUCK YOU ACTUALLY GIB THE MOB AFTER REMOVING IT FROM THE BLOB HOW HARD CAN THIS BE!!
+/datum/species/protean/handle_death(mob/living/carbon/human/H, gibbed)		// citadel edit - FUCK YOU ACTUALLY GIB THE MOB AFTER REMOVING IT FROM THE BLOB HOW HARD CAN THIS BE!!
 	var/deathmsg = "<span class='userdanger'>You have died as a Protean. You may be revived by nanite chambers (once available), but otherwise, you may roleplay as your disembodied posibrain or respawn on another character.</span>"
 	// force eject inv
 	H.drop_inventory(TRUE, TRUE, TRUE)
@@ -224,7 +224,7 @@
 
 	return ..()
 
-/datum/species/protean/get_additional_examine_text(var/mob/living/carbon/human/H)
+/datum/species/protean/get_additional_examine_text(mob/living/carbon/human/H)
 	return ..() //Hmm, what could be done here?
 
 /datum/species/protean/statpanel_status(client/C, mob/living/carbon/human/H)
@@ -321,7 +321,7 @@
 	desc = "This is a 'Permit for Advanced Nanotechnology' card. It allows the owner to possess and operate advanced nanotechnology on Nanotrasen property. It must be renewed on a monthly basis."
 	icon = 'icons/obj/card_cit.dmi'
 	icon_state = "permit-pan"
-/obj/item/clothing/accessory/permit/nanotech/set_name(var/new_name)
+/obj/item/clothing/accessory/permit/nanotech/set_name(new_name)
 	owner = 1
 	if(new_name)
 		src.name += " ([new_name])"

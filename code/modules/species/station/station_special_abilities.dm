@@ -681,7 +681,7 @@
 
 //Test to see if we can shred a mob. Some child override needs to pass us a target. We'll return it if you can.
 /mob/living/var/vore_shred_time = 45 SECONDS
-/mob/living/proc/can_shred(var/mob/living/carbon/human/target)
+/mob/living/proc/can_shred(mob/living/carbon/human/target)
 	//Needs to have organs to be able to shred them.
 	if(!istype(target))
 		to_chat(src,"<span class='warning'>You can't shred that type of creature.</span>")
@@ -716,7 +716,7 @@
 	return ..(G.affecting)
 
 //PAIs, borgs, and animals don't need a grab or anything
-/mob/living/silicon/pai/can_shred(var/mob/living/carbon/human/target)
+/mob/living/silicon/pai/can_shred(mob/living/carbon/human/target)
 	if(!target)
 		var/list/choices = list()
 		for(var/mob/living/carbon/human/M in oviewers(1))
@@ -731,7 +731,7 @@
 
 	return ..(target)
 
-/mob/living/silicon/robot/can_shred(var/mob/living/carbon/human/target)
+/mob/living/silicon/robot/can_shred(mob/living/carbon/human/target)
 	if(!target)
 		var/list/choices = list()
 		for(var/mob/living/carbon/human/M in oviewers(1))
@@ -746,7 +746,7 @@
 
 	return ..(target)
 
-/mob/living/simple_mob/can_shred(var/mob/living/carbon/human/target)
+/mob/living/simple_mob/can_shred(mob/living/carbon/human/target)
 	if(!target)
 		var/list/choices = list()
 		for(var/mob/living/carbon/human/M in oviewers(1))

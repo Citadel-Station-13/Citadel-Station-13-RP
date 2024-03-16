@@ -34,5 +34,5 @@
 	explosion_resistance = 90
 	relative_integrity = 2.5
 
-/datum/material/durasteel/hull/place_sheet(var/turf/target) //Deconstructed into normal durasteel sheets.
+/datum/material/durasteel/hull/place_sheet(turf/target) //Deconstructed into normal durasteel sheets.
 	new /obj/item/stack/material/durasteel(target)

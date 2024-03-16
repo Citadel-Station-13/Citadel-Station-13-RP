@@ -12,7 +12,7 @@
 	return 0
 
 //returns the number of size categories between two mob_sizes, rounded. Positive means A is larger than B
-/proc/mob_size_difference(var/mob_size_A, var/mob_size_B)
+/proc/mob_size_difference(mob_size_A, mob_size_B)
 	return round(log(2, mob_size_A/mob_size_B), 1)
 
 /mob/proc/can_wield_item(obj/item/W)
@@ -67,7 +67,7 @@
 			return 1
 	return 0
 
-/proc/hassensorlevel(A, var/level)
+/proc/hassensorlevel(A, level)
 	var/mob/living/carbon/human/H = A
 	if(istype(H) && istype(H.w_uniform, /obj/item/clothing/under))
 		var/obj/item/clothing/under/U = H.w_uniform
@@ -82,7 +82,7 @@
 	return SUIT_SENSOR_OFF
 
 
-/proc/is_admin(var/mob/user)
+/proc/is_admin(mob/user)
 	return check_rights(R_ADMIN, 0, user) != 0
 
 /**
@@ -173,7 +173,7 @@
 // Emulates targetting a specific body part, and miss chances
 // May return null if missed
 // miss_chance_mod may be negative.
-/proc/get_zone_with_miss_chance(zone, var/mob/target, var/miss_chance_mod = 0, var/ranged_attack=0)
+/proc/get_zone_with_miss_chance(zone, mob/target, miss_chance_mod = 0, ranged_attack=0)
 	zone = check_zone(zone)
 
 	if(!ranged_attack)
@@ -270,7 +270,7 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 			return 1
 	return 0
 
-/proc/mobs_in_area(var/area/A)
+/proc/mobs_in_area(area/A)
 	var/list/mobs = new
 	for(var/mob/living/M in GLOB.mob_list)
 		if(get_area(M) == A)
@@ -280,7 +280,7 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 //Direct dead say used both by emote and say
 //It is somewhat messy. I don't know what to do.
 //I know you can't see the change, but I rewrote the name code. It is significantly less messy now
-/proc/say_dead_direct(var/message, var/mob/subject = null)
+/proc/say_dead_direct(message, mob/subject = null)
 	var/name
 	var/keyname
 	if(subject && subject.client)
@@ -331,7 +331,7 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 				lname = "<span class='name'>[lname]</span> "
 			to_chat(M, "<span class='deadsay'>" + "<b>DEAD:</b> "+ "[lname][follow][message]</span>")
 
-/proc/say_dead_object(var/message, var/obj/subject = null)
+/proc/say_dead_object(message, obj/subject = null)
 	for(var/mob/M in GLOB.player_list)
 		if(M.client && ((!istype(M, /mob/new_player) && M.stat == DEAD) || (M.client.holder && M.client.holder.rights)) && M.is_preference_enabled(/datum/client_preference/show_dsay))
 			var/follow
@@ -346,7 +346,7 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 			to_chat(M, "<span class='deadsay'>" + "EVENT:"+ " [lname][follow][message]</span>")
 
 //Announces that a ghost has joined/left, mainly for use with wizards
-/proc/announce_ghost_joinleave(O, var/joined_ghosts = 1, var/message = "")
+/proc/announce_ghost_joinleave(O, joined_ghosts = 1, message = "")
 	var/client/C
 	//Accept any type, sort what we want here
 	if(istype(O, /mob))
@@ -637,7 +637,7 @@ var/list/global/organ_rel_size = list(
 		. = html_encode(.)
 
 /// if sufficent nutrition is present, take it and return true, otherwise just return false
-/mob/proc/try_take_nutrition(var/amount)
+/mob/proc/try_take_nutrition(amount)
 	if(nutrition >= amount)
 		nutrition = nutrition - amount
 		return TRUE

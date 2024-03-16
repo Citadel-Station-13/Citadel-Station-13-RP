@@ -67,11 +67,11 @@
 	add_overlay(overlays_to_add)
 	..()
 
-/obj/item/gun/magnetic/proc/show_ammo(var/mob/user)
+/obj/item/gun/magnetic/proc/show_ammo(mob/user)
 	if(loaded)
 		to_chat(user, "<span class='notice'>It has \a [loaded] loaded.</span>")
 
-/obj/item/gun/magnetic/examine(var/mob/user)
+/obj/item/gun/magnetic/examine(mob/user)
 	. = ..()
 	show_ammo(user)
 
@@ -88,7 +88,7 @@
 		else
 			. += "<span class='notice'>The capacitor charge indicator is <font color ='[COLOR_GREEN]'>green</font>.</span>"
 
-/obj/item/gun/magnetic/attackby(var/obj/item/thing, var/mob/user)
+/obj/item/gun/magnetic/attackby(obj/item/thing, mob/user)
 
 	if(removable_components)
 		if(istype(thing, /obj/item/cell))

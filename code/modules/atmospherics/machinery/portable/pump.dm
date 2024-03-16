@@ -95,11 +95,11 @@
 /obj/machinery/portable_atmospherics/powered/pump/return_air()
 	return air_contents
 
-/obj/machinery/portable_atmospherics/powered/pump/attack_ai(var/mob/user)
+/obj/machinery/portable_atmospherics/powered/pump/attack_ai(mob/user)
 	src.add_hiddenprint(user)
 	return src.attack_hand(user)
 
-/obj/machinery/portable_atmospherics/powered/pump/attack_ghost(var/mob/user)
+/obj/machinery/portable_atmospherics/powered/pump/attack_ghost(mob/user)
 	. = ..()
 	return src.attack_hand(user)
 
@@ -260,7 +260,7 @@
 		use_power(power_draw)
 		update_connected_network()
 
-/obj/machinery/portable_atmospherics/powered/pump/huge/attackby(var/obj/item/I, var/mob/user)
+/obj/machinery/portable_atmospherics/powered/pump/huge/attackby(obj/item/I, mob/user)
 	if(I.is_wrench())
 		if(on)
 			to_chat(user, "<span class='warning'>Turn \the [src] off first!</span>")
@@ -288,7 +288,7 @@
 /obj/machinery/portable_atmospherics/powered/pump/huge/stationary
 	name = "Stationary Air Pump"
 
-/obj/machinery/portable_atmospherics/powered/pump/huge/stationary/attackby(var/obj/item/I, var/mob/user)
+/obj/machinery/portable_atmospherics/powered/pump/huge/stationary/attackby(obj/item/I, mob/user)
 	if(I.is_wrench())
 		to_chat(user, "<span class='warning'>The bolts are too tight for you to unscrew!</span>")
 		return

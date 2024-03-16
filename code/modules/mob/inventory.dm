@@ -1,7 +1,7 @@
 // todo: see all this? needs to be decided what to do with and shoved into the inventory handling system proper once evaluated.
 
 //This proc is called whenever someone clicks an inventory ui slot.
-/mob/proc/attack_ui(var/slot)
+/mob/proc/attack_ui(slot)
 	var/obj/item/W = get_active_held_item()
 
 	var/obj/item/E = item_by_slot_id(slot)

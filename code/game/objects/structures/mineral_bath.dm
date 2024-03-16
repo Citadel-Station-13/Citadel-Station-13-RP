@@ -18,7 +18,7 @@
 	venus.temperature = 490
 	return venus
 
-/obj/structure/adherent_bath/attackby(var/obj/item/thing, var/mob/user)
+/obj/structure/adherent_bath/attackby(obj/item/thing, mob/user)
 	if(istype(thing, /obj/item/grab))
 		var/obj/item/grab/G = thing
 		if(enter_bath(G.affecting))
@@ -26,7 +26,7 @@
 		return
 	. = ..()
 
-/obj/structure/adherent_bath/proc/enter_bath(var/mob/living/patient, var/mob/user)
+/obj/structure/adherent_bath/proc/enter_bath(mob/living/patient, mob/user)
 
 	if(!istype(patient))
 		return FALSE
@@ -79,10 +79,10 @@
 	occupant = null
 	STOP_PROCESSING(SSobj, src)
 
-/obj/structure/adherent_bath/MouseDroppedOnLegacy(var/atom/movable/O, var/mob/user)
+/obj/structure/adherent_bath/MouseDroppedOnLegacy(atom/movable/O, mob/user)
 	enter_bath(O, user)
 
-/obj/structure/adherent_bath/relaymove(var/mob/user)
+/obj/structure/adherent_bath/relaymove(mob/user)
 	if(user == occupant)
 		eject_occupant()
 

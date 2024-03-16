@@ -42,7 +42,7 @@
 	return 1
 
 //Similar to infection check, but used for when M is spreading the virus.
-/proc/infection_spreading_check(var/mob/living/carbon/M, var/vector = "Airborne")
+/proc/infection_spreading_check(mob/living/carbon/M, vector = "Airborne")
 	if (!istype(M))
 		return 0
 
@@ -68,7 +68,7 @@
 	return rval
 
 //Attemptes to infect mob M with virus. Set forced to 1 to ignore protective clothnig
-/proc/infect_virus2(var/mob/living/carbon/M,var/datum/disease2/disease/disease,var/forced = 0)
+/proc/infect_virus2(mob/living/carbon/M,datum/disease2/disease/disease,forced = 0)
 	if(!istype(disease))
 //		log_debug(SPAN_DEBUGWARNING("Bad virus"))
 		return
@@ -111,29 +111,29 @@
 		M.update_hud_med_status()
 
 //Infects mob M with disease D
-/proc/infect_mob(var/mob/living/carbon/M, var/datum/disease2/disease/D)
+/proc/infect_mob(mob/living/carbon/M, datum/disease2/disease/D)
 	infect_virus2(M,D,1)
 	M.update_hud_med_status()
 
 //Infects mob M with random lesser disease, if he doesn't have one
-/proc/infect_mob_random_lesser(var/mob/living/carbon/M)
+/proc/infect_mob_random_lesser(mob/living/carbon/M)
 	var/datum/disease2/disease/D = new /datum/disease2/disease
 
 	D.makerandom(1)
 	infect_mob(M, D)
 
 //Infects mob M with random greated disease, if he doesn't have one
-/proc/infect_mob_random_greater(var/mob/living/carbon/M)
+/proc/infect_mob_random_greater(mob/living/carbon/M)
 	var/datum/disease2/disease/D = new /datum/disease2/disease
 
 	D.makerandom(2)
 	infect_mob(M, D)
 
 //Fancy prob() function.
-/proc/dprob(var/p)
+/proc/dprob(p)
 	return(prob(sqrt(p)) && prob(sqrt(p)))
 
-/mob/living/carbon/proc/spread_disease_to(var/mob/living/carbon/victim, var/vector = "Airborne")
+/mob/living/carbon/proc/spread_disease_to(mob/living/carbon/victim, vector = "Airborne")
 	if (src == victim)
 		return "idiocy"
 

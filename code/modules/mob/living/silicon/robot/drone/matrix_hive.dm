@@ -8,7 +8,7 @@ var/global/list/drone_matrices = list()
 	var/upgrades_remaining = 3
 	var/list/bought_upgrades
 
-/datum/drone_matrix/New(var/matrix_id)
+/datum/drone_matrix/New(matrix_id)
 	..()
 	id = matrix_id
 	drone_matrices[id] = src
@@ -29,7 +29,7 @@ var/global/list/drone_matrices = list()
 		if(D)
 			. += D
 
-/datum/drone_matrix/proc/message_drones(var/msg)
+/datum/drone_matrix/proc/message_drones(msg)
 	var/mob/living/silicon/robot/drone/D = null
 	if(matriarch)
 		D = matriarch.resolve()
@@ -47,7 +47,7 @@ var/global/list/drone_matrices = list()
 		return
 	drones += WEAKREF(D)
 
-/datum/drone_matrix/proc/remove_drone(var/datum/weakref/drone_ref)
+/datum/drone_matrix/proc/remove_drone(datum/weakref/drone_ref)
 	if(drone_ref == matriarch)
 		matriarch = null
 		return
@@ -59,7 +59,7 @@ var/global/list/drone_matrices = list()
 	else
 		message_drones(SPAN_DANGER("Your circuits spark. Drone [D.name] has died."))
 
-/datum/drone_matrix/proc/buy_upgrade(var/upgrade_type)
+/datum/drone_matrix/proc/buy_upgrade(upgrade_type)
 	LAZYADD(bought_upgrades, upgrade_type)
 	upgrades_remaining--
 	message_drones(SPAN_NOTICE("A new matrix upgrade is available, visit a recharging staion to install: [upgrade_type]"))
@@ -73,7 +73,7 @@ var/global/list/drone_matrices = list()
 	if(length(applied_upgrades))
 		to_chat(D, SPAN_NOTICE("Matrix upgrades applied to chassis: [english_list(applied_upgrades)]"))
 
-/datum/drone_matrix/proc/set_upgrade(mob/living/silicon/robot/drone/D, var/upgrade_type)
+/datum/drone_matrix/proc/set_upgrade(mob/living/silicon/robot/drone/D, upgrade_type)
 	switch(upgrade_type)
 		if(MTX_UPG_SPEED)
 			D.speed = initial(D.speed) - 1
@@ -89,7 +89,7 @@ var/global/list/drone_matrices = list()
 			D.module.modules += new/obj/item/t_scanner/upgraded(D.module)
 	LAZYADD(D.matrix_upgrades, upgrade_type)
 
-/proc/assign_drone_to_matrix(mob/living/silicon/robot/drone/D, var/matrix_tag)
+/proc/assign_drone_to_matrix(mob/living/silicon/robot/drone/D, matrix_tag)
 	var/datum/drone_matrix/DM = drone_matrices[matrix_tag]
 	if(!DM)
 		DM = new /datum/drone_matrix(matrix_tag)

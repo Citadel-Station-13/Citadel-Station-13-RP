@@ -77,7 +77,7 @@
 	..(null,"suddenly breaks apart.")
 	qdel(src)
 
-/mob/living/simple_mob/mechanical/combat_drone/Process_Spacemove(var/check_drift = 0)
+/mob/living/simple_mob/mechanical/combat_drone/Process_Spacemove(check_drift = 0)
 	return TRUE
 
 /obj/projectile/beam/drone

@@ -110,7 +110,7 @@
 			to_chat(usr, SPAN_NOTICE("You flip the blue switch [blue_switch ? "on" : "off"]."))
 			. = TRUE
 
-/mob/living/bot/cleanbot/edCLN/emag_act(var/remaining_uses, var/mob/user)
+/mob/living/bot/cleanbot/edCLN/emag_act(remaining_uses, mob/user)
 	. = ..()
 	if(!emagged)
 		if(user)
@@ -129,7 +129,7 @@
 	item_state = "buildpipe"
 	created_name = "ED-CLN Security Robot"
 
-/obj/item/secbot_assembly/edCLN_assembly/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/item/secbot_assembly/edCLN_assembly/attackby(obj/item/W as obj, mob/user as mob)
 	..()
 
 	if(istype(W, /obj/item/pen))

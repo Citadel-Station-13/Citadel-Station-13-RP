@@ -135,7 +135,7 @@
 		succ()
 		next_succ = world.time + succ_int
 
-/obj/item/reagent_containers/hard_candy/equipped(mob/user, var/slot)
+/obj/item/reagent_containers/hard_candy/equipped(mob/user, slot)
 	. = ..()
 	if(!iscarbon(user))
 		return

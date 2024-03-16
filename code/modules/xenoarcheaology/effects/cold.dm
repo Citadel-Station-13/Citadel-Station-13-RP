@@ -9,7 +9,7 @@
 	effect = pick(EFFECT_TOUCH, EFFECT_AURA)
 	effect_type = pick(EFFECT_ORGANIC, EFFECT_BLUESPACE, EFFECT_SYNTH)
 
-/datum/artifact_effect/cold/DoEffectTouch(var/mob/user)
+/datum/artifact_effect/cold/DoEffectTouch(mob/user)
 	if(holder)
 		to_chat(user, "<font color=#4F49AF>A chill passes up your spine!</font>")
 		var/datum/gas_mixture/env = holder.loc.return_air()

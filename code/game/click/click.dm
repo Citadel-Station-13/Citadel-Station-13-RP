@@ -16,7 +16,7 @@
 	Note that this proc can be overridden, and is in the case of screen objects.
 */
 
-/atom/Click(var/location, var/control, var/params) // This is their reaction to being clicked on (standard proc)
+/atom/Click(location, control, params) // This is their reaction to being clicked on (standard proc)
 	if(!(atom_flags & ATOM_INITIALIZED))
 		to_chat(usr, SPAN_WARNING("[type] initialization failure. Click dropped. Contact a coder or admin."))
 		return
@@ -24,7 +24,7 @@
 		SEND_SIGNAL(src, COMSIG_CLICK, location, control, params, usr)
 		usr.ClickOn(src, params)
 
-/atom/DblClick(var/location, var/control, var/params)
+/atom/DblClick(location, control, params)
 	if(!(atom_flags & ATOM_INITIALIZED))
 		to_chat(usr, SPAN_WARNING("[type] initialization failure. Click dropped. Contact a coder or admin."))
 		return
@@ -158,7 +158,7 @@
 		trigger_aiming(TARGET_CAN_CLICK)
 		return
 
-/mob/proc/setClickCooldown(var/timeout)
+/mob/proc/setClickCooldown(timeout)
 	next_move = max(world.time + timeout, next_move)
 
 /mob/proc/canClick()
@@ -167,7 +167,7 @@
 	return 0
 
 // Default behavior: ignore double clicks, the second click that makes the doubleclick call already calls for a normal click
-/mob/proc/DblClickOn(var/atom/A, var/params)
+/mob/proc/DblClickOn(atom/A, params)
 	return
 
 /*
@@ -180,10 +180,10 @@
 	proximity_flag is not currently passed to attack_hand, and is instead used
 	in human click code to allow glove touches only at melee range.
 */
-/mob/proc/UnarmedAttack(var/atom/A, var/proximity_flag)
+/mob/proc/UnarmedAttack(atom/A, proximity_flag)
 	return
 
-/mob/living/UnarmedAttack(var/atom/A, var/proximity_flag)
+/mob/living/UnarmedAttack(atom/A, proximity_flag)
 	if(is_incorporeal())
 		return 0
 
@@ -200,7 +200,7 @@
 	for things like ranged glove touches, spitting alien acid/neurotoxin,
 	animals lunging, etc.
 */
-/mob/proc/RangedAttack(var/atom/A, var/params)
+/mob/proc/RangedAttack(atom/A, params)
 	if(!mutations.len) return
 	if((MUTATION_LASER in mutations) && a_intent == INTENT_HARM)
 		LaserEyes(A) // moved into a proc below
@@ -214,20 +214,20 @@
 	Used when you are handcuffed and click things.
 	Not currently used by anything but could easily be.
 */
-/mob/proc/RestrainedClickOn(var/atom/A)
+/mob/proc/RestrainedClickOn(atom/A)
 	return
 
 /*
 	Middle click
 	Only used for swapping hands
 */
-/mob/proc/MiddleClickOn(var/atom/A)
+/mob/proc/MiddleClickOn(atom/A)
 	swap_hand()
 	return
 
 // In case of use break glass
 /*
-/atom/proc/MiddleClick(var/mob/M as mob)
+/atom/proc/MiddleClick(mob/M as mob)
 	return
 */
 
@@ -244,11 +244,11 @@
 	For most mobs, examine.
 	This is overridden in ai.dm
 */
-/mob/proc/ShiftClickOn(var/atom/A)
+/mob/proc/ShiftClickOn(atom/A)
 	A.ShiftClick(src)
 	return
 
-/atom/proc/ShiftClick(var/mob/user)
+/atom/proc/ShiftClick(mob/user)
 	if(user.client && user.allow_examine(src))
 		user.examinate(src)
 
@@ -256,13 +256,13 @@
 	Ctrl click
 	For most objects, pull
 */
-/mob/proc/CtrlClickOn(var/atom/A)
+/mob/proc/CtrlClickOn(atom/A)
 	A.CtrlClick(src)
 	return
-/atom/proc/CtrlClick(var/mob/user)
+/atom/proc/CtrlClick(mob/user)
 	return
 
-/atom/movable/CtrlClick(var/mob/user)
+/atom/movable/CtrlClick(mob/user)
 	if(Adjacent(user))
 		user.start_pulling(src)
 
@@ -287,25 +287,25 @@
 		return
 	client.list_turf(T)
 
-/atom/proc/AltClick(var/mob/user)
+/atom/proc/AltClick(mob/user)
 	SEND_SIGNAL(src, COMSIG_CLICK_ALT, user)
 	if(context_menu(new /datum/event_args/actor(user)))
 		return TRUE
 	return FALSE
 
 // todo: rework
-/mob/proc/TurfAdjacent(var/turf/T)
+/mob/proc/TurfAdjacent(turf/T)
 	return T.AdjacentQuick(src)
 
 /*
 	Control+Shift click
 	Unused except for AI
 */
-/mob/proc/CtrlShiftClickOn(var/atom/A)
+/mob/proc/CtrlShiftClickOn(atom/A)
 	A.CtrlShiftClick(src)
 	return
 
-/atom/proc/CtrlShiftClick(var/mob/user)
+/atom/proc/CtrlShiftClick(mob/user)
 	return
 
 /*
@@ -339,7 +339,7 @@
 
 
 /// Simple helper to face what you clicked on, in case it should be needed in more than one place.
-/mob/proc/face_atom(var/atom/atom_to_face)
+/mob/proc/face_atom(atom/atom_to_face)
 	if(buckled || stat != CONSCIOUS || !atom_to_face || !x || !y || !atom_to_face.x || !atom_to_face.y)
 		return
 	if(!CHECK_MOBILITY(src, MOBILITY_CAN_MOVE))

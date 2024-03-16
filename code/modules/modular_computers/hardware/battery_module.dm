@@ -57,7 +57,7 @@
 	battery_rating = 30000
 	battery = /obj/item/cell/infinite
 
-/obj/item/computer_hardware/battery_module/diagnostics(var/mob/user)
+/obj/item/computer_hardware/battery_module/diagnostics(mob/user)
 	..()
 	to_chat(user, "Internal battery charge: [battery.charge]/[battery.maxcharge] CU")
 

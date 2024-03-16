@@ -61,7 +61,7 @@
 
 	name = "Mulebot #[suffix]"
 
-/mob/living/bot/mulebot/MouseDroppedOnLegacy(var/atom/movable/C, var/mob/user)
+/mob/living/bot/mulebot/MouseDroppedOnLegacy(atom/movable/C, mob/user)
 	if(user.stat)
 		return
 
@@ -151,11 +151,11 @@
 			safety = !safety
 			. = TRUE
 
-/mob/living/bot/mulebot/attackby(var/obj/item/O, var/mob/user)
+/mob/living/bot/mulebot/attackby(obj/item/O, mob/user)
 	..()
 	update_icons()
 
-/mob/living/bot/mulebot/proc/obeyCommand(var/command)
+/mob/living/bot/mulebot/proc/obeyCommand(command)
 	switch(command)
 		if("Home")
 			resetTarget()
@@ -177,7 +177,7 @@
 		if("Stop")
 			paused = 1
 
-/mob/living/bot/mulebot/emag_act(var/remaining_charges, var/user)
+/mob/living/bot/mulebot/emag_act(remaining_charges, user)
 	locked = !locked
 	to_chat(user, "<span class='notice'>You [locked ? "lock" : "unlock"] the mulebot's controls!</span>")
 	flick("mulebot-emagged", src)
@@ -228,18 +228,18 @@
 		return
 	..()
 
-/mob/living/bot/mulebot/UnarmedAttack(var/turf/T)
+/mob/living/bot/mulebot/UnarmedAttack(turf/T)
 	if(T == src.loc)
 		unload(dir)
 
-/mob/living/bot/mulebot/Bump(var/mob/living/M)
+/mob/living/bot/mulebot/Bump(mob/living/M)
 	if(!safety && istype(M))
 		visible_message("<span class='warning'>[src] knocks over [M]!</span>")
 		M.afflict_stun(20 * 8)
 		M.afflict_paralyze(20 * 5)
 	..()
 
-/mob/living/bot/mulebot/proc/runOver(var/mob/living/M)
+/mob/living/bot/mulebot/proc/runOver(mob/living/M)
 	if(istype(M)) // At this point, MULEBot has somehow crossed over onto your tile with you still on it. CRRRNCH.
 		visible_message("<span class='warning'>[src] drives over [M]!</span>")
 		playsound(loc, 'sound/effects/splat.ogg', 50, 1)
@@ -254,7 +254,7 @@
 
 		blood_splatter(src, M, 1)
 
-/mob/living/bot/mulebot/relaymove(var/mob/user, var/direction)
+/mob/living/bot/mulebot/relaymove(mob/user, direction)
 	if(load == user)
 		unload(direction)
 
@@ -285,7 +285,7 @@
 		beaconlist[N.location] = N
 	return beaconlist
 
-/mob/living/bot/mulebot/proc/load(var/atom/movable/C)
+/mob/living/bot/mulebot/proc/load(atom/movable/C)
 	if(busy || load || get_dist(C, src) > 1 || !isturf(C.loc))
 		return
 
@@ -318,7 +318,7 @@
 
 	busy = 0
 
-/mob/living/bot/mulebot/proc/unload(var/dirn = 0)
+/mob/living/bot/mulebot/proc/unload(dirn = 0)
 	if(!load || busy)
 		return
 

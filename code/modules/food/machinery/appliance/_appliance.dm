@@ -81,7 +81,7 @@
 	if(Adjacent(user))
 		list_contents(user)
 
-/obj/machinery/appliance/proc/list_contents(var/mob/user)
+/obj/machinery/appliance/proc/list_contents(mob/user)
 	if(cooking_objs.len)
 		var/string = "Contains..."
 		for (var/a in cooking_objs)
@@ -91,7 +91,7 @@
 	else
 		to_chat(user, "<span class='notice'>It is empty.</span>")
 
-/obj/machinery/appliance/proc/report_progress(var/datum/cooking_item/CI)
+/obj/machinery/appliance/proc/report_progress(datum/cooking_item/CI)
 	if (!CI || !CI.max_cookwork)
 		return null
 
@@ -184,7 +184,7 @@
 			to_chat(usr, "<span class='notice'>You prepare \the [src] to make \a [selected_option] with the next thing you put in. Try putting several ingredients in a container!</span>")
 
 //Handles all validity checking and error messages for inserting things
-/obj/machinery/appliance/proc/can_insert(var/obj/item/I, var/mob/user)
+/obj/machinery/appliance/proc/can_insert(obj/item/I, mob/user)
 	if (istype(I.loc, /mob/living/silicon))
 		return FALSE
 	else if (istype(I.loc, /obj/item/hardsuit_module))
@@ -232,7 +232,7 @@
 
 
 //This function is overridden by cookers that do stuff with containers
-/obj/machinery/appliance/proc/has_space(var/obj/item/I)
+/obj/machinery/appliance/proc/has_space(obj/item/I)
 	if (cooking_objs.len >= max_contents)
 		return FALSE
 
@@ -263,7 +263,7 @@
 	update_icon()
 
 //Override for container mechanics
-/obj/machinery/appliance/proc/add_content(var/obj/item/I, var/mob/user)
+/obj/machinery/appliance/proc/add_content(obj/item/I, mob/user)
 	if(!user.attempt_insert_item_for_installation(I, src))
 		return
 
@@ -293,7 +293,7 @@
 	cooking = 1
 	return CI
 
-/obj/machinery/appliance/proc/get_cooking_work(var/datum/cooking_item/CI)
+/obj/machinery/appliance/proc/get_cooking_work(datum/cooking_item/CI)
 	for (var/obj/item/J in CI.container)
 		oilwork(J, CI)
 
@@ -322,7 +322,7 @@
 	CI.max_cookwork += buffer*multiplier
 
 //Just a helper to save code duplication in the above
-/obj/machinery/appliance/proc/oilwork(var/obj/item/I, var/datum/cooking_item/CI)
+/obj/machinery/appliance/proc/oilwork(obj/item/I, datum/cooking_item/CI)
 	var/obj/item/reagent_containers/food/snacks/S = I
 	var/work = 0
 	if (istype(S))
@@ -348,7 +348,7 @@
 	CI.max_cookwork += work
 
 //Called every tick while we're cooking something
-/obj/machinery/appliance/proc/do_cooking_tick(var/datum/cooking_item/CI)
+/obj/machinery/appliance/proc/do_cooking_tick(datum/cooking_item/CI)
 	if (!istype(CI) || !CI.max_cookwork)
 		return FALSE
 
@@ -379,7 +379,7 @@
 			do_cooking_tick(i)
 
 
-/obj/machinery/appliance/proc/finish_cooking(var/datum/cooking_item/CI)
+/obj/machinery/appliance/proc/finish_cooking(datum/cooking_item/CI)
 
 	src.visible_message("<span class='notice'>\The [src] pings!</span>")
 	if(cooked_sound)
@@ -438,7 +438,7 @@
 
 //Combination cooking involves combining the names and reagents of ingredients into a predefined output object
 //The ingredients represent flavours or fillings. EG: donut pizza, cheese bread
-/obj/machinery/appliance/proc/combination_cook(var/datum/cooking_item/CI)
+/obj/machinery/appliance/proc/combination_cook(datum/cooking_item/CI)
 	var/cook_path = output_options[CI.combine_target]
 
 	var/list/words = list()
@@ -504,7 +504,7 @@
 	return result
 
 //Helper proc for standard modification cooking
-/obj/machinery/appliance/proc/modify_cook(var/obj/item/input, var/datum/cooking_item/CI)
+/obj/machinery/appliance/proc/modify_cook(obj/item/input, datum/cooking_item/CI)
 	var/obj/item/reagent_containers/food/snacks/result
 	if (istype(input, /obj/item/holder))
 		result = create_mob_food(input, CI)
@@ -527,7 +527,7 @@
 	// Update strings.
 	change_product_strings(result, CI)
 
-/obj/machinery/appliance/proc/burn_food(var/datum/cooking_item/CI)
+/obj/machinery/appliance/proc/burn_food(datum/cooking_item/CI)
 	// You dun goofed.
 	CI.burned = TRUE
 	CI.container.clear()
@@ -548,7 +548,7 @@
 		else
 			..()
 
-/obj/machinery/appliance/proc/removal_menu(var/mob/user)
+/obj/machinery/appliance/proc/removal_menu(mob/user)
 	if (can_remove_items(user))
 		var/list/menuoptions = list()
 		for (var/a in cooking_objs)
@@ -564,7 +564,7 @@
 		return TRUE
 	return FALSE
 
-/obj/machinery/appliance/proc/can_remove_items(var/mob/user)
+/obj/machinery/appliance/proc/can_remove_items(mob/user)
 	if (!Adjacent(user))
 		return FALSE
 
@@ -573,7 +573,7 @@
 
 	return TRUE
 
-/obj/machinery/appliance/proc/eject(var/datum/cooking_item/CI, var/mob/user = null)
+/obj/machinery/appliance/proc/eject(datum/cooking_item/CI, mob/user = null)
 	var/obj/item/thing
 	var/delete = TRUE
 	var/status = CI.container.check_contents()
@@ -591,15 +591,15 @@
 	else
 		CI.reset()//reset instead of deleting if the container is left inside
 
-/obj/machinery/appliance/proc/cook_mob(var/mob/living/victim, var/mob/user)
+/obj/machinery/appliance/proc/cook_mob(mob/living/victim, mob/user)
 	return
 
-/obj/machinery/appliance/proc/change_product_strings(var/obj/item/reagent_containers/food/snacks/product, var/datum/cooking_item/CI)
+/obj/machinery/appliance/proc/change_product_strings(obj/item/reagent_containers/food/snacks/product, datum/cooking_item/CI)
 	product.name = "[cook_type] [product.name]"
 	product.desc = "[product.desc]\nIt has been [cook_type]."
 
 
-/obj/machinery/appliance/proc/change_product_appearance(var/obj/item/reagent_containers/food/snacks/product, var/datum/cooking_item/CI)
+/obj/machinery/appliance/proc/change_product_appearance(obj/item/reagent_containers/food/snacks/product, datum/cooking_item/CI)
 	if (!product.coating) //Coatings change colour through a new sprite
 		product.color = food_color
 	product.filling_color = food_color
@@ -631,7 +631,7 @@
 		src.composition_reagent_quantity = size_reagent
 
 //This function creates a food item which represents a dead mob
-/obj/machinery/appliance/proc/create_mob_food(var/obj/item/holder/H, var/datum/cooking_item/CI)
+/obj/machinery/appliance/proc/create_mob_food(obj/item/holder/H, datum/cooking_item/CI)
 	if (!istype(H) || !H.held_mob)
 		qdel(H)
 		return null
@@ -688,7 +688,7 @@
 	var/oil = 0
 	var/max_oil = 0//Used for fryers.
 
-/datum/cooking_item/New(var/obj/item/I)
+/datum/cooking_item/New(obj/item/I)
 	container = I
 
 //This is called for containers whose contents are ejected without removing the container

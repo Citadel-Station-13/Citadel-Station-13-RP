@@ -4,13 +4,13 @@ var/global/list/uplink_locations = list("PDA", "Headset", "None")
 	name = "Basic"
 	sort_order = 1
 
-/datum/category_item/player_setup_item/antagonism/basic/load_character(var/savefile/S)
+/datum/category_item/player_setup_item/antagonism/basic/load_character(savefile/S)
 	S["uplinklocation"] >> pref.uplinklocation
 	S["exploit_record"] >> pref.exploit_record
 	S["antag_faction"]	>> pref.antag_faction
 	S["antag_vis"]		>> pref.antag_vis
 
-/datum/category_item/player_setup_item/antagonism/basic/save_character(var/savefile/S)
+/datum/category_item/player_setup_item/antagonism/basic/save_character(savefile/S)
 	S["uplinklocation"] << pref.uplinklocation
 	S["exploit_record"] << pref.exploit_record
 	S["antag_faction"]	<< pref.antag_faction
@@ -43,7 +43,7 @@ var/global/list/uplink_locations = list("PDA", "Headset", "None")
 	else
 		. +="<a href='?src=\ref[src];exploitable_record=1'>[TextPreview(pref.exploit_record,40)]</a><br>"
 
-/datum/category_item/player_setup_item/antagonism/basic/OnTopic(var/href,var/list/href_list, var/mob/user)
+/datum/category_item/player_setup_item/antagonism/basic/OnTopic(href,list/href_list, mob/user)
 	if (href_list["antagtask"])
 		pref.uplinklocation = next_list_item(pref.uplinklocation, uplink_locations)
 		return PREFERENCES_REFRESH

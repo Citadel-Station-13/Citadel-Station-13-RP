@@ -64,7 +64,7 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 
 // TO DO : MAKE SWEEPING WORK
 
-/obj/item/mop/proc/sweep(var/mob/user, var/turf/target)
+/obj/item/mop/proc/sweep(mob/user, turf/target)
 	user.setClickCooldown(sweep_time)
 	var/direction = get_dir(get_turf(src),target)
 	var/list/turfs
@@ -156,7 +156,7 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 	. = ..()
 	START_PROCESSING(SSobj, src)
 
-/obj/item/mop/advanced/AltClick(var/mob/user)
+/obj/item/mop/advanced/AltClick(mob/user)
 	refill_enabled = !refill_enabled
 	if(refill_enabled)
 		START_PROCESSING(SSobj, src)

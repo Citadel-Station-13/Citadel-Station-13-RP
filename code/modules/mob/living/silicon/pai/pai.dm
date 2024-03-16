@@ -202,12 +202,12 @@
 	reset_pixel_offsets()
 
 /// camera handling
-/mob/living/silicon/pai/check_eye(var/mob/user as mob)
+/mob/living/silicon/pai/check_eye(mob/user as mob)
 	if (!src.current)
 		return -1
 	return 0
 
-/mob/living/silicon/pai/proc/switchCamera(var/obj/machinery/camera/C)
+/mob/living/silicon/pai/proc/switchCamera(obj/machinery/camera/C)
 	if (!C)
 		unset_machine()
 		reset_perspective()
@@ -324,7 +324,7 @@
 	if(initial(path.slot_flags) & SLOT_OCLOTHING)
 		return /obj/item/clothing/suit
 
-/mob/living/silicon/pai/AltClickOn(var/atom/A)
+/mob/living/silicon/pai/AltClickOn(atom/A)
 	if((isobj(A) || ismob(A)) && in_range_of(src, A) && !istype(A, /obj/item/paicard))
 		if(world.time > last_scanned_time + 600)
 			last_scanned_time = world.time
@@ -333,7 +333,7 @@
 		else
 			to_chat(src, "You need to wait [((last_scanned_time+600) - world.time)/10] seconds to scan another object.")
 
-/mob/living/silicon/pai/proc/scan_object(var/atom/A)
+/mob/living/silicon/pai/proc/scan_object(atom/A)
 	var/icon/hologram_icon = render_hologram_icon(A, 210, TRUE, TRUE, "_pai")
 	var/hologram_width = hologram_icon.Width()
 	var/width_adjustment = (32 - hologram_width) / 2

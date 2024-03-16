@@ -38,7 +38,7 @@
 
 	pixel_x = -16
 
-/mob/living/simple_mob/animal/space/tree/apply_melee_effects(var/atom/A)
+/mob/living/simple_mob/animal/space/tree/apply_melee_effects(atom/A)
 	if(isliving(A))
 		var/mob/living/L = A
 		if(prob(15))

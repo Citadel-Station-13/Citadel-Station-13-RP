@@ -185,7 +185,7 @@
 //Checks whether a given mob can use the gun
 //Any checks that shouldn't result in handle_click_empty() being called if they fail should go here.
 //Otherwise, if you want handle_click_empty() to be called, check in consume_next_projectile() and return null there.
-/obj/item/gun/proc/special_check(var/mob/user)
+/obj/item/gun/proc/special_check(mob/user)
 
 	if(!istype(user, /mob/living))
 		return 0
@@ -354,7 +354,7 @@
 
 	..()
 
-/obj/item/gun/emag_act(var/remaining_charges, var/mob/user)
+/obj/item/gun/emag_act(remaining_charges, mob/user)
 	if(dna_lock && attached_lock.controller_lock)
 		to_chat(user, "<span class='notice'>You short circuit the internal locking mechanisms of \the [src]!</span>")
 		attached_lock.controller_dna = null
@@ -537,7 +537,7 @@
 	return null
 
 //used by aiming code
-/obj/item/gun/proc/can_hit(atom/target as mob, var/mob/living/user as mob)
+/obj/item/gun/proc/can_hit(atom/target as mob, mob/living/user as mob)
 	if(!special_check(user))
 		return 2
 	//just assume we can shoot through glass and stuff. No big deal, the player can just choose to not target someone
@@ -557,7 +557,7 @@
 	user.visible_message(SPAN_WARNING("[user] squeezes the trigger of \the [src] but it doesn't move!"), SPAN_WARNING("You squeeze the trigger but it doesn't move!"), range = MESSAGE_RANGE_COMBAT_SILENCED)
 
 //called after successfully firing
-/obj/item/gun/proc/handle_post_fire(mob/user, atom/target, var/pointblank=0, var/reflex=0)
+/obj/item/gun/proc/handle_post_fire(mob/user, atom/target, pointblank=0, reflex=0)
 	if(fire_anim)
 		flick(fire_anim, src)
 
@@ -630,7 +630,7 @@
 				damage_mult = 1.5
 	P.damage *= damage_mult
 
-/obj/item/gun/proc/process_accuracy(obj/projectile, mob/living/user, atom/target, var/burst, var/held_twohanded)
+/obj/item/gun/proc/process_accuracy(obj/projectile, mob/living/user, atom/target, burst, held_twohanded)
 	var/obj/projectile/P = projectile
 	if(!istype(P))
 		return //default behaviour only applies to true projectiles
@@ -664,7 +664,7 @@
 			P.dispersion = max(P.dispersion + M.accuracy_dispersion, 0)
 
 //does the actual launching of the projectile
-/obj/item/gun/proc/process_projectile(obj/projectile, mob/user, atom/target, var/target_zone, var/params=null)
+/obj/item/gun/proc/process_projectile(obj/projectile, mob/user, atom/target, target_zone, params=null)
 	var/obj/projectile/P = projectile
 	if(!istype(P))
 		return FALSE //default behaviour only applies to true projectiles
@@ -686,7 +686,7 @@
 
 	return launched
 
-/obj/item/gun/proc/play_fire_sound(var/mob/user, var/obj/projectile/P)
+/obj/item/gun/proc/play_fire_sound(mob/user, obj/projectile/P)
 	var/shot_sound = fire_sound
 
 	if(!shot_sound && istype(P) && P.fire_sound) // If the gun didn't have a fire_sound, but the projectile exists, and has a sound...
@@ -738,7 +738,7 @@
 		mouthshoot = 0
 		return
 
-/obj/item/gun/proc/toggle_scope(var/zoom_amount=2.0)
+/obj/item/gun/proc/toggle_scope(zoom_amount=2.0)
 	//looking through a scope limits your periphereal vision
 	//still, increase the view size by a tiny amount so that sniping isn't too restricted to NSEW
 	var/zoom_offset = round(world.view * zoom_amount)

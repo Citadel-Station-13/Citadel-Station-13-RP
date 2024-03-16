@@ -138,7 +138,7 @@
 /mob/living/bot/death()
 	explode()
 
-/mob/living/bot/attackby(var/obj/item/O, var/mob/user)
+/mob/living/bot/attackby(obj/item/O, mob/user)
 	if(O.GetID())
 		if(access_scanner.allowed(user) && !open)
 			locked = !locked
@@ -189,10 +189,10 @@
 	else
 		..()
 
-/mob/living/bot/attack_ai(var/mob/user)
+/mob/living/bot/attack_ai(mob/user)
 	return attack_hand(user)
 
-/mob/living/bot/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
+/mob/living/bot/say(message, datum/language/speaking = null, verb="says", alt_name="", whispering = 0)
 	verb = "beeps"
 
 	message = sanitize(message)
@@ -201,7 +201,7 @@
 /mob/living/bot/speech_bubble_appearance()
 	return "machine"
 
-/mob/living/bot/Bump(var/atom/A)
+/mob/living/bot/Bump(atom/A)
 	if(on && botcard && istype(A, /obj/machinery/door))
 		var/obj/machinery/door/D = A
 		// Elevator safety precaution
@@ -210,7 +210,7 @@
 	else
 		..()
 
-/mob/living/bot/emag_act(var/remaining_charges, var/mob/user)
+/mob/living/bot/emag_act(remaining_charges, mob/user)
 	return 0
 
 /mob/living/bot/proc/handleAI()
@@ -299,7 +299,7 @@
 			++frustration
 	return
 
-/mob/living/bot/proc/handleFrustrated(var/targ)
+/mob/living/bot/proc/handleFrustrated(targ)
 	obstacle = targ ? target_path[1] : patrol_path[1]
 	target_path = list()
 	patrol_path = list()
@@ -308,7 +308,7 @@
 /mob/living/bot/proc/lookForTargets()
 	return
 
-/mob/living/bot/proc/confirmTarget(var/atom/A)
+/mob/living/bot/proc/confirmTarget(atom/A)
 	if(A.invisibility >= INVISIBILITY_LEVEL_ONE)
 		return 0
 	if(A in ignore_list)
@@ -364,7 +364,7 @@
 		obstacle = null
 	return
 
-/mob/living/bot/proc/makeStep(var/list/path)
+/mob/living/bot/proc/makeStep(list/path)
 	if(!path.len)
 		return 0
 	var/turf/T = path[1]
@@ -410,7 +410,7 @@
 
 // Returns the surrounding cardinal turfs with open links
 // Including through doors openable with the ID
-/turf/proc/CardinalTurfsWithAccess(var/obj/item/card/id/ID)
+/turf/proc/CardinalTurfsWithAccess(obj/item/card/id/ID)
 	var/L[] = new()
 
 	//	for(var/turf/simulated/t in oview(src,1))
@@ -424,7 +424,7 @@
 
 
 // Similar to above but not restricted to just cardinal directions.
-/turf/proc/TurfsWithAccess(var/obj/item/card/id/ID)
+/turf/proc/TurfsWithAccess(obj/item/card/id/ID)
 	var/L[] = new()
 
 	for(var/d in GLOB.alldirs)
@@ -466,7 +466,7 @@
 
 // Returns true if direction is blocked from loc
 // Checks doors against access with given ID
-/proc/DirBlockedWithAccess(turf/loc,var/dir,var/obj/item/card/id/ID)
+/proc/DirBlockedWithAccess(turf/loc,dir,obj/item/card/id/ID)
 	for(var/obj/structure/window/D in loc)
 		if(!D.density)			continue
 		if(D.dir == SOUTHWEST)	return 1

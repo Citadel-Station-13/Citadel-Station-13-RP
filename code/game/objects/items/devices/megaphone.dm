@@ -10,7 +10,7 @@
 	var/insults = 0
 	var/list/insultmsg = list("FUCK EVERYONE!", "I'M A TERRORIST!", "ALL SECURITY TO SHOOT ME ON SIGHT!", "I HAVE A BOMB!", "CAPTAIN IS A COMDOM!", "GLORY TO ALMACH!")
 
-/obj/item/megaphone/proc/can_broadcast(var/mob/living/user)
+/obj/item/megaphone/proc/can_broadcast(mob/living/user)
 	if (user.client)
 		if(user.client.prefs.muted & MUTE_IC)
 			to_chat(user, "<span class='warning'>You cannot speak in IC (muted).</span>")
@@ -25,7 +25,7 @@
 		return 0
 	return 1
 
-/obj/item/megaphone/proc/do_broadcast(var/mob/living/user, var/message)
+/obj/item/megaphone/proc/do_broadcast(mob/living/user, message)
 	if ((src.loc == user && usr.stat == 0))
 		if(emagged)
 			if(insults)
@@ -55,7 +55,7 @@
 
 	do_broadcast(user, message)
 
-/obj/item/megaphone/emag_act(var/remaining_charges, var/mob/user)
+/obj/item/megaphone/emag_act(remaining_charges, mob/user)
 	if(!emagged)
 		to_chat(user, "<span class='warning'>You overload \the [src]'s voice synthesizer.</span>")
 		emagged = 1
@@ -76,7 +76,7 @@
 
 	insultmsg = list("HONK?!", "HONK!", "HOOOOOOOONK!", "...!", "HUNK.", "Honk?")
 
-/obj/item/megaphone/super/emag_act(var/remaining_charges, var/mob/user)
+/obj/item/megaphone/super/emag_act(remaining_charges, mob/user)
 	..()
 	if(emagged)
 		if(!(11 in volume_options))
@@ -101,7 +101,7 @@
 
 	adjust_volume(usr)
 
-/obj/item/megaphone/super/proc/adjust_volume(var/mob/living/user)
+/obj/item/megaphone/super/proc/adjust_volume(mob/living/user)
 	var/new_volume = input(user, "Set Volume") as null|anything in volume_options
 
 	if(new_volume && Adjacent(user))
@@ -114,7 +114,7 @@
 
 	adjust_font(usr)
 
-/obj/item/megaphone/super/proc/adjust_font(var/mob/living/user)
+/obj/item/megaphone/super/proc/adjust_font(mob/living/user)
 	var/new_font = input(user, "Set Volume") as null|anything in font_options
 
 	if(new_font && Adjacent(user))
@@ -127,13 +127,13 @@
 
 	adjust_color(usr)
 
-/obj/item/megaphone/super/proc/adjust_color(var/mob/living/user)
+/obj/item/megaphone/super/proc/adjust_color(mob/living/user)
 	var/new_color = input(user, "Set Volume") as null|anything in color_options
 
 	if(new_color && Adjacent(user))
 		broadcast_color = new_color
 
-/obj/item/megaphone/super/do_broadcast(var/mob/living/user, var/message)
+/obj/item/megaphone/super/do_broadcast(mob/living/user, message)
 	if ((src.loc == user && usr.stat == 0))
 		if(emagged)
 			if(insults)

@@ -3,7 +3,7 @@
 */
 /var/global/datum/topic_state/deep_inventory_state/deep_inventory_state = new()
 
-/datum/topic_state/deep_inventory_state/can_use_topic(var/src_object, var/mob/user)
+/datum/topic_state/deep_inventory_state/can_use_topic(src_object, mob/user)
 	if(!user.contains(src_object))
 		return UI_CLOSE
 

@@ -180,7 +180,7 @@
 	// if you yell, you'll be heard from two tiles over instead of one
 	return (copytext_char(message, length_char(message)) == "!") ? 2 : 1
 
-/datum/language/proc/broadcast(var/mob/living/speaker,var/message,var/speaker_mask)
+/datum/language/proc/broadcast(mob/living/speaker,message,speaker_mask)
 	log_say("(HIVE) [message]", speaker)
 
 	if(!speaker_mask) speaker_mask = speaker.name
@@ -189,24 +189,24 @@
 	for(var/mob/player in GLOB.player_list)
 		player.hear_broadcast(src, speaker, speaker_mask, message)
 
-/mob/proc/hear_broadcast(var/datum/language/language, var/mob/speaker, var/speaker_name, var/message)
+/mob/proc/hear_broadcast(datum/language/language, mob/speaker, speaker_name, message)
 	if((language in languages) && language.check_special_condition(src))
 		var/msg = "<i><span class='game say'>[language.name], <span class='name'>[speaker_name]</span> [message]</span></i>"
 		to_chat(src, msg)
 
-/mob/new_player/hear_broadcast(var/datum/language/language, var/mob/speaker, var/speaker_name, var/message)
+/mob/new_player/hear_broadcast(datum/language/language, mob/speaker, speaker_name, message)
 	return
 
-/mob/observer/dead/hear_broadcast(var/datum/language/language, var/mob/speaker, var/speaker_name, var/message)
+/mob/observer/dead/hear_broadcast(datum/language/language, mob/speaker, speaker_name, message)
 	if(speaker.name == speaker_name || antagHUD)
 		to_chat(src, "<i><span class='game say'>[language.name], <span class='name'>[speaker_name]</span> ([ghost_follow_link(speaker, src)]) [message]</span></i>")
 	else
 		to_chat(src, "<i><span class='game say'>[language.name], <span class='name'>[speaker_name]</span> [message]</span></i>")
 
-/datum/language/proc/check_special_condition(var/mob/other)
+/datum/language/proc/check_special_condition(mob/other)
 	return 1
 
-/datum/language/proc/get_spoken_verb(var/msg_end)
+/datum/language/proc/get_spoken_verb(msg_end)
 	switch(msg_end)
 		if("!")
 			return pick(exclaim_verb)
@@ -214,7 +214,7 @@
 			return pick(ask_verb)
 	return pick(speech_verb)
 
-/datum/language/proc/can_speak_special(var/mob/speaker)
+/datum/language/proc/can_speak_special(mob/speaker)
 	. = TRUE
 	if(name != "Noise")	// Audible Emotes
 		if(ishuman(speaker))
@@ -232,7 +232,7 @@
 						. = TRUE
 
 // Language handling.
-/mob/proc/add_language(var/language)
+/mob/proc/add_language(language)
 
 	var/datum/language/new_language = SScharacters.resolve_language(language)
 
@@ -242,7 +242,7 @@
 	languages.Add(new_language)
 	return 1
 
-/mob/proc/remove_language(var/rem_language)
+/mob/proc/remove_language(rem_language)
 	var/datum/language/L = SScharacters.resolve_language(rem_language)
 	. = (L in languages)
 	languages.Remove(L)
@@ -329,7 +329,7 @@
 	else
 		return ..()
 
-/proc/transfer_languages(var/mob/source, var/mob/target, var/except_flags)
+/proc/transfer_languages(mob/source, mob/target, except_flags)
 	for(var/datum/language/L in source.languages)
 		if(L.language_flags & except_flags)
 			continue

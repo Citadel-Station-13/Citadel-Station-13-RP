@@ -236,7 +236,7 @@
 
 	return
 
-/obj/machinery/transhuman/synthprinter/proc/print(var/datum/transhuman/body_record/BR)
+/obj/machinery/transhuman/synthprinter/proc/print(datum/transhuman/body_record/BR)
 	if(!istype(BR) || busy)
 		return 0
 

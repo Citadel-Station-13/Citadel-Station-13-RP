@@ -18,12 +18,12 @@
 //Meteor spawning global procs
 ///////////////////////////////
 
-/proc/spawn_meteors(var/number = 10, var/list/meteortypes, var/startSide, var/zlevel)
+/proc/spawn_meteors(number = 10, list/meteortypes, startSide, zlevel)
 	log_debug(SPAN_DEBUG("Spawning [number] meteors on the [dir2text(startSide)] of [zlevel]"))
 	for(var/i = 0; i < number; i++)
 		spawn_meteor(meteortypes, startSide, zlevel)
 
-/proc/spawn_meteor(var/list/meteortypes, var/startSide, var/startLevel)
+/proc/spawn_meteor(list/meteortypes, startSide, startLevel)
 	if(isnull(startSide))
 		startSide = pick(GLOB.cardinal)
 	if(isnull(startLevel))
@@ -78,7 +78,7 @@
 	return T
 
 // Override for special behavior when getting hit by meteors, and only meteors.  Return one if the meteor hasn't been 'stopped'.
-/atom/proc/handle_meteor_impact(var/obj/effect/meteor/meteor)
+/atom/proc/handle_meteor_impact(obj/effect/meteor/meteor)
 	return TRUE
 
 ///////////////////////
@@ -149,7 +149,7 @@
 /obj/effect/meteor/CanAllowThrough(atom/movable/mover, turf/target)
 	return istype(mover, /obj/effect/meteor) ? 1 : ..()
 
-/obj/effect/meteor/proc/ram_turf(var/turf/T)
+/obj/effect/meteor/proc/ram_turf(turf/T)
 	//first bust whatever is in the turf
 	for(var/atom/A in T)
 		if(A == src) // Don't hit ourselves.
@@ -174,7 +174,7 @@
 	if(hits <= 0)
 		die(1)
 
-/obj/effect/meteor/proc/die(var/explode = 1)
+/obj/effect/meteor/proc/die(explode = 1)
 	make_debris()
 	meteor_effect(explode)
 	qdel(src)
@@ -201,7 +201,7 @@
 		var/dist = get_dist(M.loc, src.loc)
 		shake_camera(M, dist > 20 ? 3 : 5, dist > 20 ? 1 : 3)
 
-/obj/effect/meteor/proc/meteor_effect(var/explode)
+/obj/effect/meteor/proc/meteor_effect(explode)
 	if(heavy)
 		shake_players()
 
@@ -225,7 +225,7 @@
 	name = "meteor"
 	dropamt = 3
 	wall_power = 75
-/obj/effect/meteor/medium/meteor_effect(var/explode)
+/obj/effect/meteor/medium/meteor_effect(explode)
 	..()
 	if(explode)
 		explosion(src.loc, 0, 0, 1, 1, 0)
@@ -239,7 +239,7 @@
 	dropamt = 4
 	wall_power = 125
 
-/obj/effect/meteor/big/meteor_effect(var/explode)
+/obj/effect/meteor/big/meteor_effect(explode)
 	..()
 	if(explode)
 		explosion(src.loc, devastation_range = 1, heavy_impact_range = 2, light_impact_range = 3, flash_range = 12, adminlog = 0)
@@ -253,7 +253,7 @@
 	meteordrop = /obj/item/stack/ore/phoron
 	wall_power = 100
 
-/obj/effect/meteor/flaming/meteor_effect(var/explode)
+/obj/effect/meteor/flaming/meteor_effect(explode)
 	..()
 	if(explode)
 		explosion(src.loc, devastation_range = 1, heavy_impact_range = 2, light_impact_range = 8, flash_range = 16, adminlog = 0)
@@ -267,7 +267,7 @@
 	wall_power = 75
 
 
-/obj/effect/meteor/irradiated/meteor_effect(var/explode)
+/obj/effect/meteor/irradiated/meteor_effect(explode)
 	..()
 	if(explode)
 		explosion(src.loc, devastation_range = 0, heavy_impact_range = 0, light_impact_range = 4, flash_range = 6, adminlog = 0)
@@ -283,7 +283,7 @@
 	dropamt = 3
 	wall_power = 80
 
-/obj/effect/meteor/emp/meteor_effect(var/explode)
+/obj/effect/meteor/emp/meteor_effect(explode)
 	..()
 	// Best case scenario: Comparable to a low-yield EMP grenade.
 	// Worst case scenario: Comparable to a standard yield EMP grenade.
@@ -303,7 +303,7 @@
 	meteordrop = /obj/item/stack/ore/phoron
 	wall_power = 150
 
-/obj/effect/meteor/tunguska/meteor_effect(var/explode)
+/obj/effect/meteor/tunguska/meteor_effect(explode)
 	..()
 	if(explode)
 		explosion(src.loc, 5, 10, 15, 20, 0)

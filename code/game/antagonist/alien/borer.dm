@@ -29,17 +29,17 @@ var/datum/antagonist/borer/borers
 	..(1)
 	borers = src
 
-/datum/antagonist/xenos/borer/get_extra_panel_options(var/datum/mind/player)
+/datum/antagonist/xenos/borer/get_extra_panel_options(datum/mind/player)
 	return "<a href='?src=\ref[src];move_to_spawn=\ref[player.current]'>\[put in host\]</a>"
 
-/datum/antagonist/borer/create_objectives(var/datum/mind/player)
+/datum/antagonist/borer/create_objectives(datum/mind/player)
 	if(!..())
 		return
 	player.objectives += new /datum/objective/borer_survive()
 	player.objectives += new /datum/objective/borer_reproduce()
 	player.objectives += new /datum/objective/escape()
 
-/datum/antagonist/borer/place_mob(var/mob/living/mob)
+/datum/antagonist/borer/place_mob(mob/living/mob)
 	var/mob/living/simple_mob/animal/borer/borer = mob
 	if(istype(borer))
 		var/mob/living/carbon/human/host

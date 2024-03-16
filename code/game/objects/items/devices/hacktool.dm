@@ -23,7 +23,7 @@
 	hack_state = null
 	return ..()
 
-/obj/item/multitool/hacktool/attackby(var/obj/item/W, var/mob/user)
+/obj/item/multitool/hacktool/attackby(obj/item/W, mob/user)
 	if(W.is_screwdriver())
 		in_hack_mode = !in_hack_mode
 		playsound(src.loc, W.tool_sound, 50, 1)
@@ -42,7 +42,7 @@
 	A.nano_ui_interact(user, state = hack_state)
 	return 1
 
-/obj/item/multitool/hacktool/proc/attempt_hack(var/mob/user, var/atom/target)
+/obj/item/multitool/hacktool/proc/attempt_hack(mob/user, atom/target)
 	if(is_hacking)
 		to_chat(user, "<span class='warning'>You are already hacking!</span>")
 		return 0
@@ -80,13 +80,13 @@
 			A.unregister(OBSERVER_EVENT_DESTROY, src)
 		known_targets.Cut(max_known_targets + 1)
 
-/obj/item/multitool/hacktool/proc/on_target_destroy(var/target)
+/obj/item/multitool/hacktool/proc/on_target_destroy(target)
 	known_targets -= target
 
 /datum/topic_state/default/must_hack
 	var/obj/item/multitool/hacktool/hacktool
 
-/datum/topic_state/default/must_hack/New(var/hacktool)
+/datum/topic_state/default/must_hack/New(hacktool)
 	src.hacktool = hacktool
 	..()
 
@@ -94,7 +94,7 @@
 	hacktool = null
 	return ..()
 
-/datum/topic_state/default/must_hack/can_use_topic(var/src_object, var/mob/user)
+/datum/topic_state/default/must_hack/can_use_topic(src_object, mob/user)
 	if(!hacktool || !hacktool.in_hack_mode || !(src_object in hacktool.known_targets))
 		return UI_CLOSE
 	return ..()

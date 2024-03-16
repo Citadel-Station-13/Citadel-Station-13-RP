@@ -38,7 +38,7 @@
 	instability_cost = 10
 	energy_cost = 1000
 
-/obj/item/spell/summon/summon_creature/on_summon(var/mob/living/simple_mob/summoned)
+/obj/item/spell/summon/summon_creature/on_summon(mob/living/simple_mob/summoned)
 	if(check_for_scepter())
 //		summoned.faction = "technomancer"
 		summoned.friends += owner

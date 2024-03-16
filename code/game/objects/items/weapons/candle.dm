@@ -43,7 +43,7 @@
 		if(C.lit)
 			light()
 
-/obj/item/flame/candle/proc/light(var/flavor_text = "<span class='notice'>\The [usr] lights the [src].</span>")
+/obj/item/flame/candle/proc/light(flavor_text = "<span class='notice'>\The [usr] lights the [src].</span>")
 	if(!lit)
 		lit = TRUE
 		visible_message(flavor_text)

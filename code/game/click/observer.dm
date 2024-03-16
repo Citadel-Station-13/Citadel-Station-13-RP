@@ -28,7 +28,7 @@
 	else
 		to_chat(src, "<span class='notice'>You will no longer examine things you click on.</span>")
 
-/mob/observer/dead/ClickOn(var/atom/A, var/params)
+/mob/observer/dead/ClickOn(atom/A, params)
 	if(client.buildmode)
 		build_click(src, client.buildmode, params, A)
 		return

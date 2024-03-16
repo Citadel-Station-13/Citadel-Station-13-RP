@@ -111,7 +111,7 @@
 
 	return
 
-/obj/item/reagent_containers/borghypo/Topic(var/href, var/list/href_list)
+/obj/item/reagent_containers/borghypo/Topic(href, list/href_list)
 	if(href_list["reagent"])
 		var/t = reagent_ids.Find(href_list["reagent"])
 		if(t)

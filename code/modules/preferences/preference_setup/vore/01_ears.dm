@@ -55,7 +55,7 @@
 	name = "Appearance"
 	sort_order = 1
 
-/datum/category_item/player_setup_item/vore/ears/load_character(var/savefile/S)
+/datum/category_item/player_setup_item/vore/ears/load_character(savefile/S)
 	S["ear_style_id"]	>> pref.ear_style_id
 	S["r_ears"]			>> pref.r_ears
 	S["g_ears"]			>> pref.g_ears
@@ -100,7 +100,7 @@
 	S["g_gradwing"]		>> pref.g_gradwing
 	S["b_gradwing"]		>> pref.b_gradwing
 
-/datum/category_item/player_setup_item/vore/ears/save_character(var/savefile/S)
+/datum/category_item/player_setup_item/vore/ears/save_character(savefile/S)
 	S["ear_style_id"]		<< pref.ear_style_id
 	S["r_ears"]			<< pref.r_ears
 	S["g_ears"]			<< pref.g_ears
@@ -349,7 +349,7 @@
 	rendering = null
 
 
-/datum/category_item/player_setup_item/vore/ears/OnTopic(var/href,var/list/href_list, var/mob/user)
+/datum/category_item/player_setup_item/vore/ears/OnTopic(href,list/href_list, mob/user)
 	var/datum/species/S = pref.real_species_datum()
 	var/species_name = S.name
 

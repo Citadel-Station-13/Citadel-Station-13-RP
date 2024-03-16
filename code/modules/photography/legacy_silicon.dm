@@ -14,7 +14,7 @@
 /obj/item/camera/siliconcam/drone_camera //currently doesn't offer the verbs, thus cannot be used
 	name = "Drone photo camera"
 
-/obj/item/camera/siliconcam/proc/injectaialbum(obj/item/photo/p, var/sufix = "") //stores image information to a list similar to that of the datacore
+/obj/item/camera/siliconcam/proc/injectaialbum(obj/item/photo/p, sufix = "") //stores image information to a list similar to that of the datacore
 	p.loc = src
 	photos_taken++
 	p.name = "Image [photos_taken][sufix]"

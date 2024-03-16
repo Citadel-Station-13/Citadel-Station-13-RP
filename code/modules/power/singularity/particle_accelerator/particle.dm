@@ -80,12 +80,12 @@
 /obj/effect/accelerated_particle/singularity_act()
 	return
 
-/obj/effect/accelerated_particle/proc/toxmob(var/mob/living/M)
+/obj/effect/accelerated_particle/proc/toxmob(mob/living/M)
 	if(!istype(M))
 		return
 	M.afflict_radiation(energy * 5, TRUE)
 
-/obj/effect/accelerated_particle/proc/move(var/lag)
+/obj/effect/accelerated_particle/proc/move(lag)
 	var/turf/new_target
 	if(target)
 		if(movetotarget)

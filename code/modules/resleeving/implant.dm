@@ -29,7 +29,7 @@
 	SStranscore.implants -= src
 	return ..()
 
-/obj/item/implant/backup/post_implant(var/mob/living/carbon/human/H)
+/obj/item/implant/backup/post_implant(mob/living/carbon/human/H)
 	if(istype(H))
 		SStranscore.implants |= src
 		return 1

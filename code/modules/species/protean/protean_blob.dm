@@ -144,13 +144,13 @@
 	else
 		..()
 
-/mob/living/simple_mob/protean_blob/stun_effect_act(var/stun_amount, var/agony_amount, var/def_zone, var/used_weapon=null)
+/mob/living/simple_mob/protean_blob/stun_effect_act(stun_amount, agony_amount, def_zone, used_weapon=null)
 	return FALSE //ok so tasers hurt protean blobs what the fuck
 
-/mob/living/simple_mob/protean_blob/adjustBruteLoss(var/amount,var/include_robo)
+/mob/living/simple_mob/protean_blob/adjustBruteLoss(amount,include_robo)
 	return humanform? humanform.take_targeted_damage(brute = amount, body_zone = BP_TORSO) : ..()
 
-/mob/living/simple_mob/protean_blob/adjustFireLoss(var/amount,var/include_robo)
+/mob/living/simple_mob/protean_blob/adjustFireLoss(amount,include_robo)
 	return humanform? humanform.take_targeted_damage(burn = amount, body_zone = BP_TORSO) : ..()
 
 // citadel hack - FUCK YOU DIE CORRECTLY THIS ENTIRE FETISH RACE IS A SORRY MISTAKE
@@ -209,7 +209,7 @@
 					target.forceMove(vore_selected)
 					to_chat(target,"<span class='warning'>\The [src] quickly engulfs you, [vore_selected.vore_verb]ing you into their [vore_selected.name]!</span>")
 
-/mob/living/simple_mob/protean_blob/attack_target(var/atom/A)
+/mob/living/simple_mob/protean_blob/attack_target(atom/A)
 	if(refactory && istype(A,/obj/item/stack/material))
 		var/obj/item/stack/material/S = A
 		var/substance = S.material.name
@@ -242,7 +242,7 @@
 	else
 		return ..()
 
-/mob/living/simple_mob/protean_blob/attackby(var/obj/item/O, var/mob/user)
+/mob/living/simple_mob/protean_blob/attackby(obj/item/O, mob/user)
 	if(refactory && istype(O,/obj/item/stack/material))
 		var/obj/item/stack/material/S = O
 		var/substance = S.material.name
@@ -267,7 +267,7 @@
 	else
 		..()
 
-/mob/living/simple_mob/protean_blob/OnMouseDropLegacy(var/atom/over_object)
+/mob/living/simple_mob/protean_blob/OnMouseDropLegacy(atom/over_object)
 	if(ishuman(over_object) && usr == src && src.Adjacent(over_object))
 		var/mob/living/carbon/human/H = over_object
 		get_scooped(H, TRUE)
@@ -372,7 +372,7 @@
 	return blob
 
 //For some reason, there's no way to force drop all the mobs grabbed. This ought to fix that. And be moved elsewhere. Call with caution, doesn't handle cycles.
-/proc/remove_micros(var/src, var/mob/root)
+/proc/remove_micros(src, mob/root)
 	for(var/obj/item/I in src)
 		remove_micros(I, root) //Recursion. I'm honestly depending on there being no containment loop, but at the cost of performance that can be fixed too.
 		if(istype(I, /obj/item/holder))
@@ -433,7 +433,7 @@
 	else
 		to_chat(src, "You are not in hardsuit form.")
 
-/mob/living/carbon/human/proc/nano_outofblob(var/mob/living/simple_mob/protean_blob/blob)
+/mob/living/carbon/human/proc/nano_outofblob(mob/living/simple_mob/protean_blob/blob)
 	if(!istype(blob))
 		return
 	if(istype(blob.loc, /obj/item/hardsuit/protean))

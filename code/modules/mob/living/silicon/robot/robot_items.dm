@@ -341,7 +341,7 @@
 		return
 	deploy_paper(get_turf(src))
 
-/obj/item/form_printer/proc/deploy_paper(var/turf/T)
+/obj/item/form_printer/proc/deploy_paper(turf/T)
 	T.visible_message("<font color=#4F49AF>\The [src.loc] dispenses a sheet of crisp white paper.</font>")
 	new /obj/item/paper(T)
 
@@ -388,7 +388,7 @@
 		user.visible_message("<span class='danger'>[user]'s shield reactivates!</span>", "<span class='danger'>Your shield reactivates!.</span>")
 		user.update_icon()
 
-/obj/item/borg/combat/shield/proc/adjust_flash_count(var/mob/living/user, amount)
+/obj/item/borg/combat/shield/proc/adjust_flash_count(mob/living/user, amount)
 	if(active)			//Can't destabilize a shield that's not on
 		flash_count += amount
 
@@ -397,7 +397,7 @@
 			if(flash_count >= overload_threshold)
 				overload(user)
 
-/obj/item/borg/combat/shield/proc/overload(var/mob/living/user)
+/obj/item/borg/combat/shield/proc/overload(mob/living/user)
 	active = 0
 	user.visible_message("<span class='danger'>[user]'s shield destabilizes!</span>", "<span class='danger'>Your shield destabilizes!.</span>")
 	user.update_icon()
@@ -462,7 +462,7 @@
 	if(istype(target, /obj/item/inflatable) || istype(target, /obj/structure/inflatable))
 		pick_up(target, user)
 
-/obj/item/inflatable_dispenser/proc/try_deploy_inflatable(var/turf/T, var/mob/living/user)
+/obj/item/inflatable_dispenser/proc/try_deploy_inflatable(turf/T, mob/living/user)
 	if(mode) // Door deployment
 		if(!stored_doors)
 			to_chat(user, "\The [src] is out of doors!")
@@ -484,7 +484,7 @@
 	playsound(T, 'sound/items/zip.ogg', 75, 1)
 	to_chat(user, "You deploy the inflatable [mode ? "door" : "wall"]!")
 
-/obj/item/inflatable_dispenser/proc/pick_up(var/obj/A, var/mob/living/user)
+/obj/item/inflatable_dispenser/proc/pick_up(obj/A, mob/living/user)
 	if(istype(A, /obj/structure/inflatable))
 		if(!istype(A, /obj/structure/inflatable/door))
 			if(stored_walls >= max_walls)

@@ -8,12 +8,12 @@
 	name = "Resleeving"
 	sort_order = 5
 
-/datum/category_item/player_setup_item/vore/resleeve/load_character(var/savefile/S)
+/datum/category_item/player_setup_item/vore/resleeve/load_character(savefile/S)
 	S["resleeve_lock"]		>> pref.resleeve_lock
 	S["resleeve_scan"]		>> pref.resleeve_scan
 
 
-/datum/category_item/player_setup_item/vore/resleeve/save_character(var/savefile/S)
+/datum/category_item/player_setup_item/vore/resleeve/save_character(savefile/S)
 	S["resleeve_lock"]		<< pref.resleeve_lock
 	S["resleeve_scan"]		<< pref.resleeve_scan
 
@@ -43,7 +43,7 @@
 	. += "<b>Start With Body Scan:</b> <a [pref.resleeve_scan ? "class='linkOn'" : ""] href='?src=\ref[src];toggle_resleeve_scan=1'><b>[pref.resleeve_scan ? "Yes" : "No"]</b></a><br>"
 	. += "<b>Prevent Body Impersonation:</b> <a [pref.resleeve_lock ? "class='linkOn'" : ""] href='?src=\ref[src];toggle_resleeve_lock=1'><b>[pref.resleeve_lock ? "Yes" : "No"]</b></a><br>"
 
-/datum/category_item/player_setup_item/vore/resleeve/OnTopic(var/href, var/list/href_list, var/mob/user)
+/datum/category_item/player_setup_item/vore/resleeve/OnTopic(href, list/href_list, mob/user)
 	if(href_list["toggle_resleeve_lock"])
 		pref.resleeve_lock = pref.resleeve_lock ? 0 : 1;
 		return PREFERENCES_REFRESH

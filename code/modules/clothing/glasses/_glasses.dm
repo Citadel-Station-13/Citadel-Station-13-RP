@@ -733,7 +733,7 @@ BLIND     // can't see anything
 	icon_state = "orangeglasses"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "glasses", SLOT_ID_LEFT_HAND = "glasses")
 
-/obj/item/clothing/glasses/proc/prescribe(var/mob/user)
+/obj/item/clothing/glasses/proc/prescribe(mob/user)
 	prescription = !prescription
 
 	//Look it's really not that fancy. It's not ACTUALLY unique scrip data.

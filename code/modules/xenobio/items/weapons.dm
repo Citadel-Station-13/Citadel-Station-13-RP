@@ -91,7 +91,7 @@
 /obj/projectile/beam/stun/xeno/weak //Weaker variant for non-research equipment, turrets, or rapid fire types.
 	agony = 3
 
-/obj/projectile/beam/stun/xeno/on_hit(var/atom/target, var/blocked = 0, var/def_zone = null)
+/obj/projectile/beam/stun/xeno/on_hit(atom/target, blocked = 0, def_zone = null)
 	if(istype(target, /mob/living))
 		var/mob/living/L = target
 		if(L.mob_class & MOB_CLASS_SLIME)

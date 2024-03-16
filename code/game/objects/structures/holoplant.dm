@@ -34,7 +34,7 @@
 	else
 		deactivate()
 
-/obj/machinery/holoplant/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/machinery/holoplant/attackby(obj/item/O as obj, mob/user as mob)
 	if(default_unfasten_wrench(user, O, 10))
 		deactivate()
 		return
@@ -94,7 +94,7 @@
 		deactivate()
 	activate()
 
-/obj/machinery/holoplant/Crossed(var/mob/living/L)
+/obj/machinery/holoplant/Crossed(mob/living/L)
 	. = ..()
 	if(!interference && plant && istype(L))
 		flicker()

@@ -153,7 +153,7 @@
 			update_icon()
 			return TRUE
 
-/obj/machinery/computer/timeclock/proc/getOpenOnDutyJobs(var/mob/user, var/department)
+/obj/machinery/computer/timeclock/proc/getOpenOnDutyJobs(mob/user, department)
 	var/list/available_jobs = list()
 	for(var/datum/role/job/job in SSjob.occupations)
 		if(isOpenOnDutyJob(user, department, job))
@@ -163,11 +163,11 @@
 			available_jobs[job.title] = titles
 	return available_jobs
 
-/obj/machinery/computer/timeclock/proc/available_titles(mob/user, var/datum/role/job/job)
+/obj/machinery/computer/timeclock/proc/available_titles(mob/user, datum/role/job/job)
 	var/list/datum/lore/character_background/backgrounds = user.mind?.original_background_ids()
 	return job.alt_title_query(backgrounds)
 
-/obj/machinery/computer/timeclock/proc/isOpenOnDutyJob(var/mob/user, var/department, var/datum/role/job/job)
+/obj/machinery/computer/timeclock/proc/isOpenOnDutyJob(mob/user, department, datum/role/job/job)
 	return job \
 		   && job.is_position_available() \
 		   && !job.whitelist_only \
@@ -178,7 +178,7 @@
 		   && job.timeoff_factor > 0 \
 		   && (job.check_mob_availability_one(user) == ROLE_AVAILABLE)
 
-/obj/machinery/computer/timeclock/proc/makeOnDuty(var/newrank, var/newassignment)
+/obj/machinery/computer/timeclock/proc/makeOnDuty(newrank, newassignment)
 	var/datum/role/job/oldjob = SSjob.get_job(card.rank)
 	var/datum/role/job/newjob = SSjob.get_job(newrank)
 	if(!oldjob || !isOpenOnDutyJob(usr, oldjob.pto_type, newjob))
@@ -270,7 +270,7 @@
 	y_offset = 30
 	icon_override = 'icons/obj/machines/timeclock_vr.dmi'
 
-/datum/frame/frame_types/timeclock_terminal/get_icon_state(var/state)
+/datum/frame/frame_types/timeclock_terminal/get_icon_state(state)
 	return "timeclock_b[state]"
 
 //

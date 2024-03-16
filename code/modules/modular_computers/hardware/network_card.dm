@@ -14,7 +14,7 @@ var/global/ntnet_card_uid = 1
 	var/ethernet = 0 // Hard-wired, therefore always on, ignores NTNet wireless checks.
 	malfunction_probability = 1
 
-/obj/item/computer_hardware/network_card/diagnostics(var/mob/user)
+/obj/item/computer_hardware/network_card/diagnostics(mob/user)
 	..()
 	to_chat(user, "NIX Unique ID: [identification_id]")
 	to_chat(user, "NIX User Tag: [identification_string]")
@@ -48,7 +48,7 @@ var/global/ntnet_card_uid = 1
 	icon_state = "netcard_advanced"
 	hardware_size = 1
 
-/obj/item/computer_hardware/network_card/quantum/get_signal(var/specific_action = 0)
+/obj/item/computer_hardware/network_card/quantum/get_signal(specific_action = 0)
 	if(!holder2)
 		return 0
 	if(!enabled)
@@ -80,7 +80,7 @@ var/global/ntnet_card_uid = 1
 	return ntnet_global.check_banned(identification_id)
 
 // 0 - No signal, 1 - Low signal, 2 - High signal. 3 - Wired Connection
-/obj/item/computer_hardware/network_card/proc/get_signal(var/specific_action = 0)
+/obj/item/computer_hardware/network_card/proc/get_signal(specific_action = 0)
 	if(!holder2) // Hardware is not installed in anything. No signal. How did this even get called?
 		return 0
 

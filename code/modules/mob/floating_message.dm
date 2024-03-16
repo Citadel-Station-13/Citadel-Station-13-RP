@@ -3,7 +3,7 @@ var/list/floating_chat_colors = list()
 /atom/movable
 	var/list/stored_chat_text
 
-/atom/movable/proc/animate_chat(message, var/datum/language/speaking = null, small, list/show_to, duration = 30)
+/atom/movable/proc/animate_chat(message, datum/language/speaking = null, small, list/show_to, duration = 30)
 	set waitfor = FALSE
 	if(!speaking)
 		var/datum/language/noise/noise

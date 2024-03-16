@@ -82,7 +82,7 @@
 		return 0
 	return ..()
 
-/obj/item/gun/ballistic/rocket/collapsible/attackby(var/obj/item/A as obj, mob/user as mob)
+/obj/item/gun/ballistic/rocket/collapsible/attackby(obj/item/A as obj, mob/user as mob)
 	to_chat(user, "<span class='danger'>You cannot reload the [src]!</span>")
 	return
 
@@ -174,7 +174,7 @@
 	else
 		return ..()
 
-/obj/item/gun/ballistic/rocket/tyrmalin/attackby(var/obj/item/A as obj, mob/user as mob)
+/obj/item/gun/ballistic/rocket/tyrmalin/attackby(obj/item/A as obj, mob/user as mob)
 	. = ..()
 	if(A.is_material_stack_of(/datum/material/plasteel))
 		var/obj/item/stack/material/M = A
@@ -192,7 +192,7 @@
 	icon_state = "rokkitassembly1"
 	var/build_step = 0
 
-/obj/item/tyrmalin_rocket_assembly/attackby(var/obj/item/W as obj, mob/user as mob)
+/obj/item/tyrmalin_rocket_assembly/attackby(obj/item/W as obj, mob/user as mob)
 
 	switch(build_step)
 		if(0)

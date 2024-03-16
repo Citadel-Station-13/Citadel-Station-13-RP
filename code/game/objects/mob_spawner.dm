@@ -54,7 +54,7 @@
 /obj/structure/mob_spawner/proc/choose_spawn()
 	return pickweight(spawn_types)
 
-/obj/structure/mob_spawner/proc/do_spawn(var/mob_path)
+/obj/structure/mob_spawner/proc/do_spawn(mob_path)
 	if(!ispath(mob_path))
 		return 0
 	var/mob/living/L = new mob_path(get_turf(src))
@@ -67,7 +67,7 @@
 		L.faction = mob_faction
 	return L
 
-/obj/structure/mob_spawner/proc/get_death_report(var/mob/living/L)
+/obj/structure/mob_spawner/proc/get_death_report(mob/living/L)
 	if(L in spawned_mobs)
 		spawned_mobs.Remove(L)
 

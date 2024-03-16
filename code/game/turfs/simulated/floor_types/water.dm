@@ -50,7 +50,7 @@
 
 	else return ..()
 
-/turf/simulated/floor/water/return_air_for_internal_lifeform(var/mob/living/L)
+/turf/simulated/floor/water/return_air_for_internal_lifeform(mob/living/L)
 	if(L && L.lying)
 		if(L.can_breathe_water()) // For squid.
 			var/datum/gas_mixture/water_breath = new()
@@ -344,7 +344,7 @@ var/list/shoreline_icon_cache = list()
 	if(!blood_wade())
 		STOP_PROCESSING(SSobj, src)
 
-/turf/simulated/floor/water/blood/proc/blood_wade(var/mob/living/carbon/human/L, atom/movable/AM)
+/turf/simulated/floor/water/blood/proc/blood_wade(mob/living/carbon/human/L, atom/movable/AM)
 	. = FALSE
 
 	if(ishuman(L))

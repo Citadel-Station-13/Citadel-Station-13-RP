@@ -36,7 +36,7 @@
 	keyslot2 = null
 	return ..()
 
-/obj/item/radio/headset/list_channels(var/mob/user)
+/obj/item/radio/headset/list_channels(mob/user)
 	return list_secure_channels()
 
 /obj/item/radio/headset/examine(mob/user, dist)
@@ -409,7 +409,7 @@
 
 		recalculateChannels()
 
-/obj/item/radio/headset/recalculateChannels(var/setDescription = 0)
+/obj/item/radio/headset/recalculateChannels(setDescription = 0)
 	src.channels = list()
 	src.translate_binary = 0
 	src.translate_hive = 0
@@ -494,7 +494,7 @@
 		return ..(freq, level)
 
 
-/obj/item/radio/headset/mob_headset/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/state = interactive_state)
+/obj/item/radio/headset/mob_headset/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1, state = interactive_state)
 	ui = new(user, src, ui_key, "radio_basic.tmpl", "[name]", 400, 430, state = interactive_state)
 	..()
 

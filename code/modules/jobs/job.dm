@@ -311,14 +311,14 @@
 
 //? Unsorted
 
-/datum/role/job/proc/equip(var/mob/living/carbon/human/H, var/alt_title)
+/datum/role/job/proc/equip(mob/living/carbon/human/H, alt_title)
 	var/datum/outfit/outfit = get_outfit(H, alt_title)
 	if(!outfit)
 		return FALSE
 	. = outfit.equip(H, title, alt_title)
 	return 1
 
-/datum/role/job/proc/get_outfit(var/mob/living/carbon/human/H, var/alt_title)
+/datum/role/job/proc/get_outfit(mob/living/carbon/human/H, alt_title)
 	if(alt_title && alt_titles)
 		var/datum/prototype/struct/alt_title/A = alt_titles[alt_title]
 		if(A && initial(A.title_outfit))
@@ -333,7 +333,7 @@
 	var/datum/department/D = SSjob.get_primary_department_of_job(src)
 	return economy_payscale * (istype(D)? D.economy_payscale : 1)
 
-/datum/role/job/proc/setup_account(var/mob/living/carbon/human/H)
+/datum/role/job/proc/setup_account(mob/living/carbon/human/H)
 	if(!account_allowed || (H.mind && H.mind.initial_account))
 		return
 
@@ -357,7 +357,7 @@
 	to_chat(H, "<span class='notice'><b>Your account number is: [M.account_number], your account pin is: [M.remote_access_pin]</b></span>")
 
 // Overrideable separately so AIs/borgs can have cardborg hats without unneccessary new()/qdel()
-/datum/role/job/proc/equip_preview(mob/living/carbon/human/H, var/alt_title)
+/datum/role/job/proc/equip_preview(mob/living/carbon/human/H, alt_title)
 	var/datum/outfit/outfit = get_outfit(H, alt_title)
 	if(!outfit)
 		return FALSE
@@ -381,14 +381,14 @@
 		return max(0, minimal_player_age - C.player.player_age)
 	return 0
 
-/datum/role/job/proc/apply_fingerprints(var/mob/living/carbon/human/target)
+/datum/role/job/proc/apply_fingerprints(mob/living/carbon/human/target)
 	if(!istype(target))
 		return 0
 	for(var/obj/item/item in target.contents)
 		apply_fingerprints_to_item(target, item)
 	return 1
 
-/datum/role/job/proc/apply_fingerprints_to_item(var/mob/living/carbon/human/holder, var/obj/item/item)
+/datum/role/job/proc/apply_fingerprints_to_item(mob/living/carbon/human/holder, obj/item/item)
 	item.add_fingerprint(holder,1)
 	if(item.contents.len)
 		for(var/obj/item/sub_item in item.contents)
@@ -397,10 +397,10 @@
 /datum/role/job/proc/is_position_available()
 	return (current_positions < total_positions) || (total_positions == -1)
 
-/datum/role/job/proc/has_alt_title(var/mob/H, var/supplied_title, var/desired_title)
+/datum/role/job/proc/has_alt_title(mob/H, supplied_title, desired_title)
 	return (supplied_title == desired_title) || (H.mind && H.mind.role_alt_title == desired_title)
 
-/datum/role/job/proc/get_description_blurb(var/alt_title)
+/datum/role/job/proc/get_description_blurb(alt_title)
 	var/list/message = list()
 	message |= desc
 

@@ -102,7 +102,7 @@ SUBSYSTEM_DEF(plants)
 		gene_masked_list.Add(list(list("tag" = gene_tag, "mask" = gene_mask)))
 
 ///Proc for creating a random seed type.
-/datum/controller/subsystem/plants/proc/create_random_seed(var/survive_on_station)
+/datum/controller/subsystem/plants/proc/create_random_seed(survive_on_station)
 	var/datum/seed/seed = new()
 	seed.randomize()
 	seed.uid = SSplants.seeds.len + 1
@@ -141,10 +141,10 @@ SUBSYSTEM_DEF(plants)
 		if(MC_TICK_CHECK)
 			return
 
-/datum/controller/subsystem/plants/proc/add_plant(var/obj/effect/plant/plant)
+/datum/controller/subsystem/plants/proc/add_plant(obj/effect/plant/plant)
 	processing |= plant
 
-/datum/controller/subsystem/plants/proc/remove_plant(var/obj/effect/plant/plant)
+/datum/controller/subsystem/plants/proc/remove_plant(obj/effect/plant/plant)
 	processing -= plant
 
 ///Debug Verb for testing seed genes.

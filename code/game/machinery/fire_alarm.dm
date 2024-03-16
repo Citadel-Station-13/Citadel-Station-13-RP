@@ -260,7 +260,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/fire_alarm/alarms_hidden, 21)
 	update_icon()
 	return
 
-/obj/machinery/fire_alarm/proc/alarm(var/duration = 0)
+/obj/machinery/fire_alarm/proc/alarm(duration = 0)
 	if(!(working))
 		return
 	var/area/area = get_area(src)
@@ -270,7 +270,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/fire_alarm/alarms_hidden, 21)
 	playsound(src.loc, 'sound/machines/airalarm.ogg', 25, 0, 4)
 	return
 
-/obj/machinery/fire_alarm/proc/set_security_level(var/newlevel)
+/obj/machinery/fire_alarm/proc/set_security_level(newlevel)
 	if(seclevel != newlevel)
 		seclevel = newlevel
 		update_icon()

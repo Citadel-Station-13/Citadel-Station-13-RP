@@ -98,7 +98,7 @@
 	signal.data["message"] = "ACTIVATE"
 	radio_connection.post_signal(src, signal)
 
-/obj/item/assembly/signaler/pulse(var/radio = 0)
+/obj/item/assembly/signaler/pulse(radio = 0)
 	if(is_jammed(src))
 		return FALSE
 	if(connected && wires)

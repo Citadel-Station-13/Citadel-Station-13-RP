@@ -67,7 +67,7 @@
 	var/list/incompatible_with = null
 
 //Constructor accepts the NIF it's being loaded into
-/datum/nifsoft/New(var/obj/item/nif/nif_load)
+/datum/nifsoft/New(obj/item/nif/nif_load)
 	ASSERT(nif_load)
 
 	nif = nif_load
@@ -96,11 +96,11 @@
 		qdel(src)
 
 ///Called every life() tick on a mob on active implants
-/datum/nifsoft/proc/on_life(var/mob/living/carbon/human/human)
+/datum/nifsoft/proc/on_life(mob/living/carbon/human/human)
 	return TRUE
 
 ///Called when attempting to activate an implant (could be a 'pulse' activation or toggling it on)
-/datum/nifsoft/proc/activate(var/force = FALSE)
+/datum/nifsoft/proc/activate(force = FALSE)
 	if(active && !force)
 		return
 	var/nif_result = nif.activate(src)
@@ -135,7 +135,7 @@
 	return nif_result
 
 ///Called when attempting to deactivate an implant
-/datum/nifsoft/proc/deactivate(var/force = FALSE)
+/datum/nifsoft/proc/deactivate(force = FALSE)
 	if(!active && !force)
 		return
 	var/nif_result = nif.deactivate(src)
@@ -171,7 +171,7 @@
 	return
 
 ///Called when installed from a disk
-/datum/nifsoft/proc/disk_install(var/mob/living/carbon/human/target,var/mob/living/carbon/human/user)
+/datum/nifsoft/proc/disk_install(mob/living/carbon/human/target,mob/living/carbon/human/user)
 	return TRUE
 
 ///Status text for menu
@@ -188,7 +188,7 @@
 	wear = 0 //Packages don't cause wear themselves, the software does
 
 //Constructor accepts a NIF and loads all the software
-/datum/nifsoft/package/New(var/obj/item/nif/nif_load)
+/datum/nifsoft/package/New(obj/item/nif/nif_load)
 	ASSERT(nif_load)
 
 	for(var/P in software)

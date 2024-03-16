@@ -27,7 +27,7 @@
 	RefreshParts()
 	update_light_color()
 
-/obj/machinery/slime/replicator/attackby(var/obj/item/W, var/mob/user)
+/obj/machinery/slime/replicator/attackby(obj/item/W, mob/user)
 	//Let's try to deconstruct first.
 	if(W.is_screwdriver() && !inuse)
 		default_deconstruction_screwdriver(user, W)

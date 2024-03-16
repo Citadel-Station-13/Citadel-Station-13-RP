@@ -210,7 +210,7 @@
 #undef SPEED_RELOAD_SPEED
 
 //attempts to unload src. If allow_dump is set to 0, the speedloader unloading method will be disabled
-/obj/item/gun/ballistic/proc/unload_ammo(mob/user, var/allow_dump=1)
+/obj/item/gun/ballistic/proc/unload_ammo(mob/user, allow_dump=1)
 	if(ammo_magazine)
 		user.put_in_hands_or_drop(ammo_magazine)
 		user.visible_message("[user] removes [ammo_magazine] from [src].", "<span class='notice'>You remove [ammo_magazine] from [src].</span>")
@@ -239,7 +239,7 @@
 		to_chat(user, "<span class='warning'>[src] is empty.</span>")
 	update_icon()
 
-/obj/item/gun/ballistic/attackby(var/obj/item/A as obj, mob/user as mob)
+/obj/item/gun/ballistic/attackby(obj/item/A as obj, mob/user as mob)
 	..()
 	load_ammo(A, user)
 

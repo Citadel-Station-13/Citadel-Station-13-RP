@@ -21,7 +21,7 @@ var/datum/antagonist/xenos/xenomorphs
 	spawn_announcement_sound = 'sound/AI/aliens.ogg'
 	spawn_announcement_delay = 5000
 
-/datum/antagonist/xenos/New(var/no_reference)
+/datum/antagonist/xenos/New(no_reference)
 	..()
 	if(!no_reference)
 		xenomorphs = src
@@ -37,11 +37,11 @@ var/datum/antagonist/xenos/xenomorphs
 				vents += temp_vent
 	return vents
 
-/datum/antagonist/xenos/create_objectives(var/datum/mind/player)
+/datum/antagonist/xenos/create_objectives(datum/mind/player)
 	if(!..())
 		return
 	player.objectives += new /datum/objective/survive()
 	player.objectives += new /datum/objective/escape()
 
-/datum/antagonist/xenos/place_mob(var/mob/living/player)
+/datum/antagonist/xenos/place_mob(mob/living/player)
 	player.forceMove(get_turf(pick(get_vents())))

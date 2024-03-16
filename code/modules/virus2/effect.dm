@@ -7,13 +7,13 @@
 	var/multiplier = 1 //The chance the effects are WORSE
 	var/stage = 0
 
-/datum/disease2/effectholder/proc/runeffect(var/mob/living/carbon/human/mob,var/stage)
+/datum/disease2/effectholder/proc/runeffect(mob/living/carbon/human/mob,stage)
 	if(happensonce > -1 && effect.stage <= stage && prob(chance))
 		effect.activate(mob, multiplier)
 		if(happensonce == 1)
 			happensonce = -1
 
-/datum/disease2/effectholder/proc/getrandomeffect(var/badness = 1, exclude_types=list())
+/datum/disease2/effectholder/proc/getrandomeffect(badness = 1, exclude_types=list())
 	var/list/datum/disease2/effect/list = list()
 	for(var/e in (typesof(/datum/disease2/effect) - /datum/disease2/effect))
 		var/datum/disease2/effect/f = e
@@ -60,7 +60,7 @@
 	stage = 1
 	badness = 3
 
-/datum/disease2/effect/invisible/activate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/invisible/activate(mob/living/carbon/mob,multiplier)
 	return
 
 ////////////////////////STAGE 4/////////////////////////////////
@@ -76,7 +76,7 @@
 	stage = 4
 	badness = 3
 
-/datum/disease2/effect/gibbingtons/activate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/gibbingtons/activate(mob/living/carbon/mob,multiplier)
 	// Probabilities have been tweaked to kill in ~2-3 minutes, giving 5-10 messages.
 	// Probably needs more balancing, but it's better than LOL U GIBBED NOW, especially now that viruses can potentially have no signs up until Gibbingtons.
 	// Tweaking this further cause WTF for a "~2-3 minutes" window god damn holy hell.
@@ -103,7 +103,7 @@
 	badness = 2
 
 // Nerfing the value of the base rad to adjust and not cause immediate rad poisoning to a crew member.
-/datum/disease2/effect/radian/activate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/radian/activate(mob/living/carbon/mob,multiplier)
 	mob.afflict_radiation(RAD_MOB_AFFLICT_VIRUS_RADIAN(multiplier))
 
 /datum/disease2/effect/deaf
@@ -111,7 +111,7 @@
 	stage = 4
 	badness = 2
 
-/datum/disease2/effect/deaf/activate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/deaf/activate(mob/living/carbon/mob,multiplier)
 	mob.ear_deaf += 20
 
 // This will either be removed cause, god damn why do we need to have stuff that changes a person's model to something.
@@ -121,7 +121,7 @@
 	stage = 4
 	badness = 3
 
-/datum/disease2/effect/monkey/activate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/monkey/activate(mob/living/carbon/mob,multiplier)
 	if(istype(mob,/mob/living/carbon/human))
 		var/mob/living/carbon/human/h = mob
 		if(prob(25))
@@ -139,7 +139,7 @@
 	stage = 4
 	badness = 3
 
-/datum/disease2/effect/suicide/activate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/suicide/activate(mob/living/carbon/mob,multiplier)
 	var/datum/gender/TM = GLOB.gender_datums[mob.get_visible_gender()]
 	if(prob(25))
 		mob.visible_message("<font color='red'><b>[mob.name] is holding [TM.his] breath. It looks like [TM.his] ability to breath [TM.is] constricted!</b></font>")
@@ -151,7 +151,7 @@
 	stage = 4
 	badness = 2
 
-/datum/disease2/effect/killertoxins/activate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/killertoxins/activate(mob/living/carbon/mob,multiplier)
 	mob.adjustToxLoss(10*multiplier)
 
 // DNA Damage
@@ -160,7 +160,7 @@
 	stage = 4
 	badness = 2
 
-/datum/disease2/effect/dna/activate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/dna/activate(mob/living/carbon/mob,multiplier)
 	mob.bodytemperature = max(mob.bodytemperature, 350)
 	scramble(0,mob,10)
 	mob.apply_damage(10, CLONE)
@@ -170,7 +170,7 @@
 	stage = 4
 	badness = 2
 
-/datum/disease2/effect/organs/activate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/organs/activate(mob/living/carbon/mob,multiplier)
 	if(istype(mob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = mob
 		var/organ = pick(list("r_arm","l_arm","r_leg","l_leg"))
@@ -183,7 +183,7 @@
 		H.update_icons_body()
 	mob.adjustToxLoss(15*multiplier)
 
-/datum/disease2/effect/organs/deactivate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/organs/deactivate(mob/living/carbon/mob,multiplier)
 	if(istype(mob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = mob
 		for (var/obj/item/organ/external/E in H.organs)
@@ -198,7 +198,7 @@
 	stage = 4
 	badness = 2
 
-/datum/disease2/effect/internalorgan/activate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/internalorgan/activate(mob/living/carbon/mob,multiplier)
 	if(istype(mob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = mob
 		var/organ = pick(list("heart","kidney","liver", "lungs"))
@@ -215,7 +215,7 @@
 	stage = 4
 	badness = 2
 
-/datum/disease2/effect/immortal/activate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/immortal/activate(mob/living/carbon/mob,multiplier)
 	if(istype(mob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = mob
 		for (var/obj/item/organ/external/E in H.organs)
@@ -224,7 +224,7 @@
 	var/heal_amt = -5*multiplier
 	mob.apply_damages(heal_amt,heal_amt,heal_amt,heal_amt)
 
-/datum/disease2/effect/immortal/deactivate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/immortal/deactivate(mob/living/carbon/mob,multiplier)
 	if(istype(mob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = mob
 		to_chat(H, "<span class='notice'>You suddenly feel hurt and old...</span>")
@@ -237,13 +237,13 @@
 	stage = 4
 	chance_maxm = 10
 
-/datum/disease2/effect/better_bones/activate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/better_bones/activate(mob/living/carbon/mob,multiplier)
 	if(istype(mob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = mob
 		for (var/obj/item/organ/external/E in H.organs)
 			E.min_broken_damage = max(5, E.min_broken_damage + 30)
 
-/datum/disease2/effect/better_bones/deactivate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/better_bones/deactivate(mob/living/carbon/mob,multiplier)
 	if(istype(mob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = mob
 		for (var/obj/item/organ/external/E in H.organs)
@@ -254,13 +254,13 @@
 	stage = 4
 	badness = 2
 
-/datum/disease2/effect/bones/activate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/bones/activate(mob/living/carbon/mob,multiplier)
 	if(istype(mob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = mob
 		for (var/obj/item/organ/external/E in H.organs)
 			E.min_broken_damage = max(5, E.min_broken_damage - 30)
 
-/datum/disease2/effect/bones/deactivate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/bones/deactivate(mob/living/carbon/mob,multiplier)
 	if(istype(mob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = mob
 		for (var/obj/item/organ/external/E in H.organs)
@@ -271,7 +271,7 @@
 	stage = 4
 	badness = 3
 
-/datum/disease2/effect/combustion/activate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/combustion/activate(mob/living/carbon/mob,multiplier)
 	if(istype(mob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = mob
 		var/obj/item/organ/external/O = pick(H.organs)
@@ -297,7 +297,7 @@
 	var/datum/reagent/R = SSchemistry.reagent_lookup[data]
 	name = "[initial(name)] ([initial(R.name)])"
 
-/datum/disease2/effect/improved_chem_synthesis/activate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/improved_chem_synthesis/activate(mob/living/carbon/mob,multiplier)
 	if (mob.reagents.get_reagent_amount(data) < 5)
 		mob.reagents.add_reagent(data, 4)
 
@@ -319,7 +319,7 @@
 	var/datum/reagent/R = data
 	name = "[initial(name)] ([initial(R.name)])"
 
-/datum/disease2/effect/organ_repair/activate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/organ_repair/activate(mob/living/carbon/mob,multiplier)
 	if (mob.reagents.get_reagent_amount(data) < 8)
 		to_chat(mob, "<span class='notice'>You feel like your insides relaxed and you feel healthier after.</span>")
 		mob.reagents.add_reagent(data, 3)
@@ -329,7 +329,7 @@
 	stage = 3
 	maxm = 3
 
-/datum/disease2/effect/toxins/activate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/toxins/activate(mob/living/carbon/mob,multiplier)
 	mob.adjustToxLoss((2*multiplier))
 
 /datum/disease2/effect/shakey
@@ -337,14 +337,14 @@
 	stage = 3
 	maxm = 3
 
-/datum/disease2/effect/shakey/activate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/shakey/activate(mob/living/carbon/mob,multiplier)
 	shake_camera(mob,5*multiplier)
 
 /datum/disease2/effect/telepathic
 	name = "Pineal Gland Decalcification"
 	stage = 3
 
-/datum/disease2/effect/telepathic/activate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/telepathic/activate(mob/living/carbon/mob,multiplier)
 		mob.dna.SetSEState(DNABLOCK_REMOTETALK,1)
 		domutcheck(mob, null, MUTCHK_FORCED)
 
@@ -352,7 +352,7 @@
 	name = "Neurodegeneration"
 	stage = 3
 
-/datum/disease2/effect/mind/activate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/mind/activate(mob/living/carbon/mob,multiplier)
 	if(istype(mob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = mob
 		var/obj/item/organ/internal/brain/B = H.internal_organs_by_name["brain"]
@@ -365,14 +365,14 @@
 	name = "Hallucination"
 	stage = 3
 
-/datum/disease2/effect/hallucinations/activate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/hallucinations/activate(mob/living/carbon/mob,multiplier)
 	mob.hallucination += 25
 
 /datum/disease2/effect/minordeaf
 	name = "Hearing Loss"
 	stage = 3
 
-/datum/disease2/effect/minordeaf/activate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/minordeaf/activate(mob/living/carbon/mob,multiplier)
 	mob.ear_deaf = 5
 
 /datum/disease2/effect/giggle
@@ -380,7 +380,7 @@
 	stage = 3
 	chance_maxm = 20
 
-/datum/disease2/effect/giggle/activate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/giggle/activate(mob/living/carbon/mob,multiplier)
 	if(prob(66))
 		mob.say("*giggle")
 	else
@@ -390,7 +390,7 @@
 	name = "Topographical Cretinism"
 	stage = 3
 
-/datum/disease2/effect/confusion/activate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/confusion/activate(mob/living/carbon/mob,multiplier)
 	to_chat(mob, "<span class='notice'>You have trouble telling right and left apart all of a sudden.</span>")
 	mob.Confuse(10)
 
@@ -398,7 +398,7 @@
 	name = "DNA Degradation"
 	stage = 3
 
-/datum/disease2/effect/mutation/activate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/mutation/activate(mob/living/carbon/mob,multiplier)
 	mob.apply_damage(2, CLONE)
 
 /datum/disease2/effect/groan
@@ -406,7 +406,7 @@
 	stage = 3
 	chance_maxm = 20
 
-/datum/disease2/effect/groan/activate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/groan/activate(mob/living/carbon/mob,multiplier)
 	if(prob(66))
 		mob.say("*groan")
 	else if(istype(mob, /mob/living/carbon/human))
@@ -429,7 +429,7 @@
 	var/datum/reagent/R = SSchemistry.reagent_lookup[data]
 	name = "[initial(name)] ([initial(R.name)])"
 
-/datum/disease2/effect/chem_synthesis/activate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/chem_synthesis/activate(mob/living/carbon/mob,multiplier)
 	if (mob.reagents.get_reagent_amount(data) < 5)
 		mob.reagents.add_reagent(data, 2)
 
@@ -437,7 +437,7 @@
 	name = "Genetic Chameleonism"
 	stage = 3
 
-/datum/disease2/effect/nonrejection/activate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/nonrejection/activate(mob/living/carbon/mob,multiplier)
 	if(istype(mob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = mob
 		var/obj/item/organ/internal/O = H.organs_by_name
@@ -453,7 +453,7 @@
 	stage = 2
 	chance_maxm = 10
 
-/datum/disease2/effect/scream/activate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/scream/activate(mob/living/carbon/mob,multiplier)
 	mob.say("*scream")
 
 // Will provide energy to the user
@@ -462,7 +462,7 @@
 	stage = 2
 	chance_maxm = 30
 
-/datum/disease2/effect/energy_boost/activate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/energy_boost/activate(mob/living/carbon/mob,multiplier)
 	if(prob(30))
 		if(mob.drowsyness < 10)
 			mob.drowsyness = 0
@@ -473,7 +473,7 @@
 	name = "Excessive Sleepiness"
 	stage = 2
 
-/datum/disease2/effect/drowsness/activate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/drowsness/activate(mob/living/carbon/mob,multiplier)
 	mob.drowsyness += 10
 
 /datum/disease2/effect/sleepy
@@ -481,14 +481,14 @@
 	stage = 2
 	chance_maxm = 15
 
-/datum/disease2/effect/sleepy/activate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/sleepy/activate(mob/living/carbon/mob,multiplier)
 	mob.say("*collapse")
 
 /datum/disease2/effect/blind
 	name = "Vision Loss"
 	stage = 2
 
-/datum/disease2/effect/blind/activate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/blind/activate(mob/living/carbon/mob,multiplier)
 	mob.SetBlinded(4)
 
 /datum/disease2/effect/cough
@@ -496,7 +496,7 @@
 	stage = 2
 	chance_maxm = 20
 
-/datum/disease2/effect/cough/activate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/cough/activate(mob/living/carbon/mob,multiplier)
 	if(prob(60))
 		mob.say("*cough")
 		for(var/mob/living/carbon/M in oview(2,mob))
@@ -508,7 +508,7 @@
 	name = "Digestive Inefficiency"
 	stage = 2
 
-/datum/disease2/effect/hungry/activate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/hungry/activate(mob/living/carbon/mob,multiplier)
 	mob.nutrition = max(0, mob.nutrition - 200)
 
 /datum/disease2/effect/fridge
@@ -516,14 +516,14 @@
 	stage = 2
 	chance_maxm = 25
 
-/datum/disease2/effect/fridge/activate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/fridge/activate(mob/living/carbon/mob,multiplier)
 	mob.say("*shiver")
 
 /datum/disease2/effect/hair
 	name = "Hair Loss"
 	stage = 2
 
-/datum/disease2/effect/hair/activate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/hair/activate(mob/living/carbon/mob,multiplier)
 	if(istype(mob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = mob
 		if(H.species.get_species_id() == SPECIES_ID_HUMAN && !(H.h_style == "Bald") && !(H.h_style == "Balding Hair"))
@@ -536,7 +536,7 @@
 	name = "Overactive Adrenal Gland"
 	stage = 2
 
-/datum/disease2/effect/stimulant/activate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/stimulant/activate(mob/living/carbon/mob,multiplier)
 	to_chat(mob, "<span class='notice'>You feel a rush of energy inside you!</span>")
 	if (mob.reagents.get_reagent_amount("hyperzine") < 10)
 		mob.reagents.add_reagent("hyperzine", 4)
@@ -548,7 +548,7 @@
 	stage = 2
 	chance_maxm = 25
 
-/datum/disease2/effect/ringing/activate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/ringing/activate(mob/living/carbon/mob,multiplier)
 	if(istype(mob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = mob
 		to_chat(H, "<span class='notice'>You hear an awful ringing in your ears.</span>")
@@ -559,7 +559,7 @@
 	stage = 2
 	chance_maxm = 15
 
-/datum/disease2/effect/vomiting/activate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/vomiting/activate(mob/living/carbon/mob,multiplier)
 	to_chat(mob, "<span class='notice'>Your stomach churns!</span>")
 	if (prob(50))
 		mob.say("*vomit")
@@ -578,7 +578,7 @@
 	var/datum/reagent/R = data
 	name = "[initial(name)] ([initial(R.name)])"
 
-/datum/disease2/effect/protein_synthesis/activate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/protein_synthesis/activate(mob/living/carbon/mob,multiplier)
 	if (mob.reagents.get_reagent_amount(data) < 30)
 		mob.reagents.add_reagent(data, 5)
 
@@ -596,7 +596,7 @@
 	var/datum/reagent/R = data
 	name = "[initial(name)] ([initial(R.name)])"
 
-/datum/disease2/effect/nutriment_synthesis/activate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/nutriment_synthesis/activate(mob/living/carbon/mob,multiplier)
 	if (mob.reagents.get_reagent_amount(data) < 30)
 		mob.reagents.add_reagent(data, 5)
 
@@ -616,7 +616,7 @@
 	var/datum/reagent/R = data
 	name = "[initial(name)] ([initial(R.name)])"
 
-/datum/disease2/effect/sugar_synthesis/activate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/sugar_synthesis/activate(mob/living/carbon/mob,multiplier)
 	if (mob.reagents.get_reagent_amount(data) < 30)
 		mob.reagents.add_reagent(data, 5)
 
@@ -625,7 +625,7 @@
 	stage = 1
 	chance_maxm = 20
 
-/datum/disease2/effect/sneeze/activate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/sneeze/activate(mob/living/carbon/mob,multiplier)
 	if(prob(20))
 		to_chat(mob,"<span class='warning'>You go to sneeze, but it gets caught in your sinuses!</span>")
 	else if(prob(80))
@@ -643,7 +643,7 @@
 	name = "Mucus Buildup"
 	stage = 1
 
-/datum/disease2/effect/gunck/activate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/gunck/activate(mob/living/carbon/mob,multiplier)
 	to_chat(mob, "<span class='warning'>Mucous runs down the back of your throat.</span>")
 
 /datum/disease2/effect/drool
@@ -651,7 +651,7 @@
 	stage = 1
 	chance_maxm = 15
 
-/datum/disease2/effect/drool/activate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/drool/activate(mob/living/carbon/mob,multiplier)
 	mob.say("*drool")
 	if (prob(30))
 		var/obj/effect/debris/cleanable/mucus/M = new(get_turf(mob))
@@ -662,12 +662,12 @@
 	stage = 1
 	chance_maxm = 15
 
-/datum/disease2/effect/twitch/activate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/twitch/activate(mob/living/carbon/mob,multiplier)
 		mob.say("*twitch")
 
 /datum/disease2/effect/headache
 	name = "Headache"
 	stage = 1
 
-/datum/disease2/effect/headache/activate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/headache/activate(mob/living/carbon/mob,multiplier)
 		to_chat(mob, "<span class='warning'>Your head hurts a bit.</span>")

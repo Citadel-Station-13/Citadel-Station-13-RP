@@ -2,7 +2,7 @@
 //**Cham Jumpsuit**
 //*****************
 
-/obj/item/proc/disguise(var/newtype, var/mob/user)
+/obj/item/proc/disguise(newtype, mob/user)
 	//this is necessary, unfortunately, as initial() does not play well with list vars
 	var/obj/item/copy = new newtype(null) //so that it is GCed once we exit
 	desc = copy.desc
@@ -30,12 +30,12 @@
 	return copy
 
 // Subtypes shall override this, not /disguise()
-/obj/item/proc/OnDisguise(var/obj/item/copy, var/mob/user)
+/obj/item/proc/OnDisguise(obj/item/copy, mob/user)
 	return
 	//copying sprite_sheets_obj should be unnecessary as chameleon items are not refittable.
 
 
-/proc/generate_chameleon_choices(var/basetype, var/blacklist = list())
+/proc/generate_chameleon_choices(basetype, blacklist = list())
 	. = list()
 	var/i = 0 // in case there's a collision with both name/icon_state
 	var/list/icon_state_cache = list()
@@ -405,7 +405,7 @@
 		M.update_inv_r_hand()
 		M.update_inv_l_hand()
 
-/obj/item/gun/energy/chameleon/disguise(var/newtype)
+/obj/item/gun/energy/chameleon/disguise(newtype)
 	var/obj/item/gun/copy = ..()
 
 	modifystate = copy.icon_state

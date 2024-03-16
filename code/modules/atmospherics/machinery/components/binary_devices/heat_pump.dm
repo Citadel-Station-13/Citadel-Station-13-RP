@@ -92,7 +92,7 @@
 		add_underlay(T, node1, turn(dir, 180))
 		add_underlay(T, node2, dir)
 
-/obj/machinery/atmospherics/component/binary/heat_pump/hide(var/i)
+/obj/machinery/atmospherics/component/binary/heat_pump/hide(i)
 	update_underlays()
 
 /obj/machinery/atmospherics/component/binary/heat_pump/attackby(obj/item/W, mob/user)

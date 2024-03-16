@@ -289,7 +289,7 @@
 	user << browse(dat, "window=library")
 	onclose(user, "library")
 
-/obj/machinery/librarycomp/emag_act(var/remaining_charges, var/mob/user)
+/obj/machinery/librarycomp/emag_act(remaining_charges, mob/user)
 	if (src.density && !src.emagged)
 		src.emagged = 1
 		return 1

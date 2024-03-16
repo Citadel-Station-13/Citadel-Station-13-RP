@@ -1,6 +1,6 @@
 // At minimum every mob has a hear_say proc.
 
-/mob/proc/hear_say(var/message, var/verb = "says", var/datum/language/language = null, var/alt_name = "",var/italics = 0, var/mob/speaker = null, var/sound/speech_sound, var/sound_vol)
+/mob/proc/hear_say(message, verb = "says", datum/language/language = null, alt_name = "",italics = 0, mob/speaker = null, sound/speech_sound, sound_vol)
 	if(!client && !teleop)
 		return
 
@@ -81,7 +81,7 @@
 			src.playsound_local(source, speech_sound, sound_vol, 1)
 
 // Done here instead of on_hear_say() since that is NOT called if the mob is clientless (which includes most AI mobs).
-/mob/living/hear_say(var/message, var/verb = "says", var/datum/language/language = null, var/alt_name = "",var/italics = 0, var/mob/speaker = null, var/sound/speech_sound, var/sound_vol)
+/mob/living/hear_say(message, verb = "says", datum/language/language = null, alt_name = "",italics = 0, mob/speaker = null, sound/speech_sound, sound_vol)
 	..()
 	if(has_AI()) // Won't happen if no ai_holder exists or there's a player inside w/o autopilot active.
 		ai_holder.on_hear_say(speaker, message)
@@ -97,19 +97,19 @@
 	var/translated = translation_context.attempt_translation(L, msg = str)
 	return isnull(translated)? L.scramble(str, languages) : translated
 
-/mob/proc/on_hear_say(var/message)
+/mob/proc/on_hear_say(message)
 	to_chat(src, message)
 	if(teleop)
 		to_chat(teleop, create_text_tag("body", "BODY:", teleop) + "[message]")
 
-/mob/living/silicon/on_hear_say(var/message)
+/mob/living/silicon/on_hear_say(message)
 	var/time = say_timestamp()
 	to_chat(src, "[time] [message]")
 	if(teleop)
 		to_chat(teleop, create_text_tag("body", "BODY:", teleop) + "[time] [message]")
 
 // Checks if the mob's own name is included inside message.  Handles both first and last names.
-/mob/proc/check_mentioned(var/message)
+/mob/proc/check_mentioned(message)
 	var/not_included = list("a", "the", "of", "in", "for", "through", "throughout", "therefore", "here", "there", "then", "now", "I", "you", "they", "he", "she", "by")
 	var/list/valid_names = splittext_char(real_name, " ") // Should output list("John", "Doe") as an example.
 	valid_names -= not_included
@@ -149,7 +149,7 @@
 	input = replacetext_char(input, underline, "$1")
 	return input
 
-/mob/proc/hear_radio(var/message, var/verb="says", var/datum/language/language=null, var/part_a, var/part_b, var/part_c, var/mob/speaker = null, var/hard_to_hear = 0, var/vname ="")
+/mob/proc/hear_radio(message, verb="says", datum/language/language=null, part_a, part_b, part_c, mob/speaker = null, hard_to_hear = 0, vname ="")
 
 	if(!client)
 		return
@@ -298,7 +298,7 @@
 		final_message = "[time][final_message]"
 	to_chat(src, final_message)
 
-/mob/proc/hear_signlang(var/message, var/verb = "gestures", var/datum/language/language, var/mob/speaker = null)
+/mob/proc/hear_signlang(message, verb = "gestures", datum/language/language, mob/speaker = null)
 	if(!client)
 		return
 
@@ -317,7 +317,7 @@
 
 	show_message(message, type = 1) // Type 1 is visual message
 
-/mob/proc/hear_sleep(var/message)
+/mob/proc/hear_sleep(message)
 	var/heard = ""
 	if(prob(15))
 		var/list/punctuation = list(",", "!", ".", ";", "?")

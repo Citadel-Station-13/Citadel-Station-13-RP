@@ -49,7 +49,7 @@
 	. = ..()
 	src.emag = new /obj/item/gun/energy/laser/mounted(src)
 
-/obj/item/robot_module/robot/security/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
+/obj/item/robot_module/robot/security/respawn_consumable(mob/living/silicon/robot/R, amount)
 	var/obj/item/flash/F = locate() in src.modules
 	if(F.broken)
 		F.broken = 0
@@ -128,7 +128,7 @@
 	B.water = synths_by_kind[MATSYN_WATER]
 	src.modules += B
 
-/obj/item/robot_module/robot/quad/sec/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
+/obj/item/robot_module/robot/quad/sec/respawn_consumable(mob/living/silicon/robot/R, amount)
 	var/obj/item/flash/F = locate() in src.modules
 	if(F.broken)
 		F.broken = 0

@@ -29,7 +29,7 @@
 	component_parts += new /obj/item/stock_parts/micro_laser(src)
 	RefreshParts()
 
-/obj/machinery/slime/extractor/attackby(var/obj/item/W, var/mob/user)
+/obj/machinery/slime/extractor/attackby(obj/item/W, mob/user)
 
 	//Let's try to deconstruct first.
 	if(W.is_screwdriver() && !inuse)
@@ -59,7 +59,7 @@
 		return
 	move_into_extractor(user,target)
 
-/obj/machinery/slime/extractor/proc/move_into_extractor(var/mob/user,var/mob/living/victim)
+/obj/machinery/slime/extractor/proc/move_into_extractor(mob/user,mob/living/victim)
 
 	if(src.occupant)
 		to_chat(user, "<span class='danger'>The core extractor is full, empty it first!</span>")

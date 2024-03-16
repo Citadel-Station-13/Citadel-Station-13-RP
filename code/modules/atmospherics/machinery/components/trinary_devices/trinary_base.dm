@@ -38,7 +38,7 @@
 		add_underlay(T, node2, node_connects[2])
 		add_underlay(T, node3, node_connects[3])
 
-/obj/machinery/atmospherics/component/trinary/hide(var/i)
+/obj/machinery/atmospherics/component/trinary/hide(i)
 	update_underlays()
 
 /obj/machinery/atmospherics/component/trinary/power_change()
@@ -47,7 +47,7 @@
 	if(old_stat != machine_stat)
 		update_icon()
 
-/obj/machinery/atmospherics/component/trinary/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/machinery/atmospherics/component/trinary/attackby(obj/item/W as obj, mob/user as mob)
 	if (!W.is_wrench())
 		return ..()
 	if(unsafe_pressure())
@@ -190,7 +190,7 @@
 
 // Trinary init_dir() logic in a separate proc so it can be referenced from "trinary-ish" places like T-Valves
 // TODO - Someday refactor those places under atmospherics/trinary
-/proc/get_initialize_directions_trinary(var/dir, var/mirrored = FALSE, var/tee = FALSE)
+/proc/get_initialize_directions_trinary(dir, mirrored = FALSE, tee = FALSE)
 	if(tee)
 		switch(dir)
 			if(NORTH)
@@ -223,7 +223,7 @@
 				return WEST|NORTH|EAST
 
 // Trinary get_node_connect_dirs() logic in a separate proc so it can be referenced from "trinary-ish" places like T-Valves
-/proc/get_node_connect_dirs_trinary(var/dir, var/mirrored = FALSE, var/tee = FALSE)
+/proc/get_node_connect_dirs_trinary(dir, mirrored = FALSE, tee = FALSE)
 	var/node1_connect
 	var/node2_connect
 	var/node3_connect

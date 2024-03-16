@@ -255,7 +255,7 @@
 		do_animate(DOOR_ANIMATION_DENY)
 	return
 
-/obj/machinery/door/emag_act(var/remaining_charges)
+/obj/machinery/door/emag_act(remaining_charges)
 	if(density && operable())
 		do_animate(DOOR_ANIMATION_SPARK)
 		sleep(6)
@@ -325,7 +325,7 @@
 				flick("door_deny", src)
 				playsound(src.loc, 'sound/machines/buzz-two.ogg', 50, 0)
 
-/obj/machinery/door/proc/open(var/forced = 0)
+/obj/machinery/door/proc/open(forced = 0)
 	if(!can_open(forced))
 		return
 	operating = 1
@@ -351,7 +351,7 @@
 /obj/machinery/door/proc/next_close_time()
 	return world.time + (normalspeed ? 150 : 5)
 
-/obj/machinery/door/proc/close(var/forced = 0)
+/obj/machinery/door/proc/close(forced = 0)
 	if(!can_close(forced))
 		return
 	operating = 1
@@ -381,7 +381,7 @@
 	if(visible && !glass)
 		set_opacity(1)
 
-/obj/machinery/door/proc/toggle_open(var/forced)
+/obj/machinery/door/proc/toggle_open(forced)
 	if(density)
 		open(forced)
 	else
@@ -400,7 +400,7 @@
 		update_heat_protection(turf)
 		turf.queue_zone_update()
 
-/obj/machinery/door/proc/update_heat_protection(var/turf/simulated/source)
+/obj/machinery/door/proc/update_heat_protection(turf/simulated/source)
 	if(istype(source))
 		if(src.density && (src.opacity || (heat_resistance > initial(heat_resistance))))
 			source.thermal_conductivity = DOOR_HEAT_TRANSFER_COEFFICIENT

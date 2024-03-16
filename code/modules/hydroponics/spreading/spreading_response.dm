@@ -1,4 +1,4 @@
-/obj/effect/plant/HasProximity(var/atom/movable/AM)
+/obj/effect/plant/HasProximity(atom/movable/AM)
 
 	if(!is_mature() || seed.get_trait(TRAIT_SPREAD) != 2)
 		return
@@ -37,7 +37,7 @@
 /obj/effect/plant/attack_hand(mob/user, list/params)
 	manual_unbuckle(user)
 
-/obj/effect/plant/attack_generic(var/mob/user)
+/obj/effect/plant/attack_generic(mob/user)
 	manual_unbuckle(user)
 
 /obj/effect/plant/Crossed(atom/movable/O)
@@ -47,7 +47,7 @@
 	if(isliving(O))
 		trodden_on(O)
 
-/obj/effect/plant/proc/trodden_on(var/mob/living/victim)
+/obj/effect/plant/proc/trodden_on(mob/living/victim)
 	if(has_buckled_mobs())
 		return
 	else if(!is_mature())
@@ -102,7 +102,7 @@
 			damage_integrity(rand(1, 5))
 			return
 
-/obj/effect/plant/proc/entangle(var/mob/living/victim)
+/obj/effect/plant/proc/entangle(mob/living/victim)
 
 	if(has_buckled_mobs())
 		return

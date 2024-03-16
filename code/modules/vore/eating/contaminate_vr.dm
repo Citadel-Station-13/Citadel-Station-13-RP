@@ -22,7 +22,7 @@ var/list/gurgled_overlays = list(
 	var/cleandesc
 	var/gurgled_color
 
-/obj/item/proc/gurgle_contaminate(var/atom/movable/item_storage = null, var/contamination_flavor = "Generic", var/contamination_color = "green")
+/obj/item/proc/gurgle_contaminate(atom/movable/item_storage = null, contamination_flavor = "Generic", contamination_color = "green")
 	if(!can_gurgle())
 		return FALSE
 
@@ -90,26 +90,26 @@ var/list/gurgled_overlays = list(
 	else
 		..()
 
-/obj/item/card/id/gurgle_contaminate(var/atom/movable/item_storage = null)
+/obj/item/card/id/gurgle_contaminate(atom/movable/item_storage = null)
 	digest_act(item_storage) //Digesting these anyway
 	return TRUE
 
-/obj/item/pda/gurgle_contaminate(var/atom/movable/item_storage = null)
+/obj/item/pda/gurgle_contaminate(atom/movable/item_storage = null)
 	return FALSE
 
-/obj/item/reagent_containers/food/gurgle_contaminate(var/atom/movable/item_storage = null)
+/obj/item/reagent_containers/food/gurgle_contaminate(atom/movable/item_storage = null)
 	return FALSE
 
-/obj/item/holder/gurgle_contaminate(var/atom/movable/item_storage = null)
+/obj/item/holder/gurgle_contaminate(atom/movable/item_storage = null)
 	if(isbelly(loc))
 		digest_act(item_storage)
 		return TRUE
 	return FALSE
 
-/obj/item/organ/gurgle_contaminate(var/atom/movable/item_storage = null)
+/obj/item/organ/gurgle_contaminate(atom/movable/item_storage = null)
 	return FALSE
 
-/obj/item/cell/gurgle_contaminate(var/atom/movable/item_storage = null)
+/obj/item/cell/gurgle_contaminate(atom/movable/item_storage = null)
 	if(!gurgled)
 	//Don't make them wet, just drain
 		var/obj/item/cell/C = src

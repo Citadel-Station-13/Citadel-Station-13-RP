@@ -33,7 +33,7 @@
 	return list()
 
 // Quickly adds the boilerplate code to add an image and padding for the image.
-/proc/desc_panel_image(var/icon_state, mob/user)
+/proc/desc_panel_image(icon_state, mob/user)
 	return "[icon2html(description_icons[icon_state], user)][EXAMINE_PANEL_PADDING]"
 
 /mob/living/get_description_fluff()
@@ -84,7 +84,7 @@
 
 	update_examine_panel(A)
 
-/mob/proc/update_examine_panel(var/atom/A)
+/mob/proc/update_examine_panel(atom/A)
 	if(client)
 		var/is_antag = ((mind && mind.special_role) || isobserver(src)) //ghosts don't have minds
 		client.update_description_holders(A, is_antag)

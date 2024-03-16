@@ -18,7 +18,7 @@
 	to_chat(user, "<span class='notice'>You [active ? "" : "de"]activate \the [src].</span>")
 	update()
 
-/obj/item/implanter/verb/remove_implant(var/mob/user)
+/obj/item/implanter/verb/remove_implant(mob/user)
 	set category = "Object"
 	set name = "Remove Implant"
 	set src in usr

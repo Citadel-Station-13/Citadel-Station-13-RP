@@ -272,10 +272,10 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	else
 		mymob.instantiate_hud(src)
 
-/mob/proc/instantiate_hud(var/datum/hud/HUD)
+/mob/proc/instantiate_hud(datum/hud/HUD)
 	return
 
-/datum/hud/proc/apply_minihud(var/datum/mini_hud/MH)
+/datum/hud/proc/apply_minihud(datum/mini_hud/MH)
 	if(MH in minihuds)
 		return
 	minihuds += MH
@@ -285,7 +285,7 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	if(mymob.client)
 		mymob.client.screen += miniobjs
 
-/datum/hud/proc/remove_minihud(var/datum/mini_hud/MH)
+/datum/hud/proc/remove_minihud(datum/mini_hud/MH)
 	if(!(MH in minihuds))
 		return
 	minihuds -= MH
@@ -296,7 +296,7 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 		mymob.client.screen += miniobjs
 
 //Triggered when F12 is pressed (Unless someone changed something in the DMF)
-/mob/verb/button_pressed_F12(var/full = 0 as null)
+/mob/verb/button_pressed_F12(full = 0 as null)
 	set name = "F12"
 	set hidden = 1
 

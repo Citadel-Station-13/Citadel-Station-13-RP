@@ -219,7 +219,7 @@ var/list/sacrificed = list()
 
 
 //! FIFTH RUNE
-/obj/effect/rune/proc/emp(var/U,var/range_red) //range_red - var which determines by which number to reduce the default emp range, U is the source loc, needed because of talisman emps which are held in hand at the moment of using and that apparently messes things up -- Urist
+/obj/effect/rune/proc/emp(atom/U, range_red) //range_red - var which determines by which number to reduce the default emp range, U is the source loc, needed because of talisman emps which are held in hand at the moment of using and that apparently messes things up -- Urist
 	log_and_message_admins("activated an EMP rune.")
 	if(istype(src,/obj/effect/rune))
 		usr.say("Ta'gh fara[pick("'","`")]qha fel d'amar det!")
@@ -1047,7 +1047,7 @@ var/list/sacrificed = list()
 		qdel(src)
 
 //! TWENTY-FOURTH RUNE
-/obj/effect/rune/proc/runestun(var/mob/living/T as mob)
+/obj/effect/rune/proc/runestun(mob/living/T as mob)
 	if(istype(src,/obj/effect/rune)) // When invoked as rune, flash and stun everyone around.
 		usr.say("Fuu ma[pick("'","`")]jin!")
 		for(var/mob/living/L in viewers(src))

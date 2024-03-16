@@ -44,7 +44,7 @@
 	ion_trail.set_up(src)
 	ion_trail.stop()
 
-/obj/mecha/combat/fighter/add_cell(var/obj/item/cell/C=null)
+/obj/mecha/combat/fighter/add_cell(obj/item/cell/C=null)
 	if(C)
 		C.forceMove(src)
 		cell = C
@@ -53,7 +53,7 @@
 	cell.charge = 30000
 	cell.maxcharge = 30000
 
-/obj/mecha/combat/fighter/moved_inside(var/mob/living/carbon/human/H)
+/obj/mecha/combat/fighter/moved_inside(mob/living/carbon/human/H)
 	. = ..()
 	consider_gravity()
 
@@ -171,7 +171,7 @@
 		return TRUE
 
 
-/obj/mecha/combat/fighter/proc/consider_gravity(var/moved = FALSE)
+/obj/mecha/combat/fighter/proc/consider_gravity(moved = FALSE)
 	var/gravity = has_gravity()
 	if (gravity && !landing_gear_raised)
 		playsound(src, 'sound/effects/roll.ogg', 50, 1)
@@ -225,7 +225,7 @@
 		return 0
 
 
-/obj/mecha/combat/fighter/play_entered_noise(var/mob/who)
+/obj/mecha/combat/fighter/play_entered_noise(mob/who)
 	if(hasInternalDamage())
 		who << sound('sound/mecha/fighter_entered_bad.ogg',volume=50)
 	else

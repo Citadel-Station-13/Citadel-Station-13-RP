@@ -32,7 +32,7 @@
 		return_nozzle()
 		to_chat(user, "<span class='notice'>\The [nozzle] retracts to its fueltank.</span>")
 
-/obj/item/weldpack/proc/get_nozzle(var/mob/living/user)
+/obj/item/weldpack/proc/get_nozzle(mob/living/user)
 	if(!ishuman(user))
 		return 0
 
@@ -48,7 +48,7 @@
 
 	return 1
 
-/obj/item/weldpack/proc/return_nozzle(var/mob/living/user)
+/obj/item/weldpack/proc/return_nozzle(mob/living/user)
 	nozzle.forceMove(src)
 	nozzle_attached = 1
 

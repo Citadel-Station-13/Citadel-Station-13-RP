@@ -200,11 +200,11 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 		drip(blood_max)
 
 //Makes a blood drop, leaking amt units of blood from the mob
-/mob/living/carbon/human/proc/drip(var/amt)
+/mob/living/carbon/human/proc/drip(amt)
 	if(remove_blood(amt))
 		blood_splatter(src,src)
 
-/mob/living/carbon/human/proc/remove_blood(var/amt)
+/mob/living/carbon/human/proc/remove_blood(amt)
 	if(!should_have_organ(O_HEART)) //TODO: Make drips come from the reagents instead.
 		return 0
 
@@ -221,7 +221,7 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 ****************************************************/
 
 //Gets blood from mob to the container, preserving all data in it.
-/mob/living/carbon/proc/take_blood(obj/item/reagent_containers/container, var/amount)
+/mob/living/carbon/proc/take_blood(obj/item/reagent_containers/container, amount)
 
 	var/datum/reagent/B = get_blood(container.reagents)
 	if(!B)
@@ -252,7 +252,7 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 	return B
 
 //For humans, blood does not appear from blue, it comes from vessels.
-/mob/living/carbon/human/take_blood(obj/item/reagent_containers/container, var/amount)
+/mob/living/carbon/human/take_blood(obj/item/reagent_containers/container, amount)
 
 	if(!should_have_organ(O_HEART))
 		return null
@@ -264,7 +264,7 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 	vessel.remove_reagent("blood",amount) // Removes blood if human
 
 //Transfers blood from container ot vessels
-/mob/living/carbon/proc/inject_blood(var/datum/reagent/blood/injected, var/amount)
+/mob/living/carbon/proc/inject_blood(datum/reagent/blood/injected, amount)
 	if (!injected || !istype(injected))
 		return
 	var/list/sniffles = virus_copylist(injected.data["virus2"])
@@ -280,7 +280,7 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 	reagents.update_total()
 
 //Transfers blood from reagents to vessel, respecting blood types compatability.
-/mob/living/carbon/human/inject_blood(var/datum/reagent/blood/injected, var/amount)
+/mob/living/carbon/human/inject_blood(datum/reagent/blood/injected, amount)
 
 	if(!should_have_organ(O_HEART))
 		reagents.add_reagent("blood", amount, injected.data)

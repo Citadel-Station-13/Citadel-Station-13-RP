@@ -144,7 +144,7 @@
 			SelectedServer.set_triangulating(!SelectedServer.triangulating)
 			return TRUE
 
-/obj/machinery/computer/telecomms/server/emag_act(var/remaining_charges, var/mob/user)
+/obj/machinery/computer/telecomms/server/emag_act(remaining_charges, mob/user)
 	if(!emagged)
 		playsound(src, /datum/soundbyte/grouped/sparks, 75, 1)
 		emagged = 1
@@ -152,5 +152,5 @@
 		src.updateUsrDialog()
 		return 1
 
-/obj/machinery/computer/telecomms/server/proc/set_temp(var/text, var/color = "average")
+/obj/machinery/computer/telecomms/server/proc/set_temp(text, color = "average")
 	temp = list("color" = color, "text" = text)

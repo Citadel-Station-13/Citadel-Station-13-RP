@@ -140,7 +140,7 @@
 		var/datum/poster/design = new path
 		set_poster(design)
 
-/obj/structure/sign/poster/proc/set_poster(var/datum/poster/design)
+/obj/structure/sign/poster/proc/set_poster(datum/poster/design)
 	name = "[initial(name)] - [design.name]"
 	desc = "[initial(desc)] [design.desc]"
 	icon_state = design.icon_state // poster[serial_number]

@@ -86,7 +86,7 @@
 	else
 		icon_state = base_icon_state
 
-/obj/machinery/r_n_d/protolathe/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/machinery/r_n_d/protolathe/attackby(obj/item/O as obj, mob/user as mob)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	if(busy)
@@ -153,15 +153,15 @@
 	updateUsrDialog()
 	return
 
-/obj/machinery/r_n_d/protolathe/proc/addToQueue(var/datum/design/D)
+/obj/machinery/r_n_d/protolathe/proc/addToQueue(datum/design/D)
 	queue += D
 	return
 
-/obj/machinery/r_n_d/protolathe/proc/removeFromQueue(var/index)
+/obj/machinery/r_n_d/protolathe/proc/removeFromQueue(index)
 	queue.Cut(index, index + 1)
 	return
 
-/obj/machinery/r_n_d/protolathe/proc/canBuild(var/datum/design/D)
+/obj/machinery/r_n_d/protolathe/proc/canBuild(datum/design/D)
 	for(var/M in D.materials_base)
 		if(stored_materials[M] < (D.materials_base[M] * mat_efficiency))
 			return 0
@@ -170,7 +170,7 @@
 			return 0
 	return 1
 
-/obj/machinery/r_n_d/protolathe/proc/getLackingMaterials(var/datum/design/D)
+/obj/machinery/r_n_d/protolathe/proc/getLackingMaterials(datum/design/D)
 	var/ret = ""
 	for(var/M in D.materials_base)
 		if(stored_materials[M] < D.materials_base[M])
@@ -184,7 +184,7 @@
 			ret += C
 	return ret
 
-/obj/machinery/r_n_d/protolathe/proc/build(var/datum/design/D)
+/obj/machinery/r_n_d/protolathe/proc/build(datum/design/D)
 	var/power = active_power_usage
 	for(var/M in D.materials_base)
 		power += round(D.materials_base[M] / 5)
@@ -202,7 +202,7 @@
 				for(var/i in new_item.materials_base)
 					new_item.materials_base[i] = new_item.materials_base[i] * mat_efficiency
 
-/obj/machinery/r_n_d/protolathe/proc/eject_materials(var/material, var/amount) // 0 amount = 0 means ejecting a full stack; -1 means eject everything
+/obj/machinery/r_n_d/protolathe/proc/eject_materials(material, amount) // 0 amount = 0 means ejecting a full stack; -1 means eject everything
 	var/recursive = amount == -1 ? 1 : 0
 	material = lowertext(material)
 	var/obj/item/stack/material/mattype

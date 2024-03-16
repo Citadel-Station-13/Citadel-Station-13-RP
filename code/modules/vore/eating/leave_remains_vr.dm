@@ -1,4 +1,4 @@
-/obj/belly/proc/handle_remains_leaving(var/mob/living/M)
+/obj/belly/proc/handle_remains_leaving(mob/living/M)
 
 	if(istype(M,/mob/living/carbon/human))	//Are we even humanoid?
 		var/mob/living/carbon/human/H = M

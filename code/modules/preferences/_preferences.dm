@@ -292,7 +292,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	. = ..()
 	QDEL_LIST_ASSOC_VAL(char_render_holders)
 
-/datum/preferences/proc/ZeroSkills(var/forced = 0)
+/datum/preferences/proc/ZeroSkills(forced = 0)
 	for(var/V in SKILLS) for(var/datum/skill/S in SKILLS[V])
 		if(!skills.Find(S.ID) || forced)
 			skills[S.ID] = SKILL_NONE

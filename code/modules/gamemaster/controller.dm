@@ -5,7 +5,7 @@
 
 	SSgamemaster.interact(usr)
 
-/datum/controller/subsystem/gamemaster/proc/interact(var/client/user)
+/datum/controller/subsystem/gamemaster/proc/interact(client/user)
 	if(!user)
 		return
 

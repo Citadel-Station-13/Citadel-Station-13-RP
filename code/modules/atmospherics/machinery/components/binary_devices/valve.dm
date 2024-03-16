@@ -37,7 +37,7 @@
 		add_underlay(T, node1, get_dir(src, node1))
 		add_underlay(T, node2, get_dir(src, node2))
 
-/obj/machinery/atmospherics/valve/hide(var/i)
+/obj/machinery/atmospherics/valve/hide(i)
 	update_underlays()
 
 /obj/machinery/atmospherics/valve/init_dir()
@@ -287,7 +287,7 @@
 			else
 				open()
 
-/obj/machinery/atmospherics/valve/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/machinery/atmospherics/valve/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/airlock_electronics) && istype(src, /obj/machinery/atmospherics/valve/digital))
 		if(!src.allowed(user)) // ID check, otherwise you could just wipe the access with any board.
 			to_chat(user, "<span class='warning'>Access denied.</span>")

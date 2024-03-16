@@ -377,7 +377,7 @@
 	result_amount = 2
 	var/carpet_type = /obj/item/stack/tile/carpet
 
-/datum/chemical_reaction/carpetify/on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/carpetify/on_reaction(datum/reagents/holder, created_volume)
 	new carpet_type(get_turf(holder.my_atom), created_volume)
 	return
 
@@ -692,7 +692,7 @@
 	required_reagents = list("plasticide" = 1, "water" = 3, "blood" = 2)
 	result_amount = 5
 
-/datum/chemical_reaction/blood_paint/send_data(var/datum/reagents/T)
+/datum/chemical_reaction/blood_paint/send_data(datum/reagents/T)
 	var/t = T.get_data("blood")
 	if(t && t["blood_colour"])
 		return t["blood_colour"]
@@ -874,7 +874,7 @@
 	required_reagents = list("tallow" = 1, "water" = 1, "ash" = 1)
 	result_amount = 1
 
-/datum/chemical_reaction/soap/on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/soap/on_reaction(datum/reagents/holder, created_volume)
 	new /obj/item/soap/primitive(get_turf(holder.my_atom), created_volume)
 	return
 
@@ -885,7 +885,7 @@
 	required_reagents = list("tallow" = 1, "ash" = 1, "sacid" = 1)
 	result_amount = 1
 
-/datum/chemical_reaction/charcoal/on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/charcoal/on_reaction(datum/reagents/holder, created_volume)
 	new /obj/item/pen/charcoal(get_turf(holder.my_atom), created_volume)
 	return
 
@@ -903,7 +903,7 @@
 	required_reagents = list("alchemybase" = 10, "bicaridine" = 10)
 	result_amount = 10
 
-/datum/chemical_reaction/poultice_brute/on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/poultice_brute/on_reaction(datum/reagents/holder, created_volume)
 	new /obj/item/stack/medical/poultice_brute(get_turf(holder.my_atom), created_volume)
 	return
 
@@ -914,7 +914,7 @@
 	required_reagents = list("alchemybase" = 10, "kelotane" = 10)
 	result_amount = 10
 
-/datum/chemical_reaction/poultice_burn/on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/poultice_burn/on_reaction(datum/reagents/holder, created_volume)
 	new /obj/item/stack/medical/poultice_burn(get_turf(holder.my_atom), created_volume)
 	return
 
@@ -932,7 +932,7 @@
 	required_reagents = list("phlogiston" = 1, "ash" = 1, "alchemybase" = 1)
 	result_amount = 1
 
-/datum/chemical_reaction/condensedphlogiston/on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/condensedphlogiston/on_reaction(datum/reagents/holder, created_volume)
 	new /obj/item/condensedphlogiston(get_turf(holder.my_atom), created_volume)
 	return
 
@@ -943,7 +943,7 @@
 	required_reagents = list("nicotine" = 1, "ash" = 1, "alchemybase" = 1)
 	result_amount = 1
 
-/datum/chemical_reaction/bitterash/on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/bitterash/on_reaction(datum/reagents/holder, created_volume)
 	new /obj/item/bitterash(get_turf(holder.my_atom), created_volume)
 	return
 

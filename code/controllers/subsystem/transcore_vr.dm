@@ -111,7 +111,7 @@ SUBSYSTEM_DEF(transcore)
 	msg += "} "
 	return ..() + " [jointext(msg, null)]"
 
-/datum/controller/subsystem/transcore/proc/m_backup(var/datum/mind/mind, var/obj/item/nif/nif, var/one_time = FALSE)
+/datum/controller/subsystem/transcore/proc/m_backup(datum/mind/mind, obj/item/nif/nif, one_time = FALSE)
 	ASSERT(mind)
 	if(!mind.name || core_dumped)
 		return 0
@@ -145,7 +145,7 @@ SUBSYSTEM_DEF(transcore)
 
 	return MR
 
-/datum/controller/subsystem/transcore/proc/m_backupE(var/datum/mind/mind, var/obj/item/nif/nif, var/one_time = FALSE)
+/datum/controller/subsystem/transcore/proc/m_backupE(datum/mind/mind, obj/item/nif/nif, one_time = FALSE)
 	ASSERT(mind)
 	if(!mind.name || core_dumped)
 		return 0
@@ -157,7 +157,7 @@ SUBSYSTEM_DEF(transcore)
 	return MRE
 
 // Send a past-due notification to the medical radio channel.
-/datum/controller/subsystem/transcore/proc/notify(var/name, var/repeated = FALSE)
+/datum/controller/subsystem/transcore/proc/notify(name, repeated = FALSE)
 	ASSERT(name)
 	if(repeated)
 		GLOB.global_announcer.autosay("This is a repeat notification that [name] is past-due for a mind backup.", "TransCore Oversight", "Medical")

@@ -38,7 +38,7 @@
 	else
 		icon_state = "sled209[on]"
 
-/mob/living/bot/secbot/ed209/slime/RangedAttack(var/atom/A)
+/mob/living/bot/secbot/ed209/slime/RangedAttack(atom/A)
 	if(last_shot + shot_delay > world.time)
 		to_chat(src, "You are not ready to fire yet!")
 		return
@@ -66,7 +66,7 @@
 	item_state = "buildpipe"
 	created_name = "SL-ED-209 Security Robot"
 
-/obj/item/secbot_assembly/ed209_assembly/slime/attackby(var/obj/item/W as obj, var/mob/user as mob) // Here in the event it's added into a PoI or some such. Standard construction relies on the standard ED up until taser.
+/obj/item/secbot_assembly/ed209_assembly/slime/attackby(obj/item/W as obj, mob/user as mob) // Here in the event it's added into a PoI or some such. Standard construction relies on the standard ED up until taser.
 	if(istype(W, /obj/item/pen))
 		var/t = sanitizeSafe(input(user, "Enter new robot name", name, created_name), MAX_NAME_LEN)
 		if(!t)

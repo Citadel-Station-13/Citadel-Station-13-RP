@@ -84,5 +84,5 @@
 	icon_colour = "#777788"
 	explosion_resistance = 40
 
-/datum/material/plasteel/hull/place_sheet(var/turf/target) //Deconstructed into normal plasteel sheets.
+/datum/material/plasteel/hull/place_sheet(turf/target) //Deconstructed into normal plasteel sheets.
 	new /obj/item/stack/material/plasteel(target)

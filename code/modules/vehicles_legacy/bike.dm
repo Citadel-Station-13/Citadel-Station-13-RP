@@ -55,7 +55,7 @@
 			return
 	..()
 
-/obj/vehicle_old/bike/CtrlClick(var/mob/user)
+/obj/vehicle_old/bike/CtrlClick(mob/user)
 	if(Adjacent(user) && anchored)
 		toggle()
 	else
@@ -78,13 +78,13 @@
 		turn_off()
 		src.visible_message("\The [src] putters before turning off.", "You hear something putter slowly.")
 
-/obj/vehicle_old/bike/AltClick(var/mob/user)
+/obj/vehicle_old/bike/AltClick(mob/user)
 	if(Adjacent(user))
 		kickstand(user)
 	else
 		return ..()
 
-/obj/vehicle_old/bike/verb/kickstand(var/mob/user as mob)
+/obj/vehicle_old/bike/verb/kickstand(mob/user as mob)
 	set name = "Toggle Kickstand"
 	set category = "Vehicle"
 	set src in view(0)
@@ -107,14 +107,14 @@
 	kickstand = !kickstand
 	anchored = (kickstand || on)
 
-/obj/vehicle_old/bike/load(var/atom/movable/C, var/mob/user as mob)
+/obj/vehicle_old/bike/load(atom/movable/C, mob/user as mob)
 	var/mob/living/M = C
 	if(!istype(C)) return 0
 	if(M.buckled || M.restrained() || !Adjacent(M) || !M.Adjacent(src))
 		return 0
 	return ..(M, user)
 
-/obj/vehicle_old/bike/MouseDroppedOnLegacy(var/atom/movable/C, var/mob/user as mob)
+/obj/vehicle_old/bike/MouseDroppedOnLegacy(atom/movable/C, mob/user as mob)
 	if(!load(C, user))
 		to_chat(user, "<span class='warning'> You were unable to load \the [C] onto \the [src].</span>")
 		return CLICKCHAIN_DO_NOT_PROPAGATE
@@ -134,7 +134,7 @@
 		return 1
 	return 0
 
-/obj/vehicle_old/bike/Move(var/turf/destination)
+/obj/vehicle_old/bike/Move(turf/destination)
 	if(kickstand) return 0
 
 	if(on && (!cell || cell.charge < charge_use))
@@ -174,7 +174,7 @@
 
 	..()
 
-/obj/vehicle_old/bike/bullet_act(var/obj/projectile/Proj)
+/obj/vehicle_old/bike/bullet_act(obj/projectile/Proj)
 	if(has_buckled_mobs() && prob(protection_percent))
 		var/mob/living/L = pick(buckled_mobs)
 		L.bullet_act(Proj)

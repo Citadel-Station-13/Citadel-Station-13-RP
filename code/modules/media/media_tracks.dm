@@ -13,7 +13,7 @@
 	var/jukebox		// Does it even show up in the jukebox?
 	var/genre		// What is the genre of the song?
 
-/datum/media_track/New(var/url, var/title, var/duration, var/artist = "", var/genre = "", var/secret = 0, var/emag = 0, var/lobby = 0, var/jukebox = 0)
+/datum/media_track/New(url, title, duration, artist = "", genre = "", secret = 0, emag = 0, lobby = 0, jukebox = 0)
 	src.url = url
 	src.title = title
 	src.artist = artist

@@ -24,7 +24,7 @@
 	else
 		adjust_fear(-fear_decay_rate)
 
-/datum/modifier/trait/phobia/proc/adjust_fear(var/amount)
+/datum/modifier/trait/phobia/proc/adjust_fear(amount)
 	var/last_fear = current_fear
 	current_fear = clamp( current_fear + amount, 0,  max_fear)
 
@@ -573,7 +573,7 @@
 	return list()
 
 
-/datum/modifier/trait/phobia/xenophobia/proc/make_message(var/mob/living/L)
+/datum/modifier/trait/phobia/xenophobia/proc/make_message(mob/living/L)
 	return "Someone forgot to override this output message."
 
 
@@ -596,7 +596,7 @@
 			xenos += H
 	return xenos
 
-/datum/modifier/trait/phobia/xenophobia/generic/make_message(var/mob/living/carbon/human/H)
+/datum/modifier/trait/phobia/xenophobia/generic/make_message(mob/living/carbon/human/H)
 	// Do special responses first if possible.
 //	if(H.stat == DEAD)
 //		return pick( list("Unsurprising to see a weak and inferior [H.species.name] fail to survive.", "If that [H.species.name] were a [holder.species.name], this wouldn't've have happened.") )
@@ -633,7 +633,7 @@
 			humans += H
 	return humans
 
-/datum/modifier/trait/phobia/xenophobia/human/make_message(var/mob/living/carbon/human/H)
+/datum/modifier/trait/phobia/xenophobia/human/make_message(mob/living/carbon/human/H)
 	// Do special responses first if possible.
 
 	// Generic responses if none of the above apply.
@@ -662,7 +662,7 @@
 			skrell += H
 	return skrell
 
-/datum/modifier/trait/phobia/xenophobia/skrell/make_message(var/mob/living/carbon/human/H)
+/datum/modifier/trait/phobia/xenophobia/skrell/make_message(mob/living/carbon/human/H)
 	// Do special responses first if possible.
 
 	// Generic responses if none of the above apply.

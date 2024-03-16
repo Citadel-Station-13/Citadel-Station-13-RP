@@ -2,7 +2,7 @@
 	layer = DEBRIS_LAYER
 	var/list/random_icon_states
 
-/obj/effect/debris/cleanable/clean_blood(var/ignore = 0)
+/obj/effect/debris/cleanable/clean_blood(ignore = 0)
 	if(!ignore)
 		qdel(src)
 		return

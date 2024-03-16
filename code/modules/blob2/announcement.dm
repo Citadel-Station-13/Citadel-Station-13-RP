@@ -1,4 +1,4 @@
-/proc/level_seven_blob_announcement(var/obj/structure/blob/core/B)
+/proc/level_seven_blob_announcement(obj/structure/blob/core/B)
 	if(!B || !B.overmind)
 		return
 	var/datum/blob_type/blob = B.overmind.blob_type // Shortcut so we don't need to delve into three variables every time.

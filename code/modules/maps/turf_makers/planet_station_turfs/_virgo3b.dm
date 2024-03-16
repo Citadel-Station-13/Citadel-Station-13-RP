@@ -47,7 +47,7 @@ VIRGO3B_TURF_CREATE_UN(/turf/simulated/floor/tiled/kafel_full/yellow)
 /turf/unsimulated/mineral/virgo3b
 	blocks_air = TRUE
 
-/turf/simulated/mineral/virgo3b/rich/make_ore(var/rare_ore)
+/turf/simulated/mineral/virgo3b/rich/make_ore(rare_ore)
 	if(mineral || ignore_mapgen)
 		return
 	var/mineral_name

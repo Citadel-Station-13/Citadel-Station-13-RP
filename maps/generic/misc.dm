@@ -65,13 +65,13 @@
 	shock_area = locate(shock_area)
 
 // Walking on maglev tracks will shock you! Horray!
-/turf/simulated/floor/maglev/Entered(var/atom/movable/AM, var/atom/old_loc)
+/turf/simulated/floor/maglev/Entered(atom/movable/AM, atom/old_loc)
 	if(isliving(AM) && prob(50))
 		track_zap(AM)
 /turf/simulated/floor/maglev/attack_hand(mob/user, list/params)
 	if(prob(75))
 		track_zap(user)
-/turf/simulated/floor/maglev/proc/track_zap(var/mob/living/user)
+/turf/simulated/floor/maglev/proc/track_zap(mob/living/user)
 	if (!istype(user)) return
 	if (electrocute_mob(user, shock_area, src))
 		var/datum/effect_system/spark_spread/s = new

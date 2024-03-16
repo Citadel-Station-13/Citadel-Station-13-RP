@@ -277,7 +277,7 @@
 				"You [anchored ? "secure" : "unsecure"] the bolts holding [src] to the floor.", \
 				"You hear a ratchet.")
 
-/obj/machinery/power/fission/proc/equalize(datum/gas_mixture/env, var/efficiency)
+/obj/machinery/power/fission/proc/equalize(datum/gas_mixture/env, efficiency)
 	var/datum/gas_mixture/sharer = env.remove(efficiency * env.total_moles)
 	var/our_heatcap = heat_capacity()
 	var/share_heatcap = sharer.heat_capacity()
@@ -323,7 +323,7 @@
 					removed.temperature = clamp( removed.temperature, 0,  REACTOR_TEMPERATURE_CUTOFF)
 				env.merge(removed)
 
-/obj/machinery/power/fission/adjust_thermal_energy(var/thermal_energy)
+/obj/machinery/power/fission/adjust_thermal_energy(thermal_energy)
 	if(mass < 1)
 		return 0
 
@@ -344,7 +344,7 @@
 	integrity = integrity < 0 ? 0 : integrity
 	return integrity
 
-/obj/machinery/power/fission/proc/eject_rod(var/obj/item/fuelrod/rod)
+/obj/machinery/power/fission/proc/eject_rod(obj/item/fuelrod/rod)
 	if(!istype(rod) || rod.loc != src)
 		return
 	rods -= rod
@@ -382,7 +382,7 @@
 		anchored = 0
 		pipes = new()
 
-/obj/machinery/power/fission/proc/announce_warning(var/meltedrods, var/meltingrods, var/core_overheat)
+/obj/machinery/power/fission/proc/announce_warning(meltedrods, meltingrods, core_overheat)
 	if(src.powered() && !exploded && (meltedrods > 0 || meltingrods > 0 || temperature >= max_temp))
 		var/location = sanitize((get_area(src)).name)
 		if((world.timeofday - lastwarning) >= warning_delay * 10)
@@ -457,7 +457,7 @@ I'm commenting this out until I have time to make this less stupid.
 			if(L.z == 13) // underdark z but hardcoded
 				now_you_done_it(L)
 
-/obj/machinery/power/fission/proc/now_you_done_it(var/turf/L)
+/obj/machinery/power/fission/proc/now_you_done_it(turf/L)
 	sleep(3 SECONDS)
 	if (!istype(L))
 		return

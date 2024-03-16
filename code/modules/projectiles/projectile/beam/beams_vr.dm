@@ -26,11 +26,11 @@
 	tracer_type = /obj/effect/projectile/tracer/xray
 	impact_type = /obj/effect/projectile/impact/xray
 
-/obj/projectile/beam/energy_net/on_hit(var/atom/netted)
+/obj/projectile/beam/energy_net/on_hit(atom/netted)
 	do_net(netted)
 	..()
 
-/obj/projectile/beam/energy_net/proc/do_net(var/mob/M)
+/obj/projectile/beam/energy_net/proc/do_net(mob/M)
 	var/obj/item/energy_net/net = new (get_turf(M))
 	net.throw_impact(M)
 
@@ -58,7 +58,7 @@
 	tracer_type = /obj/effect/projectile/tracer/medigun
 	impact_type = /obj/effect/projectile/impact/medigun
 
-/obj/projectile/beam/medigun/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/beam/medigun/on_hit(atom/target, blocked = 0)
 	if(istype(target, /mob/living/carbon/human))
 		var/mob/living/carbon/human/M = target
 		if(M.health < M.maxHealth)

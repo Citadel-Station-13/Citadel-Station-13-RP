@@ -9,7 +9,7 @@ GLOBAL_LIST_EMPTY(limb_icon_cache)
 				add_overlay(child.mob_icon)
 		add_overlay(organ.mob_icon)
 
-/obj/item/organ/external/proc/sync_colour_to_human(var/mob/living/carbon/human/human)
+/obj/item/organ/external/proc/sync_colour_to_human(mob/living/carbon/human/human)
 	s_tone = null
 	s_col = null
 	h_col = null
@@ -45,7 +45,7 @@ GLOBAL_LIST_EMPTY(limb_icon_cache)
 		s_col = list(dna.GetUIValue(DNA_UI_SKIN_R), dna.GetUIValue(DNA_UI_SKIN_G), dna.GetUIValue(DNA_UI_SKIN_B))
 	h_col = list(dna.GetUIValue(DNA_UI_HAIR_R),dna.GetUIValue(DNA_UI_HAIR_G),dna.GetUIValue(DNA_UI_HAIR_B))
 
-/obj/item/organ/external/head/sync_colour_to_human(var/mob/living/carbon/human/human)
+/obj/item/organ/external/head/sync_colour_to_human(mob/living/carbon/human/human)
 	..()
 	var/obj/item/organ/internal/eyes/eyes = owner.internal_organs_by_name[O_EYES]
 	if(eyes) eyes.update_colour()
@@ -143,7 +143,7 @@ GLOBAL_LIST_EMPTY(limb_icon_cache)
 
 	return res
 
-/obj/item/organ/external/proc/get_icon(var/skeletal)
+/obj/item/organ/external/proc/get_icon(skeletal)
 
 	if(owner && ishuman(owner))
 		var/mob/living/carbon/human/H = owner
@@ -218,7 +218,7 @@ GLOBAL_LIST_EMPTY(limb_icon_cache)
 	icon = mob_icon
 	return mob_icon
 
-/obj/item/organ/external/proc/apply_colouration(var/icon/applying)
+/obj/item/organ/external/proc/apply_colouration(icon/applying)
 
 	if(transparent)
 		applying.MapColors("#4D4D4D","#969696","#1C1C1C", "#000000")
@@ -275,7 +275,7 @@ GLOBAL_LIST_EMPTY(limb_icon_cache)
 var/list/flesh_hud_colours = list("#02BA08","#9ECF19","#DEDE10","#FFAA00","#FF0000","#AA0000","#660000")
 var/list/robot_hud_colours = list("#CFCFCF","#AFAFAF","#8F8F8F","#6F6F6F","#4F4F4F","#2F2F2F","#000000")
 
-/obj/item/organ/external/proc/get_damage_hud_image(var/min_dam_state)
+/obj/item/organ/external/proc/get_damage_hud_image(min_dam_state)
 
 	// Generate the greyscale base icon and cache it for later.
 	// icon_cache_key is set by any get_icon() calls that are made.

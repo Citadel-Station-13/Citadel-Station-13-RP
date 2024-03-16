@@ -1,4 +1,4 @@
-/mob/observer/dead/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
+/mob/observer/dead/say(message, datum/language/speaking = null, verb="says", alt_name="", whispering = 0)
 	message = sanitize(message)
 
 	if (!message)
@@ -16,7 +16,7 @@
 	. = src.say_dead(message)
 
 
-/mob/observer/dead/emote(var/act, var/type, var/message)
+/mob/observer/dead/emote(act, type, message)
 	//message = sanitize(message) - already sanitized in verb/me_verb()
 
 	if(!message)

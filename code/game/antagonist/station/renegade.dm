@@ -67,7 +67,7 @@ var/datum/antagonist/renegade/renegades
 	..()
 	renegades = src
 
-/datum/antagonist/renegade/create_objectives(var/datum/mind/player)
+/datum/antagonist/renegade/create_objectives(datum/mind/player)
 
 	if(!..())
 		return

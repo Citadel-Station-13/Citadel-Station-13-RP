@@ -50,7 +50,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 	var/protofilter //String to filter protolathe designs by
 	var/circuitfilter //String to filter circuit designs by
 
-/obj/machinery/computer/rdconsole/proc/CallMaterialName(var/ID)
+/obj/machinery/computer/rdconsole/proc/CallMaterialName(ID)
 	var/return_name = ID
 	switch(return_name)
 		if("metal")
@@ -69,7 +69,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 			return_name = "Diamond"
 	return return_name
 
-/obj/machinery/computer/rdconsole/proc/CallReagentName(var/ID)
+/obj/machinery/computer/rdconsole/proc/CallReagentName(ID)
 	var/datum/reagent/R = SSchemistry.reagent_lookup["[ID]"]
 	if(!R)
 		return ID
@@ -113,7 +113,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 	SyncRDevices()
 	. = ..()
 
-/obj/machinery/computer/rdconsole/attackby(var/obj/item/D as obj, var/mob/user as mob)
+/obj/machinery/computer/rdconsole/attackby(obj/item/D as obj, mob/user as mob)
 	//Loading a disk into it.
 	if(istype(D, /obj/item/disk))
 		if(t_disk || d_disk)
@@ -135,7 +135,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 		//The construction/deconstruction of the console code.
 		return ..()
 
-/obj/machinery/computer/rdconsole/emp_act(var/remaining_charges, var/mob/user)
+/obj/machinery/computer/rdconsole/emp_act(remaining_charges, mob/user)
 	if(!emagged)
 		playsound(src, /datum/soundbyte/grouped/sparks, 75, 1)
 		emagged = 1

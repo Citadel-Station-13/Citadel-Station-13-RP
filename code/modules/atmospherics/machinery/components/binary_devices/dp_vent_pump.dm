@@ -100,7 +100,7 @@
 			else
 				add_underlay(T, node2, dir)
 
-/obj/machinery/atmospherics/component/binary/dp_vent_pump/hide(var/i)
+/obj/machinery/atmospherics/component/binary/dp_vent_pump/hide(i)
 	update_icon()
 	update_underlays()
 

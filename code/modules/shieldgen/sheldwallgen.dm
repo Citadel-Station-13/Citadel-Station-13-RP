@@ -111,7 +111,7 @@
 			src.active = 0
 			for(var/dir in list(1,2,4,8)) src.cleanup(dir)
 
-/obj/machinery/shieldwallgen/proc/setup_field(var/NSEW = 0)
+/obj/machinery/shieldwallgen/proc/setup_field(NSEW = 0)
 	var/turf/T = src.loc
 	var/turf/T2 = src.loc
 	var/obj/machinery/shieldwallgen/G
@@ -187,7 +187,7 @@
 		src.add_fingerprint(user)
 		visible_message("<font color='red'>The [src.name] has been hit with \the [W.name] by [user.name]!</font>")
 
-/obj/machinery/shieldwallgen/proc/cleanup(var/NSEW)
+/obj/machinery/shieldwallgen/proc/cleanup(NSEW)
 	var/obj/machinery/shieldwall/F
 	var/obj/machinery/shieldwallgen/G
 	var/turf/T = src.loc
@@ -212,7 +212,7 @@
 	src.cleanup(8)
 	..()
 
-/obj/machinery/shieldwallgen/bullet_act(var/obj/projectile/Proj)
+/obj/machinery/shieldwallgen/bullet_act(obj/projectile/Proj)
 	storedpower -= 400 * Proj.get_structure_damage()
 	..()
 	return
@@ -277,7 +277,7 @@
 			gen_secondary.storedpower -= power_usage
 
 
-/obj/machinery/shieldwall/bullet_act(var/obj/projectile/Proj)
+/obj/machinery/shieldwall/bullet_act(obj/projectile/Proj)
 	if(needs_power)
 		var/obj/machinery/shieldwallgen/G
 		if(prob(50))

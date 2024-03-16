@@ -105,7 +105,7 @@
 // Proc: say()
 // Parameters: 4 (generic say() arguments)
 // Description: Adds a speech bubble to the communicator device, then calls ..() to do the real work.
-/mob/living/voice/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering=0)
+/mob/living/voice/say(message, datum/language/speaking = null, verb="says", alt_name="", whispering=0)
 	//Speech bubbles.
 	if(comm)
 		var/speech_bubble_test = say_test(message)
@@ -126,7 +126,7 @@
 /mob/living/voice/speech_bubble_appearance()
 	return "comm"
 
-/mob/living/voice/say_understands(var/other,var/datum/language/speaking = null)
+/mob/living/voice/say_understands(other,datum/language/speaking = null)
 	//These only pertain to common. Languages are handled by mob/say_understands()
 	if (!speaking)
 		if (istype(other, /mob/living/carbon))
@@ -137,6 +137,6 @@
 			return 1
 	return ..()
 
-/mob/living/voice/custom_emote(var/m_type=1,var/message = null,var/range=world.view)
+/mob/living/voice/custom_emote(m_type=1,message = null,range=world.view)
 	if(!comm) return
 	..(m_type,message,comm.video_range)

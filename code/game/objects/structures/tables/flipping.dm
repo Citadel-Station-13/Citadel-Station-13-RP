@@ -126,7 +126,7 @@
 	else
 		unflip()
 
-/obj/structure/table/proc/flip(var/direction)
+/obj/structure/table/proc/flip(direction)
 	var/list/obj/structure/table/tables = tableflip_closure(direction)
 	if(isnull(tables))
 		return FALSE

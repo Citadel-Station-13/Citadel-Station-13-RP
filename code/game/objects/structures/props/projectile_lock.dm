@@ -39,7 +39,7 @@
 
 	interaction_message = "<span class='notice'>The object remains inert to your touch.</span>"
 
-/obj/structure/prop/lock/projectile/bullet_act(var/obj/projectile/Proj)
+/obj/structure/prop/lock/projectile/bullet_act(obj/projectile/Proj)
 	if(!istype(Proj, projectile_key) || timing)
 		return
 

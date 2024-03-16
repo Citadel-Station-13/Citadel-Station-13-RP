@@ -223,7 +223,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/item/radio/intercom, 28)
 /obj/item/radio/intercom/locked
     var/locked_frequency
 
-/obj/item/radio/intercom/locked/set_frequency(var/frequency)
+/obj/item/radio/intercom/locked/set_frequency(frequency)
 	if(frequency == locked_frequency)
 		..(locked_frequency)
 

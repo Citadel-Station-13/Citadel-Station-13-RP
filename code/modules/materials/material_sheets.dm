@@ -77,12 +77,12 @@
 		desc = "A [material.sheet_singular_name] of [material.use_name]."
 		gender = NEUTER
 
-/obj/item/stack/material/use(var/used)
+/obj/item/stack/material/use(used)
 	. = ..()
 	update_strings()
 	return
 
-/obj/item/stack/material/transfer_to(obj/item/stack/S, var/tamount=null, var/type_verified)
+/obj/item/stack/material/transfer_to(obj/item/stack/S, tamount=null, type_verified)
 	var/obj/item/stack/material/M = S
 	if(!istype(M) || material.name != M.material.name)
 		return 0
@@ -294,7 +294,7 @@
 	set_weight_class(min(5, round(amount / 10) + 1))
 	throw_range = round(amount / 7) + 1
 
-/obj/item/stack/material/supermatter/use(var/used)
+/obj/item/stack/material/supermatter/use(used)
 	. = ..()
 	update_mass()
 	return

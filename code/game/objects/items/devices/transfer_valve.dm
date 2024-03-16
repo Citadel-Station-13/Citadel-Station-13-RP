@@ -119,7 +119,7 @@
 		update_appearance()
 		add_fingerprint(usr)
 
-/obj/item/transfer_valve/proc/process_activation(var/obj/item/D)
+/obj/item/transfer_valve/proc/process_activation(obj/item/D)
 	if(toggle)
 		toggle = FALSE
 		toggle_valve()

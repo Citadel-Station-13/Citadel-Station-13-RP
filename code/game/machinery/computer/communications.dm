@@ -287,13 +287,13 @@
 			src.state = STATE_DEFAULT
 	src.updateUsrDialog()
 
-/obj/machinery/computer/communications/emag_act(var/remaining_charges, var/mob/user)
+/obj/machinery/computer/communications/emag_act(remaining_charges, mob/user)
 	if(!emagged)
 		src.emagged = 1
 		to_chat(user, "You scramble the communication routing circuits!")
 		return 1
 
-/obj/machinery/computer/communications/attack_ai(var/mob/user as mob)
+/obj/machinery/computer/communications/attack_ai(mob/user as mob)
 	return src.attack_hand(user)
 
 /obj/machinery/computer/communications/attack_hand(mob/user, list/params)
@@ -417,7 +417,7 @@
 
 
 
-/obj/machinery/computer/communications/proc/interact_ai(var/mob/living/silicon/ai/user as mob)
+/obj/machinery/computer/communications/proc/interact_ai(mob/living/silicon/ai/user as mob)
 	var/dat = ""
 	switch(src.aistate)
 		if(STATE_DEFAULT)
@@ -466,11 +466,11 @@
 	dat += "<BR>\[ [(src.aistate != STATE_DEFAULT) ? "<A HREF='?src=\ref[src];operation=ai-main'>Main Menu</A> | " : ""]<A HREF='?src=\ref[user];mach_close=communications'>Close</A> \]"
 	return dat
 
-/proc/enable_prison_shuttle(var/mob/user)
+/proc/enable_prison_shuttle(mob/user)
 	for(var/obj/machinery/computer/prison_shuttle/PS in GLOB.machines)
 		PS.allowedtocall = !(PS.allowedtocall)
 
-/proc/call_shuttle_proc(var/mob/user)
+/proc/call_shuttle_proc(mob/user)
 	if ((!( SSticker ) || !SSemergencyshuttle.location()))
 		return
 
@@ -506,7 +506,7 @@
 
 	return
 
-/proc/init_shift_change(var/mob/user, var/force = 0)
+/proc/init_shift_change(mob/user, force = 0)
 	if ((!( SSticker ) || !SSemergencyshuttle.location()))
 		return
 
@@ -553,7 +553,7 @@
 
 	return
 
-/proc/cancel_call_proc(var/mob/user)
+/proc/cancel_call_proc(mob/user)
 	if (!( SSticker ) || !SSemergencyshuttle.can_recall())
 		return
 	if((SSticker.mode.name == "blob")||(SSticker.mode.name == "Meteor"))

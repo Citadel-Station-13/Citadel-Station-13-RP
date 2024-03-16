@@ -50,7 +50,7 @@
 		return
 	interact(user)
 
-/obj/item/ano_scanner/interact(var/mob/living/user)
+/obj/item/ano_scanner/interact(mob/living/user)
 	if(world.time - last_scan_time >= scan_delay)
 		last_scan_time = world.time
 
@@ -113,7 +113,7 @@
 	var/dissonance_spread = 1
 	var/material = "unknown"
 
-/obj/item/depth_scanner/proc/scan_atom(var/mob/user, var/atom/A)
+/obj/item/depth_scanner/proc/scan_atom(mob/user, atom/A)
 	user.visible_message("<span class='notice'>\The [user] scans \the [A], the air around them humming gently.</span>")
 
 	if(istype(A, /turf/simulated/mineral))

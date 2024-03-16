@@ -19,7 +19,7 @@ var/datum/antagonist/deathsquad/deathsquad
 
 	var/deployed = 0
 
-/datum/antagonist/deathsquad/New(var/no_reference)
+/datum/antagonist/deathsquad/New(no_reference)
 	..()
 	if(!no_reference)
 		deathsquad = src
@@ -28,7 +28,7 @@ var/datum/antagonist/deathsquad/deathsquad
 	if(..())
 		deployed = 1
 
-/datum/antagonist/deathsquad/equip(var/mob/living/carbon/human/player)
+/datum/antagonist/deathsquad/equip(mob/living/carbon/human/player)
 	if(!..())
 		return
 
@@ -58,7 +58,7 @@ var/datum/antagonist/deathsquad/deathsquad
 		id.icon_state = "centcom"
 	create_radio(DTH_FREQ, player)
 
-/datum/antagonist/deathsquad/update_antag_mob(var/datum/mind/player)
+/datum/antagonist/deathsquad/update_antag_mob(datum/mind/player)
 
 	..()
 

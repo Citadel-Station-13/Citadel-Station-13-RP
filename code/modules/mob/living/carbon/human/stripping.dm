@@ -29,7 +29,7 @@
 	return TRUE
 
 // Remove all splints.
-/mob/living/carbon/human/proc/remove_splints(var/mob/living/user)
+/mob/living/carbon/human/proc/remove_splints(mob/living/user)
 
 	var/can_reach_splints = 1
 	if(istype(wear_suit,/obj/item/clothing/suit/space))
@@ -65,7 +65,7 @@
 	return TRUE
 
 // Set internals on or off.
-/mob/living/carbon/human/proc/toggle_internals(var/mob/living/user)
+/mob/living/carbon/human/proc/toggle_internals(mob/living/user)
 	if(internal)
 		internal.add_fingerprint(user)
 		internal = null

@@ -58,7 +58,7 @@ GLOBAL_LIST_INIT(atm_sounds, list('sound/items/polaroid1.ogg', 'sound/items/pola
 		S.loc = src.loc
 		playsound(loc, pick(GLOB.atm_sounds), 50, 1)
 
-/obj/machinery/atm/emag_act(var/remaining_charges, var/mob/user)
+/obj/machinery/atm/emag_act(remaining_charges, mob/user)
 	if(!emagged)
 		return
 
@@ -120,7 +120,7 @@ GLOBAL_LIST_INIT(atm_sounds, list('sound/items/polaroid1.ogg', 'sound/items/pola
 	else
 		..()
 
-/obj/machinery/atm/proc/generate_ui_transaction_log(var/list/transaction_list)
+/obj/machinery/atm/proc/generate_ui_transaction_log(list/transaction_list)
 	var/list/passed_list = list()
 	for(var/datum/transaction/T in transaction_list)
 		var/transaction_num = 0
@@ -335,14 +335,14 @@ GLOBAL_LIST_INIT(atm_sounds, list('sound/items/polaroid1.ogg', 'sound/items/pola
 	held_card = null
 
 
-/obj/machinery/atm/proc/spawn_ewallet(var/sum, loc, mob/living/carbon/human/human_user as mob)
+/obj/machinery/atm/proc/spawn_ewallet(sum, loc, mob/living/carbon/human/human_user as mob)
 	var/obj/item/spacecash/ewallet/E = new /obj/item/spacecash/ewallet(loc)
 	if(ishuman(human_user) && !human_user.get_active_held_item())
 		human_user.put_in_hands(E)
 	E.worth = sum
 	E.owner_name = authenticated_account.owner_name
 
-/obj/machinery/atm/proc/attempt_authentication(var/mob/user, var/input_pin, var/input_acc)
+/obj/machinery/atm/proc/attempt_authentication(mob/user, input_pin, input_acc)
 	var/obj/item/card/id/login_card
 	if(held_card)
 		login_card = held_card

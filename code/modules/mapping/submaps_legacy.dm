@@ -1,6 +1,6 @@
 
 // Very similar to the /tg/ version.
-/proc/seed_submaps(var/list/z_levels, var/budget = 0, var/whitelist = /area/space, var/desired_map_template_type = null)
+/proc/seed_submaps(list/z_levels, budget = 0, whitelist = /area/space, desired_map_template_type = null)
 	set background = TRUE
 
 	if(!z_levels || !z_levels.len)

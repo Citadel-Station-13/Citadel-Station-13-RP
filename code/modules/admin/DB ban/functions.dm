@@ -253,7 +253,7 @@
 			to_chat(usr, "Cancelled")
 			return
 
-/datum/admins/proc/DB_ban_unban_by_id(var/id)
+/datum/admins/proc/DB_ban_unban_by_id(id)
 	if(!check_rights(R_BAN))
 		return
 
@@ -312,7 +312,7 @@
 	holder.DB_ban_panel()
 
 
-/datum/admins/proc/DB_ban_panel(var/playerckey = null, var/adminckey = null, var/playerip = null, var/playercid = null, var/dbbantype = null, var/match = null)
+/datum/admins/proc/DB_ban_panel(playerckey = null, adminckey = null, playerip = null, playercid = null, dbbantype = null, match = null)
 	if(!usr.client)
 		return
 

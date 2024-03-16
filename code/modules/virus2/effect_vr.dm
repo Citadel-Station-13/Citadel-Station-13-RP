@@ -15,7 +15,7 @@
 
 	var/list/directions = list(2,4,1,8,2,4,1,8,2,4,1,8,2,4,1,8,2,4,1,8)
 
-/datum/disease2/effect/spin/activate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/spin/activate(mob/living/carbon/mob,multiplier)
 	if(mob.is_buckled())
 		mob.visible_message("<span class='warning'>[mob.name] struggles violently against their restraints!</span>")
 	else
@@ -33,7 +33,7 @@
 	stage = 2
 	chance_maxm = 2
 
-/datum/disease2/effect/lang/activate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/lang/activate(mob/living/carbon/mob,multiplier)
 	mob.set_default_language(pick(mob.languages))
 
 ///////////////////////////////////////////////
@@ -44,7 +44,7 @@
 	stage = 3
 	chance_maxm = 1
 
-/datum/disease2/effect/size/activate(var/mob/living/carbon/mob,var/multiplier)
+/datum/disease2/effect/size/activate(mob/living/carbon/mob,multiplier)
 		var/newsize = rand (25, 200)
 		mob.resize(newsize/100)
 		mob.visible_message("<span class='warning'>[mob.name] suddenly changes size!</span>")
@@ -54,7 +54,7 @@
 	stage = 3
 	chance_maxm = 5
 
-/datum/disease2/effect/flip/activate(var/mob/living/carbon/mob,var/multiplier) //Remind me why mob is carbon...?
+/datum/disease2/effect/flip/activate(mob/living/carbon/mob,multiplier) //Remind me why mob is carbon...?
 	if(ishuman(mob))
 		var/mob/living/carbon/human/H = mob
 		H.emote("flip")

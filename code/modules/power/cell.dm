@@ -108,7 +108,7 @@
 	return (charge == maxcharge)
 
 // checks if the power cell is able to provide the specified amount of charge
-/obj/item/cell/proc/check_charge(var/amount)
+/obj/item/cell/proc/check_charge(amount)
 	return (charge >= amount)
 
 // Returns how much charge is missing from the cell, useful to make sure not overdraw from the grid when recharging.
@@ -116,7 +116,7 @@
 	return max(maxcharge - charge, 0)
 
 // use power from a cell, returns the amount actually used
-/obj/item/cell/proc/use(var/amount)
+/obj/item/cell/proc/use(amount)
 	if(rigged && amount > 0)
 		explode()
 		return 0
@@ -128,7 +128,7 @@
 
 // Checks if the specified amount can be provided. If it can, it removes the amount
 // from the cell and returns 1. Otherwise does nothing and returns 0.
-/obj/item/cell/proc/checked_use(var/amount)
+/obj/item/cell/proc/checked_use(amount)
 	if(!check_charge(amount))
 		return 0
 	use(amount)
@@ -149,7 +149,7 @@
 	return checked_use(amount / GLOB.cellefficiency)
 
 // recharge the cell
-/obj/item/cell/proc/give(var/amount)
+/obj/item/cell/proc/give(amount)
 	if(rigged && amount > 0)
 		explode()
 		return FALSE

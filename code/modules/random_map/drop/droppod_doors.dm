@@ -15,12 +15,12 @@
 	if(autoopen)
 		addtimer(CALLBACK(src, PROC_REF(deploy)), 10 SECONDS)
 
-/obj/structure/droppod_door/attack_ai(var/mob/user)
+/obj/structure/droppod_door/attack_ai(mob/user)
 	if(!user.Adjacent(src))
 		return
 	attack_hand(user)
 
-/obj/structure/droppod_door/attack_generic(var/mob/user)
+/obj/structure/droppod_door/attack_generic(mob/user)
 	attack_hand(user)
 
 /obj/structure/droppod_door/attack_hand(mob/user, list/params)

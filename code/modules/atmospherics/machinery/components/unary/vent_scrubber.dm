@@ -210,7 +210,7 @@
 
 	return 1
 
-/obj/machinery/atmospherics/component/unary/vent_scrubber/hide(var/i) //to make the little pipe section invisible, the icon changes.
+/obj/machinery/atmospherics/component/unary/vent_scrubber/hide(i) //to make the little pipe section invisible, the icon changes.
 	update_icon()
 	update_underlays()
 
@@ -220,7 +220,7 @@
 	if(old_stat != machine_stat)
 		update_icon()
 
-/obj/machinery/atmospherics/component/unary/vent_scrubber/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/machinery/atmospherics/component/unary/vent_scrubber/attackby(obj/item/W as obj, mob/user as mob)
 	if (!W.is_wrench())
 		return ..()
 	if (!(machine_stat & NOPOWER) && on)

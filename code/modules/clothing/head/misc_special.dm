@@ -253,13 +253,13 @@
 	var/flavor_activate = null // Ditto, for but activating.
 	var/brainloss_cost = 3 // Whenever it activates, inflict this much brainloss on the wearer, as its not good for the mind to wear things that manipulate it.
 
-/obj/item/clothing/head/psy_crown/proc/activate_ability(var/mob/living/wearer)
+/obj/item/clothing/head/psy_crown/proc/activate_ability(mob/living/wearer)
 	cooldown = world.time + cooldown_duration
 	to_chat(wearer, flavor_activate)
 	to_chat(wearer, "<span class='danger'>The inside of your head hurts...</span>")
 	wearer.adjustBrainLoss(brainloss_cost)
 
-/obj/item/clothing/head/psy_crown/equipped(var/mob/living/carbon/human/H)
+/obj/item/clothing/head/psy_crown/equipped(mob/living/carbon/human/H)
 	..()
 	if(istype(H) && H.head == src && H.is_sentient())
 		START_PROCESSING(SSobj, src)
@@ -299,7 +299,7 @@
 	flavor_activate = "<span class='danger'>An otherworldly feeling seems to enter your mind, and it ignites your mind in fury!</span>"
 	origin_tech = list(TECH_ARCANE = 4)
 
-/obj/item/clothing/head/psy_crown/wrath/activate_ability(var/mob/living/wearer)
+/obj/item/clothing/head/psy_crown/wrath/activate_ability(mob/living/wearer)
 	..()
 	wearer.add_modifier(/datum/modifier/berserk, 30 SECONDS)
 
@@ -313,7 +313,7 @@
 	flavor_drop = "<span class='notice'>You feel much more sated after letting go of the crown.</span>"
 	flavor_activate = "<span class='danger'>An otherworldly feeling seems to enter your mind, and it drives your mind into gluttony!</span>"
 
-/obj/item/clothing/head/psy_crown/gluttony/activate_ability(var/mob/living/wearer)
+/obj/item/clothing/head/psy_crown/gluttony/activate_ability(mob/living/wearer)
 	..()
 	wearer.add_modifier(/datum/modifier/gluttonyregeneration, 45 SECONDS)
 /obj/item/clothing/head/cone

@@ -7,7 +7,7 @@
 	key = "g"
 	language_flags = LANGUAGE_RESTRICTED | LANGUAGE_HIVEMIND
 
-/datum/language/ling/broadcast(var/mob/living/speaker,var/message,var/speaker_mask)
+/datum/language/ling/broadcast(mob/living/speaker,message,speaker_mask)
 
 	if(speaker.mind && speaker.mind.changeling)
 		..(speaker,message,speaker.mind.changeling.changelingID)

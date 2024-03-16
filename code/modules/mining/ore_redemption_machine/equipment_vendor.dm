@@ -230,7 +230,7 @@
 			new /obj/item/resonator(drop_location)
 	qdel(voucher)
 
-/obj/machinery/mineral/equipment_vendor/proc/new_prize(var/name, var/path, var/cost) // Generic proc for adding new entries. Good for abusing for FUN and PROFIT.
+/obj/machinery/mineral/equipment_vendor/proc/new_prize(name, path, cost) // Generic proc for adding new entries. Good for abusing for FUN and PROFIT.
 	if(!cost)
 		cost = 100
 	if(!path)

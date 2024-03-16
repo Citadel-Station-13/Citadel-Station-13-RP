@@ -160,7 +160,7 @@
 	else
 		set_maw(!open_maw)
 
-/mob/living/simple_mob/animal/space/space_worm/proc/set_maw(var/state = FALSE)
+/mob/living/simple_mob/animal/space/space_worm/proc/set_maw(state = FALSE)
 	open_maw = state
 	if(open_maw)
 		time_maw_opened = world.time
@@ -277,7 +277,7 @@
 
 	return
 
-/mob/living/simple_mob/animal/space/space_worm/proc/AttemptToEat(var/atom/target)
+/mob/living/simple_mob/animal/space/space_worm/proc/AttemptToEat(atom/target)
 	if(istype(target,/turf/simulated/wall))
 		var/turf/simulated/wall/W = target
 		if((!W.material_reinf && do_after(src, 5 SECONDS)) || do_after(src, 10 SECONDS)) // 10 seconds for an R-wall, 5 seconds for a normal one.
@@ -328,7 +328,7 @@
 
 	return 0
 
-/mob/living/simple_mob/animal/space/space_worm/proc/Attach(var/mob/living/simple_mob/animal/space/space_worm/attachement)
+/mob/living/simple_mob/animal/space/space_worm/proc/Attach(mob/living/simple_mob/animal/space/space_worm/attachement)
 	if(!attachement)
 		return
 
@@ -396,10 +396,10 @@
 			stomachContent.forceMove(get_turf(src))
 	return
 
-/mob/living/simple_mob/animal/space/space_worm/proc/stomach_special(var/atom/A)	// Futureproof. Anything that interacts with contents without relying on digestion probability. Return TRUE if it should skip digest.
+/mob/living/simple_mob/animal/space/space_worm/proc/stomach_special(atom/A)	// Futureproof. Anything that interacts with contents without relying on digestion probability. Return TRUE if it should skip digest.
 	return FALSE
 
-/mob/living/simple_mob/animal/space/space_worm/proc/stomach_special_digest(var/atom/A)	// Futureproof. Any special checks that interact with digested atoms. I.E., ore processing. Return TRUE if it should skip future digest checks.
+/mob/living/simple_mob/animal/space/space_worm/proc/stomach_special_digest(atom/A)	// Futureproof. Any special checks that interact with digested atoms. I.E., ore processing. Return TRUE if it should skip future digest checks.
 	return FALSE
 
 /mob/living/simple_mob/animal/space/space_worm/proc/update_body_faction()

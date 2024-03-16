@@ -65,7 +65,7 @@
 		/obj/item/mecha_parts/mecha_equipment/cloak
 		)
 
-/obj/mecha/combat/reticent/reticence/add_cell(var/obj/item/cell/C=null)
+/obj/mecha/combat/reticent/reticence/add_cell(obj/item/cell/C=null)
 	if(C)
 		C.forceMove(src)
 		cell = C

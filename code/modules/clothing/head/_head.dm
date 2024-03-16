@@ -36,7 +36,7 @@
 	else
 		return ..(user)
 
-/obj/item/clothing/head/proc/update_flashlight(var/mob/user = null)
+/obj/item/clothing/head/proc/update_flashlight(mob/user = null)
 	if(on && !light_applied)
 		set_light(brightness_on)
 		light_applied = 1
@@ -47,15 +47,15 @@
 	update_worn_icon()
 	user.update_action_buttons()
 
-/obj/item/clothing/head/attack_ai(var/mob/user)
+/obj/item/clothing/head/attack_ai(mob/user)
 	if(!mob_wear_hat(user))
 		return ..()
 
-/obj/item/clothing/head/attack_generic(var/mob/user)
+/obj/item/clothing/head/attack_generic(mob/user)
 	if(!mob_wear_hat(user))
 		return ..()
 
-/obj/item/clothing/head/proc/mob_wear_hat(var/mob/user)
+/obj/item/clothing/head/proc/mob_wear_hat(mob/user)
 	if(!Adjacent(user))
 		return 0
 	var/success

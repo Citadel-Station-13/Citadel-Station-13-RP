@@ -54,7 +54,7 @@
 			return TRUE
 	return !density
 
-/obj/structure/railing/proc/NeighborsCheck(var/UpdateNeighbors = 1)
+/obj/structure/railing/proc/NeighborsCheck(UpdateNeighbors = 1)
 	check = 0
 	//if (!anchored) return
 	var/Rturn = turn(src.dir, -90)

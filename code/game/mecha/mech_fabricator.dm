@@ -148,7 +148,7 @@
   * * D - Design datum to get information on.
   * * categories - Boolean, whether or not to parse snowflake categories into the part information list.
   */
-/obj/machinery/mecha_part_fabricator/proc/output_part_info(datum/design/D, var/categories = FALSE)
+/obj/machinery/mecha_part_fabricator/proc/output_part_info(datum/design/D, categories = FALSE)
 	var/cost = list()
 	for(var/c in D.materials_base)
 		cost[c] = get_resource_cost_w_coeff(D, D.materials_base[c])
@@ -465,7 +465,7 @@
   * * resource - Material datum reference to the resource to calculate the cost of.
   * * roundto - Rounding value for round() proc
   */
-/obj/machinery/mecha_part_fabricator/proc/get_resource_cost_w_coeff(datum/design/D, var/amt, roundto = 1)
+/obj/machinery/mecha_part_fabricator/proc/get_resource_cost_w_coeff(datum/design/D, amt, roundto = 1)
 	return round(amt * component_coeff, roundto)
 
 /**
@@ -645,7 +645,7 @@
 
 	return FALSE
 
-/obj/machinery/mecha_part_fabricator/attackby(var/obj/item/I, var/mob/user)
+/obj/machinery/mecha_part_fabricator/attackby(obj/item/I, mob/user)
 	if(being_built)
 		to_chat(user, SPAN_NOTICE("\The [src] is busy. Please wait for completion of previous operation."))
 		return TRUE
@@ -684,7 +684,7 @@
 
 	..()
 
-/obj/machinery/mecha_part_fabricator/emag_act(var/remaining_charges, var/mob/user)
+/obj/machinery/mecha_part_fabricator/emag_act(remaining_charges, mob/user)
 	switch(emagged)
 		if(0)
 			emagged = 0.5
@@ -703,7 +703,7 @@
 		if(1)
 			visible_message("[icon2html(src, world)] <b>[src]</b> beeps: \"No records in User DB\"")
 
-/obj/machinery/mecha_part_fabricator/proc/eject_materials(var/material, var/amount) // 0 amount = 0 means ejecting a full stack; -1 means eject everything
+/obj/machinery/mecha_part_fabricator/proc/eject_materials(material, amount) // 0 amount = 0 means ejecting a full stack; -1 means eject everything
 	var/recursive = amount == -1 ? 1 : 0
 	var/matstring = lowertext(material)
 	var/contains = stored_materials[matstring]

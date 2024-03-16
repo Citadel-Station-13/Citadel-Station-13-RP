@@ -164,7 +164,7 @@
 	. = ..()
 	eye = new(src)
 
-/obj/item/clothing/mask/ai/equipped(var/mob/user, var/slot)
+/obj/item/clothing/mask/ai/equipped(mob/user, slot)
 	..(user, slot)
 	if(slot == SLOT_ID_MASK)
 		eye.owner = user
@@ -224,7 +224,7 @@
 	update_worn_icon()	//so our mob-overlays update
 
 /*
-/obj/item/clothing/mask/bandana/equipped(var/mob/user, var/slot)
+/obj/item/clothing/mask/bandana/equipped(mob/user, slot)
 	switch(slot)
 		if(SLOT_ID_MASK) //Mask is the default for all the settings
 			inv_hide_flags = initial(inv_hide_flags)

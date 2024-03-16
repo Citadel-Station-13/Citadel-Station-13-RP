@@ -176,7 +176,7 @@
 	return pressure_adjustment_coefficient
 
 // Calculate how much of the enviroment pressure-difference affects the human.
-/mob/living/carbon/human/calculate_affecting_pressure(var/pressure)
+/mob/living/carbon/human/calculate_affecting_pressure(pressure)
 	var/pressure_difference
 	// First get the absolute pressure difference.
 	if(pressure < species.safe_pressure) // We are in an underpressure.
@@ -364,7 +364,7 @@
 
 /** breathing **/
 
-/mob/living/carbon/human/handle_chemical_smoke(var/datum/gas_mixture/environment)
+/mob/living/carbon/human/handle_chemical_smoke(datum/gas_mixture/environment)
 	if(wear_mask && (wear_mask.clothing_flags & BLOCK_GAS_SMOKE_EFFECT))
 		return
 	if(glasses && (glasses.clothing_flags & BLOCK_GAS_SMOKE_EFFECT))
@@ -988,7 +988,7 @@
 	. = 1 - .
 	. = min(., 1.0)
 
-/mob/living/carbon/human/proc/get_thermal_protection(var/flags)
+/mob/living/carbon/human/proc/get_thermal_protection(flags)
 	.=0
 	if(flags)
 		if(flags & HEAD)
@@ -1246,7 +1246,7 @@
 
 	return 1
 
-/mob/living/carbon/human/set_stat(var/new_stat)
+/mob/living/carbon/human/set_stat(new_stat)
 	. = ..()
 	if(. && stat)
 		update_skin(1)
@@ -1615,7 +1615,7 @@
 				reset_perspective()
 	return 1
 
-/mob/living/carbon/human/proc/process_glasses(var/obj/item/clothing/glasses/G)
+/mob/living/carbon/human/proc/process_glasses(obj/item/clothing/glasses/G)
 	. = FALSE
 	if(G && G.active)
 		if(G.vision_flags)
@@ -1623,7 +1623,7 @@
 			RemoveSightSelf(G.vision_flags_remove)
 			. = TRUE
 
-/mob/living/carbon/human/proc/process_nifsoft_vision(var/datum/nifsoft/NS)
+/mob/living/carbon/human/proc/process_nifsoft_vision(datum/nifsoft/NS)
 	. = FALSE
 	if(NS && NS.active)
 		if(NS.vision_flags_mob)

@@ -290,7 +290,7 @@ var/list/global/tank_gauge_cache = list()
 			toggle_valve(usr)
 			. = TRUE
 
-/obj/item/tank/proc/toggle_valve(var/mob/user)
+/obj/item/tank/proc/toggle_valve(mob/user)
 	if(istype(loc,/mob/living/carbon))
 		var/mob/living/carbon/location = loc
 		if(location.internal == src)

@@ -11,7 +11,7 @@ var/global/floorIsLava = 0
 		html = msg,
 		confidential = TRUE)
 
-/proc/msg_admin_attack(var/text) //Toggleable Attack Messages
+/proc/msg_admin_attack(text) //Toggleable Attack Messages
 	var/rendered = "<span class='log_message><span class='prefix'>ATTACK:</span> <span class='message'>[text]</span></span>"
 	for(var/client/C in GLOB.admins)
 		if((R_ADMIN|R_MOD) & C.holder.rights)
@@ -19,14 +19,14 @@ var/global/floorIsLava = 0
 				var/msg = rendered
 				to_chat(C, msg)
 
-/proc/admin_notice(var/message, var/rights)
+/proc/admin_notice(message, rights)
 	for(var/mob/M in GLOB.mob_list)
 		if(check_rights(rights, 0, M))
 			to_chat(M, message)
 
 ///////////////////////////////////////////////////////////////////////////////////////////////Panels
 
-/datum/admins/proc/show_player_panel(var/mob/M in GLOB.mob_list)
+/datum/admins/proc/show_player_panel(mob/M in GLOB.mob_list)
 	set category = "Admin"
 	set name = "Show Player Panel"
 	set desc="Edit player (respawn, ban, heal, etc)"
@@ -265,7 +265,7 @@ var/global/floorIsLava = 0
 	usr << browse(dat, "window=player_notes;size=400x400")
 
 
-/datum/admins/proc/player_has_info(var/key as text)
+/datum/admins/proc/player_has_info(key as text)
 	var/savefile/info = new("data/player_saves/[copytext(key, 1, 2)]/[key]/info.sav")
 	var/list/infos
 	info >> infos
@@ -273,7 +273,7 @@ var/global/floorIsLava = 0
 	else return 1
 
 
-/datum/admins/proc/show_player_info(var/key as text)
+/datum/admins/proc/show_player_info(key as text)
 	set category = "Admin"
 	set name = "Show Player Info"
 	if (!istype(src,/datum/admins))
@@ -602,7 +602,7 @@ var/global/floorIsLava = 0
 	usr << browse(dat, "window=admin2;size=210x280")
 	return
 
-/datum/admins/proc/Secrets(var/datum/admin_secret_category/active_category = null)
+/datum/admins/proc/Secrets(datum/admin_secret_category/active_category = null)
 	if(!check_rights(0))	return
 
 	// Print the header with category selection buttons.
@@ -973,7 +973,7 @@ var/datum/legacy_announcement/minor/admin_min_announcer = new
 	message_admins("<font color=#4F49AF>Toggled admin item spawning to [config_legacy.allow_admin_spawning].</font>")
 	feedback_add_details("admin_verb","TAS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/datum/admins/proc/unprison(var/mob/M in GLOB.mob_list)
+/datum/admins/proc/unprison(mob/M in GLOB.mob_list)
 	set category = "Admin"
 	set name = "Unprison"
 	if (M.z == 2)
@@ -989,7 +989,7 @@ var/datum/legacy_announcement/minor/admin_min_announcer = new
 
 ////////////////////////////////////////////////////////////////////////////////////////////////ADMIN HELPER PROCS
 
-/proc/is_special_character(var/character) // returns 1 for special characters and 2 for heroes of gamemode
+/proc/is_special_character(character) // returns 1 for special characters and 2 for heroes of gamemode
 	if(!SSticker || !SSticker.mode)
 		return 0
 	var/datum/mind/M
@@ -1079,7 +1079,7 @@ var/datum/legacy_announcement/minor/admin_min_announcer = new
 	new /obj/effect/plant(get_turf(usr), SSplants.seeds[seedtype])
 	log_admin("[key_name(usr)] spawned [seedtype] vines at ([usr.x],[usr.y],[usr.z])")
 
-/datum/admins/proc/spawn_atom(var/object as text)
+/datum/admins/proc/spawn_atom(object as text)
 	set category = "Debug"
 	set desc = "(atom path) Spawn an atom"
 	set name = "Spawn"
@@ -1120,7 +1120,7 @@ var/datum/legacy_announcement/minor/admin_min_announcer = new
 	feedback_add_details("admin_verb","SA") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 
-/datum/admins/proc/show_traitor_panel(var/mob/M in GLOB.mob_list)
+/datum/admins/proc/show_traitor_panel(mob/M in GLOB.mob_list)
 	set category = "Admin"
 	set desc = "Edit mobs's memory and role"
 	set name = "Show Traitor Panel"
@@ -1341,7 +1341,7 @@ var/datum/legacy_announcement/minor/admin_min_announcer = new
 
 //Returns 1 to let the dragdrop code know we are trapping this event
 //Returns 0 if we don't plan to trap the event
-/datum/admins/proc/cmd_ghost_drag(var/mob/observer/dead/frommob, var/mob/living/tomob)
+/datum/admins/proc/cmd_ghost_drag(mob/observer/dead/frommob, mob/living/tomob)
 	if(!istype(frommob))
 		return //Extra sanity check to make sure only observers are shoved into things
 
@@ -1494,7 +1494,7 @@ var/datum/legacy_announcement/minor/admin_min_announcer = new
 
 datum/admins/var/obj/item/paper/admin/faxreply // var to hold fax replies in
 
-/datum/admins/proc/faxCallback(var/obj/item/paper/admin/P, var/obj/machinery/photocopier/faxmachine/destination)
+/datum/admins/proc/faxCallback(obj/item/paper/admin/P, obj/machinery/photocopier/faxmachine/destination)
 	var/customname = input(src.owner, "Pick a title for the report", "Title") as text|null
 
 	P.name = "[P.origin] - [customname]"

@@ -157,7 +157,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			. += "[src] is nearly burnt out!"
 
 
-/obj/item/clothing/mask/smokable/proc/light(var/flavor_text = "[usr] lights the [name].")
+/obj/item/clothing/mask/smokable/proc/light(flavor_text = "[usr] lights the [name].")
 	if(!src.lit)
 		src.lit = 1
 		damtype = "fire"
@@ -181,7 +181,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		set_light(2, 0.25, "#E38F46")
 		START_PROCESSING(SSobj, src)
 
-/obj/item/clothing/mask/smokable/proc/die(var/nomessage = 0)
+/obj/item/clothing/mask/smokable/proc/die(nomessage = 0)
 	var/turf/T = get_turf(src)
 	set_light(0)
 	STOP_PROCESSING(SSobj, src)

@@ -291,7 +291,7 @@ CREATE_STANDARD_TURFS(/turf/unsimulated/mineral)
 						new oretype(src)
 				resources[ore] = 0
 
-/turf/simulated/mineral/bullet_act(var/obj/projectile/Proj) // only emitters for now
+/turf/simulated/mineral/bullet_act(obj/projectile/Proj) // only emitters for now
 	. = ..()
 	if(Proj.excavation_amount)
 		var/newDepth = excavation_level + Proj.excavation_amount // Used commonly below
@@ -569,7 +569,7 @@ CREATE_STANDARD_TURFS(/turf/unsimulated/mineral)
 
 	return ..()
 
-/turf/simulated/mineral/proc/wreckfinds(var/destroy = FALSE)
+/turf/simulated/mineral/proc/wreckfinds(destroy = FALSE)
 	if(!destroy && prob(90)) //nondestructive methods have a chance of letting you step away to not trash things
 		if(prob(25))
 			excavate_find(prob(5), finds[1])
@@ -578,7 +578,7 @@ CREATE_STANDARD_TURFS(/turf/unsimulated/mineral)
 		if(prob(50))
 			artifact_debris()
 
-/turf/simulated/mineral/proc/update_archeo_overlays(var/excavation_amount = 0)
+/turf/simulated/mineral/proc/update_archeo_overlays(excavation_amount = 0)
 	var/updateIcon = 0
 
 	//archaeo overlays
@@ -621,7 +621,7 @@ CREATE_STANDARD_TURFS(/turf/unsimulated/mineral)
 	for(var/obj/effect/mineral/M in contents)
 		qdel(M)
 
-/turf/simulated/mineral/proc/DropMineral(var/amount)
+/turf/simulated/mineral/proc/DropMineral(amount)
 	if(!mineral)
 		return
 	clear_ore_effects()
@@ -648,7 +648,7 @@ CREATE_STANDARD_TURFS(/turf/unsimulated/mineral)
 		GetDrilled(1)
 	return
 
-/turf/simulated/mineral/proc/GetDrilled(var/artifact_fail = 0)
+/turf/simulated/mineral/proc/GetDrilled(artifact_fail = 0)
 
 	if(!density)
 		if(!sand_dug)
@@ -696,7 +696,7 @@ CREATE_STANDARD_TURFS(/turf/unsimulated/mineral)
 	. = ..()
 	AddComponent(/datum/component/radioactive, intensity, half_life, falloff = falloff)
 
-/turf/simulated/mineral/proc/excavate_find(var/is_clean = 0, var/datum/find/F)
+/turf/simulated/mineral/proc/excavate_find(is_clean = 0, datum/find/F)
 	//with skill and luck, players can cleanly extract finds
 	//otherwise, they come out inside a chunk of rock
 	var/obj/item/X
@@ -725,7 +725,7 @@ CREATE_STANDARD_TURFS(/turf/unsimulated/mineral)
 
 	finds.Remove(F)
 
-/turf/simulated/mineral/proc/artifact_debris(var/severity = 0)
+/turf/simulated/mineral/proc/artifact_debris(severity = 0)
 	//cael's patented random limited drop componentized loot system!
 	//sky's patented not-fucking-stupid overhaul!
 

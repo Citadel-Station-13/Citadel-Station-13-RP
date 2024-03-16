@@ -61,10 +61,10 @@
 	return TRUE
 
 // Used to actually move stuff up/down stairs. Removed from Crossed for special cases
-/obj/structure/stairs/proc/use_stairs(var/atom/movable/AM, var/atom/oldloc)
+/obj/structure/stairs/proc/use_stairs(atom/movable/AM, atom/oldloc)
 	return
 
-/obj/structure/stairs/proc/use_stairs_instant(var/atom/movable/AM)
+/obj/structure/stairs/proc/use_stairs_instant(atom/movable/AM)
 	return
 
 // todo: what the fuck are the above and why is one instant rofl
@@ -176,7 +176,7 @@
 		return
 	transition_atom(AM)
 
-/obj/structure/stairs/bottom/use_stairs_instant(var/atom/movable/AM)
+/obj/structure/stairs/bottom/use_stairs_instant(atom/movable/AM)
 	if(!common_prechecks(AM))
 		return
 	AM = common_redirect(AM)
@@ -345,7 +345,7 @@
 /obj/structure/stairs/top/get_destination_turf()
 	return get_turf(bottom)
 
-/obj/structure/stairs/top/use_stairs(var/atom/movable/AM, var/atom/oldloc)
+/obj/structure/stairs/top/use_stairs(atom/movable/AM, atom/oldloc)
 	if(!common_prechecks(AM, oldloc))
 		return
 	AM = common_redirect(AM)

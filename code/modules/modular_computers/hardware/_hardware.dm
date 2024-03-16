@@ -22,7 +22,7 @@
 	/// Chance of malfunction when the component is damaged.
 	var/malfunction_probability = 10
 
-/obj/item/computer_hardware/attackby(var/obj/item/W as obj, var/mob/living/user as mob)
+/obj/item/computer_hardware/attackby(obj/item/W as obj, mob/living/user as mob)
 	// Multitool. Runs diagnostics
 	if(istype(W, /obj/item/multitool))
 		to_chat(user, "***** DIAGNOSTICS REPORT *****")
@@ -52,7 +52,7 @@
 
 
 /// Called on multitool click, prints diagnostic information to the user.
-/obj/item/computer_hardware/proc/diagnostics(var/mob/user)
+/obj/item/computer_hardware/proc/diagnostics(mob/user)
 	to_chat(user, "Hardware Integrity Test... (Corruption: [damage]/[max_damage]) [damage > damage_failure ? "FAIL" : damage > damage_malfunction ? "WARN" : "PASS"]")
 
 /obj/item/computer_hardware/Initialize(mapload)

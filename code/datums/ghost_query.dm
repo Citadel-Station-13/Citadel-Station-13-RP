@@ -39,7 +39,7 @@
 	finished = TRUE
 	return candidates
 
-/datum/ghost_query/proc/ask_question(var/client/C)
+/datum/ghost_query/proc/ask_question(client/C)
 	spawn(0)
 		if(!C)
 			return

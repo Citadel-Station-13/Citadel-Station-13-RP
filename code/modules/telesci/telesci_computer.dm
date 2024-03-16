@@ -82,7 +82,7 @@
 		return
 	nano_ui_interact(user)
 
-/obj/machinery/computer/telescience/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/computer/telescience/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)
 	user.set_machine(src)
 
 	var/data[0]
@@ -372,7 +372,7 @@
 
 
 // Procedure that calculates the actual trajectory taken!
-/proc/simple_projectile_trajectory(var/src_x, var/src_y, var/rotation, var/distance)
+/proc/simple_projectile_trajectory(src_x, src_y, rotation, distance)
 	var/time = distance / 10 // 100ms per distance seems fine?
 	var/dest_x = src_x + distance*sin(rotation);
 	var/dest_y = src_y + distance*cos(rotation);

@@ -272,13 +272,13 @@
 		icon_state = "l6[cover_open ? "open" : "closed"][ammo_magazine ? round(ammo_magazine.stored_ammo.len, 10) : "-empty"]"
 		item_state = "l6[cover_open ? "open" : "closed"][ammo_magazine ? "" : "-empty"]"
 
-/obj/item/gun/ballistic/automatic/lmg/load_ammo(var/obj/item/A, mob/user)
+/obj/item/gun/ballistic/automatic/lmg/load_ammo(obj/item/A, mob/user)
 	if(!cover_open)
 		to_chat(user, "<span class='warning'>You need to open the cover to load [src].</span>")
 		return
 	..()
 
-/obj/item/gun/ballistic/automatic/lmg/unload_ammo(mob/user, var/allow_dump=1)
+/obj/item/gun/ballistic/automatic/lmg/unload_ammo(mob/user, allow_dump=1)
 	if(!cover_open)
 		to_chat(user, "<span class='warning'>You need to open the cover to unload [src].</span>")
 		return

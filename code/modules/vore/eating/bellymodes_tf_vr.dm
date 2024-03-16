@@ -1,4 +1,4 @@
-/obj/belly/proc/process_tf(var/mode,var/list/touchable_mobs) //We pass mode so it's mega-ultra local.
+/obj/belly/proc/process_tf(mode,list/touchable_mobs) //We pass mode so it's mega-ultra local.
 	/* May not be necessary... Transform only shows up in the panel for humans.
 	if(!ishuman(owner))
 		return //Need DNA and junk for this.

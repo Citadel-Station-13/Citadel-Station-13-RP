@@ -22,7 +22,7 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 	var/mob/living/silicon/pai/pai
 	var/image/cached_holo_image
 
-/obj/item/paicard/relaymove(var/mob/user, var/direction)
+/obj/item/paicard/relaymove(mob/user, direction)
 	if(!CHECK_MOBILITY(user, MOBILITY_CAN_MOVE))
 		return
 	var/obj/item/hardsuit/hardsuit = src.get_hardsuit()

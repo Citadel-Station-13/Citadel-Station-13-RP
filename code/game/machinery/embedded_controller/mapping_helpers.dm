@@ -40,7 +40,7 @@ Any frequency works, it's self-setting, but it seems like people have decided 13
 	my_device = null
 	return ..()
 
-/obj/map_helper/airlock/proc/get_controller(var/area/A)
+/obj/map_helper/airlock/proc/get_controller(area/A)
 	if(!A)
 		return null
 

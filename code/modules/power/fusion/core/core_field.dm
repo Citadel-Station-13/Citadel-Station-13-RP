@@ -263,7 +263,7 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 		else if(critical >= 25)
 			visible_message("<span class='danger'>\The [src] rumbles and quivers slightly, vibrating the deck.</span>")
 */
-/obj/effect/fusion_em_field/proc/ChangeFieldStrength(var/new_strength)
+/obj/effect/fusion_em_field/proc/ChangeFieldStrength(new_strength)
 	var/calc_size = 1
 	if(new_strength <= 50)
 		calc_size = 1
@@ -282,7 +282,7 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 	field_strength = new_strength
 	change_size(calc_size)
 
-/obj/effect/fusion_em_field/proc/AddEnergy(var/a_energy, var/a_plasma_temperature)
+/obj/effect/fusion_em_field/proc/AddEnergy(a_energy, a_plasma_temperature)
 	energy += a_energy
 	plasma_temperature += a_plasma_temperature
 	if(a_energy && percent_unstable > 0)
@@ -293,14 +293,14 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 		energy -= 100
 		plasma_temperature += 1
 
-/obj/effect/fusion_em_field/proc/AddParticles(var/name, var/quantity = 1)
+/obj/effect/fusion_em_field/proc/AddParticles(name, quantity = 1)
 	if(name in dormant_reactant_quantities)
 		dormant_reactant_quantities[name] += quantity
 	else if(name != "proton" && name != "electron" && name != "neutron")
 		dormant_reactant_quantities.Add(name)
 		dormant_reactant_quantities[name] = quantity
 
-/obj/effect/fusion_em_field/proc/RadiateAll(var/ratio_lost = 1)
+/obj/effect/fusion_em_field/proc/RadiateAll(ratio_lost = 1)
 
 	// Create our plasma field and dump it into our environment.
 	var/turf/T = get_turf(src)
@@ -340,7 +340,7 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 			tick_instability += rand(30,50)
 			AM.emp_act(empsev)
 
-/obj/effect/fusion_em_field/proc/change_size(var/newsize = 1)
+/obj/effect/fusion_em_field/proc/change_size(newsize = 1)
 	var/changed = 0
 	var/static/list/size_to_icon = list(
 			"3" = 'icons/effects/96x96.dmi',
@@ -488,7 +488,7 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
-/obj/effect/fusion_em_field/bullet_act(var/obj/projectile/Proj)
+/obj/effect/fusion_em_field/bullet_act(obj/projectile/Proj)
 	AddEnergy(Proj.damage)
 	update_icon()
 	return 0

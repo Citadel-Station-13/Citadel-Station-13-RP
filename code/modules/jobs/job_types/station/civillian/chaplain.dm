@@ -36,7 +36,7 @@
 	. = ..()
 	if(H.mind)
 		H.mind.isholy = TRUE
-/datum/role/job/station/chaplain/equip(var/mob/living/carbon/human/H, var/alt_title, var/ask_questions = TRUE)
+/datum/role/job/station/chaplain/equip(mob/living/carbon/human/H, alt_title, ask_questions = TRUE)
 	. = ..()
 	if(!.)
 		return

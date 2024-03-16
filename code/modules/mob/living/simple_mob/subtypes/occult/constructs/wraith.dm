@@ -48,7 +48,7 @@
 	. = ..()
 	AddComponent(/datum/component/horror_aura)
 
-/mob/living/simple_mob/construct/wraith/apply_melee_effects(var/atom/A)
+/mob/living/simple_mob/construct/wraith/apply_melee_effects(atom/A)
 	if(isliving(A))
 		var/mob/living/L = A
 		L.add_modifier(/datum/modifier/deep_wounds, 30 SECONDS)

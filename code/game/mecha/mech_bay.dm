@@ -16,7 +16,7 @@
 		// /mob/living/silicon/robot/platform
 	)
 
-/obj/machinery/mech_recharger/Crossed(var/atom/movable/M)
+/obj/machinery/mech_recharger/Crossed(atom/movable/M)
 	. = ..()
 	if(charging == M)
 		return
@@ -25,7 +25,7 @@
 			start_charging(M)
 			return
 
-/obj/machinery/mech_recharger/Uncrossed(var/atom/movable/M)
+/obj/machinery/mech_recharger/Uncrossed(atom/movable/M)
 	. = ..()
 	if(M == charging)
 		charging = null
@@ -76,7 +76,7 @@
 	if(done)
 		charging = null
 
-/obj/machinery/mech_recharger/attackby(var/obj/item/I, var/mob/user)
+/obj/machinery/mech_recharger/attackby(obj/item/I, mob/user)
 	if(default_deconstruction_screwdriver(user, I))
 		return
 	if(default_deconstruction_crowbar(user, I))
@@ -84,7 +84,7 @@
 	if(default_part_replacement(user, I))
 		return
 
-/obj/machinery/mech_recharger/proc/start_charging(var/atom/movable/M)
+/obj/machinery/mech_recharger/proc/start_charging(atom/movable/M)
 
 	var/obj/mecha/mech = M
 	if(machine_stat & (NOPOWER | BROKEN))

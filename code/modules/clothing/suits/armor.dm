@@ -87,7 +87,7 @@
 	armor_type = /datum/armor/station/ablative
 	siemens_coefficient = 0.1
 
-/obj/item/clothing/suit/armor/laserproof/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
+/obj/item/clothing/suit/armor/laserproof/handle_shield(mob/user, damage, atom/damage_source = null, mob/attacker = null, def_zone = null, attack_text = "the attack")
 	if(istype(damage_source, /obj/projectile/energy) || istype(damage_source, /obj/projectile/beam))
 		var/obj/projectile/P = damage_source
 
@@ -193,7 +193,7 @@
 	blood_overlay_type = "armor"
 	armor_type = /datum/armor/none
 
-/obj/item/clothing/suit/armor/reactive/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
+/obj/item/clothing/suit/armor/reactive/handle_shield(mob/user, damage, atom/damage_source = null, mob/attacker = null, def_zone = null, attack_text = "the attack")
 	if(prob(50))
 		user.visible_message("<span class='danger'>The reactive teleport system flings [user] clear of the attack!</span>")
 		var/list/turfs = new/list()
@@ -260,7 +260,7 @@
 	armor_type = /datum/armor/alien/heavy
 	block_chance = 40
 
-/obj/item/clothing/suit/armor/alien/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
+/obj/item/clothing/suit/armor/alien/handle_shield(mob/user, damage, atom/damage_source = null, mob/attacker = null, def_zone = null, attack_text = "the attack")
 	if(prob(block_chance))
 		user.visible_message("<span class='danger'>\The [src] completely absorbs [attack_text]!</span>")
 		return TRUE

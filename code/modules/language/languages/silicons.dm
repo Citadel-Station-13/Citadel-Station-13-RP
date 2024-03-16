@@ -10,7 +10,7 @@
 	language_flags = LANGUAGE_RESTRICTED | LANGUAGE_HIVEMIND
 	var/drone_only
 
-/datum/language/binary/broadcast(var/mob/living/speaker,var/message,var/speaker_mask)
+/datum/language/binary/broadcast(mob/living/speaker,message,speaker_mask)
 
 	if(!speaker.binarycheck())
 		return

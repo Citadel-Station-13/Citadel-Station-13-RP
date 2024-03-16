@@ -455,14 +455,14 @@
 	if(assemblies[color])
 		return TRUE
 
-/datum/wires/proc/RenameDoor(var/obj/machinery/door/airlock/A = holder)
+/datum/wires/proc/RenameDoor(obj/machinery/door/airlock/A = holder)
 	var/t = sanitizeSafe(input(usr, "Enter a new name.", holder.name), MAX_NAME_LEN)
 	holder.name = t
 	holder.update_icon()
 	message_admins("[usr]([usr.ckey]) renamed a door to ''[t]'' at [holder.x],[holder.y],[holder.z].")
 	log_admin("[usr]([usr.ckey]) renamed a door to ''[t]'' at [holder.x],[holder.y],[holder.z].")
 
-/datum/wires/proc/DescribeDoor(var/obj/machinery/door/airlock/A = holder)
+/datum/wires/proc/DescribeDoor(obj/machinery/door/airlock/A = holder)
 	var/t = sanitizeSafe(input(usr, "Enter a new description.", holder.desc), MAX_MESSAGE_LEN) // max len values are in misc.dm for reference, can be set to MAX_NAME_LEN to reduce length allowance
 	holder.desc = t
 	holder.update_icon()

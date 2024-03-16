@@ -126,7 +126,7 @@ var/list/infomorph_emotions = list(
 			STATPANEL_DATA_LINE("Communications system reboot in -[(timeleft / 60) % 60]:[add_zero(num2text(timeleft % 60), 2)]")
 
 /////////// CHECKERS
-/mob/living/silicon/infomorph/check_eye(var/mob/user as mob)
+/mob/living/silicon/infomorph/check_eye(mob/user as mob)
 	if (!src.current)
 		return -1
 	return 0
@@ -136,7 +136,7 @@ var/list/infomorph_emotions = list(
 		return 0
 	..()
 
-/mob/living/silicon/infomorph/default_can_use_topic(var/src_object)
+/mob/living/silicon/infomorph/default_can_use_topic(src_object)
 	if(src_object in src)
 		return shared_nano_interaction()
 
@@ -157,7 +157,7 @@ var/list/infomorph_emotions = list(
 			M.show_message("<span class='warning'>A shower of sparks spray from \the [src]'s inner workings.</span>", 3, "<span class='warning'>You hear and smell the ozone hiss of electrical sparks being expelled violently.</span>", 2)
 		return src.death(0)
 
-/mob/living/silicon/infomorph/death(gibbed,var/message = "beeps once, then goes offline.")
+/mob/living/silicon/infomorph/death(gibbed,message = "beeps once, then goes offline.")
 	if(card)
 		card.infomorph = null
 		card.turnOff()
@@ -187,7 +187,7 @@ var/list/infomorph_emotions = list(
 	to_chat(usr, "<span class='notice'>You reset your record-viewing software.</span>")
 
 /*
-/mob/living/silicon/infomorph/proc/switchCamera(var/obj/machinery/camera/C)
+/mob/living/silicon/infomorph/proc/switchCamera(obj/machinery/camera/C)
 	if (!C)
 		src.unset_machine()
 		src.reset_view(null)
@@ -411,7 +411,7 @@ var/list/infomorph_emotions = list(
 	else
 		to_chat(src,"<span class='warning'>You don't have a radio!</span>")
 
-/mob/living/silicon/infomorph/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
+/mob/living/silicon/infomorph/say(message, datum/language/speaking = null, verb="says", alt_name="", whispering = 0)
 	if(silence_time)
 		to_chat(src, "<font color=green>Communication circuits remain uninitialized.</font>")
 	else

@@ -67,7 +67,7 @@
 	add_overlay(I)
 	turn_off()	//so engine verbs are correctly set
 
-/obj/vehicle_old/train/security/engine/Move(var/turf/destination)
+/obj/vehicle_old/train/security/engine/Move(turf/destination)
 	if(on && cell.charge < charge_use)
 		turn_off()
 		update_stats()
@@ -101,7 +101,7 @@
 	..()
 
 //cargo trains are open topped, so there is a chance the projectile will hit the mob ridding the train instead
-/obj/vehicle_old/train/security/bullet_act(var/obj/projectile/Proj)
+/obj/vehicle_old/train/security/bullet_act(obj/projectile/Proj)
 	if(has_buckled_mobs() && prob(70))
 		var/mob/living/M = pick(buckled_mobs)
 		M.bullet_act(Proj)
@@ -114,14 +114,14 @@
 	else
 		icon_state = initial(icon_state)
 
-/obj/vehicle_old/train/security/trolley/insert_cell(var/obj/item/cell/C, var/mob/living/carbon/human/H)
+/obj/vehicle_old/train/security/trolley/insert_cell(obj/item/cell/C, mob/living/carbon/human/H)
 	return
 
-/obj/vehicle_old/train/security/engine/insert_cell(var/obj/item/cell/C, var/mob/living/carbon/human/H)
+/obj/vehicle_old/train/security/engine/insert_cell(obj/item/cell/C, mob/living/carbon/human/H)
 	..()
 	update_stats()
 
-/obj/vehicle_old/train/security/engine/remove_cell(var/mob/living/carbon/human/H)
+/obj/vehicle_old/train/security/engine/remove_cell(mob/living/carbon/human/H)
 	..()
 	update_stats()
 
@@ -167,18 +167,18 @@
 	else
 		add_obj_verb(src, /obj/vehicle_old/train/security/engine/verb/stop_engine)
 
-/obj/vehicle_old/train/security/RunOver(var/mob/living/M)
+/obj/vehicle_old/train/security/RunOver(mob/living/M)
 	var/list/parts = list(BP_HEAD, BP_TORSO, BP_L_LEG, BP_R_LEG, BP_L_ARM, BP_R_ARM)
 
 	M.apply_effects(5, 5)
 	for(var/i = 0, i < rand(1,3), i++)
 		M.apply_damage(rand(1,5), BRUTE, pick(parts))
 
-/obj/vehicle_old/train/security/trolley/RunOver(var/mob/living/M)
+/obj/vehicle_old/train/security/trolley/RunOver(mob/living/M)
 	..()
 	attack_log += "\[[time_stamp()]\] <font color='red'>ran over [M.name] ([M.ckey])</font>"
 
-/obj/vehicle_old/train/security/engine/RunOver(var/mob/living/M)
+/obj/vehicle_old/train/security/engine/RunOver(mob/living/M)
 	..()
 
 	if(is_train_head() && istype(load, /mob/living/carbon/human))
@@ -273,7 +273,7 @@
 //-------------------------------------------
 // Loading/unloading procs
 //-------------------------------------------
-/obj/vehicle_old/train/security/trolley/load(var/atom/movable/C)
+/obj/vehicle_old/train/security/trolley/load(atom/movable/C)
 	if(ismob(C) && !passenger_allowed)
 		return 0
 	if(!istype(C,/obj/machinery) && !istype(C,/obj/structure/closet) && !istype(C,/obj/structure/largecrate) && !istype(C,/obj/structure/reagent_dispensers) && !istype(C,/obj/structure/ore_box) && !istype(C, /mob/living/carbon/human))
@@ -289,7 +289,7 @@
 	if(load)
 		return 1
 
-/obj/vehicle_old/train/security/engine/load(var/atom/movable/C)
+/obj/vehicle_old/train/security/engine/load(atom/movable/C)
 	if(!istype(C, /mob/living/carbon/human))
 		return 0
 
@@ -365,7 +365,7 @@
 // more engines increases this limit by car_limit per
 // engine.
 //-------------------------------------------------------
-/obj/vehicle_old/train/security/engine/update_car(var/train_length, var/active_engines)
+/obj/vehicle_old/train/security/engine/update_car(train_length, active_engines)
 	src.train_length = train_length
 	src.active_engines = active_engines
 
@@ -378,7 +378,7 @@
 		move_delay += config_legacy.run_speed 														//base reference speed
 		move_delay *= 1.1																	//makes cargo trains 10% slower than running when not overweight
 
-/obj/vehicle_old/train/security/trolley/update_car(var/train_length, var/active_engines)
+/obj/vehicle_old/train/security/trolley/update_car(train_length, active_engines)
 	src.train_length = train_length
 	src.active_engines = active_engines
 

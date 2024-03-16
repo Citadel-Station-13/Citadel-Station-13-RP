@@ -147,7 +147,7 @@
 	setClickCooldown(3)
 	manual_flick(sword_post_attack_states, sword_image, reset_to = "golem_sword")
 
-/mob/living/simple_animal/technomancer_golem/DoPunch(var/atom/A)
+/mob/living/simple_animal/technomancer_golem/DoPunch(atom/A)
 	sword_pre_animation()
 	. = ..() // This does the actual attack and will check adjacency again.
 	sword_post_animation()
@@ -158,7 +158,7 @@
 /mob/living/simple_animal/technomancer_golem/speech_bubble_appearance()
 	return "synthetic_evil"
 
-/mob/living/simple_animal/technomancer_golem/place_spell_in_hand(var/path)
+/mob/living/simple_animal/technomancer_golem/place_spell_in_hand(path)
 	if(!path || !ispath(path))
 		return 0
 
@@ -176,14 +176,14 @@
 		qdel(active_spell)
 
 // Used to cast spells.
-/mob/living/simple_animal/technomancer_golem/RangedAttack(var/atom/A, var/params)
+/mob/living/simple_animal/technomancer_golem/RangedAttack(atom/A, params)
 	if(active_spell)
 		spellcast_pre_animation()
 		if(active_spell.cast_methods & CAST_RANGED)
 			active_spell.on_ranged_cast(A, src)
 		spellcast_post_animation()
 
-/mob/living/simple_animal/technomancer_golem/UnarmedAttack(var/atom/A, var/proximity)
+/mob/living/simple_animal/technomancer_golem/UnarmedAttack(atom/A, proximity)
 	if(proximity)
 		if(active_spell)
 			spellcast_pre_animation()
@@ -232,7 +232,7 @@
 			support_friend(L)
 			return
 
-/mob/living/simple_animal/technomancer_golem/proc/support_friend(var/mob/living/L)
+/mob/living/simple_animal/technomancer_golem/proc/support_friend(mob/living/L)
 	if(L.getBruteLoss() >= 10 || L.getFireLoss() >= 10)
 		if(L.isSynthetic() && !L.has_modifier_of_type(/datum/modifier/technomancer/mend_synthetic))
 			place_spell_in_hand(known_spells["mend synthetic"])
@@ -251,7 +251,7 @@
 		RangedAttack(L)
 		return
 
-/mob/living/simple_animal/technomancer_golem/proc/targeted_blink(var/atom/target)
+/mob/living/simple_animal/technomancer_golem/proc/targeted_blink(atom/target)
 	var/datum/effect_system/spark_spread/spark_system = new()
 	spark_system.set_up(5, 0, get_turf(src))
 	spark_system.start()

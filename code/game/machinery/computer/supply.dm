@@ -32,7 +32,7 @@
 	circuit = /obj/item/circuitboard/supplycomp/control
 	authorization = SUP_SEND_SHUTTLE | SUP_ACCEPT_ORDERS
 
-/obj/machinery/computer/supplycomp/attack_ai(var/mob/user as mob)
+/obj/machinery/computer/supplycomp/attack_ai(mob/user as mob)
 	return attack_hand(user)
 
 /obj/machinery/computer/supplycomp/attack_hand(mob/user, list/params)
@@ -44,14 +44,14 @@
 	nano_ui_interact(user)
 	return
 
-/obj/machinery/computer/supplycomp/emag_act(var/remaining_charges, var/mob/user)
+/obj/machinery/computer/supplycomp/emag_act(remaining_charges, mob/user)
 	if(!can_order_contraband)
 		to_chat(user, "<span class='notice'>Special supplies unlocked.</span>")
 		authorization |= SUP_CONTRABAND
 		req_access = list()
 		return 1
 
-/obj/machinery/computer/supplycomp/nano_ui_interact(mob/user, ui_key = "supply_records", var/datum/nanoui/ui = null, var/force_open = 1, var/key_state = null)
+/obj/machinery/computer/supplycomp/nano_ui_interact(mob/user, ui_key = "supply_records", datum/nanoui/ui = null, force_open = 1, key_state = null)
 	var/data[0]
 	var/shuttle_status[0]	// Supply shuttle status
 	var/pack_list[0]		// List of supply packs within the active_category
@@ -414,7 +414,7 @@
 	updateUsrDialog()
 	return
 
-/obj/machinery/computer/supplycomp/proc/post_signal(var/command)
+/obj/machinery/computer/supplycomp/proc/post_signal(command)
 
 	var/datum/radio_frequency/frequency = radio_controller.return_frequency(1435)
 

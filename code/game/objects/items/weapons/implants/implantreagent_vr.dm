@@ -67,7 +67,7 @@
 
 	do_reagent_implant(usr)
 
-/mob/living/carbon/human/proc/do_reagent_implant(var/mob/living/carbon/human/user = usr)
+/mob/living/carbon/human/proc/do_reagent_implant(mob/living/carbon/human/user = usr)
 	if(!isliving(user) || !user.canClick())
 		return
 

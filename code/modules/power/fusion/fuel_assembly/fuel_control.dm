@@ -14,7 +14,7 @@
 	add_fingerprint(user)
 	interact(user)
 
-/obj/machinery/computer/fusion_fuel_control/interact(var/mob/user)
+/obj/machinery/computer/fusion_fuel_control/interact(mob/user)
 
 	if(machine_stat & (BROKEN|NOPOWER))
 		user.unset_machine()
@@ -94,7 +94,7 @@
 	updateDialog()
 
 
-/obj/machinery/computer/fusion_fuel_control/attackby(var/obj/item/W, var/mob/user)
+/obj/machinery/computer/fusion_fuel_control/attackby(obj/item/W, mob/user)
 	..()
 	if(istype(W, /obj/item/multitool))
 		var/new_ident = input("Enter a new ident tag.", "Fuel Control", id_tag) as null|text

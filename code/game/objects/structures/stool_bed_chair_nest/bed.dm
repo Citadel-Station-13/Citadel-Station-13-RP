@@ -130,7 +130,7 @@
 		padding_material = null
 	update_icon()
 
-/obj/structure/bed/proc/add_padding(var/padding_type)
+/obj/structure/bed/proc/add_padding(padding_type)
 	padding_material = get_material_by_name(padding_type)
 	update_icon()
 

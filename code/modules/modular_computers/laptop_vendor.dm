@@ -46,7 +46,7 @@
 	dev_card = 0
 
 // Recalculates the price and optionally even fabricates the device.
-/obj/machinery/lapvend/proc/fabricate_and_recalc_price(var/fabricate = 0)
+/obj/machinery/lapvend/proc/fabricate_and_recalc_price(fabricate = 0)
 	total_price = 0
 	if(devtype == 1) 		// Laptop, generally cheaper to make it accessible for most station roles
 		if(fabricate)
@@ -217,7 +217,7 @@
 /obj/machinery/lapvend/attack_hand(mob/user, list/params)
 	nano_ui_interact(user)
 
-/obj/machinery/lapvend/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/lapvend/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)
 	if(machine_stat & (BROKEN | NOPOWER | MAINT))
 		if(ui)
 			ui.close()
@@ -274,7 +274,7 @@
 
 
 // Simplified payment processing, returns 1 on success.
-/obj/machinery/lapvend/proc/process_payment(var/obj/item/card/id/I, var/obj/item/ID_container)
+/obj/machinery/lapvend/proc/process_payment(obj/item/card/id/I, obj/item/ID_container)
 	if(I==ID_container || ID_container == null)
 		visible_message("<span class='info'>\The [usr] swipes \the [I] through \the [src].</span>")
 	else

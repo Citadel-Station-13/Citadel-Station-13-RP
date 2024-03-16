@@ -12,7 +12,7 @@
 	name = "bolt of death"
 	icon_state = "pulse1_bl"
 
-/obj/projectile/magic/death/on_hit(target, var/mob/living/L)
+/obj/projectile/magic/death/on_hit(target, mob/living/L)
 	. = ..()
 	if(ismob(target))
 		var/mob/M = target
@@ -49,7 +49,7 @@
 	var/inner_tele_radius = 0
 	var/outer_tele_radius = 6
 
-/obj/projectile/magic/teleport/on_hit(mob/target, var/mob/living/L)
+/obj/projectile/magic/teleport/on_hit(mob/target, mob/living/L)
 	. = ..()
 	if(ismob(target))
 		var/mob/M = target
@@ -90,7 +90,7 @@
 	T.ChangeTurf(/turf/simulated/floor/plating)
 	D.Open()
 
-/obj/projectile/magic/door/proc/OpenDoor(var/obj/machinery/door/D)
+/obj/projectile/magic/door/proc/OpenDoor(obj/machinery/door/D)
 	if(istype(D, /obj/machinery/door/airlock))
 		var/obj/machinery/door/airlock/A = D
 		A.locked = FALSE
@@ -257,7 +257,7 @@
 	target.animate_atom_living(firer)
 	. = ..()
 
-/atom/proc/animate_atom_living(var/mob/living/owner = null)
+/atom/proc/animate_atom_living(mob/living/owner = null)
 	if((isitem(src) || isstructure(src)) && !is_type_in_list(src, GLOB.protected_objects))
 		if(istype(src, /obj/structure/statue/petrified))
 			var/obj/structure/statue/petrified/P = src
@@ -299,7 +299,7 @@
 	sharp = TRUE
 	magic = TRUE
 
-/obj/projectile/magic/spellblade/on_hit(target, var/mob/living/L)
+/obj/projectile/magic/spellblade/on_hit(target, mob/living/L)
 	if(ismob(target))
 		var/mob/M = target
 		if(L.anti_magic_check())
@@ -318,7 +318,7 @@
 	magic = TRUE
 	impact_sounds = 'sound/weapons/barragespellhit.ogg'
 
-/obj/projectile/magic/arcane_barrage/on_hit(target, var/mob/living/L)
+/obj/projectile/magic/arcane_barrage/on_hit(target, mob/living/L)
 	if(ismob(target))
 		var/mob/M = target
 		if(L.anti_magic_check())
@@ -338,7 +338,7 @@
 	var/locker_suck = TRUE
 
 /*
-/obj/projectile/magic/locker/proc/prehit(atom/A, var/mob/living/L)
+/obj/projectile/magic/locker/proc/prehit(atom/A, mob/living/L)
 	if(ismob(A) && locker_suck)
 		var/mob/M = A
 		if(L.anti_magic_check())
@@ -429,7 +429,7 @@
 		chain = caster.Beam(src, icon_state = "lightning[rand(1, 12)]", time = INFINITY, maxdistance = INFINITY)
 	..()
 
-/obj/projectile/magic/aoe/lightning/on_hit(target, var/mob/living/L)
+/obj/projectile/magic/aoe/lightning/on_hit(target, mob/living/L)
 	. = ..()
 	if(ismob(target))
 		var/mob/M = target

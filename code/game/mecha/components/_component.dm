@@ -55,7 +55,7 @@
 
 // Damage code.
 
-/obj/item/mecha_parts/component/emp_act(var/severity = 4)
+/obj/item/mecha_parts/component/emp_act(severity = 4)
 	if(severity + emp_resistance > 4)
 		return
 
@@ -63,11 +63,11 @@
 
 	damage_integrity((4 - severity) * round(integrity * 0.1, 0.1))
 
-/obj/item/mecha_parts/component/proc/adjust_integrity_mecha(var/amt = 0)
+/obj/item/mecha_parts/component/proc/adjust_integrity_mecha(amt = 0)
 	integrity = clamp(integrity + amt, 0, integrity_max)
 	return
 
-/obj/item/mecha_parts/component/proc/damage_part(var/dam_amt = 0, var/type = BRUTE)
+/obj/item/mecha_parts/component/proc/damage_part(dam_amt = 0, type = BRUTE)
 	if(dam_amt <= 0)
 		return FALSE
 
@@ -91,7 +91,7 @@
 
 // Attach/Detach code.
 
-/obj/item/mecha_parts/component/proc/attach(var/obj/mecha/target, var/mob/living/user)
+/obj/item/mecha_parts/component/proc/attach(obj/mecha/target, mob/living/user)
 	if(target)
 		if(!(component_type in target.internal_components))
 			if(user)

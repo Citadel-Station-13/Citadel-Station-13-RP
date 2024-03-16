@@ -21,5 +21,5 @@
 /datum/material/diona/place_dismantled_product()
 	return
 
-/datum/material/diona/place_dismantled_girder(var/turf/target)
+/datum/material/diona/place_dismantled_girder(turf/target)
 	spawn_diona_nymph(target)

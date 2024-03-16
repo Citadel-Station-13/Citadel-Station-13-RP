@@ -171,7 +171,7 @@
 /**
  * return source id to auth with
  */
-/datum/tgui_module/card_mod/proc/auth_source(var/user)
+/datum/tgui_module/card_mod/proc/auth_source(user)
 	return null
 
 /datum/tgui_module/card_mod/static_data(mob/user, obj/item/card/id/editing = edit_target(), obj/item/card/id/authing = auth_source(user))

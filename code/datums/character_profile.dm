@@ -1,7 +1,7 @@
 /datum/description_profile
 	var/datum/weakref/host
 
-/datum/description_profile/New(var/host_mob)
+/datum/description_profile/New(host_mob)
 	. = ..()
 	host = WEAKREF(host_mob)
 

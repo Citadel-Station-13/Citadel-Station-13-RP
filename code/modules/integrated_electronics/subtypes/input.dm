@@ -842,7 +842,7 @@
 		if(target_address && istext(target_address))
 			exonet.send_message(target_address, message, text)
 
-/obj/item/integrated_circuit/input/receive_exonet_message(var/atom/origin_atom, var/origin_address, var/message, var/text)
+/obj/item/integrated_circuit/input/receive_exonet_message(atom/origin_atom, origin_address, message, text)
 	set_pin_data(IC_OUTPUT, 1, origin_address)
 	set_pin_data(IC_OUTPUT, 2, message)
 	set_pin_data(IC_OUTPUT, 3, text)
@@ -1018,7 +1018,7 @@ GLOBAL_DATUM_INIT(circuit_translation_context, /datum/translation_context/simple
 	listening_objects -= src
 	return ..()
 
-/obj/item/integrated_circuit/input/microphone/hear_talk(mob/living/M, msg, var/verb="says", datum/language/speaking=null)
+/obj/item/integrated_circuit/input/microphone/hear_talk(mob/living/M, msg, verb="says", datum/language/speaking=null)
 	var/translated = FALSE
 	if(M && msg)
 		if(speaking)
@@ -1069,7 +1069,7 @@ GLOBAL_DATUM_INIT(circuit_translation_context, /datum/translation_context/simple
 		var/datum/language/newlang = SScharacters.resolve_language_name(lang)
 		my_langs |= newlang
 
-/obj/item/integrated_circuit/input/microphone/sign/hear_talk(mob/living/M, msg, var/verb="says", datum/language/speaking=null)
+/obj/item/integrated_circuit/input/microphone/sign/hear_talk(mob/living/M, msg, verb="says", datum/language/speaking=null)
 	var/signlang = FALSE
 	if(M && msg)
 		if(speaking)

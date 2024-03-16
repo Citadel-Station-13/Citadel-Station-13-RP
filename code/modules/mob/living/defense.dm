@@ -10,7 +10,7 @@
 	Returns
 	A number between 0 and 100, with higher numbers resulting in less damage taken.
 */
-/mob/living/proc/run_armor_check(var/def_zone = null, var/attack_flag = "melee", var/armour_pen = 0, var/absorb_text = null, var/soften_text = null)
+/mob/living/proc/run_armor_check(def_zone = null, attack_flag = "melee", armour_pen = 0, absorb_text = null, soften_text = null)
 	if(GLOB.Debug2)
 		log_world("## DEBUG: legacy_mob_armor() was called.")
 
@@ -77,7 +77,7 @@
 */
 
 //Certain pieces of armor actually absorb flat amounts of damage from income attacks
-/mob/living/proc/get_armor_soak(var/def_zone = null, var/attack_flag = "melee", var/armour_pen = 0)
+/mob/living/proc/get_armor_soak(def_zone = null, attack_flag = "melee", armour_pen = 0)
 	var/soaked = legacy_mob_soak(def_zone, attack_flag)
 	//5 points of armor pen negate one point of soak
 	if(armour_pen)
@@ -85,10 +85,10 @@
 	return soaked
 
 //if null is passed for def_zone, then this should return something appropriate for all zones (e.g. area effect damage)
-/mob/living/proc/legacy_mob_armor(var/def_zone, var/type)
+/mob/living/proc/legacy_mob_armor(def_zone, type)
 	return 0
 
-/mob/living/proc/legacy_mob_soak(var/def_zone, var/type)
+/mob/living/proc/legacy_mob_soak(def_zone, type)
 	return 0
 
 // Clicking with an empty hand
@@ -110,7 +110,7 @@
 	else
 		afflict_radiation(strength * RAD_MOB_ACT_COEFFICIENT - RAD_MOB_ACT_PROTECTION_PER_WAVE_SOURCE, TRUE)
 
-/mob/living/bullet_act(var/obj/projectile/P, var/def_zone)
+/mob/living/bullet_act(obj/projectile/P, def_zone)
 
 	//Being hit while using a deadman switch
 	if(istype(get_active_held_item(),/obj/item/assembly/signaler))
@@ -166,11 +166,11 @@
 
 //	return absorb
 
-/mob/living/get_bullet_impact_effect_type(var/def_zone)
+/mob/living/get_bullet_impact_effect_type(def_zone)
 	return BULLET_IMPACT_MEAT
 
 //Handles the effects of "stun" weapons
-/mob/living/proc/stun_effect_act(var/stun_amount, var/agony_amount, var/def_zone, var/used_weapon=null)
+/mob/living/proc/stun_effect_act(stun_amount, agony_amount, def_zone, used_weapon=null)
 	flash_pain()
 
 	if (stun_amount)
@@ -184,7 +184,7 @@
 		apply_effect(STUTTER, agony_amount/10)
 		apply_effect(EYE_BLUR, agony_amount/10)
 
-/mob/living/proc/electrocute_act(var/shock_damage, var/obj/source, var/siemens_coeff = 1.0, var/def_zone = null, var/stun = 1)
+/mob/living/proc/electrocute_act(shock_damage, obj/source, siemens_coeff = 1.0, def_zone = null, stun = 1)
 	  return 0 //only carbon liveforms have this proc
 
 /mob/living/emp_act(severity)
@@ -193,7 +193,7 @@
 		O.emp_act(severity)
 	..()
 
-/mob/living/blob_act(var/obj/structure/blob/B)
+/mob/living/blob_act(obj/structure/blob/B)
 	if(stat == DEAD || faction == "blob")
 		return
 
@@ -230,11 +230,11 @@
 
 	apply_damage(damage, damage_type, def_zone, absorb, soaked)
 
-/mob/living/proc/resolve_item_attack(obj/item/I, mob/living/user, var/target_zone)
+/mob/living/proc/resolve_item_attack(obj/item/I, mob/living/user, target_zone)
 	return target_zone
 
 //Called when the mob is hit with an item in combat. Returns the blocked result
-/mob/living/proc/hit_with_weapon(obj/item/I, mob/living/user, var/effective_force, var/hit_zone)
+/mob/living/proc/hit_with_weapon(obj/item/I, mob/living/user, effective_force, hit_zone)
 	if(ai_holder)
 		ai_holder.react_to_attack(user)
 
@@ -250,7 +250,7 @@
 	return blocked
 
 //returns 0 if the effects failed to apply for some reason, 1 otherwise.
-/mob/living/proc/standard_weapon_hit_effects(obj/item/I, mob/living/user, var/effective_force, var/blocked, var/soaked, var/hit_zone)
+/mob/living/proc/standard_weapon_hit_effects(obj/item/I, mob/living/user, effective_force, blocked, soaked, hit_zone)
 	if(!effective_force || blocked >= 100)
 		return 0
 	//Apply weapon damage
@@ -330,16 +330,16 @@
 					src.anchored = 1
 					src.pinned += O
 
-/mob/living/proc/embed(var/obj/O, var/def_zone=null)
+/mob/living/proc/embed(obj/O, def_zone=null)
 	O.loc = src
 	src.embedded += O
 	add_verb(src, /mob/proc/yank_out_object)
 
 //This is called when the mob is thrown into a dense turf
-/mob/living/proc/turf_collision(var/turf/T, var/speed)
+/mob/living/proc/turf_collision(turf/T, speed)
 	src.take_random_targeted_damage(brute = speed*5)
 
-/mob/living/proc/near_wall(var/direction,var/distance=1)
+/mob/living/proc/near_wall(direction,distance=1)
 	var/turf/T = get_step(get_turf(src),direction)
 	var/turf/last_turf = src.loc
 	var/i = 1
@@ -355,7 +355,7 @@
 
 // End BS12 momentum-transfer code.
 
-/mob/living/attack_generic(var/mob/user, var/damage, var/attack_message)
+/mob/living/attack_generic(mob/user, damage, attack_message)
 	if(!damage)
 		return
 
@@ -468,7 +468,7 @@
 	adjustFireLoss(10) // Lava cannot be 100% resisted with fire protection.
 
 //Acid
-/mob/living/acid_act(var/mob/living/H)
+/mob/living/acid_act(mob/living/H)
 	make_dizzy(1)
 	adjustHalLoss(1)
 	inflict_heat_damage(5) // This is instantly applied to unprotected mobs.
@@ -479,7 +479,7 @@
 
 //Blood
 //Acid
-/mob/living/blood_act(var/mob/living/H)
+/mob/living/blood_act(mob/living/H)
 	inflict_poison_damage(5)
 	adjustToxLoss(5)
 

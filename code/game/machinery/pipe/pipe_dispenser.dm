@@ -102,7 +102,7 @@
 				VARSET_IN(src, wait, FALSE, 15)
 
 
-/obj/machinery/pipedispenser/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/machinery/pipedispenser/attackby(obj/item/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/pipe) || istype(W, /obj/item/pipe_meter))
 		if(!user.attempt_consume_item_for_construction(W))
 			return
@@ -148,7 +148,7 @@
 	disposals = TRUE
 
 //Allow you to drag-drop disposal pipes into it
-/obj/machinery/pipedispenser/disposal/MouseDroppedOnLegacy(var/obj/structure/disposalconstruct/pipe as obj, mob/usr as mob)
+/obj/machinery/pipedispenser/disposal/MouseDroppedOnLegacy(obj/structure/disposalconstruct/pipe as obj, mob/usr as mob)
 	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_UI))
 		return
 

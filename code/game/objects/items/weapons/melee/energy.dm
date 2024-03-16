@@ -58,7 +58,7 @@
 	update_icon()
 	set_light(0,0)
 
-/obj/item/melee/energy/proc/use_charge(var/cost)
+/obj/item/melee/energy/proc/use_charge(cost)
 	if(active)
 		if(bcell)
 			if(bcell.checked_use(cost))
@@ -281,7 +281,7 @@
 	..()
 	attack_verb = list()
 
-/obj/item/melee/energy/sword/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
+/obj/item/melee/energy/sword/handle_shield(mob/user, damage, atom/damage_source = null, mob/attacker = null, def_zone = null, attack_text = "the attack")
 	if(active && default_parry_check(user, attacker, damage_source) && prob(60))
 		user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
 
@@ -517,7 +517,7 @@
 			host._handle_inventory_hud_remove(src)
 		qdel(src)
 
-/obj/item/melee/energy/blade/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
+/obj/item/melee/energy/blade/handle_shield(mob/user, damage, atom/damage_source = null, mob/attacker = null, def_zone = null, attack_text = "the attack")
 	if(default_parry_check(user, attacker, damage_source) && prob(60))
 		user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
 
@@ -584,7 +584,7 @@
 	attack_verb = list("whacked", "beat", "slapped", "thonked")
 	DelComponent(/datum/component/jousting)
 
-/obj/item/melee/energy/spear/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
+/obj/item/melee/energy/spear/handle_shield(mob/user, damage, atom/damage_source = null, mob/attacker = null, def_zone = null, attack_text = "the attack")
 	if(active && default_parry_check(user, attacker, damage_source) && prob(50))
 		user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
 		var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
@@ -621,7 +621,7 @@
 	toggleActive(user)
 	add_fingerprint(user)
 
-/obj/item/melee/energy/hfmachete/proc/toggleActive(mob/user, var/togglestate = "")
+/obj/item/melee/energy/hfmachete/proc/toggleActive(mob/user, togglestate = "")
 	switch(togglestate)
 		if("on")
 			active = 1

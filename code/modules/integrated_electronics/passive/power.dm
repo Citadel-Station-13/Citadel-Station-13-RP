@@ -62,7 +62,7 @@
 	origin_tech = list(TECH_POWER = 4, TECH_ENGINEERING = 4, TECH_DATA = 4, TECH_BIO = 5)
 	spawn_flags = IC_SPAWN_RESEARCH
 
-/obj/item/integrated_circuit/passive/power/metabolic_siphon/proc/test_validity(var/mob/living/carbon/human/host)
+/obj/item/integrated_circuit/passive/power/metabolic_siphon/proc/test_validity(mob/living/carbon/human/host)
 	if(!host || host.isSynthetic() || host.stat == DEAD || host.nutrition <= 10)
 		return FALSE // Robots and dead people don't have a metabolism.
 	return TRUE
@@ -85,7 +85,7 @@
 	origin_tech = list(TECH_POWER = 3, TECH_ENGINEERING = 4, TECH_DATA = 3)
 	spawn_flags = IC_SPAWN_RESEARCH
 
-/obj/item/integrated_circuit/passive/power/metabolic_siphon/synthetic/test_validity(var/mob/living/carbon/human/host)
+/obj/item/integrated_circuit/passive/power/metabolic_siphon/synthetic/test_validity(mob/living/carbon/human/host)
 	if(!host || !host.isSynthetic() || host.stat == DEAD || host.nutrition <= 10)
 		return FALSE // This time we don't want a metabolism.
 	return TRUE

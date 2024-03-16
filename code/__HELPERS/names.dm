@@ -19,7 +19,7 @@ var/church_name = null
 	if(istype((LEGACY_MAP_DATUM)))
 		return (LEGACY_MAP_DATUM).boss_name
 
-/proc/change_command_name(var/name)
+/proc/change_command_name(name)
 
 	(LEGACY_MAP_DATUM).boss_name = name
 
@@ -100,7 +100,7 @@ var/religion_name = null
 	return new_station_name
 
 // Is this even used?
-/proc/world_name(var/name)
+/proc/world_name(name)
 
 	(LEGACY_MAP_DATUM).station_name = name
 

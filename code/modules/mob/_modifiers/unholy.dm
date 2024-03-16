@@ -155,7 +155,7 @@
 	on_expired_text = "<span class='notice'>The blaze of hunger inside you has been snuffed.</span>"
 	stacks = MODIFIER_STACK_EXTEND
 
-/datum/modifier/gluttonyregeneration/can_apply(var/mob/living/L)
+/datum/modifier/gluttonyregeneration/can_apply(mob/living/L)
 	if(L.stat == DEAD)
 		to_chat(L, "<span class='warning'>You can't be dead to consume.</span>")
 		return FALSE

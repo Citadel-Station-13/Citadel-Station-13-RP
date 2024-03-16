@@ -85,7 +85,7 @@
 
 
 /*
-/obj/item/organ/external/proc/stun_act(var/stun_amount, var/agony_amount)
+/obj/item/organ/external/proc/stun_act(stun_amount, agony_amount)
 	return
 	if(agony_amount > 5 && owner && vital && get_pain() > 0.5 * max_damage)
 		owner.visible_message("<span class='warning'>[owner] reels in pain!</span>")

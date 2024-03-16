@@ -86,7 +86,7 @@
 	shank_gland = new(50)
 	shank_gland.my_atom = src
 
-/mob/living/simple_mob/animal/gutshank/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/mob/living/simple_mob/animal/gutshank/attackby(obj/item/O as obj, mob/user as mob)
 	var/obj/item/reagent_containers/glass/G = O
 	if(stat == CONSCIOUS && istype(G) && G.is_open_container())
 		user.visible_message("<span class='notice'>[user] milks [src] using \the [O].</span>")
@@ -135,7 +135,7 @@
 			if(L.can_inject(src, null, target_zone))
 				blood_drink(L, target_zone)
 
-/mob/living/simple_mob/animal/gutshank/proc/blood_drink(var/mob/living/carbon/human/M)
+/mob/living/simple_mob/animal/gutshank/proc/blood_drink(mob/living/carbon/human/M)
 	if(istype(M))
 		to_chat(M, "<span class='warning'>The [src] pierces your flesh! You feel a sickening suction!</span>")
 		M.vessel.remove_reagent("blood",rand(10,20))
@@ -200,7 +200,7 @@
 
 	var/rideable = 0
 
-/mob/living/simple_mob/animal/shank/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/mob/living/simple_mob/animal/shank/attackby(obj/item/O as obj, mob/user as mob)
 	. = ..()
 	if(istype(O, /obj/item/saddle/shank) && !rideable)
 		to_chat(user, "<span class='danger'>You sling the [O] onto the [src]! It may now be ridden safely!</span>")
@@ -259,7 +259,7 @@
 			if(L.can_inject(src, null, target_zone))
 				blood_drink(L, target_zone)
 
-/mob/living/simple_mob/animal/shank/proc/blood_drink(var/mob/living/carbon/human/M)
+/mob/living/simple_mob/animal/shank/proc/blood_drink(mob/living/carbon/human/M)
 	if(istype(M))
 		to_chat(M, "<span class='warning'>The [src] pierces your flesh! You feel a sickening suction!</span>")
 		M.vessel.remove_reagent("blood",rand(20,25))

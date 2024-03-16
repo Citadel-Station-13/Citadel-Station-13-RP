@@ -126,7 +126,7 @@
 //datum/computer/file/embedded_program/airlock/phoron
 
 
-/datum/computer/file/embedded_program/airlock/phoron/New(var/obj/machinery/embedded_controller/M)
+/datum/computer/file/embedded_program/airlock/phoron/New(obj/machinery/embedded_controller/M)
 	..(M)
 	memory["chamber_sensor_phoron"] = 0
 	// warning: hardcode alert

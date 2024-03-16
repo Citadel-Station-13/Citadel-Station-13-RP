@@ -38,7 +38,7 @@
 	return ..()
 
 // This is not great.
-/turf/simulated/proc/wet_floor(var/wet_val = 1)
+/turf/simulated/proc/wet_floor(wet_val = 1)
 	if(wet > 2)	//Can't mop up ice
 		return
 	spawn(0)
@@ -75,7 +75,7 @@
 		B.clean_blood()
 	..()
 
-/turf/simulated/proc/AddTracks(var/typepath,var/bloodDNA,var/comingdir,var/goingdir,var/bloodcolor="#A10808")
+/turf/simulated/proc/AddTracks(typepath,bloodDNA,comingdir,goingdir,bloodcolor="#A10808")
 	var/obj/effect/debris/cleanable/blood/tracks/tracks = locate(typepath) in src
 	if(!tracks)
 		tracks = new typepath(src)

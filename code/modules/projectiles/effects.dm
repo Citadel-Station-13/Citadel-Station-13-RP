@@ -4,11 +4,11 @@
 	plane = ABOVE_PLANE
 	mouse_opacity = 0
 
-/obj/effect/projectile/proc/set_transform(var/matrix/M)
+/obj/effect/projectile/proc/set_transform(matrix/M)
 	if(istype(M))
 		transform = M
 
-/obj/effect/projectile/proc/activate(var/kill_delay = 5)
+/obj/effect/projectile/proc/activate(kill_delay = 5)
 	update_light()
 	spawn(kill_delay)
 		qdel(src)	//see effect_system.dm - sets loc to null and lets GC handle removing these effects

@@ -1,5 +1,5 @@
 /// Like orange but only checks north/south/east/west for one step.
-/proc/cardinalrange(var/center)
+/proc/cardinalrange(center)
 	var/list/things = list()
 	for(var/direction in GLOB.cardinal)
 		var/turf/T = get_step(center, direction)
@@ -34,7 +34,7 @@
 	. = ..()
 	controllerscan()
 
-/obj/machinery/am_shielding/proc/controllerscan(var/priorscan = 0)
+/obj/machinery/am_shielding/proc/controllerscan(priorscan = 0)
 	//Make sure we are the only one here
 	if(!istype(src.loc, /turf))
 		qdel(src)
@@ -99,7 +99,7 @@
 	return
 
 
-/obj/machinery/am_shielding/bullet_act(var/obj/projectile/Proj)
+/obj/machinery/am_shielding/bullet_act(obj/projectile/Proj)
 	if(Proj.damage_flag != "bullet")
 		stability -= Proj.damage/2
 	return 0
@@ -134,7 +134,7 @@
 
 
 //Call this to link a detected shilding unit to the controller
-/obj/machinery/am_shielding/proc/link_control(var/obj/machinery/power/am_control_unit/AMC)
+/obj/machinery/am_shielding/proc/link_control(obj/machinery/power/am_control_unit/AMC)
 	if(!istype(AMC))	return 0
 	if(control_unit && control_unit != AMC) return 0//Already have one
 	control_unit = AMC
@@ -168,7 +168,7 @@
 	return
 
 
-/obj/machinery/am_shielding/proc/check_stability(var/injecting_fuel = 0)
+/obj/machinery/am_shielding/proc/check_stability(injecting_fuel = 0)
 	if(stability > 0) return
 	if(injecting_fuel && control_unit)
 		control_unit.exploding = 1
@@ -177,7 +177,7 @@
 	return
 
 
-/obj/machinery/am_shielding/proc/recalc_efficiency(var/new_efficiency)//tbh still not 100% sure how I want to deal with efficiency so this is likely temp
+/obj/machinery/am_shielding/proc/recalc_efficiency(new_efficiency)//tbh still not 100% sure how I want to deal with efficiency so this is likely temp
 	if(!control_unit || !processing) return
 	if(stability < 50)
 		new_efficiency /= 2
@@ -199,7 +199,7 @@
 	throw_range = 2
 	materials_base = list(MAT_STEEL = 100)
 
-/obj/item/am_shielding_container/attackby(var/obj/item/I, var/mob/user)
+/obj/item/am_shielding_container/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/multitool) && istype(src.loc,/turf))
 		new/obj/machinery/am_shielding(src.loc)
 		qdel(src)

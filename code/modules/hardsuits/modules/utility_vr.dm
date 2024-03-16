@@ -48,7 +48,7 @@
 	to_chat(H,"<span class='notice'>Your disable the P.A.T. module.</span>")
 	UnregisterSignal(H, COMSIG_MOVABLE_MOVED)
 
-/obj/item/hardsuit_module/pat_module/proc/boop(var/mob/living/carbon/human/user,var/turf/To,var/turf/Tn)
+/obj/item/hardsuit_module/pat_module/proc/boop(mob/living/carbon/human/user,turf/To,turf/Tn)
 	if(!istype(user) || !istype(To) || !istype(Tn))
 		deactivate() //They were picked up or something, or put themselves in a locker, who knows. Just turn off.
 		return

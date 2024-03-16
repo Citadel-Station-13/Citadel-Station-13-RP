@@ -26,7 +26,7 @@
 		master = null
 	return ..()
 
-/obj/machinery/power/terminal/hide(var/i)
+/obj/machinery/power/terminal/hide(i)
 	invisibility = i ? 101 : 0
 	icon_state = i ? "term-f" : "term"
 
@@ -38,6 +38,6 @@
 /obj/machinery/power/terminal/process(delta_time)
 	return 1
 
-/obj/machinery/power/terminal/overload(var/obj/machinery/power/source)
+/obj/machinery/power/terminal/overload(obj/machinery/power/source)
 	if(master)
 		master.overload(source)

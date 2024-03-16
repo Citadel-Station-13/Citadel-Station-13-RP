@@ -232,7 +232,7 @@ GLOBAL_LIST_EMPTY(smeses)
 		return 0
 	return 1
 
-/obj/machinery/power/smes/draw_power(var/amount)
+/obj/machinery/power/smes/draw_power(amount)
 	if(terminal && terminal.powernet)
 		return terminal.powernet.draw_power(amount)
 	return 0
@@ -245,7 +245,7 @@ GLOBAL_LIST_EMPTY(smeses)
 	add_fingerprint(user)
 	ui_interact(user)
 
-/obj/machinery/power/smes/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/machinery/power/smes/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_screwdriver())
 		if(!open_hatch)
 			open_hatch = 1
@@ -378,7 +378,7 @@ GLOBAL_LIST_EMPTY(smeses)
 				output_level = clamp(target, 0, output_level_max)
 
 /*
-/obj/machinery/power/smes/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/power/smes/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)
 
 	if(machine_stat & BROKEN)
 		return
@@ -422,7 +422,7 @@ GLOBAL_LIST_EMPTY(smeses)
 		// auto update every Master Controller tick
 		ui.set_auto_update(1)
 
-/obj/machinery/power/smes/buildable/main/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/power/smes/buildable/main/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)
 
 	if (!ui)
 		ui = new(user, src, ui_key, "smesmain.tmpl", "SMES Unit", 540, 405)
@@ -510,12 +510,12 @@ GLOBAL_LIST_EMPTY(smeses)
 			smoke.attach(src)
 			smoke.start()
 
-/obj/machinery/power/smes/proc/inputting(var/do_input)
+/obj/machinery/power/smes/proc/inputting(do_input)
 	input_attempt = do_input
 	if(!input_attempt)
 		inputting = 0
 
-/obj/machinery/power/smes/proc/outputting(var/do_output)
+/obj/machinery/power/smes/proc/outputting(do_output)
 	output_attempt = do_output
 	if(!output_attempt)
 		outputting = 0

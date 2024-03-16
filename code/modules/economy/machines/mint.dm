@@ -372,7 +372,7 @@
 	wires = null
 	return ..()
 
-/obj/machinery/coinbank/proc/accept_check(var/obj/item/O as obj)
+/obj/machinery/coinbank/proc/accept_check(obj/item/O as obj)
 	if(istype(O,/obj/item/coin))
 		return 1
 	return 0
@@ -484,7 +484,7 @@
 *   SmartFridge Menu
 ********************/
 
-/obj/machinery/coinbank/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/coinbank/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)
 	user.set_machine(src)
 
 	var/data[0]

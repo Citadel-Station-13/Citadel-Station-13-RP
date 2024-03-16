@@ -7,7 +7,7 @@ meteor_act
 
 */
 
-/mob/living/carbon/human/bullet_act(var/obj/projectile/P, var/def_zone)
+/mob/living/carbon/human/bullet_act(obj/projectile/P, def_zone)
 	def_zone = check_zone(def_zone)
 	if(!has_organ(def_zone))
 		return PROJECTILE_FORCE_MISS //if they don't have the organ in question then the projectile just passes by.
@@ -39,7 +39,7 @@ meteor_act
 
 	return ..()
 
-/mob/living/carbon/human/stun_effect_act(var/stun_amount, var/agony_amount, var/def_zone)
+/mob/living/carbon/human/stun_effect_act(stun_amount, agony_amount, def_zone)
 	var/obj/item/organ/external/affected = get_organ(check_zone(def_zone))
 	var/siemens_coeff = get_siemens_coefficient_organ(affected)
 	if(fire_stacks < 0) // Water makes you more conductive.
@@ -68,7 +68,7 @@ meteor_act
 
 	..(stun_amount, agony_amount, def_zone)
 
-/mob/living/carbon/human/legacy_mob_armor(var/def_zone, var/type)
+/mob/living/carbon/human/legacy_mob_armor(def_zone, type)
 	var/armorval = 0
 	var/total = 0
 
@@ -91,7 +91,7 @@ meteor_act
 	return (armorval/max(total, 1))
 
 //Like legacy_mob_armor, but the value it returns will be numerical damage reduction
-/mob/living/carbon/human/legacy_mob_soak(var/def_zone, var/type)
+/mob/living/carbon/human/legacy_mob_soak(def_zone, type)
 	var/soakval = 0
 	var/total = 0
 
@@ -114,7 +114,7 @@ meteor_act
 	return (soakval/max(total, 1))
 
 //this proc returns the Siemens coefficient of electrical resistivity for a particular external organ.
-/mob/living/carbon/human/proc/get_siemens_coefficient_organ(var/obj/item/organ/external/def_zone)
+/mob/living/carbon/human/proc/get_siemens_coefficient_organ(obj/item/organ/external/def_zone)
 	if (!def_zone)
 		return 1.0
 
@@ -155,7 +155,7 @@ meteor_act
 	return min(1 - get_siemens_coefficient_average(), 1) // Don't go above 1, but negatives are fine.
 
 // Returns a list of clothing that is currently covering def_zone.
-/mob/living/carbon/human/proc/get_clothing_list_organ(var/obj/item/organ/external/def_zone, var/type)
+/mob/living/carbon/human/proc/get_clothing_list_organ(obj/item/organ/external/def_zone, type)
 	var/list/results = list()
 	var/list/clothing_items = list(head, wear_mask, wear_suit, w_uniform, gloves, shoes)
 	for(var/obj/item/clothing/C in clothing_items)
@@ -164,7 +164,7 @@ meteor_act
 	return results
 
 //this proc returns the armour value for a particular external organ.
-/mob/living/carbon/human/proc/getarmor_organ(var/obj/item/organ/external/def_zone, var/type)
+/mob/living/carbon/human/proc/getarmor_organ(obj/item/organ/external/def_zone, type)
 	if(!type || !def_zone)
 		return 0
 	var/protection = 0
@@ -173,7 +173,7 @@ meteor_act
 		protection += gear.fetch_armor().raw(type) * 100
 	return protection
 
-/mob/living/carbon/human/proc/getsoak_organ(var/obj/item/organ/external/def_zone, var/type)
+/mob/living/carbon/human/proc/getsoak_organ(obj/item/organ/external/def_zone, type)
 	if(!type || !def_zone)
 		return 0
 	var/soaked = 0
@@ -207,14 +207,14 @@ meteor_act
 			return gear
 	return null
 
-/mob/living/carbon/human/proc/check_shields(var/damage = 0, var/atom/damage_source = null, var/mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
+/mob/living/carbon/human/proc/check_shields(damage = 0, atom/damage_source = null, mob/attacker = null, def_zone = null, attack_text = "the attack")
 	for(var/obj/item/shield in list(l_hand, r_hand, wear_suit))
 		if(!shield) continue
 		. = shield.handle_shield(src, damage, damage_source, attacker, def_zone, attack_text)
 		if(.) return
 	return 0
 
-/mob/living/carbon/human/resolve_item_attack(obj/item/I, mob/living/user, var/target_zone)
+/mob/living/carbon/human/resolve_item_attack(obj/item/I, mob/living/user, target_zone)
 	if(check_neckgrab_attack(I, user, target_zone))
 		return null
 
@@ -236,7 +236,7 @@ meteor_act
 
 	return hit_zone
 
-/mob/living/carbon/human/hit_with_weapon(obj/item/I, mob/living/user, var/effective_force, var/hit_zone)
+/mob/living/carbon/human/hit_with_weapon(obj/item/I, mob/living/user, effective_force, hit_zone)
 	var/obj/item/organ/external/affecting = get_organ(hit_zone)
 	if(!affecting)
 		return //should be prevented by attacked_with_item() but for sanity.
@@ -249,7 +249,7 @@ meteor_act
 
 	return blocked
 
-/mob/living/carbon/human/standard_weapon_hit_effects(obj/item/I, mob/living/user, var/effective_force, var/blocked, var/soaked, var/hit_zone)
+/mob/living/carbon/human/standard_weapon_hit_effects(obj/item/I, mob/living/user, effective_force, blocked, soaked, hit_zone)
 	var/obj/item/organ/external/affecting = get_organ(hit_zone)
 	if(!affecting)
 		return 0
@@ -315,7 +315,7 @@ meteor_act
 
 	return 1
 
-/mob/living/carbon/human/proc/attack_joint(var/obj/item/organ/external/organ, var/obj/item/W, var/effective_force, var/dislocate_mult, var/blocked, var/soaked)
+/mob/living/carbon/human/proc/attack_joint(obj/item/organ/external/organ, obj/item/W, effective_force, dislocate_mult, blocked, soaked)
 	if(!organ || (organ.dislocated == 2) || (organ.dislocated == -1) || blocked >= 100)
 		return 0
 
@@ -333,7 +333,7 @@ meteor_act
 		return 1
 	return 0
 
-/mob/living/carbon/human/emag_act(var/remaining_charges, mob/user, var/emag_source)
+/mob/living/carbon/human/emag_act(remaining_charges, mob/user, emag_source)
 	var/obj/item/organ/external/affecting = get_organ(user.zone_sel.selecting)
 	if(!affecting || !(affecting.robotic >= ORGAN_ROBOT))
 		to_chat(user, "<span class='warning'>That limb isn't robotic.</span>")
@@ -451,7 +451,7 @@ meteor_act
 					pinned += O
 
 // This does a prob check to catch the thing flying at you, with a minimum of 1%
-/mob/living/carbon/human/proc/can_catch(var/obj/O)
+/mob/living/carbon/human/proc/can_catch(obj/O)
 	if(!get_active_held_item())	// If active hand is empty
 		var/obj/item/organ/external/temp = organs_by_name["r_hand"]
 		if (hand)
@@ -478,7 +478,7 @@ meteor_act
 		return TRUE
 	return FALSE
 
-/mob/living/carbon/human/embed(var/obj/O, var/def_zone=null)
+/mob/living/carbon/human/embed(obj/O, def_zone=null)
 	if(!def_zone) ..()
 
 	var/obj/item/organ/external/affecting = get_organ(def_zone)
@@ -486,7 +486,7 @@ meteor_act
 		affecting.embed(O)
 
 
-/mob/living/carbon/human/proc/bloody_hands(var/mob/living/source, var/amount = 2)
+/mob/living/carbon/human/proc/bloody_hands(mob/living/source, amount = 2)
 	if (gloves)
 		gloves.add_blood(source)
 		gloves:transfer_blood = amount
@@ -497,7 +497,7 @@ meteor_act
 		bloody_hands_mob = source
 	update_inv_gloves()		//updates on-mob overlays for bloody hands and/or bloody gloves
 
-/mob/living/carbon/human/proc/bloody_body(var/mob/living/source)
+/mob/living/carbon/human/proc/bloody_body(mob/living/source)
 	if(wear_suit)
 		wear_suit.add_blood(source)
 		update_inv_wear_suit(0)
@@ -505,7 +505,7 @@ meteor_act
 		w_uniform.add_blood(source)
 		update_inv_w_uniform(0)
 
-/mob/living/carbon/human/proc/handle_suit_punctures(var/damtype, var/damage, var/def_zone)
+/mob/living/carbon/human/proc/handle_suit_punctures(damtype, damage, def_zone)
 
 	// Tox and oxy don't matter to suits.
 	if(damtype != BURN && damtype != BRUTE) return

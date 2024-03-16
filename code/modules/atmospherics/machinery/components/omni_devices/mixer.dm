@@ -203,7 +203,7 @@
 
 	update_icon()
 
-/obj/machinery/atmospherics/component/quaternary/mixer/proc/switch_mode(var/port = NORTH, var/mode = ATM_NONE)
+/obj/machinery/atmospherics/component/quaternary/mixer/proc/switch_mode(port = NORTH, mode = ATM_NONE)
 	if(mode != ATM_INPUT && mode != ATM_OUTPUT)
 		switch(mode)
 			if("in")
@@ -243,7 +243,7 @@
 	update_ports()
 	rebuild_mixing_inputs()
 
-/obj/machinery/atmospherics/component/quaternary/mixer/proc/change_concentration(var/port = NORTH)
+/obj/machinery/atmospherics/component/quaternary/mixer/proc/change_concentration(port = NORTH)
 	tag_north_con = null
 	tag_south_con = null
 	tag_east_con = null
@@ -291,7 +291,7 @@
 	for(var/datum/omni_port/P in inputs)
 		mixing_inputs[P.air] = P.concentration
 
-/obj/machinery/atmospherics/component/quaternary/mixer/proc/con_lock(var/port = NORTH)
+/obj/machinery/atmospherics/component/quaternary/mixer/proc/con_lock(port = NORTH)
 	for(var/datum/omni_port/P in inputs)
 		if(P.dir == port)
 			P.con_lock = !P.con_lock

@@ -6,11 +6,11 @@
 	name = "Media"
 	sort_order = 5
 
-/datum/category_item/player_setup_item/player_global/media/load_preferences(var/savefile/S)
+/datum/category_item/player_setup_item/player_global/media/load_preferences(savefile/S)
 	S["media_volume"]	>> pref.media_volume
 	S["media_player"]	>> pref.media_player
 
-/datum/category_item/player_setup_item/player_global/media/save_preferences(var/savefile/S)
+/datum/category_item/player_setup_item/player_global/media/save_preferences(savefile/S)
 	S["media_volume"]	<< pref.media_volume
 	S["media_player"]	<< pref.media_player
 
@@ -30,7 +30,7 @@
 	. += (pref.media_player == 0) ? "<span class='linkOn'><b>VLC</b></span> " : "<a href='?src=\ref[src];set_media_player=0'>VLC</a> "
 	. += "<br>"
 
-/datum/category_item/player_setup_item/player_global/media/OnTopic(var/href, var/list/href_list, var/mob/user)
+/datum/category_item/player_setup_item/player_global/media/OnTopic(href, list/href_list, mob/user)
 	if(href_list["change_media_volume"])
 		if(CanUseTopic(user))
 			var/value = input("Choose your Jukebox volume (0-100%)", "Jukebox volume", round(pref.media_volume * 100))

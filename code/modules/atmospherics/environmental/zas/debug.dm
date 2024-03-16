@@ -58,7 +58,7 @@ var/image/mark = image('icons/testing/Zone.dmi', icon_state = "mark")
 
 /client/var/list/zone_debug_images
 
-/client/proc/Test_ZAS_Connection(var/turf/simulated/T as turf)
+/client/proc/Test_ZAS_Connection(turf/simulated/T as turf)
 	set category = "Debug"
 	if(!istype(T))
 		return

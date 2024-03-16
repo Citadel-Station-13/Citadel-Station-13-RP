@@ -284,7 +284,7 @@
 	writer.tick(delta_time)
 
 //! todo : saycode refactor
-/obj/item/tape_recorder/hear_talk(mob/living/M as mob, msg, var/verb="says", datum/language/speaking=null)
+/obj/item/tape_recorder/hear_talk(mob/living/M as mob, msg, verb="says", datum/language/speaking=null)
 	if(!recording)
 		return
 	var/datum/cassette_tape_iterator/write/writer = tape_iterator
@@ -293,7 +293,7 @@
 	else
 		writer.write_speech(msg, M.name, speaking.id)
 
-/obj/item/tape_recorder/see_emote(mob/M as mob, text, var/emote_type)
+/obj/item/tape_recorder/see_emote(mob/M as mob, text, emote_type)
 	if(emote_type != 2) //only hearable emotes
 		return
 	if(!recording)
@@ -315,7 +315,7 @@
 	writer.write_emote(recordedtext)
 //! end
 
-/obj/item/tape_recorder/emag_act(var/remaining_charges, var/mob/user)
+/obj/item/tape_recorder/emag_act(remaining_charges, mob/user)
 	if(obj_flags & OBJ_EMAGGED)
 		obj_flags |= OBJ_EMAGGED
 		recording = 0

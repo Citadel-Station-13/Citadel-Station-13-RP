@@ -27,7 +27,7 @@
 	else
 		set_light(0)
 
-/obj/machinery/bodyscanner/attackby(var/obj/item/G, user as mob)
+/obj/machinery/bodyscanner/attackby(obj/item/G, user as mob)
 	if(!istype(G))
 		return ..()
 	if(istype(G, /obj/item/grab))
@@ -185,7 +185,7 @@
 		scanner.console = null
 	return ..()
 
-/obj/machinery/body_scanconsole/attackby(var/obj/item/I, var/mob/user)
+/obj/machinery/body_scanconsole/attackby(obj/item/I, mob/user)
 	if(computer_deconstruction_screwdriver(user, I))
 		return
 	else if(istype(I, /obj/item/multitool)) //Did you want to link it?
@@ -257,7 +257,7 @@
 	if(scanner)
 		return nano_ui_interact(user)
 
-/obj/machinery/body_scanconsole/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/body_scanconsole/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)
 	var/data[0]
 
 	data["connected"] = scanner ? 1 : 0
@@ -657,7 +657,7 @@
 		if(console)
 			console.update_icon(h_ratio)
 
-/obj/machinery/body_scanconsole/update_icon(var/h_ratio)
+/obj/machinery/body_scanconsole/update_icon(h_ratio)
 	if(machine_stat & (NOPOWER|BROKEN))
 		icon_state = "scanner_terminal_off"
 		set_light(0)

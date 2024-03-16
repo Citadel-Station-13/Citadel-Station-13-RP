@@ -49,7 +49,7 @@
 	ui_interact(user)
 
 // Uses dark magic to operate the TGUI of this computer.
-/obj/machinery/computer/power_monitor/ui_interact(mob/user, var/datum/tgui/ui = null)
+/obj/machinery/computer/power_monitor/ui_interact(mob/user, datum/tgui/ui = null)
 	power_monitor.ui_interact(user, ui)
 
 // Verifies if any warnings were registered by connected sensors.

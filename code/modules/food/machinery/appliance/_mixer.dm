@@ -17,7 +17,7 @@ fundamental differences
 	idle_power_usage = 50
 	var/datum/looping_sound/mixer/mixer_loop
 
-/obj/machinery/appliance/mixer/examine(var/mob/user)
+/obj/machinery/appliance/mixer/examine(mob/user)
 	. = ..()
 	. += "<span class = 'notice'>It is currently set to make a [selected_option].</span>"
 
@@ -54,7 +54,7 @@ fundamental differences
 			CI.combine_target = selected_option
 
 
-/obj/machinery/appliance/mixer/has_space(var/obj/item/I)
+/obj/machinery/appliance/mixer/has_space(obj/item/I)
 	var/datum/cooking_item/CI = cooking_objs[1]
 	if (!CI || !CI.container)
 		return FALSE
@@ -72,7 +72,7 @@ fundamental differences
 		to_chat(user, SPAN_WARNING( "You can't remove ingredients while it's turned on! Turn it off first or wait for it to finish."))
 
 //Container is not removable
-/obj/machinery/appliance/mixer/removal_menu(var/mob/user)
+/obj/machinery/appliance/mixer/removal_menu(mob/user)
 	if (can_remove_items(user))
 		var/list/menuoptions = list()
 		for (var/a in cooking_objs)
@@ -119,14 +119,14 @@ fundamental differences
 	playsound(src, 'sound/machines/click.ogg', 40, 1)
 	update_icon()
 
-/obj/machinery/appliance/mixer/can_insert(var/obj/item/I, var/mob/user)
+/obj/machinery/appliance/mixer/can_insert(obj/item/I, mob/user)
 	if (!machine_stat)
 		user << SPAN_WARNING("You can't add items while \the [src] is running. Wait for it to finish or turn the power off to abort.")
 		return 0
 	else
 		return ..()
 
-/obj/machinery/appliance/mixer/finish_cooking(var/datum/cooking_item/CI)
+/obj/machinery/appliance/mixer/finish_cooking(datum/cooking_item/CI)
 	..()
 	machine_stat |= POWEROFF
 	playsound(src, 'sound/machines/click.ogg', 40, 1)

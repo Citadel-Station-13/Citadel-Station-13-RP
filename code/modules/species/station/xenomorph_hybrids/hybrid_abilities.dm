@@ -26,13 +26,13 @@
 		if(istype(P) && P.stored_plasma < plasma_cost)
 			return FALSE
 
-/datum/ability/species/xenomorph_hybrid/proc/check_plasmavessel(var/mob/living/carbon/human/H)
+/datum/ability/species/xenomorph_hybrid/proc/check_plasmavessel(mob/living/carbon/human/H)
 	var/obj/item/organ/internal/xenos/plasmavessel/P = H.internal_organs_by_name[O_PLASMA]
 	if(!istype(P))
 		return FALSE
 	return TRUE
 
-/datum/ability/species/xenomorph_hybrid/proc/take_plasma(var/mob/living/carbon/human/H)
+/datum/ability/species/xenomorph_hybrid/proc/take_plasma(mob/living/carbon/human/H)
 	var/obj/item/organ/internal/xenos/plasmavessel/P = H.internal_organs_by_name[O_PLASMA]
 	if(!istype(P))
 		return

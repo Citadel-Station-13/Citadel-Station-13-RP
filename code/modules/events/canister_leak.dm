@@ -24,6 +24,6 @@
 	kill()
 	return
 
-/datum/event/canister_leak/proc/break_canister(var/obj/machinery/portable_atmospherics/canister/C)
+/datum/event/canister_leak/proc/break_canister(obj/machinery/portable_atmospherics/canister/C)
 	log_debug(SPAN_DEBUGWARNING("canister_leak event: Canister [C] ([C.x],[C.y],[C.z]) destroyed."))
 	C.atom_break()

@@ -28,7 +28,7 @@
 	var/optimal_oil = 9000//90 litres of cooking oil
 
 
-/obj/machinery/appliance/cooker/fryer/examine(var/mob/user)
+/obj/machinery/appliance/cooker/fryer/examine(mob/user)
 	. = ..()
 	. += "Oil Level: [oil.total_volume]/[optimal_oil]"
 
@@ -88,7 +88,7 @@
 
 //Fryer gradually infuses any cooked food with oil. Moar calories
 //This causes a slow drop in oil levels, encouraging refill after extended use
-/obj/machinery/appliance/cooker/fryer/do_cooking_tick(var/datum/cooking_item/CI)
+/obj/machinery/appliance/cooker/fryer/do_cooking_tick(datum/cooking_item/CI)
 	if(..() && (CI.oil < CI.max_oil) && prob(20))
 		var/datum/reagents/buffer = new /datum/reagents(2)
 		oil.trans_to_holder(buffer, min(0.5, CI.max_oil - CI.oil))
@@ -99,7 +99,7 @@
 //To solve any odd logic problems with results having oil as part of their compiletime ingredients.
 //Upon finishing a recipe the fryer will analyse any oils in the result, and replace them with our oil
 //As well as capping the total to the max oil
-/obj/machinery/appliance/cooker/fryer/finish_cooking(var/datum/cooking_item/CI)
+/obj/machinery/appliance/cooker/fryer/finish_cooking(datum/cooking_item/CI)
 	..()
 	var/total_oil = 0
 	var/total_our_oil = 0
@@ -139,7 +139,7 @@
 
 
 
-/obj/machinery/appliance/cooker/fryer/cook_mob(var/mob/living/victim, var/mob/user)
+/obj/machinery/appliance/cooker/fryer/cook_mob(mob/living/victim, mob/user)
 
 	if(!istype(victim))
 		return
@@ -208,7 +208,7 @@
 	//Coat the victim in some oil
 	oil.trans_to(victim, 40)
 
-/obj/machinery/appliance/cooker/fryer/attackby(var/obj/item/I, var/mob/user)
+/obj/machinery/appliance/cooker/fryer/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/reagent_containers/glass) && I.reagents)
 		if (I.reagents.total_volume <= 0 && oil)
 			//Its empty, handle scooping some hot oil out of the fryer

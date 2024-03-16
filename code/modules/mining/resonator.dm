@@ -22,7 +22,7 @@
 	origin_tech =  list(TECH_MATERIAL = 4, TECH_POWER = 3, TECH_MAGNET = 3, TECH_ENGINEERING = 3)
 	fieldlimit = 5
 
-/obj/item/resonator/proc/CreateResonance(var/target, var/creator)
+/obj/item/resonator/proc/CreateResonance(target, creator)
 	var/turf/T = get_turf(target)
 	if(locate(/obj/effect/resonance) in T)
 		return
@@ -60,7 +60,7 @@
 	mouse_opacity = 0
 	var/resonance_damage = 20
 
-/obj/effect/resonance/Initialize(mapload, var/creator = null, var/timetoburst)
+/obj/effect/resonance/Initialize(mapload, creator = null, timetoburst)
 	. = ..()
 	// Start small and grow to big size as we are about to burst
 	transform = matrix()*0.75
@@ -70,7 +70,7 @@
 		if(!QDELETED(src))
 			burst(creator)
 
-/obj/effect/resonance/proc/burst(var/creator = null)
+/obj/effect/resonance/proc/burst(creator = null)
 	var/turf/T = get_turf(src)
 	if(!T)
 		return

@@ -116,7 +116,7 @@ Thus, the two variables affect pump operation are set in New():
 		add_underlay(T, node1, turn(dir, -180), node1?.icon_connect_type)
 		add_underlay(T, node2, dir, node2?.icon_connect_type)
 
-/obj/machinery/atmospherics/component/binary/pump/hide(var/i)
+/obj/machinery/atmospherics/component/binary/pump/hide(i)
 	update_underlays()
 
 /obj/machinery/atmospherics/component/binary/pump/process(delta_time)
@@ -268,7 +268,7 @@ Thus, the two variables affect pump operation are set in New():
 	if(old_stat != machine_stat)
 		update_icon()
 
-/obj/machinery/atmospherics/component/binary/pump/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/machinery/atmospherics/component/binary/pump/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/pen))
 		var/new_name = input(user, "Please enter the new name for this device:", "New Name")  as text|null
 		new_name = trim(new_name)

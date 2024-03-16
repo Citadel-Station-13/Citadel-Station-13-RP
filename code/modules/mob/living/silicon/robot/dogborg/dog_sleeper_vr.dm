@@ -151,7 +151,7 @@
 				message_admins("[key_name(hound)] has eaten [key_name(patient)] as a dogborg. ([hound ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[hound.x];Y=[hound.y];Z=[hound.z]'>JMP</a>" : "null"])")
 				playsound(hound, gulpsound, vol = 100, vary = 1, falloff = 0.1, preference = /datum/client_preference/eating_noises)
 
-/obj/item/dogborg/sleeper/proc/go_out(var/target)
+/obj/item/dogborg/sleeper/proc/go_out(target)
 	hound = src.loc
 	items_preserved.Cut()
 	cleaning = 0
@@ -172,7 +172,7 @@
 	else //You clicked eject with nothing in you, let's just reset stuff to be sure.
 		update_patient()
 
-/obj/item/dogborg/sleeper/proc/drain(var/amt = 3) //Slightly reduced cost (before, it was always injecting inaprov)
+/obj/item/dogborg/sleeper/proc/drain(amt = 3) //Slightly reduced cost (before, it was always injecting inaprov)
 	hound = src.loc
 	if(istype(hound,/obj/item/robot_module))
 		hound = hound.loc

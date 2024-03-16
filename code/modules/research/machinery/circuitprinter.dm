@@ -124,7 +124,7 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 				var/obj/item/stack/S = new path(loc)
 				S.amount = round(stored_materials[f] / SHEET_MATERIAL_AMOUNT)
 
-/obj/machinery/r_n_d/circuit_imprinter/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/machinery/r_n_d/circuit_imprinter/attackby(obj/item/O as obj, mob/user as mob)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	if(busy)
@@ -189,15 +189,15 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 	updateUsrDialog()
 	return
 
-/obj/machinery/r_n_d/circuit_imprinter/proc/addToQueue(var/datum/design/D)
+/obj/machinery/r_n_d/circuit_imprinter/proc/addToQueue(datum/design/D)
 	queue += D
 	return
 
-/obj/machinery/r_n_d/circuit_imprinter/proc/removeFromQueue(var/index)
+/obj/machinery/r_n_d/circuit_imprinter/proc/removeFromQueue(index)
 	queue.Cut(index, index + 1)
 	return
 
-/obj/machinery/r_n_d/circuit_imprinter/proc/canBuild(var/datum/design/D)
+/obj/machinery/r_n_d/circuit_imprinter/proc/canBuild(datum/design/D)
 	for(var/M in D.materials_base)
 		if(stored_materials[M] < (D.materials_base[M] * mat_efficiency))
 			return 0
@@ -206,7 +206,7 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 			return 0
 	return 1
 
-/obj/machinery/r_n_d/circuit_imprinter/proc/getLackingMaterials(var/datum/design/D)
+/obj/machinery/r_n_d/circuit_imprinter/proc/getLackingMaterials(datum/design/D)
 	var/ret = ""
 	for(var/M in D.materials_base)
 		if(stored_materials[M] < D.materials_base[M])
@@ -220,7 +220,7 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 			ret += C
 	return ret
 
-/obj/machinery/r_n_d/circuit_imprinter/proc/build(var/datum/design/D)
+/obj/machinery/r_n_d/circuit_imprinter/proc/build(datum/design/D)
 	var/power = active_power_usage
 	for(var/M in D.materials_base)
 		power += round(D.materials_base[M] / 5)

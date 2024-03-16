@@ -13,7 +13,7 @@
 	var/obj/item/assembly/a_right = null
 	var/obj/special_assembly = null
 
-/obj/item/assembly_holder/proc/attach(var/obj/item/assembly/D, var/obj/item/assembly/D2, var/mob/user)
+/obj/item/assembly_holder/proc/attach(obj/item/assembly/D, obj/item/assembly/D2, mob/user)
 	if(!D || !D2)
 		return FALSE
 
@@ -91,7 +91,7 @@
 		a_right.holder_movement()
 	..()
 
-/obj/item/assembly_holder/attackby(var/obj/item/W, var/mob/user)
+/obj/item/assembly_holder/attackby(obj/item/W, mob/user)
 	if(W.is_screwdriver())
 		if(!a_left || !a_right)
 			to_chat(user, "<span class='warning'> BUG:Assembly part missing, please report this!</span>")
@@ -140,7 +140,7 @@
 		qdel(src)
 
 
-/obj/item/assembly_holder/proc/process_activation(var/obj/D, var/normal = 1)
+/obj/item/assembly_holder/proc/process_activation(obj/D, normal = 1)
 	if(!D)
 		return FALSE
 	if(!secured)

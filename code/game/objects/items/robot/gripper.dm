@@ -299,13 +299,13 @@
 		/obj/item/material/gravemarker
 		)
 
-/obj/item/gripper/no_use/organ/Entered(var/atom/movable/AM)
+/obj/item/gripper/no_use/organ/Entered(atom/movable/AM)
 	..()
 	if(istype(AM, /obj/item/organ))
 		var/obj/item/organ/O = AM
 		O.preserve(GRIPPER_TRAIT)
 
-/obj/item/gripper/no_use/organ/Exited(var/atom/movable/AM)
+/obj/item/gripper/no_use/organ/Exited(atom/movable/AM)
 	..()
 	if(istype(AM, /obj/item/organ))
 		var/obj/item/organ/O = AM

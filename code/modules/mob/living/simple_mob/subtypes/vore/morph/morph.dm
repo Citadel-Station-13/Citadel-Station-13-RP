@@ -156,7 +156,7 @@
 /mob/living/simple_mob/vore/hostile/morph/will_show_tooltip()
 	return (!morphed)
 
-/mob/living/simple_mob/vore/hostile/morph/resize(var/new_size, var/animate = TRUE)
+/mob/living/simple_mob/vore/hostile/morph/resize(new_size, animate = TRUE)
 	if(morphed && !ismob(form))
 		return
 	return ..()

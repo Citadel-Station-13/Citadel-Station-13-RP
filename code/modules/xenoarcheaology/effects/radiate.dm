@@ -7,7 +7,7 @@
 	radiation_amount = rand(RAD_INTENSITY_ANOMALY_PULSE_LOW, RAD_INTENSITY_ANOMALY_PULSE_LOW)
 	effect_type = pick(EFFECT_PARTICLE, EFFECT_ORGANIC)
 
-/datum/artifact_effect/radiate/DoEffectTouch(var/mob/living/user)
+/datum/artifact_effect/radiate/DoEffectTouch(mob/living/user)
 	radiation_pulse(holder, radiation_amount, RAD_FALLOFF_ANOMALY)
 	return 1
 

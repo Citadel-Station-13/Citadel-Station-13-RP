@@ -12,7 +12,7 @@
 	var/require_module = FALSE
 	var/installed = FALSE
 
-/obj/item/borg/upgrade/proc/action(var/mob/living/silicon/robot/R)
+/obj/item/borg/upgrade/proc/action(mob/living/silicon/robot/R)
 	if(R.stat == DEAD)
 		to_chat(usr, SPAN_WARNING("The [src] will not function on a deceased robot."))
 		return TRUE
@@ -26,7 +26,7 @@
 	item_state = "cyborg_upgrade"
 	require_module = TRUE
 
-/obj/item/borg/upgrade/reset/action(var/mob/living/silicon/robot/R)
+/obj/item/borg/upgrade/reset/action(mob/living/silicon/robot/R)
 	if(..())
 		return FALSE
 	R.module_reset()
@@ -45,7 +45,7 @@
 		return
 	heldname = sanitizeSafe(input(user, "Enter new robot name", "Robot Reclassification", heldname), MAX_NAME_LEN)
 
-/obj/item/borg/upgrade/rename/action(var/mob/living/silicon/robot/R)
+/obj/item/borg/upgrade/rename/action(mob/living/silicon/robot/R)
 	if(..())
 		return FALSE
 	R.notify_ai(ROBOT_NOTIFICATION_NEW_NAME, R.name, heldname)
@@ -62,7 +62,7 @@
 	item_state = "cyborg_upgrade"
 
 
-/obj/item/borg/upgrade/restart/action(var/mob/living/silicon/robot/R)
+/obj/item/borg/upgrade/restart/action(mob/living/silicon/robot/R)
 	if(R.health < 0)
 		to_chat(usr, "You have to repair the robot before using this module!")
 		return FALSE
@@ -86,7 +86,7 @@
 	item_state = "cyborg_upgrade"
 	require_module = TRUE
 
-/obj/item/borg/upgrade/vtec/action(var/mob/living/silicon/robot/R)
+/obj/item/borg/upgrade/vtec/action(mob/living/silicon/robot/R)
 	if(..())
 		return FALSE
 
@@ -106,7 +106,7 @@
 	require_module = TRUE
 
 
-/obj/item/borg/upgrade/tasercooler/action(var/mob/living/silicon/robot/R)
+/obj/item/borg/upgrade/tasercooler/action(mob/living/silicon/robot/R)
 	if(..())
 		return FALSE
 
@@ -141,7 +141,7 @@
 	item_state = "cyborg_upgrade"
 	require_module = TRUE
 
-/obj/item/borg/upgrade/jetpack/action(var/mob/living/silicon/robot/R)
+/obj/item/borg/upgrade/jetpack/action(mob/living/silicon/robot/R)
 	if(..())
 		return FALSE
 
@@ -167,7 +167,7 @@
 	item_state = "cyborg_upgrade"
 	require_module = TRUE
 
-/obj/item/borg/upgrade/advhealth/action(var/mob/living/silicon/robot/R)
+/obj/item/borg/upgrade/advhealth/action(mob/living/silicon/robot/R)
 	if(..())
 		return FALSE
 
@@ -193,7 +193,7 @@
 	module_flags = BORG_MODULE_MINER
 	require_module = TRUE
 
-/obj/item/borg/upgrade/bluespaceorebag/action(var/mob/living/silicon/robot/R)
+/obj/item/borg/upgrade/bluespaceorebag/action(mob/living/silicon/robot/R)
 	if(..())
 		return FALSE
 
@@ -224,7 +224,7 @@
 	item_state = "cyborg_upgrade"
 	require_module = TRUE
 
-/obj/item/borg/upgrade/syndicate/action(var/mob/living/silicon/robot/R)
+/obj/item/borg/upgrade/syndicate/action(mob/living/silicon/robot/R)
 	if(..())
 		return FALSE
 
@@ -240,7 +240,7 @@
 	icon_state = "cyborg_upgrade3"
 	item_state = "cyborg_upgrade"
 
-/obj/item/borg/upgrade/language/action(var/mob/living/silicon/robot/R)
+/obj/item/borg/upgrade/language/action(mob/living/silicon/robot/R)
 	if(..())
 		return FALSE
 
@@ -256,7 +256,7 @@
 	item_state = "cyborg_upgrade"
 	require_module = 1
 
-/obj/item/borg/upgrade/sizeshift/action(var/mob/living/silicon/robot/R)
+/obj/item/borg/upgrade/sizeshift/action(mob/living/silicon/robot/R)
 	if(..()) return FALSE
 
 	if(/mob/living/proc/set_size in R.verbs)

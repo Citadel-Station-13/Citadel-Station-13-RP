@@ -229,7 +229,7 @@
 
 	//calibrate_size()
 
-/proc/fill_cigarre_package(var/obj/item/storage/fancy/cigarettes/C, var/list/reagents)
+/proc/fill_cigarre_package(obj/item/storage/fancy/cigarettes/C, list/reagents)
 	for(var/reagent in reagents)
 		C.reagents.add_reagent(reagent, reagents[reagent] * C.max_items)
 

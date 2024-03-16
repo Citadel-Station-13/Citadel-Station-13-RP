@@ -11,11 +11,11 @@ SUBSYSTEM_DEF(persist)
 	runlevels = RUNLEVEL_GAME|RUNLEVEL_POSTGAME
 	var/list/currentrun = list()
 
-/datum/controller/subsystem/persist/fire(var/resumed = FALSE)
+/datum/controller/subsystem/persist/fire(resumed = FALSE)
 	update_department_hours(resumed)
 
 // Do PTO Accruals
-/datum/controller/subsystem/persist/proc/update_department_hours(var/resumed = FALSE)
+/datum/controller/subsystem/persist/proc/update_department_hours(resumed = FALSE)
 	if(!config_legacy.time_off)
 		return
 
@@ -87,7 +87,7 @@ SUBSYSTEM_DEF(persist)
 			return
 
 // This proc tries to find the job datum of an arbitrary mob.
-/datum/controller/subsystem/persist/proc/detect_job(var/mob/M)
+/datum/controller/subsystem/persist/proc/detect_job(mob/M)
 	// Records are usually the most reliable way to get what job someone is.
 	var/datum/data/record/R = find_general_record("name", M.real_name)
 	if(R) // We found someone with a record.
@@ -102,7 +102,7 @@ SUBSYSTEM_DEF(persist)
 		. = SSjob.get_job(M.mind.assigned_role)
 
 // This proc tries makes sure old Command PTO doesn't linger
-/datum/controller/subsystem/persist/proc/clear_unused_pto(var/mob/M)
+/datum/controller/subsystem/persist/proc/clear_unused_pto(mob/M)
 	var/client/C = M.client
 	LAZYINITLIST(C.department_hours)
 	if(C.department_hours[DEPARTMENT_COMMAND])

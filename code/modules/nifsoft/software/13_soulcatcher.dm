@@ -99,7 +99,7 @@
 			return TRUE
 	return FALSE
 
-/datum/nifsoft/soulcatcher/proc/notify_into(var/message)
+/datum/nifsoft/soulcatcher/proc/notify_into(message)
 	var/sound = nif.good_sound
 
 	to_chat(nif.human,"<b>\[[icon2html(thing = nif.big_icon, target = nif.human)]NIF\]</b> <b>Soulcatcher</b> displays, \"<span class='notice nif'>[message]</span>\"")
@@ -110,7 +110,7 @@
 		to_chat(CS,"<b>\[[icon2html(thing = nif.big_icon, target = CS)]NIF\]</b> <b>Soulcatcher</b> displays, \"<span class='notice nif'>[message]</span>\"")
 		SEND_SOUND(brainmob, sound)
 
-/datum/nifsoft/soulcatcher/proc/say_into(var/message, var/mob/living/sender, var/mob/eyeobj)
+/datum/nifsoft/soulcatcher/proc/say_into(message, mob/living/sender, mob/eyeobj)
 	message = trim(message)
 	if(!length(message))
 		return
@@ -129,7 +129,7 @@
 
 	log_nsay(message,nif.human.real_name,sender)
 
-/datum/nifsoft/soulcatcher/proc/emote_into(var/message, var/mob/living/sender, var/mob/eyeobj)
+/datum/nifsoft/soulcatcher/proc/emote_into(message, mob/living/sender, mob/eyeobj)
 	message = trim(message)
 	if(!length(message))
 		return
@@ -148,7 +148,7 @@
 
 	log_nme(message,nif.human.real_name,sender)
 
-/datum/nifsoft/soulcatcher/proc/show_settings(var/mob/living/carbon/human/H)
+/datum/nifsoft/soulcatcher/proc/show_settings(mob/living/carbon/human/H)
 	set waitfor = FALSE
 	var/settings_list = list(
 	"Catching You \[[setting_flags & NIF_SC_CATCHING_ME ? "Enabled" : "Disabled"]\]" = NIF_SC_CATCHING_ME,
@@ -238,7 +238,7 @@
 				var/flag = settings_list[choice]
 				return toggle_setting(flag)
 
-/datum/nifsoft/soulcatcher/proc/toggle_setting(var/flag)
+/datum/nifsoft/soulcatcher/proc/toggle_setting(flag)
 	setting_flags ^= flag
 
 	var/notify_message
@@ -285,7 +285,7 @@
 	return TRUE
 
 	//Complex version for catching in-round characters
-/datum/nifsoft/soulcatcher/proc/catch_mob(var/mob/M)
+/datum/nifsoft/soulcatcher/proc/catch_mob(mob/M)
 	if(!M.mind)
 		return
 
@@ -441,19 +441,19 @@
 
 	return FALSE
 
-/mob/living/carbon/brain/caught_soul/face_atom(var/atom/A)
+/mob/living/carbon/brain/caught_soul/face_atom(atom/A)
 	if(eyeobj)
 		return eyeobj.face_atom(A)
 	else
 		return ..(A)
 
-/mob/living/carbon/brain/caught_soul/setDir(var/direction)
+/mob/living/carbon/brain/caught_soul/setDir(direction)
 	if(eyeobj)
 		return eyeobj.setDir(direction)
 	else
 		return ..(direction)
 
-/mob/living/carbon/brain/caught_soul/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
+/mob/living/carbon/brain/caught_soul/say(message, datum/language/speaking = null, verb="says", alt_name="", whispering = 0)
 	if(silent)
 		return FALSE
 	soulcatcher.say_into(message,src,eyeobj)
@@ -473,7 +473,7 @@
 /mob/living/carbon/brain/caught_soul/allow_examine(atom/A)
 	return TRUE
 
-/mob/living/carbon/brain/caught_soul/emote(var/act,var/m_type=1,var/message = null)
+/mob/living/carbon/brain/caught_soul/emote(act,m_type=1,message = null)
 	if(silent)
 		return FALSE
 	if (act == "me")
@@ -491,7 +491,7 @@
 	else
 		return FALSE
 
-/mob/living/carbon/brain/caught_soul/custom_emote(var/m_type, var/message)
+/mob/living/carbon/brain/caught_soul/custom_emote(m_type, message)
 	if(silent)
 		return FALSE
 	soulcatcher.emote_into(message,src,eyeobj)
@@ -583,7 +583,7 @@
 
 ///////////////////
 //The catching hook
-/hook/death/proc/nif_soulcatcher(var/mob/living/carbon/human/H)
+/hook/death/proc/nif_soulcatcher(mob/living/carbon/human/H)
 	if(!istype(H) || !H.mind) return TRUE //Hooks must return TRUE
 
 	if(isbelly(H.loc)) //Died in someone

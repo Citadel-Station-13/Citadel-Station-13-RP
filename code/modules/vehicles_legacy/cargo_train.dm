@@ -51,7 +51,7 @@
 	add_overlay(I)
 	turn_off()	//so engine verbs are correctly set
 
-/obj/vehicle_old/train/engine/Move(var/turf/destination)
+/obj/vehicle_old/train/engine/Move(turf/destination)
 	if(on && cell.charge < charge_use)
 		turn_off()
 		update_stats()
@@ -86,7 +86,7 @@
 
 /*
 //cargo trains are open topped, so there is a chance the projectile will hit the mob ridding the train instead
-/obj/vehicle_old/train/cargo/bullet_act(var/obj/projectile/Proj)
+/obj/vehicle_old/train/cargo/bullet_act(obj/projectile/Proj)
 	if(has_buckled_mobs() && prob(70))
 		var/mob/living/L = pick(buckled_mobs)
 		L.bullet_act(Proj)
@@ -100,14 +100,14 @@
 		icon_state = initial(icon_state)
 */
 
-/obj/vehicle_old/train/trolley/insert_cell(var/obj/item/cell/C, var/mob/living/carbon/human/H)
+/obj/vehicle_old/train/trolley/insert_cell(obj/item/cell/C, mob/living/carbon/human/H)
 	return
 
-/obj/vehicle_old/train/engine/insert_cell(var/obj/item/cell/C, var/mob/living/carbon/human/H)
+/obj/vehicle_old/train/engine/insert_cell(obj/item/cell/C, mob/living/carbon/human/H)
 	..()
 	update_stats()
 
-/obj/vehicle_old/train/engine/remove_cell(var/mob/living/carbon/human/H)
+/obj/vehicle_old/train/engine/remove_cell(mob/living/carbon/human/H)
 	..()
 	update_stats()
 
@@ -153,18 +153,18 @@
 	else
 		add_obj_verb(src, /obj/vehicle_old/train/engine/verb/stop_engine)
 
-/obj/vehicle_old/train/RunOver(var/mob/living/M)
+/obj/vehicle_old/train/RunOver(mob/living/M)
 	var/list/parts = list(BP_HEAD, BP_TORSO, BP_L_LEG, BP_R_LEG, BP_L_ARM, BP_R_ARM)
 
 	M.apply_effects(5, 5)
 	for(var/i = 0, i < rand(1,3), i++)
 		M.apply_damage(rand(1,5), BRUTE, pick(parts))
 
-/obj/vehicle_old/train/trolley/RunOver(var/mob/living/M)
+/obj/vehicle_old/train/trolley/RunOver(mob/living/M)
 	..()
 	attack_log += "\[[time_stamp()]\] <font color='red'>ran over [M.name] ([M.ckey])</font>"
 
-/obj/vehicle_old/train/engine/RunOver(var/mob/living/M)
+/obj/vehicle_old/train/engine/RunOver(mob/living/M)
 	..()
 
 	if(is_train_head() && istype(load, /mob/living/carbon/human))
@@ -198,7 +198,7 @@
 	. += "The power light is [on ? "on" : "off"].\nThere are[key ? "" : " no"] keys in the ignition."
 	. += "The charge meter reads [cell? round(cell.percent(), 0.01) : 0]%"
 
-/obj/vehicle_old/train/engine/CtrlClick(var/mob/user)
+/obj/vehicle_old/train/engine/CtrlClick(mob/user)
 	if(Adjacent(user))
 		if(on)
 			stop_engine()
@@ -207,7 +207,7 @@
 	else
 		return ..()
 
-/obj/vehicle_old/train/engine/AltClick(var/mob/user)
+/obj/vehicle_old/train/engine/AltClick(mob/user)
 	if(Adjacent(user))
 		remove_key()
 	else
@@ -274,7 +274,7 @@
 //-------------------------------------------
 // Loading/unloading procs
 //-------------------------------------------
-/obj/vehicle_old/train/trolley/load(var/atom/movable/C, var/mob/user)
+/obj/vehicle_old/train/trolley/load(atom/movable/C, mob/user)
 	if(ismob(C) && !passenger_allowed)
 		return 0
 	if(!istype(C,/obj/machinery) && !istype(C,/obj/structure/closet) && !istype(C,/obj/structure/largecrate) && !istype(C,/obj/structure/reagent_dispensers) && !istype(C,/obj/structure/ore_box) && !istype(C, /mob/living/carbon/human))
@@ -290,7 +290,7 @@
 	if(load)
 		return 1
 
-/obj/vehicle_old/train/engine/load(var/atom/movable/C, var/mob/user)
+/obj/vehicle_old/train/engine/load(atom/movable/C, mob/user)
 	if(!istype(C, /mob/living/carbon/human))
 		return 0
 
@@ -366,7 +366,7 @@
 // more engines increases this limit by car_limit per
 // engine.
 //-------------------------------------------------------
-/obj/vehicle_old/train/engine/update_car(var/train_length, var/active_engines)
+/obj/vehicle_old/train/engine/update_car(train_length, active_engines)
 	src.train_length = train_length
 	src.active_engines = active_engines
 
@@ -379,7 +379,7 @@
 		move_delay += config_legacy.run_speed 														//base reference speed
 		move_delay *= speed_mod																//makes cargo trains 10% slower than running when not overweight
 
-/obj/vehicle_old/train/trolley/update_car(var/train_length, var/active_engines)
+/obj/vehicle_old/train/trolley/update_car(train_length, active_engines)
 	src.train_length = train_length
 	src.active_engines = active_engines
 

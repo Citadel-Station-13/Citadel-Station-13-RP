@@ -199,14 +199,14 @@
 	log_and_message_admins("[src] ignited due to exposure to fire.")
 	ignite()
 
-/mob/living/simple_mob/slime/xenobio/dark_purple/bullet_act(var/obj/projectile/P, var/def_zone)
+/mob/living/simple_mob/slime/xenobio/dark_purple/bullet_act(obj/projectile/P, def_zone)
 	if(P.damage_type && P.damage_type == BURN && P.damage) // Most bullets won't trigger the explosion, as a mercy towards Security.
 		log_and_message_admins("[src] ignited due to bring hit by a burning projectile[P.firer ? " by [key_name(P.firer)]" : ""].")
 		ignite()
 	else
 		return ..()
 
-/mob/living/simple_mob/slime/xenobio/dark_purple/attackby(var/obj/item/W, var/mob/user)
+/mob/living/simple_mob/slime/xenobio/dark_purple/attackby(obj/item/W, mob/user)
 	if(istype(W) && W.damage_force && W.damtype == BURN)
 		log_and_message_admins("[src] ignited due to being hit with a burning weapon ([W]) by [key_name(user)].")
 		ignite()
@@ -285,7 +285,7 @@
 			/mob/living/simple_mob/slime/xenobio/amber
 		)
 
-/mob/living/simple_mob/slime/xenobio/silver/bullet_act(var/obj/projectile/P, var/def_zone)
+/mob/living/simple_mob/slime/xenobio/silver/bullet_act(obj/projectile/P, def_zone)
 	if(istype(P,/obj/projectile/beam) || istype(P, /obj/projectile/energy))
 		visible_message(SPAN_DANGER("\The [src] reflects \the [P]!"))
 

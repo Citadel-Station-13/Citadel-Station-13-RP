@@ -17,7 +17,7 @@
 	var/brightness = 7
 	var/light_colour = "#ffffff"
 
-/obj/projectile/energy/flash/on_impact(var/atom/A)
+/obj/projectile/energy/flash/on_impact(atom/A)
 	var/turf/T = flash_range? src.loc : get_turf(A)
 	if(!istype(T)) return
 
@@ -56,7 +56,7 @@
 	incendiary = 1
 	flammability = 2
 
-/obj/projectile/energy/flash/flare/on_impact(var/atom/A)
+/obj/projectile/energy/flash/flare/on_impact(atom/A)
 	light_colour = pick("#e58775", "#ffffff", "#90ff90", "#a09030")
 
 	..() //initial flash
@@ -177,7 +177,7 @@
 	damage_type = BURN
 	vacuum_traversal = 0	//Projectile disappears in empty space
 
-/obj/projectile/energy/plasmastun/proc/bang(var/mob/living/carbon/M)
+/obj/projectile/energy/plasmastun/proc/bang(mob/living/carbon/M)
 
 	to_chat(M, "<span class='danger'>You hear a loud roar.</span>")
 	playsound(M.loc, 'sound/effects/bang.ogg', 50, 1)
@@ -202,7 +202,7 @@
 			to_chat(M, "<span class='danger'>Your ears start to ring!</span>")
 	M.update_icons() //Just to apply matrix transform for laying asap
 
-/obj/projectile/energy/plasmastun/on_hit(var/atom/target)
+/obj/projectile/energy/plasmastun/on_hit(atom/target)
 	bang(target)
 	. = ..()
 

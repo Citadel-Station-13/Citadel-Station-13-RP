@@ -31,7 +31,7 @@
 
 	var/one_time = FALSE
 
-/datum/transhuman/mind_record/New(var/datum/mind/mind, var/mob/living/carbon/human/M, var/add_to_db = TRUE, var/one_time = FALSE)
+/datum/transhuman/mind_record/New(datum/mind/mind, mob/living/carbon/human/M, add_to_db = TRUE, one_time = FALSE)
 	ASSERT(mind)
 
 	src.one_time = one_time
@@ -85,7 +85,7 @@
 	var/weight
 	var/aflags
 
-/datum/transhuman/body_record/New(var/copyfrom, var/add_to_db = 0, var/ckeylock = 0)
+/datum/transhuman/body_record/New(copyfrom, add_to_db = 0, ckeylock = 0)
 	..()
 	if(istype(copyfrom, /datum/transhuman/body_record))
 		init_from_br(copyfrom)
@@ -101,7 +101,7 @@
 	organ_data.Cut()
 	return QDEL_HINT_HARDDEL // For now at least there is no easy way to clear references to this in machines etc.
 
-/datum/transhuman/body_record/proc/init_from_mob(var/mob/living/carbon/human/M, var/add_to_db = 0, var/ckeylock = 0)
+/datum/transhuman/body_record/proc/init_from_mob(mob/living/carbon/human/M, add_to_db = 0, ckeylock = 0)
 	ASSERT(!QDELETED(M))
 	ASSERT(istype(M))
 
@@ -195,7 +195,7 @@
  * Just to be clear, this has nothing to do do with acutal biological cloning, body printing, resleeving,
  * or anything like that! This is the computer science concept of "cloning" a data structure!
  */
-/datum/transhuman/body_record/proc/init_from_br(var/datum/transhuman/body_record/orig)
+/datum/transhuman/body_record/proc/init_from_br(datum/transhuman/body_record/orig)
 	ASSERT(!QDELETED(orig))
 	ASSERT(istype(orig))
 	src.mydna = new ()

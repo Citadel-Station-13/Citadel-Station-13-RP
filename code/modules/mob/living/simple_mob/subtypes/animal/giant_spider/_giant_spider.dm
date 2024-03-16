@@ -110,7 +110,7 @@
 		/obj/item/stack/material/chitin = 1\
 		)
 
-/mob/living/simple_mob/animal/giant_spider/apply_melee_effects(var/atom/A)
+/mob/living/simple_mob/animal/giant_spider/apply_melee_effects(atom/A)
 	if(isliving(A))
 		var/mob/living/L = A
 		if(L.reagents)

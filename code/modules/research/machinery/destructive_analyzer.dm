@@ -39,7 +39,7 @@ Note: Must be placed within 3 tiles of the R&D Console
 	else
 		icon_state = "d_analyzer"
 
-/obj/machinery/r_n_d/destructive_analyzer/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/machinery/r_n_d/destructive_analyzer/attackby(obj/item/O as obj, mob/user as mob)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	if(busy)

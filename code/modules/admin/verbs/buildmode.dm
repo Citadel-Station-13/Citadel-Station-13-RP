@@ -300,7 +300,7 @@ GLOBAL_LIST_EMPTY(buildholders)
 							new_light_color = input
 	return 1
 
-/proc/build_click(var/mob/user, buildmode, params, var/obj/object)
+/proc/build_click(mob/user, buildmode, params, obj/object)
 	var/obj/effect/bmode/buildholder/holder = null
 	for(var/obj/effect/bmode/buildholder/H in GLOB.buildholders)
 		if(H.cl == user.client)
@@ -580,7 +580,7 @@ GLOBAL_LIST_EMPTY(buildholders)
 			result = default_path
 	return result
 
-/obj/effect/bmode/buildmode/proc/make_rectangle(var/turf/A, var/turf/B, var/turf/wall_type, var/turf/floor_type)
+/obj/effect/bmode/buildmode/proc/make_rectangle(turf/A, turf/B, turf/wall_type, turf/floor_type)
 	if(!A || !B) // No coords
 		return
 	if(A.z != B.z) // Not same z-level

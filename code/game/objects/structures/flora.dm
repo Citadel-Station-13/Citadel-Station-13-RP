@@ -56,12 +56,12 @@
 			return
 	return ..()
 
-/obj/structure/flora/proc/can_harvest(var/obj/item/I)
+/obj/structure/flora/proc/can_harvest(obj/item/I)
 	. = FALSE
 	if(harvest_tool && istype(I, harvest_tool) && harvest_loot && harvest_loot.len && harvest_count < max_harvests)
 		. = TRUE
 
-/obj/structure/flora/proc/spawn_harvest(var/path = null, var/mob/user = null)
+/obj/structure/flora/proc/spawn_harvest(path = null, mob/user = null)
 	if(!ispath(path))
 		return 0
 	var/turf/Target = get_turf(src)

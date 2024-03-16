@@ -36,7 +36,7 @@
 	wrap_buddy = null
 	return ..()
 
-/turf/overmap/edge/Bumped(var/atom/movable/AM)
+/turf/overmap/edge/Bumped(atom/movable/AM)
 	if(wrap_buddy?.map_is_to_my)
 		AM.forceMove(get_step(wrap_buddy, wrap_buddy.map_is_to_my))
 	else
@@ -70,12 +70,12 @@
 			I.pixel_x = 5*i + 2
 		add_overlay(I)
 
-/turf/overmap/Entered(var/atom/movable/O, var/atom/oldloc)
+/turf/overmap/Entered(atom/movable/O, atom/oldloc)
 	..()
 	if(istype(O, /obj/overmap/entity/visitable/ship))
 		GLOB.overmap_event_handler.on_turf_entered(src, O, oldloc)
 
-/turf/overmap/Exited(var/atom/movable/O, var/atom/newloc)
+/turf/overmap/Exited(atom/movable/O, atom/newloc)
 	..()
 	if(istype(O, /obj/overmap/entity/visitable/ship))
 		GLOB.overmap_event_handler.on_turf_exited(src, O, newloc)

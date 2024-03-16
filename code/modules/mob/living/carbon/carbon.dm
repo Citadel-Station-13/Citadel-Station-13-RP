@@ -189,7 +189,7 @@
 /mob/living/carbon/proc/getDNA()
 	return dna
 
-/mob/living/carbon/proc/setDNA(var/datum/dna/newDNA)
+/mob/living/carbon/proc/setDNA(datum/dna/newDNA)
 	dna = newDNA
 
 // ++++ROCKDTBEN++++ MOB PROCS //END
@@ -212,7 +212,7 @@
 	return
 
 //generates realistic-ish pulse output based on preset levels
-/mob/living/carbon/proc/get_pulse(var/method)	//method 0 is for hands, 1 is for machines, more accurate
+/mob/living/carbon/proc/get_pulse(method)	//method 0 is for hands, 1 is for machines, more accurate
 	var/temp = 0								//see setup.dm:694
 	switch(src.pulse)
 		if(PULSE_NONE)
@@ -252,7 +252,7 @@
 /mob/living/carbon/cannot_use_vents()
 	return
 
-/mob/living/carbon/slip(var/slipped_on,stun_duration=8)
+/mob/living/carbon/slip(slipped_on,stun_duration=8)
 	if(buckled)
 		return 0
 	stop_pulling()
@@ -261,13 +261,13 @@
 	afflict_paralyze(20 * FLOOR(stun_duration/2, 1))
 	return 1
 
-/mob/living/carbon/proc/add_chemical_effect(var/effect, var/magnitude = 1)
+/mob/living/carbon/proc/add_chemical_effect(effect, magnitude = 1)
 	if(effect in chem_effects)
 		chem_effects[effect] += magnitude
 	else
 		chem_effects[effect] = magnitude
 
-/mob/living/carbon/proc/ceiling_chemical_effect(var/effect, var/magnitude = 1)
+/mob/living/carbon/proc/ceiling_chemical_effect(effect, magnitude = 1)
 	if(effect in chem_effects)
 		chem_effects[effect] = max(magnitude, chem_effects[effect])
 	else
@@ -285,10 +285,10 @@
 
 	return species.default_language ? SScharacters.resolve_language(species.default_language) : null
 
-/mob/living/carbon/proc/should_have_organ(var/organ_check)
+/mob/living/carbon/proc/should_have_organ(organ_check)
 	return 0
 
-/mob/living/carbon/can_feel_pain(var/check_organ)
+/mob/living/carbon/can_feel_pain(check_organ)
 	if(isSynthetic())
 		return 0
 	return !(species.species_flags & NO_PAIN)

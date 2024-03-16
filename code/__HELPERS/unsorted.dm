@@ -280,7 +280,7 @@
 
 #define LOCATE_COORDS(X, Y, Z) locate(clamp(X, 1, world.maxx), clamp(Y, 1, world.maxy), Z)
 // /Uses a fast Bresenham rasterization algorithm to return the turfs in a thin circle.
-/proc/getcircle(turf/center, var/radius)
+/proc/getcircle(turf/center, radius)
 	if(!radius) return list(center)
 
 	var/x = 0
@@ -549,7 +549,7 @@
 	return locate(x,y,A.z)
 
 /// Makes sure MIDDLE is between LOW and HIGH. If not, it adjusts it. Returns the adjusted value.
-/proc/between(var/low, var/middle, var/high)
+/proc/between(low, middle, high)
 	return max(min(middle, high), low)
 
 /// Returns random gauss number.
@@ -1171,7 +1171,7 @@ var/list/WALLITEMS = list(
 	return locate(tX, tY, tZ)
 
 /// Displays something as commonly used (non-submultiples) SI units.
-/proc/format_SI(var/number, var/symbol)
+/proc/format_SI(number, symbol)
 	switch(round(abs(number)))
 		if(0 to 1000-1)
 			return "[number] [symbol]"

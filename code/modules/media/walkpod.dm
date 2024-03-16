@@ -244,7 +244,7 @@
 		return
 	return ..()
 
-/obj/item/device/walkpod/proc/restore_headpods(var/mob/living/potential_holder)
+/obj/item/device/walkpod/proc/restore_headpods(mob/living/potential_holder)
 	if(!deployed_headpods)
 		return
 

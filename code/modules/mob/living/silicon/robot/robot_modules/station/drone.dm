@@ -74,7 +74,7 @@
 	. = ..()
 	. |= /obj/item/rcd/electric/mounted/borg/lesser
 
-/obj/item/robot_module/drone/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
+/obj/item/robot_module/drone/respawn_consumable(mob/living/silicon/robot/R, amount)
 	var/obj/item/lightreplacer/LR = locate() in src.modules
 	LR.Charge(R, amount)
 	..()

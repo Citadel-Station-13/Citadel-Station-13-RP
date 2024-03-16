@@ -151,7 +151,7 @@
 	..()
 
 // Used in auto linking
-/obj/machinery/telecomms/proc/add_link(var/obj/machinery/telecomms/T)
+/obj/machinery/telecomms/proc/add_link(obj/machinery/telecomms/T)
 	var/pos_z = get_z(src)
 	var/tpos_z = get_z(T)
 	if((pos_z == tpos_z) || (src.long_range_link && T.long_range_link))
@@ -244,7 +244,7 @@
 			env.merge(removed)
 
 //Generic telecomm connectivity test proc
-/proc/can_telecomm(var/atom/A, var/atom/B, var/ad_hoc = FALSE)
+/proc/can_telecomm(atom/A, atom/B, ad_hoc = FALSE)
 	if(!A || !B)
 		log_debug(SPAN_DEBUG("can_telecomm(): Undefined endpoints!"))
 		return FALSE
@@ -302,7 +302,7 @@
 	if(default_deconstruction_crowbar(user, P))
 		return
 
-/obj/machinery/telecomms/attack_ai(var/mob/user as mob)
+/obj/machinery/telecomms/attack_ai(mob/user as mob)
 	attack_hand(user)
 
 /obj/machinery/telecomms/ui_data(mob/user, datum/tgui/ui)
@@ -636,12 +636,12 @@
 	if(Options_Act(action, params))
 		. = TRUE
 
-/obj/machinery/telecomms/proc/canAccess(var/mob/user)
+/obj/machinery/telecomms/proc/canAccess(mob/user)
 	if(issilicon(user) || in_range(user, src))
 		return 1
 	return 0
 
-/obj/machinery/telecomms/proc/set_temp(var/text, var/color = "average")
+/obj/machinery/telecomms/proc/set_temp(text, color = "average")
 	temp = list("color" = color, "text" = text)
 
 #undef TELECOMM_Z

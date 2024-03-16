@@ -209,7 +209,7 @@
 	S.synths = list(medicine)
 	. += S
 
-/obj/item/robot_module/robot/syndicate/combat_medic/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
+/obj/item/robot_module/robot/syndicate/combat_medic/respawn_consumable(mob/living/silicon/robot/R, amount)
 
 	var/obj/item/reagent_containers/syringe/S = locate() in src.modules
 	if(S.mode == 2)

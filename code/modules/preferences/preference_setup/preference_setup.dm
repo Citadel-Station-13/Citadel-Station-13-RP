@@ -25,7 +25,7 @@
 	var/datum/preferences/preferences
 	var/datum/category_group/player_setup_category/selected_category = null
 
-/datum/category_collection/player_setup_collection/New(var/datum/preferences/preferences)
+/datum/category_collection/player_setup_collection/New(datum/preferences/preferences)
 	src.preferences = preferences
 	..()
 	selected_category = categories[1]
@@ -40,19 +40,19 @@
 	for(var/datum/category_group/player_setup_category/PS in categories)
 		PS.sanitize_setup()
 
-/datum/category_collection/player_setup_collection/proc/load_character(var/savefile/S)
+/datum/category_collection/player_setup_collection/proc/load_character(savefile/S)
 	for(var/datum/category_group/player_setup_category/PS in categories)
 		PS.load_character(S)
 
-/datum/category_collection/player_setup_collection/proc/save_character(var/savefile/S)
+/datum/category_collection/player_setup_collection/proc/save_character(savefile/S)
 	for(var/datum/category_group/player_setup_category/PS in categories)
 		PS.save_character(S)
 
-/datum/category_collection/player_setup_collection/proc/load_preferences(var/savefile/S)
+/datum/category_collection/player_setup_collection/proc/load_preferences(savefile/S)
 	for(var/datum/category_group/player_setup_category/PS in categories)
 		PS.load_preferences(S)
 
-/datum/category_collection/player_setup_collection/proc/save_preferences(var/savefile/S)
+/datum/category_collection/player_setup_collection/proc/save_preferences(savefile/S)
 	for(var/datum/category_group/player_setup_category/PS in categories)
 		PS.save_preferences(S)
 
@@ -65,11 +65,11 @@
 			dat += "<a href='?src=\ref[src];category=\ref[PS]'>[PS.name]</a> "
 	return dat
 
-/datum/category_collection/player_setup_collection/proc/content(var/mob/user)
+/datum/category_collection/player_setup_collection/proc/content(mob/user)
 	if(selected_category)
 		return selected_category.content(user)
 
-/datum/category_collection/player_setup_collection/Topic(var/href,var/list/href_list)
+/datum/category_collection/player_setup_collection/Topic(href,list/href_list)
 	if(..())
 		return 1
 	var/mob/user = usr
@@ -115,30 +115,30 @@
 	for(var/datum/category_item/player_setup_item/PI in items)
 		PI.sanitize_character()
 
-/datum/category_group/player_setup_category/proc/load_character(var/savefile/S)
+/datum/category_group/player_setup_category/proc/load_character(savefile/S)
 	// Load all data, then sanitize it.
 	// Need due to, for example, the 01_basic module relying on species having been loaded to sanitize correctly but that isn't loaded until module 03_body.
 	for(var/datum/category_item/player_setup_item/PI in items)
 		PI.load_character(S)
 
-/datum/category_group/player_setup_category/proc/save_character(var/savefile/S)
+/datum/category_group/player_setup_category/proc/save_character(savefile/S)
 	// Sanitize all data, then save it
 	for(var/datum/category_item/player_setup_item/PI in items)
 		PI.sanitize_character()
 	for(var/datum/category_item/player_setup_item/PI in items)
 		PI.save_character(S)
 
-/datum/category_group/player_setup_category/proc/load_preferences(var/savefile/S)
+/datum/category_group/player_setup_category/proc/load_preferences(savefile/S)
 	for(var/datum/category_item/player_setup_item/PI in items)
 		PI.load_preferences(S)
 
-/datum/category_group/player_setup_category/proc/save_preferences(var/savefile/S)
+/datum/category_group/player_setup_category/proc/save_preferences(savefile/S)
 	for(var/datum/category_item/player_setup_item/PI in items)
 		PI.sanitize_preferences()
 	for(var/datum/category_item/player_setup_item/PI in items)
 		PI.save_preferences(S)
 
-/datum/category_group/player_setup_category/proc/content(var/mob/user)
+/datum/category_group/player_setup_category/proc/content(mob/user)
 	. = "<table style='width:100%'><tr style='vertical-align:top'><td style='width:50%'>"
 	if(auto_split)
 		var/current = 0
@@ -200,25 +200,25 @@
 /*
 * Called when the item is asked to load per character settings
 */
-/datum/category_item/player_setup_item/proc/load_character(var/savefile/S)
+/datum/category_item/player_setup_item/proc/load_character(savefile/S)
 	return
 
 /*
 * Called when the item is asked to save per character settings
 */
-/datum/category_item/player_setup_item/proc/save_character(var/savefile/S)
+/datum/category_item/player_setup_item/proc/save_character(savefile/S)
 	return
 
 /*
 * Called when the item is asked to load user/global settings
 */
-/datum/category_item/player_setup_item/proc/load_preferences(var/savefile/S)
+/datum/category_item/player_setup_item/proc/load_preferences(savefile/S)
 	return
 
 /*
 * Called when the item is asked to save user/global settings
 */
-/datum/category_item/player_setup_item/proc/save_preferences(var/savefile/S)
+/datum/category_item/player_setup_item/proc/save_preferences(savefile/S)
 	return
 
 /datum/category_item/player_setup_item/proc/sanitize_character()
@@ -227,7 +227,7 @@
 /datum/category_item/player_setup_item/proc/sanitize_preferences()
 	return
 
-/datum/category_item/player_setup_item/Topic(var/href,var/list/href_list)
+/datum/category_item/player_setup_item/Topic(href,list/href_list)
 	if(..())
 		return 1
 	var/mob/pref_mob = preference_mob()
@@ -243,10 +243,10 @@
 	if(. & PREFERENCES_REFRESH)
 		pref_mob.client.prefs.ShowChoices(usr)
 
-/datum/category_item/player_setup_item/CanUseTopic(var/mob/user)
+/datum/category_item/player_setup_item/CanUseTopic(mob/user)
 	return 1
 
-/datum/category_item/player_setup_item/proc/OnTopic(var/href,var/list/href_list, var/mob/user)
+/datum/category_item/player_setup_item/proc/OnTopic(href,list/href_list, mob/user)
 	return PREFERENCES_NOACTION
 
 /datum/category_item/player_setup_item/proc/preference_mob()

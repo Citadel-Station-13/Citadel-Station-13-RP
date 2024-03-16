@@ -223,7 +223,7 @@
 
 // called when something steps onto a human
 // this handles mobs on fire - mulebot and vehicle code has been relocated to /mob/living/Crossed()
-/mob/living/carbon/human/Crossed(var/atom/movable/AM)
+/mob/living/carbon/human/Crossed(atom/movable/AM)
 	. = ..()
 	if(AM.is_incorporeal())
 		return
@@ -231,7 +231,7 @@
 	spread_fire(AM)
 
 // Get rank from ID, ID inside PDA, PDA, ID in wallet, etc.
-/mob/living/carbon/human/proc/get_authentification_rank(var/if_no_id = "No id", var/if_no_job = "No job")
+/mob/living/carbon/human/proc/get_authentification_rank(if_no_id = "No id", if_no_job = "No job")
 	var/obj/item/pda/pda = wear_id
 	if (istype(pda))
 		if (pda.id)
@@ -247,7 +247,7 @@
 
 //gets assignment from ID or ID inside PDA or PDA itself
 //Useful when player do something with computers
-/mob/living/carbon/human/proc/get_assignment(var/if_no_id = "No id", var/if_no_job = "No job")
+/mob/living/carbon/human/proc/get_assignment(if_no_id = "No id", if_no_job = "No job")
 	var/obj/item/pda/pda = wear_id
 	if (istype(pda))
 		if (pda.id)
@@ -263,7 +263,7 @@
 
 //gets name from ID or ID inside PDA or PDA itself
 //Useful when player do something with computers
-/mob/living/carbon/human/proc/get_authentification_name(var/if_no_id = "Unknown")
+/mob/living/carbon/human/proc/get_authentification_name(if_no_id = "Unknown")
 	var/obj/item/pda/pda = wear_id
 	if (istype(pda))
 		if (pda.id)
@@ -298,7 +298,7 @@
 
 //gets name from ID or PDA itself, ID inside PDA doesn't matter
 //Useful when player is being seen by other mobs
-/mob/living/carbon/human/proc/get_id_name(var/if_no_id = "Unknown")
+/mob/living/carbon/human/proc/get_id_name(if_no_id = "Unknown")
 	. = if_no_id
 	if(istype(wear_id,/obj/item/pda))
 		var/obj/item/pda/P = wear_id
@@ -316,7 +316,7 @@
 
 //Removed the horrible safety parameter. It was only being used by ninja code anyways.
 //Now checks siemens_coefficient of the affected area by default
-/mob/living/carbon/human/electrocute_act(var/shock_damage, var/obj/source, var/base_siemens_coeff = 1.0, var/def_zone = null)
+/mob/living/carbon/human/electrocute_act(shock_damage, obj/source, base_siemens_coeff = 1.0, def_zone = null)
 
 	if(status_flags & STATUS_GODMODE)	return 0	//godmode
 
@@ -663,7 +663,7 @@
 		I.additional_flash_effects(number)
 	return number
 
-/mob/living/carbon/human/flash_eyes(var/intensity = FLASH_PROTECTION_MODERATE, override_blindness_check = FALSE, affect_silicon = FALSE, visual = FALSE, type = /atom/movable/screen/fullscreen/tiled/flash)
+/mob/living/carbon/human/flash_eyes(intensity = FLASH_PROTECTION_MODERATE, override_blindness_check = FALSE, affect_silicon = FALSE, visual = FALSE, type = /atom/movable/screen/fullscreen/tiled/flash)
 	if(internal_organs_by_name[O_EYES]) // Eyes are fucked, not a 'weak point'.
 		var/obj/item/organ/internal/eyes/I = internal_organs_by_name[O_EYES]
 		I.additional_flash_effects(intensity)
@@ -689,7 +689,7 @@
 
 //Used by various things that knock people out by applying blunt trauma to the head.
 //Checks that the species has a "head" (brain containing organ) and that hit_zone refers to it.
-/mob/living/carbon/human/proc/headcheck(var/target_zone, var/brain_tag = "brain")
+/mob/living/carbon/human/proc/headcheck(target_zone, brain_tag = "brain")
 
 	var/obj/item/organ/affecting = internal_organs_by_name[brain_tag]
 
@@ -972,7 +972,7 @@
 		return
 	return md5(dna.uni_identity)
 
-/mob/living/carbon/human/clean_blood(var/washshoes)
+/mob/living/carbon/human/clean_blood(washshoes)
 	. = ..()
 
 	gunshot_residue = null
@@ -998,7 +998,7 @@
 
 	update_bloodied()
 
-/mob/living/carbon/human/get_visible_implants(var/class = 0)
+/mob/living/carbon/human/get_visible_implants(class = 0)
 
 	var/list/visible_implants = list()
 	for(var/obj/item/organ/external/organ in src.organs)
@@ -1026,7 +1026,7 @@
 			if(!istype(O,/obj/item/implant) && prob(5)) //Moving with things stuck in you could be bad.
 				embed_object_pain(organ, O)
 
-/mob/living/carbon/human/proc/embed_object_pain(var/obj/item/organ/external/organ, var/obj/item/O)
+/mob/living/carbon/human/proc/embed_object_pain(obj/item/organ/external/organ, obj/item/O)
 	// All kinds of embedded objects cause bleeding.
 	if(!can_feel_pain(organ.organ_tag))
 		to_chat(src, "<span class='warning'>You feel [O] moving inside your [organ.name].</span>")
@@ -1282,7 +1282,7 @@
 		..()
 
 
-/mob/living/carbon/human/can_inject(var/mob/user, var/error_msg, var/target_zone, var/ignore_thickness = FALSE)
+/mob/living/carbon/human/can_inject(mob/user, error_msg, target_zone, ignore_thickness = FALSE)
 	. = 1
 
 	if(!target_zone)
@@ -1318,7 +1318,7 @@
 			fail_msg = "There is no exposed flesh or thin material [target_zone == BP_HEAD ? "on their head" : "on their body"] to inject into."
 		to_chat(user, "<span class='alert'>[fail_msg]</span>")
 
-/mob/living/carbon/human/print_flavor_text(var/shrink = 1)
+/mob/living/carbon/human/print_flavor_text(shrink = 1)
 	var/list/equipment = list(src.head,src.wear_mask,src.glasses,src.w_uniform,src.wear_suit,src.gloves,src.shoes)
 	var/head_exposed = 1
 	var/face_exposed = 1
@@ -1386,7 +1386,7 @@
 			return 1
 	return 0
 
-/mob/living/carbon/human/slip(var/slipped_on, stun_duration=8)
+/mob/living/carbon/human/slip(slipped_on, stun_duration=8)
 	var/list/equipment = list(src.w_uniform,src.wear_suit,src.shoes)
 	var/footcoverage_check = FALSE
 	for(var/obj/item/clothing/C in equipment)
@@ -1484,7 +1484,7 @@
 	to_chat(src, "<span class='notice'>You are now [pulling_punches ? "pulling your punches" : "not pulling your punches"].</span>")
 	return
 
-/mob/living/carbon/human/should_have_organ(var/organ_check)
+/mob/living/carbon/human/should_have_organ(organ_check)
 
 	var/obj/item/organ/external/affecting
 	if(organ_check in list(O_HEART, O_LUNGS))
@@ -1496,7 +1496,7 @@
 		return 0
 	return (species && species.has_organ[organ_check])
 
-/mob/living/carbon/human/can_feel_pain(var/obj/item/organ/check_organ)
+/mob/living/carbon/human/can_feel_pain(obj/item/organ/check_organ)
 	if(isSynthetic())
 		return 0
 	for(var/datum/modifier/M in modifiers)
@@ -1630,7 +1630,7 @@
 /mob/living/carbon/human/set_nutrition(amount)
 	nutrition = clamp(amount, 0, species.max_nutrition * 1.5)
 
-/mob/living/carbon/human/get_bullet_impact_effect_type(var/def_zone)
+/mob/living/carbon/human/get_bullet_impact_effect_type(def_zone)
 	var/obj/item/organ/external/E = get_organ(def_zone)
 	if(!E || E.is_stump())
 		return BULLET_IMPACT_NONE
@@ -1662,7 +1662,7 @@
 	// groan
 	. += ((size_multiplier * icon_scale_x) - 1) * ((dir & EAST)? -16 : 16)
 
-/mob/living/carbon/human/ClickOn(var/atom/A)
+/mob/living/carbon/human/ClickOn(atom/A)
 	if(ab_handler?.process_click(src, A))
 		return
 	..()

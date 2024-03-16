@@ -263,7 +263,7 @@
 	sheet_left = 0
 	..()
 
-/obj/machinery/power/port_gen/pacman/emag_act(var/remaining_charges, var/mob/user)
+/obj/machinery/power/port_gen/pacman/emag_act(remaining_charges, mob/user)
 	if (active && prob(25))
 		explode() //if they're foolish enough to emag while it's running
 
@@ -271,7 +271,7 @@
 		emagged = 1
 		return 1
 
-/obj/machinery/power/port_gen/pacman/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/machinery/power/port_gen/pacman/attackby(obj/item/O as obj, mob/user as mob)
 	if(istype(O, sheet_path))
 		var/obj/item/stack/addstack = O
 		var/amount = min((max_sheets - sheets), addstack.amount)
@@ -374,7 +374,7 @@
 				power_output++
 				. = TRUE
 /*
-/obj/machinery/power/port_gen/pacman/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/power/port_gen/pacman/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)
 	if(IsBroken())
 		return
 

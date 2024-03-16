@@ -379,7 +379,7 @@ Add those other swinging traps you mentioned above!
 /obj/effect/trap/launcher/proc/get_projectile()
 	return new projectile_type(get_turf(src))
 
-/obj/effect/trap/launcher/attackby(var/obj/item/W, var/mob/user)
+/obj/effect/trap/launcher/attackby(obj/item/W, mob/user)
 	if(istype(W,/obj/item/stack/rods))
 		var/obj/item/stack/rods/M = W
 		if(M.amount >= 5)
@@ -457,7 +457,7 @@ Add those other swinging traps you mentioned above!
 	var/min_damage = 15
 	var/max_damage = 25
 
-/obj/effect/trap/pop_up/attackby(var/obj/item/W, var/mob/user)
+/obj/effect/trap/pop_up/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/weldingtool))
 		var/obj/item/weldingtool/WT = W
 
@@ -683,7 +683,7 @@ if (istype(AM, /mob/living))
 		visible_message("<span class='danger'>[src] slams into [M], sending them flying!</span>")
 		M.afflict_paralyze(20 * 12)
 
-/obj/effect/trap/pop_up/thrower/attackby(var/obj/item/W, var/mob/user)
+/obj/effect/trap/pop_up/thrower/attackby(obj/item/W, mob/user)
 	if(istype(W,/obj/item/stack/rods))
 		var/obj/item/stack/rods/M = W
 		if(M.amount >= 3)
@@ -729,7 +729,7 @@ if (istype(AM, /mob/living))
 	var/min_damage = 20
 	var/max_damage = 40
 
-/obj/effect/trap/falling/attackby(var/obj/item/W, var/mob/user)
+/obj/effect/trap/falling/attackby(obj/item/W, mob/user)
 	if(istype(W,/obj/item/stack/cable_coil))
 		var/obj/item/stack/cable_coil/M = W
 		if(M.amount >= 5 && (atom_flags & ATOM_BROKEN))

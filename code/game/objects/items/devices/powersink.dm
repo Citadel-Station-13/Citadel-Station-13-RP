@@ -34,7 +34,7 @@
 	STOP_PROCESSING_POWER_OBJECT(src)
 	..()
 
-/obj/item/powersink/attackby(var/obj/item/I, var/mob/user)
+/obj/item/powersink/attackby(obj/item/I, mob/user)
 	if(I.is_screwdriver())
 		if(mode == 0)
 			var/turf/T = loc

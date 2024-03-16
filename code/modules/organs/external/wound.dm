@@ -3,7 +3,7 @@
  *
  * todo: better documentation
  */
-/obj/item/organ/external/proc/create_wound(var/type = CUT, var/damage)
+/obj/item/organ/external/proc/create_wound(type = CUT, damage)
 	if(damage == 0)
 		return
 
@@ -249,7 +249,7 @@
 		return salved
 
 // Checks whether other other can be merged into src.
-/datum/wound/proc/can_merge(var/datum/wound/other)
+/datum/wound/proc/can_merge(datum/wound/other)
 	if (other.type != src.type)
 		return 0
 	if (other.current_stage != src.current_stage)

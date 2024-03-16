@@ -296,7 +296,7 @@
 /atom/movable/proc/blood_act()
 	// blood_act(null, 500, 50)
 
-/atom/movable/proc/Bump_vr(var/atom/A, yes)
+/atom/movable/proc/Bump_vr(atom/A, yes)
 	return
 
 // Procs to cloak/uncloak
@@ -333,7 +333,7 @@
 
 
 // Animations for cloaking/uncloaking
-/atom/movable/proc/cloak_animation(var/length = 1 SECOND)
+/atom/movable/proc/cloak_animation(length = 1 SECOND)
 	//Save these
 	var/initial_alpha = alpha
 
@@ -354,7 +354,7 @@
 	//Back to original alpha
 	alpha = initial_alpha
 
-/atom/movable/proc/uncloak_animation(var/length = 1 SECOND)
+/atom/movable/proc/uncloak_animation(length = 1 SECOND)
 	//Save these
 	var/initial_alpha = alpha
 

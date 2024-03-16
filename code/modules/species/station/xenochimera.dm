@@ -151,7 +151,7 @@
 			H.eye_blurry = max(5,H.eye_blurry)
 	..()
 
-/datum/species/shapeshifter/xenochimera/proc/handle_feralness(var/mob/living/carbon/human/H)
+/datum/species/shapeshifter/xenochimera/proc/handle_feralness(mob/living/carbon/human/H)
 
 	//Low-ish nutrition has messages and eventually feral
 	var/hungry = H.nutrition <= 200 && !isbelly(H.loc)
@@ -336,7 +336,7 @@
 	icon_state = "danger00"		//first number is bool of whether or not we're in danger, second is whether or not we're feral
 	alpha = 200
 
-/datum/species/shapeshifter/xenochimera/proc/update_xenochimera_hud(var/mob/living/carbon/human/H, var/danger, var/feral)
+/datum/species/shapeshifter/xenochimera/proc/update_xenochimera_hud(mob/living/carbon/human/H, danger, feral)
 	if(H.xenochimera_danger_display)
 		H.xenochimera_danger_display.invisibility = 0
 		H.xenochimera_danger_display.icon_state = "danger[danger][feral > 0]"

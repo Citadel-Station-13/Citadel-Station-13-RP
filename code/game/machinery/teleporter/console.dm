@@ -166,7 +166,7 @@
 			beacon_uuid_assoc["[I.id]"] = list("beaconname" = tmpname, "beacon" = WEAKREF(I))
 	return L
 
-/obj/machinery/computer/teleporter/proc/compare_beacon_to_identifier(var/dname, var/list/beacon_list)
+/obj/machinery/computer/teleporter/proc/compare_beacon_to_identifier(dname, list/beacon_list)
 	var/obj/item/B
 	for(var/I in beacon_list)
 		var/bname = beacon_list[I]["beaconname"]
@@ -176,7 +176,7 @@
 			break
 	return B
 
-/obj/machinery/computer/teleporter/proc/set_destination(var/obj/destination)
+/obj/machinery/computer/teleporter/proc/set_destination(obj/destination)
 	if(get_dist(src, usr) > 1 && !issilicon(usr))
 		return
 

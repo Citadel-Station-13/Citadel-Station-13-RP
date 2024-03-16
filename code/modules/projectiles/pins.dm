@@ -211,7 +211,7 @@
 		to_chat(user, "<span class='warning'>Access denied.</span>")
 	user.visible_message("<span class='notice'>[user] swipes \the [ID] against \the [src].</span>")
 
-/obj/item/firing_pin/emag_act(var/remaining_charges, var/mob/user)
+/obj/item/firing_pin/emag_act(remaining_charges, mob/user)
 	if(emagged)
 		to_chat(user, "<span class='notice'>It's already emagged.</span>")
 		return

@@ -2,7 +2,7 @@
 	name = "teleport"
 	effect_type = EFFECT_BLUESPACE
 
-/datum/artifact_effect/teleport/DoEffectTouch(var/mob/user)
+/datum/artifact_effect/teleport/DoEffectTouch(mob/user)
 	var/weakness = GetAnomalySusceptibility(user)
 	if(prob(100 * weakness))
 		to_chat(user, "<font color='red'>You are suddenly zapped away elsewhere!</font>")

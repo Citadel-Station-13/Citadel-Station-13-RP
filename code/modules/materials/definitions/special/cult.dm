@@ -9,10 +9,10 @@
 	sheet_singular_name = "brick"
 	sheet_plural_name = "bricks"
 
-/datum/material/cult/place_dismantled_girder(var/turf/target)
+/datum/material/cult/place_dismantled_girder(turf/target)
 	new /obj/structure/girder/cult(target, /datum/material/cult)
 
-/datum/material/cult/place_dismantled_product(var/turf/target)
+/datum/material/cult/place_dismantled_product(turf/target)
 	new /obj/effect/debris/cleanable/blood(target)
 
 /datum/material/cult/reinf
@@ -20,5 +20,5 @@
 	name = "cult2"
 	display_name = "human remains"
 
-/datum/material/cult/reinf/place_dismantled_product(var/turf/target)
+/datum/material/cult/reinf/place_dismantled_product(turf/target)
 	new /obj/effect/decal/remains/human(target)

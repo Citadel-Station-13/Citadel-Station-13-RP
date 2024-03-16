@@ -85,7 +85,7 @@ GLOBAL_LIST_EMPTY(tgui_old_rcon_modules)
 // Proc: GetSMESByTag()
 // Parameters: 1 (tag - RCON tag of SMES we want to look up)
 // Description: Looks up and returns SMES which has matching RCON tag
-/datum/tgui_module_old/rcon/proc/GetSMESByTag(var/tag)
+/datum/tgui_module_old/rcon/proc/GetSMESByTag(tag)
 	if(!tag)
 		return
 

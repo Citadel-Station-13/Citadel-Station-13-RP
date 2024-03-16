@@ -25,7 +25,7 @@
 	reagents = null
 	..()
 
-/obj/projectile/energy/blob/on_impact(var/atom/A)
+/obj/projectile/energy/blob/on_impact(atom/A)
 	if(splatter)
 		var/turf/location = get_turf(src)
 		var/datum/effect_system/smoke_spread/chem/S = new /datum/effect_system/smoke_spread/chem

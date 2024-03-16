@@ -107,7 +107,7 @@
 
 			env.merge(removed)
 
-/obj/machinery/r_n_d/server/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/machinery/r_n_d/server/attackby(obj/item/O as obj, mob/user as mob)
 	if(default_deconstruction_screwdriver(user, O))
 		return
 	if(default_deconstruction_crowbar(user, O))
@@ -290,7 +290,7 @@
 		return
 	ui_interact(user)
 
-/obj/machinery/computer/rdservercontrol/emag_act(var/remaining_charges, var/mob/user)
+/obj/machinery/computer/rdservercontrol/emag_act(remaining_charges, mob/user)
 	if(!emagged)
 		playsound(src.loc, /datum/soundbyte/grouped/sparks, 75, TRUE)
 		emagged = TRUE

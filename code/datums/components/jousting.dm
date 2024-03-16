@@ -32,7 +32,7 @@
 	current_direction = NONE
 	current_tile_charge = 0
 
-/datum/component/jousting/proc/on_attack(datum/source, var/mob/living/target, mob/user)
+/datum/component/jousting/proc/on_attack(datum/source, mob/living/target, mob/user)
 	if(user != current_holder)
 		return
 	var/current = current_tile_charge

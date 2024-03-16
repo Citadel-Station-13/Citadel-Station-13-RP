@@ -8,7 +8,7 @@
 	circuit = /obj/item/circuitboard/robotics
 	var/safety = TRUE
 
-/obj/machinery/computer/robotics/attack_ai(var/mob/user as mob)
+/obj/machinery/computer/robotics/attack_ai(mob/user as mob)
 	ui_interact(user)
 
 /obj/machinery/computer/robotics/attack_hand(mob/user, list/params)

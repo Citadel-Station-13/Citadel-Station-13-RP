@@ -30,12 +30,12 @@
 	GLOB.cultnet.updateVisibility(src, 0)
 	return ..()
 
-/datum/antagonist/add_antagonist(var/datum/mind/player)
+/datum/antagonist/add_antagonist(datum/mind/player)
 	. = ..()
 	if(src == cult)
 		GLOB.cultnet.updateVisibility(player.current, 0)
 
-/datum/antagonist/remove_antagonist(var/datum/mind/player, var/show_message, var/implanted)
+/datum/antagonist/remove_antagonist(datum/mind/player, show_message, implanted)
 	..()
 	if(src == cult)
 		GLOB.cultnet.updateVisibility(player.current, 0)

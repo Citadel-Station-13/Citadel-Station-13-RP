@@ -17,7 +17,7 @@
 	var/default_message = "..."
 	var/list/insert_msg_override = list()
 
-/obj/structure/ashlander/production/attackby(var/obj/item/I, mob/user)
+/obj/structure/ashlander/production/attackby(obj/item/I, mob/user)
 	. = ..()
 	var/msg = insert_msg_override[I.type] || default_message
 	if(istype(I, /obj/item/stack/ore))
@@ -129,7 +129,7 @@
 	icon_state = "alchemy"+num2text(!isnull(beaker))
 	return
 
-/obj/machinery/reagentgrinder/ashlander/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/machinery/reagentgrinder/ashlander/attackby(obj/item/O as obj, mob/user as mob)
 	if(beaker)
 		if(default_deconstruction_screwdriver(user, O))
 			return

@@ -563,7 +563,7 @@
 			planes_visible -= key
 			hide_plane(key)
 
-/datum/perspective/proc/is_plane_visible(var/atom/movable/screen/plane_master/key, source)
+/datum/perspective/proc/is_plane_visible(atom/movable/screen/plane_master/key, source)
 	if(!initial(key.default_invisible))
 		return TRUE
 	if(isnull(source))

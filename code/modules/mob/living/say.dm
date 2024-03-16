@@ -92,7 +92,7 @@ var/list/channel_to_radio_key = new
 
 //Takes a list of the form list(message, verb, whispering) and modifies it as needed
 //Returns 1 if a speech problem was applied, 0 otherwise
-/mob/living/proc/handle_speech_problems(var/list/message_data)
+/mob/living/proc/handle_speech_problems(list/message_data)
 	var/message = message_data[1]
 	var/verb = message_data[2]
 	var/whispering = message_data[3]
@@ -139,14 +139,14 @@ var/list/channel_to_radio_key = new
 	returns[2] = null
 	return returns
 
-/mob/living/proc/get_speech_ending(verb, var/ending)
+/mob/living/proc/get_speech_ending(verb, ending)
 	if(ending=="!")
 		return pick("exclaims","shouts","yells")
 	if(ending=="?")
 		return "asks"
 	return verb
 
-/mob/living/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
+/mob/living/say(message, datum/language/speaking = null, verb="says", alt_name="", whispering = 0)
 	//If you're muted for IC chat
 	if(client)
 		if(message)
@@ -450,7 +450,7 @@ var/list/channel_to_radio_key = new
 		log_say(message, src)
 	return 1
 
-/mob/living/proc/say_signlang(var/message, var/verb="gestures", var/datum/language/language)
+/mob/living/proc/say_signlang(message, verb="gestures", datum/language/language)
 	var/turf/T = get_turf(src)
 	//We're in something, gesture to people inside the same thing
 	if(loc != T)

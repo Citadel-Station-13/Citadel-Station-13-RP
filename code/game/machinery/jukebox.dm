@@ -97,7 +97,7 @@
 		media_start_time = 0
 	update_music()
 
-/obj/machinery/media/jukebox/proc/set_hacked(var/newhacked)
+/obj/machinery/media/jukebox/proc/set_hacked(newhacked)
 	if(hacked == newhacked)
 		return
 	hacked = newhacked

@@ -30,34 +30,34 @@
 		SetValue(src.value)
 		//testing("[name]: DNA2 SE blocks after SetValue: [english_list(buf.dna.SE)]")
 
-/obj/item/dnainjector/proc/GetRealBlock(var/selblock)
+/obj/item/dnainjector/proc/GetRealBlock(selblock)
 	if(selblock==0)
 		return block
 	else
 		return selblock
 
-/obj/item/dnainjector/proc/GetState(var/selblock=0)
+/obj/item/dnainjector/proc/GetState(selblock=0)
 	var/real_block=GetRealBlock(selblock)
 	if(buf.types&DNA2_BUF_SE)
 		return buf.dna.GetSEState(real_block)
 	else
 		return buf.dna.GetUIState(real_block)
 
-/obj/item/dnainjector/proc/SetState(var/on, var/selblock=0)
+/obj/item/dnainjector/proc/SetState(on, selblock=0)
 	var/real_block=GetRealBlock(selblock)
 	if(buf.types&DNA2_BUF_SE)
 		return buf.dna.SetSEState(real_block,on)
 	else
 		return buf.dna.SetUIState(real_block,on)
 
-/obj/item/dnainjector/proc/GetValue(var/selblock=0)
+/obj/item/dnainjector/proc/GetValue(selblock=0)
 	var/real_block=GetRealBlock(selblock)
 	if(buf.types&DNA2_BUF_SE)
 		return buf.dna.GetSEValue(real_block)
 	else
 		return buf.dna.GetUIValue(real_block)
 
-/obj/item/dnainjector/proc/SetValue(var/val,var/selblock=0)
+/obj/item/dnainjector/proc/SetValue(val,selblock=0)
 	var/real_block=GetRealBlock(selblock)
 	if(buf.types&DNA2_BUF_SE)
 		return buf.dna.SetSEValue(real_block,val)

@@ -344,7 +344,7 @@ var/list/table_icon_cache = list()
 		desc = "[desc] This one seems to be reinforced with [material_reinforcing.display_name]."
 	return ..()
 
-/proc/get_table_image(var/icon/ticon,var/ticonstate,var/tdir,var/tcolor,var/talpha)
+/proc/get_table_image(icon/ticon,ticonstate,tdir,tcolor,talpha)
 	var/icon_cache_key = "\ref[ticon]-[ticonstate]-[tdir]-[tcolor]-[talpha]"
 	var/image/I = table_icon_cache[icon_cache_key]
 	if(!I)

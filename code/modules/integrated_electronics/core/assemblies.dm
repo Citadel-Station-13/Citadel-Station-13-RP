@@ -360,7 +360,7 @@
 		. += part.size
 
 // Returns true if the circuit made it inside.
-/obj/item/electronic_assembly/proc/try_add_component(var/obj/item/integrated_circuit/IC, var/mob/user)
+/obj/item/electronic_assembly/proc/try_add_component(obj/item/integrated_circuit/IC, mob/user)
 	if(!opened)
 		to_chat(user, SPAN_WARNING("\The [src] isn't opened, so you can't put anything inside.  Try using a crowbar."))
 		return FALSE
@@ -393,7 +393,7 @@
 	return TRUE
 
 // Actually puts the circuit inside, doesn't perform any checks.
-/obj/item/electronic_assembly/proc/add_component(var/obj/item/integrated_circuit/IC)
+/obj/item/electronic_assembly/proc/add_component(obj/item/integrated_circuit/IC)
 	IC.forceMove(get_object())
 	IC.assembly = src
 	// Build TGUI lists here for efficiency.  We don't need to do that every time the UI updates.
@@ -417,7 +417,7 @@
 		if(S.sense(target,user,(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)))
 			visible_message(SPAN_NOTICE("\The [user] waves \the [src] around [target]."))
 
-/obj/item/electronic_assembly/attackby(var/obj/item/I, var/mob/user, intent)
+/obj/item/electronic_assembly/attackby(obj/item/I, mob/user, intent)
 	if(can_anchor && I.is_wrench())
 		if(anchored_by)
 			to_chat(user, SPAN_WARNING(pick("You fail to get purchase on [anchored_by]'s bolts.","[src]'s [anchored_by] protests!","The bolts defeat your paltry attempts to loosen them.")))

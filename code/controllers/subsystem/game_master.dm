@@ -89,7 +89,7 @@ SUBSYSTEM_DEF(gamemaster)
 			log_debug(SPAN_DEBUG("[choice.name] was chosen by the Game Master, and is now being ran."))
 			INVOKE_ASYNC(src, PROC_REF(run_action), choice)
 
-/datum/controller/subsystem/gamemaster/proc/run_action(var/datum/gm_action/action)
+/datum/controller/subsystem/gamemaster/proc/run_action(datum/gm_action/action)
 	action.set_up()
 	action.start()
 	action.announce()
@@ -102,7 +102,7 @@ SUBSYSTEM_DEF(gamemaster)
 	last_department_used = action.departments[1]
 
 
-/datum/controller/subsystem/gamemaster/proc/decide_best_action(var/list/most_active_departments)
+/datum/controller/subsystem/gamemaster/proc/decide_best_action(list/most_active_departments)
 	if(!most_active_departments.len) // Server's empty?
 		log_debug(SPAN_DEBUG("Game Master failed to find any active departments."))
 		return list()

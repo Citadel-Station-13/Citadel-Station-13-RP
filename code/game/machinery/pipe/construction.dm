@@ -261,7 +261,7 @@ Buildable meters
 	w_class = WEIGHT_CLASS_BULKY
 	var/piping_layer = PIPING_LAYER_DEFAULT
 
-/obj/item/pipe_meter/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/item/pipe_meter/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench())
 		return wrench_act(W, user)
 	return ..()

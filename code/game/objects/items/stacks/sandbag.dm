@@ -28,7 +28,7 @@
 	else
 		icon_state = "sandbag_empty"
 
-/obj/item/stack/emptysandbag/attackby(var/obj/item/W, var/mob/user)
+/obj/item/stack/emptysandbag/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/stack/ore/glass) && !interact(user, src))
 		if(do_after(user, 1 SECONDS, src) && use(1))
 			var/obj/item/stack/ore/glass/O = W
@@ -79,7 +79,7 @@
 	. = list()
 	. += create_stack_recipe_datum(name = "sandbag barricade", product = /obj/structure/sandbag, cost = 7, time = 1.5 SECONDS)
 
-/obj/item/stack/sandbags/attackby(var/obj/item/W, var/mob/user)
+/obj/item/stack/sandbags/attackby(obj/item/W, mob/user)
 	if(is_sharp(W))
 		user.visible_message("<span class='notice'>\The [user] begins cutting up [src] with [W].</span>", "<span class='notice'>You begin cutting up [src] with [W].</span>")
 		if(do_after(user, 3 SECONDS, src) && use(1))

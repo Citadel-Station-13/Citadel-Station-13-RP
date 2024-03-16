@@ -4,7 +4,7 @@
 	complexity = 2
 	activators = list("compare" = IC_PINTYPE_PULSE_IN, "if valid" = IC_PINTYPE_PULSE_OUT, "if not valid" = IC_PINTYPE_PULSE_OUT)
 
-/obj/item/integrated_circuit/filter/proc/may_pass(var/input)
+/obj/item/integrated_circuit/filter/proc/may_pass(input)
 	return FALSE
 
 /obj/item/integrated_circuit/filter/do_work()
@@ -17,7 +17,7 @@
 	inputs = list( "input" = IC_PINTYPE_REF )
 	outputs = list("result" = IC_PINTYPE_BOOLEAN, "self ref" = IC_PINTYPE_SELFREF)
 
-/obj/item/integrated_circuit/filter/ref/may_pass(var/datum/weakref/data)
+/obj/item/integrated_circuit/filter/ref/may_pass(datum/weakref/data)
 	if(!(filter_type && isweakref(data)))
 		return FALSE
 	var/datum/weakref/wref = data
@@ -97,7 +97,7 @@
 	inputs = list( "input" = IC_PINTYPE_REF, "expected type" = IC_PINTYPE_REF )
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
-/obj/item/integrated_circuit/filter/ref/custom/may_pass(var/datum/weakref/data, var/datum/weakref/typedata)
+/obj/item/integrated_circuit/filter/ref/custom/may_pass(datum/weakref/data, datum/weakref/typedata)
 	if(!isweakref(data) || !isweakref(typedata))
 		return FALSE
 	var/datum/weakref/wref = data
@@ -131,7 +131,7 @@
 	outputs = list("result" = IC_PINTYPE_BOOLEAN)
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
-/obj/item/integrated_circuit/filter/string/may_pass(var/datum/integrated_io/A, var/datum/integrated_io/B)
+/obj/item/integrated_circuit/filter/string/may_pass(datum/integrated_io/A, datum/integrated_io/B)
 	return A.data == B.data
 
 /obj/item/integrated_circuit/filter/string/do_work()

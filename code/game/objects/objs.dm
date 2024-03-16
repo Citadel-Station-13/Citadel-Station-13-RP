@@ -257,7 +257,7 @@
 /mob/proc/unset_machine()
 	machine = null
 
-/mob/proc/set_machine(var/obj/O)
+/mob/proc/set_machine(obj/O)
 	if(src.machine)
 		unset_machine()
 	src.machine = O
@@ -289,7 +289,7 @@
 /obj/proc/hear_signlang(mob/M as mob, text, verb, datum/language/speaking) // Saycode gets worse every day.
 	return FALSE
 
-/obj/proc/see_emote(mob/M as mob, text, var/emote_type)
+/obj/proc/see_emote(mob/M as mob, text, emote_type)
 	return
 
 // Used to mark a turf as containing objects that are dangerous to step onto.

@@ -28,7 +28,7 @@
 			if(O.client.prefs.be_special & BE_ALIEN)
 				question(O.client)
 
-/obj/item/slime_cube/proc/question(var/client/C)
+/obj/item/slime_cube/proc/question(client/C)
 	spawn(0)
 		if(!C)
 			return
@@ -50,7 +50,7 @@
 		for (var/mob/M in viewers(T))
 			M.show_message("<span class='warning'>The activity in the cube dies down. Maybe it will spark another time.</span>")
 
-/obj/item/slime_cube/proc/transfer_personality(var/mob/candidate)
+/obj/item/slime_cube/proc/transfer_personality(mob/candidate)
 	announce_ghost_joinleave(candidate, 0, "They are a promethean now.")
 	src.searching = 2
 	var/mob/living/carbon/human/S = new(get_turf(src))

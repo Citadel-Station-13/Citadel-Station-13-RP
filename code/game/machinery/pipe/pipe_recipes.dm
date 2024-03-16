@@ -158,7 +158,7 @@ GLOBAL_LIST_INIT(pipe_layers, list(
 /datum/pipe_info/pipe
 	var/obj/item/pipe/construction_type //The type PATH to the type of pipe fitting object the recipe makes.
 
-/datum/pipe_info/pipe/New(label, obj/machinery/atmospherics/path, var/use_five_layers, var/colorable=FALSE)
+/datum/pipe_info/pipe/New(label, obj/machinery/atmospherics/path, use_five_layers, colorable=FALSE)
 	name = label
 	pipe_type = path
 	all_layers = use_five_layers
@@ -186,7 +186,7 @@ GLOBAL_LIST_INIT(pipe_layers, list(
 /datum/pipe_info/disposal
 	icon = 'icons/obj/pipes/disposal.dmi'
 
-/datum/pipe_info/disposal/New(var/label, var/path, var/state, dt=PIPE_DIRECTIONAL, var/state_mirror=0, var/sort=0)
+/datum/pipe_info/disposal/New(label, path, state, dt=PIPE_DIRECTIONAL, state_mirror=0, sort=0)
 	name = label
 	icon_state = state
 	pipe_type = path

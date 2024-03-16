@@ -78,12 +78,12 @@
 		else if(((stat == UNCONSCIOUS) || resting || incapacitated(INCAPACITATION_DISABLED) ) && icon_rest && (vore_icons & SA_ICON_REST))
 			icon_state = "[icon_rest]-[vore_fullness]"
 
-/mob/living/simple_mob/proc/will_eat(var/mob/living/M)
+/mob/living/simple_mob/proc/will_eat(mob/living/M)
 	return FALSE // no more mobvore
 
 // Attempt to eat target
 // TODO - Review this.  Could be some issues here
-/mob/living/simple_mob/proc/EatTarget(var/mob/living/M)
+/mob/living/simple_mob/proc/EatTarget(mob/living/M)
 	var/old_target = M
 	set_AI_busy(1)
 	. = animal_nom(M)
@@ -167,7 +167,7 @@
 	return ..() // Procede as normal.
 
 //Grab = Nomf
-/mob/living/simple_mob/UnarmedAttack(var/atom/A, var/proximity)
+/mob/living/simple_mob/UnarmedAttack(atom/A, proximity)
 	. = ..()
 
 	if(a_intent == INTENT_GRAB && isliving(A) && !has_hands)

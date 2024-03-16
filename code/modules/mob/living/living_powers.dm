@@ -1,4 +1,4 @@
-/mob/living/proc/reveal(var/silent, var/message = "<span class='warning'>You have been revealed! You are no longer hidden.</span>")
+/mob/living/proc/reveal(silent, message = "<span class='warning'>You have been revealed! You are no longer hidden.</span>")
 	if(status_flags & STATUS_HIDING)
 		status_flags &= ~STATUS_HIDING
 		reset_plane_and_layer()

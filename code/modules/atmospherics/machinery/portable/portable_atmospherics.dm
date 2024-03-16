@@ -153,7 +153,7 @@
 		GAS_ID_OXYGEN = O2STANDARD * MolesForPressure(),
 		GAS_ID_NITROGEN = N2STANDARD *  MolesForPressure())
 
-/obj/machinery/portable_atmospherics/proc/MolesForPressure(var/target_pressure = start_pressure)
+/obj/machinery/portable_atmospherics/proc/MolesForPressure(target_pressure = start_pressure)
 	return (target_pressure * air_contents.volume) / (R_IDEAL_GAS_EQUATION * air_contents.temperature)
 
 /obj/machinery/portable_atmospherics/proc/connect(obj/machinery/atmospherics/portables_connector/new_port)

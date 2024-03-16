@@ -190,7 +190,7 @@
 		return
 
 //Changes color and luminosity of the light to these values if they were not already set
-/obj/machinery/power/supermatter/proc/shift_light(var/lum, var/clr)
+/obj/machinery/power/supermatter/proc/shift_light(lum, clr)
 	if(lum != light_range || clr != light_color)
 		set_light(lum, l_color = clr)
 
@@ -372,7 +372,7 @@
 	return 1
 
 
-/obj/machinery/power/supermatter/bullet_act(var/obj/projectile/Proj)
+/obj/machinery/power/supermatter/bullet_act(obj/projectile/Proj)
 	var/turf/L = loc
 	if(!istype(L))		// We don't run process() when we are in space
 		return 0	// This stops people from being able to really power up the supermatter
@@ -436,7 +436,7 @@
 
 /*
 // This is purely informational UI that may be accessed by AIs or robots
-/obj/machinery/power/supermatter/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/power/supermatter/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)
 	var/data[0]
 
 	data["integrity_percentage"] = round(get_integrity())
@@ -490,7 +490,7 @@
 
 	Consume(AM)
 
-/obj/machinery/power/supermatter/proc/Consume(var/mob/living/user)
+/obj/machinery/power/supermatter/proc/Consume(mob/living/user)
 	// todo: rework the fucking supermatter so we don't need this
 	// todo: also rework shit to not keep references to deleted things; LOOKING AT YOU CYBORGS
 	// tl;dr cyborgs keep refs to shit that's deleted and keep letting you use them

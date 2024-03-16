@@ -21,11 +21,11 @@
 	name = "Persistence"
 	sort_order = 6
 
-/datum/category_item/player_setup_item/vore/persistence/load_character(var/savefile/S)
+/datum/category_item/player_setup_item/vore/persistence/load_character(savefile/S)
 	S["persistence_settings"]		>> pref.persistence_settings
 	sanitize_character() // Don't let new characters start off with nulls
 
-/datum/category_item/player_setup_item/vore/persistence/save_character(var/savefile/S)
+/datum/category_item/player_setup_item/vore/persistence/save_character(savefile/S)
 	S["persistence_settings"]		<< pref.persistence_settings
 
 /datum/category_item/player_setup_item/vore/persistence/sanitize_character()
@@ -59,13 +59,13 @@
 	. += "</table>"
 	return jointext(., "")
 
-/datum/category_item/player_setup_item/vore/persistence/proc/make_yesno(var/bit)
+/datum/category_item/player_setup_item/vore/persistence/proc/make_yesno(bit)
 	if(pref.persistence_settings & bit)
 		return "<td><span class='linkOn'><b>Yes</b></span></td> <td><a href='?src=\ref[src];toggle_off=[bit]'>No</a></td>"
 	else
 		return "<td><a href='?src=\ref[src];toggle_on=[bit]'>Yes</a></td> <td><span class='linkOn'><b>No</b></span></td>"
 
-/datum/category_item/player_setup_item/vore/persistence/OnTopic(var/href, var/list/href_list, var/mob/user)
+/datum/category_item/player_setup_item/vore/persistence/OnTopic(href, list/href_list, mob/user)
 	if(href_list["toggle_on"])
 		var/bit = text2num(href_list["toggle_on"])
 		pref.persistence_settings |= bit

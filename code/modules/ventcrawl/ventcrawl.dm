@@ -44,7 +44,7 @@ var/list/ventcrawl_machinery = list(
 		return FALSE
 	. = ..()
 
-/mob/living/proc/is_allowed_vent_crawl_item(var/obj/carried_item)
+/mob/living/proc/is_allowed_vent_crawl_item(obj/carried_item)
 	//Ability master easy test for allowed (cheaper than istype)
 	if(carried_item == ability_master)
 		return 1
@@ -60,12 +60,12 @@ var/list/ventcrawl_machinery = list(
 	if((listed && !is_holding(carried_item)) || !is_in_inventory(carried_item))
 		return 1
 
-/mob/living/carbon/is_allowed_vent_crawl_item(var/obj/item/carried_item)
+/mob/living/carbon/is_allowed_vent_crawl_item(obj/item/carried_item)
 	if(carried_item in internal_organs)
 		return 1
 	return ..()
 
-/mob/living/carbon/human/is_allowed_vent_crawl_item(var/obj/item/carried_item)
+/mob/living/carbon/human/is_allowed_vent_crawl_item(obj/item/carried_item)
 	if(carried_item in organs)
 		return 1
 	return ..()
@@ -77,7 +77,7 @@ var/list/ventcrawl_machinery = list(
 			return FALSE
 	return TRUE
 
-/mob/living/AltClickOn(var/atom/A)
+/mob/living/AltClickOn(atom/A)
 	if(is_type_in_list(A,ventcrawl_machinery))
 		handle_ventcrawl(A)
 		return 1
@@ -104,7 +104,7 @@ var/list/ventcrawl_machinery = list(
 
 /mob/living/var/ventcrawl_layer = 3
 
-/mob/living/proc/handle_ventcrawl(var/atom/clicked_on)
+/mob/living/proc/handle_ventcrawl(atom/clicked_on)
 	if(!can_ventcrawl() || prepping_to_ventcrawl)
 		return
 

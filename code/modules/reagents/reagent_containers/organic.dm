@@ -86,7 +86,7 @@
 
 	standard_feed_mob(user, target)
 
-/obj/item/reagent_containers/organic/standard_feed_mob(var/mob/user, var/mob/target)
+/obj/item/reagent_containers/organic/standard_feed_mob(mob/user, mob/target)
 	if(!is_open_container())
 		to_chat(user, "<span class='notice'>You need to peeol open \the [src] first.</span>")
 		return 1
@@ -94,7 +94,7 @@
 		return 1
 	return ..()
 
-/obj/item/reagent_containers/organic/self_feed_message(var/mob/user)
+/obj/item/reagent_containers/organic/self_feed_message(mob/user)
 	to_chat(user, "<span class='notice'>You swallow a gulp from \the [src].</span>")
 
 /obj/item/reagent_containers/organic/afterattack(atom/target, mob/user, clickchain_flags, list/params)

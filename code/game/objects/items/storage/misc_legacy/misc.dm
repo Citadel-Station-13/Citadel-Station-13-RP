@@ -50,7 +50,7 @@
 	. = ..()
 	obj_storage.update_icon_on_item_change = TRUE
 
-/obj/item/storage/box/wormcan/update_icon(var/itemremoved = 0)
+/obj/item/storage/box/wormcan/update_icon(itemremoved = 0)
 	if (contents.len == 0)
 		icon_state = "wormcan_empty"
 
@@ -61,7 +61,7 @@
 	max_combined_volume = WEIGHT_VOLUME_TINY * 6
 	starts_with = list(/obj/item/reagent_containers/food/snacks/wormsickly = 6)
 
-/obj/item/storage/box/wormcan/sickly/update_icon(var/itemremoved = 0)
+/obj/item/storage/box/wormcan/sickly/update_icon(itemremoved = 0)
 	if (contents.len == 0)
 		icon_state = "wormcan_empty_sickly"
 
@@ -72,7 +72,7 @@
 	max_combined_volume = WEIGHT_VOLUME_TINY * 6
 	starts_with = list(/obj/item/reagent_containers/food/snacks/wormdeluxe = 6)
 
-/obj/item/storage/box/wormcan/deluxe/update_icon(var/itemremoved = 0)
+/obj/item/storage/box/wormcan/deluxe/update_icon(itemremoved = 0)
 	if (contents.len == 0)
 		icon_state = "wormcan_empty_deluxe"
 

@@ -11,7 +11,7 @@ var/list/fusion_reactions
 	var/list/products = list()
 	var/minimum_reaction_temperature = 100
 
-/singleton/fusion_reaction/proc/handle_reaction_special(var/obj/effect/fusion_em_field/holder)
+/singleton/fusion_reaction/proc/handle_reaction_special(obj/effect/fusion_em_field/holder)
 	return 0
 
 /proc/get_fusion_reaction(p_react, s_react, m_energy)
@@ -110,7 +110,7 @@ var/list/fusion_reactions
 	radiation = 20
 	instability = 20
 
-/singleton/fusion_reaction/phoron_supermatter/handle_reaction_special(var/obj/effect/fusion_em_field/holder)
+/singleton/fusion_reaction/phoron_supermatter/handle_reaction_special(obj/effect/fusion_em_field/holder)
 
 	wormhole_event()
 

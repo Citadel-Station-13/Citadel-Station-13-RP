@@ -1,6 +1,6 @@
 //This is a straight port of the system from Nebula.
 
-/obj/structure/closet/debug/Initialize(var/maploading, var/newappearance)
+/obj/structure/closet/debug/Initialize(maploading, newappearance)
 	closet_appearance = newappearance
 	. = ..(maploading)
 

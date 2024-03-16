@@ -4,16 +4,16 @@
 /datum/proc/nano_container()
 	return src
 
-/datum/proc/CanUseTopic(var/mob/user, var/datum/topic_state/state)
+/datum/proc/CanUseTopic(mob/user, datum/topic_state/state)
 	var/src_object = nano_host()
 	if(IsAdminGhost(user))
 		return UI_INTERACTIVE
 	return state.can_use_topic(src_object, user)
 
-/datum/topic_state/proc/href_list(var/mob/user)
+/datum/topic_state/proc/href_list(mob/user)
 	return list()
 
-/datum/topic_state/proc/can_use_topic(var/src_object, var/mob/user)
+/datum/topic_state/proc/can_use_topic(src_object, mob/user)
 	return UI_CLOSE
 
 /mob/proc/shared_nano_interaction()

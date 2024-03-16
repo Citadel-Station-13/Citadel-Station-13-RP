@@ -163,7 +163,7 @@
 	return TRUE
 
 //micros in shoes
-/obj/item/clothing/relaymove(var/mob/living/user,var/direction)
+/obj/item/clothing/relaymove(mob/living/user,direction)
 	if(recent_struggle)
 		return
 
@@ -184,7 +184,7 @@
 		src.visible_message("<font color='red'>\The [src] moves a little!</font>")
 		to_chat(user, "<font color='red'>You throw yourself against the inside of \the [src]!</font>")
 
-/obj/item/clothing/proc/refit_for_species(var/target_species)
+/obj/item/clothing/proc/refit_for_species(target_species)
 	if(!species_restricted)
 		return //this item doesn't use the species_restricted system
 
@@ -208,7 +208,7 @@
 	else
 		icon = initial(icon)
 
-/obj/item/clothing/head/helmet/refit_for_species(var/target_species)
+/obj/item/clothing/head/helmet/refit_for_species(target_species)
 	if(!species_restricted)
 		return //this item doesn't use the species_restricted system
 

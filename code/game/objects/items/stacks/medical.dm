@@ -68,7 +68,7 @@
 	C.update_health()
 	return TRUE
 
-/obj/item/stack/medical/proc/upgrade_stack(var/upgrade_amount)
+/obj/item/stack/medical/proc/upgrade_stack(upgrade_amount)
 	. = FALSE
 
 	var/turf/T = get_turf(src)

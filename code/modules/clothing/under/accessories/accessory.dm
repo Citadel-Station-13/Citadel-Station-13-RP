@@ -81,7 +81,7 @@
 	return mob_overlay
 
 //when user attached an accessory to S
-/obj/item/clothing/accessory/proc/on_attached(var/obj/item/clothing/S, var/mob/user)
+/obj/item/clothing/accessory/proc/on_attached(obj/item/clothing/S, mob/user)
 	if(!istype(S))
 		return
 	accessory_host = S
@@ -532,7 +532,7 @@
 			icon_override = 'icons/mob/clothing/species/teshari/ties.dmi'
 		update_worn_icon()
 
-/obj/item/clothing/accessory/collar/on_attached(var/obj/item/clothing/S, var/mob/user)
+/obj/item/clothing/accessory/collar/on_attached(obj/item/clothing/S, mob/user)
 	if(!istype(S))
 		return
 	accessory_host = S
@@ -740,7 +740,7 @@
 	item_state = "collar_holo_overlay"
 	overlay_state = "collar_holo_overlay"
 //Make indigestible
-/obj/item/clothing/accessory/collar/holo/indigestible/digest_act(var/atom/movable/item_storage = null)
+/obj/item/clothing/accessory/collar/holo/indigestible/digest_act(atom/movable/item_storage = null)
 	return FALSE
 
 /obj/item/clothing/accessory/collar/attack_self(mob/user)
@@ -765,12 +765,12 @@
 		to_chat(user,"<span class='notice'>You set the [name]'s tag to '[str]'.</span>")
 		initialize_tag(str)
 
-/obj/item/clothing/accessory/collar/proc/initialize_tag(var/tag)
+/obj/item/clothing/accessory/collar/proc/initialize_tag(tag)
 		name = initial(name) + " ([tag])"
 		desc = initial(desc) + " \"[tag]\" has been engraved on the tag."
 		writtenon = 1
 
-/obj/item/clothing/accessory/collar/holo/initialize_tag(var/tag)
+/obj/item/clothing/accessory/collar/holo/initialize_tag(tag)
 		..()
 		desc = initial(desc) + " The tag says \"[tag]\"."
 
@@ -788,7 +788,7 @@
 
 	to_chat(user,"<span class='notice'>You need a pen or a screwdriver to edit the tag on this collar.</span>")
 
-/obj/item/clothing/accessory/collar/proc/update_collartag(mob/user, obj/item/I, var/erasemethod, var/erasing, var/writemethod)
+/obj/item/clothing/accessory/collar/proc/update_collartag(mob/user, obj/item/I, erasemethod, erasing, writemethod)
 	if(!(istype(user.get_active_held_item(),I)) || !(istype(user.get_inactive_held_item(),src)) || (user.stat))
 		return
 

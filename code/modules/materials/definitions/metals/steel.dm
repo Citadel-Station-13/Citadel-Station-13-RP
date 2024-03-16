@@ -260,7 +260,7 @@
 	explosion_resistance = 10
 	icon_colour = "#666677"
 
-/datum/material/steel/hull/place_sheet(var/turf/target) //Deconstructed into normal steel sheets.
+/datum/material/steel/hull/place_sheet(turf/target) //Deconstructed into normal steel sheets.
 	new /obj/item/stack/material/steel(target)
 
 /datum/material/steel/holographic

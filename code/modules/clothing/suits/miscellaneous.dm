@@ -302,7 +302,7 @@
 	. = FALSE
 	INVOKE_ASYNC(user, TYPE_PROC_REF(/mob/living/carbon/human, escape_straight_jacket))
 
-/obj/item/clothing/suit/straight_jacket/equipped(var/mob/living/user,var/slot)
+/obj/item/clothing/suit/straight_jacket/equipped(mob/living/user,slot)
 	. = ..()
 	if(slot == SLOT_ID_SUIT)
 		user.drop_all_held_items()

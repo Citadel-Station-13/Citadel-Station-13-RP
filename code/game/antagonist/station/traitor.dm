@@ -18,7 +18,7 @@ var/datum/antagonist/traitor/traitors
 	..()
 	traitors = src
 
-/datum/antagonist/traitor/get_extra_panel_options(var/datum/mind/player)
+/datum/antagonist/traitor/get_extra_panel_options(datum/mind/player)
 	return "<a href='?src=\ref[player];common=crystals'>\[set crystals\]</a><a href='?src=\ref[src];spawn_uplink=\ref[player.current]'>\[spawn uplink\]</a>"
 
 /datum/antagonist/traitor/Topic(href, href_list)
@@ -26,7 +26,7 @@ var/datum/antagonist/traitor/traitors
 		return
 	if(href_list["spawn_uplink"]) spawn_uplink(locate(href_list["spawn_uplink"]))
 
-/datum/antagonist/traitor/create_objectives(var/datum/mind/traitor)
+/datum/antagonist/traitor/create_objectives(datum/mind/traitor)
 	if(!..())
 		return
 
@@ -80,7 +80,7 @@ var/datum/antagonist/traitor/traitors
 					traitor.objectives += hijack_objective
 	return
 
-/datum/antagonist/traitor/equip(var/mob/living/carbon/human/traitor_mob)
+/datum/antagonist/traitor/equip(mob/living/carbon/human/traitor_mob)
 	if(istype(traitor_mob, /mob/living/silicon)) // this needs to be here because ..() returns false if the mob isn't human
 		add_law_zero(traitor_mob)
 		return 1
@@ -108,7 +108,7 @@ var/datum/antagonist/traitor/traitors
 	traitor_mob.mind.store_memory("<b>Code Response</b>: [syndicate_code_response]")
 	to_chat(traitor_mob, "Use the code words, preferably in the order provided, during regular conversation, to identify other agents. Proceed with caution, however, as everyone is a potential foe.")
 
-/datum/antagonist/traitor/proc/spawn_uplink(var/mob/living/carbon/human/traitor_mob)
+/datum/antagonist/traitor/proc/spawn_uplink(mob/living/carbon/human/traitor_mob)
 	if(!istype(traitor_mob))
 		return
 

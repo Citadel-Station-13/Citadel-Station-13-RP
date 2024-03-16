@@ -172,7 +172,7 @@
 	return 42
 
 //If atom stands under open space, it can prevent fall, or not
-/atom/proc/can_prevent_fall(var/atom/movable/mover, var/turf/coming_from)
+/atom/proc/can_prevent_fall(atom/movable/mover, turf/coming_from)
 	return (!CanPass(mover, coming_from))
 
 ////////////////////////////
@@ -509,7 +509,7 @@
 	// Then call parent to have us actually fall
 	return ..()
 
-/obj/mecha/fall_impact(var/atom/hit_atom, var/damage_min = 15, var/damage_max = 30, var/silent = FALSE, var/planetary = FALSE)
+/obj/mecha/fall_impact(atom/hit_atom, damage_min = 15, damage_max = 30, silent = FALSE, planetary = FALSE)
 	// Anything on the same tile as the landing tile is gonna have a bad day.
 	for(var/mob/living/L in hit_atom.contents)
 		L.visible_message(SPAN_DANGER("\The [src] crushes \the [L] as it lands on them!"))

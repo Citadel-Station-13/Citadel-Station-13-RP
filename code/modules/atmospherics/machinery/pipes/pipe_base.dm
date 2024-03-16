@@ -80,7 +80,7 @@
 			qdel(meter)
 	. = ..()
 
-/obj/machinery/atmospherics/pipe/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/machinery/atmospherics/pipe/attackby(obj/item/W as obj, mob/user as mob)
 	if (istype(src, /obj/machinery/atmospherics/pipe/tank))
 		return ..()
 
@@ -105,7 +105,7 @@
 			"You hear a ratchet.")
 		deconstruct()
 
-/obj/machinery/atmospherics/pipe/proc/change_color(var/new_color)
+/obj/machinery/atmospherics/pipe/proc/change_color(new_color)
 	//only pass valid pipe colors please ~otherwise your pipe will turn invisible
 	if(!pipe_color_check(new_color))
 		return
@@ -113,7 +113,7 @@
 	pipe_color = new_color
 	update_icon()
 
-/obj/machinery/atmospherics/pipe/color_cache_name(var/obj/machinery/atmospherics/node)
+/obj/machinery/atmospherics/pipe/color_cache_name(obj/machinery/atmospherics/node)
 	if(istype(src, /obj/machinery/atmospherics/pipe/tank))
 		return ..()
 
@@ -127,7 +127,7 @@
 	else
 		return pipe_color
 
-/obj/machinery/atmospherics/pipe/hide(var/i)
+/obj/machinery/atmospherics/pipe/hide(i)
 	if(istype(loc, /turf/simulated))
 		invisibility = i ? 100 : 0
 	update_icon()

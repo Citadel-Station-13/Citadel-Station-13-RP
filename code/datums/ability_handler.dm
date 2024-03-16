@@ -3,7 +3,7 @@
     var/target_type
 
 ///Is called by the ability
-/datum/ability_handler/proc/process_ability(var/datum/ability/ab)
+/datum/ability_handler/proc/process_ability(datum/ability/ab)
 	current = ab
 	switch(current?.targeting_type)
 		if(ABILITY_TARGET_ALL)

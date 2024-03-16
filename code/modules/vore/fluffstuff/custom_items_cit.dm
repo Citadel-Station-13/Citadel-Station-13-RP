@@ -47,7 +47,7 @@
 			update_state(3)
 
 
-/obj/item/clothing/accessory/collar/lifecrystal/proc/ebroadcast(var/message)
+/obj/item/clothing/accessory/collar/lifecrystal/proc/ebroadcast(message)
 	var/list/datum/radio_frequency/secure_radio_connections = new
 	var/datum/radio_frequency/connection = secure_radio_connections["Medical"]
 	Broadcast_Message(connection, owner,
@@ -55,7 +55,7 @@
 				message, "[owner.real_name]'s Life Crystal", "Life Alert", "[owner.real_name]'s Life Crystal", "shrill synthetic voice",
 				0, 0, list(0), connection.frequency, "alarms", null)
 
-/obj/item/clothing/accessory/collar/lifecrystal/proc/update_state(var/tostate)
+/obj/item/clothing/accessory/collar/lifecrystal/proc/update_state(tostate)
 	state = tostate
 	icon_state = "[initial(icon_state)][tostate]"
 	update_icon()

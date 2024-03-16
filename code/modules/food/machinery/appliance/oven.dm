@@ -94,11 +94,11 @@
 			selected_option = choice
 			to_chat(usr, "<span class='notice'>You prepare \the [src] to make \a [selected_option] with the next thing you put in. Try putting several ingredients in a container!</span>")
 
-/obj/machinery/appliance/cooker/oven/AltClick(var/mob/user)
+/obj/machinery/appliance/cooker/oven/AltClick(mob/user)
 	try_toggle_door(user)
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 
-/obj/machinery/appliance/cooker/oven/CtrlClick(var/mob/user)
+/obj/machinery/appliance/cooker/oven/CtrlClick(mob/user)
 	choose_output()
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 
@@ -124,7 +124,7 @@
 	playsound(src, 'sound/machines/hatch_open.ogg', 20, 1)
 	update_icon()
 
-/obj/machinery/appliance/cooker/oven/can_insert(var/obj/item/I, var/mob/user)
+/obj/machinery/appliance/cooker/oven/can_insert(obj/item/I, mob/user)
 	if (!open)
 		to_chat(user, "<span class='warning'>You can't put anything in while the door is closed!</span>")
 		return FALSE
@@ -141,7 +141,7 @@
 		if (temperature > T.temperature)
 			equalize_temperature()
 
-/obj/machinery/appliance/cooker/oven/can_remove_items(var/mob/user)
+/obj/machinery/appliance/cooker/oven/can_remove_items(mob/user)
 	if (!open)
 		to_chat(user, "<span class='warning'>You can't take anything out while the door is closed!</span>")
 		return FALSE
@@ -152,7 +152,7 @@
 
 //Oven has lots of recipes and combine options. The chance for interference is high, so
 //If a combine target is set the oven will do it instead of checking recipes
-/obj/machinery/appliance/cooker/oven/finish_cooking(var/datum/cooking_item/CI)
+/obj/machinery/appliance/cooker/oven/finish_cooking(datum/cooking_item/CI)
 	if(CI.combine_target)
 		CI.result_type = 3//Combination type. We're making something out of our ingredients
 		combination_cook(CI)

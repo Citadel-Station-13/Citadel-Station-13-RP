@@ -35,7 +35,7 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/uplink/get_item_cost(var/item_type, var/item_cost)
+/obj/item/uplink/get_item_cost(item_type, item_cost)
 	return (discount_item && (item_type == discount_item)) ? max(1, round(item_cost*discount_amount)) : item_cost
 
 // HIDDEN UPLINK - Can be stored in anything but the host item has to have a trigger for it.
@@ -86,7 +86,7 @@
 // Checks to see if the value meets the target. Like a frequency being a traitor_frequency, in order to unlock a headset.
 // If true, it accesses trigger() and returns 1. If it fails, it returns false. Use this to see if you need to close the
 // current item's menu.
-/obj/item/uplink/hidden/proc/check_trigger(mob/user as mob, var/value, var/target)
+/obj/item/uplink/hidden/proc/check_trigger(mob/user as mob, value, target)
 	if(value == target)
 		trigger(user)
 		return 1
@@ -95,7 +95,7 @@
 /*
 	NANO UI FOR UPLINK WOOP WOOP
 */
-/obj/item/uplink/hidden/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/item/uplink/hidden/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)
 	var/title = "Remote Uplink"
 	var/data[0]
 	uses = user.mind.tcrystals

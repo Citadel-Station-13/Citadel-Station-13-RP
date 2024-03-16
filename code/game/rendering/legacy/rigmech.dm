@@ -4,7 +4,7 @@
 	var/list/types_to_instantiate
 	var/needs_processing = FALSE
 
-/datum/mini_hud/New(var/datum/hud/other)
+/datum/mini_hud/New(datum/hud/other)
 	apply_to_hud(other)
 	if(needs_processing)
 		START_PROCESSING(SSprocessing, src)
@@ -17,14 +17,14 @@
 	return ..()
 
 // Apply to a real /datum/hud
-/datum/mini_hud/proc/apply_to_hud(var/datum/hud/other)
+/datum/mini_hud/proc/apply_to_hud(datum/hud/other)
 	if(main_hud)
 		unapply_to_hud(main_hud)
 	main_hud = other
 	main_hud.apply_minihud(src)
 
 // Remove from a real /datum/hud
-/datum/mini_hud/proc/unapply_to_hud(var/datum/hud/other)
+/datum/mini_hud/proc/unapply_to_hud(datum/hud/other)
 	main_hud.remove_minihud(src)
 
 // Update the hud
@@ -32,7 +32,7 @@
 	return PROCESS_KILL // You shouldn't be here!
 
 // Return a list of screen objects we use
-/datum/mini_hud/proc/get_screen_objs(var/mob/M)
+/datum/mini_hud/proc/get_screen_objs(mob/M)
 	return screenobjs
 
 // Specific types
@@ -45,7 +45,7 @@
 
 	needs_processing = TRUE
 
-/datum/mini_hud/hardsuit/New(var/datum/hud/other, var/obj/item/hardsuit/owner)
+/datum/mini_hud/hardsuit/New(datum/hud/other, obj/item/hardsuit/owner)
 	owner_rig = owner
 	power = new ()
 	health = new ()
@@ -95,7 +95,7 @@
 
 	needs_processing = TRUE
 
-/datum/mini_hud/mech/New(var/datum/hud/other, var/obj/mecha/owner)
+/datum/mini_hud/mech/New(datum/hud/other, obj/mecha/owner)
 	owner_mech = owner
 	power = new ()
 	health = new ()

@@ -50,15 +50,15 @@
 */
 
 
-/obj/overmap/entity/visitable/sector/lythios43c/Crossed(var/atom/movable/AM)
+/obj/overmap/entity/visitable/sector/lythios43c/Crossed(atom/movable/AM)
 	. = ..()
 	announce_atc(AM,going = FALSE)
 
-/obj/overmap/entity/visitable/sector/lythios43c/Uncrossed(var/atom/movable/AM)
+/obj/overmap/entity/visitable/sector/lythios43c/Uncrossed(atom/movable/AM)
 	. = ..()
 	announce_atc(AM,going = TRUE)
 
-/obj/overmap/entity/visitable/sector/lythios43c/proc/announce_atc(var/atom/movable/AM, var/going = FALSE)
+/obj/overmap/entity/visitable/sector/lythios43c/proc/announce_atc(atom/movable/AM, going = FALSE)
 	var/message = "Sensor contact for vessel '[AM.name]' has [going ? "left" : "entered"] ATC control area."
 	//For landables, we need to see if their shuttle is cloaked
 	if(istype(AM, /obj/overmap/entity/visitable/ship/landable))

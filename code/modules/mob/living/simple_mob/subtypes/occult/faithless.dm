@@ -53,10 +53,10 @@
 	AddComponent(/datum/component/horror_aura/weak)
 
 
-/mob/living/simple_mob/faithless/Process_Spacemove(var/check_drift = 0)
+/mob/living/simple_mob/faithless/Process_Spacemove(check_drift = 0)
 	return 1
 
-/mob/living/simple_mob/faithless/apply_melee_effects(var/atom/A)
+/mob/living/simple_mob/faithless/apply_melee_effects(atom/A)
 	if(isliving(A))
 		var/mob/living/L = A
 		if(prob(12))

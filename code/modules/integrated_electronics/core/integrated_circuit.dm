@@ -53,7 +53,7 @@ a creative player the means to solve many problems.  Circuits are held inside an
 	ui_interact(user)
 
 /// Can be called via electronic_assembly/attackby()
-/obj/item/integrated_circuit/proc/additem(var/obj/item/I, var/mob/living/user)
+/obj/item/integrated_circuit/proc/additem(obj/item/I, mob/living/user)
 	attackby(I, user)
 
 /// This should be used when someone is examining while the case is opened.
@@ -78,10 +78,10 @@ a creative player the means to solve many problems.  Circuits are held inside an
 /obj/item/integrated_circuit/proc/any_examine(mob/user, dist)
 	return
 
-/obj/item/integrated_circuit/proc/attackby_react(var/atom/movable/A,mob/user)
+/obj/item/integrated_circuit/proc/attackby_react(atom/movable/A,mob/user)
 	return
 
-/obj/item/integrated_circuit/proc/sense(var/atom/movable/A,mob/user,prox)
+/obj/item/integrated_circuit/proc/sense(atom/movable/A,mob/user,prox)
 	return
 
 /obj/item/integrated_circuit/Initialize(mapload)

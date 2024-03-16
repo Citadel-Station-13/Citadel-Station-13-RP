@@ -77,7 +77,7 @@
 	rider_offset_format = CF_RIDING_OFFSETS_ENUMERATED
 	riding_handler_flags = CF_RIDING_HANDLER_IS_CONTROLLABLE
 
-/mob/living/simple_mob/horse/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/mob/living/simple_mob/horse/attackby(obj/item/O as obj, mob/user as mob)
 	if(istype(O, /obj/item/saddle/horse) && !rideable)
 		to_chat(user, "<span class='danger'>You sling the [O] onto the [src]! It may now be ridden safely!</span>")
 		rideable = 1

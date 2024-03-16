@@ -79,7 +79,7 @@
 		return ..()
 	standard_feed_mob(user, target)
 
-/obj/item/reagent_containers/glass/standard_feed_mob(var/mob/user, var/mob/target)
+/obj/item/reagent_containers/glass/standard_feed_mob(mob/user, mob/target)
 	if(!is_open_container())
 		to_chat(user, "<span class='notice'>You need to open \the [src] first.</span>")
 		return 1
@@ -87,7 +87,7 @@
 		return 1
 	return ..()
 
-/obj/item/reagent_containers/glass/self_feed_message(var/mob/user)
+/obj/item/reagent_containers/glass/self_feed_message(mob/user)
 	to_chat(user, "<span class='notice'>You swallow a gulp from \the [src].</span>")
 
 /obj/item/reagent_containers/glass/afterattack(atom/target, mob/user, clickchain_flags, list/params)
@@ -278,7 +278,7 @@
 	drop_sound = 'sound/items/drop/helm.ogg'
 	pickup_sound = 'sound/items/pickup/helm.ogg'
 
-/obj/item/reagent_containers/glass/bucket/attackby(var/obj/item/D, mob/user as mob)
+/obj/item/reagent_containers/glass/bucket/attackby(obj/item/D, mob/user as mob)
 	if(isprox(D))
 		to_chat(user, "You add [D] to [src].")
 		qdel(D)
@@ -340,7 +340,7 @@
 	drop_sound = 'sound/items/drop/wooden.ogg'
 	pickup_sound = 'sound/items/pickup/wooden.ogg'
 
-/obj/item/reagent_containers/glass/bucket/wood/attackby(var/obj/D, mob/user as mob)
+/obj/item/reagent_containers/glass/bucket/wood/attackby(obj/D, mob/user as mob)
 	if(isprox(D))
 		to_chat(user, "This wooden bucket doesn't play well with electronics.")
 		return
@@ -379,7 +379,7 @@
 	else
 		. += "<span class='notice'>It is empty.</span>"
 
-/obj/item/reagent_containers/glass/bucket/sandstone/attackby(var/obj/D, mob/user as mob)
+/obj/item/reagent_containers/glass/bucket/sandstone/attackby(obj/D, mob/user as mob)
 	if(isprox(D))
 		to_chat(user, "This wooden bucket doesn't play well with electronics.")
 		return

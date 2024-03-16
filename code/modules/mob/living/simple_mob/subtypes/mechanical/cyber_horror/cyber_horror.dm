@@ -85,7 +85,7 @@
 	bone_amount = 8
 	bone_type = /obj/item/stack/material/bone
 
-/mob/living/simple_mob/mechanical/cyber_horror/plasma_cyber_horror/apply_melee_effects(var/atom/A)
+/mob/living/simple_mob/mechanical/cyber_horror/plasma_cyber_horror/apply_melee_effects(atom/A)
 	if(isliving(A))
 		var/mob/living/L = A
 		if(L.reagents)
@@ -375,7 +375,7 @@
 	var/poison_per_bite = 3
 	var/poison_type = "mindbreaker"
 
-/mob/living/simple_mob/mechanical/cyber_horror/cat_cyber_horror/apply_melee_effects(var/atom/A)
+/mob/living/simple_mob/mechanical/cyber_horror/cat_cyber_horror/apply_melee_effects(atom/A)
 	if(isliving(A))
 		var/mob/living/L = A
 		if(L.reagents)
@@ -435,7 +435,7 @@
 	damage = 15
 	damage_type = BRUTE
 
-/obj/projectile/arc/blue_energy/priest/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/arc/blue_energy/priest/on_hit(atom/target, blocked = 0)
 	if(ishuman(target))
 		var/mob/living/carbon/human/M = target
 		M.Confuse(rand(3,5))
@@ -444,7 +444,7 @@
 	pointblank = FALSE
 	closest_distance = 0
 
-/mob/living/simple_mob/mechanical/cyber_horror/priest/apply_melee_effects(var/atom/A)
+/mob/living/simple_mob/mechanical/cyber_horror/priest/apply_melee_effects(atom/A)
 	if(isliving(A))
 		var/mob/living/L = A
 		if(L.reagents)

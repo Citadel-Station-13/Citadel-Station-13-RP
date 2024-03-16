@@ -10,7 +10,7 @@
 	var/needscharger //For drone pods that want their pod to turn into a charger.
 
 // Call this to get a ghost volunteer.
-/obj/structure/ghost_pod/proc/trigger(var/alert, var/adminalert)
+/obj/structure/ghost_pod/proc/trigger(alert, adminalert)
 	if(!ghost_query_type)
 		return FALSE
 	if(busy)
@@ -34,7 +34,7 @@
 		return FALSE
 
 // Override this to create whatever mob you need. Be sure to call ..() if you don't want it to make infinite mobs.
-/obj/structure/ghost_pod/proc/create_occupant(var/mob/M)
+/obj/structure/ghost_pod/proc/create_occupant(mob/M)
 	used = TRUE
 	return TRUE
 
@@ -50,7 +50,7 @@
 				return
 		trigger()
 
-/obj/structure/ghost_pod/manual/attack_ai(var/mob/living/silicon/user)
+/obj/structure/ghost_pod/manual/attack_ai(mob/living/silicon/user)
 	if(Adjacent(user))
 		attack_hand(user) // Borgs can open pods.
 
@@ -78,7 +78,7 @@
 /obj/structure/ghost_pod/ghost_activated
 	description_info = "A ghost can click on this to return to the round as whatever is contained inside this object."
 
-/obj/structure/ghost_pod/ghost_activated/attack_ghost(var/mob/observer/dead/user)
+/obj/structure/ghost_pod/ghost_activated/attack_ghost(mob/observer/dead/user)
 	. = ..()
 	if(used)
 		to_chat(user, "<span class='warning'>Another spirit appears to have gotten to \the [src] before you.  Sorry.</span>")

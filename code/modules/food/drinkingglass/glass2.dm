@@ -159,7 +159,7 @@
 			return 1
 	..()
 
-/obj/item/reagent_containers/food/drinks/glass2/standard_feed_mob(var/mob/user, var/mob/target)
+/obj/item/reagent_containers/food/drinks/glass2/standard_feed_mob(mob/user, mob/target)
 	if(afterattack(target, user)) //Check to see if harm intent & splash.
 		return
 	else

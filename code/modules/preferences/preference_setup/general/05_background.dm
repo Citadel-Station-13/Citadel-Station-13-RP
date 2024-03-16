@@ -43,7 +43,7 @@
 		. += "Security Records:<br>"
 		. += "<a href='?src=\ref[src];set_security_records=1'>[TextPreview(pref.sec_record,40)]</a><br>"
 
-/datum/category_item/player_setup_item/general/background/OnTopic(var/href,var/list/href_list, var/mob/user)
+/datum/category_item/player_setup_item/general/background/OnTopic(href,list/href_list, mob/user)
 	if(href_list["econ_status"])
 		var/new_class = tgui_input_list(user, "Choose your economic status. This will affect the amount of money you will start with.", "Character Preference", ECONOMIC_CLASS, pref.economic_status)
 		if(new_class && CanUseTopic(user))

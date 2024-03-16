@@ -10,7 +10,7 @@
 	icon_state = "pouches"
 	w_class = WEIGHT_CLASS_NORMAL
 
-/obj/item/clothing/accessory/armor/on_attached(var/obj/item/clothing/S, var/mob/user)
+/obj/item/clothing/accessory/armor/on_attached(obj/item/clothing/S, mob/user)
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.wear_suit == S)
@@ -178,7 +178,7 @@
 	armor_type = /datum/armor/station/ablative
 	siemens_coefficient = 0.2
 
-/obj/item/clothing/accessory/armor/armorplate/ablative/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
+/obj/item/clothing/accessory/armor/armorplate/ablative/handle_shield(mob/user, damage, atom/damage_source = null, mob/attacker = null, def_zone = null, attack_text = "the attack")
 	if(istype(damage_source, /obj/projectile/energy) || istype(damage_source, /obj/projectile/beam))
 		var/obj/projectile/P = damage_source
 

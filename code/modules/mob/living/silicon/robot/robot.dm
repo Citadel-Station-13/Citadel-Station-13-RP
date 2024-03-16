@@ -308,7 +308,7 @@
 	wires = null
 	return ..()
 
-/mob/living/silicon/robot/proc/set_module_sprites(var/list/new_sprites)
+/mob/living/silicon/robot/proc/set_module_sprites(list/new_sprites)
 	if(new_sprites && new_sprites.len)
 		module_sprites = new_sprites.Copy()
 		//Custom_sprite check and entry
@@ -346,7 +346,7 @@
 	updatename()
 	notify_ai(ROBOT_NOTIFICATION_NEW_MODULE, module.name)
 
-/mob/living/silicon/robot/proc/updatename(var/prefix as text)
+/mob/living/silicon/robot/proc/updatename(prefix as text)
 	if(prefix)
 		modtype = prefix
 
@@ -533,7 +533,7 @@
 /mob/living/silicon/robot/restrained()
 	return 0
 
-/mob/living/silicon/robot/bullet_act(var/obj/projectile/Proj)
+/mob/living/silicon/robot/bullet_act(obj/projectile/Proj)
 	..(Proj)
 	if(prob(75) && Proj.damage > 0)
 		spark_system.start()
@@ -879,7 +879,7 @@
 			user.put_in_active_hand(broken_device)
 
 //Robots take half damage from basic attacks.
-/mob/living/silicon/robot/attack_generic(var/mob/user, var/damage, var/attack_message)
+/mob/living/silicon/robot/attack_generic(mob/user, damage, attack_message)
 	return ..(user,FLOOR(damage/2, 1),attack_message)
 
 /mob/living/silicon/robot/proc/allowed(mob/M)
@@ -1210,7 +1210,7 @@
 		to_chat(R, "Buffers flushed and reset. Camera system shutdown.  All systems operational.")
 		remove_verb(src, /mob/living/silicon/robot/proc/ResetSecurityCodes)
 
-/mob/living/silicon/robot/proc/SetLockdown(var/state = 1)
+/mob/living/silicon/robot/proc/SetLockdown(state = 1)
 	// They stay locked down if their wire is cut.
 	if(wires.is_cut(WIRE_BORG_LOCKED))
 		state = 1
@@ -1234,7 +1234,7 @@
 
 	return
 
-/mob/living/silicon/robot/proc/choose_icon(var/triesleft, var/list/module_sprites)
+/mob/living/silicon/robot/proc/choose_icon(triesleft, list/module_sprites)
 	if(!module_sprites.len)
 		to_chat(src, "Something is badly wrong with the sprite selection. Harass a coder.")
 		return
@@ -1286,7 +1286,7 @@
 
 // Uses power from cyborg's cell. Returns 1 on success or 0 on failure.
 // Properly converts using CELLRATE now! Amount is in Joules.
-/mob/living/silicon/robot/proc/cell_use_power(var/amount = 0)
+/mob/living/silicon/robot/proc/cell_use_power(amount = 0)
 	// No cell inserted
 	if(!cell)
 		return 0
@@ -1311,7 +1311,7 @@
 		return 1
 	return 0
 
-/mob/living/silicon/robot/proc/notify_ai(var/notifytype, var/first_arg, var/second_arg)
+/mob/living/silicon/robot/proc/notify_ai(notifytype, first_arg, second_arg)
 	if(!connected_ai)
 		return
 	if(shell && notifytype != ROBOT_NOTIFICATION_AI_SHELL)
@@ -1335,7 +1335,7 @@
 		connected_ai.connected_robots -= src
 		connected_ai = null
 
-/mob/living/silicon/robot/proc/connect_to_ai(var/mob/living/silicon/ai/AI)
+/mob/living/silicon/robot/proc/connect_to_ai(mob/living/silicon/ai/AI)
 	if(AI && AI != connected_ai && !shell)
 		disconnect_from_ai()
 		connected_ai = AI
@@ -1343,7 +1343,7 @@
 		notify_ai(ROBOT_NOTIFICATION_NEW_UNIT)
 		sync()
 
-/mob/living/silicon/robot/emag_act(var/remaining_charges, var/mob/user)
+/mob/living/silicon/robot/emag_act(remaining_charges, mob/user)
 	if(!opened)//Cover is closed
 		if(locked)
 			if(prob(90))
@@ -1425,7 +1425,7 @@
 /mob/living/silicon/robot/get_cell(inducer)
 	return cell
 
-/mob/living/silicon/robot/verb/robot_nom(var/mob/living/T in living_mobs(1))
+/mob/living/silicon/robot/verb/robot_nom(mob/living/T in living_mobs(1))
 	set name = "Robot Nom"
 	set category = "IC"
 	set desc = "Allows you to eat someone."

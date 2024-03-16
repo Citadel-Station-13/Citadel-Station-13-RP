@@ -46,7 +46,7 @@
 		return
 	move_into_injector(user,target)
 
-/obj/machinery/xenobio2/manualinjector/proc/move_into_injector(var/mob/user,var/mob/living/victim)
+/obj/machinery/xenobio2/manualinjector/proc/move_into_injector(mob/user,mob/living/victim)
 	if(src.occupant)
 		to_chat(user, "<span class='danger'>The injector is full, empty it first!</span>")
 		return
@@ -90,7 +90,7 @@
 	else
 		beaker.reagents.trans_to_mob(occupant, computer.transfer_amount)
 
-/obj/machinery/xenobio2/manualinjector/attackby(var/obj/item/W, var/mob/user)
+/obj/machinery/xenobio2/manualinjector/attackby(obj/item/W, mob/user)
 
 	//Let's try to deconstruct first.
 	if(W.is_screwdriver())

@@ -48,7 +48,7 @@
 	return
 
 /* Leaving this until we are really sure we don't need it for reference.
-/obj/mecha/combat/phazon/Bump(var/atom/obstacle)
+/obj/mecha/combat/phazon/Bump(atom/obstacle)
 	if(phasing && get_charge()>=phasing_energy_drain)
 		spawn()
 			if(can_phase)
@@ -116,7 +116,7 @@
 		visible_message("<span class='alien'>The [src.name] appears to flicker, before its silhouette stabilizes!</span>")
 	return
 
-/obj/mecha/combat/phazon/janus/dynbulletdamage(var/obj/projectile/Proj)
+/obj/mecha/combat/phazon/janus/dynbulletdamage(obj/projectile/Proj)
 	if((Proj.damage && !Proj.nodamage) && !istype(Proj, /obj/projectile/beam) && prob(max(1, 33 - round(Proj.damage / 4))))
 		src.occupant_message("<span class='alien'>The armor absorbs the incoming projectile's force, negating it!</span>")
 		src.visible_message("<span class='alien'>The [src.name] absorbs the incoming projectile's force, negating it!</span>")

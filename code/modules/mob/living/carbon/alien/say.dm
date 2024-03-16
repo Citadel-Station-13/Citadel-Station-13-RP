@@ -1,4 +1,4 @@
-/mob/living/carbon/alien/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
+/mob/living/carbon/alien/say(message, datum/language/speaking = null, verb="says", alt_name="", whispering = 0)
 	verb = "says"
 	var/message_range = world.view
 

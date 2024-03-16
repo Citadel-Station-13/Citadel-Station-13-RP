@@ -51,11 +51,11 @@
 	for(var/obj/effect/wingrille_spawn/other in neighbours)
 		if(!other.activated) other.activate()
 
-/obj/effect/wingrille_spawn/proc/handle_window_spawn(var/obj/structure/window/W)
+/obj/effect/wingrille_spawn/proc/handle_window_spawn(obj/structure/window/W)
 	return
 
 // Currently unused, could be useful for pre-wired electrified windows.
-/obj/effect/wingrille_spawn/proc/handle_grille_spawn(var/obj/structure/grille/G)
+/obj/effect/wingrille_spawn/proc/handle_grille_spawn(obj/structure/grille/G)
 	return
 
 /obj/effect/wingrille_spawn/reinforced
@@ -68,7 +68,7 @@
 	icon_state = "r-wingrille"
 	win_path = /obj/structure/window/reinforced
 
-/obj/effect/wingrille_spawn/reinforced/crescent/handle_window_spawn(var/obj/structure/window/W)
+/obj/effect/wingrille_spawn/reinforced/crescent/handle_window_spawn(obj/structure/window/W)
 	W.set_multiplied_integrity(100, TRUE)
 
 /obj/effect/wingrille_spawn/phoron
@@ -87,7 +87,7 @@
 	win_path = /obj/structure/window/reinforced/polarized
 	var/id
 
-/obj/effect/wingrille_spawn/reinforced/polarized/handle_window_spawn(var/obj/structure/window/reinforced/polarized/P)
+/obj/effect/wingrille_spawn/reinforced/polarized/handle_window_spawn(obj/structure/window/reinforced/polarized/P)
 	if(id)
 		P.id = id
 

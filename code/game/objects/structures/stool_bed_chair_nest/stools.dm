@@ -91,7 +91,7 @@ var/global/list/stool_cache = list() //haha stool
 
 	add_overlay(overlays_to_add)
 
-/obj/item/stool/proc/add_padding(var/padding_type)
+/obj/item/stool/proc/add_padding(padding_type)
 	set_material_part("padding", SSmaterials.resolve_material(padding_type))
 
 /obj/item/stool/proc/remove_padding()

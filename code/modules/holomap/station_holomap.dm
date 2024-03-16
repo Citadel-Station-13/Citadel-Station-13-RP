@@ -80,7 +80,7 @@
 	startWatching(user)
 
 // Let people bump up against it to watch
-/obj/machinery/station_map/Bumped(var/atom/movable/AM)
+/obj/machinery/station_map/Bumped(atom/movable/AM)
 	if(!watching_mob && isliving(AM) && AM.loc == loc)
 		startWatching(AM)
 
@@ -94,7 +94,7 @@
 	else
 		return TRUE
 
-/obj/machinery/station_map/proc/startWatching(var/mob/user)
+/obj/machinery/station_map/proc/startWatching(mob/user)
 	// Okay, does this belong on a screen thing or what?
 	// One argument is that this is an "in game" object becuase its in the world.
 	// But I think it actually isn't.  The map isn't holo projected into the whole room, (maybe strat one is!)
@@ -130,7 +130,7 @@
 			else
 				to_chat(user, "<span class='notice'>A hologram of the station appears before your eyes.</span>")
 
-/obj/machinery/station_map/attack_ai(var/mob/living/silicon/robot/user)
+/obj/machinery/station_map/attack_ai(mob/living/silicon/robot/user)
 	return // TODO - Implement for AI ~Leshana
 	// user.station_holomap.toggleHolomap(user, isAI(user))
 
@@ -230,7 +230,7 @@
 	circuit = /obj/item/circuitboard/station_map
 	icon_override = 'icons/obj/machines/stationmap.dmi'
 
-/datum/frame/frame_types/station_map/get_icon_state(var/state)
+/datum/frame/frame_types/station_map/get_icon_state(state)
 	return "station_map_frame_[state]"
 
 /obj/structure/frame

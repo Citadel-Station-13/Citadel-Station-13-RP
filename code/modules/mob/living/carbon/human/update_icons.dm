@@ -946,7 +946,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 	return tail_icon
 
-/mob/living/carbon/human/proc/set_tail_state(var/t_state)
+/mob/living/carbon/human/proc/set_tail_state(t_state)
 	var/used_tail_layer = tail_alt ? TAIL_LAYER_ALT : TAIL_LAYER
 	var/list/image/tail_overlays = overlays_standing[used_tail_layer]
 

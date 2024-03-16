@@ -41,7 +41,7 @@
 	icon_state = "quad_keys"
 	w_class = WEIGHT_CLASS_TINY
 
-/obj/vehicle_old/train/engine/quadbike/Move(var/turf/destination)
+/obj/vehicle_old/train/engine/quadbike/Move(turf/destination)
 	var/turf/T = get_turf(src)
 	..() //Move it move it, so we can test it test it.
 	if(T != get_turf(src) && !istype(destination, T.type))	//Did we move at all, and are we changing turf types?
@@ -144,7 +144,7 @@
 			add_attack_logs(D,M,"Ran over with [src.name]")
 
 
-/obj/vehicle_old/train/engine/quadbike/RunOver(var/mob/living/M)
+/obj/vehicle_old/train/engine/quadbike/RunOver(mob/living/M)
 	..()
 	var/list/throw_dirs = list(1, 2, 4, 8, 5, 6, 9, 10)
 	if(!emagged)

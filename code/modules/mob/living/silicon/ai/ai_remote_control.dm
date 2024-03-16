@@ -1,7 +1,7 @@
 /mob/living/silicon/ai
 	var/mob/living/silicon/robot/deployed_shell = null //For shell control
 
-/mob/living/silicon/ai/proc/deploy_to_shell(var/mob/living/silicon/robot/target)
+/mob/living/silicon/ai/proc/deploy_to_shell(mob/living/silicon/robot/target)
 	if(!config_legacy.allow_ai_shells)
 		to_chat(src, SPAN_WARNING( "AI Shells are not allowed on this server. You shouldn't have this verb because of it, so consider making a bug report."))
 		return

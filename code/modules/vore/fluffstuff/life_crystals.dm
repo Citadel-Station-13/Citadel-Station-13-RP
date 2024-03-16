@@ -83,7 +83,7 @@
 	name = "broken [initial(name)]"
 	desc = "This seems like a necklace, but the actual pendant is missing."
 
-/obj/item/clothing/accessory/collar/vmcrystal/proc/update_state(var/tostate)
+/obj/item/clothing/accessory/collar/vmcrystal/proc/update_state(tostate)
 	state = tostate
 	icon_state = "[initial(icon_state)][tostate]"
 	update_icon()

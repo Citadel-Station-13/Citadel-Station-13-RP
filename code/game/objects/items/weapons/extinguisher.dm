@@ -58,7 +58,7 @@
 	desc = "The safety is [safety ? "on" : "off"]."
 	to_chat(user, "The safety is [safety ? "on" : "off"].")
 
-/obj/item/extinguisher/proc/propel_object(var/obj/O, mob/user, movementdirection)
+/obj/item/extinguisher/proc/propel_object(obj/O, mob/user, movementdirection)
 	if(O.anchored) return
 
 	var/obj/structure/bed/chair/C

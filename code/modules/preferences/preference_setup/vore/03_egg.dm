@@ -19,10 +19,10 @@ var/XENOMORPH_EGG 	= SPECIES_XENO
 	name = "Egg appearance."
 	sort_order = 3
 
-/datum/category_item/player_setup_item/vore/egg/load_character(var/savefile/S)
+/datum/category_item/player_setup_item/vore/egg/load_character(savefile/S)
 	S["vore_egg_type"]		>> pref.vore_egg_type
 
-/datum/category_item/player_setup_item/vore/egg/save_character(var/savefile/S)
+/datum/category_item/player_setup_item/vore/egg/save_character(savefile/S)
 	S["vore_egg_type"]		<< pref.vore_egg_type
 
 /datum/category_item/player_setup_item/vore/egg/sanitize_character()
@@ -41,7 +41,7 @@ var/XENOMORPH_EGG 	= SPECIES_XENO
 	. += "<br>"
 	. += " Egg Type: <a href='?src=\ref[src];vore_egg_type=1'>[pref.vore_egg_type]</a><br>"
 
-/datum/category_item/player_setup_item/vore/egg/OnTopic(var/href, var/list/href_list, var/mob/user)
+/datum/category_item/player_setup_item/vore/egg/OnTopic(href, list/href_list, mob/user)
 	if(!CanUseTopic(user))
 		return PREFERENCES_NOACTION
 

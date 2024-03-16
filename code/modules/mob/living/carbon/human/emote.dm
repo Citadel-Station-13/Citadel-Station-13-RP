@@ -1,4 +1,4 @@
-/mob/living/carbon/human/emote(var/act,var/m_type=1,var/message = null)
+/mob/living/carbon/human/emote(act,m_type=1,message = null)
 	var/param = null
 	var/datum/gender/T = GLOB.gender_datums[get_visible_gender()]
 	if(istype(src, /mob/living/carbon/human/dummy))
@@ -1104,7 +1104,7 @@
 	HTML += "<tt>"
 	src << browse(HTML, "window=flavor_changes;size=430x300")
 
-/mob/living/carbon/human/proc/handle_emote_vr(var/act,var/m_type=1,var/message = null)
+/mob/living/carbon/human/proc/handle_emote_vr(act,m_type=1,message = null)
 
 	switch(act)
 		if ("vwag")
@@ -1259,7 +1259,7 @@
 /mob/living/carbon/human/proc/spam_flag_false() //used for addtimer
 	spam_flag = FALSE
 
-/mob/living/carbon/human/proc/toggle_tail_vr(var/setting,var/message = 0)
+/mob/living/carbon/human/proc/toggle_tail_vr(setting,message = 0)
 	if(!tail_style || !tail_style.ani_state)
 		if(message)
 			to_chat(src, "<span class='warning'>You don't have a tail that supports this.</span>")
@@ -1271,7 +1271,7 @@
 		update_tail_showing()
 	return 1
 
-/mob/living/carbon/human/proc/toggle_wing_vr(var/setting,var/message = 0)
+/mob/living/carbon/human/proc/toggle_wing_vr(setting,message = 0)
 	if(!wing_style || !wing_style.ani_state)
 		if(message)
 			to_chat(src, "<span class='warning'>You don't have wings that support this.</span>")
@@ -1285,7 +1285,7 @@
 		update_wing_showing()
 	return 1
 
-/mob/living/carbon/human/proc/toggle_wing_spread(var/folded,var/message = 0)
+/mob/living/carbon/human/proc/toggle_wing_spread(folded,message = 0)
 	if(!wing_style)
 		if(message)
 			to_chat(src, "<span class='warning'>You don't have wings!</span>")

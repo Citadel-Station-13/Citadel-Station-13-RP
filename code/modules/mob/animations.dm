@@ -11,7 +11,7 @@ below 100 is not dizzy
 /mob/var/dizziness = 0//Carbon
 /mob/var/is_dizzy = 0
 
-/mob/proc/make_dizzy(var/amount)
+/mob/proc/make_dizzy(amount)
 	// for the moment, only humans get dizzy
 	if(!istype(src, /mob/living/carbon/human))
 		return
@@ -46,7 +46,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 // jitteriness - copy+paste of dizziness
 /mob/var/is_jittery = 0
 /mob/var/jitteriness = 0//Carbon
-/mob/proc/make_jittery(var/amount)
+/mob/proc/make_jittery(amount)
 	if(!istype(src, /mob/living/carbon/human)) // for the moment, only humans get dizzy
 		return
 
@@ -110,7 +110,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 	make_floating(1)
 	return
 
-/mob/proc/make_floating(var/n)
+/mob/proc/make_floating(n)
 	if(buckled)
 		if(is_floating)
 			stop_floating()
@@ -143,7 +143,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 	//reset the pixel offsets to zero
 	is_floating = 0
 
-/atom/movable/proc/fade_towards(atom/A,var/time = 2)
+/atom/movable/proc/fade_towards(atom/A,time = 2)
 	set waitfor = FALSE
 
 	var/pixel_x_diff = 0

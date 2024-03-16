@@ -24,7 +24,7 @@
 		H.visible_message(SPAN_WARNING("Thin snakelike tendrils grow from [H] and connect to \the [apc]."), \
 			SPAN_NOTICE("Thin snakelike tendrils grow from you and connect to \the [apc]."))
 
-/datum/nifsoft/apc_recharge/deactivate(var/force = FALSE)
+/datum/nifsoft/apc_recharge/deactivate(force = FALSE)
 	if((. = ..()))
 		apc = null
 
@@ -103,7 +103,7 @@
 	access = 999 //Prevents anyone from buying it without an emag.
 	var/laws = "Be nice to people!"
 
-/datum/nifsoft/compliance/New(var/newloc,var/newlaws)
+/datum/nifsoft/compliance/New(newloc,newlaws)
 	laws = newlaws //Sanitize before this (the disk does)
 	..(newloc)
 
@@ -177,7 +177,7 @@
 			if(A && H)
 				A.add_hud_to(H)
 
-/datum/nifsoft/worldbend/deactivate(var/force = FALSE)
+/datum/nifsoft/worldbend/deactivate(force = FALSE)
 	if((. = ..()))
 		var/mob/living/carbon/human/H = nif.human
 		var/datum/atom_hud/world_bender/animals/A = GLOB.huds[WORLD_BENDER_HUD_ANIMALS]

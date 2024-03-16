@@ -3,5 +3,5 @@
 */
 /var/global/datum/topic_state/conscious_state/conscious_state = new()
 
-/datum/topic_state/conscious_state/can_use_topic(var/src_object, var/mob/user)
+/datum/topic_state/conscious_state/can_use_topic(src_object, mob/user)
 	return user.stat == CONSCIOUS ? UI_INTERACTIVE : UI_CLOSE

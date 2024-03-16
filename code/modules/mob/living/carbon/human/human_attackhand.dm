@@ -1,4 +1,4 @@
-/mob/living/carbon/human/proc/get_unarmed_attack(var/mob/living/carbon/human/target, var/hit_zone)
+/mob/living/carbon/human/proc/get_unarmed_attack(mob/living/carbon/human/target, hit_zone)
 
 	if(nif && nif.flag_check(NIF_C_HARDCLAWS,NIF_FLAGS_COMBAT)){return unarmed_hardclaws}
 	if(src.default_attack && src.default_attack.is_usable(src, target, hit_zone))
@@ -308,7 +308,7 @@
 		return
 	//if someone else ever decides altclicking people should do other things, bare in mind it currently continues if the person fails to be scooped
 
-/mob/living/carbon/human/attack_generic(var/mob/user, var/damage, var/attack_message, var/armor_type = "melee", var/armor_pen = 0, var/a_sharp = 0, var/a_edge = 0)
+/mob/living/carbon/human/attack_generic(mob/user, damage, attack_message, armor_type = "melee", armor_pen = 0, a_sharp = 0, a_edge = 0)
 
 	if(!damage)
 		return
@@ -326,7 +326,7 @@
 	return TRUE
 
 //Used to attack a joint through grabbing
-/mob/living/carbon/human/proc/grab_joint(var/mob/living/user, var/def_zone)
+/mob/living/carbon/human/proc/grab_joint(mob/living/user, def_zone)
 	var/has_grab = 0
 	for(var/obj/item/grab/G in list(user.l_hand, user.r_hand))
 		if(G.affecting == src && G.state == GRAB_NECK)
@@ -382,7 +382,7 @@
 	If you are applying pressure to another and attempt to apply pressure to yourself, you'll have to switch to an empty hand which will also stop do_mob()
 	Changing targeted zones should also stop do_mob(), preventing you from applying pressure to more than one body part at once.
 */
-/mob/living/carbon/human/proc/apply_pressure(mob/living/user, var/target_zone)
+/mob/living/carbon/human/proc/apply_pressure(mob/living/user, target_zone)
 	var/obj/item/organ/external/organ = get_organ(target_zone)
 	if(!organ || !(organ.status & ORGAN_BLEEDING) || (organ.robotic >= ORGAN_ROBOT))
 		return FALSE
@@ -455,7 +455,7 @@
 	else
 		return ..()
 
-/mob/living/carbon/human/proc/set_default_attack(var/datum/unarmed_attack/u_attack)
+/mob/living/carbon/human/proc/set_default_attack(datum/unarmed_attack/u_attack)
 	default_attack = u_attack
 
 /mob/living/carbon/human/unarmed_attack_style()

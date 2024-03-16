@@ -270,7 +270,7 @@
 		cameras += C
 	return cameras
 
-/area/proc/atmosalert(danger_level, var/alarm_source)
+/area/proc/atmosalert(danger_level, alarm_source)
 	if (danger_level == 0)
 		atmosphere_alarm.clearAlarm(src, alarm_source)
 	else
@@ -462,7 +462,7 @@
 	if (fire || eject || party)
 		update_appearance()
 
-/area/proc/usage(var/chan, var/include_static = TRUE)
+/area/proc/usage(chan, include_static = TRUE)
 	var/used = 0
 	switch(chan)
 		if(LIGHT)
@@ -490,7 +490,7 @@
 /**
  * Add a power value amount to the stored used_x variables
  */
-/area/proc/use_power_oneoff(var/amount, var/chan)
+/area/proc/use_power_oneoff(amount, chan)
 	switch(chan)
 		if(EQUIP)
 			oneoff_equip += amount
@@ -505,7 +505,7 @@
 	use_power_static(new_amount - old_amount, chan) // Simultaneously subtract old_amount and add new_amount.
 
 /// Not a proc you want to use directly unless you know what you are doing; see use_power_oneoff above instead.
-/area/proc/use_power_static(var/amount, var/chan)
+/area/proc/use_power_static(amount, chan)
 	switch(chan)
 		if(EQUIP)
 			static_equip += amount
@@ -544,7 +544,7 @@
 		href_list["datumrefresh"] = "\ref[src]"
 
 /// Debugging proc to report if static power is correct or not.
-/area/proc/check_static_power(var/user)
+/area/proc/check_static_power(user)
 	set name = "Check Static Power"
 	var/actual_static_equip = static_equip
 	var/actual_static_light = static_light
@@ -562,7 +562,7 @@
 
 GLOBAL_LIST_EMPTY(forced_ambiance_list)
 
-/area/proc/play_ambience(var/mob/living/L)
+/area/proc/play_ambience(mob/living/L)
 	// Ambience goes down here -- make sure to list each area seperately for ease of adding things in later, thanks! Note: areas adjacent to each other should have the same sounds to prevent cutoff when possible.- LastyScratch
 	if(!L?.is_preference_enabled(/datum/client_preference/play_ambiance))
 		return
@@ -587,7 +587,7 @@ GLOBAL_LIST_EMPTY(forced_ambiance_list)
 			SEND_SOUND(L, sound(sound, repeat = 0, wait = 0, volume = 50, channel = CHANNEL_AMBIENCE))
 			L.client.time_last_ambience_played = world.time
 
-/area/proc/gravitychange(var/gravitystate = 0, var/area/A)
+/area/proc/gravitychange(gravitystate = 0, area/A)
 	A?.has_gravity = gravitystate
 
 	for(var/mob/M in A)

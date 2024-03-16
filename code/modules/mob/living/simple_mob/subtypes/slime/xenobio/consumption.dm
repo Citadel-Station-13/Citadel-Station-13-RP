@@ -1,7 +1,7 @@
 // Handles hunger, starvation, growth, and eatting humans.
 
 // Might be best to make this a /mob/living proc and override.
-/mob/living/simple_mob/slime/xenobio/proc/adjust_nutrition(input, var/heal = 1)
+/mob/living/simple_mob/slime/xenobio/proc/adjust_nutrition(input, heal = 1)
 	nutrition = clamp( nutrition + input, 0,  get_max_nutrition())
 
 	if(input > 0)

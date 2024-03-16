@@ -243,10 +243,10 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	if(. && iscarbon(usr))
 		playsound(src, "button", 10)
 
-/obj/item/radio/proc/list_channels(var/mob/user)
+/obj/item/radio/proc/list_channels(mob/user)
 	return list_internal_channels(user)
 
-/obj/item/radio/proc/list_secure_channels(var/mob/user)
+/obj/item/radio/proc/list_secure_channels(mob/user)
 	var/dat[0]
 
 	for(var/ch_name in channels)
@@ -257,7 +257,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 
 	return dat
 
-/obj/item/radio/proc/list_internal_channels(var/mob/user)
+/obj/item/radio/proc/list_internal_channels(mob/user)
 	var/dat[0]
 	for(var/internal_chan in internal_channels)
 		if(has_channel_access(user, internal_chan))
@@ -265,7 +265,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 
 	return dat
 
-/obj/item/radio/proc/has_channel_access(var/mob/user, var/freq)
+/obj/item/radio/proc/has_channel_access(mob/user, freq)
 	if(!user)
 		return FALSE
 
@@ -274,14 +274,14 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 
 	return user.has_internal_radio_channel_access(internal_channels[freq])
 
-/mob/proc/has_internal_radio_channel_access(var/list/req_one_accesses)
+/mob/proc/has_internal_radio_channel_access(list/req_one_accesses)
 	var/obj/item/card/id/I = GetIdCard()
 	return has_access(list(), req_one_accesses, I ? I.GetAccess() : list())
 
-/mob/observer/dead/has_internal_radio_channel_access(var/list/req_one_accesses)
+/mob/observer/dead/has_internal_radio_channel_access(list/req_one_accesses)
 	return can_admin_interact()
 
-/obj/item/radio/proc/text_sec_channel(var/chan_name, var/chan_stat)
+/obj/item/radio/proc/text_sec_channel(chan_name, chan_stat)
 	var/list = !!(chan_stat&FREQ_LISTENING)!=0
 	return {"
 			<B>[chan_name]</B><br>
@@ -301,7 +301,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 
 GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(null, null, null, 1))
 
-/obj/item/radio/proc/autosay(var/message, var/from, var/channel, list/zlevels = list(0)) //BS12 EDIT
+/obj/item/radio/proc/autosay(message, from, channel, list/zlevels = list(0)) //BS12 EDIT
 	var/datum/radio_frequency/connection = null
 	if(channel && channels && channels.len > 0)
 		if (channel == "department")
@@ -341,7 +341,7 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 	//If we were to send to a channel we don't have, drop it.
 	return null
 
-/obj/item/radio/talk_into(mob/living/M as mob, message, channel, var/verb = "says", var/datum/language/speaking = null)
+/obj/item/radio/talk_into(mob/living/M as mob, message, channel, verb = "says", datum/language/speaking = null)
 	if(!on)
 		return FALSE //The device has to be on
 	//Fix for permacell radios, but kinda eh about actually fixing them.
@@ -551,7 +551,7 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 		src, message, displayname, jobname, real_name, M.voice_name,
 		filter_type, signal.data["compression"], (LEGACY_MAP_DATUM).get_map_levels(pos_z), connection.frequency, verb, speaking)
 
-/obj/item/radio/hear_talk(mob/M as mob, msg, var/verb = "says", var/datum/language/speaking = null)
+/obj/item/radio/hear_talk(mob/M as mob, msg, verb = "says", datum/language/speaking = null)
 	if (broadcasting)
 		if(get_dist(src, M) <= canhear_range)
 			talk_into(M, msg,null,verb,speaking)
@@ -662,7 +662,7 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 	myborg = null
 	return ..()
 
-/obj/item/radio/borg/list_channels(var/mob/user)
+/obj/item/radio/borg/list_channels(mob/user)
 	return list_secure_channels(user)
 
 /obj/item/radio/borg/talk_into()

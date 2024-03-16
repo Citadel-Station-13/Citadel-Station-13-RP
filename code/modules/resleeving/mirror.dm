@@ -15,7 +15,7 @@
 //holder to prevent having to find it each time
 /mob/living/carbon/human/var/obj/item/implant/mirror/mirror
 
-/obj/item/implant/mirror/digest_act(var/atom/movable/item_storage = null)
+/obj/item/implant/mirror/digest_act(atom/movable/item_storage = null)
     return FALSE
 
 /obj/item/implant/get_data()
@@ -31,7 +31,7 @@
 <b>Integrity:</b> Extremely sturdy, at risk of damage through sustained high frequency or direct energy attacks."}
 	return dat
 
-/obj/item/implant/mirror/post_implant(var/mob/living/carbon/human/H)
+/obj/item/implant/mirror/post_implant(mob/living/carbon/human/H)
 	if(!istype(H))
 		return
 	spawn(20)
@@ -84,7 +84,7 @@
 	name = "Synthetic Mirror"
 	desc = "An altered form of the common mirror designed to work with synthetic brains."
 
-/obj/item/implant/mirror/positronic/post_implant(var/mob/living/carbon/human/H)
+/obj/item/implant/mirror/positronic/post_implant(mob/living/carbon/human/H)
 	spawn(20)
 	if((H.client.prefs.organ_data[O_BRAIN] != null))
 		stored_mind = SStranscore.m_backupE(H.mind, one_time = TRUE)

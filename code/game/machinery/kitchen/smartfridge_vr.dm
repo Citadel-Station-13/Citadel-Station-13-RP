@@ -14,7 +14,7 @@
 	expert_job = "Bartender"
 
 // Allow thrown items into smartfridges
-/obj/machinery/smartfridge/throw_impact(var/atom/movable/A)
+/obj/machinery/smartfridge/throw_impact(atom/movable/A)
 	. = ..()
 	if(accept_check(A) && A.thrower)
 		//Try to find what job they are via ID

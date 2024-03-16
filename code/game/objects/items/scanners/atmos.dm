@@ -31,7 +31,7 @@
 	materials_base = list(MAT_STEEL = 30, MAT_GLASS = 20)
 	origin_tech = list(TECH_MAGNET = 3, TECH_ENGINEERING = 3)
 
-/obj/item/atmos_analyzer/atmosanalyze(var/mob/user)
+/obj/item/atmos_analyzer/atmosanalyze(mob/user)
 	var/air = user.return_air()
 	if (!air)
 		return

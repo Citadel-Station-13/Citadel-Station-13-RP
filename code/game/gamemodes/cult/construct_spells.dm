@@ -43,7 +43,7 @@
 
 	hud_state = "const_floor"
 
-/spell/aoe_turf/conjure/floor/conjure_animation(var/atom/movable/overlay/animation, var/turf/target)
+/spell/aoe_turf/conjure/floor/conjure_animation(atom/movable/overlay/animation, turf/target)
 	animation.icon_state = "cultfloor"
 	flick("cultfloor",animation)
 	spawn(10)
@@ -62,7 +62,7 @@
 
 	hud_state = "const_wall"
 
-/spell/aoe_turf/conjure/wall/conjure_animation(var/atom/movable/overlay/animation, var/turf/target)
+/spell/aoe_turf/conjure/wall/conjure_animation(atom/movable/overlay/animation, turf/target)
 	animation.icon_state = "cultwall"
 	flick("cultwall",animation)
 	spawn(10)
@@ -223,17 +223,17 @@
 
 	hud_state = "const_shift"
 
-/spell/targeted/ethereal_jaunt/shift/jaunt_disappear(var/atom/movable/overlay/animation, var/mob/living/target)
+/spell/targeted/ethereal_jaunt/shift/jaunt_disappear(atom/movable/overlay/animation, mob/living/target)
 	animation.icon_state = "phase_shift"
 	animation.dir = target.dir
 	flick("phase_shift",animation)
 
-/spell/targeted/ethereal_jaunt/shift/jaunt_reappear(var/atom/movable/overlay/animation, var/mob/living/target)
+/spell/targeted/ethereal_jaunt/shift/jaunt_reappear(atom/movable/overlay/animation, mob/living/target)
 	animation.icon_state = "phase_shift2"
 	animation.dir = target.dir
 	flick("phase_shift2",animation)
 
-/spell/targeted/ethereal_jaunt/shift/jaunt_steam(var/mobloc)
+/spell/targeted/ethereal_jaunt/shift/jaunt_steam(mobloc)
 	return
 
 /*
@@ -450,7 +450,7 @@
 	update_icon()
 	return ..()
 
-/obj/item/spell/construct/adjust_instability(var/amount) //The only drawback to the boons of the geometer is the use of a mortal's blood as fuel. Constructs have already paid that price long ago.
+/obj/item/spell/construct/adjust_instability(amount) //The only drawback to the boons of the geometer is the use of a mortal's blood as fuel. Constructs have already paid that price long ago.
 	return
 
 /obj/item/spell/construct/run_checks()
@@ -460,7 +460,7 @@
 			return 1
 	return 0
 
-/obj/item/spell/construct/pay_energy(var/amount)
+/obj/item/spell/construct/pay_energy(amount)
 	if(owner)
 		if(istype(owner, /mob/living/simple_mob/construct))
 			return 1
@@ -468,7 +468,7 @@
 			return 1
 	return 0
 
-/obj/item/spell/construct/proc/pay_blood(var/amount) //If, for some reason, this is put into the hands of a cultist, by a talisnam or whatever.
+/obj/item/spell/construct/proc/pay_blood(amount) //If, for some reason, this is put into the hands of a cultist, by a talisnam or whatever.
 	if(ishuman(owner))
 		var/mob/living/carbon/human/H = owner
 		if(!H.should_have_organ(O_HEART))

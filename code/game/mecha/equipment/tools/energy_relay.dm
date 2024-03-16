@@ -54,7 +54,7 @@
 		return chassis.dyngetcharge()
 	return charge
 
-/obj/item/mecha_parts/mecha_equipment/tesla_energy_relay/proc/get_power_channel(var/area/A)
+/obj/item/mecha_parts/mecha_equipment/tesla_energy_relay/proc/get_power_channel(area/A)
 	var/pow_chan
 	if(A)
 		for(var/c in use_channels)
@@ -89,7 +89,7 @@
 
 /datum/global_iterator/mecha_energy_relay
 
-/datum/global_iterator/mecha_energy_relay/process(var/obj/item/mecha_parts/mecha_equipment/tesla_energy_relay/ER)
+/datum/global_iterator/mecha_energy_relay/process(obj/item/mecha_parts/mecha_equipment/tesla_energy_relay/ER)
 	if(!ER.chassis || ER.chassis.hasInternalDamage(MECHA_INT_SHORT_CIRCUIT))
 		stop()
 		ER.set_ready_state(1)

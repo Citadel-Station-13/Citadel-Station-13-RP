@@ -130,7 +130,7 @@
 			return
 	return FALSE
 
-/obj/machinery/mecha_part_fabricator/pros/attackby(var/obj/item/I, var/mob/user)
+/obj/machinery/mecha_part_fabricator/pros/attackby(obj/item/I, mob/user)
 	if(..())
 		return TRUE
 

@@ -366,7 +366,7 @@
 	. = ..()
 	add_atom_colour(light_color, FIXED_COLOUR_PRIORITY)
 
-/obj/item/switchtool/holo/deploy(var/obj/item/module) //We lightin' it up in here
+/obj/item/switchtool/holo/deploy(obj/item/module) //We lightin' it up in here
 	..()
 	if(get_switchtool_enum(module) == SWITCHTOOL_LIGHT)
 		set_light(brightness_max, 4, light_color)

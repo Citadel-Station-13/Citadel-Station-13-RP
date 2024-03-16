@@ -55,7 +55,7 @@
 	attack_verb = list("hit", "bludgeoned", "whacked", "bonked")
 	material_significance = MATERIAL_SIGNIFICANCE_SHARD
 
-/obj/item/material/wirerod/attackby(var/obj/item/I, mob/user as mob)
+/obj/item/material/wirerod/attackby(obj/item/I, mob/user as mob)
 	..()
 	var/obj/item/finished
 	if(istype(I, /obj/item/material/shard) || istype(I, /obj/item/material/butterflyblade))
@@ -84,7 +84,7 @@
 
 	var/construction_stage = 1
 
-/obj/item/material/hammer_head/attackby(var/obj/item/thing, var/mob/user)
+/obj/item/material/hammer_head/attackby(obj/item/thing, mob/user)
 
 	if(istype(thing, /obj/item/stack/rods) && construction_stage == 1)
 		var/obj/item/stack/rods = thing
@@ -190,7 +190,7 @@
 		construction_stage++
 	icon_state = "hammer_construction_[construction_stage]"
 
-/obj/item/material/hammer_head/examine(var/mob/user)
+/obj/item/material/hammer_head/examine(mob/user)
 	. = ..()
 	if(.)
 		switch(construction_stage) //BLACKMAJOR YOU KNOW YOU SHOULDN'T INLINE SWITCH STATEMENTS AAAA

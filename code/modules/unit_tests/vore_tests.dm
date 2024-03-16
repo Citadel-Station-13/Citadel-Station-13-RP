@@ -1,7 +1,7 @@
 /datum/unit_test
 	var/static/default_mobloc = null
 
-/datum/unit_test/proc/stupid_vore_test_mob(var/turf/mobloc = null, var/mobtype = /mob/living/carbon/human, var/with_mind = FALSE)
+/datum/unit_test/proc/stupid_vore_test_mob(turf/mobloc = null, mobtype = /mob/living/carbon/human, with_mind = FALSE)
 	if(isnull(mobloc))
 		if(!default_mobloc)
 			for(var/turf/simulated/floor/tiled/T in world)

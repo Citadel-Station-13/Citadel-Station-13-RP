@@ -24,7 +24,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 	holder_type = /obj/item/holder/micro
 
 // The reverse lookup of player_sizes_list, number to name.
-/proc/player_size_name(var/size_multiplier)
+/proc/player_size_name(size_multiplier)
 	// (This assumes list is sorted big->small)
 	for(var/N in player_sizes_list)
 		. = N // So we return the smallest if we get to the end
@@ -61,7 +61,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
  * Resizes the mob immediately to the desired mod, animating it growing/shrinking.
  * It can be used by anything that calls it.
  */
-/mob/living/proc/resize(var/new_size, var/animate = FALSE)
+/mob/living/proc/resize(new_size, animate = FALSE)
 	if(size_multiplier == new_size)
 		return 1
 	if(last_special > world.time)
@@ -80,7 +80,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 		update_transform() //Lame way
 		last_special = world.time + base_attack_cooldown
 
-/mob/living/carbon/human/resize(var/new_size, var/animate = TRUE)
+/mob/living/carbon/human/resize(new_size, animate = TRUE)
 	. = ..()
 	if(LAZYLEN(hud_list))
 		var/new_y_offset = (size_multiplier < 1 ? 27 : 32) * (size_multiplier - 1)
@@ -90,7 +90,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 			HI.pixel_y = new_y_offset
 
 // Optimize mannequins - never a point to animating or doing HUDs on these.
-/mob/living/carbon/human/dummy/mannequin/resize(var/new_size, var/animate = TRUE)
+/mob/living/carbon/human/dummy/mannequin/resize(new_size, animate = TRUE)
 	size_multiplier = new_size
 
 /**
@@ -121,7 +121,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
  * Attempt to scoop up this mob up into M's hands, if the size difference is large enough.
  * @return false if normal code should continue, true to prevent normal code.
  */
-/mob/living/proc/attempt_to_scoop(var/mob/living/M)
+/mob/living/proc/attempt_to_scoop(mob/living/M)
 	var/size_diff = M.get_effective_size() - get_effective_size()
 	if(!holder_default && holder_type)
 		holder_default = holder_type
@@ -267,7 +267,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
  *
  * @return false if normal code should continue, 1 to prevent normal code.
  */
-/mob/living/proc/handle_micro_bump_other(var/mob/living/tmob)
+/mob/living/proc/handle_micro_bump_other(mob/living/tmob)
 	ASSERT(istype(tmob))
 
 	//If they're flying, don't do any special interactions.

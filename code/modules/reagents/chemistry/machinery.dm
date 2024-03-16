@@ -71,7 +71,7 @@
 	icon_state = "juicer"+num2text(!isnull(beaker))
 	return
 
-/obj/machinery/reagentgrinder/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/machinery/reagentgrinder/attackby(obj/item/O as obj, mob/user as mob)
 	if(beaker)
 		if(default_deconstruction_screwdriver(user, O))
 			return

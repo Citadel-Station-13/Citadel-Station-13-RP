@@ -151,7 +151,7 @@
 	corpse = /obj/spawner/corpse/pirate/melee_shield
 
 //This Should Allow all childs of the shield priate to block
-/mob/living/simple_mob/humanoid/pirate/shield/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/mob/living/simple_mob/humanoid/pirate/shield/attackby(obj/item/O as obj, mob/user as mob)
 	if(O.damage_force)
 		if(prob(15))
 			visible_message("<span class='danger'>\The [src] blocks \the [O] with its shield!</span>")
@@ -164,7 +164,7 @@
 		to_chat(user, "<span class='warning'>This weapon is ineffective, it does no damage.</span>")
 		visible_message("<span class='warning'>\The [user] gently taps [src] with \the [O].</span>")
 
-/mob/living/simple_mob/humanoid/merc/melee/sword/bullet_act(var/obj/projectile/Proj)
+/mob/living/simple_mob/humanoid/merc/melee/sword/bullet_act(obj/projectile/Proj)
 	if(!Proj)	return
 	if(prob(25))
 		visible_message("<font color='red'><B>[src] blocks [Proj] with its shield!</B></font>")
@@ -483,7 +483,7 @@
 	shields = new /obj/item/shield_projector/rectangle/automatic/drone(src)
 	return ..()
 
-/mob/living/simple_mob/humanoid/pirate/captain/Process_Spacemove(var/check_drift = 0)
+/mob/living/simple_mob/humanoid/pirate/captain/Process_Spacemove(check_drift = 0)
 	return TRUE
 
 /obj/item/shield_projector/rectangle/automatic/drone
@@ -773,7 +773,7 @@
 	shields = new /obj/item/shield_projector/rectangle/automatic/drone(src)
 	return ..()
 
-/mob/living/simple_mob/humanoid/pirate/captain/Process_Spacemove(var/check_drift = 0)
+/mob/living/simple_mob/humanoid/pirate/captain/Process_Spacemove(check_drift = 0)
 	return TRUE
 
 /obj/item/shield_projector/rectangle/automatic/drone

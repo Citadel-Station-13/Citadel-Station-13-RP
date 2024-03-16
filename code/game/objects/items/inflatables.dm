@@ -25,7 +25,7 @@
 /obj/item/inflatable/CtrlClick(mob/user)
 	inflate(user,src.loc)
 
-/obj/item/inflatable/proc/inflate(var/mob/user,var/location)
+/obj/item/inflatable/proc/inflate(mob/user,location)
 	playsound(location, 'sound/items/zip.ogg', 75, 1)
 	to_chat(user,"<span class='notice'>You inflate [src].</span>")
 	var/obj/structure/inflatable/R = new deploy_path(location)

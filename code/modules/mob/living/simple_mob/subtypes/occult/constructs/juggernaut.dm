@@ -63,7 +63,7 @@
 	. = ..()
 	AddComponent(/datum/component/horror_aura/strong)
 
-/mob/living/simple_mob/construct/juggernaut/bullet_act(var/obj/projectile/P)
+/mob/living/simple_mob/construct/juggernaut/bullet_act(obj/projectile/P)
 	var/reflectchance = 80 - round(P.damage/3)
 	if(prob(reflectchance))
 		var/damage_mod = rand(2,4)
@@ -138,7 +138,7 @@
 							/spell/targeted/construct_advanced/slam
 							)
 
-/mob/living/simple_mob/construct/juggernaut/behemoth/bullet_act(var/obj/projectile/P)
+/mob/living/simple_mob/construct/juggernaut/behemoth/bullet_act(obj/projectile/P)
 	var/reflectchance = 80 - round(P.damage/3)
 	if(prob(reflectchance))
 		visible_message("<span class='danger'>The [P.name] gets reflected by [src]'s shell!</span>", \

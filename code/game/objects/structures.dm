@@ -70,7 +70,7 @@
 	return 0
 
 // todo: remove
-/obj/structure/proc/can_touch(var/mob/user)
+/obj/structure/proc/can_touch(mob/user)
 	if (!user)
 		return 0
 	if(!Adjacent(user))
@@ -88,7 +88,7 @@
 /obj/structure/proc/can_visually_connect()
 	return anchored
 
-/obj/structure/proc/can_visually_connect_to(var/obj/structure/S)
+/obj/structure/proc/can_visually_connect_to(obj/structure/S)
 	return istype(S, src)
 
 /obj/structure/proc/update_connections(propagate = 0)

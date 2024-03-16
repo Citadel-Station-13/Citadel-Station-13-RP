@@ -1,4 +1,4 @@
-/mob/living/carbon/human/say(var/message,var/whispering=0)
+/mob/living/carbon/human/say(message,whispering=0)
 	var/alt_name = ""
 	if(name != GetVoice())
 		alt_name = "(as [get_id_name("Unknown")])"
@@ -47,7 +47,7 @@
 			return species.speech_bubble_appearance
 	return "normal"
 
-/mob/living/carbon/human/say_understands(var/mob/other,var/datum/language/speaking = null)
+/mob/living/carbon/human/say_understands(mob/other,datum/language/speaking = null)
 
 	if(has_brain_worms()) //Brain worms translate everything. Even mice and alien speak.
 		return 1
@@ -101,7 +101,7 @@
 		return GetSpecialVoice()
 	return real_name
 
-/mob/living/carbon/human/proc/SetSpecialVoice(var/new_voice)
+/mob/living/carbon/human/proc/SetSpecialVoice(new_voice)
 	if(new_voice)
 		special_voice = new_voice
 	return
@@ -123,7 +123,7 @@
    for it but just ignore it.
 */
 
-/mob/living/carbon/human/say_quote(var/message, var/datum/language/speaking = null)
+/mob/living/carbon/human/say_quote(message, datum/language/speaking = null)
 	var/verb = "says"
 	var/ending = copytext_char(message, length(message))
 
@@ -137,7 +137,7 @@
 
 	return verb
 
-/mob/living/carbon/human/handle_speech_problems(var/list/message_data)
+/mob/living/carbon/human/handle_speech_problems(list/message_data)
 	if(sdisabilities & SDISABILITY_MUTE)
 		message_data[1] = ""
 		. = 1

@@ -11,7 +11,7 @@
 	var/light_y = 0
 	cooking_power = 0
 
-/obj/machinery/appliance/cooker/examine(var/mob/user)
+/obj/machinery/appliance/cooker/examine(mob/user)
 	. = ..()
 	if(.)	//no need to duplicate adjacency check
 		if(!machine_stat)
@@ -24,7 +24,7 @@
 			if(machine_stat)
 				. += SPAN_WARNING( "It is switched off.")
 
-/obj/machinery/appliance/cooker/list_contents(var/mob/user)
+/obj/machinery/appliance/cooker/list_contents(mob/user)
 	if (cooking_objs.len)
 		var/string = "Contains...</br>"
 		var/num = 0
@@ -120,7 +120,7 @@
 	update_cooking_power()
 
 //Cookers do differently, they use containers
-/obj/machinery/appliance/cooker/has_space(var/obj/item/I)
+/obj/machinery/appliance/cooker/has_space(obj/item/I)
 	if (istype(I, /obj/item/reagent_containers/cooking_container))
 		//Containers can go into an empty slot
 		if (cooking_objs.len < max_contents)
@@ -133,7 +133,7 @@
 
 	return FALSE
 
-/obj/machinery/appliance/cooker/add_content(var/obj/item/I, var/mob/user)
+/obj/machinery/appliance/cooker/add_content(obj/item/I, mob/user)
 	var/datum/cooking_item/CI = ..()
 	if (CI && CI.combine_target)
 		to_chat(user, "\The [I] will be used to make a [selected_option]. Output selection is returned to default for future items.")

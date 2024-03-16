@@ -94,7 +94,7 @@
 		playsound(get_turf(src), 'sound/effects/uncloak.ogg', 35, 1, -1)
 	return
 
-/obj/item/deadringer/proc/makeacorpse(var/mob/living/carbon/human/H)
+/obj/item/deadringer/proc/makeacorpse(mob/living/carbon/human/H)
 	if(H.isSynthetic())
 		return
 	corpse = new /mob/living/carbon/human(H.loc)

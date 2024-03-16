@@ -92,7 +92,7 @@ Also includes Life and New
 	if(!health)
 		set_stat(DEAD)
 
-/mob/living/simple_mob/xeno/bullet_act(var/obj/projectile/Proj)
+/mob/living/simple_mob/xeno/bullet_act(obj/projectile/Proj)
 	if(istype(Proj, /obj/projectile/beam/stun/xeno))
 		var/obj/projectile/beam/stun/xeno/hit = Proj
 		stasis += hit.stasisforce

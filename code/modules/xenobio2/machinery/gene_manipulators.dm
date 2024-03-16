@@ -151,7 +151,7 @@
 		return
 	..()
 
-/obj/machinery/xenobio/extractor/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/xenobio/extractor/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)
 	if(!user)
 		return
 
@@ -298,7 +298,7 @@
 	..()
 
 
-/obj/machinery/xenobio/editor/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/xenobio/editor/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)
 
 	if(!user)
 		return
@@ -373,7 +373,7 @@
 		return
 	move_into_editor(user,target)
 
-/obj/machinery/xenobio/editor/proc/move_into_editor(var/mob/user,var/mob/living/victim)
+/obj/machinery/xenobio/editor/proc/move_into_editor(mob/user,mob/living/victim)
 
 	if(src.occupant)
 		to_chat(user, "<span class='danger'>The [src] is full, empty it first!</span>")

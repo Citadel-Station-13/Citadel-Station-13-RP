@@ -204,7 +204,7 @@ var/const/MAX_ACTIVE_TIME = 400
 
 	return
 
-/obj/item/clothing/mask/facehugger/proc/GoIdle(var/min_time=MIN_ACTIVE_TIME, var/max_time=MAX_ACTIVE_TIME)
+/obj/item/clothing/mask/facehugger/proc/GoIdle(min_time=MIN_ACTIVE_TIME, max_time=MAX_ACTIVE_TIME)
 	if(stat == DEAD || stat == UNCONSCIOUS)
 		return
 
@@ -220,7 +220,7 @@ var/const/MAX_ACTIVE_TIME = 400
 	Die()
 	return
 
-/proc/CanHug(var/mob/M)
+/proc/CanHug(mob/M)
 
 	if(iscorgi(M))
 		return 1
@@ -468,7 +468,7 @@ var/const/MAX_ACTIVE_TIME = 400
 
 	return
 
-/obj/item/clothing/mask/facehugger/proc/GoIdle(var/min_time=MIN_ACTIVE_TIME, var/max_time=MAX_ACTIVE_TIME)
+/obj/item/clothing/mask/facehugger/proc/GoIdle(min_time=MIN_ACTIVE_TIME, max_time=MAX_ACTIVE_TIME)
 	if(stat == DEAD || stat == UNCONSCIOUS)
 		return
 
@@ -494,7 +494,7 @@ var/const/MAX_ACTIVE_TIME = 400
 
 	return
 
-/proc/CanHug(var/mob/M)
+/proc/CanHug(mob/M)
 
 	if(iscorgi(M))
 		return 1

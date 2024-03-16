@@ -121,7 +121,7 @@
  * ? 5 and 6 are very similar(5 have "by " before it, that it) and are separated just to keep things in a bit more in order
  * 6 is additional information, anything that needs to be added
  */
-/proc/add_attack_logs(mob/user, mob/target, what_done, var/admin_notify = TRUE)
+/proc/add_attack_logs(mob/user, mob/target, what_done, admin_notify = TRUE)
 	if(islist(target)) //Multi-victim adding
 		var/list/targets = target
 		for(var/mob/M in targets)

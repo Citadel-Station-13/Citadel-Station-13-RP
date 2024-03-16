@@ -375,7 +375,7 @@
 /obj/effect/protean_ability/statpanel_click(client/C, action, auth)
 	Click()
 
-/obj/effect/protean_ability/Click(var/location, var/control, var/params)
+/obj/effect/protean_ability/Click(location, control, params)
 	var/list/clickprops = params2list(params)
 	var/opts = clickprops["shift"]
 
@@ -390,7 +390,7 @@
 			var/mob/living/simple_mob/protean_blob/blob = usr
 			do_ability(blob.humanform)
 
-/obj/effect/protean_ability/proc/do_ability(var/mob/living/L)
+/obj/effect/protean_ability/proc/do_ability(mob/living/L)
 	if(istype(L))
 		call(L,to_call)()
 	return FALSE

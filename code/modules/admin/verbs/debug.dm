@@ -93,7 +93,7 @@
 	usr.show_message(t, 1)
 	feedback_add_details("admin_verb","ASL") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/cmd_admin_robotize(var/mob/M in GLOB.mob_list)
+/client/proc/cmd_admin_robotize(mob/M in GLOB.mob_list)
 	set category = "Fun"
 	set name = "Make Robot"
 
@@ -105,7 +105,7 @@
 	else
 		alert("Invalid mob")
 
-/client/proc/cmd_admin_animalize(var/mob/M in GLOB.mob_list)
+/client/proc/cmd_admin_animalize(mob/M in GLOB.mob_list)
 	set category = "Fun"
 	set name = "Make Simple Animal"
 
@@ -122,7 +122,7 @@
 		M.Animalize()
 
 
-/client/proc/makepAI(var/turf/T in GLOB.mob_list)
+/client/proc/makepAI(turf/T in GLOB.mob_list)
 	set category = "Fun"
 	set name = "Make pAI"
 	set desc = "Specify a location to spawn a pAI device, then specify a key to play that pAI"
@@ -149,7 +149,7 @@
 			paiController.pai_candidates.Remove(candidate)
 	feedback_add_details("admin_verb","MPAI") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/cmd_admin_alienize(var/mob/M in GLOB.mob_list)
+/client/proc/cmd_admin_alienize(mob/M in GLOB.mob_list)
 	set category = "Fun"
 	set name = "Make Alien"
 
@@ -294,7 +294,7 @@
 	else
 		. = lines.Join("\n")
 
-/client/proc/cmd_admin_grantfullaccess(var/mob/M in GLOB.mob_list)
+/client/proc/cmd_admin_grantfullaccess(mob/M in GLOB.mob_list)
 	set category = "Admin"
 	set name = "Grant Full Access"
 
@@ -325,7 +325,7 @@
 	log_admin("[key_name(src)] has granted [M.key] full access.")
 	message_admins("<font color=#4F49AF>[key_name_admin(usr)] has granted [M.key] full access.</font>", 1)
 
-/client/proc/cmd_assume_direct_control(var/mob/M in GLOB.mob_list)
+/client/proc/cmd_assume_direct_control(mob/M in GLOB.mob_list)
 	set category = "Admin"
 	set name = "Assume direct control"
 	set desc = "Direct intervention"
@@ -466,7 +466,7 @@
 	feedback_add_details("admin_verb","SEQ")
 	dressup_human(H, outfit, 1)
 
-/proc/dressup_human(var/mob/living/carbon/human/H, var/datum/outfit/outfit)
+/proc/dressup_human(mob/living/carbon/human/H, datum/outfit/outfit)
 	if(!H || !outfit)
 		return
 	if(outfit.undress)
@@ -620,7 +620,7 @@
 			to_chat(usr, jointext(GLOB.clients,","))
 
 // DNA2 - Admin Hax
-/client/proc/cmd_admin_toggle_block(var/mob/M,var/block)
+/client/proc/cmd_admin_toggle_block(mob/M,block)
 	if(istype(M, /mob/living/carbon))
 		M.dna.SetSEState(block,!M.dna.GetSEState(block))
 		domutcheck(M,null,MUTCHK_FORCED)

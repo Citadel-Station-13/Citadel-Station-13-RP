@@ -194,7 +194,7 @@
 		power_capacity += KWH_TO_KJ(S.charge_capacity)
 	current_joules = clamp(current_joules, 0, power_capacity)
 
-/obj/machinery/tele_projector/proc/consume_charge(var/atom/teleporting)
+/obj/machinery/tele_projector/proc/consume_charge(atom/teleporting)
 	var/teleport_cost = 0
 	if(istype(teleporting, /obj/)) //on god this recursive shit will be the end of me.
 		var/obj/O = teleporting
@@ -261,7 +261,7 @@
 /atom/proc/laserhit(obj/L)
 	return TRUE
 
-/obj/machinery/tele_projector/proc/do_consequences(var/power_amt)
+/obj/machinery/tele_projector/proc/do_consequences(power_amt)
 	var/severity = 0
 	var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread()
 

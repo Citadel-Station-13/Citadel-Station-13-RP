@@ -68,7 +68,7 @@
 	ion_trail.set_up(src)
 	ion_trail.start()
 
-/mob/living/simple_mob/hostile/malf_drone/Process_Spacemove(var/check_drift = 0)
+/mob/living/simple_mob/hostile/malf_drone/Process_Spacemove(check_drift = 0)
 	return 1
 
 /mob/living/simple_mob/hostile/malf_drone/isSynthetic()

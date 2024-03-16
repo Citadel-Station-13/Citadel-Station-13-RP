@@ -79,7 +79,7 @@
 			spell_holder.client.screen += S
 			S.handle_icon_updates = 1
 
-/atom/movable/screen/movable/spell_master/proc/add_spell(var/spell/spell)
+/atom/movable/screen/movable/spell_master/proc/add_spell(spell/spell)
 	if(!spell) return
 
 	if(spell.connected_button) //we have one already, for some reason
@@ -113,7 +113,7 @@
 	if(spell_holder.client)
 		toggle_open(2) //forces the icons to refresh on screen
 
-/atom/movable/screen/movable/spell_master/proc/remove_spell(var/spell/spell)
+/atom/movable/screen/movable/spell_master/proc/remove_spell(spell/spell)
 	qdel(spell.connected_button)
 
 	spell.connected_button = null
@@ -123,7 +123,7 @@
 	else
 		qdel(src)
 
-/atom/movable/screen/movable/spell_master/proc/silence_spells(var/amount)
+/atom/movable/screen/movable/spell_master/proc/silence_spells(amount)
 	for(var/atom/movable/screen/spell/spell in spell_objects)
 		spell.spell.silenced = amount
 		spell.update_charge(1)
@@ -178,7 +178,7 @@
 		qdel(spellmaster)
 	spellmaster = null
 
-/atom/movable/screen/spell/proc/update_charge(var/forced_update = 0)
+/atom/movable/screen/spell/proc/update_charge(forced_update = 0)
 	if(!spell)
 		qdel(src)
 		return

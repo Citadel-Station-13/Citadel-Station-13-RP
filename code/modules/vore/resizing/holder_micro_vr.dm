@@ -39,7 +39,7 @@
 		A.forceMove(here)
 	return ..()
 
-/obj/item/holder/micro/sync(var/mob/living/M)
+/obj/item/holder/micro/sync(mob/living/M)
 	..()
 	for(var/mob/living/carbon/human/I in contents)
 		item_state = lowertext(I.species.name)

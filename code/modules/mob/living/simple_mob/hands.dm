@@ -35,14 +35,14 @@
 	update_icon()
 
 //Can insert extra huds into the hud holder here.
-/mob/living/simple_mob/proc/extra_huds(var/datum/hud/hud,var/icon/ui_style,var/list/hud_elements)
+/mob/living/simple_mob/proc/extra_huds(datum/hud/hud,icon/ui_style,list/hud_elements)
 	return
 
 //If they can or cannot use tools/machines/etc
 /mob/living/simple_mob/IsAdvancedToolUser()
 	return has_hands
 
-/mob/living/simple_mob/proc/IsHumanoidToolUser(var/atom/tool)
+/mob/living/simple_mob/proc/IsHumanoidToolUser(atom/tool)
 	if(!humanoid_hands)
 		var/display_name = null
 		if(tool)

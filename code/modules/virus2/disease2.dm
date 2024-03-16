@@ -18,7 +18,7 @@
 	uniqueID = rand(0,10000)
 	..()
 
-/datum/disease2/disease/proc/makerandom(var/severity=1)
+/datum/disease2/disease/proc/makerandom(severity=1)
 	var/list/excludetypes = list()
 	for(var/i=1 ; i <= max_stage ; i++ )
 		var/datum/disease2/effectholder/holder = new /datum/disease2/effectholder
@@ -69,7 +69,7 @@
 				res |= picked.primitive_form
 	return res
 
-/datum/disease2/disease/proc/activate(var/mob/living/carbon/mob)
+/datum/disease2/disease/proc/activate(mob/living/carbon/mob)
 	if(dead)
 		cure(mob)
 		return
@@ -140,7 +140,7 @@
 	mob.bodytemperature = max(mob.bodytemperature, min(310+5*min(stage,max_stage) ,mob.bodytemperature+5*min(stage,max_stage)))
 	clicks+=speed
 
-/datum/disease2/disease/proc/cure(var/mob/living/carbon/mob)
+/datum/disease2/disease/proc/cure(mob/living/carbon/mob)
 	for(var/datum/disease2/effectholder/e in effects)
 		e.effect.deactivate(mob)
 	mob.virus2.Remove("[uniqueID]")
@@ -190,7 +190,7 @@
 		disease.effects += newholder
 	return disease
 
-/datum/disease2/disease/proc/issame(var/datum/disease2/disease/disease)
+/datum/disease2/disease/proc/issame(datum/disease2/disease/disease)
 	var/list/types = list()
 	var/list/types2 = list()
 	for(var/datum/disease2/effectholder/d in effects)
@@ -208,7 +208,7 @@
 		equal = 0
 	return equal
 
-/proc/virus_copylist(var/list/datum/disease2/disease/viruses)
+/proc/virus_copylist(list/datum/disease2/disease/viruses)
 	var/list/res = list()
 	for (var/ID in viruses)
 		var/datum/disease2/disease/V = viruses[ID]
@@ -310,7 +310,7 @@ var/global/list/virusDB = list()
 
 	infect_mob_random_greater(candidates[1])
 
-/proc/virology_letterhead(var/report_name)
+/proc/virology_letterhead(report_name)
 	return {"
 		<center><h1><b>[report_name]</b></h1></center>
 		<center><small><i>[station_name()] Virology Lab</i></small></center>

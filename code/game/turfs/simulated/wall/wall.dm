@@ -149,7 +149,7 @@
 
 	return ..()
 
-/turf/simulated/wall/proc/dismantle_wall(var/devastated, var/explode, var/no_product)
+/turf/simulated/wall/proc/dismantle_wall(devastated, explode, no_product)
 	playsound(src, 'sound/items/Welder.ogg', 100, 1)
 	if(!no_product)
 		if(material_reinf)

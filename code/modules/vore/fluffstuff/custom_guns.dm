@@ -266,7 +266,7 @@ END OF CITADEL CHANGES */
 	item_icons = null
 	pixel_x = -16
 
-/obj/item/gun/ballistic/automatic/carbine/fluff/ufarc/update_icon(var/ignore_inhands)
+/obj/item/gun/ballistic/automatic/carbine/fluff/ufarc/update_icon(ignore_inhands)
 	..()
 	// TODO - Fix this for spriting different size magazines
 	icon_state = (ammo_magazine)? "ufarc" : "ufarc-empty"
@@ -284,7 +284,7 @@ END OF CITADEL CHANGES */
 	item_state = "bullpup"
 	pixel_x = -16
 
-/obj/item/gun/ballistic/automatic/carbine/fluff/g44/update_icon(var/ignore_inhands)
+/obj/item/gun/ballistic/automatic/carbine/fluff/g44/update_icon(ignore_inhands)
 	..()
 	// TODO - Fix this for spriting different size magazines
 	icon_state = (ammo_magazine)? "g44" : "g44-empty"
@@ -725,7 +725,7 @@ END OF CITADEL CHANGES */
 		list(mode_name="low-power", fire_delay=8, projectile_type=/obj/projectile/beam/weaklaser, charge_cost = 60),
 	)
 
-/obj/item/gun/energy/frontier/unload_ammo(var/mob/user)
+/obj/item/gun/energy/frontier/unload_ammo(mob/user)
 	if(recharging)
 		return
 	recharging = 1
@@ -814,7 +814,7 @@ END OF CITADEL CHANGES */
 	firemodes = list(
 	)
 
-/obj/item/gun/energy/frontier/taj/unload_ammo(var/mob/user)
+/obj/item/gun/energy/frontier/taj/unload_ammo(mob/user)
 	if(recharging)
 		return
 	recharging = 1

@@ -34,7 +34,7 @@
 	hostile = TRUE
 	retaliate = TRUE
 
-/datum/ai_holder/New(var/new_holder)
+/datum/ai_holder/New(new_holder)
 	ASSERT(new_holder)
 	holder = new_holder
 	SSai.processing += src
@@ -133,7 +133,7 @@
 */
 
 // For setting the stance WITHOUT processing it
-/datum/ai_holder/proc/set_stance(var/new_stance)
+/datum/ai_holder/proc/set_stance(new_stance)
 	ai_log("set_stance() : Setting stance from [stance] to [new_stance].", AI_LOG_INFO)
 	stance = new_stance
 	if(stance_coloring) // For debugging or really weird mobs.

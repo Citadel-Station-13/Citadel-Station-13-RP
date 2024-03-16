@@ -62,7 +62,7 @@
 
 	CYBORG_STACK(cable_coil/cyborg, list(MATSYN_WIRE))
 
-/obj/item/robot_module/robot/research/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
+/obj/item/robot_module/robot/research/respawn_consumable(mob/living/silicon/robot/R, amount)
 
 	var/obj/item/reagent_containers/syringe/S = locate() in src.modules
 	if(S.mode == 2)

@@ -39,7 +39,7 @@
 	user.set_machine(src)
 	nano_ui_interact(user)
 
-/obj/machinery/computer/roguezones/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/computer/roguezones/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)
 	user.set_machine(src)
 
 

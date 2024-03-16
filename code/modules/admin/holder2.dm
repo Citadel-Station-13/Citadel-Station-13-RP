@@ -68,7 +68,7 @@ proc/admin_proc()
 
 NOTE: It checks usr by default. Supply the "user" argument if you wish to check for a specific mob.
 */
-/proc/check_rights(rights_required, show_msg = TRUE, var/client/C = usr)
+/proc/check_rights(rights_required, show_msg = TRUE, client/C = usr)
 	if(ismob(C))
 		var/mob/M = C
 		C = M.client

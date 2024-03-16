@@ -67,7 +67,7 @@
 	sharp = 0
 	damage_flag = ARMOR_MELEE
 
-/obj/projectile/bullet/stripper/on_hit(var/atom/stripped)
+/obj/projectile/bullet/stripper/on_hit(atom/stripped)
 	if(ishuman(stripped))
 		var/mob/living/carbon/human/H = stripped
 		if(!H.permit_stripped)
@@ -94,7 +94,7 @@
 	tracer_type = /obj/effect/projectile/tracer/laser_omni
 	impact_type = /obj/effect/projectile/impact/laser_omni
 
-/obj/projectile/beam/final_option/on_hit(var/atom/impacted)
+/obj/projectile/beam/final_option/on_hit(atom/impacted)
 	if(isliving(impacted))
 		var/mob/living/L = impacted
 		if(L.mind)

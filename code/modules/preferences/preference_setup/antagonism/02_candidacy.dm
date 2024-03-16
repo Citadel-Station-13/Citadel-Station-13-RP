@@ -22,12 +22,12 @@ var/global/list/special_roles = list( //keep synced with the defines BE_* in set
 	name = "Candidacy"
 	sort_order = 2
 
-/datum/category_item/player_setup_item/antagonism/candidacy/load_character(var/savefile/S)
+/datum/category_item/player_setup_item/antagonism/candidacy/load_character(savefile/S)
 	S["be_special"]	>> pref.be_special
 	S["be_event_role"] >> pref.be_event_role
 
 
-/datum/category_item/player_setup_item/antagonism/candidacy/save_character(var/savefile/S)
+/datum/category_item/player_setup_item/antagonism/candidacy/save_character(savefile/S)
 	S["be_special"]	<< pref.be_special
 	S["be_event_role"] << pref.be_event_role
 
@@ -53,7 +53,7 @@ var/global/list/special_roles = list( //keep synced with the defines BE_* in set
 					. += "<b>Be [i]:</b> <a href='?src=\ref[src];be_special=[n]'><b>[pref.be_special&(1<<n) ? "Yes" : "No"]</b></a><br>"
 			n++
 
-/datum/category_item/player_setup_item/antagonism/candidacy/OnTopic(var/href,var/list/href_list, var/mob/user)
+/datum/category_item/player_setup_item/antagonism/candidacy/OnTopic(href,list/href_list, mob/user)
 	if(href_list["be_special"])
 		var/num = text2num(href_list["be_special"])
 		pref.be_special ^= (1<<num)

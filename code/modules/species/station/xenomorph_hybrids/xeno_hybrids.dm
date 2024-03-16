@@ -113,7 +113,7 @@
 /datum/species/xenohybrid/can_breathe_water()
 	return TRUE	//they dont quite breathe
 
-/datum/species/xenohybrid/proc/handle_healing_conditions(var/mob/living/carbon/human/H)
+/datum/species/xenohybrid/proc/handle_healing_conditions(mob/living/carbon/human/H)
 	var/healing_factor = 1
 	if(H.lying)
 		healing_factor *= 1.2

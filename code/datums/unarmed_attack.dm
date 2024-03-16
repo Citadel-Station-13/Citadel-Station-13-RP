@@ -57,7 +57,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 /datum/unarmed_attack/proc/get_sparring_variant()
 	return fetch_unarmed_style(sparring_variant_type)
 
-/datum/unarmed_attack/proc/is_usable(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone)
+/datum/unarmed_attack/proc/is_usable(mob/living/carbon/human/user, mob/living/carbon/human/target, zone)
 	if(user.restrained())
 		return FALSE
 
@@ -76,7 +76,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	// todo: damage_structural_add is awful and shouldn't be kept in the future
 	return damage + rand(damage_add_low, damage_add_high) + (ismob(defender)? 0 : damage_structural_add)
 
-/datum/unarmed_attack/proc/apply_effects(var/mob/living/carbon/human/user,var/mob/living/carbon/human/target,var/armour,var/attack_damage,var/zone)
+/datum/unarmed_attack/proc/apply_effects(mob/living/carbon/human/user, mob/living/carbon/human/target, armour, attack_damage, zone)
 
 	var/stun_chance = rand(0, 100)
 	var/datum/gender/TT = GLOB.gender_datums[target.get_visible_gender()]
@@ -139,12 +139,12 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 
 			target.visible_message("<span class='danger'><i>[user] [attack_message]</i></span>")
 
-/datum/unarmed_attack/proc/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
+/datum/unarmed_attack/proc/show_attack(mob/living/carbon/human/user, mob/living/carbon/human/target, zone, attack_damage)
 	var/obj/item/organ/external/affecting = target.get_organ(zone)
 	user.visible_message("<span class='warning'>[user] [pick(attack_verb_legacy)] [target] in the [affecting.name]!</span>")
 	playsound(user.loc, attack_sound, 25, 1, -1)
 
-/datum/unarmed_attack/proc/handle_eye_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target)
+/datum/unarmed_attack/proc/handle_eye_attack(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	var/obj/item/organ/internal/eyes/eyes = target.internal_organs_by_name[O_EYES]
 	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 	var/datum/gender/TT = GLOB.gender_datums[target.get_visible_gender()]
@@ -156,7 +156,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 		return
 	user.visible_message("<span class='danger'>[user] attempts to press [TU.his] [eye_attack_text] into [target]'s eyes, but [TT.he] [TT.does]n't have any!</span>")
 
-/datum/unarmed_attack/proc/unarmed_override(var/mob/living/carbon/human/user,var/mob/living/carbon/human/target,var/zone)
+/datum/unarmed_attack/proc/unarmed_override(mob/living/carbon/human/user, mob/living/carbon/human/target, zone)
 	return FALSE //return true if the unarmed override prevents further attacks
 
 /datum/unarmed_attack/bite
@@ -167,7 +167,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	damage_mode = NONE
 	damage_tier = MELEE_TIER_UNARMED_FISTS
 
-/datum/unarmed_attack/bite/is_usable(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone)
+/datum/unarmed_attack/bite/is_usable(mob/living/carbon/human/user, mob/living/carbon/human/target, zone)
 
 	if (user.is_muzzled())
 		return 0
@@ -185,7 +185,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	damage_add_high = 5
 	damage_tier = MELEE_TIER_UNARMED_FISTS
 
-/datum/unarmed_attack/punch/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
+/datum/unarmed_attack/punch/show_attack(mob/living/carbon/human/user, mob/living/carbon/human/target, zone, attack_damage)
 	var/obj/item/organ/external/affecting = target.get_organ(zone)
 	var/organ = affecting.name
 
@@ -238,7 +238,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	damage_add_low = 0
 	damage_add_high = 5
 
-/datum/unarmed_attack/kick/is_usable(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone)
+/datum/unarmed_attack/kick/is_usable(mob/living/carbon/human/user, mob/living/carbon/human/target, zone)
 	if (user.legcuffed)
 		return FALSE
 
@@ -255,13 +255,13 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 
 	return FALSE
 
-/datum/unarmed_attack/kick/get_unarmed_damage(var/mob/living/carbon/human/user)
+/datum/unarmed_attack/kick/get_unarmed_damage(mob/living/carbon/human/user)
 	var/obj/item/clothing/shoes = user.shoes
 	if(!istype(shoes))
 		return damage
 	return damage + max(0, shoes ? shoes.damage_force - 5 : 0)
 
-/datum/unarmed_attack/kick/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
+/datum/unarmed_attack/kick/show_attack(mob/living/carbon/human/user, mob/living/carbon/human/target, zone, attack_damage)
 	var/obj/item/organ/external/affecting = target.get_organ(zone)
 	var/datum/gender/TT = GLOB.gender_datums[target.get_visible_gender()]
 	var/organ = affecting.name
@@ -281,7 +281,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	damage_add_low = 0
 	damage_add_high = 5
 
-/datum/unarmed_attack/stomp/is_usable(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone)
+/datum/unarmed_attack/stomp/is_usable(mob/living/carbon/human/user, mob/living/carbon/human/target, zone)
 
 	if (user.legcuffed)
 		return FALSE
@@ -302,11 +302,11 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 
 		return FALSE
 
-/datum/unarmed_attack/stomp/get_unarmed_damage(var/mob/living/carbon/human/user)
+/datum/unarmed_attack/stomp/get_unarmed_damage(mob/living/carbon/human/user)
 	var/obj/item/clothing/shoes = user.shoes
 	return damage + max(0, shoes ? shoes.damage_force - 5 : 0)
 
-/datum/unarmed_attack/stomp/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
+/datum/unarmed_attack/stomp/show_attack(mob/living/carbon/human/user, mob/living/carbon/human/target, zone, attack_damage)
 	var/obj/item/organ/external/affecting = target.get_organ(zone)
 	var/organ = affecting.name
 	var/obj/item/clothing/shoes = user.shoes

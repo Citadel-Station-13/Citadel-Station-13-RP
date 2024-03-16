@@ -53,7 +53,7 @@
 	user.set_machine(src)
 	interact(user)
 
-/obj/item/retail_scanner/AltClick(var/mob/user)
+/obj/item/retail_scanner/AltClick(mob/user)
 	if(Adjacent(user))
 		user.set_machine(src)
 		interact(user)
@@ -83,7 +83,7 @@
 	onclose(user, "retail")
 
 
-/obj/item/retail_scanner/Topic(var/href, var/href_list)
+/obj/item/retail_scanner/Topic(href, href_list)
 	if(..())
 		return
 
@@ -182,7 +182,7 @@
 		M.show_message("[user] holds up [src]. <a HREF=?src=\ref[M];clickitem=\ref[src]>Swipe card or item.</a>",1)
 
 
-/obj/item/retail_scanner/proc/confirm(var/obj/item/I)
+/obj/item/retail_scanner/proc/confirm(obj/item/I)
 	if(confirm_item == I)
 		return 1
 	else
@@ -192,7 +192,7 @@
 		return 0
 
 
-/obj/item/retail_scanner/proc/scan_card(var/obj/item/card/id/I, var/obj/item/ID_container)
+/obj/item/retail_scanner/proc/scan_card(obj/item/card/id/I, obj/item/ID_container)
 	if (!transaction_amount)
 		return
 
@@ -252,7 +252,7 @@
 					transaction_complete()
 
 
-/obj/item/retail_scanner/proc/scan_wallet(var/obj/item/spacecash/ewallet/E)
+/obj/item/retail_scanner/proc/scan_wallet(obj/item/spacecash/ewallet/E)
 	if (!transaction_amount)
 		return
 
@@ -285,7 +285,7 @@
 			transaction_complete()
 
 
-/obj/item/retail_scanner/proc/scan_item_price(var/obj/O)
+/obj/item/retail_scanner/proc/scan_item_price(obj/O)
 	if(!istype(O))	return
 	if(item_list.len > 10)
 		src.visible_message("[icon2html(thing = src, target = world)]<span class='warning'>Only up to ten different items allowed per purchase.</span>")
@@ -337,7 +337,7 @@
 	return dat
 
 
-/obj/item/retail_scanner/proc/add_transaction_log(var/c_name, var/p_method, var/t_amount)
+/obj/item/retail_scanner/proc/add_transaction_log(c_name, p_method, t_amount)
 	var/dat = {"
 	<head><style>
 		.tx-title {text-align: center; background-color:#ddddff; font-weight: bold}
@@ -391,7 +391,7 @@
 	confirm_item = null
 
 
-/obj/item/retail_scanner/emag_act(var/remaining_charges, var/mob/user)
+/obj/item/retail_scanner/emag_act(remaining_charges, mob/user)
 	if(!emagged)
 		to_chat(user, "<span class='danger'>You stealthily swipe the cryptographic sequencer through \the [src].</span>")
 		playsound(src, /datum/soundbyte/grouped/sparks, 50, 1)

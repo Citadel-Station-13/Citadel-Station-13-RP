@@ -22,7 +22,7 @@
 						assuming their paperwork is in order."
 
 /*
-/datum/role/job/station/lawyer/equip(var/mob/living/carbon/human/H)
+/datum/role/job/station/lawyer/equip(mob/living/carbon/human/H)
 	. = ..()
 	if(.)
 		H.implant_loyalty(H)

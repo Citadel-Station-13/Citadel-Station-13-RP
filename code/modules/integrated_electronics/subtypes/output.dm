@@ -283,7 +283,7 @@
 	QDEL_NULL(camera)
 	return ..()
 
-/obj/item/integrated_circuit/output/video_camera/proc/set_camera_status(var/status)
+/obj/item/integrated_circuit/output/video_camera/proc/set_camera_status(status)
 	if(camera)
 		camera.set_status(status)
 		power_draw_idle = camera.status ? 80 : 5

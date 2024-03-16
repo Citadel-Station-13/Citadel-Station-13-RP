@@ -142,7 +142,7 @@
 		SSplants.plant_icon_cache[icon_key] = plant_icon
 	add_overlay(plant_icon)
 
-/obj/item/reagent_containers/food/snacks/grown/Crossed(var/mob/living/M)
+/obj/item/reagent_containers/food/snacks/grown/Crossed(mob/living/M)
 	. = ..()
 	if(M.is_incorporeal())
 		return
@@ -169,7 +169,7 @@
 	if(seed) seed.thrown_at(src,hit_atom)
 	..()
 
-/obj/item/reagent_containers/food/snacks/grown/attackby(var/obj/item/W, var/mob/living/user)
+/obj/item/reagent_containers/food/snacks/grown/attackby(obj/item/W, mob/living/user)
 
 	if(seed)
 		if(seed.get_trait(TRAIT_PRODUCES_POWER) && istype(W, /obj/item/stack/cable_coil))

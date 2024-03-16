@@ -97,7 +97,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	/// forced sort ordering in its category - falls back to name otherwise.
 	var/wiki_sort = 0
 
-/datum/reagent/proc/remove_self(var/amount) // Shortcut
+/datum/reagent/proc/remove_self(amount) // Shortcut
 	if(holder)
 		holder.remove_reagent(id, amount)
 
@@ -114,7 +114,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	return
 
 /// Currently, on_mob_life is called on carbons. Any interaction with non-carbon mobs (lube) will need to be done in touch_mob.
-/datum/reagent/proc/on_mob_life(var/mob/living/carbon/M, var/alien, var/datum/reagents/metabolism/location, speed_mult = 1, force_allow_dead)
+/datum/reagent/proc/on_mob_life(mob/living/carbon/M, alien, datum/reagents/metabolism/location, speed_mult = 1, force_allow_dead)
 	if(!istype(M))
 		return
 	if(!affects_dead && M.stat == DEAD && !force_allow_dead)
@@ -245,7 +245,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 
 // todo: fourth apply method of CHEM_VAPOR implementation?
 
-/datum/reagent/proc/handle_vampire(var/mob/living/carbon/M, var/alien, var/removed, var/is_vampire)
+/datum/reagent/proc/handle_vampire(mob/living/carbon/M, alien, removed, is_vampire)
 	if(blood_content > 0 && is_vampire)
 		#define blud_warn_timer 3000
 		if(blood_content < 4) //Are we drinking real blood or something else?
@@ -256,7 +256,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 				return
 		M.nutrition += removed * blood_content //We should always be able to process real blood.
 
-/datum/reagent/proc/overdose(var/mob/living/carbon/M, var/alien, var/removed) // Overdose effect.
+/datum/reagent/proc/overdose(mob/living/carbon/M, alien, removed) // Overdose effect.
 	if(alien == IS_DIONA)
 		return
 	if(ishuman(M))
@@ -282,13 +282,13 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 
 /* DEPRECATED - TODO: REMOVE EVERYWHERE */
 
-/datum/reagent/proc/reaction_turf(var/turf/target, amt)
+/datum/reagent/proc/reaction_turf(turf/target, amt)
 	touch_turf(target, amt)
 
-/datum/reagent/proc/reaction_obj(var/obj/target, amt)
+/datum/reagent/proc/reaction_obj(obj/target, amt)
 	touch_obj(target, amt)
 
-/datum/reagent/proc/reaction_mob(var/mob/target, amt)
+/datum/reagent/proc/reaction_mob(mob/target, amt)
 	touch_mob(target, amt)
 
 /datum/reagent/proc/on_move(mob/M)

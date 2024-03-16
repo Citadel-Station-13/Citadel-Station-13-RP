@@ -31,7 +31,7 @@
 		visible_message("<span class='warning'>\The [src] sounds an alarm, swinging its hatch open.</span>")
 		go_out()
 
-/obj/machinery/vr_sleeper/alien/attackby(var/obj/item/I, var/mob/user)
+/obj/machinery/vr_sleeper/alien/attackby(obj/item/I, mob/user)
 	add_fingerprint(user)
 
 	if(occupant && (istype(I, /obj/item/healthanalyzer) || istype(I, /obj/item/robotanalyzer)))
@@ -53,7 +53,7 @@
 	go_out(forced)
 	add_fingerprint(usr)
 
-/obj/machinery/vr_sleeper/alien/go_out(var/forced = TRUE)
+/obj/machinery/vr_sleeper/alien/go_out(forced = TRUE)
 	if(!occupant)
 		return
 

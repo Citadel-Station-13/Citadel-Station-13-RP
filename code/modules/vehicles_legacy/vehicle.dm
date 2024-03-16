@@ -121,7 +121,7 @@
 	else
 		..()
 
-/obj/vehicle_old/bullet_act(var/obj/projectile/Proj)
+/obj/vehicle_old/bullet_act(obj/projectile/Proj)
 	health -= Proj.get_structure_damage()
 	..()
 	healthcheck()
@@ -197,7 +197,7 @@
 	set_light(0)
 	update_icon()
 
-/obj/vehicle_old/emag_act(var/remaining_charges, mob/user as mob)
+/obj/vehicle_old/emag_act(remaining_charges, mob/user as mob)
 	if(!mechanical)
 		return FALSE
 
@@ -256,7 +256,7 @@
 		turn_on()
 		return
 
-/obj/vehicle_old/proc/insert_cell(var/obj/item/cell/C, var/mob/living/carbon/human/H)
+/obj/vehicle_old/proc/insert_cell(obj/item/cell/C, mob/living/carbon/human/H)
 	if(!mechanical)
 		return
 	if(cell)
@@ -270,7 +270,7 @@
 	powercheck()
 	to_chat(usr, "<span class='notice'>You install [C] in [src].</span>")
 
-/obj/vehicle_old/proc/remove_cell(var/mob/living/carbon/human/H)
+/obj/vehicle_old/proc/remove_cell(mob/living/carbon/human/H)
 	if(!mechanical)
 		return
 	if(!cell)
@@ -281,7 +281,7 @@
 	cell = null
 	powercheck()
 
-/obj/vehicle_old/proc/RunOver(var/mob/living/M)
+/obj/vehicle_old/proc/RunOver(mob/living/M)
 	return		//write specifics for different vehicles
 
 //-------------------------------------------
@@ -291,7 +291,7 @@
 // the vehicle load() definition before
 // calling this parent proc.
 //-------------------------------------------
-/obj/vehicle_old/proc/load(var/atom/movable/C, var/mob/living/user)
+/obj/vehicle_old/proc/load(atom/movable/C, mob/living/user)
 	//This loads objects onto the vehicle so they can still be interacted with.
 	//Define allowed items for loading in specific vehicle definitions.
 	if(!isturf(C.loc)) //To prevent loading things from someone's inventory, which wouldn't get handled properly.
@@ -324,7 +324,7 @@
 	return 1
 
 
-/obj/vehicle_old/proc/unload(var/mob/user, var/direction)
+/obj/vehicle_old/proc/unload(mob/user, direction)
 	if(!load)
 		return
 
@@ -375,7 +375,7 @@
 /obj/vehicle_old/proc/update_stats()
 	return
 
-/obj/vehicle_old/attack_generic(var/mob/user, var/damage, var/attack_message)
+/obj/vehicle_old/attack_generic(mob/user, damage, attack_message)
 	if(!damage)
 		return
 	visible_message("<span class='danger'>[user] [attack_message] the [src]!</span>")
@@ -387,7 +387,7 @@
 	spawn(1) healthcheck()
 	return 1
 
-/obj/vehicle_old/proc/take_damage_legacy(var/damage)
+/obj/vehicle_old/proc/take_damage_legacy(damage)
 	if(!damage)
 		return
 	src.health -= damage

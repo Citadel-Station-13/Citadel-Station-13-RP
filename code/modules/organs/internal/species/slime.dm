@@ -40,7 +40,7 @@
 			H = owner
 			color = H.species.get_blood_colour(H)
 
-/obj/item/organ/internal/regennetwork/proc/get_strain_percent(var/cost)
+/obj/item/organ/internal/regennetwork/proc/get_strain_percent(cost)
 	adjust_strain(cost)
 
 	if((status & ORGAN_CUT_AWAY) || (status & ORGAN_BROKEN) || (status & ORGAN_DEAD))
@@ -48,7 +48,7 @@
 
 	return round((strain / min_broken_damage) * 10) / 10
 
-/obj/item/organ/internal/regennetwork/proc/adjust_strain(var/amount)
+/obj/item/organ/internal/regennetwork/proc/adjust_strain(amount)
 	if(amount < 0 && world.time < (last_strain_increase + strain_regen_cooldown))
 		return
 

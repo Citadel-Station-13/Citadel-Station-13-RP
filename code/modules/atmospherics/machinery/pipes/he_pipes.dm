@@ -35,7 +35,7 @@
 	return ..() | initialize_directions_he
 
 // Use initialize_directions_he to connect to neighbors instead.
-/obj/machinery/atmospherics/pipe/simple/heat_exchanging/can_be_node(var/obj/machinery/atmospherics/pipe/simple/heat_exchanging/target)
+/obj/machinery/atmospherics/pipe/simple/heat_exchanging/can_be_node(obj/machinery/atmospherics/pipe/simple/heat_exchanging/target)
 	if(!istype(target))
 		return FALSE
 	return (target.initialize_directions_he & get_dir(target,src)) && check_connectable(target) && target.check_connectable(src)

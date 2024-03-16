@@ -93,7 +93,7 @@
 		use_power(power_draw)
 		network?.update = 1
 
-/obj/machinery/atmospherics/component/unary/env_heat_pump/proc/get_thermal_efficiency(var/datum/gas_mixture/air1, var/datum/gas_mixture/air2)
+/obj/machinery/atmospherics/component/unary/env_heat_pump/proc/get_thermal_efficiency(datum/gas_mixture/air1, datum/gas_mixture/air2)
 	if((target_temp < air2.temperature))
 		return clamp((air2.temperature / air1.temperature), 0, 1)
 	else if((target_temp > air2.temperature))

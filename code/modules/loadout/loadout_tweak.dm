@@ -11,10 +11,10 @@
 	if(isnull(id))
 		id = "[src]"
 
-/datum/loadout_tweak/proc/get_contents(var/metadata)
+/datum/loadout_tweak/proc/get_contents(metadata)
 	return
 
-/datum/loadout_tweak/proc/get_metadata(var/user, var/metadata)
+/datum/loadout_tweak/proc/get_metadata(user, metadata)
 	return
 
 /datum/loadout_tweak/proc/get_default()
@@ -36,22 +36,22 @@
 /datum/loadout_tweak/color
 	var/list/valid_colors
 
-/datum/loadout_tweak/color/New(var/list/valid_colors)
+/datum/loadout_tweak/color/New(list/valid_colors)
 	src.valid_colors = valid_colors
 	..()
 
-/datum/loadout_tweak/color/get_contents(var/metadata)
+/datum/loadout_tweak/color/get_contents(metadata)
 	return "Color: <font color='[metadata]'>&#9899;</font>"
 
 /datum/loadout_tweak/color/get_default()
 	return valid_colors ? valid_colors[1] : COLOR_GRAY
 
-/datum/loadout_tweak/color/get_metadata(var/user, var/metadata, var/title = "Character Preference")
+/datum/loadout_tweak/color/get_metadata(user, metadata, title = "Character Preference")
 	if(valid_colors)
 		return input(user, "Choose a color.", title, metadata) as null|anything in valid_colors
 	return input(user, "Choose a color.", title, metadata) as color|null
 
-/datum/loadout_tweak/color/tweak_item(var/obj/item/I, var/metadata)
+/datum/loadout_tweak/color/tweak_item(obj/item/I, metadata)
 	if(valid_colors && !(metadata in valid_colors))
 		return
 	if(!metadata || (metadata == "#ffffff"))
@@ -68,17 +68,17 @@
 /datum/loadout_tweak/path
 	var/list/valid_paths
 
-/datum/loadout_tweak/path/New(var/list/valid_paths)
+/datum/loadout_tweak/path/New(list/valid_paths)
 	src.valid_paths = valid_paths
 	..()
 
-/datum/loadout_tweak/path/get_contents(var/metadata)
+/datum/loadout_tweak/path/get_contents(metadata)
 	return "Type: [metadata]"
 
 /datum/loadout_tweak/path/get_default()
 	return valid_paths[1]
 
-/datum/loadout_tweak/path/get_metadata(var/user, var/metadata)
+/datum/loadout_tweak/path/get_metadata(user, metadata)
 	return input(user, "Choose a type.", "Character Preference", metadata) as null|anything in valid_paths
 
 /datum/loadout_tweak/path/tweak_spawn_path(path, data)
@@ -97,7 +97,7 @@
 	valid_contents = args.Copy()
 	..()
 
-/datum/loadout_tweak/contents/get_contents(var/metadata)
+/datum/loadout_tweak/contents/get_contents(metadata)
 	return "Contents: [english_list(metadata, and_text = ", ")]"
 
 /datum/loadout_tweak/contents/get_default()
@@ -105,7 +105,7 @@
 	for(var/i = 1 to valid_contents.len)
 		. += "Random"
 
-/datum/loadout_tweak/contents/get_metadata(var/user, var/list/metadata)
+/datum/loadout_tweak/contents/get_metadata(user, list/metadata)
 	. = list()
 	for(var/i = metadata.len to valid_contents.len)
 		metadata += "Random"
@@ -116,7 +116,7 @@
 		else
 			return metadata
 
-/datum/loadout_tweak/contents/tweak_item(var/obj/item/I, var/list/metadata)
+/datum/loadout_tweak/contents/tweak_item(obj/item/I, list/metadata)
 	if(metadata.len != valid_contents.len)
 		return
 	for(var/i = 1 to valid_contents.len)
@@ -138,22 +138,22 @@
 /datum/loadout_tweak/reagents
 	var/list/valid_reagents
 
-/datum/loadout_tweak/reagents/New(var/list/reagents)
+/datum/loadout_tweak/reagents/New(list/reagents)
 	valid_reagents = reagents.Copy()
 	..()
 
-/datum/loadout_tweak/reagents/get_contents(var/metadata)
+/datum/loadout_tweak/reagents/get_contents(metadata)
 	return "Reagents: [metadata]"
 
 /datum/loadout_tweak/reagents/get_default()
 	return "Random"
 
-/datum/loadout_tweak/reagents/get_metadata(var/user, var/list/metadata)
+/datum/loadout_tweak/reagents/get_metadata(user, list/metadata)
 	. = input(user, "Choose an entry.", "Character Preference", metadata) as null|anything in (valid_reagents + list("Random", "None"))
 	if(!.)
 		return metadata
 
-/datum/loadout_tweak/reagents/tweak_item(var/obj/item/I, var/list/metadata)
+/datum/loadout_tweak/reagents/tweak_item(obj/item/I, list/metadata)
 	if(metadata == "None")
 		return
 	if(metadata == "Random")
@@ -171,7 +171,7 @@
 	var/list/ValidCardSlots = list(null, /obj/item/computer_hardware/card_slot)
 	var/list/ValidTeslaLinks = list(null, /obj/item/computer_hardware/tesla_link)
 
-/datum/loadout_tweak/tablet/get_contents(var/list/metadata)
+/datum/loadout_tweak/tablet/get_contents(list/metadata)
 	var/list/names = list()
 	var/obj/O = ValidProcessors[metadata[1]]
 	if(O)
@@ -196,7 +196,7 @@
 		names += initial(O.name)
 	return "[english_list(names, and_text = ", ")]"
 
-/datum/loadout_tweak/tablet/get_metadata(var/user, var/metadata)
+/datum/loadout_tweak/tablet/get_metadata(user, metadata)
 	. = list()
 
 	var/list/names = list()
@@ -286,7 +286,7 @@
 /datum/loadout_tweak/tablet/get_default()
 	return list(1, 1, 1, 1, 1, 1, 1)
 
-/datum/loadout_tweak/tablet/tweak_item(var/obj/item/modular_computer/tablet/I, var/list/metadata)
+/datum/loadout_tweak/tablet/tweak_item(obj/item/modular_computer/tablet/I, list/metadata)
 	if(ValidProcessors[metadata[1]])
 		var/t = ValidProcessors[metadata[1]]
 		I.processor_unit = new t(I)
@@ -320,7 +320,7 @@
 	var/list/ValidCardSlots = list(null, /obj/item/computer_hardware/card_slot)
 	var/list/ValidTeslaLinks = list(null, /obj/item/computer_hardware/tesla_link)
 
-/datum/loadout_tweak/laptop/get_contents(var/list/metadata)
+/datum/loadout_tweak/laptop/get_contents(list/metadata)
 	var/list/names = list()
 	var/obj/O = ValidProcessors[metadata[1]]
 	if(O)
@@ -345,7 +345,7 @@
 		names += initial(O.name)
 	return "[english_list(names, and_text = ", ")]"
 
-/datum/loadout_tweak/laptop/get_metadata(var/user, var/metadata)
+/datum/loadout_tweak/laptop/get_metadata(user, metadata)
 	. = list()
 
 	var/list/names = list()
@@ -435,7 +435,7 @@
 /datum/loadout_tweak/laptop/get_default()
 	return list(1, 1, 1, 1, 1, 1, 1)
 
-/datum/loadout_tweak/laptop/tweak_item(var/obj/item/modular_computer/laptop/preset/I, var/list/metadata)
+/datum/loadout_tweak/laptop/tweak_item(obj/item/modular_computer/laptop/preset/I, list/metadata)
 	if(ValidProcessors[metadata[1]])
 		var/t = ValidProcessors[metadata[1]]
 		I.processor_unit = new t(I)
@@ -460,16 +460,16 @@
 		I.tesla_link = new t(I)
 	I.update_verbs()
 
-/datum/loadout_tweak/collar_tag/get_contents(var/metadata)
+/datum/loadout_tweak/collar_tag/get_contents(metadata)
 	return "Tag: [metadata]"
 
 /datum/loadout_tweak/collar_tag/get_default()
 	return ""
 
-/datum/loadout_tweak/collar_tag/get_metadata(var/user, var/metadata)
+/datum/loadout_tweak/collar_tag/get_metadata(user, metadata)
 	return sanitize( input(user, "Choose the tag text", "Character Preference", metadata) as text , MAX_NAME_LEN )
 
-/datum/loadout_tweak/collar_tag/tweak_item(var/obj/item/clothing/accessory/collar/C, var/metadata)
+/datum/loadout_tweak/collar_tag/tweak_item(obj/item/clothing/accessory/collar/C, metadata)
 	if(metadata == "")
 		return ..()
 	else

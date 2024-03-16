@@ -83,7 +83,7 @@
 		living_mob_list |= owner
 		owner.visible_message("<span class='danger'>\The [owner] twitches visibly!</span>")
 
-/obj/item/organ/internal/mmi_holder/removed(var/mob/living/user)
+/obj/item/organ/internal/mmi_holder/removed(mob/living/user)
 
 	if(stored_mmi)
 		. = stored_mmi

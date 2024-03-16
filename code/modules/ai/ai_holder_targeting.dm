@@ -37,7 +37,7 @@
 	. = typecache_filter_list_reverse(., ignore)
 
 // Step 2, filter down possible targets to things we actually care about.
-/datum/ai_holder/proc/find_target(var/list/possible_targets, var/has_targets_list = FALSE)
+/datum/ai_holder/proc/find_target(list/possible_targets, has_targets_list = FALSE)
 	if(!hostile) // So retaliating mobs only attack the thing that hit it.
 		return null
 	. = list()
@@ -274,5 +274,5 @@
 	ai_log("lose_taunt() : Resetting preferred_target.", AI_LOG_INFO)
 	preferred_target = null
 
-/datum/ai_holder/proc/check_attacker(var/atom/movable/A)
+/datum/ai_holder/proc/check_attacker(atom/movable/A)
 	return (A in attackers)

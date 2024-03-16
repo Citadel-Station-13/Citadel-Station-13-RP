@@ -34,14 +34,14 @@
 		QDEL_NULL(sparks)
 	. = ..()
 
-/obj/vehicle_old/skateboard/load(var/atom/movable/C, var/mob/user as mob)
+/obj/vehicle_old/skateboard/load(atom/movable/C, mob/user as mob)
 	var/mob/living/M = C
 	if(!istype(C)) return 0
 	if(M.buckled || M.restrained() || !Adjacent(M) || !M.Adjacent(src))
 		return 0
 	return ..(M, user)
 
-/obj/vehicle_old/skateboard/MouseDroppedOnLegacy(var/atom/movable/C, var/mob/user as mob)
+/obj/vehicle_old/skateboard/MouseDroppedOnLegacy(atom/movable/C, mob/user as mob)
 	if(!load(C, user))
 		to_chat(user, "<span class='warning'> You were unable to load \the [C] onto \the [src].</span>")
 		return CLICKCHAIN_DO_NOT_PROPAGATE
@@ -61,7 +61,7 @@
 		return 0
 	return 0
 
-/obj/vehicle_old/skateboard/Move(var/turf/destination, var/mob/living/H)
+/obj/vehicle_old/skateboard/Move(turf/destination, mob/living/H)
 	if(istype(destination,/turf/space) || istype (destination,/turf/simulated/floor/water) || istype(destination,/turf/simulated/floor/outdoors))
 		rough_terrain = TRUE
 		return 1
@@ -276,7 +276,7 @@
 	else
 		return ..()
 
-/obj/vehicle_old/skateboard/hoverboard/Move(var/turf/destination, var/mob/living/H)
+/obj/vehicle_old/skateboard/hoverboard/Move(turf/destination, mob/living/H)
 	if(istype(destination,/turf/space) || istype (destination,/turf/simulated/floor/water) || istype(destination,/turf/simulated/floor/outdoors))
 		rough_terrain = FALSE
 		return 0
@@ -367,7 +367,7 @@
 
 //Basic Board Construction
 
-/obj/item/skateboard_frame/attackby(var/obj/item/W as obj, var/mob/user)
+/obj/item/skateboard_frame/attackby(obj/item/W as obj, mob/user)
 	..()
 
 	switch(build_step)
@@ -425,7 +425,7 @@
 
 //Pro Board
 
-/obj/item/heavy_skateboard_frame/attackby(var/obj/item/W as obj, var/mob/user)
+/obj/item/heavy_skateboard_frame/attackby(obj/item/W as obj, mob/user)
 	..()
 
 	switch(build_step)
@@ -526,7 +526,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	var/build_step = 0
 
-/obj/item/scooter_frame/attackby(var/obj/item/W as obj, var/mob/user)
+/obj/item/scooter_frame/attackby(obj/item/W as obj, mob/user)
 	..()
 
 	switch(build_step)

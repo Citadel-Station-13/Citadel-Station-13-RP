@@ -5,7 +5,7 @@
 	real_name = "host brain"
 	universal_understand = 1
 
-/mob/living/captive_brain/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
+/mob/living/captive_brain/say(message, datum/language/speaking = null, verb="says", alt_name="", whispering = 0)
 
 	if (src.client)
 		if(client.prefs.muted & MUTE_IC)
@@ -31,7 +31,7 @@
 			else if(M.stat == DEAD && M.is_preference_enabled(/datum/client_preference/ghost_ears))
 				to_chat(M, "The captive mind of [src] whispers, \"[message]\"")
 
-/mob/living/captive_brain/emote(var/message)
+/mob/living/captive_brain/emote(message)
 	return
 
 /mob/living/captive_brain/process_resist()

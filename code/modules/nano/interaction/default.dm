@@ -1,15 +1,15 @@
 /var/global/datum/topic_state/default/default_state = new()
 
-/datum/topic_state/default/href_list(var/mob/user)
+/datum/topic_state/default/href_list(mob/user)
 	return list()
 
-/datum/topic_state/default/can_use_topic(var/src_object, var/mob/user)
+/datum/topic_state/default/can_use_topic(src_object, mob/user)
 	return user.nano_default_can_use_topic(src_object)
 
-/mob/proc/nano_default_can_use_topic(var/src_object)
+/mob/proc/nano_default_can_use_topic(src_object)
 	return UI_CLOSE // By default no mob can do anything with NanoUI
 
-/mob/observer/dead/nano_default_can_use_topic(var/src_object)
+/mob/observer/dead/nano_default_can_use_topic(src_object)
 	if(can_admin_interact())
 		return UI_INTERACTIVE							// Admins are more equal
 	if(!client)
@@ -19,13 +19,13 @@
 		return UI_CLOSE
 	return UI_UPDATE									// Ghosts can view updates
 
-/mob/living/silicon/pai/nano_default_can_use_topic(var/src_object)
+/mob/living/silicon/pai/nano_default_can_use_topic(src_object)
 	if((src_object == src || src_object == radio || src_object == communicator) && !stat)
 		return UI_INTERACTIVE
 	else
 		return ..()
 
-/mob/living/silicon/robot/nano_default_can_use_topic(var/src_object)
+/mob/living/silicon/robot/nano_default_can_use_topic(src_object)
 	. = shared_nano_interaction()
 	if(. <= UI_DISABLED)
 		return
@@ -35,7 +35,7 @@
 		return UI_INTERACTIVE	// interactive (green visibility)
 	return UI_DISABLED			// no updates, completely disabled (red visibility)
 
-/mob/living/silicon/ai/nano_default_can_use_topic(var/src_object)
+/mob/living/silicon/ai/nano_default_can_use_topic(src_object)
 	. = shared_nano_interaction()
 	if(. != UI_INTERACTIVE)
 		return
@@ -62,10 +62,10 @@
 	return UI_CLOSE
 
 //Some atoms such as vehicles might have special rules for how mobs inside them interact with NanoUI.
-/atom/proc/contents_nano_distance(var/src_object, var/mob/living/user)
+/atom/proc/contents_nano_distance(src_object, mob/living/user)
 	return user.shared_living_nano_distance(src_object)
 
-/mob/living/proc/shared_living_nano_distance(var/atom/movable/src_object)
+/mob/living/proc/shared_living_nano_distance(atom/movable/src_object)
 	if (!(src_object in view(4, src))) 	// If the src object is not in visable, disable updates
 		return UI_CLOSE
 
@@ -78,7 +78,7 @@
 		return UI_DISABLED 		// no updates, completely disabled (red visibility)
 	return UI_CLOSE
 
-/mob/living/nano_default_can_use_topic(var/src_object)
+/mob/living/nano_default_can_use_topic(src_object)
 	. = shared_nano_interaction(src_object)
 	if(. != UI_CLOSE)
 		if(loc)
@@ -88,7 +88,7 @@
 		return UI_UPDATE
 */
 
-/mob/living/carbon/human/nano_default_can_use_topic(var/src_object)
+/mob/living/carbon/human/nano_default_can_use_topic(src_object)
 	. = shared_nano_interaction(src_object)
 	if(. != UI_CLOSE)
 		. = min(., shared_living_nano_distance(src_object))

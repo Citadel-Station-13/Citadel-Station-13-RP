@@ -121,7 +121,7 @@
 
 	..()
 
-/obj/item/telecube/proc/pair_cube(var/obj/item/telecube/M)
+/obj/item/telecube/proc/pair_cube(obj/item/telecube/M)
 	if(mate)
 		return 0
 	else
@@ -129,7 +129,7 @@
 		update_icon()
 		return 1
 
-/obj/item/telecube/proc/teleport_to_mate(var/atom/movable/A, var/areaporting = FALSE)
+/obj/item/telecube/proc/teleport_to_mate(atom/movable/A, areaporting = FALSE)
 	. = FALSE
 
 	if(!A)

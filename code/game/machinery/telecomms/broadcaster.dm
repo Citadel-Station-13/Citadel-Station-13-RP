@@ -29,7 +29,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 	//Linked bluespace radios
 	var/list/linked_radios_weakrefs = list()
 
-/obj/machinery/telecomms/broadcaster/proc/link_radio(var/obj/item/radio/R)
+/obj/machinery/telecomms/broadcaster/proc/link_radio(obj/item/radio/R)
 	if(!istype(R))
 		return
 	linked_radios_weakrefs |= WEAKREF(R)
@@ -375,7 +375,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 
 	return 1
 
-/proc/Broadcast_SimpleMessage(var/source, var/frequency, list/message, var/data, var/mob/M, var/compression, var/level, var/list/forced_radios)
+/proc/Broadcast_SimpleMessage(source, frequency, list/message, data, mob/M, compression, level, list/forced_radios)
 	var/text = message
   /* ###### Prepare the radio connection ###### */
 
@@ -559,7 +559,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 	var/pos_z = get_z(src)
 	return (pos_z in signal.data["level"] && signal.data["done"])
 
-/atom/proc/telecomms_process(var/do_sleep = 1)
+/atom/proc/telecomms_process(do_sleep = 1)
 
 	// First, we want to generate a new radio signal
 	var/datum/signal/signal = new

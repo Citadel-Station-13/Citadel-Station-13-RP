@@ -71,7 +71,7 @@
 			if(prob(50))
 				AttemptGrow()
 
-/obj/item/alien_embryo/proc/AttemptGrow(var/gib_on_success = 1)
+/obj/item/alien_embryo/proc/AttemptGrow(gib_on_success = 1)
 	var/list/candidates = get_alien_candidates()
 	var/picked = null
 
@@ -125,7 +125,7 @@ Des: Removes all infection images from aliens and places an infection image on a
 Proc: AddInfectionImages(C)
 Des: Checks if the passed mob (C) is infected with the alien egg, then gives each alien client an infected image at C.
 ----------------------------------------*/
-/obj/item/alien_embryo/proc/AddInfectionImages(var/mob/living/C)
+/obj/item/alien_embryo/proc/AddInfectionImages(mob/living/C)
 	if(C)
 
 		for(var/mob/living/carbon/alien in GLOB.player_list)
@@ -143,7 +143,7 @@ Proc: RemoveInfectionImage(C)
 Des: Removes the alien infection image from all aliens in the world located in passed mob (C).
 ----------------------------------------*/
 
-/obj/item/alien_embryo/proc/RemoveInfectionImages(var/mob/living/C)
+/obj/item/alien_embryo/proc/RemoveInfectionImages(mob/living/C)
 
 	if(C)
 

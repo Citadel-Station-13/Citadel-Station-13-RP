@@ -749,7 +749,7 @@ var/list/admin_verbs_event_manager = list(
 	log_admin("[key_name(usr)] gave [key_name(T)] a [greater] disease2 with infection chance [D.infectionchance].")
 	message_admins("<font color=#4F49AF>[key_name_admin(usr)] gave [key_name(T)] a [greater] disease2 with infection chance [D.infectionchance].</font>", 1)
 
-/client/proc/admin_give_modifier(var/mob/living/L)
+/client/proc/admin_give_modifier(mob/living/L)
 	set category = "Debug"
 	set name = "Give Modifier"
 	set desc = "Makes a mob weaker or stronger by adding a specific modifier to them."
@@ -773,7 +773,7 @@ var/list/admin_verbs_event_manager = list(
 	L.add_modifier(new_modifier_type, duration)
 	log_and_message_admins("has given [key_name(L)] the modifer [new_modifier_type], with a duration of [duration ? "[duration / 600] minutes" : "forever"].")
 
-/client/proc/make_sound(var/obj/O in world) // -- TLE
+/client/proc/make_sound(obj/O in world) // -- TLE
 	set category = "Special Verbs"
 	set name = "Make Sound"
 	set desc = "Display a message to everyone who can hear the target"
@@ -795,7 +795,7 @@ var/list/admin_verbs_event_manager = list(
 		togglebuildmode(src.mob)
 	feedback_add_details("admin_verb","TBMS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/object_talk(var/msg as text) // -- TLE
+/client/proc/object_talk(msg as text) // -- TLE
 	set category = "Special Verbs"
 	set name = "oSay"
 	set desc = "Display a message to everyone who can hear the target"

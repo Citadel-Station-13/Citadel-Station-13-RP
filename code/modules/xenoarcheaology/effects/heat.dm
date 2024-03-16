@@ -9,7 +9,7 @@
 	effect_type = pick(EFFECT_ORGANIC, EFFECT_BLUESPACE, EFFECT_SYNTH)
 	target_temp = rand(300, 600)
 
-/datum/artifact_effect/heat/DoEffectTouch(var/mob/user)
+/datum/artifact_effect/heat/DoEffectTouch(mob/user)
 	if(holder)
 		to_chat(user, "<font color='red'> You feel a wave of heat travel up your spine!</font>")
 		var/datum/gas_mixture/env = holder.loc.return_air()

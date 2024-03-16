@@ -33,7 +33,7 @@
 	var/list/butchery_loot
 
 /// Harvest an animal's delicious byproducts
-/mob/living/proc/harvest(var/mob/user, var/obj/item/I)
+/mob/living/proc/harvest(mob/user, obj/item/I)
 	if(meat_type && meat_amount>0 && (stat == DEAD))
 		while(meat_amount > 0 && do_after(user, 0.5 SECONDS * (mob_size / 10), src))
 			var/obj/item/meat = new meat_type(get_turf(src))
@@ -45,13 +45,13 @@
 		handle_butcher(user, I)
 
 /// Override for special butchering checks.
-/mob/living/proc/can_butcher(var/mob/user, var/obj/item/I)
+/mob/living/proc/can_butcher(mob/user, obj/item/I)
 	if(((meat_type && meat_amount) || LAZYLEN(butchery_loot)) && stat == DEAD)
 		return TRUE
 
 	return FALSE
 
-/mob/living/proc/handle_butcher(var/mob/user, var/obj/item/I)
+/mob/living/proc/handle_butcher(mob/user, obj/item/I)
 	if(!user || do_after(user, 2 SECONDS * mob_size / 10, src))
 		if(LAZYLEN(butchery_loot))
 			if(LAZYLEN(butchery_loot))

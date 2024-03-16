@@ -472,6 +472,6 @@
 	. = ..()
 	update_icon()
 
-/obj/item/storage/fancy/heartbox/update_icon(var/itemremoved = 0)
+/obj/item/storage/fancy/heartbox/update_icon(itemremoved = 0)
 	if (contents.len == 0)
 		icon_state = "heartbox_empty"

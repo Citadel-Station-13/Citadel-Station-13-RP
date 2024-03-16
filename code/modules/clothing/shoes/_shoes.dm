@@ -72,7 +72,7 @@
 		return
 	..()
 
-/obj/item/clothing/shoes/attackby(var/obj/item/I, var/mob/user)
+/obj/item/clothing/shoes/attackby(obj/item/I, mob/user)
 	if((can_hold_knife == 1) && (istype(I, /obj/item/material/shard) || \
 	 istype(I, /obj/item/material/butterfly) || \
 	 istype(I, /obj/item/material/kitchen/utensil) || \

@@ -11,7 +11,7 @@
 	var/sound_out = 'sound/effects/holster/holsterout.ogg'
 	var/holster_verb = "holster"
 
-/obj/item/clothing/accessory/holster/proc/holster(var/obj/item/I, var/mob/living/user)
+/obj/item/clothing/accessory/holster/proc/holster(obj/item/I, mob/living/user)
 	if(holstered && istype(user))
 		to_chat(user, "<span class='warning'>There is already \a [holstered] holstered here!</span>")
 		return

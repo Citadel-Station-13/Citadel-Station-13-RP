@@ -142,7 +142,7 @@ GLOBAL_LIST_EMPTY(fancy_shuttles)
 /obj/effect/floor_decal/fancy_shuttle/make_decal_image()
 	return image(icon = icon, icon_state = icon_state, layer = FLOOR_DECAL_LAYER)
 
-/obj/effect/floor_decal/fancy_shuttle/get_cache_key(var/turf/T)
+/obj/effect/floor_decal/fancy_shuttle/get_cache_key(turf/T)
 	return "[alpha]-[color]-[dir]-[icon_state]-[T.layer]-[icon_file]"
 
 /**

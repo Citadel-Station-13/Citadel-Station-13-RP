@@ -251,7 +251,7 @@ var/list/civilian_cartridges = list(
 	remote_door_id = "smindicate"	// Make sure this matches the syndicate shuttle's shield/door id!!	// Don't ask about the name, testing.
 	charges = 4
 
-/obj/item/cartridge/proc/post_status(var/command, var/data1, var/data2)
+/obj/item/cartridge/proc/post_status(command, data1, data2)
 
 	var/datum/radio_frequency/frequency = radio_controller.return_frequency(1435)
 	if(!frequency) return

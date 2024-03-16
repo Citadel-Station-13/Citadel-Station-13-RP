@@ -164,7 +164,7 @@
 		else
 	return
 
-/obj/machinery/vending/emag_act(var/remaining_charges, var/mob/user)
+/obj/machinery/vending/emag_act(remaining_charges, mob/user)
 	if(!emagged)
 		emagged = 1
 		to_chat(user, "You short out \the [src]'s product lock.")
@@ -268,7 +268,7 @@
  *
  *  Called after the money has already been taken from the customer.
  */
-/obj/machinery/vending/proc/credit_purchase(var/target as text)
+/obj/machinery/vending/proc/credit_purchase(target as text)
 	GLOB.vendor_account.money += currently_vending.price
 
 	var/datum/transaction/T = new()
@@ -299,7 +299,7 @@
  *
  *  See NanoUI documentation for details.
  */
-/obj/machinery/vending/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/vending/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)
 	user.set_machine(src)
 
 	var/list/data = list()
@@ -454,7 +454,7 @@
 
 	return 1
 
-/obj/machinery/vending/proc/do_logging(datum/stored_item/vending_product/R, mob/user, var/vending = 0)
+/obj/machinery/vending/proc/do_logging(datum/stored_item/vending_product/R, mob/user, vending = 0)
 	if(user.GetIdCard())
 		var/obj/item/card/id/tempid = user.GetIdCard()
 		var/list/list_item = list()
@@ -497,7 +497,7 @@
  * Checks if item is vendable in this machine should be performed before
  * calling. W is the item being inserted, R is the associated vending_product entry.
  */
-/obj/machinery/vending/proc/stock(obj/item/W, var/datum/stored_item/vending_product/R, var/mob/user)
+/obj/machinery/vending/proc/stock(obj/item/W, datum/stored_item/vending_product/R, mob/user)
 	if(!user.attempt_insert_item_for_installation(W, src))
 		return
 

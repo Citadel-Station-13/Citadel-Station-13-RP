@@ -113,7 +113,7 @@
 	desc = "Your bones and robot limbs are easier to break."
 	cost = -2 //I feel like this should be higher, but let's see where it goes
 
-/datum/trait/negative/hollow/apply(var/datum/species/S,var/mob/living/carbon/human/H)
+/datum/trait/negative/hollow/apply(datum/species/S,mob/living/carbon/human/H)
 	..(S,H)
 	for(var/obj/item/organ/external/O in H.organs)
 		O.min_broken_damage *= 0.75
@@ -124,7 +124,7 @@
 	desc = "Your bones and robot limbs are significantly easier to break."
 	cost = -4 //I feel like this should be higher, but let's see where it goes
 
-/datum/trait/negative/hollow_plus/apply(var/datum/species/S,var/mob/living/carbon/human/H)
+/datum/trait/negative/hollow_plus/apply(datum/species/S,mob/living/carbon/human/H)
 	..(S,H)
 	for(var/obj/item/organ/external/O in H.organs)
 		O.min_broken_damage *= 0.5
@@ -142,7 +142,7 @@
 	cost = -1
 	custom_only = FALSE
 
-/datum/trait/negative/colorblind/mono/apply(var/datum/species/S,var/mob/living/carbon/human/H)
+/datum/trait/negative/colorblind/mono/apply(datum/species/S,mob/living/carbon/human/H)
 	..(S,H)
 	H.add_modifier(/datum/modifier/trait/colorblind_monochrome)
 
@@ -151,7 +151,7 @@
 	desc = "You have a severe issue with green colors and have difficulty recognizing them from red colors."
 	cost = -1
 
-/datum/trait/negative/colorblind/para_vulp/apply(var/datum/species/S,var/mob/living/carbon/human/H)
+/datum/trait/negative/colorblind/para_vulp/apply(datum/species/S,mob/living/carbon/human/H)
 	..(S,H)
 	H.add_modifier(/datum/modifier/trait/colorblind_vulp)
 
@@ -160,7 +160,7 @@
 	desc = "You have a minor issue with blue colors and have difficulty recognizing them from red colors."
 	cost = -1
 
-/datum/trait/negative/colorblind/para_taj/apply(var/datum/species/S,var/mob/living/carbon/human/H)
+/datum/trait/negative/colorblind/para_taj/apply(datum/species/S,mob/living/carbon/human/H)
 	..(S,H)
 	H.add_modifier(/datum/modifier/trait/colorblind_taj)
 

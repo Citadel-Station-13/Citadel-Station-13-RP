@@ -68,7 +68,7 @@
 		return
 	laser_act(target, user)
 
-/obj/item/laser_pointer/proc/laser_act(var/atom/target, var/mob/living/user)
+/obj/item/laser_pointer/proc/laser_act(atom/target, mob/living/user)
 	if(!(user in (viewers(world.view,target))))
 		return
 	if(!(target in view(user, world.view)))

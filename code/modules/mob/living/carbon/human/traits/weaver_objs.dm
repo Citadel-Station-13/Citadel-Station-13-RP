@@ -15,14 +15,14 @@ var/global/list/weavable_items = list()
 	qdel(src)
 	return
 
-/obj/effect/weaversilk/attackby(var/obj/item/W, var/mob/user)
+/obj/effect/weaversilk/attackby(obj/item/W, mob/user)
 	user.setClickCooldown(user.get_attack_speed(W))
 
 	if(W.damage_force)
 		visible_message("<span class='warning'>\The [src] has been [W.get_attack_verb(src, user)] with \the [W][(user ? " by [user]." : ".")]</span>")
 		qdel(src)
 
-/obj/effect/weaversilk/bullet_act(var/obj/projectile/Proj)
+/obj/effect/weaversilk/bullet_act(obj/projectile/Proj)
 	..()
 	if(Proj.get_structure_damage())
 		qdel(src)
@@ -30,7 +30,7 @@ var/global/list/weavable_items = list()
 /obj/effect/weaversilk/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 	qdel(src)
 
-/obj/effect/weaversilk/attack_generic(mob/user as mob, var/damage)
+/obj/effect/weaversilk/attack_generic(mob/user as mob, damage)
 	if(damage)
 		qdel(src)
 

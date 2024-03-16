@@ -142,7 +142,7 @@
 		target.afflict_paralyze(20 * 20)
 		target.stuttering = 20
 
-/proc/fake_autosave(var/mob/living/target, var/duration, var/client/user, var/wide)
+/proc/fake_autosave(mob/living/target, duration, client/user, wide)
 	if(!istype(target) || !target.client)
 		to_chat(user, "<span class='warning'>Skipping [target] because they are not a /mob/living or have no client.</span>")
 		return

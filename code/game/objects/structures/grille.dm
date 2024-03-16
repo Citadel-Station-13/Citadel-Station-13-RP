@@ -42,7 +42,7 @@
 		return TRUE
 	return ..()
 
-/obj/structure/grille/bullet_act(var/obj/projectile/Proj)
+/obj/structure/grille/bullet_act(obj/projectile/Proj)
 	//Flimsy grilles aren't so great at stopping projectiles. However they can absorb some of the impact
 	var/damage = Proj.get_structure_damage()
 	var/passthrough = 0

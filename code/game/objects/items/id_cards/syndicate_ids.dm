@@ -45,7 +45,7 @@
 	else
 		..()
 
-/obj/item/card/id/syndicate/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/item/card/id/syndicate/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)
 	var/data[0]
 	var/entries[0]
 	entries[++entries.len] = list("name" = "Age", 				"value" = age)
@@ -67,7 +67,7 @@
 		ui.set_initial_data(data)
 		ui.open()
 
-/obj/item/card/id/syndicate/proc/register_user(var/mob/user)
+/obj/item/card/id/syndicate/proc/register_user(mob/user)
 	if(!istype(user) || user == registered_user)
 		return FALSE
 	unset_registered_user()
@@ -76,7 +76,7 @@
 	user.register(OBSERVER_EVENT_DESTROY, src, TYPE_PROC_REF(/obj/item/card/id/syndicate, unset_registered_user))
 	return TRUE
 
-/obj/item/card/id/syndicate/proc/unset_registered_user(var/mob/user)
+/obj/item/card/id/syndicate/proc/unset_registered_user(mob/user)
 	if(!registered_user || (user && user != registered_user))
 		return
 	registered_user.unregister(OBSERVER_EVENT_DESTROY, src)
@@ -87,7 +87,7 @@
 		return UI_CLOSE
 	return ..()
 
-/obj/item/card/id/syndicate/Topic(href, href_list, var/datum/topic_state/state)
+/obj/item/card/id/syndicate/Topic(href, href_list, datum/topic_state/state)
 	if(..())
 		return 1
 

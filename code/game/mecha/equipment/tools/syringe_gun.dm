@@ -265,7 +265,7 @@
 /datum/global_iterator/mech_synth
 	delay = 100
 
-/datum/global_iterator/mech_synth/process(var/obj/item/mecha_parts/mecha_equipment/tool/syringe_gun/S)
+/datum/global_iterator/mech_synth/process(obj/item/mecha_parts/mecha_equipment/tool/syringe_gun/S)
 	if(!S.chassis)
 		return stop()
 	var/energy_drain = S.energy_drain*10
@@ -390,7 +390,7 @@
 	else
 		shut_down()
 
-/obj/item/mecha_parts/mecha_equipment/crisis_drone/proc/valid_target(var/mob/living/L)
+/obj/item/mecha_parts/mecha_equipment/crisis_drone/proc/valid_target(mob/living/L)
 	. = TRUE
 
 	if(!L || !istype(L))
@@ -436,10 +436,10 @@
 	if(MyBeam)
 		QDEL_NULL(MyBeam)
 
-/obj/item/mecha_parts/mecha_equipment/crisis_drone/proc/unique_patient_checks(var/mob/living/L)	// Anything special for subtypes. Does it only work on Robots? Fleshies? A species?
+/obj/item/mecha_parts/mecha_equipment/crisis_drone/proc/unique_patient_checks(mob/living/L)	// Anything special for subtypes. Does it only work on Robots? Fleshies? A species?
 	. = TRUE
 
-/obj/item/mecha_parts/mecha_equipment/crisis_drone/proc/heal_target(var/mob/living/L)	// We've done all our special checks, just get to fixing damage.
+/obj/item/mecha_parts/mecha_equipment/crisis_drone/proc/heal_target(mob/living/L)	// We've done all our special checks, just get to fixing damage.
 	chassis.use_power(energy_drain)
 	if(istype(L))
 		L.adjustBruteLoss(brute_heal * -1)

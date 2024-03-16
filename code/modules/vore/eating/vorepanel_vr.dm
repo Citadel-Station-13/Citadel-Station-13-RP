@@ -54,7 +54,7 @@
 		popup.set_content(gen_ui(usr))
 		usr << output(popup.get_content(), "insidePanel.browser")
 
-/datum/vore_look/proc/gen_ui(var/mob/living/user)
+/datum/vore_look/proc/gen_ui(mob/living/user)
 	var/dat
 
 	var/atom/userloc = user.loc

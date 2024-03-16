@@ -8,14 +8,14 @@ var/datum/antagonist/mutineer/mutineers
 	antag_indicator = "mutineer"
 	restricted_jobs = list("Facility Director")
 
-/datum/antagonist/mutineer/New(var/no_reference)
+/datum/antagonist/mutineer/New(no_reference)
 	..()
 	if(!no_reference)
 		mutineers = src
 
 /datum/antagonist/mutineer/proc/recruit()
 
-/datum/antagonist/mutineer/can_become_antag(var/datum/mind/player)
+/datum/antagonist/mutineer/can_become_antag(datum/mind/player)
 	if(!..())
 		return 0
 	if(!istype(player.current, /mob/living/carbon/human))

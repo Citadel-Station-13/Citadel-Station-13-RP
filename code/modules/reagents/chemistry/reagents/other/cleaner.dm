@@ -7,7 +7,7 @@
 	color = "#A5F0EE"
 	touch_met = 50
 
-/datum/reagent/space_cleaner/touch_obj(var/obj/O, amount)
+/datum/reagent/space_cleaner/touch_obj(obj/O, amount)
 	O.clean_blood()
 	O.clean_radiation(RAD_CONTAMINATION_CLEANSE_POWER * (amount / 10), RAD_CONTAMINATION_CLEANSE_FACTOR ** (1 / (amount / 10)))
 

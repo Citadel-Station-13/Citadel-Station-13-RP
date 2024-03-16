@@ -77,7 +77,7 @@
 	if(old_stat != machine_stat)
 		update_icon()
 
-/obj/machinery/atmospherics/component/quaternary/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/machinery/atmospherics/component/quaternary/attackby(obj/item/W as obj, mob/user as mob)
 	if(!W.is_wrench())
 		return ..()
 
@@ -165,7 +165,7 @@
 
 	update_icon()
 
-/obj/machinery/atmospherics/component/quaternary/proc/select_port_icons(var/datum/omni_port/P)
+/obj/machinery/atmospherics/component/quaternary/proc/select_port_icons(datum/omni_port/P)
 	if(!istype(P))
 		return
 
@@ -205,7 +205,7 @@
 		P.update = 1
 	update_ports()
 
-/obj/machinery/atmospherics/component/quaternary/hide(var/i)
+/obj/machinery/atmospherics/component/quaternary/hide(i)
 	update_underlays()
 
 /obj/machinery/atmospherics/component/quaternary/proc/update_ports()

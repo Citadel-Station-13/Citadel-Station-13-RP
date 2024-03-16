@@ -85,15 +85,15 @@ var/global/list/xenoChemList = list("mutationtoxin",
 	var/list/chems = list()
 	var/source = "unknown"
 	
-/datum/xeno/traits/proc/set_trait(var/trait, var/newval)
+/datum/xeno/traits/proc/set_trait(trait, newval)
 	traits["[trait]"] = newval
 	return
 	
-/datum/xeno/traits/proc/get_trait(var/trait)
+/datum/xeno/traits/proc/get_trait(trait)
 	var/val = traits["[trait]"]
 	return val
 	
-/datum/xeno/traits/proc/copy_traits(var/datum/xeno/traits/target)
+/datum/xeno/traits/proc/copy_traits(datum/xeno/traits/target)
 	target.traits = traits
 	target.chemlist = chemlist
 	target.chems = chems
@@ -123,7 +123,7 @@ var/global/list/xenoChemList = list("mutationtoxin",
 	set_trait(TRAIT_XENO_STRENGTH, 0)
 	set_trait(TRAIT_XENO_STR_RANGE, 0)
 	
-/datum/xeno/traits/proc/get_gene(var/genetype)
+/datum/xeno/traits/proc/get_gene(genetype)
 	
 	if(!genetype) return 0
 	
@@ -168,7 +168,7 @@ var/global/list/xenoChemList = list("mutationtoxin",
 			
 	return G
 			
-/datum/xeno/traits/proc/apply_gene(var/datum/xeno/genes/genes)
+/datum/xeno/traits/proc/apply_gene(datum/xeno/genes/genes)
 	if(!genes.genetype) return 0
 	
 	switch(genes.genetype)

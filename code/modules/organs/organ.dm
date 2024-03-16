@@ -250,7 +250,7 @@
 /obj/item/organ/proc/on_revive()
 	return
 
-/obj/item/organ/proc/adjust_germ_level(var/amount)		// Unless you're setting germ level directly to 0, use this proc instead
+/obj/item/organ/proc/adjust_germ_level(amount)		// Unless you're setting germ level directly to 0, use this proc instead
 	germ_level = clamp(germ_level + amount, 0, INFECTION_LEVEL_MAX)
 
 /obj/item/organ/examine(mob/user, dist)
@@ -264,7 +264,7 @@
 /obj/item/organ/proc/remove_rejuv()
 	qdel(src)
 
-/obj/item/organ/proc/rejuvenate_legacy(var/ignore_prosthetic_prefs)
+/obj/item/organ/proc/rejuvenate_legacy(ignore_prosthetic_prefs)
 	damage = 0
 	status = 0
 	germ_level = 0
@@ -287,7 +287,7 @@
 	return (damage >= min_broken_damage || (status & ORGAN_CUT_AWAY) || (status & ORGAN_BROKEN))
 
 ///Adds autopsy data for used_weapon.
-/obj/item/organ/proc/add_autopsy_data(var/used_weapon, var/damage)
+/obj/item/organ/proc/add_autopsy_data(used_weapon, damage)
 	var/datum/autopsy_data/W = autopsy_data[used_weapon]
 	if(!W)
 		W = new()
@@ -299,7 +299,7 @@
 	W.time_inflicted = world.time
 
 //Note: external organs have their own version of this proc
-/obj/item/organ/proc/take_damage(amount, var/silent=0)
+/obj/item/organ/proc/take_damage(amount, silent=0)
 	ASSERT(amount >= 0)
 	if(src.robotic >= ORGAN_ROBOT)
 		src.damage = between(0, src.damage + (amount * 0.8), max_damage)
@@ -334,7 +334,7 @@
 /obj/item/organ/proc/digitize()
 	robotize()
 
-/obj/item/organ/proc/removed(var/mob/living/user)
+/obj/item/organ/proc/removed(mob/living/user)
 	if(owner)
 		owner.internal_organs_by_name[organ_tag] = null
 		owner.internal_organs_by_name -= organ_tag
@@ -363,7 +363,7 @@
 	owner = null
 	reconsider_processing()
 
-/obj/item/organ/proc/replaced(var/mob/living/carbon/human/target,var/obj/item/organ/external/affected)
+/obj/item/organ/proc/replaced(mob/living/carbon/human/target,obj/item/organ/external/affected)
 
 	if(!istype(target)) return
 
@@ -673,7 +673,7 @@
 
 	return ..()
 
-/obj/item/organ/proc/can_butcher(var/obj/item/O, var/mob/living/user)
+/obj/item/organ/proc/can_butcher(obj/item/O, mob/living/user)
 	if(butcherable && meat_type)
 
 		if(istype(O, /obj/machinery/gibber))	// The great equalizer.
@@ -689,7 +689,7 @@
 
 	return FALSE
 
-/obj/item/organ/proc/butcher(var/obj/item/O, var/mob/living/user, var/atom/newtarget)
+/obj/item/organ/proc/butcher(obj/item/O, mob/living/user, atom/newtarget)
 	if(robotic >= ORGAN_ROBOT)
 		user?.visible_message(SPAN_NOTICE("[user] disassembles \the [src]."))
 
@@ -718,7 +718,7 @@
 		return FALSE
 	return 1
 
-/obj/item/organ/proc/handle_organ_mod_special(var/removed = FALSE)	// Called when created, transplanted, and removed.
+/obj/item/organ/proc/handle_organ_mod_special(removed = FALSE)	// Called when created, transplanted, and removed.
 	// todo: better way
 	if(owner)
 		rad_flags |= RAD_NO_CONTAMINATE

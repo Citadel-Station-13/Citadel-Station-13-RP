@@ -48,7 +48,7 @@
 		add_underlay(T, node1, turn(dir, 180))
 		add_underlay(T, node2, dir)
 
-/obj/machinery/atmospherics/component/binary/passive_gate/hide(var/i)
+/obj/machinery/atmospherics/component/binary/passive_gate/hide(i)
 	update_underlays()
 
 /obj/machinery/atmospherics/component/binary/passive_gate/process(delta_time)
@@ -241,7 +241,7 @@
 
 	update_icon()
 
-/obj/machinery/atmospherics/component/binary/passive_gate/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/machinery/atmospherics/component/binary/passive_gate/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/pen))
 		var/new_name = input(user, "Please enter the new name for this device:", "New Name")  as text|null
 		new_name = trim(new_name)

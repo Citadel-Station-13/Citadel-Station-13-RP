@@ -44,7 +44,7 @@
 	attack_self(H)
 	return
 
-/obj/item/teleportation_scroll/proc/teleportscroll(var/mob/user)
+/obj/item/teleportation_scroll/proc/teleportscroll(mob/user)
 
 	var/A
 

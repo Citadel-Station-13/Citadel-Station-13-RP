@@ -124,7 +124,7 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 		return
 	nano_ui_interact(user)
 
-/obj/machinery/requests_console/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/requests_console/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)
 	var/data[0]
 
 	data["department"] = department
@@ -232,7 +232,7 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 	return
 
 					//err... hacking code, which has no reason for existing... but anyway... it was once supposed to unlock priority 3 messaging on that console (EXTREME priority...), but the code for that was removed.
-/obj/machinery/requests_console/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/machinery/requests_console/attackby(obj/item/O as obj, mob/user as mob)
 	if(computer_deconstruction_screwdriver(user, O))
 		return
 	if(istype(O, /obj/item/multitool))
@@ -277,7 +277,7 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 			updateUsrDialog()
 	return
 
-/obj/machinery/requests_console/proc/reset_message(var/mainmenu = 0)
+/obj/machinery/requests_console/proc/reset_message(mainmenu = 0)
 	message = ""
 	recipient = ""
 	priority = 0

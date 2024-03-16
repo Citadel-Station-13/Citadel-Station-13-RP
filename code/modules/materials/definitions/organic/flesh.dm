@@ -26,13 +26,13 @@
 	absorption = MATERIAL_RESISTANCE_LOW
 	nullification = MATERIAL_RESISTANCE_NONE
 
-/datum/material/flesh/can_open_material_door(var/mob/living/user)
+/datum/material/flesh/can_open_material_door(mob/living/user)
 	var/mob/living/carbon/M = user
 	if(istype(M))
 		return 1
 	return 0
 
-/datum/material/flesh/wall_touch_special(var/turf/simulated/wall/W, var/mob/living/L)
+/datum/material/flesh/wall_touch_special(turf/simulated/wall/W, mob/living/L)
 	var/mob/living/carbon/M = L
 	if(istype(M) && L.mind.isholy)
 		to_chat(M, "<span class = 'notice'>\The [W] shudders under your touch, starting to become porous.</span>")

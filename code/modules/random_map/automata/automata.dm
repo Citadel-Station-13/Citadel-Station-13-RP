@@ -20,9 +20,9 @@
 /datum/random_map/autoamta/seed_map()
 	return	// nah
 
-/datum/random_map/automata/get_additional_spawns(var/value, var/turf/T)
+/datum/random_map/automata/get_additional_spawns(value, turf/T)
 	return
 
 // Check if a given tile counts as alive for the automata generations.
-/datum/random_map/automata/proc/cell_is_alive(var/value)
+/datum/random_map/automata/proc/cell_is_alive(value)
 	return (value == cell_live_value) && (value != cell_dead_value)

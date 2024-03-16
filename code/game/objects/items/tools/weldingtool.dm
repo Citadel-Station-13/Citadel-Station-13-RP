@@ -182,7 +182,7 @@
 	remove_fuel(round(cost * time * TOOL_WELDING_FUEL_PER_DS))
 
 //Removes fuel from the welding tool. If a mob is passed, it will perform an eyecheck on the mob. This should probably be renamed to use()
-/obj/item/weldingtool/proc/remove_fuel(var/amount = 1, var/mob/M = null)
+/obj/item/weldingtool/proc/remove_fuel(amount = 1, mob/M = null)
 	if(!welding)
 		return 0
 	if(amount)
@@ -238,7 +238,7 @@
 
 //Sets the welding state of the welding tool. If you see W.welding = 1 anywhere, please change it to W.setWelding(1)
 //so that the welding tool updates accordingly
-/obj/item/weldingtool/proc/setWelding(var/set_welding, var/mob/M)
+/obj/item/weldingtool/proc/setWelding(set_welding, mob/M)
 	if(!status)	return
 
 	var/turf/T = get_turf(src)
@@ -628,7 +628,7 @@
 		return power_supply.maxcharge
 	return 0
 
-/obj/item/weldingtool/electric/remove_fuel(var/amount = 1, var/mob/M = null)
+/obj/item/weldingtool/electric/remove_fuel(amount = 1, mob/M = null)
 	if(!welding)
 		return 0
 	if(get_fuel() >= amount)
@@ -739,7 +739,7 @@
 	tool_speed = 0.2
 	use_external_power = 1
 
-/obj/item/weldingtool/electric/crystal/attackby(var/obj/item/W, var/mob/user)
+/obj/item/weldingtool/electric/crystal/attackby(obj/item/W, mob/user)
 	return
 
 /obj/item/weldingtool/electric/crystal/update_icon()
@@ -750,7 +750,7 @@
 		M.update_inv_l_hand()
 		M.update_inv_r_hand()
 
-/obj/item/weldingtool/electric/crystal/attack_self(var/mob/living/carbon/human/user)
+/obj/item/weldingtool/electric/crystal/attack_self(mob/living/carbon/human/user)
 	if(user.species.name == SPECIES_ADHERENT)
 		if(user.nutrition >= 40)
 			setWelding(!welding, user)
@@ -773,7 +773,7 @@
 /obj/item/weldingtool/electric/crystal/get_max_fuel()
 	return get_fuel()
 
-/obj/item/weldingtool/electric/crystal/remove_fuel(var/amount = 1, var/mob/M = null)
+/obj/item/weldingtool/electric/crystal/remove_fuel(amount = 1, mob/M = null)
 	if(ishuman(src.loc))
 		var/mob/living/carbon/human/R = src.loc
 		if(R.species.name == SPECIES_ADHERENT)

@@ -23,7 +23,7 @@
 
 // The code block below handles the syringes' infection chance among storing a hash of the first user targeted on it.
 //
-/obj/item/reagent_containers/syringe/proc/dirty(var/mob/living/carbon/human/target, var/obj/item/organ/external/eo)
+/obj/item/reagent_containers/syringe/proc/dirty(mob/living/carbon/human/target, obj/item/organ/external/eo)
 	if(!ishuman(loc))
 		return //Avoid borg syringe problems.
 	LAZYINITLIST(targets)
@@ -62,7 +62,7 @@
 	if(!used)
 		START_PROCESSING(SSobj, src)
 
-/obj/item/reagent_containers/syringe/proc/infect_limb(var/obj/item/organ/external/eo)
+/obj/item/reagent_containers/syringe/proc/infect_limb(obj/item/organ/external/eo)
 	eo.queue_syringe_infection()
 
 //Allow for capped syringe mode

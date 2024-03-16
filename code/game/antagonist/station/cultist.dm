@@ -1,6 +1,6 @@
 var/datum/antagonist/cultist/cult
 
-/proc/iscultist(var/mob/player)
+/proc/iscultist(mob/player)
 	if(!cult || !player.mind)
 		return 0
 	if(player.mind in cult.current_antagonists)
@@ -57,7 +57,7 @@ var/datum/antagonist/cultist/cult
 	sacrifice_target = sacrifice.target
 	global_objectives |= sacrifice
 
-/datum/antagonist/cultist/equip(var/mob/living/carbon/human/player)
+/datum/antagonist/cultist/equip(mob/living/carbon/human/player)
 	if(!..())
 		return 0
 
@@ -71,12 +71,12 @@ var/datum/antagonist/cultist/cult
 	if(!player.force_equip_to_slot_or_del(T, /datum/inventory_slot_meta/abstract/put_in_storage, INV_OP_SILENT))
 		to_chat(player, SPAN_WARNING("Failed to equip you with a talismen. Ahelp."))
 
-/datum/antagonist/cultist/greet(var/datum/mind/player)
+/datum/antagonist/cultist/greet(datum/mind/player)
 	if(!..())
 		return 0
 	grant_runeword(player.current)
 
-/datum/antagonist/cultist/proc/grant_runeword(mob/living/carbon/human/cult_mob, var/word)
+/datum/antagonist/cultist/proc/grant_runeword(mob/living/carbon/human/cult_mob, word)
 
 	if (!word)
 		if(startwords.len > 0)
@@ -93,7 +93,7 @@ var/datum/antagonist/cultist/cult
 	to_chat(cult_mob, "<span class='warning'>You remember one thing from the dark teachings of your master... [wordexp]</span>")
 	cult_mob.mind.store_memory("You remember that <B>[wordexp]</B>", 0, 0)
 
-/datum/antagonist/cultist/remove_antagonist(var/datum/mind/player, var/show_message, var/implanted)
+/datum/antagonist/cultist/remove_antagonist(datum/mind/player, show_message, implanted)
 	if(!..())
 		return 0
 	to_chat(player.current, "<span class='danger'>An unfamiliar white light flashes through your mind, cleansing the taint of the dark-one and the memories of your time as his servant with it.</span>")
@@ -101,19 +101,19 @@ var/datum/antagonist/cultist/cult
 	if(show_message)
 		player.current.visible_message("<FONT size = 3>[player.current] looks like they just reverted to their old faith!</FONT>")
 
-/datum/antagonist/cultist/add_antagonist(var/datum/mind/player)
+/datum/antagonist/cultist/add_antagonist(datum/mind/player)
 	. = ..()
 	if(.)
 		to_chat(player, "You catch a glimpse of the Realm of Nar-Sie, the Geometer of Blood. You now see how flimsy the world is, you see that it should be open to the knowledge of That Which Waits. Assist your new compatriots in their dark dealings. Their goals are yours, and yours are theirs. You serve the Dark One above all else. Bring It back.")
 		if(player.current && !istype(player.current, /mob/living/simple_mob/construct))
 			player.current.add_language(LANGUAGE_CULT)
 
-/datum/antagonist/cultist/remove_antagonist(var/datum/mind/player, var/show_message, var/implanted)
+/datum/antagonist/cultist/remove_antagonist(datum/mind/player, show_message, implanted)
 	. = ..()
 	if(. && player.current && !istype(player.current, /mob/living/simple_mob/construct))
 		player.current.remove_language(LANGUAGE_CULT)
 
-/datum/antagonist/cultist/can_become_antag(var/datum/mind/player)
+/datum/antagonist/cultist/can_become_antag(datum/mind/player)
 	if(!..())
 		return 0
 	for(var/obj/item/implant/loyalty/L in player.current)

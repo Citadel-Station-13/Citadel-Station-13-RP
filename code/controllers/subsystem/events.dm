@@ -63,7 +63,7 @@ SUBSYSTEM_DEF(events)
 	if(SSevents.finished_events)
 		finished_events |= SSevents.finished_events
 
-/datum/controller/subsystem/events/proc/event_complete(var/datum/event/E)
+/datum/controller/subsystem/events/proc/event_complete(datum/event/E)
 	active_events -= E
 
 	if(!E.event_meta || !E.severity)	// datum/event is used here and there for random reasons, maintaining "backwards compatibility"
@@ -80,7 +80,7 @@ SUBSYSTEM_DEF(events)
 
 	log_debug(SPAN_DEBUG("Event '[EM.name]' has completed at [worldtime2stationtime(world.time)]."))
 
-/datum/controller/subsystem/events/proc/delay_events(var/severity, var/delay)
+/datum/controller/subsystem/events/proc/delay_events(severity, delay)
 	var/datum/event_container/EC = event_containers[severity]
 	EC.next_event_time += delay
 

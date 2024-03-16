@@ -42,7 +42,7 @@
 			for(var/obj/effect/energy_field/F in T)
 				F.update_icon()
 
-/obj/effect/energy_field/legacy_ex_act(var/severity)
+/obj/effect/energy_field/legacy_ex_act(severity)
 	adjust_strength(-(4 - severity) * 4)
 
 /obj/effect/energy_field/attackby(obj/item/W, mob/user)
@@ -70,7 +70,7 @@
 	..(A)
 	impact_effect(2)
 
-/obj/effect/energy_field/handle_meteor_impact(var/obj/effect/meteor/meteor)
+/obj/effect/energy_field/handle_meteor_impact(obj/effect/meteor/meteor)
 	var/penetrated = TRUE
 	adjust_strength(-max((meteor.wall_power * meteor.hits) / 800, 0)) // One renwick (strength var) equals one r-wall for the purposes of meteor-stopping.
 	sleep(1)
@@ -134,7 +134,7 @@
 	add_overlay(overlays_to_add)
 
 // Small visual effect, makes the shield tiles brighten up by becoming more opaque for a moment, and spreads to nearby shields.
-/obj/effect/energy_field/proc/impact_effect(var/i, var/list/affected_shields = list())
+/obj/effect/energy_field/proc/impact_effect(i, list/affected_shields = list())
 	i = between(1, i, 10)
 	alpha = 200
 	animate(src, alpha = initial(alpha), time = 1 SECOND)

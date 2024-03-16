@@ -59,7 +59,7 @@
 	item_icons = null
 	w_class = WEIGHT_CLASS_SMALL
 
-/obj/item/holder/bird/sync(var/mob/living/simple_mob/SM)
+/obj/item/holder/bird/sync(mob/living/simple_mob/SM)
 	..()
 	icon_state = SM.icon_rest // Looks better if the bird isn't flapping constantly in the UI.
 

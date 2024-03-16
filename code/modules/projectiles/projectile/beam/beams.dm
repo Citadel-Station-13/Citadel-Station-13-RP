@@ -127,7 +127,7 @@
 	tracer_type = /obj/effect/projectile/tracer/laser_pulse
 	impact_type = /obj/effect/projectile/impact/laser_pulse
 
-/obj/projectile/beam/pulse/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/beam/pulse/on_hit(atom/target, blocked = 0)
 	if(isturf(target))
 		LEGACY_EX_ACT(target, 2, null)
 	..()
@@ -166,7 +166,7 @@
 	tracer_type = /obj/effect/projectile/tracer/laser_blue
 	impact_type = /obj/effect/projectile/impact/laser_blue
 
-/obj/projectile/beam/lasertag/blue/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/beam/lasertag/blue/on_hit(atom/target, blocked = 0)
 	if(ishuman(target))
 		var/mob/living/carbon/human/M = target
 		if(istype(M.wear_suit, /obj/item/clothing/suit/redtag))
@@ -177,7 +177,7 @@
 	icon_state = "laser"
 	light_color = "#FF0D00"
 
-/obj/projectile/beam/lasertag/red/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/beam/lasertag/red/on_hit(atom/target, blocked = 0)
 	if(ishuman(target))
 		var/mob/living/carbon/human/M = target
 		if(istype(M.wear_suit, /obj/item/clothing/suit/bluetag))
@@ -192,7 +192,7 @@
 	tracer_type = /obj/effect/projectile/tracer/laser_omni
 	impact_type = /obj/effect/projectile/impact/laser_omni
 
-/obj/projectile/beam/lasertag/omni/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/beam/lasertag/omni/on_hit(atom/target, blocked = 0)
 	if(ishuman(target))
 		var/mob/living/carbon/human/M = target
 		if((istype(M.wear_suit, /obj/item/clothing/suit/bluetag))||(istype(M.wear_suit, /obj/item/clothing/suit/redtag)))

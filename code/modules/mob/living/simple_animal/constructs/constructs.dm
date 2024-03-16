@@ -74,7 +74,7 @@
 				"bio" = 100,
 				"rad" = 100)
 
-/mob/living/simple_animal/construct/place_spell_in_hand(var/path)
+/mob/living/simple_animal/construct/place_spell_in_hand(path)
 	if(!path || !ispath(path))
 		return 0
 
@@ -136,7 +136,7 @@
 	ghostize()
 	qdel(src)
 
-/mob/living/simple_animal/construct/attack_generic(var/mob/user)
+/mob/living/simple_animal/construct/attack_generic(mob/user)
 	if(istype(user, /mob/living/simple_animal/construct/builder))
 		var/mob/living/simple_animal/construct/builder/B = user
 		if(health < getMaxHealth())
@@ -210,7 +210,7 @@
 	weakened = 0
 	..()
 
-/mob/living/simple_animal/construct/armoured/bullet_act(var/obj/projectile/P)
+/mob/living/simple_animal/construct/armoured/bullet_act(obj/projectile/P)
 //	if(istype(P, /obj/projectile/energy) || istype(P, /obj/projectile/beam)) //If it's going to be slow, it's probably going to need every reflect it can get.
 	var/reflectchance = 80 - round(P.damage/3)
 	if(prob(reflectchance))
@@ -282,7 +282,7 @@
 							/spell/targeted/ambush_mode
 							)
 
-/mob/living/simple_animal/construct/wraith/DoPunch(var/atom/A)
+/mob/living/simple_animal/construct/wraith/DoPunch(atom/A)
 	. = ..()
 	if(. && isliving(A))
 		var/mob/living/L = A
@@ -364,7 +364,7 @@
 							/spell/targeted/construct_advanced/slam
 							)
 
-/mob/living/simple_animal/construct/behemoth/bullet_act(var/obj/projectile/P)
+/mob/living/simple_animal/construct/behemoth/bullet_act(obj/projectile/P)
 	var/reflectchance = 80 - round(P.damage/3)
 	if(prob(reflectchance))
 		visible_message("<span class='danger'>The [P.name] gets reflected by [src]'s shell!</span>", \

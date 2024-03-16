@@ -88,7 +88,7 @@
 	return (ui_interact(user) || nano_ui_interact(user))
 	// return FALSE
 
-/mob/living/carbon/human/RestrainedClickOn(var/atom/A)
+/mob/living/carbon/human/RestrainedClickOn(atom/A)
 	return
 
 /mob/living/carbon/human/RangedAttack(atom/A)
@@ -113,7 +113,7 @@
 	else if(spitting) //Only used by xenos right now, can be expanded.
 		Spit(A)
 
-/mob/living/RestrainedClickOn(var/atom/A)
+/mob/living/RestrainedClickOn(atom/A)
 	return
 
 /*
@@ -129,7 +129,7 @@
 	Aliens
 */
 
-/mob/living/carbon/alien/RestrainedClickOn(var/atom/A)
+/mob/living/carbon/alien/RestrainedClickOn(atom/A)
 	return
 
 /mob/living/carbon/alien/UnarmedAttack(atom/A)

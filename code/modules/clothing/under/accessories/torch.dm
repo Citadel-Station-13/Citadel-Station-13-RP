@@ -221,7 +221,7 @@ badges
 		set_name(H.real_name)
 		set_desc(H)
 
-/obj/item/clothing/accessory/badge/oricon/tags/set_desc(var/mob/living/carbon/human/H)
+/obj/item/clothing/accessory/badge/oricon/tags/set_desc(mob/living/carbon/human/H)
 	if(!istype(H))
 		return
 	var/religion = "Unset"

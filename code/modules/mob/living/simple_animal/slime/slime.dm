@@ -373,7 +373,7 @@
 		to_chat(src, "<span class='notice'>I am not old enough to reproduce yet...</span>")
 
 // Used for reproducing and dying.
-/mob/living/simple_animal/slime/proc/make_new_slime(var/desired_type)
+/mob/living/simple_animal/slime/proc/make_new_slime(desired_type)
 	var/t = src.type
 	if(desired_type)
 		t = desired_type
@@ -406,12 +406,12 @@
 	return "slime"
 
 // Called after they finish eatting someone.
-/mob/living/simple_animal/slime/proc/befriend(var/mob/living/friend)
+/mob/living/simple_animal/slime/proc/befriend(mob/living/friend)
 	if(!(friend in friends))
 		friends |= friend
 		say("[friend]... friend...")
 
-/mob/living/simple_animal/slime/proc/can_command(var/mob/living/commander)
+/mob/living/simple_animal/slime/proc/can_command(mob/living/commander)
 	if(rabid)
 		return FALSE
 	if(docile)
@@ -424,7 +424,7 @@
 		return SLIME_COMMAND_OBEY
 	return FALSE
 
-/mob/living/simple_animal/slime/proc/give_hat(var/obj/item/clothing/head/new_hat, var/mob/living/user)
+/mob/living/simple_animal/slime/proc/give_hat(obj/item/clothing/head/new_hat, mob/living/user)
 	if(!istype(new_hat))
 		to_chat(user, "<span class='warning'>\The [new_hat] isn't a hat.</span>")
 		return
@@ -439,7 +439,7 @@
 		update_icon()
 		return
 
-/mob/living/simple_animal/slime/proc/remove_hat(var/mob/living/user)
+/mob/living/simple_animal/slime/proc/remove_hat(mob/living/user)
 	if(!hat)
 		to_chat(user, "<span class='warning'>\The [src] doesn't have a hat to remove.</span>")
 	else

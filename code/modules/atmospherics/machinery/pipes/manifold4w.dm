@@ -69,7 +69,7 @@
 
 	..()
 
-/obj/machinery/atmospherics/pipe/manifold4w/change_color(var/new_color)
+/obj/machinery/atmospherics/pipe/manifold4w/change_color(new_color)
 	..()
 	//for updating connected atmos device pipes (i.e. vents, manifolds, etc)
 	if(node1)

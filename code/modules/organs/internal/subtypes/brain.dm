@@ -30,7 +30,7 @@
 /obj/item/organ/internal/brain/proc/can_assist()
 	return can_assist
 
-/obj/item/organ/internal/brain/proc/implant_assist(var/targ_icon_state = null)
+/obj/item/organ/internal/brain/proc/implant_assist(targ_icon_state = null)
 	name = "[owner.real_name]'s assisted [initial(name)]"
 	if(targ_icon_state)
 		icon_state = targ_icon_state
@@ -74,7 +74,7 @@
 	if(brainmob && brainmob.client)
 		brainmob.client.screen.len = null //clear the hud
 
-/obj/item/organ/internal/brain/proc/transfer_identity(var/mob/living/carbon/H)
+/obj/item/organ/internal/brain/proc/transfer_identity(mob/living/carbon/H)
 
 	if(!brainmob)
 		brainmob = new(src)
@@ -105,7 +105,7 @@
 	else
 		. += "This one seems particularly lifeless. Perhaps it will regain some of its luster later..."
 
-/obj/item/organ/internal/brain/removed(var/mob/living/user)
+/obj/item/organ/internal/brain/removed(mob/living/user)
 
 	if(name == initial(name))
 		name = "\the [owner.real_name]'s [initial(name)]"
@@ -122,7 +122,7 @@
 
 	..()
 
-/obj/item/organ/internal/brain/replaced(var/mob/living/target)
+/obj/item/organ/internal/brain/replaced(mob/living/target)
 
 	if(target.key)
 		target.ghostize()

@@ -24,7 +24,7 @@
 	addtimer(CALLBACK(dropped, TYPE_PROC_REF(/atom/movable, end_fall)), 7)
 	return INITIALIZE_HINT_QDEL
 
-/atom/movable/proc/end_fall(var/crushing = FALSE)
+/atom/movable/proc/end_fall(crushing = FALSE)
 	if(crushing)
 		for(var/atom/movable/AM in loc)
 			if(AM != src)

@@ -19,7 +19,7 @@ var/datum/antagonist/deathsquad/mercenary/commandos
 	..(1)
 	commandos = src
 
-/datum/antagonist/deathsquad/mercenary/equip(var/mob/living/carbon/human/player)
+/datum/antagonist/deathsquad/mercenary/equip(mob/living/carbon/human/player)
 
 	player.equip_to_slot_or_del(new /obj/item/clothing/under/syndicate(player), SLOT_ID_UNIFORM)
 	player.equip_to_slot_or_del(new /obj/item/gun/ballistic/silenced(player), SLOT_ID_BELT)

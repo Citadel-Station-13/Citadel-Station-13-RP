@@ -313,7 +313,7 @@
 	update_icon()
 	..(severity)
 
-/obj/machinery/power/thermoregulator/overload(var/obj/machinery/power/source)
+/obj/machinery/power/thermoregulator/overload(obj/machinery/power/source)
 	if(!anchored || !powernet)
 		return
 	// 1.5 MW

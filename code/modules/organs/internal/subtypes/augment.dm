@@ -126,7 +126,7 @@
 		radial_state = icon_state
 	my_radial_icon = image(icon = radial_icon, icon_state = radial_state)
 
-/obj/item/organ/internal/augment/handle_organ_mod_special(var/removed = FALSE)
+/obj/item/organ/internal/augment/handle_organ_mod_special(removed = FALSE)
 	if(removed && integrated_object && integrated_object.loc != src)
 		integrated_object.forceMove(src)
 	..(removed)
@@ -203,7 +203,7 @@
  * destroy_on_drop is the default value for the object to be deleted if it is removed from their person, if equipping is a path, however, this will be set to TRUE,
  * cling_to_organ is a reference to the organ object itself, so they can easily return to their organ when removed by any means.
  */
-/mob/living/carbon/human/proc/equip_augment_item(var/slot, var/obj/item/equipping = null, var/make_sound = TRUE, var/destroy_on_drop = FALSE, var/obj/item/organ/cling_to_organ = null)
+/mob/living/carbon/human/proc/equip_augment_item(slot, obj/item/equipping = null, make_sound = TRUE, destroy_on_drop = FALSE, obj/item/organ/cling_to_organ = null)
 	if(!ishuman(src))
 		return FALSE
 

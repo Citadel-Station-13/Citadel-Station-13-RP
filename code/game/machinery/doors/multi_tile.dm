@@ -76,7 +76,7 @@
 	window_color = GLASS_COLOR
 	fill_file = 'icons/obj/doors/double/fill_glass.dmi'
 
-/obj/machinery/door/airlock/multi_tile/set_opacity(var/new_opacity)
+/obj/machinery/door/airlock/multi_tile/set_opacity(new_opacity)
 	filler1.set_opacity(new_opacity)
 	filler2.set_opacity(new_opacity)
 

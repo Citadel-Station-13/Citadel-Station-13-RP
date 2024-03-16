@@ -35,12 +35,12 @@
 
 #warn impl above
 
-/datum/category_item/player_setup_item/skills/load_character(var/savefile/S)
+/datum/category_item/player_setup_item/skills/load_character(savefile/S)
 	S["skills"]					>> pref.skills
 	S["used_skillpoints"]		>> pref.used_skillpoints
 	S["skill_specialization"]	>> pref.skill_specialization
 
-/datum/category_item/player_setup_item/skills/save_character(var/savefile/S)
+/datum/category_item/player_setup_item/skills/save_character(savefile/S)
 	S["skills"]					<< pref.skills
 	S["used_skillpoints"]		<< pref.used_skillpoints
 	S["skill_specialization"]	<< pref.skill_specialization
@@ -86,7 +86,7 @@
 	. += "</table>"
 	. = jointext(.,null)
 
-/datum/category_item/player_setup_item/proc/skill_to_button(var/skill, var/level_name, var/current_level, var/selection_level)
+/datum/category_item/player_setup_item/proc/skill_to_button(skill, level_name, current_level, selection_level)
 	if(current_level == selection_level)
 		return "<th><span class='linkOn'>[level_name]</span></th>"
 	return "<th><a href='?src=\ref[src];setskill=\ref[skill];newvalue=[selection_level]'>[level_name]</a></th>"

@@ -43,7 +43,7 @@
 	bcell = new/obj/item/cell/device/weapon(src)
 	update_icon()
 
-/obj/item/melee/baton/proc/deductcharge(var/chrgdeductamt)
+/obj/item/melee/baton/proc/deductcharge(chrgdeductamt)
 	if(status)		//Only deducts charge when it's on
 		if(bcell)
 			if(bcell.checked_use(chrgdeductamt))
@@ -52,7 +52,7 @@
 				return 0
 	return null
 
-/obj/item/melee/baton/proc/powercheck(var/chrgdeductamt)
+/obj/item/melee/baton/proc/powercheck(chrgdeductamt)
 	if(bcell)
 		if(bcell.charge < chrgdeductamt)
 			status = FALSE

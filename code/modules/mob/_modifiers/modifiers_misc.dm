@@ -112,7 +112,7 @@ the artifact triggers the rage.
 			var/mob/living/carbon/human/H = holder
 			H.shock_stage = last_shock_stage
 
-/datum/modifier/berserk/can_apply(var/mob/living/L)
+/datum/modifier/berserk/can_apply(mob/living/L)
 	if(L.stat)
 		to_chat(L, "<span class='warning'>You can't be unconscious or dead to berserk.</span>")
 		return FALSE // It would be weird to see a dead body get angry all of a sudden.

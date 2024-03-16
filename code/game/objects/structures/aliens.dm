@@ -372,7 +372,7 @@ Alien plants should do something if theres a lot of poison
 	new /obj/item/clothing/mask/facehugger(src)
 	return
 
-/obj/structure/alien/egg/proc/Burst(var/kill = 1) //drops and kills the hugger if any is remaining
+/obj/structure/alien/egg/proc/Burst(kill = 1) //drops and kills the hugger if any is remaining
 	if(status == GROWN || status == GROWING)
 		var/obj/item/clothing/mask/facehugger/child = GetFacehugger()
 		icon_state = "egg_opened"

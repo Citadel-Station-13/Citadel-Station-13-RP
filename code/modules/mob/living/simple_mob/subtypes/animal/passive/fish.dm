@@ -134,7 +134,7 @@
 				break
 			sleep(3)
 
-/mob/living/simple_mob/animal/passive/fish/koi/poisonous/proc/sting(var/mob/living/M)
+/mob/living/simple_mob/animal/passive/fish/koi/poisonous/proc/sting(mob/living/M)
 	if(!M.reagents)
 		return 0
 	M.reagents.add_reagent("toxin", 2)

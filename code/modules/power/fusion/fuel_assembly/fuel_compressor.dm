@@ -7,12 +7,12 @@
 
 	circuit = /obj/item/circuitboard/fusion_fuel_compressor
 
-/obj/machinery/fusion_fuel_compressor/MouseDroppedOnLegacy(var/atom/movable/target, var/mob/user)
+/obj/machinery/fusion_fuel_compressor/MouseDroppedOnLegacy(atom/movable/target, mob/user)
 	if(user.incapacitated() || !user.Adjacent(src))
 		return
 	return do_special_fuel_compression(target, user)
 
-/obj/machinery/fusion_fuel_compressor/proc/do_special_fuel_compression(var/obj/item/thing, var/mob/user)
+/obj/machinery/fusion_fuel_compressor/proc/do_special_fuel_compression(obj/item/thing, mob/user)
 	if(istype(thing) && thing.reagents && thing.reagents.total_volume && thing.is_open_container())
 		if(thing.reagents.reagent_list.len > 1)
 			to_chat(user, "<span class='warning'>The contents of \the [thing] are impure and cannot be used as fuel.</span>")
@@ -34,7 +34,7 @@
 		return 1
 	return 0
 
-/obj/machinery/fusion_fuel_compressor/attackby(var/obj/item/thing, var/mob/user)
+/obj/machinery/fusion_fuel_compressor/attackby(obj/item/thing, mob/user)
 
 	if(default_deconstruction_screwdriver(user, thing))
 		return

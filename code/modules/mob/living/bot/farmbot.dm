@@ -75,7 +75,7 @@
 		return
 	ui_interact(user)
 
-/mob/living/bot/farmbot/emag_act(var/remaining_charges, var/mob/user)
+/mob/living/bot/farmbot/emag_act(remaining_charges, mob/user)
 	. = ..()
 	if(!emagged)
 		if(user)
@@ -168,7 +168,7 @@
 		calcTargetPath()
 	makeStep(target_path)
 
-/mob/living/bot/farmbot/UnarmedAttack(var/atom/A, var/proximity)
+/mob/living/bot/farmbot/UnarmedAttack(atom/A, proximity)
 	if(!..())
 		return
 
@@ -286,7 +286,7 @@
 	return
 
 
-/mob/living/bot/farmbot/confirmTarget(var/atom/targ)
+/mob/living/bot/farmbot/confirmTarget(atom/targ)
 	if(!..())
 		return 0
 
@@ -342,7 +342,7 @@
 		tank = theTank
 		tank.forceMove(src)
 
-/obj/structure/reagent_dispensers/watertank/attackby(var/obj/item/robot_parts/S, mob/user as mob)
+/obj/structure/reagent_dispensers/watertank/attackby(obj/item/robot_parts/S, mob/user as mob)
 	if ((!istype(S, /obj/item/robot_parts/l_arm)) && (!istype(S, /obj/item/robot_parts/r_arm)))
 		return ..()
 	if(!user.attempt_consume_item_for_construction(S))
@@ -351,7 +351,7 @@
 
 	new /obj/item/farmbot_arm_assembly(loc, src)
 
-/obj/structure/reagent_dispensers/watertank/attackby(var/obj/item/organ/external/S, mob/user as mob)
+/obj/structure/reagent_dispensers/watertank/attackby(obj/item/organ/external/S, mob/user as mob)
 	if ((!istype(S, /obj/item/organ/external/arm)) || S.robotic != ORGAN_ROBOT)
 		return ..()
 	if(!user.attempt_consume_item_for_construction(S))

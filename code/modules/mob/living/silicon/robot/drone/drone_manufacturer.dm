@@ -89,7 +89,7 @@
 	if(!is_spawn_safe)
 		. += "<BR> It seems this fabricator has gone into safety lockdown, maybe you can reset it."
 
-/obj/machinery/drone_fabricator/proc/create_drone(var/client/player)
+/obj/machinery/drone_fabricator/proc/create_drone(client/player)
 
 	if(machine_stat & NOPOWER)
 		return

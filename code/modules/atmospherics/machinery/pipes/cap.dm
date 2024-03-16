@@ -41,7 +41,7 @@
 
 	..()
 
-/obj/machinery/atmospherics/pipe/cap/change_color(var/new_color)
+/obj/machinery/atmospherics/pipe/cap/change_color(new_color)
 	..()
 	//for updating connected atmos device pipes (i.e. vents, manifolds, etc)
 	if(node)

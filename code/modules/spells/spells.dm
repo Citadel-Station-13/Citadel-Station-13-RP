@@ -46,12 +46,12 @@
 	for(var/tab in removing)
 		C.statpanel_tab(removing, TRUE)
 
-/hook/clone/proc/restore_spells(var/mob/H)
+/hook/clone/proc/restore_spells(mob/H)
 	if(H.mind && H.mind.learned_spells)
 		for(var/spell/spell_to_add in H.mind.learned_spells)
 			H.add_spell(spell_to_add)
 
-/mob/proc/add_spell(var/spell/spell_to_add, var/spell_base = "wiz_spell_ready", var/master_type = /atom/movable/screen/movable/spell_master)
+/mob/proc/add_spell(spell/spell_to_add, spell_base = "wiz_spell_ready", master_type = /atom/movable/screen/movable/spell_master)
 	if(!spell_masters)
 		spell_masters = list()
 	if(spell_masters.len)
@@ -77,7 +77,7 @@
 
 	return 1
 
-/mob/proc/remove_spell(var/spell/spell_to_remove)
+/mob/proc/remove_spell(spell/spell_to_remove)
 	if(!spell_to_remove || !istype(spell_to_remove))
 		return
 
@@ -94,7 +94,7 @@
 		spell_master.remove_spell(spell_to_remove)
 	return 1
 
-/mob/proc/silence_spells(var/amount = 0)
+/mob/proc/silence_spells(amount = 0)
 	if(!(amount >= 0))
 		return
 

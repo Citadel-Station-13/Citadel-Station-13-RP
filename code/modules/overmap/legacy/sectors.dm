@@ -156,7 +156,7 @@
 	else
 		generic_waypoints -= landmark
 
-/obj/overmap/entity/visitable/proc/get_waypoints(var/shuttle_name)
+/obj/overmap/entity/visitable/proc/get_waypoints(shuttle_name)
 	. = list()
 	for(var/obj/overmap/entity/visitable/contained in src)
 		. += contained.get_waypoints(shuttle_name)

@@ -34,7 +34,7 @@
 					and important piece of station property, and is expected to follow its Laws."
 
 // Cyborg procs
-/datum/role/job/station/cyborg/equip(var/mob/living/carbon/human/H)
+/datum/role/job/station/cyborg/equip(mob/living/carbon/human/H)
 	if(!H)	return 0
 	return 1
 

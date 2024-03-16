@@ -69,7 +69,7 @@ SUBSYSTEM_DEF(emergencyshuttle)
 					pod.arming_controller.arm()
 
 //begins the launch countdown and sets the amount of time left until launch
-/datum/controller/subsystem/emergencyshuttle/proc/set_launch_countdown(var/seconds)
+/datum/controller/subsystem/emergencyshuttle/proc/set_launch_countdown(seconds)
 	wait_for_launch = 1
 	launch_time = world.time + seconds*10
 

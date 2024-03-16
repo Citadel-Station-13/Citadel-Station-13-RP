@@ -346,7 +346,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	var/list/cartridges_to_send_to = list()
 
 // This is what actually mirrors the message,
-/obj/item/pda/multicaster/new_message(var/sending_unit, var/sender, var/sender_job, var/message)
+/obj/item/pda/multicaster/new_message(sending_unit, sender, sender_job, message)
 	if(sender)
 		var/list/targets = list()
 		for(var/obj/item/pda/pda in GLOB.PDAs)
@@ -357,7 +357,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 				create_message(target, sender, sender_job, message)
 
 // This has so much copypasta,
-/obj/item/pda/multicaster/create_message(var/obj/item/pda/P, var/original_sender, var/original_job, var/t)
+/obj/item/pda/multicaster/create_message(obj/item/pda/P, original_sender, original_job, t)
 	t = sanitize(t, MAX_MESSAGE_LEN, 0)
 	t = replace_characters(t, list("&#34;" = "\""))
 	if (!t || !istype(P))
@@ -499,7 +499,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	return
 
 
-/obj/item/pda/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/item/pda/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)
 	ui_tick++
 	var/datum/nanoui/old_ui = SSnanoui.get_open_ui(user, src, "main")
 	var/auto_update = 1
@@ -1001,7 +1001,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	if(new_message || new_news)
 		add_overlay(image(icon, "pda-r"))
 
-/obj/item/pda/proc/detonate_act(var/obj/item/pda/P)
+/obj/item/pda/proc/detonate_act(obj/item/pda/P)
 	//TODO: sometimes these attacks show up on the message server
 	var/i = rand(1,100)
 	var/j = rand(0,1) //Possibility of losing the PDA after the detonation
@@ -1088,7 +1088,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	else
 		to_chat(usr, "<span class='notice'>This PDA does not have a pen in it.</span>")
 
-/obj/item/pda/proc/create_message(var/mob/living/U = usr, var/obj/item/pda/P, var/tap = 1)
+/obj/item/pda/proc/create_message(mob/living/U = usr, obj/item/pda/P, tap = 1)
 	if(tap)
 		U.visible_message("<span class='notice'>\The [U] taps on their PDA's screen.</span>")
 	var/t = input(U, "Please enter message", P.name, null) as text
@@ -1157,7 +1157,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	else
 		to_chat(U, "<span class='notice'>ERROR: Messaging server is not responding.</span>")
 
-/obj/item/pda/proc/new_info(var/beep_silent, var/message_tone, var/reception_message)
+/obj/item/pda/proc/new_info(beep_silent, message_tone, reception_message)
 	if (!beep_silent)
 		playsound(loc, 'sound/machines/twobeep.ogg', 50, 1)
 		for (var/mob/O in hearers(2, loc))
@@ -1175,22 +1175,22 @@ GLOBAL_LIST_EMPTY(PDAs)
 			to_chat(L, reception_message)
 		SSnanoui.update_user_uis(L, src) // Update the receiving user's PDA UI so that they can see the new message
 
-/obj/item/pda/proc/new_news(var/message)
+/obj/item/pda/proc/new_news(message)
 	new_info(news_silent, newstone, news_silent ? "" : "[icon2html(thing = src, target = world)] <b>[message]</b>")
 
 	if(!news_silent)
 		new_news = 1
 		update_icon()
 
-/obj/item/pda/ai/new_news(var/message)
+/obj/item/pda/ai/new_news(message)
 	// Do nothing
 
-/obj/item/pda/proc/new_message_from_pda(var/obj/item/pda/sending_device, var/message)
+/obj/item/pda/proc/new_message_from_pda(obj/item/pda/sending_device, message)
 	if (is_jammed(src))
 		return
 	new_message(sending_device, sending_device.owner, sending_device.ownjob, message)
 
-/obj/item/pda/proc/new_message(var/sending_unit, var/sender, var/sender_job, var/message, var/reply = 1)
+/obj/item/pda/proc/new_message(sending_unit, sender, sender_job, message, reply = 1)
 	var/reception_message = "[icon2html(thing = src, target = world)] <b>Message from [sender] ([sender_job]), </b>\"[message]\" ([reply ? "<a href='byond://?src=\ref[src];choice=Message;notap=[istype(loc, /mob/living/silicon)];skiprefresh=1;target=\ref[sending_unit]'>Reply</a>" : "Unable to Reply"])"
 	new_info(message_silent, ringtone, reception_message)
 
@@ -1198,7 +1198,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	new_message = 1
 	update_icon()
 
-/obj/item/pda/ai/new_message(var/atom/movable/sending_unit, var/sender, var/sender_job, var/message)
+/obj/item/pda/ai/new_message(atom/movable/sending_unit, sender, sender_job, message)
 	var/track = ""
 	if(ismob(sending_unit.loc) && isAI(loc))
 		track = "(<a href='byond://?src=\ref[loc];track=\ref[sending_unit.loc];trackname=[html_encode(sender)]'>Follow</a>)"

@@ -225,7 +225,7 @@
  * * deaf_message (optional) is what deaf people will see.
  * * hearing_distance (optional) is the range, how many tiles away the message can be heard.
  */
-/mob/audible_message(var/message, var/deaf_message, var/hearing_distance, var/self_message)
+/mob/audible_message(message, deaf_message, hearing_distance, self_message)
 
 	var/range = hearing_distance || world.view
 	var/list/hear = get_mobs_and_objs_in_view_fast(get_turf(src),range,remote_ghosts = FALSE)
@@ -270,7 +270,7 @@
 /mob/proc/is_physically_disabled()
 	return incapacitated(INCAPACITATION_DISABLED)
 
-/mob/proc/incapacitated(var/incapacitation_flags = INCAPACITATION_DEFAULT)
+/mob/proc/incapacitated(incapacitation_flags = INCAPACITATION_DEFAULT)
 	if ((incapacitation_flags & INCAPACITATION_STUNNED) && !CHECK_MOBILITY(src, MOBILITY_CAN_USE))
 		return 1
 
@@ -519,7 +519,7 @@
 	return
 */
 
-/mob/proc/set_respawn_timer(var/time)
+/mob/proc/set_respawn_timer(time)
 	// Try to figure out what time to use
 
 	// Special cases, can never respawn
@@ -804,7 +804,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /mob/proc/flash_weak_pain()
 	flick("weak_pain",pain)
 
-/mob/proc/get_visible_implants(var/class = 0)
+/mob/proc/get_visible_implants(class = 0)
 	var/list/visible_implants = list()
 	for(var/obj/item/O in embedded)
 		if(O.w_class > class)
@@ -990,7 +990,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 
 //Exploitable Info Update
 
-/mob/proc/amend_exploitable(var/obj/item/I)
+/mob/proc/amend_exploitable(obj/item/I)
 	if(istype(I))
 		exploit_addons |= I
 		var/exploitmsg = html_decode("\n" + "Has " + I.name + ".")

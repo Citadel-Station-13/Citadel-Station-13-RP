@@ -496,7 +496,7 @@
 		add_obj_verb(src, /obj/structure/window/verb/rotate_counterclockwise)
 		add_obj_verb(src, /obj/structure/window/verb/rotate_clockwise)
 
-/proc/place_window(mob/user, loc, obj/item/stack/material/ST, var/fulltile = FALSE, var/constructed = FALSE)
+/proc/place_window(mob/user, loc, obj/item/stack/material/ST, fulltile = FALSE, constructed = FALSE)
 	var/required_amount = 4
 	var/windowtype
 	if(istype(ST, /obj/item/stack/material/glass))

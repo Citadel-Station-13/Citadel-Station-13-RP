@@ -91,7 +91,7 @@
 	else
 		animate(src, transform = turn(src.transform, rotate_degrees), time = 6) //Can't update transform because it will reset the angle.
 
-/obj/structure/prop/prism/proc/rotate_auto(var/new_bearing)
+/obj/structure/prop/prism/proc/rotate_auto(new_bearing)
 	if(rotation_lock)
 		visible_message("<span class='notice'>\The [src] shudders.</span>")
 		playsound(src, 'sound/effects/clang.ogg', 50, 1)
@@ -119,7 +119,7 @@
 	else
 		animate(src, transform = turn(src.transform, rotate_degrees), time = 6)
 
-/obj/structure/prop/prism/bullet_act(var/obj/projectile/Proj)
+/obj/structure/prop/prism/bullet_act(obj/projectile/Proj)
 	if(istype(Proj, redirect_type))
 		if(!silent)
 			visible_message("<span class='danger'>\The [src] redirects \the [Proj]!</span>")

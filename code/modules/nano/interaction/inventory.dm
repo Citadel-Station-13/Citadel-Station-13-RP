@@ -3,7 +3,7 @@
 */
 /var/global/datum/topic_state/inventory_state/inventory_state = new()
 
-/datum/topic_state/inventory_state/can_use_topic(var/src_object, var/mob/user)
+/datum/topic_state/inventory_state/can_use_topic(src_object, mob/user)
 	if(!(src_object in user))
 		return UI_CLOSE
 

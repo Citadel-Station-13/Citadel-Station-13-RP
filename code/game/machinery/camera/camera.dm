@@ -106,7 +106,7 @@ CREATE_WALL_MOUNTING_TYPES(/obj/machinery/camera)
 		return
 	destroy()
 
-/obj/machinery/camera/proc/setViewRange(var/num = 7)
+/obj/machinery/camera/proc/setViewRange(num = 7)
 	src.view_range = num
 	GLOB.cameranet.updateVisibility(src, 0)
 
@@ -195,7 +195,7 @@ CREATE_WALL_MOUNTING_TYPES(/obj/machinery/camera)
 	else
 		return ..()
 
-/obj/machinery/camera/proc/deactivate(user as mob, var/choice = 1)
+/obj/machinery/camera/proc/deactivate(user as mob, choice = 1)
 	// The only way for AI to reactivate cameras are malf abilities, this gives them different messages.
 	if(istype(user, /mob/living/silicon/ai))
 		user = null
@@ -241,7 +241,7 @@ CREATE_WALL_MOUNTING_TYPES(/obj/machinery/camera)
 	spark_system.start()
 	playsound(loc, /datum/soundbyte/grouped/sparks, 50, 1)
 
-/obj/machinery/camera/proc/set_status(var/newstatus)
+/obj/machinery/camera/proc/set_status(newstatus)
 	if (status != newstatus)
 		status = newstatus
 		update_coverage()
@@ -298,17 +298,17 @@ CREATE_WALL_MOUNTING_TYPES(/obj/machinery/camera)
 
 //Return a working camera that can see a given mob
 //or null if none
-/proc/seen_by_camera(var/mob/M)
+/proc/seen_by_camera(mob/M)
 	for(var/obj/machinery/camera/C in oview(4, M))
 		if(C.can_use())	// check if camera disabled
 			return C
 
-/proc/near_range_camera(var/mob/M)
+/proc/near_range_camera(mob/M)
 	for(var/obj/machinery/camera/C in range(4, M))
 		if(C.can_use())	// check if camera disabled
 			return C
 
-/obj/machinery/camera/proc/weld(var/obj/item/weldingtool/WT, var/mob/user)
+/obj/machinery/camera/proc/weld(obj/item/weldingtool/WT, mob/user)
 
 	if(busy)
 		return 0
@@ -339,13 +339,13 @@ CREATE_WALL_MOUNTING_TYPES(/obj/machinery/camera)
 	user.set_machine(src)
 	wires.Interact(user)
 
-/obj/machinery/camera/proc/add_network(var/network_name)
+/obj/machinery/camera/proc/add_network(network_name)
 	add_networks(list(network_name))
 
-/obj/machinery/camera/proc/remove_network(var/network_name)
+/obj/machinery/camera/proc/remove_network(network_name)
 	remove_networks(list(network_name))
 
-/obj/machinery/camera/proc/add_networks(var/list/networks)
+/obj/machinery/camera/proc/add_networks(list/networks)
 	var/network_added
 	network_added = 0
 	for(var/network_name in networks)
@@ -356,7 +356,7 @@ CREATE_WALL_MOUNTING_TYPES(/obj/machinery/camera)
 	if(network_added)
 		update_coverage(1)
 
-/obj/machinery/camera/proc/remove_networks(var/list/networks)
+/obj/machinery/camera/proc/remove_networks(list/networks)
 	var/network_removed
 	network_removed = 0
 	for(var/network_name in networks)
@@ -367,7 +367,7 @@ CREATE_WALL_MOUNTING_TYPES(/obj/machinery/camera)
 	if(network_removed)
 		update_coverage(1)
 
-/obj/machinery/camera/proc/replace_networks(var/list/networks)
+/obj/machinery/camera/proc/replace_networks(list/networks)
 	if(networks.len != network.len)
 		network = networks
 		update_coverage(1)
@@ -394,7 +394,7 @@ CREATE_WALL_MOUNTING_TYPES(/obj/machinery/camera)
 	cam["z"] = z
 	return cam
 
-/obj/machinery/camera/proc/update_coverage(var/network_change = 0)
+/obj/machinery/camera/proc/update_coverage(network_change = 0)
 	if(network_change)
 		var/list/open_networks = difflist(network, restricted_camera_networks)
 		// Add or remove camera from the camera net as necessary

@@ -16,7 +16,7 @@ var/datum/antagonist/highlander/highlanders
 	..()
 	highlanders = src
 
-/datum/antagonist/highlander/create_objectives(var/datum/mind/player)
+/datum/antagonist/highlander/create_objectives(datum/mind/player)
 
 	var/datum/objective/steal/steal_objective = new
 	steal_objective.owner = player
@@ -27,7 +27,7 @@ var/datum/antagonist/highlander/highlanders
 	hijack_objective.owner = player
 	player.objectives |= hijack_objective
 
-/datum/antagonist/highlander/equip(var/mob/living/carbon/human/player)
+/datum/antagonist/highlander/equip(mob/living/carbon/human/player)
 
 	if(!..())
 		return

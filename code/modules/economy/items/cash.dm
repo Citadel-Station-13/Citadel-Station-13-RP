@@ -69,7 +69,7 @@
 
 	add_overlay(overlays_to_add)
 
-/obj/item/spacecash/proc/adjust_worth(var/adjust_worth = 0, var/update = 1)
+/obj/item/spacecash/proc/adjust_worth(adjust_worth = 0, update = 1)
 	worth += adjust_worth
 	if(worth > 0)
 		if(update)
@@ -79,7 +79,7 @@
 		qdel(src)
 		return 0
 
-/obj/item/spacecash/proc/set_worth(var/new_worth = 0, var/update = 1)
+/obj/item/spacecash/proc/set_worth(new_worth = 0, update = 1)
 	worth = max(0, new_worth)
 	if(update)
 		update_icon()

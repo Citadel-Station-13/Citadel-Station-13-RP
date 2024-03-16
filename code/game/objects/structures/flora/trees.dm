@@ -31,7 +31,7 @@
 /obj/structure/flora/tree/proc/choose_icon_state()
 	return icon_state
 
-/obj/structure/flora/tree/can_harvest(var/obj/item/I)
+/obj/structure/flora/tree/can_harvest(obj/item/I)
 	. = FALSE
 	if(!is_stump && harvest_tool && istype(I, harvest_tool) && harvest_loot && harvest_loot.len && harvest_count < max_harvests)
 		. = TRUE

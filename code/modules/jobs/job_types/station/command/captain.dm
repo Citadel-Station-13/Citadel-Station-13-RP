@@ -65,7 +65,7 @@ var/datum/legacy_announcement/minor/captain_announcement = new(do_newscast = 1)
 	messenger_bag = /obj/item/storage/backpack/messenger/com
 	dufflebag = /obj/item/storage/backpack/dufflebag/captain
 
-/datum/outfit/job/station/captain/post_equip(var/mob/living/carbon/human/H)
+/datum/outfit/job/station/captain/post_equip(mob/living/carbon/human/H)
 	..()
 	if(H.age>49)
 		// Since we can have something other than the default uniform at this

@@ -17,7 +17,7 @@
 	var/sev3_range = 1
 	var/sev4_range = 1
 
-/obj/projectile/ion/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/ion/on_hit(atom/target, blocked = 0)
 		empulse(target, sev1_range, sev2_range, sev3_range, sev4_range)
 		return 1
 
@@ -41,7 +41,7 @@
 	sharp = 1
 	edge = 1
 
-/obj/projectile/bullet/gyro/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/bullet/gyro/on_hit(atom/target, blocked = 0)
 	explosion(target, -1, 0, 2)
 	..()
 
@@ -133,7 +133,7 @@
 
 	combustion = FALSE
 
-/obj/projectile/energy/floramut/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/energy/floramut/on_hit(atom/target, blocked = 0)
 	var/mob/living/M = target
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = M
@@ -188,7 +188,7 @@
 	light_power = 0.5
 	light_color = "#FFFFFF"
 
-/obj/projectile/energy/florayield/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/energy/florayield/on_hit(atom/target, blocked = 0)
 	var/mob/M = target
 	if(ishuman(target)) //These rays make plantmen fat.
 		var/mob/living/carbon/human/H = M
@@ -205,7 +205,7 @@
 
 	combustion = FALSE
 
-/obj/projectile/beam/mindflayer/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/beam/mindflayer/on_hit(atom/target, blocked = 0)
 	if(ishuman(target))
 		var/mob/living/carbon/human/M = target
 		M.Confuse(rand(5,8))
@@ -229,7 +229,7 @@
 
 	combustion = FALSE
 
-/obj/projectile/bola/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/bola/on_hit(atom/target, blocked = 0)
 	if(ishuman(target))
 		var/mob/living/carbon/human/M = target
 		var/obj/item/handcuffs/legcuffs/bola/B = new(src.loc)
@@ -248,7 +248,7 @@
 
 	combustion = FALSE
 
-/obj/projectile/webball/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/webball/on_hit(atom/target, blocked = 0)
 	if(isturf(target.loc))
 		var/obj/effect/spider/stickyweb/W = locate() in get_turf(target)
 		if(!W && prob(75))
@@ -272,7 +272,7 @@
 	tracer_type = /obj/effect/projectile/tungsten/tracer
 	impact_type = /obj/effect/projectile/tungsten/impact
 
-/obj/projectile/beam/tungsten/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/beam/tungsten/on_hit(atom/target, blocked = 0)
 	if(isliving(target))
 		var/mob/living/L = target
 		L.add_modifier(/datum/modifier/grievous_wounds, 30 SECONDS)
@@ -318,7 +318,7 @@
 
 	..()
 
-/obj/projectile/beam/tungsten/on_impact(var/atom/A)
+/obj/projectile/beam/tungsten/on_impact(atom/A)
 	if(istype(A,/turf/simulated/shuttle/wall) || istype(A,/turf/simulated/wall) || (istype(A,/turf/simulated/mineral) && A.density) || istype(A,/obj/mecha) || istype(A,/obj/machinery/door))
 		var/blast_dir = src.dir
 		A.visible_message("<span class='danger'>\The [A] begins to glow!</span>")
@@ -385,11 +385,11 @@
 	light_power = 3
 	light_color = "#00ccff"
 
-/obj/projectile/plasma/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/plasma/on_hit(atom/target, blocked = 0)
 	explosion(target, -1, 0, 1, 2)
 	..()
 
-/obj/projectile/plasma/on_impact(var/atom/A)
+/obj/projectile/plasma/on_impact(atom/A)
 	if(istype(A,/turf/simulated/shuttle/wall) || istype(A,/turf/simulated/wall) || (istype(A,/turf/simulated/mineral) && A.density) || istype(A,/obj/mecha) || istype(A,/obj/machinery/door))
 		var/blast_dir = src.dir
 		A.visible_message("<span class='danger'>\The [A] is engulfed in roiling plasma!</span>")
@@ -405,11 +405,11 @@
 	light_power = 4
 	light_color = "#00ccff"
 
-/obj/projectile/plasma/hot/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/plasma/hot/on_hit(atom/target, blocked = 0)
 	explosion(target, -1, 0, 2, 3)
 	..()
 
-/obj/projectile/plasma/hot/on_impact(var/atom/A)
+/obj/projectile/plasma/hot/on_impact(atom/A)
 	if(istype(A,/turf/simulated/shuttle/wall) || istype(A,/turf/simulated/wall) || (istype(A,/turf/simulated/mineral) && A.density) || istype(A,/obj/mecha) || istype(A,/obj/machinery/door))
 		var/blast_dir = src.dir
 		A.visible_message("<span class='danger'>\The [A] is engulfed in roiling plasma!</span>")

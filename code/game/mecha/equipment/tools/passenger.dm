@@ -22,7 +22,7 @@
 /obj/item/mecha_parts/mecha_equipment/tool/passenger/Exit(atom/movable/O)
 	return 0
 
-/obj/item/mecha_parts/mecha_equipment/tool/passenger/proc/move_inside(var/mob/user)
+/obj/item/mecha_parts/mecha_equipment/tool/passenger/proc/move_inside(mob/user)
 	if (chassis)
 		chassis.visible_message("<span class='notice'>[user] starts to climb into [chassis].</span>")
 

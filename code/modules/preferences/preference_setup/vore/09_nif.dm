@@ -9,14 +9,14 @@
 	name = "NIF Data"
 	sort_order = 9
 
-/datum/category_item/player_setup_item/vore/nif/load_character(var/savefile/S)
+/datum/category_item/player_setup_item/vore/nif/load_character(savefile/S)
 	var/path
 	S["nif_path"]		>> path
 	S["nif_id"]			>> pref.nif_id
 	S["nif_durability"]	>> pref.nif_durability
 	S["nif_savedata"]	>> pref.nif_savedata
 
-/datum/category_item/player_setup_item/vore/nif/save_character(var/savefile/S)
+/datum/category_item/player_setup_item/vore/nif/save_character(savefile/S)
 	S["nif_id"]			<< pref.nif_id
 	S["nif_durability"]	<< pref.nif_durability
 	S["nif_savedata"]	<< pref.nif_savedata

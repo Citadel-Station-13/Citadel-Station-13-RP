@@ -17,7 +17,7 @@
 	return
 
 /// Chem thrower style spray. If spray_size = null a random value from 6-8 will be chosen.
-/obj/item/proc/spray_at_wide(atom/A as mob|obj, var/amount_per_transfer_from_this = 10, var/spray_size = null, var/delay = 2)
+/obj/item/proc/spray_at_wide(atom/A as mob|obj, amount_per_transfer_from_this = 10, spray_size = null, delay = 2)
 	var/direction = get_dir(src, A)
 	var/turf/T = get_turf(A)
 	var/turf/T1 = get_step(T,turn(direction, 90))
@@ -40,7 +40,7 @@
 	return
 
 /// Extinguisher spray, intended for use with afterattack. See '/obj/effect/water/proc/set_up' for more details.
-/obj/item/proc/extinguish_spray(atom/A as mob|obj|turf, var/mob/living/user, var/amount_per_transfer_from_this = 10, var/spray_size = 3, var/delay = 10, var/spray_particles = 3)
+/obj/item/proc/extinguish_spray(atom/A as mob|obj|turf, mob/living/user, amount_per_transfer_from_this = 10, spray_size = 3, delay = 10, spray_particles = 3)
 	var/direction = get_dir(src, A)
 	if(user && user.buckled && isobj(user.buckled))
 		spawn(0)
@@ -74,7 +74,7 @@
 		user.newtonian_move(get_dir(A, user))
 
 // Propel an object backwards in the same form as a fire extinguisher.
-/obj/item/proc/ex_propel_object(var/obj/O, mob/user, movementdirection)
+/obj/item/proc/ex_propel_object(obj/O, mob/user, movementdirection)
 	if(O.anchored) return
 
 	var/obj/structure/bed/chair/C

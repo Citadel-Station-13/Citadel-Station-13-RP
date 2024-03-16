@@ -361,7 +361,7 @@
 	for(var/obj/O in src)
 		O.hide(O.hides_under_flooring() && !is_plating())
 
-/turf/proc/AdjacentTurfs(var/check_blockage = TRUE)
+/turf/proc/AdjacentTurfs(check_blockage = TRUE)
 	. = list()
 	for(var/t in (trange(1,src) - src))
 		var/turf/T = t
@@ -372,7 +372,7 @@
 		else
 			. += t
 
-/turf/proc/CardinalTurfs(var/check_blockage = TRUE)
+/turf/proc/CardinalTurfs(check_blockage = TRUE)
 	. = list()
 	for(var/ad in AdjacentTurfs(check_blockage))
 		var/turf/T = ad
@@ -486,16 +486,16 @@
 	return FALSE
 
 // We're about to be the A-side in a turf translation
-/turf/proc/pre_translate_A(var/turf/B)
+/turf/proc/pre_translate_A(turf/B)
 	return
 // We're about to be the B-side in a turf translation
-/turf/proc/pre_translate_B(var/turf/A)
+/turf/proc/pre_translate_B(turf/A)
 	return
 // We were the the A-side in a turf translation
-/turf/proc/post_translate_A(var/turf/B)
+/turf/proc/post_translate_A(turf/B)
 	return
 // We were the the B-side in a turf translation
-/turf/proc/post_translate_B(var/turf/A)
+/turf/proc/post_translate_B(turf/A)
 	return
 
 /turf/has_gravity()

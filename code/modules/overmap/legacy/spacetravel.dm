@@ -8,7 +8,7 @@ var/list/cached_space = list()
 	invisibility = 101
 	known = 0
 
-/obj/overmap/entity/visitable/sector/temporary/New(var/nx, var/ny, var/nz)
+/obj/overmap/entity/visitable/sector/temporary/New(nx, ny, nz)
 	loc = locate(nx, ny, (LEGACY_MAP_DATUM).overmap_z)
 	x = nx
 	y = ny
@@ -21,7 +21,7 @@ var/list/cached_space = list()
 	testing("Temporary sector at [x],[y] was deleted.")
 	return ..()
 
-/obj/overmap/entity/visitable/sector/temporary/proc/can_die(var/mob/observer)
+/obj/overmap/entity/visitable/sector/temporary/proc/can_die(mob/observer)
 	testing("Checking if sector at [map_z[1]] can die.")
 	for(var/mob/M in global.GLOB.player_list)
 		if(M != observer && (M.z in map_z))

@@ -1,4 +1,4 @@
-/mob/living/carbon/human/verb/give(var/mob/living/carbon/target in valid_give_mobs())
+/mob/living/carbon/human/verb/give(mob/living/carbon/target in valid_give_mobs())
 	set category = "IC"
 	set name = "Give"
 

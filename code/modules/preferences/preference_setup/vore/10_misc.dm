@@ -4,14 +4,14 @@
 	name = "Misc Settings"
 	sort_order = 10
 
-/datum/category_item/player_setup_item/vore/misc/load_character(var/savefile/S)
+/datum/category_item/player_setup_item/vore/misc/load_character(savefile/S)
 	S["show_in_directory"]		>> pref.show_in_directory
 	S["directory_tag"]			>> pref.directory_tag
 	S["directory_erptag"]			>> pref.directory_erptag
 	S["directory_ad"]			>> pref.directory_ad
 	S["sensorpref"]				>> pref.sensorpref	//TFF 5/8/19 - add sensor pref setting to load after saved
 
-/datum/category_item/player_setup_item/vore/misc/save_character(var/savefile/S)
+/datum/category_item/player_setup_item/vore/misc/save_character(savefile/S)
 	S["show_in_directory"]		<< pref.show_in_directory
 	S["directory_tag"]			<< pref.directory_tag
 	S["directory_erptag"]			<< pref.directory_erptag
@@ -42,7 +42,7 @@
 	. += "<b>Character Directory ERP Tag:</b> <a href='?src=\ref[src];directory_erptag=1'><b>[pref.directory_erptag]</b></a><br>"
 	. += "<b>Suit Sensors Preference:</b> <a [pref.sensorpref ? "" : ""] href='?src=\ref[src];toggle_sensor_setting=1'><b>[sensorpreflist[pref.sensorpref]]</b></a><br>"	//TFF 5/8/19 - Allow selection of sensor settings from off, binary, vitals, tracking, or random
 
-/datum/category_item/player_setup_item/vore/misc/OnTopic(var/href, var/list/href_list, var/mob/user)
+/datum/category_item/player_setup_item/vore/misc/OnTopic(href, list/href_list, mob/user)
 	if(href_list["toggle_show_in_directory"])
 		pref.show_in_directory = pref.show_in_directory ? 0 : 1;
 		return PREFERENCES_REFRESH

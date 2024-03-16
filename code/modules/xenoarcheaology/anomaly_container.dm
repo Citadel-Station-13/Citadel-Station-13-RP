@@ -17,11 +17,11 @@
 /obj/structure/anomaly_container/attack_hand(mob/user, list/params)
 	release()
 
-/obj/structure/anomaly_container/attack_robot(var/mob/user)
+/obj/structure/anomaly_container/attack_robot(mob/user)
 	if(Adjacent(user))
 		release()
 
-/obj/structure/anomaly_container/proc/contain(var/obj/machinery/artifact/artifact)
+/obj/structure/anomaly_container/proc/contain(obj/machinery/artifact/artifact)
 	if(contained)
 		return
 	contained = artifact
@@ -37,7 +37,7 @@
 	underlays.Cut()
 	desc = initial(desc)
 
-/obj/machinery/artifact/OnMouseDropLegacy(var/obj/structure/anomaly_container/over_object)
+/obj/machinery/artifact/OnMouseDropLegacy(obj/structure/anomaly_container/over_object)
 	if(istype(over_object) && Adjacent(over_object) && CanMouseDrop(over_object, usr))
 		Bumped(usr)
 		over_object.contain(src)

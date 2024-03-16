@@ -197,7 +197,7 @@
 
 	return TRUE
 
-/obj/item/clothing/attackby(var/obj/item/I, var/mob/user)
+/obj/item/clothing/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/clothing/accessory))
 		var/obj/item/clothing/accessory/A = I
 		if(attempt_attach_accessory(A, user))
@@ -210,7 +210,7 @@
 
 	..()
 
-/obj/item/clothing/examine(var/mob/user)
+/obj/item/clothing/examine(mob/user)
 	. = ..()
 	if(LAZYLEN(accessories))
 		for(var/obj/item/clothing/accessory/A in accessories)
@@ -288,7 +288,7 @@
 			A.emp_act(severity)
 	..()
 
-/obj/item/clothing/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
+/obj/item/clothing/handle_shield(mob/user, damage, atom/damage_source = null, mob/attacker = null, def_zone = null, attack_text = "the attack")
 	. = ..()
 	if((. == 0) && LAZYLEN(accessories))
 		for(var/obj/item/I in accessories)

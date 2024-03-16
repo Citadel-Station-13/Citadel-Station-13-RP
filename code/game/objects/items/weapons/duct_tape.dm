@@ -138,13 +138,13 @@
 	user.put_in_hands(tape)
 	use(1)
 
-/obj/item/duct_tape_roll/proc/use(var/used)
+/obj/item/duct_tape_roll/proc/use(used)
 	amount -= used
 	if (amount <= 0)
 		qdel(src) //should be safe to qdel immediately since if someone is still using this stack it will persist for a little while longer
 	return 1
 
-/obj/item/duct_tape_roll/proc/stick(var/obj/item/W, mob/user)
+/obj/item/duct_tape_roll/proc/stick(obj/item/W, mob/user)
 	if(!istype(W, /obj/item/paper))
 		return
 	if(W.loc == user)
@@ -195,7 +195,7 @@
 	cut_overlays()
 	qdel(src)
 
-/obj/item/duct_tape_piece/attackby(var/obj/item/I, var/mob/user)
+/obj/item/duct_tape_piece/attackby(obj/item/I, mob/user)
 	if(!(istype(src, /obj/item/handcuffs/cable/tape) || istype(src, /obj/item/clothing/mask/muzzle/tape)))
 		return ..()
 	else

@@ -24,7 +24,7 @@
 
 	var/list/linked_radios_weakrefs = list()
 
-/obj/machinery/telecomms/receiver/proc/link_radio(var/obj/item/radio/R)
+/obj/machinery/telecomms/receiver/proc/link_radio(obj/item/radio/R)
 	if(!istype(R))
 		return
 	linked_radios_weakrefs |= WEAKREF(R)

@@ -292,7 +292,7 @@
 		allowed_jobs = subtypesof(/datum/role/job)
 
 // Gets the current time on a current zlevel, and returns a time datum
-/datum/map/station/proc/get_zlevel_time(var/z)
+/datum/map/station/proc/get_zlevel_time(z)
 	if(!z)
 		z = 1
 	var/datum/planet/P = z <= SSplanets.z_to_planet.len ? SSplanets.z_to_planet[z] : null
@@ -306,7 +306,7 @@
 		return T
 
 // Returns a boolean for if it's night or not on a particular zlevel
-/datum/map/station/proc/get_night(var/z)
+/datum/map/station/proc/get_night(z)
 	if(!z)
 		z = 1
 	var/datum/time/now = get_zlevel_time(z)
@@ -327,7 +327,7 @@
 /datum/map/station/proc/setup_map()
 	return
 
-/datum/map/station/proc/get_network_access(var/network)
+/datum/map/station/proc/get_network_access(network)
 	return 0
 
 // By default transition randomly to another zlevel
@@ -348,7 +348,7 @@
 // Get the list of zlevels that a computer on srcz can see maps of (for power/crew monitor, cameras, etc)
 // The long_range parameter expands the coverage.  Default is to return map_levels for long range otherwise just srcz.
 // zLevels outside station_levels will return an empty list.
-/datum/map/station/proc/get_map_levels(var/srcz, var/long_range = TRUE, var/om_range = 0)
+/datum/map/station/proc/get_map_levels(srcz, long_range = TRUE, om_range = 0)
 	// Overmap behavior
 	if(use_overmap)
 		var/obj/overmap/entity/visitable/O = get_overmap_sector(srcz)

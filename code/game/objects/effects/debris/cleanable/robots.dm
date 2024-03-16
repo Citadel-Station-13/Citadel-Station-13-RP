@@ -12,7 +12,7 @@
 /obj/effect/debris/cleanable/blood/gibs/robot/dry()	//pieces of robots do not dry up like
 	return
 
-/obj/effect/debris/cleanable/blood/gibs/robot/streak(var/list/directions)
+/obj/effect/debris/cleanable/blood/gibs/robot/streak(list/directions)
 	spawn (0)
 		var/direction = pick(directions)
 		for (var/i = 0, i < pick(1, 200; 2, 150; 3, 50; 4), i++)

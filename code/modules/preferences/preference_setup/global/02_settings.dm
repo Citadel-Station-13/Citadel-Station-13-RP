@@ -6,14 +6,14 @@
 	name = "Settings"
 	sort_order = 2
 
-/datum/category_item/player_setup_item/player_global/settings/load_preferences(var/savefile/S)
+/datum/category_item/player_setup_item/player_global/settings/load_preferences(savefile/S)
 	S["lastchangelog"]        >> pref.lastchangelog
 	S["lastnews"]             >> pref.lastnews
 	S["default_slot"]	      >> pref.default_slot
 	S["preferences"]          >> pref.preferences_enabled
 	S["preferences_disabled"] >> pref.preferences_disabled
 
-/datum/category_item/player_setup_item/player_global/settings/save_preferences(var/savefile/S)
+/datum/category_item/player_setup_item/player_global/settings/save_preferences(savefile/S)
 	S["lastchangelog"]        << pref.lastchangelog
 	S["lastnews"]             << pref.lastnews
 	S["default_slot"]         << pref.default_slot
@@ -72,7 +72,7 @@
 	. += "</table>"
 	return jointext(., "")
 
-/datum/category_item/player_setup_item/player_global/settings/OnTopic(var/href,var/list/href_list, var/mob/user)
+/datum/category_item/player_setup_item/player_global/settings/OnTopic(href,list/href_list, mob/user)
 	var/mob/pref_mob = preference_mob()
 	if(href_list["toggle_on"])
 		. = pref_mob.set_preference(href_list["toggle_on"], TRUE)
@@ -83,13 +83,13 @@
 
 	return ..()
 
-/client/proc/is_preference_enabled(var/preference)
+/client/proc/is_preference_enabled(preference)
 	var/datum/client_preference/cp = get_client_preference(preference)
 	if(isnull(cp))
 		return FALSE
 	return prefs?.initialized? (cp.key in prefs.preferences_enabled) : cp.enabled_by_default
 
-/client/proc/set_preference(var/preference, var/set_preference)
+/client/proc/set_preference(preference, set_preference)
 	var/datum/client_preference/cp = get_client_preference(preference)
 	if(!cp)
 		return FALSE
@@ -100,7 +100,7 @@
 	else if(!set_preference && (preference in prefs.preferences_enabled))
 		return toggle_preference(cp)
 
-/client/proc/toggle_preference(var/preference, var/set_preference)
+/client/proc/toggle_preference(preference, set_preference)
 	var/datum/client_preference/cp = get_client_preference(preference)
 	if(!cp)
 		return FALSE
@@ -120,12 +120,12 @@
 	if(.)
 		cp.toggled(mob, enabled)
 
-/mob/proc/is_preference_enabled(var/preference)
+/mob/proc/is_preference_enabled(preference)
 	if(!client)
 		return FALSE
 	return client.is_preference_enabled(preference)
 
-/mob/proc/set_preference(var/preference, var/set_preference)
+/mob/proc/set_preference(preference, set_preference)
 	if(!client)
 		return FALSE
 	if(!client.prefs)

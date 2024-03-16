@@ -19,7 +19,7 @@
 	// if you make a loud noise (screams etc), you'll be heard from 4 tiles over instead of two
 	return (copytext(message, length(message)) == "!") ? 4 : 2
 
-/datum/language/noise/can_speak_special(var/mob/speaker)
+/datum/language/noise/can_speak_special(mob/speaker)
 	return TRUE	//Audible emotes
 
 // Silly language for those times when you try to talk a languague you normally can't
@@ -92,5 +92,5 @@
 			"his", "ing", "ion", "ith", "not", "ome", "oul", "our", "sho", "ted", "ter", "tha", "the", "thi"
 			)
 
-/datum/language/gibberish/can_speak_special(var/mob/speaker)
+/datum/language/gibberish/can_speak_special(mob/speaker)
 	return TRUE	//Anyone can speak gibberish

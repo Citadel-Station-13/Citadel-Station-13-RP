@@ -5,7 +5,7 @@ var/list/flooring_types
 	for (var/flooring_path in typesof(/singleton/flooring))
 		flooring_types["[flooring_path]"] = new flooring_path
 
-/proc/get_flooring_data(var/flooring_path)
+/proc/get_flooring_data(flooring_path)
 	if(!flooring_types)
 		flooring_types = list()
 	if(!flooring_types["[flooring_path]"])

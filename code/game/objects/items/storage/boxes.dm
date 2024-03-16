@@ -587,13 +587,13 @@
 	max_combined_volume = WEIGHT_VOLUME_NORMAL * 5 // Formally 21.  Odd numbers are bad.
 	allow_mass_gather = TRUE // for picking up broken bulbs, not that most people will try
 
-/obj/item/storage/box/freezer/Entered(var/atom/movable/AM)
+/obj/item/storage/box/freezer/Entered(atom/movable/AM)
 	if(istype(AM, /obj/item/organ))
 		var/obj/item/organ/O = AM
 		O.preserve(PORTABLE_FREEZER_TRAIT)
 	..()
 
-/obj/item/storage/box/freezer/Exited(var/atom/movable/AM)
+/obj/item/storage/box/freezer/Exited(atom/movable/AM)
 	if(istype(AM, /obj/item/organ))
 		var/obj/item/organ/O = AM
 		O.unpreserve(PORTABLE_FREEZER_TRAIT)

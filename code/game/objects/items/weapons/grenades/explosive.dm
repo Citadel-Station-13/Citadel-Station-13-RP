@@ -24,7 +24,7 @@
 	src.fragmentate(O, num_fragments, spread_range, fragment_types)
 	qdel(src)
 
-/obj/item/grenade/explosive/proc/on_explosion(var/turf/O)
+/obj/item/grenade/explosive/proc/on_explosion(turf/O)
 	if(explosion_size)
 		explosion(O, -1, -1, explosion_size, round(explosion_size/2), 0)
 
@@ -40,7 +40,7 @@
 
 
 
-/obj/proc/fragmentate(var/turf/T=get_turf(src), var/fragment_number = 30, var/spreading_range = 5, var/list/fragtypes=list(/obj/projectile/bullet/pellet/fragment/))
+/obj/proc/fragmentate(turf/T=get_turf(src), fragment_number = 30, spreading_range = 5, list/fragtypes=list(/obj/projectile/bullet/pellet/fragment/))
 	set waitfor = 0
 	var/list/target_turfs = getcircle(T, spreading_range)
 	var/fragments_per_projectile = round(fragment_number/target_turfs.len)
@@ -108,7 +108,7 @@
 	det_time = 20
 	range = 3
 
-/obj/item/grenade/explosive/ied/tyrmalin/on_explosion(var/turf/O)
+/obj/item/grenade/explosive/ied/tyrmalin/on_explosion(turf/O)
 	if(explosion_size)
 		explosion(O, 0, 2, 4, 0)
 
@@ -123,7 +123,7 @@
 	det_time = 20
 	range = 3
 
-/obj/item/grenade/explosive/ied/tyrmalin/large/on_explosion(var/turf/O)
+/obj/item/grenade/explosive/ied/tyrmalin/large/on_explosion(turf/O)
 	if(explosion_size)
 		explosion(O, 3, 5, explosion_size, round(explosion_size/2), 0)
 
@@ -138,7 +138,7 @@
 	explosion_size = 1
 	det_time = 40
 
-/obj/item/grenade/explosive/ashlander/on_explosion(var/turf/O)
+/obj/item/grenade/explosive/ashlander/on_explosion(turf/O)
 	if(explosion_size)
 		explosion(O, 1, 3, explosion_size, round(explosion_size/2), 0)
 
@@ -149,6 +149,6 @@
 	num_fragments = 150
 	spread_range = 3
 
-/obj/item/grenade/explosive/ashlander/fragmentation/on_explosion(var/turf/O)
+/obj/item/grenade/explosive/ashlander/fragmentation/on_explosion(turf/O)
 	if(explosion_size)
 		explosion(O, 0, 1, explosion_size, round(explosion_size/2), 0)

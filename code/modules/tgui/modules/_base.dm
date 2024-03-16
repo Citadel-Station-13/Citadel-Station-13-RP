@@ -15,7 +15,7 @@ Code is pretty much ripped verbatim from nano modules, but with un-needed stuff 
 	var/tgui_id
 	var/ntos = FALSE
 
-/datum/tgui_module_old/New(var/host)
+/datum/tgui_module_old/New(host)
 	src.host = host
 	if(ntos)
 		tgui_id = "Ntos" + tgui_id

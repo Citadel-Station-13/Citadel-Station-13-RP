@@ -22,7 +22,7 @@
 
 	materials_base = list(MAT_STEEL = 4000, MAT_GLASS = 4000)
 
-/obj/item/sleevecard/relaymove(var/mob/user, var/direction)
+/obj/item/sleevecard/relaymove(mob/user, direction)
 	if(!CHECK_MOBILITY(user, MOBILITY_CAN_MOVE))
 		return
 	var/obj/item/hardsuit/hardsuit = src.get_hardsuit()
@@ -53,7 +53,7 @@
 		to_chat(user,"<span class='notice'>\The [src] displays the name '[infomorph]'.</span>")
 
 //This is a 'hard' proc, it does no permission checking, do that on the computer
-/obj/item/sleevecard/proc/sleeveInto(var/datum/transhuman/mind_record/MR)
+/obj/item/sleevecard/proc/sleeveInto(datum/transhuman/mind_record/MR)
 	infomorph = new(src, src, MR.mindname)
 
 	for(var/datum/language/L in MR.languages)

@@ -93,7 +93,7 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 	nano_ui_interact(user)
 	return
 
-/obj/structure/janitorialcart/nano_ui_interact(var/mob/user, var/ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/structure/janitorialcart/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)
 	var/data[0]
 	data["name"] = capitalize(name)
 	data["bag"] = mybag ? capitalize(mybag.name) : null
@@ -279,7 +279,7 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 					L.pixel_x = -13
 					L.pixel_y = 7
 
-/obj/structure/bed/chair/janicart/bullet_act(var/obj/projectile/Proj)
+/obj/structure/bed/chair/janicart/bullet_act(obj/projectile/Proj)
 	if(has_buckled_mobs())
 		if(prob(85))
 			var/mob/living/L = pick(buckled_mobs)

@@ -9,7 +9,7 @@
 	var/list/connected_devices = list()
 	var/obj/machinery/power/fusion_core/cur_viewed_device
 
-/obj/machinery/computer/fusion_core_control/attackby(var/obj/item/thing, var/mob/user)
+/obj/machinery/computer/fusion_core_control/attackby(obj/item/thing, mob/user)
 	..()
 	if(istype(thing, /obj/item/multitool))
 		var/new_ident = input("Enter a new ident tag.", "Core Control", id_tag) as null|text
@@ -170,7 +170,7 @@
 		return 1
 
 //Returns 1 if the machine can be interacted with via this console.
-/obj/machinery/computer/fusion_core_control/proc/check_core_status(var/obj/machinery/power/fusion_core/C)
+/obj/machinery/computer/fusion_core_control/proc/check_core_status(obj/machinery/power/fusion_core/C)
 	if(isnull(C))
 		return
 	if(C.machine_stat & BROKEN)

@@ -27,14 +27,14 @@
 	add_language(LANGUAGE_GALCOM)
 	add_verb(src, /mob/living/carbon/alien/diona/proc/diona_merge)
 
-/mob/living/carbon/alien/diona/proc/wear_hat(var/obj/item/new_hat)
+/mob/living/carbon/alien/diona/proc/wear_hat(obj/item/new_hat)
 	if(hat)
 		return
 	hat = new_hat
 	new_hat.forceMove(src)
 	update_icons()
 
-/mob/living/carbon/alien/diona/proc/handle_npc(var/mob/living/carbon/alien/diona/D)
+/mob/living/carbon/alien/diona/proc/handle_npc(mob/living/carbon/alien/diona/D)
 	if(D.stat != CONSCIOUS)
 		return
 	if(prob(33) && CHECK_MOBILITY(D, MOBILITY_CAN_MOVE) && isturf(D.loc) && !D.pulledby) //won't move if being pulled

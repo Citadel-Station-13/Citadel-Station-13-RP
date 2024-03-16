@@ -35,7 +35,7 @@
 /**
  * Call the chat webhook to transmit a notification of an admin fax to the admin chat.
  */
-/obj/machinery/photocopier/faxmachine/proc/message_chat_admins(var/mob/sender, var/faxname, var/obj/item/sent, var/faxid, font_colour="#006100")
+/obj/machinery/photocopier/faxmachine/proc/message_chat_admins(mob/sender, faxname, obj/item/sent, faxid, font_colour="#006100")
 	if (config_legacy.chat_webhook_url)
 		spawn(0)
 			var/query_string = "type=fax"

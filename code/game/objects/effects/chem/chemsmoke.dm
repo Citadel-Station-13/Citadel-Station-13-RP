@@ -44,7 +44,7 @@
 // Calculates the max range smoke can travel, then gets all turfs in that view range.
 // Culls the selected turfs to a (roughly) circle shape, then calls smokeFlow() to make
 // sure the smoke can actually path to the turfs. This culls any turfs it can't reach.
-/datum/effect_system/smoke_spread/chem/set_up(var/datum/reagents/carry = null, n = 10, c = 0, loca, direct)
+/datum/effect_system/smoke_spread/chem/set_up(datum/reagents/carry = null, n = 10, c = 0, loca, direct)
 	range = n * 0.3
 	cardinals = c
 	carry.trans_to_obj(chemholder, carry.total_volume, copy = 1)
@@ -149,7 +149,7 @@
 // Randomizes and spawns the smoke effect.
 // Also handles deleting the smoke once the effect is finished.
 //------------------------------------------
-/datum/effect_system/smoke_spread/chem/proc/spawnSmoke(var/turf/T, var/icon/I, var/dist = 1, var/obj/effect/particle_effect/smoke/chem/passed_smoke)
+/datum/effect_system/smoke_spread/chem/proc/spawnSmoke(turf/T, icon/I, dist = 1, obj/effect/particle_effect/smoke/chem/passed_smoke)
 
 	var/obj/effect/particle_effect/smoke/chem/smoke
 	if(passed_smoke)
@@ -171,12 +171,12 @@
 	fadeOut(smoke)
 	qdel(smoke)
 
-/datum/effect_system/smoke_spread/chem/spores/spawnSmoke(var/turf/T, var/icon/I, var/dist = 1)
+/datum/effect_system/smoke_spread/chem/spores/spawnSmoke(turf/T, icon/I, dist = 1)
 	var/obj/effect/particle_effect/smoke/chem/spores = new /obj/effect/particle_effect/smoke/chem(location)
 	spores.name = "cloud of [seed.seed_name] [seed.seed_noun]"
 	..(T, I, dist, spores)
 
-/datum/effect_system/smoke_spread/chem/proc/fadeOut(var/atom/A, var/frames = 16) // Fades out the smoke smoothly using it's alpha variable.
+/datum/effect_system/smoke_spread/chem/proc/fadeOut(atom/A, frames = 16) // Fades out the smoke smoothly using it's alpha variable.
 	if(A.alpha == 0) //Handle already transparent case
 		return
 	if(frames == 0)

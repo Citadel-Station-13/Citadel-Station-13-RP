@@ -139,7 +139,7 @@
 	return ..()
 
 // Called when the module is installed into a suit.
-/obj/item/hardsuit_module/proc/installed(var/obj/item/hardsuit/new_holder)
+/obj/item/hardsuit_module/proc/installed(obj/item/hardsuit/new_holder)
 	holder = new_holder
 	return
 
@@ -178,7 +178,7 @@
 	return 1
 
 // Proc for toggling on active abilities.
-/obj/item/hardsuit_module/proc/activate(var/skip_engage = 0) // Allow us to skip the engage call.
+/obj/item/hardsuit_module/proc/activate(skip_engage = 0) // Allow us to skip the engage call.
 	// Allow us to skip the engage call
 	if(active)
 		return 0
@@ -228,7 +228,7 @@
 
 // Called by holder rigsuit attackby()
 // Checks if an item is usable with this module and handles it if it is
-/obj/item/hardsuit_module/proc/accepts_item(var/obj/item/input_device)
+/obj/item/hardsuit_module/proc/accepts_item(obj/item/input_device)
 	return 0
 
 /mob/living/carbon/human/statpanel_data(client/C)
@@ -259,7 +259,7 @@
 	var/module_mode = ""
 	var/obj/item/hardsuit_module/module
 
-/stat_hardsuit_module/New(var/obj/item/hardsuit_module/module)
+/stat_hardsuit_module/New(obj/item/hardsuit_module/module)
 	..()
 	src.module = module
 
@@ -267,7 +267,7 @@
 	module = null
 	return ..()
 
-/stat_hardsuit_module/proc/AddHref(var/list/href_list)
+/stat_hardsuit_module/proc/AddHref(list/href_list)
 	return
 
 /stat_hardsuit_module/proc/CanUse()
@@ -288,7 +288,7 @@
 /stat_hardsuit_module/DblClick()
 	return Click()
 
-/stat_hardsuit_module/activate/New(var/obj/item/hardsuit_module/module)
+/stat_hardsuit_module/activate/New(obj/item/hardsuit_module/module)
 	..()
 	name = module.activate_string
 	if(module.active_power_cost)
@@ -298,7 +298,7 @@
 /stat_hardsuit_module/activate/CanUse()
 	return module.toggleable && !module.active
 
-/stat_hardsuit_module/deactivate/New(var/obj/item/hardsuit_module/module)
+/stat_hardsuit_module/deactivate/New(obj/item/hardsuit_module/module)
 	..()
 	name = module.deactivate_string
 	// Show cost despite being 0, if it means changing from an active cost.
@@ -310,7 +310,7 @@
 /stat_hardsuit_module/deactivate/CanUse()
 	return module.toggleable && module.active
 
-/stat_hardsuit_module/engage/New(var/obj/item/hardsuit_module/module)
+/stat_hardsuit_module/engage/New(obj/item/hardsuit_module/module)
 	..()
 	name = module.engage_string
 	if(module.use_power_cost)
@@ -336,7 +336,7 @@
 	name = "Change Charge"
 	module_mode = "select_charge_type"
 
-/stat_hardsuit_module/charge/AddHref(var/list/href_list)
+/stat_hardsuit_module/charge/AddHref(list/href_list)
 	var/charge_index = module.charges.Find(module.charge_selected)
 	if(!charge_index)
 		charge_index = 0

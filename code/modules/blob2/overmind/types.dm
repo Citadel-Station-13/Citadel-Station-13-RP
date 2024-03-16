@@ -44,23 +44,23 @@
 	var/shield_type = /obj/structure/blob/shield
 
 // Called when a blob receives damage.  This needs to return the final damage or blobs will be immortal.
-/datum/blob_type/proc/on_received_damage(var/obj/structure/blob/B, damage, damage_type)
+/datum/blob_type/proc/on_received_damage(obj/structure/blob/B, damage, damage_type)
 	return damage
 
 // Called when a blob dies due to integrity depletion.  Not called if deleted by other means.
-/datum/blob_type/proc/on_death(var/obj/structure/blob/B)
+/datum/blob_type/proc/on_death(obj/structure/blob/B)
 	return
 
 // Called when a blob expands onto another tile.
-/datum/blob_type/proc/on_expand(var/obj/structure/blob/B, var/obj/structure/blob/new_B, var/turf/T, var/mob/observer/blob/O)
+/datum/blob_type/proc/on_expand(obj/structure/blob/B, obj/structure/blob/new_B, turf/T, mob/observer/blob/O)
 	return
 
 // Called when blob_act() is called on a living mob.
-/datum/blob_type/proc/on_attack(var/obj/structure/blob/B, var/mob/living/victim, var/def_zone)
+/datum/blob_type/proc/on_attack(obj/structure/blob/B, mob/living/victim, def_zone)
 	return
 
 // Called when the blob is pulsed by a node or the core.
-/datum/blob_type/proc/on_pulse(var/obj/structure/blob/B)
+/datum/blob_type/proc/on_pulse(obj/structure/blob/B)
 	return
 
 // Called when hit by EMP.
@@ -122,7 +122,7 @@
 	ai_aggressiveness = 50 //Really doesn't like you near it.
 	spore_type = /mob/living/simple_mob/mechanical/hivebot/swarm
 
-/datum/blob_type/fabrication_swarm/on_received_damage(var/obj/structure/blob/B, damage, damage_type, mob/living/attacker)
+/datum/blob_type/fabrication_swarm/on_received_damage(obj/structure/blob/B, damage, damage_type, mob/living/attacker)
 	if(istype(B, /obj/structure/blob/normal))
 		if(damage > 0)
 			var/reinforce_probability = min(damage, 70)
@@ -160,7 +160,7 @@
 	spawn(1)
 		B.adjust_integrity_blob(-(amount * 5))
 
-/datum/blob_type/blazing_oil/on_pulse(var/obj/structure/blob/B)
+/datum/blob_type/blazing_oil/on_pulse(obj/structure/blob/B)
 	var/turf/T = get_turf(B)
 	if(!T)
 		return
@@ -260,7 +260,7 @@
 	can_build_factories = TRUE
 	spore_type = /mob/living/simple_mob/blob/spore/weak
 
-/datum/blob_type/fulminant_organism/on_expand(var/obj/structure/blob/B, var/obj/structure/blob/new_B, var/turf/T, var/mob/observer/blob/O)
+/datum/blob_type/fulminant_organism/on_expand(obj/structure/blob/B, obj/structure/blob/new_B, turf/T, mob/observer/blob/O)
 	if(prob(10)) // 10% chance to make a weak spore when expanding.
 		var/mob/living/simple_mob/blob/spore/S = new spore_type(T)
 		if(istype(S))
@@ -306,7 +306,7 @@
 	attack_verb = "stabs"
 
 // Even if the melee attack is enough to one-shot this blob, it gets to retaliate at least once.
-/datum/blob_type/reactive_spines/on_received_damage(var/obj/structure/blob/B, damage, damage_type, mob/living/attacker)
+/datum/blob_type/reactive_spines/on_received_damage(obj/structure/blob/B, damage, damage_type, mob/living/attacker)
 	if(damage > 0 && attacker && get_dist(B, attacker) <= 1)
 		B.visible_message("<span class='danger'>The [name] retaliates, lashing out at \the [attacker]!</span>")
 		B.blob_attack_animation(attacker, B.overmind)
@@ -344,7 +344,7 @@
 			victim.blob_act(C)
 	synchronously_attacking = FALSE
 
-/datum/blob_type/synchronous_mesh/on_received_damage(var/obj/structure/blob/B, damage, damage_type)
+/datum/blob_type/synchronous_mesh/on_received_damage(obj/structure/blob/B, damage, damage_type)
 	var/list/blobs_to_hurt = list() // Maximum split is 9, reducing the damage each blob takes to 11.1% but doing that damage to 9 blobs.
 	for(var/obj/structure/blob/C in range(1, B))
 		if(!istype(C, /obj/structure/blob/core) && !istype(C, /obj/structure/blob/node) && C.overmind && (C.overmind == B.overmind) ) //if it doesn't have the same 'ownership' or is a core or node, don't split damage to it
@@ -378,7 +378,7 @@
 	attack_message = "A fragment strikes you"
 	attack_verb = "strikes"
 
-/datum/blob_type/shifting_fragments/on_received_damage(var/obj/structure/blob/B, damage, damage_type)
+/datum/blob_type/shifting_fragments/on_received_damage(obj/structure/blob/B, damage, damage_type)
 	if(damage > 0 && prob(60))
 		var/list/available_blobs = list()
 		for(var/obj/structure/blob/OB in orange(1, B))
@@ -391,7 +391,7 @@
 			B.forceMove(T) // Swap places.
 	return ..()
 
-/datum/blob_type/shifting_fragments/on_expand(var/obj/structure/blob/B, var/obj/structure/blob/new_B, var/turf/T, var/mob/observer/blob/O)
+/datum/blob_type/shifting_fragments/on_expand(obj/structure/blob/B, obj/structure/blob/new_B, turf/T, mob/observer/blob/O)
 	if(istype(B, /obj/structure/blob/normal) || (istype(B, /obj/structure/blob/shield) && prob(25)))
 		new_B.forceMove(get_turf(B))
 		B.forceMove(T)
@@ -433,7 +433,7 @@
 	else // Just do some extra burn for mobs who don't process bodytemp
 		victim.adjustFireLoss(20)
 
-/datum/blob_type/cryogenic_goo/on_pulse(var/obj/structure/blob/B)
+/datum/blob_type/cryogenic_goo/on_pulse(obj/structure/blob/B)
 	var/turf/simulated/T = get_turf(B)
 	if(!istype(T))
 		return
@@ -548,11 +548,11 @@
 	if(T)
 		T.wet_floor()
 
-/datum/blob_type/pressurized_slime/on_received_damage(var/obj/structure/blob/B, damage, damage_type)
+/datum/blob_type/pressurized_slime/on_received_damage(obj/structure/blob/B, damage, damage_type)
 	wet_surroundings(B, damage)
 	return ..()
 
-/datum/blob_type/pressurized_slime/on_pulse(var/obj/structure/blob/B)
+/datum/blob_type/pressurized_slime/on_pulse(obj/structure/blob/B)
 	var/turf/simulated/T = get_turf(B)
 	if(!istype(T))
 		return
@@ -562,7 +562,7 @@
 	B.visible_message("<span class='danger'>The blob ruptures, spraying the area with liquid!</span>")
 	wet_surroundings(B, 50)
 
-/datum/blob_type/pressurized_slime/proc/wet_surroundings(var/obj/structure/blob/B, var/probability = 50)
+/datum/blob_type/pressurized_slime/proc/wet_surroundings(obj/structure/blob/B, probability = 50)
 	for(var/turf/simulated/T in range(1, B))
 		if(prob(probability))
 			T.wet_floor()
@@ -592,7 +592,7 @@
 	attack_message_synth = ", and your internal systems are bombarded by ionizing radiation"
 	attack_verb = "splashes"
 
-/datum/blob_type/radioactive_ooze/on_pulse(var/obj/structure/blob/B)
+/datum/blob_type/radioactive_ooze/on_pulse(obj/structure/blob/B)
 	radiation_pulse(src, RAD_INTENSITY_BLOB_RADIOACTIVE_OOZE)
 
 /datum/blob_type/volatile_alluvium
@@ -621,7 +621,7 @@
 	factory_type = /obj/structure/blob/factory/sluggish
 	resource_type = /obj/structure/blob/resource/sluggish
 
-/datum/blob_type/volatile_alluvium/on_received_damage(var/obj/structure/blob/B, damage, damage_type, mob/living/attacker)
+/datum/blob_type/volatile_alluvium/on_received_damage(obj/structure/blob/B, damage, damage_type, mob/living/attacker)
 	if(damage > 0 && attacker && get_dist(B, attacker) <= 2 && prob(min(damage, 70)) && istype(attacker, /mob/living/carbon/human)) // Melee weapons of any type carried by a human will have a high chance of being stolen.
 		var/mob/living/carbon/human/H = attacker
 		var/obj/item/I = H.get_active_held_item()

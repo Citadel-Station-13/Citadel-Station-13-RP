@@ -493,7 +493,7 @@
 		return 1
 	return 0
 
-/mob/proc/Process_Spaceslipping(var/prob_slip = 5)
+/mob/proc/Process_Spaceslipping(prob_slip = 5)
 	//Setup slipage
 	//If knocked out we might just hit it and stop.  This makes it possible to get dead bodies and such.
 	if(stat)

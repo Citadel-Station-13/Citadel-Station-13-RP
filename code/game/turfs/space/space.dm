@@ -153,7 +153,7 @@
 		// If that's changed, then you'll want to swipe the rest of the roofing code from code/game/turfs/simulated/floor_attackby.dm
 	return
 
-/turf/space/Entered(var/atom/movable/A)
+/turf/space/Entered(atom/movable/A)
 	. = ..()
 
 	if(edge)

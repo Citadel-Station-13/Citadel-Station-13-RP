@@ -29,7 +29,7 @@
 	r_pocket = /obj/item/surgical/scalpel
 	r_hand = /obj/item/material/twohanded/fireaxe
 
-/datum/outfit/masked_killer/post_equip(var/mob/living/carbon/human/H)
+/datum/outfit/masked_killer/post_equip(mob/living/carbon/human/H)
 	var/victim = get_mannequin(H.ckey)
 	for(var/obj/item/carried_item in H.get_equipped_items(TRUE))
 		carried_item.add_blood(victim) //Oh yes, there will be blood.. just not blood from the killer because that's odd
@@ -49,7 +49,7 @@
 	pda_slot = SLOT_ID_BELT
 	pda_type = /obj/item/pda/heads
 
-/datum/outfit/professional/post_equip(var/mob/living/carbon/human/H)
+/datum/outfit/professional/post_equip(mob/living/carbon/human/H)
 	var/obj/item/storage/secure/briefcase/sec_briefcase = new(H)
 	for(var/obj/item/briefcase_item in sec_briefcase)
 		qdel(briefcase_item)
@@ -72,7 +72,7 @@
 	r_hand = /obj/item/material/sword/katana
 
 /* //Can you tell I commented these out in reverse?
-/datum/outfit/samurai/equip(var/mob/living/carbon/human/H)
+/datum/outfit/samurai/equip(mob/living/carbon/human/H)
 	. = ..()
 	if(H.mind)
 		H.add_spell(list(/spell/targeted/ethereal_jaunt, /spell/noclothes))
@@ -88,7 +88,7 @@
 	r_hand = /obj/item/nullrod/egyptian
 
 /* //Sort out adding spells sometime.
-/datum/outfit/mummy/equip(var/mob/living/carbon/human/H)
+/datum/outfit/mummy/equip(mob/living/carbon/human/H)
 	. = ..()
 	if(H.mind)
 		H.add_spell(list(/spell/aoe_turf/disable_tech, /spell/noclothes))
@@ -105,7 +105,7 @@
 	r_hand = /obj/item/material/twohanded/fireaxe/scythe
 
 /* //Come back and figure out spells later.
-/datum/outfit/mummy/equip(var/mob/living/carbon/human/H)
+/datum/outfit/mummy/equip(mob/living/carbon/human/H)
 	. = ..()
 	if(H.mind)
 		H.add_spell(list(/datum/technomancer/spell/blink, /spell/noclothes))
@@ -123,7 +123,7 @@
 	r_pocket = /obj/item/material/knife/machete/hatchet
 	r_hand = /obj/item/material/knife/plasteel
 
-/datum/outfit/animegirl/post_equip(var/mob/living/carbon/human/H)
+/datum/outfit/animegirl/post_equip(mob/living/carbon/human/H)
 	var/victim = get_mannequin(H.ckey)
 	for(var/obj/item/carried_item in H.get_equipped_items(TRUE))
 		carried_item.add_blood(victim)

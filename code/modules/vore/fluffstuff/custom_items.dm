@@ -89,7 +89,7 @@
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 
 
-/obj/item/sword/fluff/joanaria/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
+/obj/item/sword/fluff/joanaria/handle_shield(mob/user, damage, atom/damage_source = null, mob/attacker = null, def_zone = null, attack_text = "the attack")
 
 	if(default_parry_check(user, attacker, damage_source) && prob(75))
 		user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
@@ -103,7 +103,7 @@
 	desc = "A tactical knife with a small butterly engraved on the blade."
 */
 
-/obj/item/material/knife/tacknife/combatknife/fluff/katarina/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
+/obj/item/material/knife/tacknife/combatknife/fluff/katarina/handle_shield(mob/user, damage, atom/damage_source = null, mob/attacker = null, def_zone = null, attack_text = "the attack")
 
 	if(default_parry_check(user, attacker, damage_source) && prob(75))
 		user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
@@ -944,7 +944,7 @@
 	ready = TRUE
 	update_icon()
 
-/obj/item/perfect_tele/proc/phase_out(var/mob/M,var/turf/T)
+/obj/item/perfect_tele/proc/phase_out(mob/M,turf/T)
 
 	if(!M || !T)
 		return
@@ -954,7 +954,7 @@
 	playsound(T, /datum/soundbyte/grouped/sparks, 50, 1)
 	anim(T,M,'icons/mob/mob.dmi',,"phaseout",,M.dir)
 
-/obj/item/perfect_tele/proc/phase_in(var/mob/M,var/turf/T)
+/obj/item/perfect_tele/proc/phase_in(mob/M,turf/T)
 
 	if(!M || !T)
 		return
@@ -1294,7 +1294,7 @@
 	update_icon()
 	..()
 
-/obj/item/melee/baton/fluff/stunstaff/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
+/obj/item/melee/baton/fluff/stunstaff/handle_shield(mob/user, damage, atom/damage_source = null, mob/attacker = null, def_zone = null, attack_text = "the attack")
 	if(wielded && default_parry_check(user, attacker, damage_source) && prob(30))
 		user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
 		playsound(user.loc, 'sound/weapons/punchmiss.ogg', 50, 1)

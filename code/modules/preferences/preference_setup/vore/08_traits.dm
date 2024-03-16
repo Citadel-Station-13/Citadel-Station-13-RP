@@ -26,7 +26,7 @@
 	name = "Traits"
 	sort_order = 8
 
-/datum/category_item/player_setup_item/vore/traits/load_character(var/savefile/S)
+/datum/category_item/player_setup_item/vore/traits/load_character(savefile/S)
 	S["custom_species"]	>> pref.custom_species
 	S["custom_base"]	>> pref.custom_base
 	S["pos_traits"]		>> pref.pos_traits
@@ -43,7 +43,7 @@
 	S["custom_ask"]		>> pref.custom_ask
 	S["custom_exclaim"]	>> pref.custom_exclaim
 
-/datum/category_item/player_setup_item/vore/traits/save_character(var/savefile/S)
+/datum/category_item/player_setup_item/vore/traits/save_character(savefile/S)
 	S["custom_species"]	<< pref.custom_species
 	S["custom_base"]	<< pref.custom_base
 	S["pos_traits"]		<< pref.pos_traits
@@ -194,7 +194,7 @@
 	. += "<b>Custom Exclaim: </b>"
 	. += "<a href='?src=\ref[src];custom_exclaim=1'>Set Exclaim Verb</a><br>"
 
-/datum/category_item/player_setup_item/vore/traits/OnTopic(var/href,var/list/href_list, var/mob/user)
+/datum/category_item/player_setup_item/vore/traits/OnTopic(href,list/href_list, mob/user)
 	if(!CanUseTopic(user))
 		return PREFERENCES_NOACTION
 

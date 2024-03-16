@@ -2,7 +2,7 @@
 	name = "UI"
 	sort_order = 1
 
-/datum/category_item/player_setup_item/player_global/ui/load_preferences(var/savefile/S)
+/datum/category_item/player_setup_item/player_global/ui/load_preferences(savefile/S)
 	S["UI_style"]		>> pref.UI_style
 	S["UI_style_color"]	>> pref.UI_style_color
 	S["UI_style_alpha"]	>> pref.UI_style_alpha
@@ -10,7 +10,7 @@
 	S["tooltipstyle"]	>> pref.tooltipstyle
 	S["client_fps"]		>> pref.client_fps
 
-/datum/category_item/player_setup_item/player_global/ui/save_preferences(var/savefile/S)
+/datum/category_item/player_setup_item/player_global/ui/save_preferences(savefile/S)
 	S["UI_style"]		<< pref.UI_style
 	S["UI_style_color"]	<< pref.UI_style_color
 	S["UI_style_alpha"]	<< pref.UI_style_alpha
@@ -40,7 +40,7 @@
 		else
 			. += "<a href='?src=\ref[src];select_ooc_color=1'><b>[pref.ooccolor]</b></a> <table style='display:inline;' bgcolor='[pref.ooccolor]'><tr><td>__</td></tr></table>�<a href='?src=\ref[src];reset=ooc'>reset</a><br>"
 
-/datum/category_item/player_setup_item/player_global/ui/OnTopic(var/href,var/list/href_list, var/mob/user)
+/datum/category_item/player_setup_item/player_global/ui/OnTopic(href,list/href_list, mob/user)
 	if(href_list["select_style"])
 		var/UI_style_new = tgui_input_list(user, "Choose UI style.", "Character Preference", all_ui_styles, pref.UI_style)
 		if(!UI_style_new || !CanUseTopic(user)) return PREFERENCES_NOACTION
@@ -92,5 +92,5 @@
 
 	return ..()
 
-/datum/category_item/player_setup_item/player_global/ui/proc/can_select_ooc_color(var/mob/user)
+/datum/category_item/player_setup_item/player_global/ui/proc/can_select_ooc_color(mob/user)
 	return CONFIG_GET(flag/allow_admin_ooccolor) && check_rights(R_ADMIN, 0, user)

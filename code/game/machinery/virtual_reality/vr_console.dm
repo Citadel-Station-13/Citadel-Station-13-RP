@@ -68,7 +68,7 @@
 
 	return 1
 
-/obj/machinery/vr_sleeper/attackby(var/obj/item/I, var/mob/user)
+/obj/machinery/vr_sleeper/attackby(obj/item/I, mob/user)
 	add_fingerprint(user)
 
 	if(occupant && (istype(I, /obj/item/healthanalyzer) || istype(I, /obj/item/robotanalyzer)))
@@ -92,7 +92,7 @@
 
 
 
-/obj/machinery/sleeper/relaymove(var/mob/user)
+/obj/machinery/sleeper/relaymove(mob/user)
 	..()
 	if(usr.incapacitated())
 		return
@@ -100,7 +100,7 @@
 
 
 
-/obj/machinery/vr_sleeper/emp_act(var/severity)
+/obj/machinery/vr_sleeper/emp_act(severity)
 	if(machine_stat & (BROKEN|NOPOWER))
 		..(severity)
 		return
@@ -180,7 +180,7 @@
 		enter_vr()
 	return
 
-/obj/machinery/vr_sleeper/proc/go_out(var/forced = TRUE)
+/obj/machinery/vr_sleeper/proc/go_out(forced = TRUE)
 	if(!occupant)
 		return
 

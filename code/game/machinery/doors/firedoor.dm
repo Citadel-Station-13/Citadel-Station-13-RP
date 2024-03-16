@@ -231,7 +231,7 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 				nextstate = FIREDOOR_CLOSED
 				close()
 
-/obj/machinery/door/firedoor/attack_alien(var/mob/user) //Familiar, right? Doors.
+/obj/machinery/door/firedoor/attack_alien(mob/user) //Familiar, right? Doors.
 	if(istype(user, /mob/living/carbon/human))
 		var/mob/living/carbon/human/X = user
 		if(istype(X.species, /datum/species/xenos))
@@ -256,7 +256,7 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 			return
 	..()
 
-/obj/machinery/door/firedoor/attack_generic(var/mob/living/user, var/damage)
+/obj/machinery/door/firedoor/attack_generic(mob/living/user, damage)
 	if(machine_stat & (BROKEN|NOPOWER))
 		if(damage >= 5)
 			var/time_to_force = (2 + (2 * blocked)) * 5
@@ -446,7 +446,7 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 	latetoggle()
 	return ..()
 
-/obj/machinery/door/firedoor/open(var/forced = 0)
+/obj/machinery/door/firedoor/open(forced = 0)
 	if(panel_open)
 		panel_open = 0
 		visible_message("The maintenance hatch of \the [src] closes.")

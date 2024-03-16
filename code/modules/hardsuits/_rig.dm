@@ -310,7 +310,7 @@
 // Updates pressure protection
 // Seal = 1 sets protection
 // Seal = 0 unsets protection
-/obj/item/hardsuit/proc/update_airtight(var/obj/item/piece, var/seal = 0)
+/obj/item/hardsuit/proc/update_airtight(obj/item/piece, seal = 0)
 	if(seal == 1)
 		piece.min_pressure_protection = rigsuit_min_pressure
 		piece.max_pressure_protection = rigsuit_max_pressure
@@ -333,7 +333,7 @@
 		piece.icon_state = "[suit_state]"
 	update_icon(1)
 
-/obj/item/hardsuit/proc/trap(var/mob/living/carbon/human/M)
+/obj/item/hardsuit/proc/trap(mob/living/carbon/human/M)
 	warn = 0
 	sleep(trapDelay)
 	if(!suit_is_deployed())//Check if it's deployed. Interrupts taking it off.
@@ -352,7 +352,7 @@
 		trap(M)
 		warn = 1
 
-/obj/item/hardsuit/proc/springtrap(var/mob/living/carbon/human/M)
+/obj/item/hardsuit/proc/springtrap(mob/living/carbon/human/M)
 	warn = 0
 	sleep(trapDelay)
 	if(!suit_is_deployed())
@@ -378,7 +378,7 @@
 		springtrap(M)
 		warn = 1
 
-/obj/item/hardsuit/proc/toggle_seals(var/mob/living/carbon/human/M,var/instant)
+/obj/item/hardsuit/proc/toggle_seals(mob/living/carbon/human/M,instant)
 	if(is_cycling())
 		return
 
@@ -538,13 +538,13 @@
 /obj/item/hardsuit/ui_action_click()
 	toggle_cooling(usr)
 
-/obj/item/hardsuit/proc/toggle_cooling(var/mob/user)
+/obj/item/hardsuit/proc/toggle_cooling(mob/user)
 	if(cooling_on)
 		turn_cooling_off(user)
 	else
 		turn_cooling_on(user)
 
-/obj/item/hardsuit/proc/turn_cooling_on(var/mob/user)
+/obj/item/hardsuit/proc/turn_cooling_on(mob/user)
 	if(!cell)
 		return
 	if(cell.charge <= 0)
@@ -558,7 +558,7 @@
 	to_chat(usr, "<span class='notice'>You switch \the [src]'s cooling system on.</span>")
 
 
-/obj/item/hardsuit/proc/turn_cooling_off(var/mob/user, var/failed)
+/obj/item/hardsuit/proc/turn_cooling_off(mob/user, failed)
 	if(failed)
 		visible_message("\The [src]'s cooling system clicks and whines as it powers down.")
 	else
@@ -673,7 +673,7 @@
 	for(var/obj/item/hardsuit_module/module in installed_modules)
 		cell.use(module.process()*10)
 
-/obj/item/hardsuit/proc/check_power_cost(var/mob/living/user, var/cost, var/use_unconcious, var/obj/item/hardsuit_module/mod, var/user_is_ai)
+/obj/item/hardsuit/proc/check_power_cost(mob/living/user, cost, use_unconcious, obj/item/hardsuit_module/mod, user_is_ai)
 
 	if(!istype(user))
 		return 0
@@ -708,7 +708,7 @@
 	cell.use(cost*10)
 	return 1
 
-/obj/item/hardsuit/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/nano_state = inventory_state)
+/obj/item/hardsuit/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1, nano_state = inventory_state)
 	if(!user)
 		return
 
@@ -808,7 +808,7 @@
 		wearer.update_inv_back()
 	return
 
-/obj/item/hardsuit/proc/check_suit_access(var/mob/living/carbon/human/user)
+/obj/item/hardsuit/proc/check_suit_access(mob/living/carbon/human/user)
 
 	if(!security_check_enabled)
 		return 1
@@ -868,7 +868,7 @@
 	src.add_fingerprint(usr)
 	return 0
 
-/obj/item/hardsuit/proc/notify_ai(var/message)
+/obj/item/hardsuit/proc/notify_ai(message)
 	for(var/obj/item/hardsuit_module/ai_container/module in installed_modules)
 		if(module.integrated_ai && module.integrated_ai.client && !module.integrated_ai.stat)
 			to_chat(module.integrated_ai, "[message]")
@@ -894,7 +894,7 @@
 		wearer.wearing_rig = src
 		update_icon()
 
-/obj/item/hardsuit/proc/toggle_piece(var/piece, var/mob/living/carbon/human/H, var/deploy_mode)
+/obj/item/hardsuit/proc/toggle_piece(piece, mob/living/carbon/human/H, deploy_mode)
 
 	if(is_cycling() || !cell || !cell.charge)
 		return
@@ -960,7 +960,7 @@
 	if(piece == "helmet" && helmet)
 		helmet.update_light(H)
 
-/obj/item/hardsuit/proc/deploy(mob/M,var/sealed)
+/obj/item/hardsuit/proc/deploy(mob/M,sealed)
 
 	var/mob/living/carbon/human/H = M
 
@@ -1063,7 +1063,7 @@
 			to_chat(wearer, "<span class='warning'>The [source] has damaged your [dam_module.interface_name]!</span>")
 	dam_module.deactivate()
 
-/obj/item/hardsuit/proc/malfunction_check(var/mob/living/carbon/human/user)
+/obj/item/hardsuit/proc/malfunction_check(mob/living/carbon/human/user)
 	if(malfunction_delay)
 		if(!is_online())
 			to_chat(user, "<span class='danger'>The suit is completely unresponsive.</span>")
@@ -1072,7 +1072,7 @@
 		return 1
 	return 0
 
-/obj/item/hardsuit/proc/ai_can_move_suit(var/mob/user, var/check_user_module = 0, var/check_for_ai = 0)
+/obj/item/hardsuit/proc/ai_can_move_suit(mob/user, check_user_module = 0, check_for_ai = 0)
 
 	if(check_for_ai)
 		if(!(locate(/obj/item/hardsuit_module/ai_container) in contents))
@@ -1107,13 +1107,13 @@
 		return 0
 	return 1
 
-/obj/item/hardsuit/proc/force_rest(var/mob/user)
+/obj/item/hardsuit/proc/force_rest(mob/user)
 	if(!ai_can_move_suit(user, check_user_module = 1))
 		return
 	wearer.lay_down()
 	to_chat(user, "<span class='notice'>\The [wearer] is now [wearer.resting ? "resting" : "getting up"].</span>")
 
-/obj/item/hardsuit/proc/forced_move(var/direction, var/mob/user, var/ai_moving = TRUE, protean_shitcode_moment)
+/obj/item/hardsuit/proc/forced_move(direction, mob/user, ai_moving = TRUE, protean_shitcode_moment)
 	// Why is all this shit in client/Move()? Who knows?
 	if(world.time < wearer_move_delay)
 		return

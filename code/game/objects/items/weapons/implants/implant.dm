@@ -23,7 +23,7 @@
 	return
 
 // Moves the implant where it needs to go, and tells it if there's more to be done in post_implant
-/obj/item/implant/proc/handle_implant(var/mob/source, var/target_zone = BP_TORSO)
+/obj/item/implant/proc/handle_implant(mob/source, target_zone = BP_TORSO)
 	. = TRUE
 	imp_in = source
 	implanted = TRUE
@@ -41,7 +41,7 @@
 	listening_objects |= src
 
 // Takes place after handle_implant, if that returns TRUE
-/obj/item/implant/proc/post_implant(var/mob/source)
+/obj/item/implant/proc/post_implant(mob/source)
 
 /obj/item/implant/proc/get_data()
 	return "No information available"
@@ -67,7 +67,7 @@
 	icon_state = "implant_melted"
 	malfunction = MALFUNCTION_PERMANENT
 
-/obj/item/implant/proc/implant_loadout(var/mob/living/carbon/human/H)
+/obj/item/implant/proc/implant_loadout(mob/living/carbon/human/H)
 	if(H)
 		if(handle_implant(H, initialize_loc))
 			post_implant(H)
@@ -110,7 +110,7 @@ GLOBAL_LIST_BOILERPLATE(all_tracking_implants, /obj/item/implant/tracking)
 	. = ..()
 	id = rand(1, 1000)
 
-/obj/item/implant/tracking/post_implant(var/mob/source)
+/obj/item/implant/tracking/post_implant(mob/source)
 	START_PROCESSING(SSobj, src)
 
 /obj/item/implant/tracking/Destroy()
@@ -195,7 +195,7 @@ Implant Specifics:<BR>"}
 	return
 
 
-/obj/item/implant/dexplosive/activate(var/cause)
+/obj/item/implant/dexplosive/activate(cause)
 	if((!cause) || (!src.imp_in))	return 0
 	explosion(src, -1, 0, 2, 3, 0)//This might be a bit much, dono will have to see.
 	if(src.imp_in)
@@ -231,7 +231,7 @@ Implant Specifics:<BR>"}
 	hear(msg)
 	return
 
-/obj/item/implant/explosive/hear(var/msg)
+/obj/item/implant/explosive/hear(msg)
 	var/list/replacechars = list("'" = "","\"" = "",">" = "","<" = "","(" = "",")" = "")
 	msg = replace_characters(msg, replacechars)
 	if(findtext(msg,phrase))
@@ -375,7 +375,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 		src.activate(src.reagents.total_volume)
 	return
 
-/obj/item/implant/chem/activate(var/cause)
+/obj/item/implant/chem/activate(cause)
 	if((!cause) || (!src.imp_in))	return 0
 	var/mob/living/carbon/R = src.imp_in
 	src.reagents.trans_to_mob(R, cause, CHEM_INJECT)
@@ -512,7 +512,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 	else if(M.stat == 2)
 		activate("death")
 
-/obj/item/implant/death_alarm/activate(var/cause)
+/obj/item/implant/death_alarm/activate(cause)
 	var/mob/M = imp_in
 	var/area/t = get_area(M)
 	switch (cause)
@@ -690,7 +690,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 		hear(say_in_me.group[2])
 
 
-/obj/item/implant/sizecontrol/hear(var/msg)
+/obj/item/implant/sizecontrol/hear(msg)
 	if (malfunction)
 		return
 

@@ -157,7 +157,7 @@
 	else
 		return ..()
 
-/mob/living/simple_mob/animal/goliath/proc/find_mate(var/mob/living/simple_mob/animal/goliath/G)
+/mob/living/simple_mob/animal/goliath/proc/find_mate(mob/living/simple_mob/animal/goliath/G)
 	for(var/mob/living/L in view(4,src))
 		if(istype(L, /mob/living/simple_mob/animal/goliath))
 			visible_message("<span class='warning'>The [src] seems to be performing some kind of dance using its tendrils.</span>")

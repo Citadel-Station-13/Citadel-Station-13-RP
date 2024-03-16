@@ -73,7 +73,7 @@
 	tracer_type = /obj/effect/projectile/tracer/xray
 	impact_type = /obj/effect/projectile/impact/xray
 
-/obj/projectile/beam/sizelaser/on_hit(var/atom/target)
+/obj/projectile/beam/sizelaser/on_hit(atom/target)
 	var/mob/living/M = target
 	if(!M.permit_sizegun)
 		M.visible_message("<span class='warning'>[src] has no effect on [M].</span>")

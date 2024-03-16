@@ -56,7 +56,7 @@
 	else
 		to_chat (usr, "You were unable to toggle the [src]'s radio.")
 
-/obj/item/mmi/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/item/mmi/attackby(obj/item/O as obj, mob/user as mob)
 	if(istype(O,/obj/item/organ/internal/brain) && !brainmob) //Time to stick a brain in it --NEO
 
 		var/obj/item/organ/internal/brain/B = O
@@ -136,7 +136,7 @@
 		icon_state = "mmi_empty"
 		name = "Man-Machine Interface"
 
-/obj/item/mmi/proc/transfer_identity(var/mob/living/carbon/human/H)//Same deal as the regular brain proc. Used for human-->robot people.
+/obj/item/mmi/proc/transfer_identity(mob/living/carbon/human/H)//Same deal as the regular brain proc. Used for human-->robot people.
 	brainmob = new(src)
 	brainmob.name = H.real_name
 	brainmob.real_name = H.real_name
@@ -153,7 +153,7 @@
 	locked = 1
 	return
 
-/obj/item/mmi/relaymove(var/mob/user, var/direction)
+/obj/item/mmi/relaymove(mob/user, direction)
 	if(!CHECK_MOBILITY(user, MOBILITY_CAN_MOVE))
 		return
 	var/obj/item/hardsuit/hardsuit = src.get_hardsuit()
@@ -241,7 +241,7 @@
 				brainmob.emp_damage += rand(0,5)
 	..()
 
-/obj/item/mmi/digital/transfer_identity(var/mob/living/carbon/H)
+/obj/item/mmi/digital/transfer_identity(mob/living/carbon/H)
 	brainmob.dna = H.dna
 	brainmob.timeofhostdeath = H.timeofdeath
 	brainmob.set_stat(CONSCIOUS)
@@ -278,7 +278,7 @@
 	for (var/mob/M in viewers(T))
 		M.show_message("<font color=#4F49AF>\The [src] buzzes quietly, and the golden lights fade away. Perhaps you could try again?</font>")
 
-/obj/item/mmi/digital/proc/transfer_personality(var/mob/candidate)
+/obj/item/mmi/digital/proc/transfer_personality(mob/candidate)
 	announce_ghost_joinleave(candidate, 0, "They are occupying a synthetic brain now.")
 	src.searching = 0
 	if(candidate.mind)
@@ -311,7 +311,7 @@
 	brainmob.name = "[pick(list("ADA","DOS","GNU","MAC","WIN","NJS","SKS","DRD","IOS","CRM","IBM","TEX","LVM","BSD",))]-[rand(1000, 9999)]"
 	brainmob.real_name = brainmob.name
 
-/obj/item/mmi/digital/robot/transfer_identity(var/mob/living/carbon/H)
+/obj/item/mmi/digital/robot/transfer_identity(mob/living/carbon/H)
 	..()
 	if(brainmob.mind)
 		brainmob.mind.assigned_role = "Robotic Intelligence"
@@ -343,7 +343,7 @@
 	..()
 
 
-/obj/item/mmi/digital/posibrain/transfer_identity(var/mob/living/carbon/H)
+/obj/item/mmi/digital/posibrain/transfer_identity(mob/living/carbon/H)
 	..()
 	if(brainmob.mind)
 		brainmob.mind.assigned_role = "Positronic Brain"
@@ -351,7 +351,7 @@
 	icon_state = "posibrain-occupied"
 	return
 
-/obj/item/mmi/digital/posibrain/transfer_personality(var/mob/candidate)
+/obj/item/mmi/digital/posibrain/transfer_personality(mob/candidate)
 	..()
 	icon_state = "posibrain-occupied"
 

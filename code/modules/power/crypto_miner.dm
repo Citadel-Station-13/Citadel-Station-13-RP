@@ -93,7 +93,7 @@ GLOBAL_VAR_INIT(power_per_point, 1000 KILOWATTS)
     return ..()
 
 
-/obj/machinery/power/crypto_miner/proc/heat_environ(var/power_used)
+/obj/machinery/power/crypto_miner/proc/heat_environ(power_used)
     var/datum/gas_mixture/env = loc.return_air()
     if(!env)
         if(temperature_damage < 100)
@@ -122,7 +122,7 @@ GLOBAL_VAR_INIT(power_per_point, 1000 KILOWATTS)
         efficiency = efficiency - (temperature_damage/100)//One thermal damage means a reduction of 1% on the total efficiency
     efficiency = clamp(efficiency, 0,1)
 
-/obj/machinery/power/crypto_miner/proc/repair(var/mob/user,var/delay,var/damage_repaired)
+/obj/machinery/power/crypto_miner/proc/repair(mob/user,delay,damage_repaired)
     if(temperature_damage)
         to_chat(user, SPAN_NOTICE("You start to fix some damage on the [src]'s circuit"))
         if(do_after(user,delay,src))

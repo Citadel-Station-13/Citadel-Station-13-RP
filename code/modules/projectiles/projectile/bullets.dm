@@ -16,12 +16,12 @@
 							'sound/weapons/guns/ricochet3.ogg', 'sound/weapons/guns/ricochet4.ogg')
 	impact_sounds = list(BULLET_IMPACT_MEAT = SOUNDS_BULLET_MEAT, BULLET_IMPACT_METAL = SOUNDS_BULLET_METAL)
 
-/obj/projectile/bullet/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/bullet/on_hit(atom/target, blocked = 0)
 	if (..(target, blocked))
 		var/mob/living/L = target
 		shake_camera(L, 3, 2)
 
-/obj/projectile/bullet/projectile_attack_mob(var/mob/living/target_mob, var/distance, var/miss_modifier)
+/obj/projectile/bullet/projectile_attack_mob(mob/living/target_mob, distance, miss_modifier)
 	if(penetrating > 0 && damage > 20 && prob(damage))
 		mob_passthrough_check = 1
 	else
@@ -34,7 +34,7 @@
 		return 0
 	return ..()
 
-/obj/projectile/bullet/check_penetrate(var/atom/A)
+/obj/projectile/bullet/check_penetrate(atom/A)
 	if(!A || !A.density) return 1 //if whatever it was got destroyed when we hit it, then I guess we can just keep going
 
 	if(istype(A, /obj/mecha))
@@ -243,7 +243,7 @@
 
 	combustion = FALSE
 
-/obj/projectile/bullet/shotgun/ion/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/bullet/shotgun/ion/on_hit(atom/target, blocked = 0)
 	..()
 	empulse(target, 0, 0, 2, 0)	//Only affects what it hits
 	return 1
@@ -362,7 +362,7 @@
 	embed_chance = 0
 	edge = 1
 
-/obj/projectile/bullet/burstbullet/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/bullet/burstbullet/on_hit(atom/target, blocked = 0)
 	if(isturf(target))
 		explosion(target, -1, 0, 2)
 	..()
@@ -377,7 +377,7 @@
 	SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
 	holy = TRUE
 
-/obj/projectile/bullet/burstbullet/service/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/bullet/burstbullet/service/on_hit(atom/target, blocked = 0)
 	if(isturf(target))
 		explosion(target, 0, 1, 2)
 	..()
@@ -433,7 +433,7 @@
 /obj/projectile/bullet/heavy_shotgun/grit
 	name = "custom heavy slug"
 
-/obj/projectile/bullet/heavy_shotgun/grit/on_hit(var/atom/movable/target, var/blocked = 0)
+/obj/projectile/bullet/heavy_shotgun/grit/on_hit(atom/movable/target, blocked = 0)
 	if(isliving(target))
 		var/mob/living/L = target
 		var/throwdir = get_dir(firer,L)
@@ -448,7 +448,7 @@
 	name = "heavy buckshot"
 	range_step = 1
 
-/obj/projectile/bullet/pellet/heavy_shotgun/grit/on_hit(var/atom/movable/target, var/blocked = 0)
+/obj/projectile/bullet/pellet/heavy_shotgun/grit/on_hit(atom/movable/target, blocked = 0)
 	if(isliving(target))
 		var/mob/living/L = target
 		var/throwdir = get_dir(firer,L)

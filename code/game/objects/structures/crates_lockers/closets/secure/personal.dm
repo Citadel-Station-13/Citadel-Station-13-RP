@@ -61,7 +61,7 @@
 		to_chat(user, "<span class='warning'>Access Denied</span>")
 	return
 
-/obj/structure/closet/secure_closet/personal/emag_act(var/remaining_charges, var/mob/user, var/visual_feedback, var/audible_feedback)
+/obj/structure/closet/secure_closet/personal/emag_act(remaining_charges, mob/user, visual_feedback, audible_feedback)
 	if(!broken)
 		broken = 1
 		locked = 0

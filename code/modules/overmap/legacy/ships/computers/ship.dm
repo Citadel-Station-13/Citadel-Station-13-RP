@@ -20,7 +20,7 @@
 		linked = sector
 		return TRUE
 
-/obj/machinery/computer/ship/proc/sync_linked(var/user = null)
+/obj/machinery/computer/ship/proc/sync_linked(user = null)
 	var/obj/overmap/entity/visitable/ship/sector = get_overmap_sector(z)
 	if(!sector)
 		return
@@ -36,7 +36,7 @@
 		if((. = .(candidate)))
 			return
 
-/obj/machinery/computer/ship/proc/display_reconnect_dialog(var/mob/user, var/flavor)
+/obj/machinery/computer/ship/proc/display_reconnect_dialog(mob/user, flavor)
 	var/datum/browser/popup = new (user, "[src]", "[src]")
 	popup.set_content("<center><strong><font color = 'red'>Error</strong></font><br>Unable to connect to [flavor].<br><a href='?src=\ref[src];sync=1'>Reconnect</a></center>")
 	popup.open()

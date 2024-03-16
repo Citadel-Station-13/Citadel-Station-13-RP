@@ -40,7 +40,7 @@
 	src.emag.reagents.add_reagent("lube", 250)
 	src.emag.name = "Lube spray"
 
-/obj/item/robot_module/robot/janitor/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
+/obj/item/robot_module/robot/janitor/respawn_consumable(mob/living/silicon/robot/R, amount)
 	var/obj/item/lightreplacer/LR = locate() in src.modules
 	LR.Charge(R, amount)
 	if(src.emag)
@@ -136,7 +136,7 @@
 	R.add_reagent("beer2", 50)
 	src.emag.name = "Mickey Finn's Special Brew"
 
-/obj/item/robot_module/robot/clerical/butler/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
+/obj/item/robot_module/robot/clerical/butler/respawn_consumable(mob/living/silicon/robot/R, amount)
 	var/obj/item/reagent_containers/food/condiment/enzyme/E = locate() in src.modules
 	E.reagents.add_reagent("enzyme", 2 * amount)
 	if(src.emag)

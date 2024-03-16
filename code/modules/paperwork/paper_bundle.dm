@@ -56,7 +56,7 @@
 	attack_self(usr) //Update the browsed page.
 	add_fingerprint(usr)
 
-/obj/item/paper_bundle/proc/insert_sheet_at(mob/user, var/index, obj/item/sheet)
+/obj/item/paper_bundle/proc/insert_sheet_at(mob/user, index, obj/item/sheet)
 	if(!user.attempt_insert_item_for_installation(sheet, src))
 		return
 	if(istype(sheet, /obj/item/paper))

@@ -29,7 +29,7 @@
 	bio = 1.0
 	rad = 1.0
 
-/obj/item/hardsuit/protean/relaymove(mob/user, var/direction)
+/obj/item/hardsuit/protean/relaymove(mob/user, direction)
 	if(!CHECK_MOBILITY(user, MOBILITY_CAN_MOVE))
 		return
 	forced_move(direction, user, FALSE, TRUE)

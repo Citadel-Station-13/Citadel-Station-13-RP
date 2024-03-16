@@ -111,7 +111,7 @@
 // 		to_chat(user, "<span class='warning'>You can't repair \the [src].</span>")
 // 		return
 
-/obj/item/material/proc/sharpen(datum/material/material_like, var/sharpen_time, var/kit, mob/living/M)
+/obj/item/material/proc/sharpen(datum/material/material_like, sharpen_time, kit, mob/living/M)
 	material_like = SSmaterials.resolve_material(material_like)
 	// if(!fragile && material_primary)
 	if(material_primary)

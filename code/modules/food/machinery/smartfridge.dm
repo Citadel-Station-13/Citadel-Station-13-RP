@@ -53,7 +53,7 @@
 	. = ..()
 	AIR_UPDATE_ON_MOVED_AUTO
 
-/obj/machinery/smartfridge/proc/accept_check(var/obj/item/O as obj) //This isn't complex! You didn't need to override this for EVERY. SINGLE. SUBTYPE.
+/obj/machinery/smartfridge/proc/accept_check(obj/item/O as obj) //This isn't complex! You didn't need to override this for EVERY. SINGLE. SUBTYPE.
 	if(is_type_in_list(O, blacklisted_types))
 		return FALSE
 	return is_type_in_list(O, accepted_types)
@@ -175,7 +175,7 @@
 		to_chat(user, "<span class='notice'>\The [src] smartly refuses [O].</span>")
 		return 1
 
-/obj/machinery/smartfridge/secure/emag_act(var/remaining_charges, var/mob/user)
+/obj/machinery/smartfridge/secure/emag_act(remaining_charges, mob/user)
 	if(!emagged)
 		emagged = 1
 		locked = -1
@@ -212,7 +212,7 @@
 *   SmartFridge Menu
 ********************/
 
-/obj/machinery/smartfridge/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/smartfridge/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)
 	user.set_machine(src)
 
 	var/data[0]
@@ -357,7 +357,7 @@
 	wrenchable = 1
 	icon_state = "drying_rack"
 
-/obj/machinery/smartfridge/drying_rack/accept_check(var/obj/item/O as obj)
+/obj/machinery/smartfridge/drying_rack/accept_check(obj/item/O as obj)
 	if(istype(O, /obj/item/reagent_containers/food/snacks/))
 		var/obj/item/reagent_containers/food/snacks/S = O
 		if (S.dried_type)
@@ -395,7 +395,7 @@
 			overlays_to_add += "drying_rack_drying"
 	add_overlay(overlays_to_add)
 
-/obj/machinery/smartfridge/drying_rack/attackby(var/obj/item/O as obj, mob/user)
+/obj/machinery/smartfridge/drying_rack/attackby(obj/item/O as obj, mob/user)
 	if(istype(O, /obj/item/stack/wetleather/))
 		var/obj/item/stack/wetleather/WL = O
 		if(WL.amount > 1)

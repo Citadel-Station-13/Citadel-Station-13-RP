@@ -67,7 +67,7 @@
 		ui.open()
 		ui.set_auto_update(1)
 
-/datum/nano_module/uav/Topic(var/href, var/href_list = list(), var/datum/topic_state/state)
+/datum/nano_module/uav/Topic(href, href_list = list(), datum/topic_state/state)
 	if((. = ..()))
 		return
 	state = state || DefaultTopicState() || global.default_state
@@ -77,7 +77,7 @@
 	CouldNotUseTopic(usr)
 	return TRUE
 
-/datum/nano_module/uav/proc/OnTopic(var/mob/user, var/list/href_list)
+/datum/nano_module/uav/proc/OnTopic(mob/user, list/href_list)
 	if(href_list["switch_uav"])
 		var/obj/item/uav/U = locate(href_list["switch_uav"]) //This is a \ref to the UAV itself
 		if(!istype(U))
@@ -135,7 +135,7 @@
 	if(viewing_uav(user))
 		look(user)
 
-/datum/nano_module/uav/proc/set_current(var/obj/item/uav/U)
+/datum/nano_module/uav/proc/set_current(obj/item/uav/U)
 	if(current_uav == U)
 		return
 
@@ -155,7 +155,7 @@
 ////
 //// Finding signal strength between us and the UAV
 ////
-/datum/nano_module/uav/proc/get_signal_to(var/atom/movable/AM)
+/datum/nano_module/uav/proc/get_signal_to(atom/movable/AM)
 	// Following roughly the ntnet signal levels
 	// 0 is none
 	// 1 is weak
@@ -204,7 +204,7 @@
 /datum/nano_module/uav/proc/viewing_uav(mob/user)
 	return (WEAKREF(user) in viewers)
 
-/datum/nano_module/uav/proc/look(var/mob/user)
+/datum/nano_module/uav/proc/look(mob/user)
 	if(issilicon(user)) //Too complicated for me to want to mess with at the moment
 		to_chat(user, "<span class='warning'>Regulations prevent you from controlling several corporeal forms at the same time!</span>")
 		return
@@ -217,14 +217,14 @@
 	current_uav.add_master(user)
 	LAZYDISTINCTADD(viewers, WEAKREF(user))
 
-/datum/nano_module/uav/proc/unlook(var/mob/user)
+/datum/nano_module/uav/proc/unlook(mob/user)
 	user.unset_machine()
 	user.reset_view()
 	if(current_uav)
 		current_uav.remove_master(user)
 	LAZYREMOVE(viewers, WEAKREF(user))
 
-/datum/nano_module/uav/check_eye(var/mob/user)
+/datum/nano_module/uav/check_eye(mob/user)
 	if(get_dist(user, nano_host()) > 1 || user.blinded || !current_uav)
 		unlook(user)
 		return -1
@@ -239,14 +239,14 @@
 ////
 //// Relaying movements to the UAV
 ////
-/datum/nano_module/uav/relaymove(var/mob/user, direction)
+/datum/nano_module/uav/relaymove(mob/user, direction)
 	if(current_uav)
 		return current_uav.relaymove(user, direction, signal_strength)
 
 ////
 ////  The effects when looking through a UAV
 ////
-/datum/nano_module/uav/apply_visual(var/mob/M)
+/datum/nano_module/uav/apply_visual(mob/M)
 	if(!M.client)
 		return
 	if(WEAKREF(M) in viewers)

@@ -194,7 +194,7 @@
 		broadcast_status()
 	update_icon()
 
-/obj/machinery/atmospherics/component/unary/outlet_injector/hide(var/i)
+/obj/machinery/atmospherics/component/unary/outlet_injector/hide(i)
 	update_underlays()
 
 /obj/machinery/atmospherics/component/unary/outlet_injector/attack_hand(mob/user, list/params)
@@ -205,7 +205,7 @@
 	update_use_power(injecting ? USE_POWER_IDLE : USE_POWER_OFF)
 	update_icon()
 
-/obj/machinery/atmospherics/component/unary/outlet_injector/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/machinery/atmospherics/component/unary/outlet_injector/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/airlock_electronics))
 		if(!src.allowed(user)) // ID check, otherwise you could just wipe the access with any board.
 			to_chat(user, "<span class='warning'>Access denied.</span>")

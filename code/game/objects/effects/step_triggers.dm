@@ -9,7 +9,7 @@
 	icon = 'icons/mob/screen1.dmi' //VS Edit
 	icon_state = "centermarker" //VS Edit
 
-/obj/effect/step_trigger/proc/Trigger(var/atom/movable/A)
+/obj/effect/step_trigger/proc/Trigger(atom/movable/A)
 	return 0
 
 /obj/effect/step_trigger/Crossed(atom/movable/H as mob|obj)
@@ -197,7 +197,7 @@
 			the_landmark = mark
 			return
 
-/obj/effect/step_trigger/teleporter/landmark/Trigger(var/atom/movable/A)
+/obj/effect/step_trigger/teleporter/landmark/Trigger(atom/movable/A)
 	if(the_landmark)
 		A.forceMove(get_turf(the_landmark))
 
@@ -225,7 +225,7 @@ var/global/list/tele_landmarks = list() // Terrible, but the alternative is loop
 /obj/effect/step_trigger/teleporter/planetary_fall/proc/find_planet()
 	planet = locate(planet_path) in SSplanets.planets
 
-/obj/effect/step_trigger/teleporter/planetary_fall/Trigger(var/atom/movable/A)
+/obj/effect/step_trigger/teleporter/planetary_fall/Trigger(atom/movable/A)
 	if(!planet)
 		find_planet()
 

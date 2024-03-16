@@ -9,7 +9,7 @@
 	var/row_options3 = " width='150px'"
 	var/datum/event_container/selected_event_container = null
 
-/datum/controller/subsystem/events/proc/Interact(var/mob/living/user)
+/datum/controller/subsystem/events/proc/Interact(mob/living/user)
 
 	var/html = GetInteractWindow()
 
@@ -222,7 +222,7 @@
 
 	Interact(usr)
 
-/client/proc/forceEvent(var/type in SSevents.allEvents)
+/client/proc/forceEvent(type in SSevents.allEvents)
 	set name = "Trigger Event (Debug Only)"
 	set category = "Debug"
 

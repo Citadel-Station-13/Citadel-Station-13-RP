@@ -187,7 +187,7 @@ steam.start() -- spawns the effect
 	if(istype(M))
 		affect(M)
 
-/obj/effect/particle_effect/smoke/proc/affect(var/mob/living/carbon/M)
+/obj/effect/particle_effect/smoke/proc/affect(mob/living/carbon/M)
 	if (!istype(M))
 		return 0
 	if(M.wear_mask && (M.wear_mask.clothing_flags & ALLOWINTERNALS))
@@ -226,7 +226,7 @@ steam.start() -- spawns the effect
 	for(var/mob/living/L in get_turf(src))
 		affect(L)
 
-/obj/effect/particle_effect/smoke/bad/affect(var/mob/living/L)
+/obj/effect/particle_effect/smoke/bad/affect(mob/living/L)
 	if (!..())
 		return 0
 	if(L.needs_to_breathe())
@@ -337,7 +337,7 @@ steam.start() -- spawns the effect
 	if(direct)
 		direction = direct
 
-/datum/effect_system/smoke_spread/start(var/I)
+/datum/effect_system/smoke_spread/start(I)
 	var/i = 0
 	for(i=0, i<src.number, i++)
 		if(src.total_smoke > 20)

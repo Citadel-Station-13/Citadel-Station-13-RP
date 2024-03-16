@@ -23,7 +23,7 @@
 	disallow_jobhop = TRUE
 
 // AI procs
-/datum/role/job/station/ai/equip(var/mob/living/carbon/human/H)
+/datum/role/job/station/ai/equip(mob/living/carbon/human/H)
 	if(!H)
 		return 0
 	return 1

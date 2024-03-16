@@ -83,7 +83,7 @@
 
 	visible_message("<span class='notice'>[src] lands on [result]. [comment]</span>", "", "")
 
-/obj/item/dice/proc/rollDice(mob/user as mob, var/silent = 0)
+/obj/item/dice/proc/rollDice(mob/user as mob, silent = 0)
 	result = rand(1, sides)
 	icon_state = "[name][result]"
 
@@ -162,7 +162,7 @@
 		var/obj/item/dice/D = I
 		D.rollDice(user, 1)
 
-/obj/item/storage/dicecup/proc/revealDice(var/mob/viewer)
+/obj/item/storage/dicecup/proc/revealDice(mob/viewer)
 	for(var/obj/item/dice/I in src.contents)
 		var/obj/item/dice/D = I
 		to_chat(viewer, "The [D.name] shows a [D.result].")

@@ -12,7 +12,7 @@
 	drop_sound = 'sound/items/drop/cloth.ogg'
 	pickup_sound = 'sound/items/pickup/cloth.ogg'
 
-/obj/item/towel/equipped(var/M, var/slot)
+/obj/item/towel/equipped(M, slot)
 	..()
 	LAZYINITLIST(sprite_sheets)
 	switch(slot)

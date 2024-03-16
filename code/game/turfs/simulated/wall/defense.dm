@@ -19,7 +19,7 @@
 	inflict_atom_damage(weapon.damage_force, weapon.damage_tier, weapon.damage_flag, weapon.damage_mode, ATTACK_TYPE_MELEE, weapon)
 	return NONE
 
-/turf/simulated/wall/bullet_act(var/obj/projectile/Proj)
+/turf/simulated/wall/bullet_act(obj/projectile/Proj)
 	if(istype(Proj,/obj/projectile/beam))
 		burn(2500)
 	else if(istype(Proj,/obj/projectile/ion))

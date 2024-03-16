@@ -129,7 +129,7 @@
 */
 
 // attack with item, place item on conveyor
-/obj/machinery/conveyor/attackby(var/obj/item/I, mob/user)
+/obj/machinery/conveyor/attackby(obj/item/I, mob/user)
 	if(default_deconstruction_screwdriver(user, I))
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	if(default_deconstruction_crowbar(user, I))
@@ -284,7 +284,7 @@
 			S.position = position
 			S.update()
 
-/obj/machinery/conveyor_switch/attackby(var/obj/item/I, mob/user)
+/obj/machinery/conveyor_switch/attackby(obj/item/I, mob/user)
 	if(default_deconstruction_screwdriver(user, I))
 		return
 

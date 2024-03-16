@@ -331,7 +331,7 @@
 /mob/living/simple_mob/shadekin/speech_bubble_appearance()
 	return "ghost"
 
-/mob/living/simple_mob/shadekin/apply_melee_effects(var/atom/A)
+/mob/living/simple_mob/shadekin/apply_melee_effects(atom/A)
 	. = ..(A)
 	if(isliving(A)) //We punched something!
 		var/mob/living/L = A
@@ -354,7 +354,7 @@
 			energy += gains
 
 //Special hud elements for darkness and energy gains
-/mob/living/simple_mob/shadekin/extra_huds(var/datum/hud/hud,var/icon/ui_style,var/list/hud_elements)
+/mob/living/simple_mob/shadekin/extra_huds(datum/hud/hud,icon/ui_style,list/hud_elements)
 	//Darkness hud
 	darkhud = new /atom/movable/screen()
 	darkhud.icon = ui_style

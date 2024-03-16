@@ -11,7 +11,7 @@ var/list/whitelist = list()
 	whitelist = world.file2list(WHITELISTFILE)
 	if(!whitelist.len)	whitelist = null
 
-/proc/check_whitelist(mob/M /*, var/rank*/)
+/proc/check_whitelist(mob/M /*, rank*/)
 	if(!whitelist)
 		return 0
 	return ("[M.ckey]" in whitelist)

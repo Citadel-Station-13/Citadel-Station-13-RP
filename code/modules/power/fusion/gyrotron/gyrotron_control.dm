@@ -8,14 +8,14 @@
 	var/id_tag
 	var/scan_range = 25
 
-/obj/machinery/computer/gyrotron_control/attack_ai(var/mob/user)
+/obj/machinery/computer/gyrotron_control/attack_ai(mob/user)
 	attack_hand(user)
 
 /obj/machinery/computer/gyrotron_control/attack_hand(mob/user, list/params)
 	add_fingerprint(user)
 	interact(user)
 
-/obj/machinery/computer/gyrotron_control/interact(var/mob/user)
+/obj/machinery/computer/gyrotron_control/interact(mob/user)
 
 	if(machine_stat & (BROKEN|NOPOWER))
 		user.unset_machine()
@@ -94,7 +94,7 @@
 
 	return 0
 
-/obj/machinery/computer/gyrotron_control/attackby(var/obj/item/W, var/mob/user)
+/obj/machinery/computer/gyrotron_control/attackby(obj/item/W, mob/user)
 	..()
 	if(istype(W, /obj/item/multitool))
 		var/new_ident = input("Enter a new ident tag.", "Gyrotron Control", id_tag) as null|text

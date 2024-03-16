@@ -12,14 +12,14 @@
 	flags = ANTAG_SUSPICIOUS | ANTAG_RANDSPAWN | ANTAG_VOTABLE
 	antaghud_indicator = "changeling"
 
-/datum/antagonist/changeling/get_special_objective_text(var/datum/mind/player)
+/datum/antagonist/changeling/get_special_objective_text(datum/mind/player)
 	return "<br><b>Changeling ID:</b> [player.changeling.changelingID].<br><b>Genomes Absorbed:</b> [player.changeling.absorbedcount]"
 
-/datum/antagonist/changeling/update_antag_mob(var/datum/mind/player)
+/datum/antagonist/changeling/update_antag_mob(datum/mind/player)
 	..()
 	player.current.make_changeling()
 
-/datum/antagonist/changeling/create_objectives(var/datum/mind/changeling)
+/datum/antagonist/changeling/create_objectives(datum/mind/changeling)
 	if(!..())
 		return
 
@@ -56,7 +56,7 @@
 				changeling.objectives += survive_objective
 	return
 
-/datum/antagonist/changeling/can_become_antag(var/datum/mind/player, var/ignore_role)
+/datum/antagonist/changeling/can_become_antag(datum/mind/player, ignore_role)
 	if(!..())
 		return 0
 	if(player.current)
@@ -77,7 +77,7 @@
 				return 1
 	return 0
 
-/datum/antagonist/changeling/print_player_full(var/datum/mind/ply)
+/datum/antagonist/changeling/print_player_full(datum/mind/ply)
 	var/text = print_player_lite(ply)
 
 	if(ply.changeling)

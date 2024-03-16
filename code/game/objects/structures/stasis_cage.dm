@@ -17,11 +17,11 @@
 /obj/structure/stasis_cage/attack_hand(mob/user, list/params)
 	release()
 
-/obj/structure/stasis_cage/attack_robot(var/mob/user)
+/obj/structure/stasis_cage/attack_robot(mob/user)
 	if(Adjacent(user))
 		release()
 
-/obj/structure/stasis_cage/proc/contain(var/mob/living/simple_mob/animal)
+/obj/structure/stasis_cage/proc/contain(mob/living/simple_mob/animal)
 	if(contained || !istype(animal))
 		return
 
@@ -51,7 +51,7 @@
 
 	return ..()
 
-/mob/living/simple_mob/OnMouseDropLegacy(var/obj/structure/stasis_cage/over_object)
+/mob/living/simple_mob/OnMouseDropLegacy(obj/structure/stasis_cage/over_object)
 	if(istype(over_object) && Adjacent(over_object) && CanMouseDrop(over_object, usr))
 
 		if(!can_be_involuntarily_caged(over_object, usr))

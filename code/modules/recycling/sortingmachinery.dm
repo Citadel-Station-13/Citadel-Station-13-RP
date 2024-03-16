@@ -385,7 +385,7 @@
 /obj/machinery/disposal/deliveryChute/update()
 	return
 
-/obj/machinery/disposal/deliveryChute/Bumped(var/atom/movable/AM) //Go straight into the chute
+/obj/machinery/disposal/deliveryChute/Bumped(atom/movable/AM) //Go straight into the chute
 	if(istype(AM, /obj/projectile) || istype(AM, /obj/effect) || istype(AM, /obj/mecha))	return
 	switch(dir)
 		if(NORTH)
@@ -429,7 +429,7 @@
 	update()
 	return
 
-/obj/machinery/disposal/deliveryChute/attackby(var/obj/item/I, var/mob/user)
+/obj/machinery/disposal/deliveryChute/attackby(obj/item/I, mob/user)
 	if(!I || !user)
 		return
 

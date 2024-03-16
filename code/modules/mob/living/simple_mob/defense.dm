@@ -47,7 +47,7 @@
 
 
 // When somoene clicks us with an item in hand
-/mob/living/simple_mob/attackby(var/obj/item/O, var/mob/user)
+/mob/living/simple_mob/attackby(obj/item/O, mob/user)
 	if(istype(O, /obj/item/stack/medical))
 		if(stat != DEAD)
 			// This could be done better.
@@ -71,7 +71,7 @@
 
 
 // Handles the actual harming by a melee weapon.
-/mob/living/simple_mob/hit_with_weapon(obj/item/O, mob/living/user, var/effective_force, var/hit_zone)
+/mob/living/simple_mob/hit_with_weapon(obj/item/O, mob/living/user, effective_force, hit_zone)
 	effective_force = O.damage_force
 
 	//Animals can't be stunned(?)
@@ -147,7 +147,7 @@
 	. = min(., 1.0)
 
 // Electricity
-/mob/living/simple_mob/electrocute_act(var/shock_damage, var/obj/source, var/siemens_coeff = 1.0, var/def_zone = null)
+/mob/living/simple_mob/electrocute_act(shock_damage, obj/source, siemens_coeff = 1.0, def_zone = null)
 	shock_damage *= siemens_coeff
 	if(shock_damage < 1)
 		return 0
@@ -174,7 +174,7 @@
 	. = min(., 1.0)
 
 // Shot with taser/stunvolver
-/mob/living/simple_mob/stun_effect_act(var/stun_amount, var/agony_amount, var/def_zone, var/used_weapon=null)
+/mob/living/simple_mob/stun_effect_act(stun_amount, agony_amount, def_zone, used_weapon=null)
 	if(taser_kill)
 		var/stunDam = 0
 		var/agonyDam = 0

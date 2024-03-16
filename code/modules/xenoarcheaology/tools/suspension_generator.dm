@@ -127,7 +127,7 @@
 			to_chat(user, SPAN_WARNING("[src] flashes \'<i>Access denied.</i>\'"))
 		return
 
-/obj/machinery/suspension_gen/emag_act(var/remaining_charges, var/mob/user)
+/obj/machinery/suspension_gen/emag_act(remaining_charges, mob/user)
 	if(locked)
 		locked = FALSE
 		return TRUE

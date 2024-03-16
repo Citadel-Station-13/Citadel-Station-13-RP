@@ -74,7 +74,7 @@
 		to_chat(usr, "There is nothing to remove from the console.")
 	return
 
-/obj/machinery/computer/secure_data/attackby(var/obj/item/O, var/mob/user)
+/obj/machinery/computer/secure_data/attackby(obj/item/O, mob/user)
 	if(istype(O, /obj/item/card/id) && !scan)
 		if(!user.attempt_insert_item_for_installation(O, src))
 			return
@@ -463,12 +463,12 @@
 	if(update_now)
 		SStgui.update_uis(src)
 
-/obj/machinery/computer/secure_data/proc/is_not_allowed(var/mob/user)
+/obj/machinery/computer/secure_data/proc/is_not_allowed(mob/user)
 	if(IsAdminGhost(user))
 		return FALSE
 	return !src.authenticated || user.stat || user.restrained() || (!in_range(src, user) && (!istype(user, /mob/living/silicon)))
 
-/obj/machinery/computer/secure_data/proc/get_photo(var/mob/user)
+/obj/machinery/computer/secure_data/proc/get_photo(mob/user)
 	if(istype(user.get_active_held_item(), /obj/item/photo))
 		var/obj/item/photo/photo = user.get_active_held_item()
 		return photo.full_image()

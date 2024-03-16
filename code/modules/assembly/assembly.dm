@@ -40,14 +40,14 @@
 	VARSET_IN(src, cooldown, FALSE, 2 SECONDS)
 	return TRUE
 
-/obj/item/assembly/proc/pulsed(var/radio = 0)
+/obj/item/assembly/proc/pulsed(radio = 0)
 	if(holder && (wires & WIRE_RECEIVE))
 		activate()
 	if(radio && (wires & WIRE_RADIO_RECEIVE))
 		activate()
 	return TRUE
 
-/obj/item/assembly/proc/pulse(var/radio = 0)
+/obj/item/assembly/proc/pulse(radio = 0)
 	if(holder && (wires & WIRE_PULSE))
 		holder.process_activation(src, 1, 0)
 	if(holder && (wires & WIRE_PULSE_SPECIAL))
@@ -64,7 +64,7 @@
 	update_icon()
 	return secured
 
-/obj/item/assembly/proc/attach_assembly(var/obj/item/assembly/A, var/mob/user)
+/obj/item/assembly/proc/attach_assembly(obj/item/assembly/A, mob/user)
 	holder = new/obj/item/assembly_holder(get_turf(src))
 	if(holder.attach(A,src,user))
 		to_chat(user, SPAN_NOTICE("You attach \the [A] to \the [src]!"))

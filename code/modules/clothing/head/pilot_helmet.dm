@@ -84,7 +84,7 @@
 	images["horizon"] = I
 	raw_images += I
 
-/obj/item/clothing/head/pilot/proc/update_hud(var/status)
+/obj/item/clothing/head/pilot/proc/update_hud(status)
 	if(last_status == status)
 		return
 
@@ -170,7 +170,7 @@
 	qdel(pilot_hud)
 	return ..()
 
-/obj/item/clothing/head/pilot/equipped(var/mob/user,var/slot)
+/obj/item/clothing/head/pilot/equipped(mob/user,slot)
 	. = ..()
 	if(slot == SLOT_ID_HEAD && user.client)
 		user.client.screen |= pilot_hud

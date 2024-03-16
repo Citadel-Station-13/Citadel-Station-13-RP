@@ -129,7 +129,7 @@
 		return
 	return ..()
 
-/obj/machinery/compressor/default_unfasten_wrench(var/mob/user, var/obj/item/W, var/time = 20)
+/obj/machinery/compressor/default_unfasten_wrench(mob/user, obj/item/W, time = 20)
 	if((. = ..()))
 		turbine = null
 		if(anchored)
@@ -226,7 +226,7 @@
 		return
 	return ..()
 
-/obj/machinery/power/turbine/default_unfasten_wrench(var/mob/user, var/obj/item/W, var/time = 20)
+/obj/machinery/power/turbine/default_unfasten_wrench(mob/user, obj/item/W, time = 20)
 	if((. = ..()))
 		compressor = null
 		if(anchored)
@@ -348,7 +348,7 @@
 /obj/machinery/computer/turbine_computer/interact(mob/user)
 	return nano_ui_interact(user)
 
-/obj/machinery/computer/turbine_computer/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/computer/turbine_computer/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)
 	var/list/data = list()
 	data["connected"] = (compressor && compressor.turbine) ? TRUE : FALSE
 	data["compressor_broke"] = (!compressor || (compressor.machine_stat & BROKEN)) ? TRUE : FALSE

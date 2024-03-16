@@ -101,12 +101,12 @@
 	popup.open()
 	return
 
-/obj/item/card/id/proc/set_id_photo(var/mob/M)
+/obj/item/card/id/proc/set_id_photo(mob/M)
 	var/icon/charicon = cached_character_icon(M)
 	front = icon(charicon,dir = SOUTH)
 	side = icon(charicon,dir = WEST)
 
-/mob/proc/set_id_info(var/obj/item/card/id/id_card)
+/mob/proc/set_id_info(obj/item/card/id/id_card)
 	id_card.age = 0
 	id_card.registered_name		= real_name
 	id_card.sex 				= capitalize(gender)
@@ -118,7 +118,7 @@
 		id_card.fingerprint_hash= md5(dna.uni_identity)
 	id_card.update_name()
 
-/mob/living/carbon/human/set_id_info(var/obj/item/card/id/id_card)
+/mob/living/carbon/human/set_id_info(obj/item/card/id/id_card)
 	..()
 	id_card.age = age
 	id_card.species = src.species.name

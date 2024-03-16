@@ -22,7 +22,7 @@
 	linked = null
 	return ..()
 
-/obj/machinery/computer/fission_monitor/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/machinery/computer/fission_monitor/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/multitool))
 		var/obj/item/multitool/M = W
 		if (!isnull(M.connectable) && istype(M.connectable, /obj/machinery/power/fission))
@@ -43,7 +43,7 @@
 		return
 	nano_ui_interact(user)
 
-/obj/machinery/computer/fission_monitor/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/computer/fission_monitor/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)
 	if(!src.powered())
 		return
 
