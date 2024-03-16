@@ -213,11 +213,11 @@
 	icon_state = "lurker"
 	icon_living = "lurker"
 	alpha = 200
+	movement_cooldown = 0.6 SECONDS
 
 	maxHealth = 3 LASERS_TO_KILL
 	health = 3 LASERS_TO_KILL
 
-	base_attack_cooldown = 25
 	projectiletype = /obj/projectile/beam/xray
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting/sniper
 
@@ -230,6 +230,13 @@
 	desc = "A hivebot with two weak shock-guns that fire painful bolts. Not exactly non-lethal, but not the deadliest in the bunch. Still a pain."
 	icon_living = "suppressor"
 	icon_state = "suppressor"
+	base_attack_cooldown = 5
 	movement_cooldown = 0.5 SECONDS
-	projectiletype = /obj/projectile/beam/shock
+	projectiletype = /obj/projectile/beam/stun/hivebot
 
+/obj/projectile/beam/stun/hivebot
+	name = "weak stun beam"
+	icon_state = "stun"
+	agony = 10
+	damage = 10
+	damage_type = BURN
