@@ -232,11 +232,11 @@
 	icon_state = "suppressor"
 	base_attack_cooldown = 5
 	movement_cooldown = 0.5 SECONDS
-	projectiletype = /obj/projectile/beam/stun/hivebot
+	projectiletype = /obj/projectile/beam/smalllaser/hivebot
 
-/obj/projectile/beam/stun/hivebot
-	name = "weak stun beam"
-	icon_state = "stun"
-	agony = 10
-	damage = 10
-	damage_type = BURN
+/obj/projectile/beam/smalllaser/hivebot
+	damage = 25
+	agony = 20
+	muzzle_type = /obj/effect/projectile/muzzle/lightning
+	tracer_type = /obj/effect/projectile/tracer/lightning
+	impact_type = /obj/effect/projectile/impact/lightning
