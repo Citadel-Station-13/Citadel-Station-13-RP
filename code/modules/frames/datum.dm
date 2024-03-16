@@ -1,11 +1,22 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
-GLOBAL_LIST_INIT(frame_datums, init_frame_datums())
+GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 
 /proc/init_frame_datums()
+	var/list/constructed = list()
+	for(var/datum/frame2/frame_path as anything in subtypesof(/datum/frame2))
+		if(initial(frame_path.abstract_type) == frame_path)
+			continue
+		var/datum/frame2/made = new frame_path
+		constructed[frame_path] = made
+	return constructed
 
-#warn global list
+/proc/fetch_frame_datum(datum/frame2/framelike)
+	if(istype(framelike))
+	else
+		framelike = GLOB.frame_datum_lookup[framelike]
+	return framelike
 
 /**
  * arbitrary construction framework
@@ -62,6 +73,9 @@ GLOBAL_LIST_INIT(frame_datums, init_frame_datums())
 	/// anchoring tool
 	var/anchor_tool = TOOL_WRENCH
 
+	/// are we a dense frame object? if it's a wall mount, the answer should probably be no.
+	var/has_density = FALSE
+
 	/// is this frame a wall-frame?
 	var/wall_frame = FALSE
 	/// default pixel x offset for wall-frames; positive if right, negative if left
@@ -85,28 +99,106 @@ GLOBAL_LIST_INIT(frame_datums, init_frame_datums())
 
 #warn impl
 
+/datum/frame2/proc/apply_to_frame(obj/structure/frame/frame)
+	frame.density = has_density
+	frame.update_icon()
+
 /**
  * @return finished product
  */
-/datum/frame2/proc/finish_frame(obj/structure/frame/frame)
+/datum/frame2/proc/finish_frame(obj/structure/frame/frame, destroy_structure = TRUE)
+	ASSERT(isturf(frame.loc))
+	. = instance_product(frame)
+	if(destroy_structure)
+		qdel(frame)
 
+/**
+ * @return finished product
+ */
+/datum/frame2/proc/instance_product(obj/structure/frame/frame)
+	CRASH("abstract proc called.")
+
+/**
+ * @return TRUE / FALSE success / fail
+ */
 /datum/frame2/proc/move_frame_forwards(obj/structure/frame/frame, from_stage)
+	if(frame.stage != from_stage)
+		return FALSE
+	#warn impl
 
+/**
+ * @return TRUE / FALSE success / fail
+ */
 /datum/frame2/proc/move_frame_backwards(obj/structure/frame/frame, from_stage)
+	if(frame.stage != from_stage)
+		return FALSE
+	#warn impl
 
+/**
+ * If trying to deconstruct or finish the frame, you *must* do:
+ * * FRAME_STAGE_DECONSTRUCT
+ * * FRAME_STAGE_FINISH
+ *
+ * @return TRUE / FALSE success / fail
+ */
 /datum/frame2/proc/move_frame_to(obj/structure/frame/frame, from_stage, to_stage)
+	if(frame.stage != from_stage)
+		return FALSE
+	if(to_stage < 1 || to_stage > stage_count())
+		// check your fucking inputs
+		CRASH("attempted to swap stage past bounds; this is not just a race condition, this means someone fucked up!")
+	#warn impl
 
-/datum/frame2/proc/on_examine(obj/structure/frame/frame, list/examine_list)
+/datum/frame2/proc/on_examine(obj/structure/frame/frame, datum/event_args/actor/actor, list/examine_list)
+	examine_list += instruction_forwards(frame, actor)
+	examine_list += instruction_backwards(frame, actor)
+	examine_list += instruction_special(frame, actor)
+	#warn impl
+
+/**
+ * @return string
+ */
+/datum/frame2/proc/instruction_forwards(obj/structure/frame/frame, datum/event_args/actor/actor)
+	#warn impl default
+
+/**
+ * @return string
+ */
+/datum/frame2/proc/instruction_backwards(obj/structure/frame/frame, datum/event_args/actor/actor)
+	#warn impl default
+
+/**
+ * @return list(string, ...)
+ */
+/datum/frame2/proc/instruction_special(obj/structure/frame/frame, datum/event_args/actor/actor)
+	return list()
 
 /**
  * @return TRUE if handled
  */
-/datum/frame2/proc/on_item(obj/structure/frame/frame, obj/item/item, datum/event_args/actor/actor)
+/datum/frame2/proc/on_item(obj/structure/frame/frame, obj/item/item, datum/event_args/actor/clickchain/click)
+	#warn impl
 
 /**
  * @return TRUE if handled
  */
-/datum/frame2/proc/on_tool(obj/structure/frame/frame, obj/item/tool, datum/event_args/actor/actor, function)
+/datum/frame2/proc/on_tool(obj/structure/frame/frame, obj/item/tool, datum/event_args/actor/clickchain/click, function)
+	#warn impl
+
+/**
+ * @return TRUE if handled
+ */
+/datum/frame2/proc/on_interact(obj/structure/frame/frame, datum/event_args/actor/clickchain/click)
+	#warn impl
+
+/**
+ * @return finished product if finished
+ */
+/datum/frame2/proc/try_finish_frame(obj/structure/frame/frame, datum/event_args/actor/actor, destroy_structure = TRUE)
+	ASSERT(isturf(frame.loc))
+	if(!obstruction_checks(frame.loc, frame.dir, actor))
+		return
+	return finish_frame(frame, destroy_structure)
 
 /**
  * regarding direction
@@ -120,9 +212,13 @@ GLOBAL_LIST_INIT(frame_datums, init_frame_datums())
 		#warn not wall frame; check non-blocking
 	#warn wall frame..
 
+/**
+ * @return FALSE if obstructed
+ */
+/datum/frame2/proc/obstruction_checks(turf/location, dir, datum/event_args/actor/actor, silent)
+	return TRUE
+
 #warn guh
 
-/**
- * requires a specific circuitboard, or just doesn't require one at all
- */
-/datum/frame2/preloaded
+/datum/frame2/proc/stage_count()
+	return length(steps_forward)

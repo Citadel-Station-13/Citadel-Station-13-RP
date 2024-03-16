@@ -34,7 +34,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/fire_alarm/alarms_hidden, 21)
 	dir = turn(dir, -preloader.turn_angle)
 	return FALSE
 
-/obj/machinery/fire_alarm/Initialize(mapload)
+/obj/machinery/fire_alarm/Initialize(mapload, dir = src.dir)
 	. = ..()
 	if(z in (LEGACY_MAP_DATUM).contact_levels)
 		set_security_level(GLOB.security_level ? get_security_level() : "green")

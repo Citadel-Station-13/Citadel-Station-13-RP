@@ -1,4 +1,4 @@
-AUTO_FRAME_DATUM(preloaded/apc, 'icons/objects/frames/apc.dmi')
+AUTO_FRAME_DATUM(apc, 'icons/objects/frames/apc.dmi')
 /datum/frame2/apc
 	name = "APC frame"
 	material_cost = 2
@@ -8,6 +8,7 @@ AUTO_FRAME_DATUM(preloaded/apc, 'icons/objects/frames/apc.dmi')
 	wall_frame = TRUE
 	#warn wallframe offsets
 
-/datum/frame2/apc/finish_frame(obj/structure/frame/frame)
-	ASSERT(isturf(frame.loc))
+/datum/frame2/apc/instance_product(obj/structure/frame/frame)
 	return new /obj/machinery/power/apc(frame.loc, frame.dir, TRUE)
+
+#warn sanity checks / location guards

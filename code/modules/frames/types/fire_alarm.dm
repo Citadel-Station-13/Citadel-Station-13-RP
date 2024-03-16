@@ -1,4 +1,4 @@
-AUTO_FRAME_DATUM(preloaded/apc, 'icons/objects/frames/fire_alarm.dmi')
+AUTO_FRAME_DATUM(fire_alarm, 'icons/objects/frames/fire_alarm.dmi')
 /datum/frame2/fire_alarm
 	name = "fire alarm frame"
 	material_cost = 2
@@ -38,3 +38,6 @@ AUTO_FRAME_DATUM(preloaded/apc, 'icons/objects/frames/fire_alarm.dmi')
 			FRAME_STEP_REQUEST = TOOL_WIRECUTTER,
 		),
 	)
+
+/datum/frame2/fire_alarm/instance_product(obj/structure/frame/frame)
+	return new /obj/machinery/fire_alarm(frame.loc, frame.dir)
