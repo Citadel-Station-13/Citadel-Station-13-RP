@@ -2451,15 +2451,15 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 		temp_timer.timer_duration = 1
 	..()
 
-/area/security/prison/processing
+/area/security/prisonprocessing
 	name = "\improper Security - Prison Processing"
 	icon_state = "sec_prison"
 
-/area/security/prison/upper
+/area/security/prisonupper
 	name = "\improper Security - Upper Prison Wing"
 	icon_state = "sec_prison"
 
-/area/security/prison/lower
+/area/security/prisonlower
 	name = "\improper Security - Lower Prison Wing"
 	icon_state = "sec_prison"
 
