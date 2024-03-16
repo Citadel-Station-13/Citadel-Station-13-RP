@@ -2514,7 +2514,7 @@
 	pixel_y = -12
 	},
 /turf/simulated/floor/tiled/white,
-/area/security/prison)
+/area/security/prison/lower)
 "go" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
@@ -7760,7 +7760,7 @@
 	pixel_y = 16
 	},
 /turf/simulated/floor/tiled/white,
-/area/security/prison)
+/area/security/prison/lower)
 "ye" = (
 /obj/machinery/atmospherics/portables_connector,
 /turf/simulated/floor/tiled,
@@ -14043,7 +14043,7 @@
 /obj/item/material/kitchen/rollingpin,
 /obj/item/material/knife/butch,
 /turf/simulated/floor/tiled/white,
-/area/security/prison)
+/area/security/prison/lower)
 "TG" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/green,
 /obj/machinery/meter,
@@ -15422,10 +15422,6 @@
 /obj/machinery/camera/network/research,
 /turf/simulated/floor/tiled,
 /area/rnd/secure_storage/upper)
-"Yl" = (
-/obj/effect/floor_decal/corner/grey/diagonal,
-/turf/simulated/floor/tiled/white,
-/area/security/prison)
 "Ym" = (
 /obj/structure/mirror/long,
 /turf/simulated/wall/r_wall/prepainted/security,
@@ -36267,10 +36263,10 @@ Ip
 Vg
 Vg
 fN
-Yl
-Yl
-Yl
-Yl
+sP
+sP
+sP
+sP
 sP
 sP
 sP
@@ -36461,10 +36457,10 @@ dD
 Vg
 Vg
 fN
-Yl
-Yl
-Yl
-Yl
+sP
+sP
+sP
+sP
 sP
 sP
 sP
@@ -36655,7 +36651,7 @@ Vg
 Vg
 Vg
 iA
-Yl
+sP
 yc
 gn
 TF
@@ -36849,10 +36845,10 @@ Vg
 Vg
 Vg
 lK
-Yl
-Yl
-Yl
-Yl
+sP
+sP
+sP
+sP
 sP
 sP
 sP

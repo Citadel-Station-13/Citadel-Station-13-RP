@@ -12993,9 +12993,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
-"ind" = (
-/turf/simulated/wall/r_wall/prepainted,
-/area/security/range)
 "inX" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 4
@@ -28370,7 +28367,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/firedoor/glass{
-	dir = 8
+	dir = 4
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/security/lobby)
@@ -53966,7 +53963,7 @@ tZW
 lQX
 lxh
 qUB
-ind
+qjY
 xPp
 xPp
 xPp
@@ -54160,7 +54157,7 @@ sfs
 oqx
 nyq
 ycY
-ind
+qjY
 xPp
 dTx
 dTx
@@ -54354,7 +54351,7 @@ lxh
 lxh
 lxh
 gne
-ind
+qjY
 xPp
 dTx
 lOg
@@ -54548,7 +54545,7 @@ aEk
 xco
 xco
 xFu
-ind
+qjY
 xPp
 sfI
 dTx
@@ -54742,7 +54739,7 @@ bVi
 bVi
 bVi
 gne
-ind
+qjY
 xPp
 dTx
 lOg
@@ -54936,7 +54933,7 @@ ayG
 cwt
 cwt
 fse
-ind
+qjY
 xPp
 sfI
 dTx
@@ -55130,7 +55127,7 @@ gne
 bVi
 bVi
 bVi
-ind
+qjY
 xPp
 dTx
 lOg
@@ -55324,7 +55321,7 @@ gne
 bVi
 yjX
 bVi
-ind
+qjY
 xPp
 dTx
 dTx
@@ -55518,7 +55515,7 @@ msH
 uAn
 uAn
 yga
-xPp
+yga
 xPp
 dep
 dep
