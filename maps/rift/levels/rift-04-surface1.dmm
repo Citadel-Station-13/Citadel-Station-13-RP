@@ -16169,7 +16169,6 @@
 	},
 /obj/structure/metal_edge,
 /turf/simulated/floor/plating/lythios43c,
-/turf/simulated/floor/outdoors/snow/noblend/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "ktI" = (
 /obj/effect/floor_decal/industrial/outline/yellow,

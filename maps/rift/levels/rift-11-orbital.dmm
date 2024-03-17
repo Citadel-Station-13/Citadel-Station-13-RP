@@ -311,10 +311,6 @@
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_emptycourt)
-"bh" = (
-/turf/space/basic,
-/turf/space/basic,
-/area/space)
 "bi" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -32758,11 +32754,11 @@ Bv
 Bv
 Bv
 Bv
-bh
-bh
-bh
-bh
-bh
+Bv
+Bv
+Bv
+Bv
+Bv
 Bv
 Bv
 Bv
