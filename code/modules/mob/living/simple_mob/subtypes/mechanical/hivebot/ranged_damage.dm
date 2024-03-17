@@ -205,7 +205,7 @@
 	projectiletype = /obj/projectile/arc/fragmentation/mortar
 
 
-//kiting hivebot, not exactly a miniboss but dangerous. punishes indecisive behavior and overly-reliant melee, extremely weak to staying on their butt.
+//kiting hivebot, punishes indecisive behavior and overly-reliant melee, extremely weak to staying on their butt. not too stronk
 //relatively weak bullets, but high armor pen for consistent damage. do not use in large quantities
 /mob/living/simple_mob/mechanical/hivebot/ranged_damage/kiting
 	name = "hivebot lurker"
@@ -213,26 +213,32 @@
 	icon_state = "lurker"
 	icon_living = "lurker"
 	alpha = 200
-	movement_cooldown = 0.6 SECONDS
-
-	maxHealth = 3 LASERS_TO_KILL
-	health = 3 LASERS_TO_KILL
+	movement_cooldown = 0.7 SECONDS
 
 	projectiletype = /obj/projectile/beam/xray
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting/sniper
 
 	icon_scale_x = 1.4
 	icon_scale_y = 1.4
+	catalogue_data = list(/datum/category_item/catalogue/technology/drone/hivebot/lurker)
 
-//faster-moving hivebot that would love to get to know you more personal-like. causes light damage and also halloss, no armor pen
+
+
+//faster-moving hivebot that would love to get to know you more personal-like. causes light damage and also halloss, no armor pen. sorta-miniboss, more a 'hey, look at me RIGHT NOW' type of deal
 /mob/living/simple_mob/mechanical/hivebot/ranged_damage/suppressor
 	name = "hivebot suppressor"
-	desc = "A hivebot with two weak shock-guns that fire painful bolts. Not exactly non-lethal, but not the deadliest in the bunch. Still a pain."
+	desc = "A hivebot with two weak, but rapid-fire shock-guns that fire painful bolts. Less-lethal, but rapid-firing."
 	icon_living = "suppressor"
 	icon_state = "suppressor"
-	base_attack_cooldown = 5
+	base_attack_cooldown = 6
 	movement_cooldown = 0.5 SECONDS
 	projectiletype = /obj/projectile/beam/smalllaser/hivebot
+
+	maxHealth = 4 LASERS_TO_KILL
+	health = 4 LASERS_TO_KILL
+
+	catalogue_data = list(/datum/category_item/catalogue/technology/drone/hivebot/suppressor)
+
 
 /obj/projectile/beam/smalllaser/hivebot
 	damage = 25
@@ -240,3 +246,21 @@
 	muzzle_type = /obj/effect/projectile/muzzle/lightning
 	tracer_type = /obj/effect/projectile/tracer/lightning
 	impact_type = /obj/effect/projectile/impact/lightning
+
+
+// in at request - slower hivey but stronker projectile, alien pistol.
+/mob/living/simple_mob/mechanical/hivebot/ranged_damage/scorcher
+	name = "hivebot scorcher"
+	desc = "A hivebot with a vicious-looking, strange weapon attached to its arm."
+
+	icon_state = "lurker"
+	icon_living = "lurker"
+
+	projectiletype = /obj/projectile/beam/cyan/hivebot
+
+	catalogue_data = list(/datum/category_item/catalogue/technology/drone/hivebot/scorcher)
+
+
+/obj/projectile/beam/cyan/hivebot //PREPARE THYSELF
+	damage = 40
+	armor_penetration = 10

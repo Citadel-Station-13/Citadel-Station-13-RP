@@ -70,3 +70,22 @@
 	armor piercing flechettes of the piercer can penetrate even the most protective armors. It is suggested that the Piercer was \
 	first developed as the hivebot's answer to Unathi breacher RiGs and it has been a fitting answer indeed."
 	value = CATALOGUER_REWARD_HARD
+
+/datum/category_item/catalogue/technology/drone/hivebot/suppressor
+	name = "Supressor Hivebot"
+	desc = "A Hizzori-clan hivebot. The Supressor is a fast, bulky hivebot with two weak, but fast-firing, taser guns. Oddly enough, the tasers appear \
+	to be similar in design to those used by corporate security forces. Its programming also appears to heavily encourage aggreesive \
+	behavior, causing...unpleasant close-range confrontations. Thankfully, each individual strike is not terribly powerful."
+
+/datum/category_item/catalogue/technology/drone/hivebot/scorcher
+	name = "Scorcher Hivebot"
+	desc = "... causing the w3ap0n on !tss arm to be #nntirely powered by some kind of paracausal loop that bind$ th#e zero-poin*t energy and lat%nt bounds of realitivity to its firing mechanism ..."
+
+/datum/category_item/catalogue/technology/drone/hivebot/lurker
+	name = "Lurker Hivebot"
+	desc = "An Enigmatic Salvager. But it's so much more than that. Almost every race considered sapient on the General Intellegence Scale has a fear of \
+	the dark. It's a deep fear, from when it was evolutionarily advantageous to huddle in close to the fire, in the light, to avoid the unknown. \
+	A field that bends visible light, that interferes with thermal and scanners, cloaks it, swathing it in its own darkness. A single shot from the distant dark, \
+	and it will scuttle away, content to wait for you to try to hide near your campfire again."
+
+
