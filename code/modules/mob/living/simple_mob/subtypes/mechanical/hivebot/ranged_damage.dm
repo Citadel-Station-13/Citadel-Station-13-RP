@@ -248,7 +248,7 @@
 	impact_type = /obj/effect/projectile/impact/lightning
 
 
-// in at request - slower hivey but stronker projectile, alien pistol.
+// slower hivey but stronker projectile, alien pistol.
 /mob/living/simple_mob/mechanical/hivebot/ranged_damage/scorcher
 	name = "hivebot scorcher"
 	desc = "A hivebot with a vicious-looking, strange weapon attached to its arm."
@@ -261,6 +261,6 @@
 	catalogue_data = list(/datum/category_item/catalogue/technology/drone/hivebot/scorcher)
 
 
-/obj/projectile/beam/cyan/hivebot //PREPARE THYSELF
+/obj/projectile/beam/cyan/hivebot
 	damage = 40
 	armor_penetration = 10
