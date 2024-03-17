@@ -163,29 +163,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/security/upper)
-"aiz" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/red/border{
-	dir = 8
-	},
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/glass/security{
-	layer = 2.8;
-	name = "Visitation";
-	req_one_access = null
-	},
-/obj/machinery/door/blast/regular{
-	density = 0;
-	dir = 4;
-	icon_state = "pdoor0";
-	id = "security_lockdown";
-	name = "Security Blast Doors";
-	opacity = 0
-	},
-/turf/simulated/floor/tiled/steel,
-/area/security/brig)
 "ajc" = (
 /obj/structure/closet,
 /obj/random/maintenance/medical,
@@ -4460,6 +4437,9 @@
 	},
 /turf/simulated/floor/tiled/monowhite,
 /area/medical/resleeving)
+"cPE" = (
+/turf/simulated/floor/tiled/monotile,
+/area/security/brig)
 "cPP" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -5569,19 +5549,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
-"dBB" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/darkred,
-/obj/machinery/door/blast/regular{
-	density = 0;
-	dir = 4;
-	icon_state = "pdoor0";
-	id = "security_lockdown";
-	name = "Security Blast Doors";
-	opacity = 0
-	},
-/turf/simulated/floor/plating,
-/area/security/brig)
 "dCz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -7561,29 +7528,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/holodeck_control)
-"eUJ" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/red/border{
-	dir = 4
-	},
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/glass/security{
-	layer = 2.8;
-	name = "Visitation";
-	req_one_access = null
-	},
-/obj/machinery/door/blast/regular{
-	density = 0;
-	dir = 4;
-	icon_state = "pdoor0";
-	id = "security_lockdown";
-	name = "Security Blast Doors";
-	opacity = 0
-	},
-/turf/simulated/floor/tiled/steel,
-/area/security/brig)
 "eUN" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
@@ -21004,6 +20948,29 @@
 /obj/structure/disposalpipe/trunk,
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay_primary_storage)
+"nkq" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock/glass/security{
+	layer = 2.8;
+	name = "Visitation";
+	req_one_access = null
+	},
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 4;
+	icon_state = "pdoor0";
+	id = "security_lockdown";
+	name = "Security Blast Doors";
+	opacity = 0
+	},
+/turf/simulated/floor/tiled/steel,
+/area/hallway/primary/surfacetwo)
 "nkD" = (
 /obj/machinery/holopad,
 /turf/simulated/floor/tiled/monotile,
@@ -22558,6 +22525,29 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
+"okK" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 8
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock/glass/security{
+	layer = 2.8;
+	name = "Visitation";
+	req_one_access = null
+	},
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 4;
+	icon_state = "pdoor0";
+	id = "security_lockdown";
+	name = "Security Blast Doors";
+	opacity = 0
+	},
+/turf/simulated/floor/tiled/steel,
+/area/hallway/primary/surfacetwo)
 "olp" = (
 /obj/structure/table/glass,
 /obj/machinery/recharger,
@@ -36543,6 +36533,19 @@
 	name = "launch rail"
 	},
 /area/shuttle/hammerhead/cockpit)
+"xFc" = (
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/darkred,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 4;
+	icon_state = "pdoor0";
+	id = "security_lockdown";
+	name = "Security Blast Doors";
+	opacity = 0
+	},
+/turf/simulated/floor/plating,
+/area/hallway/primary/surfacetwo)
 "xFu" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
@@ -56521,8 +56524,8 @@ wNG
 nMi
 wNG
 vtq
-aiz
-uaY
+vtq
+okK
 tZX
 mJn
 hLM
@@ -56714,10 +56717,10 @@ qtq
 hjF
 ekl
 yeT
+cPE
 axb
-dBB
+xFc
 oLy
-mJn
 mJn
 hLM
 mYE
@@ -56909,8 +56912,8 @@ wde
 nMi
 pzA
 oji
-eUJ
-pop
+oji
+nkq
 pop
 pWp
 gMG
