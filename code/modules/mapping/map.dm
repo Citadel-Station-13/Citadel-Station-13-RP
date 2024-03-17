@@ -158,6 +158,10 @@
 	/// force world to be bigger height
 	var/world_height
 
+	/// allow random picking if no map set
+	/// used to exclude indev maps
+	var/allow_random_draw = TRUE
+
 	//! legacy below
 
 	var/full_name = "Unnamed Map"

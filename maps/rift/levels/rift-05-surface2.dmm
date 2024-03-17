@@ -798,7 +798,7 @@
 	},
 /obj/item/paper{
 	desc = "";
-	info = "In the event that more weapon permits are needed, please fax Central Command to request more. Please also include a reason for the request. Blank permits will be shipped to cargo for pickup. If long-term permits are desired, please contact your NanoTrasen Employee Representitive for more information.";
+	info = "In the event that more weapon permits are needed, please fax Central Command to request more. Please also include a reason for the request. Blank permits will be shipped to cargo for pickup. If long-term permits are desired, please contact your Nanotrasen Employee Representitive for more information.";
 	name = "note from CentCom about permits";
 	pixel_x = -4
 	},

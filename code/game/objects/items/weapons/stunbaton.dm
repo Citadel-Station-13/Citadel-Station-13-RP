@@ -293,7 +293,7 @@
 
 /obj/item/melee/baton/stunlance
 	name = "stun lance"
-	desc = "Designed by NanoTrasen for mounted expeditions, the stun lance is useful for running down and incapacitating wildlife for study. Its efficacy on fugitives is tacitly implied."
+	desc = "Designed by Nanotrasen for mounted expeditions, the stun lance is useful for running down and incapacitating wildlife for study. Its efficacy on fugitives is tacitly implied."
 	icon_state = "stunlance"
 	w_class = WEIGHT_CLASS_NORMAL
 	reach = 2
