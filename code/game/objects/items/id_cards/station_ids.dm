@@ -372,6 +372,7 @@
 	var/sentence = 0 //Sentance in minutes
 	var/crime = "\[redacted\]"
 
+	job_access_type = null
 	access = list(ACCESS_SECURITY_GENPOP_ENTER)
 
 /obj/item/card/id/prisoner/New()
