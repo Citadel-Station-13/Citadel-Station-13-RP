@@ -21680,21 +21680,6 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/general)
-"jrU" = (
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/door/blast/shutters{
-	density = 0;
-	dir = 8;
-	icon_state = "shutter0";
-	id = "bridge";
-	layer = 3.1;
-	name = "Bridge Lockdown Shutters";
-	opacity = 0
-	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/commandblue,
-/turf/simulated/floor/plating,
-/area/bridge)
 "jsa" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lightgrey/border,
@@ -22132,20 +22117,6 @@
 /obj/effect/paint/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/hydroponics)
-"kdh" = (
-/obj/machinery/door/firedoor/glass,
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/machinery/door/blast/shutters{
-	density = 0;
-	icon_state = "shutter0";
-	id = "bridge";
-	layer = 3.1;
-	name = "Bridge Lockdown Shutters";
-	opacity = 0
-	},
-/obj/effect/paint/commandblue,
-/turf/simulated/floor/plating,
-/area/bridge)
 "kih" = (
 /obj/machinery/door/firedoor/glass{
 	dir = 8
@@ -24208,21 +24179,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/bridge/bunker)
-"pwb" = (
-/obj/machinery/door/firedoor/glass,
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/machinery/door/blast/shutters{
-	density = 0;
-	dir = 4;
-	icon_state = "shutter0";
-	id = "bridge";
-	layer = 3.1;
-	name = "Bridge Lockdown Shutters";
-	opacity = 0
-	},
-/obj/effect/paint/commandblue,
-/turf/simulated/floor/plating,
-/area/bridge)
 "pxd" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
 /obj/effect/paint/purplegray,
@@ -24708,7 +24664,7 @@
 /turf/simulated/floor/grass,
 /area/hydroponics)
 "qKp" = (
-/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/machinery/door/blast/shutters{
 	density = 0;
 	dir = 4;
@@ -24718,7 +24674,6 @@
 	name = "Bridge Lockdown Shutters";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/commandblue,
 /turf/simulated/floor/plating,
 /area/bridge)
@@ -25934,11 +25889,9 @@
 /turf/simulated/floor/tiled/steel,
 /area/exploration/courser_dock)
 "uyj" = (
-/obj/machinery/door/firedoor/glass,
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/machinery/door/blast/shutters{
 	density = 0;
-	dir = 2;
 	icon_state = "shutter0";
 	id = "bridge";
 	layer = 3.1;
@@ -25946,7 +25899,7 @@
 	opacity = 0
 	},
 /obj/effect/paint/commandblue,
-/turf/simulated/wall/r_wall/prepainted/command,
+/turf/simulated/floor/plating,
 /area/bridge)
 "uAA" = (
 /obj/structure/closet/firecloset/full,
@@ -26829,7 +26782,6 @@
 /turf/simulated/floor/carpet/blue,
 /area/crew_quarters/heads/hop)
 "wns" = (
-/obj/machinery/door/firedoor/glass,
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/commandblue,
 /turf/simulated/floor/plating,
@@ -27032,7 +26984,6 @@
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab)
 "wTS" = (
-/obj/machinery/door/firedoor/glass,
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/commandblue,
 /turf/simulated/floor/plating,
@@ -46508,7 +46459,7 @@ tAo
 tAo
 hMC
 tSU
-jrU
+cQV
 fFo
 hMC
 tAo
@@ -46892,7 +46843,7 @@ arR
 acP
 adk
 aGI
-kdh
+uyj
 aee
 aFS
 aeE
@@ -47668,7 +47619,7 @@ wOC
 wOC
 ajx
 aIF
-kdh
+uyj
 amZ
 aYB
 aHH
@@ -48447,7 +48398,7 @@ aIF
 qKs
 qKs
 tAo
-pwb
+qKp
 qKp
 qKp
 tAo

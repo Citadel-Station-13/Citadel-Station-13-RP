@@ -3754,7 +3754,6 @@
 	icon_state = "1-8"
 	},
 /obj/structure/catwalk,
-/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
 "lI" = (
@@ -11967,7 +11966,6 @@
 /obj/machinery/door/airlock/multi_tile/metal{
 	dir = 4
 	},
-/obj/structure/catwalk,
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
