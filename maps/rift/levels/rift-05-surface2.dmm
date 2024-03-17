@@ -8427,12 +8427,6 @@
 /obj/structure/barricade,
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside2)
-"fwk" = (
-/obj/machinery/door/firedoor/glass,
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/effect/paint/babyblue,
-/turf/simulated/floor/plating,
-/area/medical/resleeving)
 "fxc" = (
 /obj/structure/table/steel,
 /obj/effect/floor_decal/borderfloorblack{
@@ -15224,7 +15218,6 @@
 	name = "Pen 8 Blast Doors";
 	opacity = 0
 	},
-/obj/machinery/door/firedoor,
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/effect/paint/purplegray,
 /turf/simulated/floor/reinforced,
@@ -15631,7 +15624,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/maintenance/medbay)
 "keC" = (
-/obj/machinery/door/firedoor/glass,
 /obj/effect/paint/darkred,
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /turf/simulated/floor/plating,
@@ -28569,7 +28561,6 @@
 /turf/simulated/floor/water/deep/pool,
 /area/crew_quarters/pool)
 "sdE" = (
-/obj/machinery/door/firedoor/glass,
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /turf/simulated/floor/plating,
 /area/triumph/surfacebase/sauna)
@@ -31251,7 +31242,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/medbay)
 "tZG" = (
-/obj/machinery/door/firedoor/glass,
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/machinery/door/blast/shutters{
 	density = 0;
@@ -34851,7 +34841,6 @@
 /turf/simulated/floor/tiled/monowhite,
 /area/medical/resleeving)
 "wto" = (
-/obj/machinery/door/firedoor/glass,
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -48735,7 +48724,7 @@ eYx
 gHr
 ixy
 odu
-fwk
+oFb
 jvX
 vjt
 wnW
@@ -48929,7 +48918,7 @@ eYx
 iKu
 kRa
 lto
-fwk
+oFb
 eUN
 dyj
 wBH
@@ -49123,7 +49112,7 @@ oUw
 dTk
 bor
 lto
-fwk
+oFb
 epz
 tQp
 xkt

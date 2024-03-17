@@ -20349,7 +20349,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/bridge_hallway)
 "fTJ" = (
-/obj/machinery/door/firedoor/glass,
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/machinery/door/blast/shutters{
 	density = 0;
@@ -20577,12 +20576,6 @@
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/bar)
-"gvt" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint_stripe/violet,
-/obj/effect/paint_stripe/violet,
-/turf/simulated/floor/plating,
-/area/shuttle/excursion/cockpit)
 "gzQ" = (
 /obj/machinery/light{
 	dir = 8
@@ -23886,7 +23879,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/exploration/excursion_dock)
 "oJN" = (
-/obj/machinery/door/firedoor/glass,
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/commandblue,
 /turf/simulated/floor/plating,
@@ -24161,8 +24153,6 @@
 /turf/simulated/floor/tiled/monotile,
 /area/exploration/pilot_prep)
 "pul" = (
-/obj/structure/grille,
-/obj/machinery/door/firedoor/glass,
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/machinery/door/blast/shutters{
 	density = 0;
@@ -26757,8 +26747,6 @@
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/bridge/office)
 "wlz" = (
-/obj/structure/grille,
-/obj/machinery/door/firedoor/glass,
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/machinery/door/blast/shutters{
 	density = 0;
@@ -42223,7 +42211,7 @@ aTm
 ocs
 oGm
 oGm
-gvt
+ocs
 oGm
 oGm
 afV

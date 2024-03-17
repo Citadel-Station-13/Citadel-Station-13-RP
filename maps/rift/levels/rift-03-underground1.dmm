@@ -9290,15 +9290,6 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/item/reagent_containers/food/urinalcake,
-/obj/item/reagent_containers/food/urinalcake{
-	pixel_x = 2;
-	pixel_y = 3
-	},
-/obj/item/reagent_containers/food/urinalcake{
-	pixel_x = -1;
-	pixel_y = 7
-	},
 /turf/simulated/floor/tiled/monowhite,
 /area/security/prisonlower)
 "DC" = (
@@ -9558,6 +9549,21 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
+"Ez" = (
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 9
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 10
+	},
+/obj/structure/sink{
+	pixel_y = 21
+	},
+/obj/structure/mirror/long{
+	pixel_y = 35
+	},
+/turf/simulated/floor/tiled/white,
+/area/security/prisonlower)
 "EA" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -10494,13 +10500,6 @@
 /obj/effect/floor_decal/rust,
 /obj/random/trash_pile,
 /turf/simulated/floor,
-/area/security/prisonlower)
-"Hv" = (
-/obj/machinery/recharge_station,
-/obj/machinery/light/small{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/white,
 /area/security/prisonlower)
 "Hw" = (
 /obj/item/circuitboard/sleeper{
@@ -12254,6 +12253,21 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
+"Nd" = (
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 9
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 10
+	},
+/obj/structure/mirror/long/right{
+	pixel_y = 35
+	},
+/obj/structure/sink{
+	pixel_y = 21
+	},
+/turf/simulated/floor/tiled/white,
+/area/security/prisonlower)
 "Ne" = (
 /obj/machinery/air_sensor{
 	frequency = 1441;
@@ -12272,11 +12286,17 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "Ni" = (
-/obj/structure/toilet{
-	pixel_y = 9
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 9
 	},
-/obj/machinery/light/small{
-	dir = 4
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 10
+	},
+/obj/structure/mirror/long/left{
+	pixel_y = 35
+	},
+/obj/structure/sink{
+	pixel_y = 21
 	},
 /turf/simulated/floor/tiled/white,
 /area/security/prisonlower)
@@ -12311,6 +12331,18 @@
 "Np" = (
 /obj/machinery/shower{
 	pixel_y = 13
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 9
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/white,
+/area/security/prisonlower)
+"Ns" = (
+/obj/structure/urinal{
+	pixel_y = 29
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 9
@@ -13736,6 +13768,15 @@
 	},
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/underground/under1)
+"St" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/security/prisonlower)
 "Su" = (
 /obj/effect/floor_decal/industrial/halfstair,
 /obj/structure/railing/grey{
@@ -34714,7 +34755,7 @@ Tk
 dD
 ua
 Ni
-El
+dA
 Sb
 El
 Ad
@@ -34907,8 +34948,8 @@ dD
 dD
 FW
 ua
-ua
-ua
+Ez
+dA
 Sb
 ua
 ua
@@ -35101,8 +35142,8 @@ Tk
 Tk
 dD
 ua
-Ni
-El
+Nd
+dA
 Sb
 El
 Ad
@@ -35295,8 +35336,8 @@ OU
 OU
 MG
 ua
-ua
-ua
+Ns
+dA
 Sb
 ua
 ua
@@ -35489,9 +35530,9 @@ Tk
 Tk
 dD
 ua
-Hv
-El
-yg
+Ns
+St
+Sb
 El
 MV
 ua

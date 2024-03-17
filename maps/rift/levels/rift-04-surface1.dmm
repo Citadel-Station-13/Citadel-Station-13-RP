@@ -16962,7 +16962,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/pumpstation)
 "kTn" = (
-/obj/machinery/door/firedoor/glass,
 /obj/machinery/door/blast/regular{
 	dir = 4;
 	id = "test_chamber_blast";
@@ -19618,7 +19617,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lowmedbaymaint)
 "mCK" = (
-/obj/machinery/door/firedoor/glass,
 /obj/machinery/door/blast/regular{
 	dir = 4;
 	id = "test_chamber_blast";
@@ -22909,8 +22907,6 @@
 /turf/simulated/floor/tiled/monotile,
 /area/security/prisonprocessing)
 "oBN" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/darkred,
 /turf/simulated/floor/plating,
