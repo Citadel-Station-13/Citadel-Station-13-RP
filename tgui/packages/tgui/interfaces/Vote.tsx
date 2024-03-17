@@ -122,7 +122,7 @@ const VoteConfig = (props, context) => {
                   value={ghost_weight}
                   minValue={-1}
                   maxValue={100}
-                  onChange={(e, value) => act('ghost_weight', {ghost_weight: value})}
+                  onChange={ (e, value) => act('ghost_weight', {ghost_weight: value}) }
                 />
               </Stack.Item>
               <Stack.Item>
@@ -161,7 +161,7 @@ const ChoicesPanel = (props, context) => {
                       color={
                         selected_choice !== choice.name ? "green" : "grey"
                       }
-                      disabled={choice.name === selected_choice || (ghost_weight === 0 && ghost) }
+                      disabled={choice.name === selected_choice || (ghost_weight === 0 && ghost)}
                       onClick={() => {
                         act("vote", { index: i + 1 });
                       }}
