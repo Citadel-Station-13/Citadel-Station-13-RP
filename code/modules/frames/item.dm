@@ -25,3 +25,11 @@
 		return
 
 #warn arrow image
+
+/obj/item/frame2/tool_act(obj/item/I, datum/event_args/actor/clickchain/e_args, function, flags, hint)
+	. = ..()
+
+/obj/item/frame2/dynamic_tool_query(obj/item/I, datum/event_args/actor/clickchain/e_args, list/hint_images)
+	. = ..()
+
+#warn decon

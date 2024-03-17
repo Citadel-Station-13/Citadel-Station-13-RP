@@ -11,6 +11,8 @@
 #define FRAME_STEP_AMOUNT "amount"
 /// for tools, this is cost
 #define FRAME_STEP_COST "cost"
+/// tool interaction name for dynamic tool query
+#define FRAME_STEP_NAME "name"
 
 //* step types
 

@@ -33,3 +33,17 @@
 /obj/structure/frame2/update_icon_state()
 	. = ..()
 	#warn impl
+
+/obj/structure/frame2/examine(mob/user, dist)
+	. = ..()
+	frame.on_examine(src, new /datum/event_args/actor(user), .)
+
+/obj/structure/frame2/dynamic_tool_query(obj/item/I, datum/event_args/actor/clickchain/e_args)
+	return merge_double_lazy_assoc_list(frame.on_tool_query(src, I, e_args), ..())
+
+/obj/structure/frame2/tool_act(obj/item/I, datum/event_args/actor/clickchain/e_args, function, flags, hint)
+	. = ..()
+
+
+
+#warn tool system integration

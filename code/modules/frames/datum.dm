@@ -56,6 +56,16 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 	/// can we be built?
 	var/material_buildable = TRUE
 
+	/// deconstructs into item frame, or materials?
+	var/deconstruct_into_item = TRUE
+	/// deconstruct: **if and only if** steps_backwards does not specify a first step,
+	/// default to this tool
+	var/deconstruct_default_tool = TOOL_WRENCH
+	/// default deconstruction time
+	var/deconstruct_default_time = 3 SECONDS
+	/// default deconstruction cost multiplier
+	var/deconstruct_default_cost = 1
+
 	/// construction steps
 	/// see /datum/frame2 readme (so up above in this file) for how to do this
 	var/list/steps_forward
@@ -96,6 +106,12 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 	var/item_weight_class = WEIGHT_CLASS_NORMAL
 	/// weight volume of item
 	var/item_weight_volume = WEIGHT_VOLUME_NORMAL
+	/// what tool, if any to deconstruct item into materials
+	var/item_recycle_tool
+	/// time to decon for tool as item
+	var/item_recycle_time = 0 SECONDS
+	/// cost mult to decon for tool as item
+	var/item_recycle_cost = 1
 
 #warn impl
 
@@ -117,6 +133,9 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
  */
 /datum/frame2/proc/instance_product(obj/structure/frame/frame)
 	CRASH("abstract proc called.")
+
+/datum/frame2/proc/deconstruct_frame(obj/structure/frame/frame, datum/event_args/actor/actor, put_in_hand_if_possible = TRUE)
+	#warn impl
 
 /**
  * @return TRUE / FALSE success / fail
@@ -182,7 +201,13 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 /**
  * @return TRUE if handled
  */
-/datum/frame2/proc/on_tool(obj/structure/frame/frame, obj/item/tool, datum/event_args/actor/clickchain/click, function)
+/datum/frame2/proc/on_tool(obj/structure/frame/frame, obj/item/tool, datum/event_args/actor/clickchain/click, function, flags, hint)
+	#warn impl
+
+/**
+ * @return list
+ */
+/datum/frame2/proc/on_tool_query(obj/structure/frame/frame, obj/item/tool, datum/event_args/actor/clickchain/click)
 	#warn impl
 
 /**
