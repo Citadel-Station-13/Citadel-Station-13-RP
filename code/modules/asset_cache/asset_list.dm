@@ -401,7 +401,7 @@ GLOBAL_LIST_EMPTY(asset_datums)
 	if (!I || !length(icon_states(I)))  // that direction or state doesn't exist
 		return
 
-	var/start_usage = world.tick_usage
+	// var/start_usage = world.tick_usage
 
 	//any sprite modifications we want to do (aka, coloring a greyscaled asset)
 	I = ModifyInserted(I)

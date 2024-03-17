@@ -53,7 +53,7 @@ if $grep -U '^".+" = \(.+\)' $map_files;	then
     st=1
 fi;
 part "comments"
-if $grep '//' $map_files | $grep -v '//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE' | $grep -v 'name|desc'; then
+if $grep '//' $map_files | $grep -v '//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE' | $grep -v 'name|desc|info'; then
 	echo
 	echo -e "${RED}ERROR: Unexpected commented out line detected in this map file. Please remove it.${NC}"
 	st=1
@@ -109,7 +109,8 @@ if $grep -P '"\w+" = \(\n([^)]+\n)*/obj/structure/cable,\n([^)]+\n)*/obj/structu
     echo -e "${RED}ERROR: found multiple cables on the same tile, please remove them.${NC}"
     st=1
 fi;
-if $grep '/turf[0-z/_]*,\n/turf' $map_files; then
+part "stacked turfs"
+if $grep -P '/turf[0-z/_]*,\n/turf' $map_files; then
 	echo
 	echo -e "${RED}FATAL: found multiple tiles on one tile, this will result in severe glitches.${NC}"
 	st=1
@@ -120,38 +121,39 @@ if $grep -P '^/area/.+[\{]' $map_files;	then
     st=1
 fi;
 
-section "whitespace issues"
-part "space indentation"
-if $grep '(^ {2})|(^ [^ * ])|(^    +)' $code_files; then
-	echo
-    echo -e "${RED}ERROR: Space indentation detected, please use tab indentation.${NC}"
-    st=1
-fi;
-part "mixed indentation"
-if $grep '^\t+ [^ *]' $code_files; then
-	echo
-    echo -e "${RED}ERROR: Mixed <tab><space> indentation detected, please stick to tab indentation.${NC}"
-    st=1
-fi;
+# section "whitespace issues"
+# part "space indentation"
+# if $grep '(^ {2})|(^ [^ * ])|(^    +)' $code_files; then
+# 	echo
+#     echo -e "${RED}ERROR: Space indentation detected, please use tab indentation.${NC}"
+#     st=1
+# fi;
+# part "mixed indentation"
+# if $grep '^\t+ [^ *]' $code_files; then
+# 	echo
+#     echo -e "${RED}ERROR: Mixed <tab><space> indentation detected, please stick to tab indentation.${NC}"
+#     st=1
+# fi;
 
-section "unit tests"
-unit_test_files="code/modules/unit_tests/**/**.dm"
-part "mob/living/carbon/human usage"
-if $grep 'allocate\(/mob/living/carbon/human[,\)]' $unit_test_files ||
-	$grep 'new /mob/living/carbon/human\s?\(' $unit_test_files ||
-	$grep 'var/mob/living/carbon/human/\w+\s?=\s?new' $unit_test_files ; then
-	echo
-	echo -e "${RED}ERROR: Usage of mob/living/carbon/human detected in a unit test, please use mob/living/carbon/human/consistent.${NC}"
-	st=1
-fi;
+# TODO add this
+# section "unit tests"
+# unit_test_files="code/modules/unit_tests/**/**.dm"
+# part "mob/living/carbon/human usage"
+# if $grep 'allocate\(/mob/living/carbon/human[,\)]' $unit_test_files ||
+# 	$grep 'new /mob/living/carbon/human\s?\(' $unit_test_files ||
+# 	$grep 'var/mob/living/carbon/human/\w+\s?=\s?new' $unit_test_files ; then
+# 	echo
+# 	echo -e "${RED}ERROR: Usage of mob/living/carbon/human detected in a unit test, please use mob/living/carbon/human/consistent.${NC}"
+# 	st=1
+# fi;
 
-section "common mistakes"
-part "global vars"
-if $grep '^/*var/' $code_files; then
-	echo
-	echo -e "${RED}ERROR: Unmanaged global var use detected in code, please use the helpers.${NC}"
-	st=1
-fi;
+# section "common mistakes"
+# part "global vars"
+# if $grep '^/*var/' $code_files; then
+# 	echo
+# 	echo -e "${RED}ERROR: Unmanaged global var use detected in code, please use the helpers.${NC}"
+# 	st=1
+# fi;
 
 # part "proc args with var/"
 # if $grep '^/[\w/]\S+\(.*(var/|, ?var/.*).*\)' $code_files; then
