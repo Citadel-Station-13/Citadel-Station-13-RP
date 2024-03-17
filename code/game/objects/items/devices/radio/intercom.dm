@@ -58,7 +58,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/item/radio/intercom, 28)
 	name = "\improper Spec Ops intercom"
 	frequency = ERT_FREQ
 	subspace_transmission = 1
-	centComm = 1
+	centcom = 1
 
 /obj/item/radio/intercom/department
 	canhear_range = 5

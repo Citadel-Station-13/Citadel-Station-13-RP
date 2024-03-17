@@ -4,8 +4,8 @@
 
 	scanner_desc = @{"[i]Registration[/i]: NSV Triumph
 [i]Class[/i]: Science Vessel
-[i]Transponder[/i]: Transmitting (CIV), NanoTrasen IFF
-[b]Notice[/b]: NanoTrasen Vessel, authorized personnel only"}
+[i]Transponder[/i]: Transmitting (CIV), Nanotrasen IFF
+[b]Notice[/b]: Nanotrasen Vessel, authorized personnel only"}
 
 	icon_state = "ship"
 	vessel_mass = 12500 // temporarily buffed by 2x due to vorestation fucking up large gas thruster code

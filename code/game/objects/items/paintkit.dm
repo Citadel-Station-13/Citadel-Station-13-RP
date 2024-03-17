@@ -336,14 +336,14 @@
 	name = "\"CR3AM-P13\" APLU customisation kit"
 	new_name = "APLU \"CR3AM-P13\""
 	new_desc = "A comedically painted APLU with an authentic, oversized clown wig."
-	new_fluff = "Before the cessation of open trade led to the development of the H.O.N.K., NanoTrasen frequently sold Columbina old power loaders to serve as supplemental security units."
+	new_fluff = "Before the cessation of open trade led to the development of the H.O.N.K., Nanotrasen frequently sold Columbina old power loaders to serve as supplemental security units."
 	new_icon = "clowny"
 
 /obj/item/kit/paint/ripley/dreadnought
 	name = "\"SAR-C0PH\" APLU customisation kit"
 	new_name = "APLU \"SAR-C0PH\""
 	new_desc = "A curiously modified APLU chassis. Its cockpit has been welded shut and you can hear sloshing inside."
-	new_fluff = "In conjunction with Vey-Med, NanoTrasen briefly experimented with permanently interring paralyzed or critically wounded operatives in mecha. The program was allegedly disbanded following strong public outcry."
+	new_fluff = "In conjunction with Vey-Med, Nanotrasen briefly experimented with permanently interring paralyzed or critically wounded operatives in mecha. The program was allegedly disbanded following strong public outcry."
 	new_icon = "dreadnought"
 
 // Gygax kits.
@@ -434,7 +434,7 @@
 	name = "\"8-Ball\" Mauler customisation kit"
 	new_name = "Marauder \"8-Ball\""
 	new_desc = "An aged Mauler with multiple aesthetic modifications - most notably a large 8-Ball decal on the glacis."
-	new_fluff = "At the peak of the Phoron War, this legendary exosuit saw much use during a variety of Frontier mercenary operations. 8-Ball was presumed lost alongside the rest of its mercenary company in 2497. Due to its participation in the junta on Editius and numerous other war crimes, a NanoTrasen backed bounty for the capture and return of 8-Ball and its pilot remains open to this day."
+	new_fluff = "At the peak of the Phoron War, this legendary exosuit saw much use during a variety of Frontier mercenary operations. 8-Ball was presumed lost alongside the rest of its mercenary company in 2497. Due to its participation in the junta on Editius and numerous other war crimes, a Nanotrasen backed bounty for the capture and return of 8-Ball and its pilot remains open to this day."
 	new_icon = "eightball"
 	allowed_types = list("mauler")
 

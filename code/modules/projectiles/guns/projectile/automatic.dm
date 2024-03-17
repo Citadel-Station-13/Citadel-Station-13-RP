@@ -650,7 +650,7 @@
 //NT SpecOps SMG
 /obj/item/gun/ballistic/automatic/combat
 	name = "\improper Harpy combat submachine gun"
-	desc = "The compact NT-SMG-8 'Harpy' submachine gun was designed for NanoTrasen special operations where close-quarters combat is likely. Chambered in 5.7x28mm with three fire modes, this gun is lethal to soft and armored targets alike."
+	desc = "The compact NT-SMG-8 'Harpy' submachine gun was designed for Nanotrasen special operations where close-quarters combat is likely. Chambered in 5.7x28mm with three fire modes, this gun is lethal to soft and armored targets alike."
 	icon_state = "combatsmg"
 	item_state = "combatsmg"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -721,7 +721,7 @@
 //Foam Weapons
 /obj/item/gun/ballistic/automatic/advanced_smg/foam
 	name = "toy submachine gun"
-	desc = "The existence of this DONKsoft toy has instigated allegations of corporate espionage from NanoTrasen."
+	desc = "The existence of this DONKsoft toy has instigated allegations of corporate espionage from Nanotrasen."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "toy_smg"
 	caliber = "foamdart"

@@ -8494,7 +8494,7 @@
 /area/shuttle/excursion/cargo)
 "axy" = (
 /obj/machinery/door/airlock/command{
-	name = "NanoTrasen Official On-Site Office";
+	name = "Nanotrasen Official On-Site Office";
 	req_access = list(20)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,

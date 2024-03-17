@@ -99,7 +99,7 @@
 
 /obj/item/toy/nanotrasenballoon
 	name = "criminal balloon"
-	desc = "Across the balloon the following is printed: \"Man, I love NanoTrasen soooo much. I use only NT products. You have NO idea.\""
+	desc = "Across the balloon the following is printed: \"Man, I love Nanotrasen soooo much. I use only NT products. You have NO idea.\""
 	throw_force = 0
 	throw_speed = 4
 	throw_range = 20
