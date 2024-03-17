@@ -2,13 +2,13 @@
  * mob inventory data goes in here.
  */
 /datum/inventory
-	//? basics
+	//* Basics *//
 	/// owning mob
 	var/mob/owner
 
-	//? slots
+	//* Inventory *//
 
-	//? caches
+	//* Caches *//
 
 /datum/inventory/New(mob/M)
 	if(!istype(M))
