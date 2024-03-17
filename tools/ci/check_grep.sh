@@ -121,12 +121,12 @@ if $grep -P '^/area/.+[\{]' $map_files;	then
 fi;
 
 section "whitespace issues"
-# part "space indentation"
-# if $grep '(^ {2})|(^ [^ * ])|(^    +)' $code_files; then
-# 	echo
-#     echo -e "${RED}ERROR: Space indentation detected, please use tab indentation.${NC}"
-#     st=1
-# fi;
+part "space indentation"
+if $grep '(^ {2})|(^ [^ * ])|(^    +)' $code_files; then
+	echo
+    echo -e "${RED}ERROR: Space indentation detected, please use tab indentation.${NC}"
+    st=1
+fi;
 part "mixed indentation"
 if $grep '^\t+ [^ *]' $code_files; then
 	echo
@@ -153,12 +153,12 @@ if $grep '^/*var/' $code_files; then
 	st=1
 fi;
 
-part "proc args with var/"
-if $grep '^/[\w/]\S+\(.*(var/|, ?var/.*).*\)' $code_files; then
-	echo
-	echo -e "${RED}ERROR: Changed files contains a proc argument starting with 'var'.${NC}"
-	st=1
-fi;
+# part "proc args with var/"
+# if $grep '^/[\w/]\S+\(.*(var/|, ?var/.*).*\)' $code_files; then
+# 	echo
+# 	echo -e "${RED}ERROR: Changed files contains a proc argument starting with 'var'.${NC}"
+# 	st=1
+# fi;
 
 part "common spelling mistakes"
 if $grep -i 'centcomm' $code_files; then
@@ -229,13 +229,6 @@ if [ "$pcre2_support" -eq 1 ]; then
 		echo -e "${RED}ERROR: File(s) with no trailing newline detected, please add one.${NC}"
 		st=1
 	fi
-	# this is never going to be uncommented lmao
-	# part "datum stockpart sanity"
-	# if $grep -P 'for\b.*/obj/item/stock_parts/(?!cell)(?![\w_]+ in )' $code_files; then
-	# 	echo
-	# 	echo -e "${RED}ERROR: Should be using datum/stock_part instead"
-	# 	st=1
-	# fi;
 	# TODO HEY! ONCE RP FINALLY FIXES INIT ARGS, UNCOMMENT ME!
 	# part "improper atom initialize args"
 	# if $grep -P '^/(obj|mob|turf|area|atom)/.+/Initialize\((?!mapload).*\)' $code_files; then
