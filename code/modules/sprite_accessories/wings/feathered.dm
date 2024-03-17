@@ -80,7 +80,7 @@
 	icon_state = "angelwings"
 	do_colouration = TRUE
 	color_blend_mode = ICON_MULTIPLY
-	front_behind_system = TRUE
+	front_behind_system_legacy = TRUE
 
 //64x48 Wings
 /datum/sprite_accessory/wing/seraph

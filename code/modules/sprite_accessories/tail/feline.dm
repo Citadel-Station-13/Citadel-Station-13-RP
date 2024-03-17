@@ -23,7 +23,7 @@
 	ani_state = "catbig_wag"
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
-	front_behind_system = TRUE
+	front_behind_system_legacy = TRUE
 
 /datum/sprite_accessory/tail/kitty
 	name = "kitty, colorable, downwards"

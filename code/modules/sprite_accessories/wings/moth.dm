@@ -30,7 +30,7 @@
 	name = "firewatch moth wings"
 	id = "wing_moth_firewatch"
 	icon_state = "moth_firewatch"
-	front_behind_system = TRUE
+	front_behind_system_legacy = TRUE
 
 /datum/sprite_accessory/wing/moth_full
 	name = "moth antenna and wings"

@@ -903,7 +903,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		rendering.layer = BODY_LAYER + used_tail_layer
 		tail_images += rendering
 
-	if(tail_style?.front_behind_system)
+	if(tail_style?.front_behind_system_legacy)
 		rendering = get_tail_image(FALSE)
 		rendering.layer = BODY_LAYER - used_tail_layer
 		tail_images += rendering
@@ -1035,7 +1035,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		vr_wing_image.layer = BODY_LAYER+WING_LAYER
 		overlays_standing[WING_LAYER] += vr_wing_image
 
-	if(wing_style?.front_behind_system)
+	if(wing_style?.front_behind_system_legacy)
 		var/image/vr_wing_image_2 = get_wing_image(FALSE)
 		vr_wing_image_2.layer = BODY_LAYER - WING_LAYER
 		overlays_standing[WING_LAYER] += vr_wing_image_2
@@ -1156,7 +1156,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 	//If you have custom wings selected
 	if(wing_style && (!(wear_suit && wear_suit.inv_hide_flags & HIDETAIL) || !wing_style.clothing_can_hide))
-		var/icon/wing_s = new/icon("icon" = wing_style.icon, "icon_state" = spread ? wing_style.spr_state : (flapping && wing_style.ani_state ? wing_style.ani_state : (wing_style.front_behind_system? (wing_style.icon_state + (front? "_FRONT" : "_BEHIND")) : wing_style.icon_state)))
+		var/icon/wing_s = new/icon("icon" = wing_style.icon, "icon_state" = spread ? wing_style.spr_state : (flapping && wing_style.ani_state ? wing_style.ani_state : (wing_style.front_behind_system_legacy? (wing_style.icon_state + (front? "_FRONT" : "_BEHIND")) : wing_style.icon_state)))
 		if(wing_style.do_colouration)
 			if(grad_wingstyle)
 				grad_swing = new/icon("icon" = 'icons/mob/wing_gradients.dmi', "icon_state" = GLOB.hair_gradients[grad_wingstyle])

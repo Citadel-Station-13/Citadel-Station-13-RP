@@ -55,13 +55,13 @@ var/global/list/wing_icon_cache = list()
 	//If you have a custom tail selected
 	if(tail_style && !(wear_suit && wear_suit.inv_hide_flags & HIDETAIL && !isTaurTail(tail_style)))
 		var/base_state = wagging && tail_style.ani_state ? tail_style.ani_state : tail_style.icon_state
-		if(tail_style.front_behind_system)
+		if(tail_style.front_behind_system_legacy)
 			base_state += front? "_FRONT" : "_BEHIND"
 		var/icon/tail_s = new/icon("icon" = tail_style.icon, "icon_state" = base_state)
 		if(tail_style.do_colouration)
 			tail_s.Blend(rgb(src.r_tail, src.g_tail, src.b_tail), tail_style.color_blend_mode)
 		if(tail_style.extra_overlay)
-			var/extra_overlay_state = tail_style.front_behind_system ? "[tail_style.extra_overlay][front ? "_FRONT" : "_BEHIND"]" : tail_style.extra_overlay
+			var/extra_overlay_state = tail_style.front_behind_system_legacy ? "[tail_style.extra_overlay][front ? "_FRONT" : "_BEHIND"]" : tail_style.extra_overlay
 			var/icon/overlay = new/icon("icon" = tail_style.icon, "icon_state" = extra_overlay_state)
 			if(wagging && tail_style.ani_state)
 				overlay = new/icon("icon" = tail_style.icon, "icon_state" = tail_style.extra_overlay_w)

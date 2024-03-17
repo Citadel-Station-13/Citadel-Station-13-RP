@@ -37,7 +37,7 @@
 	extra_overlay = "teshari_fluffytail_mark"
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
-	front_behind_system = TRUE
+	front_behind_system_legacy = TRUE
 
 /datum/sprite_accessory/tail/special/teshtailfeathered
 	name = "Teshari tail alt"

@@ -21,13 +21,27 @@
 // TODO: actual better way to do "can we use this" checks because one whitelist list and a var is fucking horrible to maintain what the fuck
 
 /datum/sprite_accessory
+	abstract_type = /datum/sprite_accessory
 
+	//* icon location & base state *//
 	/// The icon file the accessory is located in.
 	var/icon
 	/// The icon_state of the accessory.
 	var/icon_state
-	/// A custom preview state for whatever reason.
-	var/preview_state
+	/// sidedness; how many more states we need to inject for it to work
+	var/icon_sidedness = SPRITE_ACCESSORY_SIDEDNESS_NONE
+	#warn impl
+
+	//* icon dimensions & alignment *//
+	var/icon_dimension_x = 32
+	var/icon_dimension_y = 32
+	/// alignment; how we should align the sprite to the mob
+	/// we will always be able to be re-aligned by the mob for obvious reasons, especially if their
+	/// bodyparts are misaligned when the bodyparts in question are considered our anchors.
+	var/icon_alignment = SPRITE_ACCESSORY_ALIGNMENT_IGNORE
+	#warn impl
+
+	//* legacy below
 
 	/// The preview name of the accessory.
 	var/name
@@ -44,7 +58,7 @@
 	var/color_blend_mode = ICON_MULTIPLY	// If checked.
 
 	/// use front/behind, citadel snowflake for now; only usable on wings/tails
-	var/front_behind_system = FALSE
+	var/front_behind_system_legacy = FALSE
 
 	// Ckey of person allowed to use this, if defined.
 	var/list/ckeys_allowed = null
