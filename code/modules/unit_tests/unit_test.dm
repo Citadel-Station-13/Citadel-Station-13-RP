@@ -13,24 +13,24 @@ You can use the run_loc_floor_bottom_left and run_loc_floor_top_right to get tur
 
 GLOBAL_DATUM(current_test, /datum/unit_test)
 GLOBAL_VAR_INIT(failed_any_test, FALSE)
-GLOBAL_VAR(test_log)
 /// When unit testing, all logs sent to log_mapping are stored here and retrieved in log_mapping unit test.
 GLOBAL_LIST_EMPTY(unit_test_mapping_logs)
+/// Global assoc list of required mapping items, [item typepath] to [required item datum].
+GLOBAL_LIST_EMPTY(required_map_items)
 
-/// The name of the test that is currently focused.
+/// A list of every test that is currently focused.
 /// Use the PERFORM_ALL_TESTS macro instead.
-GLOBAL_VAR_INIT(focused_test, focused_test())
+GLOBAL_VAR_INIT(focused_tests, focused_tests())
 
-/proc/focused_test()
+/proc/focused_tests()
+	var/list/focused_tests = list()
 	for (var/datum/unit_test/unit_test as anything in subtypesof(/datum/unit_test))
 		if (initial(unit_test.focus))
-			return unit_test
-	return null
+			focused_tests += unit_test
+
+	return focused_tests.len > 0 ? focused_tests : null
 
 /datum/unit_test
-	/// Abstract type of the test
-	abstract_type = /datum/unit_test
-
 	//Bit of metadata for the future maybe
 	var/list/procs_tested
 
@@ -46,6 +46,9 @@ GLOBAL_VAR_INIT(focused_test, focused_test())
 	var/succeeded = TRUE
 	var/list/allocated
 	var/list/fail_reasons
+
+	/// Do not instantiate if type matches this
+	abstract_type = /datum/unit_test
 
 	var/static/datum/map_level/reservation
 
@@ -66,7 +69,7 @@ GLOBAL_VAR_INIT(focused_test, focused_test())
 /datum/unit_test/Destroy()
 	QDEL_LIST(allocated)
 	// clear the test area
-	for (var/turf/turf in block(locate(1, 1, run_loc_floor_bottom_left.z), locate(world.maxx, world.maxy, run_loc_floor_bottom_left.z)))
+	for (var/turf/turf in Z_TURFS(run_loc_floor_bottom_left.z))
 		for (var/content in turf.contents)
 			if (istype(content, /obj/landmark))
 				continue
@@ -74,7 +77,7 @@ GLOBAL_VAR_INIT(focused_test, focused_test())
 	return ..()
 
 /datum/unit_test/proc/Run()
-	TEST_FAIL("Run() called parent or not implemented")
+	TEST_FAIL("[type]/Run() called parent or not implemented")
 
 /datum/unit_test/proc/Fail(reason = "No reason", file = "OUTDATED_TEST", line = 1)
 	succeeded = FALSE
@@ -126,6 +129,16 @@ GLOBAL_VAR_INIT(focused_test, focused_test())
 
 		log_test("\t[path_prefix]_[name] was put in data/screenshots_new")
 
+/// Helper for screenshot tests to take an image of an atom from all directions and insert it into one icon
+/datum/unit_test/proc/get_flat_icon_for_all_directions(atom/thing, no_anim = TRUE)
+	var/icon/output = icon('icons/effects/effects.dmi', "nothing")
+
+	for (var/direction in GLOB.cardinal)
+		var/icon/partial = get_flat_icon(thing, dir = direction, no_anim = no_anim)
+		output.Insert(partial, dir = direction)
+
+	return output
+
 /// Logs a test message. Will use GitHub action syntax found at https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions
 /datum/unit_test/proc/log_for_test(text, priority, file, line)
 	var/map_name = (LEGACY_MAP_DATUM).name
@@ -136,16 +149,22 @@ GLOBAL_VAR_INIT(focused_test, focused_test())
 
 	log_world("::[priority] file=[file],line=[line],title=[map_name]: [type]::[annotation_text]")
 
-/proc/RunUnitTest(test_path, list/test_results)
-	if (ispath(test_path, /datum/unit_test/focus_only))
+/proc/RunUnitTest(datum/unit_test/test_path, list/test_results)
+	if(ispath(test_path, /datum/unit_test/focus_only))
+		return
+
+	if(initial(test_path.abstract_type) == test_path)
 		return
 
 	var/datum/unit_test/test = new test_path
 
 	GLOB.current_test = test
 	var/duration = REALTIMEOFDAY
+	var/test_output_desc = "[test_path]"
+	var/message = ""
 
 	log_world("::group::[test_path]")
+
 	test.Run()
 
 	duration = REALTIMEOFDAY - duration
@@ -165,10 +184,11 @@ GLOBAL_VAR_INIT(focused_test, focused_test())
 		// Normal log message
 		log_entry += "\tFAILURE #[reasonID]: [text] at [file]:[line]"
 
-	var/message = log_entry.Join("\n")
-	log_test(message)
+	if(length(log_entry))
+		message = log_entry.Join("\n")
+		log_test(message)
 
-	var/test_output_desc = "[test_path] [duration / 10]s"
+	test_output_desc += " [duration / 10]s"
 	if (test.succeeded)
 		log_world("[TEST_OUTPUT_GREEN("PASS")] [test_output_desc]")
 
@@ -177,7 +197,8 @@ GLOBAL_VAR_INIT(focused_test, focused_test())
 	if (!test.succeeded)
 		log_world("::error::[TEST_OUTPUT_RED("FAIL")] [test_output_desc]")
 
-	test_results[test_path] = list("status" = test.succeeded ? UNIT_TEST_PASSED : UNIT_TEST_FAILED, "message" = message, "name" = test_path)
+	var/final_status = (test.succeeded ? UNIT_TEST_PASSED : UNIT_TEST_FAILED)
+	test_results[test_path] = list("status" = final_status, "message" = message, "name" = test_path)
 
 	qdel(test)
 
@@ -188,9 +209,6 @@ GLOBAL_VAR_INIT(focused_test, focused_test())
 	var/list/focused_tests = list()
 	for (var/_test_to_run in tests_to_run)
 		var/datum/unit_test/test_to_run = _test_to_run
-		if(initial(test_to_run.abstract_type) == test_to_run)
-			tests_to_run -= test_to_run
-			continue
 		if (initial(test_to_run.focus))
 			focused_tests += test_to_run
 	if(length(focused_tests))
@@ -200,18 +218,20 @@ GLOBAL_VAR_INIT(focused_test, focused_test())
 
 	var/list/test_results = list()
 
+	//Hell code, we're bound to end the round somehow so let's stop if from ending while we work
+	SSticker.delay_end = TRUE
 	for(var/unit_path in tests_to_run)
 		CHECK_TICK //We check tick first because the unit test we run last may be so expensive that checking tick will lock up this loop forever
 		RunUnitTest(unit_path, test_results)
+	SSticker.delay_end = FALSE
 
 	var/file_name = "data/unit_tests.json"
 	fdel(file_name)
 	file(file_name) << json_encode(test_results)
 
 	SSticker.force_ending = TRUE
-	sleep(5 SECONDS)
 	//We have to call this manually because del_text can preceed us, and SSticker doesn't fire in the post game
-	SSticker.standard_reboot()
+	SSticker.declare_completion()
 
 /datum/map_level/unit_tests
 	id = "__UnitTestLevel"

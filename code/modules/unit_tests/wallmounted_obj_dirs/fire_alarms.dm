@@ -7,4 +7,4 @@
 		TEST_FAIL("One or more alarms had a non-cardinal direction!")
 		for(var/obj/I in bad_alarms)
 			TEST_FAIL("[I] at X [bad_alarms[I]["X"]] Y [bad_alarms[I]["Y"]] Z [bad_alarms[I]["Z"]] in area [bad_alarms[I]["A"]]")
-		Fail("There were [length(bad_alarms)] alarms with non-cardinal directions.")
+		TEST_FAIL("There were [length(bad_alarms)] alarms with non-cardinal directions.")

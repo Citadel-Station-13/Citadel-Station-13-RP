@@ -1,3 +1,8 @@
+
+#if defined(UNIT_TESTS) || defined(SPACEMAN_DMM)
+GLOBAL_VAR(test_log)
+#endif
+
 /// Base directory at where logs are placed
 GLOBAL_VAR(log_directory)
 GLOBAL_PROTECT(log_directory)
