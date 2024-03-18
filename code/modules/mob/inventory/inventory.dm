@@ -41,11 +41,16 @@
 	owner.add_overlay(transformed)
 
 /datum/inventory/proc/render_slot(slot_id)
-	var/obj/item/target = owner._item_by_slot(slot_id)
+	var/obj/item/target = owner.item_by_slot_id(slot_id)
 	if(isnull(target))
 		remove_slot_render(slot_id)
+		return
 
 	var/datum/inventory_slot/slot = resolve_inventory_slot(slot_id)
+	if(!slot.should_render(wearer, target))
+		remove_slot_render(slot_id)
+		return
+		
 	var/bodytype = BODYTYPE_DEFAULT
 	
 	if(ishuman(owner))
@@ -53,6 +58,9 @@
 		bodytype = casted_human.species.get_effective_bodytype(casted_human, target, slot_id)
 
 	var/rendering_results = slot.render(owner, slot, bodytype)
+	if(islist(rendering_results)? !length(rendering_results) : isnull(rendering_results))
+		remove_slot_render(slot_id)
+		return
 	
 	set_slot_render(slot_id, rendering_results)
 

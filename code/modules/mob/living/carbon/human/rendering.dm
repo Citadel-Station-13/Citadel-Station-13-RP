@@ -2,6 +2,98 @@
 //! old code below
 
 //? Sprite Accessories
+var/global/list/wing_icon_cache = list()
+
+/mob/living/carbon/human/proc/get_ears_overlay()
+	if(ear_style && !(head && (head.inv_hide_flags & BLOCKHEADHAIR)))
+		var/icon/ears_s = new/icon("icon" = ear_style.icon, "icon_state" = ear_style.icon_state)
+		if(ear_style.do_colouration)
+			ears_s.Blend(rgb(src.r_ears, src.g_ears, src.b_ears), ear_style.color_blend_mode)
+
+		if(ear_style.extra_overlay)
+			var/icon/overlay = new/icon("icon" = ear_style.icon, "icon_state" = ear_style.extra_overlay)
+			overlay.Blend(rgb(src.r_ears2, src.g_ears2, src.b_ears2), ear_style.color_blend_mode)
+			ears_s.Blend(overlay, ICON_OVERLAY)
+			qdel(overlay)
+
+		if(ear_style.extra_overlay2) //MORE COLOURS IS BETTERER
+			var/icon/overlay = new/icon("icon" = ear_style.icon, "icon_state" = ear_style.extra_overlay2)
+			overlay.Blend(rgb(src.r_ears3, src.g_ears3, src.b_ears3), ear_style.color_blend_mode)
+			ears_s.Blend(overlay, ICON_OVERLAY)
+			qdel(overlay)
+
+		return ears_s
+	return null
+
+/mob/living/carbon/human/proc/get_horns_overlay()
+	if(horn_style && !(head && (head.inv_hide_flags & BLOCKHEADHAIR)))
+		var/icon/horn_s = new/icon("icon" = horn_style.icon, "icon_state" = horn_style.icon_state)
+		if(horn_style.do_colouration)
+			horn_s.Blend(rgb(src.r_horn, src.g_horn, src.b_horn), horn_style.color_blend_mode)
+
+		if(horn_style.extra_overlay)
+			var/icon/overlay = new/icon("icon" = horn_style.icon, "icon_state" = horn_style.extra_overlay)
+			overlay.Blend(rgb(src.r_horn2, src.g_horn2, src.b_horn2), horn_style.color_blend_mode)
+			horn_s.Blend(overlay, ICON_OVERLAY)
+			qdel(overlay)
+
+		if(horn_style.extra_overlay2)
+			var/icon/overlay = new/icon("icon" = horn_style.icon, "icon_state" = horn_style.extra_overlay2)
+			overlay.Blend(rgb(src.r_horn3, src.g_horn3, src.b_horn3), horn_style.color_blend_mode)
+			horn_s.Blend(overlay, ICON_OVERLAY)
+			qdel(overlay)
+
+		return horn_s
+	return null
+
+/mob/living/carbon/human/proc/get_tail_image(front)
+	//If you are FBP with tail style and didn't set a custom one
+	var/datum/robolimb/model = isSynthetic()
+	if(istype(model) && model.includes_tail && !tail_style)
+		var/icon/tail_s = new/icon("icon" = synthetic.icon, "icon_state" = "tail")
+		if(species.color_force_greyscale)
+			tail_s.MapColors(arglist(color_matrix_greyscale()))
+		tail_s.Blend(rgb(src.r_skin, src.g_skin, src.b_skin), species.color_mult ? ICON_MULTIPLY : ICON_ADD)
+		return image(tail_s)
+
+	//If you have a custom tail selected
+	if(tail_style && !(wear_suit && wear_suit.inv_hide_flags & HIDETAIL && !isTaurTail(tail_style)))
+		var/base_state = wagging && tail_style.ani_state ? tail_style.ani_state : tail_style.icon_state
+		if(tail_style.front_behind_system_legacy)
+			base_state += front? "_FRONT" : "_BEHIND"
+		var/icon/tail_s = new/icon("icon" = tail_style.icon, "icon_state" = base_state)
+		if(tail_style.do_colouration)
+			tail_s.Blend(rgb(src.r_tail, src.g_tail, src.b_tail), tail_style.color_blend_mode)
+		if(tail_style.extra_overlay)
+			var/extra_overlay_state = tail_style.front_behind_system_legacy ? "[tail_style.extra_overlay][front ? "_FRONT" : "_BEHIND"]" : tail_style.extra_overlay
+			var/icon/overlay = new/icon("icon" = tail_style.icon, "icon_state" = extra_overlay_state)
+			if(wagging && tail_style.ani_state)
+				overlay = new/icon("icon" = tail_style.icon, "icon_state" = tail_style.extra_overlay_w)
+				overlay.Blend(rgb(src.r_tail2, src.g_tail2, src.b_tail2), tail_style.color_blend_mode)
+				tail_s.Blend(overlay, ICON_OVERLAY)
+				qdel(overlay)
+			else
+				overlay.Blend(rgb(src.r_tail2, src.g_tail2, src.b_tail2), tail_style.color_blend_mode)
+				tail_s.Blend(overlay, ICON_OVERLAY)
+				qdel(overlay)
+
+		if(tail_style.extra_overlay2)
+			var/icon/overlay = new/icon("icon" = tail_style.icon, "icon_state" = tail_style.extra_overlay2)
+			if(wagging && tail_style.ani_state)
+				overlay = new/icon("icon" = tail_style.icon, "icon_state" = tail_style.extra_overlay2_w)
+				overlay.Blend(rgb(src.r_tail3, src.g_tail3, src.b_tail3), tail_style.color_blend_mode)
+				tail_s.Blend(overlay, ICON_OVERLAY)
+				qdel(overlay)
+			else
+				overlay.Blend(rgb(src.r_tail3, src.g_tail3, src.b_tail3), tail_style.color_blend_mode)
+				tail_s.Blend(overlay, ICON_OVERLAY)
+				qdel(overlay)
+
+		if(isTaurTail(tail_style))
+			return image(tail_s, "pixel_x" = -16)
+		else
+			return image(tail_s)
+	return null
 
 //HAIR OVERLAY
 /mob/living/carbon/human/update_hair()
@@ -728,11 +820,6 @@
 	if(!shoes || (wear_suit && wear_suit.inv_hide_flags & HIDESHOES) || (w_uniform && w_uniform.inv_hide_flags & HIDESHOES))
 		return //Either nothing to draw, or it'd be hidden.
 
-	for(var/f in list(BP_L_FOOT, BP_R_FOOT))
-		var/obj/item/organ/external/foot/foot = get_organ(f)
-		if(istype(foot) && foot.is_hidden_by_tail()) //If either foot is hidden by the tail, don't render footwear.
-			return
-
 	//Allow for shoe layer toggle nonsense
 	var/shoe_layer = SHOES_LAYER
 	if(istype(shoes, /obj/item/clothing/shoes))
@@ -747,47 +834,13 @@
 	apply_layer(SHOES_LAYER_ALT)
 
 /mob/living/carbon/human/update_inv_s_store()
-	if(QDESTROYING(src))
-		return
-
-	remove_layer(SUIT_STORE_LAYER)
-
-	if(!s_store)
-		return //Why bother, nothing there.
-
-	//TODO, this is unlike the rest of the things
-	//Basically has no variety in slot icon choices at all. WHY SPECIES ONLY??
-	var/t_state = s_store.item_state
-	if(!t_state)
-		t_state = s_store.icon_state
-	overlays_standing[SUIT_STORE_LAYER]	= image(icon = species.suit_storage_icon, icon_state = t_state, layer = BODY_LAYER+SUIT_STORE_LAYER)
-
-	apply_layer(SUIT_STORE_LAYER)
+	inventory.render_slot(SLOT_ID_SUIT_STORAGE)
 
 /mob/living/carbon/human/update_inv_head()
 	inventory.render_slot(SLOT_ID_HEAD)
 
 /mob/living/carbon/human/update_inv_belt()
-	if(QDESTROYING(src))
-		return
-
-	remove_layer(BELT_LAYER)
-	remove_layer(BELT_LAYER_ALT) //Because you can toggle belt layer with a verb
-
-	if(!belt)
-		return //No belt, why bother.
-
-	//Toggle for belt layering with uniform
-	var/belt_layer = BELT_LAYER
-	if(istype(belt, /obj/item/storage/belt))
-		var/obj/item/storage/belt/ubelt = belt
-		if(ubelt.show_above_suit)
-			belt_layer = BELT_LAYER_ALT
-
-	//NB: this uses a var from above
-	overlays_standing[belt_layer] = belt.render_mob_appearance(src, SLOT_ID_BELT, species.get_effective_bodytype(src, belt, SLOT_ID_BELT))
-
-	apply_layer(belt_layer)
+	inventory.render_slot(SLOT_ID_BELT)
 
 /mob/living/carbon/human/update_inv_wear_suit()
 	if(QDESTROYING(src))
@@ -840,23 +893,6 @@
 
 /mob/living/carbon/human/update_inv_back()
 	inventory.render_slot(SLOT_ID_BACK)
-
-//TODO: Carbon procs in my human update_icons??
-/mob/living/carbon/human/update_hud()	//TODO: do away with this if possible
-	// todo: this is utterly shitcode and fucking stupid ~silicons
-	// todo: the rest of hud code here ain't much better LOL
-	var/list/obj/item/relevant = get_equipped_items(TRUE, TRUE)
-	if(hud_used)
-		for(var/obj/item/I as anything in relevant)
-			position_hud_item(I, slot_id_by_item(I))
-	if(client)
-		client.screen |= relevant
-
-//update whether handcuffs appears on our hud.
-/mob/living/carbon/proc/update_hud_handcuffed()
-	if(hud_used && hud_used.l_hand_hud_object && hud_used.r_hand_hud_object)
-		hud_used.l_hand_hud_object.update_icon()
-		hud_used.r_hand_hud_object.update_icon()
 
 /mob/living/carbon/human/update_inv_handcuffed()
 	inventory.render_slot(SLOT_ID_HANDCUFFED)

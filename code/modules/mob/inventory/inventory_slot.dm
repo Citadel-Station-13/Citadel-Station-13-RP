@@ -517,6 +517,16 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	)
 	render_layer = list(SHOES_LAYER, SHOES_LAYER_ALT)
 
+/datum/inventory_slot/inventory/shoes/should_render(mob/wearer, obj/item/item)
+	if(!ishuman(wearer))
+		return ..()
+	var/mob/living/carbon/human/casted_human = wearer
+	for(var/bodypart in list(BP_L_FOOT, BP_R_FOOT))
+		var/obj/item/organ/external/foot/foot = casted_human.get_organ(bodypart)
+		if(istype(foot) && foot.is_hidden_by_tail())
+			return FALSE
+	return ..()
+
 /datum/inventory_slot/inventory/gloves
 	name = "gloves"
 	render_key = "gloves"
@@ -574,6 +584,17 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_PROC
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE
 	render_layer = SUIT_STORE_LAYER
+
+/datum/inventory_slot/inventory/suit_storage/render(mob/wearer, obj/item/item, bodytype)
+	var/mob/living/carbon/human/casted_human = wearer
+	if(!istype(casted_human))
+		return
+	var/datum/species/species = casted_human.species
+	return image(
+		icon = species.suit_storage_icon,
+		icon_state = item.item_state || item.icon_state,
+		layer = HUMAN_LAYER_SLOT_SUITSTORE
+	)
 
 /datum/inventory_slot/inventory/suit_storage/allow_equip(obj/item/I, mob/wearer, mob/user, force)
 	. = ..()
