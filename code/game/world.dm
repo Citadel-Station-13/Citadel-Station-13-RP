@@ -70,8 +70,7 @@ GLOBAL_LIST(topic_status_cache)
 
 	//SetupLogs depends on the RoundID, so lets check
 	//DB schema and set RoundID if we can
-	SSdbcore.CheckSchemaVersion()
-	SSdbcore.SetRoundID()
+	SSdbcore.InitializeRound()
 	SetupLogs()
 
 // #ifndef USE_CUSTOM_ERROR_HANDLER

@@ -57,7 +57,7 @@ SUBSYSTEM_DEF(dbcore)
 		if(2)
 			message_admins("Could not get schema version from database")
 
-	return
+	return ..()
 
 /datum/controller/subsystem/dbcore/OnConfigLoad()
 	. = ..()
@@ -534,6 +534,8 @@ Ignore_errors instructes mysql to continue inserting rows if some of them have e
 #else
 			ASSERT(result[1])
 #endif
+
+//! Old apis
 
 /**
  * **WARNING**: Extremely dangerous.
