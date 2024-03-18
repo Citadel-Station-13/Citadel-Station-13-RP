@@ -57,7 +57,7 @@
 	icon_state = "nevrean_f"
 	body_parts = list(BP_HEAD)
 	color_blend_mode = ICON_MULTIPLY
-	gender = FEMALE
+	random_generation_gender = FEMALE
 
 /datum/sprite_accessory/marking/nevrean_male
 	name = "Male Nevrean beak"
@@ -65,7 +65,7 @@
 	icon_state = "nevrean_m"
 	body_parts = list(BP_HEAD)
 	color_blend_mode = ICON_MULTIPLY
-	gender = MALE
+	random_generation_gender = MALE
 
 /datum/sprite_accessory/marking/spots
 	name = "Spots"

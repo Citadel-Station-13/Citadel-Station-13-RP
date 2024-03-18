@@ -22,6 +22,17 @@
 
 /datum/sprite_accessory
 	abstract_type = /datum/sprite_accessory
+	
+	//* basics *//
+	/// The preview name of the accessory.
+	var/name
+	/// id; must be unique globally amongst /datum/sprite_accessory's!
+	var/id
+
+	//* character setup *//
+	/// Determines if the accessory will be skipped or included in random hair generations.
+	/// if set, someone must be this gender to receive it
+	var/random_generation_gender
 
 	//* icon location & base state *//
 	/// The icon file the accessory is located in.
@@ -43,11 +54,7 @@
 
 	//* legacy below
 
-	/// The preview name of the accessory.
-	var/name
 
-	/// Determines if the accessory will be skipped or included in random hair generations.
-	var/gender = NEUTER
 
 	/// Restrict some styles to specific species.
 	var/list/species_allowed = list(SPECIES_HUMAN,SPECIES_PROMETHEAN,SPECIES_HUMAN_VATBORN)
@@ -66,8 +73,6 @@
 	var/center = FALSE
 	var/dimension_x = 32
 	var/dimension_y = 32
-	/// id
-	var/id
 	// these two are moved up for now
 	var/extra_overlay // Icon state of an additional overlay to blend in.
 	var/extra_overlay2

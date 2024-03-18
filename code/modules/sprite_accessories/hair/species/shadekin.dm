@@ -8,7 +8,7 @@
 	icon_state = "shadekin_short"
 	species_allowed = list(SPECIES_SHADEKIN, SPECIES_SHADEKIN_CREW)
 	apply_restrictions = TRUE
-	gender = NEUTER
+	random_generation_gender = null
 
 /datum/sprite_accessory/hair/shadekin_hair_poofy
 	name = "Shadekin Poofy Hair"
@@ -18,7 +18,7 @@
 	icon_state = "shadekin_poofy"
 	species_allowed = list(SPECIES_SHADEKIN, SPECIES_SHADEKIN_CREW)
 	apply_restrictions = TRUE
-	gender = NEUTER
+	random_generation_gender = null
 
 /datum/sprite_accessory/hair/shadekin_hair_long
 	name = "Shadekin Long Hair"
@@ -28,4 +28,4 @@
 	icon_state = "shadekin_long"
 	species_allowed = list(SPECIES_SHADEKIN, SPECIES_SHADEKIN_CREW)
 	apply_restrictions = TRUE
-	gender = NEUTER
+	random_generation_gender = null

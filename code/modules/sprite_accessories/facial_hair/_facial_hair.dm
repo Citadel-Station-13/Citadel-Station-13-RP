@@ -16,14 +16,14 @@
 	name = "Shaved"
 	id = "fhair_shaved"
 	icon_state = "bald"
-	gender = NEUTER
+	random_generation_gender = null
 
 /datum/sprite_accessory/facial_hair/neck_fluff
 	name = "Neck Fluff"
 	id = "fhair_neckfluff"
 	icon = 'icons/mob/human_face_or_vr.dmi'
 	icon_state = "facial_neckfluff"
-	gender = NEUTER
+	random_generation_gender = null
 
 /datum/sprite_accessory/facial_hair/watson
 	name = "Watson Mustache"

@@ -29,7 +29,7 @@
 	icon_state = "zorren_face"
 	color_blend_mode = ICON_MULTIPLY
 	body_parts = list(BP_HEAD)
-	gender = MALE
+	random_generation_gender = MALE
 
 /datum/sprite_accessory/marking/zorren/zorren_face_female
 	name = "Zorren Female Face"
@@ -37,7 +37,7 @@
 	icon_state = "zorren_face_female"
 	color_blend_mode = ICON_MULTIPLY
 	body_parts = list(BP_HEAD)
-	gender = FEMALE
+	random_generation_gender = FEMALE
 
 /datum/sprite_accessory/marking/zorren/zorren_muzzle_male
 	name = "Zorren Male Muzzle"
@@ -45,7 +45,7 @@
 	icon_state = "zorren_muzzle"
 	color_blend_mode = ICON_MULTIPLY
 	body_parts = list(BP_HEAD)
-	gender = MALE
+	random_generation_gender = MALE
 
 /datum/sprite_accessory/marking/zorren/zorren_muzzle_female
 	name = "Zorren Female Muzzle"
@@ -53,7 +53,7 @@
 	icon_state = "zorren_muzzle_female"
 	color_blend_mode = ICON_MULTIPLY
 	body_parts = list(BP_HEAD)
-	gender = FEMALE
+	random_generation_gender = FEMALE
 
 /datum/sprite_accessory/marking/zorren/zorren_socks
 	name = "Zorren Socks"

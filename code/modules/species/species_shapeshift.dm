@@ -110,18 +110,16 @@ var/list/wrapped_species_by_ref = list()
 	var/list/valid_gradstyles = GLOB.hair_gradients
 	for(var/hairstyle in GLOB.legacy_hair_lookup)
 		var/datum/sprite_accessory/S = GLOB.legacy_hair_lookup[hairstyle]
-		if(gender == MALE && S.gender == FEMALE)
+		if(gender == MALE && S.random_generation_gender == FEMALE)
 			continue
-		if(gender == FEMALE && S.gender == MALE)
+		if(gender == FEMALE && S.random_generation_gender == MALE)
 			continue
 		if(S.apply_restrictions && !(species.get_bodytype_legacy(src) in S.species_allowed))
 			continue
 		valid_hairstyles += hairstyle
 	for(var/facialhairstyle in GLOB.legacy_facial_hair_lookup)
 		var/datum/sprite_accessory/S = GLOB.legacy_facial_hair_lookup[facialhairstyle]
-		if(gender == MALE && S.gender == FEMALE)
-			continue
-		if(gender == FEMALE && S.gender == MALE)
+		if(!isnull(S.random_generation_gender) && gender != S.random_generation_gender)
 			continue
 		if(S.apply_restrictions && !(species.get_bodytype_legacy(src) in S.species_allowed))
 			continue

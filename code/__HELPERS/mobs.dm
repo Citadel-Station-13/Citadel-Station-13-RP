@@ -37,7 +37,7 @@
 	var/list/valid = list()
 	for(var/id in GLOB.sprite_accessory_hair)
 		var/datum/sprite_accessory/hair/S = GLOB.sprite_accessory_hair[id]
-		if(S.gender != NEUTER && gender != S.gender)
+		if(!isnull(S.random_generation_gender) && gender != S.random_generation_gender)
 			continue
 		if(S.apply_restrictions && !(species in S.species_allowed))
 			continue
@@ -48,7 +48,7 @@
 	var/list/valid = list()
 	for(var/id in GLOB.sprite_accessory_facial_hair)
 		var/datum/sprite_accessory/facial_hair/S = GLOB.sprite_accessory_facial_hair[id]
-		if(S.gender != NEUTER && gender != S.gender)
+		if(!isnull(S.random_generation_gender) && gender != S.random_generation_gender)
 			continue
 		if(S.apply_restrictions && !(species in S.species_allowed))
 			continue

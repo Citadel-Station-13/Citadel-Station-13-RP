@@ -112,14 +112,15 @@ GLOBAL_LIST_EMPTY(observer_list)
 			var/mob/living/carbon/human/H = body
 			icon = H.icon
 			icon_state = H.icon_state
-			if(H.overlays_standing)
-				for(var/i in 1 to length(H.overlays_standing))
-					if(!H.overlays_standing[i])
-						continue
-					add_overlay(H.overlays_standing[i])
+			// todo: fixup (get rid of other planes)
+			for(var/key in H.standing_overlays)
+				add_overlay(H.standing_overlays[key])
+			for(var/slot_id in H.inventory.rendered_normal_overlays)
+				add_overlay(H.inventory.rendered_normal_overlays[slot_id])
 		else
 			icon = body.icon
 			icon_state = body.icon_state
+			// todo: fixup (get rid of other planes)
 			add_overlay(body.overlays)
 
 		gender = body.gender

@@ -164,8 +164,8 @@
 	return slowdown
 */
 /datum/species/adherent/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
-	for(var/i in H.overlays_standing)
-		H.cut_overlay(i)
+	for(var/key in H.standing_overlays)
+		H.cut_overlay(H.standing_overlays[key])
 	//Todo: find a better way to adjust clothing, than to wipe all overlays
 
 /datum/species/adherent/handle_fall_special(mob/living/carbon/human/H, turf/landing)

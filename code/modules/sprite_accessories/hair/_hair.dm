@@ -51,21 +51,21 @@
 	name = "Bald"
 	id = "hair_bald"
 	icon_state = "bald"
-	gender = MALE
+	random_generation_gender = MALE
 	hair_flags = HAIR_VERY_SHORT
 
 /datum/sprite_accessory/hair/baldfade
 	name = "Balding Fade"
 	id = "hair_balding_fade"
 	icon_state = "hair_baldfade"
-	gender = MALE
+	random_generation_gender = MALE
 	hair_flags = HAIR_VERY_SHORT
 
 /datum/sprite_accessory/hair/balding
 	name = "Balding Hair"
 	id = "hair_balding"
 	icon_state = "hair_e"
-	gender = MALE
+	random_generation_gender = MALE
 	hair_flags = HAIR_VERY_SHORT
 
 /datum/sprite_accessory/hair/bedhead
@@ -213,7 +213,7 @@
 	name = "Bun Tight"
 	id = "hair_bun_tight"
 	icon_state = "hair_tightbun"
-	gender = FEMALE
+	random_generation_gender = FEMALE
 	hair_flags = HAIR_VERY_SHORT | HAIR_TIEABLE
 
 /datum/sprite_accessory/hair/buzz
@@ -236,7 +236,7 @@
 	name = "Coffee House Cut"
 	id = "hair_coffeehouse"
 	icon_state = "hair_coffeehouse"
-	gender = MALE
+	random_generation_gender = MALE
 	hair_flags = HAIR_VERY_SHORT
 
 /datum/sprite_accessory/hair/combover
@@ -329,7 +329,7 @@
 	name = "Fade High"
 	id = "hair_fade_high"
 	icon_state = "hair_highfade"
-	gender = MALE
+	random_generation_gender = MALE
 	hair_flags = HAIR_VERY_SHORT
 
 /datum/sprite_accessory/hair/medfade
@@ -342,14 +342,14 @@
 	name = "Fade Low"
 	id = "hair_fade_low"
 	icon_state = "hair_lowfade"
-	gender = MALE
+	random_generation_gender = MALE
 	hair_flags = HAIR_VERY_SHORT
 
 /datum/sprite_accessory/hair/partfade
 	name = "Fade Parted"
 	id = "hair_fade_parted"
 	icon_state = "hair_shavedpart"
-	gender = MALE
+	random_generation_gender = MALE
 	hair_flags = HAIR_VERY_SHORT
 
 /datum/sprite_accessory/hair/familyman
@@ -742,7 +742,7 @@
 	name = "Regulation Cut"
 	id = "hair_regulation"
 	icon_state = "hair_nofade"
-	gender = MALE
+	random_generation_gender = MALE
 	hair_flags = HAIR_VERY_SHORT
 
 /datum/sprite_accessory/hair/ronin
@@ -919,7 +919,7 @@
 	name = "Trimmed Flat Top"
 	id = "hair_trimmed_flat"
 	icon_state = "hair_trimflat"
-	gender = MALE
+	random_generation_gender = MALE
 	hair_flags = HAIR_VERY_SHORT
 
 /datum/sprite_accessory/hair/jade
@@ -932,7 +932,7 @@
 	name = "Trimmed"
 	id = "hair_trimmed"
 	icon_state = "hair_trimmed"
-	gender = MALE
+	random_generation_gender = MALE
 	hair_flags = HAIR_VERY_SHORT
 
 /datum/sprite_accessory/hair/twintai1
@@ -951,21 +951,21 @@
 	name = "Undercut"
 	id = "hair_undercut"
 	icon_state = "hair_undercut1"
-	gender = MALE
+	random_generation_gender = MALE
 	hair_flags = HAIR_VERY_SHORT
 
 /datum/sprite_accessory/hair/undercut2
 	name = "Undercut Swept Right"
 	id = "hair_undercut_right"
 	icon_state = "hair_undercut2"
-	gender = MALE
+	random_generation_gender = MALE
 	hair_flags = HAIR_VERY_SHORT
 
 /datum/sprite_accessory/hair/undercut3
 	name = "Undercut Swept Left"
 	id = "hair_undercut_left"
 	icon_state = "hair_undercut3"
-	gender = MALE
+	random_generation_gender = MALE
 	hair_flags = HAIR_VERY_SHORT
 
 /datum/sprite_accessory/hair/undercutlong
