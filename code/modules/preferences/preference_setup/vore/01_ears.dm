@@ -362,7 +362,7 @@
 		var/datum/sprite_accessory/ears/current = pref.ear_style_id && GLOB.sprite_accessory_ears[pref.ear_style_id]
 		for(var/id in GLOB.sprite_accessory_ears)
 			var/datum/sprite_accessory/ears/instance = GLOB.sprite_accessory_ears[id]
-			if(((!instance.ckeys_allowed) || (usr.ckey in instance.ckeys_allowed)) && ((!instance.apply_restrictions) || (species_name in instance.species_allowed)))
+			if(((!instance.apply_restrictions) || (species_name in instance.species_allowed)))
 				pretty_ear_styles[instance.name] = id
 
 		// Present choice to user
@@ -405,7 +405,7 @@
 		var/datum/sprite_accessory/ears/current = pref.horn_style_id && GLOB.sprite_accessory_ears[pref.horn_style_id]
 		for(var/id in GLOB.sprite_accessory_ears)
 			var/datum/sprite_accessory/ears/instance = GLOB.sprite_accessory_ears[id]
-			if(((!instance.ckeys_allowed) || (usr.ckey in instance.ckeys_allowed)) && ((!instance.apply_restrictions) || (species_name in instance.species_allowed)))
+			if(((!instance.apply_restrictions) || (species_name in instance.species_allowed)))
 				pretty_horn_styles[instance.name] = id
 
 		// Present choice to user
@@ -448,7 +448,7 @@
 		var/datum/sprite_accessory/tail/current = pref.tail_style_id && GLOB.sprite_accessory_tails[pref.tail_style_id]
 		for(var/id in GLOB.sprite_accessory_tails)
 			var/datum/sprite_accessory/tail/instance = GLOB.sprite_accessory_tails[id]
-			if(((!instance.ckeys_allowed) || (usr.ckey in instance.ckeys_allowed)) && ((!instance.apply_restrictions) || (species_name in instance.species_allowed)))
+			if(((!instance.apply_restrictions) || (species_name in instance.species_allowed)))
 				pretty_tail_styles[instance.name] = id
 
 		// Present choice to user
@@ -491,7 +491,7 @@
 		var/datum/sprite_accessory/wing/current = pref.wing_style_id && GLOB.sprite_accessory_wings[pref.wing_style_id]
 		for(var/id in GLOB.sprite_accessory_wings)
 			var/datum/sprite_accessory/wing/instance = GLOB.sprite_accessory_wings[id]
-			if(((!instance.ckeys_allowed) || (usr.ckey in instance.ckeys_allowed)) && ((!instance.apply_restrictions) || (species_name in instance.species_allowed)))
+			if(((!instance.apply_restrictions) || (species_name in instance.species_allowed)))
 				pretty_wing_styles[instance.name] = id
 
 		// Present choice to user

@@ -5,11 +5,47 @@
 	if(head?.inv_hide_flags & BLOCKHEADHAIR)
 		remove_standing_overlay(HUMAN_OVERLAY_EARS)
 		return
+	if(isnull(ear_style))
+		remove_standing_overlay(HUMAN_OVERLAY_EARS)
+		return
+	var/list/rendered = ear_style.render(
+		src,
+		list(
+			rgb(r_ears, g_ears, b_ears),
+			rgb(r_ears2, g_ears2, b_ears2),
+			rgb(r_ears3, g_ears3, b_ears3),
+		),
+		HUMAN_LAYER_SPRITEACC_EARS_FRONT,
+		HUMAN_LAYER_SPRITEACC_EARS_BEHIND,
+		0, // TODO
+	)
+	// todo: awful snowflake shifting system
+	for(var/image/I as anything in rendered)
+		I.pixel_y += head_spriteacc_offset
+	set_standing_overlay(HUMAN_OVERLAY_EARS, rendered)
 
 /mob/living/carbon/human/proc/update_spriteacc_horns()
 	if(head?.inv_hide_flags & BLOCKHEADHAIR)
-		remove_standing_overlay(HUMAN_OVERLAY_EARS)
+		remove_standing_overlay(HUMAN_OVERLAY_HORNS)
 		return
+	if(isnull(horn_style))
+		remove_standing_overlay(HUMAN_OVERLAY_HORNS)
+		return
+	var/list/rendered = ear_style.render(
+		src,
+		list(
+			rgb(r_horn, g_horn, b_horn),
+			rgb(r_horn2, g_horn2, b_horn2),
+			rgb(r_horn3, g_horn3, b_horn3),
+		),
+		HUMAN_LAYER_SPRITEACC_HORNS_FRONT,
+		HUMAN_LAYER_SPRITEACC_HORNS_BEHIND,
+		0, // TODO
+	)
+	// todo: awful snowflake shifting system
+	for(var/image/I as anything in rendered)
+		I.pixel_y += head_spriteacc_offset
+	set_standing_overlay(HUMAN_OVERLAY_HORNS, rendered)
 	
 
 /mob/living/carbon/human/proc/update_spriteacc_wings()
@@ -23,48 +59,6 @@
 
 //? Sprite Accessories
 var/global/list/wing_icon_cache = list()
-
-/mob/living/carbon/human/proc/get_ears_overlay()
-	if(ear_style && !(head && (head.inv_hide_flags & BLOCKHEADHAIR)))
-		var/icon/ears_s = new/icon("icon" = ear_style.icon, "icon_state" = ear_style.icon_state)
-		if(ear_style.do_colouration)
-			ears_s.Blend(rgb(src.r_ears, src.g_ears, src.b_ears), ear_style.color_blend_mode)
-
-		if(ear_style.extra_overlay)
-			var/icon/overlay = new/icon("icon" = ear_style.icon, "icon_state" = ear_style.extra_overlay)
-			overlay.Blend(rgb(src.r_ears2, src.g_ears2, src.b_ears2), ear_style.color_blend_mode)
-			ears_s.Blend(overlay, ICON_OVERLAY)
-			qdel(overlay)
-
-		if(ear_style.extra_overlay2) //MORE COLOURS IS BETTERER
-			var/icon/overlay = new/icon("icon" = ear_style.icon, "icon_state" = ear_style.extra_overlay2)
-			overlay.Blend(rgb(src.r_ears3, src.g_ears3, src.b_ears3), ear_style.color_blend_mode)
-			ears_s.Blend(overlay, ICON_OVERLAY)
-			qdel(overlay)
-
-		return ears_s
-	return null
-
-/mob/living/carbon/human/proc/get_horns_overlay()
-	if(horn_style && !(head && (head.inv_hide_flags & BLOCKHEADHAIR)))
-		var/icon/horn_s = new/icon("icon" = horn_style.icon, "icon_state" = horn_style.icon_state)
-		if(horn_style.do_colouration)
-			horn_s.Blend(rgb(src.r_horn, src.g_horn, src.b_horn), horn_style.color_blend_mode)
-
-		if(horn_style.extra_overlay)
-			var/icon/overlay = new/icon("icon" = horn_style.icon, "icon_state" = horn_style.extra_overlay)
-			overlay.Blend(rgb(src.r_horn2, src.g_horn2, src.b_horn2), horn_style.color_blend_mode)
-			horn_s.Blend(overlay, ICON_OVERLAY)
-			qdel(overlay)
-
-		if(horn_style.extra_overlay2)
-			var/icon/overlay = new/icon("icon" = horn_style.icon, "icon_state" = horn_style.extra_overlay2)
-			overlay.Blend(rgb(src.r_horn3, src.g_horn3, src.b_horn3), horn_style.color_blend_mode)
-			horn_s.Blend(overlay, ICON_OVERLAY)
-			qdel(overlay)
-
-		return horn_s
-	return null
 
 /mob/living/carbon/human/proc/get_tail_image(front)
 	//If you are FBP with tail style and didn't set a custom one
@@ -165,32 +159,18 @@ var/global/list/wing_icon_cache = list()
 					hair_s.Blend(grad_s, ICON_OVERLAY)
 
 			face_standing.Blend(hair_s, ICON_OVERLAY)
+		
+	
 
-	var/icon/ears_s = get_ears_overlay()
-	if(ears_s)
-		if(ears_s.Height() > face_standing.Height())
-			face_standing.Crop(1, 1, face_standing.Width(), ears_s.Height())
-		face_standing.Blend(ears_s, ICON_OVERLAY)
 	if(istype(head_organ,/obj/item/organ/external/head/vr))
 		var/obj/item/organ/external/head/vr/head_organ_vr = head_organ
-		set_standing_overlay(
-			HUMAN_OVERLAY_HAIR,
-			image(face_standing, layer = HUMAN_LAYER_HAIR, "pixel_y" = head_organ_vr.head_offset),
-		)
-		return
+		head_spriteacc_offset = head_organ_vr.head_offset
+	else
+		head_spriteacc_offset = 0
 
-	var/icon/horns_s = get_horns_overlay()
-	if(horns_s && (!hiding_horns && horn_style.can_be_hidden))
-		if(horns_s.Height() > face_standing.Height())
-			face_standing.Crop(1, 1, face_standing.Width(), horns_s.Height())
-		face_standing.Blend(horns_s, ICON_OVERLAY)
-	if(istype(head_organ,/obj/item/organ/external/head/vr))
-		var/obj/item/organ/external/head/vr/head_organ_vr = head_organ
-		set_standing_overlay(
-			HUMAN_OVERLAY_HAIR,
-			image(face_standing, layer = HUMAN_LAYER_HAIR, "pixel_y" = head_organ_vr.head_offset),
-		)
-		return
+	update_spriteacc_ears()
+	update_spriteacc_horns()
+
 
 	face_standing += rgb(,,,head_organ.hair_opacity)
 
