@@ -33,6 +33,13 @@ export const CHANGELOG_ENTRIES = [
 	],
 
 	[
+		["tweak"],
+		{
+			placeholders: ["tweaked a few things"],
+		},
+	],
+
+	[
 		["qol"],
 		{
 			placeholders: ["made something easier to use"],
@@ -40,16 +47,30 @@ export const CHANGELOG_ENTRIES = [
 	],
 
 	[
-		["sound"],
+		["soundadd"],
 		{
-			placeholders: ["added/modified/removed audio or sound effects"],
+			placeholders: ["added a new sound thingy"],
 		},
 	],
 
 	[
-		["image"],
+		["sounddel"],
 		{
-			placeholders: ["added/modified/removed some icons or images"],
+			placeholders: ["removed an old sound thingy"],
+		},
+	],
+
+	[
+		["imageadd"],
+		{
+			placeholders: ["added some icons and images"],
+		},
+	],
+
+	[
+		["imagedel"],
+		{
+			placeholders: ["deleted some icons and images"],
 		},
 	],
 
