@@ -132,7 +132,7 @@
 	wikilink = "N/A"
 
 /datum/species/adherent/equip_survival_gear(mob/living/carbon/human/H, extendedtank = FALSE, comprehensive = FALSE)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/crystal, /datum/inventory_slot_meta/abstract/put_in_backpack)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/crystal, /datum/inventory_slot/abstract/put_in_backpack)
 
 /datum/species/adherent/New()
 	/*equip_adjust = list(

@@ -9,6 +9,11 @@
 	//* Inventory *//
 
 	//* Caches *//
+	/// cached overlays by slot id
+	var/list/rendered_normal_overlays = list()
+	/// cached overlays by slot id
+	// todo: emissives
+	// var/list/rendered_emissive_overlays = list()
 
 /datum/inventory/New(mob/M)
 	if(!istype(M))
@@ -18,6 +23,34 @@
 /datum/inventory/Destroy()
 	owner = null
 	return ..()
+
+//* Rendering *//
+
+/datum/inventory/proc/render_slot(slot_id)
+	var/obj/item/target = owner._item_by_slot(slot_id)
+	if(isnull(target))
+		remove_slot_render(slot_id)
+
+	var/datum/inventory_slot/slot = resolve_inventory_slot(slot_id)
+	var/bodytype = BODYTYPE_DEFAULT
+	
+	if(ishuman(owner))
+		var/mob/living/carbon/human/casted_human = owner
+		bodytype = casted_human.species.get_effective_bodytype(casted_human, target, slot_id)
+
+	var/rendering_results = slot.render(owner, slot, bodytype)
+	
+	set_slot_render(slot_id, rendering_results)
+
+	#warn impl
+	
+/datum/inventory/proc/remove_slot_render(slot_id)
+	#warn impl
+
+/datum/inventory/proc/set_slot_render(slot_id, overlay)
+	#warn impl
+
+//* Queries *//
 
 /**
  * returns list() of items with body_cover_flags
@@ -39,32 +72,32 @@
  * @return true/false based on if it worked
  */
 /mob/proc/handle_abstract_slot_insertion(obj/item/I, slot, flags)
-	if(!ispath(slot, /datum/inventory_slot_meta/abstract))
-		slot = resolve_inventory_slot_meta(slot)?.type
-		if(!ispath(slot, /datum/inventory_slot_meta/abstract))
+	if(!ispath(slot, /datum/inventory_slot/abstract))
+		slot = resolve_inventory_slot(slot)?.type
+		if(!ispath(slot, /datum/inventory_slot/abstract))
 			stack_trace("invalid slot: [slot]")
-		else if(slot != /datum/inventory_slot_meta/abstract/put_in_hands)
+		else if(slot != /datum/inventory_slot/abstract/put_in_hands)
 			stack_trace("attempted usage of slot id in abstract insertion converted successfully")
 	. = FALSE
 	switch(slot)
-		if(/datum/inventory_slot_meta/abstract/hand/left)
+		if(/datum/inventory_slot/abstract/hand/left)
 			return put_in_left_hand(I, flags)
-		if(/datum/inventory_slot_meta/abstract/hand/right)
+		if(/datum/inventory_slot/abstract/hand/right)
 			return put_in_right_hand(I, flags)
-		if(/datum/inventory_slot_meta/abstract/put_in_belt)
+		if(/datum/inventory_slot/abstract/put_in_belt)
 			var/obj/item/held = item_by_slot_id(SLOT_ID_BELT)
 			if(flags & INV_OP_FORCE)
 				return held?.obj_storage?.insert(I, new /datum/event_args/actor(src), flags & INV_OP_SUPPRESS_SOUND)
 			return held?.obj_storage?.auto_handle_interacted_insertion(I, new /datum/event_args/actor(src), flags & INV_OP_SUPPRESS_WARNING, flags & INV_OP_SUPPRESS_SOUND)
-		if(/datum/inventory_slot_meta/abstract/put_in_backpack)
+		if(/datum/inventory_slot/abstract/put_in_backpack)
 			var/obj/item/held = item_by_slot_id(SLOT_ID_BACK)
 			if(flags & INV_OP_FORCE)
 				return held?.obj_storage?.insert(I, new /datum/event_args/actor(src), flags & INV_OP_SUPPRESS_SOUND)
 			return held?.obj_storage?.auto_handle_interacted_insertion(I, new /datum/event_args/actor(src), flags & INV_OP_SUPPRESS_WARNING, flags & INV_OP_SUPPRESS_SOUND)
-		if(/datum/inventory_slot_meta/abstract/put_in_hands)
+		if(/datum/inventory_slot/abstract/put_in_hands)
 			return put_in_hands(I, flags)
-		if(/datum/inventory_slot_meta/abstract/put_in_storage, /datum/inventory_slot_meta/abstract/put_in_storage_try_active)
-			if(slot == /datum/inventory_slot_meta/abstract/put_in_storage_try_active)
+		if(/datum/inventory_slot/abstract/put_in_storage, /datum/inventory_slot/abstract/put_in_storage_try_active)
+			if(slot == /datum/inventory_slot/abstract/put_in_storage_try_active)
 				// todo: redirection
 				if(flags & INV_OP_FORCE)
 					if(active_storage?.insert(I, new /datum/event_args/actor(src), flags & INV_OP_SUPPRESS_WARNING))
@@ -86,7 +119,7 @@
 					return held.obj_storage.insert(I, new /datum/event_args/actor(src), flags & INV_OP_SUPPRESS_SOUND)
 				return held.obj_storage.auto_handle_interacted_insertion(I, new /datum/event_args/actor(src), flags & INV_OP_SUPPRESS_WARNING, flags & INV_OP_SUPPRESS_SOUND)
 			return FALSE
-		if(/datum/inventory_slot_meta/abstract/attach_as_accessory)
+		if(/datum/inventory_slot/abstract/attach_as_accessory)
 			for(var/obj/item/clothing/C in get_equipped_items())
 				if(C.attempt_attach_accessory(I))
 					return TRUE
@@ -215,7 +248,7 @@
 
 	if(!(flags & INV_OP_FORCE) && HAS_TRAIT(I, TRAIT_ITEM_NODROP))
 		if(!(flags & INV_OP_SUPPRESS_WARNING))
-			var/datum/inventory_slot_meta/slot_meta = resolve_inventory_slot_meta(slot)
+			var/datum/inventory_slot/slot_meta = resolve_inventory_slot(slot)
 			to_chat(user, SPAN_WARNING("[I] is stubbornly stuck [slot_meta.display_preposition] your [slot_meta.display_name]!"))
 		return FALSE
 
@@ -254,7 +287,7 @@
 		to_chat(user, SPAN_DANGER("can_equip will now attempt to prevent the deleted item from being equipped. There should be no glitches."))
 		return FALSE
 
-	var/datum/inventory_slot_meta/slot_meta = resolve_inventory_slot_meta(slot)
+	var/datum/inventory_slot/slot_meta = resolve_inventory_slot(slot)
 	var/self_equip = user == src
 	if(!slot_meta)
 		. = FALSE
@@ -263,17 +296,17 @@
 	if(slot_meta.inventory_slot_flags & INV_SLOT_IS_ABSTRACT)
 		// special handling: make educated guess, defaulting to yes
 		switch(slot_meta.type)
-			if(/datum/inventory_slot_meta/abstract/hand/left)
+			if(/datum/inventory_slot/abstract/hand/left)
 				return (flags & INV_OP_FORCE) || !get_left_held_item()
-			if(/datum/inventory_slot_meta/abstract/hand/right)
+			if(/datum/inventory_slot/abstract/hand/right)
 				return (flags & INV_OP_FORCE) || !get_right_held_item()
-			if(/datum/inventory_slot_meta/abstract/put_in_backpack)
+			if(/datum/inventory_slot/abstract/put_in_backpack)
 				var/obj/item/thing = item_by_slot_id(SLOT_ID_BACK)
 				return thing?.obj_storage?.can_be_inserted(I, new /datum/event_args/actor(user), TRUE)
-			if(/datum/inventory_slot_meta/abstract/put_in_belt)
+			if(/datum/inventory_slot/abstract/put_in_belt)
 				var/obj/item/thing = item_by_slot_id(SLOT_ID_BACK)
 				return thing?.obj_storage?.can_be_inserted(I, new /datum/event_args/actor(user), TRUE)
-			if(/datum/inventory_slot_meta/abstract/put_in_hands)
+			if(/datum/inventory_slot/abstract/put_in_hands)
 				return (flags & INV_OP_FORCE) || !hands_full()
 		return TRUE
 
@@ -432,9 +465,9 @@
  *
  * return TRUE if conflicting, otherwise FALSE
  */
-/mob/proc/inventory_slot_semantic_conflict(obj/item/I, datum/inventory_slot_meta/slot, mob/user)
+/mob/proc/inventory_slot_semantic_conflict(obj/item/I, datum/inventory_slot/slot, mob/user)
 	. = FALSE
-	slot = resolve_inventory_slot_meta(slot)
+	slot = resolve_inventory_slot(slot)
 	return slot._equip_check(I, src, user)
 
 /**
@@ -455,7 +488,7 @@
 		return FALSE
 
 	// resolve slot
-	var/datum/inventory_slot_meta/slot_meta = resolve_inventory_slot_meta(slot)
+	var/datum/inventory_slot/slot_meta = resolve_inventory_slot(slot)
 	if(slot_meta.inventory_slot_flags & INV_SLOT_IS_ABSTRACT)
 		// if it's abstract, we go there directly - do not use can_equip as that will just guess.
 		return handle_abstract_slot_insertion(I, slot, flags)
@@ -579,7 +612,7 @@
  * handles adding an item or updating an item to our hud
  */
 /mob/proc/_handle_inventory_hud_update(obj/item/I, slot)
-	var/datum/inventory_slot_meta/meta = resolve_inventory_slot_meta(slot)
+	var/datum/inventory_slot/meta = resolve_inventory_slot(slot)
 	I.screen_loc = meta.hud_position
 	if(client)
 		client.screen |= I

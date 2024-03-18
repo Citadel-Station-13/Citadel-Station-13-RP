@@ -422,69 +422,17 @@
 	apply_layer(UNIFORM_LAYER)
 
 /mob/living/carbon/human/update_inv_wear_id()
-	if(QDESTROYING(src))
-		return
-
-	remove_layer(ID_LAYER)
-
-	if(!wear_id)
-		return //Not wearing an ID
-
-	//Only draw the ID on the mob if the uniform allows for it
-	if(w_uniform && istype(w_uniform, /obj/item/clothing/under))
-		var/obj/item/clothing/under/U = w_uniform
-		if(U.displays_id)
-			overlays_standing[ID_LAYER] = wear_id.render_mob_appearance(src, SLOT_ID_WORN_ID, species.get_effective_bodytype(src, wear_id, SLOT_ID_WORN_ID))
-
-	apply_layer(ID_LAYER)
+	inventory.render_slot(SLOT_ID_WORN_ID)
 
 /mob/living/carbon/human/update_inv_gloves()
-	if(QDESTROYING(src))
-		return
-
-	remove_layer(GLOVES_LAYER)
-
-	if(!gloves)
-		return //No gloves, no reason to be here.
-
-	overlays_standing[GLOVES_LAYER]	= gloves.render_mob_appearance(src, SLOT_ID_GLOVES, species.get_effective_bodytype(src, gloves, SLOT_ID_GLOVES))
-
-	apply_layer(GLOVES_LAYER)
+	inventory.render_slot(SLOT_ID_GLOVES)
 
 /mob/living/carbon/human/update_inv_glasses()
-	if(QDESTROYING(src))
-		return
-
-	remove_layer(GLASSES_LAYER)
-
-	if(!glasses)
-		return //Not wearing glasses, no need to update anything.
-
-	overlays_standing[GLASSES_LAYER] = glasses.render_mob_appearance(src, SLOT_ID_GLASSES, species.get_effective_bodytype(src, glasses, SLOT_ID_GLASSES))
-
-	apply_layer(GLASSES_LAYER)
+	inventory.render_slot(SLOT_ID_GLASSES)
 
 /mob/living/carbon/human/update_inv_ears()
-	if(QDESTROYING(src))
-		return
-
-	remove_layer(EARS_LAYER)
-
-	if((head && head.inv_hide_flags & (BLOCKHAIR | BLOCKHEADHAIR)) || (wear_mask && wear_mask.inv_hide_flags & (BLOCKHAIR | BLOCKHEADHAIR)))
-		return //Ears are blocked (by hair being blocked, overloaded)
-
-	if(!l_ear && !r_ear)
-		return //Why bother, if no ear sprites
-
-	// Blank image upon which to layer left & right overlays.
-	var/list/mutable_appearance/both = list()
-	if(l_ear)
-		both += l_ear.render_mob_appearance(src, SLOT_ID_LEFT_EAR, species.get_effective_bodytype(src, l_ear, SLOT_ID_LEFT_EAR))
-	if(r_ear)
-		both += r_ear.render_mob_appearance(src, SLOT_ID_RIGHT_EAR, species.get_effective_bodytype(src, r_ear, SLOT_ID_RIGHT_EAR))
-
-	overlays_standing[EARS_LAYER] = both
-	apply_layer(EARS_LAYER)
+	inventory.render_slot(SLOT_ID_LEFT_EAR)
+	inventory.render_slot(SLOT_ID_RIGHT_EAR)
 
 /mob/living/carbon/human/update_inv_shoes()
 	if(QDESTROYING(src))
@@ -533,17 +481,7 @@
 	apply_layer(SUIT_STORE_LAYER)
 
 /mob/living/carbon/human/update_inv_head()
-	if(QDESTROYING(src))
-		return
-
-	remove_layer(HEAD_LAYER)
-
-	if(!head)
-		return //No head item, why bother.
-
-	overlays_standing[HEAD_LAYER] = head.render_mob_appearance(src, SLOT_ID_HEAD, species.get_effective_bodytype(src, head, SLOT_ID_HEAD))
-
-	apply_layer(HEAD_LAYER)
+	inventory.render_slot(SLOT_ID_HEAD)
 
 /mob/living/carbon/human/update_inv_belt()
 	if(QDESTROYING(src))
