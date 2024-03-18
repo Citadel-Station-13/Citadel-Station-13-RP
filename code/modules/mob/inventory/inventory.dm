@@ -47,7 +47,7 @@
 		return
 
 	var/datum/inventory_slot/slot = resolve_inventory_slot(slot_id)
-	if(!slot.should_render(wearer, target))
+	if(!slot.should_render(owner, target))
 		remove_slot_render(slot_id)
 		return
 		
@@ -67,10 +67,16 @@
 	#warn impl
 	
 /datum/inventory/proc/remove_slot_render(slot_id)
-	#warn impl
+	if(isnull(rendered_normal_overlays[slot_id]))
+		return
+	owner.cut_overlay(rendered_normal_overlays[slot_id])
+	rendered_normal_overlays -= slot_id
 
 /datum/inventory/proc/set_slot_render(slot_id, overlay)
-	#warn impl
+	if(!isnull(rendered_normal_overlays[slot_id]))
+		owner.cut_overlay(rendered_normal_overlays[slot_id])
+	rendered_normal_overlays[slot_id] = overlay
+	owner.add_overlay(overlay)
 
 //* Queries *//
 

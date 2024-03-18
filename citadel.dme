@@ -4608,7 +4608,7 @@
 #include "code\modules\spells\targeted\projectile\fireball.dm"
 #include "code\modules\spells\targeted\projectile\magic_missile.dm"
 #include "code\modules\spells\targeted\projectile\projectile.dm"
-#include "code\modules\sprite_accessories\sprite_accessories.dm"
+#include "code\modules\sprite_accessories\sprite_accessory.dm"
 #include "code\modules\sprite_accessories\ears\_ears.dm"
 #include "code\modules\sprite_accessories\ears\antenna.dm"
 #include "code\modules\sprite_accessories\ears\horns.dm"

@@ -1,6 +1,26 @@
 
 //! old code below
 
+/mob/living/carbon/human/proc/update_spriteacc_ears()
+	if(head?.inv_hide_flags & BLOCKHEADHAIR)
+		remove_standing_overlay(HUMAN_OVERLAY_EARS)
+		return
+
+/mob/living/carbon/human/proc/update_spriteacc_horns()
+	if(head?.inv_hide_flags & BLOCKHEADHAIR)
+		remove_standing_overlay(HUMAN_OVERLAY_EARS)
+		return
+	
+
+/mob/living/carbon/human/proc/update_spriteacc_wings()
+
+/mob/living/carbon/human/proc/update_spriteacc_tail()
+
+/mob/living/carbon/human/proc/update_spriteacc_hair()
+
+/mob/living/carbon/human/proc/update_spriteacc_facehair()
+
+
 //? Sprite Accessories
 var/global/list/wing_icon_cache = list()
 

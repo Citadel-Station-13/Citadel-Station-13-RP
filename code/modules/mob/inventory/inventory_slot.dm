@@ -259,7 +259,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	render_fallback = list(
 		BODYTYPE_STRING_TESHARI = "_fallback_"
 	)
-	render_layer = BACK_LAYER
+	render_layer = HUMAN_LAYER_SLOT_BACK
 
 /datum/inventory_slot/inventory/uniform
 	name = "uniform"
@@ -283,7 +283,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		BODYTYPE_STRING_TESHARI = "_fallback_",
 		BODYTYPE_STRING_VOX = "_fallback_",
 	)
-	render_layer = UNIFORM_LAYER
+	render_layer = HUMAN_LAYER_SLOT_UNIFORM
 
 	/// list of rolldown icons; must DIRECTLY corrospond to default icons.
 	var/list/render_rolldown_icons = list(
@@ -378,7 +378,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		BODYTYPE_STRING_ZORREN_HIGH = 'icons/mob/clothing/species/fox/helmet.dmi',
 		BODYTYPE_STRING_UNATHI_DIGI = 'icons/mob/clothing/species/unathidigi/head.dmi',
 	)
-	render_layer = HEAD_LAYER
+	render_layer = HUMAN_LAYER_SLOT_HEAD
 
 /datum/inventory_slot/inventory/suit
 	name = "outerwear"
@@ -412,7 +412,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		BODYTYPE_STRING_ZADDAT      = 'icons/mob/clothing/species/zaddat/suits.dmi',
 		BODYTYPE_STRING_UNATHI_DIGI = 'icons/mob/clothing/species/unathidigi/suits.dmi',
 	)
-	render_layer = SUIT_LAYER
+	render_layer = HUMAN_LAYER_SLOT_SUIT
 
 /datum/inventory_slot/inventory/belt
 	name = "belt"
@@ -431,7 +431,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		BODYTYPE_STRING_WEREBEAST = 'icons/mob/clothing/species/werebeast/belt.dmi',
 		BODYTYPE_STRING_UNATHI_DIGI = 'icons/mob/clothing/species/unathidigi/belt.dmi',
 	)
-	render_layer = list(BELT_LAYER, BELT_LAYER_ALT)
+	render_layer = list(HUMAN_LAYER_SLOT_BELT, HUMAN_LAYER_SLOT_BELT_ALT)
 
 /datum/inventory_slot/inventory/pocket
 	abstract_type = /datum/inventory_slot/inventory/pocket
@@ -481,7 +481,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	render_fallback = list(
 		BODYTYPE_STRING_TESHARI = "_fallback_"
 	)
-	render_layer = ID_LAYER
+	render_layer = HUMAN_LAYER_SLOT_ID
 
 /datum/inventory_slot/inventory/id/should_render(mob/wearer, obj/item/item)
 	if(ishuman(wearer))
@@ -515,7 +515,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	render_fallback = list(
 		BODYTYPE_STRING_TESHARI = "_fallback_"	// this doesn't actually exist, so item becomes invis
 	)
-	render_layer = list(SHOES_LAYER, SHOES_LAYER_ALT)
+	render_layer = list(HUMAN_LAYER_SLOT_SHOES, HUMAN_LAYER_SLOT_SHOES_ALT)
 
 /datum/inventory_slot/inventory/shoes/should_render(mob/wearer, obj/item/item)
 	if(!ishuman(wearer))
@@ -548,7 +548,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	render_fallback = list(
 		BODYTYPE_STRING_TESHARI = "_fallback_"
 	)
-	render_layer = GLOVES_LAYER
+	render_layer = HUMAN_LAYER_SLOT_GLOVES
 
 /datum/inventory_slot/inventory/glasses
 	name = "glasses"
@@ -571,7 +571,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	render_fallback = list(
 		BODYTYPE_STRING_TESHARI = "_fallback_"
 	)
-	render_layer = GLASSES_LAYER
+	render_layer = HUMAN_LAYER_SLOT_GLASSES
 
 /datum/inventory_slot/inventory/suit_storage
 	name = "suit storage"
@@ -583,7 +583,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	hud_position = ui_sstore1
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_PROC
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE
-	render_layer = SUIT_STORE_LAYER
+	render_layer = HUMAN_LAYER_SLOT_SUIT_STORE
 
 /datum/inventory_slot/inventory/suit_storage/render(mob/wearer, obj/item/item, bodytype)
 	var/mob/living/carbon/human/casted_human = wearer
@@ -593,7 +593,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	return image(
 		icon = species.suit_storage_icon,
 		icon_state = item.item_state || item.icon_state,
-		layer = HUMAN_LAYER_SLOT_SUITSTORE
+		layer = HUMAN_LAYER_SLOT_HUMAN_SLOT_SUITSTORE
 	)
 
 /datum/inventory_slot/inventory/suit_storage/allow_equip(obj/item/I, mob/wearer, mob/user, force)
@@ -620,7 +620,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	render_fallback = list(
 		BODYTYPE_STRING_TESHARI = "_fallback_"
 	)
-	render_layer = EARS_LAYER
+	render_layer = HUMAN_LAYER_SLOT_EARS
 	render_key_plural = "ears"
 
 /datum/inventory_slot/inventory/ears/left
@@ -642,7 +642,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	hud_position = ui_r_ear
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_EARS
-	render_layer = EARS_LAYER
+	render_layer = HUMAN_LAYER_SLOT_EARS
 
 /datum/inventory_slot/inventory/mask
 	name = "mask"
@@ -673,7 +673,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	render_fallback = list(
 		BODYTYPE_STRING_TESHARI = "_fallback_",
 	)
-	render_layer = FACEMASK_LAYER
+	render_layer = HUMAN_LAYER_SLOT_FACEMASK
 
 /datum/inventory_slot/restraints
 	sort_order = -250
@@ -693,7 +693,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/handcuffs.dmi',
 		BODYTYPE_STRING_UNATHI_DIGI = 'icons/mob/clothing/species/unathidigi/handcuffs.dmi',
 	)
-	render_layer = HANDCUFF_LAYER
+	render_layer = HUMAN_LAYER_SLOT_HANDCUFF
 
 /datum/inventory_slot/restraints/handcuffs/allow_equip(obj/item/I, mob/wearer, mob/user, force)
 	return istype(I, /obj/item/handcuffs) && !istype(I, /obj/item/handcuffs/legcuffs)
@@ -710,7 +710,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/handcuffs.dmi',
 		BODYTYPE_STRING_UNATHI_DIGI = 'icons/mob/clothing/species/unathidigi/handcuffs.dmi'
 	)
-	render_layer = LEGCUFF_LAYER
+	render_layer = HUMAN_LAYER_SLOT_LEGCUFF
 
 /datum/inventory_slot/restraints/legcuffs/allow_equip(obj/item/I, mob/wearer, mob/user, force)
 	return istype(I, /obj/item/handcuffs/legcuffs)
@@ -777,7 +777,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	display_preposition = "in"
 	id = SLOT_ID_LEFT_HAND
 	render_key = "left"
-	render_layer = L_HAND_LAYER
+	render_layer = HUMAN_LAYER_SLOT_L_HAND
 	render_default_icons = list(
 		INHAND_DEFAULT_ICON_BALLS = 'icons/mob/items/lefthand_balls.dmi',
 		INHAND_DEFAULT_ICON_BOOKS = 'icons/mob/items/lefthand_books.dmi',
@@ -805,7 +805,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	display_preposition = "in"
 	id = SLOT_ID_RIGHT_HAND
 	render_key = "right"
-	render_layer = R_HAND_LAYER
+	render_layer = HUMAN_LAYER_SLOT_R_HAND
 	render_default_icons = list(
 		INHAND_DEFAULT_ICON_BALLS = 'icons/mob/items/righthand_balls.dmi',
 		INHAND_DEFAULT_ICON_BOOKS = 'icons/mob/items/righthand_books.dmi',

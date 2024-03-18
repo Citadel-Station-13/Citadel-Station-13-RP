@@ -273,7 +273,7 @@
 	// worn_state_guard makes us not render if we'd render the same as in-inventory icon.
 	if(no_render)		// don't bother
 		return additional
-	MA = mutable_appearance(icon_used, state_used, BODY_LAYER + layer_used, FLOAT_PLANE)
+	MA = mutable_appearance(icon_used, state_used, layer_used, FLOAT_PLANE)
 	// temporary - until coloration
 	MA.color = color
 	MA = center_appearance(MA, dim_x, dim_y)
