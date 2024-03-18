@@ -253,14 +253,14 @@
 	name = "hivebot scorcher"
 	desc = "A hivebot with a vicious-looking, strange weapon attached to its arm."
 
-	icon_state = "lurker"
-	icon_living = "lurker"
+	icon_state = "scorcher"
+	icon_living = "scorcher"
 
 	projectiletype = /obj/projectile/beam/cyan/hivebot
 
 	catalogue_data = list(/datum/category_item/catalogue/technology/drone/hivebot/scorcher)
 
 
-/obj/projectile/beam/cyan/hivebot //PREPARE THYSELF
-	damage = 40
+/obj/projectile/beam/cyan/hivebot
+	damage = 45
 	armor_penetration = 10

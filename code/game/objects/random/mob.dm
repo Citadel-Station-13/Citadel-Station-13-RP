@@ -183,7 +183,8 @@
 
 /obj/random/mob/robotic/hivebot/item_to_spawn()
 	return pick(prob(10);/mob/living/simple_mob/mechanical/hivebot,
-				prob(15);/mob/living/simple_mob/mechanical/hivebot/swarm,
+				prob(10);/mob/living/simple_mob/mechanical/hivebot/surveyor,
+				prob(5);/mob/living/simple_mob/mechanical/hivebot/swarm,
 				prob(10);/mob/living/simple_mob/mechanical/hivebot/ranged_damage,
 				prob(5);/mob/living/simple_mob/mechanical/hivebot/ranged_damage/rapid,
 				prob(5);/mob/living/simple_mob/mechanical/hivebot/ranged_damage/ion,

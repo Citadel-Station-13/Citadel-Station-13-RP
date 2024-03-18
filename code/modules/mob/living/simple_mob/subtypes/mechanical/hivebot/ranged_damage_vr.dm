@@ -72,17 +72,17 @@
 	value = CATALOGUER_REWARD_HARD
 
 /datum/category_item/catalogue/technology/drone/hivebot/suppressor
-	name = "Supressor Hivebot"
+	name = "Hizzori Clan Suppressor"
 	desc = "A Hizzori-clan hivebot. The Supressor is a fast, bulky hivebot with two weak, but fast-firing, taser guns. Oddly enough, the tasers appear \
 	to be similar in design to those used by corporate security forces. Its programming also appears to heavily encourage aggreesive \
 	behavior, causing...unpleasant close-range confrontations. Thankfully, each individual strike is not terribly powerful."
 
 /datum/category_item/catalogue/technology/drone/hivebot/scorcher
-	name = "Scorcher Hivebot"
-	desc = "... causing the w3ap0n on !tss arm to be #nntirely powered by some kind of paracausal loop that bind$ th#e zero-poin*t energy and lat%nt bounds of realitivity to its firing mechanism ..."
+	name = "Enigmatic Salvager Scorcher"
+	desc = "... firing mechanism, causing the weapon on its arm to be self-powered by some kind of paracausal loop in the firearm that binds relative space and time to create power for the ..."
 
 /datum/category_item/catalogue/technology/drone/hivebot/lurker
-	name = "Lurker Hivebot"
+	name = "Enigmatic Salvager Lurker"
 	desc = "An Enigmatic Salvager. But it's so much more than that. Almost every race considered sapient on the General Intellegence Scale has a fear of \
 	the dark. It's a deep fear, from when it was evolutionarily advantageous to huddle in close to the fire, in the light, to avoid the unknown. \
 	A field that bends visible light, that interferes with thermal and scanners, cloaks it, swathing it in its own darkness. A single shot from the distant dark, \
