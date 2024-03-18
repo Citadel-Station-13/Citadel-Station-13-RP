@@ -3029,9 +3029,11 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/maintenance/common,
-/obj/machinery/door/firedoor/glass,
 /obj/structure/cable/green{
 	icon_state = "4-8"
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/security/lower)
@@ -3939,9 +3941,11 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/maintenance/sec,
-/obj/machinery/door/firedoor/glass,
 /obj/structure/cable/green{
 	icon_state = "4-8"
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/security/prisonprocessing)
@@ -7377,7 +7381,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
 /turf/simulated/floor/plating,
 /area/security/detectives_office)
 "eNx" = (
@@ -7465,9 +7471,11 @@
 "eTk" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/red/border,
-/obj/machinery/door/firedoor/glass,
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 1
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/prisonprocessing)
@@ -11425,7 +11433,9 @@
 	dir = 8
 	},
 /obj/structure/curtain/open/shower/security,
-/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/monodark,
 /area/security/prisonupper)
 "hzW" = (
@@ -13398,7 +13408,9 @@
 	name = "Cell 3";
 	req_one_access = null
 	},
-/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/monodark,
 /area/security/prisonupper)
 "iFN" = (
@@ -16217,7 +16229,9 @@
 	name = "Cell 2";
 	req_one_access = null
 	},
-/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/monodark,
 /area/security/prisonupper)
 "kwz" = (
@@ -19372,7 +19386,9 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/monodark,
 /area/security/prisonupper)
 "muW" = (
@@ -29176,9 +29192,11 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass,
 /obj/structure/cable/green{
 	icon_state = "4-8"
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/lino,
 /area/security/detectives_office)
@@ -35620,10 +35638,12 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/chemistry_lab)
 "vWS" = (
-/obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/security{
 	id_tag = "isolation_cell_1";
 	name = "Isolation Cell"
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/monodark,
 /area/security/prisonupper)
@@ -35647,7 +35667,9 @@
 	name = "Cell 1";
 	req_one_access = null
 	},
-/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/monodark,
 /area/security/prisonupper)
 "vYy" = (
@@ -36436,8 +36458,10 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 1
 	},
-/obj/machinery/door/firedoor/glass,
 /obj/effect/floor_decal/steeldecal/steel_decals5,
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel,
 /area/security/prisonprocessing)
 "wvd" = (
