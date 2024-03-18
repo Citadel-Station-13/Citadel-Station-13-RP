@@ -80,7 +80,8 @@ DEFINE_BITFIELD(runlevels, list(
 #define INIT_ORDER_FAIL2TOPIC      200
 #define INIT_ORDER_IPINTEL         197
 #define INIT_ORDER_TIMER           195
-#define INIT_ORDER_DBCORE          190
+#define INIT_ORDER_DBCORE          194
+#define INIT_ORDER_BLACKBOX 	   193
 #define INIT_ORDER_EARLY_INIT      185
 #define INIT_ORDER_REPOSITORY      180
 #define INIT_ORDER_STATPANELS      170
@@ -140,6 +141,7 @@ DEFINE_BITFIELD(runlevels, list(
 // This means by default, ../subsystem/processing/.. is here!
 
 #define FIRE_PRIORITY_RADIATION    10  //! laggy as hell, bottom barrel until optimizations are done.
+#define FIRE_PRIORITY_DATABASE 16
 #define FIRE_PRIORITY_GARBAGE      15
 #define FIRE_PRIORITY_CHARACTERS   25
 #define FIRE_PRIORITY_PARALLAX     30

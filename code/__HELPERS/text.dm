@@ -12,11 +12,8 @@
  *! SQL sanitization
  */
 
-/proc/format_table_name(table)
-	return CONFIG_GET(string/sql_server_prefix) + table
-
-/proc/format_unified_table_name(table)
-	return CONFIG_GET(string/sql_unified_prefix) + table
+/proc/format_table_name(table as text)
+	return CONFIG_GET(string/feedback_tableprefix) + table
 
 /**
  *! Text sanitization
