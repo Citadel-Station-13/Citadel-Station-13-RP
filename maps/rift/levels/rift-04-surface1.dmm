@@ -5196,13 +5196,6 @@
 /obj/machinery/light,
 /turf/simulated/floor/plating,
 /area/maintenance/central_heating/surface_one)
-"dtR" = (
-/obj/structure/closet/secure_closet/genpop,
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/steel,
-/area/security/prisonprocessing)
 "duq" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
@@ -6232,6 +6225,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenobiology/outpost_breakroom)
+"eaO" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel,
+/area/security/prisonprocessing)
 "ebp" = (
 /obj/structure/reagent_dispensers/watertank,
 /obj/item/reagent_containers/glass/bucket,
@@ -6912,6 +6911,10 @@
 /obj/machinery/meter,
 /turf/simulated/floor/plating,
 /area/medical/virologymaint)
+"exp" = (
+/obj/structure/bed/chair,
+/turf/simulated/floor/tiled/steel,
+/area/security/prisonprocessing)
 "exH" = (
 /obj/structure/flora/ausbushes/palebush,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume,
@@ -7837,6 +7840,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/funny/clownoffice)
+"fjA" = (
+/obj/machinery/turnstile/exit{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/security/prisonprocessing)
 "fjP" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "4-8"
@@ -8244,11 +8253,13 @@
 "fxo" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/firedoor/glass,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/turnstile/entry,
+/obj/machinery/door/airlock/glass/security{
+	layer = 2.8;
+	name = "Visitation"
+	},
 /turf/simulated/floor/tiled/steel,
 /area/security/prisonprocessing)
 "fxR" = (
@@ -9387,6 +9398,10 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/rnd/outpost/xenobiology/outpost_storage)
+"goO" = (
+/obj/machinery/vending/snack,
+/turf/simulated/floor/tiled/steel,
+/area/security/prisonprocessing)
 "gpn" = (
 /obj/structure/window/reinforced,
 /turf/simulated/floor/wood,
@@ -10015,6 +10030,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
+/obj/effect/floor_decal/industrial/loading,
 /turf/simulated/floor/tiled/steel,
 /area/security/prisonprocessing)
 "gLn" = (
@@ -13418,6 +13434,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
+/obj/effect/floor_decal/industrial/loading{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/security/prisonupper)
 "iFF" = (
@@ -13537,6 +13556,14 @@
 /obj/item/key/quadbike,
 /turf/simulated/floor/tiled/steel_grid,
 /area/quartermaster/garage)
+"iIN" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/maintenance/lowmedbaymaint)
 "iJb" = (
 /obj/structure/table/reinforced,
 /obj/item/pen/red{
@@ -18170,10 +18197,11 @@
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/office)
 "lJl" = (
-/obj/machinery/turnstile/entry{
-	dir = 8
-	},
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock/glass/security{
+	layer = 2.8;
+	name = "Visitation"
+	},
 /turf/simulated/floor/tiled/steel,
 /area/security/prisonprocessing)
 "lJs" = (
@@ -23022,7 +23050,9 @@
 /turf/simulated/floor/tiled/steel,
 /area/tether/station/public_meeting_room)
 "oDY" = (
-/obj/structure/closet/secure_closet/genpop,
+/obj/structure/bed/chair{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel,
 /area/security/prisonprocessing)
 "oEd" = (
@@ -24073,13 +24103,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
-"phA" = (
-/obj/structure/closet/secure_closet/genpop,
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/steel,
-/area/security/prisonprocessing)
 "phD" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -25670,6 +25693,7 @@
 /obj/structure/cable/green{
 	icon_state = "32-8"
 	},
+/obj/structure/lattice,
 /turf/simulated/open,
 /area/maintenance/lowmedbaymaint)
 "qhZ" = (
@@ -27323,12 +27347,7 @@
 /turf/simulated/floor/tiled/steel_grid/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "rii" = (
-/obj/machinery/camera/network/security{
-	dir = 1
-	},
-/obj/structure/bed/chair{
-	dir = 1
-	},
+/obj/machinery/light,
 /turf/simulated/floor/tiled/steel,
 /area/security/prisonprocessing)
 "rik" = (
@@ -27511,9 +27530,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/obj/machinery/camera/network/security{
-	dir = 8
-	},
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/tiled/steel,
 /area/security/prisonprocessing)
 "roQ" = (
@@ -28603,13 +28620,11 @@
 /turf/simulated/floor/tiled/steel,
 /area/rnd/xenobiology/xenoflora)
 "rSV" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/monotile,
 /area/security/prisonprocessing)
 "rTa" = (
@@ -30454,8 +30469,13 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_eva)
 "sSZ" = (
-/obj/structure/closet/secure_closet/genpop,
-/obj/machinery/fire_alarm/north_mount,
+/obj/structure/table/steel,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel,
 /area/security/prisonprocessing)
 "sTp" = (
@@ -30784,6 +30804,10 @@
 /obj/effect/floor_decal/corner/beige/border,
 /turf/simulated/floor/tiled/white,
 /area/medical/psych)
+"tgm" = (
+/obj/machinery/turnstile/entry,
+/turf/simulated/floor/tiled/monotile,
+/area/security/prisonprocessing)
 "tgG" = (
 /obj/item/clothing/mask/gas/sexyclown,
 /obj/item/toy/figure/clown,
@@ -31343,11 +31367,11 @@
 /turf/simulated/wall/r_wall/prepainted/medical,
 /area/medical/psych_ward)
 "txe" = (
-/obj/structure/closet/secure_closet/genpop,
 /obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -24
 	},
+/obj/structure/table/steel,
 /turf/simulated/floor/tiled/steel,
 /area/security/prisonprocessing)
 "txE" = (
@@ -32176,6 +32200,7 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 1
 	},
+/obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled/steel,
 /area/security/prisonprocessing)
 "tUN" = (
@@ -32447,9 +32472,6 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/hallway)
 "uaQ" = (
-/obj/machinery/turnstile/exit{
-	dir = 4
-	},
 /obj/machinery/door/firedoor/glass,
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -32459,6 +32481,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
+	},
+/obj/machinery/door/airlock/glass/security{
+	layer = 2.8;
+	name = "Visitation"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/prisonprocessing)
@@ -32824,7 +32850,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/obj/machinery/fire_alarm/north_mount,
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel,
 /area/security/prisonprocessing)
 "ulQ" = (
@@ -33325,6 +33353,8 @@
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/lowmedbaymaint)
 "uwt" = (
@@ -35086,9 +35116,9 @@
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/garage)
 "vHx" = (
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/turnstile/exit{
-	dir = 1
+/obj/machinery/door/airlock/glass/security{
+	layer = 2.8;
+	name = "Visitation"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/prisonprocessing)
@@ -39179,10 +39209,10 @@
 /obj/structure/cable/green{
 	icon_state = "2-4"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 6
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 1
 	},
-/turf/simulated/floor/tiled/steel,
+/turf/simulated/floor/tiled/monotile,
 /area/security/prisonprocessing)
 "yja" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -55439,7 +55469,7 @@ dki
 dki
 dki
 vQi
-dki
+iIN
 uwn
 eBp
 kLo
@@ -55814,11 +55844,11 @@ pnT
 pwW
 emN
 hFE
-hFE
-oDY
+goO
+exp
 txe
 oDY
-dtR
+rul
 tBg
 tLi
 aDx
@@ -56008,10 +56038,10 @@ pnT
 mxh
 dWp
 hFE
-oDY
-rul
-rul
-rul
+eaO
+rSd
+rSd
+rSd
 rul
 vHx
 elP
@@ -56203,8 +56233,8 @@ nDc
 dWp
 hFE
 sSZ
-rul
 qBE
+rSd
 ftr
 rii
 hFE
@@ -56396,7 +56426,7 @@ pnT
 vXz
 hzO
 hFE
-oDY
+ihJ
 yiU
 rSV
 oBA
@@ -56589,12 +56619,12 @@ tGS
 pUI
 tGS
 iFA
-hFE
-phA
+tgm
+rul
 rmQ
 roa
 rul
-ihJ
+rul
 tBg
 gef
 seH
@@ -56983,7 +57013,7 @@ pAU
 eFH
 mAB
 erN
-hFE
+fjA
 gKJ
 iEy
 aUS
