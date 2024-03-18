@@ -631,8 +631,6 @@
 
 //TODO: Carbon procs in my human update_icons??
 /mob/living/carbon/human/update_hud()	//TODO: do away with this if possible
-	if(QDESTROYING(src))
-		return
 	// todo: this is utterly shitcode and fucking stupid ~silicons
 	// todo: the rest of hud code here ain't much better LOL
 	var/list/obj/item/relevant = get_equipped_items(TRUE, TRUE)
@@ -644,9 +642,6 @@
 
 //update whether handcuffs appears on our hud.
 /mob/living/carbon/proc/update_hud_handcuffed()
-	if(QDESTROYING(src))
-		return
-
 	if(hud_used && hud_used.l_hand_hud_object && hud_used.r_hand_hud_object)
 		hud_used.l_hand_hud_object.update_icon()
 		hud_used.r_hand_hud_object.update_icon()
@@ -679,30 +674,22 @@
 	apply_layer(LEGCUFF_LAYER)
 
 /mob/living/carbon/human/update_inv_r_hand()
-	if(QDESTROYING(src))
+	if(isnull(r_hand))
+		remove_standing_overlay(HUMAN_OVERLAY_RHAND)
 		return
-
-	remove_layer(R_HAND_LAYER)
-
-	if(!r_hand)
-		return //No hand, no bother.
-
-	overlays_standing[R_HAND_LAYER] = r_hand.render_mob_appearance(src, 2, BODYTYPE_DEFAULT)
-
-	apply_layer(R_HAND_LAYER)
+	set_standing_overlay(
+		HUMAN_OVERLAY_RHAND,
+		r_hand.render_mob_appearance(src, 2, BODYTYPE_DEFAULT),
+	)
 
 /mob/living/carbon/human/update_inv_l_hand()
-	if(QDESTROYING(src))
+	if(isnull(l_hand))
+		remove_standing_overlay(HUMAN_OVERLAY_LHAND)
 		return
-
-	remove_layer(L_HAND_LAYER)
-
-	if(!l_hand)
-		return //No hand, no bother.
-
-	overlays_standing[L_HAND_LAYER] = l_hand.render_mob_appearance(src, 1, BODYTYPE_DEFAULT)
-
-	apply_layer(L_HAND_LAYER)
+	set_standing_overlay(
+		HUMAN_OVERLAY_LHAND,
+		l_hand.render_mob_appearance(src, 1, BODYTYPE_DEFAULT),
+	)
 
 /mob/living/carbon/human/proc/update_tail_showing()
 	if(QDESTROYING(src))
@@ -883,86 +870,67 @@
 	apply_layer(MODIFIER_EFFECTS_LAYER)
 
 /mob/living/carbon/human/update_fire()
-	if(QDESTROYING(src))
-		return
-
-	remove_layer(FIRE_LAYER)
-
 	if(!on_fire)
+		remove_standing_overlay(HUMAN_OVERLAY_FIRE)
 		return
-
-	overlays_standing[FIRE_LAYER] = image(icon = 'icons/mob/OnFire.dmi', icon_state = get_fire_icon_state(), layer = HUMAN_LAYER_FIRE)
-
-	apply_layer(FIRE_LAYER)
+	set_standing_overlay(
+		HUMAN_OVERLAY_FIRE,
+		image(icon = 'icons/mob/OnFire.dmi', icon_state = get_fire_icon_state(), layer = HUMAN_LAYER_FIRE),
+	)
 
 /mob/living/carbon/human/update_water()
-	if(QDESTROYING(src))
-		return
-
-	remove_layer(MOB_WATER_LAYER)
-
 	var/depth = check_submerged()
 	if(!depth || lying)
+		remove_standing_overlay(HUMAN_OVERLAY_LIQUID)
 		return
+	var/image/applying
 	if(depth < 3)
-		overlays_standing[MOB_WATER_LAYER] = image(icon = 'icons/mob/submerged.dmi', icon_state = "human_swimming_[depth]", layer = BODY_LAYER+MOB_WATER_LAYER) //TODO: Improve
-		apply_layer(MOB_WATER_LAYER)
+		applying = image(icon = 'icons/mob/submerged.dmi', icon_state = "human_swimming_[depth]", layer = HUMAN_LAYER_LIQUID) //TODO: Improve
 	if(depth == 4)
-		overlays_standing[MOB_WATER_LAYER] = image(icon = 'icons/mob/submerged.dmi', icon_state = "hacid_1", layer = BODY_LAYER+MOB_WATER_LAYER)
-		apply_layer(MOB_WATER_LAYER)
+		applying = image(icon = 'icons/mob/submerged.dmi', icon_state = "hacid_1", layer = HUMAN_LAYER_LIQUID)
 	if(depth == 5)
-		overlays_standing[MOB_WATER_LAYER] = image(icon = 'icons/mob/submerged.dmi', icon_state = "hacid_2", layer = BODY_LAYER+MOB_WATER_LAYER)
-		apply_layer(MOB_WATER_LAYER)
+		applying = image(icon = 'icons/mob/submerged.dmi', icon_state = "hacid_2", layer = HUMAN_LAYER_LIQUID)
 	if(depth == 6)
-		overlays_standing[MOB_WATER_LAYER] = image(icon = 'icons/mob/submerged.dmi', icon_state = "hblood_1", layer = BODY_LAYER+MOB_WATER_LAYER)
-		apply_layer(MOB_WATER_LAYER)
+		applying = image(icon = 'icons/mob/submerged.dmi', icon_state = "hblood_1", layer = HUMAN_LAYER_LIQUID)
 	if(depth == 7)
-		overlays_standing[MOB_WATER_LAYER] = image(icon = 'icons/mob/submerged.dmi', icon_state = "hblood_2", layer = BODY_LAYER+MOB_WATER_LAYER)
-		apply_layer(MOB_WATER_LAYER)
+		applying = image(icon = 'icons/mob/submerged.dmi', icon_state = "hblood_2", layer = HUMAN_LAYER_LIQUID)
+	set_standing_overlay(HUMAN_OVERLAY_LIQUID, applying)
 
+// todo: burn with fire
 /mob/living/carbon/human/update_acidsub()
-	if(QDESTROYING(src))
-		return
-
-	remove_layer(MOB_WATER_LAYER)
-
 	var/depth = check_submerged()
 	if(!depth || lying)
+		remove_standing_overlay(HUMAN_OVERLAY_LIQUID)
 		return
 
-	overlays_standing[MOB_WATER_LAYER] = image(icon = 'icons/mob/submerged.dmi', icon_state = "hacid_[depth]", layer = BODY_LAYER+MOB_WATER_LAYER) //TODO: Improve
+	set_standing_overlay(
+		HUMAN_OVERLAY_LIQUID,
+		image(icon = 'icons/mob/submerged.dmi', icon_state = "hacid_[depth]", layer = HUMAN_LAYER_LIQUID),
+	)
 
-	apply_layer(MOB_WATER_LAYER)
-
+// todo: burn with fire
 /mob/living/carbon/human/update_bloodsub()
-	if(QDESTROYING(src))
-		return
-
-	remove_layer(MOB_WATER_LAYER)
-
 	var/depth = check_submerged()
 	if(!depth || lying)
+		remove_standing_overlay(HUMAN_OVERLAY_LIQUID)
 		return
 
-	overlays_standing[MOB_WATER_LAYER] = image(icon = 'icons/mob/submerged.dmi', icon_state = "hblood_[depth]", layer = BODY_LAYER+MOB_WATER_LAYER) //TODO: Improve
-
-	apply_layer(MOB_WATER_LAYER)
+	set_standing_overlay(
+		HUMAN_OVERLAY_LIQUID,
+		image(icon = 'icons/mob/submerged.dmi', icon_state = "hblood_[depth]", layer = HUMAN_LAYER_LIQUID),
+	)
 
 /mob/living/carbon/human/proc/update_surgery()
-	if(QDESTROYING(src))
-		return
-
-	remove_layer(SURGERY_LAYER)
-
 	var/image/total = new
 	for(var/obj/item/organ/external/E in organs)
 		if(E.open)
 			var/image/I = image(icon = 'icons/mob/surgery.dmi',  icon_state = "[E.icon_name][round(E.open)]", layer = HUMAN_LAYER_SURGERY)
 			total.add_overlay(I) //TODO: This compositing is annoying
 
-	if(total.overlays.len)
-		overlays_standing[SURGERY_LAYER] = total
-		apply_layer(SURGERY_LAYER)
+	if(length(total.overlays))
+		set_standing_overlay(HUMAN_OVERLAY_SURGERY, total)
+	else
+		remove_standing_overlay(HUMAN_OVERLAY_SURGERY)
 
 /mob/living/carbon/human/proc/get_wing_image(front) //redbull gives you wings
 	var/icon/grad_swing
