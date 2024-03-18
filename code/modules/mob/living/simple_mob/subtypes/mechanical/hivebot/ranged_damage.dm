@@ -248,7 +248,7 @@
 	impact_type = /obj/effect/projectile/impact/lightning
 
 
-// slower hivey but stronker projectile, alien pistol.
+// stronker hivey, rare but very visible
 /mob/living/simple_mob/mechanical/hivebot/ranged_damage/scorcher
 	name = "hivebot scorcher"
 	desc = "A hivebot with a vicious-looking, strange weapon attached to its arm."
@@ -256,9 +256,14 @@
 	icon_state = "scorcher"
 	icon_living = "scorcher"
 
+	maxHealth = 3 LASERS_TO_KILL
+	health = 3 LASERS_TO_KILL
+
 	projectiletype = /obj/projectile/beam/cyan/hivebot
 
 	catalogue_data = list(/datum/category_item/catalogue/technology/drone/hivebot/scorcher)
 
 
-	armor_penetration = 10
+/obj/projectile/beam/cyan/hivebot
+	damage = 45
+	armor_penetration = 15

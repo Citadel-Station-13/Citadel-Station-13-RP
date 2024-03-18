@@ -79,13 +79,13 @@
 
 /datum/category_item/catalogue/technology/drone/hivebot/scorcher
 	name = "Enigmatic Salvager Scorcher"
-	desc = "... firing mechanism, causing the weapon on its arm to be self-powered by some kind of paracausal loop in the firearm that binds relative space and time to create power for the ..."
+	desc = "... firing mechanism, causing the weapon on its arm to be self-powered by some kind of paracausal loop that uses relative spacetime to charge the ..."
 
 /datum/category_item/catalogue/technology/drone/hivebot/lurker
 	name = "Enigmatic Salvager Lurker"
-	desc = "An Enigmatic Salvager. But it's so much more than that. Almost every race considered sapient on the General Intellegence Scale has a fear of \
+	desc = "An Enigmatic Salvager- but it's so much more than that. Almost every race considered sapient on the General Intellegence Scale has a fear of \
 	the dark. It's a deep fear, from when it was evolutionarily advantageous to huddle in close to the fire, in the light, to avoid the unknown. \
-	A field that bends visible light, that interferes with thermal and scanners, cloaks it, swathing it in its own darkness. A single shot from the distant dark, \
+	A field that bends visible light, that interferes with thermal and scanners, cloaks this Lurker, swathing it in its own darkness. A single shot from the distant dark, \
 	and it will scuttle away, content to wait for you to try to hide near your campfire again."
 
 
