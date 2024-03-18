@@ -2927,6 +2927,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+"hA" = (
+/obj/machinery/light/flamp/noshade,
+/turf/simulated/floor/concrete/tile/indoors,
+/area/security/prisonlower)
 "hB" = (
 /obj/structure/table/reinforced,
 /obj/machinery/cell_charger,
@@ -4038,7 +4042,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "lE" = (
-/obj/machinery/light/flamp{
+/obj/machinery/light/flamp/noshade{
 	pixel_x = -12;
 	pixel_y = -8
 	},
@@ -5180,12 +5184,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled,
 /area/rnd/secure_storage/upper)
-"ps" = (
-/obj/machinery/light{
-	dir = 4
-	},
-/turf/simulated/floor/concrete/tile/indoors,
-/area/security/prisonlower)
 "pt" = (
 /obj/structure/table/rack/shelf,
 /obj/item/key/security_cart{
@@ -8655,6 +8653,9 @@
 "AY" = (
 /obj/machinery/fire_alarm/west_mount,
 /obj/machinery/honey_extractor,
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/concrete/tile/indoors,
 /area/security/prisonlower)
 "AZ" = (
@@ -9330,6 +9331,15 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/secure_storage/upper)
+"DF" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/white,
+/area/security/prisonlower)
 "DG" = (
 /obj/random/maintenance/clean,
 /obj/structure/catwalk,
@@ -9663,6 +9673,7 @@
 	pixel_y = 4;
 	req_one_access = list(1,2,4,38)
 	},
+/obj/machinery/light,
 /turf/simulated/floor/concrete/tile/indoors,
 /area/security/prisonlower)
 "ET" = (
@@ -10063,7 +10074,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rift/station/fighter_bay/hangar)
 "Gf" = (
-/obj/machinery/light/flamp{
+/obj/machinery/light/flamp/noshade{
 	pixel_x = 12;
 	pixel_y = -8
 	},
@@ -10499,6 +10510,9 @@
 "Hu" = (
 /obj/effect/floor_decal/rust,
 /obj/random/trash_pile,
+/obj/machinery/light/small{
+	dir = 8
+	},
 /turf/simulated/floor,
 /area/security/prisonlower)
 "Hw" = (
@@ -10952,6 +10966,9 @@
 	pixel_y = -5;
 	req_one_access = list(1,2,4,38)
 	},
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/concrete/tile/indoors,
 /area/security/prisonlower)
 "IV" = (
@@ -11132,6 +11149,12 @@
 /area/engineering/atmos)
 "Ju" = (
 /obj/structure/reagent_dispensers/water_cooler/full,
+/turf/simulated/floor/concrete/indoors,
+/area/security/prisonlower)
+"Jw" = (
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/concrete/indoors,
 /area/security/prisonlower)
 "Jx" = (
@@ -13769,11 +13792,11 @@
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/underground/under1)
 "St" = (
-/obj/machinery/light/small{
-	dir = 4
-	},
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
+	},
+/obj/machinery/light{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
 /area/security/prisonlower)
@@ -13850,6 +13873,13 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/hallway/primary/underone)
+"SE" = (
+/obj/machinery/portable_atmospherics/hydroponics,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/concrete/tile/indoors,
+/area/security/prisonlower)
 "SF" = (
 /obj/item/material/twohanded/folded_metal_chair,
 /turf/simulated/floor/concrete/tile/indoors,
@@ -34755,7 +34785,7 @@ Tk
 dD
 ua
 Ni
-dA
+DF
 Sb
 El
 Ad
@@ -36676,7 +36706,7 @@ aa
 aa
 aa
 ua
-dD
+Rn
 dD
 mv
 Su
@@ -36871,7 +36901,7 @@ aa
 aa
 ua
 GS
-ps
+dD
 JV
 yY
 Vg
@@ -37457,11 +37487,11 @@ aa
 ua
 HS
 dD
-dD
+hA
 vs
 yJ
 YT
-dD
+hA
 dD
 Cf
 ua
@@ -38619,6 +38649,7 @@ aa
 aa
 ua
 ua
+Jw
 Vg
 Vg
 Vg
@@ -38626,8 +38657,7 @@ Vg
 Vg
 Vg
 Vg
-Vg
-Vg
+wj
 ua
 ua
 aa
@@ -38815,11 +38845,11 @@ aa
 ua
 ua
 IA
+SE
 pg
 pg
 pg
-pg
-pg
+SE
 eu
 ua
 ua
