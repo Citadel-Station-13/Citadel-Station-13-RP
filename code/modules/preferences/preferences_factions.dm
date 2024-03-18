@@ -35,7 +35,7 @@ var/global/list/home_system_choices = list(
 	)
 
 var/global/list/faction_choices = list(
-	"NanoTrasen",
+	"Nanotrasen",
 	"Vey Med",
 	"Ward-Takahashi GMB",
 	"Free Trade Union"

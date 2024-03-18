@@ -325,7 +325,7 @@
 	name = "emergency response team radio headset"
 	desc = "The headset of the boss's boss."
 	icon_state = "com_headset"
-	centComm = 1
+	centcom = 1
 //	freerange = 1
 	ks2type = /obj/item/encryptionkey/ert
 
@@ -471,7 +471,7 @@
 	desc = "The headset of the boss's boss."
 	icon_state = "cent_headset"
 	item_state = "headset"
-	centComm = 1
+	centcom = 1
 	ks2type = /obj/item/encryptionkey/ert
 
 /obj/item/radio/headset/centcom/alt
@@ -483,7 +483,7 @@
 	name = "\improper NT radio headset"
 	desc = "The headset of a Nanotrasen corporate employee."
 	icon_state = "nt_headset"
-	centComm = 1
+	centcom = 1
 	ks2type = /obj/item/encryptionkey/ert
 
 /obj/item/radio/headset/mob_headset	//Adminbus headset for simplemob shenanigans.

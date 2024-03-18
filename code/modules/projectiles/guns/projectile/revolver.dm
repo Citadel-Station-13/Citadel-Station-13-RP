@@ -327,7 +327,7 @@
 //NT SpecOps Revolver
 /obj/item/gun/ballistic/revolver/combat
 	name = "\improper Ogre combat revolver"
-	desc = "The NT-R-7 'Ogre' combat revolver is tooled for NanoTrasen special operations. Chambered in .44 Magnum with an advanced high-speed firing mechanism, it serves as the perfect sidearm for any off the books endeavor."
+	desc = "The NT-R-7 'Ogre' combat revolver is tooled for Nanotrasen special operations. Chambered in .44 Magnum with an advanced high-speed firing mechanism, it serves as the perfect sidearm for any off the books endeavor."
 	icon_state = "combatrevolver"
 	caliber = ".44"
 	fire_delay = 5.7

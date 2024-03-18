@@ -30,8 +30,8 @@
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/tajaran/nt
-	name = "NanoTrasen overalls"
-	desc = "Overalls meant for NanoTrasen employees of xeno descent, modified to prevent overheating."
+	name = "Nanotrasen overalls"
+	desc = "Overalls meant for Nanotrasen employees of xeno descent, modified to prevent overheating."
 	icon_state = "ntoveralls"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL

@@ -74,7 +74,7 @@
 	if(test["result"] != 1)
 		Fail(test["msg"])
 
-/datum/unit_test/zas_area_test/supply_centcomm
+/datum/unit_test/zas_area_test/supply_centcom
 	name = "ZAS: Supply Shuttle"
 	area_path = /area/shuttle/supply
 

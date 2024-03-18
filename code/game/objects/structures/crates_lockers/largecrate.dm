@@ -274,7 +274,7 @@
 	icon_closed = "eelarge"
 
 /obj/structure/closet/crate/large/corporate/nanotrasen
-	desc = "A hefty metal crate, painted in standard NanoTrasen livery."
+	desc = "A hefty metal crate, painted in standard Nanotrasen livery."
 	icon_state = "ntlarge"
 	icon_opened = "ntlargeopen"
 	icon_closed = "ntlarge"

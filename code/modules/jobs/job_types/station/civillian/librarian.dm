@@ -29,7 +29,7 @@
 
 /datum/prototype/struct/alt_title/librarian/librarian/reporter
 	title = "Reporter"
-	title_blurb = "Although NanoTrasen's official Press outlet is managed by Central Command, they often hire freelance journalists for local coverage."
+	title_blurb = "Although Nanotrasen's official Press outlet is managed by Central Command, they often hire freelance journalists for local coverage."
 	title_outfit = /datum/outfit/job/station/librarian/reporter
 
 // Librarian Alt Titles

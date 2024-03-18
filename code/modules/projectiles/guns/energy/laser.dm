@@ -323,7 +323,7 @@
 //NT SpecOps Laser Rifle
 /obj/item/gun/energy/combat
 	name = "NT-LR-4 laser rifle"
-	desc = "A sturdy laser rifle fine tuned for NanoTrasen special operations. More reliable than mass production models, this weapon was designed to kill, and nothing else."
+	desc = "A sturdy laser rifle fine tuned for Nanotrasen special operations. More reliable than mass production models, this weapon was designed to kill, and nothing else."
 	icon_state = "clrifle"
 	item_state = "clrifle"
 	fire_delay = 6
