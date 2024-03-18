@@ -444,7 +444,8 @@
 							robotic = 1
 					if(!robotic)
 						message = "coughs up a small amount of blood!"
-						BloodyMouth()
+						//! disabled for shitcode reasons
+						// BloodyMouth()
 						if(get_gender() == FEMALE)
 							if(species.female_cough_sounds)
 								playsound(src, pick(species.female_cough_sounds), 120)
@@ -1187,7 +1188,7 @@
 		if("mar")
 			message = "lets out a mar."
 			m_type = 2
-			playsound(loc, 'sound/voice/mar.ogg', 50, 1, -1)	
+			playsound(loc, 'sound/voice/mar.ogg', 50, 1, -1)
 		if ("nsay")
 			nsay()
 			return TRUE

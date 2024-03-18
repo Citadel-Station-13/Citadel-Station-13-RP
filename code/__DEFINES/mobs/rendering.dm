@@ -6,6 +6,7 @@
 #define HUMAN_OVERLAY_SKIN "skin"
 #define HUMAN_OVERLAY_MUTATIONS "mutations"
 #define HUMAN_OVERLAY_BLOOD "blood"
+#define HUMAN_OVERLAY_EYES "eyes"
 #define HUMAN_OVERLAY_DAMAGE "damage"
 #define HUMAN_OVERLAY_SURGERY "surgery"
 #define HUMAN_OVERLAY_UNDERWEAR "underwear"
@@ -17,8 +18,6 @@
 #define HUMAN_OVERLAY_HAIR "hair"
 #define HUMAN_OVERLAY_TAIL "tail"
 #define HUMAN_OVERLAY_WINGS "wings"
-
-#define HUMAN_OVERLAY_INVENTORY "inventory"
 
 //* human rendering layers
 //* human layers are via FLOAT_LAYER so all of these are negative
@@ -45,7 +44,10 @@
 #define HUMAN_LAYER_SLOT_EYES (LAYER_FLOAT - 425)
 #define HUMAN_LAYER_SLOT_EARS (LAYER_FLOAT - 450)
 
+#define HUMAN_LAYER_SPRITEACC_HORNS (LAYER_FLOAT - 473)
+#define HUMAN_LAYER_SPRITEACC_EARS (LAYER_FLOAT - 474)
 #define HUMAN_LAYER_SPRITEACC_HAIR (LAYER_FLOAT - 475)
+#define HUMAN_LAYER_SPRITEACC_FACEHAIR (LAYER_FLOAT - 476)
 
 #define HUMAN_LAYER_SLOT_BACKPACK (LAYER_FLOAT - 500)
 #define HUMAN_LAYER_SLOT_SUITSTORE (LAYER_FLOAT - 525)
@@ -74,3 +76,8 @@
 #define HUMAN_LAYER_SKIN (LAYER_FLOAT - 900)
 //! legacy - genetics
 #define HUMAN_LAYER_MUTATIONS (LAYER_FLOAT - 1000)
+
+//* Helpers *//
+
+/// end proc immediately if we're being deleted or transformed into something
+#define HUMAN_RENDER_ABORT_IF_DELETING if(QDELING(src) || transforming) return
