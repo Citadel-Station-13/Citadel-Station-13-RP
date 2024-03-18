@@ -5,6 +5,7 @@
 
 #define HUMAN_OVERLAY_SKIN "skin"
 #define HUMAN_OVERLAY_MUTATIONS "mutations"
+#define HUMAN_OVERLAY_MODIFIERS "mutations"
 #define HUMAN_OVERLAY_BLOOD "blood"
 #define HUMAN_OVERLAY_EYES "eyes"
 #define HUMAN_OVERLAY_DAMAGE "damage"

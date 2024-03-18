@@ -1,6 +1,299 @@
 
 //! old code below
 
+//? Sprite Accessories
+
+//HAIR OVERLAY
+/mob/living/carbon/human/update_hair()
+	update_eyes() //Pirated out of here, for glowing eyes.
+
+	var/obj/item/organ/external/head/head_organ = get_organ(BP_HEAD)
+	if(!head_organ || head_organ.is_stump() )
+		remove_standing_overlay(HUMAN_OVERLAY_HAIR)
+		return
+
+	//masks and helmets can obscure our hair.
+	if( (head && (head.inv_hide_flags & BLOCKHAIR)) || (wear_mask && (wear_mask.inv_hide_flags & BLOCKHAIR)))
+		remove_standing_overlay(HUMAN_OVERLAY_HAIR)
+		return
+
+	//base icons
+	var/icon/face_standing = icon(icon = 'icons/mob/human_face.dmi', icon_state = "bald_s")
+
+	if(f_style)
+		var/datum/sprite_accessory/facial_hair_style = GLOB.legacy_facial_hair_lookup[f_style]
+		if(facial_hair_style && (!facial_hair_style.apply_restrictions || (src.species.get_bodytype_legacy(src) in facial_hair_style.species_allowed)))
+			var/icon/facial_s = new/icon("icon" = facial_hair_style.icon, "icon_state" = "[facial_hair_style.icon_state]_s")
+			if(facial_hair_style.do_colouration)
+				facial_s.Blend(rgb(r_facial, g_facial, b_facial), facial_hair_style.color_blend_mode)
+
+			face_standing.Blend(facial_s, ICON_OVERLAY)
+
+	if(h_style)
+		var/datum/sprite_accessory/hair/hair_style = GLOB.legacy_hair_lookup[h_style]
+		if(head && (head.inv_hide_flags & BLOCKHEADHAIR))
+			if(!(hair_style.hair_flags & HAIR_VERY_SHORT))
+				hair_style = GLOB.legacy_hair_lookup["Short Hair"]
+
+		if(hair_style && (!hair_style.apply_restrictions || (src.species.get_bodytype_legacy(src) in hair_style.species_allowed)))
+			var/icon/grad_s
+			var/icon/hair_s = new/icon("icon" = hair_style.icon, "icon_state" = "[hair_style.icon_state]_s")
+			var/icon/hair_s_add
+			if(hair_style.icon_add)
+				hair_s_add = new/icon("icon" = hair_style.icon_add, "icon_state" = "[hair_style.icon_state]_s")
+			if(hair_style.do_colouration)
+				if(grad_style)
+					grad_s = new/icon("icon" = 'icons/mob/hair_gradients.dmi', "icon_state" = GLOB.hair_gradients[grad_style])
+					grad_s.Blend(hair_s, ICON_AND)
+					grad_s.Blend(rgb(r_grad, g_grad, b_grad), ICON_MULTIPLY)
+				hair_s.Blend(rgb(r_hair, g_hair, b_hair), ICON_MULTIPLY)
+				if(hair_s_add)
+					hair_s.Blend(hair_s_add, ICON_ADD)
+				if(grad_s)
+					hair_s.Blend(grad_s, ICON_OVERLAY)
+
+			face_standing.Blend(hair_s, ICON_OVERLAY)
+
+	var/icon/ears_s = get_ears_overlay()
+	if(ears_s)
+		if(ears_s.Height() > face_standing.Height())
+			face_standing.Crop(1, 1, face_standing.Width(), ears_s.Height())
+		face_standing.Blend(ears_s, ICON_OVERLAY)
+	if(istype(head_organ,/obj/item/organ/external/head/vr))
+		var/obj/item/organ/external/head/vr/head_organ_vr = head_organ
+		set_standing_overlay(
+			HUMAN_OVERLAY_HAIR,
+			image(face_standing, layer = HUMAN_LAYER_HAIR, "pixel_y" = head_organ_vr.head_offset),
+		)
+		return
+
+	var/icon/horns_s = get_horns_overlay()
+	if(horns_s && (!hiding_horns && horn_style.can_be_hidden))
+		if(horns_s.Height() > face_standing.Height())
+			face_standing.Crop(1, 1, face_standing.Width(), horns_s.Height())
+		face_standing.Blend(horns_s, ICON_OVERLAY)
+	if(istype(head_organ,/obj/item/organ/external/head/vr))
+		var/obj/item/organ/external/head/vr/head_organ_vr = head_organ
+		set_standing_overlay(
+			HUMAN_OVERLAY_HAIR,
+			image(face_standing, layer = HUMAN_LAYER_HAIR, "pixel_y" = head_organ_vr.head_offset),
+		)
+		return
+
+	face_standing += rgb(,,,head_organ.hair_opacity)
+
+	set_standing_overlay(
+		HUMAN_OVERLAY_HAIR,
+		image(face_standing, layer = HUMAN_LAYER_HAIR),
+	)
+
+#warn below
+
+/mob/living/carbon/human/proc/update_tail_showing()
+	if(QDESTROYING(src))
+		return
+
+	remove_layer(TAIL_LAYER)
+	remove_layer(TAIL_LAYER_ALT)
+
+	if(hiding_tail && tail_style.can_be_hidden)
+		return
+
+	var/used_tail_layer = tail_alt ? TAIL_LAYER_ALT : TAIL_LAYER
+
+	var/list/image/tail_images = list()
+
+	var/image/rendering
+	rendering = get_tail_image(TRUE)
+	if(rendering)
+		rendering.layer = BODY_LAYER + used_tail_layer
+		tail_images += rendering
+
+	if(tail_style?.front_behind_system_legacy)
+		rendering = get_tail_image(FALSE)
+		rendering.layer = BODY_LAYER - used_tail_layer
+		tail_images += rendering
+
+	if(length(tail_images))
+		overlays_standing[used_tail_layer] = tail_images
+		apply_layer(used_tail_layer)
+		return
+
+	var/species_tail = species.get_tail(src) // Species tail icon_state prefix.
+
+	//This one is actually not that bad I guess.
+	if(species_tail && !(wear_suit && wear_suit.inv_hide_flags & HIDETAIL))
+		var/icon/tail_s = get_tail_icon()
+		overlays_standing[used_tail_layer] = image(icon = tail_s, icon_state = "[species_tail]_s", layer = BODY_LAYER+used_tail_layer)
+		animate_tail_reset()
+
+//TODO: Is this the appropriate place for this, and not on species...?
+/mob/living/carbon/human/proc/get_tail_icon()
+	var/icon_key = "[species.get_race_key(src)][r_skin][g_skin][b_skin][r_hair][g_hair][b_hair]"
+	var/icon/tail_icon = GLOB.tail_icon_cache[icon_key]
+	if(!tail_icon)
+		//generate a new one
+		var/species_tail_anim = species.get_tail_animation(src)
+		if(!species_tail_anim && species.icobase_tail)
+			species_tail_anim = species.icobase // Allow override of file for non-animated tails
+		if(!species_tail_anim)
+			species_tail_anim = 'icons/effects/species.dmi'
+		tail_icon = new/icon(species_tail_anim)
+		tail_icon.Blend(rgb(r_skin, g_skin, b_skin), species.color_mult ? ICON_MULTIPLY : ICON_ADD)
+		// The following will not work with animated tails.
+		var/use_species_tail = species.get_tail_hair(src)
+		if(use_species_tail)
+			var/icon/hair_icon = icon('icons/effects/species.dmi', "[species.get_tail(src)]_[use_species_tail]_s") // Suffix icon state string with '_s' to compensate for diff in .dmi b/w us & Polaris. //TODO: No.
+			if(species.color_force_greyscale)
+				hair_icon.MapColors(arglist(color_matrix_greyscale()))
+			hair_icon.Blend(rgb(r_hair, g_hair, b_hair), species.color_mult ? ICON_MULTIPLY : ICON_ADD) // Check for species color_mult
+			tail_icon.Blend(hair_icon, ICON_OVERLAY)
+		GLOB.tail_icon_cache[icon_key] = tail_icon
+
+	return tail_icon
+
+/mob/living/carbon/human/proc/set_tail_state(var/t_state)
+	var/used_tail_layer = tail_alt ? TAIL_LAYER_ALT : TAIL_LAYER
+	var/list/image/tail_overlays = overlays_standing[used_tail_layer]
+
+	remove_layer(TAIL_LAYER)
+	remove_layer(TAIL_LAYER_ALT)
+
+	if(!tail_overlays || hiding_tail)
+		return
+	if(islist(tail_overlays))
+		for(var/image/tail_overlay as anything in tail_overlays)
+			if(species.get_tail_animation(src))
+				tail_overlay.icon_state = t_state
+		overlays_standing[used_tail_layer] = tail_overlays
+	else
+		var/image/tail_overlay = tail_overlays
+		if(species.get_tail_animation(src))
+			tail_overlay.icon_state = t_state
+			. = tail_overlay
+		overlays_standing[used_tail_layer] = tail_overlay
+
+	apply_layer(used_tail_layer)
+
+//Not really once, since BYOND can't do that.
+//Update this if the ability to flick() images or make looping animation start at the first frame is ever added.
+//You can sort of flick images now with flick_overlay -Aro
+/mob/living/carbon/human/proc/animate_tail_once()
+	if(QDESTROYING(src))
+		return
+
+	var/t_state = "[species.get_tail(src)]_once"
+	var/used_tail_layer = tail_alt ? TAIL_LAYER_ALT : TAIL_LAYER
+
+	var/image/tail_overlay = overlays_standing[used_tail_layer]
+	if(tail_overlay && tail_overlay.icon_state == t_state)
+		return //let the existing animation finish
+
+	tail_overlay = set_tail_state(t_state) // Calls remove_layer & apply_layer
+	if(tail_overlay)
+		spawn(20)
+			//check that the animation hasn't changed in the meantime
+			if(overlays_standing[used_tail_layer] == tail_overlay && tail_overlay.icon_state == t_state)
+				animate_tail_stop()
+
+/mob/living/carbon/human/proc/animate_tail_start()
+	if(QDESTROYING(src))
+		return
+
+	set_tail_state("[species.get_tail(src)]_slow[rand(0,9)]")
+
+/mob/living/carbon/human/proc/animate_tail_fast()
+	if(QDESTROYING(src))
+		return
+
+	set_tail_state("[species.get_tail(src)]_loop[rand(0,9)]")
+
+/mob/living/carbon/human/proc/animate_tail_reset()
+	if(QDESTROYING(src))
+		return
+
+	if(stat != DEAD)
+		set_tail_state("[species.get_tail(src)]_idle[rand(0,9)]")
+	else
+		set_tail_state("[species.get_tail(src)]_static")
+		toggle_tail_vr(FALSE) // So tails stop when someone dies. TODO - Fix this hack ~Leshana
+
+/mob/living/carbon/human/proc/animate_tail_stop()
+	if(QDESTROYING(src))
+		return
+
+	set_tail_state("[species.get_tail(src)]_static")
+
+/// Wings! See update_icons_vr.dm for more wing procs
+/mob/living/carbon/human/proc/update_wing_showing()
+	if(QDESTROYING(src))
+		return
+
+	remove_layer(WING_LAYER)
+
+	if(hiding_wings && wing_style.can_be_hidden)
+		return
+
+	overlays_standing[WING_LAYER] = list()
+
+	var/image/vr_wing_image = get_wing_image(TRUE)
+	if(vr_wing_image)
+		vr_wing_image.layer = HUMAN_LAYER_WING
+		overlays_standing[WING_LAYER] += vr_wing_image
+
+	if(wing_style?.front_behind_system_legacy)
+		var/image/vr_wing_image_2 = get_wing_image(FALSE)
+		vr_wing_image_2.layer = BODY_LAYER - WING_LAYER
+		overlays_standing[WING_LAYER] += vr_wing_image_2
+
+	apply_layer(WING_LAYER)
+
+/mob/living/carbon/human/proc/get_wing_image(front) //redbull gives you wings
+	var/icon/grad_swing
+	if(QDESTROYING(src))
+		return
+
+	//If you are FBP with wing style and didn't set a custom one
+	if(synthetic && synthetic.includes_wing && !wing_style)
+		var/icon/wing_s = new/icon("icon" = synthetic.icon, "icon_state" = "wing") //I dunno. If synths have some custom wing?
+		wing_s.Blend(rgb(src.r_skin, src.g_skin, src.b_skin), species.color_mult ? ICON_MULTIPLY : ICON_ADD)
+		return image(wing_s)
+
+	//If you have custom wings selected
+	if(wing_style && (!(wear_suit && wear_suit.inv_hide_flags & HIDETAIL) || !wing_style.clothing_can_hide))
+		var/icon/wing_s = new/icon("icon" = wing_style.icon, "icon_state" = spread ? wing_style.spr_state : (flapping && wing_style.ani_state ? wing_style.ani_state : (wing_style.front_behind_system_legacy? (wing_style.icon_state + (front? "_FRONT" : "_BEHIND")) : wing_style.icon_state)))
+		if(wing_style.do_colouration)
+			if(grad_wingstyle)
+				grad_swing = new/icon("icon" = 'icons/mob/wing_gradients.dmi', "icon_state" = GLOB.hair_gradients[grad_wingstyle])
+				grad_swing.Blend(wing_s, ICON_AND)
+				grad_swing.Blend(rgb(r_gradwing, g_gradwing, b_gradwing), ICON_MULTIPLY)
+			wing_s.Blend(rgb(src.r_wing, src.g_wing, src.b_wing), wing_style.color_blend_mode)
+		if(grad_swing)
+			wing_s.Blend(grad_swing, ICON_OVERLAY)
+		if(wing_style.extra_overlay)
+			var/icon/overlay = new/icon("icon" = wing_style.icon, "icon_state" = wing_style.extra_overlay)
+			overlay.Blend(rgb(src.r_wing2, src.g_wing2, src.b_wing2), wing_style.color_blend_mode)
+			wing_s.Blend(overlay, ICON_OVERLAY)
+			qdel(overlay)
+
+		if(wing_style.extra_overlay2)
+			var/icon/overlay = new/icon("icon" = wing_style.icon, "icon_state" = wing_style.extra_overlay2)
+			if(wing_style.ani_state)
+				overlay = new/icon("icon" = wing_style.icon, "icon_state" = wing_style.extra_overlay2_w)
+				overlay.Blend(rgb(src.r_wing3, src.g_wing3, src.b_wing3), wing_style.color_blend_mode)
+				wing_s.Blend(overlay, ICON_OVERLAY)
+				qdel(overlay)
+			else
+				overlay.Blend(rgb(src.r_wing3, src.g_wing3, src.b_wing3), wing_style.color_blend_mode)
+				wing_s.Blend(overlay, ICON_OVERLAY)
+				qdel(overlay)
+
+		if(wing_style.center)
+			center_appearance(wing_s, wing_style.dimension_x, wing_style.dimension_y)
+		return image(wing_s, "pixel_x" = -16)
+
+//? Body
+
 /mob/living/carbon/human/update_damage_overlay()
 	// first check whether something actually changed about damage appearance
 	var/damage_appearance = ""
@@ -235,90 +528,6 @@
 		setting += wear
 	set_standing_overlay(HUMAN_OVERLAY_UNDERWEAR, setting)
 
-//HAIR OVERLAY
-/mob/living/carbon/human/update_hair()
-	update_eyes() //Pirated out of here, for glowing eyes.
-
-	var/obj/item/organ/external/head/head_organ = get_organ(BP_HEAD)
-	if(!head_organ || head_organ.is_stump() )
-		remove_standing_overlay(HUMAN_OVERLAY_HAIR)
-		return
-
-	//masks and helmets can obscure our hair.
-	if( (head && (head.inv_hide_flags & BLOCKHAIR)) || (wear_mask && (wear_mask.inv_hide_flags & BLOCKHAIR)))
-		remove_standing_overlay(HUMAN_OVERLAY_HAIR)
-		return
-
-	//base icons
-	var/icon/face_standing = icon(icon = 'icons/mob/human_face.dmi', icon_state = "bald_s")
-
-	if(f_style)
-		var/datum/sprite_accessory/facial_hair_style = GLOB.legacy_facial_hair_lookup[f_style]
-		if(facial_hair_style && (!facial_hair_style.apply_restrictions || (src.species.get_bodytype_legacy(src) in facial_hair_style.species_allowed)))
-			var/icon/facial_s = new/icon("icon" = facial_hair_style.icon, "icon_state" = "[facial_hair_style.icon_state]_s")
-			if(facial_hair_style.do_colouration)
-				facial_s.Blend(rgb(r_facial, g_facial, b_facial), facial_hair_style.color_blend_mode)
-
-			face_standing.Blend(facial_s, ICON_OVERLAY)
-
-	if(h_style)
-		var/datum/sprite_accessory/hair/hair_style = GLOB.legacy_hair_lookup[h_style]
-		if(head && (head.inv_hide_flags & BLOCKHEADHAIR))
-			if(!(hair_style.hair_flags & HAIR_VERY_SHORT))
-				hair_style = GLOB.legacy_hair_lookup["Short Hair"]
-
-		if(hair_style && (!hair_style.apply_restrictions || (src.species.get_bodytype_legacy(src) in hair_style.species_allowed)))
-			var/icon/grad_s
-			var/icon/hair_s = new/icon("icon" = hair_style.icon, "icon_state" = "[hair_style.icon_state]_s")
-			var/icon/hair_s_add
-			if(hair_style.icon_add)
-				hair_s_add = new/icon("icon" = hair_style.icon_add, "icon_state" = "[hair_style.icon_state]_s")
-			if(hair_style.do_colouration)
-				if(grad_style)
-					grad_s = new/icon("icon" = 'icons/mob/hair_gradients.dmi', "icon_state" = GLOB.hair_gradients[grad_style])
-					grad_s.Blend(hair_s, ICON_AND)
-					grad_s.Blend(rgb(r_grad, g_grad, b_grad), ICON_MULTIPLY)
-				hair_s.Blend(rgb(r_hair, g_hair, b_hair), ICON_MULTIPLY)
-				if(hair_s_add)
-					hair_s.Blend(hair_s_add, ICON_ADD)
-				if(grad_s)
-					hair_s.Blend(grad_s, ICON_OVERLAY)
-
-			face_standing.Blend(hair_s, ICON_OVERLAY)
-
-	var/icon/ears_s = get_ears_overlay()
-	if(ears_s)
-		if(ears_s.Height() > face_standing.Height())
-			face_standing.Crop(1, 1, face_standing.Width(), ears_s.Height())
-		face_standing.Blend(ears_s, ICON_OVERLAY)
-	if(istype(head_organ,/obj/item/organ/external/head/vr))
-		var/obj/item/organ/external/head/vr/head_organ_vr = head_organ
-		set_standing_overlay(
-			HUMAN_OVERLAY_HAIR,
-			image(face_standing, layer = HUMAN_LAYER_HAIR, "pixel_y" = head_organ_vr.head_offset),
-		)
-		return
-
-	var/icon/horns_s = get_horns_overlay()
-	if(horns_s && (!hiding_horns && horn_style.can_be_hidden))
-		if(horns_s.Height() > face_standing.Height())
-			face_standing.Crop(1, 1, face_standing.Width(), horns_s.Height())
-		face_standing.Blend(horns_s, ICON_OVERLAY)
-	if(istype(head_organ,/obj/item/organ/external/head/vr))
-		var/obj/item/organ/external/head/vr/head_organ_vr = head_organ
-		set_standing_overlay(
-			HUMAN_OVERLAY_HAIR,
-			image(face_standing, layer = HUMAN_LAYER_HAIR, "pixel_y" = head_organ_vr.head_offset),
-		)
-		return
-
-	face_standing += rgb(,,,head_organ.hair_opacity)
-
-	set_standing_overlay(
-		HUMAN_OVERLAY_HAIR,
-		image(face_standing, layer = HUMAN_LAYER_HAIR),
-	)
-
 /mob/living/carbon/human/update_eyes()
 	var/obj/item/organ/internal/eyes/eyes = internal_organs_by_name[O_EYES]
 	if(eyes)
@@ -386,10 +595,85 @@
 
 	set_standing_overlay(HUMAN_OVERLAY_MUTATIONS, standing)
 
-#warn below
+//? Misc
 
-/* --------------------------------------- */
-//vvvvvv UPDATE_INV PROCS vvvvvv
+/mob/living/carbon/human/update_modifier_visuals()
+	if(!LAZYLEN(modifiers))
+		remove_standing_overlay(HUMAN_OVERLAY_MODIFIERS)
+		return //No modifiers, no effects.
+
+	var/image/effects = new()
+	for(var/datum/modifier/M in modifiers)
+		if(M.mob_overlay_state)
+			var/image/I = image(icon = 'icons/mob/modifier_effects.dmi', icon_state = M.mob_overlay_state)
+			effects.add_overlay(I) //TODO, this compositing is annoying.
+
+	set_standing_overlay(HUMAN_OVERLAY_MODIFIERS, effects)
+
+/mob/living/carbon/human/update_fire()
+	if(!on_fire)
+		remove_standing_overlay(HUMAN_OVERLAY_FIRE)
+		return
+	set_standing_overlay(
+		HUMAN_OVERLAY_FIRE,
+		image(icon = 'icons/mob/OnFire.dmi', icon_state = get_fire_icon_state(), layer = HUMAN_LAYER_FIRE),
+	)
+
+/mob/living/carbon/human/update_water()
+	var/depth = check_submerged()
+	if(!depth || lying)
+		remove_standing_overlay(HUMAN_OVERLAY_LIQUID)
+		return
+	var/image/applying
+	if(depth < 3)
+		applying = image(icon = 'icons/mob/submerged.dmi', icon_state = "human_swimming_[depth]", layer = HUMAN_LAYER_LIQUID) //TODO: Improve
+	if(depth == 4)
+		applying = image(icon = 'icons/mob/submerged.dmi', icon_state = "hacid_1", layer = HUMAN_LAYER_LIQUID)
+	if(depth == 5)
+		applying = image(icon = 'icons/mob/submerged.dmi', icon_state = "hacid_2", layer = HUMAN_LAYER_LIQUID)
+	if(depth == 6)
+		applying = image(icon = 'icons/mob/submerged.dmi', icon_state = "hblood_1", layer = HUMAN_LAYER_LIQUID)
+	if(depth == 7)
+		applying = image(icon = 'icons/mob/submerged.dmi', icon_state = "hblood_2", layer = HUMAN_LAYER_LIQUID)
+	set_standing_overlay(HUMAN_OVERLAY_LIQUID, applying)
+
+// todo: burn with fire
+/mob/living/carbon/human/update_acidsub()
+	var/depth = check_submerged()
+	if(!depth || lying)
+		remove_standing_overlay(HUMAN_OVERLAY_LIQUID)
+		return
+
+	set_standing_overlay(
+		HUMAN_OVERLAY_LIQUID,
+		image(icon = 'icons/mob/submerged.dmi', icon_state = "hacid_[depth]", layer = HUMAN_LAYER_LIQUID),
+	)
+
+// todo: burn with fire
+/mob/living/carbon/human/update_bloodsub()
+	var/depth = check_submerged()
+	if(!depth || lying)
+		remove_standing_overlay(HUMAN_OVERLAY_LIQUID)
+		return
+
+	set_standing_overlay(
+		HUMAN_OVERLAY_LIQUID,
+		image(icon = 'icons/mob/submerged.dmi', icon_state = "hblood_[depth]", layer = HUMAN_LAYER_LIQUID),
+	)
+
+/mob/living/carbon/human/proc/update_surgery()
+	var/image/total = new
+	for(var/obj/item/organ/external/E in organs)
+		if(E.open)
+			var/image/I = image(icon = 'icons/mob/surgery.dmi',  icon_state = "[E.icon_name][round(E.open)]", layer = HUMAN_LAYER_SURGERY)
+			total.add_overlay(I) //TODO: This compositing is annoying
+
+	if(length(total.overlays))
+		set_standing_overlay(HUMAN_OVERLAY_SURGERY, total)
+	else
+		remove_standing_overlay(HUMAN_OVERLAY_SURGERY)
+
+//? Inventory
 
 /mob/living/carbon/human/update_inv_w_uniform()
 
@@ -555,17 +839,7 @@
 	apply_layer(FACEMASK_LAYER)
 
 /mob/living/carbon/human/update_inv_back()
-	if(QDESTROYING(src))
-		return
-
-	remove_layer(BACK_LAYER)
-
-	if(!back)
-		return //Why do anything
-
-	overlays_standing[BACK_LAYER] = back.render_mob_appearance(src, SLOT_ID_BACK, species.get_effective_bodytype(src, back, SLOT_ID_BACK))
-
-	apply_layer(BACK_LAYER)
+	inventory.render_slot(SLOT_ID_BACK)
 
 //TODO: Carbon procs in my human update_icons??
 /mob/living/carbon/human/update_hud()	//TODO: do away with this if possible
@@ -585,31 +859,10 @@
 		hud_used.r_hand_hud_object.update_icon()
 
 /mob/living/carbon/human/update_inv_handcuffed()
-	if(QDESTROYING(src))
-		return
-
-	remove_layer(HANDCUFF_LAYER)
-	update_hud_handcuffed() //TODO
-
-	if(!handcuffed)
-		return //Not cuffed, why bother
-
-	overlays_standing[HANDCUFF_LAYER] = handcuffed.render_mob_appearance(src, SLOT_ID_HANDCUFFED, species.get_effective_bodytype(src, handcuffed, SLOT_ID_HANDCUFFED))
-
-	apply_layer(HANDCUFF_LAYER)
+	inventory.render_slot(SLOT_ID_HANDCUFFED)
 
 /mob/living/carbon/human/update_inv_legcuffed()
-	if(QDESTROYING(src))
-		return
-
-	remove_layer(LEGCUFF_LAYER)
-
-	if(!legcuffed)
-		return //Not legcuffed, why bother.
-
-	overlays_standing[LEGCUFF_LAYER] = legcuffed.render_mob_appearance(src, SLOT_ID_LEGCUFFED, species.get_effective_bodytype(src, legcuffed, SLOT_ID_LEGCUFFED))
-
-	apply_layer(LEGCUFF_LAYER)
+	inventory.render_slot(SLOT_ID_LEGCUFFED)
 
 /mob/living/carbon/human/update_inv_r_hand()
 	if(isnull(r_hand))
@@ -628,288 +881,3 @@
 		HUMAN_OVERLAY_LHAND,
 		l_hand.render_mob_appearance(src, 1, BODYTYPE_DEFAULT),
 	)
-
-/mob/living/carbon/human/proc/update_tail_showing()
-	if(QDESTROYING(src))
-		return
-
-	remove_layer(TAIL_LAYER)
-	remove_layer(TAIL_LAYER_ALT)
-
-	if(hiding_tail && tail_style.can_be_hidden)
-		return
-
-	var/used_tail_layer = tail_alt ? TAIL_LAYER_ALT : TAIL_LAYER
-
-	var/list/image/tail_images = list()
-
-	var/image/rendering
-	rendering = get_tail_image(TRUE)
-	if(rendering)
-		rendering.layer = BODY_LAYER + used_tail_layer
-		tail_images += rendering
-
-	if(tail_style?.front_behind_system_legacy)
-		rendering = get_tail_image(FALSE)
-		rendering.layer = BODY_LAYER - used_tail_layer
-		tail_images += rendering
-
-	if(length(tail_images))
-		overlays_standing[used_tail_layer] = tail_images
-		apply_layer(used_tail_layer)
-		return
-
-	var/species_tail = species.get_tail(src) // Species tail icon_state prefix.
-
-	//This one is actually not that bad I guess.
-	if(species_tail && !(wear_suit && wear_suit.inv_hide_flags & HIDETAIL))
-		var/icon/tail_s = get_tail_icon()
-		overlays_standing[used_tail_layer] = image(icon = tail_s, icon_state = "[species_tail]_s", layer = BODY_LAYER+used_tail_layer)
-		animate_tail_reset()
-
-//TODO: Is this the appropriate place for this, and not on species...?
-/mob/living/carbon/human/proc/get_tail_icon()
-	var/icon_key = "[species.get_race_key(src)][r_skin][g_skin][b_skin][r_hair][g_hair][b_hair]"
-	var/icon/tail_icon = GLOB.tail_icon_cache[icon_key]
-	if(!tail_icon)
-		//generate a new one
-		var/species_tail_anim = species.get_tail_animation(src)
-		if(!species_tail_anim && species.icobase_tail)
-			species_tail_anim = species.icobase // Allow override of file for non-animated tails
-		if(!species_tail_anim)
-			species_tail_anim = 'icons/effects/species.dmi'
-		tail_icon = new/icon(species_tail_anim)
-		tail_icon.Blend(rgb(r_skin, g_skin, b_skin), species.color_mult ? ICON_MULTIPLY : ICON_ADD)
-		// The following will not work with animated tails.
-		var/use_species_tail = species.get_tail_hair(src)
-		if(use_species_tail)
-			var/icon/hair_icon = icon('icons/effects/species.dmi', "[species.get_tail(src)]_[use_species_tail]_s") // Suffix icon state string with '_s' to compensate for diff in .dmi b/w us & Polaris. //TODO: No.
-			if(species.color_force_greyscale)
-				hair_icon.MapColors(arglist(color_matrix_greyscale()))
-			hair_icon.Blend(rgb(r_hair, g_hair, b_hair), species.color_mult ? ICON_MULTIPLY : ICON_ADD) // Check for species color_mult
-			tail_icon.Blend(hair_icon, ICON_OVERLAY)
-		GLOB.tail_icon_cache[icon_key] = tail_icon
-
-	return tail_icon
-
-/mob/living/carbon/human/proc/set_tail_state(var/t_state)
-	var/used_tail_layer = tail_alt ? TAIL_LAYER_ALT : TAIL_LAYER
-	var/list/image/tail_overlays = overlays_standing[used_tail_layer]
-
-	remove_layer(TAIL_LAYER)
-	remove_layer(TAIL_LAYER_ALT)
-
-	if(!tail_overlays || hiding_tail)
-		return
-	if(islist(tail_overlays))
-		for(var/image/tail_overlay as anything in tail_overlays)
-			if(species.get_tail_animation(src))
-				tail_overlay.icon_state = t_state
-		overlays_standing[used_tail_layer] = tail_overlays
-	else
-		var/image/tail_overlay = tail_overlays
-		if(species.get_tail_animation(src))
-			tail_overlay.icon_state = t_state
-			. = tail_overlay
-		overlays_standing[used_tail_layer] = tail_overlay
-
-	apply_layer(used_tail_layer)
-
-//Not really once, since BYOND can't do that.
-//Update this if the ability to flick() images or make looping animation start at the first frame is ever added.
-//You can sort of flick images now with flick_overlay -Aro
-/mob/living/carbon/human/proc/animate_tail_once()
-	if(QDESTROYING(src))
-		return
-
-	var/t_state = "[species.get_tail(src)]_once"
-	var/used_tail_layer = tail_alt ? TAIL_LAYER_ALT : TAIL_LAYER
-
-	var/image/tail_overlay = overlays_standing[used_tail_layer]
-	if(tail_overlay && tail_overlay.icon_state == t_state)
-		return //let the existing animation finish
-
-	tail_overlay = set_tail_state(t_state) // Calls remove_layer & apply_layer
-	if(tail_overlay)
-		spawn(20)
-			//check that the animation hasn't changed in the meantime
-			if(overlays_standing[used_tail_layer] == tail_overlay && tail_overlay.icon_state == t_state)
-				animate_tail_stop()
-
-/mob/living/carbon/human/proc/animate_tail_start()
-	if(QDESTROYING(src))
-		return
-
-	set_tail_state("[species.get_tail(src)]_slow[rand(0,9)]")
-
-/mob/living/carbon/human/proc/animate_tail_fast()
-	if(QDESTROYING(src))
-		return
-
-	set_tail_state("[species.get_tail(src)]_loop[rand(0,9)]")
-
-/mob/living/carbon/human/proc/animate_tail_reset()
-	if(QDESTROYING(src))
-		return
-
-	if(stat != DEAD)
-		set_tail_state("[species.get_tail(src)]_idle[rand(0,9)]")
-	else
-		set_tail_state("[species.get_tail(src)]_static")
-		toggle_tail_vr(FALSE) // So tails stop when someone dies. TODO - Fix this hack ~Leshana
-
-/mob/living/carbon/human/proc/animate_tail_stop()
-	if(QDESTROYING(src))
-		return
-
-	set_tail_state("[species.get_tail(src)]_static")
-
-/// Wings! See update_icons_vr.dm for more wing procs
-/mob/living/carbon/human/proc/update_wing_showing()
-	if(QDESTROYING(src))
-		return
-
-	remove_layer(WING_LAYER)
-
-	if(hiding_wings && wing_style.can_be_hidden)
-		return
-
-	overlays_standing[WING_LAYER] = list()
-
-	var/image/vr_wing_image = get_wing_image(TRUE)
-	if(vr_wing_image)
-		vr_wing_image.layer = HUMAN_LAYER_WING
-		overlays_standing[WING_LAYER] += vr_wing_image
-
-	if(wing_style?.front_behind_system_legacy)
-		var/image/vr_wing_image_2 = get_wing_image(FALSE)
-		vr_wing_image_2.layer = BODY_LAYER - WING_LAYER
-		overlays_standing[WING_LAYER] += vr_wing_image_2
-
-	apply_layer(WING_LAYER)
-
-/mob/living/carbon/human/update_modifier_visuals()
-	if(QDESTROYING(src))
-		return
-
-	remove_layer(MODIFIER_EFFECTS_LAYER)
-
-	if(!LAZYLEN(modifiers))
-		return //No modifiers, no effects.
-
-	var/image/effects = new()
-	for(var/datum/modifier/M in modifiers)
-		if(M.mob_overlay_state)
-			var/image/I = image(icon = 'icons/mob/modifier_effects.dmi', icon_state = M.mob_overlay_state)
-			effects.add_overlay(I) //TODO, this compositing is annoying.
-
-	overlays_standing[MODIFIER_EFFECTS_LAYER] = effects
-
-	apply_layer(MODIFIER_EFFECTS_LAYER)
-
-/mob/living/carbon/human/update_fire()
-	if(!on_fire)
-		remove_standing_overlay(HUMAN_OVERLAY_FIRE)
-		return
-	set_standing_overlay(
-		HUMAN_OVERLAY_FIRE,
-		image(icon = 'icons/mob/OnFire.dmi', icon_state = get_fire_icon_state(), layer = HUMAN_LAYER_FIRE),
-	)
-
-/mob/living/carbon/human/update_water()
-	var/depth = check_submerged()
-	if(!depth || lying)
-		remove_standing_overlay(HUMAN_OVERLAY_LIQUID)
-		return
-	var/image/applying
-	if(depth < 3)
-		applying = image(icon = 'icons/mob/submerged.dmi', icon_state = "human_swimming_[depth]", layer = HUMAN_LAYER_LIQUID) //TODO: Improve
-	if(depth == 4)
-		applying = image(icon = 'icons/mob/submerged.dmi', icon_state = "hacid_1", layer = HUMAN_LAYER_LIQUID)
-	if(depth == 5)
-		applying = image(icon = 'icons/mob/submerged.dmi', icon_state = "hacid_2", layer = HUMAN_LAYER_LIQUID)
-	if(depth == 6)
-		applying = image(icon = 'icons/mob/submerged.dmi', icon_state = "hblood_1", layer = HUMAN_LAYER_LIQUID)
-	if(depth == 7)
-		applying = image(icon = 'icons/mob/submerged.dmi', icon_state = "hblood_2", layer = HUMAN_LAYER_LIQUID)
-	set_standing_overlay(HUMAN_OVERLAY_LIQUID, applying)
-
-// todo: burn with fire
-/mob/living/carbon/human/update_acidsub()
-	var/depth = check_submerged()
-	if(!depth || lying)
-		remove_standing_overlay(HUMAN_OVERLAY_LIQUID)
-		return
-
-	set_standing_overlay(
-		HUMAN_OVERLAY_LIQUID,
-		image(icon = 'icons/mob/submerged.dmi', icon_state = "hacid_[depth]", layer = HUMAN_LAYER_LIQUID),
-	)
-
-// todo: burn with fire
-/mob/living/carbon/human/update_bloodsub()
-	var/depth = check_submerged()
-	if(!depth || lying)
-		remove_standing_overlay(HUMAN_OVERLAY_LIQUID)
-		return
-
-	set_standing_overlay(
-		HUMAN_OVERLAY_LIQUID,
-		image(icon = 'icons/mob/submerged.dmi', icon_state = "hblood_[depth]", layer = HUMAN_LAYER_LIQUID),
-	)
-
-/mob/living/carbon/human/proc/update_surgery()
-	var/image/total = new
-	for(var/obj/item/organ/external/E in organs)
-		if(E.open)
-			var/image/I = image(icon = 'icons/mob/surgery.dmi',  icon_state = "[E.icon_name][round(E.open)]", layer = HUMAN_LAYER_SURGERY)
-			total.add_overlay(I) //TODO: This compositing is annoying
-
-	if(length(total.overlays))
-		set_standing_overlay(HUMAN_OVERLAY_SURGERY, total)
-	else
-		remove_standing_overlay(HUMAN_OVERLAY_SURGERY)
-
-/mob/living/carbon/human/proc/get_wing_image(front) //redbull gives you wings
-	var/icon/grad_swing
-	if(QDESTROYING(src))
-		return
-
-	//If you are FBP with wing style and didn't set a custom one
-	if(synthetic && synthetic.includes_wing && !wing_style)
-		var/icon/wing_s = new/icon("icon" = synthetic.icon, "icon_state" = "wing") //I dunno. If synths have some custom wing?
-		wing_s.Blend(rgb(src.r_skin, src.g_skin, src.b_skin), species.color_mult ? ICON_MULTIPLY : ICON_ADD)
-		return image(wing_s)
-
-	//If you have custom wings selected
-	if(wing_style && (!(wear_suit && wear_suit.inv_hide_flags & HIDETAIL) || !wing_style.clothing_can_hide))
-		var/icon/wing_s = new/icon("icon" = wing_style.icon, "icon_state" = spread ? wing_style.spr_state : (flapping && wing_style.ani_state ? wing_style.ani_state : (wing_style.front_behind_system_legacy? (wing_style.icon_state + (front? "_FRONT" : "_BEHIND")) : wing_style.icon_state)))
-		if(wing_style.do_colouration)
-			if(grad_wingstyle)
-				grad_swing = new/icon("icon" = 'icons/mob/wing_gradients.dmi', "icon_state" = GLOB.hair_gradients[grad_wingstyle])
-				grad_swing.Blend(wing_s, ICON_AND)
-				grad_swing.Blend(rgb(r_gradwing, g_gradwing, b_gradwing), ICON_MULTIPLY)
-			wing_s.Blend(rgb(src.r_wing, src.g_wing, src.b_wing), wing_style.color_blend_mode)
-		if(grad_swing)
-			wing_s.Blend(grad_swing, ICON_OVERLAY)
-		if(wing_style.extra_overlay)
-			var/icon/overlay = new/icon("icon" = wing_style.icon, "icon_state" = wing_style.extra_overlay)
-			overlay.Blend(rgb(src.r_wing2, src.g_wing2, src.b_wing2), wing_style.color_blend_mode)
-			wing_s.Blend(overlay, ICON_OVERLAY)
-			qdel(overlay)
-
-		if(wing_style.extra_overlay2)
-			var/icon/overlay = new/icon("icon" = wing_style.icon, "icon_state" = wing_style.extra_overlay2)
-			if(wing_style.ani_state)
-				overlay = new/icon("icon" = wing_style.icon, "icon_state" = wing_style.extra_overlay2_w)
-				overlay.Blend(rgb(src.r_wing3, src.g_wing3, src.b_wing3), wing_style.color_blend_mode)
-				wing_s.Blend(overlay, ICON_OVERLAY)
-				qdel(overlay)
-			else
-				overlay.Blend(rgb(src.r_wing3, src.g_wing3, src.b_wing3), wing_style.color_blend_mode)
-				wing_s.Blend(overlay, ICON_OVERLAY)
-				qdel(overlay)
-
-		if(wing_style.center)
-			center_appearance(wing_s, wing_style.dimension_x, wing_style.dimension_y)
-		return image(wing_s, "pixel_x" = -16)

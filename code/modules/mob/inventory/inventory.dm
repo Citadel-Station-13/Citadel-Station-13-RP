@@ -26,6 +26,20 @@
 
 //* Rendering *//
 
+/datum/inventory/proc/remove_slot_renders()
+	var/list/transformed = list()
+	for(var/slot_id in rendered_normal_overlays)
+		transformed += rendered_normal_overlays[slot_id]
+	owner.cut_overlay(transformed)
+
+/datum/inventory/proc/reapply_slot_renders()
+	// try not to dupe
+	remove_slot_renders()
+	var/list/transformed = list()
+	for(var/slot_id in rendered_normal_overlays)
+		transformed += rendered_normal_overlays[slot_id]
+	owner.add_overlay(transformed)
+
 /datum/inventory/proc/render_slot(slot_id)
 	var/obj/item/target = owner._item_by_slot(slot_id)
 	if(isnull(target))
