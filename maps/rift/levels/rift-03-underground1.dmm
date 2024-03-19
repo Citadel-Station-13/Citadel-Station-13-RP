@@ -5579,10 +5579,7 @@
 /turf/simulated/floor/water/pool,
 /area/crew_quarters/pool)
 "qR" = (
-/obj/structure/curtain/black{
-	anchored = 1;
-	icon_state = "open"
-	},
+/obj/structure/curtain/open/black,
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
@@ -9505,10 +9502,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/station/fighter_bay)
 "El" = (
-/obj/structure/curtain/black{
-	anchored = 1;
-	icon_state = "open"
-	},
+/obj/structure/curtain/open/black,
 /turf/simulated/floor/tiled/white,
 /area/security/prison/lower)
 "En" = (
@@ -13062,10 +13056,7 @@
 /area/maintenance/engineering/upper)
 "Pu" = (
 /obj/effect/floor_decal/industrial/halfstair,
-/obj/structure/curtain/black{
-	anchored = 1;
-	icon_state = "open"
-	},
+/obj/structure/curtain/open/black,
 /turf/simulated/floor/concrete/indoors,
 /area/security/prison/lower)
 "Pw" = (

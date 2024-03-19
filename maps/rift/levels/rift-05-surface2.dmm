@@ -19819,6 +19819,9 @@
 	pixel_y = 26;
 	req_access = list(1)
 	},
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/red,
 /area/security/security_processing)
 "mzD" = (
@@ -20312,8 +20315,8 @@
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab/foyer)
 "mJx" = (
-/obj/effect/paint/darkred,
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/effect/paint/darkred,
 /turf/simulated/floor/plating,
 /area/security/hallway)
 "mKp" = (
@@ -22848,6 +22851,11 @@
 /obj/random/medical/lite,
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
+"ooG" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/structure/curtain/open/black,
+/turf/simulated/floor/tiled/dark,
+/area/security/security_processing)
 "opb" = (
 /obj/structure/table/steel,
 /obj/item/storage/box/masks{
@@ -26985,6 +26993,24 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/medsec_maintenance)
+"qUR" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/structure/closet/secure_closet/genpop,
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/machinery/door/window/westright,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/security/security_processing)
 "qVn" = (
 /obj/effect/floor_decal/borderfloorwhite/corner{
 	dir = 8
@@ -31930,9 +31956,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
-/obj/machinery/light{
-	dir = 1
-	},
+/obj/structure/curtain/open/black,
 /turf/simulated/floor/tiled/dark,
 /area/security/security_processing)
 "uom" = (
@@ -37401,6 +37425,9 @@
 	dir = 4;
 	pixel_x = -30
 	},
+/obj/machinery/light{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/red,
 /area/security/security_processing)
 "xQH" = (
@@ -37788,9 +37815,6 @@
 "yaJ" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 5
-	},
-/obj/machinery/light{
-	dir = 4
 	},
 /obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/tiled/dark,
@@ -57241,7 +57265,7 @@ pvp
 iXh
 tJz
 rDz
-oji
+qUR
 iXh
 oji
 nkq
@@ -57434,7 +57458,7 @@ rWX
 rWX
 rWX
 uoj
-soJ
+ooG
 rWX
 rWX
 rWX

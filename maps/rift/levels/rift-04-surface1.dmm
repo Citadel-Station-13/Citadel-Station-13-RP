@@ -2411,6 +2411,12 @@
 /obj/item/barcodescanner,
 /turf/simulated/floor/carpet,
 /area/library/study)
+"bIy" = (
+/obj/structure/railing/grey{
+	dir = 4
+	},
+/turf/simulated/open,
+/area/security/prison/upper)
 "bIL" = (
 /obj/structure/catwalk,
 /obj/structure/disposalpipe/segment,
@@ -21359,7 +21365,6 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
 	},
-/obj/machinery/power/apc/west_mount,
 /obj/machinery/computer/security{
 	dir = 4;
 	icon_state = "computer"
@@ -26520,6 +26525,12 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
 /turf/simulated/floor/tiled/steel,
+/area/security/prison/upper)
+"qGN" = (
+/obj/structure/railing/grey{
+	dir = 8
+	},
+/turf/simulated/open,
 /area/security/prison/upper)
 "qGS" = (
 /turf/simulated/wall/wood/hardwood,
@@ -57276,7 +57287,7 @@ eIt
 bRw
 trx
 eBk
-gcW
+qGN
 gcW
 gcW
 gcW
@@ -57470,7 +57481,7 @@ flT
 ouI
 ibA
 gQC
-gcW
+bIy
 gcW
 gcW
 gcW
