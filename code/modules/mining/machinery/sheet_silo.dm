@@ -16,7 +16,7 @@
 	/// material id to **sheets**
 	var/list/sheets_by_material = list()
 	/// how much to multiply all ores by
-	var/persistence_decay_factor = 0.65
+	var/persistence_decay_factor = 0.35
 	/// how much to subtract from all ores after factor
 	var/persistence_decay_constant = 10
 	/// ignore overpowered ore filter

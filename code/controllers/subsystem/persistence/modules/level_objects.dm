@@ -197,7 +197,7 @@
 	for(var/obj/entity as anything in entities)
 		var/datum/db_query/query
 		var/bind_id
-		switch(entity.obj_persist_dynamic_status)
+		switch(entity.obj_persist_static_mode)
 			if(OBJ_PERSIST_STATIC_MODE_GLOBAL)
 				query = SSdbcore.NewQuery(
 					"SELECT data FROM [format_table_name("persistence_static_global_objects")] \
