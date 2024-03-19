@@ -32298,6 +32298,10 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
 /obj/structure/bed/chair,
+/obj/item/radio/intercom/department/security{
+	dir = 1;
+	pixel_y = 24
+	},
 /turf/simulated/floor/tiled/steel,
 /area/security/prison/upper)
 "tWs" = (
@@ -32663,8 +32667,8 @@
 /area/security/prison/upper)
 "uih" = (
 /obj/machinery/door_timer/cell_1{
-	id = "isolation_cell_1";
-	name = "Isolation Cell"
+	id = "isolation";
+	name = "Isolation"
 	},
 /turf/simulated/wall/r_wall/prepainted/security,
 /area/security/prison/upper)
@@ -35631,13 +35635,18 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/chemistry_lab)
 "vWS" = (
-/obj/machinery/door/airlock/security{
-	id_tag = "isolation_cell_1";
-	name = "Isolation Cell"
-	},
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
+/obj/machinery/door/window/brigdoor/eastright{
+	id = "isolation";
+	name = "Isolation"
+	},
+/obj/machinery/door/window/brigdoor/westleft{
+	id = "isolation";
+	name = "Isolation"
+	},
+/obj/structure/simple_door/iron,
 /turf/simulated/floor/tiled/monodark,
 /area/security/prison/upper)
 "vWY" = (

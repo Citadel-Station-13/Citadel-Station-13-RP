@@ -3986,6 +3986,13 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/pumpstation)
+"lt" = (
+/obj/item/radio/intercom/department/security{
+	dir = 8;
+	pixel_x = -24
+	},
+/turf/simulated/floor/concrete/tile/indoors,
+/area/security/prison/lower)
 "lu" = (
 /obj/machinery/atmospherics/component/quaternary/mixer,
 /turf/simulated/floor/plating,
@@ -7288,7 +7295,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/chamber)
 "wS" = (
-/obj/machinery/fire_alarm/west_mount,
 /obj/machinery/camera/network/security{
 	dir = 4
 	},
@@ -9290,6 +9296,10 @@
 /obj/structure/table/reinforced,
 /obj/machinery/light{
 	dir = 1
+	},
+/obj/item/radio/intercom/department/security{
+	dir = 1;
+	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/monowhite,
 /area/security/prison/lower)
@@ -13654,6 +13664,7 @@
 /area/hallway/primary/underone)
 "RO" = (
 /obj/machinery/scale,
+/obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/concrete/indoors,
 /area/security/prison/lower)
 "RP" = (
@@ -13878,10 +13889,6 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/concrete/tile/indoors,
-/area/security/prison/lower)
-"SF" = (
-/obj/item/material/twohanded/folded_metal_chair,
 /turf/simulated/floor/concrete/tile/indoors,
 /area/security/prison/lower)
 "SG" = (
@@ -14263,6 +14270,17 @@
 /obj/machinery/atmospherics/pipe/simple/visible,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+"Uo" = (
+/obj/item/radio/intercom/department/security{
+	dir = 1;
+	pixel_y = 24
+	},
+/turf/simulated/floor/concrete/tile/indoors,
+/area/security/prison/lower)
+"Up" = (
+/obj/machinery/fire_alarm/west_mount,
+/turf/simulated/floor/concrete/indoors,
+/area/security/prison/lower)
 "Uq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/bluegrid{
@@ -32450,7 +32468,7 @@ ua
 or
 dJ
 Vg
-Vg
+Up
 vI
 fv
 vI
@@ -33804,8 +33822,8 @@ Vv
 IC
 dD
 wS
+lt
 dD
-SF
 dD
 dD
 dD
@@ -35929,7 +35947,7 @@ aa
 aa
 aa
 ua
-dD
+Uo
 dD
 ZJ
 jF
