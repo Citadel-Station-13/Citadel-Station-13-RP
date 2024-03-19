@@ -1,6 +1,6 @@
 //xeno stuffs
 
-/datum/sprite_accessory/hair/xeno_head_drone_color
+/datum/sprite_accessory/hair/legacy/xeno_head_drone_color
 	name = "Drone dome"
 	id = "hair_xeno_drone"
 	icon = 'icons/mob/human_face_vr.dmi'
@@ -11,7 +11,7 @@
 
 // figure this one out for better coloring
 
-/datum/sprite_accessory/hair/xeno_head_sentinel_color
+/datum/sprite_accessory/hair/legacy/xeno_head_sentinel_color
 	name = "Sentinal dome"
 	id = "hair_xeno_sentinel"
 	icon = 'icons/mob/human_face_vr.dmi'
@@ -20,7 +20,7 @@
 	species_allowed = list(SPECIES_XENOHYBRID)
 	random_generation_gender = null
 
-/datum/sprite_accessory/hair/xeno_head_queen_color
+/datum/sprite_accessory/hair/legacy/xeno_head_queen_color
 	name = "Queen dome"
 	id = "hair_xeno_queen"
 	icon = 'icons/mob/human_face_vr.dmi'
@@ -29,7 +29,7 @@
 	species_allowed = list(SPECIES_XENOHYBRID)
 	random_generation_gender = null
 
-/datum/sprite_accessory/hair/xeno_head_hunter_color
+/datum/sprite_accessory/hair/legacy/xeno_head_hunter_color
 	name = "Hunter dome"
 	id = "hair_xeno_hunter"
 	icon = 'icons/mob/human_face_vr.dmi'
@@ -38,7 +38,7 @@
 	species_allowed = list(SPECIES_XENOHYBRID)
 	random_generation_gender = null
 
-/datum/sprite_accessory/hair/xeno_head_praetorian_color
+/datum/sprite_accessory/hair/legacy/xeno_head_praetorian_color
 	name = "Praetorian dome"
 	id = "hair_xeno_praetorian"
 	icon = 'icons/mob/human_face_vr.dmi'
@@ -47,7 +47,7 @@
 	species_allowed = list(SPECIES_XENOHYBRID)
 	random_generation_gender = null
 
-/datum/sprite_accessory/hair/xeno_head_hybrid_color1
+/datum/sprite_accessory/hair/legacy/xeno_head_hybrid_color1
 	name = "Xenohybrid dome 1"
 	id = "hair_xeno_hybrid"
 	icon = 'icons/mob/human_face_vr.dmi'

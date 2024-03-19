@@ -1,6 +1,6 @@
 // Vulpa stuffs
 
-/datum/sprite_accessory/hair/vulp_hair_none
+/datum/sprite_accessory/hair/legacy/vulp_hair_none
 	name = "None"
 	id = "hair_vulp_none"
 	icon_state = "bald"
@@ -8,7 +8,7 @@
 	apply_restrictions = TRUE
 	random_generation_gender = null
 
-/datum/sprite_accessory/hair/vulp_hair_kajam
+/datum/sprite_accessory/hair/legacy/vulp_hair_kajam
 	name = "Kajam"
 	id = "hair_vulp_kajam"
 	icon = 'icons/mob/human_face_vr.dmi'
@@ -18,7 +18,7 @@
 	apply_restrictions = TRUE
 	random_generation_gender = null
 
-/datum/sprite_accessory/hair/vulp_hair_keid
+/datum/sprite_accessory/hair/legacy/vulp_hair_keid
 	name = "Keid"
 	id = "hair_vulp_keid"
 	icon = 'icons/mob/human_face_vr.dmi'
@@ -28,7 +28,7 @@
 	apply_restrictions = TRUE
 	random_generation_gender = null
 
-/datum/sprite_accessory/hair/vulp_hair_adhara
+/datum/sprite_accessory/hair/legacy/vulp_hair_adhara
 	name = "Adhara"
 	id = "hair_vulp_adhara"
 	icon = 'icons/mob/human_face_vr.dmi'
@@ -38,7 +38,7 @@
 	apply_restrictions = TRUE
 	random_generation_gender = null
 
-/datum/sprite_accessory/hair/vulp_hair_kleeia
+/datum/sprite_accessory/hair/legacy/vulp_hair_kleeia
 	name = "Kleeia"
 	id = "hair_vulp_kleeia"
 	icon = 'icons/mob/human_face_vr.dmi'
@@ -48,7 +48,7 @@
 	apply_restrictions = TRUE
 	random_generation_gender = null
 
-/datum/sprite_accessory/hair/vulp_hair_mizar
+/datum/sprite_accessory/hair/legacy/vulp_hair_mizar
 	name = "Mizar"
 	id = "hair_vulp_mizar"
 	icon = 'icons/mob/human_face_vr.dmi'
@@ -58,7 +58,7 @@
 	apply_restrictions = TRUE
 	random_generation_gender = null
 
-/datum/sprite_accessory/hair/vulp_hair_apollo
+/datum/sprite_accessory/hair/legacy/vulp_hair_apollo
 	name = "Apollo"
 	id = "hair_vulp_apollo"
 	icon = 'icons/mob/human_face_vr.dmi'
@@ -68,7 +68,7 @@
 	apply_restrictions = TRUE
 	random_generation_gender = null
 
-/datum/sprite_accessory/hair/vulp_hair_belle
+/datum/sprite_accessory/hair/legacy/vulp_hair_belle
 	name = "Belle"
 	id = "hair_vulp_belle"
 	icon = 'icons/mob/human_face_vr.dmi'
@@ -78,7 +78,7 @@
 	apply_restrictions = TRUE
 	random_generation_gender = null
 
-/datum/sprite_accessory/hair/vulp_hair_bun
+/datum/sprite_accessory/hair/legacy/vulp_hair_bun
 	name = "Bun"
 	id = "hair_vulp_bun"
 	icon = 'icons/mob/human_face_vr.dmi'
@@ -88,7 +88,7 @@
 	apply_restrictions = TRUE
 	random_generation_gender = null
 
-/datum/sprite_accessory/hair/vulp_hair_jagged
+/datum/sprite_accessory/hair/legacy/vulp_hair_jagged
 	name = "Jagged"
 	id = "hair_vulp_jagged"
 	icon = 'icons/mob/human_face_vr.dmi'
@@ -98,7 +98,7 @@
 	apply_restrictions = TRUE
 	random_generation_gender = null
 
-/datum/sprite_accessory/hair/vulp_hair_curl
+/datum/sprite_accessory/hair/legacy/vulp_hair_curl
 	name = "Curl"
 	id = "hair_vulp_curl"
 	icon = 'icons/mob/human_face_vr.dmi'
@@ -108,7 +108,7 @@
 	apply_restrictions = TRUE
 	random_generation_gender = null
 
-/datum/sprite_accessory/hair/vulp_hair_hawk
+/datum/sprite_accessory/hair/legacy/vulp_hair_hawk
 	name = "Hawk"
 	id = "hair_vulp_hawk"
 	icon = 'icons/mob/human_face_vr.dmi'
@@ -118,7 +118,7 @@
 	apply_restrictions = TRUE
 	random_generation_gender = null
 
-/datum/sprite_accessory/hair/vulp_hair_anita
+/datum/sprite_accessory/hair/legacy/vulp_hair_anita
 	name = "Anita"
 	id = "hair_vulp_anita"
 	icon = 'icons/mob/human_face_vr.dmi'
@@ -128,7 +128,7 @@
 	apply_restrictions = TRUE
 	random_generation_gender = null
 
-/datum/sprite_accessory/hair/vulp_hair_short
+/datum/sprite_accessory/hair/legacy/vulp_hair_short
 	name = "Short"
 	id = "hair_vulp_short"
 	icon = 'icons/mob/human_face_vr.dmi'
@@ -138,7 +138,7 @@
 	apply_restrictions = TRUE
 	random_generation_gender = null
 
-/datum/sprite_accessory/hair/vulp_hair_spike
+/datum/sprite_accessory/hair/legacy/vulp_hair_spike
 	name = "Spike"
 	id = "hair_vulp_spike"
 	icon = 'icons/mob/human_face_vr.dmi'

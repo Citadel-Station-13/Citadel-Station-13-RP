@@ -1,6 +1,6 @@
 // Shadekin stuffs
 
-/datum/sprite_accessory/hair/shadekin_hair_short
+/datum/sprite_accessory/hair/legacy/shadekin_hair_short
 	name = "Shadekin Short Hair"
 	id = "hair_shadekin_short"
 	icon = 'icons/mob/human_face_vr.dmi'
@@ -10,7 +10,7 @@
 	apply_restrictions = TRUE
 	random_generation_gender = null
 
-/datum/sprite_accessory/hair/shadekin_hair_poofy
+/datum/sprite_accessory/hair/legacy/shadekin_hair_poofy
 	name = "Shadekin Poofy Hair"
 	id = "hair_shadekin_poofy"
 	icon = 'icons/mob/human_face_vr.dmi'
@@ -20,7 +20,7 @@
 	apply_restrictions = TRUE
 	random_generation_gender = null
 
-/datum/sprite_accessory/hair/shadekin_hair_long
+/datum/sprite_accessory/hair/legacy/shadekin_hair_long
 	name = "Shadekin Long Hair"
 	id = "hair_shadekin_long"
 	icon = 'icons/mob/human_face_vr.dmi'

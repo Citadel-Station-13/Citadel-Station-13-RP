@@ -1,5 +1,5 @@
 //Teshari things
-/datum/sprite_accessory/hair/teshari
+/datum/sprite_accessory/hair/legacy/teshari
 	name = "Teshari Default"
 	id = "hair_teshari_default"
 	icon_state = "teshari_default"
@@ -7,7 +7,7 @@
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
-/datum/sprite_accessory/hair/teshari_altdefault
+/datum/sprite_accessory/hair/legacy/teshari_altdefault
 	name = "Teshari Alt. Default"
 	id = "hair_teshari_default_alt"
 	icon_state = "teshari_ears"
@@ -15,7 +15,7 @@
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
-/datum/sprite_accessory/hair/teshari_tight
+/datum/sprite_accessory/hair/legacy/teshari_tight
 	name = "Teshari Tight"
 	id = "hair_teshari_tight"
 	icon_state = "teshari_tight"
@@ -23,7 +23,7 @@
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
-/datum/sprite_accessory/hair/teshari_excited
+/datum/sprite_accessory/hair/legacy/teshari_excited
 	name = "Teshari Spiky"
 	id = "hair_teshari_spiky"
 	icon_state = "teshari_spiky"
@@ -31,7 +31,7 @@
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
-/datum/sprite_accessory/hair/teshari_spike
+/datum/sprite_accessory/hair/legacy/teshari_spike
 	name = "Teshari Spike"
 	id = "hair_teshari_spike"
 	icon_state = "teshari_spike"
@@ -39,7 +39,7 @@
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
-/datum/sprite_accessory/hair/teshari_long
+/datum/sprite_accessory/hair/legacy/teshari_long
 	name = "Teshari Overgrown"
 	id = "hair_teshari_long"
 	icon_state = "teshari_long"
@@ -47,7 +47,7 @@
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
-/datum/sprite_accessory/hair/teshari_burst
+/datum/sprite_accessory/hair/legacy/teshari_burst
 	name = "Teshari Starburst"
 	id = "hair_teshari_burst"
 	icon_state = "teshari_burst"
@@ -55,7 +55,7 @@
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
-/datum/sprite_accessory/hair/teshari_shortburst
+/datum/sprite_accessory/hair/legacy/teshari_shortburst
 	name = "Teshari Short Starburst"
 	id = "hair_teshari_burst_short"
 	icon_state = "teshari_burst_short"
@@ -63,7 +63,7 @@
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
-/datum/sprite_accessory/hair/teshari_mohawk
+/datum/sprite_accessory/hair/legacy/teshari_mohawk
 	name = "Teshari Mohawk"
 	id = "hair_teshari_mohawk"
 	icon_state = "teshari_mohawk"
@@ -71,7 +71,7 @@
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
-/datum/sprite_accessory/hair/teshari_pointy
+/datum/sprite_accessory/hair/legacy/teshari_pointy
 	name = "Teshari Pointy"
 	id = "hair_teshari_pointy"
 	icon_state = "teshari_pointy"
@@ -79,7 +79,7 @@
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
-/datum/sprite_accessory/hair/teshari_upright
+/datum/sprite_accessory/hair/legacy/teshari_upright
 	name = "Teshari Upright"
 	id = "hair_teshari_upright"
 	icon_state = "teshari_upright"
@@ -87,7 +87,7 @@
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
-/datum/sprite_accessory/hair/teshari_mane
+/datum/sprite_accessory/hair/legacy/teshari_mane
 	name = "Teshari Mane"
 	id = "hair_teshari_mane"
 	icon_state = "teshari_mane"
@@ -95,7 +95,7 @@
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
-/datum/sprite_accessory/hair/teshari_droopy
+/datum/sprite_accessory/hair/legacy/teshari_droopy
 	name = "Teshari Droopy"
 	id = "hair_teshari_droopy"
 	icon_state = "teshari_droopy"
@@ -103,7 +103,7 @@
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
-/datum/sprite_accessory/hair/teshari_mushroom
+/datum/sprite_accessory/hair/legacy/teshari_mushroom
 	name = "Teshari Mushroom"
 	id = "hair_teshari_mushroom"
 	icon_state = "teshari_mushroom"
@@ -111,7 +111,7 @@
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
-/datum/sprite_accessory/hair/teshari_twies
+/datum/sprite_accessory/hair/legacy/teshari_twies
 	name = "Teshari Twies"
 	id = "hair_teshari_twies"
 	icon_state = "teshari_twies"
@@ -119,7 +119,7 @@
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
-/datum/sprite_accessory/hair/teshari_backstrafe
+/datum/sprite_accessory/hair/legacy/teshari_backstrafe
 	name = "Teshari Backstrafe"
 	id = "hair_teshari_backstrafe"
 	icon_state = "teshari_backstrafe"
@@ -127,7 +127,7 @@
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
-/datum/sprite_accessory/hair/teshari_longway
+/datum/sprite_accessory/hair/legacy/teshari_longway
 	name = "Teshari Long way"
 	id = "hair_teshari_longway"
 	icon_state = "teshari_longway"
@@ -135,7 +135,7 @@
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
-/datum/sprite_accessory/hair/teshari_tree
+/datum/sprite_accessory/hair/legacy/teshari_tree
 	name = "Teshari Tree"
 	id = "hair_teshari_tree"
 	icon_state = "teshari_tree"
@@ -143,7 +143,7 @@
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
-/datum/sprite_accessory/hair/teshari_fluffymohawk
+/datum/sprite_accessory/hair/legacy/teshari_fluffymohawk
 	name = "Teshari Fluffy Mohawk"
 	id = "hair_teshari_mohawk_fluffy"
 	icon = 'icons/mob/human_face_vr.dmi'
@@ -152,7 +152,7 @@
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
-/datum/sprite_accessory/hair/teshari_sleek
+/datum/sprite_accessory/hair/legacy/teshari_sleek
 	name = "Teshari Sleek"
 	id = "hair_teshari_sleek"
 	icon_state = "teshari_sleek"
@@ -160,7 +160,7 @@
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
-/datum/sprite_accessory/hair/teshari_thepeel
+/datum/sprite_accessory/hair/legacy/teshari_thepeel
 	name = "Teshari 'The Peel'"
 	id = "hair_teshari_peel"
 	icon_state = "teshari_peel"
@@ -168,7 +168,7 @@
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
-/datum/sprite_accessory/hair/teshari_sweptup
+/datum/sprite_accessory/hair/legacy/teshari_sweptup
 	name = "Teshari Swept Up"
 	id = "hair_teshari_swept_up"
 	icon_state = "teshari_sweep"
@@ -176,7 +176,7 @@
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
-/datum/sprite_accessory/hair/teshari_aerodynamic
+/datum/sprite_accessory/hair/legacy/teshari_aerodynamic
 	name = "Teshari Aerodynamic"
 	id = "hair_teshari_aerodynamic"
 	icon_state = "teshari_aerodynamic"
@@ -184,7 +184,7 @@
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
-/datum/sprite_accessory/hair/teshari_tallmohawk
+/datum/sprite_accessory/hair/legacy/teshari_tallmohawk
 	name = "Teshari Tall Mohawk"
 	id = "hair_teshari_mohawk_tall"
 	icon_state = "teshari_tallmohawk"
@@ -192,7 +192,7 @@
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
-/datum/sprite_accessory/hair/teshari_cowlick
+/datum/sprite_accessory/hair/legacy/teshari_cowlick
 	name = "Teshari Cow-lick"
 	id = "hair_teshari_cowlick"
 	icon_state = "teshari_cowlick"
@@ -200,7 +200,7 @@
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
-/datum/sprite_accessory/hair/teshari_spikyalt
+/datum/sprite_accessory/hair/legacy/teshari_spikyalt
 	name = "Teshari Spiky alt"
 	id = "hair_teshari_spiky_alt"
 	icon_state = "teshari_spiky2"
@@ -208,7 +208,7 @@
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
-/datum/sprite_accessory/hair/teshari_soap
+/datum/sprite_accessory/hair/legacy/teshari_soap
 	name = "Teshari Soap"
 	id = "hair_teshari_soap"
 	icon_state = "teshari_soap"
@@ -216,7 +216,7 @@
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
-/datum/sprite_accessory/hair/teshari_crowned
+/datum/sprite_accessory/hair/legacy/teshari_crowned
 	name = "Teshari Crowned"
 	id = "hair_teshari_crowned"
 	icon_state = "teshari_crowned"
@@ -224,7 +224,7 @@
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
-/datum/sprite_accessory/hair/teshari_crest
+/datum/sprite_accessory/hair/legacy/teshari_crest
 	name = "Teshari Crest"
 	id = "hair_teshari_crest"
 	icon_state = "teshari_crest"
@@ -232,7 +232,7 @@
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
-/datum/sprite_accessory/hair/teshari_ponytail
+/datum/sprite_accessory/hair/legacy/teshari_ponytail
 	name = "Teshari Feather Ponytail"
 	id = "hair_teshari_ponytail"
 	icon_state = "teshari_ponytail"
@@ -240,7 +240,7 @@
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
-/datum/sprite_accessory/hair/teshari_bun
+/datum/sprite_accessory/hair/legacy/teshari_bun
 	name = "Teshari Feather Bun"
 	id = "hair_teshari_bun"
 	icon_state = "teshari_bun"
