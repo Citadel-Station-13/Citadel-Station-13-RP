@@ -79,7 +79,7 @@
 		ui = new(user, src, "MuleBot", "Mulebot [suffix ? "([suffix])" : ""]")
 		ui.open()
 
-/mob/living/bot/mulebot/ui_data(mob/user, datum/tgui/ui)
+/mob/living/bot/mulebot/ui_data(mob/user, datum/tgui/ui, is_module)
 	var/list/data = list(
 		"suffix" = suffix,
 		"power" = on,

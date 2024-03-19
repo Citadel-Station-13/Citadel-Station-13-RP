@@ -18,7 +18,7 @@
 /datum/rig_maint_panel/ui_host()
 	return host
 
-/datum/rig_maint_panel/ui_static_data(mob/user, datum/tgui/ui)
+/datum/rig_maint_panel/ui_static_data(mob/user, datum/tgui/ui, is_module)
 	. = ..()
 	.["activation"] = host.activation_state
 	var/list/assembled_ids = list()
@@ -31,7 +31,7 @@
 	.["sprite64"] = host.cached_tgui_icon_b64 || (host.cached_tgui_icon_b64 = icon2base64(icon(host.icon, host.icon_state, SOUTH, 1, FALSE)))
 	#warn piece IDs updates
 
-/datum/rig_maint_panel/ui_data(mob/user, datum/tgui/ui)
+/datum/rig_maint_panel/ui_data(mob/user, datum/tgui/ui, is_module)
 	. = ..()
 	// todo: update this more smartly with push data instead
 	.["panelLock"] = host.maint_panel_locked

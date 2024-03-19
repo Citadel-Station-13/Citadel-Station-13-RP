@@ -24,7 +24,7 @@
 				S.open()
 			return TRUE
 
-/datum/tgui_module_old/shutoff_monitor/ui_data(mob/user, datum/tgui/ui)
+/datum/tgui_module_old/shutoff_monitor/ui_data(mob/user, datum/tgui/ui, is_module)
 	var/list/data = list()
 	var/list/valves = list()
 

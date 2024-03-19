@@ -162,7 +162,7 @@
 		ui = new(user, src, "ICAssembly", name, parent_ui)
 		ui.open()
 
-/obj/item/electronic_assembly/ui_data(mob/user, datum/tgui/ui)
+/obj/item/electronic_assembly/ui_data(mob/user, datum/tgui/ui, is_module)
 	var/list/data = ..()
 
 	var/total_parts = 0

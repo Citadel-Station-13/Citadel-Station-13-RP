@@ -132,7 +132,7 @@
 		ui.open()
 
 //This is the data which will be sent to the ui
-/obj/machinery/atmospherics/component/binary/massive_gas_pump/ui_data(mob/user, datum/tgui/ui)
+/obj/machinery/atmospherics/component/binary/massive_gas_pump/ui_data(mob/user, datum/tgui/ui, is_module)
 	var/list/data = list()
 
 	data = list(

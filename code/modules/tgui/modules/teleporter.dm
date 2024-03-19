@@ -6,7 +6,7 @@
 	var/obj/machinery/tele_projector/station = null
 	var/obj/machinery/tele_pad/hub = null
 
-/datum/tgui_module_old/teleport_control/ui_data(mob/user, datum/tgui/ui)
+/datum/tgui_module_old/teleport_control/ui_data(mob/user, datum/tgui/ui, is_module)
 	var/list/data = ..()
 
 	data["locked_name"] = locked_name || "No Target"

@@ -106,7 +106,7 @@
 	name = "Phoron Lock Controller"
 	valid_actions = list("cycle_ext", "cycle_int", "force_ext", "force_int", "abort", "secure")
 
-/obj/machinery/embedded_controller/radio/airlock/phoron/ui_data(mob/user, datum/tgui/ui)
+/obj/machinery/embedded_controller/radio/airlock/phoron/ui_data(mob/user, datum/tgui/ui, is_module)
 	. = list(
 		"chamber_pressure" = program.memory["chamber_sensor_pressure"],
 		"chamber_phoron" = program.memory["chamber_sensor_phoron"],

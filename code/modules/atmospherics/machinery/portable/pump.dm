@@ -116,7 +116,7 @@
 /obj/machinery/portable_atmospherics/powered/pump/ui_state()
 	return GLOB.physical_state
 
-/obj/machinery/portable_atmospherics/powered/pump/ui_data(mob/user, datum/tgui/ui)
+/obj/machinery/portable_atmospherics/powered/pump/ui_data(mob/user, datum/tgui/ui, is_module)
 	var/list/data = list()
 
 	data["on"] = on ? TRUE : FALSE

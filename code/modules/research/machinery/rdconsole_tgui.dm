@@ -24,7 +24,7 @@
 	if(locked && !allowed(user) && !emagged)
 		. = min(., UI_UPDATE)
 
-/obj/machinery/computer/rdconsole/ui_static_data(mob/user, datum/tgui/ui)
+/obj/machinery/computer/rdconsole/ui_static_data(mob/user, datum/tgui/ui, is_module)
 	var/list/data = ..()
 
 	data["tech"] = tgui_GetResearchLevelsInfo()
@@ -35,7 +35,7 @@
 
 	return data
 
-/obj/machinery/computer/rdconsole/ui_data(mob/user, datum/tgui/ui)
+/obj/machinery/computer/rdconsole/ui_data(mob/user, datum/tgui/ui, is_module)
 	var/list/data = ..()
 
 	data["locked"] = locked

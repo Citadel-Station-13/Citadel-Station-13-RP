@@ -211,7 +211,7 @@
 		return
 	ui_interact(user)
 
-/obj/machinery/media/jukebox/ui_data(mob/user, datum/tgui/ui)
+/obj/machinery/media/jukebox/ui_data(mob/user, datum/tgui/ui, is_module)
 	var/list/data = ..()
 
 	data["playing"] = playing

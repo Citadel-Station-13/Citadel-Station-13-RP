@@ -112,7 +112,7 @@
  * ui_data gives the UI any relevant data it needs.
  * In our case, that's basically everything from our statpanel.
  */
-/obj/item/nif/ui_data(mob/user, datum/tgui/ui)
+/obj/item/nif/ui_data(mob/user, datum/tgui/ui, is_module)
 	var/list/data = ..()
 
 	data["theme"] = save_data["ui_theme"]

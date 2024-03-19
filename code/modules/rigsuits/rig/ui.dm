@@ -115,7 +115,7 @@
 
 #warn impl all
 
-/obj/item/rig/ui_static_data(mob/user, datum/tgui/ui)
+/obj/item/rig/ui_static_data(mob/user, datum/tgui/ui, is_module)
 	#warn icecream update will modify this, check the root definition!
 	. = ..()
 	.["theme"] = theme_name
@@ -137,7 +137,7 @@
 	.["moduleRefs"] = module_refs
 	.["wornCorrectly"] = is_in_right_slot()
 
-/obj/item/rig/ui_data(mob/user, datum/tgui/ui)
+/obj/item/rig/ui_data(mob/user, datum/tgui/ui, is_module)
 	. = ..()
 	// todo: maybe cache this
 	.["controlFlags"] = effective_control_flags(user)

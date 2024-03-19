@@ -212,7 +212,7 @@
 		ui = new(user, src, "BrigTimer", name)
 		ui.open()
 
-/obj/machinery/door_timer/ui_data(mob/user, datum/tgui/ui)
+/obj/machinery/door_timer/ui_data(mob/user, datum/tgui/ui, is_module)
 	var/list/data = list()
 	var/time_left = time_left(seconds = TRUE)
 	data["seconds"] = round(time_left % 60)

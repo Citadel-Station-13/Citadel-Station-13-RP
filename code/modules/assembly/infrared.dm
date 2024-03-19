@@ -168,7 +168,7 @@
 		ui = new(user, src, "AssemblyInfrared", name)
 		ui.open()
 
-/obj/item/assembly/infra/ui_data(mob/user, datum/tgui/ui)
+/obj/item/assembly/infra/ui_data(mob/user, datum/tgui/ui, is_module)
 	var/list/data = ..()
 
 	data["on"] = on

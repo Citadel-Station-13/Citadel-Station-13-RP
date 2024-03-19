@@ -42,7 +42,7 @@
 		ui = new(user, src, "Farmbot", name)
 		ui.open()
 
-/mob/living/bot/farmbot/ui_data(mob/user, datum/tgui/ui)
+/mob/living/bot/farmbot/ui_data(mob/user, datum/tgui/ui, is_module)
 	var/list/data = ..()
 
 	data["on"] = on

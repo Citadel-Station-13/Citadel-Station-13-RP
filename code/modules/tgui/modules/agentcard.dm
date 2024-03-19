@@ -2,7 +2,7 @@
 	name = "Agent Card"
 	tgui_id = "AgentCard"
 
-/datum/tgui_module_old/agentcard/ui_data(mob/user, datum/tgui/ui)
+/datum/tgui_module_old/agentcard/ui_data(mob/user, datum/tgui/ui, is_module)
 	var/list/data = ..()
 
 	var/obj/item/card/id/syndicate/S = ui_host()

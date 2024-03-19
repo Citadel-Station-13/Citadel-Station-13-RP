@@ -12,7 +12,7 @@
 /datum/description_profile/ui_state()
 	return GLOB.always_state
 
-/datum/description_profile/ui_static_data(mob/user, datum/tgui/ui)
+/datum/description_profile/ui_static_data(mob/user, datum/tgui/ui, is_module)
 	. = ..()
 	var/data[0]
 	var/mob/living/carbon/human/H = host.resolve()

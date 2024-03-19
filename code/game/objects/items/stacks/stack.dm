@@ -79,7 +79,7 @@
 		ui = new(user, src, "StackCrafting")
 		ui.open()
 
-/obj/item/stack/ui_static_data(mob/user, datum/tgui/ui)
+/obj/item/stack/ui_static_data(mob/user, datum/tgui/ui, is_module)
 	. = ..()
 	.["recipes"] = tgui_recipes()
 	.["maxAmount"] = max_amount
@@ -94,7 +94,7 @@
 		assembled[++assembled.len] = recipe.tgui_recipe_data()
 	return assembled
 
-/obj/item/stack/ui_data(mob/user, datum/tgui/ui)
+/obj/item/stack/ui_data(mob/user, datum/tgui/ui, is_module)
 	. = ..()
 	.["amount"] = get_amount()
 
