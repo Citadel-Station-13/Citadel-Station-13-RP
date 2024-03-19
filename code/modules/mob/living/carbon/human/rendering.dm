@@ -20,13 +20,15 @@
 		HUMAN_LAYER_SPRITEACC_EARS_BEHIND,
 		0, // TODO
 	)
-	// todo: awful snowflake shifting system
+	// todo: this is awful
 	if(islist(rendered))
 		for(var/image/I as anything in rendered)
 			I.pixel_y += head_spriteacc_offset
+			I.alpha = head_organ.hair_opacity
 	else
 		var/image/I = rendered
 		I.pixel_y += head_spriteacc_offset
+		I.alpha = head_organ.hair_opacity
 	set_standing_overlay(HUMAN_OVERLAY_EARS, rendered)
 
 /mob/living/carbon/human/proc/render_spriteacc_horns()
@@ -51,13 +53,15 @@
 		HUMAN_LAYER_SPRITEACC_HORNS_BEHIND,
 		0, // TODO
 	)
-	// todo: awful snowflake shifting system
+	// todo: this is awful
 	if(islist(rendered))
 		for(var/image/I as anything in rendered)
 			I.pixel_y += head_spriteacc_offset
+			I.alpha = head_organ.hair_opacity
 	else
 		var/image/I = rendered
 		I.pixel_y += head_spriteacc_offset
+		I.alpha = head_organ.hair_opacity
 
 	set_standing_overlay(HUMAN_OVERLAY_HORNS, rendered)
 	
@@ -72,11 +76,11 @@
 	if(!head_organ || head_organ.is_stump())
 		remove_standing_overlay(HUMAN_OVERLAY_FACEHAIR)
 		return
-	var/datum/sprite_accessory/hair/facial_hair/beard_style = GLOB.legacy_facial_hair_lookup[f_style]
+	var/datum/sprite_accessory/facial_hair/beard_style = GLOB.legacy_facial_hair_lookup[f_style]
 	if(isnull(beard_style))
 		remove_standing_overlay(HUMAN_OVERLAY_FACEHAIR)
 		return
-	set_standing_overlay(HUMAN_OVERLAY_FACEHAIR, beard_style.render(
+	var/rendered = beard_style.render(
 		src,
 		list(
 			rgb(r_facial, g_facial, b_facial),
@@ -84,7 +88,18 @@
 		HUMAN_LAYER_SPRITEACC_FACEHAIR_FRONT,
 		HUMNA_LAYER_SPRITEACC_FACEHAIR_BEHIND,
 		0, // TODO
-	))
+	)
+	// todo: this is awful
+	if(islist(rendered))
+		for(var/image/I as anything in rendered)
+			I.pixel_y += head_spriteacc_offset
+			I.alpha = head_organ.hair_opacity
+	else
+		var/image/I = rendered
+		I.pixel_y += head_spriteacc_offset
+		I.alpha = head_organ.hair_opacity
+
+	set_standing_overlay(HUMAN_OVERLAY_FACEHAIR, rendered)
 
 /mob/living/carbon/human/proc/render_spriteacc_hair()
 	if((head?.inv_hide_flags | wear_mask?.inv_hide_flags) & (BLOCKHEADHAIR | BLOCKHAIR))
@@ -105,15 +120,26 @@
 	// if(head && (head.inv_hide_flags & BLOCKHEADHAIR))
 	// 	if(!(hair_style.hair_flags & HAIR_VERY_SHORT))
 	// 		hair_style = GLOB.legacy_hair_lookup["Short Hair"]
-	set_standing_overlay(HUMAN_OVERLAY_HAIR, hair_style.render(
+	var/rendered = hair_style.render(
 		src,
 		list(
 			rgb(r_hair, g_hair, b_hair),
 		),
 		HUMAN_LAYER_SPRITEACC_FACEHAIR_FRONT,
-		HUMNA_LAYER_SPRITEACC_FACEHAIR_BEHIND,
+		HUMAN_LAYER_SPRITEACC_FACEHAIR_BEHIND,
 		0, // TODO
-	))
+	)
+	// todo: this is awful
+	if(islist(rendered))
+		for(var/image/I as anything in rendered)
+			I.pixel_y += head_spriteacc_offset
+			I.alpha = head_organ.hair_opacity
+	else
+		var/image/I = rendered
+		I.pixel_y += head_spriteacc_offset
+		I.alpha = head_organ.hair_opacity
+
+	set_standing_overlay(HUMAN_OVERLAY_HAIR, rendered)
 
 //! old code below
 
@@ -178,6 +204,7 @@ var/global/list/wing_icon_cache = list()
 /mob/living/carbon/human/update_hair()
 	update_eyes() //Pirated out of here, for glowing eyes.
 
+	var/obj/item/organ/external/head/head_organ = get_organ(BP_HEAD)
 	if(istype(head_organ,/obj/item/organ/external/head/vr))
 		var/obj/item/organ/external/head/vr/head_organ_vr = head_organ
 		head_spriteacc_offset = head_organ_vr.head_offset
@@ -188,8 +215,6 @@ var/global/list/wing_icon_cache = list()
 	render_spriteacc_horns()
 	render_spriteacc_hair()
 	render_spriteacc_facehair()
-
-	face_standing += rgb(,,,head_organ.hair_opacity)
 
 #warn below
 
