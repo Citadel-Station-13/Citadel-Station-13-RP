@@ -433,6 +433,18 @@
 /atom/movable/proc/is_avoiding_ground()
     return ((movement_type & MOVEMENT_TYPES) != MOVEMENT_GROUND) || throwing
 
+//* Duplication *//
+
+/**
+ * makes a clone of this movable
+ *
+ * @params
+ * * location - where to clone us
+ * * include_contents - include semantic contents; ergo 'what we are hosting' vs 'what we are'
+ */
+/atom/movable/clone(atom/location, include_contents)
+	return ..(include_contents)
+
 //? Perspectives
 /**
  * get perspective to use when shifting eye to us,

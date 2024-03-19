@@ -36,6 +36,11 @@
 /obj/machinery/sheet_silo/proc/take_sheets(obj/item/stack/material/sheets)
 	#warn impl
 
+/obj/machinery/sheet_silo/clone(atom/location, include_contents)
+	var/obj/machinery/sheet_silo/clone = ..()
+	clone.sheets_by_material = sheets_by_material.Copy()
+	return clone
+
 /obj/machinery/sheet_silo/serialize()
 	. = ..()
 	var/list/transformed_sheets = list()
