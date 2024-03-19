@@ -250,7 +250,7 @@
 	// gather
 	for(copying as anything in A.overlays)
 		// todo: better handling
-		if(copying.plane != FLOAT_PLANE && copying.plane != A.plane)
+		if(copying.plane != FLOAT_PLANE)
 			// we don't care probably HUD or something lol
 			continue
 		current_layer = copying.layer
@@ -274,7 +274,7 @@
 
 	for(copying as anything in A.underlays)
 		// todo: better handling
-		if(copying.plane != FLOAT_PLANE && copying.plane != A.plane)
+		if(copying.plane != FLOAT_PLANE)
 			// we don't care probably HUD or something lol
 			continue
 		current_layer = copying.layer

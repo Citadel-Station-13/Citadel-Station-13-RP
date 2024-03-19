@@ -1,19 +1,3 @@
-/*
-////////////////////////////
-/  =--------------------=  /
-/  == Hair Definitions ==  /
-/  =--------------------=  /
-////////////////////////////
-*/
-
-/datum/sprite_accessory/hair
-	abstract_type = /datum/sprite_accessory/hair
-	icon = 'icons/mob/human_face_m.dmi'	  // default icon for all hairs
-	var/icon_add = 'icons/mob/human_face.dmi'
-	//Enhanced colours and hair for all
-	color_blend_mode = ICON_MULTIPLY
-	apply_restrictions = FALSE
-	var/hair_flags
 
 /datum/sprite_accessory/hair/eighties
 	name = "80's"

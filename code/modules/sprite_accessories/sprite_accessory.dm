@@ -76,49 +76,54 @@
 	var/can_be_hidden = TRUE
 
 /datum/sprite_accessory/proc/render(mob/for_whom, list/colors, layer_front, layer_behind, layer_side)
-	. = list()
+	var/list/rendering = list()
 	switch(icon_sidedness)
 		if(SPRITE_ACCESSORY_SIDEDNESS_NONE)
 			var/image/rendering
 			rendering = image(icon, icon_state, layer_front)
 			if(length(colors) >= 1)
 				rendering.color = colors[1]
-			. += rendering
+			rendering += rendering
 			if(extra_overlay)
 				rendering = image(icon, extra_overlay, layer_front)
 				if(length(colors) >= 2)
 					rendering.color = colors[2]
-				. += rendering
+				rendering += rendering
 			if(extra_overlay2)
 				rendering = image(icon, extra_overlay2, layer_front)
 				if(length(colors) >= 3)
 					rendering.color = colors[3]
-				. += rendering
+				rendering += rendering
 		if(SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND)
 			var/image/rendering
 			rendering = image(icon, "[icon_state]-front", layer_front)
 			if(length(colors) >= 1)
 				rendering.color = colors[1]
-			. += rendering
+			rendering += rendering
 			rendering = image(icon, "[icon_state]-behind", layer_behind)
 			if(length(colors) >= 1)
 				rendering.color = colors[1]
-			. += rendering
+			rendering += rendering
 			if(extra_overlay)
 				rendering = image(icon, "[extra_overlay]-front", layer_front)
 				if(length(colors) >= 2)
 					rendering.color = colors[2]
-				. += rendering
+				rendering += rendering
 				rendering = image(icon, "[extra_overlay]-behind", layer_behind)
 				if(length(colors) >= 2)
 					rendering.color = colors[2]
-				. += rendering
+				rendering += rendering
 			if(extra_overlay2)
 				rendering = image(icon, "[extra_overlay2]-front", layer_front)
 				if(length(colors) >= 3)
 					rendering.color = colors[3]
-				. += rendering
+				rendering += rendering
 				rendering = image(icon, "[extra_overlay2]-behind", layer_behind)
 				if(length(colors) >= 3)
 					rendering.color = colors[3]
-				. += rendering
+				rendering += rendering
+	
+	// emit single
+	var/image/single = rendering[1]
+	single.overlays = rendering.Copy(2)
+	return single

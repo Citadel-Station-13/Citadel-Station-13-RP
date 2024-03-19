@@ -19,6 +19,7 @@
 // todo: sprite accessories list system
 
 #define HUMAN_OVERLAY_HAIR "hair"
+#define HUMAN_OVERLAY_FACEHAIR "facehair"
 #define HUMAN_OVERLAY_TAIL "tail"
 #define HUMAN_OVERLAY_WINGS "wings"
 #define HUMAN_OVERLAY_HORNS "horns"

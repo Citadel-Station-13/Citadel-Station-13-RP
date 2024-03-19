@@ -40,17 +40,51 @@
 		transformed += rendered_normal_overlays[slot_id]
 	owner.add_overlay(transformed)
 
-/datum/inventory/proc/render_slot(slot_id)
+/**
+ * just update if a slot is visible
+ */
+/datum/inventory/proc/update_slot_visible(slot_id, cascade = TRUE)
+	// resolve item
 	var/obj/item/target = owner.item_by_slot_id(slot_id)
-	if(isnull(target))
-		remove_slot_render(slot_id)
+
+	// first, cascade incase we early-abort later
+	if(cascade)
+		slot.cascade_render_visibility(owner, target)
+
+	// check existing
+	if(isnull(rendered_normal_overlays[slot_id]))
 		return
 
+	// remove overlay first incase it's already there
+	owner.cut_overlay(rendered_normal_overlays[slot_id])
+
+	// check if slot should render
+	var/datum/inventory_slot/slot = resolve_inventory_slot(slot_id)
+	if(!slot.should_render(owner, target))
+		return
+
+	// add overlay if it should
+	owner.add_overlay(rendered_normal_overlays[slot_id])
+
+/**
+ * redo a slot's render
+ */
+/datum/inventory/proc/update_slot_render(slot_id, cascade = TRUE)
 	var/datum/inventory_slot/slot = resolve_inventory_slot(slot_id)
 	if(!slot.should_render(owner, target))
 		remove_slot_render(slot_id)
 		return
 		
+	var/obj/item/target = owner.item_by_slot_id(slot_id)
+
+	// first, cascade incase we early-abort later
+	if(cascade)
+		slot.cascade_render_visibility(owner, target)
+
+	if(isnull(target))
+		remove_slot_render(slot_id)
+		return
+
 	var/bodytype = BODYTYPE_DEFAULT
 	
 	if(ishuman(owner))
@@ -63,8 +97,6 @@
 		return
 	
 	set_slot_render(slot_id, rendering_results)
-
-	#warn impl
 	
 /datum/inventory/proc/remove_slot_render(slot_id)
 	if(isnull(rendered_normal_overlays[slot_id]))

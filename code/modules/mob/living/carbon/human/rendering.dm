@@ -1,14 +1,15 @@
-
-//! old code below
-
-/mob/living/carbon/human/proc/update_spriteacc_ears()
-	if(head?.inv_hide_flags & BLOCKHEADHAIR)
+/mob/living/carbon/human/proc/render_spriteacc_ears()
+	if((head?.inv_hide_flags | wear_mask?.inv_hide_flags) & (BLOCKHEADHAIR | BLOCKHAIR))
 		remove_standing_overlay(HUMAN_OVERLAY_EARS)
 		return
 	if(isnull(ear_style))
 		remove_standing_overlay(HUMAN_OVERLAY_EARS)
 		return
-	var/list/rendered = ear_style.render(
+	var/obj/item/organ/external/head/head_organ = get_organ(BP_HEAD)
+	if(!head_organ || head_organ.is_stump())
+		remove_standing_overlay(HUMAN_OVERLAY_EARS)
+		return
+	var/rendered = ear_style.render(
 		src,
 		list(
 			rgb(r_ears, g_ears, b_ears),
@@ -20,18 +21,26 @@
 		0, // TODO
 	)
 	// todo: awful snowflake shifting system
-	for(var/image/I as anything in rendered)
+	if(islist(rendered))
+		for(var/image/I as anything in rendered)
+			I.pixel_y += head_spriteacc_offset
+	else
+		var/image/I = rendered
 		I.pixel_y += head_spriteacc_offset
 	set_standing_overlay(HUMAN_OVERLAY_EARS, rendered)
 
-/mob/living/carbon/human/proc/update_spriteacc_horns()
-	if(head?.inv_hide_flags & BLOCKHEADHAIR)
+/mob/living/carbon/human/proc/render_spriteacc_horns()
+	if((head?.inv_hide_flags | wear_mask?.inv_hide_flags) & (BLOCKHEADHAIR | BLOCKHAIR))
 		remove_standing_overlay(HUMAN_OVERLAY_HORNS)
 		return
 	if(isnull(horn_style))
 		remove_standing_overlay(HUMAN_OVERLAY_HORNS)
 		return
-	var/list/rendered = ear_style.render(
+	var/obj/item/organ/external/head/head_organ = get_organ(BP_HEAD)
+	if(!head_organ || head_organ.is_stump())
+		remove_standing_overlay(HUMAN_OVERLAY_HORNS)
+		return
+	var/rendered = ear_style.render(
 		src,
 		list(
 			rgb(r_horn, g_horn, b_horn),
@@ -43,18 +52,74 @@
 		0, // TODO
 	)
 	// todo: awful snowflake shifting system
-	for(var/image/I as anything in rendered)
+	if(islist(rendered))
+		for(var/image/I as anything in rendered)
+			I.pixel_y += head_spriteacc_offset
+	else
+		var/image/I = rendered
 		I.pixel_y += head_spriteacc_offset
+
 	set_standing_overlay(HUMAN_OVERLAY_HORNS, rendered)
 	
+/mob/living/carbon/human/proc/render_spriteacc_facehair()
+	if((head?.inv_hide_flags | wear_mask?.inv_hide_flags) & BLOCKHAIR)
+		remove_standing_overlay(HUMAN_OVERLAY_FACEHAIR)
+		return
+	if(isnull(f_style))
+		remove_standing_overlay(HUMAN_OVERLAY_FACEHAIR)
+		return
+	var/obj/item/organ/external/head/head_organ = get_organ(BP_HEAD)
+	if(!head_organ || head_organ.is_stump())
+		remove_standing_overlay(HUMAN_OVERLAY_FACEHAIR)
+		return
+	var/datum/sprite_accessory/hair/facial_hair/beard_style = GLOB.legacy_facial_hair_lookup[f_style]
+	if(isnull(beard_style))
+		remove_standing_overlay(HUMAN_OVERLAY_FACEHAIR)
+		return
+	set_standing_overlay(HUMAN_OVERLAY_FACEHAIR, beard_style.render(
+		src,
+		list(
+			rgb(r_facial, g_facial, b_facial),
+		),
+		HUMAN_LAYER_SPRITEACC_FACEHAIR_FRONT,
+		HUMNA_LAYER_SPRITEACC_FACEHAIR_BEHIND,
+		0, // TODO
+	))
 
-/mob/living/carbon/human/proc/update_spriteacc_wings()
+/mob/living/carbon/human/proc/render_spriteacc_hair()
+	if((head?.inv_hide_flags | wear_mask?.inv_hide_flags) & (BLOCKHEADHAIR | BLOCKHAIR))
+		remove_standing_overlay(HUMAN_OVERLAY_HAIR)
+		return
+	if(isnull(h_style))
+		remove_standing_overlay(HUMAN_OVERLAY_HAIR)
+		return
+	var/obj/item/organ/external/head/head_organ = get_organ(BP_HEAD)
+	if(!head_organ || head_organ.is_stump())
+		remove_standing_overlay(HUMAN_OVERLAY_HAIR)
+		return
+	var/datum/sprite_accessory/hair/hair_style = GLOB.legacy_hair_lookup[h_style]
+	if(isnull(hair_style))
+		remove_standing_overlay(HUMAN_OVERLAY_HAIR)
+		return
+	// todo: what is this for?
+	// if(head && (head.inv_hide_flags & BLOCKHEADHAIR))
+	// 	if(!(hair_style.hair_flags & HAIR_VERY_SHORT))
+	// 		hair_style = GLOB.legacy_hair_lookup["Short Hair"]
+	set_standing_overlay(HUMAN_OVERLAY_HAIR, hair_style.render(
+		src,
+		list(
+			rgb(r_hair, g_hair, b_hair),
+		),
+		HUMAN_LAYER_SPRITEACC_FACEHAIR_FRONT,
+		HUMNA_LAYER_SPRITEACC_FACEHAIR_BEHIND,
+		0, // TODO
+	))
 
-/mob/living/carbon/human/proc/update_spriteacc_tail()
+//! old code below
 
-/mob/living/carbon/human/proc/update_spriteacc_hair()
+/mob/living/carbon/human/proc/render_spriteacc_wings()
 
-/mob/living/carbon/human/proc/update_spriteacc_facehair()
+/mob/living/carbon/human/proc/render_spriteacc_tail()
 
 
 //? Sprite Accessories
@@ -113,52 +178,24 @@ var/global/list/wing_icon_cache = list()
 /mob/living/carbon/human/update_hair()
 	update_eyes() //Pirated out of here, for glowing eyes.
 
-	var/obj/item/organ/external/head/head_organ = get_organ(BP_HEAD)
-	if(!head_organ || head_organ.is_stump() )
-		remove_standing_overlay(HUMAN_OVERLAY_HAIR)
-		return
+	if(hair_style && (!hair_style.apply_restrictions || (src.species.get_bodytype_legacy(src) in hair_style.species_allowed)))
+		var/icon/grad_s
+		var/icon/hair_s = new/icon("icon" = hair_style.icon, "icon_state" = "[hair_style.icon_state]_s")
+		var/icon/hair_s_add
+		if(hair_style.icon_add)
+			hair_s_add = new/icon("icon" = hair_style.icon_add, "icon_state" = "[hair_style.icon_state]_s")
+		if(hair_style.do_colouration)
+			if(grad_style)
+				grad_s = new/icon("icon" = 'icons/mob/hair_gradients.dmi', "icon_state" = GLOB.hair_gradients[grad_style])
+				grad_s.Blend(hair_s, ICON_AND)
+				grad_s.Blend(rgb(r_grad, g_grad, b_grad), ICON_MULTIPLY)
+			hair_s.Blend(rgb(r_hair, g_hair, b_hair), ICON_MULTIPLY)
+			if(hair_s_add)
+				hair_s.Blend(hair_s_add, ICON_ADD)
+			if(grad_s)
+				hair_s.Blend(grad_s, ICON_OVERLAY)
 
-	//masks and helmets can obscure our hair.
-	if( (head && (head.inv_hide_flags & BLOCKHAIR)) || (wear_mask && (wear_mask.inv_hide_flags & BLOCKHAIR)))
-		remove_standing_overlay(HUMAN_OVERLAY_HAIR)
-		return
-
-	//base icons
-	var/icon/face_standing = icon(icon = 'icons/mob/human_face.dmi', icon_state = "bald_s")
-
-	if(f_style)
-		var/datum/sprite_accessory/facial_hair_style = GLOB.legacy_facial_hair_lookup[f_style]
-		if(facial_hair_style && (!facial_hair_style.apply_restrictions || (src.species.get_bodytype_legacy(src) in facial_hair_style.species_allowed)))
-			var/icon/facial_s = new/icon("icon" = facial_hair_style.icon, "icon_state" = "[facial_hair_style.icon_state]_s")
-			if(facial_hair_style.do_colouration)
-				facial_s.Blend(rgb(r_facial, g_facial, b_facial), facial_hair_style.color_blend_mode)
-
-			face_standing.Blend(facial_s, ICON_OVERLAY)
-
-	if(h_style)
-		var/datum/sprite_accessory/hair/hair_style = GLOB.legacy_hair_lookup[h_style]
-		if(head && (head.inv_hide_flags & BLOCKHEADHAIR))
-			if(!(hair_style.hair_flags & HAIR_VERY_SHORT))
-				hair_style = GLOB.legacy_hair_lookup["Short Hair"]
-
-		if(hair_style && (!hair_style.apply_restrictions || (src.species.get_bodytype_legacy(src) in hair_style.species_allowed)))
-			var/icon/grad_s
-			var/icon/hair_s = new/icon("icon" = hair_style.icon, "icon_state" = "[hair_style.icon_state]_s")
-			var/icon/hair_s_add
-			if(hair_style.icon_add)
-				hair_s_add = new/icon("icon" = hair_style.icon_add, "icon_state" = "[hair_style.icon_state]_s")
-			if(hair_style.do_colouration)
-				if(grad_style)
-					grad_s = new/icon("icon" = 'icons/mob/hair_gradients.dmi', "icon_state" = GLOB.hair_gradients[grad_style])
-					grad_s.Blend(hair_s, ICON_AND)
-					grad_s.Blend(rgb(r_grad, g_grad, b_grad), ICON_MULTIPLY)
-				hair_s.Blend(rgb(r_hair, g_hair, b_hair), ICON_MULTIPLY)
-				if(hair_s_add)
-					hair_s.Blend(hair_s_add, ICON_ADD)
-				if(grad_s)
-					hair_s.Blend(grad_s, ICON_OVERLAY)
-
-			face_standing.Blend(hair_s, ICON_OVERLAY)
+		face_standing.Blend(hair_s, ICON_OVERLAY)
 		
 	
 
@@ -168,16 +205,12 @@ var/global/list/wing_icon_cache = list()
 	else
 		head_spriteacc_offset = 0
 
-	update_spriteacc_ears()
-	update_spriteacc_horns()
-
+	render_spriteacc_ears()
+	render_spriteacc_horns()
+	render_spriteacc_hair()
+	render_spriteacc_facehair()
 
 	face_standing += rgb(,,,head_organ.hair_opacity)
-
-	set_standing_overlay(
-		HUMAN_OVERLAY_HAIR,
-		image(face_standing, layer = HUMAN_LAYER_HAIR),
-	)
 
 #warn below
 
@@ -798,49 +831,29 @@ var/global/list/wing_icon_cache = list()
 	apply_layer(UNIFORM_LAYER)
 
 /mob/living/carbon/human/update_inv_wear_id()
-	inventory.render_slot(SLOT_ID_WORN_ID)
+	inventory.update_slot_render(SLOT_ID_WORN_ID)
 
 /mob/living/carbon/human/update_inv_gloves()
-	inventory.render_slot(SLOT_ID_GLOVES)
+	inventory.update_slot_render(SLOT_ID_GLOVES)
 
 /mob/living/carbon/human/update_inv_glasses()
-	inventory.render_slot(SLOT_ID_GLASSES)
+	inventory.update_slot_render(SLOT_ID_GLASSES)
 
 /mob/living/carbon/human/update_inv_ears()
-	inventory.render_slot(SLOT_ID_LEFT_EAR)
-	inventory.render_slot(SLOT_ID_RIGHT_EAR)
+	inventory.update_slot_render(SLOT_ID_LEFT_EAR)
+	inventory.update_slot_render(SLOT_ID_RIGHT_EAR)
 
 /mob/living/carbon/human/update_inv_shoes()
-	if(QDESTROYING(src))
-		return
-
-	remove_layer(SHOES_LAYER)
-	remove_layer(SHOES_LAYER_ALT) //Dumb alternate layer for shoes being under the uniform.
-
-	if(!shoes || (wear_suit && wear_suit.inv_hide_flags & HIDESHOES) || (w_uniform && w_uniform.inv_hide_flags & HIDESHOES))
-		return //Either nothing to draw, or it'd be hidden.
-
-	//Allow for shoe layer toggle nonsense
-	var/shoe_layer = SHOES_LAYER
-	if(istype(shoes, /obj/item/clothing/shoes))
-		var/obj/item/clothing/shoes/ushoes = shoes
-		if(ushoes.shoes_under_pants == 1)
-			shoe_layer = SHOES_LAYER_ALT
-
-	//NB: the use of a var for the layer on this one
-	overlays_standing[shoe_layer] = shoes.render_mob_appearance(src, SLOT_ID_SHOES, species.get_effective_bodytype(src, shoes, SLOT_ID_SHOES))
-
-	apply_layer(SHOES_LAYER)
-	apply_layer(SHOES_LAYER_ALT)
+	inventory.update_slot_render(SLOT_ID_SHOES)
 
 /mob/living/carbon/human/update_inv_s_store()
-	inventory.render_slot(SLOT_ID_SUIT_STORAGE)
+	inventory.update_slot_render(SLOT_ID_SUIT_STORAGE)
 
 /mob/living/carbon/human/update_inv_head()
-	inventory.render_slot(SLOT_ID_HEAD)
+	inventory.update_slot_render(SLOT_ID_HEAD)
 
 /mob/living/carbon/human/update_inv_belt()
-	inventory.render_slot(SLOT_ID_BELT)
+	inventory.update_slot_render(SLOT_ID_BELT)
 
 /mob/living/carbon/human/update_inv_wear_suit()
 	if(QDESTROYING(src))
@@ -879,26 +892,16 @@ var/global/list/wing_icon_cache = list()
 	apply_layer(SUIT_LAYER)
 
 /mob/living/carbon/human/update_inv_wear_mask()
-	if(QDESTROYING(src))
-		return
-
-	remove_layer(FACEMASK_LAYER)
-
-	if(!wear_mask || (head && head.inv_hide_flags & HIDEMASK))
-		return //Why bother, nothing in mask slot.
-
-	overlays_standing[FACEMASK_LAYER] = wear_mask.render_mob_appearance(src, SLOT_ID_MASK, species.get_effective_bodytype(src, wear_mask, SLOT_ID_MASK))
-
-	apply_layer(FACEMASK_LAYER)
+	inventory.update_slot_render(SLOT_ID_MASK)
 
 /mob/living/carbon/human/update_inv_back()
-	inventory.render_slot(SLOT_ID_BACK)
+	inventory.update_slot_render(SLOT_ID_BACK)
 
 /mob/living/carbon/human/update_inv_handcuffed()
-	inventory.render_slot(SLOT_ID_HANDCUFFED)
+	inventory.update_slot_render(SLOT_ID_HANDCUFFED)
 
 /mob/living/carbon/human/update_inv_legcuffed()
-	inventory.render_slot(SLOT_ID_LEGCUFFED)
+	inventory.update_slot_render(SLOT_ID_LEGCUFFED)
 
 /mob/living/carbon/human/update_inv_r_hand()
 	if(isnull(r_hand))

@@ -81,7 +81,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	/// abstract type
 	abstract_type = /datum/inventory_slot
 
-	//! Intrinsics
+	//* Intrinsics
 	/// slot name
 	var/name = "unknown"
 	/// id
@@ -93,11 +93,11 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	/// display order - higher is upper. a <hr> is applied on 0.
 	var/sort_order = 0
 
-	//! HUD
+	//* HUD
 	/// our screen loc
 	var/hud_position
 
-	//! Grammar
+	//* Grammar
 	/// player friendly name
 	var/display_name = "unknown"
 	/// player friendly preposition
@@ -105,7 +105,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	/// is this a "plural" slot?
 	var/display_plural = FALSE
 
-	//! Equip Checks
+	//* Equip Checks
 	/// equip checks to use
 	var/slot_equip_checks = NONE
 	/// slot flags required to have if checking
@@ -113,13 +113,13 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	/// slot flags forbidden to have if checking
 	var/slot_flags_forbidden = NONE
 
-	//! Stripping
+	//* Stripping
 	/// always show on strip/force equip menu, or only show when full
 	var/always_show_on_strip_menu = TRUE
 	/// default INV_VIEW flags for stripping
 	var/default_strip_inv_view_flags = NONE
 
-	//! Rendering
+	//* Rendering
 	/// rendering slot key
 	var/render_key
 	/// rendering plural slot key - only set on base type of plural slots
@@ -136,6 +136,9 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	VAR_PRIVATE/list/render_dim_y_cache
 	/// fallback states; if set for a bodytype, that bodytype converts to this if not in worn_bodytypes, rather than defaulted.
 	VAR_PROTECTED/list/render_fallback
+	/// cascade renders to these slot ids
+	//  todo: this should be flag-based; for a future refactor via /datum/inventory, not hardcoded!
+	VAR_PROTECTED/list/legacy_visibility_sensitive_slots = list()
 
 /datum/inventory_slot/New()
 	if(!id && (inventory_slot_flags & INV_SLOT_ALLOW_RANDOM_ID))
@@ -175,6 +178,10 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 
 /datum/inventory_slot/proc/should_render(mob/wearer, obj/item/item)
 	return TRUE
+
+/datum/inventory_slot/proc/cascade_render_visibility(mob/wearer, obj/item/item)
+	for(var/slot_id in legacy_visibility_sensitive_slots)
+		wearer.inventory.update_slot_visible(slot_id, FALSE)
 
 /datum/inventory_slot/proc/rebuild_rendering_caches()
 	PROTECTED_PROC(TRUE) // if you think you need this outside you should rethink
@@ -284,6 +291,9 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		BODYTYPE_STRING_VOX = "_fallback_",
 	)
 	render_layer = HUMAN_LAYER_SLOT_UNIFORM
+	legacy_visibility_sensitive_slots = list(
+		SLOT_ID_SHOES,
+	)
 
 	/// list of rolldown icons; must DIRECTLY corrospond to default icons.
 	var/list/render_rolldown_icons = list(
@@ -379,6 +389,9 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		BODYTYPE_STRING_UNATHI_DIGI = 'icons/mob/clothing/species/unathidigi/head.dmi',
 	)
 	render_layer = HUMAN_LAYER_SLOT_HEAD
+	legacy_visibility_sensitive_slots = list(
+		SLOT_ID_HEAD,
+	)
 
 /datum/inventory_slot/inventory/suit
 	name = "outerwear"
@@ -413,6 +426,15 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		BODYTYPE_STRING_UNATHI_DIGI = 'icons/mob/clothing/species/unathidigi/suits.dmi',
 	)
 	render_layer = HUMAN_LAYER_SLOT_SUIT
+	legacy_visibility_sensitive_slots = list(
+		SLOT_ID_UNIFORM,
+		SLOT_ID_SHOES,
+	)
+
+/datum/inventory_slot/inventory/suit/render_cascade_visibility(mob/wearer, obj/item/item)
+	. = ..()
+	wearer.update_tail_showing()
+	wearer.update_wing_showing()
 
 /datum/inventory_slot/inventory/belt
 	name = "belt"
@@ -521,6 +543,8 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	if(!ishuman(wearer))
 		return ..()
 	var/mob/living/carbon/human/casted_human = wearer
+	if((casted_human.wear_suit.inv_hide_flags | casted_human.w_uniform.inv_hide_flags) & HIDESHOES)
+		return FALSE
 	for(var/bodypart in list(BP_L_FOOT, BP_R_FOOT))
 		var/obj/item/organ/external/foot/foot = casted_human.get_organ(bodypart)
 		if(istype(foot) && foot.is_hidden_by_tail())
@@ -674,6 +698,13 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		BODYTYPE_STRING_TESHARI = "_fallback_",
 	)
 	render_layer = HUMAN_LAYER_SLOT_FACEMASK
+
+/datum/inventory_slot/inventory/mask/should_render(mob/wearer, obj/item/item)
+	if(ishuman(wearer))
+		var/mob/living/carbon/human/casted_human = wearer
+		if(casted_human.head.inv_hide_flags & HIDEMASK)
+			return FALSE
+	return ..()
 
 /datum/inventory_slot/restraints
 	sort_order = -250
