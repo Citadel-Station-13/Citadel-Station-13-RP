@@ -51,3 +51,33 @@
 	icon = 'icons/mob/sprite_accessory/horns/horns.dmi'
 	icon_state = "broadcurls"
 	icon_sidedness = SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND
+
+/datum/sprite_accessory/ears/horns/painted_points
+	name = "Painted Points Horns"
+	id = "horn-painted-points"
+	icon = 'icons/mob/sprite_accessory/horns/horns_32x48_bottom_aligned.dmi'
+	icon_state = "paintedpoints"
+	icon_dimension_x = 32
+	icon_dimension_y = 48
+	icon_sidedness = SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND
+	icon_alignment = SPRITE_ACCESSORY_ALIGNMENT_BOTTOM
+
+/datum/sprite_accessory/ears/horns/whos_horns
+	name = "Who's Horns"
+	id = "horn-whos_horns"
+	icon = 'icons/mob/sprite_accessory/horns/horns_32x48_bottom_aligned.dmi'
+	icon_state = "whoshorns"
+	icon_dimension_x = 32
+	icon_dimension_y = 48
+	icon_sidedness = SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND
+	icon_alignment = SPRITE_ACCESSORY_ALIGNMENT_BOTTOM
+
+/datum/sprite_accessory/ears/horns/highrise
+	name = "High Rise Horns"
+	id = "horn-high-rise"
+	icon = 'icons/mob/sprite_accessory/horns/horns_32x48_bottom_aligned.dmi'
+	icon_state = "highrise"
+	icon_dimension_x = 32
+	icon_dimension_y = 48
+	icon_sidedness = SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND
+	icon_alignment = SPRITE_ACCESSORY_ALIGNMENT_BOTTOM
