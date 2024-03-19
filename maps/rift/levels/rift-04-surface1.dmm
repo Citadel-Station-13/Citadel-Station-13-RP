@@ -12190,14 +12190,15 @@
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/public_garden)
 "hVB" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
 /obj/structure/cable/green{
-	icon_state = "1-8"
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 8;
+	power_rating = 45000
 	},
 /turf/simulated/floor/tiled/monodark,
 /area/security/prison/upper)
@@ -17818,13 +17819,9 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
 	},
-/obj/structure/extinguisher_cabinet{
-	dir = 8;
-	pixel_x = 30
-	},
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	dir = 8;
-	power_rating = 45000
+/obj/machinery/power/apc/east_mount,
+/obj/structure/cable/green{
+	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/prison/upper)
@@ -23008,9 +23005,6 @@
 "oDu" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/holopad,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/tiled/monodark,
 /area/security/prison/upper)
 "oDG" = (
@@ -33047,9 +33041,9 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
 	},
-/obj/machinery/power/apc/east_mount,
-/obj/structure/cable/green{
-	icon_state = "0-8"
+/obj/structure/extinguisher_cabinet{
+	dir = 8;
+	pixel_x = 30
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/prison/upper)
@@ -34381,9 +34375,6 @@
 	dir = 1;
 	pixel_x = -24;
 	pixel_y = 38
-	},
-/obj/structure/cable/green{
-	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled/monodark,
 /area/security/prison/upper)
