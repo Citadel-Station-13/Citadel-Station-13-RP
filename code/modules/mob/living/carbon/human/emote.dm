@@ -958,6 +958,18 @@
 			message = "snaps [T.his] fingers."
 			playsound(loc, 'sound/effects/fingersnap.ogg', 50, 1, -3)
 
+		if("swish")
+			src.animate_tail_once()
+
+		if("wag", "sway")
+			src.animate_tail_start()
+
+		if("qwag", "fastsway")
+			src.animate_tail_fast()
+
+		if("swag", "stopsway")
+			src.animate_tail_stop()
+
 		if("vomit")
 			if(isSynthetic())
 				to_chat(src, "<span class='warning'>You are unable to vomit.</span>")
@@ -1248,51 +1260,6 @@
 /mob/living/carbon/human/proc/spam_flag_false() //used for addtimer
 	spam_flag = FALSE
 
-/mob/living/carbon/human/proc/toggle_tail_vr(var/setting,var/message = 0)
-	if(!tail_style || !tail_style.ani_state)
-		if(message)
-			to_chat(src, "<span class='warning'>You don't have a tail that supports this.</span>")
-		return 0
-
-	var/new_wagging = isnull(setting) ? !wagging : setting
-	if(new_wagging != wagging)
-		wagging = new_wagging
-		update_tail_showing()
-	return 1
-
-/mob/living/carbon/human/proc/toggle_wing_vr(var/setting,var/message = 0)
-	if(!wing_style || !wing_style.ani_state)
-		if(message)
-			to_chat(src, "<span class='warning'>You don't have wings that support this.</span>")
-		return 0
-
-	var/new_flapping = isnull(setting) ? !flapping : setting
-	if(new_flapping != flapping)
-		flapping = setting
-		if(flapping)
-			spread = FALSE
-		update_wing_showing()
-	return 1
-
-/mob/living/carbon/human/proc/toggle_wing_spread(var/folded,var/message = 0)
-	if(!wing_style)
-		if(message)
-			to_chat(src, "<span class='warning'>You don't have wings!</span>")
-		return 0
-
-	if(!wing_style.spr_state)
-		if(message)
-			to_chat(src, "<span class='warning'>You don't have wings that support this.</span>")
-		return 0
-
-	var/new_spread = isnull(folded) ? !spread : folded
-	if(new_spread != spread)
-		spread = new_spread
-		if(spread)
-			flapping = FALSE
-		update_wing_showing()
-	return 1
-
 /mob/living/carbon/human/verb/toggle_gender_identity_vr()
 	set name = "Set Gender Identity"
 	set desc = "Sets the pronouns when examined and performing an emote."
@@ -1302,10 +1269,3 @@
 		return 0
 	change_gender_identity(new_gender_identity)
 	return 1
-
-/mob/living/carbon/human/verb/switch_tail_layer()
-	set name = "Switch tail layer"
-	set category = "IC"
-	set desc = "Switch tail layer on top."
-	tail_alt = !tail_alt
-	update_tail_showing()

@@ -86,7 +86,7 @@
 			rgb(r_facial, g_facial, b_facial),
 		),
 		HUMAN_LAYER_SPRITEACC_FACEHAIR_FRONT,
-		HUMNA_LAYER_SPRITEACC_FACEHAIR_BEHIND,
+		HUMAN_LAYER_SPRITEACC_FACEHAIR_BEHIND,
 		0, // TODO
 	)
 	// todo: this is awful
@@ -324,6 +324,79 @@ var/global/list/wing_icon_cache = list()
 			//check that the animation hasn't changed in the meantime
 			if(overlays_standing[used_tail_layer] == tail_overlay && tail_overlay.icon_state == t_state)
 				animate_tail_stop()
+
+/mob/living/carbon/human/proc/toggle_tail_vr(var/setting,var/message = 0)
+	if(!tail_style || !tail_style.ani_state)
+		if(message)
+			to_chat(src, "<span class='warning'>You don't have a tail that supports this.</span>")
+		return 0
+
+	var/new_wagging = isnull(setting) ? !wagging : setting
+	if(new_wagging != wagging)
+		wagging = new_wagging
+		update_tail_showing()
+	return 1
+
+/mob/living/carbon/human/proc/toggle_wing_vr(var/setting,var/message = 0)
+	if(!wing_style || !wing_style.ani_state)
+		if(message)
+			to_chat(src, "<span class='warning'>You don't have wings that support this.</span>")
+		return 0
+
+	var/new_flapping = isnull(setting) ? !flapping : setting
+	if(new_flapping != flapping)
+		flapping = setting
+		if(flapping)
+			spread = FALSE
+		update_wing_showing()
+	return 1
+
+/mob/living/carbon/human/proc/toggle_wing_spread(var/folded,var/message = 0)
+	if(!wing_style)
+		if(message)
+			to_chat(src, "<span class='warning'>You don't have wings!</span>")
+		return 0
+
+	if(!wing_style.spr_state)
+		if(message)
+			to_chat(src, "<span class='warning'>You don't have wings that support this.</span>")
+		return 0
+
+	var/new_spread = isnull(folded) ? !spread : folded
+	if(new_spread != spread)
+		spread = new_spread
+		if(spread)
+			flapping = FALSE
+		update_wing_showing()
+	return 1
+
+/mob/living/carbon/human/proc/animate_tail_start()
+	if(QDESTROYING(src))
+		return
+
+	set_tail_state("[species.get_tail(src)]_slow[rand(0,9)]")
+
+/mob/living/carbon/human/proc/animate_tail_fast()
+	if(QDESTROYING(src))
+		return
+
+	set_tail_state("[species.get_tail(src)]_loop[rand(0,9)]")
+
+/mob/living/carbon/human/proc/animate_tail_reset()
+	if(QDESTROYING(src))
+		return
+
+	if(stat != DEAD)
+		set_tail_state("[species.get_tail(src)]_idle[rand(0,9)]")
+	else
+		set_tail_state("[species.get_tail(src)]_static")
+		toggle_tail_vr(FALSE) // So tails stop when someone dies. TODO - Fix this hack ~Leshana
+
+/mob/living/carbon/human/proc/animate_tail_stop()
+	if(QDESTROYING(src))
+		return
+
+	set_tail_state("[species.get_tail(src)]_static")
 
 /// Wings! See update_icons_vr.dm for more wing procs
 /mob/living/carbon/human/proc/update_wing_showing()

@@ -2,7 +2,8 @@
 	abstract_type = /datum/sprite_accessory/wing
 	name = "You should not see this..."
 	icon = 'icons/mob/sprite_accessories/wings.dmi'
-	dimension_x = 64
+	icon_dimension_x = 64
+	icon_alignment = SPRITE_ACCESSORY_ALIGNMENT_BOTTOM
 	do_colouration = 0 //Set to 1 to enable coloration using the tail color.
 
 	legacy_use_additive_color_matrix = TRUE // Only appliciable if do_coloration = 1
