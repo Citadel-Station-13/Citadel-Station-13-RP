@@ -81,8 +81,9 @@
 		if(SPRITE_ACCESSORY_SIDEDNESS_NONE)
 			var/image/rendering
 			rendering = image(icon, icon_state, layer_front)
-			if(length(colors) >= 1)
-				rendering.color = colors[1]
+			if(do_colouration)
+				if(length(colors) >= 1)
+					rendering.color = colors[1]
 			rendering += rendering
 			if(extra_overlay)
 				rendering = image(icon, extra_overlay, layer_front)
@@ -97,12 +98,14 @@
 		if(SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND)
 			var/image/rendering
 			rendering = image(icon, "[icon_state]-front", layer_front)
-			if(length(colors) >= 1)
-				rendering.color = colors[1]
+			if(do_colouration)
+				if(length(colors) >= 1)
+					rendering.color = colors[1]
 			rendering += rendering
 			rendering = image(icon, "[icon_state]-behind", layer_behind)
-			if(length(colors) >= 1)
-				rendering.color = colors[1]
+			if(do_colouration)
+				if(length(colors) >= 1)
+					rendering.color = colors[1]
 			rendering += rendering
 			if(extra_overlay)
 				rendering = image(icon, "[extra_overlay]-front", layer_front)
