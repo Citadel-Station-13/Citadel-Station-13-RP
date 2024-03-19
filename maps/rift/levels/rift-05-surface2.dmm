@@ -2249,17 +2249,13 @@
 /turf/simulated/floor/plating,
 /area/medical/surgery2)
 "bmY" = (
-/obj/machinery/camera/network/security{
-	dir = 8
-	},
-/obj/machinery/computer/guestpass{
-	dir = 8;
-	pixel_x = 24
-	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/red/border{
+	dir = 4
+	},
+/obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
@@ -2794,9 +2790,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
-	},
-/obj/structure/cable/green{
-	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/security/lobby)
@@ -3538,15 +3531,6 @@
 	},
 /turf/simulated/open,
 /area/rift/station/public_garden/gantry)
-"cgp" = (
-/obj/structure/bed/chair{
-	dir = 8
-	},
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/security/lobby)
 "cgt" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -4479,9 +4463,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
 "cMm" = (
-/obj/machinery/light{
-	dir = 4
-	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
@@ -4493,6 +4474,13 @@
 	},
 /obj/effect/floor_decal/corner/red/bordercorner2{
 	dir = 5
+	},
+/obj/machinery/camera/network/security{
+	dir = 8
+	},
+/obj/machinery/computer/guestpass{
+	dir = 8;
+	pixel_x = 24
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/lobby)
@@ -7935,9 +7923,6 @@
 	pixel_x = -5
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/radio/intercom{
-	pixel_y = -24
-	},
 /obj/structure/reagent_dispensers/peppertank{
 	pixel_x = -32
 	},
@@ -20347,9 +20332,6 @@
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab/storage)
 "mLV" = (
-/obj/machinery/requests_console/preset/security{
-	pixel_x = 32
-	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
@@ -20362,6 +20344,8 @@
 /obj/effect/floor_decal/corner/red/bordercorner2{
 	dir = 6
 	},
+/obj/machinery/power/apc/east_mount,
+/obj/structure/cable/green,
 /turf/simulated/floor/tiled/steel,
 /area/security/lobby)
 "mMs" = (
@@ -23777,9 +23761,8 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 8
 	},
-/obj/machinery/power/apc/west_mount,
-/obj/structure/cable/green{
-	icon_state = "0-4"
+/obj/machinery/light{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/lobby)
@@ -27223,9 +27206,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /turf/simulated/floor/tiled/monotile,
 /area/security/lobby)
 "rda" = (
@@ -28831,9 +28811,6 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/red/border{
-	dir = 8
-	},
-/obj/machinery/light{
 	dir = 8
 	},
 /obj/effect/floor_decal/borderfloor/corner2{
@@ -31455,7 +31432,7 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals4,
 /obj/structure/cable/green{
-	icon_state = "4-8"
+	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/lobby)
@@ -34991,7 +34968,6 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 9
 	},
-/obj/machinery/fire_alarm/north_mount,
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
@@ -35001,6 +34977,9 @@
 	},
 /obj/effect/floor_decal/corner/red/bordercorner2{
 	dir = 1
+	},
+/obj/machinery/requests_console/preset/security{
+	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/lobby)
@@ -36076,9 +36055,6 @@
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 8
-	},
-/obj/structure/cable/green{
-	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/security/lobby)
@@ -54925,7 +54901,7 @@ hRp
 umt
 oXc
 gEP
-cgp
+jHi
 jHi
 cjM
 cjM
