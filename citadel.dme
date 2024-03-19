@@ -3339,6 +3339,7 @@
 #include "code\modules\mining\drilling\drill.dm"
 #include "code\modules\mining\drilling\scanner.dm"
 #include "code\modules\mining\machinery\sheet_silo.dm"
+#include "code\modules\mining\machinery\sheet_silo_loader.dm"
 #include "code\modules\mining\ore_redemption_machine\construction.dm"
 #include "code\modules\mining\ore_redemption_machine\engineering_points_vendor.dm"
 #include "code\modules\mining\ore_redemption_machine\equipment_vendor.dm"

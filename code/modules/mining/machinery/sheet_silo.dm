@@ -33,6 +33,9 @@
 	#warn impl
 	. = ..()
 
+/obj/machinery/sheet_silo/proc/take_sheets(obj/item/stack/material/sheets)
+	#warn impl
+
 /obj/machinery/sheet_silo/serialize()
 	. = ..()
 	var/list/transformed_sheets = list()
