@@ -114,6 +114,8 @@
 		constructed_keybinds[++constructed_keybinds.len] = keybind.tgui_keybinding_data()
 	.["keybinds"] = constructed_keybinds
 	.["hotkeyMode"] = prefs.misc_by_key[GAME_PREFERENCE_MISC_KEY_HOTKEY_MODE]
+	.["maxBinds"] = MAX_KEYS_PER_KEYBIND
+	.["maxPerKey"] = MAX_COMMANDS_PER_KEY
 
 //? Preferences Helpers
 

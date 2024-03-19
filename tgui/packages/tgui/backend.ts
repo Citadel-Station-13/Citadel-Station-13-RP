@@ -188,6 +188,7 @@ export const backendMiddleware = store => {
 
     if (type === 'modules') {
       store.dispatch(backendModuleData(payload));
+      return;
     }
 
     if (type === 'suspend') {
@@ -276,7 +277,7 @@ export const backendMiddleware = store => {
   };
 };
 
-export type actFunctionType = (action: string, payload?: object, route_id?: string) => void;
+export type actFunctionType = (action: string, payload?: object, route_id?: string | null) => void;
 
 /**
  * Sends an action to `ui_act` on `src_object` that this tgui window
@@ -289,7 +290,7 @@ export type actFunctionType = (action: string, payload?: object, route_id?: stri
  * * payload - payload object; this is the list/params byond-side
  * * route_id - route via ui_route() with given id instead of ui_act()
  */
-export const sendAct: actFunctionType = (action: string, payload: object = {}, route_id?: string) => {
+export const sendAct: actFunctionType = (action: string, payload: object = {}, route_id?: string | null) => {
   // Validate that payload is an object
   const isObject = typeof payload === 'object'
     && payload !== null

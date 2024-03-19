@@ -31,7 +31,7 @@
 			prefs.set_toggle(key, !!params["val"])
 			// todo: optimize this
 			prefs.push_ui_modules(updates = list((src.key) = list(
-				"toggles" = prefs.toggles_by_key,
+				"states" = prefs.toggles_by_key,
 			)))
 			return TRUE
 

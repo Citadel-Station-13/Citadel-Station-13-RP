@@ -135,10 +135,10 @@
 		var/datum/game_preference_toggle/toggle = SSpreferences.toggles_by_key[key]
 		if(!toggle.legacy_key)
 			continue
-		toggles_by_key[key] = !!old_toggles[toggle.legacy_key]
+		toggles_by_key[key] = (toggle.legacy_key in old_toggles)
 
 	var/list/old_keybinds
-	legacy_savefile["keybindings"] >> old_keybinds
+	legacy_savefile["key_bindings"] >> old_keybinds
 	keybindings = sanitize_islist(old_keybinds)
 
 	var/old_hotkeys
@@ -164,6 +164,8 @@
 						version = GAME_PREFERENCES_VERSION_LEGACY
 				// save results to sql, as sql is authoritative
 				save_to_sql()
+				// synchronize sql to file for backup for when sql is down
+				save_to_file()
 			else
 				// synchronize sql to file for backup for when sql is down
 				save_to_file()
@@ -540,6 +542,9 @@
 			return TRUE
 		if("save")
 			auto_save()
+			return TRUE
+		if("discard")
+			load()
 			return TRUE
 
 //? Client Wrappers ?//

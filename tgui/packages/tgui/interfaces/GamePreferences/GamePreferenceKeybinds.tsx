@@ -2,10 +2,30 @@
  * @file
  * @license MIT
  */
-import { Section } from "../../components";
+import { BooleanLike } from "common/react";
+import { NoticeBox, Section, Stack } from "../../components";
 
-interface GamePreferenceKeybindScreenProps {
+export interface GamePreferenceKeybindMiddlware {
+  readonly hotkeyMode: BooleanLike;
+  readonly bindings: Record<string, string[]>;
+  // maximum keys for a keybinding
+  readonly maxBinds: number;
+  // maximum bindings per key
+  readonly maxPerKey: number;
+  readonly keybinds: GamePreferenceKeybind[];
+}
 
+interface GamePreferenceKeybindDescriptor {
+  key: string;
+  alt?: BooleanLike;
+  shift?: BooleanLike;
+  ctrl?: BooleanLike;
+  numpad?: BooleanLike;
+}
+
+interface GamePreferenceKeybindScreenProps extends GamePreferenceKeybindMiddlware {
+  readonly addBind: (id: string, key: GamePreferenceKeybindDescriptor, replacingKey: string) => void;
+  readonly removeBind: (id: string, key: string) => void;
 }
 
 interface GamePreferenceKeybind {
@@ -26,8 +46,18 @@ won't be able to access any regular Ctrl binds.<br>";
 
 export const GamePreferenceKeybindScreen = (props: GamePreferenceKeybindScreenProps, context) => {
   return (
-    <Section fill>
-      Test
-    </Section>
+    <Stack fill vertical>
+      <Stack.Item>
+        <NoticeBox>
+          Changes made on this page are applied to the game immediately,
+          but are not saved to storage until you press &aposSave&apos.
+        </NoticeBox>
+      </Stack.Item>
+      <Stack.Item grow={1}>
+        <Section fill>
+          Test
+        </Section>
+      </Stack.Item>
+    </Stack>
   );
 };

@@ -11,10 +11,10 @@
 import { BooleanLike } from "common/react";
 import { InfernoNode } from "inferno";
 import { getModuleData, useBackend, useComputedOnce, useLocalState } from "../../backend";
-import { Button, Section, Stack } from "../../components";
+import { Button, NoticeBox, Section, Stack } from "../../components";
 import { Window } from "../../layouts";
 import { GamePreferenceEntry, GamePreferenceEntrySchema } from "./GamePreferenceEntry";
-import { GamePreferenceKeybindScreen } from "./GamePreferenceKeybinds";
+import { GamePreferenceKeybindMiddlware, GamePreferenceKeybindScreen } from "./GamePreferenceKeybinds";
 import { GamePreferenceToggleScreen, GamePreferenceTogglesMiddleware } from "./GamePreferenceToggles";
 
 interface GamePreferencesData {
@@ -23,6 +23,8 @@ interface GamePreferencesData {
   middleware: Record<string, string>;
   // entry key --> value as any
   values: Record<string, any>;
+  // do we need saving?
+  dirty: BooleanLike;
 }
 
 const GamePreferencesTabs = (props, context) => {
@@ -101,6 +103,9 @@ export const GamePreferences = (props, context) => {
           <Stack.Item grow={1}>
             <GamePreferencesBody />
           </Stack.Item>
+          <Stack.Item>
+            <GamePreferenceFooter activeCategory={activeCategory} activeMiddleware={activeMiddleware} />
+          </Stack.Item>
         </Stack>
       </Window.Content>
     </Window>
@@ -114,37 +119,82 @@ const GamePreferencesBody = (props, context) => {
   let [activeCategory, setActiveCategory] = useLocalState<string>(context, "prefsCategoryActive", Object.keys(categoryCache)[0]);
   let [activeMiddleware, setActiveMiddleware] = useLocalState<string | null>(context, "prefsMiddlewareActive", null);
 
-
-  if (activeMiddleware) {
+  // todo: this is so fucking awful bros please don't make the same mistake on character setup.
+  if (activeMiddleware && (typeof activeMiddleware === 'string')) {
     let middlewareData = getModuleData(context, activeMiddleware);
     switch (activeMiddleware) {
       case 'keybindings':
         return (
-          <GamePreferenceKeybindScreen />
+          <GamePreferenceKeybindScreen
+            addBind={(id, key, replacing) => act('addBind', {
+              ...key,
+              replaceKey: replacing,
+              keybind: id,
+            }, activeMiddleware)}
+            removeBind={(id, key) => act('removeBind', { keybind: id, key: key }, activeMiddleware)}
+            {...middlewareData as GamePreferenceKeybindMiddlware} />
         );
       case 'toggles':
         return (
-          <GamePreferenceToggleScreen toggleAct={(key: string, val: BooleanLike) => act('toggle', { key: key, val: val }, 'toggles')} {
-            ...middlewareData as GamePreferenceTogglesMiddleware
-          } />
+          <GamePreferenceToggleScreen
+            toggleAct={(key: string, val: BooleanLike) => act('toggle', { key: key, val: val }, 'toggles')}
+            {...middlewareData as GamePreferenceTogglesMiddleware} />
         );
     }
   }
 
   return (
-    <Section fill scrollable>
-      {JSON.stringify(getModuleData(context, 'toggles'))}
-      {JSON.stringify(getModuleData(context, 'keybindings'))}
-      <Stack fill vertical overflowY="auto">
-        {categoryCache[activeCategory].map((subcat) => (
-          <Stack.Item key={subcat}>
-            <h1 style={{ "text-align": "center" }}>{subcat}</h1>
-            {data.entries.filter((e) => e.category === activeCategory && e.subcategory === subcat).map((entry) => (
-              <GamePreferenceEntry schema={entry} key={entry.key} value={data.values[entry.key]}
-                setValue={(val) => act('set', { key: entry.key, value: val })} />
+    <Stack fill vertical>
+      <Stack.Item>
+        <NoticeBox>
+          Changes made on this page are applied to the game immediately,
+          but are not saved to storage until you press &aposSave&apos.
+        </NoticeBox>
+      </Stack.Item>
+      <Stack.Item grow={1}>
+        <Section fill scrollable>
+          {JSON.stringify(getModuleData(context, 'keybindings'))}
+          <Stack fill vertical overflowY="auto">
+            {categoryCache[activeCategory].map((subcat) => (
+              <Stack.Item key={subcat}>
+                <h1 style={{ "text-align": "center" }}>{subcat}</h1>
+                {data.entries.filter((e) => e.category === activeCategory && e.subcategory === subcat).map((entry) => (
+                  <GamePreferenceEntry schema={entry} key={entry.key} value={data.values[entry.key]}
+                    setValue={(val) => act('set', { key: entry.key, value: val })} />
+                ))}
+              </Stack.Item>
             ))}
-          </Stack.Item>
-        ))}
+          </Stack>
+        </Section>
+      </Stack.Item>
+    </Stack>
+  );
+};
+
+const GamePreferenceFooter = (props: {
+  readonly activeCategory: string,
+  readonly activeMiddleware: string | null
+}, context) => {
+  const { act, data } = useBackend<GamePreferencesData>(context);
+  return (
+    <Section>
+      <Stack fill>
+        <Stack.Item grow={1}>
+          <Button.Confirm fluid
+            disabled={!data.dirty} onClick={() => act('save')}
+            content="Save" />
+        </Stack.Item>
+        <Stack.Item grow={1}>
+          <Button.Confirm fluid
+            disabled={data.dirty} onClick={() => act('discard')}
+            content="Discard" />
+        </Stack.Item>
+        <Stack.Item grow={1}>
+          <Button.Confirm fluid
+            disabled={!data.dirty} onClick={() =>
+              act('reset', props.activeCategory? { category: props.activeCategory } : {}, props.activeMiddleware)}
+            content="Reset to Default" />
+        </Stack.Item>
       </Stack>
     </Section>
   );
